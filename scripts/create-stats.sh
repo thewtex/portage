@@ -18,7 +18,7 @@ for i in ${bugsin}; do
 done
 
 for ((i=0;i<${#ebuilds[@]};i++)) do
-	cc[$i]=$(wget bugs.gentoo.org/${bugs[$i]} -q -O - | sed -e "s:&#64;:@:" | grep "value=.*@gentoo.org" | sed -e 's:[^"]*"\([^@]*\).*:\1:' | sed "s:maintainer-wanter::");
+	cc[$i]=$(wget bugs.gentoo.org/${bugs[$i]} -q -O - | sed -e "s:&#64;:@:" | grep "value=.*@gentoo.org" | sed -e 's:[^"]*"\([^@]*\).*:\1:' | sed "s:maintainer-wanted::");
 	if [ -z "$1" ] || [ "${cc[$i]/$1}" != "${cc[$i]}" ]; then
 		echo ${ebuilds[$i]} - bug ${bugs[$i]} - on CC: ${cc[$i]};
 	fi
