@@ -14,15 +14,15 @@ SLOT="0"
 KEYWORDS="~x86"
 IUSE="doc"
 
-RDEPEND=">=dev-python/pygtk-2.0
-	dev-python/gnome-python"
-DEPEND="${RDEPEND}"
 
+DEPEND=">=dev-python/pygtk-2.0
+	dev-python/gnome-python"
+RDEPEND="${DEPEND}"
 
 src_unpack() {
 	unpack ${A}
 	cd "${S}"
-	
+
 	# Many fixes, thanks to dragonheart
 	mv src/parano.py src/parano.in
 	epatch "${FILESDIR}/${P}-autoconf.patch"
