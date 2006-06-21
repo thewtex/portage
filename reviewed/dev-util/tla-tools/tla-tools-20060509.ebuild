@@ -10,6 +10,7 @@ SRC_URI=""
 LICENSE="GPL-2"
 KEYWORDS="~x86"
 DEPEND="dev-util/tla"
+SLOT=""
 
 ETLA_VERSION="miles@gnu.org--2006/tla-tools--devo--0"
 ETLA_ARCHIVES="http://mirrors.sourcecontrol.net/miles@gnu.org--2006"
