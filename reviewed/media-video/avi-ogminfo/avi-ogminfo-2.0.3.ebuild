@@ -4,11 +4,11 @@
 
 DESCRIPTION="A small program for getting information about media files"
 HOMEPAGE="http://avi-ogminfo.sourceforge.net"
-SRC_URI="mirror://sourceforge/avi-ogminfo/${P}.tar.bz2"
+SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="nls"
 
 DEPEND="dev-libs/libxml2
@@ -24,6 +24,6 @@ src_compile() {
 }
 
 src_install() {
-	emake DESTDIR=${D} install || die "emake install failed"
-	dodoc Changelog README README.en
+	emake DESTDIR="${D}" install || die "emake install failed"
+	dodoc Changelog README{,.en}
 }
