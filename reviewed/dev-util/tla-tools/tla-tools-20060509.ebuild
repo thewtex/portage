@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-inherit tla
+inherit tla eautoreconf
 
 DESCRIPTION="tla-tools is a package of helpful commands to use with the tla program."
 HOMEPAGE="http://www.gnuarch.org/gnuarchwiki/tla-tools"
@@ -15,6 +15,11 @@ SLOT=""
 
 ETLA_VERSION="miles@gnu.org--2006/tla-tools--devo--0"
 ETLA_ARCHIVES="http://mirrors.sourcecontrol.net/miles@gnu.org--2006"
+
+src_unpack() {
+	tla_src_unpack
+	eautoreconf
+}
 
 src_compile() {
 	./configure \
