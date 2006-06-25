@@ -4,59 +4,45 @@
 
 inherit eutils
 
-DESCRIPTION="Simscan is a simple program that enables qmail-smtpd to reject viruses, spam, and block attachments during the SMTP conversation"
+DESCRIPTION="A simple program that enables qmail-smtpd to reject viruses, spam, and block attachments during the SMTP conversation"
 HOMEPAGE="http://www.inter7.com/?page=simscan"
 SRC_URI="http://www.inter7.com/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~x86"
-IUSE="clamav attachement custom-smtp-reject dropmsg regex quarantine perdomain
-received spamassassin passthru"
+IUSE="attachment clamav custom-smtp-reject dropmsg received passthru per-domain regex quarantine spamassassin"
 
-DEPEND="
-	clamav? ( app-antivirus/clamav )
-	attachement? ( net-mail/ripmime )
+DEPEND="clamav? ( app-antivirus/clamav )
+	attachment? ( net-mail/ripmime )
 	spamassassin? ( mail-filter/spamassassin )
-	regex? ( dev-libs/libpcre )
-"
+	regex? ( dev-libs/libpcre )"
 RDEPEND="${DEPEND}
-	virtual/qmail
-"
+	virtual/qmail"
 
-RESTRICT=strip
+RESTRICT="strip"
 
 pkg_setup() {
 	enewgroup clamav
-	enewuser simscan -1 -1 /dev/null clamav '-c	"simscan user (portage)"'
+	enewuser simscan -1 -1 /dev/null clamav
 }
 
 src_compile() {
 	local myconf
 
-	if use clamav ; then
-		myconf="${myconf} --enable-clamav=y"
-	else
-		myconf="${myconf} --enable-clamav=n"
-	fi
+	for flag in clamav custom-smtp-reject dropmsg per-domain received ; do
+		if use ${flag} ; then
+			myconf="${myconf} --enable-${flag}=y"
+		else
+			myconf="${myconf} --enable-${flag}=n"
+		fi
+	done
 
-	if use attachement ; then
+	if use attachment ; then
 		myconf="${myconf} --enable-attach=y"
 		myconf="${myconf} --enable-ripmime=/usr/bin/ripmime"
 	else
 		myconf="${myconf} --enable-attach=n"
-	fi
-
-	if use custom-smtp-reject ; then
-		myconf="${myconf} --enable-custom-smtp-reject=y"
-	else
-		myconf="${myconf} --enable-custom-smtp-reject=n"
-	fi
-
-	if use dropmsg ; then
-		myconf="${myconf} --enable-dropmsg=y"
-	else
-		myconf="${myconf} --enable-dropmsg=n"
 	fi
 
 	if use regex ; then
@@ -67,18 +53,6 @@ src_compile() {
 	fi
 
 	use quarantine && myconf="${myconf} --enable-quarantinedir"
-
-	if use perdomain ; then
-		myconf="${myconf} --enable-per-domain=y"
-	else
-		myconf="${myconf} --enable-per-domain=n"
-	fi
-
-	if use received ; then
-		myconf="${myconf} --enable-received=y"
-	else
-		myconf="${myconf} --enable-received=n"
-	fi
 
 	if use spamassassin ; then
 		myconf="${myconf} --enable-spam=y"
@@ -98,7 +72,6 @@ src_compile() {
 src_install() {
 	einfo "Installing documentation and contrib files"
 	dodoc AUTHORS README TODO
-
 	docinto contrib
 	dodoc contrib/*.patch
 
@@ -112,7 +85,7 @@ src_install() {
 	fowners simscan /var/qmail/simscan /var/qmail/bin/simscan
 	fperms 4711 /var/qmail/bin/simscan
 
-	if use perdomain ; then
+	if use per-domain ; then
 		einfo "Setting default configuration..."
 		echo ':clam=yes,spam=yes' > simcontrol
 		insopts -o root -g root -m 644
@@ -122,34 +95,33 @@ src_install() {
 }
 
 pkg_postinst() {
-	einfo ""
-
 	if use custom-smtp-reject ; then
-		einfo "Becareful, if you use the \"custom-smtp-reject\" flag you will"
-		einfo "have many problems if qmail was not patched with"
-		einfo "qmail-queue-custom-error.patch"
-		einfo ""
+		ewarn
+		ewarn "Be careful when using the \"custom-smtp-reject\" flag you will"
+		ewarn "have many problems if qmail was not patched with"
+		ewarn "qmail-queue-custom-error.patch"
+		ewarn
 		ewarn "If your not sure, re-emerge simscan without this flag"
-		einfo ""
+		ewarn
 	fi
 
 	einfo "Now update the simscan configuration files :"
-	ewarn "You have to do that after clamav or spamassassin update"
-	einfo ""
+	einfo "You have to do that after clamav or spamassassin update"
+	einfo
 	einfo "/var/qmail/bin/simscanmk"
 	einfo "`/var/qmail/bin/simscanmk`"
-	einfo ""
+	einfo
 	einfo "/var/qmail/bin/simscanmk -g"
 	einfo "`/var/qmail/bin/simscanmk -g`"
-	einfo ""
+	einfo
 
 	einfo "You must have qmail with QMAILQUEUE patch"
-	einfo "And, in order use simscan, edit your tcp.qmail-smtpd rules"
+	einfo "In order use simscan, edit your tcp.qmail-smtpd rules"
 	einfo "and update as follow (for example only)"
-	einfo ""
+	einfo
 	einfo ":allow,QMAILQUEUE=\"/var/qmail/bin/simscan\""
-	einfo ""
+	einfo
 
-	ewarn "Read the documentation and personnalize /var/qmail/control/simcontrol"
-	einfo ""
+	einfo "Read the documentation and personalize /var/qmail/control/simcontrol"
+	einfo
 }
