@@ -1,0 +1,7 @@
+#!/bin/sh 
+# 
+NSDC_BIN="/usr/sbin/nsdc" 
+
+if [[ -x ${NSDC_BIN} ]]; then 
+	${NSDC_BIN} update >>/dev/null 2>&1 
+fi
