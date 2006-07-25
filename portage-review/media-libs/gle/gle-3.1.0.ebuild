@@ -2,8 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-inherit eutils
-
 DESCRIPTION="GL extrusion library"
 HOMEPAGE="http://www.linas.org/gle"
 SRC_URI="http://www.linas.org/gle/pub/${P}.tar.gz"
