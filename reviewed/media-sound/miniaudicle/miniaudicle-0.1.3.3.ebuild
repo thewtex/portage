@@ -4,26 +4,32 @@
 
 inherit eutils toolchain-funcs
 
-DESCRIPTION="ChuCK - On-the-fly Audio Programming"
-HOMEPAGE="http://chuck.cs.princeton.edu/release/"
-SRC_URI="http://chuck.cs.princeton.edu/release/files/${P}.tgz"
+MY_P=${P/a/A}
+
+DESCRIPTION="integrated development + performance environment for chuck"
+HOMEPAGE="http://audicle.cs.princeton.edu/mini/"
+SRC_URI="http://audicle.cs.princeton.edu/mini/release/files/${MY_P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~x86"
-IUSE="oss jack alsa doc"
+IUSE="oss jack alsa"
 
 RDEPEND="jack? ( media-sound/jack-audio-connection-kit )
 	alsa? ( >=media-libs/alsa-lib-0.9 )
-	media-libs/libsndfile"
+	media-libs/libsndfile
+	>=x11-libs/wxGTK-2.6"
 DEPEND="${RDEPEND}
 	sys-devel/bison
 	sys-devel/flex"
+
+S=${WORKDIR}/${MY_P}
 
 src_unpack() {
 	unpack ${A}
 	cd "${S}"
 	epatch "${FILESDIR}/${P}-makefile.patch"
+	epatch "${FILESDIR}/${P}-unicode.patch"
 }
 
 pkg_setup() {
@@ -40,32 +46,25 @@ pkg_setup() {
 }
 
 src_compile() {
-	cd "${S}/src"
-
 	local backend
-	if use jack ; then
+	if use jack; then
 		backend="jack"
-	elif use alsa ; then
+	elif use alsa; then
 		backend="alsa"
-	elif use oss ; then
+	elif use oss; then
 		backend="oss"
 	fi
 	einfo "Compiling against ${backend}"
+
+	cd "${S}/chuck/src"
+	emake -f "makefile.${backend}" CC=$(tc-getCC) CXX=$(tc-getCXX) || die "emake failed"
+
+	cd "${S}"
 	emake -f "makefile.${backend}" CC=$(tc-getCC) CXX=$(tc-getCXX) || die "emake failed"
 }
 
 src_install() {
-	dobin src/chuck
+	dobin wxw/miniAudicle
 
-	dodoc AUTHORS DEVELOPER PROGRAMMER QUICKSTART README THANKS TODO VERSIONS
-	if use doc; then
-		docinto examples
-		dodoc `find examples -type f`
-		for dir in `find examples/* -type d`; do
-			docinto $dir
-			dodoc $dir/*
-		done
-		docinto doc
-		dodoc doc/*
-	fi
+	dodoc BUGS README.linux VERSIONS
 }
