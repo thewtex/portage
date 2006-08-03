@@ -23,13 +23,9 @@ src_install() {
 
 	insinto ${PORTCFG}/bin
 	doins bin/post_sync
-	dosed "s:/etc/portage:${PORTCFG}:g" ${PORTCFG}/bin/post_sync
 
 	insinto /usr/lib/postsync.d
 	doins postsync.d/*
-
-	fowners root:portage /usr/sbin/postsync ${PORTCFG}/bin/post_sync \
-		/usr/lib/postsync.d/*
 
 	dodoc README ChangeLog doc/*
 }
