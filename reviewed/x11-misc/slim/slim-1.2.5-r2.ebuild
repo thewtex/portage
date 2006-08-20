@@ -26,9 +26,12 @@ RDEPEND="${DEPEND}
 src_unpack() {
 	unpack ${A}
 	cd "${S}"
-	epatch "${FILESDIR}"/${PN}-cflags.patch
-	sed -i -e "s:/usr/bin/g++:$(tc-getCXX):" \
-		-e "s:/usr/bin/gcc:$(tc-getCC):" \
+	epatch "${FILESDIR}"/${PN}-fix-warnings.patch
+
+	sed -i -e "s:^CXX=.*:CXX=$(tc-getCXX):" \
+		-e "s:^CC=.*:CC=$(tc-getCC):" \
+		-e "s:^MANDIR=.*:MANDIR=/usr/share/man:" \
+		-e "s:/usr/X11R6:/usr:" \
 		Makefile || die 'sed failed in Makefile'
 
 	# Remove all X11R6 references from slim.conf
@@ -39,10 +42,6 @@ src_unpack() {
 		-e 's/# daemon/daemon/' \
 		-e 's#/var/log/slim.log#/dev/null#g' \
 		slim.conf || die "sed slim.conf failed"
-}
-
-src_compile() {
-	emake CXXFLAGS="${CXXFLAGS}" CFLAGS="${CFLAGS}" || die "emake failed"
 }
 
 src_install() {

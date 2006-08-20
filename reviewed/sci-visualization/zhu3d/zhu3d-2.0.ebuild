@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-inherit eutils qt4
+inherit eutils toolchain-funcs qt4
 
 KEYWORDS="~x86"
 
@@ -25,7 +25,7 @@ pkg_setup() {
 
 src_compile() {
 	qmake SYSDIR="/usr/share/${PN}/system" DOCDIR="/usr/share/doc/${P}/html" || die "qmake failed"
-	emake || die "emake failed"
+	emake CXX=$(tc-getCXX) || die "emake failed"
 }
 
 src_install() {
@@ -36,8 +36,7 @@ src_install() {
 	dohtml doc/*
 
 	insinto /usr/share/${PN}
-	doins -r work
-	doins -r system
+	doins -r work system
 
 	doicon system/icons/${PN}.png
 	make_desktop_entry ${PN} "Zhu3D: Interactive 3D function viewer" ${PN}.png "Qt;Science;Math"
