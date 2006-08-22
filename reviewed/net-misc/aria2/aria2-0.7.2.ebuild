@@ -29,23 +29,12 @@ RDEPEND="${COMMON_DEPEND}
 
 S=${WORKDIR}/${MY_P}
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-
-	sed -i \
-		-e 's/-lares/-lcares/g' \
-		configure || die "sed failed"
-	epatch "${FILESDIR}/${P}-nameresolver_h.patch"
-	epatch "${FILESDIR}/${P}-nameresolver_cc.patch"
-	epatch "${FILESDIR}/${P}-metalink_main_cc.patch"
-}
-
 src_compile() {
 	use ssl && \
 		myconf="${myconf} $(use_with gnutls) $(use_with !gnutls openssl)"
 	econf \
-		$(use_with ares libares) \
+		--without-ares \
+		$(use_with ares libcares) \
 		$(use_enable nls) \
 		$(use_enable metalink) \
 		$(use_with metalink libxml2) \
