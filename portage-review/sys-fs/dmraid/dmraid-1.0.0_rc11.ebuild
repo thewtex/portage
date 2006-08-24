@@ -8,7 +8,7 @@ DESCRIPTION="Device-mapper RAID tool and library"
 HOMEPAGE="http://people.redhat.com/~heinzm/sw/dmraid/"
 #SRC_URI="http://people.redhat.com/~heinzm/sw/dmraid/src/${P/_/.}.tar.bz2"
 # Temporarily set to testing prerelease source URI
-SRC_URI="http://people.redhat.com/~heinzm/sw/dmraid/tst/old/dmraid-1.0.0.rc11-pre1.tar.bz2"
+SRC_URI="http://people.redhat.com/~heinzm/sw/dmraid/tst/old/${P/_/.}-pre1.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -35,8 +35,8 @@ pkg_setup() {
 
 src_unpack() {
 	unpack ${A}
-	epatch ${FILESDIR}/${P}-man-make.patch
-	use static || epatch ${FILESDIR}/${P}-asr-make.patch
+	epatch ${FILESDIR}/${PN}-${PV}-man-make.patch
+	use static || epatch ${FILESDIR}/${PN}-${PV}-asr-make.patch
 	cd ${S}
 }
 
@@ -63,7 +63,8 @@ src_install() {
 
 		dodir /etc
 		cp /etc/genkernel.conf ${D}/etc/genkernel.conf
-		sed "/^DMRAID_VER=/i\# To use the installed ${P} package instead, use the following\:\n# DMRAID_VER=\"${A/dmraid-/}\"" -i ${D}/etc/genkernel.conf
+		local MY_PV=${PV/_/.}
+		sed "/^DMRAID_VER=/i\# To use ${P} from portage instead, use the following\:\n# DMRAID_VER=\"${MY_PV}\"\n# DMRAID_SRCTAR=\"\$\{GK_SHARE\}\/pkg\/${A}\"" -i ${D}/etc/genkernel.conf
 	fi
 
 	dodoc CHANGELOG README TODO KNOWN_BUGS doc/*
