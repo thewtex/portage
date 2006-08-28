@@ -4,8 +4,8 @@
 
 inherit eutils toolchain-funcs
 
-DESCRIPTION="a generic, highly customizable, and efficient menu for the X Window System"
-HOMEPAGE="http://www.10kloc.org/dwm"
+DESCRIPTION="a dynamic window manager for X11"
+HOMEPAGE="http://www.10kloc.org/dwm/"
 SRC_URI="http://10kloc.org/download/${P}.tar.gz"
 
 LICENSE="MIT"
@@ -13,7 +13,7 @@ SLOT="0"
 KEYWORDS="~x86"
 IUSE="savedconfig"
 
-DEPEND="|| ( x11-libs/libX11 <virtual/x11-7 )"
+DEPEND="|| ( x11-libs/libX11 virtual/x11 )"
 RDEPEND="${DEPEND}"
 
 src_unpack() {
@@ -22,6 +22,7 @@ src_unpack() {
 
 	epatch "${FILESDIR}/${P}-config_mk.patch"
 	epatch "${FILESDIR}/${P}-makefile.patch"
+	epatch "${FILESDIR}/${P}-unused_variable.patch"
 
 	if use savedconfig; then
 		local conf root
