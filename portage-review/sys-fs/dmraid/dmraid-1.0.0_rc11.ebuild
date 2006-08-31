@@ -35,8 +35,8 @@ pkg_setup() {
 
 src_unpack() {
 	unpack ${A}
-	epatch ${FILESDIR}/${PN}-${PV}-man-make.patch
-	use static || epatch ${FILESDIR}/${PN}-${PV}-asr-make.patch
+	epatch ${FILESDIR}/${P}-man-make.patch
+	use static || epatch ${FILESDIR}/${P}-asr-make.patch
 	cd ${S}
 }
 
