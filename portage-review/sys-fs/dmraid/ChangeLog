@@ -3,32 +3,9 @@
 # $Header: /var/cvsroot/gentoo-x86/sys-fs/dmraid/ChangeLog,v 1.3 2006/06/23 13:19:12 blubb Exp $
 
   01 Sep 2006; Ian Stakenvicius <ian@syndicated-productions.com>
-  -dmraid-1.0.0_rc11.ebuild, dmraid-1.0.0_rc12.ebuild,
-  -files/dmraid-1.0.0_rc11-asr-make.patch,
-  -files/dmraid-1.0.0_rc11-man-make.patch,
-  -files/dmraid-1.0.0_rc12-pre1-man-make.patch,
-  +files/dmraid-manpage-destdir.patch:
-  Removed dmraid-1.0.0_rc11, cleaned up patchfiles
-
-  01 Sep 2006; Ian Stakenvicius <ian@syndicated-productions.com>
-  +dmraid-1.0.0_rc12.ebuild, +files/dmraid-1.0.0_rc12-pre1-man-make.patch:
-  Version bump; Got rid of genkernel use flag but still installs tarball and
-  provides einfo for genkernel.conf modifications; asr-make.patch removed as
-  fixed upstream; nasty workaround for tar-bz2 archive extension;
-  man-make.patch updated due to access violations on emake...install
-
-  24 Aug 2006; Ian Stakenvicius <ian@syndicated-productions.com>
-  dmraid-1.0.0_rc11.ebuild:
-  With genkernel use flag, comments added to genkernel.conf were wrong. Fixed
-  now.
-
-  23 Aug 2006; Ian Stakenvicius <ian@syndicated-productions.com>
-  +dmraid-1.0.0_rc8-r1.ebuild, +dmraid-1.0.0_rc11.ebuild,
-  +files/dmraid-1.0.0_rc11-asr-make.patch,
-  +files/dmraid-1.0.0_rc11-man-make.patch, +metadata.xml:
+  +dmraid-1.0.0_rc12.ebuild, +files/dmraid-manpage-destdir.patch:
   New Ebuild (version bump) for bugs #107826, #139860 -- thanks to genstef,
-  ColdWind; added genkernel use flag to provide distfile and add config
-  comments to genkernel.conf
+  ColdWind; 
 
   23 Jun 2006; Simon Stelling <blubb@gentoo.org> metadata.xml:
   it's maintainer-needed, not -wanted
