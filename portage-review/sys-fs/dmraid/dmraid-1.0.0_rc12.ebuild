@@ -4,8 +4,8 @@
 
 inherit linux-info flag-o-matic
 
-MY_P="${P/_/.}-pre1"
-MY_PV="${PV/_/.}-pre1"
+MY_PV=${PV/_/.}-pre1
+MY_P=${PN}-${MY_PV}
 
 DESCRIPTION="Device-mapper RAID tool and library"
 HOMEPAGE="http://people.redhat.com/~heinzm/sw/dmraid/"
@@ -21,7 +21,6 @@ DEPEND="sys-fs/device-mapper
 		   sys-libs/libsepol )
 	genkernel? ( sys-kernel/genkernel )"
 S=${WORKDIR}/${PN}/${MY_PV}
-MY_A=${A/tar-bz2/tar.bz2}
 
 pkg_setup() {
 	if kernel_is lt 2 6; then
@@ -42,8 +41,6 @@ src_unpack() {
 }
 
 src_compile() {
-	local myconf
-
 	#inlining doesnt seem to work for dmraid
 	filter-flags -fno-inline
 
