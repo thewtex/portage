@@ -2,6 +2,13 @@
 # Copyright 1999-2006 Gentoo Foundation; Distributed under the GPL v2
 # $Header: /var/cvsroot/gentoo-x86/sys-fs/dmraid/ChangeLog,v 1.3 2006/06/23 13:19:12 blubb Exp $
 
+  01 Sep 2006; Ian Stakenvicius <ian@syndicated-productions.com>
+  +dmraid-1.0.0_rc12.ebuild, +files/dmraid-1.0.0_rc12-pre1-man-make.patch:
+  Version bump; Got rid of genkernel use flag but still installs tarball and
+  provides einfo for genkernel.conf modifications; asr-make.patch removed as
+  fixed upstream; nasty workaround for tar-bz2 archive extension;
+  man-make.patch updated due to access violations on emake...install
+
   24 Aug 2006; Ian Stakenvicius <ian@syndicated-productions.com>
   dmraid-1.0.0_rc11.ebuild:
   With genkernel use flag, comments added to genkernel.conf were wrong. Fixed
