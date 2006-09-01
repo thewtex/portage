@@ -9,7 +9,7 @@ MY_P=${PN}-${MY_PV}
 
 DESCRIPTION="Device-mapper RAID tool and library"
 HOMEPAGE="http://people.redhat.com/~heinzm/sw/dmraid/"
-SRC_URI="http://people.redhat.com/~heinzm/sw/dmraid/src/${MY_P}.tar-bz2"
+SRC_URI="http://people.redhat.com/~heinzm/sw/dmraid/src/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -35,7 +35,7 @@ pkg_setup() {
 }
 
 src_unpack() {
-	tar -jxf ${DISTDIR}/${A}
+	unpack ${A}
 	cd ${S}
 	epatch ${FILESDIR}/dmraid-manpage-destdir.patch
 }
@@ -56,7 +56,7 @@ src_install() {
 	# Put the distfile into /usr/share/genkernel/pkg for genkernel
 	# in case the user wants to uuse this instead of genkernel's internal version
 	dodir /usr/share/genkernel/pkg
-	cp ${DISTDIR}/${A} ${D}/usr/share/genkernel/pkg/${MY_A}
+	cp ${DISTDIR}/${A} ${D}/usr/share/genkernel/pkg/${A}
 
 	dodoc CHANGELOG README TODO KNOWN_BUGS doc/*
 }
@@ -72,7 +72,7 @@ pkg_postinst() {
 	einfo "If you would rather use this version of DMRAID with Genkernel, update"
 	einfo "the following in /etc/genkernel.conf:"
 	einfo "DMRAID_VER=\"${MY_PV/_/.}\""
-	einfo "DMRAID_SRCTAR=\"\$\{GK_SHARE\}\/pkg\/${MY_A}\""
+	einfo "DMRAID_SRCTAR=\"\${GK_SHARE}/pkg/${A}\""
 	ewarn " "
 	ewarn "DMRAID should be safe to use, but no warranties can be given"
 	ewarn " "
