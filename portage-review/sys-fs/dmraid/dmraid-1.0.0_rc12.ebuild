@@ -4,12 +4,12 @@
 
 inherit linux-info flag-o-matic
 
-MY_P="${P}-pre1"
-MY_PV="${PV}-pre1"
+MY_P="${P/_/.}-pre1"
+MY_PV="${PV/_/.}-pre1"
 
 DESCRIPTION="Device-mapper RAID tool and library"
 HOMEPAGE="http://people.redhat.com/~heinzm/sw/dmraid/"
-SRC_URI="http://people.redhat.com/~heinzm/sw/dmraid/src/${MY_P/_/.}.tar-bz2"
+SRC_URI="http://people.redhat.com/~heinzm/sw/dmraid/src/${MY_P}.tar-bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -20,7 +20,7 @@ DEPEND="sys-fs/device-mapper
 	selinux? ( sys-libs/libselinux
 		   sys-libs/libsepol )
 	genkernel? ( sys-kernel/genkernel )"
-S=${WORKDIR}/${PN}/${MY_PV/_/.}
+S=${WORKDIR}/${PN}/${MY_PV}
 MY_A=${A/tar-bz2/tar.bz2}
 
 pkg_setup() {
@@ -36,11 +36,9 @@ pkg_setup() {
 }
 
 src_unpack() {
-	cp ${DISTDIR}/${A} ${DISTDIR}/${MY_A}
-
-	unpack ${MY_A}
-	epatch ${FILESDIR}/${MY_P}-man-make.patch
+	tar -jxf ${DISTDIR}/${A}
 	cd ${S}
+	epatch ${FILESDIR}/dmraid-manpage-destdir.patch
 }
 
 src_compile() {
