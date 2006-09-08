@@ -8,12 +8,14 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="char"
 
 S="${WORKDIR}/${P}/src"
 
 src_compile() {
+	sed -i -e "s:CFLAGS =:CFLAGS = ${CFLAGS}:" Makefile || die "sed failed"
+
 	if use char ; then
 		emake char || die "emake failed"
 	else
