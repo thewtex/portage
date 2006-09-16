@@ -4,9 +4,9 @@
 
 inherit eutils toolchain-funcs
 
-DESCRIPTION="a generic, highly customizable, and efficient menu for the X Window System"
-HOMEPAGE="http://www.10kloc.org/dwm"
-SRC_URI="http://10kloc.org/download/${P}.tar.gz"
+DESCRIPTION="a dynamic window manager for X11"
+HOMEPAGE="http://www.shortest.de/view/dynamic+window+manager"
+SRC_URI="http://www.shortest.de/download/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
@@ -70,4 +70,8 @@ pkg_postinst() {
 	einfo "This ebuild has support for user defined configs"
 	einfo "Please read this ebuild for more details and re-emerge as needed"
 	einfo "if you want to add or remove functionality for ${PN}"
+	if ! has_version x11-misc/dmenu; then
+		elog "Installing ${PN} without x11-misc/dmenu"
+		einfo "To have a menu you can install x11-misc/dmenu"
+	fi
 }
