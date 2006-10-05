@@ -2,9 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header:$
 
-inherit eutils
+WANT_AUTOCONF="latest"
+WANT_AUTOMAKE="latest"
+inherit eutils autotools
 
 MY_P=${P/rb_/}
+S=${WORKDIR}/${MY_P}
 
 DESCRIPTION="BitTorrent library written in C++ for *nix."
 HOMEPAGE="http://libtorrent.sourceforge.net/"
