@@ -6,24 +6,21 @@ inherit distutils eutils versionator
 
 MY_P="Democracy-${PV}"
 DESCRIPTION="Democracy is a free and open internet TV platform."
-HOMEPAGE="http://www.getdemocracy.com/"
+HOMEPAGE="http://www.getdemocracy.com"
 SRC_URI="ftp://ftp.osuosl.org/pub/pculture.org/democracy/src/${MY_P}.tar.gz"
-
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
-IUSE=""
-
 RDEPEND="dev-python/pyrex
-	>virtual/python-2.4
-	media-libs/xine-lib
-	dev-libs/boost
-	>=dev-python/pygtk-2.0
-	dev-python/gnome-python-extras
-	www-client/mozilla-firefox
-	x11-libs/libX11"
+		>virtual/python-2.4
+		media-libs/xine-lib
+		dev-libs/boost
+		>=dev-python/pygtk-2.0
+		dev-python/gnome-python-extras
+		www-client/mozilla-firefox
+		x11-libs/libX11"
 DEPEND="${RDEPEND}
-	dev-util/pkgconfig"
+		dev-util/pkgconfig"
 
 DOCS="README"
 
@@ -37,7 +34,7 @@ pkg_setup() {
 
 	if ! grep -q compiler.find /usr/lib/python2.4/distutils/unixccompiler.py; then
 		eerror "You need to apply a patch to make distutils use the correct RPATH."
-		eerror "To do this execute the following command:"
+		eerror "To do this execute the following command as root:"
 		eerror "wget -q 'http://sourceforge.net/tracker/download.php?group_id=5470&atid=305470&file_id=144928&aid=1254718' -O -|patch -p1 -d /usr/lib/python2.4"
 		die "python version not patched"
 	fi
