@@ -5,8 +5,8 @@
 inherit eutils
 
 DESCRIPTION="Curses based utility to parse the contents of elogs created by Portage"
-HOMEPAGE="http://luca89.wordpress.com/elogv/"
-SRC_URI="http://gechi-overlay.sourceforge.net/distfiles/elogv/${P}.tar.bz2"
+HOMEPAGE="http://gechi-overlay.sourceforge.net/?page=elogv"
+SRC_URI="mirror://sourceforge/gechi-overlay/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~x86"
@@ -20,11 +20,11 @@ S="${WORKDIR}/elogv"
 
 pkg_setup() {
 	if ! built_with_use dev-lang/python ncurses; then
-	   eeror
+	   eerror
 	   eerror "\t ${PN} requires ncurses support on python"
 	   eerror "\t Please, compile python with use ncurses enabled then"
 	   eerror "\t remerge this package"
-	   eeror
+	   eerror
 	   die "dev-lang/python must have ncurses use turned on"
 	fi
 }
