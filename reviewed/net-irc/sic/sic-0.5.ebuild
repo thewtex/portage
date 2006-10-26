@@ -2,10 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
-DESCRIPTION="a generic, highly customizable, and efficient menu for the X Window System"
-HOMEPAGE="http://suckless.org/view/dynamic+window+manager"
+DESCRIPTION="an extremly simple IRC client"
+HOMEPAGE="http://suckless.org/view/simple+irc+client"
 SRC_URI="http://suckless.org/download/${P}.tar.gz"
 
 LICENSE="MIT"
@@ -13,14 +13,21 @@ SLOT="0"
 KEYWORDS="~x86"
 IUSE=""
 
-DEPEND="x11-libs/libX11"
-RDEPEND="${DEPEND}"
+DEPEND=""
+RDEPEND=""
 
 src_unpack() {
 	unpack ${A}
 	cd "${S}"
 
-	epatch "${FILESDIR}/${P}-makefile.patch"
+	sed -i \
+		-e "s/.*strip.*//" \
+		Makefile || die "sed failed"
+
+	sed -i \
+		-e "s/CFLAGS = -Os/CFLAGS +=/" \
+		-e "s/LDFLAGS =/LDFLAGS +=/" \
+		config.mk || die "sed failed"
 }
 
 src_compile() {

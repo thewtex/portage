@@ -4,17 +4,17 @@
 
 inherit toolchain-funcs
 
-DESCRIPTION="an extremly simple IRC client"
-HOMEPAGE="http://suckless.org/view/simple+irc+client"
-SRC_URI="http://www.shortest.de/download/${P}.tar.gz"
+DESCRIPTION="a generic, highly customizable, and efficient menu for the X Window System"
+HOMEPAGE="http://suckless.org/view/dynamic+window+manager"
+SRC_URI="http://suckless.org/download/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~x86"
 IUSE=""
 
-DEPEND=""
-RDEPEND=""
+DEPEND="x11-libs/libX11"
+RDEPEND=${DEPEND}
 
 src_unpack() {
 	unpack ${A}
