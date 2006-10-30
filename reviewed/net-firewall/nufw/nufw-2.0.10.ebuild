@@ -4,13 +4,13 @@
 
 DESCRIPTION="An enterprise grade authenticating firewall based on netfilter"
 HOMEPAGE="http://www.nufw.org/"
-SRC_URI="http://www.nufw.org/download/${PN}/${P}.tar.bz2"
+SRC_URI="http://www.nufw.org/download/${PN}/${P}-1.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="-x86"
+KEYWORDS="~x86"
 IUSE="debug gdbm ident ldap mysql pam pam_nuauth pic postgres prelude \
-unicode nfqueue nfconntrack"
+unicode nfqueue nfconntrack static"
 
 DEPEND=">=dev-libs/glib-2
 	dev-libs/libgcrypt
@@ -31,6 +31,7 @@ RDEPEND="${DEPEND}"
 
 src_compile() {
 	econf \
+		$(use_enable static) \
 		$(use_enable pam_nuauth pam-nuauth) \
 		$(use_with pic) \
 		$(use_with prelude prelude-log) \
@@ -68,4 +69,6 @@ src_install() {
 	dodoc scripts/*
 	docinto conf
 	dodoc conf/*
+	docinto conf/certs
+	dodoc conf/certs/*
 }
