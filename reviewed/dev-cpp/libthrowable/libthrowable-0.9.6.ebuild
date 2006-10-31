@@ -28,16 +28,6 @@ pkg_setup() {
 	fi
 }
 
-
-src_unpack() {
-	unpack ${A}
-
-	# make it run on 64bit platforms
-	cd "${S}/libthrowable/internal/"
-	epatch "${FILESDIR}/${P}-internal.cc-64bit.patch"
-	epatch "${FILESDIR}/${P}-internal.h-64bit.patch"
-
-}
 src_compile() {
 	econf $(use_enable threads pthreads) \
 		|| die "econf failed"
