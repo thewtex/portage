@@ -12,8 +12,8 @@ SRC_URI="http://www.exaile.org/files/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
-IUSE="fam trayicon"
+KEYWORDS="~x86 ~amd64"
+IUSE="fam trayicon ipod"
 
 DEPEND=">=dev-lang/python-2.4
 		>=dev-python/pygtk-2.0"
@@ -25,7 +25,8 @@ RDEPEND="${DEPEND}
 		>=media-libs/mutagen-1.6
 		sys-apps/dbus
 		fam? ( app-admin/gamin )
-		trayicon? ( dev-python/gnome-python-extras )"
+		trayicon? ( dev-python/gnome-python-extras )
+		ipod? ( media-libs/libgpod )"
 
 S=${WORKDIR}/${MY_P}
 
