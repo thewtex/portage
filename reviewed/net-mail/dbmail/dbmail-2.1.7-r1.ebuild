@@ -11,11 +11,15 @@ SRC_URI="http://www.dbmail.org/download/2.1/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="ssl postgres"
+IUSE="ssl postgres mysql sqlite3"
+# sieve commented for now because libsieve is not in portage, please add it to
+# sunrise and uncomment this useflag
+#	sieve? ( >=mail-filter/libsieve-2.2.1 )
 
 DEPEND="ssl? ( dev-libs/openssl )
 	postgres? ( >=dev-db/postgresql-7.4 )
-	!postgres? ( >=dev-db/mysql-4.1.13 )
+	mysql? ( >=dev-db/mysql-4.1.13 )
+	sqlite3? ( >=dev-db/sqlite-3.0 )
 	app-text/asciidoc
 	app-text/xmlto
 	sys-libs/zlib
@@ -26,35 +30,33 @@ DEPEND="ssl? ( dev-libs/openssl )
 	#depend dev-db/sqlite
 
 pkg_setup() {
-	if use postgres && has_version dev-db/mysql ; then
-		elog "You have postgres use flag set, ${PN} will compile against PostgreSQL."
-		elog "If you want to use MySQL instead, unset postgres use flag for this ebuild:"
-		einfo
-		elog "echo \"net-mail/dbmail -postgres\" >> /etc/portage/package.use"
-		einfo
-		epause 3
-	fi
-
 	enewgroup dbmail
 	enewuser dbmail -1 -1  /var/lib/dbmail dbmail
 }
 
 src_compile() {
+	use sqlite3 && myconf="--with-sqlite"
+	use ldap && myconf=${myconf}" --with-auth-ldap"
+
 	econf \
 		--sysconfdir=/etc/dbmail \
+		${myconf} \
+		$(use_enable static) \
+		$(use_with sieve) \
 		$(use_with ssl) \
 		$(use_with postgres) \
-		$(use_with !postgres mysql) || die "econf failed"
+		$(use_with mysql) || die "econf failed"
 	emake || die "emake failed"
 }
 
 src_install() {
 	emake DESTDIR="${D}" install || die "emake install failed"
 
-	dodoc AUTHORS BUGS EXTRAS ChangeLog UPGRADING \
-		INSTALL* VERSION NEWS README THANKS TODO
+	dodoc AUTHORS BUGS ChangeLog README README.* \
+		INSTALL* NEWS THANKS TODO
 	dodoc sql/mysql/*
 	dodoc sql/postgresql/*
+	dodoc sql/sqlite/*
 
 	sed -i -e "s:nobody:dbmail:" dbmail.conf
 	sed -i -e "s:nogroup:dbmail:" dbmail.conf
@@ -64,6 +66,7 @@ src_install() {
 	newinitd "${FILESDIR}"/dbmail-imapd.initd dbmail-imapd
 	newinitd "${FILESDIR}"/dbmail-lmtpd.initd dbmail-lmtpd
 	newinitd "${FILESDIR}"/dbmail-pop3d.initd dbmail-pop3d
+	use sieve && newinitd "${FILESDIR}"/dbmail-timsieved.initd dbmail-timsieved
 
 	dobin contrib/mailbox2dbmail/mailbox2dbmail
 	doman contrib/mailbox2dbmail/mailbox2dbmail.1
