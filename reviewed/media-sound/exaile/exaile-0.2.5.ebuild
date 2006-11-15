@@ -13,7 +13,7 @@ SRC_URI="http://www.exaile.org/files/${MY_P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~x86 ~amd64"
-IUSE="fam mp3 flac aac trayicon ipod"
+IUSE="fam mp3 flac aac musepack trayicon ipod"
 
 DEPEND=">=dev-lang/python-2.4
 		>=dev-python/pygtk-2.0"
@@ -24,11 +24,14 @@ RDEPEND="${DEPEND}
 		>=dev-python/gst-python-0.10
 		>=media-libs/mutagen-1.6
 		>=media-plugins/gst-plugins-gconf-0.10
-		sys-apps/dbus
+		dev-python/elementtree
+		|| ( >=dev-python/dbus-python-0.71
+			( <sys-apps/dbus-0.90 >=sys-apps/dbus-0.34 ) )
 		fam? ( app-admin/gamin )
 		mp3? ( >=media-plugins/gst-plugins-mad-0.10 )
 		flac? ( >=media-plugins/gst-plugins-flac-0.10 )
 		aac? ( >=media-plugins/gst-plugins-faac-0.10 )
+		musepack? ( >=media-plugins/gst-plugins-musepack-0.10 )
 		trayicon? ( dev-python/gnome-python-extras )
 		ipod? ( >=media-libs/libgpod-0.3.2-r1
 				>=media-plugins/gst-plugins-faac-0.10 )"
@@ -36,9 +39,11 @@ RDEPEND="${DEPEND}
 S=${WORKDIR}/${MY_P}
 
 pkg_setup() {
-	if ! built_with_use sys-apps/dbus python; then
-		eerror "dbus has to be built with python support"
-		die "dbus python use-flag not set"
+	if has_version "<sys-apps/dbus-0.90" ; then
+		if ! built_with_use sys-apps/dbus python; then
+			eerror "dbus has to be built with python support"
+			die "dbus python use-flag not set"
+		fi
 	fi
 
 	if use ipod && ! built_with_use media-libs/libgpod python ; then
