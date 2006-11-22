@@ -12,11 +12,13 @@ SLOT="0"
 KEYWORDS="~x86"
 IUSE=""
 S=${WORKDIR}/${PN}
+RESTRICT="mirror"
 
 DEPEND=""
 
-RDEPEND=">=dev-python/wxpython-2.5.2.8
-	dev-db/dabo
+RDEPEND="!<=dev-db/daboide-0.5.6
+	>=dev-python/wxpython-2.6.1.1
+	>=dev-db/dabo-0.7
 	dev-python/imaging
 	dev-python/reportlab
 	${DEPEND}"
@@ -35,7 +37,7 @@ src_install() {
 	doins -r *
 
 	# pick out those files which should be executable
-	for EFIL in $(grep -RI '^#!' * | cut -d : -f 1)
+	for EFIL in $(grep -RI '^#!' * | cut -d : -f 1 | grep -iv '.txt$')
 	do
 		# and if there are any - install them
 		exeinto ${INS}/${EFIL%%$(basename ${EFIL})}
@@ -44,10 +46,6 @@ src_install() {
 
 	# Create executable
 	echo '#!/bin/sh' > daboide
-	echo "exec /usr/lib/python${PYVER}/site-packages/${PN}/IDE.py" >> daboide
+	echo "exec ${INS}/IDE.py" >> daboide
 	dobin daboide
 }
-
-# Prevent the optimiser from running
-# as there are problems with some non-standard python files
-distutils_pkg_postinst() { :; }
