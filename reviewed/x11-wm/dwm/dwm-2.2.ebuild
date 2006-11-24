@@ -10,12 +10,11 @@ SRC_URI="http://suckless.org/download/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~x86 ~amd64"
 IUSE="savedconfig"
 
 DEPEND="x11-libs/libX11"
-RDEPEND="${DEPEND}
-	sys-apps/coreutils"
+RDEPEND=${DEPEND}
 
 src_unpack() {
 	unpack ${A}

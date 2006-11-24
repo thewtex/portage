@@ -6,7 +6,7 @@ DESCRIPTION="Library for XSPF playlist reading and writing"
 HOMEPAGE="http://libspiff.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
-LICENSE="GPL-2"
+LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~x86"
 IUSE="doc"
@@ -27,8 +27,9 @@ src_compile() {
 	fi
 }
 
+
 src_install() {
-	emake DESTDIR="${D}" install || die "emake install failed"
+	emake DESTDIR=${D} install || die "make install failed"
 	dodoc README AUTHORS ChangeLog
 
 	if use doc; then
