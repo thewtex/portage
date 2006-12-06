@@ -12,7 +12,6 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
-S=${WORKDIR}/${PN}
 
 DEPEND=">=dev-lang/python-2.3
 	dev-libs/boost
@@ -21,19 +20,15 @@ DEPEND=">=dev-lang/python-2.3
 	dev-python/pyxdg"
 RDEPEND="${DEPEND}"
 
-src_unpack() {
-	unpack ${A} && cd "${S}"
-	# remove .svn dirs
-	rm -rf */.svn
-}
+S=${WORKDIR}/${PN}
 
 src_install() {
 	python_version
-	insinto "${ROOT}usr/$(get_libdir)/python${PYVER}/site-packages/${PN}"
+	insinto "/usr/$(get_libdir)/python${PYVER}/site-packages/${PN}"
 	doins -r *.py po/ glade/ pixmaps/ plugins/
 
 	newicon pixmaps/${PN}-32.png ${PN}.png
-	make_wrapper ${PN} "${ROOT}usr/bin/python ${ROOT}usr/$(get_libdir)/python${PYVER}/site-packages/${PN}/${PN}.py"
+	make_wrapper ${PN} "/usr/bin/python /usr/$(get_libdir)/python${PYVER}/site-packages/${PN}/${PN}.py"
 	make_desktop_entry ${PN} ${PN}
 
 	dodoc Changelog README
