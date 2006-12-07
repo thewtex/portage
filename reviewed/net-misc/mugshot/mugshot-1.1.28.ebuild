@@ -2,6 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
+WANT_AUTOCONF="latest"
+WANT_AUTOMAKE="latest"
+
 inherit autotools eutils gnome2 multilib
 
 DESCRIPTION="Program to facilitate social networking"
@@ -15,7 +18,7 @@ IUSE="firefox"
 
 RDEPEND=">=dev-libs/glib-2.6
 	>=x11-libs/gtk+-2.6
-	>=sys-apps/dbus-0.61
+	|| ( >=dev-libs/dbus-glib-0.71 ( >=sys-apps/dbus-0.61 <sys-apps/dbus-0.90 ) )
 	>=net-libs/loudmouth-1
 	>=gnome-base/gconf-2
 	>=net-misc/curl-7.13.1
@@ -33,7 +36,7 @@ src_unpack() {
 	epatch "${FILESDIR}/${PN}-1.1.24-use-firefox.patch"
 	eautoreconf
 	use firefox && sed -e "s:GET_LIBDIR:$(get_libdir):" \
-		"${FILESDIR}/${P}-firefox-update.sh" > "${S}/firefox-update.sh"
+		"${FILESDIR}/${PN}-1.1.26-firefox-update.sh" > "${S}/firefox-update.sh"
 }
 
 src_compile() {
