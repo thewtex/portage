@@ -2,30 +2,35 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-inherit eutils
+inherit eutils toolchain-funcs
 
 DESCRIPTION="A set of CUPS printer drivers for SPL (Samsung Printer Language) printers"
 HOMEPAGE="http://splix.sourceforge.net/"
 SRC_URI="http://heanet.dl.sourceforge.net/sourceforge/splix/${P}.tar.bz2"
 
-LICENSE="GPL-1"
+LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~x86"
 IUSE=""
 
-DEPEND="=net-print/cupsddk-1.1.0_p20061207"
+DEPEND="~net-print/cupsddk-1.1.0_p20061207"
 RDEPEND="${DEPEND}"
 
-export CUPSFILTER="${D}`cups-config --serverbin`/filter"
-export CUPSPPD="${D}`cups-config --datadir`/model"
+src_unpack() {
+	unpack ${A}
+	cd "${S}"
+	epatch "${FILESDIR}"/fixMakefile.patch
+}
 
 src_compile() {
-	epatch "${FILESDIR}"/fixMakefile.patch
-	emake || die "emake failed"
+	emake CXX="$(tc-getCXX)" || die "emake failed"
 }
 
 src_install() {
-	mkdir -p "${CUPSFILTER}"
-	mkdir -p "${CUPSPPD}"
+	CUPSFILTERDIR="$(cups-config --serverbin)/filter"
+	CUPSPPDDIR="$(cups-config --datadir)/model"
+
+	dodir "${CUPSFILTERDIR}"
+	dodir "${CUPSPPDDIR}"
 	emake DESTDIR="${D}" install || die "emake install failed"
 }
