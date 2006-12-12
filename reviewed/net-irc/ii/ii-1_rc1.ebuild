@@ -9,7 +9,7 @@ SRC_URI="http://suckless.org/download/${MY_P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND=""
@@ -23,6 +23,6 @@ src_compile() {
 
 src_install() {
 	dobin ii
-	dodoc README FAQ LICENSE
+	dodoc README FAQ
 	doman *.1
 }
