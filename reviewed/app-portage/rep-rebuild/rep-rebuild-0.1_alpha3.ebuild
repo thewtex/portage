@@ -1,3 +1,4 @@
+# Copyright 1999-2006 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -16,7 +17,7 @@ RDEPEND="dev-perl/PortageXS
 DEPEND=""
 
 src_install() {
-        dobin bin/rep-rebuild || die
-        doman man/rep-rebuild.1
+        dobin bin/rep-rebuild || die "dobin failed"
+	doman man/rep-rebuild.1
 	dodoc doc/{README,CREDITS}
 }
