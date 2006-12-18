@@ -23,7 +23,7 @@ S=${WORKDIR}/${MY_P}
 src_unpack() {
 	unpack ${A}
 	cd "${S}"
-	epatch "${FILESDIR}/${PF}-gentoo.patch" || die "epatch failed"
+	epatch "${FILESDIR}/${PF}-qtdir.patch" || die "epatch failed"
 }
 
 src_compile() {
