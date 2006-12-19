@@ -29,8 +29,7 @@ RDEPEND="x11-libs/libXrender
 		>=app-emulation/emul-linux-x86-gtklibs-1.0
 		app-emulation/emul-linux-x86-compat
 	)
-	>=www-client/mozilla-launcher-1.41
-	virtual/libc"
+	>=www-client/mozilla-launcher-1.41"
 
 S=${WORKDIR}/seamonkey
 
@@ -53,7 +52,7 @@ src_install() {
 
 	# Install icon and .desktop for menu entry
 	insinto /usr/share/pixmaps
-	doins "${FILESDIR}/icon/seamonkey-bin-icon.png"
+	doins "${FILESDIR}/icon/seamonkey-bin.png"
 	insinto /usr/share/applications
 	doins "${FILESDIR}/icon/seamonkey-bin.desktop"
 
