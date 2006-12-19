@@ -19,7 +19,3 @@ RDEPEND=">=net-zope/cmf-1.4.7
 	 =net-zope/mimetypesregistry-1.3*"
 
 ZPROD_LIST="Archetypes"
-
-src_install() {
-	zproduct_src_install all
-}
