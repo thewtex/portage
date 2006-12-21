@@ -12,16 +12,6 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 # opengl useflag removed because fraqtive does not build without it
-IUSE="arts"
+IUSE=""
 
 need-kde 3.3
-
-DEPEND="arts? ( kde-base/arts )"
-RDEPEND="${DEPEND}"
-
-src_compile() {
-	local myconf="${myconf} \
-		$(use_with arts)"
-
-	kde_src_compile || die "kde_src_compile failed"
-}

@@ -2,8 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-inherit eutils
-
 DESCRIPTION="Provides the necessary logic to capture screen recordings and to process them"
 HOMEPAGE="http://libinstrudeo.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
@@ -18,7 +16,7 @@ DEPEND=">=dev-cpp/libxmlpp-2.10.0
 		>=dev-libs/glib-2.10.0
 		>=dev-cpp/glibmm-2.8.4
 		media-libs/libvorbis
-		media-libs/libdc1394
+		=media-libs/libdc1394-1*
 		media-libs/libdts
 		media-libs/libtheora
 		media-libs/ftgl
