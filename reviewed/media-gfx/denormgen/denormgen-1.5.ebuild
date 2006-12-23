@@ -41,3 +41,10 @@ src_install(){
 
 	dodoc AUTHORS ChangeLog README TODO
 }
+
+pkg_postinst(){
+	einfo ""
+	einfo "The .dim file format changed with this version."
+	einfo "Old .dim files are no more compatible with this release."
+	einfo ""
+}
