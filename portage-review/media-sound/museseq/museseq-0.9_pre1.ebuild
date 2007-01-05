@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: /var/cvsroot/gentoo-x86/media-sound/museseq/museseq-0.8.1-r1.ebuild,v 1.2 2006/11/25 09:37:37 opfer Exp $ 
 
-inherit kde-functions virtualx eutils
+inherit kde-functions virtualx eutils qt3
 MY_P=${P/museseq/muse}
 MY_P=${MY_P/_/}
 S="${WORKDIR}/${MY_P}"
@@ -35,22 +35,22 @@ src_compile() {
 		$(use_enable lash) \
 		$(use_enable debug) \
 		|| die "configure failed"
-	emake all || die
+	emake all || die "emake failed"
 }
 
 src_install() {
-	emake DESTDIR=${D} install || die "install failed"
+	emake DESTDIR="${D}" install || die "install failed"
 	dodoc AUTHORS ChangeLog NEWS README SECURITY README.*
-	mv ${D}/usr/bin/muse ${D}/usr/bin/museseq
+	mv "${D}"/usr/bin/muse "${D}"/usr/bin/museseq
 }
 
 pkg_postinst() {
-	einfo "You must have the realtime module loaded to use MusE 0.9.x"
-	einfo "Realtime LSM: http://sourceforge.net/projects/realtime-lsm/"
-	einfo " -> http://www.muse-sequencer.org/wiki/index.php/Realtime"
-	einfo ""
-	einfo "Additionally, configure your Linux Kernel for non-generic"
-	einfo "Real Time Clock support enabled or loaded as a module."
-	einfo "User must have read/write access to /dev/misc/rtc device."
-	einfo " -> /dev/rtc or /dev/misc/rtc"
+	elog "You must have the realtime module loaded to use MusE 0.9.x"
+	elog "Realtime LSM: http://sourceforge.net/projects/realtime-lsm/"
+	elog " -> http://www.muse-sequencer.org/wiki/index.php/Realtime"
+	elog ""
+	elog "Additionally, configure your Linux Kernel for non-generic"
+	elog "Real Time Clock support enabled or loaded as a module."
+	elog "User must have read/write access to /dev/misc/rtc device."
+	elog " -> /dev/rtc or /dev/misc/rtc"
 }
