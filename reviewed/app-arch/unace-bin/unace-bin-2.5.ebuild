@@ -1,8 +1,8 @@
-# Copyright 1999-2006 Gentoo Foundation
+# Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-inherit versionator eutils
+inherit versionator
 
 MY_P="linunace$(delete_all_version_separators)"
 MY_PN="unace"
@@ -30,6 +30,6 @@ src_install() {
 }
 
 pkg_postinst() {
-	elog "This version of UnAce is avaible as unace-bin to enable one to use both"
+	elog "This version of UnAce is installed as unace-bin to make possible to use both"
 	elog "source and binary packages at the same time"
 }

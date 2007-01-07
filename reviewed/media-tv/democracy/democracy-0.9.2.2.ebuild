@@ -19,7 +19,9 @@ RDEPEND="dev-python/pyrex
 		dev-python/gnome-python-extras
 		www-client/mozilla-firefox
 		x11-libs/libX11
-		dev-python/gst-python"
+		dev-python/gst-python
+		x11-apps/xset"
+		# see https://develop.participatoryculture.org/democracy/ticket/3067
 
 DEPEND="${RDEPEND}
 		dev-util/pkgconfig"
@@ -49,10 +51,11 @@ src_unpack() {
 }
 
 pkg_postinst(){
-	if ! built_with_use xine-lib aac mad asf flac sdl win32codecs; then
+	if ! built_with_use xine-lib aac alsa mad asf flac sdl win32codecs mp3; then
 		ewarn "The Democracy team recommends you to emerge xine-lib as follows:"
 		ewarn ""
-		ewarn "# echo \"media-libs/xine-lib aac ffmpeg mad asf flac sdl win32codecs\" \ "
+		ewarn "# echo \"media-libs/xine-lib aac mad asf flac sdl
+		win32codecs mp3 \" \ "
 		ewarn ">> /etc/portage/package.use && emerge xine-lib"
 		ewarn ""
 		ewarn "This way you will have support enabled for the most popular"
