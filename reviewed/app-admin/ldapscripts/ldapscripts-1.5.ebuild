@@ -25,13 +25,6 @@ ETCFILE="ldapscripts.conf"
 src_unpack() {
 	unpack ${A}
 
-	# patch with fixes to problematic chown $HOME, add support to gecos
-	# specification. patches are sent upstream.
-	cd "${S}/bin"
-	epatch "${FILESDIR}/ldapadduser.patch"
-	cd "${S}/etc"
-	epatch "${FILESDIR}/ldapscripts.conf.patch"
-
 	# Prepare sources, as the install script would do it
 	cd "${S}"
 	sed -i.orig -e "s|^_RUNTIMEFILE=.*|_RUNTIMEFILE=\"${RUNTIMEDIR}/${RUNTIMEFILE}\"|g" bin/*
