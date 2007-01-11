@@ -7,17 +7,19 @@ inherit toolchain-funcs versionator
 DESCRIPTION="Ncurses DC++ client"
 HOMEPAGE="http://sourceforge.net/projects/nanodc/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~x86 ~ppc"
 IUSE=""
+
 RDEPEND="sys-libs/ncurses
 	sys-libs/zlib
 	>=dev-libs/libsigc++-2.0.0
 	>=dev-libs/glib-2.0.0"
 DEPEND="${RDEPEND}
-	dev-util/pkgconfig
-	dev-util/scons"
+	dev-util/scons
+	dev-util/pkgconfig"
 
 BIGVERSION=nanodc-$(get_version_component_range 1-2 )
 

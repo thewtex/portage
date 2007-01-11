@@ -6,9 +6,8 @@ inherit qt4
 
 MY_P="${P/_/}"
 DESCRIPTION="An extensible drawing editor which creates figures for inclusion in LaTeX documents and makes PDF presentations."
-HOMEPAGE="http://ipe.compgeom.org/"
-SRC_URI="http://ipe.compgeom.org/${MY_P}-src.tar.gz
-	http://tclab.kaist.ac.kr/ipe/${MY_P}-src.tar.gz"
+HOMEPAGE="http://tclab.kaist.ac.kr/ipe/"
+SRC_URI="http://tclab.kaist.ac.kr/ipe/${MY_P}-src.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -26,10 +25,9 @@ RDEPEND="${DEPEND}
 S="${WORKDIR}/${MY_P}/src"
 
 search_urw_fonts() {
-	local texmfdist="$(kpsewhich -var-value=TEXMFDIST)" # colon-separated
-														# list of paths
+	local texmfdist="$(kpsewhich -var-value=TEXMFDIST)"	# colon-separated list of paths
 	local urwdir=fonts/type1/urw	# according to TeX directory structure
-	IFS="${IFS}:"					# add colon as field separator
+	local IFS="${IFS}:"		# add colon as field separator
 	for dir in ${texmfdist}; do
 		if [[ -d "${dir}/${urwdir}" ]]; then
 			URWFONTDIR="${dir}/${urwdir}"
@@ -51,7 +49,7 @@ pkg_setup() {
 }
 
 src_compile() {
-	# until Ipe bug #206 is not resolved...
+	# until Ipe bug #206 is resolved...
 	# local myconf
 	# use firefox && myconf="IPEBROWSER=firefox"
 	use firefox && \
@@ -67,7 +65,7 @@ src_compile() {
 }
 
 src_install() {
-	emake install "INSTALL_ROOT=${D}" || die "emake install failed"
+	emake install INSTALL_ROOT="${D}" || die "emake install failed"
 
 	cd "${WORKDIR}"/${MY_P}
 	local fontmapdir=/usr/share/${PN}/${MY_P/${PN}-/}
