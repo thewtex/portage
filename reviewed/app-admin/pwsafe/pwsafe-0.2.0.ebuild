@@ -1,16 +1,16 @@
-# Copyright 1999-2006 Gentoo Foundation
+# Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-inherit flag-o-matic
+inherit eutils flag-o-matic
 
-DESCRIPTION="Manages encrypted password databases (compatible with Counterpane's Password Safe)."
+DESCRIPTION="Commandline program that manages encrypted password databases (compatible with Counterpane's Password Safe)"
 HOMEPAGE="http://nsd.dyndns.org/pwsafe/"
 SRC_URI="http://nsd.dyndns.org/pwsafe/releases/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~x86 ~amd64"
 IUSE=""
 
 DEPEND=""
@@ -24,8 +24,8 @@ src_compile() {
 
 src_install() {
 	emake DESTDIR="${D}" install || die "emake install failed"
-	dodoc README ChangeLog AUTHORS TODO
-	chmod +s "${D}/usr/bin/pwsafe"
+	dodoc README ChangeLog AUTHORS TODO NEWS
+	fperms +s /usr/bin/pwsafe
 }
 
 pkg_postinst() {
