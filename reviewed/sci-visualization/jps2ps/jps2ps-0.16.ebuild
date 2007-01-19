@@ -1,4 +1,4 @@
-# Copyright 1999-2006 Gentoo Foundation
+# Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -7,7 +7,7 @@ inherit multilib
 DESCRIPTION="A small perl script for the creation of mathematic images in PostScript."
 HOMEPAGE="http://syracuse.eu.org/syracuse/bbgraf/"
 
-SRC_URI="http://syracuse.eu.org/syracuse/bbgraf/archives/${PN}-0-15.tgz"
+SRC_URI="http://syracuse.eu.org/syracuse/bbgraf/archives/${PN}-0-16.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
