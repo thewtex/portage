@@ -5,23 +5,25 @@
 inherit distutils versionator
 
 MY_P="${PN}$(delete_version_separator '-')"
-DESCRIPTION="Yapps is an easy to use parser generator."
+DESCRIPTION="An easy to use parser generator."
 HOMEPAGE="http://theory.stanford.edu/~amitp/yapps/"
 SRC_URI="http://www-cs-students.stanford.edu/~amitp/yapps/${MY_P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~x86"
-IUSE=""
+IUSE="examples"
 
 DEPEND=""
-RDEPEND=""
+RDEPEND="${DEPEND}"
 
-S=${WORKDIR}/Yapps-${PV}
+S="${WORKDIR}/Yapps-${PV}"
 
 src_install() {
 	distutils_src_install
 
-	insinto /usr/share/doc/${PN}/examples
-	doins examples/*
+	if use examples; then
+		insinto /usr/share/doc/${PF}/examples
+		doins -r examples
+	fi
 }

@@ -5,7 +5,7 @@
 inherit distutils
 
 DESCRIPTION="a command-line interface to http://metamark.net/"
-HOMEPAGE="http://ndansmith.net/turl.php"
+HOMEPAGE="http://ndansmith.net/surl.php"
 SRC_URI="http://ndansmith.net/software/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
