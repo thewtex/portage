@@ -29,9 +29,15 @@ pkg_setup() {
 	enewuser dbmail -1 -1  /var/lib/dbmail dbmail
 }
 
-src_compile() {
-	epatch "${FILESDIR}/${P}-removeversion.patch"
+src_unpack() {
+	unpack ${A}
+	cd "${S}"
 
+	epatch "${FILESDIR}/${P}-removeversion.patch"
+	epatch "${FILESDIR}/${P}-messages.patch"
+}
+
+src_compile() {
 	use sqlite3 && myconf="--with-sqlite"
 	use ldap && myconf=${myconf}" --with-auth-ldap"
 
@@ -41,7 +47,7 @@ src_compile() {
 		$(use_enable static) \
 		$(use_with sieve) \
 		$(use_with ssl) \
-		$(use_with postgres) \
+		$(use_with postgres pgsql) \
 		$(use_with mysql) || die "econf failed"
 	emake || die "emake failed"
 }
