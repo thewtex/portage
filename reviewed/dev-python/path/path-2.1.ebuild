@@ -2,30 +2,24 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-inherit python eutils
+inherit python multilib
 
-SRC_URI="http://rimonbarr.com/repository/${PN}/code/${PN}"
-DESCRIPTION="fast, efficient, command-line utility for downloading quotes from Yahoo."
-HOMEPAGE="http://rimonbarr.com/repository/pyq/index.html"
-LICENSE="GPL-2"
+DESCRIPTION="Helpful python wrapper to the os.path module"
+HOMEPAGE="http://www.jorendorff.com/articles/python/path"
+SRC_URI="http://www.jorendorff.com/articles/python/path/${P}.zip"
 
+LICENSE="freedist"
 SLOT="0"
-IUSE=""
 KEYWORDS="~x86"
+IUSE=""
 
 DEPEND=""
-RDEPEND="${DEPEND}"
-
-src_unpack() {
-	cp "${DISTDIR}"/pyq "${WORKDIR}"
-}
+RDEPEND=""
 
 src_install() {
 	python_version
-	cd "${WORKDIR}"
 	insinto /usr/$(get_libdir)/python${PYVER}/site-packages/
-	newins pyq pyq.py
-	make_wrapper pyq "python /usr/$(get_libdir)/python${PYVER}/site-packages/pyq.py"
+	doins path.py
 }
 
 pkg_postinst() {
