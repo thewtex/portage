@@ -22,14 +22,15 @@ RDEPEND=""
 S=${WORKDIR}/${MY_P}
 
 src_compile() {
-	sed -i -e 's|\(set awkpath =\).*|\1 /usr/share/'${PN}'/scripts' \
-		-e 's|\(set glimmerpath =\).*|\1 /usr/bin' scripts/*
+	sed -i -e 's|\(set awkpath =\).*|\1 /usr/share/'${PN}'/scripts|' \
+		-e 's|\(set glimmerpath =\).*|\1 /usr/bin|' scripts/* || die "failed to rewrite paths"
 	cd src
 	emake || die "emake failed"
 }
 
 src_install() {
-	dobin bin/{anomaly,build-icm,entropy-score,glimmer3,multi-extract,start-codon-distrib,uncovered,build-fixed,entropy-profile,extract,long-orfs,score-fixed,window-acgt}
+	rm bin/test
+	dobin bin/*
 
 	dodir /usr/share/${PN}/scripts
 	insinto /usr/share/${PN}/scripts
