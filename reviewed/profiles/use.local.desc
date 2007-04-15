@@ -7,6 +7,7 @@
 
 # Keep it sorted.
 
+app-admin/blockhosts:logrotate - Enable logrotate file installation
 app-admin/vlogger:dbi - enable support for DBI
 app-antivirus/drweb:glibc23 - use binary package for glibc-2.3
 app-antivirus/drweb:logrotate - Use logrotate for rotating logs
@@ -80,8 +81,8 @@ net-dns/nsd:tsig - Enable TSIG support
 net-im/gizmo:avahi - Use avahi mdns daemon
 net-im/pyaim-t:web - Enables optional web interface
 net-im/pyicq-t:web - Enables optional web interface
-net-mail/dbmail:sieve - Add support for sieve mail filtering
 net-mail/checkgmail:savepwd - Add support for saving and encrypting GMail password
+net-mail/dbmail:sieve - Add support for sieve mail filtering
 net-mail/simscan:attachment - Enable attachment filtering
 net-mail/simscan:custom-smtp-reject - Enable the custom SMTP reject with qmail
 net-mail/simscan:dropmsg - Enable dropping message contains virus/spam
@@ -101,9 +102,14 @@ sci-biology/tgi-tools:pvm - Use sys-cluster/pvm (Parallel Virtual Machine) and b
 sci-libs/libticables2:pam_console - Adds support for pam console from PAM
 sys-devel/scratchbox-toolchain-cs2005q3_2-glibc:arm - Install the toolchain for the ARM arch
 sys-devel/scratchbox-toolchain-cs2005q3_2-glibc:i386 - Install the toolchain for the i386 arch
+sys-fs/aufs:hinotify - Add support for aufs inotify
 sys-fs/aufs:ksize - Patch to support realloc of memory to make the aufs module run more efficiently
 sys-fs/aufs:nfs - Patch for lhash support
+sys-fs/aufs:nfsexport - Enable support for exporting aufs via nfs
+sys-power/acpi-support:hibernate-script - Use sys-power/hibernate-script for sleep and hibernate actions
+sys-power/acpi-support:intel-855 - Use sys-apps/855resolution for Intel 855 chipset BIOS screen resolution fix
 sys-power/acpi-support:laptop-mode - Support for laptop-mode utils
+sys-power/acpi-support:toshiba - Use app-laptop/toshset for some features
 x11-libs/pdcurses:latin1 - Add support for latin1 characters
 x11-libs/pdcurses:nextaw - Use neXtaw instead of Xaw
 x11-misc/wbar:animation - Patch for animation support
