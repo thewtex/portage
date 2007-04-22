@@ -12,7 +12,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~x86"
 
-IUSE="debug expat usb cups udev"
+IUSE="debug expat usb cups"
 
 DEPEND="app-pda/libopensync
 	=net-wireless/bluez-libs-3*
@@ -61,26 +61,29 @@ src_install() {
 	newconfd ${S}/scripts/bluetooth.default bluetooth
 
 	# bug #84431
-	if use udev; then
-		insinto /etc/udev/rules.d/
-		newins ${FILESDIR}/${PN}-2.24-udev.rules 70-bluetooth.rules
+	insinto /etc/udev/rules.d/
+	newins ${FILESDIR}/${PN}-2.24-udev.rules 70-bluetooth.rules
 
-		exeinto /lib/udev/
-		newexe ${FILESDIR}/${PN}-2.24-udev.script bluetooth.sh
-	fi
-
+	exeinto /lib/udev/
+	newexe ${FILESDIR}/${PN}-2.24-udev.script bluetooth.sh
 }
 
 pkg_postinst() {
-	if use udev; then
-		einfo "You need to run 'udevstart' or reboot for the udev rules"
-		einfo "to take effect."
-		einfo
-	fi
-	einfo "If you use hidd, add --encrypt to the HIDD_OPTIONS in"
-	einfo "/etc/conf.d/bluetooth to secure your connection"
-	einfo
-	einfo "To use dund you must install net-dialup/ppp"
-	einfo
-}
+        if [[ ${ROOT} == "/" ]] ; then
+                # check if root of init-process is identical to ours
+                if [ -r /proc/1/root -a /proc/1/root/ -ef /proc/self/root/ ]; then
+                        einfo "restarting udevd now."
+                        if [[ -n $(pidof udevd) ]] ; then
+                                killall -15 udevd &>/dev/null
+                                sleep 1
+                                killall -9 udevd &>/dev/null
+                        fi
+                        /sbin/udevd --daemon
+                fi
+        fi
 
+	elog "If you use hidd, add --encrypt to the HIDD_OPTIONS in"
+	elog "/etc/conf.d/bluetooth to secure your connection"
+	elog
+	elog "To use dund you must install net-dialup/ppp"
+}
