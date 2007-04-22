@@ -54,7 +54,7 @@ src_install() {
 	dodoc AUTHORS ChangeLog README
 
 	# optional bluetooth utils
-	dosbin tools/hcisecfilter tools/ppporc 
+	dosbin tools/hcisecfilter tools/ppporc
 	dobin daemon/passkey-agent
 
 	newinitd ${FILESDIR}/${PN}-2.25-init.d bluetooth
@@ -69,18 +69,18 @@ src_install() {
 }
 
 pkg_postinst() {
-        if [[ ${ROOT} == "/" ]] ; then
-                # check if root of init-process is identical to ours
-                if [ -r /proc/1/root -a /proc/1/root/ -ef /proc/self/root/ ]; then
-                        einfo "restarting udevd now."
-                        if [[ -n $(pidof udevd) ]] ; then
-                                killall -15 udevd &>/dev/null
-                                sleep 1
-                                killall -9 udevd &>/dev/null
-                        fi
-                        /sbin/udevd --daemon
-                fi
-        fi
+	if [[ ${ROOT} == "/" ]] ; then
+		# check if root of init-process is identical to ours
+		if [ -r /proc/1/root -a /proc/1/root/ -ef /proc/self/root/ ] ; then
+			einfo "restarting udevd now."
+			if [[ -n $(pidof udevd) ]] ; then
+				killall -15 udevd &>/dev/null
+				sleep 1
+				killall -9 udevd &>/dev/null
+			fi
+			/sbin/udevd --daemon
+		fi
+	fi
 
 	elog "If you use hidd, add --encrypt to the HIDD_OPTIONS in"
 	elog "/etc/conf.d/bluetooth to secure your connection"
