@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-NEED_PYTHON="2.4"
+NEED_PYHON="2.4"
 
-inherit eutils distutils
+inherit distutils
 
 DESCRIPTION="A python PostgreSQL introspective ORM"
 HOMEPAGE="http://www.dbmother.org"
@@ -18,7 +18,7 @@ IUSE=""
 DEPEND=""
 RDEPEND=">=dev-python/psycopg-2.0"
 
-DOCS="AUTHORS docs/*"
+DOCS="AUTHORS doc/*"
 
 src_install() {
 	distutils_src_install
