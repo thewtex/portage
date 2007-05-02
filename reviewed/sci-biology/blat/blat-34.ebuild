@@ -21,6 +21,7 @@ src_compile() {
 	MACHTYPE=$(tc-arch)
 	if [[ $MACHTYPE == "x86" ]]; then MACHTYPE="i386"; fi
 	sed -i 's/-Werror//; s/CFLAGS=//;' "${S}/inc/common.mk"
+	sed -i 's/\(${STRIP} \)/#\1/' "${S}"/{*/makefile,utils/*/makefile,*/*.mk}
 	mkdir -p "${S}/bin/${MACHTYPE}"
 	emake MACHTYPE="${MACHTYPE}" HOME="${S}" || die "emake failed"
 }
