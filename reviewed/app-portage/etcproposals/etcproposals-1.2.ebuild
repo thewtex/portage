@@ -8,12 +8,14 @@ DESCRIPTION="a set of tools for updating gentoo config files"
 HOMEPAGE="http://developer.berlios.de/projects/etc-proposals/"
 SRC_URI="mirror://berlios/etc-proposals/${P}.tar.gz"
 
-IUSE="gtk"
+IUSE="gtk qt4"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND="gtk? ( >=dev-python/pygtk-2.10 )"
+DEPEND="gtk? ( >=dev-python/pygtk-2.10 )
+		qt4? ( >=dev-python/PyQt4-4.1.1
+			   >=kde-base/kdelibs-3.5 )"
 RDEPEND="${DEPEND}"
 
 src_install(){
