@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/tigcc-linux/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="no-completion-data"
+IUSE="minimal"
 
 DEPEND="$(qt_min_version 3.3)
 	>=kde-base/kdelibs-3.5.2
@@ -24,7 +24,7 @@ DEPEND="$(qt_min_version 3.3)
 	>=sci-libs/libticalcs2-20060723"
 
 RDEPEND="${DEPEND}
-	!no-completion-data? ( dev-util/ktigcc-completion-data )"
+	!minimal? ( dev-util/ktigcc-completion-data )"
 
 S=${WORKDIR}/${PN}
 
