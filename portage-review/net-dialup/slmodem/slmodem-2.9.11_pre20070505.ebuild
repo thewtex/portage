@@ -40,7 +40,7 @@ pkg_setup() {
 src_unpack() {
 	unpack ${A}
 	cd "${WORKDIR}"
-	sed -i "s:SUBDIRS=\$(shell pwd):SUBDIRS=${WORKDIR}/ungrab-winmodem-${PV/*_pre/}" \
+	sed -i "s:SUBDIRS=\$(shell pwd):SUBDIRS=${WORKDIR}/ungrab-winmodem-${PV/*_pre/}:" \
 		ungrab-winmodem-${PV/*_pre/}/Makefile
 	convert_to_m ungrab-winmodem-${PV/*_pre/}/Makefile
 
@@ -111,7 +111,8 @@ src_install() {
 			 "${D}/etc/udev/rules.d/55-${PN}.rules"
 	fi
 
-	dodoc Changes README "${WORKDIR}/ungrab-winmodem/Readme.txt"
+	dodoc Changes README
+	newdoc "${WORKDIR}"/ungrab-winmodem-${PV/*_pre}/Readme.txt README-ungrab-winmodem.txt
 }
 
 pkg_postinst() {
@@ -131,7 +132,7 @@ pkg_postinst() {
 	elog "You must edit /etc/conf.d/${PN} for your configuration"
 	elog "To add slmodem to your startup - type : rc-update add slmodem default"
 	elog
-	
+
 	if use alsa; then
 		elog "I hope you have already added alsa to your startup: "
 		elog "otherwise type: rc-update add alsasound boot"
