@@ -100,7 +100,7 @@ src_install() {
 	fi
 
 	dodir /etc/modprobe.d
-	echo -e "slusb\nslamr\nsnd-intel8x0m" >> "${D}/etc/modprobe.d/blacklist-${PN}"
+	echo -e "blacklist slusb\nblacklist slamr\nblacklist snd-intel8x0m" >> "${D}/etc/modprobe.d/blacklist-${PN}"
 
 	# Add configuration for udev
 	dodir /etc/udev/rules.d/
