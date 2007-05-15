@@ -1,6 +1,6 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/bluez-utils/bluez-utils-3.10.ebuild,v 1.3 2007/05/11 21:10:20 gustavoz Exp $
+# $Header: $
 
 inherit eutils
 
@@ -78,14 +78,14 @@ src_install() {
 	newins "${FILESDIR}/${PN}-2.24-udev.rules" 70-bluetooth.rules
 
 	exeinto /lib/udev/
-	newexe "${FILESDIR}/${P}-udev.script" bluetooth.sh
+	newexe "${FILESDIR}/${PN}-2.24-udev.script" bluetooth.sh
 }
 
 pkg_postinst() {
 	udevcontrol reload_rules && udevtrigger
 
 	elog "If you use hidd, add --encrypt to the HIDD_OPTIONS in"
-	elog "/etc/conf.d/hidd to secure your connection"
+	elog "/etc/conf.d/bluetooth to secure your connection"
 	elog
 	elog "To use dund you must install net-dialup/ppp"
 	elog ""

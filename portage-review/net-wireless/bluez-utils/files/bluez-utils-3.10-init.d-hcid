@@ -7,7 +7,7 @@ UART_CONF="/etc/bluetooth/uart"
 
 depend() {
 	after coldplug
-	need dbus
+	use dbus
 }
 
 start_uarts() {
