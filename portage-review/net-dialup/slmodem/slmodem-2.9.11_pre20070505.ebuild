@@ -103,7 +103,7 @@ src_install() {
 	dodir /etc/modprobe.d
 	echo -e "slusb\nslamr\nsnd-intel8x0m" >> "${D}/etc/modprobe.d/blacklist-${PN}"
 
-	# Add configuration for devfs, udev
+	# Add configuration for udev
 	dodir /etc/udev/rules.d/
 	echo 'KERNEL=="slamr", NAME="slamr0" GROUP="dialout"' > \
 		 "${D}/etc/udev/rules.d/55-${PN}.rules"
