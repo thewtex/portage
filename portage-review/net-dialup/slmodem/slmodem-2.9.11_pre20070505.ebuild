@@ -7,7 +7,7 @@ inherit eutils linux-mod multilib
 DESCRIPTION="Driver for Smart Link modem"
 HOMEPAGE="http://linmodems.technion.ac.il/packages/smartlink/"
 SRC_URI="http://linmodems.technion.ac.il/packages/smartlink/${P/_pre/-}.tar.gz
-	http://linmodems.technion.ac.il/packages/smartlink/ungrab-winmodem.tar.gz"
+	http://linmodems.technion.ac.il/packages/smartlink/ungrab-winmodem-${PV/*_pre/}.tar.gz"
 
 LICENSE="Smart-Link"
 SLOT="0"
@@ -24,7 +24,7 @@ S="${WORKDIR}"/${P/_pre/-}
 pkg_setup() {
 	use amd64 && multilib_toolchain_setup x86
 
-	MODULE_NAMES="ungrab-winmodem(:${WORKDIR}/ungrab-winmodem)"
+	MODULE_NAMES="ungrab-winmodem(:${WORKDIR}/ungrab-winmodem-${PV/*_pre/})"
 	if ! use amd64; then
 		MODULE_NAMES="${MODULE_NAMES} slamr(net:${S}/drivers)"
 		if use usb; then
@@ -40,12 +40,11 @@ pkg_setup() {
 src_unpack() {
 	unpack ${A}
 	cd "${WORKDIR}"
-	sed -i "s:SUBDIRS=\$(shell pwd):SUBDIRS=${WORKDIR}/ungrab-winmodem:" \
-		ungrab-winmodem/Makefile
-	convert_to_m ungrab-winmodem/Makefile
+	sed -i "s:SUBDIRS=\$(shell pwd):SUBDIRS=${WORKDIR}/ungrab-winmodem-${PV/*_pre/}" \
+		ungrab-winmodem-${PV/*_pre/}/Makefile
+	convert_to_m ungrab-winmodem-${PV/*_pre/}/Makefile
 
 	epatch "${FILESDIR}"/${PN}-ungrab-winmodem-hp500.patch
-	epatch "${FILESDIR}/${P}-kernel-2.6.19.patch"
 
 	cd "${S}"
 	epatch "${FILESDIR}/${P%%_*}-makefile.patch"
