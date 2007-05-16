@@ -95,7 +95,7 @@ src_install() {
 	insinto /etc/modules.d/
 	newins "${FILESDIR}/slmodem-modules-r1" ${PN}
 	if use usb; then
-		exeinto /lib/udev/
+		exeinto /$(get_libdir)/udev
 		newexe "${FILESDIR}/slusb-udev.script" slmodem_usb.sh
 	fi
 
@@ -107,7 +107,7 @@ src_install() {
 	echo 'KERNEL=="slamr", NAME="slamr0" GROUP="dialout"' > \
 		 "${D}/etc/udev/rules.d/55-${PN}.rules"
 	if use usb; then
-		echo 'KERNEL=="slusb", NAME="slusb0" GROUP="dialout" RUN+="/lib/udev/slmodem_usb.sh"' >> \
+		echo 'KERNEL=="slusb", NAME="slusb0" GROUP="dialout" RUN+="slmodem_usb.sh"' >> \
 			 "${D}/etc/udev/rules.d/55-${PN}.rules"
 	fi
 
