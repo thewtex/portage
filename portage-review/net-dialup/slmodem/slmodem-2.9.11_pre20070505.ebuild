@@ -121,7 +121,7 @@ pkg_postinst() {
 	# Make some devices if we aren't using devfs or udev
 	if [ -e "${ROOT}/dev/.udev" ]; then
 		ebegin "Reloading udev rules..."
-			udevcontrol reload_rules && udevtrigger
+			udevcontrol reload_rules
 		eend $?
 	else
 		cd "${S}/drivers"
