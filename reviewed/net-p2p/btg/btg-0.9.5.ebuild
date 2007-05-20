@@ -11,14 +11,21 @@ SRC_URI="mirror://berlios/btg/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="cppunit debug doc gtk ncurses session-saving"
+IUSE="cppunit debug doc event-callback gtk ncurses session-saving web"
 
-RDEPEND=">=net-libs/rb_libtorrent-0.10
-		>=dev-libs/boost-1.32
+# NB : upnp use flag add clinkcc dependency but clinkcc is not in portage tree
+# so this use flag is disabled.
+
+RDEPEND=">=net-libs/rb_libtorrent-0.11
+		>=dev-libs/boost-1.33
 		>=dev-libs/libsigc++-2
+		>=net-libs/gnutls-1.0
+		dev-util/dialog
 		ncurses? ( >=sys-libs/ncurses-5 )
 		gtk? ( >=dev-cpp/gtkmm-2.4 )
+		web? ( >=dev-lang/php-5 )
 		cppunit? ( dev-util/cppunit )"
+
 DEPEND="${RDEPEND}
 		doc? ( app-doc/doxygen )"
 
@@ -33,11 +40,13 @@ src_compile() {
 		einfo "Using threaded Boost libraries"
 	fi
 
-	econf $(use_enable debug) \
-		$(use_enable ncurses cli) \
+	econf $(use_enable cppunit unittest) \
+		$(use_enable debug) \
+		$(use_enable event-callback) \
 		$(use_enable gtk gui) \
-		$(use_enable cppunit) \
-		$(use_enable session-saving) \
+		$(use_enable ncurses cli) \
+		$(use_enable web www) \
+		$(use_enable web www) \
 		${BOOST_LIBS} || die "econf failed"
 
 	if use doc ; then
@@ -48,7 +57,11 @@ src_compile() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die 'install failed'
+	emake DESTDIR="${D}" install || die "emake install failed"
+
+	newinitd "${FILESDIR}/btgd.initd" btgd
+	newconfd "${FILESDIR}/btgd.confd" btgd
 
 	dodoc AUTHORS ChangeLog README TODO
 }
+
