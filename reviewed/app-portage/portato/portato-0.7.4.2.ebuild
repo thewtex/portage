@@ -24,7 +24,7 @@ GTKDEPS=">=dev-python/pygtk-2.8.6
 RDEPEND="=sys-apps/portage-2.1.2*
 	gtk? ( ${GTKDEPS} )
 	qt4? (
-		=dev-python/PyQt4-4.1.1
+		>=dev-python/PyQt4-4.1.1
 		!userpriv? ( >=kde-base/kdesu-3.5.5 )
 	)
 	!gtk? ( !qt4? ( ${GTKDEPS}	)	)
