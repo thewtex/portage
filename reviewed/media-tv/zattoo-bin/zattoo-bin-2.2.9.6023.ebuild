@@ -2,14 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-inherit rpm
-
-MY_PV=${PV}-1
-MY_P=${PN/-bin}-${MY_PV}
+MY_P=${PN/-bin}-${PV}
 
 DESCRIPTION="live TV on your PC (Switzerland and Denmark only)"
 HOMEPAGE="http://zattoo.com/"
-SRC_URI="http://download.zattoo.com/${MY_P}.i386.rpm"
+SRC_URI="http://download.zattoo.com/${MY_P}-i386.tgz"
 
 LICENSE="Zattoo"
 SLOT="0"
@@ -27,12 +24,15 @@ RDEPEND=">=sys-libs/glibc-2.4
 	gnome-base/libgnome
 	gnome-base/libgnomeui
 	media-libs/alsa-lib
+	net-libs/xulrunner
+	net-www/netscape-flash
+	dev-libs/nspr
 	dev-libs/openssl"
 
 RESTRICT="strip"
 QA_TEXTRELS="usr/lib/zattoo/*"
 
-S=${WORKDIR}
+S=${WORKDIR}/dist
 
 src_install() {
 	dobin usr/bin/zattoo_player usr/bin/zattood
@@ -43,4 +43,16 @@ src_install() {
 	insinto /usr/share/applications
 	doins usr/share/applications/zattoo_player.desktop
 	doenvd "${FILESDIR}"/77zattoo-bin
+
+	dosym /usr/lib/xulrunner/libgtkembedmoz.so /usr/lib/zattoo/libgtkembedmoz.so.0d
+	dosym /usr/lib/xulrunner/libmozjs.so /usr/lib/zattoo/libmozjs.so.0d
+	dosym /usr/lib/nspr/libnspr4.so /usr/lib/zattoo/libnspr4.so.0d
+	dosym /usr/lib/nspr/libplc4.so /usr/lib/zattoo/libplc4.so.0d
+	dosym /usr/lib/nspr/libplds4.so /usr/lib/zattoo/libplds4.so.0d
+	dosym /usr/lib/xulrunner/libxpcom.so /usr/lib/zattoo/libxpcom.so.0d
+	dosym /usr/lib/xulrunner/libxul.so /usr/lib/zattoo/libxul.so.0d
+
+	dosym /opt/netscape/plugins/flashplayer.xpt /usr/lib/zattoo/flashplayer.xpt
+	dosym /opt/netscape/plugins/libflashplayer.so /usr/lib/zattoo/libflashplayer.so
+
 }

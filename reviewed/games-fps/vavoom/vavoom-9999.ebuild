@@ -2,11 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-inherit autotools eutils flag-o-matic games
+inherit autotools eutils flag-o-matic subversion games
 
 DESCRIPTION="Advanced source port for Doom/Heretic/Hexen/Strife"
 HOMEPAGE="http://www.vavoom-engine.com/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+ESVN_REPO_URI="https://svn.sourceforge.net/svnroot/vavoom/trunk/vavoom"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -127,8 +127,10 @@ pkg_setup() {
 }
 
 src_unpack() {
-	unpack "${A}"
+	subversion_src_unpack
 	cd "${S}"
+
+	./autogen.sh
 
 	# Set shared directory
 	sed -i \
