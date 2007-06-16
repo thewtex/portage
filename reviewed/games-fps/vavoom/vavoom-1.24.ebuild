@@ -178,8 +178,9 @@ src_compile() {
 		--disable-dependency-tracking \
 		|| die "egamesconf failed"
 
-	# Parallel compiling doesn't work for now :(
-	emake -j1 || die "emake failed"
+	# Parallel compiling seems to work (tested on 1.24)
+	# I hope it would be true :P (in case i'll re-enable it later)
+	emake || die "emake failed"
 }
 
 src_install() {

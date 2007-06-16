@@ -15,18 +15,13 @@ SLOT="0"
 KEYWORDS="~x86 ~amd64"
 
 RDEPEND="virtual/python
-	>=dev-python/pygtk-2.4.0
-	>=dev-libs/glib-2.6.0
-	>=x11-libs/gtk+-2.4.0
-	>=dev-python/gnome-python-2.10.0
 	>=x11-libs/gtksourceview-1.1.90"
 DEPEND="${RDEPEND}
 	>=dev-util/pkgconfig-0.7"
 
 DOCS="AUTHORS ChangeLog NEWS README"
 
-src_install()
-{
+src_install() {
 	gnome2_src_install
 
 	# install plugins
@@ -38,14 +33,12 @@ src_install()
 	doins gentoo.lang
 }
 
-pkg_postinst()
-{
+pkg_postinst() {
 	python_version
 	python_mod_optimize ${ROOT}/usr/$(get_libdir)/python${PYVER}/site-packages/${PN}
 }
 
-pkg_postrm()
-{
+pkg_postrm() {
 	python_version
 	python_mod_cleanup
 }
