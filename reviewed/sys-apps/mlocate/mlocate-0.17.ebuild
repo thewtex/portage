@@ -13,7 +13,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RESTRICT="usersandbox"
+# RESTRICT="usersandbox"
+# This is not a valid restrict, see Bug 136445
+
 RDEPEND="!sys-apps/slocate
 	!sys-apps/rlocate"
 
@@ -47,10 +49,10 @@ src_install() {
 }
 
 src_test() {
-	if has userpriv ${FEATURES}; then
+	if has userpriv ${FEATURES} && ! has usersandbox ${FEATURES}; then
 		make check-local || die "test suite failed"
 	else
-		ewarn "Activate FEATURES=userpriv to run testsuite."
+		ewarn "Activate FEATURES=userpriv and deactivate FEATURES=usersandbox to run testsuite."
 	fi
 }
 
