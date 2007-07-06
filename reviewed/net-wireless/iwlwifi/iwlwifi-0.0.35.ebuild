@@ -43,7 +43,7 @@ pkg_setup() {
 	fi
 
 	linux-mod_pkg_setup
-	BUILD_PARAMS="-C '${KV_DIR}' M='${S}' CONFIG_IWL3945=m"
+	BUILD_PARAMS="-C ${KV_DIR} M=${S} CONFIG_IWL3945=m"
 }
 
 src_unpack() {
@@ -55,14 +55,4 @@ src_unpack() {
 	sed -i -e 's%\.\./\(net/mac80211/\)%\1%' "${S}"/*.c "${S}"/*.h
 	echo "CFLAGS += -I${MY_INCLUDE} -DCONFIG_IWLWIFI_DEBUG=y" \
 		"-DCONFIG_IWLWIFI_SPECTRUM_MEASUREMENT=y" >> "${S}"/Makefile
-}
-
-pkg_postinst() {
-	linux-mod_pkg_postinst
-	if has_version net-wireless/mac80211 && has_version >=virtual/linux-sources-2.6.22_rc1 ; then
-		elog
-		elog "As of kernel version 2.6.22, iwlwifi can use the in-kernel"
-		elog "version of mac80211"
-		elog
-	fi
 }
