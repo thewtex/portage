@@ -20,16 +20,19 @@ RDEPEND="${DEPEND}"
 S=${WORKDIR}/${MY_P}
 
 src_unpack() {
+	if ! built_with_use sys-libs/glibc nptl; then
+		die "Sambascanner requires an NPTL system"
+	fi
 	unpack ${A}
 	cd "${S}"
-	epatch "${FILESDIR}/${P}-makefile.patch"
 }
 
 src_compile() {
+	econf CFLAGS="${CFLAGS} -pthread" || die "configure failed"
 	emake CC=$(tc-getCC) || die "emake failed"
 }
 
 src_install() {
-	dobin sambascanner sambaretrieve smblister
+	dobin src/sambascanner bin/sambaretrieve src/smblister
 	dodoc ChangeLog
 }

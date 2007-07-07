@@ -5,18 +5,17 @@
 inherit eutils toolchain-funcs
 
 DESCRIPTION="GUI to edit XServer-file xorg.conf easily"
-HOMEPAGE="http://www.cyskat.de/dee/progxorg.htm"
-SRC_URI="mirror://sourceforge/xorg-edit/${PN}_${PV}_src.tar.gz"
+HOMEPAGE="http://www.deesaster.org/progxorg.php"
+SRC_URI="mirror://sourceforge/xorg-edit/${PN}_${PV}_src.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE=""
 
-DEPEND=">=x11-libs/wxGTK-2.6"
+DEPEND=">=x11-libs/wxGTK-2.6
+	x11-base/xorg-server"
 RDEPEND="${DEPEND}"
-
-S="${WORKDIR}/${PN}"
 
 src_unpack() {
 	unpack ${A}
@@ -25,11 +24,10 @@ src_unpack() {
 }
 
 src_compile() {
-	cd sources
 	emake CXX=$(tc-getCXX) || die "emake failed"
 }
 
 src_install() {
-	dobin sources/xorg-edit
-	dodoc changelog.txt readme.txt
+	dobin xorg-edit
+	dodoc CHANGELOG README
 }
