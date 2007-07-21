@@ -47,7 +47,7 @@ src_install() {
 		CONFFILE="${D}"/etc/flexbackup.conf \
 		|| die "emake install failed"
 
-	dodoc CHANGES CREDITS INSTALL README TODO
+	dodoc CHANGES CREDITS README TODO
 	dohtml faq.html
 }
 
