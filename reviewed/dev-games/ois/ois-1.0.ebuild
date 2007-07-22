@@ -12,24 +12,17 @@ SRC_URI="mirror://sourceforge/wgois/${MY_P}.tar.gz"
 LICENSE="ZLIB"
 SLOT="0"
 KEYWORDS="~x86"
-IUSE="nojoyevents"
 
 DEPEND="x11-libs/libXaw
 	x11-libs/libX11"
 RDEPEND="${DEPEND}"
 
-S="${WORKDIR}/${MY_P}"
+S="${WORKDIR}/${PN}"
 
 src_unpack() {
 	unpack ${A}
 	cd "${S}"
 	eautoreconf
-}
-
-src_compile() {
-	econf $(use_enable !nojoyevents joyevents) --disable-ogre || die "econf failed"
-
-	emake || die "emake failed"
 }
 
 src_install() {
