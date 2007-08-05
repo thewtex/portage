@@ -42,7 +42,7 @@ pkg_setup() {
 }
 
 src_compile() {
-	${QTDIR}/bin/qmake mandvd.pro || die "qmake failed"
+	eqmake3
 	emake || die "emake failed"
 }
 
