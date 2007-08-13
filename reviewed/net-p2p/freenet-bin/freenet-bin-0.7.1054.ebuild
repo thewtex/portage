@@ -5,12 +5,13 @@
 inherit eutils
 DESCRIPTION="An encrypted network without censorship"
 HOMEPAGE="http://www.freenetproject.org/"
-MY_V="r14570"
+MY_V="r14628"
 MY_P="${PN/-bin/}-${MY_V}-snapshot.jar"
 SRC_URI="http://downloads.freenetproject.org/alpha/installer/freenet07.tar.gz
 	http://downloads.freenetproject.org/alpha/update/update.sh
 	http://downloads.freenetproject.org/alpha/update/wrapper.conf
 	http://downloads.freenetproject.org/alpha/${MY_P}
+	http://www.tommyserver.de/mirrors/${MY_P}
 	http://downloads.freenetproject.org/alpha/freenet-ext.jar"
 RESTRICT="userpriv mirror"
 LICENSE="GPL-2"
@@ -26,7 +27,7 @@ QA_TEXTRELS="opt/freenet/lib/libwrapper-linux-x86-32.so
 
 pkg_setup() {
 enewgroup freenet
-enewuser freenet -1 -1 /dev/null freenet
+enewuser freenet -1 /bin/sh /opt/freenet freenet
 }
 
 src_unpack() {
@@ -59,7 +60,7 @@ pkg_postinst () {
 	einfo "2. Open localhost:8888 in your browser for the web interface."
 	einfo "3. After uninstalling freenet delete /opt/freenet manually (unless you want to keep it for a later reinstall)"
 	einfo "   as freenet creates some extra stuff not deleted by portage"
-	if (diff /opt/freenet/${MY_P} /opt/freenet/freenet-stable-latest.jar >/dev/null); then :;
+	if (diff /opt/freenet/${MY_P} /opt/freenet/freenet-stable-latest.jar >/dev/null 2>&1); then :;
 	else
 		cp /opt/freenet/${MY_P} /opt/freenet/freenet-stable-latest.jar
 	fi
