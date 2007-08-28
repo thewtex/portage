@@ -19,13 +19,29 @@ DEPEND="${RDEPEND}"
 src_unpack() {
 	unpack ${A}
 	cd "${S}"
+
+	# Patch from upstream adds optional lzma compression mode.
 	epatch "${FILESDIR}"/${P}-lzma.patch
+
+	# Fix bug #116510: cannot back up remote machines after patch CAN-2005-2965
 	epatch "${FILESDIR}"/${P}-secure-tempfile.patch
+
+	# Fix bug #96334: incorrectly determines bash 3.x to be bash 1.x
 	epatch "${FILESDIR}"/${P}-bash.patch
+
+	# Fix bug #171205: specifies wrong command line option for mbuffer / other small enhancements
 	epatch "${FILESDIR}"/${P}-mbuffer-switch.patch
+
+	# Fix bug #173672: remote host buffer test is broken
 	epatch "${FILESDIR}"/${P}-remote-bufftest.patch
+
+	# Fix bug #178126: subtle subtree pruning issue / other small issues
 	epatch "${FILESDIR}"/${P}-prune.patch
+
+	# Fix bug #184560: fails to back up targets with spaces in their names in some modes
 	epatch "${FILESDIR}"/${P}-spaces-in-filenames.patch
+
+	# Fix bug #190357: fails on very large files with afio back end
 	epatch "${FILESDIR}"/${P}-afio-large-files.patch
 
 	sed -i \
