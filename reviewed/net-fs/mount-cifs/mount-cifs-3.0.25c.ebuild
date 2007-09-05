@@ -13,7 +13,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="!net-fs/samba"
+DEPEND="!<net-fs/samba-3.0.25"
 RDEPEND="${DEPEND}"
 
 src_compile() {
