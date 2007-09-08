@@ -11,10 +11,24 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~x86"
-IUSE=""
+IUSE="pcre tdb"
 
-DEPEND="dev-libs/openssl"
+DEPEND="dev-libs/openssl
+	pcre? ( dev-libs/libpcre )
+	tdb? ( dev-libs/tdb )"
 RDEPEND="${DEPEND}"
+
+src_compile() {
+	if use tdb; then
+		vars="DB=1"
+	fi
+
+	if use pcre; then
+		vars="$vars PCRE=1"
+	fi
+
+	emake $vars
+}
 
 src_install() {
 	dobin fdm || die "installing binary failed"
