@@ -4,26 +4,27 @@
 
 inherit eutils versionator
 
-MY_V="$(get_version_component_range 3)"
+MY_PV="$(get_version_component_range 3)"
 DESCRIPTION="An encrypted network without censorship"
 HOMEPAGE="http://www.freenetproject.org/"
 SRC_URI="http://downloads.freenetproject.org/alpha/installer/${PN}07.tar.gz
 	http://downloads.freenetproject.org/alpha/update/update.sh
 	http://downloads.freenetproject.org/alpha/update/wrapper.conf
-	http://dev.gentooexperimental.org/~tommy/${PN}-sources-v${MY_V}.tar.bz2
-	http://www.tommyserver.de/mirrors/${PN}-sources-v${MY_V}.tar.bz2"
+	http://dev.gentooexperimental.org/~tommy/${PN}-sources-v${MY_PV}.tar.bz2
+	http://www.tommyserver.de/mirrors/${PN}-sources-v${MY_PV}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~x86"
 IUSE=""
+RESTRICT="userpriv mirror"
 
-DEPEND="dev-java/sun-jdk
+DEPEND="!net-p2p/freenet-bin
+	dev-java/sun-jdk
 	dev-java/ant"
 RDEPEND="virtual/jre"
 
 S="${WORKDIR}/${PN}"
-RESTRICT="userpriv mirror"
 
 QA_TEXTRELS="opt/freenet/lib/libwrapper-linux-x86-32.so"
 
@@ -34,11 +35,11 @@ enewuser freenet -1 /bin/sh /opt/freenet freenet
 
 src_unpack() {
 	unpack ${PN}07.tar.gz
-	cp "${DISTDIR}"/update.sh "${DISTDIR}"/wrapper.conf "${S}"/
 	cd "${S}"
 	rm bin/wrapper-macosx* bin/wrapper-linux-ppc-* lib/libwrapper-macosx*.* \
-	lib/libwrapper*ppc-*.so update stun mdns librarian bin/1run.sh bin/*jar
-	unpack ${PN}-sources-v${MY_V}.tar.bz2
+	lib/libwrapper*ppc-*.so update stun mdns librarian bin/1run.sh bin/*jar \
+	welcome.html INSTALL README
+	unpack ${PN}-sources-v${MY_PV}.tar.bz2
 }
 
 src_compile() {
@@ -59,8 +60,9 @@ src_compile() {
 src_install() {
 	newinitd "${S}/run.sh" freenet1
 	rm "${S}"/run.sh
-	into /opt/freenet
-	cp -R "${S}" "${D}/opt"
+	insinto /opt/freenet
+	doins -r bin freenet-cvs-snapshot.jar freenet-ext.jar lib license ${DISTDIR}/update.sh ${DISTDIR}/wrapper.conf
+	fperms 755 /opt/freenet/bin/wrapper-linux-x86-{32,64}
 	dosym freenet-stable-latest.jar /opt/freenet/freenet.jar
 	fowners freenet:freenet /opt/freenet/ -R
 }
@@ -70,3 +72,4 @@ pkg_postinst () {
 	einfo "3. Open localhost:8888 in your browser for the web interface."
 	cp /opt/freenet/freenet-cvs-snapshot.jar /opt/freenet/freenet-stable-latest.jar && chown freenet:freenet /opt/freenet/*
 }
+
