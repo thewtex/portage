@@ -4,7 +4,7 @@
 
 inherit eutils
 
-DESCRIPTION="GCstar is a free open source application for managing your collections."
+DESCRIPTION="GCstar is a personal collections manager."
 HOMEPAGE="http://www.gcstar.org/"
 SRC_URI="http://download.gna.org/gcstar/${P}.tar.gz"
 
@@ -13,7 +13,12 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="mp3 tellico vorbis"
 
-RDEPEND="dev-lang/perl
+LANGS="ar bg ca cs de es fr id it pl pt ro ru sr sv tr"
+for x in ${LANGS} ; do
+	IUSE="${IUSE} linguas_${x}"
+done
+
+DEPEND="dev-lang/perl
 		dev-perl/Archive-Tar
 		dev-perl/Archive-Zip
 		dev-perl/Compress-Zlib
@@ -34,16 +39,42 @@ RDEPEND="dev-lang/perl
 			virtual/perl-Digest-MD5
 			virtual/perl-MIME-Base64 )
 		vorbis? ( dev-perl/Ogg-Vorbis-Header-PurePerl )"
-DEPEND="${RDEPEND}"
+RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${PN}"
 
 src_install() {
+	cd "${S}"/lib/gcstar/GCLang
+
+	mkdir tmp
+	mv ?? tmp
+	# English version should be always available so we will keep it
+	mv tmp/EN .
+
+	for x in ${LANGS}; do
+		# GCstar uses upper-case language names
+		if use linguas_${x} ; then
+			mv tmp/$(echo ${x} | tr '[:lower:]' '[:upper:]') .
+		fi
+	done
+
+	rm -rf tmp
+
+	cd "${S}"
 	# otherwise man pages would get installed in /usr/man
 	mv man share
-	./install --prefix="${D}/usr" --noclean --nomenu || die
+
+	./install --prefix="${D}/usr" \
+		--noclean --nomenu || die "install script failed"
+
 	domenu share/applications/gcstar.desktop
 	newicon share/gcstar/icons/gcstar_64x64.png gcstar.png
+
 	dodoc CHANGELOG README
+
+	if use linguas_fr; then
+		dodoc CHANGELOG.fr README.fr
+	fi
+
 	doman share/man/gcstar.1
 }
