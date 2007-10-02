@@ -10,8 +10,7 @@ HOMEPAGE="http://www.freenetproject.org/"
 SRC_URI="http://downloads.freenetproject.org/alpha/installer/${PN}07.tar.gz
 	http://downloads.freenetproject.org/alpha/update/update.sh
 	http://downloads.freenetproject.org/alpha/update/wrapper.conf
-	http://dev.gentooexperimental.org/~tommy/${PN}-sources-v${MY_PV}.tar.bz2
-	http://www.tommyserver.de/mirrors/${PN}-sources-v${MY_PV}.tar.bz2"
+	http://dev.gentooexperimental.org/~tommy/${PN}-sources-v${MY_PV}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -34,7 +33,7 @@ pkg_setup() {
 	if has_version "<${CATEGORY}/${PN}-0.7.1061-r2" ; then
 		eerror "Previous versions created user account with a passwordless login shell."
 		eerror "You must unmerge the old version first and delete that user account."
-		eerror "emerge -C \\<${CATEGORY}/${PN}-0.7.1061-r2; userdel freenet"
+		eerror "emerge -C \\<${CATEGORY}/${PN}-0.7.1061-r2 && userdel freenet"
 		die "Insecure version installed!"
 	fi
 
@@ -73,7 +72,7 @@ src_install() {
 	dodoc license/README license/LICENSE.Mantissa license/LICENSE.Freenet
 	dobin bin/wrapper-linux-x86-{32,64}
 	dolib.so lib/libwrapper-linux-x86-{32,64}.so
-	doins run.sh ${DISTDIR}/update.sh ${DISTDIR}/wrapper.conf freenet/lib/freenet-{cvs-snapshot,ext}.jar
+	doins run.sh "${S}"/update.sh "${S}"/wrapper.conf freenet/lib/freenet-{cvs-snapshot,ext}.jar
 
 	dosym freenet-stable-latest.jar /opt/freenet/freenet.jar
 	fperms 755 /opt/freenet/{update,run}.sh
@@ -81,7 +80,7 @@ src_install() {
 }
 
 pkg_postinst () {
-	elog "1. Start freenet with /etc/init.d/freenet start"
+	elog "1. Start freenet with /etc/init.d/freenet start."
 	elog "2. Open localhost:8888 in your browser for the web interface."
 	cp /opt/freenet/freenet-cvs-snapshot.jar /opt/freenet/freenet-stable-latest.jar && chown freenet:freenet /opt/freenet/*
 }
