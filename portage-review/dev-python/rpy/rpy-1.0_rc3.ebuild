@@ -5,8 +5,8 @@
 inherit distutils
 
 MY_P="${P/_rc/-RC}"
-DESCRIPTION="RPy is a very simple, yet robust, Python interface to the R Programming Language."
-HOMEPAGE="http://rpy.sourceforge.net"
+DESCRIPTION="A very simple, yet robust, Python interface to the R Programming Language."
+HOMEPAGE="http://rpy.sourceforge.net/"
 SRC_URI="mirror://sourceforge/rpy/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
@@ -35,8 +35,8 @@ src_unpack() {
 			setup.py || die "sed in setup.py failed"
 	fi
 
-	epatch ${FILESDIR}/${P}-version-detect.patch
-	epatch ${FILESDIR}/${P}-lib-handling.patch
+	epatch "${FILESDIR}/${P}-version-detect.patch"
+	epatch "${FILESDIR}/${P}-lib-handling.patch"
 }
 
 src_install() {
