@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/gttr/${P}.tar.gz"
 LICENSE="GPL-2"
 
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="~x86"
 IUSE=""
 
 RDEPEND=">=gnome-base/libgnome-2.0
@@ -29,11 +29,21 @@ DEPEND="${RDEPEND}
 	dev-util/pkgconfig
 	dev-util/intltool
 	=app-text/docbook-xml-dtd-4.2*
-	>=app-text/scrollkeeper-0.3.11"
+	>=app-text/scrollkeeper-0.3.11
+	dev-libs/qof"
 
 DOCS="AUTHORS ChangeLog NEWS README TODO"
 
-G2CONF="${G2CONF} --disable-schemas-install --without-system-qof"
+G2CONF="${G2CONF} --disable-schemas-install"
 
 # Fix for bug #109047, don't parallel build with libqofsql
-MAKEOPTS="${MAKEOPTS} -j1"
+# Should be fixed, to be tested
+#MAKEOPTS="${MAKEOPTS} -j1"
+
+pkg_setup() {
+	# to be tested if Guile 1.8 patch is needed instead
+	if has_version ">=dev-scheme/guile-1.8" && ! built_with_use dev-scheme/guile deprecated;then
+		   eerror "rebuild dev-scheme/guile with USE=deprecated"
+		   die
+		fi
+}
