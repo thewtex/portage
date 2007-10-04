@@ -4,17 +4,16 @@
 
 inherit eutils flag-o-matic toolchain-funcs versionator games
 
-DATA_PV="1.19-rc2"
+DATA_PV="1.19"
 HW_PV="0.15"
 MY_PN="hexen2"
-MY_PV=$(replace_version_separator 3 '-')
 DEMO_PV="1.4.1"
 
-DESCRIPTION="Hexen 2 port - Hammer of Thyrion"
+DESCRIPTION="Hexen 2 port - Hammer of Thyrion (CVS snapshot)"
 HOMEPAGE="http://uhexen2.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${MY_PN}source-${MY_PV}.tgz
-	mirror://sourceforge/${PN}/gamedata-all-${DATA_PV}.tgz
-	hexenworld? ( mirror://sourceforge/${PN}/hexenworld-pakfiles-${HW_PV}.tgz )"
+SRC_URI="mirror://sourceforge/${PN}/${MY_PN}source-${PV}.tgz
+	mirror://sourceforge/u${MY_PN}/gamedata-all-${DATA_PV}.tgz
+	hexenworld? ( mirror://sourceforge/u${MY_PN}/hexenworld-pakfiles-${HW_PV}.tgz )"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -42,7 +41,7 @@ UIDEPEND=">=media-libs/libsdl-1.2.7
 LNCHDEPEND="gtk? ( =x11-libs/gtk+-2* )"
 
 # xdelta is needed to manually run the patch script
-RDEPEND="!games-fps/uhexen2-cvs
+RDEPEND="!games-fps/uhexen2
 	${UIDEPEND}
 	${LNCHDEPEND}
 	demo? ( >=games-fps/hexen2-demodata-${DEMO_PV} )
@@ -52,7 +51,7 @@ DEPEND="${UIDEPEND}
 	${LNCHDEPEND}
 	x86? ( asm? ( >=dev-lang/nasm-0.98.38 ) )"
 
-S=${WORKDIR}/hexen2source-${MY_PV}
+S="${WORKDIR}/hexen2source-${PV}"
 dir="${GAMES_DATADIR}/${MY_PN}"
 
 pkg_setup() {
@@ -92,10 +91,10 @@ src_unpack() {
 		{hexen2,hexen2/server,hexenworld/{Client,Server}}/sys_unix.c \
 		|| die "sed sys_unix.c failed"
 
-	# Change default sndspeed from 11025 to 44100,
+	# Change default sndspeed from 22050 to 44100,
 	# to improve the quality/reliability.
 	sed -i \
-		-e "s:desired_speed = 11025:desired_speed = 44100:" \
+		-e "s:desired_speed = 22050:desired_speed = 44100:" \
 		{hexen2,hexenworld/Client}/snd_dma.c || die "sed snd_dma.c failed"
 
 	# Change patch script to be suitable
@@ -109,8 +108,8 @@ src_unpack() {
 	use debug && append-flags "-g2"
 	for u in `grep -lr '\-g \-Wall' *`; do
 		sed -i \
-		-e "s/^CFLAGS \:\= \-g \-Wall/CFLAGS \:\= ${CFLAGS}/" \
-		${u} || die "sed ${u} failed"
+			-e "s/^CFLAGS \:\= \-g \-Wall/CFLAGS \:\= ${CFLAGS}/" \
+			${u} || die "sed ${u} failed"
 	done
 
 	if use demo ; then
@@ -134,7 +133,7 @@ src_unpack() {
 		fi
 	fi
 
-	rm -rf docs/{COMPILE,COPYING,README.win32}
+	rm -rf docs/{activision,COMPILE,COPYING,LICENSE,README.win32}
 }
 
 src_compile() {
