@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-inherit autotools eutils flag-o-matic games
+inherit autotools eutils flag-o-matic wxwidgets games
 
 DESCRIPTION="Advanced source port for Doom/Heretic/Hexen/Strife"
 HOMEPAGE="http://www.vavoom-engine.com/"
@@ -12,7 +12,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="allegro asm debug dedicated external-glbsp flac mad mikmod models music
-openal opengl sdl textures tools vorbis"
+openal opengl sdl textures tools wxwindows"
 
 QA_EXECSTACK="${GAMES_BINDIR:1}/${PN}"
 
@@ -38,59 +38,56 @@ DEPEND="media-libs/libpng
 	!sdl? ( allegro? ( ${ALLEGDEPEND} ) )
 	!sdl? ( !allegro? ( !dedicated? ( ${OPENGLDEPEND} ) ) )
 	opengl? ( ${OPENGLDEPEND} )
-	vorbis? ( media-libs/libvorbis )
+	music? ( media-libs/libvorbis )
 	flac? ( media-libs/flac )
 	mad? ( media-libs/libmad )
 	mikmod? ( media-libs/libmikmod )
 	openal? ( media-libs/openal )
-	external-glbsp? ( games-util/glbsp )"
+	external-glbsp? ( games-util/glbsp )
+	wxwindows? ( =x11-libs/wxGTK-2.6* )"
 RDEPEND="${DEPEND}
 	allegro? ( media-sound/timidity++ )"
-PDEPEND="models? ( >=games-fps/vavoom-models-1.4.1 )
+PDEPEND="models? ( >=games-fps/vavoom-models-1.4.2 )
 	music? ( games-fps/vavoom-music )
 	textures? ( games-fps/vavoom-textures )"
 
 dir=${GAMES_DATADIR}/${PN}
 
 pkg_setup() {
+	games_pkg_setup
+
+	# Do some important check ...
+	if use sdl && use allegro ; then
+		echo
+		ewarn "Both 'allegro' and 'sdl' USE flags enabled. Using SDL as default."
+	elif ! use sdl && ! use allegro ; then
+		echo
+		ewarn "Both 'allegro' and 'sdl' USE flags disabled. Using SDL as default."
+	fi
+
+	# Base graphic/sound/music support is enabled?
+	echo
+	einfo "Doing some sanity check..."
+
+	# Graphic/sound/opengl check
 	local backend="media-libs/libsdl"
 
 	if ! use sdl && use allegro ; then
 		backend="media-libs/allegro"
 	fi
 
-	games_pkg_setup
+	local backendflags="X alsa"
 
-	# Do some important check ...
-
-	if use sdl && use allegro ; then
-		echo
-		ewarn "Both 'allegro' and 'sdl' USE flags enabled"
-		ewarn "Set default to SDL"
-	elif ! use sdl && ! use allegro ; then
-		ewarn "Both 'sdl' and 'allegro' USE flags disabled"
-		ewarn "Set default to SDL"
+	if use opengl ; then
+		[[ "${backend}" == "media-libs/libsdl" ]] && backendflags="${backendflags} opengl"
+	else
+		ewarn "'opengl' USE flag disabled. OpenGL is recommended, for best graphics."
 	fi
 
-	# Base graphic/sound/music support is enabled?
-
-	echo
-	einfo "Doing some sanity check..."
-
-	# Graphic check
-	if ! built_with_use ${backend} X ; then
-		echo
-		eerror "Software Graphic support is not configured properly!"
-		eerror "Please rebuild ${backend} with 'X' USE flag enabled"
-		die "graphic support error"
-	fi
-
-	# Sound check
-	if ! built_with_use ${backend} alsa ; then
-		echo
-		eerror "Sound support is not configured properly!"
-		eerror "Please rebuild ${backend} with 'alsa' USE flag enabled"
-		die "sound support error"
+	local msg="Please rebuild ${backend} with ${backendflags} USE flag enabled"
+	if ! built_with_use ${backend} ${backendflags} ; then
+			eerror "${msg}"
+			die ${msg}
 	fi
 
 	# Music check
@@ -99,27 +96,6 @@ pkg_setup() {
 		eerror "MIDI Music support is not configured properly!"
 		eerror "Please rebuild sdl-mixer with USE 'timidity' enabled!"
 		die "music support error"
-	fi
-
-	# OpenGL check
-	if use opengl ; then
-		if [ "${backend}" == "media-libs/libsdl" ] && ! built_with_use ${backend} opengl ; then
-			echo
-			eerror "OpenGL support is not configured properly!"
-			eerror "Please rebuild ${backend} with 'opengl' USE flag enabled"
-			die "opengl support error"
-		fi
-	else
-		echo
-		ewarn "'opengl' USE flag disabled. OpenGL is recommended, for best graphics."
-	fi
-
-	# Does user want external music? Vorbis support is needed
-	if use music && ! use vorbis ; then
-		echo
-		eerror "Ogg/Vorbis support is required for external music playing"
-		eerror "Please enable 'vorbis' USE flag for this package"
-		die "external music support error"
 	fi
 
 	echo
@@ -132,7 +108,6 @@ src_unpack() {
 
 	# Patch Makefiles to get rid of executable wrappers
 	epatch "${FILESDIR}/${PN}-makefile_nowrapper.patch"
-	epatch "${FILESDIR}/${PV}-vulnerabilities.patch"
 
 	# Set shared directory
 	sed -i \
@@ -155,6 +130,9 @@ src_compile() {
 		allegro="--without-allegro" \
 		sdl="--without-sdl"
 
+	export WX_GTK_VER="2.6"
+	need-wxwidgets gtk2
+
 	# Sdl is the default, unless sdl=off & allegro=on
 	if ! use sdl && use allegro ; then
 		allegro="--with-allegro"
@@ -171,7 +149,7 @@ src_compile() {
 		$(use_with opengl) \
 		$(use_with openal) \
 		$(use_with external-glbsp) \
-		$(use_with vorbis) \
+		$(use_with music vorbis) \
 		$(use_with mad libmad) \
 		$(use_with mikmod) \
 		$(use_with flac) \
@@ -179,12 +157,13 @@ src_compile() {
 		$(use_enable dedicated server) \
 		$(use_enable debug) \
 		$(use_enable debug zone-debug) \
+		$(use_enable wxwindows launcher) \
+		--with-wx-config=${WX_CONFIG} \
 		--with-iwaddir="${dir}" \
 		--disable-dependency-tracking \
+		--disable-maintainer-mode \
 		|| die "egamesconf failed"
 
-	# Parallel compiling seems to work (tested on 1.24)
-	# I hope it would be true :P (in case i'll re-enable it later)
 	emake || die "emake failed"
 }
 
@@ -196,18 +175,24 @@ src_install() {
 	# Remove unneeded icon
 	rm -f "${D}/${dir}/${PN}.png"
 
-	doicon source/${PN}.png || die "doicon failed"
-
 	# Enable OpenGL in desktop entry, if relevant USE flag is enabled
 	use opengl && de_cmd="${PN} -opengl"
+	doicon source/${PN}.png || die "doicon ${PN}.png failed"
 	make_desktop_entry "${de_cmd}" "Vavoom"
 
 	dodoc docs/${PN}.txt || die "dodoc vavoom.txt failed"
 
-	if use tools; then
+	if use tools ; then
 		# The tools are always built
 		dobin utils/bin/{acc,fixmd2,vcc,vlumpy} || die "dobin utils failed"
 		dodoc utils/vcc/vcc.txt || die "dodoc vcc.txt failed"
+	fi
+
+	if use wxwindows ; then
+		# Install graphical launcher
+		doicon utils/vlaunch/vlaunch.xpm || die "doicon vlaunch.xpm failed"
+		dogamesbin utils/bin/vlaunch || die "dogamesbin vlaunch failed"
+		make_desktop_entry "vlaunch" "Vavoom Launcher" "vlaunch.xpm"
 	fi
 
 	prepgamesdirs
@@ -226,6 +211,15 @@ pkg_postinst() {
 	elog "   vavoom -doom -opengl"
 	elog
 	elog "See documentation for further details."
+
+	if use wxwindows ; then
+		echo
+		elog "You've also installed a nice graphical launcher. Simply run:"
+		elog
+		elog "   vlaunch"
+		elog
+		elog "to enjoy it :)"
+	fi
 
 	if use tools; then
 		echo
