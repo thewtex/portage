@@ -73,12 +73,7 @@ src_compile ()
 			-e "s;^\(USE_CATAPULT\s*=\s*\).*;\1False;" \
 			"${PN}"/constants.py
 
-	# don't do this as "use userpriv && ..." as it makes the whole function
-	# fail, if userpriv is not set
-	if use userpriv; then
-		sed -i -e "s/Exec=.*/Exec=portato --no-listener/" portato.desktop
-	fi
-
+	use userpriv &&	sed -i -e "s/Exec=.*/Exec=portato --no-listener/" portato.desktop
 	use nls && ./pocompile.sh -emerge
 
 	distutils_src_compile
