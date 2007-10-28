@@ -5,6 +5,7 @@
 inherit linux-mod
 
 MY_PN="rt2x00-git"
+
 DESCRIPTION="Ralink drivers for rt2400, rt2500, rt61 and rt73 chips (experimental git branch)"
 HOMEPAGE="http://rt2x00.serialmonkey.com/"
 SRC_URI="http://dev.gentooexperimental.org/~jakub/distfiles/${MY_PN}-${PV}.tar.gz"
@@ -33,10 +34,10 @@ src_unpack() {
 	unpack ${A}
 	if use rt61pci || use rt73usb ; then
 		echo "CFLAGS += -I/usr/include/mac80211 -I/usr/include/crc-itu-t" \
-			"-I/usr/include/eeprom_93cx6 -D CONFIG_RT2X00_LIB_FIRMWARE" >> ${S}/Makefile
+			"-I/usr/include/eeprom_93cx6 -D CONFIG_RT2X00_LIB_FIRMWARE" >> "${S}"/Makefile
 	else
 		echo "CFLAGS += -I/usr/include/mac80211 -I/usr/include/crc-itu-t" \
-			"-I/usr/include/eeprom_93cx6" >> ${S}/Makefile
+			"-I/usr/include/eeprom_93cx6" >> "${S}"/Makefile
 	fi
 }
 
