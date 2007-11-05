@@ -11,16 +11,11 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="dev-util/cmake"
+DEPEND=""
 RDEPEND=""
 
-src_compile() {
-	cmake "${S}" || die "compile failed!"
-	emake || die "compile failed!"
-}
-
 src_install() {
-	dobin ypd
+	dobin src/ypd
 	dodir /etc/init.d/
 	newinitd "${FILESDIR}/ypd.rc" ypd
 	newconfd "${FILESDIR}/ypd.conf" ypd

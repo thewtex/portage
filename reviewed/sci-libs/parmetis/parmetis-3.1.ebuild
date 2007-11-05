@@ -21,24 +21,28 @@ RDEPEND="${DEPEND}"
 
 S=${WORKDIR}/ParMetis-${PV}
 
+src_unpack() {
+	unpack "${A}"
+	cd "${S}"
+	epatch "${FILESDIR}"/"${P}".patch
+}
+
 src_compile() {
 	emake || die "emake failed"
 }
 
 src_install() {
-	dolib.a libmetis.a || die "cannot dolib libmetis"
-	dolib.a libparmetis.a || die "cannot dolib libparmetis"
+	dolib *.a *.so *.so."${PV}"
 	insinto /usr/include
 	doins parmetis.h
-	dodir /usr/include/metis
-	dodir /usr/include/parmetis
+	dodir /usr/include/{metis,parmetis}
 	insinto /usr/include/metis
 	cd ./METISLib
-	doins *.h || die "cannot doins *.h"
+	doins *.h
 	cd ../ParMETISLib
 	insinto /usr/include/parmetis
-	doins *.h || die "cannot doins *.h"
+	doins *.h
 	cd ../Manual
 	insinto /usr/share/doc/"${P}"
-	newins manual.pdf ParMetis.pdf || die "cannot doins manual"
+	newins manual.pdf ParMetis.pdf
 }
