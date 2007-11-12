@@ -18,13 +18,20 @@ DEPEND="dev-libs/libdnet
 	net-libs/libpcap"
 RDEPEND="${DEPEND}"
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-	epatch "${FILESDIR}/${P}-version.patch"
+pkg_setup() {
+	enewgroup daemonlogger
+	enewuser daemonlogger -1 -1 /sbin/nologin daemonlogger
 }
 
 src_install() {
 	dosbin daemonlogger
 	dodoc AUTHORS ChangeLog NEWS README
+
+	keepdir /var/log/daemonlogger
+
+	newinitd "${FILESDIR}"/daemonlogger-initd daemonlogger
+	newconfd "${FILESDIR}"/daemonlogger-confd daemonlogger
+
+	fowners daemonlogger:daemonlogger /var/log/daemonlogger
+	fperms 0700 /var/log/daemonlogger
 }

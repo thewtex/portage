@@ -4,7 +4,7 @@
 
 inherit eutils
 
-MY_JAR_REV="r15591"
+MY_JAR_REV="r15753"
 MY_JAR_FILE="freenet-${MY_JAR_REV}-snapshot.jar"
 
 DESCRIPTION="An encrypted network without censorship"
@@ -13,7 +13,6 @@ SRC_URI="http://downloads.freenetproject.org/alpha/installer/freenet07.tar.gz
 	http://downloads.freenetproject.org/alpha/update/update.sh
 	http://downloads.freenetproject.org/alpha/update/wrapper.conf
 	http://downloads.freenetproject.org/alpha/${MY_JAR_FILE}
-	http://dev.gentooexperimental.org/~tommy$/${MY_JAR_FILE}
 	http://downloads.freenetproject.org/alpha/freenet-ext.jar"
 
 LICENSE="GPL-2"
@@ -26,8 +25,6 @@ RDEPEND="!net-p2p/freenet
 	>=virtual/jre-1.4"
 
 S="${WORKDIR}/${PN/-bin/}"
-
-RESTRICT="userpriv"
 
 QA_TEXTRELS="opt/freenet/lib/libwrapper-linux-x86-32.so"
 
