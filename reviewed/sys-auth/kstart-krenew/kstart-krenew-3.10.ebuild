@@ -14,7 +14,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="afs kerberos krb4"
 
 DEPEND="afs? ( net-fs/openafs )
-	kerberos? ( app-crypt/mit-krb5 )"
+	kerberos? ( virtual/krb5 )"
 
 RDEPEND="${DEPEND}"
 
@@ -36,10 +36,11 @@ src_compile() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die "could not install"
 	dobin k5start krenew
 	if use krb4; then
 		dobin k4start
+		doman k4start.1
 	fi
+	doman k5start.1 krenew.1
 	dodoc README NEWS
 }
