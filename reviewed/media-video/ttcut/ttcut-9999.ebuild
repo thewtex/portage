@@ -2,8 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="1"
-
 inherit eutils qt4 subversion
 
 DESCRIPTION="Tool for removing advertisements from recorded MPEG files"
@@ -15,7 +13,7 @@ SLOT="0"
 KEYWORDS="~x86"
 IUSE=""
 
-DEPEND=">=x11-libs/qt-4.1:4
+DEPEND="$(qt4_min_version 4.1)
 	>=media-libs/libmpeg2-0.4.0
 	virtual/opengl"
 

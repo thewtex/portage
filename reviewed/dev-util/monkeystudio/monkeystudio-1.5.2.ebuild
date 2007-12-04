@@ -2,7 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="1"
 inherit qt4
 
 MY_PN="${PN}-src"
@@ -16,7 +15,7 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="doc"
 
-RDEPEND=">=x11-libs/qt-4.0:4"
+RDEPEND="$(qt4_min_version 4)"
 DEPEND="${RDEPEND}
 	app-arch/unzip"
 
