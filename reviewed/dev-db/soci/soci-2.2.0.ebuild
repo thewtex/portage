@@ -2,6 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
+inherit eutils
+
 KEYWORDS="~amd64 ~x86"
 
 DESCRIPTION="A database access library for C++ that makes the illusion of embedding SQL queries in the regular C++ code."
@@ -11,12 +13,16 @@ LICENSE="Boost-1.0"
 SLOT="0"
 IUSE="debug firebird mysql postgres sqlite3 static"
 
-RDEPEND="firebird? ( dev-db/firebird )
+DEPEND="firebird? ( dev-db/firebird )
 		mysql? ( virtual/mysql )
 		postgres? ( dev-db/libpq )
 		sqlite3? ( =dev-db/sqlite-3* )"
-DEPEND="${RDEPEND}
-		sys-devel/libtool"
+
+src_unpack() {
+	unpack ${A}
+	cd "${S}"
+	epatch "${FILESDIR}/${P}-sqlite_fix.patch"
+}
 
 src_compile() {
 	local myconf
