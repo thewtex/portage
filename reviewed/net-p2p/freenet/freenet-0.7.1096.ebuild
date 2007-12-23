@@ -48,7 +48,8 @@ src_install() {
 	dodoc license/README license/LICENSE.Mantissa license/LICENSE.Freenet
 	dobin bin/wrapper-linux-x86-{32,64}
 	dolib.so lib/libwrapper-linux-x86-{32,64}.so
-	doins run.sh "${S}"/update.sh "${S}"/wrapper.conf freenet/lib/freenet-{cvs-snapshot,ext}.jar
+	doins seednodes.fref run.sh "${S}"/update.sh \
+		"${S}"/wrapper.conf freenet/lib/freenet-{cvs-snapshot,ext}.jar
 
 	dosym freenet-stable-latest.jar /opt/freenet/freenet.jar
 	fperms 755 /opt/freenet/{update,run}.sh
@@ -58,6 +59,10 @@ src_install() {
 pkg_postinst () {
 	elog "1. Start freenet with /etc/init.d/freenet start."
 	elog "2. Open localhost:8888 in your browser for the web interface."
+	elog " "
+	elog "If you dont know trusted people running freenet,"
+	elog "enable opennet ("insecure mode") on the config page to get started."
+	elog " "
 	cp /opt/freenet/freenet-cvs-snapshot.jar /opt/freenet/freenet-stable-latest.jar && chown freenet:freenet /opt/freenet/*
 }
 
