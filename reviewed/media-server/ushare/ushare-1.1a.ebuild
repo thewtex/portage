@@ -11,7 +11,7 @@ SLOT="0"
 KEYWORDS="~x86"
 IUSE="dlna nls"
 
-DEPEND="dlna? ( media-libs/libdlna )"
+DEPEND="dlna? ( media-libs/libdlna ) net-libs/libupnp"
 RDEPEND="${DEPEND}"
 
 src_compile() {
