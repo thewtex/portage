@@ -33,6 +33,7 @@ pkg_setup() {
 src_unpack(){
 	unpack ${A}
 	cd "${S}"
+	epatch "${FILESDIR}"/parallel-build.patch
 
 	# Enable hinotify in priv_def.mk
 	if use hinotify && kernel_is ge 2 6 18 ; then

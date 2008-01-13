@@ -1,10 +1,10 @@
-# Copyright 1999-2007 Gentoo Foundation
+# Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-WANT_AUTOCONF="latest"
-WANT_AUTOMAKE="latest"
-inherit eutils wxwidgets autotools gnome2
+EAPI="1"
+WX_GTK_VER="2.6"
+inherit wxwidgets autotools gnome2
 
 MY_P=XaraLXSrc-${PV/_p/r}
 
@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="x11-libs/gtk+
-	>=x11-libs/wxGTK-2.6.3
+	>=x11-libs/wxGTK-2.6.3:2.6
 	virtual/libintl
 	>=media-libs/libpng-1.2.8
 	>=media-libs/jpeg-6b
@@ -32,7 +32,6 @@ DEPEND="${RDEPEND}
 S=${WORKDIR}/${MY_P/Src/}
 
 pkg_setup() {
-	export WX_GTK_VER="2.6"
 	need-wxwidgets unicode
 }
 
@@ -50,8 +49,7 @@ src_compile() {
 		--with-wx-config=${WX_CONFIG} \
 		--with-wx-base-config=${WX_CONFIG} \
 		--enable-xarlib \
-		--enable-filters \
-		|| die "econf failed"
+		--enable-filters
 
 	emake || die "emake failed"
 }
