@@ -1,4 +1,4 @@
-# Copyright 1999-2007 Gentoo Foundation
+# Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -12,23 +12,25 @@ KEYWORDS="~amd64 ~x86"
 IUSE="kerberos"
 
 RDEPEND=">=x11-libs/gtk+-2.6
-	>=net-nds/openldap-2
+	net-nds/openldap
 	kerberos? ( virtual/krb5 )
 	dev-libs/openssl
 	dev-libs/libxml2
 	>=dev-libs/glib-2.6
 	x11-libs/pango
 	dev-libs/cyrus-sasl
-	>=gnome-base/gnome-keyring-0.4.4
-	>=gnome-base/libglade-2"
+	gnome-base/gnome-keyring
+	gnome-base/libglade
+	dev-libs/libgcrypt"
 DEPEND="${RDEPEND}
-	dev-util/pkgconfig"
+	dev-util/pkgconfig
+	dev-util/intltool"
 
 src_compile() {
 	local myconf="--enable-browser-dnd --enable-cache --disable-update-mimedb"
-	use kerberos && myconf="${myconf} --with-kerberos-prefix=/usr"
 
-	econf ${myconf} || die "econf failed"
+	econf ${myconf} $(use_with kerberos kerberos-prefix /usr) \
+		|| die "econf failed"
 	emake || die "emake failed"
 }
 
