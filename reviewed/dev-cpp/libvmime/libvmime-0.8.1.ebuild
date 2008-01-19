@@ -1,4 +1,4 @@
-# Copyright 1999-2007 Gentoo Foundation
+# Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -6,7 +6,7 @@ inherit eutils
 
 KEYWORDS="~x86"
 
-DESCRIPTION="A powerful C++ class library for working with MIME messages and Internet messaging services like IMAP, POP or SMTP."
+DESCRIPTION="A powerful C++ class library for working with MIME messages and services like IMAP, POP or SMTP."
 HOMEPAGE="http://www.vmime.org/"
 SRC_URI="mirror://sourceforge/vmime/${P}.tar.bz2"
 LICENSE="GPL-2"
