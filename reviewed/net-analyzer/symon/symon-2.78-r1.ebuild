@@ -33,9 +33,6 @@ src_unpack() {
 	unpack ${A}
 
 	epatch "${FILESDIR}"/${PN}-symon.conf.patch
-
-	# if the symux USE flag was not specified don't build the target
-	! use symux && sed -i -e 's|symux||' symon/Makefile
 	use symux && epatch "${FILESDIR}"/${PN}-symux.conf.patch
 
 	if use syweb ; then
@@ -44,19 +41,14 @@ src_unpack() {
 		epatch "${FILESDIR}"/${PN}-syweb-total_firewall.layout.patch
 	fi
 
-	# we've to sed the whole line because CC? means if the variable is not
-	# already defined
-	sed -i -e "s:^CC.*:CC=$(tc-getCC):" symon/Makefile.inc
-
-	sed -i -e "s:CFLAGS+=-Wall:CFLAGS=${CFLAGS}:" symon/Makefile.inc
-
-	# leave to portage stripping binaries
-	sed -i -e "/STRIP/d" symon/symon/Makefile
-	sed -i -e "/STRIP/d" symon/symux/Makefile
+	if ! use symux ; then
+		sed -i -e "/SUBDIR/ s/symux//" "${S}"/Makefile || die "sed failed."
+	fi
 }
 
 src_compile() {
-	MAKE=pmake emake || die "emake failed."
+	MAKE=pmake emake CC="$(tc-getCC)" CFLAGS+="${CFLAGS}" \
+		STRIP=true || die "emake failed."
 }
 
 src_install() {
@@ -118,9 +110,7 @@ pkg_postinst() {
 	elog "You'll need to setup your /etc/symon.conf and "
 	elog "/etc/symux.conf before running these daemons for "
 	elog "the first time."
-	elog "For an example configuration run /usr/share/symon/c_config.sh"
-	elog "Then, you may run /usr/share/symon/c_smrrds.sh all"
 	elog "To test the configuration run sym{on,ux} -t"
-	elog "For details, please see their manpages."
+	elog "To create the RRDs run /usr/share/symon/c_smrrds.sh all"
 	elog "NOTE that symon won't chroot by default."
 }
