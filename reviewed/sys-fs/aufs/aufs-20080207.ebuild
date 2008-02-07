@@ -11,13 +11,11 @@ SRC_URI="http://dev.gentooexperimental.org/~tommy/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="hinotify nfsexport"
-
-MODULE_NAMES="aufs(addon/fs/${PN}:)"
-BUILD_PARAMS="KDIR=${KV_DIR} -f local.mk"
-BUILD_TARGETS="all"
+IUSE="hinotify"
 
 S="${WORKDIR}"/aufs
+
+MODULE_NAMES="aufs(addon/fs/${PN}:)"
 
 pkg_setup() {
 	# kernel version check
@@ -33,16 +31,10 @@ pkg_setup() {
 src_unpack(){
 	unpack ${A}
 	cd "${S}"
-	epatch "${FILESDIR}"/parallel-build.patch
 
 	# Enable hinotify in priv_def.mk
 	if use hinotify && kernel_is ge 2 6 18 ; then
 		echo "CONFIG_AUFS_HINOTIFY = y" >> priv_def.mk || die "setting hinotify in priv_def.mk failed!"
-	fi
-
-	# Enable nfsexport in priv_def.mk
-	if use nfsexport && kernel_is ge 2 6 18 ; then
-		echo "CONFIG_AUFS_EXPORT = y" >> priv_def.mk || die "setting nfsexport in priv_def.mk failed!"
 	fi
 
 	# Disable SYSAUFS for kernel less than 2.6.18
@@ -61,7 +53,7 @@ src_unpack(){
 src_compile() {
 	use x86 && ARCH=i386
 	use amd64 && ARCH=x86_64
-	emake || die "emake failed"
+	emake KDIR=${KV_DIR} -f local.mk|| die "emake failed"
 }
 
 src_install() {
