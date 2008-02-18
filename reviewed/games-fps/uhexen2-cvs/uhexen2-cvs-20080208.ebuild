@@ -4,14 +4,14 @@
 
 inherit eutils flag-o-matic toolchain-funcs versionator games
 
-DATA_PV="1.19"
+DATA_PV="1.19a"
 HW_PV="0.15"
 MY_PN="hexen2"
 DEMO_PV="1.4.2"
 
-DESCRIPTION="Hexen 2 port - Hammer of Thyrion"
+DESCRIPTION="Hexen 2 port - Hammer of Thyrion (CVS snapshot)"
 HOMEPAGE="http://uhexen2.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${MY_PN}source-${PV}.tgz
+SRC_URI="http://uhexen2.sourceforge.net/devel/cvs_latest/${P}.tgz
 	mirror://sourceforge/u${MY_PN}/gamedata-all-${DATA_PV}.tgz
 	hexenworld? ( mirror://sourceforge/u${MY_PN}/hexenworld-pakfiles-${HW_PV}.tgz )"
 
@@ -41,7 +41,7 @@ UIDEPEND=">=media-libs/libsdl-1.2.7
 LNCHDEPEND="gtk? ( =x11-libs/gtk+-2* )"
 
 # xdelta is needed to manually run the patch script
-RDEPEND="!games-fps/uhexen2-cvs
+RDEPEND="!games-fps/uhexen2
 	${UIDEPEND}
 	${LNCHDEPEND}
 	demo? ( >=games-fps/hexen2-demodata-${DEMO_PV} )
@@ -51,7 +51,7 @@ DEPEND="${UIDEPEND}
 	${LNCHDEPEND}
 	x86? ( asm? ( >=dev-lang/nasm-0.98.38 ) )"
 
-S="${WORKDIR}/hexen2source-${PV}"
+S="${WORKDIR}/uhexen2-cvs-${PV}"
 dir="${GAMES_DATADIR}/${MY_PN}"
 
 pkg_setup() {
@@ -75,7 +75,9 @@ pkg_setup() {
 src_unpack() {
 	unpack ${A}
 	cd "${S}"
-	epatch "${FILESDIR}/${P}_fix_huffman-vuln.patch"
+
+	# Clean CVS stuff
+	for x in `find . -name CVS -print`; do rm -fr ${x}; done
 
 	cd hexen2
 	epatch "${S}/00_Patches/external-music-file-support.diff"

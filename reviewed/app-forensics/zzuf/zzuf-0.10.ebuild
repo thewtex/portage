@@ -8,8 +8,19 @@ SRC_URI="http://sam.zoy.org/zzuf/${P}.tar.gz"
 
 LICENSE="WTFPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~sparc ~x86"
 IUSE=""
+
+src_unpack() {
+	unpack ${A}
+	sed -i -e '/^SUBDIRS/ s/test//' "${S}"/Makefile.in || die "sed failed."
+}
+
+src_test() {
+	cd test
+	emake || die "emake failed."
+	sh ./testsuite.sh || die "testsuite failed."
+}
 
 src_install() {
 	emake DESTDIR="${D}" install || die "install failed"
