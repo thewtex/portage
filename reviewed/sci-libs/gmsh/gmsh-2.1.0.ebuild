@@ -18,7 +18,7 @@ RDEPEND="sci-libs/gsl
 	zlib? ( sys-libs/zlib )"
 
 DEPEND="${RDEPEND}
-	doc? ( app-text/tetex )"
+	doc? ( virtual/latex-base )"
 
 src_compile() {
 	econf \
