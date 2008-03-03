@@ -30,8 +30,8 @@ src_unpack() {
 	unpack ${A}
 	cd "${S}"
 
-	# Because tribler.py has Windows CR/LF at the end of it's lines
-	sed -i -e 's/.$//' ${PN}.py || die "Error: sed failed"
+	# Because tribler.py has Windows CR/LF at the end of its lines
+	edos2unix ${PN}.py
 }
 
 src_install() {
@@ -42,7 +42,7 @@ src_install() {
 	TorrentMaker || die "Error: doins failed"
 	doins abcengine.py btdownloadheadless.py btshowmetainfo.py webtest.py \
 		interconn.py launchmanycore.py webservice.py safeguiupdate.py \
-		tribler.py *.ico *.xpm *.conf *.nsi *.command *.bmp cities.txt
+		tribler.py *.ico *.xpm *.conf *.nsi *.command *.bmp cities.txt \
 		people.txt superpeer.txt || die "Error: doins failed"
 	doicon ${PN}.xpm
 	make_desktop_entry "tribler" "Tribler P2P Bittorrent/Youtube client" \
