@@ -6,11 +6,11 @@ EAPI="1"
 inherit eutils games qt4
 
 MY_PN="PokerTH"
-S="${WORKDIR}/${MY_PN}-${PV}"
+S="${WORKDIR}/${MY_PN}-${PV}-src"
 
 DESCRIPTION="Texas Hold'em poker game."
 HOMEPAGE="http://www.pokerth.net/"
-SRC_URI="mirror://sourceforge/${PN}/${MY_PN}-${PV}-src.tar.bz2"
+SRC_URI="mirror://sourceforge/${PN}/${MY_PN}-${PV}.src.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
