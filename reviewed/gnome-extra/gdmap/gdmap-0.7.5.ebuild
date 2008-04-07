@@ -13,9 +13,10 @@ KEYWORDS="~amd64 ~x86"
 IUSE="doc"
 SLOT="0"
 
-DEPEND=">=x11-libs/gtk+-2.6.0
+RDEPEND=">=x11-libs/gtk+-2.6.0
 	dev-libs/libxml2"
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}
+	dev-util/pkgconfig"
 
 src_install() {
 	gnome2_src_install

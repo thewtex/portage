@@ -2,17 +2,16 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-inherit eutils flag-o-matic toolchain-funcs versionator games
+inherit eutils flag-o-matic toolchain-funcs games
 
-MY_PV=$(replace_version_separator 3 '-')
 DATA_PV="1.19a"
 HW_PV="0.15"
 MY_PN="hexen2"
-DEMO_PV="1.4.2"
+DEMO_PV="1.4.3"
 
 DESCRIPTION="Hexen 2 port - Hammer of Thyrion"
 HOMEPAGE="http://uhexen2.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${MY_PN}source-${MY_PV}.tgz
+SRC_URI="mirror://sourceforge/${PN}/${MY_PN}source-${PV}.tgz
 	mirror://sourceforge/u${MY_PN}/gamedata-all-${DATA_PV}.tgz
 	hexenworld? ( mirror://sourceforge/u${MY_PN}/hexenworld-pakfiles-${HW_PV}.tgz )"
 
@@ -52,7 +51,7 @@ DEPEND="${UIDEPEND}
 	${LNCHDEPEND}
 	x86? ( asm? ( >=dev-lang/nasm-0.98.38 ) )"
 
-S="${WORKDIR}/hexen2source-${MY_PV}"
+S="${WORKDIR}/hexen2source-${PV}"
 dir="${GAMES_DATADIR}/${MY_PN}"
 
 pkg_setup() {
@@ -413,17 +412,17 @@ pkg_postinst() {
 		elog "To play the demo, emerge with the 'demo' USE flag."
 		elog
 		elog "For the Hexen 2 original game..."
-		elog "Put the following files into ${dir}/data1 before playing:"
+		elog "Put the following files into "${dir}"/data1 before playing:"
 		elog "   pak0.pak pak1.pak"
 		elog "Then to play:  hexen2"
 		elog
 		elog "For the 'Portal of Praevus' mission pack..."
-		elog "Put the following file into ${dir}/portals before playing:"
+		elog "Put the following file into "${dir}"/portals before playing:"
 		elog "   pak3.pak"
 		elog "Then to play:  hexen2 -portals"
 		elog
 		elog "To ensure the data files from the CD are patched, run as root:"
-		elog "   cd ${dir} && sh update_xdelta.sh"
+		elog "   cd "${dir}" && sh update_xdelta.sh"
 		elog
 		elog "Example command-line:"
 		elog "   hexen2 -width 1024 -height 768 -conwidth 640"
