@@ -8,7 +8,7 @@ inherit depend.php eutils perl-module toolchain-funcs webapp
 DESCRIPTION="System monitor for obtaining accurate and up to date info on the performance of a number of systems"
 HOMEPAGE="http://www.xs4all.nl/~wpd/symon/"
 SRC_URI="http://www.xs4all.nl/~wpd/symon/philes/${P}.tar.gz
-	syweb? ( http://www.xs4all.nl/~wpd/symon/philes/syweb-0.57.tar.gz )"
+	syweb? ( http://www.xs4all.nl/~wpd/symon/philes/syweb-0.58.tar.gz )"
 
 LICENSE="BSD-2"
 WEBAPP_MANUAL_SLOT="yes"
@@ -19,8 +19,7 @@ IUSE="client symux syweb vhosts"
 RDEPEND="client? ( dev-lang/perl )
 	symux? ( net-analyzer/rrdtool )
 	syweb? ( ${WEBAPP_DEPEND}
-		    virtual/httpd-php
-		    virtual/httpd-cgi )"
+		    virtual/httpd-php )"
 DEPEND="${RDEPEND}
 	sys-devel/pmake"
 
@@ -54,7 +53,9 @@ src_unpack() {
 }
 
 src_compile() {
-	MAKE=pmake emake CC="$(tc-getCC)" CFLAGS+="${CFLAGS}" \
+	MAKE=pmake emake \
+		CC="$(tc-getCC)" \
+		CFLAGS+="${CFLAGS}" \
 		STRIP=true || die "emake failed."
 }
 

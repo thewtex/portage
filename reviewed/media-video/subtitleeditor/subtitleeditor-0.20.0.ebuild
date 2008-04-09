@@ -2,21 +2,20 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-inherit eutils
+inherit eutils versionator
 
-MY_PV="${PV//_/-}"
-MY_P="${PN}-${MY_PV}"
-
+MY_PVM="$(get_version_component_range 1-2)"
 DESCRIPTION="A GTK+ subtitle editing tool"
-HOMEPAGE="http://kitone.free.fr/subtitleeditor/"
-SRC_URI="http://kitone.free.fr/${PN}/files/${MY_P}.tar.gz"
+HOMEPAGE="http://home.gna.org/subtitleeditor/"
+SRC_URI="http://download.gna.org/${PN}/${MY_PVM}/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="cairo debug spell"
 
-DEPEND=">=dev-cpp/gtkmm-2.6
+DEPEND=">=dev-cpp/libxmlpp-2.10.0
+	>=dev-cpp/gtkmm-2.6
 	>=dev-cpp/libglademm-2.4
 	dev-libs/libpcre
 	>=media-libs/gstreamer-0.10
@@ -27,11 +26,8 @@ DEPEND=">=dev-cpp/gtkmm-2.6
 RDEPEND="${DEPEND}
 	>=media-plugins/gst-plugins-ffmpeg-0.10"
 
-S="${WORKDIR}/${MY_P}"
-
 pkg_setup() {
-	# pcre needs to support utf8; only <libpcre-7.0 forces it
-	if ! built_with_use --missing true dev-libs/libpcre unicode ; then
+	if ! built_with_use dev-libs/libpcre unicode ; then
 		eerror "${PN} requires dev-libs/libpcre with unicode support"
 		die "Recompile dev-libs/libpcre with USE=\"unicode\" first."
 	fi
@@ -50,8 +46,6 @@ src_compile() {
 }
 
 src_install() {
-	# Bug filed upstream -- (which bug is it and what does it fix?)
-	sed -i -e "s:${PN}-icon:/usr/share/${PN}/${PN}:" "share/${PN}.desktop"
 	emake DESTDIR="${D}" install || die "make install failed"
 	dodoc AUTHORS NEWS README TODO
 }
