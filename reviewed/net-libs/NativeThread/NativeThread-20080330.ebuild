@@ -4,31 +4,32 @@
 
 inherit eutils flag-o-matic toolchain-funcs
 
-DESCRIPTION="Forword error correction libs"
-HOMEPAGE="http://www.onionnetworks.com/developers/"
-SRC_URI="http://www.onionnetworks.com/downloads/${P}.zip"
+DESCRIPTION="NativeThread for priorities on linux for freenet"
+HOMEPAGE="http://www.freenetproject.org/"
+SRC_URI="http://dev.gentooexperimental.org/~tommy/${P}.tar.bz2"
 
-LICENSE="BSD-2"
+LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="virtual/jdk"
-S=${WORKDIR}/${P}/src/csrc/
+DEPEND="net-p2p/freenet
+	virtual/jdk
+	!net-p2p/NativeThread"
+RDEPEND=""
 
 src_unpack() {
 	unpack ${A}
-	cd "${S}"
 	epatch "${FILESDIR}"/Makefile.patch
 }
 
 src_compile() {
-	append-flags -fPIC
+	append-ldflags -fPIC
 	tc-export CC
 	emake || die
 }
 
 src_install() {
 	into /opt/freenet
-	dolib.so ../../lib/fec-linux-x86/lib/linux/x86/libfec{8,16}.so
+	dolib.so libNativeThread.so
 }
