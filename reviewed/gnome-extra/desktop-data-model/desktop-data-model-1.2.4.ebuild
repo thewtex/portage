@@ -25,7 +25,6 @@ RDEPEND=">=dev-libs/dbus-glib-0.6
 	>=sys-apps/dbus-1
 	>=x11-libs/gtk+-2.6
 	x11-libs/libXScrnSaver
-	!<net-misc/mugshot-1.1.90
 	sqlite? ( >=dev-db/sqlite-3.3 )"
 
 DEPEND="dev-util/pkgconfig
