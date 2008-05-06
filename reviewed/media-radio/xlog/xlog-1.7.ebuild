@@ -8,7 +8,7 @@ DESCRIPTION="An amateur radio logging program"
 HOMEPAGE="http://pg4i.chronos.org.uk/"
 SRC_URI="http://pg4i.chronos.org.uk/download/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~ppc ~x86"
 IUSE=""
@@ -26,6 +26,7 @@ src_unpack() {
 	cd "${S}"
 	# Let portage handle updating mimie/desktop databases
 	epatch "${FILESDIR}/${P}-desktop-update.patch"
+	mkdir -p "${S}"/m4	# make autoconf happy...
 	eautoreconf
 }
 
