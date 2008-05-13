@@ -17,7 +17,6 @@ IUSE="doc gd python tk"
 RESTRICT="test"
 
 RDEPEND="virtual/libc
-	gd? ( media-libs/gd )
 	python? ( dev-lang/python
 		dev-lang/tcl )
 	tk? ( dev-lang/tk )"
@@ -48,8 +47,7 @@ src_compile() {
 		--without-rpc-backends \
 		--without-perl-binding \
 		$(use_with python python-binding) \
-		$(use_with tk tcl-binding) \
-		$(use_with gd rigmatrix)
+		$(use_with tk tcl-binding)
 
 	emake || die "emake failed"
 
