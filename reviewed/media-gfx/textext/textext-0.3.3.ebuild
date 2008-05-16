@@ -13,8 +13,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND="media-gfx/inkscape
-	|| ( media-gfx/pdf2svg media-gfx/pstoedit )"
+RDEPEND="|| ( media-gfx/pdf2svg media-gfx/pstoedit )"
 DEPEND="${RDEPEND}"
 
 pkg_setup() {
