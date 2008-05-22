@@ -8,21 +8,20 @@ DESCRIPTION="Ham radio backend rig control libraries"
 HOMEPAGE="http://hamlib.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
-LICENSE="LGPL-2
-	GPL-2"
+LICENSE="LGPL-2 GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~ppc ~x86 ~x86-fbsd"
-IUSE="doc gd python tk"
+IUSE="doc python tcl"
 
 RESTRICT="test"
 
 RDEPEND="virtual/libc
 	python? ( dev-lang/python
 		dev-lang/tcl )
-	tk? ( dev-lang/tk )"
-DEPEND=">=sys-devel/libtool-1.5
-	>=sys-devel/autoconf-2.54
-	>=sys-devel/automake-1.7
+	tcl? ( dev-lang/tcl )"
+
+DEPEND=" ${RDEPEND}
+	>=sys-devel/libtool-1.5
 	>=dev-util/pkgconfig-0.15
 	>=dev-lang/swig-1.3.14
 	dev-libs/libxml2
@@ -32,8 +31,7 @@ src_unpack() {
 	unpack ${A}
 	cd "${S}"
 
-	epatch "${FILESDIR}"/${PN}-pkgconfig-fix.diff || \
-		die "epatch failed"
+	epatch "${FILESDIR}"/${PN}-pkgconfig-fix.diff
 
 	# Needed for FreeBSD - Please do not remove
 	elibtoolize
@@ -47,7 +45,7 @@ src_compile() {
 		--without-rpc-backends \
 		--without-perl-binding \
 		$(use_with python python-binding) \
-		$(use_with tk tcl-binding)
+		$(use_with tcl tcl-binding)
 
 	emake || die "emake failed"
 
