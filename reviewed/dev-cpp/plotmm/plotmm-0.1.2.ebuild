@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/plotmm/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~x86"
-IUSE=""
+IUSE="doc"
 
 RDEPEND=">=dev-cpp/gtkmm-2.0
 		dev-libs/libsigc++:2"
@@ -22,6 +22,8 @@ src_install() {
 	make install DESTDIR="${D}" || die "install failed"
 
 	dodoc AUTHORS ChangeLog INSTALL NEWS README || die
-	cp -R doc "${D}/usr/share/doc/${P}"
-}
 
+	if use doc; then
+		dohtml -r doc/html/* || die "Dohtml failed"
+	fi
+}

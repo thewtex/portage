@@ -11,13 +11,15 @@ SRC_URI="ftp://dabodev.com/dabo/${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~x86"
-IUSE=""
+IUSE="ide"
 
-DEPEND=">=dev-python/setuptools-0.6_alpha9"
+DEPEND=">=dev-python/setuptools-0.6_alpha9
+	ide? ( !dev-db/daboide )"
 
 RDEPEND=">=dev-python/wxpython-2.6.1.1
 	>=dev-db/sqlite-3.0
 	>=dev-python/pysqlite-2.0
+	ide? ( dev-python/imaging dev-python/reportlab )
 	${DEPEND}"
 
 S="${WORKDIR}/${PN}"
@@ -30,4 +32,20 @@ src_install() {
 		|| die "setup.py install failed"
 
 	dodoc ANNOUNCE AUTHORS ChangeLog README TODO
+
+	if use ide; then
+		cd "${S}/ide"
+		INS="/usr/$(get_libdir)/python${PYVER}/site-packages/${PN}/ide"
+
+		insinto ${INS}
+		doins -r * || die "IDE installation failed!"
+
+		# pick out those files which should be executable
+		for EFIL in $(grep -RI '^#!' * | cut -d : -f 1 | grep -iv '\.txt$')
+		do
+			# and if there are any - install them
+			exeinto "${INS}/$(dirname ${EFIL})"
+			doexe "${EFIL}"
+		done
+	fi
 }
