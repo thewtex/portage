@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-inherit linux-info linux-mod versionator
+inherit base linux-info linux-mod versionator
 
 printf -v EHG_REVISION '%012x' "$(get_version_component_range 4)"
 
@@ -16,19 +16,6 @@ IUSE=""
 
 S=${WORKDIR}/${PN}-${EHG_REVISION}
 
-MODULE_NAMES="cx25843(empia:${S}/cx25843:${S}/cx25843)
-	drx3973d(empia:${S}/drx3973d:${S}/drx3973d)
-	lgdt3304-demod(empia:${S}/lgdt3304:${S}/lgdt3304)
-	mt2060(empia:${S}/mt2060:${S}/mt2060)
-	qt1010(empia:${S}/qt1010:${S}/qt1010)
-	tvp5150(empia:${S}/tvp5150:${S}/tvp5150)
-	xc3028-tuner(empia:${S}/xc3028:${S}/xc3028)
-	xc5000-tuner(empia:${S}/xc5000:${S}/xc5000)
-	zl10353(empia:${S}/zl10353:${S}/zl10353)
-	em28xx-audio(empia:${S}:${S})
-	em28xx-dvb(empia:${S}:${S})
-	em28xx(empia:${S}:${S})"
-
 CONFIG_CHECK="VIDEO_V4L2 DVB_CORE"
 
 pkg_setup() {
@@ -36,6 +23,10 @@ pkg_setup() {
 	if kernel_is lt 2 6 21; then
 		eerror "You need at least kernel 2.6.21"
 		die "Kernel too old"
+	fi
+
+	if kernel_is ge 2 6 26; then
+		PATCHES=( "${FILESDIR}/${PN}-2.6.26.patch" )
 	fi
 
 	ebegin "Checking for CONFIG_VIDEO_EM28XX disabled"
@@ -50,4 +41,12 @@ pkg_setup() {
 src_compile() {
 	set_arch_to_kernel
 	emake || die "Compiling kernel modules failed"
+}
+
+src_install() {
+	insinto /lib/modules/${KV_FULL}/empia
+	local extglob_bak=$(shopt -p extglob)
+	shopt -s extglob # portage disables bash extglob in ebuilds
+	doins $(echo {!(precompiled)/,}*.ko)
+	eval ${extglob_bak} # restore previous extglob status
 }
