@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-inherit eutils flag-o-matic multilib toolchain-funcs
+inherit eutils flag-o-matic multilib toolchain-funcs java-pkg-2
 
 DESCRIPTION="NativeBigInteger libs for Freenet taken from i2p"
 HOMEPAGE="http://www.i2p.net"
@@ -14,7 +14,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="dev-libs/gmp
-	virtual/jdk
+	>=virtual/jdk-1.4
 	!net-p2p/nativebiginteger"
 RDEPEND="dev-libs/gmp"
 
@@ -24,9 +24,9 @@ src_compile() {
 	append-flags -fPIC
 	tc-export CC
 	cp "${FILESDIR}"/Makefile .
-	make libjbigi || die
-	use amd64 || filter-flags -fPIC
-	make libjcpuid || die
+
+	emake libjbigi || die
+	emake libjcpuid || die
 }
 
 src_install() {

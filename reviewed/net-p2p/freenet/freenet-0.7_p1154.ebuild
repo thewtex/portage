@@ -4,7 +4,7 @@
 
 EAPI=1
 WRAPPER_DATE=20080330
-inherit eutils java-pkg-2 java-ant-2
+inherit eutils java-pkg-2 java-ant-2 multilib
 
 DESCRIPTION="An encrypted network without censorship"
 HOMEPAGE="http://www.freenetproject.org/"
@@ -21,7 +21,7 @@ IUSE=""
 CDEPEND="dev-java/db-je:3.2
 	dev-java/fec
 	dev-java/java-service-wrapper"
-DEPEND=">=dev-java/sun-jdk-1.5
+DEPEND=">=virtual/jdk-1.5
 	dev-java/ant-core
 	${CDEPEND}"
 RDEPEND=">=virtual/jre-1.5
@@ -34,6 +34,7 @@ S="${WORKDIR}/${PN}"
 EANT_BUILD_TARGET="dist"
 
 pkg_setup() {
+	java-pkg-2_pkg_setup
 	enewgroup freenet
 	enewuser freenet -1 -1 /opt/freenet freenet
 }
@@ -44,27 +45,12 @@ src_unpack() {
 	cp "${DISTDIR}"/wrapper-${WRAPPER_DATE}.conf wrapper.conf
 	epatch "${FILESDIR}"/wrapper.conf.patch
 	epatch "${FILESDIR}"/ext.patch
-	use amd64 && sed -i -e 's/=lib/=lib64/g' wrapper.conf
+	sed -i -e "s/=lib/=$(get_libdir)/g" wrapper.conf || die "sed failed"
 	mkdir -p lib
 	cd lib
 	java-pkg_jar-from db-je-3.2
 	java-pkg_jar-from java-service-wrapper
 	java-pkg_jar-from fec
-}
-
-src_compile() {
-	#workaround for installed blackdown-jdk-1.4
-	#freenet does not compile with it
-	if has_version =dev-java/sun-jdk-1.6*; then
-		einfo "Using sun-jdk-1.6"
-		GENTOO_VM="sun-jdk-1.6" java-pkg-2_src_compile
-	elif has_version =dev-java/sun-jdk-1.5*; then
-		einfo "Using sun-jdk-1.5"
-		GENTOO_VM="sun-jdk-1.5" java-pkg-2_src_compile
-	else
-		einfo "Using system vm"
-		 java-pkg-2_src_compile #try the actual version
-	fi
 }
 
 src_install() {

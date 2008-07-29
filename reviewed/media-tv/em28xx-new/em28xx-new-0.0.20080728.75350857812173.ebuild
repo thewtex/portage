@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-inherit base linux-info linux-mod versionator
+inherit linux-info linux-mod versionator
 
 printf -v EHG_REVISION '%012x' "$(get_version_component_range 4)"
 
@@ -23,10 +23,6 @@ pkg_setup() {
 	if kernel_is lt 2 6 21; then
 		eerror "You need at least kernel 2.6.21"
 		die "Kernel too old"
-	fi
-
-	if kernel_is ge 2 6 26; then
-		PATCHES=( "${FILESDIR}/${PN}-2.6.26.patch" )
 	fi
 
 	ebegin "Checking for CONFIG_VIDEO_EM28XX disabled"
