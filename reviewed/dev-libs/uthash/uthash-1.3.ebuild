@@ -19,12 +19,13 @@ RDEPEND=""
 src_test() {
 	cd tests
 	sed -i "/CFLAGS/s/-O3/${CFLAGS}/" Makefile || die "sed cflags failed"
+	sed -i "\$a\exit \$num_failed" do_tests || die "sed exit code failed"
 	emake CC="$(tc-getCC)" || die "emake failed"
 }
 
 src_install() {
 	insinto /usr/include
-	doins src/uthash.h
+	doins src/uthash.h || die "doins failed"
 
-	dodoc ChangeLog doc/txt/userguide.txt
+	dodoc ChangeLog doc/txt/userguide.txt || die "dodoc failed"
 }

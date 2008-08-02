@@ -26,9 +26,11 @@ src_compile() {
 
 src_test() {
 	cd tests
+
 	sed -i "/CFLAGS/s/-g/${CFLAGS}/" Makefile || die "sed cflags failed"
-	# don't dump/load the tpl files on /tmp
 	sed -i "s|/tmp/||g" *.c || die "sed tpl failed"
+	sed -i "\$a\exit \$num_failed" do_tests || die "sed exit code failed"
+
 	emake -j1 CC="$(tc-getCC)" || die "emake failed"
 
 	if use perl ; then
@@ -39,12 +41,14 @@ src_test() {
 
 src_install() {
 	emake DESTDIR="${D}" install || die "emake install failed"
-	dodoc doc/txt/{examples,future,perl,userguide}.txt
+	dodoc doc/txt/{examples,future,userguide}.txt || die "dodoc failed"
 
 	if use perl ; then
 		perlinfo
 		insinto ${SITE_LIB}
-		doins lang/perl/Tpl.pm
+		doins lang/perl/Tpl.pm || die "doins failed"
+
+		dodoc doc/txt/perl.txt || die "dodoc perl failed"
 	fi
 }
 
