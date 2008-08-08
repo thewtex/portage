@@ -7,7 +7,7 @@ inherit qt4
 
 DESCRIPTION="Graphical tool to do a lot things with image files like extracting, mounting, encrypting."
 HOMEPAGE="http://sourceforge.net/projects/acetoneiso2/"
-SRC_URI="mirror://sourceforge/${PN}/${PN}_${PV}-source.tar.gz"
+SRC_URI="mirror://sourceforge/${PN}/${PN}_${PV}_source.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -27,7 +27,7 @@ RDEPEND="${DEPEND}
 S="${WORKDIR}"/${PN}/src/
 
 src_compile() {
-	eqmake4 || die "qmake failed"
+	eqmake4
 	emake || die "emake failed"
 }
 

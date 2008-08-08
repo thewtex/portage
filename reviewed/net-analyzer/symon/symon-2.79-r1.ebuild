@@ -104,8 +104,9 @@ src_install() {
 
 	if use syweb ; then
 		docinto layouts
-		dodoc "${WORKDIR}"/syweb/symon/total_firewall.layout \
-			|| die "dodoc syweb failed"
+		dodoc "${WORKDIR}"/syweb/symon/total* || die "dodoc layouts failed"
+		docinto syweb
+		dodoc "${WORKDIR}"/syweb/{CHANGELOG,README} || die "dodoc syweb failed"
 
 		webapp_src_preinst
 
@@ -138,6 +139,9 @@ pkg_postinst() {
 	if use syweb ; then
 		elog "Test your syweb configuration by pointing your browser at:"
 		elog "http://${VHOST_HOSTNAME}/${PN}/configtest.php"
+		elog "Customize syweb by editing the file setup.inc."
+		elog "If you don't want any user interaction, move index_noui.php"
+		elog "to index.php."
 		elog "NOTE that syweb expects a machine/*.rrd style directory"
 		elog "structure under /var/lib/symon/rrds."
 		webapp_pkg_postinst

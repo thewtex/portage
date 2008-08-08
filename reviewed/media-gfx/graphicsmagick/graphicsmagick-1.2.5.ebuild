@@ -1,6 +1,7 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
+
 EAPI=1
 
 MY_P=${P/graphicsm/GraphicsM}
@@ -9,7 +10,7 @@ DESCRIPTION="A collection of tools and libraries for many image formats"
 HOMEPAGE="http://www.graphicsmagick.org/"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.bz2"
 
-LICENSE="GPL-2"
+LICENSE="as-is"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="bzip2 cxx fpx imagemagick jbig +jpeg +jpeg2k lcms openmp
@@ -72,8 +73,7 @@ src_compile() {
 		--without-umem \
 		--without-trio \
 		--with-modules \
-		--enable-shared \
-		|| die "Configure failed."
+		--enable-shared
 
 	emake || die "Build failed."
 }
@@ -92,4 +92,3 @@ pkg_postinst() {
 		elog "You need GCC 4.2.0 or greater for OpenMP."
 	fi
 }
-

@@ -31,16 +31,17 @@ RDEPEND=">=x11-libs/gtk+-2.4.0
 	musepack? ( media-sound/musepack-tools )
 	normalize? ( media-sound/normalize )
 	vorbis? ( media-sound/vorbis-tools )"
-DEPEND="${RDEPEND}"
+
+DEPEND="${RDEPEND} app-arch/lzma-utils"
 
 src_unpack() {
 	unpack ${A}
 	cd "${S}"
-	unpack ./${PN}.1.bz2
+	unpack ./${PN}.1.lzma
 }
 
 src_install() {
-	dobin ${PN}
+	dobin ${PN} || die "dobin failed"
 
 	insinto /usr/share/${PN}
 	doins -r animations

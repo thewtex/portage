@@ -1,4 +1,4 @@
-# Copyright 2006-2008 Gentoo Foundation
+# Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -25,7 +25,7 @@ RDEPEND="${DEPEND}
 QT4_BUILT_WITH_USE_CHECK="gif jpeg png sqlite3"
 
 src_compile(){
-	eqmake4 "${PN}".pro || die
+	eqmake4 "${PN}".pro
 	emake || die "Compile Failed"
 }
 
