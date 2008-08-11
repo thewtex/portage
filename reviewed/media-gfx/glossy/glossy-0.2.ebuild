@@ -14,8 +14,6 @@ RESTRICT="binchecks strip"
 
 RDEPEND=">=media-gfx/splashutils-1.4.1"
 
-S=${WORKDIR}/${PN}
-
 src_install() {
 	insinto /etc/splash/${PN}
 	doins -r "${S}"/*
