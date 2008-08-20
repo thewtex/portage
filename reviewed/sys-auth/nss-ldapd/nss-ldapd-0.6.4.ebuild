@@ -27,10 +27,11 @@ src_unpack() {
 }
 
 src_compile() {
+	# nss libraries go in /lib (as opposed to /usr/lib)
 	econf \
 		$(use_enable sasl) \
 		$(use_enable kerberos) \
-		--libdir=/$(get_libdir) || die "configure failed"
+		--libdir=/$(get_libdir)
 
 	emake || die "make failed"
 }
