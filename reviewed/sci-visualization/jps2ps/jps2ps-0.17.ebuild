@@ -7,26 +7,25 @@ inherit multilib
 DESCRIPTION="A small perl script for the creation of mathematic images in PostScript."
 HOMEPAGE="http://syracuse.eu.org/syracuse/bbgraf/"
 
-SRC_URI="http://syracuse.eu.org/syracuse/bbgraf/archives/${PN}-0-16.tgz"
+SRC_URI="http://syracuse.eu.org/syracuse/bbgraf/archives/${P/./-}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~x86"
 IUSE=""
 
-DEPEND=""
-RDEPEND="${DEPEND}
-	dev-lang/perl
+RDEPEND="dev-lang/perl
 	virtual/ghostscript"
 
-src_install() {
-	dodir /usr/$(get_libdir)/syracuse/app/jps2ps/{pps,package}
 
-	insinto usr/$(get_libdir)/syracuse/app
+src_install() {
+
+	insinto /usr/$(get_libdir)/syracuse/app
+
 	doins -r "${WORKDIR}"/jps2ps
 
-	exeinto usr/$(get_libdir)/syracuse/app/jps2ps
-	doexe "${WORKDIR}"/jps2ps/{jps2ps,filtre-file,jpshash,exp2rpn,lit_appels,lit_cles}.pl
+	# Fix permissions
+	fperms guo=rx /usr/$(get_libdir)/syracuse/app/jps2ps/{jps2ps,filtre-file,jpshash,exp2rpn,lit_appels,lit_cles}.pl
 
 	# Fix the variable JPS2PS_DIR defined inside the perl script
 	# so it points to the right directory.

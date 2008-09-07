@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-inherit eutils pam
+inherit eutils multilib pam
 
 DESCRIPTION="pam module for simple one time password authentication"
 HOMEPAGE="http://www.cavecanen.org/cs/projects/pam_sotp/"
@@ -23,7 +23,7 @@ pkg_setup() {
 src_compile() {
 	myconf=""
 	use urandom && myconf="--with-randomdev=/dev/urandom"
-	econf --libdir="/$(get_libdir)" $(use_enable debug) ${myconf} || die "econf failed"
+	econf --libdir="/$(get_libdir)" $(use_enable debug) ${myconf}
 	emake || die "emake failed"
 }
 
