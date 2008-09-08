@@ -8,7 +8,7 @@ MY_PN="OpenFOAM"
 MY_PV=$(get_version_component_range 1-2)
 MY_P="${MY_PN}-${MY_PV}"
 
-DESCRIPTION="OpenFOAM - utilities"
+DESCRIPTION="OpenFOAM - solvers"
 HOMEPAGE="http://www.opencfd.co.uk/openfoam/"
 SRC_URI="mirror://sourceforge/foam/${MY_P}.General.gtgz"
 
@@ -19,7 +19,7 @@ IUSE=""
 
 DEPEND="!=sci-libs/openfoam-${MY_PV}*
 	!=sci-libs/openfoam-bin-${MY_PV}*
-	=sci-libs/openfoam-solvers-${MY_PV}*"
+	=sci-libs/openfoam-kernel-${MY_PV}*"
 
 S=${WORKDIR}/${MY_P}
 
@@ -35,10 +35,11 @@ src_unpack() {
 
 	cd "${S}"
 	epatch "${FILESDIR}"/${MY_P}-compile.patch
+	epatch "${FILESDIR}"/${P}.patch
 }
 
 src_compile() {
-	cp -a /usr/$(get_libdir)/${MY_PN}/${MY_P}/etc/{bashrc,settings.sh} "${S}"/etc/. || die "cannot copy bashrc"
+	cp -a /usr/$(get_libdir)/${MY_PN}/${MY_P}/etc/{bashrc,settings.sh} etc/. || "cannot copy bashrc"
 
 	# This is a hack, due to the meta ebuild:
 	sed -i -e "s|FOAM_LIB=\$WM_PROJECT_DIR/lib|FOAM_LIB=/usr/$(get_libdir)/${MY_PN}/${MY_P}/lib|"	\
@@ -49,13 +50,10 @@ src_compile() {
 	sed -i -e "s|-L\$(LIB_WM_OPTIONS_DIR)|-L\$(LIB_WM_OPTIONS_DIR) -L/usr/$(get_libdir)/${MY_PN}/${MY_P}/lib|" \
 		wmake/Makefile || die "could not replace search paths"
 
-	sed -i -e "s|(FOAM_LIBBIN)|(FOAM_LIB)|" applications/utilities/postProcessing/velocityField/{flowType,Pe,uprime,vorticity,enstrophy,Q,Co,Lambda2,Mach}/Make/options	|| die "cannot change LIB dir"
-	sed -i -e "s|(FOAM_LIBBIN)|(FOAM_LIB)|" applications/utilities/postProcessing/miscellaneous/execFlowFunctionObjects/Make/options	|| die "cannot change LIB dir"
-
 	export FOAM_INST_DIR="${WORKDIR}"
 	source etc/bashrc
 
-	cd applications/utilities
+	cd applications/solvers
 	wmake all || die "could not build OpenFOAM utilities"
 }
 
