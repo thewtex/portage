@@ -68,10 +68,11 @@ src_install() {
 	fi
 	dodoc license/README license/LICENSE.Mantissa \
 		AUTHORS README
+	insinto /etc
+	newins wrapper.conf freenet-wrapper.conf
 	insinto /var/freenet
-	doins seednodes.fref wrapper.conf run.sh
+	doins seednodes.fref run.sh
 	dodir /var/freenet/bin
-	dosym /usr/bin/wrapper /var/freenet/bin/wrapper
 	dodir /var/freenet/$(get_libdir)
 	dosym ../../../usr/$(get_libdir)/java-service-wrapper/libwrapper.so /var/freenet/$(get_libdir)/libwrapper.so
 	dosym ../../../usr/$(get_libdir)/libNativeThread.so /var/freenet/$(get_libdir)/libNativeThread.so
@@ -86,6 +87,9 @@ pkg_postinst () {
 	elog " "
 	elog "If you dont know trusted people running freenet,"
 	elog "enable opennet (\"insecure mode\") on the config page to get started."
+	elog " "
+	ewarn "The wrapper config file wrapper.conf has been moved to /etc/freenet-wrapper.conf."
+	ewarn "You can now edit it without the next update overwriting it."
 	elog " "
 	chown freenet:freenet /var/freenet
 	if [[ -e /opt/freenet/freenet.ini ]] && ! [[ -e /var/freenet/freenet.ini ]]; then
