@@ -25,7 +25,7 @@ DEPEND=">=dev-libs/boost-1.34
 	media-libs/libsndfile
 	portaudio? ( >=media-libs/portaudio-19_pre )
 	media-libs/speex
-	media-video/ffmpeg
+	>=media-video/ffmpeg-0.4.9_p20080326
 	net-libs/gnutls
 	>=net-libs/libosip-3
 	net-misc/curl
@@ -42,14 +42,17 @@ src_unpack() {
 	epatch "${FILESDIR}"/${PN}-types.h.patch
 	epatch "${FILESDIR}"/${PN}-cstdlib-include.patch
 	epatch "${FILESDIR}"/${PN}-gcc-4.3-switch-enum.patch
+	epatch "${FILESDIR}"/${PN}-newerffmpeg0.patch
+	epatch "${FILESDIR}"/${PN}-newerffmpeg1.patch
+	epatch "${FILESDIR}"/${PN}-newerffmpeg2.patch
 }
 
 src_compile() {
 	EXTRA_ECONF=" \
-		$(cmake_use_enable portaudio PORTAUDIO_SUPPORT) \
-		$(cmake_use_enable alsa PHAPI_AUDIO_ALSA_SUPPORT) \
-		$(cmake_use_enable oss PHAPI_AUDIO_OSS_SUPPORT) \
-		$(cmake_use_enable xv WENGOPHONE_XV_SUPPORT) "
+		$(cmake-utils_use_enable portaudio PORTAUDIO_SUPPORT) \
+		$(cmake-utils_use_enable alsa PHAPI_AUDIO_ALSA_SUPPORT) \
+		$(cmake-utils_use_enable oss PHAPI_AUDIO_OSS_SUPPORT) \
+		$(cmake-utils_use_enable xv WENGOPHONE_XV_SUPPORT) "
 
 	cmake-utils_src_configureout
 	cmake-utils_src_make
@@ -57,6 +60,6 @@ src_compile() {
 
 src_install() {
 	cmake-utils_src_install
-	domenu ../wengophone/res/wengophone.desktop || die "domenu failed"
-	doicon ../wengophone/res/wengophone_64x64.png || die "doicon failed"
+	domenu wengophone/res/wengophone.desktop || die "domenu failed"
+	doicon wengophone/res/wengophone_64x64.png || die "doicon failed"
 }
