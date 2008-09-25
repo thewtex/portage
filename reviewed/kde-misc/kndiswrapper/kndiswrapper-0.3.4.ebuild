@@ -5,24 +5,24 @@
 EAPI="1"
 inherit kde
 
-DESCRIPTION="A Qt based gui for wire-bound and wireless network setup"
-HOMEPAGE="http://www.kde-apps.org/content/show.php/netgo_ng?content=88232"
+DESCRIPTION="A QT frontend for ndiswrapper"
+HOMEPAGE="http://www.kde-apps.org/content/show.php/KNDISWrapper?content=86885"
 SRC_URI="http://www.linux-specialist.com/download/source/${P}.tar.gz"
 
 LICENSE="GPL-2"
-SLOT="0"
 KEYWORDS="~amd64 ~x86"
+SLOT="0"
 IUSE=""
 
 need-kde 3.5
 
-RDEPEND=" ${DEPEND}
-	net-misc/dhcpcd
+RDEPEND="net-misc/dhcpcd
 	sys-apps/net-tools
+	net-wireless/ndiswrapper
 	net-wireless/wireless-tools
 	net-wireless/wpa_supplicant"
 
 src_install() {
-	emake DESTDIR="${D}" install || die "Install failed"
-	dodoc authors ChangeLog readme todo
+	emake DESTDIR="${D}" install || die "emake install failed"
+	dodoc AUTHORS ChangeLog README || die "dodoc failed"
 }
