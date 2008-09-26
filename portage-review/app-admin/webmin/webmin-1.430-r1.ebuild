@@ -33,9 +33,6 @@ src_unpack() {
 	if ! use minimal ; then
 		#207674 and other fixes...
 		epatch "${FILESDIR}"/${PN}-gentoo-configs.patch
-
-		# Correct ldapness
-		epatch "${FILESDIR}"/${PN}-1.410-ldap-useradmin.patch
 	fi
 
 	epatch "${FILESDIR}"/${PN}-1.170-setup-nocheck.patch
