@@ -8,7 +8,7 @@ MY_PN="GPLIGC"
 MY_P=${MY_PN}-${PV}
 DESCRIPTION="provides IGC-file (GPS tracklog) evaluation and 3D visualisation"
 HOMEPAGE="http://gpligc.sf.net/"
-SRC_URI="http://pc12-c714.uibk.ac.at/GPLIGC/download/${MY_P}.tar.gz"
+SRC_URI="http://pc12-c714.uibk.ac.at/GPLIGC/download/${MY_P}-src.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -29,14 +29,6 @@ RDEPEND="${DEPEND}
 S="${WORKDIR}/${MY_P}"
 
 src_compile() {
-	# sysinfo.h is created here, to prevent it from being created by the makefile,
-	# in a way, which breaks -j n>1  MAKEOPTIONS.
-	# shouldn't be needed in gpligc > 1.5.1 anylonger
-	echo -n "#define SYSINFO \"" >openGLIGCexplorer/sysinfo.h
-	echo -n `uname -a` >>openGLIGCexplorer/sysinfo.h
-	echo "\"" >>openGLIGCexplorer/sysinfo.h
-
-	# compiling openGLIGCexplorer using the systems compiler flags
 	cd openGLIGCexplorer
 	emake CFLAGS="${CFLAGS}" CXXFLAGS="${CXXFLAGS}" || die "Build failed"
 }
@@ -49,10 +41,10 @@ src_install() {
 	keepdir /usr/share/${PN}/data/waypoint
 
 	# install binaries and scripts
-	dobin GPLIGC/{GPLIGC.pl,gpsp2igc.pl} \
+	dobin GPLIGC/{GPLIGC.pl,gpsp2igc.pl,gpsp2kml.pl} \
 		openGLIGCexplorer/{openGLIGCexplorer,createworld,etopo2merger,optimizer}
 
-	# install perl modules and icons/pics and example configuration
+	# install perl modules and icons/pics and sample configuration
 	insinto /usr/share/${PN}
 	doins GPLIGC/{GPLIGCfunctions.pm,GPLIGCwaypoints.pm,gpligc.xbm,icon.png,logo.jpg,logos.gif,logos.jpg} \
 		openGLIGCexplorer/.openGLIGCexplorerrc

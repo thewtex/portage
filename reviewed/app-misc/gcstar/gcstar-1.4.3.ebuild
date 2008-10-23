@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="cddb gnome mp3 spell tellico vorbis"
 
-LANGS="ar bg ca cs de el es fr gl hu id it pl pt ro ru sr sv tr uk"
+LANGS="ar bg ca cs de el es fr gl hu id it nl pl pt ro ru sr sv tr uk"
 for x in ${LANGS} ; do
 	IUSE="${IUSE} linguas_${x}"
 done
@@ -69,11 +69,9 @@ src_install() {
 	# English version should be always available so we will keep it
 	mv tmp/EN .
 
-	for x in ${LANGS}; do
+	for x in ${LINGUAS}; do
 		# GCstar uses upper-case language names
-		if use linguas_${x} ; then
-			mv tmp/$(echo ${x} | tr '[:lower:]' '[:upper:]') .
-		fi
+		mv tmp/$(echo ${x} | tr '[:lower:]' '[:upper:]') .
 	done
 
 	rm -rf tmp
