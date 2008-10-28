@@ -1,16 +1,13 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/webmin/webmin-1.400-r1.ebuild,v 1.1 2008/03/12 20:13:58 beandog Exp $
+# $Header: $
 
 inherit eutils pam
-
-VM_V="3.23"
 
 DESCRIPTION="Webmin, a web-based system administration interface"
 HOMEPAGE="http://www.webmin.com/"
 SRC_URI="minimal? ( mirror://sourceforge/webadmin/${P}-minimal.tar.gz )
-	!minimal? ( mirror://sourceforge/webadmin/${P}.tar.gz
-			http://www.webmin.com/download/virtualmin/virtual-server-${VM_V}.gpl.wbm.gz )"
+	!minimal? ( mirror://sourceforge/webadmin/${P}.tar.gz )"
 
 LICENSE="BSD"
 SLOT="0"
@@ -32,26 +29,6 @@ src_unpack() {
 
 	cd "${S}"
 
-	# in webmin-minimal apache2 are not present
-	if ! use minimal ; then
-		# Bug #50810, #51943
-		if use apache2; then
-			epatch "${FILESDIR}"/${PN}-1.140-apache2.patch
-		fi
-
-		# Correct ldapness
-		epatch "${FILESDIR}"/${PN}-1.270-ldap-useradmin.patch
-
-		mv "${WORKDIR}"/virtual-server-${VM_V}.gpl.wbm "${T}"/vs.tar
-		tar -xf "${T}"/vs.tar
-
-		# Don't create ${HOME}/cgi-bin on new accounts
-		epatch "${FILESDIR}"/virtual-server-3.23-nocgibin.patch
-
-		# Verify Postgres usernames
-		epatch "${FILESDIR}"/virtual-server-3.23-pgsql.patch
-	fi
-
 	epatch "${FILESDIR}"/${PN}-1.170-setup-nocheck.patch
 }
 
@@ -60,6 +37,7 @@ src_install() {
 	addpredict /var/lib/rpm
 
 	rm -f mount/freebsd-mounts*
+	rm -f mount/netbsd-mounts*
 	rm -f mount/openbsd-mounts*
 	rm -f mount/macos-mounts*
 
@@ -127,4 +105,6 @@ pkg_postinst() {
 	einfo "To make webmin start at boot time, run: 'rc-update add webmin default'."
 	use ssl && einfo "Point your web browser to https://localhost:10000 to use webmin."
 	use ssl || einfo "Point your web browser to http://localhost:10000 to use webmin."
+
+	einfo "NOTE: virtual-server has been removed from this ebuild."
 }
