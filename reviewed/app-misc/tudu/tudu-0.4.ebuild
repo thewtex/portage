@@ -18,10 +18,6 @@ src_compile() {
 }
 
 src_install() {
-	emake DESTDIR="${D}/usr/" install || die "install failed"
-	# Cleanup for Makefile bug, since it never creates ETC_DIR beforehand:
-	rm -f "${D}usr/etc"
-	insinto "/etc"
-	doins data/tudurc || die
-	dodoc README ChangeLog || die
+	emake DESTDIR="${D}/usr/" ETC_DIR="${D}/etc" install || die "install failed"
+	dodoc AUTHORS README ChangeLog || die
 }
