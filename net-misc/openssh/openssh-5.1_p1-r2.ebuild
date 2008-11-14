@@ -144,7 +144,8 @@ src_install() {
 	newpamd "${FILESDIR}"/sshd.pam_include.2 sshd
 	use pam \
 		&& dosed "/^#UsePAM /s:.*:UsePAM yes:" /etc/ssh/sshd_config \
-		&& dosed "/^#PasswordAuthentication /s:.*:PasswordAuthentication no:" /etc/ssh/sshd_config
+		&& dosed "/^#PasswordAuthentication /s:.*:PasswordAuthentication no:" \
+		&& dosed "/^#PrintMotd /s:.*:PrintMotd no:" /etc/ssh/sshd_config
 
 	doman contrib/ssh-copy-id.1
 	dodoc ChangeLog CREDITS OVERVIEW README* TODO sshd_config
