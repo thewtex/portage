@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4013 2008/11/11 00:07:43 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4021 2008/11/16 15:27:43 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -58,6 +58,9 @@ app-admin/ulogd:pcap - Build the PCAP plugin. Use the net-libs/libpcap library
 app-admin/webalizer:xtended - Include the 404 extension
 app-arch/dump:ermt - encrypted rmt support
 app-arch/file-roller:nautilus - Enable file-roller to integrate with gnome-base/nautilus by providing entries in its context menu.
+app-arch/libarchive:bzip2 -  Allow accessing bzip2-compressed archives through libbz2 (which comes with bzip2). 
+app-arch/libarchive:lzma -  Allow accessing lzma-compressed archives through the lzmadec library. 
+app-arch/libarchive:static -  Build bsdtar and bsdcpio as static archives, removing dependencies over the enabled compression libraries (lzmadec, libbz2, zlib). 
 app-arch/rpm:file - add magic file support
 app-arch/rpm:neon - include support for neon
 app-arch/squeeze:pathbar - Include pathbar feature
@@ -381,6 +384,8 @@ app-pda/multisync:gnokii - Address synchronization with mobile phones via app-mo
 app-pda/multisync:irmc - Add support for Mobile Client synchronization via IrDa/IrMC/Bluetooth (eg: SonyEricsson T39/T68i)
 app-pda/multisync:kdepim - Add support for KDEPIM sync
 app-pda/multisync:nokia6600 - Add support for Nokia 6600
+app-pda/synce:serial - Enable serial port support (installs app-pda/synce-serial)
+app-pda/synce:syncengine - Installs the app-pda/synce-sync-engine
 app-pda/synce-kde:avantgo - Add support for syncing Avantgo accounts
 app-portage/conf-update:colordiff - Use colors when displaying diffs (app-misc/colordiff)
 app-portage/gatt:libpaludis - Do some dependency resolution by using a sys-apps/paludis interface
@@ -670,8 +675,6 @@ dev-libs/yaz:ziffy - Install ziffy, a promiscuous Z39.50 APDU sniffer
 dev-lisp/abcl:clisp - Build Armed Bear Common Lisp using GNU CLISP
 dev-lisp/abcl:cmucl - Build Armed Bear Common Lisp using CMU Common Lisp
 dev-lisp/abcl:jad - Enable support for disassembling compiled code using JAD
-dev-lisp/abcl-cvs:jpty - Enable PTY support
-dev-lisp/abcl-cvs:libabcl - Enable ^C handler (from JNI)
 dev-lisp/cl-araneida:standalone - tired of waiting for the lisp team to add this
 dev-lisp/cl-tbnl:standalone -  Use TBNL without a front-end (ie. no Apache dependency)
 dev-lisp/clisp:hyperspec - Use local hyperspec instead of online version
@@ -1165,6 +1168,7 @@ media-gfx/comix:rar -  Pulls app-arch/unrar for rar file support
 media-gfx/digikam:nfs -  Create sqlite db within ~/.kde, instead in the albums base directory. 
 media-gfx/eog:xmp - Adds support for XMP metadata
 media-gfx/exiv2:xmp -  Adds support for Adobe XMP 
+media-gfx/gimp:smp -  Enable support for multiprocessors 
 media-gfx/gimp:webkit -  Enable the webkit rendering engine 
 media-gfx/graphviz:cgraph -  Enables cgraph (PostScript plotting library in C) library 
 media-gfx/graphviz:pango -  Enables the rendering of the graphs using pango & cairo (with antialiasing support) 
@@ -1724,6 +1728,7 @@ net-analyzer/symon:perl - Enables a generic perl symux client
 net-analyzer/symon:symon - Build symon daemon
 net-analyzer/symon:symux - Enables the multiplexer which stores incoming symon streams on disk in RRD files
 net-analyzer/tcpdump:chroot - Enable chrooting when dropping privileges
+net-analyzer/tcpdump:smi - Build with net-libs/libsmi to load MIBs on the fly to decode SNMP packets
 net-analyzer/tcpreplay:pcapnav - Enable if you want the jump to byte offset feature via net-libs/libpcapnav
 net-analyzer/wireshark:ares - Use GNU net-dns/c-ares library to resolve DNS names
 net-analyzer/wireshark:gcrypt - Use GNU crypto library (dev-libs/libgcrypt) to decrypt SSL traffic
@@ -1832,6 +1837,7 @@ net-ftp/pure-ftpd:charconv - Enables charset conversion
 net-ftp/pure-ftpd:noiplog - Disables logging of IP addresses
 net-ftp/pure-ftpd:paranoidmsg - Display paranoid messages instead of normal ones
 net-ftp/pure-ftpd:vchroot - Enable support for virtual chroot (possible security risk)
+net-ftp/twoftpd:breakrfc - Break RFC compliance to allow control symbols in filenames (required for some (e.g. cp1251) encodings, use with caution).
 net-ftp/vsftpd:logrotate - Use app-admin/logrotate for rotating logs
 net-im/bitlbee:nss - Use NSS for SSL support in MSN and Jabber.
 net-im/centerim:gadu - Enable support for the Gadu-Gadu protocol
@@ -2045,7 +2051,17 @@ net-misc/quagga:realms - Enable realms support (see http://vcalinus.gemenii.ro/q
 net-misc/quagga:tcp-zebra - Enable TCP zserv interface on port 2600 for Zebra/protocol-daemon communication. Unix domain sockets are chosen otherwise.
 net-misc/quagga:tcpmd5 - Enable TCP MD5 checksumming
 net-misc/rdesktop:pcsc-lite - Enable smartcard support with pcsc-lite driver
-net-misc/scponly:rsync - Enabling rsync compatibility with potential security risks
+net-misc/scponly:gftp - Enables gFTP compatibility
+net-misc/scponly:logging - Enables SFTP logging compatibility
+net-misc/scponly:passwd - Enables passwd compatibility
+net-misc/scponly:quota - Enables quota compatibility
+net-misc/scponly:rsync - Enables rsync compatibility with potential security risks
+net-misc/scponly:scp - Enables scp compatibility with potential security risks
+net-misc/scponly:sftp - Enables SFTP compatibility
+net-misc/scponly:subversion - Enables Subversion compatibility with potential security risks
+net-misc/scponly:unison - Enables Unison compatibility with potential security risks
+net-misc/scponly:wildcards - Enables wildcard processing with potential security risks
+net-misc/scponly:winscp - Enables WinSCP 2.0 compatibility with potential security risks
 net-misc/sitecopy:rsh - This allows the use of rsh (remote shell) and rcp (remote copy) for authoring websites. sftp is a much more secure protocol and is preferred.
 net-misc/sitecopy:webdav - Enable WebDav (Web-based Distributed Authoring and Versioning) support. This system allows users to collaborate on websites using a web based interface. See the ebuild for an FAQ page. Enables neon as well to handle webdav support.
 net-misc/ssh:openssh - Allow ssh and openssh to be installed side by side
@@ -2459,7 +2475,6 @@ sys-freebsd/freebsd-usbin:ipfilter - Enable ipfilter firewall support
 sys-freebsd/freebsd-usbin:ipsec - Enable IPSec support
 sys-freebsd/freebsd-usbin:isdn - Enable ISDN support
 sys-freebsd/freebsd-usbin:nat - Enable Network Address Translation support
-sys-fs/clvm:nocman - Allow users to build clvm without cman support and with gulm support
 sys-fs/cryptsetup:dynamic - Build cryptsetup dynamically
 sys-fs/ecryptfs-utils:gpg - Enable app-crypt/gnupg key module
 sys-fs/ecryptfs-utils:openssl - Enable dev-libs/openssl key module
@@ -2470,7 +2485,6 @@ sys-fs/loop-aes:keyscrub - Protects the encryption key in memory but takes more 
 sys-fs/loop-aes:padlock - Use VIA padlock instructions, detected at run time, code still works on non-padlock processors
 sys-fs/lvm2:clvm - Allow users to build clustered lvm2
 sys-fs/lvm2:cman - Cman support for clustered lvm
-sys-fs/lvm2:gulm - Gulm support for clustered lvm
 sys-fs/lvm2:lvm1 - Allow users to build lvm2 with lvm1 support
 sys-fs/lvm2:nolvm1 - Allow supports to build lvm2 without lvm1 support
 sys-fs/lvm2:nolvmstatic - Allow users to build lvm2 dynamically

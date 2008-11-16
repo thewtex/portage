@@ -1,6 +1,6 @@
 # Copyright 2008-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-base/gnome-settings-daemon/gnome-settings-daemon-2.24.0.ebuild,v 1.1 2008/11/03 23:34:15 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-base/gnome-settings-daemon/gnome-settings-daemon-2.24.0.ebuild,v 1.3 2008/11/15 00:35:23 chainsaw Exp $
 
 inherit autotools eutils gnome2
 

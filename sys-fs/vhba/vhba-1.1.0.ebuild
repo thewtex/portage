@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/vhba/vhba-1.1.0.ebuild,v 1.1 2008/07/16 00:56:51 vanquirius Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/vhba/vhba-1.1.0.ebuild,v 1.3 2008/11/16 01:24:38 vanquirius Exp $
 
 inherit linux-info linux-mod eutils
 
@@ -18,13 +18,20 @@ RDEPEND=""
 
 S="${WORKDIR}/vhba-module-${PV}"
 MODULE_NAMES="vhba(block:${S})"
-BUILD_TARGETS="clean all"
+BUILD_TARGETS="all"
 
 pkg_setup() {
 	CONFIG_CHECK="~BLK_DEV_SR ~CHR_DEV_SG"
 	check_extra_config
 	BUILD_PARAMS="KERNELDIR=${KV_DIR}"
 	linux-mod_pkg_setup
+}
+
+src_unpack() {
+	unpack ${A}
+	cd "${S}"
+	sed -i -e "s:/lib/modules/\$(KERNELRELEASE)/build:${KERNEL_DIR}:g" \
+	Makefile || die "sed failed"
 }
 
 src_compile() {

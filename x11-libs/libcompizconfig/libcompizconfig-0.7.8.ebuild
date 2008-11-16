@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/libcompizconfig/libcompizconfig-0.7.8.ebuild,v 1.3 2008/11/09 15:00:42 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/libcompizconfig/libcompizconfig-0.7.8.ebuild,v 1.5 2008/11/15 02:09:37 jmbsvicetto Exp $
 
 EAPI="2"
 
@@ -14,16 +14,17 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
-RESTRICT="mirror"
 
 RDEPEND="dev-libs/libxml2
 	~x11-wm/compiz-${PV}"
 DEPEND="${RDEPEND}
+	dev-util/intltool
 	>=dev-util/pkgconfig-0.19"
 
 src_prepare() {
 	epatch "${FILESDIR}/${PN}-undefinedref.patch"
 
+	intltoolize --force || die "intltoolize failed"
 	eautoreconf
 }
 
