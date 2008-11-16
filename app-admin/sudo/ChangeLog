@@ -1,6 +1,36 @@
 # ChangeLog for app-admin/sudo
 # Copyright 2002-2008 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/sudo/ChangeLog,v 1.142 2008/10/09 21:23:39 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/sudo/ChangeLog,v 1.149 2008/11/15 18:55:05 dertobi123 Exp $
+
+  15 Nov 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  sudo-1.6.9_p17.ebuild:
+  ppc stable, bug #246567
+
+  15 Nov 2008; Raúl Porcel <armin76@gentoo.org> sudo-1.6.9_p17.ebuild:
+  alpha/arm/ia64 stable wrt #246567
+
+  15 Nov 2008; Markus Meier <maekke@gentoo.org> sudo-1.6.9_p17.ebuild:
+  amd64/x86 stable, bug #246567
+
+*sudo-1.6.9_p18 (14 Nov 2008)
+
+  14 Nov 2008; Diego E. Pettenò <flameeyes@gentoo.org>
+  +sudo-1.6.9_p18.ebuild:
+  Version bump.
+
+  13 Nov 2008; Ferris McCormick <fmccor@gentoo.org> sudo-1.6.9_p17.ebuild:
+  Sparc stable --- Bug #246567 --- Still does sudo for me.
+
+  13 Nov 2008; Brent Baude <ranger@gentoo.org> sudo-1.6.9_p17.ebuild:
+  stable ppc64, bug 246567
+
+*sudo-1.7.0_rc5 (13 Nov 2008)
+
+  13 Nov 2008; Diego Pettenò <flameeyes@gentoo.org>
+  -files/sudo-1.6.8_p8-ldap-tls_cacert.diff,
+  -files/sudo-ldap_timelimit.diff, -sudo-1.6.8_p12-r1.ebuild,
+  -sudo-1.7.0_rc2.ebuild, +sudo-1.7.0_rc5.ebuild:
+  Version bump, and remove old ebuilds and patches.
 
   09 Oct 2008; Diego Pettenò <flameeyes@gentoo.org> sudo-1.7.0_rc2.ebuild:
   Add cyrus-sasl to dependencies (fixes bug #240618).

@@ -1,6 +1,8 @@
-# Copyright 1999-2007 Gentoo Foundation
+# Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/zynaddsubfx/zynaddsubfx-2.2.1-r2.ebuild,v 1.5 2007/10/01 20:04:25 eldad Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/zynaddsubfx/zynaddsubfx-2.2.1-r2.ebuild,v 1.7 2008/11/14 10:50:16 aballier Exp $
+
+EAPI=1
 
 inherit eutils
 
@@ -16,7 +18,7 @@ KEYWORDS="amd64 ~ppc x86"
 #IUSE="oss alsa jack mmx"
 IUSE="oss alsa jack"
 
-DEPEND=">=x11-libs/fltk-1.1.2
+DEPEND=">=x11-libs/fltk-1.1.2:1.1
 	=sci-libs/fftw-3*
 	jack? ( media-sound/jack-audio-connection-kit )
 	>=dev-libs/mini-xml-2.2.1"
@@ -55,23 +57,23 @@ src_compile() {
 #	use portaudio && LINUX_AUDIOOUT=PA
 #	use mmx && ASM_F2I=YES
 
-	cd ${S}/src
+	cd "${S}/src"
 	make \
 		FFTW_VERSION=${FFTW_VERSION} \
 		ASM_F2I=${ASM_F2I} \
 		LINUX_MIDIIN=${LINUX_MIDIIN} \
 		LINUX_AUDIOOUT=${LINUX_AUDIOOUT} \
 		|| die "compile failed"
-	cd ${S}/ExternalPrograms/Spliter
+	cd "${S}/ExternalPrograms/Spliter"
 	./compile.sh
-	cd ${S}/ExternalPrograms/Controller
+	cd "${S}/ExternalPrograms/Controller"
 	./compile.sh
 }
 
 src_install() {
-	dobin ${S}/src/zynaddsubfx
-	dobin ${S}/ExternalPrograms/Spliter/spliter
-	dobin ${S}/ExternalPrograms/Controller/controller
+	dobin "${S}/src/zynaddsubfx"
+	dobin "${S}/ExternalPrograms/Spliter/spliter"
+	dobin "${S}/ExternalPrograms/Controller/controller"
 	dodoc ChangeLog FAQ.txt HISTORY.txt README.txt ZynAddSubFX.lsm bugs.txt
 
 	for i in "Arpeggios" "Bass" "Brass" "Choir and Voice" "Drums" \

@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/kdm/kdm-4.1.3.ebuild,v 1.1 2008/11/09 02:41:23 scarabeus Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/kdm/kdm-4.1.3.ebuild,v 1.3 2008/11/16 07:29:28 vapier Exp $
 
 EAPI="2"
 
@@ -8,7 +8,7 @@ KMNAME=kdebase-workspace
 inherit kde4-meta
 
 DESCRIPTION="KDE login manager, similar to xdm and gdm"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE="debug htmlhandbook kerberos pam"
 
 DEPEND="x11-libs/libXau
@@ -62,4 +62,10 @@ pkg_postinst() {
 		cp "${ROOT}${KDEDIR}/share/apps/kdm/pics/users/root1.png" \
 			"${ROOT}${KDEDIR}/share/apps/kdm/faces/root.face.icon"
 	fi
+
+	elog "If when you restart xdm, kdm fails to start with a message like"
+	elog "\"gentoo kdm[2116]: X server startup timeout, terminating\""
+	elog "in /var/log/messages, uncomment the ServerTimeout line in"
+	elog "grep kdmrc /var/db/pkg/kde-base/kdm-4.1.3/CONTENTS | cut -f2 -d \" \""
+	elog "and be sure to increase the timeout - 60 should work"
 }
