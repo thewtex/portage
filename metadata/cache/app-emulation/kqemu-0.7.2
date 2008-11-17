@@ -1,0 +1,12 @@
+DEPEND=virtual/libc >=app-emulation/qemu-softmmu-0.8.0 kernel_linux? ( virtual/linux-sources ) kernel_linux? ( virtual/modutils ) sys-apps/sed
+DESCRIPTION=Multi-platform & multi-targets cpu emulator and dynamic translator kernel fast execution module
+EAPI=0
+HOMEPAGE=http://fabrice.bellard.free.fr/qemu/
+INHERITED=toolchain-funcs portability flag-o-matic versionator multilib linux-info linux-mod eutils
+IUSE=sdl kernel_linux
+KEYWORDS=-* amd64 x86
+LICENSE=GPL-2 LGPL-2.1 KQEMU
+RDEPEND=virtual/libc >=app-emulation/qemu-softmmu-0.8.0 kernel_linux? ( virtual/modutils )
+RESTRICT=strip
+SLOT=0
+SRC_URI=http://fabrice.bellard.free.fr/qemu/qemu-0.7.2.tar.gz http://fabrice.bellard.free.fr/qemu/kqemu-0.7.2.tar.gz

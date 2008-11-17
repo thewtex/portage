@@ -1,0 +1,12 @@
+DEPEND=>=media-libs/libsdl-1.2.2 >media-libs/libmpeg2-0.3.1 ogg? ( media-libs/libogg media-libs/libvorbis ) vorbis? ( media-libs/libogg media-libs/libvorbis ) alsa? ( >=media-libs/alsa-lib-0.9 ) mp3? ( media-libs/libmad ) flac? ( media-libs/flac ) fluidsynth? ( media-sound/fluidsynth ) zlib? ( sys-libs/zlib ) x86? ( dev-lang/nasm )
+DESCRIPTION=Reimplementation of the SCUMM game engine used in Lucasarts adventures
+EAPI=0
+HOMEPAGE=http://scummvm.sourceforge.net/
+INHERITED=eutils toolchain-funcs games multilib portability
+IUSE=alsa debug flac fluidsynth mp3 ogg vorbis zlib
+KEYWORDS=amd64 ppc ppc64 sparc x86 ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=>=media-libs/libsdl-1.2.2 >media-libs/libmpeg2-0.3.1 ogg? ( media-libs/libogg media-libs/libvorbis ) vorbis? ( media-libs/libogg media-libs/libvorbis ) alsa? ( >=media-libs/alsa-lib-0.9 ) mp3? ( media-libs/libmad ) flac? ( media-libs/flac ) fluidsynth? ( media-sound/fluidsynth ) zlib? ( sys-libs/zlib )
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://sourceforge/scummvm/scummvm-0.11.1.tar.bz2

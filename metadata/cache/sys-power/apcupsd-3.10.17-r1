@@ -1,0 +1,11 @@
+DEPEND=snmp? ( net-analyzer/net-snmp ) cgi? ( >=media-libs/gd-1.8.4 www-servers/apache ) ncurses? ( sys-libs/ncurses ) nls? ( sys-devel/gettext )
+DESCRIPTION=APC UPS daemon with integrated tcp/ip remote shutdown
+EAPI=0
+HOMEPAGE=http://www.sibbald.com/apcupsd/
+INHERITED=multilib depend.apache toolchain-funcs eutils portability
+IUSE=doc snmp usb apache2 cgi threads ncurses nls
+KEYWORDS=~amd64 ~ppc ~sparc x86
+LICENSE=GPL-2
+RDEPEND=snmp? ( net-analyzer/net-snmp ) cgi? ( >=media-libs/gd-1.8.4 www-servers/apache ) ncurses? ( sys-libs/ncurses ) nls? ( sys-devel/gettext ) virtual/mta
+SLOT=0
+SRC_URI=mirror://sourceforge/apcupsd/apcupsd-3.10.17.tar.gz

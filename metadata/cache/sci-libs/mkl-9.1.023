@@ -1,0 +1,12 @@
+DEPEND=app-admin/eselect-blas app-admin/eselect-cblas app-admin/eselect-lapack =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=Intel(R) Math Kernel Library: linear algebra, fft, random number generators.
+EAPI=0
+HOMEPAGE=http://developer.intel.com/software/products/mkl/
+INHERITED=toolchain-funcs portability versionator multilib fortran libtool autotools eutils
+IUSE=serial int64 fortran95 fftw doc examples debug
+KEYWORDS=~x86 ~amd64 ~ia64
+LICENSE=Intel-SDP
+RDEPEND=app-admin/eselect-blas app-admin/eselect-cblas app-admin/eselect-lapack doc? ( app-doc/blas-docs app-doc/lapack-docs )
+RESTRICT=strip mirror
+SLOT=0
+SRC_URI=!int64? ( !serial? ( http://registrationcenter-download.intel.com/irc_nas/779/l_mkl_p_9.1.023.tgz ) ) int64? ( http://registrationcenter-download.intel.com/irc_nas/779/l_mkl_enh_p_9.1.023.tgz ) serial? ( http://registrationcenter-download.intel.com/irc_nas/779/l_mkl_enh_p_9.1.023.tgz )

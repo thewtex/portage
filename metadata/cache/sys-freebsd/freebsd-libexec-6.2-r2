@@ -1,0 +1,11 @@
+DEPEND==sys-freebsd/freebsd-lib-6.2* pam? ( virtual/pam ) =sys-freebsd/freebsd-mk-defs-6.2* =sys-freebsd/freebsd-sources-6.2* virtual/pmake virtual/pmake
+DESCRIPTION=FreeBSD libexec things
+EAPI=0
+HOMEPAGE=http://www.freebsd.org/
+INHERITED=toolchain-funcs portability flag-o-matic versionator multilib freebsd bsdmk pam eutils
+IUSE=pam ssl kerberos ipv6 nis profile
+KEYWORDS=~sparc-fbsd ~x86-fbsd
+LICENSE=BSD
+RDEPEND==sys-freebsd/freebsd-lib-6.2* pam? ( virtual/pam )
+SLOT=0
+SRC_URI=mirror://gentoo/freebsd-libexec-6.2.tar.bz2 mirror://gentoo/freebsd-ubin-6.2.tar.bz2 mirror://gentoo/freebsd-bin-6.2.tar.bz2 mirror://gentoo/freebsd-contrib-6.2.tar.bz2 mirror://gentoo/freebsd-lib-6.2.tar.bz2 mirror://gentoo/freebsd-etc-6.2.tar.bz2 mirror://gentoo/freebsd-usbin-6.2.tar.bz2

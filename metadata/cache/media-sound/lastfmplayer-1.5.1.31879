@@ -1,0 +1,11 @@
+DEPEND=|| ( ( x11-libs/qt-gui:4 x11-libs/qt-sql:4 ) =x11-libs/qt-4.3* ) media-libs/libsamplerate sci-libs/fftw media-libs/libmad >=media-libs/libgpod-0.5.2 media-libs/alsa-lib app-arch/sharutils
+DESCRIPTION=The player allows you to listen to last.fm radio streams
+EAPI=1
+HOMEPAGE=http://www.last.fm/help/player
+INHERITED=qt4 toolchain-funcs portability versionator multilib eutils
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=|| ( ( x11-libs/qt-gui:4 x11-libs/qt-sql:4 ) =x11-libs/qt-4.3* ) media-libs/libsamplerate sci-libs/fftw media-libs/libmad >=media-libs/libgpod-0.5.2 media-libs/alsa-lib
+RESTRICT=mirror
+SLOT=0
+SRC_URI=mirror://debian/pool/main/l/lastfm/lastfm_1.5.1.31879.dfsg.orig.tar.gz mirror://debian/pool/main/l/lastfm/lastfm_1.5.1.31879.dfsg-1.diff.gz

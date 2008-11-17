@@ -1,0 +1,11 @@
+DEPEND=!app-emacs/imaxima X? ( x11-misc/xdg-utils sci-visualization/gnuplot tk? ( dev-lang/tk ) ) latex? ( || ( dev-texlive/texlive-latexrecommended >=app-text/tetex-3 app-text/ptex ) ) emacs? ( virtual/emacs latex? ( app-emacs/auctex || ( dev-tex/mh =dev-texlive/texlive-mathextra-2007* ) ) ) xemacs? ( virtual/xemacs latex? ( app-emacs/auctex || ( dev-tex/mh =dev-texlive/texlive-mathextra-2007* ) ) ) gcl? ( dev-lisp/gcl ) clisp? ( dev-lisp/clisp ) cmucl? ( dev-lisp/cmucl ) sbcl? ( dev-lisp/sbcl ) cmucl? ( app-misc/rlwrap ) sbcl? ( app-misc/rlwrap ) !gcl? ( !clisp? ( !cmucl? ( !sbcl? ( dev-lisp/sbcl app-misc/rlwrap ) ) ) ) sys-apps/texinfo
+DESCRIPTION=Free computer algebra environment based on Macsyma
+EAPI=0
+HOMEPAGE=http://maxima.sourceforge.net/
+INHERITED=multilib toolchain-funcs eutils portability elisp-common
+IUSE=latex emacs tk nls unicode xemacs X gcl clisp cmucl sbcl linguas_es linguas_pt linguas_pt_BR
+KEYWORDS=~amd64 ~ppc ~sparc ~x86
+LICENSE=GPL-2 AECA
+RDEPEND=!app-emacs/imaxima X? ( x11-misc/xdg-utils sci-visualization/gnuplot tk? ( dev-lang/tk ) ) latex? ( || ( dev-texlive/texlive-latexrecommended >=app-text/tetex-3 app-text/ptex ) ) emacs? ( virtual/emacs latex? ( app-emacs/auctex || ( dev-tex/mh =dev-texlive/texlive-mathextra-2007* ) ) ) xemacs? ( virtual/xemacs latex? ( app-emacs/auctex || ( dev-tex/mh =dev-texlive/texlive-mathextra-2007* ) ) ) gcl? ( dev-lisp/gcl ) clisp? ( dev-lisp/clisp ) cmucl? ( dev-lisp/cmucl ) sbcl? ( dev-lisp/sbcl ) cmucl? ( app-misc/rlwrap ) sbcl? ( app-misc/rlwrap ) !gcl? ( !clisp? ( !cmucl? ( !sbcl? ( dev-lisp/sbcl app-misc/rlwrap ) ) ) )
+SLOT=0
+SRC_URI=mirror://sourceforge/maxima/maxima-5.15.0.tar.gz

@@ -1,0 +1,11 @@
+DEPEND=>=sys-fs/sysfsutils-1.2.0-r1 >=sys-apps/module-init-tools-3.2_pre4 || ( dev-util/yacc sys-devel/bison ) sys-devel/flex kernel_linux? ( virtual/linux-sources )
+DESCRIPTION=PCMCIA userspace utilities for Linux kernel 2.6.13 and beyond
+EAPI=0
+HOMEPAGE=http://www.kernel.org/pub/linux/utils/kernel/pcmcia/pcmcia.html
+INHERITED=toolchain-funcs portability flag-o-matic versionator multilib linux-info eutils
+IUSE=debug static staticsocket
+KEYWORDS=~amd64 ~arm ~ppc ~sh ~x86
+LICENSE=GPL-2
+RDEPEND=>=sys-fs/sysfsutils-1.2.0-r1 >=sys-apps/module-init-tools-3.2_pre4
+SLOT=0
+SRC_URI=mirror://kernel/linux/utils/kernel/pcmcia/pcmciautils-015.tar.bz2

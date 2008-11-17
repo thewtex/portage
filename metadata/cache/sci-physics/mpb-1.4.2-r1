@@ -1,0 +1,11 @@
+DEPEND=virtual/lapack dev-scheme/guile sci-libs/libctl sci-libs/hdf5 ~sci-libs/fftw-2.1.5 sys-libs/readline mpi? ( virtual/mpi ) =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=Program for computing the band structures and electromagnetic modes of periodic dielectric structures
+EAPI=0
+HOMEPAGE=http://ab-initio.mit.edu/mpb/
+INHERITED=toolchain-funcs portability multilib fortran libtool autotools eutils
+IUSE=mpi debug
+KEYWORDS=~x86 ~amd64
+LICENSE=GPL-2
+RDEPEND=~sci-libs/fftw-2.1.5
+SLOT=0
+SRC_URI=http://ab-initio.mit.edu/mpb/mpb-1.4.2.tar.gz

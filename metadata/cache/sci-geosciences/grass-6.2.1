@@ -1,0 +1,12 @@
+DEPEND=>=sys-libs/zlib-1.1.4 >=sys-libs/ncurses-5.3 >=sys-libs/gdbm-1.8.0 || ( sys-apps/man sys-apps/man-db ) sci-libs/gdal >=sci-libs/proj-4.4.7 ffmpeg? ( <media-video/ffmpeg-0.4.9_p20070616-r20 !=media-video/ffmpeg-0.4.9_p20070616-r1 !=media-video/ffmpeg-0.4.9_p20070616-r2 ) fftw? ( sci-libs/fftw ) gmath? ( virtual/blas virtual/lapack ) jpeg? ( media-libs/jpeg ) motif? ( x11-libs/openmotif ) mysql? ( dev-db/mysql ) odbc? ( >=dev-db/unixODBC-2.0.6 ) opengl? ( ( virtual/opengl ) glw? ( media-libs/mesa ) ) png? ( >=media-libs/libpng-1.2.2 ) postgres? ( >=virtual/postgresql-server-7.3 ) python? ( dev-lang/python ) readline? ( sys-libs/readline ) sqlite? ( dev-db/sqlite ) tcl? ( >=dev-lang/tcl-8.4 ) tk? ( >=dev-lang/tk-8.4 ) tiff? ( >=media-libs/tiff-3.5.7 ) truetype? ( >=media-libs/freetype-2.0 ) X? ( x11-libs/libXmu x11-libs/libXext x11-libs/libXp x11-libs/libX11 x11-libs/libXt x11-libs/libSM x11-libs/libICE x11-libs/libXpm x11-libs/libXaw ) >=sys-devel/make-3.80 >=sys-devel/flex-2.5.4a >=sys-devel/bison-1.35 >=sys-devel/gcc-3.2.2 X? ( x11-proto/xproto x11-proto/xextproto )
+DESCRIPTION=An open-source GIS with raster and vector functionality, as well as 3D vizualization.
+EAPI=0
+HOMEPAGE=http://grass.itc.it/
+INHERITED=eutils toolchain-funcs libtool multilib portability
+IUSE=ffmpeg fftw glw gmath jpeg largefile motif mysql nls odbc opengl png postgres python readline sqlite tcl tk tiff truetype X
+KEYWORDS=amd64 ppc sparc x86
+LICENSE=GPL-2
+RDEPEND=>=sys-libs/zlib-1.1.4 >=sys-libs/ncurses-5.3 >=sys-libs/gdbm-1.8.0 || ( sys-apps/man sys-apps/man-db ) sci-libs/gdal >=sci-libs/proj-4.4.7 ffmpeg? ( <media-video/ffmpeg-0.4.9_p20070616-r20 !=media-video/ffmpeg-0.4.9_p20070616-r1 !=media-video/ffmpeg-0.4.9_p20070616-r2 ) fftw? ( sci-libs/fftw ) gmath? ( virtual/blas virtual/lapack ) jpeg? ( media-libs/jpeg ) motif? ( x11-libs/openmotif ) mysql? ( dev-db/mysql ) odbc? ( >=dev-db/unixODBC-2.0.6 ) opengl? ( ( virtual/opengl ) glw? ( media-libs/mesa ) ) png? ( >=media-libs/libpng-1.2.2 ) postgres? ( >=virtual/postgresql-server-7.3 ) python? ( dev-lang/python ) readline? ( sys-libs/readline ) sqlite? ( dev-db/sqlite ) tcl? ( >=dev-lang/tcl-8.4 ) tk? ( >=dev-lang/tk-8.4 ) tiff? ( >=media-libs/tiff-3.5.7 ) truetype? ( >=media-libs/freetype-2.0 ) X? ( x11-libs/libXmu x11-libs/libXext x11-libs/libXp x11-libs/libX11 x11-libs/libXt x11-libs/libSM x11-libs/libICE x11-libs/libXpm x11-libs/libXaw )
+RESTRICT=strip
+SLOT=6
+SRC_URI=http://grass.itc.it/grass62/source/grass-6.2.1.tar.gz

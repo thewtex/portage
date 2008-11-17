@@ -1,0 +1,11 @@
+DEPEND=opengl? ( openal? ( media-libs/openal ) media-libs/libsdl vorbis? ( media-libs/libogg media-libs/libvorbis ) virtual/opengl x11-libs/libX11 x11-libs/libXau x11-libs/libXdmcp x11-libs/libXext ) !opengl? ( !dedicated? ( openal? ( media-libs/openal ) media-libs/libsdl vorbis? ( media-libs/libogg media-libs/libvorbis ) virtual/opengl x11-libs/libX11 x11-libs/libXau x11-libs/libXdmcp x11-libs/libXext ) ) app-arch/unzip
+DESCRIPTION=Team-based aliens vs humans FPS with buildable structures
+EAPI=1
+HOMEPAGE=http://tremulous.net/
+INHERITED=eutils toolchain-funcs games multilib portability
+IUSE=dedicated openal +opengl +vorbis
+KEYWORDS=amd64 ppc x86
+LICENSE=GPL-2 CCPL-Attribution-ShareAlike-2.5
+RDEPEND=opengl? ( openal? ( media-libs/openal ) media-libs/libsdl vorbis? ( media-libs/libogg media-libs/libvorbis ) virtual/opengl x11-libs/libX11 x11-libs/libXau x11-libs/libXdmcp x11-libs/libXext ) !opengl? ( !dedicated? ( openal? ( media-libs/openal ) media-libs/libsdl vorbis? ( media-libs/libogg media-libs/libvorbis ) virtual/opengl x11-libs/libX11 x11-libs/libXau x11-libs/libXdmcp x11-libs/libXext ) )
+SLOT=0
+SRC_URI=http://dl.trem-servers.com/tremulous-gentoopatches-1.1.0-r5.zip http://dl.trem-servers.com/vms-1.1.t971.pk3 http://0day.icculus.org/mirrors/tremulous/tremulous-1.1.0.zip ftp://ftp.wireplay.co.uk/pub/quake3arena/mods/tremulous/tremulous-1.1.0.zip mirror://sourceforge/tremulous/tremulous-1.1.0.zip

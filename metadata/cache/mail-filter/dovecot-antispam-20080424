@@ -1,0 +1,11 @@
+DEPEND=net-mail/dovecot dspam? ( mail-filter/dspam ) crm114? ( app-text/crm114 ) =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=A dovecot antispam plugin supporting multiple backends
+EAPI=0
+HOMEPAGE=http://johannes.sipsolutions.net/Projects/dovecot-antispam
+INHERITED=toolchain-funcs portability flag-o-matic multilib libtool confutils autotools eutils
+IUSE=debug dspam crm114 mailtrain signature-log syslog
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=net-mail/dovecot dspam? ( mail-filter/dspam ) crm114? ( app-text/crm114 )
+SLOT=0
+SRC_URI=mirror://gentoo/dovecot-antispam-20080424.tar.gz

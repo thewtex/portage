@@ -1,0 +1,11 @@
+DEPEND=x11-libs/libX11 gtk? ( >=x11-libs/gtk+-2 >=dev-libs/atk-1 >=x11-libs/pango-1 >=dev-libs/glib-2 ) !app-i18n/scim-cvs sys-devel/libtool x11-libs/libXt doc? ( app-doc/doxygen app-text/docbook-xsl-stylesheets ) dev-lang/perl dev-util/pkgconfig >=dev-util/intltool-0.33 =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=Smart Common Input Method (SCIM) is an Input Method (IM) development platform
+EAPI=0
+HOMEPAGE=http://www.scim-im.org/
+INHERITED=toolchain-funcs portability flag-o-matic multilib libtool autotools eutils
+IUSE=doc gtk
+KEYWORDS=~alpha ~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=x11-libs/libX11 gtk? ( >=x11-libs/gtk+-2 >=dev-libs/atk-1 >=x11-libs/pango-1 >=dev-libs/glib-2 ) !app-i18n/scim-cvs sys-devel/libtool
+SLOT=0
+SRC_URI=mirror://sourceforge/scim/scim-1.4.7.tar.gz

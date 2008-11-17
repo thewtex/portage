@@ -1,0 +1,11 @@
+DEPEND=virtual/blas virtual/lapack tk? ( dev-lang/tk ) sys-devel/flex dev-lang/perl >=sys-apps/sed-4 doc? ( app-doc/doxygen media-gfx/graphviz ) =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=The Massively Parallel Quantum Chemistry Program
+EAPI=0
+HOMEPAGE=http://www.mpqc.org/
+INHERITED=toolchain-funcs portability multilib fortran libtool autotools eutils
+IUSE=doc threads tk debug
+KEYWORDS=amd64 ppc ppc64 x86
+LICENSE=GPL-2
+RDEPEND=virtual/blas virtual/lapack tk? ( dev-lang/tk )
+SLOT=0
+SRC_URI=mirror://sourceforge/mpqc/mpqc-2.3.1.tar.bz2

@@ -1,0 +1,11 @@
+DEPEND=odbc? ( || ( dev-db/libiodbc dev-db/unixODBC ) ) gmp? ( dev-libs/gmp ) mysql? ( virtual/mysql ) dev-util/pkgconfig
+DESCRIPTION=GNU Linear Programming Kit
+EAPI=0
+HOMEPAGE=http://www.gnu.org/software/glpk/
+INHERITED=multilib toolchain-funcs eutils portability flag-o-matic
+IUSE=doc examples gmp odbc mysql
+KEYWORDS=~alpha ~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-3
+RDEPEND=odbc? ( || ( dev-db/libiodbc dev-db/unixODBC ) ) gmp? ( dev-libs/gmp ) mysql? ( virtual/mysql )
+SLOT=0
+SRC_URI=mirror://gnu/glpk/glpk-4.29.tar.gz

@@ -1,0 +1,11 @@
+DEPEND=>=net-misc/nx-3.2.0-r5 dbus? ( sys-apps/dbus ) nxclient? ( net-misc/nxclient ) doc? ( app-doc/doxygen ) =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=A library for building NX clients
+EAPI=0
+HOMEPAGE=http://developer.berlios.de/projects/freenx/
+INHERITED=toolchain-funcs portability multilib libtool autotools eutils
+IUSE=dbus doc nxclient
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=net-misc/nx-3.2.0-r5 dbus? ( sys-apps/dbus ) nxclient? ( net-misc/nxclient )
+SLOT=0
+SRC_URI=mirror://berlios/freenx/freenx-client-0.9.tar.bz2

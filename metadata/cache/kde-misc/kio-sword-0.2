@@ -1,0 +1,11 @@
+DEPEND==kde-base/kdelibs-3.5* =x11-libs/qt-3* =sys-devel/automake-1.9* >=sys-devel/autoconf-2.61 sys-devel/libtool sys-devel/make dev-util/pkgconfig dev-lang/perl x11-libs/libXt x11-proto/xf86vidmodeproto xinerama? ( x11-proto/xineramaproto ) arts? ( kde-base/arts )
+DESCRIPTION=a nice kio handler to sword
+EAPI=0
+HOMEPAGE=http://lukeplant.me.uk/kio-sword/
+INHERITED=toolchain-funcs qt3 portability flag-o-matic kde versionator multilib base kde-functions libtool autotools eutils
+IUSE=debug elibc_FreeBSD arts xinerama
+KEYWORDS=x86 amd64
+LICENSE=GPL-2
+RDEPEND=>=app-text/sword-1.5.8 =kde-base/kdelibs-3.5* =x11-libs/qt-3* xinerama? ( x11-libs/libXinerama ) arts? ( kde-base/arts )
+SLOT=0
+SRC_URI=http://lukeplant.me.uk/kio-sword/downloads/kio-sword_0.2.tar.gz

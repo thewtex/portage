@@ -1,0 +1,11 @@
+DEPEND=tcl? ( >=dev-lang/tcl-8.4 ) java? ( >=virtual/jdk-1.4 ) sys-devel/gnuconfig test? ( >=dev-lang/tcl-8.4 ) java? ( >=dev-java/java-config-2.0.33-r1 >=sys-apps/portage-2.1.2.7 )
+DESCRIPTION=Berkeley DB
+EAPI=0
+HOMEPAGE=http://www.sleepycat.com/
+INHERITED=toolchain-funcs portability multilib versionator db java-pkg-opt-2 java-utils-2 gnuconfig eutils
+IUSE=tcl java doc nocxx bootstrap doc test elibc_FreeBSD java
+KEYWORDS=alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~x86-fbsd
+LICENSE=DB
+RDEPEND=tcl? ( dev-lang/tcl ) java? ( >=virtual/jre-1.4 ) java? ( >=dev-java/java-config-2.0.33-r1 >=sys-apps/portage-2.1.2.7 )
+SLOT=4.2
+SRC_URI=mirror://gentoo/db-4.2.52.tar.gz http://www.sleepycat.com/update/4.2.52/patch.4.2.52.1 http://www.sleepycat.com/update/4.2.52/patch.4.2.52.2 http://www.sleepycat.com/update/4.2.52/patch.4.2.52.3 http://www.sleepycat.com/update/4.2.52/patch.4.2.52.4

@@ -1,0 +1,11 @@
+DEPEND=virtual/linux-sources kernel_linux? ( virtual/linux-sources ) kernel_linux? ( virtual/modutils ) sys-apps/sed
+DESCRIPTION=driver for the parallel port radio clock sold by Conrad Electronic
+EAPI=0
+HOMEPAGE=http://www-stud.ims.uni-stuttgart.de/~voegelas/pcf.html
+INHERITED=toolchain-funcs portability versionator multilib linux-info linux-mod eutils
+IUSE=kernel_linux
+KEYWORDS=~x86 ~ppc
+LICENSE=GPL-2
+RDEPEND=virtual/linux-sources kernel_linux? ( virtual/modutils )
+SLOT=0
+SRC_URI=http://www-stud.ims.uni-stuttgart.de/~voegelas/pcfclock/pcfclock-0.44.tar.gz

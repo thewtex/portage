@@ -1,0 +1,11 @@
+DEPEND=virtual/python
+DESCRIPTION=Retrieves and processes .nzb files
+EAPI=0
+HOMEPAGE=http://www.hellanzb.com/
+INHERITED=toolchain-funcs distutils portability python multilib alternatives eutils
+IUSE=libnotify ssl
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=>=dev-python/twisted-2.0 dev-python/twisted-web || ( app-arch/unrar app-arch/rar ) app-arch/par2cmdline ssl? ( dev-python/pyopenssl ) libnotify? ( dev-python/notify-python )
+SLOT=0
+SRC_URI=http://www.hellanzb.com/distfiles/hellanzb-0.13.tar.gz

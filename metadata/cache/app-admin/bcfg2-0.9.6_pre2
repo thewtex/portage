@@ -1,0 +1,11 @@
+DEPEND=|| ( >=dev-lang/python-2.5 ( >=dev-lang/python-2.4 || ( app-admin/gamin app-admin/fam ) ) ) virtual/python
+DESCRIPTION=Bcfg2 is a configuration management tool.
+EAPI=0
+HOMEPAGE=http://trac.mcs.anl.gov/projects/bcfg2
+INHERITED=toolchain-funcs distutils portability python multilib alternatives eutils
+IUSE=server
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=app-portage/gentoolkit dev-python/lxml server? ( dev-python/pyopenssl || ( app-admin/gamin app-admin/fam ) )
+SLOT=0
+SRC_URI=ftp://ftp.mcs.anl.gov/pub/bcfg/bcfg2-0.9.6pre2.tar.gz

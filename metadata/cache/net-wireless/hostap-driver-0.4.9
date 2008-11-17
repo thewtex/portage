@@ -1,0 +1,11 @@
+DEPEND=kernel_linux? ( virtual/linux-sources ) kernel_linux? ( virtual/modutils ) sys-apps/sed
+DESCRIPTION=Driver for Intersil Prism2/2.5/3 based IEEE 802.11b wireless LAN products
+EAPI=0
+HOMEPAGE=http://hostap.epitest.fi
+INHERITED=toolchain-funcs portability versionator multilib linux-info linux-mod eutils
+IUSE=pcmcia kernel_linux
+KEYWORDS=~amd64 ppc x86
+LICENSE=GPL-2
+RDEPEND=>=net-wireless/wireless-tools-25 pcmcia? ( virtual/pcmcia ) kernel_linux? ( virtual/modutils )
+SLOT=0
+SRC_URI=http://hostap.epitest.fi/releases/hostap-driver-0.4.9.tar.gz

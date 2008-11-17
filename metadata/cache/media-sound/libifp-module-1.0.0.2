@@ -1,0 +1,11 @@
+DEPEND=virtual/linux-sources kernel_linux? ( virtual/linux-sources ) kernel_linux? ( virtual/modutils ) sys-apps/sed
+DESCRIPTION=Linux Kernel module to allow libifp access as a non-root user.
+EAPI=0
+HOMEPAGE=http://ifp-driver.sourceforge.net/libifp/
+INHERITED=toolchain-funcs portability versionator multilib linux-info linux-mod eutils
+IUSE=kernel_linux
+KEYWORDS=amd64 ia64 ppc ppc64 x86
+LICENSE=GPL-2
+RDEPEND=virtual/linux-sources kernel_linux? ( virtual/modutils )
+SLOT=0
+SRC_URI=mirror://sourceforge/ifp-driver/libifp-1.0.0.2.tar.gz

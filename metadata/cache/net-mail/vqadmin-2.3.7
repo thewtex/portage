@@ -1,0 +1,11 @@
+DEPEND=virtual/qmail >=net-mail/vpopmail-5.3 >=app-admin/webapp-config-1.50.15 =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool >=sys-apps/sed-4
+DESCRIPTION=A web based control pannel to manage Virtual Qmail Domains. Works with qmailadmin
+EAPI=0
+HOMEPAGE=http://www.inter7.com/index.php?page=vqadmin
+INHERITED=qmail toolchain-funcs portability flag-o-matic multilib fixheadtails libtool webapp autotools eutils
+IUSE=vhosts
+KEYWORDS=~amd64 ~ppc ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=virtual/qmail >=net-mail/vpopmail-5.3 net-mail/qmailadmin >=app-admin/webapp-config-1.50.15
+SLOT=0
+SRC_URI=http://www.inter7.com/vqadmin/vqadmin-2.3.7.tar.gz

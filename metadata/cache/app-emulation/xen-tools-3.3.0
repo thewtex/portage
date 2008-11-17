@@ -1,0 +1,11 @@
+DEPEND=dev-lang/python sys-libs/zlib hvm? ( media-libs/libsdl ) acm? ( dev-libs/libxml2 ) api? ( dev-libs/libxml2 net-misc/curl ) sys-devel/gcc dev-lang/perl app-misc/pax-utils doc? ( app-doc/doxygen dev-tex/latex2html media-gfx/transfig media-gfx/graphviz ) hvm? ( x11-proto/xproto sys-devel/dev86 )
+DESCRIPTION=Xend daemon and tools
+EAPI=0
+HOMEPAGE=http://xen.org/
+INHERITED=toolchain-funcs portability flag-o-matic python multilib alternatives eutils
+IUSE=doc debug screen custom-cflags pygrub hvm api acm flask
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-lang/python sys-libs/zlib hvm? ( media-libs/libsdl ) acm? ( dev-libs/libxml2 ) api? ( dev-libs/libxml2 net-misc/curl ) sys-apps/iproute2 net-misc/bridge-utils dev-python/pyxml screen? ( app-misc/screen app-admin/logrotate ) || ( sys-fs/udev sys-apps/hotplug )
+SLOT=0
+SRC_URI=http://bits.xensource.com/oss-xen/release/3.3.0/xen-3.3.0.tar.gz

@@ -1,0 +1,11 @@
+DEPEND=opengl? ( virtual/opengl media-libs/openal media-libs/libsdl ) !dedicated? ( virtual/opengl media-libs/openal media-libs/libsdl )
+DESCRIPTION=Quake III Arena - 3rd installment of the classic id 3D first-person shooter
+EAPI=0
+HOMEPAGE=http://ioquake3.org/
+INHERITED=toolchain-funcs portability flag-o-matic multilib games eutils
+IUSE=dedicated opengl teamarena
+KEYWORDS=~amd64 ~ppc ~x86 ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=opengl? ( virtual/opengl media-libs/openal media-libs/libsdl ) !dedicated? ( virtual/opengl media-libs/openal media-libs/libsdl ) games-fps/quake3-data teamarena? ( games-fps/quake3-teamarena )
+SLOT=0
+SRC_URI=http://icculus.org/quake3/files/ioquake3_1.34-rc3.tar.bz2 http://ioquake3.org/files/ioquake3_1.34-rc3.tar.bz2

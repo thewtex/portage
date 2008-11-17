@@ -1,0 +1,11 @@
+DEPEND=>=virtual/jdk-1.5 app-arch/unzip dev-java/ant-core dev-libs/openssl ~dev-java/resin-servlet-api-3.1.6 dev-java/iso-relax dev-java/aopalliance =dev-java/sun-j2ee-deployment-bin-1.1* dev-java/jax-ws-api:2 dev-java/jaxb:2 java-virtuals/javamail java-virtuals/jaf >=dev-java/java-config-2.0.33-r1 >=sys-apps/portage-2.1.2.7 source? ( app-arch/zip ) >=dev-java/ant-core-1.7.0 >=sys-apps/portage-2.1.2.7 >=dev-java/javatoolkit-0.3.0-r2 =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=A fast Servlet 2.5 and JSP 2.0 engine.
+EAPI=1
+HOMEPAGE=http://www.caucho.com
+INHERITED=toolchain-funcs java-pkg-2 portability flag-o-matic java-utils-2 versionator multilib libtool autotools eutils java-ant-2
+IUSE=admin elibc_FreeBSD doc source elibc_FreeBSD
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=>=virtual/jdk-1.5 ~dev-java/resin-servlet-api-3.1.6 dev-java/iso-relax dev-java/aopalliance =dev-java/sun-j2ee-deployment-bin-1.1* dev-java/jax-ws-api:2 dev-java/jaxb:2 java-virtuals/javamail java-virtuals/jaf >=dev-java/java-config-2.0.33-r1 >=sys-apps/portage-2.1.2.7 source? ( app-arch/zip )
+SLOT=0
+SRC_URI=http://www.caucho.com/download/resin-3.1.6-src.zip mirror://gentoo/resin-gentoo-patches-3.1.6-1.tar.bz2

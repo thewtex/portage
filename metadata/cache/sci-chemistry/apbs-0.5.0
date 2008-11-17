@@ -1,0 +1,11 @@
+DEPEND=blas? ( virtual/blas ) sys-libs/readline mpi? ( virtual/mpi ) =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=Software for evaluating the electrostatic properties of nanoscale biomolecular systems
+EAPI=0
+HOMEPAGE=http://agave.wustl.edu/apbs/
+INHERITED=toolchain-funcs portability multilib fortran libtool autotools eutils
+IUSE=blas mpi debug
+KEYWORDS=~ppc ~x86 ~amd64
+LICENSE=GPL-2
+RDEPEND=blas? ( virtual/blas ) sys-libs/readline mpi? ( virtual/mpi )
+SLOT=0
+SRC_URI=mirror://sourceforge/apbs/apbs-0.5.0-source-2.tar.gz

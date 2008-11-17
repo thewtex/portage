@@ -1,0 +1,11 @@
+DESCRIPTION=Return to Castle Wolfenstein - Multi-player demo
+EAPI=0
+HOMEPAGE=http://games.activision.com/games/wolfenstein/
+INHERITED=eutils toolchain-funcs games multilib portability
+IUSE=dedicated opengl
+KEYWORDS=-* amd64 x86
+LICENSE=RTCW
+RDEPEND=sys-libs/glibc dedicated? ( app-misc/screen ) !dedicated? ( virtual/opengl x11-libs/libX11 x11-libs/libXext x11-libs/libXau x11-libs/libXdmcp ) opengl? ( virtual/opengl x11-libs/libX11 x11-libs/libXext x11-libs/libXau x11-libs/libXdmcp ) amd64? ( app-emulation/emul-linux-x86-xlibs )
+RESTRICT=strip mirror
+SLOT=0
+SRC_URI=mirror://idsoftware/wolf/linux/old/wolfmpdemo-linux-1.1-MP.x86.run mirror://3dgamers/returnwolfenstein/wolfmpdemo-linux-1.1-MP.x86.run

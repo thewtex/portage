@@ -1,0 +1,11 @@
+DEPEND=>=sys-devel/automake-1.7 >=sys-devel/autoconf-2.50 net-libs/libgadu ssl? ( >=dev-libs/openssl-0.9.6 ) ncurses? ( sys-libs/ncurses ) readline? ( sys-libs/readline ) zlib? ( sys-libs/zlib ) python? ( dev-lang/python ) spell? ( >=app-text/aspell-0.50.3 ) gif? ( media-libs/giflib ) jpeg? ( media-libs/jpeg ) =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=EKG (Eksperymentalny Klient Gadu-Gadu) - a text client for Polish instant messaging system Gadu-Gadu
+EAPI=0
+HOMEPAGE=http://ekg.chmurka.net/
+INHERITED=toolchain-funcs portability multilib libtool autotools eutils
+IUSE=ssl ncurses readline zlib python spell threads gif jpeg
+KEYWORDS=alpha amd64 hppa ia64 ~mips ppc ~sparc x86
+LICENSE=GPL-2
+RDEPEND=net-libs/libgadu ssl? ( >=dev-libs/openssl-0.9.6 ) ncurses? ( sys-libs/ncurses ) readline? ( sys-libs/readline ) zlib? ( sys-libs/zlib ) python? ( dev-lang/python ) spell? ( >=app-text/aspell-0.50.3 ) gif? ( media-libs/giflib ) jpeg? ( media-libs/jpeg )
+SLOT=0
+SRC_URI=http://ekg.chmurka.net/ekg-1.7.tar.gz

@@ -1,0 +1,11 @@
+DEPEND=>=net-analyzer/nmap-2.54_beta36 >=net-analyzer/traceroute-1.4_p12 >=net-misc/whois-4.5.28-r1 >=sys-apps/netkit-base-0.17-r5 =kde-base/kdelibs-3.5* =x11-libs/qt-3* =sys-devel/automake-1.9* >=sys-devel/autoconf-2.61 sys-devel/libtool sys-devel/make dev-util/pkgconfig dev-lang/perl x11-libs/libXt x11-proto/xf86vidmodeproto xinerama? ( x11-proto/xineramaproto ) arts? ( kde-base/arts )
+DESCRIPTION=KDE frontend for nmap, ping, whois and traceroute
+EAPI=0
+HOMEPAGE=http://sourceforge.net/projects/knetscan
+INHERITED=toolchain-funcs qt3 portability flag-o-matic kde versionator multilib base kde-functions libtool autotools eutils
+IUSE=debug elibc_FreeBSD arts xinerama
+KEYWORDS=amd64 ppc ppc64 sparc x86
+LICENSE=GPL-2
+RDEPEND=>=net-analyzer/nmap-2.54_beta36 >=net-analyzer/traceroute-1.4_p12 >=net-misc/whois-4.5.28-r1 >=sys-apps/netkit-base-0.17-r5 =kde-base/kdelibs-3.5* =x11-libs/qt-3* xinerama? ( x11-libs/libXinerama ) arts? ( kde-base/arts )
+SLOT=0
+SRC_URI=mirror://sourceforge/knetscan/knetscan-1.0.tar.gz mirror://gentoo/kde-admindir-3.5.3.tar.bz2

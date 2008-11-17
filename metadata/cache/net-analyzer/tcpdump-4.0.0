@@ -1,0 +1,11 @@
+DEPEND=net-libs/libpcap smi? ( net-libs/libsmi ) ssl? ( >=dev-libs/openssl-0.9.6m ) =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=A Tool for network monitoring and data acquisition
+EAPI=1
+HOMEPAGE=http://www.tcpdump.org/
+INHERITED=toolchain-funcs portability flag-o-matic multilib libtool autotools eutils
+IUSE=+chroot smi ssl ipv6 samba
+KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd
+LICENSE=BSD
+RDEPEND=net-libs/libpcap smi? ( net-libs/libsmi ) ssl? ( >=dev-libs/openssl-0.9.6m )
+SLOT=0
+SRC_URI=http://www.tcpdump.org/release/tcpdump-4.0.0.tar.gz http://www.jp.tcpdump.org/release/tcpdump-4.0.0.tar.gz

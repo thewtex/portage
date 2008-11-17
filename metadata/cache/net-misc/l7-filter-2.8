@@ -1,0 +1,10 @@
+DEPEND=kernel_linux? ( virtual/linux-sources )
+DESCRIPTION=Kernel modules for layer 7 iptables filtering
+EAPI=0
+HOMEPAGE=http://l7-filter.sourceforge.net
+INHERITED=toolchain-funcs portability versionator multilib linux-info eutils
+KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ppc ppc64 sparc x86
+LICENSE=GPL-2
+RDEPEND=net-misc/l7-protocols
+SLOT=0
+SRC_URI=mirror://sourceforge/l7-filter/netfilter-layer7-v2.8.tar.gz mirror://gentoo/additional_patch_for_2.6.13.diff

@@ -1,0 +1,12 @@
+DEPEND=tcpd? ( sys-apps/tcp-wrappers ) selinux? ( sec-policy/selinux-tftpd ) readline? ( sys-libs/readline ) pcre? ( dev-libs/libpcre ) !virtual/tftp
+DESCRIPTION=Advanced TFTP implementation client/server
+EAPI=0
+HOMEPAGE=ftp://ftp.mamalinux.com/pub/atftp/
+INHERITED=multilib toolchain-funcs eutils portability flag-o-matic
+IUSE=selinux tcpd readline pcre
+KEYWORDS=amd64 arm ppc ppc64 sparc x86 ~s390
+LICENSE=GPL-2
+PROVIDE=virtual/tftp
+RDEPEND=tcpd? ( sys-apps/tcp-wrappers ) selinux? ( sec-policy/selinux-tftpd ) readline? ( sys-libs/readline ) pcre? ( dev-libs/libpcre )
+SLOT=0
+SRC_URI=ftp://ftp.mamalinux.com/pub/atftp/atftp-0.7.tar.gz http://ftp.debian.org/debian/pool/main/a/atftp/atftp_0.7-11.diff.gz

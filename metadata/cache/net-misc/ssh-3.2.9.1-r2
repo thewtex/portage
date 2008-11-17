@@ -1,0 +1,12 @@
+DEPEND=X? ( x11-libs/libSM x11-libs/libXext ) !openssh? ( !virtual/ssh ) X? ( x11-proto/xextproto )
+DESCRIPTION=SSH.COM free for Non-Commercial Use ssh version
+EAPI=0
+HOMEPAGE=http://www.ssh.com/
+INHERITED=multilib toolchain-funcs eutils portability pam
+IUSE=X ipv6 crypt openssh
+KEYWORDS=~amd64 ~x86
+LICENSE=ssh
+PROVIDE=virtual/ssh
+RDEPEND=X? ( x11-libs/libSM x11-libs/libXext ) !openssh? ( !virtual/ssh )
+SLOT=0
+SRC_URI=ftp://ftp.ssh.com/pub/ssh/ssh-3.2.9.1.tar.gz

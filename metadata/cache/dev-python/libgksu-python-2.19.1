@@ -1,0 +1,12 @@
+DEPEND=>=x11-libs/libgksu-2.0.4 =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool >=sys-apps/sed-4 !<=dev-python/gnome-python-extras-2.19.1-r2 ~dev-python/gnome-python-extras-base-2.19.1 dev-util/pkgconfig
+DESCRIPTION=Based on the libtool eclass
+EAPI=0
+HOMEPAGE=http://pygtk.org/
+INHERITED=gnome-python-common toolchain-funcs portability python multilib versionator alternatives gnome2-utils gnome2 gnome.org fdo-mime autotools libtool eutils
+IUSE=examples debug
+KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=LGPL-2.1
+RDEPEND=>=x11-libs/libgksu-2.0.4 !<=dev-python/gnome-python-extras-2.19.1-r2 ~dev-python/gnome-python-extras-base-2.19.1
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://gnome/sources/gnome-python-extras/2.19/gnome-python-extras-2.19.1.tar.bz2 mirror://gentoo/gnome-python-extras-2.19.1-split.patch.gz

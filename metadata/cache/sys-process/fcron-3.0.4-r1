@@ -1,0 +1,12 @@
+DEPEND=doc? ( >=app-text/docbook-dsssl-stylesheets-1.77 ) selinux? ( sys-libs/libselinux ) pam? ( virtual/pam ) =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool >=sys-apps/sed-4.0.5
+DESCRIPTION=A command scheduler with extended capabilities over cron and anacron
+EAPI=0
+HOMEPAGE=http://fcron.free.fr/
+INHERITED=toolchain-funcs portability flag-o-matic multilib cron libtool autotools pam eutils
+IUSE=debug doc pam selinux
+KEYWORDS=amd64 hppa ~mips ppc sparc x86 ~x86-fbsd
+LICENSE=GPL-2
+PROVIDE=virtual/cron
+RDEPEND=doc? ( >=app-text/docbook-dsssl-stylesheets-1.77 ) selinux? ( sys-libs/libselinux ) pam? ( virtual/pam ) !virtual/cron virtual/mta >=sys-process/cronbase-0.3.2
+SLOT=0
+SRC_URI=http://fcron.free.fr/archives/fcron-3.0.4.src.tar.gz

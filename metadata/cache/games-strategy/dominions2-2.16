@@ -1,0 +1,12 @@
+DEPEND=virtual/opengl virtual/glu x86? ( media-libs/libsdl ) ppc? ( media-libs/libsdl ) amd64? ( app-emulation/emul-linux-x86-xlibs app-emulation/emul-linux-x86-sdl )
+DESCRIPTION=Dominions 2: The Ascension Wars is an epic turn-based fantasy strategy game
+EAPI=0
+HOMEPAGE=http://www.shrapnelgames.com/Illwinter/d2/
+INHERITED=eutils toolchain-funcs games multilib portability
+IUSE=doc
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=as-is
+RDEPEND=virtual/opengl virtual/glu x86? ( media-libs/libsdl ) ppc? ( media-libs/libsdl ) amd64? ( app-emulation/emul-linux-x86-xlibs app-emulation/emul-linux-x86-sdl )
+RESTRICT=strip
+SLOT=0
+SRC_URI=x86? ( http://www.shrapnelgames.com/downloads/dompatch216_linux_x86.tgz ) amd64? ( http://www.shrapnelgames.com/downloads/dompatch216_linux_x86.tgz ) ppc? ( http://www.shrapnelgames.com/downloads/dompatch216_linux_ppc.tgz ) doc? ( http://www.shrapnelgames.com/downloads/DOM2_Walkthrough.pdf http://www.shrapnelgames.com/downloads/manual_addenda.pdf ) mirror://gentoo/dominions2.png

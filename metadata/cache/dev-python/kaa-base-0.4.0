@@ -1,0 +1,11 @@
+DEPEND=dev-libs/libxml2 sqlite? ( dev-python/dbus-python >=dev-python/pysqlite-2.2 ) avahi? ( net-dns/avahi ) virtual/python
+DESCRIPTION=Basic Framework for all Kaa Python Modules.
+EAPI=0
+HOMEPAGE=http://freevo.sourceforge.net/kaa/
+INHERITED=toolchain-funcs distutils portability python multilib alternatives eutils
+IUSE=avahi ssl sqlite tls lirc
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=LGPL-2.1
+RDEPEND=dev-libs/libxml2 sqlite? ( dev-python/dbus-python >=dev-python/pysqlite-2.2 ) avahi? ( net-dns/avahi ) dev-python/pynotifier lirc? ( dev-python/pylirc ) tls? ( dev-python/tlslite )
+SLOT=0
+SRC_URI=mirror://sourceforge/freevo/kaa-base-0.4.0.tar.gz

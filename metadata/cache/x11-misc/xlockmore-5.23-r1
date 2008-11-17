@@ -1,0 +1,11 @@
+DEPEND=opengl? ( media-libs/mesa ) x11-libs/libX11 x11-libs/libXmu x11-libs/libXext x11-libs/libXt x11-libs/libXpm media-libs/freetype pam? ( virtual/pam ) nas? ( media-libs/nas ) esd? ( media-sound/esound ) motif? ( x11-libs/openmotif ) gtk? ( >=x11-libs/gtk+-2 ) x11-proto/xineramaproto
+DESCRIPTION=Just another screensaver application for X
+EAPI=0
+HOMEPAGE=http://www.tux.org/~bagleyd/xlockmore.html
+INHERITED=toolchain-funcs portability flag-o-matic multilib pam eutils
+IUSE=crypt debug nas esd motif opengl truetype gtk pam xlockrc unicode
+KEYWORDS=amd64 hppa ppc ppc64 sparc x86
+LICENSE=BSD GPL-2
+RDEPEND=opengl? ( media-libs/mesa ) x11-libs/libX11 x11-libs/libXmu x11-libs/libXext x11-libs/libXt x11-libs/libXpm media-libs/freetype pam? ( virtual/pam ) nas? ( media-libs/nas ) esd? ( media-sound/esound ) motif? ( x11-libs/openmotif ) gtk? ( >=x11-libs/gtk+-2 )
+SLOT=0
+SRC_URI=http://ftp.tux.org/pub/tux/bagleyd/xlockmore/xlockmore-5.23.tar.bz2

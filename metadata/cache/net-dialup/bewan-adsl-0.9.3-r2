@@ -1,0 +1,11 @@
+DEPEND=virtual/linux-sources kernel_linux? ( virtual/linux-sources ) kernel_linux? ( virtual/modutils ) sys-apps/sed
+DESCRIPTION=Bewan ADSL PCI&USB st driver
+EAPI=0
+HOMEPAGE=http://www.bewan.com/
+INHERITED=toolchain-funcs portability versionator multilib linux-info linux-mod eutils
+IUSE=usb pcitimer slowpcibridge kt400 kernel_linux
+KEYWORDS=x86
+LICENSE=GPL-2
+RDEPEND=kernel_linux? ( virtual/modutils )
+SLOT=0
+SRC_URI=http://www.bewan.com/bewan/drivers/A1012-A1006-A904-A888-A983-0.9.3.tgz mirror://gentoo/bewan-adsl-0.9.3-patches-20061220.tar.gz

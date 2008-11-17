@@ -1,0 +1,11 @@
+DEPEND=virtual/libc ssl? ( dev-libs/openssl ) zlib? ( sys-libs/zlib ) postgres? ( virtual/postgresql-server ) !postgres? ( virtual/mysql ) sys-devel/bison
+DESCRIPTION=A DNS-Server which gets its data from mysql-databases
+EAPI=0
+HOMEPAGE=http://mydns.bboy.net/
+INHERITED=multilib toolchain-funcs eutils portability
+IUSE=debug nls postgres ssl static zlib
+KEYWORDS=alpha amd64 ~hppa ia64 ~ppc sparc x86
+LICENSE=GPL-2
+RDEPEND=virtual/libc ssl? ( dev-libs/openssl ) zlib? ( sys-libs/zlib ) postgres? ( virtual/postgresql-server ) !postgres? ( virtual/mysql )
+SLOT=0
+SRC_URI=http://mydns.bboy.net/download/mydns-1.1.0.tar.bz2

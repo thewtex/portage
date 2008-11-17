@@ -1,0 +1,11 @@
+DEPEND=!kdeprefix? ( !kde-misc/krename:0 ) >=media-libs/taglib-1.5 >=dev-util/cmake-2.4.6 || ( ( x11-libs/qt-core:4[qt3support,ssl] x11-libs/qt-gui:4[accessibility,dbus] x11-libs/qt-qt3support:4[accessibility] x11-libs/qt-script:4 x11-libs/qt-svg:4 x11-libs/qt-test:4 ) >=x11-libs/qt-4.3.3:4[accessibility,dbus,gif,jpeg,png,qt3support,ssl,zlib] ) >=dev-util/cmake-2.4.7-r1 dev-util/pkgconfig kde-base/automoc x11-libs/libXt x11-proto/xf86vidmodeproto !kdeprefix? ( !kde-base/krename:kde-4[-kdeprefix] ) !kdeprefix? ( !kde-base/krename:4.1[-kdeprefix] ) kde-base/kdelibs:4.1[kdeprefix=] kde-base/kdepimlibs:4.1[kdeprefix=]
+DESCRIPTION=KRename - a very powerful batch file renamer.
+EAPI=2
+HOMEPAGE=http://www.krename.net/
+INHERITED=toolchain-funcs kde4-base portability flag-o-matic multilib kde4-functions base cmake-utils eutils
+IUSE=kdeprefix
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=!kdeprefix? ( !kde-misc/krename:0 ) >=media-libs/taglib-1.5 || ( ( x11-libs/qt-core:4[qt3support,ssl] x11-libs/qt-gui:4[accessibility,dbus] x11-libs/qt-qt3support:4[accessibility] x11-libs/qt-script:4 x11-libs/qt-svg:4 x11-libs/qt-test:4 ) >=x11-libs/qt-4.3.3:4[accessibility,dbus,gif,jpeg,png,qt3support,ssl,zlib] ) !kdeprefix? ( !kde-base/krename:kde-4[-kdeprefix] ) !kdeprefix? ( !kde-base/krename:4.1[-kdeprefix] ) kde-base/kdelibs:4.1[kdeprefix=] kde-base/kdepimlibs:4.1[kdeprefix=]
+SLOT=4.1
+SRC_URI=mirror://sourceforge/krename/krename-3.9.2.tar.bz2

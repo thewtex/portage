@@ -1,0 +1,11 @@
+DEPEND=tcl? ( >=dev-lang/tcl-8.4 ) java? ( >=virtual/jdk-1.4 ) >=sys-devel/binutils-2.16.1 test? ( >=dev-lang/tcl-8.4 ) java? ( >=dev-java/java-config-2.0.33-r1 >=sys-apps/portage-2.1.2.7 )
+DESCRIPTION=Oracle Berkeley DB
+EAPI=0
+HOMEPAGE=http://www.oracle.com/technology/software/products/berkeley-db/index.html
+INHERITED=toolchain-funcs portability flag-o-matic multilib versionator db java-pkg-opt-2 java-utils-2 eutils
+IUSE=tcl java doc nocxx bootstrap doc test elibc_FreeBSD java
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~ppc ~ppc64 ~s390 ~sh ~sparc ~sparc-fbsd ~x86 ~x86-fbsd
+LICENSE=OracleDB
+RDEPEND=tcl? ( dev-lang/tcl ) java? ( >=virtual/jre-1.4 ) java? ( >=dev-java/java-config-2.0.33-r1 >=sys-apps/portage-2.1.2.7 )
+SLOT=4.6
+SRC_URI=http://download.oracle.com/berkeley-db/db-4.6.21.tar.gz http://www.oracle.com/technology/products/berkeley-db/db/update/4.6.21/patch.4.6.21.1

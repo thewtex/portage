@@ -1,0 +1,11 @@
+DEPEND=xprint? ( x11-libs/libXprintUtil ) =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool >=sys-devel/libtool-1.5 >=sys-devel/m4-1.4 >=dev-util/pkgconfig-0.18 >=x11-misc/util-macros-0.99.2 >=sys-devel/binutils-2.16.1-r3
+DESCRIPTION=plain text display program for the X Window System
+EAPI=0
+HOMEPAGE=http://xorg.freedesktop.org/
+INHERITED=toolchain-funcs portability flag-o-matic multilib x-modular libtool autotools eutils
+IUSE=xprint debug
+KEYWORDS=amd64 arm ~mips ~ppc ~ppc64 s390 sh ~sparc x86
+LICENSE=xmore
+RDEPEND=xprint? ( x11-libs/libXprintUtil ) !<=x11-base/xorg-x11-6.9
+SLOT=0
+SRC_URI=http://xorg.freedesktop.org/releases/individual/app/xmore-1.0.1.tar.bz2

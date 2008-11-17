@@ -1,0 +1,10 @@
+DESCRIPTION=Horror conspiracy game mixing elements of strategy and role-playing
+EAPI=0
+HOMEPAGE=http://www.linuxgamepublishing.com/info.php?id=gorky17
+INHERITED=toolchain-funcs portability versionator multilib games eutils
+KEYWORDS=~x86
+LICENSE=as-is
+RDEPEND=media-libs/alsa-lib x86? ( media-libs/libsdl sys-libs/zlib x11-libs/libX11 x11-libs/libXau x11-libs/libXdmcp x11-libs/libXext ) amd64? ( app-emulation/emul-linux-x86-baselibs app-emulation/emul-linux-x86-xlibs app-emulation/emul-linux-x86-soundlibs app-emulation/emul-linux-x86-sdl )
+RESTRICT=strip
+SLOT=0
+SRC_URI=http://demofiles.linuxgamepublishing.com/gorky17/gorky17_demo.run http://updatefiles.linuxgamepublishing.com/gorky17-demo/gorky17-demo-1.0-1.0.1-x86.run

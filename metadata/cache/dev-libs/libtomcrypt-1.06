@@ -1,0 +1,11 @@
+DEPEND=libtommath? ( dev-libs/libtommath ) tomsfastmath? ( dev-libs/tomsfastmath ) !libtommath? ( !tomsfastmath? ( dev-libs/libtommath ) ) doc? ( virtual/latex-base virtual/ghostscript )
+DESCRIPTION=modular and portable cryptographic toolkit
+EAPI=0
+HOMEPAGE=http://libtomcrypt.org/
+INHERITED=multilib toolchain-funcs eutils portability flag-o-matic
+IUSE=doc libtommath tomsfastmath
+KEYWORDS=amd64 ppc x86
+LICENSE=public-domain
+RDEPEND=libtommath? ( dev-libs/libtommath ) tomsfastmath? ( dev-libs/tomsfastmath ) !libtommath? ( !tomsfastmath? ( dev-libs/libtommath ) )
+SLOT=0
+SRC_URI=http://libtomcrypt.org/files/crypt-1.06.tar.bz2 http://libtomcrypt.org/files/patch-1.06/makefile.diff http://libtomcrypt.org/files/patch-1.06/makefile.shared.diff

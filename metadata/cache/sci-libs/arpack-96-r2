@@ -1,0 +1,11 @@
+DEPEND=virtual/blas mpi? ( virtual/mpi ) dev-util/pkgconfig =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=Arnoldi package library to solve large scale eigenvalue problems.
+EAPI=0
+HOMEPAGE=http://www.caam.rice.edu/software/ARPACK
+INHERITED=toolchain-funcs portability multilib fortran libtool autotools eutils
+IUSE=mpi doc examples debug
+KEYWORDS=~amd64 ~x86
+LICENSE=RiceBSD
+RDEPEND=virtual/blas mpi? ( virtual/mpi )
+SLOT=0
+SRC_URI=http://www.caam.rice.edu/software/ARPACK/SRC/arpack96.tar.gz http://www.caam.rice.edu/software/ARPACK/SRC/parpack96.tar.gz mirror://gentoo/arpack-96-patches.tar.bz2 doc? ( http://www.caam.rice.edu/software/ARPACK/SRC/ug.ps.gz http://www.caam.rice.edu/software/ARPACK/DOCS/tutorial.ps.gz )

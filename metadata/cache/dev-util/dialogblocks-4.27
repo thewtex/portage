@@ -1,0 +1,10 @@
+DESCRIPTION=GUI builder tool for wxWidgets
+EAPI=0
+HOMEPAGE=http://www.anthemion.co.uk/dialogblocks/
+INHERITED=multilib toolchain-funcs eutils portability
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=as-is
+RDEPEND=>=x11-libs/gtk+-2 x11-libs/libXinerama >=media-libs/libpng-1.2 media-libs/jpeg >=media-libs/tiff-3
+RESTRICT=strip
+SLOT=0
+SRC_URI=!amd64? ( http://www.anthemion.co.uk/dialogblocks/DialogBlocks-4.27-i386.tar.gz ) amd64? ( http://www.anthemion.co.uk/dialogblocks/DialogBlocks-4.27-x86_64.tar.gz )

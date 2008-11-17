@@ -1,0 +1,12 @@
+DEPEND=app-shells/tcsh hardened? ( sys-apps/paxctl ) virtual/blas =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=A powerful quantum chemistry package
+EAPI=0
+HOMEPAGE=http://www.msg.ameslab.gov/GAMESS/GAMESS.html
+INHERITED=toolchain-funcs portability flag-o-matic multilib fortran libtool autotools eutils
+IUSE=hardened debug
+KEYWORDS=~ppc ~x86 ~amd64
+LICENSE=gamess
+RDEPEND=app-shells/tcsh hardened? ( sys-apps/paxctl ) virtual/blas net-misc/openssh
+RESTRICT=fetch
+SLOT=0
+SRC_URI=gamess-20070324.6.tar.gz

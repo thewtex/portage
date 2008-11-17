@@ -1,0 +1,11 @@
+DEPEND=gnome-base/librsvg >=dev-libs/boost-1.34 x11-libs/pango media-libs/sdl-image media-libs/sdl-gfx xine? ( media-libs/xine-lib ) !xine? ( media-libs/gstreamer ) opengl? ( virtual/opengl virtual/glu ) alsa? ( media-libs/alsa-lib ) portaudio? ( media-libs/portaudio ) gstreamer? ( >=media-libs/gstreamer-0.10 ) !novideo? ( media-libs/smpeg ) dev-util/pkgconfig
+DESCRIPTION=SingStar GPL clone
+EAPI=0
+HOMEPAGE=http://sourceforge.net/projects/ultrastar-ng/
+INHERITED=eutils toolchain-funcs games multilib portability
+IUSE=novideo opengl xine debug alsa gstreamer portaudio songs
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2 songs? ( CCPL-Attribution-ShareAlike-NonCommercial-2.5 CCPL-Attribution-NonCommercial-NoDerivs-2.5 )
+RDEPEND=gnome-base/librsvg >=dev-libs/boost-1.34 x11-libs/pango media-libs/sdl-image media-libs/sdl-gfx xine? ( media-libs/xine-lib ) !xine? ( media-libs/gstreamer ) opengl? ( virtual/opengl virtual/glu ) alsa? ( media-libs/alsa-lib ) portaudio? ( media-libs/portaudio ) gstreamer? ( >=media-libs/gstreamer-0.10 ) !novideo? ( media-libs/smpeg )
+SLOT=0
+SRC_URI=mirror://sourceforge/ultrastar-ng/UltraStar-ng-0.2.1.tar.gz songs? ( mirror://sourceforge/ultrastar-ng/ultrastar-songs-1.tar.bz2 )

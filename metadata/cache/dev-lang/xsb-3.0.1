@@ -1,0 +1,11 @@
+DEPEND=iodbc? ( dev-db/libiodbc ) java? ( virtual/jdk ) libwww? ( net-libs/libwww ) mysql? ( virtual/mysql ) odbc? ( dev-db/unixODBC ) perl? ( dev-lang/perl ) xml? ( dev-libs/libxml2 ) =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool java? ( >=dev-java/java-config-2.0.33-r1 >=sys-apps/portage-2.1.2.7 )
+DESCRIPTION=XSB is a logic programming and deductive database system
+EAPI=0
+HOMEPAGE=http://xsb.sourceforge.net
+INHERITED=toolchain-funcs portability java-utils-2 versionator multilib java-pkg-opt-2 libtool autotools eutils
+IUSE=debug iodbc java libwww mysql odbc perl threads xml elibc_FreeBSD java
+KEYWORDS=~x86
+LICENSE=GPL-2 LGPL-2
+RDEPEND=iodbc? ( dev-db/libiodbc ) java? ( virtual/jdk ) libwww? ( net-libs/libwww ) mysql? ( virtual/mysql ) odbc? ( dev-db/unixODBC ) perl? ( dev-lang/perl ) xml? ( dev-libs/libxml2 ) java? ( >=dev-java/java-config-2.0.33-r1 >=sys-apps/portage-2.1.2.7 )
+SLOT=0
+SRC_URI=mirror://sourceforge/xsb/xsb-3.0.1-src.tar.gz

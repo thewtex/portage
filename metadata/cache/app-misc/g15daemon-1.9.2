@@ -1,0 +1,11 @@
+DEPEND=dev-libs/libusb >=dev-libs/libg15-1.2.4 >=dev-libs/libg15render-1.2 perl? ( >=dev-perl/Inline-0.4 ) python? ( dev-lang/python ) kernel_linux? ( virtual/linux-sources )
+DESCRIPTION=G15daemon takes control of the G15 keyboard, through the linux kernel uinput device driver
+EAPI=0
+HOMEPAGE=http://g15daemon.sourceforge.net/
+INHERITED=toolchain-funcs portability python alternatives versionator multilib base linux-info eutils perl-module
+IUSE=perl python
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/libusb >=dev-libs/libg15-1.2.4 >=dev-libs/libg15render-1.2 perl? ( >=dev-perl/Inline-0.4 ) python? ( dev-lang/python ) perl? ( dev-perl/GDGraph )
+SLOT=0
+SRC_URI=mirror://sourceforge/g15daemon/g15daemon-1.9.2.tar.gz

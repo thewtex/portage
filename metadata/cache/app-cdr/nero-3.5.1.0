@@ -1,0 +1,12 @@
+DEPEND=>=app-arch/rpm2targz-9.0-r1 >=sys-apps/sed-4
+DESCRIPTION=Nero Burning ROM for Linux
+EAPI=0
+HOMEPAGE=http://nerolinux.nero.com
+INHERITED=toolchain-funcs portability multilib gnome2-utils fdo-mime rpm eutils
+IUSE=doc
+KEYWORDS=~amd64 ~x86
+LICENSE=Nero
+RDEPEND=x11-libs/libX11 >=x11-libs/gtk+-2
+RESTRICT=strip mirror test
+SLOT=0
+SRC_URI=x86? ( mirror://nero/nerolinux-3.5.1.0-x86.rpm ) amd64? ( mirror://nero/nerolinux-3.5.1.0-x86_64.rpm )

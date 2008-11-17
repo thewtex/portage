@@ -1,0 +1,11 @@
+DEPEND=fuse? ( sys-fs/fuse ) perl? ( dev-lang/perl ) php? ( dev-lang/php ) python? ( dev-lang/python ) tcl? ( dev-lang/tcl ) usb? ( dev-libs/libusb ) zeroconf? ( || ( net-dns/avahi net-misc/mDNSResponder ) ) perl? ( dev-lang/swig ) php? ( dev-lang/swig ) python? ( dev-lang/swig )
+DESCRIPTION=Access 1-Wire devices like a filesystem
+EAPI=0
+HOMEPAGE=http://www.owfs.org/ http://owfs.sourceforge.net/
+INHERITED=toolchain-funcs portability depend.php multilib phpconfutils eutils
+IUSE=debug fuse ftpd httpd parport perl php python server tcl usb zeroconf
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=fuse? ( sys-fs/fuse ) perl? ( dev-lang/perl ) php? ( dev-lang/php ) python? ( dev-lang/python ) tcl? ( dev-lang/tcl ) usb? ( dev-libs/libusb ) zeroconf? ( || ( net-dns/avahi net-misc/mDNSResponder ) )
+SLOT=0
+SRC_URI=mirror://sourceforge/owfs/owfs-2.7p4.tar.gz

@@ -1,0 +1,12 @@
+DEPEND=virtual/libc sys-devel/libtool dev-lang/perl >=dev-lang/python-2.3 >=dev-libs/libaio-0.3.106 net-fs/nfs-utils pvfs2? ( >=sys-cluster/pvfs2-2.7.0 ) mpe-sdk? ( >=virtual/jdk-1.5 x11-proto/xproto ) doc? ( virtual/latex-base ) =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool virtual/python =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool >=dev-java/java-config-2.0.33-r1 >=sys-apps/portage-2.1.2.7
+DESCRIPTION=MPICH2 - A portable MPI implementation
+EAPI=0
+HOMEPAGE=http://www-unix.mcs.anl.gov/mpi/mpich2
+INHERITED=toolchain-funcs distutils portability flag-o-matic python alternatives versionator multilib java-pkg-2 fortran libtool java-utils-2 autotools eutils
+IUSE=crypt cxx debug doc fast fortran mpe mpe-sdk pvfs2 threads debug elibc_FreeBSD
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
+LICENSE=as-is
+RDEPEND=virtual/libc sys-devel/libtool dev-lang/perl >=dev-lang/python-2.3 >=dev-libs/libaio-0.3.106 net-fs/nfs-utils pvfs2? ( >=sys-cluster/pvfs2-2.7.0 ) mpe-sdk? ( >=virtual/jdk-1.5 x11-proto/xproto ) doc? ( virtual/latex-base ) mpe-sdk? ( x11-libs/libX11 ) crypt? ( net-misc/openssh ) !crypt? ( net-misc/netkit-rsh ) !sys-cluster/mpich !sys-cluster/lam-mpi !sys-cluster/openmpi !media-sound/mpd !media-sound/mpd-svn >=dev-java/java-config-2.0.33-r1 >=sys-apps/portage-2.1.2.7
+RESTRICT=test
+SLOT=0
+SRC_URI=http://www.mcs.anl.gov/research/projects/mpich2/downloads/mpich2-1.0.6p1.tar.gz

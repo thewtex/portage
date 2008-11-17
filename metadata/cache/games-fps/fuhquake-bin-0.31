@@ -1,0 +1,12 @@
+DEPEND=!svga? ( x11-libs/libXext ) sys-libs/glibc svga? ( media-libs/svgalib ) opengl? ( virtual/opengl x86? ( x11-libs/libXext ) amd64? ( app-emulation/emul-linux-x86-xlibs ) ) app-arch/unzip
+DESCRIPTION=quakeworld client with a plethora of gameplay/console/graphical improvements
+EAPI=0
+HOMEPAGE=http://www.fuhquake.net/
+INHERITED=eutils toolchain-funcs games multilib portability
+IUSE=opengl svga
+KEYWORDS=~amd64 x86
+LICENSE=GPL-2
+RDEPEND=!svga? ( x11-libs/libXext ) sys-libs/glibc svga? ( media-libs/svgalib ) opengl? ( virtual/opengl x86? ( x11-libs/libXext ) amd64? ( app-emulation/emul-linux-x86-xlibs ) )
+RESTRICT=strip
+SLOT=0
+SRC_URI=http://www.fuhquake.net/files/releases/v0.31/fuhquake-linux-v0.31.zip http://www.fuhquake.net/files/releases/v0.31/fuhquake-security-v0.31.zip http://maps.quakeworld.nu/locs/download/fuhquake_locs.zip

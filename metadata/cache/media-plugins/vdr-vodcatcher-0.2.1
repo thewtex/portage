@@ -1,0 +1,10 @@
+DEPEND=net-misc/curl media-video/vdr || ( media-plugins/vdr-mplayer media-plugins/vdr-xineliboutput ) >=media-tv/gentoo-vdr-scripts-0.4.2 media-tv/linuxtv-dvb-headers
+DESCRIPTION=VDR plugin: Downloads rss-feeds and passes video enclosures to the mplayer plugin
+EAPI=0
+HOMEPAGE=http://www.e-tobi.net/blog/pages/vdr-vodcatcher
+INHERITED=toolchain-funcs portability flag-o-matic multilib vdr-plugin base eutils
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=net-misc/curl media-video/vdr || ( media-plugins/vdr-mplayer media-plugins/vdr-xineliboutput ) >=media-tv/gentoo-vdr-scripts-0.4.2 >=app-admin/eselect-vdr-0.0.2
+SLOT=0
+SRC_URI=http://www.e-tobi.net/blog/files/vdr-vodcatcher-0.2.1.tar.gz

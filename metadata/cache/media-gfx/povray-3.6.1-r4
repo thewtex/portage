@@ -1,0 +1,11 @@
+DEPEND=media-libs/libpng tiff? ( >=media-libs/tiff-3.6.1 ) media-libs/jpeg sys-libs/zlib X? ( x11-libs/libXaw ) svga? ( media-libs/svgalib ) =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=The Persistence Of Vision Ray Tracer
+EAPI=0
+HOMEPAGE=http://www.povray.org/
+INHERITED=toolchain-funcs portability flag-o-matic multilib libtool autotools eutils
+IUSE=svga tiff X
+KEYWORDS=alpha amd64 hppa ia64 ~mips ppc ppc64 sparc x86 ~x86-fbsd
+LICENSE=povlegal-3.6
+RDEPEND=media-libs/libpng tiff? ( >=media-libs/tiff-3.6.1 ) media-libs/jpeg sys-libs/zlib X? ( x11-libs/libXaw ) svga? ( media-libs/svgalib )
+SLOT=0
+SRC_URI=ftp://ftp.povray.org/pub/povray/Official/Unix/povray-3.6.1.tar.bz2

@@ -1,0 +1,11 @@
+DEPEND==kde-base/kdelibs-3.5* =x11-libs/qt-3* =sys-devel/automake-1.9* >=sys-devel/autoconf-2.61 sys-devel/libtool sys-devel/make dev-util/pkgconfig dev-lang/perl x11-libs/libXt x11-proto/xf86vidmodeproto xinerama? ( x11-proto/xineramaproto ) arts? ( kde-base/arts )
+DESCRIPTION=KDE alternative K-Menu
+EAPI=0
+HOMEPAGE=http://www.kbfx.org/
+INHERITED=toolchain-funcs qt3 portability flag-o-matic kde versionator multilib base kde-functions libtool autotools eutils
+IUSE=debug elibc_FreeBSD arts xinerama
+KEYWORDS=~x86 ~ppc ~amd64
+LICENSE=GPL-2
+RDEPEND==kde-base/kdelibs-3.5* =x11-libs/qt-3* xinerama? ( x11-libs/libXinerama ) arts? ( kde-base/arts )
+SLOT=0
+SRC_URI=mirror://sourceforge/kbfx/kbfx-0.4.9.2rc4.tar.bz2

@@ -1,0 +1,11 @@
+DEPEND=>=media-libs/gstreamer-0.10.13 >=media-libs/gst-plugins-base-0.10.13 dev-libs/libxml2 jpeg2k? ( media-libs/jasper ) gsm? ( media-sound/gsm ) jingle? ( net-libs/libjingle ) msn? ( media-libs/libmimic ) yahoo? ( media-libs/libj2k )
+DESCRIPTION=GStreamer plugin for Farsight
+EAPI=0
+HOMEPAGE=http://farsight.freedesktop.org/
+INHERITED=multilib gst-plugins10 toolchain-funcs eutils portability
+IUSE=jpeg2k gsm jingle msn yahoo
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=media-libs/gstreamer-0.10.13 >=media-libs/gst-plugins-base-0.10.13 dev-libs/libxml2 jpeg2k? ( media-libs/jasper ) gsm? ( media-sound/gsm ) jingle? ( net-libs/libjingle ) msn? ( media-libs/libmimic ) yahoo? ( media-libs/libj2k )
+SLOT=0.10
+SRC_URI=http://farsight.freedesktop.org/releases/gst-plugins-farsight/gst-plugins-farsight-0.12.8.tar.gz

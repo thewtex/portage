@@ -1,0 +1,9 @@
+DEPEND=kernel_linux? ( virtual/linux-sources ) kernel_linux? ( virtual/modutils ) sys-apps/sed dev-util/subversion net-misc/rsync
+DESCRIPTION=ORiNOCO IEEE 802.11 wireless LAN driver
+EAPI=0
+HOMEPAGE=http://www.nongnu.org/orinoco/
+INHERITED=toolchain-funcs portability versionator multilib subversion linux-info linux-mod eutils
+IUSE=kernel_linux
+LICENSE=GPL-2 MPL-1.1
+RDEPEND=!net-wireless/orinoco-sn net-wireless/wireless-tools net-wireless/orinoco-fwutils kernel_linux? ( virtual/modutils )
+SLOT=0

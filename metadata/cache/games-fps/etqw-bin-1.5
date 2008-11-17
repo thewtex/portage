@@ -1,0 +1,12 @@
+DEPEND=app-arch/unzip
+DESCRIPTION=Enemy Territory: Quake Wars
+EAPI=0
+HOMEPAGE=http://zerowing.idsoftware.com/linux/etqw/
+INHERITED=eutils toolchain-funcs games multilib portability
+IUSE=cdinstall
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=ETQW
+RDEPEND=sys-libs/glibc virtual/opengl amd64? ( app-emulation/emul-linux-x86-sdl ) x86? ( media-libs/libsdl media-libs/alsa-lib ) cdinstall? ( games-fps/etqw-data )
+RESTRICT=fetch strip
+SLOT=0
+SRC_URI=ETQW-client-1.5-full.x86.run

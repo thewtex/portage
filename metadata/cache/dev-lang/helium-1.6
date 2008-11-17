@@ -1,0 +1,11 @@
+DEPEND=>=dev-lang/ghc-6.4.2 readline? ( sys-libs/readline )
+DESCRIPTION=Helium (for learning Haskell)
+EAPI=0
+HOMEPAGE=http://www.cs.uu.nl/helium
+INHERITED=multilib toolchain-funcs eutils portability
+IUSE=readline
+KEYWORDS=-amd64 ~ppc -sparc ~x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/gmp readline? ( sys-libs/readline )
+SLOT=0
+SRC_URI=http://www.cs.uu.nl/helium/distr/helium-1.6-src.tar.gz mirror://gentoo/helium-1.6-ghc.patch.bz2

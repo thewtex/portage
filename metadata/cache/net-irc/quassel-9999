@@ -1,0 +1,9 @@
+DEPEND=x11-libs/qt-core:4 server? ( x11-libs/qt-sql:4 x11-libs/qt-script:4 ) X? ( x11-libs/qt-gui:4 x11-libs/qt-webkit:4 ) dbus? ( x11-libs/qt-dbus:4 ) ssl? ( dev-libs/openssl ) >=dev-util/cmake-2.6 >=dev-util/cmake-2.4.6 >=dev-util/git-1.5
+DESCRIPTION=Core/client IRC client.
+EAPI=1
+HOMEPAGE=http://quassel-irc.org/
+INHERITED=git toolchain-funcs portability flag-o-matic multilib cmake-utils eutils
+IUSE=+dbus debug +server +ssl +X linguas_nb_NO linguas_da linguas_de linguas_fr
+LICENSE=GPL-3
+RDEPEND=x11-libs/qt-core:4 server? ( x11-libs/qt-sql:4 x11-libs/qt-script:4 ) X? ( x11-libs/qt-gui:4 x11-libs/qt-webkit:4 ) dbus? ( x11-libs/qt-dbus:4 ) ssl? ( dev-libs/openssl )
+SLOT=0

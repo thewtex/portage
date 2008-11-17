@@ -1,0 +1,11 @@
+DEPEND=virtual/linux-sources kernel_linux? ( virtual/linux-sources ) kernel_linux? ( virtual/modutils ) sys-apps/sed
+DESCRIPTION=The Oracle Cluster Filesystem
+EAPI=0
+HOMEPAGE=http://oss.oracle.com/projects/ocfs
+INHERITED=toolchain-funcs portability versionator multilib linux-info linux-mod eutils
+IUSE=aio kernel_linux
+KEYWORDS=~x86
+LICENSE=GPL-2
+RDEPEND=virtual/linux-sources kernel_linux? ( virtual/modutils )
+SLOT=0
+SRC_URI=http://oss.oracle.com/projects/ocfs/dist/files/source/ocfs-1.0.14.tar.gz

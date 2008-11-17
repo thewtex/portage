@@ -1,0 +1,11 @@
+DEPEND=>=virtual/linux-sources-2.6.16 kernel_linux? ( virtual/linux-sources ) kernel_linux? ( virtual/modutils ) sys-apps/sed kernel_linux? ( virtual/linux-sources )
+DESCRIPTION=GFS Network Block Devices module
+EAPI=0
+HOMEPAGE=http://sources.redhat.com/cluster/
+INHERITED=toolchain-funcs portability versionator multilib linux-info linux-mod eutils
+IUSE=kernel_linux
+KEYWORDS=~amd64 ~ppc x86
+LICENSE=GPL-2
+RDEPEND=kernel_linux? ( virtual/modutils )
+SLOT=0
+SRC_URI=ftp://sources.redhat.com/pub/cluster/releases/cluster-1.02.00.tar.gz mirror://gentoo/gnbd-kernel-1.02.00-20060713-cvs.patch.gz http://dev.gentoo.org/~xmerlin/gfs/gnbd-kernel-1.02.00-20060713-cvs.patch.gz

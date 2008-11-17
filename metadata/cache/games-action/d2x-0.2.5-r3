@@ -1,0 +1,11 @@
+DEPEND=media-libs/libsdl media-libs/sdl-image opengl? ( virtual/opengl ) ggi? ( media-libs/libggi ) svga? ( media-libs/svgalib ) x86? ( dev-lang/nasm )
+DESCRIPTION=Descent 2 engine from Icculus
+EAPI=0
+HOMEPAGE=http://icculus.org/d2x/
+INHERITED=toolchain-funcs portability flag-o-matic multilib games eutils
+IUSE=cdinstall debug opengl ggi svga
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=D1X
+RDEPEND=media-libs/libsdl media-libs/sdl-image opengl? ( virtual/opengl ) ggi? ( media-libs/libggi ) svga? ( media-libs/svgalib ) cdinstall? ( games-action/descent2-data ) !cdinstall? ( games-action/descent2-demodata )
+SLOT=0
+SRC_URI=http://icculus.org/d2x/src/d2x-0.2.5.tar.gz

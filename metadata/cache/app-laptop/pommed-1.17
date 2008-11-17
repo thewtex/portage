@@ -1,0 +1,11 @@
+DEPEND=media-libs/alsa-lib x86? ( sys-apps/pciutils >=sys-libs/libsmbios-0.13.6 ) amd64? ( sys-apps/pciutils >=sys-libs/libsmbios-0.13.6 ) dev-libs/confuse sys-apps/dbus sys-libs/zlib media-libs/audiofile gtk? ( >=x11-libs/gtk+-2 >=gnome-base/libglade-2 ) X? ( x11-libs/libX11 x11-libs/libXpm ) dev-util/pkgconfig
+DESCRIPTION=Manage special features such as screen and keyboard backlight on Apple MacBook Pro/PowerBook
+EAPI=0
+HOMEPAGE=http://technologeek.org/projects/pommed/index.html
+INHERITED=multilib toolchain-funcs eutils portability
+IUSE=gtk X
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=media-libs/alsa-lib x86? ( sys-apps/pciutils >=sys-libs/libsmbios-0.13.6 ) amd64? ( sys-apps/pciutils >=sys-libs/libsmbios-0.13.6 ) dev-libs/confuse sys-apps/dbus sys-libs/zlib media-libs/audiofile gtk? ( >=x11-libs/gtk+-2 >=gnome-base/libglade-2 ) X? ( x11-libs/libX11 x11-libs/libXpm ) media-sound/alsa-utils virtual/eject
+SLOT=0
+SRC_URI=http://alioth.debian.org/frs/download.php/2394/pommed-1.17.tar.gz

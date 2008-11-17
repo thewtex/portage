@@ -1,0 +1,11 @@
+DESCRIPTION=Windows 32-bit binary codecs for video and audio playback support
+EAPI=0
+HOMEPAGE=http://www.mplayerhq.hu/
+INHERITED=multilib toolchain-funcs
+IUSE=real
+KEYWORDS=-* ~amd64 ~x86 ~x86-fbsd
+LICENSE=as-is
+RDEPEND=real? ( =virtual/libstdc++-3.3* )
+RESTRICT=strip binchecks
+SLOT=0
+SRC_URI=mirror://mplayer/releases/codecs/all-20071007.tar.bz2

@@ -1,0 +1,12 @@
+DEPEND=!bindist? ( sci-libs/gsl ) bindist? ( <sci-libs/gsl-1.10 ) sys-libs/readline >=sys-devel/gettext-0.14.1 >=dev-lang/perl-5.6 ncurses? ( >=sys-libs/ncurses-5.4 ) plotutils? ( >=media-libs/plotutils-2.4.1 ) emacs? ( virtual/emacs )
+DESCRIPTION=Program for statistical analysis of sampled data.
+EAPI=0
+HOMEPAGE=http://www.gnu.org/software/pspp/pspp.html
+INHERITED=elisp-common
+IUSE=bindist doc ncurses emacs plotutils nls
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=!bindist? ( sci-libs/gsl ) bindist? ( <sci-libs/gsl-1.10 ) sys-libs/readline >=sys-devel/gettext-0.14.1 >=dev-lang/perl-5.6 ncurses? ( >=sys-libs/ncurses-5.4 ) plotutils? ( >=media-libs/plotutils-2.4.1 ) emacs? ( virtual/emacs )
+RESTRICT=test
+SLOT=0
+SRC_URI=ftp://ftp.gnu.org/pub/gnu/pspp/pspp-0.4.0.tar.gz

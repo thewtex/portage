@@ -1,0 +1,11 @@
+DEPEND=>=sys-libs/ncurses-5.1 kerberos? ( virtual/krb5 ) ssl? ( >=dev-libs/openssl-0.9.6 ) tcpd? ( >=sys-apps/tcp-wrappers-7.6 )
+DESCRIPTION=Proxy IMAP transactions between an IMAP client and an IMAP server.
+EAPI=0
+HOMEPAGE=http://www.imapproxy.org/
+INHERITED=multilib toolchain-funcs eutils portability
+IUSE=kerberos ssl tcpd
+KEYWORDS=amd64 ~ppc x86
+LICENSE=GPL-2
+RDEPEND=>=sys-libs/ncurses-5.1 kerberos? ( virtual/krb5 ) ssl? ( >=dev-libs/openssl-0.9.6 ) tcpd? ( >=sys-apps/tcp-wrappers-7.6 )
+SLOT=0
+SRC_URI=http://www.imapproxy.org/downloads/up-imapproxy-1.2.5rc2.tar.gz

@@ -1,0 +1,11 @@
+DEPEND=modperl? ( apache2? ( >=www-apache/mod_perl-2.0.1 ) ) dev-perl/libwww-perl session? ( >=dev-perl/Apache-Session-1.60 dev-perl/Apache-SessionX ) dev-perl/HTML-Parser virtual/perl-CGI dev-libs/libxml2 >=dev-libs/libxslt-1.0.4
+DESCRIPTION=Framework for building websites with Perl.
+EAPI=0
+HOMEPAGE=http://perl.apache.org/embperl/
+INHERITED=toolchain-funcs portability multilib base eutils perl-module
+IUSE=session apache2 modperl
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=|| ( Artistic GPL-2 )
+RDEPEND=modperl? ( apache2? ( >=www-apache/mod_perl-2.0.1 ) ) dev-perl/libwww-perl session? ( >=dev-perl/Apache-Session-1.60 dev-perl/Apache-SessionX ) dev-perl/HTML-Parser virtual/perl-CGI dev-libs/libxml2 >=dev-libs/libxslt-1.0.4
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/G/GR/GRICHTER/Embperl-2.0rc4.tar.gz

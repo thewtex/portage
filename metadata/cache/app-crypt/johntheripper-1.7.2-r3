@@ -1,0 +1,10 @@
+DESCRIPTION=fast password cracker
+EAPI=0
+HOMEPAGE=http://www.openwall.com/john/
+INHERITED=toolchain-funcs portability flag-o-matic multilib pax-utils eutils
+IUSE=mmx altivec sse2 custom-cflags
+KEYWORDS=alpha amd64 hppa ~mips ppc ppc64 sparc x86
+LICENSE=GPL-2
+RDEPEND=>=dev-libs/openssl-0.9.7
+SLOT=0
+SRC_URI=http://www.openwall.com/john/f/john-1.7.2.tar.gz ftp://ftp.openwall.com/john/contrib/historical/john-1.7.2-all-7.diff.gz

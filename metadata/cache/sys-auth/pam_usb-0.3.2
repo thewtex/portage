@@ -1,0 +1,11 @@
+DEPEND=ssl? ( dev-libs/openssl ) sys-libs/pam sys-apps/hotplug-base
+DESCRIPTION=A PAM module that enables authentication using an USB-Storage device (such as an USB Pen) through DSA private/public keys.
+EAPI=0
+HOMEPAGE=http://www.pamusb.org/
+INHERITED=multilib toolchain-funcs eutils portability pam
+IUSE=ssl
+KEYWORDS=alpha ~amd64 ~ia64 ~mips ~ppc ~sparc x86
+LICENSE=GPL-2
+RDEPEND=ssl? ( dev-libs/openssl ) sys-libs/pam sys-apps/hotplug-base
+SLOT=0
+SRC_URI=mirror://sourceforge/pamusb/pam_usb-0.3.2.tar.gz

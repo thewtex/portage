@@ -1,0 +1,11 @@
+DEPEND=virtual/libc alsa? ( media-libs/alsa-lib ) encode? ( media-sound/lame ) flac? ( media-libs/flac ) mad? ( media-libs/libmad ) sndfile? ( media-libs/libsndfile ) libsamplerate? ( media-libs/libsamplerate ) ogg? ( media-libs/libvorbis media-libs/libogg ) =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=The swiss army knife of sound processing programs
+EAPI=0
+HOMEPAGE=http://sox.sourceforge.net
+INHERITED=toolchain-funcs portability flag-o-matic multilib libtool autotools eutils
+IUSE=alsa debug flac encode mad ogg libsamplerate ogg sndfile
+KEYWORDS=~alpha ~amd64 ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd
+LICENSE=LGPL-2.1
+RDEPEND=virtual/libc alsa? ( media-libs/alsa-lib ) encode? ( media-sound/lame ) flac? ( media-libs/flac ) mad? ( media-libs/libmad ) sndfile? ( media-libs/libsndfile ) libsamplerate? ( media-libs/libsamplerate ) ogg? ( media-libs/libvorbis media-libs/libogg )
+SLOT=0
+SRC_URI=mirror://sourceforge/sox/sox-13.0.0.tar.gz

@@ -1,0 +1,11 @@
+DEPEND=!amd64? ( x11-libs/libXext x11-libs/libX11 x11-libs/libXau x11-libs/libXdmcp =media-libs/libsdl-1.2* opengl? ( virtual/opengl ) ) amd64? ( app-emulation/emul-linux-x86-sdl app-emulation/emul-linux-x86-baselibs app-emulation/emul-linux-x86-xlibs ) !games-fps/unreal-tournament app-arch/unzip
+DESCRIPTION=Futuristic FPS (Game Of The Year edition)
+EAPI=0
+HOMEPAGE=http://www.unrealtournament.com/
+INHERITED=eutils toolchain-funcs games multilib portability
+IUSE=3dfx S3TC nls opengl
+KEYWORDS=~amd64 x86
+LICENSE=as-is
+RDEPEND=!amd64? ( x11-libs/libXext x11-libs/libX11 x11-libs/libXau x11-libs/libXdmcp =media-libs/libsdl-1.2* opengl? ( virtual/opengl ) ) amd64? ( app-emulation/emul-linux-x86-sdl app-emulation/emul-linux-x86-baselibs app-emulation/emul-linux-x86-xlibs )
+SLOT=0
+SRC_URI=ftp://ftp.lokigames.com/pub/beta/ut/ut-install-436-GOTY.run http://utpg.org/patches/UTPGPatch451.tar.bz2

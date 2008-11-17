@@ -1,0 +1,11 @@
+DEPEND=app-arch/tar app-arch/gzip
+DESCRIPTION=BitDefender console antivirus
+EAPI=0
+HOMEPAGE=http://www.bitdefender.com/
+INHERITED=multilib pax-utils toolchain-funcs eutils portability
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=as-is
+PROVIDE=virtual/antivirus
+RDEPEND=virtual/libc amd64? ( >=app-emulation/emul-linux-x86-baselibs-1.0 app-emulation/emul-linux-x86-compat ) !amd64? ( || ( =sys-libs/libstdc++-v3-3.3* =sys-devel/gcc-3.3* ) )
+SLOT=0
+SRC_URI=http://download.bitdefender.com/unices/old/linux/free/bitdefender-console/en/BitDefender-Console-Antivirus-7.1-3.linux-gcc3x.i386.run

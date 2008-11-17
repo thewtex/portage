@@ -1,0 +1,11 @@
+DEPEND=|| ( x11-libs/qt-gui:4 =x11-libs/qt-4.3* ) >=media-libs/liblscp-0.5.5 libgig? ( >=media-libs/libgig-3.2.1 ) >=media-sound/linuxsampler-0.5 media-libs/alsa-lib
+DESCRIPTION=A graphical frontend to the LinuxSampler engine
+EAPI=1
+HOMEPAGE=http://www.linuxsampler.org
+INHERITED=qt4 toolchain-funcs portability versionator multilib eutils
+IUSE=debug +libgig
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=|| ( x11-libs/qt-gui:4 =x11-libs/qt-4.3* ) >=media-libs/liblscp-0.5.5 libgig? ( >=media-libs/libgig-3.2.1 ) >=media-sound/linuxsampler-0.5 media-libs/alsa-lib
+SLOT=0
+SRC_URI=http://download.linuxsampler.org/packages/qsampler-0.2.1.tar.gz

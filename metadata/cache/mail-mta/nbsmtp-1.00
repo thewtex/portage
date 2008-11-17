@@ -1,0 +1,12 @@
+DEPEND=virtual/libc ssl? ( dev-libs/openssl )
+DESCRIPTION=Extremely simple MTA to get mail off the system to a relayhost
+EAPI=0
+HOMEPAGE=http://nbsmtp.ferdyx.org
+INHERITED=multilib toolchain-funcs eutils portability
+IUSE=ssl ipv6 debug
+KEYWORDS=alpha ~amd64 hppa ppc sparc x86
+LICENSE=GPL-2
+PROVIDE=virtual/mta
+RDEPEND=virtual/libc ssl? ( dev-libs/openssl )
+SLOT=0
+SRC_URI=http://www.gentoo-es.org/~ferdy/nbsmtp-1.00.tar.bz2

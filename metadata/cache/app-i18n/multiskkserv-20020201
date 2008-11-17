@@ -1,0 +1,11 @@
+DEPEND=virtual/libc || ( >=app-i18n/skk-jisyo-200705 app-i18n/skk-jisyo-cdb ) >=sys-apps/sed-4
+DESCRIPTION=SKK server that handles multiple dictionaries
+EAPI=0
+HOMEPAGE=http://www3.big.or.jp/~sian/linux/products/
+INHERITED=fixheadtails multilib toolchain-funcs eutils portability
+KEYWORDS=x86 ppc sparc alpha
+LICENSE=GPL-2
+PROVIDE=virtual/skkserv
+RDEPEND=virtual/libc || ( >=app-i18n/skk-jisyo-200705 app-i18n/skk-jisyo-cdb )
+SLOT=0
+SRC_URI=http://www3.big.or.jp/~sian/linux/products/multiskkserv-20020201.tar.bz2 http://cr.yp.to/cdb/cdb-0.75.tar.gz

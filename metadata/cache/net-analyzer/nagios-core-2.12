@@ -1,0 +1,11 @@
+DEPEND=virtual/mailx web? ( >=media-libs/jpeg-6b-r3 >=media-libs/libpng-1.2.5-r4 >=media-libs/gd-1.8.3-r5 perl? ( net-analyzer/traceroute ) ) perl? ( >=dev-lang/perl-5.6.1-r7 ) apache2? ( =www-servers/apache-2* )
+DESCRIPTION=Nagios Core - Check daemon, CGIs, docs
+EAPI=1
+HOMEPAGE=http://www.nagios.org/
+INHERITED=multilib depend.apache toolchain-funcs eutils portability
+IUSE=debug perl +web vim-syntax apache2
+KEYWORDS=~alpha amd64 ~ppc ppc64 sparc x86
+LICENSE=GPL-2
+RDEPEND=virtual/mailx web? ( >=media-libs/jpeg-6b-r3 >=media-libs/libpng-1.2.5-r4 >=media-libs/gd-1.8.3-r5 perl? ( net-analyzer/traceroute ) ) perl? ( >=dev-lang/perl-5.6.1-r7 ) vim-syntax? ( app-vim/nagios-syntax ) apache2? ( =www-servers/apache-2* )
+SLOT=0
+SRC_URI=mirror://sourceforge/nagios/nagios-2.12.tar.gz mirror://gentoo/nagios-2.0b.cfg-sample.gz

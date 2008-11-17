@@ -1,0 +1,11 @@
+DEPEND=virtual/linux-sources kernel_linux? ( virtual/linux-sources ) kernel_linux? ( virtual/modutils ) sys-apps/sed
+DESCRIPTION=Standalone DVB driver for Linux kernel 2.4.x
+EAPI=0
+HOMEPAGE=http://www.linuxtv.org
+INHERITED=toolchain-funcs portability versionator multilib linux-info linux-mod eutils
+IUSE=kernel_linux
+KEYWORDS=alpha x86
+LICENSE=GPL-2
+RDEPEND=kernel_linux? ( virtual/modutils )
+SLOT=0
+SRC_URI=mirror://gentoo/dvb-kernel_linux_2_4-20060108.tar.bz2 http://www.linuxtv.org/download/dvb/firmware/dvb-ttpci-01.fw-2622

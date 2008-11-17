@@ -1,0 +1,11 @@
+DEPEND=sys-libs/zlib ssl? ( dev-libs/openssl ) ssl? ( dev-libs/openssl )
+DESCRIPTION=PTlink IRCd is a secure IRC daemon with many advanced features.
+EAPI=0
+HOMEPAGE=http://www.ptlink.net/
+INHERITED=multilib toolchain-funcs eutils portability ssl-cert
+IUSE=ssl ssl
+KEYWORDS=~ppc ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=sys-libs/zlib ssl? ( dev-libs/openssl )
+SLOT=0
+SRC_URI=ftp://ftp.sunsite.dk/projects/ptlink/ircd/PTlink6.19.6.tar.gz

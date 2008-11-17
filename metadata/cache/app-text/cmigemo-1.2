@@ -1,0 +1,11 @@
+DEPEND=virtual/libc app-i18n/qkc app-dicts/migemo-dict
+DESCRIPTION=C/Migemo -- Migemo library implementation in C
+EAPI=0
+HOMEPAGE=http://www.kaoriya.net/#CMIGEMO
+INHERITED=multilib toolchain-funcs eutils portability
+IUSE=emacs
+KEYWORDS=x86 alpha ppc
+LICENSE=cmigemo
+RDEPEND=virtual/libc app-dicts/migemo-dict emacs? ( >=app-text/migemo-0.40-r1 )
+SLOT=0
+SRC_URI=http://www.kaoriya.net/dist/cmigemo-1.2.tar.bz2

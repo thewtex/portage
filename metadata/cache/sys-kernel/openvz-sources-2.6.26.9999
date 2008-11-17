@@ -1,0 +1,11 @@
+DEPEND=!build? ( sys-apps/sed >=sys-devel/binutils-2.11.90.0.31 ) >=dev-util/git-1.5
+DESCRIPTION=OpenVZ 26 git
+EAPI=0
+HOMEPAGE=http://openvz.org/
+INHERITED=git toolchain-funcs portability versionator multilib kernel-2 eutils
+IUSE=symlink build
+LICENSE=GPL-2
+PROVIDE=virtual/linux-sources virtual/alsa
+RDEPEND=!build? ( >=sys-libs/ncurses-5.2 sys-devel/make ) virtual/dev-manager
+RESTRICT=binchecks strip
+SLOT=2.6.26.9999

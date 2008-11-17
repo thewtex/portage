@@ -1,0 +1,11 @@
+DEPEND=>=virtual/jdk-1.5 userland_GNU? ( >=sys-apps/findutils-4.3 ) app-arch/unzip dev-java/hamcrest-core >=dev-java/java-config-2.0.33-r1 >=sys-apps/portage-2.1.2.7 source? ( app-arch/zip )
+DESCRIPTION=Simple framework to write repeatable tests
+EAPI=0
+HOMEPAGE=http://www.junit.org/
+INHERITED=toolchain-funcs java-pkg-2 portability java-utils-2 versionator multilib eutils
+IUSE=elibc_FreeBSD doc examples source test
+KEYWORDS=~amd64 ~ia64 ~ppc ~ppc64 ~x86
+LICENSE=CPL-1.0
+RDEPEND=>=virtual/jre-1.5 dev-java/hamcrest-core >=dev-java/java-config-2.0.33-r1 >=sys-apps/portage-2.1.2.7 source? ( app-arch/zip )
+SLOT=4
+SRC_URI=mirror://sourceforge/junit/junit4.4.zip

@@ -1,0 +1,11 @@
+DEPEND=>=sys-libs/zlib-1.1.4 virtual/ghostscript >=media-libs/tiff-3.8.2 media-libs/jpeg jbig? ( media-libs/jbigkit ) sys-apps/gawk pam? ( virtual/pam ) mgetty? ( net-dialup/mgetty )
+DESCRIPTION=Enterprise client-server fax package for class 1 and 2 fax modems.
+EAPI=0
+HOMEPAGE=http://www.hylafax.org
+INHERITED=toolchain-funcs portability flag-o-matic multilib pam eutils
+IUSE=jbig pam mgetty html
+KEYWORDS=~x86 ~sparc ~hppa ~amd64 ~ppc
+LICENSE=hylafax
+RDEPEND=>=sys-libs/zlib-1.1.4 virtual/ghostscript >=media-libs/tiff-3.8.2 media-libs/jpeg jbig? ( media-libs/jbigkit ) sys-apps/gawk pam? ( virtual/pam ) mgetty? ( net-dialup/mgetty ) net-mail/metamail
+SLOT=0
+SRC_URI=ftp://ftp.hylafax.org/source/hylafax-4.3.7.tar.gz

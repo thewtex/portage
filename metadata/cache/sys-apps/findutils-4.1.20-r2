@@ -1,0 +1,11 @@
+DEPEND=virtual/libc >=sys-apps/sed-4 nls? ( sys-devel/gettext ) selinux? ( sys-libs/libselinux )
+DESCRIPTION=GNU utilities to find files
+EAPI=0
+HOMEPAGE=http://www.gnu.org/software/findutils/findutils.html
+INHERITED=multilib toolchain-funcs eutils portability flag-o-matic
+IUSE=nls build selinux static
+KEYWORDS=alpha amd64 arm hppa ia64 m68k mips ppc ppc64 s390 sh sparc x86
+LICENSE=GPL-2
+RDEPEND=virtual/libc
+SLOT=0
+SRC_URI=ftp://alpha.gnu.org/gnu/findutils/findutils-4.1.20.tar.gz mirror://gentoo/findutils-4.1.20.tar.gz

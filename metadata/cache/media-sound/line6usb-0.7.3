@@ -1,0 +1,11 @@
+DEPEND=virtual/modutils dev-lang/perl virtual/alsa virtual/linux-sources sys-apps/debianutils kernel_linux? ( virtual/linux-sources ) kernel_linux? ( virtual/modutils ) sys-apps/sed kernel_linux? ( virtual/linux-sources )
+DESCRIPTION=Experimental USB driver for Line6 PODs and the Variax workbench.
+EAPI=0
+HOMEPAGE=http://www.tanzband-scream.at/line6/
+INHERITED=toolchain-funcs portability versionator multilib linux-info linux-mod eutils
+IUSE=doc kernel_linux
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=virtual/modutils dev-lang/perl kernel_linux? ( virtual/modutils )
+SLOT=0
+SRC_URI=http://www.tanzband-scream.at/line6/download/line6usb-0.7.3.tar.bz2 doc? ( http://www.tanzband-scream.at/line6/driverdocs.pdf )

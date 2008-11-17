@@ -1,0 +1,11 @@
+DEPEND=kernel_linux? ( virtual/linux-sources ) kernel_linux? ( virtual/modutils ) sys-apps/sed
+DESCRIPTION=Thinkpad system control kernel modules
+EAPI=0
+HOMEPAGE=http://tpctl.sourceforge.net
+INHERITED=toolchain-funcs portability versionator multilib linux-info linux-mod eutils
+IUSE=kernel_linux
+KEYWORDS=x86
+LICENSE=GPL-2
+RDEPEND=kernel_linux? ( virtual/modutils )
+SLOT=0
+SRC_URI=mirror://sourceforge/tpctl/thinkpad-5.9.tar.gz

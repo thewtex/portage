@@ -1,0 +1,11 @@
+DEPEND=>=sys-libs/db-4.2.52 cracklib? ( sys-libs/cracklib ) pam? ( virtual/pam ) ssl? ( dev-libs/openssl ) tcpd? ( sys-apps/tcp-wrappers ) slp? ( net-libs/openslp ) cups? ( net-print/cups ) kerberos? ( virtual/krb5 ) krb4? ( virtual/krb5 ) xfs? ( sys-fs/xfsprogs <sys-kernel/linux-headers-2.6.16 ) =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=Kernel level implementation of the AppleTalk Protocol Suite
+EAPI=0
+HOMEPAGE=http://netatalk.sourceforge.net
+INHERITED=toolchain-funcs portability flag-o-matic multilib libtool autotools pam eutils
+IUSE=ssl pam tcpd slp cups kerberos krb4 debug cracklib xfs
+KEYWORDS=~amd64 ~ppc ~ppc64 ~sh ~sparc ~x86 ~x86-fbsd
+LICENSE=BSD
+RDEPEND=>=sys-libs/db-4.2.52 cracklib? ( sys-libs/cracklib ) pam? ( virtual/pam ) ssl? ( dev-libs/openssl ) tcpd? ( sys-apps/tcp-wrappers ) slp? ( net-libs/openslp ) cups? ( net-print/cups ) kerberos? ( virtual/krb5 ) krb4? ( virtual/krb5 )
+SLOT=0
+SRC_URI=mirror://sourceforge/netatalk/netatalk-2.0.3.tar.bz2

@@ -1,0 +1,12 @@
+DEPEND=pam? ( kde-base/kdebase-pam ) x11-libs/libXau x11-libs/libXtst >=kde-base/kcontrol-3.5.10:3.5 =sys-devel/automake-1.9* >=sys-devel/autoconf-2.61 sys-devel/libtool sys-devel/make dev-util/pkgconfig dev-lang/perl ~kde-base/kdelibs-3.5.10 =x11-libs/qt-3* !=kde-base/kdebase-3.5*
+DESCRIPTION=KDE login manager, similar to xdm and gdm
+EAPI=1
+HOMEPAGE=http://www.kde.org/
+INHERITED=toolchain-funcs qt3 portability flag-o-matic kde versionator multilib base kde-functions kde-meta autotools libtool eutils
+IUSE=elibc_glibc kdehiddenvisibility pam debug elibc_FreeBSD
+KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd
+LICENSE=GPL-2
+PDEPEND=>=kde-base/kdesktop-3.5.10:3.5
+RDEPEND=pam? ( kde-base/kdebase-pam ) x11-libs/libXau x11-libs/libXtst >=kde-base/kcontrol-3.5.10:3.5 >=kde-base/kdepasswd-3.5.10:3.5 x11-apps/xinit x11-apps/xmessage ~kde-base/kdelibs-3.5.10 =x11-libs/qt-3* !=kde-base/kdebase-3.5*
+SLOT=3.5
+SRC_URI=mirror://kde/stable/3.5.10/src/kdebase-3.5.10.tar.bz2 mirror://gentoo/kdebase-3.5-patchset-13.tar.bz2

@@ -1,0 +1,12 @@
+DEPEND=zlib? ( sys-libs/zlib ) pam? ( virtual/pam )
+DESCRIPTION=small SSH 2 client/server designed for small memory environments
+EAPI=0
+HOMEPAGE=http://matt.ucc.asn.au/dropbear/dropbear.html
+INHERITED=toolchain-funcs portability multilib savedconfig pam eutils
+IUSE=bsdpty minimal multicall pam static syslog zlib savedconfig
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
+LICENSE=MIT
+PROVIDE=virtual/ssh
+RDEPEND=pam? ( >=sys-auth/pambase-20080219.1 )
+SLOT=0
+SRC_URI=http://matt.ucc.asn.au/dropbear/releases/dropbear-0.52.tar.bz2 http://matt.ucc.asn.au/dropbear/testing/dropbear-0.52.tar.bz2

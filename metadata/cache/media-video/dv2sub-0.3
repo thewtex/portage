@@ -1,0 +1,11 @@
+DEPEND=media-libs/libdv
+DESCRIPTION=extract info or subtitles from DV stream
+EAPI=0
+HOMEPAGE=http://dv2sub.sourceforge.net/
+INHERITED=multilib toolchain-funcs eutils portability
+IUSE=kino
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=media-libs/libdv kino? ( media-video/kino media-video/ffmpeg media-video/dvdauthor )
+SLOT=0
+SRC_URI=mirror://sourceforge/dv2sub/dv2sub-0.3.tar.gz

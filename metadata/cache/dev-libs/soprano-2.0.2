@@ -1,0 +1,12 @@
+DEPEND=>=dev-libs/redland-1.0.6 >=dev-libs/rasqal-0.9.15 >=media-libs/raptor-1.4.16 || ( ( x11-libs/qt-core:4 x11-libs/qt-dbus:4 ) =x11-libs/qt-4.3*:4 ) clucene? ( >=dev-cpp/clucene-0.9.19 ) doc? ( app-doc/doxygen ) >=dev-util/cmake-2.4.6
+DESCRIPTION=Soprano is a library which provides a nice QT interface to RDF storage solutions.
+EAPI=1
+HOMEPAGE=http://nepomuk-kde.semanticdesktop.org/xwiki/bin/view/Main/Soprano
+INHERITED=toolchain-funcs portability flag-o-matic multilib cmake-utils eutils
+IUSE=+clucene debug doc elibc_FreeBSD
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2 LGPL-2
+RDEPEND=>=dev-libs/redland-1.0.6 >=dev-libs/rasqal-0.9.15 >=media-libs/raptor-1.4.16 || ( ( x11-libs/qt-core:4 x11-libs/qt-dbus:4 ) =x11-libs/qt-4.3*:4 ) clucene? ( >=dev-cpp/clucene-0.9.19 )
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://sourceforge/soprano/soprano-2.0.2.tar.bz2

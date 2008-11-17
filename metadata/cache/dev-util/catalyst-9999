@@ -1,0 +1,9 @@
+DEPEND=>=dev-util/git-1.5
+DESCRIPTION=release metatool used for creating Gentoo releases
+EAPI=0
+HOMEPAGE=http://www.gentoo.org/proj/en/releng/catalyst
+INHERITED=multilib git toolchain-funcs eutils portability
+IUSE=ccache
+LICENSE=GPL-2
+RDEPEND=dev-lang/python app-crypt/shash virtual/cdrtools ccache? ( dev-util/ccache ) ia64? ( sys-fs/dosfstools ) kernel_linux? ( app-misc/zisofs-tools >=sys-fs/squashfs-tools-2.1 )
+SLOT=0

@@ -1,0 +1,9 @@
+DESCRIPTION=Intel(R) Integrated Performance Primitive library for multimedia and data processing
+EAPI=0
+HOMEPAGE=http://developer.intel.com/software/products/ipp/
+INHERITED=toolchain-funcs portability check-reqs versionator multilib eutils
+KEYWORDS=~amd64 ~x86 ~ia64
+LICENSE=Intel-SDP
+RESTRICT=strip mirror
+SLOT=0
+SRC_URI=amd64? ( http://registrationcenter-download.intel.com/irc_nas/1097/l_ipp_em64t_p_5.3.3.075.tgz ) x86? ( http://registrationcenter-download.intel.com/irc_nas/1097/l_ipp_ia32_p_5.3.3.075.tgz ) ia64? ( http://registrationcenter-download.intel.com/irc_nas/1097/l_ipp_itanium_p_5.3.3.075.tgz )

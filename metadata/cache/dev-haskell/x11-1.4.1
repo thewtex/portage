@@ -1,0 +1,11 @@
+DEPEND=>=dev-lang/ghc-6.4.2 x11-libs/libX11 xinerama? ( x11-libs/libXinerama ) doc? ( dev-haskell/haddock ) >=dev-haskell/cabal-1.2.3.0 =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=A binding to the X11 graphics library
+EAPI=0
+HOMEPAGE=http://darcs.haskell.org/X11
+INHERITED=toolchain-funcs portability versionator multilib ghc-package libtool haskell-cabal autotools eutils
+IUSE=xinerama doc profile
+KEYWORDS=~amd64 ~sparc ~x86
+LICENSE=BSD
+RDEPEND=>=dev-lang/ghc-6.4.2 x11-libs/libX11 xinerama? ( x11-libs/libXinerama ) dev-lang/ghc
+SLOT=0
+SRC_URI=http://hackage.haskell.org/packages/archive/X11/1.4.1/X11-1.4.1.tar.gz

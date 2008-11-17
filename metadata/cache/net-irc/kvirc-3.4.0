@@ -1,0 +1,11 @@
+DEPEND=esd? ( media-sound/esound ) ssl? ( dev-libs/openssl ) oss? ( media-libs/audiofile ) kde? ( =kde-base/kdelibs-3.5* ) qt4? ( >=x11-libs/qt-4.3 ) !qt4? ( =x11-libs/qt-3* ) sys-devel/gettext
+DESCRIPTION=An advanced IRC Client
+EAPI=0
+HOMEPAGE=http://www.kvirc.net/
+INHERITED=toolchain-funcs qt3 portability versionator multilib kde-functions eutils
+IUSE=debug esd ipv6 kde oss qt4 ssl
+KEYWORDS=amd64 ~mips ppc sparc x86
+LICENSE=kvirc
+RDEPEND=esd? ( media-sound/esound ) ssl? ( dev-libs/openssl ) oss? ( media-libs/audiofile ) kde? ( =kde-base/kdelibs-3.5* ) qt4? ( >=x11-libs/qt-4.3 ) !qt4? ( =x11-libs/qt-3* )
+SLOT=3
+SRC_URI=ftp://ftp.kvirc.net/pub/kvirc/3.4.0/source/kvirc-3.4.0.tar.bz2

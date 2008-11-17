@@ -1,0 +1,11 @@
+DEPEND=virtual/blas dev-util/pkgconfig app-admin/eselect-lapack =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=FORTRAN reference implementation of LAPACK Linear Algebra PACKage
+EAPI=0
+HOMEPAGE=http://www.netlib.org/lapack/index.html
+INHERITED=toolchain-funcs portability flag-o-matic multilib fortran libtool autotools eutils
+IUSE=doc debug
+KEYWORDS=alpha amd64 hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd
+LICENSE=BSD
+RDEPEND=virtual/blas app-admin/eselect-lapack doc? ( app-doc/lapack-docs )
+SLOT=0
+SRC_URI=http://www.netlib.org/lapack/lapack-lite-3.1.1.tgz

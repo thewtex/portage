@@ -1,0 +1,11 @@
+DEPEND=net-libs/libgadu >=x11-libs/gtk+-2.4.0 jabber? ( >=net-libs/loudmouth-0.17 ) xosd? ( x11-libs/xosd ) perl? ( dev-lang/perl dev-perl/XML-Parser ) arts? ( >=kde-base/arts-0.9.5 ) esd? ( media-sound/esound ) tlen? ( net-libs/libtlen ) spell? ( app-text/gtkspell ) gnutls? ( net-libs/gnutls ) sys-devel/gettext dev-util/pkgconfig >=sys-devel/automake-1.7 >=sys-devel/libtool-1.4
+DESCRIPTION=GTK-based Gadu-Gadu, Tlen and Jabber IM client
+EAPI=0
+HOMEPAGE=http://gadu.gnu.pl/
+INHERITED=multilib toolchain-funcs eutils portability
+IUSE=debug tlen esd oss xosd arts jabber perl spell gnutls
+KEYWORDS=~amd64 ~ppc ~sparc x86
+LICENSE=GPL-2
+RDEPEND=net-libs/libgadu >=x11-libs/gtk+-2.4.0 jabber? ( >=net-libs/loudmouth-0.17 ) xosd? ( x11-libs/xosd ) perl? ( dev-lang/perl dev-perl/XML-Parser ) arts? ( >=kde-base/arts-0.9.5 ) esd? ( media-sound/esound ) tlen? ( net-libs/libtlen ) spell? ( app-text/gtkspell ) gnutls? ( net-libs/gnutls )
+SLOT=0
+SRC_URI=mirror://sourceforge/ggadu/gg2-2.2.6.tar.gz

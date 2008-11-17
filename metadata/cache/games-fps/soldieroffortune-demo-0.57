@@ -1,0 +1,11 @@
+DEPEND=games-util/loki_patch
+DESCRIPTION=First-person shooter based on the mercenary trade
+EAPI=0
+HOMEPAGE=http://www.lokigames.com/products/sof/
+INHERITED=eutils toolchain-funcs games multilib portability
+KEYWORDS=~amd64 ~x86
+LICENSE=LOKI-EULA
+RDEPEND=virtual/opengl x86? ( x11-libs/libX11 x11-libs/libXext x11-libs/libXau x11-libs/libXdmcp media-libs/libvorbis media-libs/libogg media-libs/smpeg ) amd64? ( app-emulation/emul-linux-x86-baselibs app-emulation/emul-linux-x86-xlibs app-emulation/emul-linux-x86-sdl app-emulation/emul-linux-x86-soundlibs )
+RESTRICT=strip
+SLOT=0
+SRC_URI=mirror://lokigames/loki_demos/sof-demo.run

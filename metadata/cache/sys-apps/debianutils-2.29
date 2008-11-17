@@ -1,0 +1,10 @@
+DESCRIPTION=A selection of tools from Debian
+EAPI=0
+HOMEPAGE=http://packages.debian.org/unstable/utils/debianutils
+INHERITED=multilib toolchain-funcs eutils portability flag-o-matic
+IUSE=kernel_linux static
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~sparc-fbsd ~x86 ~x86-fbsd
+LICENSE=BSD GPL-2 SMAIL
+PDEPEND=|| ( >=sys-apps/coreutils-6.10-r1 sys-apps/mktemp sys-freebsd/freebsd-ubin )
+SLOT=0
+SRC_URI=mirror://debian/pool/main/d/debianutils/debianutils_2.29.tar.gz

@@ -1,0 +1,11 @@
+DEPEND=>=dev-python/twisted-2.0.1 test? ( dev-python/twisted-web dev-python/twisted-mail ) doc? ( =dev-python/epydoc-2* ) >=dev-lang/python-2.3 virtual/python
+DESCRIPTION=A Python system to automate the compile/test cycle to validate code changes
+EAPI=0
+HOMEPAGE=http://buildbot.net/
+INHERITED=toolchain-funcs distutils portability python multilib alternatives eutils
+IUSE=doc irc mail manhole test web
+KEYWORDS=~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=>=dev-python/twisted-2.0.1 mail? ( dev-python/twisted-mail ) manhole? ( dev-python/twisted-conch ) irc? ( dev-python/twisted-words ) web? ( dev-python/twisted-web ) >=dev-lang/python-2.3
+SLOT=0
+SRC_URI=mirror://sourceforge/buildbot/buildbot-0.7.8.tar.gz

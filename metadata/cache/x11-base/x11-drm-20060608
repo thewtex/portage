@@ -1,0 +1,12 @@
+DEPEND=virtual/linux-sources kernel_linux? ( virtual/linux-sources ) kernel_linux? ( virtual/linux-sources ) kernel_linux? ( virtual/modutils ) sys-apps/sed =sys-devel/automake-1.7* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=DRM Kernel Modules for X11
+EAPI=0
+HOMEPAGE=http://dri.sf.net
+INHERITED=toolchain-funcs portability versionator multilib libtool x11 linux-info autotools linux-mod eutils
+IUSE=video_cards_intel video_cards_mach64 video_cards_mga video_cards_nv video_cards_r128 video_cards_radeon video_cards_savage video_cards_sis video_cards_sunffb video_cards_tdfx video_cards_via kernel_linux
+KEYWORDS=alpha amd64 ia64 ppc x86
+LICENSE=X11
+RDEPEND=kernel_linux? ( virtual/modutils )
+RESTRICT=strip
+SLOT=0
+SRC_URI=mirror://gentoo/x11-drm-20060608-gentoo-0.4.tar.bz2 mirror://gentoo/linux-drm-20060608-kernelsource.tar.bz2

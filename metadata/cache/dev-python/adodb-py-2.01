@@ -1,0 +1,11 @@
+DEPEND=postgres? ( <dev-python/psycopg-1.99 ) mysql? ( >=dev-python/mysql-python-0.9.2 ) sqlite? ( >=dev-python/pysqlite-2.0 ) app-arch/unzip >=dev-lang/python-2.3 virtual/python
+DESCRIPTION=Active Data Objects Data Base library for Python
+EAPI=0
+HOMEPAGE=http://adodb.sourceforge.net/
+INHERITED=toolchain-funcs distutils portability python multilib alternatives eutils
+IUSE=mysql postgres sqlite
+KEYWORDS=~amd64 ~ia64 ~ppc ~ppc64 ~x86
+LICENSE=BSD
+RDEPEND=postgres? ( <dev-python/psycopg-1.99 ) mysql? ( >=dev-python/mysql-python-0.9.2 ) sqlite? ( >=dev-python/pysqlite-2.0 ) >=dev-lang/python-2.3
+SLOT=0
+SRC_URI=mirror://sourceforge/adodb/adodb-py201.zip

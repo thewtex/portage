@@ -1,0 +1,11 @@
+DEPEND=>=dev-lang/python-2.3 || ( virtual/httpd-cgi virtual/httpd-fastcgi ) >=app-admin/webapp-config-1.50.15 virtual/python
+DESCRIPTION=Python WikiClone
+EAPI=0
+HOMEPAGE=http://moinmo.in/
+INHERITED=toolchain-funcs distutils portability python multilib alternatives webapp eutils
+IUSE=rss vhosts
+KEYWORDS=amd64 ppc sparc x86
+LICENSE=GPL-2
+RDEPEND=>=dev-lang/python-2.3 >=dev-python/docutils-0.4 rss? ( >=dev-python/pyxml-0.8.4 ) >=app-admin/webapp-config-1.50.15
+SLOT=0
+SRC_URI=http://static.moinmo.in/files/moin-1.7.1.tar.gz

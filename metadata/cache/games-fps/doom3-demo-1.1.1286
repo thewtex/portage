@@ -1,0 +1,12 @@
+DESCRIPTION=Doom III - 3rd installment of the classic id 3D first-person shooter
+EAPI=0
+HOMEPAGE=http://www.doom3.com/
+INHERITED=eutils toolchain-funcs games multilib portability
+IUSE=opengl dedicated
+KEYWORDS=-* amd64 x86
+LICENSE=DOOM3
+PROPERTIES=interactive
+RDEPEND=opengl? ( virtual/opengl ) sys-libs/glibc amd64? ( app-emulation/emul-linux-x86-xlibs || ( >=app-emulation/emul-linux-x86-xlibs-7.0 x11-drivers/nvidia-drivers >=x11-drivers/ati-drivers-8.8.25-r1 ) ) dedicated? ( app-misc/screen )
+RESTRICT=strip mirror
+SLOT=0
+SRC_URI=mirror://3dgamers/doom3/doom3-linux-1.1.1286-demo.x86.run mirror://idsoftware/doom3/linux/doom3-linux-1.1.1286-demo.x86.run mirror://gentoo/doom3.png

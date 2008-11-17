@@ -1,0 +1,11 @@
+DEPEND=>=x11-libs/gtk+-2 dev-libs/libxml2 gnome-base/librsvg media-libs/aubio =media-libs/portaudio-19* alsa? ( >=media-libs/alsa-lib-0.9 ) || ( dev-util/yacc sys-devel/bison ) sys-devel/flex dev-util/pkgconfig nls? ( sys-devel/gettext ) =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=GTK+ graphical music notation editor.
+EAPI=0
+HOMEPAGE=http://denemo.sourceforge.net
+INHERITED=toolchain-funcs portability multilib base libtool autotools eutils
+IUSE=alsa nls
+KEYWORDS=~amd64 ~ppc ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=>=x11-libs/gtk+-2 dev-libs/libxml2 gnome-base/librsvg media-libs/aubio =media-libs/portaudio-19* alsa? ( >=media-libs/alsa-lib-0.9 )
+SLOT=0
+SRC_URI=http://savannah.nongnu.org/download/denemo/denemo-0.8.0.tar.gz

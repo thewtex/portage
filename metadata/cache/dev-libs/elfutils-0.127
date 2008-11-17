@@ -1,0 +1,9 @@
+DEPEND=elibc_glibc? ( >=sys-libs/glibc-2.3.2 ) sys-devel/gettext sys-devel/autoconf >=sys-devel/binutils-2.15.90.0.1 >=sys-devel/gcc-3.3.3 !dev-libs/libelf =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=Libraries/utilities to handle ELF objects (drop in replacement for libelf)
+EAPI=0
+HOMEPAGE=http://people.redhat.com/drepper/
+INHERITED=toolchain-funcs portability multilib libtool autotools eutils
+KEYWORDS=alpha amd64 arm hppa ia64 mips ppc ppc64 s390 sh sparc x86
+LICENSE=OpenSoftware
+SLOT=0
+SRC_URI=ftp://sources.redhat.com/pub/systemtap/elfutils/elfutils-0.127.tar.gz mirror://gentoo/elfutils-0.127-patches-1.0.tar.bz2

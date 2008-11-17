@@ -1,0 +1,11 @@
+DEPEND=!net-misc/strongswan dev-libs/gmp dev-lang/perl smartcard? ( dev-libs/opensc ) curl? ( net-misc/curl ) ldap? ( net-nds/openldap ) virtual/linux-sources app-text/xmlto kernel_linux? ( virtual/linux-sources )
+DESCRIPTION=Open Source implementation of IPsec for the Linux operating system (was SuperFreeS/WAN).
+EAPI=0
+HOMEPAGE=http://www.openswan.org/
+INHERITED=toolchain-funcs portability versionator multilib linux-info eutils
+IUSE=curl ldap smartcard extra-algorithms weak-algorithms nocrypto-algorithms
+KEYWORDS=~amd64 ~ppc ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=!net-misc/strongswan dev-libs/gmp dev-lang/perl smartcard? ( dev-libs/opensc ) curl? ( net-misc/curl ) ldap? ( net-nds/openldap ) virtual/logger sys-apps/iproute2
+SLOT=0
+SRC_URI=http://www.openswan.org/download/openswan-2.6.18.tar.gz

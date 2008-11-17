@@ -1,0 +1,11 @@
+DEPEND=mysql? ( virtual/mysql ) postgres? ( >=virtual/postgresql-server-7.3 ) sqlite? ( =dev-db/sqlite-2* ) odbc? ( >=dev-db/unixODBC-2.0.6 ) dev-util/pkgconfig
+DESCRIPTION=GUI-independent C++ libraries for database applications, including API documentation and tutorials.
+EAPI=0
+HOMEPAGE=http://hk-classes.sourceforge.net/
+INHERITED=multilib toolchain-funcs eutils portability
+IUSE=mysql postgres sqlite odbc doc
+KEYWORDS=x86 ppc amd64
+LICENSE=LGPL-2
+RDEPEND=mysql? ( virtual/mysql ) postgres? ( >=virtual/postgresql-server-7.3 ) sqlite? ( =dev-db/sqlite-2* ) odbc? ( >=dev-db/unixODBC-2.0.6 )
+SLOT=0
+SRC_URI=mirror://sourceforge/hk-classes/hk_classes-0.7.1.tar.bz2 mirror://sourceforge/knoda/knodapython.tar.bz2 mirror://sourceforge/knoda/hk_docs-0.7.tar.bz2

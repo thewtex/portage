@@ -1,0 +1,11 @@
+DEPEND==kde-base/kdelibs-3.5* =x11-libs/qt-3* =sys-devel/automake-1.9* >=sys-devel/autoconf-2.61 sys-devel/libtool sys-devel/make dev-util/pkgconfig dev-lang/perl x11-libs/libXt x11-proto/xf86vidmodeproto xinerama? ( x11-proto/xineramaproto ) arts? ( kde-base/arts )
+DESCRIPTION=KDE applet for monitoring the VDR video disk recorder
+EAPI=0
+HOMEPAGE=http://vdr-statusleds.sf.net/kvdrmon
+INHERITED=toolchain-funcs qt3 portability flag-o-matic kde versionator multilib base kde-functions libtool autotools eutils
+IUSE=arts debug elibc_FreeBSD arts xinerama
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND==kde-base/kdelibs-3.5* =x11-libs/qt-3* xinerama? ( x11-libs/libXinerama ) arts? ( kde-base/arts )
+SLOT=0
+SRC_URI=mirror://sourceforge/vdr-statusleds/kvdrmon-0.6.tar.gz

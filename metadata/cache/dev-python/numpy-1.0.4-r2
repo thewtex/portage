@@ -1,0 +1,11 @@
+DEPEND=!dev-python/f2py lapack? ( virtual/cblas virtual/lapack ) lapack? ( dev-util/pkgconfig ) >=dev-lang/python-2.3 virtual/python =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=Fast array and numerical python library
+EAPI=0
+HOMEPAGE=http://numeric.scipy.org/
+INHERITED=toolchain-funcs distutils portability flag-o-matic python multilib alternatives fortran libtool autotools eutils
+IUSE=lapack debug
+KEYWORDS=alpha amd64 hppa ia64 ~mips ppc ppc64 sparc x86 ~x86-fbsd
+LICENSE=BSD
+RDEPEND=!dev-python/f2py lapack? ( virtual/cblas virtual/lapack ) >=dev-lang/python-2.3
+SLOT=0
+SRC_URI=mirror://sourceforge/numpy/numpy-1.0.4.tar.gz

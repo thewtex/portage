@@ -1,0 +1,12 @@
+DEPEND=>=sys-libs/gwenhywfar-3.4.1 >=app-misc/ktoblzcheck-1.14 ofx? ( >=dev-libs/libofx-0.8.3 ) geldkarte? ( >=sys-libs/libchipcard-4.2.0 ) chipcard? ( >=sys-libs/libchipcard-4.2.0 ) qt3? ( =x11-libs/qt-3* ) kde? ( >=kde-base/kdelibs-3.1.0 )
+DESCRIPTION=Generic Online Banking Interface
+EAPI=0
+HOMEPAGE=http://www.aquamaniac.de/aqbanking/
+INHERITED=toolchain-funcs qt3 portability versionator multilib kde-functions eutils
+IUSE=chipcard debug geldkarte hbci kde ofx python qt3 yellownet
+KEYWORDS=~amd64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=>=sys-libs/gwenhywfar-3.4.1 >=app-misc/ktoblzcheck-1.14 ofx? ( >=dev-libs/libofx-0.8.3 ) geldkarte? ( >=sys-libs/libchipcard-4.2.0 ) chipcard? ( >=sys-libs/libchipcard-4.2.0 ) qt3? ( =x11-libs/qt-3* ) kde? ( >=kde-base/kdelibs-3.1.0 )
+RESTRICT=test
+SLOT=0
+SRC_URI=http://files.hboeck.de/aq//aqbanking-3.7.2.tar.gz

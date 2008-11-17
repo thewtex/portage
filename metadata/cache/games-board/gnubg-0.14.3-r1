@@ -1,0 +1,12 @@
+DEPEND=>=media-libs/freetype-2 media-libs/libpng dev-libs/libxml2 arts? ( kde-base/arts ) esd? ( media-sound/esound ) gdbm? ( sys-libs/gdbm ) =dev-libs/glib-2* gtk? ( =x11-libs/gtk+-2* media-libs/libart_lgpl opengl? ( x11-libs/gtkglext >=media-libs/ftgl-2.1.2-r1 ) ) guile? ( dev-scheme/guile ) nas? ( media-libs/nas ) nls? ( virtual/libintl ) python? ( dev-lang/python ) readline? ( sys-libs/readline ) X? ( x11-libs/libXmu ) dev-util/pkgconfig nls? ( sys-devel/gettext )
+DESCRIPTION=GNU BackGammon
+EAPI=0
+HOMEPAGE=http://www.gnu.org/software/gnubg/gnubg.html
+INHERITED=toolchain-funcs portability flag-o-matic multilib games eutils
+IUSE=arts esd gdbm gtk guile nas nls opengl python readline X
+KEYWORDS=~amd64 ppc ppc64 sparc x86 ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=>=media-libs/freetype-2 media-libs/libpng dev-libs/libxml2 arts? ( kde-base/arts ) esd? ( media-sound/esound ) gdbm? ( sys-libs/gdbm ) =dev-libs/glib-2* gtk? ( =x11-libs/gtk+-2* media-libs/libart_lgpl opengl? ( x11-libs/gtkglext >=media-libs/ftgl-2.1.2-r1 ) ) guile? ( dev-scheme/guile ) nas? ( media-libs/nas ) nls? ( virtual/libintl ) python? ( dev-lang/python ) readline? ( sys-libs/readline ) X? ( x11-libs/libXmu )
+RESTRICT=test
+SLOT=0
+SRC_URI=ftp://alpha.gnu.org/gnu/gnubg/gnubg-0.14.3.tar.gz ftp://alpha.gnu.org/gnu/gnubg/gnubg.weights-0.14.gz ftp://alpha.gnu.org/gnu/gnubg/gnubg_os0.bd.gz ftp://alpha.gnu.org/gnu/gnubg/gnubg_ts0.bd.gz

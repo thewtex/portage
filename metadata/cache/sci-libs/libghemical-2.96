@@ -1,0 +1,11 @@
+DEPEND=>=dev-util/pkgconfig-0.15 =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=Chemical quantum mechanics and molecular mechanics
+EAPI=0
+HOMEPAGE=http://bioinformatics.org/ghemical/
+INHERITED=toolchain-funcs portability multilib libtool autotools eutils
+IUSE=mopac7 mpqc
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=mopac7? ( >=sci-chemistry/mopac7-1.13-r1 ) mpqc? ( >=sci-chemistry/mpqc-2.3.1-r1 virtual/blas virtual/lapack )
+SLOT=0
+SRC_URI=http://www.bioinformatics.org/ghemical/download/current/libghemical-2.96.tar.gz

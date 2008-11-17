@@ -1,0 +1,11 @@
+DEPEND=app-arch/gzip >=sys-apps/sed-4 >=virtual/emacs-21
+DESCRIPTION=Emacs Backend for Sj3 Ver.2, FreeWnn, Wnn6 and Canna
+EAPI=0
+HOMEPAGE=http://www.m17n.org/tamago/index.en.html
+INHERITED=toolchain-funcs elisp-common portability elisp versionator multilib eutils
+IUSE=canna
+KEYWORDS=alpha ~amd64 ppc ppc64 sparc x86
+LICENSE=GPL-2
+RDEPEND=canna? ( app-i18n/canna ) >=virtual/emacs-21
+SLOT=0
+SRC_URI=ftp://ftp.m17n.org/pub/tamago/tamago-4.0.6.tar.gz http://cgi18.plala.or.jp/nyy/canna/canna-20011204.diff.gz mirror://gentoo/tamago-4.0.6-canna-gentoo.patch.gz

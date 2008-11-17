@@ -1,0 +1,11 @@
+DEPEND=x11-libs/qt:3 media-sound/madplay media-libs/libogg media-libs/libvorbis media-libs/audiofile media-libs/libsndfile media-libs/libsamplerate media-libs/portaudio alsa? ( media-libs/alsa-lib ) jack? ( media-sound/jack-audio-connection-kit ) dev-lang/perl dev-util/pkgconfig sys-apps/sed
+DESCRIPTION=Digital DJ tool using QT 3.x
+EAPI=1
+HOMEPAGE=http://mixxx.sourceforge.net
+INHERITED=toolchain-funcs qt3 portability versionator multilib eutils
+IUSE=alsa jack
+KEYWORDS=sparc ~ppc x86
+LICENSE=GPL-2
+RDEPEND=x11-libs/qt:3 media-sound/madplay media-libs/libogg media-libs/libvorbis media-libs/audiofile media-libs/libsndfile media-libs/libsamplerate media-libs/portaudio alsa? ( media-libs/alsa-lib ) jack? ( media-sound/jack-audio-connection-kit )
+SLOT=0
+SRC_URI=mirror://sourceforge/mixxx/mixxx-1.4.2.tar.gz

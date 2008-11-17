@@ -1,0 +1,11 @@
+DEPEND=kernel_linux? ( virtual/linux-sources ) kernel_linux? ( virtual/modutils ) sys-apps/sed
+DESCRIPTION=provide statistical information for the Linux /proc file system
+EAPI=0
+HOMEPAGE=http://directfb.org/wiki/index.php/Fusion_Proc_Filesystem
+INHERITED=toolchain-funcs portability versionator multilib linux-info linux-mod eutils
+IUSE=kernel_linux
+KEYWORDS=~amd64 ~hppa ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=kernel_linux? ( virtual/modutils )
+SLOT=0
+SRC_URI=http://directfb.org/downloads/Core/linux-fusion-8.0.0.tar.gz http://directfb.org/downloads/Old/linux-fusion-8.0.0.tar.gz

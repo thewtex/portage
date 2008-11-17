@@ -1,0 +1,11 @@
+DEPEND=>=sys-fs/device-mapper-1.02.24 =sys-cluster/dlm-2* =sys-cluster/cman-2*
+DESCRIPTION=User-land utilities for LVM2 (device-mapper) software.
+EAPI=0
+HOMEPAGE=http://sources.redhat.com/lvm2/
+INHERITED=multilib toolchain-funcs eutils portability
+IUSE=readline static selinux
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=sys-fs/device-mapper-1.02.24 =sys-cluster/dlm-2* =sys-cluster/cman-2* !sys-fs/lvm-user !sys-fs/lvm2
+SLOT=0
+SRC_URI=ftp://sources.redhat.com/pub/lvm2/LVM2.2.02.36.tgz

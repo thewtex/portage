@@ -1,0 +1,12 @@
+DEPEND=media-libs/jpeg sys-libs/libcap media-tv/linuxtv-dvb-headers
+DESCRIPTION=Video Disk Recorder - turns a pc into a powerful set top box for DVB
+EAPI=0
+HOMEPAGE=http://www.cadsoft.de/vdr/
+INHERITED=multilib toolchain-funcs eutils portability flag-o-matic
+IUSE=debug vanilla aio bigpatch jumpplay dolby-record-switch dvbplayer lnbsharing sourcecaps cmdsubmenu dxr3-audio-denoise child-protection yaepg setup-plugin submenu subtitles rotor noepg
+KEYWORDS=~amd64 ~ppc x86
+LICENSE=GPL-2
+PDEPEND=setup-plugin? ( >=media-plugins/vdr-setup-0.3.1-r1 )
+RDEPEND=media-libs/jpeg sys-libs/libcap dev-lang/perl || ( >=media-tv/gentoo-vdr-scripts-0.4.2 media-tv/vdrplugin-rebuild ) >=media-tv/gentoo-vdr-scripts-0.3.5
+SLOT=0
+SRC_URI=ftp://ftp.cadsoft.de/vdr/vdr-1.4.6.tar.bz2 mirror://gentoo/gentoo-vdr-patchset-1.4.6-1.tar.bz2

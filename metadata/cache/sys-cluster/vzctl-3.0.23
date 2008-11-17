@@ -1,0 +1,11 @@
+DEPEND=logrotate? ( app-admin/logrotate ) net-firewall/iptables sys-apps/ed sys-apps/iproute2 sys-fs/vzquota virtual/cron =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=OpenVZ VE control utility
+EAPI=0
+HOMEPAGE=http://openvz.org/
+INHERITED=toolchain-funcs portability multilib bash-completion libtool autotools eutils
+IUSE=bash-completion logrotate bash-completion
+KEYWORDS=~amd64 ~ia64 ~ppc64 ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=logrotate? ( app-admin/logrotate ) net-firewall/iptables sys-apps/ed sys-apps/iproute2 sys-fs/vzquota virtual/cron bash-completion? ( || ( app-admin/eselect app-shells/bash-completion-config ) )
+SLOT=0
+SRC_URI=http://download.openvz.org/utils/vzctl/3.0.23/src/vzctl-3.0.23.tar.bz2

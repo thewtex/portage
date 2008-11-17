@@ -1,0 +1,11 @@
+DEPEND=x11-libs/qt:3 =x11-libs/qwt-4* <x11-libs/qwtplot3d-0.2.7 !bindist? ( sci-libs/gsl ) bindist? ( <sci-libs/gsl-1.10 ) >=sys-libs/zlib-1.2.3
+DESCRIPTION=Qt based clone of the Origin plotting package
+EAPI=1
+HOMEPAGE=http://soft.proindependent.com/qtiplot.html
+INHERITED=toolchain-funcs qt3 portability versionator multilib eutils
+IUSE=bindist
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
+LICENSE=GPL-2
+RDEPEND=x11-libs/qt:3 =x11-libs/qwt-4* <x11-libs/qwtplot3d-0.2.7 !bindist? ( sci-libs/gsl ) bindist? ( <sci-libs/gsl-1.10 ) >=sys-libs/zlib-1.2.3
+SLOT=0
+SRC_URI=http://soft.proindependent.com/src/qtiplot-0.8.5.tar.bz2

@@ -1,0 +1,11 @@
+DEPEND=app-arch/unzip
+DESCRIPTION=Quake III - Alliance
+EAPI=0
+HOMEPAGE=http://www.planetquake.com/alliance/
+INHERITED=toolchain-funcs portability multilib games games-q3mod eutils
+IUSE=dedicated
+KEYWORDS=-* amd64 ~ppc x86
+LICENSE=freedist
+RDEPEND=|| ( games-fps/quake3 games-fps/quake3-bin ) amd64? ( app-emulation/emul-linux-x86-baselibs ) dedicated? ( app-misc/screen )
+SLOT=0
+SRC_URI=http://mir2.ovh.net/ftp.planetquake3.net/modifications/alliance/alliance30.zip http://mir2.ovh.net/ftp.planetquake3.net/modifications/alliance/alliance30-33.zip

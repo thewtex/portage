@@ -1,0 +1,11 @@
+DEPEND=sys-apps/pciutils kernel_linux? ( virtual/linux-sources ) kernel_linux? ( virtual/modutils ) sys-apps/sed
+DESCRIPTION=Wrapper for using Windows drivers for some wireless cards
+EAPI=0
+HOMEPAGE=http://ndiswrapper.sourceforge.net/
+INHERITED=toolchain-funcs portability versionator multilib linux-info linux-mod eutils
+IUSE=debug usb kernel_linux
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=sys-apps/pciutils net-wireless/wireless-tools kernel_linux? ( virtual/modutils )
+SLOT=0
+SRC_URI=mirror://sourceforge/ndiswrapper/ndiswrapper-1.49.tar.gz

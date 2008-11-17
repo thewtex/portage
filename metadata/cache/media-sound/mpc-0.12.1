@@ -1,0 +1,11 @@
+DEPEND=virtual/libc nls? ( || ( sys-libs/glibc dev-libs/libiconv ) )
+DESCRIPTION=A commandline client for Music Player Daemon (media-sound/mpd)
+EAPI=0
+HOMEPAGE=http://www.musicpd.org
+INHERITED=bash-completion
+IUSE=nls bash-completion
+KEYWORDS=amd64 hppa ppc ~ppc64 sparc ~x86
+LICENSE=GPL-2
+RDEPEND=virtual/libc nls? ( || ( sys-libs/glibc dev-libs/libiconv ) ) bash-completion? ( || ( app-admin/eselect app-shells/bash-completion-config ) )
+SLOT=0
+SRC_URI=http://musicpd.org/uploads/files/mpc-0.12.1.tar.bz2

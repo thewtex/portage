@@ -1,0 +1,11 @@
+DEPEND=app-arch/unzip !test? ( || ( =virtual/jdk-1.5* =virtual/jdk-1.4* ) ) test? ( =virtual/jdk-1.4* dev-java/ant-junit dev-java/ant-trax ) =dev-java/junit-3* >=dev-java/java-config-2.0.33-r1 >=sys-apps/portage-2.1.2.7 source? ( app-arch/zip ) >=dev-java/ant-core-1.7.0 >=sys-apps/portage-2.1.2.7 >=dev-java/javatoolkit-0.3.0-r2
+DESCRIPTION=XMLUnit extends JUnit and NUnit to enable unit testing of XML.
+EAPI=0
+HOMEPAGE=http://xmlunit.sourceforge.net/
+INHERITED=toolchain-funcs java-pkg-2 portability java-utils-2 versionator multilib eutils java-ant-2
+IUSE=elibc_FreeBSD doc source test elibc_FreeBSD
+KEYWORDS=amd64 ~ppc x86
+LICENSE=BSD
+RDEPEND=>=virtual/jre-1.4 =dev-java/junit-3* >=dev-java/java-config-2.0.33-r1 >=sys-apps/portage-2.1.2.7 source? ( app-arch/zip )
+SLOT=1
+SRC_URI=mirror://sourceforge/xmlunit/xmlunit1.0.zip

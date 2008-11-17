@@ -1,0 +1,11 @@
+DEPEND=app-arch/unzip
+DESCRIPTION=Oracle 10g client installation for Linux with SDK
+EAPI=0
+HOMEPAGE=http://www.oracle.com/technology/tech/oci/instantclient/index.html
+INHERITED=multilib toolchain-funcs eutils portability
+KEYWORDS=-* amd64 x86
+LICENSE=OTN
+RDEPEND=|| ( =sys-libs/libstdc++-v3-3.3* =sys-devel/gcc-3.3* )
+RESTRICT=fetch
+SLOT=0
+SRC_URI=amd64? ( instantclient-basic-linux-x86-64-10.2.0.3-20070103.zip instantclient-sdk-linux-x86-64-10.2.0.3-20070103.zip ) x86? ( instantclient-basic-linux32-10.2.0.3-20061115.zip instantclient-sdk-linux32-10.2.0.3-20061115.zip )

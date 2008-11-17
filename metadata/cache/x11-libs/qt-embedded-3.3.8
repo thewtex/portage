@@ -1,0 +1,11 @@
+DEPEND=media-libs/libpng media-libs/jpeg media-libs/libmng media-libs/lcms sys-libs/zlib cups? ( net-print/cups ) firebird? ( dev-db/firebird ) mysql? ( virtual/mysql ) opengl? ( virtual/opengl virtual/glu ) postgres? ( virtual/postgresql-server )
+DESCRIPTION=Embedded Linux port of Qt
+EAPI=0
+HOMEPAGE=http://www.trolltech.com/products/embedded/
+IUSE=cups debug doc firebird gif ipv6 mysql nis odbc opengl postgres sqlite
+KEYWORDS=~x86 ~amd64 ~ppc
+LICENSE=|| ( QPL-1.0 GPL-2 )
+PDEPEND=odbc? ( ~dev-db/qt-unixODBC-3.3.8 )
+RDEPEND=media-libs/libpng media-libs/jpeg media-libs/libmng media-libs/lcms sys-libs/zlib cups? ( net-print/cups ) firebird? ( dev-db/firebird ) mysql? ( virtual/mysql ) opengl? ( virtual/opengl virtual/glu ) postgres? ( virtual/postgresql-server )
+SLOT=3
+SRC_URI=ftp://ftp.trolltech.com/qt/source/qt-embedded-free-3.3.8.tar.bz2

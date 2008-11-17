@@ -1,0 +1,13 @@
+DEPEND=!build? ( sys-apps/sed >=sys-devel/binutils-2.11.90.0.31 )
+DESCRIPTION=Full sources including OpenVZ patchset for the . kernel tree
+EAPI=0
+HOMEPAGE=http://www.openvz.org
+INHERITED=toolchain-funcs portability versionator multilib kernel-2 eutils
+IUSE=symlink build
+KEYWORDS=amd64 ~ia64 ~ppc64 ~sparc x86
+LICENSE=GPL-2
+PROVIDE=virtual/linux-sources
+RDEPEND=!build? ( >=sys-libs/ncurses-5.2 sys-devel/make ) virtual/dev-manager
+RESTRICT=binchecks strip
+SLOT=2.6.18.028.056.1
+SRC_URI=mirror://kernel/linux/kernel/v./linux-2.6.18.tar.bz2 http://download.openvz.org/kernel/branches/2.6.18/028stab056.1/patches/patch-ovz028stab056.1-combined.gz

@@ -1,0 +1,11 @@
+DEPEND=>=net-firewall/iptables-1.2.4 sys-apps/iproute2 !<net-firewall/shorewall-4.0
+DESCRIPTION=Shoreline Firewall is an iptables-based firewall for Linux.
+EAPI=0
+HOMEPAGE=http://www.shorewall.net/
+INHERITED=multilib versionator toolchain-funcs eutils portability
+IUSE=doc
+KEYWORDS=~alpha ~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=>=net-firewall/iptables-1.2.4 sys-apps/iproute2 !<net-firewall/shorewall-4.0
+SLOT=0
+SRC_URI=http://www1.shorewall.net/pub/shorewall/4.2/shorewall-4.2.0/shorewall-common-4.2.0.tar.bz2 doc? ( http://www1.shorewall.net/pub/shorewall/4.2/shorewall-4.2.0/shorewall-docs-html-4.2.0.tar.bz2 )

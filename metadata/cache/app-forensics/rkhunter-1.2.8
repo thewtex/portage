@@ -1,0 +1,10 @@
+DESCRIPTION=Rootkit Hunter scans for known and unknown rootkits, backdoors, and sniffers.
+EAPI=0
+HOMEPAGE=http://www.rootkit.nl/
+INHERITED=multilib bash-completion toolchain-funcs eutils portability
+IUSE=bash-completion
+KEYWORDS=~alpha ~amd64 ~mips ~ppc ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=virtual/mta app-shells/bash dev-lang/perl sys-process/lsof bash-completion? ( || ( app-admin/eselect app-shells/bash-completion-config ) )
+SLOT=0
+SRC_URI=http://downloads.rootkit.nl/rkhunter-1.2.8.tar.gz

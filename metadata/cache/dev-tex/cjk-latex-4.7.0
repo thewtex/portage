@@ -1,0 +1,11 @@
+DEPEND=virtual/latex-base app-arch/unzip emacs? ( virtual/emacs ) virtual/latex-base >=sys-apps/texinfo-4.2-r5
+DESCRIPTION=A LaTeX 2e macro package which enables the use of CJK scripts in various encodings
+EAPI=0
+HOMEPAGE=http://cjk.ffii.org/
+INHERITED=toolchain-funcs portability latex-package multilib base eutils elisp-common
+IUSE=doc emacs
+KEYWORDS=alpha amd64 hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=virtual/latex-base app-arch/unzip emacs? ( virtual/emacs ) virtual/latex-base
+SLOT=0
+SRC_URI=ftp://ftp.ffii.org/pub/cjk/cjk-4.7.0.tar.gz mirror://gentoo/cjk-4.7.0-fonts.zip doc? ( ftp://ftp.ffii.org/pub/cjk/cjk-4.7.0-doc.tar.gz )

@@ -1,0 +1,11 @@
+DEPEND=media-video/ffmpeg ieee1394? ( >=media-libs/libiec61883-1.0.0 sys-libs/libraw1394 ) >=media-libs/mlt-0.2.4-r1 <media-libs/mlt-0.3 >=media-libs/mlt++-0.2.2 <media-libs/mlt++-0.3 x11-base/xorg-server x11-proto/xextproto =kde-base/kdelibs-3.5* =x11-libs/qt-3* =sys-devel/automake-1.9* >=sys-devel/autoconf-2.61 sys-devel/libtool sys-devel/make dev-util/pkgconfig dev-lang/perl x11-libs/libXt x11-proto/xf86vidmodeproto xinerama? ( x11-proto/xineramaproto ) arts? ( kde-base/arts )
+DESCRIPTION=Kdenlive! (pronounced Kay-den-live) is a Non Linear Video Editing Suite for KDE.
+EAPI=0
+HOMEPAGE=http://kdenlive.sourceforge.net/
+INHERITED=toolchain-funcs qt3 portability flag-o-matic kde versionator multilib base kde-functions libtool autotools eutils
+IUSE=ieee1394 debug elibc_FreeBSD arts xinerama
+KEYWORDS=~x86 ~ppc ~amd64
+LICENSE=GPL-2
+RDEPEND=media-video/ffmpeg ieee1394? ( >=media-libs/libiec61883-1.0.0 sys-libs/libraw1394 ) >=media-libs/mlt-0.2.4-r1 <media-libs/mlt-0.3 >=media-libs/mlt++-0.2.2 <media-libs/mlt++-0.3 =kde-base/kdelibs-3.5* =x11-libs/qt-3* xinerama? ( x11-libs/libXinerama ) arts? ( kde-base/arts )
+SLOT=0
+SRC_URI=mirror://sourceforge/kdenlive/kdenlive-0.5-1.tar.gz

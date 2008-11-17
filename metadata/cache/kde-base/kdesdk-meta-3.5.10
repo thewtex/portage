@@ -1,0 +1,9 @@
+DESCRIPTION=kdesdk - merge this to pull in all kdesdk-derived packages
+EAPI=1
+HOMEPAGE=http://www.kde.org/
+INHERITED=toolchain-funcs qt3 portability versionator multilib kde-functions eutils
+IUSE=subversion elibc_glibc
+KEYWORDS=~alpha ~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=>=kde-base/cervisia-3.5.10:3.5 >=kde-base/kapptemplate-3.5.10:3.5 >=kde-base/kbabel-3.5.10:3.5 >=kde-base/kbugbuster-3.5.10:3.5 >=kde-base/kcachegrind-3.5.10:3.5 >=kde-base/kdesdk-kfile-plugins-3.5.10:3.5 >=kde-base/kdesdk-misc-3.5.10:3.5 >=kde-base/kdesdk-scripts-3.5.10:3.5 elibc_glibc? ( >=kde-base/kmtrace-3.5.10:3.5 ) >=kde-base/kompare-3.5.10:3.5 >=kde-base/kspy-3.5.10:3.5 >=kde-base/kuiviewer-3.5.10:3.5 subversion? ( >=kde-base/kdesdk-kioslaves-3.5.10:3.5 ) >=kde-base/umbrello-3.5.10:3.5
+SLOT=3.5

@@ -1,0 +1,11 @@
+DEPEND=>=media-libs/taglib-1.4 >=media-sound/cdparanoia-3.9.8-r5 =kde-base/kdelibs-3.5* =x11-libs/qt-3* =sys-devel/automake-1.9* >=sys-devel/autoconf-2.61 sys-devel/libtool sys-devel/make dev-util/pkgconfig dev-lang/perl x11-libs/libXt x11-proto/xf86vidmodeproto xinerama? ( x11-proto/xineramaproto ) arts? ( kde-base/arts )
+DESCRIPTION=SoundKonverter: a frontend to various audio converters for KDE
+EAPI=0
+HOMEPAGE=http://kde-apps.org/content/show.php?content=29024
+INHERITED=toolchain-funcs qt3 portability flag-o-matic kde versionator multilib base kde-functions libtool autotools eutils
+IUSE=ffmpeg flac kdeenablefinal mp3 musepack vorbis debug elibc_FreeBSD arts xinerama
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=mp3? ( >=media-sound/lame-3.96 ) vorbis? ( >=media-sound/vorbis-tools-1 ) flac? ( >=media-libs/flac-1.1.1 ) ffmpeg? ( >=media-video/ffmpeg-0.4.8 ) musepack? ( >=media-sound/musepack-tools-1.15u ) =kde-base/kdelibs-3.5* =x11-libs/qt-3* xinerama? ( x11-libs/libXinerama ) arts? ( kde-base/arts )
+SLOT=0
+SRC_URI=http://hessijames.googlepages.com/soundkonverter-0.3.8.tar.bz2

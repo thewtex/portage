@@ -1,0 +1,11 @@
+DEPEND=dev-lang/python !minimal? ( app-crypt/gnupg net-misc/curl ) virtual/python
+DESCRIPTION=Tools for working with the ipkg binary package format
+EAPI=0
+HOMEPAGE=http://www.openembedded.org/
+INHERITED=toolchain-funcs distutils portability python multilib versionator alternatives eutils
+IUSE=minimal
+KEYWORDS=~amd64 ~arm ~hppa ~mips ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=dev-lang/python !minimal? ( app-crypt/gnupg net-misc/curl )
+SLOT=0
+SRC_URI=http://handhelds.org/download/packages/ipkg-utils/ipkg-utils-050831.tar.gz

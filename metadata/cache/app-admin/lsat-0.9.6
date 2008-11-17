@@ -1,0 +1,11 @@
+DEPEND=dev-lang/perl
+DESCRIPTION=The Linux Security Auditing Tool
+EAPI=0
+HOMEPAGE=http://usat.sourceforge.net/
+INHERITED=multilib toolchain-funcs eutils portability
+IUSE=minimal
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=!minimal? ( app-portage/portage-utils net-analyzer/nmap sys-apps/iproute2 sys-apps/which sys-process/lsof )
+SLOT=0
+SRC_URI=http://usat.sourceforge.net/code/lsat-0.9.6.tgz

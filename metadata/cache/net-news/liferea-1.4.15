@@ -1,0 +1,11 @@
+DEPEND=libnotify? ( >=x11-libs/libnotify-0.3.2 ) lua? ( >=dev-lang/lua-5.1 ) xulrunner? ( =net-libs/xulrunner-1.8* ) !xulrunner? ( firefox? ( =www-client/mozilla-firefox-2* ) ) !xulrunner? ( !firefox? ( seamonkey? ( =www-client/seamonkey-1* ) ) ) !amd64? ( !xulrunner? ( !firefox? ( !seamonkey? ( gtkhtml? ( gnome-extra/gtkhtml:2 ) ) ) ) ) >=x11-libs/gtk+-2.8 x11-libs/pango >=gnome-base/gconf-2 >=dev-libs/libxml2-2.6.27 >=dev-libs/libxslt-1.1.19 >=dev-db/sqlite-3.3 >=dev-libs/glib-2 >=gnome-base/libglade-2 dbus? ( >=dev-libs/dbus-glib-0.71 ) networkmanager? ( net-misc/networkmanager ) gnutls? ( net-libs/gnutls ) dev-util/pkgconfig >=dev-util/intltool-0.35 >=sys-apps/sed-4
+DESCRIPTION=News Aggregator for RDF/RSS/CDF/Atom/Echo/etc feeds
+EAPI=1
+HOMEPAGE=http://liferea.sourceforge.net/
+INHERITED=toolchain-funcs portability multilib gnome2-utils gnome2 gnome.org fdo-mime libtool eutils
+IUSE=dbus firefox gtkhtml gnutls libnotify lua networkmanager seamonkey xulrunner debug
+KEYWORDS=amd64 ppc ppc64 sparc x86 ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=libnotify? ( >=x11-libs/libnotify-0.3.2 ) lua? ( >=dev-lang/lua-5.1 ) xulrunner? ( =net-libs/xulrunner-1.8* ) !xulrunner? ( firefox? ( =www-client/mozilla-firefox-2* ) ) !xulrunner? ( !firefox? ( seamonkey? ( =www-client/seamonkey-1* ) ) ) !amd64? ( !xulrunner? ( !firefox? ( !seamonkey? ( gtkhtml? ( gnome-extra/gtkhtml:2 ) ) ) ) ) >=x11-libs/gtk+-2.8 x11-libs/pango >=gnome-base/gconf-2 >=dev-libs/libxml2-2.6.27 >=dev-libs/libxslt-1.1.19 >=dev-db/sqlite-3.3 >=dev-libs/glib-2 >=gnome-base/libglade-2 dbus? ( >=dev-libs/dbus-glib-0.71 ) networkmanager? ( net-misc/networkmanager ) gnutls? ( net-libs/gnutls )
+SLOT=0
+SRC_URI=mirror://sourceforge/liferea/liferea-1.4.15.tar.gz

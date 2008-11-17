@@ -1,0 +1,11 @@
+DEPEND=virtual/ruby
+DESCRIPTION=a secure audio ripper for linux
+EAPI=0
+HOMEPAGE=http://code.google.com/p/rubyripper
+INHERITED=ruby toolchain-funcs multilib eutils portability
+IUSE=flac mp3 vorbis
+KEYWORDS=amd64 x86
+LICENSE=GPL-3
+RDEPEND=dev-ruby/ruby-gtk2 virtual/eject media-sound/cd-discid media-sound/cdparanoia flac? ( media-libs/flac ) mp3? ( media-sound/lame ) vorbis? ( media-sound/vorbis-tools ) virtual/ruby
+SLOT=0
+SRC_URI=http://rubyripper.googlecode.com/files/rubyripper-0.4.2.tar.bz2

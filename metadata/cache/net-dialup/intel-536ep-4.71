@@ -1,0 +1,11 @@
+DEPEND=kernel_linux? ( virtual/linux-sources ) kernel_linux? ( virtual/modutils ) sys-apps/sed
+DESCRIPTION=Driver for Intel 536EP modem
+EAPI=0
+HOMEPAGE=http://developer.intel.com/design/modems/products/536ep.htm
+INHERITED=toolchain-funcs portability versionator multilib linux-info linux-mod eutils
+IUSE=kernel_linux
+KEYWORDS=x86
+LICENSE=Intel
+RDEPEND=kernel_linux? ( virtual/modutils )
+SLOT=0
+SRC_URI=ftp://aiedownload.intel.com/df-support/9266/eng/intel-536ep-4.71.tgz

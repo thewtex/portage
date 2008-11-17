@@ -1,0 +1,11 @@
+DEPEND=|| ( virtual/httpd-cgi virtual/httpd-fastcgi ) virtual/httpd-php >=app-admin/webapp-config-1.50.15
+DESCRIPTION=Web frontend to symon
+EAPI=0
+HOMEPAGE=http://www.xs4all.nl/~wpd/symon/
+INHERITED=toolchain-funcs portability depend.php multilib phpconfutils webapp eutils
+IUSE=vhosts
+KEYWORDS=~amd64 ~sparc ~x86
+LICENSE=BSD-2
+RDEPEND=net-analyzer/rrdtool virtual/httpd-php >=app-admin/webapp-config-1.50.15
+SLOT=0
+SRC_URI=http://www.xs4all.nl/~wpd/symon/philes/syweb-0.58.tar.gz

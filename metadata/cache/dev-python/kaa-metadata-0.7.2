@@ -1,0 +1,11 @@
+DEPEND=>=dev-python/kaa-base-0.3.0 dvd? ( media-libs/libdvdread ) css? ( media-libs/libdvdcss ) virtual/python
+DESCRIPTION=Powerful media metadata parser for media files in Python, successor of MMPython
+EAPI=0
+HOMEPAGE=http://freevo.sourceforge.net/kaa/
+INHERITED=toolchain-funcs distutils portability python multilib alternatives eutils
+IUSE=dvd css
+KEYWORDS=amd64 ppc x86
+LICENSE=GPL-2
+RDEPEND=>=dev-python/kaa-base-0.3.0 dvd? ( media-libs/libdvdread ) css? ( media-libs/libdvdcss ) !dev-python/mmpython
+SLOT=0
+SRC_URI=mirror://sourceforge/freevo/kaa-metadata-0.7.2.tar.gz

@@ -1,0 +1,12 @@
+DEPEND=sys-devel/binutils-nios2 sys-devel/gnuconfig >=sys-apps/sed-4
+DESCRIPTION=Compiler for Nios2 targets
+EAPI=0
+HOMEPAGE=http://gcc.gnu.org/
+INHERITED=toolchain-funcs portability flag-o-matic versionator multilib fixheadtails libtool gnuconfig toolchain eutils
+IUSE=multislot test
+KEYWORDS=-* ~amd64 ~ppc ~ppc64 ~x86
+LICENSE=GPL-2 LGPL-2.1
+RDEPEND=sys-devel/binutils-nios2
+RESTRICT=strip
+SLOT=nios2-elf-3.4
+SRC_URI=mirror://gentoo/niosii-gnutools-src-5.1.tgz mirror://gentoo/nios2-5.1.patch.bz2

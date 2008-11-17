@@ -1,0 +1,11 @@
+DEPEND=>=virtual/jdk-1.4 || ( ( >=kde-base/kwin-3.5.10:3.5 >=kde-base/kcontrol-3.5.10:3.5 ) >=kde-base/kdebase-3.5.10:3.5 ) >=kde-base/qtjava-3.5.10:3.5 >=dev-java/java-config-2.0.33-r1 >=sys-apps/portage-2.1.2.7 =sys-devel/automake-1.9* >=sys-devel/autoconf-2.61 sys-devel/libtool sys-devel/make dev-util/pkgconfig dev-lang/perl ~kde-base/kdelibs-3.5.10 =x11-libs/qt-3* !=kde-base/kdebindings-3.5*
+DESCRIPTION=KDE java bindings
+EAPI=1
+HOMEPAGE=http://www.kde.org/
+INHERITED=toolchain-funcs java-pkg-2 portability flag-o-matic java-utils-2 versionator multilib kde-functions kde-meta base kde libtool autotools eutils qt3
+IUSE=elibc_FreeBSD debug elibc_FreeBSD
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=virtual/jre-1.4 || ( ( >=kde-base/kwin-3.5.10:3.5 >=kde-base/kcontrol-3.5.10:3.5 ) >=kde-base/kdebase-3.5.10:3.5 ) >=kde-base/qtjava-3.5.10:3.5 >=dev-java/java-config-2.0.33-r1 >=sys-apps/portage-2.1.2.7 ~kde-base/kdelibs-3.5.10 =x11-libs/qt-3* !=kde-base/kdebindings-3.5*
+SLOT=3.5
+SRC_URI=mirror://kde/stable/3.5.10/src/kdebindings-3.5.10.tar.bz2

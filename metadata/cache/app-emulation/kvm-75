@@ -1,0 +1,12 @@
+DEPEND=sys-libs/zlib alsa? ( >=media-libs/alsa-lib-1.0.13 ) esd? ( media-sound/esound ) pulseaudio? ( media-sound/pulseaudio ) gnutls? ( net-libs/gnutls ) ncurses? ( sys-libs/ncurses ) sdl? ( >=media-libs/libsdl-1.2.11 ) vde? ( net-misc/vde ) gnutls? ( dev-util/pkgconfig ) app-text/texi2html kernel_linux? ( virtual/linux-sources ) kernel_linux? ( virtual/modutils ) sys-apps/sed
+DESCRIPTION=Kernel-based Virtual Machine userland tools
+EAPI=0
+HOMEPAGE=http://kvm.qumranet.com/kvmwiki
+INHERITED=toolchain-funcs portability flag-o-matic versionator multilib linux-info linux-mod eutils
+IUSE=alsa esd gnutls havekernel modules ncurses pulseaudio sdl test vde kernel_linux
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=sys-libs/zlib alsa? ( >=media-libs/alsa-lib-1.0.13 ) esd? ( media-sound/esound ) pulseaudio? ( media-sound/pulseaudio ) gnutls? ( net-libs/gnutls ) ncurses? ( sys-libs/ncurses ) sdl? ( >=media-libs/libsdl-1.2.11 ) vde? ( net-misc/vde ) kernel_linux? ( virtual/modutils )
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://sourceforge/kvm/kvm-75.tar.gz mirror://gentoo/kvm-patches-20080822.tar.gz

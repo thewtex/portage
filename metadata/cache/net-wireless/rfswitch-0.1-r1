@@ -1,0 +1,11 @@
+DEPEND=kernel_linux? ( virtual/linux-sources ) kernel_linux? ( virtual/modutils ) sys-apps/sed
+DESCRIPTION=Drivers for software based wireless radio switches
+EAPI=0
+HOMEPAGE=http://rfswitch.sourceforge.net/
+INHERITED=toolchain-funcs portability versionator multilib linux-info linux-mod eutils
+IUSE=kernel_linux
+KEYWORDS=~x86
+LICENSE=GPL-2
+RDEPEND=!<=net-wireless/ipw2100-0.48 kernel_linux? ( virtual/modutils )
+SLOT=0
+SRC_URI=mirror://sourceforge/rfswitch/rfswitch-0.1.tgz

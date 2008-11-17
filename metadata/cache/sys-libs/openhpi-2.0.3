@@ -1,0 +1,11 @@
+DEPEND=virtual/libc >=sys-fs/sysfsutils-1.0 >=sys-libs/openipmi-0.26 <sys-libs/openipmi-1.4 snmp? ( >=net-analyzer/net-snmp-5.07 ) virtual/os-headers
+DESCRIPTION=OpenHPI is an open implementation of the SA Forum's HPI spec
+EAPI=0
+HOMEPAGE=http://openhpi.sourceforge.net/
+INHERITED=multilib toolchain-funcs eutils portability flag-o-matic
+IUSE=snmp examples
+KEYWORDS=~x86
+LICENSE=BSD
+RDEPEND=virtual/libc >=sys-fs/sysfsutils-1.0 >=sys-libs/openipmi-0.26 <sys-libs/openipmi-1.4 snmp? ( >=net-analyzer/net-snmp-5.07 )
+SLOT=0
+SRC_URI=mirror://sourceforge/openhpi/openhpi-2.0.3-1.tar.gz

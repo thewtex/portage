@@ -1,0 +1,11 @@
+DEPEND=!net-misc/openswan dev-libs/gmp virtual/linux-sources sys-kernel/linux-headers curl? ( net-misc/curl ) ldap? ( net-nds/openldap ) smartcard? ( dev-libs/opensc ) xml? ( dev-libs/libxml2 ) kernel_linux? ( virtual/linux-sources )
+DESCRIPTION=Open Source implementation of IPsec for the Linux operating system.
+EAPI=0
+HOMEPAGE=http://www.strongswan.org/
+INHERITED=toolchain-funcs portability versionator multilib linux-info eutils
+IUSE=cisco curl debug ldap nat smartcard static xml
+KEYWORDS=~ppc ~sparc ~x86 ~amd64
+LICENSE=GPL-2 RSA-MD2 RSA-MD5 RSA-PKCS11 DES
+RDEPEND=!net-misc/openswan dev-libs/gmp virtual/logger sys-apps/iproute2
+SLOT=0
+SRC_URI=http://download.strongswan.org/strongswan-4.2.7.tar.bz2

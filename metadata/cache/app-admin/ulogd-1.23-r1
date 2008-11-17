@@ -1,0 +1,11 @@
+DEPEND=net-firewall/iptables mysql? ( virtual/mysql ) postgres? ( virtual/postgresql-server )
+DESCRIPTION=iptables daemon for ULOG target for userspace iptables filter logging
+EAPI=0
+HOMEPAGE=http://www.gnumonks.org/gnumonks/projects/project_details?p_id=1
+INHERITED=multilib toolchain-funcs eutils portability flag-o-matic
+IUSE=mysql postgres
+KEYWORDS=amd64 ppc -sparc x86
+LICENSE=GPL-2
+RDEPEND=net-firewall/iptables mysql? ( virtual/mysql ) postgres? ( virtual/postgresql-server )
+SLOT=0
+SRC_URI=http://ftp.netfilter.org/pub/ulogd/ulogd-1.23.tar.bz2

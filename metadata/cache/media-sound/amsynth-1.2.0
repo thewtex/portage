@@ -1,0 +1,11 @@
+DEPEND=>=dev-cpp/gtkmm-2.4 sndfile? ( >=media-libs/libsndfile-1.0 ) alsa? ( >=media-libs/alsa-lib-0.9 media-sound/alsa-utils ) jack? ( media-sound/jack-audio-connection-kit ) dev-util/pkgconfig =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=Virtual analogue synthesizer.
+EAPI=0
+HOMEPAGE=http://amsynthe.sourceforge.net/
+INHERITED=toolchain-funcs portability multilib libtool autotools eutils
+IUSE=debug alsa jack sndfile oss
+KEYWORDS=amd64 ~ppc sparc x86
+LICENSE=GPL-2
+RDEPEND=>=dev-cpp/gtkmm-2.4 sndfile? ( >=media-libs/libsndfile-1.0 ) alsa? ( >=media-libs/alsa-lib-0.9 media-sound/alsa-utils ) jack? ( media-sound/jack-audio-connection-kit )
+SLOT=0
+SRC_URI=mirror://sourceforge/amsynthe/amSynth-1.2.0.tar.gz

@@ -1,0 +1,12 @@
+DEPEND=kernel_linux? ( virtual/linux-sources ) kernel_linux? ( virtual/modutils ) sys-apps/sed
+DESCRIPTION=Cisco VPN Client (3DES)
+EAPI=0
+HOMEPAGE=http://cco.cisco.com/en/US/products/sw/secursw/ps2308/index.html
+INHERITED=toolchain-funcs portability versionator multilib linux-info linux-mod eutils
+IUSE=kernel_linux
+KEYWORDS=-* amd64 x86
+LICENSE=cisco-vpn-client
+RDEPEND=kernel_linux? ( virtual/modutils )
+RESTRICT=fetch strip
+SLOT=0
+SRC_URI=vpnclient-linux-x86_64-4.6.03.0190-k9.tar.gz

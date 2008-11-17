@@ -1,0 +1,11 @@
+DEPEND=alsa? ( media-libs/alsa-lib ) jack? ( media-sound/jack-audio-connection-kit ) dev-util/pkgconfig dev-lang/perl =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=Synthesis ToolKit in C++
+EAPI=0
+HOMEPAGE=http://ccrma.stanford.edu/software/stk/
+INHERITED=toolchain-funcs portability multilib libtool autotools eutils
+IUSE=alsa debug doc jack oss
+KEYWORDS=~amd64
+LICENSE=MIT
+RDEPEND=alsa? ( media-libs/alsa-lib ) jack? ( media-sound/jack-audio-connection-kit )
+SLOT=0
+SRC_URI=http://ccrma.stanford.edu/software/stk/release/stk-4.3.1.tar.gz

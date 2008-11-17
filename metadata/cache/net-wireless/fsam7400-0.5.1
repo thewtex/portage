@@ -1,0 +1,11 @@
+DEPEND=kernel_linux? ( virtual/linux-sources ) kernel_linux? ( virtual/modutils ) sys-apps/sed
+DESCRIPTION=Software killswitch for F-S Amilo laptops and compatible
+EAPI=0
+HOMEPAGE=http://zwobbl.homelinux.net
+INHERITED=toolchain-funcs portability versionator multilib linux-info linux-mod eutils
+IUSE=kernel_linux
+KEYWORDS=~x86
+LICENSE=GPL-2
+RDEPEND=kernel_linux? ( virtual/modutils )
+SLOT=0
+SRC_URI=http://linux.zwobbl.de/pub/fsam7400-0.5.1.tgz http://linux.zwobbl.de/pub/fsam7400-0.5.1-2.6.19.1.patch.gz

@@ -1,0 +1,12 @@
+DEPEND=gdbm? ( sys-libs/gdbm ) dev-lang/tcl =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=the Tcl Thread extension
+EAPI=0
+HOMEPAGE=http://www.tcl.tk/
+INHERITED=toolchain-funcs portability multilib libtool autotools eutils
+IUSE=gdbm
+KEYWORDS=~alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~x86-fbsd
+LICENSE=BSD
+RDEPEND=gdbm? ( sys-libs/gdbm ) dev-lang/tcl
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://sourceforge/tcl/thread2.6.2.tar.gz

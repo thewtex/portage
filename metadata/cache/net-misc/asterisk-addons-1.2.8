@@ -1,0 +1,11 @@
+DEPEND=>=net-misc/asterisk-1.2.0 mysql? ( virtual/mysql ) =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=Additional Plugins for Asterisk
+EAPI=0
+HOMEPAGE=http://www.asterisk.org/
+INHERITED=toolchain-funcs portability flag-o-matic multilib libtool autotools eutils
+IUSE=elibc_uclibc mysql sqlite h323
+KEYWORDS=~amd64 ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=>=net-misc/asterisk-1.2.0 mysql? ( virtual/mysql )
+SLOT=0
+SRC_URI=http://downloads.digium.com/pub/asterisk/old-releases/asterisk-addons-1.2.8.tar.gz sqlite? ( http://www.sqlite.org/sqlite-3.2.1.tar.gz )

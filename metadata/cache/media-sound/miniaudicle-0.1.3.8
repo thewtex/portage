@@ -1,0 +1,11 @@
+DEPEND=jack? ( media-sound/jack-audio-connection-kit ) alsa? ( >=media-libs/alsa-lib-0.9 ) media-libs/libsndfile >=x11-libs/wxGTK-2.6 sys-devel/bison sys-devel/flex
+DESCRIPTION=integrated development + performance environment for chuck
+EAPI=0
+HOMEPAGE=http://audicle.cs.princeton.edu/mini/
+INHERITED=multilib toolchain-funcs eutils portability flag-o-matic
+IUSE=oss jack alsa
+KEYWORDS=~x86
+LICENSE=GPL-2
+RDEPEND=jack? ( media-sound/jack-audio-connection-kit ) alsa? ( >=media-libs/alsa-lib-0.9 ) media-libs/libsndfile >=x11-libs/wxGTK-2.6
+SLOT=0
+SRC_URI=http://audicle.cs.princeton.edu/mini/release/files/miniAudicle-0.1.3.8.tgz

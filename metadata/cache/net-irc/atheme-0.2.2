@@ -1,0 +1,11 @@
+DEPEND=postgres? ( virtual/postgresql-server ) >=sys-devel/autoconf-2.59 =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=A portable, secure set of open source, and modular IRC services
+EAPI=0
+HOMEPAGE=http://www.atheme.net/
+INHERITED=toolchain-funcs portability multilib libtool autotools eutils
+IUSE=largenet postgres
+KEYWORDS=~sparc ~x86 ~x86-fbsd
+LICENSE=BSD
+RDEPEND=postgres? ( virtual/postgresql-server )
+SLOT=0
+SRC_URI=http://www.atheme.net/releases/atheme-0.2.2.tgz

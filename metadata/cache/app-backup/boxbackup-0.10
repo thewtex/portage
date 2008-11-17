@@ -1,0 +1,11 @@
+DEPEND=sys-libs/zlib sys-libs/db >=dev-libs/openssl-0.9.7 >=dev-lang/perl-5.6 =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=A completely automatic on-line backup system
+EAPI=0
+HOMEPAGE=http://www.fluffy.co.uk/boxbackup/
+INHERITED=toolchain-funcs portability multilib libtool autotools eutils
+IUSE=client-only
+KEYWORDS=amd64 x86
+LICENSE=BSD
+RDEPEND=sys-libs/zlib sys-libs/db >=dev-libs/openssl-0.9.7 >=dev-lang/perl-5.6 virtual/mta
+SLOT=0
+SRC_URI=mirror://sourceforge/boxbackup/boxbackup-0.10.tgz

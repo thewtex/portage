@@ -1,0 +1,11 @@
+DEPEND=>=app-arch/rpm2targz-9.0-r1
+DESCRIPTION=Intel FORTRAN 77/95 optimized compiler for Linux
+EAPI=0
+HOMEPAGE=http://www.intel.com/software/products/compilers/flin/
+INHERITED=toolchain-funcs portability check-reqs multilib rpm eutils
+KEYWORDS=~amd64 ~ia64 ~x86
+LICENSE=Intel-SDP
+RDEPEND=virtual/libstdc++ amd64? ( app-emulation/emul-linux-x86-compat )
+RESTRICT=test strip mirror
+SLOT=0
+SRC_URI=amd64? ( http://registrationcenter-download.intel.com/irc_nas/1208/l_fc_p_10.1.018_intel64.tar.gz ) ia64? ( http://registrationcenter-download.intel.com/irc_nas/1208/l_fc_p_10.1.018_ia64.tar.gz ) x86? ( http://registrationcenter-download.intel.com/irc_nas/1208/l_fc_p_10.1.018_ia32.tar.gz )

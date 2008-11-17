@@ -1,0 +1,11 @@
+DEPEND=!sys-cluster/mpich2 >=dev-libs/glib-2.4:2 aac? ( >=media-libs/faad2-2.0_rc2 ) alsa? ( media-sound/alsa-utils ) ao? ( >=media-libs/libao-0.8.4 ) audiofile? ( media-libs/audiofile ) curl? ( net-misc/curl ) ffmpeg? ( media-video/ffmpeg ) flac? ( media-libs/flac ) icecast? ( lame? ( media-libs/libshout ) ) id3? ( media-libs/libid3tag ) jack? ( media-sound/jack-audio-connection-kit ) lame? ( icecast? ( media-sound/lame ) ) libsamplerate? ( media-libs/libsamplerate ) mad? ( media-libs/libmad ) mikmod? ( media-libs/libmikmod ) musepack? ( media-libs/libmpcdec ) ogg? ( media-libs/libogg ) pulseaudio? ( media-sound/pulseaudio ) zeroconf? ( net-dns/avahi ) vorbis? ( media-libs/libvorbis icecast? ( media-libs/libshout ) ) wavpack? ( media-sound/wavpack )
+DESCRIPTION=The Music Player Daemon (mpd)
+EAPI=1
+HOMEPAGE=http://www.musicpd.org
+INHERITED=multilib toolchain-funcs eutils portability flag-o-matic
+IUSE=aac alsa ao audiofile curl ffmpeg flac icecast id3 ipv6 jack lame libsamplerate mad mikmod musepack ogg oss pulseaudio sysvipc unicode vorbis wavpack zeroconf
+KEYWORDS=~amd64 ~arm ~hppa ~ppc ~ppc64 ~sh ~sparc ~x86 ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=!sys-cluster/mpich2 >=dev-libs/glib-2.4:2 aac? ( >=media-libs/faad2-2.0_rc2 ) alsa? ( media-sound/alsa-utils ) ao? ( >=media-libs/libao-0.8.4 ) audiofile? ( media-libs/audiofile ) curl? ( net-misc/curl ) ffmpeg? ( media-video/ffmpeg ) flac? ( media-libs/flac ) icecast? ( lame? ( media-libs/libshout ) ) id3? ( media-libs/libid3tag ) jack? ( media-sound/jack-audio-connection-kit ) lame? ( icecast? ( media-sound/lame ) ) libsamplerate? ( media-libs/libsamplerate ) mad? ( media-libs/libmad ) mikmod? ( media-libs/libmikmod ) musepack? ( media-libs/libmpcdec ) ogg? ( media-libs/libogg ) pulseaudio? ( media-sound/pulseaudio ) zeroconf? ( net-dns/avahi ) vorbis? ( media-libs/libvorbis icecast? ( media-libs/libshout ) ) wavpack? ( media-sound/wavpack )
+SLOT=0
+SRC_URI=mirror://sourceforge/musicpd/mpd-0.14_alpha1.tar.bz2

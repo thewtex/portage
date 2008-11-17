@@ -1,0 +1,11 @@
+DEPEND=sys-apps/iproute2 kernel_linux? ( virtual/linux-sources ) kernel_linux? ( virtual/modutils ) sys-apps/sed
+DESCRIPTION=Sets up Hierachical Token Bucket based traffic control (QoS) with iproute2
+EAPI=0
+HOMEPAGE=http://www.sourceforge.net/projects/htbinit
+INHERITED=toolchain-funcs portability versionator multilib linux-info linux-mod eutils
+IUSE=ipv6 esfq kernel_linux
+KEYWORDS=alpha ~amd64 ~ppc ~sparc x86
+LICENSE=GPL-2
+RDEPEND=sys-apps/iproute2 kernel_linux? ( virtual/modutils )
+SLOT=0
+SRC_URI=mirror://sourceforge/htbinit/htb.init-v0.8.5

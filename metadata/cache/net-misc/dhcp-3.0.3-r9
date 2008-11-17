@@ -1,0 +1,12 @@
+DEPEND=selinux? ( sec-policy/selinux-dhcp ) kernel_linux? ( sys-apps/net-tools )
+DESCRIPTION=ISC Dynamic Host Configuration Protocol
+EAPI=0
+HOMEPAGE=http://www.isc.org/products/DHCP
+INHERITED=multilib toolchain-funcs eutils portability flag-o-matic
+IUSE=doc minimal static selinux
+KEYWORDS=alpha amd64 arm hppa mips ppc ppc64 s390 sh sparc x86 ~x86-fbsd
+LICENSE=isc-dhcp
+PROVIDE=virtual/dhcpc
+RDEPEND=selinux? ( sec-policy/selinux-dhcp ) kernel_linux? ( sys-apps/net-tools )
+SLOT=0
+SRC_URI=ftp://ftp.isc.org/isc/dhcp/dhcp-3.0.3.tar.gz

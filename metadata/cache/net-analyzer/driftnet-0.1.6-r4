@@ -1,0 +1,11 @@
+DEPEND=media-libs/jpeg media-libs/giflib media-libs/libpng net-libs/libpcap gtk? ( >=x11-libs/gtk+-2.0.0 ) >=x11-misc/makedepend-1.0.0 dev-util/pkgconfig
+DESCRIPTION=A program which listens to network traffic and picks out images from TCP streams it observes
+EAPI=0
+HOMEPAGE=http://www.ex-parrot.com/~chris/driftnet/
+INHERITED=multilib toolchain-funcs eutils portability flag-o-matic
+IUSE=gtk
+KEYWORDS=~amd64 ppc -sparc x86
+LICENSE=GPL-2
+RDEPEND=media-libs/jpeg media-libs/giflib media-libs/libpng net-libs/libpcap gtk? ( >=x11-libs/gtk+-2.0.0 )
+SLOT=0
+SRC_URI=mirror://debian/pool/main/d/driftnet/driftnet_0.1.6.orig.tar.gz mirror://debian/pool/main/d/driftnet/driftnet_0.1.6-8.diff.gz

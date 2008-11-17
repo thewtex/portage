@@ -1,0 +1,11 @@
+DEPEND=ssl? ( >=dev-libs/openssl-0.9.6g ) pam? ( virtual/pam ) tcpd? ( sys-apps/tcp-wrappers ) debug? ( dev-libs/dmalloc ) ssl? ( dev-libs/openssl )
+DESCRIPTION=Serial Console Manager
+EAPI=0
+HOMEPAGE=http://www.conserver.com/
+INHERITED=toolchain-funcs portability multilib pam ssl-cert eutils
+IUSE=pam ssl tcpd debug ssl
+KEYWORDS=~alpha ~amd64 ~ia64 ~sparc ~x86
+LICENSE=BSD
+RDEPEND=ssl? ( >=dev-libs/openssl-0.9.6g ) pam? ( virtual/pam ) tcpd? ( sys-apps/tcp-wrappers ) debug? ( dev-libs/dmalloc ) pam? ( >=sys-auth/pambase-20080219.1 )
+SLOT=0
+SRC_URI=ftp://ftp.conserver.com/conserver/conserver-8.1.16.tar.gz

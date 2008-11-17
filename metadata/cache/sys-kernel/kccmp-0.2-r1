@@ -1,0 +1,11 @@
+DEPEND=!qt4? ( >=x11-libs/qt-3.3.8-r4:3 ) qt4? ( || ( ( x11-libs/qt-core:4 x11-libs/qt-gui:4 ) =x11-libs/qt-4.3*:4 ) )
+DESCRIPTION=A simple tool for comparing two linux kernel .config files
+EAPI=1
+HOMEPAGE=http://stoopidsimple.com/kccmp/
+INHERITED=qt4 toolchain-funcs qt3 portability versionator multilib eutils
+IUSE=qt4
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=!qt4? ( >=x11-libs/qt-3.3.8-r4:3 ) qt4? ( || ( ( x11-libs/qt-core:4 x11-libs/qt-gui:4 ) =x11-libs/qt-4.3*:4 ) )
+SLOT=0
+SRC_URI=http://stoopidsimple.com/files/kccmp-0.2.tar.gz

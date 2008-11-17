@@ -1,0 +1,11 @@
+DEPEND=berkdb? ( =sys-libs/db-4* ) ldap? ( net-nds/openldap ) mysql? ( virtual/mysql ) pam? ( virtual/pam ) postgres? ( virtual/postgresql-server ) =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=libhome is a library providing a getpwnam() emulation
+EAPI=0
+HOMEPAGE=http://pll.sourceforge.net
+INHERITED=toolchain-funcs portability versionator multilib libtool db-use autotools eutils
+IUSE=berkdb ldap mysql pam postgres
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2
+RDEPEND=berkdb? ( =sys-libs/db-4* ) ldap? ( net-nds/openldap ) mysql? ( virtual/mysql ) pam? ( virtual/pam ) postgres? ( virtual/postgresql-server )
+SLOT=0
+SRC_URI=mirror://sourceforge/pll/libhome-0.10.1.tar.gz

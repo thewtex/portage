@@ -1,0 +1,11 @@
+DEPEND=virtual/opengl virtual/glu x11-libs/libXmu sdl? ( media-libs/libsdl media-libs/smpeg ) !sdl? ( virtual/glut ) vorbis? ( media-libs/libvorbis ) qt3? ( x11-libs/qt:3 ) media-libs/openal media-libs/freealut
+DESCRIPTION=Chromium B.S.U. - an arcade game
+EAPI=1
+HOMEPAGE=http://www.reptilelabour.com/software/chromium/
+INHERITED=toolchain-funcs qt3 portability flag-o-matic versionator multilib games eutils
+IUSE=sdl qt3 vorbis
+KEYWORDS=amd64 ppc sparc x86
+LICENSE=Artistic
+RDEPEND=virtual/opengl virtual/glu x11-libs/libXmu sdl? ( media-libs/libsdl media-libs/smpeg ) !sdl? ( virtual/glut ) vorbis? ( media-libs/libvorbis ) qt3? ( x11-libs/qt:3 ) media-libs/openal media-libs/freealut
+SLOT=0
+SRC_URI=http://www.reptilelabour.com/software/files/chromium/chromium-src-0.9.12.tar.gz http://www.reptilelabour.com/software/files/chromium/chromium-data-0.9.12.tar.gz

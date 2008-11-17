@@ -1,0 +1,11 @@
+DESCRIPTION=Sequel to the 1999 Game of the Year multi-player first-person shooter
+EAPI=0
+HOMEPAGE=http://www.unrealtournament2003.com/
+INHERITED=eutils toolchain-funcs games multilib portability
+IUSE=dedicated
+KEYWORDS=amd64 x86
+LICENSE=ut2003
+RDEPEND=dedicated? ( games-server/ut2003-ded ) !dedicated? ( virtual/opengl ) games-fps/ut2003-data amd64? ( app-emulation/emul-linux-x86-compat app-emulation/emul-linux-x86-xlibs )
+RESTRICT=strip
+SLOT=0
+SRC_URI=ftp://ftp.infogrames.net/misc/ut2003/ut2003lnx_patch2225.tar.tar

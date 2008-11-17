@@ -1,0 +1,11 @@
+DEPEND=app-arch/unzip =dev-java/junit-3.8* test? ( dev-java/ant-junit dev-java/ant-trax =virtual/jdk-1.5* ) !test? ( >=virtual/jdk-1.5 ) dev-java/ant-core >=dev-java/asm-3.0 >=dev-java/backport-util-concurrent-3.0 >=dev-java/jaxen-1.1_beta10 >=dev-java/java-config-2.0.33-r1 >=sys-apps/portage-2.1.2.7 source? ( app-arch/zip ) >=dev-java/ant-core-1.7.0 >=sys-apps/portage-2.1.2.7 >=dev-java/javatoolkit-0.3.0-r2
+DESCRIPTION=A Java source code analyzer. It finds unused variables, empty catch blocks, unnecessary object creation and so forth.
+EAPI=0
+HOMEPAGE=http://pmd.sourceforge.net
+INHERITED=toolchain-funcs java-pkg-2 portability java-utils-2 versionator multilib eutils java-ant-2
+IUSE=elibc_FreeBSD doc source test elibc_FreeBSD
+KEYWORDS=amd64 ppc x86 ~x86-fbsd
+LICENSE=pmd
+RDEPEND=>=virtual/jre-1.5 dev-java/ant-core >=dev-java/asm-3.0 >=dev-java/backport-util-concurrent-3.0 >=dev-java/jaxen-1.1_beta10 >=dev-java/java-config-2.0.33-r1 >=sys-apps/portage-2.1.2.7 source? ( app-arch/zip )
+SLOT=0
+SRC_URI=mirror://sourceforge/pmd/pmd-src-3.9.zip

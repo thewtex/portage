@@ -1,0 +1,11 @@
+DEPEND=xulrunner? ( =net-libs/xulrunner-1.8* ) !xulrunner? ( seamonkey? ( =www-client/seamonkey-1* ) !seamonkey? ( =www-client/mozilla-firefox-2* ) ) >=dev-libs/glib-2 >=x11-libs/gtk+-2.4.0 >=dev-libs/libxml2-2.6.6 >=gnome-base/gconf-2.3.2 >=gnome-base/orbit-2 >=gnome-base/libbonobo-2 >=gnome-base/libbonoboui-2.1.1 >=gnome-base/libgnomeui-2.5.2 >=gnome-base/gnome-vfs-2 >=gnome-base/gnome-desktop-2.10.0 >=gnome-base/libglade-2.3.1 app-text/scrollkeeper dev-util/pkgconfig >=dev-util/intltool-0.30 >=sys-devel/gettext-0.11 >=sys-apps/sed-4
+DESCRIPTION=A GNOME Web browser based on gecko (mozilla's rendering engine)
+EAPI=0
+HOMEPAGE=http://galeon.sourceforge.net
+INHERITED=toolchain-funcs portability multilib gnome2-utils gnome2 gnome.org fdo-mime libtool eutils
+IUSE=seamonkey xulrunner debug
+KEYWORDS=amd64 ia64 ppc sparc x86
+LICENSE=GPL-2
+RDEPEND=xulrunner? ( =net-libs/xulrunner-1.8* ) !xulrunner? ( seamonkey? ( =www-client/seamonkey-1* ) !seamonkey? ( =www-client/mozilla-firefox-2* ) ) >=dev-libs/glib-2 >=x11-libs/gtk+-2.4.0 >=dev-libs/libxml2-2.6.6 >=gnome-base/gconf-2.3.2 >=gnome-base/orbit-2 >=gnome-base/libbonobo-2 >=gnome-base/libbonoboui-2.1.1 >=gnome-base/libgnomeui-2.5.2 >=gnome-base/gnome-vfs-2 >=gnome-base/gnome-desktop-2.10.0 >=gnome-base/libglade-2.3.1 app-text/scrollkeeper
+SLOT=0
+SRC_URI=mirror://sourceforge/galeon/galeon-2.0.4.tar.bz2

@@ -1,0 +1,11 @@
+DEPEND=|| ( dev-texlive/texlive-metapost app-text/tetex app-text/ptex ) virtual/latex-base >=sys-apps/texinfo-4.2-r5
+DESCRIPTION=Combined LaTeX/Metafont package for drawing of Feynman diagrams
+EAPI=0
+HOMEPAGE=http://www.ctan.org/tex-archive/macros/latex/contrib/feynmf/
+INHERITED=toolchain-funcs portability latex-package multilib base eutils
+IUSE=doc
+KEYWORDS=alpha amd64 hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=|| ( dev-texlive/texlive-metapost app-text/tetex app-text/ptex ) virtual/latex-base
+SLOT=0
+SRC_URI=mirror://gentoo/feynmf-1.08.tar.gz doc? ( mirror://gentoo/feynmf-cnl.tar.gz )

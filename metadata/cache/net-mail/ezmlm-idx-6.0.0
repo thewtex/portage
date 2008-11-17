@@ -1,0 +1,11 @@
+DEPEND=mysql? ( virtual/mysql ) postgres? ( virtual/postgresql-base ) >=sys-apps/sed-4
+DESCRIPTION=Simple yet powerful mailing list manager for qmail
+EAPI=0
+HOMEPAGE=http://www.ezmlm.org
+INHERITED=fixheadtails multilib toolchain-funcs eutils portability
+IUSE=mysql postgres
+KEYWORDS=~alpha ~amd64 ~hppa ~mips ~ppc ~sparc ~x86
+LICENSE=as-is
+RDEPEND=mysql? ( virtual/mysql ) postgres? ( virtual/postgresql-base ) virtual/qmail
+SLOT=0
+SRC_URI=http://cr.yp.to/software/ezmlm-0.53.tar.gz http://www.ezmlm.org/archive/6.0.0/ezmlm-idx-6.0.0.tar.gz

@@ -1,0 +1,12 @@
+DEPEND=app-arch/unzip
+DESCRIPTION=Quake III matrix - Matrix conversion mod
+EAPI=0
+HOMEPAGE=http://mods.moddb.com/3388/matrix-quake-3/
+INHERITED=toolchain-funcs portability multilib games games-mods eutils
+IUSE=dedicated opengl
+KEYWORDS=-* ~amd64 ~ppc ~x86
+LICENSE=freedist
+RDEPEND=ppc? ( games-fps/quake3 ) !ppc? ( || ( games-fps/quake3 games-fps/quake3-bin ) )
+RESTRICT=strip fetch
+SLOT=0
+SRC_URI=matrix24.zip

@@ -1,0 +1,11 @@
+DEPEND=pbs? ( sys-cluster/torque ) !sys-cluster/mpich !sys-cluster/openmpi !sys-cluster/mpich2 =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=the LAM MPI parallel computing environment
+EAPI=0
+HOMEPAGE=http://www.lam-mpi.org
+INHERITED=toolchain-funcs portability flag-o-matic multilib fortran libtool autotools eutils
+IUSE=crypt pbs fortran xmpi romio examples debug
+KEYWORDS=~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=lam-mpi
+RDEPEND=pbs? ( sys-cluster/torque ) !sys-cluster/mpich !sys-cluster/openmpi !sys-cluster/mpich2 crypt? ( net-misc/openssh ) !crypt? ( net-misc/netkit-rsh )
+SLOT=6
+SRC_URI=http://www.lam-mpi.org/download/files/lam-7.1.4.tar.bz2

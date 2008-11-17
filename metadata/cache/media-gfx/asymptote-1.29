@@ -1,0 +1,11 @@
+DEPEND=>=sys-libs/readline-4.3-r5 >=sys-libs/ncurses-5.4-r5 dev-libs/libsigsegv boehm-gc? ( >=dev-libs/boehm-gc-6.7 <dev-libs/boehm-gc-7.0 ) virtual/latex-base fftw? ( >=sci-libs/fftw-3.0.1 ) emacs? ( virtual/emacs ) gsl? ( sci-libs/gsl ) vim-syntax? ( app-editors/vim ) >=sys-devel/autoconf-2.5 >=sys-devel/bison-1.875 >=sys-devel/flex-2.5.4a-r5 doc? ( >=media-gfx/imagemagick-6.1.3.2 virtual/ghostscript >=sys-apps/texinfo-4.7-r1 )
+DESCRIPTION=A vector graphics language that provides a framework for technical drawing
+EAPI=0
+HOMEPAGE=http://asymptote.sourceforge.net
+INHERITED=multilib toolchain-funcs eutils portability elisp-common
+IUSE=boehm-gc doc fftw emacs gsl vim-syntax
+KEYWORDS=~amd64 x86
+LICENSE=GPL-2
+RDEPEND=>=sys-libs/readline-4.3-r5 >=sys-libs/ncurses-5.4-r5 dev-libs/libsigsegv boehm-gc? ( >=dev-libs/boehm-gc-6.7 <dev-libs/boehm-gc-7.0 ) virtual/latex-base fftw? ( >=sci-libs/fftw-3.0.1 ) emacs? ( virtual/emacs ) gsl? ( sci-libs/gsl ) vim-syntax? ( app-editors/vim )
+SLOT=0
+SRC_URI=mirror://sourceforge/asymptote/asymptote-1.29.src.tgz

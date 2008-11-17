@@ -1,0 +1,11 @@
+DEPEND=sys-libs/zlib media-libs/jpeg media-video/mjpegtools ffmpeg? ( <media-video/ffmpeg-0.4.9_p20081014 ) mysql? ( virtual/mysql ) postgres? ( virtual/postgresql-server ) =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=Motion is a video motion detector with tracking-support for webcams.
+EAPI=0
+HOMEPAGE=http://www.lavrsen.dk/twiki/bin/view/Motion/WebHome
+INHERITED=toolchain-funcs portability multilib libtool autotools eutils
+IUSE=ffmpeg mysql postgres v4l
+KEYWORDS=~alpha amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=sys-libs/zlib media-libs/jpeg media-video/mjpegtools ffmpeg? ( <media-video/ffmpeg-0.4.9_p20081014 ) mysql? ( virtual/mysql ) postgres? ( virtual/postgresql-server )
+SLOT=0
+SRC_URI=mirror://sourceforge/motion/motion-3.2.10.1.tar.gz

@@ -1,0 +1,10 @@
+DESCRIPTION=C library for developing embedded Linux systems
+EAPI=0
+HOMEPAGE=http://www.uclibc.org/
+INHERITED=toolchain-funcs portability flag-o-matic multilib savedconfig eutils
+IUSE=build uclibc-compat debug hardened iconv ipv6 minimal nls pregen userlocales wordexp crosscompile_opts_headers-only savedconfig
+KEYWORDS=-* ~arm ~m68k -mips ~ppc ~sh ~sparc ~x86 ~amd64
+LICENSE=LGPL-2
+RESTRICT=strip
+SLOT=x86_64-pc-linux-uclibc
+SRC_URI=http://uclibc.org/downloads/uClibc-0.9.30-rc1.tar.bz2 iconv? ( !userlocales? ( pregen? ( http://www.uclibc.org/downloads/uClibc-locale-030818.tgz ) ) ) mirror://gentoo/uClibc-0.9.30-rc1-patches-0.1.tar.bz2

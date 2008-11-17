@@ -1,0 +1,11 @@
+DEPEND=mp4? ( >=media-video/gpac-0.4.1_pre20060122 ) gtk? ( >=x11-libs/gtk+-2.6.10 >=dev-libs/glib-2.10.3 ) ~media-libs/x264-0.0.20080301 amd64? ( >=dev-lang/yasm-0.6.0 ) x86? ( || ( >=dev-lang/yasm-0.6.2 dev-lang/nasm ) ) x86-fbsd? ( dev-lang/nasm ) dev-util/pkgconfig x86? ( !<dev-lang/yasm-0.6.2 )
+DESCRIPTION=A free library for encoding X264/AVC streams
+EAPI=0
+HOMEPAGE=http://www.videolan.org/developers/x264.html
+INHERITED=multilib versionator toolchain-funcs eutils portability
+IUSE=debug mp4 gtk threads
+KEYWORDS=~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=mp4? ( >=media-video/gpac-0.4.1_pre20060122 ) gtk? ( >=x11-libs/gtk+-2.6.10 >=dev-libs/glib-2.10.3 ) ~media-libs/x264-0.0.20080301
+SLOT=0
+SRC_URI=mirror://gentoo/x264-svn-20080301.tar.bz2

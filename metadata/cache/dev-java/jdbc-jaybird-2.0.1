@@ -1,0 +1,11 @@
+DEPEND=|| ( =virtual/jdk-1.5* =virtual/jdk-1.4* ) app-arch/unzip dev-java/cpptasks test? ( =dev-java/junit-3.8* dev-java/ant ) source? ( app-arch/zip ) dev-java/log4j >=dev-java/java-config-2.0.33-r1 >=sys-apps/portage-2.1.2.7
+DESCRIPTION=JDBC Type 2 and 4 drivers for Firebird SQL server
+EAPI=0
+HOMEPAGE=http://jaybirdwiki.firebirdsql.org/
+INHERITED=toolchain-funcs java-pkg-2 portability java-utils-2 versionator multilib eutils
+IUSE=doc examples source test elibc_FreeBSD
+KEYWORDS=amd64 x86
+LICENSE=LGPL-2
+RDEPEND=>=virtual/jre-1.4 dev-java/log4j >=dev-java/java-config-2.0.33-r1 >=sys-apps/portage-2.1.2.7
+SLOT=0
+SRC_URI=mirror://sourceforge/firebird/JayBird-2.0.1-src.zip

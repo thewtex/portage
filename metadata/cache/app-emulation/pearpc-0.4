@@ -1,0 +1,11 @@
+DEPEND=sys-apps/net-tools sdl? ( >=media-libs/libsdl-1.2.0 ) X? ( x11-libs/libX11 ) net-firewall/iptables net-misc/bridge-utils sys-devel/flex sys-devel/bison x86? ( dev-lang/nasm ) jit? ( dev-lang/nasm ) kernel_linux? ( virtual/linux-sources ) kernel_linux? ( virtual/linux-sources ) kernel_linux? ( virtual/modutils ) sys-apps/sed
+DESCRIPTION=PowerPC Architecture Emulator
+EAPI=0
+HOMEPAGE=http://pearpc.sourceforge.net/
+INHERITED=toolchain-funcs portability flag-o-matic versionator multilib linux-info linux-mod eutils
+IUSE=debug jit X sdl kernel_linux
+KEYWORDS=-amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=sys-apps/net-tools sdl? ( >=media-libs/libsdl-1.2.0 ) X? ( x11-libs/libX11 ) net-firewall/iptables net-misc/bridge-utils kernel_linux? ( virtual/modutils )
+SLOT=0
+SRC_URI=mirror://sourceforge/pearpc/pearpc-0.4.tar.bz2 http://pearpc.sf.net/createdisk.py

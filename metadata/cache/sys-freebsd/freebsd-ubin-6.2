@@ -1,0 +1,11 @@
+DEPEND=>=sys-freebsd/freebsd-lib-6.2_rc2 ssl? ( dev-libs/openssl ) kerberos? ( virtual/krb5 ) sys-libs/zlib virtual/pam !dev-util/csup sys-devel/flex !build? ( =sys-freebsd/freebsd-sources-6.2* ) =sys-freebsd/freebsd-mk-defs-6.2* virtual/pmake virtual/pmake
+DESCRIPTION=FreeBSD's base system source for /usr/bin
+EAPI=0
+HOMEPAGE=http://www.freebsd.org/
+INHERITED=toolchain-funcs portability flag-o-matic versionator multilib freebsd bsdmk pam eutils
+IUSE=atm bluetooth ssl usb nls ipv6 kerberos nis build profile
+KEYWORDS=~sparc-fbsd ~x86-fbsd
+LICENSE=BSD
+RDEPEND=>=sys-freebsd/freebsd-lib-6.2_rc2 ssl? ( dev-libs/openssl ) kerberos? ( virtual/krb5 ) sys-libs/zlib virtual/pam !dev-util/csup sys-process/cronbase
+SLOT=0
+SRC_URI=mirror://gentoo/freebsd-ubin-6.2.tar.bz2 mirror://gentoo/freebsd-contrib-6.2.tar.bz2 mirror://gentoo/freebsd-lib-6.2.tar.bz2 mirror://gentoo/freebsd-etc-6.2.tar.bz2 mirror://gentoo/freebsd-bin-6.2.tar.bz2 mirror://gentoo/freebsd-include-6.2.tar.bz2 build? ( mirror://gentoo/freebsd-sys-6.2.tar.bz2 )

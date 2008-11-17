@@ -1,0 +1,11 @@
+DEPEND=mysql? ( virtual/mysql ) postgres? ( virtual/postgresql-base ) sqlite? ( <dev-db/sqlite-3 ) sqlite3? ( =dev-db/sqlite-3* ) oracle? ( dev-db/oracle-instantclient-basic ) !bindist? ( firebird? ( dev-db/firebird ) )
+DESCRIPTION=OpenDBX - A database abstraction layer
+EAPI=0
+HOMEPAGE=http://www.linuxnetworks.de/doc/index.php/OpenDBX
+INHERITED=multilib toolchain-funcs eutils portability flag-o-matic
+IUSE=bindist firebird mysql oracle postgres sqlite sqlite3
+KEYWORDS=amd64 x86
+LICENSE=LGPL-2.1
+RDEPEND=mysql? ( virtual/mysql ) postgres? ( virtual/postgresql-base ) sqlite? ( <dev-db/sqlite-3 ) sqlite3? ( =dev-db/sqlite-3* ) oracle? ( dev-db/oracle-instantclient-basic ) !bindist? ( firebird? ( dev-db/firebird ) )
+SLOT=0
+SRC_URI=http://www.linuxnetworks.de/opendbx/download/opendbx-1.2.4.tar.gz

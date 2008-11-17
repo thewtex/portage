@@ -1,0 +1,11 @@
+DEPEND=test? ( || ( =virtual/jdk-1.5* =virtual/jdk-1.4* ) ) !test? ( || ( =virtual/jdk-1.6* =virtual/jdk-1.5* =virtual/jdk-1.4* ) ) app-arch/unzip >=dev-java/java-config-2.0.33-r1 >=sys-apps/portage-2.1.2.7 source? ( app-arch/zip ) >=dev-java/ant-core-1.7.0 >=sys-apps/portage-2.1.2.7 >=dev-java/javatoolkit-0.3.0-r2
+DESCRIPTION=ICU4J is a set of Java libraries providing Unicode and Globalization support.
+EAPI=0
+HOMEPAGE=http://www.icu-project.org/
+INHERITED=toolchain-funcs java-pkg-2 portability java-utils-2 versionator multilib java-osgi eutils java-ant-2
+IUSE=doc test elibc_FreeBSD source elibc_FreeBSD elibc_FreeBSD
+KEYWORDS=amd64 ~ia64 ppc ppc64 x86 ~x86-fbsd
+LICENSE=icu
+RDEPEND=>=virtual/jre-1.4 >=dev-java/java-config-2.0.33-r1 >=sys-apps/portage-2.1.2.7 source? ( app-arch/zip )
+SLOT=0
+SRC_URI=http://download.icu-project.org/files/icu4j/3.8.1/icu4j-3_8_1-src.jar doc? ( http://download.icu-project.org/files/icu4j/3.8.1/icu4j-3_8_1-docs.jar )

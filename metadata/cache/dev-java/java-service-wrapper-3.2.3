@@ -1,0 +1,11 @@
+DEPEND=>=virtual/jdk-1.4 test? ( dev-java/ant-junit =dev-java/junit-3* ) >=dev-java/java-config-2.0.33-r1 >=sys-apps/portage-2.1.2.7 source? ( app-arch/zip ) >=dev-java/ant-core-1.7.0 dev-java/ant-nodeps >=sys-apps/portage-2.1.2.7 >=dev-java/javatoolkit-0.3.0-r2
+DESCRIPTION=A wrapper that makes it possible to install a Java Application as daemon.
+EAPI=0
+HOMEPAGE=http://wrapper.tanukisoftware.org/
+INHERITED=toolchain-funcs java-pkg-2 portability java-utils-2 versionator multilib base eutils java-ant-2
+IUSE=elibc_FreeBSD doc source test elibc_FreeBSD
+KEYWORDS=~amd64 ~x86
+LICENSE=java-service-wrapper
+RDEPEND=>=virtual/jre-1.4 >=dev-java/java-config-2.0.33-r1 >=sys-apps/portage-2.1.2.7 source? ( app-arch/zip )
+SLOT=0
+SRC_URI=mirror://sourceforge/wrapper/wrapper_3.2.3_src.tar.gz

@@ -1,0 +1,11 @@
+DEPEND=media-libs/giflib media-libs/libpng media-libs/jpeg sys-libs/zlib jpeg2k? ( media-libs/jasper )
+DESCRIPTION=A forwarding, non-caching, compressing web proxy server
+EAPI=0
+HOMEPAGE=http://ziproxy.sourceforge.net/
+INHERITED=multilib toolchain-funcs eutils portability
+IUSE=jpeg2k xinetd
+KEYWORDS=~amd64 ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=media-libs/giflib media-libs/libpng media-libs/jpeg sys-libs/zlib jpeg2k? ( media-libs/jasper ) xinetd? ( virtual/inetd )
+SLOT=0
+SRC_URI=mirror://sourceforge/ziproxy/ziproxy-2.5.1.tar.bz2

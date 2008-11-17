@@ -1,0 +1,10 @@
+DESCRIPTION=Classic TECO editor, Predecessor to EMACS
+EAPI=0
+HOMEPAGE=http://www.ibiblio.org/pub/linux/apps/editors/tty/ http://www.ibiblio.org/pub/academic/computer-science/history/pdp-11/teco
+INHERITED=toolchain-funcs multilib eutils portability flag-o-matic
+IUSE=doc
+KEYWORDS=alpha ~amd64 ~ppc x86
+LICENSE=freedist
+RDEPEND=sys-libs/ncurses
+SLOT=0
+SRC_URI=http://www.ibiblio.org/pub/linux/apps/editors/tty/teco.tar.gz doc? ( mirror://gentoo/tecolore.txt.gz mirror://gentoo/tech.txt.gz mirror://gentoo/teco.doc.gz mirror://gentoo/tecoprog.doc.gz )

@@ -1,0 +1,11 @@
+DEPEND=imagemagick? ( media-gfx/imagemagick ) !imagemagick? ( media-libs/imlib2 ) >=media-tv/gentoo-vdr-scripts-0.4.2 media-tv/linuxtv-dvb-headers
+DESCRIPTION=VDR plugin: picselshow for vdr-music
+EAPI=0
+HOMEPAGE=http://www.vdr.glaserei-franz.de/
+INHERITED=toolchain-funcs portability flag-o-matic multilib vdr-plugin base eutils
+IUSE=imagemagick
+KEYWORDS=~x86 ~amd64
+LICENSE=GPL-2
+RDEPEND=media-plugins/vdr-image =media-plugins/vdr-music-0.2.0 >=media-tv/gentoo-vdr-scripts-0.4.2 >=app-admin/eselect-vdr-0.0.2
+SLOT=0
+SRC_URI=http://www.kost.sh/vdr/vdr-picselshow-0.0.2.tar.gz

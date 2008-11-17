@@ -1,0 +1,11 @@
+DEPEND=|| ( x11-libs/qt-gui:4 =x11-libs/qt-4.3* ) dev-util/cmake >=dev-util/cmake-2.4.6
+DESCRIPTION=Qt 4 front-end for Tor
+EAPI=1
+HOMEPAGE=http://www.vidalia-project.net/
+INHERITED=qt4 toolchain-funcs portability flag-o-matic versionator multilib cmake-utils eutils
+IUSE=debug
+KEYWORDS=~amd64 ~ppc ~sparc ~x86
+LICENSE=|| ( GPL-3 GPL-2 ) openssl
+RDEPEND=|| ( x11-libs/qt-gui:4 =x11-libs/qt-4.3* ) net-misc/tor
+SLOT=0
+SRC_URI=http://www.vidalia-project.net/dist/vidalia-0.1.7.tar.gz

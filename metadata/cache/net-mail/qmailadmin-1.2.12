@@ -1,0 +1,12 @@
+DEPEND=virtual/qmail >=net-mail/vpopmail-5.3 net-mail/autorespond maildrop? ( >=mail-filter/maildrop-2.0.1 ) >=sys-apps/sed-4 >=app-admin/webapp-config-1.50.15
+DESCRIPTION=A web interface for managing a qmail system with virtual domains
+EAPI=0
+HOMEPAGE=http://www.inter7.com/qmailadmin.html
+INHERITED=qmail toolchain-funcs portability flag-o-matic multilib fixheadtails webapp eutils
+IUSE=maildrop vhosts
+KEYWORDS=~amd64 ~arm ~hppa ~ppc ~s390 ~sh ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=virtual/qmail >=net-mail/vpopmail-5.3 net-mail/autorespond maildrop? ( >=mail-filter/maildrop-2.0.1 ) >=app-admin/webapp-config-1.50.15
+RESTRICT=userpriv
+SLOT=0
+SRC_URI=mirror://sourceforge/qmailadmin/qmailadmin-1.2.12.tar.gz

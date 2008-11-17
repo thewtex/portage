@@ -1,0 +1,11 @@
+DEPEND=sys-apps/tcp-wrappers sys-libs/zlib sys-devel/flex !postgres? ( mysql? ( virtual/mysql ) ) !mysql? ( postgres? ( virtual/postgresql-server ) ) ssl? ( dev-libs/openssl ) sys-devel/bison =sys-devel/automake-1.6* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=Flow-tools is a package for collecting and processing NetFlow data
+EAPI=0
+HOMEPAGE=http://www.splintered.net/sw/flow-tools/
+INHERITED=toolchain-funcs portability flag-o-matic multilib libtool autotools eutils
+IUSE=mysql postgres debug ssl
+KEYWORDS=amd64 ia64 ppc x86
+LICENSE=BSD
+RDEPEND=sys-apps/tcp-wrappers sys-libs/zlib sys-devel/flex !postgres? ( mysql? ( virtual/mysql ) ) !mysql? ( postgres? ( virtual/postgresql-server ) ) ssl? ( dev-libs/openssl )
+SLOT=0
+SRC_URI=ftp://ftp.eng.oar.net/pub/flow-tools/flow-tools-0.68.tar.gz

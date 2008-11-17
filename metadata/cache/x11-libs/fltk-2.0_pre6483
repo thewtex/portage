@@ -1,0 +1,11 @@
+DEPEND=x11-libs/libXext x11-libs/libICE x11-libs/libSM x11-libs/libXt xft? ( virtual/xft ) png? ( media-libs/libpng ) jpeg? ( media-libs/jpeg ) opengl? ( virtual/opengl ) cairo? ( x11-libs/cairo ) xinerama? ( x11-libs/libXinerama ) zlib? ( sys-libs/zlib ) x11-proto/xextproto xinerama? ( x11-proto/xineramaproto ) doc? ( app-doc/doxygen ) =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=C++ user interface toolkit for X and OpenGL
+EAPI=1
+HOMEPAGE=http://www.fltk.org/
+INHERITED=toolchain-funcs portability flag-o-matic multilib libtool autotools eutils
+IUSE=cairo debug doc +jpeg +png opengl +xft xinerama zlib
+KEYWORDS=~amd64 ~x86
+LICENSE=FLTK LGPL-2
+RDEPEND=x11-libs/libXext x11-libs/libICE x11-libs/libSM x11-libs/libXt xft? ( virtual/xft ) png? ( media-libs/libpng ) jpeg? ( media-libs/jpeg ) opengl? ( virtual/opengl ) cairo? ( x11-libs/cairo ) xinerama? ( x11-libs/libXinerama ) zlib? ( sys-libs/zlib )
+SLOT=2
+SRC_URI=mirror://easysw/fltk/snapshots/fltk-2.0.x-r6483.tar.bz2

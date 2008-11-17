@@ -1,0 +1,10 @@
+DESCRIPTION=Third-person sneaker like Splinter Cell
+EAPI=0
+HOMEPAGE=http://linuxgamepublishing.com/info.php?id=coldwar
+INHERITED=eutils toolchain-funcs games multilib portability
+KEYWORDS=~amd64 ~x86
+LICENSE=as-is
+RDEPEND=virtual/opengl x86? ( media-libs/libogg media-libs/openal media-libs/libvorbis media-libs/smpeg dev-libs/glib x11-libs/libX11 x11-libs/libXext ) amd64? ( app-emulation/emul-linux-x86-sdl app-emulation/emul-linux-x86-xlibs app-emulation/emul-linux-x86-medialibs )
+RESTRICT=strip
+SLOT=0
+SRC_URI=http://demofiles.linuxgamepublishing.com/coldwar/coldwar-demo.run

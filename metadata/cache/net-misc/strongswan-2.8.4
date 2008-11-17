@@ -1,0 +1,11 @@
+DEPEND=!net-misc/openswan dev-libs/gmp virtual/linux-sources sys-kernel/linux-headers curl? ( net-misc/curl ) ldap? ( net-nds/openldap ) smartcard? ( dev-libs/opensc ) kernel_linux? ( virtual/linux-sources )
+DESCRIPTION=IPsec-based VPN Solution for Linux
+EAPI=0
+HOMEPAGE=http://www.strongswan.org/
+INHERITED=toolchain-funcs portability versionator multilib linux-info eutils
+IUSE=curl ldap nat smartcard
+KEYWORDS=~amd64 ~ppc ~sparc ~x86
+LICENSE=GPL-2 RSA-MD2 RSA-MD5 RSA-PKCS11 DES
+RDEPEND=!net-misc/openswan dev-libs/gmp virtual/logger sys-apps/iproute2
+SLOT=0
+SRC_URI=http://download.strongswan.org/strongswan-2.8.4.tar.bz2

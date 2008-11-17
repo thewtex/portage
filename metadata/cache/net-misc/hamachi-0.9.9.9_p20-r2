@@ -1,0 +1,11 @@
+DEPEND=kernel_linux? ( virtual/linux-sources )
+DESCRIPTION=Hamachi is a secure mediated peer to peer.
+EAPI=0
+HOMEPAGE=http://hamachi.cc
+INHERITED=toolchain-funcs portability versionator multilib linux-info eutils
+IUSE=pentium
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=as-is
+RESTRICT=strip mirror
+SLOT=0
+SRC_URI=!pentium? ( http://files.hamachi.cc/linux/hamachi-0.9.9.9-20-lnx.tar.gz ) pentium? ( http://files.hamachi.cc/linux/hamachi-0.9.9.9-20-lnx-pentium.tar.gz )

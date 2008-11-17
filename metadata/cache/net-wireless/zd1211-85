@@ -1,0 +1,11 @@
+DEPEND=net-wireless/wireless-tools kernel_linux? ( virtual/linux-sources ) kernel_linux? ( virtual/modutils ) sys-apps/sed
+DESCRIPTION=Driver for the zd1211 wireless chipset
+EAPI=0
+HOMEPAGE=http://zd1211.ath.cx/
+INHERITED=toolchain-funcs portability versionator multilib linux-info linux-mod eutils
+IUSE=kernel_linux
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=net-wireless/wireless-tools kernel_linux? ( virtual/modutils )
+SLOT=0
+SRC_URI=http://zd1211.ath.cx/download/zd1211-driver-r85.tgz

@@ -1,0 +1,10 @@
+DEPEND=>=sys-devel/autoconf-2.57 >=sys-devel/automake-1.7.2
+DESCRIPTION=A milter for SpamAssassin
+EAPI=0
+HOMEPAGE=http://savannah.nongnu.org/projects/spamass-milt/
+INHERITED=multilib toolchain-funcs eutils portability
+KEYWORDS=~amd64 ~ppc ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=|| ( mail-filter/libmilter mail-mta/sendmail ) >=mail-filter/spamassassin-3.1.0
+SLOT=0
+SRC_URI=http://savannah.nongnu.org/download/spamass-milt/spamass-milter-0.3.1.tar.bz2

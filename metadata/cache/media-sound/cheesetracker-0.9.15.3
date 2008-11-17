@@ -1,0 +1,11 @@
+DEPEND=alsa? ( media-libs/alsa-lib ) jack? ( media-sound/jack-audio-connection-kit ) media-libs/audiofile =dev-libs/libsigc++-1.2* =x11-libs/qt-3* dev-libs/gmp >=dev-util/scons-0.94-r2 dev-util/pkgconfig
+DESCRIPTION=A clone of Impulse Tracker with some extensions and a built-in sample editor
+EAPI=0
+HOMEPAGE=http://cheesetracker.sourceforge.net
+INHERITED=multilib toolchain-funcs eutils portability
+IUSE=alsa examples jack
+KEYWORDS=alpha ~amd64 ~ppc sparc x86
+LICENSE=GPL-2
+RDEPEND=alsa? ( media-libs/alsa-lib ) jack? ( media-sound/jack-audio-connection-kit ) media-libs/audiofile =dev-libs/libsigc++-1.2* =x11-libs/qt-3* dev-libs/gmp
+SLOT=0
+SRC_URI=mirror://sourceforge/cheesetracker/cheesetracker-0.9.15.3.tar.gz

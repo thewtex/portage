@@ -1,0 +1,10 @@
+DESCRIPTION=publish files through FTP and HTTP
+EAPI=0
+HOMEPAGE=http://cr.yp.to/publicfile.html
+INHERITED=multilib toolchain-funcs eutils portability
+IUSE=selinux
+KEYWORDS=~amd64 hppa ppc sparc x86
+LICENSE=as-is
+RDEPEND=>=sys-process/daemontools-0.70 >=sys-apps/ucspi-tcp-0.83 selinux? ( sec-policy/selinux-publicfile )
+SLOT=0
+SRC_URI=http://cr.yp.to/publicfile/publicfile-0.52.tar.gz http://www.ohse.de/uwe/patches/publicfile-0.52-filetype-diff http://www.publicfile.org/ftp-ls-patch

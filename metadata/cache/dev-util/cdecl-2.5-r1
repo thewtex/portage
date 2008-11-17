@@ -1,0 +1,11 @@
+DEPEND=readline? ( sys-libs/ncurses sys-libs/readline ) || ( dev-util/yacc sys-devel/bison ) !<dev-util/cutils-1.6-r2
+DESCRIPTION=Turn English phrases to C or C++ declarations
+EAPI=0
+HOMEPAGE=http://www.boutell.com/lsm/lsmbyid.cgi/002103
+INHERITED=multilib toolchain-funcs eutils portability
+IUSE=readline
+KEYWORDS=~amd64 ~mips ~ppc sparc x86
+LICENSE=public-domain
+RDEPEND=readline? ( sys-libs/ncurses sys-libs/readline )
+SLOT=0
+SRC_URI=ftp://ftp.netsw.org/softeng/lang/c/tools/cdecl/cdecl-2.5.tar.gz

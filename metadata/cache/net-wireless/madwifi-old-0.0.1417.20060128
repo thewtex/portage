@@ -1,0 +1,11 @@
+DEPEND=app-arch/sharutils kernel_linux? ( virtual/linux-sources ) kernel_linux? ( virtual/modutils ) sys-apps/sed
+DESCRIPTION=Driver for Atheros based IEEE 802.11a/b/g wireless LAN cards
+EAPI=0
+HOMEPAGE=http://www.madwifi-project.org/
+INHERITED=toolchain-funcs portability versionator multilib linux-info linux-mod eutils
+IUSE=amrr onoe kernel_linux
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=|| ( BSD GPL-2 )
+RDEPEND=!net-wireless/madwifi-ng >=net-wireless/madwifi-old-tools-0.0.1417.20060128 kernel_linux? ( virtual/modutils )
+SLOT=0
+SRC_URI=http://snapshots.madwifi-project.org/madwifi-old/madwifi-old-r1417-20060128.tar.gz

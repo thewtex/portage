@@ -1,0 +1,12 @@
+DEPEND=doc? ( app-text/poppler dev-tex/latex2html virtual/latex-base || ( ( dev-texlive/texlive-genericrecommended dev-texlive/texlive-latexextra ) app-text/tetex app-text/ptex ) )
+DESCRIPTION=Charm++ is a message-passing parallel language and runtime system.
+EAPI=0
+HOMEPAGE=http://charm.cs.uiuc.edu/
+INHERITED=multilib toolchain-funcs eutils portability flag-o-matic
+IUSE=cmkopt tcp smp doc
+KEYWORDS=~x86
+LICENSE=charm
+RDEPEND=doc? ( app-text/poppler dev-tex/latex2html virtual/latex-base || ( ( dev-texlive/texlive-genericrecommended dev-texlive/texlive-latexextra ) app-text/tetex app-text/ptex ) )
+RESTRICT=fetch
+SLOT=0
+SRC_URI=charm-5.9.tar.gz

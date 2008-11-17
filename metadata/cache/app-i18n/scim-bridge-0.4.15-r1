@@ -1,0 +1,11 @@
+DEPEND=>=app-i18n/scim-1.4.6 gtk? ( >=x11-libs/gtk+-2.2 >=x11-libs/pango-1.1 ) qt3? ( x11-libs/qt:3 >=x11-libs/pango-1.1 ) qt4? ( || ( ( x11-libs/qt-gui:4 x11-libs/qt-core:4 ) =x11-libs/qt-4.3*:4 ) >=x11-libs/pango-1.1 ) dev-util/pkgconfig doc? ( app-doc/doxygen ) =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=Yet another IM-client of SCIM
+EAPI=1
+HOMEPAGE=http://www.scim-im.org/projects/scim_bridge
+INHERITED=toolchain-funcs qt3 portability versionator multilib libtool autotools eutils
+IUSE=doc gtk qt3 qt4
+KEYWORDS=~amd64 ~hppa ~ppc64 ~sparc ~x86
+LICENSE=GPL-2 LGPL-2.1
+RDEPEND=>=app-i18n/scim-1.4.6 gtk? ( >=x11-libs/gtk+-2.2 >=x11-libs/pango-1.1 ) qt3? ( x11-libs/qt:3 >=x11-libs/pango-1.1 ) qt4? ( || ( ( x11-libs/qt-gui:4 x11-libs/qt-core:4 ) =x11-libs/qt-4.3*:4 ) >=x11-libs/pango-1.1 )
+SLOT=0
+SRC_URI=mirror://sourceforge/scim/scim-bridge-0.4.15.tar.gz

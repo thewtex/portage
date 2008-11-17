@@ -1,0 +1,11 @@
+DEPEND=!libgcrypt? ( dev-libs/openssl ) libgcrypt? ( dev-libs/libgcrypt ) sys-libs/zlib
+DESCRIPTION=Library implementing the SSH2 protocol
+EAPI=0
+HOMEPAGE=http://www.libssh2.org/
+INHERITED=multilib toolchain-funcs eutils portability
+IUSE=libgcrypt
+KEYWORDS=alpha amd64 hppa ia64 ~mips ppc ppc64 sparc x86
+LICENSE=BSD
+RDEPEND=!libgcrypt? ( dev-libs/openssl ) libgcrypt? ( dev-libs/libgcrypt ) sys-libs/zlib
+SLOT=0
+SRC_URI=mirror://sourceforge/libssh2/libssh2-0.18.tar.gz

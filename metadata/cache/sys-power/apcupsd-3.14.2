@@ -1,0 +1,11 @@
+DEPEND=doc? ( virtual/latex-base dev-tex/latex2html ) cgi? ( >=media-libs/gd-1.8.4 ) ncurses? ( sys-libs/ncurses ) nls? ( sys-devel/gettext ) snmp? ( net-analyzer/net-snmp ) gnome? ( >=x11-libs/gtk+-2.4.0 >=dev-libs/glib-2.0 >=gnome-base/gconf-2.0 ) >=app-admin/webapp-config-1.50.15
+DESCRIPTION=APC UPS daemon with integrated tcp/ip remote shutdown
+EAPI=0
+HOMEPAGE=http://www.apcupsd.org/
+INHERITED=multilib toolchain-funcs eutils portability webapp
+IUSE=doc snmp usb cgi ncurses nls gnome vhosts
+KEYWORDS=~alpha ~amd64 ~ppc ~sparc ~x86 ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=doc? ( virtual/latex-base dev-tex/latex2html ) cgi? ( >=media-libs/gd-1.8.4 ) ncurses? ( sys-libs/ncurses ) nls? ( sys-devel/gettext ) snmp? ( net-analyzer/net-snmp ) gnome? ( >=x11-libs/gtk+-2.4.0 >=dev-libs/glib-2.0 >=gnome-base/gconf-2.0 ) virtual/mta >=app-admin/webapp-config-1.50.15
+SLOT=0
+SRC_URI=mirror://sourceforge/apcupsd/apcupsd-3.14.2.tar.gz

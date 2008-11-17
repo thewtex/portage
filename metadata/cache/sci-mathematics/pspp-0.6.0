@@ -1,0 +1,11 @@
+DEPEND=sci-libs/gsl sys-libs/readline >=sys-devel/gettext-0.14.1 >=dev-lang/perl-5.6 virtual/libiconv ncurses? ( >=sys-libs/ncurses-5.4 ) plotutils? ( >=media-libs/plotutils-2.4.1 ) emacs? ( virtual/emacs ) psppire? ( >=x11-libs/gtk+-2.12 >=gnome-base/libglade-2.6 ) psppire? ( dev-util/pkgconfig ) =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=Program for statistical analysis of sampled data.
+EAPI=0
+HOMEPAGE=http://www.gnu.org/software/pspp/pspp.html
+INHERITED=toolchain-funcs elisp-common portability multilib libtool autotools eutils
+IUSE=doc ncurses emacs plotutils nls psppire
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=sci-libs/gsl sys-libs/readline >=sys-devel/gettext-0.14.1 >=dev-lang/perl-5.6 virtual/libiconv ncurses? ( >=sys-libs/ncurses-5.4 ) plotutils? ( >=media-libs/plotutils-2.4.1 ) emacs? ( virtual/emacs ) psppire? ( >=x11-libs/gtk+-2.12 >=gnome-base/libglade-2.6 )
+SLOT=0
+SRC_URI=ftp://ftp.gnu.org/pub/gnu/pspp/pspp-0.6.0.tar.gz

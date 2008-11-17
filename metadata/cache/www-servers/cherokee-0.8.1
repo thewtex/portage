@@ -1,0 +1,11 @@
+DEPEND=>=sys-libs/zlib-1.1.4-r1 ssl? ( gnutls? ( net-libs/gnutls ) !gnutls? ( dev-libs/openssl ) ) pam? ( virtual/pam ) admin? ( dev-lang/python ) =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=An extremely fast and tiny web server.
+EAPI=0
+HOMEPAGE=http://www.cherokee-project.com/
+INHERITED=toolchain-funcs portability versionator multilib libtool autotools pam eutils
+IUSE=ipv6 ssl gnutls static pam coverpage threads kernel_linux admin
+KEYWORDS=~amd64 ~ppc ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=>=sys-libs/zlib-1.1.4-r1 ssl? ( gnutls? ( net-libs/gnutls ) !gnutls? ( dev-libs/openssl ) ) pam? ( virtual/pam ) admin? ( dev-lang/python )
+SLOT=0
+SRC_URI=http://www.cherokee-project.com/download/0.8/0.8.1/cherokee-0.8.1.tar.gz

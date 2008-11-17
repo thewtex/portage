@@ -1,0 +1,11 @@
+DEPEND=|| ( kde-base/noatun >=kde-base/kdemultimedia-3.0 ) =kde-base/kdelibs-3.5* =x11-libs/qt-3* =sys-devel/automake-1.9* >=sys-devel/autoconf-2.61 sys-devel/libtool sys-devel/make dev-util/pkgconfig dev-lang/perl x11-libs/libXt x11-proto/xf86vidmodeproto xinerama? ( x11-proto/xineramaproto ) kde-base/arts
+DESCRIPTION=Winamp/XMMS like Playlist for Noatun 2
+EAPI=0
+HOMEPAGE=http://metz.gehn.net/
+INHERITED=toolchain-funcs qt3 portability flag-o-matic kde versionator multilib base kde-functions libtool autotools eutils
+IUSE=debug elibc_FreeBSD xinerama
+KEYWORDS=x86 ~ppc amd64
+LICENSE=Artistic-2
+RDEPEND=|| ( kde-base/noatun >=kde-base/kdemultimedia-3.0 ) =kde-base/kdelibs-3.5* =x11-libs/qt-3* xinerama? ( x11-libs/libXinerama ) kde-base/arts
+SLOT=0
+SRC_URI=http://metz.gehn.net/files/CurrentSources/flexplaylist-0.4.8.tar.bz2

@@ -1,0 +1,11 @@
+DEPEND=sys-devel/bison sys-devel/flex dev-libs/libxml2 dev-util/pkgconfig selinux? ( sys-libs/libselinux ) X? ( dev-lang/tk >=gnome-base/libglade-2.0 )
+DESCRIPTION=SELinux policy tools
+EAPI=0
+HOMEPAGE=http://www.tresys.com/selinux/selinux_policy_tools.shtml
+INHERITED=multilib toolchain-funcs eutils portability
+IUSE=X debug selinux
+KEYWORDS=amd64 ppc x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/libxml2 selinux? ( sys-libs/libselinux ) X? ( dev-lang/tk >=dev-tcltk/bwidget-1.4.1 >=gnome-base/libglade-2.0 )
+SLOT=0
+SRC_URI=http://www.tresys.com/files/setools/setools-2.4.tar.bz2

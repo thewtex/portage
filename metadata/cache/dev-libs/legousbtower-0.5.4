@@ -1,0 +1,11 @@
+DEPEND=virtual/libc kernel_linux? ( virtual/linux-sources ) kernel_linux? ( virtual/modutils ) sys-apps/sed
+DESCRIPTION=The lego mindstorms usb tower headers and/or modules
+EAPI=0
+HOMEPAGE=http://legousb.sourceforge.net/
+INHERITED=toolchain-funcs portability versionator multilib linux-info linux-mod eutils
+IUSE=kernel_linux
+KEYWORDS=~x86 ~amd64
+LICENSE=MPL-1.0
+RDEPEND=virtual/libc kernel_linux? ( virtual/modutils )
+SLOT=0
+SRC_URI=mirror://sourceforge/legousb/legousbtower-0.5.4.tar.gz

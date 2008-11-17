@@ -1,0 +1,14 @@
+DEPEND=pam? ( virtual/pam ) ssl? ( net-libs/gnutls ) slp? ( >=net-libs/openslp-1.0.4 ) ldap? ( net-nds/openldap ) dbus? ( sys-apps/dbus ) png? ( >=media-libs/libpng-1.2.1 ) tiff? ( >=media-libs/tiff-3.5.5 ) jpeg? ( >=media-libs/jpeg-6b ) php? ( dev-lang/php ) app-text/libpaper !<net-print/foomatic-filters-ppds-20070501 !<net-print/hplip-1.7.4a-r1 nls? ( sys-devel/gettext ) =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=The Common Unix Printing System
+EAPI=0
+HOMEPAGE=http://www.cups.org/
+INHERITED=toolchain-funcs portability flag-o-matic multilib libtool autotools pam eutils
+IUSE=ldap ssl slp pam php samba nls dbus tiff png ppds jpeg X
+KEYWORDS=~arm ~m68k ~s390 ~sh
+LICENSE=GPL-2
+PDEPEND=ppds? ( || ( ( net-print/foomatic-filters-ppds net-print/foomatic-db-ppds ) net-print/foomatic-filters-ppds net-print/foomatic-db-ppds net-print/hplip net-print/gutenprint net-print/foo2zjs net-print/cups-pdf ) ) samba? ( >=net-fs/samba-3.0.8 ) virtual/ghostscript
+PROVIDE=virtual/lpr
+RDEPEND=pam? ( virtual/pam ) ssl? ( net-libs/gnutls ) slp? ( >=net-libs/openslp-1.0.4 ) ldap? ( net-nds/openldap ) dbus? ( sys-apps/dbus ) png? ( >=media-libs/libpng-1.2.1 ) tiff? ( >=media-libs/tiff-3.5.5 ) jpeg? ( >=media-libs/jpeg-6b ) php? ( dev-lang/php ) app-text/libpaper nls? ( virtual/libintl ) !virtual/lpr >=app-text/poppler-0.4.3-r1 X? ( x11-misc/xdg-utils )
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://sourceforge/cups/cups-1.2.12-source.tar.bz2

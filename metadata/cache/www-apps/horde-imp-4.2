@@ -1,0 +1,11 @@
+DEPEND=>=app-admin/webapp-config-1.50.15
+DESCRIPTION=Horde IMP provides webmail access to IMAP/POP3 mailboxes
+EAPI=0
+HOMEPAGE=http://www.horde.org/imp
+INHERITED=horde toolchain-funcs portability multilib webapp eutils
+IUSE=crypt vhosts vhosts
+KEYWORDS=~alpha ~amd64 ~hppa ~ppc ~sparc ~x86
+LICENSE=LGPL-2
+RDEPEND=|| ( >=www-apps/horde-3 >=www-apps/horde-groupware-1 ) crypt? ( app-crypt/gnupg ) >=app-admin/webapp-config-1.50.15
+SLOT=4.2
+SRC_URI=http://ftp.horde.org/pub/imp/imp-h3-4.2.tar.gz

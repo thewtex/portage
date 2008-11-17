@@ -1,0 +1,11 @@
+DEPEND=X? ( x11-proto/xproto x11-libs/Xaw3d ) >=sys-apps/sed-4 python? ( >=dev-lang/python-2.3 )
+DESCRIPTION=Stuttgart Neural Network Simulator
+EAPI=0
+HOMEPAGE=http://www-ra.informatik.uni-tuebingen.de/SNNS/
+INHERITED=toolchain-funcs portability python multilib alternatives eutils
+IUSE=X doc python
+KEYWORDS=~amd64 ppc x86
+LICENSE=SNNS-4.2
+RDEPEND=X? ( x11-proto/xproto x11-libs/Xaw3d ) >=sys-apps/sed-4 python? ( >=dev-lang/python-2.3 )
+SLOT=0
+SRC_URI=http://www-ra.informatik.uni-tuebingen.de/downloads/SNNS/SNNSv4.2.tar.gz http://download.berlios.de/snns-dev/snns-4.2-20040227.patch.gz doc? ( http://www-ra.informatik.uni-tuebingen.de/downloads/SNNS/SNNSv4.2.Manual.pdf ) python? ( http://download.berlios.de/snns-dev/PySNNS-20040605.tar.gz http://download.berlios.de/snns-dev/PythonFunctionSupport-20050210.patch.gz )

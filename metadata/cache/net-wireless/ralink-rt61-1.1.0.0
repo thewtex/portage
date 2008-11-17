@@ -1,0 +1,11 @@
+DEPEND=kernel_linux? ( virtual/linux-sources ) kernel_linux? ( virtual/modutils ) sys-apps/sed
+DESCRIPTION=Driver for the RaLink RT61 wireless chipset
+EAPI=0
+HOMEPAGE=http://www.ralinktech.com/
+INHERITED=toolchain-funcs portability versionator multilib linux-info linux-mod eutils
+IUSE=kernel_linux
+KEYWORDS=-* amd64 x86
+LICENSE=GPL-2
+RDEPEND=net-wireless/wireless-tools !net-wireless/rt61 kernel_linux? ( virtual/modutils )
+SLOT=0
+SRC_URI=http://www.ralinktech.com/drivers/Linux/RT61_Linux_STA_Drv1.1.0.0.tar.gz

@@ -1,0 +1,11 @@
+DEPEND=media-libs/libsdl >=sys-libs/zlib-1.2.3-r1 amd64? ( >=app-emulation/emul-linux-x86-sdl-10.1 ) ao? ( media-libs/libao ) opengl? ( virtual/opengl ) png? ( media-libs/libpng ) dev-lang/nasm amd64? ( >=sys-apps/portage-2.1 ) =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=SNES (Super Nintendo) emulator that uses x86 assembly
+EAPI=0
+HOMEPAGE=http://www.zsnes.com/ http://ipherswipsite.com/zsnes/
+INHERITED=toolchain-funcs portability flag-o-matic multilib libtool games autotools eutils
+IUSE=ao custom-cflags opengl png
+KEYWORDS=-* ~amd64 ~x86 ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=media-libs/libsdl >=sys-libs/zlib-1.2.3-r1 amd64? ( >=app-emulation/emul-linux-x86-sdl-10.1 ) ao? ( media-libs/libao ) opengl? ( virtual/opengl ) png? ( media-libs/libpng )
+SLOT=0
+SRC_URI=mirror://sourceforge/zsnes/zsnes151src.tar.bz2

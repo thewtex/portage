@@ -1,0 +1,12 @@
+DEPEND=|| ( x11-libs/qt-gui:4 =x11-libs/qt-4.3* ) =app-crypt/qca-2* spell? ( app-text/aspell ) xscreensaver? ( x11-libs/libXScrnSaver ) doc? ( app-doc/doxygen )
+DESCRIPTION=QT 4.x Jabber Client, with Licq-like interface
+EAPI=1
+HOMEPAGE=http://psi-im.org/
+INHERITED=qt4 toolchain-funcs portability versionator multilib eutils
+IUSE=crypt doc kernel_linux spell ssl xscreensaver
+KEYWORDS=~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=|| ( x11-libs/qt-gui:4 =x11-libs/qt-4.3* ) =app-crypt/qca-2* spell? ( app-text/aspell ) xscreensaver? ( x11-libs/libXScrnSaver ) crypt? ( >=app-crypt/qca-gnupg-2.0.0_beta2 ) ssl? ( >=app-crypt/qca-ossl-2.0.0_beta2 )
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://sourceforge/psi/psi-0.11.tar.bz2

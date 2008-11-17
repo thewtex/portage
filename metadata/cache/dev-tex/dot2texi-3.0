@@ -1,0 +1,11 @@
+DEPEND=app-arch/unzip virtual/latex-base >=sys-apps/texinfo-4.2-r5
+DESCRIPTION=Create graphs within LaTeX using the dot2tex tool
+EAPI=0
+HOMEPAGE=http://www.ctan.org/tex-archive/help/Catalogue/entries/dot2texi.html
+INHERITED=toolchain-funcs portability latex-package multilib base eutils
+IUSE=pgf pstricks examples
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=pstricks? ( || ( dev-texlive/texlive-pstricks app-text/tetex ) ) pgf? ( dev-tex/pgf ) || ( ( dev-texlive/texlive-latexrecommended dev-texlive/texlive-latexextra ) ( app-text/tetex dev-tex/xkeyval ) ) >=dev-tex/dot2tex-2.7.0 virtual/latex-base
+SLOT=0
+SRC_URI=mirror://gentoo/dot2texi-3.0.zip

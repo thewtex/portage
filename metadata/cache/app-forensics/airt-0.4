@@ -1,0 +1,11 @@
+DEPEND=virtual/libc kernel_linux? ( virtual/linux-sources ) kernel_linux? ( virtual/modutils ) sys-apps/sed
+DESCRIPTION=AIRT(Advanced incident response tool) is a set of incident response assistant tools on linux platform.
+EAPI=0
+HOMEPAGE=http://159.226.5.93/projects/airt.htm
+INHERITED=toolchain-funcs portability versionator multilib linux-info linux-mod eutils
+IUSE=kernel_linux
+KEYWORDS=x86 -*
+LICENSE=GPL-2
+RDEPEND=virtual/libc kernel_linux? ( virtual/modutils )
+SLOT=0
+SRC_URI=http://159.226.5.93/projects/airt-0.4.tar.bz2

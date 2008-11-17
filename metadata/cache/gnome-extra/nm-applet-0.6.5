@@ -1,0 +1,11 @@
+DEPEND=>=sys-apps/dbus-0.60 >=sys-apps/hal-0.5 sys-apps/iproute2 >=net-misc/dhcdbd-1.4 net-misc/networkmanager >=net-wireless/wireless-tools-28_pre9 >=net-wireless/wpa_supplicant-0.4.8 >=dev-libs/glib-2.10 libnotify? ( >=x11-libs/libnotify-0.4.3 ) >=x11-libs/gtk+-2.10 >=gnome-base/libglade-2 >=gnome-base/gnome-keyring-0.4 >=gnome-base/gnome-panel-2 >=gnome-base/gconf-2 >=gnome-base/libgnomeui-2 dev-util/pkgconfig >=dev-util/intltool-0.35 >=sys-apps/sed-4
+DESCRIPTION=Gnome applet for NetworkManager.
+EAPI=0
+HOMEPAGE=http://www.gnome.org/projects/NetworkManager/
+INHERITED=toolchain-funcs portability multilib gnome2-utils gnome2 gnome.org fdo-mime libtool eutils
+IUSE=debug doc libnotify debug
+KEYWORDS=amd64 ppc x86
+LICENSE=GPL-2
+RDEPEND=>=sys-apps/dbus-0.60 >=sys-apps/hal-0.5 sys-apps/iproute2 >=net-misc/dhcdbd-1.4 net-misc/networkmanager >=net-wireless/wireless-tools-28_pre9 >=net-wireless/wpa_supplicant-0.4.8 >=dev-libs/glib-2.10 libnotify? ( >=x11-libs/libnotify-0.4.3 ) >=x11-libs/gtk+-2.10 >=gnome-base/libglade-2 >=gnome-base/gnome-keyring-0.4 >=gnome-base/gnome-panel-2 >=gnome-base/gconf-2 >=gnome-base/libgnomeui-2
+SLOT=0
+SRC_URI=http://ftp.gnome.org/pub/gnome/sources/network-manager-applet/0.6/network-manager-applet-0.6.5.tar.gz

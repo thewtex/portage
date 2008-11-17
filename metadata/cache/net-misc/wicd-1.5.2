@@ -1,0 +1,10 @@
+DEPEND=virtual/python
+DESCRIPTION=A lightweight wired and wireless network manager for Linux
+EAPI=0
+HOMEPAGE=http://wicd.sourceforge.net/
+INHERITED=toolchain-funcs distutils portability python multilib alternatives eutils
+KEYWORDS=amd64 ppc x86
+LICENSE=GPL-2
+RDEPEND=dev-python/dbus-python dev-python/pygtk || ( net-misc/dhcp net-misc/dhcpcd net-misc/pump ) net-wireless/wireless-tools net-wireless/wpa_supplicant || ( sys-apps/ethtool sys-apps/net-tools )
+SLOT=0
+SRC_URI=mirror://sourceforge/wicd/wicd-1.5.2.tar.gz

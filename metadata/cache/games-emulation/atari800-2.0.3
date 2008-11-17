@@ -1,0 +1,11 @@
+DEPEND=sdl? ( >=media-libs/libsdl-1.2.0 ) !sdl? ( x11-libs/libX11 ) !sdl? ( x11-libs/libXt x11-libs/libX11 x11-proto/xextproto x11-proto/xproto ) app-arch/unzip
+DESCRIPTION=Atari 800 emulator
+EAPI=0
+HOMEPAGE=http://atari800.sourceforge.net/
+INHERITED=eutils toolchain-funcs games multilib portability
+IUSE=sdl
+KEYWORDS=alpha ~amd64 ppc sparc x86
+LICENSE=GPL-2
+RDEPEND=sdl? ( >=media-libs/libsdl-1.2.0 ) !sdl? ( x11-libs/libX11 )
+SLOT=0
+SRC_URI=mirror://sourceforge/atari800/atari800-2.0.3.tar.gz mirror://sourceforge/atari800/xf25.zip

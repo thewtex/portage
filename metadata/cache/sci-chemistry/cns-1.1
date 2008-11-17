@@ -1,0 +1,12 @@
+DEPEND=app-shells/tcsh =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=Crystallography and NMR System
+EAPI=0
+HOMEPAGE=http://cns.csb.yale.edu/
+INHERITED=toolchain-funcs portability multilib fortran libtool autotools eutils
+IUSE=test debug
+KEYWORDS=ppc x86
+LICENSE=cns
+RDEPEND=app-shells/tcsh
+RESTRICT=fetch
+SLOT=0
+SRC_URI=cns_solve_1.1_basic_inputs.tar.gz cns_solve_1.1_data.tar.gz test? ( cns_solve_1.1_test.tar.gz )

@@ -1,0 +1,12 @@
+DEPEND=>=media-libs/freetype-2 media-libs/fontconfig >=x11-libs/pango-1.12.3 >=dev-scheme/guile-1.8.1 >=dev-lang/python-2.4 || ( >=app-text/ghostscript-gnu-8.15 >=app-text/ghostscript-gpl-8.15 >=app-text/ghostscript-esp-8.15 ) emacs? ( virtual/emacs ) >=media-gfx/fontforge-20070501 >=app-text/mftrace-1.2.9 >=sys-apps/texinfo-4.11 sys-devel/make sys-devel/gettext sys-devel/flex dev-lang/perl >=sys-devel/bison-2.0
+DESCRIPTION=GNU Music Typesetter
+EAPI=0
+HOMEPAGE=http://lilypond.org/
+INHERITED=toolchain-funcs elisp-common portability versionator multilib eutils
+IUSE=debug emacs profile
+KEYWORDS=~alpha ~amd64 ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=>=media-libs/freetype-2 media-libs/fontconfig >=x11-libs/pango-1.12.3 >=dev-scheme/guile-1.8.1 >=dev-lang/python-2.4 || ( >=app-text/ghostscript-gnu-8.15 >=app-text/ghostscript-gpl-8.15 >=app-text/ghostscript-esp-8.15 ) emacs? ( virtual/emacs )
+RESTRICT=test
+SLOT=0
+SRC_URI=http://download.linuxaudio.org/lilypond/sources/v2.11/lilypond-2.11.56.tar.gz

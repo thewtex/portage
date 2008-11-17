@@ -1,0 +1,11 @@
+DEPEND=acpi? ( sys-power/acpid ) apm? ( sys-apps/apmd ) >=sys-apps/sed-4 kernel_linux? ( virtual/linux-sources )
+DESCRIPTION=Linux kernel laptop_mode user-space utilities
+EAPI=0
+HOMEPAGE=http://www.samwel.tk/laptop_mode/
+INHERITED=fixheadtails toolchain-funcs versionator multilib linux-info
+IUSE=acpi apm
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=acpi? ( sys-power/acpid ) apm? ( sys-apps/apmd )
+SLOT=0
+SRC_URI=http://www.samwel.tk/laptop_mode/tools/downloads/laptop-mode-tools_1.34.tar.gz

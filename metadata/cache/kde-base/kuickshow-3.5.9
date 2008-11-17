@@ -1,0 +1,11 @@
+DEPEND=media-libs/imlib =sys-devel/automake-1.9* >=sys-devel/autoconf-2.61 sys-devel/libtool sys-devel/make dev-util/pkgconfig dev-lang/perl x11-libs/libXt x11-proto/xf86vidmodeproto xinerama? ( x11-proto/xineramaproto ) arts? ( kde-base/arts ) ~kde-base/kdelibs-3.5.9 =x11-libs/qt-3* !=kde-base/kdegraphics-3.5*
+DESCRIPTION=KDE: A fast and versatile image viewer
+EAPI=1
+HOMEPAGE=http://www.kde.org/
+INHERITED=toolchain-funcs qt3 portability flag-o-matic kde versionator multilib base kde-functions kde-meta autotools libtool eutils
+IUSE=debug elibc_FreeBSD kdeenablefinal arts xinerama
+KEYWORDS=alpha amd64 hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=media-libs/imlib xinerama? ( x11-libs/libXinerama ) arts? ( kde-base/arts ) ~kde-base/kdelibs-3.5.9 =x11-libs/qt-3* !=kde-base/kdegraphics-3.5*
+SLOT=3.5
+SRC_URI=mirror://kde/stable/3.5.9/src/kdegraphics-3.5.9.tar.bz2

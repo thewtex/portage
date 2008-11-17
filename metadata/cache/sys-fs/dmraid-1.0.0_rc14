@@ -1,0 +1,11 @@
+DEPEND=sys-fs/device-mapper selinux? ( sys-libs/libselinux sys-libs/libsepol ) kernel_linux? ( virtual/linux-sources )
+DESCRIPTION=Device-mapper RAID tool and library
+EAPI=0
+HOMEPAGE=http://people.redhat.com/~heinzm/sw/dmraid/
+INHERITED=toolchain-funcs portability flag-o-matic versionator multilib linux-info eutils
+IUSE=static selinux
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=sys-fs/device-mapper selinux? ( sys-libs/libselinux sys-libs/libsepol )
+SLOT=0
+SRC_URI=http://people.redhat.com/~heinzm/sw/dmraid/src/dmraid-1.0.0.rc14.tar.bz2

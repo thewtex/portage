@@ -1,0 +1,11 @@
+DEPEND=X? ( x11-libs/libICE x11-libs/libSM x11-libs/libXaw >=x11-libs/libXft-2.1.12 x11-libs/libXrender media-libs/freetype media-libs/fontconfig cairo? ( x11-libs/cairo ) media-libs/jpeg opengl? ( virtual/opengl ) media-libs/libpng ) !dev-tex/slatex virtual/latex-base >=sys-apps/texinfo-4.2-r5
+DESCRIPTION=DrScheme programming environment. Includes mzscheme.
+EAPI=0
+HOMEPAGE=http://www.plt-scheme.org
+INHERITED=toolchain-funcs portability latex-package multilib base eutils
+IUSE=backtrace cairo cgc llvm opengl profile X
+KEYWORDS=amd64 ppc x86
+LICENSE=LGPL-2.1
+RDEPEND=X? ( x11-libs/libICE x11-libs/libSM x11-libs/libXaw >=x11-libs/libXft-2.1.12 x11-libs/libXrender media-libs/freetype media-libs/fontconfig cairo? ( x11-libs/cairo ) media-libs/jpeg opengl? ( virtual/opengl ) media-libs/libpng ) virtual/latex-base
+SLOT=0
+SRC_URI=http://download.plt-scheme.org/bundles/4.1/plt/plt-4.1-src-unix.tgz http://pre.plt-scheme.org/installers/plt-4.1-src-unix.tgz

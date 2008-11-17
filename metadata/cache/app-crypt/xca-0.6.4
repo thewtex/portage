@@ -1,0 +1,11 @@
+DEPEND=>=dev-libs/openssl-0.9.8 || ( x11-libs/qt-gui:4 =x11-libs/qt-4.3* ) doc? ( app-text/linuxdoc-tools )
+DESCRIPTION=A graphical user interface to OpenSSL, RSA public keys, certificates, signing requests and revokation lists
+EAPI=1
+HOMEPAGE=http://www.hohnstaedt.de/xca.html
+INHERITED=multilib toolchain-funcs eutils portability flag-o-matic
+IUSE=doc
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=BSD
+RDEPEND=>=dev-libs/openssl-0.9.8 || ( x11-libs/qt-gui:4 =x11-libs/qt-4.3* )
+SLOT=0
+SRC_URI=mirror://sourceforge/xca/xca-0.6.4.tar.gz

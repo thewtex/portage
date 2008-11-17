@@ -1,0 +1,11 @@
+DEPEND=virtual/linux-sources !<sys-cluster/drbd-0.7.24-r1 kernel_linux? ( virtual/linux-sources ) kernel_linux? ( virtual/modutils ) sys-apps/sed
+DESCRIPTION=mirror/replicate block-devices across a network-connection
+EAPI=0
+HOMEPAGE=http://www.drbd.org
+INHERITED=toolchain-funcs portability versionator multilib linux-info linux-mod eutils
+IUSE=kernel_linux
+KEYWORDS=amd64 ~ppc x86
+LICENSE=GPL-2
+RDEPEND=kernel_linux? ( virtual/modutils )
+SLOT=0
+SRC_URI=http://oss.linbit.com/drbd/0.7/drbd-0.7.24.tar.gz

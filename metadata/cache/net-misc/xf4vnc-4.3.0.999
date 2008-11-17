@@ -1,0 +1,10 @@
+DESCRIPTION=VNC (remote desktop viewer) derived from tightvnc but cooler :-)
+EAPI=0
+HOMEPAGE=http://xf4vnc.sourceforge.net/
+IUSE=xvnc vncviewer
+KEYWORDS=~x86 -*
+LICENSE=GPL-2
+RDEPEND=vncviewer? ( !net-misc/tightvnc !net-misc/vnc ) xvnc? ( media-libs/freetype media-libs/jpeg !net-misc/tightvnc ) x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXaw x11-libs/libXext x11-libs/libXmu x11-libs/libXpm x11-libs/libXt
+RESTRICT=strip
+SLOT=0
+SRC_URI=x86? ( mirror://sourceforge/xf4vnc/xf4vnc-ix86-linux-4.3.0.999.tar.gz )

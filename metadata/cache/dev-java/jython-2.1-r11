@@ -1,0 +1,11 @@
+DEPEND=>=virtual/jdk-1.4 source? ( app-arch/zip ) =dev-java/jakarta-oro-2.0* readline? ( >=dev-java/libreadline-java-0.8.0 ) >=dev-java/java-config-2.0.33-r1 >=sys-apps/portage-2.1.2.7
+DESCRIPTION=An implementation of Python written in Java
+EAPI=0
+HOMEPAGE=http://www.jython.org
+INHERITED=toolchain-funcs java-pkg-2 portability java-utils-2 versionator multilib base eutils
+IUSE=readline source doc elibc_FreeBSD
+KEYWORDS=amd64 ~ia64 ppc ppc64 x86 ~x86-fbsd
+LICENSE=JPython
+RDEPEND=>=virtual/jre-1.4 =dev-java/jakarta-oro-2.0* readline? ( >=dev-java/libreadline-java-0.8.0 ) >=dev-java/java-config-2.0.33-r1 >=sys-apps/portage-2.1.2.7
+SLOT=0
+SRC_URI=mirror://gentoo/jython-2.1.tar.bz2

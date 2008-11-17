@@ -1,0 +1,11 @@
+DEPEND=virtual/libc dev-util/pkgconfig ssl? ( gnutls? ( >=net-libs/gnutls-1.2.0 ) !gnutls? ( >=dev-libs/openssl-0.9.6 ) ) sasl? ( >=virtual/gsasl-0.2.4 ) nls? ( sys-devel/gettext )
+DESCRIPTION=An SMTP client and SMTP plugin for mail user agents such as Mutt
+EAPI=0
+HOMEPAGE=http://msmtp.sourceforge.net/
+IUSE=ssl gnutls sasl mailwrapper doc nls
+KEYWORDS=~alpha amd64 ~ia64 ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2
+PROVIDE=virtual/mta
+RDEPEND=mailwrapper? ( >=net-mail/mailwrapper-0.2 ) !mailwrapper? ( !virtual/mta )
+SLOT=0
+SRC_URI=mirror://sourceforge/msmtp/msmtp-1.4.5.tar.bz2

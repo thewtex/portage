@@ -1,0 +1,11 @@
+DEPEND=dev-libs/lzo sys-apps/tcp-wrappers media-libs/jpeg sys-libs/zlib dev-libs/openssl =x11-libs/qt-4.3*:4 xinerama? ( x11-libs/libXinerama ) X? ( x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXdamage x11-libs/libXext x11-libs/libXfixes x11-libs/libXrandr x11-libs/libXtst ) =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=Intelligent Teaching And Learning with Computers (iTALC) supports working with computers in school
+EAPI=1
+HOMEPAGE=http://italc.sourceforge.net/
+INHERITED=qt4 toolchain-funcs portability versionator multilib libtool autotools eutils
+IUSE=X v4l crypt xinerama threads fbcon
+KEYWORDS=~amd64 x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/lzo sys-apps/tcp-wrappers media-libs/jpeg sys-libs/zlib dev-libs/openssl =x11-libs/qt-4.3*:4 xinerama? ( x11-libs/libXinerama ) X? ( x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXdamage x11-libs/libXext x11-libs/libXfixes x11-libs/libXrandr x11-libs/libXtst )
+SLOT=0
+SRC_URI=mirror://sourceforge/italc/italc-1.0.2.tar.bz2

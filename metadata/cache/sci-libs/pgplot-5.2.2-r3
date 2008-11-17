@@ -1,0 +1,11 @@
+DEPEND=x11-libs/libX11 x11-libs/libXt media-libs/libpng motif? ( x11-libs/openmotif ) tk? ( dev-lang/tk ) doc? ( virtual/latex-base ) =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=FORTRAN/C device-independent scientific graphic library
+EAPI=0
+HOMEPAGE=http://www.astro.caltech.edu/~tjp/pgplot/
+INHERITED=toolchain-funcs portability multilib fortran libtool autotools eutils
+IUSE=doc motif tk debug
+KEYWORDS=~amd64 ~ia64 ~x86
+LICENSE=free-noncomm
+RDEPEND=x11-libs/libX11 x11-libs/libXt media-libs/libpng motif? ( x11-libs/openmotif ) tk? ( dev-lang/tk )
+SLOT=0
+SRC_URI=ftp://ftp.astro.caltech.edu/pub/pgplot/pgplot522.tar.gz

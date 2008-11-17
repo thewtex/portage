@@ -1,0 +1,11 @@
+DEPEND=>=media-libs/libogg-1.1.0 encode? ( >=media-libs/libvorbis-1.0.1 ) doc? ( app-doc/doxygen ) =sys-devel/automake-1.9* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=The Theora Video Compression Codec
+EAPI=0
+HOMEPAGE=http://www.theora.org/
+INHERITED=toolchain-funcs portability flag-o-matic multilib libtool autotools eutils
+IUSE=encode doc examples
+KEYWORDS=arm sh
+LICENSE=BSD
+RDEPEND=>=media-libs/libogg-1.1.0 encode? ( >=media-libs/libvorbis-1.0.1 )
+SLOT=0
+SRC_URI=http://downloads.xiph.org/releases/theora/libtheora-1.0alpha6.tar.bz2

@@ -1,0 +1,10 @@
+DESCRIPTION=Space-based MMORPG
+EAPI=0
+HOMEPAGE=http://www.vendetta-online.com/
+INHERITED=eutils toolchain-funcs games multilib portability
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=guild
+RDEPEND=virtual/opengl >=x11-libs/gtk+-2
+RESTRICT=mirror strip
+SLOT=0
+SRC_URI=amd64? ( http://mirror.cle.vendetta-online.com/vendetta-linux-amd64-installer.sh http://mirror.milw.vendetta-online.com/vendetta-linux-amd64-installer.sh ) x86? ( http://mirror.cle.vendetta-online.com/vendetta-linux-ia32-installer.sh http://mirror.milw.vendetta-online.com/vendetta-linux-ia32-installer.sh )

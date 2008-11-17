@@ -1,0 +1,12 @@
+DEPEND=python? ( dev-lang/python !dev-python/pysyck ) virtual/python
+DESCRIPTION=Syck is an extension for reading and writing YAML swiftly in popular scripting languages.
+EAPI=0
+HOMEPAGE=http://whytheluckystiff.net/syck/
+INHERITED=toolchain-funcs distutils portability flag-o-matic python multilib alternatives eutils
+IUSE=php python
+KEYWORDS=amd64 ppc ppc64 x86
+LICENSE=BSD
+PDEPEND=php? ( dev-php5/pecl-syck !=dev-libs/syck-0.55-r1 )
+RDEPEND=python? ( dev-lang/python !dev-python/pysyck )
+SLOT=0
+SRC_URI=http://rubyforge.org/frs/download.php/4492/syck-0.55.tar.gz

@@ -1,0 +1,11 @@
+DESCRIPTION=quilt patch manager
+EAPI=0
+HOMEPAGE=http://savannah.nongnu.org/projects/quilt
+INHERITED=eutils multilib toolchain-funcs portability bash-completion
+IUSE=graphviz bash-completion
+KEYWORDS=amd64 ~ppc x86
+LICENSE=GPL-2
+RDEPEND=sys-apps/ed dev-util/diffstat graphviz? ( media-gfx/graphviz ) || ( >=sys-apps/coreutils-6.10-r1 sys-apps/mktemp ) bash-completion? ( || ( app-admin/eselect app-shells/bash-completion-config ) )
+RESTRICT=test
+SLOT=0
+SRC_URI=http://savannah.nongnu.org/download/quilt/quilt-0.42.tar.gz

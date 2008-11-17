@@ -1,0 +1,11 @@
+DEPEND=dev-util/pkgconfig gtk? ( >=x11-libs/gtk+-2.0 ) =sys-devel/automake-1.9* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=em8300 (RealMagic Hollywood+/Creative DXR3) video decoder card libraries
+EAPI=0
+HOMEPAGE=http://dxr3.sourceforge.net
+INHERITED=toolchain-funcs portability flag-o-matic multilib libtool autotools eutils
+IUSE=gtk
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=~media-video/em8300-modules-0.16.4 gtk? ( >=x11-libs/gtk+-2.0 )
+SLOT=0
+SRC_URI=mirror://sourceforge/dxr3/em8300-0.16.4.tar.gz

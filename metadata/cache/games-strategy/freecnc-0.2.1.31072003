@@ -1,0 +1,11 @@
+DEPEND=media-libs/libsdl media-libs/sdl-net app-arch/unzip
+DESCRIPTION=SDL-rewrite of the classical real time strategy hit Command & Conquer
+EAPI=0
+HOMEPAGE=http://www.freecnc.org/
+INHERITED=toolchain-funcs portability flag-o-matic multilib games eutils
+IUSE=nocd
+KEYWORDS=~ppc x86
+LICENSE=GPL-2
+RDEPEND=media-libs/libsdl media-libs/sdl-net
+SLOT=0
+SRC_URI=mirror://gentoo/freecnc++-0.2.1.31072003-src.tar.bz2 nocd? ( ftp://ftp.westwood.com/pub/cc1/previews/demo/cc1demo1.zip ) nocd? ( ftp://ftp.westwood.com/pub/cc1/previews/demo/cc1demo2.zip )

@@ -1,0 +1,11 @@
+DEPEND=kernel_linux? ( virtual/linux-sources ) kernel_linux? ( virtual/modutils ) sys-apps/sed
+DESCRIPTION=locate implementation that is always up-to-date
+EAPI=0
+HOMEPAGE=http://rlocate.sourceforge.net/
+INHERITED=toolchain-funcs portability versionator multilib linux-info linux-mod eutils
+IUSE=kernel_linux
+KEYWORDS=~amd64 ~hppa ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=!sys-apps/slocate kernel_linux? ( virtual/modutils )
+SLOT=0
+SRC_URI=mirror://sourceforge/rlocate/rlocate-0.5.6.tar.gz

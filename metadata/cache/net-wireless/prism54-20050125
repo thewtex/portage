@@ -1,0 +1,11 @@
+DEPEND=kernel_linux? ( virtual/linux-sources ) kernel_linux? ( virtual/modutils ) sys-apps/sed
+DESCRIPTION=Driver for Intersil Prism GT / Prism Duette wireless chipsets
+EAPI=0
+HOMEPAGE=http://prism54.org/
+INHERITED=toolchain-funcs portability versionator multilib linux-info linux-mod eutils
+IUSE=pcmcia kernel_linux
+KEYWORDS=~x86
+LICENSE=GPL-2
+RDEPEND=net-wireless/prism54-firmware net-wireless/wireless-tools kernel_linux? ( virtual/modutils )
+SLOT=0
+SRC_URI=http://prism54.org/pub/linux/snapshot/tars/2005-01/prism54-svn=20050125.tar.bz2

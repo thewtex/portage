@@ -1,0 +1,11 @@
+DEPEND=>=net-libs/gnutls-2.2.1 =www-servers/apache-2* ssl? ( dev-libs/openssl )
+DESCRIPTION=mod_gnutls uses GnuTLS to provide SSL/TLS encryption for Apache2, similarly to mod_ssl
+EAPI=0
+HOMEPAGE=http://www.outoforder.cc/projects/apache/mod_gnutls/
+INHERITED=multilib apache-module depend.apache toolchain-funcs ssl-cert
+IUSE=ssl
+KEYWORDS=~amd64 ~sparc ~x86
+LICENSE=Apache-2.0
+RDEPEND=>=net-libs/gnutls-2.2.1 =www-servers/apache-2*
+SLOT=0
+SRC_URI=http://www.outoforder.cc/downloads/mod_gnutls/mod_gnutls-0.5.1.tar.bz2

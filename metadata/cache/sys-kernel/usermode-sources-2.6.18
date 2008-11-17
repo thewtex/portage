@@ -1,0 +1,13 @@
+DEPEND=!build? ( sys-apps/sed >=sys-devel/binutils-2.11.90.0.31 )
+DESCRIPTION=Full sources for the User Mode Linux kernel
+EAPI=0
+HOMEPAGE=http://www.kernel.org/ http://user-mode-linux.sourceforge.net
+INHERITED=toolchain-funcs portability versionator multilib kernel-2 eutils
+IUSE=symlink build
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+PROVIDE=virtual/linux-sources virtual/alsa
+RDEPEND=!build? ( >=sys-libs/ncurses-5.2 sys-devel/make ) virtual/dev-manager
+RESTRICT=binchecks strip
+SLOT=2.6.18
+SRC_URI=mirror://kernel/linux/kernel/v2.6/linux-2.6.18.tar.bz2 mirror://gentoo/genpatches-2.6.18-1.base.tar.bz2 http://www.user-mode-linux.org/~blaisorblade/patches/guest/uml-2.6.18-bb1/uml-2.6.18-bb1.patch.bz2

@@ -1,0 +1,12 @@
+DEPEND==x11-libs/gtk+-1.2* app-arch/unzip
+DESCRIPTION=ePSXe PlayStation Emulator
+EAPI=0
+HOMEPAGE=http://www.epsxe.com/
+INHERITED=eutils toolchain-funcs games multilib portability
+IUSE=opengl
+KEYWORDS=-* x86
+LICENSE=freedist
+RDEPEND==x11-libs/gtk+-1.2* x11-misc/imake games-emulation/psemu-peopsspu opengl? ( games-emulation/psemu-gpupetemesagl ) !opengl? ( games-emulation/psemu-peopssoftgpu )
+RESTRICT=strip
+SLOT=0
+SRC_URI=http://www.epsxe.com/files/epsxe160lin.zip

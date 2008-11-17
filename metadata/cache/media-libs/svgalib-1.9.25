@@ -1,0 +1,11 @@
+DEPEND=kernel_linux? ( virtual/linux-sources ) kernel_linux? ( virtual/modutils ) sys-apps/sed
+DESCRIPTION=A library for running svga graphics on the console
+EAPI=0
+HOMEPAGE=http://www.svgalib.org/
+INHERITED=toolchain-funcs portability flag-o-matic versionator multilib linux-info linux-mod eutils
+IUSE=build no-helper kernel_linux
+KEYWORDS=-* x86
+LICENSE=BSD
+RDEPEND=kernel_linux? ( virtual/modutils )
+SLOT=0
+SRC_URI=http://www.arava.co.il/matan/svgalib/svgalib-1.9.25.tar.gz

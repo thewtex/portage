@@ -1,0 +1,11 @@
+DEPEND=!net-dialup/cistronradius !net-dialup/gnuradius >=sys-libs/db-3.2 sys-libs/gdbm dev-lang/perl snmp? ( net-analyzer/net-snmp ) mysql? ( virtual/mysql ) postgres? ( virtual/postgresql-server ) !bindist? ( firebird? ( dev-db/firebird ) ) pam? ( sys-libs/pam ) ssl? ( dev-libs/openssl ) ldap? ( net-nds/openldap ) kerberos? ( virtual/krb5 ) frxp? ( dev-lang/python ) sys-devel/autoconf
+DESCRIPTION=Highly configurable free RADIUS server
+EAPI=0
+HOMEPAGE=http://www.freeradius.org/
+INHERITED=multilib toolchain-funcs eutils portability pam
+IUSE=bindist debug edirectory firebird frascend frxp kerberos ldap mysql pam postgres snmp ssl threads udpfromto
+KEYWORDS=~amd64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=!net-dialup/cistronradius !net-dialup/gnuradius >=sys-libs/db-3.2 sys-libs/gdbm dev-lang/perl snmp? ( net-analyzer/net-snmp ) mysql? ( virtual/mysql ) postgres? ( virtual/postgresql-server ) !bindist? ( firebird? ( dev-db/firebird ) ) pam? ( sys-libs/pam ) ssl? ( dev-libs/openssl ) ldap? ( net-nds/openldap ) kerberos? ( virtual/krb5 ) frxp? ( dev-lang/python )
+SLOT=0
+SRC_URI=ftp://ftp.freeradius.org/pub/radius/freeradius-server-2.1.1.tar.gz

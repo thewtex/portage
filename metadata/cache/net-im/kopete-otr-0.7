@@ -1,0 +1,11 @@
+DEPEND=>=net-libs/libotr-3.1.0 || ( >=kde-base/kopete-3.5.5-r2:3.5 >=kde-base/kdenetwork-3.5.5-r2:3.5 ) =kde-base/kdelibs-3.5* =x11-libs/qt-3* =sys-devel/automake-1.9* >=sys-devel/autoconf-2.61 sys-devel/libtool sys-devel/make dev-util/pkgconfig dev-lang/perl x11-libs/libXt x11-proto/xf86vidmodeproto xinerama? ( x11-proto/xineramaproto )
+DESCRIPTION=This plugin enables Off-The-Record encryption for the KDE instant messenger Kopete.
+EAPI=1
+HOMEPAGE=http://kopete-otr.follefuder.org/
+INHERITED=toolchain-funcs qt3 portability flag-o-matic kde versionator multilib base kde-functions libtool autotools eutils
+IUSE=debug elibc_FreeBSD xinerama
+KEYWORDS=~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=>=net-libs/libotr-3.1.0 || ( >=kde-base/kopete-3.5.5-r2:3.5 >=kde-base/kdenetwork-3.5.5-r2:3.5 ) =kde-base/kdelibs-3.5* =x11-libs/qt-3* xinerama? ( x11-libs/libXinerama )
+SLOT=0
+SRC_URI=http://kopete-otr.follefuder.org/kopete-otr-0.7.tar.bz2

@@ -1,0 +1,10 @@
+DEPEND=presto? ( dev-embedded/libftd2xx ) ft2232? ( || ( ftdi? ( dev-embedded/libftdi ) dev-embedded/libftd2xx ) ) dev-util/subversion net-misc/rsync =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=OpenOCD - Open On-Chip Debugger
+EAPI=0
+HOMEPAGE=http://openocd.berlios.de/web/
+INHERITED=toolchain-funcs portability multilib subversion libtool autotools eutils
+IUSE=ft2232 ftdi parport presto
+LICENSE=GPL-2
+RDEPEND=presto? ( dev-embedded/libftd2xx ) ft2232? ( || ( ftdi? ( dev-embedded/libftdi ) dev-embedded/libftd2xx ) )
+RESTRICT=strip
+SLOT=0

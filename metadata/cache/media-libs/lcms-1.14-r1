@@ -1,0 +1,11 @@
+DEPEND=tiff? ( media-libs/tiff ) jpeg? ( media-libs/jpeg ) zlib? ( sys-libs/zlib ) python? ( >=dev-lang/python-1.5.2 ) =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=A lightweight, speed optimized color management engine
+EAPI=0
+HOMEPAGE=http://www.littlecms.com/
+INHERITED=toolchain-funcs portability multilib libtool autotools eutils
+IUSE=tiff jpeg zlib python
+KEYWORDS=alpha amd64 arm hppa ia64 mips ppc ppc64 s390 sh sparc x86 ~x86-fbsd
+LICENSE=LGPL-2.1
+RDEPEND=jpeg? ( media-libs/jpeg ) python? ( >=dev-lang/python-1.5.2 )
+SLOT=0
+SRC_URI=http://www.littlecms.com/lcms-1.14.tar.gz

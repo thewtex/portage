@@ -1,0 +1,11 @@
+DEPEND=bbdb? ( app-emacs/bbdb ) >=virtual/emacs-21
+DESCRIPTION=The VM mail reader for Emacs
+EAPI=0
+HOMEPAGE=http://www.nongnu.org/viewmail/
+INHERITED=toolchain-funcs elisp-common portability elisp versionator multilib eutils
+IUSE=bbdb ssl
+KEYWORDS=~alpha ~amd64 ~ppc ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=bbdb? ( app-emacs/bbdb ) ssl? ( net-misc/stunnel ) >=virtual/emacs-21
+SLOT=0
+SRC_URI=http://download.savannah.nongnu.org/releases/viewmail/vm-8.0.12.tgz

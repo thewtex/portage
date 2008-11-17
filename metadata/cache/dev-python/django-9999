@@ -1,0 +1,10 @@
+DEPEND=dev-python/imaging sqlite? ( || ( ( >=dev-python/pysqlite-2.0.3 <dev-lang/python-2.5 ) >=dev-lang/python-2.5 ) ) test? ( || ( ( >=dev-python/pysqlite-2.0.3 <dev-lang/python-2.5 ) >=dev-lang/python-2.5 ) ) postgres? ( dev-python/psycopg ) mysql? ( >=dev-python/mysql-python-1.2.1_p2 ) doc? ( dev-python/sphinx ) virtual/python dev-util/subversion net-misc/rsync
+DESCRIPTION=high-level python web framework
+EAPI=0
+HOMEPAGE=http://www.djangoproject.com/
+INHERITED=toolchain-funcs distutils portability python multilib versionator alternatives bash-completion subversion eutils
+IUSE=doc examples mysql postgres sqlite test bash-completion
+KEYWORDS=~amd64 ~ia64 ~ppc ~x86
+LICENSE=BSD
+RDEPEND=dev-python/imaging sqlite? ( || ( ( >=dev-python/pysqlite-2.0.3 <dev-lang/python-2.5 ) >=dev-lang/python-2.5 ) ) test? ( || ( ( >=dev-python/pysqlite-2.0.3 <dev-lang/python-2.5 ) >=dev-lang/python-2.5 ) ) postgres? ( dev-python/psycopg ) mysql? ( >=dev-python/mysql-python-1.2.1_p2 ) bash-completion? ( || ( app-admin/eselect app-shells/bash-completion-config ) )
+SLOT=0

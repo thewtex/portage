@@ -1,0 +1,12 @@
+DEPEND=sys-devel/make dev-lang/perl =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=Open source PAM library.
+EAPI=0
+HOMEPAGE=http://www.openpam.org/
+INHERITED=toolchain-funcs portability flag-o-matic multilib libtool autotools eutils
+IUSE=debug vim-syntax
+LICENSE=BSD
+PDEPEND=sys-auth/pambase vim-syntax? ( app-vim/pam-syntax )
+PROVIDE=virtual/pam
+RDEPEND=!virtual/pam
+SLOT=0
+SRC_URI=mirror://sourceforge/openpam/openpam-20050616.tar.gz

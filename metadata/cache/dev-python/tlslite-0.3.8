@@ -1,0 +1,11 @@
+DEPEND=virtual/python virtual/python
+DESCRIPTION=TLS Lite is a free python library that implements SSL 3.0 and TLS 1.0/1.1
+EAPI=0
+HOMEPAGE=http://trevp.net/tlslite/
+INHERITED=toolchain-funcs distutils portability python multilib alternatives eutils
+IUSE=doc gmp
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=virtual/python dev-python/cryptlib_py || ( dev-python/m2crypto dev-python/pycrypto ) gmp? ( dev-python/gmpy )
+SLOT=0
+SRC_URI=http://trevp.net/tlslite/tlslite-0.3.8.tar.gz

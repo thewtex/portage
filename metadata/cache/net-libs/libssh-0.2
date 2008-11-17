@@ -1,0 +1,11 @@
+DEPEND=sys-libs/zlib !crypt? ( dev-libs/openssl ) crypt? ( dev-libs/libgcrypt )
+DESCRIPTION=Access a working SSH implementation by means of a library
+EAPI=0
+HOMEPAGE=http://0xbadc0de.be/?part=libssh
+INHERITED=multilib toolchain-funcs eutils portability
+IUSE=crypt examples
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=LGPL-2.1
+RDEPEND=sys-libs/zlib !crypt? ( dev-libs/openssl ) crypt? ( dev-libs/libgcrypt )
+SLOT=0
+SRC_URI=http://www.0xbadc0de.be/libssh/libssh-0.2.tgz

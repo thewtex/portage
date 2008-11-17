@@ -1,0 +1,10 @@
+DEPEND=virtual/libc
+DESCRIPTION=the LAM MPI parallel computing environment
+EAPI=0
+HOMEPAGE=http://www.lam-mpi.org
+IUSE=crypt
+KEYWORDS=x86 amd64 alpha sparc ppc ppc64
+LICENSE=as-is
+RDEPEND=virtual/libc crypt? ( net-misc/openssh ) !crypt? ( net-misc/netkit-rsh ) !sys-cluster/mpich !sys-cluster/openmpi !sys-cluster/mpich2
+SLOT=6
+SRC_URI=http://www.lam-mpi.org/download/files/lam-7.0.4.tar.bz2

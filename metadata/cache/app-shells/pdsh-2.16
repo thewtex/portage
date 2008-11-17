@@ -1,0 +1,11 @@
+DEPEND=crypt? ( net-misc/openssh ) rsh? ( net-misc/netkit-rsh ) readline? ( sys-libs/readline )
+DESCRIPTION=A high-performance, parallel remote shell utility.
+EAPI=0
+HOMEPAGE=https://computing.llnl.gov/linux/pdsh.html
+INHERITED=multilib toolchain-funcs eutils portability
+IUSE=crypt readline rsh
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=crypt? ( net-misc/openssh ) rsh? ( net-misc/netkit-rsh ) readline? ( sys-libs/readline )
+SLOT=0
+SRC_URI=mirror://sourceforge/pdsh/pdsh-2.16.tar.bz2

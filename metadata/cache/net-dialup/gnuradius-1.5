@@ -1,0 +1,12 @@
+DEPEND=!net-dialup/freeradius !net-dialup/cistronradius guile? ( >=dev-scheme/guile-1.4 ) mysql? ( virtual/mysql ) postgres? ( virtual/postgresql-server ) odbc? ( || ( dev-db/unixODBC dev-db/libiodbc ) ) readline? ( sys-libs/readline ) dbm? ( sys-libs/gdbm ) snmp? ( net-analyzer/net-snmp ) pam? ( virtual/pam )
+DESCRIPTION=GNU radius authentication server
+EAPI=0
+HOMEPAGE=http://www.gnu.org/software/radius/radius.html
+INHERITED=toolchain-funcs portability multilib libtool pam eutils
+IUSE=guile mysql postgres odbc dbm nls snmp pam static debug readline
+KEYWORDS=~amd64 x86
+LICENSE=GPL-3
+RDEPEND=!net-dialup/freeradius !net-dialup/cistronradius guile? ( >=dev-scheme/guile-1.4 ) mysql? ( virtual/mysql ) postgres? ( virtual/postgresql-server ) odbc? ( || ( dev-db/unixODBC dev-db/libiodbc ) ) readline? ( sys-libs/readline ) dbm? ( sys-libs/gdbm ) snmp? ( net-analyzer/net-snmp ) pam? ( virtual/pam )
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://gnu/radius/radius-1.5.tar.gz

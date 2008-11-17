@@ -1,0 +1,11 @@
+DEPEND=virtual/libc sci-mathematics/octave || ( kde-base/konsole:3.5 kde-base/kdebase:3.5 ) =kde-base/kdelibs-3.5* =x11-libs/qt-3* =sys-devel/automake-1.9* >=sys-devel/autoconf-2.61 sys-devel/libtool sys-devel/make dev-util/pkgconfig dev-lang/perl x11-libs/libXt x11-proto/xf86vidmodeproto xinerama? ( x11-proto/xineramaproto ) arts? ( kde-base/arts )
+DESCRIPTION=A KDE GUI for Octave numerical computing system
+EAPI=1
+HOMEPAGE=http://athlone.ath.cx/~matti/kde/koctave/
+INHERITED=toolchain-funcs qt3 portability flag-o-matic kde versionator multilib base kde-functions libtool autotools eutils
+IUSE=arts debug elibc_FreeBSD arts xinerama
+KEYWORDS=amd64 ~ppc ~sparc x86
+LICENSE=GPL-2
+RDEPEND=virtual/libc sci-mathematics/octave || ( kde-base/konsole:3.5 kde-base/kdebase:3.5 ) =kde-base/kdelibs-3.5* =x11-libs/qt-3* xinerama? ( x11-libs/libXinerama ) arts? ( kde-base/arts )
+SLOT=0
+SRC_URI=http://athlone.ath.cx/~matti/kde/koctave/koctave3-0.65.tar.bz2 mirror://gentoo/koctave-docs-20050605.tar.bz2

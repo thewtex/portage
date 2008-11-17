@@ -1,0 +1,11 @@
+DEPEND=ldap? ( net-nds/openldap ) =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=NFSv4 ID <-> name mapping library
+EAPI=0
+HOMEPAGE=http://www.citi.umich.edu/projects/nfsv4/linux/
+INHERITED=toolchain-funcs portability multilib libtool autotools eutils
+IUSE=ldap
+KEYWORDS=alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86
+LICENSE=BSD
+RDEPEND=ldap? ( net-nds/openldap ) !net-fs/idmapd
+SLOT=0
+SRC_URI=http://www.citi.umich.edu/projects/nfsv4/linux/libnfsidmap/libnfsidmap-0.19.tar.gz

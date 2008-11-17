@@ -1,0 +1,11 @@
+DEPEND=alsa? ( media-libs/alsa-lib ) amd64? ( app-emulation/emul-linux-x86-soundlibs ) kernel_linux? ( virtual/linux-sources ) kernel_linux? ( virtual/modutils ) sys-apps/sed
+DESCRIPTION=Driver for Smart Link modem
+EAPI=0
+HOMEPAGE=http://linmodems.technion.ac.il/packages/smartlink/
+INHERITED=toolchain-funcs portability versionator multilib linux-info linux-mod eutils
+IUSE=alsa usb kernel_linux
+KEYWORDS=-* ~amd64 x86
+LICENSE=Smart-Link
+RDEPEND=alsa? ( media-libs/alsa-lib ) amd64? ( app-emulation/emul-linux-x86-soundlibs ) virtual/logger kernel_linux? ( virtual/modutils )
+SLOT=0
+SRC_URI=http://linmodems.technion.ac.il/packages/smartlink/slmodem-2.9.11-20080417.tar.gz http://linmodems.technion.ac.il/packages/smartlink/ungrab-winmodem-2.9.11-20080126.tar.gz

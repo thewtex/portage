@@ -1,0 +1,11 @@
+DEPEND=ssl? ( >=dev-libs/openssl-0.9.7d ) perl? ( dev-lang/perl ) =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=An advanced IRC Bouncer
+EAPI=0
+HOMEPAGE=http://znc.sourceforge.net
+INHERITED=toolchain-funcs portability multilib libtool autotools eutils
+IUSE=debug ipv6 nomodules perl ssl
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=ssl? ( >=dev-libs/openssl-0.9.7d ) perl? ( dev-lang/perl )
+SLOT=0
+SRC_URI=mirror://sourceforge/znc/znc-0.058.tar.gz

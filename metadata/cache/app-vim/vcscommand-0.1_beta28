@@ -1,0 +1,11 @@
+DEPEND=|| ( >=app-editors/vim-7.0 >=app-editors/gvim-7.0 )
+DESCRIPTION=vim plugin: CVS/SVN/SVK integration plugin
+EAPI=0
+HOMEPAGE=http://www.vim.org/scripts/script.php?script_id=90
+INHERITED=vim-doc vim-plugin
+IUSE=cvs git subversion svk
+KEYWORDS=~amd64 ~x86
+LICENSE=public-domain
+RDEPEND=cvs? ( dev-util/cvs ) git? ( dev-util/git ) subversion? ( dev-util/subversion ) svk? ( dev-util/svk ) !app-vim/cvscommand !app-vim/calendar || ( >=app-editors/vim-7.0 >=app-editors/gvim-7.0 )
+SLOT=0
+SRC_URI=mirror://gentoo/vcscommand-0.1_beta28.tar.bz2

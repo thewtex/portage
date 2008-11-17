@@ -1,0 +1,11 @@
+DEPEND=idn? ( || ( sys-libs/glibc dev-libs/libiconv ) net-dns/idnkit )
+DESCRIPTION=bind tools: dig, nslookup, host, nsupdate, dnssec-keygen
+EAPI=0
+HOMEPAGE=http://www.isc.org/products/BIND/bind9.html
+INHERITED=multilib toolchain-funcs eutils portability flag-o-matic
+IUSE=idn ipv6
+KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~x86-fbsd
+LICENSE=as-is
+RDEPEND=idn? ( || ( sys-libs/glibc dev-libs/libiconv ) net-dns/idnkit )
+SLOT=0
+SRC_URI=ftp://ftp.isc.org/isc/bind9/9.4.2-P2/bind-9.4.2-P2.tar.gz

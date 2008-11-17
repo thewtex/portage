@@ -1,0 +1,11 @@
+DEPEND=|| ( ( x11-libs/qt-core x11-libs/qt-gui ) =x11-libs/qt-4.3*:4 ) media-libs/alsa-lib[midi] media-libs/libsndfile media-sound/jack-audio-connection-kit media-libs/ladspa-sdk dssi? ( media-libs/dssi ) mad? ( media-libs/libmad ) libsamplerate? ( media-libs/libsamplerate ) osc? ( media-libs/liblo ) rubberband? ( media-libs/rubberband ) vorbis? ( media-libs/libvorbis )
+DESCRIPTION=Qtractor is an Audio/MIDI multi-track sequencer.
+EAPI=2
+HOMEPAGE=http://qtractor.sourceforge.net/
+INHERITED=qt4 toolchain-funcs portability versionator multilib eutils
+IUSE=debug dssi libsamplerate mad osc rubberband vorbis sse
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=|| ( ( x11-libs/qt-core x11-libs/qt-gui ) =x11-libs/qt-4.3*:4 ) media-libs/alsa-lib[midi] media-libs/libsndfile media-sound/jack-audio-connection-kit media-libs/ladspa-sdk dssi? ( media-libs/dssi ) mad? ( media-libs/libmad ) libsamplerate? ( media-libs/libsamplerate ) osc? ( media-libs/liblo ) rubberband? ( media-libs/rubberband ) vorbis? ( media-libs/libvorbis )
+SLOT=0
+SRC_URI=mirror://sourceforge/qtractor/qtractor-0.2.2.tar.gz

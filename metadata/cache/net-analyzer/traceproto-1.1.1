@@ -1,0 +1,10 @@
+DESCRIPTION=A traceroute-like utility that sends packets based on protocol
+EAPI=0
+HOMEPAGE=http://traceproto.sourceforge.net/
+INHERITED=multilib toolchain-funcs eutils portability
+IUSE=debug ncurses
+KEYWORDS=~amd64 ~ppc x86
+LICENSE=GPL-2
+RDEPEND=>=net-libs/libnet-1.1.0 net-libs/libpcap ncurses? ( sys-libs/ncurses ) debug? ( dev-libs/dmalloc )
+SLOT=0
+SRC_URI=mirror://sourceforge/traceproto/traceproto-1.1.1.tar.gz

@@ -1,0 +1,11 @@
+DEPEND=dev-util/intltool >=xfce-base/xfce4-panel-4.4.0 >=sys-apps/sed-4 dev-util/pkgconfig
+DESCRIPTION=acpi, lm_sensors and hddtemp panel plugin
+EAPI=0
+HOMEPAGE=http://goodies.xfce.org
+INHERITED=toolchain-funcs portability multilib gnome2-utils xfce44 fdo-mime eutils
+IUSE=acpi debug hddtemp libnotify lm_sensors
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=libnotify? ( x11-libs/libnotify ) lm_sensors? ( sys-apps/lm_sensors ) hddtemp? ( app-admin/hddtemp ) >=xfce-base/xfce4-panel-4.4.0
+SLOT=0
+SRC_URI=http://goodies.xfce.org/releases/xfce4-sensors-plugin/xfce4-sensors-plugin-0.10.99.6.tar.bz2

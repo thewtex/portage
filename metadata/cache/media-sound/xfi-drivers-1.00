@@ -1,0 +1,11 @@
+DEPEND=kernel_linux? ( virtual/linux-sources ) kernel_linux? ( virtual/modutils ) sys-apps/sed
+DESCRIPTION=Driver for the XFI-series Creative sound cards
+EAPI=0
+HOMEPAGE=http://www.creative.com/
+INHERITED=toolchain-funcs portability versionator multilib linux-info linux-mod eutils
+IUSE=debug kernel_linux
+KEYWORDS=~amd64
+LICENSE=GPL-2
+RDEPEND=kernel_linux? ( virtual/modutils )
+SLOT=0
+SRC_URI=http://files.creative.com/manualdn/Drivers/AVP/10792/0x0343D29A/XFiDrv_Linux_Public_US_1.00.tar.gz

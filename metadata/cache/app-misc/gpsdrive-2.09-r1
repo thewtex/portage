@@ -1,0 +1,11 @@
+DEPEND=>=x11-libs/gtk+-2.8.12 >=dev-libs/libpcre-4.2 mysql? ( dev-db/mysql ) dev-util/pkgconfig sys-devel/gettext =sys-devel/automake-1.7* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=GPS navigation system with NMEA and Garmin support, zoomable map display, waypoints, etc.
+EAPI=0
+HOMEPAGE=http://www.gpsdrive.de/
+INHERITED=toolchain-funcs portability multilib libtool autotools eutils
+IUSE=garmin mysql
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=>=x11-libs/gtk+-2.8.12 >=dev-libs/libpcre-4.2 mysql? ( dev-db/mysql )
+SLOT=0
+SRC_URI=http://www.gpsdrive.de//gpsdrive.tar/gpsdrive-2.09.tar.gz

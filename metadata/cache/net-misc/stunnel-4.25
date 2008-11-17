@@ -1,0 +1,11 @@
+DEPEND=tcpd? ( sys-apps/tcp-wrappers ) >=dev-libs/openssl-0.9.6j =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool ssl? ( dev-libs/openssl )
+DESCRIPTION=TLS/SSL - Port Wrapper
+EAPI=0
+HOMEPAGE=http://stunnel.mirt.net/
+INHERITED=toolchain-funcs portability multilib libtool autotools ssl-cert eutils
+IUSE=ipv6 selinux tcpd ssl
+KEYWORDS=alpha amd64 arm hppa ~ia64 ppc ppc64 sparc x86
+LICENSE=GPL-2
+RDEPEND=tcpd? ( sys-apps/tcp-wrappers ) >=dev-libs/openssl-0.9.6j selinux? ( sec-policy/selinux-stunnel )
+SLOT=0
+SRC_URI=http://www.stunnel.org/download/stunnel/src/stunnel-4.25.tar.gz

@@ -1,0 +1,11 @@
+DEPEND=ldap? ( net-nds/openldap ) mysql? ( virtual/mysql ) postgres? ( virtual/postgresql-server ) =www-servers/apache-2.2* =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=A NuFW authentication module for Apache.
+EAPI=0
+HOMEPAGE=http://software.inl.fr/trac/wiki/EdenWall/mod_auth_nufw
+INHERITED=apache-module autotools toolchain-funcs portability multilib libtool depend.apache eutils
+IUSE=ldap mysql postgres
+KEYWORDS=~x86
+LICENSE=GPL-2
+RDEPEND=ldap? ( net-nds/openldap ) mysql? ( virtual/mysql ) postgres? ( virtual/postgresql-server ) =www-servers/apache-2.2*
+SLOT=0
+SRC_URI=http://software.inl.fr/releases/mod_auth_nufw/mod_auth_nufw-2.2.0.tar.gz

@@ -1,0 +1,11 @@
+DEPEND=kernel_linux? ( virtual/linux-sources ) kernel_linux? ( virtual/modutils ) sys-apps/sed
+DESCRIPTION=Driver for the AVM FRITZ!WLAN USB stick
+EAPI=0
+HOMEPAGE=http://www.avm.de
+INHERITED=toolchain-funcs portability versionator multilib linux-info linux-mod eutils
+IUSE=kernel_linux
+KEYWORDS=~x86
+LICENSE=as-is
+RDEPEND=kernel_linux? ( virtual/modutils )
+SLOT=0
+SRC_URI=http://www.avm.de/files/cardware/fritzwlanusb.stick/linux/suse.10.2/fwlanusb-1.00.00.tar.gz

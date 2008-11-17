@@ -1,0 +1,11 @@
+DEPEND=dev-lang/perl virtual/perl-Getopt-Long virtual/perl-DB_File dev-perl/HTML-HTMLDoc tk? ( dev-perl/perl-tk dev-perl/GDGraph )
+DESCRIPTION=a powerful perl script that summarizes snort logs
+EAPI=0
+HOMEPAGE=http://jeremy.chartier.free.fr/snortalog/
+INHERITED=multilib toolchain-funcs eutils portability
+IUSE=tk
+KEYWORDS=~amd64 ~ppc ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=dev-lang/perl virtual/perl-Getopt-Long virtual/perl-DB_File dev-perl/HTML-HTMLDoc tk? ( dev-perl/perl-tk dev-perl/GDGraph )
+SLOT=0
+SRC_URI=http://jeremy.chartier.free.fr/snortalog/snortalog_v2.4.0.tgz tk? ( mirror://gentoo/snortalog-2.4.0-fix-gui.diff.gz )

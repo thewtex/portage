@@ -1,0 +1,11 @@
+DEPEND=app-shells/tcsh dev-lang/perl media-libs/libpng X? ( x11-libs/openmotif ) sys-devel/pmake =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=Development toolkit and applications for computational biology
+EAPI=0
+HOMEPAGE=http://www.ncbi.nlm.nih.gov/
+INHERITED=toolchain-funcs portability flag-o-matic multilib libtool autotools eutils
+IUSE=doc X
+KEYWORDS=~alpha amd64 ~ppc ppc64 ~sparc x86
+LICENSE=public-domain
+RDEPEND=app-shells/tcsh dev-lang/perl media-libs/libpng X? ( x11-libs/openmotif )
+SLOT=0
+SRC_URI=mirror://gentoo/ncbi-tools-20080302.tar.gz doc? ( mirror://gentoo/ncbi-tools-sdk-doc.tar.bz2 )

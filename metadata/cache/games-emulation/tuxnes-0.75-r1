@@ -1,0 +1,11 @@
+DEPEND=X? ( x11-libs/libXext x11-libs/libICE x11-libs/libX11 x11-libs/libXpm x11-libs/libSM ) ggi? ( >=media-libs/libggi-2.0.1 ) X? ( x11-proto/xextproto x11-proto/xproto ) =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=emulator for the 8-bit Nintendo Entertainment System
+EAPI=0
+HOMEPAGE=http://tuxnes.sourceforge.net/
+INHERITED=toolchain-funcs portability multilib libtool games autotools eutils
+IUSE=X ggi
+KEYWORDS=x86
+LICENSE=GPL-2
+RDEPEND=X? ( x11-libs/libXext x11-libs/libICE x11-libs/libX11 x11-libs/libXpm x11-libs/libSM ) ggi? ( >=media-libs/libggi-2.0.1 )
+SLOT=0
+SRC_URI=mirror://sourceforge/tuxnes/tuxnes-0.75.tar.gz

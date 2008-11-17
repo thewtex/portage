@@ -1,0 +1,11 @@
+DEPEND=!sys-apps/pcmcia-cs-cis !sys-apps/pcmcia-cs-pnptools X? ( x11-libs/libX11 x11-libs/libXpm x11-libs/libXaw gtk? ( =x11-libs/gtk+-2* ) xforms? ( x11-libs/xforms ) ) dev-util/pkgconfig virtual/linux-sources dev-util/yacc >=sys-apps/sed-4 kernel_linux? ( virtual/linux-sources )
+DESCRIPTION=PCMCIA tools for Linux (2.6.12 and older)
+EAPI=0
+HOMEPAGE=http://pcmcia-cs.sourceforge.net
+INHERITED=toolchain-funcs portability versionator multilib linux-info eutils
+IUSE=gtk vanilla trusted X xforms
+KEYWORDS=~amd64 ~arm ~ppc ~sh ~x86
+LICENSE=GPL-2
+RDEPEND=!sys-apps/pcmcia-cs-cis !sys-apps/pcmcia-cs-pnptools X? ( x11-libs/libX11 x11-libs/libXpm x11-libs/libXaw gtk? ( =x11-libs/gtk+-2* ) xforms? ( x11-libs/xforms ) )
+SLOT=0
+SRC_URI=http://pcmcia-cs.sourceforge.net/ftp/NEW/pcmcia-cs.14-Jun-05.tar.gz

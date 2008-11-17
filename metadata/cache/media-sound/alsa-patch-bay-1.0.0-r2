@@ -1,0 +1,11 @@
+DEPEND=gtk? ( =dev-cpp/gtkmm-2.2* ) fltk? ( >=x11-libs/fltk-1.1.2 ) alsa? ( >=media-libs/alsa-lib-0.9.0_rc1 ) jack? ( media-sound/jack-audio-connection-kit ) ladcca? ( media-libs/ladcca )
+DESCRIPTION=Graphical patch bay for the ALSA sequencer API.
+EAPI=0
+HOMEPAGE=http://pkl.net/~node/software/alsa-patch-bay/index.html
+INHERITED=multilib toolchain-funcs eutils portability
+IUSE=alsa jack ladcca fltk gtk
+KEYWORDS=~amd64 ~ppc ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=gtk? ( =dev-cpp/gtkmm-2.2* ) fltk? ( >=x11-libs/fltk-1.1.2 ) alsa? ( >=media-libs/alsa-lib-0.9.0_rc1 ) jack? ( media-sound/jack-audio-connection-kit ) ladcca? ( media-libs/ladcca )
+SLOT=0
+SRC_URI=http://pkl.net/~node/software/alsa-patch-bay-1.0.0.tar.gz

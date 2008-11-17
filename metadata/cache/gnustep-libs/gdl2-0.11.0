@@ -1,0 +1,11 @@
+DEPEND=gnustep-apps/gorm postgres? ( virtual/postgresql-base ) sqlite? ( >=dev-db/sqlite-3 ) >=gnustep-base/gnustep-make-2.0 virtual/gnustep-back
+DESCRIPTION=GNUstep Database Library 2 (GDL2) for mapping Obj-C to RDBMSes
+EAPI=0
+HOMEPAGE=http://www.gnustep.org/
+INHERITED=gnustep-base gnustep-2 toolchain-funcs portability flag-o-matic multilib eutils
+IUSE=postgres sqlite debug doc
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=LGPL-2.1
+RDEPEND=gnustep-apps/gorm postgres? ( virtual/postgresql-base ) sqlite? ( >=dev-db/sqlite-3 ) >=gnustep-base/gnustep-make-2.0 virtual/gnustep-back debug? ( >=sys-devel/gdb-6.0 )
+SLOT=0
+SRC_URI=ftp://ftp.gnustep.org/pub/gnustep/libs/gnustep-dl2-0.11.0.tar.gz

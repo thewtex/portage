@@ -1,0 +1,11 @@
+DEPEND=dev-lang/python kernel_linux? ( virtual/linux-sources ) kernel_linux? ( virtual/modutils ) sys-apps/sed
+DESCRIPTION=A kernel based highspeed TCP SYN port scanner
+EAPI=0
+HOMEPAGE=http://recurity-labs.com/portbunny/
+INHERITED=toolchain-funcs portability versionator multilib linux-info linux-mod eutils
+IUSE=kernel_linux
+KEYWORDS=~x86
+LICENSE=GPL-2
+RDEPEND=dev-lang/python kernel_linux? ( virtual/modutils )
+SLOT=0
+SRC_URI=http://recurity-labs.com/portbunny/PortBunny-1.0.tar.gz

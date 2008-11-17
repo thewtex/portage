@@ -1,0 +1,11 @@
+DEPEND=net-misc/curl qt4? ( || ( x11-libs/qt-gui:4 >=x11-libs/qt-4.3:4 ) )
+DESCRIPTION=Updates a last.fm profile using information from a supported portable music player
+EAPI=1
+HOMEPAGE=http://qtscrob.sourceforge.net/
+INHERITED=qt4 toolchain-funcs portability versionator multilib eutils
+IUSE=cli +qt4
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=net-misc/curl qt4? ( || ( x11-libs/qt-gui:4 >=x11-libs/qt-4.3:4 ) )
+SLOT=0
+SRC_URI=mirror://sourceforge/qtscrob/qtscrob-0.8.tar.bz2

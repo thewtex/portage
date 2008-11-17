@@ -1,0 +1,12 @@
+DEPEND=virtual/linux-sources kernel_linux? ( virtual/linux-sources ) kernel_linux? ( virtual/modutils ) sys-apps/sed
+DESCRIPTION=mount bin/cue cd images
+EAPI=0
+HOMEPAGE=http://cdemu.org/
+INHERITED=toolchain-funcs portability python alternatives versionator multilib linux-info linux-mod eutils
+IUSE=kernel_linux
+KEYWORDS=amd64 hppa ppc x86
+LICENSE=GPL-2
+RDEPEND=dev-lang/python kernel_linux? ( virtual/modutils )
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://sourceforge/cdemu/cdemu-0.8.tar.bz2

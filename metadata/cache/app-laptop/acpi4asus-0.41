@@ -1,0 +1,11 @@
+DEPEND=kernel_linux? ( virtual/linux-sources ) kernel_linux? ( virtual/modutils ) sys-apps/sed
+DESCRIPTION=Acpi daemon and kernel module to control ASUS Laptop Hotkeys
+EAPI=0
+HOMEPAGE=http://sourceforge.net/projects/acpi4asus
+INHERITED=toolchain-funcs portability versionator multilib linux-info linux-mod eutils
+IUSE=kernel_linux
+KEYWORDS=~x86 ~amd64
+LICENSE=GPL-2
+RDEPEND=sys-power/acpid kernel_linux? ( virtual/modutils )
+SLOT=0
+SRC_URI=mirror://sourceforge/acpi4asus/acpi4asus-0.41.tar.bz2

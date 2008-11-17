@@ -1,0 +1,11 @@
+DEPEND=net-dns/avahi =kde-base/kdelibs-3.5* =x11-libs/qt-3* =sys-devel/automake-1.9* >=sys-devel/autoconf-2.61 sys-devel/libtool sys-devel/make dev-util/pkgconfig dev-lang/perl x11-libs/libXt x11-proto/xf86vidmodeproto xinerama? ( x11-proto/xineramaproto ) arts? ( kde-base/arts )
+DESCRIPTION=DNS Service Discovery kioslave using Avahi (rather than mDNSResponder)
+EAPI=0
+HOMEPAGE=http://wiki.kde.org/tiki-index.php?page=Zeroconf+in+KDE
+INHERITED=toolchain-funcs qt3 portability flag-o-matic kde versionator multilib base kde-functions libtool autotools eutils
+IUSE=debug elibc_FreeBSD arts xinerama
+KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=net-dns/avahi =kde-base/kdelibs-3.5* =x11-libs/qt-3* xinerama? ( x11-libs/libXinerama ) arts? ( kde-base/arts )
+SLOT=0
+SRC_URI=http://helios.et.put.poznan.pl/~jstachow/pub/kdnssd-avahi_0.1.2.orig.tar.gz mirror://gentoo/kde-admindir-3.5.5.tar.bz2

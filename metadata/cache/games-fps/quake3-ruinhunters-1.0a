@@ -1,0 +1,11 @@
+DEPEND=app-arch/unzip
+DESCRIPTION=Quake III - Ruin Hunters
+EAPI=0
+HOMEPAGE=http://dynamic.gamespy.com/~mbs/
+INHERITED=toolchain-funcs portability multilib games games-q3mod eutils
+IUSE=dedicated
+KEYWORDS=-* amd64 ~ppc x86
+LICENSE=freedist
+RDEPEND=|| ( games-fps/quake3 games-fps/quake3-bin ) amd64? ( app-emulation/emul-linux-x86-baselibs ) dedicated? ( app-misc/screen )
+SLOT=0
+SRC_URI=http://www.jetstreamgames.co.nz/files/pub/planetquake3/modifications/ruinhunters/ruin_hunters_v10.zip http://www.jetstreamgames.co.nz/files/pub/planetquake3/modifications/ruinhunters/ruin_hunters_v10a_patch.zip

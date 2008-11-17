@@ -1,0 +1,11 @@
+DEPEND=dev-lisp/cl-split-sequence dev-lisp/cl-net-telent-date dev-lisp/common-lisp-controller
+DESCRIPTION=Araneida is small, highly-portable web server for Common Lisp
+EAPI=0
+HOMEPAGE=http://www.cliki.net/Araneida
+INHERITED=common-lisp-common toolchain-funcs portability multilib common-lisp eutils
+IUSE=standalone
+KEYWORDS=~amd64 ~ppc ~sparc ~x86
+LICENSE=BSD
+RDEPEND=dev-lisp/cl-split-sequence dev-lisp/cl-net-telent-date !standalone? ( || ( www-servers/apache www-servers/pound ) )
+SLOT=0
+SRC_URI=http://common-lisp.net/project/araneida/release/araneida-version-0.90.1.tar.gz

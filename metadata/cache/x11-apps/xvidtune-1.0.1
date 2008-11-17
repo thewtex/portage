@@ -1,0 +1,11 @@
+DEPEND=x11-libs/libXxf86vm x11-libs/libXaw x11-proto/xf86vidmodeproto =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool >=sys-devel/libtool-1.5 >=sys-devel/m4-1.4 >=dev-util/pkgconfig-0.18 >=x11-misc/util-macros-0.99.2 >=sys-devel/binutils-2.16.1-r3
+DESCRIPTION=video mode tuner for Xorg
+EAPI=0
+HOMEPAGE=http://xorg.freedesktop.org/
+INHERITED=toolchain-funcs portability flag-o-matic multilib x-modular libtool autotools eutils
+IUSE=xprint debug
+KEYWORDS=alpha amd64 arm mips ppc ppc64 s390 sh sparc x86
+LICENSE=xvidtune
+RDEPEND=x11-libs/libXxf86vm x11-libs/libXaw !<=x11-base/xorg-x11-6.9
+SLOT=0
+SRC_URI=http://xorg.freedesktop.org/releases/individual/app/xvidtune-1.0.1.tar.bz2

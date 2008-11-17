@@ -1,0 +1,12 @@
+DEPEND=virtual/libc sys-libs/ncurses sys-libs/readline tk? ( dev-lang/tk ) syslog? ( virtual/logger ) !virtual/pbs !sys-cluster/openpbs-common !games-util/qstat sys-apps/ed =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool kernel_linux? ( virtual/linux-sources )
+DESCRIPTION=Resource manager and queuing system based on OpenPBS
+EAPI=0
+HOMEPAGE=http://www.clusterresources.com/products/torque/
+INHERITED=toolchain-funcs portability flag-o-matic versionator multilib libtool linux-info autotools eutils
+IUSE=tk crypt server syslog doc cpusets kernel_linux
+KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86
+LICENSE=openpbs
+PROVIDE=virtual/pbs
+RDEPEND=virtual/libc sys-libs/ncurses sys-libs/readline tk? ( dev-lang/tk ) syslog? ( virtual/logger ) !virtual/pbs !sys-cluster/openpbs-common !games-util/qstat crypt? ( net-misc/openssh ) !crypt? ( net-misc/netkit-rsh )
+SLOT=0
+SRC_URI=http://www.clusterresources.com/downloads/torque/torque-2.3.3.tar.gz

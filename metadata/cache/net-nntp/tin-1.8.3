@@ -1,0 +1,11 @@
+DEPEND=sys-libs/ncurses dev-libs/libpcre dev-libs/uulib idn? ( net-dns/libidn ) unicode? ( dev-libs/icu ) nls? ( sys-devel/gettext ) crypt? ( app-crypt/gnupg )
+DESCRIPTION=A threaded NNTP and spool based UseNet newsreader
+EAPI=0
+HOMEPAGE=http://www.tin.org/
+INHERITED=multilib versionator toolchain-funcs eutils portability
+IUSE=crypt debug idn ipv6 nls unicode
+KEYWORDS=~amd64 arm ia64 ppc sparc x86
+LICENSE=GPL-2
+RDEPEND=sys-libs/ncurses dev-libs/libpcre dev-libs/uulib idn? ( net-dns/libidn ) unicode? ( dev-libs/icu ) nls? ( sys-devel/gettext ) crypt? ( app-crypt/gnupg ) net-misc/urlview
+SLOT=0
+SRC_URI=ftp://ftp.tin.org/pub/news/clients/tin/v1.8/tin-1.8.3.tar.bz2

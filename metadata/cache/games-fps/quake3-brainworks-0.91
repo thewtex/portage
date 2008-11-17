@@ -1,0 +1,11 @@
+DEPEND=app-arch/unzip
+DESCRIPTION=Quake III - Enhanced AI for the Quake III Bots
+EAPI=0
+HOMEPAGE=http://www.planetquake.com/artofwar
+INHERITED=toolchain-funcs portability multilib games games-q3mod eutils
+IUSE=dedicated
+KEYWORDS=-* amd64 ~ppc x86
+LICENSE=freedist
+RDEPEND=|| ( games-fps/quake3 games-fps/quake3-bin ) amd64? ( app-emulation/emul-linux-x86-baselibs ) dedicated? ( app-misc/screen )
+SLOT=0
+SRC_URI=http://www.mrhostbot.com/f.php/422,50/brainworks-0-91.zip

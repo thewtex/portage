@@ -1,0 +1,12 @@
+DEPEND=x11-libs/qt:3 >=dev-libs/glib-2 alsa? ( media-libs/alsa-lib ) vorbis? ( media-libs/libogg media-libs/libvorbis ) esd? ( media-sound/esound ) jack? ( >=media-sound/jack-audio-connection-kit-0.90 ) mp3? ( media-libs/libmad ) nas? ( media-libs/nas ) media-libs/audiofile dev-util/pkgconfig =sys-devel/automake-1.9* >=sys-devel/autoconf-2.61 sys-devel/libtool sys-devel/make dev-util/pkgconfig dev-lang/perl
+DESCRIPTION=aRts, the KDE sound (and all-around multimedia) server/output manager
+EAPI=1
+HOMEPAGE=http://multimedia.kde.org/
+INHERITED=toolchain-funcs qt3 portability flag-o-matic kde versionator multilib base kde-functions libtool autotools eutils
+IUSE=alsa esd artswrappersuid jack mp3 nas vorbis debug elibc_FreeBSD
+KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd
+LICENSE=GPL-2 LGPL-2
+RDEPEND=x11-libs/qt:3 >=dev-libs/glib-2 alsa? ( media-libs/alsa-lib ) vorbis? ( media-libs/libogg media-libs/libvorbis ) esd? ( media-sound/esound ) jack? ( >=media-sound/jack-audio-connection-kit-0.90 ) mp3? ( media-libs/libmad ) nas? ( media-libs/nas ) media-libs/audiofile
+RESTRICT=test
+SLOT=3.5
+SRC_URI=mirror://kde/stable/3.5.10/src/arts-1.5.10.tar.bz2

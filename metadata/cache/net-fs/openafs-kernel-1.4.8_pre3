@@ -1,0 +1,11 @@
+DEPEND=kernel_linux? ( virtual/linux-sources ) kernel_linux? ( virtual/modutils ) sys-apps/sed
+DESCRIPTION=The OpenAFS distributed file system kernel module
+EAPI=0
+HOMEPAGE=http://www.openafs.org/
+INHERITED=toolchain-funcs portability versionator multilib linux-info linux-mod eutils
+IUSE=kernel_linux
+KEYWORDS=~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=IBM openafs-krb5 openafs-krb5-a APSL-2 sun-rpc
+RDEPEND=kernel_linux? ( virtual/modutils )
+SLOT=0
+SRC_URI=http://openafs.org/dl/candidate/1.4.8pre3/openafs-1.4.8pre3-src.tar.bz2 mirror://gentoo/openafs-gentoo-0.15.tar.bz2

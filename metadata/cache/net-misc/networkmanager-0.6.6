@@ -1,0 +1,12 @@
+DEPEND=>=sys-apps/dbus-0.60 >=sys-apps/hal-0.5.10 sys-apps/iproute2 >=dev-libs/libnl-1.1 >=net-misc/dhcdbd-1.4 >=net-wireless/wireless-tools-28_pre9 >=net-wireless/wpa_supplicant-0.4.8 >=dev-libs/glib-2.8 gnome? ( >=x11-libs/gtk+-2.8 >=gnome-base/libglade-2 >=gnome-base/gnome-keyring-0.4 >=gnome-base/gnome-panel-2 >=gnome-base/gconf-2 >=gnome-base/libgnomeui-2 ) crypt? ( dev-libs/libgcrypt ) dev-util/pkgconfig dev-util/intltool >=sys-apps/sed-4
+DESCRIPTION=Network configuration and management in an easy way. Desktop environment independent.
+EAPI=0
+HOMEPAGE=http://www.gnome.org/projects/NetworkManager/
+INHERITED=toolchain-funcs portability multilib gnome2-utils gnome2 gnome.org fdo-mime libtool eutils
+IUSE=crypt doc gnome debug
+KEYWORDS=amd64 ~ppc x86
+LICENSE=GPL-2
+PDEPEND=gnome? ( >gnome-extra/nm-applet-0.6.5 )
+RDEPEND=>=sys-apps/dbus-0.60 >=sys-apps/hal-0.5.10 sys-apps/iproute2 >=dev-libs/libnl-1.1 >=net-misc/dhcdbd-1.4 >=net-wireless/wireless-tools-28_pre9 >=net-wireless/wpa_supplicant-0.4.8 >=dev-libs/glib-2.8 gnome? ( >=x11-libs/gtk+-2.8 >=gnome-base/libglade-2 >=gnome-base/gnome-keyring-0.4 >=gnome-base/gnome-panel-2 >=gnome-base/gconf-2 >=gnome-base/libgnomeui-2 ) crypt? ( dev-libs/libgcrypt )
+SLOT=0
+SRC_URI=http://people.redhat.com/dcbw/NetworkManager/0.6.6/NetworkManager-0.6.6.tar.gz

@@ -1,0 +1,11 @@
+DEPEND=x11-libs/qt:3 virtual/opengl =sys-devel/automake-1.9* >=sys-devel/autoconf-2.61 sys-devel/libtool sys-devel/make dev-util/pkgconfig dev-lang/perl x11-libs/libXt x11-proto/xf86vidmodeproto xinerama? ( x11-proto/xineramaproto ) arts? ( kde-base/arts )
+DESCRIPTION=An implementation of the classical chinese game Mah Jongg with 3D OpenGL graphics
+EAPI=1
+HOMEPAGE=http://www.reto-schoelly.de/mahjongg3d/
+INHERITED=toolchain-funcs qt3 portability flag-o-matic kde versionator multilib base kde-functions games autotools libtool eutils
+IUSE=debug elibc_FreeBSD arts xinerama
+KEYWORDS=x86
+LICENSE=GPL-2
+RDEPEND=x11-libs/qt:3 virtual/opengl xinerama? ( x11-libs/libXinerama ) arts? ( kde-base/arts )
+SLOT=0
+SRC_URI=http://www.reto-schoelly.de/mahjongg3d/mahjongg3d-0.96.tar.bz2 http://www.reto-schoelly.de/mahjongg3d/mahjongg3d-0.96-patch2.tar.bz2

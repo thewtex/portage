@@ -1,0 +1,11 @@
+DEPEND==x11-libs/wxGTK-2.8* dev-libs/boost >=dev-util/cmake-2.4.6
+DESCRIPTION=Electronic Schematic and PCB design tools.
+EAPI=0
+HOMEPAGE=http://kicad.sourceforge.net
+INHERITED=toolchain-funcs wxwidgets portability flag-o-matic versionator multilib cmake-utils eutils
+IUSE=doc debug examples minimal
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
+LICENSE=GPL-2
+RDEPEND==x11-libs/wxGTK-2.8* dev-libs/boost
+SLOT=0
+SRC_URI=mirror://sourceforge/kicad/kicad-20080320-r918.tar.bz2 !minimal? ( mirror://sourceforge/kicad/kicad-library-1.0.tbz2 ) doc? ( mirror://sourceforge/kicad/kicad-doc-1.0.tbz2 )

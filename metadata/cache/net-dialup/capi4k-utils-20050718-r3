@@ -1,0 +1,11 @@
+DEPEND=virtual/linux-sources virtual/os-headers >=sys-apps/sed-4 kernel_linux? ( virtual/linux-sources )
+DESCRIPTION=CAPI4Linux Utils
+EAPI=0
+HOMEPAGE=ftp://ftp.in-berlin.de/pub/capi4linux/
+INHERITED=toolchain-funcs portability versionator multilib linux-info eutils
+IUSE=fax pppd tcpd usb pcmcia
+KEYWORDS=amd64 ppc x86
+LICENSE=GPL-2
+RDEPEND=usb? ( sys-apps/hotplug ) pcmcia? ( virtual/pcmcia ) dev-lang/perl
+SLOT=0
+SRC_URI=ftp://ftp.in-berlin.de/pub/capi4linux/capi4k-utils-2005-07-18.tar.gz ftp://ftp.in-berlin.de/pub/capi4linux/OLD/capi4k-utils-2005-07-18.tar.gz http://voip-cell.eu/gentoo/distfiles/capi4k-patches-20050718-r3.tar.bz2

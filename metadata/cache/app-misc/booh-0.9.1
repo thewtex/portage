@@ -1,0 +1,11 @@
+DEPEND=dev-lang/ruby >=dev-ruby/ruby-gettext-0.8.0 media-gfx/exiv2 gtk? ( >=dev-ruby/ruby-gtk2-0.12 >=x11-libs/gtk+-2.8 )
+DESCRIPTION=Static HTML photo album generator
+EAPI=0
+HOMEPAGE=http://booh.org/index.html
+INHERITED=multilib bash-completion toolchain-funcs eutils portability
+IUSE=gtk encode exif bash-completion
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-lang/ruby >=dev-ruby/ruby-gettext-0.8.0 media-gfx/exiv2 gtk? ( >=dev-ruby/ruby-gtk2-0.12 >=x11-libs/gtk+-2.8 ) dev-ruby/rubygems media-gfx/imagemagick exif? ( media-gfx/exif ) encode? ( media-video/mplayer ) bash-completion? ( || ( app-admin/eselect app-shells/bash-completion-config ) )
+SLOT=0
+SRC_URI=http://booh.org/packages/booh-0.9.1.tar.bz2

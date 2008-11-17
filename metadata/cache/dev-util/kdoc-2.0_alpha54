@@ -1,0 +1,11 @@
+DEPEND=dev-lang/perl =sys-devel/automake-1.9* >=sys-devel/autoconf-2.61 sys-devel/libtool sys-devel/make dev-util/pkgconfig dev-lang/perl x11-libs/libXt x11-proto/xf86vidmodeproto xinerama? ( x11-proto/xineramaproto ) arts? ( kde-base/arts )
+DESCRIPTION=KDE/QT documentation processing/generation tools
+EAPI=0
+HOMEPAGE=http://www.ph.unimelb.edu.au/~ssk/kde/kdoc/
+INHERITED=toolchain-funcs qt3 portability flag-o-matic kde versionator multilib base kde-functions libtool autotools eutils
+IUSE=kdeenablefinal debug elibc_FreeBSD arts xinerama
+KEYWORDS=x86 sparc ppc amd64
+LICENSE=GPL-2
+RDEPEND=dev-lang/perl xinerama? ( x11-libs/libXinerama ) arts? ( kde-base/arts )
+SLOT=0
+SRC_URI=mirror://gentoo/kdoc-2.0a54.tar.bz2

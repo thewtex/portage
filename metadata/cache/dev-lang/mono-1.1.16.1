@@ -1,0 +1,12 @@
+DEPEND=>=dev-libs/glib-2 dev-libs/libxml2 X? ( >=dev-dotnet/libgdiplus-1.1.16 ) sys-devel/bc !<dev-dotnet/pnet-0.6.12 nptl? ( >=sys-devel/gcc-3.3.5-r1 ) ppc? ( >=sys-devel/gcc-3.2.3-r4 >=sys-libs/glibc-2.3.3_pre20040420 ) dev-util/pkgconfig =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=Mono runtime and class libraries, a C# compiler/interpreter
+EAPI=0
+HOMEPAGE=http://www.go-mono.com/
+INHERITED=toolchain-funcs portability flag-o-matic mono multilib libtool autotools eutils
+IUSE=nptl X
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=|| ( GPL-2 LGPL-2 X11 )
+RDEPEND=>=dev-libs/glib-2 dev-libs/libxml2 X? ( >=dev-dotnet/libgdiplus-1.1.16 ) sys-devel/bc !<dev-dotnet/pnet-0.6.12 nptl? ( >=sys-devel/gcc-3.3.5-r1 ) ppc? ( >=sys-devel/gcc-3.2.3-r4 >=sys-libs/glibc-2.3.3_pre20040420 )
+RESTRICT=test
+SLOT=0
+SRC_URI=http://www.go-mono.com/sources/mono-1.1/mono-1.1.16.1.tar.gz

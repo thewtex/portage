@@ -1,0 +1,12 @@
+DEPEND=sqlite? ( dev-db/sqlite ) !sqlite? ( !mysql? ( !postgres? ( dev-db/sqlite ) ) ) =kde-base/kdelibs-3.5* =x11-libs/qt-3* =sys-devel/automake-1.9* >=sys-devel/autoconf-2.61 sys-devel/libtool sys-devel/make dev-util/pkgconfig dev-lang/perl x11-libs/libXt x11-proto/xf86vidmodeproto xinerama? ( x11-proto/xineramaproto ) arts? ( kde-base/arts )
+DESCRIPTION=A KDE Recipe Tool
+EAPI=0
+HOMEPAGE=http://krecipes.sourceforge.net
+INHERITED=toolchain-funcs qt3 portability flag-o-matic kde versionator multilib base kde-functions libtool autotools eutils
+IUSE=mysql postgres sqlite debug elibc_FreeBSD arts xinerama
+KEYWORDS=~amd64 ~ppc ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=sqlite? ( dev-db/sqlite ) !sqlite? ( !mysql? ( !postgres? ( dev-db/sqlite ) ) ) mysql? ( virtual/mysql ) postgres? ( virtual/postgresql-server ) =kde-base/kdelibs-3.5* =x11-libs/qt-3* xinerama? ( x11-libs/libXinerama ) arts? ( kde-base/arts )
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://sourceforge/krecipes/krecipes-1.0-beta1.tar.gz

@@ -1,0 +1,12 @@
+DEPEND=jce? ( =dev-java/sun-jce-bin-1.6.0* ) =dev-java/java-config-2* >=sys-apps/portage-2.1
+DESCRIPTION=Java Development Kit
+EAPI=0
+HOMEPAGE=http://www.FreeBSDFoundation.org/downloads/java.shtml
+INHERITED=toolchain-funcs portability versionator multilib eutils fdo-mime java-vm-2
+IUSE=X examples nsplugin jce
+KEYWORDS=-* ~x86-fbsd
+LICENSE=sun-bcla-java-vm
+RDEPEND=X? ( x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXau x11-libs/libXdmcp x11-libs/libXext x11-libs/libXi x11-libs/libXp x11-libs/libXt x11-libs/libXtst ) =sys-freebsd/freebsd-lib-7* jce? ( =dev-java/sun-jce-bin-1.6.0* ) =dev-java/java-config-2* =dev-java/java-config-1.3*
+RESTRICT=fetch
+SLOT=1.6
+SRC_URI=diablo-caffe-freebsd7-i386-1.6.0_07-b02.tar.bz2

@@ -1,0 +1,11 @@
+DESCRIPTION=Quake III Team Arena - data portion
+EAPI=0
+HOMEPAGE=http://icculus.org/quake3/
+INHERITED=eutils toolchain-funcs games multilib portability
+IUSE=cdinstall
+KEYWORDS=amd64 ~ppc x86 ~x86-fbsd
+LICENSE=Q3AEULA
+PROPERTIES=cdinstall? ( interactive )
+RDEPEND=|| ( games-fps/quake3 games-fps/quake3-bin )
+SLOT=0
+SRC_URI=mirror://idsoftware/quake3/linux/linuxq3apoint-1.32b-3.x86.run

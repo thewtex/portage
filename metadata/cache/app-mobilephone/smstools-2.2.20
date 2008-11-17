@@ -1,0 +1,10 @@
+DESCRIPTION=Send and receive short messages through GSM modems
+EAPI=0
+HOMEPAGE=http://smstools.meinemullemaus.de/
+INHERITED=multilib toolchain-funcs eutils portability
+IUSE=stats
+KEYWORDS=~x86 ~amd64 ~ppc
+LICENSE=GPL-2
+RDEPEND=sys-process/procps stats? ( >=dev-libs/mm-1.4.0 )
+SLOT=0
+SRC_URI=http://www.meinemullemaus.de/smstools/packages/smstools-2.2.20.tar.gz

@@ -1,0 +1,12 @@
+DEPEND=sys-libs/ncurses
+DESCRIPTION=Curses-based interpreter and development tools for TADS 2 and TADS 3 text adventures
+EAPI=0
+HOMEPAGE=http://www.tads.org/frobtads.htm
+INHERITED=eutils toolchain-funcs games multilib portability
+IUSE=debug tads2compiler tads3compiler
+KEYWORDS=~amd64 ~x86
+LICENSE=TADS2 TADS3
+RDEPEND=sys-libs/ncurses
+RESTRICT=!tads3compiler? ( test )
+SLOT=0
+SRC_URI=http://www.tads.org/frobtads/frobtads-0.12.tar.gz tads2compiler? ( http://www.tads.org/frobtads/frobtads-t2compiler-0.12.tar.gz ) tads3compiler? ( http://www.tads.org/frobtads/frobtads-t3compiler-0.12.tar.gz )

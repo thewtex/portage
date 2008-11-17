@@ -1,0 +1,12 @@
+DEPEND=kernel_linux? ( virtual/linux-sources ) kernel_linux? ( virtual/modutils ) sys-apps/sed
+DESCRIPTION=Winmodems with Lucent Apollo (ISA) and Mars (PCI) chipsets
+EAPI=0
+HOMEPAGE=http://linmodems.technion.ac.il/
+INHERITED=toolchain-funcs portability versionator multilib linux-info linux-mod eutils
+IUSE=kernel_linux
+KEYWORDS=-* x86
+LICENSE=GPL-2 AgereSystems-WinModem
+RDEPEND=kernel_linux? ( virtual/modutils )
+RESTRICT=userpriv
+SLOT=0
+SRC_URI=http://linmodems.technion.ac.il/packages/ltmodem/kernel-2.6/ltmodem-2.6-alk-9.tar.bz2

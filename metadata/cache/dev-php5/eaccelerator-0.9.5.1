@@ -1,0 +1,11 @@
+DEPEND=!dev-php5/pecl-apc !dev-php5/xcache =dev-lang/php-5* apache2? ( =www-servers/apache-2* ) =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool >=sys-devel/m4-1.4.3 >=sys-devel/libtool-1.5.18
+DESCRIPTION=A PHP Accelerator & Encoder.
+EAPI=0
+HOMEPAGE=http://www.eaccelerator.net/
+INHERITED=depend.apache toolchain-funcs portability flag-o-matic depend.php multilib php-ext-base-r1 libtool phpconfutils autotools eutils php-ext-source-r1
+IUSE=contentcache debug disassembler inode session sharedmem apache2
+KEYWORDS=~amd64 ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=!dev-php5/pecl-apc !dev-php5/xcache =dev-lang/php-5* apache2? ( =www-servers/apache-2* )
+SLOT=0
+SRC_URI=http://bart.eaccelerator.net/source/0.9.5.1/eaccelerator-0.9.5.1.tar.bz2

@@ -1,0 +1,11 @@
+DEPEND==www-servers/apache-2* >=app-admin/webapp-config-1.50.15
+DESCRIPTION=general purpose source code indexer and cross-referener with a web-based frontend
+EAPI=0
+HOMEPAGE=http://sourceforge.net/projects/lxr
+INHERITED=toolchain-funcs portability multilib base webapp depend.apache eutils perl-module
+IUSE=cvs freetext mysql postgres vhosts
+KEYWORDS=~amd64 ppc ~x86
+LICENSE=GPL-2
+RDEPEND=dev-util/ctags freetext? ( >=www-apps/swish-e-2.1 ) dev-lang/perl dev-perl/DBI dev-perl/File-MMagic cvs? ( app-text/rcs ) postgres? ( dev-perl/DBD-Pg ) mysql? ( dev-perl/DBD-mysql ) =www-servers/apache-2* >=app-admin/webapp-config-1.50.15
+SLOT=0
+SRC_URI=mirror://sourceforge/lxr/lxr-0.9.5.tgz

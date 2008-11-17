@@ -1,0 +1,11 @@
+DEPEND=>=dev-libs/libusb-0.1.12 pam? ( virtual/pam ) sys-devel/libtool >=dev-util/pkgconfig-0.9.0 kernel_linux? ( virtual/linux-sources )
+DESCRIPTION=Support for the UPEK/SGS Thomson Microelectronics fingerprint reader, often seen in Thinkpads
+EAPI=0
+HOMEPAGE=http://thinkfinger.sourceforge.net/
+INHERITED=multilib versionator toolchain-funcs pam linux-info
+IUSE=debug pam
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=dev-libs/libusb-0.1.12 pam? ( virtual/pam )
+SLOT=0
+SRC_URI=mirror://sourceforge/thinkfinger/thinkfinger-0.3.tar.gz

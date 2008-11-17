@@ -1,0 +1,11 @@
+DEPEND=virtual/libc virtual/linux-sources kernel_linux? ( virtual/linux-sources ) kernel_linux? ( virtual/modutils ) sys-apps/sed
+DESCRIPTION=Open-iSCSI is a high performance, transport independent, multi-platform implementation of RFC3720
+EAPI=0
+HOMEPAGE=http://www.open-iscsi.org/
+INHERITED=toolchain-funcs portability flag-o-matic versionator multilib linux-info linux-mod eutils
+IUSE=modules utils debug kernel_linux
+KEYWORDS=~x86 ~amd64 ~ppc ~mips
+LICENSE=GPL-2
+RDEPEND=virtual/libc virtual/linux-sources virtual/modutils sys-apps/util-linux kernel_linux? ( virtual/modutils )
+SLOT=0
+SRC_URI=http://www.open-iscsi.org/bits/open-iscsi-2.0-868-rc1.tar.gz

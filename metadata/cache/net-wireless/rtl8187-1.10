@@ -1,0 +1,11 @@
+DEPEND=app-arch/unzip kernel_linux? ( virtual/linux-sources ) kernel_linux? ( virtual/modutils ) sys-apps/sed
+DESCRIPTION=Driver for the RTL8187 wireless chipset
+EAPI=0
+HOMEPAGE=http://www.realtek.com.tw
+INHERITED=toolchain-funcs portability versionator multilib linux-info linux-mod eutils
+IUSE=kernel_linux
+KEYWORDS=x86
+LICENSE=GPL-2
+RDEPEND=app-arch/unzip kernel_linux? ( virtual/modutils )
+SLOT=0
+SRC_URI=ftp://61.56.69.18/cn/wlan/rtl8187_linux_26.1010.zip ftp://209.216.61.149/cn/wlan/rtl8187_linux_26.1010.zip

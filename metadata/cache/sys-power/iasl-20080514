@@ -1,0 +1,10 @@
+DEPEND=sys-devel/bison sys-devel/flex
+DESCRIPTION=Intel ACPI Source Language (ASL) compiler
+EAPI=0
+HOMEPAGE=http://www.intel.com/technology/iapc/acpi/
+INHERITED=toolchain-funcs multilib eutils portability flag-o-matic
+IUSE=test
+KEYWORDS=~amd64 ~ppc ~x86 ~x86-fbsd
+LICENSE=iASL
+SLOT=0
+SRC_URI=http://www.acpica.org/download/acpica-unix-20080514.tar.gz test? ( http://www.acpica.org/download/acpitests-unix-20080514.tar.gz )

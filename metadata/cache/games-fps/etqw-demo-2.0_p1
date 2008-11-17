@@ -1,0 +1,11 @@
+DEPEND=app-arch/unzip
+DESCRIPTION=Enemy Territory: Quake Wars demo
+EAPI=0
+HOMEPAGE=http://zerowing.idsoftware.com/linux/etqw/
+INHERITED=toolchain-funcs portability versionator multilib games eutils
+KEYWORDS=~amd64 ~x86
+LICENSE=ETQW
+RDEPEND=virtual/opengl x86? ( media-libs/libsdl x11-libs/libX11 x11-libs/libXau x11-libs/libXdmcp x11-libs/libXext ) amd64? ( >=app-emulation/emul-linux-x86-sdl-20071114 )
+RESTRICT=strip mirror
+SLOT=0
+SRC_URI=mirror://idsoftware/etqw/ETQW-demo2-client-full.r1.x86.run

@@ -1,0 +1,11 @@
+DEPEND=virtual/libc snmp? ( net-analyzer/net-snmp ) ldap? ( net-nds/openldap ) mysql? ( virtual/mysql ) postgres? ( virtual/postgresql-server )
+DESCRIPTION=ZABBIX is software for monitoring of your applications, network and servers. Server part.
+EAPI=0
+HOMEPAGE=http://www.zabbix.com/
+INHERITED=multilib toolchain-funcs eutils portability
+IUSE=ldap mysql oracle postgres snmp
+KEYWORDS=~amd64 ~ppc ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=net-analyzer/fping
+SLOT=0
+SRC_URI=mirror://sourceforge/zabbix/zabbix-1.1.tar.gz

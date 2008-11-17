@@ -1,0 +1,12 @@
+DEPEND=apache2? ( =www-servers/apache-2* ) >=app-admin/webapp-config-1.50.15
+DESCRIPTION=AWStats is short for Advanced Web Statistics.
+EAPI=0
+HOMEPAGE=http://awstats.sourceforge.net/
+INHERITED=toolchain-funcs portability versionator multilib webapp depend.apache eutils
+IUSE=geoip apache2 vhosts
+KEYWORDS=alpha amd64 hppa ppc ~sparc x86 ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=>=dev-lang/perl-5.6.1 >=media-libs/libpng-1.2 virtual/perl-Time-Local dev-perl/URI geoip? ( dev-perl/Geo-IP ) apache2? ( =www-servers/apache-2* ) >=app-admin/webapp-config-1.50.15
+RESTRICT=mirror
+SLOT=0
+SRC_URI=http://awstats.sourceforge.net/files/awstats-6.9.tar.gz

@@ -1,0 +1,11 @@
+DEPEND=ssl? ( >=dev-libs/openssl-0.9.6g ) dmalloc? ( >=dev-libs/dmalloc-5.3.0 )
+DESCRIPTION=Small and embeddable HTTPD server with (optional) CGI support
+EAPI=0
+HOMEPAGE=http://shttpd.sourceforge.net/
+INHERITED=multilib toolchain-funcs eutils portability flag-o-matic
+IUSE=ssl cgi threads dmalloc
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=MIT
+RDEPEND=ssl? ( >=dev-libs/openssl-0.9.6g ) dmalloc? ( >=dev-libs/dmalloc-5.3.0 ) app-misc/mime-types
+SLOT=0
+SRC_URI=mirror://sourceforge/shttpd/shttpd-1.25.tar.gz

@@ -1,0 +1,11 @@
+DEPEND=virtual/libc >=dev-libs/bglibs-1.019-r1 mysql? ( virtual/mysql ) >=sys-apps/sed-4
+DESCRIPTION=Rate-limited autoresponder for qmail.
+EAPI=0
+HOMEPAGE=http://untroubled.org/qmail-autoresponder/
+INHERITED=fixheadtails multilib toolchain-funcs eutils portability
+IUSE=mysql
+KEYWORDS=alpha ~amd64 hppa mips ppc sparc x86
+LICENSE=GPL-2
+RDEPEND=virtual/libc >=dev-libs/bglibs-1.019-r1 mysql? ( virtual/mysql ) virtual/qmail mysql? ( virtual/mysql )
+SLOT=0
+SRC_URI=http://untroubled.org/qmail-autoresponder/archive/qmail-autoresponder-0.96.1.tar.gz

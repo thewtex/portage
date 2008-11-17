@@ -1,0 +1,12 @@
+DEPEND=media-libs/jpeg >=media-libs/freetype-2 >=media-libs/libmng-1.0.9 media-libs/libpng sys-libs/zlib virtual/xft x11-libs/libXcursor x11-libs/libXi x11-libs/libXrandr x11-libs/libSM cups? ( net-print/cups ) firebird? ( dev-db/firebird ) mysql? ( virtual/mysql ) nas? ( >=media-libs/nas-1.5 ) opengl? ( virtual/opengl virtual/glu ) postgres? ( virtual/postgresql-base ) xinerama? ( x11-libs/libXinerama ) x11-proto/inputproto x11-proto/xextproto xinerama? ( x11-proto/xineramaproto ) immqt? ( x11-proto/xineramaproto ) immqt-bc? ( x11-proto/xineramaproto )
+DESCRIPTION=The Qt toolkit is a comprehensive C++ application development framework.
+EAPI=0
+HOMEPAGE=http://www.trolltech.com/
+INHERITED=multilib toolchain-funcs eutils portability flag-o-matic
+IUSE=cups debug doc examples firebird gif ipv6 mysql nas nis odbc opengl postgres sqlite xinerama immqt immqt-bc
+KEYWORDS=alpha amd64 hppa ia64 ~mips ppc ppc64 sparc x86 ~x86-fbsd
+LICENSE=|| ( QPL-1.0 GPL-2 )
+PDEPEND=odbc? ( ~dev-db/qt-unixODBC-3.3.8 )
+RDEPEND=media-libs/jpeg >=media-libs/freetype-2 >=media-libs/libmng-1.0.9 media-libs/libpng sys-libs/zlib virtual/xft x11-libs/libXcursor x11-libs/libXi x11-libs/libXrandr x11-libs/libSM cups? ( net-print/cups ) firebird? ( dev-db/firebird ) mysql? ( virtual/mysql ) nas? ( >=media-libs/nas-1.5 ) opengl? ( virtual/opengl virtual/glu ) postgres? ( virtual/postgresql-base ) xinerama? ( x11-libs/libXinerama )
+SLOT=3
+SRC_URI=ftp://ftp.trolltech.com/qt/source/qt-x11-free-3.3.8.tar.gz immqt? ( mirror://gentoo/qt-x11-immodule-unified-qt3.3.8-20070321-gentoo.diff.bz2 ) immqt-bc? ( mirror://gentoo/qt-x11-immodule-unified-qt3.3.8-20070321-gentoo.diff.bz2 )

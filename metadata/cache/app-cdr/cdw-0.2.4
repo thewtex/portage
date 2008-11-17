@@ -1,0 +1,11 @@
+DEPEND=virtual/cdrtools gtk? ( >=x11-libs/gtk+-2 >=dev-libs/glib-2 ) sys-libs/ncurses sys-libs/zlib vorbis? ( media-libs/libvorbis ) sqlite? ( dev-db/sqlite ) mysql? ( virtual/mysql ) encode? ( media-sound/lame ) >=dev-util/intltool-0.21 nls? ( sys-devel/gettext ) gtk? ( dev-util/pkgconfig )
+DESCRIPTION=gtk2 and ncurses-based console frontend to cdrecord and mkisofs
+EAPI=0
+HOMEPAGE=http://cdw.sourceforge.net
+INHERITED=multilib toolchain-funcs eutils portability flag-o-matic
+IUSE=encode gtk mysql nls vorbis sqlite
+KEYWORDS=ppc sparc x86
+LICENSE=GPL-2
+RDEPEND=virtual/cdrtools gtk? ( >=x11-libs/gtk+-2 >=dev-libs/glib-2 ) sys-libs/ncurses sys-libs/zlib vorbis? ( media-libs/libvorbis ) sqlite? ( dev-db/sqlite ) mysql? ( virtual/mysql ) encode? ( media-sound/lame )
+SLOT=0
+SRC_URI=mirror://sourceforge/cdw/cdw-0.2.4.tar.gz

@@ -1,0 +1,10 @@
+DESCRIPTION=Scripts necessary for use of vdr as a set-top-box
+EAPI=0
+HOMEPAGE=http://www.gentoo.org/
+INHERITED=multilib toolchain-funcs eutils portability
+IUSE=nvram
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=nvram? ( sys-power/nvram-wakeup ) app-admin/sudo !media-tv/vdr-dvd-scripts
+SLOT=0
+SRC_URI=mirror://gentoo/gentoo-vdr-scripts-0.4.1.tar.bz2 http://dev.gentoo.org/~zzam/distfiles/gentoo-vdr-scripts-0.4.1.tar.bz2

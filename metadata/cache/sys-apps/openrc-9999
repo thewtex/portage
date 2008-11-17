@@ -1,0 +1,9 @@
+DEPEND=virtual/init kernel_linux? ( >=sys-apps/module-init-tools-3.2.2-r2 ) kernel_FreeBSD? ( sys-process/fuser-bsd ) elibc_glibc? ( >=sys-libs/glibc-2.5 ) ncurses? ( sys-libs/ncurses ) pam? ( virtual/pam ) >=sys-apps/baselayout-2.0.0 !<sys-fs/udev-118-r2 virtual/os-headers >=dev-util/git-1.5
+DESCRIPTION=OpenRC manages the services, startup and shutdown of a host
+EAPI=0
+HOMEPAGE=http://roy.marples.name/openrc
+INHERITED=git toolchain-funcs portability flag-o-matic multilib eutils
+IUSE=debug ncurses pam unicode kernel_linux kernel_FreeBSD
+LICENSE=BSD-2
+RDEPEND=virtual/init kernel_linux? ( >=sys-apps/module-init-tools-3.2.2-r2 ) kernel_FreeBSD? ( sys-process/fuser-bsd ) elibc_glibc? ( >=sys-libs/glibc-2.5 ) ncurses? ( sys-libs/ncurses ) pam? ( virtual/pam ) >=sys-apps/baselayout-2.0.0 !<sys-fs/udev-118-r2
+SLOT=0

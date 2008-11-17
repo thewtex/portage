@@ -1,0 +1,11 @@
+DEPEND=virtual/libc ldap? ( >=net-nds/openldap-2.0 ) =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=Kernel based automounter
+EAPI=0
+HOMEPAGE=http://www.linux-consulting.com/Amd_AutoFS/autofs.html
+INHERITED=toolchain-funcs portability multilib libtool autotools eutils
+IUSE=ldap
+KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=virtual/libc ldap? ( >=net-nds/openldap-2.0 )
+SLOT=0
+SRC_URI=mirror://kernel/linux/daemons/autofs/v5/autofs-5.0.3.tar.bz2 mirror://kernel/linux/daemons/autofs/v5/autofs-5.0.3-ldap-page-control-configure-fix.patch mirror://kernel/linux/daemons/autofs/v5/autofs-5.0.3-xfn-not-supported.patch mirror://kernel/linux/daemons/autofs/v5/autofs-5.0.3-basedn-with-spaces-fix-3.patch mirror://kernel/linux/daemons/autofs/v5/autofs-5.0.3-nfs4-tcp-only.patch mirror://kernel/linux/daemons/autofs/v5/autofs-5.0.3-correct-ldap-lib.patch

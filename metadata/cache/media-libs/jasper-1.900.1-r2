@@ -1,0 +1,11 @@
+DEPEND=jpeg? ( media-libs/jpeg ) opengl? ( virtual/opengl virtual/glut ) app-arch/unzip
+DESCRIPTION=software-based implementation of the codec specified in the JPEG-2000 Part-1 standard
+EAPI=0
+HOMEPAGE=http://www.ece.uvic.ca/~mdadams/jasper/
+INHERITED=eutils toolchain-funcs libtool multilib portability
+IUSE=opengl jpeg
+KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc ~sparc-fbsd x86 ~x86-fbsd
+LICENSE=JasPer2.0
+RDEPEND=jpeg? ( media-libs/jpeg ) opengl? ( virtual/opengl virtual/glut )
+SLOT=0
+SRC_URI=http://www.ece.uvic.ca/~mdadams/jasper/software/jasper-1.900.1.zip mirror://gentoo/jasper-1.900.1-CVE-2008-3520+1+2.patch.bz2

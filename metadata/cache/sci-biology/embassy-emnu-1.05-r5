@@ -1,0 +1,11 @@
+DEPEND=sys-libs/ncurses =sci-biology/emboss-6.0.1* !<sci-biology/emboss-6.0.1 X? ( x11-libs/libX11 ) png? ( sys-libs/zlib media-libs/libpng >=media-libs/gd-1.8 )
+DESCRIPTION=EMBOSS Menu is Not UNIX - Simple menu of EMBOSS applications
+EAPI=0
+HOMEPAGE=http://emboss.sourceforge.net/
+INHERITED=multilib embassy toolchain-funcs eutils portability
+IUSE=X png
+KEYWORDS=~amd64 ~ppc ~sparc ~x86
+LICENSE=LGPL-2 GPL-2
+RDEPEND=sys-libs/ncurses
+SLOT=0
+SRC_URI=ftp://emboss.open-bio.org/pub/EMBOSS/EMBOSS-6.0.1.tar.gz mirror://gentoo/embassy-6.0.1-emnu-1.05.tar.gz

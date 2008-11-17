@@ -1,0 +1,12 @@
+DEPEND=mysql? ( virtual/mysql ) postgres? ( virtual/postgresql-base ) =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=Full-text search engine with support for MySQL and PostgreSQL
+EAPI=0
+HOMEPAGE=http://www.sphinxsearch.com/
+INHERITED=toolchain-funcs portability multilib libtool autotools eutils
+IUSE=debug mysql postgres stemmer test
+KEYWORDS=~x86 ~amd64
+LICENSE=GPL-2
+RDEPEND=mysql? ( virtual/mysql ) postgres? ( virtual/postgresql-base ) test? ( dev-lang/php )
+RESTRICT=mirror
+SLOT=0
+SRC_URI=http://sphinxsearch.com/downloads/sphinx-0.9.8.1.tar.gz stemmer? ( http://snowball.tartarus.org/dist/libstemmer_c.tgz )

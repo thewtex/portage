@@ -1,0 +1,11 @@
+DEPEND=sys-apps/findutils
+DESCRIPTION=Digital Mars D Compiler
+EAPI=0
+HOMEPAGE=http://www.digitalmars.com/d/
+INHERITED=multilib toolchain-funcs eutils portability
+KEYWORDS=~x86
+LICENSE=DMD
+RDEPEND=amd64? ( app-emulation/emul-linux-x86-compat ) x86? ( sys-libs/libstdc++-v3 )
+RESTRICT=mirror strip
+SLOT=0
+SRC_URI=http://ftp.digitalmars.com/dmd.1.016.zip

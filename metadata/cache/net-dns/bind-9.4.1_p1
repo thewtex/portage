@@ -1,0 +1,11 @@
+DEPEND=ssl? ( >=dev-libs/openssl-0.9.6g ) mysql? ( >=virtual/mysql-4.0 ) odbc? ( >=dev-db/unixODBC-2.2.6 ) ldap? ( net-nds/openldap ) idn? ( net-dns/idnkit ) resolvconf? ( net-dns/openresolv ) =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=BIND - Berkeley Internet Name Domain - Name Server
+EAPI=0
+HOMEPAGE=http://www.isc.org/products/BIND/bind9.html
+INHERITED=toolchain-funcs portability flag-o-matic multilib libtool autotools eutils
+IUSE=ssl ipv6 doc dlz postgres berkdb mysql odbc ldap selinux idn threads resolvconf urandom
+KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc x86
+LICENSE=as-is
+RDEPEND=ssl? ( >=dev-libs/openssl-0.9.6g ) mysql? ( >=virtual/mysql-4.0 ) odbc? ( >=dev-db/unixODBC-2.2.6 ) ldap? ( net-nds/openldap ) idn? ( net-dns/idnkit ) resolvconf? ( net-dns/openresolv ) selinux? ( sec-policy/selinux-bind )
+SLOT=0
+SRC_URI=ftp://ftp.isc.org/isc/bind9/9.4.1-P1/bind-9.4.1-P1.tar.gz doc? ( mirror://gentoo/dyndns-samples.tbz2 )

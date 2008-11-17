@@ -1,0 +1,10 @@
+DEPEND=kernel_linux? ( virtual/linux-sources )
+DESCRIPTION=Firmware and configuration instructions for ADI 930/Eagle USB ADSL Modem driver
+EAPI=0
+HOMEPAGE=https://gna.org/projects/ueagleatm/
+INHERITED=toolchain-funcs portability versionator multilib linux-info eutils
+KEYWORDS=~amd64 x86
+LICENSE=BSD GPL-2
+RDEPEND=>=net-dialup/ppp-2.4.3-r14 !net-dialup/eagle-usb
+SLOT=0
+SRC_URI=http://eagle-usb.org/ueagle-atm/non-free/ueagle-data-src-1.1.tar.gz

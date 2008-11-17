@@ -1,0 +1,11 @@
+DEPEND=x11-libs/libfakekey cairo? ( x11-libs/cairo ) !cairo? ( x11-libs/libXft )
+DESCRIPTION=Matchbox-keyboard is an on screen 'virtual' or 'software' keyboard.
+EAPI=0
+HOMEPAGE=http://matchbox-project.org/
+INHERITED=multilib versionator toolchain-funcs eutils portability
+IUSE=debug cairo
+KEYWORDS=~amd64 ~arm ~hppa ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=x11-libs/libfakekey cairo? ( x11-libs/cairo ) !cairo? ( x11-libs/libXft )
+SLOT=0
+SRC_URI=http://matchbox-project.org/sources/matchbox-keyboard/0.1/matchbox-keyboard-0.1.tar.bz2

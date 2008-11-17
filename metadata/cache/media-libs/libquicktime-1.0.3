@@ -1,0 +1,12 @@
+DEPEND=dv? ( media-libs/libdv ) gtk? ( >=x11-libs/gtk+-2.4.0 ) aac? ( media-libs/faad2 encode? ( media-libs/faac ) ) alsa? ( media-libs/alsa-lib ) png? ( media-libs/libpng ) jpeg? ( media-libs/jpeg ) vorbis? ( media-libs/libvorbis media-libs/libogg ) lame? ( media-sound/lame ) ffmpeg? ( >=media-video/ffmpeg-0.4.9_p20070616 ) x264? ( media-libs/x264 ) X? ( x11-libs/libXaw x11-libs/libXv x11-libs/libXext x11-libs/libX11 opengl? ( media-libs/mesa ) ) virtual/libintl !virtual/quicktime X? ( x11-proto/videoproto x11-proto/xextproto ) doc? ( app-doc/doxygen ) dev-util/pkgconfig sys-devel/gettext
+DESCRIPTION=A library based on quicktime4linux with extensions
+EAPI=0
+HOMEPAGE=http://libquicktime.sourceforge.net/
+INHERITED=eutils toolchain-funcs libtool multilib portability
+IUSE=mmx X opengl dv gtk alsa aac encode png jpeg vorbis lame x264 ffmpeg doc
+KEYWORDS=alpha amd64 ia64 ppc ppc64 sparc x86 ~x86-fbsd
+LICENSE=LGPL-2.1
+PROVIDE=virtual/quicktime
+RDEPEND=dv? ( media-libs/libdv ) gtk? ( >=x11-libs/gtk+-2.4.0 ) aac? ( media-libs/faad2 encode? ( media-libs/faac ) ) alsa? ( media-libs/alsa-lib ) png? ( media-libs/libpng ) jpeg? ( media-libs/jpeg ) vorbis? ( media-libs/libvorbis media-libs/libogg ) lame? ( media-sound/lame ) ffmpeg? ( >=media-video/ffmpeg-0.4.9_p20070616 ) x264? ( media-libs/x264 ) X? ( x11-libs/libXaw x11-libs/libXv x11-libs/libXext x11-libs/libX11 opengl? ( media-libs/mesa ) ) virtual/libintl !virtual/quicktime
+SLOT=0
+SRC_URI=mirror://sourceforge/libquicktime/libquicktime-1.0.3.tar.gz

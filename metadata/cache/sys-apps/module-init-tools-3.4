@@ -1,0 +1,13 @@
+DEPEND=sys-libs/zlib >=sys-apps/baselayout-1.12.7-r2 !virtual/modutils >=sys-apps/sed-4
+DESCRIPTION=Kernel module tools for the 2.6 kernel
+EAPI=0
+HOMEPAGE=http://kerneltools.org/
+INHERITED=toolchain-funcs portability flag-o-matic multilib fixheadtails eutils
+IUSE=old-linux
+KEYWORDS=alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86
+LICENSE=GPL-2
+PROVIDE=virtual/modutils
+RDEPEND=sys-libs/zlib >=sys-apps/baselayout-1.12.7-r2 !virtual/modutils
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://kernel/linux/kernel/people/jcm/module-init-tools/module-init-tools-3.4.tar.bz2 old-linux? ( mirror://kernel/linux/utils/kernel/modutils/v2.4/modutils-2.4.27.tar.bz2 ) mirror://gentoo/module-init-tools-3.4-manpages.tar.bz2

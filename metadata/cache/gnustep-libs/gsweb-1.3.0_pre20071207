@@ -1,0 +1,11 @@
+DEPEND=gnustep-libs/gdl2 x11-libs/libPropList =www-servers/apache-2* >=gnustep-base/gnustep-make-2.0 virtual/gnustep-back
+DESCRIPTION=GNUstepWeb: a library compatible with WebObjects 4.x
+EAPI=0
+HOMEPAGE=http://www.gnustep.org/
+INHERITED=gnustep-base gnustep-2 toolchain-funcs portability flag-o-matic multilib apache-module depend.apache eutils
+IUSE=debug doc
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=LGPL-2.1
+RDEPEND=gnustep-libs/gdl2 x11-libs/libPropList =www-servers/apache-2* >=gnustep-base/gnustep-make-2.0 virtual/gnustep-back debug? ( >=sys-devel/gdb-6.0 )
+SLOT=0
+SRC_URI=mirror://gentoo/gsweb-1.3.0_pre20071207.tar.gz

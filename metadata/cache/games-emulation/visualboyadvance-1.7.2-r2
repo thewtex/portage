@@ -1,0 +1,11 @@
+DEPEND=media-libs/libpng media-libs/libsdl gtk? ( >=x11-libs/gtk+-2.4 >=dev-cpp/gtkmm-2.4 >=dev-cpp/libglademm-2.4 ) nls? ( virtual/libintl ) dev-util/pkgconfig mmx? ( dev-lang/nasm ) nls? ( sys-devel/gettext )
+DESCRIPTION=gameboy, gameboy color, and gameboy advance emulator
+EAPI=0
+HOMEPAGE=http://vba.ngemu.com/
+INHERITED=toolchain-funcs portability flag-o-matic multilib games eutils
+IUSE=gtk mmx nls
+KEYWORDS=amd64 ppc x86
+LICENSE=GPL-2
+RDEPEND=media-libs/libpng media-libs/libsdl gtk? ( >=x11-libs/gtk+-2.4 >=dev-cpp/gtkmm-2.4 >=dev-cpp/libglademm-2.4 ) nls? ( virtual/libintl )
+SLOT=0
+SRC_URI=mirror://sourceforge/vba/VisualBoyAdvance-src-1.7.2.tar.gz mirror://gentoo/visualboyadvance-1.7.2-deprecatedsigc++.patch.bz2

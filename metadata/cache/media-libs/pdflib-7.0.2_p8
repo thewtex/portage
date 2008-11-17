@@ -1,0 +1,11 @@
+DEPEND=tcl? ( >=dev-lang/tcl-8.2 ) perl? ( >=dev-lang/perl-5.1 ) python? ( >=dev-lang/python-2.2 ) java? ( >=virtual/jdk-1.4 ) =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool java? ( >=dev-java/java-config-2.0.33-r1 >=sys-apps/portage-2.1.2.7 )
+DESCRIPTION=A library for generating PDF on the fly.
+EAPI=1
+HOMEPAGE=http://www.pdflib.com/
+INHERITED=toolchain-funcs portability flag-o-matic python java-utils-2 versionator multilib alternatives java-pkg-opt-2 base libtool autotools eutils perl-module
+IUSE=+cxx doc java perl python tcl elibc_FreeBSD java
+KEYWORDS=alpha amd64 arm hppa ia64 ppc ppc64 s390 sh sparc x86 ~x86-fbsd
+LICENSE=PDFLite
+RDEPEND=tcl? ( >=dev-lang/tcl-8.2 ) perl? ( >=dev-lang/perl-5.1 ) python? ( >=dev-lang/python-2.2 ) java? ( >=virtual/jre-1.4 ) java? ( >=dev-java/java-config-2.0.33-r1 >=sys-apps/portage-2.1.2.7 )
+SLOT=5
+SRC_URI=http://www.pdflib.com/binaries/PDFlib/702/PDFlib-Lite-7.0.2p8.tar.gz

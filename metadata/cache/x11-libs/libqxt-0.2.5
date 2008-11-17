@@ -1,0 +1,11 @@
+DEPEND=|| ( ( x11-libs/qt-gui:4 x11-libs/qt-script:4 x11-libs/qt-sql:4 ) =x11-libs/qt-4.3*:4 ) ssl? ( >=dev-libs/openssl-0.9.8 ) fastcgi? ( >=dev-libs/fcgi-2.4 )
+DESCRIPTION=The Qt eXTension library provides cross-platform utility classes to add functionality ontop of the Qt toolkit
+EAPI=1
+HOMEPAGE=http://libqxt.org/
+INHERITED=qt4 toolchain-funcs portability versionator multilib eutils
+IUSE=ssl fastcgi debug
+KEYWORDS=~x86 ~amd64
+LICENSE=CPL-1.0
+RDEPEND=|| ( ( x11-libs/qt-gui:4 x11-libs/qt-script:4 x11-libs/qt-sql:4 ) =x11-libs/qt-4.3*:4 ) ssl? ( >=dev-libs/openssl-0.9.8 ) fastcgi? ( >=dev-libs/fcgi-2.4 )
+SLOT=0
+SRC_URI=mirror://sourceforge/libqxt/libqxt-0.2.5.tar.gz

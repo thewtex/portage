@@ -1,0 +1,11 @@
+DEPEND==x11-libs/qt-3* kde? ( kde-base/kdelibs:3.5 ) sys-devel/flex || ( sys-devel/bison dev-util/yacc ) virtual/python
+DESCRIPTION=A graphical file and directories comparator and merge tool.
+EAPI=1
+HOMEPAGE=http://xxdiff.sourceforge.net/
+INHERITED=toolchain-funcs distutils portability python multilib versionator alternatives kde-functions eutils qt3
+IUSE=kde python debug
+KEYWORDS=alpha amd64 ia64 ppc sparc x86 ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND==x11-libs/qt-3* kde? ( kde-base/kdelibs:3.5 ) sys-apps/diffutils
+SLOT=0
+SRC_URI=mirror://sourceforge/xxdiff/xxdiff-3.2.tar.bz2

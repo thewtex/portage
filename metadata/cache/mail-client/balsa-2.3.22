@@ -1,0 +1,11 @@
+DEPEND=>=dev-libs/glib-2.0 >=x11-libs/gtk+-2.10 =dev-libs/gmime-2.2* >=net-libs/libesmtp-1.0.3 >=gnome-base/orbit-2 >=gnome-base/libbonobo-2.0 x11-themes/hicolor-icon-theme net-mail/mailbase crypt? ( >=app-crypt/gpgme-1.0 ) >=gnome-base/libgnome-2.0 >=gnome-base/libgnomeui-2.0 >=gnome-base/gnome-vfs-2.0 =x11-libs/gtksourceview-1* gtkhtml? ( gnome-extra/gtkhtml ) sqlite? ( >=dev-db/sqlite-2.8 ) libnotify? ( x11-libs/libnotify ) gtkspell? ( =app-text/gtkspell-2* ) !gtkspell? ( virtual/aspell-dict ) kerberos? ( app-crypt/mit-krb5 ) ldap? ( net-nds/openldap ) rubrica? ( dev-libs/libxml2 ) pcre? ( >=dev-libs/libpcre-5.0 ) ssl? ( dev-libs/openssl ) xface? ( >=media-libs/compface-1.5.1 ) dev-util/intltool dev-util/pkgconfig sys-devel/gettext >=app-text/scrollkeeper-0.1.4 doc? ( dev-util/gtk-doc ) >=sys-apps/sed-4
+DESCRIPTION=Email client for GNOME
+EAPI=0
+HOMEPAGE=http://balsa.gnome.org
+INHERITED=gnome.org fdo-mime gnome2 gnome2-utils libtool
+IUSE=crypt doc gtkhtml gtkspell kerberos ldap libnotify pcre rubrica sqlite ssl xface debug
+KEYWORDS=alpha amd64 ppc sparc x86
+LICENSE=GPL-2
+RDEPEND=>=dev-libs/glib-2.0 >=x11-libs/gtk+-2.10 =dev-libs/gmime-2.2* >=net-libs/libesmtp-1.0.3 >=gnome-base/orbit-2 >=gnome-base/libbonobo-2.0 x11-themes/hicolor-icon-theme net-mail/mailbase crypt? ( >=app-crypt/gpgme-1.0 ) >=gnome-base/libgnome-2.0 >=gnome-base/libgnomeui-2.0 >=gnome-base/gnome-vfs-2.0 =x11-libs/gtksourceview-1* gtkhtml? ( gnome-extra/gtkhtml ) sqlite? ( >=dev-db/sqlite-2.8 ) libnotify? ( x11-libs/libnotify ) gtkspell? ( =app-text/gtkspell-2* ) !gtkspell? ( virtual/aspell-dict ) kerberos? ( app-crypt/mit-krb5 ) ldap? ( net-nds/openldap ) rubrica? ( dev-libs/libxml2 ) pcre? ( >=dev-libs/libpcre-5.0 ) ssl? ( dev-libs/openssl ) xface? ( >=media-libs/compface-1.5.1 )
+SLOT=0
+SRC_URI=http://balsa.gnome.org/balsa-2.3.22.tar.bz2

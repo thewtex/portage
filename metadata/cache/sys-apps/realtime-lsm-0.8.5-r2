@@ -1,0 +1,11 @@
+DEPEND=kernel_linux? ( virtual/linux-sources ) kernel_linux? ( virtual/modutils ) sys-apps/sed
+DESCRIPTION=Enable realtime capabilties via a security module.
+EAPI=0
+HOMEPAGE=http://www.sourceforge.net/projects/realtime-lsm/
+INHERITED=toolchain-funcs portability versionator multilib linux-info linux-mod eutils
+IUSE=kernel_linux
+KEYWORDS=amd64 ppc x86
+LICENSE=GPL-2
+RDEPEND=kernel_linux? ( virtual/modutils )
+SLOT=0
+SRC_URI=mirror://sourceforge/realtime-lsm/realtime-lsm-0.8.5.tar.gz

@@ -1,0 +1,11 @@
+DEPEND=virtual/perl-Getopt-Long virtual/perl-Digest-MD5 !minimal? ( dev-perl/Term-ReadPassword ) tagwriting? ( dev-perl/MP3-Tag ) amazon? ( dev-perl/MP3-Tag dev-perl/Net-Amazon )
+DESCRIPTION=save last.fm radio to mp3 files
+EAPI=0
+HOMEPAGE=http://search.cpan.org/src/JOCHEN/last.fm-ripper-1.2/README
+INHERITED=toolchain-funcs portability multilib base eutils perl-module
+IUSE=amazon tagwriting minimal
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-2 )
+RDEPEND=virtual/perl-Getopt-Long virtual/perl-Digest-MD5 !minimal? ( dev-perl/Term-ReadPassword ) tagwriting? ( dev-perl/MP3-Tag ) amazon? ( dev-perl/MP3-Tag dev-perl/Net-Amazon )
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/J/JO/JOCHEN/last.fm-ripper-1.2.1.tar.gz

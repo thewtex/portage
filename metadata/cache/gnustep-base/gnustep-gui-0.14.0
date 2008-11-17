@@ -1,0 +1,11 @@
+DEPEND=virtual/libc doc? ( virtual/texi2dvi =dev-tex/latex2html-2002* >=app-text/texi2html-1.64 ) >=gnustep-base/gnustep-base-1.16.0 x11-libs/libXt >=media-libs/tiff-3 jpeg? ( >=media-libs/jpeg-6b ) gif? ( >=media-libs/giflib-4.1 ) png? ( >=media-libs/libpng-1.2 ) cups? ( >=net-print/cups-1.1 ) media-libs/audiofile app-text/aspell
+DESCRIPTION=Library of GUI classes written in Obj-C
+EAPI=0
+HOMEPAGE=http://www.gnustep.org/
+INHERITED=gnustep-base toolchain-funcs portability flag-o-matic multilib eutils
+IUSE=jpeg gif png cups debug doc
+KEYWORDS=~alpha amd64 ppc sparc x86 ~x86-fbsd
+LICENSE=LGPL-2.1
+RDEPEND=virtual/libc doc? ( virtual/texi2dvi =dev-tex/latex2html-2002* >=app-text/texi2html-1.64 ) >=gnustep-base/gnustep-base-1.16.0 x11-libs/libXt >=media-libs/tiff-3 jpeg? ( >=media-libs/jpeg-6b ) gif? ( >=media-libs/giflib-4.1 ) png? ( >=media-libs/libpng-1.2 ) cups? ( >=net-print/cups-1.1 ) media-libs/audiofile app-text/aspell
+SLOT=0
+SRC_URI=ftp://ftp.gnustep.org/pub/gnustep/core/gnustep-gui-0.14.0.tar.gz

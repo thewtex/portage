@@ -1,0 +1,12 @@
+DEPEND=dev-lang/perl
+DESCRIPTION=A minimal libc subset for use with initramfs.
+EAPI=0
+HOMEPAGE=http://www.zytor.com/mailman/listinfo/klibc
+INHERITED=multilib toolchain-funcs eutils portability
+IUSE=debug n32
+KEYWORDS=~amd64 -mips ~ppc ~sparc ~x86
+LICENSE=|| ( GPL-2 LGPL-2 )
+RDEPEND=dev-lang/perl
+RESTRICT=strip
+SLOT=0
+SRC_URI=mirror://kernel/linux/libs/klibc/klibc-1.5.11.tar.bz2 mirror://kernel/linux/libs/klibc/Testing/klibc-1.5.11.tar.bz2 mirror://kernel/linux/kernel/v2.6/patch-2.6.24-rc7.bz2 mirror://kernel/linux/kernel/v2.6/testing/linux-2.6.23.tar.bz2

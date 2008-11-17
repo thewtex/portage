@@ -1,0 +1,11 @@
+DEPEND=mp3? ( media-libs/libmad ) flac? ( media-libs/flac ) vorbis? ( media-libs/libvorbis media-libs/libogg )
+DESCRIPTION=Cuecue is a suite to convert .cue + [.ogg|.flac|.wav|.mp3] to .cue + .bin.
+EAPI=0
+HOMEPAGE=http://cuecue.berlios.de/
+INHERITED=multilib toolchain-funcs eutils portability
+IUSE=flac mp3 vorbis
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=mp3? ( media-libs/libmad ) flac? ( media-libs/flac ) vorbis? ( media-libs/libvorbis media-libs/libogg )
+SLOT=0
+SRC_URI=mirror://berlios/cuecue/cuecue-0.2.2.tar.gz

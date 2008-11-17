@@ -1,0 +1,12 @@
+DEPEND=dev-libs/popt dev-libs/iniparser virtual/libiconv acl? ( kernel_linux? ( sys-apps/acl ) ) cups? ( net-print/cups ) ipv6? ( sys-apps/xinetd ) ads? ( virtual/krb5 sys-fs/e2fsprogs ) ldap? ( net-nds/openldap ) pam? ( virtual/pam ) readline? ( sys-libs/readline ) selinux? ( sec-policy/selinux-samba ) swat? ( sys-apps/xinetd ) syslog? ( virtual/logger ) fam? ( virtual/fam ) caps? ( sys-libs/libcap )
+DESCRIPTION=A suite of SMB and CIFS client/server programs for UNIX
+EAPI=0
+HOMEPAGE=http://www.samba.org/
+INHERITED=toolchain-funcs portability versionator multilib confutils pam eutils
+IUSE=linguas_ja linguas_pl acl ads async automount caps cups doc examples ipv6 kernel_linux ldap fam pam quotas readline selinux swat syslog winbind
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=dev-libs/popt dev-libs/iniparser virtual/libiconv acl? ( kernel_linux? ( sys-apps/acl ) ) cups? ( net-print/cups ) ipv6? ( sys-apps/xinetd ) ads? ( virtual/krb5 sys-fs/e2fsprogs ) ldap? ( net-nds/openldap ) pam? ( virtual/pam ) readline? ( sys-libs/readline ) selinux? ( sec-policy/selinux-samba ) swat? ( sys-apps/xinetd ) syslog? ( virtual/logger ) fam? ( virtual/fam ) caps? ( sys-libs/libcap )
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://samba/rc/samba-3.2.0rc2.tar.gz

@@ -1,0 +1,9 @@
+DEPEND=!minimal? ( berkdb? ( sys-libs/db ) ) atm? ( net-dialup/linux-atm ) >=virtual/os-headers-2.4.21 >=dev-util/git-1.5
+DESCRIPTION=kernel routing and traffic control utilities
+EAPI=0
+HOMEPAGE=http://linux-net.osdl.org/index.php/Iproute2
+INHERITED=multilib git toolchain-funcs eutils portability
+IUSE=atm berkdb minimal
+LICENSE=GPL-2
+RDEPEND=!minimal? ( berkdb? ( sys-libs/db ) ) atm? ( net-dialup/linux-atm )
+SLOT=0

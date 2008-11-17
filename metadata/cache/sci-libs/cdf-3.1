@@ -1,0 +1,11 @@
+DEPEND=ncurses? ( sys-libs/ncurses ) java? ( virtual/jdk dev-java/java-config )
+DESCRIPTION=Common Data Format I/O library for multi-dimensional data sets
+EAPI=0
+HOMEPAGE=http://cdf.gsfc.nasa.gov/
+INHERITED=multilib toolchain-funcs eutils portability
+IUSE=ncurses java doc examples
+KEYWORDS=amd64 ppc x86
+LICENSE=CDF
+RDEPEND=ncurses? ( sys-libs/ncurses )
+SLOT=0
+SRC_URI=ftp://rumba.gsfc.nasa.gov/pub/cdf/dist/cdf31/unix/cdf31-dist-cdf.tar.gz java? ( ftp://rumba.gsfc.nasa.gov/pub/cdf/dist/cdf31/unix/cdf31-dist-java.tar.gz ) doc? ( ftp://rumba.gsfc.nasa.gov/pub/cdf/dist/cdf31/unix/cdf31_documentation/cdf31ug.pdf ftp://rumba.gsfc.nasa.gov/pub/cdf/dist/cdf31/unix/cdf31_documentation/cdf31crm.pdf ftp://rumba.gsfc.nasa.gov/pub/cdf/dist/cdf31/unix/cdf31_documentation/cdf31frm.pdf ftp://rumba.gsfc.nasa.gov/pub/cdf/dist/cdf31/unix/cdf31_documentation/cdf31ifd.pdf java? ( ftp://rumba.gsfc.nasa.gov/pub/cdf/dist/cdf31/unix/cdf31_documentation/cdf31jrm.pdf ) )

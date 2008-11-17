@@ -1,0 +1,11 @@
+DEPEND=dev-libs/libusb pcsc-lite? ( sys-apps/pcsc-lite ) pcsc-lite? ( dev-util/pkgconfig ) =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=REINER SCT cyberJack pinpad/e-com USB user space driver library
+EAPI=0
+HOMEPAGE=http://www.reiner-sct.de/ http://sourceforge.net/projects/libchipcard/
+INHERITED=toolchain-funcs portability flag-o-matic multilib libtool autotools eutils
+IUSE=noudev pcsc-lite
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2 LGPL-2.1
+RDEPEND=dev-libs/libusb pcsc-lite? ( sys-apps/pcsc-lite )
+SLOT=0
+SRC_URI=mirror://sourceforge/libchipcard/ctapi-cyberjack-3.0.4.tar.gz

@@ -1,0 +1,11 @@
+DEPEND=dev-lang/perl
+DESCRIPTION=Webmin, a web-based system administration interface
+EAPI=0
+HOMEPAGE=http://www.webmin.com/
+INHERITED=multilib toolchain-funcs eutils portability pam
+IUSE=apache2 mysql pam postgres ssl minimal
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
+LICENSE=BSD
+RDEPEND=dev-lang/perl ssl? ( dev-perl/Net-SSLeay ) mysql? ( dev-perl/DBD-mysql ) postgres? ( dev-perl/DBD-Pg ) pam? ( dev-perl/Authen-PAM ) dev-perl/XML-Generator virtual/logger
+SLOT=0
+SRC_URI=minimal? ( mirror://sourceforge/webadmin/webmin-1.400-minimal.tar.gz ) !minimal? ( mirror://sourceforge/webadmin/webmin-1.400.tar.gz http://www.webmin.com/download/virtualmin/virtual-server-3.23.gpl.wbm.gz )

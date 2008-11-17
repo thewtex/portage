@@ -1,0 +1,11 @@
+DEPEND=>=dev-python/PyQt4-4.1 >=dev-python/qscintilla-python-2.1 >=dev-lang/python-2.4
+DESCRIPTION=A full featured Python IDE that is written in PyQt4 using the QScintilla editor widget
+EAPI=0
+HOMEPAGE=http://www.die-offenbachs.de/eric/index.html
+INHERITED=toolchain-funcs portability python multilib alternatives eutils
+IUSE=linguas_cs linguas_de linguas_fr linguas_ru
+KEYWORDS=~amd64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=>=dev-python/PyQt4-4.1 >=dev-python/qscintilla-python-2.1 >=dev-lang/python-2.4
+SLOT=4
+SRC_URI=mirror://sourceforge/eric-ide/eric4-4.1.4.tar.gz linguas_cs? ( mirror://sourceforge/eric-ide/eric4-i18n-cs-4.1.4.tar.gz ) linguas_de? ( mirror://sourceforge/eric-ide/eric4-i18n-de-4.1.4.tar.gz ) linguas_fr? ( mirror://sourceforge/eric-ide/eric4-i18n-fr-4.1.4.tar.gz ) linguas_ru? ( mirror://sourceforge/eric-ide/eric4-i18n-ru-4.1.4.tar.gz )

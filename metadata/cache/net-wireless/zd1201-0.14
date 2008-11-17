@@ -1,0 +1,11 @@
+DEPEND=kernel_linux? ( virtual/linux-sources ) kernel_linux? ( virtual/modutils ) sys-apps/sed
+DESCRIPTION=Linux Driver for ZyDAS 1201 (zd1201) based USB 802.11b Network WiFi devices
+EAPI=0
+HOMEPAGE=http://linux-lc100020.sourceforge.net/
+INHERITED=toolchain-funcs portability versionator multilib linux-info linux-mod eutils
+IUSE=kernel_linux
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND==net-wireless/zd1201-firmware-0.14 net-wireless/wireless-tools kernel_linux? ( virtual/modutils )
+SLOT=0
+SRC_URI=mirror://sourceforge/linux-lc100020/zd1201-0.14.tar.gz

@@ -1,0 +1,11 @@
+DEPEND=virtual/modutils <net-firewall/iptables-1.4.1.1 virtual/linux-sources kernel_linux? ( virtual/linux-sources ) kernel_linux? ( virtual/modutils ) sys-apps/sed
+DESCRIPTION=Netfilter module for dealing with P2P Applications.
+EAPI=0
+HOMEPAGE=http://www.ipp2p.org/index_en.html
+INHERITED=toolchain-funcs portability versionator multilib linux-info linux-mod eutils
+IUSE=kernel_linux
+KEYWORDS=amd64 ~ppc ppc64 sparc x86
+LICENSE=GPL-2
+RDEPEND=virtual/modutils <net-firewall/iptables-1.4.1.1 kernel_linux? ( virtual/modutils )
+SLOT=0
+SRC_URI=http://www.ipp2p.org/downloads/ipp2p-0.8.2.tar.gz

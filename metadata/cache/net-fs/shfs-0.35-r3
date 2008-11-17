@@ -1,0 +1,12 @@
+DEPEND=net-misc/openssh amd? ( net-fs/am-utils ) kernel_linux? ( virtual/linux-sources ) kernel_linux? ( virtual/modutils ) sys-apps/sed
+DESCRIPTION=Secure Shell File System
+EAPI=0
+HOMEPAGE=http://shfs.sourceforge.net/
+INHERITED=toolchain-funcs portability versionator multilib linux-info linux-mod eutils
+IUSE=X amd doc kernel_linux
+KEYWORDS=alpha amd64 ia64 ppc sparc x86
+LICENSE=GPL-2
+PDEPEND=X? ( net-misc/x11-ssh-askpass )
+RDEPEND=net-misc/openssh amd? ( net-fs/am-utils ) kernel_linux? ( virtual/modutils )
+SLOT=0
+SRC_URI=mirror://sourceforge/shfs/shfs-0.35.tar.gz

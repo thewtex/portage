@@ -1,0 +1,11 @@
+DEPEND=|| ( =virtual/jdk-1.5* =virtual/jdk-1.4* ) || ( =virtual/jre-1.5* =virtual/jre-1.4* ) gtk? ( >=x11-libs/gtk+-2.0 ) >=dev-java/java-config-2.0.33-r1 >=sys-apps/portage-2.1.2.7
+DESCRIPTION=Java Memory Profiler
+EAPI=0
+HOMEPAGE=http://www.khelekore.org/jmp/
+INHERITED=toolchain-funcs java-pkg-2 portability java-utils-2 versionator multilib eutils
+IUSE=gtk elibc_FreeBSD
+KEYWORDS=amd64 ppc x86
+LICENSE=GPL-2
+RDEPEND=|| ( =virtual/jre-1.5* =virtual/jre-1.4* ) gtk? ( >=x11-libs/gtk+-2.0 ) >=dev-java/java-config-2.0.33-r1 >=sys-apps/portage-2.1.2.7
+SLOT=0
+SRC_URI=mirror://gentoo/jmp-0.51.tar.gz

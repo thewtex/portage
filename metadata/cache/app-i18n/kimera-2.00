@@ -1,0 +1,11 @@
+DEPEND=|| ( x11-libs/qt-core:4 x11-libs/qt:4 ) anthy? ( app-i18n/anthy ) !anthy? ( app-i18n/canna )
+DESCRIPTION=A Japanese input method which supports the XIM protocol
+EAPI=1
+HOMEPAGE=http://kimera.sourceforge.jp/
+INHERITED=qt4 toolchain-funcs portability versionator multilib eutils
+IUSE=+anthy
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=|| ( x11-libs/qt-core:4 x11-libs/qt:4 ) anthy? ( app-i18n/anthy ) !anthy? ( app-i18n/canna )
+SLOT=0
+SRC_URI=mirror://sourceforge.jp/kimera/32701/kimera-2.00.tar.gz

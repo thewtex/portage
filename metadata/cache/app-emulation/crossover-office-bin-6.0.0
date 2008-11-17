@@ -1,0 +1,11 @@
+DESCRIPTION=simplified/streamlined version of wine with commercial support
+EAPI=0
+HOMEPAGE=http://www.codeweavers.com/products/cxoffice/
+INHERITED=multilib toolchain-funcs eutils portability
+IUSE=nas
+KEYWORDS=-* amd64 x86
+LICENSE=CROSSOVER
+RDEPEND=sys-libs/glibc x11-libs/libXrandr x11-libs/libXi x11-libs/libXmu x11-libs/libXmu x11-libs/libXxf86dga x11-libs/libXxf86vm dev-util/desktop-file-utils nas? ( media-libs/nas ) amd64? ( app-emulation/emul-linux-x86-xlibs )
+RESTRICT=fetch strip
+SLOT=0
+SRC_URI=install-crossover-standard-6.0.0.sh

@@ -1,0 +1,11 @@
+DEPEND=app-crypt/gnupg =dev-libs/glib-1.2* gtk? ( =x11-libs/gtk+-1.2* ) nls? ( sys-devel/gettext )
+DESCRIPTION=Quintuple Agent stores your (GnuPG) secrets in a secure manner.
+EAPI=0
+HOMEPAGE=http://www.vibe.at/tools/q-agent
+INHERITED=multilib toolchain-funcs eutils portability
+IUSE=nls gtk
+KEYWORDS=x86 ppc amd64
+LICENSE=GPL-2
+RDEPEND=app-crypt/gnupg =dev-libs/glib-1.2* gtk? ( =x11-libs/gtk+-1.2* ) nls? ( virtual/libintl )
+SLOT=0
+SRC_URI=http://www.vibe.at/tools/q-agent/quintuple-agent-1.0.3.tar.gz

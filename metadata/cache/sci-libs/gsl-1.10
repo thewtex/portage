@@ -1,0 +1,11 @@
+DEPEND=app-admin/eselect-cblas cblas? ( virtual/cblas ) dev-util/pkgconfig =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=The GNU Scientific Library
+EAPI=0
+HOMEPAGE=http://www.gnu.org/software/gsl/
+INHERITED=toolchain-funcs portability flag-o-matic multilib libtool autotools eutils
+IUSE=cblas
+KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd
+LICENSE=GPL-3
+RDEPEND=app-admin/eselect-cblas cblas? ( virtual/cblas )
+SLOT=0
+SRC_URI=mirror://gnu/gsl/gsl-1.10.tar.gz

@@ -1,0 +1,10 @@
+DESCRIPTION=music and sound effects library, and a sound processing system
+EAPI=0
+HOMEPAGE=http://www.fmod.org
+INHERITED=multilib versionator toolchain-funcs
+IUSE=doc examples
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=fmod
+RESTRICT=strip test
+SLOT=1
+SRC_URI=x86? ( http://www.fmod.org/index.php/release/version/fmodapi40805linux.tar.gz ) amd64? ( http://www.fmod.org/index.php/release/version/fmodapi40805linux64.tar.gz )

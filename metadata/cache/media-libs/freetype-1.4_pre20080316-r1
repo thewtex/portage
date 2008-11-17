@@ -1,0 +1,11 @@
+DEPEND=kpathsea? ( virtual/tex-base ) >=sys-devel/autoconf-2.59 =sys-devel/automake-1.10* =sys-devel/autoconf-2.1* sys-devel/libtool
+DESCRIPTION=Freetype font rendering engine
+EAPI=0
+HOMEPAGE=http://www.freetype.org/
+INHERITED=toolchain-funcs portability multilib libtool autotools eutils
+IUSE=doc nls kpathsea
+KEYWORDS=alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~x86-fbsd
+LICENSE=FTL
+RDEPEND=kpathsea? ( virtual/tex-base ) nls? ( sys-devel/gettext )
+SLOT=1
+SRC_URI=mirror://gentoo/freetype-1.4_pre20080316.tar.bz2

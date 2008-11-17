@@ -1,0 +1,11 @@
+DEPEND=dev-lang/perl imagemagick? ( media-gfx/imagemagick ) >=dev-lang/python-2.2.3 dev-util/scons =kde-base/kdelibs-3.5* =x11-libs/qt-3* =sys-devel/automake-1.9* >=sys-devel/autoconf-2.61 sys-devel/libtool sys-devel/make dev-util/pkgconfig dev-lang/perl x11-libs/libXt x11-proto/xf86vidmodeproto xinerama? ( x11-proto/xineramaproto ) arts? ( kde-base/arts )
+DESCRIPTION=KleanSweep allows you to reclaim disk space by finding unneeded files
+EAPI=0
+HOMEPAGE=http://linux.bydg.org/~yogin/
+INHERITED=toolchain-funcs qt3 portability flag-o-matic python kde versionator multilib alternatives base kde-functions libtool autotools eutils
+IUSE=imagemagick debug elibc_FreeBSD arts xinerama
+KEYWORDS=~x86 ~amd64
+LICENSE=GPL-2
+RDEPEND=dev-lang/perl imagemagick? ( media-gfx/imagemagick ) =kde-base/kdelibs-3.5* =x11-libs/qt-3* xinerama? ( x11-libs/libXinerama ) arts? ( kde-base/arts )
+SLOT=0
+SRC_URI=http://linux.bydg.org/~yogin/kleansweep-0.2.8.tar.bz2

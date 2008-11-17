@@ -1,0 +1,11 @@
+DEPEND=zlib? ( sys-libs/zlib ) szip? ( sci-libs/szip ) mpi? ( sys-cluster/mpich2 )
+DESCRIPTION=General purpose library and file format for storing scientific data
+EAPI=0
+HOMEPAGE=http://hdf.ncsa.uiuc.edu/HDF5/
+INHERITED=multilib toolchain-funcs eutils portability
+IUSE=static zlib ssl mpi hlapi szip threads debug
+KEYWORDS=amd64 ppc ppc64 x86
+LICENSE=NCSA-HDF
+RDEPEND=zlib? ( sys-libs/zlib ) szip? ( sci-libs/szip ) mpi? ( sys-cluster/mpich2 )
+SLOT=0
+SRC_URI=ftp://ftp.ncsa.uiuc.edu/HDF/HDF5/current/src/hdf5-1.6.4.tar.gz

@@ -1,0 +1,9 @@
+DESCRIPTION=Gentoo-based Network Appliance building system development tools
+EAPI=0
+HOMEPAGE=http://embedded.gentoo.org/gnap.xml
+IUSE=minimal
+KEYWORDS=~x86
+LICENSE=GPL-2
+RDEPEND=dev-util/catalyst sys-fs/squashfs-tools app-cdr/cdrtools
+SLOT=0
+SRC_URI=mirror://gentoo/gnap-sources-1.8.1.tar.bz2 !minimal? ( mirror://gentoo/gnap-stageseed-1.8.1.tar.bz2 mirror://gentoo/gnap-portagesnapshot-1.8.1.tar.bz2 )

@@ -1,0 +1,11 @@
+DEPEND=>=dev-db/sqlite-2.8.16 || ( >=dev-db/unixODBC-2.2 >=dev-db/libiodbc-3.5 ) sqlite3? ( >=dev-db/sqlite-3.5 ) =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=ODBC driver to access local SQLite database files.
+EAPI=0
+HOMEPAGE=http://www.ch-werner.de/sqliteodbc/
+INHERITED=toolchain-funcs portability multilib libtool autotools eutils
+IUSE=sqlite3 static
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=BSD
+RDEPEND=>=dev-db/sqlite-2.8.16 || ( >=dev-db/unixODBC-2.2 >=dev-db/libiodbc-3.5 ) sqlite3? ( >=dev-db/sqlite-3.5 )
+SLOT=0
+SRC_URI=http://www.ch-werner.de/sqliteodbc/sqliteodbc-0.79.tar.gz

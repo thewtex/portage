@@ -1,0 +1,11 @@
+DEPEND=>=dev-libs/glib-2.16 >=net-misc/curl-7.15.0 >=dev-libs/openssl-0.9.8 gtk? ( >=x11-libs/gtk+-2.6 ) libnotify? ( >=x11-libs/libnotify-0.4.4 ) sys-devel/gettext >=dev-util/pkgconfig-0.19 gtk? ( >=dev-util/intltool-0.35 ) =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=Simple BitTorrent client
+EAPI=0
+HOMEPAGE=http://www.transmissionbt.com/
+INHERITED=toolchain-funcs portability multilib libtool autotools eutils
+IUSE=gtk libnotify
+KEYWORDS=amd64 ppc x86 ~x86-fbsd
+LICENSE=MIT
+RDEPEND=>=dev-libs/glib-2.16 >=net-misc/curl-7.15.0 >=dev-libs/openssl-0.9.8 gtk? ( >=x11-libs/gtk+-2.6 ) libnotify? ( >=x11-libs/libnotify-0.4.4 )
+SLOT=0
+SRC_URI=http://download.transmissionbt.com/transmission/files/transmission-1.22.tar.bz2

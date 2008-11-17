@@ -1,0 +1,11 @@
+DEPEND=tcpd? ( sys-apps/tcp-wrappers ) =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=Serial To Network Proxy
+EAPI=0
+HOMEPAGE=http://sourceforge.net/projects/ser2net
+INHERITED=toolchain-funcs portability multilib libtool autotools eutils
+IUSE=tcpd
+KEYWORDS=~amd64 ~ppc ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=tcpd? ( sys-apps/tcp-wrappers )
+SLOT=0
+SRC_URI=mirror://sourceforge/ser2net/ser2net-2.5.tar.gz

@@ -1,0 +1,10 @@
+DESCRIPTION=ViewVC, a web interface to CVS and Subversion
+EAPI=0
+HOMEPAGE=http://viewvc.org/
+INHERITED=toolchain-funcs portability python multilib alternatives eutils
+IUSE=cvs cvsgraph enscript highlight mod_python mysql subversion
+KEYWORDS=amd64 ppc sparc x86
+LICENSE=viewcvs
+RDEPEND=cvs? ( >=dev-lang/python-1.5.2 app-text/rcs ) subversion? ( >=dev-lang/python-2.0 >=dev-util/subversion-1.2.0 ) cvsgraph? ( >=dev-util/cvsgraph-1.5.0 ) enscript? ( app-text/enscript ) highlight? ( >=app-text/highlight-2.2.10 ) mod_python? ( www-apache/mod_python ) mysql? ( >=dev-python/mysql-python-0.9.0 )
+SLOT=0
+SRC_URI=http://viewvc.tigris.org/files/documents/3330/37319/viewvc-1.0.4.tar.gz

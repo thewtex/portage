@@ -1,0 +1,11 @@
+DEPEND=dev-libs/gmp avahi? ( >=net-dns/avahi-0.6.16-r1 ) geoip? ( >=dev-libs/geoip-1.4.0-r1 ) =kde-base/kdelibs-3.5* =x11-libs/qt-3* =sys-devel/automake-1.9* >=sys-devel/autoconf-2.61 sys-devel/libtool sys-devel/make dev-util/pkgconfig dev-lang/perl x11-libs/libXt x11-proto/xf86vidmodeproto xinerama? ( x11-proto/xineramaproto ) arts? ( kde-base/arts )
+DESCRIPTION=A BitTorrent program for KDE.
+EAPI=0
+HOMEPAGE=http://ktorrent.org/
+INHERITED=toolchain-funcs qt3 portability flag-o-matic kde versionator multilib base kde-functions libtool autotools eutils
+IUSE=avahi geoip kdeenablefinal linguas_ar linguas_bg linguas_br linguas_ca linguas_cs linguas_cy linguas_da linguas_de linguas_el linguas_en_GB linguas_es linguas_et linguas_fa linguas_fr linguas_gl linguas_hu linguas_it linguas_ja linguas_ka linguas_lt linguas_ms linguas_nb linguas_nds linguas_nl linguas_pa linguas_pl linguas_pt linguas_pt_BR linguas_ru linguas_rw linguas_sk linguas_sr linguas_sr@Latn linguas_sv linguas_tr linguas_uk linguas_zh_CN linguas_zh_TW debug elibc_FreeBSD arts xinerama
+KEYWORDS=amd64 ppc ppc64 sparc x86 ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=dev-libs/gmp avahi? ( >=net-dns/avahi-0.6.16-r1 ) geoip? ( >=dev-libs/geoip-1.4.0-r1 ) || ( =kde-base/kdebase-3.5* =kde-base/kdebase-kioslaves-3.5* ) =kde-base/kdelibs-3.5* =x11-libs/qt-3* xinerama? ( x11-libs/libXinerama ) arts? ( kde-base/arts )
+SLOT=0
+SRC_URI=http://ktorrent.org/downloads/2.2.4/ktorrent-2.2.4.tar.gz

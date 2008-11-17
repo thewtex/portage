@@ -1,0 +1,11 @@
+DEPEND=virtual/ooo =dev-python/wxpython-2.6* sqlite? ( dev-python/pysqlite dev-db/sqliteodbc ) !sqlite? ( mysql? ( dev-python/mysql-python dev-db/myodbc ) !mysql? ( dev-python/pysqlite dev-db/sqliteodbc ) ) dev-db/unixODBC app-arch/unzip
+DESCRIPTION=Bibliographic and reference management software, integrates with OO.o and MS Word
+EAPI=0
+HOMEPAGE=http://bibus-biblio.sourceforge.net/
+INHERITED=toolchain-funcs portability python multilib alternatives eutils
+IUSE=mysql sqlite
+KEYWORDS=~ppc ~x86 ~amd64
+LICENSE=GPL-2
+RDEPEND=virtual/ooo =dev-python/wxpython-2.6* sqlite? ( dev-python/pysqlite dev-db/sqliteodbc ) !sqlite? ( mysql? ( dev-python/mysql-python dev-db/myodbc ) !mysql? ( dev-python/pysqlite dev-db/sqliteodbc ) ) dev-db/unixODBC
+SLOT=0
+SRC_URI=mirror://sourceforge/bibus-biblio/bibus-1.4.3.1.tar.gz

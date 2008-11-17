@@ -1,0 +1,11 @@
+DEPEND=>=x11-libs/gtk+-2.6 >=dev-libs/glib-2.6 >=gnome-base/libglade-2.5 >=dev-libs/libsigc++-2.0 >=dev-libs/libpcre-4.4 >=dev-libs/libxml2-2.6.2 >=dev-cpp/glibmm-2.14 dev-cpp/gtkmm:2.4 >=virtual/mysql-5.0 query-browser? ( gnome-extra/gtkhtml:3.14 gnome-base/libgnomeprint:2.2 ) >=dev-util/pkgconfig-0.15 >=app-text/scrollkeeper-0.3.11 >=sys-apps/sed-4
+DESCRIPTION=MySQL GUI Tools
+EAPI=1
+HOMEPAGE=http://www.mysql.com/products/tools/
+INHERITED=toolchain-funcs portability flag-o-matic multilib gnome2-utils gnome2 gnome.org fdo-mime libtool eutils
+IUSE=nls +administrator +query-browser
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=>=x11-libs/gtk+-2.6 >=dev-libs/glib-2.6 >=gnome-base/libglade-2.5 >=dev-libs/libsigc++-2.0 >=dev-libs/libpcre-4.4 >=dev-libs/libxml2-2.6.2 >=dev-cpp/glibmm-2.14 dev-cpp/gtkmm:2.4 >=virtual/mysql-5.0 query-browser? ( gnome-extra/gtkhtml:3.14 gnome-base/libgnomeprint:2.2 ) !dev-db/mysql-administrator !dev-db/mysql-query-browser
+SLOT=0
+SRC_URI=mirror://mysql/Downloads/MySQLGUITools/mysql-gui-tools-5.0r12.tar.gz

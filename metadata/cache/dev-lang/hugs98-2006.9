@@ -1,0 +1,12 @@
+DEPEND=X? ( x11-libs/libX11 ) opengl? ( virtual/opengl virtual/glu virtual/glut ) openal? ( media-libs/openal ) opengl? ( app-admin/eselect-opengl ) ~app-text/docbook-sgml-dtd-4.2
+DESCRIPTION=The Hugs98 Haskell interpreter
+EAPI=0
+HOMEPAGE=http://www.haskell.org/hugs/
+INHERITED=toolchain-funcs portability flag-o-matic versionator multilib base eutils
+IUSE=X opengl openal doc
+KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86
+LICENSE=as-is
+RDEPEND=X? ( x11-libs/libX11 ) opengl? ( virtual/opengl virtual/glu virtual/glut ) openal? ( media-libs/openal )
+RESTRICT=test
+SLOT=0
+SRC_URI=http://cvs.haskell.org/Hugs/downloads/2006-09/hugs98-plus-Sep2006.tar.gz

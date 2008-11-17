@@ -1,0 +1,11 @@
+DEPEND=virtual/libc nls? ( sys-devel/gettext ) kerberos? ( virtual/krb5 ) idn? ( net-dns/libidn )
+DESCRIPTION=The GNU SASL library
+EAPI=0
+HOMEPAGE=http://www.gnu.org/software/gsasl/
+IUSE=kerberos nls static idn
+KEYWORDS=~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=LGPL-2.1
+PROVIDE=virtual/gsasl
+RDEPEND=virtual/libc nls? ( sys-devel/gettext ) kerberos? ( virtual/krb5 ) idn? ( net-dns/libidn ) !virtual/gsasl
+SLOT=0
+SRC_URI=http://josefsson.org/gsasl/releases/libgsasl-0.2.10.tar.gz

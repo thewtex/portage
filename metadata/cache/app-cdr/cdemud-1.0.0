@@ -1,0 +1,11 @@
+DEPEND=>dev-libs/dbus-glib-0.6 >=dev-libs/libdaemon-0.10 >=dev-libs/libmirage-1.0.0 alsa? ( >=media-libs/alsa-lib-1.0.0 >=media-libs/libsndfile-1.0.0 ) dev-util/unifdef
+DESCRIPTION=Daemon of the cdemu cd image mounting suite
+EAPI=0
+HOMEPAGE=http://www.cdemu.org
+INHERITED=multilib toolchain-funcs eutils portability
+IUSE=alsa
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=>dev-libs/dbus-glib-0.6 >=dev-libs/libdaemon-0.10 >=dev-libs/libmirage-1.0.0 alsa? ( >=media-libs/alsa-lib-1.0.0 >=media-libs/libsndfile-1.0.0 ) >=sys-fs/vhba-1.0.0
+SLOT=0
+SRC_URI=mirror://sourceforge/cdemu/cdemu-daemon-1.0.0.tar.bz2

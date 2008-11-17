@@ -1,0 +1,10 @@
+DEPEND=kernel_linux? ( virtual/linux-sources ) kernel_linux? ( virtual/modutils ) sys-apps/sed dev-util/mercurial net-misc/rsync
+DESCRIPTION=live development version of v4l&dvb-driver for Kernel 2.6
+EAPI=0
+HOMEPAGE=http://www.linuxtv.org
+INHERITED=toolchain-funcs portability mercurial versionator multilib linux-info linux-mod eutils
+IUSE=kernel_linux
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=kernel_linux? ( virtual/modutils )
+SLOT=0

@@ -1,0 +1,11 @@
+DEPEND=ssl? ( >=dev-libs/openssl-0.9.6d ) =sys-devel/automake-1.9* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=A HTTP regression testing and benchmarking utility
+EAPI=0
+HOMEPAGE=http://www.joedog.org/JoeDog/Siege
+INHERITED=toolchain-funcs portability multilib bash-completion libtool autotools eutils
+IUSE=debug ssl bash-completion
+KEYWORDS=~amd64 ~hppa ~mips ppc x86
+LICENSE=GPL-2
+RDEPEND=ssl? ( >=dev-libs/openssl-0.9.6d ) bash-completion? ( || ( app-admin/eselect app-shells/bash-completion-config ) )
+SLOT=0
+SRC_URI=ftp://sid.joedog.org/pub/siege/siege-2.66.tar.gz

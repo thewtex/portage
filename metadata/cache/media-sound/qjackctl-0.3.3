@@ -1,0 +1,11 @@
+DEPEND=alsa? ( media-libs/alsa-lib ) || ( ( x11-libs/qt-core:4 x11-libs/qt-gui:4 ) =x11-libs/qt-4.3*:4 ) media-sound/jack-audio-connection-kit
+DESCRIPTION=A Qt application to control the JACK Audio Connection Kit and ALSA sequencer connections.
+EAPI=1
+HOMEPAGE=http://qjackctl.sourceforge.net/
+INHERITED=qt4 toolchain-funcs portability versionator multilib eutils
+IUSE=alsa debug
+KEYWORDS=~amd64 ~ppc ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=alsa? ( media-libs/alsa-lib ) || ( ( x11-libs/qt-core:4 x11-libs/qt-gui:4 ) =x11-libs/qt-4.3*:4 ) media-sound/jack-audio-connection-kit
+SLOT=0
+SRC_URI=mirror://sourceforge/qjackctl/qjackctl-0.3.3.tar.gz

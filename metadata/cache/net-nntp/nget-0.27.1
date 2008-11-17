@@ -1,0 +1,12 @@
+DEPEND=dev-libs/uulib
+DESCRIPTION=Network utility to retrieve files from an NNTP news server
+EAPI=0
+HOMEPAGE=http://nget.sourceforge.net/
+INHERITED=multilib toolchain-funcs eutils portability flag-o-matic
+IUSE=static debug ipv6 pcre zlib
+KEYWORDS=amd64 arm hppa ppc sh x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/popt pcre? ( dev-libs/libpcre ) zlib? ( sys-libs/zlib )
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://sourceforge/nget/nget-0.27.1.tar.gz

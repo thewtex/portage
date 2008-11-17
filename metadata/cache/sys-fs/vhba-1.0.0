@@ -1,0 +1,11 @@
+DEPEND=>=virtual/linux-sources-2.6.19 kernel_linux? ( virtual/linux-sources ) kernel_linux? ( virtual/linux-sources ) kernel_linux? ( virtual/modutils ) sys-apps/sed
+DESCRIPTION=VHBA module provides Virtual (SCSI) Host Bus Adapter for the cdemu suite
+EAPI=0
+HOMEPAGE=http://cdemu.org
+INHERITED=toolchain-funcs portability versionator multilib linux-info linux-mod eutils
+IUSE=kernel_linux
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=kernel_linux? ( virtual/modutils )
+SLOT=0
+SRC_URI=mirror://sourceforge/cdemu/vhba-module-1.0.0.tar.bz2

@@ -1,0 +1,11 @@
+DEPEND=>=dev-db/libdbi-0.8.0 mysql? ( virtual/mysql ) postgres? ( virtual/postgresql-server ) sqlite? ( <dev-db/sqlite-3 ) sqlite3? ( >=dev-db/sqlite-3 ) firebird? ( dev-db/firebird )
+DESCRIPTION=The libdbi-drivers project maintains drivers for libdbi.
+EAPI=0
+HOMEPAGE=http://libdbi-drivers.sourceforge.net/
+INHERITED=multilib toolchain-funcs eutils portability
+IUSE=mysql postgres sqlite oci8 firebird sqlite3
+KEYWORDS=amd64 hppa ppc ~sparc x86
+LICENSE=LGPL-2.1
+RDEPEND=>=dev-db/libdbi-0.8.0 mysql? ( virtual/mysql ) postgres? ( virtual/postgresql-server ) sqlite? ( <dev-db/sqlite-3 ) sqlite3? ( >=dev-db/sqlite-3 ) firebird? ( dev-db/firebird )
+SLOT=0
+SRC_URI=mirror://sourceforge/libdbi-drivers/libdbi-drivers-0.8.1.tar.gz

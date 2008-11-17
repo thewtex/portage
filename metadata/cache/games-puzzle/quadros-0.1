@@ -1,0 +1,11 @@
+DEPEND==x11-libs/qt-3* =sys-devel/automake-1.9* >=sys-devel/autoconf-2.61 sys-devel/libtool sys-devel/make dev-util/pkgconfig dev-lang/perl x11-libs/libXt x11-proto/xf86vidmodeproto xinerama? ( x11-proto/xineramaproto ) arts? ( kde-base/arts )
+DESCRIPTION=An implementation of the Tetris game with team multiplayer ability
+EAPI=0
+HOMEPAGE=http://quadros.sourceforge.net/
+INHERITED=toolchain-funcs qt3 portability flag-o-matic kde versionator multilib base kde-functions games autotools libtool eutils
+IUSE=debug elibc_FreeBSD arts xinerama
+KEYWORDS=~amd64 ~ppc x86
+LICENSE=LGPL-2.1
+RDEPEND==x11-libs/qt-3* xinerama? ( x11-libs/libXinerama ) arts? ( kde-base/arts )
+SLOT=0
+SRC_URI=mirror://sourceforge/quadros/quadros-0.1.tar.gz

@@ -1,0 +1,11 @@
+DEPEND=>=dev-lang/mono-1.1.10 avahi? ( >=net-dns/avahi-0.6 ) !avahi? ( net-misc/mDNSResponder ) dev-util/pkgconfig
+DESCRIPTION=a cross platform Zero Configuration Networking library for Mono and .NET.
+EAPI=1
+HOMEPAGE=http://www.mono-project.com/Mono.Zeroconf
+INHERITED=multilib toolchain-funcs eutils portability mono
+IUSE=+avahi
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=>=dev-lang/mono-1.1.10 avahi? ( >=net-dns/avahi-0.6 ) !avahi? ( net-misc/mDNSResponder )
+SLOT=0
+SRC_URI=http://banshee-project.org/files/mono-zeroconf/mono-zeroconf-0.7.5.tar.bz2

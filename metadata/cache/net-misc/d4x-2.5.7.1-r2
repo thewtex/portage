@@ -1,0 +1,11 @@
+DEPEND=>=x11-libs/gtk+-2 dev-libs/boost ssl? ( dev-libs/openssl ) !ao? ( esd? ( media-sound/esound ) ) ao? ( media-libs/libao ) dev-util/pkgconfig nls? ( sys-devel/gettext dev-util/intltool )
+DESCRIPTION=GTK based download manager for X.
+EAPI=0
+HOMEPAGE=http://www.krasu.ru/soft/chuchelo
+INHERITED=multilib toolchain-funcs eutils portability flag-o-matic
+IUSE=ao esd nls oss ssl
+KEYWORDS=amd64 ~ppc sparc x86
+LICENSE=Artistic
+RDEPEND=>=x11-libs/gtk+-2 dev-libs/boost ssl? ( dev-libs/openssl ) !ao? ( esd? ( media-sound/esound ) ) ao? ( media-libs/libao )
+SLOT=0
+SRC_URI=http://d4x.krasu.ru/files/d4x-2.5.7.1.tar.bz2

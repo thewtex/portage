@@ -1,0 +1,11 @@
+DEPEND=app-admin/sudo dev-libs/libpcre >=media-libs/jpeg-6b net-libs/gnutls >=dev-lang/perl-5.6.0 dev-perl/Archive-Tar dev-perl/Archive-Zip dev-perl/DateManip dev-perl/DBD-mysql dev-perl/DBI dev-perl/Device-SerialPort dev-perl/libwww-perl dev-perl/MIME-Lite dev-perl/MIME-tools dev-perl/PHP-Serialization virtual/perl-Getopt-Long virtual/perl-libnet virtual/perl-Sys-Syslog virtual/perl-Time-HiRes X10? ( dev-perl/X10 ) =www-servers/apache-2* virtual/httpd-php =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=ZoneMinder allows you to capture, analyse, record and monitor any cameras attached to your system.
+EAPI=0
+HOMEPAGE=http://www.zoneminder.com/
+INHERITED=depend.apache toolchain-funcs portability depend.php multilib libtool phpconfutils autotools eutils
+IUSE=debug ffmpeg X10
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-perl/DBD-mysql ffmpeg? ( >=media-video/ffmpeg-0.4.9_p20080326 ) media-libs/netpbm =www-servers/apache-2* virtual/httpd-php
+SLOT=0
+SRC_URI=http://www.zoneminder.com/downloads/ZoneMinder-1.23.3.tar.gz

@@ -1,0 +1,11 @@
+DEPEND==sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=Programs for crystal structure determination from single-crystal diffraction data
+EAPI=0
+HOMEPAGE=http://shelx.uni-ac.gwdg.de/SHELX/
+INHERITED=toolchain-funcs portability flag-o-matic multilib fortran libtool autotools eutils
+IUSE=dosformat openmp debug
+KEYWORDS=~ppc ~x86
+LICENSE=free-noncomm
+RESTRICT=fetch
+SLOT=0
+SRC_URI=shelx-20060317.tgz openmp? ( shelx-20060317-mp.tgz )

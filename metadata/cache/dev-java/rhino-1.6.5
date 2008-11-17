@@ -1,0 +1,11 @@
+DEPEND=>=virtual/jdk-1.4 app-arch/unzip =dev-java/xml-xmlbeans-1* >=dev-java/java-config-2.0.33-r1 >=sys-apps/portage-2.1.2.7 source? ( app-arch/zip ) >=dev-java/ant-core-1.7.0 >=sys-apps/portage-2.1.2.7 >=dev-java/javatoolkit-0.3.0-r2
+DESCRIPTION=An open-source implementation of JavaScript written in Java.
+EAPI=0
+HOMEPAGE=http://www.mozilla.org/rhino/
+INHERITED=toolchain-funcs java-pkg-2 portability java-utils-2 versionator multilib eutils java-ant-2
+IUSE=elibc_FreeBSD doc examples source elibc_FreeBSD
+KEYWORDS=amd64 ~ia64 ppc ppc64 x86 ~x86-fbsd
+LICENSE=|| ( MPL-1.1 GPL-2 ) BSD-2
+RDEPEND=>=virtual/jre-1.4 =dev-java/xml-xmlbeans-1* >=dev-java/java-config-2.0.33-r1 >=sys-apps/portage-2.1.2.7 source? ( app-arch/zip )
+SLOT=1.6
+SRC_URI=ftp://ftp.mozilla.org/pub/mozilla.org/js/rhino1_6R5.zip mirror://gentoo/rhino-swing-ex-1.0.zip

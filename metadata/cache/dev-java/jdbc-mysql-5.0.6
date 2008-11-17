@@ -1,0 +1,12 @@
+DEPEND=|| ( =virtual/jdk-1.5* =virtual/jdk-1.4* ) log4j? ( dev-java/log4j ) c3p0? ( dev-java/c3p0 ) dev-java/commons-logging >=dev-java/java-config-2.0.33-r1 >=sys-apps/portage-2.1.2.7 source? ( app-arch/zip ) >=dev-java/ant-core-1.7.0 dev-java/ant-contrib >=sys-apps/portage-2.1.2.7 >=dev-java/javatoolkit-0.3.0-r2
+DESCRIPTION=MySQL JDBC driver
+EAPI=0
+HOMEPAGE=http://www.mysql.com/products/connector/j/
+INHERITED=toolchain-funcs java-pkg-2 portability java-utils-2 versionator multilib eutils java-ant-2
+IUSE=c3p0 log4j elibc_FreeBSD source elibc_FreeBSD
+KEYWORDS=amd64 ppc ppc64 x86
+LICENSE=GPL-2-with-MySQL-FLOSS-exception
+RDEPEND=>=virtual/jre-1.4 log4j? ( dev-java/log4j ) c3p0? ( dev-java/c3p0 ) dev-java/commons-logging >=dev-java/java-config-2.0.33-r1 >=sys-apps/portage-2.1.2.7 source? ( app-arch/zip )
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://mysql/Downloads/Connector-J/mysql-connector-java-5.0.6.tar.gz

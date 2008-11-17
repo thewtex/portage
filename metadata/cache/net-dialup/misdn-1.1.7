@@ -1,0 +1,11 @@
+DEPEND=kernel_linux? ( virtual/linux-sources ) kernel_linux? ( virtual/modutils ) sys-apps/sed
+DESCRIPTION=mISDN is the new ISDN stack of the linux kernel 2.6.
+EAPI=0
+HOMEPAGE=http://www.misdn.org/
+INHERITED=toolchain-funcs portability versionator multilib linux-info linux-mod eutils
+IUSE=ecaggressive ecmg2 eckb1 ecmark2 misdn_cards_avmfritz misdn_cards_hfcpci misdn_cards_hfcmulti misdn_cards_hfcsusb misdn_cards_hfcsmini misdn_cards_xhfc misdn_cards_sedlfax misdn_cards_w6692pci misdn_cards_netjetpci kernel_linux
+KEYWORDS=~x86 ~amd64 ~ppc
+LICENSE=GPL-2
+RDEPEND=>=net-dialup/capi4k-utils-20050718 sys-devel/bc kernel_linux? ( virtual/modutils )
+SLOT=0
+SRC_URI=http://www.misdn.org/downloads/releases/mISDN-1_1_7.tar.gz

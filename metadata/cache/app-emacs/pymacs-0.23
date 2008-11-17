@@ -1,0 +1,11 @@
+DEPEND=doc? ( dev-python/docutils virtual/latex-base ) test? ( || ( dev-texlive/texlive-langfrench app-text/tetex app-text/ptex ) ) virtual/python >=virtual/emacs-21
+DESCRIPTION=A tool that allows both-side communication beetween Python and Emacs Lisp
+EAPI=0
+HOMEPAGE=http://pymacs.progiciels-bpi.ca/
+INHERITED=toolchain-funcs distutils portability python multilib versionator alternatives elisp eutils elisp-common
+IUSE=doc test
+KEYWORDS=amd64 arm ~hppa ia64 ppc ppc64 s390 sh x86 ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=>=virtual/emacs-21
+SLOT=0
+SRC_URI=http://pymacs.progiciels-bpi.ca/archives/Pymacs-0.23.tar.gz

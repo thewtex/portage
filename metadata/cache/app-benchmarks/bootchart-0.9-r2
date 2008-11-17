@@ -1,0 +1,11 @@
+DEPEND=java? ( >=virtual/jdk-1.4 >=dev-java/ant-core-1.4 dev-java/commons-cli source? ( app-arch/zip ) ) java? ( >=dev-java/java-config-2.0.33-r1 >=sys-apps/portage-2.1.2.7 ) java? ( >=dev-java/ant-core-1.7.0 >=sys-apps/portage-2.1.2.7 >=dev-java/javatoolkit-0.3.0-r2 )
+DESCRIPTION=Performance analysis and visualization of the system boot process
+EAPI=0
+HOMEPAGE=http://www.bootchart.org/
+INHERITED=toolchain-funcs portability java-utils-2 versionator multilib java-pkg-opt-2 eutils java-ant-2
+IUSE=acct debug doc java source elibc_FreeBSD java elibc_FreeBSD
+KEYWORDS=amd64 hppa x86
+LICENSE=GPL-2
+RDEPEND=java? ( >=virtual/jdk-1.4 dev-java/commons-cli ) acct? ( sys-process/acct ) java? ( >=dev-java/java-config-2.0.33-r1 >=sys-apps/portage-2.1.2.7 )
+SLOT=0
+SRC_URI=mirror://sourceforge/bootchart/bootchart-0.9.tar.bz2

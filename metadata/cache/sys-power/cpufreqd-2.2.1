@@ -1,0 +1,11 @@
+DEPEND=sys-apps/sed >=sys-power/cpufrequtils-002 lm_sensors? ( sys-apps/lm_sensors ) =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=CPU Frequency Daemon
+EAPI=0
+HOMEPAGE=http://cpufreqd.sourceforge.net
+INHERITED=toolchain-funcs portability multilib libtool autotools eutils
+IUSE=acpi apm lm_sensors nforce2 nvidia pmu
+KEYWORDS=~amd64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=>=sys-power/cpufrequtils-002 lm_sensors? ( sys-apps/lm_sensors )
+SLOT=0
+SRC_URI=mirror://sourceforge/cpufreqd/cpufreqd-2.2.1.tar.bz2 nvidia? ( http://www.linuxhardware.org/nvclock/nvclock0.8b.tar.gz )

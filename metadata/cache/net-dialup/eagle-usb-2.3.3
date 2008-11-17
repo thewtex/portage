@@ -1,0 +1,11 @@
+DEPEND=kernel_linux? ( virtual/linux-sources ) kernel_linux? ( virtual/modutils ) sys-apps/sed =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=GPL Driver for Eagle Chipset powered ADSL modem
+EAPI=0
+HOMEPAGE=http://www.eagle-usb.org/
+INHERITED=toolchain-funcs portability versionator multilib libtool linux-info autotools linux-mod eutils
+IUSE=kernel_linux
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=net-dialup/ppp !net-dialup/ueagle-atm virtual/logger kernel_linux? ( virtual/modutils )
+SLOT=0
+SRC_URI=http://baud123.free.fr/eagle-usb/eagle-usb-2.3/eagle-usb-2.3.3.tar.bz2

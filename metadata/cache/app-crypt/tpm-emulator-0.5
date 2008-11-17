@@ -1,0 +1,11 @@
+DEPEND=dev-libs/gmp kernel_linux? ( virtual/linux-sources ) kernel_linux? ( virtual/modutils ) sys-apps/sed
+DESCRIPTION=Emulator driver for tpm
+EAPI=0
+HOMEPAGE=https://developer.berlios.de/projects/tpm-emulator
+INHERITED=toolchain-funcs portability versionator multilib linux-info linux-mod eutils
+IUSE=kernel_linux
+KEYWORDS=~x86
+LICENSE=GPL-2
+RDEPEND=kernel_linux? ( virtual/modutils )
+SLOT=0
+SRC_URI=mirror://berlios/tpm-emulator/tpm_emulator-0.5.tar.gz

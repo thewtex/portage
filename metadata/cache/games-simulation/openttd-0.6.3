@@ -1,0 +1,11 @@
+DEPEND=!dedicated? ( media-libs/libsdl[X] truetype? ( media-libs/fontconfig media-libs/freetype:2 ) ) iconv? ( virtual/libiconv ) png? ( media-libs/libpng ) zlib? ( sys-libs/zlib )
+DESCRIPTION=OpenTTD is a clone of Transport Tycoon Deluxe
+EAPI=2
+HOMEPAGE=http://www.openttd.org/
+INHERITED=eutils toolchain-funcs games multilib portability
+IUSE=alsa debug dedicated iconv +png scenarios timidity +truetype +zlib
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
+LICENSE=GPL-2
+RDEPEND=!dedicated? ( media-libs/libsdl[X] truetype? ( media-libs/fontconfig media-libs/freetype:2 ) ) iconv? ( virtual/libiconv ) png? ( media-libs/libpng ) zlib? ( sys-libs/zlib ) !dedicated? ( timidity? ( media-sound/timidity++ ) !timidity? ( alsa? ( media-sound/alsa-utils ) ) )
+SLOT=0
+SRC_URI=http://binaries.openttd.org/releases/0.6.3/openttd-0.6.3-source.tar.bz2 scenarios? ( http://binaries.openttd.org/scenarios/openttd-0.4.8-scenarios.tar.bz2 ) scenarios? ( http://binaries.openttd.org/scenarios/openttd-0.5.0-scenarios.tar.bz2 )

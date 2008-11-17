@@ -1,0 +1,11 @@
+DEPEND=virtual/krb5
+DESCRIPTION=Modified versions of kinit for automatic ticket refresh
+EAPI=0
+HOMEPAGE=http://www.eyrie.org/~eagle/software/kstart
+INHERITED=multilib toolchain-funcs eutils portability
+IUSE=afs
+KEYWORDS=~x86 ~amd64
+LICENSE=|| ( MIT Stanford ISC )
+RDEPEND=virtual/krb5 afs? ( net-fs/openafs )
+SLOT=0
+SRC_URI=http://archives.eyrie.org/software/kerberos/kstart-3.13.tar.gz

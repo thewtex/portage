@@ -1,0 +1,11 @@
+DEPEND=media-libs/alsa-lib x11-libs/qt:3 =dev-libs/glib-1.2* media-libs/libsamplerate media-libs/id3lib dev-libs/libxml2 media-plugins/tap-plugins media-plugins/swh-plugins media-sound/jack-audio-connection-kit media-libs/libdjconsole media-libs/libogg media-libs/libvorbis media-libs/libsdl audiofile? ( media-libs/audiofile ) cdparanoia? ( media-sound/cdparanoia ) mad? ( media-libs/libmad ) mpeg? ( media-libs/libmpeg3 ) =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=A live DJing application.
+EAPI=1
+HOMEPAGE=http://djplay.sf.net/
+INHERITED=toolchain-funcs qt3 portability versionator multilib libtool autotools eutils
+IUSE=audiofile cdparanoia mad mpeg
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=media-libs/alsa-lib x11-libs/qt:3 =dev-libs/glib-1.2* media-libs/libsamplerate media-libs/id3lib dev-libs/libxml2 media-plugins/tap-plugins media-plugins/swh-plugins media-sound/jack-audio-connection-kit media-libs/libdjconsole media-libs/libogg media-libs/libvorbis media-libs/libsdl audiofile? ( media-libs/audiofile ) cdparanoia? ( media-sound/cdparanoia ) mad? ( media-libs/libmad ) mpeg? ( media-libs/libmpeg3 )
+SLOT=0
+SRC_URI=mirror://sourceforge/djplay/djplay-0.5.0.tar.gz

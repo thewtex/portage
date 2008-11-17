@@ -1,0 +1,11 @@
+DEPEND=virtual/opengl media-libs/libsndfile dev-libs/libcdio media-libs/libsdl media-libs/sdl-net alsa? ( media-libs/alsa-lib ) jack? ( media-sound/jack-audio-connection-kit ) nls? ( virtual/libintl ) dev-util/pkgconfig nls? ( sys-devel/gettext ) =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=An advanced NES, GB/GBC/GBA, TurboGrafx 16/CD, NGPC and Lynx emulator
+EAPI=0
+HOMEPAGE=http://mednafen.sourceforge.net/
+INHERITED=toolchain-funcs portability multilib libtool games autotools eutils
+IUSE=alsa cjk debug jack nls
+KEYWORDS=~amd64 ~ppc x86
+LICENSE=GPL-2
+RDEPEND=virtual/opengl media-libs/libsndfile dev-libs/libcdio media-libs/libsdl media-libs/sdl-net alsa? ( media-libs/alsa-lib ) jack? ( media-sound/jack-audio-connection-kit ) nls? ( virtual/libintl )
+SLOT=0
+SRC_URI=mirror://sourceforge/mednafen/mednafen-0.8.9.tar.bz2

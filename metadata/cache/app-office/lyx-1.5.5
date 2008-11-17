@@ -1,0 +1,12 @@
+DEPEND=|| ( ( x11-libs/qt-gui x11-libs/qt-core ) =x11-libs/qt-4.3*:4 ) x11-libs/libXrandr x11-libs/libXcursor x11-libs/libXrender x11-libs/libXfixes x11-libs/libXext x11-libs/libSM x11-libs/libICE x11-libs/libX11 x11-libs/libXau x11-libs/libXdmcp media-gfx/imagemagick media-libs/libpng media-libs/fontconfig media-libs/freetype dev-libs/libxml2 app-text/aiksaurus app-text/sgmltools-lite virtual/aspell-dict >=dev-lang/python-2.3.4 cups? ( virtual/lpr ) latex? ( virtual/latex-base virtual/ghostscript app-text/noweb dev-tex/dvipost dev-tex/chktex || ( dev-tex/latex2html dev-tex/tth dev-tex/hevea dev-tex/tex4ht ) ) linguas_he? ( dev-tex/ivritex ) x11-proto/xproto dev-util/pkgconfig nls? ( sys-devel/gettext ) X? ( x11-apps/mkfontdir media-fonts/encodings ) media-libs/fontconfig
+DESCRIPTION=WYSIWYM frontend for LaTeX, DocBook, etc.
+EAPI=1
+HOMEPAGE=http://www.lyx.org/
+INHERITED=qt4 toolchain-funcs portability flag-o-matic versionator multilib font eutils
+IUSE=cups debug nls linguas_he latex X
+KEYWORDS=alpha amd64 hppa ia64 ppc ppc64 sparc x86
+LICENSE=GPL-2
+RDEPEND=|| ( ( x11-libs/qt-gui x11-libs/qt-core ) =x11-libs/qt-4.3*:4 ) x11-libs/libXrandr x11-libs/libXcursor x11-libs/libXrender x11-libs/libXfixes x11-libs/libXext x11-libs/libSM x11-libs/libICE x11-libs/libX11 x11-libs/libXau x11-libs/libXdmcp media-gfx/imagemagick media-libs/libpng media-libs/fontconfig media-libs/freetype dev-libs/libxml2 app-text/aiksaurus app-text/sgmltools-lite virtual/aspell-dict >=dev-lang/python-2.3.4 cups? ( virtual/lpr ) latex? ( virtual/latex-base virtual/ghostscript app-text/noweb dev-tex/dvipost dev-tex/chktex || ( dev-tex/latex2html dev-tex/tth dev-tex/hevea dev-tex/tex4ht ) ) linguas_he? ( dev-tex/ivritex )
+RESTRICT=test
+SLOT=0
+SRC_URI=ftp://ftp.lyx.org/pub/lyx/stable/lyx-1.5.5.tar.bz2 ftp://ftp.lyx.org/pub/lyx/contrib/latex-xft-fonts-0.1.tar.gz linguas_he? ( http://cs.haifa.ac.il/~dekelts/lyx/files/hebrew.bind http://cs.haifa.ac.il/~dekelts/lyx/files/preferences )

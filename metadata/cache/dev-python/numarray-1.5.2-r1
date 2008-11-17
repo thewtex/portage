@@ -1,0 +1,11 @@
+DEPEND=lapack? ( virtual/cblas virtual/lapack ) lapack? ( dev-util/pkgconfig ) >=dev-lang/python-2.3 virtual/python
+DESCRIPTION=Large array processing extension module for Python
+EAPI=0
+HOMEPAGE=http://www.stsci.edu/resources/software_hardware/numarray
+INHERITED=toolchain-funcs distutils portability python multilib alternatives eutils
+IUSE=doc lapack
+KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~ppc ~x86 ~x86-fbsd
+LICENSE=BSD
+RDEPEND=lapack? ( virtual/cblas virtual/lapack ) >=dev-lang/python-2.3
+SLOT=0
+SRC_URI=mirror://sourceforge/numpy/numarray-1.5.2.tar.gz doc? ( mirror://sourceforge/numpy/numarray-1.5.html.tar.gz )

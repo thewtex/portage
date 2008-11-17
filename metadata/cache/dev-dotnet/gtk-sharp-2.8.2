@@ -1,0 +1,12 @@
+DEPEND=>=dev-lang/mono-1.1.13.2 dev-perl/XML-LibXML >=x11-libs/gtk+-2.8 >=gnome-base/orbit-2.8.3 doc? ( >=dev-util/monodoc-1.1.8 ) dev-util/pkgconfig =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=Gtk# is a C# language binding for the GTK2 toolkit and GNOME libraries
+EAPI=0
+HOMEPAGE=http://gtk-sharp.sourceforge.net/
+INHERITED=toolchain-funcs portability mono multilib libtool autotools eutils
+IUSE=doc
+KEYWORDS=amd64 ppc x86
+LICENSE=LGPL-2.1
+RDEPEND=>=dev-lang/mono-1.1.13.2 dev-perl/XML-LibXML >=x11-libs/gtk+-2.8 >=gnome-base/orbit-2.8.3
+RESTRICT=test
+SLOT=2
+SRC_URI=http://go-mono.com/sources/gtk-sharp-2.8/gtk-sharp-2.8.2.tar.gz mirror://gentoo/gtk-sharp-2.8.2-configurable.diff.gz

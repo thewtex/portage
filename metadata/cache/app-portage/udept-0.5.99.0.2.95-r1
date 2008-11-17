@@ -1,0 +1,11 @@
+DEPEND=app-shells/bash sys-apps/portage
+DESCRIPTION=A Portage analysis toolkit
+EAPI=0
+HOMEPAGE=http://catmur.co.uk/gentoo/udept
+INHERITED=eutils multilib toolchain-funcs portability bash-completion
+IUSE=bash-completion
+KEYWORDS=~amd64 ~ppc ~mips ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=app-shells/bash sys-apps/portage bash-completion? ( || ( app-admin/eselect app-shells/bash-completion-config ) )
+SLOT=0
+SRC_URI=http://files.catmur.co.uk/udept/udept-0.5.99.0.2.95.tar.bz2

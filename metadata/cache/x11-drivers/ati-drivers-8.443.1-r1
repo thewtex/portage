@@ -1,0 +1,11 @@
+DEPEND=x11-base/xorg-server !x11-apps/ati-drivers-extra >=app-admin/eselect-1.0.9 app-admin/eselect-opengl =virtual/libstdc++-3.3* amd64? ( app-emulation/emul-linux-x86-xlibs ) acpi? ( x11-apps/xauth sys-power/acpid ) x11-libs/libXrandr >=sys-apps/portage-2.1.1-r1 x11-proto/xf86miscproto x11-proto/xf86vidmodeproto kernel_linux? ( virtual/linux-sources ) kernel_linux? ( virtual/modutils ) sys-apps/sed
+DESCRIPTION=Ati precompiled drivers for recent chipsets
+EAPI=0
+HOMEPAGE=http://www.ati.com
+INHERITED=toolchain-funcs portability versionator multilib linux-info linux-mod eutils
+IUSE=acpi debug kernel_linux
+KEYWORDS=~amd64 ~x86
+LICENSE=AMD GPL-2 QPL-1.0 as-is
+RDEPEND=x11-base/xorg-server !x11-apps/ati-drivers-extra >=app-admin/eselect-1.0.9 app-admin/eselect-opengl =virtual/libstdc++-3.3* amd64? ( app-emulation/emul-linux-x86-xlibs ) acpi? ( x11-apps/xauth sys-power/acpid ) x11-libs/libXrandr >=sys-apps/portage-2.1.1-r1 kernel_linux? ( virtual/modutils )
+SLOT=0
+SRC_URI=https://a248.e.akamai.net/f/674/9206/0/www2.ati.com/drivers/linux//ati-driver-installer-8.443.1-x86.x86_64.run

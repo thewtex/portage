@@ -1,0 +1,11 @@
+DEPEND=>=x11-libs/gtk+-2.0 >media-libs/libgphoto2-2.4 >=media-libs/libexif-0.3.2 media-libs/libexif-gtk gimp? ( >=media-gfx/gimp-2 ) gnome? ( >=gnome-base/libbonobo-2 >=gnome-base/libgnomeui-2 ) dev-util/pkgconfig app-text/scrollkeeper nls? ( >=sys-devel/gettext-0.14.1 ) =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool >=sys-apps/sed-4
+DESCRIPTION=A frontend for gPhoto 2
+EAPI=0
+HOMEPAGE=http://gphoto.org/proj/gtkam
+INHERITED=gnome2 toolchain-funcs portability multilib gnome2-utils libtool gnome.org fdo-mime autotools eutils
+IUSE=gimp gnome nls debug
+KEYWORDS=~alpha ~amd64 ~ppc ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=>=x11-libs/gtk+-2.0 >media-libs/libgphoto2-2.4 >=media-libs/libexif-0.3.2 media-libs/libexif-gtk gimp? ( >=media-gfx/gimp-2 ) gnome? ( >=gnome-base/libbonobo-2 >=gnome-base/libgnomeui-2 )
+SLOT=0
+SRC_URI=mirror://sourceforge/gphoto/gtkam-0.1.15.tar.gz

@@ -1,0 +1,12 @@
+DEPEND=app-arch/unzip kernel_linux? ( virtual/linux-sources ) kernel_linux? ( virtual/modutils ) sys-apps/sed
+DESCRIPTION=ivtv driver for Hauppauge PVR PCI cards
+EAPI=0
+HOMEPAGE=http://www.ivtvdriver.org
+INHERITED=toolchain-funcs portability versionator multilib linux-info linux-mod eutils
+IUSE=perl kernel_linux
+KEYWORDS=amd64 ~ppc x86
+LICENSE=GPL-2
+PDEPEND=>=media-tv/ivtv-firmware-20070217 perl? ( dev-perl/Video-Frequencies dev-perl/Video-ivtv dev-perl/Config-IniFiles virtual/perl-Getopt-Long dev-perl/perl-tk )
+RDEPEND=>=sys-fs/udev-103 kernel_linux? ( virtual/modutils )
+SLOT=0
+SRC_URI=http://dl.ivtvdriver.org/ivtv/archive/1.2.x/ivtv-1.2.0.tar.gz

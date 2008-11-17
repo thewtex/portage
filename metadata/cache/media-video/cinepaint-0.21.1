@@ -1,0 +1,11 @@
+DEPEND==x11-libs/gtk+-1* png? ( >=media-libs/libpng-1.2 ) zlib? ( sys-libs/zlib ) media-libs/openexr media-libs/lcms media-libs/tiff media-libs/jpeg x11-libs/fltk =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=motion picture editing tool used for painting and retouching of movies
+EAPI=0
+HOMEPAGE=http://cinepaint.sourceforge.net/
+INHERITED=toolchain-funcs portability flag-o-matic versionator multilib libtool autotools eutils
+IUSE=png zlib
+KEYWORDS=~amd64 ~ppc x86
+LICENSE=GPL-2
+RDEPEND==x11-libs/gtk+-1* png? ( >=media-libs/libpng-1.2 ) zlib? ( sys-libs/zlib ) media-libs/openexr media-libs/lcms media-libs/tiff media-libs/jpeg x11-libs/fltk
+SLOT=0
+SRC_URI=mirror://sourceforge/cinepaint/cinepaint-0.21-1.tar.gz mirror://gentoo/cinepaint-0.21.1-patches.tar.bz2

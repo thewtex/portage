@@ -1,0 +1,11 @@
+DEPEND=net-firewall/iptables mysql? ( virtual/mysql ) postgres? ( virtual/postgresql-server ) =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=A userspace logging daemon for netfilter/iptables related logging
+EAPI=0
+HOMEPAGE=http://netfilter.org/projects/ulogd/index.html
+INHERITED=toolchain-funcs portability flag-o-matic multilib libtool autotools eutils
+IUSE=mysql postgres
+KEYWORDS=~amd64 ~ia64 ~ppc -sparc ~x86
+LICENSE=GPL-2
+RDEPEND=net-firewall/iptables mysql? ( virtual/mysql ) postgres? ( virtual/postgresql-server )
+SLOT=0
+SRC_URI=http://ftp.netfilter.org/pub/ulogd/ulogd-1.24.tar.bz2

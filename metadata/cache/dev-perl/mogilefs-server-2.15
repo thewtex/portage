@@ -1,0 +1,11 @@
+DEPEND=dev-perl/Net-Netmask >=dev-perl/Danga-Socket-1.57 >=dev-perl/Sys-Syscall-0.22 >=dev-perl/Perlbal-1.57 dev-perl/Gearman-Server dev-perl/libwww-perl dev-perl/Cache-Memcached mysql? ( dev-perl/DBD-mysql ) sqlite? ( dev-perl/DBD-SQLite ) dev-lang/perl
+DESCRIPTION=Server for the MogileFS distributed file system
+EAPI=0
+HOMEPAGE=http://search.cpan.org/search?query=mogilefs-server&mode=dist
+INHERITED=toolchain-funcs portability multilib base eutils perl-module
+IUSE=mysql sqlite
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=|| ( Artistic GPL-2 )
+RDEPEND=dev-perl/Net-Netmask >=dev-perl/Danga-Socket-1.57 >=dev-perl/Sys-Syscall-0.22 >=dev-perl/Perlbal-1.57 dev-perl/Gearman-Server dev-perl/libwww-perl dev-perl/Cache-Memcached mysql? ( dev-perl/DBD-mysql ) sqlite? ( dev-perl/DBD-SQLite ) dev-lang/perl
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/B/BR/BRADFITZ/mogilefs-server-2.15.tar.gz

@@ -1,0 +1,11 @@
+DEPEND=hdf5? ( sci-libs/hdf5 ) mpi? ( sys-cluster/mpich ) python? ( >=dev-lang/python-2.0 ) media-libs/libpng media-libs/jpeg media-libs/tiff dev-libs/expat sys-libs/zlib media-libs/freetype virtual/opengl dev-lang/tcl dev-lang/tk sci-libs/netcdf x11-libs/libXmu doc? ( app-doc/doxygen ) >=dev-util/cmake-2.4.3 virtual/python
+DESCRIPTION=ParaView is a powerful scientific data visualization application
+EAPI=0
+HOMEPAGE=http://www.paraview.org
+INHERITED=toolchain-funcs distutils portability flag-o-matic python multilib versionator alternatives eutils
+IUSE=mpi python hdf5 doc examples threads
+KEYWORDS=~x86 ~amd64
+LICENSE=paraview
+RDEPEND=hdf5? ( sci-libs/hdf5 ) mpi? ( sys-cluster/mpich ) python? ( >=dev-lang/python-2.0 ) media-libs/libpng media-libs/jpeg media-libs/tiff dev-libs/expat sys-libs/zlib media-libs/freetype virtual/opengl dev-lang/tcl dev-lang/tk sci-libs/netcdf x11-libs/libXmu
+SLOT=0
+SRC_URI=http://www.ParaView.org/files/v2.6/ParaView-2.6.2.tar.gz

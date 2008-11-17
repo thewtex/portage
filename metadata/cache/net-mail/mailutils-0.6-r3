@@ -1,0 +1,12 @@
+DEPEND=!virtual/mailx !mail-client/nmh !mail-client/elm dev-scheme/guile gdbm? ( sys-libs/gdbm ) mysql? ( virtual/mysql ) postgres? ( virtual/postgresql-server ) nls? ( sys-devel/gettext ) virtual/mta test? ( dev-util/dejagnu )
+DESCRIPTION=A useful collection of mail servers, clients, and filters.
+EAPI=0
+HOMEPAGE=http://www.gnu.org/software/mailutils/mailutils.html
+INHERITED=multilib toolchain-funcs eutils portability
+IUSE=mailwrapper nls pam mysql postgres gdbm test
+KEYWORDS=alpha ~amd64 ~ppc ~sparc x86
+LICENSE=GPL-2 LGPL-2.1
+PROVIDE=virtual/mailx
+RDEPEND=!virtual/mailx !mail-client/nmh !mail-client/elm dev-scheme/guile gdbm? ( sys-libs/gdbm ) mysql? ( virtual/mysql ) postgres? ( virtual/postgresql-server ) nls? ( sys-devel/gettext ) virtual/mta
+SLOT=0
+SRC_URI=http://ftp.gnu.org/gnu/mailutils/mailutils-0.6.tar.bz2

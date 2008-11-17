@@ -1,0 +1,10 @@
+DEPEND=debug? ( gd? ( imagemagick? ( >=media-gfx/imagemagick-5.5.7 ) !imagemagick? ( media-libs/gd ) ) !gd? ( >=media-gfx/imagemagick-5.5.7 ) ) !debug? ( imagemagick? ( gd? ( media-libs/gd ) !gd? ( >=media-gfx/imagemagick-5.5.7 ) ) !imagemagick? ( media-libs/gd ) )
+DESCRIPTION=A set of tools that detect motion between two images
+EAPI=0
+HOMEPAGE=http://motiontrack.sourceforge.net
+IUSE=gd imagemagick debug
+KEYWORDS=~x86 ~ppc ~ppc64 ~sparc ~mips ~alpha ~hppa ~amd64
+LICENSE=GPL-2
+RDEPEND=debug? ( gd? ( imagemagick? ( >=media-gfx/imagemagick-5.5.7 ) !imagemagick? ( media-libs/gd ) ) !gd? ( >=media-gfx/imagemagick-5.5.7 ) ) !debug? ( imagemagick? ( gd? ( media-libs/gd ) !gd? ( >=media-gfx/imagemagick-5.5.7 ) ) !imagemagick? ( media-libs/gd ) )
+SLOT=0
+SRC_URI=http://gemia.de/motion/motiontrack-0.1.0.tar.gz

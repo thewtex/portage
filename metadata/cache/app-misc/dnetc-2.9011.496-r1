@@ -1,0 +1,10 @@
+DESCRIPTION=distributed.net client
+EAPI=0
+HOMEPAGE=http://www.distributed.net
+INHERITED=multilib toolchain-funcs eutils portability
+KEYWORDS=amd64 x86
+LICENSE=distributed.net
+RDEPEND=net-dns/bind-tools
+RESTRICT=mirror
+SLOT=0
+SRC_URI=x86? ( http://http.distributed.net/pub/dcti/v2.9011/dnetc496-linux-x86-elf-uclibc.tar.gz ) amd64? ( http://http.distributed.net/pub/dcti/v2.9011/dnetc496-linux-amd64-elf.tar.gz )

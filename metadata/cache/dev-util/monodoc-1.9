@@ -1,0 +1,13 @@
+DEPEND=>=dev-lang/mono-1.1 www-client/lynx app-arch/unzip =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=Documentation for mono's .Net class library
+EAPI=0
+HOMEPAGE=http://www.go-mono.com
+INHERITED=toolchain-funcs portability mono multilib libtool autotools eutils
+IUSE=X
+KEYWORDS=~amd64 ~ppc ~sparc ~x86 ~x86-fbsd
+LICENSE=GPL-2
+PDEPEND=X? ( >=dev-util/mono-tools-1.1.17 )
+RDEPEND=>=dev-lang/mono-1.1 www-client/lynx
+RESTRICT=test
+SLOT=0
+SRC_URI=http://www.go-mono.com/sources/monodoc/monodoc-1.9.zip

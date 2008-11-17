@@ -1,0 +1,11 @@
+DEPEND=lapack? ( virtual/cblas virtual/lapack ) lapack? ( dev-util/pkgconfig ) >=dev-lang/python-2.3 virtual/python
+DESCRIPTION=Numerical multidimensional array language facility for Python.
+EAPI=0
+HOMEPAGE=http://numeric.scipy.org/
+INHERITED=toolchain-funcs distutils portability python multilib alternatives eutils
+IUSE=doc lapack
+KEYWORDS=alpha amd64 hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd
+LICENSE=as-is
+RDEPEND=lapack? ( virtual/cblas virtual/lapack ) >=dev-lang/python-2.3
+SLOT=0
+SRC_URI=mirror://sourceforge/numpy/Numeric-24.2.tar.gz doc? ( http://numpy.scipy.org/numpy.pdf )

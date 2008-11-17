@@ -1,0 +1,11 @@
+DEPEND==dev-scheme/guile-1.6* =x11-libs/guile-gtk-1.2*
+DESCRIPTION=Analog waveform viewer for SPICE-like simulations
+EAPI=0
+HOMEPAGE=http://www.geda.seul.org/tools/gwave/
+INHERITED=multilib toolchain-funcs eutils portability flag-o-matic
+IUSE=gnuplot plotutils
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND==dev-scheme/guile-1.6* =x11-libs/guile-gtk-1.2* gnuplot? ( sci-visualization/gnuplot ) plotutils? ( media-libs/plotutils )
+SLOT=0
+SRC_URI=http://www.geda.seul.org/dist/gwave-20060606.tar.gz

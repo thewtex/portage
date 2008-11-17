@@ -1,0 +1,12 @@
+DEPEND=!virtual/ssh zlib? ( sys-libs/zlib ) socks5? ( net-proxy/dante ) dev-libs/gmp dev-libs/openssl
+DESCRIPTION=another SSH implementation
+EAPI=0
+HOMEPAGE=ftp://ftp.pdc.kth.se/pub/krypto/ossh/
+INHERITED=multilib toolchain-funcs eutils portability flag-o-matic
+IUSE=zlib socks5
+KEYWORDS=x86
+LICENSE=as-is
+PROVIDE=virtual/ssh
+RDEPEND=!virtual/ssh zlib? ( sys-libs/zlib ) socks5? ( net-proxy/dante ) dev-libs/gmp dev-libs/openssl
+SLOT=0
+SRC_URI=ftp://ftp.nada.kth.se/pub/krypto/ossh/ossh-1.5.12.tar.gz

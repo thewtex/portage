@@ -1,0 +1,10 @@
+DESCRIPTION=Audio-entropyd generates entropy-data for the /dev/random device.
+EAPI=0
+HOMEPAGE=http://www.vanheusden.com/aed/
+INHERITED=multilib toolchain-funcs eutils portability
+IUSE=selinux
+KEYWORDS=amd64 ppc ~sparc x86
+LICENSE=GPL-2
+RDEPEND=selinux? ( sec-policy/selinux-audio-entropyd )
+SLOT=0
+SRC_URI=http://www.vanheusden.com/aed/audio-entropyd-1.0.1.tgz

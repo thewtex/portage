@@ -1,0 +1,11 @@
+DEPEND=dev-libs/glib >=media-libs/libsndfile-1.0.0 sys-libs/ncurses caps? ( sys-libs/libcap ) portaudio? ( media-libs/portaudio ) alsa? ( >=media-libs/alsa-lib-0.9.1 ) !media-sound/jack-cvs dev-util/pkgconfig doc? ( app-doc/doxygen )
+DESCRIPTION=A low-latency audio server
+EAPI=0
+HOMEPAGE=http://jackit.sourceforge.net/
+INHERITED=multilib toolchain-funcs eutils portability flag-o-matic
+IUSE=altivec alsa caps doc debug jack-tmpfs oss portaudio
+KEYWORDS=~mips
+LICENSE=GPL-2 LGPL-2.1
+RDEPEND=dev-libs/glib >=media-libs/libsndfile-1.0.0 sys-libs/ncurses caps? ( sys-libs/libcap ) portaudio? ( media-libs/portaudio ) alsa? ( >=media-libs/alsa-lib-0.9.1 ) !media-sound/jack-cvs
+SLOT=0
+SRC_URI=mirror://sourceforge/jackit/jack-audio-connection-kit-0.99.0.tar.gz

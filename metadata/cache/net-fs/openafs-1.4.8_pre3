@@ -1,0 +1,10 @@
+DESCRIPTION=The OpenAFS distributed file system
+EAPI=0
+HOMEPAGE=http://www.openafs.org/
+INHERITED=toolchain-funcs portability flag-o-matic versionator multilib pam eutils
+IUSE=debug kerberos pam doc
+KEYWORDS=~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=IBM openafs-krb5 openafs-krb5-a APSL-2 sun-rpc
+RDEPEND=~net-fs/openafs-kernel-1.4.8_pre3 pam? ( sys-libs/pam ) kerberos? ( virtual/krb5 )
+SLOT=0
+SRC_URI=http://openafs.org/dl/candidate/1.4.8pre3/openafs-1.4.8pre3-src.tar.bz2 doc? ( http://openafs.org/dl/candidate/1.4.8pre3/openafs-1.4.8pre3-doc.tar.bz2 ) mirror://gentoo/openafs-gentoo-0.15.tar.bz2

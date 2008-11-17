@@ -1,0 +1,12 @@
+DEPEND=gdbm? ( sys-libs/gdbm ) !gdbm? ( >=sys-devel/autoconf-2.5 sys-libs/db ) >=dev-libs/openssl-0.9.6 pam? ( >=sys-libs/pam-0.75 ) mysql? ( virtual/mysql ) ldap? ( >=net-nds/openldap-1.2.11 ) postgres? ( virtual/postgresql-base ) =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=courier authentication library
+EAPI=0
+HOMEPAGE=http://www.courier-mta.org/
+INHERITED=toolchain-funcs portability flag-o-matic multilib libtool autotools eutils
+IUSE=postgres ldap mysql berkdb gdbm pam crypt debug
+KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc x86
+LICENSE=GPL-2
+RDEPEND=gdbm? ( sys-libs/gdbm ) !gdbm? ( sys-libs/db )
+RESTRICT=userpriv
+SLOT=0
+SRC_URI=mirror://sourceforge/courier/courier-authlib-0.58.tar.bz2

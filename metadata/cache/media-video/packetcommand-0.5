@@ -1,0 +1,11 @@
+DEPEND=media-video/em84xx-modules kernel_linux? ( virtual/linux-sources ) kernel_linux? ( virtual/modutils ) sys-apps/sed
+DESCRIPTION=A driver for the em84xx dvd disc access.
+EAPI=0
+HOMEPAGE=http://www.htpc-forum.de
+INHERITED=toolchain-funcs portability versionator multilib linux-info linux-mod eutils
+IUSE=kernel_linux
+KEYWORDS=~x86
+LICENSE=GPL-2
+RDEPEND=kernel_linux? ( virtual/modutils )
+SLOT=0
+SRC_URI=http://www.htpc-forum.de/download/packetcommand-0.5.tar.bz2

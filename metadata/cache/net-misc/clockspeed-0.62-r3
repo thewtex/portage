@@ -1,0 +1,12 @@
+DEPEND=sys-apps/groff
+DESCRIPTION=A simple Network Time Protocol (NTP) client
+EAPI=0
+HOMEPAGE=http://cr.yp.to/clockspeed.html
+INHERITED=multilib toolchain-funcs eutils portability flag-o-matic
+IUSE=static selinux
+KEYWORDS=~amd64 ~mips x86
+LICENSE=as-is
+RDEPEND=selinux? ( sec-policy/selinux-clockspeed )
+RESTRICT=test
+SLOT=0
+SRC_URI=http://cr.yp.to/clockspeed/clockspeed-0.62.tar.gz

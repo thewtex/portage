@@ -1,0 +1,10 @@
+DEPEND=kde? ( kde-base/kdelibs:3.5 || ( kde-base/kdebase-data:3.5 kde-base/kdebase:3.5 ) ) !kde? ( spell? ( app-text/aspell ) ) x11-libs/qt:3 ssl? ( dev-libs/openssl ) gpg? ( app-crypt/gnupg ) dev-libs/libxml2 dev-libs/libxslt sys-libs/zlib media-libs/fontconfig x11-libs/libXScrnSaver sys-devel/flex app-arch/zip x11-proto/scrnsaverproto >=dev-util/cmake-2.4.6 dev-util/subversion net-misc/rsync
+DESCRIPTION=Simple Instant Messenger (with KDE support). ICQ/AIM/Jabber/MSN/Yahoo.
+EAPI=1
+HOMEPAGE=http://sim-im.org/
+INHERITED=toolchain-funcs qt3 portability flag-o-matic versionator multilib subversion kde-functions cmake-utils eutils
+IUSE=debug gpg +jabber kde msn +oscar sms spell ssl weather yahoo livejournal
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=kde? ( kde-base/kdelibs:3.5 || ( kde-base/kdebase-data:3.5 kde-base/kdebase:3.5 ) ) !kde? ( spell? ( app-text/aspell ) ) x11-libs/qt:3 ssl? ( dev-libs/openssl ) gpg? ( app-crypt/gnupg ) dev-libs/libxml2 dev-libs/libxslt sys-libs/zlib media-libs/fontconfig x11-libs/libXScrnSaver
+SLOT=0

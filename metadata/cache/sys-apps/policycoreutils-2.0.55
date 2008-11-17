@@ -1,0 +1,11 @@
+DEPEND=>=sys-libs/libselinux-2.0 >=sys-libs/glibc-2.4 >=sys-process/audit-1.5.1 >=sys-libs/libcap-1.10-r10 sys-libs/pam =sys-libs/libsemanage-2.0* nls? ( sys-devel/gettext )
+DESCRIPTION=SELinux core utilities
+EAPI=0
+HOMEPAGE=http://userspace.selinuxproject.org
+INHERITED=toolchain-funcs portability python multilib alternatives eutils
+IUSE=nls
+KEYWORDS=~alpha ~amd64 ~mips ~ppc ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=>=sys-libs/libselinux-2.0 >=sys-libs/glibc-2.4 >=sys-process/audit-1.5.1 >=sys-libs/libcap-1.10-r10 sys-libs/pam =sys-libs/libsemanage-2.0* dev-python/sepolgen
+SLOT=0
+SRC_URI=http://userspace.selinuxproject.org/releases/current/devel/policycoreutils-2.0.55.tar.gz mirror://gentoo/policycoreutils-extra-1.19.tar.bz2

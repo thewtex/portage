@@ -1,0 +1,11 @@
+DEPEND=dev-util/pkgconfig dev-util/intltool >=sys-apps/sed-4
+DESCRIPTION=GNOME applet to control various music players
+EAPI=0
+HOMEPAGE=http://www.kuliniewicz.org/music-applet
+INHERITED=toolchain-funcs portability python multilib alternatives gnome2-utils gnome2 gnome.org fdo-mime libtool eutils
+IUSE=libnotify debug
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=x11-libs/gtk+-2.6 >=x11-libs/pango-1.6 >=gnome-base/libgnomeui-2 >=gnome-base/gnome-panel-2 >=dev-python/gnome-python-desktop-2.14 >=dev-python/dbus-python-0.80 >=dev-libs/dbus-glib-0.71 >=dev-python/pygtk-2.6 libnotify? ( dev-python/notify-python )
+SLOT=0
+SRC_URI=http://www.kuliniewicz.org/music-applet/downloads/music-applet-2.4.2.tar.gz

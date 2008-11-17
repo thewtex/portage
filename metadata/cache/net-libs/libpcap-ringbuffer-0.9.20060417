@@ -1,0 +1,12 @@
+DEPEND=!virtual/libpcap kernel_linux? ( virtual/linux-sources ) =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=A libpcap version which supports MMAP mode (ringbuffer) on the linux kernel 2.[46].x
+EAPI=0
+HOMEPAGE=http://public.lanl.gov/cpw/
+INHERITED=toolchain-funcs portability versionator multilib libtool linux-info autotools eutils
+IUSE=ipv6
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=BSD
+PROVIDE=virtual/libpcap
+RDEPEND=!virtual/libpcap
+SLOT=0
+SRC_URI=http://public.lanl.gov/cpw/libpcap-0.9.20060417.tar.gz

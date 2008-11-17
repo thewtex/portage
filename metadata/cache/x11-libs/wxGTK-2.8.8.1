@@ -1,0 +1,12 @@
+DEPEND=dev-libs/expat odbc? ( dev-db/unixODBC ) sdl? ( media-libs/libsdl ) X? ( >=x11-libs/gtk+-2.4 >=dev-libs/glib-2.4 media-libs/jpeg media-libs/tiff x11-libs/libSM x11-libs/libXinerama x11-libs/libXxf86vm gnome? ( gnome-base/libgnomeprintui ) gstreamer? ( >=media-libs/gstreamer-0.10 ) opengl? ( virtual/opengl ) ) dev-util/pkgconfig X? ( x11-proto/xproto x11-proto/xineramaproto x11-proto/xf86vidmodeproto )
+DESCRIPTION=GTK+ version of wxWidgets, a cross-platform C++ GUI toolkit.
+EAPI=0
+HOMEPAGE=http://wxwidgets.org/
+INHERITED=toolchain-funcs portability flag-o-matic versionator multilib eutils
+IUSE=X doc debug gnome gstreamer odbc opengl pch sdl
+KEYWORDS=alpha amd64 hppa ia64 ~mips ppc ppc64 sparc x86 ~x86-fbsd
+LICENSE=wxWinLL-3 GPL-2 odbc? ( LGPL-2 ) doc? ( wxWinFDL-3 )
+PDEPEND=>=app-admin/eselect-wxwidgets-0.7
+RDEPEND=dev-libs/expat odbc? ( dev-db/unixODBC ) sdl? ( media-libs/libsdl ) X? ( >=x11-libs/gtk+-2.4 >=dev-libs/glib-2.4 media-libs/jpeg media-libs/tiff x11-libs/libSM x11-libs/libXinerama x11-libs/libXxf86vm gnome? ( gnome-base/libgnomeprintui ) gstreamer? ( >=media-libs/gstreamer-0.10 ) opengl? ( virtual/opengl ) )
+SLOT=2.8
+SRC_URI=mirror://sourceforge/wxpython/wxPython-src-2.8.8.1.tar.bz2

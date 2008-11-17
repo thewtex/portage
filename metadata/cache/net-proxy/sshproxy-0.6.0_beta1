@@ -1,0 +1,11 @@
+DEPEND=!client-only? ( >=dev-python/paramiko-1.6.2 mysql? ( >=dev-python/mysql-python-1.2.0 ) ) virtual/python
+DESCRIPTION=sshproxy is an ssh gateway to apply ACLs on ssh connections
+EAPI=0
+HOMEPAGE=http://sshproxy-project.org/
+INHERITED=toolchain-funcs distutils portability python multilib alternatives eutils
+IUSE=client-only mysql minimal
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=!client-only? ( >=dev-python/paramiko-1.6.2 mysql? ( >=dev-python/mysql-python-1.2.0 ) ) net-misc/openssh
+SLOT=0
+SRC_URI=http://sshproxy-project.org/download/sshproxy-0.6.0_beta1.tar.gz

@@ -1,0 +1,11 @@
+DEPEND=>=media-libs/libogg-1 dev-util/pkgconfig
+DESCRIPTION=The Ogg Vorbis sound file format library with aoTuV patch
+EAPI=1
+HOMEPAGE=http://xiph.org/vorbis
+INHERITED=toolchain-funcs portability flag-o-matic multilib libtool eutils
+IUSE=+aotuv doc
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~x86-fbsd
+LICENSE=BSD
+RDEPEND=>=media-libs/libogg-1
+SLOT=0
+SRC_URI=http://people.xiph.org/~giles/2008/libvorbis-1.2.1rc1.tar.bz2 aotuv? ( mirror://gentoo/aotuv-b5.5-1.2.1rc1.diff.bz2 )

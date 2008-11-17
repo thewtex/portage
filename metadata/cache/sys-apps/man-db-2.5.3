@@ -1,0 +1,12 @@
+DEPEND=berkdb? ( sys-libs/db ) gdbm? ( sys-libs/gdbm ) !berkdb? ( !gdbm? ( sys-libs/gdbm ) ) !sys-apps/man nls? ( sys-devel/gettext )
+DESCRIPTION=a man replacement that utilizes berkdb instead of flat files
+EAPI=0
+HOMEPAGE=http://www.nongnu.org/man-db/
+INHERITED=multilib toolchain-funcs eutils portability
+IUSE=berkdb gdbm nls
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
+LICENSE=GPL-2
+PROVIDE=virtual/man
+RDEPEND=berkdb? ( sys-libs/db ) gdbm? ( sys-libs/gdbm ) !berkdb? ( !gdbm? ( sys-libs/gdbm ) ) !sys-apps/man
+SLOT=0
+SRC_URI=http://download.savannah.nongnu.org/releases/man-db/man-db-2.5.3.tar.gz

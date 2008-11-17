@@ -1,0 +1,11 @@
+DEPEND=opengl? ( media-libs/jpeg virtual/glu virtual/opengl x11-libs/libXxf86dga x11-libs/libXxf86vm sdl? ( media-libs/libsdl ) ) !opengl? ( !dedicated? ( media-libs/jpeg virtual/glu virtual/opengl x11-libs/libXxf86dga x11-libs/libXxf86vm sdl? ( media-libs/libsdl ) ) ) net-misc/curl opengl? ( x11-proto/xf86dgaproto x11-proto/xf86vidmodeproto ) !opengl? ( !dedicated? ( x11-proto/xf86dgaproto x11-proto/xf86vidmodeproto ) ) app-arch/unzip
+DESCRIPTION=Fast-paced multiplayer deathmatch game
+EAPI=0
+HOMEPAGE=http://red.planetarena.org/
+INHERITED=eutils toolchain-funcs games multilib portability
+IUSE=dedicated opengl sdl
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2 free-noncomm
+RDEPEND=opengl? ( media-libs/jpeg virtual/glu virtual/opengl x11-libs/libXxf86dga x11-libs/libXxf86vm sdl? ( media-libs/libsdl ) ) !opengl? ( !dedicated? ( media-libs/jpeg virtual/glu virtual/opengl x11-libs/libXxf86dga x11-libs/libXxf86vm sdl? ( media-libs/libsdl ) ) ) net-misc/curl
+SLOT=0
+SRC_URI=http://icculus.org/alienarena/Files/alienarena2008-linux20080603.zip

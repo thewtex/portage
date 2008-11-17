@@ -1,0 +1,11 @@
+DEPEND=app-arch/unzip
+DESCRIPTION=Quake III - CPMA
+EAPI=0
+HOMEPAGE=http://www.promode.org/
+INHERITED=toolchain-funcs portability multilib games games-q3mod eutils
+IUSE=dedicated
+KEYWORDS=-* amd64 ~ppc x86
+LICENSE=as-is
+RDEPEND=|| ( games-fps/quake3 games-fps/quake3-bin ) amd64? ( app-emulation/emul-linux-x86-baselibs ) dedicated? ( app-misc/screen )
+SLOT=0
+SRC_URI=http://www.challenge-tv.com/demostorage/files/cpm/cpma138-nomaps.zip http://www.promode.org/files/cpma-mappack-full.zip

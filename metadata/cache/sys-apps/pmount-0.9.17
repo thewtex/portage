@@ -1,0 +1,11 @@
+DEPEND=hal? ( >=sys-apps/dbus-0.33 >=sys-apps/hal-0.5.2 ) >=sys-fs/sysfsutils-1.3.0 crypt? ( >=sys-fs/cryptsetup-1.0.5 ) >=dev-util/intltool-0.21
+DESCRIPTION=Policy based mounter that gives the ability to mount removable devices as a user
+EAPI=0
+HOMEPAGE=http://pmount.alioth.debian.org/
+INHERITED=multilib toolchain-funcs eutils portability
+IUSE=crypt hal
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sh ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=hal? ( >=sys-apps/dbus-0.33 >=sys-apps/hal-0.5.2 ) >=sys-fs/sysfsutils-1.3.0 crypt? ( >=sys-fs/cryptsetup-1.0.5 )
+SLOT=0
+SRC_URI=http://alioth.debian.org/frs/download.php/2247/pmount-0.9.17.tar.gz

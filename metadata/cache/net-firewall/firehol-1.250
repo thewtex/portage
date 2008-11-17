@@ -1,0 +1,10 @@
+DEPEND=sys-apps/iproute2
+DESCRIPTION=iptables firewall generator
+EAPI=0
+HOMEPAGE=http://firehol.sourceforge.net/
+INHERITED=multilib toolchain-funcs eutils portability
+KEYWORDS=~amd64 ~ppc ~sparc x86
+LICENSE=GPL-2
+RDEPEND=net-firewall/iptables sys-apps/iproute2 virtual/modutils || ( net-misc/wget net-misc/curl )
+SLOT=0
+SRC_URI=mirror://sourceforge/firehol/firehol-1.226.tar.bz2

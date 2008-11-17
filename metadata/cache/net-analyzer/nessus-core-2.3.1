@@ -1,0 +1,11 @@
+DEPEND=~net-analyzer/nessus-libraries-2.3.1 ~net-analyzer/libnasl-2.3.1 tcpd? ( sys-apps/tcp-wrappers ) gtk? ( =x11-libs/gtk+-2* ) prelude? ( dev-libs/libprelude ) !net-analyzer/nessus-client
+DESCRIPTION=A remote security scanner for Linux (nessus-core)
+EAPI=0
+HOMEPAGE=http://www.nessus.org/
+INHERITED=multilib toolchain-funcs eutils portability
+IUSE=tcpd gtk debug prelude
+KEYWORDS=~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=~net-analyzer/nessus-libraries-2.3.1 ~net-analyzer/libnasl-2.3.1 tcpd? ( sys-apps/tcp-wrappers ) gtk? ( =x11-libs/gtk+-2* ) prelude? ( dev-libs/libprelude ) !net-analyzer/nessus-client
+SLOT=0
+SRC_URI=ftp://ftp.nessus.org/pub/nessus/experimental/nessus-2.3.1/src/nessus-core-2.3.1.tar.gz

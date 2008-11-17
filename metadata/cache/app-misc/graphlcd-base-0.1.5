@@ -1,0 +1,10 @@
+DESCRIPTION=Graphical LCD Driver
+EAPI=0
+HOMEPAGE=http://graphlcd.berlios.de/
+INHERITED=multilib toolchain-funcs eutils portability flag-o-matic
+IUSE=truetype g15
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=truetype? ( media-libs/freetype media-fonts/corefonts ) g15? ( app-misc/g15daemon )
+SLOT=0
+SRC_URI=mirror://berlios/graphlcd/graphlcd-base-0.1.5.tgz

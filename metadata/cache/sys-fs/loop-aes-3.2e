@@ -1,0 +1,11 @@
+DEPEND=kernel_linux? ( virtual/linux-sources ) kernel_linux? ( virtual/modutils ) sys-apps/sed
+DESCRIPTION=Linux kernel module to encrypt local file systems and disk partitions with AES cipher.
+EAPI=0
+HOMEPAGE=http://loop-aes.sourceforge.net/loop-AES.README
+INHERITED=toolchain-funcs portability versionator multilib linux-info linux-mod eutils
+IUSE=keyscrub padlock kernel_linux
+KEYWORDS=~amd64 ~hppa ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=>=sys-apps/util-linux-2.12r kernel_linux? ( virtual/modutils )
+SLOT=0
+SRC_URI=mirror://sourceforge/loop-aes/loop-AES-v3.2e.tar.bz2

@@ -1,0 +1,12 @@
+DEPEND=app-arch/unzip
+DESCRIPTION=Quake III - Navy Seals : Covert Operations
+EAPI=0
+HOMEPAGE=http://ns-co.net/
+INHERITED=toolchain-funcs portability multilib games games-q3mod eutils
+IUSE=dedicated
+KEYWORDS=-* amd64 ~ppc x86
+LICENSE=Q3AEULA
+RDEPEND=|| ( games-fps/quake3 games-fps/quake3-bin ) amd64? ( app-emulation/emul-linux-x86-baselibs ) dedicated? ( app-misc/screen )
+RESTRICT=fetch
+SLOT=0
+SRC_URI=nsco_beta19.zip

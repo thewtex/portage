@@ -1,0 +1,11 @@
+DEPEND=media-tv/linuxtv-dvb-headers
+DESCRIPTION=small utils for DVB to scan, zap, view signal strength, ...
+EAPI=0
+HOMEPAGE=http://www.linuxtv.org/
+INHERITED=multilib versionator toolchain-funcs eutils portability
+IUSE=usb
+KEYWORDS=~amd64 ~ia64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=usb? ( >=dev-libs/libusb-0.1.10a )
+SLOT=0
+SRC_URI=mirror://gentoo/linuxtv-dvb-apps-20071126.tar.bz2

@@ -1,0 +1,12 @@
+DEPEND=dev-lang/perl virtual/linux-sources kernel_linux? ( virtual/linux-sources ) kernel_linux? ( virtual/modutils ) sys-apps/sed
+DESCRIPTION=A minimal libc subset for use with initramfs.
+EAPI=0
+HOMEPAGE=http://www.zytor.com/mailman/listinfo/klibc
+INHERITED=toolchain-funcs portability versionator multilib linux-info linux-mod eutils
+IUSE=kernel_linux
+KEYWORDS=~amd64 mips ~ppc ~x86
+LICENSE=|| ( GPL-2 LGPL-2 )
+RDEPEND=dev-lang/perl kernel_linux? ( virtual/modutils )
+RESTRICT=strip
+SLOT=0
+SRC_URI=ftp://ftp.kernel.org/pub/linux/libs/klibc/klibc-1.1.tar.bz2 ftp://ftp.kernel.org/pub/linux/libs/klibc/Stable/klibc-1.1.tar.bz2 ftp://ftp.kernel.org/pub/linux/libs/klibc/Testing/klibc-1.1.tar.bz2

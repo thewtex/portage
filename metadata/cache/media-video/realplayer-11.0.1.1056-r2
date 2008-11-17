@@ -1,0 +1,12 @@
+DEPEND=>=app-arch/rpm2targz-9.0-r1
+DESCRIPTION=Real Media Player
+EAPI=0
+HOMEPAGE=http://www.real.com/ http://player.helixcommunity.org/
+INHERITED=toolchain-funcs portability nsplugins multilib rpm eutils
+IUSE=nsplugin
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=HBRL
+RDEPEND==media-libs/realcodecs-11.0.1.1056* x86? ( >=dev-libs/glib-2 >=x11-libs/pango-1.2 >=x11-libs/gtk+-2.2 =virtual/libstdc++-3.3* ) amd64? ( app-emulation/emul-linux-x86-gtklibs app-emulation/emul-linux-x86-compat )
+RESTRICT=mirror strip test
+SLOT=0
+SRC_URI=http://forms.real.com/real/player/download.html?f=unix/RealPlayer11GOLD.rpm

@@ -1,0 +1,11 @@
+DEPEND=sensord? ( net-analyzer/rrdtool ) sys-apps/sed kernel_linux? ( virtual/linux-sources )
+DESCRIPTION=Hardware Monitoring user-space utilities
+EAPI=0
+HOMEPAGE=http://www.lm-sensors.org/
+INHERITED=toolchain-funcs portability flag-o-matic versionator multilib linux-info eutils
+IUSE=sensord
+KEYWORDS=~alpha ~amd64 ~ppc ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=sensord? ( net-analyzer/rrdtool ) dev-lang/perl virtual/logger
+SLOT=0
+SRC_URI=http://dl.lm-sensors.org/lm-sensors/releases/lm_sensors-3.0.2.tar.bz2

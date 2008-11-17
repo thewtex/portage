@@ -1,0 +1,10 @@
+DESCRIPTION=A collection of file system and media management forensic analysis tools
+EAPI=0
+HOMEPAGE=http://www.sleuthkit.org/sleuthkit/
+INHERITED=toolchain-funcs multilib eutils portability
+IUSE=dbtool
+KEYWORDS=~amd64 ~arm ~hppa ~ppc ~s390 ~sparc ~x86
+LICENSE=GPL-2 IBM
+RDEPEND=dev-perl/DateManip !sys-apps/dstat
+SLOT=0
+SRC_URI=mirror://sourceforge/sleuthkit/sleuthkit-2.08.tar.gz dbtool? ( mirror://gentoo/sleuthkit-2.08_dbtool.patch.bz2 )

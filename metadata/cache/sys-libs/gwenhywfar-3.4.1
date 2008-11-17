@@ -1,0 +1,12 @@
+DEPEND=ssl? ( net-libs/gnutls ) sys-libs/ncurses ncurses? ( sys-libs/ncurses ) doc? ( app-doc/doxygen )
+DESCRIPTION=A multi-platform helper library for other libraries
+EAPI=0
+HOMEPAGE=http://gwenhywfar.sourceforge.net
+INHERITED=multilib toolchain-funcs eutils portability flag-o-matic
+IUSE=debug ssl doc ncurses
+KEYWORDS=~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86
+LICENSE=LGPL-2.1
+RDEPEND=ssl? ( net-libs/gnutls ) sys-libs/ncurses ncurses? ( sys-libs/ncurses )
+RESTRICT=test
+SLOT=0
+SRC_URI=http://files.hboeck.de/aq/gwenhywfar-3.4.1.tar.gz

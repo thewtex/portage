@@ -1,0 +1,12 @@
+DEPEND=|| ( virtual/httpd-cgi virtual/httpd-fastcgi ) virtual/httpd-php >=app-admin/webapp-config-1.50.15
+DESCRIPTION=Web-based browsing tool for Subversion (SVN) repositories in PHP
+EAPI=0
+HOMEPAGE=http://websvn.tigris.org/
+INHERITED=toolchain-funcs portability depend.php multilib phpconfutils webapp eutils
+IUSE=enscript vhosts
+KEYWORDS=amd64 ~sparc x86
+LICENSE=GPL-2
+RDEPEND=dev-util/subversion enscript? ( app-text/enscript ) virtual/httpd-php >=app-admin/webapp-config-1.50.15
+RESTRICT=mirror
+SLOT=2.0
+SRC_URI=http://websvn.tigris.org/files/documents/1380/39378/websvn-2.0.tar.gz

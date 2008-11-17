@@ -1,0 +1,11 @@
+DEPEND=>=x11-libs/gtk+-2.6 x11-libs/pango >=gnome-base/libglade-2 kernel_linux? ( virtual/linux-sources ) kernel_linux? ( virtual/modutils ) sys-apps/sed
+DESCRIPTION=System-wide Linux Profiler
+EAPI=0
+HOMEPAGE=http://www.daimi.au.dk/~sandmann/sysprof/
+INHERITED=toolchain-funcs portability versionator multilib linux-info linux-mod eutils
+IUSE=kernel_linux
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=x11-libs/gtk+-2.6 x11-libs/pango >=gnome-base/libglade-2 kernel_linux? ( virtual/modutils )
+SLOT=0
+SRC_URI=http://www.daimi.au.dk/~sandmann/sysprof/sysprof-1.0.9.tar.gz

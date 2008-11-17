@@ -1,0 +1,10 @@
+DESCRIPTION=Ruby/SDL: Ruby bindings for SDL
+EAPI=0
+HOMEPAGE=http://www.kmc.gr.jp/~ohai/rubysdl.en.html
+INHERITED=multilib toolchain-funcs eutils portability
+IUSE=image mixer truetype mpeg sge
+KEYWORDS=~amd64 ~ia64 ~ppc ~x86
+LICENSE=LGPL-2.1
+RDEPEND=virtual/ruby >=media-libs/libsdl-1.2.5 truetype? ( >=media-libs/sdl-ttf-2.0.6 ) image? ( >=media-libs/sdl-image-1.2.2 ) mixer? ( >=media-libs/sdl-mixer-1.2.4 ) mpeg? ( >=media-libs/smpeg-0.4.4-r1 ) sge? ( media-libs/sge )
+SLOT=0
+SRC_URI=http://www.kmc.gr.jp/~ohai/rubysdl/rubysdl-1.3.0.tar.gz

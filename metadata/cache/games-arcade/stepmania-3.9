@@ -1,0 +1,12 @@
+DEPEND=gtk? ( >=x11-libs/gtk+-2 ) mad? ( media-libs/libmad ) >=dev-lang/lua-5 media-libs/libsdl jpeg? ( media-libs/jpeg ) media-libs/libpng ffmpeg? ( >=media-video/ffmpeg-0.4.9_p20080326 ) vorbis? ( media-libs/libvorbis ) virtual/opengl virtual/glu dev-util/pkgconfig =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=An advanced DDR simulator
+EAPI=0
+HOMEPAGE=http://www.stepmania.com/stepmania/
+INHERITED=toolchain-funcs portability multilib libtool games autotools eutils
+IUSE=debug gtk jpeg mad ffmpeg vorbis force-oss
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=MIT
+RDEPEND=gtk? ( >=x11-libs/gtk+-2 ) mad? ( media-libs/libmad ) >=dev-lang/lua-5 media-libs/libsdl jpeg? ( media-libs/jpeg ) media-libs/libpng ffmpeg? ( >=media-video/ffmpeg-0.4.9_p20080326 ) vorbis? ( media-libs/libvorbis ) virtual/opengl virtual/glu
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://sourceforge/stepmania/StepMania-3.9-src.tar.gz mirror://sourceforge/stepmania/StepMania-3.9-linux.tar.gz http://dev.gentoo.org/~drac/stepmania-patches-3.tar.bz2

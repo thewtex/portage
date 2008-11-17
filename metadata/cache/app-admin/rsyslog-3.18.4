@@ -1,0 +1,12 @@
+DEPEND=kerberos? ( virtual/krb5 ) dbi? ( dev-db/libdbi ) mysql? ( virtual/mysql ) postgres? ( virtual/postgresql-base ) relp? ( dev-libs/librelp ) snmp? ( net-analyzer/net-snmp ) zlib? ( sys-libs/zlib )
+DESCRIPTION=An enhanced multi-threaded syslogd with database support and more.
+EAPI=0
+HOMEPAGE=http://www.rsyslog.com/
+INHERITED=multilib versionator toolchain-funcs eutils portability
+IUSE=debug kerberos dbi mysql postgres relp snmp zlib
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3 LGPL-3
+PROVIDE=virtual/logger
+RDEPEND=kerberos? ( virtual/krb5 ) dbi? ( dev-db/libdbi ) mysql? ( virtual/mysql ) postgres? ( virtual/postgresql-base ) relp? ( dev-libs/librelp ) snmp? ( net-analyzer/net-snmp ) zlib? ( sys-libs/zlib )
+SLOT=0
+SRC_URI=http://download.rsyslog.com/rsyslog/rsyslog-3.18.4.tar.gz

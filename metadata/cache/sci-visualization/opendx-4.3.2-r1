@@ -1,0 +1,11 @@
+DEPEND=x11-libs/libXmu x11-libs/libXi x11-libs/libXp x11-libs/libXpm x11-libs/openmotif szip? ( sci-libs/szip ) hdf? ( sci-libs/hdf ) cdf? ( sci-libs/cdf ) netcdf? ( sci-libs/netcdf ) tiff? ( media-libs/tiff ) imagemagick? ( >=media-gfx/imagemagick-5.3.4 ) kernel_linux? ( virtual/linux-sources ) =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=A 3D data visualization tool
+EAPI=0
+HOMEPAGE=http://www.opendx.org/
+INHERITED=toolchain-funcs portability flag-o-matic versionator multilib libtool linux-info autotools eutils
+IUSE=hdf cdf netcdf tiff imagemagick szip
+KEYWORDS=amd64 ppc x86
+LICENSE=IPL-1
+RDEPEND=x11-libs/libXmu x11-libs/libXi x11-libs/libXp x11-libs/libXpm x11-libs/openmotif szip? ( sci-libs/szip ) hdf? ( sci-libs/hdf ) cdf? ( sci-libs/cdf ) netcdf? ( sci-libs/netcdf ) tiff? ( media-libs/tiff ) imagemagick? ( >=media-gfx/imagemagick-5.3.4 )
+SLOT=0
+SRC_URI=http://opendx.npaci.edu/source/dx-4.3.2.tar.gz

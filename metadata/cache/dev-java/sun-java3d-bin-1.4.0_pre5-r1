@@ -1,0 +1,11 @@
+DEPEND=app-arch/unzip >=dev-java/java-config-2.0.33-r1 >=sys-apps/portage-2.1.2.7
+DESCRIPTION=Sun Java3D API Core
+EAPI=0
+HOMEPAGE=https://j3d-core.dev.java.net/
+INHERITED=toolchain-funcs java-pkg-2 portability java-utils-2 versionator multilib eutils
+IUSE=elibc_FreeBSD
+KEYWORDS=~amd64 ~x86 -*
+LICENSE=sun-jrl sun-jdl
+RDEPEND=>=virtual/jre-1.4 >=dev-java/java-config-2.0.33-r1 >=sys-apps/portage-2.1.2.7
+SLOT=0
+SRC_URI=amd64? ( http://download.java.net/media/java3d/builds/stable/1_4_0-build5/java3d-1_4_0-build5-linux-amd64.zip ) x86? ( http://download.java.net/media/java3d/builds/stable/1_4_0-build5/java3d-1_4_0-build5-linux-i586.zip )

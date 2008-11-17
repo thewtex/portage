@@ -1,0 +1,11 @@
+DEPEND=x11-libs/libXt || ( >=app-i18n/scim-1.1 >=app-i18n/scim-cvs-1.1 ) kde? ( app-i18n/skim ) nls? ( virtual/libintl ) dev-util/pkgconfig nls? ( sys-devel/gettext ) =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=Smart Common Input Method (SCIM) Smart Pinyin Input Method
+EAPI=0
+HOMEPAGE=http://www.scim-im.org/
+INHERITED=toolchain-funcs qt3 portability versionator multilib kde-functions libtool autotools eutils
+IUSE=kde nls
+KEYWORDS=alpha amd64 ppc ~ppc64 sparc x86
+LICENSE=GPL-2
+RDEPEND=x11-libs/libXt || ( >=app-i18n/scim-1.1 >=app-i18n/scim-cvs-1.1 ) kde? ( app-i18n/skim ) nls? ( virtual/libintl )
+SLOT=0
+SRC_URI=mirror://sourceforge/scim/scim-pinyin-0.5.91.tar.gz

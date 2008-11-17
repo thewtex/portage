@@ -1,0 +1,11 @@
+DEPEND=dev-libs/libusb dev-util/pkgconfig
+DESCRIPTION=PC/SC Architecture smartcard middleware library
+EAPI=0
+HOMEPAGE=http://www.linuxnet.com/middle.html
+INHERITED=multilib toolchain-funcs
+IUSE=static debug
+KEYWORDS=~amd64 ~arm ~hppa ~ia64 ~m68k ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
+LICENSE=as-is
+RDEPEND=!static? ( dev-libs/libusb )
+SLOT=0
+SRC_URI=http://alioth.debian.org/download.php/2106/pcsc-lite-1.4.4.tar.gz

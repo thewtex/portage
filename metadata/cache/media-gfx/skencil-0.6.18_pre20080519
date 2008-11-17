@@ -1,0 +1,11 @@
+DEPEND=dev-lang/python[tk] >=dev-python/imaging-1.1.2-r1 dev-python/reportlab dev-lang/tk nls? ( sys-devel/gettext )
+DESCRIPTION=Interactive X11 vector drawing program
+EAPI=2
+HOMEPAGE=http://www.skencil.org/
+INHERITED=toolchain-funcs portability python multilib alternatives eutils
+IUSE=nls
+KEYWORDS=amd64 hppa ppc ppc64 sparc x86
+LICENSE=GPL-2
+RDEPEND=!elibc_glibc? ( nls? ( sys-devel/gettext ) ) dev-python/pyxml
+SLOT=0
+SRC_URI=mirror://gentoo/skencil-0.6.18_pre20080519.tar.bz2

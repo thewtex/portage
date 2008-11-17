@@ -1,0 +1,13 @@
+DEPEND=<x11-base/xorg-server-1.4 multilib? ( app-emulation/emul-linux-x86-xlibs ) kernel_FreeBSD? ( !media-video/nvidia-freebsd ) !app-emulation/emul-linux-x86-nvidia !x11-drivers/nvidia-legacy-drivers kernel_linux? ( virtual/linux-sources ) app-admin/eselect-opengl kernel_linux? ( virtual/linux-sources ) kernel_linux? ( virtual/modutils ) sys-apps/sed sys-apps/pciutils
+DESCRIPTION=NVIDIA X11 driver and GLX libraries
+EAPI=0
+HOMEPAGE=http://www.nvidia.com/
+INHERITED=nvidia-driver toolchain-funcs portability flag-o-matic versionator multilib linux-info linux-mod eutils
+IUSE=gtk multilib kernel_linux
+KEYWORDS=-* amd64 x86 ~x86-fbsd
+LICENSE=NVIDIA
+PDEPEND=gtk? ( media-video/nvidia-settings )
+RDEPEND=<x11-base/xorg-server-1.4 multilib? ( app-emulation/emul-linux-x86-xlibs ) kernel_FreeBSD? ( !media-video/nvidia-freebsd ) !app-emulation/emul-linux-x86-nvidia !x11-drivers/nvidia-legacy-drivers kernel_linux? ( virtual/modutils ) media-libs/mesa kernel_linux? ( virtual/modutils )
+RESTRICT=strip
+SLOT=0
+SRC_URI=x86? ( http://us.download.nvidia.com/XFree86/Linux-x86/100.14.09/NVIDIA-Linux-x86-100.14.09-pkg0.run ) amd64? ( http://us.download.nvidia.com/XFree86/Linux-x86_64/100.14.09/NVIDIA-Linux-x86_64-100.14.09-pkg2.run ) x86-fbsd? ( http://us.download.nvidia.com/freebsd/100.14.09/NVIDIA-FreeBSD-x86-100.14.09.tar.gz )

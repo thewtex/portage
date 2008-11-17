@@ -1,0 +1,12 @@
+DEPEND=|| ( ( >=dev-lang/ocaml-3.10 >=dev-ml/camlp5-5.01 ) <dev-lang/ocaml-3.10 ) >=dev-lang/ocaml-3.08 ide? ( >=dev-ml/lablgtk-2.2.0 )
+DESCRIPTION=Coq is a proof assistant written in O'Caml
+EAPI=1
+HOMEPAGE=http://coq.inria.fr/
+INHERITED=multilib toolchain-funcs eutils portability
+IUSE=norealanalysis ide debug +ocamlopt
+KEYWORDS=amd64 ppc sparc x86
+LICENSE=LGPL-2.1
+RDEPEND=|| ( ( >=dev-lang/ocaml-3.10 >=dev-ml/camlp5-5.01 ) <dev-lang/ocaml-3.10 ) >=dev-lang/ocaml-3.08 ide? ( >=dev-ml/lablgtk-2.2.0 )
+RESTRICT=strip installsources
+SLOT=0
+SRC_URI=ftp://ftp.inria.fr/INRIA/coq/V8.1pl3/coq-8.1pl3.tar.gz

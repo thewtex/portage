@@ -1,0 +1,11 @@
+DEPEND=virtual/libc || ( sys-kernel/linux-headers sys-kernel/mips-headers ) doc? ( virtual/latex-base )
+DESCRIPTION=btrace can show detailed info about what is happening on a block device io queue.
+EAPI=0
+HOMEPAGE=http://www.kernel.org/pub/linux/kernel/people/axboe/blktrace/
+INHERITED=multilib toolchain-funcs eutils portability flag-o-matic
+IUSE=doc
+KEYWORDS=~x86 ~ppc ~amd64
+LICENSE=GPL-2
+RDEPEND=virtual/libc
+SLOT=0
+SRC_URI=http://brick.kernel.dk/snaps/blktrace-git-20070730162628.tar.gz

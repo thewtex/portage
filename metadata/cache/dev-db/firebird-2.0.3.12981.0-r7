@@ -1,0 +1,12 @@
+DEPEND=dev-libs/libedit dev-libs/icu doc? ( app-arch/unzip ) =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=A relational database offering many ANSI SQL-99 features
+EAPI=0
+HOMEPAGE=http://firebird.sourceforge.net/
+INHERITED=toolchain-funcs portability flag-o-matic versionator multilib libtool autotools eutils
+IUSE=doc xinetd examples debug
+KEYWORDS=~amd64 -ia64 ~x86
+LICENSE=IDPL Interbase-1.0
+RDEPEND=dev-libs/libedit dev-libs/icu xinetd? ( virtual/inetd )
+RESTRICT=userpriv
+SLOT=0
+SRC_URI=mirror://sourceforge/firebird/Firebird-2.0.3.12981-0.tar.bz2 doc? ( ftp://ftpc.inprise.com/pub/interbase/techpubs/ib_b60_doc.zip )

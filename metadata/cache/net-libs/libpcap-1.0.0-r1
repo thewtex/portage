@@ -1,0 +1,12 @@
+DEPEND=!virtual/libpcap bluetooth? ( net-wireless/bluez-libs ) sys-devel/flex =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=A system-independent library for user-level network packet capture
+EAPI=0
+HOMEPAGE=http://www.tcpdump.org/
+INHERITED=toolchain-funcs portability multilib libtool autotools eutils
+IUSE=ipv6 bluetooth
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sh ~sparc ~x86
+LICENSE=BSD
+PROVIDE=virtual/libpcap
+RDEPEND=!virtual/libpcap bluetooth? ( net-wireless/bluez-libs )
+SLOT=0
+SRC_URI=http://www.tcpdump.org/release/libpcap-1.0.0.tar.gz http://www.jp.tcpdump.org/release/libpcap-1.0.0.tar.gz

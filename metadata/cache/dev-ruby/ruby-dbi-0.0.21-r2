@@ -1,0 +1,11 @@
+DEPEND=virtual/ruby mysql? ( dev-ruby/mysql-ruby ) postgres? ( dev-ruby/ruby-postgres ) firebird? ( >=dev-db/firebird-1.0-r1 ) odbc? ( >=dev-db/unixODBC-2.0.6 ) sqlite? ( =dev-db/sqlite-2* ) virtual/ruby
+DESCRIPTION=Ruby/DBI - a database independent interface for accessing databases - similar to Perl's DBI
+EAPI=0
+HOMEPAGE=http://ruby-dbi.sourceforge.net/
+INHERITED=ruby toolchain-funcs multilib eutils portability
+IUSE=examples firebird odbc postgres mysql sqlite
+KEYWORDS=amd64 ia64 ~ppc ~sparc x86
+LICENSE=as-is
+RDEPEND=virtual/ruby mysql? ( dev-ruby/mysql-ruby ) postgres? ( dev-ruby/ruby-postgres ) firebird? ( >=dev-db/firebird-1.0-r1 ) odbc? ( >=dev-db/unixODBC-2.0.6 ) sqlite? ( =dev-db/sqlite-2* ) virtual/ruby
+SLOT=0
+SRC_URI=mirror://sourceforge/ruby-dbi/ruby-dbi-all-0.0.21.tar.gz

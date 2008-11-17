@@ -1,0 +1,11 @@
+DEPEND=|| ( >=sys-fs/udev-103 sys-apps/hotplug ) sys-apps/hotplug-base sys-apps/fxload kernel_linux? ( virtual/linux-sources ) kernel_linux? ( virtual/modutils ) sys-apps/sed
+DESCRIPTION=Linux drivers for go7007 chipsets (Plextor ConvertX PVR)
+EAPI=0
+HOMEPAGE=http://oss.wischip.com/
+INHERITED=toolchain-funcs portability versionator multilib linux-info linux-mod eutils
+IUSE=alsa kernel_linux
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=|| ( >=sys-fs/udev-103 sys-apps/hotplug ) sys-apps/hotplug-base sys-apps/fxload kernel_linux? ( virtual/modutils )
+SLOT=0
+SRC_URI=http://oss.wischip.com/wis-go7007-linux-0.9.8.tar.bz2

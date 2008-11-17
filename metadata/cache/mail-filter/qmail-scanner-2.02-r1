@@ -1,0 +1,12 @@
+DEPEND=>=dev-lang/perl-5.6.1-r1 >=virtual/perl-Time-HiRes-01.20-r2 >=net-mail/tnef-1.1.1 >=virtual/perl-DB_File-1.803-r2 mail-filter/maildrop virtual/qmail >=app-arch/unzip-5.42-r1 sys-process/daemontools virtual/antivirus clamav? ( app-antivirus/clamav ) spamassassin? ( >=mail-filter/spamassassin-2.64 ) >=sys-apps/sed-4
+DESCRIPTION=E-Mail virus scanner for qmail.
+EAPI=0
+HOMEPAGE=http://qmail-scanner.sourceforge.net/
+INHERITED=fixheadtails toolchain-funcs multilib eutils portability
+IUSE=clamav spamassassin
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=dev-lang/perl-5.6.1-r1 >=virtual/perl-Time-HiRes-01.20-r2 >=net-mail/tnef-1.1.1 >=virtual/perl-DB_File-1.803-r2 mail-filter/maildrop virtual/qmail >=app-arch/unzip-5.42-r1 sys-process/daemontools virtual/antivirus clamav? ( app-antivirus/clamav ) spamassassin? ( >=mail-filter/spamassassin-2.64 )
+RESTRICT=userpriv
+SLOT=0
+SRC_URI=mirror://sourceforge/qmail-scanner/qmail-scanner-2.02.tgz http://toribio.apollinare.org/qmail-scanner/download/q-s-2.02st-20080119.patch.gz

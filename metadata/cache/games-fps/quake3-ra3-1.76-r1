@@ -1,0 +1,12 @@
+DEPEND=app-arch/unzip
+DESCRIPTION=Quake III Rocket Arena 3 - a rocket dueling mod
+EAPI=0
+HOMEPAGE=http://www.planetquake.com/servers/arena/
+INHERITED=toolchain-funcs portability multilib games games-mods eutils
+IUSE=dedicated opengl
+KEYWORDS=-* ~amd64 ~ppc ~x86
+LICENSE=freedist
+RDEPEND=ppc? ( games-fps/quake3 ) !ppc? ( || ( games-fps/quake3 games-fps/quake3-bin ) )
+RESTRICT=mirror strip fetch
+SLOT=0
+SRC_URI=ra3176.zip

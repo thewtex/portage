@@ -1,0 +1,11 @@
+DEPEND=>=app-text/barcode-0.98 dev-libs/libpcre =kde-base/kdelibs-3.5* =x11-libs/qt-3* =sys-devel/automake-1.9* >=sys-devel/autoconf-2.61 sys-devel/libtool sys-devel/make dev-util/pkgconfig dev-lang/perl x11-libs/libXt x11-proto/xf86vidmodeproto xinerama? ( x11-proto/xineramaproto )
+DESCRIPTION=KBarcode is a barcode and label printing application for KDE.
+EAPI=0
+HOMEPAGE=http://www.kbarcode.net/
+INHERITED=toolchain-funcs qt3 portability flag-o-matic kde versionator multilib base kde-functions libtool autotools eutils
+IUSE=doc debug elibc_FreeBSD xinerama
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=>=app-text/barcode-0.98 dev-libs/libpcre virtual/ghostscript =kde-base/kdelibs-3.5* =x11-libs/qt-3* xinerama? ( x11-libs/libXinerama )
+SLOT=0
+SRC_URI=mirror://sourceforge/kbarcode/kbarcode-2.0.7.tar.gz doc? ( mirror://sourceforge/kbarcode/kbarcode-2.0.0.pdf )

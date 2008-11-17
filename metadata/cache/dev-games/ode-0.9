@@ -1,0 +1,11 @@
+DEPEND=app-arch/unzip virtual/opengl virtual/glu x11-libs/libXmu x11-libs/libXi =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=Open Dynamics Engine SDK
+EAPI=0
+HOMEPAGE=http://ode.org/
+INHERITED=toolchain-funcs portability multilib libtool autotools eutils
+IUSE=double-precision examples nogyroscopic noopcode
+KEYWORDS=~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd
+LICENSE=LGPL-2.1
+RDEPEND=examples? ( virtual/opengl virtual/glu x11-libs/libXmu x11-libs/libXi )
+SLOT=0
+SRC_URI=mirror://sourceforge/opende/ode-src-0.9.zip

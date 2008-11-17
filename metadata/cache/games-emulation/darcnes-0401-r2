@@ -1,0 +1,11 @@
+DEPEND=svga? ( >=media-libs/svgalib-1.4.2 ) !svga? ( !gtk? ( x11-libs/libXaw ) ) X? ( x11-libs/libXaw ) gtk? ( =x11-libs/gtk+-1.2* ) !svga? ( x11-proto/xextproto ) X? ( x11-proto/xextproto )
+DESCRIPTION=A multi-system emulator
+EAPI=0
+HOMEPAGE=http://www.dridus.com/~nyef/darcnes/
+INHERITED=eutils toolchain-funcs games multilib portability
+IUSE=gtk svga X
+KEYWORDS=-ppc x86
+LICENSE=GPL-2
+RDEPEND=svga? ( >=media-libs/svgalib-1.4.2 ) !svga? ( !gtk? ( x11-libs/libXaw ) ) X? ( x11-libs/libXaw ) gtk? ( =x11-libs/gtk+-1.2* )
+SLOT=0
+SRC_URI=http://www.dridus.com/~nyef/darcnes/download/dn9b0401.tgz

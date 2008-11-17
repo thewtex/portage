@@ -1,0 +1,11 @@
+DEPEND=!net-wireless/orinoco-usb kernel_linux? ( virtual/linux-sources ) kernel_linux? ( virtual/modutils ) sys-apps/sed
+DESCRIPTION=ORiNOCO WLAN drivers for PCMCIA and PCI with extended monitor mode and scanning support
+EAPI=0
+HOMEPAGE=http://www.projectiwear.org/~plasmahh/orinoco.html
+INHERITED=toolchain-funcs portability versionator multilib linux-info linux-mod eutils
+IUSE=pcmcia kernel_linux
+KEYWORDS=~ppc ~x86
+LICENSE=GPL-2 MPL-1.1
+RDEPEND=net-wireless/wireless-tools kernel_linux? ( virtual/modutils )
+SLOT=0
+SRC_URI=http://www.projectiwear.org/~plasmahh/orinoco-0.13e-SN-15.tar.bz2

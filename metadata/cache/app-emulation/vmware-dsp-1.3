@@ -1,0 +1,11 @@
+DEPEND=sys-libs/glibc amd64? ( app-emulation/emul-linux-x86-soundlibs esd? ( media-sound/esound ) arts? ( kde-base/arts ) ) x86? ( esd? ( media-sound/esound ) arts? ( kde-base/arts ) )
+DESCRIPTION=Allows you to use VMware Workstation with ESD and ARTS.
+EAPI=0
+HOMEPAGE=http://ftp.cvut.cz/vmware/
+INHERITED=multilib toolchain-funcs eutils portability
+IUSE=arts esd
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=LGPL-2
+RDEPEND=sys-libs/glibc amd64? ( app-emulation/emul-linux-x86-soundlibs esd? ( media-sound/esound ) arts? ( kde-base/arts ) ) x86? ( esd? ( media-sound/esound ) arts? ( kde-base/arts ) )
+SLOT=0
+SRC_URI=http://platan.vc.cvut.cz/ftp/pub/vmware/vmwaredsp-1.3.tar.gz http://ftp.cvut.cz/vmware/vmwaredsp-1.3.tar.gz http://ftp.cvut.cz/vmware/obsolete/vmwaredsp-1.3.tar.gz http://knihovny.cvut.cz/ftp/pub/vmware/vmwaredsp-1.3.tar.gz http://knihovny.cvut.cz/ftp/pub/vmware/obsolete/vmwaredsp-1.3.tar.gz

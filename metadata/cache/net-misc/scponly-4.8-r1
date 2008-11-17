@@ -1,0 +1,11 @@
+DEPEND=virtual/libc sys-apps/sed net-misc/openssh quota? ( sys-fs/quota ) !mips? ( passwd? ( sys-apps/shadow ) ) rsync? ( net-misc/rsync ) !mips? ( unison? ( net-misc/unison ) ) subversion? ( dev-util/subversion )
+DESCRIPTION=A tiny pseudoshell which only permits scp and sftp
+EAPI=0
+HOMEPAGE=http://www.sublimation.org/scponly/
+INHERITED=multilib toolchain-funcs eutils portability
+IUSE=sftp scp winscp gftp rsync unison subversion wildcards quota passwd logging
+KEYWORDS=~amd64 ~mips ~ppc ~sparc ~x86
+LICENSE=as-is
+RDEPEND=virtual/libc sys-apps/sed net-misc/openssh quota? ( sys-fs/quota ) !mips? ( passwd? ( sys-apps/shadow ) ) rsync? ( net-misc/rsync ) !mips? ( unison? ( net-misc/unison ) ) subversion? ( dev-util/subversion )
+SLOT=0
+SRC_URI=mirror://sourceforge/scponly/scponly-4.8.tgz

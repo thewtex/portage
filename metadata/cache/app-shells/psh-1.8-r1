@@ -1,0 +1,11 @@
+DEPEND=>=dev-lang/perl-5
+DESCRIPTION=Combines the interactive nature of a Unix shell with the power of Perl
+EAPI=0
+HOMEPAGE=http://www.focusresearch.com/gregor/psh/
+INHERITED=toolchain-funcs portability multilib base eutils perl-module
+IUSE=readline
+KEYWORDS=alpha ~amd64 ia64 ~ppc sparc x86
+LICENSE=|| ( Artistic GPL-2 )
+RDEPEND=readline? ( dev-perl/Term-ReadLine-Perl dev-perl/TermReadKey )
+SLOT=0
+SRC_URI=http://www.focusresearch.com/gregor/psh/psh-1.8.tar.gz

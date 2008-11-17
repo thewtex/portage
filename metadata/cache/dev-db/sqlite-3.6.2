@@ -1,0 +1,12 @@
+DEPEND=tcl? ( dev-lang/tcl ) doc? ( app-arch/unzip )
+DESCRIPTION=an SQL Database Engine in a C Library
+EAPI=1
+HOMEPAGE=http://www.sqlite.org/
+INHERITED=toolchain-funcs portability flag-o-matic versionator multilib libtool eutils
+IUSE=debug doc soundex tcl +threadsafe
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~sparc-fbsd ~x86 ~x86-fbsd
+LICENSE=as-is
+RDEPEND=tcl? ( dev-lang/tcl )
+RESTRICT=!tcl? ( test )
+SLOT=3
+SRC_URI=http://www.sqlite.org/sqlite-3.6.2.tar.gz doc? ( http://www.sqlite.org/sqlite_docs_3_6_2.zip )

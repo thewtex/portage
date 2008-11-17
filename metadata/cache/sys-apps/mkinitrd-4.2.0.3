@@ -1,0 +1,12 @@
+DEPEND=dev-libs/popt virtual/os-headers
+DESCRIPTION=Tools for creating initrd images
+EAPI=0
+HOMEPAGE=http://www.redhat.com/
+INHERITED=multilib toolchain-funcs eutils portability flag-o-matic
+IUSE=selinux
+KEYWORDS=~alpha ~amd64 ~ia64 ~ppc ~sparc ~x86
+LICENSE=GPL-2
+PDEPEND=selinux? ( sys-apps/policycoreutils )
+RDEPEND=app-shells/bash
+SLOT=0
+SRC_URI=mirror://gentoo/mkinitrd-4.2.0.3.tar.bz2

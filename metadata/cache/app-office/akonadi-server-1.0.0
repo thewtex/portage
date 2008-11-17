@@ -1,0 +1,11 @@
+DEPEND=!app-office/akonadi x11-libs/qt-core:4 x11-libs/qt-dbus:4 x11-libs/qt-sql:4[sqlite] x11-libs/qt-test:4 x11-misc/shared-mime-info mysql? ( virtual/mysql ) dev-libs/libxslt kde-base/automoc >=dev-util/cmake-2.4.6
+DESCRIPTION=The server part of Akonadi
+EAPI=2
+HOMEPAGE=http://pim.kde.org/akonadi
+INHERITED=qt4 toolchain-funcs portability flag-o-matic versionator multilib cmake-utils eutils
+IUSE=mysql
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
+LICENSE=LGPL-2.1
+RDEPEND=!app-office/akonadi x11-libs/qt-core:4 x11-libs/qt-dbus:4 x11-libs/qt-sql:4[sqlite] x11-libs/qt-test:4 x11-misc/shared-mime-info mysql? ( virtual/mysql )
+SLOT=0
+SRC_URI=http://akonadi.omat.nl/akonadi-1.0.0.tar.bz2

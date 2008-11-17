@@ -1,0 +1,11 @@
+DEPEND=>=gnome-base/orbit-2.3.94 >=gnome-base/libbonobo-1.97 >=dev-libs/glib-2 freetts? ( =app-accessibility/freetts-1.2* >=app-accessibility/java-access-bridge-1.4.6 ) freetts? ( >=virtual/jdk-1.4 ) >=dev-util/pkgconfig-0.9 freetts? ( >=dev-java/java-config-2.0.33-r1 >=sys-apps/portage-2.1.2.7 ) >=sys-apps/sed-4
+DESCRIPTION=Simple general API for producing text-to-speech output
+EAPI=0
+HOMEPAGE=http://www.gnome.org/
+INHERITED=toolchain-funcs portability java-utils-2 versionator multilib gnome2-utils java-pkg-opt-2 gnome2 gnome.org fdo-mime libtool eutils
+IUSE=freetts elibc_FreeBSD freetts debug
+KEYWORDS=alpha amd64 hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd
+LICENSE=LGPL-2
+RDEPEND=>=gnome-base/orbit-2.3.94 >=gnome-base/libbonobo-1.97 >=dev-libs/glib-2 freetts? ( =app-accessibility/freetts-1.2* >=app-accessibility/java-access-bridge-1.4.6 ) freetts? ( >=virtual/jre-1.4 ) app-accessibility/festival freetts? ( >=dev-java/java-config-2.0.33-r1 >=sys-apps/portage-2.1.2.7 )
+SLOT=1
+SRC_URI=mirror://gnome/sources/gnome-speech/0.4/gnome-speech-0.4.17.tar.bz2
