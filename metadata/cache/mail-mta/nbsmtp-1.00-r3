@@ -2,7 +2,6 @@ DEPEND=virtual/libc ssl? ( dev-libs/openssl )
 DESCRIPTION=Extremely simple MTA to get mail off the system to a relayhost
 EAPI=0
 HOMEPAGE=http://nbsmtp.ferdyx.org
-INHERITED=multilib mailer toolchain-funcs eutils portability
 IUSE=ssl ipv6 debug mailwrapper
 KEYWORDS=~x86 ~ppc ~hppa ~amd64 ~sparc ~alpha
 LICENSE=GPL-2
@@ -10,3 +9,5 @@ PROVIDE=virtual/mta
 RDEPEND=virtual/libc ssl? ( dev-libs/openssl ) mailwrapper? ( || ( net-mail/mailer-config app-admin/eselect ) >=net-mail/mailwrapper-0.2.1-r1 ) !mailwrapper? ( !virtual/mta )
 SLOT=0
 SRC_URI=http://www.gentoo-es.org/~ferdy/nbsmtp-1.00.tar.bz2
+_eclasses_=toolchain-funcs	/root/git/portage/eclass	1221548757	mailer	/root/git/portage/eclass	1123230945	multilib	/root/git/portage/eclass	1214143558	portability	/root/git/portage/eclass	1167690947	eutils	/root/git/portage/eclass	1222578375
+_mtime_=1158514565

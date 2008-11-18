@@ -2,10 +2,11 @@ DEPEND=>=dev-libs/glib-2.4 msn? ( gnutls? ( net-libs/gnutls ) !gnutls? ( nss? ( 
 DESCRIPTION=irc to IM gateway that support multiple IM protocols
 EAPI=1
 HOMEPAGE=http://www.bitlbee.org/
-INHERITED=confutils multilib toolchain-funcs eutils portability
 IUSE=debug gnutls ipv6 +jabber msn nss +oscar ssl test +yahoo xinetd
 KEYWORDS=alpha amd64 ia64 ppc sparc x86 ~x86-fbsd
 LICENSE=GPL-2
 RDEPEND=>=dev-libs/glib-2.4 msn? ( gnutls? ( net-libs/gnutls ) !gnutls? ( nss? ( dev-libs/nss ) ) !gnutls? ( !nss? ( ssl? ( dev-libs/openssl ) ) ) ) jabber? ( gnutls? ( net-libs/gnutls ) !gnutls? ( nss? ( dev-libs/nss ) ) !gnutls? ( !nss? ( ssl? ( dev-libs/openssl ) ) ) ) virtual/logger xinetd? ( sys-apps/xinetd )
 SLOT=0
 SRC_URI=http://get.bitlbee.org/src/bitlbee-1.2.3.tar.gz
+_eclasses_=confutils	/root/git/portage/eclass	1204106758	toolchain-funcs	/root/git/portage/eclass	1221548757	multilib	/root/git/portage/eclass	1214143558	portability	/root/git/portage/eclass	1167690947	eutils	/root/git/portage/eclass	1222578375
+_mtime_=1225560983

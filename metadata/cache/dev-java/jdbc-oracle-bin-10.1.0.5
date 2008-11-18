@@ -2,7 +2,6 @@ DEPEND=doc? ( app-arch/unzip ) >=dev-java/java-config-2.0.33-r1 >=sys-apps/porta
 DESCRIPTION=JDBC 3.0 Drivers for Oracle
 EAPI=0
 HOMEPAGE=http://www.oracle.com/technology/software/tech/java/sqlj_jdbc/index.html
-INHERITED=toolchain-funcs java-pkg-2 portability java-utils-2 versionator multilib eutils
 IUSE=debug dms doc examples nls elibc_FreeBSD
 KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=oracle-jdbc
@@ -10,3 +9,5 @@ RDEPEND=>=virtual/jre-1.4 >=dev-java/java-config-2.0.33-r1 >=sys-apps/portage-2.
 RESTRICT=fetch
 SLOT=10.1
 SRC_URI=!dms? ( !debug? ( jdbc-oracle-bin-10.1.0.5-ojdbc14.jar ) debug? ( jdbc-oracle-bin-10.1.0.5-ojdbc14_g.jar ) ) dms? ( !debug? ( jdbc-oracle-bin-10.1.0.5-ojdbc14dms.jar ) debug? ( jdbc-oracle-bin-10.1.0.5-ojdbc14dms_g.jar ) ) jdbc-oracle-bin-10.1.0.5-ocrs12.jar doc? ( jdbc-oracle-bin-10.1.0.5-javadoc.zip ) examples? ( jdbc-oracle-bin-10.1.0.5-demo.tar ) nls? ( jdbc-oracle-bin-10.1.0.5-orai18n.jar )
+_eclasses_=toolchain-funcs	/root/git/portage/eclass	1221548757	java-pkg-2	/root/git/portage/eclass	1223760956	portability	/root/git/portage/eclass	1167690947	java-utils-2	/root/git/portage/eclass	1226190986	versionator	/root/git/portage/eclass	1213275960	multilib	/root/git/portage/eclass	1214143558	eutils	/root/git/portage/eclass	1222578375
+_mtime_=1181496944

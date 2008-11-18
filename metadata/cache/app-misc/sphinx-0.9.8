@@ -2,7 +2,6 @@ DEPEND=mysql? ( virtual/mysql ) postgres? ( virtual/postgresql-base ) =sys-devel
 DESCRIPTION=Full-text search engine with support for MySQL and PostgreSQL
 EAPI=0
 HOMEPAGE=http://www.sphinxsearch.com/
-INHERITED=toolchain-funcs portability multilib libtool autotools eutils
 IUSE=debug mysql postgres stemmer test
 KEYWORDS=~x86 amd64
 LICENSE=GPL-2
@@ -10,3 +9,5 @@ RDEPEND=mysql? ( virtual/mysql ) postgres? ( virtual/postgresql-base ) test? ( d
 RESTRICT=mirror
 SLOT=0
 SRC_URI=http://sphinxsearch.com/downloads/sphinx-0.9.8.tar.gz stemmer? ( http://snowball.tartarus.org/dist/libstemmer_c.tgz )
+_eclasses_=toolchain-funcs	/root/git/portage/eclass	1221548757	portability	/root/git/portage/eclass	1167690947	multilib	/root/git/portage/eclass	1214143558	libtool	/root/git/portage/eclass	1217534814	autotools	/root/git/portage/eclass	1222447000	eutils	/root/git/portage/eclass	1222578375
+_mtime_=1224966974

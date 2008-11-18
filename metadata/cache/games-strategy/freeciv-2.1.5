@@ -2,10 +2,11 @@ DEPEND=readline? ( sys-libs/readline ) !dedicated? ( nls? ( virtual/libintl ) gt
 DESCRIPTION=multiplayer strategy game (Civilization Clone)
 EAPI=0
 HOMEPAGE=http://www.freeciv.org/
-INHERITED=eutils toolchain-funcs games multilib portability
 IUSE=alsa auth dedicated esd gtk nls readline sdl Xaw3d
 KEYWORDS=alpha amd64 ~mips ppc ppc64 sparc x86
 LICENSE=GPL-2
 RDEPEND=readline? ( sys-libs/readline ) !dedicated? ( nls? ( virtual/libintl ) gtk? ( >=x11-libs/gtk+-2 ) !gtk? ( Xaw3d? ( x11-libs/Xaw3d ) !Xaw3d? ( sdl? ( media-libs/libsdl media-libs/sdl-image media-libs/freetype ) !sdl? ( x11-libs/libXaw ) ) ) media-libs/libpng alsa? ( media-libs/alsa-lib media-libs/audiofile ) esd? ( media-sound/esound ) sdl? ( media-libs/sdl-mixer ) auth? ( virtual/mysql ) )
 SLOT=0
 SRC_URI=ftp://ftp.freeciv.org/pub/freeciv/stable/freeciv-2.1.5.tar.bz2 mirror://gentoo/freeciv.png !dedicated? ( alsa? ( ftp://ftp.freeciv.org/freeciv/contrib/audio/soundsets/stdsounds3.tar.gz ) esd? ( ftp://ftp.freeciv.org/freeciv/contrib/audio/soundsets/stdsounds3.tar.gz ) sdl? ( ftp://ftp.freeciv.org/freeciv/contrib/audio/soundsets/stdsounds3.tar.gz ) )
+_eclasses_=games	/root/git/portage/eclass	1222646917	toolchain-funcs	/root/git/portage/eclass	1221548757	multilib	/root/git/portage/eclass	1214143558	portability	/root/git/portage/eclass	1167690947	eutils	/root/git/portage/eclass	1222578375
+_mtime_=1220108783

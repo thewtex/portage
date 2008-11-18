@@ -2,10 +2,11 @@ DEPEND=dev-libs/boost virtual/latex-base media-libs/netpbm fits? ( sci-libs/cfit
 DESCRIPTION=Highly interactive data analysis Qt environment for C++ and python
 EAPI=1
 HOMEPAGE=http://www.slac.stanford.edu/grp/ek/hippodraw/
-INHERITED=qt4 toolchain-funcs qt3 portability versionator multilib libtool autotools eutils
 IUSE=doc examples +fits +numpy qt4 root wcs
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=dev-libs/boost virtual/latex-base media-libs/netpbm fits? ( sci-libs/cfitsio ) numpy? ( dev-python/numpy ) qt4? ( || ( ( x11-libs/qt-gui:4 x11-libs/qt-qt3support:4 ) =x11-libs/qt-4.3*:4 ) ) !qt4? ( x11-libs/qt:3 ) root? ( >=sci-physics/root-5 ) !root? ( sci-libs/minuit ) wcs? ( sci-astronomy/wcslib ) numpy? ( fits? ( dev-python/pyfits ) )
 SLOT=0
 SRC_URI=ftp://ftp.slac.stanford.edu/users/pfkeb/hippodraw/HippoDraw-1.21.3.tar.gz
+_eclasses_=qt4	/root/git/portage/eclass	1221960955	toolchain-funcs	/root/git/portage/eclass	1221548757	qt3	/root/git/portage/eclass	1217797572	portability	/root/git/portage/eclass	1167690947	versionator	/root/git/portage/eclass	1213275960	multilib	/root/git/portage/eclass	1214143558	libtool	/root/git/portage/eclass	1217534814	autotools	/root/git/portage/eclass	1222447000	eutils	/root/git/portage/eclass	1222578375
+_mtime_=1220458081

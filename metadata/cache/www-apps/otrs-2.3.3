@@ -2,10 +2,11 @@ DEPEND=apache2? ( =www-servers/apache-2* ) >=app-admin/webapp-config-1.50.15
 DESCRIPTION=OTRS is an Open source Ticket Request System
 EAPI=0
 HOMEPAGE=http://otrs.org/
-INHERITED=toolchain-funcs portability multilib webapp depend.apache eutils
 IUSE=mysql postgres fastcgi ldap gd pdf apache2 vhosts
 KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
 LICENSE=GPL-2
 RDEPEND=virtual/mta =dev-lang/perl-5* dev-perl/Authen-SASL dev-perl/Crypt-PasswdMD5 dev-perl/DBI dev-perl/Date-Pcalc dev-perl/IO-stringy dev-perl/MIME-tools dev-perl/MailTools dev-perl/Net-DNS dev-perl/TimeDate dev-perl/XML-Parser dev-perl/libwww-perl virtual/perl-CGI virtual/perl-Digest-MD5 virtual/perl-MIME-Base64 virtual/perl-libnet apache2? ( =www-apache/libapreq2-2* ) fastcgi? ( dev-perl/FCGI ) gd? ( dev-perl/GD dev-perl/GDTextUtil dev-perl/GDGraph ) ldap? ( dev-perl/perl-ldap net-nds/openldap ) mysql? ( >=dev-perl/DBD-mysql-3.0005 ) pdf? ( dev-perl/PDF-API2 ) postgres? ( dev-perl/DBD-Pg ) apache2? ( =www-servers/apache-2* ) >=app-admin/webapp-config-1.50.15
 SLOT=2.3.3
 SRC_URI=ftp://ftp.otrs.org/pub/otrs/otrs-2.3.3.tar.bz2
+_eclasses_=toolchain-funcs	/root/git/portage/eclass	1221548757	portability	/root/git/portage/eclass	1167690947	multilib	/root/git/portage/eclass	1214143558	webapp	/root/git/portage/eclass	1206232556	depend.apache	/root/git/portage/eclass	1204628758	eutils	/root/git/portage/eclass	1222578375
+_mtime_=1225435242

@@ -1,10 +1,11 @@
 DESCRIPTION=C library for developing embedded Linux systems
 EAPI=0
 HOMEPAGE=http://www.uclibc.org/
-INHERITED=multilib toolchain-funcs eutils portability flag-o-matic
 IUSE=build uclibc-compat debug hardened iconv ipv6 minimal nls pregen savedconfig userlocales wordexp crosscompile_opts_headers-only
 KEYWORDS=-* arm ~m68k -mips ppc ~sh ~sparc x86
 LICENSE=LGPL-2
 RESTRICT=strip
 SLOT=x86_64-pc-linux-uclibc
 SRC_URI=mirror://kernel/linux/libs/uclibc/uClibc-0.9.28.3.tar.bz2 http://uclibc.org/downloads/uClibc-0.9.28.3.tar.bz2 nls? ( !userlocales? ( pregen? ( x86? ( http://www.uclibc.org/downloads/uClibc-locale-030818.tgz ) ) ) ) mirror://gentoo/uClibc-0.9.28.3-patches-1.3.tar.bz2
+_eclasses_=toolchain-funcs	/root/git/portage/eclass	1221548757	multilib	/root/git/portage/eclass	1214143558	portability	/root/git/portage/eclass	1167690947	eutils	/root/git/portage/eclass	1222578375	flag-o-matic	/root/git/portage/eclass	1225692356
+_mtime_=1225525002
