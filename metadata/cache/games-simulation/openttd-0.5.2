@@ -1,0 +1,12 @@
+DEPEND=!dedicated? ( media-libs/libsdl media-libs/fontconfig ) iconv? ( virtual/libiconv ) png? ( media-libs/libpng ) zlib? ( sys-libs/zlib )
+DESCRIPTION=OpenTTD is a clone of Transport Tycoon Deluxe
+EAPI=0
+HOMEPAGE=http://www.openttd.com/
+IUSE=alsa debug dedicated iconv png scenarios timidity zlib
+KEYWORDS=amd64 ppc ppc64 x86
+LICENSE=GPL-2
+RDEPEND=!dedicated? ( media-libs/libsdl media-libs/fontconfig ) iconv? ( virtual/libiconv ) png? ( media-libs/libpng ) zlib? ( sys-libs/zlib ) !dedicated? ( timidity? ( media-sound/timidity++ ) !timidity? ( alsa? ( media-sound/alsa-utils ) ) )
+SLOT=0
+SRC_URI=mirror://sourceforge/openttd/openttd-0.5.2-source.tar.bz2 scenarios? ( mirror://sourceforge/openttd/openttd-0.4.8-scenarios.tar.bz2 mirror://sourceforge/openttd/openttd-0.5.0-scenarios.tar.bz2 )
+_eclasses_=games	/root/git/portage/eclass	1222646917	toolchain-funcs	/root/git/portage/eclass	1221548757	multilib	/root/git/portage/eclass	1214143558	portability	/root/git/portage/eclass	1167690947	eutils	/root/git/portage/eclass	1222578375
+_mtime_=1202961984

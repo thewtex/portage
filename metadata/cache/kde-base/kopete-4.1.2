@@ -1,0 +1,14 @@
+DEPEND=dev-libs/libpcre kde-base/qimageblitz x11-libs/libXScrnSaver gadu? ( dev-libs/openssl ) groupwise? ( app-crypt/qca:2 ) jabber? ( net-dns/libidn app-crypt/qca:2 ) otr? ( net-libs/libotr ) statistics? ( dev-db/sqlite:3 ) webpresence? ( dev-libs/libxml2 dev-libs/libxslt ) x11-proto/scrnsaverproto >=dev-util/cmake-2.4.6 x11-libs/qt-core:4[qt3support,ssl] x11-libs/qt-gui:4[accessibility,dbus] x11-libs/qt-qt3support:4[accessibility] x11-libs/qt-script:4 x11-libs/qt-svg:4 x11-libs/qt-test:4 >=dev-util/cmake-2.4.7-r1 dev-util/pkgconfig kde-base/automoc x11-libs/libXt x11-proto/xf86vidmodeproto !kdeprefix? ( !kde-base/kopete:kde-4[-kdeprefix] ) >=kde-base/kdelibs-4.1.2:4.1[kdeprefix=] >=kde-base/kdepimlibs-4.1.2:4.1[kdeprefix=] !kde-base/kdenetwork:4.1
+DESCRIPTION=KDE multi-protocol IM client
+EAPI=2
+HOMEPAGE=http://www.kde.org/
+IUSE=+addbookmarks +alias +autoreplace +contactnotes debug gadu groupwise +highlight +history htmlhandbook +jabber latex messenger +msn +nowlistening +oscar +otr +pipes +privacy qq sms ssl +statistics testbed +texteffect +translator +urlpicpreview +webpresence winpopup yahoo kdeprefix
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+PDEPEND=ssl? ( >=app-crypt/qca-ossl-2.0.0_beta3 )
+RDEPEND=dev-libs/libpcre kde-base/qimageblitz x11-libs/libXScrnSaver gadu? ( dev-libs/openssl ) groupwise? ( app-crypt/qca:2 ) jabber? ( net-dns/libidn app-crypt/qca:2 ) otr? ( net-libs/libotr ) statistics? ( dev-db/sqlite:3 ) webpresence? ( dev-libs/libxml2 dev-libs/libxslt ) x11-libs/qt-core:4[qt3support,ssl] x11-libs/qt-gui:4[accessibility,dbus] x11-libs/qt-qt3support:4[accessibility] x11-libs/qt-script:4 x11-libs/qt-svg:4 x11-libs/qt-test:4 !kdeprefix? ( !kde-base/kopete:kde-4[-kdeprefix] ) >=kde-base/kdelibs-4.1.2:4.1[kdeprefix=] >=kde-base/kdepimlibs-4.1.2:4.1[kdeprefix=] !kde-base/kdenetwork:4.1
+RESTRICT=test
+SLOT=4.1
+SRC_URI=mirror://kde/stable/4.1.2/src/kdenetwork-4.1.2.tar.bz2
+_eclasses_=toolchain-funcs	/root/git/portage/eclass	1221548757	kde4-base	/root/git/portage/eclass	1226271960	portability	/root/git/portage/eclass	1167690947	flag-o-matic	/root/git/portage/eclass	1225692356	multilib	/root/git/portage/eclass	1214143558	kde4-functions	/root/git/portage/eclass	1223345307	base	/root/git/portage/eclass	1226246938	kde4-meta	/root/git/portage/eclass	1222931156	cmake-utils	/root/git/portage/eclass	1225919141	eutils	/root/git/portage/eclass	1222578375
+_mtime_=1225708561

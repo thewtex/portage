@@ -1,0 +1,13 @@
+DEPEND=>=app-text/acroread-7.0.8
+DESCRIPTION=Asian font packs for Adobe Acrobat Reader
+EAPI=0
+HOMEPAGE=http://www.adobe.com/products/acrobat/acrrasianfontpack.html
+IUSE=linguas_zh_CN linguas_zh_TW linguas_ja linguas_ko
+KEYWORDS=~amd64 x86
+LICENSE=Adobe
+RDEPEND=>=app-text/acroread-7.0.8
+RESTRICT=mirror
+SLOT=0
+SRC_URI=linguas_zh_CN? ( ftp://ftp.adobe.com/pub/adobe/reader/unix/7x/7.0.8/misc/FontPack708_chs_i386-linux.tar.gz ) linguas_zh_TW? ( ftp://ftp.adobe.com/pub/adobe/reader/unix/7x/7.0.8/misc/FontPack708_cht_i386-linux.tar.gz ) linguas_ja? ( ftp://ftp.adobe.com/pub/adobe/reader/unix/7x/7.0.8/misc/FontPack708_jpn_i386-linux.tar.gz ) linguas_ko? ( ftp://ftp.adobe.com/pub/adobe/reader/unix/7x/7.0.8/misc/FontPack708_kor_i386-linux.tar.gz ) !linguas_zh_CN? ( !linguas_zh_TW? ( !linguas_ja? ( !linguas_ko? ( ftp://ftp.adobe.com/pub/adobe/reader/unix/7x/7.0.8/misc/FontPack708_chs_i386-linux.tar.gz ftp://ftp.adobe.com/pub/adobe/reader/unix/7x/7.0.8/misc/FontPack708_cht_i386-linux.tar.gz ftp://ftp.adobe.com/pub/adobe/reader/unix/7x/7.0.8/misc/FontPack708_jpn_i386-linux.tar.gz ftp://ftp.adobe.com/pub/adobe/reader/unix/7x/7.0.8/misc/FontPack708_kor_i386-linux.tar.gz ) ) ) )
+_eclasses_=toolchain-funcs	/root/git/portage/eclass	1221548757	multilib	/root/git/portage/eclass	1214143558	portability	/root/git/portage/eclass	1167690947	eutils	/root/git/portage/eclass	1222578375
+_mtime_=1183388749

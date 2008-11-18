@@ -1,0 +1,12 @@
+DEPEND=sdl? ( media-libs/libsdl media-libs/sdl-gfx ui? ( x11-libs/gtk+ ) alsa? ( media-libs/alsa-lib ) ) !sdl? ( X? ( x11-libs/libXext dga? ( x11-libs/libXxf86dga x11-libs/libXxf86vm ) ui? ( x11-libs/gtk+ ) ) !X? ( svga? ( media-libs/svgalib ui? ( sys-libs/ncurses ) ) !svga? ( aalib? ( media-libs/aalib ui? ( sys-libs/ncurses ) ) ) !aalib? ( media-libs/libsdl ui? ( x11-libs/gtk+ ) ) ) alsa? ( media-libs/alsa-lib ) ) scsi? ( app-cdr/cdrtools )
+DESCRIPTION=The Umiquious Amiga Emulator
+EAPI=0
+HOMEPAGE=http://www.freiburg.linux.de/~uae/
+IUSE=sdl X dga svga aalib oss alsa sdl-sound scsi ui
+KEYWORDS=~x86 ~ppc ~amd64
+LICENSE=GPL-2
+RDEPEND=sdl? ( media-libs/libsdl media-libs/sdl-gfx ui? ( x11-libs/gtk+ ) alsa? ( media-libs/alsa-lib ) ) !sdl? ( X? ( x11-libs/libXext dga? ( x11-libs/libXxf86dga x11-libs/libXxf86vm ) ui? ( x11-libs/gtk+ ) ) !X? ( svga? ( media-libs/svgalib ui? ( sys-libs/ncurses ) ) !svga? ( aalib? ( media-libs/aalib ui? ( sys-libs/ncurses ) ) ) !aalib? ( media-libs/libsdl ui? ( x11-libs/gtk+ ) ) ) alsa? ( media-libs/alsa-lib ) ) scsi? ( app-cdr/cdrtools )
+SLOT=0
+SRC_URI=ftp://ftp.coresystems.de/pub/uae/sources/develop/uae-0.8.26.tar.gz
+_eclasses_=toolchain-funcs	/root/git/portage/eclass	1221548757	multilib	/root/git/portage/eclass	1214143558	portability	/root/git/portage/eclass	1167690947	eutils	/root/git/portage/eclass	1222578375
+_mtime_=1187013619

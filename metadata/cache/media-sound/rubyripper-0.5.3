@@ -1,0 +1,12 @@
+DEPEND=dev-ruby/ruby-gettext virtual/ruby X? ( x11-base/xorg-server x11-apps/xhost )
+DESCRIPTION=A secure audio ripper for Linux
+EAPI=1
+HOMEPAGE=http://code.google.com/p/rubyripper
+IUSE=cli flac +gtk +mp3 normalize +vorbis wav linguas_de linguas_es linguas_hu linguas_nl linguas_ru X
+KEYWORDS=~amd64 ~sparc ~x86
+LICENSE=GPL-3
+RDEPEND=gtk? ( dev-ruby/ruby-gtk2 ) dev-ruby/ruby-gettext virtual/eject media-sound/cd-discid media-sound/cdparanoia flac? ( media-libs/flac ) mp3? ( media-sound/lame ) vorbis? ( media-sound/vorbis-tools ) normalize? ( media-sound/normalize mp3? ( media-sound/mp3gain ) vorbis? ( media-sound/vorbisgain ) wav? ( media-sound/wavegain ) ) virtual/ruby
+SLOT=0
+SRC_URI=http://rubyripper.googlecode.com/files/rubyripper-0.5.3.tar.bz2
+_eclasses_=toolchain-funcs	/root/git/portage/eclass	1221548757	portability	/root/git/portage/eclass	1167690947	virtualx	/root/git/portage/eclass	1193573140	multilib	/root/git/portage/eclass	1214143558	ruby	/root/git/portage/eclass	1214683556	eutils	/root/git/portage/eclass	1222578375
+_mtime_=1222034173

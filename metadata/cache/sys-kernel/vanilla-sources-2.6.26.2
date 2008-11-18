@@ -1,0 +1,14 @@
+DEPEND=!build? ( sys-apps/sed >=sys-devel/binutils-2.11.90.0.31 )
+DESCRIPTION=Full sources for the Linux kernel
+EAPI=0
+HOMEPAGE=http://www.kernel.org
+IUSE=symlink build
+KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2
+PROVIDE=virtual/linux-sources virtual/alsa
+RDEPEND=!build? ( >=sys-libs/ncurses-5.2 sys-devel/make ) virtual/dev-manager
+RESTRICT=binchecks strip
+SLOT=2.6.26.2
+SRC_URI=mirror://kernel/linux/kernel/v2.6/patch-2.6.26.2.bz2 mirror://kernel/linux/kernel/v2.6/linux-2.6.26.tar.bz2
+_eclasses_=toolchain-funcs	/root/git/portage/eclass	1221548757	portability	/root/git/portage/eclass	1167690947	versionator	/root/git/portage/eclass	1213275960	multilib	/root/git/portage/eclass	1214143558	kernel-2	/root/git/portage/eclass	1226621221	eutils	/root/git/portage/eclass	1222578375
+_mtime_=1218045618

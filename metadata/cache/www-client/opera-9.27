@@ -1,0 +1,13 @@
+DEPEND=>=sys-apps/sed-4 >=sys-apps/sed-4
+DESCRIPTION=A standards-compliant graphical Web browser
+EAPI=0
+HOMEPAGE=http://www.opera.com/
+IUSE=qt-static spell gnome elibc_FreeBSD
+KEYWORDS=sparc
+LICENSE=OPERA-9.0
+RDEPEND=x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXcursor x11-libs/libXext x11-libs/libXft x11-libs/libXi x11-libs/libXmu x11-libs/libXp x11-libs/libXrandr >=media-libs/fontconfig-2.1.94-r1 amd64? ( qt-static? ( app-emulation/emul-linux-x86-xlibs ) !qt-static? ( app-emulation/emul-linux-x86-qtlibs ) ) !amd64? ( media-libs/libexif spell? ( app-text/aspell ) x86? ( !qt-static? ( =x11-libs/qt-3* ) ) media-libs/jpeg ) x86-fbsd? ( =virtual/libstdc++-3* !qt-static? ( =x11-libs/qt-3* ) )
+RESTRICT=strip mirror
+SLOT=0
+SRC_URI=qt-static? ( amd64? ( mirror://opera/linux/927/final/en/i386/static/opera-9.27-20080331.1-static-qt.i386-en.tar.bz2 ) ppc? ( mirror://opera/linux/927/final/en/ppc/static/opera-9.27-20080331.1-static-qt.ppc-en.tar.bz2 ) sparc? ( mirror://opera/linux/927/final/en/sparc/static/opera-9.27-20080331.1-static-qt.sparc-en.tar.bz2 ) x86? ( mirror://opera/linux/927/final/en/i386/static/opera-9.27-20080331.1-static-qt.i386-en.tar.bz2 ) x86-fbsd? ( mirror://opera/unix/freebsd/927/final/en/static/opera-9.27-20080331.1-static-qt.i386.freebsd-en.tar.bz2 ) ) !qt-static? ( amd64? ( mirror://opera/linux/927/final/en/i386/shared/opera-9.27-20080331.6-shared-qt.i386-en.tar.bz2 ) ppc? ( mirror://opera/linux/927/final/en/ppc/static/opera-9.27-20080331.1-static-qt.ppc-en.tar.bz2 ) sparc? ( mirror://opera/linux/927/final/en/sparc/static/opera-9.27-20080331.1-static-qt.sparc-en.tar.bz2 ) x86? ( mirror://opera/linux/927/final/en/i386/shared/opera-9.27-20080331.6-shared-qt.i386-en.tar.bz2 ) x86-fbsd? ( mirror://opera/unix/freebsd/927/final/en/shared/opera-9.27-20080331.4-shared-qt.i386.freebsd-en.tar.bz2 ) )
+_eclasses_=toolchain-funcs	/root/git/portage/eclass	1221548757	portability	/root/git/portage/eclass	1167690947	multilib	/root/git/portage/eclass	1214143558	gnome2-utils	/root/git/portage/eclass	1224709573	libtool	/root/git/portage/eclass	1217534814	gnome.org	/root/git/portage/eclass	1121096137	gnome2	/root/git/portage/eclass	1206182177	fdo-mime	/root/git/portage/eclass	1210063030	eutils	/root/git/portage/eclass	1222578375
+_mtime_=1213717031

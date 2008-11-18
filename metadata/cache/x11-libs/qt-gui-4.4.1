@@ -1,0 +1,13 @@
+DEPEND=!<=x11-libs/qt-4.4.0_alpha:4 media-libs/fontconfig >=media-libs/freetype-2 media-libs/jpeg media-libs/libpng sys-libs/zlib x11-libs/libXrandr x11-libs/libXcursor x11-libs/libXfont x11-libs/libSM ~x11-libs/qt-core-4.4.1 ~x11-libs/qt-script-4.4.1 cups? ( net-print/cups ) dbus? ( ~x11-libs/qt-dbus-4.4.1 ) input_devices_wacom? ( x11-libs/libXi x11-drivers/linuxwacom ) mng? ( >=media-libs/libmng-1.0.9 ) nas? ( >=media-libs/nas-1.5 ) tiff? ( media-libs/tiff ) xinerama? ( x11-libs/libXinerama ) xinerama? ( x11-proto/xineramaproto ) x11-proto/xextproto x11-proto/inputproto
+DESCRIPTION=The GUI module(s) for the Qt toolkit.
+EAPI=1
+HOMEPAGE=http://www.trolltech.com/
+IUSE=+accessibility cups dbus debug glib mng nas nis tiff +qt3support xinerama input_devices_wacom debug pch
+KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=|| ( GPL-3 GPL-2 )
+PDEPEND=qt3support? ( ~x11-libs/qt-qt3support-4.4.1 )
+RDEPEND=!<=x11-libs/qt-4.4.0_alpha:4 media-libs/fontconfig >=media-libs/freetype-2 media-libs/jpeg media-libs/libpng sys-libs/zlib x11-libs/libXrandr x11-libs/libXcursor x11-libs/libXfont x11-libs/libSM ~x11-libs/qt-core-4.4.1 ~x11-libs/qt-script-4.4.1 cups? ( net-print/cups ) dbus? ( ~x11-libs/qt-dbus-4.4.1 ) input_devices_wacom? ( x11-libs/libXi x11-drivers/linuxwacom ) mng? ( >=media-libs/libmng-1.0.9 ) nas? ( >=media-libs/nas-1.5 ) tiff? ( media-libs/tiff ) xinerama? ( x11-libs/libXinerama )
+SLOT=4
+SRC_URI=ftp://ftp.trolltech.com/qt/source/qt-x11-opensource-src-4.4.1.tar.bz2 mirror://gentoo/qt-x11-opensource-src-4.4.1-headers.tar.bz2
+_eclasses_=toolchain-funcs	/root/git/portage/eclass	1221548757	portability	/root/git/portage/eclass	1167690947	flag-o-matic	/root/git/portage/eclass	1225692356	multilib	/root/git/portage/eclass	1214143558	eutils	/root/git/portage/eclass	1222578375	qt4-build	/root/git/portage/eclass	1221777356
+_mtime_=1221826167

@@ -1,0 +1,13 @@
+DEPEND=>=dev-util/cmake-2.4 !app-cdr/cdrtools kernel_linux? ( sys-libs/libcap ) unicode? ( virtual/libiconv ) hfs? ( sys-apps/file )
+DESCRIPTION=A set of tools for CD/DVD reading and recording, including cdrecord
+EAPI=0
+HOMEPAGE=http://cdrkit.org/
+IUSE=hfs unicode kernel_linux kernel_FreeBSD
+KEYWORDS=~alpha amd64 hppa ia64 ppc ppc64 s390 sparc x86 ~x86-fbsd
+LICENSE=GPL-2 LGPL-2.1
+PROVIDE=virtual/cdrtools
+RDEPEND=unicode? ( virtual/libiconv ) kernel_linux? ( sys-libs/libcap )
+SLOT=0
+SRC_URI=http://cdrkit.org/releases/cdrkit-1.1.8.tar.gz
+_eclasses_=toolchain-funcs	/root/git/portage/eclass	1221548757	multilib	/root/git/portage/eclass	1214143558	portability	/root/git/portage/eclass	1167690947	eutils	/root/git/portage/eclass	1222578375
+_mtime_=1225769797

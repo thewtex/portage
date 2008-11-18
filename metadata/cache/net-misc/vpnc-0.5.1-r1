@@ -1,0 +1,12 @@
+DEPEND=>=dev-libs/libgcrypt-1.1.91 >=sys-apps/iproute2-2.6.19.20061214 !bindist? ( hybrid-auth? ( dev-libs/openssl ) ) kernel_linux? ( virtual/linux-sources )
+DESCRIPTION=Free client for Cisco VPN routing software
+EAPI=0
+HOMEPAGE=http://www.unix-ag.uni-kl.de/~massar/vpnc/
+IUSE=hybrid-auth bindist resolvconf
+KEYWORDS=amd64 ppc ppc64 ~sparc x86
+LICENSE=GPL-2 BSD
+RDEPEND=>=dev-libs/libgcrypt-1.1.91 >=sys-apps/iproute2-2.6.19.20061214 !bindist? ( hybrid-auth? ( dev-libs/openssl ) ) resolvconf? ( net-dns/openresolv )
+SLOT=0
+SRC_URI=http://www.unix-ag.uni-kl.de/~massar/vpnc/vpnc-0.5.1.tar.gz
+_eclasses_=multilib	/root/git/portage/eclass	1214143558	versionator	/root/git/portage/eclass	1213275960	toolchain-funcs	/root/git/portage/eclass	1221548757	linux-info	/root/git/portage/eclass	1225490754
+_mtime_=1225717618

@@ -1,0 +1,12 @@
+DEPEND=virtual/latex-base || ( ( dev-texlive/texlive-pstricks dev-texlive/texlive-pictures dev-texlive/texlive-latexextra dev-tex/xcolor ) app-text/tetex app-text/ptex ) emacs? ( virtual/emacs )
+DESCRIPTION=2- and 3-D plotter for creating images (to be used in LaTeX)
+EAPI=0
+HOMEPAGE=http://mathcs.holycross.edu/~ahwang/current/ePiX.html
+IUSE=emacs bash-completion
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=virtual/latex-base || ( ( dev-texlive/texlive-pstricks dev-texlive/texlive-pictures dev-texlive/texlive-latexextra dev-tex/xcolor ) app-text/tetex app-text/ptex ) emacs? ( virtual/emacs ) bash-completion? ( || ( app-admin/eselect app-shells/bash-completion-config ) )
+SLOT=0
+SRC_URI=http://mathcs.holycross.edu/~ahwang/epix/epix-1.2.4_withpdf.tar.bz2
+_eclasses_=toolchain-funcs	/root/git/portage/eclass	1221548757	elisp-common	/root/git/portage/eclass	1225143353	portability	/root/git/portage/eclass	1167690947	flag-o-matic	/root/git/portage/eclass	1225692356	multilib	/root/git/portage/eclass	1214143558	bash-completion	/root/git/portage/eclass	1216289187	eutils	/root/git/portage/eclass	1222578375
+_mtime_=1213527327

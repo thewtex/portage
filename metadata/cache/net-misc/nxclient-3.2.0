@@ -1,0 +1,11 @@
+DESCRIPTION=X11/VNC/NXServer client (remote desktops over low-bandwidth links)
+EAPI=0
+HOMEPAGE=http://www.nomachine.com/
+KEYWORDS=amd64 x86
+LICENSE=nomachine
+RDEPEND=dev-libs/expat >=dev-libs/openssl-0.9.8e media-libs/audiofile media-libs/jpeg media-libs/libpng media-libs/freetype media-libs/fontconfig net-print/cups x11-libs/libXft x11-libs/libX11 x11-libs/libXdmcp x11-libs/libXrender x11-libs/libXau x11-libs/libXext sys-libs/zlib !net-misc/nxclient-2xterminalserver
+RESTRICT=strip
+SLOT=0
+SRC_URI=amd64? ( http://64.34.161.181/download/3.2.0/Linux/nxclient-3.2.0-9.x86_64.tar.gz ) x86? ( http://64.34.161.181/download/3.2.0/Linux/nxclient-3.2.0-9.i386.tar.gz )
+_eclasses_=toolchain-funcs	/root/git/portage/eclass	1221548757	multilib	/root/git/portage/eclass	1214143558	portability	/root/git/portage/eclass	1167690947	eutils	/root/git/portage/eclass	1222578375
+_mtime_=1212680205

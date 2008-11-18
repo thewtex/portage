@@ -1,0 +1,12 @@
+DEPEND=virtual/linux-sources kernel_linux? ( virtual/linux-sources ) kernel_linux? ( virtual/modutils ) sys-apps/sed
+DESCRIPTION=commercially licensed transparent filesystem encryption
+EAPI=0
+HOMEPAGE=http://www.jetico.com/
+IUSE=kernel_linux
+KEYWORDS=~amd64 x86
+LICENSE=bestcrypt
+RDEPEND=virtual/linux-sources kernel_linux? ( virtual/modutils )
+SLOT=0
+SRC_URI=http://www.jetico.com/linux/BestCrypt-1.6-16.tar.gz !x86? ( mirror://gentoo/bcrypt-rc6-serpent-c.diff.gz ) x86? ( http://www.carceri.dk/files/bcrypt-rc6-serpent.diff.gz )
+_eclasses_=toolchain-funcs	/root/git/portage/eclass	1221548757	portability	/root/git/portage/eclass	1167690947	flag-o-matic	/root/git/portage/eclass	1225692356	versionator	/root/git/portage/eclass	1213275960	multilib	/root/git/portage/eclass	1214143558	linux-info	/root/git/portage/eclass	1225490754	linux-mod	/root/git/portage/eclass	1225886984	eutils	/root/git/portage/eclass	1222578375
+_mtime_=1209656122

@@ -1,0 +1,13 @@
+DEPEND=ncurses? ( >=sys-libs/ncurses-5.0 ) emacs? ( virtual/emacs ) gtk? ( >=x11-libs/gtk+-2.0 ) tk? ( >=dev-lang/tk-8.1 ) motif? ( x11-libs/openmotif ) esd? ( >=media-sound/esound-0.2.22 ) nas? ( >=media-libs/nas-1.4 ) alsa? ( media-libs/alsa-lib ) slang? ( >=sys-libs/slang-1.4 ) arts? ( kde-base/arts ) jack? ( media-sound/jack-audio-connection-kit ) vorbis? ( >=media-libs/libvorbis-1.0_beta4 ) flac? ( >=media-libs/flac-1.1.2 ) speex? ( >=media-libs/speex-1.1.5 ) ao? ( >=media-libs/libao-0.8.5 )
+DESCRIPTION=A handy MIDI to WAV converter with OSS and ALSA output support
+EAPI=0
+HOMEPAGE=http://timidity.sourceforge.net/
+IUSE=oss nas esd motif X gtk vorbis tk slang alsa arts jack emacs ao speex flac ncurses
+KEYWORDS=~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd
+LICENSE=GPL-2
+PDEPEND=|| ( media-sound/timidity-eawpatches media-sound/timidity-shompatches media-sound/timidity-freepats )
+RDEPEND=ncurses? ( >=sys-libs/ncurses-5.0 ) emacs? ( virtual/emacs ) gtk? ( >=x11-libs/gtk+-2.0 ) tk? ( >=dev-lang/tk-8.1 ) motif? ( x11-libs/openmotif ) esd? ( >=media-sound/esound-0.2.22 ) nas? ( >=media-libs/nas-1.4 ) alsa? ( media-libs/alsa-lib ) slang? ( >=sys-libs/slang-1.4 ) arts? ( kde-base/arts ) jack? ( media-sound/jack-audio-connection-kit ) vorbis? ( >=media-libs/libvorbis-1.0_beta4 ) flac? ( >=media-libs/flac-1.1.2 ) speex? ( >=media-libs/speex-1.1.5 ) ao? ( >=media-libs/libao-0.8.5 ) alsa? ( media-sound/alsa-utils ) app-admin/eselect-timidity
+SLOT=0
+SRC_URI=mirror://sourceforge/timidity/TiMidity++-2.13.2.tar.bz2 mirror://gentoo/timidity++-2.13.2-exiterror.patch
+_eclasses_=toolchain-funcs	/root/git/portage/eclass	1221548757	multilib	/root/git/portage/eclass	1214143558	portability	/root/git/portage/eclass	1167690947	eutils	/root/git/portage/eclass	1222578375	elisp-common	/root/git/portage/eclass	1225143353
+_mtime_=1214562994

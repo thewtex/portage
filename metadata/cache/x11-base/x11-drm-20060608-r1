@@ -1,0 +1,13 @@
+DEPEND=kernel_linux? ( virtual/linux-sources ) kernel_FreeBSD? ( sys-freebsd/freebsd-sources sys-freebsd/freebsd-mk-defs ) kernel_linux? ( virtual/linux-sources ) kernel_linux? ( virtual/linux-sources ) kernel_linux? ( virtual/modutils ) sys-apps/sed =sys-devel/automake-1.7* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=DRM Kernel Modules for X11
+EAPI=0
+HOMEPAGE=http://dri.sf.net
+IUSE=video_cards_intel video_cards_mach64 video_cards_mga video_cards_nv video_cards_r128 video_cards_radeon video_cards_savage video_cards_sis video_cards_sunffb video_cards_tdfx video_cards_via kernel_FreeBSD kernel_linux kernel_linux
+KEYWORDS=~alpha ~amd64 ~ia64 ~ppc ~x86 ~x86-fbsd
+LICENSE=X11
+RDEPEND=kernel_linux? ( virtual/modutils )
+RESTRICT=strip
+SLOT=0
+SRC_URI=mirror://gentoo/x11-drm-20060608-gentoo-0.4.tar.bz2 mirror://gentoo/linux-drm-20060608-kernelsource.tar.bz2
+_eclasses_=toolchain-funcs	/root/git/portage/eclass	1221548757	portability	/root/git/portage/eclass	1167690947	versionator	/root/git/portage/eclass	1213275960	multilib	/root/git/portage/eclass	1214143558	libtool	/root/git/portage/eclass	1217534814	linux-info	/root/git/portage/eclass	1225490754	x11	/root/git/portage/eclass	1160858336	autotools	/root/git/portage/eclass	1222447000	linux-mod	/root/git/portage/eclass	1225886984	eutils	/root/git/portage/eclass	1222578375
+_mtime_=1224693504

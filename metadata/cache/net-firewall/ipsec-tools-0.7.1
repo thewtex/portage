@@ -1,0 +1,12 @@
+DEPEND=!sparc? ( >=sys-kernel/linux-headers-2.6 ) readline? ( sys-libs/readline ) pam? ( sys-libs/pam ) ldap? ( net-nds/openldap ) kerberos? ( virtual/krb5 ) >=dev-libs/openssl-0.9.8 iconv? ( virtual/libiconv ) selinux? ( sys-libs/libselinux ) =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool kernel_linux? ( virtual/linux-sources )
+DESCRIPTION=A port of KAME's IPsec utilities to the Linux-2.6 IPsec implementation
+EAPI=0
+HOMEPAGE=http://ipsec-tools.sourceforge.net/
+IUSE=idea ipv6 pam rc5 readline selinux ldap kerberos nat hybrid iconv selinux
+KEYWORDS=amd64 ppc sparc x86
+LICENSE=BSD
+RDEPEND=!sparc? ( >=sys-kernel/linux-headers-2.6 ) readline? ( sys-libs/readline ) pam? ( sys-libs/pam ) ldap? ( net-nds/openldap ) kerberos? ( virtual/krb5 ) >=dev-libs/openssl-0.9.8 iconv? ( virtual/libiconv ) selinux? ( sys-libs/libselinux ) selinux? ( sec-policy/selinux-ipsec-tools )
+SLOT=0
+SRC_URI=mirror://sourceforge/ipsec-tools/ipsec-tools-0.7.1.tar.bz2
+_eclasses_=toolchain-funcs	/root/git/portage/eclass	1221548757	portability	/root/git/portage/eclass	1167690947	flag-o-matic	/root/git/portage/eclass	1225692356	versionator	/root/git/portage/eclass	1213275960	multilib	/root/git/portage/eclass	1214143558	libtool	/root/git/portage/eclass	1217534814	linux-info	/root/git/portage/eclass	1225490754	autotools	/root/git/portage/eclass	1222447000	eutils	/root/git/portage/eclass	1222578375
+_mtime_=1224182183

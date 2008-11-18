@@ -1,0 +1,12 @@
+DEPEND=!app-emulation/virtualbox-bin ~app-emulation/virtualbox-modules-1.6.6 dev-libs/libIDL >=dev-libs/libxslt-1.1.19 !headless? ( qt3? ( x11-libs/qt:3 ) x11-libs/libXcursor media-libs/libsdl x11-libs/libXt ) dev-util/kbuild >=dev-lang/yasm-0.6.2 sys-devel/bin86 sys-devel/dev86 sys-power/iasl media-libs/libpng alsa? ( >=media-libs/alsa-lib-1.0.13 ) pulseaudio? ( media-sound/pulseaudio )
+DESCRIPTION=Softwarefamily of powerful x86 virtualization
+EAPI=1
+HOMEPAGE=http://www.virtualbox.org/
+IUSE=additions alsa headless pulseaudio +qt3 sdk
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=!app-emulation/virtualbox-bin ~app-emulation/virtualbox-modules-1.6.6 dev-libs/libIDL >=dev-libs/libxslt-1.1.19 !headless? ( qt3? ( x11-libs/qt:3 ) x11-libs/libXcursor media-libs/libsdl x11-libs/libXt ) additions? ( ~app-emulation/virtualbox-ose-additions-1.6.6 ) sys-apps/usermode-utilities net-misc/bridge-utils sys-apps/hal
+SLOT=0
+SRC_URI=http://download.virtualbox.org/virtualbox/1.6.6/VirtualBox-1.6.6-OSE.tar.bz2
+_eclasses_=toolchain-funcs	/root/git/portage/eclass	1221548757	qt3	/root/git/portage/eclass	1217797572	portability	/root/git/portage/eclass	1167690947	flag-o-matic	/root/git/portage/eclass	1225692356	versionator	/root/git/portage/eclass	1213275960	multilib	/root/git/portage/eclass	1214143558	fdo-mime	/root/git/portage/eclass	1210063030	eutils	/root/git/portage/eclass	1222578375
+_mtime_=1225218919

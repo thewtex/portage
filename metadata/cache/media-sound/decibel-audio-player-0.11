@@ -1,0 +1,11 @@
+DEPEND=sys-devel/gettext
+DESCRIPTION=A GTK+ audio player which aims at being very straightforward to use.
+EAPI=0
+HOMEPAGE=http://decibel.silent-blade.org
+IUSE=aac cdaudio gnome libnotify musepack
+KEYWORDS=~amd64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=media-libs/mutagen dev-python/dbus-python dev-python/gnome-python dev-python/gst-python >=media-plugins/gst-plugins-meta-0.10-r2 aac? ( media-plugins/gst-plugins-faad ) cdaudio? ( || ( media-plugins/gst-plugins-cdio media-plugins/gst-plugins-cdparanoia ) dev-python/cddb-py ) gnome? ( dev-python/gnome-python-desktop ) libnotify? ( dev-python/notify-python ) musepack? ( media-plugins/gst-plugins-musepack )
+SLOT=0
+SRC_URI=http://decibel.silent-blade.org/uploads/Main/decibel-audio-player-0.11.tar.gz
+_mtime_=1224837448

@@ -1,0 +1,12 @@
+DEPEND=!dev-libs/libarchive kernel_linux? ( acl? ( sys-apps/acl ) xattr? ( sys-apps/attr ) ) !static? ( !build? ( app-arch/bzip2 sys-libs/zlib ) ) kernel_linux? ( sys-fs/e2fsprogs virtual/os-headers )
+DESCRIPTION=BSD tar command
+EAPI=0
+HOMEPAGE=http://people.freebsd.org/~kientzle/libarchive
+IUSE=build static acl xattr kernel_linux
+KEYWORDS=~alpha amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~sparc-fbsd x86 ~x86-fbsd
+LICENSE=BSD
+RDEPEND=!dev-libs/libarchive kernel_linux? ( acl? ( sys-apps/acl ) xattr? ( sys-apps/attr ) ) !static? ( !build? ( app-arch/bzip2 sys-libs/zlib ) )
+SLOT=0
+SRC_URI=http://people.freebsd.org/~kientzle/libarchive/src/libarchive-2.5.5.tar.gz
+_eclasses_=libtool	/root/git/portage/eclass	1217534814	toolchain-funcs	/root/git/portage/eclass	1221548757	multilib	/root/git/portage/eclass	1214143558	portability	/root/git/portage/eclass	1167690947	eutils	/root/git/portage/eclass	1222578375
+_mtime_=1225226139
