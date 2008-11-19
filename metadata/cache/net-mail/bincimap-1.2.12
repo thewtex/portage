@@ -1,0 +1,13 @@
+DEPEND=virtual/libc ssl? ( dev-libs/openssl )
+DESCRIPTION=IMAP server for Maildir
+EAPI=0
+HOMEPAGE=http://www.bincimap.org/
+IUSE=ssl
+KEYWORDS=amd64 ~hppa ~ppc x86
+LICENSE=GPL-2
+PROVIDE=virtual/imapd
+RDEPEND=virtual/libc ssl? ( dev-libs/openssl ) sys-process/daemontools sys-apps/ucspi-tcp net-mail/checkpassword !virtual/imapd
+SLOT=0
+SRC_URI=http://www.bincimap.org/dl/tarballs/1.2/bincimap-1.2.12final.tar.bz2
+_eclasses_=toolchain-funcs	/root/git/portage/eclass	1221548757	multilib	/root/git/portage/eclass	1214143558	portability	/root/git/portage/eclass	1167690947	eutils	/root/git/portage/eclass	1222578375
+_mtime_=1205622406

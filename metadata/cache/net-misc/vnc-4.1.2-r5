@@ -1,0 +1,12 @@
+DEPEND=sys-libs/zlib media-libs/freetype x11-libs/libSM x11-libs/libXtst server? ( x11-libs/libXi x11-libs/libXfont x11-libs/libXmu x11-libs/libxkbfile x11-libs/libXrender x11-apps/xauth x11-apps/xsetroot media-fonts/font-adobe-100dpi media-fonts/font-adobe-75dpi media-fonts/font-alias media-fonts/font-cursor-misc media-fonts/font-misc-misc xorgmodule? ( ~x11-base/xorg-server-1.5.2 ) ) !net-misc/tightvnc !net-misc/xf4vnc x11-proto/inputproto x11-proto/xextproto server? ( x11-proto/bigreqsproto x11-proto/compositeproto x11-proto/damageproto x11-proto/fixesproto x11-proto/fontsproto x11-proto/randrproto x11-proto/resourceproto x11-proto/scrnsaverproto x11-proto/trapproto x11-proto/videoproto x11-proto/xcmiscproto x11-proto/xineramaproto x11-proto/xf86bigfontproto x11-proto/xf86dgaproto x11-proto/xf86miscproto x11-proto/xf86vidmodeproto ) =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=Remote desktop viewer display system
+EAPI=1
+HOMEPAGE=http://www.realvnc.com/
+IUSE=server +xorgmodule
+KEYWORDS=~amd64 -arm ~ia64 ~ppc ~sparc ~x86 ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=sys-libs/zlib media-libs/freetype x11-libs/libSM x11-libs/libXtst server? ( x11-libs/libXi x11-libs/libXfont x11-libs/libXmu x11-libs/libxkbfile x11-libs/libXrender x11-apps/xauth x11-apps/xsetroot media-fonts/font-adobe-100dpi media-fonts/font-adobe-75dpi media-fonts/font-alias media-fonts/font-cursor-misc media-fonts/font-misc-misc xorgmodule? ( ~x11-base/xorg-server-1.5.2 ) ) !net-misc/tightvnc !net-misc/xf4vnc
+SLOT=0
+SRC_URI=http://ltsp.mirrors.tds.net/pub/ltsp/tarballs/vnc-4_1_2-unixsrc.tar.gz http://ftp.plusline.de/FreeBSD/distfiles/xc/vnc-4_1_2-unixsrc.tar.gz mirror://gentoo/vnc-4.1.2-r5-patches-0.1.tar.bz2 server? ( ftp://ftp.freedesktop.org/pub/xorg/individual/xserver/xorg-server-1.5.2.tar.bz2 )
+_eclasses_=toolchain-funcs	/root/git/portage/eclass	1221548757	portability	/root/git/portage/eclass	1167690947	multilib	/root/git/portage/eclass	1214143558	libtool	/root/git/portage/eclass	1217534814	autotools	/root/git/portage/eclass	1222447000	eutils	/root/git/portage/eclass	1222578375
+_mtime_=1224151595

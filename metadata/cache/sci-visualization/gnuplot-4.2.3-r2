@@ -1,0 +1,13 @@
+DEPEND=xemacs? ( virtual/xemacs app-xemacs/texinfo app-xemacs/xemacs-base ) emacs? ( virtual/emacs !app-emacs/gnuplot-mode ) pdf? ( media-libs/pdflib ) ggi? ( media-libs/libggi ) gd? ( >=media-libs/gd-2 ) doc? ( virtual/latex-base virtual/ghostscript ) latex? ( virtual/latex-base ) X? ( x11-libs/libXaw ) svga? ( media-libs/svgalib ) readline? ( >=sys-libs/readline-4.2 ) plotutils? ( media-libs/plotutils ) wxwindows? ( =x11-libs/wxGTK-2.6* >=x11-libs/cairo-0.9 >=x11-libs/pango-1.10.3 >=x11-libs/gtk+-2.8 ) dev-util/pkgconfig =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=Command-line driven interactive plotting program
+EAPI=0
+HOMEPAGE=http://www.gnuplot.info/
+IUSE=doc emacs gd ggi latex pdf plotutils readline svga wxwindows X xemacs
+KEYWORDS=alpha amd64 hppa ia64 ppc ~ppc64 ~s390 sparc x86 ~x86-fbsd
+LICENSE=gnuplot
+RDEPEND=xemacs? ( virtual/xemacs app-xemacs/texinfo app-xemacs/xemacs-base ) emacs? ( virtual/emacs !app-emacs/gnuplot-mode ) pdf? ( media-libs/pdflib ) ggi? ( media-libs/libggi ) gd? ( >=media-libs/gd-2 ) doc? ( virtual/latex-base virtual/ghostscript ) latex? ( virtual/latex-base ) X? ( x11-libs/libXaw ) svga? ( media-libs/svgalib ) readline? ( >=sys-libs/readline-4.2 ) plotutils? ( media-libs/plotutils ) wxwindows? ( =x11-libs/wxGTK-2.6* >=x11-libs/cairo-0.9 >=x11-libs/pango-1.10.3 >=x11-libs/gtk+-2.8 )
+RESTRICT=wxwindows? ( test )
+SLOT=0
+SRC_URI=mirror://sourceforge/gnuplot/gnuplot-4.2.3.tar.gz
+_eclasses_=toolchain-funcs	/root/git/portage/eclass	1221548757	elisp-common	/root/git/portage/eclass	1225143353	portability	/root/git/portage/eclass	1167690947	multilib	/root/git/portage/eclass	1214143558	libtool	/root/git/portage/eclass	1217534814	autotools	/root/git/portage/eclass	1222447000	eutils	/root/git/portage/eclass	1222578375	wxwidgets	/root/git/portage/eclass	1198595166
+_mtime_=1219781299

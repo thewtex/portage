@@ -1,0 +1,13 @@
+DEPEND=sys-libs/zlib glib? ( dev-libs/glib ) ssl? ( dev-libs/openssl ) !<=x11-libs/qt-4.4.0_alpha:4 dev-util/pkgconfig
+DESCRIPTION=The Qt toolkit is a comprehensive C++ application development framework.
+EAPI=1
+HOMEPAGE=http://www.trolltech.com/
+IUSE=doc glib +qt3support ssl debug pch
+KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=|| ( GPL-3 GPL-2 )
+PDEPEND=qt3support? ( ~x11-libs/qt-gui-4.4.1 )
+RDEPEND=sys-libs/zlib glib? ( dev-libs/glib ) ssl? ( dev-libs/openssl ) !<=x11-libs/qt-4.4.0_alpha:4
+SLOT=4
+SRC_URI=ftp://ftp.trolltech.com/qt/source/qt-x11-opensource-src-4.4.1.tar.bz2 mirror://gentoo/qt-x11-opensource-src-4.4.1-headers.tar.bz2
+_eclasses_=toolchain-funcs	/root/git/portage/eclass	1221548757	portability	/root/git/portage/eclass	1167690947	flag-o-matic	/root/git/portage/eclass	1225692356	multilib	/root/git/portage/eclass	1214143558	eutils	/root/git/portage/eclass	1222578375	qt4-build	/root/git/portage/eclass	1221777356
+_mtime_=1218899244

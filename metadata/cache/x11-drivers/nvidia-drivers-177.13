@@ -1,0 +1,14 @@
+DEPEND=x11-base/xorg-server multilib? ( app-emulation/emul-linux-x86-xlibs ) kernel_FreeBSD? ( !media-video/nvidia-freebsd ) !app-emulation/emul-linux-x86-nvidia !x11-drivers/nvidia-legacy-drivers kernel_linux? ( virtual/linux-sources ) app-admin/eselect-opengl kernel_linux? ( virtual/linux-sources ) kernel_linux? ( virtual/modutils ) sys-apps/sed sys-apps/pciutils
+DESCRIPTION=NVIDIA X11 driver and GLX libraries
+EAPI=0
+HOMEPAGE=http://www.nvidia.com/
+IUSE=acpi custom-cflags gtk multilib kernel_linux kernel_linux
+KEYWORDS=-* ~amd64 ~x86 ~x86-fbsd
+LICENSE=NVIDIA
+PDEPEND=gtk? ( media-video/nvidia-settings )
+RDEPEND=x11-base/xorg-server multilib? ( app-emulation/emul-linux-x86-xlibs ) kernel_FreeBSD? ( !media-video/nvidia-freebsd ) !app-emulation/emul-linux-x86-nvidia !x11-drivers/nvidia-legacy-drivers kernel_linux? ( virtual/modutils ) media-libs/mesa acpi? ( sys-power/acpid ) kernel_linux? ( virtual/modutils )
+RESTRICT=strip
+SLOT=0
+SRC_URI=x86? ( http://us.download.nvidia.com/XFree86/Linux-x86/177.13/NVIDIA-Linux-x86-177.13-pkg0.run ) amd64? ( http://us.download.nvidia.com/XFree86/Linux-x86_64/177.13/NVIDIA-Linux-x86_64-177.13-pkg2.run ) x86-fbsd? ( http://us.download.nvidia.com/freebsd/177.13/NVIDIA-FreeBSD-x86-177.13.tar.gz )
+_eclasses_=nvidia-driver	/root/git/portage/eclass	1216298242	toolchain-funcs	/root/git/portage/eclass	1221548757	portability	/root/git/portage/eclass	1167690947	flag-o-matic	/root/git/portage/eclass	1225692356	versionator	/root/git/portage/eclass	1213275960	multilib	/root/git/portage/eclass	1214143558	linux-info	/root/git/portage/eclass	1225490754	linux-mod	/root/git/portage/eclass	1225886984	eutils	/root/git/portage/eclass	1222578375
+_mtime_=1213877583

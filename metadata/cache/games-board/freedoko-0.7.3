@@ -1,0 +1,12 @@
+DEPEND=net? ( net-libs/gnet ) >=dev-cpp/gtkmm-2.4 app-arch/unzip dev-util/pkgconfig doc? ( virtual/latex-base )
+DESCRIPTION=FreeDoko is a Doppelkopf-game
+EAPI=0
+HOMEPAGE=http://free-doko.sourceforge.net
+IUSE=xskatcards kdecards altenburgcards pysolcards net doc
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=net? ( net-libs/gnet ) >=dev-cpp/gtkmm-2.4
+SLOT=0
+SRC_URI=mirror://sourceforge/free-doko/FreeDoko_0.7.3.src.zip kdecards? ( mirror://sourceforge/free-doko/kdecarddecks.zip ) xskatcards? ( mirror://sourceforge/free-doko/xskat.zip ) pysolcards? ( mirror://sourceforge/free-doko/pysol.zip ) !altenburgcards? ( !xskatcards? ( !kdecards? ( !pysolcards? ( mirror://sourceforge/free-doko/xskat.zip ) ) ) )
+_eclasses_=games	/root/git/portage/eclass	1222646917	toolchain-funcs	/root/git/portage/eclass	1221548757	multilib	/root/git/portage/eclass	1214143558	portability	/root/git/portage/eclass	1167690947	eutils	/root/git/portage/eclass	1222578375
+_mtime_=1226520562

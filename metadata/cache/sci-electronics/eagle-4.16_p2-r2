@@ -1,0 +1,12 @@
+DESCRIPTION=EAGLE Layout Editor
+EAPI=0
+HOMEPAGE=http://www.cadsoft.de
+IUSE=linguas_de doc
+KEYWORDS=amd64 x86
+LICENSE=cadsoft
+RDEPEND=sys-libs/glibc x11-libs/libXext x11-libs/libX11 x11-libs/libXau x11-libs/libXdmcp
+RESTRICT=strip
+SLOT=0
+SRC_URI=linguas_de? ( ftp://ftp.cadsoft.de/pub/program/4.16r2/eagle-lin-ger-4.16r2.tgz doc? ( mirror://gentoo/cadsoft_eagle_manual-ger-2006.12.13.pdf ) ) !linguas_de? ( ftp://ftp.cadsoft.de/pub/program/4.16r2/eagle-lin-eng-4.16r2.tgz doc? ( mirror://gentoo/cadsoft_eagle_manual-eng-2006.12.13.pdf ) )
+_eclasses_=toolchain-funcs	/root/git/portage/eclass	1221548757	multilib	/root/git/portage/eclass	1214143558	portability	/root/git/portage/eclass	1167690947	eutils	/root/git/portage/eclass	1222578375
+_mtime_=1223131037

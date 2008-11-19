@@ -1,0 +1,12 @@
+DEPEND=dev-lang/perl dev-libs/libpcre app-arch/bzip2 virtual/blas virtual/ghostscript cairo? ( x11-libs/cairo[X] x11-libs/pango[X] ) readline? ( sys-libs/readline ) jpeg? ( media-libs/jpeg ) png? ( media-libs/libpng ) lapack? ( virtual/lapack ) tk? ( dev-lang/tk ) X? ( x11-libs/libXmu x11-misc/xdg-utils ) dev-util/pkgconfig doc? ( virtual/latex-base || ( dev-texlive/texlive-fontsrecommended app-text/tetex app-text/ptex ) ) =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=Language and environment for statistical computing and graphics
+EAPI=2
+HOMEPAGE=http://www.r-project.org/
+IUSE=doc java jpeg lapack minimal nls png readline tk X cairo debug bash-completion
+KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd
+LICENSE=GPL-2 LGPL-2.1
+RDEPEND=dev-lang/perl dev-libs/libpcre app-arch/bzip2 virtual/blas virtual/ghostscript cairo? ( x11-libs/cairo[X] x11-libs/pango[X] ) readline? ( sys-libs/readline ) jpeg? ( media-libs/jpeg ) png? ( media-libs/libpng ) lapack? ( virtual/lapack ) tk? ( dev-lang/tk ) X? ( x11-libs/libXmu x11-misc/xdg-utils ) app-arch/unzip app-arch/zip java? ( >=virtual/jre-1.5 ) bash-completion? ( || ( app-admin/eselect app-shells/bash-completion-config ) )
+SLOT=0
+SRC_URI=mirror://cran/src/base/R-2/R-2.8.0.tar.gz bash-completion? ( mirror://gentoo/R.bash_completion.bz2 )
+_eclasses_=toolchain-funcs	/root/git/portage/eclass	1221548757	portability	/root/git/portage/eclass	1167690947	flag-o-matic	/root/git/portage/eclass	1225692356	versionator	/root/git/portage/eclass	1213275960	multilib	/root/git/portage/eclass	1214143558	bash-completion	/root/git/portage/eclass	1216289187	fortran	/root/git/portage/eclass	1226019943	libtool	/root/git/portage/eclass	1217534814	autotools	/root/git/portage/eclass	1222447000	eutils	/root/git/portage/eclass	1222578375
+_mtime_=1225458343

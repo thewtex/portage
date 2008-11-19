@@ -1,0 +1,12 @@
+DEPEND=virtual/libc !build? ( >=sys-libs/ncurses-5.2-r2 nls? ( sys-devel/gettext ) )
+DESCRIPTION=Modern GCC C/C++ compiler
+EAPI=0
+HOMEPAGE=http://gcc.gnu.org/
+IUSE=static nls bootstrap java build
+KEYWORDS=x86 sparc -ppc
+LICENSE=GPL-2 LGPL-2.1
+RDEPEND=virtual/libc >=sys-libs/zlib-1.1.4 >=sys-apps/texinfo-4.2-r4 !build? ( >=sys-libs/ncurses-5.2-r2 )
+SLOT=3.1
+SRC_URI=ftp://gcc.gnu.org/pub/gcc/releases/gcc-3.1.1/gcc-3.1.1.tar.bz2 http://www.ibiblio.org/gentoo/distfiles/gcc-3.1.1_final-patches-1.0.tbz2
+_eclasses_=toolchain-funcs	/root/git/portage/eclass	1221548757	portability	/root/git/portage/eclass	1167690947	flag-o-matic	/root/git/portage/eclass	1225692356	multilib	/root/git/portage/eclass	1214143558	libtool	/root/git/portage/eclass	1217534814	eutils	/root/git/portage/eclass	1222578375
+_mtime_=1150956376

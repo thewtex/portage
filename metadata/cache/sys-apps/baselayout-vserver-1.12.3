@@ -1,0 +1,13 @@
+DEPEND=virtual/os-headers >=sys-apps/portage-2.0.51
+DESCRIPTION=Filesystem baselayout and init scripts
+EAPI=0
+HOMEPAGE=http://www.gentoo.org/
+IUSE=bootstrap build static
+KEYWORDS=~alpha ~amd64 ~ppc ~sparc ~x86
+LICENSE=GPL-2
+PROVIDE=virtual/baselayout virtual/dev-manager
+RDEPEND=>=sys-apps/sysvinit-2.86-r3 !build? ( !bootstrap? ( >=sys-libs/readline-5.0-r1 >=app-shells/bash-3.1_p7 >=sys-apps/coreutils-5.2.1 ) ) !<net-misc/dhcpcd-2.0.0
+SLOT=0
+SRC_URI=http://dev.gentoo.org/~hollow/distfiles/baselayout-vserver-1.12.3.tar.bz2 http://dev.gentoo.org/~phreak/distfiles/baselayout-vserver-1.12.3.tar.bz2
+_eclasses_=toolchain-funcs	/root/git/portage/eclass	1221548757	multilib	/root/git/portage/eclass	1214143558	portability	/root/git/portage/eclass	1167690947	eutils	/root/git/portage/eclass	1222578375	flag-o-matic	/root/git/portage/eclass	1225692356
+_mtime_=1160136612

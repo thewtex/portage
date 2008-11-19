@@ -1,0 +1,11 @@
+DESCRIPTION=IEEE 802.1X/WPA supplicant for secure wireless transfers
+EAPI=1
+HOMEPAGE=http://hostap.epitest.fi/wpa_supplicant/
+IUSE=dbus gnutls gsm madwifi qt3 qt4 readline ssl kernel_linux kernel_FreeBSD
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86 ~x86-fbsd
+LICENSE=|| ( GPL-2 BSD )
+RDEPEND=dbus? ( sys-apps/dbus ) kernel_linux? ( gsm? ( sys-apps/pcsc-lite ) madwifi? ( || ( >net-wireless/madwifi-ng-tools-0.9.3 net-wireless/madwifi-old ) ) ) !kernel_linux? ( net-libs/libpcap ) qt4? ( || ( ( x11-libs/qt-core:4 x11-libs/qt-gui:4 x11-libs/qt-qt3support:4 ) <x11-libs/qt-4.4:4 ) ) !qt4? ( qt3? ( =x11-libs/qt-3* ) ) readline? ( sys-libs/ncurses sys-libs/readline ) ssl? ( dev-libs/openssl ) gnutls? ( net-libs/gnutls ) !ssl? ( !gnutls? ( dev-libs/libtommath ) )
+SLOT=0
+SRC_URI=http://hostap.epitest.fi/releases/wpa_supplicant-0.5.10.tar.gz
+_eclasses_=toolchain-funcs	/root/git/portage/eclass	1221548757	multilib	/root/git/portage/eclass	1214143558	portability	/root/git/portage/eclass	1167690947	eutils	/root/git/portage/eclass	1222578375
+_mtime_=1218456424

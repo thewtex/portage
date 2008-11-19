@@ -1,0 +1,12 @@
+DEPEND=capi? ( net-dialup/capi4k-utils ) slang? ( >=sys-libs/slang-1.4 ) lua? ( dev-lang/lua ) lua? ( dev-util/pkgconfig )
+DESCRIPTION=Yet Another Pager Software (optional with CAPI support)
+EAPI=0
+HOMEPAGE=ftp://sunsite.unc.edu/pub/Linux/apps/serialcomm/machines/
+IUSE=capi lua slang unicode
+KEYWORDS=~amd64 ~ppc x86
+LICENSE=GPL-2
+RDEPEND=capi? ( net-dialup/capi4k-utils ) slang? ( >=sys-libs/slang-1.4 ) lua? ( dev-lang/lua )
+SLOT=0
+SRC_URI=capi? ( ftp://ftp.melware.net/capi4yaps/yaps-0.96.c3.tgz ) !capi? ( ftp://sunsite.unc.edu/pub/Linux/apps/serialcomm/machines/yaps-0.96.tar.gz )
+_eclasses_=toolchain-funcs	/root/git/portage/eclass	1221548757	multilib	/root/git/portage/eclass	1214143558	portability	/root/git/portage/eclass	1167690947	eutils	/root/git/portage/eclass	1222578375
+_mtime_=1225062336

@@ -1,0 +1,13 @@
+DEPEND=>=sci-visualization/gnuplot-4.0 x11-misc/xdg-utils latex? ( || ( dev-texlive/texlive-latexrecommended >=app-text/tetex-3 app-text/ptex ) ) emacs? ( virtual/emacs latex? ( || ( app-emacs/auctex app-xemacs/auctex ) ) ) sbcl? ( dev-lisp/sbcl app-misc/rlwrap ) !sbcl? ( clisp? ( dev-lisp/clisp ) !clisp? ( cmucl? ( >=dev-lisp/cmucl-19a app-misc/rlwrap ) !cmucl? ( gcl? ( dev-lisp/gcl ) !gcl? ( dev-lisp/sbcl app-misc/rlwrap ) ) ) ) tk? ( dev-lang/tk ) sys-apps/texinfo
+DESCRIPTION=Free computer algebra environment based on Macsyma
+EAPI=0
+HOMEPAGE=http://maxima.sourceforge.net/
+IUSE=cmucl clisp sbcl gcl latex emacs tk nls unicode linguas_es linguas_pt linguas_pt_BR
+KEYWORDS=amd64 ppc sparc x86
+LICENSE=GPL-2 AECA
+RDEPEND=>=sci-visualization/gnuplot-4.0 x11-misc/xdg-utils latex? ( || ( dev-texlive/texlive-latexrecommended >=app-text/tetex-3 app-text/ptex ) ) emacs? ( virtual/emacs latex? ( || ( app-emacs/auctex app-xemacs/auctex ) ) ) sbcl? ( dev-lisp/sbcl app-misc/rlwrap ) !sbcl? ( clisp? ( dev-lisp/clisp ) !clisp? ( cmucl? ( >=dev-lisp/cmucl-19a app-misc/rlwrap ) !cmucl? ( gcl? ( dev-lisp/gcl ) !gcl? ( dev-lisp/sbcl app-misc/rlwrap ) ) ) ) tk? ( dev-lang/tk )
+RESTRICT=clisp? ( strip )
+SLOT=0
+SRC_URI=mirror://sourceforge/maxima/maxima-5.13.0.tar.gz
+_eclasses_=toolchain-funcs	/root/git/portage/eclass	1221548757	multilib	/root/git/portage/eclass	1214143558	portability	/root/git/portage/eclass	1167690947	eutils	/root/git/portage/eclass	1222578375	elisp-common	/root/git/portage/eclass	1225143353
+_mtime_=1202391420

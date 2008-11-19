@@ -1,0 +1,13 @@
+DEPEND=app-arch/unzip kernel_linux? ( virtual/linux-sources ) kernel_linux? ( virtual/modutils ) sys-apps/sed
+DESCRIPTION=kernel drivers for intel ixp4xx systems (like the NSLU2)
+EAPI=0
+HOMEPAGE=http://www.intel.com/design/network/products/npfamily/ixp420.htm
+IUSE=kernel_linux
+KEYWORDS=-* arm
+LICENSE=ixp4xx
+RDEPEND=kernel_linux? ( virtual/modutils )
+RESTRICT=mirror
+SLOT=0
+SRC_URI=ftp://aiedownload.intel.com/df-support/9515/eng/IPL_ixp400AccessLibrary-2_1.zip ftp://aiedownload.intel.com/df-support/9517/eng/IPL_ixp400NpeLibrary-2_1.zip ftp://aiedownload.intel.com/df-support/9519/eng/GPL_ixp400LinuxEthernetDriverPatch-1_5.zip
+_eclasses_=toolchain-funcs	/root/git/portage/eclass	1221548757	portability	/root/git/portage/eclass	1167690947	versionator	/root/git/portage/eclass	1213275960	multilib	/root/git/portage/eclass	1214143558	linux-info	/root/git/portage/eclass	1225490754	linux-mod	/root/git/portage/eclass	1225886984	eutils	/root/git/portage/eclass	1222578375
+_mtime_=1168167976

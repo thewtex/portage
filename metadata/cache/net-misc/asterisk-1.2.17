@@ -1,0 +1,13 @@
+DEPEND=dev-libs/newt media-sound/sox ssl? ( dev-libs/openssl ) gtk? ( =x11-libs/gtk+-1.2* ) pri? ( >=net-libs/libpri-1.2.4 ) h323? ( >=dev-libs/pwlib-1.8.3 >=net-libs/openh323-1.15.0 ) alsa? ( media-libs/alsa-lib ) curl? ( net-misc/curl ) odbc? ( dev-db/unixODBC ) speex? ( media-libs/speex ) sqlite? ( <dev-db/sqlite-3.0.0 ) zaptel? ( >=net-misc/zaptel-1.2.16 ) postgres? ( virtual/postgresql-server ) osp? ( >=net-libs/osptoolkit-3.3.4 ) bri? ( >=net-libs/libpri-1.2.4-r2 >=net-misc/zaptel-1.2.16 ) sys-devel/flex sys-devel/bison doc? ( app-doc/doxygen ) virtual/logger
+DESCRIPTION=Asterisk: A Modular Open Source PBX System
+EAPI=0
+HOMEPAGE=http://www.asterisk.org/
+IUSE=alsa bri curl debug doc gtk genericjb h323 hardened lowmem mmx nosamples odbc osp postgres pri speex sqlite ssl zaptel elibc_uclibc
+KEYWORDS=~alpha ~amd64 ~hppa ~ppc sparc x86
+LICENSE=GPL-2
+PDEPEND=|| ( media-sound/mpg123 net-misc/asterisk-addons )
+RDEPEND=dev-libs/newt media-sound/sox ssl? ( dev-libs/openssl ) gtk? ( =x11-libs/gtk+-1.2* ) pri? ( >=net-libs/libpri-1.2.4 ) h323? ( >=dev-libs/pwlib-1.8.3 >=net-libs/openh323-1.15.0 ) alsa? ( media-libs/alsa-lib ) curl? ( net-misc/curl ) odbc? ( dev-db/unixODBC ) speex? ( media-libs/speex ) sqlite? ( <dev-db/sqlite-3.0.0 ) zaptel? ( >=net-misc/zaptel-1.2.16 ) postgres? ( virtual/postgresql-server ) osp? ( >=net-libs/osptoolkit-3.3.4 ) bri? ( >=net-libs/libpri-1.2.4-r2 >=net-misc/zaptel-1.2.16 )
+SLOT=0
+SRC_URI=http://ftp.digium.com/pub/asterisk/releases/asterisk-1.2.17.tar.gz http://www.netdomination.org/pub/asterisk/asterisk-1.2.17-patches-1.0.tar.bz2 bri? ( mirror://gentoo/asterisk-1.2.17-bristuff-0.3.0-PRE-1y-d-2.diff.bz2 http://www.junghanns.net/downloads/bristuff-0.3.0-PRE-1y-d.tar.gz ) genericjb? ( http://www.netdomination.org/pub/asterisk/asterisk-1.2.11-jb.patch.bz2 )
+_eclasses_=toolchain-funcs	/root/git/portage/eclass	1221548757	multilib	/root/git/portage/eclass	1214143558	portability	/root/git/portage/eclass	1167690947	eutils	/root/git/portage/eclass	1222578375
+_mtime_=1211396799

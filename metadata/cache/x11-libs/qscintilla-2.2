@@ -1,0 +1,12 @@
+DESCRIPTION=A Qt port of Neil Hodgson's Scintilla C++ editor class
+EAPI=1
+HOMEPAGE=http://www.riverbankcomputing.co.uk/software/qscintilla/intro
+IUSE=qt4 +python doc examples debug
+KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd
+LICENSE=GPL-2
+PDEPEND=python? ( dev-python/qscintilla-python )
+RDEPEND=qt4? ( || ( x11-libs/qt-gui:4 =x11-libs/qt-4.3*:4 ) ) !qt4? ( x11-libs/qt:3 )
+SLOT=0
+SRC_URI=http://www.riverbankcomputing.com/static/Downloads/QScintilla2/QScintilla-gpl-2.2.tar.gz
+_eclasses_=toolchain-funcs	/root/git/portage/eclass	1221548757	multilib	/root/git/portage/eclass	1214143558	portability	/root/git/portage/eclass	1167690947	eutils	/root/git/portage/eclass	1222578375
+_mtime_=1217122650

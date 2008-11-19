@@ -1,0 +1,10 @@
+DESCRIPTION=Open Clip Art Library (openclipart.org)
+EAPI=0
+HOMEPAGE=http://www.openclipart.org/
+IUSE=doc svg png pdf wmf gzip
+KEYWORDS=~amd64 ~ppc x86
+LICENSE=public-domain
+RESTRICT=strip
+SLOT=0
+SRC_URI=svg? ( !wmf? ( !png? ( !pdf? ( !doc? ( http://download.openclipart.org/downloads/0.18/openclipart-0.18-svgonly.tar.bz2 ) ) ) ) png? ( http://download.openclipart.org/downloads/0.18/openclipart-0.18-full.tar.bz2 ) pdf? ( http://download.openclipart.org/downloads/0.18/openclipart-0.18-full.tar.bz2 ) wmf? ( http://download.openclipart.org/downloads/0.18/openclipart-0.18-full.tar.bz2 ) doc? ( http://download.openclipart.org/downloads/0.18/openclipart-0.18-full.tar.bz2 ) ) !svg? ( http://download.openclipart.org/downloads/0.18/openclipart-0.18-full.tar.bz2 )
+_mtime_=1192433784

@@ -1,0 +1,12 @@
+DEPEND=sys-fs/sysfsutils !sys-apps/i2c-tools sensord? ( net-analyzer/rrdtool ) sys-apps/sed ppc? ( >=virtual/linux-sources-2.5 ) amd64? ( || ( >=virtual/linux-sources-2.5 >=sys-kernel/vserver-sources-2.0 ) ) x86? ( || ( >=virtual/linux-sources-2.5 >=sys-kernel/vserver-sources-2.0 sys-apps/lm_sensors-modules ) ) kernel_linux? ( virtual/linux-sources )
+DESCRIPTION=Hardware Monitoring user-space utilities
+EAPI=0
+HOMEPAGE=http://www.lm-sensors.org/
+IUSE=sensord
+KEYWORDS=alpha amd64 ppc ~sparc x86
+LICENSE=GPL-2
+RDEPEND=sys-fs/sysfsutils !sys-apps/i2c-tools sensord? ( net-analyzer/rrdtool ) dev-lang/perl >=x11-misc/read-edid-1.4.1-r1 virtual/logger
+SLOT=0
+SRC_URI=http://dl.lm-sensors.org/lm-sensors/releases/lm_sensors-2.10.7.tar.gz
+_eclasses_=toolchain-funcs	/root/git/portage/eclass	1221548757	portability	/root/git/portage/eclass	1167690947	flag-o-matic	/root/git/portage/eclass	1225692356	versionator	/root/git/portage/eclass	1213275960	multilib	/root/git/portage/eclass	1214143558	linux-info	/root/git/portage/eclass	1225490754	eutils	/root/git/portage/eclass	1222578375
+_mtime_=1224355004

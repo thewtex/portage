@@ -1,0 +1,11 @@
+DESCRIPTION=A 3D interface to the planet
+EAPI=2
+HOMEPAGE=http://earth.google.com/
+KEYWORDS=~amd64 ~x86
+LICENSE=googleearth MIT X11 SGI-B-1.1 openssl as-is ZLIB
+RDEPEND=x86? ( media-libs/fontconfig media-libs/freetype virtual/opengl x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXcursor x11-libs/libXext x11-libs/libXft x11-libs/libXinerama x11-libs/libXrender ) amd64? ( app-emulation/emul-linux-x86-xlibs app-emulation/emul-linux-x86-baselibs || ( >=app-emulation/emul-linux-x86-xlibs-7.0 x11-drivers/nvidia-drivers <x11-drivers/ati-drivers-8.28.8 ) ) media-fonts/ttf-bitstream-vera
+RESTRICT=mirror strip
+SLOT=0
+SRC_URI=http://dl.google.com/earth/client/GE4/release_4_3/GoogleEarthLinux.bin -> GoogleEarthLinux-4.3.7284.3916.bin
+_eclasses_=toolchain-funcs	/root/git/portage/eclass	1221548757	fdo-mime	/root/git/portage/eclass	1210063030	multilib	/root/git/portage/eclass	1214143558	portability	/root/git/portage/eclass	1167690947	eutils	/root/git/portage/eclass	1222578375
+_mtime_=1222522615
