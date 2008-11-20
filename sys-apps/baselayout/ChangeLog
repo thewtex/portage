@@ -5,6 +5,12 @@
 # See the rc-scripts ChangeLog in subversion for release info:
 # http://sources.gentoo.org/viewcvs.py/*checkout*/baselayout/trunk/ChangeLog
 
+  20 Nov 2008; Daniel Robbins <drobbins@funtoo.org> baselayout-1.12.11.1.ebuild:
+  added a PROVIDE="virtual/baselayout" to the ebuild as I'm adding back that
+  virtual to help sort through the OpenRC transition and help to ensure that
+  OpenRC gets merged when there is a new version available. Both the classic
+  baselayout and the new OpenRC should provide virtual/baselayout.
+
   04 Sep 2008; Daniel Robbins <drobbins@funtoo.org> baselayout-2.0.0-r1.ebuild:
   New baselayout ebuild that actually creates device nodes. This has been
   missing from the ebuild, so I added it from a 1.x version and added MAKEDEV

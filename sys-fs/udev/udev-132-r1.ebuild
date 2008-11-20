@@ -10,14 +10,13 @@ SRC_URI="mirror://kernel/linux/utils/kernel/hotplug/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE="selinux"
 
 DEPEND="selinux? ( sys-libs/libselinux )"
 RDEPEND="!sys-apps/coldplug
 	!<sys-fs/device-mapper-1.02.19-r1"
-RDEPEND="${DEPEND} ${RDEPEND}
-	>=sys-apps/baselayout-1.12.5"
+RDEPEND="${DEPEND} ${RDEPEND} >=sys-apps/baselayout-2.0.0-r1"
 # We need the lib/rcscripts/addon support
 PROVIDE="virtual/dev-manager"
 
@@ -162,6 +161,7 @@ src_install() {
 	# TODO: Add message that users REALLY, REALLY
 	# need to add this to sysinit runlevel
 	# Bug #240984
+	# Fixing this in this ebuild - in pkg_postinst :) - drobbins
 	newinitd "${FILESDIR}/udev.initd" udev
 
 	insinto /etc/modprobe.d
@@ -265,7 +265,28 @@ restart_udevd() {
 	/sbin/udevd --daemon
 }
 
+# from the openrc-0.3.0.22081113 ebuild :)
+add_init() {
+	local runl=$1
+	if [ ! -e ${ROOT}/etc/runlevels/${runl} ]
+	then
+		install -d -m0755 ${ROOT}/etc/runlevels/${runl}
+	fi
+	for initd in $*
+	do
+		# if the initscript is not going to be installed and  is not currently installed, return
+		[[ -e ${D}/etc/init.d/${initd} || -e ${ROOT}/etc/init.d/${initd} ]] || continue
+		[[ -e ${ROOT}/etc/runlevels/${runl}/${initd} ]] && continue
+		elog "Auto-adding '${initd}' service to your ${runl} runlevel"
+		ln -snf /etc/init.d/${initd} "${ROOT}"/etc/runlevels/${runl}/${initd}
+	done
+}
+
 pkg_postinst() {
+
+	add_init sysinit udev
+	add_init boot udev-postmount
+
 	# people want reminders, I'll give them reminders.  Odds are they will
 	# just ignore them anyway...
 
@@ -327,6 +348,8 @@ pkg_postinst() {
 			rm -f "${ROOT}"/etc/udev/rules.d/64-device-mapper.rules
 			einfo "Removed unneeded file 64-device-mapper.rules"
 	fi
+
+
 
 	# requested in Bug #225033:
 	elog
