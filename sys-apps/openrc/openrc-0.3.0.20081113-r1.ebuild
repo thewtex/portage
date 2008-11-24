@@ -252,8 +252,8 @@ pkg_postinst() {
 	# CREATE RUNLEVEL DIRECTORIES	
 	# ===========================
 
-	# make sure our sysinit, boot and halt runlevels are set up correctly
-	add_default_initscripts sysinit boot halt
+	# make sure our sysinit, boot and shutdown runlevels are set up correctly
+	add_default_initscripts sysinit boot shutdown
 
 	# TWEAK RUNLEVEL DIRECTORIES (changes between OpenRC versions)
 	# ============================================================
