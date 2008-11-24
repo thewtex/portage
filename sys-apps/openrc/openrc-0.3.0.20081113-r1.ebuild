@@ -100,7 +100,7 @@ add_init() {
 
 add_default_initscripts() {
 	local runl
-	for $runl in $*
+	for runl in $*
 	do
 		add_init $runl $(cd $ROOT/usr/share/openrc/runlevels/$runl; echo * )
 	done
