@@ -98,6 +98,14 @@ add_init() {
 	done
 }
 
+add_default_initscripts() {
+	local runl
+	for $runl in $*
+	do
+		add_init $runl $(cd $ROOT/usr/share/openrc/runlevels/$runl; echo * )
+	done
+}
+
 add_init_mit_config() {
 	# DESCRIPTION: if config file exists and isn't just comments and blank lines, then install our initscript.
 	local runl=$1 config=$2 initd=$3
@@ -244,23 +252,8 @@ pkg_postinst() {
 	# CREATE RUNLEVEL DIRECTORIES	
 	# ===========================
 
-	# For each runlevel directory in $runldir, see if this dir exists in
-	# $ROOT/etc/runlevels. If it doesn't, copy our $runldir directory to
-	# $ROOT/etc/runlevels. This will ensure that new runlevels like 
-	# sysvinit and halt are created as needed if upgrading from an older
-	# OpenRC or from baselayout where these runlevel didn't exist.
-
-	for runl in $( cd "$runldir"; echo * )
-	do
-		if [[ ! -e "${ROOT}/etc/runlevels/${runl}" ]]
-		then
-			einfo "Copying default runlevel ${runl}"
-			cp -RPp "${runldir}/${runl}" "${ROOT}/etc/runlevels"
-		fi
-	done
-
-	# make sure our sysinit runlevel is set up correctly
-	add_init sysinit devfs dmesg
+	# make sure our sysinit, boot and halt runlevels are set up correctly
+	add_default_initscripts sysinit boot halt
 
 	# TWEAK RUNLEVEL DIRECTORIES (changes between OpenRC versions)
 	# ============================================================
