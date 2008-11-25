@@ -14,50 +14,16 @@ KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~spar
 IUSE="selinux"
 
 DEPEND="selinux? ( sys-libs/libselinux )"
-RDEPEND="!sys-apps/coldplug
-	!<sys-fs/device-mapper-1.02.19-r1"
+RDEPEND="!sys-apps/coldplug !<sys-fs/device-mapper-1.02.19-r1"
 RDEPEND="${DEPEND} ${RDEPEND} >=sys-apps/baselayout-2.0.0-r1"
-# We need the lib/rcscripts/addon support
 PROVIDE="virtual/dev-manager"
+
+sed_helper_dir() {
+	sed -e "s#/lib/udev#${udev_helper_dir}#" -e "s#/lib64/udev#${udev_helper_dir}#" -i "$@"
+}
 
 pkg_setup() {
 	udev_helper_dir="/$(get_libdir)/udev"
-
-	# comparing kernel version without linux-info.eclass to not pull
-	# virtual/linux-sources
-
-	local KV=$(uname -r)
-	local KV_MAJOR=$(get_major_version ${KV})
-	local KV_MINOR=$(get_version_component_range 2 ${KV})
-	local KV_MICRO=$(get_version_component_range 3 ${KV})
-
-	local min_micro=15 min_micro_reliable=19
-
-	local ok=0
-	if [[ ${KV_MAJOR} == 2 && ${KV_MINOR} == 6 ]]
-	then
-		if [[ ${KV_MICRO} -ge ${min_micro_reliable} ]]; then
-			ok=2
-		elif [[ ${KV_MICRO} -ge ${min_micro} ]]; then
-			ok=1
-		fi
-	fi
-
-	if [[ ${ok} -lt 1 ]]
-	then
-		ewarn
-		ewarn "${P} does not support Linux kernel before version 2.6.${min_micro}!"
-	fi
-	if [[ ${ok} -lt 2 ]]; then
-		ewarn "If you want to use udev reliable you should update"
-		ewarn "to at least kernel version 2.6.${min_micro_reliable}!"
-		ewarn
-		ebeep
-	fi
-}
-
-sed_helper_dir() {
-	sed -e "s#/lib/udev#${udev_helper_dir}#" -i "$@"
 }
 
 src_unpack() {
@@ -111,13 +77,11 @@ src_install() {
 	emake DESTDIR="${D}" install || die "make install failed"
 
 	exeinto "${udev_helper_dir}"
-	newexe "${FILESDIR}"/net-130-r1.sh net.sh	|| die "net.sh not installed properly"
-	newexe "${FILESDIR}"/move_tmp_persistent_rules-112-r1.sh move_tmp_persistent_rules.sh \
-		|| die "move_tmp_persistent_rules.sh not installed properly"
-	newexe "${FILESDIR}"/write_root_link_rule-125 write_root_link_rule \
-		|| die "write_root_link_rule not installed properly"
-	newexe "${FILESDIR}"/shell-compat-118-r3.sh shell-compat.sh \
-		|| die "shell-compat.sh not installed properly"
+	local x
+	for x in net.sh move_tmp_persistent_rules.sh write_root_link_rule shell-compat.sh
+	do
+		doexe "${FILESDIR}/${PVR}/${x}" || die "${x} not installed properly"
+	done
 
 	keepdir "${udev_helper_dir}"/state
 	keepdir "${udev_helper_dir}"/devices
@@ -128,8 +92,7 @@ src_install() {
 	dosym "..${udev_helper_dir}/scsi_id" /sbin/scsi_id
 
 	# Add gentoo stuff to udev.conf
-	echo "# If you need to change mount-options, do it in /etc/fstab" \
-	>> "${D}"/etc/udev/udev.conf
+	echo "# If you need to change mount-options, do it in /etc/fstab" >> "${D}"/etc/udev/udev.conf
 
 	# let the dir exist at least
 	keepdir /etc/udev/rules.d
@@ -149,32 +112,19 @@ src_install() {
 	fi
 	cd "${S}"
 
-	# our udev hooks into the rc system
-	insinto /$(get_libdir)/rcscripts/addons
-	newins "${FILESDIR}"/udev-start-126.sh udev-start.sh
-	newins "${FILESDIR}"/udev-stop-126.sh udev-stop.sh
-
 	# The udev-post init-script
-	newinitd "${FILESDIR}"/udev-postmount-130-r2.initd udev-postmount
+	newinitd "${FILESDIR}"/${PVR}/udev-postmount.initd udev-postmount
 
-	# init-script for >openrc-0.3.0
-	# TODO: Add message that users REALLY, REALLY
-	# need to add this to sysinit runlevel
-	# Bug #240984
-	# Fixing this in this ebuild - in pkg_postinst :) - drobbins
-	newinitd "${FILESDIR}/udev.initd" udev
-
-	newconfd "${FILESDIR}/udev.confd" udev
+	# Bug #240984 - Fixing this in this ebuild - in pkg_postinst :) - drobbins
+	newinitd "${FILESDIR}/${PVR}/udev.initd" udev
+	newconfd "${FILESDIR}/${PVR}/udev.confd" udev
 
 	insinto /etc/modprobe.d
-	newins "${FILESDIR}"/blacklist-110 blacklist
-	doins "${FILESDIR}"/pnp-aliases
+	newins "${FILESDIR}/${PVR}/blacklist" blacklist
+	doins "${FILESDIR}/${PVR}/pnp-aliases"
 
 	# convert /lib/udev to real used dir
-	sed_helper_dir \
-		"${D}/$(get_libdir)"/rcscripts/addons/*.sh \
-		"${D}"/etc/init.d/udev* \
-		"${D}"/etc/modprobe.d/*
+	sed_helper_dir "${D}"/etc/init.d/udev* "${D}"/etc/modprobe.d/*
 
 	# documentation
 	dodoc ChangeLog README TODO || die "failed installing docs"
@@ -222,13 +172,6 @@ pkg_preinst() {
 		rm -f "${ROOT}"/etc/hotplug.d/default/10-udev.hotplug
 	fi
 
-	# is there a stale coldplug initscript? (CONFIG_PROTECT leaves it behind)
-	coldplug_stale=""
-	if [[ -f ${ROOT}/etc/init.d/coldplug ]]
-	then
-		coldplug_stale="1"
-	fi
-
 	has_version "=${CATEGORY}/${PN}-103-r3"
 	previous_equal_to_103_r3=$?
 
@@ -264,7 +207,8 @@ restart_udevd() {
 	sleep 1
 	killall -9 udevd &>/dev/null
 
-	/sbin/udevd --daemon
+	/etc/init.d/udev zap
+	/etc/init.d/udev start
 }
 
 # from the openrc-0.3.0.22081113 ebuild :)
@@ -284,23 +228,33 @@ add_init() {
 	done
 }
 
+fix_old_persistent_net_rules() {
+	local rules=${ROOT}/etc/udev/rules.d/70-persistent-net.rules
+	[[ -f ${rules} ]] || return
+
+	ebegin "Fixing persistent-net rules file"
+
+	# Change ATTRS to ATTR matches, Bug #246927
+	sed -i -e 's/ATTRS{/ATTR{/g' "${rules}"
+
+	# Add KERNEL matches if missing, Bug #246849
+	sed -ri \
+		-e '/KERNEL/ ! { s/NAME="(eth|wlan|ath)([0-9]+)"/KERNEL=="\1*", NAME="\1\2"/}' \
+		"${rules}"
+
+	eend 0 ""
+}
+
 pkg_postinst() {
 
 	add_init sysinit udev
-	add_init boot udev-postmount
+	#add_init boot udev-postmount
 
 	# people want reminders, I'll give them reminders.  Odds are they will
 	# just ignore them anyway...
 
-	if [[ ${coldplug_stale} == 1 ]]
-	then
-		ewarn "A stale coldplug init script found. You should run:"
-		ewarn
-		ewarn "      rc-update del coldplug"
-		ewarn "      rm -f /etc/init.d/coldplug"
-		ewarn
-		ewarn "udev now provides its own coldplug functionality."
-	fi
+	# disable coldplug script
+	rm -f $ROOT/etc/runlevels/*/coldplug
 
 	# delete 40-scsi-hotplug.rules - all integrated in 50-udev.rules
 	if [[ $previous_equal_to_103_r3 = 0 ]] &&
@@ -351,26 +305,14 @@ pkg_postinst() {
 			einfo "Removed unneeded file 64-device-mapper.rules"
 	fi
 
-
-
 	# requested in Bug #225033:
 	elog
 	elog "persistent-net does assigning fixed names to network devices."
-	elog "If you have problems with persistent-net rules,"
-	elog "just delete the rules file"
-	elog "\trm ${ROOT}etc/udev/rules.d/70-persistent-net.rules"
-	elog "and then trigger udev by either running"
-	elog "\tudevadm trigger --subsystem-match=net"
-	elog "or by rebooting."
-	elog
-	elog "This may number your devices in a different way than it is now."
+	elog "If you have problems with persistent-net rules, this functionality"
+	elog "can be turned off via /etc/conf.d/udev."
 
+	fix_old_persistent_net_rules
 	restart_udevd
-
-	ewarn "If you build an initramfs including udev, then please"
-	ewarn "make sure that the /sbin/udevadm binary gets included,"
-	ewarn "and your scripts changed to use it,as it replaces the"
-	ewarn "old helper apps udevinfo, udevtrigger, ..."
 
 	ewarn
 	ewarn "mount options for directory /dev are no longer"

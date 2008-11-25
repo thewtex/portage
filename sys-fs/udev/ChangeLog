@@ -2,6 +2,15 @@
 # Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
 # $Header: /var/cvsroot/gentoo-x86/sys-fs/udev/ChangeLog,v 1.419 2008/11/23 20:05:19 zzam Exp $
 
+*udev-133-r1 (24 Nov 2008)
+
+  24 Nov 2008; Daniel Robbins <drobbins@funtoo.org>
+  +files/133-r1/*, +udev-133-r1.ebuild:
+  Reworking of ebuild for modern OpenRC compatibility - removal of addon
+  dependency. Moved all required files into files/133-r1 to make things
+  better organized. Moved "rc_device_tarball" setting to /etc/conf.d/udev
+  and renamed to "device_tarball".
+
   23 Nov 2008; Matthias Schwarzott <zzam@gentoo.org>
   +files/udev-start-133.sh, +files/udev.confd, udev-133.ebuild:
   Add switch to disable persistent-net, Bug #246312.
