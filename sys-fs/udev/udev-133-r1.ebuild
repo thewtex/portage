@@ -183,6 +183,9 @@ pkg_preinst() {
 
 	has_version "<${CATEGORY}/${PN}-113"
 	previous_less_than_113=$?
+
+	rm -f ${ROOT}/etc/init.d/udev # FORCE UPDATE
+
 }
 
 # See Bug #129204 for a discussion about restarting udevd
