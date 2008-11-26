@@ -12,3 +12,14 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
+USE_RUBY="ruby18 ruby19"
+
+src_install() {
+
+${RUBY} setup.rb install --prefix="${D}" "$@" \
+${RUBY_ECONF} || die "setup.rb install failed"
+
+cd "${S}"
+dodoc ChangeLog README
+
+}
