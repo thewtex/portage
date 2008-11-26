@@ -1,0 +1,209 @@
+#!/sbin/runscript
+# Copyright 1999-2008 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+description="Mount /dev and let udev create the device-nodes"
+
+depend()
+{
+	provide dev
+	need sysfs
+	before checkfs fsck
+}
+
+start()
+{
+	ebegin "Mounting /dev"
+	if fstabinfo --quiet /dev; then
+		# if defined in /etc/fstab, use those options:
+		mount -n /dev
+	else
+		# otherwise, automatically mount using these options:
+		# Some devices require exec, Bug #92921
+		mount -n -t tmpfs -o "exec,nosuid,mode=0755,size=10M" udev /dev
+	fi
+	eend $?
+
+	touch /dev/.rcsysinit
+
+	# SELINUX STUFF
+
+	if [ -x /sbin/restorecon -a -c /selinux/null ]; then
+		restorecon /dev > /selinux/null
+	fi
+
+	# DEVICE TARBALL STUFF
+
+	local tarball_file=/lib64/udev/state/devices.tar.bz2
+	if yesno "${device_tarball}" && [ -s "${tarball_file}" ]
+	then
+		ebegin "Populating /dev with saved device nodes"
+		tar xpf "${tarball_file}" -C /dev
+		eend $?
+	fi
+
+	# ENSURE CRITICAL DEVICES EXIST STUFF
+
+	# creating /dev/console and /dev/tty1 to be able to write
+	# to $CONSOLE with/without bootsplash before udevd creates it
+	[ -c /dev/console ] || mknod /dev/console c 5 1
+	[ -c /dev/tty1 ] || mknod /dev/tty1 c 4 1
+
+	# udevd will dup its stdin/stdout/stderr to /dev/null
+	# and we do not want a file which gets buffered in ram
+	[ -c /dev/null ] || mknod /dev/null c 1 3
+
+	# copy over any persistant things
+	if [ -d /lib64/udev/devices ]; then
+		cp -RPp /lib64/udev/devices/* /dev 2>/dev/null
+	fi
+
+	# Not provided by sysfs but needed
+	ln -snf /proc/self/fd /dev/fd
+	ln -snf fd/0 /dev/stdin
+	ln -snf fd/1 /dev/stdout
+	ln -snf fd/2 /dev/stderr
+	[ -e /proc/kcore ] && ln -snf /proc/kcore /dev/core
+
+	# Create problematic directories
+	mkdir -p /dev/pts /dev/shm
+
+	if [ -e /proc/sys/kernel/hotplug ]; then
+		echo "" >/proc/sys/kernel/hotplug
+	fi
+
+	if [ -e /lib64/udev/write_root_link_rule ]
+	then
+		/lib64/udev/write_root_link_rule
+	else
+		/lib/udev/write_root_link_rule
+	fi
+
+	# this function disables rules files
+	# by creating new files with the same name
+	# in a temp rules directory with higher priority
+	local d=/dev/.udev/rules.d
+	if yesno "${persistent_net_disable:-no}"; then
+		mkdir -p "$d"
+		echo "# This file disables persistent-net due to /etc/conf.d/udev" \
+			> "$d"/75-persistent-net-generator.rules
+	fi
+
+	# load unix domain sockets if built as module, Bug #221253
+	if [ -e /proc/modules ] ; then
+		modprobe -q unix 2>/dev/null
+	fi
+
+	ebegin "Starting udevd"
+	start-stop-daemon --start --exec /sbin/udevd -- --daemon
+	eend $?
+
+	if get_bootparam "nocoldplug" ; then
+		rc_coldplug="NO"
+		ewarn "Skipping udev coldplug as requested in kernel cmdline"
+	fi
+
+	ebegin "Populating /dev with existing devices through uevents"
+	if yesno "${rc_coldplug}"; then
+		udevadm trigger
+	else
+		# Do not run any init-scripts, Bug #206518
+		udevadm control --env do_not_run_plug_service=1
+
+		# only create device nodes
+		udevadm trigger --attr-match=dev
+
+		# run persistent-net stuff, bug 191466
+		udevadm trigger --subsystem-match=net
+	fi
+	eend $?
+
+	ebegin "Waiting for uevents to be processed"
+	udevadm settle --timeout=60
+	eend $?
+
+	udevadm control --env do_not_run_plug_service=
+
+	# should exist on every system, else udev failed
+	if [ ! -e /dev/zero ]; then
+		eerror "Assuming udev failed somewhere, as /dev/zero does not exist."
+		return 1
+	fi
+	mark_service_hotplugged udev-postmount
+	return 0
+}
+
+device_saving_madness() {
+/lib64/udev/move_tmp_persistent_rules.sh
+tarball_file=/lib64/udev/state/devices.tar.bz2
+
+device_tarball=${device_tarball:-${RC_DEVICE_TARBALL:-NO}}
+if [ -e /dev/.devfsd ] || [ ! -e /dev/.udev ] || [ ! -z "${CDBOOT}" ] || \
+	! yesno "${device_tarball}" || \
+	! touch "${tarball_file}" 2>/dev/null
+then
+	exit 0
+fi
+
+ebegin "Saving device nodes"
+# Handle our temp files
+save_tmp_base=/tmp/udev.savedevices."$$"
+devices_udev="${save_tmp_base}"/devices.udev
+devices_real="${save_tmp_base}"/devices.real
+devices_totar="${save_tmp_base}"/devices.totar
+device_tmp_tarball="${save_tmp_base}"/devices
+
+rm -rf "${save_tmp_base}"
+mkdir "${save_tmp_base}"
+touch "${devices_udev}" "${devices_real}" \
+"${devices_totar}" "${device_tmp_tarball}"
+
+if [ -f "${devices_udev}" -a -f "${devices_real}" -a \
+	-f "${devices_totar}" -a -f "${device_tmp_tarball}" ]
+then
+	cd /dev
+	# Find all devices, but ignore .udev directory
+	find . -xdev -type b -or -type c -or -type l | \
+	cut -d/ -f2- | \
+	grep -v ^\\.udev >"${devices_real}"
+
+	# Figure out what udev created
+	udevadm info --export-db | sed -ne 's,^[SN]: \(.*\),\1,p' >"${devices_udev}"
+	# These ones we also do not want in there
+	for x in MAKEDEV core fd initctl pts shm stderr stdin stdout root; do
+		echo "${x}" >> "${devices_udev}"
+	done
+	if [ -d /lib64/udev/devices ]; then
+		cd /lib64/udev/devices
+		find . -xdev -type b -or -type c -or -type l | \
+		cut -d/ -f2- >> "${devices_udev}"
+		cd /dev
+	fi
+
+	fgrep -x -v -f "${devices_udev}" "${devices_real}" > "${devices_totar}"
+
+	# Now only tarball those not created by udev if we have any
+	if [ -s "${devices_totar}" ]; then
+		# we dont want to descend into mounted filesystems (e.g. devpts)
+		# looking up username may involve NIS/network
+		# and net may be down
+		tar --one-file-system --numeric-owner \
+			-jcpf "${device_tmp_tarball}" -T "${devices_totar}"
+		mv -f "${device_tmp_tarball}" "${tarball_file}"
+	else
+		rm -f "${tarball_file}"
+	fi
+	eend 0
+else
+	eend 1 "Could not create temporary files!"
+fi
+}
+
+stop()
+{
+ebegin "Stopping udev"
+	start-stop-daemon --stop /sbin/udevd
+eend $?
+device_saving_madness
+
+}
