@@ -21,7 +21,7 @@ RDEPEND="kernel_linux? ( =sys-apps/sysvinit-2.86-r11 >=sys-apps/module-init-tool
 	ncurses? ( sys-libs/ncurses )
 	pam? ( virtual/pam )
 	>=sys-apps/baselayout-2.0.0
-	=sys-fs/udev-133-r1"
+	>=sys-fs/udev-133-r2"
 DEPEND="ncurses? ( sys-libs/ncurses ) eclibc_glibc? ( >=sys-libs/glibc-2.5 ) pam? ( virtual/pam ) virtual/os-headers"
 
 pkg_setup() {
