@@ -76,7 +76,7 @@ start()
 	then
 		/lib64/udev/write_root_link_rule
 	else
-		/lib/udev/write_root_link_rule
+		/lib64/udev/write_root_link_rule
 	fi
 
 	# this function disables rules files
@@ -98,6 +98,18 @@ start()
 	start-stop-daemon --start --exec /sbin/udevd -- --daemon
 	eend $?
 
+	# By default, we want coldplug enabled. "coldplug" means that 
+	# udev will scan the system for already-connected hardware and
+	# generate synthetic/pretend connection events, which will help
+	# to load the correct modules, when, for example, you try to
+	# bring up your eth0 interface and it depends on a module that
+	# is not currently loaded.
+
+	local rc_coldplug="YES"
+
+	# coldplug can be disabled by the "nocoldplug" kernel boot
+	# parameter.
+
 	if get_bootparam "nocoldplug" ; then
 		rc_coldplug="NO"
 		ewarn "Skipping udev coldplug as requested in kernel cmdline"
@@ -105,14 +117,14 @@ start()
 
 	ebegin "Populating /dev with existing devices through uevents"
 	if yesno "${rc_coldplug}"; then
+		# perform full coldplug:
 		udevadm trigger
 	else
+		# do not perform a full coldplug:
 		# Do not run any init-scripts, Bug #206518
 		udevadm control --env do_not_run_plug_service=1
-
 		# only create device nodes
 		udevadm trigger --attr-match=dev
-
 		# run persistent-net stuff, bug 191466
 		udevadm trigger --subsystem-match=net
 	fi
@@ -129,7 +141,7 @@ start()
 		eerror "Assuming udev failed somewhere, as /dev/zero does not exist."
 		return 1
 	fi
-	mark_service_hotplugged udev-postmount
+	#mark_service_hotplugged udev-postmount
 	return 0
 }
 
