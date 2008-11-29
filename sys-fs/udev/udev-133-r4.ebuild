@@ -319,8 +319,8 @@ pkg_postinst() {
 	# requested in Bug #225033:
 	elog
 	elog "persistent-net does assigning fixed names to network devices."
-	elog "If you have problems with persistent-net rules, this functionality"
-	elog "can be turned off via /etc/conf.d/udev."
+	elog "If you prefer to disable persistent-net, this can be done via"
+	elog "/etc/conf.d/udev."
 
 	fix_old_persistent_net_rules
 	restart_udevd
