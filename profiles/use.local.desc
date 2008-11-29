@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4034 2008/11/24 21:07:46 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4037 2008/11/28 22:47:43 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -1366,11 +1366,15 @@ media-sound/mumble:speech - Enables text-to-speech support in Mumble.
 media-sound/murmur:ice - Use dev-cpp/Ice to enable remote control capabilities
 media-sound/murmur:logrotate - Use app-admin/logrotate for rotating logs
 media-sound/musepack-tools:16bit - Higher quality sound output using dithering and noise-shaping
+media-sound/ncmpc:artist-screen - Enable artist screen
 media-sound/ncmpc:clock-screen - Enable clock screen
+media-sound/ncmpc:colors - Enable color support
+media-sound/ncmpc:help-screen - Enable the help screen
 media-sound/ncmpc:key-screen - Enable key editor screen
 media-sound/ncmpc:mouse - Enable curses getmouse support
-media-sound/ncmpc:raw-mode - raw terminal mode
-media-sound/ncmpc:search-screen - Enable search screen (EXPERIMENTAL)
+media-sound/ncmpc:raw-mode - Raw terminal mode
+media-sound/ncmpc:search-screen - Enable search screen
+media-sound/ncmpc:song-screen - Enable song viewer screen
 media-sound/noteedit:kmid - Use KDE's kmid to play sound
 media-sound/noteedit:tse3 - Use tse3 library to play/export sound
 media-sound/picard:cdaudio - Enable support for CD Index Lookups.
@@ -2016,6 +2020,7 @@ net-misc/directvnc:mouse - Adds mouse support
 net-misc/drivel:rhythmbox - Enables support for currently playing song in rhythmbox
 net-misc/dropbear:bsdpty - Add support for legacy BSD pty's rather than dynamic UNIX pty's -- do not use this flag unless you are absolutely sure you actually want it
 net-misc/dropbear:multicall - Build all the programs as one little binary (to save space)
+net-misc/freenet6:radvd - Enable support for net-misc/radvd
 net-misc/gwget:epiphany - Build epiphany extensions
 net-misc/hamachi:pentium - Add support for older Pentium based systems
 net-misc/htbinit:esfq - Add support for Enhanced Stochastic Fairness queueing discipline.
@@ -2176,6 +2181,8 @@ net-voip/yate:gsm - Build gsm codec plugin
 net-voip/yate:h323 - Build H.323 Channel plugin
 net-voip/yate:ilbc - Build ILBC codec plugin
 net-voip/yate:zaptel - Build zaptel Channel plugin
+net-wireless/bluez:old-daemons - Install old daemons like hidd and sdpd that are deprecated by the new Service framework
+net-wireless/bluez:test-programs - Install l2test and rctest
 net-wireless/bluez-utils:old-daemons - Install old daemons like hidd and sdpd that are deprecated by the new Service framework
 net-wireless/bluez-utils:test-programs - Install l2test and rctest
 net-wireless/hostapd:logwatch - Install support files for sys-app/logwatch
