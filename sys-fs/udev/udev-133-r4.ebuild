@@ -115,10 +115,12 @@ src_install() {
 	cd "${S}"
 
 	# The udev-post init-script
-	newinitd "${FILESDIR}"/${PVR}/udev-postmount.initd udev-postmount
-
-	# Bug #240984 - Fixing this in this ebuild - in pkg_postinst :) - drobbins
-	newinitd "${FILESDIR}/${PVR}/udev.initd" udev
+	local x
+	for x in udevd udev-save udev-mount udev-postmount
+	do
+		newinitd "${FILESDIR}"/${PVR}/${x}.initd ${x}
+	done
+	
 	newconfd "${FILESDIR}/${PVR}/udev.confd" udev
 
 	insinto /etc/modprobe.d
@@ -186,8 +188,7 @@ pkg_preinst() {
 	has_version "<${CATEGORY}/${PN}-113"
 	previous_less_than_113=$?
 
-	rm -f ${ROOT}/etc/init.d/udev # FORCE UPDATE
-
+	rm -f /etc/conf.d/udev #FORCE UPDATE
 }
 
 # See Bug #129204 for a discussion about restarting udevd
@@ -212,8 +213,9 @@ restart_udevd() {
 	sleep 1
 	killall -9 udevd &>/dev/null
 
-	/etc/init.d/udev zap
-	/etc/init.d/udev start
+	/etc/init.d/udev zap > /dev/null 2>&1
+	/etc/init.d/udevd zap > /dev/null 2>&1
+	/etc/init.d/udevd start
 }
 
 # from the openrc-0.3.0.22081113 ebuild :)
@@ -252,14 +254,18 @@ fix_old_persistent_net_rules() {
 
 pkg_postinst() {
 
-	add_init sysinit udev
-	#add_init boot udev-postmount
-
-	# people want reminders, I'll give them reminders.  Odds are they will
-	# just ignore them anyway...
-
 	# disable coldplug script
 	rm -f $ROOT/etc/runlevels/*/coldplug
+
+	# disable any old udev script
+	rm -f $ROOT/etc/runlevels/*/udev
+
+	rm -f $ROOT/etc/runlevels/*/udev-postmount
+
+	add_init sysinit udev-mount
+	add_init sysinit udevd
+	add_init boot udev-postmount
+	add_init shutdown udev-save
 
 	# delete 40-scsi-hotplug.rules - all integrated in 50-udev.rules
 	if [[ $previous_equal_to_103_r3 = 0 ]] &&
