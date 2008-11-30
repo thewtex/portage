@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4037 2008/11/28 22:47:43 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4040 2008/11/30 03:08:35 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -222,6 +222,7 @@ app-emulation/uae:ui - Build the user interface (could be gtk or ncurses based, 
 app-emulation/vice:resid - Enable support for ReSID media-libs/resid
 app-emulation/vice:xrandr - Enable support for the X xrandr extension
 app-emulation/virtualbox-bin:additions - Install Guest System Tools ISO
+app-emulation/virtualbox-bin:chm - Install kchmviewer binary to enable online help (in MS CHM format)
 app-emulation/virtualbox-bin:headless - Install without any graphic frontend
 app-emulation/virtualbox-bin:sdk - Enable building of SDK
 app-emulation/virtualbox-bin:vboxwebsrv - Install the VirtualBox webservice
@@ -617,8 +618,8 @@ dev-lang/swig:mzscheme - Enable PLT mzscheme support
 dev-lang/swig:octave - Enable Octave support
 dev-lang/swig:pike - Enable Pike scripting support
 dev-lang/vala:vapigen - Enable vala's library binding generator
-dev-libs/DirectFB:fusion - Add Multi Application support (fusion kernel device) 
-dev-libs/DirectFB:sysfs - Add support for the sysfs filesystem (requires Linux-2.6+) 
+dev-libs/DirectFB:fusion - Add Multi Application support (fusion kernel device)
+dev-libs/DirectFB:sysfs - Add support for the sysfs filesystem (requires Linux-2.6+)
 dev-libs/DirectFB-extra:flash - Add support for creating SWF files using Ming (media-libs/libflash)
 dev-libs/DirectFB-extra:fusion - Add Multi Application support (fusion kernel device) 
 dev-libs/STLport:boost - Enable the usage of dev-libs/boost
@@ -661,6 +662,7 @@ dev-libs/openobex:irda - Enable IrDA support
 dev-libs/opensc:openct - Build using dev-libs/openct compatibility 
 dev-libs/opensc:pcsc-lite - Build with sys-apps/pcsc-lite
 dev-libs/pkcs11-helper:nss - Enable NSS crypto engine
+dev-libs/ppl:prolog - Build SWI Prolog interface
 dev-libs/qsa:ide - Enable the qsa ide
 dev-libs/soprano:clucene - Enable dev-cpp/clucene backend support.
 dev-libs/soprano:redland - Enables support for the dev-libs/redland backend.
@@ -1220,6 +1222,7 @@ media-libs/libcanberra:gtk - Enables building of gtk+ helper library, gtk+ runti
 media-libs/libcanberra:pulseaudio - Enables PulseAudio sound driver that should be able to support positional event sounds. This is the preferred choice for best sound events experience and picked by default if compiled in and possible to use at runtime.
 media-libs/libdc1394:juju - Use the new juju firewire stack in the Linux kernel
 media-libs/libggi:vis - Enables sparc vis support for libggi
+media-libs/libgphoto2:bonjour - Adds Bonjour/Zeroconf support.
 media-libs/libifp:module - Build kernel module for non-root usage
 media-libs/libsdl:custom-cflags - Allow users to use any CFLAGS they like completely (at their own risk)
 media-libs/libsdl:noaudio - Allow users to disable audio support completely (at their own risk)
