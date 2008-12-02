@@ -26,7 +26,6 @@ src_unpack() {
 }
 
 src_compile() {
-	use static && append-ldflags -static
 	CPPFLAGS="-U GTK_DISABLE_DEPRECATED" econf || die
 	emake || die
 }
