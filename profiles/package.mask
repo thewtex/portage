@@ -1,8 +1,10 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.9243 2008/12/03 18:27:57 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.9248 2008/12/04 14:13:24 voyageur Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
-# an explanation of why something is getting masked
+# an explanation of why something is getting masked. Please be extremely
+# careful not to commit atoms that are not valid, as it can cause large-scale
+# breakage, especially if it ends up in the daily snapshot.
 #
 ## Example:
 ##
@@ -28,6 +30,22 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+# Bernard Cafarelli <voyageur@gentoo.org> (04 Dec 2008)
+# Masked for removal in 30 days (bug #249799)
+# * Upstream closed web site and source downloads
+# * No updates since first release 2 years ago
+# * Still based on old NX 1.5 code, missing features and being mostly
+# incompatible with current NX servers/clients
+# * Client does not compile with gcc4.3 or --as-needed (bug #248138).
+# * Server includes old, unpatched xorg sources, probably vulnerable to GLSA
+# 200710-09 and 200804-05.
+# * GPL alternatives exist: net-misc/qtnx, net-misc/nxserver-freenx
+net-misc/nxclient-2xterminalserver
+net-misc/nxserver-2xterminalserver
+
+# Tomas Chvatal <scarabeus@gentoo.org> (03 Dec 2008)
+# Betaversion, has cool stuff like plasmoid and so on
+=net-p2p/ktorrent-3.2*
 
 # Samuli Suominen <ssuominen@gentoo.org> (03 Dec 2008)
 # Deprecated library for Portaudio v18. Removed in 30 days.

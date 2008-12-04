@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/netbeans/netbeans-6.5-r2.ebuild,v 1.1 2008/12/03 12:35:38 fordfrog Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/netbeans/netbeans-6.5-r2.ebuild,v 1.4 2008/12/04 12:15:51 fordfrog Exp $
 
 EAPI="2"
 WANT_SPLIT_ANT="true"
@@ -249,57 +249,57 @@ pkg_setup() {
 		die
 	fi
 
+	local need_apisupport=""
+	local need_groovy=""
+	local need_gsf=""
+	local need_harness=""
+	local need_ide=""
+	local need_j2ee=""
+	local need_java=""
+	local need_websvccommon=""
+	local need_xml=""
+
 	# direct deps: ide
-	if use netbeans_modules_cnd && ! use netbeans_modules_ide ; then
-		eerror "'cnd' module requires 'ide' module"
-		die
+	if use netbeans_modules_cnd ; then
+		need_ide="1"
 	fi
 
 	# direct deps: gsf, ide, java
-	if use netbeans_modules_groovy && ! ( \
-		use netbeans_modules_gsf && \
-		use netbeans_modules_ide && \
-		use netbeans_modules_java && \
-		use netbeans_modules_websvccommon ) ; then
-		eerror "'groovy' module requires 'gsf', 'ide', 'java' and 'websvccommon' modules"
-		die
+	if use netbeans_modules_groovy ; then
+		need_gsf="1"
+		need_ide="1"
+		need_java="1"
+		need_websvccommon="1"
 	fi
 
 	# direct deps: ide
-	if use netbeans_modules_gsf && ! use netbeans_modules_ide ; then
-		eerror "'gsf' module requires 'ide' module"
-		die
+	if use netbeans_modules_gsf ; then
+		need_ide="1"
 	fi
 
 	# direct deps: gsf, ide, j2ee, java
-	if use netbeans_modules_identity && ! ( \
-		use netbeans_modules_groovy && \
-		use netbeans_modules_gsf && \
-		use netbeans_modules_ide && \
-		use netbeans_modules_j2ee && \
-		use netbeans_modules_java && \
-		use netbeans_modules_websvccommon ) ; then
-		eerror "'identity' module requires 'groovy', 'gsf', 'ide', 'j2ee', 'java' and 'websvccommon'  modules"
-		die
+	if use netbeans_modules_identity ; then
+		need_groovy="1"
+		need_gsf="1"
+		need_ide="1"
+		need_j2ee="1"
+		need_java="1"
+		need_websvccommon="1"
 	fi
 
 	# direct deps: groovy, gsf, ide, java
-	if use netbeans_modules_j2ee && ! ( \
-		use netbeans_modules_groovy && \
-		use netbeans_modules_gsf && \
-		use netbeans_modules_ide && \
-		use netbeans_modules_java && \
-		use netbeans_modules_websvccommon ) ; then
-		eerror "'j2ee' module requires 'groovy', 'gsf', 'ide', 'java' and 'websvccommon' modules"
-		die
+	if use netbeans_modules_j2ee ; then
+		need_groovy="1"
+		need_gsf="1"
+		need_ide="1"
+		need_java="1"
+		need_websvccommon="1"
 	fi
 
 	# direct deps: ide, websvccommon
-	if use netbeans_modules_java && ! ( \
-		use netbeans_modules_ide && \
-		use netbeans_modules_websvccommon ) ; then
-		eerror "'java' module requires 'ide' and 'websvccommon' module"
-		die
+	if use netbeans_modules_java ; then
+		need_ide="1"
+		need_websvccommon="1"
 	fi
 
 	# because of bug http://www.netbeans.org/issues/show_bug.cgi?id=151535 'j2ee' cluster is also
@@ -307,46 +307,38 @@ pkg_setup() {
 	# because of bug http://www.netbeans.org/issues/show_bug.cgi?id=151538 'apisupport' cluster is also
 	# needed to build 'mobility' cluster
 	# direct deps: apisupport, ide, j2ee, java
-	if use netbeans_modules_mobility && ! ( \
-		use netbeans_modules_apisupport && \
-		use netbeans_modules_groovy && \
-		use netbeans_modules_gsf && \
-		use netbeans_modules_harness && \
-		use netbeans_modules_ide && \
-		use netbeans_modules_j2ee && \
-		use netbeans_modules_java && \
-		use netbeans_modules_websvccommon ) ; then
-		eerror "'mobility' module requires 'apisupport', 'groovy', 'gsf', 'harness', 'ide', 'j2ee', 'java' and 'websvccommon' modules"
-		die
+	if use netbeans_modules_mobility ; then
+		need_apisupport="1"
+		need_groovy="1"
+		need_gsf="1"
+		need_harness="1"
+		need_ide="1"
+		need_j2ee="1"
+		need_java="1"
+		need_websvccommon="1"
 	fi
 
 	# direct deps: harness, ide
-	if use netbeans_modules_nb && ! ( \
-		use netbeans_modules_harness && \
-		use netbeans_modules_ide ) ; then
-		eerror "'nb' module requires 'harness' and 'ide' module"
-		die
+	if use netbeans_modules_nb ; then
+		need_harness="1"
+		need_ide="1"
 	fi
 
 	# direct deps: gsf, ide, websvccommon
-	if use netbeans_modules_php && ! ( \
-		use netbeans_modules_gsf && \
-		use netbeans_modules_ide && \
-		use netbeans_modules_websvccommon ) ; then
-		eerror "'php' module requires 'gsf', 'ide' and 'websvccommon' modules"
-		die
+	if use netbeans_modules_php ; then
+		need_gsf="1"
+		need_ide="1"
+		need_websvccommon="1"
 	fi
 
 	# direct deps: gsf, ide, j2ee, java
-	if use netbeans_modules_profiler && ! ( \
-		use netbeans_modules_groovy && \
-		use netbeans_modules_gsf && \
-		use netbeans_modules_ide && \
-		use netbeans_modules_j2ee && \
-		use netbeans_modules_java && \
-		use netbeans_modules_websvccommon ) ; then
-		eerror "'profiler' module requires 'groovy', 'gsf', 'ide', 'j2ee', 'java' and 'websvccommon' modules"
-		die
+	if use netbeans_modules_profiler ; then
+		need_groovy="1"
+		need_gsf="1"
+		need_ide="1"
+		need_j2ee="1"
+		need_java="1"
+		need_websvccommon="1"
 	fi
 
 	# direct deps: gsf, ide
@@ -356,48 +348,57 @@ pkg_setup() {
 	#fi
 
 	# direct deps: gsf, ide, j2ee, java, xml
-	if use netbeans_modules_soa && ! ( \
-		use netbeans_modules_groovy && \
-		use netbeans_modules_gsf && \
-		use netbeans_modules_ide && \
-		use netbeans_modules_j2ee && \
-		use netbeans_modules_java && \
-		use netbeans_modules_websvccommon && \
-		use netbeans_modules_xml ) ; then
-		eerror "'soa' module requires 'groovy', 'gsf', 'ide', 'j2ee', 'java', 'websvccommon' and 'xml' modules"
-		die
+	if use netbeans_modules_soa ; then
+		need_groovy="1"
+		need_gsf="1"
+		need_ide="1"
+		need_j2ee="1"
+		need_java="1"
+		need_websvccommon="1"
+		need_xml="1"
 	fi
 
 	# direct deps: gsf, ide, j2ee, java
-	if use netbeans_modules_visualweb && ! ( \
-		use netbeans_modules_groovy && \
-		use netbeans_modules_gsf && \
-		use netbeans_modules_ide && \
-		use netbeans_modules_j2ee && \
-		use netbeans_modules_java && \
-		use netbeans_modules_websvccommon ) ; then
-		eerror "'visualweb' module requires 'groovy', 'gsf', 'ide', 'j2ee', 'java' and 'websvccommon' modules"
-		die
+	if use netbeans_modules_visualweb ; then
+		need_groovy="1"
+		need_gsf="1"
+		need_ide="1"
+		need_j2ee="1"
+		need_java="1"
+		need_websvccommon="1"
 	fi
 
 	# direct deps: gsf, ide
-	if use netbeans_modules_webcommon && ! ( \
-		use netbeans_modules_gsf && \
-		use netbeans_modules_ide ) ; then
-		eerror "'webcommon' module requires 'gsf' and 'ide' modules"
-		die
+	if use netbeans_modules_webcommon ; then
+		need_gsf="1"
+		need_ide="1"
 	fi
 
 	# direct deps: ide
-	if use netbeans_modules_websvccommon && ! use netbeans_modules_ide ; then
-		eerror "'websvccommon' module requires 'ide' module"
-		die
+	if use netbeans_modules_websvccommon ; then
+		need_ide="1"
 	fi
 
 	# direct deps: ide
-	if use netbeans_modules_xml && ! use netbeans_modules_ide ; then
-		eerror "'xml' module requires 'ide' module"
-		die
+	if use netbeans_modules_xml ; then
+		need_ide="1"
+	fi
+
+	local missing=""
+	[ -n "$}need_apisupport}" ] && ! use netbeans_modules_apisupport && missing="${missing} apisupport"
+	[ -n "$}need_groovy}" ] && ! use netbeans_modules_groovy && missing="${missing} groovy"
+	[ -n "$}need_gsf}" ] && ! use netbeans_modules_gsf && missing="${missing} gsf"
+	[ -n "$}need_harness}" ] && ! use netbeans_modules_harness && missing="${missing} harness"
+	[ -n "$}need_ide}" ] && ! use netbeans_modules_ide && missing="${missing} ide"
+	[ -n "$}need_j2ee}" ] && ! use netbeans_modules_j2ee && missing="${missing} j2ee"
+	[ -n "$}need_java}" ] && ! use netbeans_modules_java && missing="${missing} java"
+	[ -n "$}need_websvccommon}" ] && ! use netbeans_modules_websvccommon && missing="${missing} websvccommon"
+	[ -n "$}need_xml}" ] && ! use netbeans_modules_xml && missing="${missing} xml"
+
+	if [ -n "${missing}" ] ; then
+		eerror "You need to add these modules to NETBEANS_MODULES because they are needed by modules you have selected"
+		eerror "   Missing NETBEANS_MODULES: ${missing}"
+		die "Missing NETBEANS_MODULES"
 	fi
 
 	if ! use netbeans_modules_nb ; then
@@ -546,7 +547,7 @@ src_compile() {
 	fi
 
 	# Fails to compile
-	java-pkg_filter-compiler ecj-3.1 ecj-3.2
+	java-pkg_filter-compiler ecj-3.2 ecj-3.3 ecj-3.4
 
 	# Build the clusters
 	#use netbeans_modules_ruby && addpredict /root/.jruby
