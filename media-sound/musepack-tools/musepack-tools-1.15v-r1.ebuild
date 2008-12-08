@@ -23,7 +23,7 @@ RDEPEND="esd? ( media-sound/esound )
 DEPEND="${RDEPEND}
 	x86? ( dev-lang/nasm )
 	x86-fbsd? ( dev-lang/nasm )
-	amd64? ( dev-lang/nasm )"
+	amd64? ( >=dev-lang/nasm-2.0 )"
 
 src_unpack() {
 	unpack ${A}
@@ -46,6 +46,10 @@ src_unpack() {
 		sed -i 's/#define USE_ASM/#undef USE_ASM/' mpp.h
 	fi
 
+	if [[ "$(tc-arch)" == "amd64" ]] ; then
+		sed -i 's/-f elf$/-f elf64/' Makefile
+	fi
+
 	use 16bit && sed -i 's|//#define MAKE_16BIT|#define MAKE_16BIT|' mpp.h
 
 	# Bug #109699; console redirection to /dev/tty makes no sense
@@ -61,6 +65,8 @@ src_compile() {
 	use static && export BLD_STATIC=1
 
 	append-flags "-I${S}"
+
+	emake CC="$(tc-getCC)" clean || die
 
 	ARCH= emake CC="$(tc-getCC)" mppenc mppdec replaygain || die
 }
