@@ -58,6 +58,10 @@ start() {
 	[ -c /dev/console ] || mknod /dev/console c 5 1
 	[ -c /dev/tty1 ] || mknod /dev/tty1 c 4 1
 
+	# /dev/tty is important as well
+
+	[ -c /dev/tty ] || mknod /dev/tty c 5 0
+
 	# udevd will dup its stdin/stdout/stderr to /dev/null
 	# and we do not want a file which gets buffered in ram
 	[ -c /dev/null ] || mknod /dev/null c 1 3
