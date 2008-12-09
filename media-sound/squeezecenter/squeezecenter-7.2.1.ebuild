@@ -14,7 +14,7 @@ HOMEPAGE="http://www.slimdevices.com/pi_features.html"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
-IUSE="lame wavpack musepack alac ogg bonjour flac avahi"
+IUSE="+lame +wavpack +musepack +alac +ogg +bonjour +flac avahi"
 
 # @@TOOD - add vendor-src tarballs to this.
 SRC_URI="http://www.slimdevices.com/downloads/${SRC_DIR}/${MY_P}.tgz
@@ -42,19 +42,19 @@ DEPEND="
 	virtual/logger
 	virtual/mysql
 	avahi? ( net-dns/avahi )
-	ogg? ( media-sound/sox )
+	ogg? ( media-sound/sox[ogg,flac?] )
 	"
 # Note: dev-perl/GD necessary because of SC bug#6143
 # (http://bugs.slimdevices.com/show_bug.cgi?id=6143).
 RDEPEND="${DEPEND}
 	>=dev-lang/perl-5.8.8
-	>=dev-perl/GD-2.35
+	>=dev-perl/GD-2.35[jpeg,png]
 	>=app-admin/sudo-1.6.8
 	alac? ( media-sound/alac_decoder )
 	lame? ( media-sound/lame )
 	wavpack? ( media-sound/wavpack )
 	bonjour? ( net-misc/mDNSResponder )
-	flac? ( media-libs/flac )
+	flac? ( media-libs/flac[ogg?] )
 	musepack? ( media-sound/musepack-tools )
 	"
 

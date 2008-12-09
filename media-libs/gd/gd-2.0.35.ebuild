@@ -11,7 +11,7 @@ SRC_URI="http://libgd.org/releases/${P}.tar.bz2"
 LICENSE="|| ( as-is BSD )"
 SLOT="2"
 KEYWORDS="alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc ~sparc-fbsd x86 ~x86-fbsd"
-IUSE="fontconfig jpeg png truetype xpm"
+IUSE="fontconfig +jpeg +png truetype xpm"
 
 DEPEND="fontconfig? ( media-libs/fontconfig )
 	jpeg? ( >=media-libs/jpeg-6b )
