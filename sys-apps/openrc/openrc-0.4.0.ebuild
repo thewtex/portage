@@ -245,27 +245,20 @@ pkg_postinst() {
 	# CREATE RUNLEVEL DIRECTORIES	
 	# ===========================
 
-	# For each runlevel directory in $runldir, see if this dir exists in
-	# $ROOT/etc/runlevels. If it doesn't, copy our $runldir directory to
-	# $ROOT/etc/runlevels. This will ensure that new runlevels like 
-	# sysvinit and halt are created as needed if upgrading from an older
-	# OpenRC or from baselayout where these runlevel didn't exist.
+	# To ensure proper system operation, this portion of the script ensures that
+	# all of OpenRC's default initscripts in all runlevels are properly
+	# installed.
 
 	for runl in $( cd "$runldir"; echo * )
 	do
 		if [[ ! -e "${ROOT}/etc/runlevels/${runl}" ]]
 		then
-			einfo "Copying default runlevel ${runl}"
-			cp -RPp "${runldir}/${runl}" "${ROOT}/etc/runlevels"
+			install -d -m0755 "${ROOT}/etc/runlevels/${runl}"
 		fi
+		einfo "Ensuring runlevel $runl has all required scripts..."
+		cp -a "${runldir}/${runl}/*" "${ROOT}/etc/runlevels/${runl}"
 	done
 
-	# TWEAK RUNLEVEL DIRECTORIES (changes between OpenRC versions)
-	# ============================================================
-
-	# termencoding was added in 0.2.1 and needed in boot
-	has_version ">=sys-apps/openrc-0.2.1" || add_init boot termencoding
-	
 	[[ -e ${T}/net && ! -e ${ROOT}/etc/conf.d/net ]] && mv "${T}"/net "${ROOT}"/etc/conf.d/net
 
 	# SEE IF WE CAN UPGRADE /etc/inittab automatically

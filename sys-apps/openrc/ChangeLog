@@ -2,6 +2,15 @@
 # Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
 # $Header: /var/cvsroot/gentoo-x86/sys-apps/openrc/ChangeLog,v 1.43 2008/10/08 16:19:11 cardoe Exp $
 
+  09 Dec 2009; Daniel Robbins <drobbins@funtoo.org> openrc-0.4.0.ebuild:
+  The ebuild now ensures all "default" OpenRC initscripts are in their
+  proper location in /etc/runlevels/<runl>. This may end up adding scripts
+  back into runlevels that users removed, but if they are removing any of
+  these default scripts then I'm assuming they're smart enough to deal with
+  the openrc ebuild adding them back whenever the initscripts are merged.
+  Since this just "robustifies" the script and doesn't necessarily change
+  what is installed, I'm not rev-bumping it.
+
 *openrc-0.3.0.20081113-r2 (24 Nov 2008)
 
   24 Nov 2008; Daniel Robbins <drobbins@funtoo.org>
