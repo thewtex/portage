@@ -14,7 +14,7 @@ HOMEPAGE="http://www.slimdevices.com/pi_features.html"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
-IUSE="+lame +wavpack +musepack +alac +ogg +bonjour +flac avahi"
+IUSE="+lame +wavpack +musepack +alac +ogg bonjour +flac avahi"
 
 # @@TOOD - add vendor-src tarballs to this.
 SRC_URI="http://www.slimdevices.com/downloads/${SRC_DIR}/${MY_P}.tgz
