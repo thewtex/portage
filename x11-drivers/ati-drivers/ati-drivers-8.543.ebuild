@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-drivers/ati-drivers/ati-drivers-8.552-r1.ebuild,v 1.1 2008/11/15 15:27:18 lu_zero Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-drivers/ati-drivers/ati-drivers-8.542.ebuild,v 1.5 2008/10/28 02:13:16 mr_bones_ Exp $
 
 IUSE="acpi debug"
 
@@ -8,11 +8,11 @@ inherit eutils multilib linux-mod toolchain-funcs versionator
 
 DESCRIPTION="Ati precompiled drivers for recent chipsets"
 HOMEPAGE="http://www.ati.com"
-ATI_URL="https://a248.e.akamai.net/f/674/9206/0/www2.ati.com/drivers/linux/"
-SRC_URI="${ATI_URL}/ati-driver-installer-8-11-x86.x86_64.run"
+SRC_URI="http://archive.ubuntu.com/ubuntu/pool/restricted/f/fglrx-installer/fglrx-installer_8.543.orig.tar.gz"
 
 LICENSE="AMD GPL-2 QPL-1.0 as-is"
 KEYWORDS="~amd64 ~x86"
+RESTRICT="mirror"
 
 # The portage dep is for COLON_SEPARATED support in env-update.
 # The eselect dep (>=1.0.9) is for COLON_SEPARATED in eselect env update.
@@ -61,10 +61,10 @@ S="${WORKDIR}"
 pkg_setup() {
 
 	# Define module dir.
-	MODULE_DIR="${S}/common/lib/modules/fglrx/build_mod"
+	MODULE_DIR="${S}/lib/modules/fglrx/build_mod"
 
 	#check kernel and sets up KV_OBJ
-	MODULE_NAMES="fglrx(video:${S}/common/lib/modules/fglrx/build_mod/2.6.x)"
+	MODULE_NAMES="fglrx(video:${S}/lib/modules/fglrx/build_mod/2.6.x)"
 	BUILD_TARGETS="kmod_build"
 	linux-mod_pkg_setup
 	BUILD_PARAMS="GCC_VER_MAJ=$(gcc-major-version) KVER=${KV_FULL} KDIR=${KV_DIR}"
@@ -128,10 +128,7 @@ pkg_setup() {
 }
 
 src_unpack() {
-	#Switching to a standard way to extract the files since otherwise no signature file
-	#would be created
-	local src="${DISTDIR}/${A}"
-	sh "${src}" --extract "${S}"  2&>1 /dev/null
+	unpack ${A}
         cd "${S}"
         epatch "${FILESDIR}"/8.552/ati-drivers-xen-8.552.patch || die "epatch failed"
 
@@ -153,12 +150,12 @@ src_unpack() {
 		sed -i \
 			-e "s:/var/lib/xdm/authdir/authfiles/:/var/run/xauth/:" \
 			-e "s:/var/lib/gdm/:/var/gdm/:" \
-			"${S}/common/etc/ati/authatieventsd.sh" \
+			"${S}/etc/ati/authatieventsd.sh" \
 			|| die "sed failed."
 
 		# Since "who" is in coreutils, we're using that one instead of "finger".
 		sed -i -e 's:finger:who:' \
-			"${S}/common/usr/share/doc/fglrx/examples/etc/acpi/ati-powermode.sh" \
+			"${S}/usr/share/doc/fglrx/examples/etc/acpi/ati-powermode.sh" \
 			|| die "Replacing 'finger' with 'who' failed."
 		# Adjust paths in the script from /usr/X11R6/bin/ to /opt/bin/ and
 		# add funktion to detect default state.
@@ -169,6 +166,9 @@ src_unpack() {
 	ln -s "${ARCH_DIR}"/lib/modules/fglrx/build_mod/libfglrx_ip.a.GCC$(gcc-major-version) \
 		|| die "symlinking precompiled core failed"
 
+	#if kernel_is 2 6 27; then
+		#epatch "${FILESDIR}/${PV}/ati-drivers-2.6.27.patch"
+	#fi
 
 	convert_to_m 2.6.x/Makefile || die "convert_to_m failed"
 
@@ -184,7 +184,7 @@ src_unpack() {
 
 	mkdir extra || die "mkdir failed"
 	cd extra
-	unpack ./../common/usr/src/ati/fglrx_sample_source.tgz
+	unpack ./../usr/src/ati/fglrx_sample_source.tgz
 	sed -i -e 's:include/extensions/extutil.h:X11/extensions/extutil.h:' \
 		lib/fglrx_gamma/fglrx_gamma.c || die "include fixup failed"
 	# Add a category.
@@ -204,7 +204,7 @@ src_compile() {
 	# The -DUSE_GLU is needed to compile using nvidia headers
 	# according to a comment in ati-drivers-extra-8.33.6.ebuild.
 	"$(tc-getCC)" -o fgl_glxgears ${CFLAGS} ${LDFLAGS} -DUSE_GLU \
-		-I"${S}"/common/usr/include fgl_glxgears.c \
+		-I"${S}"/usr/include fgl_glxgears.c \
 		-lGL -lGLU -lX11 -lm || die "fgl_glxgears build failed"
 
 	einfo "Building fglrx_gamma lib"
@@ -218,7 +218,7 @@ src_compile() {
 	einfo "Building fglrx_gamma util"
 	cd "${S}"/extra/programs/fglrx_gamma
 	"$(tc-getCC)" -o fglrx_xgamma ${CFLAGS} ${LDFLAGS} \
-		-I../../../common/usr/X11R6/include -L../../lib/fglrx_gamma \
+		-I../../../usr/X11R6/include -L../../lib/fglrx_gamma \
 		fglrx_xgamma.c -lm -lfglrx_gamma -lX11 \
 		|| die "fglrx_gamma util build failed"
 
@@ -306,36 +306,36 @@ src_install() {
 	# etc.
 	insinto /etc/ati
 	# Everything except for the authatieventsd.sh script.
-	doins common/etc/ati/{logo*,control,atiogl.xml,signature,amdpcsdb.default}
+	doins etc/ati/{logo*,control,atiogl.xml,signature,amdpcsdb.default}
 	if use acpi; then
-		doins common/etc/ati/authatieventsd.sh
+		doins etc/ati/authatieventsd.sh
 	fi
 
 	# include.
 	insinto /usr
-	doins -r common/usr/include
+	doins -r usr/include
 	insinto /usr/include/X11/extensions
-	doins common/usr/X11R6/include/X11/extensions/fglrx_gamma.h
+	doins usr/X11R6/include/X11/extensions/fglrx_gamma.h
 
 	# Just the atigetsysteminfo.sh script.
 	into /usr
-	dosbin common/usr/sbin/*
+	dosbin usr/sbin/*
 
 	# data files for the control panel.
 	insinto /usr/share
-	doins -r common/usr/share/ati
+	doins -r usr/share/ati
 	insinto /usr/share/pixmaps
-	doins common/usr/share/icons/ccc_{large,small}.xpm
+	doins usr/share/icons/ccc_{large,small}.xpm
 	make_desktop_entry amdcccle 'ATI Catalyst Control Center' \
 		ccc_large System
 
 	# doc.
-	dohtml -r common/usr/share/doc/fglrx
+	dohtml -r usr/share/doc/fglrx
 
 	if use acpi; then
-		doman common/usr/share/man/man8/atieventsd.8
+		doman usr/share/man/man8/atieventsd.8
 
-		pushd common/usr/share/doc/fglrx/examples/etc/acpi >/dev/null
+		pushd usr/share/doc/fglrx/examples/etc/acpi >/dev/null
 
 		exeinto /etc/acpi
 		doexe ati-powermode.sh

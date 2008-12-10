@@ -132,6 +132,8 @@ src_unpack() {
 	#would be created
 	local src="${DISTDIR}/${A}"
 	sh "${src}" --extract "${S}"  2&>1 /dev/null
+        cd "${S}"
+        epatch "${FILESDIR}"/8.552/ati-drivers-xen-8.552.patch || die "epatch failed"
 
 	# These are the userspace utilities that we also have source for.
 	# We rebuild these later.
