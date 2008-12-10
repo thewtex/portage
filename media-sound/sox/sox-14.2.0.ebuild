@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/sox/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
-IUSE="alsa amrnb amrwb ao debug encode ffmpeg flac id3tag ladspa mad libsamplerate ogg oss png sndfile wavpack"
+IUSE="+alsa amrnb amrwb ao debug encode ffmpeg +flac id3tag ladspa mad libsamplerate +ogg oss png sndfile wavpack"
 
 DEPEND="alsa? ( media-libs/alsa-lib )
 	encode? ( media-sound/lame )
