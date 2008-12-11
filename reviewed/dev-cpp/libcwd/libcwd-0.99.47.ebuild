@@ -24,6 +24,8 @@ src_unpack() {
 		-e 's/-O3//' \
 		configure || die "sed failed"
 
+	epatch "${FILESDIR}"/gcc-4.3.patch ||die
+
 	# Clean-out possibly old docs
 	rm -f  documentation/doxygen.config
 	rm -rf documentation/html/*
@@ -43,7 +45,7 @@ src_compile() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die "emake install failed"
+	emake -j1 DESTDIR="${D}" install || die "emake install failed"
 
 	dodoc README* NEWS
 
