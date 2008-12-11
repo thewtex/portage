@@ -16,7 +16,7 @@ inherit eutils flag-o-matic gnuconfig autotools mysql_fx
 # and we will run a mysql server during test phase
 S="${WORKDIR}/mysql"
 
-[[ "${MY_EXTRAS_VER}" == "latest" ]] && MY_EXTRAS_VER="20070108"
+[[ "${MY_EXTRAS_VER}" == "latest" ]] && MY_EXTRAS_VER="20081211"
 if [[ "${MY_EXTRAS_VER}" == "live" ]]; then
 	EGIT_PROJECT=mysql-extras
 	EGIT_REPO_URI="git://git.overlays.gentoo.org/proj/mysql-extras.git"
@@ -99,7 +99,8 @@ SRC_URI="${SERVER_URI}"
 
 [[ ${MY_EXTRAS_VER} != live ]] && SRC_URI="${SRC_URI}
 		mirror://gentoo/mysql-extras-${MY_EXTRAS_VER}.tar.bz2
-		http://g3nt8.org/patches/mysql-extras-${MY_EXTRAS_VER}.tar.bz2"
+		http://g3nt8.org/patches/mysql-extras-${MY_EXTRAS_VER}.tar.bz2
+		http://www.funtoo.org/distfiles/mysql-extras-${MY_EXTRAS_VER}.tar.bz2"
 mysql_version_is_at_least "5.1.12" \
 && [[ -n "${PBXT_VERSION}" ]] \
 && SRC_URI="${SRC_URI} pbxt? ( mirror://sourceforge/pbxt/pbxt-${PBXT_VERSION}.tar.gz )"
