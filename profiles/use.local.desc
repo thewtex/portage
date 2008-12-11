@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4059 2008/12/09 14:07:43 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4063 2008/12/11 09:47:45 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -478,7 +478,6 @@ dev-db/postgis:proj - Add the sci-libs/proj library for reprojection features
 dev-db/postgresql:pg-intdatetime - Enable --enable-integer-datetimes configure option, which changes PG to use 64-bit integers for timestamp storage
 dev-db/postgresql-base:pg-intdatetime - Enable --enable-integer-datetimes configure option, which changes PG to use 64-bit integers for timestamp storage
 dev-db/postgresql-server:uuid - Enable server side UUID generation (via dev-libs/ossp-uuid)
-dev-db/rekall:xbase - Support for the Xbase db family, covering dBase, Clipper, FoxPro, Visual dBase/Objects/FoxPro plus some older products
 dev-db/sqlite:nothreadsafe - Turn off thread safe operation of sqlite
 dev-db/sqlite:soundex - Enable the soundex function to compute soundex encodings of strings
 dev-db/sqlite:threadsafe - Enable thread safe operation of sqlite
@@ -622,8 +621,6 @@ dev-lang/swig:pike - Enable Pike scripting support
 dev-lang/vala:vapigen - Enable vala's library binding generator
 dev-libs/DirectFB:fusion - Add Multi Application support (fusion kernel device)
 dev-libs/DirectFB:sysfs - Add support for the sysfs filesystem (requires Linux-2.6+)
-dev-libs/DirectFB-extra:flash - Add support for creating SWF files using Ming (media-libs/libflash)
-dev-libs/DirectFB-extra:fusion - Add Multi Application support (fusion kernel device) 
 dev-libs/STLport:boost - Enable the usage of dev-libs/boost
 dev-libs/ace:ciao - Include Component Intergraced Ace ORB into the build of ace
 dev-libs/ace:tao - Include the ACE ORB (CORBA stuff) (called tao) into the build of ace
@@ -1047,6 +1044,7 @@ kde-misc/ksensors:ibmacpi - Enable monitoring of ACPI sensor data on IBM Thinkpa
 mail-client/balsa:crypt - Adds support for GnuPG encryption
 mail-client/balsa:gtkspell - Use gtkspell for dictionary support
 mail-client/balsa:rubrica - Adds support for app-office/rubrica addressbook
+mail-client/claws-mail:aspell - Use enchant with aspell support.
 mail-client/claws-mail:bogofilter - Build mail-filter/bogofilter plugin
 mail-client/claws-mail:dillo - Enables support for inline HTTP email viewing with a plugin (which depends on the www-client/dillo browser)
 mail-client/claws-mail:smime - Build plugin for S/MIME support
@@ -1313,6 +1311,7 @@ media-sound/amarok:mtp - Enable support for libMTP (Plays4Sure) devices access t
 media-sound/amarok:njb - Enable support for NJB (Creative) devices access through libnjb
 media-sound/amarok:python -  Install the Amarok scripts written in Python, depending on dev-python/PyQt. At the moment the only script installed by this flag is the webcontrol script. 
 media-sound/amarok:real -  Build the Helix engine for Amarok, linked against media-video/realplayer. This is an alternative engine to the xine one, which supports a different set of formats. Only available for x86 architecture as it uses the binary version of RealPlayer. Plase note that by enabling this USE flag, the resulting package will not be redistributable, as it links to the non-GPL compatible RealPlayer. 
+media-sound/amarok:semantic-desktop -  Semantic desktop allows for storage of digital informationand its metadata to allow the user to express his personal mental models, making all information become intuitively accessible 
 media-sound/amarok:visualization - Support visualization plugins through media-libs/libvisual
 media-sound/aqualung:cdda - Enables libcdda cd audio playback support
 media-sound/aqualung:loop-playback - Enable adjustable loop playback support
