@@ -332,6 +332,12 @@ configure_common() {
 	if use embedded ; then
 		myconf="${myconf} --with-embedded-privilege-control"
 		myconf="${myconf} --with-embedded-server"
+
+		# fix for amarok 2
+		if mysql_version_is_at_least "5.1" ; then
+			CFLAGS="${CFLAGS} -DPIC -fPIC"
+			CXXFLAGS="${CXXFLAGS} -DPIC -fPIC"
+		fi
 	else
 		myconf="${myconf} --without-embedded-privilege-control"
 		myconf="${myconf} --without-embedded-server"
