@@ -85,14 +85,13 @@ src_install() {
 
 add_init() {
 	local runl=$1
+	shift
 	if [ ! -e ${ROOT}/etc/runlevels/${runl} ]
 	then
 		install -d -m0755 ${ROOT}/etc/runlevels/${runl}
 	fi
 	for initd in $*
 	do
-		# if the initscript is not going to be installed and  is not currently installed, return
-		[[ -e ${D}/etc/init.d/${initd} || -e ${ROOT}/etc/init.d/${initd} ]] || continue
 		[[ -e ${ROOT}/etc/runlevels/${runl}/${initd} ]] && continue
 		elog "Auto-adding '${initd}' service to your ${runl} runlevel"
 		ln -snf /etc/init.d/${initd} "${ROOT}"/etc/runlevels/${runl}/${initd}
@@ -240,7 +239,7 @@ baselayout_migrate() {
 pkg_postinst() {
 	local runl
 	install -d -m0755 ${ROOT}/etc/runlevels
-	local runldir="$ROOT"/usr/share/${PN}/runlevels
+	local runldir="${ROOT}usr/share/${PN}/runlevels"
 
 	# CREATE RUNLEVEL DIRECTORIES	
 	# ===========================
@@ -251,12 +250,9 @@ pkg_postinst() {
 
 	for runl in $( cd "$runldir"; echo * )
 	do
-		if [[ ! -e "${ROOT}/etc/runlevels/${runl}" ]]
-		then
-			install -d -m0755 "${ROOT}/etc/runlevels/${runl}"
-		fi
+		einfo "Processing $runl..."
 		einfo "Ensuring runlevel $runl has all required scripts..."
-		cp -a "${runldir}/${runl}/*" "${ROOT}/etc/runlevels/${runl}"
+		add_init $runl $( cd "$runldir/$runl"; echo * )
 	done
 
 	[[ -e ${T}/net && ! -e ${ROOT}/etc/conf.d/net ]] && mv "${T}"/net "${ROOT}"/etc/conf.d/net
