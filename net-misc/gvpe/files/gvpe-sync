@@ -1,0 +1,18 @@
+#!/bin/bash
+
+usage ()
+{
+	echo "gvpe-sync"
+	echo "usage: gvpe-sync [ host ip | host name ] [ node name ]"
+	echo ""
+}
+
+if [ $# != 2 ]
+then
+	usage
+	exit
+fi
+
+gvpectrl -c /etc/gvpe -g
+rsync -avzessh /etc/gvpe $1:/etc/. --exclude hostkeys --exclude hostkey
+rsync -avzessh /etc/gvpe/hostkeys/$2 $1:/etc/gvpe/hostkey

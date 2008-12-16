@@ -1,0 +1,54 @@
+#!/sbin/runscript
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header$
+
+opts="${opts} reload checkconfig"
+
+depend() {
+	need net
+}
+
+checktundevice() {
+        if [[ ! -e /dev/net/tun ]]; then
+                if ! modprobe tun ; then
+                        eerror "TUN/TAP support is not available in this kernel"
+                        return 1
+                fi
+        fi
+        if [[ -h /dev/net/tun && -c /dev/misc/net/tun ]]; then
+                ebegin "Detected broken /dev/net/tun symlink, fixing..."
+                rm -f /dev/net/tun
+                ln -s /dev/misc/net/tun /dev/net/tun
+                eend $?
+        fi
+}
+
+checkconfig() {
+	ebegin "Checking GVPE Configuration"
+	gvpectrl -s
+	eend $?
+}
+
+start() {
+	ebegin "Connecting to VPN Network"
+	checktundevice || return 1
+	if [ -z ${HOSTN} ]; then
+		eerror "Node name empty on file /etc/conf.d/gvpe "
+		return 1
+	fi
+	gvpe -lwarn ${HOSTN} >/dev/null 2>&1
+	eend $?
+}
+
+stop() {
+	ebegin "Disconnecting VPN Network"
+	gvpectrl -k
+	eend $?
+}
+
+reload() {
+	ebegin "Reloading VPN Network configuration"
+	gvpectrl -kHUP
+	eend $?
+}
