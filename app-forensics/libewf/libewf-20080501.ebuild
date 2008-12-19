@@ -13,7 +13,8 @@ SLOT="0"
 IUSE=""
 KEYWORDS="~x86 ~amd64"
 
-DEPEND=""
+DEPEND=">=sys-libs/zlib-1.2.3
+        >=dev-libs/openssl-0.9.8"
 
 src_compile() {
 	econf
