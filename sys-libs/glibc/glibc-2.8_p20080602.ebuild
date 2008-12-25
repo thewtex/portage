@@ -309,7 +309,7 @@ pkg_preinst() {
 		rm -r "${ROOT}"/$(alt_libdir)/tls || die
 	fi
 
-	# getting this from catalyst
+	# getting this from metro
 	rm -f "${D}"/etc/locale.gen
 
 	# simple test to make sure our new glibc isnt completely broken.

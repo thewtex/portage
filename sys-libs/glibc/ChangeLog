@@ -1,6 +1,17 @@
 # ChangeLog for sys-libs/glibc
 # Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/glibc/ChangeLog,v 1.596 2008/12/08 03:29:53 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/glibc/ChangeLog,v 1.598 2008/12/24 13:48:22 vapier Exp $
+
+  25 Dec 2008; Daniel Robbins <drobbins@funtoo.org> glibc-2.8_p20080602-r1.ebuild:
+  Unmasking for funtoo, keeping our metro stuff, going to vapier's new patch set.
+
+  24 Dec 2008; Mike Frysinger <vapier@gentoo.org>
+  glibc-2.8_p20080602-r1.ebuild:
+  Add s390 utmp compat patch.
+
+  23 Dec 2008; Friedrich Oslage <bluebird@gentoo.org>
+  files/eblits/common.eblit:
+  Add support to optimize for UltraSPARC T1 and T2 cpus
 
 *glibc-2.9_p20081201 (08 Dec 2008)
 
@@ -171,7 +182,7 @@
   22 Oct 2007; Mike Frysinger <vapier@gentoo.org> +glibc-2.7.ebuild:
   Version bump.
 
-  17 Oct 2007; Raúl Porcel <armin76@gentoo.org> glibc-2.6.1.ebuild:
+  17 Oct 2007; RaÃºl Porcel <armin76@gentoo.org> glibc-2.6.1.ebuild:
   alpha/ia64/sparc stable wrt #195427
 
   16 Oct 2007; Christoph Mende <angelos@gentoo.org> glibc-2.6.1.ebuild:
@@ -238,13 +249,13 @@
   07 Jul 2007; Joshua Kinard <kumba@gentoo.org> glibc-2.5-r4.ebuild:
   Stable on mips, per #183844.
 
-  07 Jul 2007; Raúl Porcel <armin76@gentoo.org> glibc-2.5-r4.ebuild:
+  07 Jul 2007; RaÃºl Porcel <armin76@gentoo.org> glibc-2.5-r4.ebuild:
   alpha/ia64 stable wrt security #183844
 
   07 Jul 2007; Markus Rothe <corsair@gentoo.org> glibc-2.5-r4.ebuild:
   Stable on ppc64; bug #183844
 
-  05 Jul 2007; Piotr Jaroszyński <peper@gentoo.org> glibc-2.5-r4.ebuild:
+  05 Jul 2007; Piotr JaroszyÅski <peper@gentoo.org> glibc-2.5-r4.ebuild:
   (QA) RESTRICT clean up.
 
   03 Jul 2007; Christian Faulhammer <opfer@gentoo.org> glibc-2.5-r4.ebuild:
@@ -255,7 +266,7 @@
   03 Jul 2007; <solar@gentoo.org> +glibc-2.5-r4.ebuild:
   - bug 183844
 
-  02 Jul 2007; Piotr Jaroszyński <peper@gentoo.org> glibc-2.2.5-r10.ebuild,
+  02 Jul 2007; Piotr JaroszyÅski <peper@gentoo.org> glibc-2.2.5-r10.ebuild,
   glibc-2.3.2-r12.ebuild, glibc-2.3.5-r3.ebuild, glibc-2.3.6-r4.ebuild,
   glibc-2.3.6-r5.ebuild, glibc-2.4-r4.ebuild, glibc-2.5-r2.ebuild,
   glibc-2.5-r3.ebuild, glibc-2.6.ebuild:
@@ -264,7 +275,7 @@
   02 Jul 2007; Jose Luis Rivero <yoswink@gentoo.org> glibc-2.5-r3.ebuild:
   Stable on alpha wrt security bug #176712
 
-  01 Jul 2007; Piotr Jaroszyński <peper@gentoo.org> glibc-2.3.5-r3.ebuild,
+  01 Jul 2007; Piotr JaroszyÅski <peper@gentoo.org> glibc-2.3.5-r3.ebuild,
   glibc-2.3.6-r4.ebuild, glibc-2.3.6-r5.ebuild, glibc-2.4-r4.ebuild,
   glibc-2.5-r2.ebuild, glibc-2.5-r3.ebuild, glibc-2.6.ebuild:
   (QA) RESTRICT="multilib-pkg-force" -> EMULTILIB_PKG="true"
@@ -272,13 +283,13 @@
   25 Jun 2007; Joshua Kinard <kumba@gentoo.org> glibc-2.5-r3.ebuild:
   Stable on mips, per #176712.
 
-  05 Jun 2007; Raúl Porcel <armin76@gentoo.org> glibc-2.3.6-r5.ebuild:
+  05 Jun 2007; RaÃºl Porcel <armin76@gentoo.org> glibc-2.3.6-r5.ebuild:
   alpha stable
 
   02 Jun 2007; Matti Bickel <mabi@gentoo.org> glibc-2.5-r3.ebuild:
   ppc stable
 
-  01 Jun 2007; Raúl Porcel <armin76@gentoo.org> glibc-2.5-r3.ebuild:
+  01 Jun 2007; RaÃºl Porcel <armin76@gentoo.org> glibc-2.5-r3.ebuild:
   ia64 stable wrt security #176712
 
   01 Jun 2007; Stephen Bennett <spb@gentoo.org> +glibc-2.3.6-r4.ebuild:
@@ -290,7 +301,7 @@
   31 May 2007; Markus Rothe <corsair@gentoo.org> glibc-2.5-r3.ebuild:
   Stable on ppc64; bug #176712
 
-  30 May 2007; Raúl Porcel <armin76@gentoo.org> glibc-2.5-r3.ebuild:
+  30 May 2007; RaÃºl Porcel <armin76@gentoo.org> glibc-2.5-r3.ebuild:
   x86 stable wrt security #176712
 
   29 May 2007; Gustavo Zacarias <gustavoz@gentoo.org> glibc-2.5-r3.ebuild:
@@ -323,7 +334,7 @@
   11 May 2007; Joshua Kinard <kumba@gentoo.org> glibc-2.5-r2.ebuild:
   Stable on mips, per #176712.
 
-  09 May 2007; Bryan Østergaard <kloeri@gentoo.org> glibc-2.5-r2.ebuild:
+  09 May 2007; Bryan Ãstergaard <kloeri@gentoo.org> glibc-2.5-r2.ebuild:
   Stable on Alpha, bug 176712.
 
   05 May 2007; Daniel Gryniewicz <dang@gentoo.org> glibc-2.5-r2.ebuild:
@@ -338,7 +349,7 @@
   04 May 2007; Gustavo Zacarias <gustavoz@gentoo.org> glibc-2.5-r2.ebuild:
   Stable on sparc wrt security #176712
 
-  04 May 2007; Bryan Østergaard <kloeri@gentoo.org> glibc-2.5-r2.ebuild:
+  04 May 2007; Bryan Ãstergaard <kloeri@gentoo.org> glibc-2.5-r2.ebuild:
   Stable on IA64, bug 176712.
 
   03 May 2007; Markus Rothe <corsair@gentoo.org> glibc-2.5-r2.ebuild:
@@ -379,10 +390,10 @@
   13 Feb 2007; Gustavo Zacarias <gustavoz@gentoo.org> glibc-2.5.ebuild:
   Stable on sparc for 2007.0
 
-  12 Feb 2007; Bryan Østergaard <kloeri@gentoo.org> glibc-2.5.ebuild:
+  12 Feb 2007; Bryan Ãstergaard <kloeri@gentoo.org> glibc-2.5.ebuild:
   Stable on IA64.
 
-  12 Feb 2007; Bryan Østergaard <kloeri@gentoo.org> glibc-2.5.ebuild:
+  12 Feb 2007; Bryan Ãstergaard <kloeri@gentoo.org> glibc-2.5.ebuild:
   Stable on Alpha.
 
   12 Feb 2007; Simon Stelling <blubb@gentoo.org> glibc-2.5.ebuild:
@@ -391,7 +402,7 @@
   11 Feb 2007; Joseph Jezak <josejx@gentoo.org> glibc-2.5.ebuild:
   Marked ppc stable for bug #165085.
 
-  08 Feb 2007; Bryan Østergaard <kloeri@gentoo.org> glibc-2.5.ebuild:
+  08 Feb 2007; Bryan Ãstergaard <kloeri@gentoo.org> glibc-2.5.ebuild:
   Add ~alpha keyword.
 
   06 Feb 2007; Christian Faulhammer <opfer@gentoo.org> glibc-2.5.ebuild:
@@ -472,7 +483,7 @@
   28 Jul 2006; <plasmaroo@gentoo.org> glibc-2.3.5-r3.ebuild:
   Stable on IA64; fix bug #141681.
 
-  22 Jul 2006; Bryan Østergaard <kloeri@gentoo.org> glibc-2.3.6-r4.ebuild:
+  22 Jul 2006; Bryan Ãstergaard <kloeri@gentoo.org> glibc-2.3.6-r4.ebuild:
   Stable on alpha.
 
   09 Jul 2006; Joshua Kinard <kumba@gentoo.org> glibc-2.3.6-r4.ebuild:
@@ -579,7 +590,7 @@
   17 Apr 2006; Mike Frysinger <vapier@gentoo.org> glibc-2.4-r2.ebuild:
   Kill USE=userlocales and replace with Debian locale-gen #22565.
 
-  14 Apr 2006; Bryan Østergaard <kloeri@gentoo.org glibc-2.3.6-r3.ebuild:
+  14 Apr 2006; Bryan Ãstergaard <kloeri@gentoo.org glibc-2.3.6-r3.ebuild:
   ~alpha keyword 2.3.6-r3, needed by vlc-0.8.5.
 
   13 Apr 2006; Stephen P. Becker <geoman@gentoo.org> glibc-2.4-r2.ebuild:
@@ -605,7 +616,7 @@
 
   11 Mar 2006; Mike Frysinger <vapier@gentoo.org>
   +files/2.4/glibc-gentoo-libdir.patch, glibc-2.4.ebuild:
-  Update non-multilib amd64 patch for glibc-2.4 #125793 by Jean Bréfort.
+  Update non-multilib amd64 patch for glibc-2.4 #125793 by Jean BrÃ©fort.
 
 *glibc-2.4 (10 Mar 2006)
 
@@ -697,7 +708,7 @@
   09 Dec 2005; Roy Marples <uberlord@gentoo.org> files/nscd:
   Tweak nscd initscript depend to use dns ldap net slapd.
 
-  30 Nov 2005; Bryan Østergaard <kloeri@gentoo.org> glibc-2.3.5-r3.ebuild:
+  30 Nov 2005; Bryan Ãstergaard <kloeri@gentoo.org> glibc-2.3.5-r3.ebuild:
   Stable on alpha. Fixes some longstanding threading issues.
 
   18 Nov 2005; Mike Frysinger <vapier@gentoo.org> glibc-2.3.6-r1.ebuild:
@@ -810,7 +821,7 @@
   18 Sep 2005; Michael Hanselmann <hansmi@gentoo.org> glibc-2.3.5-r1.ebuild:
   Added to ~ppc.
 
-  16 Sep 2005; Bryan Østergaard <kloeri@gentoo.org>
+  16 Sep 2005; Bryan Ãstergaard <kloeri@gentoo.org>
   glibc-2.3.4.20041102-r1.ebuild, glibc-2.3.4.20041102-r2.ebuild,
   glibc-2.3.4.20050125-r1.ebuild, glibc-2.3.5.ebuild, glibc-2.3.5-r1.ebuild,
   glibc-2.3.5.20050421.ebuild, glibc-2.3.5.20050722.ebuild:
@@ -1016,7 +1027,7 @@
   glibc-2.3.4.20041102-r1.ebuild:
   Add xstat patch for alpha for kloeri.
 
-  27 May 2005; Bryan Østergaard <kloeri@gentoo.org>
+  27 May 2005; Bryan Ãstergaard <kloeri@gentoo.org>
   glibc-2.3.4.20041102-r1.ebuild:
   Stable on alpha.
 
@@ -1608,7 +1619,7 @@
   glibc-2.3.3.20040420-r1.ebuild:
   Stable on ppc.
 
-  11 Aug 2004; Bryan Østergaard <kloeri@gentoo.org> glibc-2.3.2-r11.ebuild:
+  11 Aug 2004; Bryan Ãstergaard <kloeri@gentoo.org> glibc-2.3.2-r11.ebuild:
   Stable on alpha, bug 59526.
 
   09 Aug 2004; Guy Martin <gmsoft@gentoo.org> glibc-2.3.2-r11.ebuild:
@@ -2010,7 +2021,7 @@
   12 May 2004; Alexander Gabert <pappy@gentoo.org> :
   removing hardened-gcc vintage from some ebuilds
 
-  08 May 2004; Bryan Østergaard <kloeri@gentoo.org>
+  08 May 2004; Bryan Ãstergaard <kloeri@gentoo.org>
   glibc-2.3.3_pre20040420.ebuild:
   Removed ~alpha, see bug #50301.
 
@@ -2525,7 +2536,7 @@
   change sys-kernel/linux-headers to new virtual/os-headers
 
   05 March 2003; Martin Schlemmer <azarah@gentoo.org> glibc-2.3.2.ebuild :
-  Update version.  Thanks to Georg Müller <georgmueller@gmx.net> for notifying
+  Update version.  Thanks to Georg MÃ¼ller <georgmueller@gmx.net> for notifying
   me.
 
 *glibc-2.3.2_pre1 (24 Feb 2003)
