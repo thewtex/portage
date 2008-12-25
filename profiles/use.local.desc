@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4075 2008/12/21 02:09:21 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4081 2008/12/24 20:07:53 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -570,6 +570,9 @@ dev-java/log4j:javamail - Build the SMTPAppender
 dev-java/log4j:jms - Build the JMSAppender
 dev-java/log4j:jmx - Build org.apace.log4j.jmx
 dev-java/proguard:j2me - Adds support for J2ME Wireless Toolkit
+dev-java/qtjambi:phonon - Enable bindings to QT Phonon
+dev-java/qtjambi:webkit - Enable bindings to QT Webkit
+dev-java/qtjambi:xmlpatterns - Enable bindings to QT xmlpatterns
 dev-java/rxtx:lfd - Installs and uses LockFileServer daemon (lfd)
 dev-java/sun-jdk:jce - Enable Java Cryptographic Extension Unlimited Strength Policy files
 dev-lang/erlang:hipe - HIgh Performance Erlang extension
@@ -1223,6 +1226,8 @@ media-libs/giflib:rle - Build converters for RLE format (utah raster toolkit)
 media-libs/glide-v3:voodoo1 - Support 3DFX Voodoo1 video cards
 media-libs/glide-v3:voodoo2 - Support 3DFX Voodoo2 video cards
 media-libs/glide-v3:voodoo5 - Support 3DFX Voodoo4 and Voodoo5 video cards
+media-libs/gst-plugins-base:libvisual - Build libvisual plug-in
+media-libs/gst-plugins-base:pango - Build pango plug-in
 media-libs/libass:enca - Enables support for charset discovery and conversion.
 media-libs/libcanberra:alsa - Enables ALSA sound driver.
 media-libs/libcanberra:gstreamer - Enables gstreamer sound driver. Not useful when alsa or pulseaudio is available.
@@ -2196,6 +2201,10 @@ net-proxy/squid:zero-penalty-hit - Add Zero Penalty Hit patch (http://zph.bratch
 net-proxy/sshproxy:client-only - Install only the client wrappers
 net-proxy/tinyproxy:transparent-proxy - Enables support for transparent proxies
 net-proxy/tsocks:tordns -  Apply tordns patch which allows transparent TORification of the DNS queries 
+net-voip/linphone:console - Build console interface
+net-voip/linphone:gsm - Include support for the gsm audio codec
+net-voip/linphone:ilbc - Build ILBC codec plugin
+net-voip/linphone:video - Enable video support (display/capture)
 net-voip/yate:gsm - Build gsm codec plugin
 net-voip/yate:h323 - Build H.323 Channel plugin
 net-voip/yate:ilbc - Build ILBC codec plugin
@@ -2412,6 +2421,7 @@ sys-apps/qtparted:jfs - Include JFS support
 sys-apps/qtparted:ntfs - Include NTFS support
 sys-apps/qtparted:reiserfs - Include ReiserFS support
 sys-apps/qtparted:xfs - Include XFS support
+sys-apps/s390-tools:zfcpdump - build the kernel disk dumping utility
 sys-apps/shadow:audit - Enable support for sys-process/audit
 sys-apps/shadow:nousuid - When nousuid is enabled only su from the shadow package will be installed with the setuid bit (mainly for single user systems)
 sys-apps/tinylogin:make-symlinks - Create all the appropriate symlinks in /bin and /sbin
@@ -2673,6 +2683,7 @@ x11-misc/adesklets:ctrlmenu - force CTRL to be pressed to fire context menu
 x11-misc/fspanel:xft - Build with support for XFT font renderer (x11-libs/libXft)
 x11-misc/notification-daemon-xfce:xfce - Enable integration in XFCE desktop
 x11-misc/openclipart:gzip - Compresses clip art using gzip
+x11-misc/slim:screenshot - Enable screenshot support (using media-gfx/imagemagick)
 x11-misc/vnc2swf:x11vnc - Install script that depends on x11vnc
 x11-misc/x11vnc:system-libvncserver - Build x11vnc against the system libvncserver (experimental)
 x11-misc/xlockmore:xlockrc - Enables xlockrc for people without PAM
@@ -2720,6 +2731,7 @@ x11-themes/skinenigmang-logos:dxr3 - Install logos for lower osd color depth on 
 x11-wm/compiz:annotate - Build the annotate plugin
 x11-wm/compiz:fuse - Enables support for the filesystem in userspace plugin through sys-fs/fuse.
 x11-wm/compiz:kde4 - Compile the kde4 window decorator and add support for kde-base/kdebase-startkde:4.1.
+x11-wm/compiz-fusion:emerald - Install the x11-wm/emerald package.
 x11-wm/compiz-fusion:unsupported - Install the x11-plugins/compiz-fusion-plugins-unsupported package.
 x11-wm/enlightenment:xrandr - Enable support for the X xrandr extension
 x11-wm/fluxbox:disableslit - Disables the fluxbox slit (or dock)
