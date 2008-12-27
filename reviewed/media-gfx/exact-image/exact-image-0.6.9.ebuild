@@ -13,8 +13,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="agg expat jpeg jpeg2k lcms lua openexr php perl python ruby swig tiff truetype X"
 
-DEPEND="media-libs/freetype
-	agg? ( x11-libs/agg[truetype] )
+RDEPEND="agg? ( x11-libs/agg[truetype] )
 	expat? ( dev-libs/expat )
 	jpeg2k? ( media-libs/jasper )
 	jpeg? ( media-libs/jpeg )
@@ -25,7 +24,6 @@ DEPEND="media-libs/freetype
 	perl? ( sys-devel/libperl )
 	python? ( dev-lang/python )
 	ruby? ( dev-lang/ruby )
-	swig? ( dev-lang/swig )
 	tiff? ( media-libs/tiff )
 	truetype? ( >=media-libs/freetype-2 )
 	X? (
@@ -35,7 +33,10 @@ DEPEND="media-libs/freetype
 		x11-libs/libSM
 	)"
 
-src_compile() {
+DEPEND="${RDEPEND}
+	swig? ( dev-lang/swig )"
+
+src_configure() {
 	# evas support is disabled since evas is not on main tree. You can find it
 	# on enlightenment overlay
 	# bardecode is disabled since it is protected by custom licence
@@ -58,7 +59,6 @@ src_compile() {
 		$(use_with X x11)"
 	#econf fails
 	./configure ${myconf} || die "configure failed"
-	emake || die "emake failed"
 }
 
 src_install() {

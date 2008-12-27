@@ -22,8 +22,8 @@ DEPEND=">=virtual/jdk-1.4
 src_unpack() {
 	unpack ${A}
 	cd "${S}"
-	epatch "${FILESDIR}"/libfec8path.patch
 	cp "${FILESDIR}"/build.xml src/
+	epatch "${FILESDIR}"/libfec8path.patch
 	sed -i -e 's/build.compiler=jikes/#build.compiler=jikes/g' build.properties
 	cd lib
 	rm -rf *

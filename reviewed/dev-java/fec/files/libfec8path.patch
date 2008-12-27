@@ -19,7 +19,7 @@
 -        } else {
 -            System.out.println("Unable to find native library for fec8");
 -        }
-+	File path = new File("lib/libfec8.so");
++	File path = new File("/usr/lib/libfec8.so");
 +	System.out.println("Loading FEC lib ["+path.getAbsolutePath()+']');
 +	System.load(path.getAbsolutePath());
      }
