@@ -2,6 +2,17 @@
 # Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
 # $Header: /var/cvsroot/gentoo-x86/sys-apps/openrc/ChangeLog,v 1.43 2008/10/08 16:19:11 cardoe Exp $
 
+*openrc-0.4.1 (29 Dec 2008)
+
+  29 Dec 2008; Daniel Robbins <drobbins@funtoo.org> +openrc-0.4.1.ebuild:
+  new OpenRC release. Updated ebuild to preserve existing
+  /etc/init.d/net.* initscripts rather than moving them out of the way
+  so that they get replaced by a symlink. On my box, I use physical files
+  for things like net.br0, the setting up of my bridge. And I think it's
+  best to allow users to replace the default net scripts with their own
+  custom scripts. Also now create an /etc/conf.d/net.example symlink so
+  users have an easy reference when configuring their machine.
+
   15 Dec 2009; Daniel Robbins <drobbins@funtoo.org> openrc-0.4.0.ebuild:
   Fixes for ensuring runlevels get populated correctly.
 
