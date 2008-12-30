@@ -1,27 +1,37 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/mediatomb/mediatomb-0.11.0.ebuild,v 1.6 2008/10/25 22:02:27 pvdabeel Exp $
+# $Header: $
 
-inherit eutils autotools
+EAPI=1
+
+WANT_AUTOCONF=latest
+WANT_AUTOMAKE=latest
+
+inherit eutils autotools subversion
+
+ESVN_REPO_URI="http://svn.mediatomb.cc/svnroot/mediatomb/trunk/mediatomb"
 
 DESCRIPTION="MediaTomb is an open source UPnP MediaServer"
 HOMEPAGE="http://www.mediatomb.cc/"
-SRC_URI="mirror://sourceforge/mediatomb/${P}.tar.gz"
+
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86"
-IUSE="curl debug exif expat ffmpeg javascript libextractor mysql taglib"
+KEYWORDS=""
+IUSE="debug dvd +exif +ffmpeg ffmpegthumbnailer inotify +javascript +mp4 mysql +taglib"
+
 RDEPEND="
 	mysql? ( virtual/mysql )
 	!mysql? ( >=dev-db/sqlite-3 )
 	javascript? ( dev-lang/spidermonkey )
-	expat? ( dev-libs/expat )
+	dev-libs/expat
 	taglib? ( media-libs/taglib )
 	!taglib? ( media-libs/id3lib )
+	dvd? ( >=media-libs/libdvdnav-4 )
 	exif? ( media-libs/libexif )
-	libextractor? ( media-libs/libextractor )
+	mp4? ( media-libs/libmp4v2 )
 	ffmpeg? ( media-video/ffmpeg )
-	curl? ( net-misc/curl )
+	ffmpegthumbnailer? ( media-video/ffmpegthumbnailer )
+	net-misc/curl
 	sys-apps/file
 	sys-libs/zlib
 	virtual/libiconv"
@@ -29,50 +39,50 @@ DEPEND="${RDEPEND}"
 
 MEDIATOMB_HOMEDIR="/var/lib/mediatomb"
 MEDIATOMB_CONFDIR="/etc/mediatomb"
-MEDIATOMB_PIDDIR="/var/run/mediatomb"
 
 pkg_setup() {
-	# disable libextractor support if ffmpeg and libextractor use are enabled
-	if use ffmpeg && use libextractor; then
-		ewarn "ffmpeg and libextractor USE flags are enabled. libextractor support will be disabled."
+	if use inotify && [ -e /proc/config.gz ] && [ "`cat /proc/config.gz | gzip -d | grep CONFIG_INOTIFY=`" != "CONFIG_INOTIFY_USER=yes" ]
+		then
+			ewarn "Please enable Inotify support in your kernel, found at:"
+			ewarn
+			ewarn "  File systems --->"
+			ewarn "    [*] Inotify file change notification support"
+			ewarn "    [*]   Inotify support for userspace"
 	fi
-
-	# create the mediatomb group and user
 	enewgroup mediatomb
 	enewuser mediatomb -1 -1 /dev/null mediatomb
 }
 
 src_unpack() {
-	unpack ${A}
-	cd "${S}"
-
-	epatch "${FILESDIR}/${P}-newffmpeg.patch"
-	epatch "${FILESDIR}/${P}+curl-7.18.patch"
+	subversion_src_unpack
 	eautoreconf
 }
 
 src_compile() {
-	local myconf
-
-	# disable libextractor support if ffmpeg and libextractor use are enabled
-	if use ffmpeg && use libextractor; then
-		myconf="${myconf} --enable-ffmpeg --disable-libextractor"
+	if use ffmpegthumbnailer; then
+		myconf="${myconf} --enable-ffmpegthumbnailer --enable-ffmpeg"
 	else
-		myconf="${myconf} $(use_enable ffmpeg) $(use_enable libextractor)"
+		myconf="${myconf} $(use_enable ffmpegthumbnailer) $(use_enable ffmpeg)"
 	fi
 
 	econf \
 		--prefix=/usr \
-		$(use_enable curl) \
 		$(use_enable debug tombdebug) \
+		$(use_enable dvd libdvdnav) \
 		$(use_enable exif libexif) \
-		$(use_enable expat) \
+		$(use_enable inotify) \
 		$(use_enable javascript libjs) \
+		$(use_enable mp4 libmp4v2) \
 		$(use_enable mysql) $(use_enable !mysql sqlite3) \
 		$(use_enable taglib) $(use_enable !taglib id3lib) \
+		--enable-atrailers \
+		--enable-curl \
 		--enable-external-transcoding \
 		--enable-libmagic \
 		--enable-protocolinfo-extension \
+		--enable-weborama \
+		--enable-youtube \
+		--enable-zlib \
 		${myconf} \
 		|| die "Configure failed!"
 
@@ -97,9 +107,6 @@ src_install() {
 
 	keepdir "${MEDIATOMB_HOMEDIR}"
 	fowners mediatomb:mediatomb "${MEDIATOMB_HOMEDIR}"
-
-	keepdir "${MEDIATOMB_PIDDIR}"
-	fowners mediatomb:mediatomb "${MEDIATOMB_PIDDIR}"
 }
 
 pkg_postinst() {

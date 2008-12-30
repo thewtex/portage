@@ -39,7 +39,7 @@ SLOT="0"
 
 KEYWORDS="alpha amd64 ppc ~ppc64 sparc x86 ~x86-fbsd"
 IUSE="+a52 +aac aalib alsa altivec arts atmo avahi bidi cdda cddb cdio dbus
-dc1394 debug dirac directfb +dts dvb dvd esd fbcon fluidsynth +ffmpeg -flac
+dc1394 debug dirac directfb +dts dvb dvd esd fbcon fluidsynth +ffmpeg 
 fontconfig ggi gnome gnutls hal httpd id3tag jack kate libass libcaca -libgcrypt
 libnotify libsysfs libv4l2 lirc +live lua +matroska mmx modplug +mp3 +mpeg
 musepack ncurses nsplugin +ogg opengl optimisememory oss png	pulseaudio pvr
@@ -72,8 +72,6 @@ RDEPEND="
 				media-libs/libdvdplay )
 		esd? ( media-sound/esound )
 		ffmpeg? ( >=media-video/ffmpeg-0.4.9_p20070616 )
-		flac? ( media-libs/libogg
-			>=media-libs/flac-1.1.2 )
 		fluidsynth? ( media-sound/fluidsynth )
 		fontconfig? ( media-libs/fontconfig )
 		ggi? ( media-libs/libggi )
@@ -263,7 +261,7 @@ src_compile () {
 		$(use_enable esd) \
 		$(use_enable fbcon fb) \
 		$(use_enable ffmpeg avcodec) $(use_enable ffmpeg avformat) $(vlc_ffmpeg_scaling_api) $(use_enable ffmpeg postproc) \
-		$(use_enable flac) \
+		--disable-flac \
 		$(use_enable fluidsynth) \
 		$(use_enable fontconfig) \
 		$(use_enable ggi) \
