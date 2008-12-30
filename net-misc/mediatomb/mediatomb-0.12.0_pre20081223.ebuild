@@ -8,7 +8,7 @@ inherit eutils autotools
 
 DESCRIPTION="MediaTomb is an open source UPnP MediaServer"
 HOMEPAGE="http://www.mediatomb.cc/"
-SRC_URI="mirror://sourceforge/mediatomb/${PF}.tar.bz2"
+SRC_URI="http://www.funtoo.org/distfiles/${PF}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
