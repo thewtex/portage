@@ -7,7 +7,7 @@
       </accounts>
     </ui>
     <name>MediaTomb</name>
-    <udn></udn>
+    <udn/>
     <home>/var/lib/mediatomb</home>
     <webroot>/usr/share/mediatomb/web</webroot>
     <storage>
@@ -29,14 +29,14 @@
 	more user friendly and "emerge and go," starting with the PS3. Thanks! -Daniel Robbins
     -->
     <protocolInfo extend="yes"/>
-<extended-runtime-options>
-<ffmpegthumbnailer enabled="yes">
-<thumbnail-size>128</thumbnail-size>
-<seek-percentage>5</seek-percentage>
-<filmstrip-overlay>yes</filmstrip-overlay>
-<workaround-bugs>no</workaround-bugs>
-</ffmpegthumbnailer>
-</extended-runtime-options>
+    <extended-runtime-options>
+      <ffmpegthumbnailer enabled="yes">
+        <thumbnail-size>128</thumbnail-size>
+        <seek-percentage>5</seek-percentage>
+        <filmstrip-overlay>yes</filmstrip-overlay>
+        <workaround-bugs>no</workaround-bugs>
+      </ffmpegthumbnailer>
+    </extended-runtime-options>
   </server>
   <import hidden-files="no">
     <autoscan use-inotify="auto">
@@ -56,7 +56,7 @@
     <mappings>
       <!-- Don't import anything not listed here since it's pointless -->
       <extension-mimetype ignore-unknown="no">
-      <map from="mov" to="video/x-quicktime"/>
+        <map from="mov" to="video/x-quicktime"/>
         <map from="mp3" to="audio/mpeg"/>
         <map from="ogg" to="application/ogg"/>
         <map from="asf" to="video/x-ms-asf"/>
@@ -78,7 +78,7 @@
         <!-- Added for PS3 DiVX support -->
         <map from="divx" to="video/x-divx"/>
         <map from="avi" to="video/x-divx"/>
-	<map from="flac" to="audio/x-flac"/>
+        <map from="flac" to="audio/x-flac"/>
       </extension-mimetype>
       <mimetype-upnpclass>
         <map from="audio/*" to="object.item.audioItem.musicTrack"/>
@@ -86,7 +86,7 @@
         <map from="image/*" to="object.item.imageItem"/>
       </mimetype-upnpclass>
       <mimetype-contenttype>
-	<treat mimetype="audio/mpeg" as="mp3"/>
+        <treat mimetype="audio/mpeg" as="mp3"/>
         <treat mimetype="application/ogg" as="ogg"/>
         <treat mimetype="audio/x-flac" as="flac"/>
         <treat mimetype="image/jpeg" as="jpg"/>
@@ -95,16 +95,16 @@
         <treat mimetype="audio/x-wav" as="pcm"/>
         <treat mimetype="audio/L16" as="pcm"/>
         <treat mimetype="video/x-msvideo" as="avi"/>
-	<treat mimetype="video/divx" as="avi"/>
+        <treat mimetype="video/divx" as="avi"/>
         <treat mimetype="video/mp4" as="mp4"/>
         <treat mimetype="audio/mp4" as="mp4"/>
         <treat mimetype="application/x-iso9660" as="dvd"/>
         <treat mimetype="application/x-iso9660-image" as="dvd"/>
-	<treat mimetype="video/quicktime" as="mov"/>
-	<treat mimetype="video/x-quicktime" as="mov"/>
-        </mimetype-contenttype>
+        <treat mimetype="video/quicktime" as="mov"/>
+        <treat mimetype="video/x-quicktime" as="mov"/>
+      </mimetype-contenttype>
     </mappings>
-     <online-content>
+    <online-content>
       <!-- Make sure to setup a transcoding profile for flv -->
       <YouTube enabled="yes" refresh="28800" update-at-start="yes" purge-after="604800" racy-content="exclude">
         <favorites user="drobbinsdaniel"/>
@@ -125,7 +125,7 @@
 	<transcode mimetype="video/x-divx" using="vlcmpeg"/>
 	<transcode mimetype="application/ogg" using="vlcmpeg"/>
 	-->
-	<transcode mimetype="audio/x-flac" using="oggflac2raw"/>
+      <transcode mimetype="audio/x-flac" using="oggflac2raw"/>
       <!-- Added for PS3 thumbnail support -->
       <transcode mimetype="video/x-divx" using="video-thumbnail"/>
       <transcode mimetype="video/x-avi" using="video-thumbnail"/>
@@ -133,16 +133,16 @@
     <transcode mimetype="video/quicktime" using="vlcmpeg"/>
      <transcode mimetype="video/x-quicktime" using="vlcmpeg"/>
      -->
-     <!--
+      <!--
      <transcode mimetype="application/ogg"   using="audio-generic"/>
      <transcode mimetype="audio/x-flac"      using="audio-generic"/>
      -->
-     <transcode mimetype="video/x-ms-asf"    using="video-common"/>
-     <transcode mimetype="video/x-flv"       using="video-common"/>
-     <transcode mimetype="video/x-matroska"  using="video-common"/>
-     <transcode mimetype="video/x-quicktime" using="video-common"/>
-     <transcode mimetype="video/quicktime"   using="video-common"/>
-     </mimetype-profile-mappings>
+      <transcode mimetype="video/x-ms-asf" using="video-common"/>
+      <transcode mimetype="video/x-flv" using="video-common"/>
+      <transcode mimetype="video/x-matroska" using="video-common"/>
+      <transcode mimetype="video/x-quicktime" using="video-common"/>
+      <transcode mimetype="video/quicktime" using="video-common"/>
+    </mimetype-profile-mappings>
     <profiles>
       <profile name="oggflac2raw" enabled="yes" type="external">
         <mimetype>audio/L16</mimetype>
@@ -152,24 +152,17 @@
         <agent command="ogg123" arguments="-d raw -o byteorder:big -f %out %in"/>
         <buffer size="1048576" chunk-size="131072" fill-size="262144"/>
       </profile>
-      <!-- Added for PS3 thumbnail support -->
-      <profile name="video-thumbnail" enabled="yes" type="external">
-        <mimetype>image/jpeg</mimetype>
-        <accept-url>yes</accept-url>
-        <thumbnail>yes</thumbnail>
-        <resolution>128x128</resolution>
-        <agent command="ffmpegthumbnailer" arguments="-i %in -o %out -s 128"/>
-        <buffer size="524288" chunk-size="512" fill-size="1024"/>
-      </profile>
       <profile name="video-common" enabled="yes" type="external">
-              <mimetype>video/mpeg</mimetype>
-	              <accept-url>yes</accept-url>
-		              <first-resource>yes</first-resource>
-			              <hide-original-resource>yes</hide-original-resource>
-				              <accept-ogg-theora>yes</accept-ogg-theora>
-					              <agent command="mediatomb-transcode-video" arguments="%in %out"/>
-						              <buffer size="10485760" chunk-size="262144" fill-size="524288"/>
-							            </profile>
+        <mimetype>video/mpeg</mimetype>
+        <accept-url>yes</accept-url>
+        <first-resource>yes</first-resource>
+        <hide-original-resource>yes</hide-original-resource>
+        <accept-ogg-theora>yes</accept-ogg-theora>
+        <sample-frequency>48000</sample-frequency>
+        <audio-channels>2</audio-channels>
+        <agent command="mediatomb-transcode-video" arguments="%in %out"/>
+        <buffer size="10485760" chunk-size="262144" fill-size="524288"/>
+      </profile>
     </profiles>
   </transcoding>
 </config>
