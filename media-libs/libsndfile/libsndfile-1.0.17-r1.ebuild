@@ -12,7 +12,7 @@ SRC_URI="http://www.mega-nerd.com/libsndfile/${P}.tar.gz
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 sh sparc x86 ~x86-fbsd"
-IUSE="sqlite flac alsa"
+IUSE="sqlite +flac alsa"
 
 RESTRICT="test"
 

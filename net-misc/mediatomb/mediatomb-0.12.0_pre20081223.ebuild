@@ -30,7 +30,7 @@ DEPEND="
 	sys-apps/file
 	sys-libs/zlib
 	virtual/libiconv"
-RDEPEND="${DEPEND} media-video/vlc media-sound/vorbis-tools"
+RDEPEND="${DEPEND} media-video/vlc media-sound/vorbis-tools media-gfx/dcraw"
 
 MEDIATOMB_HOMEDIR="/var/lib/mediatomb"
 MEDIATOMB_CONFDIR="/etc/mediatomb"
@@ -102,6 +102,10 @@ src_install() {
 
 	keepdir "${MEDIATOMB_HOMEDIR}"
 	fowners mediatomb:mediatomb "${MEDIATOMB_HOMEDIR}"
+
+	dodir /usr/lib/mediatomb/bin
+	exeinto /usr/lib/mediatomb/bin
+	doexe ${FILESDIR}/${PV}/dcraw-transcode
 }
 
 pkg_postinst() {
