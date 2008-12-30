@@ -10,7 +10,7 @@ SRC_URI="http://dev.gentoo.org/~wschlich/src/media-gfx/dcraw/${P}.tar.bz2"
 LICENSE="freedist GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
-IUSE="gimp jpeg lcms"
+IUSE="gimp +jpeg +lcms"
 
 DEPEND="virtual/libc
 	jpeg? ( >=media-libs/jpeg-6b )

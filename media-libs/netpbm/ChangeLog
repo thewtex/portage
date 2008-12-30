@@ -2,6 +2,9 @@
 # Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
 # $Header: /var/cvsroot/gentoo-x86/media-libs/netpbm/ChangeLog,v 1.201 2008/11/01 07:19:22 vapier Exp $
 
+  30 Dec 2008; Daniel Robbins <drobbins@funtoo.org: netpbm-10.44.00.ebuild:
+  added reasonable USE defaults.
+
   01 Nov 2008; Mike Frysinger <vapier@gentoo.org> +netpbm-10.44.00.ebuild:
   Version bump.
 
@@ -15,7 +18,7 @@
   01 Nov 2008; Mike Frysinger <vapier@gentoo.org> +netpbm-10.26.58.ebuild:
   Version bump.
 
-  01 Oct 2008; Raúl Porcel <armin76@gentoo.org> netpbm-10.43.00.ebuild:
+  01 Oct 2008; RaÃºl Porcel <armin76@gentoo.org> netpbm-10.43.00.ebuild:
   alpha/ia64 stable wrt #238699
 
   29 Sep 2008; Jeroen Roovers <jer@gentoo.org> netpbm-10.43.00.ebuild:
@@ -119,7 +122,7 @@
   02 Nov 2007; Steve Dibb <beandog@gentoo.org> netpbm-10.40.0.ebuild:
   amd64 stable, bug 195698
 
-  20 Oct 2007; Raúl Porcel <armin76@gentoo.org> netpbm-10.40.0.ebuild:
+  20 Oct 2007; RaÃºl Porcel <armin76@gentoo.org> netpbm-10.40.0.ebuild:
   alpha/ia64/sparc stable wrt #195698
 
   15 Oct 2007; Jeroen Roovers <jer@gentoo.org> netpbm-10.40.0.ebuild:
@@ -131,7 +134,7 @@
   13 Oct 2007; nixnut <nixnut@gentoo.org> netpbm-10.40.0.ebuild:
   Stable on ppc wrt bug 195698
 
-  13 Oct 2007; Dawid Węgliński <cla@gentoo.org> netpbm-10.40.0.ebuild:
+  13 Oct 2007; Dawid WÄgliÅski <cla@gentoo.org> netpbm-10.40.0.ebuild:
   Stable on x86 (bug #195698)
 
 *netpbm-10.26.46 (13 Oct 2007)
@@ -165,7 +168,7 @@
   26 Jun 2007; Mike Frysinger <vapier@gentoo.org> +netpbm-10.26.43.ebuild:
   Version bump.
 
-  18 May 2007; Raúl Porcel <armin76@gentoo.org> netpbm-10.37.0.ebuild:
+  18 May 2007; RaÃºl Porcel <armin76@gentoo.org> netpbm-10.37.0.ebuild:
   alpha stable wrt #165236
 
 *netpbm-10.26.42 (29 Mar 2007)
@@ -195,7 +198,7 @@
   04 Feb 2007; nixnut <nixnut@gentoo.org> netpbm-10.37.0.ebuild:
   Stable on ppc wrt bug 165236
 
-  04 Feb 2007; Raúl Porcel <armin76@gentoo.org> netpbm-10.37.0.ebuild:
+  04 Feb 2007; RaÃºl Porcel <armin76@gentoo.org> netpbm-10.37.0.ebuild:
   x86 stable wrt bug 165236
 
   04 Feb 2007; Markus Rothe <corsair@gentoo.org> netpbm-10.37.0.ebuild:
@@ -206,7 +209,7 @@
   04 Feb 2007; Mike Frysinger <vapier@gentoo.org> +netpbm-10.26.39.ebuild:
   Version bump.
 
-  21 Jan 2007; Diego Pettenò <flameeyes@gentoo.org> netpbm-10.36.0.ebuild,
+  21 Jan 2007; Diego PettenÃ² <flameeyes@gentoo.org> netpbm-10.36.0.ebuild,
   netpbm-10.37.0.ebuild:
   Force -j1 on the ebuild (both stable and ~arch for releng sake), as bug
   #149843 is open for a while now.
@@ -227,7 +230,7 @@
   04 Jan 2007; Gustavo Zacarias <gustavoz@gentoo.org> netpbm-10.36.0.ebuild:
   Stable on sparc wrt #159801
 
-  03 Jan 2007; Bryan Østergaard <kloeri@gentoo.org> netpbm-10.36.0.ebuild:
+  03 Jan 2007; Bryan Ãstergaard <kloeri@gentoo.org> netpbm-10.36.0.ebuild:
   Stable on Alpha, bug 159801.
 
   03 Jan 2007; Andrej Kacian <ticho@gentoo.org> netpbm-10.36.0.ebuild:
@@ -271,7 +274,7 @@
   09 Nov 2006; Mike Frysinger <vapier@gentoo.org> netpbm-10.36.0.ebuild:
   Cleanup previous commit and make jbig/urt optional via USE=jbig/rle #154535.
 
-  07 Nov 2006; Petteri Räty <betelgeuse@gentoo.org> ChangeLog:
+  07 Nov 2006; Petteri RÃ¤ty <betelgeuse@gentoo.org> ChangeLog:
   Added the jpeg2k use flag to make the media-libs/jasper dependency optional.
   Fixes bug #154353.
 
@@ -359,14 +362,14 @@
   files/digest-netpbm-10.30-r1, files/digest-netpbm-10.31-r1, Manifest:
   Fixing SHA256 digest, pass four
 
-  17 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  17 Apr 2006; Diego PettenÃ² <flameeyes@gentoo.org>
   files/netpbm-10.33-memmem.patch, netpbm-10.33.ebuild:
   Change the patch to behave like upstream decided: rename memmem to another
   name so that it doesn't collide with extensions from various libc, allowing
   to build on NetBSD 3 that defines a memmem itself. Also respect LDFLAGS
   while linking the library.
 
-  16 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  16 Apr 2006; Diego PettenÃ² <flameeyes@gentoo.org>
   +files/netpbm-10.33-memmem.patch, netpbm-10.33.ebuild:
   Add patch to build on FreeBSD 6, and keyword ~x86-fbsd.
 
@@ -411,7 +414,7 @@
 
   02 Feb 2006; Mike Frysinger <vapier@gentoo.org>
   +files/netpbm-10.31-need-libm.patch, netpbm-10.31-r1.ebuild:
-  Make sure we link against libm #121253 by Diego Pettenò.
+  Make sure we link against libm #121253 by Diego PettenÃ².
 
   19 Jan 2006; Karol Wojtaszek <sekretarz@gentoo.org>
   +files/netpbm-10.31-parallel.patch, netpbm-10.31-r1.ebuild:
@@ -436,7 +439,7 @@
   28 Dec 2005; Mike Frysinger <vapier@gentoo.org> +netpbm-10.26.22.ebuild:
   Version bump.
 
-  26 Dec 2005; Bryan Østergaard <kloeri@gentoo.org netpbm-10.30-r1.ebuild:
+  26 Dec 2005; Bryan Ãstergaard <kloeri@gentoo.org netpbm-10.30-r1.ebuild:
   Stable on alpha.
 
   24 Dec 2005; Michael Hanselmann <hansmi@gentoo.org>
@@ -519,7 +522,7 @@
   19 Oct 2005; Luis Medinas <metalgod@gentoo.org> netpbm-10.29.ebuild:
   Marked Stable on amd64. Bug #109705.
 
-  18 Oct 2005; Bryan Østergaard <kloeri@gentoo.org> netpbm-10.29.ebuild,
+  18 Oct 2005; Bryan Ãstergaard <kloeri@gentoo.org> netpbm-10.29.ebuild,
   netpbm-10.29-r1.ebuild, netpbm-10.30.ebuild:
   Added back ~alpha keyword, stable 10.29 wrt bug 109705.
 
@@ -539,7 +542,7 @@
   netpbm-10.29-r1.ebuild:
   10.29-r1: Stable on hppa, added to ~ppc. 10.29: Stable on ppc.
 
-  10 Oct 2005; Diego Pettenò <flameeyes@gentoo.org>
+  10 Oct 2005; Diego PettenÃ² <flameeyes@gentoo.org>
   +files/netpbm-10.29-infinity.patch, netpbm-10.29-r1.ebuild:
   Added patch to rename the INFINITY variable to infinity to avoid problems
   where the first is a system define.
@@ -571,7 +574,7 @@
   05 Aug 2005; Aaron Walker <ka0ttic@gentoo.org> netpbm-10.28.ebuild:
   Stable on mips for bug 100398.
 
-  04 Aug 2005; Bryan Østergaard <kloeri@gentoo.org> netpbm-10.28.ebuild:
+  04 Aug 2005; Bryan Ãstergaard <kloeri@gentoo.org> netpbm-10.28.ebuild:
   Stable on ia64, bug 100398.
 
   02 Aug 2005; Rene Nussbaumer <killerfox@gentoo.org> netpbm-10.28.ebuild:
@@ -618,7 +621,7 @@
   netpbm-10.18.7.ebuild, netpbm-10.20.ebuild:
   Moved from gcc.eclass to toolchain-funcs.eclass, bug #92745.
 
-  01 Nov 2004; Bryan Østergaard <kloeri@gentoo.org> netpbm-10.20.ebuild:
+  01 Nov 2004; Bryan Ãstergaard <kloeri@gentoo.org> netpbm-10.20.ebuild:
   Stable on alpha.
 
   06 Oct 2004; Jeremy Huddleston <eradicator@gentoo.org>
