@@ -1,0 +1,22 @@
+!dev-lang/ghc-bin >=sys-devel/gcc-2.95.3 >=sys-devel/binutils-2.17 >=dev-lang/perl-5.6.1 >=dev-libs/gmp-4.1 =sys-libs/readline-5* ghcbootstrap? ( doc? ( ~app-text/docbook-xml-dtd-4.2 app-text/docbook-xsl-stylesheets >=dev-libs/libxslt-1.1.2 >=dev-haskell/haddock-0.8 ) )
+!dev-lang/ghc-bin >=sys-devel/gcc-2.95.3 >=sys-devel/binutils-2.17 >=dev-lang/perl-5.6.1 >=dev-libs/gmp-4.1 =sys-libs/readline-5* bash-completion? ( || ( app-admin/eselect app-shells/bash-completion-config ) )
+0
+!binary? ( http://haskell.org/ghc/dist/6.6.1/ghc-6.6.1-src.tar.bz2 ) alpha? ( mirror://gentoo/ghc-bin-6.6.1-alpha.tbz2 ) amd64? ( mirror://gentoo/ghc-bin-6.6.1-amd64.tbz2 ) hppa? ( mirror://gentoo/ghc-bin-6.6.1-hppa.tbz2 ) ia64? ( mirror://gentoo/ghc-bin-6.6.1-ia64.tbz2 ) ppc? ( mirror://gentoo/ghc-bin-6.6.1-ppc.tbz2 ) sparc? ( mirror://gentoo/ghc-bin-6.6.1-sparc.tbz2 ) x86? ( mirror://gentoo/ghc-bin-6.6.1-x86.tbz2 )
+
+http://www.haskell.org/ghc/
+BSD
+The Glasgow Haskell Compiler
+~alpha amd64 hppa ~ia64 ppc sparc x86
+toolchain-funcs portability flag-o-matic versionator multilib bash-completion ghc-package base eutils
+binary doc ghcbootstrap bash-completion
+
+>=dev-haskell/cabal-1.1.6.2 >=dev-haskell/filepath-1.0 >=dev-haskell/regex-base-0.72 >=dev-haskell/regex-posix-0.71 >=dev-haskell/regex-compat-0.71
+
+0
+
+compile install postinst prerm setup unpack
+
+
+
+
+

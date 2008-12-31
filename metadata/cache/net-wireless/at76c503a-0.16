@@ -1,0 +1,22 @@
+kernel_linux? ( virtual/linux-sources ) kernel_linux? ( virtual/modutils ) sys-apps/sed
+net-wireless/atmel-firmware || ( >=sys-fs/udev-096 >=sys-apps/hotplug-20040923 ) >=net-wireless/wireless-tools-26-r1 kernel_linux? ( virtual/modutils )
+0
+http://download.berlios.de/at76c503a/at76_usb-0.16.tar.gz
+
+http://developer.berlios.de/projects/at76c503a/
+GPL-2
+at76c503 is a Linux driver for the wlan USB adapter based on the Atmel at76c503 chip. It currently supports ad-hoc mode, infrastructure mode, and WEP. It supports adapters from Atmel, the Belkin F5D6050, Netgear MA101, and others.
+~amd64 ~ppc ~x86
+toolchain-funcs portability versionator multilib linux-info linux-mod eutils
+kernel_linux
+
+
+
+0
+
+compile install postinst postrm preinst setup
+
+
+
+
+

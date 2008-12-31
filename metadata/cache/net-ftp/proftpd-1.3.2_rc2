@@ -1,0 +1,22 @@
+acl? ( sys-apps/acl sys-apps/attr ) clamav? ( app-antivirus/clamav ) ldap? ( >=net-nds/openldap-1.2.11 ) mysql? ( virtual/mysql ) ncurses? ( sys-libs/ncurses ) opensslcrypt? ( >=dev-libs/openssl-0.9.6f ) pam? ( virtual/pam ) postgres? ( virtual/postgresql-base ) ssl? ( >=dev-libs/openssl-0.9.6f ) tcpd? ( >=sys-apps/tcp-wrappers-7.6-r3 ) xinetd? ( virtual/inetd )
+acl? ( sys-apps/acl sys-apps/attr ) clamav? ( app-antivirus/clamav ) ldap? ( >=net-nds/openldap-1.2.11 ) mysql? ( virtual/mysql ) ncurses? ( sys-libs/ncurses ) opensslcrypt? ( >=dev-libs/openssl-0.9.6f ) pam? ( virtual/pam ) postgres? ( virtual/postgresql-base ) ssl? ( >=dev-libs/openssl-0.9.6f ) tcpd? ( >=sys-apps/tcp-wrappers-7.6-r3 ) xinetd? ( virtual/inetd ) net-ftp/ftpbase selinux? ( sec-policy/selinux-ftpd )
+0
+ftp://ftp.proftpd.org/distrib/source/proftpd-1.3.2rc2.tar.bz2 clamav? ( http://www.uglyboxindustries.com/mod_clamav_new.c http://www.uglyboxindustries.com/mod_clamav_new.html ) shaper? ( http://www.castaglia.org/proftpd/modules/proftpd-mod-shaper-0.6.2.tar.gz ) vroot? ( http://www.castaglia.org/proftpd/modules/proftpd-mod-vroot-0.7.2.tar.gz )
+
+http://www.proftpd.org/ http://www.castaglia.org/proftpd/ http://www.uglyboxindustries.com/open-source.php
+GPL-2
+An advanced and very configurable FTP server.
+alpha amd64 hppa ~ia64 ~mips ppc ppc64 ~sparc x86
+toolchain-funcs multilib portability eutils flag-o-matic
+acl authfile clamav hardened ifsession ipv6 ldap mysql ncurses nls noauthunix opensslcrypt pam postgres radius rewrite selinux shaper sitemisc softquota ssl tcpd vroot xinetd
+
+
+
+0
+
+compile install postinst setup unpack
+
+
+
+
+

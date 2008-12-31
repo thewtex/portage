@@ -1,0 +1,22 @@
+>=sys-apps/dbus-1.2 >=dev-libs/dbus-glib-0.75 >=sys-apps/hal-0.5.10 >=net-wireless/wireless-tools-28_pre9 >=dev-libs/glib-2.16 >=sys-auth/policykit-0.8 >=dev-libs/libnl-1.1 >=net-wireless/wpa_supplicant-0.5.10 || ( sys-libs/e2fsprogs-libs <sys-fs/e2fsprogs-1.41.0 ) gnutls? ( nss? ( >=dev-libs/nss-3.11 ) !nss? ( dev-libs/libgcrypt net-libs/gnutls ) ) !gnutls? ( >=dev-libs/nss-3.11 ) dhclient? ( dhcpcd? ( >=net-misc/dhcpcd-4.0.0_rc3 ) !dhcpcd? ( >=net-misc/dhcp-3.0.0 ) ) !dhclient? ( >=net-misc/dhcpcd-4.0.0_rc3 ) resolvconf? ( net-dns/openresolv ) dev-util/pkgconfig dev-util/intltool net-dialup/ppp doc? ( >=dev-util/gtk-doc-1.8 )
+>=sys-apps/dbus-1.2 >=dev-libs/dbus-glib-0.75 >=sys-apps/hal-0.5.10 >=net-wireless/wireless-tools-28_pre9 >=dev-libs/glib-2.16 >=sys-auth/policykit-0.8 >=dev-libs/libnl-1.1 >=net-wireless/wpa_supplicant-0.5.10 || ( sys-libs/e2fsprogs-libs <sys-fs/e2fsprogs-1.41.0 ) gnutls? ( nss? ( >=dev-libs/nss-3.11 ) !nss? ( dev-libs/libgcrypt net-libs/gnutls ) ) !gnutls? ( >=dev-libs/nss-3.11 ) dhclient? ( dhcpcd? ( >=net-misc/dhcpcd-4.0.0_rc3 ) !dhcpcd? ( >=net-misc/dhcp-3.0.0 ) ) !dhclient? ( >=net-misc/dhcpcd-4.0.0_rc3 ) resolvconf? ( net-dns/openresolv )
+0
+mirror://gnome/sources/NetworkManager/0.7/NetworkManager-0.7.0.tar.bz2
+
+http://www.gnome.org/projects/NetworkManager/
+GPL-2
+Network configuration and management in an easy way. Desktop environment independent.
+~arm ~amd64 ~ppc ~x86
+toolchain-funcs multilib portability eutils
+doc nss gnutls dhclient dhcpcd resolvconf
+
+
+
+0
+
+compile install postinst setup unpack
+
+
+
+
+

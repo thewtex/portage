@@ -1,0 +1,22 @@
+kernel_linux? ( virtual/linux-sources ) kernel_linux? ( virtual/modutils ) sys-apps/sed
+!net-wireless/madwifi-old net-wireless/wireless-tools ~net-wireless/madwifi-ng-tools-0.9.4 kernel_linux? ( virtual/modutils )
+0
+mirror://sourceforge/madwifi/madwifi-0.9.4.tar.bz2
+
+http://www.madwifi-project.org/
+atheros-hal || ( BSD GPL-2 )
+Next Generation driver for Atheros based IEEE 802.11a/b/g wireless LAN cards
+amd64 ppc x86
+toolchain-funcs portability versionator multilib linux-info linux-mod eutils
+injection kernel_linux
+
+
+
+0
+
+compile install postinst postrm preinst setup unpack
+
+
+
+
+

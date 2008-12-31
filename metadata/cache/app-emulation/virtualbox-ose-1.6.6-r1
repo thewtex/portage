@@ -1,0 +1,22 @@
+!app-emulation/virtualbox-bin ~app-emulation/virtualbox-modules-1.6.6 dev-libs/libIDL >=dev-libs/libxslt-1.1.19 !headless? ( qt3? ( x11-libs/qt:3 ) x11-libs/libXcursor media-libs/libsdl x11-libs/libXt ) dev-util/kbuild >=dev-lang/yasm-0.6.2 sys-devel/bin86 sys-devel/dev86 sys-power/iasl media-libs/libpng alsa? ( >=media-libs/alsa-lib-1.0.13 ) pulseaudio? ( media-sound/pulseaudio )
+!app-emulation/virtualbox-bin ~app-emulation/virtualbox-modules-1.6.6 dev-libs/libIDL >=dev-libs/libxslt-1.1.19 !headless? ( qt3? ( x11-libs/qt:3 ) x11-libs/libXcursor media-libs/libsdl x11-libs/libXt ) additions? ( ~app-emulation/virtualbox-ose-additions-1.6.6 ) sys-apps/usermode-utilities net-misc/bridge-utils sys-apps/hal
+0
+http://download.virtualbox.org/virtualbox/1.6.6/VirtualBox-1.6.6-OSE.tar.bz2
+
+http://www.virtualbox.org/
+GPL-2
+Softwarefamily of powerful x86 virtualization
+~amd64 ~x86
+toolchain-funcs qt3 portability flag-o-matic versionator multilib fdo-mime eutils
+additions alsa headless pulseaudio +qt3 sdk
+
+
+
+1
+
+compile install postinst postrm setup unpack
+
+
+
+
+

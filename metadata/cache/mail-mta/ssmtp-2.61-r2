@@ -1,0 +1,22 @@
+virtual/libc ssl? ( dev-libs/openssl )
+mailwrapper? ( >=net-mail/mailwrapper-0.2 ) !mailwrapper? ( !virtual/mta ) net-mail/mailbase ssl? ( dev-libs/openssl )
+0
+mirror://debian/pool/main/s/ssmtp/ssmtp_2.61.orig.tar.gz
+
+ftp://ftp.debian.org/debian/pool/main/s/ssmtp/
+GPL-2
+Extremely simple MTA to get mail off the system to a Mailhub
+alpha amd64 arm hppa ia64 m68k mips ppc ppc64 s390 sh sparc ~sparc-fbsd x86 ~x86-fbsd
+toolchain-funcs multilib portability eutils
+ssl ipv6 md5sum mailwrapper
+
+
+virtual/mta
+0
+
+compile install postinst unpack
+
+
+
+
+

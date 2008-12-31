@@ -1,0 +1,22 @@
+sys-libs/zlib glib? ( dev-libs/glib ) ssl? ( dev-libs/openssl ) !<=x11-libs/qt-4.4.0_alpha:4 dev-util/pkgconfig
+sys-libs/zlib glib? ( dev-libs/glib ) ssl? ( dev-libs/openssl ) !<=x11-libs/qt-4.4.0_alpha:4
+4
+ftp://ftp.trolltech.com/qt/source/qt-x11-opensource-src-4.4.2.tar.bz2 mirror://gentoo/qt-x11-opensource-src-4.4.2-headers.tar.bz2
+
+http://www.trolltech.com/
+|| ( GPL-3 GPL-2 )
+The Qt toolkit is a comprehensive C++ application development framework.
+~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
+toolchain-funcs portability flag-o-matic multilib eutils qt4-build
+doc glib +qt3support ssl debug pch
+
+qt3support? ( ~x11-libs/qt-gui-4.4.2 )
+
+1
+
+compile install postinst postrm setup unpack
+
+
+
+
+

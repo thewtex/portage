@@ -1,0 +1,22 @@
+pam? ( virtual/pam ) kerberos? ( virtual/krb5 ) selinux? ( >=sys-libs/libselinux-1.28 ) skey? ( >=sys-auth/skey-1.1.5-r1 ) ldap? ( net-nds/openldap ) libedit? ( dev-libs/libedit ) >=dev-libs/openssl-0.9.6d >=sys-libs/zlib-1.2.3 smartcard? ( dev-libs/opensc ) tcpd? ( >=sys-apps/tcp-wrappers-7.6 ) X? ( x11-apps/xauth ) userland_GNU? ( sys-apps/shadow ) dev-util/pkgconfig virtual/os-headers sys-devel/autoconf =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+pam? ( virtual/pam ) kerberos? ( virtual/krb5 ) selinux? ( >=sys-libs/libselinux-1.28 ) skey? ( >=sys-auth/skey-1.1.5-r1 ) ldap? ( net-nds/openldap ) libedit? ( dev-libs/libedit ) >=dev-libs/openssl-0.9.6d >=sys-libs/zlib-1.2.3 smartcard? ( dev-libs/opensc ) tcpd? ( >=sys-apps/tcp-wrappers-7.6 ) X? ( x11-apps/xauth ) userland_GNU? ( sys-apps/shadow )
+0
+mirror://openbsd/OpenSSH/portable/openssh-4.6p1.tar.gz X509? ( http://roumenpetrov.info/openssh/x509-5.5.2/openssh-4.6p1+x509-5.5.2.diff.gz ) hpn? ( http://www.psc.edu/networking/projects/hpn-ssh/openssh-4.6p1-hpn12v17.diff.gz ) ldap? ( http://dev.inversepath.com/openssh-lpk/openssh-lpk-4.6p1-0.3.9.patch )
+
+http://www.openssh.com/
+as-is
+Port of OpenBSD's free SSH release
+~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~sparc-fbsd ~x86 ~x86-fbsd
+toolchain-funcs portability flag-o-matic multilib libtool ccc autotools pam eutils
+static pam tcpd kerberos skey selinux chroot X509 ldap smartcard hpn libedit X
+
+
+virtual/ssh
+0
+
+compile install postinst setup unpack
+
+
+
+
+

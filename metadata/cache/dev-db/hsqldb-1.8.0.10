@@ -1,0 +1,22 @@
+java6? ( >=virtual/jdk-1.6 ) !java6? ( || ( =virtual/jdk-1.5* =virtual/jdk-1.4* ) ) test? ( dev-java/junit:0 ) app-arch/unzip java-virtuals/servlet-api:2.3 >=dev-java/java-config-2.1.6 >=sys-apps/portage-2.1.2.7 source? ( app-arch/zip ) >=dev-java/ant-core-1.7.0 >=sys-apps/portage-2.1.2.7 >=dev-java/javatoolkit-0.3.0-r2
+java6? ( >=virtual/jre-1.6 ) !java6? ( >=virtual/jre-1.4 ) java-virtuals/servlet-api:2.3 >=dev-java/java-config-2.1.6 >=sys-apps/portage-2.1.2.7 source? ( app-arch/zip )
+0
+mirror://sourceforge/hsqldb/hsqldb_1_8_0_10.zip
+
+http://hsqldb.org
+BSD
+The leading SQL relational database engine written in Java.
+amd64 ppc ppc64 x86 ~x86-fbsd
+toolchain-funcs java-pkg-2 portability java-utils-2 versionator multilib eutils java-ant-2
+java6 elibc_FreeBSD doc source test elibc_FreeBSD
+
+
+
+1
+
+compile install postinst preinst setup test unpack
+
+
+
+
+

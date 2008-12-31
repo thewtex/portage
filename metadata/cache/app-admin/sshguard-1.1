@@ -1,0 +1,22 @@
+kernel_linux? ( net-firewall/iptables ) kernel_FreeBSD? ( !ipfilter? ( sys-freebsd/freebsd-pf ) )
+kernel_linux? ( net-firewall/iptables ) kernel_FreeBSD? ( !ipfilter? ( sys-freebsd/freebsd-pf ) ) virtual/logger
+0
+mirror://sourceforge/sshguard/sshguard-1.1.tar.bz2
+
+http://sshguard.sourceforge.net/
+BSD
+protects hosts from brute force attacks against ssh
+~amd64 ~x86 ~x86-fbsd
+
+ipfilter kernel_FreeBSD kernel_linux
+
+
+
+0
+
+compile install
+
+
+
+
+

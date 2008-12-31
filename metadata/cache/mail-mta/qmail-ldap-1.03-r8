@@ -1,0 +1,22 @@
+!mail-mta/qmail net-nds/openldap net-mail/queue-repair ssl? ( dev-libs/openssl ) >=sys-apps/sed-4
+mailwrapper? ( net-mail/mailwrapper ) !mailwrapper? ( !virtual/mta ) >=sys-apps/ucspi-tcp-0.88-r17 ssl? ( >=sys-apps/ucspi-ssl-0.70-r1 ) >=sys-process/daemontools-0.76-r6 >=net-mail/dot-forward-0.71-r3 !mail-mta/qmail net-nds/openldap net-mail/queue-repair ssl? ( dev-libs/openssl )
+0
+mirror://qmail/qmail-1.03.tar.gz http://dev.gentoo.org/~hollow/distfiles/genqmail-20080406.tar.bz2 http://www.nrg4u.com/qmail/qmail-ldap-1.03-20060201.patch.gz mirror://gentoo/qmail-ldap-1.03-20060201-controls20060401d.patch mirror://gentoo/qmail-ldap-1.03-queue-custom-error.patch !vanilla? ( qmail-spp? ( mirror://sourceforge/qmail-spp/qmail-spp-0.42.tar.gz mirror://gentoo/qmail-ldap-1.03-spp-0.42.patch ) )
+test
+http://www.qmail-ldap.org http://cr.yp.to/qmail.html http://qmail.org
+public-domain
+qmail -- a secure, reliable, efficient, simple message transfer agent
+~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
+qmail toolchain-funcs portability flag-o-matic multilib fixheadtails eutils
+cluster debug gencertdaily highvolume mailwrapper qmail-spp rfc2307 rfc822 ssl vanilla zlib
+
+
+virtual/mta virtual/mda
+0
+
+compile config install postinst preinst setup unpack
+
+
+
+
+

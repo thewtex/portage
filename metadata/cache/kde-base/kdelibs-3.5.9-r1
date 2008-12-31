@@ -1,0 +1,22 @@
+arts? ( >=kde-base/arts-3.5.5 ) app-arch/bzip2 >=dev-libs/openssl-0.9.7d >=dev-libs/libxslt-1.1.16 >=dev-libs/libxml2-2.6.6 >=dev-libs/libpcre-6.6 media-libs/fontconfig >=media-libs/freetype-2 media-libs/libart_lgpl net-dns/libidn >=x11-libs/qt-3.3.3:3 acl? ( kernel_linux? ( sys-apps/acl ) ) alsa? ( media-libs/alsa-lib ) cups? ( >=net-print/cups-1.1.19 ) tiff? ( media-libs/tiff ) kerberos? ( virtual/krb5 ) jpeg2k? ( media-libs/jasper ) openexr? ( >=media-libs/openexr-1.2.2-r2 ) !avahi? ( !bindist? ( net-misc/mDNSResponder !kde-misc/kdnssd-avahi ) ) fam? ( virtual/fam ) virtual/ghostscript utempter? ( sys-libs/libutempter ) !kde-base/kde-env lua? ( dev-lang/lua ) spell? ( >=app-text/aspell-0.60.5 >=app-dicts/aspell-en-6.0.0 ) >=sys-apps/portage-2.1.2.11 !kde-base/ksync doc? ( app-doc/doxygen ) sys-devel/gettext =sys-devel/automake-1.9* >=sys-devel/autoconf-2.61 sys-devel/libtool sys-devel/make dev-util/pkgconfig dev-lang/perl x11-libs/libXt x11-proto/xf86vidmodeproto xinerama? ( x11-proto/xineramaproto ) arts? ( kde-base/arts )
+arts? ( >=kde-base/arts-3.5.5 ) app-arch/bzip2 >=dev-libs/openssl-0.9.7d >=dev-libs/libxslt-1.1.16 >=dev-libs/libxml2-2.6.6 >=dev-libs/libpcre-6.6 media-libs/fontconfig >=media-libs/freetype-2 media-libs/libart_lgpl net-dns/libidn >=x11-libs/qt-3.3.3:3 acl? ( kernel_linux? ( sys-apps/acl ) ) alsa? ( media-libs/alsa-lib ) cups? ( >=net-print/cups-1.1.19 ) tiff? ( media-libs/tiff ) kerberos? ( virtual/krb5 ) jpeg2k? ( media-libs/jasper ) openexr? ( >=media-libs/openexr-1.2.2-r2 ) !avahi? ( !bindist? ( net-misc/mDNSResponder !kde-misc/kdnssd-avahi ) ) fam? ( virtual/fam ) virtual/ghostscript utempter? ( sys-libs/libutempter ) !kde-base/kde-env lua? ( dev-lang/lua ) spell? ( >=app-text/aspell-0.60.5 >=app-dicts/aspell-en-6.0.0 ) >=sys-apps/portage-2.1.2.11 !kde-base/ksync x11-apps/rgb x11-apps/iceauth xinerama? ( x11-libs/libXinerama ) arts? ( kde-base/arts )
+3.5
+mirror://kde/stable/3.5.9/src/kdelibs-3.5.9.tar.bz2 mirror://gentoo/kdelibs-3.5-patchset-14.tar.bz2 mirror://gentoo/kdelibs-3.5.8-seli-xinerama.patch.bz2
+test
+http://www.kde.org/
+GPL-2 LGPL-2
+KDE libraries needed by all KDE programs.
+~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd
+toolchain-funcs qt3 portability flag-o-matic kde versionator multilib kde-functions libtool base autotools eutils
+acl alsa arts bindist branding cups doc jpeg2k kerberos legacyssl utempter openexr spell tiff avahi kernel_linux fam lua kdehiddenvisibility debug elibc_FreeBSD kdeenablefinal arts xinerama
+
+avahi? ( kde-misc/kdnssd-avahi ) bindist? ( kde-misc/kdnssd-avahi )
+
+1
+
+compile install postinst postrm preinst setup unpack
+
+
+
+
+

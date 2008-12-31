@@ -1,0 +1,22 @@
+ssl? ( dev-libs/openssl ) berkdb? ( sys-libs/db ) !berkdb? ( sys-libs/gdbm ) >=dev-db/sqlite-3.5.7 || ( ( >sys-libs/e2fsprogs-libs-1.40.11 ) ( sys-libs/com_err sys-libs/ss ) ) afs? ( net-fs/openafs ) hdb-ldap? ( >=net-nds/openldap-2.3.0 ) !virtual/krb5 dev-util/pkgconfig >=sys-devel/autoconf-2.62 =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool X? ( x11-base/xorg-server x11-apps/xhost )
+ssl? ( dev-libs/openssl ) berkdb? ( sys-libs/db ) !berkdb? ( sys-libs/gdbm ) >=dev-db/sqlite-3.5.7 || ( ( >sys-libs/e2fsprogs-libs-1.40.11 ) ( sys-libs/com_err sys-libs/ss ) ) afs? ( net-fs/openafs ) hdb-ldap? ( >=net-nds/openldap-2.3.0 ) !virtual/krb5
+0
+http://www.h5l.org/dist/src/heimdal-1.2.1.tar.gz mirror://gentoo/heimdal-gentoo-patches-0.2.tar.bz2
+
+http://www.h5l.org/
+BSD
+Kerberos 5 implementation from KTH
+~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
+toolchain-funcs portability flag-o-matic virtualx multilib libtool autotools eutils
+afs +berkdb hdb-ldap ipv6 otp pkinit ssl threads X X
+
+
+virtual/krb5
+1
+
+compile install test unpack
+
+
+
+
+

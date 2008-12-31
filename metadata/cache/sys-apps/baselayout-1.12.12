@@ -1,0 +1,22 @@
+virtual/os-headers >=sys-apps/portage-2.0.51
+virtual/init !build? ( !bootstrap? ( || ( >=sys-apps/coreutils-6.10-r1 sys-apps/mktemp ) >=sys-libs/readline-5.0-r1 >=app-shells/bash-3.1_p7 >=sys-apps/coreutils-5.2.1 >=sys-apps/findutils-4.2.18 ) ) !<net-misc/dhcpcd-2.0.0
+0
+mirror://gentoo/baselayout-1.12.12.tar.bz2 http://dev.gentoo.org/~uberlord/baselayout/baselayout-1.12.12.tar.bz2 http://dev.gentoo.org/~azarah/baselayout/baselayout-1.12.12.tar.bz2 http://dev.gentoo.org/~vapier/dist/baselayout-1.12.12.tar.bz2
+
+http://www.gentoo.org/
+GPL-2
+Filesystem baselayout and init scripts
+~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
+toolchain-funcs multilib portability eutils flag-o-matic
+bootstrap build static unicode
+
+!build? ( !bootstrap? ( >=sys-apps/module-init-tools-3.2.2-r3 ) )
+
+0
+
+compile install postinst postrm preinst prerm unpack
+
+
+
+
+

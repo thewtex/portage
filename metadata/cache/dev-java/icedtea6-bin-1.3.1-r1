@@ -1,0 +1,22 @@
+=dev-java/java-config-2* >=sys-apps/portage-2.1
+>=sys-libs/glibc-2.6.1 >=media-libs/giflib-4.1.6-r1 >=media-libs/jpeg-6b-r8 >=media-libs/libpng-1.2.33 >=sys-libs/zlib-1.2.3-r1 alsa? ( >=media-libs/alsa-lib-1.0.16 ) X? ( >=media-libs/freetype-2.3.7:2 >=x11-libs/libXext-1.0.3 >=x11-libs/libXi-1.1.3 >=x11-libs/libXtst-1.0.3 >=x11-libs/libX11-1.1.4 ) nsplugin? ( >=dev-libs/atk-1.22.0 >=dev-libs/glib-2.16.5:2 >=dev-libs/nspr-4.7.3 >=x11-libs/cairo-1.6.4-r1 >=x11-libs/gtk+-2.12.11:2 >=x11-libs/pango-1.20.5 ) =dev-java/java-config-2* =dev-java/java-config-1.3*
+0
+amd64? ( mirror://gentoo//icedtea6-bin-core-1.3.1-r1-amd64.tbz2 ) x86? ( mirror://gentoo//icedtea6-bin-core-1.3.1-r1-x86.tbz2 ) doc? ( mirror://gentoo//icedtea6-bin-doc-1.3.1-r1.tbz2 ) examples? ( amd64? ( mirror://gentoo//icedtea6-bin-examples-1.3.1-r1-amd64.tbz2 ) x86? ( mirror://gentoo//icedtea6-bin-examples-1.3.1-r1-x86.tbz2 ) ) nsplugin? ( amd64? ( mirror://gentoo//icedtea6-bin-nsplugin-1.3.1-r1-amd64.tbz2 ) x86? ( mirror://gentoo//icedtea6-bin-nsplugin-1.3.1-r1-x86.tbz2 ) ) source? ( mirror://gentoo//icedtea6-bin-src-1.3.1-r1.tbz2 )
+strip test
+http://icedtea.classpath.org
+GPL-2-with-linking-exception
+A Gentoo-made binary build of the icedtea6 JDK
+~amd64 ~x86
+toolchain-funcs portability multilib eutils fdo-mime java-vm-2
+X alsa doc examples nsplugin source
+
+
+
+1
+
+install postinst postrm prerm setup
+
+
+
+
+

@@ -1,0 +1,22 @@
+!build? ( sys-apps/sed >=sys-devel/binutils-2.11.90.0.31 ) dev-util/subversion net-misc/rsync
+!build? ( >=sys-libs/ncurses-5.2 sys-devel/make ) virtual/dev-manager
+2.6.99
+
+binchecks strip
+http://hardened.gentoo.org/rsbac/
+GPL-2
+RSBAC hardened sources for the 2.6 kernel tree
+~x86 ~amd64
+toolchain-funcs portability versionator multilib subversion kernel-2 eutils
+symlink build
+
+
+virtual/linux-sources virtual/alsa
+0
+
+compile install postinst preinst setup unpack
+
+
+
+
+

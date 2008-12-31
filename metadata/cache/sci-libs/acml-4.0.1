@@ -1,0 +1,22 @@
+ifc? ( dev-lang/ifc ) openmp? ( !ifc? ( >=sys-devel/gcc-4.2 ) ) !openmp? ( !ifc? ( =sys-devel/gcc-4.1* ) ) app-admin/eselect-blas app-admin/eselect-lapack =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+ifc? ( dev-lang/ifc ) openmp? ( !ifc? ( >=sys-devel/gcc-4.2 ) ) !openmp? ( !ifc? ( =sys-devel/gcc-4.1* ) ) app-admin/eselect-blas app-admin/eselect-lapack doc? ( app-doc/blas-docs app-doc/lapack-docs )
+0
+ifc? ( acml-4-0-1-ifort-64bit.tgz ) !ifc? ( int64? ( acml-4-0-1-gfortran-64bit-int64.tgz ) !int64? ( acml-4-0-1-gfortran-64bit.tgz ) )
+strip fetch
+http://developer.amd.com/acml.jsp
+ACML
+AMD Core Math Library (ACML) for x86_64 CPUs
+~amd64
+toolchain-funcs portability multilib fortran libtool autotools eutils
+openmp ifc int64 doc examples debug
+
+
+
+0
+
+install nofetch postinst setup test unpack
+
+
+
+
+

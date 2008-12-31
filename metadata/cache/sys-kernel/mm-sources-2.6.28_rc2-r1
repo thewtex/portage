@@ -1,0 +1,22 @@
+!build? ( sys-apps/sed >=sys-devel/binutils-2.11.90.0.31 )
+!build? ( >=sys-libs/ncurses-5.2 sys-devel/make ) virtual/dev-manager
+2.6.28_rc2-r1
+mirror://kernel/linux/kernel/v2.6/testing/patch-2.6.28-rc2.bz2 mirror://kernel/linux/kernel/v2.6/linux-2.6.27.tar.bz2 mirror://kernel/linux/kernel/people/akpm/patches/2.6/2.6.28-rc2/2.6.28-rc2-mm1/2.6.28-rc2-mm1.bz2
+binchecks strip
+http://www.kernel.org/ http://www.gentoo.org/
+GPL-2
+Andrew Morton's kernel, mostly fixes for 2.6 vanilla, some vm stuff too
+-* ~amd64 ~ppc ~ppc64 ~x86
+toolchain-funcs portability versionator multilib kernel-2 eutils
+symlink build
+
+
+virtual/linux-sources virtual/alsa
+0
+
+compile install postinst preinst setup unpack
+
+
+
+
+

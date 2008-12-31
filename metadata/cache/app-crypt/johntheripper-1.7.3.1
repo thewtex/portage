@@ -1,0 +1,22 @@
+!minimal? ( >=dev-libs/openssl-0.9.7 ) mpi? ( sys-cluster/openmpi )
+!minimal? ( >=dev-libs/openssl-0.9.7 ) mpi? ( sys-cluster/openmpi )
+0
+http://www.openwall.com/john/g/john-1.7.3.1.tar.gz !minimal? ( ftp://ftp.openwall.com/john/contrib/historical/john-1.7.3.1-all-3.diff.gz ) mpi? ( http://bindshell.net/tools/johntheripper/john-1.7.3.1-mpi8-small.patch.gz )
+
+http://www.openwall.com/john/
+GPL-2
+fast password cracker
+~alpha ~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86
+toolchain-funcs portability flag-o-matic multilib pax-utils eutils
+mmx altivec sse2 custom-cflags -minimal -mpi
+
+
+
+1
+
+compile install test unpack
+
+
+
+
+

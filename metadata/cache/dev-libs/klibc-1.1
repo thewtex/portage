@@ -1,0 +1,22 @@
+dev-lang/perl virtual/linux-sources kernel_linux? ( virtual/linux-sources ) kernel_linux? ( virtual/modutils ) sys-apps/sed
+dev-lang/perl kernel_linux? ( virtual/modutils )
+0
+ftp://ftp.kernel.org/pub/linux/libs/klibc/klibc-1.1.tar.bz2 ftp://ftp.kernel.org/pub/linux/libs/klibc/Stable/klibc-1.1.tar.bz2 ftp://ftp.kernel.org/pub/linux/libs/klibc/Testing/klibc-1.1.tar.bz2
+strip
+http://www.zytor.com/mailman/listinfo/klibc
+|| ( GPL-2 LGPL-2 )
+A minimal libc subset for use with initramfs.
+~amd64 mips ~ppc ~x86
+toolchain-funcs portability versionator multilib linux-info linux-mod eutils
+kernel_linux
+
+
+
+0
+
+compile install postinst postrm preinst setup unpack
+
+
+
+
+

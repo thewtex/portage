@@ -1,0 +1,22 @@
+!app-emulation/virtualbox-bin ~app-emulation/virtualbox-modules-2.0.2 dev-libs/libIDL >=dev-libs/libxslt-1.1.19 !headless? ( qt4? ( || ( ( x11-libs/qt-gui x11-libs/qt-core ) =x11-libs/qt-4.3*:4 ) ) x11-libs/libXcursor media-libs/libsdl x11-libs/libXt ) >=dev-util/kbuild-0.1.4 >=dev-lang/yasm-0.6.2 sys-devel/bin86 sys-devel/dev86 sys-power/iasl media-libs/libpng alsa? ( >=media-libs/alsa-lib-1.0.13 ) pulseaudio? ( media-sound/pulseaudio ) python? ( >=dev-lang/python-2.3 )
+!app-emulation/virtualbox-bin ~app-emulation/virtualbox-modules-2.0.2 dev-libs/libIDL >=dev-libs/libxslt-1.1.19 !headless? ( qt4? ( || ( ( x11-libs/qt-gui x11-libs/qt-core ) =x11-libs/qt-4.3*:4 ) ) x11-libs/libXcursor media-libs/libsdl x11-libs/libXt ) additions? ( ~app-emulation/virtualbox-ose-additions-2.0.2 ) sys-apps/usermode-utilities net-misc/bridge-utils sys-apps/hal
+0
+http://download.virtualbox.org/virtualbox/2.0.2/VirtualBox-2.0.2-OSE.tar.bz2
+
+http://www.virtualbox.org/
+GPL-2
+Softwarefamily of powerful x86 virtualization
+~amd64 ~x86
+qt4 toolchain-funcs portability flag-o-matic versionator multilib fdo-mime eutils
++additions alsa headless pulseaudio python +qt4 sdk
+
+
+
+1
+
+compile install postinst postrm setup unpack
+
+
+
+
+

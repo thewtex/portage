@@ -1,0 +1,22 @@
+app-arch/unzip
+x86? ( || ( =sys-devel/gcc-3.3* sys-libs/libstdc++-v3 ) ) amd64? ( app-emulation/emul-linux-x86-baselibs app-emulation/emul-linux-x86-compat )
+0
+http://content.bioware.com/neverwinternights/patch/NWNDedicatedServer1.66.zip linguas_fr? ( http://files.bioware.com/neverwinternights/dialog//french/NWNFrench1.66dialog.zip ) linguas_de? ( http://files.bioware.com/neverwinternights/dialog//german/NWNGerman1.66dialog.zip ) linguas_it? ( http://files.bioware.com/neverwinternights/dialog//italian/NWNItalian1.66dialog.zip ) linguas_es? ( http://files.bioware.com/neverwinternights/dialog//spanish/NWNSpanish1.66dialog.zip ) !linguas_de? ( !linguas_fr? ( !linguas_es? ( !linguas_it? ( http://files.bioware.com/neverwinternights/dialog//english/NWNEnglish1.66dialog.zip ) ) ) )
+mirror
+http://nwn.bioware.com/downloads/standaloneserver.html
+NWN-EULA
+Neverwinter Nights Dedicated server
+-* ~amd64 x86
+multilib toolchain-funcs games portability eutils
+
+
+
+
+0
+
+compile install postinst preinst setup unpack
+
+
+
+
+

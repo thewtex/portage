@@ -1,0 +1,22 @@
+app-admin/eselect-blas app-admin/eselect-lapack =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+app-admin/eselect-blas app-admin/eselect-lapack doc? ( app-doc/blas-docs app-doc/lapack-docs )
+0
+amd64? ( ifc? ( acml-3-6-0-ifort-64bit.tgz ) !ifc? ( openmp? ( acml-3-6-0-ifort-64bit.tgz ) !openmp? ( acml-3-6-0-gnu-64bit.tgz ) ) openmp? ( acml-3-6-0-ifort-64bit.tgz ) ) x86? ( ifc? ( acml-3-6-0-ifort-32bit.tgz ) !ifc? ( openmp? ( acml-3-6-0-ifort-32bit.tgz ) !openmp? ( acml-3-6-0-gnu-32bit.tgz ) ) openmp? ( acml-3-6-0-ifort-32bit.tgz ) )
+strip fetch
+http://developer.amd.com/acml.jsp
+ACML
+AMD Core Math Library (ACML) for x86 and amd64 CPUs
+~amd64 ~x86
+toolchain-funcs portability multilib fortran libtool autotools eutils
+openmp ifc doc examples debug
+
+
+
+0
+
+install nofetch postinst setup test unpack
+
+
+
+
+

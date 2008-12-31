@@ -1,0 +1,22 @@
+net-mail/mailbase sys-devel/m4 sasl? ( >=dev-libs/cyrus-sasl-2.1.10 ) tcpd? ( sys-apps/tcp-wrappers ) ssl? ( dev-libs/openssl ) ldap? ( net-nds/openldap ) >=sys-libs/db-3.2 !net-mail/vacation
+net-mail/mailbase sys-devel/m4 sasl? ( >=dev-libs/cyrus-sasl-2.1.10 ) tcpd? ( sys-apps/tcp-wrappers ) ssl? ( dev-libs/openssl ) ldap? ( net-nds/openldap ) >=sys-libs/db-3.2 !net-mail/vacation >=net-mail/mailbase-0.00 !mailwrapper? ( !virtual/mta ) mailwrapper? ( >=net-mail/mailwrapper-0.2 )
+0
+ftp://ftp.sendmail.org/pub/sendmail/sendmail.8.13.8.tar.gz
+
+http://www.sendmail.org/
+Sendmail
+Widely-used Mail Transport Agent (MTA)
+alpha amd64 arm hppa ia64 ppc ppc64 s390 sh ~sparc x86
+toolchain-funcs multilib portability eutils
+ssl ldap sasl tcpd mbox mailwrapper ipv6 nis sockets
+
+!mbox? ( mail-filter/procmail )
+virtual/mta
+0
+
+compile install postinst setup unpack
+
+
+
+
+

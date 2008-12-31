@@ -1,0 +1,22 @@
+gnutls? ( net-libs/gnutls app-misc/ca-certificates ) nss? ( !gnutls? ( dev-libs/nss app-misc/ca-certificates ) ) ssl? ( !gnutls? ( !nss? ( dev-libs/openssl app-misc/ca-certificates ) ) ) ldap? ( net-nds/openldap ) idn? ( net-dns/libidn ) ares? ( >=net-dns/c-ares-1.4.0 ) kerberos? ( virtual/krb5 ) libssh2? ( >=net-libs/libssh2-0.16 ) test? ( sys-apps/diffutils dev-lang/perl ) =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+gnutls? ( net-libs/gnutls app-misc/ca-certificates ) nss? ( !gnutls? ( dev-libs/nss app-misc/ca-certificates ) ) ssl? ( !gnutls? ( !nss? ( dev-libs/openssl app-misc/ca-certificates ) ) ) ldap? ( net-nds/openldap ) idn? ( net-dns/libidn ) ares? ( >=net-dns/c-ares-1.4.0 ) kerberos? ( virtual/krb5 ) libssh2? ( >=net-libs/libssh2-0.16 )
+0
+http://curl.planetmirror.com/download/curl-7.18.2.tar.bz2
+
+http://curl.haxx.se/ http://curl.planetmirror.com
+MIT X11
+A Client that groks URLs
+alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc ~sparc-fbsd x86 ~x86-fbsd
+toolchain-funcs portability multilib libtool autotools eutils
+ssl ipv6 ldap ares gnutls libssh2 nss idn kerberos test
+
+
+
+0
+
+compile install postinst unpack
+
+
+
+
+

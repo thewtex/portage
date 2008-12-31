@@ -1,0 +1,22 @@
+>=sys-apps/sed-4 >=sys-apps/sed-4
+x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXcursor x11-libs/libXext x11-libs/libXft x11-libs/libXi x11-libs/libXmu x11-libs/libXp x11-libs/libXrandr >=media-libs/fontconfig-2.1.94-r1 amd64? ( qt-static? ( app-emulation/emul-linux-x86-xlibs ) !qt-static? ( app-emulation/emul-linux-x86-qtlibs ) ) !amd64? ( media-libs/libexif spell? ( app-text/aspell ) x86? ( !qt-static? ( =x11-libs/qt-3* ) ) media-libs/jpeg ) x86-fbsd? ( =virtual/libstdc++-3* !qt-static? ( =x11-libs/qt-3* ) )
+0
+qt-static? ( amd64? ( mirror://opera/linux/927/final/en/i386/static/opera-9.27-20080331.1-static-qt.i386-en.tar.bz2 ) ppc? ( mirror://opera/linux/927/final/en/ppc/static/opera-9.27-20080331.1-static-qt.ppc-en.tar.bz2 ) sparc? ( mirror://opera/linux/927/final/en/sparc/static/opera-9.27-20080331.1-static-qt.sparc-en.tar.bz2 ) x86? ( mirror://opera/linux/927/final/en/i386/static/opera-9.27-20080331.1-static-qt.i386-en.tar.bz2 ) x86-fbsd? ( mirror://opera/unix/freebsd/927/final/en/static/opera-9.27-20080331.1-static-qt.i386.freebsd-en.tar.bz2 ) ) !qt-static? ( amd64? ( mirror://opera/linux/927/final/en/i386/shared/opera-9.27-20080331.6-shared-qt.i386-en.tar.bz2 ) ppc? ( mirror://opera/linux/927/final/en/ppc/static/opera-9.27-20080331.1-static-qt.ppc-en.tar.bz2 ) sparc? ( mirror://opera/linux/927/final/en/sparc/static/opera-9.27-20080331.1-static-qt.sparc-en.tar.bz2 ) x86? ( mirror://opera/linux/927/final/en/i386/shared/opera-9.27-20080331.6-shared-qt.i386-en.tar.bz2 ) x86-fbsd? ( mirror://opera/unix/freebsd/927/final/en/shared/opera-9.27-20080331.4-shared-qt.i386.freebsd-en.tar.bz2 ) )
+strip mirror
+http://www.opera.com/
+OPERA-9.0
+A standards-compliant graphical Web browser
+sparc
+gnome2 toolchain-funcs portability multilib gnome2-utils libtool gnome.org fdo-mime eutils
+qt-static spell gnome elibc_FreeBSD
+
+
+
+0
+
+compile install postinst postrm preinst unpack
+
+
+
+
+

@@ -1,0 +1,22 @@
+virtual/libc ssl? ( dev-libs/openssl )
+virtual/libc ssl? ( dev-libs/openssl ) mailwrapper? ( || ( net-mail/mailer-config app-admin/eselect ) >=net-mail/mailwrapper-0.2.1-r1 ) !mailwrapper? ( !virtual/mta )
+0
+http://www.gentoo-es.org/~ferdy/nbsmtp-1.00.tar.bz2
+
+http://nbsmtp.ferdyx.org
+GPL-2
+Extremely simple MTA to get mail off the system to a relayhost
+~x86 ~ppc ~hppa ~amd64 ~sparc ~alpha
+toolchain-funcs mailer multilib portability eutils
+ssl ipv6 debug mailwrapper
+
+
+virtual/mta
+0
+
+compile install postinst postrm unpack
+
+
+
+
+

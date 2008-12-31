@@ -1,0 +1,22 @@
+!build? ( sys-apps/sed >=sys-devel/binutils-2.11.90.0.31 )
+!build? ( >=sys-libs/ncurses-5.2 sys-devel/make ) virtual/dev-manager
+2.6.19_rc6-r1
+mirror://kernel/linux/kernel/v2.6/testing/patch-2.6.19-rc6.bz2 mirror://kernel/linux/kernel/v2.6/linux-2.6.18.tar.bz2 http://kernel.org/pub/linux/kernel/people/arnd/patches/2.6.19-rc6-arnd1/2.6.19-rc6-arnd1.diff.bz2
+binchecks strip
+http://kernel.org/pub/linux/kernel/people/arnd/patches/
+GPL-2
+Full sources including the arnd patchset for the 2.6 kernel tree
+~ppc ~ppc64
+toolchain-funcs portability versionator multilib kernel-2 eutils
+symlink build
+
+
+virtual/linux-sources virtual/alsa
+0
+
+compile install postinst preinst setup unpack
+
+
+
+
+

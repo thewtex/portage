@@ -1,0 +1,22 @@
+media-libs/jpeg sys-libs/libcap media-tv/linuxtv-dvb-headers dev-util/unifdef
+media-libs/jpeg sys-libs/libcap dev-lang/perl || ( >=media-tv/gentoo-vdr-scripts-0.4.2 media-tv/vdrplugin-rebuild ) >=media-tv/gentoo-vdr-scripts-0.3.5
+0
+ftp://ftp.cadsoft.de/vdr/vdr-1.4.7.tar.bz2 http://www.zulu-entertainment.de/files/patches/VDR-Extensions-Patch-54.tar.bz2
+
+http://www.cadsoft.de/vdr/
+GPL-2
+Video Disk Recorder - turns a pc into a powerful set top box for DVB
+~amd64 ~ppc ~x86
+toolchain-funcs multilib portability eutils flag-o-matic
+debug vanilla cmdctrl cmdsubmenu cutterlimit cutterqueue cuttime ddepgentry dolbyinrec dvbplayer dvbsetup dvdarchive dvdchapjump graphtft iptv jumpplay liemikuutio livebuffer lnbshare mainmenuhooks menuorg noepg osdmaxitems pinplugin rotor settime setup sortrecords sourcecaps submenu subtitles switchtimer timercmd timerinfo validinput wareagleicon yaepg syncearly dvlfriendlyfnames dvlrecscriptaddon dvlvidprefer hardlinkcutter volctrl lircsettings deltimeshiftrec
+
+setup? ( >=media-plugins/vdr-setup-0.3.1-r1 )
+
+0
+
+install postinst preinst setup unpack
+
+
+
+
+

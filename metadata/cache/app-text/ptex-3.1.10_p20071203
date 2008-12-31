@@ -1,0 +1,22 @@
+!app-text/tetex !<app-text/ptetex-3.1.9 !app-text/dvipdfmx !app-text/xdvik media-libs/t1lib media-libs/gd X? ( >=media-libs/freetype-2.3.4 || ( media-fonts/ja-ipafonts media-fonts/ipamonafont media-fonts/vlgothic media-fonts/sazanami media-fonts/kochi-substitute ) ) !<app-text/tetex-3 sys-apps/ed sys-libs/zlib X? ( x11-libs/libXmu x11-libs/libXp x11-libs/libXpm x11-libs/libICE x11-libs/libSM x11-libs/libXaw x11-libs/libXfont ) >=media-libs/libpng-1.2.1 sys-libs/ncurses >=net-libs/libwww-5.3.2-r1 X? ( motif? ( x11-libs/openmotif ) !motif? ( neXt? ( x11-libs/neXtaw ) !neXt? ( Xaw3d? ( x11-libs/Xaw3d ) ) ) !app-text/xdvik ) !dev-tex/memoir !dev-tex/lineno !dev-tex/SIunits !dev-tex/floatflt !dev-tex/g-brief !dev-tex/koma-script =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+!app-text/tetex !<app-text/ptetex-3.1.9 !app-text/dvipdfmx !app-text/xdvik media-libs/t1lib media-libs/gd X? ( >=media-libs/freetype-2.3.4 || ( media-fonts/ja-ipafonts media-fonts/ipamonafont media-fonts/vlgothic media-fonts/sazanami media-fonts/kochi-substitute ) ) !<app-text/tetex-3 sys-apps/ed sys-libs/zlib X? ( x11-libs/libXmu x11-libs/libXp x11-libs/libXpm x11-libs/libICE x11-libs/libSM x11-libs/libXaw x11-libs/libXfont ) >=media-libs/libpng-1.2.1 sys-libs/ncurses >=net-libs/libwww-5.3.2-r1 !app-text/dvipdfm !dev-tex/currvita >=dev-lang/perl-5.2 tk? ( dev-perl/perl-tk ) dev-util/dialog X? ( motif? ( x11-libs/openmotif ) !motif? ( neXt? ( x11-libs/neXtaw ) !neXt? ( Xaw3d? ( x11-libs/Xaw3d ) ) ) !app-text/xdvik ) !dev-tex/memoir !dev-tex/lineno !dev-tex/SIunits !dev-tex/floatflt !dev-tex/g-brief !dev-tex/koma-script
+0
+ftp://cam.ctan.org/tex-archive/systems/unix/teTeX/3.0/distrib/tetex-src-3.0.tar.gz ftp://cam.ctan.org/tex-archive/systems/unix/teTeX/3.0/distrib/tetex-texmf-3.0po.tar.gz http://tutimura.ath.cx/~nob/tex/ptetex/ptetex3/ptetex3-20071203.tar.gz http://tutimura.ath.cx/~nob/tex/ptetex/ptetex-cmap/ptetex-cmap-20051117.tar.gz mirror://gentoo/ptex-3.1.10_p20071122-dviljk-security-fixes.patch.bz2
+
+http://www.nn.iij4u.or.jp/~tutimura/tex/ptetex.html
+GPL-2 BSD
+TeX distribution teTeX with Japanese patch collection 'ptetex3'
+alpha amd64 arm hppa ia64 ppc ppc64 sh sparc x86
+tetex-3 toolchain-funcs portability flag-o-matic multilib libtool tetex autotools eutils
+X motif Xaw3d neXt iconv unicode X doc tk X Xaw3d motif neXt
+
+
+
+0
+
+compile install postinst preinst setup test unpack
+
+
+
+
+

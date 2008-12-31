@@ -1,0 +1,22 @@
+agg? ( >=x11-libs/agg-2.5 ) opengl? ( !agg? ( virtual/opengl gtk? ( x11-libs/gtkglext ) ) ) cairo? ( !opengl? ( !agg? ( x11-libs/cairo ) ) ) !agg? ( !cairo? ( !opengl? ( >=x11-libs/agg-2.5 ) ) ) gtk? ( x11-libs/gtk+:2 x11-libs/pango dev-libs/glib dev-libs/atk ) kde? ( kde-base/kdelibs:3.5 ) qt3? ( x11-libs/qt:3 ) sdl? ( media-libs/libsdl ) !gtk? ( !kde? ( !qt3? ( !sdl? ( !fbcon? ( x11-libs/gtk+:2 x11-libs/pango dev-libs/glib dev-libs/atk kde-base/kdelibs:3.5 ) ) ) ) ) dev-libs/libxml2 sys-libs/zlib media-libs/jpeg media-libs/giflib media-libs/libpng net-misc/curl ffmpeg? ( !gstreamer? ( media-libs/libsdl >=media-video/ffmpeg-0.4.9_p20080326 ) ) gstreamer? ( media-plugins/gst-plugins-ffmpeg media-plugins/gst-plugins-mad ) >=dev-libs/boost-1.35.0 x11-libs/libX11 x11-libs/libXi x11-libs/libXmu x11-libs/libXt x11-proto/xproto dbus? ( sys-apps/dbus ) sys-devel/libtool dev-util/pkgconfig =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+agg? ( >=x11-libs/agg-2.5 ) opengl? ( !agg? ( virtual/opengl gtk? ( x11-libs/gtkglext ) ) ) cairo? ( !opengl? ( !agg? ( x11-libs/cairo ) ) ) !agg? ( !cairo? ( !opengl? ( >=x11-libs/agg-2.5 ) ) ) gtk? ( x11-libs/gtk+:2 x11-libs/pango dev-libs/glib dev-libs/atk ) kde? ( kde-base/kdelibs:3.5 ) qt3? ( x11-libs/qt:3 ) sdl? ( media-libs/libsdl ) !gtk? ( !kde? ( !qt3? ( !sdl? ( !fbcon? ( x11-libs/gtk+:2 x11-libs/pango dev-libs/glib dev-libs/atk kde-base/kdelibs:3.5 ) ) ) ) ) dev-libs/libxml2 sys-libs/zlib media-libs/jpeg media-libs/giflib media-libs/libpng net-misc/curl ffmpeg? ( !gstreamer? ( media-libs/libsdl >=media-video/ffmpeg-0.4.9_p20080326 ) ) gstreamer? ( media-plugins/gst-plugins-ffmpeg media-plugins/gst-plugins-mad ) >=dev-libs/boost-1.35.0 x11-libs/libX11 x11-libs/libXi x11-libs/libXmu x11-libs/libXt x11-proto/xproto dbus? ( sys-apps/dbus ) sys-devel/libtool
+0
+mirror://gnu/gnash/0.8.4/gnash-0.8.4.tar.bz2
+test
+http://www.gnu.org/software/gnash
+GPL-3
+Gnash is a GNU Flash movie player that supports many SWF v7 features
+~amd64 ~ppc ~x86
+toolchain-funcs qt3 portability nsplugins versionator multilib kde-functions libtool autotools eutils
++agg -cairo dbus -fbcon -ffmpeg +gstreamer +gtk +kde +nsplugin -opengl -qt3 -sdl video_cards_i810
+
+
+
+1
+
+compile install postinst setup test unpack
+
+
+
+
+

@@ -1,0 +1,22 @@
+postgres? ( virtual/postgresql-server ) !postgres? ( sqlite? ( =dev-db/sqlite-2* ) !sqlite? ( sys-libs/gdbm ) ) sys-devel/bison sys-devel/flex
+postgres? ( virtual/postgresql-server ) !postgres? ( sqlite? ( =dev-db/sqlite-2* ) !sqlite? ( sys-libs/gdbm ) ) net-firewall/iptables virtual/cron dev-lang/perl gd? ( dev-perl/GD ) virtual/logger
+0
+mirror://sourceforge/ipac-ng/ipac-ng-1.31.tar.bz2 mirror://gentoo/ipac-ng-1.31-patches.tar.bz2
+
+http://sourceforge.net/projects/ipac-ng/
+GPL-2
+ip accounting suite for 2.4 and 2.6 series kernels with text and PNG image output like mrtg
+~amd64 ~ppc x86
+toolchain-funcs multilib portability eutils
+gd sqlite postgres
+
+
+
+0
+
+compile install postinst setup test unpack
+
+
+
+
+

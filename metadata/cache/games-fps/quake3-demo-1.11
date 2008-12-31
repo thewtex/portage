@@ -1,0 +1,22 @@
+
+sys-libs/glibc dedicated? ( app-misc/screen ) amd64? ( app-emulation/emul-linux-x86-baselibs ) opengl? ( virtual/opengl x86? ( x11-libs/libXext x11-libs/libX11 x11-libs/libXau x11-libs/libXdmcp ) amd64? ( app-emulation/emul-linux-x86-xlibs || ( >=app-emulation/emul-linux-x86-xlibs-7.0 x11-drivers/nvidia-drivers >=x11-drivers/ati-drivers-8.8.25-r1 ) ) ) !dedicated? ( !opengl? ( virtual/opengl x86? ( x11-libs/libXext x11-libs/libX11 x11-libs/libXau x11-libs/libXdmcp ) amd64? ( app-emulation/emul-linux-x86-xlibs || ( >=app-emulation/emul-linux-x86-xlibs-7.0 x11-drivers/nvidia-drivers >=x11-drivers/ati-drivers-8.8.25-r1 ) ) ) )
+0
+mirror://idsoftware/quake3/linux/linuxq3ademo-1.11-6.x86.gz.sh mirror://3dgamers/quake3arena/linuxq3ademo-1.11-6.x86.gz.sh
+strip
+http://www.idsoftware.com/games/quake/quake3-arena/
+Q3AEULA
+the playable demo of Quake III Arena by Id Software
+-* amd64 x86
+multilib toolchain-funcs games portability eutils
+opengl dedicated 3dfx
+
+
+
+0
+interactive
+compile install postinst preinst setup unpack
+
+
+
+
+

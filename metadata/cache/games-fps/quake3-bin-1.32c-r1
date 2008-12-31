@@ -1,0 +1,22 @@
+app-arch/unzip
+sys-libs/glibc dedicated? ( app-misc/screen ) amd64? ( app-emulation/emul-linux-x86-baselibs ) opengl? ( virtual/opengl x86? ( x11-libs/libXext x11-libs/libX11 x11-libs/libXau x11-libs/libXdmcp ) amd64? ( app-emulation/emul-linux-x86-xlibs || ( >=app-emulation/emul-linux-x86-xlibs-7.0 x11-drivers/nvidia-drivers >=x11-drivers/ati-drivers-8.8.25-r1 ) ) ) cdinstall? ( games-fps/quake3-data ) cdinstall? ( teamarena? ( games-fps/quake3-teamarena ) ) !dedicated? ( !opengl? ( virtual/opengl x86? ( x11-libs/libXext x11-libs/libX11 x11-libs/libXau x11-libs/libXdmcp ) amd64? ( app-emulation/emul-linux-x86-xlibs || ( >=app-emulation/emul-linux-x86-xlibs-7.0 x11-drivers/nvidia-drivers >=x11-drivers/ati-drivers-8.8.25-r1 ) ) ) )
+0
+mirror://idsoftware/quake3/linux/linuxq3apoint-1.32b-3.x86.run mirror://idsoftware/quake3/quake3-1.32c.zip
+strip
+http://www.idsoftware.com/
+Q3AEULA
+3rd installment of the classic id 3D first-person shooter
+-* ~amd64 ~x86
+multilib toolchain-funcs games portability eutils
+cdinstall dedicated opengl teamarena
+
+
+
+0
+interactive
+compile install postinst preinst setup unpack
+
+
+
+
+

@@ -1,0 +1,22 @@
+kernel_FreeBSD? ( >=sys-freebsd/freebsd-sources-6.2 ) virtual/pmake
+kernel_linux? ( || ( >=sys-fs/udev-096 >=sys-apps/hotplug-20040923 ) )
+0
+http://www.bughost.org/firmware/ipw2200-fw-2.4.tgz
+
+http://ipw2200.sourceforge.net/
+ipw2200-fw
+Firmware for the Intel PRO/Wireless 2200BG/2915ABG miniPCI and 2225BG PCI adapters
+~amd64 x86 ~x86-fbsd
+toolchain-funcs portability flag-o-matic multilib bsdmk eutils
+kernel_linux kernel_FreeBSD
+
+
+
+0
+
+compile install postinst unpack
+
+
+
+
+

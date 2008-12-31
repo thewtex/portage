@@ -1,0 +1,22 @@
+>=sys-libs/zlib-1.1.4 >=sys-devel/gcc-config-1.4 virtual/libiconv >=dev-libs/gmp-4.2.1 >=dev-libs/mpfr-2.3 !build? ( gcj? ( gtk? ( x11-libs/libXt x11-libs/libX11 x11-libs/libXtst x11-proto/xproto x11-proto/xextproto >=x11-libs/gtk+-2.2 x11-libs/pango ) >=media-libs/libart_lgpl-2.1 app-arch/zip app-arch/unzip ) >=sys-libs/ncurses-5.2-r2 nls? ( sys-devel/gettext ) ) test? ( sys-devel/autogen dev-util/dejagnu ) >=sys-apps/texinfo-4.2-r4 >=sys-devel/bison-1.875 ppc? ( >=sys-devel/binutils-2.17 ) ppc64? ( >=sys-devel/binutils-2.17 ) >=sys-devel/binutils-2.15.94 sys-devel/gnuconfig >=sys-apps/sed-4
+>=sys-libs/zlib-1.1.4 >=sys-devel/gcc-config-1.4 virtual/libiconv >=dev-libs/gmp-4.2.1 >=dev-libs/mpfr-2.3 !build? ( gcj? ( gtk? ( x11-libs/libXt x11-libs/libX11 x11-libs/libXtst x11-proto/xproto x11-proto/xextproto >=x11-libs/gtk+-2.2 x11-libs/pango ) >=media-libs/libart_lgpl-2.1 app-arch/zip app-arch/unzip ) >=sys-libs/ncurses-5.2-r2 nls? ( sys-devel/gettext ) )
+4.3
+mirror://gnu/gcc/gcc-4.3.0/gcc-4.3.0.tar.bz2 mirror://gentoo/gcc-4.3.0-uclibc-patches-1.0.tar.bz2 http://dev.gentoo.org/~lv/GCC/gcc-4.3.0-uclibc-patches-1.0.tar.bz2 http://dev.gentoo.org/~eradicator/gcc/gcc-4.3.0-uclibc-patches-1.0.tar.bz2 http://dev.gentoo.org/~vapier/dist/gcc-4.3.0-uclibc-patches-1.0.tar.bz2 http://dev.gentoo.org/~halcy0n/patches/gcc-4.3.0-uclibc-patches-1.0.tar.bz2 mirror://gentoo/gcc-4.3.0-patches-1.2.tar.bz2 http://dev.gentoo.org/~lv/GCC/gcc-4.3.0-patches-1.2.tar.bz2 http://dev.gentoo.org/~eradicator/gcc/gcc-4.3.0-patches-1.2.tar.bz2 http://dev.gentoo.org/~vapier/dist/gcc-4.3.0-patches-1.2.tar.bz2 http://dev.gentoo.org/~halcy0n/patches/gcc-4.3.0-patches-1.2.tar.bz2 gcj? ( ftp://sourceware.org/pub/java/ecj-4.3.jar )
+strip
+http://gcc.gnu.org/
+GPL-2 LGPL-2.1
+The GNU Compiler Collection. Includes C/C++, java compilers, pie+ssp extensions, Haj Ten Brugge runtime bounds checking
+
+toolchain portability flag-o-matic versionator multilib fixheadtails libtool gnuconfig toolchain-funcs eutils
+multislot test altivec build fortran nls nocxx bootstrap doc gcj gtk hardened libffi multilib objc vanilla profiled ip28 ip32r10k n32 n64 objc-gc mudflap objc++ openmp fixed-point
+
+>=sys-devel/gcc-config-1.4 elibc_glibc? ( >=sys-libs/glibc-2.6 )
+
+0
+
+compile install postinst postrm preinst prerm setup test unpack
+
+
+
+
+

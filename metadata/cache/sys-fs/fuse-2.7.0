@@ -1,0 +1,22 @@
+kernel_linux? ( virtual/linux-sources ) kernel_linux? ( virtual/modutils ) sys-apps/sed
+kernel_linux? ( virtual/modutils )
+0
+mirror://sourceforge/fuse/fuse-2.7.0.tar.gz
+
+http://fuse.sourceforge.net
+GPL-2
+An interface for filesystems implemented in userspace.
+alpha amd64 ~hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd
+toolchain-funcs portability versionator multilib libtool linux-info linux-mod eutils
+kernel_linux kernel_FreeBSD kernel_linux
+
+kernel_FreeBSD? ( sys-fs/fuse4bsd )
+
+0
+
+compile install postinst postrm preinst setup unpack
+
+
+
+
+

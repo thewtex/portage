@@ -1,0 +1,22 @@
+apache2? ( =www-servers/apache-2* ) virtual/php virtual/httpd-php >=app-admin/webapp-config-1.50.15
+!apache2? ( www-servers/lighttpd ) snmp? ( net-analyzer/net-snmp ) net-analyzer/rrdtool dev-php/adodb virtual/mysql virtual/cron >=app-admin/webapp-config-1.50.15
+0.8.7b-r2
+http://www.cacti.net/downloads/cacti-0.8.7b.tar.gz http://www.cacti.net/downloads/patches/0.8.7b/upgrade_from_086k_fix.patch http://www.cacti.net/downloads/patches/0.8.7b/snmp_auth_none_notice.patch
+
+http://www.cacti.net/
+GPL-2
+Cacti is a complete frontend to rrdtool
+alpha amd64 ~hppa ppc ppc64 sparc x86
+toolchain-funcs portability depend.php multilib phpconfutils webapp depend.apache eutils
+snmp apache2 vhosts
+
+
+
+0
+
+compile install postinst prerm setup unpack
+
+
+
+
+

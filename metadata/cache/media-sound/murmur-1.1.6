@@ -1,0 +1,22 @@
+|| ( ( x11-libs/qt-core:4[ssl] x11-libs/qt-dbus:4 || ( x11-libs/qt-sql:4[sqlite] x11-libs/qt-sql:4[mysql] ) ) =x11-libs/qt-4.3*:4[dbus,ssl,sqlite3] =x11-libs/qt-4.3*:4[dbus,ssl,mysql] ) ice? ( dev-cpp/Ice dev-libs/boost ) logrotate? ( app-admin/logrotate )
+|| ( ( x11-libs/qt-core:4[ssl] x11-libs/qt-dbus:4 || ( x11-libs/qt-sql:4[sqlite] x11-libs/qt-sql:4[mysql] ) ) =x11-libs/qt-4.3*:4[dbus,ssl,sqlite3] =x11-libs/qt-4.3*:4[dbus,ssl,mysql] ) ice? ( dev-cpp/Ice dev-libs/boost ) logrotate? ( app-admin/logrotate )
+0
+mirror://sourceforge/mumble/mumble-1.1.6.tar.gz
+
+http://mumble.sourceforge.net/
+BSD
+Voice chat software for gaming written in Qt4 (server).
+~amd64 ~x86
+qt4 toolchain-funcs portability versionator multilib eutils
+debug +ice logrotate pch
+
+
+
+2
+
+configure install postinst prepare setup
+
+
+
+
+

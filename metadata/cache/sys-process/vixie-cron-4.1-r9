@@ -1,0 +1,22 @@
+selinux? ( sys-libs/libselinux ) pam? ( virtual/pam ) >=sys-apps/sed-4.0.5
+selinux? ( sys-libs/libselinux ) pam? ( virtual/pam ) !virtual/cron virtual/mta >=sys-process/cronbase-0.3.2
+0
+mirror://gentoo/vixie-cron-4.1.tar.bz2 mirror://gentoo/vixie-cron-4.1-gentoo-r4.patch.bz2
+
+ftp://ftp.isc.org/isc/cron/
+as-is
+Paul Vixie's cron daemon, a fully featured crond implementation
+alpha amd64 arm hppa ia64 mips ppc ppc64 s390 sh sparc ~sparc-fbsd x86 ~x86-fbsd
+toolchain-funcs portability flag-o-matic multilib cron pam eutils
+selinux pam debug
+
+
+virtual/cron
+0
+
+compile install postinst setup unpack
+
+
+
+
+

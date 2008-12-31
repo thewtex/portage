@@ -1,0 +1,22 @@
+>=net-libs/courier-authlib-0.61.0 >=dev-libs/openssl-0.9.6 >=sys-libs/gdbm-1.8.0 dev-libs/libpcre app-misc/mime-types fax? ( >=media-libs/netpbm-9.12 virtual/ghostscript >=net-dialup/mgetty-1.1.28 ) pam? ( virtual/pam ) mysql? ( virtual/mysql ) ldap? ( >=net-nds/openldap-1.2.11 ) postgres? ( virtual/postgresql-base ) spell? ( virtual/aspell-dict ) fam? ( virtual/fam ) !mailwrapper? ( !virtual/mta ) !virtual/imapd !mail-filter/maildrop
+>=net-libs/courier-authlib-0.61.0 >=dev-libs/openssl-0.9.6 >=sys-libs/gdbm-1.8.0 dev-libs/libpcre app-misc/mime-types fax? ( >=media-libs/netpbm-9.12 virtual/ghostscript >=net-dialup/mgetty-1.1.28 ) pam? ( virtual/pam ) mysql? ( virtual/mysql ) ldap? ( >=net-nds/openldap-1.2.11 ) postgres? ( virtual/postgresql-base ) spell? ( virtual/aspell-dict ) fam? ( virtual/fam ) !mailwrapper? ( !virtual/mta ) !virtual/imapd !mail-filter/maildrop dev-lang/perl sys-process/procps
+0
+mirror://sourceforge/courier/courier-0.60.0.tar.bz2
+
+http://www.courier-mta.org/
+GPL-2
+An MTA designed specifically for maildirs
+~alpha ~amd64 ~hppa ~ia64 ~ppc ~sparc ~x86
+toolchain-funcs multilib portability eutils flag-o-matic
+postgres ldap mysql pam nls ipv6 spell fax crypt norewrite mailwrapper fam web webmail
+
+mailwrapper? ( >=net-mail/mailwrapper-0.2 ) pam? ( net-mail/mailbase ) crypt? ( >=app-crypt/gnupg-1.0.4 )
+virtual/mta virtual/mda virtual/imapd
+0
+
+compile config install postinst test unpack
+
+
+
+
+

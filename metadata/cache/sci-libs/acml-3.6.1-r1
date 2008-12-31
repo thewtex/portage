@@ -1,0 +1,22 @@
+openmp? ( >=sys-devel/gcc-4.2 ) !openmp? ( =sys-devel/gcc-4.1* ) app-admin/eselect-blas app-admin/eselect-lapack =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+openmp? ( >=sys-devel/gcc-4.2 ) !openmp? ( =sys-devel/gcc-4.1* ) app-admin/eselect-blas app-admin/eselect-lapack doc? ( app-doc/blas-docs app-doc/lapack-docs )
+0
+x86? ( acml-3-6-1-gfortran-32bit.tgz ) amd64? ( acml-3-6-1-gfortran-64bit.tgz int64? ( acml-3-6-1-gfortran-64bit-int64.tgz ) )
+strip fetch
+http://developer.amd.com/acml.jsp
+ACML
+AMD Core Math Library (ACML) for x86 and amd64 CPUs
+~amd64 ~x86
+toolchain-funcs portability multilib fortran libtool autotools eutils
+openmp int64 doc examples debug
+
+
+
+0
+
+install nofetch postinst setup test unpack
+
+
+
+
+

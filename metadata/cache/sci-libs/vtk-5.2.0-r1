@@ -1,0 +1,22 @@
+mpi? ( || ( sys-cluster/openmpi sys-cluster/lam-mpi sys-cluster/mpich2 ) ) python? ( >=dev-lang/python-2.0 ) boost? ( dev-libs/boost ) cg? ( media-gfx/nvidia-cg-toolkit ) tcl? ( >=dev-lang/tcl-8.2.3 ) tk? ( >=dev-lang/tk-8.2.3 ) java? ( >=virtual/jre-1.5 ) !qt4? ( qt3? ( >=x11-libs/qt-3.3.4:3 ) ) qt4? ( || ( ( x11-libs/qt-core:4 x11-libs/qt-gui:4 ) =x11-libs/qt-4.3*:4 ) ) dev-libs/expat dev-libs/libxml2 media-libs/freetype media-libs/jpeg media-libs/libpng media-libs/tiff virtual/opengl x11-libs/libXmu java? ( >=virtual/jdk-1.5 ) >=dev-util/cmake-2.2.3 virtual/python java? ( >=dev-java/java-config-2.1.6 >=sys-apps/portage-2.1.2.7 )
+mpi? ( || ( sys-cluster/openmpi sys-cluster/lam-mpi sys-cluster/mpich2 ) ) python? ( >=dev-lang/python-2.0 ) boost? ( dev-libs/boost ) cg? ( media-gfx/nvidia-cg-toolkit ) tcl? ( >=dev-lang/tcl-8.2.3 ) tk? ( >=dev-lang/tk-8.2.3 ) java? ( >=virtual/jre-1.5 ) !qt4? ( qt3? ( >=x11-libs/qt-3.3.4:3 ) ) qt4? ( || ( ( x11-libs/qt-core:4 x11-libs/qt-gui:4 ) =x11-libs/qt-4.3*:4 ) ) dev-libs/expat dev-libs/libxml2 media-libs/freetype media-libs/jpeg media-libs/libpng media-libs/tiff virtual/opengl x11-libs/libXmu java? ( >=dev-java/java-config-2.1.6 >=sys-apps/portage-2.1.2.7 )
+0
+http://www.vtk.org/files/release/5.2/vtk-5.2.0.tar.gz examples? ( http://www.vtk.org/files/release/5.2/vtkdata-5.2.0.tar.gz ) doc? ( http://www.vtk.org/files/release/5.2/vtkDocHtml-5.2.0.tar.gz )
+
+http://www.vtk.org
+BSD LGPL-2
+The Visualization Toolkit
+~amd64 ~x86
+qt4 multilib portability distutils flag-o-matic python java-utils-2 versionator alternatives java-pkg-opt-2 toolchain-funcs eutils qt3
+boost cg doc examples mpi patented python tcl tk threads qt3 qt4 elibc_FreeBSD java
+
+
+
+1
+
+compile install postinst postrm setup unpack
+
+
+
+
+

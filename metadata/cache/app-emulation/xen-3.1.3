@@ -1,0 +1,22 @@
+
+|| ( sys-boot/grub sys-boot/grub-static ) >=sys-kernel/xen-sources-2.6.18
+0
+mirror://gentoo/xen-3.1.3.tar.bz2
+test
+http://www.xensource.com/xen/xen/
+GPL-2
+The Xen virtual machine monitor
+~amd64 ~x86
+mount-boot toolchain-funcs portability flag-o-matic multilib eutils
+debug custom-cflags pae
+
+~app-emulation/xen-tools-3.1.3
+
+0
+
+compile install postinst preinst setup unpack
+
+
+
+
+

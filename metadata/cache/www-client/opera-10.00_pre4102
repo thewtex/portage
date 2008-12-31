@@ -1,0 +1,22 @@
+>=sys-apps/sed-4 >=sys-apps/sed-4
+media-libs/libexif media-libs/jpeg >=media-libs/fontconfig-2.1.94-r1 x11-libs/libXrandr x11-libs/libXp x11-libs/libXmu x11-libs/libXi x11-libs/libXft x11-libs/libXext x11-libs/libXcursor x11-libs/libX11 x11-libs/libSM x11-libs/libICE qt-static? ( !qt3? ( x11-libs/libXinerama media-libs/nas ) ) x86? ( !qt-static? ( !qt3? ( =x11-libs/qt-3* ) ) ) amd64? ( ia32? ( app-emulation/emul-linux-x86-qtlibs ) !ia32? ( =x11-libs/qt-3* ) ) ppc? ( =x11-libs/qt-3* ) spell? ( app-text/aspell ) x86-fbsd? ( =virtual/libstdc++-3* !qt-static? ( !qt3? ( =x11-libs/qt-3* ) ) )
+0
+x86-fbsd? ( http://snapshot.opera.com/unix/10.0-Alpha-1/intel-freebsd/opera-10.00-4102.freebsd5-shared-qt3.i386.tar.bz2 ) ppc? ( http://snapshot.opera.com/unix/10.0-Alpha-1/ppc-linux/opera-10.00-4102.gcc4-shared-qt3.ppc.tar.bz2 ) qt-static? ( qt3? ( amd64? ( ia32? ( http://snapshot.opera.com/unix/10.0-Alpha-1/intel-linux/opera-10.00-4102.gcc4-static-qt3.i386.tar.bz2 ) !ia32? ( http://snapshot.opera.com/unix/10.0-Alpha-1/x86_64-linux/opera-10.00-4103.gcc4-shared-qt3.x86_64.tar.bz2 ) ) x86? ( http://snapshot.opera.com/unix/10.0-Alpha-1/intel-linux/opera-10.00-4102.gcc4-static-qt3.i386.tar.bz2 ) ) !qt3? ( amd64? ( ia32? ( http://snapshot.opera.com/unix/10.0-Alpha-1/intel-linux/opera-10.00-4102.gcc4-bundled-qt4.i386.tar.bz2 ) !ia32? ( http://snapshot.opera.com/unix/10.0-Alpha-1/x86_64-linux/opera-10.00-4103.gcc4-shared-qt3.x86_64.tar.bz2 ) ) x86? ( http://snapshot.opera.com/unix/10.0-Alpha-1/intel-linux/opera-10.00-4102.gcc4-bundled-qt4.i386.tar.bz2 ) ) ) !qt-static? ( qt3? ( amd64? ( ia32? ( http://snapshot.opera.com/unix/10.0-Alpha-1/intel-linux/opera-10.00-4102.gcc4-shared-qt3.i386.tar.bz2 ) !ia32? ( http://snapshot.opera.com/unix/10.0-Alpha-1/x86_64-linux/opera-10.00-4103.gcc4-shared-qt3.x86_64.tar.bz2 ) ) x86? ( http://snapshot.opera.com/unix/10.0-Alpha-1/intel-linux/opera-10.00-4102.gcc4-shared-qt3.i386.tar.bz2 ) ) !qt3? ( amd64? ( ia32? ( http://snapshot.opera.com/unix/10.0-Alpha-1/intel-linux/opera-10.00-4102.gcc4-qt4.i386.tar.bz2 ) !ia32? ( http://snapshot.opera.com/unix/10.0-Alpha-1/x86_64-linux/opera-10.00-4103.gcc4-shared-qt3.x86_64.tar.bz2 ) ) x86? ( http://snapshot.opera.com/unix/10.0-Alpha-1/intel-linux/opera-10.00-4102.gcc4-qt4.i386.tar.bz2 ) ) )
+mirror strip test
+http://www.opera.com/
+OPERA-9.0
+A standards-compliant graphical Web browser
+~amd64 ~ppc ~x86 ~x86-fbsd
+gnome2 toolchain-funcs portability multilib gnome2-utils libtool gnome.org fdo-mime eutils
+elibc_FreeBSD gnome ia32 qt-static qt3 spell
+
+
+
+0
+
+compile install postinst postrm preinst unpack
+
+
+
+
+

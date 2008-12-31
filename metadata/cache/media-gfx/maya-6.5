@@ -1,0 +1,22 @@
+app-arch/unzip >=app-arch/rpm2targz-9.0-r1
+app-shells/tcsh x86? ( virtual/fam !bundled-libs? ( =x11-libs/qt-3* || ( sys-libs/libstdc++-v3 =sys-devel/gcc-3.3* ) >=x11-libs/openmotif-2.2 ) ) amd64? ( >=app-emulation/emul-linux-x86-baselibs-2.1.4 app-emulation/emul-linux-x86-xlibs !bundled-libs? ( app-emulation/emul-linux-x86-qtlibs ) ) doc? ( !bundled-libs? ( >=virtual/jre-1.4.2 ) ) virtual/opengl
+6.5
+
+fetch userpriv
+http://www.autodesk.com/maya
+maya-5.0 mayadoc-5.0
+Alias Wavefront's Maya. Commercial modeling and animation package.
+~amd64 ~x86
+toolchain-funcs portability versionator multilib rpm eutils
+bundled-libs maya-shaderlibrary doc
+
+
+
+0
+interactive
+install nofetch postinst unpack
+
+
+
+
+

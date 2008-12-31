@@ -1,0 +1,22 @@
+bzip2? ( app-arch/bzip2 ) crypt? ( >=dev-libs/gmp-4.1.2 ) milter? ( || ( mail-filter/libmilter mail-mta/sendmail ) ) iconv? ( virtual/libiconv ) nls? ( sys-devel/gettext ) dev-libs/gmp >=sys-libs/zlib-1.2.1-r3 >=sys-apps/sed-4 >=dev-util/pkgconfig-0.20 =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool >=sys-apps/sed-4
+bzip2? ( app-arch/bzip2 ) crypt? ( >=dev-libs/gmp-4.1.2 ) milter? ( || ( mail-filter/libmilter mail-mta/sendmail ) ) iconv? ( virtual/libiconv ) nls? ( sys-devel/gettext ) dev-libs/gmp >=sys-libs/zlib-1.2.1-r3 >=sys-apps/sed-4 selinux? ( sec-policy/selinux-clamav ) sys-apps/grep
+0
+mirror://sourceforge/clamav/clamav-0.94.2.tar.gz
+test
+http://www.clamav.net/
+GPL-2
+Clam Anti-Virus Scanner
+alpha amd64 hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd
+toolchain-funcs portability flag-o-matic versionator multilib fixheadtails libtool autotools eutils
+bzip2 crypt iconv mailwrapper milter nls selinux ipv6
+
+
+virtual/antivirus
+0
+
+compile install postinst setup unpack
+
+
+
+
+

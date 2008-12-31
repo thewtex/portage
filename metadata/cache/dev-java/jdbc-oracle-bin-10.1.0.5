@@ -1,0 +1,22 @@
+doc? ( app-arch/unzip ) >=dev-java/java-config-2.1.6 >=sys-apps/portage-2.1.2.7
+>=virtual/jre-1.4 >=dev-java/java-config-2.1.6 >=sys-apps/portage-2.1.2.7
+10.1
+!dms? ( !debug? ( jdbc-oracle-bin-10.1.0.5-ojdbc14.jar ) debug? ( jdbc-oracle-bin-10.1.0.5-ojdbc14_g.jar ) ) dms? ( !debug? ( jdbc-oracle-bin-10.1.0.5-ojdbc14dms.jar ) debug? ( jdbc-oracle-bin-10.1.0.5-ojdbc14dms_g.jar ) ) jdbc-oracle-bin-10.1.0.5-ocrs12.jar doc? ( jdbc-oracle-bin-10.1.0.5-javadoc.zip ) examples? ( jdbc-oracle-bin-10.1.0.5-demo.tar ) nls? ( jdbc-oracle-bin-10.1.0.5-orai18n.jar )
+fetch
+http://www.oracle.com/technology/software/tech/java/sqlj_jdbc/index.html
+oracle-jdbc
+JDBC 3.0 Drivers for Oracle
+~amd64 ~ppc ~x86
+toolchain-funcs java-pkg-2 portability java-utils-2 versionator multilib eutils
+debug dms doc examples nls elibc_FreeBSD
+
+
+
+0
+
+compile install nofetch preinst setup unpack
+
+
+
+
+

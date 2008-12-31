@@ -1,0 +1,22 @@
+!build? ( sys-apps/sed >=sys-devel/binutils-2.11.90.0.31 )
+!build? ( >=sys-libs/ncurses-5.2 sys-devel/make ) virtual/dev-manager
+2.6.18.028.059.6
+mirror://kernel/linux/kernel/v./linux-2.6.18.tar.bz2 http://download.openvz.org/kernel/branches/rhel5-2.6.18/028stab059.6/patches/patch-92.1.13.el5.028stab059.6-combined.gz
+binchecks strip
+http://www.openvz.org
+GPL-2
+Full sources including OpenVZ patchset for the 2.6.18 kernel tree
+~amd64 ~ia64 ~ppc64 ~sparc ~x86
+toolchain-funcs portability versionator multilib kernel-2 eutils
+symlink build
+
+
+virtual/linux-sources
+0
+
+compile install postinst preinst setup unpack
+
+
+
+
+

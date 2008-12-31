@@ -1,0 +1,22 @@
+!app-emulation/virtualbox-bin !app-emulation/virtualbox-ose-additions !app-emulation/virtualbox-modules dev-libs/libIDL >=dev-libs/libxslt-1.1.19 dev-libs/xalan-c dev-libs/xerces-c !headless? ( qt4? ( || ( ( x11-libs/qt-gui x11-libs/qt-core ) =x11-libs/qt-4.3*:4 ) ) x11-libs/libXcursor media-libs/libsdl x11-libs/libXt ) dev-util/kbuild >=dev-lang/yasm-0.6.2 sys-devel/bin86 sys-devel/dev86 sys-power/iasl media-libs/libpng >=media-libs/alsa-lib-1.0.13 pulseaudio? ( media-sound/pulseaudio ) python? ( >=dev-lang/python-2.3 ) kernel_linux? ( virtual/linux-sources ) kernel_linux? ( virtual/modutils ) sys-apps/sed dev-util/subversion net-misc/rsync
+!app-emulation/virtualbox-bin !app-emulation/virtualbox-ose-additions !app-emulation/virtualbox-modules dev-libs/libIDL >=dev-libs/libxslt-1.1.19 dev-libs/xalan-c dev-libs/xerces-c !headless? ( qt4? ( || ( ( x11-libs/qt-gui x11-libs/qt-core ) =x11-libs/qt-4.3*:4 ) ) x11-libs/libXcursor media-libs/libsdl x11-libs/libXt ) sys-apps/usermode-utilities net-misc/bridge-utils sys-apps/hal kernel_linux? ( virtual/modutils )
+0
+
+
+http://www.virtualbox.org/
+GPL-2
+Softwarefamily of powerful x86 virtualization
+
+qt4 toolchain-funcs portability flag-o-matic versionator multilib subversion pax-utils linux-info fdo-mime linux-mod eutils
+alsa headless pulseaudio python +qt4 sdk kernel_linux
+
+
+
+1
+
+compile install postinst postrm preinst setup unpack
+
+
+
+
+

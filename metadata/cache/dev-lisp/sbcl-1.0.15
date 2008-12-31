@@ -1,0 +1,22 @@
+doc? ( sys-apps/texinfo media-gfx/graphviz )
+doc? ( sys-apps/texinfo media-gfx/graphviz )
+0
+mirror://sourceforge/sbcl/sbcl-1.0.15-source.tar.bz2 x86? ( mirror://sourceforge/sbcl/sbcl-1.0.12-x86-linux-binary.tar.bz2 ) amd64? ( mirror://sourceforge/sbcl/sbcl-1.0.12-x86-64-linux-binary.tar.bz2 ) ppc? ( mirror://sourceforge/sbcl/sbcl-1.0-powerpc-linux-binary.tar.bz2 ) sparc? ( mirror://sourceforge/sbcl/sbcl-0.9.17-sparc-linux-binary.tar.bz2 ) alpha? ( mirror://sourceforge/sbcl/sbcl-0.9.12-alpha-linux-binary.tar.bz2 ) mips? ( !cobalt? ( mirror://sourceforge/sbcl/sbcl-1.0.12-mips-linux-binary.tar.bz2 ) ) mips? ( cobalt? ( mirror://sourceforge/sbcl/sbcl-1.0.12-mipsel-linux-binary.tar.bz2 ) )
+
+http://sbcl.sourceforge.net/
+MIT
+Steel Bank Common Lisp (SBCL) is an implementation of ANSI Common Lisp.
+-* ~amd64 ~ppc ~sparc ~x86
+toolchain-funcs portability flag-o-matic multilib common-lisp-common-3 eutils
+ldb source threads unicode doc cobalt
+
+dev-lisp/gentoo-init
+virtual/commonlisp
+0
+
+compile install postinst postrm setup test unpack
+
+
+
+
+

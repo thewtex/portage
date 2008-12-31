@@ -1,0 +1,22 @@
+!build? ( sys-apps/sed >=sys-devel/binutils-2.11.90.0.31 )
+!build? ( >=sys-libs/ncurses-5.2 sys-devel/make ) virtual/dev-manager
+2.6.16.20
+mirror://kernel/linux/kernel/v2.6/patch-2.6.16.20.bz2 mirror://kernel/linux/kernel/v2.6/linux-2.6.16.tar.bz2 mirror://gentoo/linux-2.6.16.20-sh-20060611.patch.bz2
+binchecks strip
+http://dev.gentoo.org/~dsd/genpatches
+GPL-2
+Full SuperH sources including the gentoo patchset for the 2.6 kernel tree
+-* sh
+toolchain-funcs portability versionator multilib kernel-2 eutils
+symlink build
+
+
+virtual/linux-sources virtual/alsa
+0
+
+compile install postinst preinst setup unpack
+
+
+
+
+
