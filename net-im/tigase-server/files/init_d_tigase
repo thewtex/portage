@@ -1,0 +1,50 @@
+#!/sbin/runscript
+
+depend() {
+	need net
+	use dns logger
+}
+
+start()	{
+	source /etc/conf.d/tigase
+
+	ebegin "Starting Tigase"
+
+	if [ -x ${TIGASE_CONFIG} ]
+	then
+		rm ${TIGASE_CONFIG}
+	fi
+
+	start-stop-daemon --user ${TIGASE_USER} --start --quiet --background --pidfile /var/run/tigase --make-pidfile --exec /usr/bin/java -- ${JAVA_OPTIONS} -classpath $(java-config -dp tigase-server):${CLASSPATH} tigase.server.XMPPServer -c ${TIGASE_CONFIG} --property-file ${TIGASE_PROPERTIES}
+	eend $?
+}
+
+stop ()	{
+	ebegin "Stopping Tigase"
+	start-stop-daemon -u tigase --stop --quiet --pidfile /var/run/tigase
+	sleep 2
+
+	if [ -x ${TIGASE_CONFIG} ]
+	then
+		rm ${TIGASE_CONFIG}
+	fi
+
+	eend $?
+}
+
+svc_restart () {
+	source /etc/conf.d/tigase
+
+	ebegin "Restarting Tigase"
+
+	start-stop-daemon -u tigase --stop --quiet --pidfile /var/run/tigase
+	sleep 5
+
+	if [ -x ${TIGASE_CONFIG} ]
+	then
+		rm ${TIGASE_CONFIG}
+	fi
+
+	start-stop-daemon --user ${TIGASE_USER} --start --quiet --background --pidfile /var/run/tigase --make-pidfile --exec /usr/bin/java -- ${JAVA_OPTIONS} -classpath $(java-config -dp tigase-server):${CLASSPATH} tigase.server.XMPPServer -c ${TIGASE_CONFIG} --property-file ${TIGASE_PROPERTIES}
+	eend $?
+}

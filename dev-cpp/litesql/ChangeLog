@@ -1,0 +1,39 @@
+# ChangeLog for dev-cpp/litesql
+# Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  18 Jun 2008; Tiziano Müller <dev-zero@gentoo.org> litesql-0.3.2.ebuild,
+  +files/litesql-0.3.2-gcc43_glibc28.patch:
+  Fix gcc-4.3/glibc-2.8 compilation problems
+
+  07 Jun 2008; Tiziano Müller <dev-zero@gentoo.org> litesql-0.3.2.ebuild:
+  Changed dependency from dev-db/libpq to virtual/postgresql-base
+
+  17 Feb 2008; (Tommy[D]) tommy100@gmx.de litesql-0.3.2.ebuild:
+  Shorten description
+
+  13 Jan 2008; (Tommy[D]) tommy100@gmx.de litesql-0.3.2.ebuild:
+  drop WANT_AUTO*
+
+  20 Jun 2007; Jakub Moc <jakub@gentoo.org> litesql-0.3.2.ebuild:
+  Fix up configure when no use flags are set, cosmetics
+
+  26 Apr 2007; Ali Polatel (hawking) <polatel@gmail.com>
+  litesql-0.3.2.ebuild:
+  Remove app-doc/doxygen from RDEPEND
+
+  04 Dec 2006; Jakub Moc <jakub@gentoo.org> litesql-0.3.2.ebuild:
+  Migration to virtual/mysql
+
+  20 Oct 2006; Christian Faulhammer (opfer) <gentoo@faulhammer.org>
+  litesql-0.3.2.ebuild:
+  added trailing slash to HOMEPAGE URL
+
+  05 Oct 2006; Markus Ullmann <jokey@gentoo.org> litesql-0.3.2.ebuild:
+  Add missing autoconf/automake dependency
+
+  31 Aug 2006; Tiziano Müller <gentoo@dev-zero.ch> +litesql-0.3.2.ebuild,
+  +files/litesql-0.3.2-extra_qualifier.patch,
+  +files/litesql-0.3.2-pkg_makefile_am.patch, +metadata.xml:
+  New ebuild for bug #145675
+

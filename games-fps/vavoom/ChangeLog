@@ -1,0 +1,128 @@
+# ChangeLog for games-fps/vavoom
+# Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  09 Nov 2008; Davide Cendron (scen) <scen@gentoo.org> -vavoom-1.28.ebuild,
+  +vavoom-1.29.ebuild:
+  Version bump. Implemented also some EAPI2 feature (USE conditional
+  dependencies)
+
+  31 Aug 2008; Thomas Sachau (Tommy[D]) <tommy@gentoo.org> metadata.xml:
+  Add local useflags to metadata.xml (GLEP 56)
+
+  18 Jun 2008; Davide Cendron (scen) <scen@gentoo.org>
+  -vavoom-1.27.1.ebuild, +vavoom-1.28.ebuild:
+  Version bump
+
+  15 Apr 2008; Davide Cendron (scen) <scen@gentoo.org> -vavoom-1.27.ebuild,
+  +vavoom-1.27.1.ebuild:
+  Version bump
+
+  07 Apr 2008; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  vavoom-1.27.ebuild, vavoom-9999.ebuild:
+  Fix quotation
+
+  06 Apr 2008; Davide Cendron (scen) <scen@gentoo.org>
+  -files/vavoom-makefile_nowrapper.patch, -files/vavoom_cmake_build.patch:
+  Really nuke files dir
+
+  05 Apr 2008; Davide Cendron (scen) <scen@gentoo.org> -vavoom-1.26.ebuild,
+  +vavoom-1.27.ebuild, vavoom-9999.ebuild:
+  Version bump (removing also unnecessary patch files)
+
+  04 Feb 2008; Davide Cendron (scen) <scen@gentoo.org> vavoom-1.26.ebuild:
+  Removed unneeded patch that broke ebuild unpack process
+
+  02 Feb 2008; Davide Cendron (scen) <scen@gentoo.org> vavoom-9999.ebuild:
+  Fixed dependencies plus some tidyup
+
+  02 Feb 2008; Davide Cendron (scen) <scen@gentoo.org>
+  files/vavoom_cmake_build.patch, vavoom-1.26.ebuild, vavoom-9999.ebuild:
+  Updated cmake patch to reflect upstream changes. Introduced use of EAPI, and
+  enabling "sdl" USE flag by default. Readded "vorbis" USE flag in SVN live
+  ebuild, because a user would can enable Vorbis support, but not install the
+  enhanced music files (see previous change by jakub); if "music" is on, and
+  "vorbis" is off, Vorbis support is forcibly enabled.
+
+  31 Jan 2008; Davide Cendron (scen) <scen@gentoo.org>
+  +files/vavoom_cmake_build.patch, vavoom-9999.ebuild:
+  Upstream has switched build system to CMake, so i've changed the SVN live
+  ebuild accordingly
+
+  21 Jan 2008; Davide Cendron (scen) <scen@gentoo.org>
+  -files/vavoom-1.25_flac-1.2_fix.patch, -vavoom-1.25.ebuild,
+  +vavoom-1.26.ebuild:
+  Version bump
+
+  13 Jan 2008; Jakub Moc <jakub@gentoo.org> vavoom-1.25.ebuild,
+  vavoom-9999.ebuild:
+  Fix wxGTK handling
+
+  04 Dec 2007; Davide Cendron (scen) <scen@gentoo.org>
+  +files/vavoom-1.25_flac-1.2_fix.patch, vavoom-1.25.ebuild:
+  Added patch to fix compile failure with media-libs/flac-1.2*
+
+  13 Oct 2007; Jakub Moc <jakub@gentoo.org> vavoom-1.25.ebuild,
+  vavoom-9999.ebuild:
+  Sanitize built_with_use checks so that we do not die too many times. Remove
+  redundant vorbis USE flag as well.
+
+  08 Oct 2007; Davide Cendron (scen) <scen@gentoo.org>
+  -files/1.24-vulnerabilities.patch, -vavoom-1.24-r1.ebuild,
+  +vavoom-1.25.ebuild, vavoom-9999.ebuild:
+  Version bump (and updated dependencies for SVN live ebuild)
+
+  01 Oct 2007; Davide Cendron (scen) <scen@gentoo.org>
+  +files/1.24-vulnerabilities.patch, -vavoom-1.24.ebuild,
+  +vavoom-1.24-r1.ebuild:
+  Revision bump for security fixes (thanks to Robert Buchholz <rbu at gentoo
+  dot org> for reporting)
+
+  21 Aug 2007; Davide Cendron (scen) <scen@gentoo.org> vavoom-9999.ebuild:
+  Install also proper graphical launcher icon
+
+  08 Aug 2007; Davide Cendron (scen) <scen@gentoo.org> vavoom-9999.ebuild:
+  Added 'wxwindows' USE flag, to enable installation of graphical launcher,
+  based on WxWidgets toolkit
+
+  12 Jul 2007; David Shakaryan <omp@gentoo.org> vavoom-1.24.ebuild,
+  vavoom-9999.ebuild:
+  Place $FILESDIR in quotes; remove die on epatch.
+
+  22 Jun 2007; Charlie Shepherd <masterdriverz@gentoo.org>
+  vavoom-9999.ebuild:
+  Don't die on epatch failure (it dies itself)
+
+  21 Jun 2007; Davide Cendron (scen) <scen@gentoo.org> vavoom-1.24.ebuild,
+  vavoom-9999.ebuild:
+  Fixed optional dependency to vavoom-models: now version >=1.4.1 is required
+
+  21 Jun 2007; Davide Cendron (scen) <scen@gentoo.org> vavoom-1.24.ebuild,
+  vavoom-9999.ebuild, +files/vavoom-makefile_nowrapper.patch:
+  Added patch to get rid of executable wrappers, added 'asm' USE flag
+
+  18 Jun 2007; Davide Cendron (scen) <scen@gentoo.org> vavoom-9999.ebuild:
+  Updated ESVN_REPO_URI (like explained in Sourceforge instructions)
+
+  15 Jun 2007; Ali Polatel (hawking) <polatel@gmail.com>
+  -vavoom-1.23.1.ebuild:
+  Drop old
+
+  14 Jun 2007; Davide Cendron (scen) <scen@gentoo.org> +vavoom-1.24.ebuild:
+  Historical version bump: Vavoom celebrates his own 7th years of imp and
+  gargoyle fragging, happy birthday! :) )
+
+  08 Jun 2007; Davide Cendron (scen) <scen@gentoo.org> vavoom-1.23.1.ebuild,
+  vavoom-9999.ebuild:
+  Fixed installation of binary executables (previous behaviour was broken)
+
+  07 Jun 2007; Davide Cendron (scen) <scen@gentoo.org> +vavoom-9999.ebuild:
+  Added also SVN 'live' ebuild
+
+  07 Jun 2007; Davide Cendron (scen) <scen@gentoo.org> vavoom-1.23.1.ebuild:
+  Removed useless old commented lines
+
+  07 Jun 2007; Davide Cendron (scen) <scen@gentoo.org>
+  +vavoom-1.23.1.ebuild, +metadata.xml:
+  New ebuild for bug 132055, thanks to Paul Bredbury and #gentoo-sunrise guys
+

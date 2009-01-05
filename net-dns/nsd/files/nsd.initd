@@ -1,0 +1,57 @@
+#!/sbin/runscript 
+# Copyright 1999-2008 Gentoo Foundation 
+# Distributed under the terms of the GNU General Public License v2 
+# $Header: $ 
+#
+opts="${opts} reload configtest"
+description="NSD is an authoritative only, high performance, open source name server"
+description_start="Start the server"
+description_stop="Stop the server"
+description_configtest="Check the syntax of the configuration file"
+description_reload="Reload the database file"
+
+CONTROL="/usr/sbin/nsdc"
+
+depend() { 
+	need net 
+	use logger 
+	provide auth-dns
+} 
+
+configtest() {
+	ebegin "Checking config"
+		if [ ! -e "/etc/nsd/nsd.conf" ]; then
+			eerror "You need to create an appropriate config file"
+			eerror "in /etc/nsd/ . An example can be found in /etc/nsd/nsd.conf.sample"
+			return 1
+		fi
+
+		if ! nsd-checkconf "/etc/nsd/nsd.conf"; then
+			eerror "You have errors in your configfile"
+			return 1
+		fi
+	eend
+}
+
+start() { 
+	configtest || return 1
+
+	ebegin "Starting NSD"
+		${CONTROL} start
+		${CONTROL} running
+	eend $? 
+}
+
+stop() { 
+	ebegin "Stopping NSD"
+		${CONTROL} patch
+		${CONTROL} stop
+	eend $? 
+} 
+
+reload() {
+	configtest || return 1
+	ebegin "Reloading NSD"
+		${CONTROL} reload
+	eend $? 
+}
