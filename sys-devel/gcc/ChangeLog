@@ -1,6 +1,12 @@
 # ChangeLog for sys-devel/gcc
 # Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/gcc/ChangeLog,v 1.673 2008/12/29 23:04:15 the_paya Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/gcc/ChangeLog,v 1.674 2008/12/31 21:33:46 solar Exp $
+
+  05 Jan 2009; Daniel Robbins <drobbins@gentoo.org> gcc-4.3.2-r2.ebuild:
+  masking for now.
+
+  31 Dec 2008; <solar@gentoo.org> gcc-4.3.2-r2.ebuild:
+  - specs bump
 
   29 Dec 2008; Javier Villavicencio <the_paya@gentoo.org>
   gcc-4.3.2-r2.ebuild:
@@ -196,13 +202,13 @@
   gcc-4.1.1-r3.ebuild, gcc-4.1.2.ebuild, gcc-4.2.0.ebuild:
   Drop virtual/x11 references.
 
-  24 Jun 2007; Piotr Jaroszyński <peper@gentoo.org> gcc-3.2.2.ebuild:
+  24 Jun 2007; Piotr JaroszyÅski <peper@gentoo.org> gcc-3.2.2.ebuild:
   (QA) Don't use KEYWORDS="-*". bug #160519.
 
   12 Jun 2007; Fernando J. Pereda <ferdy@gentoo.org> gcc-4.1.2.ebuild:
   Stable on alpha as per bug #178768
 
-  02 Jun 2007; Raúl Porcel <armin76@gentoo.org> gcc-4.1.2.ebuild:
+  02 Jun 2007; RaÃºl Porcel <armin76@gentoo.org> gcc-4.1.2.ebuild:
   ia64 stable wrt #178768
 
   19 May 2007; Christian Faulhammer <opfer@gentoo.org> gcc-4.1.2.ebuild:
@@ -216,7 +222,7 @@
   19 May 2007; Mike Frysinger <vapier@gentoo.org> +gcc-4.2.0.ebuild:
   Version bump.
 
-  17 May 2007; Raúl Porcel <armin76@gentoo.org> gcc-4.1.2.ebuild:
+  17 May 2007; RaÃºl Porcel <armin76@gentoo.org> gcc-4.1.2.ebuild:
   x86 stable wrt #178768
 
   16 May 2007; Joseph Jezak <josejx@gentoo.org> gcc-4.1.2.ebuild:
@@ -246,7 +252,7 @@
   13 Feb 2007; Gustavo Zacarias <gustavoz@gentoo.org> gcc-4.1.1-r3.ebuild:
   Stable on sparc for 2007.0
 
-  12 Feb 2007; Bryan Østergaard <kloeri@gentoo.org> gcc-4.1.1-r3.ebuild:
+  12 Feb 2007; Bryan Ãstergaard <kloeri@gentoo.org> gcc-4.1.1-r3.ebuild:
   Stable on Alpha + IA64, bug 160663.
 
   06 Feb 2007; Simon Stelling <blubb@gentoo.org> gcc-4.1.1-r3.ebuild:
@@ -293,10 +299,10 @@
   30 Dec 2006; Mike Frysinger <vapier@gentoo.org> +gcc-2.95.3-r10.ebuild:
   Add support for toolchain.eclass #124578 by Harald van Dijk.
 
-  28 Dec 2006; Bryan Østergaard <kloeri@gentoo.org> gcc-3.4.6-r2.ebuild:
+  28 Dec 2006; Bryan Ãstergaard <kloeri@gentoo.org> gcc-3.4.6-r2.ebuild:
   Stable on  Alpha.
 
-  10 Dec 2006; Bryan Østergaard <kloeri@gentoo.org> gcc-4.1.1-r1.ebuild,
+  10 Dec 2006; Bryan Ãstergaard <kloeri@gentoo.org> gcc-4.1.1-r1.ebuild,
   gcc-4.1.1-r3.ebuild:
   Add ~alpha keyword.
 
@@ -347,13 +353,13 @@
   gcc-3.4.6-r2.ebuild:
   Do not force libstdc++-v3 anymore #84961.
 
-  06 Sep 2006; Diego Pettenò <flameeyes@gentoo.org> gcc-4.1.1-r1.ebuild:
+  06 Sep 2006; Diego PettenÃ² <flameeyes@gentoo.org> gcc-4.1.1-r1.ebuild:
   Re-add the ~x86-fbsd keyword, it was protoize once again.
 
   05 Sep 2006; Joshua Kinard <kumba@gentoo.org> ChangeLog:
   Mark gcc-4.1.1 stable on mips, with -r1 in unstable.
 
-  05 Sep 2006; Diego Pettenò <flameeyes@gentoo.org> gcc-4.1.1-r1.ebuild:
+  05 Sep 2006; Diego PettenÃ² <flameeyes@gentoo.org> gcc-4.1.1-r1.ebuild:
   Remove ~x86-fbsd keyword as there are problems building.
 
 *gcc-4.1.1-r1 (03 Sep 2006)
@@ -435,7 +441,7 @@
   31 May 2006; Joseph Jezak <josejx@gentoo.org> gcc-3.4.6-r1.ebuild:
   Marked ppc stable.
 
-  29 May 2006; Diego Pettenò <flameeyes@gentoo.org> gcc-4.1.1.ebuild:
+  29 May 2006; Diego PettenÃ² <flameeyes@gentoo.org> gcc-4.1.1.ebuild:
   Add ~x86-fbsd keyword (currently profile masked).
 
   29 May 2006; Guy Martin <gmsoft@gentoo.org> gcc-3.4.4-r1.ebuild,
@@ -456,7 +462,7 @@
   27 May 2006; Mark Loeser <halcy0n@gentoo.org> gcc-4.1.1.ebuild:
   Exclude patch for pr22889; bug #110002
 
-  26 May 2006; Bryan Østergaard <kloeri@gentoo.org> gcc-3.4.6-r1.ebuild:
+  26 May 2006; Bryan Ãstergaard <kloeri@gentoo.org> gcc-3.4.6-r1.ebuild:
   Stable on alpha.
 
 *gcc-4.1.1 (25 May 2006)
@@ -499,7 +505,7 @@
   Manifest:
   Fix digest for 3.4.5-r1 patchset
 
-  18 Apr 2006; Diego Pettenò <flameeyes@gentoo.org> gcc-3.4.6-r1.ebuild,
+  18 Apr 2006; Diego PettenÃ² <flameeyes@gentoo.org> gcc-3.4.6-r1.ebuild,
   gcc-4.1.0.ebuild:
   Add dependency over virtual/libiconv (for three series of gcc) as it's
   needed to build gcc also without nls.
@@ -509,7 +515,7 @@
   18 Apr 2006; Mark Loeser <halcy0n@gentoo.org> +gcc-3.4.6-r1.ebuild:
   Bump 3.4.6 patchset to fix bugs #127190 #126279 and #126871
 
-  12 Apr 2006; Bryan Østergaard <kloeri@gentoo.org> gcc-3.4.6.ebuild:
+  12 Apr 2006; Bryan Ãstergaard <kloeri@gentoo.org> gcc-3.4.6.ebuild:
   ~alpha 3.4.6 - solves a ld segfault in binutils when emerging gmp.
 
   11 Apr 2006; Joshua Kinard <kumba@gentoo.org>
@@ -527,7 +533,7 @@
   08 Apr 2006; <nixnut@gentoo.org> gcc-3.4.6.ebuild:
   Added ~ppc
 
-  30 Mar 2006; Diego Pettenò <flameeyes@gentoo.org> gcc-3.4.6.ebuild:
+  30 Mar 2006; Diego PettenÃ² <flameeyes@gentoo.org> gcc-3.4.6.ebuild:
   Add ~x86-fbsd keyword.
 
   28 Mar 2006; Mark Loeser <halcy0n@gentoo.org> gcc-3.4.5-r1.ebuild:
@@ -782,7 +788,7 @@
   Adding back the gcc-4.1 snapshots. The installation should be fixed now; bug
   #100679
 
-  31 Oct 2005; Bryan Østergaard <kloeri@gentoo.org> gcc-3.4.4-r1.ebuild:
+  31 Oct 2005; Bryan Ãstergaard <kloeri@gentoo.org> gcc-3.4.4-r1.ebuild:
   Stable on alpha.
 
   31 Oct 2005; Mark Loeser <halcy0n@gentoo.org> gcc-4.0.2-r1.ebuild:
@@ -1089,7 +1095,7 @@
   work (glibc I only depend on something we can build against, not build at
   this stage). Remove my patching crud that got included by mistake.
 
-  11 May 2005; Diego Pettenò <flameeyes@gentoo.org>
+  11 May 2005; Diego PettenÃ² <flameeyes@gentoo.org>
   gcc-3.4.3.20050110-r2.ebuild, gcc-4.0.1_beta20050507.ebuild:
   Make latest gcc (3.4 and 4) depend on glibc just for glibc systems.
 

@@ -32,6 +32,8 @@ src_unpack() {
 	# FreeBSD's __weak_reference macro differs from NetBSD's
 	epatch "${FILESDIR}/${P}-freebsd.patch"
 
+	epatch "${FILESDIR}/${P}-ldflags.patch"
+
 	# Fix infinite loop that allocates GB's of memory. Needed for GHCi
 	# See bug #237882
 	epatch "${FILESDIR}/${P}-fgetln.patch"
