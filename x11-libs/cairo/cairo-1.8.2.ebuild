@@ -1,6 +1,6 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/cairo/cairo-1.8.2.ebuild,v 1.2 2008/12/07 11:57:27 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/cairo/cairo-1.8.2.ebuild,v 1.4 2009/01/05 13:26:13 remi Exp $
 
 inherit eutils flag-o-matic libtool
 
@@ -27,7 +27,7 @@ RDEPEND="media-libs/fontconfig
 	X? ( 	>=x11-libs/libXrender-0.6
 		x11-libs/libXext
 		x11-libs/libX11
-		virtual/xft )
+		x11-libs/libXft )
 	xcb? (	>=x11-libs/libxcb-0.92
 		x11-libs/xcb-util )"
 #	test? (
@@ -75,7 +75,7 @@ src_compile() {
 		$(use_enable directfb) $(use_enable xcb) \
 		$(use_enable svg) $(use_enable glitz) $(use_enable X xlib-xrender) \
 		$(use_enable debug test-surfaces) --enable-pdf  --enable-png \
-		--enable-freetype --enable-ps \
+		--enable-ft --enable-ps \
 		|| die "configure failed"
 
 	emake || die "compile failed"

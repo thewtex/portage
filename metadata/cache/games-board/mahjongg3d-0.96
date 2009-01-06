@@ -1,5 +1,5 @@
-x11-libs/qt:3 virtual/opengl =sys-devel/automake-1.9* >=sys-devel/autoconf-2.61 sys-devel/libtool sys-devel/make dev-util/pkgconfig dev-lang/perl x11-libs/libXt x11-proto/xf86vidmodeproto xinerama? ( x11-proto/xineramaproto ) arts? ( kde-base/arts )
-x11-libs/qt:3 virtual/opengl xinerama? ( x11-libs/libXinerama ) arts? ( kde-base/arts )
+x11-libs/qt:3[opengl] virtual/opengl =sys-devel/automake-1.9* >=sys-devel/autoconf-2.61 sys-devel/libtool sys-devel/make dev-util/pkgconfig dev-lang/perl x11-libs/libXt x11-proto/xf86vidmodeproto xinerama? ( x11-proto/xineramaproto ) arts? ( kde-base/arts )
+x11-libs/qt:3[opengl] virtual/opengl xinerama? ( x11-libs/libXinerama ) arts? ( kde-base/arts )
 0
 http://www.reto-schoelly.de/mahjongg3d/mahjongg3d-0.96.tar.bz2 http://www.reto-schoelly.de/mahjongg3d/mahjongg3d-0.96-patch2.tar.bz2
 
@@ -12,9 +12,9 @@ debug elibc_FreeBSD arts xinerama
 
 
 
-1
+2
 
-compile install postinst postrm preinst setup unpack
+compile configure install postinst postrm preinst prepare setup unpack
 
 
 
