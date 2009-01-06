@@ -1,20 +1,20 @@
->=dev-libs/openssl-0.9.6 sys-apps/iproute2 dev-libs/libev sys-devel/gnuconfig
->=dev-libs/openssl-0.9.6 sys-apps/iproute2 dev-libs/libev
+dev-libs/libev >=dev-libs/openssl-0.9.7c nls? ( sys-devel/gettext ) virtual/linux-sources kernel_linux? ( virtual/linux-sources )
+>=dev-libs/openssl-0.9.7c
 0
 http://ftp.gnu.org/gnu/gvpe/gvpe-2.21.tar.gz
 
 http://savannah.gnu.org/projects/gvpe
 GPL-2
-GVPE is a suite designed to provide a virtual private network for multiple nodes over an untrusted network.
-~x86 ~amd64
-toolchain-funcs multilib portability eutils gnuconfig
+GNU Virtual Private Ethernet
+~amd64 ~x86
+toolchain-funcs portability versionator multilib linux-info eutils
+nls tcp +compression dns icmp http-proxy cipher-aes-128 cipher-aes-192 +cipher-aes-256 cipher-blowfish digset-sha512 digset-sha256 digset-sha1 +digset-ripemd160 digset-md5 digset-md4-insecure
 
 
 
+1
 
-0
-
-compile install postinst unpack
+compile install postinst setup
 
 
 

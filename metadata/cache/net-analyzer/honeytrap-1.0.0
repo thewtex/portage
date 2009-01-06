@@ -1,0 +1,22 @@
+pcap-mon? ( virtual/libpcap ) ipq-mon? ( net-firewall/iptables ) nfq-mon? ( net-firewall/iptables net-libs/libnetfilter_queue ) !pcap-mon? ( !nfq-mon? ( !ipq-mon? ( net-firewall/iptables ) ) ) clamav? ( app-antivirus/clamav ) postgres? ( dev-db/postgresql ) cspm? ( dev-libs/libpcre ) efence? ( dev-util/efence ) =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool kernel_linux? ( virtual/linux-sources )
+pcap-mon? ( virtual/libpcap ) ipq-mon? ( net-firewall/iptables ) nfq-mon? ( net-firewall/iptables net-libs/libnetfilter_queue ) !pcap-mon? ( !nfq-mon? ( !ipq-mon? ( net-firewall/iptables ) ) ) clamav? ( app-antivirus/clamav ) postgres? ( dev-db/postgresql ) cspm? ( dev-libs/libpcre )
+0
+mirror://sourceforge/honeytrap/honeytrap-1.0.0.tar.bz2
+
+http://honeytrap.mwcollect.org/
+GPL-2
+Network security tool for observing network services via low-interactive honeypot
+~amd64 ~x86
+toolchain-funcs portability versionator multilib libtool linux-info autotools eutils
+pcap-mon ipq-mon nfq-mon clamav postgres spamsum cspm efence debug profile
+
+
+
+0
+
+compile install postinst setup unpack
+
+
+
+
+

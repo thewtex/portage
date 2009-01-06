@@ -1,0 +1,22 @@
+media-libs/libpng media-libs/jpeg sdl? ( >=media-libs/libsdl-1.2 media-libs/sdl-mixer ) !sdl? ( allegro? ( >=media-libs/allegro-4.0 ) ) !sdl? ( !allegro? ( !dedicated? ( opengl? ( virtual/opengl ) sdl? ( >=media-libs/libsdl-1.2 media-libs/sdl-mixer ) allegro? ( media-libs/allegrogl ) !sdl? ( !allegro? ( >=media-libs/libsdl-1.2 media-libs/sdl-mixer ) ) ) ) ) opengl? ( opengl? ( virtual/opengl ) sdl? ( >=media-libs/libsdl-1.2 media-libs/sdl-mixer ) allegro? ( media-libs/allegrogl ) !sdl? ( !allegro? ( >=media-libs/libsdl-1.2 media-libs/sdl-mixer ) ) ) vorbis? ( media-libs/libvorbis ) flac? ( media-libs/flac ) mad? ( media-libs/libmad ) mikmod? ( media-libs/libmikmod ) openal? ( media-libs/openal ) wxwindows? ( =x11-libs/wxGTK-2.8* ) >=dev-util/cmake-2.4.6 dev-util/subversion net-misc/rsync
+media-libs/libpng media-libs/jpeg sdl? ( >=media-libs/libsdl-1.2 media-libs/sdl-mixer ) !sdl? ( allegro? ( >=media-libs/allegro-4.0 ) ) !sdl? ( !allegro? ( !dedicated? ( opengl? ( virtual/opengl ) sdl? ( >=media-libs/libsdl-1.2 media-libs/sdl-mixer ) allegro? ( media-libs/allegrogl ) !sdl? ( !allegro? ( >=media-libs/libsdl-1.2 media-libs/sdl-mixer ) ) ) ) ) opengl? ( opengl? ( virtual/opengl ) sdl? ( >=media-libs/libsdl-1.2 media-libs/sdl-mixer ) allegro? ( media-libs/allegrogl ) !sdl? ( !allegro? ( >=media-libs/libsdl-1.2 media-libs/sdl-mixer ) ) ) vorbis? ( media-libs/libvorbis ) flac? ( media-libs/flac ) mad? ( media-libs/libmad ) mikmod? ( media-libs/libmikmod ) openal? ( media-libs/openal ) wxwindows? ( =x11-libs/wxGTK-2.8* ) allegro? ( media-sound/timidity++ )
+0
+
+
+http://www.vavoom-engine.com/
+GPL-2
+Advanced source port for Doom/Heretic/Hexen/Strife
+~amd64 ~x86
+toolchain-funcs wxwidgets portability flag-o-matic multilib subversion base games cmake-utils eutils
+allegro asm debug dedicated flac mad mikmod models music openal opengl +sdl textures tools vorbis wxwindows
+
+models? ( >=games-fps/vavoom-models-1.4.2 ) music? ( games-fps/vavoom-music ) textures? ( games-fps/vavoom-textures )
+
+1
+
+compile install postinst preinst setup test unpack
+
+
+
+
+

@@ -1,0 +1,22 @@
+!=sci-libs/openfoam-1.4.1* !=sci-libs/openfoam-kernel-1.4.1* !=sci-libs/openfoam-meta-1.4.1* !=sci-libs/openfoam-solvers-1.4.1* !=sci-libs/openfoam-utilities-1.4.1* !=sci-libs/openfoam-wmake-1.4.1* =dev-java/sun-java3d-bin-1.4* net-misc/mico <virtual/jdk-1.5 || ( >sci-visualization/paraview-3.0 sci-visualization/opendx ) !mpich? ( !lam? ( sys-cluster/openmpi ) ) lam? ( sys-cluster/lam-mpi ) mpich? ( sys-cluster/mpich2 ) >=dev-java/java-config-2.1.6 >=sys-apps/portage-2.1.2.7
+!=sci-libs/openfoam-1.4.1* !=sci-libs/openfoam-kernel-1.4.1* !=sci-libs/openfoam-meta-1.4.1* !=sci-libs/openfoam-solvers-1.4.1* !=sci-libs/openfoam-utilities-1.4.1* !=sci-libs/openfoam-wmake-1.4.1* =dev-java/sun-java3d-bin-1.4* net-misc/mico <virtual/jdk-1.5 || ( >sci-visualization/paraview-3.0 sci-visualization/opendx ) !mpich? ( !lam? ( sys-cluster/openmpi ) ) lam? ( sys-cluster/lam-mpi ) mpich? ( sys-cluster/mpich2 ) >=dev-java/java-config-2.1.6 >=sys-apps/portage-2.1.2.7
+0
+mirror://sourceforge/foam/OpenFOAM-1.4.1.General.gtgz x86? ( mirror://sourceforge/foam/OpenFOAM-1.4.1.linuxGccDPOpt.gtgz ) amd64? ( mirror://sourceforge/foam/OpenFOAM-1.4.1.linux64GccDPOpt.gtgz ) http://dev.gentooexperimental.org/~jokey/sunrise-dist/openfoam-bin-1.4.1_p20080118.patch.bz2
+
+http://www.opencfd.co.uk/openfoam/
+GPL-2
+Open Field Operation and Manipulation - CFD Simulation Toolbox
+-* ~amd64 ~x86
+toolchain-funcs java-pkg-2 portability java-utils-2 versionator multilib eutils
+examples lam mpich elibc_FreeBSD
+
+
+
+0
+
+compile install preinst setup test unpack
+
+
+
+
+

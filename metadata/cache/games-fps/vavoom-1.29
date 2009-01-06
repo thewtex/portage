@@ -1,0 +1,22 @@
+media-libs/libpng media-libs/jpeg sdl? ( >=media-libs/libsdl-1.2[X,alsa,opengl?] media-libs/sdl-mixer[timidity] ) !sdl? ( allegro? ( >=media-libs/allegro-4.0[X,alsa] ) ) !sdl? ( !allegro? ( !dedicated? ( opengl? ( virtual/opengl ) sdl? ( >=media-libs/libsdl-1.2[X,alsa,opengl?] media-libs/sdl-mixer[timidity] ) allegro? ( media-libs/allegrogl ) !sdl? ( !allegro? ( >=media-libs/libsdl-1.2[X,alsa,opengl?] media-libs/sdl-mixer[timidity] ) ) ) ) ) opengl? ( opengl? ( virtual/opengl ) sdl? ( >=media-libs/libsdl-1.2[X,alsa,opengl?] media-libs/sdl-mixer[timidity] ) allegro? ( media-libs/allegrogl ) !sdl? ( !allegro? ( >=media-libs/libsdl-1.2[X,alsa,opengl?] media-libs/sdl-mixer[timidity] ) ) ) vorbis? ( media-libs/libvorbis ) flac? ( media-libs/flac ) mad? ( media-libs/libmad ) mikmod? ( media-libs/libmikmod ) openal? ( media-libs/openal ) wxwindows? ( x11-libs/wxGTK:2.8 ) >=dev-util/cmake-2.4.6
+media-libs/libpng media-libs/jpeg sdl? ( >=media-libs/libsdl-1.2[X,alsa,opengl?] media-libs/sdl-mixer[timidity] ) !sdl? ( allegro? ( >=media-libs/allegro-4.0[X,alsa] ) ) !sdl? ( !allegro? ( !dedicated? ( opengl? ( virtual/opengl ) sdl? ( >=media-libs/libsdl-1.2[X,alsa,opengl?] media-libs/sdl-mixer[timidity] ) allegro? ( media-libs/allegrogl ) !sdl? ( !allegro? ( >=media-libs/libsdl-1.2[X,alsa,opengl?] media-libs/sdl-mixer[timidity] ) ) ) ) ) opengl? ( opengl? ( virtual/opengl ) sdl? ( >=media-libs/libsdl-1.2[X,alsa,opengl?] media-libs/sdl-mixer[timidity] ) allegro? ( media-libs/allegrogl ) !sdl? ( !allegro? ( >=media-libs/libsdl-1.2[X,alsa,opengl?] media-libs/sdl-mixer[timidity] ) ) ) vorbis? ( media-libs/libvorbis ) flac? ( media-libs/flac ) mad? ( media-libs/libmad ) mikmod? ( media-libs/libmikmod ) openal? ( media-libs/openal ) wxwindows? ( x11-libs/wxGTK:2.8 ) allegro? ( media-sound/timidity++ )
+0
+mirror://sourceforge/vavoom/vavoom-1.29.tar.bz2
+
+http://www.vavoom-engine.com/
+GPL-2
+Advanced source port for Doom/Heretic/Hexen/Strife
+~amd64 ~x86
+toolchain-funcs wxwidgets portability flag-o-matic multilib base games cmake-utils eutils
+allegro asm debug dedicated flac mad mikmod models music openal opengl +sdl textures tools vorbis wxwindows
+
+models? ( >=games-fps/vavoom-models-1.4.3 ) music? ( games-fps/vavoom-music ) textures? ( games-fps/vavoom-textures )
+
+2
+
+compile configure install postinst preinst prepare setup test unpack
+
+
+
+
+
