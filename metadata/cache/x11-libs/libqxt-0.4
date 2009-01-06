@@ -1,0 +1,22 @@
+doc? ( app-doc/doxygen )
+|| ( ( x11-libs/qt-gui:4 x11-libs/qt-script:4 berkdb? ( x11-libs/qt-sql:4 ) sql? ( x11-libs/qt-sql:4 ) ) =x11-libs/qt-4.3*:4[png] ) berkdb? ( sys-libs/db ) crypt? ( >=dev-libs/openssl-0.9.8 || ( x11-libs/qt-core:4[ssl] =x11-libs/qt-4.3*:4[ssl] ) ) web? ( >=dev-libs/fcgi-2.4 )
+0
+mirror://sourceforge/libqxt/libqxt-0.4.tar.gz
+
+http://libqxt.org/
+CPL-1.0
+The Qt eXTension library provides cross-platform utility classes for the Qt toolkit
+~amd64 ~x86
+qt4 toolchain-funcs portability versionator multilib eutils
+berkdb crypt debug doc sql web
+
+
+
+2
+
+compile configure install setup
+
+
+
+
+

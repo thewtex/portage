@@ -1,5 +1,5 @@
-x11-libs/qt-core:4 server? ( x11-libs/qt-sql:4 x11-libs/qt-script:4 ) X? ( x11-libs/qt-gui:4 x11-libs/qt-webkit:4 ) dbus? ( x11-libs/qt-dbus:4 ) ssl? ( dev-libs/openssl ) >=dev-util/cmake-2.6 >=dev-util/cmake-2.4.6 >=dev-util/git-1.5
-x11-libs/qt-core:4 server? ( x11-libs/qt-sql:4 x11-libs/qt-script:4 ) X? ( x11-libs/qt-gui:4 x11-libs/qt-webkit:4 ) dbus? ( x11-libs/qt-dbus:4 ) ssl? ( dev-libs/openssl )
+x11-libs/qt-core:4 dbus? ( x11-libs/qt-dbus:4 ) server? ( x11-libs/qt-sql:4[sqlite] x11-libs/qt-script:4 ) ssl? ( dev-libs/openssl x11-libs/qt-core:4[ssl] ) X? ( x11-libs/qt-gui:4 kde? ( >=kde-base/kdelibs-4.1 ) phonon? ( || ( media-sound/phonon x11-libs/qt-phonon ) ) webkit? ( x11-libs/qt-webkit:4 ) ) >=dev-util/cmake-2.6 >=dev-util/cmake-2.4.6 >=dev-util/git-1.5
+x11-libs/qt-core:4 dbus? ( x11-libs/qt-dbus:4 ) server? ( x11-libs/qt-sql:4[sqlite] x11-libs/qt-script:4 ) ssl? ( dev-libs/openssl x11-libs/qt-core:4[ssl] ) X? ( x11-libs/qt-gui:4 kde? ( >=kde-base/kdelibs-4.1 ) phonon? ( || ( media-sound/phonon x11-libs/qt-phonon ) ) webkit? ( x11-libs/qt-webkit:4 ) )
 0
 
 
@@ -8,13 +8,13 @@ GPL-3
 Core/client IRC client.
 
 git toolchain-funcs portability flag-o-matic multilib cmake-utils eutils
-+dbus debug +server +ssl +X linguas_nb_NO linguas_da linguas_de linguas_fr linguas_ru
+dbus debug kde phonon +server +ssl webkit +X linguas_cs linguas_da linguas_de linguas_fr linguas_nb_NO linguas_ru linguas_tr
 
 
 
-1
+2
 
-compile install postinst setup test unpack
+compile configure install postinst setup test unpack
 
 
 

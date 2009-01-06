@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~sparc-fbsd ~x86 ~x86-fbsd"
 IUSE="debug ncurses pam unicode kernel_linux kernel_FreeBSD"
 
-RDEPEND="kernel_linux? ( =sys-apps/sysvinit-2.86-r11 >=sys-apps/module-init-tools-3.2.2-r2 )
+RDEPEND="kernel_linux? ( =sys-apps/sysvinit-2.86-r11 )
 	kernel_FreeBSD? ( virtual/init sys-process/fuser-bsd )
 	elibc_glibc? ( >=sys-libs/glibc-2.5 )
 	ncurses? ( sys-libs/ncurses )

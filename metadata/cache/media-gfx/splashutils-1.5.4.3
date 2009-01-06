@@ -1,4 +1,4 @@
-gpm? ( sys-libs/gpm ) truetype? ( >=media-libs/freetype-2 ) png? ( >=media-libs/libpng-1.2.7 ) mng? ( media-libs/lcms media-libs/libmng ) >=media-libs/jpeg-6b >=sys-apps/baselayout-1.9.4-r5 app-arch/cpio media-gfx/fbgrab !sys-apps/lcdsplash >=dev-libs/klibc-1.5 dev-util/pkgconfig
+gpm? ( sys-libs/gpm ) truetype? ( >=media-libs/freetype-2 ) png? ( >=media-libs/libpng-1.2.7 ) mng? ( media-libs/lcms media-libs/libmng ) >=media-libs/jpeg-6b >=sys-apps/baselayout-1.9.4-r5 app-arch/cpio media-gfx/fbgrab !sys-apps/lcdsplash >=dev-libs/klibc-1.5 dev-util/pkgconfig =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
 gpm? ( sys-libs/gpm ) truetype? ( >=media-libs/freetype-2 ) png? ( >=media-libs/libpng-1.2.7 ) mng? ( media-libs/lcms media-libs/libmng ) >=media-libs/jpeg-6b >=sys-apps/baselayout-1.9.4-r5 app-arch/cpio media-gfx/fbgrab !sys-apps/lcdsplash
 0
 mirror://berlios/fbsplash/splashutils-lite-1.5.4.3.tar.bz2 mirror://berlios/fbsplash/splashutils-gentoo-1.0.16.tar.bz2 mirror://gentoo/miscsplashutils-0.1.8.tar.bz2 mirror://sourceforge/libpng/libpng-1.2.18.tar.bz2 ftp://ftp.uu.net/graphics/jpeg/jpegsrc.v6b.tar.gz mirror://sourceforge/freetype/freetype-2.3.5.tar.bz2 http://www.gzip.org/zlib/zlib-1.2.3.tar.bz2
@@ -7,7 +7,7 @@ http://fbsplash.berlios.de
 GPL-2
 Framebuffer splash utilities.
 ~amd64 ~ppc ~x86 ~arm
-toolchain-funcs multilib portability eutils
+toolchain-funcs portability multilib libtool autotools eutils
 hardened +png +truetype +mng gpm fbcondecor
 
 
