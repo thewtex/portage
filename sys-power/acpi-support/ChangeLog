@@ -1,0 +1,71 @@
+# ChangeLog for sys-power/acpi-support
+# Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  03 Nov 2008; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  acpi-support-0.109.ebuild, files/acpi-support-0.109-gentoo.patch:
+  Fix manifest,patch and remove default S
+
+  22 Sep 2008; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -acpi-support-0.103.ebuild, -files/acpi-support-0.103-gentoo.patch,
+  +acpi-support-0.109.ebuild, +files/acpi-support-0.109-gentoo.patch:
+  Version bump (requested and tested by secludedsage, thanks to him)
+
+  31 Aug 2008; Thomas Sachau (Tommy[D]) <tommy@gentoo.org> metadata.xml:
+  Add local useflags to metadata.xml (GLEP 56)
+
+  29 Jul 2008; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  acpi-support-0.103.ebuild:
+  Change SRC_URI to use the mirror list + drop empty DEPEND
+
+  20 Apr 2008; Santiago M. Mola <coldwind@gentoo.org>
+  acpi-support-0.103.ebuild:
+  Add ~amd64 keyword.
+
+  12 Nov 2007; Jakub Moc <jakub@gentoo.org>
+  -files/acpi-support-0.95-gentoo.patch, -acpi-support-0.95.ebuild:
+  Nuke old.
+
+  09 Nov 2007; azazello <gentoo@horizon.ath.cx>
+  files/acpi-support-0.103-gentoo.patch:
+  tweak patch
+
+  09 Nov 2007; azazello <gentoo@horizon.ath.cx> +acpi-support-0.103.ebuild,
+  +files/acpi-support-0.103-gentoo.patch:
+  version bump
+
+  15 Apr 2007; Jakub Moc <jakub@gentoo.org> -acpi-support-0.91.ebuild,
+  -files/acpi-support-0.91-gentoo.patch, acpi-support-0.95.ebuild:
+  Remove old, remove bogus use flags and move relevant info to pkg_postinst.
+
+  14 Apr 2007; AK <gentoo@horizon.ath.cx> acpi-support-0.95.ebuild,
+  files/acpi-support-0.95-gentoo.patch:
+  integrate w/hibernate-script, fix use-conditional statements in ebuild
+
+  13 Apr 2007; AK <gentoo@horizon.ath.cx> acpi-support-0.95.ebuild:
+  typo
+
+  13 Apr 2007; AK <gentoo@horizon.ath.cx> acpi-support-0.95.ebuild:
+  Add X use flag and rename i855->intel-855 for clarity
+
+  13 Apr 2007; AK <gentoo@horizon.ath.cx> +acpi-support-0.95.ebuild,
+  +files/acpi-support-0.95-gentoo.patch:
+  Version bump and some fixes
+
+  06 Mar 2007; AK <gentoo@horizon.ath.cx> acpi-support-0.91.ebuild,
+  files/acpi-support-0.91-gentoo.patch:
+  Fixes, cleanups, more patching
+
+  05 Mar 2007; Markus Ullmann <jokey@gentoo.org> acpi-support-0.91.ebuild:
+  Whiteys and elog
+
+  01 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  acpi-support-0.91.ebuild:
+  tabs instead of spaces in some areas; defined a real atom for
+  laptop-mode-tools (assumed version 1.32); added lots of quotes....who the
+  hell reviewd that? I guess no one.
+
+  28 Feb 2007; AK (gentoo@horizon.ath.cx) +acpi-support-0.91.ebuild,
+  +files/acpi-support-0.91-gentoo.patch, +metadata.xml:
+  New package: sys-power/acpi-support (port from ubuntu)
+

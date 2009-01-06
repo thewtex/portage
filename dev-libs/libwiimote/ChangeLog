@@ -1,0 +1,29 @@
+# ChangeLog for dev-libs/libwiimote
+# Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  23 Aug 2008; Thomas Beierlein (TomJBE) <tb@forth-ev.de> metadata.xml:
+  Added USE flag description wrt GLEP 56
+
+  19 Feb 2008; Jakub Moc <jakub@gentoo.org> libwiimote-0.4.ebuild,
+  libwiimote-9999.ebuild:
+  Add missing src_compile in 0.4 to actually make use of the USE flags; econf
+  and eautoreconf dies on its own with useful messages. Cosmetics.
+
+  16 Feb 2008; Christoph Brill (egore) egore@gmx.de libwiimote-0.4.ebuild,
+  libwiimote-9999.ebuild:
+  Update ebuilds with suggestions from Tommy[D]
+
+  16 Feb 2008; Christoph Brill (egore) egore@gmx.de
+  +files/libwiimote-9999-ldflags.patch, libwiimote-9999.ebuild:
+  Add patch to build with --as-needed LDFLAGS
+
+  16 Feb 2008; Christoph Brill (egore) egore@gmx.de libwiimote-9999.ebuild:
+  Move eautoreconf out as bootstrap command
+
+  16 Feb 2008; Christoph Brill (egore) egore@gmx.de
+  +files/libwiimote-amd64.patch, +files/libwiimote-as-needed.patch,
+  +metadata.xml, +libwiimote-0.4.ebuild, +libwiimote-9999.ebuild:
+  New Ebuilds for bug 196324 (the 0.4 release sucks and the live svn is in a
+  flux)
+
