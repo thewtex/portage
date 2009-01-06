@@ -1,5 +1,5 @@
-alsa? ( media-libs/alsa-lib ) opengl? ( virtual/opengl ) debug? ( sys-libs/ncurses ) media-libs/libpng media-libs/libsdl media-libs/sdl-net media-libs/sdl-sound
-alsa? ( media-libs/alsa-lib ) opengl? ( virtual/opengl ) debug? ( sys-libs/ncurses ) media-libs/libpng media-libs/libsdl media-libs/sdl-net media-libs/sdl-sound
+alsa? ( media-libs/alsa-lib[midi] ) opengl? ( virtual/opengl ) debug? ( sys-libs/ncurses ) media-libs/libpng media-libs/libsdl media-libs/sdl-net media-libs/sdl-sound
+alsa? ( media-libs/alsa-lib[midi] ) opengl? ( virtual/opengl ) debug? ( sys-libs/ncurses ) media-libs/libpng media-libs/libsdl media-libs/sdl-net media-libs/sdl-sound
 0
 mirror://sourceforge/dosbox/dosbox-0.72.tar.gz
 
@@ -7,14 +7,14 @@ http://dosbox.sourceforge.net/
 GPL-2
 DOS emulator
 amd64 ppc ~ppc64 ~sparc x86
-multilib toolchain-funcs games portability eutils
+toolchain-funcs portability multilib base games eutils
 alsa debug hardened opengl
 
 
 
-0
+2
 
-compile install postinst preinst setup unpack
+compile configure install postinst preinst prepare setup unpack
 
 
 

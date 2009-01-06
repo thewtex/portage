@@ -1,5 +1,5 @@
-x11-libs/qt:3 virtual/glut nls? ( virtual/libintl ) nls? ( sys-devel/gettext )
-x11-libs/qt:3 virtual/glut nls? ( virtual/libintl )
+x11-libs/qt:3[opengl] virtual/glut nls? ( virtual/libintl ) nls? ( sys-devel/gettext )
+x11-libs/qt:3[opengl] virtual/glut nls? ( virtual/libintl )
 0
 http://f.rodrigo.free.fr/r-tech/cmp/addon-module/link/link.php?games/r-katro/r-katro-0.7.0.tar.bz2
 
@@ -7,14 +7,14 @@ http://f.rodrigo.free.fr/games/r-katro/r-katro.php
 GPL-2
 3D puzzle game
 ~amd64 ~ppc x86
-toolchain-funcs qt3 portability versionator multilib games eutils
+toolchain-funcs qt3 portability versionator multilib base games eutils
 nls
 
 
 
-1
+2
 
-compile install postinst preinst setup unpack
+compile configure install postinst preinst prepare setup unpack
 
 
 
