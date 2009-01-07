@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4105 2009/01/05 19:12:56 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4114 2009/01/06 19:47:48 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -14,7 +14,6 @@
 # disallowed.
 # Test for commit block
 
-app-accessibility/brltty:icu - Adds unicode support using dev-libs/icu
 app-accessibility/festival:mbrola - Adds support for mbrola voices
 app-accessibility/freetts:jsapi - build Java Speech API (JSAPI)
 app-accessibility/freetts:mbrola - Adds support for mbrola voices
@@ -151,7 +150,6 @@ app-editors/emacs-cvs:gzip-el - Compress bundled Emacs Lisp source
 app-editors/emacs-cvs:hesiod - Enable support for net-dns/hesiod
 app-editors/emacs-cvs:sound - Enable sound
 app-editors/emacs-cvs:toolkit-scroll-bars - Use the selected toolkit's scrollbars in preference to Emacs' own scrollbars
-app-editors/emacs-cvs:xft - Build Emacs with support for the XFT font renderer
 app-editors/fe:sendmail - Send mail after editor abend
 app-editors/gvim:aqua - Include support for the Aqua / Carbon GUI
 app-editors/gvim:netbeans - Include netbeans externaleditor integration support
@@ -210,7 +208,6 @@ app-emulation/libvirt:xen - Add support for app-emulation/xen based virtual mach
 app-emulation/mol:oldworld - Includes Macintosh's OldWorld support
 app-emulation/mol:pci - Experimental PCI proxy support
 app-emulation/mol:sheep - Support for the sheep net driver
-app-emulation/open-vm-tools:icu - Enable unicode support using dev-libs/icu
 app-emulation/open-vm-tools:unity - Enable host unity support
 app-emulation/pearpc:jit - Use the JITC-x86 CPU
 app-emulation/point2play:emerald - For people who are in the Transgaming Emerald Club
@@ -425,7 +422,6 @@ app-text/namazu:kakasi - Enable kakasi support (dev-perl/Text-Kakasi)
 app-text/noweb:icon - Enable dev-lang/icon language support
 app-text/pdftk:nodrm - Decrypt a document with the user_pw even if it has an owner_pw set
 app-text/sgmltools-lite:jadetex - Add support for app-text/jadetex (for processing tex files produced by the TeX backend of Jade)
-app-text/sword:icu - Enable dev-libs/icu support for sword
 app-text/sword:lucene - Enable lucene support for faster searching (dev-cpp/clucene)
 app-text/texlive:context - Add support for the ConTeXt format (dev-texlive/texlive-context)
 app-text/texlive:cyrillic - Add support for Cyrillic (dev-texlive/texlive-langcyrillic)
@@ -633,7 +629,6 @@ dev-libs/ace:tao - Include the ACE ORB (CORBA stuff) (called tao) into the build
 dev-libs/apr:urandom - Use /dev/urandom instead of /dev/random
 dev-libs/boost:bcp - Install the bcp tool http://www.boost.org/tools/bcp/bcp.html
 dev-libs/boost:bjam - Install the BoostJam tool http://www.boost.org/tools/build/jam_src/index.html
-dev-libs/boost:icu - Add unicode support to boost.regex using dev-libs/icu
 dev-libs/boost:pyste - Add support for the pyste frontend
 dev-libs/boost:threadsonly - Only build multithreaded libs
 dev-libs/boost:tools - Build and install the boost tools (bcp, quickbook, inspect, wave)
@@ -672,13 +667,11 @@ dev-libs/soprano:clucene - Enable dev-cpp/clucene backend support.
 dev-libs/soprano:redland - Enables support for the dev-libs/redland backend.
 dev-libs/soprano:sesame2 - Enables support for the virtual/jre-1.6.0 (sesame2) backend.
 dev-libs/xerces-c:iconv - Use iconv (virtual/libiconv) as message loader and transcoder (in general it would be possible to use iconv only as message loader and something else like icu or the native method as transcoder and vice-versa, but this is a less common case and hard to handle)
-dev-libs/xerces-c:icu - Use ICU (dev-libs/icu) as message loader and transcoder. ICU supports over 180 different encodings and/or locale specific message support
 dev-libs/xerces-c:libwww - Use the net-libs/libwww library for fetching URLs, instead of the builtin method
 dev-libs/xerces-c:threads - Enable threading support through pthread (or other libraries on AIX, IRIX, HPUX, Solars). Highly recommended
 dev-libs/xerces-c:xqilla - Apply patches from the XQilla project and install additional header files
 dev-libs/xqilla:faxpp - Use dev-libs/faxpp instead of Xerces-C for certain tasks
 dev-libs/xqilla:htmltidy - Use app-text/htmltidy when parsing HTML
-dev-libs/yaz:icu - Enable ICU (Internationalization Components for Unicode) support, using dev-libs/icu
 dev-libs/yaz:ziffy - Install ziffy, a promiscuous Z39.50 APDU sniffer
 dev-lisp/abcl:clisp - Build Armed Bear Common Lisp using GNU CLISP
 dev-lisp/abcl:cmucl - Build Armed Bear Common Lisp using CMU Common Lisp
@@ -1002,7 +995,6 @@ kde-base/kopete:alias - Enable the alias plugin
 kde-base/kopete:autoreplace - Enable the autoreplace plugin
 kde-base/kopete:connectionstatus - Builds Connection Status plugin
 kde-base/kopete:contactnotes - Enable the contactnotes plugin
-kde-base/kopete:decibel - Enable the Telepathy protocol plugin
 kde-base/kopete:gadu - Enable the gadu protocol plugin
 kde-base/kopete:groupwise - Enable the groupwise protocol plugin
 kde-base/kopete:highlight - Enable the highlight plugin
@@ -1015,19 +1007,16 @@ kde-base/kopete:nowlistening - Enable the nowlistening plugin
 kde-base/kopete:otr - Encryption for IMs, using libotr
 kde-base/kopete:pipes - Enable support for the pipes plugin
 kde-base/kopete:privacy - plugin to selectively filter messages
-kde-base/kopete:qca - Enable the Qt Cryptographic Architecture
 kde-base/kopete:qq - enable support for the chinese network protocol
 kde-base/kopete:sametime - Enables support for the Sametime protocol for instant messaging
 kde-base/kopete:sms - Enable the sms protocol plugin
 kde-base/kopete:statistics - Enable the statistics plugin
-kde-base/kopete:telepathy - Enable support for the realtime communication framework telepathy
 kde-base/kopete:testbed - Enable the testbed protocol plugin
 kde-base/kopete:texteffect - Enable the texteffect plugin
 kde-base/kopete:translator - Enable the translator plugin
 kde-base/kopete:urlpicpreview - plugin to allow users to send photos through URLs
 kde-base/kopete:webpresence - Enable the webpresence plugin
 kde-base/kopete:winpopup - Enable support for the winpopup plugin
-kde-base/kopete:xslt - Enable xslt support
 kde-base/kstars:fits - Enable support for the FITS image format through cfitsio
 kde-base/kstars:nova - Enable support for libnova.
 kde-base/kstars:sbig - Enable support for SBIG.
@@ -1172,7 +1161,6 @@ media-fonts/terminus-font:ru-k - Changes view of Russian letter 'k' (see homepag
 media-fonts/terminus-font:width - Wider versions of some font elements
 media-gfx/asymptote:boehm-gc -  Enables using the Boehm-Demers-Weiser conservative garbage collector 
 media-gfx/asymptote:sigsegv -  Enables using dev-libs/libsigsegv 
-media-gfx/autotrace:flash -  Adds support for creating SWF files using Ming 
 media-gfx/blender:blender-game -  Adds game engine support to blender 
 media-gfx/blender:player -  Enable blender player 
 media-gfx/blender:verse -  Adds verse clustering features to blender 
@@ -1413,7 +1401,6 @@ media-sound/qsampler:libgig - Enable libgig support for loading Gigasampler file
 media-sound/qtractor:dssi - Enable support for DSSI Soft Synth Interface
 media-sound/qtractor:rubberband - Enable support for in-place audio clip pitch-shifting through the rubberband library
 media-sound/qtscrobbler:cli - Build commandline client
-media-sound/quodlibet:mmkeys - Enable support for special keys on multimedia keyboards
 media-sound/quodlibet:trayicon - Enable support for trayicon
 media-sound/quodlibet:tta - Enable TTA (True-Audio Loseless) support
 media-sound/radiomixer:hwmixer - Use hardware mixer instead of internal mixer routines
@@ -1469,7 +1456,6 @@ media-tv/mythtv:mmx - Builds ffmpeg's codec libraries with mmx support.
 media-tv/mythtv:opengl - Builds MythTV with support for using OpenGL as the output painter rather then Qt3 built in painter.
 media-tv/mythtv:perl - Builds the perl bindings for MythTV. Allows you to write scripts in Perl to control your MythTV setup or communicate with it.
 media-tv/mythtv:tiff - Add support for tiff loading and rendering which is only used by media-plugins/mythgallery
-media-tv/mythtv:video_cards_i810 - When combined with the xvmc USE flag, enables Intel specific XvMC extension usage.
 media-tv/mythtv:video_cards_nvidia - When combined with the xvmc USE flag, enables NVIDIA specific XvMC extension usage.
 media-tv/mythtv:video_cards_via - When combined with the xvmc USE flag, enables VIA specific XvMC extension usage.
 media-tv/mythtv:vorbis - Adds support for the Vorbis container format to MythTV.
@@ -1555,13 +1541,11 @@ media-video/mplayer:amrwb - Enables Adaptive Multi-Rate Audio support (Wide Band
 media-video/mplayer:ass - Internal SRT/SSA/ASS (SubRip / SubStation Alpha) subtitle support
 media-video/mplayer:bl - Enables Blinkenlights support in mplayer
 media-video/mplayer:cdio - Use libcdio for CD support (instead of cdparanoia)
-media-video/mplayer:color-console - Enable color console output (UNSUPPORTED)
 media-video/mplayer:cpudetection - Enables runtime cpudetection (useful for bindist, compatability on other CPUs)
 media-video/mplayer:custom-cflags - Enables custom CFLAGS (UNSUPPORTED)
 media-video/mplayer:custom-cpuopts - Fine-tune custom CPU optimizations (UNSUPPORTED)
 media-video/mplayer:dirac - Enable Dirac video support (an advanced royalty-free video compression format) via the reference library: dirac.
 media-video/mplayer:dvdnav - Use forked libdvdnav, navigate menus in GUIs
-media-video/mplayer:dxr2 - Enable DXR2 video output
 media-video/mplayer:dxr3 - Enable DXR3/H+ video output
 media-video/mplayer:enca - Enables support for charset discovery and conversion
 media-video/mplayer:live - Enables live.com streaming media support
@@ -1581,7 +1565,6 @@ media-video/mplayer:srt - Internal SRT/SSA/ASS (SubRip / SubStation Alpha) subti
 media-video/mplayer:ssse3 - faster floating point optimization for SSSE3 capable chips (Intel Core 2 and later chips)
 media-video/mplayer:teletext - Support for TV teletext interface
 media-video/mplayer:tga - Enables Targa video output
-media-video/mplayer:tivo - Enables TiVo vstream client support
 media-video/mplayer:vidix - Support for vidix video output
 media-video/mplayer:xanim - Enables support for xanim based codecs
 media-video/mplayer:xvmc - Enables X-Video Motion Compensation support
@@ -1668,8 +1651,6 @@ media-video/vlc:X - Enables support for, e.g., fullscreen mode via the X Window 
 media-video/vlc:atmo - Enables support for AtmoLight (homebrew Ambient Lighting Technology)
 media-video/vlc:cdda - Enables libcdda cd audio playback support.
 media-video/vlc:cdio - Enables CD input and control library support.
-media-video/vlc:corba - Enables corba interface support.
-media-video/vlc:daap - Enables DAAP shares services discovery support.
 media-video/vlc:dc1394 - Enables IIDC cameras support.
 media-video/vlc:dirac - Enable Dirac video support (an advanced royalty-free video compression format) via the reference library: dirac.
 media-video/vlc:fluidsynth - Enables Fluidsynth MIDI software synthesis (with external sound fonts).
@@ -1698,7 +1679,6 @@ media-video/vlc:upnp - Enables support for Intel UPnP stack.
 media-video/vlc:vcdinfo - Enables VCD information library support.
 media-video/vlc:vcdx - Enables VCD with navigation via libvcdinfo (depends on cdio)
 media-video/vlc:vlm - New videolan (media) manager (vlm), a little manager designed to launch and manage multiple streams from within one instance of VLC.
-media-video/vlc:wxwindows - Builds a x11-libs/wxGTK based frontend. This interface is no longer maintained.
 media-video/vlc:zvbi - Enables support for teletext subtitles via the zvbi library.
 media-video/winki:mjpeg - Enables mjpegtools support
 media-video/x264-encoder:mp4 - Enables support for encoding to mp4 container format
@@ -1831,7 +1811,6 @@ net-dns/djbdns:multipleip - Enables multi-IP patch
 net-dns/djbdns:roundrobin - Enables round robin patch
 net-dns/djbdns:semanticfix - Makes tinydns=data handle more semantic errors
 net-dns/dnsmasq:isc - Enable support for reading ISC DHCPd lease files
-net-dns/dnsmasq:resolvconf - Enable support for net-dns/resolvconf
 net-dns/dnsmasq:tftp - Enables built in TFTP server for netbooting
 net-dns/maradns:authonly - Allows one to build only authoritative DNS server
 net-dns/pdns:opendbx - Enable the OpenDBX backend
@@ -1978,8 +1957,6 @@ net-irc/unrealircd:prefixaq - Enable chanadmin and chanowner prefixes
 net-irc/unrealircd:showlistmodes - Support displaying channel modes during compilation
 net-irc/xchat:xchatdccserver - Enables support for the /dccserver command via a patch
 net-irc/xchat:xchatnogtk - Disables building the GTK front end to XChat
-net-irc/xchat:xft - Build xchat with support for the XFT font renderer
-net-irc/xchat-gnome:libsexy - Enable x11-libs/libsexy support
 net-irc/xchat-gnome:sound - Enable sound event support with media-libs/libcanberra
 net-irc/xchat-xsys:audacious - Enables media-sound/audacious integration
 net-irc/znc:nomodules - Don't build modules
@@ -2096,7 +2073,6 @@ net-misc/openswan:weak-algorithms - Include weak algorithms (DH1)
 net-misc/openvpn:iproute2 - Enabled iproute2 support instead of net-tools
 net-misc/openvpn:passwordsave - Enables openvpn to save passwords
 net-misc/openvpn:pkcs11 - Enable PKCS#11 smartcard support
-net-misc/quagga:bgpas4 - Enable support for 32-bit AS numbers
 net-misc/quagga:bgpclassless - Enable classless prefixes for BGP
 net-misc/quagga:fix-connected-rt - Remove interface connected routes from kernel table on link loss so that no packets get routed to downed interface
 net-misc/quagga:multipath - Enable multipath routes support for any number of routes
@@ -2233,6 +2209,7 @@ net-wireless/bluez-utils:old-daemons - Install old daemons like hidd and sdpd th
 net-wireless/bluez-utils:test-programs - Install l2test and rctest
 net-wireless/hostapd:logwatch - Install support files for sys-app/logwatch
 net-wireless/hostapd:madwifi - Add support for madwifi (Atheros chipset)
+net-wireless/hostapd:wps - Add support for Wi-Fi Protected Setup
 net-wireless/iwlwifi:ipw3945 - Add support for the IPW3945 wireless card
 net-wireless/iwlwifi:ipw4965 - Add support for the IPW4965 wireless card
 net-wireless/kdebluetooth:irmc - Enable the kitchensync(Multisynk)'s IrMCSync konnector
@@ -2295,7 +2272,6 @@ sci-geosciences/gpsd:itrax - Enable iTrax hardware support
 sci-geosciences/gpsd:ntp - Enable net-misc/ntp shared memory interface for GPS time
 sci-geosciences/gpsd:tntc - Enable True North Technologies support
 sci-geosciences/grass:gdal - Enable support for sci-libs/gdal (Grass 5 only)
-sci-geosciences/grass:glw - Enable libGLw support (requires media-libs/mesa) 
 sci-geosciences/grass:gmath - Enable gmath wrapper for BLAS/Lapack (virtual/blas, virtual/lapack)
 sci-geosciences/grass:largefile - Enable LFS support for huge files
 sci-geosciences/mapserver:agg - Enable x11-libs/agg library support
@@ -2409,7 +2385,6 @@ sys-apps/hal:acpi - Enables HAL to attempt to read from /proc/acpi/event, if una
 sys-apps/hal:crypt - Allows HAL to mount volumes that are encrypted using LUKS. sys-fs/cryptsetup-luks which has recently been renamed to sys-fs/cryptsetup allows you to create such encrypted volumes. HAL will be able to handle volumes that are removable or fixed.
 sys-apps/hal:dell - Builds and installs the Dell addon, which reads data from the Dell SM BIOS via sys-libs/libsmbios. It will read your service tag information and your hardware backlight data as well as allow you to modify the backlight settings on a Dell laptop.
 sys-apps/hal:disk-partition - Allows HAL to use libparted from sys-apps/parted to read raw partition data from your disks and process that data. Future versions of HAL (possibly 0.5.11 and higher) will allow you to create, modify, delete and format partitions from a GUI interface agnostic of your desktop environment.
-sys-apps/hal:dmi - Adds support for DMI (Desktop Management Interface)
 sys-apps/hal:doc - Generates documentation that describes HAL's fdi format.
 sys-apps/hal:laptop - Adds support for power management scripts (sys-power/pm-utils)
 sys-apps/hal:pcmcia - Allows HAL to process PCMCIA/CardBus slot data which includes inserts and removals and act on these events.
@@ -2446,7 +2421,6 @@ sys-apps/tuxonice-userui:fbsplash - Add support for framebuffer splash
 sys-apps/ucspi-ssl:tls - Add TLS support (see also http://www.suspectclass.com/~sgifford/ucspi-tls/)
 sys-apps/usbutils:network-cron - Monthly cronjob the update-usbids script
 sys-apps/util-linux:loop-aes - include support for Loop AES encryption
-sys-apps/util-linux:old-crypt - build support for the older cryptoapi that earlier util-linux's included
 sys-apps/v86d:x86emu - Use x86emu for Video BIOS calls
 sys-auth/pam_mysql:openssl - Use OpenSSL for md5 and sha1 support
 sys-auth/pam_pkcs11:pcsc-lite - build with sys-apps/pcsc-lite instead of dev-libs/openct
@@ -2679,14 +2653,12 @@ x11-libs/cairo:cleartype - Add ClearType-style behavior for sub-pixel hinting. P
 x11-libs/cairo:glitz - Build with glitz support, which replaces some software render operations with Mesa OpenGL operations
 x11-libs/cairo:opengl - When used along with USE=glitz, enables glitz-glx usage. Requires hardware OpenGL support
 x11-libs/fltk:noxft - Disables xft; use for non-english characters
-x11-libs/fltk:xft - Build with support for XFT font renderer (x11-libs/libXft)
 x11-libs/gtkmathview:t1lib - Enable media-libs/t1lib support
 x11-libs/libmatchbox:pango - Enable x11-libs/pango support
 x11-libs/libmatchbox:xsettings - Enable the use of xsettings for settings management
 x11-libs/libqxt:crypt -  Enable support for blowfish encryption using dev-libs/openssl 
 x11-libs/libqxt:sql -  Enable support for SQL databases using x11-libs/qt-sql 
 x11-libs/libqxt:web -  Enable web support using dev-libs/fcgi 
-x11-libs/openmotif:xft - Build OpenMotif with support for XFT font renderer (x11-libs/libXft)
 x11-libs/qt:glib - Enable dev-libs/glib eventloop support
 x11-libs/qt:immqt - Enable binary incompatible version of immodule for Qt
 x11-libs/qt:immqt-bc - Enable binary compatible version of immodule for Qt
@@ -2702,7 +2674,6 @@ x11-libs/wxGTK:gnome -  Use gnome-base/libgnomeprintui for printing tasks.
 x11-libs/wxGTK:gstreamer -  Enable the wxMediaCtrl class for playing audio and video through gstreamer. 
 x11-libs/wxGTK:sdl -  Use Simple Directmedia Layer (media-libs/libsdl) for audio. 
 x11-misc/adesklets:ctrlmenu - force CTRL to be pressed to fire context menu
-x11-misc/fspanel:xft - Build with support for XFT font renderer (x11-libs/libXft)
 x11-misc/notification-daemon-xfce:xfce - Enable integration in XFCE desktop
 x11-misc/openclipart:gzip - Compresses clip art using gzip
 x11-misc/slim:screenshot - Enable screenshot support (using media-gfx/imagemagick)
@@ -2720,7 +2691,6 @@ x11-plugins/wmsysmon:high-ints - Enable support for monitoring 24 interrupts. Us
 x11-terms/aterm:background - Enable background image support via media-libs/libafterimage
 x11-terms/aterm:xgetdefault - Enable resources via X instead of aterm small version
 x11-terms/eterm:escreen - Enable built-in app-misc/screen support
-x11-terms/eterm:etwin - Enable twin support
 x11-terms/hanterm:utempter - Records user logins. Useful on multi-user systems
 x11-terms/mlterm:scim - Enable scim support
 x11-terms/mlterm:uim - Enable uim support
@@ -2749,7 +2719,6 @@ x11-themes/redhat-artwork:icons - Install Bluecurve icons
 x11-themes/redhat-artwork:kdm - Install Bluecurve kde-base/kdm theme
 x11-themes/redhat-artwork:nautilus - Install Bluecurve gnome-base/nautilus icons
 x11-themes/skinenigmang-logos:dxr3 - Install logos for lower osd color depth on dxr3 cards
-x11-wm/compiz:annotate - Build the annotate plugin
 x11-wm/compiz:fuse - Enables support for the filesystem in userspace plugin through sys-fs/fuse.
 x11-wm/compiz:kde4 - Compile the kde4 window decorator and add support for kde-base/kdebase-startkde:4.1.
 x11-wm/compiz-fusion:emerald - Install the x11-wm/emerald package.
