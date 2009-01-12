@@ -1,6 +1,6 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/git/git-1.6.0.6.ebuild,v 1.7 2008/12/29 18:31:26 dertobi123 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/git/git-1.6.1.ebuild,v 1.1 2009/01/06 22:48:44 robbat2 Exp $
 
 inherit toolchain-funcs eutils elisp-common perl-module bash-completion
 

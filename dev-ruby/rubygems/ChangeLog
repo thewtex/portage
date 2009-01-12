@@ -1,6 +1,12 @@
 # ChangeLog for dev-ruby/rubygems
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/rubygems/ChangeLog,v 1.116 2009/01/07 18:12:15 fmccor Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/rubygems/ChangeLog,v 1.118 2009/01/10 15:52:59 armin76 Exp $
+
+  10 Jan 2009; RaÃºl Porcel <armin76@gentoo.org> rubygems-1.3.1.ebuild:
+  alpha/ia64 stable wrt #253424
+
+  08 Jan 2009; Jeroen Roovers <jer@gentoo.org> rubygems-1.3.1.ebuild:
+  Stable for HPPA (bug #253424).
 
   07 Jan 2009; Ferris McCormick <fmccor@gentoo.org> rubygems-1.3.1.ebuild:
   Sparc stable, part of Bug #253425.
@@ -32,7 +38,7 @@
   +files/rubygems-1.3.1-setup.patch, +rubygems-1.3.1.ebuild:
   Version bump. Also fixed bug 238061 (http_proxy settings without a scheme).
 
-  03 Nov 2008; Raúl Porcel <armin76@gentoo.org> rubygems-1.2.0.ebuild:
+  03 Nov 2008; RaÃºl Porcel <armin76@gentoo.org> rubygems-1.2.0.ebuild:
   alpha/ia64 stable wrt #244952
 
   02 Nov 2008; Markus Meier <maekke@gentoo.org> rubygems-1.2.0.ebuild:
@@ -66,7 +72,7 @@
   04 Jul 2008; Jeroen Roovers <jer@gentoo.org> rubygems-1.1.1.ebuild:
   Stable for HPPA (bug #229875).
 
-  01 Jul 2008; Raúl Porcel <armin76@gentoo.org> rubygems-1.1.1.ebuild:
+  01 Jul 2008; RaÃºl Porcel <armin76@gentoo.org> rubygems-1.1.1.ebuild:
   alpha/ia64/x86 stable wrt #229875
 
   30 Jun 2008; Brent Baude <ranger@gentoo.org> rubygems-1.1.1.ebuild:
@@ -161,7 +167,7 @@
   19 Dec 2007; Brent Baude <ranger@gentoo.org> rubygems-0.9.4-r2.ebuild:
   Marking rubygems-0.9.4-r2.ebuild  ppc and ppc64 stable for bug 202608
 
-  19 Dec 2007; Raúl Porcel <armin76@gentoo.org> rubygems-0.9.4-r2.ebuild:
+  19 Dec 2007; RaÃºl Porcel <armin76@gentoo.org> rubygems-0.9.4-r2.ebuild:
   alpha/ia64/x86 stable wrt #202608
 
   17 Dec 2007; Jeroen Roovers <jer@gentoo.org> rubygems-0.9.4-r2.ebuild:
@@ -190,12 +196,12 @@
   -files/rubygems-0.9.0-build-from-yaml.patch, -rubygems-0.9.0-r2.ebuild:
   Remove old version that will never become stable
 
-  03 Nov 2007; Raúl Porcel <armin76@gentoo.org> rubygems-0.9.4-r1.ebuild:
+  03 Nov 2007; RaÃºl Porcel <armin76@gentoo.org> rubygems-0.9.4-r1.ebuild:
   alpha/ia64/sparc/x86 stable
 
 *rubygems-0.9.4-r1 (03 Sep 2007)
 
-  03 Sep 2007; Nguyễn Thái Ngọc Duy <pclouds@gentoo.org>
+  03 Sep 2007; Nguyá»n ThÃ¡i Ngá»c Duy <pclouds@gentoo.org>
   +files/conf.d-gem_server, +files/init.d-gem_server,
   +rubygems-0.9.4-r1.ebuild:
   Add initscript for gem_server. The script was contributed by Henning Schild
@@ -204,7 +210,7 @@
   24 Aug 2007; Hans de Graaff <graaff@gentoo.org> rubygems-0.9.4.ebuild:
   Fix silly typo, thanks to marc_alec
 
-  25 Jul 2007; Raúl Porcel <armin76@gentoo.org> rubygems-0.9.4.ebuild:
+  25 Jul 2007; RaÃºl Porcel <armin76@gentoo.org> rubygems-0.9.4.ebuild:
   Add ~alpha
 
   24 Jul 2007; Steve Dibb <beandog@gentoo.org> rubygems-0.9.4.ebuild:
@@ -217,7 +223,7 @@
   11 Jul 2007; Gustavo Zacarias <gustavoz@gentoo.org> rubygems-0.9.4.ebuild:
   Stable on sparc wrt #181322
 
-  10 Jul 2007; Raúl Porcel <armin76@gentoo.org> rubygems-0.9.4.ebuild:
+  10 Jul 2007; RaÃºl Porcel <armin76@gentoo.org> rubygems-0.9.4.ebuild:
   ia64/x86 stable wrt #181322
 
   09 Jul 2007; Jeroen Roovers <jer@gentoo.org> rubygems-0.9.4.ebuild:
@@ -255,11 +261,11 @@
 
 *rubygems-0.9.2 (31 Mar 2007)
 
-  31 Mar 2007; Nguyễn Thái Ngọc Duy <pclouds@gentoo.org>
+  31 Mar 2007; Nguyá»n ThÃ¡i Ngá»c Duy <pclouds@gentoo.org>
   +rubygems-0.9.2.ebuild:
   Version bump
 
-  14 Feb 2007; Bryan Østergaard <kloeri@gentoo.org>
+  14 Feb 2007; Bryan Ãstergaard <kloeri@gentoo.org>
   rubygems-0.8.11-r6.ebuild:
   Stable on IA64, bug 163536.
 
@@ -281,23 +287,23 @@
   rubygems-0.8.11-r6.ebuild:
   stable x86; security bug #163536
 
-  28 Jan 2007; Nguyễn Thái Ngọc Duy <pclouds@gentoo.org>
+  28 Jan 2007; Nguyá»n ThÃ¡i Ngá»c Duy <pclouds@gentoo.org>
   +files/no-system-rubygems.patch, rubygems-0.9.0-r2.ebuild,
   rubygems-0.9.1.ebuild:
   Skip system rubygems in favor of new rubygems source
 
-  27 Jan 2007; Nguyễn Thái Ngọc Duy <pclouds@gentoo.org>
+  27 Jan 2007; Nguyá»n ThÃ¡i Ngá»c Duy <pclouds@gentoo.org>
   files/0.8.11-install.rb.extract_files.patch:
   Fixed the patch not too sensitive about duplicated slashes, #163536
 
-  26 Jan 2007; Nguyễn Thái Ngọc Duy <pclouds@gentoo.org>
+  26 Jan 2007; Nguyá»n ThÃ¡i Ngá»c Duy <pclouds@gentoo.org>
   rubygems-0.8.11-r5.ebuild, rubygems-0.8.11-r6.ebuild,
   rubygems-0.9.0-r2.ebuild, rubygems-0.9.1.ebuild:
   Fixed #159922
 
 *rubygems-0.8.11-r6 (26 Jan 2007)
 
-  26 Jan 2007; Nguyễn Thái Ngọc Duy <pclouds@gentoo.org>
+  26 Jan 2007; Nguyá»n ThÃ¡i Ngá»c Duy <pclouds@gentoo.org>
   +files/0.8.11-install.rb.extract_files.patch, +files/no-manage_gems.patch,
   -rubygems-0.8.11.ebuild, rubygems-0.8.11-r5.ebuild,
   +rubygems-0.8.11-r6.ebuild, -rubygems-0.9.0.ebuild,
@@ -306,32 +312,32 @@
   Patched other ebuilds so that downgrading from rubygems-0.9.1 will not fail
   Removed old ebuilds
 
-  21 Jan 2007; Nguyễn Thái Ngọc Duy <pclouds@gentoo.org>
+  21 Jan 2007; Nguyá»n ThÃ¡i Ngá»c Duy <pclouds@gentoo.org>
   rubygems-0.8.11.ebuild, rubygems-0.9.0.ebuild, rubygems-0.9.0-r1.ebuild,
   rubygems-0.9.1.ebuild:
   Added examples use flag to ebuild, #145222
 
 *rubygems-0.9.1 (17 Jan 2007)
 
-  17 Jan 2007; Nguyễn Thái Ngọc Duy <pclouds@gentoo.org>
+  17 Jan 2007; Nguyá»n ThÃ¡i Ngá»c Duy <pclouds@gentoo.org>
   +files/rubygems-0.9.1-no_post_install.patch,
   +files/rubygems-0.9.1-no_rdoc_install.patch, +rubygems-0.9.1.ebuild:
   Version bump
 
-  23 Dec 2006; Nguyễn Thái Ngọc Duy <pclouds@gentoo.org>
+  23 Dec 2006; Nguyá»n ThÃ¡i Ngá»c Duy <pclouds@gentoo.org>
   rubygems-0.9.0-r2.ebuild, rubygems-0.8.11-r5.ebuild:
   Unset RUBYOPT before installing rubygems to prevent ruby from failing due to
   missing auto_gem (bug #158455). Also warn people when rubygems is removed
 
 *rubygems-0.9.0-r2 (16 Dec 2006)
 
-  16 Dec 2006; Nguyễn Thái Ngọc Duy <pclouds@gentoo.org>
+  16 Dec 2006; Nguyá»n ThÃ¡i Ngá»c Duy <pclouds@gentoo.org>
   +files/rubygems-0.9.0-build-from-yaml.patch, +rubygems-0.9.0-r2.ebuild:
   Added patch to fix "gem build gemspec.yaml" failure
 
 *rubygems-0.9.0-r1 (01 Nov 2006)
 
-  01 Nov 2006; Diego Pettenò <flameeyes@gentoo.org>
+  01 Nov 2006; Diego PettenÃ² <flameeyes@gentoo.org>
   +files/rubygems-0.9.0-build-c-extensions.patch, +rubygems-0.9.0-r1.ebuild:
   Add patch to fix building of C-based extensions, see bug #143974. Thanks to
   John W Higgins for suggesting the course of action.
@@ -341,7 +347,7 @@
 
 *rubygems-0.9.0 (30 Jun 2006)
 
-  30 Jun 2006; Diego Pettenò <flameeyes@gentoo.org> +rubygems-0.9.0.ebuild:
+  30 Jun 2006; Diego PettenÃ² <flameeyes@gentoo.org> +rubygems-0.9.0.ebuild:
   Version bump, thanks to Steven Davidovitz in bug #138634.
 
   30 Apr 2006; Tobias Scherbaum <dertobi123@gentoo.org>
@@ -361,7 +367,7 @@
   17 Apr 2006; Caleb Tennis <caleb@gentoo.org> rubygems-0.8.11-r5.ebuild:
   x86 stable
 
-  17 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  17 Apr 2006; Diego PettenÃ² <flameeyes@gentoo.org>
   rubygems-0.8.11-r5.ebuild:
   Add ~x86-fbsd keyword.
 
