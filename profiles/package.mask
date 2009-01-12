@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.9382 2009/01/11 12:23:33 ikelos Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.9384 2009/01/11 20:56:47 pva Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,12 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Peter Volkov <pva@gentoo.org> (11 Jan 2009)
+# EC fonts are tex fonts, this package was used by lilypond at some point of
+# time, but now nothing uses them, no maintainer so it looks like time to
+# remove them from the tree has come. Objections? Report to bug 183730.
+media-fonts/ec-fonts-mftraced
 
 # Fabian Groffen <grobian@gentoo.org> (11 Jan 2009)
 # sidebar patch doesn't apply, hence sidebar USE-flag is broken.  If you
@@ -529,14 +535,6 @@ www-apps/dotproject
 # Keri Harris <keri@gentoo.org> (21 Sep 2008)
 # Development version
 =dev-lang/swi-prolog-5.7*
-
-# Andreas Proschofsky <suka@gentoo.org> (20 Sep 2008)
-# Masked for removal in 30 days. Both packages are broken
-# and are unmaintained for ages. If you want a proper
-# quickstarter for OpenOffice.org use the one which is
-# provided with the source-based build of OOo.
-app-office/ooqstart-gnome
-app-office/oooqs
 
 # MATSUU Takuto <matsuu@gentoo.org> (18 Sep 2008)
 # Masked for removal in 60 days.
