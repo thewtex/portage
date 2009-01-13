@@ -1,5 +1,5 @@
-dev-libs/libpcre plasma? ( kde-base/libplasma:4.1 ) >=dev-util/cmake-2.4.6 x11-libs/qt-core:4[qt3support,ssl] x11-libs/qt-gui:4[accessibility,dbus] x11-libs/qt-qt3support:4[accessibility] x11-libs/qt-script:4 x11-libs/qt-svg:4 x11-libs/qt-test:4 !x11-libs/qt-phonon >=dev-util/cmake-2.4.7-r1 dev-util/pkgconfig kde-base/automoc x11-libs/libXt x11-proto/xf86vidmodeproto !kdeprefix? ( !kde-base/kget:kde-4[-kdeprefix] ) >=kde-base/kdelibs-4.1.2:4.1[kdeprefix=] >=kde-base/kdepimlibs-4.1.2:4.1[kdeprefix=] !kde-base/kdenetwork:4.1
-dev-libs/libpcre plasma? ( kde-base/libplasma:4.1 ) x11-libs/qt-core:4[qt3support,ssl] x11-libs/qt-gui:4[accessibility,dbus] x11-libs/qt-qt3support:4[accessibility] x11-libs/qt-script:4 x11-libs/qt-svg:4 x11-libs/qt-test:4 !x11-libs/qt-phonon !kdeprefix? ( !kde-base/kget:kde-4[-kdeprefix] ) >=kde-base/kdelibs-4.1.2:4.1[kdeprefix=] >=kde-base/kdepimlibs-4.1.2:4.1[kdeprefix=] >=kde-base/kdebase-data-4.1.2:4.1[kdeprefix=] !kde-base/kdenetwork:4.1
+dev-libs/libpcre plasma? ( kde-base/libplasma:4.1 ) >=dev-util/cmake-2.4.6 x11-libs/qt-core:4[qt3support,ssl] x11-libs/qt-gui:4[accessibility,dbus] x11-libs/qt-qt3support:4[accessibility] x11-libs/qt-script:4 x11-libs/qt-sql:4[qt3support] x11-libs/qt-svg:4 x11-libs/qt-test:4 x11-libs/qt-webkit:4 !x11-libs/qt-phonon >=dev-util/cmake-2.6.2 dev-util/pkgconfig x11-libs/libXt x11-proto/xf86vidmodeproto !kdeprefix? ( !kde-base/kget:kde-4[-kdeprefix] ) !kdeprefix? ( !kde-base/kget:4.2[-kdeprefix] ) kdeprefix? ( >=kde-base/kdelibs-4.1.2:4.1[kdeprefix] ) !kdeprefix? ( >=kde-base/kdelibs-4.1.2[-kdeprefix] ) kdeprefix? ( >=kde-base/kdepimlibs-4.1.2:4.1[kdeprefix] ) !kdeprefix? ( >=kde-base/kdepimlibs-4.1.2[-kdeprefix] )
+dev-libs/libpcre plasma? ( kde-base/libplasma:4.1 ) x11-libs/qt-core:4[qt3support,ssl] x11-libs/qt-gui:4[accessibility,dbus] x11-libs/qt-qt3support:4[accessibility] x11-libs/qt-script:4 x11-libs/qt-sql:4[qt3support] x11-libs/qt-svg:4 x11-libs/qt-test:4 x11-libs/qt-webkit:4 !x11-libs/qt-phonon !kdeprefix? ( !kde-base/kget:kde-4[-kdeprefix] ) !kdeprefix? ( !kde-base/kget:4.2[-kdeprefix] ) kdeprefix? ( >=kde-base/kdelibs-4.1.2:4.1[kdeprefix] ) !kdeprefix? ( >=kde-base/kdelibs-4.1.2[-kdeprefix] ) kdeprefix? ( >=kde-base/kdepimlibs-4.1.2:4.1[kdeprefix] ) !kdeprefix? ( >=kde-base/kdepimlibs-4.1.2[-kdeprefix] ) kdeprefix? ( >=kde-base/kdebase-data-4.1.2:4.1[kdeprefix] ) !kdeprefix? ( >=kde-base/kdebase-data-4.1.2[-kdeprefix] )
 4.1
 mirror://kde/stable/4.1.2/src/kdenetwork-4.1.2.tar.bz2
 
@@ -7,7 +7,7 @@ http://www.kde.org/
 GPL-2
 An advanced download manager for KDE
 ~amd64 ~x86
-toolchain-funcs kde4-base portability flag-o-matic multilib kde4-functions base kde4-meta cmake-utils eutils
+toolchain-funcs kde4-base portability flag-o-matic versionator multilib kde4-functions base kde4-meta cmake-utils eutils
 debug htmlhandbook +plasma kdeprefix
 
 

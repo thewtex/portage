@@ -1,0 +1,22 @@
+virtual/libc sys-libs/ncurses sys-libs/readline tk? ( dev-lang/tk ) syslog? ( virtual/logger ) !virtual/pbs !sys-cluster/openpbs-common !games-util/qstat sys-apps/ed kernel_linux? ( virtual/linux-sources )
+virtual/libc sys-libs/ncurses sys-libs/readline tk? ( dev-lang/tk ) syslog? ( virtual/logger ) !virtual/pbs !sys-cluster/openpbs-common !games-util/qstat crypt? ( net-misc/openssh ) !crypt? ( net-misc/netkit-rsh )
+0
+http://www.clusterresources.com/downloads/torque/torque-2.3.6.tar.gz
+
+http://www.clusterresources.com/products/torque/
+openpbs
+Resource manager and queuing system based on OpenPBS
+~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86
+toolchain-funcs portability flag-o-matic versionator multilib linux-info eutils
+tk crypt server syslog doc cpusets kernel_linux
+
+
+virtual/pbs
+0
+
+compile config install postinst preinst setup
+
+
+
+
+

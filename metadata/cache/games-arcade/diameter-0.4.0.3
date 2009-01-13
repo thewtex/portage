@@ -1,5 +1,5 @@
->=dev-games/guichan-0.8 media-libs/libpng virtual/opengl virtual/glu media-libs/libsdl media-libs/sdl-image media-libs/sdl-mixer dev-util/pkgconfig =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
->=dev-games/guichan-0.8 media-libs/libpng virtual/opengl virtual/glu media-libs/libsdl media-libs/sdl-image media-libs/sdl-mixer
+>=dev-games/guichan-0.8[opengl,sdl] media-libs/libpng virtual/opengl virtual/glu media-libs/libsdl media-libs/sdl-image[gif,jpeg,png] media-libs/sdl-mixer dev-util/pkgconfig =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+>=dev-games/guichan-0.8[opengl,sdl] media-libs/libpng virtual/opengl virtual/glu media-libs/libsdl media-libs/sdl-image[gif,jpeg,png] media-libs/sdl-mixer
 0
 mirror://sourceforge/gamediameter/diameter-0.4.0.3.tar.bz2
 
@@ -12,9 +12,9 @@ toolchain-funcs portability multilib base libtool games autotools eutils
 
 
 
-0
+2
 
-compile install postinst preinst setup unpack
+compile configure install postinst preinst prepare setup unpack
 
 
 

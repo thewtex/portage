@@ -1,0 +1,22 @@
+>=kde-base/konqueror-4.1 >=dev-util/cmake-2.4.6 x11-libs/qt-core:4[qt3support,ssl] x11-libs/qt-gui:4[accessibility,dbus] x11-libs/qt-qt3support:4[accessibility] x11-libs/qt-script:4 x11-libs/qt-sql:4[qt3support] x11-libs/qt-svg:4 x11-libs/qt-test:4 x11-libs/qt-webkit:4 !x11-libs/qt-phonon >=dev-util/cmake-2.6.2 dev-util/pkgconfig x11-libs/libXt x11-proto/xf86vidmodeproto !kdeprefix? ( !kde-base/smb4k:kde-4[-kdeprefix] ) !kdeprefix? ( !kde-base/smb4k:4.1[-kdeprefix] ) !kdeprefix? ( !kde-base/smb4k:4.2[-kdeprefix] ) kdeprefix? ( >=kde-base/kdelibs-4.1[kdeprefix] ) !kdeprefix? ( >=kde-base/kdelibs-4.1[-kdeprefix] ) kdeprefix? ( >=kde-base/kdepimlibs-4.1[kdeprefix] ) !kdeprefix? ( >=kde-base/kdepimlibs-4.1[-kdeprefix] )
+>=kde-base/konqueror-4.1 bindist? ( <net-fs/samba-3.2.0_rc2 ) !bindist? ( net-fs/samba ) !kdeprefix? ( !net-misc/smb4k:0 ) net-fs/mount-cifs x11-libs/qt-core:4[qt3support,ssl] x11-libs/qt-gui:4[accessibility,dbus] x11-libs/qt-qt3support:4[accessibility] x11-libs/qt-script:4 x11-libs/qt-sql:4[qt3support] x11-libs/qt-svg:4 x11-libs/qt-test:4 x11-libs/qt-webkit:4 !x11-libs/qt-phonon !kdeprefix? ( !kde-base/smb4k:kde-4[-kdeprefix] ) !kdeprefix? ( !kde-base/smb4k:4.1[-kdeprefix] ) !kdeprefix? ( !kde-base/smb4k:4.2[-kdeprefix] ) kdeprefix? ( >=kde-base/kdelibs-4.1[kdeprefix] ) !kdeprefix? ( >=kde-base/kdelibs-4.1[-kdeprefix] ) kdeprefix? ( >=kde-base/kdepimlibs-4.1[kdeprefix] ) !kdeprefix? ( >=kde-base/kdepimlibs-4.1[-kdeprefix] ) kdeprefix? ( >=kde-base/kdebase-data-4.1[kdeprefix] ) !kdeprefix? ( >=kde-base/kdebase-data-4.1[-kdeprefix] )
+4.1
+mirror://berlios/smb4k/smb4k-0.10.1.tar.bz2
+
+http://smb4k.berlios.de/
+GPL-2
+Smb4K is a SMB share browser for KDE.
+~amd64 ~x86
+toolchain-funcs kde4-base portability flag-o-matic multilib kde4-functions base cmake-utils eutils
+bindist linguas_bg linguas_cs linguas_da linguas_de linguas_es linguas_fr linguas_hu linguas_is linguas_it linguas_ja linguas_nb linguas_nl linguas_pt linguas_pt_BR linguas_ru linguas_sk linguas_sv linguas_tr linguas_uk linguas_zh_CN linguas_zh_TW kdeprefix
+
+
+
+2
+
+compile configure install postinst postrm prepare setup test unpack
+
+
+
+
+
