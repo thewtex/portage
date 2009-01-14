@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/amarok/amarok-2.0.1.1.ebuild,v 1.2 2009/01/12 22:16:59 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/amarok/amarok-2.0.1.1.ebuild,v 1.5 2009/01/13 15:07:05 alexxy Exp $
 
 EAPI="2"
 
@@ -16,23 +16,19 @@ HOMEPAGE="http://amarok.kde.org/"
 LICENSE="GPL-2"
 KEYWORDS="~x86"
 SLOT="2"
-IUSE="cdaudio daap debug ifp ipod mp3tunes mp4 mtp njb +semantic-desktop"
+IUSE="daap debug ifp ipod mp3tunes mp4 mtp njb +semantic-desktop"
 SRC_URI="mirror://kde/stable/${PN}/${PV}/src/${P}.tar.bz2"
 
 DEPEND=">=app-misc/strigi-0.5.7
 	|| (
-		>=dev-db/mysql-5.0[embedded]
-		>=dev-db/mysql-community-5.0[embedded]
+		>=dev-db/mysql-5.0[embedded,-minimal]
+		>=dev-db/mysql-community-5.0[embedded,-minimal]
 	)
 	>=media-libs/taglib-1.5
 	|| ( media-sound/phonon x11-libs/qt-phonon:4 )
 	>=kde-base/kdelibs-${KDE_MINIMAL}[opengl?,semantic-desktop?]
 	>=kde-base/plasma-workspace-${KDE_MINIMAL}
 	x11-libs/qt-webkit:4
-	cdaudio? (
-		>=kde-base/libkcompactdisc-${KDE_MINIMAL}
-		>=kde-base/libkcddb-${KDE_MINIMAL}
-	)
 	ifp? ( media-libs/libifp )
 	ipod? ( >=media-libs/libgpod-0.4.2 )
 	mp3tunes? (
@@ -49,6 +45,23 @@ DEPEND=">=app-misc/strigi-0.5.7
 RDEPEND="${DEPEND}
 	app-arch/unzip
 	daap? ( www-servers/mongrel )"
+
+pkg_setup() {
+	if use amd64 ; then
+		ewarn
+		ewarn "Compilation will fail if dev-db/mysql[-community] is built without -fPIC in your CFLAGS!"
+		ewarn "Related bug: http://bugs.gentoo.org/show_bug.cgi?id=238487"
+		ewarn
+		ewarn "To fix this, and to avoid using -fPIC globally in your make.conf	(which is not recommended),"
+		ewarn "put the following into /etc/portage/env/dev-db/mysql (or	mysql-community, depending on which you use;"
+		ewarn "create dirs and the file if they don't exist):"
+		ewarn
+		ewarn "CFLAGS=\"${CFLAGS} -DPIC -fPIC\""
+		ewarn "CXXFLAGS=\"${CXXFLAGS} -DPIC -fPIC\""
+		ewarn
+	fi
+	kde4-base_pkg_setup
+}
 
 src_configure() {
 	if use debug; then
