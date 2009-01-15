@@ -1,5 +1,5 @@
-!dedicated? ( >=media-libs/libsdl-1.2.10 >=media-libs/sdl-ttf-2.0.7 >=media-libs/sdl-image-1.2.6-r1 alsa? ( >=media-libs/sdl-mixer-1.2.7 ) ) dev-libs/zziplib >=dev-util/cmake-2.6.0 nls? ( sys-devel/gettext ) >=dev-util/cmake-2.4.6
-!dedicated? ( >=media-libs/libsdl-1.2.10 >=media-libs/sdl-ttf-2.0.7 >=media-libs/sdl-image-1.2.6-r1 alsa? ( >=media-libs/sdl-mixer-1.2.7 ) ) dev-libs/zziplib
+!dedicated? ( >=media-libs/libsdl-1.2.10[X] >=media-libs/sdl-ttf-2.0.7[X] >=media-libs/sdl-image-1.2.6-r1[png] alsa? ( >=media-libs/sdl-mixer-1.2.7[vorbis] ) ) dev-libs/zziplib[sdl] >=dev-util/cmake-2.6.0 nls? ( sys-devel/gettext ) >=dev-util/cmake-2.4.6
+!dedicated? ( >=media-libs/libsdl-1.2.10[X] >=media-libs/sdl-ttf-2.0.7[X] >=media-libs/sdl-image-1.2.6-r1[png] alsa? ( >=media-libs/sdl-mixer-1.2.7[vorbis] ) ) dev-libs/zziplib[sdl]
 0
 http://download.tuxanci.org/tuxanci-0.21.0.tar.bz2
 
@@ -12,9 +12,9 @@ alsa debug dedicated nls
 
 
 
-1
+2
 
-compile install postinst preinst setup test unpack
+compile configure install postinst preinst prepare setup test unpack
 
 
 
