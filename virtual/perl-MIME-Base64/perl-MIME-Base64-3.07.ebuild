@@ -12,4 +12,6 @@ KEYWORDS="alpha amd64 arm hppa ia64 m68k mips ppc ppc64 s390 sh sparc ~sparc-fbs
 IUSE=""
 
 DEPEND=""
-RDEPEND="|| ( ~dev-lang/perl-5.8.8 ~perl-core/MIME-Base64-${PV} )"
+RDEPEND="|| ( ~dev-lang/perl-5.8.8
+	( ~perl-core/MIME-Base64-${PV} >=dev-lang/perl-5.10 )
+)"
