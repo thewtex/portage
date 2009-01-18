@@ -1,6 +1,6 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/man/man-1.6f-r2.ebuild,v 1.1 2008/04/21 01:17:36 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/man/man-1.6f-r3.ebuild,v 1.1 2009/01/08 01:53:38 darkside Exp $
 
 inherit eutils toolchain-funcs
 
@@ -11,7 +11,7 @@ SRC_URI="http://primates.ximian.com/~flucifredi/man/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~sparc-fbsd ~x86 ~x86-fbsd"
-IUSE="nls"
+IUSE="lzma nls"
 
 # drobbins - sys-apps/shadow is needed as a dependency simply because eutils'
 # group adding function needs the "groupadd" command in the shadow package. And
@@ -20,7 +20,8 @@ IUSE="nls"
 DEPEND="nls? ( sys-devel/gettext ) sys-apps/shadow"
 RDEPEND=">=sys-apps/groff-1.19.2-r1
 	!sys-apps/man-db
-	!app-arch/lzma"
+	!app-arch/lzma
+	lzma? ( app-arch/lzma-utils )"
 PROVIDE="virtual/man"
 
 pkg_setup() {
@@ -47,6 +48,7 @@ src_unpack() {
 	# the environment, but the one in /etc/man.conf. less needs special options
 	# to display control chars automatically
 	epatch "${FILESDIR}"/man-1.6f-noenv.patch
+	epatch "${FILESDIR}"/man-1.6f-compress.patch
 
 	strip-linguas $(eval $(grep ^LANGUAGES= configure) ; echo ${LANGUAGES//,/ })
 }
@@ -66,6 +68,12 @@ src_compile() {
 	else
 		mylang="none"
 	fi
+	if use lzma; then
+		mycompress=/usr/bin/lzma
+	else
+		mycompress=/bin/bzip2
+	fi
+	COMPRESS=$mycompress \
 	./configure \
 		-confdir=/etc \
 		+sgid +fhs \

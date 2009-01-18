@@ -1,6 +1,6 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/networkmanager-vpnc/networkmanager-vpnc-0.6.4_p20070621.ebuild,v 1.4 2008/12/04 23:39:04 scarabeus Exp $
+# $Header: 
 
 inherit gnome2 eutils autotools
 
@@ -31,7 +31,6 @@ RDEPEND=">=sys-apps/dbus-0.60
 	gnome? ( >=x11-libs/gtk+-2.8
 		>=gnome-base/libglade-2
 		>=gnome-base/gnome-keyring-0.4
-		>=gnome-base/gnome-panel-2
 		>=gnome-base/gconf-2
 		>=gnome-base/libgnomeui-2 )
 	crypt? ( dev-libs/libgcrypt )"

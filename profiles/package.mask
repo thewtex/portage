@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.9382 2009/01/11 12:23:33 ikelos Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.9399 2009/01/16 18:42:38 flameeyes Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -31,6 +31,45 @@
 
 #--- END OF EXAMPLES ---
 
+# Caleb Cushing <xenoterracide@gmail.com> (17 Jan 2008)
+# Mask new versions for caution
+>sys-devel/gcc-4.3.2-r2
+
+# Torsten Veller <tove@gentoo.org> (25 Apr 2008)
+# Masked for testing.
+
+~dev-lang/perl-5.10.0
+~sys-devel/libperl-5.10.0
+
+# Michele Beltrame <mb@italpro.net> (7 Dec 2008)
+# Masked for testing.
+
+=dev-perl/Catalyst-Runtime-5.8000_pre4
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (16 Jan 2009)
+# Masked for test failures, since it's not needed with Ruby 1.8 (but
+# could be used to future-proof code), let it in but masked.
+dev-ruby/test-unit
+
+# Rémi Cardona <remi@gentoo.org> (16 Jan 2009)
+# Masked until upstreams confirms it's safe to use
+=x11-libs/libdrm-2.4.4
+
+# Sébastien Fabbro <bicatali@gentoo.org> (15 Jan 2009)
+# Masked for removal in 30 days. f2py hase been integrated in
+# dev-python/numpy.
+dev-python/f2py
+
+# Donnie Berkholz <dberkholz@gentoo.org> (12 Jan 2009)
+# Masked pending unmasking of guile-gnome-platform 2.16
+>=sci-chemistry/burrow-owl-1.4
+
+# Peter Volkov <pva@gentoo.org> (11 Jan 2009)
+# EC fonts are tex fonts, this package was used by lilypond at some point of
+# time, but now nothing uses them, no maintainer so it looks like time to
+# remove them from the tree has come. Objections? Report to bug 183730.
+media-fonts/ec-fonts-mftraced
+
 # Fabian Groffen <grobian@gentoo.org> (11 Jan 2009)
 # sidebar patch doesn't apply, hence sidebar USE-flag is broken.  If you
 # don't care about sidebar feel free to test and report.  Also, feel
@@ -55,11 +94,6 @@ net-analyzer/rtg
 # baselayout-2/openrc. please upgrade. removal in 30 days.
 sys-apps/baselayout-vserver
 
-# Rémi Cardona <remi@gentoo.org> (09 Jan 2009)
-# old virtual left from the transition from monolithic
-# to modular X. Use x11-libs/libXft directly
-virtual/xft
-
 # Michael Sterrett <mr_bones_@gentoo.org> (09 Jan 2009)
 # missing a license file
 sys-block/hpacucli
@@ -81,6 +115,11 @@ gnome-base/gnome-vfs-monikers
 # dev-python/pykde can be used
 =kde-base/pykde-3.5*
 
+# Zac Medico <zmedico@gentoo.org> (05 Jan 2009)
+# Portage 2.2 is masked due to known bugs in the
+# package sets and preserve-libs features.
+#>=sys-apps/portage-2.2_pre
+
 # Joerg Bornkessel <hd_brummy@gentoo.org> (05 Jan 2009)
 # masked for testing
 # http://www.vdr-portal.de/board/thread.php?threadid=74833 (german)
@@ -92,14 +131,27 @@ gnome-base/gnome-vfs-monikers
 # See bug 245941 for more details
 # Stable versions are not being masked, but should be really
 # 11-Jan-2009 Adding in x.5.0 series, since they're also vulnerable
+# 16-Jan-2009 Adding in 5.5.7 and 1.0.7, since later versions are now stable
+# 16-Jan-2009 Adding in all vulnerable server versions
+# 16-Jan-2009 Adding all unnnecessary vmware-modules
+=app-emulation/vmware-workstation-5.5.7.91707
 =app-emulation/vmware-workstation-5.5.8.108000
 =app-emulation/vmware-workstation-6.0.4.93057
 =app-emulation/vmware-workstation-6.0.5.109488
 =app-emulation/vmware-workstation-6.5.0.118166
+=app-emulation/vmware-player-1.0.7.91707
 =app-emulation/vmware-player-1.0.8.108000
 =app-emulation/vmware-player-2.0.4.93057
 =app-emulation/vmware-player-2.0.5.109488
 =app-emulation/vmware-player-2.5.0.118166
+=app-emulation/vmware-server-1.0.5.80187
+=app-emulation/vmware-server-1.0.6.91891
+=app-emulation/vmware-server-1.0.7.108231
+=app-emulation/vmware-server-console-1.0.5.80187-r1
+=app-emulation/vmware-server-console-1.0.6.91891
+=app-emulation/vmware-server-console-1.0.7.108231
+=app-emulation/vmware-modules-1.0.0.20
+=app-emulation/vmware-modules-1.0.0.22
 
 # Daniel Black <dragonheart@gentoo.org> (03 Jan 2009)
 # mask pending removal
@@ -114,13 +166,10 @@ dev-libs/cygwin
 dev-util/mingw-runtime
 dev-util/w32api
 
-# Thomas Sachau (Tommy[D]) <tommy@gentoo.org> (27 Dez 2008)
-# Mask ebuilds with masked dep
-x11-plugins/wmarpstar
-
-# Thomas Sachau (Tommy[D]) <tommy@gentoo.org> (27 Dez 2008)
-# Mask ebuilds with missing deps
-media-video/aegisub
+# Pacho Ramos (pacho) <pacho@condmat1.ciencias.uniovi.es> (9 Jan 2009)
+# Mask mandriva-galaxy for removal in 30 day as upstream 
+# no longer maintains it
+x11-themes/mandriva-galaxy
 
 # Tiago Cunha (tcunha) <tcunha@gentoo.org> (10 Dec 2008)
 # Mask CVS ebuild
@@ -431,12 +480,6 @@ app-portage/udept
 # Dead upstream, masked for removal in ~60 days.
 net-proxy/squirm
 
-# Alexis Ballier <aballier@gentoo.org> (13 Dec 2008)
-# API changes on the host side
-# Mask also packages requiring it
->=media-libs/vamp-plugin-sdk-2.0
->=media-sound/sonic-visualiser-1.4
-
 # Steve Dibb <beandog@gentoo> (11 Dec 2008)
 # Needs some testing
 >=media-libs/xvid-1.2.0
@@ -444,11 +487,6 @@ net-proxy/squirm
 # Jim Ramsay <lack@gentoo.org> (11 Dec 2008)
 # Live ebuild, for advanced users only
 =x11-wm/fluxbox-9999
-
-# Torsten Veller <tove@gentoo.org> (08 Dec 2008)
-# Mask broken perl modules
-# Missing dependencies:
-~dev-perl/Net-Amazon-S3-0.48
 
 # Jeremy Olexa <darkside@gentoo.org> (07 Dec 2008)
 # Masked for removal in 60 days at maintainers request. Some don't work. Most
@@ -696,14 +734,6 @@ www-apps/dotproject
 # Keri Harris <keri@gentoo.org> (21 Sep 2008)
 # Development version
 =dev-lang/swi-prolog-5.7*
-
-# Andreas Proschofsky <suka@gentoo.org> (20 Sep 2008)
-# Masked for removal in 30 days. Both packages are broken
-# and are unmaintained for ages. If you want a proper
-# quickstarter for OpenOffice.org use the one which is
-# provided with the source-based build of OOo.
-app-office/ooqstart-gnome
-app-office/oooqs
 
 # MATSUU Takuto <matsuu@gentoo.org> (18 Sep 2008)
 # Masked for removal in 60 days.

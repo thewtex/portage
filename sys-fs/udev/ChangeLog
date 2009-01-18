@@ -1,5 +1,6 @@
 # ChangeLog for sys-fs/udev
-# Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/udev/ChangeLog,v 1.434 2009/01/06 18:42:15 mr_bones_ Exp $
 
   05 Jan 2009; Daniel Robbins <drobbins@funtoo.org> files/135-r2/udevd.initd:
   added "keywords novserver" from upstream (Gentoo)
@@ -16,6 +17,67 @@
   02 Dev 2008; Daniel Robbins <drobbins@funtoo.org> +udev-135-r1.ebuild:
   New udev to sync with upstream gentoo while keeping our new initscript
   and ebuild design.
+
+  06 Jan 2009; Michael Sterrett <mr_bones_@gentoo.org> udev-9999.ebuild:
+  set DESCRIPTION after inherit to avoid overwriting it
+
+  01 Jan 2009; Benedikt Böhm <hollow@gentoo.org> files/udev.initd:
+  fix udev init script inside vservers, bug #253105
+
+*udev-9999 (30 Dec 2008)
+
+  30 Dec 2008; Matthias Schwarzott <zzam@gentoo.org> +udev-9999.ebuild:
+  Add live udev ebuild.
+
+*udev-135-r3 (27 Dec 2008)
+
+  27 Dec 2008; Matthias Schwarzott <zzam@gentoo.org>
+  +files/udev-135-r3.confd, +files/udev-mount-135-r3.initd,
+  +files/udev-start-135-r3.sh, +udev-135-r3.ebuild:
+  Create /dev/.rcsysinit only for older baselayouts. Add some comments about
+  rc_oldplug to /etc/conf.d/udev, suggested by Polynomial-C
+  <polynomial-c@gmx.de>.
+
+  19 Dec 2008; Matthias Schwarzott <zzam@gentoo.org>
+  +files/udev-postmount-135-r2.initd, files/udev-start-135-r2.sh,
+  udev-135-r2.ebuild:
+  Remove the code to add udev to sysinit runlevel. openrc ebuild does it
+  now. Fix udev-start for older systems.
+
+  17 Dec 2008; Matthias Schwarzott <zzam@gentoo.org>
+  files/udev-135-r2.initd:
+  Add stop function to udev init-script.
+
+  17 Dec 2008; Matthias Schwarzott <zzam@gentoo.org>
+  files/udev-mount-135-r2.initd:
+  Also create /dev/tty before running udevd. Suggested by Daniel Robbins
+  <drobbins@funtoo.org>.
+
+  13 Dec 2008; Matthias Schwarzott <zzam@gentoo.org>
+  files/udev-135-r2.initd, files/udev-dev-tarball-135-r2.initd,
+  files/udev-mount-135-r2.initd, files/udev-start-135-r2.sh:
+  Fix udev-start to call the init-scripts, but not the openrc-version
+  checks.
+
+*udev-135-r2 (10 Dec 2008)
+
+  10 Dec 2008; Matthias Schwarzott <zzam@gentoo.org>
+  +files/udev-135-r2.confd, +files/udev-135-r2.initd,
+  +files/udev-dev-tarball-135-r2.initd, +files/udev-mount-135-r2.initd,
+  +files/udev-start-135-r2.sh, +files/udev-stop-135-r2.sh,
+  +udev-135-r2.ebuild:
+  Redesign of addons/init-scripts. Moved code into init-scripts and split
+  into smaller parts. Source init-scripts from addons for older baselayouts.
+
+*udev-135-r1 (03 Dec 2008)
+
+  03 Dec 2008; Matthias Schwarzott <zzam@gentoo.org>
+  +files/udev-135-fix-capi.diff, +files/udev-135-rules-update.diff,
+  +udev-135-r1.ebuild:
+  Fix capi device nodes, Bug #249389. Do this by applying upstream patch to
+  the common capi rules and install these. Remove capi from gentoo-specific
+  rules.
+>>>>>>> gentoo.org:sys-fs/udev/ChangeLog
 
 *udev-135 (02 Dec 2008)
 
