@@ -1,6 +1,6 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-terms/rxvt-unicode/rxvt-unicode-9.06.ebuild,v 1.1 2008/12/21 20:44:23 killerfox Exp $
+# $Header: 
 
 inherit autotools flag-o-matic
 
@@ -11,7 +11,7 @@ SRC_URI="http://dist.schmorp.de/rxvt-unicode/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
-IUSE="truetype perl iso14755 afterimage xterm-color wcwidth vanilla"
+IUSE="truetype perl iso14755 afterimage singlelinescroll xterm-color wcwidth vanilla"
 
 # see bug #115992 for modular x deps
 RDEPEND="x11-libs/libX11
@@ -22,6 +22,12 @@ RDEPEND="x11-libs/libX11
 DEPEND="${RDEPEND}
 	dev-util/pkgconfig
 	x11-proto/xproto"
+
+pkg_setup() {
+	if use singlelinescroll && use perl; then
+		die "You can not have both perl and singlelinescroll enabled.";
+	fi
+}
 
 src_unpack() {
 	unpack ${A}
@@ -41,7 +47,7 @@ src_unpack() {
 			's/^\(rxvt-unicode\)/\1256/;s/colors#88/colors#256/;s/pairs#256/pairs#32767/' \
 			doc/etc/rxvt-unicode.terminfo > doc/etc/rxvt-unicode256.terminfo
 		sed -i -e \
-			"s~^\(\s\+@TIC@.*\)~\1\n\t@TIC@ -o ${D}/${tdir} \$(srcdir)/etc/rxvt-unicode256.terminfo~" \
+			"s~^\(\s\+@TIC@.*\)~\1\n\t@TIC@ -o "${D}"/${tdir} \$(srcdir)/etc/rxvt-unicode256.terminfo~" \
 			doc/Makefile.in
 	fi
 
@@ -54,7 +60,7 @@ src_unpack() {
 	# disabled  until it's needed again.
 	#if has_version '<sys-libs/ncurses-5.7'; then
 		sed -i -e \
-			"s~@TIC@ \(\$(srcdir)/etc/rxvt\)~@TIC@ -o ${D}/${tdir} \1~" \
+			"s~@TIC@ \(\$(srcdir)/etc/rxvt\)~@TIC@ -o "${D}"/${tdir} \1~" \
 			doc/Makefile.in
 	#else
 	#	# Remove everything except if we have rxvt-unicode256
@@ -62,6 +68,10 @@ src_unpack() {
 	#	    '/rxvt-unicode256/p;/@TIC@/d' \
 	#		doc/Makefile.in
 	#fi
+
+	if use singlelinescroll; then
+		epatch "${FILESDIR}"/scrolling-one-line.patch;
+	fi
 
 	eautoreconf
 }

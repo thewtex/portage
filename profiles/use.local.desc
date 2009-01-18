@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4135 2009/01/15 15:48:26 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4136 2009/01/16 18:27:44 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -135,6 +135,7 @@ app-crypt/seahorse:ldap - Enable seahorse to manipulate GPG keys on a LDAP serve
 app-crypt/seahorse:nautilus - Enable file encryption plugin to integrate into gnome-base/nautilus context menu.
 app-crypt/seahorse:xulrunner - Selects which gecko engine against which to build the www-client/epiphany plugin.
 app-dicts/aspell-be:classic - Support classic spelling by default
+app-admin/vlogger:dbi - Enable support for DBI
 app-dicts/ktranslator:festival - Enable festival support
 app-dicts/ktranslator:lowmem - Disable optimizations for searches
 app-dicts/ktranslator:ocr - Enable GOCR support
@@ -291,7 +292,6 @@ app-laptop/tp_smapi:hdaps - Install a compatible HDAPS module
 app-laptop/tpctl:tpctlir - Enable support for thinkpad models 760 and 765
 app-misc/anki:furigana -  Enable support for furigana generation 
 app-misc/anki:graph -  Enable support for making graphs 
-app-misc/anki:latex -  Enable support for LaTeX 
 app-misc/anki:sound -  Enable support for adding sound to cards 
 app-misc/beagle:chm - Enables support for indexing of the MS CHM (Compressed HTML) file format using app-doc/chmlib.
 app-misc/beagle:debug - Enables debug XML dumps of all messages passed between the daemons and the UIs. WARNING, this option will fill up your Beagle Log directory very quickly.
@@ -1414,7 +1414,6 @@ media-plugins/vdr-xineliboutput:libextractor - Use media-libs/libextract to gath
 media-radio/ax25-tools:X - Enable some x based configuration tools.
 media-radio/drm:hamlib - Enables support by the Hamlib amateur radio rig control library to get/set frequency and mode of the radio in use
 media-radio/fldigi:hamlib - Enables support by the Hamlib amateur radio rig control library to get/set frequency and mode of the ham radio in use
-media-radio/gpredict:coverage - Enable coverage reports
 media-radio/grig:coverage - Enable coverage reports
 media-radio/grig:hardware - Enable hardware IO
 media-radio/tucnak2:ftdi - Enable support for FTDI USB chips
