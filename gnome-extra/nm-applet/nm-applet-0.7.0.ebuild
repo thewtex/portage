@@ -44,21 +44,18 @@ pkg_setup () {
 		--localstatedir=/var \
 		--with-dbus-sys=/etc/dbus-1/system.d"
 
-	if use openvpn && ( ! built_with_use net-misc/networkmanager gnome || \
-		! built_with_use net-misc/networkmanager-openvpn gnome ); then
+	if use openvpn && ! built_with_use net-misc/networkmanager-openvpn gnome ;
+	then
 		eerror ""
 		eerror "To make use of the openvpn feature you have to compile"
-		eerror "net-misc/networkmanager and net-misc/networkmanager-openvpn"
-		eerror "with the \"gnome\" USE flag."
+		eerror "net-misc/networkmanager-openvpn with the \"gnome\" USE flag."
 		eerror ""
 		die "Fix use flag and re-emerge."
 	fi
-	if use cisco && ( ! built_with_use net-misc/networkmanager gnome || \
-		! built_with_use net-misc/networkmanager-vpnc gnome ); then
+	if use cisco && ! built_with_use net-misc/networkmanager-vpnc gnome ; then
 		eerror ""
 		eerror "To make use of the cisco feature you have to compile"
-		eerror "net-misc/networkmanager and net-misc/networkmanager-vpnc"
-		eerror "with the \"gnome\" USE flag."
+		eerror "net-misc/networkmanager-vpnc with the \"gnome\" USE flag."
 		eerror ""
 		die "Fix use flag and re-emerge."
 	fi
