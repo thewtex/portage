@@ -8,7 +8,7 @@ MY_P=${PN}-${PV/_/}
 
 DESCRIPTION="A suite of SMB and CIFS client/server programs for UNIX"
 HOMEPAGE="http://www.samba.org/"
-SRC_URI="mirror://samba/stable/${MY_P}.tar.gz"
+SRC_URI="mirror://samba/${MY_P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
@@ -162,8 +162,12 @@ src_install() {
 
 	# bug #46389: samba doesn't create symlink anymore
 	# beaviour seems to be changed in 3.0.6, see bug #61046
-	dosym samba/libsmbclient.so /usr/$(get_libdir)/libsmbclient.so.0
-	dosym samba/libsmbclient.so /usr/$(get_libdir)/libsmbclient.so
+    dosym samba/libsmbclient.so /usr/$(get_libdir)/libsmbclient.so
+    dosym samba/libsmbclient.so.0 /usr/$(get_libdir)/libsmbclient.so.0
+    dosym samba/libtalloc.so /usr/$(get_libdir)/libtalloc.so
+    dosym samba/libtalloc.so.1 /usr/$(get_libdir)/libtalloc.so.1
+    dosym samba/libtdb.so /usr/$(get_libdir)/libtdb.so
+    dosym samba/libtdb.so.1 /usr/$(get_libdir)/libtdb.so.1
 
 	# make the smb backend symlink for cups printing support (bug #133133)
 	if use cups ; then
