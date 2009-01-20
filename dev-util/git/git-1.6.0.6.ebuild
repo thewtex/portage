@@ -97,8 +97,7 @@ src_unpack() {
 		unpack ${PN}-htmldocs-${DOC_VER}.tar.bz2
 	cd "${S}"
 
-	epatch "${FILESDIR}"/20080626-git-1.5.6.1-noperl.patch
-	epatch "${FILESDIR}"/20081123-git-1.6.0.4-noperl-cvsserver.patch
+	epatch "${FILESDIR}"/20090113-git-1.6.1-noperl.patch
 
 	sed -i \
 		-e 's:^\(CFLAGS =\).*$:\1 $(OPTCFLAGS) -Wall:' \

@@ -1,6 +1,6 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/bison/bison-2.4-r1.ebuild,v 1.3 2008/11/14 08:50:29 vapier Exp $
+# $Header: 
 
 inherit toolchain-funcs flag-o-matic
 
@@ -11,7 +11,7 @@ SRC_URI="mirror://gnu/bison/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="nls static"
+IUSE="nls static liby"
 
 # need flex since we patch scan-code.l in ${P}-compat.patch
 DEPEND="nls? ( sys-devel/gettext )
@@ -39,8 +39,9 @@ src_install() {
 	mv "${D}"/usr/bin/yacc{,.bison} || die
 	mv "${D}"/usr/share/man/man1/yacc{,.bison}.1 || die
 
-	# We do not need this.
-	rm -r "${D}"/usr/lib* || die
+	if ! use liby; then
+		rm -r "${D}"/usr/lib* || die
+	fi
 
 	dodoc AUTHORS NEWS ChangeLog README OChangeLog THANKS TODO
 }

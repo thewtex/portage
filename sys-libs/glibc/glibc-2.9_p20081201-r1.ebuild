@@ -10,7 +10,7 @@ DESCRIPTION="GNU libc6 (also called glibc2) C library"
 HOMEPAGE="http://www.gnu.org/software/libc/libc.html"
 
 LICENSE="LGPL-2"
-KEYWORDS=""
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 s390 ~sh ~sparc ~x86"
 RESTRICT="strip" # strip ourself #46186
 EMULTILIB_PKG="true"
 
@@ -319,6 +319,9 @@ pkg_preinst() {
 		ewarn "nptlonly or -nptl in USE, removing /${ROOT}$(alt_libdir)/tls..."
 		rm -r "${ROOT}"/$(alt_libdir)/tls || die
 	fi
+
+	# getting this from metro
+	rm -f "${D}"/etc/locale.gen
 
 	# simple test to make sure our new glibc isnt completely broken.
 	# make sure we don't test with statically built binaries since
