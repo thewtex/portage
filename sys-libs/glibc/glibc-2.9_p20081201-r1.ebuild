@@ -320,6 +320,9 @@ pkg_preinst() {
 		rm -r "${ROOT}"/$(alt_libdir)/tls || die
 	fi
 
+	# getting this from metro
+	rm -f "${D}"/etc/locale.gen
+
 	# simple test to make sure our new glibc isnt completely broken.
 	# make sure we don't test with statically built binaries since
 	# they will fail.  also, skip if this glibc is a cross compiler.
