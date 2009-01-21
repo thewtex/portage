@@ -1,6 +1,6 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-extra/nm-applet/nm-applet-0.6.6.ebuild,v 1.4 2008/08/17 16:15:22 maekke Exp $
+# $Header: 
 
 inherit gnome2 eutils
 
@@ -13,7 +13,7 @@ SRC_URI="http://people.redhat.com/dcbw/NetworkManager/0.6.6/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~ppc x86"
-IUSE="debug doc libnotify"
+IUSE="cisco libnotify openvpn"
 
 RDEPEND=">=sys-apps/dbus-0.60
 	>=sys-apps/hal-0.5
@@ -27,9 +27,11 @@ RDEPEND=">=sys-apps/dbus-0.60
 	>=x11-libs/gtk+-2.10
 	>=gnome-base/libglade-2
 	>=gnome-base/gnome-keyring-0.4
-	>=gnome-base/gnome-panel-2
 	>=gnome-base/gconf-2
-	>=gnome-base/libgnomeui-2"
+	>=gnome-base/libgnomeui-2
+	cisco? ( net-misc/networkmanager-vpnc )
+	openvpn? ( net-misc/networkmanager-openvpn )"
+
 DEPEND="${RDEPEND}
 	dev-util/pkgconfig
 	>=dev-util/intltool-0.35"
@@ -45,6 +47,27 @@ G2CONF="${G2CONF} \
 
 #S=${WORKDIR}/${PN}-${MY_PV}
 
+pkg_setup() {
+	if use openvpn && ( ! built_with_use net-misc/networkmanager gnome || \
+		! built_with_use net-misc/networkmanager-openvpn gnome ); then
+		eerror ""
+		eerror "To make use of the openvpn feature you have to compile"
+		eerror "net-misc/networkmanager and net-misc/networkmanager-openvpn"
+		eerror "with the \"gnome\" USE flag."
+		eerror ""
+		die "Fix use flag and re-emerge."
+	fi
+	if use cisco && ( ! built_with_use net-misc/networkmanager gnome || \
+		! built_with_use net-misc/networkmanager-vpnc gnome ); then
+		eerror ""
+		eerror "To make use of the cisco feature you have to compile"
+		eerror "net-misc/networkmanager and net-misc/networkmanager-vpnc"
+		eerror "with the \"gnome\" USE flag."
+		eerror ""
+		die "Fix use flag and re-emerge."
+	fi
+}
+
 src_unpack() {
 	unpack ${A}
 	cd "${S}"
@@ -53,6 +76,15 @@ src_unpack() {
 
 pkg_postinst() {
 	gnome2_pkg_postinst
+
+	if ! built_with_use sys-auth/pambase gnome-keyring; then
+		elog ""
+		elog "To get rid of the password prompt for the gnome keyring you need"
+		elog "to compile sys-apps/pambase with the gnome-keyring use flag and"
+		elog "configure the pam settings of your login manager."
+		elog ""
+	fi
+
 	elog "Your user needs to be in the plugdev group in order to use this"
 	elog "package.  If it doesn't start in Gnome for you automatically after"
 	elog 'you log back in, simply run "nm-applet --sm-disable"'
