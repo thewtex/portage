@@ -1,4 +1,4 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -15,9 +15,9 @@ KEYWORDS="~x86"
 IUSE="+icon"
 
 DEPEND=">=sys-power/cpufrequtils-0.3-r1"
+RDEPEND=${DEPEND}
 
-need-kde 3.3
-
+need-kde 3.5
 S=${WORKDIR}/${PN}
 
 src_unpack() {

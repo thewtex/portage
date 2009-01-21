@@ -1,4 +1,4 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -16,6 +16,7 @@ IUSE="server"
 DEPEND=">=media-libs/libsdl-1.1.3
 	media-libs/sdl-mixer
 	media-libs/sdl-net"
+RDEPEND=${DEPEND}
 
 src_unpack() {
 	unpack ${A}
@@ -34,7 +35,6 @@ src_unpack() {
 }
 
 src_compile() {
-
 	egamesconf \
 		--disable-sdltest \
 		--disable-dependency-tracking \
@@ -66,10 +66,10 @@ src_install() {
 pkg_postinst() {
 	games_pkg_postinst
 
-	echo
-	elog "To play the original Doom levels, place doom.wad and/or doom2.wad"
-	elog "into "${GAMES_DATADIR}"/doom-data, then run: ${PN}"
-	elog
-	elog "To configure game options run:  chocolate-setup"
-	echo
+	einfo
+	einfo "To play the original Doom levels, place doom.wad and/or doom2.wad"
+	einfo "into "${GAMES_DATADIR}"/doom-data, then run: ${PN}"
+	einfo
+	einfo "To configure game options run:  chocolate-setup"
+	einfo
 }
