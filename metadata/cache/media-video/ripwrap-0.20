@@ -1,5 +1,5 @@
-dev-lang/perl dev-perl/gtk2-perl >=media-video/lsdvd-0.10 media-video/mplayer mp4? ( media-video/gpac )
-dev-lang/perl dev-perl/gtk2-perl >=media-video/lsdvd-0.10 media-video/mplayer mp4? ( media-video/gpac )
+dev-lang/perl dev-perl/gtk2-perl >=media-video/lsdvd-0.10 media-video/mplayer[encode] aac? ( media-video/mplayer[aac] ) mp2? ( media-video/mplayer[mp2] ) mp3? ( media-video/mplayer[mp3] ) mp4? ( media-video/gpac ) x264? ( media-video/mplayer[x264] )
+dev-lang/perl dev-perl/gtk2-perl >=media-video/lsdvd-0.10 media-video/mplayer[encode] aac? ( media-video/mplayer[aac] ) mp2? ( media-video/mplayer[mp2] ) mp3? ( media-video/mplayer[mp3] ) mp4? ( media-video/gpac ) x264? ( media-video/mplayer[x264] )
 0
 mirror://sourceforge/ripwrap/ripwrap-0.20.tar.gz
 
@@ -12,9 +12,9 @@ aac mp2 mp3 x264 mp4
 
 
 
-0
+2
 
-compile install postinst postrm preinst prerm setup test unpack
+compile configure install postinst postrm preinst prepare prerm setup test unpack
 
 
 

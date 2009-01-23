@@ -1,6 +1,7 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+
+JAVA_PKG_IUSE="doc source"
 
 inherit java-pkg-2 java-ant-2
 
@@ -14,7 +15,7 @@ KEYWORDS="~amd64 ~x86"
 
 IUSE=""
 
-COMMON_DEP="dev-java/sevenzip"
+COMMON_DEP="<=dev-java/lzma-4.60"
 
 RDEPEND=">=virtual/jre-1.5
 	${COMMON_DEP}"
@@ -22,14 +23,17 @@ DEPEND=">=virtual/jdk-1.5
 	app-arch/unzip
 	${COMMON_DEP}"
 
+EANT_GENTOO_CLASSPATH="lzma"
+
 src_unpack() {
 	unpack ${A}
-	cd "${S}"
-	java-pkg_jar-from sevenzip
-	cp "${FILESDIR}"/build.xml .
+	cd "${S}" || die
+	java-pkg_jar-from lzma
+	cp "${FILESDIR}"/build.xml . || die
 }
 
 src_install() {
-	java-pkg_dojar "${PN}.jar"
+	java-pkg_dojar ${PN}.jar
+	use doc && java-pkg_dojavadoc docs
+	use source && java-pkg_dosrc lzmajio
 }
-
