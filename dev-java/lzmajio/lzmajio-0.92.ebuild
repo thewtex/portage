@@ -37,4 +37,3 @@ src_install() {
 	use doc && java-pkg_dojavadoc docs
 	use source && java-pkg_dosrc lzmajio
 }
-
