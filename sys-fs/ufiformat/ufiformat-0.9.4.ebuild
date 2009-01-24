@@ -1,4 +1,4 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -12,10 +12,9 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="sys-fs/e2fsprogs"
-
 DEPEND=${RDEPEND}
 
 src_install() {
-	dobin ufiformat
-	dodoc AUTHORS ChangeLog NEWS README
+	dobin ufiformat || die "dobin failed"
+	dodoc AUTHORS ChangeLog NEWS README || die "dodoc failed"
 }
