@@ -1,5 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+# $Header: 
 
 inherit gnome2 eutils
 
@@ -24,7 +25,6 @@ RDEPEND=">=sys-apps/dbus-1.2
 	>=x11-libs/gtk+-2.10
 	>=gnome-base/libglade-2
 	>=gnome-base/gnome-keyring-2.20
-	|| ( >=gnome-base/gnome-panel-2 xfce-base/xfce4-panel )
 	>=gnome-base/gconf-2.20
 	>=gnome-extra/policykit-gnome-0.8
 	cisco? ( net-misc/networkmanager-vpnc )
