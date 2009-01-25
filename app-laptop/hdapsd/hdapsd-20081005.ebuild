@@ -16,20 +16,16 @@ SLOT="0"
 KEYWORDS="~x86 ~amd64"
 
 IUSE=""
-RDEPEND=">=app-laptop/tp_smapi-0.32"
+RDEPEND=""
 
 S="${WORKDIR}"
 
 pkg_setup() {
-	# We require the hdaps module; problem is that it can come from either
-	# kernel sources or from the tp_smapi package. This hack is required because
-	# the linux-info eclass doesn't export any more suitable config checkers.
-	# Here we just skip calling its pkg_setup() in case the module is provided
-	# by the package.
-
+	# We require the hdaps module which can either come from kernel sources or 
+	# from the tp_smapi package.
 	if ! has_version app-laptop/tp_smapi || ! built_with_use app-laptop/tp_smapi hdaps; then
 		CONFIG_CHECK="SENSORS_HDAPS"
-		ERROR_SENSORS_HDAPS="${P} requires support for HDAPS (CONFIG_SENSORS_HDAPS or app-laptop/tp_smapi)"
+		ERROR_SENSORS_HDAPS="${P} requires app-laptop/tp_smapi (with hdaps USE enabled) or support for CONFIG_SENSORS_HDAPS enabled"
 		linux-info_pkg_setup
 	fi
 }
@@ -52,6 +48,11 @@ pkg_postinst(){
 	[[ -z $(ls "${ROOT}"/sys/block/*/queue/protect 2>/dev/null) ]] && \
 	[[ -z $(ls "${ROOT}"/sys/block/*/device/unload_heads 2>/dev/null) ]] && \
 		ewarn "Your kernel has NOT been patched for blk_freeze!"
+
+	if ! has_version app-laptop/tp_smapi; then
+		ewarn "Using the hdaps module provided by app-laptop/tp_smapi instead"
+		ewarn "of the in-kernel driver is strongly recommended!"
+	fi
 
 	elog "You can change the default frequency by modifing /sys/devices/platform/hdaps/sampling_rate"
 }
