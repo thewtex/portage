@@ -1,5 +1,5 @@
-dev-db/sqlite:3 dev-games/ode dev-lang/lua[deprecated] media-libs/jpeg media-libs/libpng media-libs/libsdl media-libs/sdl-mixer media-libs/sdl-ttf media-libs/sdl-net net-misc/curl virtual/opengl virtual/glu nls? ( virtual/libintl ) editor? ( media-gfx/inkscape ) !=dev-db/sqlite-3.6.2 nls? ( sys-devel/gettext )
-dev-db/sqlite:3 dev-games/ode dev-lang/lua[deprecated] media-libs/jpeg media-libs/libpng media-libs/libsdl media-libs/sdl-mixer media-libs/sdl-ttf media-libs/sdl-net net-misc/curl virtual/opengl virtual/glu nls? ( virtual/libintl ) editor? ( media-gfx/inkscape )
+dev-db/sqlite:3 dev-games/ode dev-lang/lua[deprecated] media-libs/jpeg media-libs/libpng media-libs/libsdl[joystick] media-libs/sdl-mixer[vorbis] media-libs/sdl-ttf media-libs/sdl-net net-misc/curl app-arch/bzip2 virtual/opengl virtual/glu nls? ( virtual/libintl ) editor? ( media-gfx/inkscape ) !=dev-db/sqlite-3.6.2 nls? ( sys-devel/gettext ) =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+dev-db/sqlite:3 dev-games/ode dev-lang/lua[deprecated] media-libs/jpeg media-libs/libpng media-libs/libsdl[joystick] media-libs/sdl-mixer[vorbis] media-libs/sdl-ttf media-libs/sdl-net net-misc/curl app-arch/bzip2 virtual/opengl virtual/glu nls? ( virtual/libintl ) editor? ( media-gfx/inkscape )
 0
 http://download.tuxfamily.org/xmoto/xmoto/0.5.0/xmoto-0.5.0-src.tar.gz editor? ( http://download.tuxfamily.org/xmoto/svg2lvl/0.5.0~rc2/inksmoto-0.5.0~rc2.tar.gz )
 
@@ -7,8 +7,8 @@ http://xmoto.tuxfamily.org
 GPL-2
 A challenging 2D motocross platform game
 ~amd64 ~ppc ~x86
-toolchain-funcs portability multilib base games eutils
-X editor nls
+toolchain-funcs portability multilib base libtool games autotools eutils
+editor nls
 
 
 
