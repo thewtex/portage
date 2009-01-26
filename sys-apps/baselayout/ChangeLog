@@ -2,8 +2,9 @@
 # Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
 # $Header: /var/cvsroot/gentoo-x86/sys-apps/baselayout/ChangeLog,v 1.470 2008/08/19 17:51:19 zmedico Exp $
 
-# See the rc-scripts ChangeLog in subversion for release info:
-# http://sources.gentoo.org/viewcvs.py/*checkout*/baselayout/trunk/ChangeLog
+  26 Jan 2009; Daniel Robbins <drobbins@funtoo.org> baselayout-2.0.0-r1.ebuild:
+  No rev-bump, but now also generate device nodes when ROOT != "/", not just
+  when "build" is in USE. This is what Metro needs for "stage3-quick" merges.
 
   20 Nov 2008; Daniel Robbins <drobbins@funtoo.org> baselayout-1.12.11.1.ebuild:
   added a PROVIDE="virtual/baselayout" to the ebuild as I'm adding back that
