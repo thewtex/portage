@@ -4,9 +4,14 @@
 # $Header: $
 
 start() {
-	cd /var/freenet/fms
-	su -s /bin/sh -c "./fms --daemon" freenet
-	eend $?
+	if pidof fms >/dev/null; then
+		eerror "FMS already running"
+		eend 1
+	else
+		cd /var/freenet/fms
+		su -s /bin/sh -c "./fms --daemon" freenet
+		eend $?
+	fi
 }
 
 stop() {

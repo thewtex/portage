@@ -214,7 +214,7 @@ pkg_postinst() {
 	# For the bootstrap scenario with an empty /dev, let's fill the
 	# sucker with generic crude ... some day we should think about
 	# slimming this way down as we've moved on to udev/devfs
-	if use build ; then
+	if use build || [ "$ROOT" != "/" ]; then
 		if [[ ! -e ${ROOT}/dev/.devfsd && ! -e ${ROOT}/dev/.udev ]] ; then
 			echo
 			einfo "Making device node tarball (this could take a couple minutes)"
