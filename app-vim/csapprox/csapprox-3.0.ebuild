@@ -11,16 +11,15 @@ IUSE=""
 
 MY_PN="CSApprox"
 
-VIM_PLUGIN_HELPFILES="${MY_PN}.txt"
-VIM_PLUGIN_HELPTEXT="This plugin works best with a terminal that 
+VIM_PLUGIN_HELPTEXT=\
+"This plugin works best with a terminal that 
 has 256 color support and is configured to use it.
 To see the number of colors supported in your current terminal, issue
   tput colors
 For rxvt-unicode, you will need a newer version with 'xterm-color' USE enabled.
 You will also need to follow a guide like this:
   http://scie.nti.st/2008/10/13/get-rxvt-unicode-with-256-color-support-on-ubunut
-For GNU Screen, you will need to add 'term xterm-256color' to your ~/.screenrc
-"
+For GNU Screen, you will need to add 'term xterm-256color' to your ~/.screenrc "
 
 # gvim provides a gui enabled version of /usr/bin/vim, needed for csapprox
 RDEPEND="!app-editors/vim
