@@ -5,7 +5,7 @@
 inherit toolchain-funcs
 
 DESCRIPTION="A compiler frontend for the W3C XML Schema definition language."
-HOMEPAGE="http://kolpackov.net/projects/libxsd-frontend/"
+HOMEPAGE="http://www.codesynthesis.com/projects/libxsd-frontend/"
 SRC_URI="http://www.codesynthesis.com/download/${PN}/${PV%.?}/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
