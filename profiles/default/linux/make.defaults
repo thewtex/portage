@@ -13,6 +13,15 @@
 # Default starting set of USE flags for all default/linux profiles.
 USE="berkdb crypt ipv6 ncurses nls pam perl python readline ssl tcpd zlib"
 
+#Graphics and other formats often used in both server (cmdline) and desktop (X) applications:
+USE="${USE} gif png jpeg tiff truetype xml"
+
+#Codec/AV options that are useful on cmdline and desktop systems:
+USE="${USE} encode gstreamer win32codecs vorbis mp3 mpeg alsa mad mikmod mp3 mpeg ogg"
+
+#Hardware options useful on servers and desktops
+USE="${USE} cdr dvd dvdr dvdread"
+
 # Since GRP_STAGE23_USE doesn't exist anymore, I am disabling gpm in order to
 # disable a stage3 circular issue with ncurses->gpm->ncurses.
 USE="${USE} -gpm"
