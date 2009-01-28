@@ -16,7 +16,7 @@ dga dirac doc dts dvb directfb +dvd dvdnav dv dxr3 enca +encode esd -fbcon ftp -
 +mad -md5sum +mmx mmxext mng mp2 +mp3 musepack nas nemesi opengl
 openal oss -png -pnm pulseaudio -pvr +quicktime radio -rar real rtc -samba schroedinger sdl
 speex sse sse2 ssse3 svga teletext tga +theora +truetype unicode v4l v4l2
-vidix +vorbis win32codecs +X x264 xanim xinerama +xscreensaver +xv xvid xvmc zoran"
+vidix +vorbis win32codecs -X +x264 xanim xinerama -xscreensaver +xv +xvid xvmc zoran"
 
 VIDEO_CARDS="s3virge mga tdfx vesa"
 
