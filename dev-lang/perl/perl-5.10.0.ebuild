@@ -19,7 +19,7 @@ LIBPERL="libperl$(get_libname ${PERLSLOT}.${SHORT_PV})"
 LICENSE="|| ( Artistic GPL-2 )"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~sparc-fbsd ~x86 ~x86-fbsd"
-IUSE="berkdb debug doc gdbm ithreads perlsuid build"
+IUSE="berkdb debug doc gdbm ithreads perlsuid" 
 PERL_OLDVERSEN=""
 
 DEPEND="berkdb? ( sys-libs/db )
@@ -34,13 +34,11 @@ RDEPEND="~sys-devel/libperl-${PV}
 	gdbm? ( >=sys-libs/gdbm-1.8.3 )"
 
 PDEPEND=">=app-admin/perl-cleaner-1.03
-		!build? (
 			>=perl-core/PodParser-1.35
 			>=perl-core/Test-Harness-2.64
 			>=perl-core/Module-Build-0.28.08
 			>=perl-core/Archive-Tar-1.38
-			>=perl-core/Digest-SHA-5.45
-		)"
+			>=perl-core/Digest-SHA-5.45"
 
 pkg_setup() {
 	# I think this should rather be displayed if you *have* 'ithreads'
@@ -228,11 +226,7 @@ src_install() {
 	# Fix for "stupid" modules and programs
 	dodir /usr/$(get_libdir)/perl5/site_perl/${MY_PV}/${myarch}${mythreading}
 
-	local installtarget=install
-	if use build ; then
-		installtarget=install.perl
-	fi
-	make DESTDIR="${D}" ${installtarget} || die "Unable to make ${installtarget}"
+	make DESTDIR="${D}" install || die "Unable to make install"
 
 	rm "${D}"/usr/bin/perl
 	#TODO: eselect?
@@ -312,9 +306,6 @@ src_install() {
 	rm -f "${D}"/usr/share/man/man1/ptar*
 	rm -f "${D}"/usr/share/man/man1/config_data*
 	rm -f "${D}"/usr/share/man/man1/shasum*
-	if use build ; then
-		src_remove_extra_files
-	fi
 
 #	# TODO: Ugly. renaming the files for SLOTting
 #	cd "${D}"/usr/bin
