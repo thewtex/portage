@@ -228,11 +228,7 @@ src_install() {
 	# Fix for "stupid" modules and programs
 	dodir /usr/$(get_libdir)/perl5/site_perl/${MY_PV}/${myarch}${mythreading}
 
-	local installtarget=install
-	if use build ; then
-		installtarget=install.perl
-	fi
-	make DESTDIR="${D}" ${installtarget} || die "Unable to make ${installtarget}"
+	make DESTDIR="${D}" install || die "Unable to make install"
 
 	rm "${D}"/usr/bin/perl
 	#TODO: eselect?
