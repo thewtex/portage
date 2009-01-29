@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4164 2009/01/28 02:52:29 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4169 2009/01/29 14:27:42 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -236,7 +236,7 @@ app-emulation/virtualbox-ose:sdk - Enable building of SDK
 app-emulation/vov:gprof - build with profiling support
 app-emulation/wine:gecko - Add support for the Gecko engine when using iexplore
 app-emulation/wine:samba - Add support for NTLM auth. see http://wiki.winehq.org/NtlmAuthSetupGuide and http://wiki.winehq.org/NtlmSigningAndSealing
-app-emulation/wine:win64 - Build a 64bit version of Wine
+app-emulation/wine:win64 - Build a 64bit version of Wine (won't run Win32 binaries)
 app-emulation/xen:acm - Enable the ACM/sHype XSM module from IBM
 app-emulation/xen:custom-cflags - Use CFLAGS from /etc/make.conf rather than the default Xen CFLAGS (not supported)
 app-emulation/xen:flask - Enable the Flask XSM module from NSA
@@ -771,7 +771,6 @@ dev-ruby/ruby-sdl:mixer - Enable media-libs/sdl-mixer support
 dev-ruby/ruby-sdl:sge - Enable sdl-sge support
 dev-ruby/rubygems:server - Install support for the rubygems server
 dev-ruby/sqlite3-ruby:swig - Use dev-lang/swig to generate bindings
-dev-scheme/gambit:big-iron - Use expensive GCC optimizations and compile syntax-case macro system, try only if you have more than 2GB RAM
 dev-scheme/gauche-gl:cg - Enable NVidia Cg binding
 dev-scheme/gauche-gtk:glgd - Enable GL graph draw
 dev-scheme/guile:debug-freelist - Include garbage collector freelist debugging code
@@ -981,6 +980,7 @@ gnustep-base/gnustep-back-cairo:glitz - Build with media-libs/glitz support
 gnustep-base/gnustep-back-cairo:xim - Enable X11 XiM input method
 gnustep-base/gnustep-back-xlib:xim - Enable X11 XiM input method
 gnustep-base/gnustep-base:gcc-libffi - Use dev-libs/libffi from sys-devel/gcc instead of dev-libs/ffcall. Requires sys-devel/gcc built with USE=libffi
+gnustep-base/gnustep-make:native-exceptions - Enables use of the native Objective-C exception support (@try/@catch/@finally) built-in objective-c exceptions with compilers that support it 
 kde-base/akonadi:nepomuk - Enable desktop-wide tagging support
 kde-base/akonadi:opensync - Enables OpenSync data synchronization protocol support.
 kde-base/akonadi:semantic-desktop - Enables desktop-wide tagging support.
@@ -996,6 +996,8 @@ kde-base/kaddressbook:gnokii - Address synchronization with mobile phones via ap
 kde-base/kalzium:cviewer - Enable Kalzium compound viewer
 kde-base/kalzium:editor - Enable the embedded molecule editor/viewer
 kde-base/kalzium:solver - Enable the equation solver
+kde-base/kbugbuster:kcal - Support for kcal (calendar) format
+kde-base/kcontrol:logitech-mouse -  Build the Control Center module to configure logitech mice 
 kde-base/kdeadmin-meta:lilo - Install lilo-config, a frontend for the lilo boot loader
 kde-base/kdebase:logitech-mouse - Build the Control Center module to configure logitech mice
 kde-base/kdebase-meta:semantic-desktop - Semantic desktop allows for storage of digital information and its metadata to allow the user to express his personal mental models, making all information become intuitively accessible 
@@ -1025,6 +1027,7 @@ kde-base/kopete:addbookmarks - Automaticaly add incoming urls to bookmarks.
 kde-base/kopete:alias - Enables creating of your own aliases for commands.
 kde-base/kopete:autoreplace - Automaticaly replace selected text
 kde-base/kopete:bonjour - Enable Link-Local Messaging via the bonjour protocol.
+kde-base/kopete:connectionstatus - Builds Connection Status plugin
 kde-base/kopete:contactnotes - Enables writing personal notes for contacts.
 kde-base/kopete:gadu - Enable the Gadu protocol handler.
 kde-base/kopete:groupwise - Enable the Groupwise protocol handler.
@@ -1036,15 +1039,16 @@ kde-base/kopete:latex - Embed latex formatted text into messages.
 kde-base/kopete:meanwhile - Enable the Sametime protocol handler.
 kde-base/kopete:messenger - Enable support for MSN and Windows live protocols (old implementation).
 kde-base/kopete:msn - Enable support for MSN (old microsoft protocol).
+kde-base/kopete:netmeeting - Builds netmeeting plugin (require gnomemeeting)
 kde-base/kopete:nowlistening - Shows song you currently listen to in your status/etc. Bindings for many players.
 kde-base/kopete:oscar - Enable support for AIM and ICQ protocols.
 kde-base/kopete:otr - Allows crypting your chat (drugs and talking nonsense are considered as good alternatives ;]).
 kde-base/kopete:pipes - Send messages to external pipe.
 kde-base/kopete:privacy - Filter for incomming messages
 kde-base/kopete:qq - enable support for the chinese network protocol.
+kde-base/kopete:sametime - Enables support for the Sametime protocol for instant messaging
 kde-base/kopete:sms - Enable the sms sending plugin.
 kde-base/kopete:statistics - Everybody loves statistic graphs, especialy cake ones. ;]
-kde-base/kopete:telepathy - Enable support for the realtime communication framework telepathy.
 kde-base/kopete:testbed - Enable the testbed protocol.
 kde-base/kopete:texteffect - Various fancy text effects for your messages (dont ever consider writing us with this enabled ;]).
 kde-base/kopete:translator - Translate incoming and outgoing messages.

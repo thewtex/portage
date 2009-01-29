@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.9435 2009/01/28 02:30:53 jmbsvicetto Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.9440 2009/01/29 14:29:33 alexxy Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -31,6 +31,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Sterrett <mr_bones_@gentoo.org> (29 Jan 2009)
+# Old and unmaintained.  Used games-action/extreme-tuxracer instead.
+games-arcade/ppracer
+
+# Torsten Veller <tove@gentoo.org> (28 Jan 2009)
+# Masked for testing (#249629)
+# https://bugs.gentoo.org/show_bug.cgi?id=79685#c14
+=dev-lang/perl-5.8.8-r6
+
 # Peter Volkov <pva@gentoo.org> (26 Jan 2009)
 # Security vulnerabilities (one of them is critical), bug 236517
 www-misc/zoneminder
@@ -51,7 +60,6 @@ x11-base/kdrive
 # Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org> (24 Jan 2009)
 # Masked until KDE-4.2.0 is put in the tree.
 # The mask should be removed in 1 or 2 weeks.
-
 >=kde-base/akonadi-4.1.96
 >=kde-base/akregator-4.1.96
 >=kde-base/amor-4.1.96
@@ -206,6 +214,7 @@ x11-base/kdrive
 >=kde-base/kommander-4.1.96
 >=kde-base/kompare-4.1.96
 >=kde-base/konqueror-4.1.96
+>=kde-base/konq-plugins-4.1.96
 >=kde-base/konquest-4.1.96
 >=kde-base/konsole-4.1.96
 >=kde-base/kontactinterfaces-4.1.96
@@ -314,6 +323,7 @@ x11-base/kdrive
 >=kde-base/system-config-printer-kde-4.1.96
 >=kde-base/systemsettings-4.1.96
 >=kde-base/umbrello-4.1.96
+>=media-sound/phonon-4.3.0
 
 # Diego E. Pettenò <flameeyes@gentoo.org> (24 Jan 2009)
 # Finally get rid of the combined mikachan-font package.
@@ -1348,10 +1358,6 @@ dev-lang/entity
 # Live SVN ebuilds
 ~app-emacs/gentoo-syntax-9999
 ~app-emacs/ngnus-9999
-
-# Marijn Schouten <hkBst@gentoo.org> (20 Dec 2007)
-# Broken, bug 202880
->=dev-scheme/gambit-4.1.1
 
 # Ingmar Vanhassel <ingmar@gentoo.org> (10 Mar 2008)
 # Masked for testing, various dependencies still need to be updated...
