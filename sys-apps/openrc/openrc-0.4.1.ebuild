@@ -129,6 +129,9 @@ pkg_preinst() {
 	if [[ -e ${ROOT}/etc/conf.d/clock ]] ; then
 		mv "${ROOT}"/etc/conf.d/clock "${ROOT}"/etc/conf.d/${clock}
 	fi
+	if [[ -e ${ROOT}/etc/init.d/clock ]] ; then
+		rm -f "${ROOT}"/etc/init.d/clock
+	fi
 	if [[ -L ${ROOT}/etc/runlevels/boot/clock ]] ; then
 		rm -f "${ROOT}"/etc/runlevels/boot/clock
 		ln -snf /etc/init.d/${clock} "${ROOT}"/etc/runlevels/boot/${clock}

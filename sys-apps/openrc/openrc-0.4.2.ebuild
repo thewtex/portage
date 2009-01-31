@@ -1,38 +1,27 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/openrc/openrc-0.4.2.ebuild,v 1.2 2009/01/31 14:34:36 zzam Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/openrc/openrc-0.3.0-r1.ebuild,v 1.1 2008/10/08 16:19:11 cardoe Exp $
 
 inherit eutils flag-o-matic multilib toolchain-funcs
 
-if [[ ${PV} == "9999" ]] ; then
-	ESVN_REPO_URI="svn://roy.marples.name/openrc/trunk"
-	inherit subversion
-else
-	SRC_URI="http://roy.marples.name/downloads/${PN}/${P}.tar.bz2
-		mirror://gentoo/${P}.tar.bz2
-		http://dev.gentoo.org/~cardoe/files/${P}.tar.bz2
-		http://dev.gentoo.org/~vapier/dist/${P}.tar.bz2"
-fi
-
+SRC_URI="http://roy.marples.name/downloads/openrc/openrc-${PV}.tar.bz2 ftp://roy.marples.name/downloads/openrc/openrc-${PV}.tar.bz2"
 DESCRIPTION="OpenRC manages the services, startup and shutdown of a host"
 HOMEPAGE="http://roy.marples.name/openrc"
+PROVIDE="virtual/baselayout"
 
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~sparc-fbsd ~x86 ~x86-fbsd"
-IUSE="debug elibc_glibc ncurses pam unicode kernel_linux kernel_FreeBSD"
+IUSE="debug ncurses pam unicode kernel_linux kernel_FreeBSD"
 
-RDEPEND="virtual/init
-	kernel_FreeBSD? ( sys-process/fuser-bsd )
+RDEPEND="kernel_linux? ( =sys-apps/sysvinit-2.86-r11 )
+	kernel_FreeBSD? ( virtual/init sys-process/fuser-bsd )
 	elibc_glibc? ( >=sys-libs/glibc-2.5 )
 	ncurses? ( sys-libs/ncurses )
 	pam? ( virtual/pam )
 	>=sys-apps/baselayout-2.0.0
-	kernel_linux? ( !<sys-apps/module-init-tools-3.2.2-r2 )
-	!<sys-fs/udev-133
-	!<sys-apps/sysvinit-2.86-r11"
-DEPEND="${RDEPEND}
-	virtual/os-headers"
+	>=sys-fs/udev-135"
+DEPEND="ncurses? ( sys-libs/ncurses ) eclibc_glibc? ( >=sys-libs/glibc-2.5 ) pam? ( virtual/pam ) virtual/os-headers"
 
 pkg_setup() {
 	LIBDIR="lib"
@@ -48,21 +37,11 @@ pkg_setup() {
 		MAKE_ARGS="${MAKE_ARGS} OS=FreeBSD"
 		brand="FreeBSD"
 	fi
-	export BRANDING="Gentoo ${brand}"
+	export BRANDING="Funtoo ${brand}"
 
 	export DEBUG=$(usev debug)
 	export MKPAM=$(usev pam)
 	export MKTERMCAP=$(usev ncurses)
-}
-
-src_unpack() {
-	if [[ ${PV} == "9999" ]] ; then
-		subversion_src_unpack
-	else
-		unpack ${A}
-	fi
-	cd "${S}"
-	epatch "${FILESDIR}"/0.4.2/*.patch
 }
 
 src_compile() {
@@ -71,10 +50,7 @@ src_compile() {
 		die "Your MAKE_ARGS is empty ... are you running 'ebuild' but forgot to execute 'setup' ?"
 	fi
 
-	if [[ ${PV} == "9999" ]] ; then
-		local ver="-svn-$(cd "${ESVN_STORE_DIR}/${ESVN_PROJECT}/${ESVN_REPO_URI##*/}"; LC_ALL=C svnversion)"
-		sed -i "/^SVNVER[[:space:]]*=/s:=.*:=${ver}:" src/rc/Makefile
-	fi
+	sed -i "/^VERSION[[:space:]]*=/s:=.*:=${PV}:" Makefile
 
 	tc-export CC AR RANLIB
 	echo emake ${MAKE_ARGS}
@@ -86,35 +62,48 @@ src_install() {
 	gen_usr_ldscript libeinfo.so
 	gen_usr_ldscript librc.so
 
+	dodir /etc/runlevels/default
+
 	keepdir /"${LIBDIR}"/rc/init.d
 	keepdir /"${LIBDIR}"/rc/tmp
 
 	# Backup our default runlevels
 	dodir /usr/share/"${PN}"
 	mv "${D}/etc/runlevels" "${D}/usr/share/${PN}"
-
+	
+	#Install special patch to apply later
+	insinto /usr/share/${PN}/misc
+	doins ${FILESDIR}/inittab-openrc.patch
+	
 	# Setup unicode defaults for silly unicode users
 	use unicode && sed -i -e '/^unicode=/s:NO:YES:' "${D}"/etc/rc.conf
 
 	# Cater to the norm
 	(use x86 || use amd64) && sed -i -e '/^windowkeys=/s:NO:YES:' "${D}"/etc/conf.d/keymaps
+
 }
 
-add_boot_init() {
-	local initd=$1
-	# if the initscript is not going to be installed and  is not
-	# currently installed, return
-	[[ -e ${D}/etc/init.d/${initd} || -e ${ROOT}/etc/init.d/${initd} ]] \
-		|| return
-	[[ -e ${ROOT}/etc/runlevels/boot/${initd} ]] && return
-	elog "Auto-adding '${initd}' service to your boot runlevel"
-	ln -snf /etc/init.d/${initd} "${ROOT}"/etc/runlevels/boot/${initd}
+add_init() {
+	local runl=$1
+	shift
+	if [ ! -e ${ROOT}/etc/runlevels/${runl} ]
+	then
+		install -d -m0755 ${ROOT}/etc/runlevels/${runl}
+	fi
+	for initd in $*
+	do
+		[[ -e ${ROOT}/etc/runlevels/${runl}/${initd} ]] && continue
+		elog "Auto-adding '${initd}' service to your ${runl} runlevel"
+		ln -snf /etc/init.d/${initd} "${ROOT}"/etc/runlevels/${runl}/${initd}
+	done
 }
-add_boot_init_mit_config() {
-	local config=$1 initd=$2
+
+add_init_mit_config() {
+	# DESCRIPTION: if config file exists and isn't just comments and blank lines, then install our initscript.
+	local runl=$1 config=$2 initd=$3
 	if [[ -e ${ROOT}${config} ]] ; then
 		if [[ -n $(sed -e 's:#.*::' -e '/^[[:space:]]*$/d' "${ROOT}"/${config}) ]] ; then
-			add_boot_init ${initd}
+			add_init ${runl} ${initd}
 		fi
 	fi
 }
@@ -122,8 +111,7 @@ add_boot_init_mit_config() {
 pkg_preinst() {
 	local f
 
-	# default net script is just comments, so no point in biting people
-	# in the ass by accident
+	# if /etc/conf.d/net already exists, don't install our blank template.
 	mv "${D}"/etc/conf.d/net "${T}"/
 	[[ -e ${ROOT}/etc/conf.d/net ]] && cp "${ROOT}"/etc/conf.d/net "${T}"/
 
@@ -160,56 +148,20 @@ pkg_preinst() {
 		elog "and delete /etc/conf.d/rc"
 	fi
 
-	# force net init.d scripts into symlinks
-	for f in "${ROOT}"/etc/init.d/net.* ; do
-		[[ -e ${f} ]] || continue # catch net.* not matching anything
-		[[ ${f} == */net.lo ]] && continue # real file now
-		[[ ${f} == *.openrc.bak ]] && continue
-		if [[ ! -L ${f} ]] ; then
-			elog "Moved net service '${f##*/}' to '${f##*/}.openrc.bak' to force a symlink."
-			elog "You should delete '${f##*/}.openrc.bak' if you don't need it."
-			mv "${f}" "${f}.openrc.bak"
-			ln -snf net.lo "${f}"
-		fi
-	done
+	has_version sys-apps/baselayout && baselayout_migrate
+}
 
-	# termencoding was added in 0.2.1 and needed in boot
-	has_version ">=sys-apps/openrc-0.2.1" || add_boot_init termencoding
-
-	# openrc-0.4.0 no longer loads the udev addon
-	enable_udev=0
-	if [[ ! -e "${ROOT}"/etc/runlevels/sysinit/udev ]] && \
-		[[ -e "${ROOT}"/etc/init.d/udev ]] && \
-		! has_version ">=sys-apps/openrc-0.4.0"
-	then
-		# make sure udev is in sysinit if it was enabled before
-		local rc_devices=$(
-			[[ -f /etc/rc.conf ]] && source /etc/rc.conf
-			[[ -f /etc/conf.d/rc ]] && source /etc/conf.d/rc
-			echo "${rc_devices:-${RC_DEVICES:-auto}}"
-		)
-		case ${rc_devices} in
-			udev|auto)
-				enable_udev=1
-				;;
-		esac
-	fi
-
-	# skip remaining migration if we already have openrc installed
-	has_version sys-apps/openrc && return 0
-
+baselayout_migrate() {
 	# baselayout boot init scripts have been split out
-	for f in $(cd "${D}"/usr/share/${PN}/runlevels/boot || exit; echo *) ; do
-		add_boot_init ${f}
-	done
+	add_init boot $(cd "${D}"/usr/share/${PN}/runlevels/boot || exit; echo *)
 
 	# Try to auto-add some addons when possible
-	add_boot_init_mit_config /etc/conf.d/cryptfs dmcrypt
-	add_boot_init_mit_config /etc/conf.d/dmcrypt dmcrypt
-	add_boot_init_mit_config /etc/mdadm.conf mdraid
-	add_boot_init_mit_config /etc/evms.conf evms
-	[[ -e ${ROOT}/sbin/dmsetup ]] && add_boot_init device-mapper
-	[[ -e ${ROOT}/sbin/vgscan ]] && add_boot_init lvm
+	add_init_mit_config boot /etc/conf.d/cryptfs dmcrypt
+	add_init_mit_config boot /etc/conf.d/dmcrypt dmcrypt
+	add_init_mit_config boot /etc/mdadm.conf mdraid
+	add_init_mit_config boot /etc/evms.conf evms
+	[[ -e ${ROOT}/sbin/dmsetup ]] && add_init boot device-mapper
+	[[ -e ${ROOT}/sbin/vgscan ]] && add_init boot lvm
 	elog "Add on services (such as RAID/dmcrypt/LVM/etc...) are now stand alone"
 	elog "init.d scripts.  If you use such a thing, make sure you have the"
 	elog "required init.d scripts added to your boot runlevel."
@@ -268,35 +220,54 @@ pkg_preinst() {
 			rmdir "${ROOT}"/etc/modules.autoload.d 2>/dev/null
 		fi
 	fi
-}
 
-pkg_postinst() {
 	# Remove old baselayout links
 	rm -f "${ROOT}"/etc/runlevels/boot/{check{fs,root},rmnologin}
 
+}
+
+pkg_postinst() {
+	local runl
+	install -d -m0755 ${ROOT}/etc/runlevels
+	local runldir="${ROOT}usr/share/${PN}/runlevels"
+
+	# CREATE RUNLEVEL DIRECTORIES	
+	# ===========================
+
+	# To ensure proper system operation, this portion of the script ensures that
+	# all of OpenRC's default initscripts in all runlevels are properly
+	# installed.
+
+	for runl in $( cd "$runldir"; echo * )
+	do
+		einfo "Processing $runl..."
+		einfo "Ensuring runlevel $runl has all required scripts..."
+		add_init $runl $( cd "$runldir/$runl"; echo * )
+	done
+
 	[[ -e ${T}/net && ! -e ${ROOT}/etc/conf.d/net ]] && mv "${T}"/net "${ROOT}"/etc/conf.d/net
 
-	# Make our runlevels if they don't exist
-	if [[ ! -e ${ROOT}/etc/runlevels ]] ; then
-		einfo "Copying across default runlevels"
-		cp -RPp "${ROOT}"/usr/share/${PN}/runlevels "${ROOT}"/etc
-	else
-		if [[ ! -e ${ROOT}/etc/runlevels/sysinit/devfs ]] ; then
-			mkdir -p "${ROOT}"/etc/runlevels/sysinit
-			cp -RPp "${ROOT}"/usr/share/${PN}/runlevels/sysinit/* \
-				"${ROOT}"/etc/runlevels/sysinit
-		fi
-		if [[ ! -e ${ROOT}/etc/runlevels/shutdown/mount-ro ]] ; then
-			mkdir -p "${ROOT}"/etc/runlevels/shutdown
-			cp -RPp "${ROOT}"/usr/share/${PN}/runlevels/shutdown/* \
-				"${ROOT}"/etc/runlevels/shutdown
-		fi
+	# set up symlink to net.example if net.example doesn't exist
+	if [[ ! -e ${ROOT}/etc/conf.d/net.example ]] && [[ -e ${ROOT}/usr/share/doc/openrc-${PVR}/net.example ]]
+	then
+		ln -s /usr/share/doc/openrc-${PVR}/net.example ${ROOT}/etc/conf.d/net.example || die "couldn't create net.example symlink"
 	fi
 
-	if [[ "$enable_udev" = 1 ]]; then
-		elog "Auto adding udev init script to the sysinit runlevel"
-		ln -sf /etc/init.d/udev "${ROOT}"/etc/runlevels/sysinit/udev
+	# SEE IF WE CAN UPGRADE /etc/inittab automatically
+	# ================================================
+
+	cat $FILESDIR/inittab-openrc.patch | ( cd $ROOT/etc; patch -p0 --dry-run > /dev/null 2>&1 )
+	if [ $? -eq 0 ]
+	then
+		einfo "Patching $ROOTetc/inittab to work with new OpenRC..."
+		cat $FILESDIR/inittab-openrc.patch | ( cd $ROOT/etc; patch -p0 > /dev/null 2>&1 )
+		eend $?
+	else
+		einfo "Please ensure you run /etc/update to upgrade your /etc/inittab."
 	fi
+
+	# OTHER STUFF
+	# ===========
 
 	# update the dependency tree bug #224171
 	[[ "${ROOT}" = "/" ]] && "${ROOT}/${LIBDIR}"/rc/bin/rc-depend -u
