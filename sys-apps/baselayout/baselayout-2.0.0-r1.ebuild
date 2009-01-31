@@ -17,6 +17,71 @@ IUSE="build"
 PDEPEND="sys-apps/openrc"
 
 pkg_preinst() {
+	if [ "$ROOT" != "/" ]
+	then
+		# This should be /lib/rcscripts, but we have to support old profiles too.
+		if [[ ${SYMLINK_LIB} == "yes" ]]; then
+			rcscripts_dir="${ROOT}$(get_abi_LIBDIR ${DEFAULT_ABI})/rcscripts"
+		else
+			rcscripts_dir="${ROOT}lib/rcscripts"
+		fi
+		einfo "Creating directories..."
+		install -d ${ROOT}usr
+		install -d ${ROOT}usr/local
+		install -d ${ROOT}boot
+		install -d ${ROOT}dev
+		install -d ${ROOT}dev/pts
+		install -d ${ROOT}dev/shm
+		install -d ${ROOT}etc/conf.d
+		install -d ${ROOT}etc/cron.daily
+		install -d ${ROOT}etc/cron.hourly
+		install -d ${ROOT}etc/cron.monthly
+		install -d ${ROOT}etc/cron.weekly
+		install -d ${ROOT}etc/env.d
+		install -d ${ROOT}etc/modules.autoload.d
+		install -d ${ROOT}etc/modules.d
+		install -d ${ROOT}etc/opt
+		install -d ${ROOT}home
+		install -d ${rcscripts_dir}
+		install -d ${ROOT}mnt
+		install -d ${ROOT}mnt/cdrom
+		install -d ${ROOT}mnt/floppy
+		install -d ${ROOT}opt
+		install -d -o root -g uucp -m0775 ${ROOT}var/lock
+		install -d ${ROOT}proc
+		install -d -m 0700 ${ROOT}root
+		install -d ${ROOT}sbin
+		install -d ${ROOT}sys	# for 2.6 kernels
+		install -d ${ROOT}usr/bin
+		install -d ${ROOT}usr/include
+		install -d ${ROOT}usr/include/asm
+		install -d ${ROOT}usr/include/linux
+		install -d ${ROOT}usr/local/bin
+		install -d ${ROOT}usr/local/games
+		install -d ${ROOT}usr/local/sbin
+		install -d ${ROOT}usr/local/share
+		install -d ${ROOT}usr/local/share/doc
+		install -d ${ROOT}usr/local/share/man
+		install -d ${ROOT}usr/local/src
+		install -d ${ROOT}usr/portage
+		install -d ${ROOT}usr/sbin
+		install -d ${ROOT}usr/share/doc
+		install -d ${ROOT}usr/share/info
+		install -d ${ROOT}usr/share/man
+		install -d ${ROOT}usr/share/misc
+		install -d ${ROOT}usr/src
+		install -d -m 1777 ${ROOT}tmp
+		install -d -m 1777 ${ROOT}var/tmp
+		install -d ${ROOT}var
+		install -d ${ROOT}var/db/pkg
+		install -d ${ROOT}var/lib/misc
+		install -d ${ROOT}var/lock/subsys
+		install -d ${ROOT}var/log/news
+		install -d ${ROOT}var/run
+		install -d ${ROOT}var/spool
+		install -d ${ROOT}var/state
+	fi
+
 	# Bug #217848 - Since the remap_dns_vars() called by pkg_preinst() of
 	# the baselayout-1.x ebuild copies all the real configs from the user's
 	# /etc/conf.d into ${D}, it makes them all appear to be the default
