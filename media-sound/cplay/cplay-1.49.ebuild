@@ -24,7 +24,7 @@ RDEPEND="dev-lang/python
 src_install () {
 	emake PREFIX="${D}/usr" recursive-install || die "emake failed."
 
-	sed -i -e "s:/usr/local:/usr:g" "${D}"/usr/bin/cplay || die "dosed failed."
+	sed -i -e "s:/usr/local:/usr:g" cplay || die "dosed failed."
 	dobin cplay || die "dobin failed."
 	doman cplay.1
 	dodoc ChangeLog README TODO

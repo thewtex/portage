@@ -8,7 +8,7 @@ SRC_URI="http://gems.github.com/gems/${MY_P}.gem"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="dev-ruby/json_pure
