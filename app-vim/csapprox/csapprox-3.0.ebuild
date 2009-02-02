@@ -22,8 +22,7 @@ You will also need to follow a guide like this:
 For GNU Screen, you will need to add 'term xterm-256color' to your ~/.screenrc "
 
 # gvim provides a gui enabled version of /usr/bin/vim, needed for csapprox
-RDEPEND="!app-editors/vim
-	>=app-editors/gvim-${VIM_PLUGIN_VIM_VERSION}"
+RDEPEND="!app-editors/vim >=app-editors/gvim-${VIM_PLUGIN_VIM_VERSION}"
 DEPEND="${RDEPEND} app-arch/unzip"
 S="${WORKDIR}"
 
