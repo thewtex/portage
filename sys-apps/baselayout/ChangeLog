@@ -2,6 +2,11 @@
 # Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
 # $Header: /var/cvsroot/gentoo-x86/sys-apps/baselayout/ChangeLog,v 1.470 2008/08/19 17:51:19 zmedico Exp $
 
+  01 Feb 2009; Daniel Robbins <drobbins@funtoo.org> baselayout-2.0.0-r1.ebuild:
+  More baselayout fixes. Baselayout now does what it was originally supposed to
+  do, again -- create the base filesystem layout. It only does this when ROOT
+  != /.
+
   26 Jan 2009; Daniel Robbins <drobbins@funtoo.org> baselayout-2.0.0-r1.ebuild:
   No rev-bump, but now also generate device nodes when ROOT != "/", not just
   when "build" is in USE. This is what Metro needs for "stage3-quick" merges.
