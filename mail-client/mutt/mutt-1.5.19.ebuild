@@ -22,8 +22,8 @@ SRC_URI="ftp://ftp.mutt.org/mutt/devel/${P}.tar.gz
 	sidebar? (
 		http://www.lunar-linux.org/~tchan/mutt/${SIDEBAR_PATCH_N}
 	)"
-IUSE="berkdb crypt debug gdbm gnutls gpgme idn imap mbox nls nntp pop qdbm sasl
-sidebar smime smtp ssl vanilla"
+IUSE="berkdb crypt debug gdbm gnutls gpgme idn +imap mbox nls nntp pop qdbm +sasl
+sidebar smime +smtp ssl vanilla"
 SLOT="0"
 LICENSE="GPL-2"
 KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
