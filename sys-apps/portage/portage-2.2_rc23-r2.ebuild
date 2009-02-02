@@ -77,6 +77,7 @@ src_unpack() {
 		epatch "${WORKDIR}/${PN}-${PATCHVER}.patch"
 	fi
 	epatch "${DISTDIR}/duplicate_cpv_builddir.patch"
+	epatch "${DISTDIR}/rdepend_problem.patch"
 	einfo "Setting portage.VERSION to ${PVR} ..."
 	sed -i "s/^VERSION=.*/VERSION=\"${PVR}\"/" pym/portage/__init__.py || \
 		die "Failed to patch portage.VERSION"
