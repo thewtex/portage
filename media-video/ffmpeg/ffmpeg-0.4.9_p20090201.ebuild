@@ -17,8 +17,8 @@ S=${WORKDIR}/ffmpeg
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
-IUSE="3dnow aac alsa altivec amr debug dirac doc ieee1394 encode gsm ipv6 mmx mmxext vorbis
-	  test theora threads x264 xvid network zlib sdl X mp3 oss schroedinger
+IUSE="3dnow +aac alsa altivec amr debug dirac doc ieee1394 +encode gsm ipv6 mmx mmxext +vorbis
+	  test +theora threads +x264 +xvid network zlib sdl X +mp3 oss schroedinger
 	  hardcoded-tables bindist v4l v4l2 speex ssse3 vhook"
 
 RDEPEND="vhook? ( >=media-libs/imlib2-1.4.0 >=media-libs/freetype-2 )
