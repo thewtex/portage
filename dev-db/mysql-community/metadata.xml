@@ -1,16 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>mysql</herd>
-<use>
-  <flag name='big-tables'>Make tables contain up to 1.844E+19 rows</flag>
-  <flag name='cluster'>Add support for NDB clustering</flag>
-  <flag name='embedded'>Build embedded server (libmysqld)</flag>
-  <flag name='extraengine'>Add support for alternative storage engines</flag>
-  <flag name='latin1'>Use LATIN1 encoding instead of UTF8</flag>
-  <flag name='max-idx-128'>Raise the max index per table limit from 64 to 128
-    </flag>
-  <flag name='minimal'>Install client programs only, no server</flag>
-  <flag name='pbxt'>Add experimental support for pbxt storage engine</flag>
-</use>
+    <herd>dantrell</herd>
+    <maintainer>
+        <email>dantrell@mirthil.org</email>
+        <description>Primary Maintainer</description>
+    </maintainer>
+    <longdescription></longdescription>
+    <use>
+        <flag name='doc'>Enable building of the documentation and man pages.</flag>
+        <flag name='cluster'>Enable cluster<flag>
+        <flag name='community'>Enable additional features provided by the user community.<flag>
+        <flag name='cluster'>Enable cluster storage engine.<flag>
+        <flag name='falcon'>Enable falcon storage engine.<flag>
+        <flag name='federated'>Enable federated storage engine.<flag>
+        <flag name='innodb'>Enable innodb storage engine.<flag>
+        <flag name='libevent'>Enable libevent and connection pooling.<flag>
+        <flag name='maria'>Enable maria storage engine.<flag>
+        <flag name='ssl'>Include SSL support.<flag>
+        <flag name='tcpwrapper'>Compile in libwrap (tcp_wrappers) support.<flag>
+        <flag name='test'>Enable test cases.<flag>
+        <flag name='utf8'>Set utf8 as the default character set.<flag>
+    </use>
 </pkgmetadata>
