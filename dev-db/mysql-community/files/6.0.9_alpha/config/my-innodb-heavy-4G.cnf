@@ -1,48 +1,27 @@
-#BEGIN CONFIG INFO
-#DESCR: 4GB RAM, InnoDB only, ACID, few connections, heavy queries
-#TYPE: SYSTEM
-#END CONFIG INFO
-
-#
-# This is a MySQL example config file for systems with 4GB of memory
-# running mostly MySQL using InnoDB only tables and performing complex
-# queries with few connections.
-# 
-# You can copy this file to /etc/my.cnf to set global options,
-# mysql-data-dir/my.cnf to set server-specific options 
-# (/var/lib for this installation) or to
-# ~/.my.cnf to set user-specific options.
-#
-# In this file, you can use all long options that a program supports.
-# If you want to know which options a program supports, run the program
-# with the "--help" option.
-#
-# More detailed information about the individual options can also be
-# found in the manual.
-#
-
-#
-# The following options will be read by MySQL client applications.
-# Note that only client applications shipped by MySQL are guaranteed
-# to read this section. If you want your own MySQL client program to
-# honor these values, you need to specify it as an option during the
-# MySQL client library initialization.
-#
 [client]
-#password	= [your_password]
-port		= 3306
-socket		= /tmp/mysql.sock
+port                        = 3306
+socket                      = /var/run/mysqld/mysqld.sock
 
-# *** Application-specific options follow here ***
+[mysql]
+character-sets-dir          = /usr/share/mysql/charsets
+default-character-set       = utf8
+no-auto-rehash
+#safe-updates
 
-#
-# The MySQL server
-#
 [mysqld]
-
-# generic configuration options
-port		= 3306
-socket		= /tmp/mysql.sock
+character-set-server        = utf8
+default-character-set       = utf8
+port                        = 3306
+user                        = mysql
+socket                      = /var/run/mysqld/mysqld.sock
+pid-file                    = /var/run/mysqld/mysqld.pid
+log-error                   = /var/log/mysql/mysqld-error.log
+                              # binary logging is required for replication
+log-bin                     = /var/log/mysql/mysqld-bin
+basedir                     = /usr
+datadir                     = /var/lib/mysql
+tmpdir                      = /tmp
+language                    = /usr/share/mysql/english
 
 # back_log is the number of connections the operating system can keep in
 # the listen queue, before the MySQL connection manager thread has
@@ -203,7 +182,7 @@ log-bin=mysql-bin
 
 # Print warnings to the error log file.  If you have any problem with
 # MySQL you should enable logging of warnings and examine the error log
-# for possible explanations. 
+# for possible explanations.
 #log_warnings
 
 # Log slow queries. Slow queries are queries which take more than the
@@ -233,131 +212,11 @@ log_long_format
 # be used in a round-robin fashion.
 #tmpdir = /tmp
 
-
-# ***  Replication related settings 
-
-
 # Unique server identification number between 1 and 2^32-1. This value
 # is required for both master and slave hosts. It defaults to 1 if
 # "master-host" is not set, but will MySQL will not function as a master
 # if it is omitted.
-server-id = 1
-
-# Replication Slave (comment out master section to use this)
-#
-# To configure this host as a replication slave, you can choose between
-# two methods :
-#
-# 1) Use the CHANGE MASTER TO command (fully described in our manual) -
-#    the syntax is:
-#
-#    CHANGE MASTER TO MASTER_HOST=<host>, MASTER_PORT=<port>,
-#    MASTER_USER=<user>, MASTER_PASSWORD=<password> ;
-#
-#    where you replace <host>, <user>, <password> by quoted strings and
-#    <port> by the master's port number (3306 by default).
-#
-#    Example:
-#
-#    CHANGE MASTER TO MASTER_HOST='125.564.12.1', MASTER_PORT=3306,
-#    MASTER_USER='joe', MASTER_PASSWORD='secret';
-#
-# OR
-#
-# 2) Set the variables below. However, in case you choose this method, then
-#    start replication for the first time (even unsuccessfully, for example
-#    if you mistyped the password in master-password and the slave fails to
-#    connect), the slave will create a master.info file, and any later
-#    changes in this file to the variable values below will be ignored and
-#    overridden by the content of the master.info file, unless you shutdown
-#    the slave server, delete master.info and restart the slaver server.
-#    For that reason, you may want to leave the lines below untouched
-#    (commented) and instead use CHANGE MASTER TO (see above)
-#
-# required unique id between 2 and 2^32 - 1
-# (and different from the master)
-# defaults to 2 if master-host is set
-# but will not function as a slave if omitted
-#server-id = 2
-#
-# The replication master for this slave - required
-#master-host = <hostname>
-#
-# The username the slave will use for authentication when connecting
-# to the master - required
-#master-user = <username>
-#
-# The password the slave will authenticate with when connecting to
-# the master - required
-#master-password = <password>
-#
-# The port the master is listening on.
-# optional - defaults to 3306
-#master-port = <port>
-
-# Make the slave read-only. Only users with the SUPER privilege and the
-# replication slave thread will be able to modify data on it. You can
-# use this to ensure that no applications will accidently modify data on
-# the slave instead of the master
-#read_only
-
-
-#*** MyISAM Specific options
-
-
-# Size of the Key Buffer, used to cache index blocks for MyISAM tables.
-# Do not set it larger than 30% of your available memory, as some memory
-# is also required by the OS to cache rows. Even if you're not using
-# MyISAM tables, you should still set it to 8-64M as it will also be
-# used for internal temporary disk tables.
-key_buffer_size = 32M
-
-# Size of the buffer used for doing full table scans of MyISAM tables.
-# Allocated per thread, if a full scan is needed.
-read_buffer_size = 2M
-
-# When reading rows in sorted order after a sort, the rows are read
-# through this buffer to avoid disk seeks. You can improve ORDER BY
-# performance a lot, if set this to a high value.
-# Allocated per thread, when needed.
-read_rnd_buffer_size = 16M
-
-# MyISAM uses special tree-like cache to make bulk inserts (that is,
-# INSERT ... SELECT, INSERT ... VALUES (...), (...), ..., and LOAD DATA
-# INFILE) faster. This variable limits the size of the cache tree in
-# bytes per thread. Setting it to 0 will disable this optimisation.  Do
-# not set it larger than "key_buffer_size" for optimal performance.
-# This buffer is allocated when a bulk insert is detected.
-bulk_insert_buffer_size = 64M
-
-# This buffer is allocated when MySQL needs to rebuild the index in
-# REPAIR, OPTIMIZE, ALTER table statements as well as in LOAD DATA INFILE
-# into an empty table. It is allocated per thread so be careful with
-# large settings.
-myisam_sort_buffer_size = 128M
-
-# The maximum size of the temporary file MySQL is allowed to use while
-# recreating the index (during REPAIR, ALTER TABLE or LOAD DATA INFILE.
-# If the file-size would be bigger than this, the index will be created
-# through the key cache (which is slower).
-myisam_max_sort_file_size = 10G
-
-# If the temporary file used for fast index creation would be bigger
-# than using the key cache by the amount specified here, then prefer the
-# key cache method.  This is mainly used to force long character keys in
-# large tables to use the slower key cache method to create the index.
-myisam_max_extra_sort_file_size = 10G
-
-# If a table has more than one index, MyISAM can use more than one
-# thread to repair them by sorting in parallel. This makes sense if you
-# have multiple CPUs and plenty of memory.
-myisam_repair_threads = 1
-
-# Automatically check and repair not properly closed MyISAM tables.
-myisam_recover
-
-
-# *** INNODB Specific options ***
+server-id                   = 1
 
 # Use this option if you have a MySQL server with InnoDB support enabled
 # but you do not plan to use it. This will save memory and disk space
@@ -426,7 +285,7 @@ innodb_flush_log_at_trx_commit = 1
 # The size of the buffer InnoDB uses for buffering log data. As soon as
 # it is full, InnoDB will have to flush it to disk. As it is flushed
 # once per second anyway, it does not make sense to have it very large
-# (even with long transactions). 
+# (even with long transactions).
 innodb_log_buffer_size = 8M
 
 # Size of each log file in a log group. You should set the combined size
@@ -465,19 +324,19 @@ innodb_max_dirty_pages_pct = 90
 # resolve the situation.
 innodb_lock_wait_timeout = 120
 
+[mysqladmin]
+character-sets-dir = /usr/share/mysql/charsets
+default-character-set = utf8
+
+[mysqlcheck]
+character-sets-dir = /usr/share/mysql/charsets
+default-character-set = utf8
 
 [mysqldump]
-# Do not buffer the whole result set in memory before writing it to
-# file. Required for dumping very large tables
+character-sets-dir = /usr/share/mysql/charsets
+default-character-set = utf8
 quick
-
 max_allowed_packet = 16M
-
-[mysql]
-no-auto-rehash
-
-# Only allow UPDATEs and DELETEs that use keys.
-#safe-updates
 
 [isamchk]
 key_buffer = 512M
