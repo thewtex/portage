@@ -66,16 +66,6 @@
  		<mkdir dir="${build}"/>
  
  		<tstamp/>
-@@ -70,7 +14,8 @@
- 		     It makes it much easier to run -->
- 		<javac srcdir="${src}" destdir="${build}" debug="on" optimize="on" source="1.4">
- 			<classpath>
--				<pathelement location="${deps}/${freenetjar}"/>
-+				<pathelement location="freenet.jar"/>
-+				<pathelement location="bcprov.jar"/>
- 			</classpath>
- 		</javac>
- 		<copy todir="${build}/freemailgui/text">
 @@ -88,6 +33,7 @@
  			<manifest>
  				<attribute name="Main-Class" value="freemail.FreemailCli"/>

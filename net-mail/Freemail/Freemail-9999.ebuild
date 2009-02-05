@@ -1,6 +1,6 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Header: /var/cvsroot/gentoo-x86/net-mail/Freemail/Freemail-9999.ebuild,v 1.2 2009/02/03 18:20:17 tommy Exp $
 
 EAPI="2"
 
@@ -15,7 +15,7 @@ SRC_URI=""
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 IUSE=""
 
 CDEPEND="dev-java/bcprov
@@ -25,12 +25,10 @@ DEPEND="${CDEPEND}
 RDEPEND="${CDEPEND}
 	>=virtual/jre-1.5"
 
-src_unpack() {
-	subversion_src_unpack
-	cd "${S}"
+EANT_GENTOO_CLASSPATH="bcprov freenet"
+src_prepare() {
 	epatch "${FILESDIR}"/build.patch
-	java-pkg_jar-from bcprov bcprov.jar
-	java-pkg_jar-from freenet freenet.jar
+	java-ant_rewrite-classpath
 }
 
 src_install() {
@@ -38,6 +36,11 @@ src_install() {
 	dodir /var/freenet/plugins
 	dosym ../../../usr/share/Freemail/lib/Freemail.jar /var/freenet/plugins/Freemail.jar
 	dodoc README || die "installation of documentation failed"
+}
+
+pkg_preinst() {
+	java-pkg-2_pkg_preinst
+	subversion_pkg_preinst
 }
 
 pkg_postinst () {
