@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.9471 2009/02/05 05:15:52 darkside Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.9474 2009/02/06 05:53:57 jer Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -31,26 +31,17 @@
 
 #--- END OF EXAMPLES ---
 
-# Jeff Mitchell <funtoo@emailgoeshere.com> (02 Feb 2009)
-# Depends on xorg-server-1.5.3, which is masked below
-=x11-drivers/xf86-input-evdev-2.1*
+# MATSUU Takuto <matsuu@gentoo.org> (05 Feb 2009)
+# Masked for testing
+>=app-i18n/ibus-1.1
+>=app-i18n/ibus-anthy-1.1
+>=app-i18n/ibus-hangul-1.1
+>=app-i18n/ibus-m17n-1.1
+>=app-i18n/ibus-pinyin-1.1
 
-# Daniel Cordero <theappleman@gmail.com> (01 Feb 2009)
-# Various regressions reported
-=x11-base/xorg-server-1.5.3*
-
-# Daniel Robbins <drobbins@funtoo.org> (01 Feb 2009)
-# Missing KDE masks from trelane
->=kde-base/kdelibs-4.2.0
->=kde-base/kdebase-data-4.2.0
->=kde-base/plasma-workspace-4.2.0
->=kde-base/kdnssd-4.2.0
->=kde-base/kdepimlibs-4.2.0
->=kde-base/kde-meta-4.2.0
-
-# Daniel Robbins <drobbins@funtoo.org> (01 Feb 2009)
-# Masked to prevent unwanted upgrades
->=sys-apps/openrc-0.4.3
+# Hanno Böck <hanno@gentoo.org> (05 Feb 2009)
+# Seems something is broken with crypt mount in 1.17 (bug 257302)
+=sys-auth/pam_mount-1.17
 
 # Jeremy Olexa <darkside@gentoo.org> (05 Feb 2009)
 # libjingle-0.3.11 was created by the tapioca team
@@ -83,6 +74,27 @@ net-p2p/pandodl
 ~app-editors/emacs-cvs-23.0.9999
 >=virtual/emacs-23
 app-emacs/emacs-daemon
+
+# Jeff Mitchell <funtoo@emailgoeshere.com> (02 Feb 2009)
+# Depends on xorg-server-1.5.3, which is masked below
+=x11-drivers/xf86-input-evdev-2.1*
+
+# Daniel Cordero <theappleman@gmail.com> (01 Feb 2009)
+# Various regressions reported
+=x11-base/xorg-server-1.5.3*
+
+# Daniel Robbins <drobbins@funtoo.org> (01 Feb 2009)
+# Missing KDE masks from trelane
+>=kde-base/kdelibs-4.2.0
+>=kde-base/kdebase-data-4.2.0
+>=kde-base/plasma-workspace-4.2.0
+>=kde-base/kdnssd-4.2.0
+>=kde-base/kdepimlibs-4.2.0
+>=kde-base/kde-meta-4.2.0
+
+# Daniel Robbins <drobbins@funtoo.org> (01 Feb 2009)
+# Masked to prevent unwanted upgrades
+>=sys-apps/openrc-0.4.3
 
 # Ben de Groot <yngwin@gentoo.org> (1 Feb 2009)
 # Masked because it's broken in current form. Several issues, see
@@ -1372,11 +1384,6 @@ dev-lang/entity
 # Live SVN ebuilds
 ~app-emacs/gentoo-syntax-9999
 ~app-emacs/ngnus-9999
-
-# Jeroen Roovers <jer@gentoo.org> (17 Dec 2007)
-# Masked pending removal - see bug #202391
-# Please switch to sys-kernel/gentoo-sources
-sys-kernel/hppa-sources
 
 # Peter Volkov <pva@gentoo.org> (13 Dec 2007)
 # Live svn ebuild... 0.9.4 branch is not supported atm.
