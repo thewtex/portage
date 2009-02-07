@@ -1,51 +1,54 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Header: /var/cvsroot/gentoo-x86/games-board/pokerth/pokerth-0.6.3.ebuild,v 1.1 2009/02/03 01:52:57 mr_bones_ Exp $
 
-EAPI="1"
-inherit eutils games qt4
+EAPI=2
+inherit eutils qt4 games
 
-MY_PN="PokerTH"
-S="${WORKDIR}/${MY_PN}-${PV}-src"
-
-DESCRIPTION="Texas Hold'em poker game."
+MY_P="PokerTH-${PV}-2-src"
+DESCRIPTION="Texas Hold'em poker game"
 HOMEPAGE="http://www.pokerth.net/"
-SRC_URI="mirror://sourceforge/${PN}/${MY_PN}-${PV}-src.tar.bz2"
+SRC_URI="mirror://sourceforge/pokerth/${MY_P}.tar.bz2"
 
-LICENSE="GPL-2"
+LICENSE="GPL-1 GPL-2 GPL-3 BitstreamVera public-domain"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="dedicated"
 
-DEPEND=">=x11-libs/qt-4.3.2:4
-	>=net-misc/curl-7.16
+DEPEND=">=dev-libs/boost-1.34.1
 	>=net-libs/gnutls-2.2.2
-	>=dev-libs/boost-1.34.1
-	media-libs/libsdl
-	media-libs/sdl-mixer"
-RDEPEND="${DEPEND}"
+	>=net-misc/curl-7.16
+	!dedicated? (
+		media-libs/libsdl
+		media-libs/sdl-mixer[mikmod,vorbis]
+		>=sys-libs/zlib-1.2.3
+		|| ( x11-libs/qt-gui:4 x11-libs/qt:4 )
+	)"
 
-pkg_setup() {
-	if ! built_with_use "media-libs/sdl-mixer" mikmod ; then
-		eerror "media-libs/sdl-mixer has to be compiled with USE=mikmod"
-		die "Needed USE-flag for sdl-mixer not found."
+S=${WORKDIR}/${MY_P}
+
+src_prepare() {
+	if use dedicated ; then
+		sed -i \
+			-e 's/pokerth_game.pro//' \
+			pokerth.pro \
+			|| die "sed failed"
 	fi
-
-	games_pkg_setup
 }
 
-src_compile() {
+src_configure() {
 	eqmake4
-	emake || die "emake failed."
 }
 
 src_install() {
-	dogamesbin pokerth || die "dogamesbin failed"
-	insinto "${GAMES_DATADIR}/${PN}"
-	doins -r data || die "doins failed"
-
-	newicon pokerth.png "${PN}.png"
-	make_desktop_entry "${PN}" "PokerTH" "${PN}.png"
-
+	dogamesbin bin/pokerth_server || die
+	if ! use dedicated ; then
+		dogamesbin ${PN} || die
+		insinto "${GAMES_DATADIR}/${PN}"
+		doins -r data || die
+		domenu ${PN}.desktop
+		doicon ${PN}.png
+	fi
+	dodoc ChangeLog TODO docs/{net_protocol,server_setup_howto}.txt
 	prepgamesdirs
 }

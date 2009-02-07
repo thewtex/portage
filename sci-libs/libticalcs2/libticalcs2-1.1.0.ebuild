@@ -1,33 +1,44 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/libticalcs2/libticalcs2-1.1.0.ebuild,v 1.1 2009/02/03 14:49:43 bicatali Exp $
 
-inherit eutils toolchain-funcs
+EAPI=2
+inherit eutils
 
-DESCRIPTION="library for communication with TI calculators"
+DESCRIPTION="Library for communication with TI calculators"
 HOMEPAGE="http://lpg.ticalc.org/prj_tilp/"
 SRC_URI="mirror://sourceforge/gtktiemu/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="nls"
+IUSE="doc nls threads"
 
 RDEPEND=">=dev-libs/glib-2.6.0
 	>=sci-libs/libticables2-1.2.0
 	>=sci-libs/libticonv-1.1.0
 	>=sci-libs/libtifiles2-1.1.0
 	nls? ( virtual/libintl )"
+
 DEPEND="${RDEPEND}
+	dev-util/pkgconfig
 	nls? ( sys-devel/gettext )"
 
-src_compile() {
-	econf $(use_enable nls) || die "econf failed"
-	emake || die "emake failed"
+src_prepare() {
+	epatch "${FILESDIR}"/${P}-locale.patch
+}
+
+src_configure() {
+	econf \
+		--disable-rpath \
+		$(use_enable nls) \
+		$(use_enable threads)
 }
 
 src_install() {
 	emake DESTDIR="${D}" install || die "emake install failed"
 	dodoc AUTHORS LOGO NEWS README ChangeLog docs/api.txt
-	dohtml docs/html/*
+	if use doc; then
+		dohtml docs/html/*
+	fi
 }

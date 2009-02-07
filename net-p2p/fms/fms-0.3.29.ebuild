@@ -1,12 +1,12 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/fms/fms-0.3.29.ebuild,v 1.1 2009/02/05 18:36:43 tommy Exp $
 
 inherit eutils cmake-utils
 
 DESCRIPTION="A spam-resistant message board application for Freenet"
 HOMEPAGE="http://freenetproject.org/tools.html"
-SRC_URI="http://individual.utoronto.ca/nezic/${PN}-src-${PV}.zip"
+SRC_URI="mirror://gentoo/${PN}-src-${PV}.zip"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -15,9 +15,8 @@ IUSE=""
 
 DEPEND="virtual/libiconv
 	>=dev-libs/poco-1.2.9
-	>=dev-db/sqlite-3.6.6.2"
-RDEPEND="${DEPEND}
-	net-p2p/freenet"
+	=dev-db/sqlite-3.6.6.2*"
+RDEPEND="${DEPEND}"
 
 S=${WORKDIR}
 
@@ -27,8 +26,8 @@ pkg_setup() {
 }
 
 src_compile() {
-	local mycmakeargs="-DI_HAVE_READ_THE_README=ON
-		-DUSE_BUNDLED_SQLITE=OFF
+	local mycmakeargs="-DI_HAVE_READ_THE_README=ON \
+		-DUSE_BUNDLED_SQLITE=OFF \
 		-DDO_CHARSET_CONVERSION=ON"
 	cmake-utils_src_compile
 }
@@ -43,12 +42,18 @@ src_install() {
 	fperms +x /var/freenet/fms/fms
 	fperms -R o-rwx /var/freenet/fms/
 	fowners -R freenet:freenet /var/freenet/fms/
-	doinitd "${FILESDIR}/fms"
-	dodoc readme.txt
+	doinitd "${FILESDIR}/fms" || die "installing init.d file failed"
+	dodoc readme.txt || die "installing doc failed"
 }
 
 pkg_postinst() {
+	if ! has_version 'net-p2p/freenet' ; then
+		ewarn "FMS needs a freenet node to up-/download messages."
+		ewarn "Please make sure to have a node you can connect to"
+		ewarn "or install net-p2p/freenet to get FMS working."
+	fi
 	elog "By default, the FMS NNTP server will listen on port 1119,"
 	elog "and the web configuration interface will be running at"
-	elog "http://localhost:8080. For more information, readme.txt."
+	elog "http://localhost:8080. For more information, read"
+	elog "${DOCDIR}/readme.txt."
 }
