@@ -20,7 +20,8 @@ IUSE="notify"
 RDEPEND=">=dev-python/pygtk-2.10
 	|| ( >=dev-lang/python-2.5[berkdb,sqlite]
 	     >=dev-python/pysqlite-2 )
-	dev-python/gnome-python
+	|| ( dev-python/gnome-python
+		 dev-python/gconf-python )
 	>=dev-python/gtkmozembed-python-2.19.1-r11
 	dev-python/dbus-python
 	>=net-libs/xulrunner-1.9
