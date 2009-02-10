@@ -9,7 +9,7 @@ HOMEPAGE="http://kolpackov.net/projects/libbackend-elements/"
 SRC_URI="ftp://kolpackov.net/pub/projects/${PN}/${PV%.?}/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND=">=dev-cpp/libcult-1.4.2
