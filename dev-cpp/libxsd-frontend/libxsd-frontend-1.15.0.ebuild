@@ -8,7 +8,7 @@ HOMEPAGE="http://www.codesynthesis.com/projects/libxsd-frontend/"
 SRC_URI="http://www.codesynthesis.com/download/${PN}/${PV%.?}/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND=">=dev-libs/xerces-c-2.6
