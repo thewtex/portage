@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/axiom/axiom-0.5.30.ebuild,v 1.1 2009/02/10 11:03:08 lordvan Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/axiom/axiom-0.5.30.ebuild,v 1.4 2009/02/11 10:03:12 lordvan Exp $
 
 inherit twisted distutils eutils
 
@@ -22,7 +22,7 @@ DEPEND="|| ( >=dev-lang/python-2.5[sqlite]
 	>=dev-db/sqlite-3.2.1
 	>=dev-python/twisted-2.4
 	>=dev-python/twisted-conch-0.7.0-r1
-	=dev-python/epsilon-0.5*"
+	>=dev-python/epsilon-0.5.11"
 RDEPEND="${DEPEND}"
 
 S=${WORKDIR}/${MY_P}
@@ -32,6 +32,9 @@ DOCS="NAME.txt"
 src_unpack() {
 	distutils_src_unpack
 	epatch "${FILESDIR}/${P}-sqlite3.patch"
+	if has_version ">=dev-db/sqlite-3.6.4"; then
+		epatch "${FILESDIR}/${P}-sqlite3_3.6.4.patch"
+	fi
 }
 
 src_compile() {
@@ -44,9 +47,12 @@ src_test() {
 }
 
 src_install() {
+	export PORTAGE_PLUGINCACHE_NOOP=1
 	distutils_src_install
-	# remove stupid dropin.cache from destdir
-	rm "${D}usr/$(get_libdir)/python${PYVER}/site-packages/twisted/plugins/dropin.cache"
+	# Not needed sine we disable plugin cache update now
+	# remove dropin.cache from destdir
+	#rm "${D}usr/$(get_libdir)/python${PYVER}/site-packages/twisted/plugins/dropin.cache"
+	unset PORTAGE_PLUGINCACHE_NOOP
 }
 
 pkg_postrm() {
