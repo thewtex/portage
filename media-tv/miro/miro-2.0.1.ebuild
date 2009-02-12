@@ -4,11 +4,10 @@
 
 inherit eutils multilib distutils confutils fdo-mime versionator
 
-MY_PV=$(replace_version_separator 2 '-')
-MY_P="${PN/m/M}-${MY_PV}"
+MY_P="${P/m/M}"
 DESCRIPTION="The free open-source video platform."
 HOMEPAGE="http://www.getmiro.com/"
-SRC_URI="http://participatoryculture.org/nightlies/${MY_P}.tar.gz"
+SRC_URI="ftp://ftp.osuosl.org/pub/pculture.org/miro/src/${MY_P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~x86 ~amd64"
