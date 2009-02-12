@@ -1,0 +1,37 @@
+From 3b971f26949330185895a51ff8dc3b8f449bd9af Mon Sep 17 00:00:00 2001
+From: Matt McCormick (thewtex) <matt@mmmccormick.com>
+Date: Wed, 11 Feb 2009 23:06:05 -0600
+Subject: [PATCH] make cgitrc.5.txt asciidoc manpage compatible
+
+According to the instructions and requirements here:
+http://www.methods.co.nz/asciidoc/chunked/ar01s20.html
+---
+ cgitrc.5.txt |    8 ++++----
+ 1 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/cgitrc.5.txt b/cgitrc.5.txt
+index fd299ae..f368ced 100644
+--- a/cgitrc.5.txt
++++ b/cgitrc.5.txt
+@@ -1,5 +1,5 @@
+-CGITRC
+-======
++CGITRC(5)
++========
+ 
+ 
+ NAME
+@@ -7,8 +7,8 @@ NAME
+ 	cgitrc - runtime configuration for cgit
+ 
+ 
+-DESCRIPTION
+------------
++SYNOPSIS
++--------
+ Cgitrc contains all runtime settings for cgit, including the list of git
+ repositories, formatted as a line-separated list of NAME=VALUE pairs. Blank
+ lines, and lines starting with '#', are ignored.
+-- 
+1.6.1.3
+
