@@ -1,10 +1,22 @@
 # ChangeLog for profile directory
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.2347 2009/02/11 09:06:50 pva Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.2350 2009/02/11 23:48:16 gengor Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  11 Feb 2009; Gordon Malm <gengor@gentoo.org> package.mask:
+  Remove sys-apps/rsbac-admin and sys-kernel/rsbac-sources. Packages are no
+  longer in the tree.
+
+  11 Feb 2009; Ben de Groot <yngwin@gentoo.org> arch/alpha/use.mask,
+  arch/ia64/use.mask, arch/sparc/use.mask:
+  Mask phonon useflag on arches where x11-libs/qt-phonon and
+  media-sound/phonon are unkeyworded
+
+  11 Feb 2009; Ben de Groot <yngwin@gentoo.org> use.desc:
+  Add custom-cxxflags global useflag, used in all qt-* libs
 
   11 Feb 2009; Peter Volkov <pva@gentoo.org> package.mask:
   Add dev-util/bzrtools-1.12.0 to mask as it depends on bzr-1.12
