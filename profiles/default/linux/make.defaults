@@ -17,7 +17,8 @@ USE="berkdb crypt ipv6 ncurses nls pam perl python readline ssl tcpd zlib"
 USE="${USE} gif png jpeg tiff truetype xml"
 
 #Codec/AV options that are useful on cmdline and desktop systems:
-USE="${USE} encode gstreamer win32codecs vorbis mp3 mpeg alsa mad mikmod mp3 mpeg ogg"
+USE="${USE} encode win32codecs vorbis mp3 mpeg alsa mad mp3 mpeg ogg"
+# Daniel Robbins removed gstreamer and mikmod (per request from Daniel Cordero and not needed for DLNA servers)
 
 #Hardware options useful on servers and desktops
 USE="${USE} cdr dvd dvdr dvdread"
