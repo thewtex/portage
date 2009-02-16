@@ -1,4 +1,4 @@
-|| ( ( x11-libs/qt-gui:4 x11-libs/qt-svg:4 ) >=x11-libs/qt-4.4:4 ) media-libs/libsdl media-libs/sdl-ttf media-libs/sdl-mixer[vorbis] media-libs/sdl-image[png] media-libs/sdl-net >=dev-util/cmake-2.6 >=dev-lang/fpc-2.2
+|| ( ( x11-libs/qt-gui:4 x11-libs/qt-svg:4 ) >=x11-libs/qt-4.4:4 ) media-libs/libsdl media-libs/sdl-ttf media-libs/sdl-mixer[vorbis] media-libs/sdl-image[png] media-libs/sdl-net >=dev-util/cmake-2.6 >=dev-lang/fpc-2.2 >=dev-util/cmake-2.4.6
 || ( ( x11-libs/qt-gui:4 x11-libs/qt-svg:4 ) >=x11-libs/qt-4.4:4 ) media-libs/libsdl media-libs/sdl-ttf media-libs/sdl-mixer[vorbis] media-libs/sdl-image[png] media-libs/sdl-net
 0
 http://hedgewars.org/download/hedgewars-src-0.9.9.tar.bz2
@@ -7,14 +7,14 @@ http://hedgewars.org/
 GPL-2 BitstreamVera
 Free Worms-like turn based strategy game
 ~amd64 ~x86
-toolchain-funcs portability multilib base games eutils
+toolchain-funcs portability flag-o-matic multilib base games cmake-utils eutils
 
 
 
 
 2
 
-compile configure install postinst preinst prepare setup unpack
+compile configure install postinst preinst prepare setup test unpack
 
 
 
