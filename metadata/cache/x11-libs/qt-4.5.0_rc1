@@ -1,20 +1,20 @@
 
-~x11-libs/qt-gui-4.5.0_rc1 ~x11-libs/qt-svg-4.5.0_rc1 ~x11-libs/qt-test-4.5.0_rc1 ~x11-libs/qt-sql-4.5.0_rc1 ~x11-libs/qt-script-4.5.0_rc1 ~x11-libs/qt-assistant-4.5.0_rc1 ~x11-libs/qt-xmlpatterns-4.5.0_rc1 !sparc? ( !alpha? ( !ia64? ( !x86-fbsd? ( ~x11-libs/qt-webkit-4.5.0_rc1 ) ) ) ) dbus? ( ~x11-libs/qt-dbus-4.5.0_rc1 ) opengl? ( ~x11-libs/qt-opengl-4.5.0_rc1 ) qt3support? ( ~x11-libs/qt-qt3support-4.5.0_rc1 )
+~x11-libs/qt-core-4.5.0_rc1 ~x11-libs/qt-gui-4.5.0_rc1 ~x11-libs/qt-svg-4.5.0_rc1 ~x11-libs/qt-sql-4.5.0_rc1 ~x11-libs/qt-script-4.5.0_rc1 ~x11-libs/qt-xmlpatterns-4.5.0_rc1 dbus? ( ~x11-libs/qt-dbus-4.5.0_rc1 ) opengl? ( ~x11-libs/qt-opengl-4.5.0_rc1 ) phonon? ( || ( ~x11-libs/qt-phonon-4.5.0_rc1 media-sound/phonon ) ) qt3support? ( ~x11-libs/qt-qt3support-4.5.0_rc1 ) ~x11-libs/qt-webkit-4.5.0_rc1 ~x11-libs/qt-test-4.5.0_rc1 ~x11-libs/qt-assistant-4.5.0_rc1
 4
 
 
 http://www.trolltech.com/
 || ( GPL-3 GPL-2 )
-The Qt toolkit is a comprehensive C++ application development framework.
-alpha amd64 ~hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd
+The Qt toolkit is a comprehensive C++ application development framework
+~amd64 ~hppa ~mips ~ppc ~ppc64 ~x86
 
-dbus opengl qt3support
++dbus opengl phonon +qt3support
 
 
 
-0
+2
 
--
+postinst
 
 
 
