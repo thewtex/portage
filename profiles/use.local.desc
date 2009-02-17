@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4197 2009/02/12 14:08:09 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4202 2009/02/15 23:27:39 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -137,6 +137,7 @@ app-crypt/seahorse:ldap - Enable seahorse to manipulate GPG keys on a LDAP serve
 app-crypt/seahorse:nautilus - Enable file encryption plugin to integrate into gnome-base/nautilus context menu.
 app-crypt/seahorse:xulrunner - Selects which gecko engine against which to build the www-client/epiphany plugin.
 app-dicts/aspell-be:classic - Support classic spelling by default
+app-dicts/gwaei:libsexy - Enable support for x11-libs/libsexy
 app-admin/vlogger:dbi - Enable support for DBI
 app-dicts/ktranslator:festival - Enable festival support
 app-dicts/ktranslator:lowmem - Disable optimizations for searches
@@ -170,7 +171,6 @@ app-editors/gvim:nextaw - Include support for the neXtaw GUI
 app-editors/jasspa-microemacs:nanoemacs - Build NanoEmacs instead of MicroEmacs
 app-editors/joe:xterm - Enable full xterm clipboard support
 app-editors/jove:unix98 - Use Unix 98 pty's instead of BSD pts's
-app-editors/katoob:highlight - Enable source code highlighting
 app-editors/nano:justify - Toggle the justify option
 app-editors/nvu:moznoxft - Placeholder until mozilla eclass is modified for nvu
 app-editors/tea:enchant - Enable spell checking using enchant
@@ -1300,7 +1300,9 @@ media-gfx/blender:blender-game -  Adds game engine support to blender
 media-gfx/blender:player -  Enable blender player 
 media-gfx/blender:verse -  Adds verse clustering features to blender 
 media-gfx/comix:rar -  Pulls app-arch/unrar for rar file support 
-media-gfx/digikam:nfs -  Create sqlite db within ~/.kde, instead in the albums base directory. 
+media-gfx/digikam:addressbook - Add support for kdepim
+media-gfx/digikam:geolocation - Add support for marble
+media-gfx/digikam:nfs - Create sqlite db within ~/.kde, instead in the albums base directory.
 media-gfx/eog:xmp - Adds support for XMP metadata
 media-gfx/exact-image:agg - Adds Anti-Grain Geometry supportx11-libs/agg
 media-gfx/exact-image:swig - Adds Swig support dev-lang/swig
@@ -2213,6 +2215,7 @@ net-mail/tpop3d:passwd - Enable /etc/passwd authentication
 net-mail/tpop3d:sha1 - Use OpenSSL for sha1 encrypted passwords.
 net-mail/tpop3d:shadow - Enable /etc/shadow authentication
 net-mail/uw-imap:clearpasswd - Enables cleartext logins outside of SSL sessions
+net-mail/vchkuser:debug - Enables debug messages to syslog
 net-mail/vimap:clearpasswd - Enables cleartext logins outside of SSL sessions
 net-mail/vpopmail:clearpasswd - Enables cleartext password storage in the vpasswd files
 net-mail/vpopmail:ipalias - Enables enable-ip-alias-domains
@@ -2923,6 +2926,7 @@ x11-libs/pdcurses:nextaw - Use neXtaw instead of Xaw
 x11-libs/qt:glib - Enable dev-libs/glib eventloop support
 x11-libs/qt:immqt - Enable binary incompatible version of immodule for Qt
 x11-libs/qt:immqt-bc - Enable binary compatible version of immodule for Qt
+x11-libs/qt:phonon - Enable support for the Phonon multimedia package
 x11-libs/qt:qt3support - Enable the Qt3Support libraries for Qt4
 x11-libs/qt-assistant:webkit -  Enable x11-libs/qt-webkit support, for more sophisticated online help display using webkit's HTML renderer. 
 x11-libs/qt-core:glib - Enable dev-libs/glib eventloop support
