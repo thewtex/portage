@@ -18,7 +18,8 @@ IUSE="${IUSE} doc"
 RDEPEND="sys-libs/zlib
 	dev-libs/openssl"
 DEPEND="${RDEPEND}
-  doc? ( app-text/asciidoc )"
+  doc? ( app-text/asciidoc 
+  			app-text/xmlto )"
 
 EAPI="2"
 
@@ -43,7 +44,7 @@ src_compile() {
 		a2x -f manpage cgitrc.5.txt || die "man page generation failed"
 	fi
 
-	webapp_src_compile
+	emake || die "make failed"
 }
 
 src_install() {
@@ -51,7 +52,7 @@ src_install() {
 
 	dodoc README
 	if use doc; then
-	  doman cgitrc.5
+	  doman cgitrc.5 || die "doman failed"
 	fi
 	
 	insinto ${MY_HTDOCSDIR}
