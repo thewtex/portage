@@ -12,7 +12,7 @@ SRC_URI="mirror://kernel/software/scm/git/git-${GIT_V}.tar.bz2
 	http://hjemli.net/git/cgit/snapshot/${P}.tar.bz2"
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~sparc ~x86"
 IUSE="${IUSE} doc"
 
 RDEPEND="sys-libs/zlib
