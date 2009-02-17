@@ -34,10 +34,7 @@ DEPEND="
 	emacs?  ( virtual/emacs )"
 
 RDEPEND="${DEPEND}
-<<<<<<< HEAD:dev-util/git/git-1.6.1.3.ebuild
-=======
 	quilt? ( dev-util/quilt )
->>>>>>> funtoo:dev-util/git/git-1.6.1.3.ebuild
 	perl? ( dev-perl/Error
 			dev-perl/Net-SMTP-SSL
 			dev-perl/Authen-SASL
