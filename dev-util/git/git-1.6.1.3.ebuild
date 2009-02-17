@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/git/git-1.6.1.1.ebuild,v 1.1 2009/01/26 12:16:53 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/git/git-1.6.1.3.ebuild,v 1.1 2009/02/11 22:44:38 robbat2 Exp $
 
 inherit toolchain-funcs eutils elisp-common perl-module bash-completion
 
@@ -18,7 +18,7 @@ SRC_URI="mirror://kernel/software/scm/git/${MY_P}.tar.bz2
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~sparc-fbsd ~x86 ~x86-fbsd"
-IUSE="curl cgi doc emacs gtk iconv mozsha1 perl ppcsha1 tk threads webdav xinetd cvs subversion vim-syntax"
+IUSE="curl cgi doc emacs gtk iconv mozsha1 perl ppcsha1 quilt tk threads webdav xinetd cvs subversion vim-syntax"
 
 DEPEND="
 	!app-misc/git
@@ -34,6 +34,10 @@ DEPEND="
 	emacs?  ( virtual/emacs )"
 
 RDEPEND="${DEPEND}
+<<<<<<< HEAD:dev-util/git/git-1.6.1.3.ebuild
+=======
+	quilt? ( dev-util/quilt )
+>>>>>>> funtoo:dev-util/git/git-1.6.1.3.ebuild
 	perl? ( dev-perl/Error
 			dev-perl/Net-SMTP-SSL
 			dev-perl/Authen-SASL
@@ -305,7 +309,7 @@ pkg_postinst() {
 	fi
 	elog "These additional scripts need some dependencies:"
 	echo
-	showpkgdeps git-quiltimport "dev-util/quilt"
+	use !quilt && showpkgdeps git-quiltimport "dev-util/quilt"
 	showpkgdeps git-instaweb \
 		"|| ( www-servers/lighttpd www-servers/apache )"
 	echo

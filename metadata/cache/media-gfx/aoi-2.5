@@ -1,5 +1,5 @@
-app-arch/unzip
->=virtual/jdk-1.2
+app-arch/unzip >=dev-java/java-config-2.1.6
+>=virtual/jre-1.4 >=dev-java/java-config-2.1.6
 0
 mirror://sourceforge/aoi/aoi25.zip doc? ( mirror://sourceforge/aoi/manual2.3.zip )
 
@@ -7,14 +7,14 @@ http://aoi.sourceforge.net/index
 GPL-2
 A free, open-source 3D modelling and rendering studio.
 ~amd64 ~ppc ~x86
-portability toolchain-funcs multilib java-pkg eutils
-doc
+toolchain-funcs java-pkg-2 portability java-utils-2 versionator multilib eutils
+doc elibc_FreeBSD
 
 
 
 0
 
-install setup
+compile install preinst setup
 
 
 

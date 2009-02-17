@@ -1,60 +1,20 @@
 # ChangeLog for sys-fs/udev
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/udev/ChangeLog,v 1.445 2009/01/27 10:42:15 zzam Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/udev/ChangeLog,v 1.446 2009/02/12 17:52:01 jer Exp $
 
-  27 Jan 2009; Matthias Schwarzott <zzam@gentoo.org>
-  files/udev-137-rules-update.diff, udev-137.ebuild, udev-9999.ebuild:
-  Cleanup depends. Add missing depends for documentation processing of
-  udev-9999. Fix kernel version check of udev-9999. Update rules patch for
-  udev-137, move all rules in one file.
+*udev-135-r3 (13 Feb 2009)
 
-  25 Jan 2009; Matthias Schwarzott <zzam@gentoo.org> udev-137.ebuild:
-  Fix kernel version with which udev runs reliable. Also apply documentation
-  udevinfo to udevadm info patch.
+  13 Feb 2009; Daniel Robbins <drobbins@funtoo.org>
+  +udev-135-r3.ebuild: New release incorporating fixes from upstream
+  gentoo.org. Staying away from udev-136 as it apparently only works
+  100% reliably with kernel 2.6.20, according to gentoo ChangeLog comments.
 
-  24 Jan 2009; Matthias Schwarzott <zzam@gentoo.org>
-  +files/udev-137-rules-update.diff, udev-137.ebuild:
-  Rules update.
-
-*udev-135-r4 (24 Jan 2009)
-
-  24 Jan 2009; Matthias Schwarzott <zzam@gentoo.org>
-  +files/udev-135-fix-dri-perms.diff, +files/udev-fix-udevinfo-in-doc.diff,
-  +udev-135-r4.ebuild:
+  13 Feb 2009; Matthias Schwarzott <zzam@gentoo.org>
+  +files/patches/udev-135-fix-dri-perms.diff, 
+  +files/patches/udev-fix-udevinfo-in-doc.diff,
   Fix permissions of dri devices, Bug #255841. Fix references to no longer
-  existing udevinfo command, Bug #255955.
-
-*udev-137 (24 Jan 2009)
-
-  24 Jan 2009; Matthias Schwarzott <zzam@gentoo.org> +udev-137.ebuild:
-  Version bumped.
-
-  22 Jan 2009; Matthias Schwarzott <zzam@gentoo.org> files/136/udev.confd,
-  files/136/udev.initd:
-  Add expert options to change udevsettle timeout and to run udevmonitor at
-  boot time to catch all events.
-
-  22 Jan 2009; Matthias Schwarzott <zzam@gentoo.org> udev-9999.ebuild:
-  Also set HOMEPAGE after inherit, Bug #255953.
-
-*udev-136 (20 Jan 2009)
-
-  20 Jan 2009; Matthias Schwarzott <zzam@gentoo.org>
-  +files/136/shell-compat-addon.sh, +files/136/udev.confd,
-  +files/udev-136-fix-ide-cd-rule.diff, +files/136/udev.initd,
-  +files/136/udev-dev-tarball.initd, +files/136/udev-mount.initd,
-  +files/136/shell-compat-KV.sh, +files/136/udev-postmount.initd,
-  +files/136/udev-start.sh, +files/136/udev-stop.sh, +udev-136.ebuild,
-  udev-9999.ebuild:
-  Version bumped. This raises kernel version for reliable udev usage to
-  2.6.20. Backported one patch. The upstream rule changes still need to be
-  reviewed. For now keep using group uucp instead of dialout as suggested by
-  upstream. Move init-script stuff into a subdir for FILESDIR. Small changes
-  to shell-compat logic.
-
-  20 Jan 2009; Matthias Schwarzott <zzam@gentoo.org>
-  files/shell-compat-118-r3.sh:
-  Change comments.
+  existing udevinfo command, Bug #255955. (Integrated into 135-r3 by Daniel
+  Robbins)
 
   05 Jan 2009; Daniel Robbins <drobbins@funtoo.org> files/135-r2/udevd.initd:
   added "keywords novserver" from upstream (Gentoo)
@@ -77,71 +37,6 @@
 
   01 Jan 2009; Benedikt Böhm <hollow@gentoo.org> files/udev.initd:
   fix udev init script inside vservers, bug #253105
-
-*udev-9999 (30 Dec 2008)
-
-  30 Dec 2008; Matthias Schwarzott <zzam@gentoo.org> +udev-9999.ebuild:
-  Add live udev ebuild.
-
-*udev-135-r3 (27 Dec 2008)
-
-  27 Dec 2008; Matthias Schwarzott <zzam@gentoo.org>
-  +files/udev-135-r3.confd, +files/udev-mount-135-r3.initd,
-  +files/udev-start-135-r3.sh, +udev-135-r3.ebuild:
-  Create /dev/.rcsysinit only for older baselayouts. Add some comments about
-  rc_oldplug to /etc/conf.d/udev, suggested by Polynomial-C
-  <polynomial-c@gmx.de>.
-
-  19 Dec 2008; Matthias Schwarzott <zzam@gentoo.org>
-  +files/udev-postmount-135-r2.initd, files/udev-start-135-r2.sh,
-  udev-135-r2.ebuild:
-  Remove the code to add udev to sysinit runlevel. openrc ebuild does it
-  now. Fix udev-start for older systems.
-
-  17 Dec 2008; Matthias Schwarzott <zzam@gentoo.org>
-  files/udev-135-r2.initd:
-  Add stop function to udev init-script.
-
-  17 Dec 2008; Matthias Schwarzott <zzam@gentoo.org>
-  files/udev-mount-135-r2.initd:
-  Also create /dev/tty before running udevd. Suggested by Daniel Robbins
-  <drobbins@funtoo.org>.
-
-  13 Dec 2008; Matthias Schwarzott <zzam@gentoo.org>
-  files/udev-135-r2.initd, files/udev-dev-tarball-135-r2.initd,
-  files/udev-mount-135-r2.initd, files/udev-start-135-r2.sh:
-  Fix udev-start to call the init-scripts, but not the openrc-version
-  checks.
-
-*udev-135-r2 (10 Dec 2008)
-
-  10 Dec 2008; Matthias Schwarzott <zzam@gentoo.org>
-  +files/udev-135-r2.confd, +files/udev-135-r2.initd,
-  +files/udev-dev-tarball-135-r2.initd, +files/udev-mount-135-r2.initd,
-  +files/udev-start-135-r2.sh, +files/udev-stop-135-r2.sh,
-  +udev-135-r2.ebuild:
-  Redesign of addons/init-scripts. Moved code into init-scripts and split
-  into smaller parts. Source init-scripts from addons for older baselayouts.
-
-*udev-135-r1 (03 Dec 2008)
-
-  03 Dec 2008; Matthias Schwarzott <zzam@gentoo.org>
-  +files/udev-135-fix-capi.diff, +files/udev-135-rules-update.diff,
-  +udev-135-r1.ebuild:
-  Fix capi device nodes, Bug #249389. Do this by applying upstream patch to
-  the common capi rules and install these. Remove capi from gentoo-specific
-  rules.
-
-*udev-135 (02 Dec 2008)
-
-  02 Dec 2008; Matthias Schwarzott <zzam@gentoo.org> +udev-135.ebuild:
-  Version bumped. This should solve bug #249222.
-
-  28 Nov 2008; Matthias Schwarzott <zzam@gentoo.org> udev-122-r1.ebuild,
-  udev-124-r1.ebuild, udev-125-r2.ebuild, udev-130-r1.ebuild,
-  udev-133.ebuild:
-  Do only recommend to reboot instead of trigger for re-creating
-  persistent-rules, suggested by Kay Sievers. Cleanup some messages.
 
 *udev-133-r4 (28 Nov 2008)
 
