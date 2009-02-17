@@ -18,7 +18,8 @@ IUSE="${IUSE} doc"
 RDEPEND="sys-libs/zlib
 	dev-libs/openssl"
 DEPEND="${RDEPEND}
-  doc? ( app-text/asciidoc )"
+  doc? ( app-text/asciidoc 
+  			app-text/xmlto )"
 
 S=${WORKDIR}
 
@@ -37,7 +38,7 @@ src_compile() {
 		emake man-doc || die "man page generation failed"
 	fi
 
-	webapp_src_compile
+	emake || die "make failed"
 }
 
 src_install() {
