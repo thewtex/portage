@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4206 2009/02/16 22:47:43 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4209 2009/02/18 07:07:43 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -183,6 +183,7 @@ app-emacs/remember:bbdb - Include support for app-emacs/bbdb
 app-emacs/remember:planner - Include support for app-emacs/planner
 app-emacs/vm:bbdb - Include support for app-emacs/bbdb
 app-emacs/wanderlust:bbdb - Include support for app-emacs/bbdb
+app-emacs/wikipedia-mode:outline-magic - Enable support for outline-mode extensions (app-emacs/outline-magic)
 app-emulation/basiliskII-jit:fbdev - Enables framebuffer support
 app-emulation/basiliskII-jit:jit - Enables the jit compiler
 app-emulation/bochs:debugger - Enable the bochs debugger
@@ -2294,6 +2295,7 @@ sci-biology/clustalw-mpi:static_pairalign - Use static (as opposed to dynamic) s
 sci-biology/hmmer:pvm - Add support for parallel virtual machine (sys-cluster/pvm)
 sci-biology/vienna-rna:no-readseq - Do not include the modified version of Don Gilbert's readseq program
 sci-biology/vienna-rna:no-utils - Do not include sequence format conversion and representation utilities
+sci-chemistry/avogadro:glsl - Enable glsl features via GLEW.
 sci-chemistry/caver:pymol - Install the PyMol plugin (sci-chemistry/pymol) 
 sci-chemistry/coot:new-interface - Build with the experimental GTK+-2 interface instead of GTK+-1
 sci-chemistry/eden:double-precision - More precise calculations at the expense of speed
@@ -2612,6 +2614,7 @@ sys-power/pm-utils:ntp - install support for net-misc/ntp
 sys-power/powerman:genders -  Add support for selecting power control targets using genders (-g option) 
 sys-power/powerman:httppower -  Add support for HTTP based power controllers 
 sys-power/suspend:fbsplash - Add support for framebuffer splash
+sys-process/cronie:inotify - Enable inotify filesystem monitoring support.
 sys-process/procps:n32 - Enable n32 ABI support on mips
 www-apache/anyterm:opera - Enable workaround for bug in Opera web browser
 www-apache/mod_ftpd:dbi - Enables dev-db/libdbi support
