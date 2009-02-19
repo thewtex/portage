@@ -90,7 +90,6 @@ src_unpack() {
 	epatch "${FILESDIR}"/${P}-bug-174720-0.patch
 	epatch "${FILESDIR}"/${P}-bug-174720-1.patch
 	epatch "${FILESDIR}"/${P}-bug-214171.patch
-	epatch "${FILESDIR}"/perl5.10.patch
 }
 
 DOCS="AUTHORS ChangeLog NEWS README"
