@@ -1,0 +1,15 @@
+--- ../inkscape_perl_wrap.cpp	2008-12-17 20:35:04.000000000 -0800
++++ src/extension/script/inkscape_perl_wrap.cpp	2008-12-17 20:40:39.000000000 -0800
+@@ -722,11 +722,11 @@
+ #define SWIG_croakSV(x) { SWIG_SetErrorSV(x); goto fail; }
+ /* most preprocessors do not support vararg macros :-( */
+ /* #define SWIG_croakf(x...) { SWIG_SetErrorf(x); goto fail; } */
+ 
+ 
+-typedef XS(SwigPerlWrapper);
++typedef XSPROTO(SwigPerlWrapper);
+ typedef SwigPerlWrapper *SwigPerlWrapperPtr;
+ 
+ /* Structure for command table */
+ typedef struct {
+   const char         *name;
