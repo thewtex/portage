@@ -6,7 +6,7 @@ WANT_AUTOCONF="2.5"
 WANT_AUTOMAKE="1.9"
 EAPI="1"
 
-inherit autotools check-reqs db-use eutils gnome2-utils fdo-mime flag-o-matic java-pkg-opt-2 kde-functions mono multilib
+inherit autotools check-reqs db-use eutils fdo-mime flag-o-matic java-pkg-opt-2 kde-functions mono multilib
 
 
 IUSE="binfilter cups dbus debug eds firefox gnome gstreamer gtk java kde ldap mono odk oodict opengl pam seamonkey xulrunner"
@@ -312,8 +312,10 @@ src_unpack() {
 	# fix handling of system libs for postgresql-base
 	epatch "${FILESDIR}/gentoo-system_pgsql.diff"
 	# fix sandbox
-	epatch "${FILESDIR}/gentoo-fixsandbox.diff"
-# 
+	epatch "${FILESDIR}/${PV}/gentoo-fixsandbox.diff"
+	# fix python 2.3.4 build
+	epatch "${FILESDIR}/${PV}/gentoo-python-2.3.4.diff"
+
 	# Use flag checks
 	if use java; then
 		CONFIGURE_ARGS="${CONFIGURE_ARGS} --with-ant-home=${ANT_HOME}"
@@ -498,10 +500,13 @@ src_install() {
 	local basecomponents="base calc draw impress math writer"
 	local allcomponents
 
+	allcomponents="${basecomponents}"
 	if use cups; then
-	    allcomponents="${basecomponents} extension printeradmin"
-	else
-	    allcomponents="${basecomponents} extension"
+	    allcomponents="${allcomponents} printeradmin"
+	fi
+
+	if use gtk || use gnome; then
+	    allcomponents="${allcomponents} qstart"
 	fi
 
 	dodir "${instdir}"
@@ -524,21 +529,20 @@ src_install() {
 	cd "${D}"${instdir}/share/xdg/
 
 	for i in ${allcomponents}; do
-		mv "${i}".desktop openoffice.org2.4-"${i}".desktop
 		if [[ "${i}" == "printeradmin" ]]; then
-		    sed -i -e s/openoffice.org2.4-/oo/g openoffice.org2.4-"${i}".desktop || die "Sed failed"
+		    sed -i -e s/openoffice.org2.4-/oo/g "${i}".desktop || die "Sed failed"
 		else
-		    sed -i -e s/openoffice.org2.4/ooffice/g openoffice.org2.4-"${i}".desktop || die "Sed failed"
+		    sed -i -e s/openoffice.org2.4/ooffice/g "${i}".desktop || die "Sed failed"
 		fi
 		if [[ "${i}" == "draw" ]]; then
 		    sed -i -e "s/Name\=OpenOffice\.org 2\.4 Draw/Name\=OpenOffice\.org 2\.4 Draw\nGenericName\=Draw\nGenericName[ru]\=Рисунки, блок-схемы и логотипы/g" \
-		    openoffice.org2.4-"${i}".desktop || die "Sed failed"
+		    "${i}".desktop || die "Sed failed"
 		fi
 		if [[ "${i}" == "math" ]]; then
 		    sed -i -e "s/Name\=OpenOffice\.org 2\.4 Math/Name\=OpenOffice\.org 2\.4 Math\nGenericName\=Math\nGenericName[ru]\=Формулы и уравнения/g" \
-		    openoffice.org2.4-"${i}".desktop || die "Sed failed"
+		    "${i}".desktop || die "Sed failed"
 		fi
-		domenu openoffice.org2.4-"${i}".desktop
+		domenu "${i}".desktop
 	done
 
 	# Icons
@@ -598,11 +602,6 @@ src_install() {
 	# Fix the permissions for security reasons
 #	chown -R root:0 "${D}"
 
-	# Fix lib handling for internal old python 2.3
-	if [[ ! -e /usr/$(get_libdir)/libpython2.3.so.1.0 ]]; then
-	    dolib.so "${D}"${instdir}/program/libpython2.3.so.1.0
-	fi
-
 	# Non-java weirdness see bug #99366
 	use !java && rm -f "${D}"${instdir}/program/javaldx
 
@@ -622,9 +621,6 @@ pkg_postinst() {
 
 	fdo-mime_desktop_database_update
 	fdo-mime_mime_database_update
-	if use gtk || use gnome; then
-	    gnome2_icon_cache_update
-	fi
 
 	use !oodict && eselect oodict update --libdir $(get_libdir)
 
@@ -660,9 +656,6 @@ pkg_postrm() {
 
 	fdo-mime_desktop_database_update
 	fdo-mime_mime_database_update
-	if use gtk || use gnome; then
-	    gnome2_icon_cache_update
-	fi
 
 	use !oodict && [[ ! -e /usr/$(get_libdir)/openoffice/program/soffice.bin ]] && rm -rf /usr/$(get_libdir)/openoffice
 
