@@ -12,7 +12,7 @@ HOMEPAGE="http://dev.mysql.com/doc/refman/6.0/en/mysql-nutshell.html"
 SRC_URI="http://mirrors.24-7-solutions.net/pub/mysql/Downloads/MySQL-6.0/${MY_PN}-${MY_PV}.tar.gz"
 
 LICENSE="GPL-2"
-KEYWORDS=""
+KEYWORDS="~x86 ~amd64"
 SLOT="0"
 
 IUSE="+utf8 -doc +community +ssl -tcpwrapper +libevent -innodb +falcon -federated -maria -cluster -test"
