@@ -12,7 +12,7 @@ SRC_URI="http://downloads.php.net/johannes/${PN}-${MY_PV}.tar.bz2"
 
 LICENSE="PHP-3.01"
 KEYWORDS="~x86 ~amd64"
-SLOT="0"
+SLOT="5"
 
 IUSE="+cli +cgi -short-tags -ipv6 +libxml -ssl +sqlite3 +zlib +bz2 -curl +dom -exif -ftp +json +mbstring +mcrypt +mysql -pear +spawn-fcgi"
 
