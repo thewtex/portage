@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-tv/xbmc/xbmc-9999.ebuild,v 1.7 2009/02/22 22:28:45 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-tv/xbmc/xbmc-9999.ebuild,v 1.10 2009/02/24 07:18:36 vapier Exp $
 
 # XXX: be nice to split out packages that come bundled and use the
 #      system libraries ...
@@ -87,20 +87,11 @@ src_unpack() {
 	done
 	cd "${S}"
 
-	epatch "${FILESDIR}"/${PN}-readsector.patch
-	epatch "${FILESDIR}"/${PN}-fribidi.patch
-
 	# Fix XBMC's final version string showing as "exported"
 	# instead of the SVN revision number.  Also cleanup flags.
-	# http://xbmc.org/trac/ticket/5963
 	export SVN_REV=${ESVN_WC_REVISION:-exported}
-	sed -i -r \
-		-e "s:\$(svnversion -n .):${SVN_REV}:g" \
-		-e '/DEBUG_FLAGS/s:-(g|O2)::' \
-		configure || die "Sed failed for '${S}/configure'"
-	sed -i \
-		-e 's:\<strip\>:echo:' \
-		build.sh xbmc/lib/libhdhomerun/Makefile.in
+	sed -i -r -e '/DEBUG_FLAGS/s:-(g|O2)::' configure
+	sed -i -e 's:\<strip\>:echo:' xbmc/lib/libhdhomerun/Makefile.in
 	# Avoid lsb-release dependency
 	sed -i \
 		-e 's:/usr/bin/lsb_release -d:cat /etc/gentoo-release:' \
