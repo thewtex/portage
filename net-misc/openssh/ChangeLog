@@ -1,8 +1,25 @@
 # ChangeLog for net-misc/openssh
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/openssh/ChangeLog,v 1.336 2009/02/20 20:06:22 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/openssh/ChangeLog,v 1.340 2009/02/25 18:13:18 vapier Exp $
 
-  20 Feb 2009; Raúl Porcel <armin76@gentoo.org> openssh-5.1_p1-r2.ebuild:
+  25 Feb 2009; Mike Frysinger <vapier@gentoo.org> openssh-5.2_p1-r1.ebuild:
+  Update pkcs11 patch #152170.
+
+*openssh-5.2_p1-r1 (24 Feb 2009)
+
+  24 Feb 2009; Robin H. Johnson <robbat2@gentoo.org>
+  +openssh-5.2_p1-r1.ebuild:
+  LPK patch updated for new OpenSSH release.
+
+  24 Feb 2009; Mike Frysinger <vapier@gentoo.org> openssh-5.2_p1.ebuild:
+  Fix X509 patching #260163 by Daniel J.
+
+*openssh-5.2_p1 (24 Feb 2009)
+
+  24 Feb 2009; Mike Frysinger <vapier@gentoo.org> +openssh-5.2_p1.ebuild:
+  Version bump #247466.
+
+  20 Feb 2009; RaÃºl Porcel <armin76@gentoo.org> openssh-5.1_p1-r2.ebuild:
   ia64/sparc stable wrt #258940
 
   16 Feb 2009; Brent Baude <ranger@gentoo.org> openssh-5.1_p1-r2.ebuild:
@@ -48,7 +65,7 @@
 
 *openssh-5.1_p1-r3 (09 Jan 2009)
 
-  09 Jan 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  09 Jan 2009; Diego E. PettenÃ² <flameeyes@gentoo.org>
   +openssh-5.1_p1-r3.ebuild:
   Let PAM print motd and last login data to close bug #244816.
 
@@ -67,7 +84,7 @@
   03 Nov 2008; Mike Frysinger <vapier@gentoo.org>
   +files/openssh-5.1_p1-escaped-banner.patch,
   +files/openssh-5.1_p1-null-banner.patch, +openssh-5.1_p1-r2.ebuild:
-  Fix some issues with printing of banners #244222 by Michał Górny.
+  Fix some issues with printing of banners #244222 by MichaÅ GÃ³rny.
 
   01 Nov 2008; Robin H. Johnson <robbat2@gentoo.org> openssh-5.1_p1.ebuild,
   openssh-5.1_p1-r1.ebuild:
@@ -76,7 +93,7 @@
   30 Oct 2008; Brent Baude <ranger@gentoo.org> openssh-5.1_p1-r1.ebuild:
   Marking openssh-5.1_p1-r1 ppc for bug 231292
 
-  30 Oct 2008; Raúl Porcel <armin76@gentoo.org> openssh-5.1_p1-r1.ebuild:
+  30 Oct 2008; RaÃºl Porcel <armin76@gentoo.org> openssh-5.1_p1-r1.ebuild:
   alpha/ia64/sparc stable #231292
 
   27 Oct 2008; Brent Baude <ranger@gentoo.org> openssh-5.1_p1-r1.ebuild:
@@ -110,7 +127,7 @@
 
 *openssh-5.0_p1-r2 (23 Jul 2008)
 
-  23 Jul 2008; Diego Pettenò <flameeyes@gentoo.org>
+  23 Jul 2008; Diego PettenÃ² <flameeyes@gentoo.org>
   +openssh-5.0_p1-r2.ebuild:
   Add new revision that use pambase now that it's fully keyworded. Closes
   bug #225141 by Davide Pesavento.
@@ -157,7 +174,7 @@
   +openssh-4.9_p1-r1.ebuild:
   Add updated X509/hpn patches.
 
-  02 Apr 2008; Raúl Porcel <armin76@gentoo.org> openssh-4.7_p1-r6.ebuild:
+  02 Apr 2008; RaÃºl Porcel <armin76@gentoo.org> openssh-4.7_p1-r6.ebuild:
   alpha/ia64/sparc stable wrt security #215702
 
   02 Apr 2008; Richard Freeman <rich0@gentoo.org> openssh-4.7_p1-r6.ebuild:
@@ -183,7 +200,7 @@
   openssh-4.7_p1-r20.ebuild:
   fix bug #191665, in selinux portion of configure script.
 
-  30 Mar 2008; Raúl Porcel <armin76@gentoo.org> openssh-4.7_p1-r5.ebuild:
+  30 Mar 2008; RaÃºl Porcel <armin76@gentoo.org> openssh-4.7_p1-r5.ebuild:
   alpha/ia64/sparc stable wrt security #214985
 
   29 Mar 2008; Richard Freeman <rich0@gentoo.org> openssh-4.7_p1-r5.ebuild:
@@ -213,13 +230,13 @@
   openssh-4.7_p1-r20.ebuild:
   ~amd64 added wrt bug #210777
 
-  14 Mar 2008; Diego Pettenò <flameeyes@gentoo.org>
+  14 Mar 2008; Diego PettenÃ² <flameeyes@gentoo.org>
   openssh-4.7_p1-r20.ebuild:
   Disable printing of motd and lastlog when enabling PAM, on the
   pambase-dependent ebuild, as system-login takes care of that. Closes bug
   #213234.
 
-  06 Mar 2008; Raúl Porcel <armin76@gentoo.org> openssh-4.7_p1-r20.ebuild:
+  06 Mar 2008; RaÃºl Porcel <armin76@gentoo.org> openssh-4.7_p1-r20.ebuild:
   Add ~alpha/~ia64 wrt #210777
 
   05 Mar 2008; Ferris McCormick <fmccor@gentoo.org>
@@ -230,7 +247,7 @@
   keyworded ~arch for ppc64, bug 210777
 
   04 Mar 2008; <cla@gentoo.org> openssh-4.7_p1-r20.ebuild:
-  Marked ~x86 (bug #210777). Thanks to Michał Wołonkiewicz <volon@vp.pl> for
+  Marked ~x86 (bug #210777). Thanks to MichaÅ WoÅonkiewicz <volon@vp.pl> for
   testing.
 
   03 Mar 2008; Jeroen Roovers <jer@gentoo.org> openssh-4.7_p1-r20.ebuild:
@@ -245,13 +262,13 @@
   Add myself as the contact point for LPK issues. I am on base-system for
   everything else.
 
-  20 Feb 2008; Diego Pettenò <flameeyes@gentoo.org>
+  20 Feb 2008; Diego PettenÃ² <flameeyes@gentoo.org>
   openssh-4.7_p1-r20.ebuild:
   Fix dependencies for pambase/pam.
 
 *openssh-4.7_p1-r20 (19 Feb 2008)
 
-  19 Feb 2008; Diego Pettenò <flameeyes@gentoo.org>
+  19 Feb 2008; Diego PettenÃ² <flameeyes@gentoo.org>
   +files/sshd.pam_include.2, +openssh-4.7_p1-r20.ebuild:
   Add a new revision with pambase's system-remote-login as base stack. Now
   also prints motd when using PAM.
@@ -279,7 +296,7 @@
   28 Jan 2008; Jeroen Roovers <jer@gentoo.org> openssh-4.7_p1-r3.ebuild:
   Stable for HPPA too.
 
-  24 Jan 2008; Raúl Porcel <armin76@gentoo.org> openssh-4.7_p1-r3.ebuild:
+  24 Jan 2008; RaÃºl Porcel <armin76@gentoo.org> openssh-4.7_p1-r3.ebuild:
   alpha/ia64/sparc/x86 stable
 
 *openssh-4.7_p1-r3 (21 Nov 2007)
@@ -334,7 +351,7 @@
   06 Sep 2007; Jose Luis Rivero <yoswink@gentoo.org> openssh-4.7_p1.ebuild:
   Stable on sparc wrt security bug #191321
 
-  06 Sep 2007; Raúl Porcel <armin76@gentoo.org> openssh-4.7_p1.ebuild:
+  06 Sep 2007; RaÃºl Porcel <armin76@gentoo.org> openssh-4.7_p1.ebuild:
   alpha/ia64 stable wrt security #191321
 
   06 Sep 2007; Andrej Kacian <ticho@gentoo.org> openssh-4.7_p1.ebuild:
@@ -364,7 +381,7 @@
   openssh-4.6_p1-r2.ebuild:
   Stable on amd64. See security bug #183958.
 
-  02 Aug 2007; Raúl Porcel <armin76@gentoo.org> openssh-4.5_p1-r2.ebuild,
+  02 Aug 2007; RaÃºl Porcel <armin76@gentoo.org> openssh-4.5_p1-r2.ebuild,
   openssh-4.6_p1-r2.ebuild:
   x86 stable, no idea why i didn't stabilize them
 
@@ -386,7 +403,7 @@
   openssh-4.0_p1-r2.ebuild, openssh-4.1_p1-r1.ebuild:
   Stable on sparc wrt #183958
 
-  07 Jul 2007; Raúl Porcel <armin76@gentoo.org> openssh-4.0_p1-r2.ebuild,
+  07 Jul 2007; RaÃºl Porcel <armin76@gentoo.org> openssh-4.0_p1-r2.ebuild,
   openssh-4.1_p1-r1.ebuild:
   alpha/ia64/x86 stable wrt #183958
 
@@ -395,7 +412,7 @@
   openssh-4.6_p1-r2.ebuild:
   Stable on mips, per #183958.
 
-  05 Jul 2007; Raúl Porcel <armin76@gentoo.org> openssh-4.5_p1-r2.ebuild,
+  05 Jul 2007; RaÃºl Porcel <armin76@gentoo.org> openssh-4.5_p1-r2.ebuild,
   openssh-4.6_p1-r2.ebuild:
   alpha/ia64 stable wrt #183958
 
@@ -417,11 +434,11 @@
 
 *openssh-4.6_p1-r2 (02 Jul 2007)
 
-  02 Jul 2007; Diego Pettenò <flameeyes@gentoo.org>
+  02 Jul 2007; Diego PettenÃ² <flameeyes@gentoo.org>
   +files/sshd.pam_include.1, +openssh-4.6_p1-r2.ebuild:
   Revision bump to fix the pam.d file.
 
-  24 Apr 2007; Alexander Færøy <eroyf@gentoo.org>
+  24 Apr 2007; Alexander FÃ¦rÃ¸y <eroyf@gentoo.org>
   openssh-4.5_p1-r1.ebuild:
   Stable on MIPS.
 
@@ -461,7 +478,7 @@
   openssh-4.5_p1.ebuild:
   Stable on amd64 wrt security bug 154389
 
-  08 Jan 2007; Bryan Østergaard <kloeri@gentoo.org> openssh-4.5_p1.ebuild:
+  08 Jan 2007; Bryan Ãstergaard <kloeri@gentoo.org> openssh-4.5_p1.ebuild:
   Stable on Alpha, bug 154389.
 
   08 Jan 2007; Gustavo Zacarias <gustavoz@gentoo.org> openssh-4.5_p1.ebuild:
@@ -481,7 +498,7 @@
   openssh-4.5_p1.ebuild:
   stable x86, security bug #154389
 
-  07 Dec 2006; Diego Pettenò <flameeyes@gentoo.org>
+  07 Dec 2006; Diego PettenÃ² <flameeyes@gentoo.org>
   openssh-4.3_p2-r1.ebuild, openssh-4.3_p2-r5.ebuild,
   openssh-4.4_p1-r6.ebuild, openssh-4.5_p1.ebuild:
   Require dev-libs/libedit for libedit support, as it's going to be removed
@@ -562,7 +579,7 @@
   files/digest-openssh-4.4_p1-r1, Manifest:
   Fixing digest wrt bug #149571
 
-  30 Sep 2006; Diego Pettenò <flameeyes@gentoo.org>
+  30 Sep 2006; Diego PettenÃ² <flameeyes@gentoo.org>
   openssh-4.4_p1-r1.ebuild:
   Make sure pam is the latest eclass called.
 
@@ -678,11 +695,11 @@
   openssh-4.3_p2-r1.ebuild, openssh-4.3_p2-r2.ebuild:
   Fix broken configure script #137921 by Adam Potter.
 
-  24 Jun 2006; Diego Pettenò <flameeyes@gentoo.org>
+  24 Jun 2006; Diego PettenÃ² <flameeyes@gentoo.org>
   openssh-4.3_p2-r1.ebuild:
   Remove x86-fbsd keyword from an older rev, just to be safe.
 
-  24 Jun 2006; Diego Pettenò <flameeyes@gentoo.org>
+  24 Jun 2006; Diego PettenÃ² <flameeyes@gentoo.org>
   openssh-4.3_p2-r2.ebuild:
   Put shadow under conditional userland_GNU, unbreak non-GNU userlands.
 
@@ -723,7 +740,7 @@
   openssh-4.3_p2-r1.ebuild:
   Stable on x86 wrt bug #130027.
 
-  16 Apr 2006; Bryan Østergaard <kloeri@gentoo.org
+  16 Apr 2006; Bryan Ãstergaard <kloeri@gentoo.org
   openssh-4.3_p2-r1.ebuild:
   Stable on alpha, bug 130027.
 
@@ -737,11 +754,11 @@
   openssh-4.3_p2-r1.ebuild:
   Marked stable on amd64, bug 130027.
 
-  04 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  04 Apr 2006; Diego PettenÃ² <flameeyes@gentoo.org>
   openssh-4.3_p2-r1.ebuild:
   Allow using freebsd-lib's libedit with libedit useflag.
 
-  30 Mar 2006; Diego Pettenò <flameeyes@gentoo.org>
+  30 Mar 2006; Diego PettenÃ² <flameeyes@gentoo.org>
   openssh-4.3_p2-r1.ebuild:
   Add ~x86-fbsd keyword.
 
@@ -818,7 +835,7 @@
   openssh-4.1_p1-r1.ebuild, openssh-4.2_p1.ebuild:
   Fix cross-compiling #120567 by Raphael Burnes.
 
-  25 Dec 2005; Diego Pettenò <flameeyes@gentoo.org> openssh-4.2_p1.ebuild:
+  25 Dec 2005; Diego PettenÃ² <flameeyes@gentoo.org> openssh-4.2_p1.ebuild:
   Use bindnow-flags function instead of -Wl,-z,now.
 
   10 Dec 2005; Mike Frysinger <vapier@gentoo.org> files/sshd.rc6:
@@ -831,7 +848,7 @@
   +files/openssh-4.2_p1-selinux.patch, openssh-4.2_p1.ebuild:
   Fix selinux support #110039 and add back in securid/hpn patches.
 
-  21 Oct 2005; Bryan Østergaard <kloeri@gentoo.org> openssh-4.2_p1.ebuild:
+  21 Oct 2005; Bryan Ãstergaard <kloeri@gentoo.org> openssh-4.2_p1.ebuild:
   Stable on alpha + ia64, bug 109678.
 
   21 Oct 2005; Jason Wever <weeve@gentoo.org> openssh-4.2_p1.ebuild:
@@ -909,15 +926,15 @@
   conflict #58579.
 
   22 May 2005; Mike Frysinger <vapier@gentoo.org> openssh-4.0_p1-r1.ebuild:
-  Add support for RSA SecurID tokens #92233 by Antti Mäkelä.
+  Add support for RSA SecurID tokens #92233 by Antti MÃ¤kelÃ¤.
 
-  20 May 2005; Diego Pettenò <flameeyes@gentoo.org>
+  20 May 2005; Diego PettenÃ² <flameeyes@gentoo.org>
   openssh-3.9_p1-r2.ebuild, openssh-4.0_p1.ebuild, openssh-4.0_p1-r1.ebuild:
   Inherit pam eclass for newpamd.
 
 *openssh-4.0_p1-r1 (29 Apr 2005)
 
-  29 Apr 2005; Diego Pettenò <flameeyes@gentoo.org>
+  29 Apr 2005; Diego PettenÃ² <flameeyes@gentoo.org>
   +files/sshd.pam_include, +openssh-4.0_p1-r1.ebuild:
   Added a new revision depending on virtual/pam (>=pam-0.78) and uses the
   include syntax instead of pam_stack.so.
@@ -958,7 +975,7 @@
   openssh-3.9_p1-r1.ebuild:
   Fix terminal restoration after breaking out from sftp and scp, closing #63544.
 
-  30 Dec 2004; Bryan Østergaard <kloeri@gentoo.org>
+  30 Dec 2004; Bryan Ãstergaard <kloeri@gentoo.org>
   openssh-3.9_p1-r1.ebuild:
   Stable on alpha, bug 59361.
 
@@ -1062,7 +1079,7 @@
   + Added sftp-logging patch, closing #52168.
   + Added patch for large keys, closing #55013.
 
-  08 Jul 2004; Bryan Østergaard <kloeri@gentoo.org>
+  08 Jul 2004; Bryan Ãstergaard <kloeri@gentoo.org>
   openssh-3.8.1_p1-r1.ebuild:
   Stable on alpha.
 
@@ -1083,7 +1100,7 @@
   15 Jun 2004; <solar@gentoo.org> openssh-3.8.1_p1-r1.ebuild:
   pam & uclibc updates
 
-  07 Jun 2004; Bryan Østergaard <kloeri@gentoo.org> openssh-3.8.1_p1.ebuild:
+  07 Jun 2004; Bryan Ãstergaard <kloeri@gentoo.org> openssh-3.8.1_p1.ebuild:
   Stable on alpha.
 
   05 Jun 2004; Hanselmann Michael <hansmi@gentoo.org>
