@@ -1,6 +1,6 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/eutils.eclass,v 1.309 2009/02/07 10:57:38 pva Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/eutils.eclass,v 1.315 2009/02/21 23:28:21 vapier Exp $
 
 # @ECLASS: eutils.eclass
 # @MAINTAINER:
@@ -389,10 +389,26 @@ emktemp() {
 # usata@gentoo.org (OS X)
 # Aaron Walker <ka0ttic@gentoo.org> (FreeBSD)
 # @DESCRIPTION:
-# Small wrapper for getent (Linux), nidump (Mac OS X),
+# Small wrapper for getent (Linux),
+# nidump (< Mac OS X 10.5), dscl (Mac OS X 10.5),
 # and pw (FreeBSD) used in enewuser()/enewgroup()
 egetent() {
 	case ${CHOST} in
+	*-darwin9)
+		local mytype=$1
+		[[ "passwd" == $mytype ]] && mytype="Users"
+		[[ "group" == $mytype ]] && mytype="Groups"
+		case "$2" in
+		*[!0-9]*) # Non numeric
+			dscl . -read /$mytype/$2 2>/dev/null |grep RecordName
+			;;
+		*)	# Numeric
+			local mykey="UniqueID"
+			[[ $mytype == "Groups" ]] && mykey="PrimaryGroupID"
+			dscl . -search /$mytype $mykey $2 2>/dev/null
+			;;
+		esac
+		;;
 	*-darwin*)
 		case "$2" in
 		*[!0-9]*) # Non numeric
@@ -955,25 +971,28 @@ validate_desktop_entries() {
 }
 
 # @FUNCTION: make_session_desktop
-# @USAGE: <title> <command>
+# @USAGE: <title> <command> [command args...]
 # @DESCRIPTION:
 # Make a GDM/KDM Session file.  The title is the file to execute to start the
 # Window Manager.  The command is the name of the Window Manager.
+#
+# You can set the name of the file via the ${wm} variable.
 make_session_desktop() {
-	[[ -z $1 ]] && eerror "make_session_desktop: You must specify the title" && return 1
-	[[ -z $2 ]] && eerror "make_session_desktop: You must specify the command" && return 1
+	[[ -z $1 ]] && eerror "$0: You must specify the title" && return 1
+	[[ -z $2 ]] && eerror "$0: You must specify the command" && return 1
 
 	local title=$1
 	local command=$2
-	local desktop=${T}/${wm}.desktop
+	local desktop=${T}/${wm:-${PN}}.desktop
+	shift 2
 
 	cat <<-EOF > "${desktop}"
 	[Desktop Entry]
 	Name=${title}
 	Comment=This session logs you into ${title}
-	Exec=${command}
+	Exec=${command} $*
 	TryExec=${command}
-	Type=Application
+	Type=XSession
 	EOF
 
 	(
@@ -1566,7 +1585,7 @@ strip-linguas() {
 	local ls newls nols
 	if [[ $1 == "-i" ]] || [[ $1 == "-u" ]] ; then
 		local op=$1; shift
-		ls=$(find "$1" -name '*.po' -exec basename {} .po \;); shift
+		ls=$(find "$1" -name '*.po' -exec basename {} .po ';'); shift
 		local d f
 		for d in "$@" ; do
 			if [[ ${op} == "-u" ]] ; then
@@ -1574,7 +1593,7 @@ strip-linguas() {
 			else
 				newls=""
 			fi
-			for f in $(find "$d" -name '*.po' -exec basename {} .po \;) ; do
+			for f in $(find "$d" -name '*.po' -exec basename {} .po ';') ; do
 				if [[ ${op} == "-i" ]] ; then
 					hasq ${f} ${ls} && newls="${newls} ${f}"
 				else
@@ -1807,3 +1826,27 @@ EOF
 		newbin "${tmpwrapper}" "${wrapper}" || die
 	fi
 }
+
+# @FUNCTION: prepalldocs
+# @USAGE:
+# @DESCRIPTION:
+# Compress files in /usr/share/doc which are not already
+# compressed, excluding /usr/share/doc/${PF}/html.
+# Uses the ecompressdir to do the compression.
+# 2009-02-18 by betelgeuse:
+# Commented because ecompressdir is even more internal to
+# Portage than prepalldocs (it's not even mentioned in man 5
+# ebuild). Please submit a better version for review to gentoo-dev
+# if you want prepalldocs here.
+#prepalldocs() {
+#	if [[ -n $1 ]] ; then
+#		ewarn "prepalldocs: invalid usage; takes no arguments"
+#	fi
+
+#	cd "${D}"
+#	[[ -d usr/share/doc ]] || return 0
+
+#	find usr/share/doc -exec gzip {} +
+#	ecompressdir --ignore /usr/share/doc/${PF}/html
+#	ecompressdir --queue /usr/share/doc
+#}

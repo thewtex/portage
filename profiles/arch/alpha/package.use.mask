@@ -1,4 +1,8 @@
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/alpha/package.use.mask,v 1.10 2009/02/01 16:45:36 klausman Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/alpha/package.use.mask,v 1.13 2009/02/20 23:01:12 yngwin Exp $
+
+# Ben de Groot <yngwin@gentoo.org> (20 Feb 2009)
+# needs kde4 keyworded
+x11-themes/qtcurve-qt4 kde
 
 # Patrick Lauer <patrick@gentoo.org> (23 Nov 2008)
 # needs webkit keyworded
@@ -12,7 +16,7 @@ x11-libs/qt-assistant webkit
 dev-lisp/clisp hyperspec pari svm
 
 # Tobias Klausmann <klausman@gentoo.org> (15 Jun 2008)
-# No hardware to test net-dialup/linux-atm on alpha, so mask atm use flag 
+# No hardware to test net-dialup/linux-atm on alpha, so mask atm use flag
 # on those.
 sys-apps/iproute2 atm
 net-dialup/ppp atm
@@ -31,3 +35,4 @@ media-libs/gst-plugins-base debug
 
 # Needs nut and qstat respectively, neither is keyworded on alpha.
 net-analyzer/nagios-plugins ups nagios-game
+

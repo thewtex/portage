@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-dicts/ispell-de-alt/ispell-de-alt-2.ebuild,v 1.5 2009/02/12 20:27:25 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-dicts/ispell-de-alt/ispell-de-alt-2.ebuild,v 1.8 2009/02/25 13:18:22 josejx Exp $
 
 inherit eutils multilib
 
@@ -12,7 +12,7 @@ SRC_URI="ftp://ftp.informatik.uni-kiel.de/pub/kiel/dicts/hk${PV}-deutsch.tar.gz
 # GPL according to <http://bugs.debian.org/131124#25>
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~x86"
+KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~sparc ~x86"
 IUSE=""
 
 DEPEND="app-text/ispell"
@@ -28,5 +28,7 @@ src_unpack() {
 src_install() {
 	insinto /usr/$(get_libdir)/ispell
 	doins deutsch.aff deutsch.hash || die "doins failed"
+	dosym deutsch.aff /usr/$(get_libdir)/ispell/de_DE_1901.aff || die
+	dosym deutsch.hash /usr/$(get_libdir)/ispell/de_DE_1901.hash || die
 	dodoc ANNOUNCE Changes Contributors README*
 }

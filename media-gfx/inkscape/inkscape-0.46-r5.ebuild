@@ -1,6 +1,6 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/inkscape/inkscape-0.46-r5.ebuild,v 1.9 2009/01/04 23:14:07 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/inkscape/inkscape-0.46-r5.ebuild,v 1.8 2008/11/24 21:11:03 ranger Exp $
 
 inherit gnome2 eutils
 
@@ -90,6 +90,10 @@ src_unpack() {
 	epatch "${FILESDIR}"/${P}-bug-174720-0.patch
 	epatch "${FILESDIR}"/${P}-bug-174720-1.patch
 	epatch "${FILESDIR}"/${P}-bug-214171.patch
+	epatch "${FILESDIR}"/${P}-perl-5.10.patch
+	#epatch "${FILESDIR}"/${P}-perl-5.10-bindings1.patch
+	epatch "${FILESDIR}"/${P}-perl-5.10-bindings2.patch
+	epatch "${FILESDIR}"/${P}-perl-5.10-bindings3.patch
 }
 
 DOCS="AUTHORS ChangeLog NEWS README"

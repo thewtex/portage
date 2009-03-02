@@ -1,9 +1,9 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
 EAPI="2"
-NEED_KDE="4.1"
+
 inherit kde4-base
 
 MY_PN="KGRUBEditor"
@@ -17,5 +17,12 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND="sys-boot/grub"
+RDEPEND="|| ( <sys-boot/grub-1
+	sys-boot/grub-static )"
+
+pkg_postinst() {
+	ewarn
+	ewarn "NOTE: kgrubeditor can not handle grub-2.x configuration files!"
+	ewarn
+}
 

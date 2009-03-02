@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-base/xorg-server/xorg-server-1.5.3-r2.ebuild,v 1.1 2009/02/05 11:30:44 remi Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-base/xorg-server/xorg-server-1.5.3-r2.ebuild,v 1.3 2009/02/23 20:08:00 kumba Exp $
 
 # Must be before x-modular eclass is inherited
 SNAPSHOT="yes"
@@ -13,7 +13,7 @@ SRC_URI="${SRC_URI}
 	http://xorg.freedesktop.org/releases/individual/xserver/${P}.tar.bz2
 	mirror://gentoo/${P}-gentoo-patches-04.tar.bz2"
 DESCRIPTION="X.Org X servers"
-KEYWORDS="~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 IUSE_INPUT_DEVICES="
 	input_devices_acecad
 	input_devices_aiptek
@@ -139,13 +139,11 @@ RDEPEND="hal? ( sys-apps/hal )
 		>=media-libs/mesa-7.1
 		media-fonts/font-adobe-75dpi )
 	>=x11-libs/libxkbui-1.0.2
-	>=x11-libs/liblbxutil-1.0.1
 	kdrive? ( sdl? ( media-libs/libsdl ) )"
 	# Xres is dmx-dependent, xkbui is xorgcfg-dependent
 	# Xaw is dmx- and xorgcfg-dependent
 	# Xpm is dmx- and xorgcfg-dependent, pulls in Xt
 	# Xxf86misc and Xxf86vm are xorgcfg-dependent
-	# liblbxutil is lbx- dependent
 DEPEND="${RDEPEND}
 	!net-dialup/dtrace
 	sys-devel/flex
