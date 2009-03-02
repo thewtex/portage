@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.9537 2009/03/01 10:02:35 tampakrap Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.9541 2009/03/02 01:37:44 mr_bones_ Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,10 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Matti Bickel <mabi@gentoo.org> (1 Mar 2009)
+# Mask testing branch
+=x11-libs/fox-1.7*
 
 # Theo Chatzimichos <tampakrap@gentoo.org> (1 Mar 2009)
 # Mask Beta versions of KDevelop 4 and KDevplatform
@@ -181,10 +185,6 @@ app-emulation/vmware-esx-console
 # net-misc/amazonmp3 to be used by amd64 users.  Once I get around to it.
 # Until then, mask it.
 net-misc/amazonmp3-libcompat
-
-# Michael Sterrett <mr_bones_@gentoo.org> (01 Feb 2009)
-# mask for removal in 30 days.  Old and unmaintained.  Upstream is gone.
-games-fps/anaglyph-stereo-quake
 
 # Tomas Chvatal <scarabeus@gentoo.org> (1 Feb 2009)
 # mask for removal in 30 days. Not needed anymore integrated in boinc
@@ -551,10 +551,6 @@ app-portage/genflags
 # Old versions, those are no longer maintained and
 # should not be used, use 2.x instead
 <x11-drivers/xf86-video-intel-2.0.0
-
-# Olivier Crete <tester@gentoo.org> (06 Oct 2008)
-# Masked for removal, upstream dead (bug #240045)
-net-im/tmsnc
 
 # Alexis Ballier <aballier@gentoo.org> (06 Oct 2008)
 # API changes, the only reverse dep fails to build against it.
@@ -1313,10 +1309,6 @@ net-dns/bind-dns-keygen
 # Luca Longinotti <chtekk@gentoo.org> (24 May 2006)
 # Masked for more testing, breaks with stealth mode.
 =app-forensics/samhain-2.2.0
-
-# Diego Pettenò <flameeyes@gentoo.org> (24 Apr 2006)
-# Pre-release snapshots
-=app-mobilephone/kmobiletools-0.5*
 
 # Brent Baude <ranger@gentoo.org> (18 Apr 2006)
 # Masked pending removal. This package had been deprecated
