@@ -15,13 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE="+mysql"
 
-RDEPEND="
-	mysql? ( || (
-		<virtual/mysql-5.1
-		dev-db/mysql-community[innodb]
-		dev-db/mysql[innodb]
-	) )
-	x11-libs/qt-core:4
+RDEPEND="x11-libs/qt-core:4
 	x11-libs/qt-dbus:4
 	x11-libs/qt-sql:4[mysql?]
 	x11-libs/qt-test:4
