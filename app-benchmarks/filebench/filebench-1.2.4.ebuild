@@ -1,6 +1,6 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Header: /var/cvsroot/gentoo-x86/app-benchmarks/filebench/filebench-1.2.4.ebuild,v 1.1 2009/03/01 00:15:23 patrick Exp $
 
 inherit eutils autotools
 
@@ -10,10 +10,11 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="CDDL"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="sys-devel/flex
+DEPEND="dev-libs/libaio
+	sys-devel/flex
 	sys-devel/bison"
 RDEPEND=""
 
