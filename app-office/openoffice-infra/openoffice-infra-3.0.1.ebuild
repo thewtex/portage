@@ -2,22 +2,21 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-WANT_AUTOCONF="2.5"
 WANT_AUTOMAKE="1.9"
-EAPI="1"
+EAPI="2"
 
 inherit autotools check-reqs db-use eutils fdo-mime flag-o-matic java-pkg-opt-2 kde-functions mono multilib toolchain-funcs
 
-IUSE="binfilter cups dbus debug eds gnome gstreamer gtk kde ldap mono nsplugin odk oodict opengl pam"
+IUSE="binfilter cups dbus debug eds gnome gstreamer gtk kde ldap mono nsplugin odk oodict opengl pam postgres"
 
 PATCHLEVEL="OOO300"
 MILESTONE="15"
 OOOTAG=${PATCHLEVEL}_m${MILESTONE}
 OOOBUILDTAG=ooo300-m${MILESTONE}
 
-SRC="OOo_${PV}_src"
-S="${WORKDIR}/infra-ooo-files_${PV}"
-WORKSRC="${WORKDIR}/${OOOTAG}"
+SRC=OOo_${PV}_src
+S=${WORKDIR}/infra-ooo-files_${PV}
+WORKSRC=${WORKDIR}/${OOOTAG}
 
 DESCRIPTION="OpenOffice-Infra, office suite with enhanced Russian support from Infra-Resource"
 
@@ -112,13 +111,14 @@ DEPEND="${COMMON_DEPEND}
 	>=net-misc/curl-7.12
 	sys-libs/zlib
 	sys-apps/coreutils
-	pam? ( sys-libs/pam )
+	pam? ( sys-libs/pam
+		sys-apps/shadow[pam] )
 	!dev-util/dmake
-	>=dev-lang/python-2.3.4
+	>=dev-lang/python-2.3.4[threads]
 	java? ( || ( =virtual/jdk-1.6* =virtual/jdk-1.5* )
 		>=dev-java/ant-core-1.7 )
 	ldap? ( net-nds/openldap )
-	virtual/postgresql-base"
+	postgres? ( virtual/postgresql-base )"
 
 PROVIDE="virtual/ooo"
 RESTRICT="strip" # the openoffice.org from infra-resource is already stripped
@@ -152,8 +152,7 @@ pkg_setup() {
 		ewarn " LINGUAS variable(s). LINGUAS=ru for example. "
 		ewarn
 	else
-		export LINGUAS_OOO=`echo ${LINGUAS} | \
-			sed -e 's/\ben\b/en_US/g' -e 's/_/-/g'`
+		export LINGUAS_OOO=$(echo ${LINGUAS} | sed -e 's/\ben\b/en_US/g;s/_/-/g')
 	fi
 
 	if use !java; then
@@ -166,7 +165,8 @@ pkg_setup() {
 	fi
 
 	if use !gtk && use !gnome; then
-		ewarn " If you want the OpenOffice.org systray quickstarter to work "
+		ewarn
+		ewarn " If you want the OpenOffice-Infra systray quickstarter to work "
 		ewarn " activate the 'gtk' and 'gnome' use flags. "
 		ewarn
 	fi
@@ -181,15 +181,6 @@ pkg_setup() {
 		die
 	fi
 
-	if use pam; then
-		if ! built_with_use sys-apps/shadow pam; then
-			eerror
-			eerror " shadow needs to be built with pam-support. "
-			eerror " rebuild it accordingly or remove the pam use-flag "
-			die
-		fi
-	fi
-
 	if use nsplugin; then
 		if pkg-config --exists libxul; then
 			BRWS="libxul"
@@ -202,17 +193,10 @@ pkg_setup() {
 		fi
 	fi
 
-	# Check python
-	if ! built_with_use dev-lang/python threads
-	then
-	    eerror "Python needs to be built with threads."
-	    die
-	fi
-
 	java-pkg-opt-2_pkg_setup
 
 	# sys-libs/db version used
-	local db_ver="$(db_findver '>=sys-libs/db-4.3')"
+	local db_ver=$(db_findver '>=sys-libs/db-4.3')
 
 }
 
@@ -225,6 +209,10 @@ src_unpack() {
 	unpack ${SRC}_extensions.tar.bz2
 	unpack ${SRC}_system.tar.bz2
 
+}
+
+src_prepare() {
+
 	if use odk && use java; then
 	    cp -f "${DISTDIR}"/unowinreg.dll "${WORKSRC}"/external/unowinreg/
 	fi
@@ -232,8 +220,9 @@ src_unpack() {
 	# Some fixes for our patchset
 	cd "${S}"
 	epatch "${FILESDIR}/${PV}/gentoo-scripts.diff"
-	# Patch for using Gentoo specific goo team patches and GentooInfra distro target
+	# Patch for using Gentoo specific goo team patches and InfraGentoo/InfraGentooPG distro targets
 	epatch "${FILESDIR}/${PV}/gentoo-infragentoo.diff"
+
 	# Patches from go-oo mainstream
 	cp -f "${FILESDIR}/${PV}/gentoo-nojavanostax.diff" "${WORKDIR}/infra-ooo-files_${PV}/patches/dev300/nojavanostax.diff" || die
 	cp -f "${FILESDIR}/${PV}/gentoo-hunspell.diff" "${WORKDIR}/infra-ooo-files_${PV}/patches/dev300/hunspell-one-dir-nocrash.diff" || die
@@ -241,14 +230,11 @@ src_unpack() {
 
 	cd "${WORKSRC}"; tar xjf "${WORKDIR}/infra-ooo-files_${PV}/files/extras-templates.tar.bz2"
 	cd "${WORKSRC}"; rm -rf "extras/source/autotext/lang/ru/*" ; tar xjf "${WORKDIR}/infra-ooo-files_${PV}/files/extras_ru.tar.bz2"
-	"${WORKDIR}"/infra-ooo-files_${PV}/bin/enable-dict ru_RU "${WORKDIR}"/infra-ooo-files_${PV}/files/dict_ru_RU.tar.bz2  ${WORKSRC}
-	"${WORKDIR}"/infra-ooo-files_${PV}/bin/enable-dict uk_UA "${WORKDIR}"/infra-ooo-files_${PV}/files/dict_uk_UA.tar.bz2  ${WORKSRC}
+	"${WORKDIR}"/infra-ooo-files_${PV}/bin/enable-dict ru_RU "${WORKDIR}"/infra-ooo-files_${PV}/files/dict_ru_RU.tar.bz2 "${WORKSRC}"
+	"${WORKDIR}"/infra-ooo-files_${PV}/bin/enable-dict uk_UA "${WORKDIR}"/infra-ooo-files_${PV}/files/dict_uk_UA.tar.bz2 "${WORKSRC}"
 
-	mkdir -p "${WORKSRC}"/libwps/download/
-	mkdir -p "${WORKSRC}"/libwpg/download/
-	mkdir -p "${WORKSRC}"/libwpd/download/
-	mkdir -p "${WORKSRC}"/libsvg/download/
-
+	# Infra branding
+	mkdir -p "${WORKSRC}"/{libwps,libwpg,libwpd,libsvg}/download/
 	cp -f "${WORKDIR}"/infra-ooo-files_${PV}/files/libwps*.tar.gz   "${WORKSRC}"/libwps/download/
 	cp -f "${WORKDIR}"/infra-ooo-files_${PV}/files/libwpg*.tar.gz   "${WORKSRC}"/libwpg/download/
 	cp -f "${WORKDIR}"/infra-ooo-files_${PV}/files/libwpd*.tar.gz   "${WORKSRC}"/libwpd/download/
@@ -260,14 +246,24 @@ src_unpack() {
 	cp -f "${WORKDIR}"/infra-ooo-files_${PV}/res/infra/backing*.png    "${WORKSRC}"/default_images/framework/res/
 
 	local patchconf
-	patchconf="--tag=${OOOBUILDTAG} --distro=InfraGentoo --distro=Localize"
+	local distro
+	if use postgres; then
+	    distro=InfraGentooPG
+	else
+	    distro=InfraGentoo
+	fi
+	patchconf="--tag=${OOOBUILDTAG} --distro=${distro} --distro=Localize"
 	if use binfilter; then
-		patchconf="${patchconf} --distro=Binfilter"
+	    patchconf="${patchconf} --distro=Binfilter"
 	fi
 
-	"${WORKDIR}"/infra-ooo-files_${PV}/bin/apply.pl  "${WORKDIR}"/infra-ooo-files_${PV}/patches/dev300 ${WORKSRC} ${patchconf}
-	"${WORKDIR}"/infra-ooo-files_${PV}/bin/transform --apply "${WORKDIR}"/infra-ooo-files_${PV} ${WORKSRC}
+	"${WORKDIR}"/infra-ooo-files_${PV}/bin/apply.pl "${WORKDIR}"/infra-ooo-files_${PV}/patches/dev300 "${WORKSRC}" ${patchconf}
+	"${WORKDIR}"/infra-ooo-files_${PV}/bin/transform --apply "${WORKDIR}"/infra-ooo-files_${PV} "${WORKSRC}"
 
+	if use postgres; then
+	    # fix using of pg lib
+	    epatch "${FILESDIR}/${PV}/gentoo-configure-pg.diff"
+	fi
 	# enable/disable-gstreamer, disable scanning for rpm/dpkg and etc
 	epatch "${FILESDIR}/${PV}/gentoo-configure.diff"
 	# disable mkdepend warning
@@ -276,8 +272,10 @@ src_unpack() {
 	epatch "${FILESDIR}/${PV}/gentoo-completion_matches.diff"
 	# disable rpm
 	epatch "${FILESDIR}/gentoo-epm-3.7.patch.diff"
-	# fix handling of system libs for postgresql-base
-	epatch "${FILESDIR}/gentoo-system_pgsql.diff"
+	if use postgres; then
+	    # fix handling of system libs for postgresql-base
+	    epatch "${FILESDIR}/gentoo-system_pgsql.diff"
+	fi
 	# more stabillity on multiprocessing build
 	epatch "${FILESDIR}/${PV}/gentoo-vba_incl.diff"
 	cp -f "${FILESDIR}/${PV}/gentoo-ReturnInteger.hdl" "${WORKSRC}/scripting/source/vbaevents/ReturnInteger.hdl" || die
@@ -286,6 +284,14 @@ src_unpack() {
 	cp -f "${FILESDIR}/${PV}/gentoo-XVBAToOOEventDescGen.hpp" "${WORKSRC}/scripting/source/vbaevents/XVBAToOOEventDescGen.hpp" || die
 	# fix ru dict
 	epatch "${FILESDIR}/${PV}/gentoo-ru_dict.diff"
+
+	cd "${WORKSRC}/config_office"
+
+	eautoreconf
+
+}
+
+src_configure() {
 
 	# Use flag checks
 	if use java; then
@@ -313,7 +319,7 @@ src_unpack() {
 	    local tempdict
 	    for i in ${LINGUAS_OOO}; do
 		if [[ "${i}" != "en-US" ]]; then
-		    tempdict=`ls ${WORKSRC}/dictionaries/ | grep ${i} | sed -e 's/_//g' -e 's/\///g' | tr '[a-z]' '[A-Z]'`
+		    tempdict=$(ls ${WORKSRC}/dictionaries/ | grep ${i} | sed -e 's/_//g;s/\///g' | tr '[a-z]' '[A-Z]')
 		    tempdicts="${tempdicts},${tempdict}"
 		fi
 	    done
@@ -326,19 +332,19 @@ src_unpack() {
 	    CONFIGURE_ARGS="${CONFIGURE_ARGS} --with-external-thes-dir=/usr/share/myspell"
 	fi
 
-	CONFIGURE_ARGS="${CONFIGURE_ARGS} `use_enable binfilter`"
-	CONFIGURE_ARGS="${CONFIGURE_ARGS} `use_enable cups`"
-	CONFIGURE_ARGS="${CONFIGURE_ARGS} `use_enable dbus`"
-	CONFIGURE_ARGS="${CONFIGURE_ARGS} `use_enable eds evolution2`"
-	CONFIGURE_ARGS="${CONFIGURE_ARGS} `use_enable gnome gnome-vfs`"
-	CONFIGURE_ARGS="${CONFIGURE_ARGS} `use_enable gnome lockdown`"
-	CONFIGURE_ARGS="${CONFIGURE_ARGS} `use_enable gstreamer`"
-	CONFIGURE_ARGS="${CONFIGURE_ARGS} `use_enable gtk systray`"
-	CONFIGURE_ARGS="${CONFIGURE_ARGS} `use_enable ldap`"
-	CONFIGURE_ARGS="${CONFIGURE_ARGS} `use_enable opengl`"
-	CONFIGURE_ARGS="${CONFIGURE_ARGS} `use_with ldap openldap`"
-	CONFIGURE_ARGS="${CONFIGURE_ARGS} `use_enable debug crashdump`"
-	CONFIGURE_ARGS="${CONFIGURE_ARGS} `use_enable debug strip-solver`"
+	CONFIGURE_ARGS="${CONFIGURE_ARGS} $(use_enable binfilter)"
+	CONFIGURE_ARGS="${CONFIGURE_ARGS} $(use_enable cups)"
+	CONFIGURE_ARGS="${CONFIGURE_ARGS} $(use_enable dbus)"
+	CONFIGURE_ARGS="${CONFIGURE_ARGS} $(use_enable eds evolution2)"
+	CONFIGURE_ARGS="${CONFIGURE_ARGS} $(use_enable gnome gnome-vfs)"
+	CONFIGURE_ARGS="${CONFIGURE_ARGS} $(use_enable gnome lockdown)"
+	CONFIGURE_ARGS="${CONFIGURE_ARGS} $(use_enable gstreamer)"
+	CONFIGURE_ARGS="${CONFIGURE_ARGS} $(use_enable gtk systray)"
+	CONFIGURE_ARGS="${CONFIGURE_ARGS} $(use_enable ldap)"
+	CONFIGURE_ARGS="${CONFIGURE_ARGS} $(use_enable opengl)"
+	CONFIGURE_ARGS="${CONFIGURE_ARGS} $(use_with ldap openldap)"
+	CONFIGURE_ARGS="${CONFIGURE_ARGS} $(use_enable debug crashdump)"
+	CONFIGURE_ARGS="${CONFIGURE_ARGS} $(use_enable debug strip-solver)"
 
 	# Extension stuff
 	CONFIGURE_ARGS="${CONFIGURE_ARGS} --with-extension-integration"
@@ -354,20 +360,8 @@ src_unpack() {
 	# Original branding results in black splash screens for some, so forcing ours
 	CONFIGURE_ARGS="${CONFIGURE_ARGS} --with-intro-bitmaps=\\\"${WORKSRC}/ooo_custom_images/nologo/introabout/intro.bmp\\\""
 
-	export CONFIGURE_ARGS
-
-	cd "${WORKSRC}/config_office"
-	eautoreconf
-
-}
-
-src_compile() {
-
-	# Should the build use multiprocessing? Not enabled by default, as it tends to break
-	export JOBS="1"
-	if [[ "${WANT_MP}" == "true" ]]; then
-	    export JOBS=`echo "${MAKEOPTS}" | sed -e "s/.*-j\([0-9]\+\).*/\1/"`
-	fi
+	# Use multiprocessing by default now, it gets tested by upstream
+	export JOBS=$(echo "${MAKEOPTS}" | sed -e "s/.*-j\([0-9]\+\).*/\1/")
 
 	# Compile problems with these ...
 	filter-flags "-funroll-loops"
@@ -395,7 +389,7 @@ src_compile() {
 
 	# Make sure gnome-users get gtk-support
 	local GTKFLAG="--disable-gtk --disable-cairo --without-system-cairo"
-	( use gtk || use gnome ) && GTKFLAG="--enable-gtk --enable-cairo --with-system-cairo"
+	{ use gtk || use gnome; } && GTKFLAG="--enable-gtk --enable-cairo --with-system-cairo"
 
 	use kde && set-kdedir 3
 
@@ -404,17 +398,18 @@ src_compile() {
 
 	cd "${WORKSRC}/config_office"
 
+	# distro-configs are not hooked in infra build, passing configure options as commandline arguments
 	./configure \
 		--srcdir="${DISTDIR}" \
 		--with-lang="${LINGUAS_OOO}" \
 		--with-build-version="${OOOTAG}" \
 		${GTKFLAG} \
-		`use_enable mono` \
-		`use_enable kde` \
-		`use_enable debug symbols` \
-		`use_enable odk` \
-		`use_enable pam` \
-		`use_with java` \
+		$(use_enable mono) \
+		$(use_enable kde) \
+		$(use_enable debug symbols) \
+		$(use_enable odk) \
+		$(use_enable pam) \
+		$(use_with java) \
 		--with-system-jpeg \
 		--with-system-libxml \
 		--with-system-libwpd \
@@ -450,7 +445,9 @@ src_compile() {
 		${CONFIGURE_ARGS} \
 		|| die "Configuration failed!"
 
-	einfo "Building OpenOffice-Infra..."
+}
+
+src_compile() {
 
 	cd "${WORKSRC}"
 
@@ -485,9 +482,6 @@ src_compile() {
 	    dmake || die "Build failed"
 	fi
 
-	unset PYTHONPATH
-	unset PYTHONHOME
-
 }
 
 src_install() {
@@ -509,13 +503,8 @@ src_install() {
 	fi
 
 	allcomponents="${basecomponents}"
-	if use cups; then
-	    allcomponents="${allcomponents} printeradmin"
-	fi
-
-	if use gtk || use gnome; then
-	    allcomponents="${allcomponents} qstart"
-	fi
+	use cups && allcomponents="${allcomponents} printeradmin"
+	{ use gtk || use gnome; } && allcomponents="${allcomponents} qstart"
 
 	dodir "${instdir}"
 
@@ -559,7 +548,7 @@ src_install() {
 	# Icons
 	insinto /usr/share/icons
 	doins -r "${WORKSRC}"/sysui/desktop/icons/{hicolor,locolor}
-	find "${D}"/usr/share/icons -name 'CVS' | xargs rm -rf
+	ecvs_clean "${D}/usr/share/icons"
 	for color in {hicolor,locolor}; do
 	    for sizes in "${D}"usr/share/icons/${color}/* ; do
 		for i in ${allcomponents}; do
@@ -591,8 +580,15 @@ src_install() {
 	doins "${WORKSRC}"/sysui/unxlng"${arch_var}"6.pro/misc/openoffice.org/openoffice.org.xml
 
 	# Install wrapper script
-	newbin "${FILESDIR}"/wrapper.in ooffice
+	newbin "${FILESDIR}"/wrapper.in ooffice || die
 	sed -i -e s/LIBDIR/$(get_libdir)/g "${D}"/usr/bin/ooffice || die "Wrapper script failed"
+
+	# Install PostgreSQL SDBC extension
+	if use postgres; then
+	    insinto /usr/$(get_libdir)/openoffice/share/extension/install
+	    doins "${WORKSRC}"/connectivity/unxlng"${arch_var}"6.pro/lib/postgresql-sdbc-0.7.6.zip
+	    fperms 444 /usr/$(get_libdir)/openoffice/share/extension/install/postgresql-sdbc-0.7.6.zip
+	fi
 
 	# Component symlinks
 	for i in ${basecomponents}; do
@@ -668,6 +664,11 @@ pkg_postinst() {
 	elog " Please use the packages provided in "
 	elog " /usr/$(get_libdir)/openoffice/share/extension/install/ "
 	elog " instead of those from the SUN extension site. "
+	if use postgres; then
+	    elog
+	    elog " PostgreSQL SDBC extension provided in "
+	    elog " /usr/$(get_libdir)/openoffice/share/extension/install/ "
+	fi
 	elog
 
 }
