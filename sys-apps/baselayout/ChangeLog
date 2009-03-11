@@ -1,7 +1,13 @@
 # ChangeLog for sys-apps/baselayout
-# Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/baselayout/ChangeLog,v 1.470 2008/08/19 17:51:19 zmedico Exp $
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/baselayout/ChangeLog,v 1.471 2009/03/02 20:17:46 hollow Exp $
 
+  03 Mar 2009; Daniel Robbins <drobbins@funtoo.org> baselayout-2.0.0-ebuild:
+  Gentoo incorporated my /etc/shadow fix into their ebuild.
+
+  27 Feb 2009; Daniel Robbins <drobbins@funtoo.org> +baselayout-2.0.0-r2.ebuild: 
+  security fix to ensure that /etc/shadow is not world readable.
+ 
   01 Feb 2009; Daniel Robbins <drobbins@funtoo.org> baselayout-2.0.0-r1.ebuild:
   More baselayout fixes. Baselayout now does what it was originally supposed to
   do, again -- create the base filesystem layout. It only does this when ROOT
@@ -21,6 +27,9 @@
   New baselayout ebuild that actually creates device nodes. This has been
   missing from the ebuild, so I added it from a 1.x version and added MAKEDEV
   to the portage tree for a quick fix.
+
+  02 Mar 2009; Benedikt Böhm <hollow@gentoo.org> baselayout-2.0.0.ebuild:
+  fix /etc/shadow permissions when building stages
 
   19 Aug 2008; Zac Medico <zmedico@gentoo.org> baselayout-2.0.0.ebuild:
   Avoid potential warning messages in the SYMLINK_LIB code which may be

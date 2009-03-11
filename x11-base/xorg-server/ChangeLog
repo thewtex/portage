@@ -1,31 +1,30 @@
 # ChangeLog for x11-base/xorg-server
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-<<<<<<< HEAD:x11-base/xorg-server/ChangeLog
-# $Header: /var/cvsroot/gentoo-x86/x11-base/xorg-server/ChangeLog,v 1.377 2009/02/19 17:21:41 remi Exp $
-=======
-# $Header: /var/cvsroot/gentoo-x86/x11-base/xorg-server/ChangeLog,v 1.378 2009/02/23 20:08:00 kumba Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-base/xorg-server/ChangeLog,v 1.379 2009/03/02 14:10:35 pva Exp $
+
+  02 Mar 2009; Peter Volkov <pva@gentoo.org> xorg-server-1.5.3-r2.ebuild:
+  newport works on mips, no need to block with it.
 
   23 Feb 2009; Joshua Kinard <kumba@gentoo.org> xorg-server-1.5.3-r2.ebuild:
   Added ~mips to KEYWORDS for #237411
->>>>>>> origin/gentoo.org:x11-base/xorg-server/ChangeLog
 
-  19 Feb 2009; Rémi Cardona <remi@gentoo.org> xorg-server-1.5.3-r2.ebuild:
+  19 Feb 2009; RÃ©mi Cardona <remi@gentoo.org> xorg-server-1.5.3-r2.ebuild:
   drop liblbxutil dep, there are no references to it in the sources
 
 *xorg-server-1.5.3-r2 (05 Feb 2009)
 
-  05 Feb 2009; Rémi Cardona <remi@gentoo.org> +xorg-server-1.5.3-r2.ebuild:
+  05 Feb 2009; RÃ©mi Cardona <remi@gentoo.org> +xorg-server-1.5.3-r2.ebuild:
   bump to patchset 4 which fixes a screensaver bug, a xinerama bug (bug
   #18668) and hopefully bitmap fonts as well (bugs #257206 and #255082),
   drop --with-default-font-path as 'built-ins' is always appended internally
   (patch #60)
 
-  25 Jan 2009; Rémi Cardona <remi@gentoo.org> xorg-server-1.5.3-r1.ebuild:
+  25 Jan 2009; RÃ©mi Cardona <remi@gentoo.org> xorg-server-1.5.3-r1.ebuild:
   silently update the patch-ball to 03 to fix bug #19691
 
 *xorg-server-1.5.3-r1 (13 Jan 2009)
 
-  13 Jan 2009; Rémi Cardona <remi@gentoo.org> +xorg-server-1.5.3-r1.ebuild:
+  13 Jan 2009; RÃ©mi Cardona <remi@gentoo.org> +xorg-server-1.5.3-r1.ebuild:
   include patches from upstream's server-1.5-branch and backport more EXA
   fixes (including one for bug #251242)
 
@@ -35,13 +34,13 @@
   16 Dec 2008; Jeroen Roovers <jer@gentoo.org> xorg-server-1.5.3.ebuild:
   Marked ~hppa (bug #237411).
 
-  15 Dec 2008; Rémi Cardona <remi@gentoo.org> xorg-server-1.5.3.ebuild:
+  15 Dec 2008; RÃ©mi Cardona <remi@gentoo.org> xorg-server-1.5.3.ebuild:
   bump xkeyboard-config dep to 1.4, first version to provide the evdev
-  ruleset (thanks to Sven Köhler)
+  ruleset (thanks to Sven KÃ¶hler)
 
 *xorg-server-1.5.3 (15 Dec 2008)
 
-  15 Dec 2008; Rémi Cardona <remi@gentoo.org>
+  15 Dec 2008; RÃ©mi Cardona <remi@gentoo.org>
   +files/1.5.3-builtin-fonts.patch, +xorg-server-1.5.3.ebuild:
   bump to 1.5.3 with a monster EXA backport from git master
 
@@ -68,7 +67,7 @@
   Gentoo patch marked as upstream fix; remove this conflicting one.
   (bug #237119)
 
-  26 Oct 2008; Rémi Cardona <remi@gentoo.org>
+  26 Oct 2008; RÃ©mi Cardona <remi@gentoo.org>
   +files/1.5.2-fix-xvesa-with-new-kernels.patch, xorg-server-1.5.2.ebuild:
   add patch to fix KDrive's Xvesa build (fixes bug #235789)
 
@@ -76,21 +75,21 @@
   xorg-server-1.5.2.ebuild:
   Same patch was applied twice - fixed
 
-  22 Oct 2008; Rémi Cardona <remi@gentoo.org>
+  22 Oct 2008; RÃ©mi Cardona <remi@gentoo.org>
   xorg-server-1.3.0.0-r6.ebuild, xorg-server-1.4.2.ebuild,
   xorg-server-1.5.2.ebuild:
   pkgmove from xf86-video-i810 to xf86-video-intel
 
-  21 Oct 2008; Rémi Cardona <remi@gentoo.org> xorg-server-1.5.2.ebuild:
+  21 Oct 2008; RÃ©mi Cardona <remi@gentoo.org> xorg-server-1.5.2.ebuild:
   patch has been sent upstream, updating ebuild to reflect that
 
-  18 Oct 2008; Rémi Cardona <remi@gentoo.org>
+  18 Oct 2008; RÃ©mi Cardona <remi@gentoo.org>
   -files/1.5.2-force-LANG-C-when-running-awk-due-to-unintended-erro.patch,
   +files/1.5.2-force-LC_ALL-C-when-running-awk.patch,
   xorg-server-1.5.2.ebuild:
   another patch to fix bug #237119
 
-  17 Oct 2008; Rémi Cardona <remi@gentoo.org>
+  17 Oct 2008; RÃ©mi Cardona <remi@gentoo.org>
   +files/1.5.2-force-LANG-C-when-running-awk-due-to-unintended-erro.patch,
   xorg-server-1.5.2.ebuild:
   add patch to fix build issue with some locales (see bug #237119)
@@ -119,7 +118,7 @@
   +xorg-server-1.5.2.ebuild:
   Version bump.
 
-  03 Oct 2008; Raúl Porcel <armin76@gentoo.org> xorg-server-1.5.1.ebuild:
+  03 Oct 2008; RaÃºl Porcel <armin76@gentoo.org> xorg-server-1.5.1.ebuild:
   Add ~ia64 wrt #237411
 
 *xorg-server-1.5.1 (29 Sep 2008)
@@ -503,7 +502,7 @@
   Switch from via to openchrome for VIDEO_CARDS=via to mirror upstream xorg
   switch.
 
-  10 Mar 2008; Bo Ørsted Andresen <zlin@gentoo.org>
+  10 Mar 2008; Bo Ãrsted Andresen <zlin@gentoo.org>
   xorg-server-1.4.0.90-r2.ebuild, xorg-server-1.4.0.90-r3.ebuild:
   Remove print_installed(). Bug #211588.
 
@@ -511,7 +510,7 @@
   xorg-server-1.3.0.0-r5.ebuild:
   Marked stable on amd64 as per security bug 208343.
 
-  09 Feb 2008; Raúl Porcel <armin76@gentoo.org>
+  09 Feb 2008; RaÃºl Porcel <armin76@gentoo.org>
   xorg-server-1.3.0.0-r5.ebuild:
   alpha/ia64/sparc stable wrt security #208343
 
@@ -648,7 +647,7 @@
   09 Nov 2007; nixnut <nixnut@gentoo.org> xorg-server-1.3.0.0-r2.ebuild:
   Stable on ppc wrt bug 198525
 
-  09 Nov 2007; Raúl Porcel <armin76@gentoo.org>
+  09 Nov 2007; RaÃºl Porcel <armin76@gentoo.org>
   xorg-server-1.3.0.0-r2.ebuild:
   alpha/ia64 stable wrt #198525
 
@@ -664,7 +663,7 @@
   xorg-server-1.3.0.0-r2.ebuild:
   (#198525) Stable on amd64, tested by hparker, approved by kingtaco.
 
-  09 Nov 2007; Dawid Węgliński <cla@gentoo.org>
+  09 Nov 2007; Dawid WÄgliÅski <cla@gentoo.org>
   xorg-server-1.3.0.0-r2.ebuild:
   Stable on x86
 
@@ -677,7 +676,7 @@
   05 Nov 2007; Donnie Berkholz <dberkholz@gentoo.org>;
   xorg-server-1.2.0-r3.ebuild, xorg-server-1.3.0.0.ebuild,
   xorg-server-1.3.0.0-r1.ebuild:
-  Require older libXrender here too (backport from 1.3.0.0-r2) (Martin MOKREJŠ).
+  Require older libXrender here too (backport from 1.3.0.0-r2) (Martin MOKREJÅ ).
 
   29 Oct 2007; Donnie Berkholz <dberkholz@gentoo.org>;
   xorg-server-1.4-r2.ebuild:
@@ -725,7 +724,7 @@
   xorg-server-1.4-r2.ebuild:
   add new nvidia-drivers to depend list support
 
-  01 Oct 2007; Raúl Porcel <armin76@gentoo.org>
+  01 Oct 2007; RaÃºl Porcel <armin76@gentoo.org>
   xorg-server-1.3.0.0-r1.ebuild:
   alpha/ia64/sparc stable wrt #191964
 
@@ -740,7 +739,7 @@
   (#194026) Fix many keyboard-related issues, particularly special keys, by
   setting the XKB output directory to one that actually exists -- /var/lib/xkb
   -- instead of /usr/share/X11/xkb/compiled (illusion). (#193978) Fix build on
-  ia64 (Raúl Porcel). (#193735) Another xprint fix, to the init script this
+  ia64 (RaÃºl Porcel). (#193735) Another xprint fix, to the init script this
   time (Andy Crook).
 
   01 Oct 2007; Joshua Kinard <kumba@gentoo.org>
@@ -823,7 +822,7 @@
   (#191709) Require older renderproto as a workaround to make this build again
   until we get a proper fix.
 
-  09 Sep 2007; Raúl Porcel <armin76@gentoo.org> xorg-server-1.3.0.0.ebuild:
+  09 Sep 2007; RaÃºl Porcel <armin76@gentoo.org> xorg-server-1.3.0.0.ebuild:
   alpha/ia64 stable wrt #191615
 
   09 Sep 2007; Donnie Berkholz <dberkholz@gentoo.org>;
@@ -923,17 +922,17 @@
   xorg-server-1.2.99.0.ebuild, xorg-server-1.3.0.0.ebuild:
   nvidia-legacy-drivers moved to nvidia-drivers
 
-  02 Jul 2007; Raúl Porcel <armin76@gentoo.org>
+  02 Jul 2007; RaÃºl Porcel <armin76@gentoo.org>
   xorg-server-1.2.0-r3.ebuild:
   alpha stable wrt #175465
 
-  02 Jul 2007; Piotr Jaroszyński <peper@gentoo.org>
+  02 Jul 2007; Piotr JaroszyÅski <peper@gentoo.org>
   xorg-server-1.1.1-r1.ebuild, xorg-server-1.1.1-r5.ebuild,
   xorg-server-1.2.0-r3.ebuild, xorg-server-1.2.99.0.ebuild,
   xorg-server-1.3.0.0.ebuild:
   (QA) RESTRICT clean up.
 
-  24 Jun 2007; Piotr Jaroszyński <peper@gentoo.org>
+  24 Jun 2007; Piotr JaroszyÅski <peper@gentoo.org>
   xorg-server-1.2.99.0.ebuild:
   (QA) Don't use KEYWORDS="-*". bug #160519.
 
@@ -992,7 +991,7 @@
   29 Apr 2007; Andrej Kacian <ticho@gentoo.org> xorg-server-1.2.0-r3.ebuild:
   Stable on x86, bug #175465.
 
-  25 Apr 2007; Raúl Porcel <armin76@gentoo.org>
+  25 Apr 2007; RaÃºl Porcel <armin76@gentoo.org>
   xorg-server-1.2.0-r3.ebuild:
   Stable on ia64 wrt bug #175465
 
@@ -1127,11 +1126,11 @@
   15 Jan 2007; Tim Yamin <plasmaroo@gentoo.org> xorg-server-1.1.1-r4.ebuild:
   Stable on IA64; bug #157421.
 
-  15 Jan 2007; Bryan Østergaard <kloeri@gentoo.org>
+  15 Jan 2007; Bryan Ãstergaard <kloeri@gentoo.org>
   xorg-server-1.1.1-r4.ebuild:
   Stable on Alpha, bug 157421.
 
-  14 Jan 2007; René Nussbaumer <killerfox@gentoo.org>
+  14 Jan 2007; RenÃ© Nussbaumer <killerfox@gentoo.org>
   xorg-server-1.1.1-r4.ebuild:
   Stable on hppa. See bug #157421.
 
@@ -1185,7 +1184,7 @@
   04 Dec 2006; Joshua Baergen <joshuabaergen@gentoo.org>
   +files/1.1.99.903-mesa-6.5.2.patch, -xorg-server-1.1.99.903.ebuild,
   +xorg-server-1.1.99.903-r1.ebuild:
-  Build the 7.2 server against Mesa 6.5.2.  Includes a patch from Hanno Böck.
+  Build the 7.2 server against Mesa 6.5.2.  Includes a patch from Hanno BÃ¶ck.
 
 *xorg-server-1.1.99.903 (02 Dec 2006)
 
@@ -1704,7 +1703,7 @@
   Add a xorg-server snapshot from upstream.  This snapshot compiles against Mesa
   6.5 and has AIGLX enabled.
 
-  31 Mar 2006; Diego Pettenò <flameeyes@gentoo.org>
+  31 Mar 2006; Diego PettenÃ² <flameeyes@gentoo.org>
   xorg-server-1.0.2-r3.ebuild:
   Add ~x86-fbsd keyword.
 
@@ -2117,7 +2116,7 @@
 
   17 Aug 2005; Donnie Berkholz <dberkholz@gentoo.org>;
   +files/xorg-server-fbmmx-local.patch, xorg-server-0.99.1-r3.ebuild:
-  (fd.o #4073) Fix compilation failures at fbmmx.c. Patch from Diego Pettenò
+  (fd.o #4073) Fix compilation failures at fbmmx.c. Patch from Diego PettenÃ²
   <flameeyes@gentoo.org>.
 
   16 Aug 2005; Donnie Berkholz <dberkholz@gentoo.org>;
@@ -2169,7 +2168,7 @@
   +xorg-server-0.99.1-r2.ebuild:
   Re-add, this time with a huge patch on the mirror.
 
-  12 Aug 2005; Diego Pettenò <flameeyes@gentoo.org>
+  12 Aug 2005; Diego PettenÃ² <flameeyes@gentoo.org>
   -files/check-for-glproto.patch, -files/fix-xf86misc-typo.patch,
   -files/xorg-server-0.99.1-update-to-CVS-HEAD-20050811.patch,
   -xorg-server-0.99.1-r2.ebuild:
