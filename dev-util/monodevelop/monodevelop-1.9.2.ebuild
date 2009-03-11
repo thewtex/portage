@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/monodevelop/monodevelop-1.9.1.ebuild,v 1.10 2009/01/19 21:14:28 loki_val Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/monodevelop/monodevelop-1.9.2.ebuild,v 1.1 2009/03/08 15:55:03 loki_val Exp $
 
 EAPI=2
 
@@ -16,8 +16,8 @@ KEYWORDS="~amd64 ~x86"
 IUSE="+subversion"
 
 RDEPEND="sys-apps/dbus[X]
-	>=dev-lang/mono-1.9
-	>=virtual/monodoc-1.9
+	>=dev-lang/mono-2.0
+	>=virtual/monodoc-2.0
 	||	(
 		~dev-dotnet/mono-addins-0.3.1
 		>=dev-dotnet/mono-addins-0.4[gtk]
@@ -35,7 +35,13 @@ RDEPEND="sys-apps/dbus[X]
 	)
 	>=dev-dotnet/xsp-2
 	subversion? ( dev-util/subversion )
-	dev-util/ctags"
+	dev-util/ctags
+	!<dev-util/monodevelop-boo-${PV}
+	!<dev-util/monodevelop-java-${PV}
+	!<dev-util/monodevelop-database-${PV}
+	!<dev-util/monodevelop-debugger-gdb-${PV}
+	!<dev-util/monodevelop-debugger-mdb-${PV}
+	!<dev-util/monodevelop-vala-${PV}"
 
 DEPEND="${RDEPEND}
 	sys-devel/gettext
@@ -70,11 +76,13 @@ pkg_postinst() {
 	fdo-mime_mime_database_update
 	fdo-mime_desktop_database_update
 	elog "These optional plugins currently exist:"
-	elog " - dev-util/monodevelop-java"
 	elog " - dev-util/monodevelop-boo"
+	elog " - dev-util/monodevelop-java"
 	elog " - dev-util/monodevelop-database"
+	elog " - dev-util/monodevelop-debugger-gdb"
+	elog " - dev-util/monodevelop-debugger-mdb"
+	elog " - dev-util/monodevelop-vala"
 	elog "To enable their (self-explanatory) functionality, just emerge them."
 	elog "Read more here:"
 	elog "http://monodevelop.com/"
-
 }

@@ -1,5 +1,5 @@
-dev-java/gnu-classpath:0.97 =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool =dev-java/java-config-2* >=sys-apps/portage-2.1
-dev-java/gnu-classpath:0.97 =dev-java/java-config-2*
+dev-java/gnu-classpath:0.97 sys-devel/gcc[libffi?] amd64? ( sys-devel/gcc[libffi] ) =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool =dev-java/java-config-2*
+dev-java/gnu-classpath:0.97 sys-devel/gcc[libffi?] amd64? ( sys-devel/gcc[libffi] ) =dev-java/java-config-2*
 0
 mirror://sourceforge/jamvm/jamvm-1.5.0.tar.gz
 
@@ -12,9 +12,9 @@ debug libffi
 
 dev-java/ant-eclipse-ecj:3.3 dev-java/gjdoc
 
-1
+2
 
-compile install postinst postrm prerm setup unpack
+configure install postinst postrm prepare prerm setup
 
 
 

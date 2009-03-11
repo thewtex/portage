@@ -1,5 +1,5 @@
-fuse? ( sys-fs/fuse ) perl? ( dev-lang/perl ) php? ( dev-lang/php ) python? ( dev-lang/python ) tcl? ( dev-lang/tcl ) usb? ( dev-libs/libusb ) zeroconf? ( || ( net-dns/avahi net-misc/mDNSResponder ) ) perl? ( dev-lang/swig ) php? ( dev-lang/swig ) python? ( dev-lang/swig )
-fuse? ( sys-fs/fuse ) perl? ( dev-lang/perl ) php? ( dev-lang/php ) python? ( dev-lang/python ) tcl? ( dev-lang/tcl ) usb? ( dev-libs/libusb ) zeroconf? ( || ( net-dns/avahi net-misc/mDNSResponder ) )
+fuse? ( sys-fs/fuse ) perl? ( dev-lang/perl ) php? ( dev-lang/php ) python? ( dev-lang/python ) tcl? ( dev-lang/tcl ) usb? ( dev-libs/libusb ) zeroconf? ( || ( net-dns/avahi[mdnsresponder-compat] net-misc/mDNSResponder ) ) perl? ( dev-lang/swig ) php? ( dev-lang/swig ) python? ( dev-lang/swig )
+fuse? ( sys-fs/fuse ) perl? ( dev-lang/perl ) php? ( dev-lang/php ) python? ( dev-lang/python ) tcl? ( dev-lang/tcl ) usb? ( dev-libs/libusb ) zeroconf? ( || ( net-dns/avahi[mdnsresponder-compat] net-misc/mDNSResponder ) )
 0
 mirror://sourceforge/owfs/owfs-2.7p4.tar.gz
 
@@ -12,9 +12,9 @@ debug fuse ftpd httpd parport perl php python server tcl usb zeroconf
 
 
 
-0
+2
 
-compile install postinst setup
+configure install postinst setup
 
 
 

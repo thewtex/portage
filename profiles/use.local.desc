@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4253 2009/03/04 23:27:45 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4258 2009/03/08 15:48:28 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -224,7 +224,14 @@ app-emulation/mol:sheep - Support for the sheep net driver
 app-emulation/open-vm-tools:unity - Enable host unity support
 app-emulation/pearpc:jit - Use the JITC-x86 CPU
 app-emulation/point2play:emerald - For people who are in the Transgaming Emerald Club
-app-emulation/qemu-softmmu:kqemu - Enables the kernel acceleration module on a x86 cpu
+app-emulation/qemu-softmmu:alsa - Enable alsa output for sound emulation
+app-emulation/qemu-softmmu:esd - Enable esound output for sound emulation
+app-emulation/qemu-softmmu:gnutls - Enable TLS support for the VNC console server
+app-emulation/qemu-softmmu:kqemu - Enables the kernel acceleration module on a x86/x86-64 cpu
+app-emulation/qemu-softmmu:ncurses - Enable the ncurses-based console
+app-emulation/qemu-softmmu:pulseaudio - Enable pulseaudio output for sound emulation
+app-emulation/qemu-softmmu:sdl - Enable the SDL-based console
+app-emulation/qemu-softmmu:vde - Enable VDE-based networking
 app-emulation/uade:audacious - Enables support for media-sound/audacious
 app-emulation/uae:scsi - Enable the uaescsi.device
 app-emulation/uae:sdl-sound - Use media-sound/sdl-sound for audio output
@@ -1696,6 +1703,7 @@ media-video/dv2sub:kino - install kino plugin
 media-video/dvd-slideshow:themes - Install theme pack
 media-video/dvdrip:fping - Enables fping support for cluster rendering
 media-video/dvdrip:subtitles - Enables support for subtitle ripping
+media-video/ffmpeg:3dnowext -  Enable manually-optimised routines using the AMD 3DNow!Ex SIMD instruction set, present in modern AMD CPUs. (Check for 3dnowext in /proc/cpuinfo to know whehter you support it). 
 media-video/ffmpeg:amr - Enables Adaptive Multi-Rate Audio support
 media-video/ffmpeg:dirac - Enable Dirac video support (an advanced royalty-free video compression format) via the reference library: dirac.
 media-video/ffmpeg:gsm - Enables support for the gsm lossy speech compression codec via libgsm.
@@ -2104,14 +2112,20 @@ net-im/gossip:galago - Enable desktop presence with galago
 net-im/gossip:gnome-keyring - Allows Gossip to use gnome-keyring to store passwords.
 net-im/gossip:libnotify - Allows Gossip to show visual notifications concerning various activities via libnotify.
 net-im/jabberd2:memdebug - Enable nad and pool debug. Requires USE="debug" to be set. 
-net-im/kadu:amarok - Enables amarok support in kadu
+net-im/kadu:amarok - Enables media-sound/amarok:0 (amarok1) media player support
+net-im/kadu:amarok2 - Enables media-sound/amarok:2 (amarok2) media player support
+net-im/kadu:audacious - Enables media-sound/audacious media player support
+net-im/kadu:bmpx - Enables media-sound/bmpx media player support
 net-im/kadu:config_wizard - Enables configuration wizard module
+net-im/kadu:dragonplayer - Enables kde-base/dragonplayer KDE4 media player support
 net-im/kadu:extraicons - Enables extra icon set
-net-im/kadu:extramodules - Enables extra module in kadu
-net-im/kadu:mail - Enables mail module in kadu
+net-im/kadu:extramodules - Enables building of extra modules
+net-im/kadu:mail - Enables mail module
 net-im/kadu:powerkadu - Installs extra powerkadu modules
-net-im/kadu:speech - Enables speech module in kadu
-net-im/kadu:voice - Enables voice chat in kadu
+net-im/kadu:sms - Enables SMS sending plugin
+net-im/kadu:speech - Enables speech module
+net-im/kadu:vlc - Enables media-video/vlc media player support
+net-im/kadu:voice - Enables voice chat
 net-im/mcabber:otr -  Enable encrypted conversations using Off-The-Records messaging 
 net-im/naim:screen - Enable screen support
 net-im/pidgin:bonjour - Enable bonjour support
@@ -2341,6 +2355,8 @@ net-misc/streamtuner:xiph - Enable xiph.org plug-in.
 net-misc/strongswan:cisco - Enable support of Cisco VPN client
 net-misc/strongswan:nat - Enable NAT traversal with IPsec transport mode
 net-misc/termpkg:uucp -  Adds support for uucp style device locking 
+net-misc/tigervnc:server - Build TigerVNC server
+net-misc/tigervnc:xorgmodule - Build the Xorg module
 net-misc/tightvnc:server - Build vncserver. Allows us to only build server on one machine if set, build only viewer otherwise.
 net-misc/tor:bundledlibevent - USE bundled libevent for asynchronous DNS requests (provides a tiny bit more anonymity)
 net-misc/vnc:server - Build VNC server
@@ -2493,6 +2509,7 @@ sci-biology/clustalw-mpi:mpi_njtree - Use MPI (as opposed to serial) code for co
 sci-biology/clustalw-mpi:static_pairalign - Use static (as opposed to dynamic) scheduling for pair alignments
 sci-biology/hmmer:pvm - Add support for parallel virtual machine (sys-cluster/pvm)
 sci-biology/tgi-tools:pvm - Use sys-cluster/pvm (Parallel Virtual Machine) and build the pvmsx utility
+sci-biology/plink:webcheck -  add support for online update checking every time the program starts 
 sci-biology/vienna-rna:no-readseq - Do not include the modified version of Don Gilbert's readseq program
 sci-biology/vienna-rna:no-utils - Do not include sequence format conversion and representation utilities
 sci-chemistry/avogadro:glsl - Enable glsl features via GLEW.
