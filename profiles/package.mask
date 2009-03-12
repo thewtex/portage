@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.9549 2009/03/05 10:34:01 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.9561 2009/03/08 21:35:10 alexxy Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -31,6 +31,20 @@
 
 #--- END OF EXAMPLES ---
 
+# Peter Volkov <pva@gentoo.org> (7 Mar 2009)
+# Masked for removal, please use app-text/ghostscript-gpl #261434
+app-text/ghostscript-esp
+
+# Rémi Cardona <remi@gentoo.org> (7 Mar 2009)
+# snapshot of the unreleased 7.4 branch, just needs to be tested
+=media-libs/mesa-7.3-r1
+
+# Tomas Chvatal <scarabeus@gentoo.org> (6 Mar 2009)
+# Mask for removal per bug #261285
+# Unmaintained, broken, no new releases, don't work
+# due to 6.4.09
+net-misc/kickpim
+
 # Diego E. Pettenò <flameeyes@gmail.com> (5 Mar 2009)
 # Masked pending removal for bug #261288, multiple issues.
 # Removal scheduled for April 5th, 2009.
@@ -39,6 +53,8 @@ dev-ruby/ruby-gdchart
 # Daniel Robbins <drobbins@funtoo.org> (3 Mar 2009)
 # See bug 260441
 ~x11-drivers/nvidia-drivers-180.35
+
+# Tomas Chvatal <scarabeus@gentoo.org> (6 Mar 2009)
 
 # Thomas Sachau <tommy@gentoo.org> (2 Mar 2009)
 # Mask for removal, was merged into dev-java/fec
@@ -70,11 +86,6 @@ sci-chemistry/gchempaint
 # Timothy Redaelli <drizzt@gentoo.org> (26 Feb 2009)
 # Masked for testing
 ~dev-libs/libedit-20090111.3.0
-
-# Rémi Cardona <remi@gentoo.org> (26 Feb 2009)
-# Upstream says it's a bugfix release but the ChangeLog indicates otherwise.
-# p.masked until it has been sufficiently tested (by us or others)
-=x11-drivers/xf86-video-intel-2.6.2
 
 # Matthias Schwarzott <zzam@gentoo.org> (25 Feb 2009)
 # masked for removal in 30days
@@ -256,6 +267,11 @@ games-arcade/ppracer
 # Mask because all of kde 4.2 is masked and it's causing blockers
 =media-sound/phonon-4.3.0
 
+# Torsten Veller <tove@gentoo.org> (28 Jan 2009)
+# Masked for testing (#249629)
+# https://bugs.gentoo.org/show_bug.cgi?id=79685#c14
+=dev-lang/perl-5.8.8-r6
+
 # Peter Volkov <pva@gentoo.org> (26 Jan 2009)
 # Security vulnerabilities (one of them is critical), bug 236517
 www-misc/zoneminder
@@ -314,7 +330,7 @@ app-misc/gallery-remote
 
 # Andreas Proschofsky <suka@gentoo.org> (18 Jan 2009)
 # Mask release candidates for OpenOffice.org 3.0.1
->=app-office/openoffice-3.0.1_rc2
+=app-office/openoffice-3.0.1_rc2
 
 # Diego E. Pettenò <flameeyes@gentoo.org> (16 Jan 2009)
 # Masked for test failures, since it's not needed with Ruby 1.8 (but
@@ -359,12 +375,6 @@ net-analyzer/rtg
 # baselayout-vserver is unmaintained and obsoleted by baselayout-2/openrc.
 # Please, upgrade to openrc. removal after openrc goes stable, bug #254519
 sys-apps/baselayout-vserver
-
-# Daniel Gryniewicz <dang@gentoo.org> (07 Jan 2009)
-# Mask gnome-base/gnome-vfs-monikers for removal
-# REASON:
-# Nothing uses it anymore (gnome-vfs used to) and it's depricated. Bug #253826
-gnome-base/gnome-vfs-monikers
 
 # Tomas Chvatal <scarabeus@gentoo.org> (07 Jan 2009)
 # Mask kde-base/pykde-3.5* for removal
@@ -670,9 +680,10 @@ net-wireless/bluez
 >=net-wireless/bluez-gnome-1.8
 >=app-mobilephone/obex-data-server-0.4
 >=gnome-extra/gnome-user-share-0.41
->=media-video/totem-2.24.3-r1
+=media-video/totem-2.24.4-r1
 =gnome-base/gvfs-1.0.3-r10
 =gnome-base/gvfs-1.0.3-r11
+=gnome-base/gvfs-1.0.3-r12
 >=net-wireless/libbtctl-0.11.0
 >=app-mobilephone/obexftp-0.23
 net-wireless/blueman
@@ -1390,10 +1401,6 @@ app-pda/libopensync-plugin-synce
 # Sorting out media-video/{spca5xx,gspca{,v1}} bug 159176
 media-video/spca5xx
 media-video/gspca
-
-# Steve Dibb <beandog@gentoo.org> (12 Mar 2007)
-# needs testing
->=media-video/transcode-1.1.0_alpha4
 
 # Stefan Cornelius <dercorny@gentoo.org> (7 Mar 2007)
 # Masking net-misc/xsupplicant due to security bug 154995
