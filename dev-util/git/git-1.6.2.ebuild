@@ -20,7 +20,7 @@ SRC_URI="mirror://kernel/software/scm/git/${MY_P}.tar.bz2
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~sparc-fbsd ~x86 ~x86-fbsd"
-IUSE="curl cgi doc emacs gtk iconv mozsha1 perl ppcsha1 tk threads webdav xinetd cvs subversion"
+IUSE="curl cgi doc emacs gtk iconv mozsha1 perl ppcsha1 quilt tk threads webdav xinetd cvs subversion"
 
 DEPEND="
 	!app-misc/git
@@ -36,6 +36,7 @@ DEPEND="
 	emacs?  ( virtual/emacs )"
 
 RDEPEND="${DEPEND}
+	quilt? ( dev-util/quilt )
 	perl? ( dev-perl/Error
 			dev-perl/Net-SMTP-SSL
 			dev-perl/Authen-SASL
@@ -293,7 +294,9 @@ pkg_postinst() {
 	fi
 	elog "These additional scripts need some dependencies:"
 	echo
-	showpkgdeps git-quiltimport "dev-util/quilt"
+	if ! use quilt; then
+		showpkgdeps git-quiltimport "dev-util/quilt"
+	fi
 	showpkgdeps git-instaweb \
 		"|| ( www-servers/lighttpd www-servers/apache )"
 	echo
