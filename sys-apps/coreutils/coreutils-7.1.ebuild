@@ -1,10 +1,10 @@
- # Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/coreutils/coreutils-7.1.ebuild,v 1.1 2009/02/22 00:12:50 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/coreutils/coreutils-7.1.ebuild,v 1.5 2009/03/13 05:20:59 vapier Exp $
 
 inherit eutils flag-o-matic toolchain-funcs
 
-PATCH_VER="1"
+PATCH_VER="3"
 DESCRIPTION="Standard GNU file utilities (chmod, cp, dd, dir, ls...), text utilities (sort, tr, head, wc..), and shell utilities (whoami, who,...)"
 HOMEPAGE="http://www.gnu.org/software/coreutils/"
 SRC_URI="ftp://alpha.gnu.org/gnu/coreutils/${P}.tar.gz
@@ -16,9 +16,10 @@ SRC_URI="ftp://alpha.gnu.org/gnu/coreutils/${P}.tar.gz
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
-IUSE="acl nls selinux static xattr vanilla"
+IUSE="acl caps nls selinux static vanilla xattr"
 
-RDEPEND="selinux? ( sys-libs/libselinux )
+RDEPEND="caps? ( sys-libs/libcap )
+	selinux? ( sys-libs/libselinux )
 	acl? ( sys-apps/acl )
 	xattr? ( sys-apps/attr )
 	nls? ( >=sys-devel/gettext-0.15 )
@@ -26,6 +27,9 @@ RDEPEND="selinux? ( sys-libs/libselinux )
 	!sys-apps/stat
 	!net-mail/base64
 	!sys-apps/mktemp
+	!app-forensics/tct
+	!net-fs/netatalk
+	!sci-chemistry/ccp4
 	>=sys-libs/ncurses-5.3-r5"
 DEPEND="${RDEPEND}
 	app-arch/lzma-utils"
@@ -59,6 +63,7 @@ src_compile() {
 		--enable-install-program="arch" \
 		--enable-no-install-program="groups,hostname,kill,su,uptime" \
 		--enable-largefile \
+		$(use_enable caps libcap) \
 		$(use_enable nls) \
 		$(use_enable acl) \
 		$(use_enable xattr) \
@@ -72,9 +77,9 @@ src_test() {
 	chmod -R go-w "${WORKDIR}"
 	chmod a+rx "${WORKDIR}"
 	addwrite /dev/full
-	export RUN_EXPENSIVE_TESTS="yes"
+	#export RUN_EXPENSIVE_TESTS="yes"
 	#export FETISH_GROUPS="portage wheel"
-	make -k check || die "make check failed"
+	emake -j1 -k check || die "make check failed"
 }
 
 src_install() {
