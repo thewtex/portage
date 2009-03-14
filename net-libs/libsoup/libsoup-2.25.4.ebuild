@@ -11,7 +11,7 @@ LICENSE="LGPL-2"
 SLOT="2.4"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~x86-fbsd"
 # Do NOT build with --disable-debug/--enable-debug=no - gnome2.eclass takes care of that
-IUSE="debug doc ssl"
+IUSE="debug doc gnome ssl"
 
 RDEPEND=">=dev-libs/glib-2.15.3
 		 >=dev-libs/libxml2-2
@@ -23,5 +23,5 @@ DEPEND="${RDEPEND}
 DOCS="AUTHORS ChangeLog NEWS README"
 
 pkg_setup() {
-	G2CONF="${G2CONF} $(use_enable ssl) --disable-static"
+	G2CONF="${G2CONF} $(use_with gnome) $(use_enable ssl) --disable-static"
 }
