@@ -1,5 +1,5 @@
-sys-libs/glibc x86? ( media-libs/libsdl media-libs/sdl-mixer media-libs/sdl-image media-libs/libpng virtual/opengl ) amd64? ( app-emulation/emul-linux-x86-soundlibs app-emulation/emul-linux-x86-sdl )
-sys-libs/glibc x86? ( media-libs/libsdl media-libs/sdl-mixer media-libs/sdl-image media-libs/libpng virtual/opengl ) amd64? ( app-emulation/emul-linux-x86-soundlibs app-emulation/emul-linux-x86-sdl )
+
+sys-libs/glibc x86? ( media-libs/libsdl[opengl] media-libs/sdl-mixer[mp3,vorbis] media-libs/sdl-image[jpeg,png] ) amd64? ( app-emulation/emul-linux-x86-soundlibs app-emulation/emul-linux-x86-sdl )
 0
 mirror://sourceforge/sauerbraten/sauerbraten_2008_06_17_ctf_edition_linux.tar.bz2
 strip
@@ -12,9 +12,9 @@ toolchain-funcs portability multilib base games eutils
 
 
 
-0
+2
 
-compile install postinst preinst setup unpack
+compile configure install postinst preinst prepare setup unpack
 
 
 

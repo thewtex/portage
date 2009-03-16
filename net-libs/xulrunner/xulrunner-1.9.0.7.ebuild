@@ -1,11 +1,11 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/xulrunner/xulrunner-1.9.0.7.ebuild,v 1.3 2009/03/08 15:03:10 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/xulrunner/xulrunner-1.9.0.7.ebuild,v 1.7 2009/03/12 16:13:17 armin76 Exp $
 
 WANT_AUTOCONF="2.1"
 
 inherit flag-o-matic toolchain-funcs eutils mozconfig-3 makeedit multilib java-pkg-opt-2 python autotools
-PATCH="${PN}-1.9.0.5-patches-0.1"
+PATCH="${P}-patches-0.1"
 
 DESCRIPTION="Mozilla runtime package that can be used to bootstrap XUL+XPCOM applications"
 HOMEPAGE="http://developer.mozilla.org/en/docs/XULRunner"
@@ -14,7 +14,7 @@ SRC_URI="mirror://gentoo/${P}.tar.bz2
 	mirror://gentoo/${PATCH}.tar.bz2
 	http://dev.gentoo.org/~armin76/dist/${PATCH}.tar.bz2"
 
-KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 -sparc x86"
+KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 -sparc x86"
 SLOT="1.9"
 LICENSE="|| ( MPL-1.1 GPL-2 LGPL-2.1 )"
 IUSE=""

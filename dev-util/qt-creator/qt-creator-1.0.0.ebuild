@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/qt-creator/qt-creator-1.0.0.ebuild,v 1.2 2009/03/07 15:45:15 hwoarang Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/qt-creator/qt-creator-1.0.0.ebuild,v 1.4 2009/03/12 17:02:51 hwoarang Exp $
 
 EAPI="2"
 
@@ -10,13 +10,13 @@ MY_PN="${PN/-/}"
 MY_P="${P}-src"
 
 DESCRIPTION="Lightweight IDE for C++ development centering around Qt"
-HOMEPAGE="http://trolltech.com/developer/qt-creator"
+HOMEPAGE="http://labs.qtsoftware.com/page/Projects/Tools/QtCreator"
 SRC_URI="http://download.qtsoftware.com/${MY_PN}/${MY_P}.zip"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="debug"
+IUSE="debug doc"
 
 DEPEND=">=x11-libs/qt-assistant-4.5.0_rc1
 	>=x11-libs/qt-core-4.5.0_rc1
@@ -50,6 +50,11 @@ src_configure() {
 
 src_install() {
 	emake INSTALL_ROOT="${D}/usr" install || die "emake install failed"
+	if use doc;then
+		insinto /usr/share/doc/qtcreator/
+		doins "${S}"/share/doc/qtcreator/qtcreator.qch || die "Installing documentation failed"
+		doins -r "${S}"/doc/html || die "Installing html documentation  failed"
+	fi
 	make_desktop_entry qtcreator QtCreator qtcreator_logo_48 \
 		'Qt;Development;IDE' || die "make_desktop_entry failed"
 }
