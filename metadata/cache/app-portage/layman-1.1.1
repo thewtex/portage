@@ -1,5 +1,5 @@
 test? ( dev-util/subversion ) >=dev-lang/python-2.5 virtual/python
->=dev-lang/python-2.5
+subversion? ( || ( >=dev-util/subversion-1.5.4[webdav-neon] >=dev-util/subversion-1.5.4[webdav-serf] ) ) >=dev-lang/python-2.5
 0
 mirror://sourceforge/layman/layman-1.1.1.tar.gz
 
@@ -8,13 +8,13 @@ GPL-2
 A python script for retrieving gentoo overlays.
 alpha amd64 ia64 ppc ppc64 sparc x86 ~x86-fbsd
 toolchain-funcs distutils portability python alternatives multilib eutils
-test
+subversion test
 
 
 
-0
+2
 
-compile install postinst postrm setup test unpack
+compile install postinst postrm prepare test unpack
 
 
 

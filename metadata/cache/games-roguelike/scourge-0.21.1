@@ -1,5 +1,5 @@
-virtual/glu virtual/opengl >=media-libs/freetype-2 media-libs/libsdl media-libs/sdl-net media-libs/sdl-mixer media-libs/sdl-ttf virtual/libintl sys-devel/gettext
-virtual/glu virtual/opengl >=media-libs/freetype-2 media-libs/libsdl media-libs/sdl-net media-libs/sdl-mixer media-libs/sdl-ttf virtual/libintl
+virtual/glu virtual/opengl media-libs/freetype:2 media-libs/libsdl[joystick] media-libs/sdl-net media-libs/sdl-mixer[vorbis] media-libs/sdl-ttf virtual/libintl sys-devel/gettext =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+virtual/glu virtual/opengl media-libs/freetype:2 media-libs/libsdl[joystick] media-libs/sdl-net media-libs/sdl-mixer[vorbis] media-libs/sdl-ttf virtual/libintl
 0
 mirror://sourceforge/scourge/scourge-0.21.1.src.tar.gz mirror://sourceforge/scourge/scourge-0.21.1.data.tar.gz
 
@@ -7,14 +7,14 @@ http://scourgeweb.org/
 GPL-2
 A graphical rogue-like adventure game
 ~amd64 ~ppc ~x86
-toolchain-funcs wxwidgets portability multilib base games eutils
+toolchain-funcs wxwidgets portability multilib base libtool games autotools eutils
 
 
 
 
-0
+2
 
-compile install postinst preinst setup unpack
+compile configure install postinst preinst prepare setup unpack
 
 
 

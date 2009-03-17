@@ -1,6 +1,37 @@
 # ChangeLog for net-dns/avahi
-# Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-dns/avahi/ChangeLog,v 1.155 2008/12/22 18:51:28 armin76 Exp $
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-dns/avahi/ChangeLog,v 1.162 2009/03/11 13:33:19 ranger Exp $
+
+  11 Mar 2009; Brent Baude <ranger@gentoo.org> avahi-0.6.24-r2.ebuild:
+  Marking avahi-0.6.24-r2 ppc64 for bug 260971
+
+  08 Mar 2009; Timothy Redaelli <drizzt@gentoo.org> avahi-0.6.24-r2.ebuild:
+  Readd ~x86-fbsd keyword wrt #184008
+
+  08 Mar 2009; Tobias Klausmann <klausman@gentoo.org>
+  avahi-0.6.24-r2.ebuild:
+  Stable on alpha, bug #260971
+
+  07 Mar 2009; Jeroen Roovers <jer@gentoo.org> avahi-0.6.24-r2.ebuild:
+  Stable for HPPA (bug #260971).
+
+  06 Mar 2009; Sven Wegener <swegener@gentoo.org> avahi-0.6.24-r2.ebuild:
+  Proper fix for libtool problem by loki_val.
+
+*avahi-0.6.24-r2 (06 Mar 2009)
+
+  06 Mar 2009; Sven Wegener <swegener@gentoo.org> avahi-0.6.24-r1.ebuild,
+  +avahi-0.6.24-r2.ebuild:
+  Split out gfbsd patches to separate revision to allow early security
+  stable marking.
+
+*avahi-0.6.24-r1 (05 Mar 2009)
+
+  05 Mar 2009; Sven Wegener <swegener@gentoo.org>
+  +files/avahi-0.6.24-CVE-2009-0758.patch,
+  +files/avahi-0.6.24-cmsg_space.patch, +files/avahi-0.6.24-libintl.patch,
+  +avahi-0.6.24-r1.ebuild:
+  Add gfbsd patches, bug #184008. Security bump, bug #260971.
 
   22 Dec 2008; Raúl Porcel <armin76@gentoo.org> avahi-0.6.24.ebuild:
   ia64/sparc stable wrt #250913

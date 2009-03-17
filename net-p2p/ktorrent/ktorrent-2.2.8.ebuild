@@ -1,6 +1,8 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/ktorrent/ktorrent-2.2.8.ebuild,v 1.5 2009/01/06 02:48:08 ranger Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/ktorrent/ktorrent-2.2.8.ebuild,v 1.7 2009/03/07 18:56:50 betelgeuse Exp $
+
+EAPI="2"
 
 inherit kde
 
@@ -17,7 +19,7 @@ IUSE="avahi kdeenablefinal"
 
 DEPEND="dev-libs/gmp
 	>=dev-libs/geoip-1.4.0-r1
-	avahi? ( >=net-dns/avahi-0.6.16-r1 )"
+	avahi? ( >=net-dns/avahi-0.6.16-r1[qt3] )"
 RDEPEND="${DEPEND}
 	|| ( =kde-base/kdebase-kioslaves-3.5* =kde-base/kdebase-3.5* )"
 
@@ -32,19 +34,6 @@ for X in ${LANGS} ; do
 	IUSE="${IUSE} linguas_${X}"
 done
 
-pkg_setup() {
-	if use avahi && ! built_with_use net-dns/avahi qt3 ; then
-		echo
-		eerror "In order to use ktorrents zeroconf plugin you need to have"
-		eerror "net-dns/avahi emerged with \"qt3\" in your USE flag. Please add"
-		eerror "that flag, re-emerge avahi, and then emerge ktorrent again."
-		echo
-		die "net-dns/avahi not built with \"qt3\" support."
-	fi
-
-	kde_pkg_setup
-}
-
 src_unpack() {
 	kde_src_unpack
 
@@ -58,9 +47,12 @@ src_unpack() {
 	cd "${S}"
 	# Fix automagic dependencies on avahi
 	epatch "${FILESDIR}/${PN}-2.2.5-avahi-check.patch"
+	epatch "${FILESDIR}/${P}-lograce.patch"
 
 	rm -f "${S}/configure"
 }
+
+src_configure() { :; }
 
 src_compile(){
 	local myconf="${myconf}

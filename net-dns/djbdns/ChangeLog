@@ -1,6 +1,40 @@
 # ChangeLog for net-dns/djbdns
-# Copyright 2002-2008 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-dns/djbdns/ChangeLog,v 1.101 2008/11/17 21:17:08 flameeyes Exp $
+# Copyright 2002-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-dns/djbdns/ChangeLog,v 1.109 2009/03/15 15:05:06 maekke Exp $
+
+  15 Mar 2009; Markus Meier <maekke@gentoo.org> djbdns-1.05-r22.ebuild:
+  amd64/x86 stable, bug #260014
+
+  12 Mar 2009; Jeroen Roovers <jer@gentoo.org> djbdns-1.05-r22.ebuild:
+  Stable for HPPA (bug #260014). Fixed newbin djbdns-setup (bug #260014
+  comment #8).
+
+  11 Mar 2009; Tobias Klausmann <klausman@gentoo.org>
+  djbdns-1.05-r22.ebuild:
+  Stable on alpha, bug #260014
+
+  11 Mar 2009; Brent Baude <ranger@gentoo.org> djbdns-1.05-r22.ebuild:
+  Marking djbdns-1.05-r22 ppc64 for bug 260014
+
+  08 Mar 2009; René Nussbaumer <killerfox@gentoo.org>
+  djbdns-1.05-r22.ebuild:
+  Fix patch order
+
+  08 Mar 2009; Tobias Klausmann <klausman@gentoo.org>
+  djbdns-1.05-r22.ebuild:
+  Broken patch, going back to ~alpha.
+
+  08 Mar 2009; Tobias Klausmann <klausman@gentoo.org>
+  djbdns-1.05-r22.ebuild:
+  Stable on alpha, bug #260014
+
+*djbdns-1.05-r22 (01 Mar 2009)
+
+  01 Mar 2009; René Nussbaumer <killerfox@gentoo.org>
+  +files/CVE2008-4392_0001-dnscache-merge-similar-outgoing-queries.patch,
+  +files/CVE2008-4392_0002-dnscache-cache-soa-records.patch,
+  +djbdns-1.05-r22.ebuild:
+  Fix CVE2008-4392
 
   17 Nov 2008; Diego E. Pettenò <flameeyes@gentoo.org>
   files/headtail.patch:

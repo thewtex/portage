@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/deluge/deluge-9999.ebuild,v 1.16 2009/02/12 15:46:21 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/deluge/deluge-9999.ebuild,v 1.18 2009/03/07 15:08:33 betelgeuse Exp $
 
 inherit eutils distutils subversion flag-o-matic
 
@@ -16,17 +16,17 @@ SLOT="0"
 KEYWORDS=""
 IUSE="gtk"
 
-DEPEND=">=dev-lang/python-2.4
-	dev-libs/boost
+DEPEND=">=dev-lang/python-2.5
+	>=dev-libs/boost-1.34
 	dev-python/setuptools"
 RDEPEND="${DEPEND}
 	dev-python/pyxdg
-	dev-python/pygobject
 	dev-python/twisted
 	dev-python/twisted-web
 	dev-python/simplejson
 	dev-python/pyopenssl
 	gtk? (
+		dev-python/pygobject
 		>=dev-python/pygtk-2
 		dev-python/pyxdg
 		dev-python/dbus-python
@@ -34,11 +34,6 @@ RDEPEND="${DEPEND}
 	)"
 
 pkg_setup() {
-	if ! built_with_use --missing true "dev-libs/boost" threads; then
-		eerror "dev-libs/boost has to be built with threads USE-flag."
-		die "Missing threads USE-flag for dev-libs/boost"
-	fi
-
 	filter-ldflags -Wl,--as-needed
 }
 

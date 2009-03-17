@@ -1,6 +1,68 @@
 # ChangeLog for app-shells/bash-completion
 # Copyright 2002-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-shells/bash-completion/ChangeLog,v 1.150 2009/02/11 19:07:44 darkside Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-shells/bash-completion/ChangeLog,v 1.162 2009/03/15 15:05:47 ranger Exp $
+
+  15 Mar 2009; Brent Baude <ranger@gentoo.org>
+  bash-completion-20081219-r1.ebuild:
+  stable ppc64, bug 259724
+
+  14 Mar 2009; Raúl Porcel <armin76@gentoo.org>
+  bash-completion-20081219-r1.ebuild:
+  arm/ia64/s390 stable wrt #259724
+
+  09 Mar 2009; Tiago Cunha <tcunha@gentoo.org>
+  bash-completion-20081219-r1.ebuild:
+  stable sparc, bug 259724
+
+  08 Mar 2009; Tobias Klausmann <klausman@gentoo.org>
+  bash-completion-20081219-r1.ebuild:
+  Stable on alpha, bug #259724
+
+  07 Mar 2009; Christian Faulhammer <fauli@gentoo.org>
+  bash-completion-20081219-r1.ebuild:
+  x86 stable, bug 259724
+
+  07 Mar 2009; Jeremy Olexa <darkside@gentoo.org>
+  bash-completion-20081219-r1.ebuild:
+  amd64 stable, bug 259724
+
+  06 Mar 2009; Jeroen Roovers <jer@gentoo.org>
+  bash-completion-20081219-r1.ebuild:
+  Stable for HPPA (bug #259724).
+
+  27 Feb 2009; Jeremy Olexa <darkside@gentoo.org> metadata.xml:
+  I will monitor this through the shell-tools alias
+
+*bash-completion-20081219-r1 (21 Feb 2009)
+
+  21 Feb 2009; Jeremy Olexa <darkside@gentoo.org>
+  -bash-completion-20081219.ebuild, +bash-completion-20081219-r1.ebuild:
+  remove hg completion. dev-util/mercurial provides it & upstream b-c dropped
+  it as well in future versions. bug 259818
+
+  20 Feb 2009; Jeremy Olexa <darkside@gentoo.org>
+  -bash-completion-20081218-r1.ebuild, +bash-completion-20081219.ebuild:
+  New snapshot from upstream repo, only change is subversion module is now
+  split up. Fixes bug 171909
+
+*bash-completion-20081219 (20 Feb 2009)
+
+  20 Feb 2009; Jeremy Olexa <darkside@gentoo.org>
+  -bash-completion-20081218-r1.ebuild, +bash-completion-20081219.ebuild:
+  New snapshot from upstream, only change is subversion module is now split
+  up. Fixes bug 171909
+
+  20 Feb 2009; Jeremy Olexa <darkside@gentoo.org>
+  bash-completion-20081218-r1.ebuild:
+  don't provide svk completion. svk upstream provides it and we assume that
+  copy is as good or better. bug #146726
+
+*bash-completion-20081218-r1 (20 Feb 2009)
+
+  20 Feb 2009; Jeremy Olexa <darkside@gentoo.org>
+  -bash-completion-20081218.ebuild, +bash-completion-20081218-r1.ebuild:
+  Fix bug in bash completion for lzma man pages. Fix by Jan Hruban in bug
+  254814. Convert to EAPI-2, add die() messages as needed
 
   11 Feb 2009; Jeremy Olexa <darkside@gentoo.org> metadata.xml:
   add myself to metadata

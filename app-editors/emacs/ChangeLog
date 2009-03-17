@@ -1,6 +1,31 @@
 # ChangeLog for app-editors/emacs
 # Copyright 2002-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/emacs/ChangeLog,v 1.301 2009/02/06 07:28:08 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-editors/emacs/ChangeLog,v 1.307 2009/03/12 10:19:38 ulm Exp $
+
+*emacs-21.4-r18 (12 Mar 2009)
+
+  12 Mar 2009; Ulrich Mueller <ulm@gentoo.org> emacs-21.4-r17.ebuild,
+  +emacs-21.4-r18.ebuild, emacs-22.3-r1.ebuild, emacs-22.3-r2.ebuild:
+  Fix dependencies: package x11-misc/emacs-desktop was moved to
+  app-emacs/emacs-common-gentoo; xbitmaps is also needed at run time for
+  x-bitmap-file-path, whereas emacs-common-gentoo, aspell/ispell and sendmail
+  are not needed at build time. No longer install subdirs.el since it is now
+  part of emacs-common-gentoo. New EAPI 2 ebuild for emacs-21.4 since it needs
+  to support USE dependencies.
+
+*emacs-22.3-r2 (28 Feb 2009)
+
+  28 Feb 2009; Ulrich Mueller <ulm@gentoo.org> +emacs-22.3-r2.ebuild:
+  IUSE default for xpm, SLOT dependency for gtk+; change EAPI to 2.
+
+  22 Feb 2009; Ulrich Mueller <ulm@gentoo.org> -emacs-18.59-r5.ebuild:
+  Remove old.
+
+  22 Feb 2009; Raúl Porcel <armin76@gentoo.org> emacs-18.59-r6.ebuild:
+  x86 stable wrt #259916
+
+  17 Feb 2009; Ulrich Mueller <ulm@gentoo.org> emacs-22.3-r1.ebuild:
+  Prefer aspell over ispell, following upstream.
 
   06 Feb 2009; Ulrich Mueller <ulm@gentoo.org> -emacs-22.3.ebuild:
   Remove old.

@@ -1,6 +1,6 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-mobilephone/wammu/wammu-0.29.ebuild,v 1.1 2008/11/02 12:53:27 mrness Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-mobilephone/wammu/wammu-0.29.ebuild,v 1.3 2009/03/08 16:17:02 maekke Exp $
 
 inherit distutils
 
@@ -10,7 +10,7 @@ SRC_URI="http://dl.cihar.com/wammu/v0/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE="bluetooth"
 
 RDEPEND=">=dev-python/wxpython-2.8
@@ -57,6 +57,6 @@ src_compile() {
 }
 
 src_install() {
-	DOCS="AUTHORS FAQ NEWS"
+	DOCS="AUTHORS FAQ"
 	SKIPWXCHECK=yes distutils_src_install
 }

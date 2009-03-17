@@ -1,6 +1,48 @@
 # ChangeLog for media-video/transcode
 # Copyright 2002-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/transcode/ChangeLog,v 1.248 2009/01/19 09:14:20 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/transcode/ChangeLog,v 1.255 2009/03/15 15:40:44 aballier Exp $
+
+*transcode-1.1.1-r4 (15 Mar 2009)
+
+  15 Mar 2009; Alexis Ballier <aballier@gentoo.org>
+  +transcode-1.1.1-r4.ebuild:
+  depend on faac with use aac by gentoobugsie@gmail.com, bug #262565 and
+  give --enable-experimental to configure so that the faac module and a
+  couple of others are actually built.
+
+  10 Mar 2009; Steve Dibb <beandog@gentoo.org> transcode-1.0.7.ebuild,
+  transcode-1.1.1-r3.ebuild:
+  Move dvdread use flag to simpler dvd one
+
+  09 Mar 2009; Steve Dibb <beandog@gentoo.org> -transcode-1.0.7_rc1.ebuild,
+  -transcode-1.1.1.ebuild, -transcode-1.1.1-r1.ebuild,
+  -transcode-1.1.1-r2.ebuild, transcode-1.1.1-r3.ebuild:
+  Cleanup ebuild; remove old
+
+*transcode-1.1.1-r3 (08 Mar 2009)
+
+  08 Mar 2009; Patrick Lauer <patrick@gentoo.org>
+  +transcode-1.1.1-r3.ebuild:
+  Readding xvid useflag and deps. Closes #261608. Again.
+
+*transcode-1.1.1-r2 (08 Mar 2009)
+
+  08 Mar 2009; Patrick Lauer <patrick@gentoo.org> transcode-1.1.1-r1.ebuild,
+  +transcode-1.1.1-r2.ebuild:
+  Small cleanup for #261608
+
+*transcode-1.1.1-r1 (07 Mar 2009)
+
+  07 Mar 2009; Patrick Lauer <patrick@gentoo.org>
+  +transcode-1.1.1-r1.ebuild:
+  eapi2ifying 1.1.1. No functional changes.
+
+*transcode-1.1.1 (23 Feb 2009)
+
+  23 Feb 2009; Alexis Ballier <aballier@gentoo.org>
+  -transcode-1.1.0_rc5.ebuild, -transcode-1.1.0.ebuild,
+  +transcode-1.1.1.ebuild:
+  version bump, punt old
 
 *transcode-1.1.0 (19 Jan 2009)
 

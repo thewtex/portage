@@ -1,6 +1,18 @@
 # ChangeLog for dev-lang/perl
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/perl/ChangeLog,v 1.275 2009/01/28 09:54:09 tove Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/perl/ChangeLog,v 1.277 2009/03/11 21:55:45 flameeyes Exp $
+
+  11 Mar 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  perl-5.8.8-r5.ebuild:
+  Backport to stable, too.
+
+  11 Mar 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  perl-5.8.8-r6.ebuild:
+  Fix logic for applying the lib64 patch, use get_libdir to decide (should
+  fix 32-bit userland profiles).
+
+  13 Mar 2009; Daniel Robbins <drobbins@funtoo.org> perl-5.10.0.ebuild:
+  bumping perl-5.10 to stable for stable funtoo
 
 *perl-5.8.8-r6 (28 Jan 2009)
 
@@ -25,7 +37,7 @@
   perl-5.8.8-r5.ebuild:
   ppc stable, bug #219203
 
-  15 May 2008; Raúl Porcel <armin76@gentoo.org> perl-5.8.8-r5.ebuild:
+  15 May 2008; RaÃºl Porcel <armin76@gentoo.org> perl-5.8.8-r5.ebuild:
   alpha/ia64 stable wrt security #219203
 
   14 May 2008; Markus Meier <maekke@gentoo.org> perl-5.8.8-r5.ebuild:
@@ -79,7 +91,7 @@
   13 Nov 2007; Markus Rothe <corsair@gentoo.org> perl-5.8.8-r3.ebuild:
   Stable on ppc64; bug #198196
 
-  13 Nov 2007; Raúl Porcel <armin76@gentoo.org> perl-5.8.8-r3.ebuild:
+  13 Nov 2007; RaÃºl Porcel <armin76@gentoo.org> perl-5.8.8-r3.ebuild:
   alpha/ia64 stable wrt security #198196
 
   13 Nov 2007; Markus Meier <maekke@gentoo.org> perl-5.8.8-r3.ebuild:
@@ -111,7 +123,7 @@
   08 Aug 2007; Mike Frysinger <vapier@gentoo.org> perl-5.8.8-r2.ebuild:
   Apply gcc-4.2 patch to everyone.
 
-  06 Aug 2007; Harald van Dĳk <truedfx@gentoo.org>
+  06 Aug 2007; Harald van DÄ³k <truedfx@gentoo.org>
   +files/perl-5.8.8-makedepend-syntax.patch, perl-5.8.8-r2.ebuild:
   Fix syntax error in makedepend.SH
 
@@ -170,7 +182,7 @@
   17 Oct 2006; Roy Marples <uberlord@gentoo.org> perl-5.8.8-r2.ebuild:
   Added ~sparc-fbsd keyword.
 
-  07 Oct 2006; Diego Pettenò <flameeyes@gentoo.org> perl-5.8.8-r2.ebuild:
+  07 Oct 2006; Diego PettenÃ² <flameeyes@gentoo.org> perl-5.8.8-r2.ebuild:
   Add a dependency on freebsd-mk-defs on FreeBSD.
 
   18 Aug 2006; Michael Cummings <mcummings@gentoo.org>
@@ -196,7 +208,7 @@
   perl-5.8.8-r2.ebuild:
   Removing perl-core/ExtUtils-MakeMaker
 
-  18 Jun 2006; Bryan Østergaard <kloeri@gentoo.org> perl-5.8.8-r2.ebuild:
+  18 Jun 2006; Bryan Ãstergaard <kloeri@gentoo.org> perl-5.8.8-r2.ebuild:
   Stable on ia64.
 
   14 Jun 2006; Michael Cummings <mcummings@gentoo.org> -files/perl-cleaner,
@@ -223,7 +235,7 @@
   30 May 2006; <mcummings@gentoo.org> perl-5.8.8-r2.ebuild:
   Bug 134859, fixed USE=build removals on lib64
 
-  27 May 2006; Bryan Østergaard <kloeri@gentoo.org> perl-5.8.8-r2.ebuild:
+  27 May 2006; Bryan Ãstergaard <kloeri@gentoo.org> perl-5.8.8-r2.ebuild:
   Stable on alpha.
 
   27 May 2006; <mcummings@gentoo.org> perl-5.8.8-r2.ebuild:
@@ -236,7 +248,7 @@
   26 May 2006; Chris Gianelloni <wolf31o2@gentoo.org> perl-5.8.8-r2.ebuild:
   Stable on amd64 and x86 wrt bug #133989.
 
-  26 May 2006; Diego Pettenò <flameeyes@gentoo.org> perl-5.8.8-r2.ebuild:
+  26 May 2006; Diego PettenÃ² <flameeyes@gentoo.org> perl-5.8.8-r2.ebuild:
   Re-add ~x86-fbsd keyword.
 
   26 May 2006; Markus Rothe <corsair@gentoo.org> perl-5.8.8-r2.ebuild:
@@ -268,11 +280,11 @@
   23 May 2006; Markus Rothe <corsair@gentoo.org> perl-5.8.8-r1.ebuild:
   Stable on ppc64; bug #133989
 
-  20 Apr 2006; Diego Pettenò <flameeyes@gentoo.org> perl-5.8.8-r1.ebuild:
+  20 Apr 2006; Diego PettenÃ² <flameeyes@gentoo.org> perl-5.8.8-r1.ebuild:
   Use realpath when available, rather than readlink -f, to support
   Gentoo/FreeBSD.
 
-  31 Mar 2006; Diego Pettenò <flameeyes@gentoo.org> perl-5.8.8-r1.ebuild:
+  31 Mar 2006; Diego PettenÃ² <flameeyes@gentoo.org> perl-5.8.8-r1.ebuild:
   Add ~x86-fbsd keyword.
 
 *perl-5.8.8-r1 (29 Mar 2006)
@@ -420,13 +432,13 @@
   Backported some get_libdir functionality from 5.8.7 to 5.8.6-r6 to resolve
   bug #112243. This is mainly a multi-lib support fix it seems.
 
-  02 Oct 2005; Bryan Østergaard <kloeri@gentoo.org> perl-5.8.7-r1.ebuild:
+  02 Oct 2005; Bryan Ãstergaard <kloeri@gentoo.org> perl-5.8.7-r1.ebuild:
   Stable on ia64, bug 106678.
 
   29 Sep 2005; Aaron Walker <ka0ttic@gentoo.org> perl-5.8.6-r6.ebuild:
   Stable on mips for bug #106678.
 
-  23 Sep 2005; Bryan Østergaard <kloeri@gentoo.org> perl-5.8.7-r1.ebuild:
+  23 Sep 2005; Bryan Ãstergaard <kloeri@gentoo.org> perl-5.8.7-r1.ebuild:
   Stable on alpha, bug 106678.
 
   21 Sep 2005; Seemant Kulleen <seemant@gentoo.org> perl-5.8.6-r6.ebuild:
@@ -516,7 +528,7 @@
   03 Jul 2005; Michael Hanselmann <hansmi@gentoo.org> perl-5.8.6-r5.ebuild:
   Stable on ppc.
 
-  02 Jul 2005; Bryan Østergaard <kloeri@gentoo.org> perl-5.8.6-r5.ebuild:
+  02 Jul 2005; Bryan Ãstergaard <kloeri@gentoo.org> perl-5.8.6-r5.ebuild:
   Stable on alpha.
 
   02 Jul 2005; Rene Nussbaumer <killerfox@gentoo.org> perl-5.8.6-r5.ebuild:
@@ -719,7 +731,7 @@
   06 Dec 2004; Gustavo Zacarias <gustavoz@gentoo.org> perl-5.8.5-r2.ebuild:
   Stable on sparc wrt #66360
 
-  05 Dec 2004; Bryan Østergaard <kloeri@gentoo.org> perl-5.8.5-r2.ebuild:
+  05 Dec 2004; Bryan Ãstergaard <kloeri@gentoo.org> perl-5.8.5-r2.ebuild:
   Stable on alpha, bug 66360.
 
   05 Dec 2004; Markus Rothe <corsair@gentoo.org> perl-5.8.5-r2.ebuild:
@@ -814,7 +826,7 @@
   18 Aug 2004; Aron Griffis <agriffis@gentoo.org> perl-5.8.4-r1.ebuild:
   stable on alpha
 
-  13 Aug 2004; Bryan Østergaard <kloeri@gentoo.org> perl-5.8.4.ebuild:
+  13 Aug 2004; Bryan Ãstergaard <kloeri@gentoo.org> perl-5.8.4.ebuild:
   Stable on alpha.
 
   07 Aug 2004; Robert Coie <rac@gentoo.org> perl-5.8.2-r1.ebuild,

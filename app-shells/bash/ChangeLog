@@ -1,6 +1,92 @@
 # ChangeLog for app-shells/bash
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-shells/bash/ChangeLog,v 1.194 2009/02/09 01:07:59 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-shells/bash/ChangeLog,v 1.213 2009/03/14 18:12:58 vapier Exp $
+
+*bash-4.0_p10-r1 (14 Mar 2009)
+
+  14 Mar 2009; Mike Frysinger <vapier@gentoo.org>
+  +files/bash-4.0-amp-case-segv.patch, +files/bash-4.0-bar-and-piping.patch,
+  +bash-4.0_p10-r1.ebuild:
+  Add some more patches from upstream bash.
+
+  10 Mar 2009; Doug Goldstein <cardoe@gentoo.org> bash-4.0_p10.ebuild:
+  fix licensing issue. bug #262015
+
+*bash-4.0_p10 (10 Mar 2009)
+
+  10 Mar 2009; Mike Frysinger <vapier@gentoo.org> +bash-4.0_p10.ebuild:
+  Move to official bash patches and into ~arch #261905 by Lars
+  (Polynomial-C).
+
+  03 Mar 2009; Mike Frysinger <vapier@gentoo.org>
+  +files/bash-4.0-comsub-comments.patch, bash-4.0.ebuild:
+  Add fix from upstream for comments in subshelled case statements.
+
+  03 Mar 2009; Mike Frysinger <vapier@gentoo.org>
+  +files/bash-4.0-read-timeout-reset.patch, bash-4.0.ebuild:
+  Add fix from upstream for read timeouts.
+
+  27 Feb 2009; Mike Frysinger <vapier@gentoo.org>
+  +files/bash-4.0-comsub-herestring.patch, bash-4.0.ebuild:
+  Fix from upstream for regression with subshells/herestrings found via
+  revdep-rebuild script.
+
+  26 Feb 2009; Mike Frysinger <vapier@gentoo.org>
+  +files/bash-4.0-associative-array-subscripts.patch, bash-4.0.ebuild:
+  Add upstream patch for associative array issues.
+
+  26 Feb 2009; Mike Frysinger <vapier@gentoo.org>
+  files/bash-4.0-declare-identifier.patch:
+  Newer patch from upstream.
+
+  25 Feb 2009; Mike Frysinger <vapier@gentoo.org>
+  +files/bash-4.0-pipeline-reserved-word.patch, bash-4.0.ebuild:
+  Fix from upstream for new |& construct.
+
+  25 Feb 2009; Mike Frysinger <vapier@gentoo.org>
+  +files/bash-4.0-reset-parser-current-token.patch, bash-4.0.ebuild:
+  Add a fix for quotes from upstream.
+
+  25 Feb 2009; Mike Frysinger <vapier@gentoo.org> bash-3.2_p39.ebuild,
+  bash-3.2_p48.ebuild, bash-3.2_p48-r1.ebuild, bash-4.0.ebuild:
+  Stop auto-removing bash_logout in pkg_preinst() as this confuses newer
+  versions of portage.
+
+  25 Feb 2009; Mike Frysinger <vapier@gentoo.org>
+  +files/bash-4.0-declare-identifier.patch, bash-4.0.ebuild:
+  Add fix from upstream for infinite loop with arrays.
+
+  24 Feb 2009; Mike Frysinger <vapier@gentoo.org>
+  +files/bash-4.0-pcomplete-save-parser-state.patch, bash-4.0.ebuild:
+  Add another fix from upstream.
+
+  24 Feb 2009; Mike Frysinger <vapier@gentoo.org> bash-4.0.ebuild:
+  Drop BSD patch as it causes bad behavior on Linux #259860.
+
+  24 Feb 2009; Mike Frysinger <vapier@gentoo.org>
+  +files/bash-4.0-exit-checkjobs.patch,
+  +files/bash-4.0-negative-return.patch,
+  +files/bash-4.0-save-current-token.patch, bash-4.0.ebuild:
+  Add fixes from upstream.
+
+  23 Feb 2009; Mike Frysinger <vapier@gentoo.org>
+  +files/bash-4.0-comsub-backslash-metacharacters.patch, bash-4.0.ebuild:
+  Add fix from upstream for escaped semicolons in $(...) subshells.
+
+  23 Feb 2009; Mike Frysinger <vapier@gentoo.org>
+  -files/bash-4.0-protos.patch, bash-4.0.ebuild:
+  The prototypes have been fixed in a different way apparently, so drop this
+  patch.
+
+*bash-4.0 (21 Feb 2009)
+
+  21 Feb 2009; Mike Frysinger <vapier@gentoo.org>
+  +files/bash-4.0-ldflags-for-build.patch, +files/bash-4.0-protos.patch,
+  +bash-4.0.ebuild:
+  Version bump #254994 by Peter Alfredsen.
+
+  21 Feb 2009; Mike Frysinger <vapier@gentoo.org> bash-3.2_p48-r1.ebuild:
+  Fix net redirection flags -- it's use_enable, not use_with.
 
 *bash-3.2_p48-r1 (09 Feb 2009)
 

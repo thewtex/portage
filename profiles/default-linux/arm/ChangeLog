@@ -1,6 +1,31 @@
 # ChangeLog for Gentoo/x86 profile directory
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/default-linux/arm/ChangeLog,v 1.22 2009/02/06 16:30:54 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/default-linux/arm/ChangeLog,v 1.30 2009/03/14 20:05:55 armin76 Exp $
+
+  14 Mar 2009; Raúl Porcel <armin76@gentoo.org> use.mask:
+  Use.mask xfs, as xfs doesn't work too well on arm
+
+  14 Mar 2009; Raúl Porcel <armin76@gentoo.org> use.mask:
+  Use.mask cupsddk
+
+  13 Mar 2009; Raúl Porcel <armin76@gentoo.org> use.mask:
+  Masking a lot of video_cards which i doubt are available on ARM
+
+  13 Mar 2009; Raúl Porcel <armin76@gentoo.org> +2004.3/deprecated,
+  +2007.0/deprecated:
+  Deprecate old profiles
+
+  12 Mar 2009; Raúl Porcel <armin76@gentoo.org> use.mask:
+  Add video_cards_radeonhd and video_cards_ast to use.mask
+
+  11 Mar 2009; Raúl Porcel <armin76@gentoo.org> use.mask:
+  Add lyx to use.mask
+
+  10 Mar 2009; Raúl Porcel <armin76@gentoo.org> use.mask:
+  Add xindy to use.mask
+
+  20 Feb 2009; Raúl Porcel <armin76@gentoo.org> use.mask:
+  Use.mask scanner, no hardware to test
 
   06 Feb 2009; Raúl Porcel <armin76@gentoo.org> package.use.mask, use.mask:
   Use.mask xemacs, not keyworded

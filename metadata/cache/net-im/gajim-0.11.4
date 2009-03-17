@@ -1,5 +1,5 @@
-|| ( ( <dev-lang/python-2.5 dev-python/pysqlite ) >=dev-lang/python-2.5 ) dev-python/pygtk sys-devel/gettext dev-util/intltool dev-util/pkgconfig
-gnome? ( dev-python/gnome-python-extras dev-python/gnome-python-desktop ) dbus? ( dev-python/dbus-python dev-libs/dbus-glib ) libnotify? ( x11-libs/libnotify ) xhtml? ( dev-python/docutils ) srv? ( net-dns/bind-tools ) idle? ( x11-libs/libXScrnSaver ) spell? ( app-text/gtkspell ) avahi? ( net-dns/avahi ) dev-python/pyopenssl
+|| ( ( <dev-lang/python-2.5 dev-python/pysqlite ) >=dev-lang/python-2.5[sqlite] ) dev-python/pygtk sys-devel/gettext dev-util/intltool dev-util/pkgconfig
+gnome? ( dev-python/gnome-python-extras dev-python/gnome-python-desktop ) dbus? ( dev-python/dbus-python dev-libs/dbus-glib ) libnotify? ( x11-libs/libnotify ) xhtml? ( dev-python/docutils ) srv? ( net-dns/bind-tools ) idle? ( x11-libs/libXScrnSaver ) spell? ( app-text/gtkspell ) avahi? ( net-dns/avahi[dbus,gtk,python] ) dev-python/pyopenssl
 0
 http://www.gajim.org/downloads/gajim-0.11.4.tar.gz
 
@@ -12,9 +12,9 @@ avahi dbus gnome idle libnotify nls spell srv trayicon X xhtml
 
 
 
-0
+2
 
-compile install postinst postrm setup unpack
+configure install postinst postrm setup unpack
 
 
 

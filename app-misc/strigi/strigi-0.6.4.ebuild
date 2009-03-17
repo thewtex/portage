@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/strigi/strigi-0.6.4.ebuild,v 1.3 2009/02/10 15:20:37 carlo Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/strigi/strigi-0.6.4.ebuild,v 1.6 2009/03/13 02:19:30 jer Exp $
 
 EAPI="2"
 
@@ -12,7 +12,7 @@ SRC_URI="http://www.vandenoever.info/software/strigi/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~x86"
 IUSE="+clucene +dbus debug exif fam hyperestraier inotify log +qt4 test"
 
 COMMONDEPEND="
@@ -27,7 +27,7 @@ COMMONDEPEND="
 	exif? ( >=media-gfx/exiv2-0.17 )
 	fam? ( virtual/fam )
 	hyperestraier? ( app-text/hyperestraier )
-	log? ( >=dev-libs/log4cxx-0.9.7 )
+	log? ( >=dev-libs/log4cxx-0.10.0 )
 	qt4? (
 		|| ( ( x11-libs/qt-core:4
 			x11-libs/qt-gui:4
@@ -44,7 +44,7 @@ DEPEND="${COMMONDEPEND}
 	test? ( dev-util/cppunit )"
 RDEPEND="${COMMONDEPEND}"
 
-src_compile() {
+src_configure() {
 	# Strigi needs either expat or libxml2.
 	# However libxml2 seems to be required in both cases, linking to 2 xml parsers
 	# is just silly, so we forcefully disable linking to expat.
@@ -68,7 +68,7 @@ src_compile() {
 		mycmakeargs="${mycmakeargs} -DENABLE_CLUCENE=ON"
 	fi
 
-	cmake-utils_src_compile
+	cmake-utils_src_configure
 }
 
 src_test() {

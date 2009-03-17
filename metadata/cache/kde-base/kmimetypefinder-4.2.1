@@ -1,0 +1,22 @@
+>=dev-util/cmake-2.6.2-r1 x11-libs/qt-core:4[qt3support,ssl] x11-libs/qt-gui:4[accessibility,dbus] x11-libs/qt-qt3support:4[accessibility] x11-libs/qt-script:4 x11-libs/qt-sql:4[qt3support] x11-libs/qt-svg:4 x11-libs/qt-test:4 >=x11-base/xorg-server-1.5.2 x11-libs/libXext x11-libs/libXt x11-libs/libXxf86vm >=dev-util/cmake-2.6.2 dev-util/pkgconfig >=sys-apps/sandbox-1.3.2 kdeprefix? ( >=kde-base/kdelibs-4.2.1:4.2[kdeprefix] ) !kdeprefix? ( >=kde-base/kdelibs-4.2.1[-kdeprefix] ) >=kde-base/qimageblitz-0.0.4
+x11-libs/qt-core:4[qt3support,ssl] x11-libs/qt-gui:4[accessibility,dbus] x11-libs/qt-qt3support:4[accessibility] x11-libs/qt-script:4 x11-libs/qt-sql:4[qt3support] x11-libs/qt-svg:4 x11-libs/qt-test:4 >=x11-base/xorg-server-1.5.2 x11-libs/libXext x11-libs/libXt x11-libs/libXxf86vm !kdeprefix? ( !kde-base/kmimetypefinder:kde-4[-kdeprefix] ) !kdeprefix? ( !kde-base/kmimetypefinder:4.1[-kdeprefix] ) !kdeprefix? ( !kde-base/kmimetypefinder:4.3[-kdeprefix] ) kdeprefix? ( >=kde-base/kdelibs-4.2.1:4.2[kdeprefix] ) !kdeprefix? ( >=kde-base/kdelibs-4.2.1[-kdeprefix] ) kdeprefix? ( >=kde-base/kdebase-data-4.2.1:4.2[kdeprefix] ) !kdeprefix? ( >=kde-base/kdebase-data-4.2.1[-kdeprefix] ) >=kde-base/qimageblitz-0.0.4
+4.2
+mirror://kde/stable/4.2.1/src/kdebase-runtime-4.2.1.tar.bz2
+
+http://www.kde.org/
+GPL-2
+KDE application to report the mimetype for a given file
+~amd64 ~ppc ~ppc64 ~x86
+toolchain-funcs kde4-base portability flag-o-matic versionator multilib kde4-functions base kde4-meta cmake-utils eutils
+debug kdeprefix
+
+
+
+2
+
+compile configure install postinst postrm prepare setup test unpack
+
+
+
+
+

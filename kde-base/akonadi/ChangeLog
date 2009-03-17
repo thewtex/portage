@@ -1,6 +1,30 @@
 # ChangeLog for kde-base/akonadi
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/akonadi/ChangeLog,v 1.9 2009/02/03 01:55:44 jmbsvicetto Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/akonadi/ChangeLog,v 1.16 2009/03/13 17:51:11 scarabeus Exp $
+
+  13 Mar 2009; Tomas Chvatal <scarabeus@gentoo.org> akonadi-4.2.1.ebuild:
+  Hm revert dep on kdepim-kresources. It should be directly inverse.
+  Kdepim-kresources depends on akonadi.
+
+  12 Mar 2009; Tomas Chvatal <scarabeus@gentoo.org> akonadi-4.2.1.ebuild:
+  Add missing dep. Per bug #251906. And krytzz request :]
+
+  08 Mar 2009; Alexey Shvetsov <alexxy@gentoo.org> -akonadi-4.2.0.ebuild:
+  Drop KDE 4.2.0
+
+  08 Mar 2009; Tomas Chvatal <scarabeus@gentoo.org> akonadi-4.2.1.ebuild:
+  Semi-automatic merge, Update deps.
+
+*akonadi-4.2.1 (04 Mar 2009)
+
+  04 Mar 2009; Alexey Shvetsov <alexxy@gentoo.org> +akonadi-4.2.1.ebuild:
+  Bump KDE 4.2.1
+
+  28 Feb 2009; Markus Meier <maekke@gentoo.org> metadata.xml:
+  semantic-desktop is a global USE-flag
+
+  17 Feb 2009; Alexey Shvetsov <alexxy@gentoo.org> -akonadi-4.1.4.ebuild:
+  Drop KDE 4.1.4
 
   03 Feb 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
   metadata.xml:

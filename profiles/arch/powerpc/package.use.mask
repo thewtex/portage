@@ -1,12 +1,20 @@
-# This file requires >=portage-2.1.1
 
-# nixnut <nixnut@gentoo.org> (4 jun 2008)
-# USE=laptop wants x86 specific packages which can't be build on ppc
-sys-apps/hal laptop
+# Brent Baude <ranger@gentoo.org>
+# masking zephyr USE on pidgin
+net-im/pidgin zephyr
+
+
+# Brent Baude <ranger@gentoo.org>
+# media-libs/libcanberra-0.11 masking pulseaudio
+=media-libs/libcanberra-0.11 pulseaudio
+
+# This file requires >=portage-2.1.1
 
 # Mart Raudsepp <leio@gentoo.org> (02 Apr 2008)
 # media-plugins/gst-plugins-{mythtv,dvb,fluendo-mpegdemux} not keyworded
-media-plugins/gst-plugins-meta dvb mythtv
+# Joseph Jezak <josejx@gentoo.org> (27 Feb 2009)
+# Marked ~ppc, but masking current versions because of stable keyword
+<=media-plugins/gst-plugins-meta-0.10-r2 dvb mythtv
 
 # nixnut <nixnut@gentoo.org> (11 mar 2008)
 # USE=musepack wants musepack-tools which can't be build on ppc

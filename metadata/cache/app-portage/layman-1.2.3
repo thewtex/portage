@@ -1,5 +1,5 @@
 dev-python/pyxml test? ( dev-util/subversion ) virtual/python
-git? ( dev-util/git ) subversion? ( dev-util/subversion )
+git? ( dev-util/git ) subversion? ( || ( >=dev-util/subversion-1.5.4[webdav-neon] >=dev-util/subversion-1.5.4[webdav-serf] ) )
 0
 mirror://sourceforge/layman/layman-1.2.3.tar.gz
 
@@ -12,9 +12,9 @@ git subversion test
 
 
 
-0
+2
 
-compile install postinst postrm setup test unpack
+compile install postinst postrm prepare setup test unpack
 
 
 

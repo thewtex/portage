@@ -1,6 +1,26 @@
 # ChangeLog for app-pda/pilot-link
-# Copyright 2002-2008 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-pda/pilot-link/ChangeLog,v 1.42 2008/07/27 13:57:36 loki_val Exp $
+# Copyright 2002-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-pda/pilot-link/ChangeLog,v 1.46 2009/03/03 18:06:30 serkan Exp $
+
+  03 Mar 2009; Serkan Kaba <serkan@gentoo.org> pilot-link-0.12.3.ebuild,
+  pilot-link-0.12.3-r1.ebuild:
+  java-pkg-2_pkg_preinst -> java-pkg-opt-2_pkg_preinst. Fixes bug #261056.
+
+  23 Feb 2009; Peter Volkov <pva@gentoo.org>
+  files/pilot-link-0.12.3-glibc-open.patch:
+  Fixed build issue, bug #259241, thank Dustin Polke for report, MaratIK,
+  Israel G. Lugo, Jan Paesmans for this fix.
+
+  19 Feb 2009; Serkan Kaba <serkan@gentoo.org> pilot-link-0.12.3.ebuild,
+  pilot-link-0.12.3-r1.ebuild:
+  Add support for java-pkg-2_pkg_preinst.
+
+*pilot-link-0.12.3-r1 (16 Feb 2009)
+
+  16 Feb 2009; Markus Ullmann <jokey@gentoo.org>
+  +files/pilot-link-0.12.3-glibc-open.patch, +pilot-link-0.12.3-r1.ebuild:
+  Add gcc 4.3.3 compile fix wrt bug #257506, Version bump because of
+  transition to EAPI2
 
   27 Jul 2008; Peter Alfredsen <loki_val@gentoo.org>
   +files/pilot-link-0.11.8-gcc43.patch, pilot-link-0.11.8.ebuild,

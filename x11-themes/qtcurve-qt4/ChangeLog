@@ -1,6 +1,50 @@
 # ChangeLog for x11-themes/qtcurve-qt4
-# Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/qtcurve-qt4/ChangeLog,v 1.52 2008/12/30 12:58:34 yngwin Exp $
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/qtcurve-qt4/ChangeLog,v 1.60 2009/03/16 11:33:32 yngwin Exp $
+
+*qtcurve-qt4-0.62.4 (16 Mar 2009)
+
+  16 Mar 2009; Ben de Groot <yngwin@gentoo.org> +qtcurve-qt4-0.62.4.ebuild:
+  Version bump
+
+*qtcurve-qt4-0.62.2 (13 Mar 2009)
+
+  13 Mar 2009; Ben de Groot <yngwin@gentoo.org> +qtcurve-qt4-0.62.2.ebuild:
+  Version bump
+
+*qtcurve-qt4-0.62.0 (11 Mar 2009)
+
+  11 Mar 2009; Ben de Groot <yngwin@gentoo.org>
+  -qtcurve-qt4-0.59.3-r1.ebuild, -qtcurve-qt4-0.59.6-r1.ebuild,
+  -qtcurve-qt4-0.60.0.ebuild, -qtcurve-qt4-0.61.1.ebuild,
+  -qtcurve-qt4-0.61.2.ebuild, +qtcurve-qt4-0.62.0.ebuild:
+  Version bump. Re-add ~alpha and ~sparc now that kde4-base.eclass is fixed.
+  Drop some old versions.
+
+  02 Mar 2009; Ben de Groot <yngwin@gentoo.org> qtcurve-qt4-0.61.4.ebuild:
+  Add NEED_KDE=none to prevent kde dependency even with USE=-kde. Fixes bug
+  260988. Drop alpha and sparc as kde4-base pulls in qt-webkit.
+
+*qtcurve-qt4-0.61.4 (02 Mar 2009)
+
+  02 Mar 2009; Ben de Groot <yngwin@gentoo.org> +qtcurve-qt4-0.61.4.ebuild:
+  Version bump. Add inherit kde4-base to fix kdeprefix, see bug 260270.
+
+  25 Feb 2009; Ben de Groot <yngwin@gentoo.org> qtcurve-qt4-0.61.2:
+  Add fix for compilation with Qt 4.5, thanks to Alex Alexander. Move sedding
+  to src_prepare.
+
+*qtcurve-qt4-0.61.2 (24 Feb 2009)
+
+  24 Feb 2009; Ben de Groot <yngwin@gentoo.org> +qtcurve-qt4-0.61.2.ebuild:
+  Version bump
+
+*qtcurve-qt4-0.61.1 (20 Feb 2009)
+
+  20 Feb 2009; Ben de Groot <yngwin@gentoo.org> qtcurve-qt4-0.60.0,
+  +qtcurve-qt4-0.61.1.ebuild:
+  Version bump. Simplify dependencies, now that qt-4.3 is masked. Move arch
+  use masks to profiles, where they belong. Specify RDEPEND.
 
   30 Dec 2008; Ben de Groot <yngwin@gentoo.org> qtcurve-qt4-0.60.0.ebuild:
   Add use dependency on dbus, fixes bug 253104.

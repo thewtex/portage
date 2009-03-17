@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-shells/bash/bash-3.2_p39.ebuild,v 1.16 2009/02/05 19:06:19 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-shells/bash/bash-3.2_p39.ebuild,v 1.18 2009/02/25 21:20:55 vapier Exp $
 
 inherit eutils flag-o-matic toolchain-funcs multilib
 
@@ -31,7 +31,7 @@ SRC_URI="mirror://gnu/bash/${MY_P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ~m68k ~mips ppc ppc64 s390 sh sparc ~sparc-fbsd x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc ~sparc-fbsd x86 ~x86-fbsd"
 IUSE="afs bashlogger examples nls plugins vanilla"
 
 DEPEND=">=sys-libs/ncurses-5.2-r2"
@@ -175,12 +175,6 @@ pkg_preinst() {
 	if [[ -e ${ROOT}/etc/bashrc ]] && [[ ! -d ${ROOT}/etc/bash ]] ; then
 		mkdir -p "${ROOT}"/etc/bash
 		mv -f "${ROOT}"/etc/bashrc "${ROOT}"/etc/bash/
-	fi
-
-	# our bash_logout is just a place holder so dont
-	# force users to go through etc-update all the time
-	if [[ -e ${ROOT}/etc/bash/bash_logout ]] ; then
-		rm -f "${D}"/etc/bash/bash_logout
 	fi
 
 	if [[ -L ${ROOT}/bin/sh ]]; then
