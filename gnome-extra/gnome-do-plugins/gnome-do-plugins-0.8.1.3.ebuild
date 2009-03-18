@@ -1,39 +1,45 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-extra/gnome-do-plugins/gnome-do-plugins-0.6.0.1.ebuild,v 1.1 2008/12/13 15:13:18 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/gnome-do-plugins/gnome-do-plugins-0.8.1.3.ebuild,v 1.1 2009/03/17 20:30:27 graaff Exp $
 
 inherit eutils autotools gnome2 mono versionator
 
 MY_PN="do-plugins"
-PVC=$(get_version_component_range 1-2)
-PVC2=$(get_version_component_range 1-3)
+PVC=$(get_version_component_range 1-3)
 
 DESCRIPTION="Plugins to put the Do in Gnome Do"
 HOMEPAGE="http://do.davebsd.com/"
-SRC_URI="https://launchpad.net/${MY_PN}/${PVC}/${PVC2}/+download/${P}.tar.gz"
+SRC_URI="https://launchpad.net/${MY_PN}/0.8/${PVC}/+download/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="banshee evo"
 
 RDEPEND=">=gnome-extra/gnome-do-${PV}
-		dev-dotnet/wnck-sharp"
+		dev-dotnet/wnck-sharp
+		banshee? ( >=media-sound/banshee-1.4.2 )
+		evo? ( dev-dotnet/evolution-sharp )"
 DEPEND="${RDEPEND}
 	dev-util/pkgconfig
 	dev-util/monodevelop"
 
 src_unpack() {
 	unpack ${A}
-	cd ${S}
-	epatch "${FILESDIR}/${P}-disable-evo-flickr.patch"
+	cd "${S}"
+	sed -i -r -e "/(FLICKR|Flickr)/d" configure.ac Makefile.am
+	use banshee || sed -i -r -e "/(BANSHEE|Banshee)/d" configure.ac Makefile.am
+	use evo     || sed -i -r -e "/(EVOLUTION|Evolution)/d" configure.ac Makefile.am
 	eautoreconf
 }
 
 src_compile()
 {
 	econf --enable-debug=no --enable-release=yes || die "configure failed"
-	emake || die "make failed"
+	# The make system is unfortunately broken for parallel builds and
+	# upstream indicated on IRC that they have no intention to fix
+	# that.
+	emake -j1 || die "make failed"
 }
 
 pkg_postinst()

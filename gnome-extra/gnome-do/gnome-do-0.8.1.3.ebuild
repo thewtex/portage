@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-extra/gnome-do/gnome-do-0.6.1.0.ebuild,v 1.3 2009/01/05 17:25:56 loki_val Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/gnome-do/gnome-do-0.8.1.3.ebuild,v 1.1 2009/03/17 20:28:13 graaff Exp $
 
 # TODO: GNOME Do defaults to a debug build; to disable, --enable-release must
 # be passed. However, when doing this the build fails; figure out why.
@@ -10,18 +10,17 @@ EAPI=2
 inherit gnome2 mono versionator eutils
 
 PVC=$(get_version_component_range 1-3)
-PVCS=$(get_version_component_range 1-2)
 
 DESCRIPTION="GNOME Do allows you to get things done quickly"
 HOMEPAGE="http://do.davebsd.com/"
-SRC_URI="https://launchpad.net/do/${PVCS}/${PVC}/+download/${P}.tar.gz"
+SRC_URI="https://launchpad.net/do/0.8/${PVC}/+download/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~x86 ~amd64"
 IUSE=""
 
-RDEPEND="dev-lang/mono
+RDEPEND=">=dev-lang/mono-2.0
 	>=dev-dotnet/gconf-sharp-2.24.0
 	>=dev-dotnet/gtk-sharp-2.12.6
 	>=dev-dotnet/glade-sharp-2.12.6
@@ -33,18 +32,15 @@ RDEPEND="dev-lang/mono
 	>=dev-dotnet/gnomevfs-sharp-2.24.0
 	>=dev-dotnet/wnck-sharp-2.24.0
 	>=dev-dotnet/art-sharp-2.24.0
+	>=dev-dotnet/rsvg-sharp-2.24.0
 	dev-dotnet/mono-addins
 	dev-dotnet/notify-sharp
-	!<gnome-extra/gnome-do-plugins-0.6"
+	!<gnome-extra/gnome-do-plugins-0.8"
 DEPEND="${RDEPEND}
 	>=dev-util/intltool-0.35
 	dev-util/pkgconfig"
 
 MAKEOPTS="${MAKEOPTS} -j1"
-
-src_prepare() {
-	epatch "${FILESDIR}/${P}-mono-2.2.patch"
-}
 
 src_configure() {
 	gnome2_src_configure
