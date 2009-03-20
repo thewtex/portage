@@ -1,5 +1,5 @@
 >=sys-apps/sed-4 >=sys-apps/sed-4
-media-libs/jpeg media-libs/libexif >=media-libs/fontconfig-2.1.94-r1 x11-libs/libXrandr x11-libs/libXp x11-libs/libXmu x11-libs/libXi x11-libs/libXft x11-libs/libXext x11-libs/libXcursor x11-libs/libX11 x11-libs/libSM x11-libs/libICE qt-static? ( !qt3? ( x11-libs/libXinerama media-libs/nas ) ) x86? ( !qt-static? ( qt3? ( =x11-libs/qt-3* ) !qt3? ( =x11-libs/qt-core-4* =x11-libs/qt-gui-4* ) ) ) amd64? ( ia32? ( app-emulation/emul-linux-x86-qtlibs ) !ia32? ( =x11-libs/qt-3* ) )
+media-libs/jpeg media-libs/libexif >=media-libs/fontconfig-2.1.94-r1 x11-libs/libXrandr x11-libs/libXp x11-libs/libXmu x11-libs/libXi x11-libs/libXft x11-libs/libXext x11-libs/libXcursor x11-libs/libX11 x11-libs/libSM x11-libs/libICE qt-static? ( !qt3? ( x11-libs/libXinerama media-libs/nas ) ) x86? ( !qt-static? ( qt3? ( =x11-libs/qt-3*[-immqt] ) !qt3? ( =x11-libs/qt-core-4* =x11-libs/qt-gui-4* ) ) ) amd64? ( ia32? ( app-emulation/emul-linux-x86-qtlibs ) !ia32? ( =x11-libs/qt-3*[-immqt] ) )
 0
 qt-static? ( qt3? ( amd64? ( ia32? ( http://snapshot.opera.com/unix/10-turbo/intel-linux/opera-10.00-4214.gcc4-bundled-qt4.i386.tar.bz2 ) !ia32? ( http://snapshot.opera.com/unix/10-turbo/x86_64-linux/opera-10.00-4214.gcc4-shared-qt3.x86_64.tar.bz2 ) ) x86? ( http://snapshot.opera.com/unix/10-turbo/intel-linux/opera-10.00-4214.gcc4-bundled-qt4.i386.tar.bz2 ) ) !qt3? ( amd64? ( ia32? ( http://snapshot.opera.com/unix/10-turbo/intel-linux/opera-10.00-4214.gcc4-bundled-qt4.i386.tar.bz2 ) !ia32? ( http://snapshot.opera.com/unix/10-turbo/x86_64-linux/opera-10.00-4214.gcc4-shared-qt3.x86_64.tar.bz2 ) ) x86? ( http://snapshot.opera.com/unix/10-turbo/intel-linux/opera-10.00-4214.gcc4-bundled-qt4.i386.tar.bz2 ) ) ) !qt-static? ( qt3? ( amd64? ( ia32? ( http://snapshot.opera.com/unix/10-turbo/intel-linux/opera-10.00-4214.gcc4-shared-qt3.i386.tar.bz2 ) !ia32? ( http://snapshot.opera.com/unix/10-turbo/x86_64-linux/opera-10.00-4214.gcc4-shared-qt3.x86_64.tar.bz2 ) ) x86? ( http://snapshot.opera.com/unix/10-turbo/intel-linux/opera-10.00-4214.gcc4-shared-qt3.i386.tar.bz2 ) ) !qt3? ( amd64? ( ia32? ( http://snapshot.opera.com/unix/10-turbo/intel-linux/opera-10.00-4214.gcc4-qt4.i386.tar.bz2 ) !ia32? ( http://snapshot.opera.com/unix/10-turbo/x86_64-linux/opera-10.00-4214.gcc4-shared-qt3.x86_64.tar.bz2 ) ) x86? ( http://snapshot.opera.com/unix/10-turbo/intel-linux/opera-10.00-4214.gcc4-qt4.i386.tar.bz2 ) ) )
 mirror strip test
@@ -12,9 +12,9 @@ elibc_FreeBSD gnome ia32 qt-static qt3 linguas_be linguas_bg linguas_cs linguas_
 
 
 
-0
+2
 
-compile install postinst postrm preinst unpack
+compile configure install postinst postrm preinst prepare unpack
 
 
 

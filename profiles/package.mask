@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.9575 2009/03/15 06:33:44 pva Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.9585 2009/03/19 19:17:20 maekke Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -35,6 +35,43 @@
 # samba-3.3.1 has been less than stable for me, so masking the 3.3.x series
 # for now, and adding 3.2.8 (recommended production version)
 >=net-fs/samba-3.3.0
+# Markus Meier <maekke@gentoo.org> (19 Mar 2009)
+# No longer needed, use media-libs/libpano13
+# Masked for removal in 30 days
+media-libs/libpano12
+
+# Ulrich Mueller <ulm@gentoo.org> (19 Mar 2009)
+# No longer maintained as a separate package, use dev-tex/mh instead.
+# Masked for removal in 30 days, bug 262934.
+dev-tex/breqn
+
+# Ulrich Mueller <ulm@gentoo.org> (18 Mar 2009)
+# Depends on teTeX. Fails to build.
+# Newer version is included in app-text/texlive-core.
+# Masked for removal in 60 days, bug 227593.
+app-text/xetex
+
+# Ulrich Mueller <ulm@gentoo.org> (18 Mar 2009)
+# Depends on teTeX. Newer version is included
+# in dev-texlive/texlive-latexrecommended.
+# Masked for removal in 60 days, bug 262897.
+dev-tex/xkeyval
+
+# Nirbheek Chauhan <nirbheek@gentoo.org> (17 Mar 2009)
+# Session saving isn't implemented in >=gnome-session-2.24
+# And other stuff listed here needs gnome-session-2.24
+# GNOME bug #552387
+=gnome-base/gnome-session-2.24*
+=gnome-base/gnome-keyring-2.24*
+=app-crypt/seahorse-2.24*
+=app-crypt/seahorse-plugins-2.24*
+
+# Torsten Veller <tove@gentoo.org> (16 Mar 2009)
+# Mask for removal (#247409)
+dev-perl/OpenCA-CRL
+dev-perl/OpenCA-OpenSSL
+dev-perl/OpenCA-REQ
+dev-perl/OpenCA-X509
 
 # Daniel Robbins <drobbins@funtoo.org> (16 Mar 2009)
 # bash 4 needs additional testing...
@@ -78,6 +115,7 @@ net-misc/dahdi
 net-misc/dahdi-tools
 =net-misc/asterisk-1.6*
 =net-libs/libpri-1.4*
+>=media-libs/spandsp-0.0.6_pre7
 
 # Michael Sterrett <mr_bones_@gentoo.org> (09 Mar 2009)
 # Masked for removal in 30 days.
@@ -103,8 +141,6 @@ dev-ruby/ruby-gdchart
 # Daniel Robbins <drobbins@funtoo.org> (3 Mar 2009)
 # See bug 260441
 ~x11-drivers/nvidia-drivers-180.35
-
-# Tomas Chvatal <scarabeus@gentoo.org> (6 Mar 2009)
 
 # Thomas Sachau <tommy@gentoo.org> (2 Mar 2009)
 # Mask for removal, was merged into dev-java/fec
@@ -217,11 +253,6 @@ dev-lang/rubinius
 # I gave away maintainership a while ago nobody took it on. Prepare for remove.
 app-emulation/ganeti
 app-emulation/ganeti-instance-debian-etch
-
-# MATSUU Takuto <matsuu@gentoo.org> (07 Feb 2009)
-# Masked for testing
-=x11-wm/awesome-3.2*
-=x11-libs/xcb-util-0.3.3*
 
 # Hanno Böck <hanno@gentoo.org> (05 Feb 2009)
 # Seems something is broken with crypt mount in 1.17 (bug 257302)
@@ -613,23 +644,9 @@ games-fps/unreal-tournament-operationnapali
 # Users can use either the unstable versions or switch to app-portage/eix
 =app-portage/esearch-0.7.1
 
-# Torsten Veller <tove@gentoo.org> (29 Dec 2008)
-# Unmaintained net-mail packages
-# Masked for removal in 30 days
-# 251383 - 29 Dec 2008
-net-mail/ezmlm
-net-mail/ezmlm-idx-mysql
-net-mail/ezmlm-idx-pgsql
-
 # Caleb Cushing <xenoterracide@gmail.com> (27 Dec 2008)
 # latest ghc, breaks other packages, fixes (bug #252176)
 >=dev-lang/ghc-6.10
-
-# Gilles Dartiguelongue <eva@gentoo.org> (27 Dec 2008)
-# Dead upstream, does not compile with recent gcc/glibc.
-# Replacements: tomboy, sticky-notes applet (from gnome-applets)
-# See bug #248564 for details, removal in 30 days.
-x11-misc/goats
 
 # Samuli Suominen <ssuominen@gentoo.org> (24 Dec 2008)
 # - drop .la files (and static libs)
@@ -694,7 +711,6 @@ net-proxy/squirm
 # Snapshots, alphas and betas of Opera may delete kittens
 =www-client/opera-10*
 
-
 # Tomas Chvatal <scarabeus@gentoo.org> (04 Dec 2008)
 # new version, needs policykit which is masked
 >=gnome-extra/nm-applet-0.7.0
@@ -702,11 +718,6 @@ net-proxy/squirm
 >=net-misc/networkmanager-vpnc-0.7.0
 >=net-misc/networkmanager-pptp-0.7.0
 >=net-misc/networkmanager-openvpn-0.7.0
-
-# Tobias Scherbaum <dertobi123@gentoo.org> (02 Dec 2008)
-# Mask because of broken upgrade path. Need to investigate what the real
-# problem is. bug #249579
-=mail-filter/procmail-3.22-r9
 
 # Tiziano Müller <dev-zero@gentoo.org> (28 Nov 2008)
 # mask for testing/transition
@@ -1542,10 +1553,6 @@ games-arcade/xkobo
 games-roguelike/nethack
 games-util/hearse
 games-roguelike/noegnud-nethack
-
-# Jeremy Huddleston <eradicator@gentoo.org> (21 Mar 2006)
-# Development version of squirrelmail
->=mail-client/squirrelmail-1.5
 
 # Robin H. Johnson <robbat2@gentoo.org> (11 Mar 2006)
 # Work-in-progress to clean this up

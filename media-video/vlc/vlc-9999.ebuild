@@ -1,11 +1,8 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/vlc/vlc-9999.ebuild,v 1.2 2009/03/08 18:17:28 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/vlc/vlc-9999.ebuild,v 1.4 2009/03/17 07:57:14 aballier Exp $
 
 EAPI="1"
-
-WANT_AUTOMAKE=latest
-WANT_AUTOCONF=latest
 
 SCM=""
 if [ "${PV%9999}" != "${PV}" ] ; then
@@ -128,7 +125,7 @@ RDEPEND="
 		speex? ( media-libs/speex )
 		svg? ( >=gnome-base/librsvg-2.9.0 )
 		svga? ( media-libs/svgalib )
-		taglib? ( media-libs/taglib )
+		taglib? ( >=media-libs/taglib-1.5 )
 		theora? ( media-libs/libtheora )
 		truetype? ( media-libs/freetype
 			media-fonts/ttf-bitstream-vera )

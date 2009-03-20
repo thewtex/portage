@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4277 2009/03/15 16:27:44 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4289 2009/03/20 09:48:08 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -122,9 +122,7 @@ app-crypt/heimdal:ssl -  Enable usage of openssl
 app-crypt/heimdal:threads -  Enable pthread support 
 app-crypt/kstart:afs -  Enables afs support which means you can aquire an afs token and set PAGs. It's recommend to set this USE if you need authenticated access to an AFS cell for your daemon/app. 
 app-crypt/mit-krb5:doc -  Creates and installs the API and implementation documentation. This is only useful if you want to develop software which depends on kerberos. 
-app-crypt/mit-krb5:ipv6 -  Enables ipv6 support which is default in actual releases. This flag is marked for removal. 
 app-crypt/mit-krb5:krb4 -  This option enables Kerberos V4 backwards compatibility using the builtin Kerberos V4 library. This is really outdated and dangerous to use because not safe. 
-app-crypt/mit-krb5:tcl -  Some of the unit-tests in the build tree rely upon using a program in Tcl. This flag is marked for removal. 
 app-crypt/ophcrack-tables:vistafree - Installs the free Vista ophcrack tables
 app-crypt/ophcrack-tables:xpfast - Installs the fast XP ophcrack tables
 app-crypt/ophcrack-tables:xpsmall - Installs the small free XP ophcrack tables
@@ -134,6 +132,10 @@ app-crypt/seahorse:gedit - Enable text encryption plugin to integrate into app-e
 app-crypt/seahorse:ldap - Enable seahorse to manipulate GPG keys on a LDAP server.
 app-crypt/seahorse:nautilus - Enable file encryption plugin to integrate into gnome-base/nautilus context menu.
 app-crypt/seahorse:xulrunner - Selects which gecko engine against which to build the www-client/epiphany plugin.
+app-crypt/seahorse-plugins:applet - Enable seahorse applet for gnome-base/gnome-panel
+app-crypt/seahorse-plugins:epiphany - Enable text encryption plugin to integrate into the www-client/epiphany context menu
+app-crypt/seahorse-plugins:gedit - Enable text encryption plugin to integrate into app-editors/gedit
+app-crypt/seahorse-plugins:nautilus - Enable file encryption plugin to integrate into the gnome-base/nautilus context menu
 app-dicts/aspell-be:classic - Support classic spelling by default
 app-dicts/gwaei:libsexy - Enable support for x11-libs/libsexy
 app-admin/vlogger:dbi - Enable support for DBI
@@ -1058,6 +1060,7 @@ gnome-base/gdm:dmx - Enables Distributed Multihead X (DMX) support
 gnome-base/gdm:remote - Enables support for secure remote connections
 gnome-base/gnome-control-center:sound - Enable sound event support with media-libs/libcanberra
 gnome-base/gnome-mount:nautilus - Enables the Nautilus plugin
+gnome-base/gnome-session:policykit - Enable sys-auth/policykit authentication support
 gnome-base/gnome-volume-manager:automount - Enable support for automounting devices that are handled by gnome-base/nautilus since 2.22. This should be off on most Gnome systems.
 gnome-base/gnome-volume-manager:consolekit - Use sys-auth/consolekit to determine policy on removable media.
 gnome-base/gvfs:archive - Enables support for accessing files in archives transparently via app-arch/libarchive
@@ -1102,6 +1105,8 @@ gnustep-base/gnustep-make:native-exceptions - Enables use of the native Objectiv
 kde-base/ark:archive - Enable support for a variety of archive formats through libarchive
 kde-base/ark:zip - Enable zip support through LibZip
 kde-base/arts:artswrappersuid - Set artswrapper suid for realtime playing, which is a security hazard
+kde-base/dolphin:semantic-desktop -  Semantic desktop allows for storage of digital information and its metadata to allow the user to express his personal mental models, making all information become intuitively accessible. 
+kde-base/dolphin:thumbnail -  Enables video thumbnails generation for kde-base/dolphin file manager. 
 kde-base/gwenview:kipi - Support for the KDE Image Plugin Interface.
 kde-base/juk:akode - Support for the aKode audio-decoding frame-work
 kde-base/juk:tunepimp - Provide MusicBrainz tagging in Juk
@@ -1131,8 +1136,9 @@ kde-base/kget:bittorrent - Enable embedded bittorrent transport plugin
 kde-base/kget:bittorrent-external - Enable external bittorrent transport plugin via ktorrent
 kde-base/kig:kig-scripting - Support Python scripting
 kde-base/kmilo:pbbuttonsd - Support for the Apple PMU daemon pbbuttonsd
-kde-base/konqueror:auth - Add dependency on authentization packages
-kde-base/konqueror:bookmarks - Add dependency on bookmark package.
+kde-base/konqueror:auth -  Add dependency on authentization packages. 
+kde-base/konqueror:bookmarks -  Add dependency on bookmark package. 
+kde-base/konqueror:thumbnail -  Enables video thumbnails generation for kde-base/konqueror file manager. 
 kde-base/kopete:addbookmarks - Automaticaly add incoming urls to bookmarks.
 kde-base/kopete:alias - Enables creating of your own aliases for commands.
 kde-base/kopete:autoreplace - Automaticaly replace selected text
@@ -1347,7 +1353,6 @@ media-gfx/graphviz:cgraph -  Enables cgraph (PostScript plotting library in C) l
 media-gfx/graphviz:pango -  Enables the rendering of the graphs using pango & cairo (with antialiasing support) 
 media-gfx/gthumb:iptc -  Add support for IPTC metadata 
 media-gfx/gwenview:kipi -  Support for the KDE Image Plugin Interface. 
-media-gfx/hugin:enblend - add support for nice image blending with media-gfx/enblend
 media-gfx/hugin:sift - automatically align images with media-gfx/autopano-sift or media-gfx/autopano-sift-C
 media-gfx/imagemagick:corefonts -  pull in media-fonts/corefonts, which is required for some commands 
 media-gfx/imagemagick:fpx -  enable media-libs/libfpx support 
@@ -1428,8 +1433,6 @@ media-libs/sdif:ftruncate - Enables usage of ftruncate v. truncate
 media-libs/sdl-sound:physfs - Enable physfs support
 media-libs/sge:image - enable sdl-image support
 media-libs/spandsp:sse3 - Enable SSE3 support
-media-libs/spandsp:sse4.1 - Enable SSE4.1 support
-media-libs/spandsp:sse4.2 - Enable SSE4.2 support
 media-libs/spandsp:sse4a - Enable SSE4a support
 media-libs/spandsp:sse5 - Enable SSE5 support
 media-libs/speex:vorbis-psy - Enable Vorbis-style psychoacoustics
@@ -1615,6 +1618,7 @@ media-sound/quodlibet:tta - Enable TTA (True-Audio Loseless) support
 media-sound/radiomixer:hwmixer - Use hardware mixer instead of internal mixer routines
 media-sound/rezound:16bittmp - Use 16bit temporary files (default 32bit float), useful for slower computers
 media-sound/rezound:soundtouch - compile with support for soundtouch
+media-sound/rhythmbox:brasero - Enable CD burning via app-cdr/brasero rather than gnome-extra/nautilus-cd-burner
 media-sound/rhythmbox:daap - Enable support for local network music sharing via daap
 media-sound/rhythmbox:mtp - Enable support for MTP devices
 media-sound/rhythmbox:tagwriting - support for tag writing in certain audio files
@@ -2216,6 +2220,7 @@ net-libs/courier-authlib:vpopmail - Enable vpopmail support
 net-libs/cvm:vpopmail - Enable vpopmail support
 net-libs/libesmtp:ssl -  Enable support for advanced SMTP authentication methods, like NTML and STARTTLS. Also use OpenSSL's MD5 implementation over internal version. 
 net-libs/libetpan:liblockfile - Enable support for liblockfile library
+net-libs/libfwbuilder:bind - Use bind's name resolving library
 net-libs/libfwbuilder:stlport - Enagle support for STLport
 net-libs/libpri:bri - Enable ISDN BRI support (bristuff)
 net-libs/libssh2:libgcrypt - Use libgcrypt for crypto
@@ -2401,6 +2406,8 @@ net-misc/zaptel:rtc - Use the realtime clock on x86 and amd64 systems instead of
 net-misc/zaptel:watchdog - Enable the watchdog to monitor unresponsive and misbehaving interfaces
 net-misc/zaptel:zapnet - Enable SyncPPP, CiscoHDLC and Frame-Relay support
 net-misc/zaptel:zapras - Enable PPP support for Remote-Access-Service
+net-nds/nsscache:nsscache - Depend on sys-auth/libnss-cache to handle flat files
+net-nds/nsscache:nssdb - Depend on sys-libs/libnss_db to handle dbm files.
 net-nds/openldap:experimental - Enable experimental backend options
 net-nds/openldap:overlays - Enable contributed OpenLDAP overlays
 net-nds/openldap:smbkrb5passwd - Enable overlay for syncing ldap, unix and lanman passwords
@@ -2424,6 +2431,7 @@ net-p2p/amule:upnp - Enables support for Intel UPnP stack.
 net-p2p/btg:event-callback - Enable calling a script or executable for certain events
 net-p2p/btg:webinterface - install webBTG
 net-p2p/dbhub:switch_user - Enable support for switching user
+net-p2p/fms:frost - Add support for frost boards
 net-p2p/freenet:freemail - Add Freemail support
 net-p2p/gift:ares - pull in Ares plugin
 net-p2p/gift:fasttrack - pull in FastTrack plugin
@@ -2524,6 +2532,9 @@ sci-astronomy/predict:xforms - Add a "map" client which uses the x11-libs/xforms
 sci-astronomy/predict:xplanet - Project predict data onto world maps generated by x11-misc/xplanet / x11-misc/xearth
 sci-astronomy/scamp:plplot - Build with sci-libs/plplot to allow diagnostic plots during processing
 sci-astronomy/setiathome:server - Enable compilation of server
+sci-biology/bioperl:db - Install sci-biology/bioperl-run
+sci-biology/bioperl:network - Install sci-biology/bioperl-run
+sci-biology/bioperl:run - Install sci-biology/bioperl-run
 sci-biology/biopython:kdtree - Do not build KDTree module and its dependencies (NeighborSearch)
 sci-biology/clustalw-mpi:mpi_njtree - Use MPI (as opposed to serial) code for computing neighbor-joining trees
 sci-biology/clustalw-mpi:static_pairalign - Use static (as opposed to dynamic) scheduling for pair alignments
@@ -2984,7 +2995,6 @@ x11-libs/pdcurses:nextaw - Use neXtaw instead of Xaw
 x11-libs/qt:glib - Enable dev-libs/glib eventloop support
 x11-libs/qt:immqt - Enable binary incompatible version of immodule for Qt
 x11-libs/qt:immqt-bc - Enable binary compatible version of immodule for Qt
-x11-libs/qt:phonon - Enable support for the Phonon multimedia package
 x11-libs/qt:qt3support - Enable the Qt3Support libraries for Qt4
 x11-libs/qt-assistant:webkit -  Enable x11-libs/qt-webkit support, for more sophisticated online help display using webkit's HTML renderer. 
 x11-libs/qt-core:glib - Enable dev-libs/glib eventloop support
