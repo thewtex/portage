@@ -2,13 +2,15 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="1"
+EAPI="2"
+
+inherit eutils autotools
 
 DESCRIPTION="A fast, free, high-quality, multi-platform XSL formatter"
 HOMEPAGE="http://xmlroff.org/"
 SRC_URI="http://xmlroff.org/download/${P}.tar.gz"
 
-LICENSE="sun-xmlroff"
+LICENSE="as-is"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="cairo debug doc svg truetype"
@@ -20,20 +22,30 @@ RDEPEND="x11-libs/gtk+
 	dev-libs/glib:2
 	dev-libs/libxml2
 	dev-libs/libxslt
-	cairo? ( x11-libs/cairo )
+	cairo? ( x11-libs/cairo[svg?] )
 	!cairo? ( gnome-base/libgnomeprint )
 	svg? ( gnome-base/librsvg )
 	truetype? ( media-libs/freetype )"
 DEPEND="${RDEPEND}
 	dev-util/pkgconfig"
 
-src_compile() {
+src_prepare() {
+	epatch "${FILESDIR}/automagic.patch"
+
+	eautoreconf
+}
+
+src_configure() {
+	local myconf
+
+	use debug && myconf="--enable-libfo-debug"
+
 	econf \
 		$(use_enable cairo) \
 		$(use_enable !cairo gp) \
-		$(use_enable debug libfo-debug)
-
-	emake || die "emake failed"
+		$(use_with svg) \
+		$(use_with truetype freetype) \
+		${myconf}
 }
 
 src_install() {
