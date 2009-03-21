@@ -26,7 +26,7 @@ SRC_URI="http://poppler.freedesktop.org/${MY_P}.tar.gz
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sh ~sparc ~x86 ~x86-fbsd"
-IUSE="gtk qt3 cairo qt4 test"
+IUSE="+gtk qt3 +cairo qt4 test"
 
 RDEPEND="~app-text/poppler-${PV}
 	cairo? (
