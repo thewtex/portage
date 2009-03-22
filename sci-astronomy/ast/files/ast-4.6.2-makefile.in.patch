@@ -1,5 +1,5 @@
---- Makefile.in.orig	2008-09-10 11:59:21.000000000 +0100
-+++ Makefile.in	2009-02-23 17:01:16.196714977 +0000
+--- Makefile.in.orig	2009-03-21 11:48:33.829215706 +0000
++++ Makefile.in	2009-03-21 11:50:56.901572460 +0000
 @@ -76,7 +76,14 @@
  	"$(DESTDIR)$(includedir)" "$(DESTDIR)$(includedir)"
  libLTLIBRARIES_INSTALL = $(INSTALL)
@@ -71,3 +71,20 @@
  	  else \
  	    echo "Installation of component $(DESTDIR)$(STAR_MANIFEST_DIR)/$(PACKAGE) failed" >&2; \
  	  fi; \
+@@ -2720,14 +2726,14 @@
+ 	$(mkdir_p) $(DESTDIR)$(libdir) 
+ 	cd $(DESTDIR)$(libdir); \
+ 	for f in `ls libast.*`; do \
+-	   ff=`echo $$f | sed -e 's/libast/libast_pass2/'`; \
++	   ff=`echo $$f | sed -e 's/libast\./libast_pass2\./'`; \
+ 	   if test -f "$$ff"; then rm "$$ff"; fi; \
+ 	   $(LN_S) $$f $$ff; \
+ 	   $(MANIFEST) && echo "MANIFEST:$(DESTDIR)$(libdir)/$$ff" || :; \
+ 	done; \
+ 	if test -f "libast.la"; then \
+ 	   if test -f "libast_pass2.la"; then rm "libast_pass2.la"; fi; \
+-	   sed -e 's/libast/libast_pass2/g' libast.la > libast_pass2.la; \
++	   sed -e 's/libast\./libast_pass2\./g' libast.la > libast_pass2.la; \
+ 	fi
+ @PREDIST@version.h: version.h.in configure.ac
+ @PREDIST@	rm -f $@; $(predist_subs) version.h.in >$@

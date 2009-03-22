@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/vdr/vdr-1.6.0_p2.ebuild,v 1.3 2009/01/12 13:23:01 zzam Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/vdr/vdr-1.6.0_p2.ebuild,v 1.4 2009/03/21 13:10:41 zzam Exp $
 
 inherit eutils flag-o-matic multilib
 
@@ -355,6 +355,9 @@ src_install() {
 pkg_preinst() {
 	has_version "<${CATEGORY}/${PN}-1.3.36-r3"
 	previous_less_than_1_3_36_r3=$?
+
+	has_version "<${CATEGORY}/${PN}-1.6.0"
+	previous_less_than_1_3_36_r3=$?
 }
 
 pkg_postinst() {
@@ -405,6 +408,17 @@ pkg_postinst() {
 		ewarn "ATSC is only supported by a rudimentary patch"
 		einfo "and need at least this patch and a plugin installed"
 		einfo "emerge media-plugins/vdr-atscepg"
+	fi
+
+	if [[ $previous_less_than_1_6_0 = 0 ]]; then
+		elog "By default vdr is now started with utf8 character encoding"
+		elog
+		elog "To rename the old recordings to utf8 conforming names, do this:"
+		elog "\temerge app-text/convmv"
+		elog "\tconvmv -f latin1 -t utf8 -r --notest -i /var/vdr/video/"
+		elog
+		elog "To fix the descriptions of your recordings do this:"
+		elog "\tfind /var/vdr/video/ -name "info.vdr" -print0|xargs -0 recode latin1..utf8"
 	fi
 
 	elog "To get nice symbols in OSD we recommend to install"
