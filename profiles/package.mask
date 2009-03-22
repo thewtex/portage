@@ -359,6 +359,11 @@ x11-misc/hotkeys
 # xprint is dead, for real (see bug #254874)
 x11-apps/xphelloworld
 
+# Thomas Sachau (Tommy[D]) <tommy@gentoo.org> (24 Jan 2009)
+# Mask because of recommended replacement of portage contolled
+# file, should fix in source instead
+net-im/spark
+
 # Hanno Boeck <hanno@gentoo.org (22 Jan 2009)
 # This has been included in kernel 2.6.27 and shouldn't be used
 # any more. Will remove within a month, please contact me if you
@@ -442,6 +447,11 @@ net-analyzer/rtg
 # Please, upgrade to openrc. removal after openrc goes stable, bug #254519
 sys-apps/baselayout-vserver
 
+# Pacho Ramos (pacho) <pacho@condmat1.ciencias.uniovi.es> (9 Jan 2009)
+# Mask mandriva-galaxy for removal in 30 day as upstream
+# no longer maintains it
+x11-themes/mandriva-galaxy
+
 # Tomas Chvatal <scarabeus@gentoo.org> (07 Jan 2009)
 # Mask kde-base/pykde-3.5* for removal
 # REASON:
@@ -466,16 +476,6 @@ sys-apps/baselayout-vserver
 dev-libs/cygwin
 dev-util/mingw-runtime
 dev-util/w32api
-
-# Thomas Sachau (Tommy[D]) <tommy@gentoo.org> (24 Jan 2009)
-# Mask because of recommended replacement of portage contolled
-# file, should fix in source instead
-net-im/spark
-
-# Pacho Ramos (pacho) <pacho@condmat1.ciencias.uniovi.es> (9 Jan 2009)
-# Mask mandriva-galaxy for removal in 30 day as upstream
-# no longer maintains it
-x11-themes/mandriva-galaxy
 
 # Tiago Cunha (tcunha) <tcunha@gentoo.org> (10 Dec 2008)
 # Mask CVS ebuild
@@ -510,37 +510,6 @@ x11-themes/mandriva-galaxy
 # >=dev-db/dabo-0.8.4 now contains daboide
 # daboide will be deleted with next release of dabo
 =dev-db/daboide-0.7.1
-
-# Thomas Sachau (Tommy[D]) <tommy@gentoo.org> (30 Apr 2008)
-# Mask because of masked deps (>=evolution-2.22)
-=gnome-extra/evolution-rss-0.0.8
-
-# Tiago Cunha (tcunha) <me@tiagocunha.org> (27 Apr 2008)
-# Mask GIT ebuild
-=sys-apps/ksplice-9999
-
-# Thomas Sachau (Tommy[D]) <tommy@gentoo.org> (07 Apr 2008)
-# Mask live ebuild
-=sys-fs/aufs-utils-9999
-
-# Thomas Sachau (Tommy[D]) <tommy@gentoo.org> (20 Mar 2008)
-# Mask packages with masked deps
-=sci-libs/openfoam-kernel-1.4.1*
-=sci-libs/openfoam-meta-1.4.1*
-=sci-libs/openfoam-solvers-1.4.1*
-=sci-libs/openfoam-src-1.4.1*
-
-# Thomas Sachau (Tommy[D]) <tommy@gentoo.org> (20 Mar 2008)
-# Masked until they follow the ebuild conventions
-# (sed -> patch)
-=sci-libs/openfoam-bin-1.4.1*
-=sci-libs/openfoam-utilities-1.4.1*
-=sci-libs/openfoam-wmake-1.4.1*
-=sci-libs/openfoam-1.4.1*
-
-# Juan Aguado <juantxorena@gmail.com> (16 Mar 2008)
-# Masking SVN ebuild
-=media-video/aegisub-9999
 
 # Jakub Moc <jakub@gentoo.org> (16 Mar 2008)
 # svn version should be masked
