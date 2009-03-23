@@ -1,10 +1,25 @@
 # ChangeLog for profile directory
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.2460 2009/03/22 10:46:19 nirbheek Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.2465 2009/03/23 11:23:05 remi Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  23 Mar 2009; Rémi Cardona <remi@gentoo.org> package.mask:
+  add mesa-7.3-r2 to package.mask
+
+  23 Mar 2009; Torsten Veller <tove@gentoo.org> package.mask:
+  Masked dev-lang/pugs for removal (#151986,#171649,#239222)
+
+  23 Mar 2009; Olivier Crête <tester@gentoo.org> use.desc, use.local.desc:
+  Make policykit into a global use flag
+
+  22 Mar 2009; Jeremy Olexa <darkside@gentoo.org> package.mask:
+  p.mask x11-misc/lavaps, bug 227743
+
+  22 Mar 2009; MATSUU Takuto <matsuu@gentoo.org> package.mask:
+  Removed app-i18n/uim-svn from portage tree.
 
   22 Mar 2009; Nirbheek Chauhan <nirbheek@gentoo.org> package.mask:
   CPUFreq regression has been fixed, no need for p.mask: bug 247614
