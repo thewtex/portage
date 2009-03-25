@@ -1,6 +1,23 @@
 # ChangeLog for net-wireless/aircrack-ng
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/aircrack-ng/ChangeLog,v 1.37 2009/03/01 16:57:50 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/aircrack-ng/ChangeLog,v 1.40 2009/03/19 17:14:23 josejx Exp $
+
+  19 Mar 2009; Joseph Jezak <josejx@gentoo.org>
+  aircrack-ng-1.0_rc2-r1.ebuild:
+  Marked ~ppc for bug #253803.
+
+  15 Mar 2009; Raúl Porcel <armin76@gentoo.org>
+  aircrack-ng-1.0_rc2-r1.ebuild:
+  Add ~arm wrt #253803
+
+*aircrack-ng-1.0_rc2-r1 (12 Mar 2009)
+
+  12 Mar 2009; Robert Buchholz <rbu@gentoo.org>
+  +files/aircrack-ng-1.0_rc2-freebsd.patch, -aircrack-ng-1.0_rc2.ebuild,
+  +aircrack-ng-1.0_rc2-r1.ebuild:
+  Reintroduce iw as a dep on Linux that got dropped in the bump (bug # 260177),
+  Improve support for current FreeBSD (bug #253803): applied some patches and
+  remove airmon-ng application.
 
 *aircrack-ng-1.0_rc2 (01 Mar 2009)
 

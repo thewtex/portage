@@ -1,6 +1,6 @@
 # Copyright 2006-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-cpp/sptk/sptk-3.5.8.10.ebuild,v 1.1 2009/02/20 07:59:28 iluxa Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-cpp/sptk/sptk-3.5.8.10.ebuild,v 1.4 2009/03/16 19:14:06 iluxa Exp $
 
 EAPI=1
 
@@ -20,7 +20,7 @@ RDEPEND="fltk?    ( >=x11-libs/fltk-1.1.6:1.1 )
 	odbc?     ( >=dev-db/unixODBC-2.2.6 )
 	sqlite?   ( >=dev-db/sqlite-3 )
 	postgres? ( >=virtual/postgresql-base-8.0 )
-	mysql?    ( dev-db/mysql )
+	mysql?    ( virtual/mysql )
 	aspell?   ( >=app-text/aspell-0.50 )"
 
 DEPEND="${RDEPEND}
@@ -38,20 +38,19 @@ sptk_use_enable() {
 src_unpack() {
 	unpack ${A}
 	cd "${S}"
+}
 
+src_compile() {
 	sptk_use_enable examples EXAMPLES
 	sptk_use_enable postgres POSTGRESQL
 	sptk_use_enable mysql    MYSQL
-	sptk_use_enable sqlite3  SQLITE3
+	sptk_use_enable sqlite   SQLITE3
 	sptk_use_enable odbc     ODBC
 	sptk_use_enable aspell   ASPELL
 	sptk_use_enable fltk     FLTK
 	sptk_use_enable excel    EXCEL
 
 	cmake -D CMAKE_INSTALL_PREFIX:PATH=/usr -D LIBDIR=$(get_libdir) ${SPTK_OPTIONS} .  || die "Configuration Failed"
-}
-
-src_compile() {
 
 	emake || die "Parallel Make Failed"
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/qemu-softmmu/qemu-softmmu-0.10.0.ebuild,v 1.2 2009/03/07 06:35:59 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/qemu-softmmu/qemu-softmmu-0.10.0.ebuild,v 1.7 2009/03/18 22:27:16 lu_zero Exp $
 
 inherit eutils flag-o-matic toolchain-funcs
 
@@ -19,7 +19,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86 ~ppc ~ppc64"
 
 IUSE="alsa esd gnutls ncurses pulseaudio +sdl vde kqemu"
-RESTRICT="test binchecks"
+RESTRICT="test"
 
 RDEPEND="sys-libs/zlib
 	alsa? ( >=media-libs/alsa-lib-1.0.13 )
@@ -29,8 +29,8 @@ RDEPEND="sys-libs/zlib
 	ncurses? ( sys-libs/ncurses )
 	sdl? ( >=media-libs/libsdl-1.2.11 )
 	vde? ( net-misc/vde )
-	fdt? ( sys-apps/dtc )
 	kqemu? ( >=app-emulation/kqemu-1.4.0_pre1 )"
+#	fdt? ( sys-apps/dtc )
 
 DEPEND="${RDEPEND}
 	gnutls? ( dev-util/pkgconfig )
@@ -42,6 +42,8 @@ src_unpack() {
 	unpack ${A}
 
 	cd "${S}"
+	# avoid fdt till an updated release appears
+	sed -i -e 's:fdt="yes":fdt="no"' configure
 	# prevent docs to get automatically installed
 	sed -i '/$(DESTDIR)$(docdir)/d' Makefile
 	# Alter target makefiles to accept CFLAGS set via flag-o
@@ -73,27 +75,9 @@ src_compile() {
 	use pulseaudio && audio_opts="pa $audio_opts"
 	use sdl && audio_opts="sdl $audio_opts"
 
-	./configure ${conf_opts} --audio-drv-list="$audio_opts" || die "econf failed"
-
-	mycc=$(cat qemu/config-host.mak | egrep "^CC=" | cut -d "=" -f 2)
-
 	filter-flags -fpie -fstack-protector
 
-	# If using gentoo's compiler set the SPEC to non-hardened
-	if [ ! -z ${GCC_SPECS} -a -f ${GCC_SPECS} ]; then
-		local myccver=$(${mycc} -dumpversion)
-		local gccver=$($(tc-getBUILD_CC) -dumpversion)
-
-		#Is this a SPEC for the right compiler version?
-		myspec="${GCC_SPECS/${gccver}/${myccver}}"
-		if [ "${myspec}" == "${GCC_SPECS}" ]; then
-			shopt -s extglob
-			GCC_SPECS="${GCC_SPECS/%hardened*specs/vanilla.specs}"
-			shopt -u extglob
-		else
-			unset GCC_SPECS
-		fi
-	fi
+	./configure ${conf_opts} --audio-drv-list="$audio_opts" || die "econf failed"
 
 	emake || die "emake qemu failed"
 
