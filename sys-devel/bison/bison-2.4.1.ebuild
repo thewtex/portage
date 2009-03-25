@@ -10,7 +10,7 @@ SRC_URI="mirror://gnu/bison/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="x86 amd64"
 IUSE="nls static liby"
 
 # need flex since we patch scan-code.l in ${P}-compat.patch
