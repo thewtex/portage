@@ -11,7 +11,7 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.lzma"
 
 LICENSE="GPL-2"
 SLOT="1.5"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~sparc-fbsd ~x86 ~x86-fbsd"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~sparc-fbsd x86 ~x86-fbsd"
 IUSE="vanilla"
 
 RDEPEND="sys-devel/gnuconfig

@@ -10,7 +10,7 @@ SRC_URI="http://www.porcupine.org/forensics/${P}.tar.gz"
 
 LICENSE="IBM as-is"
 SLOT="0"
-KEYWORDS="~ppc ~x86"
+KEYWORDS="~ppc x86"
 IUSE=""
 
 DEPEND=">=dev-lang/perl-5.0004

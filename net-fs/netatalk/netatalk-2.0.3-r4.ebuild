@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~sh ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 ~sh ~sparc x86 ~x86-fbsd"
 IUSE="ssl pam tcpd slp cups kerberos krb4 debug cracklib xfs"
 
 RDEPEND=">=sys-libs/db-4.2.52
