@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/colorsvn/colorsvn-0.3.2.ebuild,v 1.1 2009/03/10 00:51:31 idl0r Exp $
 
 DESCRIPTION="Subversion output colorizer"
 HOMEPAGE="http://colorsvn.tigris.org"
@@ -19,9 +19,9 @@ src_unpack() {
 	unpack ${A}
 	cd "${S}"
 
-	# rxvt-unicode isn't listed by default
+	# rxvt-unicode isn't listed by default :)
 	sed -i -e 's:rxvt:rxvt rxvt-unicode:' \
-	colorsvnrc-original || die "sed failed"
+		colorsvnrc-original || die "sed failed"
 }
 
 src_install() {
@@ -32,11 +32,11 @@ src_install() {
 pkg_postinst() {
 	einfo
 	einfo "The default settings are stored in /etc/colorsvnrc."
-	einfo "They can be locally overridden with ~/.colorsvnrc."
+	einfo "They can be locally overridden by ~/.colorsvnrc."
 	einfo "An alias to colorsvn was installed for the svn command."
 	einfo "In order to immediately activate it do:"
 	einfo "\tsource /etc/profile"
-	einfo "NOTE: if you don't see colors,"
-	einfo "add \$TERM to 'colortty' in your colorsvnrc."
+	einfo "NOTE: If you don't see colors,"
+	einfo "append the output of 'echo \$TERM' to 'colortty' in your colorsvnrc."
 	einfo
 }

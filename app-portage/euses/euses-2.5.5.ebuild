@@ -1,10 +1,8 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-portage/euses/euses-2.5.5.ebuild,v 1.6 2008/10/18 14:43:12 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-portage/euses/euses-2.5.5.ebuild,v 1.7 2009/03/18 18:51:13 jer Exp $
 
 inherit toolchain-funcs autotools
-
-WANT_AUTOCONF="latest"
 
 DESCRIPTION="look up USE flag descriptions fast"
 HOMEPAGE="http://www.xs4all.nl/~rooversj/gentoo"

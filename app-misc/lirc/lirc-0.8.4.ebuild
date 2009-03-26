@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/lirc/lirc-0.8.4.ebuild,v 1.3 2009/03/07 16:27:11 fauli Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/lirc/lirc-0.8.4.ebuild,v 1.6 2009/03/18 07:18:10 josejx Exp $
 
 inherit eutils linux-mod flag-o-matic autotools
 
@@ -17,7 +17,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 x86"
+KEYWORDS="amd64 ppc ~ppc64 x86"
 IUSE="debug doc X hardware-carrier transmitter"
 
 S="${WORKDIR}/${MY_P}"
@@ -217,11 +217,11 @@ pkg_setup() {
 	BUILD_TARGETS="all"
 
 	ECONF_PARAMS="	--localstatedir=/var
-			        --with-syslog=LOG_DAEMON
-			        --enable-sandboxed
-	    		    --with-kerneldir=${KV_DIR}
-			        --with-moduledir=/lib/modules/${KV_FULL}/misc
-	    		    $(use_enable debug)
+					--with-syslog=LOG_DAEMON
+					--enable-sandboxed
+					--with-kerneldir=${KV_DIR}
+					--with-moduledir=/lib/modules/${KV_FULL}/misc
+					$(use_enable debug)
 					$(use_with X x)
 					${MY_OPTS}"
 
@@ -244,6 +244,7 @@ src_unpack() {
 
 	# Apply patches needed for some special device-types
 	epatch "${FILESDIR}"/${P}-imon-pad2keys.patch
+	use lirc_devices_audio || epatch "${FILESDIR}"/lirc-0.8.4-portaudio_check.patch
 	use lirc_devices_remote_wonder_plus && epatch "${FILESDIR}"/lirc-0.8.3_pre1-remotewonderplus.patch
 
 	# remove parallel driver on SMP systems

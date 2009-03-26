@@ -1,14 +1,15 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/nokogiri/nokogiri-1.2.1.ebuild,v 1.1 2009/02/27 16:10:41 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/nokogiri/nokogiri-1.2.1.ebuild,v 1.3 2009/03/18 17:59:26 ranger Exp $
 
 inherit gems
+USE_RUBY="ruby18"
 
 DESCRIPTION="Nokogiri is an HTML, XML, SAX, and Reader parser."
 HOMEPAGE="http://nokogiri.rubyforge.org/"
 LICENSE="MIT"
 
-KEYWORDS="~amd64 ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~ppc ~sparc ~x86 ~x86-fbsd"
 SLOT="0"
 IUSE=""
 

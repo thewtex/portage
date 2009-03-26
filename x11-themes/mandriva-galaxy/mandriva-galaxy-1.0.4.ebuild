@@ -1,4 +1,4 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -18,10 +18,9 @@ IUSE="kde"
 
 DEPEND=">=x11-libs/gtk+-2.0
 	kde? ( || ( kde-base/kwin:3.5 kde-base/kdebase:3.5 ) )"
+RDEPEND=${DEPEND}
 
-RDEPEND="${DEPEND}"
-
-S="${WORKDIR}/galaxy-${PV}"
+S=${WORKDIR}/galaxy-${PV}
 
 src_unpack() {
 	rpm_src_unpack
@@ -32,13 +31,12 @@ src_unpack() {
 }
 
 src_compile() {
-	set-qtdir 3
-	set-kdedir 3
-	econf || die "econf failed"
+	set-kdedir 3.5
+	econf
 	emake || die "emake failed"
 }
 
 src_install() {
 	emake DESTDIR="${D}" install || die "emake install failed"
-	dodoc AUTHORS README ChangeLog
+	dodoc AUTHORS README ChangeLog || die "dodoc failed"
 }

@@ -64,4 +64,4 @@ VIDEO_CARDS="dummy fbdev v4l"
 # after discussion on the gentoo-dev ML. As we bang out a clear
 # direction with how LDFLAGS will be set by default, this entry
 # may move.
-LDFLAGS="-Wl,-O1"
+LDFLAGS="-Wl,-O1 -Wl,--sort-common -Wl,--as-needed"
