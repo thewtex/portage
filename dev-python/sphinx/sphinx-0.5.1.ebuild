@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/sphinx/sphinx-0.5.1.ebuild,v 1.1 2009/01/14 17:46:06 bicatali Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/sphinx/sphinx-0.5.1.ebuild,v 1.2 2009/03/27 09:57:42 bicatali Exp $
 
 inherit distutils
 
@@ -23,6 +23,8 @@ DEPEND="${RDEPEND}
 	dev-python/setuptools
 	test? ( dev-python/nose )"
 
+# tests buggy - bug #262608
+RESTRICT=test
 S="${WORKDIR}/${MY_P}"
 
 src_compile() {

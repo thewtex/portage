@@ -1,13 +1,13 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-strategy/tornado/tornado-1.3.ebuild,v 1.7 2009/02/12 14:09:39 tupone Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-strategy/tornado/tornado-1.3.ebuild,v 1.8 2009/03/27 02:04:04 mr_bones_ Exp $
 
 EAPI=2
 inherit eutils games
 
 DESCRIPTION="Clone of a C64 game -  destroy the opponent's house"
-HOMEPAGE="http://home.kcore.de/~kiza/linux/tornado/"
-SRC_URI="http://home.kcore.de/~kiza/linux/tornado/download/${P}.tar.gz"
+HOMEPAGE="http://kiza.kcore.de/software/tornado/"
+SRC_URI="http://kiza.kcore.de/software/tornado/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
