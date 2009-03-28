@@ -1,6 +1,6 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/boost/boost-1.35.0-r2.ebuild,v 1.1 2008/09/01 18:37:20 dev-zero Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/boost/boost-1.35.0-r2.ebuild,v 1.4 2009/03/25 01:34:13 dirtyepic Exp $
 
 inherit python flag-o-matic multilib toolchain-funcs versionator check-reqs
 
@@ -23,7 +23,7 @@ RDEPEND="icu? ( >=dev-libs/icu-3.3 )
 	sys-libs/zlib
 	virtual/python"
 DEPEND="${RDEPEND}
-	>=dev-util/boost-build-${PV}-r1"
+	=dev-util/boost-build-${PV}-r1"
 
 S=${WORKDIR}/${MY_P}
 
@@ -73,10 +73,12 @@ generate_options() {
 	# Using optimization=off would for example add
 	# "-O0" and override "-O2" set by the user.
 	# Please take a look at the boost-build ebuild
-	# for more infomration.
+	# for more information.
 
-	OPTIONS="gentoorelease"
-	use debug && OPTIONS="gentoodebug"
+	BUILDNAME="gentoorelease"
+	use debug && BUILDNAME="gentoodebug"
+
+	OPTIONS="${BUILDNAME}"
 
 	use icu && OPTIONS="${OPTIONS} -sICU_PATH=/usr"
 	if use expat ; then
@@ -150,16 +152,6 @@ src_compile() {
 			--layout=system \
 			|| die "building tools failed"
 	fi
-
-	if has test ${FEATURES} ; then
-		cd "${S}/tools/regression/build"
-		bjam -q \
-			${OPTIONS} \
-			--prefix="${D}/usr" \
-			--layout=system \
-			|| die "building regression test helpers failed"
-	fi
-
 }
 
 src_install () {
@@ -220,8 +212,8 @@ src_install () {
 		doins -r share
 	fi
 
-	if has test ${FEATURES} ; then
-		cd "${S}/status"
+	cd "${S}/status"
+	if [ -f regress.log ]; then
 		docinto status
 		dohtml *.{html,gif} ../boost.png
 		dodoc regress.log
@@ -232,6 +224,14 @@ src_test() {
 	generate_options
 
 	export BOOST_ROOT=${S}
+
+	cd "${S}/tools/regression/build"
+	bjam -q \
+		${OPTIONS} \
+		--prefix="${D}/usr" \
+		--layout=system \
+		process_jam_log compiler_status \
+		|| die "building regression test helpers failed"
 
 	cd "${S}/status"
 
@@ -247,7 +247,7 @@ src_test() {
 		--dump-tests 2>&1 | tee regress.log
 
 	# Postprocessing
-	cat regress.log | "${S}/dist/bin/process_jam_log" --v2
+	cat regress.log | "${S}/tools/regression/build/bin/gcc-$(gcc-version)/${BUILDNAME}/process_jam_log" --v2
 	if test $? != 0 ; then
 		die "Postprocessing the build log failed"
 	fi
@@ -257,7 +257,7 @@ src_test() {
 __EOF__
 
 	# Generate the build log html summary page
-	"${S}/dist/bin/compiler_status" --v2 \
+	"${S}/tools/regression/build/bin/gcc-$(gcc-version)/${BUILDNAME}/compiler_status" --v2 \
 		--comment "${S}/status/comment.html" "${S}" \
 		cs-$(uname).html cs-$(uname)-links.html
 	if test $? != 0 ; then

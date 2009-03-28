@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/memtest86+/memtest86+-2.11.ebuild,v 1.2 2009/02/09 21:26:48 spock Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/memtest86+/memtest86+-2.11.ebuild,v 1.4 2009/03/26 08:42:03 spock Exp $
 
 inherit mount-boot eutils
 
@@ -11,11 +11,11 @@ SRC_URI="http://www.memtest.org/download/${PV}/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
-IUSE="serial"
+IUSE="floppy serial"
 RESTRICT="test"
 
-DEPEND=""
-RDEPEND=""
+RDEPEND="floppy? ( >=sys-boot/grub-0.95 sys-fs/mtools )"
+DEPEND="${RDEPEND}"
 
 src_unpack() {
 	unpack ${A}
@@ -37,6 +37,11 @@ src_install() {
 	insinto /boot/memtest86plus
 	doins memtest.bin || die
 	dodoc README README.build-process
+
+	if use floppy ; then
+		dobin "${FILESDIR}"/make-memtest86+-boot-floppy
+		doman "${FILESDIR}"/make-memtest86+-boot-floppy.1
+	fi
 }
 
 pkg_postinst() {
@@ -45,22 +50,9 @@ pkg_postinst() {
 	einfo "You may wish to update your bootloader configs"
 	einfo "by adding these lines:"
 
-	# a little magic to make users' life as easy as possible ;)
-	local fstab=${ROOT}/etc/fstab
-	local root="(hd0,0)"
-	local res=$(awk '$2 == "/boot" {print $1}' "${fstab}")
-	if [[ -z ${res} ]] ; then
-		res=$(awk '$2 == "/" {print $1}' "${fstab}")
-	fi
-	if [[ -n ${res} ]] ; then
-		# transform /dev/hd* magic into grub naming ...
-		#        /dev/hda1   ->         a1          ->      01
-		root=$(echo "${res}" | grep -o '[a-z][0-9]\+' | tr -t a-z 0123456789)
-		root="(hd${root:0:1},$((${root:1:3}-1)))"
-	fi
-	einfo " - For grub:"
+	einfo " - For grub: (replace '?' with correct numbers for your boot partition)"
 	einfo "    > title=Memtest86Plus"
-	einfo "    > root ${root}"
+	einfo "    > root (hd?,?)"
 	einfo "    > kernel /boot/memtest86plus/memtest.bin"
 
 	einfo " - For lilo:"
