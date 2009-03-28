@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-tv/xbmc/xbmc-9999.ebuild,v 1.15 2009/03/07 20:44:42 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-tv/xbmc/xbmc-9999.ebuild,v 1.19 2009/03/26 23:51:52 vapier Exp $
 
 # XXX: be nice to split out packages that come bundled and use the
 #      system libraries ...
@@ -26,7 +26,7 @@ HOMEPAGE="http://xbmc.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="alsa debug joystick opengl profile pulseaudio"
+IUSE="alsa debug joystick opengl profile pulseaudio vdpau"
 
 RDEPEND="opengl? ( virtual/opengl )
 	app-arch/bzip2
@@ -36,6 +36,7 @@ RDEPEND="opengl? ( virtual/opengl )
 	>=dev-lang/python-2.4
 	dev-libs/boost
 	dev-libs/fribidi
+	dev-libs/libcdio
 	dev-libs/libpcre
 	dev-libs/lzo
 	>=dev-python/pysqlite-2
@@ -48,7 +49,7 @@ RDEPEND="opengl? ( virtual/opengl )
 	media-libs/libmad
 	media-libs/libogg
 	media-libs/libvorbis
-	media-libs/libsdl[alsa,X]
+	media-libs/libsdl[alsa,audio,video,X]
 	media-libs/sdl-gfx
 	media-libs/sdl-image[gif,jpeg,png]
 	media-libs/sdl-mixer
@@ -98,6 +99,9 @@ src_unpack() {
 	mv media/Fonts/{a,A}rial.ttf
 	mv media/{S,s}plash.png
 
+	# Do not use termcap #262822
+	sed -i 's:-ltermcap::' xbmc/lib/libPython/Python/configure
+
 	# Clean up XBMC's wrapper script
 	#  - dont muck with gnome screensaver stuff, make user do it
 	#  - if alsa has oss support, we want to fix the default
@@ -122,7 +126,8 @@ src_configure() {
 		$(use_enable joystick) \
 		$(use_enable opengl gl) \
 		$(use_enable profile profiling) \
-		$(use_enable pulseaudio pulse)
+		$(use_enable pulseaudio pulse) \
+		$(use_enable vdpau)
 }
 
 src_install() {

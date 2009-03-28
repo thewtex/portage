@@ -1,8 +1,9 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/imaging/imaging-1.1.6.ebuild,v 1.7 2009/03/07 21:38:45 josejx Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/imaging/imaging-1.1.6.ebuild,v 1.8 2009/03/20 18:52:16 bicatali Exp $
 
-inherit distutils multilib
+EAPI=2
+inherit eutils distutils
 
 MY_P=Imaging-${PV}
 
@@ -17,26 +18,15 @@ IUSE="doc examples scanner tk X"
 
 DEPEND=">=media-libs/jpeg-6a
 	>=media-libs/freetype-2.1.5
-	tk? ( dev-lang/tk )
+	tk? ( dev-lang/python[tk?] )
 	scanner? ( media-gfx/sane-backends )
 	X? ( media-gfx/xv )"
 RDEPEND="${DEPEND}"
 
 PYTHON_MODNAME=PIL
-S=${WORKDIR}/${MY_P}
+S="${WORKDIR}/${MY_P}"
 
-pkg_setup() {
-	if use tk && ! built_with_use dev-lang/python tk; then
-		eerror "Python has to be compiled with tkinter support."
-		eerror "Please re-emerge python with the 'tk' USE-flag set."
-		die "Missing USE-flag for dev-lang/python"
-	fi
-}
-
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-
+src_prepare() {
 	sed -i \
 		-e "s:/lib\":/$(get_libdir)\":" \
 		-e "s:\"lib\":\"$(get_libdir)\":" \

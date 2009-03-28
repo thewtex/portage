@@ -1,6 +1,6 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/gtkhotkey/gtkhotkey-0.2.0.ebuild,v 1.5 2008/11/30 14:55:46 serkan Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/gtkhotkey/gtkhotkey-0.2.0.ebuild,v 1.8 2009/03/22 16:21:47 maekke Exp $
 
 EAPI="2"
 
@@ -8,13 +8,17 @@ inherit versionator eutils autotools
 
 MY_CRV=$(get_version_component_range 1-2)
 
+RESTRICT="test"
+# Tests try to access live filesystem
+# See http://bugs.gentoo.org/show_bug.cgi?id=259052#c3
+
 DESCRIPTION="Cross platform library for using desktop wide hotkeys"
 HOMEPAGE="http://launchpad.net/gtkhotkey"
 SRC_URI="http://launchpad.net/${PN}/${MY_CRV}/${PV}/+download/${P}.tar.gz"
 
 LICENSE="LGPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 IUSE=""
 
 COMMON_DEPEND=">=dev-libs/glib-2.16
@@ -30,6 +34,7 @@ DEPEND="${COMMON_DEPEND}
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-buildfixes.patch
+	epatch "${FILESDIR}"/${P}-fix-implicit-declaration.patch
 	eautoreconf
 	sed -i -e "s: install-gtkhotkeydocDATA ::" Makefile.in || die "Patching Makefile.in failed"
 }

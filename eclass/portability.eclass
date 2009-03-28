@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/portability.eclass,v 1.11 2007/01/01 22:27:01 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/portability.eclass,v 1.13 2009/03/27 08:00:56 drizzt Exp $
 #
 # Author: Diego Pettenò <flameeyes@gentoo.org>
 #
@@ -54,7 +54,12 @@ seq() {
 
 # Gets the linker flag to link to dlopen() function
 dlopen_lib() {
-	if [[ ${ELIBC} != *BSD ]]; then
+	# this might need a proper case statement, so far this seems to work as is
+	# - Solaris needs nothing
+	# - Darwin needs nothing
+	# - *BSD needs nothing
+	# - Linux needs -ldl (glibc and uclibc)
+	if [[ ${CHOST} == *-linux-gnu || ${CHOST} == *-linux-uclibc ]]; then
 		echo "-ldl"
 	fi
 }

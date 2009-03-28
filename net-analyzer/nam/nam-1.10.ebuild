@@ -1,6 +1,6 @@
-# Copyright 1999-2007 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nam/nam-1.10.ebuild,v 1.8 2007/07/22 07:54:23 pva Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nam/nam-1.10.ebuild,v 1.10 2009/03/20 20:16:04 jmbsvicetto Exp $
 
 DESCRIPTION="Network Simulator GUI for NS"
 HOMEPAGE="http://www.isi.edu/nsnam/${PN}/"
@@ -27,8 +27,6 @@ findtclver() {
 	[ -n "$*" ] && ACCEPTVER="$*"
 	for i in ${ACCEPTVER}; do
 		use debug && einfo "Testing TCL ${i}"
-		# we support being more specific
-		[ "$(#i)" = "3" ] && i="${i}*"
 		has_version ">=dev-lang/tcl-${i}" && mytclver=${i}
 	done
 	use debug && einfo "Using TCL ${mytclver}"
@@ -52,10 +50,10 @@ src_compile() {
 
 src_install() {
 	dodir /usr/bin
-	make DESTDIR=${D} install || die
+	make DESTDIR="${D}" install || die
 	dohtml CHANGES.html TODO.html
 	dodoc FILES VERSION INSTALL.WIN32 README
-	cp -ra ex ${D}/usr/share/doc/${PF}/examples
-	cp -ra iecdemos edu ${D}/usr/share/doc/${PF}
+	cp -ra ex "${D}/usr/share/doc/${PF}/examples"
+	cp -ra iecdemos edu "${D}/usr/share/doc/${PF}"
 	doman nam.1
 }

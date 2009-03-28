@@ -1,5 +1,5 @@
 dev-python/setuptools >=dev-python/numpy-1.1 >=sci-libs/vtk-5[python] virtual/python
-dev-python/apptools dev-python/enthoughtbase dev-python/envisagecore dev-python/envisageplugins dev-python/traitsgui dev-python/configobj dev-python/ipython dev-python/wxpython:2.8 >=dev-python/numpy-1.1 >=sci-libs/vtk-5[python]
+dev-python/apptools dev-python/enthoughtbase dev-python/envisagecore dev-python/envisageplugins dev-python/traitsgui dev-python/configobj dev-python/ipython >=dev-python/numpy-1.1 >=sci-libs/vtk-5[python] qt4? ( dev-python/PyQt4[opengl] ) wxwindows? ( dev-python/wxpython:2.8[opengl] ) !wxwindows? ( !qt4? ( dev-python/wxpython:2.8[opengl] ) )
 2
 http://pypi.python.org/packages/source/M/Mayavi/Mayavi-3.1.0.tar.gz
 
@@ -8,7 +8,7 @@ BSD
 VTK based scientific data visualizer
 ~amd64 ~x86
 toolchain-funcs distutils portability python alternatives multilib eutils
-doc examples
+doc examples qt4 wxwindows
 
 
 

@@ -17,11 +17,15 @@ IUSE="lzma nls"
 # group adding function needs the "groupadd" command in the shadow package. And
 # I don't want to add a global shadow dep to eutils even though one probabl
 # should be added - don't want to break too much stuff.
+# jefferai - it's also needed in RDEPEND because binary packages only use
+# RDEPEND, so installing using binary packages can try to install this package
+# before shadow
 DEPEND="nls? ( sys-devel/gettext ) sys-apps/shadow"
 RDEPEND=">=sys-apps/groff-1.19.2-r1
 	!sys-apps/man-db
 	!app-arch/lzma
-	lzma? ( app-arch/lzma-utils )"
+	lzma? ( app-arch/lzma-utils )
+	sys-apps/shadow"
 PROVIDE="virtual/man"
 
 pkg_setup() {

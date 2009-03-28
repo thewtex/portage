@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-visualization/mayavi/mayavi-3.1.0.ebuild,v 1.1 2009/01/15 10:31:48 bicatali Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-visualization/mayavi/mayavi-3.1.0.ebuild,v 1.3 2009/03/27 10:55:03 bicatali Exp $
 
 EAPI=2
 inherit eutils distutils
@@ -11,7 +11,7 @@ DESCRIPTION="VTK based scientific data visualizer"
 HOMEPAGE="http://code.enthought.com/projects/mayavi"
 SRC_URI="http://pypi.python.org/packages/source/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
-IUSE="doc examples"
+IUSE="doc examples qt4 wxwindows"
 SLOT="2"
 KEYWORDS="~amd64 ~x86"
 LICENSE="BSD"
@@ -23,9 +23,11 @@ RDEPEND="dev-python/apptools
 	dev-python/traitsgui
 	dev-python/configobj
 	dev-python/ipython
-	dev-python/wxpython:2.8
 	>=dev-python/numpy-1.1
-	>=sci-libs/vtk-5[python]"
+	>=sci-libs/vtk-5[python]
+	qt4? ( dev-python/PyQt4[opengl] )
+	wxwindows? ( dev-python/wxpython:2.8[opengl] )
+	!wxwindows? ( !qt4? ( dev-python/wxpython:2.8[opengl] ) )"
 
 DEPEND="dev-python/setuptools
 	>=dev-python/numpy-1.1

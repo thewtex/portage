@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/beagle/beagle-0.3.9.ebuild,v 1.2 2009/01/28 20:37:04 loki_val Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/beagle/beagle-0.3.9.ebuild,v 1.4 2009/03/25 22:51:17 loki_val Exp $
 
 EAPI=2
 
@@ -85,13 +85,23 @@ DEPEND="${RDEPEND}
 pkg_setup() {
 	enewgroup beagleindex
 	enewuser beagleindex -1 -1 /var/lib/cache/beagle beagleindex
+	if use thunderbird
+	then
+		if ! use inotify
+		then
+			eerror "You have enabled the thunderbird use flag. This use-flag depends on the inotify use-flag."
+			eerror "Please enable the inotify use-flag also."
+			eerror "See http://bugs.gentoo.org/263781 for more information."
+			die "Please enable inotify use-flag."
+		fi
+	fi
 }
 
 src_prepare() {
 	epatch "${WORKDIR}/patches/${PN}-0.3.8-gmime-2.4.patch"
 
 	#Fix bug 248703
-	sed -i  -e 's:VALID_EPIPHANY_VERSIONS=":VALID_EPIPHANY_VERSIONS="2.24 :' \
+	sed -i  -e 's:VALID_EPIPHANY_VERSIONS=":VALID_EPIPHANY_VERSIONS="2.26 2.25 2.24 :' \
 		configure.in || die "epiphany sed failed"
 
 	#Fix bugs.gnome.org/556243
