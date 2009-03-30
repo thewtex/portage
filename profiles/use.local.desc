@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4318 2009/03/28 22:27:46 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4323 2009/03/29 23:47:44 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -2306,8 +2306,8 @@ net-print/hplip:gtk - Enable GTK+ dependencies, currently only the scanner GUI w
 net-print/hplip:minimal - Only build internal hpijs driver (not recommended at all, make sure you know what you are doing)
 net-print/hplip:parport - Enable parallel port for devices which require it
 net-print/hplip:ppds - Use precompiled PPD files (obsolete, use cupsddk instead)
-net-print/hplip:qt3 - Enable graphical interface using Qt 3 (recommended); when both qt3 and qt4 USE flags are enabled then qt3 is prioritary over qt4
-net-print/hplip:qt4 - Enable graphical interface using Qt 4 (experimental); when both qt3 and qt4 USE flags are enabled then qt3 is prioritary over qt4
+net-print/hplip:qt3 - Enable graphical interface using Qt 3; when both qt3 and qt4 USE flags are enabled then qt4 has priority over qt3
+net-print/hplip:qt4 - Enable graphical interface using Qt 4; when both qt3 and qt4 USE flags are enabled then qt4 has priority over qt3
 net-print/hplip:scanner - Enable scanner on multifunction devices which support it 
 net-print/hplip:snmp - Add support for net-analyzer/net-snmp which enables this driver to work over networks (both for server and client)
 net-print/pkpgcounter:psyco - psyco python accelerator
@@ -2655,8 +2655,10 @@ sys-freebsd/freebsd-usbin:isdn - Enable ISDN support.
 sys-freebsd/freebsd-usbin:nat - Enable Network Address Translation support daemon.
 sys-fs/cryptsetup:dynamic - Build cryptsetup dynamically
 sys-fs/ecryptfs-utils:gpg - Enable app-crypt/gnupg key module
+sys-fs/ecryptfs-utils:nss - Enable support for dev-libs/nss
 sys-fs/ecryptfs-utils:openssl - Enable dev-libs/openssl key module
 sys-fs/ecryptfs-utils:pkcs11 - Enable PKCS#11 (Smartcards) key module
+sys-fs/ecryptfs-utils:tpm - Enable support for Trusted Platform Module (TPM) using app-crypt/trousers
 sys-fs/evms:hb - Enable support for heartbeat-1
 sys-fs/evms:hb2 - Enable support for heartbeat-2
 sys-fs/loop-aes:keyscrub - Protects the encryption key in memory but takes more cpu resources
@@ -2709,6 +2711,7 @@ sys-power/powerman:httppower -  Add support for HTTP based power controllers
 sys-power/suspend:fbsplash - Add support for framebuffer splash
 sys-process/cronie:inotify - Enable inotify filesystem monitoring support.
 sys-process/procps:n32 - Enable n32 ABI support on mips
+virtual/poppler-utils:abiword -  Enable support for app-office/abiword output. Requires dev-libs/libxml2. 
 www-apache/mod_ftpd:dbi - Enables dev-db/libdbi support
 www-apache/mod_log_sql:dbi - Enables dev-db/libdbi support
 www-apache/mod_mono:aspnet2 - Handle all applications using ASP.NET 2.0 engine by default
@@ -2899,3 +2902,4 @@ xfce-base/xfdesktop:file-icons - Build support for application launchers using x
 xfce-base/xfdesktop:menu-plugin - Build Menu plug-in for panel
 xfce-extra/thunar-thumbnailers:grace - Enable support for sci-visualization/grace thumbnails
 xfce-extra/xfce4-mpc:libmpd - Build using media-libs/libmpd backend, instead of native fallback which is preferred
+xfce-extra/xfce4-power-manager:xfce - Build Xfce4 panel plugins
