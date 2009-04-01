@@ -2,6 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: /var/cvsroot/gentoo-x86/net-irc/weechat/weechat-0.2.6.1.ebuild,v 1.3 2009/03/24 18:53:01 ranger Exp $
 
+inherit eutils 
+
 DESCRIPTION="Portable and multi-interface IRC client."
 HOMEPAGE="http://weechat.flashtux.org/"
 SRC_URI="http://weechat.flashtux.org/download/${P}.tar.bz2"
@@ -21,12 +23,24 @@ DEPEND="sys-libs/ncurses
 	spell? ( app-text/aspell )"
 RDEPEND="${DEPEND}"
 
-src_compile() {
+EAPI="2"
+
+src_prepare() {
+	epatch ${FILESDIR}/0001-weechat-dblatex-tex4ht.patch || die "patch failed"
+}
+
+src_configure() {
+	mkdir m4
+	einfo "Regenerating autotools files ..."
+	WANT_AUTOCONF=2.6 autoconf || die "autoreconf failed"
+	libtoolize --copy --force || die "libtoolize fail"
+
 	# The qt and gtk frontends are not usable, so they're disabled
 	econf \
 		--enable-ncurses \
 		--disable-qt \
 		--disable-gtk \
+		--with-doc-xsl-prefix=/usr/share/sgml/docbook/xsl-stylesheets \
 		$(use_enable perl) \
 		$(use_enable python) \
 		$(use_enable ruby) \
@@ -35,7 +49,6 @@ src_compile() {
 		$(use_enable spell aspell) \
 		$(use_with debug debug 2) \
 		|| die "econf failed"
-	emake || die "emake failed"
 }
 
 src_install() {

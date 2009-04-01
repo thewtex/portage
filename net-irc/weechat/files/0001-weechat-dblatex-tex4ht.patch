@@ -1,0 +1,38 @@
+From 0052a5c6e793cd53e22e08ab06ff8eefd27a50ca Mon Sep 17 00:00:00 2001
+From: Matt McCormick (thewtex) <matt@mmmccormick.com>
+Date: Tue, 31 Mar 2009 23:03:45 -0500
+Subject: [PATCH] weechat dblatex tex4ht
+
+dblatex is a separate program from the dblatex provided by
+dev-tex/tex4ht
+---
+ configure.in |    6 +-----
+ 1 files changed, 1 insertions(+), 5 deletions(-)
+
+diff --git a/configure.in b/configure.in
+index d6e80b9..6026b8b 100644
+--- a/configure.in
++++ b/configure.in
+@@ -659,10 +659,6 @@ fi
+ 
+ msg_doc=""
+ 
+-if test "x$DBLATEX_FOUND" = "xyes"; then
+-    msg_doc="pdf $msg_doc"
+-fi
+-
+ AC_MSG_CHECKING(for html/chunk.xsl)
+ DOC_XSL_PREFIX=""
+ 
+@@ -784,7 +780,7 @@ AM_CONDITIONAL(PLUGIN_ASPELL,  test "$enable_aspell" = "yes")
+ AM_CONDITIONAL(PLUGIN_CHARSET, test "$enable_charset" = "yes")
+ AM_CONDITIONAL(HAVE_GNUTLS,    test "$enable_gnutls" = "yes")
+ AM_CONDITIONAL(HAVE_FLOCK,     test "$enable_flock" = "yes")
+-AM_CONDITIONAL(DBLATEX_FOUND,  test "$DBLATEX_FOUND" = "yes")
++AM_CONDITIONAL(DBLATEX_FOUND, test "dontwantit" = "yes") 
+ 
+ AC_OUTPUT([Makefile
+            doc/Makefile
+-- 
+1.6.2
+
