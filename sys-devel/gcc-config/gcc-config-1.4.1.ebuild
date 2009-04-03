@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~sparc-fbsd ~x86 ~x86-fbsd"
 IUSE=""
 
-RDEPEND="!app-admin/eselect-compiler"
+RDEPEND="!app-admin/eselect-compiler sys-apps/openrc"
 
 S=${WORKDIR}
 
