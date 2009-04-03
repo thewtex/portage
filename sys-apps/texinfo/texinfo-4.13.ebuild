@@ -6,19 +6,15 @@ inherit flag-o-matic
 
 DESCRIPTION="The GNU info program and utilities"
 HOMEPAGE="http://www.gnu.org/software/texinfo/"
-SRC_URI="mirror://gnu/${PN}/${P}.tar.lzma"
+SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc ~sparc-fbsd x86 ~x86-fbsd"
 IUSE="nls static"
 
-RDEPEND="!=app-text/tetex-2*
-	>=sys-libs/ncurses-5.2-r2
-	nls? ( virtual/libintl )"
-DEPEND="${RDEPEND}
-	app-arch/lzma-utils
-	nls? ( sys-devel/gettext )"
+RDEPEND="!=app-text/tetex-2* >=sys-libs/ncurses-5.2-r2 nls? ( virtual/libintl )"
+DEPEND="${RDEPEND} nls? ( sys-devel/gettext )"
 
 src_compile() {
 	use static && append-ldflags -static

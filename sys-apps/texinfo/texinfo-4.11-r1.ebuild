@@ -13,11 +13,8 @@ SLOT="0"
 KEYWORDS="alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86"
 IUSE="nls static"
 
-RDEPEND="!=app-text/tetex-2*
-	>=sys-libs/ncurses-5.2-r2
-	nls? ( virtual/libintl )"
-DEPEND="${RDEPEND}
-	nls? ( sys-devel/gettext )"
+RDEPEND="!=app-text/tetex-2* >=sys-libs/ncurses-5.2-r2 nls? ( virtual/libintl )"
+DEPEND="${RDEPEND} nls? ( sys-devel/gettext )"
 
 src_unpack() {
 	unpack ${A}
