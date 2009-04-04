@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-visualization/gnuplot/gnuplot-4.2.4-r1.ebuild,v 1.11 2009/03/25 19:03:38 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-visualization/gnuplot/gnuplot-4.2.4-r1.ebuild,v 1.13 2009/04/01 20:26:54 ulm Exp $
 
 WX_GTK_VER="2.8"
 
@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/gnuplot/${MY_P}.tar.gz"
 
 LICENSE="gnuplot"
 SLOT="0"
-KEYWORDS="alpha amd64 ~hppa ia64 ppc ppc64 s390 sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 s390 sparc x86 ~x86-fbsd"
 IUSE="doc emacs gd ggi latex pdf plotutils readline svga wxwindows X xemacs"
 RESTRICT="wxwindows? ( test )"
 
@@ -62,14 +62,9 @@ pkg_setup() {
 src_unpack() {
 	unpack ${A}
 	cd "${S}"
-	# Texinfo source is already shipped, so separate preparation not needed
-	# and error-prone, see bug 194216
-	epatch "${FILESDIR}"/${PN}-4.2.2-disable_texi_generation.patch
-	# Don't store resource files in deprecated location, reported upstream:
-	# http://sourceforge.net/tracker/index.php?func=detail&aid=1953742&group_id=2055&atid=102055
-	epatch "${FILESDIR}"/${PN}-4.2.3-app-defaults.patch
-	# Disable texhash to prevent sandbox violation, bug 201871
-	epatch "${FILESDIR}"/${PN}-4.2.3-disable-texhash.patch
+	epatch "${FILESDIR}"/${PN}-4.2.2-disable_texi_generation.patch #194216
+	epatch "${FILESDIR}"/${PN}-4.2.3-app-defaults.patch #219323
+	epatch "${FILESDIR}"/${PN}-4.2.3-disable-texhash.patch #201871
 
 	eautoreconf
 }

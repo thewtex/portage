@@ -6,7 +6,7 @@
 #
 # Licensed under the GNU General Public License, v2
 #
-# $Header: /var/cvsroot/gentoo-x86/eclass/java-utils-2.eclass,v 1.122 2009/02/19 05:10:37 serkan Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/java-utils-2.eclass,v 1.126 2009/03/31 19:19:20 betelgeuse Exp $
 
 # -----------------------------------------------------------------------------
 # @eclass-begin
@@ -367,6 +367,7 @@ java-pkg_regjar() {
 				eerror "has * in it. If you want it to glob in"
 				eerror '${D} add ${D} to the argument.'
 			fi
+			debug-print "${jar} or ${D}${jar} not found"
 			die "${jar} does not exist"
 		fi
 	done
@@ -1810,6 +1811,9 @@ ejunit() {
 # ------------------------------------------------------------------------------
 
 java-utils-2_src_prepare() {
+	[[ ${EBUILD_PHASE} == prepare ]] &&
+		java-pkg_func-exists java_prepare && java_prepare
+
 	# Remember that eant will call this unless called via Portage
 	if [[ ! -e "${T}/java-utils-2_src_prepare-run" ]] && is-java-strict; then
 		echo "Searching for bundled jars:"
@@ -2446,11 +2450,7 @@ java-pkg_expand_dir_() {
 # @return 1 - function is undeclared
 # ------------------------------------------------------------------------------
 java-pkg_func-exists() {
-	if [[ -n "$(declare -f ${1})" ]]; then
-		return 0
-	else
-		return 1
-	fi
+	declare -F ${1} > /dev/null
 }
 
 # ------------------------------------------------------------------------------

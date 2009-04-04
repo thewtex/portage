@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-geosciences/merkaartor/merkaartor-9999.ebuild,v 1.5 2009/03/08 20:26:06 hanno Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-geosciences/merkaartor/merkaartor-9999.ebuild,v 1.6 2009/04/03 10:37:40 hanno Exp $
 
 EAPI="1"
 
@@ -14,20 +14,29 @@ SRC_URI=""
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="nls"
-DEPEND="x11-libs/qt-webkit:4
-	x11-libs/qt-gui:4
+IUSE="nls webkit exif proj gdal"
+DEPEND="x11-libs/qt-gui:4
 	x11-libs/qt-svg:4
-	media-gfx/exiv2"
+	webkit? ( >=x11-libs/qt-webkit-4.3.3 )
+	exif? ( media-gfx/exiv2 )
+	proj? ( sci-libs/proj )
+	gdal? ( sci-libs/gdal )"
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${PN}"
 
 src_compile() {
+	local myconf
+	use webkit || myconf="${myconf} NOUSEWEBKIT=1"
+	use exif && myconf="${myconf} GEOIMAGE=1" || myconf="${myconf} GEOIMAGE=0"
+	use proj && myconf="${myconf} PROJ=1" || myconf="${myconf} PROJ=0"
+	use gdal && myconf="${myconf} GDAL=1" || myconf="${myconf} GDAL=0"
+
 	if use nls; then
 		lrelease Merkaartor.pro || die "lrelease failed"
 	fi
-	eqmake4 Merkaartor.pro PREFIX=/usr GEOIMAGE=1 || die "qmake failed"
+
+	eqmake4 Merkaartor.pro PREFIX=/usr ${myconf} || die "eqmake4 failed"
 	emake || die "make failed"
 }
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pysvn/pysvn-1.6.3-r1.ebuild,v 1.1 2009/04/01 14:57:02 patrick Exp $
 
 inherit eutils python toolchain-funcs
 
