@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: /var/cvsroot/gentoo-x86/sys-fs/lvm2/lvm2-2.02.42.ebuild,v 1.2 2008/11/14 09:21:53 robbat2 Exp $
 
-inherit eutils multilib
+inherit eutils flag-o-matic multilib
 
 DESCRIPTION="User-land utilities for LVM2 (device-mapper) software."
 HOMEPAGE="http://sources.redhat.com/lvm2/"
@@ -10,7 +10,7 @@ SRC_URI="ftp://sources.redhat.com/pub/lvm2/${PN/lvm/LVM}.${PV}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc x86"
 
 IUSE="readline static clvm cman lvm1 selinux"
 
@@ -27,6 +27,7 @@ S="${WORKDIR}/${PN/lvm/LVM}.${PV}"
 pkg_setup() {
 	use nolvmstatic && eerror "USE=nolvmstatic has changed to USE=static via package.use"
 	use nolvm1 && eerror "USE=nolvm1 has changed to USE=lvm1 via package.use"
+	filter-ldflags -Wl,--as-needed --as-needed
 }
 
 src_unpack() {
@@ -86,12 +87,16 @@ src_compile() {
 	fi
 
 	myconf="${myconf} --sbindir=/sbin --with-staticdir=/sbin"
+	if ! use static; then
+		myconf="${myconf} --libdir=/lib"
+	fi
+
 	econf $(use_enable readline) \
 		$(use_enable selinux) \
 		--libdir=/usr/$(get_libdir) \
 		${myconf} \
 		CLDFLAGS="${LDFLAGS}" || die
-	emake || die "compile problem"
+	emake LIBS='-ldevmapper-event -ldl -llvm2cmd -lreadline -lrt' || die "compile problem"
 }
 
 src_install() {
