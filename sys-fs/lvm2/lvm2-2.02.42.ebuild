@@ -12,11 +12,13 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc x86"
 
-IUSE="readline static clvm cman lvm1 selinux"
+IUSE="broken readline static clvm cman lvm1 selinux"
 
 DEPEND=">=sys-fs/device-mapper-1.02.28
 		clvm? ( >=sys-cluster/dlm-1.01.00
-			cman? ( >=sys-cluster/cman-1.01.00 ) )"
+			cman? ( >=sys-cluster/cman-1.01.00 ) )
+	    readline? ( sys-libs/readline )
+		sys-libs/glibc"
 
 RDEPEND="${DEPEND}
 	!sys-fs/lvm-user
@@ -28,6 +30,17 @@ pkg_setup() {
 	use nolvmstatic && eerror "USE=nolvmstatic has changed to USE=static via package.use"
 	use nolvm1 && eerror "USE=nolvm1 has changed to USE=lvm1 via package.use"
 	filter-ldflags -Wl,--as-needed --as-needed
+	ewarn "NOTICE NOTICE NOTICE"
+	ewarn "If lvm2 has not previously been installed on your system,"
+	ewarn "this compile may die.  However, otherwise you could end up"
+	ewarn "with frustrating broken snapshot behavior.  We're trying"
+	ewarn "to find a better solution to this.  In the meantime, if your"
+	ewarn "compilation breaks, try emerging this package twice: the"
+	ewarn "first time, run it with \"USE=broken emerge lvm2\", the"
+	ewarn "second time, run it normally."
+	ewarn "Older versions of this package have the same bug, though"
+	ewarn "they have not been fixed.  See http://bugs.gentoo.org/217644"
+	ewarn "for more details.  Sorry for the inconvenience."
 }
 
 src_unpack() {
@@ -96,7 +109,15 @@ src_compile() {
 		--libdir=/usr/$(get_libdir) \
 		${myconf} \
 		CLDFLAGS="${LDFLAGS}" || die
-	emake LIBS='-ldevmapper-event -ldl -llvm2cmd -lreadline -lrt' || die "compile problem"
+	if use broken; then
+		emake || die "compile problem"
+	else
+		emake LIBS='-ldevmapper-event -ldl -llvm2cmd -lreadline -lrt' || die \
+		"
+		compile problem: if your error is similar to ld: cannot find -llvm2cmd
+		then please heed the warning at the start of this emerge
+		"
+	fi
 }
 
 src_install() {
