@@ -1,6 +1,35 @@
 # ChangeLog for net-misc/icaclient
-# Copyright 2002-2008 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/icaclient/ChangeLog,v 1.60 2008/11/28 12:35:32 fauli Exp $
+# Copyright 2002-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/icaclient/ChangeLog,v 1.62 2009/04/03 23:59:40 fauli Exp $
+
+  03 Apr 2009; Christian Faulhammer <fauli@gentoo.org>
+  icaclient-10.6-r4.ebuild, icaclient-11.0.ebuild:
+  add media-fonts/font-adobe-100dpi as dependency, as both plugin and front
+  end wont work. This fixes bug 264660 by Erik Quaeghebeur <equaeghe AT
+  nospammail DOT net>
+
+*icaclient-11.0 (30 Mar 2009)
+
+  30 Mar 2009; Christian Faulhammer <fauli@gentoo.org> metadata.xml,
+  +icaclient-11.0.ebuild:
+  Version bump (see bug 263054 by ulm), ebuild changes include:
+
+  * Support for German and Japanese through the LINGUAS system (though not
+  perfect)
+
+  * fetch restrictions as upstream does not provide a direct download link
+
+  * introduce motif USE flag: OpenMotif is just needed for the connection
+  client not for the Netscape plugin
+
+  * introduce nsplugin USE flag for people to only install the Netscape
+  plugin
+
+  * error out if none of the above is set
+
+  * Simplify path handling by extending S definition
+
+  * remove workaround for OpenMotif 2.3 (not needed anymore)
 
   28 Nov 2008; Christian Faulhammer <fauli@gentoo.org> metadata.xml:
   change my email address

@@ -1,6 +1,18 @@
 # ChangeLog for dev-util/mock
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/mock/ChangeLog,v 1.2 2009/03/03 19:45:11 deathwing00 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/mock/ChangeLog,v 1.4 2009/03/27 16:48:31 deathwing00 Exp $
+
+*mock-0.9.10-r2 (27 Mar 2009)
+
+  27 Mar 2009; Ioannis Aslanidis <iaslanidis@gentoo.org>
+  +files/mock-0.9.10-chroot-fix.patch, +mock-0.9.10-r2.ebuild:
+  Added patch so that chroot is looked for in /usr/bin instead of /usr/sbin.
+
+*mock-0.9.10-r1 (27 Mar 2009)
+
+  27 Mar 2009; Ioannis Aslanidis <iaslanidis@gentoo.org> mock-0.9.10.ebuild,
+  +mock-0.9.10-r1.ebuild:
+  Now properly creating the mock group.
 
   03 Mar 2009; Ioannis Aslanidis <iaslanidis@gentoo.org> mock-0.9.10.ebuild:
   Added missing dependency. Fixed src_install so that it now properly installs

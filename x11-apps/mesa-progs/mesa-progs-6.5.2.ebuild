@@ -1,6 +1,6 @@
-# Copyright 1999-2007 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-apps/mesa-progs/mesa-progs-6.5.2.ebuild,v 1.11 2007/08/07 13:23:01 gustavoz Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-apps/mesa-progs/mesa-progs-6.5.2.ebuild,v 1.12 2009/04/03 12:39:42 chainsaw Exp $
 
 inherit toolchain-funcs
 
@@ -45,7 +45,7 @@ src_unpack() {
 	HOSTCONF="${S}/configs/${CONFIG}"
 
 	unpack ${A}
-	cd ${S}
+	cd "${S}"
 
 	# Kill this; we don't want /usr/X11R6/lib ever to be searched in this
 	# build.
@@ -60,10 +60,10 @@ src_unpack() {
 }
 
 src_compile() {
-	cd ${S}/configs
-	ln -s ${CONFIG} current
+	cd "${S}/configs"
+	ln -s "${CONFIG}" current
 
-	cd ${S}/progs/xdemos
+	cd "${S}/progs/xdemos"
 
 	emake glxinfo || die "glxinfo failed"
 	emake glxgears || die "glxgears failed"

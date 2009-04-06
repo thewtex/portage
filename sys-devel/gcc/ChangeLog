@@ -1,6 +1,40 @@
 # ChangeLog for sys-devel/gcc
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/gcc/ChangeLog,v 1.690 2009/03/20 20:42:55 jmbsvicetto Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/gcc/ChangeLog,v 1.699 2009/04/04 14:32:53 klausman Exp $
+
+  04 Apr 2009; Tobias Klausmann <klausman@gentoo.org> gcc-4.3.2-r3.ebuild:
+  Stable on alpha, bug #264121
+
+  04 Apr 2009; Raúl Porcel <armin76@gentoo.org> gcc-4.3.2-r3.ebuild:
+  ia64 stable wrt #264121
+
+  04 Apr 2009; Markus Meier <maekke@gentoo.org> gcc-4.3.2-r3.ebuild:
+  x86 stable, bug #264121
+
+  02 Apr 2009; Friedrich Oslage <bluebird@gentoo.org> gcc-4.3.2-r3.ebuild:
+  Stable on sparc, bug #264121
+
+  01 Apr 2009; Joseph Jezak <josejx@gentoo.org> gcc-4.3.2-r3.ebuild:
+  Marked ppc stable for bug #264121.
+
+  31 Mar 2009; Raúl Porcel <armin76@gentoo.org> gcc-4.3.2-r3.ebuild:
+  Add fix for bug #264295
+
+  31 Mar 2009; Timothy Redaelli <drizzt@gentoo.org>
+  files/awk/fixlafiles.awk-no_gcc_la:
+  Fix files/awk/fixlafiles.awk-no_gcc_la for POSIX shell compliant. Output
+  functions taken from files/awk/fixlafiles.awk. Authorized by vapier wrt
+  #264309.
+
+  30 Mar 2009; Jeremy Olexa <darkside@gentoo.org> gcc-4.3.2-r3.ebuild:
+  amd64 stable, bug 264121
+
+*gcc-4.3.3-r2 (27 Mar 2009)
+
+  27 Mar 2009; Peter Alfredsen <loki_val@gentoo.org> -gcc-4.3.3-r1.ebuild,
+  +gcc-4.3.3-r2.ebuild:
+  Revbump with broken patch disabled to stop duplicates of bug 262567 from
+  flowing in. Bug wranglers know this bug by heart now.
 
   25 Mar 2009; Jeff Mitchell <funtoo@emailgoeshere.com> gcc-4.3.3-r1.ebuild:
   Mark stable for funtoo-stable.

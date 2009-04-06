@@ -1,0 +1,22 @@
+!net-print/hpijs !net-print/hpoj virtual/ghostscript media-libs/jpeg >=net-print/foomatic-filters-3.0.20080507[cups] !minimal? ( net-print/cups dev-libs/libusb cupsddk? ( net-print/cupsddk ) dbus? ( sys-apps/dbus ) scanner? ( >=media-gfx/sane-backends-1.0.19-r1 ) snmp? ( net-analyzer/net-snmp dev-libs/openssl ) ) kernel_linux? ( virtual/linux-sources )
+!net-print/hpijs !net-print/hpoj virtual/ghostscript media-libs/jpeg >=net-print/foomatic-filters-3.0.20080507[cups] !minimal? ( net-print/cups dev-libs/libusb cupsddk? ( net-print/cupsddk ) dbus? ( sys-apps/dbus ) scanner? ( >=media-gfx/sane-backends-1.0.19-r1 ) snmp? ( net-analyzer/net-snmp dev-libs/openssl ) ) !minimal? ( !<sys-fs/udev-114 scanner? ( dev-python/imaging gtk? ( media-gfx/xsane ) !gtk? ( media-gfx/sane-frontends ) ) qt4? ( !qt3? ( dev-python/PyQt4 dbus? ( dev-python/dbus-python ) fax? ( dev-python/reportlab ) ) ) qt3? ( dev-python/PyQt dbus? ( dev-python/dbus-python ) fax? ( dev-python/reportlab ) ) )
+0
+mirror://sourceforge/hplip/hplip-3.9.2.tar.gz
+
+http://hplip.sourceforge.net/
+GPL-2
+HP Linux Imaging and Printing System. Includes net-print/hpijs, scanner drivers and service tools.
+~amd64 ~arm ~ppc ~ppc64 ~x86
+toolchain-funcs portability python multilib versionator alternatives linux-info fdo-mime eutils
+cupsddk dbus doc fax gtk minimal parport ppds qt3 qt4 scanner snmp
+
+
+
+2
+
+configure install postinst postrm preinst prepare setup
+
+
+
+
+

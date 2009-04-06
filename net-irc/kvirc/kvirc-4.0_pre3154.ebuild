@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/kvirc/kvirc-4.0_pre3154.ebuild,v 1.1 2009/03/21 01:55:08 arfrever Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-irc/kvirc/kvirc-4.0_pre3154.ebuild,v 1.4 2009/04/04 16:06:45 ranger Exp $
 
 EAPI="2"
 
@@ -12,7 +12,7 @@ SRC_URI="mirror://gentoo/${P}.tar.bz2"
 
 LICENSE="kvirc"
 SLOT="4"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~ppc ~ppc64"
 IUSE="audiofile +crypt +dcc_voice debug doc gsm +ipc ipv6 kde +nls +perl +phonon profile +python +qt-dbus qt-webkit +ssl +transparency"
 
 RDEPEND="
@@ -20,7 +20,7 @@ RDEPEND="
 	x11-libs/qt-core
 	x11-libs/qt-gui
 	audiofile? ( media-libs/audiofile )
-	kde? ( =kde-base/kdelibs-4* )
+	kde? ( >=kde-base/kdelibs-4 )
 	perl? ( dev-lang/perl )
 	phonon? ( || ( media-sound/phonon x11-libs/qt-phonon ) )
 	python? ( dev-lang/python )

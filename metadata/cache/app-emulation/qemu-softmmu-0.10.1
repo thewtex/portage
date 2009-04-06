@@ -1,4 +1,4 @@
-sys-libs/zlib alsa? ( >=media-libs/alsa-lib-1.0.13 ) esd? ( media-sound/esound ) pulseaudio? ( media-sound/pulseaudio ) gnutls? ( net-libs/gnutls ) ncurses? ( sys-libs/ncurses ) sdl? ( >=media-libs/libsdl-1.2.11 ) vde? ( net-misc/vde ) kqemu? ( >=app-emulation/kqemu-1.4.0_pre1 ) gnutls? ( dev-util/pkgconfig ) app-text/texi2html
+sys-libs/zlib alsa? ( >=media-libs/alsa-lib-1.0.13 ) esd? ( media-sound/esound ) pulseaudio? ( media-sound/pulseaudio ) gnutls? ( net-libs/gnutls ) ncurses? ( sys-libs/ncurses ) sdl? ( >=media-libs/libsdl-1.2.11 ) vde? ( net-misc/vde ) kqemu? ( >=app-emulation/kqemu-1.4.0_pre1 ) gnutls? ( dev-util/pkgconfig ) app-text/texi2html kernel_linux? ( virtual/linux-sources )
 sys-libs/zlib alsa? ( >=media-libs/alsa-lib-1.0.13 ) esd? ( media-sound/esound ) pulseaudio? ( media-sound/pulseaudio ) gnutls? ( net-libs/gnutls ) ncurses? ( sys-libs/ncurses ) sdl? ( >=media-libs/libsdl-1.2.11 ) vde? ( net-misc/vde ) kqemu? ( >=app-emulation/kqemu-1.4.0_pre1 )
 0
 http://savannah.nongnu.org/download/qemu/qemu-0.10.1.tar.gz
@@ -7,14 +7,14 @@ http://bellard.org/qemu/index.html
 GPL-2
 Open source processor emulator
 ~amd64 ~x86 ~ppc ~ppc64
-toolchain-funcs multilib portability eutils flag-o-matic
-alsa esd gnutls ncurses pulseaudio +sdl vde kqemu
+toolchain-funcs portability flag-o-matic versionator multilib linux-info eutils
+alsa esd gnutls ncurses pulseaudio +sdl vde kqemu kvm
 
 
 
 1
 
-compile install postinst unpack
+compile install postinst setup unpack
 
 
 

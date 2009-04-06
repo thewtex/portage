@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/gimp/gimp-2.6.6.ebuild,v 1.1 2009/03/18 20:08:52 hanno Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/gimp/gimp-2.6.6.ebuild,v 1.3 2009/04/02 03:47:23 jer Exp $
 
 inherit eutils gnome2 fdo-mime multilib python
 
@@ -10,7 +10,7 @@ SRC_URI="mirror://gimp/v2.6/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="2"
-KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 
 IUSE="alsa aalib altivec curl dbus debug doc exif gnome hal jpeg lcms mmx mng pdf png python smp sse svg tiff webkit wmf"
 
@@ -36,7 +36,7 @@ RDEPEND=">=dev-libs/glib-2.18.1
 	exif? ( >=media-libs/libexif-0.6.15 )
 	lcms? ( media-libs/lcms )
 	mng? ( media-libs/libmng )
-	pdf? ( >=app-text/poppler-bindings-0.3.1 )
+	pdf? ( >=virtual/poppler-glib-0.3.1 )
 	png? ( >=media-libs/libpng-1.2.2 )
 	python?	( >=dev-lang/python-2.5.0
 		>=dev-python/pygtk-2.10.4 )
@@ -52,10 +52,6 @@ DEPEND="${RDEPEND}
 DOCS="AUTHORS ChangeLog* HACKING NEWS README*"
 
 pkg_setup() {
-	if use pdf && ! built_with_use app-text/poppler-bindings gtk; then
-		eerror "This package requires app-text/poppler-bindings compiled with GTK+ support."
-		die "Please reemerge app-text/poppler-bindings with USE=\"gtk\"."
-	fi
 	if use alsa && ! built_with_use media-libs/alsa-lib midi; then
 		eerror "This package requires media-libs/alsa-lib compiled with midi support."
 		die "Please reemerge media-libs/alsa-lib with USE=\"midi\"."

@@ -1,7 +1,8 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-puzzle/lpairs/lpairs-1.0.4.ebuild,v 1.2 2008/12/06 14:55:53 nyhm Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-puzzle/lpairs/lpairs-1.0.4.ebuild,v 1.5 2009/04/03 21:16:21 tcunha Exp $
 
+EAPI=2
 inherit eutils games
 
 DESCRIPTION="A classical memory game"
@@ -10,7 +11,7 @@ SRC_URI="mirror://sourceforge/lgames/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc ~x86"
 IUSE="nls"
 
 RDEPEND="media-libs/libsdl
@@ -18,9 +19,7 @@ RDEPEND="media-libs/libsdl
 DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )"
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
+src_prepare() {
 	sed -i \
 		-e 's:$localedir:/usr/share/locale:' \
 		-e 's:$(localedir):/usr/share/locale:' \
@@ -28,12 +27,10 @@ src_unpack() {
 		|| die "sed failed"
 }
 
-src_compile() {
+src_configure() {
 	egamesconf \
 		--datadir="${GAMES_DATADIR_BASE}" \
-		$(use_enable nls) \
-		|| die
-	emake || die "emake failed"
+		$(use_enable nls)
 }
 
 src_install() {

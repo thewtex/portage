@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4315 2009/03/26 21:07:41 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4335 2009/04/05 07:07:54 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -46,7 +46,9 @@ app-admin/gnome-system-tools:nfs - Adds support for NFS shares
 app-admin/gnome-system-tools:policykit - Use sys-auth/policykit to gain privileges to change configuration files
 app-admin/lcap:lids - If you have the Linux Intrusion Detection System
 app-admin/prelude-manager:tcpwrapper - Add support for tcp_wrappers
+app-admin/puppet:augeas - Eanble augeas support
 app-admin/puppet:rrdtool - Eanble rrdtool support
+app-admin/puppet:shadow - Eanble shadow support
 app-admin/rsyslog:dbi - Add support for logging into various databases through dev-db/libdbi
 app-admin/rsyslog:relp - Add support for the Reliable Event Logging Protocol using dev-libs/librelp
 app-admin/sshguard:ipfilter - Enable ipfilter firewall support (only for *bsd)
@@ -59,6 +61,7 @@ app-admin/ulogd:ip-as-string - Logs IP addresses as stings
 app-admin/ulogd:pcap - Build the PCAP plugin. Use the net-libs/libpcap library
 app-admin/vlogger:dbi - Enable support for DBI
 app-admin/webalizer:xtended - Include the 404 extension
+app-antivirus/clamav:clamdtop - A Top like tool which shows what clamd is currently scanning amongst other things
 app-arch/cabextract:extra-tools - Install experimental tools: wince_info and wince_rename for examining and processing Windows CE installation cabinet header files; cabinfo for examining the structure of a cab file.
 app-arch/dump:ermt - encrypted rmt support
 app-arch/file-roller:nautilus - Enable file-roller to integrate with gnome-base/nautilus by providing entries in its context menu.
@@ -232,6 +235,7 @@ app-emulation/qemu-softmmu:alsa - Enable alsa output for sound emulation
 app-emulation/qemu-softmmu:esd - Enable esound output for sound emulation
 app-emulation/qemu-softmmu:gnutls - Enable TLS support for the VNC console server
 app-emulation/qemu-softmmu:kqemu - Enables the kernel acceleration module on a x86/x86-64 cpu
+app-emulation/qemu-softmmu:kvm - Use the KVM (Kernel Virtual Machine) infrastructure on compatible hardware
 app-emulation/qemu-softmmu:ncurses - Enable the ncurses-based console
 app-emulation/qemu-softmmu:pulseaudio - Enable pulseaudio output for sound emulation
 app-emulation/qemu-softmmu:sdl - Enable the SDL-based console
@@ -469,6 +473,7 @@ app-text/lcdf-typetools:kpathsea - Enable integration with kpathsea search libra
 app-text/namazu:kakasi - Enable kakasi support (dev-perl/Text-Kakasi)
 app-text/noweb:icon - Enable dev-lang/icon language support
 app-text/pdftk:nodrm - Decrypt a document with the user_pw even if it has an owner_pw set
+app-text/poppler-utils:abiword -  Enable support for app-office/abiword output. Requires dev-libs/libxml2. 
 app-text/sgmltools-lite:jadetex - Add support for app-text/jadetex (for processing tex files produced by the TeX backend of Jade)
 app-text/sword:lucene - Enable lucene support for faster searching (dev-cpp/clucene)
 app-text/texlive:context - Add support for the ConTeXt format (dev-texlive/texlive-context)
@@ -730,6 +735,8 @@ dev-libs/openobex:irda - Enable IrDA support
 dev-libs/opensc:openct - Build using dev-libs/openct compatibility 
 dev-libs/opensc:pcsc-lite - Build with sys-apps/pcsc-lite
 dev-libs/pkcs11-helper:nss - Enable NSS crypto engine
+dev-libs/poppler:abiword -  Enable support for app-office/abiword output. Requires dev-libs/libxml2. 
+dev-libs/poppler:poppler-data -  Pull in the free (as in beer) poppler-data package which is required at runtime for complete rendering of CJK PDFs. 
 dev-libs/ppl:prolog - Build SWI Prolog interface
 dev-libs/qsa:ide - Enable the qsa ide
 dev-libs/soprano:clucene - Enable dev-cpp/clucene backend support.
@@ -813,7 +820,7 @@ dev-python/visual:numeric - enable support for numeric
 dev-python/wxpython:doc - Install HTML wxWidgets docs and wxpython API reference.
 dev-python/wxpython:examples - Install interactive demo module browser and sample applets.
 dev-python/zsi:twisted - add support for dev-python/twisted
-dev-ruby/camping:mongrel - Also install dev-ruby/mongrel
+dev-ruby/camping:mongrel - Also install www-servers/mongrel
 dev-ruby/nitro:lighttpd - Also install www-servers/lighttpd
 dev-ruby/nitro:xslt - Enable dev-libs/libxslt support
 dev-ruby/og:kirbybase - Enable dev-ruby/kirbybase support
@@ -1592,8 +1599,10 @@ media-sound/mixxx:vinylcontrol - Enable vinylcontrol feature
 media-sound/moc:sid - Build with SID (Commodore 64 Audio) support
 media-sound/mp3blaster:sid - Build with SID (Commodore 64 Audio) support
 media-sound/mp3splt-gtk:audacious - Include media-sound/audacious support.
+media-sound/mpd:curl - Support for web streams
 media-sound/mpd:icecast - Enable support for Icecast2
 media-sound/mpd:id3 - Support for ID3 tags
+media-sound/mpd:lame - Support for MP3 streaming via Icecast2
 media-sound/mpfc:cdaudio - Enable cd audio playback support
 media-sound/mpfc:wav - Enable wav audio codec support
 media-sound/mpg123:3dnowext - Enable 3dnowext cpu instructions
@@ -1815,7 +1824,6 @@ media-video/totem:bluetooth - Enable support for user-presence detection via the
 media-video/totem:galago - Enable the galago plugin
 media-video/totem:lirc - Enable support for controlling Totem with a remote control using app-misc/lirc
 media-video/totem:nautilus - Enable the nautilus extension
-media-video/totem:nsplugin - Build media plugin for Mozilla-based browsers such as www-client/mozilla-firefox
 media-video/totem:nvtv - Support for nvtv to use tv in on nvidia cards
 media-video/totem:python - Build support for dev-lang/python plugins
 media-video/totem:seamonkey - same as nsplugin description but build against www-client/seamonkey
@@ -2280,6 +2288,7 @@ net-mail/lbdb:abook - Enables app-misc/abook support
 net-mail/lbdb:finger - Enables finger support
 net-mail/qmailadmin:maildrop - Filter spam using maildrop
 net-mail/qpopper:apop - Enables the pop.auth file in /etc/pop.auth
+net-mail/qpopper:drac - Enables DRAC support
 net-mail/qpopper:mailbox - Enables mail spool file is in home directory ~/Mailbox
 net-mail/teapop:virtual - Enable teapop's virtual domain support.
 net-mail/tpop3d:authexternal - Enable authentication by an external program
@@ -2343,6 +2352,7 @@ net-misc/hylafax:faxonly - Don't depend on mgetty-fax
 net-misc/hylafax:html - Adds HTML documentation
 net-misc/hylafax:mgetty - Adds support for mgetty and vgetty
 net-misc/iaxmodem:logrotate -  Install support files for app-admin/logrotate 
+net-misc/icaclient:motif - Provide the motif based connection manager
 net-misc/icecast:yp - Build support for yp public directory listings
 net-misc/iputils:SECURITY_HAZARD - Allow non-root users to flood (ping -f). This is generally a very bad idea.
 net-misc/italc:system-libvncserver - Build against the system libvncserver (experimental)
@@ -2486,8 +2496,8 @@ net-print/hplip:gtk - Enable GTK+ dependencies, currently only the scanner GUI w
 net-print/hplip:minimal - Only build internal hpijs driver (not recommended at all, make sure you know what you are doing)
 net-print/hplip:parport - Enable parallel port for devices which require it
 net-print/hplip:ppds - Use precompiled PPD files (obsolete, use cupsddk instead)
-net-print/hplip:qt3 - Enable graphical interface using Qt 3 (recommended); when both qt3 and qt4 USE flags are enabled then qt3 is prioritary over qt4
-net-print/hplip:qt4 - Enable graphical interface using Qt 4 (experimental); when both qt3 and qt4 USE flags are enabled then qt3 is prioritary over qt4
+net-print/hplip:qt3 - Enable graphical interface using Qt 3; when both qt3 and qt4 USE flags are enabled then qt4 has priority over qt3
+net-print/hplip:qt4 - Enable graphical interface using Qt 4; when both qt3 and qt4 USE flags are enabled then qt4 has priority over qt3
 net-print/hplip:scanner - Enable scanner on multifunction devices which support it 
 net-print/hplip:snmp - Add support for net-analyzer/net-snmp which enables this driver to work over networks (both for server and client)
 net-print/pkpgcounter:psyco - psyco python accelerator
@@ -2559,8 +2569,9 @@ sci-biology/biopython:kdtree - Do not build KDTree module and its dependencies (
 sci-biology/clustalw-mpi:mpi_njtree - Use MPI (as opposed to serial) code for computing neighbor-joining trees
 sci-biology/clustalw-mpi:static_pairalign - Use static (as opposed to dynamic) scheduling for pair alignments
 sci-biology/hmmer:pvm - Add support for parallel virtual machine (sys-cluster/pvm)
-sci-biology/tgi-tools:pvm - Use sys-cluster/pvm (Parallel Virtual Machine) and build the pvmsx utility
+sci-biology/mcl:blast -  add support for NCBI BLAST data 
 sci-biology/plink:webcheck -  add support for online update checking every time the program starts 
+sci-biology/tgi-tools:pvm - Use sys-cluster/pvm (Parallel Virtual Machine) and build the pvmsx utility
 sci-biology/vienna-rna:no-readseq - Do not include the modified version of Don Gilbert's readseq program
 sci-biology/vienna-rna:no-utils - Do not include sequence format conversion and representation utilities
 sci-chemistry/avogadro:glsl - Enable glsl features via GLEW.
@@ -2598,6 +2609,9 @@ sci-geosciences/mapserver:gdal - Enable sci-libs/gdal library support
 sci-geosciences/mapserver:geos - Enable sci-libs/geos library support
 sci-geosciences/mapserver:postgis - Enable dev-db/postgis support
 sci-geosciences/mapserver:proj - Enable sci-libs/proj library support (geographic projections)
+sci-geosciences/merkaartor:gdal - Enable sci-libs/gdal library support
+sci-geosciences/merkaartor:proj - Enable sci-libs/proj library support
+sci-geosciences/merkaartor:webkit - Enable net-libs/webkit-gtk library support
 sci-libs/acml:gfortran - Fetch and install acml compiled with GNU gfortran
 sci-libs/acml:ifc - Fetch and install acml compiled with Intel Fortran Compiler (dev-lang/ifc)
 sci-libs/acml:int64 - Install the 64 bits integer library
@@ -2664,7 +2678,6 @@ sci-mathematics/octave:sparse - Enable enhanced support for sparse matrix algebr
 sci-mathematics/octave-forge:qhull - Add support for media-libs/qhull (geometric extensions)
 sci-mathematics/pari:elliptic - Add additional elliptic curve data
 sci-mathematics/pari:galois - Add additional data to compute Galois groups of degree 8 to 11
-sci-mathematics/pspp:psppire - Enable GTK psppire GUI
 sci-mathematics/singular:boost - Compile against external boost headers (dev-libs/boost)
 sci-mathematics/yacas:server - Build the network server version
 sci-misc/boinc:cuda -  Use nvidia cuda toolkit for speeding up computations. NOTE: works only for subset of nvidia graphic cards so make sure your card is supported before opening bug about it. 
@@ -2719,6 +2732,7 @@ sys-apps/hal:laptop - Adds support for power management scripts (sys-power/pm-ut
 sys-apps/hal:pcmcia - Allows HAL to process PCMCIA/CardBus slot data which includes inserts and removals and act on these events.
 sys-apps/hal:selinux - Installs SELinux policies and links HAL to the SELinux libraries.
 sys-apps/hwdata-gentoo:binary-drivers - Adds support for ATI/NVIDIA binary drivers
+sys-apps/ipmitool:openipmi - Use the system OpenIPMI implementation.
 sys-apps/kexec-tools:xen - Enable extended xen support
 sys-apps/lm_sensors:sensord - Enable sensord - a daemon that can be used to periodically log sensor readings from hardware health-monitoring chips
 sys-apps/man:lzma - Uses app-arch/lzma-utils for the COMPRESS feature. Could also be used to guarantee that lzma is on the system.
@@ -2863,8 +2877,10 @@ sys-freebsd/freebsd-usbin:isdn - Enable ISDN support.
 sys-freebsd/freebsd-usbin:nat - Enable Network Address Translation support daemon.
 sys-fs/cryptsetup:dynamic - Build cryptsetup dynamically
 sys-fs/ecryptfs-utils:gpg - Enable app-crypt/gnupg key module
+sys-fs/ecryptfs-utils:nss - Enable support for dev-libs/nss
 sys-fs/ecryptfs-utils:openssl - Enable dev-libs/openssl key module
 sys-fs/ecryptfs-utils:pkcs11 - Enable PKCS#11 (Smartcards) key module
+sys-fs/ecryptfs-utils:tpm - Enable support for Trusted Platform Module (TPM) using app-crypt/trousers
 sys-fs/evms:hb - Enable support for heartbeat-1
 sys-fs/evms:hb2 - Enable support for heartbeat-2
 sys-fs/ext3grep:largefile - Add support for files greater then 2gb on x86
@@ -2921,6 +2937,7 @@ sys-power/powerman:httppower -  Add support for HTTP based power controllers
 sys-power/suspend:fbsplash - Add support for framebuffer splash
 sys-process/cronie:inotify - Enable inotify filesystem monitoring support.
 sys-process/procps:n32 - Enable n32 ABI support on mips
+virtual/poppler-utils:abiword -  Enable support for app-office/abiword output. Requires dev-libs/libxml2. 
 www-apache/mod_ftpd:dbi - Enables dev-db/libdbi support
 www-apache/mod_log_sql:dbi - Enables dev-db/libdbi support
 www-apache/mod_mono:aspnet2 - Handle all applications using ASP.NET 2.0 engine by default
@@ -2968,6 +2985,7 @@ www-client/mozilla-firefox-bin:restrict-javascript - Pull in x11-plugins/noscrip
 www-client/opera:ia32 - Install 32-bit binaries instead of 64-bit binaries
 www-client/opera:qt-static - Install binaries statically linked to Qt
 www-client/opera:qt3-static - Install binaries statically linked to Qt 3
+www-client/pybugz:zsh-completion - Enables zsh completion for pybugz
 www-client/seamonkey:mozdevelop - Enable features for web developers (e.g. Venkman)
 www-client/seamonkey:moznocompose - Disable building of mozilla's HTML editor component
 www-client/seamonkey:moznoirc - Disable building of mozilla's IRC client
@@ -3117,33 +3135,4 @@ xfce-base/xfdesktop:file-icons - Build support for application launchers using x
 xfce-base/xfdesktop:menu-plugin - Build Menu plug-in for panel
 xfce-extra/thunar-thumbnailers:grace - Enable support for sci-visualization/grace thumbnails
 xfce-extra/xfce4-mpc:libmpd - Build using media-libs/libmpd backend, instead of native fallback which is preferred
-media-sound/gmpc:mmkeys - Enable support for multimedia keys
-
-media-sound/ncmpc:lyrics - Enable support for lyrics fetching and display.
-media-sound/gmpc:mmkeys - Enable support for multimedia keys
-
-media-sound/ncmpc:artist-screen - Enable support for an artist browser screen.
-media-sound/ncmpc:colors - Enable support for terminal colors.
-media-sound/ncmpc:help-screen - Enable support for a help screen.
-media-sound/ncmpc:key-screen - Enable support for a key binding screen display.
-media-sound/ncmpc:lyrics - Enable support for lyrics fetching and display.
-media-sound/ncmpc:mouse - Enable support for using the mouse.
-media-sound/ncmpc:outputs-screen - Enable support for a output screen controller.
-media-sound/ncmpc:search-screen - Enable support for a search screen display.
-media-sound/ncmpc:wcwidth - Enable wide char width support.
-
-media-sound/ncmpc-tradiaz:artist-screen - Enable support for a artist screen display.
-media-sound/ncmpc-tradiaz:clock-screen - Enable support for showing a clock in the client.
-media-sound/ncmpc-tradiaz:key-screen - Enable support for a key binding screen display.
-media-sound/ncmpc-tradiaz:lyrics-screen - Enable support for a lyrics screen display.
-media-sound/ncmpc-tradiaz:mouse - Enable support for using the mouse.
-media-sound/ncmpc-tradiaz:raw-mode - Enable raw terminal support.
-media-sound/ncmpc-tradiaz:search-screen - Enable support for a search screen display.
-
-media-sound/mpd:bzip2 - Enable support for audio in bzip2 archive.
-media-sound/mpd:cdio - Enable support for audio in iso9660 archive.
-media-sound/mpd:fifo - Enable First-In First-Out plugin for MPD.
-media-sound/mpd:oggflac - Enable support for OggFLAC files.
-media-sound/mpd:zip - Enable support for audio in zip archive.
-
-media-sound/sonata:scrobbler - Enable support for AudioScrobbler.
+xfce-extra/xfce4-power-manager:xfce - Build Xfce4 panel plugins
