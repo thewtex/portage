@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.9636 2009/04/06 11:17:19 pva Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.9642 2009/04/07 11:27:51 bicatali Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,27 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Christian Faulhammer <fauli@gentoo.org> (07 Apr 2009)
+# Mask for testing, is a beta version
+~dev-lang/erlang-13.1
+
+# Jeremy Olexa <darkside@gentoo.org> (07 Apr 2009)
+# Not supported in Gentoo anymore, use 'eselect bashcomp' now
+# Comments on bug 253878 - removed in 30 days.
+app-shells/bash-completion-config
+
+# Michael Sterrett <mr_bones_@gentoo.org> (06 Apr 2009)
+# Masked for removal in 30 days.
+# Doesn't work with the latest versions of dev-util/scons.
+# Last release in 2006.  Removal approved by Gentoo KDE team.
+kde-misc/kleansweep
+
+# Paul Varner <fuzzyray@gentoo.org> (06 Apr 2009)
+# Dead upstream and has issues with newer portages.
+# Due to popular demand and no suitable replacement, it will stay in the tree
+# in a masked status until it completely breaks or is replaced.
+app-portage/udept
 
 # Markus Ullmann <jokey@gentoo.org> (5 Apr 2009)
 # mask until gnome 2.26 is in-tree (needs libsoup 2.26)
@@ -499,10 +520,6 @@ app-admin/eselect-boost
 # Fails to build, bug #247946. Somebody needs to port it to new spandsp interface
 net-dialup/ivcall
 
-# Paul Varner <fuzzyray@gentoo.org> (14 Dec 2008)
-# Dead upstream, masked for removal in ~30 to 60 days.
-app-portage/udept
-
 # Alin Năstac <mrness@gentoo.org> (14 Dec 2008)
 # Dead upstream, masked for removal in ~60 days.
 net-proxy/squirm
@@ -835,11 +852,6 @@ media-sound/lastfmproxy
 # Masked for testing
 #>=mail-client/mozilla-thunderbird-3.0_alpha1
 >=mail-client/mozilla-thunderbird-bin-3.0_alpha1
-
-# Benedikt Böhm <hollow@gentoo.org> (6 Apr 2008)
-# Mask ebuilds using new qmail.eclass for testing
-=mail-mta/netqmail-1.06
-=mail-mta/qmail-ldap-1.03-r8
 
 # Christian Faulhammer <fauli@gentoo.org> (01 Apr 2008)
 # Masked for security reasons: bug 215699
@@ -1286,10 +1298,6 @@ net-dns/bind-dns-keygen
 =app-pda/synce-0.9.2
 =app-pda/synce-librapi2-0.9.2
 =app-pda/synce-libsynce-0.9.2
-
-# Colin Kingsley <tercel@gentoo.org> (24 Jun 2006)
-# Masked for testing
-=dev-python/visual-4*
 
 # Luca Longinotti <chtekk@gentoo.org> (24 May 2006)
 # Masked for more testing, breaks with stealth mode.

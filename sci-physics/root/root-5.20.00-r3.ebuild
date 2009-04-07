@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-physics/root/root-5.20.00-r3.ebuild,v 1.5 2009/03/22 21:56:17 darkside Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-physics/root/root-5.20.00-r3.ebuild,v 1.6 2009/04/06 22:33:43 bicatali Exp $
 
 EAPI=1
 inherit versionator eutils qt4 fortran elisp-common fdo-mime
@@ -257,10 +257,10 @@ desktop_install() {
 	domenu root.desktop
 	doicon "${S}"/build/package/debian/root-system-bin.png
 
-	insinto /usr/share/icons/hicolor/hicolor/48x48/mimetypes
+	insinto /usr/share/icons/hicolor/48x48/mimetypes
 	doins build/package/debian/application-x-root.png
 
-	insinto /usr/share/icons/hicolor/hicolor/48x48/apps
+	insinto /usr/share/icons/hicolor/48x48/apps
 	doicon build/package/debian/root-system-bin.xpm
 }
 
