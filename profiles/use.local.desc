@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4332 2009/04/03 10:47:38 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4335 2009/04/05 07:07:54 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -46,7 +46,9 @@ app-admin/gnome-system-tools:nfs - Adds support for NFS shares
 app-admin/gnome-system-tools:policykit - Use sys-auth/policykit to gain privileges to change configuration files
 app-admin/lcap:lids - If you have the Linux Intrusion Detection System
 app-admin/prelude-manager:tcpwrapper - Add support for tcp_wrappers
+app-admin/puppet:augeas - Eanble augeas support
 app-admin/puppet:rrdtool - Eanble rrdtool support
+app-admin/puppet:shadow - Eanble shadow support
 app-admin/rsyslog:dbi - Add support for logging into various databases through dev-db/libdbi
 app-admin/rsyslog:relp - Add support for the Reliable Event Logging Protocol using dev-libs/librelp
 app-admin/sshguard:ipfilter - Enable ipfilter firewall support (only for *bsd)
@@ -818,7 +820,7 @@ dev-python/visual:numeric - enable support for numeric
 dev-python/wxpython:doc - Install HTML wxWidgets docs and wxpython API reference.
 dev-python/wxpython:examples - Install interactive demo module browser and sample applets.
 dev-python/zsi:twisted - add support for dev-python/twisted
-dev-ruby/camping:mongrel - Also install dev-ruby/mongrel
+dev-ruby/camping:mongrel - Also install www-servers/mongrel
 dev-ruby/nitro:lighttpd - Also install www-servers/lighttpd
 dev-ruby/nitro:xslt - Enable dev-libs/libxslt support
 dev-ruby/og:kirbybase - Enable dev-ruby/kirbybase support
@@ -2567,8 +2569,9 @@ sci-biology/biopython:kdtree - Do not build KDTree module and its dependencies (
 sci-biology/clustalw-mpi:mpi_njtree - Use MPI (as opposed to serial) code for computing neighbor-joining trees
 sci-biology/clustalw-mpi:static_pairalign - Use static (as opposed to dynamic) scheduling for pair alignments
 sci-biology/hmmer:pvm - Add support for parallel virtual machine (sys-cluster/pvm)
-sci-biology/tgi-tools:pvm - Use sys-cluster/pvm (Parallel Virtual Machine) and build the pvmsx utility
+sci-biology/mcl:blast -  add support for NCBI BLAST data 
 sci-biology/plink:webcheck -  add support for online update checking every time the program starts 
+sci-biology/tgi-tools:pvm - Use sys-cluster/pvm (Parallel Virtual Machine) and build the pvmsx utility
 sci-biology/vienna-rna:no-readseq - Do not include the modified version of Don Gilbert's readseq program
 sci-biology/vienna-rna:no-utils - Do not include sequence format conversion and representation utilities
 sci-chemistry/avogadro:glsl - Enable glsl features via GLEW.

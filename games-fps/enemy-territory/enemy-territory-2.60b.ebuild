@@ -1,6 +1,6 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/enemy-territory/enemy-territory-2.60b.ebuild,v 1.12 2008/02/29 19:27:30 carlo Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-fps/enemy-territory/enemy-territory-2.60b.ebuild,v 1.14 2009/04/05 03:55:09 mr_bones_ Exp $
 
 inherit eutils games
 
@@ -19,6 +19,7 @@ LICENSE="RTCW-ETEULA"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="dedicated opengl"
+PROPERTIES="interactive"
 RESTRICT="mirror strip"
 
 DEPEND="app-arch/unzip"
@@ -55,10 +56,10 @@ src_unpack() {
 }
 
 src_install() {
-	exeinto ${dir}
+	exeinto "${dir}"
 	doexe openurl.sh || die "doexe failed"
 	doexe "Enemy Territory 2.60b"/linux/et.x86 || die "doexe et"
-	insinto ${dir}
+	insinto "${dir}"
 	dodoc CHANGES README || die "doins failed"
 	doicon ET.xpm
 
@@ -68,7 +69,7 @@ src_install() {
 
 	if use dedicated ; then
 		doexe "Enemy Territory 2.60b"/linux/etded.x86 || die "doexe failed"
-		games_make_wrapper et-ded ./etded.x86 ${dir}
+		games_make_wrapper et-ded ./etded.x86 "${dir}"
 		newinitd "${S}"/et-ded.rc et-ded || die "newinitd failed"
 		dosed "s:GAMES_USER_DED:${GAMES_USER_DED}:" /etc/init.d/et-ded
 		dosed "s:GENTOO_DIR:${GAMES_BINDIR}:" /etc/init.d/et-ded

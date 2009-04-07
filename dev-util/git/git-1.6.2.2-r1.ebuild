@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/git/git-1.6.2.2-r1.ebuild,v 1.1 2009/04/03 09:02:18 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/git/git-1.6.2.2-r1.ebuild,v 1.3 2009/04/05 00:04:16 robbat2 Exp $
 
 EAPI=2
 
@@ -65,7 +65,6 @@ if [ "$PV" == "9999" ]; then
 			app-text/docbook2X
 		)"
 fi
-
 
 SITEFILE=50${PN}-gentoo.el
 S="${WORKDIR}/${MY_P}"
@@ -161,7 +160,7 @@ src_compile() {
 	git_emake || die "emake failed"
 
 	if use emacs ; then
-		elisp-compile contrib/emacs/git.el \
+		elisp-compile contrib/emacs/git{,-blame}.el \
 			|| die "emacs modules failed"
 	fi
 

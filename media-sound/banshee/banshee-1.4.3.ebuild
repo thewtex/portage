@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/banshee/banshee-1.4.3.ebuild,v 1.4 2009/03/27 17:11:21 ranger Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/banshee/banshee-1.4.3.ebuild,v 1.6 2009/04/04 14:48:20 maekke Exp $
 
 EAPI=2
 
@@ -15,7 +15,7 @@ SRC_URI="http://download.banshee-project.org/${PN}/${PN}-1-${PV}.tar.bz2
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE="+aac boo daap doc +encode +flac ipod +mad mtp podcast test +vorbis"
 
 RDEPEND=">=dev-lang/mono-2
@@ -97,6 +97,11 @@ src_prepare() {
 }
 
 src_configure() {
+		# NOTE: Libkarma support disabled till that library
+		# is fixed to not cause build errors such as
+		# error CS0006: cannot find metadata file
+		# `/var/tmp/portage/media-libs/libkarma-0.1.0/image//usr/lib/karma-sharp/karma-sharp.dll'
+
 		econf						\
 		$(use_enable doc docs)				\
 		$(use_enable boo)				\
@@ -104,6 +109,7 @@ src_configure() {
 		$(use_enable daap)				\
 		$(use_enable ipod)				\
 		$(use_enable podcast)				\
+		--disable-karma					\
 		--with-vendor-build-id="Gentoo/${PN}/${PVR}"	\
 		--disable-static				\
 		--enable-gnome					\
