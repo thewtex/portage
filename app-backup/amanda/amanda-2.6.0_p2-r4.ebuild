@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-backup/amanda/amanda-2.6.0_p2-r4.ebuild,v 1.4 2009/04/01 21:44:29 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-backup/amanda/amanda-2.6.0_p2-r4.ebuild,v 1.8 2009/04/05 19:59:06 maekke Exp $
 
 inherit autotools eutils
 
@@ -9,7 +9,7 @@ HOMEPAGE="http://www.amanda.org/"
 SRC_URI="mirror://sourceforge/amanda/${P/_/}.tar.gz"
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ~ppc ~ppc64 ~sparc x86"
 RDEPEND="sys-libs/readline
 		virtual/inetd
 		sys-apps/gawk
@@ -33,7 +33,7 @@ DEPEND="${RDEPEND}
 	sys-devel/autoconf
 	sys-devel/automake"
 
-IUSE="berkdb debug gdbm minimal s3 samba xfs kerberos devpay"
+IUSE="berkdb debug gdbm minimal s3 samba xfs kerberos devpay ipv6"
 
 S="${WORKDIR}/${P/_/}"
 MYFILESDIR="${WORKDIR}/files"
@@ -176,8 +176,8 @@ src_compile() {
 	local myconf
 	cd "${S}"
 
-	einfo "Using '${AMANDA_DBMODE}' style database"
-	myconf="${myconf} --with-db=${AMANDA_DBMODE}"
+	#einfo "Using '${AMANDA_DBMODE}' style database"
+	#myconf="${myconf} --with-db=${AMANDA_DBMODE}"
 	einfo "Using ${AMANDA_SERVER_TAPE} for tape server."
 	myconf="${myconf} --with-tape-server=${AMANDA_SERVER_TAPE}"
 	einfo "Using ${AMANDA_SERVER_INDEX} for index server."
@@ -252,6 +252,9 @@ src_compile() {
 	# Raise maximum configurable blocksize
 	myconf="${myconf} --with-maxtapeblocksize=${AMANDA_MAX_TAPE_BLOCK_KB}"
 
+	# IPv6 fun.
+	myconf="${myconf} `use_with ipv6`"
+
 	econf ${myconf} || die "econf failed!"
 	emake -j1 || die "emake failed!"
 
@@ -313,18 +316,15 @@ src_install() {
 
 	# docs
 	einfo "Installing documentation"
-	dodoc AUTHORS C* INSTALL NEWS README
+	dodoc AUTHORS C* INSTALL NEWS README DEVELOPING ReleaseNotes UPGRADING
 	# Clean up some bits
-	dodoc /usr/share/amanda/*
+	dodoc "${D}"/usr/share/amanda/*
 	rm -rf "${D}"/usr/share/amanda
-	mkdir -p "${D}"/${MYINSTTMPDIR} || die
-	cp "${TMPENVFILE}" "${D}"/${TMPINSTENVFILE} || die
+	#mkdir -p "${D}"/${MYINSTTMPDIR} || die
+	#cp "${TMPENVFILE}" "${D}"/${TMPINSTENVFILE} || die
 	# our inetd sample
 	einfo "Installing standard inetd sample"
 	newdoc "${MYFILESDIR}"/amanda-inetd.amanda.sample-2.6.0_p2-r2 amanda-inetd.amanda.sample
-	# Stock extra docs
-	docinto docs
-	dodoc "${S}"/docs/*
 	# Labels
 	einfo "Installing labels"
 	docinto labels
