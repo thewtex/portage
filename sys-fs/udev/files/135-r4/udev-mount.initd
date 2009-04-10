@@ -53,7 +53,7 @@ start() {
 
 	# ENSURE CRITICAL DEVICES EXIST 
 	
-	/sbin/MAKEDEV std fd console
+	( cd /dev; /sbin/MAKEDEV std fd consoleonly )
 
 	# copy over any persistant things
 	if [ -d /lib64/udev/devices ]; then
