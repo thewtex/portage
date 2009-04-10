@@ -1,6 +1,6 @@
-# Copyright 1999-2007 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/ifd-gempc/ifd-gempc-1.0.3.ebuild,v 1.2 2007/11/11 06:25:53 alonbl Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/ifd-gempc/ifd-gempc-1.0.3.ebuild,v 1.3 2009/04/10 00:39:41 arfrever Exp $
 
 inherit eutils toolchain-funcs
 
@@ -28,7 +28,7 @@ src_install () {
 	dodir "$(dirname "${conf}")"
 	insinto "$(dirname "${conf}")"
 	newins "${FILESDIR}/reader.conf" "$(basename "${conf}")"
-	sed -i "s#%PCSC_DRIVERS_DIR%#${pcscdir}#g" "${D}/${conf}"
+	sed -e "s:%PCSC_DRIVERS_DIR%:${pcscdir}:g" -e "s:%libGemPC410%:libGemPC410.so.${PV}:g" -i "${D}${conf}"
 
 	einfo "NOTICE:"
 	einfo "1. if you are using GemPC410 modify ${conf}"
