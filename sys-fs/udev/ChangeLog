@@ -2,6 +2,13 @@
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
 # $Header: /var/cvsroot/gentoo-x86/sys-fs/udev/ChangeLog,v 1.446 2009/02/12 17:52:01 jer Exp $
 
+*udev-135-r4 (10 Apr 2009)
+
+  10 Apr 2009; Daniel Robbins <drobbins@funtoo.org>
+  +udev-135-r4.ebuild: We now use /sbin/MAKEDEV to create initial device
+  nodes in the tmpfs mount. This helps to ensure that critical device
+  nodes are created with the proper permissions and ownership.
+
 *udev-135-r3 (13 Feb 2009)
 
   13 Feb 2009; Daniel Robbins <drobbins@funtoo.org>

@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4343 2009/04/07 12:27:44 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4347 2009/04/09 22:47:49 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -191,6 +191,7 @@ app-editors/xemacs:xim - Enable X11 XiM input method
 app-editors/xmlcopyeditor:guidexml - Install GuideXML templates to work with Gentoo official docs
 app-emacs/auctex:preview-latex - Use bundled preview-latex
 app-emacs/bbdb:tex - Install plain TeX support files
+app-emacs/company-mode:semantic - Install backend for semantic (app-emacs/cedet)
 app-emacs/delicious:planner - Include support for app-emacs/planner
 app-emacs/easypg:gnus - Include support for the Gnus newsreader
 app-emacs/emhacks:jde - Enable support for Java Development Environment
@@ -756,7 +757,6 @@ dev-libs/yaz:ziffy - Install ziffy, a promiscuous Z39.50 APDU sniffer
 dev-lisp/abcl:clisp - Build Armed Bear Common Lisp using GNU CLISP
 dev-lisp/abcl:cmucl - Build Armed Bear Common Lisp using CMU Common Lisp
 dev-lisp/abcl:jad - Enable support for disassembling compiled code using JAD
-dev-lisp/cl-araneida:standalone - tired of waiting for the lisp team to add this
 dev-lisp/cl-tbnl:standalone -  Use TBNL without a front-end (ie. no Apache dependency)
 dev-lisp/clisp:hyperspec - Use local hyperspec instead of online version
 dev-lisp/clisp:new-clx - Build CLISP with support for the NEW-CLX module which is a C binding to the Xorg libraries
@@ -909,8 +909,6 @@ dev-util/strace:aio - Enable libaio support
 dev-util/subversion:ctypes-python - Build and install ctypes python bindings
 dev-util/subversion:dso - Enable runtime module search
 dev-util/subversion:extras - Install extras scripts (examples, tools, hooks)
-dev-util/subversion:nowebdav - Disables WebDAV support via neon library
-dev-util/subversion:svnserve - Install scripts for svnserve
 dev-util/subversion:webdav-neon - Enable WebDAV support using net-misc/neon
 dev-util/subversion:webdav-serf - Enable WebDAV support using net-libs/serf
 dev-util/svk:log4p - Enable perl logger support
@@ -2255,6 +2253,7 @@ net-libs/libesmtp:ssl -  Enable support for advanced SMTP authentication methods
 net-libs/libetpan:liblockfile - Enable support for liblockfile library
 net-libs/libfwbuilder:bind - Use bind's name resolving library
 net-libs/libfwbuilder:stlport - Enagle support for STLport
+net-libs/libinfinity:server -  Build and install the server binary including init.d/conf.d-scripts. Needed if you want to host an infinote server for gobby. 
 net-libs/libpri:bri - Enable ISDN BRI support (bristuff)
 net-libs/libssh2:libgcrypt - Use libgcrypt for crypto
 net-libs/libvncserver:no24bpp - disable 24bpp support
