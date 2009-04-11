@@ -48,7 +48,7 @@ src_unpack() {
 
 src_compile() {
 	# Keep the package from doing silly things
-	addwrite /var/cache/fonts
+	export VAREXFONTS=$T/fonts
 	export CC=$(tc-getCC)
 
 	# We want to use the "bsd" libraries while building on Darwin, but while
