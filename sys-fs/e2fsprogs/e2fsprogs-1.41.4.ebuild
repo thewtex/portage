@@ -93,7 +93,13 @@ pkg_preinst() {
 }
 
 src_install() {
-	emake LDCONFIG=true STRIP=: DESTDIR="${D}" install install-libs || die
+	
+	# Bad idea to run "make install install-libs", especially in parallel as
+	# they hit the same targets and this can result in race conditions that
+	# cause /usr/bin/install to fail, so let's keep things serial:
+
+	make LDCONFIG=true STRIP=: DESTDIR="${D}" install || die
+	make LDCONFIG=true STRIP=: DESTDIR="${D}" install-libs || die
 	dodoc README RELEASE-NOTES
 
 	# Move shared libraries to /lib/, install static libraries to /usr/lib/,

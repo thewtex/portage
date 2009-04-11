@@ -2,6 +2,13 @@
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
 # $Header: /var/cvsroot/gentoo-x86/sys-fs/e2fsprogs/ChangeLog,v 1.184 2009/04/05 03:15:53 vapier Exp $
 
+  11 Apr 2009; Daniel Robbins <drobbins@funtoo.org>
+  e2fsprogs-1.41.4.ebuild: build fix, turns out the problem I was seeing
+  was related to "make install install-libs" running in parallel. This
+  isn't necessarily a bug in the Makefile, well, upstream doesn't expect
+  you to mix those targets in a single call to make. The fix is to 
+  serialize "make install" to avoid issues.
+
   10 Apr 2009; Daniel Robbins <drobbins@funtoo.org>
   e2fsprogs-1.41.4.ebuild: remove sandbox "addwrite" and replace with a
   real build fix, courtesy of Mike Frysinger and bug 261411. Testing
