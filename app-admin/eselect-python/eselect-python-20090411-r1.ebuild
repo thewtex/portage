@@ -4,7 +4,7 @@
 
 DESCRIPTION="Manages multiple Python versions"
 HOMEPAGE="http://www.gentoo.org"
-SRC_URI="http://www.funtoo.org/distfiles/python.eselect-${PVR}.bz2"
+SRC_URI="http://www.funtoo.org/distfiles/python.eselect-${PV}.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
