@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/coreutils/coreutils-7.1.ebuild,v 1.8 2009/03/31 20:15:49 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/coreutils/coreutils-7.1.ebuild,v 1.11 2009/04/12 10:45:38 klausman Exp $
 
 inherit eutils flag-o-matic toolchain-funcs
 
@@ -15,7 +15,7 @@ SRC_URI="ftp://alpha.gnu.org/gnu/coreutils/${P}.tar.gz
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+KEYWORDS="alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE="acl caps nls selinux static vanilla xattr"
 
 RDEPEND="caps? ( sys-libs/libcap )
@@ -76,9 +76,27 @@ src_test() {
 	# accessible to non-root users
 	chmod -R go-w "${WORKDIR}"
 	chmod a+rx "${WORKDIR}"
+
+	# coreutils tests like to do `mount` and such with temp dirs
+	# so make sure /etc/mtab is writable #265725
+	mkdir -p "${T}"/mount-wrappers
+	mkwrap() {
+		local w ww
+		for w in "$@" ; do
+			ww="${T}/mount-wrappers/${w}"
+			cat <<-EOF > "${ww}"
+				#!/bin/sh
+				exec env SANDBOX_WRITE="\${SANDBOX_WRITE}:/etc/mtab" $(type -P $w) "\$@"
+			EOF
+			chmod a+rx "${ww}"
+		done
+	}
+	mkwrap mount umount
+
 	addwrite /dev/full
 	#export RUN_EXPENSIVE_TESTS="yes"
 	#export FETISH_GROUPS="portage wheel"
+	env PATH="${T}/mount-wrappers:${PATH}" \
 	emake -j1 -k check || die "make check failed"
 }
 
