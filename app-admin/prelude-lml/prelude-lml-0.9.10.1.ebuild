@@ -1,6 +1,6 @@
-# Copyright 1999-2007 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/prelude-lml/prelude-lml-0.9.10.1.ebuild,v 1.5 2007/12/25 15:00:51 nixnut Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/prelude-lml/prelude-lml-0.9.10.1.ebuild,v 1.6 2009/04/12 21:24:24 halcy0n Exp $
 
 inherit flag-o-matic
 
@@ -13,9 +13,10 @@ SLOT="0"
 KEYWORDS="amd64 ppc sparc x86"
 IUSE="fam"
 
-DEPEND="virtual/libc
-	>=dev-libs/libprelude-0.9.9
+DEPEND=">=dev-libs/libprelude-0.9.9
 	dev-libs/libpcre"
+
+RDEPEND="${DEPEND}"
 
 src_compile() {
 	local myconf
