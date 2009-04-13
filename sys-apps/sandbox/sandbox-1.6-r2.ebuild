@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/sandbox/sandbox-1.6-r2.ebuild,v 1.1 2009/04/02 03:04:56 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/sandbox/sandbox-1.6-r2.ebuild,v 1.5 2009/04/12 10:57:58 klausman Exp $
 
 #
 # don't monkey with this ebuild unless contacting portage devs.
@@ -16,7 +16,7 @@ SRC_URI="mirror://gentoo/${P}.tar.lzma
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~sparc-fbsd ~x86 ~x86-fbsd"
+KEYWORDS="alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh sparc ~sparc-fbsd ~x86 ~x86-fbsd"
 IUSE=""
 
 DEPEND="app-arch/lzma-utils"
@@ -96,4 +96,8 @@ pkg_preinst() {
 		elog ${old//${ROOT}}
 		find "${ROOT}"/lib* -maxdepth 1 -name 'libsandbox*' -exec rm -fv {} \;
 	fi
+}
+
+pkg_postinst() {
+	chmod 0755 "${ROOT}"/etc/sandbox.d #265376
 }

@@ -1,6 +1,21 @@
 # ChangeLog for sys-apps/sandbox
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/sandbox/ChangeLog,v 1.113 2009/04/05 09:00:22 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/sandbox/ChangeLog,v 1.117 2009/04/12 10:57:58 klausman Exp $
+
+  12 Apr 2009; Tobias Klausmann <klausman@gentoo.org> sandbox-1.6-r2.ebuild:
+  Stable on alpha, bug #265376
+
+  09 Apr 2009; Friedrich Oslage <bluebird@gentoo.org> sandbox-1.6-r2.ebuild:
+  Stable on sparc, bug #265376
+
+  09 Apr 2009; Mike Frysinger <vapier@gentoo.org> sandbox-1.6-r2.ebuild,
+  sandbox-1.9.ebuild:
+  Make sure /etc/sandbox.d has 0755 perms #265376 by Friedrich Oslage.
+
+*sandbox-1.9 (09 Apr 2009)
+
+  09 Apr 2009; Mike Frysinger <vapier@gentoo.org> +sandbox-1.9.ebuild:
+  Version bump.
 
 *sandbox-1.8 (05 Apr 2009)
 
@@ -110,7 +125,7 @@
 
   09 Nov 2008; Mike Frysinger <vapier@gentoo.org>
   sandbox-1.2.20_alpha2-r1.ebuild:
-  Use EBUILD_DEATH_HOOKS #113780 by Petteri Räty.
+  Use EBUILD_DEATH_HOOKS #113780 by Petteri RÃ¤ty.
 
   09 Nov 2008; Mike Frysinger <vapier@gentoo.org>
   +files/sandbox-1.2.20_alpha2-parallel.patch,
@@ -118,7 +133,7 @@
   Rewrite multilib handling and apply parallel build fix by Jose Luis Rivero
   #190051 by David Pykee.
 
-  09 Nov 2008; Harald van Dĳk <truedfx@gentoo.org>
+  09 Nov 2008; Harald van DÄ³k <truedfx@gentoo.org>
   sandbox-1.2.18.1-r3.ebuild, sandbox-1.2.20_alpha2-r1.ebuild:
   Avoid bashism in configure script (#236868)
 
@@ -133,7 +148,7 @@
 
 *sandbox-1.2.20_alpha2-r1 (04 Nov 2007)
 
-  04 Nov 2007; Diego Pettenò <flameeyes@gentoo.org>
+  04 Nov 2007; Diego PettenÃ² <flameeyes@gentoo.org>
   +sandbox-1.2.20_alpha2-r1.ebuild:
   Fix the problem with GLIBC 2.7 even for the alpha version.
 
@@ -141,13 +156,13 @@
   sandbox-1.2.18.1-r2.ebuild:
   Stable on alpha wrt #182361
 
-  27 Oct 2007; Raúl Porcel <armin76@gentoo.org> sandbox-1.2.18.1-r2.ebuild:
+  27 Oct 2007; RaÃºl Porcel <armin76@gentoo.org> sandbox-1.2.18.1-r2.ebuild:
   ia64 stable wrt #182361
 
   26 Oct 2007; nixnut <nixnut@gentoo.org> sandbox-1.2.18.1-r2.ebuild:
   Stable on ppc wrt bug 182361
 
-  25 Oct 2007; Dawid Węgliński <cla@gentoo.org>
+  25 Oct 2007; Dawid WÄgliÅski <cla@gentoo.org>
   sandbox-1.2.18.1-r2.ebuild:
   Stable on x86 (bug #182361)
 
@@ -189,20 +204,20 @@
   sandbox-1.2.18.1.ebuild:
   Stable on alpha. See bug #183673
 
-  01 Jul 2007; Piotr Jaroszyński <peper@gentoo.org> sandbox-1.2.12.ebuild,
+  01 Jul 2007; Piotr JaroszyÅski <peper@gentoo.org> sandbox-1.2.12.ebuild,
   sandbox-1.2.16.ebuild, sandbox-1.2.17.ebuild, sandbox-1.2.18.ebuild,
   sandbox-1.2.18.1.ebuild, sandbox-1.2.20_alpha1-r2.ebuild,
   sandbox-1.2.20_alpha2.ebuild:
   (QA) RESTRICT="multilib-pkg-force" -> EMULTILIB_PKG="true"
 
-  24 Jun 2007; Piotr Jaroszyński <peper@gentoo.org> sandbox-1.2.18.ebuild:
+  24 Jun 2007; Piotr JaroszyÅski <peper@gentoo.org> sandbox-1.2.18.ebuild:
   (QA) Don't use KEYWORDS="-*". bug #160519.
 
-  22 Nov 2006; Diego Pettenò <flameeyes@gentoo.org>
+  22 Nov 2006; Diego PettenÃ² <flameeyes@gentoo.org>
   sandbox-1.2.20_alpha2.ebuild:
   Add ~sparc-fbsd keyword.
 
-  04 Sep 2006; Diego Pettenò <flameeyes@gentoo.org>
+  04 Sep 2006; Diego PettenÃ² <flameeyes@gentoo.org>
   sandbox-1.2.20_alpha2.ebuild:
   Add ~x86-fbsd keyword.
 
@@ -229,10 +244,10 @@
   +sandbox-1.2.20_alpha1.ebuild:
   Testing release for feedback.  Check package.mask for details.
 
-  20 May 2006; Bryan Østergaard <kloeri@gentoo.org> sandbox-1.2.17.ebuild:
+  20 May 2006; Bryan Ãstergaard <kloeri@gentoo.org> sandbox-1.2.17.ebuild:
   Stable on ia64.
 
-  20 May 2006; Bryan Østergaard <kloeri@gentoo.org> sandbox-1.2.17.ebuild:
+  20 May 2006; Bryan Ãstergaard <kloeri@gentoo.org> sandbox-1.2.17.ebuild:
   Stable on alpha.
 
 *sandbox-1.2.18.1 (19 May 2006)
@@ -367,7 +382,7 @@
   18 Jul 2005; Guy Martin <gmsoft@gentoo.org> sandbox-1.2.10.ebuild:
   Stable on hppa.
 
-  15 Jul 2005; Bryan Østergaard <kloeri@gentoo.org> sandbox-1.2.10.ebuild:
+  15 Jul 2005; Bryan Ãstergaard <kloeri@gentoo.org> sandbox-1.2.10.ebuild:
   Stable on alpha + ia64, bug 99019.
 
   14 Jul 2005; Gustavo Zacarias <gustavoz@gentoo.org> sandbox-1.2.10.ebuild:

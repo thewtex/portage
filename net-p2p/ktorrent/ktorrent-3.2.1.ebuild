@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/ktorrent/ktorrent-3.2.1.ebuild,v 1.1 2009/04/06 11:32:41 scarabeus Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/ktorrent/ktorrent-3.2.1.ebuild,v 1.3 2009/04/08 22:20:11 scarabeus Exp $
 
 EAPI="2"
 
@@ -18,23 +18,27 @@ KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 SLOT="3"
 IUSE="+bwscheduler debug +downloadorder +infowidget +ipfilter +kross +logviewer +mediaplayer plasma rss +scanfolder +search +stats +upnp webinterface +zeroconf"
 
-DEPEND="app-crypt/qca:2
+COMMONDEPEND="app-crypt/qca:2
 	dev-libs/gmp
-	sys-devel/gettext
+	mediaplayer? ( >=media-libs/taglib-1.5 )
 	plasma? ( >=kde-base/libtaskmanager-${KDE_MINIMAL} )
 	rss? (
 		dev-libs/boost
 		>=kde-base/kdepimlibs-${KDE_MINIMAL}
 	)"
-RDEPEND="${DEPEND}
+DEPEND="${COMMONDEPEND}
+	sys-devel/gettext
+"
+RDEPEND="${COMMONDEPEND}
 	!net-p2p/ktorrent:0
 	infowidget? ( >=dev-libs/geoip-1.4.4 )
 	ipfilter? ( >=kde-base/kdebase-kioslaves-${KDE_MINIMAL} )"
 
 src_prepare() {
 	if ! use plasma; then
-		sed -i -e 's/add_subdirectory([[:space:]]*plasma[[:space:]]*)//' \
-		CMakeLists.txt || die "Failed to make plasmoid optional"
+		sed -i \
+			-e "s:add_subdirectory(plasma):#nada:g" \
+			CMakeLists.txt || die "Failed to make plasmoid optional"
 	fi
 
 	kde4-base_src_prepare

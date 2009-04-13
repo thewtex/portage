@@ -20,8 +20,7 @@ DEPEND="sys-apps/sed
 		sys-freebsd/freebsd-bin
 		app-admin/realpath
 	)"
-RDEPEND="sys-apps/sed
-	sys-apps/file"
+RDEPEND="sys-apps/sed sys-apps/file sys-process/procps"
 
 PDEPEND="vim-syntax? ( app-vim/eselect-syntax )"
 

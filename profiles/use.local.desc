@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4340 2009/04/07 09:47:53 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4358 2009/04/12 02:08:00 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -86,6 +86,7 @@ app-backup/bacula:logwatch - Install support files for logwatch
 app-backup/boxbackup:client-only - Disable server support, and just build a client
 app-backup/dar:dar32 - Enables --enable-mode=32 option, which replace infinite by 32 bit integers
 app-backup/dar:dar64 - Enables --enable-mode=64 option, which replace infinite by 64 bit integers
+app-backup/duplicity:s3 - Support for backing up to the Amazon S3 system
 app-backup/kdar:dar32 - Support libdar32.so usage
 app-backup/kdar:dar64 - Support libdar64.so usage
 app-benchmarks/bootchart:acct - Enable process accounting
@@ -190,6 +191,7 @@ app-editors/xemacs:xim - Enable X11 XiM input method
 app-editors/xmlcopyeditor:guidexml - Install GuideXML templates to work with Gentoo official docs
 app-emacs/auctex:preview-latex - Use bundled preview-latex
 app-emacs/bbdb:tex - Install plain TeX support files
+app-emacs/company-mode:semantic - Install backend for semantic (app-emacs/cedet)
 app-emacs/delicious:planner - Include support for app-emacs/planner
 app-emacs/easypg:gnus - Include support for the Gnus newsreader
 app-emacs/emhacks:jde - Enable support for Java Development Environment
@@ -560,8 +562,8 @@ dev-games/ogre:cegui - build the CEGUI samples
 dev-games/ogre:cg - NVIDIA toolkit plugin
 dev-games/ogre:devil - image loading support with DevIL
 dev-games/ogre:double-precision - more precise calculations at the expense of speed
+dev-games/ogre:freeimage - image loading support with FreeImage
 dev-games/opal:double-precision - More precise calculations at the expense of speed
-dev-games/openscenegraph:osgapps - Build osg applications
 dev-games/openscenegraph:freetype -  Enable osg to use the media-libs/freetype based plugin 
 dev-games/openscenegraph:osgapps -  Build osg applications 
 dev-games/openscenegraph:xrandr -  Enable support for the X xrandr extension 
@@ -592,6 +594,7 @@ dev-java/ant-tasks:log4j - Enable Apache log4j Ant tasks
 dev-java/ant-tasks:oro - Enable Apache Oro Ant tasks
 dev-java/ant-tasks:regexp - Enable Apache Regexp Ant tasks
 dev-java/ant-tasks:resolver - Enable Apache Resolver Ant tasks
+dev-java/antlr:gunit -  gUnit is a "Unit Test" framework for ANTLR grammars 
 dev-java/antlr:script - Install a script to run antlr
 dev-java/avalon-logkit:javamail - Enable support for javamail
 dev-java/avalon-logkit:jms - Enable support for JMS (Java Message Service)
@@ -755,7 +758,6 @@ dev-libs/yaz:ziffy - Install ziffy, a promiscuous Z39.50 APDU sniffer
 dev-lisp/abcl:clisp - Build Armed Bear Common Lisp using GNU CLISP
 dev-lisp/abcl:cmucl - Build Armed Bear Common Lisp using CMU Common Lisp
 dev-lisp/abcl:jad - Enable support for disassembling compiled code using JAD
-dev-lisp/cl-araneida:standalone - tired of waiting for the lisp team to add this
 dev-lisp/cl-tbnl:standalone -  Use TBNL without a front-end (ie. no Apache dependency)
 dev-lisp/clisp:hyperspec - Use local hyperspec instead of online version
 dev-lisp/clisp:new-clx - Build CLISP with support for the NEW-CLX module which is a C binding to the Xorg libraries
@@ -908,8 +910,6 @@ dev-util/strace:aio - Enable libaio support
 dev-util/subversion:ctypes-python - Build and install ctypes python bindings
 dev-util/subversion:dso - Enable runtime module search
 dev-util/subversion:extras - Install extras scripts (examples, tools, hooks)
-dev-util/subversion:nowebdav - Disables WebDAV support via neon library
-dev-util/subversion:svnserve - Install scripts for svnserve
 dev-util/subversion:webdav-neon - Enable WebDAV support using net-misc/neon
 dev-util/subversion:webdav-serf - Enable WebDAV support using net-libs/serf
 dev-util/svk:log4p - Enable perl logger support
@@ -1462,7 +1462,7 @@ media-libs/swfdec:alsa - Use ALSA for audio output
 media-libs/swfdec:doc - Build documentation
 media-libs/swfdec:ffmpeg - Use media-plugins/gst-plugins-ffmpeg to enable Flash video support. Necessary if you want to use sites like youtube
 media-libs/swfdec:gstreamer - Enable media-libs/gstreamer to support various media input formats. i.e. audio (mp3) and video (flv)
-media-libs/swfdec:gtk - Enable GTK+ convenience library while is necessary for all GTK+ apps using swfdec (gnome-extra/swfdec-gnome and net-www/swfdec-mozilla)
+media-libs/swfdec:gtk - Enable GTK+ convenience library while is necessary for all GTK+ apps using swfdec (gnome-extra/swfdec-gnome and www-plugins/swfdec-mozilla)
 media-libs/swfdec:oss - Use Open Sound System for audio output
 media-libs/swfdec:pulseaudio - Use media-sound/pulseaudio for audio output
 media-libs/urt:gs - Add support for postscript
@@ -2254,6 +2254,7 @@ net-libs/libesmtp:ssl -  Enable support for advanced SMTP authentication methods
 net-libs/libetpan:liblockfile - Enable support for liblockfile library
 net-libs/libfwbuilder:bind - Use bind's name resolving library
 net-libs/libfwbuilder:stlport - Enagle support for STLport
+net-libs/libinfinity:server -  Build and install the server binary including init.d/conf.d-scripts. Needed if you want to host an infinote server for gobby. 
 net-libs/libpri:bri - Enable ISDN BRI support (bristuff)
 net-libs/libssh2:libgcrypt - Use libgcrypt for crypto
 net-libs/libvncserver:no24bpp - disable 24bpp support
@@ -2998,7 +2999,15 @@ www-client/seamonkey:moznopango - Disable x11-libs/pango during runtime
 www-client/seamonkey:moznoroaming - sroaming extension support
 www-client/seamonkey:xforms - XForms is a standard to split up XHTML into XForms, instance data, and user interface
 www-client/w3m:lynxkeymap - If you prefer Lynx-like key binding
+www-misc/vdradmin-am:vdr -  Support for media-video/vdr. Disable this if the VDR you want to control runs at a remote machine. 
+www-misc/xxv:themes - Enable more themes via x11-themes/xxv-skins
 www-misc/zoneminder:X10 - Enable support for X10 devices
+www-plugins/adobe-flash:32bit - For amd64-multilib, installs the 32-bit plugin alongside the native 64-bit plugin
+www-plugins/gnash:agg - Rendering based on the Anti-Grain Geometry Rendering Engine library
+www-plugins/mplayerplug-in:divx - Divx Playback Support
+www-plugins/mplayerplug-in:gmedia - Google Media Playback Support
+www-plugins/mplayerplug-in:realmedia - Real Media Playback Support
+www-plugins/mplayerplug-in:wmp - Windows Media Playback Support
 www-servers/apache:sni - Enable TLS Server Name Indication (SNI) - EXPERIMENTAL!
 www-servers/apache:suexec - Install suexec with apache
 www-servers/cherokee:admin - Install web based cherokee conf tool
