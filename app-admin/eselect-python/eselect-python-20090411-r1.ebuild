@@ -15,5 +15,5 @@ RDEPEND=">=app-admin/eselect-1.0.2"
 
 src_install() {
 	insinto /usr/share/eselect/modules
-	newins "${WORKDIR}/python.eselect-${PVR}" python.eselect || die
+	newins "${WORKDIR}/python.eselect-${PV}" python.eselect || die
 }
