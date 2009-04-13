@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/gdal/gdal-1.5.3.ebuild,v 1.3 2009/02/18 04:03:47 nerdboy Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/gdal/gdal-1.5.3.ebuild,v 1.4 2009/04/11 17:07:01 nerdboy Exp $
 
 WANT_AUTOCONF="2.5"
 inherit autotools distutils eutils perl-module toolchain-funcs
@@ -141,7 +141,7 @@ src_compile() {
 
 	# parallel makes fail on the ogr stuff (C++, what can I say?)
 	# also failing with gcc4 in libcsf
-	emake || die "emake failed"
+	emake -j1 || die "emake failed"
 
 	if useq python; then
 	    sed -i -e "s#library_dirs = #library_dirs = /usr/$(get_libdir):#g" \

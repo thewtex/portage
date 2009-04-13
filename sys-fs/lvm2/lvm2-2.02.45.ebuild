@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/lvm2/lvm2-2.02.45.ebuild,v 1.1 2009/04/09 23:00:10 caleb Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/lvm2/lvm2-2.02.45.ebuild,v 1.3 2009/04/10 17:06:41 caleb Exp $
 
 inherit eutils multilib toolchain-funcs
 
@@ -94,6 +94,7 @@ src_compile() {
 		${myconf} \
 		CLDFLAGS="${LDFLAGS}" || die
 
+	MAKEOPTS="${MAKEOPTS} -j1"
 	emake || die "compile problem"
 }
 
@@ -124,7 +125,6 @@ src_install() {
 	if use clvm; then
 		newinitd "${FILESDIR}"/clvmd.rc-2.02.28-r3 clvmd || die
 	fi
-
 
 	# move shared libs to /lib(64)
 	mv "${D}"/usr/$(get_libdir)/libdevmapper.so* "${D}"/$(get_libdir)

@@ -1,18 +1,18 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/strigi/strigi-0.6.4.ebuild,v 1.8 2009/03/30 13:19:49 loki_val Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/strigi/strigi-0.6.4.ebuild,v 1.11 2009/04/11 15:46:47 armin76 Exp $
 
 EAPI="2"
 
 inherit cmake-utils eutils
 
 DESCRIPTION="Fast crawling desktop search engine with Qt4 GUI"
-HOMEPAGE="http://www.vandenoever.info/software/strigi"
-SRC_URI="http://www.vandenoever.info/software/strigi/${P}.tar.bz2"
+HOMEPAGE="http://strigi.sourceforge.net/"
+SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~x86"
+KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~x86"
 IUSE="+clucene +dbus debug exif fam hyperestraier inotify log +qt4 test"
 
 COMMONDEPEND="
@@ -78,11 +78,12 @@ src_configure() {
 
 src_test() {
 	mycmakeargs="${mycmakeargs} -DENABLE_CPPUNIT=ON"
+	cmake-utils_src_configure
 	cmake-utils_src_compile
 
-	pushd "${WORKDIR}/${PN}_build"
+	pushd "${CMAKE_BUILD_DIR}" > /dev/null
 	ctest --extra-verbose || die "Tests failed."
-	popd
+	popd > /dev/null
 }
 
 pkg_postinst() {

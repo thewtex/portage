@@ -1,6 +1,8 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/ntop/ntop-3.3.9-r1.ebuild,v 1.1 2009/02/18 21:44:38 mrness Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/ntop/ntop-3.3.9-r1.ebuild,v 1.3 2009/04/11 16:40:15 nixnut Exp $
+
+EAPI="2"
 
 inherit eutils autotools
 
@@ -10,7 +12,7 @@ SRC_URI="mirror://sourceforge/ntop/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~hppa ~ia64 ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE="ipv6 nls ssl tcpd"
 #snmp support is disabled
 
@@ -25,7 +27,7 @@ COMMON_DEPEND="sys-apps/gawk
 	ssl? ( dev-libs/openssl )
 	tcpd? ( sys-apps/tcp-wrappers )
 	sys-libs/zlib
-	dev-libs/geoip"
+	>=dev-libs/geoip-1.4.5"
 DEPEND="${COMMON_DEPEND}
 	>=sys-devel/libtool-1.4"
 
@@ -64,18 +66,14 @@ pkg_setup() {
 	enewuser ntop -1 -1 /var/lib/ntop ntop
 }
 
-src_unpack() {
-	unpack ${A}
-
-	cd "${S}"
-
+src_prepare() {
 	epatch "${FILESDIR}"/${P}-gentoo.patch
 	epatch "${FILESDIR}"/${P}-external-geoip.patch
 	cat acinclude.m4.in acinclude.m4.ntop > acinclude.m4
 	eautoreconf
 }
 
-src_compile() {
+src_configure() {
 	# force disable xmldumpPlugin
 	export \
 		ac_cv_header_glib_h=no \
@@ -94,7 +92,6 @@ src_compile() {
 		--disable-snmp \
 		|| die "configure problem"
 		# $(use_enable snmp)
-	emake || die "compile problem"
 }
 
 src_install() {
