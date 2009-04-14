@@ -82,13 +82,6 @@ pkg_preinst() {
 		install -d ${ROOT}var/state
 	fi
 
-	# Bug #217848 - Since the remap_dns_vars() called by pkg_preinst() of
-	# the baselayout-1.x ebuild copies all the real configs from the user's
-	# /etc/conf.d into ${D}, it makes them all appear to be the default
-	# versions. In order to protect them from being unmerged after this
-	# upgrade, modify their timestamps.
-	touch "${ROOT}"/etc/conf.d/* 2>/dev/null
-
 	# We need to install directories and maybe some dev nodes when building
 	# stages, but they cannot be in CONTENTS.
 	# Also, we cannot reference $S as binpkg will break so we do this.
