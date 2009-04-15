@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4363 2009/04/14 03:39:49 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4368 2009/04/15 05:07:54 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -863,6 +863,7 @@ dev-util/codeblocks:contrib - Build additional contrib components
 dev-util/ctags:ada - Enable Ada support
 dev-util/cvs:server - Enable server support
 dev-util/debootstrap:nodpkg - Disable support for app-arch/dpkg (useful for building a non-debian system)
+dev-util/dialog:minimal - Disable library, install command-line program only
 dev-util/eresi:server - Build eresi server capability
 dev-util/eric:idl - Enable omniorb support
 dev-util/gambas:corba - Enable CORBA 2 ORB (net-misc/omniORB)
@@ -1201,6 +1202,8 @@ kde-base/okular:chm - Enable support for Microsoft Compiled HTML Help files
 kde-base/okular:ebook - Add E-Book suppport
 kde-base/okular:ps - Add PostScript support
 kde-base/plasma-workspace:google-gadgets - Add google-gadgets support
+kde-base/plasma-workspace:rss - Enables building RSSNOW plasmoid (requires kde-base/kdepimlibs)
+kde-base/plasma-workspace:xcomposite - Disable this flag to enable experimental fake transparency support for plasma panel.
 kde-base/pykde4:akonadi - Builds Akonadi python language bindings
 kde-base/step:qalculate - Enable the libqalculate library for unit conversion
 kde-misc/kcpufreq:icon - Add icon for GUI applet (enabled by default)
@@ -1603,10 +1606,20 @@ media-sound/mixxx:vinylcontrol - Enable vinylcontrol feature
 media-sound/moc:sid - Build with SID (Commodore 64 Audio) support
 media-sound/mp3blaster:sid - Build with SID (Commodore 64 Audio) support
 media-sound/mp3splt-gtk:audacious - Include media-sound/audacious support.
-media-sound/mpd:curl - Support for web streams
-media-sound/mpd:icecast - Enable support for Icecast2
+media-sound/mpd:cdio - Use libcdio for CD support
+media-sound/mpd:curl - Support for web stream listening
+media-sound/mpd:fifo - Support writing audio to a FIFO
+media-sound/mpd:fluidsynth - Enables Fluidsynth MIDI software synthesis
+media-sound/mpd:gprof - Build with profiling support
+media-sound/mpd:http-stream - Support streaming via built-in HTTP server
+media-sound/mpd:icecast - Support for Icecast2 streaming
 media-sound/mpd:id3 - Support for ID3 tags
 media-sound/mpd:lame - Support for MP3 streaming via Icecast2
+media-sound/mpd:lastfmradio - Support listening to last.fm radio stations
+media-sound/mpd:libmms - Support for Microsoft Media Server (MMS) streams via libmms
+media-sound/mpd:pipe - Support writing audio to a pipe
+media-sound/mpd:sid - Build with SID (Commodore 64 Audio) support
+media-sound/mpd:zip - Support for ZIP files
 media-sound/mpfc:cdaudio - Enable cd audio playback support
 media-sound/mpfc:wav - Enable wav audio codec support
 media-sound/mpg123:3dnowext - Enable 3dnowext cpu instructions
@@ -2269,6 +2282,7 @@ net-libs/opal:noaudio - Disable audio codecs
 net-libs/opal:novideo - Disable video codecs
 net-libs/openh323:noaudio - Disable audio codecs
 net-libs/openh323:novideo - Disable video codecs
+net-libs/ortp:srtp - Add support for Secure RTP
 net-libs/raknet:autopatcher - Enable RakNet autopatcher support
 net-libs/raknet:rakvoice - Enable RakNet RakVoice module
 net-libs/webkit-gtk:coverage - enable code coverage support
