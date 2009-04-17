@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-antivirus/clamav/clamav-0.95.1.ebuild,v 1.2 2009/04/10 07:49:54 dertobi123 Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-antivirus/clamav/clamav-0.95.1.ebuild,v 1.5 2009/04/16 16:10:00 jer Exp $
 
 inherit autotools eutils flag-o-matic fixheadtails multilib versionator
 
@@ -15,7 +15,7 @@ SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 IUSE="bzip2 clamdtop crypt iconv milter selinux ipv6"
 
 COMMON_DEPEND="bzip2? ( app-arch/bzip2 )
@@ -47,6 +47,12 @@ pkg_setup() {
 
 	enewgroup clamav
 	enewuser clamav -1 -1 /dev/null clamav
+}
+
+src_unpack() {
+	unpack ${A}
+	cd "${S}"
+	epatch "${FILESDIR}/${P}-nls.patch"
 }
 
 src_compile() {
@@ -108,6 +114,20 @@ src_install() {
 		-e "s:^\#\(AllowSupplementaryGroups\).*:\1 yes:" \
 		"${D}"/etc/freshclam.conf
 
+	if use milter; then
+	   # And again same for /etc/clamav-milter.conf
+	   # MilterSocket one to include ' /' because there is a 2nd line for
+	   # inet: which we want to leave
+	   sed -i -e "s:^\(Example\):\# \1:" \
+	       -e "s:.*\(PidFile\) .*:\1 /var/run/clamav/clamav-milter.pid:" \
+	       -e "s:^\#\(ClamdSocket\) .*:\1 /var/run/clamav/clamd.sock:" \
+	       -e "s:.*\(User\) .*:\1 clamav:" \
+	       -e "s:^\#\(MilterSocket\) /.*:\1 /var/run/clamav/clamav-milter.sock:" \
+	       -e "s:^\#\(AllowSupplementaryGroups\).*:\1 yes:" \
+	       -e "s:^\#\(LogFile\) .*:\1 /var/log/clamav/clamav-milter.log:" \
+	       "${D}"/etc/clamav-milter.conf
+	fi
+
 	if use milter ; then
 		echo "
 START_MILTER=no
@@ -130,7 +150,7 @@ pkg_postinst() {
 	echo
 	if use milter ; then
 		elog "For simple instructions how to setup the clamav-milter"
-		elog "read /usr/share/doc/${PF}/clamav-milter.README.gentoo.gz"
+		elog "read the clamav-milter.README.gentoo in /usr/share/doc/${PF}"
 		echo
 	fi
 	ewarn "The soname for libclamav has changed in clamav-0.95."
