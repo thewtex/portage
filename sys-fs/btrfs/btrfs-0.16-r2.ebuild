@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/btrfs/btrfs-0.16-r2.ebuild,v 1.3 2009/02/24 05:41:09 lavajoe Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/btrfs/btrfs-0.16-r2.ebuild,v 1.4 2009/04/17 15:16:51 lavajoe Exp $
 
 inherit eutils linux-mod
 
@@ -23,7 +23,7 @@ pkg_setup()
 
 	BUILD_TARGETS="all"
 	BUILD_PARAMS="KERNELDIR=${KV_OUT_DIR}"
-	MODULE_NAMES="btrfs(fs:${S}/"
+	MODULE_NAMES="btrfs(fs:${S})"
 
 	if ! kernel_is 2 6; then
 		eerror "Need a 2.6 kernel to compile against!"
@@ -31,8 +31,8 @@ pkg_setup()
 	fi
 
 	if kernel_is gt 2 6 27; then
-		eerror "Not compatible with kernels beyond 2.6.27 - use in-kernel version!"
-		die "Not compatible with kernels beyond 2.6.27 - use in-kernel version!"
+		eerror "Not compatible with kernels beyond 2.6.27."
+		die "Not compatible with kernels beyond 2.6.27."
 	fi
 
 	if ! linux_chkconfig_present LIBCRC32C; then

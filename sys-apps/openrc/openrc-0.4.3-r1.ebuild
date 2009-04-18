@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/openrc/openrc-0.4.3-r1.ebuild,v 1.1 2009/02/13 09:07:16 zzam Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/openrc/openrc-0.4.3-r1.ebuild,v 1.2 2009/04/18 10:40:17 hollow Exp $
 
 inherit eutils flag-o-matic multilib toolchain-funcs
 
@@ -65,7 +65,7 @@ src_unpack() {
 	epatch "${FILESDIR}"/0.4.2/0001-msg-style.patch
 	epatch "${FILESDIR}"/0.4.2/0002-useful-functions.patch
 	epatch "${FILESDIR}"/0.4.2/0003-KV.patch
-	epatch "${FILESDIR}"/openrc-0.4.3-fix-is_older_than.patch
+	epatch "${FILESDIR}"/0.4.3/0001-fix-is_older_than.patch
 }
 
 src_compile() {

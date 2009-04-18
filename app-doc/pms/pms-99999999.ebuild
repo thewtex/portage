@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-doc/pms/pms-99999999.ebuild,v 1.8 2009/04/16 22:02:14 fauli Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-doc/pms/pms-99999999.ebuild,v 1.10 2009/04/18 00:03:20 gentoofan23 Exp $
 
 inherit git
 
@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~sparc ~x86"
 IUSE="all-options eapi3-draft html kdebuild"
 
-DEPEND="html? ( dev-tex/tex4ht )
+DEPEND="html? ( >=dev-tex/tex4ht-20090115_p0029 )
 	eapi3-draft? ( dev-texlive/texlive-bibtexextra dev-tex/leaflet )
 	dev-texlive/texlive-latex
 	dev-texlive/texlive-latexrecommended
@@ -35,7 +35,8 @@ src_unpack() {
 set_conditional() {
 	local boolname=ENABLE-$(tr '[[:lower:]]' '[[:upper:]]' <<<${1})
 	local boolval=$(use ${1} && echo true || echo false)
-	sed -i -e '/\\setboolean{'${boolname}'}/s/true\|false/'${boolval}'/' pms.tex || die "sed failed"
+	sed -i -e '/\\setboolean{'${boolname}'}/s/true\|false/'${boolval}'/' \
+		$(use eapi3-draft && echo pms.cls || echo pms.tex) || die "sed failed"
 }
 
 src_compile() {

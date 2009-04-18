@@ -1,9 +1,9 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/dillo/dillo-9999.ebuild,v 1.1 2009/04/10 15:57:12 yngwin Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/dillo/dillo-9999.ebuild,v 1.2 2009/04/17 15:11:02 yngwin Exp $
 
 EAPI="2"
-inherit eutils multilib mercurial
+inherit eutils flag-o-matic multilib mercurial
 
 DESCRIPTION="Lean FLTK2-based web browser"
 HOMEPAGE="http://www.dillo.org/"
@@ -30,7 +30,7 @@ src_prepare() {
 }
 
 src_configure() {
-	LDFLAGS="${LDFLAGS} -L/usr/$(get_libdir)/fltk" \
+	append-ldflags "-L/usr/$(get_libdir)/fltk"
 	econf  \
 		$(use_enable gif) \
 		$(use_enable ipv6) \
