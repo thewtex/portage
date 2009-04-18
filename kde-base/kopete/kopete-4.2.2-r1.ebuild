@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/kopete/kopete-4.2.2-r1.ebuild,v 1.1 2009/04/14 22:43:32 scarabeus Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/kopete/kopete-4.2.2-r1.ebuild,v 1.4 2009/04/17 07:55:28 alexxy Exp $
 
 EAPI="2"
 
@@ -8,7 +8,7 @@ KMNAME="kdenetwork"
 inherit kde4-meta
 
 DESCRIPTION="KDE multi-protocol IM client"
-KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~x86"
 IUSE="debug doc ssl"
 
 # Available plugins
@@ -97,14 +97,13 @@ PDEPEND="
 "
 
 src_configure() {
-	local x
-	# Xmms isn't in portage, thus forcefully disabled.
-	# Also disable old msn support.
-	mycmakeargs="${mycmakeargs} -DWITH_Xmms=OFF -DWITH_msn=OFF"
+	local x x2
+	# Disable old msn support.
+	mycmakeargs="${mycmakeargs} -DWITH_msn=OFF"
 	# enable protocols
 	for x in ${PROTOCOLS}; do
-		[[ ${x/+/} = msn ]] && x="wlm"
-		mycmakeargs="${mycmakeargs} $(cmake-utils_use_with ${x/+/})"
+		[[ ${x/+/} = msn ]] && x2=wlm || x2=""
+		mycmakeargs="${mycmakeargs} $(cmake-utils_use_with ${x/+/} ${x2})"
 	done
 	# enable plugins
 	for x in ${PLUGINS}; do

@@ -4,13 +4,14 @@
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
 
 <glsa id="200904-14">
-  <title>F-PROT Antivirus: Denial of Service</title>
+  <title>F-PROT Antivirus: Multiple Denial of Service vulnerabilities</title>
   <synopsis>
-    An error in F-PROT Antivirus may lead to a Denial of Service.
+    Multiple errors in F-PROT Antivirus may lead to a Denial of Service.
   </synopsis>
   <product type="ebuild">f-prot</product>
   <announced>April 14, 2009</announced>
-  <revised>April 14, 2009: 02</revised>
+  <revised>April 17, 2009: 04</revised>
+  <bug>232665</bug>
   <bug>253497</bug>
   <access>remote</access>
   <affected>
@@ -27,15 +28,24 @@
   </background>
   <description>
     <p>
-    Jonathan Brossard from iViZ Techno Solutions reported that F-PROT
-    Antivirus does not correctly process ELF binaries with corrupted
-    headers.
+    The following vulnerabilities were found:
     </p>
+    <ul>
+    <li>Multiple errors when processing UPX, ASPack or Microsoft Office
+    files (CVE-2008-3243).</li>
+    <li>Infinite Sergio Alvarez of n.runs AG reported an invalid memory
+    access when processing a CHM file with a large nb_dir value
+    (CVE-2008-3244).</li>
+    <li>Jonathan Brossard from iViZ Techno Solutions reported that F-PROT
+    Antivirus does not correctly process ELF binaries with corrupted
+    headers (CVE-2008-5747).
+    </li>
+    </ul>
   </description>
   <impact type="normal">
     <p>
     A remote attacker could entice a user or automated system to scan a
-    specially crafted ELF binary, leading to a crash.
+    specially crafted file, leading to a crash or infinite loop.
     </p>
   </impact>
   <workaround>
@@ -52,6 +62,8 @@
     # emerge --ask --oneshot --verbose &quot;&gt;=app-antivirus/f-prot-6.0.2&quot;</code>
   </resolution>
   <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3243">CVE-2008-3243</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3244">CVE-2008-3244</uri>
     <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-5747">CVE-2008-5747</uri>
   </references>
   <metadata tag="requester" timestamp="Wed, 08 Apr 2009 22:38:56 +0000">
