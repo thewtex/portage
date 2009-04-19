@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-fs/netatalk/netatalk-2.0.3-r4.ebuild,v 1.2 2009/04/14 01:16:41 ranger Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-fs/netatalk/netatalk-2.0.3-r4.ebuild,v 1.3 2009/04/18 13:14:57 maekke Exp $
 
 inherit eutils pam autotools
 

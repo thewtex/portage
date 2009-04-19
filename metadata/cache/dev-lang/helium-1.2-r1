@@ -1,5 +1,5 @@
-<dev-lang/ghc-6.4 !>=dev-lang/ghc-6.4 readline? ( sys-libs/readline )
-virtual/jdk dev-libs/gmp readline? ( sys-libs/readline )
+<dev-lang/ghc-6.4 !>=dev-lang/ghc-6.4 readline? ( sys-libs/readline ) >=dev-java/java-config-2.1.6
+>=virtual/jre-1.4 dev-libs/gmp readline? ( sys-libs/readline ) >=dev-java/java-config-2.1.6
 0
 http://www.cs.uu.nl/helium/distr/helium-1.2-src.tar.gz http://www.cs.uu.nl/helium/distr/Hint.jar
 
@@ -7,14 +7,14 @@ http://www.cs.uu.nl/helium
 GPL-2
 Helium (for learning Haskell)
 x86 -sparc ~ppc
-eutils java-pkg multilib portability toolchain-funcs
-readline
+eutils java-pkg-2 java-utils-2 multilib portability toolchain-funcs versionator
+readline elibc_FreeBSD
 
 
 
 
 
-compile install setup unpack
+compile install preinst setup unpack
 
 
 
