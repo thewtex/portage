@@ -1,6 +1,30 @@
 # ChangeLog for app-doc/pms
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-doc/pms/ChangeLog,v 1.9 2009/03/26 18:04:10 gentoofan23 Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-doc/pms/ChangeLog,v 1.16 2009/04/18 00:03:20 gentoofan23 Exp $
+
+  18 Apr 2009; Thomas Anderson <gentoofan23@gentoo.org> pms-99999999.ebuild:
+  Fix filenames to sed for set-options, dependent on USE=eapi3-draft
+
+  17 Apr 2009; Thomas Anderson <gentoofan23@gentoo.org> pms-99999999.ebuild:
+  Fix Build Dependencies, USE=html needs >=dev-tex/tex4ht-20090115_p0029
+
+  16 Apr 2009; Christian Faulhammer <fauli@gentoo.org> pms-99999999.ebuild:
+  add dev-tex/leaflet as the EAPI 3 branch now needs that
+
+  15 Apr 2009; Christian Faulhammer <fauli@gentoo.org> pms-99999999.ebuild:
+  add dependency on dev-texlive/texlive-bibtexextra for EAPI 3 branch
+
+  13 Apr 2009; Christian Faulhammer <fauli@gentoo.org> pms-2.ebuild,
+  pms-99999999.ebuild:
+  add ~x86 KEYWORD
+
+*pms-2 (13 Apr 2009)
+
+  13 Apr 2009; Christian Faulhammer <fauli@gentoo.org> +pms-2.ebuild:
+  add an ebuild which installs the approved EAPI 2 version of the PMS
+
+  12 Apr 2009; Christian Faulhammer <fauli@gentoo.org> metadata.xml:
+  add ulm and myself as maintainers
 
   26 Mar 2009; Thomas Anderson <gentoofan23@gentoo.org> metadata.xml,
   pms-99999999.ebuild:

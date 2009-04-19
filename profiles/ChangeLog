@@ -1,10 +1,96 @@
 # ChangeLog for profile directory
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.2524 2009/04/11 20:32:50 alexxy Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.2551 2009/04/19 09:19:57 tove Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  19 Apr 2009; Torsten Veller <tove@gentoo.org> package.mask:
+  Mask =dev-perl/math-pari-2.010801-r1 for testing
+
+  18 Apr 2009; Tomas Chvatal <scarabeus@gentoo.org> base/package.use.mask,
+  package.mask:
+  Unmask NetworkManager (and its kde parts). Since pkit is unmasked :]
+
+  18 Apr 2009; Ulrich Mueller <ulm@gentoo.org> package.mask:
+  Mask live ebuild for app-admin/eselect.
+
+  17 Apr 2009; Torsten Veller <tove@gentoo.org> package.mask:
+  Move dev-perl/IO-Compress-Bzip2 -> perl-core/IO-Compress-Bzip2 and
+  dev-perl/Compress-Raw-Bzip2 perl-core/Compress-Raw-Bzip2. Temporary mask
+  IO-Compress which replaces Compress-Zlib, IO-Compress-Zlib,
+  IO-Compress-Bzip2 and IO-Compress-Base
+
+  17 Apr 2009; Justin Bronder <jsbronder@gentoo.org> package.mask:
+  pmask sys-cluster/mpich for removal (#266565)
+
+  17 Apr 2009; Lennart Kolmodin <kolmodin@gentoo.org> package.mask:
+  Mask dev-haskell/ghc-6.8.2-r1 for testing. It includes a precompiled
+  readline version, fixing bug #259867.
+
+  17 Apr 2009; <chainsaw@gentoo.org> package.mask:
+  Mask Audacious 2.0 alpha developer previews.
+
+  17 Apr 2009; Jeremy Olexa <darkside@gentoo.org> package.mask:
+  General treecleaner maintenance / removals
+
+  16 Apr 2009; Paul Varner <fuzzyray@gentoo.org> package.mask:
+  Removed mask for gentoolkit-dev-0.2.6.9
+
+  16 Apr 2009; Tomas Chvatal <scarabeus@gentoo.org> package.mask:
+  Fix the 4.2.1 mask, will be wiped out soon. Slot deps are not allowed, thx
+  mr_bones for remind.
+
+  15 Apr 2009; Jeff Gardner <je_fro@gentoo.org> package.mask:
+  p.mask ati-drivers-extra-8.27.10 as it is no longer installable
+
+  15 Apr 2009; Mounir Lamouri <volkmar@gentoo.org> package.mask:
+  Mask >mozilla-weaver-0.2.104 because it needs a masked Firefox (3.1_beta)
+
+  15 Apr 2009; Torsten Veller <tove@gentoo.org> package.mask:
+  Mask net-mail/gotmail for removal (#266204)
+
+  15 Apr 2009; Mounir Lamouri <volkmar@gentoo.org> package.mask:
+  Mask ortp-0.15.0 because it breaks compatibility with older releases
+
+  14 Apr 2009; Alexis Ballier <aballier@gentoo.org> package.mask:
+  unmask slv2 0.6 now that traverso builds and needs it
+
+  14 Apr 2009; Christoph Mende <angelos@gentoo.org> package.mask:
+  Masked media-sound/mpd pre-releases
+
+  14 Apr 2009; Jeff Gardner <je_fro@gentoo.org> package.mask:
+  Unmask ati-drivers-8.32.5 so that ati-drivers-extra can live again.
+
+  14 Apr 2009; Jeremy Olexa <darkside@gentoo.org> package.mask:
+  remove non-existant p.masked version of dev-db/mysql
+
+  14 Apr 2009; Jeremy Olexa <darkside@gentoo.org> package.mask:
+  remove entries for non-existant packages
+
+  14 Apr 2009; Jeremy Olexa <darkside@gentoo.org> package.mask:
+  removed openpbs-common from tree
+
+  14 Apr 2009; Jeremy Olexa <darkside@gentoo.org> package.mask:
+  p.mask guarddog, temperature-app, ivcall, arno-iptables-firewall, ctmkit from
+  the treecleaner queue.
+
+  13 Apr 2009; Christian Faulhammer <fauli@gentoo.org> package.mask:
+  mask live version of app-doc/pms
+
+  13 Apr 2009; Jeff Gardner <je_fro@gentoo.org> package.mask:
+  p.mask several ati-drivers versions before cleanup
+
+  13 Apr 2009; Jeff Gardner <je_fro@gentoo.org> ChangeLog:
+  Removed ati-drivers versions from p.mask that are no longer in the tree.
+
+  12 Apr 2009; Tomas Chvatal <scarabeus@gentoo.org> package.mask:
+  Update mask for kde4. Block for change older than 4.2.2 due to eclass
+  update that is comming next.
+
+  12 Apr 2009; Ulrich Mueller <ulm@gentoo.org> package.mask:
+  Mask net-www/adobesvg for removal, bug 265066.
 
   11 Apr 2009; Alexey Shvetsov <alexxy@gentoo.org> package.mask:
   mask kde 4.2.2

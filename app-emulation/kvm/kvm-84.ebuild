@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/kvm/kvm-84.ebuild,v 1.2 2009/03/09 09:23:43 fauli Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/kvm/kvm-84.ebuild,v 1.4 2009/04/14 17:36:03 dang Exp $
 
 EAPI=2
 
@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz
 	http://apollo.fprintf.net/downloads/${PATCHSET}.tar.gz"
 
 DESCRIPTION="Kernel-based Virtual Machine userland tools"
-HOMEPAGE="http://kvm.qumranet.com/kvmwiki"
+HOMEPAGE="http://www.linux-kvm.org"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -122,6 +122,9 @@ src_configure() {
 	use modules && conf_opts="$conf_opts --kerneldir=$KV_DIR"
 	conf_opts="$conf_opts --prefix=/usr"
 	#conf_opts="$conf_opts --audio-drv-list=\"$audio_opts\""
+	if has_multilib_profile && [[ "${DEFAULT_ABI}" == "x86" ]] ; then
+		conf_opts="$conf_opts --arch=i686"
+	fi
 
 	./configure ${conf_opts} --audio-drv-list="$audio_opts" || die "econf failed"
 }

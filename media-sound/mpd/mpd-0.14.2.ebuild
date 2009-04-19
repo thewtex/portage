@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/mpd/mpd-0.14.2.ebuild,v 1.8 2009/04/03 16:09:30 josejx Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/mpd/mpd-0.14.2.ebuild,v 1.10 2009/04/14 18:06:00 angelos Exp $
 
 EAPI=2
 
@@ -55,7 +55,7 @@ pkg_setup() {
 
 src_prepare() {
 	cp doc/mpdconf.example doc/mpdconf.dist
-	epatch "${FILESDIR}"/mpdconf1.patch
+	epatch "${FILESDIR}"/${PV}-mpdconf.patch
 }
 
 src_configure() {
@@ -108,10 +108,10 @@ src_configure() {
 		$(use_enable musepack mpc) \
 		$(use_enable oss) \
 		$(use_enable pulseaudio pulse) \
-		--enable-un \
 		$(use_enable vorbis oggvorbis) \
 		$(use_enable wavpack) \
 		$(use_with zeroconf zeroconf avahi) \
+		--enable-un \
 		${myconf}
 }
 

@@ -1,4 +1,4 @@
-X? ( x11-libs/libXext ) kde? ( || ( kde-base/kdialog kde-base/kdebase ) ) media-libs/sdl-mixer media-libs/libsdl media-libs/sdl-net
+X? ( x11-libs/libXext ) kde? ( || ( kde-base/kdialog kde-base/kdebase ) ) media-libs/sdl-mixer media-libs/libsdl media-libs/sdl-net =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
 X? ( x11-libs/libXext ) kde? ( || ( kde-base/kdialog kde-base/kdebase ) ) media-libs/sdl-mixer media-libs/libsdl media-libs/sdl-net tk? ( dev-lang/tcl dev-lang/tk )
 0
 http://www.jumpbump.mine.nu/port/jumpnbump-1.50.tar.gz mirror://gentoo/jumpnbump-1.50-autotool.patch.bz2
@@ -7,14 +7,14 @@ http://www.jumpbump.mine.nu/
 GPL-2
 a funny multiplayer game about cute little fluffy bunnies
 amd64 ppc x86
-toolchain-funcs portability multilib base games eutils
+autotools base eutils games libtool multilib portability toolchain-funcs
 X fbcon kde svga tk
 
 
 
-0
+2
 
-compile install postinst preinst setup unpack
+compile configure install postinst preinst prepare setup unpack
 
 
 
