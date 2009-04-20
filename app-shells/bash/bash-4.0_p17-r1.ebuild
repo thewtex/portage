@@ -118,7 +118,9 @@ src_compile() {
 		--disable-profiling \
 		--without-gnu-malloc \
 		${myconf} || die
-	emake || die "make failed"
+	# bash-4.0_p17-r1 isn't 100% compatible with parallel make - mkbuiltins buildext.h runs after
+	# code that needs buildext.h -- sometimes, of course.
+	emake -j1 || die "make failed"
 
 	if use plugins ; then
 		emake -C examples/loadables all others || die
