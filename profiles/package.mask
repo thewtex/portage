@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.9695 2009/04/19 09:19:57 tove Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.9700 2009/04/19 17:36:35 cardoe Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,20 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Doug Goldstein <cardoe@gentoo.org> (19 Apr 2009)
+# developing ebuild for phoronix-test-suite
+app-benchmark/phoronix-test-suite
+
+# Benedikt Böhm <hollow@gentoo.org> (19 Apr 2009)
+# masked for testing
+=net-analyzer/centreon-1.4.2.7
+
+# Lennart Kolmodin <kolmodin@gentoo.org> (19 Apr 2009)
+# Mark ghc-6.10.2 and related packages for testing.
+~dev-lang/ghc-6.10.2
+~dev-haskell/parallel-1.1.0.1
+~dev-haskell/haddock-2.4.2
 
 # Torsten Veller <tove@gentoo.org> (19 Apr 2009)
 # Uses pari-2.3* now.
@@ -693,13 +707,6 @@ app-text/ghostscript-esp
 # due to 6.4.09
 net-misc/kickpim
 
-# Doug Goldstein <cardoe@gentoo.org> (3 Mar 2009)
-# After discussing it with NVIDIA, issues with
-# signal handling for many users require this
-# to be masked. However, some users my experience
-# better functionality with this driver
-=x11-drivers/nvidia-drivers-180.35
-
 # Thomas Sachau <tommy@gentoo.org> (2 Mar 2009)
 # Mask for removal, was merged into dev-java/fec
 net-libs/fec
@@ -1148,14 +1155,6 @@ dev-cpp/bakery
 # See bug 193505 and bug 204249. You are on your own here.
 x11-libs/lesstif
 
-# Lennart Kolmodin <kolmodin@gentoo.org> (04 May 2008)
-# Some of the older 0.9x regex packages are experimental versions and does
-# not work with ghc-6.8. There are now newer versions that should be used
-# instead. This replaces the older package mask by Duncan Coutts.
-=dev-haskell/regex-compat-0.90
-=dev-haskell/regex-base-0.91
-=dev-haskell/regex-posix-0.92
-
 # Markus Ullmann <jokey@gentoo.org> (21 Apr 2008)
 # mask beta version
 =net-libs/gloox-1.0_beta*
@@ -1418,16 +1417,6 @@ dev-lang/ghc-bin
 # the Asterisk is coming! the Asterisk is coming!
 >=net-misc/zaptel-1.4.0
 >=net-misc/asterisk-1.4.0
-
-# Doug Goldstein <cardoe@gentoo.org> (30 Aug 2007)
-# upstream has declared this module dead and broken
-# it is reworked in trunk but will not be moved to 0.20
-# <gbee> not in a fit state for a backport, suppose in a couple or weeks, maybe less it might be usable enough that packagers could backport it themselves - not sure Chutt would want it backported it to -fixes though
-# <gbee> assuming you are talking about mythweather and not some other fix that I was supposed to be backporting
-# <Cardoe> yes, mythweather
-# <Chutt> that's too big for a backport
-# if someone wishes to backport the changes, feel free to open a bug
-<media-plugins/mythweather-0.21_pre10000
 
 # Robert Buchholz <rbu@gentoo.org> (29 Aug 2007)
 # PPTP Plugin doesn't work on amd64
