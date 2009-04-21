@@ -1,8 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/emacs-daemon/emacs-daemon-0.14.ebuild,v 1.4 2009/04/10 18:37:42 armin76 Exp $
-
-NEED_EMACS=23
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/emacs-daemon/emacs-daemon-0.14.ebuild,v 1.6 2009/04/16 01:38:08 jer Exp $
 
 inherit elisp
 
@@ -12,12 +10,24 @@ SRC_URI="mirror://gentoo/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~s390 ~sh ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~s390 ~sh ~sparc ~x86"
 IUSE=""
 
-RDEPEND=">=sys-apps/openrc-0.4"
+DEPEND=">=virtual/emacs-23"
+RDEPEND="${DEPEND}
+	>=sys-apps/openrc-0.4"
 
 SITEFILE="10${PN}-gentoo.el"
+
+pkg_setup() {
+	local has_daemon=$(${EMACS} ${EMACSFLAGS} \
+		--eval "(princ (fboundp 'daemonp))")
+	if [ "${has_daemon}" != t ]; then
+		ewarn "Your current Emacs version does not support running as a daemon"
+		ewarn "which is required for ${CATEGORY}/${PN}."
+		ewarn "Use \"eselect emacs\" to select an Emacs version >= 23."
+	fi
+}
 
 src_unpack() {
 	unpack ${A}

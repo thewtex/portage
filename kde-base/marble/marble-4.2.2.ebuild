@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/marble/marble-4.2.2.ebuild,v 1.1 2009/04/12 06:36:12 alexxy Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/marble/marble-4.2.2.ebuild,v 1.3 2009/04/17 07:56:37 alexxy Exp $
 
 EAPI="2"
 
@@ -10,7 +10,7 @@ KDE_REQUIRED="optional"
 inherit kde4-meta
 
 DESCRIPTION="Generic geographical map widget"
-KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~x86"
 IUSE="debug designer-plugin doc +kde gps plasma python"
 
 DEPEND="
@@ -46,6 +46,10 @@ src_configure() {
 		$(cmake-utils_use_with python PyQt4)
 		$(cmake-utils_use_with python PythonLibrary)
 		$(cmake-utils_use_with python SIP)"
+
+	sed -i \
+		-e 's:add_subdirectory(cmake):#dontwantit:g' \
+		CMakeLists.txt || die "sed to disable file collisions failed"
 
 	find "${S}/marble/src/bindings/python/sip" -name "*.sip" | xargs -- sed -i 's/#include <marble\//#include </'
 

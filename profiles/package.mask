@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.9657 2009/04/11 20:32:50 alexxy Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.9695 2009/04/19 09:19:57 tove Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -31,275 +31,402 @@
 
 #--- END OF EXAMPLES ---
 
+# Torsten Veller <tove@gentoo.org> (19 Apr 2009)
+# Uses pari-2.3* now.
+# Should fix a number of bug: 143763, 200293, 261357, 265466.
+# It "mostly works with 2.3.* too". Is "mostly" good enough?
+=dev-perl/math-pari-2.010801-r1
+
+# Ulrich Mueller <ulm@gentoo.org> (18 Apr 2009)
+# Live ebuild for testing and debugging.
+~app-admin/eselect-9999
+
+# Torsten Veller <tove@gentoo.org> (17 Apr 2009)
+# Masks for new IO-Compress which includes
+# Compress-Zlib, IO-Compress-Zlib, IO-Compress-Bzip2, IO-Compress-Base
+perl-core/IO-Compress
+virtual/perl-IO-Compress
+=virtual/perl-Compress-Zlib-2.017
+=virtual/perl-IO-Compress-Zlib-2.017
+=virtual/perl-IO-Compress-Bzip2-2.017
+=virtual/perl-IO-Compress-Base-2.017
+# new versions
+=perl-core/Compress-Raw-Zlib-2.017
+=virtual/perl-Compress-Raw-Zlib-2.017
+=perl-core/Compress-Raw-Bzip2-2.017
+=virtual/perl-Compress-Raw-Bzip2-2.017
+
+# Justin Bronder <jsbronder@gentoo.org> (17 Apr 2009)
+# Mask sys-cluster/mpich for removal. (#266565)
+# No release since 2005, multiple bugs, easily replaced with
+# openmpi, mpich2 or lam-mpi
+sys-cluster/mpich
+
+# Lennart Kolmodin <kolmodin@gentoo.org> (17 Apr 2009)
+# Add patched dev-lang/ghc for testing.
+# It includes a bundled readline package to be able to use old bootstrapping
+# binaries. See bug #259867.
+# Only x86 and amd64 supported so far. This ebuild won't be very interesting
+# once we add ghc 6.10.2.
+=dev-lang/ghc-6.8.2-r1
+
+# Doug Goldstein <cardoe@gentoo.org> (17 Apr 2009)
+# Added for testing.These ebuilds fix the following
+# bugs #256904, #256913, #257687, #249029, #260340, #254747.
+# For me however, I am unable to create new images using virt-manager
+# patches for this welcome
+=app-emulation/libvirt-0.6.2
+=app-emulation/virt-manager-0.7.0
+=app-emulation/virtinst-0.400.3
+
+# Tony Vroon <chainsaw@gentoo.org> (17 Apr 2009)
+# Alpha-quality developer preview. Feel free to give it a go, but bugs go upstream.
+# Use this tracker: http://www.atheme.org/projects/audacious/issues
+=media-sound/audacious-2.0_alpha*
+=media-plugins/audacious-plugins-2.0_alpha*
+
+# Mounir Lamouri <volkmar@gentoo.org> (15 Apr 2009)
+# >www-plugins/mozilla-weaver-0.2.104 needs masked versions of ff (ie. 3.1_beta)
+>www-plugins/mozilla-weaver-0.2.104
+
+# Torsten Veller <tove@gentoo.org> (15 Apr 2009)
+# Mask net-mail/gotmail for removal (#266204)
+net-mail/gotmail
+
+# Mounir Lamouri <volkmar@gentoo.org> (15 Apr 2009)
+# According to configure.ac ortp-0.15.0 breaks compatibility with older releases
+# Needs to be tested before unmasked
+>=net-libs/ortp-0.15.0
+
+# Christoph Mende <angelos@unkreativ.org> (14 Apr 2009)
+# Masked media-sound/mpd pre-releases
+>media-sound/mpd-0.14.99
+
 # Jeff Mitchell <funtoo@emailgoeshere.com> (14 Apr 2009)
-# Breakages reported by every Amarok user
+# Breakages if Amarok is not built *with* --as-needed, being worked out
 =dev-db/mysql-5.0.76-r1
 
-# Alexey Shvetsov <alexxy@gentoo.org> (11 Apr 2009)
-# Mask temporaly
-~kde-base/akonadi-4.2.2
-~kde-base/akregator-4.2.2
-~kde-base/amor-4.2.2
-~kde-base/ark-4.2.2
-~kde-base/blinken-4.2.2
-~kde-base/bomber-4.2.2
-~kde-base/bovo-4.2.2
-~kde-base/cervisia-4.2.2
-~kde-base/dolphin-4.2.2
-~kde-base/dragonplayer-4.2.2
-~kde-base/drkonqi-4.2.2
-~kde-base/gwenview-4.2.2
-~kde-base/juk-4.2.2
-~kde-base/kabcclient-4.2.2
-~kde-base/kaddressbook-4.2.2
-~kde-base/kalarm-4.2.2
-~kde-base/kalgebra-4.2.2
-~kde-base/kalzium-4.2.2
-~kde-base/kamera-4.2.2
-~kde-base/kanagram-4.2.2
-~kde-base/kapman-4.2.2
-~kde-base/kappfinder-4.2.2
-~kde-base/kapptemplate-4.2.2
-~kde-base/kate-4.2.2
-~kde-base/katomic-4.2.2
-~kde-base/kbattleship-4.2.2
-~kde-base/kblackbox-4.2.2
-~kde-base/kblocks-4.2.2
-~kde-base/kbounce-4.2.2
-~kde-base/kbreakout-4.2.2
-~kde-base/kbruch-4.2.2
-~kde-base/kbugbuster-4.2.2
-~kde-base/kcachegrind-4.2.2
-~kde-base/kcalc-4.2.2
-~kde-base/kcharselect-4.2.2
-~kde-base/kcheckpass-4.2.2
-~kde-base/kcminit-4.2.2
-~kde-base/kcmshell-4.2.2
-~kde-base/kcolorchooser-4.2.2
-~kde-base/kcontrol-4.2.2
-~kde-base/kcron-4.2.2
-~kde-base/kdeaccessibility-colorschemes-4.2.2
-~kde-base/kdeaccessibility-iconthemes-4.2.2
-~kde-base/kdeaccessibility-meta-4.2.2
-~kde-base/kdeaccounts-plugin-4.2.2
-~kde-base/kdeadmin-meta-4.2.2
-~kde-base/kdeartwork-colorschemes-4.2.2
-~kde-base/kdeartwork-desktopthemes-4.2.2
-~kde-base/kdeartwork-emoticons-4.2.2
-~kde-base/kdeartwork-iconthemes-4.2.2
-~kde-base/kdeartwork-kscreensaver-4.2.2
-~kde-base/kdeartwork-meta-4.2.2
-~kde-base/kdeartwork-sounds-4.2.2
-~kde-base/kdeartwork-styles-4.2.2
-~kde-base/kdeartwork-wallpapers-4.2.2
-~kde-base/kdebase-cursors-4.2.2
-~kde-base/kdebase-data-4.2.2
-~kde-base/kdebase-desktoptheme-4.2.2
-~kde-base/kdebase-kioslaves-4.2.2
-~kde-base/kdebase-meta-4.2.2
-~kde-base/kdebase-startkde-4.2.2
-~kde-base/kdebugdialog-4.2.2
-~kde-base/kdedglobalaccel-4.2.2
-~kde-base/kdeedu-meta-4.2.2
-~kde-base/kdegames-meta-4.2.2
-~kde-base/kdegraphics-meta-4.2.2
-~kde-base/kdegraphics-strigi-analyzer-4.2.2
-~kde-base/kde-l10n-4.2.2
-~kde-base/kdelibs-4.2.2
-~kde-base/kdemaildir-4.2.2
-~kde-base/kde-menu-icons-4.2.2
-~kde-base/kde-menu-4.2.2
-~kde-base/kde-meta-4.2.2
-~kde-base/kdemultimedia-kioslaves-4.2.2
-~kde-base/kdemultimedia-meta-4.2.2
-~kde-base/kdenetwork-filesharing-4.2.2
-~kde-base/kdenetwork-meta-4.2.2
-~kde-base/kdepasswd-4.2.2
-~kde-base/kdepim-icons-4.2.2
-~kde-base/kdepim-kresources-4.2.2
-~kde-base/kdepimlibs-4.2.2
-~kde-base/kdepim-meta-4.2.2
-~kde-base/kdepim-strigi-analyzer-4.2.2
-~kde-base/kdepim-wizards-4.2.2
-~kde-base/kdeplasma-addons-4.2.2
-~kde-base/kdesdk-kioslaves-4.2.2
-~kde-base/kdesdk-meta-4.2.2
-~kde-base/kdesdk-misc-4.2.2
-~kde-base/kdesdk-scripts-4.2.2
-~kde-base/kdesdk-strigi-analyzer-4.2.2
-~kde-base/kdessh-4.2.2
-~kde-base/kdesu-4.2.2
-~kde-base/kdetoys-meta-4.2.2
-~kde-base/kdeutils-meta-4.2.2
-~kde-base/kde-wallpapers-4.2.2
-~kde-base/kdewebdev-meta-4.2.2
-~kde-base/kdf-4.2.2
-~kde-base/kdialog-4.2.2
-~kde-base/kdiamond-4.2.2
-~kde-base/kdm-4.2.2
-~kde-base/kdnssd-4.2.2
-~kde-base/keditbookmarks-4.2.2
-~kde-base/kephal-4.2.2
-~kde-base/kfile-4.2.2
-~kde-base/kfilereplace-4.2.2
-~kde-base/kfind-4.2.2
-~kde-base/kfloppy-4.2.2
-~kde-base/kfourinline-4.2.2
-~kde-base/kgamma-4.2.2
-~kde-base/kgeography-4.2.2
-~kde-base/kget-4.2.2
-~kde-base/kgoldrunner-4.2.2
-~kde-base/kgpg-4.2.2
-~kde-base/khangman-4.2.2
-~kde-base/khelpcenter-4.2.2
-~kde-base/khotkeys-4.2.2
-~kde-base/kiconfinder-4.2.2
-~kde-base/kig-4.2.2
-~kde-base/killbots-4.2.2
-~kde-base/kimagemapeditor-4.2.2
-~kde-base/kinfocenter-4.2.2
-~kde-base/kioclient-4.2.2
-~kde-base/kiriki-4.2.2
-~kde-base/kiten-4.2.2
-~kde-base/kjots-4.2.2
-~kde-base/kjumpingcube-4.2.2
-~kde-base/kleopatra-4.2.2
-~kde-base/klettres-4.2.2
-~kde-base/klines-4.2.2
-~kde-base/klinkstatus-4.2.2
-~kde-base/klipper-4.2.2
-~kde-base/kmag-4.2.2
-~kde-base/kmahjongg-4.2.2
-~kde-base/kmailcvt-4.2.2
-~kde-base/kmail-4.2.2
-~kde-base/kmenuedit-4.2.2
-~kde-base/kmimetypefinder-4.2.2
-~kde-base/kmines-4.2.2
-~kde-base/kmix-4.2.2
-~kde-base/kmousetool-4.2.2
-~kde-base/kmouth-4.2.2
-~kde-base/kmplot-4.2.2
-~kde-base/knetattach-4.2.2
-~kde-base/knetwalk-4.2.2
-~kde-base/knetworkconf-4.2.2
-~kde-base/knewstuff-4.2.2
-~kde-base/knode-4.2.2
-~kde-base/knotes-4.2.2
-~kde-base/knotify-4.2.2
-~kde-base/kode-4.2.2
-~kde-base/kolf-4.2.2
-~kde-base/kollision-4.2.2
-~kde-base/kolourpaint-4.2.2
-~kde-base/kommander-4.2.2
-~kde-base/kompare-4.2.2
-~kde-base/konqueror-4.2.2
-~kde-base/konquest-4.2.2
-~kde-base/konsolekalendar-4.2.2
-~kde-base/konsole-4.2.2
-~kde-base/kontactinterfaces-4.2.2
-~kde-base/kontact-4.2.2
-~kde-base/kontact-specialdates-4.2.2
-~kde-base/kopete-4.2.2
-~kde-base/korganizer-4.2.2
-~kde-base/kpasswdserver-4.2.2
-~kde-base/kpat-4.2.2
-~kde-base/kpilot-4.2.2
-~kde-base/kppp-4.2.2
-~kde-base/kquitapp-4.2.2
-~kde-base/krdc-4.2.2
-~kde-base/kreadconfig-4.2.2
-~kde-base/kreversi-4.2.2
-~kde-base/krfb-4.2.2
-~kde-base/krosspython-4.2.2
-~kde-base/krossruby-4.2.2
-~kde-base/kruler-4.2.2
-~kde-base/krunner-4.2.2
-~kde-base/ksame-4.2.2
-~kde-base/ksaneplugin-4.2.2
-~kde-base/kscd-4.2.2
-~kde-base/kscreensaver-4.2.2
-~kde-base/kshisen-4.2.2
-~kde-base/ksirk-4.2.2
-~kde-base/ksmserver-4.2.2
-~kde-base/ksnapshot-4.2.2
-~kde-base/kspaceduel-4.2.2
-~kde-base/ksplash-4.2.2
-~kde-base/ksquares-4.2.2
-~kde-base/kstars-4.2.2
-~kde-base/kstart-4.2.2
-~kde-base/kstartperf-4.2.2
-~kde-base/kstartupconfig-4.2.2
-~kde-base/kstyles-4.2.2
-~kde-base/ksudoku-4.2.2
-~kde-base/ksysguard-4.2.2
-~kde-base/ksystemlog-4.2.2
-~kde-base/ksystraycmd-4.2.2
-~kde-base/kteatime-4.2.2
-~kde-base/ktimer-4.2.2
-~kde-base/ktimetracker-4.2.2
-~kde-base/ktimezoned-4.2.2
-~kde-base/ktouch-4.2.2
-~kde-base/ktraderclient-4.2.2
-~kde-base/kttsd-4.2.2
-~kde-base/ktuberling-4.2.2
-~kde-base/kturtle-4.2.2
-~kde-base/ktux-4.2.2
-~kde-base/kubrick-4.2.2
-~kde-base/kuiserver-4.2.2
-~kde-base/kuiviewer-4.2.2
-~kde-base/kurifilter-plugins-4.2.2
-~kde-base/kuser-4.2.2
-~kde-base/kwalletd-4.2.2
-~kde-base/kwallet-4.2.2
-~kde-base/kweather-4.2.2
-~kde-base/kwin-4.2.2
-~kde-base/kwordquiz-4.2.2
-~kde-base/kwrited-4.2.2
-~kde-base/kwrite-4.2.2
-~kde-base/kxsldbg-4.2.2
-~kde-base/libkcddb-4.2.2
-~kde-base/libkcompactdisc-4.2.2
-~kde-base/libkdcraw-4.2.2
-~kde-base/libkdeedu-4.2.2
-~kde-base/libkdegames-4.2.2
-~kde-base/libkdepim-4.2.2
-~kde-base/libkexiv2-4.2.2
-~kde-base/libkholidays-4.2.2
-~kde-base/libkipi-4.2.2
-~kde-base/libkleo-4.2.2
-~kde-base/libkmahjongg-4.2.2
-~kde-base/libkonq-4.2.2
-~kde-base/libkpgp-4.2.2
-~kde-base/libksane-4.2.2
-~kde-base/libksieve-4.2.2
-~kde-base/libkworkspace-4.2.2
-~kde-base/libplasmaclock-4.2.2
-~kde-base/libtaskmanager-4.2.2
-~kde-base/lilo-config-4.2.2
-~kde-base/lokalize-4.2.2
-~kde-base/lskat-4.2.2
-~kde-base/marble-4.2.2
-~kde-base/mimelib-4.2.2
-~kde-base/nepomuk-4.2.2
-~kde-base/nsplugins-4.2.2
-~kde-base/okteta-4.2.2
-~kde-base/okular-4.2.2
-~kde-base/parley-4.2.2
-~kde-base/phonon-kde-4.2.2
-~kde-base/plasma-apps-4.2.2
-~kde-base/plasma-workspace-4.2.2
-~kde-base/powerdevil-4.2.2
-~kde-base/pykde4-4.2.2
-~kde-base/renamedlg-plugins-4.2.2
-~kde-base/solid-hardware-4.2.2
-~kde-base/solid-4.2.2
-~kde-base/soliduiserver-4.2.2
-~kde-base/step-4.2.2
-~kde-base/superkaramba-4.2.2
-~kde-base/svgpart-4.2.2
-~kde-base/sweeper-4.2.2
-~kde-base/systemsettings-4.2.2
-~kde-base/umbrello-4.2.2
+# Jeremy Olexa <darkside@gentoo.org> (14 Apr 2009)
+# Masked for removal in 60 days. Dead upstream, no Gentoo maintainer, needs
+# init script. bug 182373 - you can save this one by testing the init script
+# and/or commenting on the bug.
+net-firewall/guarddog
+
+# Jeremy Olexa <darkside@gentoo.org> (14 Apr 2009)
+# Masked for removal in 60 days. Broken with gcc-4.3, doesn't work after gcc
+# patches, no maintainer, dead upstream. bug 228227
+x11-misc/temperature-app
+
+# Jeremy Olexa <darkside@gentoo.org> (14 Apr 2009)
+# Masked for removal in 60 days. Does not compile, no maintainer, dead upstream.
+# bug 247946
+net-dialup/ivcall
+
+# Jeremy Olexa <darkside@gentoo.org> (14 Apr 2009)
+# Masked for removal in 60 days. Security issues that warrant removal.
+# Non-vulnerable version exist, just needs a maintainer. bug 261507
+net-firewall/arno-iptables-firewall
+
+# Jeremy Olexa <darkside@gentoo.org> (14 Apr 2009)
+# Masked for removal in 60 days. Causes issues with other packages. Old port
+# that is not very useful and lacks a maintainer. bug 249080
+dev-util/ctmkit
+
+# Christian Faulhammer <fauli@gentoo.org> (13 Apr 2009)
+# Ulrich Mueller <ulm@gentoo.org>
+# Thomas Anderson <gentoofan23@gentoo.org>
+# Live version
+~app-doc/pms-99999999
+
+# Jeffrey Gardner <je_fro@gentoo.org> (27 Feb 2009)
+# Masked for spring cleaning. Removal soon if there's no objections.
+=x11-drivers/ati-drivers-8.471.3
+=x11-drivers/ati-drivers-8.27.10-r1
+=x11-drivers/ati-drivers-8.35.5
+=x11-drivers/ati-drivers-8.36.5
+=x11-drivers/ati-drivers-8.39.4
+=x11-drivers/ati-drivers-8.40.4
+=x11-drivers/ati-drivers-8.452
+=x11-drivers/ati-drivers-8.471.3
+=x11-apps/ati-drivers-extra-8.27.10
+
+# Christian Hoffmann <hoffie@gentoo.org> (12 Apr 2009)
+# Masked for security (bug 265756), unmaintained upstream (last release two
+# years ago), will be removed in 30 days. Use dev-lang/php with USE=zip as a
+# replacement, which is actively maintained and has more features.
+dev-php5/pecl-zip
+
+# Ulrich Mueller <ulm@gentoo.org> (12 Apr 2009)
+# Discontinued by upstream, see http://www.adobe.com/svg/eol.html
+# Masked for removal in 30 days, bug 265066.
+net-www/adobesvg
+
+# Tomas Chvatal <scarabeus@gentoo.org> (11 Apr 2009)
+# Mask due to new eclass wont support it
+# (actualy it will compile but will create runtime issues)
+~kde-base/akonadi-4.2.1
+~kde-base/akregator-4.2.1
+~kde-base/amor-4.2.1
+~kde-base/ark-4.2.1
+~kde-base/blinken-4.2.1
+~kde-base/bomber-4.2.1
+~kde-base/bovo-4.2.1
+~kde-base/cervisia-4.2.1
+~kde-base/dolphin-4.2.1
+~kde-base/dragonplayer-4.2.1
+~kde-base/drkonqi-4.2.1
+~kde-base/gwenview-4.2.1
+~kde-base/juk-4.2.1
+~kde-base/kabcclient-4.2.1
+~kde-base/kaddressbook-4.2.1
+~kde-base/kalarm-4.2.1
+~kde-base/kalgebra-4.2.1
+~kde-base/kalzium-4.2.1
+~kde-base/kamera-4.2.1
+~kde-base/kanagram-4.2.1
+~kde-base/kapman-4.2.1
+~kde-base/kappfinder-4.2.1
+~kde-base/kapptemplate-4.2.1
+~kde-base/kate-4.2.1
+~kde-base/katomic-4.2.1
+~kde-base/kbattleship-4.2.1
+~kde-base/kblackbox-4.2.1
+~kde-base/kblocks-4.2.1
+~kde-base/kbounce-4.2.1
+~kde-base/kbreakout-4.2.1
+~kde-base/kbruch-4.2.1
+~kde-base/kbugbuster-4.2.1
+~kde-base/kcachegrind-4.2.1
+~kde-base/kcalc-4.2.1
+~kde-base/kcharselect-4.2.1
+~kde-base/kcheckpass-4.2.1
+~kde-base/kcminit-4.2.1
+~kde-base/kcmshell-4.2.1
+~kde-base/kcolorchooser-4.2.1
+~kde-base/kcontrol-4.2.1
+~kde-base/kcron-4.2.1
+~kde-base/kdeaccessibility-colorschemes-4.2.1
+~kde-base/kdeaccessibility-iconthemes-4.2.1
+~kde-base/kdeaccessibility-meta-4.2.1
+~kde-base/kdeaccounts-plugin-4.2.1
+~kde-base/kdeadmin-meta-4.2.1
+~kde-base/kdeartwork-colorschemes-4.2.1
+~kde-base/kdeartwork-desktopthemes-4.2.1
+~kde-base/kdeartwork-emoticons-4.2.1
+~kde-base/kdeartwork-iconthemes-4.2.1
+~kde-base/kdeartwork-kscreensaver-4.2.1
+~kde-base/kdeartwork-meta-4.2.1
+~kde-base/kdeartwork-sounds-4.2.1
+~kde-base/kdeartwork-styles-4.2.1
+~kde-base/kdeartwork-wallpapers-4.2.1
+~kde-base/kdebase-cursors-4.2.1
+~kde-base/kdebase-data-4.2.1
+~kde-base/kdebase-desktoptheme-4.2.1
+~kde-base/kdebase-kioslaves-4.2.1
+~kde-base/kdebase-meta-4.2.1
+~kde-base/kdebase-startkde-4.2.1
+~kde-base/kdebugdialog-4.2.1
+~kde-base/kdedglobalaccel-4.2.1
+~kde-base/kdeedu-meta-4.2.1
+~kde-base/kdegames-meta-4.2.1
+~kde-base/kdegraphics-meta-4.2.1
+~kde-base/kdegraphics-strigi-analyzer-4.2.1
+~kde-base/kde-l10n-4.2.1
+~kde-base/kdelibs-4.2.1
+~kde-base/kdemaildir-4.2.1
+~kde-base/kde-menu-icons-4.2.1
+~kde-base/kde-menu-4.2.1
+~kde-base/kde-meta-4.2.1
+~kde-base/kdemultimedia-kioslaves-4.2.1
+~kde-base/kdemultimedia-meta-4.2.1
+~kde-base/kdenetwork-filesharing-4.2.1
+~kde-base/kdenetwork-meta-4.2.1
+~kde-base/kdepasswd-4.2.1
+~kde-base/kdepim-icons-4.2.1
+~kde-base/kdepim-kresources-4.2.1
+~kde-base/kdepimlibs-4.2.1
+~kde-base/kdepim-meta-4.2.1
+~kde-base/kdepim-strigi-analyzer-4.2.1
+~kde-base/kdepim-wizards-4.2.1
+~kde-base/kdeplasma-addons-4.2.1
+~kde-base/kdesdk-kioslaves-4.2.1
+~kde-base/kdesdk-meta-4.2.1
+~kde-base/kdesdk-misc-4.2.1
+~kde-base/kdesdk-scripts-4.2.1
+~kde-base/kdesdk-strigi-analyzer-4.2.1
+~kde-base/kdessh-4.2.1
+~kde-base/kdesu-4.2.1
+~kde-base/kdetoys-meta-4.2.1
+~kde-base/kdeutils-meta-4.2.1
+~kde-base/kde-wallpapers-4.2.1
+~kde-base/kdewebdev-meta-4.2.1
+~kde-base/kdf-4.2.1
+~kde-base/kdialog-4.2.1
+~kde-base/kdiamond-4.2.1
+~kde-base/kdm-4.2.1
+~kde-base/kdnssd-4.2.1
+~kde-base/keditbookmarks-4.2.1
+~kde-base/kephal-4.2.1
+~kde-base/kfile-4.2.1
+~kde-base/kfilereplace-4.2.1
+~kde-base/kfind-4.2.1
+~kde-base/kfloppy-4.2.1
+~kde-base/kfourinline-4.2.1
+~kde-base/kgamma-4.2.1
+~kde-base/kgeography-4.2.1
+~kde-base/kget-4.2.1
+~kde-base/kgoldrunner-4.2.1
+~kde-base/kgpg-4.2.1
+~kde-base/khangman-4.2.1
+~kde-base/khelpcenter-4.2.1
+~kde-base/khotkeys-4.2.1
+~kde-base/kiconfinder-4.2.1
+~kde-base/kig-4.2.1
+~kde-base/killbots-4.2.1
+~kde-base/kimagemapeditor-4.2.1
+~kde-base/kinfocenter-4.2.1
+~kde-base/kioclient-4.2.1
+~kde-base/kiriki-4.2.1
+~kde-base/kiten-4.2.1
+~kde-base/kjots-4.2.1
+~kde-base/kjumpingcube-4.2.1
+~kde-base/kleopatra-4.2.1
+~kde-base/klettres-4.2.1
+~kde-base/klines-4.2.1
+~kde-base/klinkstatus-4.2.1
+~kde-base/klipper-4.2.1
+~kde-base/kmag-4.2.1
+~kde-base/kmahjongg-4.2.1
+~kde-base/kmailcvt-4.2.1
+~kde-base/kmail-4.2.1
+~kde-base/kmenuedit-4.2.1
+~kde-base/kmimetypefinder-4.2.1
+~kde-base/kmines-4.2.1
+~kde-base/kmix-4.2.1
+~kde-base/kmousetool-4.2.1
+~kde-base/kmouth-4.2.1
+~kde-base/kmplot-4.2.1
+~kde-base/knetattach-4.2.1
+~kde-base/knetwalk-4.2.1
+~kde-base/knetworkconf-4.2.1
+~kde-base/knewstuff-4.2.1
+~kde-base/knode-4.2.1
+~kde-base/knotes-4.2.1
+~kde-base/knotify-4.2.1
+~kde-base/kode-4.2.1
+~kde-base/kolf-4.2.1
+~kde-base/kollision-4.2.1
+~kde-base/kolourpaint-4.2.1
+~kde-base/kommander-4.2.1
+~kde-base/kompare-4.2.1
+~kde-base/konqueror-4.2.1
+~kde-base/konquest-4.2.1
+~kde-base/konsolekalendar-4.2.1
+~kde-base/konsole-4.2.1
+~kde-base/kontactinterfaces-4.2.1
+~kde-base/kontact-4.2.1
+~kde-base/kontact-specialdates-4.2.1
+~kde-base/kopete-4.2.1
+~kde-base/korganizer-4.2.1
+~kde-base/kpasswdserver-4.2.1
+~kde-base/kpat-4.2.1
+~kde-base/kpilot-4.2.1
+~kde-base/kppp-4.2.1
+~kde-base/kquitapp-4.2.1
+~kde-base/krdc-4.2.1
+~kde-base/kreadconfig-4.2.1
+~kde-base/kreversi-4.2.1
+~kde-base/krfb-4.2.1
+~kde-base/krosspython-4.2.1
+~kde-base/krossruby-4.2.1
+~kde-base/kruler-4.2.1
+~kde-base/krunner-4.2.1
+~kde-base/ksame-4.2.1
+~kde-base/ksaneplugin-4.2.1
+~kde-base/kscd-4.2.1
+~kde-base/kscreensaver-4.2.1
+~kde-base/kshisen-4.2.1
+~kde-base/ksirk-4.2.1
+~kde-base/ksmserver-4.2.1
+~kde-base/ksnapshot-4.2.1
+~kde-base/kspaceduel-4.2.1
+~kde-base/ksplash-4.2.1
+~kde-base/ksquares-4.2.1
+~kde-base/kstars-4.2.1
+~kde-base/kstart-4.2.1
+~kde-base/kstartperf-4.2.1
+~kde-base/kstartupconfig-4.2.1
+~kde-base/kstyles-4.2.1
+~kde-base/ksudoku-4.2.1
+~kde-base/ksysguard-4.2.1
+~kde-base/ksystemlog-4.2.1
+~kde-base/ksystraycmd-4.2.1
+~kde-base/kteatime-4.2.1
+~kde-base/ktimer-4.2.1
+~kde-base/ktimetracker-4.2.1
+~kde-base/ktimezoned-4.2.1
+~kde-base/ktouch-4.2.1
+~kde-base/ktraderclient-4.2.1
+~kde-base/kttsd-4.2.1
+~kde-base/ktuberling-4.2.1
+~kde-base/kturtle-4.2.1
+~kde-base/ktux-4.2.1
+~kde-base/kubrick-4.2.1
+~kde-base/kuiserver-4.2.1
+~kde-base/kuiviewer-4.2.1
+~kde-base/kurifilter-plugins-4.2.1
+~kde-base/kuser-4.2.1
+~kde-base/kwalletd-4.2.1
+~kde-base/kwallet-4.2.1
+~kde-base/kweather-4.2.1
+~kde-base/kwin-4.2.1
+~kde-base/kwordquiz-4.2.1
+~kde-base/kwrited-4.2.1
+~kde-base/kwrite-4.2.1
+~kde-base/kxsldbg-4.2.1
+~kde-base/libkcddb-4.2.1
+~kde-base/libkcompactdisc-4.2.1
+~kde-base/libkdcraw-4.2.1
+~kde-base/libkdeedu-4.2.1
+~kde-base/libkdegames-4.2.1
+~kde-base/libkdepim-4.2.1
+~kde-base/libkexiv2-4.2.1
+~kde-base/libkholidays-4.2.1
+~kde-base/libkipi-4.2.1
+~kde-base/libkleo-4.2.1
+~kde-base/libkmahjongg-4.2.1
+~kde-base/libkonq-4.2.1
+~kde-base/libkpgp-4.2.1
+~kde-base/libksane-4.2.1
+~kde-base/libksieve-4.2.1
+~kde-base/libkworkspace-4.2.1
+~kde-base/libplasmaclock-4.2.1
+~kde-base/libtaskmanager-4.2.1
+~kde-base/lilo-config-4.2.1
+~kde-base/lokalize-4.2.1
+~kde-base/lskat-4.2.1
+~kde-base/marble-4.2.1
+~kde-base/mimelib-4.2.1
+~kde-base/nepomuk-4.2.1
+~kde-base/nsplugins-4.2.1
+~kde-base/okteta-4.2.1
+~kde-base/okular-4.2.1
+~kde-base/parley-4.2.1
+~kde-base/phonon-kde-4.2.1
+~kde-base/plasma-apps-4.2.1
+~kde-base/plasma-workspace-4.2.1
+~kde-base/powerdevil-4.2.1
+~kde-base/pykde4-4.2.1
+~kde-base/renamedlg-plugins-4.2.1
+~kde-base/solid-hardware-4.2.1
+~kde-base/solid-4.2.1
+~kde-base/soliduiserver-4.2.1
+~kde-base/step-4.2.1
+~kde-base/superkaramba-4.2.1
+~kde-base/svgpart-4.2.1
+~kde-base/sweeper-4.2.1
+~kde-base/systemsettings-4.2.1
+~kde-base/umbrello-4.2.1
 
 # Peter Volkov <pva@gentoo.org> (11 Apr 2009)
 # Mask bzr prerelease candidate and dependent bzrtools
@@ -308,18 +435,12 @@
 
 # Daniel Robbins <drobbins@funtoo.org> (10 Apr 2009)
 # Mask new versions for caution
->sys-fs/udev-135-r4
+>sys-fs/udev-135-r7
 
 # Alin Năstac <mrness@gentoo.org> (10 Apr 2009)
 # Homepage no longer available (#264785)
 # To be removed by the tree cleaners after 30 days.
 net-dialup/qlcr
-
-# Thomas Anderson <gentoofan23@gentoo.org> (10 Apr 2009)
-# Lvm2 ships with device mapper internally and thus blocks against the
-# in-tree device-mapper. Unfortunately some packages still need to be fixed
-# to handle this transition.
-=sys-fs/lvm2-2.02.45
 
 # Jeremy Olexa <darkside@gentoo.org> (10 Apr 2009)
 # The bash-completion upstream naming scheme has drastically changed. As such,
@@ -590,12 +711,6 @@ net-misc/dahdi-tools
 =net-libs/libpri-1.4*
 >=media-libs/spandsp-0.0.6_pre7
 
-# Michael Sterrett <mr_bones_@gentoo.org> (09 Mar 2009)
-# Masked for removal in 30 days.
-# Needs removed version of dev-libs/libsigc++, broken autotools...
-# Bug 215302 and bug 223771
-net-irc/lostirc
-
 # Peter Volkov <pva@gentoo.org> (7 Mar 2009)
 # Masked for removal, please use app-text/ghostscript-gpl #261434
 app-text/ghostscript-esp
@@ -699,10 +814,6 @@ app-emulation/ganeti-instance-debian-etch
 # libjingle-0.3.12 was created by the farsight team
 # As a result, some things don't work with 0.3.12 (bug 248008)
 =net-libs/libjingle-0.3.12
-
-# Jeremy Olexa <darkside@gentoo.org> (04 Feb 2009)
-# Masked for removal in 60 days. Use sys-cluster/torque instead. bug 255425
-sys-cluster/openpbs-common
 
 # Santiago M. Mola <coldwind@gentoo.org> (03 Feb 2009)
 # Masked for removal in 30 days,
@@ -844,12 +955,6 @@ dev-python/f2py
 # Donnie Berkholz <dberkholz@gentoo.org> (12 Jan 2009)
 # Masked pending unmasking of guile-gnome-platform 2.16
 >=sci-chemistry/burrow-owl-1.4
-
-# Tobias Scherbaum <dertobi123@gentoo.org> (11 Jan 2009)
-# bundles *very* outdated versions of gd, zlib and libpng libraries, static
-# links, upstream seems dead, removal in 30 days.
-# bug 247958 and bug #251425
-net-analyzer/rtg
 
 # Daniel Black <dragonheart@gentoo.org> (10 Jan 2009)
 # package masking to allow dependant packages to resolve
@@ -1014,10 +1119,6 @@ games-fps/unreal-tournament-operationnapali
 =app-misc/mc-mp-4.1.40_pre9
 
 # Paul Varner <fuzzyray@gentoo.org> (31 Dec 2008)
-# Masked for testing of echangelog subversion/git support. Bug 176337
-=app-portage/gentoolkit-dev-0.2.6.9
-
-# Paul Varner <fuzzyray@gentoo.org> (31 Dec 2008)
 # Masked due to being broken with portage 2.1 and 2.2.
 # Users can use either the unstable versions or switch to app-portage/eix
 =app-portage/esearch-0.7.1
@@ -1047,6 +1148,7 @@ sys-apps/tinylogin
 # Jeremy Olexa <darkside@gentoo.org> (20 Dec 2008)
 # Removed in 60 days, multiple bugs - does not compile with recent kernels.
 # bug 251795
+# Update, user is working on this in stated bug.
 sys-fs/cloop
 
 # Mike Pagano <mpagano@gentoo.org> (17 Dec 2008)
@@ -1058,10 +1160,6 @@ sys-fs/cloop
 app-admin/eselect-boost
 >=dev-util/boost-build-1.35.0-r2
 >=dev-libs/boost-1.35.0-r3
-
-# Peter Volkov <pva@gentoo.org> (16 Dec 2008)
-# Fails to build, bug #247946. Somebody needs to port it to new spandsp interface
-net-dialup/ivcall
 
 # Alin Năstac <mrness@gentoo.org> (14 Dec 2008)
 # Dead upstream, masked for removal in ~60 days.
@@ -1085,14 +1183,6 @@ net-proxy/squirm
 # Snapshots, alphas and betas of Opera may delete kittens
 =www-client/opera-10*
 
-# Tomas Chvatal <scarabeus@gentoo.org> (04 Dec 2008)
-# new version, needs policykit which is masked
->=gnome-extra/nm-applet-0.7.0
->=net-misc/networkmanager-0.7.0
->=net-misc/networkmanager-vpnc-0.7.0
->=net-misc/networkmanager-pptp-0.7.0
->=net-misc/networkmanager-openvpn-0.7.0
-
 # Tiziano Müller <dev-zero@gentoo.org> (28 Nov 2008)
 # mask for testing/transition
 # blueman needs policykit-gnome
@@ -1107,14 +1197,6 @@ net-wireless/bluez
 >=app-mobilephone/obexftp-0.23
 net-wireless/blueman
 
-# Saleem Abdulrasool <compnerd@gentoo.org> (23 Nov 2007)
-# These might break automounting, so keep them masked for now.
-# Update by Gilles Dartiguelongue <eva@gentoo.org> (27 Nov 2008)
-# gnome-mount 0.8 doesn't depend on policykit.
-=gnome-base/gnome-mount-0.7
->=sys-auth/policykit-0.6
->=gnome-extra/policykit-gnome-0.6
-
 # MATSUU Takuto <matsuu@gentoo.org> (19 Nov 2008)
 # Masked for bug #196340
 =media-fonts/ja-ipafonts-0.0.20040715
@@ -1122,11 +1204,6 @@ net-wireless/blueman
 # Peter Volkov <pva@gentoo.org> (16 Nov 2008)
 # This is developemnt version. Why it was not masked from the beginning?
 >=net-misc/socat-2.0.0_beta1
-
-# Luca Barbato <lu_zero@gentoo.org> (15 Nov 2008)
-# Partially broken
-=x11-drivers/ati-drivers-8.552
-=x11-drivers/ati-drivers-8.552-r1
 
 # Mike Doty <kingtaco@gentoo.org> (9 Nov 2008)
 # Masked for testing
@@ -1150,10 +1227,6 @@ media-libs/realcodecs
 # Legal problems #241650 causing distribution problems #245322 and build problems #237493
 app-crypt/truecrypt
 
-# Daniel Gryniewicz <dang@gentoo.org> (2 Nov 2008)
-# Feed counts and updates seem to be broken
-=net-news/liferea-1.4.21b
-
 # Markus Dittrich <markusle@gentoo.org> (28 Oct 2008)
 # New upstream version is currently masked due to an interface
 # glitch with Qt-4.4.2 that needs to be looked at (bug #243362)
@@ -1163,18 +1236,6 @@ app-crypt/truecrypt
 # Federico Ferri <mescalinum@gentoo.org> (27 Oct 2008)
 # Until Tcl-8.5 gets unmasked
 >=dev-libs/newt-0.52.10
-
-# Jesus Rivero <neurogeek@gentoo.org> (26 Oct 2008)
-# Masked for removal in 30 days. This package is
-# unmaintained/deprecated.
-# See bug #239978 for reference.
-dev-python/pyframer
-
-# Robin H. Johnson <robbat2@gentoo.org> (20 Oct 2008)
-# Masked for removal in 30 days (see bugs #120220, #137998, #170782)
-# genflags should never have been born.  Output needs to be specific per GCC
-# version, and that's a big change.
-app-portage/genflags
 
 # Alexis Ballier <aballier@gentoo.org> (15 Oct 2008)
 # Breaks ocamlduce
@@ -1188,7 +1249,6 @@ app-portage/genflags
 # Alexis Ballier <aballier@gentoo.org> (06 Oct 2008)
 # API changes, the only reverse dep fails to build against it.
 >=media-libs/libspiff-1.0.0
-
 
 # Christian Parpart <trapni@gentoo.org> (04 Oct 2008)
 # for testing/experienced users only
@@ -1218,10 +1278,6 @@ gnome-extra/gnome-lirc-properties
 # Development version, but yet nice :)
 =net-analyzer/wireshark-1.1*
 
-# Carsten Lohrke <carlo@gentoo.org> (05 Sep 2008)
-# Masked for removal. It's broken and abandoned.
-app-portage/kuroo
-
 # Michael Marineau <marineam@gentoo.org> (03 Sep 2008)
 # Unmaintained and out of date security wise,
 # Please use 2.6.18 instead if it supports your hardware.
@@ -1239,21 +1295,6 @@ dev-tcltk/tclgpgme
 # Tiziano Müller <dev-zero@gentoo.org> (15 Aug 2008)
 # Masked for testing (works with >=dev-libs/xerces-c-3.0.0)
 =dev-libs/xqilla-9999
-
-# Jesus Rivero <neurogeek@gentoo.org> (11 Aug 2008)
-# Masked for removal in 30 days. These packages are
-# unmaintained/deprecated and break stable tree.
-# See bug #231675 for reference.
-dev-python/twisted-xish
-dev-python/twisted-pair
-dev-python/twisted-flow
-
-# Jesus Rivero <neurogeek@gentoo.org> (11 Aug 2008)
-# Masked for removal in 30 days. Twibber is
-# unmaintained and depends on dev-python/twisted-xish
-# that is to be removed from the tree
-# See bug #231675 for reference.
-dev-python/twibber
 
 # Mike Doty <kingtaco@gentoo.org> (11 Aug 2008)
 # Masked due to build failure, bug 234448
@@ -1280,11 +1321,6 @@ dev-util/livecd-specs
 # Tiziano Müller <dev-zero@gentoo.org> (26 Jul 2008)
 # Masking live version
 =dev-db/ctdb-9999
-
-# Alexis Ballier <aballier@gentoo.org> (9 Jul 2008)
-# Latest slv2 release has API changes
-# media-sound/traverso fails to build against it
->=media-libs/slv2-0.6.0
 
 # Markus Ullmann <jokey@gentoo.org> (7 Jul 2008)
 # mask for security bug #190667
@@ -1538,11 +1574,6 @@ dev-libs/liboobs
 # see bug #205829
 >sys-libs/libraw1394-1.3.0
 
-# Saleem Abdulrasool <compnerd@gentoo.org> (22 Jan 2008)
-# Never was stabled, and will not work with future versions of HAL.  Remove when
-# HAL 0.5.10 is stabled on all arches.
-gnome-extra/hal-device-manager
-
 # Michael Sterrett <mr_bones_@gentoo.org> (15 Jan 2008)
 # Security mask (bug #190835)
 # https://bugs.gentoo.org/show_bug.cgi?id=190835
@@ -1557,21 +1588,10 @@ games-fps/doomsday-resources
 # Live Subversion ebuild until pending first upstream release
 =games-mud/wxmud-9999
 
-# MATSUU Takuto <matsuu@gentoo.org> (27 Dec 2007)
-# Upstream gone, nothing depends on this.
-# pending removal. Remove in 30 days
-# https://bugs.gentoo.org/show_bug.cgi?id=177912
-dev-tcltk/Tk_Theme
-
 # Christian Hoffmann <hoffie@gentoo.org> (27 Dec 2007)
 # broken (leads to random segfaults); masked until someone steps up to
 # maintain it or it will finally get removed
 dev-php5/php-java-bridge
-
-# Carsten Lohrke <carlo@gentoo.org> (23 Dec 2007)
-# Abandonware. Masked for removal.
-net-misc/fsh
-dev-lang/entity
 
 # Ulrich Mueller <ulm@gentoo.org> (21 Dec 2007)
 # Christian Faulhammer <fauli@gentoo.org>
@@ -1628,10 +1648,6 @@ dev-lang/ghc-bin
 # the Asterisk is coming! the Asterisk is coming!
 >=net-misc/zaptel-1.4.0
 >=net-misc/asterisk-1.4.0
-
-# Markus Ullmann <jokey@gentoo.org> (05 Sept 2007)
-# masked for testing
->=net-analyzer/snort-2.7
 
 # Doug Goldstein <cardoe@gentoo.org> (30 Aug 2007)
 # upstream has declared this module dead and broken
@@ -1733,6 +1749,7 @@ net-misc/xsupplicant
 
 # Stefan Cornelius <dercorny@gentoo.org> (2 Mar 2007)
 # Masked because it's affected by 7 GLSAs or so, nobody should use it
+# However, keep around for data migration purposes.
 <=dev-db/mysql-3.23.58-r1
 
 # Alexandre Buisse <nattfodd@gentoo.org> (21 Feb 2007)
@@ -1747,11 +1764,6 @@ dev-tex/floatflt
 # Alec Warner <antarus@gentoo.org> (05 Feb 2007)
 # Masked to security problems, use 1.23-r1 until I fix it
 >=app-admin/ulogd-1.24
-
-# Seemant Kulleen <seemant@gentoo.org> (02 Feb 2007)
-# Masked because it causes breakages with guile-1.8 and gnucash-2.
-# See Marijn's comment below
-~dev-libs/g-wrap-1.9.7
 
 # Michael Sterrett <mr_bones_@gentoo.org> (28 Jan 2007)
 # masked pending new beta due to bug #164186
@@ -1788,10 +1800,6 @@ games-action/armagetronad
 # Mike Frysinger <vapier@gentoo.org> (28 Dec 2006)
 # Build failure on big-endian #154294 and breaks non-default journals #154974
 ~sys-fs/reiserfsprogs-3.6.20
-
-# Marcus D. Hanwell <cryos@gentoo.org> (03 Nov 2006)
-# 5.5.6 does not work with all projects, please use 5.4 or >=5.8
-=sci-misc/boinc-5.5.6
 
 # Stefaan De Roeck <stefaan@gentoo.org> (09 Sep 2006)
 # 1.5.x is a development branch, people should test 1.4.x by default
@@ -1879,7 +1887,6 @@ sys-apps/gli
 >=dev-db/mysql-5.1
 >=dev-db/mysql-community-5.1
 >=virtual/mysql-5.1
-=dev-db/mysql-4.1.23_alpha20070101-r61
 
 # Matthew Kennedy <mkennedy@gentoo.org> (31 Jul 2005)
 # Upstream author requests official version ports only.
@@ -1902,11 +1909,6 @@ net-mail/mailer-config
 # Tihs package is conflict with postgresql at the moment
 # and waiting on implementing virtual/postgresql.
 dev-db/pgcluster
-
-# <mkennedy@gentoo.org> (08 Aug 2004)
-# won't build for now
-dev-lisp/cl-rsm-gen-prog
-dev-lisp/cl-rsm-genetic-alg
 
 # <klieber@gentoo.org> (01 Apr 2004)
 # The following packages contain a remotely-exploitable

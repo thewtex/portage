@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/eselect/eselect-1.0.11-r2.ebuild,v 1.2 2009/04/08 05:36:35 darkside Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/eselect/eselect-1.0.11-r2.ebuild,v 1.5 2009/04/17 16:30:14 ulm Exp $
 
 inherit eutils
 
@@ -21,7 +21,6 @@ DEPEND="sys-apps/sed
 		app-admin/realpath
 	)"
 RDEPEND="sys-apps/sed sys-apps/file sys-process/procps"
-
 PDEPEND="vim-syntax? ( app-vim/eselect-syntax )"
 
 src_unpack() {
@@ -57,7 +56,8 @@ src_install() {
 
 pkg_postinst() {
 	if use bash-completion ; then
-		elog "To enable command-line completion for eselect, run:"
+		elog "In case you have not yet enabled command-line completion"
+		elog "for eselect, you can run:"
 		elog
 		elog "  eselect bashcomp enable eselect"
 		elog

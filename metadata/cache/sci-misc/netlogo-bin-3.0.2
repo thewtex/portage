@@ -1,5 +1,5 @@
-app-arch/unzip >=virtual/jdk-1.4
->=virtual/jre-1.4
+app-arch/unzip >=virtual/jdk-1.4 >=dev-java/java-config-2.1.6
+>=virtual/jre-1.4 >=dev-java/java-config-2.1.6
 0
 http://ccl.northwestern.edu/netlogo/3.0.2/netlogo-3.0.2.tar.gz
 
@@ -7,14 +7,14 @@ http://ccl.northwestern.edu/netlogo/
 netlogo
 NetLogo cross-platform multi-agent programmable modeling environment
 amd64 x86
-portability toolchain-funcs multilib java-pkg eutils
+eutils java-pkg-2 java-utils-2 multilib portability toolchain-funcs versionator
+elibc_FreeBSD
 
 
 
 
-0
 
-install setup
+compile install preinst setup
 
 
 

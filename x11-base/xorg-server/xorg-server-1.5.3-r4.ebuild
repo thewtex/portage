@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-base/xorg-server/xorg-server-1.5.3-r4.ebuild,v 1.2 2009/03/12 10:43:24 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-base/xorg-server/xorg-server-1.5.3-r4.ebuild,v 1.4 2009/04/16 03:56:04 gengor Exp $
 
 # Must be before x-modular eclass is inherited
 SNAPSHOT="yes"
@@ -340,6 +340,13 @@ pkg_setup() {
 
 	# (#121394) Causes window corruption
 	filter-flags -fweb
+
+	# Incompatible with GCC 3.x SSP on x86, bug #244352
+	if use x86 ; then
+		if [[ $(gcc-major-version) -lt 4 ]]; then
+			filter-flags -fstack-protector
+		fi
+	fi
 
 	# Nothing else provides new enough glxtokens.h
 	ewarn "Forcing on xorg-x11 for new enough glxtokens.h..."
