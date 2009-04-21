@@ -12,7 +12,7 @@ SRC_URI=""
 
 LICENSE="CCPL-Attribution-ShareAlike-3.0"
 SLOT="0"
-KEYWORDS="~amd64 ~sparc"
+KEYWORDS="~amd64 ~sparc ~x86"
 IUSE="all-options eapi3-draft html kdebuild"
 
 DEPEND="html? ( dev-tex/tex4ht )
