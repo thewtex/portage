@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/ibm-jre-bin/ibm-jre-bin-1.5.0.9.ebuild,v 1.4 2009/01/06 17:06:11 ranger Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/ibm-jre-bin/ibm-jre-bin-1.5.0.9.ebuild,v 1.5 2009/04/22 12:59:21 caster Exp $
 
 inherit java-vm-2 versionator eutils
 
@@ -11,10 +11,10 @@ TGZ_PV="${JDK_RELEASE}-${SERVICE_RELEASE}.0"
 
 JRE_DIST_PREFIX="ibm-java2-jre-${TGZ_PV}-linux"
 
-X86_JRE_DIST="${JRE_DIST_PREFIX}-i386.tgz"
-AMD64_JRE_DIST="${JRE_DIST_PREFIX}-x86_64.tgz"
-PPC_JRE_DIST="${JRE_DIST_PREFIX}-ppc.tgz"
-PPC64_JRE_DIST="${JRE_DIST_PREFIX}-ppc64.tgz"
+X86_JRE_DIST="${JRE_DIST_PREFIX}-i386.old.tgz"
+AMD64_JRE_DIST="${JRE_DIST_PREFIX}-x86_64.old.tgz"
+PPC_JRE_DIST="${JRE_DIST_PREFIX}-ppc.old.tgz"
+PPC64_JRE_DIST="${JRE_DIST_PREFIX}-ppc64.old.tgz"
 
 if use x86; then
 	JRE_DIST=${X86_JRE_DIST}

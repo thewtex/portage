@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/ibm-jdk-bin/ibm-jdk-bin-1.5.0.9.ebuild,v 1.4 2009/01/06 17:05:06 ranger Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/ibm-jdk-bin/ibm-jdk-bin-1.5.0.9.ebuild,v 1.5 2009/04/22 12:46:56 caster Exp $
 
 inherit java-vm-2 versionator eutils
 
@@ -12,17 +12,17 @@ TGZ_PV="${JDK_RELEASE}-${SERVICE_RELEASE}.0"
 JDK_DIST_PREFIX="ibm-java2-sdk-${TGZ_PV}-linux"
 JAVACOMM_DIST_PREFIX="ibm-java2-javacomm-${TGZ_PV}-linux"
 
-X86_JDK_DIST="${JDK_DIST_PREFIX}-i386.tgz"
-X86_JAVACOMM_DIST="${JAVACOMM_DIST_PREFIX}-i386.tgz"
+X86_JDK_DIST="${JDK_DIST_PREFIX}-i386.old.tgz"
+X86_JAVACOMM_DIST="${JAVACOMM_DIST_PREFIX}-i386.old.tgz"
 
-AMD64_JDK_DIST="${JDK_DIST_PREFIX}-x86_64.tgz"
-AMD64_JAVACOMM_DIST="${JAVACOMM_DIST_PREFIX}-x86_64.tgz"
+AMD64_JDK_DIST="${JDK_DIST_PREFIX}-x86_64.old.tgz"
+AMD64_JAVACOMM_DIST="${JAVACOMM_DIST_PREFIX}-x86_64.old.tgz"
 
-PPC_JDK_DIST="${JDK_DIST_PREFIX}-ppc.tgz"
-PPC_JAVACOMM_DIST="${JAVACOMM_DIST_PREFIX}-ppc.tgz"
+PPC_JDK_DIST="${JDK_DIST_PREFIX}-ppc.old.tgz"
+PPC_JAVACOMM_DIST="${JAVACOMM_DIST_PREFIX}-ppc.old.tgz"
 
-PPC64_JDK_DIST="${JDK_DIST_PREFIX}-ppc64.tgz"
-PPC64_JAVACOMM_DIST="${JAVACOMM_DIST_PREFIX}-ppc64.tgz"
+PPC64_JDK_DIST="${JDK_DIST_PREFIX}-ppc64.old.tgz"
+PPC64_JAVACOMM_DIST="${JAVACOMM_DIST_PREFIX}-ppc64.old.tgz"
 
 if use x86; then
 	JDK_DIST=${X86_JDK_DIST}
@@ -198,6 +198,7 @@ pkg_nofetch() {
 	einfo "You can use direct link to your arch download page:"
 	einfo "${DIRECT_DOWNLOAD}"
 	einfo "Place the file(s) in: ${DISTDIR}"
+	einfo "And rename them by replacing .tgz with .old.tgz"
 	einfo "Then restart emerge: 'emerge --resume'"
 
 	einfo "Note: if SR${SERVICE_RELEASE} is not available at ${DOWNLOADPAGE}"
