@@ -1,10 +1,11 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: 
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/nm-applet/nm-applet-0.7.0.ebuild,v 1.3 2009/04/22 14:22:08 rbu Exp $
 
-inherit gnome2 eutils
+inherit gnome2 eutils versionator
 
 MY_P="${P/nm-applet/network-manager-applet}"
+MYPV_MINOR=$(get_version_component_range 1-2)
 
 DESCRIPTION="Gnome applet for NetworkManager."
 HOMEPAGE="http://projects.gnome.org/NetworkManager/"
@@ -17,7 +18,7 @@ IUSE="cisco openvpn"
 RDEPEND=">=sys-apps/dbus-1.2
 	>=sys-apps/hal-0.5.9
 	>=dev-libs/libnl-1.1
-	>=net-misc/networkmanager-0.7.0
+	=net-misc/networkmanager-${MYPV_MINOR}*
 	>=net-wireless/wireless-tools-28_pre9
 	>=net-wireless/wpa_supplicant-0.5.7
 	>=dev-libs/glib-2.16
@@ -25,10 +26,9 @@ RDEPEND=">=sys-apps/dbus-1.2
 	>=x11-libs/gtk+-2.10
 	>=gnome-base/libglade-2
 	>=gnome-base/gnome-keyring-2.20
-	>=gnome-base/gconf-2.20
-	>=gnome-extra/policykit-gnome-0.8
 	cisco? ( net-misc/networkmanager-vpnc )
-	openvpn? ( net-misc/networkmanager-openvpn )"
+	openvpn? ( net-misc/networkmanager-openvpn )
+	|| ( >=gnome-base/gnome-panel-2 xfce-base/xfce4-panel x11-misc/trayer )"
 DEPEND="${RDEPEND}
 	dev-util/pkgconfig
 	>=dev-util/intltool-0.35"
