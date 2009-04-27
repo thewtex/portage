@@ -1,6 +1,6 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pylzma/pylzma-0.3.0.ebuild,v 1.1 2009/04/23 21:33:35 patrick Exp $
 
 NEED_PYTHON=2.4
 
@@ -12,7 +12,8 @@ SRC_URI="http://www.joachim-bauch.de/projects/python/${PN}/releases/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~x86 ~x86-fbsd"
+# fails horribly on amd64 at the moment.
+KEYWORDS="-amd64 ~x86 ~x86-fbsd"
 IUSE=""
 
 DEPEND=""

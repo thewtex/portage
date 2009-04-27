@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: 
+# $Header: /var/cvsroot/gentoo-x86/net-misc/networkmanager/networkmanager-0.6.5_p20070823.ebuild,v 1.12 2009/04/24 12:26:41 rbu Exp $
 
 inherit gnome2 eutils
 
@@ -15,7 +15,7 @@ SRC_URI="mirror://gentoo/${MY_P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="ppc"
 IUSE="crypt doc gnome"
 
 RDEPEND=">=sys-apps/dbus-0.60
@@ -30,6 +30,7 @@ RDEPEND=">=sys-apps/dbus-0.60
 	gnome? ( >=x11-libs/gtk+-2.8
 		>=gnome-base/libglade-2
 		>=gnome-base/gnome-keyring-0.4
+		|| ( >=gnome-base/gnome-panel-2 xfce-base/xfce4-panel )
 		>=gnome-base/gconf-2
 		>=gnome-base/libgnomeui-2 )
 	crypt? ( dev-libs/libgcrypt )"
