@@ -23,6 +23,7 @@ RDEPEND=">=sys-apps/dbus-1.2
 	>=net-wireless/wireless-tools-28_pre9
 	>=net-wireless/wpa_supplicant-0.5.7
 	>=dev-libs/glib-2.16
+	>=gnome-extra/policykit-gnome-0.8
 	>=x11-libs/libnotify-0.4.3
 	>=x11-libs/gtk+-2.10
 	>=gnome-base/libglade-2
