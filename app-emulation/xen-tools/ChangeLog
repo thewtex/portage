@@ -2,6 +2,14 @@
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
 # $Header: /var/cvsroot/gentoo-x86/app-emulation/xen-tools/ChangeLog,v 1.46 2009/04/28 07:57:21 patrick Exp $
 
+*xen-tools-3.3.1-r1 (28 Apr 2009)
+
+  28 Apr 2009; Daniel Robbins <drobbins@funtoo.org> xen-tools-3.3.1-r1: Patch
+  to get rid of python-2.6 deprecation warnings at boot, and new "network-null"
+  script as the default no-op network config to prevent /etc/init.d/xend from
+  clobbering your network configuration by default.  Also some cleanup and
+  simplification in the ebuild (removal of old warnings, etc.)
+
   28 Apr 2009; Patrick Lauer <patrick@gentoo.org>
   +files/xen-tools-3.3.1-sandbox-fix.patch, xen-tools-3.3.1:
   Small sandbox fix, closes 253134. Patch originally from RB.
