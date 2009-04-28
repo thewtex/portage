@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-base/libgnomekbd/libgnomekbd-2.24.0.ebuild,v 1.9 2009/04/27 10:00:22 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-base/libgnomekbd/libgnomekbd-2.24.0.ebuild,v 1.12 2009/04/28 11:23:27 armin76 Exp $
 
 EAPI="2"
 
@@ -11,7 +11,7 @@ HOMEPAGE="http://www.gnome.org"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~hppa ia64 ppc ppc64 ~sh sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 sh sparc x86 ~x86-fbsd"
 IUSE=""
 
 RDEPEND=">=dev-libs/glib-2.16
@@ -40,7 +40,11 @@ src_prepare() {
 	# Fix linking to system's library, bug #265428
 	epatch "${FILESDIR}/${PN}-2.22.0-system-relink.patch"
 
-	eautomake
+	# Make it libtool-1 compatible
+	rm -v m4/lt* m4/libtool.m4 || die "removing libtool macros failed"
+
+	intltoolize --force --copy --automake || die "intltoolize failed"
+	eautoreconf
 }
 
 src_compile() {
