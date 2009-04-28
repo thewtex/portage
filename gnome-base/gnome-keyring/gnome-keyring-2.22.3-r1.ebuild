@@ -1,15 +1,15 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-base/gnome-keyring/gnome-keyring-2.22.3-r1.ebuild,v 1.9 2009/03/15 21:23:04 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-base/gnome-keyring/gnome-keyring-2.22.3-r1.ebuild,v 1.11 2009/04/27 22:00:09 eva Exp $
 
-inherit gnome2 eutils pam
+inherit gnome2 eutils pam autotools
 
 DESCRIPTION="Password and keyring managing daemon"
 HOMEPAGE="http://www.gnome.org/"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~x86-fbsd"
 IUSE="debug doc hal pam test"
 
 RDEPEND=">=dev-libs/glib-2.8
@@ -24,6 +24,7 @@ DEPEND="${RDEPEND}
 	sys-devel/gettext
 	>=dev-util/intltool-0.35
 	>=dev-util/pkgconfig-0.9
+	dev-util/gtk-doc-am
 	doc? ( dev-util/gtk-doc )"
 
 DOCS="AUTHORS ChangeLog NEWS README TODO"
@@ -43,4 +44,10 @@ src_unpack() {
 
 	# Backport from trunk for fixing upstream bug #511285, bug #238098
 	epatch "${FILESDIR}/${P}-warnings.patch"
+
+	# Fix configure with recent libtasn1, bug #266554
+	epatch "${FILESDIR}/${P}-pkg-libtasn1.patch"
+
+	intltoolize --force --copy --automake || die "inltoolize failed"
+	eautoreconf
 }

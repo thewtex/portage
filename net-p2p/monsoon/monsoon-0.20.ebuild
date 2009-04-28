@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/monsoon/monsoon-0.20.ebuild,v 1.2 2009/04/07 09:46:22 loki_val Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/monsoon/monsoon-0.20.ebuild,v 1.3 2009/04/27 09:02:04 loki_val Exp $
 
 EAPI=2
 
@@ -15,8 +15,8 @@ SLOT="0"
 KEYWORDS="~x86 ~amd64"
 IUSE=""
 RDEPEND=">=dev-lang/mono-2.0.1
-	>=dev-dotnet/monotorrent-0.70
-	>=dev-dotnet/mono-nat-1.0
+	=dev-dotnet/monotorrent-0.70
+	=dev-dotnet/mono-nat-1.0
 	>=dev-dotnet/nlog-1.0
 	>=dev-dotnet/dbus-sharp-0.6.1a
 	>=dev-dotnet/dbus-glib-sharp-0.4.1

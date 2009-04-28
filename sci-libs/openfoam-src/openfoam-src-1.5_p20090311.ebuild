@@ -1,8 +1,8 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header:  $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/openfoam-src/openfoam-src-1.5_p20090311.ebuild,v 1.1 2009/04/25 16:26:17 patrick Exp $
 
-EAPI=2
+EAPI="2"
 
 inherit eutils versionator multilib
 
