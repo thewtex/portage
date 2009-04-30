@@ -1,8 +1,8 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/xlockmore/xlockmore-5.25.ebuild,v 1.5 2008/05/12 18:31:14 corsair Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/xlockmore/xlockmore-5.25.ebuild,v 1.7 2009/04/29 20:37:43 ssuominen Exp $
 
-inherit flag-o-matic pam
+inherit pam
 
 DESCRIPTION="Just another screensaver application for X"
 HOMEPAGE="http://www.tux.org/~bagleyd/xlockmore.html"
@@ -45,15 +45,13 @@ src_compile() {
 		$(use_with nas) \
 		$(use_with debug editres)
 
-	# suid-with-lazy-bindings problem
-	append-flags $(bindnow-flags)
-
-	emake || die "emake failed."
+	emake -j1 || die "emake failed"
 }
 
 src_install() {
 	einstall xapploaddir="${D}/usr/share/X11/app-defaults" \
-		mandir="${D}/usr/share/man/man1" || die "einstall failed."
+		mandir="${D}/usr/share/man/man1" INSTPGMFLAGS="" \
+		|| die "einstall failed"
 
 	pamd_mimic_system xlock auth
 	use pam && fperms 755 /usr/bin/xlock
