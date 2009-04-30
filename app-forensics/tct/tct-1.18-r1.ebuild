@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-forensics/tct/tct-1.18-r1.ebuild,v 1.3 2009/04/14 09:51:39 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-forensics/tct/tct-1.18-r1.ebuild,v 1.4 2009/04/30 17:37:17 patrick Exp $
 
 inherit eutils toolchain-funcs
 
