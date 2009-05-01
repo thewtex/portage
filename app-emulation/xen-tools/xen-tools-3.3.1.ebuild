@@ -1,6 +1,8 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/xen-tools/xen-tools-3.3.0.ebuild,v 1.1 2008/09/01 00:41:07 rbu Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/xen-tools/xen-tools-3.3.1.ebuild,v 1.3 2009/04/28 07:57:21 patrick Exp $
+
+EAPI="2"
 
 inherit flag-o-matic eutils multilib python
 
@@ -17,12 +19,11 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="doc debug screen custom-cflags pygrub hvm api acm flask"
 
-CDEPEND="dev-lang/python
+CDEPEND="dev-lang/python[ncurses,threads]
 	sys-libs/zlib
 	hvm? ( media-libs/libsdl )
 	acm? ( dev-libs/libxml2 )
 	api? ( dev-libs/libxml2 net-misc/curl )"
-#	vtpm? ( dev-libs/gmp dev-libs/openssl )
 
 DEPEND="${CDEPEND}
 	sys-devel/gcc
@@ -30,7 +31,8 @@ DEPEND="${CDEPEND}
 	app-misc/pax-utils
 	doc? (
 		app-doc/doxygen
-		dev-tex/latex2html
+		dev-tex/latex2html[png,gif]
+		dev-texlive/texlive-latexextra
 		media-gfx/transfig
 		media-gfx/graphviz
 	)
@@ -40,7 +42,7 @@ DEPEND="${CDEPEND}
 	)"
 
 RDEPEND="${CDEPEND}
-	sys-apps/iproute2
+	sys-apps/iproute2[-minimal]
 	net-misc/bridge-utils
 	dev-python/pyxml
 	screen? (
@@ -77,25 +79,6 @@ pkg_setup() {
 		else
 			die "Unsupported architecture!"
 		fi
-	fi
-
-	if use doc && ! built_with_use -o dev-tex/latex2html png gif; then
-		# die early instead of later
-		eerror "USE=doc requires latex2html with image support. Please add"
-		eerror "'png' and/or 'gif' to your use flags and re-emerge latex2html"
-		die "latex2html missing both png and gif flags"
-	fi
-
-	if use pygrub && ! built_with_use dev-lang/python ncurses; then
-		eerror "USE=pygrub requires python to be built with ncurses support. Please add"
-		eerror "'ncurses' to your use flags and re-emerge python"
-		die "python is missing ncurses flags"
-	fi
-
-	if ! built_with_use dev-lang/python threads; then
-		eerror "Python is required to be built with threading support. Please add"
-		eerror "'threads' to your use flags and re-emerge python"
-		die "python is missing threads flags"
 	fi
 
 #	use vtpm    && export "VTPM_TOOLS=y"
@@ -144,7 +127,7 @@ src_unpack() {
 
 	# Fix sandbox violation as per Bug 253134
 	# http://bugzilla.xensource.com/bugzilla/show_bug.cgi?id=1405
-	epatch "${FILESDIR}/${PN}-3.3.1-sandbox-fix.diff"
+	epatch "${FILESDIR}/${PN}-3.3.1-sandbox-fix.patch"
 
 	# Fix eqemu-xen (Bug 262124)
 	epatch "${FILESDIR}/${PN}-3.3.1-qemu-xen.patch"
@@ -154,8 +137,7 @@ src_unpack() {
 
 	# Fix e1000 support (Bug 239425)
 	epatch "${FILESDIR}/${PN}-3.3.1-e1000.patch"
-
-	}
+}
 
 src_compile() {
 	export VARTEXFONTS="${T}/fonts"
@@ -230,12 +212,6 @@ pkg_postinst() {
 		ewarn "xend may not work when python is built with stack smashing protection (ssp)."
 		ewarn "If 'xm create' fails with '<ProtocolError for /RPC2: -1 >', see bug #141866"
 		ewarn "This probablem may be resolved as of Xen 3.0.4, if not post in the bug."
-	fi
-
-	if ! built_with_use dev-lang/python ncurses; then
-		echo
-		ewarn "NB: Your dev-lang/python is built without USE=ncurses."
-		ewarn "Please rebuild python with USE=ncurses to make use of xenmon.py."
 	fi
 
 	if built_with_use sys-apps/iproute2 minimal; then

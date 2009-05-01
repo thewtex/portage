@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header:  $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/openfoam/openfoam-1.5.ebuild,v 1.1 2009/04/25 16:35:58 patrick Exp $
 
 inherit eutils versionator multilib toolchain-funcs
 

@@ -1,6 +1,6 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/xen/xen-3.3.0.ebuild,v 1.1 2008/09/01 00:30:53 rbu Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/xen/xen-3.3.1.ebuild,v 1.1 2009/04/26 13:16:10 patrick Exp $
 
 inherit mount-boot flag-o-matic toolchain-funcs
 
@@ -50,9 +50,7 @@ pkg_setup() {
 
 src_unpack() {
 	unpack ${A}
-
 	cd "${S}"
-#	epatch "${FILESDIR}"/${PN}-sed-gcc.patch
 
 	# if the user *really* wants to use their own custom-cflags, let them
 	if use custom-cflags; then
