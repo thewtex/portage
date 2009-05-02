@@ -1,6 +1,6 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Header: /var/cvsroot/gentoo-x86/www-servers/gatling/gatling-0.9.ebuild,v 1.1 2009/05/01 12:23:29 patrick Exp $
 
 inherit eutils
 
@@ -10,7 +10,7 @@ SRC_URI="http://dl.fefe.de/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="dev-libs/libowfat
