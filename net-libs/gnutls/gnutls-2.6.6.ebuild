@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/gnutls/gnutls-2.6.6.ebuild,v 1.1 2009/04/30 12:53:05 dragonheart Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/gnutls/gnutls-2.6.6.ebuild,v 1.4 2009/05/02 13:51:06 jer Exp $
 
 EAPI="2"
 inherit autotools eutils libtool
@@ -21,7 +21,7 @@ unset MINOR_VERSION
 # GPL-3 for the gnutls-extras library and LGPL for the gnutls library.
 LICENSE="LGPL-2.1 GPL-3"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~sparc-fbsd ~x86 ~x86-fbsd"
+KEYWORDS="~alpha amd64 ~arm hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~sparc-fbsd x86 ~x86-fbsd"
 IUSE="bindist +cxx doc guile lzo nls zlib"
 
 RDEPEND="dev-libs/libgpg-error
@@ -45,12 +45,13 @@ pkg_setup() {
 }
 
 src_prepare() {
-#	local dir
-#	for dir in m4 lib/m4 libextra/m4 ; do
-#		rm -f ${dir}/lt* ${dir}/libtool.m4
-#	done
-#	find . -name ltmain.sh -exec rm {} \;
-#
+	# for old libtool compatibility #245544 
+	local dir
+	for dir in m4 lib/m4 libextra/m4 ; do
+		rm -f ${dir}/lt* ${dir}/libtool.m4
+	done
+	find . -name ltmain.sh -exec rm {} \;
+
 	# the below patch is in 2.7.* as per
 	# https://savannah.gnu.org/support/?106542
 	epatch "${FILESDIR}"/gnutls-2.6.0-cxx-configure.in.patch
