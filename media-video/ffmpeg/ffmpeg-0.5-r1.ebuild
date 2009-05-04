@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/ffmpeg/ffmpeg-0.5-r1.ebuild,v 1.4 2009/04/04 15:05:05 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/ffmpeg/ffmpeg-0.5-r1.ebuild,v 1.6 2009/05/03 17:31:41 klausman Exp $
 
 EAPI=1
 
@@ -13,7 +13,7 @@ SRC_URI="http://ffmpeg.org/releases/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 IUSE="+3dnow +3dnowext alsa altivec amr custom-cflags debug dirac doc ieee1394
 	  +encode faac faad gsm ipv6 +mmx +mmxext vorbis test theora threads x264
 	  xvid network zlib sdl X mp3 oss schroedinger +hardcoded-tables bindist
@@ -24,7 +24,12 @@ RDEPEND="vhook? ( >=media-libs/imlib2-1.4.0 >=media-libs/freetype-2 )
 	alsa? ( media-libs/alsa-lib )
 	encode? (
 		faac? ( media-libs/faac )
-		mp3? ( media-sound/lame )
+		mp3? (
+			|| (
+				>=media-sound/lame-3.98.2-r1
+				<media-sound/lame-3.98
+			)
+		)
 		vorbis? ( media-libs/libvorbis media-libs/libogg )
 		theora? ( media-libs/libtheora media-libs/libogg )
 		x264? ( >=media-libs/x264-0.0.20081006 )
