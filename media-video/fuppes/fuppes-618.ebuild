@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="~x86 ~amd64"
 IUSE="+transcode +imagemagick +flac +muse iconv lame +taglib +twolame gnome notify +dlna"
 
-RDEPEND="transcode? ( media-video/ffmpeg[xvid,x264,aac,encode] )
+RDEPEND="transcode? ( media-video/ffmpeg[xvid,x264,encode] )
 	transcode? ( || ( media-sound/twolame media-sound/lame ) )
 	dlna?		( media-libs/libdlna )
 	imagemagick? 	( media-gfx/imagemagick )"

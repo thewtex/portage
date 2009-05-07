@@ -47,7 +47,7 @@ dev-db/mysql-community
 # latest ghc, breaks other packages, fixes (bug #252176)
 >=dev-lang/ghc-6.10
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.9752 2009/05/04 08:34:28 tove Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.9756 2009/05/05 11:06:45 loki_val Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -78,6 +78,67 @@ dev-db/mysql-community
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Peter Alfredsen <loki_val@gentoo.org> (05 May 2009)
+# The mono-2.0.9999 ebuilds are live ebuilds, building
+# from the mono-2-0 branch of anonsvn.mono-project.com.
+=www-apache/mod_mono-2.0.9999
+=dev-dotnet/xsp-2.0.9999
+=dev-dotnet/libgdiplus-2.0.9999
+=dev-dotnet/gluezilla-2.0.9999
+=dev-lang/mono-2.0.9999
+=dev-lang/mono-basic-2.0.9999
+=dev-util/mono-debugger-2.0.9999
+=dev-util/mono-tools-2.0.9999
+=virtual/monodoc-2.0.9999
+
+# Peter Alfredsen <loki_val@gentoo.org> (05 May 2009)
+# The mono-2.2.9999 ebuilds are live ebuilds, building
+# from the mono-2-2 branch of anonsvn.mono-project.com.
+=www-apache/mod_mono-2.2.9999
+=dev-dotnet/xsp-2.2.9999
+=dev-dotnet/libgdiplus-2.2.9999
+=dev-dotnet/gluezilla-2.2.9999
+=dev-lang/mono-2.2.9999
+=dev-lang/mono-basic-2.2.9999
+=dev-util/mono-debugger-2.2.9999
+=dev-util/mono-tools-2.2.9999
+=virtual/monodoc-2.2.9999
+
+# Peter Alfredsen <loki_val@gentoo.org> (05 May 2009)
+# The mono-2.4.9999 ebuilds are live ebuilds, building
+# from the mono-2-4 branch of anonsvn.mono-project.com.
+=www-apache/mod_mono-2.4.9999
+=dev-dotnet/xsp-2.4.9999
+=dev-dotnet/libgdiplus-2.4.9999
+=dev-dotnet/gluezilla-2.4.9999
+=dev-lang/mono-2.4.9999
+=dev-lang/mono-basic-2.4.9999
+=dev-util/mono-debugger-2.4.9999
+=dev-util/mono-tools-2.4.9999
+=virtual/monodoc-2.4.9999
+
+# Peter Alfredsen <loki_val@gentoo.org> (05 May 2009)
+# The mono-9999 ebuilds are live ebuilds, building
+# from trunk of anonsvn.mono-project.com.
+=www-apache/mod_mono-9999
+=dev-dotnet/xsp-9999
+=dev-dotnet/libgdiplus-9999
+=dev-dotnet/gluezilla-9999
+=dev-lang/mono-9999
+=dev-lang/mono-basic-9999
+=dev-util/mono-debugger-9999
+=dev-util/mono-tools-9999
+=virtual/monodoc-9999
+
+# Gilles Dartiguelongue <eva@gentoo.org> (05 May 2009)
+# Requires net-wireless/gnome-bluetooth-2.27
+>=app-mobilephone/gnome-phone-manager-0.65
+
+# Nirbheek Chauhan <nirbheek@gentoo.org> (05 May 2009)
+# Requires net-wireless/bluez-4
+# Needs KEYWORDS on dev-libs/libunique, bug 268487
+=net-wireless/gnome-bluetooth-2.27*
 
 # Theo Chatzimichos <tampakrap@gentoo.org> (04 May 2009)
 # Masked for removal
@@ -153,6 +214,7 @@ dev-java/ant-tasks
 >=x11-proto/xcb-proto-1.4
 >=x11-proto/xproto-7.0.15
 >=x11-proto/xextproto-7.0.5
+=x11-drivers/xf86-video-intel-2.7.0
 
 # Tomas Chvatal <scarabeus@gentoo.org> (27 Apr 2009)
 # Masked due to broken iniparser patch
