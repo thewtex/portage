@@ -1,16 +1,13 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/fam/fam-2.7.0-r4.ebuild,v 1.19 2009/03/18 14:34:04 ricmm Exp $
-
-WANT_AUTOCONF="latest"
-WANT_AUTOMAKE="latest"
+# $Header: /var/cvsroot/gentoo-x86/app-admin/fam/fam-2.7.0-r4.ebuild,v 1.21 2009/05/06 20:48:26 jer Exp $
 
 inherit libtool eutils autotools
 
 DESCRIPTION="FAM, the File Alteration Monitor"
 HOMEPAGE="http://oss.sgi.com/projects/fam/"
 SRC_URI="ftp://oss.sgi.com/projects/fam/download/stable/${P}.tar.gz
-	mirror://gentoo/fam-2.7.0-dnotify.patch"
+	mirror://gentoo/fam-2.7.0-dnotify.patch.bz2"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
@@ -30,7 +27,8 @@ src_unpack() {
 	epatch "${FILESDIR}/${P}-largefiles.patch"
 
 	# dnotify patch #43027
-	epatch "${DISTDIR}/${P}-dnotify.patch"
+	echo $WORKDIR
+	epatch "${WORKDIR}/${P}-dnotify.patch"
 
 	# Use limits correctly -#89478
 	epatch "${FILESDIR}/${P}-limits.patch"
