@@ -61,7 +61,8 @@ src_install() {
 
 	dodoc AUTHORS NEWS
 	rm -f "${D}"/usr/share/${PN}/web/LICENSE
-	doinitd "${FILESDIR}"/transmission-daemon
+	newinitd "${FILESDIR}"/transmission-daemon-1.52.initd transmission-daemon
+	newconfd "${FILESDIR}"/transmission-daemon-1.52.confd transmission-daemon
 
 	if use qt4; then
 		cd qt
@@ -76,6 +77,10 @@ pkg_preinst() {
 pkg_postinst() {
 	fdo-mime_desktop_database_update
 	gnome2_icon_cache_update
+	echo
+	einfo "Please edit /etc/conf.d/transmission-daemon instead of settings.json"
+	einfo "to configure this new transmission ebuild."
+	echo
 }
 
 pkg_postrm() {
