@@ -1,6 +1,8 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dialup/ppp/ppp-2.4.4-r22.ebuild,v 1.1 2009/05/06 16:23:46 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dialup/ppp/ppp-2.4.4-r22.ebuild,v 1.3 2009/05/09 16:19:45 klausman Exp $
+
+EAPI="2"
 
 inherit eutils toolchain-funcs linux-info pam
 
@@ -12,7 +14,7 @@ SRC_URI="ftp://ftp.samba.org/pub/ppp/${P}.tar.gz
 
 LICENSE="BSD GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+KEYWORDS="alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE="activefilter atm dhcp eap-tls gtk ipv6 mppe-mppc pam radius"
 
 DEPEND="activefilter? ( >=virtual/libpcap-0.9.4 )
@@ -20,6 +22,7 @@ DEPEND="activefilter? ( >=virtual/libpcap-0.9.4 )
 	pam? ( virtual/pam )
 	gtk? ( >=x11-libs/gtk+-2.8 )
 	eap-tls? ( net-misc/curl >=dev-libs/openssl-0.9.7 )"
+RDEPEND="${DEPEND}"
 
 pkg_setup() {
 	if use mppe-mppc; then
@@ -35,10 +38,7 @@ pkg_setup() {
 	fi
 }
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-
+src_prepare() {
 	epatch "${WORKDIR}/patch/make-vars.patch"
 	epatch "${WORKDIR}/patch/mpls.patch"
 	epatch "${WORKDIR}/patch/killaddr-smarter.patch"
@@ -118,10 +118,13 @@ src_unpack() {
 	}
 }
 
-src_compile() {
+src_configure() {
 	export CC="$(tc-getCC)"
 	export AR="$(tc-getAR)"
-	econf || die "configuration failed"
+	econf || die "econf failed"
+}
+
+src_compile() {
 	emake COPTS="${CFLAGS} -D_GNU_SOURCE" || die "compile failed"
 
 	#build pppgetpass
