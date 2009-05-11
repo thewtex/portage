@@ -1,5 +1,5 @@
->=x11-libs/gtk+-2 virtual/cdrtools dev-util/pkgconfig
->=x11-libs/gtk+-2 virtual/cdrtools
+>=x11-libs/gtk+-2:2 app-cdr/cdrtools dev-util/pkgconfig >=sys-apps/sed-4
+>=x11-libs/gtk+-2:2 app-cdr/cdrtools
 0
 mirror://sourceforge/xcdroast/xcdroast-0.98alpha16.tar.gz
 
@@ -7,14 +7,14 @@ http://www.xcdroast.org/
 GPL-2
 Lightweight cdrtools front-end for CD and DVD writing
 ~amd64 ~ppc ~sparc ~x86
-eutils multilib portability toolchain-funcs
+eutils gnome2-utils multilib portability toolchain-funcs
 nls
 
 
 
+2
 
-
-compile install unpack
+compile configure install postinst postrm preinst prepare
 
 
 

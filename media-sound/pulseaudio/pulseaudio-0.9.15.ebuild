@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/pulseaudio/pulseaudio-0.9.15.ebuild,v 1.2 2009/04/17 11:49:44 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/pulseaudio/pulseaudio-0.9.15.ebuild,v 1.4 2009/05/10 09:02:41 nirbheek Exp $
 
 EAPI=2
 
@@ -21,7 +21,7 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sh ~sparc ~x86"
 IUSE="alsa avahi caps jack lirc oss tcpd X hal dbus libsamplerate gnome bluetooth policykit asyncns +glib test"
 
-RDEPEND="X? ( x11-libs/libX11 x11-libs/libSM x11-libs/libICE )
+RDEPEND="X? ( x11-libs/libX11 x11-libs/libSM x11-libs/libICE x11-libs/libXtst )
 	caps? ( sys-libs/libcap )
 	libsamplerate? ( >=media-libs/libsamplerate-0.1.1-r1 )
 	alsa? ( >=media-libs/alsa-lib-1.0.19 )
@@ -39,7 +39,8 @@ RDEPEND="X? ( x11-libs/libX11 x11-libs/libSM x11-libs/libICE )
 	)
 	app-admin/eselect-esd
 	bluetooth? (
-		>=net-wireless/bluez-libs-3
+		|| ( >=net-wireless/bluez-4
+			 >=net-wireless/bluez-libs-3 )
 		>=sys-apps/dbus-1.0.0
 	)
 	policykit? ( sys-auth/policykit )
@@ -64,7 +65,9 @@ RDEPEND="${RDEPEND}
 	sys-apps/openrc
 	gnome-extra/gnome-audio
 	alsa? ( media-sound/alsa-utils )
-	bluetooth? ( >=net-wireless/bluez-utils-3 )"
+	bluetooth? (
+	|| ( >=net-wireless/bluez-4
+		 >=net-wireless/bluez-utils-3 ) )"
 
 pkg_setup() {
 	enewgroup audio 18 # Just make sure it exists

@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/avidemux/avidemux-2.4.3.ebuild,v 1.7 2009/01/17 20:52:14 yngwin Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/avidemux/avidemux-2.4.3.ebuild,v 1.8 2009/05/08 12:41:49 yngwin Exp $
 
 EAPI="1"
 
@@ -17,6 +17,7 @@ SLOT="2"
 KEYWORDS="amd64 ppc x86"
 IUSE="aac aften alsa amrnb arts dts encode esd jack lame libsamplerate
 	truetype vorbis x264 xv xvid gtk qt4"
+RESTRICT="test"
 
 RDEPEND="dev-libs/libxml2
 	media-libs/libpng
@@ -43,8 +44,7 @@ RDEPEND="dev-libs/libxml2
 	xvid? ( media-libs/xvid )
 	gtk? ( >=x11-libs/gtk+-2
 		x11-libs/libX11 )
-	qt4? ( || ( x11-libs/qt-gui:4
-			>=x11-libs/qt-4.3:4 )
+	qt4? ( x11-libs/qt-gui:4
 		x11-libs/libX11 )"
 DEPEND="${RDEPEND}
 	sys-devel/gettext
