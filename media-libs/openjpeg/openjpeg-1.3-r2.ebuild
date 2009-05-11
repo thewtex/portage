@@ -10,7 +10,7 @@ SRC_URI="http://www.openjpeg.org/openjpeg_v${PV//./_}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc x86 ~x86-fbsd"
 IUSE="tools"
 DEPEND="tools? ( >=media-libs/tiff-3.8.2 )"
 RDEPEND=${DEPEND}
