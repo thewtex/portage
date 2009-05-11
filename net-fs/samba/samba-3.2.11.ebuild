@@ -169,6 +169,9 @@ src_install() {
 	dosym samba/libtalloc.so.1 /usr/$(get_libdir)/libtalloc.so.1
 	dosym samba/libtdb.so /usr/$(get_libdir)/libtdb.so
 	dosym samba/libtdb.so.1 /usr/$(get_libdir)/libtdb.so.1
+	if use winbind; then
+		dosym samba/libwbclient.so.0 /usr/$(get_libdir)/libwbclient.so.0
+	fi
 
 	# make the smb backend symlink for cups printing support (bug #133133)
 	if use cups ; then
