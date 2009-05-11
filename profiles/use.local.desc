@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4431 2009/05/10 08:47:45 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4436 2009/05/11 11:27:45 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -1033,6 +1033,7 @@ gnome-extra/gnome-do-plugins:amarok - Enables the Amarok (media-sound/amarok) pl
 gnome-extra/gnome-do-plugins:banshee - Enables the Banshee (media-sound/banshee) plugin
 gnome-extra/gnome-games:artworkextra - Installs extra artwork for various games
 gnome-extra/gnome-lirc-properties:policykit - Use sys-auth/policykit to gain privileges to change configuration files
+gnome-extra/gnome-media:canberra - Adds support for sound notification themes using media-libs/libcanberra
 gnome-extra/gnome-media:gnomecd - Builds the GNOME CD Player
 gnome-extra/gnome-power-manager:policykit - Enable sys-auth/policykit authentication support
 gnome-extra/gtkhtml:glade - Provide integration with dev-util/glade.
@@ -1041,7 +1042,9 @@ gnome-extra/libgda:xbase - Enables support for xbase databases (dBase, FoxPro, e
 gnome-extra/nautilus-sendto:balsa - Enables support for mail-client/balsa
 gnome-extra/nautilus-sendto:claws - Enables support for mail-client/claws
 gnome-extra/nautilus-sendto:eds - Enables support for evolution-sendto using gnome-extra/evolution-data-server
+gnome-extra/nautilus-sendto:empathy - Enables support for net-im/empathy
 gnome-extra/nautilus-sendto:gajim - Enables support for net-im/gajim
+gnome-extra/nautilus-sendto:mail - Enables support for mailto using gnome-extra/evolution-data-server
 gnome-extra/nautilus-sendto:pidgin - Enables support for net-im/pidgin
 gnome-extra/nautilus-sendto:sylpheed - Enables support for mail-client/sylpheed
 gnome-extra/nautilus-sendto:thunderbird - Enables support for mail-client/mozilla-thunderbird
@@ -1109,7 +1112,6 @@ kde-base/kopete:irc - Enable the IRC protocol handler.
 kde-base/kopete:jabber - Enable XMPP protocol handler (this is also gmail).
 kde-base/kopete:latex - Embed latex formatted text into messages.
 kde-base/kopete:meanwhile - Enable the Sametime protocol handler.
-kde-base/kopete:messenger - Enable support for MSN and Windows live protocols (old implementation).
 kde-base/kopete:msn - Enable "Windows live messenger" protocol support.
 kde-base/kopete:netmeeting - Builds netmeeting plugin (require gnomemeeting)
 kde-base/kopete:nowlistening - Shows song you currently listen to in your status/etc. Bindings for many players.
@@ -1120,7 +1122,6 @@ kde-base/kopete:qq - enable support for the chinese network protocol.
 kde-base/kopete:sametime - Enables support for the Sametime protocol for instant messaging
 kde-base/kopete:sms - Enable the sms sending plugin.
 kde-base/kopete:statistics - Everybody loves statistic graphs, especialy cake ones. ;]
-kde-base/kopete:telepathy - Enable support for the realtime communication framework telepathy.
 kde-base/kopete:testbed - Enable the testbed protocol.
 kde-base/kopete:texteffect - Various fancy text effects for your messages (dont ever consider writing us with this enabled ;]).
 kde-base/kopete:translator - Translate incoming and outgoing messages.
@@ -1584,6 +1585,7 @@ media-sound/rubyripper:cli - Build command line interface rubyripper
 media-sound/rubyripper:normalize - Add support for normalizing audio file volume levels
 media-sound/rubyripper:wav - Add support for wavegain
 media-sound/sonata:lyrics - Support for lyrics fetching
+media-sound/sonata:trayicon - Enable support for trayicon
 media-sound/sonic-visualiser:id3tag - Enables ID3 tagging with id3tag library
 media-sound/sox:amrnb - Enables Adaptive Multi-Rate Audio support (Narrow Band)
 media-sound/sox:amrwb - Enables Adaptive Multi-Rate Audio support (Wide Band)
@@ -2308,6 +2310,7 @@ net-misc/tigervnc:server - Build TigerVNC server
 net-misc/tigervnc:xorgmodule - Build the Xorg module
 net-misc/tightvnc:server - Build vncserver. Allows us to only build server on one machine if set, build only viewer otherwise.
 net-misc/tor:bundledlibevent - USE bundled libevent for asynchronous DNS requests (provides a tiny bit more anonymity)
+net-misc/vinagre:applet - Enable vinagre applet for gnome-base/gnome-panel.
 net-misc/vnc:server - Build VNC server
 net-misc/vnc:xorgmodule - Build the Xorg module
 net-misc/vpnc:hybrid-auth - Enable hybrid authentication (certificates), only if not redistributed as compiled binary

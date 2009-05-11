@@ -1,6 +1,16 @@
 # ChangeLog for media-sound/rubyripper
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/rubyripper/ChangeLog,v 1.23 2009/03/10 21:24:23 beandog Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/rubyripper/ChangeLog,v 1.26 2009/05/10 18:36:06 ssuominen Exp $
+
+  10 May 2009; Samuli Suominen <ssuominen@gentoo.org>
+  rubyripper-0.5.5-r1.ebuild:
+  virtualx eclass introduces USE flag X, add it to IUSE for forcing in
+  profiles wrt #268980.
+
+  10 May 2009; Samuli Suominen <ssuominen@gentoo.org>
+  rubyripper-0.5.5-r1.ebuild:
+  Require rcairo with USE flag svg wrt #250226, thanks to Diego E. Pettenò
+  for reporting.
 
 *rubyripper-0.5.5-r1 (10 Mar 2009)
 
@@ -59,7 +69,7 @@
 
 *rubyripper-0.4.2-r1 (20 Jul 2007)
 
-  20 Jul 2007; Samuli Suominen <drac@gentoo.org>
+  20 Jul 2007; Samuli Suominen <ssuominen@gentoo.org>
   +rubyripper-0.4.2-r1.ebuild:
   Fix .desktop file, license to GPL-3, install bundled documentation, and
   more. Bug 185922, thanks to Kevin Fullerton and Daniel Pielmeier.

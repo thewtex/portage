@@ -1,10 +1,47 @@
 # ChangeLog for profile directory
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.2628 2009/05/10 10:29:35 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.2639 2009/05/11 10:44:46 eva Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  11 May 2009; Gilles Dartiguelongue <eva@gentoo.org> package.mask:
+  pretend to unmask gnome-desktop since I failed at writing proper atom and
+  nobody noticed.
+
+  11 May 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask eq-audacious for removal wrt #209500, #183928, #238620 and #247781.
+
+  11 May 2009; Tiziano Müller <dev-zero@gentoo.org> package.mask:
+  Unmasking slotted boost
+
+  10 May 2009; Lennart Kolmodin <kolmodin@gentoo.org> package.mask:
+  Mask the haskell platform for testing.
+
+  10 May 2009; Thomas Sachau (Tommy[D]) <tommy@gentoo.org> package.mask:
+  Remove mask on net-libs/fec (dropped)
+
+  10 May 2009; Lennart Kolmodin <kolmodin@gentoo.org> package.mask:
+  Mask dev-lang/ghc-6.10.3 for testing.
+
+  10 May 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Remove libspiff mask because the package is now libxspf in tree.
+
+  10 May 2009; Joerg Bornkessel <hd_brummy@gentoo.org> package.mask:
+  unmask media-tv/w_scan-20090502
+
+  10 May 2009; Samuli Suominen <ssuominen@gentoo.org>
+  base/package.use.force:
+  USE flag X needs to be always enabled in media-sound/rubyripper for Xeconf
+  wrt #268980.
+
+  10 May 2009; Gilles Dartiguelongue <eva@gentoo.org> package.mask:
+  Unmasking packages that were waiting for bluez4. Also doing it on behalf
+  of flameeyes.
+
+  10 May 2009; Tiziano Müller <dev-zero@gentoo.org> package.mask:
+  Unmasking bluez-4 and deps. Good luck.
 
   10 May 2009; Gilles Dartiguelongue <eva@gentoo.org> package.mask:
   Fixing invalid atom for media-gfx/eog mask.
