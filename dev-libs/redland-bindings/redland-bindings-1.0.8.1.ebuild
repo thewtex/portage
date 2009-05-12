@@ -1,8 +1,9 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/redland-bindings/redland-bindings-1.0.8.1.ebuild,v 1.1 2008/08/05 14:56:27 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/redland-bindings/redland-bindings-1.0.8.1.ebuild,v 1.4 2009/05/12 13:59:38 ssuominen Exp $
 
-inherit eutils multilib
+EAPI=2
+inherit multilib
 
 DESCRIPTION="Language bindings for Redland"
 HOMEPAGE="http://librdf.org/"
@@ -19,28 +20,32 @@ RDEPEND=">=dev-libs/redland-1.0.8
 	php? ( virtual/php )
 	ruby? ( dev-lang/ruby dev-ruby/log4r )"
 DEPEND="${RDEPEND}
-	>=dev-lang/swig-1.3.25"
+	dev-lang/swig
+	sys-apps/sed
+	perl? ( sys-apps/findutils )"
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-	# Multilib fix
-	sed -i -e "s:lib/python:$(get_libdir)/python:" configure
+src_prepare() {
+	sed -i -e "s:lib/python:$(get_libdir)/python:" \
+		configure || die "sed failed"
 }
 
-src_compile() {
+src_configure() {
 	econf \
 		$(use_with perl) \
 		$(use_with python) \
 		$(use_with php) \
 		$(use_with ruby) \
-		--with-redland=system \
-		|| die "econf failed."
-	emake || die "emake failed."
+		--with-redland=system
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die "emake install failed."
+	emake DESTDIR="${D}" install || die "emake install failed"
+
+	if use perl; then
+		find "${D}" -type f -name perllocal.pod -delete
+		find "${D}" -depth -mindepth 1 -type d -empty -delete
+	fi
+
 	dodoc AUTHORS ChangeLog* NEWS README TODO
 	dohtml *.html
 }

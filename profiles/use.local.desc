@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4436 2009/05/11 11:27:45 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4439 2009/05/12 17:47:54 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -1127,8 +1127,8 @@ gnome-extra/gnome-do-plugins:amarok - Enables the Amarok (media-sound/amarok) pl
 gnome-extra/gnome-do-plugins:banshee - Enables the Banshee (media-sound/banshee) plugin
 gnome-extra/gnome-games:artworkextra - Installs extra artwork for various games
 gnome-extra/gnome-lirc-properties:policykit - Use sys-auth/policykit to gain privileges to change configuration files
-gnome-extra/gnome-media:canberra - Adds support for sound notification themes using media-libs/libcanberra
 gnome-extra/gnome-media:gnomecd - Builds the GNOME CD Player
+gnome-extra/gnome-media:sound - Adds support for sound notification themes using media-libs/libcanberra
 gnome-extra/gnome-power-manager:policykit - Enable sys-auth/policykit authentication support
 gnome-extra/gtkhtml:glade - Provide integration with dev-util/glade.
 gnome-extra/libgda:mdb - Enables Microsoft Access DB support
@@ -1706,6 +1706,7 @@ media-sound/qtractor:rubberband - Enable support for in-place audio clip pitch-s
 media-sound/qtscrobbler:cli - Build commandline client
 media-sound/quodlibet:trayicon - Enable support for trayicon
 media-sound/quodlibet:tta - Enable TTA (True-Audio Loseless) support
+media-sound/quodlibet:wma - Enable support for Windows Media Audio
 media-sound/radiomixer:hwmixer - Use hardware mixer instead of internal mixer routines
 media-sound/rezound:16bittmp - Use 16bit temporary files (default 32bit float), useful for slower computers
 media-sound/rezound:soundtouch - compile with support for soundtouch
@@ -2972,6 +2973,8 @@ sys-freebsd/freebsd-usbin:ipfilter - Enable building of ipfilter firewall suppor
 sys-freebsd/freebsd-usbin:ipsec - Enable IPSec support.
 sys-freebsd/freebsd-usbin:isdn - Enable ISDN support.
 sys-freebsd/freebsd-usbin:nat - Enable Network Address Translation support daemon.
+sys-fs/aufs2:debug - Enable additional debugging support
+sys-fs/aufs2:hinotify - Enable hinotify support
 sys-fs/cryptsetup:dynamic - Build cryptsetup dynamically
 sys-fs/ecryptfs-utils:gpg - Enable app-crypt/gnupg key module
 sys-fs/ecryptfs-utils:nss - Enable support for dev-libs/nss
