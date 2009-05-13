@@ -1,5 +1,5 @@
-|| ( x11-libs/qt-gui:4 =x11-libs/qt-4.3*:4 ) media-libs/imlib2 || ( app-arch/unrar app-arch/rar ) app-arch/zip dev-util/pkgconfig =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
-|| ( x11-libs/qt-gui:4 =x11-libs/qt-4.3*:4 ) media-libs/imlib2 || ( app-arch/unrar app-arch/rar ) app-arch/zip
+|| ( x11-libs/qt-gui:4 =x11-libs/qt-4.3*:4 ) media-libs/imlib2[X] x11-libs/libXmu || ( app-arch/unrar app-arch/rar ) app-arch/zip dev-util/pkgconfig
+|| ( x11-libs/qt-gui:4 =x11-libs/qt-4.3*:4 ) media-libs/imlib2[X] x11-libs/libXmu || ( app-arch/unrar app-arch/rar ) app-arch/zip
 0
 http://linux.bydg.org/~yogin/qcomicbook/qcomicbook-0.4.0.tar.gz
 
@@ -7,14 +7,14 @@ http://linux.bydg.org/~yogin
 GPL-2
 A viewer for comic book archives containing jpeg/png images.
 ~amd64 ~ppc ~x86
-autotools base eutils libtool multilib portability qt4 toolchain-funcs versionator
+base eutils multilib portability qt4 toolchain-funcs versionator
 
 
 
 
-1
+2
 
-compile install setup unpack
+compile configure install prepare setup unpack
 
 
 

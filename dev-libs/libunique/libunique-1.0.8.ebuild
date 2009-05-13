@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libunique/libunique-1.0.8.ebuild,v 1.1 2009/05/02 22:29:10 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libunique/libunique-1.0.8.ebuild,v 1.4 2009/05/06 14:59:21 jer Exp $
 
 EAPI="2"
 
@@ -11,7 +11,7 @@ HOMEPAGE="http://live.gnome.org/LibUnique"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~sh ~x86"
 IUSE="dbus debug doc"
 
 RDEPEND=">=dev-libs/glib-2.12.0
@@ -21,6 +21,7 @@ RDEPEND=">=dev-libs/glib-2.12.0
 DEPEND="${RDEPEND}
 	sys-devel/gettext
 	>=dev-util/pkgconfig-0.17
+	dev-util/gtk-doc-am
 	doc? ( >=dev-util/gtk-doc-1.6 )"
 
 DOCS="AUTHORS NEWS ChangeLog README TODO"

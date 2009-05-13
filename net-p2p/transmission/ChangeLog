@@ -1,13 +1,31 @@
 # ChangeLog for net-p2p/transmission
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/transmission/ChangeLog,v 1.75 2009/05/02 16:47:42 nixnut Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/transmission/ChangeLog,v 1.77 2009/05/05 11:51:23 ssuominen Exp $
+
+*transmission-1.60-r1 (08 May 2009)
+*transmission-1.52-r1 (08 May 2009)
+
+  08 May 2009; Daniel Robbins <drobbins@funtoo.org>
+  +transmission-1.52-r1.ebuild, +transmission-1.60-r1.ebuild,
+  -transmission-1.52.ebuild, -transmission-1.60.ebuild:
+  New revisions of transmission incorporating fixed init.d and conf.d
+  scripts from #238260.
+
+*transmission-1.60 (05 May 2009)
+
+  05 May 2009; Samuli Suominen <ssuominen@gentoo.org>
+  +transmission-1.60.ebuild:
+  Version bump.
+
+  03 May 2009; Markus Meier <maekke@gentoo.org> transmission-1.52.ebuild:
+  amd64/x86 stable, bug #268262
 
   02 May 2009; nixnut <nixnut@gentoo.org> transmission-1.52.ebuild:
   ppc stable #268262
 
 *transmission-1.52 (14 Apr 2009)
 
-  14 Apr 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  14 Apr 2009; Diego E. PettenÃ² <flameeyes@gentoo.org>
   +transmission-1.52.ebuild:
   Version bump, closes bug #256485.
 
@@ -30,7 +48,7 @@
   +transmission-1.42.ebuild:
   Version bump.
 
-  17 Nov 2008; Diego E. Pettenò <flameeyes@gentoo.org>
+  17 Nov 2008; Diego E. PettenÃ² <flameeyes@gentoo.org>
   files/transmission-1.11-libnotify-option.patch:
   Fix patch with absolute paths.
 
@@ -185,7 +203,7 @@
   +transmission-0.91.ebuild:
   Version bump from upstream (bug #197591)
 
-  04 Nov 2007; Dawid Węgliński <cla@gentoo.org> transmission-0.82.ebuild:
+  04 Nov 2007; Dawid WÄgliÅski <cla@gentoo.org> transmission-0.82.ebuild:
   Stable on x86 (bug #198114)
 
   04 Nov 2007; Saleem Abdulrasool <compnerd@gentoo.org>
@@ -233,14 +251,14 @@
   +transmission-0.72-r1.ebuild:
   Revision bump for upsate from upstream without a release.
 
-  02 Jun 2007; René Nussbaumer <killerfox@gentoo.org>
+  02 Jun 2007; RenÃ© Nussbaumer <killerfox@gentoo.org>
   transmission-0.72.ebuild:
   Stable on ppc. See bug #180525.
 
   01 Jun 2007; Peter Weller <welp@gentoo.org> transmission-0.72.ebuild:
   Stable on amd64 wrt security bug 180525
 
-  01 Jun 2007; Raúl Porcel <armin76@gentoo.org> transmission-0.72.ebuild:
+  01 Jun 2007; RaÃºl Porcel <armin76@gentoo.org> transmission-0.72.ebuild:
   x86 stable wrt security #180525
 
   19 May 2007; Peter Weller <welp@gentoo.org> transmission-0.72.ebuild:
@@ -284,10 +302,10 @@
   transmission-0.6.1-r1.ebuild:
   Marked ~ppc
 
-  19 Mar 2007; Bryan Østergaard <kloeri@gentoo.org> metadata.xml:
+  19 Mar 2007; Bryan Ãstergaard <kloeri@gentoo.org> metadata.xml:
   Remove squinky86 from metadata.xml due to retirement.
 
-  24 Feb 2007; Raúl Porcel <armin76@gentoo.org>
+  24 Feb 2007; RaÃºl Porcel <armin76@gentoo.org>
   transmission-0.6.1-r1.ebuild:
   Remove ROOT, bug 168039
 

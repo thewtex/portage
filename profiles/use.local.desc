@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4413 2009/05/02 19:27:44 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4423 2009/05/06 18:07:59 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -548,6 +548,7 @@ dev-db/postgresql-server:uuid - Enable server side UUID generation (via dev-libs
 dev-db/sqlite:soundex - Enable the soundex function to compute soundex encodings of strings
 dev-db/sqlite:threadsafe - Enable thread safe operation of sqlite
 dev-dotnet/libgdiplus:pango - Use pango instead of cairo to render text.
+dev-dotnet/nant:bootstrap - Bootstrap nant by using pre-built ndoc binaries.
 dev-dotnet/xsp:debug - Enable tracing messages (RECOMMENDED)
 dev-embedded/openocd:ft2232 - Enable support for USB chips via dev-embedded/libftd2xx
 dev-embedded/openocd:ftdi - Enable support for USB FTDI chips (dev-embedded/libftdi)
@@ -1120,6 +1121,7 @@ gnome-extra/gnome-games:artworkextra - Installs extra artwork for various games
 gnome-extra/gnome-lirc-properties:policykit - Use sys-auth/policykit to gain privileges to change configuration files
 gnome-extra/gnome-media:gnomecd - Builds the GNOME CD Player
 gnome-extra/gnome-power-manager:policykit - Enable sys-auth/policykit authentication support
+gnome-extra/gtkhtml:glade - Provide integration with dev-util/glade.
 gnome-extra/libgda:mdb - Enables Microsoft Access DB support
 gnome-extra/libgda:xbase - Enables support for xbase databases (dBase, FoxPro, etc.)
 gnome-extra/nautilus-sendto:balsa - Enables support for mail-client/balsa
@@ -1610,8 +1612,8 @@ media-sound/crip:normalize - Enable for being able to normalize ripped tracks
 media-sound/darkice:twolame - Build with twolame support
 media-sound/decibel-audio-player:cdaudio - Adds support for CD audio playback and lookups via CDDB
 media-sound/dir2ogg:wma - Add support for wma files through mplayer
-media-sound/exaile:equalizer - Enable equalizer support
 media-sound/exaile:libsexy - Enable libsexy support
+media-sound/exaile:mtp - Enable libmtp support
 media-sound/fapg:xspf - Enable support for saving XSPF playlists.
 media-sound/freewheeling:fluidsynth - compile with support for fluidsynth
 media-sound/gimmix:cover - Enable cover art fetching
@@ -1796,6 +1798,9 @@ media-video/avidemux:aften - Enable A/52 (AC-3) audio encoder support
 media-video/avidemux:amrnb - Enable Narrow Band Adaptive Multi-Rate Audio support
 media-video/chaplin:transcode - Enable DVD ripping and transcoding
 media-video/cinepaint:gutenprint - Enable support for gutenprint
+media-video/clive:clipboard - Support reading from X clipboard
+media-video/clive:pager - Support pager!?
+media-video/clive:password - Support password controlled sites
 media-video/devede:psyco - psyco python accelerator
 media-video/dv2sub:kino - install kino plugin
 media-video/dvd-slideshow:themes - Install theme pack
@@ -2309,6 +2314,7 @@ net-libs/libfwbuilder:bind - Use bind's name resolving library
 net-libs/libfwbuilder:stlport - Enagle support for STLport
 net-libs/libinfinity:server -  Build and install the server binary including init.d/conf.d-scripts. Needed if you want to host an infinote server for gobby. 
 net-libs/libpri:bri - Enable ISDN BRI support (bristuff)
+net-libs/libproxy:webkit - Enable support for net-libs/webkit-gtk.
 net-libs/libsrtp:aesicm - Use AES ICM cryptographic algorithm
 net-libs/libsrtp:console -  Use /dev/console instead of stdout for error messages 
 net-libs/libsrtp:syslog - Use syslog for error messages
@@ -2597,7 +2603,7 @@ net-wireless/madwifi-old:onoe - Use Atsushi Onoe's bit rate control algorithm
 net-wireless/wepattack:john - Build with app-crypt/johntheripper support
 net-wireless/wifiscanner:wireshark - Use the net-analyzer/wireshark wtap library
 net-wireless/wireless-tools:multicall - Build the most commonly used tools as one binary
-net-wireless/wpa_supplicant:gsm - Add support for EAP-SIM authentication algorithm
+net-wireless/wpa_supplicant:eap-sim - Add support for EAP-SIM authentication algorithm
 net-wireless/wpa_supplicant:madwifi - Add support for madwifi (Atheros chipset)
 net-wireless/wpa_supplicant:ps3 - Add support for ps3 hypervisor driven gelic wifi
 net-wireless/wpa_supplicant:wps - Add support for Wi-Fi Protected Setup
@@ -3135,12 +3141,14 @@ x11-libs/qt-gui:raster -  Use the alternative raster graphicssystem as default r
 x11-libs/qt-opengl:qt3support - Enable the Qt3Support libraries for Qt4
 x11-libs/qt-qt3support:phonon -  Enable phonon configuration dialog in qtconfig 
 x11-libs/qt-sql:qt3support - Enable the Qt3Support libraries for Qt4
+x11-libs/vte:glade - Provide integration with dev-util/glade.
 x11-libs/wxGTK:gnome -  Use gnome-base/libgnomeprintui for printing tasks. 
 x11-libs/wxGTK:gstreamer -  Enable the wxMediaCtrl class for playing audio and video through gstreamer. 
 x11-libs/wxGTK:sdl -  Use Simple Directmedia Layer (media-libs/libsdl) for audio. 
 x11-misc/adesklets:ctrlmenu - force CTRL to be pressed to fire context menu
 x11-misc/bmpanel:libev - Use the libev event loop interface
 x11-misc/bmpanel:libevent - Use the libevent event loop interface
+x11-misc/fbpager:xrender - Enable transparency support via x11-libs/libXrender
 x11-misc/fspanel:xft - Build with support for XFT font renderer (x11-libs/libXft)
 x11-misc/notification-daemon-xfce:xfce - Enable integration in XFCE desktop
 x11-misc/openclipart:gzip - Compresses clip art using gzip
@@ -3171,7 +3179,6 @@ x11-terms/rxvt-unicode:afterimage - Enable support for media-libs/libafterimage
 x11-terms/rxvt-unicode:iso14755 - Enable ISO-14755 support
 x11-terms/rxvt-unicode:wcwidth - Enable wide char width support
 x11-terms/rxvt-unicode:xterm-color - Enable xterm 256 color support
-x11-terms/xterm:paste64 - Enable support for bracketed paste mode
 x11-terms/xterm:toolbar - Enable the xterm toolbar to be built
 x11-themes/gentoo-artwork:grub - Install extra sys-boot/grub themes
 x11-themes/gentoo-artwork:icons - Install icons

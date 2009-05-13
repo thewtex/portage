@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/gnome-doc-utils/gnome-doc-utils-0.16.1.ebuild,v 1.3 2009/05/02 21:10:35 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/gnome-doc-utils/gnome-doc-utils-0.16.1.ebuild,v 1.5 2009/05/05 16:52:40 armin76 Exp $
 
 EAPI="2"
 
@@ -11,7 +11,7 @@ HOMEPAGE="http://www.gnome.org/"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd"
 IUSE=""
 
 RDEPEND=">=dev-libs/libxml2-2.6.12[python]
@@ -34,7 +34,7 @@ src_prepare() {
 	gnome2_src_prepare
 
 	# Make xml2po FHS compliant, bug #190798
-	epatch "${FILESDIR}/${PN}-0.16.0-fhs.patch"
+	epatch "${FILESDIR}/${PN}-0.16.1-fhs.patch"
 
 	# If there is a need to reintroduce eautomake or eautoreconf, make sure
 	# to AT_M4DIR="tools m4", bug #224609 (m4 removes glib build time dep)

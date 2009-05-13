@@ -1,6 +1,24 @@
 # ChangeLog for www-apache/mod_mono
-# Copyright 2000-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-apache/mod_mono/ChangeLog,v 1.51 2009/04/17 15:47:40 ranger Exp $
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apache/mod_mono/ChangeLog,v 1.53 2009/05/05 12:06:42 loki_val Exp $
+
+*mod_mono-9999 (05 May 2009)
+*mod_mono-2.4.9999 (05 May 2009)
+*mod_mono-2.2.9999 (05 May 2009)
+*mod_mono-2.0.9999 (05 May 2009)
+
+  05 May 2009; Peter Alfredsen <loki_val@gentoo.org>
+  +mod_mono-2.0.9999.ebuild, +mod_mono-2.2.9999.ebuild,
+  +mod_mono-2.4.9999.ebuild, +mod_mono-9999.ebuild:
+  Add live ebuilds for trunk and >=2.0 branches
+
+*mod_mono-2.2-r1 (03 May 2009)
+
+  03 May 2009; Peter Alfredsen <loki_val@gentoo.org>
+  files/2.2/70_mod_mono.conf, -mod_mono-2.2.ebuild, +mod_mono-2.2-r1.ebuild,
+  mod_mono-2.4.ebuild:
+  Fix /usr/local-installed apxs overriding system apxs. Add linkage to
+  libapr for good measure. Spell out the entire path to mod_mono.so.
 
   17 Apr 2009; Brent Baude <ranger@gentoo.org> mod_mono-2.2.ebuild:
   Marking mod_mono-2.2 ~ppc for bug 255410
