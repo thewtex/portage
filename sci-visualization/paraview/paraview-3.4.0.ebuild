@@ -59,8 +59,7 @@ src_unpack() {
 	unpack ${A}
 	mkdir "${BUILDDIR}" || die "Failed to generate build directory"
 	cd "${S}"
-	epatch "${FILESDIR}"/${PN}-${PATCH_V}-gcc4.3.patch
-	epatch "${FILESDIR}"/${PN}-${PATCH_V}-qt4.4.patch
+	epatch "${FILESDIR}"/${PN}-3.3_pre20080514-qt4.4.patch
 	epatch "${DISTDIR}"/${P}-OpenFOAM-48.patch.bz2
 
 	# rename paraview's assistant wrapper
@@ -143,7 +142,7 @@ src_compile() {
 	cmake ${CMAKE_VARIABLES} "${S}" \
 		|| die "cmake configuration failed"
 
-	emake || die "emake failed"
+	emake -j1 || die "emake failed"
 
 }
 
