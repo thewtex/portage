@@ -1,7 +1,8 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-base/gnome-panel/gnome-panel-2.26.1.ebuild,v 1.1 2009/05/11 21:29:11 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-base/gnome-panel/gnome-panel-2.26.1.ebuild,v 1.3 2009/05/13 14:22:12 dang Exp $
 
+EAPI="2"
 GCONF_DEBUG="no"
 
 inherit autotools eutils gnome2
@@ -65,8 +66,8 @@ pkg_setup() {
 		$(use_enable eds)"
 }
 
-src_unpack() {
-	gnome2_src_unpack
+src_prepare() {
+	gnome2_src_prepare
 
 	# Allow logout/shutdown without gnome-session 2.24, bug #246170
 	epatch "${WORKDIR}/${MY_P}-logout.patch"
