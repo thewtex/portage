@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.9793 2009/05/12 17:19:01 tommy Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.9797 2009/05/13 04:08:24 darkside Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -123,11 +123,6 @@ x11-libs/libXprintUtil
 =x11-libs/qt-test-4.5.0*
 =x11-libs/qt-webkit-4.5.0*
 =x11-libs/qt-xmlpatterns-4.5.0*
-
-# Peter Alfredsen <loki_val@gentoo.org> (05 May 2009)
-# Masking temporarily till bug 265912 has been resolved
-# to my satisfaction.
-=dev-lang/mono-2.4-r1
 
 # Mark Loeser <halcy0n@gentoo.org> (6 May 2009)
 # Masked for testing
@@ -376,12 +371,6 @@ virtual/perl-IO-Compress
 =app-emulation/virt-manager-0.7.0
 =app-emulation/virtinst-0.400.3
 
-# Tony Vroon <chainsaw@gentoo.org> (17 Apr 2009)
-# Alpha-quality developer preview. Feel free to give it a go, but bugs go upstream.
-# Use this tracker: http://www.atheme.org/projects/audacious/issues
-=media-sound/audacious-2.0_alpha*
-=media-plugins/audacious-plugins-2.0_alpha*
-
 # Mounir Lamouri <volkmar@gentoo.org> (15 Apr 2009)
 # >www-plugins/mozilla-weaver-0.2.104 needs masked versions of ff (ie. 3.1_beta)
 >www-plugins/mozilla-weave-0.2.104
@@ -450,12 +439,6 @@ net-dialup/qlcr
 # seem like a downgrade for stable and ~arch users, but it is not.
 >=app-shells/bash-completion-20000000
 
-# Mounir Lamouri <volkmar@gentoo.org> (08 Apr 2009)
-# This lib is not used by any package and it doesn't work on amd64
-# Upstream doesn't maintain this package anymore
-# See bug 180757. Masked for removal in 30 days
-net-libs/zapata
-
 # Tiziano Müller <dev-zero@gentoo.org> (08 Apr 2009)
 # pre-releases
 net-libs/libinfinity
@@ -513,11 +496,6 @@ app-text/tetex
 sys-apps/sreadahead
 
 # Ben de Groot <yngwin@gentoo.org> (27 Mar 2009)
-# Scheduled for removal in 30 days. Does not build: bug 207324.
-# Upstream inactive, last release over 6 years ago.
-media-sound/ermixer
-
-# Ben de Groot <yngwin@gentoo.org> (27 Mar 2009)
 # Scheduled for removal. Just masking now, to make sure there are no problems
 # Everyone should be using qt-3.3.8b-r1 by now
 =x11-libs/qt-3.3.8-r4
@@ -566,11 +544,6 @@ dev-embedded/gezel
 # Masked for removal in 60 days. Dead upstream (since 2001), file collisions,
 # ebuild needs love. bug 248305
 sys-devel/subterfugue
-
-# Jeremy Olexa <darkside@gentoo.org> (21 Mar 2009)
-# Masked for removal in 30 days. Dead upstream, many alternatives exist (eg.
-# abcde) - bug 116747
-media-sound/cdmp3
 
 # Jeremy Olexa <darkside@gentoo.org> (21 Mar 2009)
 # Masked for removal in 60 days. Dead upstream (vanished), broken with gcc-4.3 &
@@ -806,12 +779,6 @@ dev-util/w32api
 =media-libs/gst-plugins-bad-0.10.9-r1
 =media-libs/gst-plugins-ugly-0.10.10-r1
 =media-libs/gst-plugins-base-0.10.21-r1
-
-# Diego Pettenò <flameeyes@gentoo.org> (23 Dec 2008)
-# Mask these for removal, busybox provides those already, and are
-# unmaintained. As requested by solar.
-net-misc/udhcp
-sys-apps/tinylogin
 
 # Jeremy Olexa <darkside@gentoo.org> (20 Dec 2008)
 # Removed in 60 days, multiple bugs - does not compile with recent kernels.
@@ -1491,15 +1458,6 @@ app-benchmarks/ltp
 # Robin H. Johnson <robbat2@gentoo.org> (11 Feb 2006)
 # zlib interaction is badly broken. See bug #124733.
 =dev-util/cvs-1.12.13*
-
-# Chris Gianelloni <wolf31o2@gentoo.org> (19 Dec 2005)
-# This is the Gentoo Linux Installer.  This is currently masked because it will
-# lead to some serious breakages on a machine.  If you are not developing on
-# this package, I would strongly recommend against using it.  If you break your
-# system with this, you're on your own.  You have been warned.
-# This package now is no longer safe to run except on a system where you are
-# planning on doing an install.
-sys-apps/gli
 
 # Luca Longinotti <chtekk@gentoo.org> (12 Jan 2007)
 # Mask MySQL 5.1.* and the alpha versions
