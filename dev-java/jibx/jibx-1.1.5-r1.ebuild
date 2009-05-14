@@ -1,7 +1,8 @@
-# Copyright 1999-2007 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jibx/jibx-1.1.3.ebuild,v 1.4 2007/05/15 10:57:45 ali_bush Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jibx/jibx-1.1.5-r1.ebuild,v 1.1 2009/05/13 23:30:39 betelgeuse Exp $
 
+EAPI="2"
 JAVA_PKG_IUSE="doc source"
 
 inherit java-pkg-2 java-ant-2 versionator
@@ -17,11 +18,11 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE=""
 
-COMMON_DEP="=dev-java/dom4j-1*
-	dev-java/ant-core
-	dev-java/bcel
-	dev-java/jsr173
-	dev-java/xpp3"
+COMMON_DEP="dev-java/dom4j:1
+	dev-java/ant-core:0
+	dev-java/bcel:0
+	java-virtuals/stax-api
+	dev-java/xpp3:0"
 
 DEPEND=">=virtual/jdk-1.4
 	app-arch/unzip
@@ -31,33 +32,20 @@ RDEPEND=">=virtual/jre-1.4
 
 S="${WORKDIR}/${PN}"
 
-src_unpack() {
-
-	unpack ${A}
-
-	cd "${S}/lib"
-	rm -f *.jar
-
-	java-pkg_jarfrom ant-core
-	java-pkg_jarfrom bcel
-	java-pkg_jarfrom dom4j-1
-	java-pkg_jarfrom jsr173
-	java-pkg_jarfrom xpp3
-
+java_prepare() {
+	cd lib || die
+	rm -v *.jar || die
+	java-pkg_jar-from ant-core,bcel,dom4j-1,stax-api,xpp3
 }
 
 EANT_BUILD_XML="build/build.xml"
 EANT_BUILD_TARGET="small-jars"
 
 src_install() {
+	java-pkg_dojar "${S}"/lib/${PN}*.jar
 
-	cd "${S}/lib/"
-	java-pkg_dojar "${S}/lib"/jibx-bind.jar
-	java-pkg_dojar "${S}/lib"/jibx-extras.jar
-	java-pkg_dojar "${S}/lib"/jibx-run.jar
-
-	cd "${S}"
-	dodoc changes.txt readme.html docs/binding.dtd docs/binding.xsd
+	dodoc changes.txt docs/binding.dtd docs/binding.xsd || die
+	dohtml readme.html || die
 
 	use doc && {
 		java-pkg_dohtml -r docs/*
@@ -65,6 +53,5 @@ src_install() {
 		cp -R tutorial "${D}/usr/share/doc/${PF}"
 	}
 
-	use source && java-pkg_dosrc ${S}/build/src/* ${S}/build/extras/*
-
+	use source && java-pkg_dosrc build/src/* build/extras/*
 }

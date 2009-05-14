@@ -1,12 +1,10 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/soundkonverter/soundkonverter-0.3.8-r1.ebuild,v 1.2 2009/02/14 06:31:17 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/soundkonverter/soundkonverter-0.3.9.ebuild,v 1.2 2009/05/14 04:58:31 ssuominen Exp $
 
-ARTS_REQUIRED="never"
-
-EAPI="1"
-
-inherit kde eutils
+EAPI=1
+ARTS_REQUIRED=never
+inherit autotools flag-o-matic kde
 
 DESCRIPTION="SoundKonverter: A frontend to various audio converters for KDE."
 HOMEPAGE="http://kde-apps.org/content/show.php?content=29024"
@@ -17,30 +15,32 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="ffmpeg flac mp3 musepack vorbis"
 
-DEPEND=">=media-libs/taglib-1.4
-	>=media-sound/cdparanoia-3.9.8-r5"
+DEPEND="media-libs/taglib
+	media-sound/cdparanoia"
 RDEPEND="${DEPEND}
-	mp3? ( >=media-sound/lame-3.96 )
-	vorbis? ( >=media-sound/vorbis-tools-1 )
-	flac? ( >=media-libs/flac-1.1.1 )
-	ffmpeg? ( >=media-video/ffmpeg-0.4.8 )
-	musepack? ( >=media-sound/musepack-tools-1.15u )"
+	mp3? ( media-sound/lame )
+	vorbis? ( media-sound/vorbis-tools )
+	flac? ( media-libs/flac )
+	ffmpeg? ( media-video/ffmpeg )
+	musepack? ( media-sound/musepack-tools )"
 
 need-kde 3.5
 
-PATCHES=(
-	"${FILESDIR}/${PN}-0.3.6-gcc43.patch"
-	"${FILESDIR}/soundkonverter-0.3.8-desktop-file.diff"
-	)
+PATCHES=( "${FILESDIR}/${P}-desktop_entry.patch" "${FILESDIR}/${P}-gcc44.patch" )
+
+src_unpack() {
+	kde_src_unpack
+	rm -f "${S}"/configure
+}
 
 src_compile() {
 	append-flags -fno-inline
 	local myconf="--without-mp4v2"
-	kde_src_compile || die "kde_src_compile failed."
+	kde_src_compile
 }
 
 src_install() {
-	kde_src_install || die "kde_src_install failed."
+	kde_src_install
 	mv "${D}"/usr/share/doc/HTML "${D}"/usr/share/doc/${PF}/html
 }
 
