@@ -1,10 +1,8 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/farsight2/farsight2-0.0.9.ebuild,v 1.1 2009/05/10 21:06:20 ford_prefect Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/farsight2/farsight2-0.0.9.ebuild,v 1.3 2009/05/14 01:23:39 tester Exp $
 
 EAPI="2"
-
-inherit virtualx
 
 DESCRIPTION="Farsight2 is an audio/video conferencing framework specifically designed for Instant Messengers."
 HOMEPAGE="http://farsight.freedesktop.org/"
@@ -26,18 +24,13 @@ COMMONDEPEND=">=media-libs/gstreamer-0.10.22
 
 RDEPEND="${COMMONDEPEND}
 	>=media-libs/gst-plugins-good-0.10.11
-	>=media-libs/gst-plugins-bad-0.10.11
-	>=media-plugins/gst-plugins-farsight-0.12.10"
+	>=media-libs/gst-plugins-bad-0.10.11"
 
 DEPEND="${COMMONDEPEND}
 	dev-util/pkgconfig"
 
 src_configure() {
 	econf $(use_enable python)
-}
-
-src_test() {
-	Xemake check || die "emake check failed!"
 }
 
 src_install() {
