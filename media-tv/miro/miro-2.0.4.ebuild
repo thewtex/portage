@@ -28,7 +28,6 @@ RDEPEND=">=dev-python/pygtk-2.10
 	>=dev-python/pyrex-0.9.6.4
 	media-gfx/imagemagick
 	media-libs/xine-lib[aac]
-	media-plugins/gst-plugins-faad
 	|| ( =net-libs/rb_libtorrent-0.13
 		>=net-libs/rb_libtorrent-0.14[python] )
 	dev-python/gst-python
