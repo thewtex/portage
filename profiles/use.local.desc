@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4443 2009/05/14 04:47:56 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4447 2009/05/15 05:27:47 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -1354,8 +1354,6 @@ media-libs/gst-plugins-bad:libmms - Enables support for accessing Microsoft Medi
 media-libs/gst-plugins-bad:mythtv - Enables support for retrieval from media-tv/mythtv backend via gmyth
 media-libs/gst-plugins-bad:neon - Enables support for HTTP and WebDAV client library via neon
 media-libs/gst-plugins-bad:twolame - Enables support for MPEG Audio Layer 2 encoder via twolame
-media-libs/gst-plugins-base:libvisual - Build libvisual plug-in
-media-libs/gst-plugins-base:pango - Build pango plug-in
 media-libs/libass:enca - Enables support for charset discovery and conversion.
 media-libs/libcanberra:alsa - Enables ALSA sound driver.
 media-libs/libcanberra:gstreamer - Enables gstreamer sound driver. Not useful when alsa or pulseaudio is available.
@@ -1526,16 +1524,16 @@ media-sound/moc:sid - Build with SID (Commodore 64 Audio) support
 media-sound/mp3blaster:sid - Build with SID (Commodore 64 Audio) support
 media-sound/mp3splt-gtk:audacious - Include media-sound/audacious support
 media-sound/mpd:cdio - Use libcdio for CD support
+media-sound/mpd:cue - Support CUE Sheet Parser Library
 media-sound/mpd:curl - Support for web stream listening
 media-sound/mpd:fifo - Support writing audio to a FIFO
 media-sound/mpd:fluidsynth - Enables Fluidsynth MIDI software synthesis
-media-sound/mpd:gprof - Build with profiling support
-media-sound/mpd:http-stream - Support streaming via built-in HTTP server
 media-sound/mpd:icecast - Support for Icecast2 streaming
 media-sound/mpd:id3 - Support for ID3 tags
 media-sound/mpd:lame - Support for MP3 streaming via Icecast2
 media-sound/mpd:lastfmradio - Support listening to last.fm radio stations
 media-sound/mpd:libmms - Support for Microsoft Media Server (MMS) streams via libmms
+media-sound/mpd:network - Enables network streaming support
 media-sound/mpd:pipe - Support writing audio to a pipe
 media-sound/mpd:sid - Build with SID (Commodore 64 Audio) support
 media-sound/mpd:zip - Support for ZIP files
@@ -2262,6 +2260,7 @@ net-misc/kvpnc:cisco - Adds support for Cisco client
 net-misc/mediatomb:libextractor - Use libextractor to gather files' metadata.
 net-misc/mediatomb:mysql -  Use dev-db/mysql as backend rather than SQLite3. If this USE flag is disabled, dev-db/sqlite is used in its stead. 
 net-misc/mediatomb:taglib -  Use media-libs/taglib for reading files' metadata rather than id3lib. If this USE flag is disabled media-libs/id3lib is used in its stead. 
+net-misc/memcached:slabs-reassign - Allow manual reassignment of memory slabs at the cost of slab optimizations.
 net-misc/neon:pkcs11 - Add support PKCS11 support
 net-misc/networkmanager:connection-sharing - Use net-dns/dnsmasq and net-firewall/iptables for connection sharing 
 net-misc/networkmanager:dhclient - Use dhclient from net-misc/dhcp for getting ip.
@@ -2321,6 +2320,7 @@ net-misc/vnc:xorgmodule - Build the Xorg module
 net-misc/vpnc:hybrid-auth - Enable hybrid authentication (certificates), only if not redistributed as compiled binary
 net-misc/vpnc:resolvconf - Enable support for DNS managing framework net-dns/resolvconf
 net-misc/wicd:ioctl - Installs additional python libraries to use as a backend. This will improve speed but is experimental.
+net-misc/wicd:ncurses - Installs a ncurses UI
 net-misc/x2goserver:fuse - Use sys-fs/sshfs-fuse to allow shared folders
 net-misc/xsupplicant:eap-sim - Add support for EAP-SIM authentication algorithm
 net-misc/yaydl:soundextract - Extract the soundtracks of the downloaded videos

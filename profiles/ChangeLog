@@ -1,10 +1,24 @@
 # ChangeLog for profile directory
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.2655 2009/05/13 04:08:24 darkside Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.2659 2009/05/15 05:19:27 ssuominen Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  15 May 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Remove GStreamer mask which was invalid. Moved the GStreamer porting to
+  monolithic with new eclass moved to my overlay.
+
+  14 May 2009; Ben de Groot <yngwin@gentoo.org> package.mask:
+  Remove qt masks since these ebuilds are no longer in the tree
+
+  14 May 2009; Gilles Dartiguelongue <eva@gentoo.org> package.mask:
+  Masking gnome-base/libghttp for removal
+
+  14 May 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask lastrm-ripper for removal wrt #263804 because it doesn't work with
+  current LastFM API.
 
   13 May 2009; Jeremy Olexa <darkside@gentoo.org> package.mask:
   clean up p.mask for recent removals from tree
