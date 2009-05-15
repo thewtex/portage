@@ -1,5 +1,5 @@
-~x11-libs/qt-core-4.5.1[debug=,qt3support] ~x11-libs/qt-gui-4.5.1[accessibility=,debug=,qt3support] ~x11-libs/qt-sql-4.5.1[debug=,qt3support]
-~x11-libs/qt-core-4.5.1[debug=,qt3support] ~x11-libs/qt-gui-4.5.1[accessibility=,debug=,qt3support] ~x11-libs/qt-sql-4.5.1[debug=,qt3support]
+~x11-libs/qt-core-4.5.1[debug=,qt3support] ~x11-libs/qt-gui-4.5.1[accessibility=,debug=,qt3support] ~x11-libs/qt-sql-4.5.1[debug=,qt3support] phonon? ( || ( ~x11-libs/qt-phonon-4.5.1[debug=] media-sound/phonon[gstreamer] ) )
+~x11-libs/qt-core-4.5.1[debug=,qt3support] ~x11-libs/qt-gui-4.5.1[accessibility=,debug=,qt3support] ~x11-libs/qt-sql-4.5.1[debug=,qt3support] phonon? ( || ( ~x11-libs/qt-phonon-4.5.1[debug=] media-sound/phonon[gstreamer] ) )
 4
 http://download.qtsoftware.com/qt/source/qt-x11-opensource-src-4.5.1.tar.bz2
 
@@ -10,7 +10,7 @@ The Qt3 support module for the Qt toolkit
 eutils flag-o-matic multilib portability qt4-build toolchain-funcs versionator
 +accessibility phonon custom-cxxflags debug pch
 
-phonon? ( || ( ~x11-libs/qt-phonon-4.5.1[debug=] media-sound/phonon[gstreamer] ) )
+
 
 2
 

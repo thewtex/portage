@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.9798 2009/05/13 18:29:27 mpagano Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.9804 2009/05/15 05:19:27 ssuominen Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -31,6 +31,18 @@
 
 #--- END OF EXAMPLES ---
 
+# Gilles Dartiguelongue <eva@gentoo.org> (15 May 2009)
+# Masked for removal wrt bug #244128. Old, rotten and
+# unused. Removal in 30 days.
+gnome-base/libghttp
+
+# Samuli Suominen <ssuominen@gentoo.org> (14 May 2009)
+# Masked for removal wrt #263804, doesn't work with current
+# LastFM API and upstream has went missing. The package
+# needs new upstream, or we end up maintaining a huge
+# patchset for it.
+media-sound/lastfm-ripper
+
 # Mike Pagano <mpagano@gentoo.org> (13 May 2009)
 # Masked for testing of ~ (tilde) unmasked packages
 >=app-portage/portpeek-1.8
@@ -50,7 +62,7 @@ sys-fs/aufs2
 # Highlights:
 # Colour management support
 # PNG support for pdftohtml
-# Annotations support got better 
+# Annotations support got better
 =app-text/poppler-utils-0.11*
 =dev-libs/poppler-qt3-0.11*
 =dev-libs/poppler-qt4-0.11*
@@ -109,24 +121,6 @@ x11-apps/xplsprinters
 x11-apps/xprehashprinterlist
 x11-libs/libXprintAppUtil
 x11-libs/libXprintUtil
-
-# Markos Chandras <hwoarang@gentoo.org> (08 May 2009)
-# Pending removal in 15 days.
-=x11-libs/qt-4.5.0
-=x11-libs/qt-assistant-4.5.0*
-=x11-libs/qt-core-4.5.0*
-=x11-libs/qt-dbus-4.5.0*
-=x11-libs/qt-demo-4.5.0*
-=x11-libs/qt-gui-4.5.0*
-=x11-libs/qt-opengl-4.5.0*
-=x11-libs/qt-phonon-4.5.0*
-=x11-libs/qt-qt3support-4.5.0*
-=x11-libs/qt-script-4.5.0*
-=x11-libs/qt-sql-4.5.0*
-=x11-libs/qt-svg-4.5.0*
-=x11-libs/qt-test-4.5.0*
-=x11-libs/qt-webkit-4.5.0*
-=x11-libs/qt-xmlpatterns-4.5.0*
 
 # Mark Loeser <halcy0n@gentoo.org> (6 May 2009)
 # Masked for testing
@@ -379,10 +373,6 @@ virtual/perl-IO-Compress
 # >www-plugins/mozilla-weaver-0.2.104 needs masked versions of ff (ie. 3.1_beta)
 >www-plugins/mozilla-weave-0.2.104
 
-# Torsten Veller <tove@gentoo.org> (15 Apr 2009)
-# Mask net-mail/gotmail for removal (#266204)
-net-mail/gotmail
-
 # Christoph Mende <angelos@unkreativ.org> (14 Apr 2009)
 # Masked media-sound/mpd pre-releases
 =media-sound/mpd-0.15*
@@ -457,12 +447,6 @@ net-libs/libinfinity
 # Comments on bug 253878 - removed in 30 days.
 app-shells/bash-completion-config
 
-# Michael Sterrett <mr_bones_@gentoo.org> (06 Apr 2009)
-# Masked for removal in 30 days.
-# Doesn't work with the latest versions of dev-util/scons.
-# Last release in 2006.  Removal approved by Gentoo KDE team.
-kde-misc/kleansweep
-
 # Paul Varner <fuzzyray@gentoo.org> (06 Apr 2009)
 # Dead upstream and has issues with newer portages.
 # Due to popular demand and no suitable replacement, it will stay in the tree
@@ -483,8 +467,8 @@ app-portage/udept
 app-text/tetex
 
 # Tony Vroon <chainsaw@gentoo.org> (30 Mar 2009)
-# The v4 branch of DHCP has a new build system and a "minimal" dhclient-only 
-# build is not yet supported. The IPv6 support seems a bit rough at the edges 
+# The v4 branch of DHCP has a new build system and a "minimal" dhclient-only
+# build is not yet supported. The IPv6 support seems a bit rough at the edges
 # as well. As such, this is for the adventurous only.
 # Bug reports are welcome if they carry patches.
 >=net-misc/dhcp-4.0.0
@@ -498,13 +482,6 @@ app-text/tetex
 # Upstream is very unresponsive and we had to guess at which kernel patch was
 # needed. May not work and/or may be harmful. You have been warned.
 sys-apps/sreadahead
-
-# Ben de Groot <yngwin@gentoo.org> (27 Mar 2009)
-# Scheduled for removal. Just masking now, to make sure there are no problems
-# Everyone should be using qt-3.3.8b-r1 by now
-=x11-libs/qt-3.3.8-r4
-=dev-db/qt-unixODBC-3.3.8
-=x11-libs/qt-embedded-3.3.8
 
 # Peter Alfredsen <loki_val@gentoo.org> (27 Mar 2009)
 # Breaks compilation of KDE4 packages - bug 263823
@@ -771,18 +748,6 @@ dev-util/w32api
 # Masked due to being broken with portage 2.1 and 2.2.
 # Users can use either the unstable versions or switch to app-portage/eix
 =app-portage/esearch-0.7.1
-
-# Samuli Suominen <ssuominen@gentoo.org> (24 Dec 2008)
-# - drop .la files (and static libs)
-# - monolithic version, EAPI=2, commented versions for new devs
-# Talk with the actual gstreamer team before unmasking these -
-# we are completely against the notion of monolithic versions, these
-# here should be considered an experimentation
-=media-libs/gstreamer-0.10.21-r10
-=media-libs/gst-plugins-good-0.10.11-r1
-=media-libs/gst-plugins-bad-0.10.9-r1
-=media-libs/gst-plugins-ugly-0.10.10-r1
-=media-libs/gst-plugins-base-0.10.21-r1
 
 # Jeremy Olexa <darkside@gentoo.org> (20 Dec 2008)
 # Removed in 60 days, multiple bugs - does not compile with recent kernels.
