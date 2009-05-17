@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4447 2009/05/15 05:27:47 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4452 2009/05/16 14:47:48 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -473,11 +473,13 @@ app-text/texlive:context - Add support for the ConTeXt format (dev-texlive/texli
 app-text/texlive:cyrillic - Add support for Cyrillic (dev-texlive/texlive-langcyrillic)
 app-text/texlive:detex - Add support for dev-tex/detex, a filter program that removes the LaTeX (or TeX) control sequences
 app-text/texlive:dvi2tty - Add support for dev-tex/dvi2tty to preview dvi-files on text-only devices
+app-text/texlive:dvipdfm - Add support for app-text/dvipdfm to convert DVI files to PDF
 app-text/texlive:extra - Add support for extra TeXLive packages
 app-text/texlive:games - Add typesetting support for games (chess, etc.) (dev-texlive/texlive-games)
 app-text/texlive:graphics - Add support for several graphics packages (pgf, tikz,...)
 app-text/texlive:humanities - Add LaTeX support for the humanities (dev-texlive/texlive-humanities)
 app-text/texlive:jadetex - Add support for app-text/jadetex (for processing tex files produced by the TeX backend of Jade)
+app-text/texlive:latex3 - Add support for LaTeX3 (dev-texlive/texlive-latex3)
 app-text/texlive:music - Add support for music typesetting (dev-texlive/texlive-music)
 app-text/texlive:omega - Add omega packages (dev-texlive/texlive-omega)
 app-text/texlive:pstricks - Add pstricks packages (dev-texlive/texlive-pstricks)
@@ -570,19 +572,6 @@ dev-java/ant:log4j - Enable Apache log4j Ant tasks
 dev-java/ant:oro - Enable Apache Oro Ant tasks
 dev-java/ant:regexp - Enable Apache Regexp Ant tasks
 dev-java/ant:resolver - Enable Apache Resolver Ant tasks
-dev-java/ant-tasks:antlr - Enable ANTLR Ant tasks
-dev-java/ant-tasks:bcel - Enable bcel (bytecode manipulation) Ant tasks
-dev-java/ant-tasks:commonslogging - Enable commons-logging Ant tasks
-dev-java/ant-tasks:commonsnet - Enable commons-net Ant tasks
-dev-java/ant-tasks:jai - Enable JAI (Java Imaging) Ant task
-dev-java/ant-tasks:javamail - Enable JavaMail Ant task
-dev-java/ant-tasks:jdepend - Enable Jdepend Ant tasks
-dev-java/ant-tasks:jmf - Enable JMF (Java Media Framework) Ant tasks
-dev-java/ant-tasks:jsch - Disable Jsch (ssh, scp and related) Ant tasks
-dev-java/ant-tasks:log4j - Enable Apache log4j Ant tasks
-dev-java/ant-tasks:oro - Enable Apache Oro Ant tasks
-dev-java/ant-tasks:regexp - Enable Apache Regexp Ant tasks
-dev-java/ant-tasks:resolver - Enable Apache Resolver Ant tasks
 dev-java/antlr:gunit -  gUnit is a "Unit Test" framework for ANTLR grammars 
 dev-java/antlr:script - Install a script to run antlr
 dev-java/avalon-logkit:javamail - Enable support for javamail
@@ -1349,7 +1338,6 @@ media-libs/glide-v3:voodoo1 - Support 3DFX Voodoo1 video cards
 media-libs/glide-v3:voodoo2 - Support 3DFX Voodoo2 video cards
 media-libs/glide-v3:voodoo5 - Support 3DFX Voodoo4 and Voodoo5 video cards
 media-libs/gst-plugins-bad:amrwb - Enables support for Adaptive Multi-Rate Audio support (Wide Band) via amrwb
-media-libs/gst-plugins-bad:gsm - Enables support for the gsm lossy speech compression codec via libgsm
 media-libs/gst-plugins-bad:libmms - Enables support for accessing Microsoft Media Server (MMS) media streaming protocol via libmms
 media-libs/gst-plugins-bad:mythtv - Enables support for retrieval from media-tv/mythtv backend via gmyth
 media-libs/gst-plugins-bad:neon - Enables support for HTTP and WebDAV client library via neon
@@ -1368,7 +1356,6 @@ media-libs/libsdl:audio - Control audio support (disable at your own risk)
 media-libs/libsdl:joystick - Control joystick support (disable at your own risk)
 media-libs/libsdl:video - Control video support (disable at your own risk)
 media-libs/libvorbis:aotuv - Applies the aoTuV patches. Aoyumi's Tuned Vorbis is a third-party patchset that improves the vorbis encoding quality. A previous version of the aoTuV patchset has already been merged with the official libvorbis release. The current patchset especially improves encoding quality at low bitrate settings, and is very likely to be merged at some point in the future. It is recommended that all users enable this useflag. 
-media-libs/mediastreamer:gsm - Enables support for the gsm lossy speech compression codec
 media-libs/mediastreamer:ilbc - Use of iLBC (RFC3951) codec plugin
 media-libs/mediastreamer:video - Enable video support
 media-libs/mesa:pic - disable optimized assembly code that is not PIC friendly
@@ -1421,7 +1408,6 @@ media-plugins/audacious-plugins:scrobbler - Build with scrobbler/LastFM submissi
 media-plugins/audacious-plugins:sid - Build with SID (Commodore 64 Audio) support
 media-plugins/audacious-plugins:tta - Build with TTA (True-Audio Loseless) support
 media-plugins/audacious-plugins:wma - Build with WMA (Windows Media Audio) support
-media-plugins/gst-plugins-farsight:gsm - Support for the gsm lossy speech compression library
 media-plugins/gst-plugins-meta:mythtv - Support for retrieval from media-tv/mythtv backend
 media-plugins/kipi-plugins:linguas_zn_CN - Add zn_CN lingua suppport
 media-plugins/kipi-plugins:mjpeg - Add mjpeg suppport
@@ -2061,7 +2047,6 @@ net-im/ejabberd:mod_irc - Irc support in ejabberd
 net-im/ejabberd:mod_muc - Multi user chat support in ejabberd
 net-im/ejabberd:mod_pubsub - Pubsub support in ejabberd
 net-im/ejabberd:web - Web support in ejabberd
-net-im/ekg2:gsm - Enable gsm plugin
 net-im/ekg2:nogg - Disable Gadu-Gadu plugin
 net-im/empathy:applet - Enable Empathy's applets for gnome-base/gnome-panel.
 net-im/gajim:idle - Enable idle module
@@ -2119,7 +2104,6 @@ net-irc/ezbounce:boost - Compile against dev-libs/boost libraries
 net-irc/inspircd:openssl - Build dev-libs/openssl module
 net-irc/ircd-hybrid:contrib - Build contrib modules (eg. cloaking)
 net-irc/kvirc:dcc_voice - Support voice over DCC chats
-net-irc/kvirc:gsm - enable support for media-sound/gsm
 net-irc/kvirc:ipc - add support for IPC between kvirc processes
 net-irc/kvirc:phonon - use phonon instead of command-based sound
 net-irc/kvirc:qt-dbus - enable use of Qt's DBUS interface for IPC
@@ -2417,9 +2401,7 @@ net-proxy/sshproxy:client-only - Install only the client wrappers
 net-proxy/tinyproxy:transparent-proxy - Enables support for transparent proxies
 net-proxy/tsocks:tordns -  Apply tordns patch which allows transparent TORification of the DNS queries 
 net-voip/linphone:console - Build console interface
-net-voip/linphone:gsm - Include support for the gsm audio codec
 net-voip/linphone:video - Enable video support (display/capture)
-net-voip/yate:gsm - Build gsm codec plugin
 net-voip/yate:h323 - Build H.323 Channel plugin
 net-voip/yate:ilbc - Build ILBC codec plugin
 net-voip/yate:zaptel - Build zaptel Channel plugin
