@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/libproxy/libproxy-0.2.3.ebuild,v 1.2 2009/05/06 21:57:34 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/libproxy/libproxy-0.2.3.ebuild,v 1.5 2009/05/14 21:29:32 eva Exp $
 
 EAPI="2"
 
@@ -12,7 +12,7 @@ SRC_URI="http://${PN}.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~x86"
+KEYWORDS="~alpha ~amd64 ~hppa ~x86"
 IUSE="gnome kde networkmanager python webkit xulrunner"
 
 RDEPEND="
@@ -43,6 +43,12 @@ src_prepare() {
 
 	# http://bugs.gentoo.org/show_bug.cgi?id=259178
 	epatch "${FILESDIR}/${P}-fix-libxul-cflags.patch"
+
+	# Fix implicit declaration QA, bug #268546
+	epatch "${FILESDIR}/${P}-implicit-declaration.patch"
+
+	# Fix test to follow POSIX (for x86-fbsd)
+	sed -e 's/\(test.*\)==/\1=/g' -i configure.ac configure || die "sed failed"
 
 	eautoreconf
 }
