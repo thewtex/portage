@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-plugins/mozilla-weave/mozilla-weave-0.3.0.ebuild,v 1.1 2009/04/15 22:47:28 volkmar Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-plugins/mozilla-weave/mozilla-weave-0.3.0.ebuild,v 1.3 2009/05/16 14:01:31 volkmar Exp $
 
 EAPI="2"
 
@@ -16,10 +16,10 @@ SRC_URI="http://hg.mozilla.org/labs/${MY_PN}/index.cgi/archive/${PV}.tar.gz
 
 LICENSE="|| ( MPL-1.1 GPL-2 LGPL-2.1 )"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~x86"
 IUSE=""
 
-RDEPEND=">=www-client/mozilla-firefox-bin-3.1_beta
+RDEPEND=">=www-client/mozilla-firefox-bin-3.1_beta3
 	net-libs/xulrunner:1.9
 	>=dev-libs/nss-3.12
 	>=dev-libs/nspr-4.7.1"
@@ -27,12 +27,10 @@ DEPEND="${RDEPEND}"
 
 S=${WORKDIR}/${MY_P}
 
-# TODO: KEYWORDS is empty because it needs to be tested for amd64 and x86 (bin)
-
 # NOTES:
 # there are tests but they don't break the build if not working
-# thunderbird and fennec are in install.rdf
-# mozilla-firefox-3.1_beta is not in the tree atm
+# thunderbird and fennec are listed in install.rdf
+# mozilla-firefox-3.{1,5} (not -bin) is not in the tree atm
 
 src_prepare() {
 	# we want to use system nss and nspr
