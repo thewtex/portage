@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/limit/limit-1.14.10_pre20070618.ebuild,v 1.6 2009/05/05 17:07:21 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/limit/limit-1.14.10_pre20070618.ebuild,v 1.7 2009/05/16 20:58:16 ulm Exp $
 
 inherit elisp versionator
 
@@ -9,7 +9,7 @@ MY_PV[4]="1057"
 MY_P="${PN}-${MY_PV[0]}_${MY_PV[1]}-${MY_PV[3]#pre}${MY_PV[4]}"
 
 DESCRIPTION="Library about Internet Message, for IT generation"
-HOMEPAGE="http://pure.fan.gr.jp/simm/?MyWorks"
+HOMEPAGE="http://cvs.m17n.org/elisp/FLIM/"
 SRC_URI="http://www.jpl.org/ftp/pub/m17n/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
@@ -18,11 +18,11 @@ KEYWORDS="alpha amd64 ppc sparc x86"
 IUSE=""
 
 DEPEND=">=app-emacs/apel-10.3"
-RDEPEND="!app-emacs/flim
-	${DEPEND}"
+RDEPEND="${DEPEND}
+	!app-emacs/flim"
 
 S="${WORKDIR}/${MY_P}"
-SITEFILE=60flim-gentoo.el
+SITEFILE="60flim-gentoo.el"
 
 src_compile() {
 	emake PREFIX="${D}/usr" \
@@ -36,7 +36,7 @@ src_install() {
 		VERSION_SPECIFIC_LISPDIR="${D}/${SITELISP}" install \
 		|| die "emake install failed"
 
-	elisp-site-file-install "${FILESDIR}/${SITEFILE}"
+	elisp-site-file-install "${FILESDIR}/${SITEFILE}" || die
 
 	dodoc FLIM-API.en NEWS VERSION README* ChangeLog || die "dodoc failed"
 }

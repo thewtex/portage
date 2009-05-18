@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/libsoup/libsoup-2.26.1.ebuild,v 1.2 2009/05/07 10:05:28 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/libsoup/libsoup-2.26.1.ebuild,v 1.9 2009/05/15 19:15:50 klausman Exp $
 
 EAPI="2"
 
@@ -11,7 +11,7 @@ HOMEPAGE="http://www.gnome.org/"
 
 LICENSE="LGPL-2"
 SLOT="2.4"
-KEYWORDS="~amd64 ~hppa ~x86"
+KEYWORDS="alpha ~amd64 ~hppa ~sparc ~x86 ~x86-fbsd"
 # Do NOT build with --disable-debug/--enable-debug=no - gnome2.eclass takes care of that
 IUSE="debug doc gnome ssl"
 
@@ -37,4 +37,12 @@ pkg_setup() {
 		--disable-static
 		$(use_with gnome)
 		$(use_enable ssl)"
+}
+
+src_prepare() {
+	gnome2_src_prepare
+
+	# Fix test to follow POSIX (for x86-fbsd)
+	# No patch to prevent having to eautoreconf
+	sed -e 's/\(test.*\)==/\1=/g' -i configure.in configure || die "sed failed"
 }
