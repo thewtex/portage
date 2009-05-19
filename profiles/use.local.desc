@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4423 2009/05/06 18:07:59 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4452 2009/05/16 14:47:48 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -15,6 +15,7 @@
 # Test for commit block
 app-accessibility/brltty:icu - Adds unicode support using dev-libs/icu
 app-accessibility/festival:mbrola - Adds support for mbrola voices
+app-accessibility/festival-it:mbrola - Adds support for mbrola voices
 app-accessibility/freetts:jsapi - build Java Speech API (JSAPI)
 app-accessibility/freetts:mbrola - Adds support for mbrola voices
 app-accessibility/gnome-speech:espeak - Adds support for the espeak speech driver (default)
@@ -237,6 +238,9 @@ app-emulation/mol:sheep - Support for the sheep net driver
 app-emulation/open-vm-tools:unity - Enable host unity support
 app-emulation/pearpc:jit - Use the JITC-x86 CPU
 app-emulation/point2play:emerald - For people who are in the Transgaming Emerald Club
+app-emulation/q4wine:development -  Enable developer related stuff
+app-emulation/q4wine:icotools -  Enable icotools support
+app-emulation/q4wine:winetools -  Enable winetools support
 app-emulation/qemu-softmmu:alsa - Enable alsa output for sound emulation
 app-emulation/qemu-softmmu:esd - Enable esound output for sound emulation
 app-emulation/qemu-softmmu:gnutls - Enable TLS support for the VNC console server
@@ -394,7 +398,8 @@ app-misc/tracker:deskbar - Build gnome-extra/deskbar-applet plugin
 app-misc/tracker:gsf - Enable gnome-extra/libgsf based data extractor 
 app-misc/worker:avfs - Enable support for sys-fs/avfs
 app-misc/workrave:distribution - Enable networking. See http://www.workrave.org/features/
-app-mobilephone/gammu:irda - Enable infrared support
+app-mobilephone/gammu:dbi - Enables dev-db/libdbi support
+app-mobilephone/gammu:irda - Enables infrared support
 app-mobilephone/gnokii:ical - Enable support for dev-libs/libical
 app-mobilephone/gnokii:irda - Enable infrared support
 app-mobilephone/gnokii:sms - Enable SMS support (build smsd)
@@ -457,6 +462,10 @@ app-pda/synce:serial - Enable serial port support (installs app-pda/synce-serial
 app-pda/synce:syncengine - Installs the app-pda/synce-sync-engine
 app-pda/synce-kde:avantgo - Add support for syncing Avantgo accounts
 app-portage/conf-update:colordiff - Use colors when displaying diffs (app-misc/colordiff)
+app-portage/eix:doc - Create description of the eix cache file additionally in html format
+app-portage/eix:nls - Support foreign language messages (experimental; currently only de)
+app-portage/eix:sqlite - Compile in support for portage's sqlite backend; to actually use it you need additional configuration of portage and eix
+app-portage/eix:tools - Create separate binary for script helper tools (currently only: versionsort); useful if they are called extremely often
 app-portage/gatt:libpaludis - Do some dependency resolution by using a sys-apps/paludis interface
 app-portage/layman:git - Support dev-util/git based overlays
 app-portage/portato:etc-proposals - Use app-portage/etc-proposals for updating CONFIG_PROTECTed stuff
@@ -494,11 +503,13 @@ app-text/texlive:context - Add support for the ConTeXt format (dev-texlive/texli
 app-text/texlive:cyrillic - Add support for Cyrillic (dev-texlive/texlive-langcyrillic)
 app-text/texlive:detex - Add support for dev-tex/detex, a filter program that removes the LaTeX (or TeX) control sequences
 app-text/texlive:dvi2tty - Add support for dev-tex/dvi2tty to preview dvi-files on text-only devices
+app-text/texlive:dvipdfm - Add support for app-text/dvipdfm to convert DVI files to PDF
 app-text/texlive:extra - Add support for extra TeXLive packages
 app-text/texlive:games - Add typesetting support for games (chess, etc.) (dev-texlive/texlive-games)
 app-text/texlive:graphics - Add support for several graphics packages (pgf, tikz,...)
 app-text/texlive:humanities - Add LaTeX support for the humanities (dev-texlive/texlive-humanities)
 app-text/texlive:jadetex - Add support for app-text/jadetex (for processing tex files produced by the TeX backend of Jade)
+app-text/texlive:latex3 - Add support for LaTeX3 (dev-texlive/texlive-latex3)
 app-text/texlive:music - Add support for music typesetting (dev-texlive/texlive-music)
 app-text/texlive:omega - Add omega packages (dev-texlive/texlive-omega)
 app-text/texlive:pstricks - Add pstricks packages (dev-texlive/texlive-pstricks)
@@ -594,19 +605,6 @@ dev-java/ant:log4j - Enable Apache log4j Ant tasks
 dev-java/ant:oro - Enable Apache Oro Ant tasks
 dev-java/ant:regexp - Enable Apache Regexp Ant tasks
 dev-java/ant:resolver - Enable Apache Resolver Ant tasks
-dev-java/ant-tasks:antlr - Enable ANTLR Ant tasks
-dev-java/ant-tasks:bcel - Enable bcel (bytecode manipulation) Ant tasks
-dev-java/ant-tasks:commonslogging - Enable commons-logging Ant tasks
-dev-java/ant-tasks:commonsnet - Enable commons-net Ant tasks
-dev-java/ant-tasks:jai - Enable JAI (Java Imaging) Ant task
-dev-java/ant-tasks:javamail - Enable JavaMail Ant task
-dev-java/ant-tasks:jdepend - Enable Jdepend Ant tasks
-dev-java/ant-tasks:jmf - Enable JMF (Java Media Framework) Ant tasks
-dev-java/ant-tasks:jsch - Disable Jsch (ssh, scp and related) Ant tasks
-dev-java/ant-tasks:log4j - Enable Apache log4j Ant tasks
-dev-java/ant-tasks:oro - Enable Apache Oro Ant tasks
-dev-java/ant-tasks:regexp - Enable Apache Regexp Ant tasks
-dev-java/ant-tasks:resolver - Enable Apache Resolver Ant tasks
 dev-java/antlr:gunit -  gUnit is a "Unit Test" framework for ANTLR grammars 
 dev-java/antlr:script - Install a script to run antlr
 dev-java/avalon-logkit:javamail - Enable support for javamail
@@ -1120,6 +1118,7 @@ gnome-extra/gnome-do-plugins:banshee - Enables the Banshee (media-sound/banshee)
 gnome-extra/gnome-games:artworkextra - Installs extra artwork for various games
 gnome-extra/gnome-lirc-properties:policykit - Use sys-auth/policykit to gain privileges to change configuration files
 gnome-extra/gnome-media:gnomecd - Builds the GNOME CD Player
+gnome-extra/gnome-media:sound - Adds support for sound notification themes using media-libs/libcanberra
 gnome-extra/gnome-power-manager:policykit - Enable sys-auth/policykit authentication support
 gnome-extra/gtkhtml:glade - Provide integration with dev-util/glade.
 gnome-extra/libgda:mdb - Enables Microsoft Access DB support
@@ -1127,7 +1126,9 @@ gnome-extra/libgda:xbase - Enables support for xbase databases (dBase, FoxPro, e
 gnome-extra/nautilus-sendto:balsa - Enables support for mail-client/balsa
 gnome-extra/nautilus-sendto:claws - Enables support for mail-client/claws
 gnome-extra/nautilus-sendto:eds - Enables support for evolution-sendto using gnome-extra/evolution-data-server
+gnome-extra/nautilus-sendto:empathy - Enables support for net-im/empathy
 gnome-extra/nautilus-sendto:gajim - Enables support for net-im/gajim
+gnome-extra/nautilus-sendto:mail - Enables support for mailto using gnome-extra/evolution-data-server
 gnome-extra/nautilus-sendto:pidgin - Enables support for net-im/pidgin
 gnome-extra/nautilus-sendto:sylpheed - Enables support for mail-client/sylpheed
 gnome-extra/nautilus-sendto:thunderbird - Enables support for mail-client/mozilla-thunderbird
@@ -1198,7 +1199,6 @@ kde-base/kopete:irc - Enable the IRC protocol handler.
 kde-base/kopete:jabber - Enable XMPP protocol handler (this is also gmail).
 kde-base/kopete:latex - Embed latex formatted text into messages.
 kde-base/kopete:meanwhile - Enable the Sametime protocol handler.
-kde-base/kopete:messenger - Enable support for MSN and Windows live protocols (old implementation).
 kde-base/kopete:msn - Enable "Windows live messenger" protocol support.
 kde-base/kopete:netmeeting - Builds netmeeting plugin (require gnomemeeting)
 kde-base/kopete:nowlistening - Shows song you currently listen to in your status/etc. Bindings for many players.
@@ -1209,7 +1209,6 @@ kde-base/kopete:qq - enable support for the chinese network protocol.
 kde-base/kopete:sametime - Enables support for the Sametime protocol for instant messaging
 kde-base/kopete:sms - Enable the sms sending plugin.
 kde-base/kopete:statistics - Everybody loves statistic graphs, especialy cake ones. ;]
-kde-base/kopete:telepathy - Enable support for the realtime communication framework telepathy.
 kde-base/kopete:testbed - Enable the testbed protocol.
 kde-base/kopete:texteffect - Various fancy text effects for your messages (dont ever consider writing us with this enabled ;]).
 kde-base/kopete:translator - Translate incoming and outgoing messages.
@@ -1455,13 +1454,10 @@ media-libs/glide-v3:voodoo1 - Support 3DFX Voodoo1 video cards
 media-libs/glide-v3:voodoo2 - Support 3DFX Voodoo2 video cards
 media-libs/glide-v3:voodoo5 - Support 3DFX Voodoo4 and Voodoo5 video cards
 media-libs/gst-plugins-bad:amrwb - Enables support for Adaptive Multi-Rate Audio support (Wide Band) via amrwb
-media-libs/gst-plugins-bad:gsm - Enables support for the gsm lossy speech compression codec via libgsm
 media-libs/gst-plugins-bad:libmms - Enables support for accessing Microsoft Media Server (MMS) media streaming protocol via libmms
 media-libs/gst-plugins-bad:mythtv - Enables support for retrieval from media-tv/mythtv backend via gmyth
 media-libs/gst-plugins-bad:neon - Enables support for HTTP and WebDAV client library via neon
 media-libs/gst-plugins-bad:twolame - Enables support for MPEG Audio Layer 2 encoder via twolame
-media-libs/gst-plugins-base:libvisual - Build libvisual plug-in
-media-libs/gst-plugins-base:pango - Build pango plug-in
 media-libs/libass:enca - Enables support for charset discovery and conversion.
 media-libs/libcanberra:alsa - Enables ALSA sound driver.
 media-libs/libcanberra:gstreamer - Enables gstreamer sound driver. Not useful when alsa or pulseaudio is available.
@@ -1476,7 +1472,6 @@ media-libs/libsdl:audio - Control audio support (disable at your own risk)
 media-libs/libsdl:joystick - Control joystick support (disable at your own risk)
 media-libs/libsdl:video - Control video support (disable at your own risk)
 media-libs/libvorbis:aotuv - Applies the aoTuV patches. Aoyumi's Tuned Vorbis is a third-party patchset that improves the vorbis encoding quality. A previous version of the aoTuV patchset has already been merged with the official libvorbis release. The current patchset especially improves encoding quality at low bitrate settings, and is very likely to be merged at some point in the future. It is recommended that all users enable this useflag. 
-media-libs/mediastreamer:gsm - Enables support for the gsm lossy speech compression codec
 media-libs/mediastreamer:ilbc - Use of iLBC (RFC3951) codec plugin
 media-libs/mediastreamer:video - Enable video support
 media-libs/mesa:pic - disable optimized assembly code that is not PIC friendly
@@ -1524,11 +1519,11 @@ media-plugins/audacious-plugins:cdaudio - Enable cd audio playback support
 media-plugins/audacious-plugins:chardet - Try to handle non-UTF8 chinese/japanese/korean ID3 tags
 media-plugins/audacious-plugins:icecast - Support for Icecast2 streaming
 media-plugins/audacious-plugins:mtp - Build with Media Transfer Protocol music upload support
+media-plugins/audacious-plugins:projectm - Build with ProjectM visualization
 media-plugins/audacious-plugins:scrobbler - Build with scrobbler/LastFM submission support
 media-plugins/audacious-plugins:sid - Build with SID (Commodore 64 Audio) support
 media-plugins/audacious-plugins:tta - Build with TTA (True-Audio Loseless) support
 media-plugins/audacious-plugins:wma - Build with WMA (Windows Media Audio) support
-media-plugins/gst-plugins-farsight:gsm - Support for the gsm lossy speech compression library
 media-plugins/gst-plugins-meta:mythtv - Support for retrieval from media-tv/mythtv backend
 media-plugins/kipi-plugins:linguas_zn_CN - Add zn_CN lingua suppport
 media-plugins/kipi-plugins:mjpeg - Add mjpeg suppport
@@ -1644,16 +1639,16 @@ media-sound/moc:sid - Build with SID (Commodore 64 Audio) support
 media-sound/mp3blaster:sid - Build with SID (Commodore 64 Audio) support
 media-sound/mp3splt-gtk:audacious - Include media-sound/audacious support
 media-sound/mpd:cdio - Use libcdio for CD support
+media-sound/mpd:cue - Support CUE Sheet Parser Library
 media-sound/mpd:curl - Support for web stream listening
 media-sound/mpd:fifo - Support writing audio to a FIFO
 media-sound/mpd:fluidsynth - Enables Fluidsynth MIDI software synthesis
-media-sound/mpd:gprof - Build with profiling support
-media-sound/mpd:http-stream - Support streaming via built-in HTTP server
 media-sound/mpd:icecast - Support for Icecast2 streaming
 media-sound/mpd:id3 - Support for ID3 tags
 media-sound/mpd:lame - Support for MP3 streaming via Icecast2
 media-sound/mpd:lastfmradio - Support listening to last.fm radio stations
 media-sound/mpd:libmms - Support for Microsoft Media Server (MMS) streams via libmms
+media-sound/mpd:network - Enables network streaming support
 media-sound/mpd:pipe - Support writing audio to a pipe
 media-sound/mpd:sid - Build with SID (Commodore 64 Audio) support
 media-sound/mpd:zip - Support for ZIP files
@@ -1697,6 +1692,7 @@ media-sound/qtractor:rubberband - Enable support for in-place audio clip pitch-s
 media-sound/qtscrobbler:cli - Build commandline client
 media-sound/quodlibet:trayicon - Enable support for trayicon
 media-sound/quodlibet:tta - Enable TTA (True-Audio Loseless) support
+media-sound/quodlibet:wma - Enable support for Windows Media Audio
 media-sound/radiomixer:hwmixer - Use hardware mixer instead of internal mixer routines
 media-sound/rezound:16bittmp - Use 16bit temporary files (default 32bit float), useful for slower computers
 media-sound/rezound:soundtouch - compile with support for soundtouch
@@ -1713,6 +1709,7 @@ media-sound/sonata:lyrics - Support for lyrics fetching
 media-sound/songbird-bin:faac - Add faac support
 media-sound/songbird-bin:faad - Add faad support
 media-sound/songbird-bin:ugly - Add ugly support
+media-sound/sonata:trayicon - Enable support for trayicon
 media-sound/sonic-visualiser:id3tag - Enables ID3 tagging with id3tag library
 media-sound/sox:amrnb - Enables Adaptive Multi-Rate Audio support (Narrow Band)
 media-sound/sox:amrwb - Enables Adaptive Multi-Rate Audio support (Wide Band)
@@ -2207,7 +2204,6 @@ net-im/ejabberd:mod_irc - Irc support in ejabberd
 net-im/ejabberd:mod_muc - Multi user chat support in ejabberd
 net-im/ejabberd:mod_pubsub - Pubsub support in ejabberd
 net-im/ejabberd:web - Web support in ejabberd
-net-im/ekg2:gsm - Enable gsm plugin
 net-im/ekg2:nogg - Disable Gadu-Gadu plugin
 net-im/empathy:applet - Enable Empathy's applets for gnome-base/gnome-panel.
 net-im/gajim:idle - Enable idle module
@@ -2265,7 +2261,6 @@ net-irc/ezbounce:boost - Compile against dev-libs/boost libraries
 net-irc/inspircd:openssl - Build dev-libs/openssl module
 net-irc/ircd-hybrid:contrib - Build contrib modules (eg. cloaking)
 net-irc/kvirc:dcc_voice - Support voice over DCC chats
-net-irc/kvirc:gsm - enable support for media-sound/gsm
 net-irc/kvirc:ipc - add support for IPC between kvirc processes
 net-irc/kvirc:phonon - use phonon instead of command-based sound
 net-irc/kvirc:qt-dbus - enable use of Qt's DBUS interface for IPC
@@ -2314,7 +2309,10 @@ net-libs/libfwbuilder:bind - Use bind's name resolving library
 net-libs/libfwbuilder:stlport - Enagle support for STLport
 net-libs/libinfinity:server -  Build and install the server binary including init.d/conf.d-scripts. Needed if you want to host an infinote server for gobby. 
 net-libs/libpri:bri - Enable ISDN BRI support (bristuff)
-net-libs/libproxy:webkit - Enable support for net-libs/webkit-gtk.
+net-libs/libproxy:gnome - Enable support for reading proxy settings from GNOME using gnome-base/gconf
+net-libs/libproxy:kde - Enable support for reading proxy settings from KDE
+net-libs/libproxy:webkit - Enable support for reading proxy settings from net-libs/webkit-gtk
+net-libs/libproxy:xulrunner - Enable support for reading proxy settings from net-libs/xulrunner
 net-libs/libsrtp:aesicm - Use AES ICM cryptographic algorithm
 net-libs/libsrtp:console -  Use /dev/console instead of stdout for error messages 
 net-libs/libsrtp:syslog - Use syslog for error messages
@@ -2426,6 +2424,7 @@ net-misc/kvpnc:cisco - Adds support for Cisco client
 net-misc/mediatomb:libextractor - Use libextractor to gather files' metadata.
 net-misc/mediatomb:mysql -  Use dev-db/mysql as backend rather than SQLite3. If this USE flag is disabled, dev-db/sqlite is used in its stead. 
 net-misc/mediatomb:taglib -  Use media-libs/taglib for reading files' metadata rather than id3lib. If this USE flag is disabled media-libs/id3lib is used in its stead. 
+net-misc/memcached:slabs-reassign - Allow manual reassignment of memory slabs at the cost of slab optimizations.
 net-misc/neon:pkcs11 - Add support PKCS11 support
 net-misc/netbrake:httpfs - Enable the HTTP filesystem support
 net-misc/networkmanager:connection-sharing - Use net-dns/dnsmasq and net-firewall/iptables for connection sharing 
@@ -2440,7 +2439,6 @@ net-misc/nxserver-freenx:nxclient - Allow to install net-misc/nxclient in parall
 net-misc/oidentd:masquerade - Enable support for masqueraded/NAT connections
 net-misc/openlldp:libpcap - Enable the use of PCAP/DNET instead of native handler
 net-misc/openssh:X509 - Adds support for X.509 certificate authentication
-net-misc/openssh:chroot - Enable chrooting support
 net-misc/openssh:hpn - Enable high performance ssh
 net-misc/openssh:ldap - Add support for storing SSH public keys in LDAP
 net-misc/openssh:pkcs11 - Enable PKCS#11 smartcard support
@@ -2482,13 +2480,16 @@ net-misc/tigervnc:server - Build TigerVNC server
 net-misc/tigervnc:xorgmodule - Build the Xorg module
 net-misc/tightvnc:server - Build vncserver. Allows us to only build server on one machine if set, build only viewer otherwise.
 net-misc/tor:bundledlibevent - USE bundled libevent for asynchronous DNS requests (provides a tiny bit more anonymity)
+net-misc/vinagre:applet - Enable vinagre applet for gnome-base/gnome-panel.
 net-misc/vnc:server - Build VNC server
 net-misc/vnc:xorgmodule - Build the Xorg module
 net-misc/vpnc:hybrid-auth - Enable hybrid authentication (certificates), only if not redistributed as compiled binary
 net-misc/vpnc:resolvconf - Enable support for DNS managing framework net-dns/resolvconf
 net-misc/wicd:ioctl - Installs additional python libraries to use as a backend. This will improve speed but is experimental.
+net-misc/wicd:ncurses - Installs a ncurses UI
 net-misc/x2goserver:fuse - Use sys-fs/sshfs-fuse to allow shared folders
-net-misc/xsupplicant:gsm - Add support for EAP-SIM authentication algorithm
+net-misc/xsupplicant:eap-sim - Add support for EAP-SIM authentication algorithm
+net-misc/yaydl:soundextract - Extract the soundtracks of the downloaded videos
 net-misc/zaptel:astribank - Install Xorcom Astribank utilities
 net-misc/zaptel:bri - Enable ISDN BRI support (bristuff)
 net-misc/zaptel:ecaggressive - Make the mark2 echo canceller a little more aggressive
@@ -2582,9 +2583,7 @@ net-proxy/sshproxy:client-only - Install only the client wrappers
 net-proxy/tinyproxy:transparent-proxy - Enables support for transparent proxies
 net-proxy/tsocks:tordns -  Apply tordns patch which allows transparent TORification of the DNS queries 
 net-voip/linphone:console - Build console interface
-net-voip/linphone:gsm - Include support for the gsm audio codec
 net-voip/linphone:video - Enable video support (display/capture)
-net-voip/yate:gsm - Build gsm codec plugin
 net-voip/yate:h323 - Build H.323 Channel plugin
 net-voip/yate:ilbc - Build ILBC codec plugin
 net-voip/yate:zaptel - Build zaptel Channel plugin
@@ -2842,7 +2841,6 @@ sys-apps/s390-tools:zfcpdump - build the kernel disk dumping utility
 sys-apps/shadow:audit - Enable support for sys-process/audit
 sys-apps/shadow:nousuid - When nousuid is enabled only su from the shadow package will be installed with the setuid bit (mainly for single user systems)
 sys-apps/smartmontools:minimal - Do not install the monitoring daemon and associated scripts.
-sys-apps/tinylogin:make-symlinks - Create all the appropriate symlinks in /bin and /sbin
 sys-apps/tuxonice-userui:fbsplash - Add support for framebuffer splash
 sys-apps/ucspi-ssl:tls - Add TLS support (see also http://www.suspectclass.com/~sgifford/ucspi-tls/)
 sys-apps/usbutils:network-cron - Monthly cronjob the update-usbids script
@@ -2906,6 +2904,7 @@ sys-cluster/pvfs2:server - Enable compilation of server code
 sys-cluster/torque:cpusets - Enable pbs_mom to utilize linux cpusets if available.
 sys-cluster/torque:server - Enable compilation of pbs_server and pbs_sched
 sys-cluster/vzctl:logrotate - Enable logrotate file installation
+sys-devel/binutils:gold - Use the new gold linker (written in C++) rather than the standard linker (this _will_ break things)
 sys-devel/binutils:multislot - Allow for multiple versions of binutils to be emerged at once for same CTARGET
 sys-devel/binutils:multitarget - Adds support to binutils for cross compiling (does not work with gas)
 sys-devel/binutils-hppa64:multislot - Allow for multiple versions of binutils to be emerged at once for same CTARGET
@@ -2915,6 +2914,7 @@ sys-devel/binutils-nios2:multitarget - Adds support to binutils for cross compil
 sys-devel/bison:liby - Install static liby
 sys-devel/gcc:d - Enable support for the D programming language
 sys-devel/gcc:fixed-point - Enable fixed-point arithmetic support for MIPS targets in gcc (Warning: significantly increases compile time!)
+sys-devel/gcc:graphite - Add support for the framework for loop optimizations based on a polyhedral intermediate representation
 sys-devel/gcc:ip28 - Enable building a compiler capable of building a kernel for SGI Indigo2 Impact R10000 (IP28)
 sys-devel/gcc:ip32r10k - Enable building a compiler capable of building an experimental kernel for SGI O2 w/ R1x000 CPUs (IP32)
 sys-devel/gcc:libffi - Build the portable foreign function interface library
@@ -2958,6 +2958,8 @@ sys-freebsd/freebsd-usbin:ipfilter - Enable building of ipfilter firewall suppor
 sys-freebsd/freebsd-usbin:ipsec - Enable IPSec support.
 sys-freebsd/freebsd-usbin:isdn - Enable ISDN support.
 sys-freebsd/freebsd-usbin:nat - Enable Network Address Translation support daemon.
+sys-fs/aufs2:debug - Enable additional debugging support
+sys-fs/aufs2:hinotify - Enable hinotify support
 sys-fs/cryptsetup:dynamic - Build cryptsetup dynamically
 sys-fs/ecryptfs-utils:gpg - Enable app-crypt/gnupg key module
 sys-fs/ecryptfs-utils:nss - Enable support for dev-libs/nss
@@ -3017,6 +3019,7 @@ sys-power/cpufreqd:pmu - Enable Power Management Unit plug-in
 sys-power/pm-utils:ntp - install support for net-misc/ntp
 sys-power/powerman:genders -  Add support for selecting power control targets using genders (-g option) 
 sys-power/powerman:httppower -  Add support for HTTP based power controllers 
+sys-power/suspend:crypt - Allows suspend and resume from encrypted disk
 sys-power/suspend:fbsplash - Add support for framebuffer splash
 sys-process/cronie:inotify - Enable inotify filesystem monitoring support.
 sys-process/procps:n32 - Enable n32 ABI support on mips

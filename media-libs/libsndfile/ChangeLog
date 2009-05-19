@@ -1,6 +1,30 @@
 # ChangeLog for media-libs/libsndfile
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libsndfile/ChangeLog,v 1.96 2009/04/15 19:45:13 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libsndfile/ChangeLog,v 1.102 2009/05/16 19:06:01 chainsaw Exp $
+
+  16 May 2009; <chainsaw@gentoo.org> libsndfile-1.0.20.ebuild:
+  There is no TODO file in this version, stop trying to install it.
+
+  15 May 2009; Markus Meier <maekke@gentoo.org> libsndfile-1.0.20.ebuild:
+  amd64/x86 stable, bug #269863
+
+  15 May 2009; Jeroen Roovers <jer@gentoo.org> libsndfile-1.0.20.ebuild:
+  Stable for HPPA (bug #269863).
+
+  15 May 2009; Tobias Klausmann <klausman@gentoo.org>
+  libsndfile-1.0.20.ebuild:
+  Stable on alpha, bug #269863
+
+*libsndfile-1.0.20 (14 May 2009)
+
+  14 May 2009; Alexis Ballier <aballier@gentoo.org>
+  +libsndfile-1.0.20.ebuild:
+  version bump
+
+  08 May 2009; Samuli Suominen <ssuominen@gentoo.org>
+  libsndfile-1.0.19.ebuild, +files/libsndfile-1.0.19-automagic_jack.patch:
+  Fix automagic jack-audio-connection-kit depend wrt #266346, thanks to
+  Paolo Pedroni for reporting.
 
   15 Apr 2009; Markus Meier <maekke@gentoo.org> libsndfile-1.0.19.ebuild:
   amd64 stable, bug #261173
@@ -75,7 +99,7 @@
   just removing it after the fact. Don't request old version of automake, as
   full eautoreconf is called.
 
-  15 Feb 2008; Samuli Suominen <drac@gentoo.org>
+  15 Feb 2008; Samuli Suominen <ssuominen@gentoo.org>
   libsndfile-1.0.17-r1.ebuild:
   If built with USE -sqlite don't install sndfile-regtest command wrt #210216
   by Matthias B.
@@ -111,7 +135,7 @@
   +libsndfile-1.0.17-r1.ebuild:
   add a patch wrt to buffer overflow possibility, bug #192834
 
-  06 Aug 2007; Samuli Suominen <drac@gentoo.org> libsndfile-1.0.17.ebuild:
+  06 Aug 2007; Samuli Suominen <ssuominen@gentoo.org> libsndfile-1.0.17.ebuild:
   Install pkgconfig for bug 187856.
 
   21 Jun 2007; Joshua Kinard <kumba@gentoo.org> libsndfile-1.0.17.ebuild:

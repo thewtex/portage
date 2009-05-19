@@ -2,6 +2,10 @@
 # Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
 # $Header: /var/cvsroot/gentoo-x86/sys-fs/autorun/ChangeLog,v 1.4 2008/12/22 06:13:57 vapier Exp $
 
+  12 May 2009; Daniel Robbins <drobbins@funtoo.org> autorun-3.17.ebuild:
+  move set-kdedir inside pkg_setup() rather than have it in the global
+  ebuild space.
+
   22 Dec 2008; Mike Frysinger <vapier@gentoo.org>
   +files/autorun-3.17-headers.patch, autorun-3.17.ebuild:
   Fix building with gcc-4.3 #251684 by Diego E. Pettenò.

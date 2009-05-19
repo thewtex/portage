@@ -1,6 +1,8 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/redland/redland-1.0.8.ebuild,v 1.3 2009/03/12 17:31:50 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/redland/redland-1.0.8.ebuild,v 1.9 2009/05/16 16:18:32 nixnut Exp $
+
+EAPI=2
 
 DESCRIPTION="High-level interface for the Resource Description Framework"
 HOMEPAGE="http://librdf.org"
@@ -8,7 +10,7 @@ SRC_URI="http://download.librdf.org/source/${P}.tar.gz"
 
 LICENSE="LGPL-2.1 Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 hppa ~ia64 ppc ~ppc64 sparc x86"
 IUSE="berkdb mysql postgres sqlite ssl threads xml"
 
 RDEPEND="mysql? ( virtual/mysql )
@@ -23,7 +25,7 @@ RDEPEND="mysql? ( virtual/mysql )
 DEPEND="${RDEPEND}
 	dev-util/pkgconfig"
 
-src_compile() {
+src_configure() {
 	local myconf
 
 	if use xml; then
@@ -41,12 +43,10 @@ src_compile() {
 		$(use_with sqlite) \
 		$(use_with postgres postgresql) \
 		${myconf}
-
-	emake || die "emake failed."
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die "emake install failed."
+	emake DESTDIR="${D}" install || die "emake install failed"
 	dodoc AUTHORS ChangeLog* NEWS NOTICE README TODO
 	dohtml {FAQS,NEWS,README,RELEASE,TODO}.html
 }

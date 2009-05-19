@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/gdl-python/gdl-python-2.19.1.ebuild,v 1.10 2009/03/17 17:22:52 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/gdl-python/gdl-python-2.19.1.ebuild,v 1.12 2009/05/14 23:14:08 gengor Exp $
 
 G_PY_PN="gnome-python-extras"
 

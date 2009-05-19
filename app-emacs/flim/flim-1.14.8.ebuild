@@ -1,12 +1,12 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/flim/flim-1.14.8.ebuild,v 1.14 2009/05/05 17:02:21 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/flim/flim-1.14.8.ebuild,v 1.15 2009/05/16 20:09:55 ulm Exp $
 
 inherit elisp
 
 DESCRIPTION="A library to provide basic features about message representation or encoding"
 HOMEPAGE="http://cvs.m17n.org/elisp/FLIM/"
-SRC_URI="ftp://ftp.m17n.org/pub/mule/flim/flim-1.14/${P}.tar.gz"
+SRC_URI="http://www.kanji.zinbun.kyoto-u.ac.jp/~tomo/lemi/dist/flim/${P%.*}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -14,8 +14,8 @@ KEYWORDS="alpha amd64 ppc sparc x86"
 IUSE=""
 
 DEPEND=">=app-emacs/apel-10.3"
-RDEPEND="!app-emacs/limit
-	${DEPEND}"
+RDEPEND="${DEPEND}
+	!app-emacs/limit"
 
 SITEFILE=60${PN}-gentoo.el
 

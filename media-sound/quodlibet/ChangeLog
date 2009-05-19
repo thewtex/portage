@@ -1,6 +1,24 @@
 # ChangeLog for media-sound/quodlibet
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/quodlibet/ChangeLog,v 1.62 2009/03/10 21:40:13 beandog Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/quodlibet/ChangeLog,v 1.68 2009/05/13 07:32:04 ssuominen Exp $
+
+*quodlibet-2.0-r3 (13 May 2009)
+
+  13 May 2009; Samuli Suominen <ssuominen@gentoo.org>
+  +quodlibet-2.0-r3.ebuild, +files/quodlibet-2.0-click.patch:
+  Fix crash when headers are clicked with right mouse button, patch from
+  upstream wrt #246115, thanks to Carles Escrig for reporting.
+
+  12 May 2009; Samuli Suominen <ssuominen@gentoo.org>
+  quodlibet-2.0-r2.ebuild:
+  If gst-plugins-gconf isn't installed Quod Libet will use osssink,
+  so remove the hardcoded dep wrt #269594.
+
+*quodlibet-2.0-r2 (12 May 2009)
+
+  12 May 2009; Samuli Suominen <ssuominen@gentoo.org>
+  +quodlibet-2.0-r2.ebuild:
+  Rename USE ffmpeg to USE wma wrt #197231.
 
   10 Mar 2009; Steve Dibb <beandog@gentoo.org> quodlibet-2.0-r1.ebuild:
   Enable gstreamer use flag by default, bug 254729

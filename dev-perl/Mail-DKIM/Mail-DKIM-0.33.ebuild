@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Mail::DKIM - Signs/verifies Internet mail using DKIM message signatures"
 
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~hppa ~ppc ~ppc64 ~sparc x86"
 IUSE=""
 
 DEPEND=">=dev-perl/Crypt-OpenSSL-RSA-0.24

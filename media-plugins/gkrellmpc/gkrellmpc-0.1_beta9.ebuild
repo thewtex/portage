@@ -1,16 +1,22 @@
-# Copyright 1999-2007 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/gkrellmpc/gkrellmpc-0.1_beta9.ebuild,v 1.7 2007/07/10 23:08:59 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/gkrellmpc/gkrellmpc-0.1_beta9.ebuild,v 1.8 2009/05/11 22:08:53 ssuominen Exp $
 
-inherit gkrellm-plugin
+EAPI=2
+inherit gkrellm-plugin toolchain-funcs
 
 DESCRIPTION="A gkrellm plugin to control the MPD (Music Player Daemon)"
 HOMEPAGE="http://mpd.wikicities.com/wiki/Client:GKrellMPC"
 SRC_URI="http://www.topfx.com/dist/${P}.tar.gz"
+
+LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS="~amd64 x86"
 IUSE=""
 
 RDEPEND="net-misc/curl"
 
-SLOT="0"
-LICENSE="GPL-2"
-KEYWORDS="x86 ~amd64"
+src_compile() {
+	tc-export CC
+	emake || die "emake failed"
+}

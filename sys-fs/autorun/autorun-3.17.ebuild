@@ -4,8 +4,6 @@
 
 inherit kde-functions eutils
 
-set-kdedir
-
 DESCRIPTION="auto cdrom mounter for the lazy user"
 HOMEPAGE="http://autorun.sourceforge.net/"
 SRC_URI="mirror://sourceforge/autorun/${P}.tar.gz"
@@ -15,9 +13,12 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="app-text/xmlto
-	=app-text/docbook-xml-dtd-4.1.2*"
+DEPEND="app-text/xmlto =app-text/docbook-xml-dtd-4.1.2*"
 RDEPEND=""
+
+pkg_setup() {
+	set-kdedir
+}
 
 src_unpack() {
 	unpack ${A}

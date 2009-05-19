@@ -1,5 +1,5 @@
-x11-libs/fltk:1.1 alsa? ( >=media-libs/alsa-lib-0.9.0_rc1 ) jack? ( media-sound/jack-audio-connection-kit ) ladcca? ( media-libs/ladcca )
-x11-libs/fltk:1.1 alsa? ( >=media-libs/alsa-lib-0.9.0_rc1 ) jack? ( media-sound/jack-audio-connection-kit ) ladcca? ( media-libs/ladcca )
+x11-libs/fltk:1.1 alsa? ( media-libs/alsa-lib ) jack? ( media-sound/jack-audio-connection-kit ) ladcca? ( media-libs/ladcca ) !alsa? ( !jack? ( media-libs/alsa-lib ) )
+x11-libs/fltk:1.1 alsa? ( media-libs/alsa-lib ) jack? ( media-sound/jack-audio-connection-kit ) ladcca? ( media-libs/ladcca ) !alsa? ( !jack? ( media-libs/alsa-lib ) )
 0
 http://pkl.net/~node/software/alsa-patch-bay-1.0.0.tar.gz
 
@@ -8,13 +8,13 @@ GPL-2
 Graphical patch bay for the ALSA sequencer API.
 amd64 ppc sparc x86
 eutils multilib portability toolchain-funcs
-alsa jack ladcca
++alsa jack ladcca
 
 
 
-1
+2
 
-compile install preinst unpack
+configure install preinst prepare
 
 
 

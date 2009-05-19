@@ -1,10 +1,10 @@
 # Copyright 2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/qt3.eclass,v 1.38 2009/01/02 21:07:14 yngwin Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/qt3.eclass,v 1.40 2009/05/15 20:43:18 yngwin Exp $
 
 # @ECLASS: qt3.eclass
 # @MAINTAINER:
-# Caleb Tennis <caleb@gentoo.org>
+# Qt team <qt@gentoo.org>
 # @BLURB: Eclass for Qt3 packages
 # @DESCRIPTION:
 # This eclass contains various functions that may be useful
@@ -83,7 +83,7 @@ eqmake3() {
 	# file exists?
 	if [[ ! -f ${projprofile} ]]; then
 		echo
-		eerror "Project .pro file \"${projprofile}\" does not exists"
+		eerror "Project .pro file \"${projprofile}\" does not exist"
 		eerror "qmake cannot handle non-existing .pro files"
 		echo
 		eerror "This shouldn't happen - please send a bug report to bugs.gentoo.org"
