@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-pda/pilot-link/pilot-link-0.12.3.ebuild,v 1.11 2009/03/03 18:06:30 serkan Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-pda/pilot-link/pilot-link-0.12.3.ebuild,v 1.13 2009/05/19 00:43:47 robbat2 Exp $
 
 inherit perl-module java-pkg-opt-2 eutils autotools distutils
 
@@ -21,8 +21,8 @@ BOTH_DEPEND="virtual/libiconv
 	python? ( >=dev-lang/python-2.4.4-r4 )
 	png? ( >=media-libs/libpng-1.2.18-r1 )
 	readline? ( >=sys-libs/readline-5.2_p4 )
-	usb? ( >=dev-libs/libusb-0.1.12 )
-	bluetooth? ( >=net-wireless/bluez-libs-3.10 )"
+	usb? ( =virtual/libusb-0* )
+	bluetooth? ( || ( >=net-wireless/bluez-libs-3.10 net-wireless/bluez ) )"
 
 DEPEND="${BOTH_DEPEND}
 	java? ( >=virtual/jdk-1.4 )"
@@ -55,6 +55,9 @@ src_unpack() {
 
 	# Upstream patch to fix 64-bit issues.
 	epatch "${FILESDIR}/${P}-int_types.patch"
+	
+	# libusb-compat requires you to check the return value of usb_open!
+	epatch "${FILESDIR}/${P}-libusb-compat-usb_open.patch"
 
 	AT_M4DIR="m4" eautoreconf
 }

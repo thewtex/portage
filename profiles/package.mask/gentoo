@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.9814 2009/05/18 02:32:44 arfrever Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.9818 2009/05/18 16:22:10 dertobi123 Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,15 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Tobias Scherbaum <dertobi123@gentoo.org> (17 May 2009
+# Masked for testing, ABI change without soname change (security bug #270261)
+=dev-libs/cyrus-sasl-2.1.23
+
+# Peter Volkov <pva@gentoo.org> (17 May 2009)
+# Masked development/git sources
+=sys-kernel/openvz-sources-2.6.24*
+=sys-kernel/openvz-sources-2.6.27.9999
 
 # Diego E. Pettenò <flameeyes@gentoo.org> (17 May 2009)
 # Masked for testing (and it's beta version for now)
@@ -548,10 +557,6 @@ kde-misc/kgraphspace
 =app-crypt/seahorse-2.24*
 =app-crypt/seahorse-plugins-2.24*
 
-# Robin H. Johnson <robbat2@gentoo.org> (11 Mar 2009)
-# HPN patch contains some breakages with port forwarding.
-=net-misc/openssh-5.2_p1-r2
-
 # Tony Vroon <chainsaw@gentoo.org> (10 Mar 2009)
 # This is *very* new and will require an extensive rewrite of your
 # configuration before it will work. If you are not ready to dedicate
@@ -904,10 +909,6 @@ net-irc/bitchx
 =sys-fs/btrfs-9999
 =sys-fs/btrfs-progs-9999
 
-# Tiziano Müller <dev-zero@gentoo.org> (07 Jun 2008)
-# Live SVN Ebuild
-=dev-python/django-9999
-
 # Maintainer Needed <maintainer-needed@gentoo.org> (05 Jun 2008)
 # Masked for testing wrt #163724
 dev-libs/libffi
@@ -1133,10 +1134,6 @@ games-fps/doomsday-resources
 # Markus Ullmann <jokey@gentoo.org> (13 Jan 2008)
 # contrib modules need to be added back and needs general testing
 >=net-nds/openldap-2.4
-
-# Peter Volkov <pva@gentoo.org> (06 Jan 2008)
-# Masked development sources
->=sys-kernel/openvz-sources-2.6.22
 
 # Mart Raudsepp <leio@gentoo.org> (28 Dec 2007)
 # Live Subversion ebuild until pending first upstream release

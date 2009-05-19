@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-pda/pilot-link/pilot-link-0.12.3-r1.ebuild,v 1.4 2009/04/18 06:17:01 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-pda/pilot-link/pilot-link-0.12.3-r1.ebuild,v 1.6 2009/05/19 00:43:47 robbat2 Exp $
 
 EAPI=2
 
@@ -23,8 +23,8 @@ BOTH_DEPEND="virtual/libiconv
 	python? ( >=dev-lang/python-2.4.4-r4 )
 	png? ( >=media-libs/libpng-1.2.18-r1 )
 	readline? ( >=sys-libs/readline-5.2_p4 )
-	usb? ( >=dev-libs/libusb-0.1.12 )
-	bluetooth? ( >=net-wireless/bluez-libs-3.10 )"
+	usb? ( virtual/libusb:0 )
+	bluetooth? ( || ( >=net-wireless/bluez-libs-3.10 net-wireless/bluez ) )"
 
 DEPEND="${BOTH_DEPEND}
 	java? ( >=virtual/jdk-1.4 )"
@@ -54,6 +54,9 @@ src_prepare() {
 
 	# Fix Glibc open without mode error
 	epatch "${FILESDIR}/${P}-glibc-open.patch"
+
+	# libusb-compat requires you to check the return value of usb_open!
+	epatch "${FILESDIR}/${P}-libusb-compat-usb_open.patch"
 
 	AT_M4DIR="m4" eautoreconf
 }

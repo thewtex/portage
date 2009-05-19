@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4456 2009/05/17 16:47:42 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4461 2009/05/19 03:16:11 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -710,6 +710,7 @@ dev-libs/libjit:interpreter - Enable the libjit interpreter
 dev-libs/libjit:long-double - Enable the use of long double for jit_nfloat
 dev-libs/libjit:new-reg-alloc - Enable new register allocator
 dev-libs/libmix:no-net2 - Disable support for virtual/libpcap and net-libs/libnet
+dev-libs/libpcre:static-libs - Build static libs
 dev-libs/libprelude:swig - Enable rebuild of swig bindings
 dev-libs/libpreludedb:swig - Enable rebuild of swig bindings
 dev-libs/libsqlora8:orathreads - Use Oracle threads
@@ -1361,6 +1362,7 @@ media-libs/libggi:vis - Enables sparc vis support for libggi
 media-libs/libgphoto2:bonjour - Adds Bonjour/Zeroconf support.
 media-libs/libgpod:gtk - Enables ArtWorkDB support (including Photos and album covers)
 media-libs/libifp:module - Build kernel module for non-root usage
+media-libs/libmtp:static-libs - Compile static archives
 media-libs/libsdl:audio - Control audio support (disable at your own risk)
 media-libs/libsdl:joystick - Control joystick support (disable at your own risk)
 media-libs/libsdl:video - Control video support (disable at your own risk)
@@ -1477,6 +1479,7 @@ media-sound/audacity:twolame - Enables twolame support (MPEG Audio Layer 2 encod
 media-sound/audacity:vamp - Enables vamp plugins support (Audio analysing plugins)
 media-sound/banshee:boo - Use external Boo instead of the bundled one
 media-sound/banshee:daap - Build with Daap support
+media-sound/banshee:karma - Build with karma support
 media-sound/banshee:mtp - Build with Media Transfer Protocol support
 media-sound/banshee:njb - Build with njb audio player support
 media-sound/banshee:podcast - Build with podcasting support
@@ -2545,7 +2548,6 @@ sci-libs/vtk:boost - Add support for boost
 sci-libs/vtk:cg - Use nvidia's cg shaders
 sci-libs/vtk:patented - Build patented classes
 sci-mathematics/cgal:taucs - Add support for the sparse solver library sci-libs/taucs
-sci-mathematics/coq:ide - Build the Coq IDE, a clone of proof general using dev-ml/lablgtk
 sci-mathematics/coq:norealanalysis - Do not build real analysis modules (faster compilation)
 sci-mathematics/dataplot:gs - Add Ghostscript support (virtual/ghostscript) 
 sci-mathematics/freemat:arpack - Add sparse eigen value support via sci-libs/arpack
@@ -2741,13 +2743,20 @@ sys-devel/kgcc64:multislot - Allow for SLOTs to include minor version (eg. 3.3.4
 sys-devel/libperl:ithreads - Enable Perl threads, has some compatibility problems
 sys-freebsd/freebsd-lib:gpib - Enable General Purpose Interface Bus support
 sys-freebsd/freebsd-lib:hesiod - Enable support for net-dns/hesiod
-sys-freebsd/freebsd-sbin:ipfilter - Enable ipfilter firewall support
+sys-freebsd/freebsd-lib:netware -  Build libraries and tools to work with NetWare protocols (IPX and NCP). 
+sys-freebsd/freebsd-sbin:ipfilter -  Build tools to administer the ipfilter firewall. 
+sys-freebsd/freebsd-sbin:netware -  Build libraries and tools to work with NetWare protocols (IPX and NCP). 
+sys-freebsd/freebsd-sbin:pf -  Build tools to administer the PF firewall. 
 sys-freebsd/freebsd-sbin:vinum - Enable vinum support (TODO improve description)
 sys-freebsd/freebsd-share:isdn - Enable ISDN support
+sys-freebsd/freebsd-ubin:audit -  Build auditing tools. 
+sys-freebsd/freebsd-ubin:netware -  Build libraries and tools to work with NetWare protocols (IPX and NCP). 
+sys-freebsd/freebsd-usbin:audit -  Build auditing tools. 
 sys-freebsd/freebsd-usbin:ipfilter - Enable building of ipfilter firewall support.
 sys-freebsd/freebsd-usbin:ipsec - Enable IPSec support.
 sys-freebsd/freebsd-usbin:isdn - Enable ISDN support.
 sys-freebsd/freebsd-usbin:nat - Enable Network Address Translation support daemon.
+sys-freebsd/freebsd-usbin:netware -  Build libraries and tools to work with NetWare protocols (IPX and NCP). 
 sys-fs/aufs2:debug - Enable additional debugging support
 sys-fs/aufs2:hinotify - Enable hinotify support
 sys-fs/cryptsetup:dynamic - Build cryptsetup dynamically
