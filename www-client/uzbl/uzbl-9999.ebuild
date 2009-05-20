@@ -8,7 +8,7 @@ DESCRIPTION="A keyboard controlled (modal vim-like bindings, or with modifier ke
 HOMEPAGE="http://www.uzbl.org/"
 #SRC_URI=""
 
-LICENSE=""
+LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
 IUSE=""
