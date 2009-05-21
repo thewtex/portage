@@ -43,7 +43,8 @@ src_prepare() {
 	epatch \
 		"${T}"/gentoo.patch \
 		"${FILESDIR}/${P}-newffmpeg.diff" \
-		"${FILESDIR}/${P}-newerffmpeg.diff" #Bug 242054
+		"${FILESDIR}/${P}-newerffmpeg.diff" \
+		"${FILESDIR}/${P}-evennewerffmpeg.diff"  
 
 	AT_M4DIR="autoconf/m4"
 	eautoreconf
