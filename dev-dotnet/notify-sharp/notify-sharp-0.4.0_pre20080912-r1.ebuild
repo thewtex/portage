@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-dotnet/notify-sharp/notify-sharp-0.4.0_pre20080912-r1.ebuild,v 1.4 2009/04/04 14:41:02 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-dotnet/notify-sharp/notify-sharp-0.4.0_pre20080912-r1.ebuild,v 1.6 2009/05/19 07:01:50 loki_val Exp $
 
 EAPI=2
 

@@ -1,10 +1,52 @@
 # ChangeLog for profile directory
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.2666 2009/05/17 01:09:58 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.2680 2009/05/22 01:08:21 ssuominen Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  22 May 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Removed unfunctional ebuilds lastfm-ripper, rat (security issue),
+  wavesurfer, eq-audacious.
+
+  20 May 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Unmask media-sound/mpd-0.15_beta2.
+
+  20 May 2009; Tobias Scherbaum <dertobi123@gentoo.org> package.mask:
+  Adjust postfix-2.6 mask
+
+  20 May 2009; Denis Dupeyron <calchan@gentoo.org> package.mask:
+  Removed mask on gEDA split ebuilds since everything seems to work.
+
+  20 May 2009; Denis Dupeyron <calchan@gentoo.org> package.mask:
+  Masked gEDA split ebuilds until they're all committed and tested.
+
+  19 May 2009; Tobias Scherbaum <dertobi123@gentoo.org> package.mask:
+  p.mask postfix-2.6 for now
+
+  19 May 2009; Ulrich Mueller <ulm@gentoo.org> package.mask:
+  Mask eselect-1.1_rc1. Remove mask again, since the bad version was removed
+  from the tree.
+
+  19 May 2009; Markos Chandras <hwoarang@gentoo.org> package.mask:
+  Remove entry about rednotebook
+
+  18 May 2009; Tobias Scherbaum <dertobi123@gentoo.org> package.mask:
+  Mask =dev-libs/cyrus-sasl-2.1.23 for testing. ABI change without soname
+  change (security bug #270261)
+
+  18 May 2009; Peter Volkov <pva@gentoo.org> package.mask:
+  Updated hardmask for openvz sources, e.g. unmasked 2.6.27 kernels.
+
+  18 May 2009; Robin H. Johnson <robbat2@gentoo.org> package.mask:
+  OpenSSH HPN patch breakage has been resolved by upstream now.
+
+  17 May 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Mask the upcoming automake 1.11 beta.
+
+  17 May 2009; Andreas Proschofsky <suka@gentoo.org> package.mask:
+  Remove mask for app-office/openoffice-3.1.0, finally released now
 
   17 May 2009; Ulrich Mueller <ulm@gentoo.org> package.mask:
   Remove masks for app-text/xetex and dev-tex/xkeyval; packages have been

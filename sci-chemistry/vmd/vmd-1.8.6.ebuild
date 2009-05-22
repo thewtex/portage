@@ -1,6 +1,6 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/vmd/vmd-1.8.6.ebuild,v 1.7 2008/11/12 18:41:47 markusle Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/vmd/vmd-1.8.6.ebuild,v 1.8 2009/05/17 20:15:13 je_fro Exp $
 
 EAPI="1"
 
@@ -26,6 +26,8 @@ DEPEND="app-shells/tcsh
 	>=dev-lang/python-2.3
 	sci-biology/stride
 	sci-libs/netcdf"
+
+RDEPEND="${DEPEND}"
 
 VMD_DOWNLOAD="http://www.ks.uiuc.edu/Development/Download/download.cgi?PackageName=VMD"
 
