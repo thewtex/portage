@@ -14,7 +14,7 @@ KEYWORDS="x86 amd64"
 
 EAPI="2"
 
-IUSE="libnotify"
+IUSE="libnotify gstreamer"
 
 RDEPEND=">=dev-python/pygtk-2.10
 	|| ( >=dev-lang/python-2.5[berkdb,sqlite]
@@ -31,7 +31,8 @@ RDEPEND=">=dev-python/pygtk-2.10
 	|| ( =net-libs/rb_libtorrent-0.13
 		>=net-libs/rb_libtorrent-0.14[python] )
 	dev-python/gst-python
-	libnotify? ( dev-python/notify-python )"
+	libnotify? ( dev-python/notify-python )
+	gstreamer? ( media-libs/gstreamer media-plugins/gst-plugins-faad )"
 DEPEND="${RDEPEND}
 	sys-devel/gettext
 	dev-util/pkgconfig"
@@ -40,6 +41,9 @@ S="${WORKDIR}/${MY_P}/platform/gtk-x11"
 
 
 pkg_postinst() {
+	ebeep 5
 	ewarn "The dbus service must be installed and running for this package to work"
+	elog
+	elog "To use gstreamer open video in the top menu. Than go into options."
+	elog "Than go into playback and select gstreamer." 
 }
-
