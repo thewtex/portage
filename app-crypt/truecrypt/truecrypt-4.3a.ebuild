@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/truecrypt/truecrypt-4.3a.ebuild,v 1.9 2009/04/20 00:07:22 arfrever Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/truecrypt/truecrypt-4.3a.ebuild,v 1.11 2009/05/18 04:39:01 robbat2 Exp $
 
 #
 # NOTES:
@@ -20,9 +20,9 @@ SRC_URI="http://www.truecrypt.org/downloads/truecrypt-${PV}-source-code.tar.gz"
 
 LICENSE="truecrypt-collective-1.0"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
-RESTRICT="mirror fetch bindist"
+RESTRICT="bindist fetch mirror"
 
 RDEPEND="|| ( >=sys-fs/lvm2-2.02.45
 	sys-fs/device-mapper )"
@@ -59,7 +59,7 @@ src_compile() {
 }
 
 src_test() {
-	"${S}/Linux/Cli/truecrypt" --test
+	"${S}/Linux/Cli/truecrypt" --test || die "tests failed"
 }
 
 src_install() {
@@ -87,9 +87,11 @@ pkg_postinst() {
 	elog " 3. Load the module during boot by listing it in "
 	elog "    '/etc/modules.autoload.d/kernel-2.6' "
 
-	elog "potential legal problems - use at own risk"
-	elog "http://lists.freedesktop.org/archives/distributions/2008-October/000276.html"
+	warn_license
+}
 
+pkg_preinst() {
+	warn_license
 }
 
 dmcrypt_check() {
@@ -109,4 +111,12 @@ dmcrypt_check() {
 		ewarn "and recompile your kernel if you want this package to work."
 		epause 10
 	fi
+}
+
+warn_license() {
+	ewarn "TrueCrypt has very restrictive license."
+	ewarn "Please read the ${LICENSE} license in ${PORTDIR}/licenses"
+	ewarn "directory before using TrueCrypt. Please be explicitly aware of"
+	ewarn "the limitations on redistribution of binaries or modified source."
+	ebeep 5
 }

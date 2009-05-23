@@ -1,10 +1,10 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/strigi/strigi-0.6.5.ebuild,v 1.1 2009/05/14 20:17:12 scarabeus Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/strigi/strigi-0.6.5.ebuild,v 1.3 2009/05/18 12:56:46 scarabeus Exp $
 
 EAPI="2"
 
-inherit cmake-utils eutils
+inherit base cmake-utils
 
 DESCRIPTION="Fast crawling desktop search engine with Qt4 GUI"
 HOMEPAGE="http://strigi.sourceforge.net/"
@@ -43,9 +43,11 @@ DEPEND="${COMMONDEPEND}
 	test? ( dev-util/cppunit )"
 RDEPEND="${COMMONDEPEND}"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${PN}-0.6.4-gcc44.patch
-}
+PATCHES=(
+	"${FILESDIR}/${PN}-0.6.4-gcc44.patch"
+	"${FILESDIR}/${P}-gcc4.4-missing-headers.patch"
+	"${FILESDIR}/${PN}-disable_java.patch"
+)
 
 src_configure() {
 	# Strigi needs either expat or libxml2.

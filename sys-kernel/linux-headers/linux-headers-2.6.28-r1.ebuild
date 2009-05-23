@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-kernel/linux-headers/linux-headers-2.6.28-r1.ebuild,v 1.2 2009/02/16 05:12:24 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-kernel/linux-headers/linux-headers-2.6.28-r1.ebuild,v 1.4 2009/05/19 07:23:12 vapier Exp $
 
 ETYPE="headers"
 H_SUPPORTEDARCH="alpha amd64 arm cris hppa m68k mips ia64 ppc ppc64 s390 sh sparc x86"
@@ -22,6 +22,7 @@ src_unpack() {
 	unpack ${A}
 	cd "${S}"
 	[[ -n ${PATCH_VER} ]] && EPATCH_SUFFIX="patch" epatch "${WORKDIR}"/${PV}
+	sed -i 's:\<getline\>:get_line:' scripts/unifdef.c || die #270383
 	# workaround #244640
 	mkdir arch/sparc64
 	touch arch/sparc64/Makefile
@@ -42,7 +43,7 @@ src_install() {
 	find "${D}" '(' -name '.install' -o -name '*.cmd' ')' -print0 | xargs -0 rm -f
 
 	# provided by libdrm (for now?)
-	rm -rf "${D}"/usr/include/drm
+	rm -rf "${D}"/$(kernel_header_destdir)/drm
 }
 
 src_test() {

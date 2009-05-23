@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/hamlib/hamlib-1.2.8-r1.ebuild,v 1.5 2009/02/15 13:49:37 ranger Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/hamlib/hamlib-1.2.8-r1.ebuild,v 1.6 2009/05/20 01:51:41 darkside Exp $
 
 inherit autotools eutils libtool multilib
 
@@ -17,7 +17,7 @@ RESTRICT="test"
 
 RDEPEND="virtual/libc
 	>=sys-devel/libtool-1.5
-	dev-libs/libusb
+	=virtual/libusb-0*
 	python? ( dev-lang/python
 		dev-lang/tcl )
 	tcl? ( dev-lang/tcl )"

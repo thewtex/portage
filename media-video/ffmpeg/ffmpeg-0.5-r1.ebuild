@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/ffmpeg/ffmpeg-0.5-r1.ebuild,v 1.8 2009/05/14 20:02:34 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/ffmpeg/ffmpeg-0.5-r1.ebuild,v 1.10 2009/05/21 19:02:04 ranger Exp $
 
 EAPI=1
 
@@ -13,11 +13,15 @@ SRC_URI="http://ffmpeg.org/releases/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 ~arm ~hppa ~ia64 ppc ppc64 ~sparc x86 ~x86-fbsd"
 IUSE="3dnow 3dnowext alsa altivec amr custom-cflags debug dirac doc ieee1394
 	  +encode faac faad gsm ipv6 mmx mmxext +vorbis test +theora threads +x264
 	  +xvid network +zlib sdl X mp3 oss schroedinger hardcoded-tables bindist
 	  v4l v4l2 speex ssse3 vhook jpeg2k"
+IUSE="+3dnow +3dnowext alsa altivec amr custom-cflags debug dirac doc ieee1394
+	  +encode faac faad gsm ipv6 +mmx +mmxext vorbis test theora threads x264
+	  xvid network zlib sdl X mp3 oss schroedinger +hardcoded-tables bindist
+	  v4l v4l2 speex +ssse3 vhook jpeg2k"
 
 RDEPEND="vhook? ( >=media-libs/imlib2-1.4.0 >=media-libs/freetype-2 )
 	sdl? ( >=media-libs/libsdl-1.2.10 )

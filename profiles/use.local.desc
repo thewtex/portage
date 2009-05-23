@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4452 2009/05/16 14:47:48 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4467 2009/05/22 01:07:43 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -98,7 +98,6 @@ app-cdr/acetoneiso2:7zip - support for optional 7zip features
 app-cdr/brasero:beagle - Enable app-misc/beagle support for searches
 app-cdr/brasero:cdrkit - Enable app-cdr/cdrkit backend
 app-cdr/brasero:cdrtools - Enable app-cdr/cdrtools backend
-app-cdr/brasero:gdl - Enable gdl support for customisable GUI
 app-cdr/brasero:gnome - Enable integration with the gnome-base/gnome desktop (help, session management, etc.)
 app-cdr/brasero:libburn - Enable dev-libs/libburn backend
 app-cdr/brasero:nautilus -  Build gnome-base/nautilus extension
@@ -180,6 +179,7 @@ app-editors/gvim:nextaw - Include support for the neXtaw GUI
 app-editors/jasspa-microemacs:nanoemacs - Build NanoEmacs instead of MicroEmacs
 app-editors/joe:xterm - Enable full xterm clipboard support
 app-editors/jove:unix98 - Use Unix 98 pty's instead of BSD pts's
+app-editors/leafpad:emacs - Enable Emacs key theme
 app-editors/nano:justify - Toggle the justify option
 app-editors/nvu:moznoxft - Placeholder until mozilla eclass is modified for nvu
 app-editors/tea:enchant - Enable spell checking using enchant
@@ -241,6 +241,15 @@ app-emulation/point2play:emerald - For people who are in the Transgaming Emerald
 app-emulation/q4wine:development -  Enable developer related stuff
 app-emulation/q4wine:icotools -  Enable icotools support
 app-emulation/q4wine:winetools -  Enable winetools support
+app-emulation/qemu:alsa - Enable alsa output for sound emulation
+app-emulation/qemu:esd - Enable esound output for sound emulation
+app-emulation/qemu:gnutls - Enable TLS support for the VNC console server
+app-emulation/qemu:kqemu - Enables the kernel acceleration module on a x86/x86-64 cpu
+app-emulation/qemu:kvm - Use the KVM (Kernel Virtual Machine) infrastructure on compatible hardware
+app-emulation/qemu:ncurses - Enable the ncurses-based console
+app-emulation/qemu:pulseaudio - Enable pulseaudio output for sound emulation
+app-emulation/qemu:sdl - Enable the SDL-based console
+app-emulation/qemu:vde - Enable VDE-based networking
 app-emulation/qemu-softmmu:alsa - Enable alsa output for sound emulation
 app-emulation/qemu-softmmu:esd - Enable esound output for sound emulation
 app-emulation/qemu-softmmu:gnutls - Enable TLS support for the VNC console server
@@ -736,6 +745,7 @@ dev-libs/libjit:interpreter - Enable the libjit interpreter
 dev-libs/libjit:long-double - Enable the use of long double for jit_nfloat
 dev-libs/libjit:new-reg-alloc - Enable new register allocator
 dev-libs/libmix:no-net2 - Disable support for virtual/libpcap and net-libs/libnet
+dev-libs/libpcre:static-libs - Build static libs
 dev-libs/libprelude:swig - Enable rebuild of swig bindings
 dev-libs/libpreludedb:swig - Enable rebuild of swig bindings
 dev-libs/libsqlora8:orathreads - Use Oracle threads
@@ -1383,6 +1393,7 @@ media-gfx/digikam:nfs - Create sqlite db within ~/.kde, instead in the albums ba
 media-gfx/eog:xmp - Adds support for XMP metadata
 media-gfx/exact-image:agg - Adds Anti-Grain Geometry supportx11-libs/agg
 media-gfx/exact-image:swig - Adds Swig support dev-lang/swig
+media-gfx/exiv2:contrib -  Build additional contrib components 
 media-gfx/exiv2:xmp -  Adds support for Adobe XMP 
 media-gfx/fim:postscript - Install a postscript wrapper script
 media-gfx/fim:screen - Add (experimental!) support for running under screen
@@ -1468,6 +1479,7 @@ media-libs/libggi:vis - Enables sparc vis support for libggi
 media-libs/libgphoto2:bonjour - Adds Bonjour/Zeroconf support.
 media-libs/libgpod:gtk - Enables ArtWorkDB support (including Photos and album covers)
 media-libs/libifp:module - Build kernel module for non-root usage
+media-libs/libmtp:static-libs - Compile static archives
 media-libs/libsdl:audio - Control audio support (disable at your own risk)
 media-libs/libsdl:joystick - Control joystick support (disable at your own risk)
 media-libs/libsdl:video - Control video support (disable at your own risk)
@@ -1595,6 +1607,7 @@ media-sound/audacity:twolame - Enables twolame support (MPEG Audio Layer 2 encod
 media-sound/audacity:vamp - Enables vamp plugins support (Audio analysing plugins)
 media-sound/banshee:boo - Use external Boo instead of the bundled one
 media-sound/banshee:daap - Build with Daap support
+media-sound/banshee:karma - Build with karma support
 media-sound/banshee:mtp - Build with Media Transfer Protocol support
 media-sound/banshee:njb - Build with njb audio player support
 media-sound/banshee:podcast - Build with podcasting support
@@ -1624,8 +1637,6 @@ media-sound/jack-audio-connection-kit:cpudetection - Enables runtime cpudetectio
 media-sound/jack-audio-connection-kit:jack-tmpfs - Compile in a tmpf path
 media-sound/jack-audio-connection-kit:netjack - Build with support for Realtime Audio Transport over generic IP
 media-sound/lame:mp3rtp - Build the mp3-to-RTP streaming utility. **UNSUPPORTED**
-media-sound/lastfm-ripper:amazon - Enable advanced tagging using amazon webservices
-media-sound/lastfm-ripper:tagwriting - Enable MP3 tagging
 media-sound/listen:libsexy - Enable libsexy support
 media-sound/lmms:fluidsynth - Enables Fluidsynth MIDI software synthesis plugin.
 media-sound/lmms:stk - Enables STK Mallet plugin.
@@ -1699,7 +1710,6 @@ media-sound/rezound:soundtouch - compile with support for soundtouch
 media-sound/rhythmbox:brasero - Enable CD burning via app-cdr/brasero rather than gnome-extra/nautilus-cd-burner
 media-sound/rhythmbox:daap - Enable support for local network music sharing via daap
 media-sound/rhythmbox:mtp - Enable support for MTP devices
-media-sound/rhythmbox:tagwriting - support for tag writing in certain audio files
 media-sound/rosegarden:dssi - Enable support for DSSI Soft Synth Interface
 media-sound/rubyripper:cli - Build command line interface rubyripper
 media-sound/rubyripper:normalize - Add support for normalizing audio file volume levels
@@ -1809,7 +1819,6 @@ media-video/ffmpeg:cpudetection - Enables runtime cpudetection (useful for bindi
 media-video/ffmpeg:dirac - Enable Dirac video support (an advanced royalty-free video compression format) via the reference library: dirac.
 media-video/ffmpeg:faac - Use external faac library for AAC encoding
 media-video/ffmpeg:faad - Use external faad library for AAC decoding (instead of internal libavcodec support)
-media-video/ffmpeg:gsm - Enables support for the gsm lossy speech compression codec via libgsm.
 media-video/ffmpeg:hardcoded-tables - Use pre-calculated tables rather than calculating them on the fly.
 media-video/ffmpeg:mmxext - Enables mmx2 support
 media-video/ffmpeg:network - Enables network streaming support
@@ -2661,6 +2670,7 @@ sci-chemistry/jmol:client-only - Install the viewer only, no applet files for ht
 sci-chemistry/pymol:apbs - Build the apbs plugin tool.
 sci-chemistry/pymol:shaders - Build with Shaders support - good for high-end 3D video cards.
 sci-chemistry/shelx:dosformat - Use CR/LF to end lines; useful in mixed Linux/Windows environments
+sci-electronics/geda-gschem:stroke - enable mouse gesture support
 sci-electronics/gerbv:unit-mm - Set default unit for coordinates in status bar to mm 
 sci-electronics/pcb:xrender - Add support for xrender (x11-libs/libXrender)
 sci-geosciences/gmt:gmtfull - Full resolution bathymetry database
@@ -2704,6 +2714,7 @@ sci-libs/gsl:cblas - Link gsl with external cblas provided by (virtual/cblas)
 sci-libs/hdf5:f90 - Override Fortran for externel compilers
 sci-libs/hdf5:hlapi - Enable support for high-level library
 sci-libs/hdf5:tools - Install support and test tools
+sci-libs/libgeda:threads - Enable (posix) threads for the GTK GUI
 sci-libs/libghemical:mopac7 - Use sci-chemistry/mopac7 for semi-empirical calculations
 sci-libs/libghemical:mpqc - Use sci-chemistry/mpqc for quantum-mechanical calculations
 sci-libs/libnc-dap:full-test - Enables full set of regression tests (long).
@@ -2735,7 +2746,6 @@ sci-libs/vtk:boost - Add support for boost
 sci-libs/vtk:cg - Use nvidia's cg shaders
 sci-libs/vtk:patented - Build patented classes
 sci-mathematics/cgal:taucs - Add support for the sparse solver library sci-libs/taucs
-sci-mathematics/coq:ide - Build the Coq IDE, a clone of proof general using dev-ml/lablgtk
 sci-mathematics/coq:norealanalysis - Do not build real analysis modules (faster compilation)
 sci-mathematics/dataplot:gs - Add Ghostscript support (virtual/ghostscript) 
 sci-mathematics/freemat:arpack - Add sparse eigen value support via sci-libs/arpack
@@ -2951,13 +2961,20 @@ sys-fs/aufs:robr - Enable aufs readonly-branch
 sys-fs/aufs:sec_perm - Enable patch for kernel with CONFIG_SECURITY enabled
 sys-freebsd/freebsd-lib:gpib - Enable General Purpose Interface Bus support
 sys-freebsd/freebsd-lib:hesiod - Enable support for net-dns/hesiod
-sys-freebsd/freebsd-sbin:ipfilter - Enable ipfilter firewall support
+sys-freebsd/freebsd-lib:netware -  Build libraries and tools to work with NetWare protocols (IPX and NCP). 
+sys-freebsd/freebsd-sbin:ipfilter -  Build tools to administer the ipfilter firewall. 
+sys-freebsd/freebsd-sbin:netware -  Build libraries and tools to work with NetWare protocols (IPX and NCP). 
+sys-freebsd/freebsd-sbin:pf -  Build tools to administer the PF firewall. 
 sys-freebsd/freebsd-sbin:vinum - Enable vinum support (TODO improve description)
 sys-freebsd/freebsd-share:isdn - Enable ISDN support
+sys-freebsd/freebsd-ubin:audit -  Build auditing tools. 
+sys-freebsd/freebsd-ubin:netware -  Build libraries and tools to work with NetWare protocols (IPX and NCP). 
+sys-freebsd/freebsd-usbin:audit -  Build auditing tools. 
 sys-freebsd/freebsd-usbin:ipfilter - Enable building of ipfilter firewall support.
 sys-freebsd/freebsd-usbin:ipsec - Enable IPSec support.
 sys-freebsd/freebsd-usbin:isdn - Enable ISDN support.
 sys-freebsd/freebsd-usbin:nat - Enable Network Address Translation support daemon.
+sys-freebsd/freebsd-usbin:netware -  Build libraries and tools to work with NetWare protocols (IPX and NCP). 
 sys-fs/aufs2:debug - Enable additional debugging support
 sys-fs/aufs2:hinotify - Enable hinotify support
 sys-fs/cryptsetup:dynamic - Build cryptsetup dynamically
@@ -3187,7 +3204,8 @@ x11-themes/gentoo-artwork:grub - Install extra sys-boot/grub themes
 x11-themes/gentoo-artwork:icons - Install icons
 x11-themes/gentoo-artwork:lilo - Install extra sys-boot/lilo themes
 x11-themes/gentoo-artwork:pixmaps - Install pixmaps
-x11-themes/gtk-engines-murrine:animation-rtl - progressbar animation from right to left
+x11-themes/gtk-engines-murrine:animation-rtl - Progressbar animation from right to left
+x11-themes/gtk-engines-murrine:themes - Pull in themes via x11-themes/murrine-themes
 x11-themes/gtk-engines-qt:gnome - Enable proper theming of buttons in gnome toolbars (as opposed to just plain gtk+ toolbars)
 x11-themes/gtk-engines-qtcurve:firefox3 - Install GUI theme tweaks for version 3 of www-client/mozilla-firefox 
 x11-themes/gtk-engines-qtcurve:mozilla - Install GUI theme tweaks for mozilla based browsers, including version 2 of www-client/mozilla-firefox 
