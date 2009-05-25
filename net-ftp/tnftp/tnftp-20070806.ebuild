@@ -1,6 +1,6 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-ftp/tnftp/tnftp-20070806.ebuild,v 1.7 2008/06/15 18:39:45 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-ftp/tnftp/tnftp-20070806.ebuild,v 1.8 2009/05/23 14:40:37 swegener Exp $
 
 WANT_AUTOCONF="2.5"
 WANT_AUTOMAKE="none"
@@ -27,6 +27,7 @@ src_unpack() {
 
 	epatch "${FILESDIR}"/${P}-libedit.patch
 	epatch "${FILESDIR}"/${P}-glibc-2.8-ARG_MAX.patch
+	epatch "${FILESDIR}"/${P}-getline.patch
 
 	eautoconf
 }

@@ -1,6 +1,25 @@
 # ChangeLog for app-cdr/cdrdao
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-cdr/cdrdao/ChangeLog,v 1.129 2009/05/10 07:38:42 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-cdr/cdrdao/ChangeLog,v 1.132 2009/05/22 21:32:22 loki_val Exp $
+
+  22 May 2009; Peter Alfredsen <loki_val@gentoo.org>
+  cdrdao-1.2.3_rc2.ebuild:
+  Don't die if FEATURES=distcc, since we no longer compile scsilib on most
+  platforms. Bug 264170.
+
+  22 May 2009; Peter Alfredsen <loki_val@gentoo.org>
+  cdrdao-1.2.3_rc2.ebuild, +files/cdrdao-1.2.3-autoconf-update.patch:
+  Fix bug 270807 by Duncan <1i5t5.duncan@cox.net>. autoreconf needs the
+  gconf-2 macro file even with USE=-gcdmaster. Patched into acinclude.m4.
+
+*cdrdao-1.2.3_rc2 (22 May 2009)
+
+  22 May 2009; Peter Alfredsen <loki_val@gentoo.org>
+  +cdrdao-1.2.3_rc2.ebuild, +files/cdrdao-1.2.3-gcc44.patch,
+  +files/cdrdao-1.2.3-k3b.patch, +files/cdrdao-1.2.3-pkg-config.patch,
+  +files/cdrdao-1.2.3-toc2cue.patch, +files/cdrdao-1.2.3-tocparser.patch:
+  Bump. New version, uses native kernel SG interface when possible. Also
+  fixes bug 270414, glibc-2.10 compat.
 
   10 May 2009; Samuli Suominen <ssuominen@gentoo.org>
   cdrdao-1.2.2-r3.ebuild:
