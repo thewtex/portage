@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4473 2009/05/23 22:47:43 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4476 2009/05/24 23:07:45 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -463,6 +463,7 @@ app-text/crm114:mimencode - Add support for using the mimencode mime (net-mail/m
 app-text/crm114:normalizemime - Add support for using the normalizemime (mail-filter/normalizemime)
 app-text/dictd:dbi - Build dbi plugin, uses dev-db/libdbi library for implementing DICT database using SQL server
 app-text/dictd:judy - Build Judy-based (dev-libs/judy) plugin implementing fast "exact" and especially "lev" strategies
+app-text/dictd:minimal - Don't build server but dict client, dictzip and dictfmt only.
 app-text/docbook-sgml-utils:jadetex - Add support for app-text/jadetex (for processing tex files produced by the TeX backend of Jade)
 app-text/enchant:aspell - Adds support for app-text/aspell spell checker
 app-text/enchant:hunspell - Adds support for app-text/hunspell spell checker
@@ -567,6 +568,12 @@ dev-games/ogre:double-precision - more precise calculations at the expense of sp
 dev-games/ogre:freeimage - image loading support with FreeImage
 dev-games/openscenegraph:osgapps -  Build osg applications 
 dev-games/openscenegraph:xrandr -  Enable support for the X xrandr extension 
+dev-games/physfs:grp - Enable Build Engine GRP archive support
+dev-games/physfs:hog - Enable Descent I/II HOG archive support
+dev-games/physfs:mvl - Enable Descent I/II MVL archive support
+dev-games/physfs:qpak - Enable Quake I/II QPAK archive support
+dev-games/physfs:wad - Enable Doom WAD archive support
+dev-games/physfs:zip - Enable ZIP archive support
 dev-haskell/gtk2hs:glade - Enable gnome-base/libglade bindings compilation
 dev-java/ant:antlr - Enable ANTLR Ant tasks
 dev-java/ant:bcel - Enable bcel (bytecode manipulation) Ant tasks
@@ -2472,6 +2479,7 @@ sci-chemistry/gromacs:fkernels - Enable building of Fortran Kernels for platform
 sci-chemistry/gromacs:single-precision - Single precision version of gromacs
 sci-chemistry/gromacs:zsh-completion - Enable zsh completion support
 sci-chemistry/jmol:client-only - Install the viewer only, no applet files for httpd 
+sci-chemistry/pdb2pqr:opal - Add web interafce via opal
 sci-chemistry/pymol:apbs - Build the apbs plugin tool.
 sci-chemistry/pymol:shaders - Build with Shaders support - good for high-end 3D video cards.
 sci-chemistry/shelx:dosformat - Use CR/LF to end lines; useful in mixed Linux/Windows environments
