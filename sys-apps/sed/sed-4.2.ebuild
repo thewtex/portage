@@ -11,11 +11,10 @@ SRC_URI="mirror://gnu/sed/${P}.tar.bz2"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd"
-IUSE="nls static"
+IUSE="nls static acl"
 
-RDEPEND="nls? ( virtual/libintl )"
-DEPEND="${RDEPEND}
-	nls? ( sys-devel/gettext )"
+RDEPEND="nls? ( virtual/libintl ) acl? ( sys-apps/acl )"
+DEPEND="${RDEPEND} nls? ( sys-devel/gettext )"
 
 src_bootstrap_sed() {
 	# make sure system-sed works #40786
@@ -53,6 +52,7 @@ src_compile() {
 	econf \
 		--bindir=${bindir} \
 		$(use_enable nls) \
+		$(use_enable acl) \
 		${myconf}
 	emake || die "build failed"
 }
