@@ -2,6 +2,10 @@
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
 # $Header: /var/cvsroot/gentoo-x86/sys-apps/sed/ChangeLog,v 1.91 2009/05/20 08:16:00 vapier Exp $
 
+  25 May 2009; Daniel Robbins <drobbins@funtoo.org> sed-4.2.ebuild: Adding
+  missing (R)DEPEND on acl and acl IUSE. This fixes gentoo and funtoo stage1
+  builds which should no longer produce a non- functional sed.
+
 *sed-4.2 (20 May 2009)
 
   20 May 2009; Mike Frysinger <vapier@gentoo.org> +sed-4.2.ebuild:

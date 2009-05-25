@@ -23,7 +23,10 @@ case "${EAPI:-0}" in
 
 		case "${GENTOO_DEPEND_ON_PERL:-yes}" in
 			yes)
-				DEPEND="dev-lang/perl[-build]"
+				# Depending on -build breaks stage1 builds - Daniel Robbins, 23 May 2009
+				# DEPEND="dev-lang/perl[-build]"
+				# So replace it with this:
+				DEPEND="dev-lang/perl"
 				RDEPEND="${DEPEND}"
 				;;
 		esac
