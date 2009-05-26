@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/toolchain.eclass,v 1.397 2009/05/07 01:45:55 halcy0n Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/toolchain.eclass,v 1.399 2009/05/24 16:57:43 armin76 Exp $
 #
 # Maintainer: Toolchain Ninjas <toolchain@gentoo.org>
 
@@ -156,6 +156,7 @@ else
 			tc_version_is_at_least "4.1" && IUSE="${IUSE} objc++"
 			tc_version_is_at_least "4.2" && IUSE="${IUSE} openmp"
 			tc_version_is_at_least "4.3" && IUSE="${IUSE} fixed-point"
+			tc_version_is_at_least "4.4" && IUSE="${IUSE} graphite"
 		fi
 	fi
 
@@ -1311,6 +1312,12 @@ gcc_do_configure() {
 	# users to control this feature in the event they need the support.
 	tc_version_is_at_least "4.3" && confgcc="${confgcc} $(use_enable fixed-point)"
 
+	# graphite support was added in 4.4, which depends upon external libraries
+	# for optimizations.  This option allows users to determine if they want
+	# these optimizations and libraries pulled in
+	tc_version_is_at_least "4.4" && \
+		confgcc="${confgcc} $(use_with graphite ppl) $(use_with graphite cloog)"
+
 
 	[[ $(tc-is-softfloat) == "yes" ]] && confgcc="${confgcc} --with-float=soft"
 
@@ -1393,6 +1400,7 @@ gcc_do_configure() {
 	# create a sparc*linux*-{gcc,g++} that can handle -m32 and -m64 (biarch)
 	if [[ ${CTARGET} == sparc*linux* ]] \
 		&& is_multilib \
+		&& ! is_crosscompile \
 		&& [[ ${GCCMAJOR}.${GCCMINOR} > 4.2 ]]
 	then
 		confgcc="${confgcc} --enable-targets=all"

@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-base/gnome-applets/gnome-applets-2.26.1.ebuild,v 1.2 2009/05/21 19:03:14 nirbheek Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-base/gnome-applets/gnome-applets-2.26.1.ebuild,v 1.4 2009/05/24 14:03:24 nirbheek Exp $
 
 inherit autotools eutils gnome2 python
 
@@ -46,7 +46,10 @@ RDEPEND=">=x11-libs/gtk+-2.13
 		>=dev-python/gnome-applets-python-2.10 )
 	gstreamer?	(
 		>=media-libs/gstreamer-0.10.2
-		>=media-libs/gst-plugins-base-0.10.14 )
+		>=media-libs/gst-plugins-base-0.10.14
+		|| (
+			>=media-plugins/gst-plugins-alsa-0.10.14
+			>=media-plugins/gst-plugins-oss-0.10.14 ) )
 	networkmanager? ( >=net-misc/networkmanager-0.7.0 )
 	policykit? (
 		>=sys-auth/policykit-0.7
@@ -108,8 +111,8 @@ src_test() {
 src_install() {
 	gnome2_src_install
 
-	local APPLETS="accessx-status battstat charpick cpufreq drivemount geyes \
-			 gkb-new gswitchit gweather invest-applet mini-commander \
+	local APPLETS="accessx-status battstat charpick cpufreq drivemount geyes
+			 gkb-new gswitchit gweather invest-applet mini-commander
 			 mixer modemlights multiload null_applet stickynotes trashapplet"
 
 	# modemlights is out because it needs system-tools-backends-1
