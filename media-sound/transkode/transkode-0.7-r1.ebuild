@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/transkode/transkode-0.7-r1.ebuild,v 1.1 2009/02/13 23:38:47 carlo Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/transkode/transkode-0.7-r1.ebuild,v 1.2 2009/05/26 09:05:58 scarabeus Exp $
 
 EAPI="1"
 
@@ -17,7 +17,7 @@ KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="amarok ffmpeg gstreamer mplayer wavpack xine"
 
 RDEPEND="media-libs/taglib
-	amarok? ( media-sound/amarok:0 )
+	amarok? ( media-sound/amarok:3.5 )
 	ffmpeg? ( media-video/ffmpeg )
 	gstreamer? (
 		>=media-libs/gstreamer-0.10
