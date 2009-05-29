@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-dotnet/podsleuth/podsleuth-0.6.4.ebuild,v 1.5 2009/04/30 15:36:02 ranger Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-dotnet/podsleuth/podsleuth-0.6.4.ebuild,v 1.6 2009/05/29 04:32:56 loki_val Exp $
 
 EAPI=2
 
@@ -18,7 +18,7 @@ IUSE=""
 RDEPEND=">=dev-lang/mono-2.0
 	dev-dotnet/dbus-glib-sharp
 	>=sys-apps/hal-0.5.6
-	sys-apps/sg3_utils"
+	<=sys-apps/sg3_utils-1.25"
 DEPEND="${RDEPEND}
 	dev-util/pkgconfig"
 

@@ -1,11 +1,11 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/balsa/balsa-2.3.28.ebuild,v 1.6 2009/05/20 16:54:24 nixnut Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-client/balsa/balsa-2.3.28.ebuild,v 1.7 2009/05/28 21:56:38 eva Exp $
 
 inherit gnome2
 
 DESCRIPTION="Email client for GNOME"
-HOMEPAGE="http://balsa.gnome.org"
+HOMEPAGE="http://pawsa.fedorapeople.org/balsa/"
 SRC_URI="http://balsa.gnome.org/${P}.tar.bz2"
 
 LICENSE="GPL-2"

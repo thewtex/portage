@@ -11,7 +11,7 @@
   </synopsis>
   <product type="ebuild">tomcat</product>
   <announced>April 10, 2008</announced>
-  <revised>April 10, 2008: 01</revised>
+  <revised>May 28, 2009: 02</revised>
   <bug>196066</bug>
   <bug>203169</bug>
   <access>local, remote</access>
@@ -19,6 +19,7 @@
     <package name="www-servers/tomcat" auto="yes" arch="*">
       <unaffected range="rge">5.5.26</unaffected>
       <unaffected range="ge">6.0.16</unaffected>
+      <unaffected range="rge">5.5.27</unaffected>
       <vulnerable range="lt">6.0.16</vulnerable>
     </package>
   </affected>
@@ -33,10 +34,9 @@
     The following vulnerabilities were reported:
     </p>
     <ul>
-    <li>Delian
-    Krustev discovered that the JULI logging component does not properly
-    enforce access restrictions, allowing web application to add or
-    overwrite files (CVE-2007-5342).</li>
+    <li>Delian Krustev discovered that the JULI logging component does not
+    properly enforce access restrictions, allowing web application to add
+    or overwrite files (CVE-2007-5342).</li>
     <li>
     When the native APR connector is used, Tomcat does not properly handle
     an empty request to the SSL port, which allows remote attackers to
@@ -53,7 +53,8 @@
     Tomcat does not properly handle double quote (") characters or %5C
     (encoded backslash) sequences in a cookie value, which might cause
     sensitive information such as session IDs to be leaked to remote
-    attackers and enable session hijacking attacks (CVE-2007-5333).</li>
+    attackers and enable session hijacking attacks
+    (CVE-2007-5333).</li>
     </ul>
   </description>
   <impact type="normal">
