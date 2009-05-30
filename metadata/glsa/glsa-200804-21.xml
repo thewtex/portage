@@ -9,13 +9,13 @@
     Multiple vulnerabilities have been identified, the worst of which allow
     arbitrary code execution on a user's system via a malicious Flash file.
   </synopsis>
-  <product type="ebuild">netscape-flash</product>
+  <product type="ebuild">adobe-flash</product>
   <announced>April 18, 2008</announced>
-  <revised>April 18, 2008: 01</revised>
+  <revised>May 28, 2009: 02</revised>
   <bug>204344</bug>
   <access>remote</access>
   <affected>
-    <package name="net-www/netscape-flash" auto="yes" arch="*">
+    <package name="www-plugins/adobe-flash" auto="yes" arch="*">
       <unaffected range="ge">9.0.124.0</unaffected>
       <vulnerable range="lt">9.0.124.0</vulnerable>
     </package>
@@ -83,7 +83,7 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-www/netscape-flash-9.0.124.0&quot;</code>
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-plugins/adobe-flash-9.0.124.0&quot;</code>
   </resolution>
   <references>
     <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0071">CVE-2007-0071</uri>

@@ -10,12 +10,13 @@
   </synopsis>
   <product type="ebuild">cacti</product>
   <announced>March 10, 2008</announced>
-  <revised>March 10, 2008: 01</revised>
+  <revised>May 28, 2009: 02</revised>
   <bug>209918</bug>
   <access>remote</access>
   <affected>
     <package name="net-analyzer/cacti" auto="yes" arch="*">
       <unaffected range="ge">0.8.7b</unaffected>
+      <unaffected range="rge">0.8.6j-r8</unaffected>
       <vulnerable range="lt">0.8.7b</vulnerable>
     </package>
   </affected>
@@ -28,15 +29,16 @@
     <p>
     The following inputs are not properly sanitized before being processed:
     </p>
-    <ul><li>"view_type" parameter in the file graph.php, "filter"
-    parameter in the file graph_view.php, "action" and "login_username"
-    parameters in the file index.php (CVE-2008-0783).</li>
+    <ul><li>"view_type" parameter in the file graph.php, "filter" parameter
+    in the file graph_view.php, "action" and "login_username" parameters in
+    the file index.php (CVE-2008-0783).</li>
     <li>"local_graph_id" parameter in the file graph.php
     (CVE-2008-0784).</li>
-    <li>"graph_list" parameter in the file
-    graph_view.php, "leaf_id" and "id" parameters in the file tree.php,
-    "local_graph_id" in the file graph_xport.php (CVE-2008-0785).</li>
-    </ul> <p>
+    <li>"graph_list" parameter in the file graph_view.php, "leaf_id" and
+    "id" parameters in the file tree.php, "local_graph_id" in the file
+    graph_xport.php (CVE-2008-0785).</li>
+    </ul>
+    <p>
     Furthermore, CRLF injection attack are possible via unspecified vectors
     (CVE-2008-0786).
     </p>

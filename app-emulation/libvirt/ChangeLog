@@ -1,6 +1,34 @@
 # ChangeLog for app-emulation/libvirt
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/libvirt/ChangeLog,v 1.23 2009/05/21 14:43:36 dev-zero Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/libvirt/ChangeLog,v 1.26 2009/05/28 21:57:26 cardoe Exp $
+
+*libvirt-0.6.3-r3 (28 May 2009)
+
+  28 May 2009; Doug Goldstein <cardoe@gentoo.org> +libvirt-0.6.3-r3.ebuild,
+  +files/libvirt-0.6.3-print-ascii-uuid.patch:
+  upstream patch to not print out the raw uuid and print out an ascii
+  capable copy
+
+*libvirt-0.6.3-r2 (28 May 2009)
+
+  28 May 2009; Doug Goldstein <cardoe@gentoo.org>
+  +files/libvirt-0.6.2-enable-qemu-0-10-migration.patch,
+  +files/libvirt-0.6.2-fix-nosource-label.patch,
+  +files/libvirt-0.6.2-shared-readonly-label.patch,
+  +libvirt-0.6.3-r2.ebuild, +files/libvirt-0.6.3-hostdev-managed.patch,
+  +files/libvirt-0.6.3-refresh-qemu-caps.patch, metadata.xml:
+  Support NUMA segmentation. Fix VirtualBox depend. Require QEMU 0.10.0 and
+  higher for additional QEMU feature support. Several fixes from upstream.
+
+*libvirt-0.6.3-r1 (27 May 2009)
+
+  27 May 2009; Doug Goldstein <cardoe@gentoo.org> +libvirt-0.6.3-r1.ebuild,
+  +files/libvirt-0.6.3-kvm-img.patch:
+  Wrote a patch to support kvm-img and qemu-img. Also made the checks for
+  either happen at run-time instead of build-time which will improve support
+  for people. Submitted upstream at
+  https://bugzilla.redhat.com/show_bug.cgi?id=502956 Additional changes
+  include adding preliminary virtualbox support. Other misc ebuild clean ups
 
 *libvirt-0.6.3 (21 May 2009)
 
