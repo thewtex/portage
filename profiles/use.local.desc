@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4478 2009/05/25 21:07:42 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4484 2009/05/29 02:43:29 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -227,10 +227,12 @@ app-emulation/libvirt:kvm - Add support for app-emulation/kvm based virtual mach
 app-emulation/libvirt:lvm - Add support for the Logical Volume Manager sys-apps/lvm2
 app-emulation/libvirt:lxc - Add support for the Linux Containers
 app-emulation/libvirt:network - Enable networking support for guests
+app-emulation/libvirt:numa - Use NUMA for memory segmenting via sys-process/numactl
 app-emulation/libvirt:openvz - Add support for sys-kernel/openvz-sources OpenVZ-based virtual machines
 app-emulation/libvirt:parted - Add support for the sys-apps/parted partition editor
 app-emulation/libvirt:qemu - Add support for app-emulation/qemu based virtual machines
 app-emulation/libvirt:uml - Add support for User Mode Linux based virtual machines
+app-emulation/libvirt:virtualbox - Adds support for VirtualBox based virtual machines
 app-emulation/libvirt:xen - Add support for app-emulation/xen based virtual machines
 app-emulation/mol:oldworld - Includes Macintosh's OldWorld support
 app-emulation/mol:pci - Experimental PCI proxy support
@@ -1186,7 +1188,6 @@ kde-base/kdegraphics:povray - Install KPovModeler, which needs POV-Ray
 kde-base/kdegraphics-meta:povray - Install kde-base/kpovmodeler, which needs POV-Ray
 kde-base/kdelibs:legacyssl - Support for some deprecated ciphers. Don't use this flag unless you really need it
 kde-base/kdelibs:utempter - Records user logins. Useful on multi-user systems
-kde-base/kdelibs:webkit - Enable QT-WebKit rendering support
 kde-base/kdemultimedia:akode - Support for the aKode audio-decoding frame-work
 kde-base/kdenetwork:sametime - Support for the Sametime protocol for instant messaging
 kde-base/kdepim:gnokii - Address synchronization with mobile phones via Gnokii
@@ -1207,6 +1208,7 @@ kde-base/kopete:autoreplace - Automaticaly replace selected text
 kde-base/kopete:bonjour - Enable Link-Local Messaging via the bonjour protocol.
 kde-base/kopete:connectionstatus - Builds Connection Status plugin
 kde-base/kopete:contactnotes - Enables writing personal notes for contacts.
+kde-base/kopete:emoticons-manager - Enables emoticons theme manager so that the user can edit and remove emoticons or add custom ones etc
 kde-base/kopete:gadu - Enable the Gadu protocol handler.
 kde-base/kopete:groupwise - Enable the Groupwise protocol handler.
 kde-base/kopete:highlight - Allows you to specify highlights on specific events.
@@ -1439,6 +1441,8 @@ media-gfx/k3d:3ds - Enable support for 3D Studio models
 media-gfx/k3d:cuda - Use nvidia cuda toolkit for speeding up computations
 media-gfx/k3d:gts - Add Support for the GNU Triangulated Surface Library sci-libs/gts
 media-gfx/k3d:plib - build plib-based import/export library
+media-gfx/kphotoalbum:geolocation - Add support for kde-base/marble
+media-gfx/kphotoalbum:kipi - Support for the KDE Image Plugin Interface
 media-gfx/maya:bundled-libs -  Use the bundled versions of libs rather than system ones (libstdc++, libgcc_s, libqt, and libXm) 
 media-gfx/maya:maya-shaderlibrary -  Install the maya shader library 
 media-gfx/openscenegraph:coin - Compile media-libs/coin plugin
@@ -1868,6 +1872,8 @@ media-video/mplayer:mng - MNG input support
 media-video/mplayer:mp2 - Enables support for twolame, an MP2 audio library
 media-video/mplayer:nemesi - Enable Nemesi Streaming Media support
 media-video/mplayer:network - Enables network streaming support
+media-video/mplayer:nut - Enables support for the NUT container format
+media-video/mplayer:osdmenu - Enables support for on-screen display (OSD) menus
 media-video/mplayer:pnm - Add PNM video output option, to create PPM/PGM/PGMYUV images
 media-video/mplayer:pvr - Enable Video4Linux2 MPEG PVR
 media-video/mplayer:radio - Enable V4L2 radio interface and support
@@ -1876,6 +1882,7 @@ media-video/mplayer:real - Adds real audo/video support
 media-video/mplayer:realcodecs - External Real Player binary codec support (UNSUPPORTED)
 media-video/mplayer:rtc - Enables usage of the linux real time clock. The alternative is software emulation of rtc
 media-video/mplayer:schroedinger - Enable Dirac video support (an advanced royalty-free video compression format) via libschroedinger (high-speed implementation in C of the Dirac codec).
+media-video/mplayer:shm - Enable support for shm
 media-video/mplayer:ssse3 - faster floating point optimization for SSSE3 capable chips (Intel Core 2 and later chips)
 media-video/mplayer:teletext - Support for TV teletext interface
 media-video/mplayer:tga - Enables Targa video output

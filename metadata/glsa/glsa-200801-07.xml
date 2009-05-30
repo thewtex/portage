@@ -9,13 +9,13 @@
     Multiple vulnerabilities have been identified, the worst of which allow
     arbitrary code execution on a user's system via a malicious Flash file.
   </synopsis>
-  <product type="ebuild">netscape-flash</product>
+  <product type="ebuild">adobe-flash</product>
   <announced>January 20, 2008</announced>
-  <revised>January 20, 2008: 02</revised>
+  <revised>May 28, 2009: 03</revised>
   <bug>193519</bug>
   <access>remote</access>
   <affected>
-    <package name="net-www/netscape-flash" auto="yes" arch="*">
+    <package name="www-plugins/adobe-flash" auto="yes" arch="*">
       <unaffected range="ge">9.0.115.0</unaffected>
       <vulnerable range="lt">9.0.115.0</vulnerable>
     </package>
@@ -72,7 +72,7 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=net-www/netscape-flash-9.0.115.0&quot;</code>
+    # emerge --ask --oneshot --verbose &quot;&gt;=www-plugins/adobe-flash-9.0.115.0&quot;</code>
     <p>
     Please be advised that unaffected packages of the Adobe Flash Player
     have known problems when used from within the Konqueror and Opera

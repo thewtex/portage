@@ -1,5 +1,5 @@
-dev-lang/python >=dev-util/subversion-1.0.9 virtual/python
-dev-lang/python >=dev-util/subversion-1.0.9 app-text/rcs
+dev-lang/python >=dev-util/subversion-1.0.9 test? ( || ( dev-lang/python[berkdb] dev-lang/python[gdbm] ) ) virtual/python
+dev-lang/python >=dev-util/subversion-1.0.9 app-text/rcs test? ( || ( dev-lang/python[berkdb] dev-lang/python[gdbm] ) )
 0
 http://cvs2svn.tigris.org/files/documents/1462/44372/cvs2svn-2.2.0.tar.gz
 
@@ -8,13 +8,13 @@ GPL-2
 Convert a CVS repository to a Subversion repository
 ~alpha ~amd64 ~ia64 ~ppc ~x86
 alternatives distutils eutils multilib portability python toolchain-funcs
+test
 
 
 
+2
 
-
-
-compile install postinst postrm test unpack
+compile install postinst postrm prepare setup test unpack
 
 
 

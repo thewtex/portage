@@ -1,13 +1,13 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/qt-core/qt-core-4.5.1.ebuild,v 1.5 2009/05/15 18:38:43 klausman Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/qt-core/qt-core-4.5.1.ebuild,v 1.7 2009/05/28 11:56:21 dagger Exp $
 
 EAPI="2"
 inherit qt4-build
 
 DESCRIPTION="The Qt toolkit is a comprehensive C++ application development framework"
 SLOT="4"
-KEYWORDS="alpha ~amd64 ~arm ~hppa ~ia64 ~mips ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="alpha ~amd64 arm ~hppa ~ia64 ~mips ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 IUSE="doc +glib +iconv +qt3support +ssl"
 
 RDEPEND="sys-libs/zlib
@@ -48,6 +48,9 @@ src/3rdparty/md5/
 src/3rdparty/sha1/
 src/script/
 translations/"
+
+#patch for ia64 requested from armin76
+PATCHES=( "${FILESDIR}/${PN}-4.5-boilerplate.diff" )
 
 pkg_setup() {
 	qt4-build_pkg_setup

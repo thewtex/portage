@@ -1,9 +1,8 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-cdr/cdrdao/cdrdao-1.2.2-r3.ebuild,v 1.7 2009/04/12 18:01:25 ranger Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-cdr/cdrdao/cdrdao-1.2.2-r3.ebuild,v 1.9 2009/05/28 04:58:04 jer Exp $
 
 EAPI=2
-
 inherit eutils flag-o-matic eutils
 
 DESCRIPTION="Burn CDs in disk-at-once mode -- with optional GUI frontend"
@@ -12,7 +11,7 @@ SRC_URI="mirror://sourceforge/cdrdao/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~hppa ia64 ppc ppc64 sh sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 sh sparc x86 ~x86-fbsd"
 IUSE="gcdmaster debug encode pccts"
 
 RDEPEND="virtual/cdrtools
@@ -26,6 +25,12 @@ RDEPEND="virtual/cdrtools
 DEPEND="${RDEPEND}
 	pccts? ( >=dev-util/pccts-1.33.24-r1 )
 	!app-cdr/cue2toc"
+
+pkg_setup() {
+	if hasq distcc ${FEATURES}; then
+		die "Please emerge without distcc in FEATURES, see bug #264170."
+	fi
+}
 
 src_prepare() {
 	# Use O_EXCL to avoid conflict with HAL, bug 193603.

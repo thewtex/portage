@@ -11,15 +11,15 @@
   </synopsis>
   <product type="ebuild">chmlib kchmviewer</product>
   <announced>November 28, 2005</announced>
-  <revised>November 28, 2005: 01</revised>
+  <revised>May 28, 2009: 03</revised>
   <bug>110557</bug>
   <access>remote</access>
   <affected>
-    <package name="app-doc/chmlib" auto="yes" arch="*">
+    <package name="dev-libs/chmlib" auto="yes" arch="*">
       <unaffected range="ge">0.37.4</unaffected>
       <vulnerable range="lt">0.37.4</vulnerable>
     </package>
-    <package name="app-doc/kchmviewer" auto="yes" arch="*">
+    <package name="app-text/kchmviewer" auto="yes" arch="*">
       <unaffected range="ge">1.1</unaffected>
       <vulnerable range="lt">1.1</vulnerable>
     </package>
@@ -57,13 +57,13 @@
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-doc/chmlib-0.37.4&quot;</code>
+    # emerge --ask --oneshot --verbose &quot;&gt;=dev-libs/chmlib-0.37.4&quot;</code>
     <p>
     All KchmViewer users should upgrade to the latest version:
     </p>
     <code>
     # emerge --sync
-    # emerge --ask --oneshot --verbose &quot;&gt;=app-doc/kchmviewer-1.1&quot;</code>
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-text/kchmviewer-1.1&quot;</code>
   </resolution>
   <references>
     <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3318">CVE-2005-3318</uri>

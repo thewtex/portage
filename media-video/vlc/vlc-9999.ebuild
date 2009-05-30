@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/vlc/vlc-9999.ebuild,v 1.7 2009/04/16 17:25:23 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/vlc/vlc-9999.ebuild,v 1.9 2009/05/27 05:27:47 aballier Exp $
 
 EAPI="1"
 
@@ -83,7 +83,7 @@ RDEPEND="
 		fontconfig? ( media-libs/fontconfig )
 		ggi? ( media-libs/libggi )
 		gnome? ( gnome-base/gnome-vfs )
-		gnutls? ( >=net-libs/gnutls-1.3.3 )
+		gnutls? ( >=net-libs/gnutls-1.7.4 )
 		hal? ( sys-apps/hal )
 		id3tag? ( media-libs/libid3tag
 			sys-libs/zlib )
@@ -113,7 +113,7 @@ RDEPEND="
 		ogg? ( media-libs/libogg )
 		pda? ( x11-libs/gtk+:2 )
 		png? ( media-libs/libpng )
-		pulseaudio? ( >=media-sound/pulseaudio-0.9.8 )
+		pulseaudio? ( >=media-sound/pulseaudio-0.9.11 )
 		qt4? ( x11-libs/qt-gui:4 x11-libs/qt-core:4 )
 		remoteosd? ( >=dev-libs/libgcrypt-1.2.0 )
 		samba? ( net-fs/samba )

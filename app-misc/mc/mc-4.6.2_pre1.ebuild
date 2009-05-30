@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/mc/mc-4.6.2_pre1.ebuild,v 1.8 2009/05/24 21:59:33 arfrever Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/mc/mc-4.6.2_pre1.ebuild,v 1.10 2009/05/28 17:45:05 arfrever Exp $
 
 EAPI=1
 
@@ -32,8 +32,9 @@ RDEPEND=">=dev-libs/glib-2
 	app-arch/zip
 	app-arch/unzip"
 DEPEND="${RDEPEND}
+	dev-util/pkgconfig
 	nls? ( sys-devel/gettext )
-	dev-util/pkgconfig"
+	unicode? ( virtual/libiconv )"
 
 S=${WORKDIR}/${MY_P}
 
@@ -69,7 +70,7 @@ src_unpack() {
 			for file in "doc/${lingua}/xnc.hlp" "lib/mc.hint.${lingua}" "lib/mc.menu.${lingua}"; do
 				if [[ -f "${file}" ]]; then
 					mv "${file}" "${file}.${old_encoding}"
-					iconv -f ${old_encoding} -t UTF-8 -o "${file}" "${file}.${old_encoding}" || die "iconv ${file} failed"
+					iconv -f ${old_encoding} -t UTF-8 "${file}.${old_encoding}" > "${file}" || die "iconv ${file} failed"
 				fi
 			done
 		done

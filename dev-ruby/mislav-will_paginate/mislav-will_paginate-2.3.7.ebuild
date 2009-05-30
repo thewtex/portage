@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/mislav-will_paginate/mislav-will_paginate-2.3.7.ebuild,v 1.3 2009/05/20 12:00:16 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/mislav-will_paginate/mislav-will_paginate-2.3.7.ebuild,v 1.4 2009/05/26 18:27:33 graaff Exp $
 
 EAPI=2
 
@@ -19,7 +19,7 @@ SRC_URI="http://github.com/mislav/will_paginate/tarball/v${PV} -> ${P}.tgz"
 USE_RUBY="ruby18"
 
 DEPEND="doc? ( dev-ruby/rake )
-	test? ( dev-ruby/rake )"
+	test? ( dev-ruby/rake dev-ruby/mocha )"
 RDEPEND=">=dev-ruby/activesupport-1.4.4"
 
 S="${WORKDIR}"
