@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4489 2009/05/29 18:07:47 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4494 2009/05/30 22:27:49 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -696,6 +696,7 @@ dev-libs/STLport:boost - Enable the usage of dev-libs/boost
 dev-libs/ace:ciao - Include Component Intergraced Ace ORB into the build of ace
 dev-libs/ace:tao - Include the ACE ORB (CORBA stuff) (called tao) into the build of ace
 dev-libs/apr:urandom - Use /dev/urandom instead of /dev/random
+dev-libs/boolstuff:static - Enable static linking
 dev-libs/boost:bcp - Install the bcp tool http://www.boost.org/tools/bcp/bcp.html
 dev-libs/boost:bjam - Install the BoostJam tool http://www.boost.org/tools/build/jam_src/index.html
 dev-libs/boost:eselect - Run "eselect boost update" even if version is already selected
@@ -1727,6 +1728,7 @@ media-video/mplayer:dxr3 - Enable DXR3/H+ video output
 media-video/mplayer:enca - Enables support for charset discovery and conversion
 media-video/mplayer:faac - Use external faac library for AAC encoding
 media-video/mplayer:faad - Use external faad library for AAC decoding
+media-video/mplayer:gmplayer - Build gmplayer, a GTK+ MPlayer gui (UNSUPPORTED)
 media-video/mplayer:gtk - Build gmplayer, a GTK+ MPlayer gui (UNSUPPORTED)
 media-video/mplayer:live - Enables live.com streaming media support
 media-video/mplayer:md5sum - Enables md5sum video output
@@ -2026,6 +2028,8 @@ net-firewall/nufw:nfqueue - Use NFQUEUE instead of QUEUE
 net-firewall/nufw:pam_nuauth - Add support for pam nufw from PAM
 net-firewall/nufw:plaintext - Add support for authentication with plaintext files
 net-fs/netatalk:xfs - Enable support for XFS Quota
+net-fs/nfs-utils:nfsv3 - Enable support for NFSv3
+net-fs/nfs-utils:nfsv4 - Enable support for NFSv4
 net-fs/nfs-utils:nonfsv4 - Disable support for NFSv4
 net-fs/samba:ads - Enable Active Directory support
 net-fs/samba:async - Enables asynchronous input/output
@@ -2057,7 +2061,6 @@ net-ftp/pure-ftpd:noiplog - Disables logging of IP addresses
 net-ftp/pure-ftpd:paranoidmsg - Display paranoid messages instead of normal ones
 net-ftp/pure-ftpd:vchroot - Enable support for virtual chroot (possible security risk)
 net-ftp/twoftpd:breakrfc - Break RFC compliance to allow control symbols in filenames (required for some (e.g. cp1251) encodings, use with caution).
-net-ftp/vsftpd:logrotate - Use app-admin/logrotate for rotating logs
 net-im/bitlbee:nss - Use NSS for SSL support in MSN and Jabber.
 net-im/centerim:gadu - Enable support for the Gadu-Gadu protocol
 net-im/centerim:irc - Enable support for the IRC protocol
@@ -2170,6 +2173,7 @@ net-libs/aqbanking:hbci -  Enable support for HBCI
 net-libs/aqbanking:yellownet -  Enable support for Yellownet 
 net-libs/courier-authlib:vpopmail - Enable vpopmail support
 net-libs/cvm:vpopmail - Enable vpopmail support
+net-libs/iax:snomhack - Use slower memset for SNOM phoneem
 net-libs/libesmtp:ssl -  Enable support for advanced SMTP authentication methods, like NTML and STARTTLS. Also use OpenSSL's MD5 implementation over internal version. 
 net-libs/libetpan:liblockfile - Enable support for liblockfile library
 net-libs/libfwbuilder:bind - Use bind's name resolving library
@@ -2252,7 +2256,6 @@ net-misc/curl:ares - Enabled c-ares dns support
 net-misc/curl:libssh2 - Enabled SSH urls in curl using libssh2
 net-misc/curl:nss - Use NSS as the crypto engine
 net-misc/dhcpcd:compat - Enable commandline compability with dhcpcd-3.x
-net-misc/dhcpcd:vram - Disable DUID due to volatile media, such as a LiveCD
 net-misc/directvnc:mouse - Adds mouse support
 net-misc/drivel:rhythmbox - Enables support for currently playing song in rhythmbox
 net-misc/dropbear:bsdpty - Add support for legacy BSD pty's rather than dynamic UNIX pty's -- do not use this flag unless you are absolutely sure you actually want it
@@ -2641,6 +2644,7 @@ sys-apps/hal:doc - Generates documentation that describes HAL's fdi format.
 sys-apps/hal:laptop - Adds support for power management scripts (sys-power/pm-utils)
 sys-apps/hal:pcmcia - Allows HAL to process PCMCIA/CardBus slot data which includes inserts and removals and act on these events.
 sys-apps/hal:selinux - Installs SELinux policies and links HAL to the SELinux libraries.
+sys-apps/halevt:rpath - Hardcode runtime library paths
 sys-apps/hwdata-gentoo:binary-drivers - Adds support for ATI/NVIDIA binary drivers
 sys-apps/ipmitool:openipmi - Use the system OpenIPMI implementation.
 sys-apps/kexec-tools:xen - Enable extended xen support

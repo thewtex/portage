@@ -1,10 +1,23 @@
 # ChangeLog for profile directory
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.2711 2009/05/30 01:26:38 darkside Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.2716 2009/05/31 05:05:49 vapier Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  31 May 2009; Mike Frysinger <vapier@gentoo.org> package.mask:
+  Automake-1.11 does not belong in p.mask.
+
+  30 May 2009; Steve Dibb <beandog@gentoo.org>
+  default-linux/amd64/package.use.mask, default-linux/x86/package.use.mask:
+  mask mplayer + libnut dep on all but x86/amd64
+
+  30 May 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask media-sound/kguitar for removal wrt #258919.
+
+  30 May 2009; Ben de Groot <yngwin@gentoo.org> package.mask:
+  Mask =sys-apps/hal-0.5.12_rc1-r5 as it breaks X with hal, bug 217837
 
   30 May 2009; Jeremy Olexa <darkside@gentoo.org> package.mask:
   Add entries for treecleaner queue
