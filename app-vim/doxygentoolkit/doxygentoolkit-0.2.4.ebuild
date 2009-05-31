@@ -6,7 +6,7 @@ inherit vim-plugin
 DESCRIPTION="Simplify Doxygen documentation in C, C++, Python."
 HOMEPAGE="http://www.vim.org/scripts/script.php?script_id=987"
 LICENSE=""
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 VIM_PLUGIN_HELPFILES=""
