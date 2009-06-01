@@ -1,13 +1,13 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/kontact/kontact-3.5.10.ebuild,v 1.1 2008/09/13 23:59:19 carlo Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/kontact/kontact-3.5.10.ebuild,v 1.3 2009/06/01 01:17:51 tampakrap Exp $
 
 KMNAME=kdepim
 EAPI="1"
 inherit kde-meta eutils
 
 DESCRIPTION="KDE personal information manager"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 IUSE=""
 
 DEPEND=">=kde-base/libkdepim-${PV}:${SLOT}
@@ -32,6 +32,6 @@ KMEXTRA="
 pkg_postinst() {
 	kde_pkg_postinst
 
-	elog "If you're using x11-misc/basket, please re-emerge it now to avoid crashes with ${PN}."
+	elog "If you're using kde-misc/basket, please re-emerge it now to avoid crashes with ${PN}."
 	elog "cf. https://bugs.gentoo.org/show_bug.cgi?id=174872 for details."
 }

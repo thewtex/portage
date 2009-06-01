@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/charm/charm-5.9.ebuild,v 1.16 2009/05/30 09:10:54 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/charm/charm-5.9.ebuild,v 1.17 2009/06/01 04:32:10 je_fro Exp $
 
 inherit eutils toolchain-funcs flag-o-matic
 
@@ -24,6 +24,8 @@ DEPEND="
 				dev-texlive/texlive-latexextra )
 			app-text/ptex )
 	)"
+
+RDEPEND="${DEPEND}"
 
 CHARM_ARCH="net-linux"
 CHARM_DOWNLOAD="http://charm.cs.uiuc.edu/download/"
