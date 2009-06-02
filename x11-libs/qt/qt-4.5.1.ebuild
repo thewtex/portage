@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/qt/qt-4.5.1.ebuild,v 1.5 2009/05/28 11:35:05 dagger Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/qt/qt-4.5.1.ebuild,v 1.7 2009/05/30 19:26:45 yngwin Exp $
 
 EAPI=2
 DESCRIPTION="The Qt toolkit is a comprehensive C++ application development framework"

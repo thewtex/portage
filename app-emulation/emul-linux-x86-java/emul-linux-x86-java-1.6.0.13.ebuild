@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/emul-linux-x86-java/emul-linux-x86-java-1.6.0.13.ebuild,v 1.2 2009/04/02 21:59:55 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/emul-linux-x86-java/emul-linux-x86-java-1.6.0.13.ebuild,v 1.4 2009/05/29 20:34:25 caster Exp $
 
 inherit versionator pax-utils java-vm-2 eutils
 
@@ -9,7 +9,7 @@ UPDATE="${UPDATE#0}"
 MY_PV="$(get_version_component_range 2)u${UPDATE}"
 
 At="jdk-${MY_PV}-dlj-linux-i586.bin"
-DESCRIPTION="32bit version Sun's J2SE Runtime Environment"
+DESCRIPTION="Sun's Java SE Runtime Environment (32bit)"
 HOMEPAGE="http://java.sun.com/javase/6/"
 #SRC_URI="http://download.java.net/dlj/binaries/${At}"
 SRC_URI="http://dlc.sun.com/dlj/binaries/${At}"
@@ -32,6 +32,7 @@ QA_TEXTRELS_amd64="opt/${P}/lib/i386/motif21/libmawt.so
 	opt/${P}/lib/i386/libdeploy.so
 	opt/${P}/lib/i386/client/libjvm.so
 	opt/${P}/lib/i386/server/libjvm.so"
+QA_DT_HASH="opt/${P}/.*"
 
 src_unpack() {
 	mkdir bundled-jdk

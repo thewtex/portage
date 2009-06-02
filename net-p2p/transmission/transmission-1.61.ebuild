@@ -63,8 +63,6 @@ src_install() {
 		cd qt
 		emake INSTALL_ROOT="${D}/usr" install || die "emake install failed"
 	fi
-	newinitd "${FILESDIR}"/transmission-daemon-1.52.initd transmission-daemon
-	newconfd "${FILESDIR}"/transmission-daemon-1.52.confd transmission-daemon
 }
 
 pkg_preinst() {
@@ -74,10 +72,6 @@ pkg_preinst() {
 pkg_postinst() {
 	fdo-mime_desktop_database_update
 	gnome2_icon_cache_update
-	echo
-	einfo "Please edit /etc/conf.d/transmission-daemon instead of settings.json"
-	einfo "to configure this new transmission ebuild."
-	echo
 }
 
 pkg_postrm() {

@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/xmlrpc-c/xmlrpc-c-1.18.02.ebuild,v 1.8 2009/05/04 17:38:39 loki_val Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/xmlrpc-c/xmlrpc-c-1.18.02.ebuild,v 1.11 2009/05/31 19:41:04 maekke Exp $
 
 EAPI=2
 
@@ -10,7 +10,7 @@ DESCRIPTION="A lightweigt RPC library based on XML and HTTP"
 SRC_URI="mirror://gentoo/${PN}/${P}.tar.bz2"
 HOMEPAGE="http://xmlrpc-c.sourceforge.net/"
 
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~ppc ppc64 ~s390 ~sh ~sparc x86"
 IUSE="+curl +cxx tools +cgi abyss threads"
 LICENSE="BSD"
 SLOT="0"
@@ -30,6 +30,10 @@ pkg_setup() {
 #Bug 214137: We need to filter this.
 unset SRCDIR
 
+# Bug 255440
+export LC_ALL=C
+export LANG=C
+
 PATCHES=(
 	"${FILESDIR}/${P}/dumpvalue.patch"
 	"${FILESDIR}/${P}/cpp-depends.patch"
@@ -41,8 +45,8 @@ src_prepare() {
 
 	# Respect the user's CFLAGS/CXXFLAGS.
 	sed -i \
-		-e "/CFLAGS_COMMON/s:-g -O3$:${CFLAGS}:" \
-		-e "/CXXFLAGS_COMMON/s:-g$:${CXXFLAGS}:" \
+		-e "/CFLAGS_COMMON/s|-g -O3$|${CFLAGS}|" \
+		-e "/CXXFLAGS_COMMON/s|-g$|${CXXFLAGS}|" \
 		"${S}"/common.mk || die "404. File not found while sedding"
 }
 

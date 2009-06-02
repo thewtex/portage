@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/iproute2/iproute2-2.6.28.ebuild,v 1.2 2009/01/18 18:21:32 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/iproute2/iproute2-2.6.28.ebuild,v 1.6 2009/05/31 19:59:26 maekke Exp $
 
 inherit eutils toolchain-funcs
 
@@ -17,7 +17,7 @@ else
 	fi
 	MY_P="${PN}-${MY_PV}"
 	SRC_URI="http://developer.osdl.org/dev/iproute2/download/${MY_P}.tar.bz2"
-	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh -sparc ~x86"
+	KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~m68k ~mips ppc ~ppc64 ~s390 ~sh -sparc x86"
 	S=${WORKDIR}/${MY_P}
 fi
 
@@ -33,7 +33,7 @@ RDEPEND="!net-misc/arpd
 	atm? ( net-dialup/linux-atm )"
 DEPEND="${RDEPEND}
 	elibc_glibc? ( >=sys-libs/glibc-2.7 )
-	>=virtual/os-headers-2.6.28"
+	>=virtual/os-headers-2.6.27"
 
 src_unpack() {
 	if [[ ${PV} == "9999" ]] ; then
@@ -45,7 +45,7 @@ src_unpack() {
 	sed -i "s:-O2:${CFLAGS} ${CPPFLAGS}:" Makefile || die "sed Makefile failed"
 
 	# build against system headers
-	rm -r include/linux include/netinet #include/ip{,6}tables{,_common}.h include/libiptc
+	rm -r include/netinet #include/linux include/ip{,6}tables{,_common}.h include/libiptc
 
 	epatch "${FILESDIR}"/${PN}-2.6.26-ldflags.patch #236861
 

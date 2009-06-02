@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4484 2009/05/29 02:43:29 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4502 2009/06/01 04:49:19 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -158,7 +158,6 @@ app-doc/doxygen:nodot - removes graphviz dependency, along with dot graphs
 app-doc/gimp-help:webinstall - optimize images for web installation (fewer colors, depends on media-gfx/imagemagick)
 app-doc/linuxfromscratch:htmlsingle - Also install all-in-one-page HTML version
 app-doc/pms:all-options - Include both sides of kdebuild conditionals, shown in different colours (PDF only)
-app-doc/pms:eapi3-draft - Include work-in-progress draft EAPI 3 specification.
 app-doc/pms:html - Generate PMS as .html as well
 app-doc/pms:kdebuild - Include specification for the kdebuild EAPI, see http://www.gentoo.org/proj/en/desktop/kde/kdebuild-1.xml
 app-editors/cssed:plugins - Install plugin development files
@@ -660,6 +659,7 @@ dev-java/qtjambi:phonon - Enable bindings to QT Phonon
 dev-java/qtjambi:webkit - Enable bindings to QT Webkit
 dev-java/qtjambi:xmlpatterns - Enable bindings to QT xmlpatterns
 dev-java/rxtx:lfd - Installs and uses LockFileServer daemon (lfd)
+dev-java/sun-jdk:derby - Enable Installation of Bundled Derby (Java DB)
 dev-java/sun-jdk:jce - Enable Java Cryptographic Extension Unlimited Strength Policy files
 dev-lang/brainwash:char - Compile with support for unsigned character (instead of signed integer) cells
 dev-lang/erlang:hipe - HIgh Performance Erlang extension
@@ -710,7 +710,6 @@ dev-lang/php:xmlreader - Enable XMLReader support
 dev-lang/php:xmlwriter - Enable XMLWriter support
 dev-lang/php:zip - Enable ZIP file support
 dev-lang/php:zip-external - Enable ZIP file support (external PECL extension)
-dev-lang/python:nothreads - Disable threads (DON'T USE THIS UNLESS YOU KNOW WHAT YOU'RE DOING)
 dev-lang/python:ucs2 - Enable byte size 2 unicode (DON'T USE THIS UNLESS YOU KNOW WHAT YOU'RE DOING)
 dev-lang/python:wininst - Install required Windows executables to create an executable installer for MS Windows.
 dev-lang/ruby:rubytests - Install ruby tests that can only be run after ruby is installed
@@ -730,6 +729,7 @@ dev-libs/STLport:boost - Enable the usage of dev-libs/boost
 dev-libs/ace:ciao - Include Component Intergraced Ace ORB into the build of ace
 dev-libs/ace:tao - Include the ACE ORB (CORBA stuff) (called tao) into the build of ace
 dev-libs/apr:urandom - Use /dev/urandom instead of /dev/random
+dev-libs/boolstuff:static - Enable static linking
 dev-libs/boost:bcp - Install the bcp tool http://www.boost.org/tools/bcp/bcp.html
 dev-libs/boost:bjam - Install the BoostJam tool http://www.boost.org/tools/build/jam_src/index.html
 dev-libs/boost:eselect - Run "eselect boost update" even if version is already selected
@@ -1131,7 +1131,6 @@ gnome-base/nautilus:tracker - Enables support for searching using the Tracker (a
 gnome-base/nautilus:xmp - Adds support for XMP metadata
 gnome-extra/avant-window-navigator:xfce - Enables support for the XFCE 4 desktop environment
 gnome-extra/file-browser-applet:gtkhotkey - Enable hotkey support via x11-libs/gtkhotkey
-gnome-extra/gnome-do-plugins:amarok - Enables the Amarok (media-sound/amarok) plugin
 gnome-extra/gnome-do-plugins:banshee - Enables the Banshee (media-sound/banshee) plugin
 gnome-extra/gnome-games:artworkextra - Installs extra artwork for various games
 gnome-extra/gnome-lirc-properties:policykit - Use sys-auth/policykit to gain privileges to change configuration files
@@ -1141,6 +1140,7 @@ gnome-extra/gnome-power-manager:policykit - Enable sys-auth/policykit authentica
 gnome-extra/gtkhtml:glade - Provide integration with dev-util/glade.
 gnome-extra/libgda:mdb - Enables Microsoft Access DB support
 gnome-extra/libgda:xbase - Enables support for xbase databases (dBase, FoxPro, etc.)
+gnome-extra/music-applet:mpd - Enable MPD support
 gnome-extra/nautilus-sendto:balsa - Enables support for mail-client/balsa
 gnome-extra/nautilus-sendto:claws - Enables support for mail-client/claws
 gnome-extra/nautilus-sendto:eds - Enables support for evolution-sendto using gnome-extra/evolution-data-server
@@ -1514,7 +1514,6 @@ media-libs/sge:image - enable sdl-image support
 media-libs/spandsp:sse3 - Enable SSE3 support
 media-libs/spandsp:sse4a - Enable SSE4a support
 media-libs/spandsp:sse5 - Enable SSE5 support
-media-libs/speex:vorbis-psy - Enable Vorbis-style psychoacoustics
 media-libs/svgalib:kernel-helper - Build the helper kernel module
 media-libs/swfdec:alsa - Use ALSA for audio output
 media-libs/swfdec:doc - Build documentation
@@ -1538,6 +1537,7 @@ media-libs/xine-lib:vidix -  Enable support for vidix video output.
 media-libs/xine-lib:vis -  Adds support for SIMD optimizations for UltraSPARC processors. 
 media-libs/xine-lib:win32codecs -  Enable support for loading and using Windows 32-bit binary codecs on x86 Linux and FreeBSD. Enabling this USE flag might make the package non-redistributable in binary form. 
 media-libs/xine-lib:xvmc -  Enable support for XVideo Motion Compensation (accelerated mpeg playback). 
+media-libs/xvid:pic - disable optimized assembly code that is not PIC friendly
 media-plugins/audacious-plugins:adplug - Build with AdPlug (Adlib sound card emulation) support
 media-plugins/audacious-plugins:cdaudio - Enable cd audio playback support
 media-plugins/audacious-plugins:chardet - Try to handle non-UTF8 chinese/japanese/korean ID3 tags
@@ -1864,6 +1864,7 @@ media-video/mplayer:dxr3 - Enable DXR3/H+ video output
 media-video/mplayer:enca - Enables support for charset discovery and conversion
 media-video/mplayer:faac - Use external faac library for AAC encoding
 media-video/mplayer:faad - Use external faad library for AAC decoding
+media-video/mplayer:gmplayer - Build gmplayer, a GTK+ MPlayer gui (UNSUPPORTED)
 media-video/mplayer:gtk - Build gmplayer, a GTK+ MPlayer gui (UNSUPPORTED)
 media-video/mplayer:live - Enables live.com streaming media support
 media-video/mplayer:md5sum - Enables md5sum video output
@@ -2070,7 +2071,6 @@ net-analyzer/scapy:pyx - Enable dev-python/pyx support for psdump/pdfdump comman
 net-analyzer/scapy:visual - Enable dev-python/visual support for 3d graphs
 net-analyzer/smokeping:speedy - Use dev-perl/SpeedyCGI instead of perl to speed up cgi scripts
 net-analyzer/snort:aruba - Enable Aruba support
-net-analyzer/snort:community-rules - Include Community rules
 net-analyzer/snort:decoder-preprocessor-rules - 
 net-analyzer/snort:dynamicplugin - Enable ability to dynamically load preprocessors, detection engine, and rules library
 net-analyzer/snort:flexresp - Enable new connection tearing (not recommended)
@@ -2084,10 +2084,6 @@ net-analyzer/snort:mpls - Enable support for mpls networks
 net-analyzer/snort:perfprofiling - Enable preprocessor and rule performance profiling
 net-analyzer/snort:ppm - Enable ppm support
 net-analyzer/snort:react - Enable interception and termination of offending HTTP accesses
-net-analyzer/snort:ruleperf - Enable ruleperf support
-net-analyzer/snort:sguil - Enable sguil (The Analyst Console for Network Security Monitoring) support
-net-analyzer/snort:snortsam - patches net-analyzer/snort for use with net-analyzer/snortsam
-net-analyzer/snort:stream4udp - Enable stream4udp support
 net-analyzer/snort:targetbased - Enable targetbased support
 net-analyzer/snort:timestats - Enable TimeStats functionality
 net-analyzer/symon:perl - Enables a generic perl symux client
@@ -2141,7 +2137,7 @@ net-dns/avahi:bookmarks - Install the avahi-bookmarks application (requires dev-
 net-dns/avahi:howl-compat - Enable compat libraries for howl
 net-dns/avahi:mdnsresponder-compat - Enable compat libraries for mDNSResponder
 net-dns/bind:dlz - Enables dynamic loaded zones, 3rd party extension
-net-dns/bind:resolvconf - Enable support for net-dns/resolvconf
+net-dns/bind:resolvconf - Enable support for net-dns/openresolv
 net-dns/bind:sdb-ldap - Enables ldap-sdb backend
 net-dns/bind:urandom - Use /dev/urandom instead of /dev/random
 net-dns/djbdns:aliaschain - Enables a fix for the truncation of alias chains
@@ -2183,6 +2179,8 @@ net-firewall/nufw:nfqueue - Use NFQUEUE instead of QUEUE
 net-firewall/nufw:pam_nuauth - Add support for pam nufw from PAM
 net-firewall/nufw:plaintext - Add support for authentication with plaintext files
 net-fs/netatalk:xfs - Enable support for XFS Quota
+net-fs/nfs-utils:nfsv3 - Enable support for NFSv3
+net-fs/nfs-utils:nfsv4 - Enable support for NFSv4
 net-fs/nfs-utils:nonfsv4 - Disable support for NFSv4
 net-fs/samba:ads - Enable Active Directory support
 net-fs/samba:async - Enables asynchronous input/output
@@ -2214,7 +2212,6 @@ net-ftp/pure-ftpd:noiplog - Disables logging of IP addresses
 net-ftp/pure-ftpd:paranoidmsg - Display paranoid messages instead of normal ones
 net-ftp/pure-ftpd:vchroot - Enable support for virtual chroot (possible security risk)
 net-ftp/twoftpd:breakrfc - Break RFC compliance to allow control symbols in filenames (required for some (e.g. cp1251) encodings, use with caution).
-net-ftp/vsftpd:logrotate - Use app-admin/logrotate for rotating logs
 net-im/bitlbee:nss - Use NSS for SSL support in MSN and Jabber.
 net-im/centerim:gadu - Enable support for the Gadu-Gadu protocol
 net-im/centerim:irc - Enable support for the IRC protocol
@@ -2253,6 +2250,7 @@ net-im/kadu:sms - Enables SMS sending plugin
 net-im/kadu:speech - Enables speech module
 net-im/kadu:vlc - Enables media-video/vlc media player support
 net-im/kadu:voice - Enables voice chat
+net-im/kmess:konqueror - Enable integration with konqueror
 net-im/mcabber:otr -  Enable encrypted conversations using Off-The-Records messaging 
 net-im/naim:screen - Enable screen support
 net-im/pidgin:bonjour - Enable bonjour support
@@ -2266,6 +2264,7 @@ net-im/pidgin:zephyr - Enable Zephyr protocol support
 net-im/psi:audacious - Enable monitoring of audio tracks that are played in (media-sound/audacious) 
 net-im/psi:extras - Enables extra non official patches
 net-im/psi:insecure-patches - Enables extra non official patches that may pose as a security risk 
+net-im/psimedia:demo -  build simple test application for the PsiMedia system. 
 net-im/pyaim-t:webinterface - Install dependencies needed for the web interface 
 net-im/pyicq-t:webinterface - Install dependencies needed for the web interface 
 net-im/sim:gpg - Enable gpg plugin to adds GnuPG encryption/decryption support for messages 
@@ -2325,6 +2324,7 @@ net-libs/aqbanking:hbci -  Enable support for HBCI
 net-libs/aqbanking:yellownet -  Enable support for Yellownet 
 net-libs/courier-authlib:vpopmail - Enable vpopmail support
 net-libs/cvm:vpopmail - Enable vpopmail support
+net-libs/iax:snomhack - Use slower memset for SNOM phoneem
 net-libs/libesmtp:ssl -  Enable support for advanced SMTP authentication methods, like NTML and STARTTLS. Also use OpenSSL's MD5 implementation over internal version. 
 net-libs/libetpan:liblockfile - Enable support for liblockfile library
 net-libs/libfwbuilder:bind - Use bind's name resolving library
@@ -2415,7 +2415,6 @@ net-misc/curl:ares - Enabled c-ares dns support
 net-misc/curl:libssh2 - Enabled SSH urls in curl using libssh2
 net-misc/curl:nss - Use NSS as the crypto engine
 net-misc/dhcpcd:compat - Enable commandline compability with dhcpcd-3.x
-net-misc/dhcpcd:vram - Disable DUID due to volatile media, such as a LiveCD
 net-misc/directvnc:mouse - Adds mouse support
 net-misc/drivel:rhythmbox - Enables support for currently playing song in rhythmbox
 net-misc/dropbear:bsdpty - Add support for legacy BSD pty's rather than dynamic UNIX pty's -- do not use this flag unless you are absolutely sure you actually want it
@@ -2457,7 +2456,7 @@ net-misc/networkmanager:connection-sharing - Use net-dns/dnsmasq and net-firewal
 net-misc/networkmanager:dhclient - Use dhclient from net-misc/dhcp for getting ip.
 net-misc/networkmanager:dhcpcd - Use net-misc/dhcpcd for getting ip.
 net-misc/networkmanager:nss - Use dev-libs/nss for cryptography.
-net-misc/networkmanager:resolvconf - Use net-dns/openresolv for managing DNS informations
+net-misc/networkmanager:resolvconf - Use net-dns/openresolv for managing DNS information
 net-misc/ntp:openntpd - Allow ntp to be installed alongside openntpd
 net-misc/ntp:parse-clocks - Add support for PARSE clocks
 net-misc/nxcl:nxclient - Use nxssh from net-misc/nxclient instead of standard ssh
@@ -2510,7 +2509,7 @@ net-misc/vinagre:applet - Enable vinagre applet for gnome-base/gnome-panel.
 net-misc/vnc:server - Build VNC server
 net-misc/vnc:xorgmodule - Build the Xorg module
 net-misc/vpnc:hybrid-auth - Enable hybrid authentication (certificates), only if not redistributed as compiled binary
-net-misc/vpnc:resolvconf - Enable support for DNS managing framework net-dns/resolvconf
+net-misc/vpnc:resolvconf - Enable support for DNS managing framework net-dns/openresolv
 net-misc/wicd:ioctl - Installs additional python libraries to use as a backend. This will improve speed but is experimental.
 net-misc/wicd:ncurses - Installs a ncurses UI
 net-misc/x2goserver:fuse - Use sys-fs/sshfs-fuse to allow shared folders
@@ -2837,6 +2836,7 @@ sys-apps/hal:doc - Generates documentation that describes HAL's fdi format.
 sys-apps/hal:laptop - Adds support for power management scripts (sys-power/pm-utils)
 sys-apps/hal:pcmcia - Allows HAL to process PCMCIA/CardBus slot data which includes inserts and removals and act on these events.
 sys-apps/hal:selinux - Installs SELinux policies and links HAL to the SELinux libraries.
+sys-apps/halevt:rpath - Hardcode runtime library paths
 sys-apps/hwdata-gentoo:binary-drivers - Adds support for ATI/NVIDIA binary drivers
 sys-apps/ipmitool:openipmi - Use the system OpenIPMI implementation.
 sys-apps/kexec-tools:xen - Enable extended xen support
@@ -2908,6 +2908,7 @@ sys-boot/grub:multislot - Allow grub1 and grub2 to be installed simultaneously
 sys-boot/lilo:device-mapper - Enable support for sys-fs/device-mapper
 sys-boot/lilo:pxeserial - Avoid character echo on PXE serial console
 sys-cluster/charm:cmkopt - Enable CMK optimisation
+sys-cluster/charm:icc - Use Intel compiler to build package
 sys-cluster/charm:tcp - Use TCP (instead of UPD) for socket communication
 sys-cluster/heartbeat:ldirectord - Adds support for ldiretord, use enabled because it has a lot of deps
 sys-cluster/heartbeat:management - Adds support for management GUI.
