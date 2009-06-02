@@ -1,9 +1,8 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/transmission/transmission-1.60.ebuild,v 1.2 2009/05/05 11:52:36 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/transmission/transmission-1.61-r1.ebuild,v 1.1 2009/05/12 23:21:40 ssuominen Exp $
 
 EAPI=2
-
 inherit autotools fdo-mime gnome2-utils qt4
 
 DESCRIPTION="A Fast, Easy and Free BitTorrent client"
@@ -34,12 +33,10 @@ src_prepare() {
 }
 
 src_configure() {
-	local myconf="--disable-dependency-tracking --with-wx-config=no"
-
 	econf \
+		--disable-dependency-tracking \
 		$(use_enable gtk) \
-		$(use_enable libnotify) \
-		${myconf}
+		$(use_enable libnotify)
 
 	if use qt4; then
 		cd qt
@@ -61,8 +58,9 @@ src_install() {
 
 	dodoc AUTHORS NEWS
 	rm -f "${D}"/usr/share/${PN}/web/LICENSE
-	newinitd "${FILESDIR}"/transmission-daemon-1.52.initd transmission-daemon
-	newconfd "${FILESDIR}"/transmission-daemon-1.52.confd transmission-daemon
+
+	newinitd "${FILESDIR}"/${PN}-daemon.initd ${PN}-daemon
+	newconfd "${FILESDIR}"/${PN}-daemon.confd ${PN}-daemon
 
 	if use qt4; then
 		cd qt
@@ -77,10 +75,6 @@ pkg_preinst() {
 pkg_postinst() {
 	fdo-mime_desktop_database_update
 	gnome2_icon_cache_update
-	echo
-	einfo "Please edit /etc/conf.d/transmission-daemon instead of settings.json"
-	einfo "to configure this new transmission ebuild."
-	echo
 }
 
 pkg_postrm() {
