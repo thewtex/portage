@@ -1,15 +1,15 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/virtual/libffi/libffi-0.ebuild,v 1.1 2008/07/03 16:15:27 hkbst Exp $
+# $Header: /var/cvsroot/gentoo-x86/virtual/libffi/libffi-0.ebuild,v 1.4 2009/06/01 13:14:01 fmccor Exp $
 
 DESCRIPTION="Virtual for libffi"
-HOMEPAGE=""
+HOMEPAGE="http://www.gentoo.org"
 SRC_URI=""
 
 LICENSE=""
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~sparc ~x86"
 IUSE=""
 
-DEPEND="dev-libs/libffi"
 RDEPEND="dev-libs/libffi"
+DEPEND=""

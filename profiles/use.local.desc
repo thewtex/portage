@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4502 2009/06/01 04:49:19 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4511 2009/06/02 01:47:47 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -504,6 +504,7 @@ app-text/webgen:exif - Enable EXIF information in image galleries
 app-text/webgen:highlight - Enable syntax highlighting for certain plugins
 app-text/webgen:markdown - Markdown support
 app-text/webgen:thumbnail - Thumbnail creation support using rmagick
+app-text/wgetpaste:zsh-completion - Install zsh command completion
 app-text/wklej:vim - Install vim plugin allowing to paste from vim by :Wklej
 app-text/xpdf:nodrm - Disable the drm feature decoder
 app-vim/gentoo-syntax:ignore-glep31 - Remove GLEP 31 (UTF-8 file encodings) settings 
@@ -715,6 +716,7 @@ dev-libs/ferrisloki:stlport - Include support for dev-libs/STLport
 dev-libs/geoip:perl-geoipupdate - Install pure perl version of geoipupdate, with Proxy Server support via via the "http_proxy" environment variable and easy to customize.
 dev-libs/klibc:n32 - Force klibc to 32bit if on mips64 if not n32 userland
 dev-libs/libcdio:minimal -  Only build the libcdio library and little more, just to be used to link against from multimedia players. With this USE flag enabled, none of the command-line utilities are built, nor is the CDDA library. 
+dev-libs/libffi:static-libs - Compile static archives
 dev-libs/libgcrypt:idea - Use the patented IDEA algorithm
 dev-libs/libjit:interpreter - Enable the libjit interpreter
 dev-libs/libjit:long-double - Enable the use of long double for jit_nfloat
@@ -790,8 +792,15 @@ dev-php5/php-gtk:html - Enable GtkHTML2 support
 dev-php5/php-gtk:libsexy - Enable libsexy support
 dev-php5/php-gtk:mozembed - Enable GtkMozembed support
 dev-php5/php-gtk:scintilla - Enable Scintilla support
-dev-python/PyQt4:qt3support - enable the Qt3Support libraries for Qt4
-dev-python/PyQt4:webkit - enable WebKit support
+dev-python/PyQt4:X - Build the QtGui and QtDesigner modules
+dev-python/PyQt4:assistant - Build the QtHelp and QtAssistant modules
+dev-python/PyQt4:opengl - Build the QtOpenGL module
+dev-python/PyQt4:phonon - Build the phonon module
+dev-python/PyQt4:qt3support - Enable the Qt3Support libraries for Qt4
+dev-python/PyQt4:sql - Build the QtSql module
+dev-python/PyQt4:svg - Build the QtSvg module
+dev-python/PyQt4:webkit - Build the QtWebKit module
+dev-python/PyQt4:xmlpatterns - Build the QtXmlPatterns module
 dev-python/cgkit:3ds - Enable support for importing 3D Studio models
 dev-python/dap:server - Enable OpenDAP server support
 dev-python/docutils:glep - Install support for GLEPs
@@ -855,6 +864,7 @@ dev-util/anjuta:devhelp - Enable devhelp integration
 dev-util/anjuta:glade - Build glade plugin for anjuta
 dev-util/anjuta:inherit-graph - Build inheritance graphing plugin for anjuta
 dev-util/anjuta:sourceview - Build sourceview editing plugin for anjuta
+dev-util/anjuta:symbol-db - Enable symbol database plugin for anjuta
 dev-util/anjuta:valgrind - Build valgrind plugin for anjuta
 dev-util/astyle:libs - builds and installs both shared and static library interfaces
 dev-util/buildbot:irc - Add support for status delivery through an ircbot.
@@ -1342,6 +1352,7 @@ media-gfx/pstoedit:emf -  enables media-libs/libemf support
 media-gfx/showimg:kipi -  Support for the KDE Image Plugin Interface. 
 media-gfx/splashutils:fbcondecor -  Support for the fbcondecor kernel patch. 
 media-gfx/ufraw:contrast -  enable the experimental contrast setting option 
+media-gfx/ufraw:lensfun -  enable the lensfun lens-correction library 
 media-gfx/ufraw:timezone -  enable DST correction for file timestamps 
 media-libs/a52dec:djbfft - Prefer D.J. Bernstein's library for fourier transforms
 media-libs/allegro:vga - Enables the VGA graphics driver
@@ -1392,6 +1403,7 @@ media-libs/panda3d:nspr - Enables support for the Netscape Portable Runtime, use
 media-libs/ploticus:cpulimit - Limit cpu usage when generating graphics
 media-libs/ploticus:flash - Adds support for creating SWF files using Ming
 media-libs/ploticus:svgz - Compressed svg graphics support
+media-libs/resid:static-libs - Compile static archives
 media-libs/sdif:ftruncate - Enables usage of ftruncate v. truncate
 media-libs/sdl-sound:physfs - Enable physfs support
 media-libs/sge:image - enable sdl-image support
@@ -1503,6 +1515,7 @@ media-sound/cmus:zsh-completion - enable zsh completion support
 media-sound/darkice:twolame - Build with twolame support
 media-sound/decibel-audio-player:cdaudio - Adds support for CD audio playback and lookups via CDDB
 media-sound/dir2ogg:wma - Add support for wma files through mplayer
+media-sound/esound:static-libs - Compile static archives
 media-sound/exaile:libsexy - Enable libsexy support
 media-sound/exaile:mtp - Enable libmtp support
 media-sound/fapg:xspf - Enable support for saving XSPF playlists.
@@ -1915,6 +1928,7 @@ net-analyzer/net-snmp:sendmail - Enable sendmail statistics monitoring
 net-analyzer/net-snmp:smux - Enable the smux MIBS module
 net-analyzer/pchar:pcap - Use the net-libs/libpcap library
 net-analyzer/pmacct:64bit - Use 64bit counters instead of 32bit ones
+net-analyzer/rrdtool:nls - Enable native language support (using intltool)
 net-analyzer/rrdtool:rrdcgi - Build rrdcgi support
 net-analyzer/sancp:sguil - Enable sguil (The Analyst Console for Network Security Monitoring) support
 net-analyzer/scanlogd:nids - Use net-libs/libnids for packet capturing
@@ -2708,7 +2722,6 @@ sys-boot/grub:multislot - Allow grub1 and grub2 to be installed simultaneously
 sys-boot/lilo:device-mapper - Enable support for sys-fs/device-mapper
 sys-boot/lilo:pxeserial - Avoid character echo on PXE serial console
 sys-cluster/charm:cmkopt - Enable CMK optimisation
-sys-cluster/charm:icc - Use Intel compiler to build package
 sys-cluster/charm:tcp - Use TCP (instead of UPD) for socket communication
 sys-cluster/heartbeat:ldirectord - Adds support for ldiretord, use enabled because it has a lot of deps
 sys-cluster/heartbeat:management - Adds support for management GUI.
@@ -2961,6 +2974,8 @@ x11-libs/wxGTK:gstreamer -  Enable the wxMediaCtrl class for playing audio and v
 x11-libs/wxGTK:sdl -  Use Simple Directmedia Layer (media-libs/libsdl) for audio. 
 x11-misc/adesklets:ctrlmenu - force CTRL to be pressed to fire context menu
 x11-misc/fbpager:xrender - Enable transparency support via x11-libs/libXrender
+x11-misc/google-gadgets:soup - Enables XML HTTP request extension based on net-libs/libsoup
+x11-misc/google-gadgets:webkit - Enables browser element and script runtime based on net-libs/webkit-gtk
 x11-misc/notification-daemon-xfce:xfce - Enable integration in XFCE desktop
 x11-misc/openclipart:gzip - Compresses clip art using gzip
 x11-misc/slim:screenshot - Enable screenshot support (using media-gfx/imagemagick)

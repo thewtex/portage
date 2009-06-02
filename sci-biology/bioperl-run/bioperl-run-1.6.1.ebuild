@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/bioperl-run/bioperl-run-1.6.1.ebuild,v 1.2 2009/05/13 15:49:54 weaver Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/bioperl-run/bioperl-run-1.6.1.ebuild,v 1.4 2009/06/01 16:22:04 weaver Exp $
 
 EAPI="2"
 
@@ -16,7 +16,9 @@ LICENSE="Artistic GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="-minimal test"
-SRC_TEST="do"
+#SRC_TEST="do"
+
+RESTRICT="test"
 
 CDEPEND=">=sci-biology/bioperl-${MY_PV}
 	!minimal? (

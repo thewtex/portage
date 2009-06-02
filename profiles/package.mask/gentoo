@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.9861 2009/05/31 18:44:45 tove Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.9870 2009/06/01 22:17:18 dang Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -31,6 +31,21 @@
 
 #--- END OF EXAMPLES ---
 
+# Serkan Kaba <serkan@gentoo.org> (01 Jun 2009)
+# Last-rited Bug #272117
+# Hard depends on Java 1.4 (Bug #118291)
+dev-java/adaptx
+
+# Samuli Suominen <ssuominen@gentoo.org> (01 Jun 2009)
+# arts is leaving the house
+media-sound/creox
+
+# Samuli Suominen <ssuominen@gentoo.org> (01 Jun 2009)
+# virtual/libffi needs to be keyworded before unmasking wrt #272046.
+x11-libs/gtk-server
+>=dev-libs/g-wrap-1.9.11
+>=dev-scheme/guile-gnome-platform-2.16.0
+
 # Torsten Veller <tove@gentoo.org> (31 May 2009)
 # IniConf.pm is going away, and will be replaced with
 # Config::IniFiles. Masked for removal.
@@ -47,6 +62,7 @@ media-sound/kguitar
 # Ben de Groot <yngwin@gentoo.org> (30 May 2009)
 # Breaks X for hal users, bug 271837
 =sys-apps/hal-0.5.12_rc1-r5
+=sys-apps/hal-0.5.12_rc1-r6
 
 # Jeremy Olexa <darkside@gentoo.org> (30 May 2009)
 # Masked for removal in 60 days, unmaintained. Binary package in /usr. bug
@@ -57,6 +73,22 @@ app-misc/cbtracker
 # Masked for removal in 60 days. Multiple bugs, doesn't build, version bump
 # pending, unmaintained. bug 265668
 sys-libs/libuser
+# These depend on libuser:
+app-admin/firstboot
+sys-apps/usermode
+# These depend on usermode:
+app-admin/authconfig
+app-admin/hwbrowser
+app-admin/system-config-date
+app-admin/system-config-display
+app-admin/system-config-httpd
+app-admin/system-config-keyboard
+app-admin/system-config-language
+app-admin/system-config-nfs
+app-admin/system-config-printer
+app-admin/system-config-samba
+app-admin/system-config-soundcard
+app-admin/system-config-users
 
 # Jeremy Olexa <darkside@gentoo.org> (30 May 2009)
 # Masked for removal in 60 days. Multiple bugs, upstream is dead, crashes with
@@ -122,9 +154,10 @@ dev-tcltk/tclcl
 >=x11-libs/xcb-util-0.3.4
 =x11-wm/awesome-3.3*
 
-# Peter Alfredsen <loki_val@gentoo.org> (26 May 2009)
+# Peter Alfredsen <loki_val@gentoo.org> (01 June 2009)
 # Development version, Work-In-Progress
 =app-misc/tomboy-0.15*
+=media-sound/banshee-1.5*
 
 # Peter Volkov <pva@gentoo.org> (26 May 2009)
 # Force people to downgrade and use better version
@@ -866,14 +899,6 @@ net-irc/bitchx
 # User's who need to test these should unmask explicitly.
 =sys-fs/btrfs-9999
 =sys-fs/btrfs-progs-9999
-
-# Maintainer Needed <maintainer-needed@gentoo.org> (05 Jun 2008)
-# Masked for testing wrt #163724
-dev-libs/libffi
-x11-libs/gtk-server
-virtual/libffi
->=dev-libs/g-wrap-1.9.11
->=dev-scheme/guile-gnome-platform-2.16.0
 
 # Peter Alfredsen <loki_val@gentoo.org> (04 Jun 2008)
 # o Fails its own tests in horrendous ways (buuh!)
