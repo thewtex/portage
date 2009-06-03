@@ -1,6 +1,6 @@
-# Copyright 1999-2006 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/gtk-server/gtk-server-2.0.12.ebuild,v 1.1 2006/08/17 03:47:29 mkennedy Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/gtk-server/gtk-server-2.0.12.ebuild,v 1.3 2009/06/01 13:23:59 fmccor Exp $
 
 inherit eutils
 
@@ -9,11 +9,11 @@ HOMEPAGE="http://www.turtle.dds.nl/gtk-server/index.html"
 SRC_URI="mirror://sourceforge/gtk-server/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 IUSE=""
 
 RDEPEND="=x11-libs/gtk+-2*
-	dev-libs/libffi"
+	virtual/libffi"
 DEPEND=">=sys-devel/autoconf-2.60
 	${RDEPEND}"
 
