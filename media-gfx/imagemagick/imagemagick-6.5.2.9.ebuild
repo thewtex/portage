@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/imagemagick/imagemagick-6.5.2.9.ebuild,v 1.6 2009/05/31 15:51:00 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/imagemagick/imagemagick-6.5.2.9.ebuild,v 1.8 2009/06/02 22:24:31 maekke Exp $
 
 EAPI="2"
 
@@ -19,7 +19,7 @@ SRC_URI="mirror://imagemagick/${MY_P2}.tar.bz2
 RESTRICT="perl? ( userpriv )"
 LICENSE="imagemagick"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm hppa ~ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 ~arm hppa ~ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~x86-fbsd"
 IUSE="bzip2 +corefonts djvu doc fontconfig fpx graphviz gs hdri jbig jpeg jpeg2k
 	lcms nocxx openexr openmp perl png q8 q32 raw svg tiff truetype X wmf xml zlib"
 
@@ -56,7 +56,6 @@ RDEPEND="bzip2? ( app-arch/bzip2 )
 
 DEPEND="${RDEPEND}
 	>=sys-apps/sed-4
-	openmp? ( >=sys-devel/gcc-4.3.0[openmp] )
 	X? ( x11-proto/xextproto )"
 
 S="${WORKDIR}/${MY_P2}"
@@ -98,6 +97,20 @@ src_configure() {
 		myconf="${myconf} --without-rsvg"
 	fi
 
+	#openmp support only works with >=sys-devel/gcc-4.3
+	# see bug #223825
+	if use openmp && built_with_use --missing false sys-devel/gcc openmp; then
+		if [[ "$(gcc-version)" == "4.2" ]] ; then
+			ewarn "you need >=sys-devel/gcc-4.3 to be able to use openmp, disabling."
+			myconf="${myconf} --disable-openmp"
+		else
+			myconf="${myconf} --enable-openmp"
+		fi
+	else
+		elog "disabling openmp support (gcc is not built with openmp support)"
+		myconf="${myconf} --disable-openmp"
+	fi
+
 	use truetype && myconf="${myconf} $(use_with corefonts windows-font-dir /usr/share/fonts/corefonts)"
 
 	econf \
@@ -123,7 +136,6 @@ src_configure() {
 		$(use_with jpeg2k jp2) \
 		$(use_with lcms) \
 		$(use_with openexr) \
-		$(use_enable openmp) \
 		$(use_with png) \
 		$(use_with svg rsvg) \
 		$(use_with tiff) \

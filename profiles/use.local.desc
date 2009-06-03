@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4511 2009/06/02 01:47:47 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4515 2009/06/03 02:37:59 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -1078,6 +1078,7 @@ gnustep-base/gnustep-back-cairo:glitz - Build with media-libs/glitz support
 gnustep-base/gnustep-back-cairo:xim - Enable X11 XiM input method
 gnustep-base/gnustep-back-xlib:xim - Enable X11 XiM input method
 gnustep-base/gnustep-base:gcc-libffi - Use dev-libs/libffi from sys-devel/gcc instead of dev-libs/ffcall. Requires sys-devel/gcc built with USE=libffi
+gnustep-base/gnustep-base:libffi - Use dev-libs/libffi instead of dev-libs/ffcall
 gnustep-base/gnustep-make:native-exceptions - Enables use of the native Objective-C exception support (@try/@catch/@finally) built-in objective-c exceptions with compilers that support it 
 kde-base/ark:archive - Enable support for a variety of archive formats through libarchive
 kde-base/ark:zip - Enable zip support through LibZip
@@ -1347,6 +1348,7 @@ media-gfx/kphotoalbum:geolocation - Add support for kde-base/marble
 media-gfx/kphotoalbum:kipi - Support for the KDE Image Plugin Interface
 media-gfx/maya:bundled-libs -  Use the bundled versions of libs rather than system ones (libstdc++, libgcc_s, libqt, and libXm) 
 media-gfx/maya:maya-shaderlibrary -  Install the maya shader library 
+media-gfx/openclipart:gzip - Compresses clip art using gzip
 media-gfx/potrace:metric -  default to a4 paper size and metric measurement 
 media-gfx/pstoedit:emf -  enables media-libs/libemf support 
 media-gfx/showimg:kipi -  Support for the KDE Image Plugin Interface. 
@@ -2851,6 +2853,7 @@ sys-power/suspend:crypt - Allows suspend and resume from encrypted disk
 sys-power/suspend:fbsplash - Add support for framebuffer splash
 sys-process/cronie:inotify - Enable inotify filesystem monitoring support.
 sys-process/procps:n32 - Enable n32 ABI support on mips
+virtual/libffi:static-libs - Compile static archives
 virtual/poppler-utils:abiword -  Enable support for app-office/abiword output. Requires dev-libs/libxml2. 
 www-apache/mod_ftpd:dbi - Enables dev-db/libdbi support
 www-apache/mod_log_sql:dbi - Enables dev-db/libdbi support
@@ -2977,7 +2980,6 @@ x11-misc/fbpager:xrender - Enable transparency support via x11-libs/libXrender
 x11-misc/google-gadgets:soup - Enables XML HTTP request extension based on net-libs/libsoup
 x11-misc/google-gadgets:webkit - Enables browser element and script runtime based on net-libs/webkit-gtk
 x11-misc/notification-daemon-xfce:xfce - Enable integration in XFCE desktop
-x11-misc/openclipart:gzip - Compresses clip art using gzip
 x11-misc/slim:screenshot - Enable screenshot support (using media-gfx/imagemagick)
 x11-misc/vnc2swf:x11vnc - Install script that depends on x11vnc
 x11-misc/x11vnc:system-libvncserver - Build x11vnc against the system libvncserver (experimental)
