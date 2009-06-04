@@ -18,10 +18,6 @@ IUSE="3dnow 3dnowext alsa altivec amr custom-cflags debug dirac doc ieee1394
 	  +encode faac faad gsm ipv6 mmx mmxext +vorbis test +theora threads +x264
 	  +xvid network +zlib sdl X mp3 oss schroedinger hardcoded-tables bindist
 	  v4l v4l2 speex ssse3 vhook jpeg2k"
-IUSE="+3dnow +3dnowext alsa altivec amr custom-cflags debug dirac doc ieee1394
-	  +encode faac faad gsm ipv6 +mmx +mmxext vorbis test theora threads x264
-	  xvid network zlib sdl X mp3 oss schroedinger +hardcoded-tables bindist
-	  v4l v4l2 speex +ssse3 vhook jpeg2k"
 
 RDEPEND="vhook? ( >=media-libs/imlib2-1.4.0 >=media-libs/freetype-2 )
 	sdl? ( >=media-libs/libsdl-1.2.10 )
