@@ -2,6 +2,15 @@
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
 # $Header: /var/cvsroot/gentoo-x86/dev-lang/perl/ChangeLog,v 1.282 2009/05/29 13:26:28 tove Exp $
 
+*perl-5.10.0-r1 (3 Jun 2009)
+
+  03 Jun 2009; Daniel Robbins <drobbins@funtoo.org> +perl-5.10.0-r1.ebuild:
+  This new revision of perl-5.10 contains a small build fix that results in
+  <arch>-linux/Config.pm referencing "gcc" rather than "i?86-pc-linux-gnu-gcc"
+  which should fix some stage build issues when we switch compilers from, say,
+  i486-pc-linux-gnu-gcc to i686-pc-linux-gnu-gcc. Without this fix, some perl
+  modules are unable to find the new compiler.
+
   29 May 2009; Torsten Veller <tove@gentoo.org> perl-5.8.8-r6.ebuild,
   perl-5.8.8-r7.ebuild, +files/perl-5.8.8-fix_file_path_chdir.patch:
   Add another File-Path fix

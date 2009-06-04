@@ -174,7 +174,7 @@ src_configure() {
 		-Darchname="${myarch}" \
 		-Dcccdlflags='-fPIC' \
 		-Dccdlflags='-rdynamic' \
-		-Dcc="$(tc-getCC)" \
+		-Dcc="gcc" \
 		-Dprefix='/usr' \
 		-Dvendorprefix='/usr' \
 		-Dsiteprefix='/usr' \
