@@ -1,8 +1,8 @@
-# Copyright 1999-2007 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/lltag/lltag-0.14.2.ebuild,v 1.1 2007/12/16 13:41:17 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/lltag/lltag-0.14.2.ebuild,v 1.3 2009/06/05 16:28:15 ssuominen Exp $
 
-inherit perl-module
+inherit eutils perl-module
 
 DESCRIPTION="Automatic command-line mp3/ogg/flac file tagger and renamer"
 HOMEPAGE="http://home.gna.org/lltag"
@@ -19,16 +19,22 @@ RDEPEND="dev-lang/perl
 	ogg? ( media-sound/vorbis-tools )
 	flac? ( media-libs/flac )
 	readline? ( dev-perl/Term-ReadLine-Perl )"
+DEPEND="${RDEPEND}"
+
+src_unpack() {
+	perl-module_src_unpack
+	epatch "${FILESDIR}"/${P}-manpage.patch
+}
 
 src_compile() {
 	emake PREFIX=/usr SYSCONFDIR=/etc MANDIR=/usr/share/man \
-	PERL_INSTALLDIRS=vendor || die "Failed to compile"
+	PERL_INSTALLDIRS=vendor || die "emake failed"
 }
 
 src_install() {
 	emake DESTDIR="${D}/" PREFIX=/usr SYSCONFDIR=/etc MANDIR=/usr/share/man \
 	PERL_INSTALLDIRS=vendor DOCDIR=/usr/share/doc/${P} install \
-	install-doc install-man || die "Failed to install"
+	install-doc install-man || die "emake install failed"
 	fixlocalpod
 	dodoc Changes
 }

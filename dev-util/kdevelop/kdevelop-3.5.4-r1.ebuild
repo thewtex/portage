@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/kdevelop/kdevelop-3.5.4-r1.ebuild,v 1.2 2009/05/25 19:50:57 tampakrap Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/kdevelop/kdevelop-3.5.4-r1.ebuild,v 1.5 2009/06/06 18:11:24 nixnut Exp $
 
 EAPI="2"
 
@@ -16,7 +16,7 @@ SRC_URI="mirror://kde/stable/3.5.10/src/${P}.tar.bz2
 LICENSE="GPL-2"
 
 SLOT="3.5"
-KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~amd64 ~hppa ppc ~ppc64 ~sparc ~x86"
 IUSE="ada clearcase cvs fortran haskell java pascal perforce perl php python ruby sql subversion"
 
 DEPEND="!<dev-util/kdevelop-3.5.4-r1
@@ -31,7 +31,8 @@ DEPEND="${DEPEND}
 
 need-kde 3.5
 
-PATCHES=( "${FILESDIR}/kdevelop-3.5-lexer.patch"
+PATCHES=( "${FILESDIR}/kdevelop-3.5-gcc4.4.patch"
+	"${FILESDIR}/kdevelop-3.5-lexer.patch"
 	"${FILESDIR}/kdevelop-3.5-parallel.patch"
 	"${WORKDIR}/kdevelop-3.5-libtool.m4.in.patch"
 	"${WORKDIR}/kdevelop-3.5-ltmain.sh.patch" )
@@ -84,7 +85,7 @@ src_install() {
 
 	# Default to exuberant-ctags so that we don't end up trying to run emacs's
 	# ctags.
-	cat <<-EOF >> "${D}/usr/share/config/kdeveloprc"
+	cat <<-EOF >> "${D}${KDEDIR}/share/config/kdeveloprc"
 
 	[CTAGS]
 	ctags binary=/usr/bin/exuberant-ctags

@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libffi/libffi-3.0.8.ebuild,v 1.4 2009/06/02 22:30:17 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libffi/libffi-3.0.8.ebuild,v 1.9 2009/06/05 15:06:54 fmccor Exp $
 
 EAPI=2
 inherit eutils
@@ -11,11 +11,12 @@ SRC_URI="ftp://sourceware.org/pub/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh sparc ~x86"
 IUSE="debug static-libs test"
 
 RDEPEND=""
-DEPEND="test? ( dev-util/dejagnu )"
+DEPEND="!<dev-libs/g-wrap-1.9.11
+	test? ( dev-util/dejagnu )"
 
 src_configure() {
 	econf \

@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/treeline/treeline-1.2.2.ebuild,v 1.2 2009/03/17 06:27:19 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/treeline/treeline-1.2.2.ebuild,v 1.3 2009/06/06 18:24:44 yngwin Exp $
 
 EAPI=2
 inherit python
@@ -22,7 +22,8 @@ done
 
 DEPEND="spell? ( || ( app-text/aspell app-text/ispell ) )
 	>=dev-lang/python-2.3[xml]
-	>=dev-python/PyQt4-4.1"
+	dev-python/PyQt4[X]"
+RDEPEND="${DEPEND}"
 
 S=${WORKDIR}/TreeLine
 
@@ -30,7 +31,7 @@ src_unpack() {
 	unpack ${P}.tar.gz
 	for lang in ${LANGS}; do
 		if use linguas_${lang}; then
-			tar xozf ${DISTDIR}/${PN}-i18n-${PV}a.tar.gz \
+			tar xozf "${DISTDIR}"/${PN}-i18n-${PV}a.tar.gz \
 				TreeLine/doc/{readme_${lang}.trl,README_${lang}.html} \
 				TreeLine/translations/{treeline_${lang}.{qm,ts},qt_${lang}.{qm,ts}} || die
 		fi

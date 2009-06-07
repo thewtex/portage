@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/chromium-bin/chromium-bin-9999.ebuild,v 1.4 2009/06/02 08:59:01 voyageur Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/chromium-bin/chromium-bin-9999.ebuild,v 1.7 2009/06/05 09:21:03 voyageur Exp $
 
 EAPI="2"
 inherit eutils multilib
@@ -28,8 +28,9 @@ QA_EXECSTACK="opt/chromium.org/chrome-linux/chrome"
 src_unpack() {
 	LV=`curl --silent http://build.chromium.org/buildbot/snapshots/chromium-rel-linux/LATEST`
 	elog "Installing/updating to version ${LV}"
-	wget -c "http://build.chromium.org/buildbot/snapshots/chromium-rel-linux/${LV}/chrome-linux.zip" -O "${DISTDIR}"/${PN}-${LV}.zip
-	unpack ${PN}-${LV}.zip
+	wget -c "http://build.chromium.org/buildbot/snapshots/chromium-rel-linux/${LV}/chrome-linux.zip" -O "${T}"/${PN}-${LV}.zip
+	unzip -qo "${T}"/${PN}-${LV}.zip || die "Unpack failed"
+	chmod -fR a+rX,u+w,g-w,o-w chrome-linux/
 }
 
 src_install() {
@@ -58,5 +59,5 @@ src_install() {
 	# Create chromium-bin wrapper
 	make_wrapper chromium-bin ./chrome ${CHROMIUM_HOME}/chrome-linux ${CHROMIUM_HOME}/lib
 	newicon "${FILESDIR}"/chromium.png ${PN}.png
-	make_desktop_entrychromium-bin "Chromium" ${PN}.png "Network;WebBrowser"
+	make_desktop_entry chromium-bin "Chromium" ${PN}.png "Network;WebBrowser"
 }
