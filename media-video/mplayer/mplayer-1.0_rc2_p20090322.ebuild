@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/mplayer/mplayer-1.0_rc2_p20090322.ebuild,v 1.7 2009/06/03 00:06:21 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/mplayer/mplayer-1.0_rc2_p20090322.ebuild,v 1.9 2009/06/06 19:08:25 nixnut Exp $
 
 EAPI="1"
 
@@ -141,7 +141,7 @@ DEPEND="${RDEPEND}
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 
 pkg_setup() {
 
@@ -582,6 +582,8 @@ src_install() {
 
 	insinto /etc/mplayer
 	newins "${S}/etc/example.conf" mplayer.conf
+	doins "${S}/etc/input.conf"
+	doins "${S}/etc/menu.conf"
 
 	if use ass || use truetype;	then
 		cat >> "${D}/etc/mplayer/mplayer.conf" << EOT
@@ -602,9 +604,6 @@ EOT
 
 	newbin "${S}/TOOLS/midentify.sh" midentify
 
-	insinto /usr/share/mplayer
-	doins "${S}/etc/input.conf"
-	doins "${S}/etc/menu.conf"
 }
 
 pkg_preinst() {

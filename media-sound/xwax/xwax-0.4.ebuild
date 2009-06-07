@@ -1,9 +1,9 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/xwax/xwax-0.4.ebuild,v 1.3 2009/06/01 17:58:40 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/xwax/xwax-0.4.ebuild,v 1.6 2009/06/07 04:46:12 ssuominen Exp $
 
 EAPI=2
-inherit eutils
+inherit eutils toolchain-funcs
 
 DESCRIPTION="Digital vinyl emulation software"
 HOMEPAGE="http://www.xwax.co.uk/"
@@ -31,11 +31,12 @@ src_prepare() {
 }
 
 src_configure() {
+	tc-export CC
 	econf \
 		$(use_enable alsa)
 }
 
 src_install() {
-	dobin xwav xwav_import
-	dodoc README
+	dobin xwax xwax_import || die
+	dodoc README || die
 }
