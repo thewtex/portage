@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: 
+# $Header: /var/cvsroot/gentoo-x86/x11-terms/rxvt-unicode/rxvt-unicode-9.06.ebuild,v 1.2 2009/06/06 22:06:08 loki_val Exp $
 
 inherit autotools flag-o-matic
 
@@ -32,6 +32,9 @@ pkg_setup() {
 src_unpack() {
 	unpack ${A}
 	cd "${S}"
+
+	#Bug 270694
+	epatch "${FILESDIR}/${PN}-9.06-glibc-2.10.patch"
 
 	if (use xterm-color || use wcwidth); then
 		ewarn "You enabled xterm-color or wcwidth or both."

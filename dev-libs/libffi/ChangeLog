@@ -1,6 +1,31 @@
 # ChangeLog for dev-libs/libffi
-# Copyright 2002-2008 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libffi/ChangeLog,v 1.57 2008/12/24 18:31:29 wormo Exp $
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libffi/ChangeLog,v 1.67 2009/06/05 15:06:54 fmccor Exp $
+
+  05 Jun 2009; Ferris McCormick <fmccor@gentoo.org> libffi-3.0.8.ebuild:
+  Sparc stable, part of Bug #272675.
+
+  05 Jun 2009; Samuli Suominen <ssuominen@gentoo.org> libffi-3.0.8.ebuild:
+  Block <dev-libs/g-wrap-1.9.11 because they ship a copy of this library.
+
+  04 Jun 2009; Samuli Suominen <ssuominen@gentoo.org> libffi-3.0.8.ebuild:
+  Keyword ~ppc/~ppc64 wrt #272046, thanks to Luca Barbato for testing.
+
+  03 Jun 2009; Raúl Porcel <armin76@gentoo.org> libffi-3.0.8.ebuild:
+  Add ~arm/~ia64/~s390/~sh wrt #272046
+
+  03 Jun 2009; Samuli Suominen <ssuominen@gentoo.org> libffi-3.0.8.ebuild:
+  Keyword ~alpha wrt #272046, thanks to Tobias Klausmann for testing.
+
+  02 Jun 2009; Jeroen Roovers <jer@gentoo.org> libffi-3.0.8.ebuild:
+  Marked ~hppa (bug #272046).
+
+  01 Jun 2009; Ferris McCormick <fmccor@gentoo.org> libffi-3.0.8.ebuild:
+  Add sparc for testing, part of Bug #272046.
+
+  01 Jun 2009; Samuli Suominen <ssuominen@gentoo.org> -libffi-3.0.5.ebuild,
+  -libffi-3.0.6.ebuild, libffi-3.0.8.ebuild, metadata.xml:
+  Only build static libs if USE flag is defined.
 
 *libffi-3.0.8 (24 Dec 2008)
 
@@ -16,14 +41,14 @@
   29 Jun 2008; Marijn Schouten <hkBst@gentoo.org> libffi-3.0.5.ebuild:
   don't patch anymore, move warning to pkg_setup
 
-  13 Jun 2008; Samuli Suominen <drac@gentoo.org>
+  13 Jun 2008; Samuli Suominen <ssuominen@gentoo.org>
   +files/libffi-3.0.5-includedir.patch, libffi-3.0.5.ebuild:
   Fix includedir. USE flag test for dejagnu which is required for make
   check.
 
 *libffi-3.0.5 (13 Jun 2008)
 
-  13 Jun 2008; Samuli Suominen <drac@gentoo.org>
+  13 Jun 2008; Samuli Suominen <ssuominen@gentoo.org>
   -files/libffi-soversion.dpatch, -files/libffi-without-libgcj.dpatch,
   +libffi-3.0.5.ebuild, -libffi-3.4.1.ebuild, -libffi-3.4.1-r1.ebuild,
   -libffi-3.4.3.ebuild:

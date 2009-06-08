@@ -1,5 +1,5 @@
->=dev-libs/DirectFB-1.1.1 vorbis? ( media-libs/libvorbis ) mp3? ( media-libs/libmad ) dev-util/pkgconfig
->=dev-libs/DirectFB-1.1.1 vorbis? ( media-libs/libvorbis ) mp3? ( media-libs/libmad )
+>=dev-libs/DirectFB-1.1.1 alsa? ( media-libs/alsa-lib ) timidity? ( media-libs/libtimidity media-sound/timidity++ ) vorbis? ( media-libs/libvorbis ) mad? ( media-libs/libmad ) cddb? ( media-libs/libcddb ) ffmpeg? ( >=media-video/ffmpeg-0.5 ) dev-util/pkgconfig sys-apps/sed =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+>=dev-libs/DirectFB-1.1.1 alsa? ( media-libs/alsa-lib ) timidity? ( media-libs/libtimidity media-sound/timidity++ ) vorbis? ( media-libs/libvorbis ) mad? ( media-libs/libmad ) cddb? ( media-libs/libcddb ) ffmpeg? ( >=media-video/ffmpeg-0.5 )
 0
 http://www.directfb.org/downloads/Core/FusionSound-1.1.1.tar.gz
 
@@ -7,14 +7,14 @@ http://www.directfb.org/
 GPL-2
 Audio sub system for multiple applications
 ~amd64 ~x86
-
-vorbis mp3
-
-
+autotools eutils libtool multilib portability toolchain-funcs
+alsa cddb ffmpeg mad oss timidity vorbis
 
 
 
-install
+2
+
+configure install prepare
 
 
 

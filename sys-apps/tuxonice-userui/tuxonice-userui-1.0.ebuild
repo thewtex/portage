@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/tuxonice-userui/tuxonice-userui-1.0.ebuild,v 1.2 2009/05/14 10:32:40 fauli Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/tuxonice-userui/tuxonice-userui-1.0.ebuild,v 1.4 2009/06/04 19:08:19 nelchael Exp $
 
 EAPI="2"
 
@@ -12,16 +12,14 @@ SRC_URI="http://www.tuxonice.net/downloads/all/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 
 IUSE="fbsplash"
 DEPEND="fbsplash? ( >=media-gfx/splashutils-1.5.2.1
 	media-libs/libmng[lcms] )"
 RDEPEND="${DEPEND}"
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
+src_prepare() {
 	epatch "${FILESDIR}/${P}-Makefiles.patch"
 }
 

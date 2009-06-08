@@ -1,6 +1,28 @@
 # ChangeLog for x11-libs/qt-qt3support
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/qt-qt3support/ChangeLog,v 1.33 2009/05/30 19:29:08 yngwin Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/qt-qt3support/ChangeLog,v 1.39 2009/06/06 08:36:03 maekke Exp $
+
+  06 Jun 2009; Markus Meier <maekke@gentoo.org> qt-qt3support-4.5.1.ebuild:
+  amd64 stable, bug #266201
+
+  04 Jun 2009; Ben de Groot <yngwin@gentoo.org> qt-qt3support-4.5.1.ebuild:
+  Make sure gstreamer is enabled if USE="phonon kde", bug 272649
+
+  04 Jun 2009; Ben de Groot <yngwin@gentoo.org> qt-qt3support-4.5.1.ebuild:
+  Whitespace
+
+  04 Jun 2009; Markos Chandras <hwoarang@gentoo.org>
+  qt-qt3support-4.5.1.ebuild:
+  Adjust correct phonon dependencies ( bug 270188 )
+
+  03 Jun 2009; Ben de Groot <yngwin@gentoo.org> qt-qt3support-4.5.1.ebuild,
+  metadata.xml:
+  Add kde useflag again, for selecting media-sound/phonon, now that that
+  package is stable on the needed arches
+
+  02 Jun 2009; Christian Faulhammer <fauli@gentoo.org>
+  qt-qt3support-4.5.1.ebuild:
+  stable x86, bug 266201
 
   30 May 2009; Ben de Groot <yngwin@gentoo.org> qt-qt3support-4.5.1.ebuild:
   Revert kde useflag addition, as it breaks stable

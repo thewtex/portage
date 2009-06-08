@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/xdg-utils/xdg-utils-1.0.2-r3.ebuild,v 1.4 2009/05/31 16:47:41 nixnut Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/xdg-utils/xdg-utils-1.0.2-r3.ebuild,v 1.7 2009/06/06 08:10:31 maekke Exp $
 
 inherit eutils
 
@@ -10,7 +10,7 @@ SRC_URI="http://portland.freedesktop.org/download/${P}.tgz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~mips ppc ppc64 ~s390 ~sh ~sparc x86 ~x86-fbsd"
 IUSE="doc"
 
 # Report ?, some tests need root access
@@ -20,7 +20,7 @@ RDEPEND="x11-apps/xprop
 	x11-misc/shared-mime-info
 	x11-apps/xset"
 PDEPEND="dev-util/desktop-file-utils"
-DEPEND=""
+DEPEND="app-text/xmlto"
 
 src_unpack() {
 	unpack ${A}

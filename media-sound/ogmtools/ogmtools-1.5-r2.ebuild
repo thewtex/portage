@@ -1,17 +1,17 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/ogmtools/ogmtools-1.5-r2.ebuild,v 1.1 2009/05/12 09:49:32 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/ogmtools/ogmtools-1.5-r2.ebuild,v 1.4 2009/06/06 17:01:16 nixnut Exp $
 
 EAPI=2
 inherit eutils
 
-DESCRIPTION="These tools allow information about (ogminfo) or extraction from (ogmdemux) or creation of (ogmmerge) OGG media streams"
+DESCRIPTION="Information, extraction or creation for OGG media streams"
 HOMEPAGE="http://www.bunkus.org/videotools/ogmtools/"
 SRC_URI="http://www.bunkus.org/videotools/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ppc ~ppc64 ~sparc x86"
 IUSE="dvd"
 
 RDEPEND="dvd? ( media-libs/libdvdread )
@@ -26,7 +26,8 @@ src_prepare() {
 }
 
 src_configure() {
-	econf $(use_with dvd dvdread)
+	econf \
+		$(use_with dvd dvdread)
 }
 
 src_install() {

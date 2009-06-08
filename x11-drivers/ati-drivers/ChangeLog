@@ -1,6 +1,27 @@
 # ChangeLog for x11-drivers/ati-drivers
-# Copyright 2002-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-drivers/ati-drivers/ChangeLog,v 1.152 2009/04/14 06:37:18 je_fro Exp $
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-drivers/ati-drivers/ChangeLog,v 1.156 2009/06/06 01:32:41 je_fro Exp $
+
+  06 Jun 2009; Jeff Gardner <je_fro@gentoo.org> metadata.xml:
+  Removing myself and adding chainsaw to metadata.xml
+
+*ati-drivers-8.552-r3 (25 Apr 2009)
+
+  25 Apr 2009; Jeff Gardner <je_fro@gentoo.org>
+  +ati-drivers-8.552-r3.ebuild:
+  Make authatieventsd.sh executable in older versions, thanks again to Uros
+  in bug #242582.
+
+  23 Apr 2009; Jeff Gardner <je_fro@gentoo.org> ati-drivers-8.573-r1,
+  ati-drivers-8.582:
+  Die with linux-2.6.29.
+
+*ati-drivers-8.593 (23 Apr 2009)
+
+  23 Apr 2009; Jeff Gardner <je_fro@gentoo.org>
+  +files/ati-powermode-opt-path-2.patch, +files/ati-drivers-xen.patch,
+  +ati-drivers-8.593.ebuild:
+  Adding new versions, ebuild will die with unsupported 2.6.29 kernels.
 
   14 Apr 2009; Jeff Gardner <je_fro@gentoo.org>
   +ati-drivers-8.33.6-r1.ebuild:
@@ -43,6 +64,23 @@
   ati-drivers-8.552-r2.ebuild:
   Stable on amd64, bug #251832
 
+  12 Mar 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  ati-drivers-8.561.ebuild, ati-drivers-8.573.ebuild,
+  ati-drivers-8.573-r1.ebuild, ati-drivers-8.582.ebuild:
+  Remove binchecks restriction (package installs binaries!).
+
+  26 Feb 2009; Jeff Gardner <je_fro@gentoo.org>
+  +files/8.582/ati-powermode-opt-path-2.patch,
+  +files/8.582/ati-drivers-xen-8.552.patch, +ati-drivers-8.582.ebuild:
+  Add needed files
+
+*ati-drivers-8.582 (26 Feb 2009)
+
+  26 Feb 2009; Jeff Gardner <je_fro@gentoo.org>
+  +files/8.582/ati-powermode-opt-path-2.patch,
+  +files/8.582/ati-drivers-xen-8.552.patch, +ati-drivers-8.582.ebuild:
+  Latest for testing
+
   05 Feb 2009; Jeff Gardner <je_fro@gentoo.org> ChangeLog:
   Add libstdc++-v3 to RDEPEND, close bug #249192.
 
@@ -55,24 +93,19 @@
   03 Feb 2009; Jeff Gardner <je_fro@gentoo.org> ati-drivers-8.573.ebuild:
   Make authatieventsd.sh executable to fix bug #242582 thanks to Uros.
 
-*ati-drivers-8.561 (11 Dec 2008)
+  03 Feb 2009; Jeff Gardner <je_fro@gentoo.org> ChangeLog:
+  Bump to latest. Thanks to Tomas Chvatal and Ben Vighy to name a few.
 
-  11 Dec 2008; Mathieu Belanger <admin@korinar.org>
-  +ati-drivers-8.561.ebuild
-  XEN patched
-  ATI ChangeLog here : https://a248.e.akamai.net/f/674/9206/0/www2.ati.com/drivers/linux/catalyst_812_linux.pdf  
+  03 Jan 2009; Luca Barbato <lu_zero@gentoo.org> ati-drivers-8.561.ebuild:
+  Cleanups
 
-  10 Dec 2008; Mathieu Belanger <admin@korinar.org>
-  ati-drivers-8.552-r1.ebuild, ati-drivers-8.552.ebuild
-  Added XEN support (ati-drivers-xen-8.552.patch)
+*ati-drivers-8.561 (17 Dec 2008)
 
-  +ati-drivers-8.543.ebuild
-  Better drivers for some games under Wine (like EVE-Online)
-  Include XEN support
-
-  9 Dec 2008; Mathieu Belanger <admin@korinar.org>
-  ati-drivers-8.552-r2.ebuild:
-  Added XEN support (ati-drivers-xen-8.552.patch)
+  17 Dec 2008; Luca Barbato <lu_zero@gentoo.org>
+  +files/8.552/ati-drivers-xen-8.552.patch, ati-drivers-8.542.ebuild,
+  +ati-drivers-8.561.ebuild:
+  Version bump + xen patch from git://github.com/tarsius/tarsius-tree.git
+  see Bug #250590
 
   25 Nov 2008; Luca Barbato <lu_zero@gentoo.org>
   ati-drivers-8.552-r2.ebuild:
@@ -343,7 +376,7 @@
   ati-drivers-8.33.6-r1.ebuild:
   Drop virtual/x11 references.
 
-  02 Jul 2007; Piotr JaroszyÅski <peper@gentoo.org>
+  02 Jul 2007; Piotr Jaroszyński <peper@gentoo.org>
   ati-drivers-8.27.10-r1.ebuild, ati-drivers-8.28.8.ebuild,
   ati-drivers-8.28.8-r1.ebuild, ati-drivers-8.29.6.ebuild,
   ati-drivers-8.30.3.ebuild, ati-drivers-8.30.3-r1.ebuild,
@@ -351,7 +384,7 @@
   ati-drivers-8.33.6-r1.ebuild:
   (QA) RESTRICT clean up.
 
-  01 Jul 2007; Piotr JaroszyÅski <peper@gentoo.org>
+  01 Jul 2007; Piotr Jaroszyński <peper@gentoo.org>
   ati-drivers-8.27.10-r1.ebuild, ati-drivers-8.28.8.ebuild,
   ati-drivers-8.29.6.ebuild, ati-drivers-8.30.3.ebuild,
   ati-drivers-8.30.3-r1.ebuild, ati-drivers-8.32.5.ebuild,
@@ -797,7 +830,7 @@
 
   27 Oct 2005; Luca Barbato <lu_zero@gentoo.org>
   +ati-drivers-8.18.6-r1.ebuild:
-  New version with improved xorg and gcc support, thanks to Robert FÃ¼hricht
+  New version with improved xorg and gcc support, thanks to Robert Führicht
   <the_master_of_disaster@gmx.at>
 
   22 Oct 2005; Luca Barbato <lu_zero@gentoo.org> ati-drivers-8.18.6.ebuild:
@@ -806,7 +839,7 @@
   19 Oct 2005; Luca Barbato <lu_zero@gentoo.org> ati-drivers-8.18.6.ebuild:
   Fix the verify_area/access_ok symbol, as reported in bug #109493 (thank you
   Alex Giouzenis <agios@computer.org>), fixed the bug #109689 ( thank you Jakub
-  ArgasiÃ±ski <argasek@tekla.art.pl>)
+  Argasiñski <argasek@tekla.art.pl>)
 
   16 Oct 2005; Luca Barbato <lu_zero@gentoo.org>
   files/digest-ati-drivers-8.18.6, Manifest:
@@ -1076,7 +1109,7 @@
   Multilib cleanups.
 
   19 Jan 2005; Luca Barbato <lu_zero@gentoo.org> ati-drivers-8.8.25.ebuild:
-  typo in the multilib support section, fixed thanks Robert FÃ¼hricht
+  typo in the multilib support section, fixed thanks Robert Führicht
   <the_master_of_disaster@gmx.at>
 
   19 Jan 2005; Luca Barbato <lu_zero@gentoo.org> ati-drivers-8.8.25.ebuild:

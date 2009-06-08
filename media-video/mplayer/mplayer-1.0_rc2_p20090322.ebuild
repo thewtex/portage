@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/mplayer/mplayer-1.0_rc2_p20090322.ebuild,v 1.5 2009/05/27 10:35:14 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/mplayer/mplayer-1.0_rc2_p20090322.ebuild,v 1.9 2009/06/06 19:08:25 nixnut Exp $
 
 EAPI="1"
 
@@ -34,7 +34,7 @@ SRC_URI="mirror://gentoo/${P}.tar.bz2
 	!iconv? ( mirror://mplayer/releases/fonts/font-arial-iso-8859-1.tar.bz2
 			  mirror://mplayer/releases/fonts/font-arial-iso-8859-2.tar.bz2
 			  mirror://mplayer/releases/fonts/font-arial-cp1250.tar.bz2 )
-	gtk? ( mirror://mplayer/Skin/Blue-${BLUV}.tar.bz2 )
+	gtk? ( mirror://mplayer/skins/Blue-${BLUV}.tar.bz2 )
 	svga? ( http://mplayerhq.hu/~alex/svgalib_helper-${SVGV}-mplayer.tar.bz2 )"
 
 DESCRIPTION="Media Player for Linux"
@@ -140,7 +140,7 @@ DEPEND="${RDEPEND}
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 
 pkg_setup() {
 
@@ -233,7 +233,6 @@ src_unpack() {
 	[[ -n ${LINGUAS} ]] && sed -e 's:ZarzÄdano:ZaÅ¼Ädano:' -i help/help_mp-pl.h
 
 	epatch "${FILESDIR}"/${P}-fix-undeclared-spudec.patch
-	epatch "${FILESDIR}"/${P}-fix-mp3lib-use-local-labels.patch
 }
 
 src_compile() {
@@ -582,6 +581,8 @@ src_install() {
 
 	insinto /etc/mplayer
 	newins "${S}/etc/example.conf" mplayer.conf
+	doins "${S}/etc/input.conf"
+	doins "${S}/etc/menu.conf"
 
 	if use ass || use truetype;	then
 		cat >> "${D}/etc/mplayer/mplayer.conf" << EOT
@@ -602,9 +603,6 @@ EOT
 
 	newbin "${S}/TOOLS/midentify.sh" midentify
 
-	insinto /usr/share/mplayer
-	doins "${S}/etc/input.conf"
-	doins "${S}/etc/menu.conf"
 }
 
 pkg_preinst() {

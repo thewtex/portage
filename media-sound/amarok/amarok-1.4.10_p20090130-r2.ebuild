@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/amarok/amarok-1.4.10_p20090130-r2.ebuild,v 1.3 2009/05/25 20:07:30 tampakrap Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/amarok/amarok-1.4.10_p20090130-r2.ebuild,v 1.5 2009/06/06 18:13:18 nixnut Exp $
 
 EAPI="2"
 
@@ -31,7 +31,7 @@ HOMEPAGE="http://amarok.kde.org/"
 LICENSE="GPL-2"
 
 SLOT="3.5"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 IUSE="mp4 kde mysql amazon opengl postgres
 visualization ipod ifp real njb mtp musicbrainz daap
 python"
@@ -107,11 +107,11 @@ src_install() {
 
 	# As much as I respect Ian, I'd rather leave Amarok to use mongrel
 	# from Portage, for security and policy reasons.
-	rm -rf "${D}"/usr/share/apps/amarok/ruby_lib/rbconfig \
-		"${D}"/usr/share/apps/amarok/ruby_lib/mongrel* \
-		"${D}"/usr/share/apps/amarok/ruby_lib/rubygems* \
-		"${D}"/usr/share/apps/amarok/ruby_lib/gem* \
-		"${D}"/usr/$(get_libdir)/ruby_lib
+	rm -rf "${D}${KDEDIR}"/share/apps/amarok/ruby_lib/rbconfig \
+		"${D}${KDEDIR}"/share/apps/amarok/ruby_lib/mongrel* \
+		"${D}${KDEDIR}"/share/apps/amarok/ruby_lib/rubygems* \
+		"${D}${KDEDIR}"/share/apps/amarok/ruby_lib/gem* \
+		"${D}${KDEDIR}"/$(get_libdir)/ruby_lib
 
 	if ! use python; then
 		rm -r "${D}${KDEDIR}"/share/apps/amarok/scripts/webcontrol \

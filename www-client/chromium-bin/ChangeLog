@@ -1,6 +1,25 @@
 # ChangeLog for www-client/chromium-bin
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/chromium-bin/ChangeLog,v 1.2 2009/05/29 12:09:00 voyageur Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/chromium-bin/ChangeLog,v 1.6 2009/06/05 09:21:03 voyageur Exp $
+
+  05 Jun 2009; Bernard Cafarelli <voyageur@gentoo.org>
+  chromium-bin-9999.ebuild:
+  Fix permissions (as this was done by unpack() before)
+
+  04 Jun 2009; Bernard Cafarelli <voyageur@gentoo.org>
+  chromium-bin-9999.ebuild:
+  Fetch zip file in ${T} instead of ${DISTDIR}
+
+  03 Jun 2009; Bernard Cafarelli <voyageur@gentoo.org>
+  chromium-bin-9999.ebuild:
+  Fix typo on make_desktop_entry
+
+*chromium-bin-0_p17395 (02 Jun 2009)
+
+  02 Jun 2009; Bernard Cafarelli <voyageur@gentoo.org>
+  -chromium-bin-0_p17178.ebuild, +chromium-bin-0_p17395.ebuild,
+  chromium-bin-9999.ebuild:
+  Add dependency on pango (and cairo), bug #271828
 
 *chromium-bin-0_p17178 (29 May 2009)
 

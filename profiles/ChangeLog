@@ -1,10 +1,98 @@
 # ChangeLog for profile directory
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.2718 2009/05/31 18:40:05 tove Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.2748 2009/06/06 08:48:41 ssuominen Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  06 Jun 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask kamix and sonik as part of arts deprecation wrt #270575.
+
+  06 Jun 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Remove creox, knob and yammi as part of arts deprecation wrt ##270575.
+  Remove kguitar as it doesn't compile.
+
+  05 Jun 2009; Tobias Scherbaum <dertobi123@gentoo.org> package.mask:
+  Unmask =dev-libs/cyrus-sasl-2.1.23
+
+  05 Jun 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Mask zapping as per bug #210820.
+
+  05 Jun 2009; Ulrich Mueller <ulm@gentoo.org> updates/2Q-2009,
+  updates/3Q-2009:
+  We are still in the second quarter, as pointed out by fauli.
+
+  04 Jun 2009; Theo Chatzimichos <tampakrap@gentoo.org> package.mask:
+  Unmask beta kdevelop:4, i find it quite usuable
+
+  04 Jun 2009; Steve Dibb <beandog@gentoo.org> package.mask:
+  Add media-sound/alsa-tools-1.0.20-r1 to the list, bug 272659
+
+  04 Jun 2009; Alexey Shvetsov <alexxy@gentoo.org> package.mask:
+  Mask kde4 printing stuff
+
+  04 Jun 2009; Steve Dibb <beandog@gentoo.org> package.mask:
+  Mask newer versions of ALSA that drops support for optional MIDI, which
+  will break lots of deps. bug 272659
+
+  04 Jun 2009; Alexey Shvetsov <alexxy@gentoo.org> package.mask:
+  Drop KDE 4.2.* mask
+
+  04 Jun 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Unmask everything that deps on virtual/libffi since it's now keyworded.
+
+  04 Jun 2009; Tomas Chvatal <scarabeus@gentoo.org> use.desc:
+  Rename htmlhandbook to handbook, as we discussed on kde meeting. Old one
+  is nowhere used now.
+
+  04 Jun 2009; Samuli Suominen <ssuominen@gentoo.org> use.desc:
+  New global USE flag mtp -- Enable support for Media Transfer Protocol.
+
+  04 Jun 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Put jamvm-1.5.0-r3 to libffi mask waiting PowerPC keywording.
+
+  03 Jun 2009; Jeroen Roovers <jer@gentoo.org> package.mask:
+  Tweak www-client/opera mask to exclude the latest build, which is an
+  official beta release.
+
+  03 Jun 2009; Andrey Kislyuk <weaver@gentoo.org> updates/2Q-2009:
+  Move: app-misc/screen-profiles -> app-misc/byobu
+
+  03 Jun 2009; Alexey Shvetsov <alexxy@gentoo.org> package.mask:
+  Add p.mask for KDE 4.2.2
+
+  03 Jun 2009; Alexey Shvetsov <alexxy@gentoo.org> package.mask:
+  Add p.mask for KDE 4.2.4
+
+  03 Jun 2009; Christian Faulhammer <fauli@gentoo.org> base/virtuals,
+  embedded/virtuals:
+  remove old-style virtual/sylpheed, not used anymore in the tree
+
+  03 Jun 2009; Christian Faulhammer <fauli@gentoo.org> updates/2Q-2009:
+  move x11-themes/sylpheed-claws to x11-themes/claws-mail-themes
+
+  02 Jun 2009; Steve Dibb <beandog@gentoo.org> package.mask:
+  Remove mplayer, alsa-driver, alsa-headers live ebuilds from package.mask,
+  already removed keywords
+
+  02 Jun 2009; Bernard Cafarelli <voyageur@gentoo.org> package.mask:
+  Add new gnustep-base revision to virtual/libffi mask
+
+  01 Jun 2009; Peter Alfredsen <loki_val@gentoo.org> package.mask:
+  Add banshee-1.5* to WIP mask.
+
+  01 Jun 2009; Serkan Kaba <serkan@gentoo.org> package.mask:
+  Last-rited dev-java/adaptx
+
+  01 Jun 2009; Jeremy Olexa <darkside@gentoo.org> package.mask:
+  Add rdeps of sys-libs/libuser to masking notice.
+
+  01 Jun 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask creox, knob and yammi because they force arts wrt #270575.
+
+  01 Jun 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Unmask libffi and virtual wrt #163724
 
   31 May 2009; Torsten Veller <tove@gentoo.org> package.mask:
   Mask dev-perl/IniConf for removal

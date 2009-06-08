@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/inkscape/inkscape-0.46-r5.ebuild,v 1.12 2009/04/20 19:16:58 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/inkscape/inkscape-0.46-r5.ebuild,v 1.14 2009/06/01 12:25:16 maekke Exp $
 
 EAPI="2"
 
@@ -75,6 +75,8 @@ pkg_setup() {
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-gcc43.patch
 	epatch "${FILESDIR}"/${P}-gcc44.patch
+	epatch "${FILESDIR}"/${P}-gcc44_p2.patch
+	epatch "${FILESDIR}"/${P}-glibc2.10.patch
 	epatch "${FILESDIR}"/${P}-poppler-0.8.3.patch
 	epatch "${FILESDIR}"/${P}-bug-174720-0.patch
 	epatch "${FILESDIR}"/${P}-bug-174720-1.patch
