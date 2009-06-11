@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4538 2009/06/08 15:27:46 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4541 2009/06/10 20:27:42 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -402,6 +402,7 @@ app-office/dia:gnome-print - Gnome-Print support (gnome-base/libgnomeprint)
 app-office/gnucash:chipcard - Enable support for chipcard reading and processing.
 app-office/gnucash:hbci - Enable HBCI support, for connecting to some internet banks
 app-office/gnucash:quotes - Enable Online Stock Quote retrieval
+app-office/gnucash:webkit - Use net-libs/webkit-gtk for rendering rather than gnome-extra/gtkhtml
 app-office/gnumeric:gnome - Allow Gnumeric to use GNOME specific extensions.
 app-office/gnumeric:perl - Enable perl plugin loader.
 app-office/gnumeric:python - Enable python plugin loader.
@@ -2244,7 +2245,6 @@ net-mail/vpopmail:maildrop - Enables mail-filter/maildrop support in vdelivermai
 net-misc/aria2:ares - Enables support for asynchronous DNS using the c-ares library
 net-misc/aria2:bittorrent - Enables support for the bittorrent protocol
 net-misc/aria2:metalink - Enables support for metalink
-net-misc/asterisk:bri - Enable ISDN BRI support (bristuff)
 net-misc/asterisk:dahdi - Support Digium compatible hardware (formerly known as Zaptel).
 net-misc/asterisk:h323 - Build the H.323 channel driver bundled with Asterisk
 net-misc/asterisk:keepsrc - Install sources into /usr/src for custom patching
@@ -2819,6 +2819,7 @@ sys-fs/owfs:httpd - Enable building the OWFS web server (owhttpd)
 sys-fs/owfs:parport - Enable support for the DS1410E parallel port adapter
 sys-fs/owfs:server - Enable building the OWFS server (owserver)
 sys-fs/quota:rpc - Enable quota interaction via RPC
+sys-fs/udev:devfs-compat - Install rules for devfs compatible device names
 sys-fs/unionfs:nfs - Adds support for NFS file system
 sys-kernel/gentoo-sources:ultra1 - Enable if you have a SUN Ultra 1 with a HME interface
 sys-kernel/linux-docs:html - Install HTML documenation
