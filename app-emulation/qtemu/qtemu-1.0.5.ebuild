@@ -1,10 +1,10 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/qtemu/qtemu-1.0.5.ebuild,v 1.1 2009/06/08 15:58:04 hwoarang Exp $
 
-EAPI="1"
+EAPI="2"
 
-inherit eutils cmake-utils qt4
+inherit eutils qt4 cmake-utils
 
 DESCRIPTION="A graphical user interface for QEMU written in Qt4."
 HOMEPAGE="http://qtemu.sourceforge.net/"
@@ -15,20 +15,17 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND=">=x11-libs/qt-4.1:4"
+DEPEND="x11-libs/qt-gui:4"
 RDEPEND="${DEPEND}
 	app-emulation/qemu"
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-	epatch "${FILESDIR}/${PV}-help_and_translation_paths.patch"
-}
+DOCS="ChangeLog README"
+PATCHES=(
+	"${FILESDIR}/${PV}-help_and_translation_paths.patch"
+)
 
 src_install() {
-	DOCS="ChangeLog README"
 	cmake-utils_src_install
-
 	doicon "${S}/images/${PN}.ico"
 	make_desktop_entry "qtemu" "QtEmu" "${PN}.ico" "Qt;Utility;Emulator"
 }
