@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/kvirc/kvirc-9999.ebuild,v 1.19 2009/03/29 23:27:45 arfrever Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-irc/kvirc/kvirc-9999.ebuild,v 1.20 2009/06/12 14:25:50 arfrever Exp $
 
 EAPI="2"
 
@@ -15,14 +15,14 @@ ESVN_PROJECT="kvirc"
 LICENSE="kvirc"
 SLOT="4"
 KEYWORDS=""
-IUSE="audiofile +crypt +dcc_voice debug doc gsm +ipc ipv6 kde +nls +perl +phonon profile +python +qt-dbus qt-webkit +ssl +transparency"
+IUSE="audiofile +crypt +dcc_voice debug doc gsm +ipc ipv6 kde +nls oss +perl +phonon profile +python +qt-dbus qt-webkit +ssl +transparency"
 
 RDEPEND="
 	sys-libs/zlib
 	x11-libs/qt-core
 	x11-libs/qt-gui
-	audiofile? ( media-libs/audiofile )
 	kde? ( >=kde-base/kdelibs-4 )
+	oss? ( audiofile? ( media-libs/audiofile ) )
 	perl? ( dev-lang/perl )
 	phonon? ( || ( media-sound/phonon x11-libs/qt-phonon ) )
 	python? ( dev-lang/python )
@@ -36,6 +36,12 @@ RDEPEND="${RDEPEND}
 	gsm? ( media-sound/gsm )"
 
 DOCS="ChangeLog TODO"
+
+pkg_setup() {
+	if use audiofile && ! use oss; then
+		die "USE=\"audiofile\" requires USE=\"oss\""
+	fi
+}
 
 src_prepare() {
 	subversion_wc_info
@@ -61,6 +67,7 @@ src_configure() {
 		$(cmake-utils_use_want ipv6 IPV6)
 		$(cmake-utils_use_want kde KDE4)
 		$(cmake-utils_use_want nls GETTEXT)
+		$(cmake-utils_use_want oss OSS)
 		$(cmake-utils_use_want perl PERL)
 		$(cmake-utils_use_want phonon PHONON)
 		$(cmake-utils_use_want profile MEMORY_PROFILE)
