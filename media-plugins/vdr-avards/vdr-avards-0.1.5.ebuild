@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-avards/vdr-avards-0.1.5.ebuild,v 1.1 2009/03/24 19:20:17 hd_brummy Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-avards/vdr-avards-0.1.5.ebuild,v 1.3 2009/06/14 21:50:05 mr_bones_ Exp $
 
 inherit vdr-plugin
 
@@ -14,3 +14,4 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND=">=media-video/vdr-1.4.6"
+RDEPEND="${DEPEND}"
