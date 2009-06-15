@@ -10,11 +10,13 @@ SRC_URI="http://www.porcupine.org/forensics/${P}.tar.gz"
 
 LICENSE="IBM as-is"
 SLOT="0"
-KEYWORDS="ppc x86 amd64"
+KEYWORDS="~amd64 ppc x86"
 IUSE=""
 
-DEPEND=">=dev-lang/perl-5.0004 >=sys-apps/sed-4"
-RDEPEND="${DEPEND} dev-perl/DateManip"
+DEPEND=">=dev-lang/perl-5.0004
+	>=sys-apps/sed-4"
+RDEPEND="${DEPEND}
+	dev-perl/DateManip"
 
 src_unpack() {
 	unpack ${A}

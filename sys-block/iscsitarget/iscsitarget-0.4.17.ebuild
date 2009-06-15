@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-block/iscsitarget/iscsitarget-0.4.17.ebuild,v 1.4 2009/03/25 15:20:37 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-block/iscsitarget/iscsitarget-0.4.17.ebuild,v 1.6 2009/06/11 14:09:25 fauli Exp $
 
 inherit linux-mod eutils flag-o-matic
 
@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc x86"
 IUSE=""
 
 DEPEND="dev-libs/openssl"
@@ -27,6 +27,7 @@ src_unpack() {
 	epatch "${FILESDIR}"/${PN}-0.4.17-build.patch
 	epatch "${FILESDIR}"/${PN}-0.4.17+linux-2.6.28.patch #252608
 	epatch "${FILESDIR}"/${PN}-0.4.17+linux-2.6.29.patch
+	epatch "${FILESDIR}"/${PN}-0.4.17+linux-2.6.30.patch
 	convert_to_m "${S}"/Makefile
 }
 

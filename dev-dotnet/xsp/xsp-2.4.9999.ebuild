@@ -1,10 +1,8 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-dotnet/xsp/xsp-2.4.9999.ebuild,v 1.2 2009/05/05 13:02:45 loki_val Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-dotnet/xsp/xsp-2.4.9999.ebuild,v 1.4 2009/06/09 21:17:16 loki_val Exp $
 
 EAPI=2
-
-GO_MONO_SUB_BRANCH=-1
 
 inherit go-mono mono autotools
 
@@ -15,7 +13,7 @@ HOMEPAGE="http://www.go-mono.com/"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~x86 ~amd64 ~ppc"
+KEYWORDS=""
 
 IUSE=""
 

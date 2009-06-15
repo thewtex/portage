@@ -1,6 +1,13 @@
 # ChangeLog for sys-apps/portage
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/portage/ChangeLog,v 1.611 2009/06/06 22:08:01 darkside Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/portage/ChangeLog,v 1.613 2009/06/07 14:29:30 armin76 Exp $
+
+  07 Jun 2009; Raúl Porcel <armin76@gentoo.org> portage-2.1.6.13.ebuild:
+  alpha/arm/ia64/m68k/s390/sh/sparc stable wrt #272485
+
+  07 Jun 2009; Zac Medico <zmedico@gentoo.org> portage-2.2_rc33.ebuild:
+  Bug #272063 - Make xmlto skip validation as a temporary workaround. Thanks
+  to Samuli Suominen <ssuominen@gentoo.org> for the patch.
 
   06 Jun 2009; Jeremy Olexa <darkside@gentoo.org> portage-2.1.6.13.ebuild:
   amd64 stable, bug 272485
@@ -97,10 +104,6 @@
   (handle ESTALE in fetch code), and bug #266493 (only return int from
   vercmp). Bug #210077 tracks all bugs fixed in the 2.2 branch.
 
-  13 Apr 2009; Jeff Mitchell <funtoo@emailgoeshere.com> portage-2.2_rc30.ebuild,
-  -portage-2.2_rc23-r1.ebuild, -portage-2.2_rc23-r2.ebuild:
-  Bump to stable for funtoo and remove old versions.
-
 *portage-2.2_rc30 (12 Apr 2009)
 
   12 Apr 2009; Zac Medico <zmedico@gentoo.org> +portage-2.2_rc30.ebuild:
@@ -130,9 +133,6 @@
   that depend on other "master" overlays to satisfy dependencies. See the
   portage(5) man page for more information about the new metadata/layout.conf
   configuration file. Bug #210077 tracks all bugs fixed in the 2.2 branch.
-
-  09 Apr 2009; Jeff Mitchell <funtoo@emailgoeshere.com> portage-2.2_rc28.ebuild:
-  Bump to stable for funtoo.
 
   09 Apr 2009; Zac Medico <zmedico@gentoo.org> -portage-2.1.6.9.ebuild,
   -portage-2.1.6.10.ebuild, -portage-2.2_rc23.ebuild,
@@ -176,9 +176,6 @@
   sqlite cache backend). A regression which causes emerge to reject file
   path arguments is also fixed. Bug #261959 tracks all bugs fixed since
   2.1.6.7.
-
-  25 Mar 2009; Jeff Mitchell <funtoo@emailgoeshere.com> portage-2.2_rc26.ebuild:
-  Bump to stable for funtoo.
 
 *portage-2.2_rc26 (17 Mar 2009)
 
@@ -272,16 +269,6 @@
   Bug #258433 - Add an ewarn message about the new FETCHCOMMAND and
   RESUMECOMMAND requirement to use ${FILE} for compatibility with EAPI 2.
 
-  01 Feb 2009; Daniel Robbins <drobbins@funtoo.org>
-  +portage-2.2_rc23-r2.ebuild: Applying Zac's bug fix that ensures
-  that RDEPEND is merged before DEPEND when merging to a non-/
-  ROOT. This also should fix Gentoo Bug #250020.
-
-  28 Jan 2009; Daniel Robbins <drobbins@funtoo.org>
-  +portage-2.2-rc23-r1.ebuild: Applying Zac's bug fix that allows
-  Portage to merge a package to / and a non-/ (ROOT != /) location
-  from a single command without stepping on itself.
-
 *portage-2.2_rc23 (18 Jan 2009)
 
   18 Jan 2009; Zac Medico <zmedico@gentoo.org> +portage-2.2_rc23.ebuild:
@@ -358,10 +345,6 @@
   portage-2.1.4.5.ebuild, portage-2.1.6.4.ebuild, portage-2.2_rc20.ebuild:
   Bug #253933 - Use einfo instead of elog for the message about the gentoo
   handbook.
-
-  06 Jan 2009; Daniel Robbins <drobbins@funtoo.org>
-  portage-2.2_rc20-r1.ebuild: new ebuild with hardlink fix that will
-  appear in 2.2_rc21.
 
   31 Dec 2008; Jeroen Roovers <jer@gentoo.org> portage-2.1.6.4.ebuild:
   Stable for HPPA (bug #251812).

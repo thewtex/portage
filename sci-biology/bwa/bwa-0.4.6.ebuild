@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/bwa/bwa-0.4.6.ebuild,v 1.1 2009/04/20 17:40:44 weaver Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/bwa/bwa-0.4.6.ebuild,v 1.3 2009/06/12 00:52:47 fauli Exp $
 
 EAPI=2
 
@@ -17,7 +17,7 @@ DEPEND=""
 RDEPEND=""
 
 src_prepare() {
-	sed -i 's/^CFLAGS=/CFLAGS+=/' "${S}/Makefile"
+	sed -e "/^CFLAGS.*/d" -i "${S}"/Makefile
 }
 
 src_install() {

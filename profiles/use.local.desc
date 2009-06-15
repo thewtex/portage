@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4535 2009/06/07 04:07:44 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4541 2009/06/10 20:27:42 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -378,6 +378,7 @@ app-misc/heyu:rfxm - Support RFXMeters
 app-misc/heyu:rfxs - Support RFXSensors
 app-misc/lcd-stuff:mpd - Add support for display of mpd controlled music (media-libs/libmpd)
 app-misc/lcd4linux:mpd - Add support for display of mpd controlled music (media-libs/libmpd)
+app-misc/lcdproc:ftdi - Enable support for FTDI connections in some selected LCD_DEVICES (currently hd44780)
 app-misc/lcdproc:irman - Enable support for IRMan (media-libs/libirman)
 app-misc/lcdproc:nfs - Adds support for NFS file system
 app-misc/lcdproc:seamless-hbars - Try to avoid gaps in horizontal bars
@@ -427,6 +428,7 @@ app-office/dia:gnome-print - Gnome-Print support (gnome-base/libgnomeprint)
 app-office/gnucash:chipcard - Enable support for chipcard reading and processing.
 app-office/gnucash:hbci - Enable HBCI support, for connecting to some internet banks
 app-office/gnucash:quotes - Enable Online Stock Quote retrieval
+app-office/gnucash:webkit - Use net-libs/webkit-gtk for rendering rather than gnome-extra/gtkhtml
 app-office/gnumeric:gnome - Allow Gnumeric to use GNOME specific extensions.
 app-office/gnumeric:perl - Enable perl plugin loader.
 app-office/gnumeric:python - Enable python plugin loader.
@@ -1849,7 +1851,6 @@ media-video/ffmpeg:schroedinger - Enable Dirac video support (an advanced royalt
 media-video/ffmpeg:ssse3 - faster floating point optimization for SSSE3 capable chips (Intel Core 2 and later chips)
 media-video/ffmpeg:vhook - Enables video hooking support.
 media-video/ffprobe:perl - Installs tools written in perl to produce plots based on video frame bitrate and size
-media-video/gnome-mplayer:nautilus - Support for gnome-base/nautilus
 media-video/gpac:amr - Adaptive Multi-Rate Audio support (commonly used in telephony)
 media-video/griffith:csv - Enable proper support for csv import (respectively auto-detection encoding of csv files)
 media-video/kino:gpac - Enable GPAC support when exporting to 3GPP format
@@ -2410,7 +2411,6 @@ net-mail/vpopmail:maildrop - Enables mail-filter/maildrop support in vdelivermai
 net-misc/aria2:ares - Enables support for asynchronous DNS using the c-ares library
 net-misc/aria2:bittorrent - Enables support for the bittorrent protocol
 net-misc/aria2:metalink - Enables support for metalink
-net-misc/asterisk:bri - Enable ISDN BRI support (bristuff)
 net-misc/asterisk:dahdi - Support Digium compatible hardware (formerly known as Zaptel).
 net-misc/asterisk:h323 - Build the H.323 channel driver bundled with Asterisk
 net-misc/asterisk:keepsrc - Install sources into /usr/src for custom patching
@@ -3043,6 +3043,7 @@ sys-fs/owfs:parport - Enable support for the DS1410E parallel port adapter
 sys-fs/owfs:server - Enable building the OWFS server (owserver)
 sys-fs/pysize:psyco - Adds psyco support
 sys-fs/quota:rpc - Enable quota interaction via RPC
+sys-fs/udev:devfs-compat - Install rules for devfs compatible device names
 sys-fs/unionfs:nfs - Adds support for NFS file system
 sys-kernel/gentoo-sources:ultra1 - Enable if you have a SUN Ultra 1 with a HME interface
 sys-kernel/linux-docs:html - Install HTML documenation
@@ -3220,6 +3221,7 @@ x11-misc/google-gadgets:soup - Enables XML HTTP request extension based on net-l
 x11-misc/google-gadgets:webkit - Enables browser element and script runtime based on net-libs/webkit-gtk
 x11-misc/notification-daemon-xfce:xfce - Enable integration in XFCE desktop
 x11-misc/slim:screenshot - Enable screenshot support (using media-gfx/imagemagick)
+x11-misc/tint2:examples - Install tint2rc examples
 x11-misc/vnc2swf:x11vnc - Install script that depends on x11vnc
 x11-misc/x11vnc:system-libvncserver - Build x11vnc against the system libvncserver (experimental)
 x11-misc/xfce4-notifyd:libsexy - Enable support for x11-libs/libsexy

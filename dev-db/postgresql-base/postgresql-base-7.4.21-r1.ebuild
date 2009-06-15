@@ -9,7 +9,7 @@ WANT_AUTOMAKE="none"
 
 inherit eutils multilib toolchain-funcs versionator autotools
 
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 
 DESCRIPTION="PostgreSQL libraries and clients"
 HOMEPAGE="http://www.postgresql.org/"
