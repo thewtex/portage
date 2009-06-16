@@ -1,9 +1,8 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-proxy/squid/squid-2.7.6-r1.ebuild,v 1.6 2009/04/22 20:19:01 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-proxy/squid/squid-2.7.6-r1.ebuild,v 1.7 2009/06/15 23:42:37 mrness Exp $
 
-WANT_AUTOCONF="latest"
-WANT_AUTOMAKE="latest"
+EAPI="2"
 
 inherit eutils pam toolchain-funcs autotools linux-info
 
@@ -54,16 +53,14 @@ pkg_setup() {
 	enewuser squid 31 -1 /var/cache/squid squid
 }
 
-src_unpack() {
-	unpack ${A} || die "unpack failed"
-
-	cd "${S}" || die "source dir not found"
+src_prepare() {
+	epatch "${FILESDIR}"/${PN}-2-capability.patch
 	epatch "${FILESDIR}"/${P}-gentoo.patch
 	has_version app-crypt/mit-krb5 || epatch "${FILESDIR}"/${P}-heimdal.patch
 	eautoreconf
 }
 
-src_compile() {
+src_configure() {
 	local basic_modules="getpwnam,NCSA,MSNT"
 	use samba && basic_modules="SMB,multi-domain-NTLM,${basic_modules}"
 	use ldap && basic_modules="LDAP,${basic_modules}"
@@ -136,8 +133,6 @@ src_compile() {
 		$(use_enable snmp) \
 		$(use_enable ssl) \
 		${myconf} || die "econf failed"
-
-	emake || die "emake failed"
 }
 
 src_install() {
