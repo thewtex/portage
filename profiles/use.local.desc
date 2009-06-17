@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4541 2009/06/10 20:27:42 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4552 2009/06/15 20:27:46 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -37,7 +37,6 @@ app-admin/conky:nvidia - enable reading of nvidia card temperature sensors via m
 app-admin/conky:smapi - enable support for smapi
 app-admin/diradm:automount - Support for automount data in LDAP
 app-admin/diradm:irixpasswd - Support for storing separate IRIX passwords
-app-admin/eselect:paludis - Prefer sys-apps/paludis over sys-apps/portage
 app-admin/gkrellm:X - Build both the X11 gui (gkrellm) and the server (gkrellmd). Disabling this flag builds the server only.
 app-admin/gkrellm:gnutls - Enable SSL support for mail checking with net-libs/gnutls (overrides 'ssl' USE flag)
 app-admin/gkrellm:hddtemp - Enable monitoring harddrive temperatures via app-admin/hddtemp
@@ -549,6 +548,7 @@ app-vim/vcscommand:svk - Enable support for dev-util/svk
 dev-cpp/sptk:aspell - Enable support for app-text/aspell
 dev-cpp/sptk:excel - Enable Excel support
 dev-db/dabo:ide - Enable dabo IDE
+dev-db/hk_classes:xbase - Enables support for xbase databases (dBase, FoxPro, etc.)
 dev-db/libpq:pg-intdatetime - Enable --enable-integer-datetimes configure option, which changes PG to use 64-bit integers for timestamp storage
 dev-db/mysql:big-tables - Make tables contain up to 1.844E+19 rows
 dev-db/mysql:cluster - Add support for NDB clustering
@@ -824,6 +824,7 @@ dev-perl/GD:animgif - Enable animated gif support
 dev-perl/HTML-Mason:modperl - Enable www-apache/mod_perl support
 dev-perl/PDL:badval - Enable badval support
 dev-php/PEAR-PHP_Shell:auto-completion - Enable tab-completion
+dev-php5/ZendFramework:cli - Enables the CLI
 dev-php5/ZendFramework:doc - Installs the documentation
 dev-php5/ZendFramework:examples - Installs the examples
 dev-php5/ZendFramework:minimal - Installs the minimal version without Dojo toolkit, tests and demos
@@ -959,6 +960,9 @@ dev-util/nsis:config-log - Enable the logging facility (useful in debugging inst
 dev-util/nsis:prebuilt-system - Use the pre-compiled System.dll from the release to workaround the System::Call issue under GCC
 dev-util/nvidia-cuda-sdk:emulation -  Build binaries for device emulation mode. These binaries will not require a CUDA-capable GPU to run. 
 dev-util/pbuilder:uml - Enable pbuilder user mode linux support
+dev-util/qct:bazaar -  Support for dev-util/bzr 
+dev-util/qct:mercurial -  Support for dev-util/mercurial 
+dev-util/qct:monotone -  Support for dev-util/monotone 
 dev-util/qt-creator:cmake - enable cmake project manager plugin
 dev-util/qt-creator:debugger - enable debugger plugin
 dev-util/qt-creator:designer - enable designer plugin
@@ -1395,6 +1399,7 @@ mail-mta/ssmtp:md5sum - Enables MD5 summing for ssmtp
 media-fonts/culmus-ancient:fontforge - Use media-gfx/fontforge to build fonts from source
 media-fonts/dejavu:fontforge - Use media-gfx/fontforge to build fonts from source
 media-fonts/intlfonts:bdf - Installs BDF fonts in addition to PCF
+media-fonts/mplus-outline-fonts:ipafont - Generates new fonts merged with media-fonts/ja-ipafonts
 media-fonts/terminus-font:a-like-o - Changes view of letter 'a' - a looks like o (see homepage)
 media-fonts/terminus-font:bolddiag - Boldified diagonal parts of '4', 'k', 'x' and some other chars
 media-fonts/terminus-font:pcf - Intall Portable Compiled Font (PCF) (required for X11)
@@ -1452,6 +1457,7 @@ media-gfx/imagemagick:q8 -  set quantum depth to 8
 media-gfx/inkscape:dia -  pull in app-office/dia for dia import extension 
 media-gfx/inkscape:inkjar -  enables support for OpenOffice.org SVG jar files 
 media-gfx/inkscape:postscript -  pull in dependencies needed for the postscript import extension 
+media-gfx/inkscape:wpg -  build with media-libs/libwpg support (C++ library to read and parse graphics in WPG) 
 media-gfx/jpeg2ps:metric -  Default to A4 paper size 
 media-gfx/k3d:3ds - Enable support for 3D Studio models
 media-gfx/k3d:cuda - Use nvidia cuda toolkit for speeding up computations
@@ -2724,6 +2730,7 @@ sci-geosciences/gpsd:tntc - Enable True North Technologies digital compass suppo
 sci-geosciences/grass:gdal - Enable support for sci-libs/gdal (Grass 5 only)
 sci-geosciences/grass:gmath - Enable gmath wrapper for BLAS/Lapack (virtual/blas, virtual/lapack)
 sci-geosciences/grass:largefile - Enable LFS support for huge files
+sci-geosciences/mapnik:gdal - Enable sci-libs/gdal library support
 sci-geosciences/mapserver:agg - Enable x11-libs/agg library support
 sci-geosciences/mapserver:flash - Add support for creating SWF files using media-libs/ming
 sci-geosciences/mapserver:gdal - Enable sci-libs/gdal library support
@@ -3017,8 +3024,10 @@ sys-freebsd/freebsd-usbin:isdn - Enable ISDN support.
 sys-freebsd/freebsd-usbin:nat - Enable Network Address Translation support daemon.
 sys-freebsd/freebsd-usbin:netware -  Build libraries and tools to work with NetWare protocols (IPX and NCP). 
 sys-fs/aufs2:debug - Enable additional debugging support
-sys-fs/aufs2:hinotify - Enable hinotify support
+sys-fs/aufs2:inotify - Enable inotify support
+sys-fs/aufs2:kernel-patch - Patch the current kernel for aufs2 support
 sys-fs/aufs2:ramfs - Enable initramfs/rootfs support
+sys-fs/btrfs-progs:debug-utils - Build additional utils for debugging
 sys-fs/cryptsetup:dynamic - Build cryptsetup dynamically
 sys-fs/ecryptfs-utils:gpg - Enable app-crypt/gnupg key module
 sys-fs/ecryptfs-utils:nss - Enable support for dev-libs/nss

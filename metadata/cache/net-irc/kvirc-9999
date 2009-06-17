@@ -1,5 +1,5 @@
-sys-libs/zlib x11-libs/qt-core x11-libs/qt-gui audiofile? ( media-libs/audiofile ) kde? ( >=kde-base/kdelibs-4 ) perl? ( dev-lang/perl ) phonon? ( || ( media-sound/phonon x11-libs/qt-phonon ) ) python? ( dev-lang/python ) qt-dbus? ( x11-libs/qt-dbus ) qt-webkit? ( x11-libs/qt-webkit ) ssl? ( dev-libs/openssl ) nls? ( sys-devel/gettext ) doc? ( app-doc/doxygen ) >=dev-util/cmake-2.6.2-r1 userland_GNU? ( >=sys-apps/findutils-4.4.0 ) dev-util/subversion net-misc/rsync
-sys-libs/zlib x11-libs/qt-core x11-libs/qt-gui audiofile? ( media-libs/audiofile ) kde? ( >=kde-base/kdelibs-4 ) perl? ( dev-lang/perl ) phonon? ( || ( media-sound/phonon x11-libs/qt-phonon ) ) python? ( dev-lang/python ) qt-dbus? ( x11-libs/qt-dbus ) qt-webkit? ( x11-libs/qt-webkit ) ssl? ( dev-libs/openssl ) gsm? ( media-sound/gsm )
+sys-libs/zlib x11-libs/qt-core x11-libs/qt-gui kde? ( >=kde-base/kdelibs-4 ) oss? ( audiofile? ( media-libs/audiofile ) ) perl? ( dev-lang/perl ) phonon? ( || ( media-sound/phonon x11-libs/qt-phonon ) ) python? ( dev-lang/python ) qt-dbus? ( x11-libs/qt-dbus ) qt-webkit? ( x11-libs/qt-webkit ) ssl? ( dev-libs/openssl ) nls? ( sys-devel/gettext ) doc? ( app-doc/doxygen ) >=dev-util/cmake-2.6.2-r1 userland_GNU? ( >=sys-apps/findutils-4.4.0 ) dev-util/subversion net-misc/rsync
+sys-libs/zlib x11-libs/qt-core x11-libs/qt-gui kde? ( >=kde-base/kdelibs-4 ) oss? ( audiofile? ( media-libs/audiofile ) ) perl? ( dev-lang/perl ) phonon? ( || ( media-sound/phonon x11-libs/qt-phonon ) ) python? ( dev-lang/python ) qt-dbus? ( x11-libs/qt-dbus ) qt-webkit? ( x11-libs/qt-webkit ) ssl? ( dev-libs/openssl ) gsm? ( media-sound/gsm )
 4
 
 
@@ -8,13 +8,13 @@ kvirc
 Advanced IRC Client
 
 base cmake-utils eutils flag-o-matic multilib portability subversion toolchain-funcs
-audiofile +crypt +dcc_voice debug doc gsm +ipc ipv6 kde +nls +perl +phonon profile +python +qt-dbus qt-webkit +ssl +transparency
+audiofile +crypt +dcc_voice debug doc gsm +ipc ipv6 kde +nls oss +perl +phonon profile +python +qt-dbus qt-webkit +ssl +transparency
 
 
 
 2
 
-compile configure install preinst prepare test unpack
+compile configure install preinst prepare setup test unpack
 
 
 

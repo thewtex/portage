@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/kopete/kopete-3.5.10-r4.ebuild,v 1.7 2009/06/06 16:20:22 nixnut Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/kopete/kopete-3.5.10-r4.ebuild,v 1.9 2009/06/12 23:53:05 gengor Exp $
 
 KMNAME=kdenetwork
 EAPI="1"
@@ -50,12 +50,10 @@ RDEPEND="
 		media-gfx/imagemagick
 		virtual/latex-base
 	)
+	netmeeting? ( net-voip/ekiga )
 	ssl? ( =app-crypt/qca-tls-1.0* )
 "
 #	!kde-base/kdenetwork is handled by the eclass.
-#	gnomemeeting is deprecated and ekiga is not yet ~ppc64
-#	only needed for calling
-#	netmeeting? ( net-im/gnomemeeting )"
 
 DEPEND="
 	${BOTH_DEPEND}
@@ -73,6 +71,13 @@ pkg_setup() {
 		eerror "x11-libs/qt:3 compiled with OpenGL support."
 		eerror "Please reemerge x11-libs/qt:3 with USE=\"opengl\"."
 		die "Please reemerge x11-libs/qt:3 with USE=\"opengl\"."
+	fi
+
+	if use netmeeting && ! use msn; then
+		eerror "Netmeeting support (USE=\"netmeeting\") for the MSN module has"
+		eerror "been requested, but the MSN module (USE=\"msn\") is not enabled."
+		eerror "Enable the \"msn\" USE flag or disable the \"netmeeting\" USE flag."
+		die "Invalid USE flag combination."
 	fi
 }
 

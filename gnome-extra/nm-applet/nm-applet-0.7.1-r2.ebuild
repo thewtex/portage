@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-extra/nm-applet/nm-applet-0.7.1-r2.ebuild,v 1.1 2009/06/11 12:00:32 dagger Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/nm-applet/nm-applet-0.7.1-r2.ebuild,v 1.2 2009/06/14 19:32:38 dagger Exp $
 
 EAPI=2
 inherit gnome2 eutils versionator autotools
@@ -8,7 +8,7 @@ inherit gnome2 eutils versionator autotools
 PATCH_VERSION="1"
 
 MY_P="${P/nm-applet/network-manager-applet}"
-MYPV_MINOR=$(get_version_component_range 1-2)
+MYPV_MINOR=$(get_version_component_range)
 PATCHNAME="${P}-gentoo-patches-${PATCH_VERSION}"
 
 DESCRIPTION="Gnome applet for NetworkManager."
@@ -24,7 +24,7 @@ IUSE="cisco openvpn"
 RDEPEND=">=sys-apps/dbus-1.2
 	>=sys-apps/hal-0.5.9
 	>=dev-libs/libnl-1.1
-	=net-misc/networkmanager-${MYPV_MINOR}*
+	>=net-misc/networkmanager-${MYPV_MINOR}-r4
 	>=net-wireless/wireless-tools-28_pre9
 	>=net-wireless/wpa_supplicant-0.5.7
 	>=dev-libs/glib-2.16

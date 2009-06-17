@@ -1,6 +1,29 @@
 # ChangeLog for media-sound/pulseaudio
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/pulseaudio/ChangeLog,v 1.125 2009/05/10 09:02:41 nirbheek Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/pulseaudio/ChangeLog,v 1.129 2009/06/15 15:18:08 flameeyes Exp $
+
+  15 Jun 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  pulseaudio-0.9.15.ebuild:
+  Remove -j1 from install (installs file with -j14), and fix a wrong path in
+  the elog messages.
+
+  15 Jun 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  -files/pulseaudio-0.9.7-module-loading.patch, -pulseaudio-0.9.10.ebuild,
+  -pulseaudio-0.9.10-r1.ebuild, -files/pulseaudio-0.9.10-caps.patch,
+  -pulseaudio-0.9.11.ebuild, -pulseaudio-0.9.11-r1.ebuild,
+  -pulseaudio-0.9.11-r2.ebuild, -pulseaudio-0.9.12.ebuild,
+  -pulseaudio-0.9.12-r1.ebuild, -pulseaudio-0.9.13.ebuild,
+  -pulseaudio-0.9.14.ebuild, -files/pulseaudio.init.d-3:
+  Clean up old ebuilds. Would be time to ask a new stable I guess.
+
+  15 Jun 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  files/pulseaudio.init.d-4:
+  Add a default-off killswitch for systemwide mode in the init script.
+
+  14 Jun 2009; Arun Raghavan <ford_prefect@gentoo.org>
+  pulseaudio-0.9.15.ebuild:
+  Add extra comment about system-wide support since upstream gets a lot of
+  folks who are misusing the feature.
 
   10 May 2009; Nirbheek Chauhan <nirbheek@gentoo.org>
   pulseaudio-0.9.15.ebuild:

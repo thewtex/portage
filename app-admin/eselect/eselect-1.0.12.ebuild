@@ -16,8 +16,7 @@ RDEPEND="sys-apps/sed
 		sys-apps/coreutils
 		sys-freebsd/freebsd-bin
 		app-admin/realpath
-	)
-	sys-process/procps"
+	)"
 DEPEND="${RDEPEND}
 	doc? ( dev-python/docutils )"
 RDEPEND="${RDEPEND}

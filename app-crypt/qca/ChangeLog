@@ -1,6 +1,20 @@
 # ChangeLog for app-crypt/qca
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/qca/ChangeLog,v 1.65 2009/06/10 20:17:09 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/qca/ChangeLog,v 1.68 2009/06/13 09:59:06 scarabeus Exp $
+
+  13 Jun 2009; Tomáš Chvátal <scarabeus@gentoo.org> qca-2.0.2-r2.ebuild:
+  Adjust the dep back, the -r3 is slottable.
+
+  12 Jun 2009; Jeroen Roovers <jer@gentoo.org> qca-2.0.2-r2.ebuild:
+  Stable for HPPA (bug #272865).
+
+*qca-2.0.2-r2 (12 Jun 2009)
+
+  12 Jun 2009; Tomáš Chvátal <scarabeus@gentoo.org> +qca-2.0.2-r2.ebuild:
+  Actualy fix the deps to be correct. Dependency on debug is never = but
+  only ?. Also block correct slot not only <x because it would fail when
+  there is some new revbump. Also move that blocker to rdep, where all
+  blocks should be (binary packages).
 
   10 Jun 2009; Markus Meier <maekke@gentoo.org> qca-2.0.2-r1.ebuild:
   amd64/x86 stable, bug #272865

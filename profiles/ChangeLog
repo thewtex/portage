@@ -1,10 +1,87 @@
 # ChangeLog for profile directory
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.2765 2009/06/10 19:24:21 pva Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.2788 2009/06/15 15:23:27 matsuu Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  15 Jun 2009; MATSUU Takuto <matsuu@gentoo.org> use.local.desc:
+  add ipafont USE flag for media-fonts/mplus-outline-fonts
+
+  15 Jun 2009; Alex Legler <a3li@gentoo.org> package.mask:
+  Removing ruby-config mask, the packages are gone. Bugs 251833 and 274108.
+
+  15 Jun 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Mask yaffs-utils since it's currently not building and it's a live ebuild.
+
+  15 Jun 2009; Peter Volkov <pva@gentoo.org> updates/2Q-2009:
+  Moved slot for media-gfx/gwenview: 0 -> 3.5
+
+  14 Jun 2009; Robert Piasek <dagger@gentoo.org> package.mask:
+  Removed package.mask from networkmanager-0.7.1-r4 as I can't reproduce the
+  error.
+
+  14 Jun 2009; Alexey Shvetsov <alexxy@gentoo.org> package.mask:
+  KDE 4.2.3 was removed so no need to mask it anymore
+
+  14 Jun 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Mask net-fs/shfs for removal.
+
+  14 Jun 2009; Alexey Shvetsov <alexxy@gentoo.org> package.mask:
+  Mask KDE 4.2.3
+
+  14 Jun 2009; Fabian Groffen <grobian@gentoo.org> use.desc:
+  aqua and coreaudio USE-flags are masked in base, but were missing from
+  use.desc, causing repoman warnings for e.g. QT/KDE testers
+
+  14 Jun 2009; Fabian Groffen <grobian@gentoo.org> base/use.mask,
+  prefix/use.mask:
+  Move kernels and elibcs from the Prefix profiles to base
+
+  13 Jun 2009; Theo Chatzimichos <tampakrap@gentoo.org> package.mask:
+  Masked for removal in 30 days. Old and dead by upstream.
+
+  13 Jun 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Update mask for rubinius to point out removal pending.
+
+  13 Jun 2009; Justin Bronder <jsbronder@gentoo.org> package.mask:
+  Removing entry from package.mask as sys-cluster/mpich (and paraview-2.6.2)
+  have been removed.
+
+  13 Jun 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Mask framerd per bug #274018, and remember to add the removal pending
+  dates for the previous masks too.
+
+  13 Jun 2009; Torsten Veller <tove@gentoo.org> package.mask:
+  Mask dev-perl/X10 (#245631 and #264664)
+
+  13 Jun 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Mask wso2-wsf-c as per bug #241008.
+
+  13 Jun 2009; Hans de Graaff <graaff@gentoo.org> package.mask:
+  Mask dev-ruby/freeride for bug 251935
+
+  13 Jun 2009; Markus Meier <maekke@gentoo.org> package.mask:
+  mask pre releases of media-gfx/inkscape-0.47
+
+  13 Jun 2009; Rémi Cardona <remi@gentoo.org> package.mask:
+  xf86-video-intel-2.7.0 is no longer in portage, add xkeyboard-config-1.6
+  to the xorg-server 1.6 mask entry
+
+  13 Jun 2009; Fabian Groffen <grobian@gentoo.org> profiles.desc:
+  Add Prefix profiles to profiles.desc. They are commented out and only
+  enabled in the Prefix rsync tree.
+
+  12 Jun 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Mask ed2k_recovermet.
+
+  12 Jun 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Mask toshiba-utils per bug #273872.
+
+  12 Jun 2009; Tristan Heaven <nyhm@gentoo.org> base/package.use.mask,
+  package.mask:
+  Mask media-libs/freeimage, bug #269516
 
   10 Jun 2009; Peter Volkov <pva@gentoo.org> package.mask:
   Unmasking bzr-1.15* and dependent bzrtools.
