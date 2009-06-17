@@ -1,23 +1,38 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/xmlrpc-epi/xmlrpc-epi-0.54.ebuild,v 1.1 2009/06/15 22:07:10 volkmar Exp $
 
-EAPI="1"
+EAPI="2"
 
-DESCRIPTION="Epinions implementation of xmlrpc protocol in C."
+DESCRIPTION="Epinions implementation of XML-RPC protocol in C"
 HOMEPAGE="http://xmlrpc-epi.sourceforge.net/"
 SRC_URI="mirror://sourceforge/xmlrpc-epi/${P}.tar.gz"
 
-LICENSE="xmlrpc-epi"
+LICENSE="Epinions"
 SLOT="0"
-KEYWORDS="~x86"
-IUSE=""
+KEYWORDS="~ppc ~x86"
+IUSE="examples"
 
-RDEPEND="dev-libs/expat"
-DEPEND="$RDEPEND"
+DEPEND="dev-libs/expat
+	!!dev-libs/xmlrpc-c"
+RDEPEND="${DEPEND}"
+
+# TODO:
+# fix /usr/include/xmlrpc.h conflict with dev-libs/xmlrpc-c, bug 274291
+
+src_prepare() {
+	# do not build examples
+	sed -i -e "s:sample::" Makefile.in || die "sed failed"
+}
 
 src_install() {
-	einstall || die "install failed"
+	emake DESTDIR="${D}" install || die "emake install failed"
 
-	dodoc AUTHORS ChangeLog NEWS README
+	dodoc AUTHORS ChangeLog NEWS README || die "dodoc failed"
+
+	if use examples; then
+		insinto "/usr/share/doc/${PF}/examples"
+		doins sample/*.c sample/*.php || die "doins failed"
+		doins -r sample/tests || die "doins failed"
+	fi
 }

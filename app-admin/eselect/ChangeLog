@@ -1,6 +1,12 @@
 # ChangeLog for app-admin/eselect
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/eselect/ChangeLog,v 1.103 2009/06/06 18:05:22 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/eselect/ChangeLog,v 1.105 2009/06/15 10:57:51 ulm Exp $
+
+  12 Jun 2009; Ulrich Mueller <ulm@gentoo.org> -eselect-1.0.11-r2.ebuild,
+  -files/eselect-1.0.11-parent-profiles.patch,
+  -files/eselect-1.0.11-relative-profiles.patch, -eselect-1.1.ebuild,
+  metadata.xml:
+  Remove intermediate versions.
 
 *eselect-1.1.1 (06 Jun 2009)
 
@@ -28,10 +34,6 @@
 
   24 May 2009; Markus Meier <maekke@gentoo.org> eselect-1.0.12.ebuild:
   amd64 stable, bug #270138
-
-  22 May 2009; Daniel Robbins <drobbins@funtoo.org>
-  eselect-1.1_rc2,rc3.ebuild: Added sys-process/procps RDEPEND, to
-  address Bug 174354
 
   21 May 2009; Brent Baude <ranger@gentoo.org> eselect-1.0.12.ebuild:
   stable ppc, bug 270138
@@ -69,10 +71,8 @@
   17 May 2009; Tobias Klausmann <klausman@gentoo.org> eselect-1.0.12.ebuild:
   Stable on alpha, bug #270138
 
-  19 Apr 2009; Daniel Robbins <drobbins@funtoo.org> eselect-1.0.12.ebuild,
-  eselect-9999.ebuild: Adding back procps RDEPEND, as this makes things work on
-  Linux. If it makes things bad for Gentoo/BSD, then *fix that bug* without
-  reintroducing a bug in Gentoo Linux. Bug 174354 continues to be fixed.
+  28 Apr 2009; Ulrich Mueller <ulm@gentoo.org> metadata.xml, eselect-9999:
+  Add paludis USE flag for the live ebuild.
 
 *eselect-9999 (18 Apr 2009)
 *eselect-1.0.12 (18 Apr 2009)
@@ -95,10 +95,8 @@
   -files/eselect-1.0.8-fix-parallel-install.patch:
   Remove stale file.
 
-  11 Apr 2009; Daniel Robbins <drobbins@funtoo.org>:
-  Add missing sys-process/procps RDEPENDs, needed by
-  /usr/share/eselect/libs/core.bash due to its use of "pgrep". Fixes bug
-  174354.
+  14 Apr 2009; Ulrich Mueller <ulm@gentoo.org> eselect-1.0.11-r2.ebuild:
+  Add procps to RDEPEND, fixes bug 174354.
 
   08 Apr 2009; Jeremy Olexa <darkside@gentoo.org>
   +files/eselect-1.0.11-relative-profiles.patch, eselect-1.0.11-r2.ebuild:
@@ -117,10 +115,10 @@
   08 Apr 2009; Jeremy Olexa <darkside@gentoo.org> eselect-1.0.11-r1.ebuild:
   fix postinst message to include instructions for enabling globally, bug 265168
 
-  17 Mar 2009; RaÃºl Porcel <armin76@gentoo.org> eselect-1.0.11-r1.ebuild:
+  17 Mar 2009; Raúl Porcel <armin76@gentoo.org> eselect-1.0.11-r1.ebuild:
   m68k stable wrt #208898, thanks to kolla for testing
 
-  29 Dec 2008; RaÃºl Porcel <armin76@gentoo.org> eselect-1.0.11-r1.ebuild:
+  29 Dec 2008; Raúl Porcel <armin76@gentoo.org> eselect-1.0.11-r1.ebuild:
   s390/sh stable wrt #208898
 
   16 Dec 2008; Doug Goldstein <cardoe@gentoo.org> eselect-1.0.11-r1.ebuild:
@@ -132,7 +130,7 @@
   09 Dec 2008; Brent Baude <ranger@gentoo.org> eselect-1.0.11-r1.ebuild:
   Marking eselect-1.0.11-r1 ppc64 and ppc for bug 208898
 
-  08 Dec 2008; RaÃºl Porcel <armin76@gentoo.org> eselect-1.0.11-r1.ebuild:
+  08 Dec 2008; Raúl Porcel <armin76@gentoo.org> eselect-1.0.11-r1.ebuild:
   alpha/arm/ia64/sparc/x86 stable wrt #208898
 
   25 May 2008; Markus Rothe <corsair@gentoo.org> eselect-1.0.11-r1.ebuild:
@@ -140,14 +138,14 @@
 
 *eselect-1.0.11-r1 (20 Mar 2008)
 
-  20 Mar 2008; Piotr JaroszyÅski <peper@gentoo.org>
+  20 Mar 2008; Piotr Jaroszyński <peper@gentoo.org>
   +files/eselect-1.0.11-fix-paludis-command.patch,
   +eselect-1.0.11-r1.ebuild:
   Add -r1 with a patch fixing paludis_command().
 
 *eselect-1.0.11 (01 Dec 2007)
 
-  01 Dec 2007; Piotr JaroszyÅski <peper@gentoo.org> +eselect-1.0.11.ebuild:
+  01 Dec 2007; Piotr Jaroszyński <peper@gentoo.org> +eselect-1.0.11.ebuild:
   Add 1.0.11.
 
   05 Aug 2007; nixnut <nixnut@gentoo.org> eselect-1.0.10.ebuild:
@@ -159,7 +157,7 @@
   01 Aug 2007; <metalgod@gentoo.org> eselect-1.0.10.ebuild:
   Stable on amd64. See bug #185691.
 
-  30 Jul 2007; RaÃºl Porcel <armin76@gentoo.org> eselect-1.0.10.ebuild:
+  30 Jul 2007; Raúl Porcel <armin76@gentoo.org> eselect-1.0.10.ebuild:
   alpha/ia64 stable wrt #185691
 
   30 Jul 2007; Jeroen Roovers <jer@gentoo.org> eselect-1.0.10.ebuild:
@@ -193,10 +191,10 @@
   07 Feb 2007; Simon Stelling <blubb@gentoo.org> eselect-1.0.7.ebuild:
   stable on amd64; bug 160535
 
-  26 Jan 2007; Bryan Ãstergaard <kloeri@gentoo.org> eselect-1.0.7.ebuild:
+  26 Jan 2007; Bryan Østergaard <kloeri@gentoo.org> eselect-1.0.7.ebuild:
   Stable on Alpha.
 
-  25 Jan 2007; Alexander H. FÃ¦rÃ¸y <eroyf@gentoo.org> eselect-1.0.7.ebuild:
+  25 Jan 2007; Alexander H. Færøy <eroyf@gentoo.org> eselect-1.0.7.ebuild:
   Stable on MIPS.
 
   24 Jan 2007; Marius Mauch <genone@gentoo.org> eselect-1.0.2.ebuild,
@@ -274,7 +272,7 @@
   +eselect-1.0.5.ebuild:
   Removed version 1.0.4. Added version 1.0.5.
 
-  19 Aug 2006; Bryan Ãstergaard <kloeri@gentoo.org> eselect-1.0.2.ebuild:
+  19 Aug 2006; Bryan Østergaard <kloeri@gentoo.org> eselect-1.0.2.ebuild:
   Stable on alpha.
 
   16 Aug 2006; Markus Rothe <corsair@gentoo.org> eselect-1.0.2.ebuild:
@@ -315,10 +313,12 @@
   files/digest-eselect-1.0.2, Manifest:
   Fix broken digests - as reported in #gentoo-amd64
 
+*eselect-1.0.3 (03 Jul 2006)
+
   06 Jun 2006; Stephen Bennett <spb@gentoo.org> eselect-1.0.ebuild:
   Mips stable for bug #125630
 
-  19 Apr 2006; Diego PettenÃ² <flameeyes@gentoo.org> eselect-1.0.2.ebuild:
+  19 Apr 2006; Diego Pettenò <flameeyes@gentoo.org> eselect-1.0.2.ebuild:
   Add dependency over freebsd-bin as alternative to realpath, it does already
   provide a realpath binary that works.
 
@@ -336,7 +336,7 @@
   Removed obsolete versions. Updated RDEPEND with sys-apps/file. Added 1.0.1
   release.
 
-  30 Mar 2006; Diego PettenÃ² <flameeyes@gentoo.org> eselect-1.0.ebuild:
+  30 Mar 2006; Diego Pettenò <flameeyes@gentoo.org> eselect-1.0.ebuild:
   Add ~x86-fbsd keyword, although the env module doesn't work, as other
   modules are needed for other packages; most of this version works fine.
 
