@@ -1,0 +1,32 @@
+# Andrew Kirch <trelane@trelane.net> (10 June 2009)
+# Paludis does not support the profiles/package.mask hierarchy.
+# Discussions with Ciaran indicates he doesn't intend to.
+
+sys-apps/paludis
+
+# Pkgcore also does not support this at present
+<=sys-apps/pkgcore-0.4.8
+
+# Daniel Robbins <drobbins@funtoo.org> (18 Mar 2009)
+# samba-3.3.1 has been less than stable for me, so masking the 3.3.x series
+# for now, and adding 3.2.8 (recommended production version)
+>=net-fs/samba-3.3.0
+
+# Daniel Robbins <drobbins@funtoo.org> (12 Mar 2009)
+# If you want to use mysql-community, unmask it and mask dev-db/mysql.
+# Having both unmasked causes "emerge dev-db/mysql" to fail, which is
+# not optimal.
+dev-db/mysql-community
+
+# Daniel Robbins <drobbins@funtoo.org> (01 Feb 2009)
+# Missing KDE masks from trelane
+=kde-base/kdelibs-4.2.0
+=kde-base/kdebase-data-4.2.0
+=kde-base/plasma-workspace-4.2.0
+=kde-base/kdnssd-4.2.0
+=kde-base/kdepimlibs-4.2.0
+=kde-base/kde-meta-4.2.0
+
+# Caleb Cushing <xenoterracide@gmail.com> (27 Dec 2008)
+# latest ghc, breaks other packages, fixes (bug #252176)
+>=dev-lang/ghc-6.10
