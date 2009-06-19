@@ -31,5 +31,7 @@ src_prepare() {
 	sed -i \
 		-e 's/xatexit.c//' \
 		"${S}/GCC/libiberty/CMakeLists.txt" || die "sed failed"
+	
+	epatch "${FILESDIR}/0001-newer-gcc-4.3-fix.patch" || die "patching failed"
 }
 

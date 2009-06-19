@@ -1,0 +1,24 @@
+From 684329492e5d36862136f84aa31064c120f85aeb Mon Sep 17 00:00:00 2001
+From: Matt McCormick (thewtex) <matt@mmmccormick.com>
+Date: Fri, 19 Jun 2009 11:00:13 -0500
+Subject: [PATCH] newer gcc 4.3 fix
+
+---
+ GCC_XML/Support/GCC/4.3/gccxml_builtins.h |    1 +
+ 1 files changed, 1 insertions(+), 0 deletions(-)
+
+diff --git a/GCC_XML/Support/GCC/4.3/gccxml_builtins.h b/GCC_XML/Support/GCC/4.3/gccxml_builtins.h
+index dd297eb..aaef13e 100644
+--- a/GCC_XML/Support/GCC/4.3/gccxml_builtins.h
++++ b/GCC_XML/Support/GCC/4.3/gccxml_builtins.h
+@@ -142,6 +142,7 @@ bool __builtin_isless(...);
+ bool __builtin_islessequal(...);
+ bool __builtin_islessgreater(...);
+ bool __builtin_isunordered(...);
++bool __builtin_va_arg_pack(...);
+ 
+ /*
+ 
+-- 
+1.6.3.1
+
