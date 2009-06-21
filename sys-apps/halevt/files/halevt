@@ -8,7 +8,7 @@ depend() {
 
 start() {
 	ebegin "Starting Automounter"
-	start-stop-daemon --start --pidfile /var/run/halevt.pid --exec /usr/bin/halevt -- -u root -g plugdev > /dev/null
+	start-stop-daemon --start --pidfile /var/run/halevt.pid --exec /usr/bin/halevt -- -p /var/run/halevt.pid -u root -g plugdev > /dev/null
 	eend $?
 }
 

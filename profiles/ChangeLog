@@ -1,10 +1,81 @@
 # ChangeLog for profile directory
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.2797 2009/06/16 23:18:42 chainsaw Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.2818 2009/06/21 00:10:29 flameeyes Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  21 Jun 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Update masking for ltsp.
+
+  20 Jun 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Mask mp1e
+
+  20 Jun 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Mask whoischk.
+
+  20 Jun 2009; <mrpouet@gentoo.org> package.mask:
+  Masked =sys-auth/policykit-0.92 due to a lot of changed into sources code,
+  it may break some packages
+
+  20 Jun 2009; Fabian Groffen <grobian@gentoo.org> desc/elibc.desc,
+  desc/kernel.desc:
+  add missing descriptions for kernels and elibcs that are defined in the
+  profiles
+
+  20 Jun 2009; Fabian Groffen <grobian@gentoo.org> arch.list, profiles.desc:
+  Add Gentoo Prefix keywords, such that the Prefix profiles can be enabled.
+
+  20 Jun 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Removed ctmkit, ivcall and temperature-app since they have been masked for
+  60 days by treecleaners.
+
+  20 Jun 2009; Alin Năstac <mrness@gentoo.org> package.mask:
+  Unmask net-proxy/squirm (homepage is available again). Remove
+  net-dialup/qlcr p. mask (package was removed, see #264785).
+
+  19 Jun 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Masked media-sound/bossogg for removal because it installs __init__.py
+  directly into root of site-packages and because it's not worth fixing
+  since it's still using SQLite2.
+
+  19 Jun 2009; Rémi Cardona <remi@gentoo.org> package.mask:
+  remove renderproto p.mask entry, ebuild is gone from portage
+
+  18 Jun 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask plugins autoplaylist and serverstats because they are no longer
+  valid with gmpc 0.18.0. Mask net-im/ekg2 because it doesn't build with
+  stable glibc wrt #247994.
+
+  18 Jun 2009; <chainsaw@gentoo.org> package.mask:
+  Undo removal mask for media-sound/ogg2mp3, new maintainer stepped up.
+
+  18 Jun 2009; Alistair Bush <ali_bush@gentoo.org> package.mask:
+  Add jython-2.5.0 to package.mask as it will break other packages until
+  they are updated.
+
+  18 Jun 2009; Gilles Dartiguelongue <eva@gentoo.org> package.mask:
+  Remove gnome-base/libghttp per bug #244128
+
+  17 Jun 2009; Christian Faulhammer <fauli@gentoo.org> package.mask:
+  Mask release candidate of net-misc/tor
+
+  17 Jun 2009; <chainsaw@gentoo.org> package.mask:
+  Masking upstream-abandoned media-sound/ogg2mp3 software for removal in 1
+  month.
+
+  17 Jun 2009; Peter Volkov <pva@gentoo.org> package.mask:
+  Masked bzr-1.16_rc1 pre-release and dependent bzrtools packages.
+
+  17 Jun 2009; Peter Volkov <pva@gentoo.org> package.mask:
+  net-misc/l7-filter masked for removal, bug 274341 and bug 254086.
+
+  17 Jun 2009; Peter Volkov <pva@gentoo.org> package.mask:
+  Unmasking wireshark - it's finally released.
+
+  17 Jun 2009; Alexis Ballier <aballier@gentoo.org> package.mask:
+  remove tl-langmanju mask, its gone
 
   16 Jun 2009; <chainsaw@gentoo.org> package.mask:
   Add Conspire to the atheme alpha/beta mask, move it up to the start where

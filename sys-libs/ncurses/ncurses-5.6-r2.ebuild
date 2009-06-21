@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/ncurses/ncurses-5.6-r2.ebuild,v 1.12 2009/04/29 22:17:49 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/ncurses/ncurses-5.6-r2.ebuild,v 1.13 2009/06/20 13:22:43 vapier Exp $
 
 inherit eutils flag-o-matic toolchain-funcs
 
@@ -38,7 +38,6 @@ src_compile() {
 
 	local myconf=""
 	use nocxx && myconf="${myconf} --without-cxx --without-cxx-binding"
-	use ada || myconf="${myconf} --without-ada"
 
 	# First we build the regular ncurses ...
 	mkdir "${WORKDIR}"/narrowc
@@ -80,7 +79,8 @@ do_compile() {
 		--enable-const \
 		--enable-colorfgbg \
 		--enable-echo \
-		$(use_enable !ada warnings) \
+		--without-ada \
+		--enable-warnings \
 		$(use_with debug assertions) \
 		$(use_with !debug leaks) \
 		$(use_with debug expanded) \

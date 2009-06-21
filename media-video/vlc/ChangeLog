@@ -1,6 +1,27 @@
 # ChangeLog for media-video/vlc
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/vlc/ChangeLog,v 1.444 2009/06/07 20:38:32 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/vlc/ChangeLog,v 1.448 2009/06/20 13:03:18 aballier Exp $
+
+  20 Jun 2009; Alexis Ballier <aballier@gentoo.org> vlc-1.0.0_rc4.ebuild,
+  vlc-1.0.9999.ebuild:
+  bump libxcb deps, by Nikoli <nikoli@pochta.ru>, bug #273710, master should
+  be compatible with older versions
+
+  20 Jun 2009; Alexis Ballier <aballier@gentoo.org> vlc-1.0.0_rc4.ebuild,
+  vlc-1.0.9999.ebuild, vlc-9999.ebuild:
+  bump schroedinger deps, by Nikoli <nikoli@pochta.ru>, bug #273710
+
+  18 Jun 2009; Alexis Ballier <aballier@gentoo.org> vlc-1.0.0_rc4.ebuild,
+  vlc-1.0.9999.ebuild, vlc-9999.ebuild:
+  Dont let users upgrade from 0.9.x to >=1.0.x without removing the old
+  version fist; otherwise some plugins are relinked to the old libvlc's and
+  will not work, thanks libtool...
+
+*vlc-1.0.0_rc4 (18 Jun 2009)
+
+  18 Jun 2009; Alexis Ballier <aballier@gentoo.org> -vlc-1.0.0_rc3.ebuild,
+  +vlc-1.0.0_rc4.ebuild:
+  bump to rc4
 
 *vlc-1.0.0_rc3 (07 Jun 2009)
 

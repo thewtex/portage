@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/ruby/ruby-1.8.6_p369.ebuild,v 1.7 2009/06/16 18:35:31 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/ruby/ruby-1.8.6_p369.ebuild,v 1.9 2009/06/18 13:12:32 a3li Exp $
 
 inherit autotools eutils flag-o-matic multilib versionator
 
@@ -15,7 +15,7 @@ HOMEPAGE="http://www.ruby-lang.org/"
 SRC_URI="mirror://ruby/${SLOT}/${MY_P}.tar.bz2"
 
 LICENSE="|| ( Ruby GPL-2 )"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ~ppc ~ppc64 s390 sh sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 arm hppa ia64 ~mips ~ppc ppc64 s390 sh sparc x86 ~x86-fbsd"
 IUSE="berkdb debug doc emacs examples gdbm ipv6 rubytests socks5 ssl threads tk xemacs"
 
 RDEPEND="
@@ -127,6 +127,9 @@ src_test() {
 }
 
 src_install() {
+	# Ruby is involved in the install process, we don't want interference here.
+	unset RUBYOPT
+
 	LD_LIBRARY_PATH="${D}/usr/$(get_libdir)"
 	RUBYLIB="${S}:${D}/usr/$(get_libdir)/ruby/${SLOT}"
 	for d in $(find "${S}/ext" -type d) ; do
