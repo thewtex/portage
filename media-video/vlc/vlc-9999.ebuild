@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/vlc/vlc-9999.ebuild,v 1.10 2009/06/05 10:04:27 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/vlc/vlc-9999.ebuild,v 1.12 2009/06/20 12:56:35 aballier Exp $
 
 EAPI="1"
 
@@ -117,7 +117,7 @@ RDEPEND="
 		qt4? ( x11-libs/qt-gui:4 x11-libs/qt-core:4 )
 		remoteosd? ( >=dev-libs/libgcrypt-1.2.0 )
 		samba? ( net-fs/samba )
-		schroedinger? ( >=media-libs/schroedinger-1.0 )
+		schroedinger? ( >=media-libs/schroedinger-1.0.6 )
 		sdl? ( >=media-libs/libsdl-1.2.8
 			sdl-image? ( media-libs/sdl-image ) )
 		shout? ( media-libs/libshout )
@@ -184,6 +184,12 @@ vlc_use_enable_force() {
 }
 
 pkg_setup() {
+	if has_version '<=media-video/vlc-0.9.9999'; then
+		eerror "Please unmerge vlc-0.9.x first before installing ${P}"
+		eerror "If you don't do that, some plugins will get linked against"
+		eerror "the old ${PN} version and will not work."
+		die "Unmerge vlc 0.9.x first"
+	fi
 	vlc_use_needs skins truetype
 	vlc_use_force skins qt4
 	vlc_use_needs cddax cdio

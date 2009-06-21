@@ -1,6 +1,22 @@
 # ChangeLog for gnome-base/gdm
-# Copyright 2002-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-base/gdm/ChangeLog,v 1.294 2009/05/01 10:28:07 eva Exp $
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/gnome-base/gdm/ChangeLog,v 1.299 2009/06/19 18:36:48 nirbheek Exp $
+
+  19 Jun 2009; <nirbheek@gentoo.org> gdm-2.26.1.ebuild:
+  Remove gksu dep -- bug 274483
+
+  18 Jun 2009; Gilles Dartiguelongue <eva@gentoo.org> gdm-2.20.10-r1.ebuild:
+  Make clearlooks the default theme, bug #268496.
+
+  16 Jun 2009; <nirbheek@gentoo.org> gdm-2.26.1.ebuild:
+  Add comment about PAM being the only backend that works at all with 2.26
+
+*gdm-2.26.1 (16 Jun 2009)
+
+  16 Jun 2009; Nirbheek Chauhan <nirbheek@gentoo.org> files/49-keychain,
+  files/50-ssh-agent, +gdm-2.26.1.ebuild, metadata.xml:
+  Version bump to 2.26.1, complete rewrite, major feature regressions, but
+  finally bug-free enough to be added to tree p.masked
 
 *gdm-2.20.10-r1 (01 May 2009)
 

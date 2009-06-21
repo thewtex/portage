@@ -1,10 +1,10 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ml/lablgtk/lablgtk-2.10.1.ebuild,v 1.7 2008/04/13 21:18:32 aballier Exp $
-
-inherit eutils multilib
+# $Header: /var/cvsroot/gentoo-x86/dev-ml/lablgtk/lablgtk-2.10.1.ebuild,v 1.8 2009/06/17 07:42:20 aballier Exp $
 
 EAPI="1"
+
+inherit eutils multilib
 
 IUSE="debug examples glade gnome gnomecanvas sourceview +ocamlopt opengl spell svg"
 

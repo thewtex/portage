@@ -1,35 +1,30 @@
-# Copyright 1999-2006 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/krecord/krecord-1.16.ebuild,v 1.3 2006/11/03 21:17:11 opfer Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/krecord/krecord-1.16.ebuild,v 1.5 2009/06/19 09:58:07 ssuominen Exp $
 
-inherit kde-functions
+ARTS_REQUIRED=never
+inherit kde toolchain-funcs
 
 DESCRIPTION="A KDE sound recorder."
 HOMEPAGE="http://bytesex.org/krecord.html"
 SRC_URI="http://dl.bytesex.org/releases/krecord/${P}.tar.gz"
-LICENSE="GPL-2"
 
-SLOT="0"
+LICENSE="GPL-2"
+SLOT="3.5"
 KEYWORDS="~amd64 ~sparc x86"
 IUSE=""
 
-RDEPEND=">=kde-base/kdelibs-3
-	x11-libs/libXmu"
+RDEPEND="x11-libs/libXmu
+	x11-libs/libXext
+	x11-libs/libX11"
 DEPEND="${RDEPEND}"
 
-set-kdedir 3
+need-kde 3.5
+
+PATCHES=( "${FILESDIR}/${P}-desktop_entry.patch"
+	"${FILESDIR}/${P}-prestrip.patch" )
 
 src_compile() {
-	emake || die
-}
-
-src_install() {
-	make DESTDIR="${D}" \
-	     prefix=/usr \
-	     appsdir="${D}/usr/share/applnk/Multimedia" \
-	     datadir="${D}/usr/share/apps/krecord" \
-	     htmldir="${D}/usr/share/doc/HTML/en/krecord" \
-	     install || die
-
-	dodoc Changes README VERSION
+	tc-export CC CXX
+	emake || die "emake failed"
 }

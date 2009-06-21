@@ -1,6 +1,6 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/em8300-modules/em8300-modules-0.16.4-r1.ebuild,v 1.2 2008/05/20 00:00:30 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/em8300-modules/em8300-modules-0.16.4-r1.ebuild,v 1.3 2009/06/18 15:11:51 zzam Exp $
 
 inherit eutils linux-mod
 
@@ -41,7 +41,7 @@ src_install() {
 	newsbin devices.sh em8300-devices.sh
 
 	insinto /etc/modprobe.d
-	newins "${FILESDIR}"/modules.em8300 em8300
+	newins "${FILESDIR}"/modules.em8300 em8300.conf
 
 	insinto /etc/udev/rules.d
 	newins em8300-udev.rules 15-em8300.rules
@@ -50,12 +50,18 @@ src_install() {
 pkg_preinst() {
 	linux-mod_pkg_preinst
 
-	local old="${ROOT}/etc/modules.d/em8300"
-	local new="${ROOT}/etc/modprobe.d/em8300"
+	local old1="${ROOT}/etc/modprobe.d/em8300"
+	local old2="${ROOT}/etc/modules.d/em8300"
+	local new="${ROOT}/etc/modprobe.d/em8300.conf"
 
-	if [[ -a ${old} && ! -a ${new} ]]; then
-		elog "Moving old em8300 configuration in /etc/modules.d to new"
-		elog "location in /etc/modprobe.d"
-		mv "${old}" "${new}"
+	if [[ ! -a ${new} ]]; then
+		if [[ -a ${old1} ]]; then
+			elog "Renaming em8300-modprobe configuration to em8300.conf"
+			mv "${old1}" "${new}"
+		elif [[ -a ${old2} ]]; then
+			elog "Moving old em8300 configuration in /etc/modules.d to new"
+			elog "location in /etc/modprobe.d"
+			mv "${old2}" "${new}"
+		fi
 	fi
 }

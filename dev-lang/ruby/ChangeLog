@@ -1,6 +1,29 @@
 # ChangeLog for dev-lang/ruby
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/ruby/ChangeLog,v 1.411 2009/06/14 10:43:16 a3li Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/ruby/ChangeLog,v 1.416 2009/06/20 17:11:24 flameeyes Exp $
+
+  20 Jun 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  ruby-1.9.1_p129-r1.ebuild:
+  Prepend our library path instead of overwriting it during src_install.
+  Thanks to the reporter of bug #274824.
+
+*ruby-1.8.7_p174 (18 Jun 2009)
+
+  18 Jun 2009; Alex Legler <a3li@gentoo.org> ruby-1.8.6_p369.ebuild,
+  -ruby-1.8.7_p173.ebuild, +ruby-1.8.7_p174.ebuild:
+  Replacing 187_p173 with _p174 because of a regression. Unifying the
+  ebuilds by adding unset RUBYOPT to the 186 ebuild. Migrated 187_p174 to
+  patchsets.
+
+  17 Jun 2009; Brent Baude <ranger@gentoo.org> ruby-1.8.6_p369.ebuild:
+  Marking ruby-1.8.6_p369 ppc64 for bug 273213
+
+  16 Jun 2009; Raúl Porcel <armin76@gentoo.org> ruby-1.8.6_p369.ebuild:
+  arm/ia64/s390/sh/sparc stable wrt #273213
+
+  16 Jun 2009; Alex Legler <a3li@gentoo.org> ruby-1.8.6_p368.ebuild,
+  ruby-1.8.6_p369.ebuild, -ruby-1.8.7_p160.ebuild:
+  Removing old version, minor cleanup
 
   14 Jun 2009; Alex Legler <a3li@gentoo.org> -ruby-1.8.6_p114.ebuild,
   -files/ruby-1.8.6-openssl.patch,
