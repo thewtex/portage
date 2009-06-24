@@ -1,10 +1,8 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-games/flatzebra/flatzebra-0.1.2.ebuild,v 1.1 2009/03/02 06:57:34 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-games/flatzebra/flatzebra-0.1.2.ebuild,v 1.2 2009/06/23 15:31:06 mr_bones_ Exp $
 
-WANT_AUTOCONF=latest
-WANT_AUTOMAKE=latest
-inherit autotools eutils
+inherit eutils
 
 DESCRIPTION="A generic game engine for 2D double-buffering animation"
 HOMEPAGE="http://perso.b2b2c.ca/sarrazip/dev"
