@@ -1,6 +1,28 @@
 # ChangeLog for sci-visualization/gnuplot
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-visualization/gnuplot/ChangeLog,v 1.102 2009/05/06 07:22:10 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-visualization/gnuplot/ChangeLog,v 1.107 2009/06/21 18:41:00 ulm Exp $
+
+  21 Jun 2009; Ulrich Mueller <ulm@gentoo.org> gnuplot-4.2.3-r2.ebuild,
+  gnuplot-4.2.4-r1.ebuild, gnuplot-4.2.5.ebuild, gnuplot-4.2.5-r1.ebuild:
+  Fix dependencies: the xemacs virtual is gone.
+
+*gnuplot-4.2.5-r1 (20 Jun 2009)
+
+  20 Jun 2009; Ulrich Mueller <ulm@gentoo.org> +gnuplot-4.2.5-r1.ebuild,
+  +files/gnuplot-4.2.5-colorbox_accounting.patch:
+  Fix "cb axis range undefined or overflow" error after fit. Patch from
+  upstream, thanks to Christopher Schwan <cschwan@stamaonline.de> and
+  Ottxor <kleiner_otti@gmx.de>, bug 274693.
+
+  18 Jun 2009; Jeroen Roovers <jer@gentoo.org> gnuplot-4.2.5.ebuild:
+  Stable for HPPA (bug #274558).
+
+  18 Jun 2009; Thomas Anderson <gentoofan23@gentoo.org>
+  gnuplot-4.2.5.ebuild:
+  stable amd64, bug 274558
+
+  17 Jun 2009; Christian Faulhammer <fauli@gentoo.org> gnuplot-4.2.5.ebuild:
+  stable x86, bug 274558
 
   06 May 2009; Alexis Ballier <aballier@gentoo.org> gnuplot-4.2.5.ebuild:
   drop texlive 2007 support now that 2008 is stable and 2007 is going away

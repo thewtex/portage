@@ -1,17 +1,16 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/cdparanoia/cdparanoia-3.10.2-r3.ebuild,v 1.6 2009/05/23 03:29:39 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/cdparanoia/cdparanoia-3.10.2-r3.ebuild,v 1.8 2009/06/21 02:20:56 ssuominen Exp $
 
 EAPI=2
-
 inherit autotools eutils flag-o-matic libtool toolchain-funcs versionator
 
 MY_P=${PN}-III-$(get_version_component_range 2-3)
-
 DESCRIPTION="an advanced CDDA reader with error correction"
 HOMEPAGE="http://www.xiph.org/paranoia"
 SRC_URI="http://downloads.xiph.org/releases/${PN}/${MY_P}.src.tgz
-	mirror://gentoo/${P}-gcc43.patch.bz2"
+	http://dev.gentoo.org/~ssuominen/distfiles/${MY_P}-patches-1.tbz2
+	mirror://gentoo/${MY_P}-patches-1.tbz2"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
@@ -21,14 +20,11 @@ IUSE=""
 S=${WORKDIR}/${MY_P}
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-use-destdir.patch \
-		"${FILESDIR}"/${P}-Makefile.in.patch \
-		"${WORKDIR}"/${P}-gcc43.patch \
-		"${FILESDIR}"/${P}-ppc64.patch \
-		"${FILESDIR}"/${P}-include-cdda_interface_h.patch
+	EPATCH_SUFFIX="patch" epatch "${WORKDIR}"/patches
 
 	mv configure.guess config.guess
 	mv configure.sub config.sub
+
 	sed -i -e '/configure.\(guess\|sub\)/d' configure.in || die "sed failed"
 
 	eautoconf
@@ -36,7 +32,7 @@ src_prepare() {
 }
 
 src_configure() {
-	tc-export CC AR RANLIB
+	tc-export AR CC RANLIB
 	append-flags -I"${S}/interface"
 	econf
 }

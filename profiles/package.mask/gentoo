@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.9929 2009/06/15 14:33:21 a3li Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.9966 2009/06/22 07:14:00 arfrever Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -31,6 +31,135 @@
 
 #--- END OF EXAMPLES ---
 
+# Arfrever <arfrever@gentoo.org> (22 Jun 2009)
+# pyreverse doesn't work with current versions of dev-python/astng.
+# Last release was over 4 years ago.
+# Masked for removal in 30 days.
+dev-python/pyreverse
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (22 Jun 2009)
+# Unusable with kernel >= 2.6.24, pointess.
+#
+# Tracking with bug #199011.
+#
+# Pending removal 22 August 2009
+sys-apps/realtime-lsm
+
+# Ulrich Mueller <ulm@gentoo.org> (21 Jun 2009)
+# Emacs 23 live CVS ebuilds and packages depending on them.
+~app-editors/emacs-cvs-23.0.9999
+~app-editors/emacs-cvs-23.1.9999
+>=virtual/emacs-23
+app-emacs/emacs-daemon
+
+# Christian Faulhammer <fauli@gentoo.org> (01 Apr 2008)
+# Masked for security reasons: bug 215699
+#
+# Diego E. Pettenò <flameeyes@gentoo.org> (21 Jun 2009)
+#  on behalf of QA Team
+#
+# Big files in FILESDIR, unmaintained, work pending on newer versions.
+# Masked for removal on July 21st 2009; bug #274882
+<net-misc/ltsp-5
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (21 Jun 2009)
+#  on behalf of QA Team
+#
+# mp1e fails to build with recent compilers (still requires gcc 3.x!)
+# and even with recent assemblers. The older analogtv ebuilds will
+# follow it for a mandatory dependency, newer ones don't have the
+# dependency.
+#
+# See bug #274715
+#
+# Removal pending 21 August 2009
+media-video/mp1e
+<media-plugins/vdr-analogtv-1.0.00-r2
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (21 Jun 2009)
+#  on behalf of QA Team
+#
+# Dead homepage, binary file in $FILESDIR
+# See bug #274859
+#
+# Removal pending 21 August 2009
+net-misc/whoischk
+
+# Alin Năstac <mrness@gentoo.org> (20 Jun 2009)
+# Masked for removal in 60 days (#273316).
+# SpeedTouch modems are supported by modern Linux kernels (>=2.6.10),
+# the firmware files being available under Gentoo as package
+# net-dialup/speedtouch-usb.
+net-dialup/speedtouch
+
+# Romain Perier <mrpouet@gentoo.org> (20 Jun 2009)
+# A lot of changes into sources code 
+# (re-structured, modules renamed and so on)
+# It may break some packages.
+=sys-auth/policykit-0.92
+
+# Samuli Suominen <ssuominen@gentoo.org> (19 Jun 2009)
+# Installs __init__.py directly into root of site-packages wrt #247851.
+# Still depends on sqlite 2. Masked for removal in 30 days.
+media-sound/bossogg
+
+# Samuli Suominen <ssuominen@gentoo.org> (18 Jun 2009)
+# - gmpc plugins are no longer valid with 0.18.0
+# removed in 30 days
+# - ekg2 doesn't build with stable glibc wrt #247994
+# removed in 60 days
+media-plugins/gmpc-autoplaylist
+media-plugins/gmpc-serverstats
+<=net-im/ekg2-20061202
+
+# Alistair Bush <ali_bush@gentoo.org) (18 Jun 2009)
+# Masked for testing, new slot and existing reverse deps
+# need to be updated. Unmasking this may break those packages.
+# Otherwise have fun.
+~dev-java/jython-2.5.0
+
+# Christian Faulhammer <fauli@gentoo.org> (13 Apr 2009)
+=net-misc/tor-0.2.1.5_rc
+
+# Peter Volkov <pva@gentoo.org> (17 Jun 2009)
+# Masked pre-release candidate and dependant packages.
+=dev-util/bzr-1.16*
+=dev-util/bzrtools-1.16*
+
+# Peter Volkov <pva@gentoo.org> (17 Jun 2009)
+# Pending removal, use net-misc/l7-filter-userspace, bug #274341
+# http://archives.gentoo.org/gentoo-dev-announce/msg_0d7c089ea38747a1dedfb2019e02d5a2.xml
+net-misc/l7-filter
+
+# Tony Vroon <chainsaw@gentoo.org> (16 Jun 2009)
+# Alpha/beta releases, you are free to test but bugs go upstream.
+# http://jira.atheme.org/
+=media-sound/audacious-2.1_alpha*
+=media-plugins/audacious-plugins-2.1_alpha*
+=net-irc/conspire-1.0_beta*
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (16 Jun 2009)
+#  on behalf of QA Team
+#
+# Fails to build with gcc 4.2 and later.
+# See bug #273275
+#
+# Removal pending 16 August 2009
+app-text/kaspaliste
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (16 Jun 2009)
+#  on behalf of QA Team
+#
+# Fails to build with not even recent Linux headers.
+# See bug #248388
+#
+# Removal pending 16 August 2009
+sys-apps/ddcxinfo-knoppix
+
+# Rémi Cardona <remi@gentoo.org> (16 Jun 2009)
+# will be treecleaned in 30 days, it's just beyond useless
+x11-libs/liboldX
+
 # Diego E. Pettenò <flameeyes@gentoo.org> (15 Jun 2009)
 # Live ebuild, we cannot guarantee its working state
 ~sys-fs/yaffs-utils-9999
@@ -41,7 +170,7 @@
 # Multiple issue, external kernel module unmaintained since 2005.
 # See bug #274105
 #
-# Removal pending 14 July 2009
+# Removal pending 14 August 2009
 net-fs/shfs
 
 # Theo Chatzimichos <tampakrap@gentoo.org> (14 Jun 2009)
@@ -88,12 +217,6 @@ dev-ruby/freeride
 # mask pre releases of media-gfx/inkscape-0.47
 >=media-gfx/inkscape-0.47_pre0
 
-# Rémi Cardona <remi@gentoo.org> (10 Jun 2009)
-# see bug #260582 for xorg-server 1.6 issues
-# both are "unmaskable" when I write the upgrade guide
->=x11-misc/xkeyboard-config-1.6
->=x11-base/xorg-server-1.6.1
-
 # Diego E. Pettenò <flameeyes@gentoo.org> (12 Jun 2009)
 #  on behalf of QA Team
 #
@@ -129,10 +252,6 @@ media-libs/freeimage
 # * No support for auth backends other than PAM
 # * Many more...
 >=gnome-base/gdm-2.26
-
-# Rémi Cardona <remi@gentoo.org> (10 Jun 2009)
-# has useless soname bump, will be gone in a few days
-=x11-libs/vte-0.20.4
 
 # Torsten Veller <tove@gentoo.org> (10 Jun 2009)
 # Mask unstable releases. Read the warning!
@@ -318,16 +437,6 @@ dev-python/pycrash
 >=dev-util/nvidia-cuda-sdk-2.2
 >=dev-util/nvidia-cuda-toolkit-2.2
 
-# Alexis Ballier <aballier@gentoo.org> (15 May 2009)
-# Merged in dev-texlive/texlive-langmongolian-2008, use that instead
-# Masked for removal on 15 June 2009
-dev-texlive/texlive-langmanju
-
-# Gilles Dartiguelongue <eva@gentoo.org> (15 May 2009)
-# Masked for removal wrt bug #244128. Old, rotten and
-# unused. Removal in 30 days.
-gnome-base/libghttp
-
 # Mike Pagano <mpagano@gentoo.org> (13 May 2009)
 # Masked for testing of ~ (tilde) unmasked packages
 >=app-portage/portpeek-1.8
@@ -366,25 +475,6 @@ dev-haskell/haskell-platform
 # Lennart Kolmodin <kolmodin@gentoo.org> (10 May 2009)
 # Mark ghc-6.10.3 for testing.
 ~dev-lang/ghc-6.10.3
-
-# Rémi Cardona <remi@gentoo.org> (09 May 2009)
-# Low-Bandwidth X and the X Proxy Management stuff has been declared
-# dead since last century. All of those will be gone in 30 days
-x11-apps/lbxproxy
-x11-apps/proxymngr
-x11-apps/xfindproxy
-x11-apps/xfwp
-x11-apps/xrx
-x11-proto/xproxymanagementprotocol
-
-# Rémi Cardona <remi@gentoo.org> (09 May 2009)
-# XPrint is dead, long live XPrint
-# nothing in portage uses those apps and libs anymore
-# will be removed in 30 days (see bug #264982 for rationale)
-x11-apps/xplsprinters
-x11-apps/xprehashprinterlist
-x11-libs/libXprintAppUtil
-x11-libs/libXprintUtil
 
 # Mark Loeser <halcy0n@gentoo.org> (6 May 2009)
 # Masked for testing
@@ -491,24 +581,9 @@ app-benchmark/phoronix-test-suite
 >www-plugins/mozilla-weave-0.2.104
 
 # Jeremy Olexa <darkside@gentoo.org> (14 Apr 2009)
-# Masked for removal in 60 days. Broken with gcc-4.3, doesn't work after gcc
-# patches, no maintainer, dead upstream. bug 228227
-x11-misc/temperature-app
-
-# Jeremy Olexa <darkside@gentoo.org> (14 Apr 2009)
-# Masked for removal in 60 days. Does not compile, no maintainer, dead upstream.
-# bug 247946
-net-dialup/ivcall
-
-# Jeremy Olexa <darkside@gentoo.org> (14 Apr 2009)
 # Masked for removal in 60 days. Security issues that warrant removal.
 # Non-vulnerable version exist, just needs a maintainer. bug 261507
 net-firewall/arno-iptables-firewall
-
-# Jeremy Olexa <darkside@gentoo.org> (14 Apr 2009)
-# Masked for removal in 60 days. Causes issues with other packages. Old port
-# that is not very useful and lacks a maintainer. bug 249080
-dev-util/ctmkit
 
 # Christian Faulhammer <fauli@gentoo.org> (13 Apr 2009)
 # Ulrich Mueller <ulm@gentoo.org>
@@ -527,17 +602,6 @@ dev-util/ctmkit
 =x11-drivers/ati-drivers-8.452
 =x11-drivers/ati-drivers-8.471.3
 =x11-apps/ati-drivers-extra-8.27.10
-
-# Christian Hoffmann <hoffie@gentoo.org> (12 Apr 2009)
-# Masked for security (bug 265756), unmaintained upstream (last release two
-# years ago), will be removed in 30 days. Use dev-lang/php with USE=zip as a
-# replacement, which is actively maintained and has more features.
-dev-php5/pecl-zip
-
-# Alin Năstac <mrness@gentoo.org> (10 Apr 2009)
-# Homepage no longer available (#264785)
-# To be removed by the tree cleaners after 30 days.
-net-dialup/qlcr
 
 # Jeremy Olexa <darkside@gentoo.org> (10 Apr 2009)
 # The bash-completion upstream naming scheme has drastically changed. As such,
@@ -573,10 +637,6 @@ app-portage/udept
 # Upstream is very unresponsive and we had to guess at which kernel patch was
 # needed. May not work and/or may be harmful. You have been warned.
 sys-apps/sreadahead
-
-# Peter Alfredsen <loki_val@gentoo.org> (27 Mar 2009)
-# Breaks compilation of KDE4 packages - bug 263823
-=x11-proto/renderproto-0.9.3-r1
 
 # Marijn Schouten <hkBst@gentoo.org> (22 Mar 2009)
 # Masked for removal. Dead upstream, does not build anymore. Bug 152060.
@@ -683,12 +743,6 @@ app-emulation/ganeti-instance-debian-etch
 # that are, probably, affected by security issues.
 net-p2p/pandodl
 
-# Ulrich Mueller <ulm@gentoo.org> (02 Feb 2009)
-# Emacs 23 live CVS ebuild and packages depending on it.
-~app-editors/emacs-cvs-23.0.9999
->=virtual/emacs-23
-app-emacs/emacs-daemon
-
 # Ben de Groot <yngwin@gentoo.org> (1 Feb 2009)
 # Masked because it's broken in current form. Several issues, see
 # tracker bug 224951
@@ -754,10 +808,6 @@ dev-util/w32api
 # Masked waiting on >=portage-2.2* to be unmasked
 >=app-portage/portpeek-1.6
 
-# Alin Năstac <mrness@gentoo.org> (14 Dec 2008)
-# Dead upstream, masked for removal in ~60 days.
-net-proxy/squirm
-
 # Jim Ramsay <lack@gentoo.org> (11 Dec 2008)
 # Live ebuild, for advanced users only
 =x11-wm/fluxbox-9999
@@ -775,6 +825,7 @@ net-proxy/squirm
 # Jeroen Roovers <jer@gentoo.org> (5 Dec 2008)
 # Snapshots and alphas of Opera may delete kittens
 =www-client/opera-10.00_pre43*
+=www-client/opera-10.00_pre4440
 
 # MATSUU Takuto <matsuu@gentoo.org> (19 Nov 2008)
 # Masked for bug #196340
@@ -809,8 +860,13 @@ media-libs/realcodecs
 =sci-visualization/paraview-3.4.0
 
 # Alexis Ballier <aballier@gentoo.org> (15 Oct 2008)
-# Breaks ocamlduce
+# Needs testing
+# Updated 21 Jun 2009
+# Mask aslo packages requiring 3.11
 >=dev-lang/ocaml-3.11.0_beta1
+>=dev-ml/ocamlduce-3.11
+>=dev-ml/ocaml-sqlite3-1.5.1
+>=dev-ml/postgresql-ocaml-1.11.1
 
 # Christian Parpart <trapni@gentoo.org> (04 Oct 2008)
 # for testing/experienced users only
@@ -835,10 +891,6 @@ media-libs/realcodecs
 # Doug Goldstein <cardoe@gentoo.org> (17 Sep 2008)
 # under development
 gnome-extra/gnome-lirc-properties
-
-# Peter Volkov <pva@gentoo.org> (17 Sep 2008)
-# Development version, but yet nice :)
->=net-analyzer/wireshark-1.1
 
 # Michael Marineau <marineam@gentoo.org> (03 Sep 2008)
 # Unmaintained and out of date security wise,
@@ -961,10 +1013,6 @@ media-sound/lastfmproxy
 # Masked for testing
 #>=mail-client/mozilla-thunderbird-3.0_alpha1
 >=mail-client/mozilla-thunderbird-bin-3.0_alpha1
-
-# Christian Faulhammer <fauli@gentoo.org> (01 Apr 2008)
-# Masked for security reasons: bug 215699
-<net-misc/ltsp-5
 
 # Denis Dupeyron <calchan@gentoo.org> (31 Mar 2008)
 # New versions using guile-1.8 and gtk-2 used to build and run at some point,
@@ -1286,13 +1334,6 @@ dev-tex/floatflt
 # Michael Sterrett <mr_bones_@gentoo.org> (28 Jan 2007)
 # masked pending new beta due to bug #164186
 games-strategy/ufo2000
-
-# Diego Pettenò <flameeyes@gentoo.org> (25 Jan 2007)
-# Live Subversion version for Amarok.
-# Use this in place of the broken amarok-svn ebuilds.
-# Please note that you need >=sys-apps/portage-2.1.2-r3 to be able to actually
-# use these versions by adding "**" for them in package.keywords.
-~media-sound/amarok-1.4.9999
 
 # Raúl Porcel <armin76@gentoo.org> (24 Jan 2007)
 # Mask cvs version of net-p2p/linuxdcpp

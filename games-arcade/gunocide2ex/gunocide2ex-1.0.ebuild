@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-arcade/gunocide2ex/gunocide2ex-1.0.ebuild,v 1.12 2009/06/10 23:37:34 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/gunocide2ex/gunocide2ex-1.0.ebuild,v 1.14 2009/06/17 23:32:42 nyhm Exp $
 
 EAPI=2
 inherit eutils toolchain-funcs games
@@ -26,7 +26,9 @@ src_unpack() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-build.patch
+	epatch \
+		"${FILESDIR}"/${P}-build.patch \
+		"${FILESDIR}"/${P}-glibc2.10.patch
 	edos2unix config.cfg
 	sed -i \
 		-e "s:/usr/local/games/gunocide2ex/config\.cfg:${GAMES_SYSCONFDIR}/${PN}.cfg:" \
@@ -44,8 +46,8 @@ src_compile() {
 	cd src
 	emake CXXFLAGS="$CXXFLAGS $(sdl-config --cflags)" $(echo *.cpp | sed 's/\.cpp/.o/g') \
 		|| die "emake failed"
-	$(tc-getCXX) -o ${PN} *.o -lpthread -lSDL -lSDL_ttf -lSDL_mixer || \
-		die "couldnt produce binary"
+	$(tc-getCXX) ${CXXFLAGS} ${LDFLAGS} -o ${PN} *.o -lpthread -lSDL -lSDL_ttf -lSDL_mixer \
+		|| die "cxx failed"
 }
 
 src_install() {
@@ -59,5 +61,7 @@ src_install() {
 	newins hscore.dat ${PN}-hscore.dat || die "newins failed (hscore)"
 	dodoc history doc/MANUAL_DE        || die "dodoc failed"
 	dohtml doc/manual_de.html          || die "dohtml failed"
+	newicon g2icon.xpm ${PN}.xpm
+	make_desktop_entry ${PN} "Gunocide II EX"
 	prepgamesdirs
 }

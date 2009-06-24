@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4552 2009/06/15 20:27:46 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4570 2009/06/22 18:47:47 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -548,6 +548,7 @@ app-vim/vcscommand:svk - Enable support for dev-util/svk
 dev-cpp/sptk:aspell - Enable support for app-text/aspell
 dev-cpp/sptk:excel - Enable Excel support
 dev-db/dabo:ide - Enable dabo IDE
+dev-db/hk_classes:mdb - Enables Microsoft Access DB support
 dev-db/hk_classes:xbase - Enables support for xbase databases (dBase, FoxPro, etc.)
 dev-db/libpq:pg-intdatetime - Enable --enable-integer-datetimes configure option, which changes PG to use 64-bit integers for timestamp storage
 dev-db/mysql:big-tables - Make tables contain up to 1.844E+19 rows
@@ -579,8 +580,8 @@ dev-db/sqlite:threadsafe - Enable thread safe operation of sqlite
 dev-dotnet/libgdiplus:pango - Use pango instead of cairo to render text.
 dev-dotnet/nant:bootstrap - Bootstrap nant by using pre-built ndoc binaries.
 dev-dotnet/xsp:debug - Enable tracing messages (RECOMMENDED)
-dev-embedded/openocd:ft2232 - Enable support for USB chips via dev-embedded/libftd2xx
-dev-embedded/openocd:ftdi - Enable support for USB FTDI chips (dev-embedded/libftdi)
+dev-embedded/openocd:ftd2xx - Enable support for USB FTDI chips via dev-embedded/libftd2xx
+dev-embedded/openocd:ftdi - Enable support for USB FTDI chips via dev-embedded/libftdi
 dev-embedded/openocd:parport - Enable support for parport JTAG devices
 dev-embedded/openocd:presto - Enable support for AXIS PRESTO devices
 dev-embedded/ponyprog:epiphany - Enable support for www-client/epiphany 
@@ -716,7 +717,6 @@ dev-lang/php:suhosin - Add Suhosin support (patch and extension from http://www.
 dev-lang/php:xmlreader - Enable XMLReader support
 dev-lang/php:xmlwriter - Enable XMLWriter support
 dev-lang/php:zip - Enable ZIP file support
-dev-lang/php:zip-external - Enable ZIP file support (external PECL extension)
 dev-lang/python:ucs2 - Enable byte size 2 unicode (DON'T USE THIS UNLESS YOU KNOW WHAT YOU'RE DOING)
 dev-lang/python:wininst - Install required Windows executables to create an executable installer for MS Windows.
 dev-lang/ruby:rubytests - Install ruby tests that can only be run after ruby is installed
@@ -751,6 +751,7 @@ dev-libs/cyrus-sasl:ntlm_unsupported_patch - Add NTLM net-fs/samba NOT supported
 dev-libs/cyrus-sasl:sample - Build sample client and server
 dev-libs/cyrus-sasl:srp - Enable SRP
 dev-libs/cyrus-sasl:urandom - Use /dev/urandom instead of /dev/random
+dev-libs/eggdbus:largefile - Support for large files
 dev-libs/fcgi:html - Install HTML documentation
 dev-libs/ferrisloki:stlport - Include support for dev-libs/STLport
 dev-libs/geoip:perl-geoipupdate - Install pure perl version of geoipupdate, with Proxy Server support via via the "http_proxy" environment variable and easy to customize.
@@ -861,6 +862,7 @@ dev-python/paste:flup - enable support for flup (and therefore for various wgsi 
 dev-python/paste:openid - enable OpenID support
 dev-python/psycopg:mxdatetime - choose MX DateTime support instead of built-in datetime
 dev-python/pygobject:libffi - Enable support to connect to signals on python objects from C.
+dev-python/pylint:html - Install HTML documenation
 dev-python/pylons:cheetah - Add optional cheetah support
 dev-python/pylons:genshi - Add optional genshi support
 dev-python/pylons:jinja2 - Add optional jinja2 support
@@ -959,6 +961,7 @@ dev-util/netbeans:cxx - Adds Netbeans C/C++ Pack
 dev-util/nsis:config-log - Enable the logging facility (useful in debugging installers)
 dev-util/nsis:prebuilt-system - Use the pre-compiled System.dll from the release to workaround the System::Call issue under GCC
 dev-util/nvidia-cuda-sdk:emulation -  Build binaries for device emulation mode. These binaries will not require a CUDA-capable GPU to run. 
+dev-util/nvidia-cuda-toolkit:profiler -  Installs the NVIDIA CUDA visual profiler. 
 dev-util/pbuilder:uml - Enable pbuilder user mode linux support
 dev-util/qct:bazaar -  Support for dev-util/bzr 
 dev-util/qct:mercurial -  Support for dev-util/mercurial 
@@ -1137,6 +1140,7 @@ games-util/bsp:dmalloc - Enable debugging with the dmalloc library
 gnome-base/gdm:consolekit - Allow proper handling of removable media according to who is actually present on the machine.
 gnome-base/gdm:dmx - Enables Distributed Multihead X (DMX) support
 gnome-base/gdm:remote - Enables support for secure remote connections
+gnome-base/gdm:xklavier - Use x11-libs/libxklavier for keyboard management
 gnome-base/gnome-control-center:sound - Enable sound event support with media-libs/libcanberra
 gnome-base/gnome-mount:nautilus - Enables the Nautilus plugin
 gnome-base/gnome-session:policykit - Enable sys-auth/policykit authentication support
@@ -1270,6 +1274,7 @@ kde-base/plasma-workspace:xcomposite - Disable this flag to enable experimental 
 kde-base/pykde4:akonadi - Builds Akonadi python language bindings
 kde-base/step:qalculate - Enable the libqalculate library for unit conversion
 kde-misc/kcpufreq:icon - Add icon for GUI applet (enabled by default)
+kde-misc/kdiff3:konqueror - Enable integration with konqueror
 kde-misc/knetworkmanager:cisco - Adds support for the Cisco VPN client net-misc/vpnc
 kde-misc/knetworkmanager:dialup - Enables Dialup (PPP) support
 kde-misc/knetworkmanager:openvpn - Adds support for the OpenVPN net-misc/openvpn client
@@ -1516,6 +1521,7 @@ media-libs/libgphoto2:bonjour - Adds Bonjour/Zeroconf support.
 media-libs/libgpod:gtk - Enables ArtWorkDB support (including Photos and album covers)
 media-libs/libifp:module - Build kernel module for non-root usage
 media-libs/libmtp:static-libs - Compile static archives
+media-libs/libquicktime:schroedinger - Enable Dirac video support (an advanced royalty-free video compression format) via libschroedinger (high-speed implementation in C of the Dirac codec).
 media-libs/libsdl:audio - Control audio support (disable at your own risk)
 media-libs/libsdl:joystick - Control joystick support (disable at your own risk)
 media-libs/libsdl:video - Control video support (disable at your own risk)
@@ -1564,6 +1570,7 @@ media-libs/xine-lib:win32codecs -  Enable support for loading and using Windows 
 media-libs/xine-lib:xvmc -  Enable support for XVideo Motion Compensation (accelerated mpeg playback). 
 media-libs/xvid:pic - disable optimized assembly code that is not PIC friendly
 media-plugins/audacious-plugins:adplug - Build with AdPlug (Adlib sound card emulation) support
+media-plugins/audacious-plugins:bs2b - Enable Bauer Bauer stereophonic-to-binaural headphone filter
 media-plugins/audacious-plugins:cdaudio - Enable cd audio playback support
 media-plugins/audacious-plugins:chardet - Try to handle non-UTF8 chinese/japanese/korean ID3 tags
 media-plugins/audacious-plugins:icecast - Support for Icecast2 streaming
@@ -1626,7 +1633,6 @@ media-sound/amarok:real -  Build the Helix engine for Amarok, linked against med
 media-sound/amarok:visualization - Support visualization plugins through media-libs/libvisual
 media-sound/aqualung:cdda - Enables libcdda cd audio playback support
 media-sound/aqualung:ifp - Enable support for iRiver iFP portable audio players
-media-sound/aqualung:loop-playback - Enable adjustable loop playback support
 media-sound/aqualung:lua - Enable support for programmable title formatting with dev-lang/lua 
 media-sound/aqualung:podcast - Enable podcast support
 media-sound/aqualung:systray - Enable system tray support
@@ -1668,7 +1674,6 @@ media-sound/herrie:http - Enable http streaming
 media-sound/herrie:xspf - Enable support for reading and saving XSPF playlists
 media-sound/jack-audio-connection-kit:coreaudio - Build the CoreAudio driver on Mac OS X systems
 media-sound/jack-audio-connection-kit:cpudetection - Enables runtime cpudetection
-media-sound/jack-audio-connection-kit:jack-tmpfs - Compile in a tmpf path
 media-sound/jack-audio-connection-kit:netjack - Build with support for Realtime Audio Transport over generic IP
 media-sound/lame:mp3rtp - Build the mp3-to-RTP streaming utility. **UNSUPPORTED**
 media-sound/listen:libsexy - Enable libsexy support
@@ -2342,6 +2347,7 @@ net-libs/aqbanking:dtaus -  Enable dtaus backend
 net-libs/aqbanking:geldkarte -  Enable geldkarte backend 
 net-libs/aqbanking:hbci -  Enable support for HBCI 
 net-libs/aqbanking:yellownet -  Enable support for Yellownet 
+net-libs/clinkcc:mythtv - Enable MythTV support
 net-libs/courier-authlib:vpopmail - Enable vpopmail support
 net-libs/cvm:vpopmail - Enable vpopmail support
 net-libs/iax:snomhack - Use slower memset for SNOM phoneem
@@ -2435,7 +2441,6 @@ net-misc/curl:libssh2 - Enabled SSH urls in curl using libssh2
 net-misc/curl:nss - Use NSS as the crypto engine
 net-misc/dhcpcd:compat - Enable commandline compability with dhcpcd-3.x
 net-misc/directvnc:mouse - Adds mouse support
-net-misc/drivel:rhythmbox - Enables support for currently playing song in rhythmbox
 net-misc/dropbear:bsdpty - Add support for legacy BSD pty's rather than dynamic UNIX pty's -- do not use this flag unless you are absolutely sure you actually want it
 net-misc/dropbear:multicall - Build all the programs as one little binary (to save space)
 net-misc/freenet6:radvd - Enable support for net-misc/radvd
@@ -2799,6 +2804,7 @@ sci-mathematics/freemat:umfpack - Add sparse solving via sci-libs/umfpack
 sci-mathematics/geomview:avg - Enable experimental motion averaging technique
 sci-mathematics/geomview:netpbm - Add media-libs/netpbm support for external modules
 sci-mathematics/gretl:sourceview - Enable support for x11-libs/gtksourceview 
+sci-mathematics/mathomatic:secure - Create an extra secure version, with no I/O.
 sci-mathematics/maxima:clisp - Add support for GNU ANSI Common Lisp (dev-lisp/clisp)
 sci-mathematics/maxima:cmucl - Add support for CMU Common Lisp (dev-lisp/cmucl)
 sci-mathematics/maxima:gcl - Add support for GNU Common Lisp (dev-lisp/gcl)
@@ -2985,6 +2991,9 @@ sys-devel/gcc:nossp - Disable SSP support (NOT FOR GENERAL USE)
 sys-devel/gcc:objc - Build support for the Objective C code language
 sys-devel/gcc:objc++ - Build support for the Objective C++ language
 sys-devel/gcc:objc-gc - Build support for the Objective C code language Garbage Collector
+sys-devel/gcc-apple:multislot - Allow for SLOTs to include minor version (3.3.4 instead of just 3.3)
+sys-devel/gcc-apple:objc - Build support for the Objective C code language
+sys-devel/gcc-apple:objc++ - Build support for the Objective C++ language
 sys-devel/gcc-nios2:multislot - Allow for SLOTs to include minor version (3.3.4 instead of just 3.3)
 sys-devel/gdb:multitarget - Support all known targets in one gdb binary
 sys-devel/kgcc64:multislot - Allow for SLOTs to include minor version (eg. 3.3.4 instead of just 3.3)
@@ -3053,6 +3062,7 @@ sys-fs/owfs:server - Enable building the OWFS server (owserver)
 sys-fs/pysize:psyco - Adds psyco support
 sys-fs/quota:rpc - Enable quota interaction via RPC
 sys-fs/udev:devfs-compat - Install rules for devfs compatible device names
+sys-fs/udev:extras - Compile udev-extras requiring external dependencies
 sys-fs/unionfs:nfs - Adds support for NFS file system
 sys-kernel/gentoo-sources:ultra1 - Enable if you have a SUN Ultra 1 with a HME interface
 sys-kernel/linux-docs:html - Install HTML documenation
@@ -3230,6 +3240,7 @@ x11-misc/google-gadgets:soup - Enables XML HTTP request extension based on net-l
 x11-misc/google-gadgets:webkit - Enables browser element and script runtime based on net-libs/webkit-gtk
 x11-misc/notification-daemon-xfce:xfce - Enable integration in XFCE desktop
 x11-misc/slim:screenshot - Enable screenshot support (using media-gfx/imagemagick)
+x11-misc/tint2:battery - Enable battery status plugin
 x11-misc/tint2:examples - Install tint2rc examples
 x11-misc/vnc2swf:x11vnc - Install script that depends on x11vnc
 x11-misc/x11vnc:system-libvncserver - Build x11vnc against the system libvncserver (experimental)

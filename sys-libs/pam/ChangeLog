@@ -1,6 +1,41 @@
 # ChangeLog for sys-libs/pam
-# Copyright 2002-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/pam/ChangeLog,v 1.238 2009/03/27 17:08:40 armin76 Exp $
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/pam/ChangeLog,v 1.244 2009/06/21 16:50:28 flameeyes Exp $
+
+  21 Jun 2009; Diego E. Pettenò <flameeyes@gentoo.org> pam-1.1.0.ebuild:
+  Use a different alternative to avoid applying the disable-regenerate-man
+  for now: download the doc tarball and merge it in. This increses the
+  downloaded data by 500k and also installs quite a bit more documentation,
+  but also solves bug #206166 in a nice way, provide the full documentation
+  set and so on. If upstream will provide a --disable-regenerate-doc in the
+  future, then I'll add the doc USE flag to disable the extra download, for
+  now this will work out, I think.
+
+  21 Jun 2009; Diego E. Pettenò <flameeyes@gentoo.org> pam-1.1.0.ebuild:
+  Restore the patch to disable man regeneration, comment it so that there is
+  a bug reference too; also comment the xtests patch. Fix the warning for
+  broken setups, removing pam_timestamp (which is present again).
+
+  21 Jun 2009; Diego E. Pettenò <flameeyes@gentoo.org> pam-1.1.0.ebuild,
+  +files/Linux-PAM-1.1.0-nonls.patch:
+  Add a patch to fix building with nls USE flag disabled, see bug #274856.
+
+  20 Jun 2009; Diego E. Pettenò <flameeyes@gentoo.org> pam-1.0.4.ebuild,
+  pam-1.1.0.ebuild:
+  Shut up a few QA warnings.
+
+*pam-1.1.0 (20 Jun 2009)
+
+  20 Jun 2009; Diego E. Pettenò <flameeyes@gentoo.org> +pam-1.1.0.ebuild,
+  +files/Linux-PAM-1.1.0-debug.patch:
+  Version bump to new release. Some of the interesting changes: the debug
+  USE flag is properly set up this time, we don't patch man regeneration any
+  longer (should be fixed upsteram), don't touch the modules' README files
+  until install phase, don't error out on pam_timestamp usage, this PAM
+  version fixes it. Also drop the update warnings on the split PAM modules.
+
+  20 Jun 2009; Diego E. Pettenò <flameeyes@gentoo.org> -pam-1.0.1.ebuild:
+  Remove old version.
 
   27 Mar 2009; Raúl Porcel <armin76@gentoo.org> pam-1.0.4.ebuild:
   m68k stable, thanks to kolla for testing

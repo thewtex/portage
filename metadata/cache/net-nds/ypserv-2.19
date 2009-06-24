@@ -1,5 +1,5 @@
 >=sys-libs/gdbm-1.8.0 slp? ( net-libs/openslp )
->=sys-libs/gdbm-1.8.0 slp? ( net-libs/openslp ) net-nds/portmap
+>=sys-libs/gdbm-1.8.0 slp? ( net-libs/openslp ) || ( net-nds/rpcbind net-nds/portmap )
 0
 mirror://kernel/linux/utils/net/NIS/ypserv-2.19.tar.bz2
 
@@ -14,7 +14,7 @@ slp
 
 
 
-compile install postinst
+compile install postinst unpack
 
 
 
