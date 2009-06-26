@@ -17,8 +17,6 @@ RDEPEND="dev-lang/python app-arch/pbzip2 dev-util/ccache dev-util/git"
 src_install() {
 	install -d "${D}/usr/lib" || die "/usr/lib fail"
 	cp -a "${S}" "${D}/usr/lib/metro" || die "/usr/lib/metro fail"
-	install -d "${D}/etc" || die "/etc fail"
-	cp -a "${S}/etc" "${D}/etc/metro" || die "/etc/metro fail"
 	install -d /usr/bin || die "/usr/bin fail"
 	dosym ../lib/metro/metro /usr/bin/metro || die "link fail"
 }
