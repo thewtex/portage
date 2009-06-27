@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4576 2009/06/24 23:07:44 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4582 2009/06/27 07:27:44 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -359,6 +359,7 @@ app-misc/genealogyj-bin:geoview - Adds support for geographic extensions
 app-misc/genealogyj-bin:skins - Installs some skins
 app-misc/geneweb:ocamlopt - Enable ocamlopt support (dev-lang/ocaml native code compiler)
 app-misc/gizmod:libvisual - Enable the media-libs/libvisual (Amarok) plugin
+app-misc/gourmet:gnome-print - Enable printing support using gnome-print.
 app-misc/gourmet:print - Enable printing support using gnome-print.
 app-misc/gourmet:rtf - Enable RTF support.
 app-misc/gpsdrive:garmin - Adds specific support for Garmin GPS receivers (pre-2.10 only)
@@ -821,6 +822,9 @@ dev-ml/lablgtk:glade - Enable libglade bindings compilation.
 dev-ml/lablgtk:gnomecanvas - Enable libgnomecanvas bindings compilation.
 dev-ml/lablgtk:sourceview - Enable GtkSourceView support
 dev-ml/ocamlnet:httpd - Enables net-httpd web server component
+dev-perl/App-Nopaste:clipboard - copying of URLs with -x/--copy
+dev-perl/App-Nopaste:github - Github authentication
+dev-perl/App-Nopaste:pastebin - pastebin.com support
 dev-perl/Eidetic:auth - Enables dev-perl/Apache-AuthTicket based cookie authentication
 dev-perl/GD:animgif - Enable animated gif support
 dev-perl/HTML-Mason:modperl - Enable www-apache/mod_perl support
@@ -2008,12 +2012,13 @@ media-video/vlc:cdio - Enables CD input and control library support.
 media-video/vlc:dc1394 - Enables IIDC cameras support.
 media-video/vlc:dirac - Enable Dirac video support (an advanced royalty-free video compression format) via the reference library: dirac.
 media-video/vlc:fluidsynth - Enables Fluidsynth MIDI software synthesis (with external sound fonts).
+media-video/vlc:gcrypt - Enables cryptography support via libgcrypt.
 media-video/vlc:gnome - Adds support for GNOME's filesystem abstraction layer, gnome-base/gnome-vfs. This flag is not GUI-related.
 media-video/vlc:httpd - Enables a web based interface for vlc.
 media-video/vlc:id3tag - Enables id3tag metadata reader plugin.
 media-video/vlc:kate - Adds support for Ogg Kate subtitles via libkate.
 media-video/vlc:libass - Enables subtitles support using libass.
-media-video/vlc:libgcrypt - Enables cryptography support via libgcrypt.
+media-video/vlc:libproxy - Enables support for proxy settings in the HTTP access module.
 media-video/vlc:libsysfs - Get user key from firewire connected iPod via libsysfs.
 media-video/vlc:libv4l2 - Enables Libv4l2 Video4Linux2 support (for conversion from various video formats to standard ones, needed to use v4l2 devices with strange formats).
 media-video/vlc:live - Enables LIVE.com support.
@@ -2210,10 +2215,27 @@ net-fs/nfs-utils:nonfsv4 - Disable support for NFSv4
 net-fs/samba:ads - Enable Active Directory support
 net-fs/samba:async - Enables asynchronous input/output
 net-fs/samba:automount - Enables automount support
+net-fs/samba:cifsupcall - Enables userspace upcall helper
+net-fs/samba:client - Enables the client part
 net-fs/samba:oav - Enables support for the OpenAntiVirus plugins
 net-fs/samba:quotas - Enables support for user quotas
+net-fs/samba:server - Enables the server part
 net-fs/samba:swat - Enables support for swat configuration gui
 net-fs/samba:winbind - Enables support for the winbind auth daemon
+net-fs/samba-client:ads - Enable Active Directory support
+net-fs/samba-client:aio - Enable asynchronous IO support
+net-fs/samba-client:cluster - Enable support for clustering
+net-fs/samba-client:winbind - Enables support for the winbind auth daemon
+net-fs/samba-libs:ads - Enable Active Directory support
+net-fs/samba-libs:aio - Enable asynchronous IO support
+net-fs/samba-libs:cluster - Enable support for clustering
+net-fs/samba-libs:winbind - Enables support for the winbind auth daemon
+net-fs/samba-server:ads - Enable Active Directory support
+net-fs/samba-server:aio - Enable asynchronous IO support
+net-fs/samba-server:cluster - Enable support for clustering
+net-fs/samba-server:quota - Enables support for user quotas
+net-fs/samba-server:swat - Enables support for swat configuration gui
+net-fs/samba-server:winbind - Enables support for the winbind auth daemon
 net-fs/shfs:amd - Enable automounter support
 net-ftp/ftpcube:sftp - Enable sftp connection support
 net-ftp/proftpd:authfile - Enable support for the auth-file module
@@ -2368,7 +2390,7 @@ net-libs/libssh:gcrypt - Prefer dev-libs/libgcrypt over dev-libs/openssl for enc
 net-libs/libssh:server - Build with SSH server support
 net-libs/libssh:sftp - Build with SFTP support
 net-libs/libssh:ssh1 - Build with SSH1 support
-net-libs/libssh2:libgcrypt - Use libgcrypt for crypto
+net-libs/libssh2:gcrypt - Use dev-libs/libgcrypt for crypto
 net-libs/libvncserver:no24bpp - disable 24bpp support
 net-libs/libvncserver:nobackchannel - disable backchannel support
 net-libs/loudmouth:asyncns - Use libasyncns for asynchronous name resolution.
@@ -3201,6 +3223,7 @@ x11-libs/cairo:glitz - Build with glitz support, which replaces some software re
 x11-libs/cairo:opengl - When used along with USE=glitz, enables glitz-glx usage. Requires hardware OpenGL support
 x11-libs/fltk:games - Builds and installs some extra games
 x11-libs/fltk:noxft - Disables xft; use for non-english characters
+x11-libs/gtkdatabox:glade - Build with libglade and glade-3 supports, which includes a glade's module for GtkDataBox widget
 x11-libs/gtkmathview:t1lib - Enable media-libs/t1lib support
 x11-libs/libmatchbox:pango - Enable x11-libs/pango support
 x11-libs/libmatchbox:xsettings - Enable the use of xsettings for settings management
