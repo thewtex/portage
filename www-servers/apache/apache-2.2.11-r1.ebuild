@@ -5,10 +5,11 @@
 # latest gentoo apache files
 GENTOO_PATCHSTAMP="20090101"
 GENTOO_DEVELOPER="hollow"
+GENTOO_PATCHNAME="gentoo-apache-2.2.11"
 
 # IUSE/USE_EXPAND magic
-IUSE_MPMS_FORK="itk peruser prefork"
-IUSE_MPMS_THREAD="event worker"
+IUSE_MPMS_FORK="prefork"
+IUSE_MPMS_THREAD=""
 
 IUSE_MODULES="actions alias asis auth_basic auth_digest authn_alias authn_anon
 authn_dbd authn_dbm authn_default authn_file authz_dbm authz_default
@@ -95,6 +96,7 @@ src_unpack() {
 	fi
 
 	apache-2_src_unpack
+	epatch ${FILESDIR}/2.2.11-r1/anti-slowloris.diff
 }
 
 pkg_preinst() {
