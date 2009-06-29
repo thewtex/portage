@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/avidemux/avidemux-2.4.4-r2.ebuild,v 1.3 2009/06/26 11:13:25 fauli Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/avidemux/avidemux-2.4.4-r2.ebuild,v 1.5 2009/06/28 12:18:43 maekke Exp $
 
 EAPI="2"
 
@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="2"
-KEYWORDS="~amd64 ppc x86"
+KEYWORDS="amd64 ppc x86"
 IUSE="+aac +aften +alsa amrnb +dts esd jack libsamplerate +mp3 +truetype
 	+vorbis +x264 +xv +xvid gtk +qt4"
 RESTRICT="test"
@@ -54,6 +54,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/${PN}-2.4-cmake264.patch  # bug 268618
 	epatch "${FILESDIR}"/${PN}-2.4-i18n.patch      # bug 272258
 	epatch "${FILESDIR}"/${P}-gcc-4.4.patch        # bug 269114
+	epatch "${FILESDIR}"/${PN}-2.4-ts-cmake.patch  # bug 272730
 }
 
 src_configure() {

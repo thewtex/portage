@@ -1,39 +1,45 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-drivers/ati-drivers/ati-drivers-9.6.ebuild,v 1.2 2009/06/26 12:53:26 scarabeus Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-drivers/ati-drivers/ati-drivers-9.6.ebuild,v 1.6 2009/06/27 22:53:22 mr_bones_ Exp $
+
+EAPI="1"
 
 IUSE="acpi debug"
 
 inherit eutils multilib linux-mod toolchain-funcs versionator
 
-DESCRIPTION="Ati precompiled drivers for recent chipsets"
+DESCRIPTION="Ati precompiled drivers for r600 (HD Series) and newer chipsets"
 HOMEPAGE="http://www.ati.com"
 ATI_URL="https://a248.e.akamai.net/f/674/9206/0/www2.ati.com/drivers/linux/"
 SRC_URI="${ATI_URL}/ati-driver-installer-${PV/./-}-x86.x86_64.run"
 
 LICENSE="AMD GPL-2 QPL-1.0 as-is"
 KEYWORDS="~amd64 ~x86"
+SLOT="1"
 
 # The portage dep is for COLON_SEPARATED support in env-update.
 # The eselect dep (>=1.0.9) is for COLON_SEPARATED in eselect env update.
-RDEPEND=">=x11-base/xorg-server-1.5
+RDEPEND="
+	!x11-drivers/ati-drivers:0
 	!x11-apps/ati-drivers-extra
 	>=app-admin/eselect-1.0.9
-	app-admin/eselect-opengl
+	>=app-admin/eselect-opengl-1.0.7
+	>=sys-apps/portage-2.1.1-r1
 	sys-libs/libstdc++-v3
+	>=x11-base/xorg-server-1.5.3-r7
+	x11-libs/libXrandr
 	amd64? ( app-emulation/emul-linux-x86-xlibs )
 	acpi? (
 		x11-apps/xauth
 		sys-power/acpid
 	)
-	x11-libs/libXrandr
-	>=sys-apps/portage-2.1.1-r1"
+"
 
 DEPEND="${RDEPEND}
 	x11-proto/xf86miscproto
 	x11-proto/xf86vidmodeproto
 	x11-proto/inputproto
-	!<x11-drivers/ati-drivers-8.552-r1"
+"
 
 EMULTILIB_PKG="true"
 
@@ -57,15 +63,6 @@ pkg_setup() {
 
 	if kernel_is ge 2 6 25 && linux_chkconfig_present PREEMPT_RCU; then
 		die "${P} is not compatible with RCU Preemption (bug #223281), please disable it"
-	fi
-
-	if kernel_is ge 2 6 26 && ! linux_chkconfig_present UNUSED_SYMBOLS; then
-			ewarn "You have to Enable unused/obsolete exported symbols in Kernel hacking section of kernel config for fglrx to load"
-	fi
-
-	if kernel_is ge 2 6 24 && ! linux_chkconfig_present PCI_LEGACY; then
-		eerror "${P} requires support for pci_find_slot."
-		die "${P} requires support for pci_find_slot."
 	fi
 
 	if kernel_is ge 2 6 29; then
@@ -123,6 +120,16 @@ pkg_setup() {
 		PKG_LIBDIR=lib
 		ARCH_DIR="${S}/arch/x86"
 	fi
+
+	elog
+	elog "Please note that this driver supports only graphic cards based on"
+	elog "r600 chipset and newer."
+	elog "This represent the ATI Radeon HD series at this moment."
+	elog
+	elog "If your card is older then usage of ${CATEGORY}/xf86-video-ati"
+	elog "as replacement is highly recommended. Rather than staying with"
+	elog "old versions of this driver."
+	einfo
 }
 
 src_unpack() {
@@ -193,7 +200,6 @@ src_unpack() {
 		lib/fglrx_gamma/fglrx_gamma.c || die "include fixup failed"
 	# Add a category.
 	mv programs/fglrx_gamma/fglrx_xgamma.{man,1} || die "man mv failed"
-	cd ..
 }
 
 src_compile() {
