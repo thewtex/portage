@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-servers/cherokee/cherokee-0.99.19.ebuild,v 1.1 2009/06/24 07:08:45 bass Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-servers/cherokee/cherokee-0.99.19-r1.ebuild,v 1.1 2009/06/28 16:01:00 bass Exp $
 
 inherit eutils pam versionator libtool
 
@@ -94,9 +94,7 @@ src_install () {
 	use coverpage || rm -rf "${D}"/var/www/localhost/htdocs/{index.html,images}
 	use admin || rm -rf "${D}"/usr/sbin/admin "${D}"/usr/share/cherokee/admin
 
-	# Put log files inside a /var/log/cherokee directory (we create and set
-	# perms in postinst)
-
+	# Puts logs in /var/log/cherokee/
 	dosed "s:/var/log/cherokee\.:/var/log/cherokee/cherokee\.:g" /etc/cherokee/cherokee.conf
 
 }

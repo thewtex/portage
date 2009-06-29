@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4582 2009/06/27 07:27:44 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4592 2009/06/28 23:27:49 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -484,6 +484,7 @@ app-portage/eix:sqlite - Compile in support for portage's sqlite backend; to act
 app-portage/eix:tools - Create separate binary for script helper tools (currently only: versionsort); useful if they are called extremely often
 app-portage/gatt:libpaludis - Do some dependency resolution by using a sys-apps/paludis interface
 app-portage/layman:git - Support dev-util/git based overlays
+app-portage/pfl:network-cron - Adds a cron job which does a weekly submit of the package database
 app-portage/portato:etc-proposals - Use app-portage/etc-proposals for updating CONFIG_PROTECTed stuff
 app-portage/portato:userpriv - Allow emerge processes as normal user
 app-shells/bash:bashlogger - Log ALL commands typed into bash; should ONLY be used in restricted environments such as honeypots
@@ -787,10 +788,9 @@ dev-libs/poppler:poppler-data -  Pull in the free (as in beer) poppler-data pack
 dev-libs/ppl:prolog - Build SWI Prolog interface
 dev-libs/ppl:watchdog - Build the PPL Watchdog library - a C++ library for multiple, concurrent watchdog timers
 dev-libs/qsa:ide - Enable the qsa ide
-dev-libs/soprano:clucene - Enable dev-cpp/clucene backend support.
+dev-libs/soprano:clucene - Enable dev-cpp/clucene backend support (java app).
 dev-libs/soprano:raptor - Enables support for media-libs/raptor RDF parser/serializer.
-dev-libs/soprano:redland - Enables support for the dev-libs/redland backend.
-dev-libs/soprano:sesame2 - Enables support for the virtual/jre-1.6.0 (sesame2) backend.
+dev-libs/soprano:redland - Enables support for the dev-libs/redland backend (really slow one).
 dev-libs/xerces-c:iconv - Use iconv (virtual/libiconv) as message loader and transcoder (in general it would be possible to use iconv only as message loader and something else like icu or the native method as transcoder and vice-versa, but this is a less common case and hard to handle)
 dev-libs/xerces-c:libwww - Use the net-libs/libwww library for fetching URLs, instead of the builtin method
 dev-libs/xerces-c:threads - Enable threading support through pthread (or other libraries on AIX, IRIX, HPUX, Solars). Highly recommended
@@ -964,22 +964,24 @@ dev-util/mono-tools:webkit - Use net-libs/webkit-gtk for rendering.
 dev-util/nemiver:memoryview - Enable the optional hexadecimal memory inspection with app-editors/ghex.
 dev-util/netbeans:cxx - Adds Netbeans C/C++ Pack
 dev-util/nsis:config-log - Enable the logging facility (useful in debugging installers)
-dev-util/nsis:prebuilt-system - Use the pre-compiled System.dll from the release to workaround the System::Call issue under GCC
 dev-util/nvidia-cuda-sdk:emulation -  Build binaries for device emulation mode. These binaries will not require a CUDA-capable GPU to run. 
 dev-util/nvidia-cuda-toolkit:profiler -  Installs the NVIDIA CUDA visual profiler. 
 dev-util/pbuilder:uml - Enable pbuilder user mode linux support
 dev-util/qct:bazaar -  Support for dev-util/bzr 
 dev-util/qct:mercurial -  Support for dev-util/mercurial 
 dev-util/qct:monotone -  Support for dev-util/monotone 
+dev-util/qt-creator:bineditor - enable bineditor plugin
+dev-util/qt-creator:bookmarks - enable bookmarks plugin
 dev-util/qt-creator:cmake - enable cmake project manager plugin
 dev-util/qt-creator:debugger - enable debugger plugin
 dev-util/qt-creator:designer - enable designer plugin
 dev-util/qt-creator:fakevim - enable vim-like key bindings plugin
 dev-util/qt-creator:git - enable git plugin
-dev-util/qt-creator:kde -  Select media-sound/phonon as phonon variant needed for kde 
-dev-util/qt-creator:perforce -  enable perforce software configuration manager plugin 
+dev-util/qt-creator:perforce - enable perforce software configuration manager plugin
+dev-util/qt-creator:qtscript - enable qt script editor plugin
 dev-util/qt-creator:subversion - enable subersion plugin
 dev-util/radare:gui -  Enable the graphical user interface of radare (broken) 
+dev-util/radare:vala -  Enable support for the vala programming language 
 dev-util/strace:aio - Enable libaio support
 dev-util/subversion:ctypes-python - Build and install ctypes python bindings
 dev-util/subversion:dso - Enable runtime module search
@@ -1409,6 +1411,7 @@ media-fonts/culmus-ancient:fontforge - Use media-gfx/fontforge to build fonts fr
 media-fonts/dejavu:fontforge - Use media-gfx/fontforge to build fonts from source
 media-fonts/intlfonts:bdf - Installs BDF fonts in addition to PCF
 media-fonts/mplus-outline-fonts:ipafont - Generates new fonts merged with media-fonts/ja-ipafonts
+media-fonts/sil-charis:compact - Use more compactly spaced font
 media-fonts/terminus-font:a-like-o - Changes view of letter 'a' - a looks like o (see homepage)
 media-fonts/terminus-font:bolddiag - Boldified diagonal parts of '4', 'k', 'x' and some other chars
 media-fonts/terminus-font:pcf - Intall Portable Compiled Font (PCF) (required for X11)
@@ -1498,6 +1501,7 @@ media-libs/alsa-lib:alisp - Enable support for ALISP (ALSA LISP) interpreter for
 media-libs/alsa-lib:midi - Enables MIDI output support (both Hardware and Software)
 media-libs/cal3d:16bit-indices - Enables use of 16bit indices
 media-libs/devil:allegro - Add support for Allegro
+media-libs/esdl:image - Enable image support
 media-libs/faad2:digitalradio - Digital Radio Mondiale (warning: disables other decoders)
 media-libs/freetype:fontforge - Install internal headers required for truetype debugger in media-gfx/fontforge (built with USE=fontforge-debugger)
 media-libs/freetype:kpathsea - Enable TeX support (ttf2pk and ttf2pfb)
@@ -1723,6 +1727,7 @@ media-sound/ncmpc:mouse - Enable curses getmouse support
 media-sound/ncmpc:search-screen - Enable search screen
 media-sound/ncmpc:song-screen - Enable song viewer screen
 media-sound/ncmpcpp:clock - Enable clock screen
+media-sound/ncmpcpp:outputs - Enable outputs screen
 media-sound/noteedit:kmid - Use KDE's kmid to play sound
 media-sound/noteedit:tse3 - Use tse3 library to play/export sound
 media-sound/om:dssi - Enables support for DSSI plugins
@@ -3067,8 +3072,12 @@ sys-fs/ecryptfs-utils:pkcs11 - Enable PKCS#11 (Smartcards) key module
 sys-fs/ecryptfs-utils:tpm - Enable support for Trusted Platform Module (TPM) using app-crypt/trousers
 sys-fs/evms:hb - Enable support for heartbeat-1
 sys-fs/evms:hb2 - Enable support for heartbeat-2
+<<<<<<< HEAD:profiles/use.local.desc
 sys-fs/ext3grep:largefile - Add support for files greater then 2gb on x86
 sys-fs/ext3grep:libcwd - Debuging support
+=======
+sys-fs/loop-aes:extra-ciphers - Enable extra ciphers
+>>>>>>> origin/gentoo.org:profiles/use.local.desc
 sys-fs/loop-aes:keyscrub - Protects the encryption key in memory but takes more cpu resources
 sys-fs/loop-aes:padlock - Use VIA padlock instructions, detected at run time, code still works on non-padlock processors
 sys-fs/lvm2:clvm - Allow users to build clustered lvm2
@@ -3156,6 +3165,7 @@ www-apps/rt:lighttpd - Add www-servers/lighttpd support
 www-apps/viewvc:cvsgraph - Add dev-util/cvsgraph support to show graphical views of revisions and branches
 www-apps/viewvc:highlight - Add app-text/highlight support to colourize code stored in the repository
 www-apps/viewvc:mod_python - Add www-apache/mod_python support
+www-apps/viewvc:pygments - Add dev-python/pygments support for syntax highlighting
 www-client/elinks:bittorrent - Enable support for the BitTorrent protocol
 www-client/elinks:finger - Enable support for the finger protocol
 www-client/elinks:gopher - Enable support for the gopher protocol

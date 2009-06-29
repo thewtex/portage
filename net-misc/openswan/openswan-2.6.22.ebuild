@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/openswan/openswan-2.6.22.ebuild,v 1.1 2009/06/24 17:18:36 mrness Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/openswan/openswan-2.6.22.ebuild,v 1.2 2009/06/28 09:45:59 mrness Exp $
 
 EAPI="2"
 
@@ -61,7 +61,7 @@ pkg_setup() {
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-gentoo.patch
 
-	find . -regex '.*[.][1-8]' -exec sed -i \
+	find . -type f -regex '.*[.][1-8]' -exec sed -i \
 	    -e s:/usr/local:/usr:g '{}' \; ||
 	    die "failed to replace text in xml docs"
 }
