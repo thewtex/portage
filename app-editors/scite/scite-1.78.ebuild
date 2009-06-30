@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/scite/scite-1.78.ebuild,v 1.1 2009/05/15 21:28:37 nelchael Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-editors/scite/scite-1.78.ebuild,v 1.3 2009/06/29 12:00:21 fmccor Exp $
 
 inherit toolchain-funcs eutils
 
@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/scintilla/${PN}${MY_PV}.tgz"
 
 LICENSE="Scintilla"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~ppc sparc ~x86 ~x86-fbsd"
 IUSE="lua"
 
 RDEPEND=">=x11-libs/gtk+-2
@@ -29,6 +29,7 @@ src_unpack() {
 		-e "s#^CXXFLAGS=#CXXFLAGS=${CXXFLAGS} #" \
 		-e "s#^\(CXXFLAGS=.*\)-Os#\1#" \
 		-e "s#^CC =\(.*\)#CC = $(tc-getCXX)#" \
+		-e "s#-Os##" \
 		|| die "error patching makefile"
 
 	cd "${S}"
@@ -40,6 +41,7 @@ src_unpack() {
 		-e "s#^CC =\(.*\)#CC = $(tc-getCXX)#" \
 		-e 's#${D}##' \
 		-e 's#-g root#-g 0#' \
+		-e "s#-Os##" \
 		|| die "error patching makefile"
 	cd "${WORKDIR}"
 	epatch "${FILESDIR}/${P}-install.patch"

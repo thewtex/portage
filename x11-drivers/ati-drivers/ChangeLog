@@ -1,6 +1,47 @@
 # ChangeLog for x11-drivers/ati-drivers
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-drivers/ati-drivers/ChangeLog,v 1.156 2009/06/06 01:32:41 je_fro Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-drivers/ati-drivers/ChangeLog,v 1.163 2009/06/27 17:52:48 scarabeus Exp $
+
+  27 Jun 2009; Tomáš Chvátal <scarabeus@gentoo.org>
+  ati-drivers-9.6.ebuild:
+  Remove obsolete kernel config checks per bug #275488.
+
+  27 Jun 2009; Tomáš Chvátal <scarabeus@gentoo.org>
+  ati-drivers-9.6.ebuild:
+  Fix few typos that somehow didnt get here from mine overlay.
+
+  27 Jun 2009; Tomáš Chvátal <scarabeus@gentoo.org>
+  ati-drivers-9.6.ebuild:
+  Add elog informations about supported video cards and also recomend other
+  driver. Also move slot to 1 so user can still use
+  x11-drivers/ati-drivers:0 in world set and for easier masking for blocking
+  automatic update.
+
+  27 Jun 2009; <chainsaw@gentoo.org> metadata.xml:
+  Changing maintainer tag to scarabeus, I already said on the bug that I
+  lost interest in this.
+
+  26 Jun 2009; Tomáš Chvátal <scarabeus@gentoo.org>
+  ati-drivers-9.6.ebuild:
+  Update path to xen patch.
+
+  26 Jun 2009; Tomáš Chvátal <scarabeus@gentoo.org>
+  +files/kernel/2.6.29.patch, +files/kernel/2.6.30-enable_msi.patch,
+  +files/kernel/2.6.30-irqreturn_t.patch,
+  +files/kernel/2.6.30-rt_compat.patch,
+  +files/kernel/2.6.30-tlb_flush.patch:
+  Add the missing patches :(. Per bug #275427.
+
+*ati-drivers-9.6 (25 Jun 2009)
+
+  25 Jun 2009; Tomáš Chvátal <scarabeus@gentoo.org>
+  +files/kernel/2.6.29.patch, +files/kernel/2.6.30-enable_msi.patch,
+  +files/kernel/2.6.30-irqreturn_t.patch,
+  +files/kernel/2.6.30-rt_compat.patch,
+  +files/kernel/2.6.30-tlb_flush.patch, +ati-drivers-9.6.ebuild:
+  Add new version of ati drivers (9.6). Since now it follows the upstream
+  versioning scheme. Kernels .29 and .30 are not supported, but patched to
+  work somehow in this release.
 
   06 Jun 2009; Jeff Gardner <je_fro@gentoo.org> metadata.xml:
   Removing myself and adding chainsaw to metadata.xml

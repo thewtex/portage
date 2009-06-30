@@ -1,17 +1,19 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header$
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Devel-LexAlias/Devel-LexAlias-0.04.ebuild,v 1.1 2009/06/23 07:39:02 robbat2 Exp $
 
-MODULE_AUTHOR=RCLAMP
+EAPI=2
+MODULE_AUTHOR="RCLAMP"
+
 inherit perl-module
 
 DESCRIPTION="alias lexical variables"
-LICENSE="|| ( Artistic GPL-2 )"
-
-SLOT="0"
-KEYWORDS="~amd64 ~x86"
 
 IUSE=""
-DEPEND="
-	>=dev-perl/Devel-Caller-0.03
-"
+
+SLOT="0"
+LICENSE="|| ( Artistic GPL-2 )"
+KEYWORDS="~amd64 ~x86"
+
+DEPEND=">=dev-perl/Devel-Caller-2.03"
+RDEPEND="${DEPEND}"

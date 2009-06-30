@@ -1,10 +1,69 @@
 # ChangeLog for profile directory
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.2825 2009/06/22 01:07:57 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.2845 2009/06/29 10:00:15 fauli Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  29 Jun 2009; Christian Faulhammer <fauli@gentoo.org> package.mask:
+  mask net-misc/tor-0.2.1.16_rc
+
+  28 Jun 2009; Ben de Groot <yngwin@gentoo.org> package.mask:
+  Adjust rb_libtorrent mask to >=0.13.1, pending further fixes
+
+  27 Jun 2009; Ben de Groot <yngwin@gentoo.org> package.mask:
+  Remove temporary Qt 4.5.2 mask
+
+  27 Jun 2009; Ben de Groot <yngwin@gentoo.org> updates/2Q-2009:
+  Please don't forget to add the category
+
+  27 Jun 2009; Ben de Groot <yngwin@gentoo.org> package.mask:
+  Temporary Qt 4.5.2 mask, until all ebuilds are committed
+
+  27 Jun 2009; Christian Faulhammer <fauli@gentoo.org> package.mask:
+  Give a reason for net-misc/tor masking
+
+  26 Jun 2009; Patrick Lauer <patrick@gentoo.org> package.mask:
+  Masking samba 3.3 until it is better tested
+
+  26 Jun 2009; Jeroen Roovers <jer@gentoo.org> package.mask:
+  Edit www-client/opera-10* mask yet again.
+
+  26 Jun 2009; Christian Faulhammer <fauli@gentoo.org> package.mask:
+  correct mask for net-misc/tor
+
+  25 Jun 2009; Patrick Lauer <patrick@gentoo.org> package.mask:
+  Removing samba 3.2 mask.
+
+  25 Jun 2009; Tomáš Chvátal <scarabeus@gentoo.org> package.mask:
+  Remove no longer needed mask for mesa.
+
+  25 Jun 2009; Ben de Groot <yngwin@gentoo.org> package.mask:
+  Mask the Qt4 meta ebuild, to prevent devs from being silly and depend on
+  the meta ebuild instead of on the specific split Qt ebuilds needed. See
+  bug 217161 comment 11.
+
+  24 Jun 2009; Jeroen Roovers <jer@gentoo.org> package.mask:
+  Adjust www-client/opera mask to include build 4449.
+
+  24 Jun 2009; <nirbheek@gentoo.org> package.mask:
+  Mask firefox release candidates and nspr-4.8 (soname bump)
+
+  24 Jun 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Mask test versions of PulseAudio.
+
+  23 Jun 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Mask beta versions of sudo.
+
+  23 Jun 2009; Tomáš Chvátal <scarabeus@gentoo.org> package.mask:
+  Mask mesa 7.4.3 because it is broken on intel.
+
+  23 Jun 2009; Rémi Cardona <remi@gentoo.org> package.mask:
+  add latest media-libs/tiff revbump to p.mask
+
+  23 Jun 2009; Torsten Veller <tove@gentoo.org> updates/2Q-2009:
+  Move dev-perl/Module-CoreList to perl-core/Module-CoreList
 
   22 Jun 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
   Mask realtime-lsm for removal.

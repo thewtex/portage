@@ -1,20 +1,19 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header$
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/JSON-Any/JSON-Any-1.19.ebuild,v 1.1 2009/06/23 07:42:10 robbat2 Exp $
 
-MODULE_AUTHOR=PERIGRIN
+EAPI=2
+MODULE_AUTHOR="PERIGRIN"
+
 inherit perl-module
 
-DESCRIPTION="JSON::Any - Wrapper Class for the various JSON classes."
-LICENSE="|| ( Artistic GPL-2 )"
+DESCRIPTION="Wrapper Class for the various JSON classes."
+
+IUSE=""
 
 SLOT="0"
+LICENSE="|| ( Artistic GPL-2 )"
 KEYWORDS="~amd64 ~x86"
 
-IUSE="json-xs json-syck"
-DEPEND="
-	>=dev-perl/JSON-2.02
-	json-xs? ( dev-perl/JSON-XS )
-	json-syck? ( dev-perl/YAML-Syck )
-"
-
+DEPEND="dev-perl/JSON"
+RDEPEND="${DEPEND}"

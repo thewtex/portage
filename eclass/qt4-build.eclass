@@ -1,6 +1,6 @@
 # Copyright 2007-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/qt4-build.eclass,v 1.38 2009/06/06 22:43:27 hwoarang Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/qt4-build.eclass,v 1.41 2009/06/28 15:24:42 hwoarang Exp $
 
 # @ECLASS: qt4-build.eclass
 # @MAINTAINER:
@@ -13,7 +13,7 @@
 
 inherit base eutils multilib toolchain-funcs flag-o-matic versionator
 
-IUSE="${IUSE} custom-cxxflags debug pch"
+IUSE="${IUSE} debug pch"
 RDEPEND="
 	!<x11-libs/qt-assistant-${PV}
 	!>x11-libs/qt-assistant-${PV}-r9999
@@ -58,7 +58,7 @@ MY_P=qt-x11-${SRCTYPE}-${MY_PV}
 S=${WORKDIR}/${MY_P}
 
 HOMEPAGE="http://www.qtsoftware.com/"
-SRC_URI="http://download.qtsoftware.com/qt/source/${MY_P}.tar.bz2"
+SRC_URI="http://get.qtsoftware.com/qt/source/${MY_P}.tar.bz2"
 
 case "${PV}" in
 	4.4.?) SRC_URI="${SRC_URI} mirror://gentoo/${MY_P}-headers.tar.bz2" ;;
@@ -109,17 +109,6 @@ qt4-build_pkg_setup() {
 		echo
 		ebeep 3
 	fi
-
-	if use custom-cxxflags; then
-		echo
-		ewarn "You have set USE=custom-cxxflags, which means Qt will be built with the"
-		ewarn "CXXFLAGS you have set in /etc/make.conf. This is not supported, and we"
-		ewarn "recommend to unset this useflag. But you are free to experiment with it."
-		ewarn "Just do not start crying if it breaks your system, or eats your kitten"
-		ewarn "for breakfast. ;-) "
-		echo
-	fi
-
 }
 
 # @ECLASS-VARIABLE: QT4_TARGET_DIRECTORIES
@@ -186,12 +175,6 @@ qt4-build_src_prepare() {
 		symlink_binaries_to_buildtree
 	fi
 
-	if ! use custom-cxxflags;then
-		# Don't let the user go too overboard with flags.
-		strip-flags
-		replace-flags -O3 -O2
-	fi
-
 	# Bug 178652
 	if [[ "$(gcc-major-version)" == "3" ]] && use amd64; then
 		ewarn "Appending -fno-gcse to CFLAGS/CXXFLAGS"
@@ -218,7 +201,7 @@ qt4-build_src_prepare() {
 		-e "s:QMAKE_CXXFLAGS_RELEASE.*=.*:QMAKE_CXXFLAGS_RELEASE=${CXXFLAGS}:" \
 		-e "s:QMAKE_LFLAGS_RELEASE.*=.*:QMAKE_LFLAGS_RELEASE=${LDFLAGS}:" \
 		-i "${S}"/mkspecs/common/g++.conf || die "sed ${S}/mkspecs/common/g++.conf failed"
-	
+
 	base_src_prepare
 }
 
@@ -299,7 +282,7 @@ standard_configure_options() {
 		-demosdir ${QTDEMOSDIR} -silent -fast
 		$([[ ${PN} == qt-xmlpatterns ]] || echo -no-exceptions)
 		-reduce-relocations -nomake examples -nomake demos"
-	
+
 	# Make eclass 4.5.{1,2} ready
 	case "${MY_PV}" in
 		4.5.1 | 4.5.2)
@@ -453,7 +436,7 @@ qt4-build_pkg_postinst() {
 	ewarn "make sure all your Qt4 packages are up-to-date and built with the same"
 	ewarn "configuration."
 	ewarn
-	ewarn "For more information, see http://doc.trolltech.com/4.4/plugins-howto.html"
+	ewarn "For more information, see http://doc.trolltech.com/${PV%.*}/plugins-howto.html"
 	echo
 }
 
@@ -513,7 +496,7 @@ fix_library_files() {
 
 # @FUNCTION: qt_use
 # @USAGE: < flag > [ feature ] [ enableval ]
-# @DESCRIPTION:	
+# @DESCRIPTION:
 # This will echo "${enableval}-${feature}" if <flag> is enabled, or
 # "-no-${feature} if the flag is disabled. If [feature] is not specified <flag>
 # will be used for that. If [enableval] is not specified, it omits the
@@ -605,7 +588,7 @@ qt4-build_check_use() {
 
 # @FUNCTION: qt_mkspecs_dir
 # @RETURN: the specs-directory w/o path
-# @DESCRIPTION:	
+# @DESCRIPTION:
 # Allows us to define which mkspecs dir we want to use.
 qt_mkspecs_dir() {
 	# Allows us to define which mkspecs dir we want to use.

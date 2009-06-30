@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/vlc/vlc-1.0.9999.ebuild,v 1.6 2009/06/20 13:03:18 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/vlc/vlc-1.0.9999.ebuild,v 1.10 2009/06/28 19:33:36 pva Exp $
 
 EAPI="1"
 
@@ -47,8 +47,8 @@ SLOT="0"
 
 KEYWORDS=""
 IUSE="a52 aac aalib alsa altivec atmo avahi bidi cdda cddax cddb cdio dbus dc1394
-	debug dirac directfb dts dvb dvd fbcon fluidsynth +ffmpeg flac fontconfig ggi gnome gnutls hal httpd
-	id3tag jack kate libass libcaca +libgcrypt libnotify libsysfs libv4l2 lirc live lua matroska mmx modplug mp3 mpeg mtp
+	debug dirac directfb dts dvb dvd fbcon fluidsynth +ffmpeg flac fontconfig +gcrypt ggi gnome gnutls hal httpd
+	id3tag jack kate libass libcaca libnotify libproxy libsysfs libv4l2 lirc live lua matroska mmx modplug mp3 mpeg mtp
 	musepack ncurses nsplugin ogg opengl optimisememory oss pda png	pulseaudio pvr +qt4
 	remoteosd rtsp run-as-root samba schroedinger sdl sdl-image seamonkey shine shout skins speex sse stream svg svga taglib
 	theora truetype twolame upnp v4l v4l2 vcdinfo vcdx vlm vorbis win32codecs wma-fixed
@@ -81,6 +81,7 @@ RDEPEND="
 			>=media-libs/flac-1.1.2 )
 		fluidsynth? ( media-sound/fluidsynth )
 		fontconfig? ( media-libs/fontconfig )
+		gcrypt? ( >=dev-libs/libgcrypt-1.2.0 )
 		ggi? ( media-libs/libggi )
 		gnome? ( gnome-base/gnome-vfs )
 		gnutls? ( >=net-libs/gnutls-1.7.4 )
@@ -91,8 +92,8 @@ RDEPEND="
 		kate? ( >=media-libs/libkate-0.1.1 )
 		libass? ( >=media-libs/libass-0.9.5 media-libs/fontconfig )
 		libcaca? ( media-libs/libcaca )
-		libgcrypt? ( >=dev-libs/libgcrypt-1.2.0 )
 		libnotify? ( x11-libs/libnotify )
+		libproxy? ( net-libs/libproxy )
 		libsysfs? ( sys-fs/sysfsutils )
 		lirc? ( app-misc/lirc )
 		live? ( >=media-plugins/live-2008.07.06 )
@@ -197,7 +198,7 @@ pkg_setup() {
 	vlc_use_needs vcdx vcdinfo
 	vlc_use_needs vcdinfo cdio
 	vlc_use_needs bidi truetype
-	vlc_use_force remoteosd libgcrypt
+	vlc_use_force remoteosd gcrypt
 	vlc_use_needs fontconfig truetype
 	vlc_use_needs libv4l2 v4l2
 	use cddb && use !cdda && use !cddax && ewarn "USE=cddb requires either cdda or cddax, cddb will be disabled."
@@ -281,9 +282,9 @@ src_compile () {
 		$(use_enable kate) \
 		$(use_enable libass) \
 		$(use_enable libcaca caca) \
-		$(use_enable libgcrypt) \
+		$(use_enable gcrypt libgcrypt) \
 		$(use_enable libnotify notify) \
-		--disable-libproxy \
+		$(use_enable libproxy) \
 		--disable-libtar \
 		$(use_enable libsysfs) \
 		$(use_enable libv4l2) \
