@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/chromium-bin/chromium-bin-9999.ebuild,v 1.10 2009/06/17 16:14:23 voyageur Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/chromium-bin/chromium-bin-9999.ebuild,v 1.11 2009/06/30 11:40:28 voyageur Exp $
 
 EAPI="2"
 inherit eutils multilib
@@ -35,6 +35,11 @@ S=${WORKDIR}
 
 QA_EXECSTACK="opt/chromium.org/chrome-linux/chrome"
 
+pkg_setup() {
+	# This is a binary x86 package
+	has_multilib_profile && ABI="x86"
+}
+
 src_unpack() {
 	LV=`curl --silent http://build.chromium.org/buildbot/snapshots/chromium-rel-linux/LATEST`
 	elog "Installing/updating to version ${LV}"
@@ -49,7 +54,10 @@ src_install() {
 	dodir ${CHROMIUM_HOME}
 	cp -R chrome-linux/ "${D}"${CHROMIUM_HOME} || die "Unable to install chrome-linux folder"
 
-	# Create symbol links for necessary libraries
+	# Plugins symlink
+	dosym /usr/$(get_libdir)/nsbrowser/plugins ${CHROMIUM_HOME}/chrome-linux/plugins
+
+	# Create symlinks for needed libraries
 	dodir ${CHROMIUM_HOME}/lib
 	if use x86; then
 		NSS_DIR=../../../usr/$(get_libdir)/nss
