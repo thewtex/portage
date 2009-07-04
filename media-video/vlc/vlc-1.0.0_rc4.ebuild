@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/vlc/vlc-1.0.0_rc4.ebuild,v 1.8 2009/06/28 19:33:36 pva Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/vlc/vlc-1.0.0_rc4.ebuild,v 1.12 2009/07/03 21:47:19 aballier Exp $
 
 EAPI="1"
 
@@ -23,7 +23,7 @@ MY_PV="${MY_PV/-beta/-test}"
 MY_P="${PN}-${MY_PV}"
 VLC_SNAPSHOT_TIME="0013"
 
-PATCHLEVEL="59"
+PATCHLEVEL="63"
 M4_TARBALL_VERSION="1"
 DESCRIPTION="VLC media player - Video player and streamer"
 HOMEPAGE="http://www.videolan.org/vlc/"
@@ -47,12 +47,14 @@ SLOT="0"
 
 KEYWORDS="~alpha ~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 IUSE="a52 aac aalib alsa altivec atmo avahi bidi cdda cddax cddb cdio dbus dc1394
-	debug dirac directfb dts dvb dvd fbcon fluidsynth +ffmpeg flac fontconfig +gcrypt ggi gnome gnutls hal httpd
-	id3tag jack kate libass libcaca libnotify libproxy libsysfs libv4l2 lirc live lua matroska mmx modplug mp3 mpeg mtp
-	musepack ncurses nsplugin ogg opengl optimisememory oss pda png	pulseaudio pvr +qt4
-	remoteosd rtsp run-as-root samba schroedinger sdl sdl-image seamonkey shine shout skins speex sse stream svg svga taglib
-	theora truetype twolame upnp v4l v4l2 vcdinfo vcdx vlm vorbis win32codecs wma-fixed
-	X x264 xcb xinerama xml xosd xv zvbi"
+	debug dirac directfb dts dvb dvd fbcon fluidsynth +ffmpeg flac fontconfig
+	+gcrypt ggi gnome gnutls hal httpd id3tag ieee1394 jack kate libass libcaca
+	libnotify libproxy libsysfs libtiger libv4l2 lirc live lua matroska mmx
+	modplug mp3 mpeg mtp musepack ncurses nsplugin ogg opengl optimisememory oss
+	pda png pulseaudio pvr +qt4 remoteosd rtsp run-as-root samba schroedinger
+	sdl sdl-image seamonkey shine shout skins speex sse stream svg svga taglib
+	theora truetype twolame upnp v4l v4l2 vcdinfo vcdx vlm vorbis win32codecs
+	wma-fixed X x264 xcb xinerama xml xosd xv zvbi"
 
 RDEPEND="
 		sys-libs/zlib
@@ -88,6 +90,7 @@ RDEPEND="
 		hal? ( sys-apps/hal )
 		id3tag? ( media-libs/libid3tag
 			sys-libs/zlib )
+		ieee1394? ( sys-libs/libraw1394 sys-libs/libavc1394 )
 		jack? ( >=media-sound/jack-audio-connection-kit-0.99.0-r1 )
 		kate? ( >=media-libs/libkate-0.1.1 )
 		libass? ( >=media-libs/libass-0.9.5 media-libs/fontconfig )
@@ -95,6 +98,7 @@ RDEPEND="
 		libnotify? ( x11-libs/libnotify )
 		libproxy? ( net-libs/libproxy )
 		libsysfs? ( sys-fs/sysfsutils )
+		libtiger? ( media-libs/libtiger )
 		lirc? ( app-misc/lirc )
 		live? ( >=media-plugins/live-2008.07.06 )
 		lua? ( >=dev-lang/lua-5.1 )
@@ -201,6 +205,7 @@ pkg_setup() {
 	vlc_use_force remoteosd gcrypt
 	vlc_use_needs fontconfig truetype
 	vlc_use_needs libv4l2 v4l2
+	vlc_use_needs libtiger kate
 	use cddb && use !cdda && use !cddax && ewarn "USE=cddb requires either cdda or cddax, cddb will be disabled."
 	if use qt4 || use skins ; then
 		qt4_pkg_setup
@@ -264,7 +269,6 @@ src_compile () {
 		$(use_enable dc1394) \
 		$(use_enable debug) \
 		$(use_enable dts dca) \
-		--disable-dv \
 		$(use_enable dvb) \
 		$(use_enable dvd dvdread) $(use_enable dvd dvdnav) \
 		$(use_enable fbcon fb) \
@@ -278,6 +282,7 @@ src_compile () {
 		$(use_enable hal) \
 		$(use_enable httpd) \
 		$(use_enable id3tag) \
+		$(use_enable ieee1394 dv) \
 		$(use_enable jack) \
 		$(use_enable kate) \
 		$(use_enable libass) \
@@ -286,6 +291,7 @@ src_compile () {
 		$(use_enable libnotify notify) \
 		$(use_enable libproxy) \
 		--disable-libtar \
+		$(use_enable libtiger tiger) \
 		$(use_enable libsysfs) \
 		$(use_enable libv4l2) \
 		$(use_enable lirc) \

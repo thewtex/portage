@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/udev/udev-9999.ebuild,v 1.10 2009/06/18 09:27:50 zzam Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/udev/udev-9999.ebuild,v 1.11 2009/07/03 08:54:20 zzam Exp $
 
 EAPI="1"
 
@@ -29,8 +29,7 @@ COMMON_DEPEND="selinux? ( sys-libs/libselinux )
 		sys-apps/pciutils
 		dev-libs/glib:2
 	)
-	>=sys-apps/util-linux-2.16"
-# >=sys-apps/util-linux-2.16 should provide libblkid
+	>=sys-apps/util-linux-2.16_rc1"
 
 DEPEND="${COMMON_DEPEND}
 	extras? ( dev-util/gperf )"

@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/vdr/vdr-1.6.0_p2.ebuild,v 1.5 2009/03/24 19:45:57 zzam Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/vdr/vdr-1.6.0_p2.ebuild,v 1.7 2009/07/01 10:42:27 zzam Exp $
 
 inherit eutils flag-o-matic multilib
 
@@ -215,8 +215,8 @@ src_unpack() {
 
 		cd "${S}"
 		# Now apply extensions patch
-		local fname="${PN}-${EXT_VDR_PV:-${PV}}_extensions.diff"
-		epatch "${EXT_DIR}/${fname}"
+		local fname="${EXT_DIR}/${PN}-${EXT_VDR_PV:-${PV}}_extensions.diff"
+		epatch "${fname}"
 
 		# Fix typo in Make.config.template
 		sed -e 's/CMDRECMDI18N/CMDRECCMDI18N/' -i Make.config.template
@@ -357,7 +357,7 @@ pkg_preinst() {
 	previous_less_than_1_3_36_r3=$?
 
 	has_version "<${CATEGORY}/${PN}-1.6.0"
-	previous_less_than_1_3_36_r3=$?
+	previous_less_than_1_6_0=$?
 }
 
 pkg_postinst() {
