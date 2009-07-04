@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4593 2009/06/30 18:07:59 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4601 2009/07/03 19:47:48 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -45,6 +45,7 @@ app-admin/gkrellm:ntlm - Enable NTLM authentication for mail checking with net-l
 app-admin/gkrellm:ssl - Enable SSL support for mail checking with dev-libs/openssl
 app-admin/gnome-system-tools:nfs - Adds support for NFS shares
 app-admin/gnome-system-tools:policykit - Use sys-auth/policykit to gain privileges to change configuration files
+app-admin/hddtemp:network-cron -  Monthly cronjob to update hddtemp.db. 
 app-admin/lcap:lids - If you have the Linux Intrusion Detection System
 app-admin/prelude-manager:tcpwrapper - Add support for tcp_wrappers
 app-admin/puppet:augeas - Eanble augeas support
@@ -1737,6 +1738,7 @@ media-sound/picard:cdaudio - Enable support for CD Index Lookups.
 media-sound/podcatcher:bittorrent - Enable support for bittorrent downloads
 media-sound/pulseaudio:X -  Build the X11 publish module to export PulseAudio information through X11 protocol for clients to make use. Don't enable this flag if you want to use a system wide instance. If unsure, enable this flag. 
 media-sound/pulseaudio:asyncns - Use libasyncns for asynchronous name resolution.
+media-sound/pulseaudio:doc - Build the doxygen-described API documentation.
 media-sound/pulseaudio:glib - Enable glib eventloop support
 media-sound/pulseaudio:gnome -  Use GConf to store user preferences on streams and so on. Don't enable this flag if you want to use a system wide instance. If unsure, enable this flag. 
 media-sound/pulseaudio:oss -  Enable OSS sink/source (output/input). Also build the padsp script to make OSS software use PulseAudio. 
@@ -1866,6 +1868,8 @@ media-video/ffmpeg:faad - Use external faad library for AAC decoding (instead of
 media-video/ffmpeg:hardcoded-tables - Use pre-calculated tables rather than calculating them on the fly.
 media-video/ffmpeg:mmxext - Enables mmx2 support
 media-video/ffmpeg:network - Enables network streaming support
+media-video/ffmpeg:opencore-amrnb - Enables Adaptive Multi-Rate Narrowband support vie opencore-amr.
+media-video/ffmpeg:opencore-amrwb - Enables Adaptive Multi-Rate Wideband support vie opencore-amr.
 media-video/ffmpeg:schroedinger - Enable Dirac video support (an advanced royalty-free video compression format) via libschroedinger (high-speed implementation in C of the Dirac codec).
 media-video/ffmpeg:ssse3 - faster floating point optimization for SSSE3 capable chips (Intel Core 2 and later chips)
 media-video/ffmpeg:vhook - Enables video hooking support.
@@ -2024,6 +2028,7 @@ media-video/vlc:kate - Adds support for Ogg Kate subtitles via libkate.
 media-video/vlc:libass - Enables subtitles support using libass.
 media-video/vlc:libproxy - Enables support for proxy settings in the HTTP access module.
 media-video/vlc:libsysfs - Get user key from firewire connected iPod via libsysfs.
+media-video/vlc:libtiger - Enables Ogg Kate subtitles rendering using libtiger.
 media-video/vlc:libv4l2 - Enables Libv4l2 Video4Linux2 support (for conversion from various video formats to standard ones, needed to use v4l2 devices with strange formats).
 media-video/vlc:live - Enables LIVE.com support.
 media-video/vlc:optimisememory - Enable optimisation for memory rather than performance.
@@ -2398,11 +2403,59 @@ net-libs/libssh2:gcrypt - Use dev-libs/libgcrypt for crypto
 net-libs/libvncserver:no24bpp - disable 24bpp support
 net-libs/libvncserver:nobackchannel - disable backchannel support
 net-libs/loudmouth:asyncns - Use libasyncns for asynchronous name resolution.
+net-libs/opal:audio - Enable audio support
+net-libs/opal:capi - Enable CAPI support
+net-libs/opal:dns - Enable DNS resolver support
+net-libs/opal:dtmf - Enable DTMF encoding/decoding support
+net-libs/opal:fax - Enable T.38 FAX protocol
+net-libs/opal:h224 - Enable H.224 real time control protocol
+net-libs/opal:h281 - Enable H.281 Far-End Camera Control protocol
+net-libs/opal:h323 - Enable H.323 protocol
+net-libs/opal:iax - Enable Inter-Asterisk eXchange protocol
+net-libs/opal:ivr - Enable Interactive Voice Response
+net-libs/opal:ixj - Enable xJack cards support
+net-libs/opal:lid - Enable Line Interface Device
 net-libs/opal:noaudio - Disable audio codecs
 net-libs/opal:novideo - Disable video codecs
+net-libs/opal:plugins - Enable plugins support
+net-libs/opal:rfc4175 - Enable RTP Payload Format for Uncompressed Video 
+net-libs/opal:sbc - Enable the Bluetooth low-complexity, SubBand Codec 
+net-libs/opal:sip - Enable Session Initiation Protocol
+net-libs/opal:sipim - Enable SIP Instant Messages session
+net-libs/opal:srtp - Enable Secure Real-time Transport Protocol
+net-libs/opal:stats - Enable statistic reporting
+net-libs/opal:swig - Use swig to generate bindings
+net-libs/opal:video - Enable video support
+net-libs/opal:vpb - Enable Voicetronics VPB card support
+net-libs/opal:vxml - Enable VXML support
+net-libs/opal:wav - Enable WAVFILE support
+net-libs/opal:x264-static - Install x264 plugin statically linked with x264 
 net-libs/openh323:noaudio - Disable audio codecs
 net-libs/openh323:novideo - Disable video codecs
 net-libs/ortp:srtp - Add support for Secure RTP
+net-libs/ptlib:asn - Enable ASN decoding/encoding support
+net-libs/ptlib:audio - Enable audio support
+net-libs/ptlib:config-file - Enable config file support
+net-libs/ptlib:dns - Enable DNS resolver support
+net-libs/ptlib:dtmf - Enable DTMF encoding/decoding support
+net-libs/ptlib:http - Enable HTTP support
+net-libs/ptlib:http-forms - Enable http forms support
+net-libs/ptlib:http-server - Enable http server support
+net-libs/ptlib:mail - Enable mail protocols (POP3/SMTP)
+net-libs/ptlib:pipechan - Enable pipechannel support
+net-libs/ptlib:qos - Enable QOS support
+net-libs/ptlib:remote - Enable remote connection support
+net-libs/ptlib:serial - Enable serial port support
+net-libs/ptlib:shmvideo - Enable shared memory video devices
+net-libs/ptlib:socks - Enable SOCKS protocol support
+net-libs/ptlib:stun - Enable STUN support
+net-libs/ptlib:telnet - Enable telnet protocol support
+net-libs/ptlib:tts - Enable Text-To-Speech server support
+net-libs/ptlib:url - Enable URL support
+net-libs/ptlib:video - Enable video support
+net-libs/ptlib:video-file - Enable video file support
+net-libs/ptlib:vxml - Enable VoiceXML support
+net-libs/ptlib:wav - Enable WAVFILE support
 net-libs/raknet:autopatcher - Enable RakNet autopatcher support
 net-libs/raknet:rakvoice - Enable RakNet RakVoice module
 net-libs/webkit-gtk:coverage - enable code coverage support
@@ -2606,6 +2659,7 @@ net-p2p/amule:remote - Enable remote controlling of the client
 net-p2p/amule:stats - Enable statistic reporting
 net-p2p/amule:upnp - Enables support for Intel UPnP stack.
 net-p2p/btg:event-callback - Enable calling a script or executable for certain events
+net-p2p/btg:upnp - Enable support for UPnP
 net-p2p/btg:webinterface - install webBTG
 net-p2p/dbhub:switch_user - Enable support for switching user
 net-p2p/fms:frost - Add support for frost boards
@@ -2659,6 +2713,12 @@ net-proxy/squid:zero-penalty-hit - Add Zero Penalty Hit patch (http://zph.bratch
 net-proxy/sshproxy:client-only - Install only the client wrappers
 net-proxy/tinyproxy:transparent-proxy - Enables support for transparent proxies
 net-proxy/tsocks:tordns -  Apply tordns patch which allows transparent TORification of the DNS queries 
+net-voip/ekiga:gconf - Enable GConf support
+net-voip/ekiga:h323 - Enable H.323 protocol
+net-voip/ekiga:shm - Enable the Shared Memory Extension from libXext
+net-voip/ekiga:sip - Enable Session Initiation Protocol
+net-voip/ekiga:static - Statically link to opal and ptlib
+net-voip/ekiga:xcap - Enable XML Configuration Access Protocal
 net-voip/linphone:console - Build console interface
 net-voip/linphone:video - Enable video support (display/capture)
 net-voip/yate:h323 - Build H.323 Channel plugin
@@ -3071,12 +3131,9 @@ sys-fs/ecryptfs-utils:pkcs11 - Enable PKCS#11 (Smartcards) key module
 sys-fs/ecryptfs-utils:tpm - Enable support for Trusted Platform Module (TPM) using app-crypt/trousers
 sys-fs/evms:hb - Enable support for heartbeat-1
 sys-fs/evms:hb2 - Enable support for heartbeat-2
-<<<<<<< HEAD:profiles/use.local.desc
 sys-fs/ext3grep:largefile - Add support for files greater then 2gb on x86
 sys-fs/ext3grep:libcwd - Debuging support
-=======
 sys-fs/loop-aes:extra-ciphers - Enable extra ciphers
->>>>>>> origin/gentoo.org:profiles/use.local.desc
 sys-fs/loop-aes:keyscrub - Protects the encryption key in memory but takes more cpu resources
 sys-fs/loop-aes:padlock - Use VIA padlock instructions, detected at run time, code still works on non-padlock processors
 sys-fs/lvm2:clvm - Allow users to build clustered lvm2
