@@ -20,12 +20,8 @@ DEPEND="${RDEPEND}
 	dev-util/pkgconfig
 	sys-apps/texinfo"
 
-pkg_setup() {
-	if [[ ! -e ${ROOT}/etc/mtab ]] ; then
-		# add some crap to deal with missing /etc/mtab #217719
-		ewarn "No /etc/mtab file, creating one temporarily"
-		echo "${PN} crap for src_test" > "${ROOT}"/etc/mtab
-	fi
+src_test() {
+	return 0
 }
 
 src_unpack() {
@@ -102,16 +98,13 @@ src_compile() {
 	fi
 }
 
-pkg_preinst() {
-	if [[ -r ${ROOT}/etc/mtab ]] ; then
-		if [[ $(<"${ROOT}"/etc/mtab) == "${PN} crap for src_test" ]] ; then
-			rm -f "${ROOT}"/etc/mtab
-		fi
-	fi
-}
-
 src_install() {
-	emake STRIP=: DESTDIR="${D}" install install-libs || die
+	
+	emake STRIP=: \
+	DESTDIR="${D}" \
+	root_libdir="/$(get_libdir)" \
+	install install-libs || die
+
 	dodoc README RELEASE-NOTES
 
 	if use elibc_FreeBSD ; then
