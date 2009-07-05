@@ -114,12 +114,6 @@ src_install() {
 	emake STRIP=: DESTDIR="${D}" install install-libs || die
 	dodoc README RELEASE-NOTES
 
-	# Move shared libraries to /lib/, install static libraries to /usr/lib/,
-	# and install linker scripts to /usr/lib/.
-	set -- "${D}"/usr/$(get_libdir)/*.a
-	set -- ${@/*\/lib}
-	gen_usr_ldscript -a "${@/.a}"
-
 	if use elibc_FreeBSD ; then
 		# Install helpers for us
 		into /
