@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/inkscape/inkscape-0.47_pre0.ebuild,v 1.3 2009/06/27 12:17:07 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/inkscape/inkscape-0.47_pre0.ebuild,v 1.5 2009/07/04 15:38:21 maekke Exp $
 
 EAPI="2"
 
@@ -15,7 +15,7 @@ HOMEPAGE="http://www.inkscape.org/"
 
 SLOT="0"
 LICENSE="GPL-2 LGPL-2.1"
-KEYWORDS="~amd64 ~hppa ~x86"
+KEYWORDS="~amd64 ~hppa ~ppc64 ~x86"
 IUSE="dia doc gnome inkjar jabber lcms mmx nls postscript spell wmf wpg"
 RESTRICT="test"
 
@@ -76,4 +76,10 @@ pkg_setup() {
 	G2CONF="${G2CONF} $(use_enable mmx)"
 	G2CONF="${G2CONF} $(use_enable nls)"
 	DOCS="AUTHORS ChangeLog NEWS README*"
+}
+
+pkg_postinst() {
+	elog "local configurations (also includes extensions) are moved from"
+	elog "\${HOME}/.inkscape to \${HOME}/.config/inkscape within"
+	elog ">=media-gfx/inkscape-0.47"
 }
