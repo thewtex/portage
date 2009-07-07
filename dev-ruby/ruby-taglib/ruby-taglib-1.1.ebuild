@@ -1,6 +1,6 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-taglib/ruby-taglib-1.1.ebuild,v 1.1 2009/07/05 08:25:29 graaff Exp $
 
 inherit ruby
 
