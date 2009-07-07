@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4604 2009/07/05 22:47:42 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4607 2009/07/06 19:27:46 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -137,7 +137,6 @@ app-crypt/seahorse-plugins:epiphany - Enable text encryption plugin to integrate
 app-crypt/seahorse-plugins:gedit - Enable text encryption plugin to integrate into app-editors/gedit
 app-crypt/seahorse-plugins:nautilus - Enable file encryption plugin to integrate into the gnome-base/nautilus context menu
 app-dicts/aspell-be:classic - Support classic spelling by default
-app-dicts/gwaei:libsexy - Enable support for x11-libs/libsexy
 app-dicts/stardict:espeak - Enable text to speech synthesizer using espeak engine
 app-dicts/stardict:festival - Enable text to speech synthesizer using festival engine
 app-dicts/stardict:gucharmap - Enable gucharmap dictionary plugin
@@ -449,6 +448,7 @@ app-pda/synce:serial - Enable serial port support (installs app-pda/synce-serial
 app-pda/synce:syncengine - Installs the app-pda/synce-sync-engine
 app-pda/synce-kde:avantgo - Add support for syncing Avantgo accounts
 app-portage/conf-update:colordiff - Use colors when displaying diffs (app-misc/colordiff)
+app-portage/eix:deprecated - Installs wrapper scripts for all the previous executable names that will soon be going away
 app-portage/eix:doc - Create description of the eix cache file additionally in html format
 app-portage/eix:nls - Support foreign language messages (experimental; currently only de)
 app-portage/eix:sqlite - Compile in support for portage's sqlite backend; to actually use it you need additional configuration of portage and eix
@@ -525,11 +525,13 @@ dev-db/hk_classes:xbase - Enables support for xbase databases (dBase, FoxPro, et
 dev-db/libpq:pg-intdatetime - Enable --enable-integer-datetimes configure option, which changes PG to use 64-bit integers for timestamp storage
 dev-db/mysql:big-tables - Make tables contain up to 1.844E+19 rows
 dev-db/mysql:cluster - Add support for NDB clustering
+dev-db/mysql:community - Enables the community features from upstream.
 dev-db/mysql:embedded - Build embedded server (libmysqld)
 dev-db/mysql:extraengine - Add support for alternative storage engines
 dev-db/mysql:latin1 - Use LATIN1 encoding instead of UTF8
 dev-db/mysql:max-idx-128 - Raise the max index per table limit from 64 to 128 
 dev-db/mysql:minimal - Install client programs only, no server
+dev-db/mysql:profiling - Add support for statement profiling (requires USE=community).
 dev-db/mysql:raid - Deprecated option, removed in the 5.0 series
 dev-db/mysql-community:big-tables - Make tables contain up to 1.844E+19 rows
 dev-db/mysql-community:cluster - Add support for NDB clustering
