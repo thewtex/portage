@@ -1,13 +1,13 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/lvm2/lvm2-2.02.45.ebuild,v 1.6 2009/04/13 01:05:44 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/lvm2/lvm2-2.02.45.ebuild,v 1.8 2009/07/05 22:04:51 robbat2 Exp $
 
 inherit eutils multilib toolchain-funcs
 
 DESCRIPTION="User-land utilities for LVM2 (device-mapper) software."
 HOMEPAGE="http://sources.redhat.com/lvm2/"
 SRC_URI="ftp://sources.redhat.com/pub/lvm2/${PN/lvm/LVM}.${PV}.tgz
-         ftp://sources.redhat.com/pub/lvm2/old/${PN/lvm/LVM}.${PV}.tgz"
+		 ftp://sources.redhat.com/pub/lvm2/old/${PN/lvm/LVM}.${PV}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -98,6 +98,11 @@ src_compile() {
 	pushd include
 	emake || die "Failed to prepare symlinks"
 	popd
+
+	pushd libdm
+	emake || die "failed to build libdm"
+	popd
+
 	emake || die "compile problem"
 }
 

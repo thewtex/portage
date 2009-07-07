@@ -13,10 +13,6 @@
   Updated nm-applet-0.7.1-r2 dependencies (bug #274151)
   Restored nm-applet-0.7.1-r1
 
-  12 Jun 2009; Daniel Robbins <drobbins@funtoo.org> nm-applet-0.7.1-r2.ebuild:
-  merged in Robert A's cisco, openvpn and other improvements into upstream
-  gentoo ebuild.
-
 *nm-applet-0.7.1-r2 (11 Jun 2009)
 
   11 Jun 2009; Robert Piasek <dagger@gentoo.org> -nm-applet-0.7.1.ebuild,
@@ -30,17 +26,9 @@
   +nm-applet-0.7.1-r1.ebuild, files/nm-applet-0.7.1-confchanges.patch:
   Fix policy to allow ck-based policy; bug #268223
 
-  28 Apr 209; Daniel Robbins <drobbins@funtoo.org> nm-applet-0.7.1.ebuild:
-  added missing >=gnome-extra/policykit-gnome-0.8 (R)DEPEND, closing Gentoo
-  bug 267485 (this bug was funtoo-specific.)
-
   24 Apr 2009; Robert Buchholz <rbu@gentoo.org> +nm-applet-0.6.5.ebuild:
   Readd NM 0.6.5 for ppc.
 
-  24 Apr 2009; Daniel Robbins <drobbins@funtoo.org> nm-applet-0.7.1.ebuild:
-  Attempted to add Robert A's (lavabit's) improvements into the gentoo 0.7.1
-  ebuild.
- 
 *nm-applet-0.7.1 (22 Apr 2009)
 
   22 Apr 2009; Robert Buchholz <rbu@gentoo.org>
@@ -50,10 +38,10 @@
   NetworkManager major (bug #266731), add x11-misc/trayer as possible panel
   dependency (bug #262323), remove libgnomeui dependency (bug #254128).
 
-  18 Jan 2009; Robert A <r_a@lavabit.com>
-  nm-applet-0.6.6.ebuild, nm-applet-0.7.0.ebuild added cisco and openvpn use
-  flags, deleted unnecessary use flags and dependencies and added more postinst
-  information.
+  22 Jan 2009; Peter Volkov <pva@gentoo.org> nm-applet-0.6.5.ebuild,
+  nm-applet-0.6.6.ebuild, nm-applet-0.7.0.ebuild:
+  Added xfce-base/xfce4-panel as alternative for gnome-panel, but I really
+  vote to remove this dep, see bug #246023.
 
 *nm-applet-0.7.0 (05 Dec 2008)
 

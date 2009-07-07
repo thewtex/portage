@@ -1,6 +1,22 @@
 # ChangeLog for www-servers/apache
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-servers/apache/ChangeLog,v 1.104 2009/05/02 13:29:36 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-servers/apache/ChangeLog,v 1.106 2009/07/06 02:25:01 jer Exp $
+
+*apache-2.2.11-r2 (06 Jul 2009)
+
+  06 Jul 2009; Daniel Robbins <drobbins@funtoo.org> +apache-2.2.11-r2.ebuild:
+  using apache-2.2.11-r1.ebuild as a base; adding pkg_postinst information
+  about the Slowloris DOS Mitigation Guide at
+  http://www.funtoo.org/en/security/slowloris/ -- All MPMs are enabled again.
+
+  06 Jul 2009; Jeroen Roovers <jer@gentoo.org> apache-2.2.11-r1.ebuild:
+  Stable for HPPA (bug #276589).
+
+*apache-2.2.11-r1 (05 Jul 2009)
+
+  05 Jul 2009; Benedikt Böhm <hollow@gentoo.org> -apache-2.2.9-r1.ebuild,
+  +apache-2.2.11-r1.ebuild:
+  fix #263588, #265547, #231913, #268154, #271470, #272951, #276426
 
   27 Jun 2009; Daniel Robbins <drobbins@funtoo.org> apache-2.2.11-r1.ebuild:
   Applying anti-slowloris patch to address slowloris DOS, see
