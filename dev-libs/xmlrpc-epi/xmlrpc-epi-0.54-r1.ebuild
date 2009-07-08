@@ -1,8 +1,10 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/xmlrpc-epi/xmlrpc-epi-0.54-r1.ebuild,v 1.1 2009/07/06 13:22:07 volkmar Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/xmlrpc-epi/xmlrpc-epi-0.54-r1.ebuild,v 1.3 2009/07/07 18:49:11 volkmar Exp $
 
 EAPI="2"
+
+inherit multilib
 
 DESCRIPTION="Epinions implementation of XML-RPC protocol in C"
 HOMEPAGE="http://xmlrpc-epi.sourceforge.net/"
@@ -10,8 +12,8 @@ SRC_URI="mirror://sourceforge/xmlrpc-epi/${P}.tar.gz"
 
 LICENSE="Epinions"
 SLOT="0"
-KEYWORDS="~ppc ~x86"
-IUSE="examples"
+KEYWORDS="~amd64 ~ppc ~x86"
+IUSE="examples static-libs"
 
 DEPEND="dev-libs/expat"
 RDEPEND="${DEPEND}"
@@ -28,11 +30,17 @@ src_prepare() {
 src_configure() {
 	econf \
 		--includedir=/usr/include/${PN} \
-		--disable-dependency-tracking
+		--disable-dependency-tracking \
+		$(use_enable static-libs static)
 }
 
 src_install() {
 	emake DESTDIR="${D}" install || die "emake install failed"
+
+	if ! use static-libs; then
+		# remove useless la files
+		rm "${D}"/usr/$(get_libdir)/lib${PN}.la || die "rm failed"
+	fi
 
 	dodoc AUTHORS ChangeLog NEWS README || die "dodoc failed"
 
