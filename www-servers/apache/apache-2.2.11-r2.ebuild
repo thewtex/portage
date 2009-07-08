@@ -1,11 +1,10 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-servers/apache/apache-2.2.11-r1.ebuild,v 1.2 2009/07/06 02:25:01 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-servers/apache/apache-2.2.11-r2.ebuild,v 1.3 2009/07/07 18:50:23 fauli Exp $
 
 # latest gentoo apache files
-GENTOO_PATCHSTAMP="20090705"
+GENTOO_PATCHSTAMP="20090707"
 GENTOO_DEVELOPER="hollow"
-GENTOO_PATCHNAME="gentoo-apache-2.2.11-r1"
 
 # IUSE/USE_EXPAND magic
 IUSE_MPMS_FORK="itk peruser prefork"
@@ -81,7 +80,7 @@ HOMEPAGE="http://httpd.apache.org/"
 # some helper scripts are Apache-1.1, thus both are here
 LICENSE="Apache-2.0 Apache-1.1"
 SLOT="2"
-KEYWORDS="~alpha ~amd64 ~arm hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc x86 ~sparc-fbsd ~x86-fbsd"
 IUSE="sni"
 
 DEPEND="${DEPEND}

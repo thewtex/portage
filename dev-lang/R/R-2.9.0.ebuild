@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/R/R-2.9.0.ebuild,v 1.2 2009/05/30 08:30:27 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/R/R-2.9.0.ebuild,v 1.3 2009/07/07 19:47:58 bicatali Exp $
 
 EAPI=2
 inherit eutils fortran flag-o-matic bash-completion versionator
@@ -54,6 +54,9 @@ pkg_setup() {
 }
 
 src_prepare() {
+
+	# fix empty loop for option -without-x (bug #268362)
+	epatch "${FILESDIR}"/${PN}-2.9.0-without-x.patch
 
 	# fix packages.html for doc (bug #205103)
 	# check in later versions if fixed
@@ -127,7 +130,8 @@ src_install() {
 			install-info install-pdf || die "emake install docs failed"
 	fi
 
-	emake \
+	# standalone math lib install (-j1 basically harmless)
+	emake -j1 \
 		-C src/nmath/standalone \
 		DESTDIR="${D}" install \
 		|| die "emake install math library failed"
