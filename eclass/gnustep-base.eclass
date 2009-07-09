@@ -1,6 +1,6 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/gnustep-base.eclass,v 1.9 2008/12/03 14:29:05 voyageur Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/gnustep-base.eclass,v 1.11 2009/07/06 19:55:55 grobian Exp $
 
 inherit eutils flag-o-matic
 
@@ -121,9 +121,11 @@ egnustep_env() {
 			GNUSTEP_USER_DEFAULTS_DIR="${T}"/Defaults \
 			GNUSTEP_INSTALLATION_DOMAIN=SYSTEM \
 			TAR_OPTIONS="${TAR_OPTIONS} --no-same-owner" \
-			messages=yes \
-			-j1 )
-			# -j1 is needed as gnustep-make is not parallel-safe
+			messages=yes )
+
+		# Parallel-make support was added in gnustep-make 2.2.0
+		has_version "<gnustep-base/gnustep-make-2.2.0" \
+			&& GS_ENV=( "${GS_ENV[@]}" "-j1" )
 
 		use debug \
 			&& GS_ENV=( "${GS_ENV[@]}" "debug=yes" ) \
@@ -136,7 +138,7 @@ egnustep_env() {
 
 # Make utilizing GNUstep Makefiles
 egnustep_make() {
-	if [[ -f ./[mM]akefile || -f ./GNUmakefile ]] ; then
+	if [[ -f ./Makefile || -f ./makefile || -f ./GNUmakefile ]] ; then
 		emake ${*} "${GS_ENV[@]}" all || die "package make failed"
 		return 0
 	fi
