@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4612 2009/07/08 13:47:46 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4615 2009/07/09 21:07:50 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -223,6 +223,8 @@ app-emulation/libvirt:xen - Add support for app-emulation/xen based virtual mach
 app-emulation/mol:oldworld - Includes Macintosh's OldWorld support
 app-emulation/mol:pci - Experimental PCI proxy support
 app-emulation/mol:sheep - Support for the sheep net driver
+app-emulation/open-vm-tools:doc - Generate API documantation
+app-emulation/open-vm-tools:fuse - Build vmblock-fuse in favor of FUSE based blocking mechanism for DnD
 app-emulation/open-vm-tools:gtkmm - Enable gtkmm support
 app-emulation/open-vm-tools:unity - Enable host unity support
 app-emulation/pearpc:jit - Use the JITC-x86 CPU
@@ -1742,6 +1744,7 @@ media-video/ffmpeg:opencore-amrnb - Enables Adaptive Multi-Rate Narrowband suppo
 media-video/ffmpeg:opencore-amrwb - Enables Adaptive Multi-Rate Wideband support vie opencore-amr.
 media-video/ffmpeg:schroedinger - Enable Dirac video support (an advanced royalty-free video compression format) via libschroedinger (high-speed implementation in C of the Dirac codec).
 media-video/ffmpeg:ssse3 - faster floating point optimization for SSSE3 capable chips (Intel Core 2 and later chips)
+media-video/ffmpeg:vdpau - Enables VDPAU decoders (requires nVidia video cards to offload CPU processing to video card
 media-video/ffmpeg:vhook - Enables video hooking support.
 media-video/ffprobe:perl - Installs tools written in perl to produce plots based on video frame bitrate and size
 media-video/gpac:amr - Adaptive Multi-Rate Audio support (commonly used in telephony)
@@ -2128,7 +2131,6 @@ net-im/ejabberd:mod_irc - Irc support in ejabberd
 net-im/ejabberd:mod_muc - Multi user chat support in ejabberd
 net-im/ejabberd:mod_pubsub - Pubsub support in ejabberd
 net-im/ejabberd:web - Web support in ejabberd
-net-im/ekg2:nogg - Disable Gadu-Gadu plugin
 net-im/empathy:applet - Enable Empathy's applets for gnome-base/gnome-panel.
 net-im/gajim:idle - Enable idle module
 net-im/gajim:srv - SRV capabilities
