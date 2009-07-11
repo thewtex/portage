@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10033 2009/07/09 20:58:21 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10040 2009/07/11 03:55:23 darkside Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,64 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Jeremy Olexa <darkside@gentoo.org> (11 Jul 2009)
+# * last gentoo bumps in 2007
+# * some are stable, some are not
+# * remote root security issues
+# * external kernel module
+# * modules are moved into kernel
+# * upstream abandoned external modules
+# * do not compile against 2.6.22/24 or later
+# Removed by treecleaners in 60 days, bug 277232
+net-wireless/rt2400
+net-wireless/rt2500
+net-wireless/rt2570
+
+# Jeremy Olexa <darkside@gentoo.org> (11 Jul 2009)
+# Fails to build, segfaults during testsuite, broken. Removed by treecleaners in
+# ~30 days. bug 274956
+media-sound/glame
+
+# Jeremy Olexa <darkside@gentoo.org> (11 Jul 2009)
+# QA removal, ebuild needs work, SSL support is dlopened instead of more
+# favorable ways. Project dead, now called mongoose instead. removal bug: 248484
+# mongoose bug: 173888
+# Removed in ~60 days by treecleaners
+www-servers/shttpd
+
+# Jeremy Olexa <darkside@gentoo.org> (11 Jul 2009)
+# Removed in 60 days by treecleaners, old glib, last release in 2005, no Gentoo
+# maintainer. bug 248391
+sys-apps/lkcp
+
+# Jeremy Olexa <darkside@gentoo.org> (11 Jul 2009)
+# Removed in ~60 days by treecleaners. QA violations, uses gtk1, no Gentoo
+# maintainer interest. bug 248171
+net-print/pnm2ppa
+
+# Jeremy Olexa <darkside@gentoo.org> (11 Jul 2009)
+# Removed in ~60 days by treecleaners. Nothing uses it. Upstream doesn't care
+# about it, unmaintained. Comment on bug 246960
+app-text/dgs
+
+# Víctor Ostorga <vostorga@gentoo.org> (10 Jul 2009)
+# media-video/mpeg4ip doesn't build wrt #274284
+# mpeg4ip is obsolete, libmp4v2 got new upstream.
+# Removal scheduled in 2009-09-10
+media-video/mpeg4ip
+
+# Samuli Suominen <ssuominen@gentoo.org> (10 Jul 2009)
+# efence doesn't build wrt #262528, or work wrt #128814
+# masked for removal. please use dev-util/duma instead.
+dev-util/efence
+
+# Samuli Suominen <ssuominen@gentoo.org> (10 Jul 2009)
+# New libmp4v2 release. New upstream. Masked for testing.
+>=media-libs/libmp4v2-1.9.0
+>=media-libs/faac-1.28-r1
+>=media-sound/easytag-2.1.6-r2
+=media-sound/amarok-1.4.10_p20090130-r3
 
 # Diego E. Pettenò <flameeyes@gentoo.org> (9 Jul 2009)
 #  on behalf of QA Team
