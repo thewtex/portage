@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4610 2009/07/07 19:09:06 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4624 2009/07/11 21:07:43 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -30,11 +30,17 @@ app-admin/blockhosts:logwatch - Install support files for logwatch
 app-admin/collectd:hddtemp - Enable monitoring of disk temperatures (app-admin/hddtemp)
 app-admin/conky:audacious - enable monitoring of audio tracks that are playing media-sound/bmpx
 app-admin/conky:bmpx - enable monitoring of audio tracks that are playing media-sound/bmpx
+app-admin/conky:apcupsd - enable support for sys-power/apcupsd
+app-admin/conky:audacious - enable monitoring of music played by media-sound/audacious
+app-admin/conky:bmpx - enable monitoring of music played by media-sound/bmpx
+app-admin/conky:math - enable support for glibc's libm math library
 app-admin/conky:moc - enable monitoring of music played by media-sound/moc
-app-admin/conky:mpd - enable monitoring mpd controlled music media-sound/mpd
+app-admin/conky:mpd - enable monitoring of music controlled by media-sound/mpd
 app-admin/conky:nano-syntax - enable syntax highlighting for app-editors/nano
 app-admin/conky:nvidia - enable reading of nvidia card temperature sensors via media-video/nvidia-settings
+app-admin/conky:portmon - enable support for tcp (ip4) port monitoring
 app-admin/conky:smapi - enable support for smapi
+app-admin/conky:thinkpad - enable support for IBM/Lenovo notebooks
 app-admin/diradm:automount - Support for automount data in LDAP
 app-admin/diradm:irixpasswd - Support for storing separate IRIX passwords
 app-admin/gkrellm:X - Build both the X11 gui (gkrellm) and the server (gkrellmd). Disabling this flag builds the server only.
@@ -233,6 +239,8 @@ app-emulation/libvirt:xen - Add support for app-emulation/xen based virtual mach
 app-emulation/mol:oldworld - Includes Macintosh's OldWorld support
 app-emulation/mol:pci - Experimental PCI proxy support
 app-emulation/mol:sheep - Support for the sheep net driver
+app-emulation/open-vm-tools:doc - Generate API documantation
+app-emulation/open-vm-tools:fuse - Build vmblock-fuse in favor of FUSE based blocking mechanism for DnD
 app-emulation/open-vm-tools:gtkmm - Enable gtkmm support
 app-emulation/open-vm-tools:unity - Enable host unity support
 app-emulation/pearpc:jit - Use the JITC-x86 CPU
@@ -1133,6 +1141,7 @@ games-strategy/dark-oberon:fmod - Add sound support (fmod)
 games-strategy/defcon-demo:system-libs - Use system libraries instead of the ones included in the upstream distribution.
 games-strategy/freeciv:auth - Add authentication capability
 games-strategy/freelords:editor - Installs optional map editor
+games-strategy/glest:editor - Also install a level editor
 games-strategy/heroes3:maps - Installs optional map data
 games-strategy/heroes3:music - Installs optional music data
 games-strategy/heroes3:sounds - Installs optional sound data
@@ -1533,6 +1542,7 @@ media-libs/libggi:vis - Enables sparc vis support for libggi
 media-libs/libgphoto2:bonjour - Adds Bonjour/Zeroconf support.
 media-libs/libgpod:gtk - Enables ArtWorkDB support (including Photos and album covers)
 media-libs/libifp:module - Build kernel module for non-root usage
+media-libs/libmp4v2:utils - Install command-line utilities
 media-libs/libmtp:static-libs - Compile static archives
 media-libs/libquicktime:schroedinger - Enable Dirac video support (an advanced royalty-free video compression format) via libschroedinger (high-speed implementation in C of the Dirac codec).
 media-libs/libsdl:audio - Control audio support (disable at your own risk)
@@ -1676,6 +1686,7 @@ media-sound/crip:normalize - Enable for being able to normalize ripped tracks
 media-sound/darkice:twolame - Build with twolame support
 media-sound/decibel-audio-player:cdaudio - Adds support for CD audio playback and lookups via CDDB
 media-sound/dir2ogg:wma - Add support for wma files through mplayer
+media-sound/easytag:mp4 - Support for MP4 container format
 media-sound/esound:static-libs - Compile static archives
 media-sound/exaile:libsexy - Enable libsexy support
 media-sound/fapg:xspf - Enable support for saving XSPF playlists.
@@ -1752,6 +1763,8 @@ media-sound/pulseaudio:glib - Enable glib eventloop support
 media-sound/pulseaudio:gnome -  Use GConf to store user preferences on streams and so on. Don't enable this flag if you want to use a system wide instance. If unsure, enable this flag. 
 media-sound/pulseaudio:oss -  Enable OSS sink/source (output/input). Also build the padsp script to make OSS software use PulseAudio. 
 media-sound/pulseaudio:policykit - Enable support for PolicyKit framework.
+media-sound/qmmp:bs2b - Enable Bauer stereophonic-to-binaural DSP library
+media-sound/qmmp:projectm - Enable projectm music visualization plugin
 media-sound/qmmp:scrobbler - Enable audioscrobbler/last.fm support
 media-sound/qsampler:libgig - Enable libgig support for loading Gigasampler files and DLS (Downloadable Sounds) Level 1/2 files
 media-sound/qtractor:dssi - Enable support for DSSI Soft Synth Interface
@@ -1881,6 +1894,7 @@ media-video/ffmpeg:opencore-amrnb - Enables Adaptive Multi-Rate Narrowband suppo
 media-video/ffmpeg:opencore-amrwb - Enables Adaptive Multi-Rate Wideband support vie opencore-amr.
 media-video/ffmpeg:schroedinger - Enable Dirac video support (an advanced royalty-free video compression format) via libschroedinger (high-speed implementation in C of the Dirac codec).
 media-video/ffmpeg:ssse3 - faster floating point optimization for SSSE3 capable chips (Intel Core 2 and later chips)
+media-video/ffmpeg:vdpau - Enables VDPAU decoders (requires nVidia video cards to offload CPU processing to video card
 media-video/ffmpeg:vhook - Enables video hooking support.
 media-video/ffprobe:perl - Installs tools written in perl to produce plots based on video frame bitrate and size
 media-video/gpac:amr - Adaptive Multi-Rate Audio support (commonly used in telephony)
@@ -2084,6 +2098,7 @@ net-analyzer/honeytrap:ipq-mon - IP queue based monitor
 net-analyzer/honeytrap:nfq-mon - Netfilter queue based monitor
 net-analyzer/honeytrap:pcap-mon - pcap based monitor
 net-analyzer/honeytrap:spamsum - Enables SpamSum similarity analysis for recorded attacks
+net-analyzer/lilac:nmap - Installs nmap which can be used to automatically discover devices to monitor.
 net-analyzer/metasploit:httpd - Enable web interface
 net-analyzer/munin:irc - installs deps for monitoring IRC
 net-analyzer/munin:munin-apache - installs deps for monitoring apache
@@ -2288,7 +2303,6 @@ net-im/ejabberd:mod_irc - Irc support in ejabberd
 net-im/ejabberd:mod_muc - Multi user chat support in ejabberd
 net-im/ejabberd:mod_pubsub - Pubsub support in ejabberd
 net-im/ejabberd:web - Web support in ejabberd
-net-im/ekg2:nogg - Disable Gadu-Gadu plugin
 net-im/empathy:applet - Enable Empathy's applets for gnome-base/gnome-panel.
 net-im/gajim:idle - Enable idle module
 net-im/gajim:srv - SRV capabilities
@@ -2396,6 +2410,7 @@ net-libs/libetpan:liblockfile - Enable support for liblockfile library
 net-libs/libfwbuilder:bind - Use bind's name resolving library
 net-libs/libfwbuilder:stlport - Enagle support for STLport
 net-libs/libinfinity:server -  Build and install the server binary including init.d/conf.d-scripts. Needed if you want to host an infinote server for gobby. 
+net-libs/libpcap:libnl - link with dev-libs/libnl (used to put wireless interfaces in monitore mode)
 net-libs/libpri:bri - Enable ISDN BRI support (bristuff)
 net-libs/libproxy:gnome - Enable support for reading proxy settings from GNOME using gnome-base/gconf
 net-libs/libproxy:kde - Enable support for reading proxy settings from KDE
@@ -2875,6 +2890,7 @@ sci-libs/openfoam-bin:lam - Defines lam-mpi as default mpi implementation
 sci-libs/openfoam-bin:mpich - Defines mpich as default mpi implementation
 sci-libs/openfoam-wmake:lam - Defines lam-mpi as default mpi implementation
 sci-libs/openfoam-wmake:mpich - Defines mpich as default mpi implementation
+sci-libs/nlopt:octave - Add plugin for sci-mathematics/octave
 sci-libs/plplot:ada - Add bindings for the ADA programming language
 sci-libs/plplot:itcl - Add bindings for dev-tcltk/itcl
 sci-libs/plplot:jadetex - Add device for app-text/jadetex (for processing tex files produced by the TeX backend of Jade)
@@ -3199,6 +3215,7 @@ sys-power/suspend:fbsplash - Add support for framebuffer splash
 sys-process/cronie:inotify - Enable inotify filesystem monitoring support.
 sys-process/procps:n32 - Enable n32 ABI support on mips
 virtual/libffi:static-libs - Compile static archives
+virtual/mpi:romio - Enable romio, a high-performance portable MPI-IO
 virtual/poppler-utils:abiword -  Enable support for app-office/abiword output. Requires dev-libs/libxml2. 
 www-apache/mod_ftpd:dbi - Enables dev-db/libdbi support
 www-apache/mod_log_sql:dbi - Enables dev-db/libdbi support
@@ -3394,6 +3411,7 @@ x11-wm/fluxbox:disabletoolbar - Disables the fluxbox toolbar
 x11-wm/fluxbox:slit - Enables the fluxbox slit (or dock)
 x11-wm/fluxbox:toolbar - Enables the fluxbox toolbar
 x11-wm/fvwm:gtk2-perl - Enable GTK2 Perl bindings
+x11-wm/fvwm:lock - Enable screen locking
 x11-wm/fvwm:netpbm - Enable NetPBM support (used by FvwmScript-ScreenDump)
 x11-wm/fvwm:rplay - Enable rplay support
 x11-wm/fvwm:stroke - Mouse Gesture support

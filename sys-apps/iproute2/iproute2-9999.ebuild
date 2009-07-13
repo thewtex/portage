@@ -1,6 +1,8 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/iproute2/iproute2-9999.ebuild,v 1.4 2009/05/29 22:30:26 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/iproute2/iproute2-9999.ebuild,v 1.5 2009/07/11 07:38:52 mrness Exp $
+
+EAPI="2"
 
 inherit eutils toolchain-funcs
 
@@ -41,13 +43,16 @@ src_unpack() {
 	else
 		unpack ${A}
 	fi
-	cd "${S}"
+}
+
+src_prepare() {
 	sed -i "s:-O2:${CFLAGS} ${CPPFLAGS}:" Makefile || die "sed Makefile failed"
 
 	# build against system headers
 	rm -r include/netinet #include/linux include/ip{,6}tables{,_common}.h include/libiptc
 
 	epatch "${FILESDIR}"/${PN}-2.6.26-ldflags.patch #236861
+	epatch "${FILESDIR}"/${PN}-2.6.29.1-flush.patch #274973
 
 	local check base=${PORTAGE_CONFIGROOT}/etc/portage/patches
 	for check in {${CATEGORY}/${PF},${CATEGORY}/${P},${CATEGORY}/${PN}}; do
@@ -75,17 +80,20 @@ src_unpack() {
 		include/iptables.h
 }
 
-src_compile() {
+src_configure() {
 	echo -n 'TC_CONFIG_ATM:=' > Config
 	use atm \
 		&& echo 'y' >> Config \
 		|| echo 'n' >> Config
 
 	use minimal && sed -i -e '/^SUBDIRS=/s:=.*:=lib tc:' Makefile
+}
+
+src_compile() {
 	emake \
 		CC="$(tc-getCC)" \
 		AR="$(tc-getAR)" \
-		|| die "make"
+		|| die "make failed"
 }
 
 src_install() {
