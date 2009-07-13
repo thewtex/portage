@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/fltk/fltk-1.1.9.ebuild,v 1.6 2009/07/05 08:37:00 yngwin Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/fltk/fltk-1.1.9.ebuild,v 1.7 2009/07/08 11:34:48 yngwin Exp $
 
 EAPI=2
 inherit eutils autotools versionator fdo-mime
@@ -25,8 +25,8 @@ RDEPEND="x11-libs/libXext
 	sys-libs/zlib
 	opengl? ( virtual/opengl virtual/glu )
 	xinerama? ( x11-libs/libXinerama )
-	xft? ( x11-libs/libXft )"
-
+	xft? ( x11-libs/libXft )
+	<sys-libs/glibc-2.10"   # glibc-2.10 patch breaks with 2.9, bug 276695
 DEPEND="${RDEPEND}
 	x11-proto/xextproto
 	doc? ( app-text/htmldoc )
@@ -42,9 +42,6 @@ src_prepare() {
 	# prevent to run twice configure (needs eautoconf), to compile tests,
 	# remove forced -Os compile
 	epatch "${FILESDIR}"/${P}-conf-tests.patch
-	# fix stricter c++ handling in glibc-2.10/gcc-4.4 (bug 270487)
-	epatch "${FILESDIR}"/${P}-glibc2.10-scandir.patch
-	epatch "${FILESDIR}"/${P}-consts.patch
 	# remove forced flags from fltk-config
 	sed -i \
 		-e '/C\(XX\)\?FLAGS=/s:@C\(XX\)\?FLAGS@::' \

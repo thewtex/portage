@@ -1,13 +1,5 @@
 # This file requires >=portage-2.1.1
 
-# Daniel Robbins <drobbins@funtoo.org> (27 Jun 2009)
-# To address apache slowloris DOS:
-# http://ha.ckers.org/blog/20090617/slowloris-http-dos/
-# I am masking all vulnerable MPMs, only prefork is
-# protected in apache-2.2.11-r1 in funtoo.
-
-www-servers/apache threads apache2_mpms_itk apache2_mpms_peruser apache2_mpms_event apache2_mpms_worker
-
 # Thomas Anderson <gentoofan23@gentoo.org> (17 Jun 2009)
 # app-misc/iguanaIR is p.masked so lirc_devices_iguana
 # needs to get masked for app-misc/lirc.
@@ -155,3 +147,7 @@ media-video/mplayer cpudetection custom-cpuopts bindist vdpau
 # Unmask internal real player codec support on newer mplayer
 # Only for amd64 and x86
 >=media-video/mplayer-1.0_rc2_p20090530 nut
+
+# Alexis Ballier <aballier@gentoo.org> (07 Jul 2009)
+# The pda interface doesnt build, bug #277037
+>=media-video/vlc-1.0.0 pda

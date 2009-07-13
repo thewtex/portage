@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-news/blam/blam-1.8.6.ebuild,v 1.3 2009/01/25 11:59:35 loki_val Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-news/blam/blam-1.8.6.ebuild,v 1.6 2009/07/08 20:56:36 maekke Exp $
 
 EAPI=2
 
@@ -12,7 +12,7 @@ SRC_URI="http://www.cmartin.tk/blam/${PN}_${PV}.orig.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND=">=dev-lang/mono-2
@@ -30,6 +30,11 @@ DEPEND="${RDEPEND}
 
 # Disable parallel builds
 MAKEOPTS="${MAKEOPTS} -j1"
+
+src_prepare() {
+	# fix test suite
+	echo "blam.desktop.in" >> po/POTFILES.in || die
+}
 
 src_install() {
 	make DESTDIR="${D}" install || die

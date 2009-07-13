@@ -1,6 +1,29 @@
 # ChangeLog for x11-base/xorg-server
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-base/xorg-server/ChangeLog,v 1.422 2009/07/06 12:50:55 remi Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-base/xorg-server/ChangeLog,v 1.427 2009/07/11 09:49:16 remi Exp $
+
+  11 Jul 2009; Rémi Cardona <remi@gentoo.org> xorg-server-1.6.2.ebuild,
+  xorg-server-1.6.2-r1.ebuild:
+  add newport back (see bug #277034)
+
+  10 Jul 2009; Rémi Cardona <remi@gentoo.org>
+  -xorg-server-1.6.1.901-r4.ebuild, -xorg-server-1.6.1.902.ebuild,
+  -xorg-server-1.6.1.902-r1.ebuild:
+  drop old ebuilds
+
+*xorg-server-1.6.2-r1 (10 Jul 2009)
+
+  10 Jul 2009; Rémi Cardona <remi@gentoo.org> +xorg-server-1.6.2-r1.ebuild:
+  backport another few fixes from upstream
+
+  08 Jul 2009; Rémi Cardona <remi@gentoo.org> xorg-server-1.6.2.ebuild:
+  backport patch to fix build on BSD (fixes bug #276187)
+
+*xorg-server-1.6.2 (08 Jul 2009)
+
+  08 Jul 2009; Rémi Cardona <remi@gentoo.org> +xorg-server-1.6.2.ebuild:
+  bump to 1.6.2 still with patches (one for libXinerama dep, the other for
+  xfs bug #236847)
 
 *xorg-server-1.6.1.902-r1 (06 Jul 2009)
 
