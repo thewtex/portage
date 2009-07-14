@@ -1,12 +1,12 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/gtk-gnutella/gtk-gnutella-0.96.5.ebuild,v 1.6 2008/07/27 08:24:39 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/gtk-gnutella/gtk-gnutella-0.96.6-r1.ebuild,v 1.1 2009/07/13 08:06:25 graaff Exp $
+
+EAPI="2"
 
 inherit eutils
 
-#TODO: headless mode (but not very well tested yet, may still be too
-#hardcore)
-IUSE="nls dbus gnutls"
+IUSE="nls dbus gnutls +gtk"
 
 DESCRIPTION="A GTK+ Gnutella client"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
@@ -14,7 +14,7 @@ HOMEPAGE="http://gtk-gnutella.sourceforge.net/"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="alpha amd64 ppc sparc x86 ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~ppc ~sparc ~x86 ~x86-fbsd"
 
 RDEPEND=">=dev-libs/libxml2-2.6.0
 	>=x11-libs/gtk+-2.2.1
@@ -24,10 +24,9 @@ RDEPEND=">=dev-libs/libxml2-2.6.0
 DEPEND="${RDEPEND}
 	dev-util/pkgconfig"
 
-src_compile() {
-	# gtk-gnutella now uses a custom build script which in turn drives
-	# the Configure script. The options for the build script are less
-	# arcane, so use that for clarity.
+src_configure() {
+	# The build script does not support the equivalent --enable
+	# options so we must construct the configuration by hand.
 
 	local myconf
 
@@ -43,13 +42,17 @@ src_compile() {
 		myconf="${myconf} --disable-gnutls"
 	fi
 
-	./build.sh --prefix="/usr" --gtk2 ${myconf}
+	if use gtk; then
+		myconf="${myconf} --gtk2"
+	else
+		myconf="${myconf} --topless"
+	fi
 
-	emake || die "Compile failed"
+	./build.sh --configure-only --prefix="/usr" ${myconf}
 }
 
 src_install() {
 	dodir /usr/bin
-	make INSTALL_PREFIX="${D}" install || die "Install failed"
+	emake INSTALL_PREFIX="${D}" install || die "Install failed"
 	dodoc AUTHORS ChangeLog README TODO
 }

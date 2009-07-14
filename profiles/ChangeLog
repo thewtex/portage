@@ -1,10 +1,32 @@
 # ChangeLog for profile directory
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.2899 2009/07/13 00:26:55 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.2906 2009/07/13 11:28:01 remi Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  13 Jul 2009; Rémi Cardona <remi@gentoo.org> package.mask:
+  add 14 X input drivers to p.mask
+
+  13 Jul 2009; Rémi Cardona <remi@gentoo.org> package.mask:
+  remove xorg-server p.mask, offending version is gone from portage
+
+  13 Jul 2009; Hans de Graaff <graaff@gentoo.org> package.mask:
+  Mask dev-ruby/misen and dev-ruby/dpklib due to bug 276980
+
+  13 Jul 2009; Nirbheek Chauhan <nirbheek@gentoo.org> package.mask:
+  Mask 0.4.0, needs mozilla-firefox-3.5
+
+  13 Jul 2009; <nirbheek@gentoo.org> package.mask:
+  Unmask weave, xulrunner 1.9.1 is in-tree
+
+  13 Jul 2009; Hans de Graaff <graaff@gentoo.org> package.mask:
+  Freeride is in dev-util, not dev-ruby. Fixed and will wait another 30 days
+  just to be sure.
+
+  13 Jul 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Mask bobs for removal.
 
   13 Jul 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
   Remove rubinius mask.
