@@ -98,9 +98,7 @@ src_unpack() {
 		unpack ${PN}-htmldocs-${DOC_VER}.tar.bz2
 	cd "${S}"
 
-	epatch "${FILESDIR}"/20090126-git-1.6.1.1-noperl.patch 
-	 # difftool should be in upstream at 1.6.2
-	epatch "${FILESDIR}"/20090119-git-1.6.1.2-git-difftool.patch 
+	epatch "${FILESDIR}"/20090126-git-1.6.1.1-noperl.patch
 
 	sed -i \
 		-e 's:^\(CFLAGS =\).*$:\1 $(OPTCFLAGS) -Wall:' \
@@ -170,16 +168,6 @@ src_install() {
 	dodoc contrib/fast-import/git-p4.txt
 	newbin contrib/fast-import/import-tars.perl import-tars
 
-	dodir /usr/share/${PN}/contrib
-	if use perl ; then
-		cp -rf "${S}"/contrib/difftool \
-		"${D}"/usr/share/${PN}/contrib \
-			|| die "Failed contrib difftool"
-		dobin contrib/difftool/git-difftool
-		dobin contrib/difftool/git-difftool-helper
-		dodoc contrib/difftool/git-difftool.txt
-	fi
-
 	if use vim-syntax ; then
 		insinto /usr/share/vim/vimfiles/syntax/
 		doins contrib/vim/syntax/gitcommit.vim
@@ -187,6 +175,7 @@ src_install() {
 		newins "${FILESDIR}"/vim-ftdetect-gitcommit.vim gitcommit.vim
 	fi
 
+	dodir /usr/share/${PN}/contrib
 	# The following are excluded:
 	# svnimport - use git-svn
 	# p4import - excluded because fast-import has a better one

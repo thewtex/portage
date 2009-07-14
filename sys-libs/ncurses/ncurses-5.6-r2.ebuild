@@ -150,3 +150,10 @@ src_install() {
 	use doc && dohtml -r doc/html/
 }
 
+pkg_preinst() {
+	use unicode || preserve_old_lib /$(get_libdir)/libncursesw.so.5
+}
+
+pkg_postinst() {
+	use unicode || preserve_old_lib_notify /$(get_libdir)/libncursesw.so.5
+}
