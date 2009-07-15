@@ -1,6 +1,24 @@
 # ChangeLog for profiles/prefix
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Id: ChangeLog,v 1.24 2009/07/09 07:52:29 mduft Exp $
+# $Id: ChangeLog,v 1.29 2009/07/14 14:50:20 darkside Exp $
+
+  14 Jul 2009; Jeremy Olexa <darkside@gentoo.org> package.mask:
+  p.mask portage-2.2.00.13825 due to regression with virtuals
+
+  14 Jul 2009; Michael Haubenwallner <haubi@gentoo.org> hpux/profile.bashrc:
+  preserve busy text files based on installed file types, not
+  to-be-installed ones
+
+  14 Jul 2009; Michael Haubenwallner <haubi@gentoo.org> aix/package.mask:
+  fixed cvs header
+
+  14 Jul 2009; Michael Haubenwallner <haubi@gentoo.org>
+  +aix/5.3.0.0/package.mask:
+  masked sys-process/lsof-4.82 on aix5.3
+
+  12 Jul 2009; Fabian Groffen <grobian@gentoo.org> make.defaults:
+  Get collision-protect back on, thanks sping's smolt tool which made me
+  notice. Disabling this in Prefix is lethal.
 
   09 Jul 2009; Markus Duft <mduft@gentoo.org>
   +windows/interix/6.0/use.force, +windows/interix/6.0/use.mask:

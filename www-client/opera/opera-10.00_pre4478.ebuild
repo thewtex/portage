@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/opera/opera-10.00_pre4478.ebuild,v 1.5 2009/07/09 19:05:25 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/opera/opera-10.00_pre4478.ebuild,v 1.8 2009/07/15 03:07:54 jer Exp $
 
 EAPI="2"
 
@@ -40,7 +40,7 @@ fi
 SRC_URI="
 	amd64? (
 		!ia32? (
-			qt-static? ( ${O_U}x86_64-linux/${O_P}.gcc4-qt4.x86_64.tar.bz2 )
+			qt-static? ( ${O_U}x86_64-linux/${O_P}.gcc4-bundled-qt4.x86_64.tar.bz2 )
 			!qt-static? (
 				qt3? ( ${O_U}x86_64-linux/${O_P}.gcc4-shared-qt3.x86_64.tar.bz2 )
 				!qt3? ( ${O_U}x86_64-linux/${O_P}.gcc4-qt4.x86_64.tar.bz2 )
@@ -89,7 +89,13 @@ RDEPEND="
 				!qt3? ( x11-libs/qt-core x11-libs/qt-gui )
 			)
 		)
-		!ia32? ( =x11-libs/qt-3*[-immqt] )
+		!ia32? (
+			qt-static? ( media-libs/nas )
+			!qt-static? (
+				qt3? ( =x11-libs/qt-3*[-immqt] )
+				!qt3? ( x11-libs/qt-core x11-libs/qt-gui )
+			)
+		)
 	)
 	ppc? ( =x11-libs/qt-3*[-immqt] )
 	x86? (
@@ -118,7 +124,7 @@ opera_linguas() {
 pkg_setup() {
 	elog "${WARN}If you seek support, please file a bug report at${NORMAL}"
 	elog "${WARN}https://bugs.gentoo.org and post the output of${NORMAL}"
-	elog "${WARN} \`emerge -vp =${CATEGORY}/${P}'${NORMAL}"
+	elog "${WARN} \`emerge --info =${CATEGORY}/${P}'${NORMAL}"
 }
 
 src_unpack() {

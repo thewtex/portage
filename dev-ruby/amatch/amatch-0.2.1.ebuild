@@ -1,10 +1,10 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/amatch/amatch-0.2.1.ebuild,v 1.10 2009/06/13 09:22:07 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/amatch/amatch-0.2.1.ebuild,v 1.11 2009/07/14 17:54:26 graaff Exp $
 
 inherit ruby
 
-USE_RUBY="ruby18 ruby19"
+USE_RUBY="ruby18"
 
 DESCRIPTION="A template library for ruby like amrita"
 HOMEPAGE="http://amatch.rubyforge.org"

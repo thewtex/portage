@@ -1,6 +1,6 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dialup/capi4k-utils/capi4k-utils-20050718-r3.ebuild,v 1.10 2008/01/20 11:48:51 sbriesen Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dialup/capi4k-utils/capi4k-utils-20050718-r3.ebuild,v 1.12 2009/07/12 18:17:11 halcy0n Exp $
 
 inherit eutils multilib linux-info
 
@@ -18,7 +18,7 @@ SRC_URI="ftp://ftp.in-berlin.de/pub/capi4linux/${MY_P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="~alpha amd64 ppc x86"
 IUSE="fax pppd tcpd usb pcmcia"
 
 DEPEND="virtual/linux-sources
@@ -137,8 +137,8 @@ src_install() {
 
 pkg_postinst() {
 	elog
-	elog "Please read the instructions in:"
-	elog "/usr/share/doc/${PF}/README.gentoo.gz"
+	elog "Please read the instructions in README.gentoo in:"
+	elog "/usr/share/doc/${PF}/"
 	elog
 	elog "Annotation for active AVM ISDN boards (B1 ISA/PCI, ...):"
 	elog "If you run"
