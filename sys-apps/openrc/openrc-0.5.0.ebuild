@@ -4,7 +4,7 @@
 
 inherit eutils flag-o-matic multilib toolchain-funcs
 
-SRC_URI="http://www.funtoo.org/distfiles/openrc-funtoo-2009.07.14.tar.bz2"
+SRC_URI="http://www.funtoo.org/distfiles/openrc-funtoo-2009.07.15.tar.bz2"
 DESCRIPTION="OpenRC manages the services, startup and shutdown of a host"
 HOMEPAGE="http://roy.marples.name/openrc"
 PROVIDE="virtual/baselayout"
