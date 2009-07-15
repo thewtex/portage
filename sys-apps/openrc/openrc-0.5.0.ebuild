@@ -82,9 +82,6 @@ src_install() {
 
 	# Cater to the norm
 	(use x86 || use amd64) && sed -i -e '/^windowkeys=/s:NO:YES:' "${D}"/etc/conf.d/keymaps
-
-	# Courtesy net.eth0 symlink
-	cd ${D}/etc/init.d; ln -s net.lo net.eth0
 }
 
 add_init() {
