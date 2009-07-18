@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/chromium-bin/chromium-bin-9999.ebuild,v 1.11 2009/06/30 11:40:28 voyageur Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/chromium-bin/chromium-bin-9999.ebuild,v 1.12 2009/07/17 15:37:55 voyageur Exp $
 
 EAPI="2"
 inherit eutils multilib
@@ -34,6 +34,14 @@ RDEPEND="media-fonts/corefonts
 S=${WORKDIR}
 
 QA_EXECSTACK="opt/chromium.org/chrome-linux/chrome"
+
+# Ogg/Theora/Vorbis-only FFmpeg binaries
+QA_TEXTRELS="opt/chromium.org/chrome-linux/libavcodec.so.52
+	opt/chromium.org/chrome-linux/libavformat.so.52
+	opt/chromium.org/chrome-linux/libavutil.so.50"
+QA_PRESTRIPPED="opt/chromium.org/chrome-linux/libavcodec.so.52
+	opt/chromium.org/chrome-linux/libavformat.so.52
+	opt/chromium.org/chrome-linux/libavutil.so.50"
 
 pkg_setup() {
 	# This is a binary x86 package
@@ -91,7 +99,7 @@ src_install() {
 	dosym ${NSS_DIR}/libssl3.so ${CHROMIUM_HOME}/lib/libssl3.so.1d
 
 	# Create chromium-bin wrapper
-	make_wrapper chromium-bin ./chrome ${CHROMIUM_HOME}/chrome-linux ${CHROMIUM_HOME}/lib
+	make_wrapper chromium-bin ./chrome ${CHROMIUM_HOME}/chrome-linux ${CHROMIUM_HOME}/lib:${CHROMIUM_HOME}/chrome-linux
 	newicon "${FILESDIR}"/chromium.png ${PN}.png
 	make_desktop_entry chromium-bin "Chromium" ${PN}.png "Network;WebBrowser"
 }
