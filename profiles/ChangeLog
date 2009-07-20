@@ -1,10 +1,34 @@
 # ChangeLog for profile directory
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.2918 2009/07/18 18:25:54 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.2926 2009/07/19 20:52:20 ssuominen Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  19 Jul 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask media-sound/bmpx for removal wrt #277421.
+
+  19 Jul 2009; Torsten Veller <tove@gentoo.org> package.mask:
+  Mask Compress-Zlib, IO-Compress-Zlib, IO-Compress-Bzip2, IO-Compress-Base.
+  IO-Compress replaces them
+
+  19 Jul 2009; Lennart Kolmodin <kolmodin@gentoo.org> package.mask:
+  Remove hard mask on dev-lang/ghc-bin as the package finally has been
+  removed.
+
+  19 Jul 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask orphaned libraries ofbis and smjpeg wrt #247961.
+
+  19 Jul 2009; Lennart Kolmodin <kolmodin@gentoo.org> package.mask:
+  Remove hard mask on dev-lang/ghc-6.8.2-r1.
+  This ebuild is attempting to solve the trouble in bug #259867.
+
+  19 Jul 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask sidplay and streamixer for removal wrt #98769, #272602 and #273342.
+
+  19 Jul 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  media-sound/glame is no more wrt #274956.
 
   18 Jul 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
   Unmask net-print/pnm2ppa by multiple user requests at bug 248171.
