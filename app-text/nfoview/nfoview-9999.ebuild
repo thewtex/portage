@@ -1,18 +1,23 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/nfoview/nfoview-9999.ebuild,v 1.3 2008/03/30 17:36:06 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/nfoview/nfoview-9999.ebuild,v 1.4 2009/07/20 06:55:55 vapier Exp $
 
-ESVN_REPO_URI="svn://svn.gna.org/svn/nfoview/trunk"
 inherit distutils
-[[ ${PV} == "9999" ]] && inherit subversion
+if [[ ${PV} == "9999" ]] ; then
+	EGIT_REPO_URI="git://gitorious.org/nfoview/mainline.git"
+	inherit git
+	SRC_URI=""
+	KEYWORDS=""
+else
+	SRC_URI="http://download.gna.org/nfoview/${PV}/${P}.tar.bz2"
+	KEYWORDS="~amd64 ~x86"
+fi
 
 DESCRIPTION="simple viewer for NFO files, which are ASCII art in the CP437 codepage"
 HOMEPAGE="http://home.gna.org/nfoview/"
-[[ ${PV} != "9999" ]] && SRC_URI="http://download.gna.org/nfoview/${PV}/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
 IUSE=""
 
 DEPEND="dev-python/pygtk"

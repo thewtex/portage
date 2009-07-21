@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/kid3/kid3-1.2-r2.ebuild,v 1.1 2009/07/16 22:09:39 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/kid3/kid3-1.2-r2.ebuild,v 1.4 2009/07/19 14:31:25 ssuominen Exp $
 
 EAPI=2
 inherit kde4-base
@@ -8,11 +8,10 @@ inherit kde4-base
 DESCRIPTION="A simple ID3 tag editor for QT/KDE."
 HOMEPAGE="http://kid3.sourceforge.net/"
 SRC_URI="mirror://sourceforge/kid3/${P}.tar.gz
-	http://dev.gentoo.org/~ssuominen/${P}-libmp4v2.patch.bz2
 	mirror://gentoo/${P}-libmp4v2.patch.bz2"
 
 LICENSE="GPL-2"
-SLOT="0"
+SLOT="4"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE=""
 
@@ -23,6 +22,7 @@ RDEPEND="media-libs/id3lib
 	media-libs/flac[cxx]
 	media-libs/musicbrainz:3
 	media-libs/tunepimp"
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	!<media-sound/kid3-1.2-r2"
 
 PATCHES=( "${WORKDIR}/${P}-libmp4v2.patch" )

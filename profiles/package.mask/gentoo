@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10055 2009/07/16 20:55:28 betelgeuse Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10070 2009/07/20 23:27:58 vostorga Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,62 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Víctor Ostorga <vostorga@gentoo.org> (20 Jul 2009)
+# Totally broken ebuild wrt #240076
+# make does not die, cp is used instead of dobin, 
+# CFLAGS and LDFLAGS are not respected.
+app-misc/logserial
+
+# Samuli Suominen <ssuominen@gentoo.org> (20 Jul 2009)
+# Obsolete. Codebase has been merged into xfwm4 and xfce4-xkb.
+# Doesn't compile with >=libxklavier-4 wrt #278466.
+x11-misc/xfkc
+
+# Samuli Suominen <ssuominen@gentoo.org> (19 Jul 2009)
+# Project has been moved to http://youki.mp
+# Doesn't compile wrt #277421. Masked for removal.
+media-sound/bmpx
+
+# Torsten Veller <tove@gentoo.org> (19 Jul 2009)
+# Fix your dependencies:
+# IO-Compress replaces
+# - Compress-Zlib
+# - IO-Compress-Zlib
+# - IO-Compress-Bzip2
+# - IO-Compress-Base
+perl-core/Compress-Zlib
+perl-core/IO-Compress-Zlib
+perl-core/IO-Compress-Bzip2
+perl-core/IO-Compress-Base
+virtual/perl-Compress-Zlib
+virtual/perl-IO-Compress-Zlib
+virtual/perl-IO-Compress-Bzip2
+virtual/perl-IO-Compress-Base
+
+# Samuli Suominen <ssuominen@gentoo.org> (19 Jul 2009)
+# Orphaned libraries. Masked for removal. QA issues wrt #247961.
+media-libs/smjpeg
+media-libs/ofbis
+
+# Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (19 Jul 2009)
+# cjkcodecs modules are included in Python >=2.4. Separate dev-python/cjkcodecs package
+# isn't needed anymore and fails tests (bug #277773). Masked for deletion in 30 days.
+dev-python/cjkcodecs
+
+# Samuli Suominen <ssuominen@gentoo.org> (19 Jul 2009)
+# Masked for removal. No upstream. QA issues wrt #273342.
+media-sound/streamixer
+
+# Samuli Suominen <ssuominen@gentoo.org> (19 Jul 2009)
+# Doesn't compile wrt #272602. ALSA support broken wrt #98769.
+# No upstream. Masked for removal.
+media-sound/sidplay
+
+# Samuli Suominen <ssuominen@gentoo.org> (18 Jul 2009)
+# Doesn't compile and maintainers don't care wrt #222235.
+# Masked for removal by treecleaners.
+x11-libs/gtk-server
 
 # Samuli Suominen <ssuominen@gentoo.org> (16 Jul 2009)
 # Obsolete. Replaced by media-sound/lash by upstream.
@@ -106,11 +162,6 @@ net-wireless/rt2500
 net-wireless/rt2570
 
 # Jeremy Olexa <darkside@gentoo.org> (11 Jul 2009)
-# Fails to build, segfaults during testsuite, broken. Removed by treecleaners in
-# ~30 days. bug 274956
-media-sound/glame
-
-# Jeremy Olexa <darkside@gentoo.org> (11 Jul 2009)
 # QA removal, ebuild needs work, SSL support is dlopened instead of more
 # favorable ways. Project dead, now called mongoose instead. removal bug: 248484
 # mongoose bug: 173888
@@ -121,11 +172,6 @@ www-servers/shttpd
 # Removed in 60 days by treecleaners, old glib, last release in 2005, no Gentoo
 # maintainer. bug 248391
 sys-apps/lkcp
-
-# Jeremy Olexa <darkside@gentoo.org> (11 Jul 2009)
-# Removed in ~60 days by treecleaners. QA violations, uses gtk1, no Gentoo
-# maintainer interest. bug 248171
-net-print/pnm2ppa
 
 # Jeremy Olexa <darkside@gentoo.org> (11 Jul 2009)
 # Removed in ~60 days by treecleaners. Nothing uses it. Upstream doesn't care
@@ -885,14 +931,6 @@ app-benchmark/phoronix-test-suite
 # It "mostly works with 2.3.* too". Is "mostly" good enough?
 =dev-perl/math-pari-2.010801-r1
 
-# Lennart Kolmodin <kolmodin@gentoo.org> (17 Apr 2009)
-# Add patched dev-lang/ghc for testing.
-# It includes a bundled readline package to be able to use old bootstrapping
-# binaries. See bug #259867.
-# Only x86 and amd64 supported so far. This ebuild won't be very interesting
-# once we add ghc 6.10.2.
-=dev-lang/ghc-6.8.2-r1
-
 # Christian Faulhammer <fauli@gentoo.org> (13 Apr 2009)
 # Ulrich Mueller <ulm@gentoo.org>
 # Thomas Anderson <gentoofan23@gentoo.org>
@@ -1108,9 +1146,12 @@ dev-util/w32api
 >sys-process/audit-1.7.4
 
 # Jeroen Roovers <jer@gentoo.org> (5 Dec 2008)
-# Snapshots and alphas of Opera may delete kittens
-=www-client/opera-10.00_pre43*
->www-client/opera-10.00_pre4402
+# Snapshots and alphas but not betas of Opera 10
+=www-client/opera-10.00_pre444*
+=www-client/opera-10.00_pre445*
+=www-client/opera-10.00_pre446*
+=www-client/opera-10.00_pre447*
+>www-client/opera-10.00_pre4492
 
 # MATSUU Takuto <matsuu@gentoo.org> (19 Nov 2008)
 # Masked for bug #196340
@@ -1119,17 +1160,6 @@ dev-util/w32api
 # Peter Volkov <pva@gentoo.org> (16 Nov 2008)
 # The development branch, to be unmasked when out of beta by upstream.
 =net-misc/socat-2.0.0*
-
-# Mike Doty <kingtaco@gentoo.org> (9 Nov 2008)
-# Masked for testing
-=app-emulation/emul-linux-x86-baselibs-20081109
-=app-emulation/emul-linux-x86-gtklibs-20081109
-=app-emulation/emul-linux-x86-qtlibs-20081109
-=app-emulation/emul-linux-x86-soundlibs-20081109
-=app-emulation/emul-linux-x86-compat-20081109
-=app-emulation/emul-linux-x86-medialibs-20081109
-=app-emulation/emul-linux-x86-sdl-20081109
-=app-emulation/emul-linux-x86-xlibs-20081109
 
 # Steve Dibb <beandog@gentoo.org> (5 Nov 2008)
 # Mask realplayer, real codecs for security, upstream issues, bug 245662
@@ -1261,7 +1291,6 @@ dev-cpp/bakery
 # Masked until we remove "children" .la files, or get better tools -
 # like a revdep-rebuild that does not require an actual rebuild.
 ~dev-libs/popt-1.14
-=media-libs/libogg-1.1.3-r1
 
 # Matthias Schwarzott <zzam@gentoo.org> (15 Apr 2008)
 # Superseded by vdr-dvdswitch and no longer maintained
@@ -1477,11 +1506,6 @@ dev-php5/php-java-bridge
 =app-pda/libopensync-plugin-python-9999
 =app-pda/libopensync-plugin-syncml-9999
 =app-pda/libopensync-plugin-vformat-9999
-
-# Duncan Coutts <dcoutts@gentoo.otg> (05 Nov 2007)
-# dev-lang/ghc-bin is going away, use dev-lang/ghc instead.
-# You can USE=binary with dev-lang/ghc to get the effect of ghc-bin.
-dev-lang/ghc-bin
 
 # Stefan Schweizer <genstef@gentoo.org> (14 Oct 2007)
 # Development release

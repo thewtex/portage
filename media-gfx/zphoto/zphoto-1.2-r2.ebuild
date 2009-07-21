@@ -1,8 +1,10 @@
-# Copyright 1999-2007 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/zphoto/zphoto-1.2-r2.ebuild,v 1.4 2007/04/23 02:03:49 dirtyepic Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/zphoto/zphoto-1.2-r2.ebuild,v 1.6 2009/07/20 19:33:41 vostorga Exp $
 
-inherit wxwidgets
+EAPI=2
+
+inherit wxwidgets eutils
 
 IUSE="wxwindows"
 
@@ -18,23 +20,28 @@ DEPEND=">=media-libs/ming-0.2a
 	|| ( >=media-libs/imlib2-1.1.0 >=media-gfx/imagemagick-5.5.7 )
 	app-arch/zip
 	>=dev-libs/popt-1.6.3
-	wxwindows? ( =x11-libs/wxGTK-2.6* )"
+	wxwindows? ( =x11-libs/wxGTK-2.6*[X] )"
+RDEPEND="${DEPEND}"
 
-src_compile() {
+src_prepare(){
+	#bug 273831
+	epatch "${FILESDIR}"/"${P}"-glibc210.patch
+}
 
-	local myconf="--disable-avifile"
+src_configure() {
+
+	local myconf="${myconf} --disable-avifile"
 
 	if use wxwindows ; then
 		WX_GTK_VER="2.6"
 		need-wxwidgets gtk2
-		myconf="--with-wx-config=${WX_CONFIG}"
+		myconf="${myconf} --with-wx-config=${WX_CONFIG}"
 		sed -i -e 's@FALSE@false@g' wxzphoto.cpp || die
 	else
-		myconf="--disable-wx"
+		myconf="${myconf} --disable-wx"
 	fi
 
-	econf ${myconf} || die
-	emake || die
+	econf ${myconf}
 }
 
 src_install() {
