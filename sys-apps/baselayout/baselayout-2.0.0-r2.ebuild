@@ -41,6 +41,7 @@ pkg_preinst() {
 		install -d ${ROOT}etc/modules.autoload.d
 		install -d ${ROOT}etc/modules.d
 		install -d ${ROOT}etc/opt
+		install -d ${ROOT}etc/profile.d
 		install -d ${ROOT}home
 		install -d ${rcscripts_dir}
 		install -d ${ROOT}mnt
@@ -62,6 +63,7 @@ pkg_preinst() {
 		install -d ${ROOT}usr/local/share
 		install -d ${ROOT}usr/local/share/doc
 		install -d ${ROOT}usr/local/share/man
+		ln -snf share/man ${ROOT}/usr/local/man
 		install -d ${ROOT}usr/local/src
 		install -d ${ROOT}usr/portage
 		install -d ${ROOT}usr/sbin
@@ -74,6 +76,7 @@ pkg_preinst() {
 		install -d -m 1777 ${ROOT}var/tmp
 		install -d ${ROOT}var
 		install -d ${ROOT}var/db/pkg
+		install -d ${ROOT}var/empty
 		install -d ${ROOT}var/lib/misc
 		install -d ${ROOT}var/lock/subsys
 		install -d ${ROOT}var/log/news
@@ -179,8 +182,6 @@ pkg_preinst() {
 					die "unable to create '${prefix}lib' symlink"
 			done
 		fi
-
-		emake -C "${D}/usr/share/${PN}" DESTDIR="${ROOT}" layout || die "failed to layout filesystem"
 	fi
 	rm -f "${D}"/usr/share/${PN}/Makefile
 }
@@ -212,15 +213,18 @@ create_dev_nodes() {
 	MAKEDEV sg scd rtc hde hdf hdg hdh input audio video
 }
 
+src_compile() {
+	return 0
+}
+
 src_install() {
 	local libdir="lib"
 	[[ ${SYMLINK_LIB} == "yes" ]] && libdir=$(get_abi_LIBDIR "${DEFAULT_ABI}")
 
-	emake \
-		OS=$(use kernel_FreeBSD && echo BSD || echo Linux) \
-		LIB=${libdir} \
-		DESTDIR="${D}" \
-		install || die
+	dodir /etc /usr/share/baselayout
+	cp -pPR etc/* etc.Linux/* ${D}/etc/ || die
+	cp -pPR share.Linux/* ${D}/usr/share/baselayout || die
+	
 	dodoc ChangeLog
 
 	into /
@@ -231,8 +235,6 @@ src_install() {
 	# need the makefile in pkg_preinst
 	insinto /usr/share/${PN}
 	doins Makefile || die
-
-
 
 	# Should this belong in another ebuild? Like say binutils?
 	# List all the multilib libdirs in /etc/env/04multilib (only if they're
