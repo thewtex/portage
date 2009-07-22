@@ -1,8 +1,8 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/vlc/vlc-1.0.9999.ebuild,v 1.15 2009/07/08 08:41:53 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/vlc/vlc-1.0.9999.ebuild,v 1.17 2009/07/21 09:31:48 aballier Exp $
 
-EAPI="1"
+EAPI="2"
 
 SCM=""
 if [ "${PV%9999}" != "${PV}" ] ; then
@@ -57,6 +57,7 @@ IUSE="a52 aac aalib alsa altivec atmo avahi bidi cdda cddax cddb cdio dbus dc139
 	wma-fixed X x264 xcb xinerama xml xosd xv zvbi"
 
 RDEPEND="
+		!!<=media-video/vlc-0.9.99999
 		sys-libs/zlib
 		>=media-libs/libdvbpsi-0.1.6
 		a52? ( >=media-libs/a52dec-0.7.4-r3 )
@@ -220,8 +221,12 @@ src_unpack() {
 	if [ "${PV%9999}" != "${PV}" ] ; then
 		git_src_unpack
 	fi
-	cd "${S}"
+}
 
+src_prepare() {
+	if [ "${PV%9999}" != "${PV}" ] ; then
+		git_src_prepare
+	fi
 	# Make it build with libtool 1.5
 	rm -f m4/lt* m4/libtool.m4
 
@@ -229,7 +234,7 @@ src_unpack() {
 	AT_M4DIR="m4 ${WORKDIR}/${PN}-m4" eautoreconf
 }
 
-src_compile () {
+src_configure() {
 
 	# It would fail if -fforce-addr is used due to too few registers...
 	use x86 && filter-flags -fforce-addr
@@ -358,8 +363,6 @@ src_compile () {
 		$(vlc_use_enable_force vlm vlm sout) \
 		$(vlc_use_enable_force skins skins2 qt4) \
 		$(vlc_use_enable_force remoteosd remoteosd libgcrypt)
-
-	emake || die "make of VLC failed"
 }
 
 src_install() {
