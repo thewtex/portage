@@ -1,9 +1,9 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-board/pokerth/pokerth-0.6.3.ebuild,v 1.6 2009/06/11 17:16:45 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-board/pokerth/pokerth-0.6.3.ebuild,v 1.7 2009/07/17 08:13:02 mr_bones_ Exp $
 
 EAPI=2
-inherit eutils qt4 games
+inherit multilib flag-o-matic eutils qt4 games
 
 MY_P="PokerTH-${PV}-2-src"
 DESCRIPTION="Texas Hold'em poker game"
@@ -31,19 +31,6 @@ DEPEND="
 
 S=${WORKDIR}/${MY_P}
 
-pkg_setup() {
-	games_pkg_setup
-	if has_version '>=dev-libs/boost-1.35.0-r5:0' ; then
-		local boost_ver=$(f=$(eselect boost show | tail -n1); echo $f)
-
-		if [[ "$boost_ver" != "boost-1_35" ]] ; then
-			ewarn "${P} requires boost to be set to version 1_35"
-			ewarn "use eselect to set boost to the required version"
-			die "Incorrect boost version currently selected (currently $boost_ver)"
-		fi
-	fi
-}
-
 src_prepare() {
 	if use dedicated ; then
 		sed -i \
@@ -55,6 +42,14 @@ src_prepare() {
 		-e '/no_dead_strip_inits_and_terms/d' \
 		*pro \
 		|| die 'sed failed'
+	append-cxxflags \
+		-I/usr/include/boost-1_35 \
+		-I/usr/include/boost-1_34 \
+		-I/usr/include/boost-1_33
+	append-ldflags \
+		-L/usr/$(get_libdir)/boost-1_35 \
+		-L/usr/$(get_libdir)/boost-1_34 \
+		-L/usr/$(get_libdir)/boost-1_33
 }
 
 src_configure() {

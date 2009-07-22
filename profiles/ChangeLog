@@ -1,10 +1,80 @@
 # ChangeLog for profile directory
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.2908 2009/07/14 16:41:28 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.2930 2009/07/20 23:27:58 vostorga Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  20 Jul 2009; Víctor Ostorga <vostorga@gentoo.org> package.mask:
+  Totally broken ebuild, make does not die, cp is used 
+  instead of dobin, CFLAGS and LDFLAGS are not respected
+
+  20 Jul 2009; Christian Faulhammer <fauli@gentoo.org> package.mask:
+  unmask emul packages for amd64, as requested by Pacho Ramos <pacho AT
+  condmat1 DOT ciencias DOT uniovi DOT es> on bug 254577
+
+  20 Jul 2009; Patrick McLean <chutzpah@gentoo.org> use.local.desc:
+  Add "dhcp" USE flag for net-dns/dnsmasq
+
+  20 Jul 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask x11-misc/xfkc for removal since it doesn't compile wrt #278466 and
+  because it's codebase has been merged into xfwm4 and xfce4-xkb.
+
+  19 Jul 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask media-sound/bmpx for removal wrt #277421.
+
+  19 Jul 2009; Torsten Veller <tove@gentoo.org> package.mask:
+  Mask Compress-Zlib, IO-Compress-Zlib, IO-Compress-Bzip2, IO-Compress-Base.
+  IO-Compress replaces them
+
+  19 Jul 2009; Lennart Kolmodin <kolmodin@gentoo.org> package.mask:
+  Remove hard mask on dev-lang/ghc-bin as the package finally has been
+  removed.
+
+  19 Jul 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask orphaned libraries ofbis and smjpeg wrt #247961.
+
+  19 Jul 2009; Lennart Kolmodin <kolmodin@gentoo.org> package.mask:
+  Remove hard mask on dev-lang/ghc-6.8.2-r1.
+  This ebuild is attempting to solve the trouble in bug #259867.
+
+  19 Jul 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask sidplay and streamixer for removal wrt #98769, #272602 and #273342.
+
+  19 Jul 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  media-sound/glame is no more wrt #274956.
+
+  18 Jul 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Unmask net-print/pnm2ppa by multiple user requests at bug 248171.
+
+  18 Jul 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask x11-libs/gtk-server for removal (again) since it doesn't compile and
+  maintainers don't care wrt #222235.
+
+  17 Jul 2009; Jeroen Roovers <jer@gentoo.org> package.mask:
+  Tweak www-client/opera-10.00* mask to exclude 4492 (beta2).
+
+  17 Jul 2009; Fabian Groffen <grobian@gentoo.org> desc/elibc.desc:
+  Fix description, thanks mraudsepp
+
+  16 Jul 2009; Petteri Räty <betelgeuse@gentoo.org> package.mask:
+  Remove mask on dev-java/cacao as we have a working version in tree.
+
+  16 Jul 2009; Rémi Cardona <remi@gentoo.org> desc/video_cards.desc:
+  remove double "nouveau" entry, sort list
+
+  16 Jul 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Mask leif, eimil and csconv too.
+
+  16 Jul 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask, use.desc:
+  Mask media-libs/ladcca for removal as it's replaced by media-sound/lash.
+  Remove USE ladcca since it's replaced by USE lash.
+
+  15 Jul 2009; Ben de Groot <yngwin@gentoo.org>
+  arch/powerpc/ppc64/package.use.mask:
+  Mask dillo useflag on claws-mail as current dillo version is unkeyworded on
+  ppc64 (bug 253083)
 
   14 Jul 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
   Mask jscalltree.

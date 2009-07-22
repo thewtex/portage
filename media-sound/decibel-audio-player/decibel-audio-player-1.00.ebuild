@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/decibel-audio-player/decibel-audio-player-1.00.ebuild,v 1.4 2009/07/01 21:45:11 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/decibel-audio-player/decibel-audio-player-1.00.ebuild,v 1.6 2009/07/19 15:19:51 nixnut Exp $
 
 DESCRIPTION="A GTK+ audio player which aims at being very straightforward to use."
 HOMEPAGE="http://decibel.silent-blade.org"
@@ -8,8 +8,8 @@ SRC_URI="http://decibel.silent-blade.org/uploads/Main/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ppc64 ~sparc x86"
-IUSE="aac cdaudio gnome libnotify musepack"
+KEYWORDS="amd64 ppc ppc64 ~sparc x86"
+IUSE="aac cdaudio gnome-keyring libnotify musepack"
 
 RDEPEND="media-libs/mutagen
 		dev-python/dbus-python
@@ -20,7 +20,7 @@ RDEPEND="media-libs/mutagen
 		cdaudio? ( || ( media-plugins/gst-plugins-cdio
 				media-plugins/gst-plugins-cdparanoia )
 					dev-python/cddb-py )
-		gnome? ( dev-python/gnome-python-desktop )
+		gnome-keyring? ( dev-python/gnome-keyring-python )
 		libnotify? ( dev-python/notify-python )
 		musepack? ( media-plugins/gst-plugins-musepack )"
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4633 2009/07/14 21:47:52 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4650 2009/07/20 20:27:44 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -1006,6 +1006,7 @@ dev-util/subversion:webdav-serf - Enable WebDAV support using net-libs/serf
 dev-util/svk:log4p - Enable perl logger support
 dev-util/svk:pager - Enable perl pager selection support
 dev-util/svk:patch - Enable patch creation, import support
+dev-util/universalindentgui:html - Add support for HTML files
 games-action/abuse:demo - Use the demo data instead of the full game
 games-action/abuse:levels - Install user-created levels (fRaBs)
 games-action/abuse:sounds - Install optional sound data
@@ -1335,6 +1336,7 @@ mail-client/mail-notification:sylpheed - Enable support for MH mailboxes used by
 mail-client/mozilla-thunderbird:mozdom - Enable Mozilla's DOM inspector
 mail-client/mozilla-thunderbird:moznopango - Disable x11-libs/pango during runtime
 mail-client/mozilla-thunderbird:replytolist - Enable x11-plugins/replytolist plugin
+mail-client/mutt:gpg - Enable support for app-crypt/gpgme
 mail-client/mutt:gpgme - Enable support for app-crypt/gpgme
 mail-client/mutt:pop - Enable support for pop
 mail-client/mutt:sidebar - Use the vanilla tree + sidebar patch
@@ -1610,6 +1612,7 @@ media-plugins/audacious-plugins:tta - Build with TTA (True-Audio Loseless) suppo
 media-plugins/audacious-plugins:wma - Build with WMA (Windows Media Audio) support
 media-plugins/frei0r-plugins:facedetect - Enables building of facedetect plugin, which depends on media-libs/opencv 
 media-plugins/frei0r-plugins:scale0tilt - Enables building of scale0tilt and vectorscope plugins, which depend on media-libs/gavl 
+media-plugins/gkrellmpc:threads - Use separate thread to init connection (unsafe)
 media-plugins/gst-plugins-meta:mythtv - Support for retrieval from media-tv/mythtv backend
 media-plugins/kipi-plugins:linguas_zn_CN - Add zn_CN lingua suppport
 media-plugins/kipi-plugins:mjpeg - Add mjpeg suppport
@@ -1688,7 +1691,8 @@ media-sound/cmus:wma - add support for Windows Media Audio
 media-sound/cmus:zsh-completion - enable zsh completion support
 media-sound/crip:normalize - Enable for being able to normalize ripped tracks
 media-sound/darkice:twolame - Build with twolame support
-media-sound/decibel-audio-player:cdaudio - Adds support for CD audio playback and lookups via CDDB
+media-sound/decibel-audio-player:cdaudio - Adds support for CD audio playback and lookups via CDDB.
+media-sound/decibel-audio-player:gnome-keyring - Adds support for storing your Last.fm password using gnome-keyring.
 media-sound/dir2ogg:wma - Add support for wma files through mplayer
 media-sound/easytag:mp4 - Support for MP4 container format
 media-sound/esound:static-libs - Compile static archives
@@ -1709,6 +1713,7 @@ media-sound/jack-audio-connection-kit:cpudetection - Enables runtime cpudetectio
 media-sound/jack-audio-connection-kit:netjack - Build with support for Realtime Audio Transport over generic IP
 media-sound/lame:mp3rtp - Build the mp3-to-RTP streaming utility. **UNSUPPORTED**
 media-sound/listen:libsexy - Enable libsexy support
+media-sound/listen:webkit - Enable webkit rendering engine instead of mozembed
 media-sound/lmms:fluidsynth - Enables Fluidsynth MIDI software synthesis plugin.
 media-sound/lmms:stk - Enables STK Mallet plugin.
 media-sound/lmms:vst - Enables the VeSTige plugin to run VST plugins through Wine.
@@ -2216,6 +2221,7 @@ net-dns/djbdns:multidata - Enables command line parameters for tinydns-data to s
 net-dns/djbdns:multipleip - Enables multi-IP patch
 net-dns/djbdns:roundrobin - Enables round robin patch
 net-dns/djbdns:semanticfix - Makes tinydns=data handle more semantic errors
+net-dns/dnsmasq:dhcp - Enable support for reading ISC DHCPd lease files
 net-dns/dnsmasq:isc - Enable support for reading ISC DHCPd lease files
 net-dns/dnsmasq:tftp - Enables built in TFTP server for netbooting
 net-dns/maradns:authonly - Allows one to build only authoritative DNS server
@@ -2372,6 +2378,7 @@ net-irc/kvirc:qt-dbus - enable use of Qt's DBUS interface for IPC
 net-irc/kvirc:qt-webkit - enable use of Qt's WebKit
 net-irc/kvirc:transparency - compile in fake-transparency
 net-irc/ngircd:ident - Enables support for net-libs/libident
+net-irc/psybnc:multinetwork - Adds support for multiple networks
 net-irc/psybnc:oidentd - Adds support for oidentd
 net-irc/psybnc:scripting - Adds scripting support
 net-irc/quassel:X -  Build the Qt 4 GUI client for quassel. If this USE flag is disabled, the GUI is not built, and cannot be used. You might want to disable this on the server, but you need it enabled on the client. 
@@ -2748,7 +2755,6 @@ net-voip/ekiga:shm - Enable the Shared Memory Extension from libXext
 net-voip/ekiga:sip - Enable Session Initiation Protocol
 net-voip/ekiga:static - Statically link to opal and ptlib
 net-voip/ekiga:xcap - Enable XML Configuration Access Protocal
-net-voip/linphone:console - Build console interface
 net-voip/linphone:video - Enable video support (display/capture)
 net-voip/yate:h323 - Build H.323 Channel plugin
 net-voip/yate:ilbc - Build ILBC codec plugin
@@ -2842,8 +2848,7 @@ sci-geosciences/gmt:gmthigh - Add high resolution bathymetry database
 sci-geosciences/gmt:gmtsuppl - Supplement functions for GMT
 sci-geosciences/gmt:gmttria - Non GNU triangulation method, more efficient
 sci-geosciences/gpsd:garmin - Enable support for Garmin simple text protocol
-sci-geosciences/gpsd:italk - Enable iTalk protocol support
-sci-geosciences/gpsd:itrax - Enable iTrax hardware support
+sci-geosciences/gpsd:minimal - Reduced install set, limited number of devices and client, no X deps
 sci-geosciences/gpsd:ntp - Enable net-misc/ntp shared memory interface and PPS kernel support for GPS time
 sci-geosciences/gpsd:ocean - Enable OceanServer support
 sci-geosciences/gpsd:tntc - Enable True North Technologies digital compass support
@@ -3282,8 +3287,8 @@ www-client/seamonkey:xforms - XForms is a standard to split up XHTML into XForms
 www-client/w3m:lynxkeymap - If you prefer Lynx-like key binding
 www-misc/vdradmin-am:vdr -  Support for media-video/vdr. Disable this if the VDR you want to control runs at a remote machine. 
 www-misc/xxv:themes - Enable more themes via x11-themes/xxv-skins
-www-misc/zoneminder:X10 - Enable support for X10 devices
-www-plugins/adobe-flash:32bit - For amd64-multilib, installs the 32-bit plugin alongside the native 64-bit plugin
+www-plugins/adobe-flash:32bit - For amd64-multilib, installs the 32-bit plugin
+www-plugins/adobe-flash:64bit - For amd64-multilib, installs the native 64-bit plugin
 www-plugins/gnash:agg - Rendering based on the Anti-Grain Geometry Rendering Engine library
 www-plugins/mplayerplug-in:divx - Divx Playback Support
 www-plugins/mplayerplug-in:gmedia - Google Media Playback Support
@@ -3300,6 +3305,7 @@ www-servers/lighttpd:webdav - Enable webdav properties
 www-servers/nginx:addition - Enables HTTP addition filter module
 www-servers/nginx:flv - Enables special processing module for flv files
 www-servers/nginx:random-index - Enables HTTP random index module
+www-servers/nginx:securelink - Enable HTTP secure link module
 www-servers/nginx:status - Enables stub_status module
 www-servers/nginx:sub - Enables sub_filter module
 www-servers/nginx:webdav - Enable webdav support
@@ -3313,6 +3319,7 @@ x11-base/xorg-server:dmx - Build the Distributed Multiheaded X server
 x11-base/xorg-server:kdrive - Build the kdrive X servers
 x11-base/xorg-server:tslib - Build with tslib support for touchscreen devices
 x11-base/xorg-server:xorg - Build the Xorg X server (HIGHLY RECOMMENDED)
+x11-drivers/ati-drivers:modules - Build the kernel modules
 x11-drivers/linuxwacom:module - Build kernel module
 x11-libs/agg:gpc - Enable gpc polygon clipper library
 x11-libs/cairo:cleartype - Add ClearType-style behavior for sub-pixel hinting. Patch taken from Arch Linux
@@ -3359,6 +3366,7 @@ x11-misc/fspanel:xft - Build with support for XFT font renderer (x11-libs/libXft
 x11-misc/google-gadgets:soup - Enables XML HTTP request extension based on net-libs/libsoup
 x11-misc/google-gadgets:webkit - Enables browser element and script runtime based on net-libs/webkit-gtk
 x11-misc/notification-daemon-xfce:xfce - Enable integration in XFCE desktop
+x11-misc/rednotebook:libyaml - enable libyaml support
 x11-misc/slim:screenshot - Enable screenshot support (using media-gfx/imagemagick)
 x11-misc/tint2:battery - Enable battery status plugin
 x11-misc/tint2:examples - Install tint2rc examples
@@ -3431,6 +3439,7 @@ x11-wm/stumpwm:sbcl - Use SBCL for the runtime
 x11-wm/vtwm:rplay - Enable rplay support, needed for sound.
 x11-wm/windowmaker:modelock - Enable XKB language status lock support. README says: "If you don't know what it is you probably don't need it."
 x11-wm/windowmaker:vdesktop - Enable dynamic virtual desktop (conflicts with software that works on the edges of the screen)
+xfce-base/libxfcegui4:glade - Build glade bindings
 xfce-base/thunar:trash-plugin - Build Trash plug-in for panel
 xfce-base/xfce-utils:lock - Enable screen locking
 xfce-base/xfce4-extras:battery - Meta pulls in xfce-extra/xfce4-battery depend
@@ -3442,3 +3451,4 @@ xfce-base/xfdesktop:menu-plugin - Build Menu plug-in for panel
 xfce-extra/thunar-thumbnailers:grace - Enable support for sci-visualization/grace thumbnails
 xfce-extra/xfce4-mpc:libmpd - Build using media-libs/libmpd backend, instead of native fallback which is preferred
 xfce-extra/xfce4-power-manager:xfce - Build Xfce4 panel plugins
+xfce-extra/xfce4-screenshooter:zimagez - Optional support to host screenshots on ZimageZ, a free online image service

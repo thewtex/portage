@@ -1,20 +1,20 @@
-|| ( virtual/httpd-cgi virtual/httpd-fastcgi ) =virtual/httpd-php-5* dev-util/subversion net-misc/rsync >=app-admin/webapp-config-1.50.15 dev-util/subversion net-misc/rsync
+|| ( virtual/httpd-cgi virtual/httpd-fastcgi ) =virtual/httpd-php-5* >=app-admin/webapp-config-1.50.15
 dev-perl/DBI dev-perl/DBD-mysql =virtual/httpd-php-5* >=app-admin/webapp-config-1.50.15
 0.21_p17573
-
+http://svn.mythtv.org/trac/changeset/17573/branches/release-0-21-fixes/mythplugins?old_path=%2F&format=zip -> mythplugins-0.21_p17573.zip
 
 http://www.mythtv.org
 GPL-2
 PHP scripts intended to manage MythTV from a web browser.
 amd64 ppc x86
-depend.php eutils multilib mythtv phpconfutils portability subversion toolchain-funcs versionator webapp
+depend.php eutils multilib mythtv phpconfutils portability toolchain-funcs versionator webapp
 vhosts
 
 
 
+2
 
-
-compile install postinst preinst prerm setup unpack
+compile configure install postinst prerm setup
 
 
 
