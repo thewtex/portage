@@ -1,10 +1,10 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/cython/cython-0.11.2.ebuild,v 1.5 2009/07/17 18:18:24 nixnut Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/cython/cython-0.11.2.ebuild,v 1.7 2009/07/23 01:34:14 darkside Exp $
 
 NEED_PYTHON="2.2"
 
-inherit distutils
+inherit distutils flag-o-matic
 
 MY_PN="Cython"
 MY_P="${MY_PN}-${PV}"
@@ -15,7 +15,7 @@ SRC_URI="http://www.cython.org/${MY_P}.tar.gz"
 
 LICENSE="PSF-2.4"
 SLOT="0"
-KEYWORDS="~amd64 hppa ~ia64 ppc ~ppc64 sparc x86"
+KEYWORDS="amd64 hppa ~ia64 ppc ~ppc64 sparc x86"
 IUSE="doc examples"
 
 DEPEND=""
@@ -25,6 +25,13 @@ S="${WORKDIR}/${MY_P}"
 
 PYTHON_MODNAME="${MY_PN}"
 DOCS="ToDo.txt USAGE.txt"
+
+pkg_setup() {
+	if use amd64; then
+		# Tests fail with some optimizations.
+		replace-flags -O[2-9s]* -O1
+	fi
+}
 
 src_install() {
 	distutils_src_install

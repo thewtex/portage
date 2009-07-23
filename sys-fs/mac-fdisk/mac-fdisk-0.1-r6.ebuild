@@ -1,6 +1,6 @@
-# Copyright 1999-2007 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/mac-fdisk/mac-fdisk-0.1-r6.ebuild,v 1.9 2007/06/25 15:58:51 josejx Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/mac-fdisk/mac-fdisk-0.1-r6.ebuild,v 1.10 2009/07/22 15:18:55 josejx Exp $
 
 inherit eutils toolchain-funcs
 
@@ -16,6 +16,7 @@ KEYWORDS="amd64 ppc ppc64 x86"
 IUSE=""
 
 DEPEND=""
+RDEPEND="${DEPEND}"
 
 src_unpack() {
 	unpack mac-fdisk_${PV}.orig.tar.gz
@@ -27,10 +28,10 @@ src_unpack() {
 	epatch "${FILESDIR}"/${P}-headers.patch
 
 	### Patch for bug #142737
-	epatch ${FILESDIR}/${PN}-0.1-r6-ppc64.patch
+	epatch "${FILESDIR}"/${PN}-0.1-r6-ppc64.patch
 
 	### Patch for building on amd64
-	epatch ${FILESDIR}/${PN}-amd64.patch
+	epatch "${FILESDIR}"/${PN}-amd64.patch
 }
 
 src_compile() {
