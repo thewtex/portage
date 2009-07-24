@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/evolution/evolution-2.26.2.ebuild,v 1.4 2009/06/15 03:55:22 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-client/evolution/evolution-2.26.2.ebuild,v 1.5 2009/07/23 21:02:16 eva Exp $
 
 EAPI="2"
 
@@ -12,7 +12,8 @@ HOMEPAGE="http://www.gnome.org/projects/evolution/"
 LICENSE="GPL-2 FDL-1.1"
 SLOT="2.0"
 KEYWORDS="~alpha ~amd64 ~hppa ~ppc64 ~x86 ~x86-fbsd"
-IUSE="crypt dbus hal kerberos krb4 ldap mono networkmanager nntp pda profile python ssl gstreamer exchange pst"
+IUSE="crypt dbus hal kerberos krb4 ldap mono networkmanager nntp pda profile python ssl gstreamer exchange"
+# pst
 
 # Pango dependency required to avoid font rendering problems
 RDEPEND=">=dev-libs/glib-2.18
@@ -31,7 +32,6 @@ RDEPEND=">=dev-libs/glib-2.18
 	>=x11-misc/shared-mime-info-0.22
 	dbus? ( dev-libs/dbus-glib )
 	hal? ( >=sys-apps/hal-0.5.4 )
-	pst? ( net-mail/libpst )
 	x11-libs/libnotify
 	pda? (
 		>=app-pda/gnome-pilot-2.0.15
@@ -43,7 +43,7 @@ RDEPEND=">=dev-libs/glib-2.18
 	networkmanager? ( net-misc/networkmanager )
 	>=net-libs/libsoup-2.4
 	kerberos? ( virtual/krb5 )
-	krb4? ( virtual/krb5[krb4] )
+	krb4? ( app-crypt/mit-krb5[krb4] )
 	>=gnome-base/orbit-2.9.8
 	crypt? ( || ( >=app-crypt/gnupg-2.0.1-r2 =app-crypt/gnupg-1.4* ) )
 	ldap? ( >=net-nds/openldap-2 )
@@ -52,6 +52,8 @@ RDEPEND=">=dev-libs/glib-2.18
 	gstreamer? (
 		>=media-libs/gstreamer-0.10
 		>=media-libs/gst-plugins-base-0.10 )"
+# Disabled until API stabilizes
+#	pst? ( >=net-mail/libpst-0.6 )
 
 DEPEND="${RDEPEND}
 	>=dev-util/pkgconfig-0.16
@@ -80,7 +82,7 @@ pkg_setup() {
 		$(use_enable dbus)
 		$(use_enable gstreamer audio-inline)
 		$(use_enable exchange)
-		$(use_enable pst pst-import)
+		--disable-pst-import
 		$(use_enable pda pilot-conduits)
 		$(use_enable profile profiling)
 		$(use_enable python)
