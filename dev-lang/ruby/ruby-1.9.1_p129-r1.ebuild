@@ -15,8 +15,7 @@ SLOT=$(get_version_component_range 1-2)
 # 1.9.1.0 -> 1.9.1 (used in libdirs)
 RUBYVERSION=$(get_version_component_range 1-3)
 
-# 1.9 -> 19
-MY_SUFFIX=$(delete_version_separator 1 ${SLOT})
+MY_SUFFIX=${SLOT}
 
 DESCRIPTION="An object-oriented scripting language"
 HOMEPAGE="http://www.ruby-lang.org/"
@@ -24,7 +23,7 @@ SRC_URI="mirror://ruby/${MY_P}.tar.bz2"
 
 LICENSE="|| ( Ruby GPL-2 )"
 KEYWORDS="~amd64 ~x86 ~x86-fbsd"
-IUSE="berkdb debug doc emacs examples gdbm ipv6 rubytests socks5 ssl tk xemacs"
+IUSE="berkdb debug +doc emacs examples gdbm ipv6 rubytests socks5 ssl tk xemacs"
 
 RDEPEND="
 	berkdb? ( sys-libs/db )
@@ -32,7 +31,7 @@ RDEPEND="
 	ssl? ( dev-libs/openssl )
 	socks5? ( >=net-proxy/dante-1.1.13 )
 	tk? ( dev-lang/tk[threads] )
-	>=app-admin/eselect-ruby-20080921
+	>=app-admin/eselect-ruby-20090723
 	!=dev-lang/ruby-cvs-${SLOT}*
 	!<dev-ruby/rdoc-2
 	!dev-ruby/rexml"
@@ -61,11 +60,12 @@ src_prepare() {
 	# Patch for rubygems to find installed gems outside of the sandbox
 	epatch "${FILESDIR}/ruby19-rubygems-gentoo.patch"
 
-	epatch "${FILESDIR}/${PN}${MY_SUFFIX}-mkmf-parallel-install.patch"
+	epatch "${FILESDIR}/ruby19-mkmf-parallel-install.patch"
 
 	epatch "${FILESDIR}"/${P}-gfbsd7.patch
 	epatch "${FILESDIR}"/${P}-no-undefined-ext.patch
 	epatch "${FILESDIR}"/${P}-parallelmake.patch
+	epatch "${FILESDIR}"/ruby-1.9.1-ri-path-fix.patch
 
 	# Strip rake
 	rm "bin/rake"
@@ -129,7 +129,7 @@ src_test() {
 		elog "than root, and you must place them into a writeable directory."
 		elog "Then call: "
 		elog
-		elog "ruby19 -C /location/of/tests runner.rb"
+		elog "ruby1.9 -C /location/of/tests runner.rb"
 	else
 		elog "Enable the rubytests USE flag to install the make check tests"
 	fi
