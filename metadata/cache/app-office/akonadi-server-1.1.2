@@ -1,5 +1,5 @@
-x11-libs/qt-core:4 x11-libs/qt-dbus:4 x11-libs/qt-sql:4[mysql?] x11-libs/qt-test:4 x11-misc/shared-mime-info >=dev-util/cmake-2.6.0 dev-libs/boost dev-libs/libxslt >=kde-base/automoc-0.9.88 >=dev-util/cmake-2.6.2-r1 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
-x11-libs/qt-core:4 x11-libs/qt-dbus:4 x11-libs/qt-sql:4[mysql?] x11-libs/qt-test:4 x11-misc/shared-mime-info
+dev-libs/boost >=x11-libs/qt-core-4.5.0:4 >=x11-libs/qt-dbus-4.5.0:4 >=x11-libs/qt-sql-4.5.0:4[mysql?] x11-misc/shared-mime-info dev-libs/libxslt >=kde-base/automoc-0.9.88 >=dev-util/cmake-2.6.2-r1 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+dev-libs/boost >=x11-libs/qt-core-4.5.0:4 >=x11-libs/qt-dbus-4.5.0:4 >=x11-libs/qt-sql-4.5.0:4[mysql?] x11-misc/shared-mime-info
 0
 http://download.akonadi-project.org/akonadi-1.1.2.tar.bz2
 
@@ -7,14 +7,14 @@ http://pim.kde.org/akonadi
 LGPL-2.1
 The server part of Akonadi
 ~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~x86
-base cmake-utils eutils flag-o-matic multilib portability qt4 toolchain-funcs versionator
+base cmake-utils eutils flag-o-matic multilib portability toolchain-funcs
 +mysql
 
 
 
 2
 
-compile configure install prepare setup test unpack
+compile configure install postinst prepare test unpack
 
 
 

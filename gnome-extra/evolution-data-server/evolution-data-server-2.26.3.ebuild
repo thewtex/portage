@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-extra/evolution-data-server/evolution-data-server-2.26.3.ebuild,v 1.1 2009/07/20 21:50:54 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/evolution-data-server/evolution-data-server-2.26.3.ebuild,v 1.2 2009/07/22 21:21:52 eva Exp $
 
 EAPI="2"
 
@@ -78,6 +78,14 @@ src_prepare() {
 	# Fix hang while updating search folders, bug #277864, upstream bug #583507
 	epatch "${FILESDIR}/${PN}-2.26.3-camel-vee-folder.patch"
 
+	if use doc; then
+		sed "/^TARGET_DIR/i \GTKDOC_REBASE=/usr/bin/gtkdoc-rebase" \
+			-i gtk-doc.make || die "sed 1 failed"
+	else
+		sed "/^TARGET_DIR/i \GTKDOC_REBASE=$(type -P true)" \
+			-i gtk-doc.make || die "sed 2 failed"
+	fi
+
 	# gtk-doc-am and gnome-common needed for this
 	intltoolize --force --copy --automake || die "intltoolize failed"
 	eautoreconf
@@ -106,7 +114,6 @@ src_install() {
 		doins "${FILESDIR}"/calentry.schema || die "doins failed"
 		dosym "${D}"/usr/share/${PN}-${MY_MAJORV}/evolutionperson.schema /etc/openldap/schema/evolutionperson.schema
 	fi
-
 }
 
 pkg_postinst() {
