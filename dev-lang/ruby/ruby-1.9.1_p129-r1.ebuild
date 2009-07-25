@@ -65,6 +65,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/${P}-gfbsd7.patch
 	epatch "${FILESDIR}"/${P}-no-undefined-ext.patch
 	epatch "${FILESDIR}"/${P}-parallelmake.patch
+	epatch "${FILESDIR}"/${P}-parallelmake2.patch
 	epatch "${FILESDIR}"/ruby-1.9.1-ri-path-fix.patch
 
 	# Strip rake
