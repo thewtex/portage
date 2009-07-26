@@ -4,7 +4,7 @@
 
 DESCRIPTION="ssh-agent manager"
 HOMEPAGE="http://www.gentoo.org/proj/en/keychain/"
-SRC_URI="mirror://gentoo/${P}.tar.bz2 http://www.funtoo.org/archive/${P}.tar.bz2"
+SRC_URI="http://www.funtoo.org/archive/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
