@@ -57,6 +57,7 @@ src_prepare() {
 
 	epatch "${FILESDIR}"/ruby-1.9.1_p129-no-undefined-ext.patch
 	epatch "${FILESDIR}"/ruby-1.9.1_p129-parallelmake.patch
+	epatch "${FILESDIR}"/ruby-1.9.1_p129-parallelmake2.patch
 
 	# Strip rake
 	rm "bin/rake"

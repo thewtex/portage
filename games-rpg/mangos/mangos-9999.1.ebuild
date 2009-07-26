@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-rpg/mangos/mangos-9999.1.ebuild,v 1.2 2009/02/14 14:14:25 trapni Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-rpg/mangos/mangos-9999.1.ebuild,v 1.4 2009/07/23 01:10:43 trapni Exp $
 
 # TODO:
 # - make use of system's zlib/zthread ebuilds instead of mangos' packaged
@@ -54,7 +54,7 @@ pkg_setup() {
 		die "Both useflags - mysql and postgres - has been specified. Choose one of them only!"
 	fi
 	enewgroup mangos
-	enewuser mangos
+	enewuser mangos -1 -1 -1 "mangos"
 }
 
 ## unpacks SD2 (ScriptDev2) into mangos workdir
@@ -91,8 +91,8 @@ src_compile() {
 	ECONF_SOURCE=.. econf \
 		--with-gnu-ld \
 		${myconf} \
-		--prefix=${PREFIX} \
-		--sysconfdir=${SYSCONFDIR} \
+		--prefix="${PREFIX}" \
+		--sysconfdir="${SYSCONFDIR}" \
 		$(use_with mysql) \
 		$(use_with postgres postgresql) \
 		$(use_enable cli) \
