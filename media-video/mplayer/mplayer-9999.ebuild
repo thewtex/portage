@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/mplayer/mplayer-9999.ebuild,v 1.8 2009/06/21 19:02:38 beandog Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/mplayer/mplayer-9999.ebuild,v 1.9 2009/07/24 22:46:58 beandog Exp $
 
 EAPI="2"
 
@@ -11,16 +11,16 @@ inherit eutils flag-o-matic multilib ${SVN_ECLASS}
 
 [[ ${PV} != *9999* ]] && MPLAYER_REVISION=29330
 
-IUSE="3dnow 3dnowext +a52 +aac aalib +alsa altivec +amrnb +amrwb arts +ass
-bidi bindist bl +cddb +cdio cdparanoia -cpudetection -custom-cflags
--custom-cpuopts debug dga +dirac directfb doc +dts +dv dvb +dvd +dvdnav dxr3
-+enca +encode esd +faac +faad fbcon +ftp -gif ggi -gtk +iconv ipv6 jack
-joystick +jpeg kernel_linux ladspa -libcaca lirc +live lzo +mad +md5sum +mmx
-mmxext mng +mp2 +mp3 musepack nas +nemesi +network openal opengl osdmenu oss +png +pnm
-pulseaudio -pvr +quicktime radio +rar +real +rtc -samba
-+schroedinger sdl +shm +speex sse sse2 ssse3 svga teletext tga +theora +tremor
+IUSE="3dnow 3dnowext +a52 +aac aalib +alsa altivec +ass
+bidi bindist bl +cddb +cdio cdparanoia cpudetection custom-cflags
+custom-cpuopts debug dga +dirac directfb doc +dts +dv dvb +dvd +dvdnav dxr3
++enca +encode esd +faac +faad fbcon ftp gif ggi -gmplayer +iconv ipv6 jack
+joystick jpeg kernel_linux ladspa libcaca lirc +live lzo mad md5sum +mmx
+mmxext mng +mp2 +mp3 musepack nas +nemesi +network nut openal +opengl +osdmenu
+oss png pnm pulseaudio pvr +quicktime radio +rar +real +rtc samba +shm
++schroedinger sdl +speex sse sse2 ssse3 svga teletext tga +theora +tremor
 +truetype +unicode v4l v4l2 vdpau vidix +vorbis win32codecs X +x264 xanim
-xinerama xscreensaver +xv +xvid +xvmc zoran"
+xinerama xscreensaver +xv +xvid xvmc zoran"
 
 VIDEO_CARDS="s3virge mga tdfx nvidia vesa"
 
@@ -68,8 +68,6 @@ RDEPEND="sys-libs/ncurses
 	X? ( ${X_RDEPS} )
 	aalib? ( media-libs/aalib )
 	alsa? ( media-libs/alsa-lib )
-	amrnb? ( media-libs/amrnb )
-	amrwb? ( media-libs/amrwb )
 	ass? ( ${FONT_RDEPS} )
 	bidi? ( dev-libs/fribidi )
 	cdio? ( dev-libs/libcdio )
@@ -393,8 +391,6 @@ src_configure() {
 	myconf="${myconf} --disable-liba52"
 
 	use aac || myconf="${myconf} --disable-faad-internal"
-	use amrnb || myconf="${myconf} --disable-libamr_nb"
-	use amrwb || myconf="${myconf} --disable-libamr_wb"
 	use dirac || myconf="${myconf} --disable-libdirac-lavc"
 	use dts || myconf="${myconf} --disable-libdca"
 	use dv || myconf="${myconf} --disable-libdv"

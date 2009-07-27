@@ -16,7 +16,7 @@ joystick jpeg kernel_linux ladspa libcaca lirc +live lzo mad md5sum +mmx
 mmxext mng +mp2 +mp3 musepack nas +nemesi +network nut openal +opengl +osdmenu
 oss png pnm pulseaudio pvr +quicktime radio +rar +real +rtc samba +shm
 +schroedinger sdl +speex sse sse2 ssse3 svga teletext tga +theora +tremor
-+truetype +unicode v4l v4l2 vdpau vidix +vorbis win32codecs +X +x264 xanim
++truetype +unicode v4l v4l2 vdpau vidix +vorbis win32codecs X +x264 xanim
 xinerama +xscreensaver +xv +xvid xvmc zoran"
 
 VIDEO_CARDS="s3virge mga tdfx nvidia vesa"

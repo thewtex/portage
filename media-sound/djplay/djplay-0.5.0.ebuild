@@ -1,6 +1,6 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/djplay/djplay-0.5.0.ebuild,v 1.2 2008/07/27 21:21:45 carlo Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/djplay/djplay-0.5.0.ebuild,v 1.6 2009/07/24 06:46:12 aballier Exp $
 
 EAPI=1
 
@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="audiofile cdparanoia mad mpeg" #sdl
 #Upstream declared that the sdl use flag won't be supported until version 0.7.0
 
-DEPEND="media-libs/alsa-lib
+RDEPEND="media-libs/alsa-lib
 	x11-libs/qt:3
 	=dev-libs/glib-1.2*
 	media-libs/libsamplerate
@@ -34,15 +34,22 @@ DEPEND="media-libs/alsa-lib
 	mad? ( media-libs/libmad )
 	mpeg? ( media-libs/libmpeg3 )"
 	#sdl? ( media-libs/libsdl )
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}
+	dev-util/pkgconfig
+	sys-devel/gettext"
 
 src_unpack() {
 	unpack ${A}
 	cd "${S}"
 	epatch "${FILESDIR}/${P}-configure.ac.patch"
 	epatch "${FILESDIR}/${P}-libmpeg3.patch"
+	epatch "${FILESDIR}/${P}-gcc44.patch"
 
-	eautoconf || die "eautoconf failed"
+	# Stolen from enlightenment.eclass
+	cp $(type -p gettextize) "${T}/" || die "Could not copy gettextize"
+	sed -i -e 's:read dummy < /dev/tty::' "${T}/gettextize"
+	"${T}/gettextize" -f --no-changelog || die "gettexize failed"
+	eautoreconf
 }
 
 src_compile() {
@@ -61,7 +68,7 @@ src_compile() {
 	|| die "econf failed"
 		#$(use_with sdl video) \
 
-	emake || die "emake failed"
+	PATH="${QTDIR}/bin:$PATH" emake || die "emake failed"
 }
 
 src_install() {
