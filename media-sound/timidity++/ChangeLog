@@ -1,6 +1,21 @@
 # ChangeLog for media-sound/timidity++
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/timidity++/ChangeLog,v 1.121 2009/06/25 18:21:11 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/timidity++/ChangeLog,v 1.123 2009/07/24 08:38:23 ssuominen Exp $
+
+  24 Jul 2009; Samuli Suominen <ssuominen@gentoo.org>
+  timidity++-2.13.2-r11.ebuild, +files/timidity++-2.13.2-params.patch:
+  Fix building with --params flag wrt #276433, thanks to Andrew Savchenko,
+  Arttu Valo and Robert Cernansky.
+
+*timidity++-2.13.2-r11 (24 Jul 2009)
+
+  24 Jul 2009; Samuli Suominen <ssuominen@gentoo.org>
+  +timidity++-2.13.2-r11.ebuild, +files/conf.d.timidity.2,
+  +files/timidity.desktop.2:
+  LADSPA_PATH is now configurable from inside conf.d/timidity wrt #204713,
+  thanks to Adam Nielsen. Revert -polling.patch since it breaks realtime
+  playing with FluidR3 soundfont wrt #275198. Desktop entry now prefers GTK+
+  frontend if available wrt #207311.
 
   25 Jun 2009; Raúl Porcel <armin76@gentoo.org>
   timidity++-2.13.2-r10.ebuild:
