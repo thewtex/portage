@@ -1,12 +1,12 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/pilercr/pilercr-1.0.ebuild,v 1.1 2009/07/25 21:41:49 weaver Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/pilercr/pilercr-1.0.ebuild,v 1.3 2009/07/27 05:45:13 weaver Exp $
 
 EAPI="2"
 
 inherit eutils toolchain-funcs
 
-DESCRIPTION="Analysis of repetitive DNA found in genome sequences"
+DESCRIPTION="Analysis of Clustered Regularly Interspaced Short Palindromic Repeats (CRISPRs)"
 HOMEPAGE="http://www.drive5.com/pilercr/"
 #SRC_URI="http://www.drive5.com/pilercr/pilercr.tar.gz"
 SRC_URI="mirror://gentoo/${P}.tar.gz"

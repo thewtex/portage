@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/vlc/vlc-9999.ebuild,v 1.26 2009/07/24 12:02:47 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/vlc/vlc-9999.ebuild,v 1.28 2009/07/27 07:14:05 aballier Exp $
 
 EAPI="2"
 
@@ -110,7 +110,8 @@ RDEPEND="
 		mp3? ( media-libs/libmad )
 		mpeg? ( >=media-libs/libmpeg2-0.3.2 )
 		mtp? ( >=media-libs/libmtp-0.3.0 )
-		musepack? ( media-libs/libmpcdec )
+		musepack? ( || ( >=media-sound/musepack-tools-444
+			media-libs/libmpcdec ) )
 		ncurses? ( sys-libs/ncurses )
 		nsplugin? (
 			seamonkey?  ( =www-client/seamonkey-1* )
@@ -163,7 +164,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dvb? ( sys-kernel/linux-headers )
 	v4l? ( sys-kernel/linux-headers )
-	v4l2? ( sys-kernel/linux-headers )
+	v4l2? ( >=sys-kernel/linux-headers-2.6.25 )
 	X? ( xinerama? ( x11-proto/xineramaproto ) )
 	xcb? ( x11-proto/xproto )
 	dev-util/pkgconfig"
