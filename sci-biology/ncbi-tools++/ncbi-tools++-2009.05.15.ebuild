@@ -1,13 +1,13 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/ncbi-tools++/ncbi-tools++-2009.05.15.ebuild,v 1.1 2009/07/27 05:26:29 weaver Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/ncbi-tools++/ncbi-tools++-2009.05.15.ebuild,v 1.3 2009/07/27 14:52:41 weaver Exp $
 
 EAPI="2"
 
 inherit multilib
 
 MY_TAG="May_15_2009"
-MY_Y="${TAG/*_/}"
+MY_Y="${MY_TAG/*_/}"
 MY_P="ncbi_cxx--${MY_TAG}"
 
 DESCRIPTION="NCBI C++ Toolkit"
@@ -77,4 +77,6 @@ src_install() {
 	# File collisions with sci-biology/ncbi-tools
 	rm -f "${D}"/usr/bin/{asn2asn,rpsblast,test_regexp}
 	rm -f "${D}"/usr/$(get_libdir)/libblast.a
+	# File collision with openrc. NCBI probably needs a subdirectory in /usr/lib
+	rm -f "${D}"/usr/$(get_libdir)/libeinfo.a
 }
