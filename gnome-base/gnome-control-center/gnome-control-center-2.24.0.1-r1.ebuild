@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-base/gnome-control-center/gnome-control-center-2.24.0.1-r1.ebuild,v 1.2 2009/04/27 14:02:14 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-base/gnome-control-center/gnome-control-center-2.24.0.1-r1.ebuild,v 1.3 2009/07/27 00:03:27 eva Exp $
 
 EAPI="1"
 
@@ -28,7 +28,7 @@ RDEPEND="x11-libs/libXft
 	>=x11-wm/metacity-2.23.1
 	>=gnome-base/gnome-panel-2.0
 	>=gnome-base/libgnomekbd-2.21.4.1
-	>=gnome-base/gnome-desktop-2.23.90
+	>=gnome-base/gnome-desktop-2.26
 	>=gnome-base/gnome-menus-2.11.1
 	gnome-base/eel
 	gnome-base/gnome-settings-daemon
