@@ -41,16 +41,14 @@ index bbc15c2..e54d1b2 100644
  /**
   * lookup_one_len - filesystem helper to lookup single pathname component
 diff --git a/fs/namespace.c b/fs/namespace.c
-index 06f8e63..b002ec3 100644
+index 06f8e63..f71793e 100644
 --- a/fs/namespace.c
 +++ b/fs/namespace.c
-@@ -37,6 +37,9 @@
+@@ -37,6 +37,7 @@
  
  /* spinlock for vfsmount related operations, inplace of dcache_lock */
  __cacheline_aligned_in_smp DEFINE_SPINLOCK(vfsmount_lock);
-+#ifdef CONFIG_AUFS_EXPORT
 +EXPORT_SYMBOL(vfsmount_lock);
-+#endif
  
  static int event;
  static DEFINE_IDA(mnt_id_ida);
@@ -119,19 +117,6 @@ index 6ce5014..af66b69 100644
  
  /**
   *	generic_shutdown_super	-	common helper for ->kill_sb()
-diff --git a/include/linux/lockdep.h b/include/linux/lockdep.h
-index 23bf02f..49e5b47 100644
---- a/include/linux/lockdep.h
-+++ b/include/linux/lockdep.h
-@@ -58,7 +58,7 @@ enum lock_usage_bit
- #define LOCKF_USED_IN_IRQ_READ \
- 		(LOCKF_USED_IN_HARDIRQ_READ | LOCKF_USED_IN_SOFTIRQ_READ)
- 
--#define MAX_LOCKDEP_SUBCLASSES		8UL
-+#define MAX_LOCKDEP_SUBCLASSES		12UL
- 
- /*
-  * Lock-classes are keyed via unique addresses, by embedding the
 diff --git a/include/linux/namei.h b/include/linux/namei.h
 index fc2e035..182d43b 100644
 --- a/include/linux/namei.h
@@ -174,7 +159,7 @@ index 3aacd0f..b900dc3 100644
  int devcgroup_inode_mknod(int mode, dev_t dev)
  {
 diff --git a/security/security.c b/security/security.c
-index c3586c0..8b0495f 100644
+index c3586c0..9841a3e 100644
 --- a/security/security.c
 +++ b/security/security.c
 @@ -389,6 +389,7 @@ int security_path_mkdir(struct path *path, struct dentry *dentry, int mode)
@@ -248,4 +233,12 @@ index c3586c0..8b0495f 100644
 +EXPORT_SYMBOL(security_inode_permission);
  
  int security_inode_setattr(struct dentry *dentry, struct iattr *attr)
+ {
+@@ -620,6 +629,7 @@ int security_file_permission(struct file *file, int mask)
+ {
+ 	return security_ops->file_permission(file, mask);
+ }
++EXPORT_SYMBOL(security_file_permission);
+ 
+ int security_file_alloc(struct file *file)
  {
