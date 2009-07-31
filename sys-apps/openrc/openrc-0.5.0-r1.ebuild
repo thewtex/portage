@@ -112,10 +112,6 @@ add_init_mit_config() {
 pkg_preinst() {
 	local f
 
-	# if /etc/conf.d/net already exists, don't install our blank template.
-	mv "${D}"/etc/conf.d/net "${T}"/
-	[[ -e ${ROOT}/etc/conf.d/net ]] && cp "${ROOT}"/etc/conf.d/net "${T}"/
-
 	# upgrade timezone file ... do it before moving clock
 	if [[ -e ${ROOT}/etc/conf.d/clock && ! -e ${ROOT}/etc/timezone ]] ; then
 		(
@@ -246,14 +242,6 @@ pkg_postinst() {
 		add_init $runl $( cd "$runldir/$runl"; echo * )
 	done
 
-	[[ -e ${T}/net && ! -e ${ROOT}/etc/conf.d/net ]] && mv "${T}"/net "${ROOT}"/etc/conf.d/net
-
-	# set up symlink to net.example if net.example doesn't exist
-	if [[ ! -e ${ROOT}/etc/conf.d/net.example ]] && [[ -e ${ROOT}/usr/share/doc/openrc-${PVR}/net.example ]]
-	then
-		ln -s /usr/share/doc/openrc-${PVR}/net.example ${ROOT}/etc/conf.d/net.example || die "couldn't create net.example symlink"
-	fi
-
 	# SEE IF WE CAN UPGRADE /etc/inittab automatically
 	# ================================================
 
@@ -271,7 +259,7 @@ pkg_postinst() {
 	# ===========
 
 	# update the dependency tree bug #224171
-	[[ "${ROOT}" = "/" ]] && "${ROOT}/${LIBDIR}"/rc/bin/rc-depend -u
+	[[ "${ROOT}" = "/" ]] && "${ROOT}/libexec"/rc/bin/rc-depend -u
 
 	if [[ -d ${ROOT}/etc/modules.autoload.d ]] ; then
 		ewarn "/etc/modules.autoload.d is no longer used.  Please convert"
