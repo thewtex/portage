@@ -13,11 +13,6 @@ app-emulation/wine dbus hal ldap nas scanner gnutls
 # Disabling gcj flag, no gcc-4.3.1 yet
 dev-java/eclipse-ecj gcj
 
-# 2007/03/17 - Petteri Räty <betelgeuse@gentoo.org>
-# (Proxying for Diego Pettenò <flameeyes@gmail.com>)
-# ASIHPI driver is supported on 64-bit systems for newer versions
-<media-sound/alsa-driver-1.0.14_rc3 alsa_cards_asihpi
-
 # missing the necessary linux-headers dep
 >=net-fs/netatalk-2.0.3-r3 xfs
 
@@ -25,11 +20,6 @@ dev-java/eclipse-ecj gcj
 # jamvm needs ffi on amd64
 # https://bugs.gentoo.org/show_bug.cgi?id=213882
 dev-java/jamvm libffi
-
-# Doug Goldstein <cardoe@gentoo.org> (9 Sep 2008)
-# mask vdr USE flag for media-tv/zapping since it depends on media-libs/rte
-# which is only available on x86
-media-tv/zapping vdr
 
 # Dawid Węgliński <cla@gentoo.org>
 # Mask amarok2 useflag for net-im/kadu
@@ -41,8 +31,6 @@ net-im/kadu amarok2
 # Vlastimil Babka <caster@gentoo.org> (12 Dec 2008)
 # finally a 64bit java plugin
 >=dev-java/sun-jdk-1.6.0.12_beta2 -nsplugin
-# but not on 1.7 yet
-=dev-java/sun-jdk-1.7*
 
 # Serkan Kaba <serkan@gentoo.org> (5 Feb 2009)
 # finally a 64bit java plugin
@@ -103,4 +91,3 @@ net-irc/xchat-gnome mmx
 net-misc/asterisk mmx
 x11-terms/eterm mmx
 media-tv/xawtv mmx
-

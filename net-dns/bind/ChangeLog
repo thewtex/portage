@@ -1,6 +1,33 @@
 # ChangeLog for net-dns/bind
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-dns/bind/ChangeLog,v 1.236 2009/07/28 23:40:01 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dns/bind/ChangeLog,v 1.242 2009/07/30 20:03:08 josejx Exp $
+
+  30 Jul 2009; Joseph Jezak <josejx@gentoo.org> bind-9.4.3_p3.ebuild:
+  Marked ppc/ppc64 stable for bug #279508.
+
+*bind-9.5.1_p3 (30 Jul 2009)
+
+  30 Jul 2009; Tobias Scherbaum <dertobi123@gentoo.org>
+  -bind-9.5.1_p2.ebuild, +bind-9.5.1_p3.ebuild:
+  Version bump
+
+  29 Jul 2009; Markus Meier <maekke@gentoo.org> bind-9.4.3_p3.ebuild:
+  x86 stable, bug #279508
+
+  29 Jul 2009; Christian Ruppert <idl0r@gentoo.org> bind-9.6.1_p1.ebuild:
+  Fix epatch.
+
+*bind-9.6.1_p1 (29 Jul 2009)
+
+  29 Jul 2009; Christian Ruppert <idl0r@gentoo.org> -bind-9.6.1.ebuild,
+  +bind-9.6.1_p1.ebuild:
+  Version bump to 9.6.1_p1 due to CVE-2009-0696, bug 279508.
+
+  29 Jul 2009; <chainsaw@gentoo.org> bind-9.4.3_p3.ebuild:
+  Marked stable on AMD64 as requested by Robert Buchholz <rbu@gentoo.org> in
+  security bug #279508. Tested with USE="berkdb idn ipv6 ldap resolvconf ssl 
+  threads urandom -dlz -doc -mysql -odbc -postgres (-selinux)" on a Core2 
+  Duo.
 
   28 Jul 2009; Jeroen Roovers <jer@gentoo.org> bind-9.4.3_p3.ebuild:
   Stable for HPPA (bug #279508).
