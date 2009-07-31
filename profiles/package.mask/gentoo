@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10176 2009/07/30 18:02:10 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10186 2009/07/31 12:17:41 ssuominen Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -206,10 +206,10 @@ app-admin/haskell-updater
 # Rc releases should be masked
 =media-video/griffith-0.10_rc*
 
-# Samuli Suominen <ssuominen@gentoo.org> (21 Jul 2009)
-# Security problems. Internal copies of vulnerable libraries,
-# such as libpng. See, http://bugs.gentoo.org/show_bug.cgi?id=251492
-# Masked for removal.
+# Maintainer Needed <maintainer-needed@gentoo.org> (21 Jul 2009)
+# Security issues with bundled libraries.
+# See, http://bugs.gentoo.org/show_bug.cgi?id=251492
+# Waiting for TeamSpeak 3 to be released.
 media-sound/teamspeak2-server-bin
 media-sound/teamspeak2-client-bin
 
@@ -583,11 +583,10 @@ net-fs/samba-server
 sys-apps/realtime-lsm
 
 # Ulrich Mueller <ulm@gentoo.org> (21 Jun 2009)
-# Emacs 23 live CVS ebuilds and packages depending on them.
-~app-editors/emacs-cvs-23.0.9999
+# Emacs 23 live CVS ebuilds and packages depending on them plus some
+# prerequisite works for Emacs 24
 ~app-editors/emacs-cvs-23.1.9999
->=virtual/emacs-23
-app-emacs/emacs-daemon
+>=virtual/emacs-24
 
 # Diego E. Pettenò <flameeyes@gentoo.org> (21 Jun 2009)
 #  on behalf of QA Team
@@ -731,15 +730,6 @@ media-libs/freeimage
 # leave a comment at bug 272593.
 app-text/remem
 
-# Diego E. Pettenò <flameeyes@gentoo.org> (05 Jun 2009)
-# Broken PAM setup, causes sys-libs/pam to fail install because of
-# pam_console requirements. See bug #210820.  Fix it or punt it, it's
-# not my problem.
-# Jeremy Olexa <darkside@gentoo.org> (3 Jul 2009)
-# Critical to fix before unmasking, no interest in fixing so removed in 30 days.
-# bug 210820
-media-tv/zapping
-
 # Alexey Shvetsov <alexxy@gentoo.org> (04 Jun 2009)
 # Mask kde4 printing stuff
 >=kde-base/printer-applet-4.2.4
@@ -855,18 +845,13 @@ dev-haskell/haskell-platform
 # Beta version
 =net-proxy/squid-3.1*
 
-# Federico Ferri <mescalinum@gentoo.org> (24 Apr 2009)
-# Unmasking tcl/tk 8.5
->=dev-lang/tcl-8.5.9999
->=dev-lang/tk-8.5.9999
-
 # Jeroen Roovers <jer@gentoo.org> (21 Apr 2009)
 # Masked until out of beta
 =dev-libs/libevent-2*
 
 # Doug Goldstein <cardoe@gentoo.org> (19 Apr 2009)
 # developing ebuild for phoronix-test-suite
-app-benchmark/phoronix-test-suite
+app-benchmarks/phoronix-test-suite
 
 # Benedikt Böhm <hollow@gentoo.org> (19 Apr 2009)
 # masked for testing
@@ -924,11 +909,6 @@ app-portage/udept
 # Upstream is very unresponsive and we had to guess at which kernel patch was
 # needed. May not work and/or may be harmful. You have been warned.
 sys-apps/sreadahead
-
-# Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org> (21 Mar 2009)
-# Masked because of the dep on =x11-libs/qt-4.3*:4. Waiting for jokey
-# feedback to determine whether to remove it or fix the dep
-=dev-util/qgit-2.0-r1
 
 # Alex Legler <a3li@gentoo.org> (20 Mar 2009)
 # Ruby 1.9.1 for preliminary testing of libraries depending on it, bug 203706.
@@ -1061,12 +1041,6 @@ dev-util/w32api
 media-video/realplayer
 media-libs/amd64codecs
 media-libs/realcodecs
-
-# Markus Dittrich <markusle@gentoo.org> (28 Oct 2008)
-# New upstream version is currently masked due to an interface
-# glitch with Qt-4.4.2 that needs to be looked at (bug #243362)
-# Qt-4.3 users should probably be fine.
-=sci-visualization/paraview-3.4.0
 
 # Alexis Ballier <aballier@gentoo.org> (15 Oct 2008)
 # Needs testing
@@ -1319,11 +1293,6 @@ games-fps/doomsday-resources
 # Live Subversion ebuild until pending first upstream release
 =games-mud/wxmud-9999
 
-# Christian Hoffmann <hoffie@gentoo.org> (27 Dec 2007)
-# broken (leads to random segfaults); masked until someone steps up to
-# maintain it or it will finally get removed
-dev-php5/php-java-bridge
-
 # Ulrich Mueller <ulm@gentoo.org> (21 Dec 2007)
 # Christian Faulhammer <fauli@gentoo.org>
 # CVS snapshots.
@@ -1390,11 +1359,6 @@ dev-php5/php-java-bridge
 #   Mask for testing.
 =net-fs/sfs-0.8.0_pre20070512
 
-# Ryan Hill <dirtyepic@gentoo.org> (29 Apr 2007)
-#  Has a hard dependency on wxGTK-2.4 (bug #121818)
-#  Masked until we can update it for 2.6.
-app-pda/plucker
-
 # Tristan Heaven <nyhm@gentoo.org> (25 Apr 2007)
 # Masked until it's updated to use >=wxpython-2.6
 # https://bugs.gentoo.org/show_bug.cgi?id=115079
@@ -1418,10 +1382,6 @@ games-rpg/openrpg
 >=net-analyzer/nessus-core-2.3.1
 >=net-analyzer/nessus-plugins-2.3.1
 >=net-analyzer/nessus-2.3.1
-
-# Piotr Jaroszyński <peper@gentoo.org> (28 Mar 2006)
-# Unusable for now.
-app-pda/libopensync-plugin-synce
 
 # Mike Doty <kingtaco@gentoo.org> (24 Mar 2007)
 # Sorting out media-video/{spca5xx,gspca{,v1}} bug 159176
