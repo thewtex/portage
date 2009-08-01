@@ -15,6 +15,9 @@ IUSE="build"
 PDEPEND="sys-apps/openrc"
 
 pkg_preinst() {
+
+	modfix
+
 	# We need to install directories and maybe some dev nodes when building
 	# stages, but they cannot be in CONTENTS.
 	# Also, we cannot reference $S as binpkg will break so we do this.
@@ -107,7 +110,7 @@ src_compile() {
 	return 0
 }
 
-pkg_preinst() {
+modfix() {
 	local mod
 
 	# We want to move any old modprobe.d conf files to the new file name so
