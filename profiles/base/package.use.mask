@@ -76,24 +76,18 @@ app-portage/gatt libpaludis
 # Mask bluetooth for the KDE 3.5.8 stabilisation.
 app-pda/pilot-link bluetooth
 
-# Christian Faulhammer
-# mask so stable users can avoid bluetooth
-=media-sound/pulseaudio-0.9.9 bluetooth
-
 # Christian Hoffmann <hoffie@gentoo.org> (27 Dec 2007)
-# the related dependency (dev-php5/php-java-bridge) is masked as well
+# Missing dev-php5/php-java-bridge
 dev-lang/php java-external
 
 # Saleem Abdulrasool <compnerd@gentoo.org> (23 Nov 2007)
 # Unmask when we get HAL 0.5.10 straightened out
 media-sound/pulseaudio policykit
-=media-sound/pulseaudio-0.9.9 policykit
 
 # Donnie Berkholz <dberkholz@gentoo.org> (12 Nov 2007)
 # freedesktop.org bug #7459 committed fix breaks 3D apps
 # but "fix" is only relevant on USE=nptl
 =media-libs/mesa-7.0* nptl
-=x11-base/xorg-server-1.4* nptl
 
 # Robert Buchholz <rbu@gentoo.org> (29 Aug 2007)
 # PPTP Plugin doesn't work on amd64
@@ -122,10 +116,6 @@ sys-apps/acl nfs
 # only works on x86, where this will be unmasked
 dev-java/ibm-jdk-bin alsa
 dev-java/ibm-jre-bin alsa
-
-# Sven Wegener <swegener@gentoo.org> (17 Feb 2008)
-# Needed depenencies have been removed from the tree
-dev-db/mysql-gui-tools workbench
 
 # Alexis Ballier <aballier@gentoo.org> (17 Sep 2008)
 # Requires a x86-compatible architecture in order to run the binary plugins
@@ -156,3 +146,8 @@ media-video/mplayer cpudetection custom-cpuopts bindist vdpau
 # Alexis Ballier <aballier@gentoo.org> (07 Jul 2009)
 # The pda interface doesnt build, bug #277037
 >=media-video/vlc-1.0.0 pda
+
+# Samuli Suominen <ssuominen@gentoo.org> (31 Jul 2009)
+# Security issues wrt #190835
+games-fps/doom-data doomsday
+games-fps/freedoom doomsday

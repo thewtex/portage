@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/phonon-kde/phonon-kde-4.2.4.ebuild,v 1.1 2009/06/04 13:49:25 alexxy Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/phonon-kde/phonon-kde-4.2.4.ebuild,v 1.4 2009/07/31 14:20:52 scarabeus Exp $
 
 EAPI="2"
 
@@ -38,8 +38,9 @@ src_prepare() {
 
 src_configure() {
 	mycmakeargs="${mycmakeargs}
+		$(cmake-utils_use_with alsa)
 		$(cmake-utils_use_with pulseaudio PulseAudio)
-		$(cmake-utils_use_with xine Xine)"
+		$(cmake-utils_use_with xine)"
 
 	kde4-meta_src_configure
 }

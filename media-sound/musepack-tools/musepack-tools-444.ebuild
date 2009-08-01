@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/musepack-tools/musepack-tools-444.ebuild,v 1.6 2009/07/27 07:05:07 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/musepack-tools/musepack-tools-444.ebuild,v 1.9 2009/07/31 13:18:19 ssuominen Exp $
 
 inherit cmake-utils
 
@@ -13,7 +13,7 @@ SRC_URI="mirror://gentoo/${P}.tar.bz2"
 
 LICENSE="BSD LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~hppa ~x86 ~x86-fbsd"
 IUSE=""
 
 RDEPEND=">=media-libs/libcuefile-${PV}
@@ -24,9 +24,13 @@ DEPEND="${RDEPEND}
 
 PATCHES=( "${FILESDIR}/${P}-gentoo.patch" )
 
+pkg_setup() {
+	mycmakeargs="-DSHARED=ON"
+}
+
 src_install() {
 	cmake-utils_src_install
-	insinto /usr/include/mpc
-	doins include/mpc/*.h || die "doins failed"
 	dosym mpc /usr/include/mpcdec || die "dosym failed"
+	# Forgot to remove .svn directories from snapshot.
+	rm -rf "${D}"/usr/include/mpc/.svn || die "rm -rf failed"
 }

@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4683 2009/07/28 23:07:43 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4692 2009/07/31 12:47:48 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -33,7 +33,11 @@ app-admin/conky:bmpx - enable monitoring of audio tracks that are playing media-
 app-admin/conky:apcupsd - enable support for sys-power/apcupsd
 app-admin/conky:audacious - enable monitoring of music played by media-sound/audacious
 app-admin/conky:bmpx - enable monitoring of music played by media-sound/bmpx
+app-admin/conky:iostats - enable support for per-task I/O statistics
 app-admin/conky:ipv6 - disable support for tcp (ip4) port monitoring
+app-admin/conky:lua - enable if you want Lua scripting support
+app-admin/conky:lua-cairo - enable if you want Lua Cairo bindings for Conky (also anables lua support)
+app-admin/conky:lua-imlib - enable if you want Lua Imlib2 bindings for Conky (also enables lua and imlib support)
 app-admin/conky:math - enable support for glibc's libm math library
 app-admin/conky:moc - enable monitoring of music played by media-sound/moc
 app-admin/conky:mpd - enable monitoring of music controlled by media-sound/mpd
@@ -42,6 +46,8 @@ app-admin/conky:nvidia - enable reading of nvidia card temperature sensors via m
 app-admin/conky:portmon - enable support for tcp (ip4) port monitoring
 app-admin/conky:smapi - enable support for smapi
 app-admin/conky:thinkpad - enable support for IBM/Lenovo notebooks
+app-admin/conky:weather-metar - enable support for metar weather service
+app-admin/conky:weather-xoap - enable support for metar and xoap weather service
 app-admin/diradm:automount - Support for automount data in LDAP
 app-admin/diradm:irixpasswd - Support for storing separate IRIX passwords
 app-admin/gkrellm:X - Build both the X11 gui (gkrellm) and the server (gkrellmd). Disabling this flag builds the server only.
@@ -194,7 +200,6 @@ app-editors/joe:xterm - Enable full xterm clipboard support
 app-editors/jove:unix98 - Use Unix 98 pty's instead of BSD pts's
 app-editors/leafpad:emacs - Enable Emacs key theme
 app-editors/nano:justify - Toggle the justify option
-app-editors/nvu:moznoxft - Placeholder until mozilla eclass is modified for nvu
 app-editors/tea:enchant - Enable spell checking using enchant
 app-editors/tea:hacking - Enable hacking support
 app-editors/vim:vim-pager - Install vimpager and vimmanpager links
@@ -336,6 +341,7 @@ app-i18n/tomoe:hyperestraier - Enable support for app-text/hyperestraier
 app-i18n/uim:anthy - Enable support for app-i18n/anthy input method 
 app-i18n/uim:eb - Enable support for dev-libs/eb
 app-i18n/uim:prime - Enable support for app-i18n/prime
+app-laptop/ibam:gkrellm - Enable building of app-admin/gkrellm module
 app-laptop/kthinkbat:smapi - Use extended ThinkPad battery info exported via SMAPI BIOS by app-laptop/tp_smapi
 app-laptop/laptop-mode-tools:scsi - Adds dependency on sdparm to control non-SATA SCSI drivers
 app-laptop/pbbuttonsd:ibam - Enable support for Intelligent Battery Monitoring
@@ -1037,6 +1043,7 @@ games-action/d2x-rebirth:mpu401 - Enable MPU401 music support
 games-action/xshipwars:yiff - Add support for the YIFF sound server
 games-arcade/bomns:editor - enables building the level editor
 games-arcade/lbreakout2:themes - Install additional themes
+games-arcade/moleinvasion:music - Download and install the music files
 games-arcade/stepmania:force-oss - force using OSS
 games-arcade/triplexinvaders:psyco - psyco python accelerator
 games-arcade/ultrastar-ng:songs - Install a few demo songs
@@ -1180,6 +1187,7 @@ games-strategy/x2:modkit - Install the modkit
 games-misc/fretsonfire:guitarhero - Enable Guitar Hero song importer
 games-misc/fretsonfire:psyco - Enable psyco python accelerator
 games-util/bsp:dmalloc - Enable debugging with the dmalloc library
+games-util/gslist:web - Enable the web interface
 gnome-base/gdm:consolekit - Allow proper handling of removable media according to who is actually present on the machine.
 gnome-base/gdm:dmx - Enables Distributed Multihead X (DMX) support
 gnome-base/gdm:remote - Enables support for secure remote connections
@@ -1783,6 +1791,7 @@ media-sound/pulseaudio:glib - Enable glib eventloop support
 media-sound/pulseaudio:gnome -  Use GConf to store user preferences on streams and so on. Don't enable this flag if you want to use a system wide instance. If unsure, enable this flag. 
 media-sound/pulseaudio:oss -  Enable OSS sink/source (output/input). Also build the padsp script to make OSS software use PulseAudio. 
 media-sound/pulseaudio:policykit - Enable support for PolicyKit framework.
+media-sound/pulseaudio:udev -  Use sys-fs/udev for autodiscovery of sound devices; this replaces the deprecated sys-apps/hal autodiscovery code. 
 media-sound/qmmp:bs2b - Enable Bauer stereophonic-to-binaural DSP library
 media-sound/qmmp:projectm - Enable projectm music visualization plugin
 media-sound/qmmp:scrobbler - Enable audioscrobbler/last.fm support
@@ -1887,8 +1896,6 @@ media-tv/xmltv:tv_pick_cgi - enable CGI support
 media-tv/xmltv:uk_bleb - Britain tv listing grabber
 media-tv/xmltv:uk_rt - Britain alternative tv listing grabber
 media-tv/xmltv:za - South Africa tv listing grabber
-media-tv/zapping:vdr - Enable Real Time Encoding support (librte)
-media-tv/zapping:zvbi - Enable VBI Decoding Library
 media-video/avidemux:aften - Enable A/52 (AC-3) audio encoder support
 media-video/avidemux:amrnb - Enable Narrow Band Adaptive Multi-Rate Audio support
 media-video/chaplin:transcode - Enable DVD ripping and transcoding
@@ -2586,7 +2593,6 @@ net-misc/gvpe:http-proxy - Enables http-proxy transport support
 net-misc/gvpe:icmp - Enables icmp transport support
 net-misc/gvpe:tcp - Enables tcp transport support
 net-misc/gwget:epiphany - Build epiphany extensions
-net-misc/hamachi:pentium - Add support for older Pentium based systems
 net-misc/htbinit:esfq - Add support for Enhanced Stochastic Fairness queueing discipline.
 net-misc/hylafax:faxonly - Don't depend on mgetty-fax
 net-misc/hylafax:html - Adds HTML documentation
@@ -2766,8 +2772,11 @@ net-voip/ekiga:sip - Enable Session Initiation Protocol
 net-voip/ekiga:static - Statically link to opal and ptlib
 net-voip/ekiga:xcap - Enable XML Configuration Access Protocal
 net-voip/linphone:video - Enable video support (display/capture)
+net-voip/yate:amrnb -  Enables Adaptive Multi-Rate Audio support (Narrow Band) 
 net-voip/yate:h323 - Build H.323 Channel plugin
 net-voip/yate:ilbc - Build ILBC codec plugin
+net-voip/yate:sctp -  Support for Stream Control Transmission Protocol 
+net-voip/yate:spandsp - Enable support for the spandsp codec
 net-voip/yate:zaptel - Build zaptel Channel plugin
 net-wireless/blueman:network - Add functionality to setup (host) PAN connections using either net-dns/dnsmasq or net-misc/dhcp
 net-wireless/bluez:old-daemons - Install old daemons like hidd and sdpd that are deprecated by the new Service framework
@@ -3215,7 +3224,6 @@ sys-libs/glibc:linuxthreads-tls - Configure the linuxthreads glibc with --with-_
 sys-libs/glibc:nptlonly - Disables building the linuxthreads fallback in glibc ebuilds that support building both linuxthread and nptl
 sys-libs/glibc:userlocales - Build only the locales specified in /etc/locales.build
 sys-libs/libraw1394:juju - Use the new juju firewire stack in the Linux kernel
-sys-libs/libuser:quotas - Enables support for user quotas
 sys-libs/ncurses:ada - Add bindings for the ADA programming language
 sys-libs/ncurses:trace - Enable test trace() support in ncurses calls
 sys-libs/pam:audit - Enable support for sys-process/audit
