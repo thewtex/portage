@@ -4,7 +4,7 @@
 
 inherit eutils flag-o-matic multilib toolchain-funcs
 
-SRC_URI="http://www.funtoo.org/archive/openrc/openrc-funtoo-2009.07.24.tar.bz2"
+SRC_URI="http://www.funtoo.org/archive/openrc/openrc-funtoo-2009.08.01.tar.bz2"
 DESCRIPTION="OpenRC manages the services, startup and shutdown of a host"
 HOMEPAGE="http://roy.marples.name/openrc"
 PROVIDE="virtual/baselayout"
@@ -78,10 +78,10 @@ src_install() {
 	doins ${FILESDIR}/inittab-openrc.patch
 	
 	# Setup unicode defaults for silly unicode users
-	use unicode && sed -i -e '/^unicode=/s:NO:YES:' "${D}"/etc/rc.conf
+	use unicode && sed -i -e '/^.*unicode=/s:^.*"NO":unicode="YES":' "${D}"/etc/rc.conf
 
 	# Cater to the norm
-	(use x86 || use amd64) && sed -i -e '/^windowkeys=/s:NO:YES:' "${D}"/etc/conf.d/keymaps
+	(use x86 || use amd64) && sed -i -e '/^.*windowkeys=/s:^.*"NO":windowkeys="YES":' "${D}"/etc/conf.d/keymaps
 }
 
 add_init() {
