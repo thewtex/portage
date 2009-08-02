@@ -1,6 +1,20 @@
 # ChangeLog for Gentoo base-profile
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/base/ChangeLog,v 1.85 2009/07/31 23:50:19 darkside Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/base/ChangeLog,v 1.89 2009/08/01 15:24:18 beandog Exp $
+
+  01 Aug 2009; Steve Dibb <beandog@gentoo.org> use.mask:
+  Remove old realcodecs use flag
+
+  01 Aug 2009; Steve Dibb <beandog@gentoo.org> make.defaults:
+  Remove midi from make.defaults, as its been removed from alsa-* and
+  reverse deps, bug 272659
+
+  01 Aug 2009; Steve Dibb <beandog@gentoo.org> package.use.force:
+  Remove temporary force of +midi on media-sound/alsa-lib
+
+  01 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> package.use.force:
+  Force USE midi in alsa-lib for old versions since the checks in ebuilds
+  are gone.
 
   31 Jul 2009; Jeremy Olexa <darkside@gentoo.org> package.use.mask:
   mask gnome use flag for abiword-plugins-2.4.6 as it pulls in a GLSA affected
