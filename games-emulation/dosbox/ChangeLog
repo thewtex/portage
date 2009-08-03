@@ -1,6 +1,16 @@
 # ChangeLog for games-emulation/dosbox
-# Copyright 2002-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-emulation/dosbox/ChangeLog,v 1.43 2009/05/27 23:03:02 mr_bones_ Exp $
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/dosbox/ChangeLog,v 1.45 2009/08/01 23:41:55 chainsaw Exp $
+
+  01 Aug 2009; <chainsaw@gentoo.org> dosbox-0.73.ebuild:
+  Marked stable on AMD64 as requested by Michael "Mr. Bones" Sterrett
+  <mr_bones_@gentoo.org> in bug #279864. Tested with Pinball Fantasies (full
+  screen, 3000 cycles) on a dual hex-core Opteron with USE="alsa opengl
+  -debug -hardened".
+
+  01 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> dosbox-0.72.ebuild,
+  dosbox-0.73.ebuild:
+  Remove USE depend for media-libs/alsa-lib[midi].
 
 *dosbox-0.73 (27 May 2009)
 
