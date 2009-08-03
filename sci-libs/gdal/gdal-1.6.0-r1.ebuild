@@ -1,9 +1,9 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/gdal/gdal-1.6.0-r1.ebuild,v 1.2 2009/08/01 16:56:11 nerdboy Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/gdal/gdal-1.6.0-r1.ebuild,v 1.3 2009/08/03 03:49:06 nerdboy Exp $
 
 WANT_AUTOCONF="2.5"
-inherit autotools distutils eutils perl-module toolchain-funcs
+inherit autotools distutils eutils perl-module ruby toolchain-funcs
 
 DESCRIPTION="GDAL is a translator library for raster geospatial data formats (includes OGR support)"
 HOMEPAGE="http://www.gdal.org/"
@@ -54,6 +54,8 @@ DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )"
 
 AT_M4DIR="${S}/m4"
+USE_RUBY="ruby18"
+RUBY_OPTIONAL="yes"
 
 pkg_setup() {
 	if [ -n "${GDAL_CONFIGURE_OPTS}" ]; then
@@ -74,7 +76,7 @@ src_unpack() {
 	epatch "${FILESDIR}"/${PN}-1.4.2-datadir.patch \
 	    "${FILESDIR}"/${PN}-1.5.0-soname.patch \
 	    "${FILESDIR}"/${PN}-1.5.1-python-install.patch \
-	    "${FILESDIR}"/${P}-ruby-make.patch \
+	    "${FILESDIR}"/${PN}-1.6.1-ruby-make.patch \
 	    "${FILESDIR}"/${P}-swig-fix.patch \
 	    "${FILESDIR}"/${P}-mysql_ogr_header.patch \
 	    || die "sed failed"
@@ -136,7 +138,7 @@ src_compile() {
 	fi
 
 	# Fix doc path just in case
-	sed -i -e "s:@exec_prefix@/doc:/usr/share/doc/${PF}/html:g" \
+	sed -i -e "s:@exec_prefix@/doc:@exec_prefix@/share/doc/${PF}/html:g" \
 	    GDALmake.opt.in || die "sed gdalmake.opt failed"
 
 	econf ${pkg_conf} ${use_conf} || die "econf failed"

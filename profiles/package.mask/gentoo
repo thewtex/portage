@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10196 2009/08/01 20:35:36 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10199 2009/08/03 01:54:49 pebenito Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -31,9 +31,17 @@
 
 #--- END OF EXAMPLES ---
 
-# Samuli Suominen <ssuominen@gentoo.org> (01 Aug 2009)
+# Chris PeBenito <pebenito@gentoo.org> (02 Aug 2009)
+# Masked for removal.  These policies have been
+# in selinux-base-policy for a long time.
+sec-policy/selinux-lvm
+sec-policy/selinux-mdadm
+
+# Samuli Suominen <ssuominen@gentoo.org> (02 Aug 2009)
 # Outdated. Needs Xfce 4.4 style xfce-mcs-manager.
+# Use notification-daemon or xfce4-notifyd.
 xfce-extra/gsynaptics-mcs-plugin
+x11-misc/notification-daemon-xfce
 
 # Steve Dibb <beandog@gentoo.org> (01 Aug 2009)
 # Mask for removal, name change to app-text/xiphos
@@ -347,12 +355,6 @@ sys-apps/lkcp
 # Removed in ~60 days by treecleaners. Nothing uses it. Upstream doesn't care
 # about it, unmaintained. Comment on bug 246960
 app-text/dgs
-
-# Víctor Ostorga <vostorga@gentoo.org> (10 Jul 2009)
-# media-video/mpeg4ip doesn't build wrt #274284
-# mpeg4ip is obsolete, libmp4v2 got new upstream.
-# Removal scheduled in 2009-09-10
-media-video/mpeg4ip
 
 # Samuli Suominen <ssuominen@gentoo.org> (10 Jul 2009)
 # efence doesn't build wrt #262528, or work wrt #128814

@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-drivers/nvidia-drivers/nvidia-drivers-185.18.29.ebuild,v 1.1 2009/07/29 05:11:23 spock Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-drivers/nvidia-drivers/nvidia-drivers-185.18.29.ebuild,v 1.3 2009/08/03 03:58:20 spock Exp $
 
 inherit eutils multilib versionator linux-mod flag-o-matic nvidia-driver
 
@@ -143,6 +143,9 @@ fi
 
 S="${WORKDIR}/${NV_PACKAGE}${PKG_V}"
 
+# PCI IDs of devices known not to work with this version of the drivers.
+BROKEN_DEVICES="10de0429c"
+
 mtrr_check() {
 	ebegin "Checking for MTRR support"
 	linux_chkconfig_present MTRR
@@ -159,21 +162,17 @@ mtrr_check() {
 	fi
 }
 
-paravirt_check() {
-	ebegin "Checking for Paravirtualized guest support"
-	linux_chkconfig_present PARAVIRT_GUEST
+compat_device_check() {
+	[ ! -r /proc/bus/pci/devices -o -z "${BROKEN_DEVICES}" ] && return
 
-	if [[ $? -eq 0 ]]; then
-		eerror "Please disable PARAVIRT_GUEST in your kernel config, found at:"
-		eerror
-		eerror "  Processor type and features"
-		eerror "    [*] Paravirtualized guest support"
-		eerror
-		eerror "or XEN support"
-		eerror
-		eerror "and recompile your kernel .."
-		die "PARAVIRT_GUEST support detected!"
-	fi
+	for dev_id in ${BROKEN_DEVICES} ; do
+		if [ -n "$(grep ${dev_id} /proc/bus/pci/devices)" ]; then
+			ewarn "It looks like you have a graphics card that is known not to work"
+			ewarn "with this version of nvidia-drivers.  Strongly consider using an"
+			ewarn "older version for now."
+			ebeep
+		fi
+	done
 }
 
 pkg_setup() {
@@ -192,7 +191,7 @@ pkg_setup() {
 		BUILD_PARAMS="IGNORE_CC_MISMATCH=yes V=1 SYSSRC=${KV_DIR} \
 		SYSOUT=${KV_OUT_DIR} HOST_CC=$(tc-getBUILD_CC)"
 		mtrr_check
-		paravirt_check
+		compat_device_check
 	fi
 
 	# On BSD userland it wants real make command
