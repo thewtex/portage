@@ -1,10 +1,76 @@
 # ChangeLog for profile directory
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.2991 2009/07/31 12:14:03 mescalinum Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.3010 2009/08/04 05:11:48 wired Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  04 Aug 2009; Alex Alexander <wired@gentoo.org> package.mask:
+  masking kde 4.3 dependencies before adding them to tree
+
+  03 Aug 2009; Chris PeBenito <pebenito@gentoo.org>
+  selinux/2007.0/amd64/parent, selinux/2007.0/x86/parent:
+  Fix SELinux profile inheritance to not inherit deprecated profiles.
+
+  03 Aug 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Mask the lisp live darcs ebuilds.
+
+  03 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask mplayer-skins for removal since gmplayer is deprecated and these are
+  causing problems wrt #224563.
+
+  03 Aug 2009; Thomas Anderson <gentoofan23@gentoo.org> package.mask:
+  All of www-misc/zoneminder's security flaws have been resolved, unmask
+  zoneminder.
+
+  03 Aug 2009; Chris PeBenito <pebenito@gentoo.org> package.mask:
+  Mask selinux-lvm and selinux-mdadm for removal.
+
+  02 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask x11-misc/notification-daemon-xfce because it needs xfce-mcs-manager
+  from Xfce 4.4.
+
+  02 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  media-video/mpeg4ip has been removed.
+
+  01 Aug 2009; Jeremy Olexa <darkside@gentoo.org> thirdpartymirrors:
+  add back mocha.xfce.org to mirror://xfce - it uses symlinks on the server
+  side to match naming conventions used by other mirrors
+
+  01 Aug 2009; Jeremy Olexa <darkside@gentoo.org> thirdpartymirrors:
+  Modify mirror://xfce - remove mocha.xfce.org because it's naming doesn't
+  comply with the rest of the mirrors. Remove de.xfce.org because it is
+  outdated. Add tx-us.xfce.org
+
+  01 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask gsynaptics-mcs-plugin because it needs xfce-mcs-manager which isn't
+  used with Xfce 4.6.
+
+  01 Aug 2009; MATSUU Takuto <matsuu@gentoo.org> package.mask:
+  Unmask =net-wireless/broadcom-sta-5.10.91.9-r2.
+
+  01 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Unmask ALSA without USE midi.
+
+  01 Aug 2009; Steve Dibb <beandog@gentoo.org> package.mask:
+  Remove media-video/realplayer from package.mask, as it was removed from
+  the tree
+
+  01 Aug 2009; Steve Dibb <beandog@gentoo.org> package.mask:
+  p.mask app-text/gnomesword, renamed/bumped to app-text/xiphos
+
+  01 Aug 2009; Jeremy Olexa <darkside@gentoo.org> package.mask:
+  p.mask dev-python/pyxfce for removal, bug 277163
+
+  31 Jul 2009; Jeremy Olexa <darkside@gentoo.org> package.mask:
+  Remove non-existant dev-lisp/cl-blog, bug 208658
+
+  31 Jul 2009; Steve Dibb <beandog@gentoo.org> package.mask:
+  Package.mask media-sound/alsa-driver for lack of support
+
+  31 Jul 2009; Michał Januszewski <spock@gentoo.org> package.mask:
+  Mask the latest nvidia-settings so that it is in sync with the drivers.
 
   31 Jul 2009; Federico Ferri <mescalinum@gentoo.org> package.mask:
   removed old -incorrect- mask of app-pda/libopensync-plugin-synce-0.22

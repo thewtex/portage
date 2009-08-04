@@ -1,6 +1,22 @@
 # ChangeLog for media-sound/alsa-utils
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/alsa-utils/ChangeLog,v 1.268 2009/07/02 19:18:42 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/alsa-utils/ChangeLog,v 1.271 2009/08/02 11:27:28 ssuominen Exp $
+
+*alsa-utils-1.0.20-r3 (02 Aug 2009)
+
+  02 Aug 2009; Samuli Suominen <ssuominen@gentoo.org>
+  +alsa-utils-1.0.20-r3.ebuild, +files/alsasound.initd-r4:
+  Fix init script wrt #259861, thanks to Lars Wendler for patch.
+
+  01 Aug 2009; Steve Dibb <beandog@gentoo.org> alsa-utils-1.0.17.ebuild,
+  alsa-utils-1.0.19-r2.ebuild, -alsa-utils-1.0.20.ebuild:
+  Drop midi use flag, bug 272659
+
+*alsa-utils-1.0.20-r2 (31 Jul 2009)
+
+  31 Jul 2009; Steve Dibb <beandog@gentoo.org> +alsa-utils-1.0.20-r2.ebuild,
+  +files/alsasound.confd-r3, +files/alsasound.initd-r3:
+  Remove UNLOAD_ON_STOP and KILLPROC_ON_STOP options
 
   02 Jul 2009; Markus Meier <maekke@gentoo.org> alsa-utils-1.0.19-r2.ebuild:
   amd64 stable, bug #272682

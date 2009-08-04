@@ -2,7 +2,16 @@
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
 # $Header: /var/cvsroot/gentoo-x86/sys-apps/baselayout/ChangeLog,v 1.472 2009/05/24 19:47:02 vapier Exp $
 
-  31 Jul 2009; Daniel Robbins <drobbins@funtoo.org> baselayout-2.1.ebuild:
+*baselayout-2.1.1 (01 Aug 2009)
+
+  01 Aug 2009; Daniel Robbins <drobbins@funtoo.org> +baselayout-2.1.1.ebuild:
+  Add .conf suffixes to modprobe.d files. Add logic to move old files to new
+  location so config file protection works correctly. Create and keep
+  /etc/portage directory.
+
+*baselayout-2.1 (31 Jul 2009)
+
+  31 Jul 2009; Daniel Robbins <drobbins@funtoo.org> +baselayout-2.1.ebuild:
   new baselayout ebuild - rewritten quite a bit - reduced device nodes, more
   .keep files, various changes in core files including an /etc/fstab that
   contains a working sample config with /dev/sda{1,2,3} as boot, swap and

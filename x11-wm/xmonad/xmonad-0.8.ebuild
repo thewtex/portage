@@ -1,10 +1,10 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/xmonad/xmonad-0.8.ebuild,v 1.2 2009/07/21 16:43:58 chainsaw Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/xmonad/xmonad-0.8.ebuild,v 1.3 2009/07/31 17:31:20 kolmodin Exp $
 
 CABAL_FEATURES="bin lib profile haddock"
 
-inherit haskell-cabal eutils
+inherit base haskell-cabal eutils
 
 DESCRIPTION="A lightweight X11 window manager"
 HOMEPAGE="http://www.xmonad.org/"
@@ -23,6 +23,11 @@ RDEPEND="${DEPEND}"
 
 SAMPLE_CONFIG="xmonad.hs"
 SAMPLE_CONFIG_LOC="man"
+
+src_unpack() {
+	base_src_unpack
+	sed -e 's/base >= 3/base < 4 \&\& >= 3/' -i "${S}/${PN}.cabal"
+}
 
 src_install() {
 	cabal_src_install
