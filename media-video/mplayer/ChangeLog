@@ -1,10 +1,50 @@
 # ChangeLog for media-video/mplayer
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/mplayer/ChangeLog,v 1.658 2009/08/01 09:09:11 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/mplayer/ChangeLog,v 1.668 2009/08/03 20:53:28 ssuominen Exp $
 
-  01 Aug 2009; Samuli Suominen <ssuominen@gentoo.org>
+  03 Aug 2009; Samuli Suominen <ssuominen@gentoo.org>
   mplayer-1.0_rc2_p20090731.ebuild:
-  Fix myconf_linguas sed by Emil Karlson.
+  Pull in dejavu or ttf-bitstream-vera with USE ass wrt #263185.
+
+  03 Aug 2009; Markus Meier <maekke@gentoo.org>
+  mplayer-1.0_rc2_p20090731.ebuild:
+  x86 stable, bug #279342
+
+  03 Aug 2009; Samuli Suominen <ssuominen@gentoo.org>
+  mplayer-1.0_rc2_p20090731.ebuild:
+  Remove USE nemesi since it's not in tree anymore wrt #274807.
+
+  03 Aug 2009; Samuli Suominen <ssuominen@gentoo.org>
+  mplayer-1.0_rc2_p20090322.ebuild, mplayer-1.0_rc2_p20090530.ebuild,
+  mplayer-1.0_rc2_p20090731.ebuild:
+  Upload svgalib_helper again to mirrors wrt #279883.
+
+  03 Aug 2009; Samuli Suominen <ssuominen@gentoo.org>
+  mplayer-1.0_rc2_p20090731.ebuild,
+  +files/mplayer-1.0_rc2_p20090731-linguas.patch:
+  Fix LINGUAS handling wrt #280129.
+
+  03 Aug 2009; Alexis Ballier <aballier@gentoo.org> mplayer-9999.ebuild:
+  Use tr instead of sed for creating the linguas list, this fixes a build
+  issue when LINGUAS contains more than two languages.
+
+  03 Aug 2009; Jeroen Roovers <jer@gentoo.org>
+  mplayer-1.0_rc2_p20090731.ebuild:
+  Stable for HPPA (bug #279342).
+
+  02 Aug 2009; <chainsaw@gentoo.org> mplayer-1.0_rc2_p20090731.ebuild:
+  Marked stable on AMD64 for security bug #279342 filed by Alex Legler
+  <a3li@gentoo.org>. Tested with fullscreen XV playback of XviD content on a
+  Radeon X600, dual hex-core Opteron system with USE="3dnow 3dnowext X a52
+  aac aalib alsa ass cddb cdio cdparanoia dirac dts dv dvd dvdnav enca
+  encode faac faad fbcon ftp gif iconv ipv6 jpeg libcaca live lzo mad md5sum
+  mmx mmxext mng mp2 mp3 nemesi network opengl osdmenu png pnm pulseaudio
+  quicktime rar real rtc schroedinger sdl shm speex sse sse2 ssse3 theora
+  tremor truetype unicode v4l2 vorbis x264 xinerama xv xvid xvmc (-altivec)
+  -bidi -bindist -bl -cpudetection -custom-cflags -custom-cpuopts -debug
+  -dga -directfb -doc -dvb -dxr3 -esd -ggi -gmplayer -jack -joystick -ladspa
+  -lirc -nas -nut -openal -oss -pvr -radio -samba (-svga) -teletext -tga
+  -v4l -vdpau (-vidix) (-win32codecs) -xanim -xscreensaver -zoran".
 
   01 Aug 2009; Diego E. Pettenò <flameeyes@gentoo.org>
   mplayer-1.0_rc2_p20090731.ebuild:

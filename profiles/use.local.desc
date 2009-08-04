@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4694 2009/08/01 15:07:49 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4701 2009/08/02 22:47:38 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -381,6 +381,7 @@ app-misc/genealogyj-bin:geoview - Adds support for geographic extensions
 app-misc/genealogyj-bin:skins - Installs some skins
 app-misc/geneweb:ocamlopt - Enable ocamlopt support (dev-lang/ocaml native code compiler)
 app-misc/gizmod:libvisual - Enable the media-libs/libvisual (Amarok) plugin
+app-misc/gnote:applet - Enable gnote applet for gnome-base/gnome-panel
 app-misc/gourmet:gnome-print - Enable printing support using gnome-print.
 app-misc/gourmet:print - Enable printing support using gnome-print.
 app-misc/gourmet:rtf - Enable RTF support.
@@ -749,6 +750,7 @@ dev-lang/php:suhosin - Add Suhosin support (patch and extension from http://www.
 dev-lang/php:xmlreader - Enable XMLReader support
 dev-lang/php:xmlwriter - Enable XMLWriter support
 dev-lang/php:zip - Enable ZIP file support
+dev-lang/python:threads - Enable threading support (DON'T DISABLE THIS UNLESS YOU KNOW WHAT YOU'RE DOING)
 dev-lang/python:ucs2 - Enable byte size 2 unicode (DON'T USE THIS UNLESS YOU KNOW WHAT YOU'RE DOING)
 dev-lang/python:wininst - Install required Windows executables to create an executable installer for MS Windows.
 dev-lang/ruby:rubytests - Install ruby tests that can only be run after ruby is installed
@@ -1215,8 +1217,6 @@ gnome-extra/gtkhtml:glade - Provide integration with dev-util/glade.
 gnome-extra/libgda:mdb - Enables Microsoft Access DB support
 gnome-extra/libgda:xbase - Enables support for xbase databases (dBase, FoxPro, etc.)
 gnome-extra/music-applet:mpd - Enable MPD support
-gnome-extra/nautilus-sendto:balsa - Enables support for mail-client/balsa
-gnome-extra/nautilus-sendto:claws - Enables support for mail-client/claws
 gnome-extra/nautilus-sendto:eds - Enables support for evolution-sendto using gnome-extra/evolution-data-server
 gnome-extra/nautilus-sendto:empathy - Enables support for net-im/empathy
 gnome-extra/nautilus-sendto:gajim - Enables support for net-im/gajim
@@ -1893,6 +1893,7 @@ media-tv/xmltv:tv_pick_cgi - enable CGI support
 media-tv/xmltv:uk_bleb - Britain tv listing grabber
 media-tv/xmltv:uk_rt - Britain alternative tv listing grabber
 media-tv/xmltv:za - South Africa tv listing grabber
+media-video/arista:faac - Use external faac library for AAC encoding
 media-video/avidemux:aften - Enable A/52 (AC-3) audio encoder support
 media-video/avidemux:amrnb - Enable Narrow Band Adaptive Multi-Rate Audio support
 media-video/chaplin:transcode - Enable DVD ripping and transcoding
@@ -1923,6 +1924,8 @@ media-video/ffmpeg:vhook - Enables video hooking support.
 media-video/ffprobe:perl - Installs tools written in perl to produce plots based on video frame bitrate and size
 media-video/gpac:amr - Adaptive Multi-Rate Audio support (commonly used in telephony)
 media-video/griffith:csv - Enable proper support for csv import (respectively auto-detection encoding of csv files)
+media-video/h264enc:mp4 - Support for MP4 container format
+media-video/h264enc:ogm - Support for OGM container format
 media-video/kino:gpac - Enable GPAC support when exporting to 3GPP format
 media-video/kmplayer:npp - Compile the npp backend that plays xembed style browser plugins.
 media-video/lives:libvisual - Enable libvisual support
@@ -1930,10 +1933,6 @@ media-video/mjpegtools:yv12 - Enables support for the YV12 pixel format
 media-video/mmsv2:dxr3 - Enable support for RealMagic Hollywood+/Creative DXR3 cards
 media-video/mmsv2:radio - Enable support for Internet Radio and BTTV Hardware Tuners
 media-video/motiontrack:multiprocess - Enables multi-process support (SMP/cluster) for motiontrack programs
-media-video/mpeg4ip:id3 - Support ID3 in the player
-media-video/mpeg4ip:mp4live - Build the live streaming/encoding software
-media-video/mpeg4ip:mpeg2 - Support mpeg2 in the player
-media-video/mpeg4ip:player - Build the player
 media-video/mplayer:3dnowext - Enable 3dnowext cpu instructions
 media-video/mplayer:amrnb - Enables Adaptive Multi-Rate Audio support (Narrow Band)
 media-video/mplayer:amrwb - Enables Adaptive Multi-Rate Audio support (Wide Band)
@@ -3463,11 +3462,13 @@ xfce-base/thunar:trash-plugin - Build Trash plug-in for panel
 xfce-base/xfce-utils:lock - Enable screen locking
 xfce-base/xfce4-extras:battery - Meta pulls in xfce-extra/xfce4-battery depend
 xfce-base/xfce4-extras:cpufreq - Meta pulls in xfce-extra/xfce4-cpu-freq depend
+xfce-base/xfce4-session:gnome-keyring - Support for storing your password.
 xfce-base/xfce4-settings:keyboard - Enable Keyboard layout selection with x11-libs/libxklavier
 xfce-base/xfce4-settings:sound - Enable sound event support with media-libs/libcanberra
 xfce-base/xfdesktop:file-icons - Build support for application launchers using xfce-base/thunar and libexo
 xfce-base/xfdesktop:menu-plugin - Build Menu plug-in for panel
 xfce-extra/thunar-thumbnailers:grace - Enable support for sci-visualization/grace thumbnails
 xfce-extra/xfce4-mpc:libmpd - Build using media-libs/libmpd backend, instead of native fallback which is preferred
-xfce-extra/xfce4-power-manager:xfce - Build Xfce4 panel plugins
+xfce-extra/xfce4-power-manager:dpms - Build with DPMS support
+xfce-extra/xfce4-power-manager:panel-plugins - Build with panel plugins
 xfce-extra/xfce4-screenshooter:zimagez - Optional support to host screenshots on ZimageZ, a free online image service

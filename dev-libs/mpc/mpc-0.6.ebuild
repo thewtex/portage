@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/mpc/mpc-0.6.ebuild,v 1.1 2009/08/01 05:10:04 dirtyepic Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/mpc/mpc-0.6.ebuild,v 1.3 2009/08/03 04:28:35 jer Exp $
 
 EAPI=0
 
@@ -12,7 +12,7 @@ SRC_URI="http://www.multiprecision.org/mpc/download/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~hppa ~ppc"
 IUSE=""
 
 DEPEND=">=dev-libs/gmp-4.1.3
