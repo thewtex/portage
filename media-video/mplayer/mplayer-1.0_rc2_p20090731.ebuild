@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/mplayer/mplayer-1.0_rc2_p20090731.ebuild,v 1.8 2009/08/03 03:55:29 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/mplayer/mplayer-1.0_rc2_p20090731.ebuild,v 1.15 2009/08/03 20:57:46 ssuominen Exp $
 
 EAPI="2"
 
@@ -13,7 +13,7 @@ bidi bindist bl +cddb +cdio cdparanoia cpudetection custom-cflags
 custom-cpuopts debug dga +dirac directfb doc +dts +dv dvb +dvd +dvdnav dxr3
 +enca +encode esd +faac +faad fbcon ftp gif ggi -gmplayer +iconv ipv6 jack
 joystick jpeg kernel_linux ladspa libcaca lirc +live lzo mad md5sum +mmx
-mmxext mng +mp2 +mp3 nas +nemesi +network nut openal +opengl +osdmenu
+mmxext mng +mp2 +mp3 nas +network nut openal +opengl +osdmenu
 oss png pnm pulseaudio pvr +quicktime radio +rar +real +rtc samba +shm
 +schroedinger sdl +speex sse sse2 ssse3 svga teletext tga +theora +tremor
 +truetype +unicode v4l v4l2 vdpau vidix +vorbis win32codecs +X +x264 xanim
@@ -36,7 +36,8 @@ SRC_URI="mirror://gentoo/${P}.tar.bz2
 			  mirror://mplayer/releases/fonts/font-arial-iso-8859-2.tar.bz2
 			  mirror://mplayer/releases/fonts/font-arial-cp1250.tar.bz2 )
 	gmplayer? ( mirror://mplayer/skins/Blue-${BLUV}.tar.bz2 )
-	svga? ( http://mplayerhq.hu/~alex/svgalib_helper-${SVGV}-mplayer.tar.bz2 )"
+	svga? ( http://dev.gentoo.org/~ssuominen/svgalib_helper-${SVGV}-mplayer.tar.gz )"
+#	svga? ( http://mplayerhq.hu/~alex/svgalib_helper-${SVGV}-mplayer.tar.bz2 )
 
 DESCRIPTION="Media Player for Linux"
 HOMEPAGE="http://www.mplayerhq.hu/"
@@ -49,8 +50,8 @@ RDEPEND="sys-libs/ncurses
 	)
 	aalib? ( media-libs/aalib )
 	alsa? ( media-libs/alsa-lib )
-	ass? ( media-libs/freetype:2
-		media-libs/fontconfig )
+	ass? ( || ( media-fonts/ttf-bitstream-vera media-fonts/dejavu )
+		media-libs/freetype:2 media-libs/fontconfig )
 	openal? ( media-libs/openal )
 	bidi? ( dev-libs/fribidi )
 	cdio? ( dev-libs/libcdio )
@@ -143,7 +144,7 @@ DEPEND="${RDEPEND}
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~alpha amd64 hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="~alpha amd64 hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc x86 ~x86-fbsd"
 
 pkg_setup() {
 	if use gmplayer; then
@@ -204,7 +205,7 @@ src_unpack() {
 
 	use gmplayer && unpack "Blue-${BLUV}.tar.bz2"
 
-	use svga && unpack "svgalib_helper-${SVGV}-mplayer.tar.bz2"
+	use svga && unpack "svgalib_helper-${SVGV}-mplayer.tar.gz"
 }
 
 src_prepare() {
@@ -222,10 +223,13 @@ src_prepare() {
 	fi
 
 	epatch "${FILESDIR}"/${PN}-1.0_rc2_p20090530-fix-mp3lib-use-local-labels-2.patch
+	epatch "${FILESDIR}"/${P}-linguas.patch
 }
 
 src_configure() {
-	local myconf="--language=all"
+	local myconf=""
+
+	[[ -n $LINGUAS ]] && LINGUAS="${LINGUAS/da/dk}"
 
 	# mplayer ebuild uses "use foo || --disable-foo" to forcibly disable
 	# compilation in almost every situation.  The reason for this is
@@ -235,7 +239,7 @@ src_configure() {
 	################
 	#Optional features#
 	###############
-	myconf="${myconf} $(use_enable network) --disable-arts"
+	myconf="${myconf} $(use_enable network) --disable-arts --disable-nemesi"
 	use ass || myconf="${myconf} --disable-ass"
 	use bidi || myconf="${myconf} --disable-fribidi"
 	use bl && myconf="${myconf} --enable-bl"
@@ -245,7 +249,6 @@ src_configure() {
 	use ipv6 || myconf="${myconf} --disable-inet6"
 	use lirc || myconf="${myconf} --disable-lirc --disable-lircc \
 		--disable-apple-ir"
-	use nemesi || myconf="${myconf} --disable-nemesi"
 	use nut || myconf="${myconf} --disable-libnut"
 	use osdmenu && myconf="${myconf} --enable-menu"
 	use rar || myconf="${myconf} --disable-unrarexec"
