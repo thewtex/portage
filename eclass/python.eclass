@@ -22,7 +22,7 @@ else
 fi
 
 if ! has "${EAPI:-0}" 0 1 2 || [[ -n "${SUPPORT_PYTHON_ABIS}" ]]; then
-	DEPEND="${DEPEND} >=app-admin/eselect-python-20090801"
+	DEPEND="${DEPEND} >=app-admin/eselect-python-20090606"
 fi
 
 __python_eclass_test() {
