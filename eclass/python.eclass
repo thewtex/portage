@@ -113,13 +113,6 @@ get_python() {
 # Make sure PYTHON_ABIS variable has valid value.
 validate_PYTHON_ABIS() {
 	# Ensure that /usr/bin/python and /usr/bin/python-config are scripts.
-	if [[ "$(</usr/bin/python)" != *"Gentoo Python wrapper script"* ]]; then
-		die "/usr/bin/python isn't valid script"
-	fi
-	if [[ "$(</usr/bin/python-config)" != *"Gentoo python-config wrapper script"* ]]; then
-		die "/usr/bin/python-config isn't valid script"
-	fi
-
 	# USE_${ABI_TYPE^^} and RESTRICT_${ABI_TYPE^^}_ABIS variables hopefully will be included in EAPI >= 4.
 	if [[ -z "${PYTHON_ABIS}" ]] && has "${EAPI:-0}" 0 1 2 3; then
 		local ABI support_ABI supported_PYTHON_ABIS= restricted_ABI
