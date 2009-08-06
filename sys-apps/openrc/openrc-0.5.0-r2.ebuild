@@ -267,8 +267,16 @@ pkg_postinst() {
 	fi
 
 	elog "You should now update all files in /etc, using etc-update"
-	elog "or equivalent before restarting any services or this host."
+	elog "or equivalent before rebooting."
 	elog
-	elog "Please read the migration guide available at:"
-	elog "http://www.gentoo.org/doc/en/openrc-migration.xml"
+	if [ -e $ROOTetc/conf.d/net ]
+	then
+		ewarn "IMPORTANT: your funtoo networking scripts will need to"
+		ewarn "be upgraded."
+		ewarn
+		ewarn "Please read the Funtoo Networking Guide at"
+		ewarn "http://www.funtoo.org/en/funtoo/networking/"
+		ewarn
+		ewarn "(This message triggered by existence of $ROOTetc/conf.d/net.)"
+	fi
 }
