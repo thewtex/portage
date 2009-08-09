@@ -1,10 +1,73 @@
 # ChangeLog for profile directory
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.3024 2009/08/08 01:33:35 mescalinum Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.3043 2009/08/08 19:31:37 jmbsvicetto Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  08 Aug 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  package.mask:
+  Moved KDE-4.3.0 mask from profiles/package.mask to
+  profiles/base/package.mask - fixes bug 280734.
+
+  08 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Removed notification-daemon-xfce, xfkc and gsynaptics-mcs-plugin from
+  tree.
+
+  08 Aug 2009; Ulrich Mueller <ulm@gentoo.org> package.mask:
+  app-text/remem is gone.
+
+  08 Aug 2009; Ulrich Mueller <ulm@gentoo.org> package.mask:
+  Emacs 24 is still far away, don't mask its virtual.
+
+  08 Aug 2009; Federico Ferri <mescalinum@gentoo.org> package.mask:
+  mask unmaintained mmucl
+
+  08 Aug 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Mask libzzub for removal, with its deps.
+
+  08 Aug 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Also add irssi-svn to the list of live ebuilds.
+
+  08 Aug 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Use a single mass-amsking for live ebuilds masked by QA team; add
+  dosbox-cvs to the list.
+
+  08 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask naim, naim-modules, hsc, ksubtitleripper, cccc and wlassistant for
+  removal.
+
+  08 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask diasce and motor for removal.
+
+  08 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Removed geresh, medit and qe from tree.
+
+  08 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Removed mindi, mindi-busybox, mondo-rescue, xchat-systray and lastfmproxy
+  from tree.
+
+  08 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask x11-misc/glsof for removal.
+
+  08 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask dev-util/hxd for removal.
+
+  08 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask net-misc/cgterm for removal.
+
+  08 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask app-misc/nomadii-utils for removal.
+
+  08 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask x11-themes/baghira for removal.
+
+  08 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask x11-misc/stripclub for removal.
+
+  08 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Removed kaspaliste, gtk-server, efence, ofbis and smjpeg from tree.
 
   08 Aug 2009; Federico Ferri <mescalinum@gentoo.org> package.mask:
   mask tcl-debug - not working with tcl85 - bugs open
