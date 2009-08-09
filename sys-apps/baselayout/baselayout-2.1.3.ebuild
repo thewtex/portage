@@ -16,20 +16,6 @@ IUSE="build"
 PDEPEND="sys-apps/openrc"
 
 pkg_preinst() {
-
-	local x
-
-	if [ "$ROOT" = "/" ]
-	then
-		# we won't be able to merge these things, so remove them from our list
-		# of stuff to be merged:
-
-		for x in proc sys dev dev/pts dev/shm
-		do
-			rm -rf ${D}/x
-		done
-	fi
-
 	# execute critical sub-functions (defined elsewhere in this ebuild):
 
 	# migrate to new modules.conf filenames:
@@ -203,19 +189,6 @@ src_install() {
 	diropts -m0700
 	keepdir /root
 	
-	# The following "keepdir" commands will likely fail or not be ideal
-	# if ROOT is "/" - so if ROOT = "/", then special code gets run in
-	# pkg_preinst to remove these directories from ${D} so they do not
-	# get merged by Portage:
-	
-	keepdir /proc
-	keepdir /sys
-	keepdir /dev
-	keepdir /dev/pts
-	keepdir /dev/shm
-
-	# End of special ROOT != "/" directories
-
 	dodoc ChangeLog
 
 	into /
@@ -250,7 +223,17 @@ src_install() {
 }
 
 pkg_postinst() {
+
+	# create some directories that will fail on merge due to .keep files. Once
+	# Portage has deprecated .keep files, this stuff can be moved back to
+	# src_install:
+
 	local x
+
+	for x in proc sys dev dev/pts dev/shm
+	do
+		install -d ${ROOT}${x}
+	done
 
 	# templates installed to /usr/share/baselayout and copied into place if they
 	# don't exist in /etc.
