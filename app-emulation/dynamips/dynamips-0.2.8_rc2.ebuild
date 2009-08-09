@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/dynamips/dynamips-0.2.8_rc2.ebuild,v 1.1 2009/08/07 16:40:38 chainsaw Exp $
 
 inherit eutils
 
@@ -12,10 +12,10 @@ SRC_URI="http://www.ipflow.utc.fr/${PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT=0
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 IUSE=""
-DEPEND=">=net-libs/libpcap-0.9.4
-	dev-libs/elfutils"
+DEPEND="dev-libs/elfutils
+	net-libs/libpcap"
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${MY_P}"
@@ -23,12 +23,16 @@ S="${WORKDIR}/${MY_P}"
 src_unpack() {
 	unpack ${A}
 	cd "${S}"
-	epatch "${FILESDIR}/${P}-parallel_build.patch"
+	epatch "${FILESDIR}/${P}-makefile.patch"
 
 	if use amd64; then
 		sed -i \
-			-e 's:DYNAMIPS_ARCH?=x86:DYNAMIPS_ARCH?=amd64:g' \
-			Makefile || die "sed failed"
+			-e 's:DYNAMIPS_ARCH?=nojit:DYNAMIPS_ARCH?=amd64:g' \
+			Makefile || die "Failed to optimise for AMD64"
+	elif use amd64; then
+		sed -i \
+			-e 's:DYNAMIPS_ARCH?=nojit:DYNAMIPS_ARCH?=x86:g' \
+			Makefile || die "Failed to optimise for X86"
 	fi
 }
 
@@ -40,4 +44,3 @@ src_install () {
 	dodoc ChangeLog TODO README README.hypervisor \
 		|| die "Installing docs failed"
 }
-

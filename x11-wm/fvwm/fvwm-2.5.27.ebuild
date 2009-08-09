@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/fvwm/fvwm-2.5.27.ebuild,v 1.3 2009/07/23 14:40:39 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/fvwm/fvwm-2.5.27.ebuild,v 1.5 2009/08/08 23:07:42 fauli Exp $
 
 EAPI=2
 
@@ -12,7 +12,7 @@ SRC_URI="ftp://ftp.fvwm.org/pub/fvwm/version-2/${P}.tar.bz2"
 
 LICENSE="GPL-2 FVWM"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc x86 ~x86-fbsd"
 IUSE="bidi debug doc gtk gtk2-perl imlib netpbm nls perl png readline rplay stroke svg tk truetype vanilla xinerama lock"
 
 COMMON_DEPEND="
@@ -129,7 +129,7 @@ src_install() {
 	rm -f "${D}/usr/share/fvwm/perllib/FVWM/Module/Gtk.pm"
 	find "${D}" -name '*FvwmGtkDebug*' -exec rm -f '{}' \; 2>/dev/null
 
-	if ! use xlock; then
+	if ! use lock; then
 		find "${D}" -name '*fvwm-menu-xlock' -exec rm -f '{}' \; 2>/dev/null
 	fi
 
