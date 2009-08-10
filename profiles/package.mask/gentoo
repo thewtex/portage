@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10244 2009/08/08 19:31:37 jmbsvicetto Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10298 2009/08/09 23:55:14 flameeyes Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,427 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (10 Aug 2009)
+#  on behalf of QA team
+#
+# Package install a net.aol that does not work with OpenRC,
+# and if I'm not mistaken, is now useless as CompuServe was
+# shut down on June 30th.
+#
+# Removal on 2009-10-09
+net-dialup/penggy
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (10 Aug 2009)
+#  on behalf of QA team
+#
+# Latest version fails with current Linux headers (bug
+# #247970), and has multiple issues; masked version is in
+# package.mask since 2007, since then, never touched. It
+# also uses the old net-nds/portmap package.
+#
+# Removal on 2009-10-09
+net-fs/sfs
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (10 Aug 2009)
+#  on behalf of QA team
+#
+# Lack Gentoo maintainership as testified by the current
+# open bugs (bug #187889 - gcc-4.2, bug #240216 - prestripped
+# fiels, bug #91601, bug #125995, bug #140587). Last release
+# in tree is 2.2, last release upstream is 2.3 from 2007.
+#
+# Removal on 2009-10-09
+dev-lang/smarteiffel
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (10 Aug 2009)
+#  on behalf of QA team
+#
+# Fails to build with both gcc 4.3 (bug #246095) and
+# something else (bug #248365).
+#
+# Removal on 2009-10-09
+sci-mathematics/Macaulay2
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (10 Aug 2009)
+#  on behalf of QA team
+#
+# Fails to build with gcc 4.3 (bug #250922).
+#
+# Removal on 2009-10-09
+dev-php/phpdbg-client
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (10 Aug 2009)
+#  on behalf of QA team
+#
+# Fails to build with gcc 4.3 (bug #252633), has an internal
+# copy of openbabel (bug #253068), has broken dependendencies
+# (bug #219217).
+#
+# Removal on 2009-10-09
+sci-chemistry/kemistry
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (10 Aug 2009)
+#  on behalf of QA team
+#
+# Fail to build with glibc 2.8 (bug #239935).
+#
+# Removal on 2009-10-09
+app-backup/afbackup-client
+app-backup/afbackup-server
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (09 Aug 2009)
+#  on behalf of QA team
+#
+# Lacks a Gentoo maintainer (needs a Japanese
+# speaker). Incompatible with current dev-libs/eb (bug
+# #269526), QA issues (bug #258754), needs a check for
+# pango (bug #246874) and has bad autotools handling (bug
+# #226679). Last release in 2004.
+#
+# Removal on 2009-10-08
+app-dicts/ebview
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (09 Aug 2009)
+#  on behalf of QA team
+#
+# isdn4k-utils required a complete rewrite more than
+# an year ago (see bug #221427), there are multiple QA
+# issues with autotools in old packages (bug #226591),
+# use of gnuconfig_update (bug #160186), runtime depends
+# on builtime-only tools (the already noted bug #221427),
+# unused dependencies (bug #249311) and syntax errors with
+# baselayout2/openrc (bug #199356).
+#
+# Follow dependencies.
+#
+# Removal on 2009-10-08
+net-dialup/isdn4k-utils
+net-dialup/isdndump
+net-dialup/kisdndial
+net-dialup/vbox3
+net-dialup/raccess4vbox3
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (09 Aug 2009)
+#  on behalf of QA team
+#
+# Uses gtk+ 1.2, older versions have bad autotools handling
+# (bug #226573), last update in Gentoo in 2005.
+#
+# Removal on 2009-10-08
+dev-util/pilrc
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (09 Aug 2009)
+#  on behalf of QA team
+#
+# Bad autotools handling in ncc (bug #206227) and tos-uisp
+# (bug #206229). Further failure in tos-uisp due to -Werror
+# (bug #227861). The rest are dependencies. The rest
+# of dev-tinyos might be added if it doesn't make sense
+# without these.
+#
+# Removal on 2009-10-08
+dev-tinyos/ncc
+dev-tinyos/tos-make
+dev-tinyos/tos-scripts
+dev-tinyos/tos-uisp
+dev-tinyos/tos-apps
+
+# Samuli Suominen <ssuominen@gentoo.org> (10 Aug 2009)
+# Mirror restricted and distfile isn't available anymore.
+# Bug 280879. Masked for removal.
+dev-lang/realbasic
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (09 Aug 2009)
+#  on behalf of QA team
+#
+# Fails to build depending on CFLAGS (bug #239860), lacks
+# a Gentoo maintainer, upstream arrived at version 2.13
+# (and then seems to have abandoned it in 2007).
+#
+# Removal on 2009-10-08
+app-admin/killproc
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (09 Aug 2009)
+#  on behalf of QA team
+#
+# pnet bundles, conflicts, collides and remove boehm-gc (bugs
+# #189806 and #222171). The rest are reverse dependencies.
+#
+# Removal on 2009-10-08
+dev-dotnet/pnet
+dev-dotnet/pnetlib
+dev-dotnet/pnetc
+dev-dotnet/ml-pnet
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (09 Aug 2009)
+#  on behalf of QA team
+#
+# Fails to build with gcc 4.3 or later (bug #280919); last
+# release in 2003.
+#
+# Removal on 2009-10-08
+app-i18n/minichinput
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (09 Aug 2009)
+#  on behalf of QA team
+#
+# Older versions fail to build with modern libraries,
+# multiple issues with ebuild as well. The new tsclient-2
+# series looks like a fork so will be handled as a new
+# package rather than an update.
+#
+# Removal on 2009-10-08
+<net-misc/tsclient-2
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (09 Aug 2009)
+#  on behalf of QA team
+#
+# Removal of dev-libs/libowfat because it fails to build (bug
+# #272507) and lacks a proper Gentoo maintainer. Dependencies
+# follow the mask.
+#
+# sys-process/minit is already masked for removal
+#
+# net-misc/slidentd also links statically (bug #273326).
+#
+# Removal on 2009-10-08
+dev-libs/libowfat
+net-misc/slidentd
+www-servers/gatling
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (09 Aug 2009)
+#  on behalf of QA team
+#
+# Fails to build (bug #274384); upstream doesn't look
+# extremely active.
+#
+# Removal on 2009-10-08
+dev-dotnet/monouml
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (09 Aug 2009)
+#  on behalf of QA team
+#
+# Builds wrong bytecode version (bug #264290) and bundles
+# both jars and libhunspell (bug #258358).
+#
+# Removal on 2009-10-08
+app-text/omegat
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (09 Aug 2009)
+#  on behalf of QA team
+#
+# Fails to build with _FORTIFY_SOURCE=2 (bug #264094) and
+# gcc 4.4 (bug #280824). Upstream disappeared.
+#
+# Removal on 2009-10-08
+net-fs/fex
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (09 Aug 2009)
+#  on behalf of QA team
+#
+# Requires a kernel option gone since 2.6.25 (December 2007),
+# see bug #256028.
+#
+# Removal on 2009-10-08
+net-firewall/tuxfrw
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (09 Aug 2009)
+#  on behalf of QA team
+#
+# Fails parallel make (bug #258130), lacks a Gentoo
+# maintainer, replaced by texlive-core.
+#
+# Removal on 2009-10-08
+dev-util/cweb
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (09 Aug 2009)
+#  on behalf of QA team
+#
+# Pollutes enviornment (bug #252333) with broken env.d file.
+#
+# Removal on 2009-10-08
+dev-java/rjava
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (09 Aug 2009)
+#  on behalf of QA team
+#
+# Fails to build with gcc 4.3 (bug #251621).
+#
+# Removal on 2009-10-08
+sci-chemistry/maid
+
+# Samuli Suominen <ssuominen@gentoo.org> (09 Aug 2009)
+# Doesn't compile wrt #274116. Masked for removal.
+www-client/ochusha
+
+# Samuli Suominen <ssuominen@gentoo.org> (09 Aug 2009)
+# Internal copies of faad2 and mpeg4ip. Doesn't compile
+# wrt #277801. Masked by treecleaners.
+media-sound/aacgain
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (09 Aug 2009)
+#  on behalf of QA team
+#
+# Fails to build with gcc 4.3+ (bug #251486), bo2k_plugins
+# also masked. Not touched since 2004.
+#
+# Removal on 2009-10-08
+net-misc/bo2k_console
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (09 Aug 2009)
+#  on behalf of QA team
+#
+# Multiple failures (a new one for each tinderbox type,
+# bug #249290 and #26073), accesses kernel sources badly
+# (bug #241956), uses -Werror (bug #260870).
+#
+# Removal on 2009-10-08
+app-crypt/tpm-emulator
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (09 Aug 2009)
+#  on behalf of QA team
+#
+# Fails to build (bug #248443), missing Gentoo maintainer.
+#
+# Removal on 2009-10-08
+sys-process/minit
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (09 Aug 2009)
+#  on behalf of QA team
+#
+# dev-util/sgb: fails with parallel make, without stopping
+# ebuild (installing broken data).
+#
+# sci-misc/gt-itm: depend on sgb, fails to build because of
+# the bug above (bug #248373).
+#
+# Removal on 2009-10-08
+dev-util/sgb
+sci-misc/gt-itm
+
+# Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (09 Aug 2009)
+# Masked for removal in 30 days due to security vulnerability (bug #280494).
+# Manually keyword >=dev-util/subversion-1.6.4.
+<dev-util/subversion-1.6.4
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (09 Aug 2009)
+#  on behalf of QA team
+#
+# Broken ebuild (bug #240942), website only in Japanese,
+# lacking Gentoo maintainer, replaed by ebnetd (also, only
+# in Japanese).
+#
+# Removal on 2009-10-08
+net-misc/ndtpd
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (09 Aug 2009)
+#  on behalf of QA team
+#
+# Fails to build with GCC 4.1 or later (bug #248080). Gentoo
+# maintainer appear uninterested.
+#
+# Removal on 2009-10-08
+net-misc/bo2k_plugins
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (09 Aug 2009)
+#  on behalf of QA team
+#
+# Multiple failures with GCC 4.3 and 4.4 (bug #248022)
+# and other issues.
+#
+# Removal on 2009-10-08
+net-irc/mistbot
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (09 Aug 2009)
+#  on behalf of QA team
+#
+# Fails to build with recent libpcap (bug #247939).
+#
+# Removal on 2009-10-08
+net-analyzer/trafd
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (09 Aug 2009)
+#  on behalf of QA team
+#
+# Fails to build since at least November 2008, no interest
+# from current Gentoo maintainers, nothing depending on it.
+#
+# Removal on 2009-10-08
+media-libs/libmovtar
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (09 Aug 2009)
+#  on behalf of QA team
+#
+# Missing Gentoo maintainers; fails to build since at least
+# October 2008 (bug #247065).
+#
+# Removal on 2009-10-08
+dev-libs/libredblack
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (09 Aug 2009)
+#  on behalf of QA team
+#
+# Fails to build with recent linux-headers (bug #241484,
+# October 2008).
+#
+# Removal on 2009-10-08
+x11-misc/xac
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (09 Aug 2009)
+#  on behalf of QA team
+#
+# Fails to build with glibc 2.8 (bug #241416, October 2008,
+# now stable). Abuses $ROOT (bug #258122). Lacks maintainers.
+#
+# Removal on 2009-10-08
+sys-fs/ocfs2-tools
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (09 Aug 2009)
+#  on behalf of QA team
+#
+# Fails aclocal (bug #220177, May 2008) and needs some
+# cleanup. Only user is/was net-fs/shfs that is scheduled
+# for removal on August 14th 2009.
+#
+# Removal on 2009-10-08
+net-fs/am-utils
+
+# Samuli Suominen <ssuominen@gentoo.org> (09 Aug 2009)
+# Needs Xfce 4.4 style xfce-mcs-manager. Masked for removal.
+dev-python/pyxfce
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (09 Aug 2009)
+#  on behalf of QA team
+#
+# Unmaintained in Gentoo, fails to build (linux-headers,
+# bug #240212, and glibc 2.9 after that). Ebuild does not
+# conform to current QA standards.
+#
+# Removal on 2009-10-08
+dev-libs/libexploit
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (09 Aug 2009)
+#  on behalf of QA team
+#
+# Fails to build, see bug #239592 (October 2008, no response
+# from maintainer).
+#
+# Removal on 2009-10-08
+dev-db/sqsh
+
+# Samuli Suominen <ssuominen@gentoo.org> (09 Aug 2009)
+# Outdated virtual for Xfce 4.4. Use eix to search for
+# xfce plugins you want to install. This meta only covered
+# old ones. Unnecessary maintaince burden for minor arches
+# if we wanted to keep this up to date. Masked for removal.
+xfce-base/xfce4-extras
+
+# Michał Januszewski <spock@gentoo.org> (08 Aug 2009)
+# Live git ebuilds for pycuda/pytools. Use at your own risk, do not
+# report Gentoo bugs if stuff breaks after you install them.
+=dev-python/pytools-9999
+=dev-python/pycuda-9999
 
 # Ulrich Mueller <ulm@gentoo.org> (08 Aug 2009)
 # Emacs live CVS ebuilds. Use at your own risk.
@@ -69,7 +490,7 @@ games-emulation/dosbox-cvs
 net-irc/irssi-svn
 
 # Samuli Suominen <ssuominen@gentoo.org> (08 Aug 2009)
-# Masked by treecleaners for removal. Doesn't compile wrt #273716.
+# Masked by treecleaners for removal. Doesn't compile wrt #215252.
 net-im/naim
 net-im/naim-modules
 
@@ -84,10 +505,6 @@ net-wireless/wlassistant
 # Samuli Suominen <ssuominen@gentoo.org> (08 Aug 2009)
 # Masked by treecleaners for removal. Doesn't compile wrt #277941.
 dev-util/cccc
-
-# Samuli Suominen <ssuominen@gentoo.org> (08 Aug 2009)
-# Masked by treecleaners for removal. Doesn't compile wrt #279083.
-net-misc/hsc
 
 # Samuli Suominen <ssuominen@gentoo.org> (08 Aug 2009)
 # Masked by treecleaners for removal. Doesn't compile wrt #277571.
@@ -371,16 +788,6 @@ virtual/perl-IO-Compress-Base
 # isn't needed anymore and fails tests (bug #277773). Masked for deletion in 30 days.
 dev-python/cjkcodecs
 
-# Diego E. Pettenò <flameeyes@gentoo.org> (14 Jul 2009)
-#  on behalf of QA Team
-#
-# Fails to build with glibc 2.10 (bug #277833), doesn't respect
-# CC (bug #244010) nor CFLAGS (bug #240281). Unmaintained in Gentoo
-# and unneeded by in-tree packages.
-#
-# Removal on 2009-09-14
-dev-util/jscalltree
-
 # Rémi Cardona <remi@gentoo.org> (13 Jul 2009)
 # broken and unmaintained by upstream, masked for removal in 30 days
 # see bug #277521 for more info
@@ -496,16 +903,6 @@ net-misc/sambasentinel
 # Diego E. Pettenò <flameeyes@gentoo.org> (6 Jul 2009)
 #  on behalf of QA Team
 #
-# Fetch restricted, download link broken, package never bumped,
-# unmaintained, requires a maintainer with hardware.
-#
-# Removal scheduled for 2009-08-07
-# Bug #276978
-net-misc/cisco-aironet-client-utils
-
-# Diego E. Pettenò <flameeyes@gentoo.org> (6 Jul 2009)
-#  on behalf of QA Team
-#
 # Multiple QA issues, unmaintained, see bug #252017
 #
 # Removal on 2009-09-07
@@ -518,15 +915,6 @@ net-misc/netgo
 #
 # Removal on 2009-09-07
 sci-visualization/qmatplot
-
-# Diego E. Pettenò <flameeyes@gentoo.org> (6 Jul 2009)
-#  on behalf of QA Team
-#
-# Fails to build with recent glibc (2.10, bug #276861); pointless
-# (hexdump does more or less the same), unmaintained.
-#
-# Removal on 2009-09-07
-sys-apps/hdump
 
 # Ulrich Mueller <ulm@gentoo.org> (06 Jul 2009)
 # Masked for removal in 60 days. Last upstream version is from 2003.

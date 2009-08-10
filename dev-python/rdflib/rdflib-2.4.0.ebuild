@@ -1,6 +1,6 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/rdflib/rdflib-2.4.0.ebuild,v 1.3 2008/12/23 17:30:39 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/rdflib/rdflib-2.4.0.ebuild,v 1.4 2009/08/10 00:09:24 arfrever Exp $
 
 NEED_PYTHON="2.3"
 
@@ -12,9 +12,8 @@ SRC_URI="http://rdflib.net/${P}.tar.gz"
 LICENSE="BSD-2"
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
-IUSE="berkdb examples mysql redland sqlite test zodb"
-DEPEND=">=dev-python/setuptools-0.6_rc5
-	test? ( <dev-python/nose-0.10.0 )"
+IUSE="berkdb examples mysql redland sqlite zodb"
+DEPEND=">=dev-python/setuptools-0.6_rc5"
 RDEPEND="mysql? ( dev-python/mysql-python )
 	sqlite? (
 		>=dev-db/sqlite-3.3.13
@@ -22,9 +21,10 @@ RDEPEND="mysql? ( dev-python/mysql-python )
 	berkdb? ( sys-libs/db )
 	redland? ( dev-libs/redland-bindings )
 	zodb? ( net-zope/zodb )"
+RESTRICT="test"
 
 pkg_setup() {
-	if use redland && ! built_with_use dev-libs/redland-bindings python  ; then
+	if use redland && ! built_with_use dev-libs/redland-bindings python; then
 		eerror "In order to have rdflib working with redland support, you need"
 		eerror "to have dev-libs/redland-bindings emerged with 'python' in"
 		eerror "your USE flags."
@@ -46,12 +46,8 @@ src_unpack() {
 
 src_install() {
 	distutils_src_install
-	if use examples ; then
+	if use examples; then
 		insinto /usr/share/doc/${PF}/examples
 		doins -r examples/*
 	fi
-}
-
-src_test() {
-	${python} setup.py test || die "tests failed"
 }

@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4713 2009/08/08 16:47:43 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4716 2009/08/10 03:48:01 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -202,7 +202,7 @@ app-emacs/bbdb:tex - Install plain TeX support files
 app-emacs/company-mode:semantic - Install backend for semantic (app-emacs/cedet)
 app-emacs/delicious:planner - Include support for app-emacs/planner
 app-emacs/easypg:gnus - Include support for the Gnus newsreader
-app-emacs/emacs-common-gentoo:emacs23icons - Install Emacs 23 style icons
+app-emacs/emacs-common-gentoo:emacs22icons - Install Emacs 22 style icons
 app-emacs/emhacks:jde - Enable support for Java Development Environment
 app-emacs/python-mode:pymacs - Enable Emacs extensions for Python as scripting language
 app-emacs/remember:bbdb - Include support for app-emacs/bbdb
@@ -733,6 +733,7 @@ dev-libs/DirectFB:sysfs - Add support for the sysfs filesystem (requires Linux-2
 dev-libs/STLport:boost - Enable the usage of dev-libs/boost
 dev-libs/ace:ciao - Include Component Intergraced Ace ORB into the build of ace
 dev-libs/ace:tao - Include the ACE ORB (CORBA stuff) (called tao) into the build of ace
+dev-libs/apr:cloexec - Support for SOCK_CLOEXEC
 dev-libs/apr:urandom - Use /dev/urandom instead of /dev/random
 dev-libs/boolstuff:static - Enable static linking
 dev-libs/boost:bcp - Install the bcp tool http://www.boost.org/tools/bcp/bcp.html
@@ -857,7 +858,6 @@ dev-python/ldaptor:web - enable the web front end for ldaptor (uses dev-python/n
 dev-python/markdown:pygments - Enable fancy pygments support
 dev-python/matplotlib:excel - Pull dev-python/xlwt for the exceltools toolkit
 dev-python/matplotlib:traits - Pull dev-python/traits for the experimental enthought traits support
-dev-python/nose:twisted - install nose.twistedtools to integrate tests with twisted
 dev-python/paste:flup - enable support for flup (and therefore for various wgsi servers and middleware)
 dev-python/paste:openid - enable OpenID support
 dev-python/psycopg:mxdatetime - choose MX DateTime support instead of built-in datetime
