@@ -1,5 +1,5 @@
-opengl? ( virtual/opengl media-libs/openal media-libs/libsdl ) !dedicated? ( virtual/opengl media-libs/openal media-libs/libsdl ) dev-util/subversion net-misc/rsync
-opengl? ( virtual/opengl media-libs/openal media-libs/libsdl ) !dedicated? ( virtual/opengl media-libs/openal media-libs/libsdl ) games-fps/quake3-data teamarena? ( games-fps/quake3-teamarena )
+opengl? ( virtual/opengl media-libs/openal media-libs/libsdl[joystick] ) !dedicated? ( virtual/opengl media-libs/openal media-libs/libsdl[joystick] ) dev-util/subversion net-misc/rsync
+opengl? ( virtual/opengl media-libs/openal media-libs/libsdl[joystick] ) !dedicated? ( virtual/opengl media-libs/openal media-libs/libsdl[joystick] ) games-fps/quake3-data teamarena? ( games-fps/quake3-teamarena )
 0
 
 
@@ -12,9 +12,9 @@ dedicated opengl teamarena
 
 
 
+2
 
-
-compile install postinst preinst setup unpack
+compile configure install postinst preinst prepare setup unpack
 
 
 

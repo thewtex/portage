@@ -1,4 +1,4 @@
-dev-db/sqlite:3 sys-libs/readline media-tv/linuxtv-dvb-headers
+dev-db/sqlite:3 sys-libs/readline media-tv/linuxtv-dvb-headers =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
 dev-db/sqlite:3 sys-libs/readline
 0
 mirror://sourceforge/dvbstreamer/dvbstreamer-1.1.tar.bz2
@@ -7,14 +7,14 @@ http://dvbstreamer.sourceforge.net/
 GPL-2
 DVB over UDP streaming solution
 ~amd64 ~x86
-multilib toolchain-funcs
+autotools eutils libtool multilib portability toolchain-funcs
 
 
 
 
-1
+2
 
-compile install unpack
+configure install prepare
 
 
 
