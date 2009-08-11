@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10298 2009/08/09 23:55:14 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10314 2009/08/11 09:55:15 ssuominen Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,59 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Samuli Suominen <ssuominen@gentoo.org> (11 Aug 2009)
+# Moved inside actual gst-plugins-bad. Masked for removal.
+# Bug 281083.
+media-plugins/gst-plugins-fluendo-mpegdemux
+
+# Samuli Suominen <ssuominen@gentoo.org> (11 Aug 2009)
+# Segmentation faults. Doesn't compile with -Wl,--as-needed.
+# Doesn't pass configure with Autoconf 2.64. Bugs 281080,
+# 247823 and 281076. Masked for removal.
+media-sound/beast
+media-sound/beast-data
+
+# Samuli Suominen <ssuominen@gentoo.org> (11 Aug 2009)
+# For vis5d+, see https://bugs.gentoo.org/show_bug.cgi?id=274281
+# For cgal-python, see https://bugs.gentoo.org/show_bug.cgi?id=278106
+# These will be removed or fixed in 60 days but they can't be unmasked
+# before they have.
+dev-python/cgal-python
+sci-visualization/vis5d+
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (11 Aug 2009)
+#  on behalf of QA team
+#
+# Fails to build (bug #277245), last release in 2004,
+# unmaintained in Gentoo.
+#
+# Removal on 2009-10-10
+app-i18n/canuum
+
+# Federico Ferri <mescalinum@gentoo.org> (10 Aug 2009)
+# Unmaintained. Masked for removal, bug #249468. (2009-10-11)
+net-irc/quirc
+
+# Samuli Suominen <ssuominen@gentoo.org> (10 Aug 2009)
+# Needs a internet service which isn't available anymore.
+# Masked for removal for bug 280820.
+media-plugins/gmpc-lyricwiki
+
+# Samuli Suominen <ssuominen@gentoo.org> (10 Aug 2009)
+# Doesn't compile wrt #277660. Doesn't install wrt #211336.
+# Masked for removal.
+net-mail/lurker
+
+# Alexis Ballier <aballier@gentoo.org> (10 Aug 2009)
+# Breaks vlc, fixed in git.
+# Leave it masked until vlc 1.0.2 is released
+>=media-libs/libass-0.9.7
+
+# Samuli Suominen <ssuominen@gentoo.org> (10 Aug 2009)
+# Orphaned library which doesn't compile wrt #278071.
+# Masked for removal.
+media-libs/ufo
 
 # Diego E. Pettenò <flameeyes@gentoo.org> (10 Aug 2009)
 #  on behalf of QA team
@@ -592,11 +645,6 @@ app-text/gnomesword
 # Unsupported, but popular.  No plans for removal.
 media-sound/alsa-driver
 
-# Samuli Suominen <ssuominen@gentoo.org> (30 Jul 2009)
-# Doesn't compile wrt #271645. Doesn't work wrt #220669.
-# QA issues wrt #226801. Masked for removal in 60 days.
-net-misc/d4x
-
 # Diego E. Pettenò <flameeyes@gentoo.org> (30 Jul 2009)
 #  on behalf of QA Team
 #
@@ -987,10 +1035,6 @@ net-wireless/ralink-rt61
 # Currently broken, 3rd party kernel module, no maintainer to keep it updated.
 # Removal in 60 days, bug 190718
 net-wireless/rt61
-
-# Matthias Schwarzott <zzam@gentoo.org> (3 Jul 2009)
-# It needs libblkid provided by util-linux-2.16 not yet released
->=sys-fs/udev-142
 
 # Theo Chatzimichos <tampakrap@gentoo.org> (1 Jul 2009)
 # koffice monolithic masked, latest koffice version
@@ -1787,10 +1831,6 @@ net-misc/xsupplicant
 dev-tex/lineno
 dev-tex/SIunits
 dev-tex/floatflt
-
-# Alec Warner <antarus@gentoo.org> (05 Feb 2007)
-# Masked to security problems, use 1.23-r1 until I fix it
->=app-admin/ulogd-1.24
 
 # Michael Sterrett <mr_bones_@gentoo.org> (28 Jan 2007)
 # masked pending new beta due to bug #164186

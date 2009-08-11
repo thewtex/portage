@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4716 2009/08/10 03:48:01 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4720 2009/08/10 23:27:46 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -65,8 +65,10 @@ app-admin/syslog-ng:sql - Enable support for SQL destinations
 app-admin/system-tools-backends:policykit - Use sys-auth/policykit to gain privileges to change configuration files
 app-admin/testdisk:ntfs - Include the ability to read NTFS filesystems
 app-admin/testdisk:reiserfs - include reiserfs reading ability
-app-admin/ulogd:ip-as-string - Logs IP addresses as stings
-app-admin/ulogd:pcap - Build the PCAP plugin. Use the net-libs/libpcap library
+app-admin/ulogd:mysql - Build MYSQL output plugin to save packets in a mysql database.
+app-admin/ulogd:pcap - Build PCAP output plugin to save packets in PCAP format. Uses the net-libs/libpcap library
+app-admin/ulogd:postgres - Build PGSQL output plugin to save packets in a postgres database.
+app-admin/ulogd:sqlite - Build SQLITE3 output plugin to save packets in an sqlite database.
 app-admin/webalizer:xtended - Include the 404 extension
 app-antivirus/clamav:clamdtop - A Top like tool which shows what clamd is currently scanning amongst other things
 app-arch/cabextract:extra-tools - Install experimental tools: wince_info and wince_rename for examining and processing Windows CE installation cabinet header files; cabinfo for examining the structure of a cab file.
@@ -733,7 +735,7 @@ dev-libs/DirectFB:sysfs - Add support for the sysfs filesystem (requires Linux-2
 dev-libs/STLport:boost - Enable the usage of dev-libs/boost
 dev-libs/ace:ciao - Include Component Intergraced Ace ORB into the build of ace
 dev-libs/ace:tao - Include the ACE ORB (CORBA stuff) (called tao) into the build of ace
-dev-libs/apr:cloexec - Support for SOCK_CLOEXEC
+dev-libs/apr:older-kernels-compatibility - Enable binary compatibility with older kernels
 dev-libs/apr:urandom - Use /dev/urandom instead of /dev/random
 dev-libs/boolstuff:static - Enable static linking
 dev-libs/boost:bcp - Install the bcp tool http://www.boost.org/tools/bcp/bcp.html
@@ -771,6 +773,7 @@ dev-libs/libtomcrypt:libtommath - Use the portable math library (dev-libs/libtom
 dev-libs/libtomcrypt:tomsfastmath - Use the optimized math library (dev-libs/tomsfastmath)
 dev-libs/log4cxx:smtp - Offer SMTP support via net-libs/libesmtp
 dev-libs/nss:utils - Install utilities included with the library
+dev-libs/ntl:gf2x - Use high performance polynomial arithmetic with dev-libs/gf2x
 dev-libs/opencryptoki:tpmtok - Offer support for TPM token
 dev-libs/openct:pcsc-lite - Enable support for sys-apps/pcsc-lite
 dev-libs/openobex:irda - Enable IrDA support
@@ -1233,6 +1236,7 @@ kde-base/okular:ps - Add PostScript support
 kde-base/plasma-workspace:google-gadgets - Add google-gadgets support
 kde-base/plasma-workspace:rss - Enables building RSSNOW plasmoid (requires kde-base/kdepimlibs)
 kde-base/plasma-workspace:xcomposite - Disable this flag to enable experimental fake transparency support for plasma panel.
+kde-base/powerdevil:pm-utils - Adds support for suspend/resume the system through sys-power/pm-utils
 kde-base/pykde4:akonadi - Builds Akonadi python language bindings
 kde-base/solid:wicd - Enable Wicd wired and wireless network manager.
 kde-base/step:qalculate - Enable the libqalculate library for unit conversion
