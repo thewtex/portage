@@ -1,6 +1,37 @@
 # ChangeLog for app-admin/ulogd
 # Copyright 2002-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/ulogd/ChangeLog,v 1.54 2009/02/09 09:36:03 angelos Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/ulogd/ChangeLog,v 1.58 2009/08/11 06:35:14 wormo Exp $
+
+  11 Aug 2009; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  ulogd-1.24-r1.ebuild, ulogd-2.0.0_beta3.ebuild:
+  Only require postgres libraries rather than postgres server when 
+  PGSQL module is enabled - database for storing logs can live on 
+  another host (Thanks to Christian Bricart, bug #281054)
+
+  11 Aug 2009; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  ulogd-2.0.0_beta3.ebuild:
+  Dropping ~ppc and ~ia64 until deps get keyworded (see bug #281056)
+
+*ulogd-2.0.0_beta3 (10 Aug 2009)
+
+  10 Aug 2009; Stephanie Lockwood-Childs <wormo@gentoo.org> files/ulogd,
+  metadata.xml, -ulogd-1.23-r2.ebuild, -ulogd-2.0.0_beta2.ebuild,
+  +ulogd-2.0.0_beta3.ebuild:
+  Version bump (Thanks to parafin, bug #280450)
+  sqlite flag removed for this version because sqlite module is disabled
+  in upstream code ("#if 0" comments out the whole module)
+
+*ulogd-1.24-r1 (09 Aug 2009)
+
+  09 Aug 2009; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  files/ulogd-0.98, metadata.xml, -ulogd-1.24.ebuild, +ulogd-1.24-r1.ebuild:
+  Security (Thanks to Yar Odin, bug #225363):
+  - prevent buffer overflows
+  - configure ulogd to run as non-privileged user instead of root
+  QA (Thanks to Henrique Rodrigues for sqlite suggestion, bug #251406):
+  - switch sqlite3 flag to sqlite flag, and use slot dependency for sqlite
+  - fix plugin Makefiles to work with LDFLAGS="-Wl,O1"
+  - add runtime dependency on pcap (unconditional, pcap module always built)
 
   09 Feb 2009; Christoph Mende <angelos@gentoo.org>
   ulogd-2.0.0_beta2.ebuild:
