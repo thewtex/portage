@@ -1,19 +1,20 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-filebrowser/vdr-filebrowser-0.0.6b.ebuild,v 1.1 2008/02/02 20:51:16 hd_brummy Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-filebrowser/vdr-filebrowser-0.0.6b.ebuild,v 1.2 2009/08/10 10:26:52 zzam Exp $
 
 inherit vdr-plugin
 
 DESCRIPTION="VDR plugin: file manager plugin for moving or renaming files in VDR."
-HOMEPAGE="http://www.stud.uni-karlsruhe.de/~uqg8/vdr/filebrowser/"
-SRC_URI="http://www.stud.uni-karlsruhe.de/~uqg8/vdr/filebrowser/${P}.tgz"
+HOMEPAGE="http://vdr.nasenbaeren.net/filebrowser/"
+SRC_URI="mirror://gentoo/${P}.tgz"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND=">=media-video/vdr-1.4.0"
+RDEPEND="${DEPEND}"
 
 src_unpack() {
 	vdr-plugin_src_unpack
