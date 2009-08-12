@@ -1,4 +1,4 @@
-sci-libs/pgplot sci-libs/cfitsio
+sci-libs/pgplot sci-libs/cfitsio test? ( media-fonts/font-misc-misc media-fonts/font-cursor-misc ) X? ( x11-base/xorg-server x11-apps/xhost )
 sci-libs/pgplot sci-libs/cfitsio
 0
 ftp://ftp.atnf.csiro.au/pub/software/wcslib/wcslib-4.3.3.tar.gz
@@ -7,14 +7,14 @@ http://www.atnf.csiro.au/people/mcalabre/WCS/
 LGPL-3
 Astronomical World Coordinate System transformations library
 ~amd64 ~x86
-eutils multilib portability toolchain-funcs versionator
-
+eutils flag-o-matic multilib portability toolchain-funcs versionator virtualx
+test X
 
 
 
 2
 
-compile install prepare
+compile install prepare test
 
 
 
