@@ -2,6 +2,19 @@
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
 # $Header: /var/cvsroot/gentoo-x86/sys-apps/baselayout/ChangeLog,v 1.472 2009/05/24 19:47:02 vapier Exp $
 
+*baselayout-2.1.3 (08 Aug 2009)
+
+  08 Aug 2009; Daniel Robbins <drobbins@funtoo.org> +baselayout-2.1.3.ebuild:
+  rewrite of more parts of the ebuild to make it easier to maintain. Various
+  minor improvements over 2.1.2. One fix should allow this ebuild to merge
+  correctly during stage builds for multilib systems.
+
+*baselayout-2.1.2 (08 Aug 2009)
+
+  08 Aug 2009; Daniel Robbins <drobbins@funtoo.org> +baselayout-2.1.2.ebuild:
+  Added some more initial device nodes, made chmod run all the time on device
+  nodes and changed perms on /dev/null to 777 (was wrong before.)
+
 *baselayout-2.1.1 (01 Aug 2009)
 
   01 Aug 2009; Daniel Robbins <drobbins@funtoo.org> +baselayout-2.1.1.ebuild:

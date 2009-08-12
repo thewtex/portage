@@ -1,4 +1,4 @@
-dev-lang/python =www-servers/apache-2*
+dev-lang/python =www-servers/apache-2* =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
 dev-lang/python =www-servers/apache-2*
 0
 mirror://apache/httpd/modpython/mod_python-3.3.1.tgz
@@ -7,14 +7,14 @@ http://www.modpython.org/
 Apache-1.1
 An Apache2 module providing an embedded Python interpreter.
 alpha amd64 ia64 ~mips ppc sparc x86
-alternatives apache-module depend.apache eutils multilib portability python toolchain-funcs
+alternatives apache-module autotools depend.apache eutils libtool multilib portability python toolchain-funcs
 
 
 
 
+2
 
-
-compile install postinst postrm setup test unpack
+compile configure install postinst postrm prepare setup test
 
 
 

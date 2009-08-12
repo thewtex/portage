@@ -1,8 +1,10 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dialup/mwavem/mwavem-2.0-r1.ebuild,v 1.2 2009/03/13 20:26:59 mrness Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dialup/mwavem/mwavem-2.0-r1.ebuild,v 1.4 2009/08/08 08:58:20 ssuominen Exp $
 
-inherit autotools
+EAPI="2"
+
+inherit autotools eutils
 
 DESCRIPTION="User level application for IBM Mwave modem"
 HOMEPAGE="http://oss.software.ibm.com/acpmodem/"
@@ -10,19 +12,17 @@ SRC_URI="ftp://www-126.ibm.com/pub/acpmodem/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="~amd64 x86"
 IUSE=""
 
-src_unpack() {
-	unpack ${A}
-
-	cd "${S}"
+src_prepare() {
 	epatch "${FILESDIR}"/${P}-gentoo.patch
+	epatch "${FILESDIR}"/${P}-glibc-2.10.patch
 	eautoreconf
 }
 
 src_install() {
-	make DESTDIR="${D}" install || die "make install failed"
+	emake DESTDIR="${D}" install || die "emake install failed"
 
 	exeinto /usr/sbin
 	doexe "${FILESDIR}/mwave-dev-handler"
@@ -31,7 +31,7 @@ src_install() {
 	newins "${FILESDIR}/mwave.devfs" mwave
 
 	insinto /etc/modprobe.d
-	newins "${FILESDIR}/mwave.modules" mwave
+	newins "${FILESDIR}/mwave.modules" mwave.conf
 
 	dodoc AUTHORS ChangeLog FAQ NEWS README README.devfs THANKS
 	docinto doc
