@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-astronomy/celestia/celestia-1.5.1.ebuild,v 1.10 2009/05/24 09:40:56 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-astronomy/celestia/celestia-1.5.1.ebuild,v 1.11 2009/08/12 17:04:35 bicatali Exp $
 
 EAPI=1
 inherit eutils flag-o-matic gnome2 kde-functions autotools
@@ -23,11 +23,11 @@ RDEPEND="virtual/glu
 		>=x11-libs/gtk+-2.6
 		>=x11-libs/gtkglext-1.0
 	) ) )
-	gnome? ( !kde? (
+	gnome? (
 		>=x11-libs/gtk+-2.6
 		>=x11-libs/gtkglext-1.0
 		>=gnome-base/libgnomeui-2.0
-	) )
+	)
 	kde?  ( !gnome? ( kde-base/kdelibs:3.5 ) )
 	!gtk? ( !gnome? ( !kde? ( virtual/glut ) ) )
 	arts? ( kde-base/arts )
@@ -112,6 +112,12 @@ src_unpack() {
 			iconv -f iso-8859-1 ${i} -t utf8 > ${i}.utf8
 			mv ${i}.utf8 ${i}
 		done
+		iconv -f iso-8859-1 -t utf8 start_de.cel > start_de.cel.utf8
+		iconv -f cp1251 -t utf8 guide_ru.cel > guide_ru.cel.utf8
+		iconv -f SHIFT-JIS -t utf8 guide_ja.cel > guide_ja.cel.utf8
+		mv start_de.cel.utf8 start_de.cel
+		mv guide_ru.cel.utf8 guide_ru.cel
+		mv guide_ja.cel.utf8 guide_ja.cel
 		popd > /dev/null
 	fi
 
