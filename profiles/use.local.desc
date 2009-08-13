@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4713 2009/08/08 16:47:43 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4726 2009/08/13 01:47:47 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -72,8 +72,11 @@ app-admin/system-tools-backends:policykit - Use sys-auth/policykit to gain privi
 app-admin/testdisk:ntfs - Include the ability to read NTFS filesystems
 app-admin/testdisk:reiserfs - include reiserfs reading ability
 app-admin/ulogd:ip-as-string - Logs IP addresses as stings
-app-admin/ulogd:pcap - Build the PCAP plugin. Use the net-libs/libpcap library
 app-admin/vlogger:dbi - Enable support for DBI
+app-admin/ulogd:mysql - Build MYSQL output plugin to save packets in a mysql database.
+app-admin/ulogd:pcap - Build PCAP output plugin to save packets in PCAP format. Uses the net-libs/libpcap library
+app-admin/ulogd:postgres - Build PGSQL output plugin to save packets in a postgres database.
+app-admin/ulogd:sqlite - Build SQLITE3 output plugin to save packets in an sqlite database.
 app-admin/webalizer:xtended - Include the 404 extension
 app-antivirus/clamav:clamdtop - A Top like tool which shows what clamd is currently scanning amongst other things
 app-arch/cabextract:extra-tools - Install experimental tools: wince_info and wince_rename for examining and processing Windows CE installation cabinet header files; cabinfo for examining the structure of a cab file.
@@ -214,7 +217,7 @@ app-emacs/bbdb:tex - Install plain TeX support files
 app-emacs/company-mode:semantic - Install backend for semantic (app-emacs/cedet)
 app-emacs/delicious:planner - Include support for app-emacs/planner
 app-emacs/easypg:gnus - Include support for the Gnus newsreader
-app-emacs/emacs-common-gentoo:emacs23icons - Install Emacs 23 style icons
+app-emacs/emacs-common-gentoo:emacs22icons - Install Emacs 22 style icons
 app-emacs/emhacks:jde - Enable support for Java Development Environment
 app-emacs/python-mode:pymacs - Enable Emacs extensions for Python as scripting language
 app-emacs/remember:bbdb - Include support for app-emacs/bbdb
@@ -769,6 +772,7 @@ dev-libs/DirectFB:sysfs - Add support for the sysfs filesystem (requires Linux-2
 dev-libs/STLport:boost - Enable the usage of dev-libs/boost
 dev-libs/ace:ciao - Include Component Intergraced Ace ORB into the build of ace
 dev-libs/ace:tao - Include the ACE ORB (CORBA stuff) (called tao) into the build of ace
+dev-libs/apr:older-kernels-compatibility - Enable binary compatibility with older kernels
 dev-libs/apr:urandom - Use /dev/urandom instead of /dev/random
 dev-libs/boolstuff:static - Enable static linking
 dev-libs/boost:bcp - Install the bcp tool http://www.boost.org/tools/bcp/bcp.html
@@ -809,6 +813,7 @@ dev-libs/libwiimote:force - Enable force feedback
 dev-libs/libwiimote:tilt - Enable tilt
 dev-libs/log4cxx:smtp - Offer SMTP support via net-libs/libesmtp
 dev-libs/nss:utils - Install utilities included with the library
+dev-libs/ntl:gf2x - Use high performance polynomial arithmetic with dev-libs/gf2x
 dev-libs/opencryptoki:tpmtok - Offer support for TPM token
 dev-libs/openct:pcsc-lite - Enable support for sys-apps/pcsc-lite
 dev-libs/openobex:irda - Enable IrDA support
@@ -897,7 +902,6 @@ dev-python/ldaptor:web - enable the web front end for ldaptor (uses dev-python/n
 dev-python/markdown:pygments - Enable fancy pygments support
 dev-python/matplotlib:excel - Pull dev-python/xlwt for the exceltools toolkit
 dev-python/matplotlib:traits - Pull dev-python/traits for the experimental enthought traits support
-dev-python/nose:twisted - install nose.twistedtools to integrate tests with twisted
 dev-python/paste:flup - enable support for flup (and therefore for various wgsi servers and middleware)
 dev-python/paste:openid - enable OpenID support
 dev-python/psycopg:mxdatetime - choose MX DateTime support instead of built-in datetime
@@ -1333,6 +1337,7 @@ kde-base/okular:ps - Add PostScript support
 kde-base/plasma-workspace:google-gadgets - Add google-gadgets support
 kde-base/plasma-workspace:rss - Enables building RSSNOW plasmoid (requires kde-base/kdepimlibs)
 kde-base/plasma-workspace:xcomposite - Disable this flag to enable experimental fake transparency support for plasma panel.
+kde-base/powerdevil:pm-utils - Adds support for suspend/resume the system through sys-power/pm-utils
 kde-base/pykde4:akonadi - Builds Akonadi python language bindings
 kde-base/solid:wicd - Enable Wicd wired and wireless network manager.
 kde-base/step:qalculate - Enable the libqalculate library for unit conversion
@@ -1495,13 +1500,15 @@ media-gfx/exiv2:contrib -  Build additional contrib components
 media-gfx/exiv2:xmp -  Adds support for Adobe XMP 
 media-gfx/fim:postscript - Install a postscript wrapper script
 media-gfx/fim:screen - Add (experimental!) support for running under screen
-media-gfx/fyre:cluster - Add support for cluster rendering
 media-gfx/fontforge:cjk - Controls whether fontforge understands the gb12345 encoding and installs cidmap package to edit CID-keyed fonts
 media-gfx/fontforge:pango - Enable pango font rendering
 media-gfx/fontforge:pasteafter - Controls whether fontforge has a paste after command (Useful for making words?). This is kind of fun, but it isn't useful for normal fonts.
 media-gfx/fontforge:tilepath - Controls whether fontforge has a tile path command (a variant of expand stroke) This is useful for very decorative fonts, most people won't want it.
 media-gfx/fontforge:truetype-debugger - Enable truetype debugger in fontforge
 media-gfx/fontforge:type3 - Build in support for type3/svg fonts containing multilayered drawing with strokes, fills, images, etc. Type3 fonts are only supported by postscript printers (not by most windowing displays). They are capable of more exotic images than normal fonts but require much more effort to support.
+media-gfx/fyre:cluster - Add support for cluster rendering
+media-gfx/f-spot:beagle - Enable app-misc/beagle support for searches
+media-gfx/f-spot:gconf - Enable GConf settings backend
 media-gfx/geeqie:xmp - Adds support for XMP metadata
 media-gfx/gimp:smp -  Enable support for multiprocessors 
 media-gfx/gimp:webkit -  Enable the webkit rendering engine 
@@ -2354,7 +2361,6 @@ net-im/kadu:config_wizard - Enables configuration wizard module
 net-im/kadu:dragonplayer - Enables kde-base/dragonplayer KDE4 media player support
 net-im/kadu:extramodules - Enables building of extra modules
 net-im/kadu:mail - Enables mail module
-net-im/kadu:phonon - Phonon sound support
 net-im/kadu:powerkadu - Installs extra powerkadu modules
 net-im/kadu:sms - Enables SMS sending plugin
 net-im/kadu:speech - Enables speech module
@@ -2428,6 +2434,7 @@ net-irc/xchat:xchatdccserver - Enables support for the /dccserver command via a 
 net-irc/xchat:xchatnogtk - Disables building the GTK front end to XChat
 net-irc/xchat-gnome:sound - Enable sound event support with media-libs/libcanberra
 net-irc/xchat-xsys:audacious - Enables media-sound/audacious integration
+net-irc/znc:ares - Enables support for asynchronous DNS using the c-ares library
 net-irc/znc:nomodules - Don't build modules
 net-libs/aqbanking:chipcard -  Enable support for DDV/RSA-chipcards 
 net-libs/aqbanking:dtaus -  Enable dtaus backend 
@@ -2734,6 +2741,7 @@ net-p2p/ktorrent:logviewer - Enable the logviewer plugin
 net-p2p/ktorrent:mediaplayer - Enable the mediaplayer plugin
 net-p2p/ktorrent:scanfolder - Enable the scanfolder plugin
 net-p2p/ktorrent:search - Enable the search plugin
+net-p2p/ktorrent:shutdown - Shutdown when done
 net-p2p/ktorrent:stats - Enable the statistics plugin
 net-p2p/ktorrent:upnp - Enable the uphp plugin
 net-p2p/ktorrent:webinterface - Enable the webinterface plugin
@@ -3109,6 +3117,7 @@ sys-cluster/openmpi:heterogeneous - Enable features required for heterogeneous p
 sys-cluster/openmpi:mpi-threads - Enable MPI_THREAD_MULTIPLE
 sys-cluster/openmpi:pbs - Add support for the Portable Batch System (PBS)
 sys-cluster/openmpi:romio - Build the ROMIO MPI-IO component
+sys-cluster/openmpi:vt - Enable bundled VampirTrace support
 sys-cluster/pvfs2:apidocs - Build API documentation directly from the code using doxygen
 sys-cluster/pvfs2:server - Enable compilation of server code
 sys-cluster/torque:cpusets - Enable pbs_mom to utilize linux cpusets if available.
@@ -3394,6 +3403,8 @@ x11-misc/fspanel:xft - Build with support for XFT font renderer (x11-libs/libXft
 x11-misc/google-gadgets:soup - Enables XML HTTP request extension based on net-libs/libsoup
 x11-misc/google-gadgets:webkit - Enables browser element and script runtime based on net-libs/webkit-gtk
 x11-misc/rednotebook:libyaml - enable libyaml support
+x11-misc/shutter:drawing - Enables drawing tool
+x11-misc/shutter:webphoto - Enables screenshots of websites
 x11-misc/slim:screenshot - Enable screenshot support (using media-gfx/imagemagick)
 x11-misc/tint2:battery - Enable battery status plugin
 x11-misc/tint2:examples - Install tint2rc examples

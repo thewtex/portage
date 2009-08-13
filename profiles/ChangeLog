@@ -1,10 +1,238 @@
 # ChangeLog for profile directory
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.3043 2009/08/08 19:31:37 jmbsvicetto Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.3117 2009/08/13 00:20:13 tgurr Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  13 Aug 2009; Timo Gurr <tgurr@gentoo.org> package.mask:
+  Mask Mumble 1.2.0 snapshots for testing.
+
+  12 Aug 2009; Alex Alexander <wired@gentoo.org> package.mask:
+  masked ktorrent beta versions
+
+  12 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Unmask cgal-python since it's fixed.
+
+  12 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> base/virtuals,
+  default-bsd/virtuals, default/bsd/virtuals, embedded/virtuals:
+  Move old-style eject virtual to new-style.
+
+  12 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Unmask redland 1.0.9 wrt #281226.
+
+  12 Aug 2009; Steve Dibb <beandog@gentoo.org>
+  targets/desktop/make.defaults:
+  Add dts to default desktop profile, also a default codec for DVDs
+
+  12 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Unmask vis5d+ because it has been fixed.
+
+  12 Aug 2009; Alex Legler <a3li@gentoo.org> package.mask:
+  Taking phpgroupware out of p.mask as there is a fixed version now. Bug
+  278864.
+
+  11 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask gst-plugins-fluendo-mpegdemux for removal.
+
+  11 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask beast and beast-data for removal.
+
+  11 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask cgal-python and vis5d+ for removal.
+
+  11 Aug 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Masking app-i18n/canuum for QA removal.
+
+  10 Aug 2009; Torsten Veller <tove@gentoo.org> package.mask:
+  New core modules wrt perl-5.10.1: parent and Parse-CPAN-Meta
+  Move them from dev-perl to perl-core
+
+  10 Aug 2009; Federico Ferri <mescalinum@gentoo.org> package.mask:
+  mask quirc wrt bug #249468
+
+  10 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask gmpc-lyricwiki for removal.
+
+  10 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask lurker for removal.
+
+  10 Aug 2009; Víctor Ostorga <vostorga@gentoo.org> package.mask:
+  Removing =dev-libs/dietlibc-0.32 since it is no longer in the tree
+
+  10 Aug 2009; Matthias Schwarzott <zzam@gentoo.org> package.mask:
+  Unmask udev-145, as util-linux is in tree, bug #279491.
+
+  10 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask =dev-libs/dietlibc-0.32 (acked by hollow).
+
+  10 Aug 2009; Alexis Ballier <aballier@gentoo.org> package.mask:
+  mask latest libass that has api changes
+
+  10 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Removed d4x from tree.
+
+  10 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask ufo for removal.
+
+  10 Aug 2009; Stephanie Lockwood-Childs <wormo@gentoo.org> package.mask:
+  Unmasked ulogd, since security patch has now been applied (bug #225363)
+
+  09 Aug 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Masking net-dialup/penggy for QA removal.
+
+  09 Aug 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Also mask raccess4vbox3.
+
+  09 Aug 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Masking net-fs/sfs for QA removal.
+
+  09 Aug 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Masking dev-lang/smarteiffel for QA removal.
+
+  09 Aug 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Masking sci-mathematics/Macaulay2 for QA removal.
+
+  09 Aug 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Masking dev-php/phpdbg-client for QA removal.
+
+  09 Aug 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Masking sci-chemistry/kemistry for QA removal.
+
+  09 Aug 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Masking app-backup/afbackup-client for QA removal.
+
+  09 Aug 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Masking app-dicts/ebview for QA removal.
+
+  09 Aug 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Masking net-dialup/isdn4k-utils for QA removal.
+
+  09 Aug 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Masking dev-util/pilrc for QA removal.
+
+  09 Aug 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Masking dev-tinyos/ncc for QA removal.
+
+  09 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask realbasic for removal.
+
+  09 Aug 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Masking app-admin/killproc for QA removal.
+
+  09 Aug 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Masking dev-dotnet/pnet for QA removal.
+
+  09 Aug 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Masking app-i18n/minichinput for QA removal.
+
+  09 Aug 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Masking <net-misc/tsclient-2 for QA removal.
+
+  09 Aug 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Masking dev-libs/libowfat for QA removal.
+
+  09 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Removed jscalltree from tree.
+
+  09 Aug 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Masking dev-dotnet/monouml for QA removal.
+
+  09 Aug 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Masking app-text/omegat for QA removal.
+
+  09 Aug 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Masking net-fs/fex for QA removal.
+
+  09 Aug 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Masking net-firewall/tuxfrw for QA removal.
+
+  09 Aug 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Masking dev-util/cweb for QA removal.
+
+  09 Aug 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Masking dev-java/rjava for QA removal.
+
+  09 Aug 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Masking sci-chemistry/maid for QA removal.
+
+  09 Aug 2009; Chris PeBenito <pebenito@gentoo.org> profiles.desc:
+  Update profiles.desc for selinux profiles.
+
+  09 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask ochusha for removal.
+
+  09 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask aacgain for removal.
+
+  09 Aug 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Masking net-misc/bo2k_console for QA removal.
+
+  09 Aug 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Masking app-crypt/tpm-emulator for QA removal.
+
+  09 Aug 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Masking sys-process/minit for QA removal.
+
+  09 Aug 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Masking dev-util/sgb for QA removal.
+
+  09 Aug 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Remove cisco-aironet-client-utils from mask (gone).
+
+  09 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Removed hdump from tree. Unmask hsc since it builds again.
+
+  09 Aug 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Masking net-misc/ndtpd for QA removal.
+
+  09 Aug 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Masking net-misc/bo2k_plugins for QA removal.
+
+  09 Aug 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Masking net-irc/mistbot for QA removal.
+
+  09 Aug 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Masking net-analyzer/trafd for QA removal.
+
+  09 Aug 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Masking media-libs/libmovtar for QA removal.
+
+  09 Aug 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Masking dev-libs/libredblack for QA removal.
+
+  09 Aug 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Masking x11-misc/xac for QA removal.
+
+  09 Aug 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Masking sys-fs/ocfs2-tools for QA removal.
+
+  09 Aug 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Masking net-fs/am-utils for QA removal.
+
+  09 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask pyxfce for removal.
+
+  09 Aug 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Masking dev-libs/libexploit for QA removal.
+
+  09 Aug 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Masking dev-db/sqsh for QA removal.
+
+  09 Aug 2009; Samuli Suominen <ssuominen@gentoo.org>
+  targets/desktop/make.defaults:
+  Enable flac by default (acked by likewhoa).
+
+  09 Aug 2009; Samuli Suominen <ssuominen@gentoo.org>
+  targets/desktop/make.defaults:
+  Enable USE a52 aac mp4 x264 and xvid by default (acked by beandog).
+
+  09 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask xfce-base/xfce4-extras for removal.
+
+  09 Aug 2009; Michał Januszewski <spock@gentoo.org> package.mask:
+  Add a mask for live git versions of pycuda and pytools.
 
   08 Aug 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
   package.mask:
