@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4722 2009/08/11 19:07:50 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4726 2009/08/13 01:47:47 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -2434,6 +2434,7 @@ net-irc/xchat:xchatdccserver - Enables support for the /dccserver command via a 
 net-irc/xchat:xchatnogtk - Disables building the GTK front end to XChat
 net-irc/xchat-gnome:sound - Enable sound event support with media-libs/libcanberra
 net-irc/xchat-xsys:audacious - Enables media-sound/audacious integration
+net-irc/znc:ares - Enables support for asynchronous DNS using the c-ares library
 net-irc/znc:nomodules - Don't build modules
 net-libs/aqbanking:chipcard -  Enable support for DDV/RSA-chipcards 
 net-libs/aqbanking:dtaus -  Enable dtaus backend 
@@ -2740,6 +2741,7 @@ net-p2p/ktorrent:logviewer - Enable the logviewer plugin
 net-p2p/ktorrent:mediaplayer - Enable the mediaplayer plugin
 net-p2p/ktorrent:scanfolder - Enable the scanfolder plugin
 net-p2p/ktorrent:search - Enable the search plugin
+net-p2p/ktorrent:shutdown - Shutdown when done
 net-p2p/ktorrent:stats - Enable the statistics plugin
 net-p2p/ktorrent:upnp - Enable the uphp plugin
 net-p2p/ktorrent:webinterface - Enable the webinterface plugin
@@ -3115,6 +3117,7 @@ sys-cluster/openmpi:heterogeneous - Enable features required for heterogeneous p
 sys-cluster/openmpi:mpi-threads - Enable MPI_THREAD_MULTIPLE
 sys-cluster/openmpi:pbs - Add support for the Portable Batch System (PBS)
 sys-cluster/openmpi:romio - Build the ROMIO MPI-IO component
+sys-cluster/openmpi:vt - Enable bundled VampirTrace support
 sys-cluster/pvfs2:apidocs - Build API documentation directly from the code using doxygen
 sys-cluster/pvfs2:server - Enable compilation of server code
 sys-cluster/torque:cpusets - Enable pbs_mom to utilize linux cpusets if available.
@@ -3400,6 +3403,8 @@ x11-misc/fspanel:xft - Build with support for XFT font renderer (x11-libs/libXft
 x11-misc/google-gadgets:soup - Enables XML HTTP request extension based on net-libs/libsoup
 x11-misc/google-gadgets:webkit - Enables browser element and script runtime based on net-libs/webkit-gtk
 x11-misc/rednotebook:libyaml - enable libyaml support
+x11-misc/shutter:drawing - Enables drawing tool
+x11-misc/shutter:webphoto - Enables screenshots of websites
 x11-misc/slim:screenshot - Enable screenshot support (using media-gfx/imagemagick)
 x11-misc/tint2:battery - Enable battery status plugin
 x11-misc/tint2:examples - Install tint2rc examples
