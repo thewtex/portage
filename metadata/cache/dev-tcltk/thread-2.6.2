@@ -1,5 +1,5 @@
-gdbm? ( sys-libs/gdbm ) dev-lang/tcl =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
-gdbm? ( sys-libs/gdbm ) dev-lang/tcl
+gdbm? ( sys-libs/gdbm ) dev-lang/tcl[threads] =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+gdbm? ( sys-libs/gdbm ) dev-lang/tcl[threads]
 0
 mirror://sourceforge/tcl/thread2.6.2.tar.gz
 test
@@ -12,9 +12,9 @@ gdbm
 
 
 
+2
 
-
-compile install setup unpack
+configure install prepare
 
 
 
