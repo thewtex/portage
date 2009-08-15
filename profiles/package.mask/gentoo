@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10327 2009/08/13 19:41:34 halcy0n Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10330 2009/08/14 17:36:38 ssuominen Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,11 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Samuli Suominen <ssuominen@gentoo.org> (14 Aug 2009)
+# Unresolved building issues wrt bugs #276246, #117523 and #213804.
+# Masked for removal. Please comment on #276246 if you still need this.
+sys-libs/uclibc++
 
 # Timo Gurr <tgurr@gentoo.org> (13 Aug 2009)
 # Mask Mumble 1.2.0 snapshots for testing.
@@ -754,12 +759,6 @@ media-sound/gnusound
 >=x11-drivers/nvidia-drivers-190.18
 >=media-video/nvidia-settings-190.18
 
-# Samuli Suominen <ssuominen@gentoo.org> (26 Jul 2009)
-# Deprecated musepack-tools (SV7). Masked for removal.
-# Replaced by >=media-sound/musepack-tools-444 (SV8).
-media-sound/mppenc
-=media-sound/musepack-tools-1*
-
 # Jeroen Roovers <jer@gentoo.org> (25 Jul 2009)
 # Mask new betas with bittorrent support
 >net-ftp/lftp-3.99
@@ -1151,11 +1150,6 @@ dev-db/framerd
 #
 # Removal pending 13 August 2009
 net-misc/wso2-wsf-c
-
-# Hans de Graaff <graaff@gentoo.org> (13 Jun 2009)
-# dev-util/freeride ships broken elf shared object files
-# that we cannot rebuild properly, see bug #251935
-dev-util/freeride
 
 # Markus Meier <maekke@gentoo.org> (13 Jun 2009)
 # mask pre releases of media-gfx/inkscape-0.47
