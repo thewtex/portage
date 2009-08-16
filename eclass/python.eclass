@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/python.eclass,v 1.63 2009/08/14 21:22:47 arfrever Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/python.eclass,v 1.65 2009/08/15 23:32:58 arfrever Exp $
 
 # @ECLASS: python.eclass
 # @MAINTAINER:
@@ -10,8 +10,8 @@
 # @BLURB: A Utility Eclass that should be inherited by anything that deals with Python or Python modules.
 # @DESCRIPTION:
 # Some useful functions for dealing with python.
-inherit alternatives multilib
 
+inherit multilib
 
 if [[ -n "${NEED_PYTHON}" ]] ; then
 	PYTHON_ATOM=">=dev-lang/python-${NEED_PYTHON}"
@@ -366,7 +366,7 @@ python_execute_function() {
 # @DESCRIPTION:
 # Makes sure PYTHON_USE_WITH or PYTHON_USE_WITH_OR listed use flags
 # are respected. Only exported if one of those variables is set.
-if ! has ${EAPI} 0 1 && [[ -n ${PYTHON_USE_WITH} || -n ${PYTHON_USE_WITH_OR} ]]; then
+if ! has ${EAPI:-0} 0 1 && [[ -n ${PYTHON_USE_WITH} || -n ${PYTHON_USE_WITH_OR} ]]; then
 	python_pkg_setup_fail() {
 		eerror "${1}"
 		die "${1}"
@@ -479,15 +479,6 @@ python_get_libdir() {
 # Run without arguments, returns the Python site-packages directory.
 python_get_sitedir() {
 	echo "$(python_get_libdir)/site-packages"
-}
-
-# @FUNCTION: python_makesym
-# @DESCRIPTION:
-# Run without arguments, it will create the /usr/bin/python symlinks
-# to the latest installed version
-python_makesym() {
-	alternatives_auto_makesym "/usr/bin/python" "python[0-9].[0-9]"
-	alternatives_auto_makesym "/usr/bin/python2" "python2.[0-9]"
 }
 
 # @FUNCTION: python_tkinter_exists
