@@ -112,13 +112,6 @@ PYTHON() {
 # @DESCRIPTION:
 # Make sure PYTHON_ABIS variable has valid value.
 validate_PYTHON_ABIS() {
-	# Ensure that /usr/bin/python and /usr/bin/python-config are valid.
-	if [[ "$(readlink /usr/bin/python)" != "python-wrapper" ]]; then
-		die "/usr/bin/python isn't valid symlink"
-	fi
-	if [[ "$(</usr/bin/python-config)" != *"Gentoo python-config wrapper script"* ]]; then
-		die "/usr/bin/python-config isn't valid script"
-	fi
 
 	# USE_${ABI_TYPE^^} and RESTRICT_${ABI_TYPE^^}_ABIS variables hopefully will be included in EAPI >= 4.
 	if [[ -z "${PYTHON_ABIS}" ]] && has "${EAPI:-0}" 0 1 2 3; then
