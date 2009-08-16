@@ -1,5 +1,5 @@
-virtual/libc || ( >=app-i18n/skk-jisyo-200705 app-i18n/skk-jisyo-cdb ) >=sys-apps/sed-4
-virtual/libc || ( >=app-i18n/skk-jisyo-200705 app-i18n/skk-jisyo-cdb )
+|| ( >=app-i18n/skk-jisyo-200705[cdb] app-i18n/skk-jisyo-cdb ) >=sys-apps/sed-4
+|| ( >=app-i18n/skk-jisyo-200705[cdb] app-i18n/skk-jisyo-cdb )
 0
 http://www3.big.or.jp/~sian/linux/products/multiskkserv-20020201.tar.bz2 http://cr.yp.to/cdb/cdb-0.75.tar.gz
 
@@ -12,9 +12,9 @@ eutils fixheadtails multilib portability toolchain-funcs
 
 
 virtual/skkserv
+2
 
-
-compile install postinst setup unpack
+configure install postinst prepare
 
 
 

@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10327 2009/08/13 19:41:34 halcy0n Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10332 2009/08/15 22:33:38 vostorga Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,11 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Samuli Suominen <ssuominen@gentoo.org> (14 Aug 2009)
+# Unresolved building issues wrt bugs #276246, #117523 and #213804.
+# Masked for removal. Please comment on #276246 if you still need this.
+sys-libs/uclibc++
 
 # Timo Gurr <tgurr@gentoo.org> (13 Aug 2009)
 # Mask Mumble 1.2.0 snapshots for testing.
@@ -260,18 +265,10 @@ app-i18n/minichinput
 # Diego E. Pettenò <flameeyes@gentoo.org> (09 Aug 2009)
 #  on behalf of QA team
 #
-# Removal of dev-libs/libowfat because it fails to build (bug
-# #272507) and lacks a proper Gentoo maintainer. Dependencies
-# follow the mask.
-#
-# sys-process/minit is already masked for removal
-#
-# net-misc/slidentd also links statically (bug #273326).
+# net-misc/slidentd links statically (bug #273326).
 #
 # Removal on 2009-10-08
-dev-libs/libowfat
 net-misc/slidentd
-www-servers/gatling
 
 # Diego E. Pettenò <flameeyes@gentoo.org> (09 Aug 2009)
 #  on behalf of QA team
@@ -469,10 +466,6 @@ sys-fs/ocfs2-tools
 #
 # Removal on 2009-10-08
 net-fs/am-utils
-
-# Samuli Suominen <ssuominen@gentoo.org> (09 Aug 2009)
-# Needs Xfce 4.4 style xfce-mcs-manager. Masked for removal.
-dev-python/pyxfce
 
 # Diego E. Pettenò <flameeyes@gentoo.org> (09 Aug 2009)
 #  on behalf of QA team
@@ -753,12 +746,6 @@ media-sound/gnusound
 # Mask for beta versions of the NVIDIA drivers.
 >=x11-drivers/nvidia-drivers-190.18
 >=media-video/nvidia-settings-190.18
-
-# Samuli Suominen <ssuominen@gentoo.org> (26 Jul 2009)
-# Deprecated musepack-tools (SV7). Masked for removal.
-# Replaced by >=media-sound/musepack-tools-444 (SV8).
-media-sound/mppenc
-=media-sound/musepack-tools-1*
 
 # Jeroen Roovers <jer@gentoo.org> (25 Jul 2009)
 # Mask new betas with bittorrent support
@@ -1151,11 +1138,6 @@ dev-db/framerd
 #
 # Removal pending 13 August 2009
 net-misc/wso2-wsf-c
-
-# Hans de Graaff <graaff@gentoo.org> (13 Jun 2009)
-# dev-util/freeride ships broken elf shared object files
-# that we cannot rebuild properly, see bug #251935
-dev-util/freeride
 
 # Markus Meier <maekke@gentoo.org> (13 Jun 2009)
 # mask pre releases of media-gfx/inkscape-0.47
