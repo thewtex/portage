@@ -1,6 +1,6 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/clustalw/clustalw-1.83-r2.ebuild,v 1.1 2008/08/27 22:51:42 ribosome Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/clustalw/clustalw-1.83-r2.ebuild,v 1.4 2009/08/18 17:24:32 weaver Exp $
 
 inherit toolchain-funcs
 
@@ -15,7 +15,7 @@ IUSE=""
 
 S="${WORKDIR}"/${PN}${PV}
 
-src_unpack(){
+src_unpack() {
 	unpack ${A}
 	cd "${S}"
 	sed -i -e "s/CC	= cc/CC	= $(tc-getCC)/" \
