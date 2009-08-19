@@ -281,6 +281,8 @@ pkg_postinst() {
 	# this has limited value if udev is running (and thus /dev is already
 	# mounted,) we do it anyway as a cautionary measure.
 
+	cd ${ROOT}/dev || die "can't change directories to /dev"
+
 	! [ -c console ] && rm -rf console
 	[ -e console ] || { mknod console c 5 1; chmod 600 console; } || die
 
