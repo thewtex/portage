@@ -1,10 +1,34 @@
 # ChangeLog for profile directory
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.3137 2009/08/18 18:16:32 bicatali Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.3141 2009/08/20 03:23:18 darkside Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  20 Aug 2009; Jeremy Olexa <darkside@gentoo.org>
+  hardened/linux/package.mask, hardened/package.mask:
+  p.mask dev-python/skype4py and net-im/skysentials on hardened because they
+  depend on masked skype
+
+  19 Aug 2009; Ulrich Mueller <ulm@gentoo.org> arch/alpha/use.mask,
+  arch/sparc-fbsd/use.mask, arch/sparc/package.use.mask,
+  arch/sparc/use.mask, arch/x86-fbsd/package.use.mask,
+  arch/x86-fbsd/use.mask, default-bsd/fbsd/6.2/sparc/use.mask,
+  default-bsd/fbsd/6.2/x86/package.use.mask,
+  default-bsd/fbsd/6.2/x86/use.mask, default-linux/alpha/use.mask,
+  default-linux/sparc/package.use.mask, default-linux/sparc/use.mask:
+  Add valgrind to use.mask, and remove from package.use.mask where
+  appropriate. Bug 281922.
+
+  19 Aug 2009; Ulrich Mueller <ulm@gentoo.org> package.mask,
+  prefix/package.mask:
+  Mask app-admin/eselect-1.2_rc* for testing, and unmask it in prefix.
+
+  19 Aug 2009; MATSUU Takuto <matsuu@gentoo.org> package.mask,
+  releases/2008.0/package.mask:
+  move >=x11-libs/xcb-util-0.3.4 and >=x11-wm/awesome-3.3 to the 2008.0
+  profiles.
 
   18 Aug 2009; Sébastien Fabbro <bicatali@gentoo.org> package.mask:
   Masked dev-python/basemap-data for removal
