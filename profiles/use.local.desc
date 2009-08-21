@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4734 2009/08/19 09:27:43 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4737 2009/08/20 19:09:34 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -113,6 +113,7 @@ app-cdr/cdrdao:pccts - Use dev-util/pccts instead of the built-in substitution
 app-cdr/cdrkit:hfs - Provide building of HFS (Apple) CD-images
 app-cdr/disc-cover:cdrom - Enable audio CD support. This is not needed to make www-apps/disc-cover work.
 app-cdr/k3b:emovix - Enable burning support for eMoviX images
+app-cdr/k3b:wav - Enable support for reading WAVE files
 app-cdr/mybashburn:normalize - Add support for normalizing audio file volume levels
 app-cdr/serpentine:muine - Enable support for the GNOME music player Muine
 app-cdr/xfburn:xfce - Adds integration with Xfce4 desktop environment
@@ -1163,7 +1164,10 @@ kde-base/kcontrol:logitech-mouse -  Build the Control Center module to configure
 kde-base/kdeadmin-meta:lilo - Install lilo-config, a frontend for the lilo boot loader
 kde-base/kdeartwork-kscreensaver:eigen - Enable various aritmethic screensavers which use Eigen2 for computations.
 kde-base/kdebase:logitech-mouse - Build the Control Center module to configure logitech mice
-kde-base/kdebindings-csharp:qscintilla -  Add support for qscintilla 
+kde-base/kdebindings-csharp:akonadi - Compile bindings for kde-base/akonadi.
+kde-base/kdebindings-csharp:phonon - Compile bindings for media-sound/phonon.
+kde-base/kdebindings-csharp:qscintilla - Compile bindings for x11-libs/qscintilla.
+kde-base/kdebindings-csharp:webkit - Compile bindings for x11-libs/webkit.
 kde-base/kdeedu:kig-scripting - Support Python scripting in kig
 kde-base/kdeedu:solver - Enable Kalzium ocaml equation solver
 kde-base/kdegraphics:kpathsea - Enable integration with kpathsea search library (TeX related)
@@ -1240,6 +1244,12 @@ kde-base/plasma-workspace:rss - Enables building RSSNOW plasmoid (requires kde-b
 kde-base/plasma-workspace:xcomposite - Disable this flag to enable experimental fake transparency support for plasma panel.
 kde-base/powerdevil:pm-utils - Adds support for suspend/resume the system through sys-power/pm-utils
 kde-base/pykde4:akonadi - Builds Akonadi python language bindings
+kde-base/smoke:akonadi - Compile bindings for kde-base/akonadi.
+kde-base/smoke:kdevplatform - Compile bindings for dev-util/kdevplatform.
+kde-base/smoke:phonon - Compile bindings for media-sound/phonon.
+kde-base/smoke:qscintilla - Compile bindings for x11-libs/qscintilla.
+kde-base/smoke:qwt - Compile bindings for x11-libs/qwt.
+kde-base/smoke:webkit - Compile bindings for x11-libs/webkit.
 kde-base/solid:wicd - Enable Wicd wired and wireless network manager.
 kde-base/step:qalculate - Enable the libqalculate library for unit conversion
 kde-misc/kdiff3:konqueror - Enable integration with konqueror
@@ -1668,7 +1678,7 @@ media-sound/pulseaudio:asyncns - Use libasyncns for asynchronous name resolution
 media-sound/pulseaudio:doc - Build the doxygen-described API documentation.
 media-sound/pulseaudio:glib - Enable glib eventloop support
 media-sound/pulseaudio:gnome -  Use GConf to store user preferences on streams and so on. Don't enable this flag if you want to use a system wide instance. If unsure, enable this flag. 
-media-sound/pulseaudio:oss -  Enable OSS sink/source (output/input). Also build the padsp script to make OSS software use PulseAudio. 
+media-sound/pulseaudio:oss -  Enable OSS sink/source (output/input). Deprecated, upstream does not support this on systems where other sink/source systems are available (i.e.: Linux). The padsp wrapper is now always build if the system supports OSS at all. 
 media-sound/pulseaudio:policykit - Enable support for PolicyKit framework.
 media-sound/pulseaudio:udev -  Use sys-fs/udev for autodiscovery of sound devices; this replaces the deprecated sys-apps/hal autodiscovery code. 
 media-sound/qmmp:bs2b - Enable Bauer stereophonic-to-binaural DSP library

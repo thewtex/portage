@@ -1,8 +1,9 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/radvd/radvd-1.0-r1.ebuild,v 1.9 2008/07/25 17:14:29 bluebird Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/radvd/radvd-1.4.ebuild,v 1.1 2009/08/20 12:23:49 rbu Exp $
 
-inherit eutils
+EAPI=2
+inherit eutils autotools
 
 DESCRIPTION="Linux IPv6 Router Advertisement Daemon"
 HOMEPAGE="http://v6web.litech.org/radvd/"
@@ -10,7 +11,7 @@ SRC_URI="http://v6web.litech.org/radvd/dist/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 arm hppa ppc sparc x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~arm ~hppa ~ppc ~sparc ~x86 ~x86-fbsd"
 IUSE="kernel_FreeBSD"
 
 DEPEND="sys-devel/bison
@@ -25,12 +26,15 @@ pkg_setup() {
 	[[ -d ${ROOT}/var/run/radvd ]] && chown radvd:radvd "${ROOT}"/var/run/radvd
 }
 
-src_compile() {
+src_prepare() {
+	epatch "${FILESDIR}"/${PN}-1.4-parallel-make.patch
+	eautoreconf
+}
+
+src_configure() {
 	econf \
 		--with-pidfile=/var/run/radvd/radvd.pid \
 		|| die "econf failed"
-
-	emake || die "emake failed"
 }
 
 src_install() {
@@ -57,12 +61,12 @@ src_install() {
 pkg_postinst() {
 	einfo
 	einfo "To use ${PN} you must create the configuration file"
-	einfo "/etc/radvd.conf"
+	einfo "${ROOT}/etc/radvd.conf"
 	einfo
-	einfo "An example configuration file has been installed as"
-	einfo "/usr/share/doc/${PF}/radvd.conf.example.gz"
+	einfo "An example configuration file has been installed under"
+	einfo "${ROOT}/usr/share/doc/${PF}"
 	einfo
-	einfo "grsec users should allow a specific group to read /proc"
+	einfo "grsecurity users should allow a specific group to read /proc"
 	einfo "and add the radvd user to that group, otherwise radvd may"
-	einfo "segfault on startup"
+	einfo "segfault on startup."
 }
