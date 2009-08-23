@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4743 2009/08/21 21:10:00 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4747 2009/08/22 23:47:48 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -814,6 +814,8 @@ dev-lisp/clisp:pari - Build CLISP with support for the PARI Computer Algebra Sys
 dev-lisp/clisp:svm - Build CLISP with support for the Support Vector Machine module
 dev-lisp/cmucl:nosource - Don't include source code for CMUCL in installation
 dev-lisp/ecls:c++ - Build ECL with a C++ compiler
+dev-lisp/ecls:threads - Support for native threads
+dev-lisp/ecls:unicode - Support for unicode
 dev-lisp/gcl:ansi - Build a GCL with ANSI support (else build a traditional CLtL1 image)
 dev-lisp/gcl:custreloc - Build a GCL which uses custom GCL code for linking
 dev-lisp/gcl:dlopen - Build a GCL which uses dlopen for linking
@@ -1330,6 +1332,7 @@ mail-filter/dspam:user-homedirs -  uild with user homedir support
 mail-filter/dspam:virtual-users -  Build with virtual-users support 
 mail-filter/libmilter:poll - Use poll instead of select
 mail-filter/maildrop:authlib - Add courier-authlib support
+mail-filter/mimedefang:poll - Use poll instead of select
 mail-filter/postgrey:targrey - Enables the targrey patch
 mail-filter/qmail-scanner:spamassassin - Build faster mail-filter/spamassassin checks into qmail-scanner
 mail-filter/simscan:attachment - Enable attachment scanning
@@ -2766,8 +2769,9 @@ sci-mathematics/geomview:avg - Enable experimental motion averaging technique
 sci-mathematics/geomview:netpbm - Add media-libs/netpbm support for external modules
 sci-mathematics/gretl:sourceview - Enable support for x11-libs/gtksourceview 
 sci-mathematics/mathomatic:secure - Create an extra secure version, with no I/O.
-sci-mathematics/maxima:clisp - Add support for GNU ANSI Common Lisp (dev-lisp/clisp)
+sci-mathematics/maxima:clisp - Add support for GNU CLISP (dev-lisp/clisp)
 sci-mathematics/maxima:cmucl - Add support for CMU Common Lisp (dev-lisp/cmucl)
+sci-mathematics/maxima:ecl - Add support for Embeddable Common Lisp (dev-lisp/ecls)
 sci-mathematics/maxima:gcl - Add support for GNU Common Lisp (dev-lisp/gcl)
 sci-mathematics/maxima:sbcl - Add support for Steel Bank Common Lisp (dev-lisp/sbcl)
 sci-mathematics/nusmv:minisat - Enable support for MiniSat
@@ -3196,6 +3200,7 @@ x11-plugins/bfm:gkrellm - Enable building of app-admin/gkrellm module
 x11-plugins/gkrellm-plugins:audacious - Enable the audacious plugin x11-plugins/gkrellmms
 x11-plugins/gkrellmbups:nut - Enable monitoring Network-UPS via sys-power/nut
 x11-plugins/purple-plugin_pack:talkfilters - Enable support for app-text/talklfilters
+x11-plugins/screenlets:svg - Highly Recommended: Enable SVG graphics via dev-python/librsvg-python
 x11-plugins/wmhdplop:gkrellm - Enable building of app-admin/gkrellm module
 x11-plugins/wmsysmon:high-ints - Enable support for monitoring 24 interrupts. Useful on SMP machines
 x11-terms/aterm:background - Enable background image support via media-libs/libafterimage

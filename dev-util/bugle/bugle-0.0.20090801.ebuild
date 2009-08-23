@@ -1,0 +1,44 @@
+# Copyright 1999-2009 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/bugle/bugle-0.0.20090801.ebuild,v 1.1 2009/08/22 09:32:16 scarabeus Exp $
+
+EAPI="2"
+
+inherit toolchain-funcs
+
+DESCRIPTION="A tool for OpenGL debugging"
+HOMEPAGE="http://www.opengl.org/sdk/tools/BuGLe/"
+SRC_URI="mirror://sourceforge/bugle/${P}.tar.bz2"
+
+LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS="~amd64 ~x86"
+IUSE="ffmpeg gtk readline"
+
+DEPEND="ffmpeg? ( >=media-video/ffmpeg-0.5 )
+	gtk? ( x11-libs/gtk+ x11-libs/gtkglext )
+	readline? ( sys-libs/readline )
+	virtual/opengl
+	media-libs/glew
+	sys-libs/ncurses"
+RDEPEND="${DEPEND}"
+
+src_configure() {
+	econf \
+		--disable-dependency-tracking \
+		$(use_with ffmpeg lavc) \
+		$(use_with readline) \
+		$(use_with gtk) \
+		$(use_with gtk gtkglext)
+}
+
+src_install() {
+	dodoc README TODO NEWS doc/*.{txt,html} || die "dodoc failed"
+	docinto examples
+	dodoc doc/examples/* || die "dodoc failed"
+	emake DESTDIR="${D}" install || die "emake install failed"
+}
+
+pkg_postinst() {
+	elog "See man 3 bugle for an introduction to BuGLe."
+}

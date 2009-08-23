@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/mc/mc-4.7.0_pre1.ebuild,v 1.9 2009/08/21 15:08:54 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/mc/mc-4.7.0_pre1.ebuild,v 1.11 2009/08/23 01:06:08 darkside Exp $
 
 EAPI=2
 inherit autotools eutils
@@ -13,7 +13,7 @@ SRC_URI="http://www.midnight-commander.org/downloads/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~arm ~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd"
 IUSE="chdir gpm nls samba +slang X"
 
 RDEPEND=">=dev-libs/glib-2.6:2
@@ -28,13 +28,13 @@ RDEPEND=">=dev-libs/glib-2.6:2
 		x11-libs/libXdmcp
 		x11-libs/libSM )"
 DEPEND="${RDEPEND}
-	>=sys-devel/libtool-2
 	dev-util/pkgconfig
 	nls? ( sys-devel/gettext )"
 
 S=${WORKDIR}/${MY_P}
 
 src_prepare() {
+	rm -f m4/{libtool,lt*}.m4 || die "libtool fix failed"
 	epatch "${FILESDIR}"/${P}-ebuild_syntax.patch \
 		"${FILESDIR}"/${P}-tbz2_filetype.patch \
 		"${FILESDIR}"/${P}-undelfs_configure.patch
