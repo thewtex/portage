@@ -1,10 +1,8 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/pidgin-otr/pidgin-otr-3.2.0.ebuild,v 1.2 2009/08/16 09:02:49 betelgeuse Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/pidgin-otr/pidgin-otr-3.2.0.ebuild,v 1.4 2009/08/22 15:55:32 halcy0n Exp $
 
 EAPI="2"
-
-inherit flag-o-matic eutils autotools
 
 DESCRIPTION="(OTR) Messaging allows you to have private conversations over instant messaging"
 HOMEPAGE="http://www.cypherpunks.ca/otr/"
@@ -22,18 +20,7 @@ RDEPEND=">=net-libs/libotr-3.2.0
 DEPEND="${RDEPEND}
 	dev-util/pkgconfig"
 
-src_configure() {
-	strip-flags
-	replace-flags -O? -O2
-
-	econf || die "econf failed"
-}
-
-src_compile() {
-	emake -j1 || die "Make failed"
-}
-
 src_install() {
-	emake -j1 install DESTDIR="${D}" || die "Install failed"
+	make install DESTDIR="${D}" || die "Install failed"
 	dodoc ChangeLog README || die
 }

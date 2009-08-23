@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4737 2009/08/20 19:09:34 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4747 2009/08/22 23:47:48 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -87,8 +87,8 @@ app-arch/libarchive:bzip2 -  Allow accessing bzip2-compressed archives through l
 app-arch/libarchive:lzma -  Allow accessing lzma-compressed archives through the lzmadec library. 
 app-arch/libarchive:static -  Build bsdtar and bsdcpio as static archives, removing dependencies over the enabled compression libraries (lzmadec, libbz2, zlib). 
 app-arch/p7zip:rar - Enable support for non-free rar decoder
-app-arch/rpm:file - add magic file support
-app-arch/rpm:neon - include support for neon
+app-arch/rpm:magic - Add magic file support (sys-apps/file)
+app-arch/rpm:neon - Include support for net-misc/neon
 app-arch/squeeze:pathbar - Include pathbar feature
 app-arch/squeeze:toolbar - Include toolbar feature
 app-backup/amanda:devpay - Support for using Amazon DevPay with S3
@@ -416,6 +416,7 @@ app-misc/mc:7zip - Add support for 7zip archives
 app-misc/mc-mp:7zip - Add support for 7zip archives
 app-misc/navit:garmin - Enable the ability to read Garmin Road/Topo maps
 app-misc/navit:speechd - Enable speech output for routing notifications
+app-misc/mc:chdir - Change to latest working directory at exit
 app-misc/note:general - Add support for ascii flatfile backend
 app-misc/note:text - Add support for text backend
 app-misc/roadnav:festival - Enable support for app-accessibility/festival
@@ -853,6 +854,8 @@ dev-lisp/clisp:pari - Build CLISP with support for the PARI Computer Algebra Sys
 dev-lisp/clisp:svm - Build CLISP with support for the Support Vector Machine module
 dev-lisp/cmucl:nosource - Don't include source code for CMUCL in installation
 dev-lisp/ecls:c++ - Build ECL with a C++ compiler
+dev-lisp/ecls:threads - Support for native threads
+dev-lisp/ecls:unicode - Support for unicode
 dev-lisp/gcl:ansi - Build a GCL with ANSI support (else build a traditional CLtL1 image)
 dev-lisp/gcl:custreloc - Build a GCL which uses custom GCL code for linking
 dev-lisp/gcl:dlopen - Build a GCL which uses dlopen for linking
@@ -1430,6 +1433,7 @@ mail-filter/dspam:user-homedirs -  uild with user homedir support
 mail-filter/dspam:virtual-users -  Build with virtual-users support 
 mail-filter/libmilter:poll - Use poll instead of select
 mail-filter/maildrop:authlib - Add courier-authlib support
+mail-filter/mimedefang:poll - Use poll instead of select
 mail-filter/postgrey:targrey - Enables the targrey patch
 mail-filter/qmail-scanner:spamassassin - Build faster mail-filter/spamassassin checks into qmail-scanner
 mail-filter/simscan:attachment - Enable attachment scanning
@@ -1733,7 +1737,6 @@ media-sound/banshee:boo - Use external Boo instead of the bundled one
 media-sound/banshee:daap - Build with Daap support
 media-sound/banshee:karma - Build with karma support
 media-sound/banshee:podcast - Build with podcasting support
-media-sound/cmus:mp4 - Support for MP4 container format
 media-sound/cmus:pidgin - install support script for net-im/pidgin
 media-sound/cmus:wma - add support for Windows Media Audio
 media-sound/cmus:zsh-completion - enable zsh completion support
@@ -1741,7 +1744,6 @@ media-sound/crip:normalize - Enable for being able to normalize ripped tracks
 media-sound/darkice:twolame - Build with twolame support
 media-sound/decibel-audio-player:gnome-keyring - Adds support for storing your Last.fm password using gnome-keyring.
 media-sound/dir2ogg:wma - Add support for wma files through mplayer
-media-sound/easytag:mp4 - Support for MP4 container format
 media-sound/esound:static-libs - Compile static archives
 media-sound/exaile:libsexy - Enable libsexy support
 media-sound/fapg:xspf - Enable support for saving XSPF playlists.
@@ -1952,7 +1954,6 @@ media-video/ffmpeg:vhook - Enables video hooking support.
 media-video/ffprobe:perl - Installs tools written in perl to produce plots based on video frame bitrate and size
 media-video/gpac:amr - Adaptive Multi-Rate Audio support (commonly used in telephony)
 media-video/griffith:csv - Enable proper support for csv import (respectively auto-detection encoding of csv files)
-media-video/h264enc:mp4 - Support for MP4 container format
 media-video/h264enc:ogm - Support for OGM container format
 media-video/kino:gpac - Enable GPAC support when exporting to 3GPP format
 media-video/kmplayer:npp - Compile the npp backend that plays xembed style browser plugins.
@@ -2005,7 +2006,6 @@ media-video/mplayer:vidix - Support for vidix video output
 media-video/mplayer:xanim - Enables support for xanim based codecs
 media-video/mplayer:xvmc - Enables X-Video Motion Compensation support
 media-video/mplayer:zoran - Enables ZR360[56]7/ZR36060 video output
-media-video/ogmrip:mp4 - Support for MP4 container format
 media-video/ogmrip:ogm - Support for OGM container format
 media-video/ogmrip:srt - Support for SRT subtitle format
 media-video/pgcedit:video - Add support for video preview
@@ -2127,7 +2127,6 @@ media-video/vlc:vlm - New videolan (media) manager (vlm), a little manager desig
 media-video/vlc:wma-fixed - Enables fixed point WMA decoder.
 media-video/vlc:zvbi - Enables support for teletext subtitles via the zvbi library.
 media-video/winki:mjpeg - Enables mjpegtools support
-media-video/x264-encoder:mp4 - Support for MP4 container format
 media-video/xine-ui:vdr - Enables Video Disk Recorder support
 net-analyzer/aimsniff:http - Install the WAS (Web AIM Sniff) frontend
 net-analyzer/barnyard:sguil - Enable sguil (The Analyst Console for Network Security Monitoring) support
@@ -2321,7 +2320,6 @@ net-fs/samba-server:cluster - Enable support for clustering
 net-fs/samba-server:quota - Enables support for user quotas
 net-fs/samba-server:swat - Enables support for swat configuration gui
 net-fs/samba-server:winbind - Enables support for the winbind auth daemon
-net-fs/shfs:amd - Enable automounter support
 net-ftp/ftpcube:sftp - Enable sftp connection support
 net-ftp/proftpd:authfile - Enable support for the auth-file module
 net-ftp/proftpd:ban - Enable support for the mod_ban module
@@ -2975,8 +2973,9 @@ sci-mathematics/geomview:avg - Enable experimental motion averaging technique
 sci-mathematics/geomview:netpbm - Add media-libs/netpbm support for external modules
 sci-mathematics/gretl:sourceview - Enable support for x11-libs/gtksourceview 
 sci-mathematics/mathomatic:secure - Create an extra secure version, with no I/O.
-sci-mathematics/maxima:clisp - Add support for GNU ANSI Common Lisp (dev-lisp/clisp)
+sci-mathematics/maxima:clisp - Add support for GNU CLISP (dev-lisp/clisp)
 sci-mathematics/maxima:cmucl - Add support for CMU Common Lisp (dev-lisp/cmucl)
+sci-mathematics/maxima:ecl - Add support for Embeddable Common Lisp (dev-lisp/ecls)
 sci-mathematics/maxima:gcl - Add support for GNU Common Lisp (dev-lisp/gcl)
 sci-mathematics/maxima:sbcl - Add support for Steel Bank Common Lisp (dev-lisp/sbcl)
 sci-mathematics/nusmv:minisat - Enable support for MiniSat
@@ -3228,6 +3227,7 @@ sys-fs/lvm2:clvm - Allow users to build clustered lvm2
 sys-fs/lvm2:cman - Cman support for clustered lvm
 sys-fs/lvm2:lvm1 - Allow users to build lvm2 with lvm1 support
 sys-fs/lvm2:nolvmstatic - Allow users to build lvm2 dynamically
+sys-fs/ntfs3g:external-fuse - Use external FUSE library instead of internal one. Must be disabled for unprivileged mounting to work.
 sys-fs/ntfsprogs:fuse - Build a FUSE module
 sys-fs/owfs:ftpd - Enable building the OWFS FTP server (owftpd)
 sys-fs/owfs:fuse - Enable building the FUSE-based OWFS client (owfs)
@@ -3435,6 +3435,7 @@ x11-plugins/bfm:gkrellm - Enable building of app-admin/gkrellm module
 x11-plugins/gkrellm-plugins:audacious - Enable the audacious plugin x11-plugins/gkrellmms
 x11-plugins/gkrellmbups:nut - Enable monitoring Network-UPS via sys-power/nut
 x11-plugins/purple-plugin_pack:talkfilters - Enable support for app-text/talklfilters
+x11-plugins/screenlets:svg - Highly Recommended: Enable SVG graphics via dev-python/librsvg-python
 x11-plugins/wmhdplop:gkrellm - Enable building of app-admin/gkrellm module
 x11-plugins/wmsysmon:high-ints - Enable support for monitoring 24 interrupts. Useful on SMP machines
 x11-terms/aterm:background - Enable background image support via media-libs/libafterimage

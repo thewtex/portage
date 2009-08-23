@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/vlc/vlc-9999.ebuild,v 1.32 2009/08/19 21:52:36 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/vlc/vlc-9999.ebuild,v 1.37 2009/08/21 10:29:01 aballier Exp $
 
 EAPI="2"
 
@@ -47,7 +47,7 @@ SLOT="0"
 
 KEYWORDS=""
 IUSE="a52 aac aalib alsa altivec atmo avahi bidi cdda cddax cddb cdio dbus dc1394
-	debug dirac directfb dts dvb dvd fbcon fluidsynth +ffmpeg flac fontconfig
+	debug dirac directfb dts dvb dvd elibc_glibc fbcon fluidsynth +ffmpeg flac fontconfig
 	+gcrypt ggi gnome gnutls hal httpd id3tag ieee1394 jack kate libass libcaca
 	libnotify libproxy libsysfs libtiger libv4l2 lirc live lua matroska mmx
 	modplug mp3 mpeg mtp musepack ncurses nsplugin ogg opengl optimisememory oss
@@ -73,12 +73,13 @@ RDEPEND="
 		dc1394? ( >=sys-libs/libraw1394-2.0.1
 			>=media-libs/libdc1394-2.0.2 )
 		dirac? ( >=media-video/dirac-0.10.0 )
-		directfb? ( dev-libs/DirectFB )
+		directfb? ( dev-libs/DirectFB sys-libs/zlib )
 		dts? ( media-libs/libdca )
 		dvd? (	media-libs/libdvdread
 				media-libs/libdvdcss
 				>=media-libs/libdvdnav-0.1.9
 				media-libs/libdvdplay )
+		elibc_glibc? ( >=sys-libs/glibc-2.8 )
 		ffmpeg? ( >=media-video/ffmpeg-0.4.9_p20090201 )
 		flac? ( media-libs/libogg
 			>=media-libs/flac-1.1.2 )
@@ -89,8 +90,7 @@ RDEPEND="
 		gnome? ( gnome-base/gnome-vfs )
 		gnutls? ( >=net-libs/gnutls-1.7.4 )
 		hal? ( sys-apps/hal )
-		id3tag? ( media-libs/libid3tag
-			sys-libs/zlib )
+		id3tag? ( media-libs/libid3tag sys-libs/zlib )
 		ieee1394? ( >=sys-libs/libraw1394-2.0.1 >=sys-libs/libavc1394-0.5.3 )
 		jack? ( >=media-sound/jack-audio-connection-kit-0.99.0-r1 )
 		kate? ( >=media-libs/libkate-0.1.1 )
@@ -119,21 +119,21 @@ RDEPEND="
 		)
 		ogg? ( media-libs/libogg )
 		pda? ( x11-libs/gtk+:2 )
-		png? ( media-libs/libpng )
+		png? ( media-libs/libpng sys-libs/zlib )
 		projectm? ( media-libs/libprojectm )
 		pulseaudio? ( >=media-sound/pulseaudio-0.9.11 )
-		qt4? ( x11-libs/qt-gui:4 x11-libs/qt-core:4 )
+		qt4? ( x11-libs/qt-gui:4 x11-libs/qt-core:4 x11-libs/libX11 )
 		remoteosd? ( >=dev-libs/libgcrypt-1.2.0 )
 		samba? ( net-fs/samba )
 		schroedinger? ( >=media-libs/schroedinger-1.0.6 )
 		sdl? ( >=media-libs/libsdl-1.2.8
-			sdl-image? ( media-libs/sdl-image ) )
+			sdl-image? ( media-libs/sdl-image sys-libs/zlib	) )
 		shout? ( media-libs/libshout )
-		skins? ( x11-libs/qt-gui:4 x11-libs/qt-core:4 )
+		skins? ( x11-libs/qt-gui:4 x11-libs/qt-core:4 x11-libs/libXext x11-libs/libX11 )
 		speex? ( media-libs/speex )
 		svg? ( >=gnome-base/librsvg-2.9.0 )
 		svga? ( media-libs/svgalib )
-		taglib? ( >=media-libs/taglib-1.5 )
+		taglib? ( >=media-libs/taglib-1.5 sys-libs/zlib )
 		theora? ( >=media-libs/libtheora-1.0_beta3 )
 		truetype? ( media-libs/freetype
 			media-fonts/dejavu )
@@ -145,9 +145,7 @@ RDEPEND="
 		win32codecs? ( media-libs/win32codecs )
 		X? (
 			x11-libs/libX11
-			x11-libs/libXext
-			xv? ( x11-libs/libXv )
-			opengl? ( virtual/opengl )
+			opengl? ( virtual/opengl x11-libs/libXext )
 		)
 		x264? ( media-libs/x264 )
 		xcb? ( x11-libs/libxcb x11-libs/xcb-util )
