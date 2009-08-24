@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/python.eclass,v 1.62 2009/08/13 16:57:01 arfrever Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/python.eclass,v 1.65 2009/08/15 23:32:58 arfrever Exp $
 
 # @ECLASS: python.eclass
 # @MAINTAINER:
@@ -10,8 +10,8 @@
 # @BLURB: A Utility Eclass that should be inherited by anything that deals with Python or Python modules.
 # @DESCRIPTION:
 # Some useful functions for dealing with python.
-inherit alternatives multilib
 
+inherit multilib
 
 if [[ -n "${NEED_PYTHON}" ]] ; then
 	PYTHON_ATOM=">=dev-lang/python-${NEED_PYTHON}"
@@ -112,6 +112,7 @@ PYTHON() {
 # @DESCRIPTION:
 # Make sure PYTHON_ABIS variable has valid value.
 validate_PYTHON_ABIS() {
+
 	# USE_${ABI_TYPE^^} and RESTRICT_${ABI_TYPE^^}_ABIS variables hopefully will be included in EAPI >= 4.
 	if [[ -z "${PYTHON_ABIS}" ]] && has "${EAPI:-0}" 0 1 2 3; then
 		local ABI support_ABI supported_PYTHON_ABIS= restricted_ABI
@@ -358,7 +359,7 @@ python_execute_function() {
 # @DESCRIPTION:
 # Makes sure PYTHON_USE_WITH or PYTHON_USE_WITH_OR listed use flags
 # are respected. Only exported if one of those variables is set.
-if ! has ${EAPI} 0 1 && [[ -n ${PYTHON_USE_WITH} || -n ${PYTHON_USE_WITH_OR} ]]; then
+if ! has ${EAPI:-0} 0 1 && [[ -n ${PYTHON_USE_WITH} || -n ${PYTHON_USE_WITH_OR} ]]; then
 	python_pkg_setup_fail() {
 		eerror "${1}"
 		die "${1}"
@@ -473,15 +474,6 @@ python_get_sitedir() {
 	echo "$(python_get_libdir)/site-packages"
 }
 
-# @FUNCTION: python_makesym
-# @DESCRIPTION:
-# Run without arguments, it will create the /usr/bin/python symlinks
-# to the latest installed version
-python_makesym() {
-	alternatives_auto_makesym "/usr/bin/python" "python[0-9].[0-9]"
-	alternatives_auto_makesym "/usr/bin/python2" "python2.[0-9]"
-}
-
 # @FUNCTION: python_tkinter_exists
 # @DESCRIPTION:
 # Run without arguments, checks if python was compiled with Tkinter
@@ -550,7 +542,7 @@ python_mod_compile() {
 
 	if ((${#myfiles[@]})); then
 		python${PYVER} ${myroot}/usr/$(get_libdir)/python${PYVER}/py_compile.py "${myfiles[@]}"
-		python${PYVER} -O ${myroot}/usr/$(get_libdir)/python${PYVER}/py_compile.py "${myfiles[@]}" 2> /dev/null
+		python${PYVER} -O ${myroot}/usr/$(get_libdir)/python${PYVER}/py_compile.py "${myfiles[@]}" &> /dev/null
 	else
 		ewarn "No files to compile!"
 	fi
@@ -638,14 +630,14 @@ python_mod_optimize() {
 						site_packages_absolute_dirs+=("${root}$(python_get_sitedir)/${dir}")
 					done
 					"$(PYTHON)" "${root}$(python_get_libdir)/compileall.py" "${options[@]}" "${site_packages_absolute_dirs[@]}" || return_code="1"
-					"$(PYTHON)" -O "${root}$(python_get_libdir)/compileall.py" "${options[@]}" "${site_packages_absolute_dirs[@]}" 2> /dev/null || return_code="1"
+					"$(PYTHON)" -O "${root}$(python_get_libdir)/compileall.py" "${options[@]}" "${site_packages_absolute_dirs[@]}" &> /dev/null || return_code="1"
 				fi
 				if ((${#site_packages_files[@]})); then
 					for file in "${site_packages_files[@]}"; do
 						site_packages_absolute_files+=("${root}$(python_get_sitedir)/${file}")
 					done
 					"$(PYTHON)" "${root}$(python_get_libdir)/py_compile.py" "${site_packages_absolute_files[@]}" || return_code="1"
-					"$(PYTHON)" -O "${root}$(python_get_libdir)/py_compile.py" "${site_packages_absolute_files[@]}" 2> /dev/null || return_code="1"
+					"$(PYTHON)" -O "${root}$(python_get_libdir)/py_compile.py" "${site_packages_absolute_files[@]}" &> /dev/null || return_code="1"
 				fi
 				eend "${return_code}"
 			fi
@@ -660,16 +652,16 @@ python_mod_optimize() {
 			ebegin "Compilation and optimization of Python modules placed outside of site-packages directories for Python ${PYVER}..."
 			if ((${#other_dirs[@]})); then
 				python${PYVER} "${root}$(python_get_libdir)/compileall.py" "${options[@]}" "${other_dirs[@]}" || return_code="1"
-				python${PYVER} -O "${root}$(python_get_libdir)/compileall.py" "${options[@]}" "${other_dirs[@]}" 2> /dev/null || return_code="1"
+				python${PYVER} -O "${root}$(python_get_libdir)/compileall.py" "${options[@]}" "${other_dirs[@]}" &> /dev/null || return_code="1"
 			fi
 			if ((${#other_files[@]})); then
 				python${PYVER} "${root}$(python_get_libdir)/py_compile.py" "${other_files[@]}" || return_code="1"
-				python${PYVER} -O "${root}$(python_get_libdir)/py_compile.py" "${other_files[@]}" 2> /dev/null || return_code="1"
+				python${PYVER} -O "${root}$(python_get_libdir)/py_compile.py" "${other_files[@]}" &> /dev/null || return_code="1"
 			fi
 			eend "${return_code}"
 		fi
 	else
-		local myroot mydirs=() myfiles=() myopts=()
+		local myroot mydirs=() myfiles=() myopts=() return_code="0"
 
 		# strip trailing slash
 		myroot="${ROOT%/}"
@@ -717,17 +709,17 @@ python_mod_optimize() {
 		if ((${#mydirs[@]})); then
 			python${PYVER} \
 				"${myroot}"/usr/$(get_libdir)/python${PYVER}/compileall.py \
-				"${myopts[@]}" "${mydirs[@]}"
+				"${myopts[@]}" "${mydirs[@]}" || return_code="1"
 			python${PYVER} -O \
 				"${myroot}"/usr/$(get_libdir)/python${PYVER}/compileall.py \
-				"${myopts[@]}" "${mydirs[@]}" 2> /dev/null
+				"${myopts[@]}" "${mydirs[@]}" &> /dev/null || return_code="1"
 		fi
 
 		if ((${#myfiles[@]})); then
 			python_mod_compile "${myfiles[@]}"
 		fi
 
-		eend $?
+		eend "${return_code}"
 	fi
 }
 

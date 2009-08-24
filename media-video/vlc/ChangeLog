@@ -1,6 +1,39 @@
 # ChangeLog for media-video/vlc
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/vlc/ChangeLog,v 1.490 2009/08/10 10:22:54 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/vlc/ChangeLog,v 1.498 2009/08/21 12:17:17 aballier Exp $
+
+  21 Aug 2009; Alexis Ballier <aballier@gentoo.org> vlc-0.9.10.ebuild,
+  vlc-1.0.1.ebuild:
+  Force libass to be < 0.9.7, vlc 0.9.10 and 1.0.1 will not build against
+  0.9.7, git versions are fine.
+
+  21 Aug 2009; Alexis Ballier <aballier@gentoo.org> vlc-1.0.1.ebuild,
+  vlc-1.0.9999.ebuild:
+  Disable test_media_list_player on 1.0.x as it deadlocks, bug #281419,
+  fixed for real in master.
+
+  21 Aug 2009; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  Add zlib deps for modules that require it, not really needed because we
+  undconditionnally depend on it but its cleaner
+
+  21 Aug 2009; Alexis Ballier <aballier@gentoo.org> vlc-0.9.10.ebuild,
+  vlc-1.0.1.ebuild, vlc-1.0.9999.ebuild, vlc-9999.ebuild:
+  Require new enough glibc version when its the C library in use, older
+  versions may cause vlc to crash, bug #282105
+
+  21 Aug 2009; Alexis Ballier <aballier@gentoo.org> vlc-1.0.1.ebuild,
+  vlc-1.0.9999.ebuild, vlc-9999.ebuild:
+  qt4 requires libX11 to be present, skins requires libXext and libX11,
+  fixes bug #279416
+
+  21 Aug 2009; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  libXext is now only used by the skins interface and glx module
+
+  21 Aug 2009; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  xvideo output is now libxcb-xv based, no need to depend on libXv
+
+  19 Aug 2009; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  xinerama is gone in master
 
   10 Aug 2009; Alexis Ballier <aballier@gentoo.org> -vlc-0.9.9a-r1.ebuild,
   -vlc-0.9.9999.ebuild:

@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10327 2009/08/13 19:41:34 halcy0n Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10357 2009/08/23 21:29:45 flameeyes Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,61 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Hans de Graaff <graaff@gentoo.org> (22 Aug 2009)
+# devel-logger is now bundled with ruby 1.8. The standalone version
+# is only suited for ruby 1.6, which has gone from our tree a long
+# time ago. devel-logger will follow in 30 days.
+dev-ruby/devel-logger
+
+# Hans de Graaff <graaff@gentoo.org> (22 Aug 2009)
+# ruby-amazon uses the obsolete v3 protocol which has been shut
+# down by Amazon on 2008-03-31, and upstream indicates that they
+# will not continue development on it.
+dev-ruby/ruby-amazon
+
+# Hans de Graaff <graaff@gentoo.org> (22 Aug 2009)
+# These Rails versions are no longer supported upstream
+# and will be removed in 60 days.
+=dev-ruby/rails-2.0.5-r1
+=dev-ruby/activerecord-2.0.5
+=dev-ruby/actionmailer-2.0.5
+=dev-ruby/actionpack-2.0.5
+=dev-ruby/activeresource-2.0.5
+=dev-ruby/activesupport-2.0.5
+=dev-ruby/rails-2.1.2-r1
+=dev-ruby/activerecord-2.1.2
+=dev-ruby/actionmailer-2.1.2
+=dev-ruby/actionpack-2.1.2-r1
+=dev-ruby/activeresource-2.1.2
+=dev-ruby/activesupport-2.1.2
+
+# Samuli Suominen <ssuominen@gentoo.org> (21 Aug 2009)
+# Orphaned library with broken build system. Masked for removal.
+media-libs/clibpdf
+
+# Thomas Sachau <tommy@gentoo.org> (21 Aug 2009)
+# Mask alpha version of k3b
+>=app-cdr/k3b-1.66.0_alpha2
+
+# Ulrich Mueller <ulm@gentoo.org> (19 Aug 2009)
+# Release candidate for eselect-1.2, masked for testing.
+=app-admin/eselect-1.2_rc*
+
+# Sebastien Fabbro <bicatali@gentoo.org> (18 Aug 2009)
+# Masked for removal in 30 days. Portage versions of dev-python/basemap
+# already include it.
+dev-python/basemap-data
+
+# Alex Legler <a3li@gentoo.org> (18 Aug 2009)
+# Dead upstream, doesn't install correctly with more than one ruby version.
+# Due for removal in 30 days. Bug 281897.
+www-apps/diaria
+
+# Samuli Suominen <ssuominen@gentoo.org> (14 Aug 2009)
+# Unresolved building issues wrt bugs #276246, #117523 and #213804.
+# Masked for removal. Please comment on #276246 if you still need this.
+sys-libs/uclibc++
 
 # Timo Gurr <tgurr@gentoo.org> (13 Aug 2009)
 # Mask Mumble 1.2.0 snapshots for testing.
@@ -260,18 +315,10 @@ app-i18n/minichinput
 # Diego E. Pettenò <flameeyes@gentoo.org> (09 Aug 2009)
 #  on behalf of QA team
 #
-# Removal of dev-libs/libowfat because it fails to build (bug
-# #272507) and lacks a proper Gentoo maintainer. Dependencies
-# follow the mask.
-#
-# sys-process/minit is already masked for removal
-#
-# net-misc/slidentd also links statically (bug #273326).
+# net-misc/slidentd links statically (bug #273326).
 #
 # Removal on 2009-10-08
-dev-libs/libowfat
 net-misc/slidentd
-www-servers/gatling
 
 # Diego E. Pettenò <flameeyes@gentoo.org> (09 Aug 2009)
 #  on behalf of QA team
@@ -470,10 +517,6 @@ sys-fs/ocfs2-tools
 # Removal on 2009-10-08
 net-fs/am-utils
 
-# Samuli Suominen <ssuominen@gentoo.org> (09 Aug 2009)
-# Needs Xfce 4.4 style xfce-mcs-manager. Masked for removal.
-dev-python/pyxfce
-
 # Diego E. Pettenò <flameeyes@gentoo.org> (09 Aug 2009)
 #  on behalf of QA team
 #
@@ -492,13 +535,6 @@ dev-libs/libexploit
 #
 # Removal on 2009-10-08
 dev-db/sqsh
-
-# Samuli Suominen <ssuominen@gentoo.org> (09 Aug 2009)
-# Outdated virtual for Xfce 4.4. Use eix to search for
-# xfce plugins you want to install. This meta only covered
-# old ones. Unnecessary maintaince burden for minor arches
-# if we wanted to keep this up to date. Masked for removal.
-xfce-base/xfce4-extras
 
 # Michał Januszewski <spock@gentoo.org> (08 Aug 2009)
 # Live git ebuilds for pycuda/pytools. Use at your own risk, do not
@@ -542,6 +578,12 @@ dev-embedded/sdcc-svn
 ~sys-fs/yaffs-utils-9999
 games-emulation/dosbox-cvs
 net-irc/irssi-svn
+~sys-fs/yaffs2-utils-9999
+~app-doc/repodoc-9999
+~app-i18n/skk-jisyo-9999
+~net-wireless/wpa_supplicant-9999
+net-misc/netcomics-cvs
+dev-lisp/cl-ansi-tests-cvs
 
 # Samuli Suominen <ssuominen@gentoo.org> (08 Aug 2009)
 # Masked by treecleaners for removal. Doesn't compile wrt #215252.
@@ -571,10 +613,6 @@ dev-util/motor
 # Samuli Suominen <ssuominen@gentoo.org> (08 Aug 2009)
 # Masked by treecleaners for removal. Doesn't compile wrt #248563.
 x11-misc/glsof
-
-# Samuli Suominen <ssuominen@gentoo.org> (08 Aug 2009)
-# Masked by treecleaners for removal. Doesn't compile wrt #240257.
-dev-util/hxd
 
 # Samuli Suominen <ssuominen@gentoo.org> (08 Aug 2009)
 # Masked by treecleaners for removal. Doesn't compile wrt #239776.
@@ -617,6 +655,7 @@ x11-drivers/xf86-input-evtouch
 <x11-drivers/xf86-input-keyboard-1.3.2
 <x11-drivers/xf86-input-mouse-1.4.0
 <media-libs/mesa-7.1
+=x11-drivers/nvidia-drivers-71.86.07
 
 # Andreas Proschofsky <suka@gentoo.org> (04 Aug 2009)
 # Beta release, needs more testing
@@ -754,12 +793,6 @@ media-sound/gnusound
 >=x11-drivers/nvidia-drivers-190.18
 >=media-video/nvidia-settings-190.18
 
-# Samuli Suominen <ssuominen@gentoo.org> (26 Jul 2009)
-# Deprecated musepack-tools (SV7). Masked for removal.
-# Replaced by >=media-sound/musepack-tools-444 (SV8).
-media-sound/mppenc
-=media-sound/musepack-tools-1*
-
 # Jeroen Roovers <jer@gentoo.org> (25 Jul 2009)
 # Mask new betas with bittorrent support
 >net-ftp/lftp-3.99
@@ -772,16 +805,6 @@ media-sound/mppenc
 # Weird boost dependencies, need to solve this in a different way: Probably by
 # actually doing 'amazonmp3-libcompat' for both x86 and amd64. (bug #272699)
 net-misc/amazonmp3
-
-# Samuli Suominen <ssuominen@gentoo.org> (22 Jul 2009)
-# Orphaned library. Moved to samba and samba-libs.
-# Masked for removal.
-dev-libs/tdb
-
-# Rémi Cardona <remi@gentoo.org> (22 Jul 2009)
-# superceded by x11-libs/pixman, nothing deps on it
-# masked for removal in 30 days
-media-libs/libpixman
 
 # Lennart Kolmodin <kolmodin@gentoo.org> (22 Jul 2009)
 # Mark ghc-6.10.4 and the haskell updater.
@@ -828,30 +851,6 @@ virtual/perl-Compress-Zlib
 virtual/perl-IO-Compress-Zlib
 virtual/perl-IO-Compress-Bzip2
 virtual/perl-IO-Compress-Base
-
-# Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (19 Jul 2009)
-# cjkcodecs modules are included in Python >=2.4. Separate dev-python/cjkcodecs package
-# isn't needed anymore and fails tests (bug #277773). Masked for deletion in 30 days.
-dev-python/cjkcodecs
-
-# Rémi Cardona <remi@gentoo.org> (13 Jul 2009)
-# broken and unmaintained by upstream, masked for removal in 30 days
-# see bug #277521 for more info
-x11-drivers/synaptics
-x11-drivers/xf86-input-calcomp
-x11-drivers/xf86-input-digitaledge
-x11-drivers/xf86-input-dmc
-x11-drivers/xf86-input-dynapro
-x11-drivers/xf86-input-elo2300
-x11-drivers/xf86-input-jamstudio
-x11-drivers/xf86-input-magellan
-x11-drivers/xf86-input-magictouch
-x11-drivers/xf86-input-microtouch
-x11-drivers/xf86-input-palmax
-x11-drivers/xf86-input-spaceorb
-x11-drivers/xf86-input-summa
-x11-drivers/xf86-input-tek4957
-x11-drivers/xf86-input-ur98
 
 # Diego E. Pettenò <flameeyes@gentoo.org> (13 Jul 2009)
 #  on behalf of QA Team
@@ -1077,105 +1076,19 @@ net-fs/samba-server
 # Pending removal 22 August 2009
 sys-apps/realtime-lsm
 
-# Diego E. Pettenò <flameeyes@gentoo.org> (21 Jun 2009)
-#  on behalf of QA Team
-#
-# mp1e fails to build with recent compilers (still requires gcc 3.x!)
-# and even with recent assemblers. The older analogtv ebuilds will
-# follow it for a mandatory dependency, newer ones don't have the
-# dependency.
-#
-# See bug #274715
-#
-# Removal pending 21 August 2009
-media-video/mp1e
-<media-plugins/vdr-analogtv-1.0.00-r2
-
-# Diego E. Pettenò <flameeyes@gentoo.org> (21 Jun 2009)
-#  on behalf of QA Team
-#
-# Dead homepage, binary file in $FILESDIR
-# See bug #274859
-#
-# Removal pending 21 August 2009
-net-misc/whoischk
-
-# Alin Năstac <mrness@gentoo.org> (20 Jun 2009)
-# Masked for removal in 60 days (#273316).
-# SpeedTouch modems are supported by modern Linux kernels (>=2.6.10),
-# the firmware files being available under Gentoo as package
-# net-dialup/speedtouch-usb.
-net-dialup/speedtouch
-
 # Romain Perier <mrpouet@gentoo.org> (20 Jun 2009)
 # A lot of changes into sources code
 # (re-structured, modules renamed and so on)
 # It may break some packages.
 =sys-auth/policykit-0.92
 
-# Diego E. Pettenò <flameeyes@gentoo.org> (16 Jun 2009)
-#  on behalf of QA Team
-#
-# Fails to build with not even recent Linux headers.
-# See bug #248388
-#
-# Removal pending 16 August 2009
-sys-apps/ddcxinfo-knoppix
-
-# Diego E. Pettenò <flameeyes@gentoo.org> (12 Jun 2009)
-#  on behalf of QA Team
-#
-# Multiple issue, external kernel module unmaintained since 2005.
-# See bug #274105
-#
-# Removal pending 14 August 2009
-net-fs/shfs
-
 # Theo Chatzimichos <tampakrap@gentoo.org> (14 Jun 2009)
 # Masked for removal in 30 days. Old and dead by upstream.
 app-dicts/kannadic
 
-# Diego E. Pettenò <flameeyes@gentoo.org> (12 Jun 2009)
-#  on behalf of QA Team
-#
-# Fails to build with gcc 4.4, bitrotting package and not updated to
-# latest release (from 2005).
-#
-# Removal pending 13 August 2009
-dev-db/framerd
-
-# Diego E. Pettenò <flameeyes@gentoo.org> (12 Jun 2009)
-#  on behalf of QA Team
-#
-# Fails to build with newer glibc versions, see bug #241008
-#
-# Removal pending 13 August 2009
-net-misc/wso2-wsf-c
-
-# Hans de Graaff <graaff@gentoo.org> (13 Jun 2009)
-# dev-util/freeride ships broken elf shared object files
-# that we cannot rebuild properly, see bug #251935
-dev-util/freeride
-
 # Markus Meier <maekke@gentoo.org> (13 Jun 2009)
 # mask pre releases of media-gfx/inkscape-0.47
 >=media-gfx/inkscape-0.47_pre0
-
-# Diego E. Pettenò <flameeyes@gentoo.org> (12 Jun 2009)
-#  on behalf of QA Team
-#
-# Multiple QA issues, see bug #273313
-#
-# Removal pending 12 August 2009
-net-p2p/ed2k_recovermet
-
-# Diego E. Pettenò <flameeyes@gentoo.org> (12 Jun 2009)
-#  on behalf of QA Team
-#
-# Multiple QA issues, see bug #273872
-#
-# Removal pending 12 August 2009
-app-laptop/toshiba-utils
 
 # Tristan Heaven <nyhm@gentoo.org> (12 Jun 2009)
 # https://bugs.gentoo.org/show_bug.cgi?id=269516
@@ -1202,11 +1115,6 @@ media-libs/freeimage
 # Bernard Cafarelli <voyageur@gentoo.org> (27 May 2009)
 # Live ebuild for bleeding-edge users
 ~www-client/chromium-bin-9999
-
-# MATSUU Takuto <matsuu@gentoo.org> (26 May 2009)
-# Masked for testing, bug #267365.
->=x11-libs/xcb-util-0.3.4
-=x11-wm/awesome-3.3*
 
 # Peter Alfredsen <loki_val@gentoo.org> (01 June 2009)
 # Development version, Work-In-Progress
@@ -1261,16 +1169,6 @@ dev-haskell/haskell-platform
 # Lennart Kolmodin <kolmodin@gentoo.org> (10 May 2009)
 # Mark ghc-6.10.3 for testing.
 ~dev-lang/ghc-6.10.3
-
-# Rémi Cardona <remi@gentoo.org> (29 Apr 2009)
-# All the following packages should be unmasked at the same time
-# see bug #174434 for xcb-related issues (not all are blocker)
->=x11-libs/libXext-1.0.5
->=x11-libs/libX11-1.2
->=x11-libs/libxcb-1.2
->=x11-proto/xcb-proto-1.4
->=x11-proto/xproto-7.0.15
->=x11-proto/xextproto-7.0.5
 
 # Diego E. Pettenò <flameeyes@gentoo.org> (27 Apr 2009)
 # Mask libopensync 0.38 since no plugin was fixed for this
@@ -1453,11 +1351,11 @@ dev-util/w32api
 >sys-process/audit-1.7.4
 
 # Jeroen Roovers <jer@gentoo.org> (5 Dec 2008)
-# Snapshots and alphas but not betas of Opera 10
-=www-client/opera-10.00_pre4493
-=www-client/opera-10.00_pre4502
-=www-client/opera-10.00_pre452*
->=www-client/opera-10.00_pre4538
+# Snapshots and alphas but not betas of Opera 10(.10)
+=www-client/opera-10.00_pre4538
+=www-client/opera-10.00_pre4546
+=www-client/opera-10.00_pre4562
+=www-client/opera-10.10*
 
 # MATSUU Takuto <matsuu@gentoo.org> (19 Nov 2008)
 # Masked for bug #196340

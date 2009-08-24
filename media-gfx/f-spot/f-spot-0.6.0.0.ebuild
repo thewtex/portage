@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/f-spot/f-spot-0.6.0.0.ebuild,v 1.1 2009/08/11 12:52:18 lack Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/f-spot/f-spot-0.6.0.0.ebuild,v 1.3 2009/08/23 12:23:53 flameeyes Exp $
 
 EAPI=2
 
@@ -37,11 +37,14 @@ RDEPEND=">=dev-lang/mono-2.0
 	>=dev-db/sqlite-3"
 
 DEPEND="${RDEPEND}
+	>=dev-dotnet/gtk-sharp-gapi-2.12.2
 	app-text/gnome-doc-utils
 	dev-util/pkgconfig
 	>=dev-util/intltool-0.35"
 
 DOCS="AUTHORS ChangeLog MAINTAINERS NEWS README"
+
+MAKEOPTS="${MAKEOPTS} -j1" #281242
 
 SCROLLKEEPER_UPDATE=0
 

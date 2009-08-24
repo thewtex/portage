@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-tv/nxtvepg/nxtvepg-2.8.0.ebuild,v 1.2 2009/08/08 15:14:40 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-tv/nxtvepg/nxtvepg-2.8.0.ebuild,v 1.5 2009/08/18 07:46:57 fauli Exp $
 
 inherit eutils toolchain-funcs
 
@@ -10,11 +10,11 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc x86"
 IUSE="X unicode"
 
 RDEPEND="X? ( >=dev-lang/tcl-8.5
- 	>=dev-lang/tk-8.5
+	>=dev-lang/tk-8.5
 	x11-libs/libX11
 	x11-libs/libXmu )"
 DEPEND="${RDEPEND}
@@ -28,22 +28,22 @@ src_unpack() {
 	epatch "${FILESDIR}/nxtvepg-db.patch" || die "db patch failed"
 	epatch "${FILESDIR}/nxtvepg-daemon-install.patch" || die "daemon patch failed"
 	epatch "${FILESDIR}/nxtvepg-tcl8.5.patch" || die "tcl-8.5 patch failed"
-	( use unicode && epatch "${FILESDIR}/nxtvepg-unicode.patch" ) || die "unicode patch failed"
+	use unicode && epatch "${FILESDIR}/nxtvepg-unicode.patch"
 }
 
 src_compile() {
 	if use X; then
-		emake -j1 CC=$(tc-getCC) prefix="/usr" || die "emake failed"
+		emake -j1 CC=$(tc-getCC) prefix="/usr" mandir="/usr/share/man/man1"|| die "emake failed"
 	else
-		emake -j1 CC=$(tc-getCC) prefix="/usr" daemon || die "emake failed"
+		emake -j1 CC=$(tc-getCC) prefix="/usr" mandir="/usr/share/man/man1" daemon || die "emake failed"
 	fi
 }
 
 src_install() {
 	if use X; then
-		emake ROOT="${D}" prefix="/usr" install || die "emake install failed"
+		emake ROOT="${D}" prefix="/usr" mandir="${D}/usr/share/man/man1" install || die "emake install failed"
 	else
-		emake ROOT="${D}" prefix="/usr" install-daemon || die "emake install failed"
+		emake ROOT="${D}" prefix="/usr" mandir="${D}/usr/share/man/man1" install-daemon || die "emake install failed"
 	fi
 	dodoc README CHANGES TODO
 	dohtml manual*.html

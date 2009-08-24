@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/cryptsetup/cryptsetup-1.0.6-r2.ebuild,v 1.11 2009/07/15 18:41:14 nixnut Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/cryptsetup/cryptsetup-1.0.6-r2.ebuild,v 1.13 2009/08/16 18:47:57 vapier Exp $
 
 inherit linux-info eutils flag-o-matic multilib
 
@@ -64,12 +64,12 @@ src_unpack() {
 }
 
 src_compile() {
+	use selinux || export ac_cv_lib_selinux_is_selinux_enabled=no
 	econf \
 		--sbindir=/sbin \
 		$(use_enable !dynamic static) \
 		--libdir=/usr/$(get_libdir) \
 		$(use_enable nls) \
-		$(use_enable selinux) \
 		|| die
 	emake || die
 }
@@ -77,7 +77,7 @@ src_compile() {
 src_install() {
 	emake DESTDIR="${D}" install || die "install failed"
 	rmdir "${D}"/usr/$(get_libdir)/cryptsetup
-	insinto /lib/rcscripts/addons
+	insinto /$(get_libdir)/rcscripts/addons
 	newins "${FILESDIR}"/1.0.6-r2-dm-crypt-start.sh dm-crypt-start.sh || die
 	newins "${FILESDIR}"/1.0.5-dm-crypt-stop.sh dm-crypt-stop.sh || die
 	newconfd "${FILESDIR}"/1.0.6-dmcrypt.confd dmcrypt || die

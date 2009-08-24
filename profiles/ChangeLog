@@ -1,10 +1,178 @@
 # ChangeLog for profile directory
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.3124 2009/08/13 19:41:34 halcy0n Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.3171 2009/08/23 21:29:44 flameeyes Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  23 Aug 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Mask more live scm ebuilds.
+
+  23 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> updates/3Q-2009:
+  Rename xfce4-sensors to xfce4-sensors-plugin.
+
+  23 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> updates/3Q-2009:
+  Rename xfce4-radio to xfce4-radio-plugin.
+
+  23 Aug 2009; Samuli Suominen <ssuominen@gentoo.org>
+  targets/desktop/make.defaults:
+  Enable USE thunar in desktop profiles so xfce based apps get it enabled by
+  default.
+
+  23 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> updates/3Q-2009:
+  Rename xfce-base/xfce4 to xfce-base/xfce4-meta with new dependencies.
+
+  23 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> updates/3Q-2009:
+  Move xfce-extra/exo to xfce-base/exo.
+
+  23 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> updates/3Q-2009:
+  Renamed xfce4-mpc, xfce4-clipman, xfce4-xkb and xfce4-wmdock to -plugin naming.
+
+  23 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Removed xfce-base/xfce4-extras meta from tree.
+
+  23 Aug 2009; Víctor Ostorga <vostorga@gentoo.org> package.mask:
+  Unmasking dev-util/hxd. It has now fixes to many QA issues
+
+  23 Aug 2009; Hans de Graaff <graaff@gentoo.org> package.mask:
+  Revert package mask for cgi_multipart_eof_fix due to mogrel depending on
+  it, #282405
+
+  23 Aug 2009; Alin Năstac <mrness@gentoo.org> package.mask:
+  Remove net-dialup/speedtouch from the tree (#273316)
+
+  23 Aug 2009; Jeremy Olexa <darkside@gentoo.org> updates/3Q-2009:
+  move xfce-extra/thunar-shares xfce-extra/thunar-shares-plugin
+
+  23 Aug 2009; Jeremy Olexa <darkside@gentoo.org> updates/3Q-2009:
+  move xfce-extra/thunar-svn xfce-extra/thunar-svn-plugin
+
+  22 Aug 2009; Hans de Graaff <graaff@gentoo.org> package.mask:
+  Mask dev-ruby/devel-logger.
+
+  22 Aug 2009; Hans de Graaff <graaff@gentoo.org> package.mask:
+  Mask dev-ruby/cgi_multipart_eof_fix since it is no longer needed.
+
+  22 Aug 2009; Hans de Graaff <graaff@gentoo.org> package.mask:
+  Use proper name for activeresource.
+
+  22 Aug 2009; Hans de Graaff <graaff@gentoo.org> package.mask:
+  Mask dev-ruby/ruby-amazon
+
+  22 Aug 2009; Hans de Graaff <graaff@gentoo.org> package.mask:
+  Mask dev-ruby/rails 2.0 and 2.1 slots for removal.
+
+  21 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask orphaned media-libs/clibpdf for removal.
+
+  21 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Removed dev-libs/tdb and media-libs/libpixman from tree.
+
+  21 Aug 2009; Thomas Sachau (Tommy[D]) <tommy@gentoo.org> package.mask:
+  Mask alpha version of k3b
+
+  21 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> use.desc:
+  New global USE flag "mp4".
+
+  21 Aug 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Remove masking for removed packages. package.mask
+
+  20 Aug 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  default/linux/package.use.mask:
+  Mask oss USE flag for newer PulseAudio.
+
+  20 Aug 2009; Jeroen Roovers <jer@gentoo.org> package.mask:
+  Tweak opera-10 masking again.
+
+  20 Aug 2009; Jeremy Olexa <darkside@gentoo.org>
+  hardened/linux/package.mask, hardened/package.mask:
+  p.mask dev-python/skype4py and net-im/skysentials on hardened because they
+  depend on masked skype
+
+  19 Aug 2009; Ulrich Mueller <ulm@gentoo.org> arch/alpha/use.mask,
+  arch/sparc-fbsd/use.mask, arch/sparc/package.use.mask,
+  arch/sparc/use.mask, arch/x86-fbsd/package.use.mask,
+  arch/x86-fbsd/use.mask, default-bsd/fbsd/6.2/sparc/use.mask,
+  default-bsd/fbsd/6.2/x86/package.use.mask,
+  default-bsd/fbsd/6.2/x86/use.mask, default-linux/alpha/use.mask,
+  default-linux/sparc/package.use.mask, default-linux/sparc/use.mask:
+  Add valgrind to use.mask, and remove from package.use.mask where
+  appropriate. Bug 281922.
+
+  19 Aug 2009; Ulrich Mueller <ulm@gentoo.org> package.mask,
+  prefix/package.mask:
+  Mask app-admin/eselect-1.2_rc* for testing, and unmask it in prefix.
+
+  19 Aug 2009; MATSUU Takuto <matsuu@gentoo.org> package.mask,
+  releases/2008.0/package.mask:
+  move >=x11-libs/xcb-util-0.3.4 and >=x11-wm/awesome-3.3 to the 2008.0
+  profiles.
+
+  18 Aug 2009; Sébastien Fabbro <bicatali@gentoo.org> package.mask:
+  Masked dev-python/basemap-data for removal
+
+  18 Aug 2009; Rémi Cardona <remi@gentoo.org> package.mask,
+  +releases/2008.0/package.mask:
+  move the libxcb 1.2 mask entries to the 2008.0 profiles, all other
+  profiles will get the new xcb and libX11
+
+  18 Aug 2009; Alex Legler <a3li@gentoo.org> package.mask:
+  Masing www-apps/diaria for last rites. Bug 281897.
+
+  17 Aug 2009; Jeremy Olexa <darkside@gentoo.org>
+  +default/linux/alpha/10.0/eapi, +default/linux/amd64/10.0/eapi,
+  +default/linux/arm/10.0/eapi, +default/linux/hppa/10.0/eapi,
+  +default/linux/ia64/10.0/eapi, +default/linux/m68k/10.0/eapi,
+  +default/linux/mips/10.0/eapi, +default/linux/powerpc/ppc32/10.0/eapi,
+  +default/linux/powerpc/ppc64/10.0/eapi, +default/linux/s390/10.0/eapi,
+  +default/linux/sh/10.0/eapi, +default/linux/sparc/10.0/eapi,
+  +default/linux/x86/10.0/eapi, +releases/10.0/eapi, releases/10.0/packages:
+  Make 10.0 profiles EAPI-2 compliant (based on community feedback).
+  Initial commit: may need some tweaking later.
+
+  17 Aug 2009; Samuli Suominen <ssuominen@gentoo.org>
+  targets/server/make.defaults:
+  Remove deprecated mailwrapper from default USE flags.
+
+  16 Aug 2009; Rémi Cardona <remi@gentoo.org> arch/sh/use.mask,
+  default-linux/sh/use.mask, desc/video_cards.desc,
+  hardened/amd64/make.defaults, hardened/ia64/make.defaults,
+  hardened/linux/powerpc/ppc64/use.mask, hardened/linux/x86/make.defaults,
+  hardened/ppc/use.mask, hardened/ppc64/use.mask,
+  hardened/x86/make.defaults:
+  drop last traces of i810
+
+  16 Aug 2009; Rémi Cardona <remi@gentoo.org> package.mask:
+  clean out big x11-drivers/ package.mask entry, packages are gone from
+  portage
+
+  15 Aug 2009; Víctor Ostorga <vostorga@gentoo.org> package.mask:
+  Unmasking dev-libs/libowfat and www-servers/gatling
+
+  15 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Removed pyxfce from tree.
+
+  14 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Removed Musepack SV7 utilities from tree.
+
+  14 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask sys-libs/uclibc++ for removal.
+
+  14 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> -obsolete/README,
+  -obsolete/alpha/deprecated, -obsolete/alpha/make.defaults,
+  -obsolete/amd64/deprecated, -obsolete/amd64/make.defaults,
+  -obsolete/hppa/deprecated, -obsolete/hppa/make.defaults,
+  -obsolete/ia64/deprecated, -obsolete/ia64/make.defaults,
+  -obsolete/mips/deprecated, -obsolete/mips/make.defaults,
+  -obsolete/ppc/deprecated, -obsolete/ppc/make.defaults,
+  -obsolete/ppc64/deprecated, -obsolete/ppc64/make.defaults,
+  -obsolete/sparc/deprecated, -obsolete/sparc/make.defaults,
+  -obsolete/x86/deprecated, -obsolete/x86/make.defaults:
+  Remove obsolete directory.
+
+  14 Aug 2009; Hans de Graaff <graaff@gentoo.org> package.mask:
+  Remove dev-util/freeride mask, it is gone.
 
   12 Aug 2009; Mark Loeser <halcy0n@gentoo.org> package.mask:
   Removing mask for gcc-4.4. It is still masked in all the hardened profiles

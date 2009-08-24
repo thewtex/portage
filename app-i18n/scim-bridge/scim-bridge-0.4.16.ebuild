@@ -1,8 +1,9 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/scim-bridge/scim-bridge-0.4.16.ebuild,v 1.1 2009/04/19 06:35:16 matsuu Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/scim-bridge/scim-bridge-0.4.16.ebuild,v 1.3 2009/08/15 13:20:59 betelgeuse Exp $
 
-EAPI="1"
+EAPI="2"
+
 inherit autotools eutils qt3
 
 DESCRIPTION="Yet another IM-client of SCIM"
@@ -22,7 +23,10 @@ RDEPEND=">=app-i18n/scim-1.4.6
 		>=x11-libs/pango-1.1
 	)
 	qt3? (
-		x11-libs/qt:3
+		|| (
+			x11-libs/qt:3[immqt-bc]
+			x11-libs/qt:3[immqt]
+		)
 		>=x11-libs/pango-1.1
 	)
 	qt4? (
@@ -43,35 +47,28 @@ get_gtk_confdir() {
 	fi
 }
 
-pkg_setup() {
-	if use qt3 && ! built_with_use =x11-libs/qt-3* immqt-bc && ! built_with_use =x11-libs/qt-3* immqt; then
-		die "You need to rebuild >=x11-libs/qt-3.3.4 with immqt-bc(recommended) or immqt USE flag enabled."
-	fi
-}
-
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
+src_prepare() {
 	epatch "${FILESDIR}/${PN}-0.4.15.2-qt4.patch"
 	epatch "${FILESDIR}/${PN}-0.4.15.2-gcc43.patch"
+	epatch "${FILESDIR}/${P}+gcc-4.4.patch"
+
 	# bug #241954
 	intltoolize --force
 	eautoreconf
 }
 
-src_compile() {
+src_configure() {
 	econf \
 		$(use_enable gtk gtk2-immodule) \
 		$(use_enable qt3 qt3-immodule) \
 		$(use_enable qt4 qt4-immodule) \
 		$(use_enable doc documents) || die
-	emake || die
 }
 
 src_install() {
 	emake DESTDIR="${D}" install || die "make install failed"
 
-	dodoc AUTHORS ChangeLog NEWS README
+	dodoc AUTHORS ChangeLog NEWS README || die
 }
 
 pkg_postinst() {

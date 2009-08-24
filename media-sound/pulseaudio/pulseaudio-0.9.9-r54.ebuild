@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/pulseaudio/pulseaudio-0.9.9-r54.ebuild,v 1.1 2009/07/16 14:01:21 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/pulseaudio/pulseaudio-0.9.9-r54.ebuild,v 1.3 2009/08/21 23:18:46 flameeyes Exp $
 
 inherit eutils libtool autotools flag-o-matic
 
@@ -39,7 +39,7 @@ RDEPEND="X? ( x11-libs/libX11 )
 	)
 	policykit? ( sys-auth/policykit )
 	asyncns? ( net-libs/libasyncns )
-	>=sys-devel/libtool-1.5.24" # it's a valid RDEPEND, libltdl.so is used
+	=sys-devel/libtool-1.5*" # it's a valid RDEPEND, libltdl.so is used
 DEPEND="${RDEPEND}
 	dev-libs/libatomic_ops
 	dev-util/pkgconfig"
@@ -123,7 +123,11 @@ src_install() {
 	use avahi && neededservices="$neededservices avahi-daemon"
 	use hal && neededservices="$neededservices hald"
 	use bluetooth && neededservices="$neededservices bluetooth"
-	[[ -n ${neededservices} ]] && sed -e "s/@neededservices@/need $neededservices/" "${FILESDIR}/pulseaudio.init.d-2" > "${T}/pulseaudio"
+	if [[ -n ${neededservices} ]]; then
+		sed -e "s/@neededservices@/need $neededservices/" "${FILESDIR}/pulseaudio.init.d-2" > "${T}/pulseaudio"
+	else
+		sed -e "/@neededservices@/d" "${FILESDIR}/pulseaudio.init.d-2" > "${T}/pulseaudio"
+	fi
 	doinitd "${T}/pulseaudio"
 
 	use avahi && sed -i -e '/module-zeroconf-publish/s:^#::' "${D}/etc/pulse/default.pa"

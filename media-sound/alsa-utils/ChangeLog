@@ -1,6 +1,19 @@
 # ChangeLog for media-sound/alsa-utils
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/alsa-utils/ChangeLog,v 1.275 2009/08/14 01:03:07 fauli Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/alsa-utils/ChangeLog,v 1.278 2009/08/21 16:10:57 ssuominen Exp $
+
+  21 Aug 2009; Samuli Suominen <ssuominen@gentoo.org>
+  alsa-utils-1.0.20-r5.ebuild:
+  Move KEYWORDS to -r5 since it only fixed off-by-one in default init file.
+
+*alsa-utils-1.0.20-r5 (17 Aug 2009)
+
+  17 Aug 2009; Samuli Suominen <ssuominen@gentoo.org>
+  +alsa-utils-1.0.20-r5.ebuild, +files/alsa-utils-1.0.20-init_default.patch:
+  Fix brackets inside /usr/share/alsa/init/default wrt #281538.
+
+  17 Aug 2009; Jeroen Roovers <jer@gentoo.org> alsa-utils-1.0.20-r4.ebuild:
+  Stable for HPPA (bug #280464).
 
   14 Aug 2009; Christian Faulhammer <fauli@gentoo.org>
   alsa-utils-1.0.20-r4.ebuild:
