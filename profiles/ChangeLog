@@ -1,10 +1,46 @@
 # ChangeLog for profile directory
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.3157 2009/08/23 02:45:17 darkside Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.3171 2009/08/23 21:29:44 flameeyes Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  23 Aug 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Mask more live scm ebuilds.
+
+  23 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> updates/3Q-2009:
+  Rename xfce4-sensors to xfce4-sensors-plugin.
+
+  23 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> updates/3Q-2009:
+  Rename xfce4-radio to xfce4-radio-plugin.
+
+  23 Aug 2009; Samuli Suominen <ssuominen@gentoo.org>
+  targets/desktop/make.defaults:
+  Enable USE thunar in desktop profiles so xfce based apps get it enabled by
+  default.
+
+  23 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> updates/3Q-2009:
+  Rename xfce-base/xfce4 to xfce-base/xfce4-meta with new dependencies.
+
+  23 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> updates/3Q-2009:
+  Move xfce-extra/exo to xfce-base/exo.
+
+  23 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> updates/3Q-2009:
+  Renamed xfce4-mpc, xfce4-clipman, xfce4-xkb and xfce4-wmdock to -plugin naming.
+
+  23 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Removed xfce-base/xfce4-extras meta from tree.
+
+  23 Aug 2009; Víctor Ostorga <vostorga@gentoo.org> package.mask:
+  Unmasking dev-util/hxd. It has now fixes to many QA issues
+
+  23 Aug 2009; Hans de Graaff <graaff@gentoo.org> package.mask:
+  Revert package mask for cgi_multipart_eof_fix due to mogrel depending on
+  it, #282405
+
+  23 Aug 2009; Alin Năstac <mrness@gentoo.org> package.mask:
+  Remove net-dialup/speedtouch from the tree (#273316)
 
   23 Aug 2009; Jeremy Olexa <darkside@gentoo.org> updates/3Q-2009:
   move xfce-extra/thunar-shares xfce-extra/thunar-shares-plugin
