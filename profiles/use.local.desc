@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4747 2009/08/22 23:47:48 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4752 2009/08/23 19:48:20 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -116,7 +116,7 @@ app-cdr/k3b:emovix - Enable burning support for eMoviX images
 app-cdr/k3b:wav - Enable support for reading WAVE files
 app-cdr/mybashburn:normalize - Add support for normalizing audio file volume levels
 app-cdr/serpentine:muine - Enable support for the GNOME music player Muine
-app-cdr/xfburn:xfce - Adds integration with Xfce4 desktop environment
+app-cdr/xfburn:thunar - Adds integration with Thunar file manager
 app-crypt/ccid:nousb - Disable USB support via sys-apps/pcsc-lite
 app-crypt/ccid:twinserial - Enable twinserial reader
 app-crypt/gnupg:ecc - Use elliptic curve cryptosystem patch
@@ -1152,6 +1152,7 @@ gnustep-base/gnustep-base:gcc-libffi - Use dev-libs/libffi from sys-devel/gcc in
 gnustep-base/gnustep-base:libffi - Use dev-libs/libffi instead of dev-libs/ffcall
 gnustep-base/gnustep-make:native-exceptions - Enables use of the native Objective-C exception support (@try/@catch/@finally) built-in objective-c exceptions with compilers that support it 
 gnustep-libs/steptalk:gdl2 - Compile module for gnustep-libs/gdl2
+gpe-base/gpe:games - Builds and installs GPE games.
 kde-base/ark:archive - Enable support for a variety of archive formats through libarchive
 kde-base/ark:zip - Enable zip support through LibZip
 kde-base/arts:artswrappersuid - Set artswrapper suid for realtime playing, which is a security hazard
@@ -3087,8 +3088,8 @@ www-client/elinks:finger - Enable support for the finger protocol
 www-client/elinks:gopher - Enable support for the gopher protocol
 www-client/kazehakase:hyperestraier - enable hyperestraier support for full-text search in history
 www-client/kazehakase:webkit - Use net-libs/webkit-gtk for rendering rather than net-libs/xulrunner
-www-client/lynx:gnutls - Use gnutls library for HTTPS support.
-www-client/lynx:openssl - Use openssl library for HTTPS support.
+www-client/lynx:gnutls - Use gnutls library for HTTPS support (openssl is the default library for HTTPS support).
+www-client/lynx:ssl - Enable HTTPS support.
 www-client/midori:soup - Use Soup (net-libs/libsoup) as HTTP backend instead of curl(net-misc/curl), if you want better gnome integration for URL processing
 www-client/mozilla-firefox:custom-optimization - Fine-tune custom compiler optimizations
 www-client/mozilla-firefox:filepicker - Enable old gtkfilepicker from 1.0.x firefox
@@ -3264,15 +3265,13 @@ x11-wm/windowmaker:vdesktop - Enable dynamic virtual desktop (conflicts with sof
 xfce-base/libxfcegui4:glade - Build glade bindings
 xfce-base/thunar:trash-plugin - Build Trash plug-in for panel
 xfce-base/xfce-utils:lock - Enable screen locking
-xfce-base/xfce4-extras:battery - Meta pulls in xfce-extra/xfce4-battery depend
-xfce-base/xfce4-extras:cpufreq - Meta pulls in xfce-extra/xfce4-cpu-freq depend
 xfce-base/xfce4-session:gnome-keyring - Support for storing your password.
 xfce-base/xfce4-settings:keyboard - Enable Keyboard layout selection with x11-libs/libxklavier
 xfce-base/xfce4-settings:sound - Enable sound event support with media-libs/libcanberra
-xfce-base/xfdesktop:file-icons - Build support for application launchers using xfce-base/thunar and libexo
 xfce-base/xfdesktop:menu-plugin - Build Menu plug-in for panel
+xfce-base/xfdesktop:thunar - Build support for application launchers using xfce-base/thunar
 xfce-extra/thunar-thumbnailers:grace - Enable support for sci-visualization/grace thumbnails
-xfce-extra/xfce4-mpc:libmpd - Build using media-libs/libmpd backend, instead of native fallback which is preferred
+xfce-extra/xfce4-mpc-plugin:libmpd - Build using media-libs/libmpd backend, instead of native fallback which is preferred
 xfce-extra/xfce4-power-manager:dpms - Build with DPMS support
 xfce-extra/xfce4-power-manager:panel-plugins - Build with panel plugins
 xfce-extra/xfce4-screenshooter:zimagez - Optional support to host screenshots on ZimageZ, a free online image service

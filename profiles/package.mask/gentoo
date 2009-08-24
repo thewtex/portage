@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10352 2009/08/22 22:05:06 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10357 2009/08/23 21:29:45 flameeyes Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -36,12 +36,6 @@
 # is only suited for ruby 1.6, which has gone from our tree a long
 # time ago. devel-logger will follow in 30 days.
 dev-ruby/devel-logger
-
-# Hans de Graaff <graaff@gentoo.org> (22 Aug 2009)
-# cgi_multipart_eof_fix is used to fix ruby versions up to 1.8.5.
-# We no longer ship these versions, and all versions in the tree
-# are unaffected, so this will be removed in 30 days.
-dev-ruby/cgi_multipart_eof_fix
 
 # Hans de Graaff <graaff@gentoo.org> (22 Aug 2009)
 # ruby-amazon uses the obsolete v3 protocol which has been shut
@@ -542,13 +536,6 @@ dev-libs/libexploit
 # Removal on 2009-10-08
 dev-db/sqsh
 
-# Samuli Suominen <ssuominen@gentoo.org> (09 Aug 2009)
-# Outdated virtual for Xfce 4.4. Use eix to search for
-# xfce plugins you want to install. This meta only covered
-# old ones. Unnecessary maintaince burden for minor arches
-# if we wanted to keep this up to date. Masked for removal.
-xfce-base/xfce4-extras
-
 # Michał Januszewski <spock@gentoo.org> (08 Aug 2009)
 # Live git ebuilds for pycuda/pytools. Use at your own risk, do not
 # report Gentoo bugs if stuff breaks after you install them.
@@ -591,6 +578,12 @@ dev-embedded/sdcc-svn
 ~sys-fs/yaffs-utils-9999
 games-emulation/dosbox-cvs
 net-irc/irssi-svn
+~sys-fs/yaffs2-utils-9999
+~app-doc/repodoc-9999
+~app-i18n/skk-jisyo-9999
+~net-wireless/wpa_supplicant-9999
+net-misc/netcomics-cvs
+dev-lisp/cl-ansi-tests-cvs
 
 # Samuli Suominen <ssuominen@gentoo.org> (08 Aug 2009)
 # Masked by treecleaners for removal. Doesn't compile wrt #215252.
@@ -620,10 +613,6 @@ dev-util/motor
 # Samuli Suominen <ssuominen@gentoo.org> (08 Aug 2009)
 # Masked by treecleaners for removal. Doesn't compile wrt #248563.
 x11-misc/glsof
-
-# Samuli Suominen <ssuominen@gentoo.org> (08 Aug 2009)
-# Masked by treecleaners for removal. Doesn't compile wrt #240257.
-dev-util/hxd
 
 # Samuli Suominen <ssuominen@gentoo.org> (08 Aug 2009)
 # Masked by treecleaners for removal. Doesn't compile wrt #239776.
@@ -1086,13 +1075,6 @@ net-fs/samba-server
 #
 # Pending removal 22 August 2009
 sys-apps/realtime-lsm
-
-# Alin Năstac <mrness@gentoo.org> (20 Jun 2009)
-# Masked for removal in 60 days (#273316).
-# SpeedTouch modems are supported by modern Linux kernels (>=2.6.10),
-# the firmware files being available under Gentoo as package
-# net-dialup/speedtouch-usb.
-net-dialup/speedtouch
 
 # Romain Perier <mrpouet@gentoo.org> (20 Jun 2009)
 # A lot of changes into sources code

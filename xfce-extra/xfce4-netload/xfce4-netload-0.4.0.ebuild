@@ -1,15 +1,19 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-netload/xfce4-netload-0.4.0.ebuild,v 1.19 2008/12/08 23:15:51 angelos Exp $
+# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-netload/xfce4-netload-0.4.0.ebuild,v 1.21 2009/08/23 21:39:50 ssuominen Exp $
 
 inherit xfce44 eutils autotools
 
 xfce44
 
 DESCRIPTION="Netload panel plugin"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd"
 IUSE=""
-DEPEND=">=dev-util/xfce4-dev-tools-${XFCE_MASTER_VERSION}
+
+RDEPEND="xfce-base/xfce4-panel"
+DEPEND="${RDEPEND}
+	dev-util/pkgconfig
+	dev-util/xfce4-dev-tools
 	dev-util/intltool"
 
 src_unpack() {
