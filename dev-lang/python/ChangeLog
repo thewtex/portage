@@ -1,6 +1,16 @@
 # ChangeLog for dev-lang/python
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/python/ChangeLog,v 1.403 2009/08/18 00:54:54 arfrever Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/python/ChangeLog,v 1.405 2009/08/25 01:26:59 arfrever Exp $
+
+  25 Aug 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  python-2.6.2-r1.ebuild, python-3.1.1.ebuild:
+  Fix building of Python 2.6.2-r1 with USE=-threads (bug #282518). Fix
+  building with USE=build or USE=-xml (bug #282259). Small updates.
+
+  21 Aug 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  python-2.5.4-r3.ebuild, python-2.6.2-r1.ebuild, python-3.1.1.ebuild:
+  Add missing dependency on >=dev-libs/expat-2 and non-zero exit status of
+  setup.py when building of extensions has failed (bug #281968).
 
 *python-3.1.1 (17 Aug 2009)
 
@@ -37,7 +47,7 @@
   30 Jul 2009; Jeremy Olexa <darkside@gentoo.org> python-2.6.2-r1.ebuild:
   amd64 stable, bug 277645
 
-  19 Jul 2009; Raúl Porcel <armin76@gentoo.org> python-2.5.4-r3.ebuild:
+  19 Jul 2009; RaÃºl Porcel <armin76@gentoo.org> python-2.5.4-r3.ebuild:
   arm/ia64/m68k/s390/sh/sparc stable wrt #275311
 
   17 Jul 2009; nixnut <nixnut@gentoo.org> python-2.5.4-r3.ebuild:
@@ -67,7 +77,7 @@
   Install libpython2.6.a in /usr/lib instead of /usr/lib/python2.6/config
   (bug #252372). Fix building with Subversion 1.7.
 
-  27 May 2009; Raúl Porcel <armin76@gentoo.org> python-2.4.6.ebuild:
+  27 May 2009; RaÃºl Porcel <armin76@gentoo.org> python-2.4.6.ebuild:
   arm/ia64/m68k/s390/sh/sparc stable wrt #252317
 
   25 May 2009; Markus Meier <maekke@gentoo.org> python-2.4.6.ebuild:
@@ -102,7 +112,7 @@
   +python-2.4.6.ebuild:
   Version bump (bug #252317).
 
-  24 Apr 2009; Raúl Porcel <armin76@gentoo.org> python-2.5.4-r2.ebuild:
+  24 Apr 2009; RaÃºl Porcel <armin76@gentoo.org> python-2.5.4-r2.ebuild:
   arm/ia64/m68k/s390/sh/sparc stable wrt #265790
 
   22 Apr 2009; Jeroen Roovers <jer@gentoo.org> python-2.5.4-r2:
@@ -279,7 +289,7 @@
   python-2.5.2-r7.ebuild:
   Use correct sqlite module name, when disabling it.
 
-  12 Sep 2008; Raúl Porcel <armin76@gentoo.org> python-2.5.2-r7.ebuild:
+  12 Sep 2008; RaÃºl Porcel <armin76@gentoo.org> python-2.5.2-r7.ebuild:
   alpha/ia64 stable wrt #236723
 
   12 Sep 2008; Ferris McCormick <fmccor@gentoo.org> python-2.5.2-r7.ebuild:
@@ -302,12 +312,12 @@
   Drop python-2.3, drop old 2.4, 2.5 ebuilds. Add local use flag
   descriptions to metadata.xml.
 
-  31 Jul 2008; Raúl Porcel <armin76@gentoo.org> python-2.5.2-r6.ebuild:
+  31 Jul 2008; RaÃºl Porcel <armin76@gentoo.org> python-2.5.2-r6.ebuild:
   sparc stable
 
 *python-2.5.2-r7 (31 Jul 2008)
 
-  31 Jul 2008; Tiziano Müller <dev-zero@gentoo.org>
+  31 Jul 2008; Tiziano MÃ¼ller <dev-zero@gentoo.org>
   +python-2.5.2-r7.ebuild:
   Added patches for bug #218378 (thanks to Duane Griffin) and bug #233312
   (thanks to Arfrever Frehtes Taifersar Arahesis).
@@ -315,12 +325,12 @@
 *python-2.5.2-r6 (31 Jul 2008)
 *python-2.4.4-r14 (31 Jul 2008)
 
-  31 Jul 2008; Tiziano Müller <dev-zero@gentoo.org>
+  31 Jul 2008; Tiziano MÃ¼ller <dev-zero@gentoo.org>
   +python-2.4.4-r14.ebuild, +python-2.5.2-r6.ebuild:
   Revision bump to fix bug #230640 (CVE-2008-2315, CVE-2008-2316) and bug
   #232137 (CVE-2008-{3142,3143,3144}).
 
-  18 Jul 2008; Olivier Crête <tester@gentoo.org> python-2.5.2-r5.ebuild:
+  18 Jul 2008; Olivier CrÃªte <tester@gentoo.org> python-2.5.2-r5.ebuild:
   Stable on amd64, bug #178800
 
   18 Jul 2008; Jeroen Roovers <jer@gentoo.org> python-2.5.2-r5.ebuild:
@@ -330,7 +340,7 @@
   python-2.5.2-r5.ebuild:
   Stable on alpha, bug #178800
 
-  17 Jul 2008; Raúl Porcel <armin76@gentoo.org> python-2.5.2-r5.ebuild:
+  17 Jul 2008; RaÃºl Porcel <armin76@gentoo.org> python-2.5.2-r5.ebuild:
   ia64/sparc stable wrt #178800
 
   17 Jul 2008; Christian Faulhammer <opfer@gentoo.org>
@@ -392,7 +402,7 @@
   python-2.3.6-r6.ebuild, python-2.4.4-r13.ebuild:
   ppc stable, bug #216673
 
-  26 May 2008; Raúl Porcel <armin76@gentoo.org> python-2.3.6-r6.ebuild,
+  26 May 2008; RaÃºl Porcel <armin76@gentoo.org> python-2.3.6-r6.ebuild,
   python-2.4.4-r13.ebuild:
   ia64/sparc stable wrt security #216673
 
@@ -473,7 +483,7 @@
   11 Mar 2008; Markus Rothe <corsair@gentoo.org> python-2.4.4-r9.ebuild:
   Stable on ppc64; bug #211281
 
-  11 Mar 2008; Tiziano Müller <dev-zero@gentoo.org> python-2.4.4-r9.ebuild,
+  11 Mar 2008; Tiziano MÃ¼ller <dev-zero@gentoo.org> python-2.4.4-r9.ebuild,
   python-2.5.1-r5.ebuild:
   Changed newinitd/newconfd for pydoc to install the init.d/conf.d scripts as
   pydoc-2.x (aka don't break slotting)
@@ -484,13 +494,13 @@
   03 Mar 2008; Christoph Mende <angelos@gentoo.org> python-2.4.4-r9.ebuild:
   Stable on amd64, bug #211281
 
-  03 Mar 2008; Raúl Porcel <armin76@gentoo.org> python-2.4.4-r9.ebuild:
+  03 Mar 2008; RaÃºl Porcel <armin76@gentoo.org> python-2.4.4-r9.ebuild:
   alpha/ia64/sparc/x86 stable wrt #211281
 
   03 Mar 2008; Jeroen Roovers <jer@gentoo.org> python-2.4.4-r9.ebuild:
   Stable for HPPA (bug #211281).
 
-  01 Mar 2008; Tiziano Müller <dev-zero@gentoo.org> +files/pydoc.conf,
+  01 Mar 2008; Tiziano MÃ¼ller <dev-zero@gentoo.org> +files/pydoc.conf,
   +files/pydoc.init, python-2.4.4-r9.ebuild, python-2.5.1-r5.ebuild:
   Added init.d/conf.d scripts for the integrated pydoc webserver (bug #59903,
   thanks to compnerd).
@@ -508,7 +518,7 @@
   23 Jan 2008; Peter Weller <welp@gentoo.org> python-2.3.6-r4.ebuild:
   Stable on amd64; bug 198373
 
-  23 Jan 2008; Raúl Porcel <armin76@gentoo.org> python-2.3.6-r4.ebuild:
+  23 Jan 2008; RaÃºl Porcel <armin76@gentoo.org> python-2.3.6-r4.ebuild:
   alpha/ia64/sparc stable wrt security #198373
 
   23 Jan 2008; Christian Faulhammer <opfer@gentoo.org>
@@ -556,7 +566,7 @@
   25 Oct 2007; Jeroen Roovers <jer@gentoo.org> python-2.3.6-r3.ebuild:
   Stable for HPPA (bug #192876).
 
-  25 Oct 2007; Raúl Porcel <armin76@gentoo.org> python-2.3.6-r3.ebuild,
+  25 Oct 2007; RaÃºl Porcel <armin76@gentoo.org> python-2.3.6-r3.ebuild,
   python-2.4.4-r6.ebuild:
   alpha/ia64/sparc stable wrt security #192876
 
@@ -606,7 +616,7 @@
   22 Sep 2007; Tom Gall <tgall@gentoo.org> python-2.4.4-r5.ebuild:
   stable on ppc64
 
-  21 Sep 2007; Raúl Porcel <armin76@gentoo.org> python-2.4.4-r5.ebuild:
+  21 Sep 2007; RaÃºl Porcel <armin76@gentoo.org> python-2.4.4-r5.ebuild:
   alpha/ia64 stable wrt #188029
 
   21 Sep 2007; Chris Gianelloni <wolf31o2@gentoo.org>
@@ -649,7 +659,7 @@
   export LDFLAGS="-L." -> append-ldflags "-L.", #189298
   thanks to Arfrever Frehtes Taifersar Arahesis.
 
-  02 Jul 2007; Piotr Jaroszyński <peper@gentoo.org> python-2.3.5-r2.ebuild,
+  02 Jul 2007; Piotr JaroszyÅski <peper@gentoo.org> python-2.3.5-r2.ebuild,
   python-2.3.5-r3.ebuild, python-2.3.6.ebuild, python-2.3.6-r2.ebuild,
   python-2.4.3-r1.ebuild, python-2.4.3-r4.ebuild, python-2.4.4.ebuild,
   python-2.4.4-r4.ebuild, python-2.5-r2.ebuild, python-2.5.1-r2.ebuild:
@@ -659,7 +669,7 @@
   python-2.5.1-r2.ebuild:
   Keyworded ~ppc; bug #177426.
 
-  31 May 2007; Bryan Østergaard <kloeri@gentoo.org> metadata.xml:
+  31 May 2007; Bryan Ãstergaard <kloeri@gentoo.org> metadata.xml:
   Remove myself as I'm retiring.
 
   19 May 2007; Peter Weller <welp@gentoo.org> python-2.5.1-r2.ebuild:
@@ -668,7 +678,7 @@
   19 May 2007; Peter Weller <welp@gentoo.org> python-2.3.6-r2.ebuild:
   Added ~amd64 to python-2.3.6-r2
 
-  17 May 2007; Bryan Østergaard <kloeri@gentoo.org> metadata.xml:
+  17 May 2007; Bryan Ãstergaard <kloeri@gentoo.org> metadata.xml:
   Mark myself as maintainer.
 
   16 May 2007; Tobias Scherbaum <dertobi123@gentoo.org>
@@ -682,20 +692,20 @@
   python-2.3.6-r2.ebuild, python-2.5.1-r2.ebuild:
   Keyworded ~sparc wrt #177426
 
-  14 May 2007; Bryan Østergaard <kloeri@gentoo.org> python-2.4.4-r4.ebuild:
+  14 May 2007; Bryan Ãstergaard <kloeri@gentoo.org> python-2.4.4-r4.ebuild:
   Stable on Alpha and Mips.
 
   14 May 2007; Daniel Gryniewicz <dang@gentoo.org> python-2.4.4-r4.ebuild:
   Marked ~amd64 for bug #177804
 
-  14 May 2007; Bryan Østergaard <kloeri@gentoo.org> python-2.4.4-r4.ebuild:
+  14 May 2007; Bryan Ãstergaard <kloeri@gentoo.org> python-2.4.4-r4.ebuild:
   Fix 2.4.4-r4 tests always being disabled.
 
   14 May 2007; Gustavo Zacarias <gustavoz@gentoo.org>
   python-2.4.4-r4.ebuild:
   Stable on sparc wrt security #177804
 
-  14 May 2007; Bryan Østergaard <kloeri@gentoo.org> python-2.3.6-r2.ebuild,
+  14 May 2007; Bryan Ãstergaard <kloeri@gentoo.org> python-2.3.6-r2.ebuild,
   python-2.4.4-r4.ebuild, -python-2.5.1-r1.ebuild, python-2.5.1-r2.ebuild:
   Fix small bug preventing tests from running, fix manpage symlinks (bug
   177471) and filter as-needed in python-2.3.6-r2 (bug 177614).
@@ -709,22 +719,22 @@
   12 May 2007; Roy Marples <uberlord@gentoo.org> python-2.4.4-r4.ebuild:
   Added ~sparc-fbsd keyword.
 
-  12 May 2007; Raúl Porcel <armin76@gentoo.org> python-2.4.4-r4.ebuild:
+  12 May 2007; RaÃºl Porcel <armin76@gentoo.org> python-2.4.4-r4.ebuild:
   ia64 + x86 stable wrt security bug #177804
 
   12 May 2007; Markus Rothe <corsair@gentoo.org> python-2.3.6-r2.ebuild,
   python-2.4.4-r4.ebuild, python-2.5.1-r2.ebuild:
   Added ~ppc64; bug #177426
 
-  11 May 2007; Bryan Østergaard <kloeri@gentoo.org> python-2.4.4-r4.ebuild,
+  11 May 2007; Bryan Ãstergaard <kloeri@gentoo.org> python-2.4.4-r4.ebuild,
   python-2.5.1-r2.ebuild:
   Add ~alpha and ~mips keywords.
 
-  11 May 2007; Bryan Østergaard <kloeri@gentoo.org>
+  11 May 2007; Bryan Ãstergaard <kloeri@gentoo.org>
   -python-2.1.3-r1.ebuild, -python-2.2.3-r6.ebuild:
   More cleanups, this time removing <python-2.3.
 
-  11 May 2007; Bryan Østergaard <kloeri@gentoo.org>
+  11 May 2007; Bryan Ãstergaard <kloeri@gentoo.org>
   -python-2.3.6-r1.ebuild, -python-2.4.4-r2.ebuild, -python-2.4.4-r3.ebuild,
   -python-2.5-r1.ebuild, -python-2.5.1.ebuild:
   Clean out some old versions.
@@ -732,7 +742,7 @@
 *python-2.5.1-r2 (11 May 2007)
 *python-2.4.4-r4 (11 May 2007)
 
-  11 May 2007; Bryan Østergaard <kloeri@gentoo.org>
+  11 May 2007; Bryan Ãstergaard <kloeri@gentoo.org>
   +python-2.4.4-r4.ebuild, +python-2.5.1-r2.ebuild:
   Only apply crosscompile patch conditionally, drop tests if crosscompiling
   and fix PyLocale.strxfrm leak from bug 177804. srtxfrm from Debian bug
@@ -742,7 +752,7 @@
 *python-2.4.4-r3 (10 May 2007)
 *python-2.3.6-r2 (10 May 2007)
 
-  10 May 2007; Bryan Østergaard <kloeri@gentoo.org>
+  10 May 2007; Bryan Ãstergaard <kloeri@gentoo.org>
   +python-2.3.6-r2.ebuild, +python-2.4.4-r3.ebuild, +python-2.5.1-r1.ebuild:
   Change threads USE flag to nothreads, fix non-linux linker issue and fix
   man-page symlink.
@@ -753,14 +763,14 @@
   export LDFLAGS="-L." so we link modules correctly on FreeBSD and possibly
   other systems where python2.5 isn't installed yet.
 
-  08 May 2007; Raúl Porcel <armin76@gentoo.org> python-2.3.6-r1.ebuild,
+  08 May 2007; RaÃºl Porcel <armin76@gentoo.org> python-2.3.6-r1.ebuild,
   python-2.4.4-r2.ebuild, python-2.5.1.ebuild:
   Add ~ia64 wrt 177426
 
   08 May 2007; Roy Marples <uberlord@gentoo.org> python-2.4.4-r2.ebuild:
   Added ~x86-fbsd keyword, #177426.
 
-  08 May 2007; Bryan Østergaard <kloeri@gentoo.org> python-2.3.6-r1.ebuild,
+  08 May 2007; Bryan Ãstergaard <kloeri@gentoo.org> python-2.3.6-r1.ebuild,
   python-2.4.4-r2.ebuild, python-2.5.1.ebuild:
   Change nptl USE flag to threads.
 
@@ -775,18 +785,18 @@
 
 *python-2.4.4-r2 (07 May 2007)
 
-  07 May 2007; Bryan Østergaard <kloeri@gentoo.org>
+  07 May 2007; Bryan Ãstergaard <kloeri@gentoo.org>
   -python-2.4.4-r1.ebuild, +python-2.4.4-r2.ebuild:
   Fix broken 2.4.4 patch causing wrong linking.
 
   07 May 2007; Gustavo Zacarias <gustavoz@gentoo.org> python-2.4.4.ebuild:
   Stable on sparc
 
-  07 May 2007; Bryan Østergaard <kloeri@gentoo.org> python-2.3.6-r1.ebuild,
+  07 May 2007; Bryan Ãstergaard <kloeri@gentoo.org> python-2.3.6-r1.ebuild,
   python-2.4.4.ebuild, python-2.4.4-r1.ebuild:
   Fix 2.3.6-r1 patch (bug 177464) and disable sax test in 2.4.4.
 
-  07 May 2007; Bryan Østergaard <kloeri@gentoo.org> python-2.3.5-r2.ebuild,
+  07 May 2007; Bryan Ãstergaard <kloeri@gentoo.org> python-2.3.5-r2.ebuild,
   python-2.3.5-r3.ebuild, python-2.3.6.ebuild, python-2.3.6-r1.ebuild,
   python-2.4.3-r1.ebuild, python-2.4.3-r4.ebuild, python-2.4.4.ebuild,
   python-2.4.4-r1.ebuild, python-2.5-r1.ebuild, python-2.5-r2.ebuild:
@@ -796,7 +806,7 @@
 *python-2.4.4-r1 (06 May 2007)
 *python-2.3.6-r1 (06 May 2007)
 
-  06 May 2007; Bryan Østergaard <kloeri@gentoo.org>
+  06 May 2007; Bryan Ãstergaard <kloeri@gentoo.org>
   +python-2.3.6-r1.ebuild, +python-2.4.4-r1.ebuild, +python-2.5.1.ebuild:
   Build problems fixed:
   bug 120099 dev-lang/python-2.4.2 builds against sys-libs/gdbm with USE="-gdbm"
@@ -841,28 +851,28 @@
   python-2.4.3-r4.ebuild, python-2.4.4.ebuild, python-2.5-r1.ebuild:
   Replacing einfo with elog
 
-  11 Nov 2006; Bryan Østergaard <kloeri@gentoo.org> python-2.3.6.ebuild:
+  11 Nov 2006; Bryan Ãstergaard <kloeri@gentoo.org> python-2.3.6.ebuild:
   Fix lib64 patch, bug 154711.
 
 *python-2.3.6 (09 Nov 2006)
 
-  09 Nov 2006; Bryan Østergaard <kloeri@gentoo.org> +python-2.3.6.ebuild:
+  09 Nov 2006; Bryan Ãstergaard <kloeri@gentoo.org> +python-2.3.6.ebuild:
   Bump version, bug 153944.
 
 *python-2.4.4 (04 Nov 2006)
 
-  04 Nov 2006; Bryan Østergaard <kloeri@gentoo.org> +python-2.4.4.ebuild:
+  04 Nov 2006; Bryan Ãstergaard <kloeri@gentoo.org> +python-2.4.4.ebuild:
   Version bump.
 
   18 Oct 2006; Roy Marples <uberlord@gentoo.org> python-2.4.3-r4.ebuild,
   python-2.5-r1.ebuild:
   Added ~sparc-fbsd keyword.
 
-  27 Sep 2006; Bryan Østergaard <kloeri@gentoo.org> python-2.3.5-r3.ebuild,
+  27 Sep 2006; Bryan Ãstergaard <kloeri@gentoo.org> python-2.3.5-r3.ebuild,
   python-2.4.3-r4.ebuild:
   Stable on ia64.
 
-  27 Sep 2006; Bryan Østergaard <kloeri@gentoo.org> python-2.3.5-r3.ebuild,
+  27 Sep 2006; Bryan Ãstergaard <kloeri@gentoo.org> python-2.3.5-r3.ebuild,
   python-2.4.3-r4.ebuild:
   Stable on Alpha.
 
@@ -972,13 +982,13 @@
   28 Jun 2006; Markus Rothe <corsair@gentoo.org> python-2.4.3-r1.ebuild:
   Stable on ppc64; bug #138268
 
-  27 Jun 2006; Bryan Østergaard <kloeri@gentoo.org> python-2.4.3-r1.ebuild:
+  27 Jun 2006; Bryan Ãstergaard <kloeri@gentoo.org> python-2.4.3-r1.ebuild:
   Stable on alpha, ia64 and x86.
 
 *python-2.4.3-r1 (04 May 2006)
 *python-2.4.2-r2 (04 May 2006)
 
-  04 May 2006; Bryan Østergaard <kloeri@gentoo.org>
+  04 May 2006; Bryan Ãstergaard <kloeri@gentoo.org>
   +files/python-2.4.2-gentoo_obsd-r1.patch,
   +files/python-2.4.3-gentoo_obsd-r1.patch, +python-2.4.2-r2.ebuild,
   +python-2.4.3-r1.ebuild:
@@ -988,7 +998,7 @@
   files/digest-python-2.1.3-r1, files/digest-python-2.2.3-r6, Manifest:
   Fixing SHA256 digest, pass four
 
-  14 Apr 2006; Bryan Østergaard <kloeri@gentoo.org
+  14 Apr 2006; Bryan Ãstergaard <kloeri@gentoo.org
   +files/python-2.4.2-gentoo_obsd.patch,
   +files/python-2.4.3-gentoo_obsd.patch, python-2.4.2-r1.ebuild,
   python-2.4.3.ebuild:
@@ -996,11 +1006,11 @@
 
 *python-2.4.3 (13 Apr 2006)
 
-  13 Apr 2006; Bryan Østergaard <kloeri@gentoo.org
+  13 Apr 2006; Bryan Ãstergaard <kloeri@gentoo.org
   +files/python-2.4.3-db4.patch, +python-2.4.3.ebuild:
   Version bump to 2.4.3.
 
-  30 Mar 2006; Diego Pettenò <flameeyes@gentoo.org> python-2.4.2-r1.ebuild:
+  30 Mar 2006; Diego PettenÃ² <flameeyes@gentoo.org> python-2.4.2-r1.ebuild:
   Add ~x86-fbsd keyword.
 
   16 Feb 2006; Marien Zwart <marienz@gentoo.org>
@@ -1042,13 +1052,13 @@
   python-2.4.2.ebuild, python-2.4.2-r1.ebuild:
   Disable confcache (breaks .so loading).
 
-  02 Feb 2006; Bryan Østergaard <kloeri@gentoo.org
+  02 Feb 2006; Bryan Ãstergaard <kloeri@gentoo.org
   +files/python-2.4.2-mmap+fd.patch:
   Add missing python-2.4.2-mmap+fd.patch.
 
 *python-2.4.2-r1 (02 Feb 2006)
 
-  02 Feb 2006; Bryan Østergaard <kloeri@gentoo.org
+  02 Feb 2006; Bryan Ãstergaard <kloeri@gentoo.org
   +files/depreorder-topsort.py, +files/python-updater-r1,
   +python-2.4.2-r1.ebuild:
   No more libstdc++.so linking, fix python-updater ordering (bug #95538) +
@@ -1077,7 +1087,7 @@
   14 Oct 2005; Gustavo Zacarias <gustavoz@gentoo.org> python-2.4.2.ebuild:
   Stable on sparc
 
-  14 Oct 2005; Bryan Østergaard <kloeri@gentoo.org> python-2.4.2.ebuild:
+  14 Oct 2005; Bryan Ãstergaard <kloeri@gentoo.org> python-2.4.2.ebuild:
   Stable on alpha.
 
   13 Oct 2005; Luis Medinas <metalgod@gentoo.org> python-2.4.2.ebuild:
@@ -1103,16 +1113,16 @@
   python-2.4.1-r1.ebuild:
   Stable on hppa, ppc.
 
-  08 Oct 2005; Bryan Østergaard <kloeri@gentoo.org> python-2.4.1-r1.ebuild:
+  08 Oct 2005; Bryan Ãstergaard <kloeri@gentoo.org> python-2.4.1-r1.ebuild:
   Stable python-2.4 on alpha, ia64 and x86.
 
-  01 Oct 2005; Bryan Østergaard <kloeri@gentoo.org> python-2.3.5-r2.ebuild,
+  01 Oct 2005; Bryan Ãstergaard <kloeri@gentoo.org> python-2.3.5-r2.ebuild,
   python-2.4.1-r1.ebuild, python-2.4.2.ebuild:
   Disable additional test, fixing bug 82469, 94859, 96366 and 96488.
 
 *python-2.4.2 (28 Sep 2005)
 
-  28 Sep 2005; Bryan Østergaard <kloeri@gentoo.org>
+  28 Sep 2005; Bryan Ãstergaard <kloeri@gentoo.org>
   +files/python-2.4.2-readline.patch, +python-2.4.2.ebuild:
   Bump version to 2.4.2.
 
@@ -1135,20 +1145,20 @@
   09 Sep 2005; Markus Rothe <corsair@gentoo.org> python-2.3.5-r2.ebuild:
   Stable on ppc64
 
-  08 Sep 2005; Bryan Østergaard <kloeri@gentoo.org> python-2.3.5-r2.ebuild:
+  08 Sep 2005; Bryan Ãstergaard <kloeri@gentoo.org> python-2.3.5-r2.ebuild:
   Stable on x86, alpha and ia64 - bug 104009.
 
 *python-2.3.5-r2 (08 Sep 2005)
 
-  08 Sep 2005; Bryan Østergaard <kloeri@gentoo.org>
+  08 Sep 2005; Bryan Ãstergaard <kloeri@gentoo.org>
   +files/python-2.3-pcre.patch, +python-2.3.5-r2.ebuild:
   Version bump to fix pcre security vulnerability, bug 104009.
 
-  16 Aug 2005; Bryan Østergaard <kloeri@gentoo.org> python-2.3.4-r1.ebuild,
+  16 Aug 2005; Bryan Ãstergaard <kloeri@gentoo.org> python-2.3.4-r1.ebuild,
   python-2.3.5.ebuild:
   Add fix for bug 88777 to arch versions.
 
-  15 Aug 2005; Bryan Østergaard <kloeri@gentoo.org> python-2.3.5-r1.ebuild,
+  15 Aug 2005; Bryan Ãstergaard <kloeri@gentoo.org> python-2.3.5-r1.ebuild,
   python-2.4.1-r1.ebuild:
   Fix bug 88777 in ~arch versions.
 
@@ -1157,11 +1167,11 @@
   +files/python-2.4.1-crosscompile.patch, python-2.4.1-r1.ebuild:
   Add support for cross-compiling.  Grabbed patches from uClibc/OpenEmbedded.
 
-  19 Jul 2005; Bryan Østergaard <kloeri@gentoo.org>
+  19 Jul 2005; Bryan Ãstergaard <kloeri@gentoo.org>
   +files/python-2.4.1-st_flags.patch, python-2.4.1-r1.ebuild:
   Update st_flags patch, bug 94637.
 
-  03 Jul 2005; Bryan Østergaard <kloeri@gentoo.org> python-2.3.5.ebuild:
+  03 Jul 2005; Bryan Ãstergaard <kloeri@gentoo.org> python-2.3.5.ebuild:
   Stable on alpha.
 
   27 Jun 2005; Markus Rothe <corsair@gentoo.org> python-2.3.5.ebuild:
@@ -1173,7 +1183,7 @@
 *python-2.4.1-r1 (16 Jun 2005)
 *python-2.3.5-r1 (16 Jun 2005)
 
-  16 Jun 2005; Bryan Østergaard <kloeri@gentoo.org>
+  16 Jun 2005; Bryan Ãstergaard <kloeri@gentoo.org>
   +files/python-2.3.5-st_flags.patch, +python-2.3.5-r1.ebuild,
   +python-2.4.1-r1.ebuild:
   Add st_flags patch, requested in bug 94637.
@@ -1192,12 +1202,12 @@
   files/python-2.4.1-libdir.patch:
   remove zlib from libpython dependency (#90545)
 
-  28 May 2005; Bryan Østergaard <kloeri@gentoo.org> python-2.1.3-r1.ebuild,
+  28 May 2005; Bryan Ãstergaard <kloeri@gentoo.org> python-2.1.3-r1.ebuild,
   python-2.2.3-r6.ebuild, python-2.3.4-r1.ebuild, python-2.3.5.ebuild,
   python-2.4-r3.ebuild, python-2.4.1.ebuild:
   Add missing inherit versionator.
 
-  21 May 2005; Bryan Østergaard <kloeri@gentoo.org> python-2.1.3-r1.ebuild:
+  21 May 2005; Bryan Ãstergaard <kloeri@gentoo.org> python-2.1.3-r1.ebuild:
   Fix PROVIDE according to bug 93028.
 
   18 May 2005; Markus Rothe <corsair@gentoo.org> python-2.3.5.ebuild:
@@ -1206,7 +1216,7 @@
   11 May 2005; Marcus D. Hanwell <cryos@gentoo.org> python-2.3.5.ebuild:
   Stable on amd64.
 
-  07 May 2005; Bryan Østergaard <kloeri@gentoo.org> python-2.3.5.ebuild,
+  07 May 2005; Bryan Ãstergaard <kloeri@gentoo.org> python-2.3.5.ebuild,
   python-2.4.1.ebuild:
   Fix FEATURES=test using slightly modified patch by Rob Cakebread, bug 67970.
 
@@ -1252,11 +1262,11 @@
   15 Mar 2005; Alastair Tse <liquidx@gentoo.org> python-2.3.5.ebuild:
   more multilib fixes (#76791)
 
-  01 Mar 2005; Bryan Østergaard <kloeri@gentoo.org> python-2.3.5.ebuild,
+  01 Mar 2005; Bryan Ãstergaard <kloeri@gentoo.org> python-2.3.5.ebuild,
   python-2.4-r1.ebuild:
   Fix conditional c++ support for remaining versions.
 
-  27 Feb 2005; Bryan Østergaard <kloeri@gentoo.org> python-2.3.3-r2.ebuild,
+  27 Feb 2005; Bryan Ãstergaard <kloeri@gentoo.org> python-2.3.3-r2.ebuild,
   python-2.3.4-r1.ebuild, python-2.4-r2.ebuild:
   Disable c++ conditionally.
 
@@ -1285,7 +1295,7 @@
   Patches and version bumps for security bug# 80592 Python bug# PSF-2005-001 xmlrpc
   vulnerability. Removed obsolete versions.
 
-  06 Jan 2005; Bryan Østergaard <kloeri@gentoo.org> python-2.4.ebuild:
+  06 Jan 2005; Bryan Ãstergaard <kloeri@gentoo.org> python-2.4.ebuild:
   Fix broken Manifest.
 
   05 Jan 2005; Rob Cakebread <pythonhead@gentoo.org> python-2.4.ebuild:
@@ -1357,7 +1367,7 @@
   Made python-2.1 stable on ppc as there are still some ebuilds which require
   this version.
 
-  03 Jul 2004; Bryan Østergaard <kloeri@gentoo.org> python-2.3.3-r1.ebuild:
+  03 Jul 2004; Bryan Ãstergaard <kloeri@gentoo.org> python-2.3.3-r1.ebuild:
   Stable on alpha.
 
   03 Jul 2004; Grant Goodyear <g2boojum@gentoo.org> python-2.3.4.ebuild:
@@ -1390,7 +1400,7 @@
 
 *python-2.3.4 (04 Jun 2004)
 
-  04 Jun 2004; Bryan Østergaard <kloeri@gentoo.org> +python-2.3.4.ebuild:
+  04 Jun 2004; Bryan Ãstergaard <kloeri@gentoo.org> +python-2.3.4.ebuild:
   Bump version.
 
   02 Jun 2004; Travis Tilley <lv@gentoo.org> python-2.3.3-r1.ebuild:
@@ -1444,7 +1454,7 @@
   Removing portage version check again as it's preventing new installations.
   Bug #43036
 
-  25 Feb 2004; Bryan Østergaard,,, <kloeri@gentoo.org> python-2.3.3.ebuild:
+  25 Feb 2004; Bryan Ãstergaard,,, <kloeri@gentoo.org> python-2.3.3.ebuild:
   Reinstating portage version check as people keep upgrading python without
   upgrading portage.
 
