@@ -1,6 +1,6 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/gdl/gdl-0.9_rc1.ebuild,v 1.4 2008/06/06 15:56:03 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/gdl/gdl-0.9_rc1.ebuild,v 1.5 2009/08/26 02:46:16 markusle Exp $
 
 inherit eutils flag-o-matic autotools
 

@@ -1,20 +1,20 @@
->=x11-libs/gtk+-2.10 >=xfce-base/libxfce4util-4.4 >=xfce-base/libxfcegui4-4.4 >=xfce-base/exo-0.3.2[hal] >=sys-apps/hal-0.5.9 dev-libs/dbus-glib dev-util/pkgconfig dev-util/intltool >=sys-apps/sed-4 dev-util/pkgconfig
->=x11-libs/gtk+-2.10 >=xfce-base/libxfce4util-4.4 >=xfce-base/libxfcegui4-4.4 >=xfce-base/exo-0.3.2[hal] >=sys-apps/hal-0.5.9 dev-libs/dbus-glib
+>=x11-libs/gtk+-2.10:2 >=xfce-base/libxfce4util-4.4 >=xfce-base/libxfcegui4-4.4 >=xfce-base/exo-0.3.2[hal] >=sys-apps/hal-0.5.9 >=dev-libs/dbus-glib-0.70 dev-util/pkgconfig dev-util/intltool =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool >=sys-apps/sed-4
+>=x11-libs/gtk+-2.10:2 >=xfce-base/libxfce4util-4.4 >=xfce-base/libxfcegui4-4.4 >=xfce-base/exo-0.3.2[hal] >=sys-apps/hal-0.5.9 >=dev-libs/dbus-glib-0.70
 0
-http://goodies.xfce.org/releases/xfce4-volstatus-icon/xfce4-volstatus-icon-0.1.0.tar.bz2
+mirror://xfce/src/apps/xfce4-volstatus-icon/0.1/xfce4-volstatus-icon-0.1.0.tar.bz2
 
-http://goodies.xfce.org
+http://www.xfce.org/
 GPL-2
 Systray status icon for safe unmount/eject of volumes
-~alpha ~amd64 ~ia64 ~ppc ~x86
-eutils fdo-mime gnome2-utils libtool multilib portability toolchain-funcs xfce4
+~alpha amd64 ~ia64 ~ppc ~x86
+autotools base eutils fdo-mime gnome2-utils libtool multilib portability toolchain-funcs xfconf
 debug
 
 
 
 2
 
-compile configure install postinst postrm preinst unpack
+compile configure install postinst postrm preinst prepare setup unpack
 
 
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4753 2009/08/24 13:27:45 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4757 2009/08/26 02:40:45 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -216,6 +216,7 @@ app-editors/xmlcopyeditor:guidexml - Install GuideXML templates to work with Gen
 app-editors/zile:valgrind - Enable usage of dev-util/valgrind in tests
 app-emacs/auctex:preview-latex - Use bundled preview-latex
 app-emacs/bbdb:tex - Install plain TeX support files
+app-emacs/company-mode:ropemacs - Install backend for ropemacs (app-emacs/pymacs)
 app-emacs/company-mode:semantic - Install backend for semantic (app-emacs/cedet)
 app-emacs/delicious:planner - Include support for app-emacs/planner
 app-emacs/easypg:gnus - Include support for the Gnus newsreader
@@ -909,7 +910,7 @@ dev-python/matplotlib:excel - Pull dev-python/xlwt for the exceltools toolkit
 dev-python/matplotlib:traits - Pull dev-python/traits for the experimental enthought traits support
 dev-python/paste:flup - enable support for flup (and therefore for various wgsi servers and middleware)
 dev-python/paste:openid - enable OpenID support
-dev-python/psycopg:mxdatetime - choose MX DateTime support instead of built-in datetime
+dev-python/psycopg:mxdatetime - Enable support for MX DateTime and use it instead of Python's built-in datetime module
 dev-python/pygobject:libffi - Enable support to connect to signals on python objects from C.
 dev-python/pylint:html - Install HTML documenation
 dev-python/pylons:cheetah - Add optional cheetah support
@@ -2476,6 +2477,7 @@ net-libs/libssh:gcrypt - Prefer dev-libs/libgcrypt over dev-libs/openssl for enc
 net-libs/libssh:server - Build with SSH server support
 net-libs/libssh:sftp - Build with SFTP support
 net-libs/libssh:ssh1 - Build with SSH1 support
+net-libs/libssh:static-libs - Build static libs
 net-libs/libssh2:gcrypt - Use dev-libs/libgcrypt for crypto
 net-libs/libvncserver:no24bpp - disable 24bpp support
 net-libs/libvncserver:nobackchannel - disable backchannel support
@@ -3518,5 +3520,5 @@ xfce-base/xfdesktop:thunar - Build support for application launchers using xfce-
 xfce-extra/thunar-thumbnailers:grace - Enable support for sci-visualization/grace thumbnails
 xfce-extra/xfce4-mpc-plugin:libmpd - Build using media-libs/libmpd backend, instead of native fallback which is preferred
 xfce-extra/xfce4-power-manager:dpms - Build with DPMS support
-xfce-extra/xfce4-power-manager:panel-plugins - Build with panel plugins
+xfce-extra/xfce4-power-manager:plugins - Build panel plugins
 xfce-extra/xfce4-screenshooter:zimagez - Optional support to host screenshots on ZimageZ, a free online image service

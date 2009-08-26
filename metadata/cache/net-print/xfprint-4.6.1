@@ -1,5 +1,5 @@
-app-text/a2ps >=dev-libs/glib-2.6:2 >=x11-libs/gtk+-2.6:2 >=xfce-base/libxfce4util-4.6.1 >=xfce-base/libxfcegui4-4.6.1 >=xfce-base/xfconf-4.6.1 cups? ( net-print/cups ) !cups? ( net-print/lprng ) dev-util/intltool >=sys-apps/sed-4 dev-util/pkgconfig
-app-text/a2ps >=dev-libs/glib-2.6:2 >=x11-libs/gtk+-2.6:2 >=xfce-base/libxfce4util-4.6.1 >=xfce-base/libxfcegui4-4.6.1 >=xfce-base/xfconf-4.6.1 cups? ( net-print/cups ) !cups? ( net-print/lprng )
+app-text/a2ps >=x11-libs/gtk+-2.10:2 >=xfce-base/libxfce4util-4.6 >=xfce-base/libxfcegui4-4.6 >=xfce-base/xfconf-4.6 cups? ( net-print/cups ) !cups? ( net-print/lprng ) dev-util/pkgconfig dev-util/intltool =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool >=sys-apps/sed-4 dev-util/xfce4-dev-tools
+app-text/a2ps >=x11-libs/gtk+-2.10:2 >=xfce-base/libxfce4util-4.6 >=xfce-base/libxfcegui4-4.6 >=xfce-base/xfconf-4.6 cups? ( net-print/cups ) !cups? ( net-print/lprng )
 0
 mirror://xfce/xfce-4.6.1/src/xfprint-4.6.1.tar.bz2
 
@@ -7,14 +7,14 @@ http://www.xfce.org/projects/xfprint
 GPL-2
 Frontend for printing, management and job queue.
 alpha amd64 arm hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd
-eutils fdo-mime gnome2-utils libtool multilib portability toolchain-funcs xfce4
-+cups debug
+autotools base eutils fdo-mime gnome2-utils libtool multilib portability toolchain-funcs xfconf
+cups debug
 
 
 
-1
+2
 
-compile install postinst postrm preinst setup unpack
+compile configure install postinst postrm preinst prepare setup unpack
 
 
 
