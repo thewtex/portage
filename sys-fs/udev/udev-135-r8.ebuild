@@ -80,30 +80,6 @@ src_install() {
 	keepdir "${udev_helper_dir}"/state
 	keepdir "${udev_helper_dir}"/devices
 
-	cd "${D}${udev_helper_dir}/devices" || die
-
-	# This is copied from Funtoo's baselayout ebuild. In the future, it would be
-	# good to get this initial device creation code all in one place. Maybe have
-	# baselayout install a script that does it, and have it used there and here.
-
-	[ -e console ] || { mknod console c 5 1; chmod 600 console; } || die
-	[ -e null ] || { mknod null c 1 3; chmod 777 null; } || die
-	[ -e tty ] || { mknod tty c 5 0; chmod 666 tty; } || die
-	[ -e ttyp0 ] || { mknod ttyp0 c 3 0; chmod 644 ttyp0; } || die
-	[ -e ptyp0 ] || { mknod ptyp0 c 2 0; chmod 644 ptyp0; } || die
-	[ -e ptmx ] || { mknod ptmx c 5 2; chmod 666 ptmx; } || die
-	[ -e tty0 ] || { mknod tty0 c 4 0; chmod 666 tty0; } || die
-	[ -e urandom ] || { mknod urandom c 1 9; chmod 666 urandom; } || die
-	[ -e random ] || { mknod random c 1 8; chmod 666 random; } || die
-	[ -e zero ] || { mknod zero c 1 5; chmod 666 zero; } || die
-
-	for x in 0 1 2 3
-	do
-		# These devices are for initial serial console
-		[ -e ttyS${x} ] || { mknod ttyS${x} c 4 $(( 64 + $x )); chmod 600 ttyS${x}; } || die
-	done
-
-	cd ${S} || die 
 
 	# create symlinks for these utilities to /sbin
 	# where multipath-tools expect them to be (Bug #168588)
@@ -290,6 +266,10 @@ fix_old_persistent_net_rules() {
 }
 
 pkg_postinst() {
+
+	einfo "Creating essential devices."
+	einfo
+	/sbin/MAKEESSENTIALDEVS "${ROOT}/${udev_helper_dir}/devices" || die "Could not create essential devices."
 
 	# disable coldplug script
 	rm -f $ROOT/etc/runlevels/*/coldplug
