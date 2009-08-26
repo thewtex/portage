@@ -1,19 +1,47 @@
 # ChangeLog for profile directory
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.3171 2009/08/23 21:29:44 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.3185 2009/08/25 18:41:39 ulm Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
 
+  25 Aug 2009; Ulrich Mueller <ulm@gentoo.org> package.mask:
+  Mask app-emacs/cc-mode for removal.
+
+  25 Aug 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Masking media-tv/linuxtv-dvb-firmware for QA removal.
+
+  25 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> updates/3Q-2009:
+  Rename xfce-extra/ packages.
+
+  25 Aug 2009; Alexis Ballier <aballier@gentoo.org> package.mask:
+  unmask latest libass now that vlc 1.0.1 builds fine against it
+
+  24 Aug 2009; Christian Faulhammer <fauli@gentoo.org> package.mask:
+  Security-vulnerable bundled expat version:
+  Masking sys-apps/einit for removal
+  Simple mask for dev-tex/mpm
+
+  24 Aug 2009; Mounir Lamouri <volkmar@gentoo.org> package.mask:
+  Masking mozilla-weave testing versions
+
+  24 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> updates/3Q-2009:
+  Rename xfce-extra/ packages.
+
+  24 Aug 2009; Peter Alfredsen <loki_val@gentoo.org> package.mask:
+  Add xpdf-3.02-r3 to poppler mask, since it will only work with
+  >=poppler-0.11.3
+
+  24 Aug 2009; Ulrich Mueller <ulm@gentoo.org> package.mask,
+  prefix/package.mask:
+  Unmask app-admin/eselect-1.2_rc*.
+
   23 Aug 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
   Mask more live scm ebuilds.
 
   23 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> updates/3Q-2009:
-  Rename xfce4-sensors to xfce4-sensors-plugin.
-
-  23 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> updates/3Q-2009:
-  Rename xfce4-radio to xfce4-radio-plugin.
+  Rename xfce-extra/ packages.
 
   23 Aug 2009; Samuli Suominen <ssuominen@gentoo.org>
   targets/desktop/make.defaults:
@@ -21,13 +49,7 @@
   default.
 
   23 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> updates/3Q-2009:
-  Rename xfce-base/xfce4 to xfce-base/xfce4-meta with new dependencies.
-
-  23 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> updates/3Q-2009:
-  Move xfce-extra/exo to xfce-base/exo.
-
-  23 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> updates/3Q-2009:
-  Renamed xfce4-mpc, xfce4-clipman, xfce4-xkb and xfce4-wmdock to -plugin naming.
+  Rename xfce-base/ and xfce-extra/ packages.
 
   23 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
   Removed xfce-base/xfce4-extras meta from tree.

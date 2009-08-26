@@ -1,6 +1,6 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/netperf/netperf-2.4.4.ebuild,v 1.7 2008/03/31 21:30:53 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/netperf/netperf-2.4.4.ebuild,v 1.8 2009/08/26 00:49:05 jer Exp $
 
 inherit eutils flag-o-matic autotools
 
@@ -16,6 +16,8 @@ HOMEPAGE="http://www.netperf.org/"
 LICENSE="netperf"
 SLOT="0"
 IUSE=""
+
+RDEPEND="!sci-mathematics/snns"
 
 S=${WORKDIR}/${MY_P}
 
