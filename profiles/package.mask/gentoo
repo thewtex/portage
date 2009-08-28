@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10369 2009/08/26 18:05:01 volkmar Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10372 2009/08/27 22:04:36 ssuominen Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,21 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (27 Aug 2009)
+#  on behalf of QA team
+#
+# Fails to patch, bug #214719, since March 2008.
+#
+# Package need a new maintainer, possibly someone actually
+# using this stuff.
+#
+# Removal on 2009-10-26
+app-emulation/parallels-workstation
+
+# Christian Faulhammer <fauli@gentoo.org> (27 Aug 2009)
+# Release candidate
+=dev-tex/bzr-2.0_rc1
 
 # Ulrich Mueller <ulm@gentoo.org> (25 Aug 2009)
 # Included with GNU Emacs (since version 21 at least).
@@ -816,11 +831,6 @@ x11-apps/ati-drivers-extra
 # - doesn't work with wxGTK-2.8
 # Bug #279431
 app-misc/tipptrainer
-
-# Samuli Suominen <ssuominen@gentoo.org> (27 Jul 2009)
-# Doesn't compile. Doesn't respect environment.
-# Segmentation faults. Bugs #252675, #273405, #276560
-media-sound/gnusound
 
 # Michał Januszewski <spock@gentoo.org> (26 Jul 2009)
 # Mask for beta versions of the NVIDIA drivers.
