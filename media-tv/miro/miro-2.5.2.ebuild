@@ -32,13 +32,12 @@ RDEPEND=">=dev-python/pycairo-1.8
 	x11-base/xorg-server
 	media-gfx/imagemagick
 	libnotify? ( dev-python/notify-python dev-libs/poppler-glib )
-	gstreamer? ( >=media-libs/gstreamer-0.10 dev-python/gst-python media-plugins/gst-plugins-flac media-video/ffmpeg[theora,x264,xvid]
-		media-plugins/gst-plugins-ffmpeg media-plugins/gst-plugins-alsa media-plugins/gst-plugins-vorbis media-plugins/gst-plugins-wavpack
-		media-plugins/gst-plugins-mad media-plugins/gst-plugins-ogg )
+	gstreamer? ( >=media-libs/gstreamer-0.10 dev-python/gst-python media-plugins/gst-plugins-meta media-video/ffmpeg media-plugins/gst-plugins-wavpack )
 	xine? ( media-libs/xine-lib[aac] )"
 DEPEND="${RDEPEND}
 	sys-devel/gettext
 	dev-util/pkgconfig"
+
 S="${WORKDIR}/${MY_P}/platform/gtk-x11"
 
 pkg_setup() {
@@ -58,33 +57,17 @@ pkg_setup() {
 	fi
 }
 
-src_unpack() {
-	unpack "${MY_P}".tar.gz
-	cd "${S}"
-}
-
-src_prepare() {
-	python setup.py && ./run
-}
 src_compile() {
 	filter-ldflags -Wl,--as-needed
 	distutils_src_compile
 }
-src_install() {
-	distutils_src_install
-}
+
 pkg_postinst() {
 	distutils_pkg_postinst
 	fdo-mime_desktop_database_update
 	fdo-mime_mime_database_update
-	ebeep 5
-	ewarn "The dbus service must be installed and running for this package to work"
-	einfo
-	ewarn "Remember to emerge media-plugins/gst-plugins-meta after installing"
-	ewarn "a new gstreamer plugin."
 	einfo
 	einfo "To switch between gstreamer and xine playback, open 'video' in the top menu."
 	einfo "Than go into 'options,' select 'playback,' and choose gstreamer or xine."
 	einfo "Miro must be restarted for a change in playback option to take effect."
 }
-
