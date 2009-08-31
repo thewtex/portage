@@ -1,10 +1,6 @@
-# does not work with paludis
-# http://groups.google.com/group/funtoo-dev/browse_thread/thread/270349b7630c5bf7?hl=en
->=sys-fs/udev-135-r8
->=sys-apps/baselayout-2.1.5
-
-#mask new portage until _rc37 is out, use _rc33 for now:
->=sys-apps/portage-2.2_rc34
+#masked for testing:
+=sys-apps/baselayout-2.1.6
+=sys-fs/udev-135-r9
 
 #quick temp mask - unmask soon
 >=dev-lang/ruby-1.9.1_p243
@@ -15,7 +11,7 @@
 
 # Andrew Kirch <trelane@trelane.net> (10 June 2009)
 # Paludis does not support the profiles/package.mask hierarchy.
-# Discussions with Ciaran indicates he doesn't intend to.
+# See Funtoo FAQ: http://www.funtoo.org/en/funtoo/faq/
 sys-apps/paludis
 
 # Pkgcore also does not support this at present

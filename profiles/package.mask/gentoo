@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10369 2009/08/26 18:05:01 volkmar Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10379 2009/08/30 00:08:08 flameeyes Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,62 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (30 Aug 2009)
+#  on behalf of QA team
+#
+# Blocks iputils since 2007 (and iputils is a system
+# package); lacks a Gentoo maintainer, and upstream seems
+# to be gone. The same code has been used and patched since
+# 2002 at least.
+#
+# Removal on 2009-10-29
+net-misc/rarpd
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (30 Aug 2009)
+#  on behalf of QA team
+#
+# Uses serial make (and can't build in parallel, bug
+# #283170); last release in 2004, declared dead upstream,
+# uses Qt 3.
+#
+# Removal on 2009-10-29
+dev-util/qtunit
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (30 Aug 2009)
+#  on behalf of QA team
+#
+# Fails to build since at least November 2007, bug #199164.
+#
+# Removal on 2009-10-29
+sys-process/acctail
+
+# Samuli Suominen <ssuominen@gentoo.org> (28 Aug 2009)
+# Orphaned library with modified copy of old FFmpeg.
+# Masked for removal.
+media-libs/rte
+
+# Samuli Suominen <ssuominen@gentoo.org> (28 Aug 2009)
+# Orphaned libraries. Both install only a static archive
+# and a include file. No reverse deps. QA issues.
+# Masked for removal.
+media-libs/loadpng
+media-libs/mpeg-lib
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (27 Aug 2009)
+#  on behalf of QA team
+#
+# Fails to patch, bug #214719, since March 2008.
+#
+# Package need a new maintainer, possibly someone actually
+# using this stuff.
+#
+# Removal on 2009-10-26
+app-emulation/parallels-workstation
+
+# Christian Faulhammer <fauli@gentoo.org> (27 Aug 2009)
+# Release candidate
+=dev-tex/bzr-2.0_rc1
 
 # Ulrich Mueller <ulm@gentoo.org> (25 Aug 2009)
 # Included with GNU Emacs (since version 21 at least).
@@ -62,10 +118,6 @@ dev-tex/mpm
 sys-apps/einit
 sys-apps/einit-modules-scheme
 sys-apps/einit-modules-xml
-
-# Mounir Lamouri <volkmar@gentoo.org> (24 Aug 2009)
-# Masking testing version of mozilla-weave
->=www-plugins/mozilla-weave-0.6_pre2
 
 # Robert Piasek <dagger@gentoo.org> (24 Aug 2009)
 # Development snapshots of NetworkManager. Masked
@@ -816,11 +868,6 @@ x11-apps/ati-drivers-extra
 # - doesn't work with wxGTK-2.8
 # Bug #279431
 app-misc/tipptrainer
-
-# Samuli Suominen <ssuominen@gentoo.org> (27 Jul 2009)
-# Doesn't compile. Doesn't respect environment.
-# Segmentation faults. Bugs #252675, #273405, #276560
-media-sound/gnusound
 
 # Michał Januszewski <spock@gentoo.org> (26 Jul 2009)
 # Mask for beta versions of the NVIDIA drivers.
