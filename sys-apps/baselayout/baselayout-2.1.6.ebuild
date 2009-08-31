@@ -261,7 +261,8 @@ pkg_postinst() {
 
 	# create minimal set of device nodes required for boot, if they do not
 	# already exist. We have a separate /sbin/realdev script for this, which
-	# is installed by this ebuild.
-
-	"$ROOT"/sbin/realdev $ROOT/dev
+	# is installed by this ebuild.  Do not run if udev is running.
+	if [ ! -d /dev/.udev ]; then
+		"$ROOT"/sbin/realdev $ROOT/dev
+	fi
 }
