@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/f-spot/f-spot-0.6.0.0.ebuild,v 1.3 2009/08/23 12:23:53 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/f-spot/f-spot-0.6.0.0.ebuild,v 1.4 2009/08/27 21:16:25 loki_val Exp $
 
 EAPI=2
 
@@ -11,7 +11,7 @@ HOMEPAGE="http://f-spot.org"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
-IUSE="+gconf beagle"
+IUSE="beagle"
 
 RDEPEND=">=dev-lang/mono-2.0
 	>=gnome-base/libgnome-2.2
@@ -26,7 +26,7 @@ RDEPEND=">=dev-lang/mono-2.0
 	>=dev-libs/glib-2.16
 	>=dev-dotnet/gnome-sharp-2.8
 	>=dev-dotnet/glib-sharp-2.12
-	gconf? ( >=dev-dotnet/gconf-sharp-2.12.2 )
+	>=dev-dotnet/gconf-sharp-2.12.2
 	beagle? ( >=app-misc/beagle-0.3.0 )
 	>=dev-libs/dbus-glib-0.71
 	>=dev-dotnet/dbus-sharp-0.4.2
@@ -55,8 +55,7 @@ src_prepare() {
 }
 
 src_configure() {
-	gnome2_src_configure --disable-static --disable-scrollkeeper \
-		$(use_enable gconf)
+	gnome2_src_configure --disable-static --disable-scrollkeeper
 }
 
 src_install() {

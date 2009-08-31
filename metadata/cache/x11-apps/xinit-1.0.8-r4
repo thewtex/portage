@@ -1,5 +1,5 @@
-x11-apps/xauth x11-libs/libX11 hal? ( sys-auth/consolekit ) =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool >=sys-devel/libtool-1.5 >=sys-devel/m4-1.4 >=dev-util/pkgconfig-0.18 >=x11-misc/util-macros-0.99.2 >=sys-devel/binutils-2.16.1-r3
-x11-apps/xauth x11-libs/libX11 hal? ( sys-auth/consolekit ) !<=x11-base/xorg-x11-6.9
+x11-apps/xauth x11-libs/libX11 hal? ( sys-auth/consolekit sys-apps/dbus[X] ) =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool >=sys-devel/libtool-1.5 >=sys-devel/m4-1.4 >=dev-util/pkgconfig-0.18 >=x11-misc/util-macros-0.99.2 >=sys-devel/binutils-2.16.1-r3
+x11-apps/xauth x11-libs/libX11 hal? ( sys-auth/consolekit sys-apps/dbus[X] ) !<=x11-base/xorg-x11-6.9
 0
 http://xorg.freedesktop.org/releases/individual/app/xinit-1.0.8.tar.bz2
 
@@ -12,9 +12,9 @@ hal minimal pam debug
 
 !minimal? ( x11-wm/twm x11-apps/xclock x11-apps/xrdb x11-apps/xsm x11-terms/xterm )
 
+2
 
-
-compile install postinst postrm preinst setup unpack
+compile configure install postinst postrm preinst prepare setup unpack
 
 
 
