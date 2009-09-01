@@ -11,10 +11,11 @@ HOMEPAGE="http://www.cherokee-project.com/"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~x86 ~amd64"
-IUSE="ipv6 ssl static pam coverpage threads kernel_linux admin debug geoip ldap mysql ffmpeg fastcgi"
+IUSE="ipv6 nls ssl static pam coverpage threads kernel_linux admin debug geoip ldap mysql ffmpeg fastcgi"
 
 RDEPEND="
 	>=sys-libs/zlib-1.1.4-r1
+	nls? ( sys-devel/gettext )
 	ssl? ( dev-libs/openssl )
 	pam? ( virtual/pam )
 	admin? ( dev-lang/python )
@@ -55,6 +56,7 @@ src_compile() {
 		${myconf} \
 		$(use_enable pam) \
 		$(use_enable ipv6) \
+		$(use_enable nls) \
 		$(use_enable threads pthread) \
 		$(use_enable kernel_linux epoll) \
 		$(use_with geoip) \
