@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-drivers/ati-drivers/ati-drivers-9.8.ebuild,v 1.9 2009/08/29 15:45:59 scarabeus Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-drivers/ati-drivers/ati-drivers-9.8.ebuild,v 1.12 2009/08/31 18:22:47 scarabeus Exp $
 
 EAPI="2"
 
@@ -43,29 +43,39 @@ S="${WORKDIR}"
 
 # QA Silencing
 QA_TEXTRELS="
-usr/lib*/opengl/ati/lib/libGL.so.1.2
-usr/lib*/libatiadlxx.so
-usr/lib*/xorg/modules/glesx.so
-usr/lib*/libaticaldd.so
-usr/lib*/dri/fglrx_dri.so
+	usr/lib*/opengl/ati/lib/libGL.so.1.2
+	usr/lib*/libatiadlxx.so
+	usr/lib*/xorg/modules/glesx.so
+	usr/lib*/libaticaldd.so
+	usr/lib*/dri/fglrx_dri.so
 "
 
 QA_EXECSTACK="
-opt/bin/atiode
-opt/bin/amdcccle
-usr/lib*/opengl/ati/lib/libGL.so.1.2
-usr/lib*/dri/fglrx_dri.so
+	opt/bin/atiode
+	opt/bin/amdcccle
+	usr/lib*/opengl/ati/lib/libGL.so.1.2
+	usr/lib*/dri/fglrx_dri.so
 "
 
-QA_WX_LOAD="usr/lib/opengl/ati/lib/libGL.so.1.2"
+QA_WX_LOAD="
+	usr/lib*/opengl/ati/lib/libGL.so.1.2
+	usr/lib*/dri/fglrx_dri.so
+"
 
 QA_PRESTRIPPED="
-usr/lib*/libXvBAW.so.1.0
-usr/lib*/opengl/ati/lib/libGL.so.1.2
-usr/lib*/xorg/modules/glesx.so
-usr/lib*/libAMDXvBA.so.1.0
-usr/lib*/libaticaldd.so
-usr/lib*/dri/fglrx_dri.so
+	usr/lib\(32\|64\)\?/libXvBAW.so.1.0
+	usr/lib\(32\|64\)\?/opengl/ati/lib/libGL.so.1.2
+	usr/lib\(32\|64\)\?/xorg/modules/glesx.so
+	usr/lib\(32\|64\)\?/libAMDXvBA.so.1.0
+	usr/lib\(32\|64\)\?/libaticaldd.so
+	usr/lib\(32\|64\)\?/dri/fglrx_dri.so
+"
+
+QA_SONAME="
+	usr/lib\(32\|64\)\?/libatiadlxx.so
+	usr/lib\(32\|64\)\?/libaticalcl.so
+	usr/lib\(32\|64\)\?/libaticaldd.so
+	usr/lib\(32\|64\)\?/libaticalrt.so
 "
 
 _check_kernel_config() {
@@ -107,6 +117,17 @@ _check_kernel_config() {
 		ewarn "Direct rendering will not work."
 	fi
 
+	if ! linux_chkconfig_present ACPI; then
+		eerror "${P} requires the ACPI support in the kernel"
+		eerror "Please enable it:"
+		eerror "    CONFIG_ACPI=y"
+		eerror "in /usr/src/linux/.config or"
+		eerror "    Power management and ACPI options --->"
+		eerror "        [*] Power Management support"
+		eerror "in the 'menuconfig'"
+		die "CONFIG_ACPI disabled"
+	fi
+
 	if ! linux_chkconfig_present MAGIC_SYSRQ; then
 		eerror "${P} requires the magic SysRq keys in the kernel."
 		eerror "Please enable it:"
@@ -115,6 +136,7 @@ _check_kernel_config() {
 		eerror "    Kernel hacking  --->"
 		eerror "        [*] Magic SysRq key"
 		eerror "in the 'menuconfig'"
+		die "CONFIG_MAGIC_SYSRQ disabled"
 	fi
 
 	if ! linux_chkconfig_present PCI_MSI; then
@@ -126,6 +148,20 @@ _check_kernel_config() {
 		eerror "        [*] Message Signaled Interrupts (MSI and MSI-X)"
 		eerror "in the kernel config."
 		die "CONFIG_PCI_MSI disabled"
+	fi
+
+	if linux_chkconfig_present LOCKDEP; then
+		eerror "You've enabled LOCKDEP -- lock tracking -- in the kernel."
+		eerror "Unfortunately, this option exports the symbol lock_acquire as GPL-only."
+		eerror "This prevents ${P} from compiling with an error like this:"
+		eerror "FATAL: modpost: GPL-incompatible module fglrx.ko uses GPL-only symbol 'lock_acquire'"
+		eerror "Please make sure the following options have been unset:"
+		eerror "    Kernel hacking  --->"
+		eerror "        [ ] Lock debugging: detect incorrect freeing of live locks"
+		eerror "        [ ] Lock debugging: prove locking correctness"
+		eerror "        [ ] Lock usage statistics"
+		eerror "in 'menuconfig'"
+		die "LOCKDEP enabled"
 	fi
 }
 
