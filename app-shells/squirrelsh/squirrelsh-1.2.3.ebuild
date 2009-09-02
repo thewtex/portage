@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-shells/squirrelsh/squirrelsh-1.2.3.ebuild,v 1.1 2009/03/20 04:17:08 ken69267 Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-shells/squirrelsh/squirrelsh-1.2.3.ebuild,v 1.3 2009/09/01 06:42:37 fauli Exp $
 
 EAPI="2"
 
@@ -13,16 +13,13 @@ SRC_URI="mirror://sourceforge/${PN}/${P}-src.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="doc static"
 
 DEPEND="dev-libs/libpcre"
 RDEPEND="${DEPEND}"
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-
+src_prepare() {
 	#Fix pre-stripping
 	sed -i -e '/in_LFLAGS="-s $in_LFLAGS"/d' configure || die "sed failed"
 	#Fix multilib issues
