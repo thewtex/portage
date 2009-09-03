@@ -13,7 +13,7 @@ HOMEPAGE="http://home.gna.org/veusz/"
 
 IUSE="doc examples fits"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~x86 ~amd64"
 LICENSE="GPL-2"
 
 DEPEND="dev-python/numpy"
