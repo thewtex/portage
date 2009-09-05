@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-cdr/cdrtools/cdrtools-2.01.01_alpha51.ebuild,v 1.9 2009/05/28 15:28:35 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-cdr/cdrtools/cdrtools-2.01.01_alpha51.ebuild,v 1.10 2009/09/04 16:22:05 billie Exp $
 
 inherit multilib eutils toolchain-funcs flag-o-matic
 
@@ -16,6 +16,7 @@ IUSE="unicode"
 DEPEND="sys-apps/acl
 	!app-cdr/dvdrtools
 	!app-cdr/cdrkit"
+RDEPEND="${DEPEND}"
 
 S=${WORKDIR}/${PN}-2.01.01
 
