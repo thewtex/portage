@@ -256,10 +256,13 @@ src_install() {
 	dolib.so "${D}"/${coredir}/${LIBPERL} || die
 	dosym ${LIBPERL} /usr/$(get_libdir)/libperl$(get_libname ${SHORT_PV}) || die
 	dosym ${LIBPERL} /usr/$(get_libdir)/libperl$(get_libname) || die
+	dosym ${LIBPERL} /usr/$(get_libdir)/libperl.so.1 || die
+
 	rm "${D}"/${coredir}/${LIBPERL}
-	dosym ../../../../../$(get_libdir)/${LIBPERL} ${coredir}/${LIBPERL}
-	dosym ../../../../../$(get_libdir)/${LIBPERL} ${coredir}/libperl$(get_libname ${SHORT_PV})
-	dosym ../../../../../$(get_libdir)/${LIBPERL} ${coredir}/libperl$(get_libname)
+	dosym ../../../../../$(get_libdir)/${LIBPERL} ${coredir}/${LIBPERL} || die
+	dosym ../../../../../$(get_libdir)/${LIBPERL} ${coredir}/libperl$(get_libname ${SHORT_PV}) || die
+	dosym ../../../../../$(get_libdir)/${LIBPERL} ${coredir}/libperl$(get_libname) || die
+	dosym ../../../../../$(get_libdir)/${LIBPERL} ${coredir}/libperl.so.1 || die
 
 	rm -rf "${D}"/usr/share/man/man3 || die "Unable to remove module man pages"
 #	cp -f utils/h2ph utils/h2ph_patched
