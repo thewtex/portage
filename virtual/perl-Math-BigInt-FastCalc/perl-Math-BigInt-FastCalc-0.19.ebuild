@@ -13,4 +13,4 @@ KEYWORDS="~amd64 ~hppa ~ppc ~x86"
 IUSE=""
 DEPEND=""
 
-RDEPEND="|| ( ~dev-lang/perl-5.10.1 ~perl-core/Math-BigInt-FastCalc-${PV} )"
+RDEPEND="|| ( ~dev-lang/perl-5.10.0 ~perl-core/Math-BigInt-FastCalc-${PV} )"

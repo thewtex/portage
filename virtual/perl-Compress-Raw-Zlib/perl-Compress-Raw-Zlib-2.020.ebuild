@@ -13,4 +13,4 @@ KEYWORDS="alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc ~sparc-fb
 IUSE=""
 DEPEND=""
 
-RDEPEND="|| ( ~dev-lang/perl-5.10.1 ~perl-core/Compress-Raw-Zlib-${PV} )"
+RDEPEND="|| ( ~dev-lang/perl-5.10.0 ~perl-core/Compress-Raw-Zlib-${PV} )"

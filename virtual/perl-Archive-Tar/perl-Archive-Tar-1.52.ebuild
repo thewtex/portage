@@ -12,4 +12,4 @@ KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
 IUSE=""
 
 DEPEND=""
-RDEPEND="|| ( ~dev-lang/perl-5.10.1 ~perl-core/Archive-Tar-${PV} )"
+RDEPEND="|| ( ~dev-lang/perl-5.10.0 ~perl-core/Archive-Tar-${PV} )"

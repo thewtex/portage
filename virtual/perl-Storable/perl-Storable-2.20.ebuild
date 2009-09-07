@@ -12,4 +12,4 @@ KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
 IUSE=""
 
 DEPEND=""
-RDEPEND="|| ( ~dev-lang/perl-5.10.1 ~perl-core/Storable-${PV} )"
+RDEPEND="|| ( ~dev-lang/perl-5.10.0 ~perl-core/Storable-${PV} )"

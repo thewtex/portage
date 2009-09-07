@@ -10,4 +10,4 @@ SLOT="0"
 KEYWORDS="alpha amd64 ia64 ppc ppc64 sparc x86"
 IUSE=""
 
-RDEPEND="|| ( ~dev-lang/perl-5.10.1 ~perl-core/Module-Pluggable-${PV} )"
+RDEPEND="|| ( ~dev-lang/perl-5.10.0 ~perl-core/Module-Pluggable-${PV} )"
