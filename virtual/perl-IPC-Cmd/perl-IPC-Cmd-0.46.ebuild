@@ -12,4 +12,4 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND=""
-RDEPEND="|| ( ~dev-lang/perl-5.10.1 ~perl-core/IPC-Cmd-${PV} )"
+RDEPEND="|| ( ~dev-lang/perl-5.10.0 ~perl-core/IPC-Cmd-${PV} )"

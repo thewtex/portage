@@ -13,4 +13,4 @@ IUSE=""
 
 DEPEND=""
 
-RDEPEND="|| ( ~dev-lang/perl-5.10.1 ~perl-core/Term-ANSIColor-${PV} )"
+RDEPEND="|| ( ~dev-lang/perl-5.10.0 ~perl-core/Term-ANSIColor-${PV} )"
