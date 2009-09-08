@@ -1,6 +1,17 @@
 # ChangeLog for profiles/prefix
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Id: ChangeLog,v 1.81 2009/09/05 16:42:31 grobian Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/ChangeLog,v 1.84 2009/09/07 18:50:42 grobian Exp $
+
+  07 Sep 2009; Fabian Groffen <grobian@gentoo.org>
+  +darwin/macos/10.6/x86/make.defaults, +darwin/macos/10.6/x86/package.mask,
+  +darwin/macos/10.6/x86/package.use.force,
+  +darwin/macos/10.6/x86/package.use.mask, +darwin/macos/10.6/x86/parent,
+  +darwin/macos/10.6/x86/use.mask:
+  Add 32-bits Intel profile for Snow Leopard
+
+  07 Sep 2009; Fabian Groffen <grobian@gentoo.org>
+  sunos/solaris/package.mask:
+  Mask sys-libs/readline-6.0 on (Open)Solaris, doesn't compile, bug #283793
 
   05 Sep 2009; Fabian Groffen <grobian@gentoo.org> darwin/package.mask:
   Mask upcoming Snow Leopard compiler and linker, as there are still some

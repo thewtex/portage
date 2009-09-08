@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10415 2009/09/07 04:40:02 tester Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10419 2009/09/07 15:17:38 vostorga Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -36,10 +36,6 @@
 # and Gem Hunters also suffer from toolchain porting issues.
 games-puzzle/gemhun
 dev-games/kyra
-
-# Alexis Ballier <aballier@gentoo.org> (06 Sep 2009)
-# New snapshot, a couple of packages fail to build against this version
->=media-video/ffmpeg-0.5_p1
 
 # Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (05 Sep 2009)
 # Replaced by net-zope/generator. Masked for deletion in 30 days.
@@ -154,7 +150,8 @@ app-emulation/parallels-workstation
 
 # Christian Faulhammer <fauli@gentoo.org> (27 Aug 2009)
 # Release candidate
-=dev-tex/bzr-2.0_rc1
+~dev-util/bzr-2.0_rc1
+~dev-util/bzrtools-2.0.0
 
 # Ulrich Mueller <ulm@gentoo.org> (25 Aug 2009)
 # Included with GNU Emacs (since version 21 at least).
@@ -707,10 +704,6 @@ dev-util/motor
 x11-misc/glsof
 
 # Samuli Suominen <ssuominen@gentoo.org> (08 Aug 2009)
-# Masked by treecleaners for removal. Doesn't compile wrt #239776.
-net-misc/cgterm
-
-# Samuli Suominen <ssuominen@gentoo.org> (08 Aug 2009)
 # Masked by treecleaners for removal. Doesn't compile wrt #239588.
 app-misc/nomadii-utils
 
@@ -973,22 +966,6 @@ net-misc/sambasentinel
 # Diego E. Pettenò <flameeyes@gentoo.org> (6 Jul 2009)
 #  on behalf of QA Team
 #
-# Multiple QA issues, unmaintained, see bug #252017
-#
-# Removal on 2009-09-07
-net-misc/netgo
-
-# Diego E. Pettenò <flameeyes@gentoo.org> (6 Jul 2009)
-#  on behalf of QA Team
-#
-# Multiple QA issues, unmaintained, see bug #248384
-#
-# Removal on 2009-09-07
-sci-visualization/qmatplot
-
-# Diego E. Pettenò <flameeyes@gentoo.org> (6 Jul 2009)
-#  on behalf of QA Team
-#
 # openais: Multiple issues, not installable on stable glibc
 # systems. ha-cluster team seems to be MIA, as well as wschlich who's
 # listed as maintainer.
@@ -1037,14 +1014,6 @@ app-office/koffice
 # broken opengl support, forces gcc's objc for no reason
 # masked until fixed (see bug #274092)
 =media-libs/tiff-3.8.2-r6
-
-# Diego E. Pettenò <flameeyes@gentoo.org> (22 Jun 2009)
-# Unusable with kernel >= 2.6.24, pointess.
-#
-# Tracking with bug #199011.
-#
-# Pending removal 22 August 2009
-sys-apps/realtime-lsm
 
 # Romain Perier <mrpouet@gentoo.org> (20 Jun 2009)
 # A lot of changes into sources code
