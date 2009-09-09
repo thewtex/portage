@@ -8,7 +8,7 @@ HOMEPAGE="http://www.gentoo.org/"
 
 LICENSE="GPL-2"
 SLOT="1"
-KEYWORDS=""
+KEYWORDS="x86 amd64"
 IUSE=""
 
 PDEPEND="dev-lang/perl"
