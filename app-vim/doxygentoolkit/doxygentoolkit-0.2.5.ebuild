@@ -108,15 +108,17 @@ For example, my .vimrc contains:
 let g:DoxygenToolkit_briefTag_pre=\"@Synopsis \"
 let g:DoxygenToolkit_paramTag_pre=\"@Param \"
 let g:DoxygenToolkit_returnTag=\"@Returns  \"
-let g:DoxygenToolkit_blockHeader=\"--------------------------------------------------------------------------"
-let g:DoxygenToolkit_blockFooter=\"----------------------------------------------------------------------------"
+let
+g:DoxygenToolkit_blockHeader=\"--------------------------------------------------------------------------\"
+let
+g:DoxygenToolkit_blockFooter=\"----------------------------------------------------------------------------\"
 let g:DoxygenToolkit_authorName=\"Mathias Lorente\"
 let g:DoxygenToolkit_licenseTag=\"My own license\"   <-- !!! Does not end with \"\<enter>\"
 "
 VIM_PLUGIN_HELPURI=""
 VIM_PLUGIN_MESSAGES=""
 
-SRC_URI="http://www.vim.org/scripts/download_script.php?src_id=10579"
+SRC_URI="http://www.vim.org/scripts/download_script.php?src_id=11228"
 RESTRICT="mirror"
 S="${WORKDIR}"
 
