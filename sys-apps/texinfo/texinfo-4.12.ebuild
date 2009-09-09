@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/texinfo/texinfo-4.12.ebuild,v 1.1 2008/05/05 04:24:49 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/texinfo/texinfo-4.12.ebuild,v 1.2 2009/09/08 17:50:31 vapier Exp $
 
 inherit flag-o-matic
 
@@ -13,8 +13,12 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE="nls static"
 
-RDEPEND="!=app-text/tetex-2* >=sys-libs/ncurses-5.2-r2 nls? ( virtual/libintl )"
-DEPEND="${RDEPEND} nls? ( sys-devel/gettext )"
+RDEPEND="!=app-text/tetex-2*
+	>=sys-libs/ncurses-5.2-r2
+	nls? ( virtual/libintl )"
+DEPEND="${RDEPEND}
+	|| ( app-arch/xz-utils app-arch/lzma-utils )
+	nls? ( sys-devel/gettext )"
 
 src_compile() {
 	use static && append-ldflags -static
