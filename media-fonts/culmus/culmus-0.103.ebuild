@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/culmus/culmus-0.103.ebuild,v 1.7 2009/08/03 03:26:14 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/culmus/culmus-0.103.ebuild,v 1.9 2009/09/07 21:15:29 dirtyepic Exp $
 
 inherit font
 
@@ -19,7 +19,7 @@ SRC_URI="mirror://sourceforge/culmus/${P}.tar.gz
 
 LICENSE="|| ( GPL-2 LICENSE-BITSTREAM )"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ppc ~ppc64 s390 sh sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 s390 sh sparc x86 ~x86-fbsd"
 IUSE=""
 
 FONT_SUFFIX="afm pfa ttf"
@@ -31,10 +31,4 @@ src_unpack() {
 	mv *.afm *.pfa "${S}"/
 	cd "${S}"
 	mv culmus.conf 65-culmus.conf
-}
-
-pkg_postinst() {
-	elog "This font contains support for fontconfig, which may make"
-	elog "it render more smoothly. To enable it, do:"
-	elog "eselect fontconfig enable 65-culmus.conf"
 }

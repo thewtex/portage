@@ -1,10 +1,62 @@
 # ChangeLog for profile directory
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.3222 2009/09/04 02:19:50 darkside Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.3238 2009/09/07 15:17:38 vostorga Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  07 Sep 2009; Víctor Ostorga <vostorga@gentoo.org> package.mask:
+  Unmasking net-misc/cgterm. All bugs have been fixed
+
+  07 Sep 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Remove masks from packages gone from portage.
+
+  07 Sep 2009; Christian Faulhammer <fauli@gentoo.org> package.mask:
+  correct mask for dev-util/bzr and add bzrtools 2.0.0 to masking
+
+  07 Sep 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Unmask FFmpeg snapshot.
+
+  06 Sep 2009; Víctor Ostorga <vostorga@gentoo.org> package.mask:
+  Unmasking dev-libs/libredblack . ~arch ebuild fixed
+
+  06 Sep 2009; Víctor Ostorga <vostorga@gentoo.org> package.mask:
+  Unmasking app-admin/killproc. All bugs have been fixed,n fixed, updated to
+  latest version, CFLAGS and LDFLAGS respected
+
+  06 Sep 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask dev-games/kyra and games-puzzle/gemhun for removal.
+
+  06 Sep 2009; Alexis Ballier <aballier@gentoo.org> package.mask:
+  mask new ffmpeg snapshot
+
+  06 Sep 2009; Samuli Suominen <ssuominen@gentoo.org>
+  releases/2008.0/package.mask:
+  Mask xfce-extra/xfce4-notifyd next to required >=x11-libs/xcb-util-0.3.5.
+
+  05 Sep 2009; Alin Năstac <mrness@gentoo.org> desc/linguas.desc:
+  Add Swahili locale, needed by app-mobilephone/gammu.
+
+  04 Sep 2009; Rémi Cardona <remi@gentoo.org> package.mask:
+  add www-plugins/gnash to p.mask
+
+  04 Sep 2009; Ulrich Mueller <ulm@gentoo.org> package.mask:
+  Remove mask for app-emacs/mule-ucs since it is gone from the tree.
+
+  04 Sep 2009; Tomáš Chvátal <scarabeus@gentoo.org>
+  arch/amd64/no-multilib/package.mask:
+  ati-drivers-9.8 works on no-multilib profile. So unmask them.
+
+  04 Sep 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Removed ksubtitleripper, ufo, fex and lurker from tree.
+
+  04 Sep 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask x11-plugins/licq-osd for removal wrt #248609.
+
+  04 Sep 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Unmask latest version of x11-themes/baghira since it's fixed. Removed
+  stripclub, xnc, ochusha and aacgain from tree.
 
   04 Sep 2009; Jeremy Olexa <darkside@gentoo.org> package.mask:
   clean up for non-existant packages

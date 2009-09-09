@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10401 2009/09/04 02:19:50 darkside Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10419 2009/09/07 15:17:38 vostorga Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,30 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Samuli Suominen <ssuominen@gentoo.org> (06 Sep 2009)
+# Gem Hunters was never ported to >= Kyra 2.1.0. Both old Kyra
+# and Gem Hunters also suffer from toolchain porting issues.
+games-puzzle/gemhun
+dev-games/kyra
+
+# Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (05 Sep 2009)
+# Replaced by net-zope/generator. Masked for deletion in 30 days.
+dev-python/generator
+
+# Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (05 Sep 2009)
+# Replaced by net-zope/validation. Masked for deletion in 30 days.
+dev-python/validation
+
+# Romain Perier <mrpouet@gentoo.org> (05 Sep 2009)
+# Masked because too old, contains a lot of QA warnings/errors
+# The last one has a lot of changes.
+=www-plugins/gnash-0.8.4
+
+# Samuli Suominen <ssuominen@gentoo.org> (04 Sep 2009)
+# Masked for removal by treecleaners wrt #248609. This has
+# been moved to licq since 1.3.6.
+x11-plugins/licq-osd
 
 # Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (04 Sep 2009)
 # Replaced by dev-python/kaa-metadata. Masked for deletion in 30 days.
@@ -126,7 +150,8 @@ app-emulation/parallels-workstation
 
 # Christian Faulhammer <fauli@gentoo.org> (27 Aug 2009)
 # Release candidate
-=dev-tex/bzr-2.0_rc1
+~dev-util/bzr-2.0_rc1
+~dev-util/bzrtools-2.0.0
 
 # Ulrich Mueller <ulm@gentoo.org> (25 Aug 2009)
 # Included with GNU Emacs (since version 21 at least).
@@ -256,16 +281,6 @@ net-irc/quirc
 # Needs a internet service which isn't available anymore.
 # Masked for removal for bug 280820.
 media-plugins/gmpc-lyricwiki
-
-# Samuli Suominen <ssuominen@gentoo.org> (10 Aug 2009)
-# Doesn't compile wrt #277660. Doesn't install wrt #211336.
-# Masked for removal.
-net-mail/lurker
-
-# Samuli Suominen <ssuominen@gentoo.org> (10 Aug 2009)
-# Orphaned library which doesn't compile wrt #278071.
-# Masked for removal.
-media-libs/ufo
 
 # Diego E. Pettenò <flameeyes@gentoo.org> (10 Aug 2009)
 #  on behalf of QA team
@@ -400,16 +415,6 @@ dev-lang/realbasic
 # Diego E. Pettenò <flameeyes@gentoo.org> (09 Aug 2009)
 #  on behalf of QA team
 #
-# Fails to build depending on CFLAGS (bug #239860), lacks
-# a Gentoo maintainer, upstream arrived at version 2.13
-# (and then seems to have abandoned it in 2007).
-#
-# Removal on 2009-10-08
-app-admin/killproc
-
-# Diego E. Pettenò <flameeyes@gentoo.org> (09 Aug 2009)
-#  on behalf of QA team
-#
 # pnet bundles, conflicts, collides and remove boehm-gc (bugs
 # #189806 and #222171). The rest are reverse dependencies.
 #
@@ -468,15 +473,6 @@ app-text/omegat
 # Diego E. Pettenò <flameeyes@gentoo.org> (09 Aug 2009)
 #  on behalf of QA team
 #
-# Fails to build with _FORTIFY_SOURCE=2 (bug #264094) and
-# gcc 4.4 (bug #280824). Upstream disappeared.
-#
-# Removal on 2009-10-08
-net-fs/fex
-
-# Diego E. Pettenò <flameeyes@gentoo.org> (09 Aug 2009)
-#  on behalf of QA team
-#
 # Requires a kernel option gone since 2.6.25 (December 2007),
 # see bug #256028.
 #
@@ -507,15 +503,6 @@ dev-java/rjava
 #
 # Removal on 2009-10-08
 sci-chemistry/maid
-
-# Samuli Suominen <ssuominen@gentoo.org> (09 Aug 2009)
-# Doesn't compile wrt #274116. Masked for removal.
-www-client/ochusha
-
-# Samuli Suominen <ssuominen@gentoo.org> (09 Aug 2009)
-# Internal copies of faad2 and mpeg4ip. Doesn't compile
-# wrt #277801. Masked by treecleaners.
-media-sound/aacgain
 
 # Diego E. Pettenò <flameeyes@gentoo.org> (09 Aug 2009)
 #  on behalf of QA team
@@ -598,15 +585,6 @@ net-analyzer/trafd
 #
 # Removal on 2009-10-08
 media-libs/libmovtar
-
-# Diego E. Pettenò <flameeyes@gentoo.org> (09 Aug 2009)
-#  on behalf of QA team
-#
-# Missing Gentoo maintainers; fails to build since at least
-# October 2008 (bug #247065).
-#
-# Removal on 2009-10-08
-dev-libs/libredblack
 
 # Diego E. Pettenò <flameeyes@gentoo.org> (09 Aug 2009)
 #  on behalf of QA team
@@ -710,10 +688,6 @@ net-im/naim
 net-im/naim-modules
 
 # Samuli Suominen <ssuominen@gentoo.org> (08 Aug 2009)
-# Masked by treecleaners for removal. Doesn't compile wrt #277673.
-media-video/ksubtitleripper
-
-# Samuli Suominen <ssuominen@gentoo.org> (08 Aug 2009)
 # Masked by treecleaners for removal. Doesn't compile wrt #223115.
 net-wireless/wlassistant
 
@@ -730,20 +704,8 @@ dev-util/motor
 x11-misc/glsof
 
 # Samuli Suominen <ssuominen@gentoo.org> (08 Aug 2009)
-# Masked by treecleaners for removal. Doesn't compile wrt #239776.
-net-misc/cgterm
-
-# Samuli Suominen <ssuominen@gentoo.org> (08 Aug 2009)
 # Masked by treecleaners for removal. Doesn't compile wrt #239588.
 app-misc/nomadii-utils
-
-# Samuli Suominen <ssuominen@gentoo.org> (08 Aug 2009)
-# Masked by treecleaners for removal. Doesn't compile wrt #273274.
-x11-themes/baghira
-
-# Samuli Suominen <ssuominen@gentoo.org> (08 Aug 2009)
-# Masked by treecleaners for removal. Doesn't compile wrt #274215.
-x11-misc/stripclub
 
 # Federico Ferri <mescalinum@gentoo.org> (08 Aug 2009)
 # Doesn't build with Tcl 8.5, has several bugs open
@@ -840,16 +802,6 @@ gnome-extra/gnome-art
 # Marijn Schouten <hkBst@gentoo.org> (29 Jul 2009)
 # Masked for removal. Upstream renamed to Clozure CL which can be found in lisp overlay.
 dev-lisp/openmcl
-
-# Diego E. Pettenò <flameeyes@gentoo.org> (29 Jul 2009)
-#  on behalf of QA Team
-#
-# Fails to build with glibc 2.10 (bug #276240), and with _FORTIFY_SOURCE
-# (bug #274379), bundles libSDL and libSDL_Image (bug #252513). Ebuild
-# needs an overhaul for QA standards.
-#
-# Removal on 2009-09-29
-x11-misc/xnc
 
 # Marijn Schouten <hkBst@gentoo.org> (29 Jul 2009)
 # Masked for increasingly many problems. Upstream is flaky and hasn't released since 2005.
@@ -1014,27 +966,6 @@ net-misc/sambasentinel
 # Diego E. Pettenò <flameeyes@gentoo.org> (6 Jul 2009)
 #  on behalf of QA Team
 #
-# Multiple QA issues, unmaintained, see bug #252017
-#
-# Removal on 2009-09-07
-net-misc/netgo
-
-# Diego E. Pettenò <flameeyes@gentoo.org> (6 Jul 2009)
-#  on behalf of QA Team
-#
-# Multiple QA issues, unmaintained, see bug #248384
-#
-# Removal on 2009-09-07
-sci-visualization/qmatplot
-
-# Ulrich Mueller <ulm@gentoo.org> (06 Jul 2009)
-# Masked for removal in 60 days. Last upstream version is from 2003.
-# Distfile is gone. Long obsolete with current Emacs versions. Bug 276702.
-app-emacs/mule-ucs
-
-# Diego E. Pettenò <flameeyes@gentoo.org> (6 Jul 2009)
-#  on behalf of QA Team
-#
 # openais: Multiple issues, not installable on stable glibc
 # systems. ha-cluster team seems to be MIA, as well as wschlich who's
 # listed as maintainer.
@@ -1084,14 +1015,6 @@ app-office/koffice
 # masked until fixed (see bug #274092)
 =media-libs/tiff-3.8.2-r6
 
-# Diego E. Pettenò <flameeyes@gentoo.org> (22 Jun 2009)
-# Unusable with kernel >= 2.6.24, pointess.
-#
-# Tracking with bug #199011.
-#
-# Pending removal 22 August 2009
-sys-apps/realtime-lsm
-
 # Romain Perier <mrpouet@gentoo.org> (20 Jun 2009)
 # A lot of changes into sources code
 # (re-structured, modules renamed and so on)
@@ -1140,11 +1063,6 @@ media-libs/freeimage
 # Peter Volkov <pva@gentoo.org> (26 May 2009)
 # Force people to downgrade and use better version
 =net-libs/libssh-0.11
-
-# Michael Sterrett <mr_bones_@gentoo.org> (25 May 2009)
-# Masked for testing.
-=app-admin/syslog-ng-3.0.2
-=app-admin/syslog-ng-3.0.4
 
 # Peter Volkov <pva@gentoo.org> (17 May 2009)
 # Masked development/git sources

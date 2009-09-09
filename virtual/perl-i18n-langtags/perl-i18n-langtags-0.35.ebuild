@@ -11,4 +11,4 @@ SLOT="0"
 KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 s390 sh sparc x86"
 IUSE=""
 
-RDEPEND="|| ( ~dev-lang/perl-5.10.1 ~dev-lang/perl-5.8.8 ~perl-core/i18n-langtags-${PV} )"
+RDEPEND="|| ( ~dev-lang/perl-5.10.0 ~dev-lang/perl-5.8.8 ~perl-core/i18n-langtags-${PV} )"

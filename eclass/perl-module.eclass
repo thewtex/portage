@@ -1,4 +1,4 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: /var/cvsroot/gentoo-x86/eclass/perl-module.eclass,v 1.116 2009/03/29 17:32:31 tove Exp $
 #
@@ -13,25 +13,29 @@
 # modules, and their incorporation into the Gentoo Linux system.
 
 inherit eutils base
+[[ ${CATEGORY} == "perl-core" ]] && inherit alternatives
+
+EXPORTED_FUNCTIONS="src_unpack src_compile src_test src_install"
 
 case "${EAPI:-0}" in
 	0|1)
-		EXPORT_FUNCTIONS pkg_setup pkg_preinst pkg_postinst pkg_prerm pkg_postrm src_compile src_install src_test src_unpack
+		EXPORTED_FUNCTIONS="${EXPORTED_FUNCTIONS} pkg_setup pkg_preinst pkg_postinst pkg_prerm pkg_postrm"
 		;;
 	2)
-		EXPORT_FUNCTIONS src_unpack src_prepare src_configure src_compile src_test src_install
+		EXPORTED_FUNCTIONS="${EXPORTED_FUNCTIONS} src_prepare src_configure"
+		[[ ${CATEGORY} == "perl-core" ]] && \
+			EXPORTED_FUNCTIONS="${EXPORTED_FUNCTIONS} pkg_postinst pkg_postrm"
 
 		case "${GENTOO_DEPEND_ON_PERL:-yes}" in
 			yes)
-				# Depending on -build breaks stage1 builds - Daniel Robbins, 23 May 2009
-				# DEPEND="dev-lang/perl[-build]"
-				# So replace it with this:
-				DEPEND="dev-lang/perl"
+				DEPEND="dev-lang/perl[-build]"
 				RDEPEND="${DEPEND}"
 				;;
 		esac
 		;;
 esac
+
+EXPORT_FUNCTIONS ${EXPORTED_FUNCTIONS}
 
 DESCRIPTION="Based on the $ECLASS eclass"
 
@@ -59,7 +63,7 @@ perlinfo_done=false
 
 perl-module_src_unpack() {
 	base_src_unpack unpack
-	has "${EAPI:-0}" 0 1 && perl-module_src_prepare
+	has src_prepare ${EXPORTED_FUNCTIONS} || perl-module_src_prepare
 }
 
 perl-module_src_prepare() {
@@ -74,7 +78,7 @@ perl-module_src_configure() {
 }
 
 perl-module_src_prep() {
-	[[ "${SRC_PREP}" = "yes" ]] && return 0
+	[[ ${SRC_PREP} = "yes" ]] && return 0
 	SRC_PREP="yes"
 
 	${perlinfo_done} || perlinfo
@@ -83,7 +87,7 @@ perl-module_src_prep() {
 	# Disable ExtUtils::AutoInstall from prompting
 	export PERL_EXTUTILS_AUTOINSTALL="--skipdeps"
 
-	if [[ "${PREFER_BUILDPL}" == "yes" && -f Build.PL ]] ; then
+	if [[ ${PREFER_BUILDPL} == "yes" && -f Build.PL ]] ; then
 		einfo "Using Module::Build"
 		perl Build.PL \
 			--installdirs=vendor \
@@ -113,7 +117,7 @@ perl-module_src_prep() {
 perl-module_src_compile() {
 	${perlinfo_done} || perlinfo
 
-	has "${EAPI:-0}" 0 1 && perl-module_src_prep
+	has src_configure ${EXPORTED_FUNCTIONS} || perl-module_src_prep
 
 	if [[ -f Build ]] ; then
 		./Build build \
@@ -127,13 +131,30 @@ perl-module_src_compile() {
 	fi
 }
 
+# For testers:
+#  This code attempts to work out your threadingness from MAKEOPTS
+#  and apply them to Test::Harness.
+#
+#  If you want more verbose testing, set TEST_VERBOSE=1
+#  in your bashrc | /etc/make.conf | ENV
+#
+# For ebuild writers:
+#  If a package doesn't build with mulitthreaded tests enabled,
+#  this should be considered a bug, but for a temporary workaround,
+#  add NO_TEST_MULTI=1 to your ebuild.
+#
+
 perl-module_src_test() {
-	if [[ "${SRC_TEST}" == "do" ]] ; then
+	if [[ ${SRC_TEST} == "do" ]] ; then
+		if has "${TEST_VERBOSE:-0}" 0 && has "${NO_TEST_MULTI:-0}" 0 ; then
+			export HARNESS_OPTIONS=j$(echo -j1 ${MAKEOPTS} | sed -r "s/.*(-j\s*|--jobs=)([0-9]+).*/\2/" )
+			einfo "Test::Harness Jobs=${HARNESS_OPTIONS}"
+		fi
 		${perlinfo_done} || perlinfo
 		if [[ -f Build ]] ; then
-			./Build test || die "test failed"
+			./Build test verbose=${TEST_VERBOSE:-0} || die "test failed"
 		elif [[ -f Makefile ]] ; then
-			emake test || die "test failed"
+			emake test TEST_VERBOSE=${TEST_VERBOSE:-0} || die "test failed"
 		fi
 	fi
 }
@@ -177,10 +198,12 @@ perl-module_src_install() {
 
 	find "${D}" -type f -not -name '*.so' -print0 | while read -rd '' f ; do
 		if file "${f}" | grep -q -i " text" ; then
-if grep -q "${D}" "${f}" ; then ewarn "QA: File contains a temporary path ${f}" ;fi
+			grep -q "${D}" "${f}" && ewarn "QA: File contains a temporary path ${f}"
 			sed -i -e "s:${D}:/:g" "${f}"
 		fi
 	done
+
+	linkduallifescripts
 }
 
 perl-module_pkg_setup() {
@@ -191,20 +214,21 @@ perl-module_pkg_preinst() {
 	${perlinfo_done} || perlinfo
 }
 
-perl-module_pkg_postinst() { : ; }
-#	einfo "Man pages are not installed for most modules now."
-#	einfo "Please use perldoc instead."
-#}
+perl-module_pkg_postinst() {
+	linkduallifescripts
+}
+
+perl-module_pkg_postrm() {
+	linkduallifescripts
+}
 
 perl-module_pkg_prerm() { : ; }
-
-perl-module_pkg_postrm() { : ; }
 
 perlinfo() {
 	perlinfo_done=true
 
-	local f version install{site{arch,lib},archlib,vendor{arch,lib}}
-	for f in version install{site{arch,lib},archlib,vendor{arch,lib}} ; do
+	local f version install{{site,vendor}{arch,lib},archlib}
+	for f in version install{{site,vendor}{arch,lib},archlib} ; do
 		eval "$(perl -V:${f} )"
 	done
 	PERL_VERSION=${version}
@@ -218,4 +242,30 @@ perlinfo() {
 fixlocalpod() {
 	find "${D}" -type f -name perllocal.pod -delete
 	find "${D}" -depth -mindepth 1 -type d -empty -delete
+}
+
+linkduallifescripts() {
+	if [[ ${CATEGORY} != "perl-core" ]] || ! has_version ">=dev-lang/perl-5.10.1" ; then
+		return 0
+	fi
+
+	local i ff
+	if has "${EBUILD_PHASE:-none}" "postinst" "postrm" ; then
+		for i in "${DUALLIFESCRIPTS[@]}" ; do
+			alternatives_auto_makesym "/usr/bin/${i}" "/usr/bin/${i}-[0-9]*"
+			ff=`echo "${ROOT}"/usr/share/man/man1/${i}-${PV}-${P}.1*`
+			ff=${ff##*.1}
+			alternatives_auto_makesym "/usr/share/man/man1/${i}.1${ff}" "/usr/share/man/man1/${i}-[0-9]*"
+		done
+	else
+		pushd "${D}" > /dev/null
+		for i in $(find usr/bin -maxdepth 1 -type f 2>/dev/null) ; do
+			mv ${i}{,-${PV}-${P}} || die
+			DUALLIFESCRIPTS[${#DUALLIFESCRIPTS[*]}]=${i##*/}
+			if [[ -f usr/share/man/man1/${i##*/}.1 ]] ; then
+				mv usr/share/man/man1/${i##*/}{.1,-${PV}-${P}.1} || die
+			fi
+		done
+		popd > /dev/null
+	fi
 }

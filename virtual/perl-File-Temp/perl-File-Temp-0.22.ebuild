@@ -12,4 +12,4 @@ KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~x86-fbs
 
 IUSE=""
 DEPEND=""
-RDEPEND="|| ( ~dev-lang/perl-5.10.1 ~perl-core/File-Temp-${PV} )"
+RDEPEND="|| ( ~dev-lang/perl-5.10.0 ~perl-core/File-Temp-${PV} )"

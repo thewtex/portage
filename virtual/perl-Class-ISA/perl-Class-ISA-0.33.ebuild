@@ -13,4 +13,4 @@ KEYWORDS="alpha amd64 ia64 ppc ppc64 sparc x86"
 IUSE=""
 DEPEND=""
 
-RDEPEND="|| ( ~dev-lang/perl-5.10.1 ~dev-lang/perl-5.10.0 ~perl-core/Class-ISA-${PV} )"
+RDEPEND="|| ( ~dev-lang/perl-5.10.0 ~dev-lang/perl-5.10.0 ~perl-core/Class-ISA-${PV} )"

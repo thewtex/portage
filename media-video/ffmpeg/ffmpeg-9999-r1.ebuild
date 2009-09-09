@@ -1,16 +1,26 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/ffmpeg/ffmpeg-9999-r1.ebuild,v 1.16 2009/08/04 09:18:52 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/ffmpeg/ffmpeg-9999-r1.ebuild,v 1.19 2009/09/07 08:52:08 aballier Exp $
 
 EAPI=2
+SCM=""
+if [ "${PV#9999}" != "${PV}" ] ; then
+	SCM=subversion
+	ESVN_REPO_URI="svn://svn.ffmpeg.org/ffmpeg/trunk"
+fi
 
-ESVN_REPO_URI="svn://svn.mplayerhq.hu/ffmpeg/trunk"
+inherit eutils flag-o-matic multilib toolchain-funcs ${SCM}
 
-inherit eutils flag-o-matic multilib toolchain-funcs subversion
-
-DESCRIPTION="Complete solution to record, convert and stream audio and video.
-Includes libavcodec. live svn"
+DESCRIPTION="Complete solution to record, convert and stream audio and video. Includes libavcodec."
 HOMEPAGE="http://ffmpeg.org/"
+if [ "${PV#9999}" != "${PV}" ] ; then
+	SRC_URI=""
+elif [ "${PV%_p*}" != "${PV}" ] ; then # Snapshot
+	SRC_URI="mirror://gentoo/${P}.tar.bz2"
+else # Release
+	SRC_URI="http://ffmpeg.org/releases/${P}.tar.bz2"
+fi
+FFMPEG_REVISION="${PV#*_p}"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -65,6 +75,8 @@ src_prepare() {
 		# Set SVN version manually
 		subversion_wc_info
 		sed -i s/UNKNOWN/SVN-r${ESVN_WC_REVISION}/ "${S}/version.sh"
+	elif [ "${PV%_p*}" != "${PV}" ] ; then # Snapshot
+		sed -i s/UNKNOWN/SVN-r${FFMPEG_REVISION}/ "${S}/version.sh"
 	fi
 }
 
@@ -159,6 +171,7 @@ src_configure() {
 	# If they contain an unknown CPU it will not hurt since ffmpeg's configure
 	# will just ignore it.
 	for i in $(get-flag march) $(get-flag mcpu) $(get-flag mtune) ; do
+		[ "${i}" = "native" ] && i="host" # bug #273421
 		myconf="${myconf} --cpu=$i"
 		break
 	done
@@ -226,8 +239,12 @@ src_install() {
 }
 
 src_test() {
-	for t in codectest lavftest seektest ; do
-		LD_LIBRARY_PATH="${S}/libpostproc:${S}/libswscale:${S}/libavcodec:${S}/libavdevice:${S}/libavfilter:${S}/libavformat:${S}/libavutil" \
-			emake ${t} || die "Some tests in ${t} failed"
-	done
+	if use encode ; then
+		for t in codectest lavftest seektest ; do
+			LD_LIBRARY_PATH="${S}/libpostproc:${S}/libswscale:${S}/libavcodec:${S}/libavdevice:${S}/libavfilter:${S}/libavformat:${S}/libavutil" \
+				emake ${t} || die "Some tests in ${t} failed"
+		done
+	else
+		ewarn "Tests fail without USE=encode, skipping"
+	fi
 }
