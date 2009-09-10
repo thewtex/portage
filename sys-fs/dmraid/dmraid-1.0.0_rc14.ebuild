@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/dmraid/dmraid-1.0.0_rc14.ebuild,v 1.4 2009/09/08 14:17:37 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/dmraid/dmraid-1.0.0_rc14.ebuild,v 1.5 2009/09/09 21:02:11 tommy Exp $
 
 inherit linux-info flag-o-matic
 
@@ -9,7 +9,7 @@ MY_P=${PN}-${MY_PV}
 
 DESCRIPTION="Device-mapper RAID tool and library"
 HOMEPAGE="http://people.redhat.com/~heinzm/sw/dmraid/"
-SRC_URI="http://people.redhat.com/~heinzm/sw/dmraid/src/${MY_P}.tar.bz2"
+SRC_URI="http://people.redhat.com/~heinzm/sw/dmraid/src/old/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
