@@ -20,10 +20,10 @@ RDEPEND=">=dev-python/pycairo-1.8
 	>=dev-python/pygtk-2.10
 	>=net-libs/rb_libtorrent-0.14[python]
 	>=net-libs/xulrunner-1.8
-	>=dev-lang/python-2.4.4[sqlite,ssl]
+	|| ( >=dev-lang/python-2.5[sqlite] >=dev-python/pysqlite-2.3.5 )
+	>=dev-lang/python-2.5[ssl]
 	>=dev-python/pygobject-2.0
 	>=dev-python/pyrex-0.9.6.4
-	>=dev-python/pysqlite-2.3.5
 	dev-libs/boost
 	dev-python/dbus-python
 	>=dev-python/gtkmozembed-python-2.19.1-r11

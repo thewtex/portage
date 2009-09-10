@@ -17,7 +17,7 @@ IUSE="mysql"
 
 RDEPEND="
 	mysql? ( dev-python/mysql-python )
-	>=dev-python/pysqlite-2
+	|| ( >=dev-lang/python-2.5[sqlite] >=dev-python/pysqlite-2 )
 	>=dev-lang/python-2.4
 	>=dev-util/glade-2
 	|| (
