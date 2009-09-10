@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-plugins/gnash/gnash-0.8.5.ebuild,v 1.3 2009/09/08 21:20:23 mrpouet Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-plugins/gnash/gnash-0.8.5.ebuild,v 1.5 2009/09/09 10:35:30 mrpouet Exp $
 
 EAPI="2"
 KDE_REQUIRED="optional"
@@ -56,7 +56,8 @@ RDEPEND=">=dev-libs/boost-1.35.0
 	sdl? ( media-libs/libsdl[X] )
 	nsplugin? ( net-libs/xulrunner:1.9 )
 	speex? ( media-libs/speex[ogg] )
-	zlib? ( sys-libs/zlib )"
+	zlib? ( sys-libs/zlib )
+	>=sys-devel/libtool-2.2"
 DEPEND="${RDEPEND}
 	dev-util/pkgconfig
 	nls? ( sys-devel/gettext )
@@ -98,6 +99,10 @@ src_prepare() {
 	# Defines $(XPIDL) correctly using sdkdir variable from libxul.pc
 	epatch "${FILESDIR}"/${P}-xpidl-sdkdir.patch
 
+	# Use pkgconfig to determine XPCOM_IDL_DIR instead of non-portable construct.
+	# Fixes building against xulrunner-1.9.0, bug #284073.
+	epatch "${FILESDIR}"/${P}-xpcom-idldir.patch
+
 	# Resurect patch from bug #230287
 	epatch "${FILESDIR}"/${PN}-0.8.3-boost-dynamic-link.patch
 
@@ -118,7 +123,7 @@ src_prepare() {
 	eautoreconf
 }
 src_configure() {
-	local myconf jobs
+	local myconf
 	local gui="sdl"
 	# Set nsplugin install directory.
 	use nsplugin && myconf="${myconf} --with-npapi-plugindir=/opt/netscape/plugins"
@@ -179,9 +184,12 @@ src_configure() {
 		${myconf}
 }
 src_install() {
-	emake ${jobs} DESTDIR="${D}" install || die "emake install failed"
+	emake DESTDIR="${D}" install || die "emake install failed"
+
 	# Install nsplugin in directory set by --with-npapi-plugindir.
-	use nsplugin && emake DESTDIR="${D}" install-plugin || die "install plugins failed"
+	if use nsplugin; then
+		emake DESTDIR="${D}" install-plugin || die "install plugins failed"
+	fi
 
 	# Install kde konqueror plugin.
 	if use kde; then
