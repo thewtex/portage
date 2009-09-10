@@ -1,5 +1,5 @@
-dev-libs/glib dev-libs/popt gtk? ( >=x11-libs/gtk+extra-2.1.1 ) dev-util/pkgconfig =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
-dev-libs/glib dev-libs/popt gtk? ( >=x11-libs/gtk+extra-2.1.1 ) >=dev-embedded/gputils-0.12.0
+dev-libs/glib dev-libs/popt >=dev-embedded/gputils-0.12.0 gtk? ( >=x11-libs/gtk+extra-2.1.1 ) dev-util/pkgconfig sys-devel/flex || ( dev-util/yacc sys-devel/bison ) =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+dev-libs/glib dev-libs/popt >=dev-embedded/gputils-0.12.0 gtk? ( >=x11-libs/gtk+extra-2.1.1 )
 0
 mirror://sourceforge/gpsim/gpsim-0.22.0.tar.gz
 
@@ -12,9 +12,9 @@ doc gtk
 
 
 
+2
 
-
-compile install unpack
+configure install prepare
 
 
 
