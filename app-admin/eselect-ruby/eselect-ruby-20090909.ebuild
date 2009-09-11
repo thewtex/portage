@@ -4,7 +4,7 @@
 
 DESCRIPTION="Manages multiple Ruby versions"
 HOMEPAGE="http://www.gentoo.org"
-SRC_URI="http://dev.a3li.info/gentoo/distfiles/ruby.eselect-${PVR}.bz2"
+SRC_URI="http://www.funtoo.org/distfiles/ruby.eselect-${PVR}.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
