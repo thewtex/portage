@@ -84,7 +84,7 @@ src_install() {
 	# /lib/udev/devices. This set of device nodes will be copied to /dev when
 	# udev starts.
 
-	/sbin/realdev ${D}${udev_helper_dir}/devices || die
+	$ROOT/sbin/realdev ${D}${udev_helper_dir}/devices || die
 
 	# create symlinks for these utilities to /sbin
 	# where multipath-tools expect them to be (Bug #168588)

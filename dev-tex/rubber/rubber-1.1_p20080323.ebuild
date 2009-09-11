@@ -1,6 +1,9 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tex/rubber/rubber-1.1_p20080323.ebuild,v 1.1 2008/05/12 13:16:44 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-tex/rubber/rubber-1.1_p20080323.ebuild,v 1.3 2009/09/10 17:01:16 patrick Exp $
+
+EAPI="2"
+NEED_PYTHON="2.5"
 
 inherit distutils eutils
 
@@ -16,10 +19,13 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 
-DEPEND=">=dev-lang/python-2.2
-		virtual/latex-base"
+DEPEND="virtual/latex-base"
 
 S=${WORKDIR}/${P/_p*/}
+
+src_prepare() {
+	epatch "${FILESDIR}/rubber-python2.6.patch"
+}
 
 src_compile() {
 	# configure script is not created by GNU autoconf

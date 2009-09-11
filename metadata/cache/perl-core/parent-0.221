@@ -1,5 +1,5 @@
-dev-lang/perl
-dev-lang/perl
+dev-lang/perl[-build]
+dev-lang/perl[-build]
 0
 mirror://cpan/authors/id/C/CO/CORION//parent-0.221.tar.gz
 
@@ -7,14 +7,14 @@ http://search.cpan.org/dist/parent
 || ( Artistic GPL-2 )
 Establish an ISA relationship with base classes at compile time
 ~amd64 ~x86
-base eutils multilib perl-module portability toolchain-funcs
+alternatives base eutils multilib perl-module portability toolchain-funcs
 
 
 
 
 2
 
-compile configure install prepare test unpack
+compile configure install postinst postrm prepare test unpack
 
 
 
