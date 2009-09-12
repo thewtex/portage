@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10432 2009/09/10 22:42:57 arfrever Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10436 2009/09/11 22:18:13 tester Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,21 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Olivier Crete <tester@gentoo.org> (11 Sep 2009)
+# Mission Control 5 API is compatible with MC4
+# It is also incompatible with empathy <2.27.91
+>=net-im/telepathy-mission-control-5
+
+# Samuli Suominen <ssuominen@gentoo.org> (11 Sep 2009)
+# No >= bluez 4 support wrt #279382 or update from upstream available.
+# Masked for removal.
+app-mobilephone/x70talk
+
+# Samuli Suominen <ssuominen@gentoo.org> (11 Sep 2009)
+# Doesn't compile with >= 2.6.25 kernel, or support >= bluez 4.
+# Masked for removal. Bugs #244890 and #283735.
+net-wireless/bluez-bluefw
 
 # Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (10 Sep 2009)
 # Included in Python 2.6. Masked for deletion in 30 days.
@@ -1131,6 +1146,7 @@ sys-apps/sreadahead
 net-misc/dahdi
 net-misc/dahdi-tools
 =net-misc/asterisk-1.6*
+=net-misc/asterisk-addons-1.6*
 =net-libs/libpri-1.4*
 
 # Matti Bickel <mabi@gentoo.org> (1 Mar 2009)
