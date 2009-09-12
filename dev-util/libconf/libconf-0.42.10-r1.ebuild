@@ -1,6 +1,8 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/libconf/libconf-0.42.10-r1.ebuild,v 1.8 2009/07/02 23:57:49 jer Exp $
+# $Header: $
+
+EAPI=2
 
 inherit eutils multilib toolchain-funcs
 
@@ -12,7 +14,7 @@ SRC_URI="http://damien.krotkine.com/libconf/dist/${MY_P}.tar.bz2"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 
 IUSE="python ruby"
 DEPEND="dev-lang/perl
@@ -21,7 +23,7 @@ DEPEND="dev-lang/perl
 	python? ( >=dev-lang/python-2.4.2 )
 	ruby? ( >=dev-lang/ruby-1.8.3 )"
 
-S=${WORKDIR}/${MY_P}
+S="${WORKDIR}"/${MY_P}
 
 bindings() {
 	local mybindings
@@ -31,11 +33,9 @@ bindings() {
 	echo ${mybindings}
 }
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-
-	[[ ${USERLAND} == *BSD ]] && epatch "${FILESDIR}/${PV}-fbsd.patch"
+src_prepare() {
+	[[ ${USERLAND} == *BSD ]] && epatch "${FILESDIR}"/${PV}-fbsd.patch
+	epatch "${FILESDIR}"/${P}-perl510.patch
 
 	# Multilib fix
 	sed -i \
@@ -51,6 +51,7 @@ src_unpack() {
 		-e '/^MAKE =/d' \
 		Makefile perl-Libconf/Makefile || die "sed failed"
 }
+
 src_compile() {
 	emake \
 		BINDINGS="$(bindings)" \
@@ -61,9 +62,11 @@ src_compile() {
 src_install() {
 	emake \
 		BINDINGS="$(bindings)" \
-		PREFIX="${D}/usr" DESTDIR="${D}" ROOT="${D}" \
+		PREFIX="${D}"/usr DESTDIR="${D}" ROOT="${D}" \
 		CPA="cp -pR" install || die "emake install failed"
+
 	dodoc AUTHORS ChangeLog \
 		bindings/ruby/src/{AUTHORS,README} \
 		bindings/python/src/README
 }
+
