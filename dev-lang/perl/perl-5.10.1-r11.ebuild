@@ -133,7 +133,7 @@ src_configure() {
 	cat <<-EOF > "${S}/ext/Compress-Raw-Zlib/config.in"
 		BUILD_ZLIB = False
 		INCLUDE = /usr/include
-		LIB = /usr/${get_libdir}
+		LIB = /usr/$(get_libdir)
 
 		OLD_ZLIB = False
 		GZIP_OS_CODE = AUTO_DETECT
