@@ -1,12 +1,13 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/binutils-apple/binutils-apple-3.2.ebuild,v 1.1 2009/09/05 17:22:41 grobian Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/binutils-apple/binutils-apple-3.2.ebuild,v 1.3 2009/09/12 14:17:48 grobian Exp $
 
 inherit eutils flag-o-matic toolchain-funcs
 
 RESTRICT="test" # the test suite will test what's installed.
 
-LD64=ld64-95.2.12
+# LD64=ld64-95.2.12 # can't compile this one, missing libunwind/* includes
+LD64=ld64-85.2.1 # from 3.1.2
 CCTOOLS=cctools-750
 LP64PATCHES=binutils-apple-LP64-patches-1
 
@@ -51,17 +52,21 @@ fi
 S=${WORKDIR}
 
 unpack_ld64() {
-	cd "${S}"/${LD64}
-	cp "${FILESDIR}"/${P}-ld64-Makefile Makefile
-	ln -s ../${CCTOOLS}/include
+	cd "${S}"/${LD64}/src
+	cp "${FILESDIR}"/Makefile .
+#	cd "${S}"/${LD64}
+#	cp "${FILESDIR}"/${P}-ld64-Makefile .
+#	ln -s ../${CCTOOLS}/include
 # todo: copy compact_unwind_encoding.h
+#	cp "${FILESDIR}"/compact_unwind_encoding.h include/mach-o/
 
-	cd src
+#	cd src
 
 	local VER_STR="\"@(#)PROGRAM:ld  PROJECT:${LD64} (Gentoo ${PN}-${PVR})\\n\""
 	sed -i \
 		-e '/^#define LTO_SUPPORT 1/s:1:0:' \
-		other/ObjectDump.cpp || die
+		ObjectDump.cpp || die
+#		other/ObjectDump.cpp || die
 	echo '#undef LTO_SUPPORT' > configure.h
 	echo '' > linker_opts
 	echo "char ldVersionString[] = ${VER_STR};" > version.cpp
@@ -98,8 +103,8 @@ src_unpack() {
 	unpack_ld64
 
 	# needed to compile trie support
-	cp "${S}"/${LD64}/src/other/prune_trie.h \
-		"${S}"/${CCTOOLS}/include/mach-o
+#	cp "${S}"/${LD64}/src/other/prune_trie.h \
+#		"${S}"/${CCTOOLS}/include/mach-o
 
 	cd "${S}"/${CCTOOLS}
 	epatch "${FILESDIR}"/${PN}-3.1.1-as.patch
@@ -107,14 +112,13 @@ src_unpack() {
 	epatch "${FILESDIR}"/${PN}-3.1.1-ranlib.patch
 	epatch "${FILESDIR}"/${PN}-3.1.1-libtool-ranlib.patch
 	epatch "${FILESDIR}"/${PN}-3.1.1-nmedit.patch
-	#epatch "${FILESDIR}"/${PN}-3.1.1-no-efi-man.patch
 	epatch "${FILESDIR}"/${PN}-3.1.1-no-headers.patch
 	epatch "${FILESDIR}"/${PN}-3.1.1-no-oss-dir.patch
-	#epatch "${FILESDIR}"/${PN}-3.1.2-as-Makefile.patch
-#	epatch "${WORKDIR}"/LP64/cctools/*.patch
+	epatch "${FILESDIR}"/${P}-armv7-defines.patch
+
 	cd "${S}"/${LD64}
 	epatch "${FILESDIR}"/${PN}-3.1.1-testsuite.patch
-#	epatch "${WORKDIR}"/LP64/ld64/*.patch
+	epatch "${WORKDIR}"/LP64/ld64/*.patch
 
 	cd "${S}"
 	ebegin "cleaning Makefiles from unwanted CFLAGS"
@@ -124,22 +128,6 @@ src_unpack() {
 		-e 's/^OFLAG =.*$/OFLAG =/' \
 		-e 's/install -c -s/install/g'
 	eend $?
-#	ebegin "patching for LP64 mode"
-#	ebegin "  replacing SWAP_LONG() with SWAP_INT()"
-#	find . -name "*.c" -print0 | xargs -0 sed \
-#		-i \
-#		-e 's/SWAP_LONG((long)/SWAP_INT((int)/g' \
-#		-e 's/SWAP_LONG(/SWAP_INT(/g'
-#	eend $?
-#	ebegin "  replacing sizeof(long) with sizeof(int)"
-#	find . -name "*.c" -print0 | xargs -0 sed \
-#		-i \
-#		-e 's/sizeof(long)/sizeof(int)/g' \
-#		-e 's/sizeof(unsigned long)/sizeof(unsigned int)/g' \
-#		&& sed -i \
-#		-e '/long long \*/!s/long \*/int */g' \
-#		${CCTOOLS}/misc/{strip,lipo}.*
-#	eend $?
 
 	# -pg is used and the two are incompatible
 	filter-flags -fomit-frame-pointer
@@ -159,8 +147,10 @@ compile_cctools() {
 	cd "${S}"/${CCTOOLS}
 	emake \
 		LTO= \
+		TRIE= \
 		EFITOOLS= \
 		COMMON_SUBDIRS='libstuff ar misc otool' \
+		SUBDIRS_32= \
 		RC_CFLAGS="${CFLAGS}" OFLAG="${CFLAGS}" \
 		|| die "emake failed for the cctools"
 	cd "${S}"/${CCTOOLS}/as
@@ -171,8 +161,8 @@ compile_cctools() {
 }
 
 src_compile() {
-	compile_ld64
 	compile_cctools
+	compile_ld64
 }
 
 install_ld64() {
@@ -190,6 +180,8 @@ install_cctools() {
 	emake install_all_but_headers \
 		EFITOOLS= \
 		COMMON_SUBDIRS='ar misc otool' \
+		SUBDIRS_32= \
+		RC_CFLAGS="${CFLAGS}" OFLAG="${CFLAGS}" \
 		DSTROOT=\"${D}\" \
 		BINDIR=\"${EPREFIX}\"${BINPATH} \
 		LOCBINDIR=\"${EPREFIX}\"${BINPATH} \
