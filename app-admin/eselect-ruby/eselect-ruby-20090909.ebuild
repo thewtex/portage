@@ -4,8 +4,9 @@
 
 DESCRIPTION="Manages multiple Ruby versions"
 HOMEPAGE="http://www.gentoo.org"
-SRC_URI="http://www.funtoo.org/distfiles/ruby.eselect-${PVR}.bz2"
-
+SRC_URI="http://www.funtoo.org/archive/eselect-ruby/ruby.eselect-${PVR}.bz2"
+# don't pick up identically-named file from Gentoo mirrors:
+RESTRICT="nomirror"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd"
