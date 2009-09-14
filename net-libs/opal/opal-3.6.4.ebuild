@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/opal/opal-3.6.4.ebuild,v 1.1 2009/08/25 18:50:14 volkmar Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/opal/opal-3.6.4.ebuild,v 1.4 2009/09/12 20:46:11 volkmar Exp $
 
 EAPI="2"
 
@@ -14,11 +14,11 @@ SRC_URI="mirror://sourceforge/opalvoip/${P}.tar.bz2
 LICENSE="MPL-1.0"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~ppc ~x86"
-IUSE="+audio capi debug dns doc dtmf examples fax ffmpeg h224 h281 h323 iax ipv6
-ivr ixj java ldap lid +plugins rfc4175 sbc sip sipim srtp ssl stats swig theora
-+video vpb vxml wav x264 x264-static xml"
+IUSE="+audio capi debug doc dtmf examples fax ffmpeg h224 h281 h323 iax ipv6 ivr
+ixj java ldap lid +plugins sbc sip sipim srtp ssl stats swig theora +video vpb
+vxml wav x264 x264-static xml"
 
-RDEPEND=">=net-libs/ptlib-2.0.0[stun,url,debug=,audio?,dns?,dtmf?,ipv6?,ldap?,ssl?,video?,vxml?,wav?,xml?]
+RDEPEND=">=net-libs/ptlib-2.0.0[stun,debug=,audio?,dtmf?,ipv6?,ldap?,ssl?,video?,vxml?,wav?,xml?]
 	>=media-libs/speex-1.2_beta
 	fax? ( net-libs/ptlib[asn] )
 	h323? ( net-libs/ptlib[asn] )
@@ -42,17 +42,13 @@ DEPEND="${RDEPEND}
 
 # NOTES:
 # ffmpeg[encode] is for h263 and mpeg4
-# ssl, xml, vxml, ipv6, dtmf, ldap, audio, wav, dns and video are use flags
+# ssl, xml, vxml, ipv6, dtmf, ldap, audio, wav, and video are use flags
 #   herited from ptlib: feature is enabled if ptlib has enabled it
 #   however, disabling it if ptlib has it looks hard (coz of buildopts.h)
 #   forcing ptlib to disable it for opal is not a solution too
 #   atm, accepting the "auto-feature" looks like a good solution
 #   (asn is used for fax and config _only_ for examples)
 # OPALDIR should not be used anymore but if a package still need it, create it
-
-# TODO:
-# force or merge some non-plugin USE flags wo/ deps ?
-# celt is not in the tree and should be added
 
 conditional_use_error_msg() {
 	eerror "To enable ${1} USE flag, you need ${2} USE flag to be enabled"
@@ -70,19 +66,14 @@ pkg_setup() {
 
 	# stop emerge if a conditional use flag is not respected
 
-	if use rfc4175 && ! use video; then
-		conditional_use_error_msg "rfc4175" "video"
-		use_error=true
-	fi
-
 	if use h281 && ! use h224; then
 		conditional_use_error_msg "h281" "h224"
 		use_error=true
 	fi
 
 	if use x264-static && ! use x264; then
-		conditional_use_error_msg "x264-static" "x264"
-		use_error=true
+		ewarn "You have enabled x264-static but x264 is disabled."
+		ewarn "x264-static is going to be useless if x264 is not enabled."
 	fi
 
 	if ${use_error}; then
@@ -213,12 +204,11 @@ src_configure() {
 		$(use_enable java) \
 		$(use_enable lid) \
 		$(use_enable plugins) \
-		$(use_enable rfc4175) \
 		$(use_enable sbc) \
 		$(use_enable sip) \
 		$(use_enable sipim) \
 		$(use_enable stats statistics) \
-		$(use_enable video) \
+		$(use_enable video) $(use_enable video rfc4175) \
 		$(use_enable vpb) \
 		$(use_enable x264 h264) \
 		$(use_enable x264-static x264-link-static) \

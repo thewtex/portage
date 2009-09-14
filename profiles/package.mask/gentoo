@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10432 2009/09/10 22:42:57 arfrever Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10441 2009/09/13 18:16:50 nirbheek Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,33 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Konstantin V. Arkhipov <voxus@gentoo.org> (13 Sep 2009)
+# Upstream no longer supports it, removal in 30 days.
+dev-php5/onphp-module
+
+# Markus Meier <maekke@gentoo.org> (13 Sep 2009)
+# masked for testing
+>=media-gfx/hugin-2009.2.0_beta3
+
+# Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (13 Sep 2009)
+# Masked to enforce upgrade which looks like downgrade.
+=dev-python/fabric-0.9a_p3
+
+# Olivier Crete <tester@gentoo.org> (11 Sep 2009)
+# Mission Control 5 API is compatible with MC4
+# It is also incompatible with empathy <2.27.91
+>=net-im/telepathy-mission-control-5
+
+# Samuli Suominen <ssuominen@gentoo.org> (11 Sep 2009)
+# No >= bluez 4 support wrt #279382 or update from upstream available.
+# Masked for removal.
+app-mobilephone/x70talk
+
+# Samuli Suominen <ssuominen@gentoo.org> (11 Sep 2009)
+# Doesn't compile with >= 2.6.25 kernel, or support >= bluez 4.
+# Masked for removal. Bugs #244890 and #283735.
+net-wireless/bluez-bluefw
 
 # Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (10 Sep 2009)
 # Included in Python 2.6. Masked for deletion in 30 days.
@@ -907,13 +934,6 @@ dev-ruby/dpklib
 # Removed in ~60 days by treecleaners
 www-servers/shttpd
 
-# Víctor Ostorga <vostorga@gentoo.org> (9 Jul 2009)
-# Fails to build, dead upstream. 
-#
-# Removal scheduled for 2009-09-09
-# bug #227721
-x11-misc/e-fancylauncher
-
 # Diego E. Pettenò <flameeyes@gentoo.org> (6 Jul 2009)
 #  on behalf of QA Team
 #
@@ -961,12 +981,6 @@ app-office/koffice
 # broken opengl support, forces gcc's objc for no reason
 # masked until fixed (see bug #274092)
 =media-libs/tiff-3.8.2-r6
-
-# Romain Perier <mrpouet@gentoo.org> (20 Jun 2009)
-# A lot of changes into sources code
-# (re-structured, modules renamed and so on)
-# It may break some packages.
-=sys-auth/policykit-0.92
 
 # Theo Chatzimichos <tampakrap@gentoo.org> (14 Jun 2009)
 # Masked for removal in 30 days. Old and dead by upstream.
@@ -1134,6 +1148,7 @@ sys-apps/sreadahead
 net-misc/dahdi
 net-misc/dahdi-tools
 =net-misc/asterisk-1.6*
+=net-misc/asterisk-addons-1.6*
 =net-libs/libpri-1.4*
 
 # Matti Bickel <mabi@gentoo.org> (1 Mar 2009)

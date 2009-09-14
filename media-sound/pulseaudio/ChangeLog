@@ -1,6 +1,39 @@
 # ChangeLog for media-sound/pulseaudio
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/pulseaudio/ChangeLog,v 1.149 2009/09/10 19:17:17 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/pulseaudio/ChangeLog,v 1.154 2009/09/13 17:29:24 flameeyes Exp $
+
+  13 Sep 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  pulseaudio-0.9.15-r2.ebuild:
+  Disable two broken tests in 0.9.15 release.
+
+*pulseaudio-0.9.17-r50 (13 Sep 2009)
+*pulseaudio-0.9.17 (13 Sep 2009)
+
+  13 Sep 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  -pulseaudio-0.9.16.ebuild, -pulseaudio-0.9.16-r52.ebuild,
+  +pulseaudio-0.9.17.ebuild, +pulseaudio-0.9.17-r50.ebuild:
+  Version bump, thanks to Rafał Mużyło in bug #284751.
+
+*pulseaudio-0.9.16-r52 (13 Sep 2009)
+
+  13 Sep 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  -pulseaudio-0.9.16-r51.ebuild, +pulseaudio-0.9.16-r52.ebuild,
+  files/pulseaudio.init.d-4:
+  Fix init script to depend on udev when using udev, not hal. Thanks to
+  Alexander E. Patrakov for reporting (bug #284735).
+
+  12 Sep 2009; Olivier Crête <tester@gentoo.org>
+  pulseaudio-0.9.9-r55.ebuild:
+  Stable on amd64, bug #284699
+
+*pulseaudio-0.9.9-r55 (12 Sep 2009)
+
+  12 Sep 2009; Nirbheek Chauhan <nirbheek@gentoo.org>
+  +pulseaudio-0.9.9-r55.ebuild:
+  Add 0.9.9-r55 without bluetooth support for quick stabilization. Bluetooth
+  didn't really work with this version, and this is blocking bluez-4
+  stabilization -- bug 284661 . If you want bluetooth, you should use the
+  -r54 version or keyword a newer version.
 
   10 Sep 2009; Diego E. Pettenò <flameeyes@gentoo.org>
   -pulseaudio-0.9.15-r51.ebuild:

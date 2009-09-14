@@ -1,34 +1,97 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+EAPI="2"
 
-inherit eutils autotools versionator
+GENTOO_DEPEND_ON_PERL="no"
+inherit toolchain-funcs base perl-module eutils versionator autotools
 
+MAJOR=$(get_major_version)
 MY_PV=$(get_version_component_range 1-3)
+MY_P=${PN}-${MY_PV}
 DEB_PV=$(replace_version_separator 3 '-')
+DEB_P=${PN}_${DEB_PV}
 
-SRC_URI="mirror://debian/pool/main/l/${PN}/${PN}_${MY_PV}.orig.tar.gz
-	mirror://debian/pool/main/l/${PN}/${PN}_${DEB_PV}.diff.gz"
-
-DESCRIPTION="A simple Debian locking library"
+DESCRIPTION="Library for locking devices"
 HOMEPAGE="http://packages.debian.org/source/sid/lockdev"
+SRC_URI="
+	mirror://debian/pool/main/${PN:0:1}/${PN}/${PN}_${MY_PV}.orig.tar.gz
+	mirror://debian/pool/main/${PN:0:1}/${PN}/${DEB_P}.diff.gz
+"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="perl"
+
+DEPEND="
+	perl? ( dev-lang/perl[-build] )
+"
+RDEPEND="${DEPEND}"
+
+PATCHES=(
+	"${FILESDIR}/${MY_P}-add-autotools.patch"
+	"${FILESDIR}/${MY_P}-fix-perl.patch"
+)
 
 S=${WORKDIR}/${PN}-${MY_PV}
+PERL_S=${S}/LockDev
 
-src_unpack() {
-	unpack ${A}
-	epatch ${PN}_${DEB_PV}.diff
-	epatch "${FILESDIR}/${PN}.addautotools.patch"
+pkg_setup() {
+	use perl && perl-module_pkg_setup
+}
+
+src_prepare() {
+	cd "${WORKDIR}"
+	# Note: we do *not* want to be in ${S} for this, as that breaks the patch
+	epatch "${WORKDIR}/${DEB_P}.diff"
+
 	cd "${S}"
+	base_src_prepare
+
 	eautoreconf
 }
 
+src_configure() {
+	econf
+
+	if use perl; then
+		cd "${PERL_S}"
+		perl-module_src_configure
+	fi
+}
+
+src_compile() {
+	emake || die "emake failed"
+
+	if use perl; then
+		cd "${PERL_S}"
+		perl-module_src_compile
+	fi
+}
+
+src_test() {
+	if use perl; then
+		cd "${PERL_S}"
+		SRC_TEST="do"
+		export LD_LIBRARY_PATH="${LD_LIBRARY_PATH:+${LD_LIBRARY_PATH}:}${S}/.libs"
+		perl-module_src_test
+	fi
+}
+
 src_install() {
-	emake DESTDIR="${D}" install || die "install failed"
-	dodoc AUTHORS ChangeLog ChangeLog.old README.debug || die
+	emake DESTDIR="${D}" install || die "make install failed"
+
+	dodoc AUTHORS ChangeLog* debian/NEWS README.debug || die "dodoc failed"
+	newdoc debian/changelog changelog.debian || die "newdoc changelog.debian failed"
+
+	if use perl; then
+		cd "${PERL_S}"
+		mytargets="pure_install"
+		docinto perl
+		perl-module_src_install
+	fi
+}
+
+pkg_preinst() {
+	use perl && perl-module_pkg_preinst
 }
