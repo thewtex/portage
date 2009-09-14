@@ -1,5 +1,5 @@
-dev-lang/perl
-dev-lang/perl
+dev-lang/perl[-build]
+dev-lang/perl[-build]
 0
 mirror://cpan/authors/id/A/AD/ADAMK//Parse-CPAN-Meta-1.39.tar.gz
 
@@ -7,14 +7,14 @@ http://search.cpan.org/dist/Parse-CPAN-Meta
 || ( Artistic GPL-2 )
 Parse META.yml and other similar CPAN metadata files
 ~amd64 ~x86
-base eutils multilib perl-module portability toolchain-funcs
+alternatives base eutils multilib perl-module portability toolchain-funcs
 
 
 
 
 2
 
-compile configure install prepare test unpack
+compile configure install postinst postrm prepare test unpack
 
 
 

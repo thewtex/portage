@@ -1,4 +1,4 @@
-python? ( virtual/python ) python? ( dev-lang/swig ) app-arch/unzip >=app-shells/bash-3.2
+python? ( virtual/python ) python? ( dev-lang/swig ) app-arch/unzip >=app-shells/bash-3.2 =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
 python? ( virtual/python )
 0
 mirror://sourceforge/fann/fann-2.1.0beta.zip
@@ -7,14 +7,14 @@ http://leenissen.dk/fann/
 LGPL-2.1
 Fast Artificial Neural Network Library
 ~amd64 ~ppc ~x86
-eutils multilib portability python toolchain-funcs
+autotools eutils libtool multilib portability python toolchain-funcs
 doc python
 
 
 
+2
 
-
-compile install test unpack
+compile install prepare test
 
 
 

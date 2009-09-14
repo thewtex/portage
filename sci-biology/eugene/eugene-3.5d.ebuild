@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/eugene/eugene-3.5d.ebuild,v 1.3 2009/04/18 12:36:09 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/eugene/eugene-3.5d.ebuild,v 1.4 2009/09/09 21:58:14 weaver Exp $
 
 EAPI=2
 
@@ -14,6 +14,8 @@ LICENSE="Artistic"
 SLOT="0"
 IUSE="doc"
 KEYWORDS="amd64 x86"
+
+RESTRICT="test"
 
 DEPEND="media-libs/gd[png]
 	media-libs/libpng

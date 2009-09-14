@@ -1,6 +1,30 @@
 # ChangeLog for www-plugins/gnash
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-plugins/gnash/ChangeLog,v 1.7 2009/09/08 21:22:34 mrpouet Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-plugins/gnash/ChangeLog,v 1.11 2009/09/10 19:22:21 mrpouet Exp $
+
+  10 Sep 2009; Romain Perier <mrpouet@gentoo.org>
+  gnash-0.8.5.ebuild:
+  Fix bug #284342, sdl was added into $gui local var from src_configure()
+  even with USE=-sdl gtk -kde, which also introduiced a syntax error caused
+  by the sed expression (which drops the first matched comma).
+
+  10 Sep 2009; Romain Perier <mrpouet@gentoo.org>
+  gnash-0.8.5.ebuild:
+  Fix bug #284355, testsuite failed due to inheritance from kde4-base.eclass
+  which exported kde4-base_src_test which tried to find a CMakeLists.txt
+  (does not exist), re-import src_test() from 0.8.4.
+
+  09 Sep 2009; Romain Perier <mrpouet@gentoo.org>
+  gnash-0.8.5.ebuild, +files/gnash-0.8.5-xpcom-idldir.patch:
+  Fix bug #284073, Use pkgconfig to determine XPCOM_IDL_DIR instead of
+  non-portable construct which fix building against xulrunner-1.9.0, many
+  thanks to Chi-Thanh Christopher Nguyen <chithanh@cs.tu-berlin.de>, Add
+  >=sys-devel/libtool-2 in RDEPEND (not portable to libtool-1).
+
+  09 Sep 2009; Romain Perier <mrpouet@gentoo.org>
+  gnash-0.8.5.ebuild:
+  Fix bug #284244, src_install() always failed with USE=-nsplugin due to
+  stupid test line 184, replace it by an if.
 
   08 Sep 2009; Romain Perier <mrpouet@gentoo.org>
   gnash-0.8.5.ebuild, +files/gnash-0.8.5-klash.patch,
