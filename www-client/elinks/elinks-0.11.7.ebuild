@@ -31,8 +31,7 @@ DEPEND=">=dev-libs/expat-1.95.4
 	perl? ( sys-devel/libperl )
 	ruby? ( dev-lang/ruby )
 	!hppa? ( !mips? ( !alpha? ( javascript? ( dev-lang/spidermonkey ) ) ) )"
-RDEPEND="${DEPEND}
-	gopher? ( >=www-client/lynx-2.8.7_p1 )"
+RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${MY_P}"
 
