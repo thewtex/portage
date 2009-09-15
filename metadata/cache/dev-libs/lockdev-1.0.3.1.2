@@ -1,20 +1,20 @@
-=sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
-
+perl? ( dev-lang/perl[-build] ) =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+perl? ( dev-lang/perl[-build] )
 0
 mirror://debian/pool/main/l/lockdev/lockdev_1.0.3.orig.tar.gz mirror://debian/pool/main/l/lockdev/lockdev_1.0.3-1.2.diff.gz
 
 http://packages.debian.org/source/sid/lockdev
 LGPL-2.1
-A simple Debian locking library
+Library for locking devices
 ~amd64 ~x86
-autotools eutils libtool multilib portability toolchain-funcs versionator
+autotools base eutils libtool multilib perl-module portability toolchain-funcs versionator
+perl
 
 
 
+2
 
-
-
-install unpack
+compile configure install preinst prepare setup test unpack
 
 
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4801 2009/09/10 18:47:39 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4814 2009/09/14 03:47:49 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -885,7 +885,6 @@ dev-php5/eaccelerator:disassembler - Enable the eA disassembler
 dev-php5/eaccelerator:inode - Use inode-based caching
 dev-php5/php-gtk:extra - Enable GtkExtra support
 dev-php5/php-gtk:glade - Enable libglade support
-dev-php5/php-gtk:html - Enable GtkHTML2 support
 dev-php5/php-gtk:libsexy - Enable libsexy support
 dev-php5/php-gtk:mozembed - Enable GtkMozembed support
 dev-php5/php-gtk:scintilla - Enable Scintilla support
@@ -969,7 +968,6 @@ dev-util/astyle:libs - builds and installs both shared and static library interf
 dev-util/buildbot:irc - Add support for status delivery through an ircbot.
 dev-util/buildbot:mail - Add support for watching a maildir for commits.
 dev-util/buildbot:manhole - Add support for manhole (debug over ssh)
-dev-util/buildbot:web - Add a web interface ("waterfall" page).
 dev-util/bzr:sftp - Enable sftp support
 dev-util/catalyst:ccache - Enables ccache support
 dev-util/cmake:python3 - Enable experimental support for Python 3
@@ -1031,6 +1029,7 @@ dev-util/qt-creator:qtscript - enable qt script editor plugin
 dev-util/qt-creator:subversion - enable subersion plugin
 dev-util/radare:gui -  Enable the graphical user interface of radare (broken) 
 dev-util/radare:vala -  Enable support for the vala programming language 
+dev-util/schroot:dchroot - Enables the building of a wrapper named "dchroot", replacing dev-util/dchroot.
 dev-util/strace:aio - Enable libaio support
 dev-util/subversion:ctypes-python - Build and install ctypes python bindings
 dev-util/subversion:dso - Enable runtime module search
@@ -1157,6 +1156,8 @@ games-fps/warsow:angelscript - Enable AngelScript support
 games-fps/warsow:irc - Enable IRC support
 games-fps/worldofpadman:maps - Install extra maps (PadPack)
 games-kids/gcompris:gnet - will let GCompris fetch content from a web server
+games-puzzle/jag:editor - Install level editor
+games-puzzle/jag:extras - Install additional graphics
 games-puzzle/xlogical:alt_gfx - Use alternate graphics which are closer to the original Amiga version
 games-rpg/drascula:audio - Install optional audio files
 games-rpg/eternal-lands-data:music - Install optional music files (extra 30 meg)
@@ -2113,7 +2114,7 @@ media-video/vlc:libproxy - Enables support for proxy settings in the HTTP access
 media-video/vlc:libsysfs - Get user key from firewire connected iPod via libsysfs.
 media-video/vlc:libtiger - Enables Ogg Kate subtitles rendering using libtiger.
 media-video/vlc:libv4l2 - Enables Libv4l2 Video4Linux2 support (for conversion from various video formats to standard ones, needed to use v4l2 devices with strange formats).
-media-video/vlc:live - Enables LIVE.com support.
+media-video/vlc:live - Enables live555 streaming media support (client support for rtsp).
 media-video/vlc:optimisememory - Enable optimisation for memory rather than performance.
 media-video/vlc:pda - Builds a GTK+ interface suitable for PDA devices.
 media-video/vlc:projectm - Enables the projectM visualization plugin.
@@ -2229,7 +2230,6 @@ net-dialup/capi4k-utils:fax - Install capi-fax demo programs
 net-dialup/capi4k-utils:pppd - Installs pppdcapiplugin modules
 net-dialup/freeradius:edirectory - Enables Novell eDirectory integration
 net-dialup/freeradius:frascend - Enables Ascend binary mode
-net-dialup/freeradius:frnothreads - Disables thread support
 net-dialup/freeradius:frxp - Enables experimental modules
 net-dialup/freeradius:udpfromto - Compile in UDPFROMTO support (enables freeradius to specify source address correctly in multi-homed setups)
 net-dialup/freeradius-client:scp - Add service type hints derived from username prefix
@@ -2500,7 +2500,7 @@ net-libs/libvncserver:nobackchannel - disable backchannel support
 net-libs/loudmouth:asyncns - Use libasyncns for asynchronous name resolution.
 net-libs/opal:audio - Enable audio support
 net-libs/opal:capi - Enable CAPI support
-net-libs/opal:dns - Enable DNS resolver support
+net-libs/opal:celt - Enable CELT ultra-low delay audio codec
 net-libs/opal:dtmf - Enable DTMF encoding/decoding support
 net-libs/opal:fax - Enable T.38 FAX protocol
 net-libs/opal:h224 - Enable H.224 real time control protocol
@@ -2513,7 +2513,6 @@ net-libs/opal:lid - Enable Line Interface Device
 net-libs/opal:noaudio - Disable audio codecs
 net-libs/opal:novideo - Disable video codecs
 net-libs/opal:plugins - Enable plugins support
-net-libs/opal:rfc4175 - Enable RTP Payload Format for Uncompressed Video 
 net-libs/opal:sbc - Enable the Bluetooth low-complexity, SubBand Codec 
 net-libs/opal:sip - Enable Session Initiation Protocol
 net-libs/opal:sipim - Enable SIP Instant Messages session
@@ -2530,14 +2529,9 @@ net-libs/openh323:novideo - Disable video codecs
 net-libs/ortp:srtp - Add support for Secure RTP
 net-libs/ptlib:asn - Enable ASN decoding/encoding support
 net-libs/ptlib:audio - Enable audio support
-net-libs/ptlib:config-file - Enable config file support
-net-libs/ptlib:dns - Enable DNS resolver support
 net-libs/ptlib:dtmf - Enable DTMF encoding/decoding support
 net-libs/ptlib:http - Enable HTTP support
-net-libs/ptlib:http-forms - Enable http forms support
-net-libs/ptlib:http-server - Enable http server support
 net-libs/ptlib:mail - Enable mail protocols (POP3/SMTP)
-net-libs/ptlib:pipechan - Enable pipechannel support
 net-libs/ptlib:qos - Enable QOS support
 net-libs/ptlib:remote - Enable remote connection support
 net-libs/ptlib:serial - Enable serial port support
@@ -2546,9 +2540,7 @@ net-libs/ptlib:socks - Enable SOCKS protocol support
 net-libs/ptlib:stun - Enable STUN support
 net-libs/ptlib:telnet - Enable telnet protocol support
 net-libs/ptlib:tts - Enable Text-To-Speech server support
-net-libs/ptlib:url - Enable URL support
 net-libs/ptlib:video - Enable video support
-net-libs/ptlib:video-file - Enable video file support
 net-libs/ptlib:vxml - Enable VoiceXML support
 net-libs/ptlib:wav - Enable WAVFILE support
 net-libs/raknet:autopatcher - Enable RakNet autopatcher support
@@ -2568,7 +2560,7 @@ net-mail/cyrus-imapd:replication - Enable replication support in the cyrus imap 
 net-mail/cyrus-imapd:sieve - Enable sieve support
 net-mail/dbmail:sieve - Enable sieve filter support
 net-mail/dovecot:cydir - Adds cydir storage support
-net-mail/dovecot:dbox - Adds cydir storage support
+net-mail/dovecot:dbox - Adds dbox storage support
 net-mail/dovecot:managesieve - Adds managesieve protocol support
 net-mail/dovecot:pop3d - Build pop3d support
 net-mail/dovecot:sieve - Build the sieve plugin
@@ -2661,6 +2653,7 @@ net-misc/mediatomb:libextractor - Use libextractor to gather files' metadata.
 net-misc/mediatomb:mysql -  Use dev-db/mysql as backend rather than SQLite3. If this USE flag is disabled, dev-db/sqlite is used in its stead. 
 net-misc/mediatomb:taglib -  Use media-libs/taglib for reading files' metadata rather than id3lib. If this USE flag is disabled media-libs/id3lib is used in its stead. 
 net-misc/memcached:slabs-reassign - Allow manual reassignment of memory slabs at the cost of slab optimizations.
+net-misc/neon:libproxy - Add support for net-libs/libproxy
 net-misc/neon:pkcs11 - Add support PKCS11 support
 net-misc/netbrake:httpfs - Enable the HTTP filesystem support
 net-misc/networkmanager:connection-sharing - Use net-dns/dnsmasq and net-firewall/iptables for connection sharing 
@@ -2682,6 +2675,7 @@ net-misc/openssh:pkcs11 - Enable PKCS#11 smartcard support
 net-misc/openswan:curl - Include curl support (used for fetching CRLs)
 net-misc/openswan:extra-algorithms - Include additional strong algorithms (Blowfish, Twofish, Serpent and SHA2)
 net-misc/openswan:ldap - Include LDAP support (used for fetching CRLs)
+net-misc/openswan:ms-bad-proposal - Allow bad IP address proposal offered by an Microsoft L2TP/IPSec servers
 net-misc/openswan:nocrypto-algorithms - Include algorithms that don't even encrypt (1DES)
 net-misc/openswan:weak-algorithms - Include weak algorithms (DH1)
 net-misc/openvpn:iproute2 - Enabled iproute2 support instead of net-tools

@@ -1,5 +1,5 @@
-media-libs/libopenraw >=x11-libs/gtk+-2 gnome-base/gnome-vfs dev-util/intltool dev-util/pkgconfig sys-devel/gettext !media-gfx/raw-thumbnailer =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool >=sys-apps/sed-4
-media-libs/libopenraw >=x11-libs/gtk+-2 gnome-base/gnome-vfs
+media-libs/libopenraw[gtk] >=x11-libs/gtk+-2 gnome-base/gnome-vfs dev-util/intltool dev-util/pkgconfig sys-devel/gettext !media-gfx/raw-thumbnailer =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool >=sys-apps/sed-4
+media-libs/libopenraw[gtk] >=x11-libs/gtk+-2 gnome-base/gnome-vfs
 0
 http://libopenraw.freedesktop.org/download/raw-thumbnailer-0.99.1.tar.gz
 
@@ -12,9 +12,9 @@ autotools eutils fdo-mime gnome.org gnome2 gnome2-utils libtool multilib portabi
 
 
 
+2
 
-
-compile install postinst postrm preinst setup unpack
+compile configure install postinst postrm preinst prepare unpack
 
 
 

@@ -1,6 +1,22 @@
 # ChangeLog for net-libs/opal
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/opal/ChangeLog,v 1.49 2009/08/25 18:50:14 volkmar Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/opal/ChangeLog,v 1.53 2009/09/12 20:46:11 volkmar Exp $
+
+  12 Sep 2009; Mounir Lamouri <volkmar@gentoo.org> opal-3.6.4.ebuild,
+  opal-3.6.4-r1.ebuild:
+  Removing USE flags removed from ptlib from ptlib dep.
+
+  12 Sep 2009; Mounir Lamouri <volkmar@gentoo.org> +opal-3.6.4.ebuild,
+  metadata.xml:
+  Warn instead of dying when USE="h281 -h224". Bug 276475.
+  Add celt flag/dependency, lost alpha keyword.
+
+  11 Sep 2009; Mounir Lamouri <volkmar@gentoo.org> opal-3.6.4.ebuild,
+  metadata.xml:
+  Merge rfc4175 USE flag with video.
+
+  11 Sep 2009; Mounir Lamouri <volkmar@gentoo.org> opal-3.6.4.ebuild:
+  Warning instead of dying when USE="-x264 x265-static"
 
 *opal-3.6.4 (25 Aug 2009)
 

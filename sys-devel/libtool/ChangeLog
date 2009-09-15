@@ -1,6 +1,26 @@
 # ChangeLog for sys-devel/libtool
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/libtool/ChangeLog,v 1.142 2009/06/28 16:37:48 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/libtool/ChangeLog,v 1.146 2009/09/13 22:50:01 flameeyes Exp $
+
+  13 Sep 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  libtool-2.2.6a.ebuild:
+  Use -Wl,--no-as-needed with binutils older than 2.20 betas to avoid
+  failure of tests #63. Thanks to Dustin Polke, Roberto Sigalotti and
+  Christian Ruppert for helping me track down the issue.
+
+  13 Sep 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  libtool-2.2.6a.ebuild, +files/2.2.6a/libtool-2.2.6a-tests-locale.patch:
+  Add backport from upstream to skip over localisation test (#37) when
+  German locale is unavailable; this also fixes the other test failure (#73)
+  since that was just a recursion over the rest of the tests. Solves the
+  blocking issues from bug #257399.
+
+  13 Sep 2009; Diego E. Pettenò <flameeyes@gentoo.org> libtool-9999.ebuild:
+  Fix dependencies from current GIT.
+
+  13 Sep 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  libtool-2.2.6a.ebuild:
+  Don't run elibtoolize with eautoreconf — stops test #28 from failing.
 
   28 Jun 2009; Mike Frysinger <vapier@gentoo.org> libtool-2.2.6a.ebuild:
   Keep libtool from using /bin/sh even if it is bash so people can change on
