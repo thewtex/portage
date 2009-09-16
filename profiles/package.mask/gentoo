@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10450 2009/09/15 01:16:06 nixphoeni Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10457 2009/09/15 22:59:29 chainsaw Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,12 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Tony Vroon <chainsaw@gentoo.org> (14 Sep 2009)
+# Alpha releases. Unmask at your own risk, bugs 
+# go upstream to http://jira.atheme.org/
+=media-sound/audacious-2.2_alpha*
+=media-plugins/audacious-plugins-2.2_alpha*
 
 # Joe Sapp <nixphoeni@gentoo.org> (14 Sep 2009)
 # Package has new name (x11-plugins/desklet-WeeklyCalendar) to reflect
@@ -924,7 +930,7 @@ app-admin/haskell-updater
 =x11-libs/libcompizconfig-0.8.2-r2
 
 # Markus Ullmann <jokey@gentoo.org> (21 Jul 2009)
-# mask until libsoap 2.27 or higher is in-tree
+# mask until libsoup 2.27 or higher is in-tree
 =net-libs/webkit-gtk-0_p46*
 
 # Romain Perier <mrpouet@gentoo.org> (21 Jul 2009)
@@ -1200,12 +1206,6 @@ dev-ruby/qt4-qtruby
 # net-misc/amazonmp3 to be used by amd64 users.  Once I get around to it.
 # Until then, mask it.
 net-misc/amazonmp3-libcompat
-
-# Hanno Boeck <hanno@gentoo.org (22 Jan 2009)
-# This has been included in kernel 2.6.27 and shouldn't be used
-# any more. Will remove within a month, please contact me if you
-# think it should stay.
-app-misc/sdricoh_cs
 
 # mask pending removal
 # Benedikt Böhm <hollow@gentoo.org> (10 Jan 2009)
