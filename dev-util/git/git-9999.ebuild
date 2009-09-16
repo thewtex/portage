@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/git/git-9999.ebuild,v 1.8 2009/05/10 02:33:58 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/git/git-9999.ebuild,v 1.11 2009/09/16 03:42:14 robbat2 Exp $
 
 EAPI=2
 
@@ -52,7 +52,11 @@ RDEPEND="${CDEPEND}
 			cvs? ( >=dev-util/cvsps-2.1 dev-perl/DBI dev-perl/DBD-SQLite )
 			subversion? ( dev-util/subversion[-dso] dev-perl/libwww-perl dev-perl/TermReadKey )
 			)
-	gtk?  ( >=dev-python/pygtk-2.8 dev-python/gtksourceview-python )"
+	gtk?
+	(
+		>=dev-python/pygtk-2.8
+		|| ( dev-python/pygtksourceview:2  dev-python/gtksourceview-python )
+	)"
 
 DEPEND="${CDEPEND}"
 
@@ -102,11 +106,17 @@ exportmakeopts() {
 		myopts="${myopts} NO_CURL=YesPlease"
 	fi
 
-	use iconv || myopts="${myopts} NO_ICONV=YesPlease"
-	use tk || myopts="${myopts} NO_TCLTK=YesPlease"
-	use perl || myopts="${myopts} NO_PERL=YesPlease"
-	use threads && myopts="${myopts} THREADED_DELTA_SEARCH=YesPlease"
-	use subversion || myopts="${myopts} NO_SVN_TESTS=YesPlease"
+	use iconv \
+		|| myopts="${myopts} NO_ICONV=YesPlease"
+	use tk \
+		|| myopts="${myopts} NO_TCLTK=YesPlease"
+	use perl \
+		&& myopts="${myopts} INSTALLDIRS=vendor" \
+		|| myopts="${myopts} NO_PERL=YesPlease"
+	use threads \
+		&& myopts="${myopts} THREADED_DELTA_SEARCH=YesPlease"
+	use subversion \
+		|| myopts="${myopts} NO_SVN_TESTS=YesPlease"
 
 	export MY_MAKEOPTS="${myopts}"
 }

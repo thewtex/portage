@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/nss/nss-3.12.4.ebuild,v 1.1 2009/09/15 03:22:22 anarchy Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/nss/nss-3.12.4.ebuild,v 1.4 2009/09/15 20:14:56 anarchy Exp $
 
 inherit eutils flag-o-matic multilib toolchain-funcs
 
@@ -17,10 +17,9 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 IUSE="utils"
 
-DEPEND=">=dev-libs/nspr-${NSPR_VER}
-	>=dev-db/sqlite-3.5
-	dev-util/pkgconfig"
-RDEPEND="${DEPEND}"
+DEPEND="dev-util/pkgconfig"
+RDEPEND=">=dev-libs/nspr-${NSPR_VER}
+	>=dev-db/sqlite-3.5"
 
 src_unpack() {
 	unpack ${A}
@@ -55,7 +54,7 @@ src_compile() {
 	export BUILD_OPT=1
 	export NSS_USE_SYSTEM_SQLITE=1
 	export NSPR_INCLUDE_DIR=`pkg-config --cflags-only-I nspr | sed 's/-I//'`
-	export NSPR_LIB_DIR=`/usr/bin/pkg-config --libs-only-L nspr | sed 's/-L//'`
+	export NSPR_LIB_DIR=`pkg-config --libs-only-L nspr | sed 's/-L//'`
 	export USE_SYSTEM_ZLIB=1
 	export ZLIB_LIBS=-lz
 	export NSDISTMODE=copy
@@ -109,4 +108,11 @@ src_install () {
 			newbin ${f} nss${f}
 		done
 	fi
+}
+
+pkg_postinst() {
+	ewarn "We have reverted back to using upstreams soname."
+	ewarn "If you find a binary that does not run please re-emerge"
+	ewarn "package to ensure it properly links."
+	elog
 }
