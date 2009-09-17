@@ -1,9 +1,14 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/base/package.use.mask,v 1.87 2009/09/10 12:08:27 scarabeus Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/base/package.use.mask,v 1.89 2009/09/16 14:46:18 a3li Exp $
 
 # This file requires >=portage-2.1.1
 # New entries go on top.
+
+# Alex Legler <a3li@gentoo.org> (16 Sep 2009)
+# Maintainer of the kolab patch is not available (wrobel).
+# Bump is needed for security bug 285052.
+>=www-apps/horde-webmail-1.2.4 kolab
 
 # Tomáš Chvátal <scarabeus@gentoo.org> (10 Sep 2009)
 # quakeforge has video_cards_tdfx enabled only for x86
@@ -97,10 +102,6 @@ app-pda/pilot-link bluetooth
 # Christian Hoffmann <hoffie@gentoo.org> (27 Dec 2007)
 # Missing dev-php5/php-java-bridge
 dev-lang/php java-external
-
-# Saleem Abdulrasool <compnerd@gentoo.org> (23 Nov 2007)
-# Unmask when we get HAL 0.5.10 straightened out
-media-sound/pulseaudio policykit
 
 # Donnie Berkholz <dberkholz@gentoo.org> (12 Nov 2007)
 # freedesktop.org bug #7459 committed fix breaks 3D apps

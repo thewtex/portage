@@ -1,5 +1,5 @@
->=media-libs/libprojectm-1.1 || ( ( x11-libs/qt-gui x11-libs/qt-core x11-libs/qt-opengl ) >=x11-libs/qt-4.3:4 ) dev-util/pkgconfig dev-util/cmake >=dev-util/cmake-2.6.2-r1 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
->=media-libs/libprojectm-1.1 || ( ( x11-libs/qt-gui x11-libs/qt-core x11-libs/qt-opengl ) >=x11-libs/qt-4.3:4 )
+>=media-libs/libprojectm-1.1 x11-libs/qt-core x11-libs/qt-gui x11-libs/qt-opengl dev-util/pkgconfig >=dev-util/cmake-2.6.2-r1 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+>=media-libs/libprojectm-1.1 x11-libs/qt-core x11-libs/qt-gui x11-libs/qt-opengl
 0
 mirror://sourceforge/projectm/libprojectM-qt-1.2.0.tar.bz2
 
@@ -12,9 +12,9 @@ base cmake-utils eutils flag-o-matic multilib portability toolchain-funcs
 
 
 
-1
+2
 
-compile install setup test unpack
+compile configure install prepare test unpack
 
 
 
