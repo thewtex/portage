@@ -1,10 +1,28 @@
 # ChangeLog for profile directory
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.3270 2009/09/15 22:59:29 chainsaw Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.3275 2009/09/16 21:39:00 eva Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  16 Sep 2009; Gilles Dartiguelongue <eva@gentoo.org> package.mask:
+  Mask app-accessibility/at-poke per bug #279304.
+
+  16 Sep 2009; Gilles Dartiguelongue <eva@gentoo.org> package.mask:
+  Remove mask for removed intltool-0.40.6.
+
+  16 Sep 2009; Ulrich Mueller <ulm@gentoo.org> arch/sparc-fbsd/use.mask,
+  default-bsd/fbsd/6.2/sparc/use.mask:
+  Mask dbus USE flag on sparc-fbsd.
+
+  16 Sep 2009; Ulrich Mueller <ulm@gentoo.org>
+  arch/amd64/no-multilib/package.mask, features/64bit-native/package.mask:
+  Package mask =app-editors/emacs-18* in no-multilib profiles.
+
+  16 Sep 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Remove =vanilla-sources-2.6.31_rc* mask because they've been removed from
+  tree.
 
   15 Sep 2009; <chainsaw@gentoo.org> package.mask:
   Mask 2.2 alpha releases of Audacious core & plugins.
