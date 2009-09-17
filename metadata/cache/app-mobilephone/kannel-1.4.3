@@ -1,4 +1,4 @@
-sys-libs/e2fsprogs-libs >=dev-libs/libxml2-2.6.26 >=dev-lang/perl-5.8.8 >=sys-libs/zlib-1.2.3 ssl? ( >=dev-libs/openssl-0.9.8d ) mysql? ( virtual/mysql ) sqlite? ( >=dev-db/sqlite-3.2.1 ) postgres? ( virtual/postgresql-server ) pcre? ( dev-libs/libpcre ) doc? ( media-gfx/transfig app-text/jadetex app-text/docbook-dsssl-stylesheets ) pam? ( virtual/pam ) >=sys-devel/bison-2.2 >=sys-devel/autoconf-2.61 sys-devel/libtool
+sys-libs/e2fsprogs-libs >=dev-libs/libxml2-2.6.26 >=dev-lang/perl-5.8.8 >=sys-libs/zlib-1.2.3 ssl? ( >=dev-libs/openssl-0.9.8d ) mysql? ( virtual/mysql ) sqlite? ( >=dev-db/sqlite-3.2.1 ) postgres? ( virtual/postgresql-server ) pcre? ( dev-libs/libpcre ) doc? ( media-gfx/transfig app-text/jadetex app-text/docbook-dsssl-stylesheets ) pam? ( virtual/pam ) >=sys-devel/bison-2.2 >=sys-devel/autoconf-2.61 sys-devel/libtool ssl? ( dev-libs/openssl )
 sys-libs/e2fsprogs-libs >=dev-libs/libxml2-2.6.26 >=dev-lang/perl-5.8.8 >=sys-libs/zlib-1.2.3 ssl? ( >=dev-libs/openssl-0.9.8d ) mysql? ( virtual/mysql ) sqlite? ( >=dev-db/sqlite-3.2.1 ) postgres? ( virtual/postgresql-server ) pcre? ( dev-libs/libpcre ) doc? ( media-gfx/transfig app-text/jadetex app-text/docbook-dsssl-stylesheets ) pam? ( virtual/pam )
 0
 http://www.kannel.org/download/1.4.3/gateway-1.4.3.tar.gz
@@ -7,14 +7,14 @@ http://www.kannel.org/
 Kannel
 Powerful SMS and WAP gateway
 ~amd64 ~x86
-autotools eutils flag-o-matic libtool multilib portability toolchain-funcs
-ssl mysql sqlite postgres pcre doc debug pam
+autotools eutils flag-o-matic libtool multilib portability ssl-cert toolchain-funcs
+ssl mysql sqlite postgres pcre doc debug pam ssl
 
 
 
 2
 
-configure install setup test unpack
+config configure install postinst prepare setup test
 
 
 

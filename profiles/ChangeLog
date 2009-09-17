@@ -1,10 +1,49 @@
 # ChangeLog for profile directory
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.3263 2009/09/15 00:28:45 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.3275 2009/09/16 21:39:00 eva Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  16 Sep 2009; Gilles Dartiguelongue <eva@gentoo.org> package.mask:
+  Mask app-accessibility/at-poke per bug #279304.
+
+  16 Sep 2009; Gilles Dartiguelongue <eva@gentoo.org> package.mask:
+  Remove mask for removed intltool-0.40.6.
+
+  16 Sep 2009; Ulrich Mueller <ulm@gentoo.org> arch/sparc-fbsd/use.mask,
+  default-bsd/fbsd/6.2/sparc/use.mask:
+  Mask dbus USE flag on sparc-fbsd.
+
+  16 Sep 2009; Ulrich Mueller <ulm@gentoo.org>
+  arch/amd64/no-multilib/package.mask, features/64bit-native/package.mask:
+  Package mask =app-editors/emacs-18* in no-multilib profiles.
+
+  16 Sep 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Remove =vanilla-sources-2.6.31_rc* mask because they've been removed from
+  tree.
+
+  15 Sep 2009; <chainsaw@gentoo.org> package.mask:
+  Mask 2.2 alpha releases of Audacious core & plugins.
+
+  15 Sep 2009; Hanno Boeck <hanno@gentoo.org> package.mask:
+  Remove mask of sdricoh_cs, package has been removed.
+
+  15 Sep 2009; Patrick Lauer <patrick@gentoo.org> package.mask:
+  eselect-opengl fixed by Scarabeus. Dropping mask.
+
+  15 Sep 2009; Patrick Lauer <patrick@gentoo.org> package.mask:
+  Forgot to mask ati-drivers too. Sorry :)
+
+  15 Sep 2009; Patrick Lauer <patrick@gentoo.org> package.mask:
+  Masking xorg-server bump too as it depends on masked eselect-opengl
+
+  15 Sep 2009; Patrick Lauer <patrick@gentoo.org> package.mask:
+  Masking broken eselect-opengl version
+
+  15 Sep 2009; Ulrich Mueller <ulm@gentoo.org> license_groups:
+  Add as-is to @GPL-COMPATIBLE licence group.
 
   15 Sep 2009; Jeroen Roovers <jer@gentoo.org> package.mask:
   Remove net-ftp/lftp mask now 4.0.0 is out.

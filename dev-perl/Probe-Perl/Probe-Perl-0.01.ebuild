@@ -1,18 +1,19 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Probe-Perl/Probe-Perl-0.01.ebuild,v 1.2 2009/09/16 17:16:02 jer Exp $
+
+EAPI=2
 
 MODULE_AUTHOR=KWILLIAMS
 inherit perl-module
 
 DESCRIPTION="Information about the currently running perl"
 
-LICENSE="|| ( Artistic GPL-2 )"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~amd64 ~hppa ~x86"
 IUSE=""
 
-RDEPEND="dev-lang/perl"
+RDEPEND=""
 DEPEND="${RDEPEND}
 	virtual/perl-Module-Build"
 
