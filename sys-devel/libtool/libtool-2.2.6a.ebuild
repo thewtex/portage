@@ -1,9 +1,9 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/libtool/libtool-2.2.6a.ebuild,v 1.11 2009/09/15 16:35:14 tester Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/libtool/libtool-2.2.6a.ebuild,v 1.14 2009/09/19 20:17:56 vapier Exp $
 
 LIBTOOLIZE="true" #225559
-inherit eutils autotools flag-o-matic
+inherit eutils autotools flag-o-matic multilib
 
 DESCRIPTION="A shared library tool for developers"
 HOMEPAGE="http://www.gnu.org/software/libtool/"
@@ -11,7 +11,7 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.lzma"
 
 LICENSE="GPL-2"
 SLOT="1.5"
-KEYWORDS="~alpha amd64 ~arm hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc x86 ~sparc-fbsd ~x86-fbsd"
+KEYWORDS="~alpha amd64 arm hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc x86 ~sparc-fbsd ~x86-fbsd"
 IUSE="vanilla test"
 
 RDEPEND="sys-devel/gnuconfig
@@ -69,4 +69,12 @@ src_install() {
 	for x in $(find "${D}" -name config.guess -o -name config.sub) ; do
 		rm -f "${x}" ; ln -sf /usr/share/gnuconfig/${x##*/} "${x}"
 	done
+}
+
+pkg_preinst() {
+	preserve_old_lib /usr/$(get_libdir)/libltdl.so.3
+}
+
+pkg_postinst() {
+	preserve_old_lib_notify /usr/$(get_libdir)/libltdl.so.3
 }

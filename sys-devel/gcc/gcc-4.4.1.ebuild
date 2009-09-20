@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/gcc/gcc-4.4.1.ebuild,v 1.6 2009/08/16 14:49:32 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/gcc/gcc-4.4.1.ebuild,v 1.9 2009/09/20 05:26:19 dirtyepic Exp $
 
 PATCH_VER="1.0"
 UCLIBC_VER="1.1"
@@ -25,17 +25,17 @@ inherit toolchain
 
 DESCRIPTION="The GNU Compiler Collection.  Includes C/C++, java compilers, pie+ssp extensions, Haj Ten Brugge runtime bounds checking"
 
-LICENSE="GPL-3 LGPL-2.1 libgcc libstdc++ gcc-runtime-library-exception-3.1"
-KEYWORDS="~alpha ~amd64 ~arm -hppa ~ia64 ~ppc ~ppc64 ~x86 -x86-fbsd"
+LICENSE="GPL-3 LGPL-3 libgcc libstdc++ gcc-runtime-library-exception-3.1"
+KEYWORDS="~alpha ~amd64 ~arm -hppa ~ia64 ~ppc ~ppc64 ~x86 ~x86-fbsd"
 
 RDEPEND=">=sys-libs/zlib-1.1.4
 	>=sys-devel/gcc-config-1.4
 	virtual/libiconv
 	>=dev-libs/gmp-4.2.1
-	>=dev-libs/mpfr-2.3
+	>=dev-libs/mpfr-2.3.2
 	graphite? (
 		>=dev-libs/ppl-0.10
-		>=dev-libs/cloog-ppl-0.15
+		>=dev-libs/cloog-ppl-0.15.4
 	)
 	!build? (
 		gcj? (
@@ -56,8 +56,8 @@ RDEPEND=">=sys-libs/zlib-1.1.4
 		nls? ( sys-devel/gettext )
 	)"
 DEPEND="${RDEPEND}
-	test? ( sys-devel/autogen dev-util/dejagnu )
-	>=sys-apps/texinfo-4.2-r4
+	test? ( >=dev-util/dejagnu-1.4.4 >=sys-devel/autogen-5.5.4 )
+	>=sys-apps/texinfo-4.8
 	>=sys-devel/bison-1.875
 	amd64? ( multilib? ( gcj? ( app-emulation/emul-linux-x86-xlibs ) ) )
 	ppc? ( >=${CATEGORY}/binutils-2.17 )

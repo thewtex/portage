@@ -1,10 +1,10 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/udev/udev-9999.ebuild,v 1.12 2009/07/16 07:40:20 zzam Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/udev/udev-9999.ebuild,v 1.14 2009/09/19 21:36:48 zzam Exp $
 
 EAPI="1"
 
-inherit eutils flag-o-matic multilib toolchain-funcs versionator
+inherit eutils flag-o-matic multilib toolchain-funcs linux-info
 
 if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="git://git.kernel.org/pub/scm/linux/hotplug/udev.git"
@@ -29,14 +29,16 @@ COMMON_DEPEND="selinux? ( sys-libs/libselinux )
 		sys-apps/pciutils
 		dev-libs/glib:2
 	)
-	>=sys-apps/util-linux-2.16"
+	>=sys-apps/util-linux-2.16
+	>=sys-libs/glibc-2.7"
 
 DEPEND="${COMMON_DEPEND}
 	extras? ( dev-util/gperf )"
 
 RDEPEND="${COMMON_DEPEND}
 	!sys-apps/coldplug
-	!<sys-fs/device-mapper-1.02.19-r1
+	!<sys-fs/lvm2-2.02.45
+	!sys-fs/device-mapper
 	>=sys-apps/baselayout-1.12.5"
 
 if [[ ${PV} == "9999" ]]; then
@@ -44,47 +46,72 @@ if [[ ${PV} == "9999" ]]; then
 	DEPEND="${DEPEND}
 		app-text/docbook-xsl-stylesheets
 		app-text/docbook-xml-dtd
-		doc? ( dev-util/gtk-doc )"
-	IUSE="${IUSE} -doc"
+		dev-util/gtk-doc"
 fi
+
+# required kernel options
+CONFIG_CHECK="~INOTIFY_USER ~SIGNALFD ~!SYSFS_DEPRECATED ~!SYSFS_DEPRECATED_V2"
 
 # We need the lib/rcscripts/addon support
 PROVIDE="virtual/dev-manager"
 
-pkg_setup() {
-	udev_libexec_dir="/$(get_libdir)/udev"
-
-	# comparing kernel version without linux-info.eclass to not pull
-	# virtual/linux-sources
-
-	local KV=$(uname -r)
-	local KV_MAJOR=$(get_major_version ${KV})
-	local KV_MINOR=$(get_version_component_range 2 ${KV})
-	local KV_MICRO=$(get_version_component_range 3 ${KV})
-
-	local KV_min_micro=25 KV_min_micro_reliable=25
-	KV_min=2.6.${KV_min_micro}
-	KV_min_reliable=2.6.${KV_min_micro_reliable}
-
+udev_check_KV() {
 	local ok=0
 	if [[ ${KV_MAJOR} == 2 && ${KV_MINOR} == 6 ]]
 	then
-		if [[ ${KV_MICRO} -ge ${KV_min_micro_reliable} ]]; then
+		if kernel_is -ge 2 6 ${KV_PATCH_reliable} ; then
 			ok=2
-		elif [[ ${KV_MICRO} -ge ${KV_min_micro} ]]; then
+		elif kernel_is -ge 2 6 ${KV_PATCH_min} ; then
 			ok=1
 		fi
 	fi
+	return $ok
+}
 
-	if [[ ${ok} -lt 1 ]]
-	then
-		ewarn
-		ewarn "${P} does not support Linux kernel before version ${KV_min}!"
+pkg_setup() {
+	linux-info_pkg_setup
+
+	udev_libexec_dir="/$(get_libdir)/udev"
+
+	# udev requires signalfd introduced in kernel 2.6.25,
+	# but a glibc compiled against >=linux-headers-2.6.27 uses the
+	# new signalfd syscall introduced in kernel 2.6.27 without falling back
+	# to the old one. So we just depend on 2.6.27 here, see Bug #281312.
+	KV_PATCH_min=25
+	KV_PATCH_reliable=27
+	KV_min=2.6.${KV_PATCH_min}
+	KV_reliable=2.6.${KV_PATCH_reliable}
+
+	# always print kernel version requirements
+	ewarn
+	ewarn "${P} does not support Linux kernel before version ${KV_min}!"
+	if [[ ${KV_PATCH_min} != ${KV_PATCH_reliable} ]]; then
+		ewarn "For a reliable udev, use at least kernel ${KV_reliable}"
 	fi
-	if [[ ${ok} -lt 2 ]]; then
-		ewarn "If you want to use udev reliable you should update"
-		ewarn "to at least kernel version ${KV_min_reliable}!"
-		ewarn
+
+	echo
+	# We don't care about the secondary revision of the kernel.
+	# 2.6.30.4 -> 2.6.30 is all we check
+	udev_check_KV
+	case "$?" in
+		2)	einfo "Your kernel version (${KV_FULL}) is new enough to run ${P} reliable." ;;
+		1)	ewarn "Your kernel version (${KV_FULL}) is new enough to run ${P},"
+			ewarn "but it may be unreliable in some cases."
+			ebeep ;;
+		0)	eerror "Your kernel version (${KV_FULL}) is too old to run ${P}"
+			ebeep ;;
+	esac
+	echo
+
+	KV_FULL_SRC=${KV_FULL}
+	get_running_version
+	udev_check_KV
+	if [[ "$?" = "0" ]]; then
+		eerror
+		eerror "udev cannot be restarted after emerging,"
+		eerror "as your running kernel version (${KV_FULL}) is too old."
+		eerror "You really need to use a newer kernel after a reboot!"
+		NO_RESTART=1
 		ebeep
 	fi
 }
@@ -118,7 +145,7 @@ src_unpack() {
 		# (more for my own needs than anything else ...)
 		MD5=$(md5sum < "${S}/rules/rules.d/50-udev-default.rules")
 		MD5=${MD5/  -/}
-		if [[ ${MD5} != b5c2f014a48a53921de37c4e469aab96 ]]
+		if [[ ${MD5} != c1ad7decce54b92a3bee448fa95783f9 ]]
 		then
 			echo
 			eerror "50-udev-default.rules has been updated, please validate!"
@@ -134,11 +161,7 @@ src_unpack() {
 		|| die "sed failed"
 
 	if [[ ${PV} == 9999 ]]; then
-		if use doc; then
-			gtkdocize --copy
-		else
-			epatch "${FILESDIR}/udev-9999-disable-doc.diff"
-		fi
+		gtkdocize --copy
 		eautoreconf
 	fi
 }
@@ -165,12 +188,19 @@ src_install() {
 
 	into /
 	emake DESTDIR="${D}" install || die "make install failed"
+	# without this code, multilib-strict is angry
 	if [[ "$(get_libdir)" != "lib" ]]; then
-		# we can not just rename /lib to /lib64, because
-		# make install creates /lib64 and /lib
-		mkdir -p "${D}/$(get_libdir)"
-		mv "${D}"/lib/* "${D}/$(get_libdir)/"
-		rmdir "${D}"/lib
+		# check if this code is needed, bug #281338
+		if [[ -d "${D}/lib" ]]; then
+			# we can not just rename /lib to /lib64, because
+			# make install creates /lib64 and /lib
+			einfo "Moving lib to $(get_libdir)"
+			mkdir -p "${D}/$(get_libdir)"
+			mv "${D}"/lib/* "${D}/$(get_libdir)/"
+			rmdir "${D}"/lib
+		else
+			einfo "There is no ${D}/lib, move code can be deleted."
+		fi
 	fi
 
 	exeinto "${udev_libexec_dir}"
@@ -205,7 +235,6 @@ src_install() {
 
 	# Our rules files
 	doins gentoo/??-*.rules
-	doins packages/40-alsa.rules
 	doins packages/40-isdn.rules
 
 	# Adding arch specific rules
@@ -231,7 +260,7 @@ src_install() {
 
 	# insert minimum kernel versions
 	sed -e "s/%KV_MIN%/${KV_min}/" \
-		-e "s/%KV_MIN_RELIABLE%/${KV_min_reliable}/" \
+		-e "s/%KV_MIN_RELIABLE%/${KV_reliable}/" \
 		-i "${D}"/etc/init.d/udev-mount
 
 	# config file for init-script and start-addon
@@ -239,7 +268,7 @@ src_install() {
 		|| die "config file not installed properly"
 
 	insinto /etc/modprobe.d
-	newins "${FILESDIR}"/blacklist-110 blacklist.conf
+	newins "${FILESDIR}"/blacklist-146 blacklist.conf
 	newins "${FILESDIR}"/pnp-aliases pnp-aliases.conf
 
 	# convert /lib/udev to real used dir
@@ -252,6 +281,12 @@ src_install() {
 
 	# documentation
 	dodoc ChangeLog README TODO || die "failed installing docs"
+
+	# keep doc in just one directory, Bug #281137
+	rm -rf "${D}/usr/share/doc/${PN}"
+	if use extras; then
+		dodoc extras/keymap/README.keymap.txt || die "failed installing docs"
+	fi
 
 	cd docs/writing_udev_rules
 	mv index.html writing_udev_rules.html
@@ -340,6 +375,11 @@ fix_old_persistent_net_rules() {
 
 # See Bug #129204 for a discussion about restarting udevd
 restart_udevd() {
+	if [[ ${NO_RESTART} = "1" ]]; then
+		ewarn "Not restarting udevd, as your kernel is too old!"
+		return
+	fi
+
 	# need to merge to our system
 	[[ ${ROOT} = / ]] || return
 
@@ -360,6 +400,15 @@ restart_udevd() {
 	killall -9 udevd &>/dev/null
 
 	/sbin/udevd --daemon
+	sleep 3
+	if [[ ! -n $(pidof udevd) ]]; then
+		eerror "FATAL: udev died, please check your kernel is"
+		eerror "new enough and configured correctly for ${P}."
+		eerror
+		eerror "Please have a look at this before rebooting."
+		eerror "If in doubt, please downgrade udev back to your old version"
+		ebeep
+	fi
 }
 
 pkg_postinst() {
@@ -439,6 +488,11 @@ pkg_postinst() {
 			rm -f "${ROOT}"/etc/udev/rules.d/64-device-mapper.rules
 			einfo "Removed unneeded file 64-device-mapper.rules"
 	fi
+
+	# requested in bug #275974, added 2009/09/05
+	ewarn
+	ewarn "If after the udev update removable devices or CD/DVD drives"
+	ewarn "stop working, try re-emerging HAL before filling a bug report"
 
 	# requested in Bug #225033:
 	elog
