@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10460 2009/09/16 21:39:01 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10478 2009/09/20 11:58:13 tove Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,53 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Torsten Veller <tove@gentoo.org> (20 Sep 2009)
+# Add perl-5.10 masks (#280724)
+~dev-lang/perl-5.10.1
+~sys-devel/libperl-5.10.1
+=app-admin/perl-cleaner-2*
+
+# Rémi Cardona <remi@gentoo.org> (19 Sep 2009)
+# Old useless X packages, unmaintained
+app-doc/xorg-sgml-doctools
+app-doc/xorg-docs
+
+# Alexis Ballier <aballier@gentoo.org> (19 Sep 2009)
+# Masked for removal
+# Merged in media-libs/mlt
+# Removal due 19 Oct 2009
+media-libs/mlt++
+
+# Rémi Cardona <remi@gentoo.org> (19 Sep 2009)
+# xorg-server 1.7 packages, will be unmasked once 1.6 is stable
+=x11-libs/libX11-1.2.99*
+=x11-libs/libXext-1.0.99*
+=x11-libs/libXi-1.2.99*
+=x11-libs/libXinerama-1.0.99*
+=x11-libs/libXScrnSaver-1.2*
+=x11-libs/libXtst-1.0.99*
+=x11-libs/libXxf86vm-1.0.99*
+=x11-proto/bigreqsproto-1.1*
+=x11-proto/dmxproto-2.2.99*
+=x11-proto/evieext-1.1*
+=x11-proto/fixesproto-4.1
+=x11-proto/inputproto-1.9.99*
+=x11-proto/recordproto-1.13.99*
+=x11-proto/renderproto-0.11
+=x11-proto/scrnsaverproto-1.2*
+=x11-proto/xcmiscproto-1.2*
+=x11-proto/xextproto-7.1*
+=x11-proto/xf86bigfontproto-1.2*
+=x11-proto/xf86dgaproto-2.0.99*
+=x11-proto/xf86driproto-2.1*
+=x11-proto/xf86vidmodeproto-2.2.99*
+=x11-proto/xineramaproto-1.1.99*
+
+# Bryan Stine <battousai@gentoo.org> (18 Sep 2009)
+# Mask for removal in 30 days. The x11-drm git tree is abandoned, modules have
+# moved to the kernel. See bug #284598 for more information.
+x11-base/x11-drm
 
 # Gilles Dartiguelongue <eva@gentoo.org> (16 Sep 2009)
 # Masking at-poke, unmainted and superseeded by 
@@ -315,11 +362,6 @@ media-libs/clibpdf
 # Masked for removal in 30 days. Portage versions of dev-python/basemap
 # already include it.
 dev-python/basemap-data
-
-# Alex Legler <a3li@gentoo.org> (18 Aug 2009)
-# Dead upstream, doesn't install correctly with more than one ruby version.
-# Due for removal in 30 days. Bug 281897.
-www-apps/diaria
 
 # Samuli Suominen <ssuominen@gentoo.org> (14 Aug 2009)
 # Unresolved building issues wrt bugs #276246, #117523 and #213804.
@@ -742,9 +784,7 @@ dev-lisp/cl-rfc2388-darcs
 dev-lisp/cl-yaclml-darcs
 media-tv/v4l-dvb-hg
 dev-embedded/sdcc-svn
-~sys-fs/yaffs-utils-9999
 net-irc/irssi-svn
-~sys-fs/yaffs2-utils-9999
 ~app-doc/repodoc-9999
 ~app-i18n/skk-jisyo-9999
 ~net-wireless/wpa_supplicant-9999
@@ -791,17 +831,6 @@ app-misc/nomadii-utils
 # Mask kde4 printing stuff
 <kde-base/printer-applet-4.3.0
 <kde-base/system-config-printer-kde-4.3.0
-
-# Rémi Cardona <remi@gentoo.org> (06 Aug 2009)
-# Big Xorg 1.3/1.4 mask. Masked for removal Real Soon Now (tm)
-# xf86-input-evtouch going out completely, switch to evdev
-=x11-base/xorg-server-1.3.0.0-r6
-=x11-base/xorg-server-1.4.2
-x11-drivers/xf86-input-evtouch
-<x11-drivers/xf86-input-keyboard-1.3.2
-<x11-drivers/xf86-input-mouse-1.4.0
-<media-libs/mesa-7.1
-=x11-drivers/nvidia-drivers-71.86.07
 
 # Samuli Suominen <ssuominen@gentoo.org> (03 Aug 2009)
 # USE gmplayer in mplayer is deprecated. Use smplayer or
@@ -1257,15 +1286,6 @@ dev-util/w32api
 media-libs/amd64codecs
 media-libs/realcodecs
 
-# Alexis Ballier <aballier@gentoo.org> (15 Oct 2008)
-# Needs testing
-# Updated 21 Jun 2009
-# Mask aslo packages requiring 3.11
->=dev-lang/ocaml-3.11.0_beta1
->=dev-ml/ocamlduce-3.11
->=dev-ml/ocaml-sqlite3-1.5.1
->=dev-ml/postgresql-ocaml-1.11.1
-
 # Christian Parpart <trapni@gentoo.org> (04 Oct 2008)
 # for testing/experienced users only
 >=games-rpg/mangos-9999
@@ -1282,10 +1302,6 @@ media-libs/realcodecs
 # Alin Năstac <mrness@gentoo.org> (21 Sep 2008)
 # Breaks L2TP connections (see http://bugs.xelerance.com/view.php?id=1004)
 =net-misc/openswan-2.6*
-
-# Keri Harris <keri@gentoo.org> (21 Sep 2008)
-# Development version
-=dev-lang/swi-prolog-5.7*
 
 # Doug Goldstein <cardoe@gentoo.org> (17 Sep 2008)
 # under development

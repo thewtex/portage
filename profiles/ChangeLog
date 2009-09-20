@@ -1,10 +1,64 @@
 # ChangeLog for profile directory
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.3276 2009/09/17 16:33:55 matsuu Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.3293 2009/09/20 11:58:13 tove Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  20 Sep 2009; Torsten Veller <tove@gentoo.org> package.mask:
+  Add masks for perl-5.10 (#280724)
+
+  19 Sep 2009; Rémi Cardona <remi@gentoo.org> package.mask:
+  start a new package.mask entry for old X packages
+
+  19 Sep 2009; Rémi Cardona <remi@gentoo.org> package.mask:
+  add x11-proto/evieext to p.mask for xorg-server 1.7
+
+  19 Sep 2009; Tomáš Chvátal <scarabeus@gentoo.org> package.mask:
+  [xorg] Remove no longer needed mask.
+
+  19 Sep 2009; Rémi Cardona <remi@gentoo.org> package.mask:
+  add x11-proto/xf86driproto to p.mask for xorg-server 1.7
+
+  19 Sep 2009; Rémi Cardona <remi@gentoo.org> package.mask:
+  add x11-proto/xf86dgaproto to p.mask for xorg-server 1.7
+
+  19 Sep 2009; Rémi Cardona <remi@gentoo.org> package.mask:
+  add x11-proto/xf86bigfontproto to p.mask for xorg-server 1.7
+
+  19 Sep 2009; Markus Meier <maekke@gentoo.org>
+  hardened/linux/amd64/package.use.mask,
+  hardened/linux/x86/package.use.mask:
+  mask media-gfx/blender[openmp] on hardened 10.0 profiles as it requires
+  sys-devel/gcc[openmp] which isn't available in these profiles
+
+  19 Sep 2009; Rémi Cardona <remi@gentoo.org> package.mask:
+  fix wrong date
+
+  19 Sep 2009; Alexis Ballier <aballier@gentoo.org> package.mask:
+  mask mlt++ for removal
+
+  19 Sep 2009; Alexis Ballier <aballier@gentoo.org> package.mask:
+  unleash ocaml 3.11 to ~arch
+
+  19 Sep 2009; Rémi Cardona <remi@gentoo.org> package.mask:
+  move xorg-server 1.7 package mask from the x11 overlay
+
+  18 Sep 2009; Alexis Ballier <aballier@gentoo.org> package.mask:
+  mask lablgtk version without the site-packages symlink with ocaml 3.11 too
+
+  18 Sep 2009; Alexis Ballier <aballier@gentoo.org> package.mask:
+  also mask new findlib revision with ocaml 3.11
+
+  18 Sep 2009; <keri@gentoo.org> package.mask:
+  Remove mask for dev-lang/swi-prolog-5.7
+
+  18 Sep 2009; Bryan Stine <battousai@gentoo.org> package.mask:
+  Mask x11-base/x11-drm for removal in 30 days (unmaintained).
+
+  18 Sep 2009; Alex Legler <a3li@gentoo.org> package.mask:
+  Removing diaria from p.mask, package is gone.
 
   17 Sep 2009; MATSUU Takuto <matsuu@gentoo.org> use.local.desc:
   Drop ucs4 local USE flag for app-i18n/anthy.
