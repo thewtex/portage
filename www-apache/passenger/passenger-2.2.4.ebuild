@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apache/passenger/passenger-2.2.4.ebuild,v 1.2 2009/07/04 08:00:54 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-apache/passenger/passenger-2.2.4.ebuild,v 1.3 2009/09/17 07:15:53 hollow Exp $
 
 inherit apache-module flag-o-matic ruby
 
@@ -13,13 +13,12 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="debug doc"
 
-CDEPEND=">=dev-lang/ruby-1.8.5
+DEPEND=">=dev-lang/ruby-1.8.5
 	>=dev-ruby/rubygems-0.9.0
 	>=dev-ruby/rake-0.8.1
 	>=dev-ruby/fastthread-1.0.1
 	>=dev-ruby/rack-1.0.0"
-DEPEND="${CDEPEND}"
-RDEPEND="${CDEPEND}"
+RDEPEND="${DEPEND}"
 
 APACHE2_MOD_FILE="${S}/ext/apache2/mod_${PN}.so"
 APACHE2_MOD_CONF="30_mod_${PN}-2.0.1 30_mod_${PN}"
@@ -36,7 +35,6 @@ src_unpack() {
 	cd "${S}"
 	epatch "${FILESDIR}"/${PV}-gentoo.patch
 	rm -f bin/passenger-install-apache2-module
-	sed -i -e '473s/, :doc//' Rakefile
 }
 
 src_compile() {

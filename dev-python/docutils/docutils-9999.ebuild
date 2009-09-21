@@ -23,7 +23,7 @@ IUSE="glep emacs"
 DEPEND="dev-python/setuptools"
 RDEPEND=""
 # Emacs support is in PDEPEND to avoid a dependency cycle (bug #183242)
-PDEPEND="emacs? ( >=app-emacs/rst-0.4 )"
+PDEPEND="emacs? ( || ( >=app-emacs/rst-0.4 >=virtual/emacs-23 ) )"
 
 RESTRICT_PYTHON_ABIS="3*"
 

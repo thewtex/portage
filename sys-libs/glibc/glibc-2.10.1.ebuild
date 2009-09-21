@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/glibc/glibc-2.10.1.ebuild,v 1.4 2009/09/07 04:24:18 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/glibc/glibc-2.10.1.ebuild,v 1.7 2009/09/20 02:57:50 anarchy Exp $
 
 inherit eutils versionator libtool toolchain-funcs flag-o-matic gnuconfig multilib
 
@@ -26,7 +26,7 @@ LIBIDN_VER=${RELEASE_VER}
 fi
 MANPAGE_VER=""                                 # pregenerated manpages
 INFOPAGE_VER=""                                # pregenerated infopages
-PATCH_VER="2"                                  # Gentoo patchset
+PATCH_VER="3"                                  # Gentoo patchset
 PORTS_VER=${RELEASE_VER}                       # version of glibc ports addon
 LT_VER=""                                      # version of linuxthreads addon
 NPTL_KERN_VER=${NPTL_KERN_VER:-"2.6.9"}        # min kernel version nptl requires
@@ -187,12 +187,17 @@ eblit-src_unpack-post() {
 		cd "${S}"
 		einfo "Patching to get working PIE binaries on PIE (hardened) platforms"
 		gcc-specs-pie && epatch "${FILESDIR}"/2.5/glibc-2.5-hardened-pie.patch
-		epatch "${FILESDIR}"/2.5/glibc-2.5-hardened-configure-picdefault.patch
-		epatch "${FILESDIR}"/2.7/glibc-2.7-hardened-inittls-nosysenter.patch
+		epatch "${FILESDIR}"/2.10/glibc-2.10-hardened-configure-picdefault.patch
+		epatch "${FILESDIR}"/2.10/glibc-2.10-hardened-inittls-nosysenter.patch
 
-		einfo "Installing Hardened Gentoo SSP handler"
+		einfo "Patching Glibc to support older SSP __guard"
+		epatch "${FILESDIR}"/2.10/glibc-2.10-hardened-ssp-compat.patch
+
+		einfo "Installing Hardened Gentoo SSP and FORTIFY_SOURCE handler"
 		cp -f "${FILESDIR}"/2.6/glibc-2.6-gentoo-stack_chk_fail.c \
 			debug/stack_chk_fail.c || die
+		cp -f "${FILESDIR}"/2.10/glibc-2.10-gentoo-chk_fail.c \
+			debug/chk_fail.c || die
 
 		if use debug ; then
 			# When using Hardened Gentoo stack handler, have smashes dump core for
@@ -202,6 +207,10 @@ eblit-src_unpack-post() {
 				-e '/^CFLAGS-backtrace.c/ iCFLAGS-stack_chk_fail.c = -DSSP_SMASH_DUMPS_CORE' \
 				debug/Makefile \
 				|| die "Failed to modify debug/Makefile for debug stack handler"
+			sed -i \
+				-e '/^CFLAGS-backtrace.c/ iCFLAGS-chk_fail.c = -DSSP_SMASH_DUMPS_CORE' \
+				debug/Makefile \
+				|| die "Failed to modify debug/Makefile for debug fortify handler"
 		fi
 
 		# Build nscd with ssp-all

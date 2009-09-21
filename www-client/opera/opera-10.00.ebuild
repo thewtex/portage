@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/opera/opera-10.00.ebuild,v 1.5 2009/09/12 16:19:56 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/opera/opera-10.00.ebuild,v 1.7 2009/09/20 18:56:45 nixnut Exp $
 
 EAPI="2"
 
@@ -13,7 +13,7 @@ HOMEPAGE="http://www.opera.com/"
 
 SLOT="0"
 LICENSE="OPERA-10.00"
-KEYWORDS="amd64 ~ppc x86 ~x86-fbsd"
+KEYWORDS="amd64 ppc x86 ~x86-fbsd"
 
 RESTRICT="mirror strip test"
 QA_DT_HASH="opt/${PN}/.*"
@@ -205,13 +205,6 @@ pkg_postinst() {
 	elog "[General] tab, click on [Details...] then [Choose...] and point the"
 	elog "file chooser at /opt/opera/share/opera/locale/, then enter the"
 	elog "directory for the language you want and [Open] the .lng file."
-
-	elog
-	elog "To use the spellchecker for languages other than English, do:"
-	elog " mkdir \${HOME}/.opera/dictionaries"
-	elog " cd \${HOME}/.opera/dictionaries"
-	elog " ln -s /usr/share/myspell/*.{aff,dic} ."
-	elog "A future release of Opera should remedy this inconvenience."
 
 	if use elibc_FreeBSD; then
 		elog
