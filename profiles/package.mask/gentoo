@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10480 2009/09/21 03:10:35 neurogeek Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10484 2009/09/21 18:30:56 volkmar Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,17 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Mounir Lamouri <volkmar@gentoo.org> (21 Sep 2009)
+# net-misc/asterisk-app_rtxfax fails with >=media-libs/spandsp-0.0.3, bug 180318
+# Masked for removal in 30 days.
+net-misc/asterisk-app_rtxfax
+
+# Nirbheek Chauhan <nirbheek@gentoo.org> (21 Sep 2009)
+# No >= bluez 4 support #279384, build failures #269757 #233007 #203959 #202905
+# Abandoned upstream, masked for removal in 30 days
+# Replacement: app-pda/multisync-gui (using libopensync)
+app-pda/multisync
 
 # Jesus Rivero <neurogeek@gentoo.org> (20 Sep 2009)
 # Masked for removal in 30 days.
@@ -645,16 +656,6 @@ sci-chemistry/maid
 #
 # Removal on 2009-10-08
 net-misc/bo2k_console
-
-# Diego E. Pettenò <flameeyes@gentoo.org> (09 Aug 2009)
-#  on behalf of QA team
-#
-# Multiple failures (a new one for each tinderbox type,
-# bug #249290 and #26073), accesses kernel sources badly
-# (bug #241956), uses -Werror (bug #260870).
-#
-# Removal on 2009-10-08
-app-crypt/tpm-emulator
 
 # Diego E. Pettenò <flameeyes@gentoo.org> (09 Aug 2009)
 #  on behalf of QA team
@@ -1366,9 +1367,8 @@ net-irc/bitchx
 =dev-java/mx4j-3.0.2
 
 # Joe Peterson <lavajoe@gentoo.org> (09 Jun 2008)
-# Live ebuilds too volatile for normal use.
-# User's who need to test these should unmask explicitly.
-=sys-fs/btrfs-9999
+# Live ebuild too volatile for normal use.
+# Users who need to test this should unmask explicitly.
 =sys-fs/btrfs-progs-9999
 
 # Rémi Cardona <remi@gentoo.org> (27 May 2008)
