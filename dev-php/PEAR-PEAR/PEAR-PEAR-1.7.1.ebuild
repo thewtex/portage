@@ -1,6 +1,6 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-PEAR/PEAR-PEAR-1.7.1.ebuild,v 1.2 2008/03/17 17:18:17 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-PEAR/PEAR-PEAR-1.7.1.ebuild,v 1.3 2009/09/23 02:41:50 beandog Exp $
 
 inherit depend.php
 
@@ -23,7 +23,12 @@ LICENSE="LGPL-2.1 PHP-2.02 PHP-3 PHP-3.01 MIT"
 SLOT="0"
 IUSE=""
 
-DEPEND="dev-lang/php"
+DEPEND="dev-lang/php
+	!dev-php/pear
+	!dev-php/PEAR-Archive_Tar
+	!dev-php/PEAR-Console_Getopt
+	!dev-php/PEAR-Structures_Graph
+	!dev-php/PEAR-XML_RPC"
 RDEPEND="${DEPEND}"
 
 S=${WORKDIR}
