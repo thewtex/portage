@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/python/python-2.4.6.ebuild,v 1.14 2009/09/22 13:39:28 arfrever Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/python/python-2.4.6.ebuild,v 1.16 2009/09/23 15:29:49 arfrever Exp $
 
 # NOTE about python-portage interactions :
 # - Do not add a pkg_setup() check for a certain version of portage
@@ -53,7 +53,8 @@ DEPEND=">=app-admin/eselect-python-20080925
 # NOTE: changed RDEPEND to PDEPEND to resolve bug 88777. - kloeri
 # NOTE: added blocker to enforce correct merge order for bug 88777. - zmedico
 
-RDEPEND="${DEPEND} build? ( !dev-python/pycrypto )"
+RDEPEND="${DEPEND} build? ( !dev-python/pycrypto )
+		app-misc/mime-types"
 PDEPEND="${DEPEND} app-admin/python-updater"
 
 PROVIDE="virtual/python"
@@ -110,7 +111,7 @@ src_configure() {
 		# Defaults to gdbm when both are enabled, #204343.
 		local disable
 		use berkdb   || use gdbm || disable+=" dbm"
-		use berkdb   || disable+=" bsddb"
+		use berkdb   || disable+=" _bsddb"
 		use gdbm     || disable+=" gdbm"
 		use ncurses  || disable+=" _curses _curses_panel"
 		use readline || disable+=" readline"
@@ -245,12 +246,13 @@ src_install() {
 	# Prevents the problem with compiling things with conflicting flags later.
 	sed -e "s:^OPT=.*:OPT=-DNDEBUG:" -i "${D}usr/$(get_libdir)/python${PYVER}/config/Makefile"
 
+	# Python 2.4 partially doesn't respect $(get_libdir).
 	if use build; then
-		rm -fr "${D}usr/$(get_libdir)/python${PYVER}/"{bsddb,email,encodings,lib-tk,test}
+		rm -fr "${D}"usr/lib*/python${PYVER}/{bsddb,email,encodings,lib-tk,test}
 	else
-		use elibc_uclibc && rm -fr "${D}usr/$(get_libdir)/python${PYVER}/"{bsddb/test,test}
-		use berkdb || rm -fr "${D}usr/$(get_libdir)/python${PYVER}/"{bsddb,test/test_bsddb*}
-		use tk || rm -fr "${D}usr/$(get_libdir)/python${PYVER}/lib-tk"
+		use elibc_uclibc && rm -fr "${D}"usr/lib*/python${PYVER}/{bsddb/test,test}
+		use berkdb || rm -fr "${D}"usr/lib*/python${PYVER}/{bsddb,test/test_bsddb*}
+		use tk || rm -fr "${D}"usr/lib*/python${PYVER}/lib-tk
 	fi
 
 	prep_ml_includes usr/include/python${PYVER}
