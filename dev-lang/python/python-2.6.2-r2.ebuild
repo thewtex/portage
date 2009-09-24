@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/python/python-2.6.2-r2.ebuild,v 1.1 2009/09/22 18:53:50 arfrever Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/python/python-2.6.2-r2.ebuild,v 1.3 2009/09/23 15:29:49 arfrever Exp $
 
 # NOTE about python-portage interactions :
 # - Do not add a pkg_setup() check for a certain version of portage
@@ -60,6 +60,7 @@ RDEPEND=">=app-admin/eselect-python-20080925
 DEPEND="${RDEPEND}
 		!m68k? ( !mips? ( !sparc-fbsd? ( !x86-fbsd? ( dev-util/pkgconfig ) ) ) )"
 PDEPEND="${RDEPEND} app-admin/python-updater"
+RDEPEND+=" app-misc/mime-types"
 
 PROVIDE="virtual/python"
 
@@ -121,7 +122,7 @@ src_configure() {
 		# Defaults to gdbm when both are enabled, #204343.
 		local disable
 		use berkdb   || use gdbm || disable+=" dbm"
-		use berkdb   || disable+=" bsddb"
+		use berkdb   || disable+=" _bsddb"
 		use gdbm     || disable+=" gdbm"
 		use ncurses  || disable+=" _curses _curses_panel"
 		use readline || disable+=" readline"
