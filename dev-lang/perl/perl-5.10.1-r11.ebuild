@@ -216,6 +216,12 @@ src_configure() {
 		-Dvendorarch="/usr/$(get_libdir)/perl5/vendor_perl/${MY_PV}/${myarch}${mythreading}" \
 		-Dsitelib="/usr/$(get_libdir)/perl5/site_perl/${MY_PV}" \
 		-Dsitearch="/usr/$(get_libdir)/perl5/site_perl/${MY_PV}/${myarch}${mythreading}" \
+		-Dman1dir=/usr/share/man/man1 \
+		-Dman3dir=/usr/share/man/man3 \
+		-Dinstallman1dir=/usr/share/man/man1 \
+		-Dinstallman3dir=/usr/share/man/man3 \
+		-Dman1ext='1' \
+		-Dman3ext='3pm' \
 		-Dlibperl="${LIBPERL}" \
 		-Dlocincpth=' ' \
 		-Duselargefiles \
@@ -265,29 +271,6 @@ src_install() {
 	dosym ../../../../../$(get_libdir)/${LIBPERL} ${coredir}/libperl.so.1 || die
 
 	rm -rf "${D}"/usr/share/man/man3 || die "Unable to remove module man pages"
-#	cp -f utils/h2ph utils/h2ph_patched
-#	epatch "${FILESDIR}"/${PN}-h2ph-ansi-header.patch
-#
-#	LD_LIBRARY_PATH=. ./perl -Ilib utils/h2ph_patched \
-#		-a -d "${D}"/usr/$(get_libdir)/perl5/${MY_PV}/${myarch}${mythreading} <<EOF
-#asm/termios.h
-#syscall.h
-#syslimits.h
-#syslog.h
-#sys/ioctl.h
-#sys/socket.h
-#sys/time.h
-#wait.h
-#EOF
-
-# vvv still needed?
-#	# This is to fix a missing c flag for backwards compat
-#	for i in $(find "${D}"/usr/$(get_libdir)/perl5 -iname "Config.pm" ) ; do
-#		sed -i \
-#			-e "s:ccflags=':ccflags='-DPERL5 :" \
-#			-e "s:cppflags=':cppflags='-DPERL5 :" \
-#			"${i}" || die "Sed failed"
-#	done
 
 	# A poor fix for the miniperl issues
 	dosed 's:./miniperl:/usr/bin/perl:' /usr/$(get_libdir)/perl5/${MY_PV}/ExtUtils/xsubpp
@@ -321,10 +304,6 @@ src_install() {
 	fi
 
 	dual_scripts
-
-	#if use build ; then
-	#	src_remove_extra_files
-	#fi
 }
 
 pkg_postinst() {
@@ -410,188 +389,4 @@ src_remove_dual_scripts() {
 				echo "/usr/share/man/man1/${i}.1 does not exist!"
 		done
 	fi
-}
-
-src_remove_extra_files() {
-	local prefix="./usr" # ./ is important
-	local bindir="${prefix}/bin"
-	local perlroot="${prefix}/$(get_libdir)/perl5" # perl installs per-arch dirs
-	local prV="${perlroot}/${MY_PV}"
-	local prVA="${prV}/${myarch}${mythreading}"
-
-	# I made this list from the Mandr*, Debian and ex-Connectiva perl-base list
-	# Then, I added several files to get GNU autotools running
-	# FIXME: should this be in a separated file to be sourced?
-	local MINIMAL_PERL_INSTALL="
-	${bindir}/h2ph
-	${bindir}/perl
-	${bindir}/perl${MY_PV}
-	${bindir}/pod2man
-	${prV}/attributes.pm
-	${prV}/AutoLoader.pm
-	${prV}/autouse.pm
-	${prV}/base.pm
-	${prV}/bigint.pm
-	${prV}/bignum.pm
-	${prV}/bigrat.pm
-	${prV}/blib.pm
-	${prV}/bytes_heavy.pl
-	${prV}/bytes.pm
-	${prV}/Carp/Heavy.pm
-	${prV}/Carp.pm
-	${prV}/charnames.pm
-	${prV}/Class/Struct.pm
-	${prV}/constant.pm
-	${prV}/diagnostics.pm
-	${prV}/DirHandle.pm
-	${prV}/Exporter/Heavy.pm
-	${prV}/Exporter.pm
-	${prV}/ExtUtils/Command.pm
-	${prV}/ExtUtils/Constant.pm
-	${prV}/ExtUtils/Embed.pm
-	${prV}/ExtUtils/Installed.pm
-	${prV}/ExtUtils/Install.pm
-	${prV}/ExtUtils/Liblist.pm
-	${prV}/ExtUtils/MakeMaker.pm
-	${prV}/ExtUtils/Manifest.pm
-	${prV}/ExtUtils/Mkbootstrap.pm
-	${prV}/ExtUtils/Mksymlists.pm
-	${prV}/ExtUtils/MM_Any.pm
-	${prV}/ExtUtils/MM_MacOS.pm
-	${prV}/ExtUtils/MM.pm
-	${prV}/ExtUtils/MM_Unix.pm
-	${prV}/ExtUtils/MY.pm
-	${prV}/ExtUtils/Packlist.pm
-	${prV}/ExtUtils/testlib.pm
-	${prV}/ExtUtils/Miniperl.pm
-	${prV}/ExtUtils/Command/MM.pm
-	${prV}/ExtUtils/Constant/Base.pm
-	${prV}/ExtUtils/Constant/Utils.pm
-	${prV}/ExtUtils/Constant/XS.pm
-	${prV}/ExtUtils/Liblist/Kid.pm
-	${prV}/ExtUtils/MakeMaker/bytes.pm
-	${prV}/ExtUtils/MakeMaker/vmsish.pm
-	${prV}/fields.pm
-	${prV}/File/Basename.pm
-	${prV}/File/Compare.pm
-	${prV}/File/Copy.pm
-	${prV}/File/Find.pm
-	${prV}/FileHandle.pm
-	${prV}/File/Path.pm
-	${prV}/File/Spec.pm
-	${prV}/File/Spec/Unix.pm
-	${prV}/File/stat.pm
-	${prV}/filetest.pm
-	${prVA}/attrs.pm
-	${prVA}/auto/attrs
-	${prVA}/auto/Cwd/Cwd$(get_libname)
-	${prVA}/auto/Data/Dumper/Dumper$(get_libname)
-	${prVA}/auto/DynaLoader/dl_findfile.al
-	${prVA}/auto/Fcntl/Fcntl$(get_libname)
-	${prVA}/auto/File/Glob/Glob$(get_libname)
-	${prVA}/auto/IO/IO$(get_libname)
-	${prVA}/auto/POSIX/autosplit.ix
-	${prVA}/auto/POSIX/fstat.al
-	${prVA}/auto/POSIX/load_imports.al
-	${prVA}/auto/POSIX/POSIX.bs
-	${prVA}/auto/POSIX/POSIX$(get_libname)
-	${prVA}/auto/POSIX/stat.al
-	${prVA}/auto/POSIX/tmpfile.al
-	${prVA}/auto/re/re$(get_libname)
-	${prVA}/auto/Socket/Socket$(get_libname)
-	${prVA}/auto/Storable/autosplit.ix
-	${prVA}/auto/Storable/_retrieve.al
-	${prVA}/auto/Storable/retrieve.al
-	${prVA}/auto/Storable/Storable$(get_libname)
-	${prVA}/auto/Storable/_store.al
-	${prVA}/auto/Storable/store.al
-	${prVA}/B/Deparse.pm
-	${prVA}/B.pm
-	${prVA}/Config.pm
-	${prVA}/Config_heavy.pl
-	${prVA}/CORE/libperl$(get_libname)
-	${prVA}/Cwd.pm
-	${prVA}/Data/Dumper.pm
-	${prVA}/DynaLoader.pm
-	${prVA}/encoding.pm
-	${prVA}/Errno.pm
-	${prVA}/Fcntl.pm
-	${prVA}/File/Glob.pm
-	${prVA}/_h2ph_pre.ph
-	${prVA}/IO/File.pm
-	${prVA}/IO/Handle.pm
-	${prVA}/IO/Pipe.pm
-	${prVA}/IO.pm
-	${prVA}/IO/Seekable.pm
-	${prVA}/IO/Select.pm
-	${prVA}/IO/Socket.pm
-	${prVA}/lib.pm
-	${prVA}/NDBM_File.pm
-	${prVA}/ops.pm
-	${prVA}/POSIX.pm
-	${prVA}/re.pm
-	${prVA}/Socket.pm
-	${prVA}/Storable.pm
-	${prVA}/threads
-	${prVA}/threads.pm
-	${prVA}/XSLoader.pm
-	${prV}/Getopt/Long.pm
-	${prV}/Getopt/Std.pm
-	${prV}/if.pm
-	${prV}/integer.pm
-	${prV}/IO/Socket/INET.pm
-	${prV}/IO/Socket/UNIX.pm
-	${prV}/IPC/Open2.pm
-	${prV}/IPC/Open3.pm
-	${prV}/less.pm
-	${prV}/List/Util.pm
-	${prV}/locale.pm
-	${prV}/open.pm
-	${prV}/overload.pm
-	${prV}/Pod/InputObjects.pm
-	${prV}/Pod/Man.pm
-	${prV}/Pod/ParseLink.pm
-	${prV}/Pod/Parser.pm
-	${prV}/Pod/Select.pm
-	${prV}/Pod/Text.pm
-	${prV}/Pod/Usage.pm
-	${prV}/PerlIO.pm
-	${prV}/Scalar/Util.pm
-	${prV}/SelectSaver.pm
-	${prV}/sigtrap.pm
-	${prV}/sort.pm
-	${prV}/stat.pl
-	${prV}/strict.pm
-	${prV}/subs.pm
-	${prV}/Symbol.pm
-	${prV}/Text/ParseWords.pm
-	${prV}/Text/Tabs.pm
-	${prV}/Text/Wrap.pm
-	${prV}/Time/Local.pm
-	${prV}/unicore/Canonical.pl
-	${prV}/unicore/Exact.pl
-	${prV}/unicore/lib/gc_sc/Digit.pl
-	${prV}/unicore/lib/gc_sc/Word.pl
-	${prV}/unicore/PVA.pl
-	${prV}/unicore/To/Fold.pl
-	${prV}/unicore/To/Lower.pl
-	${prV}/unicore/To/Upper.pl
-	${prV}/utf8_heavy.pl
-	${prV}/utf8.pm
-	${prV}/vars.pm
-	${prV}/vmsish.pm
-	${prV}/warnings
-	${prV}/warnings.pm
-	${prV}/warnings/register.pm"
-
-	pushd "${D}" > /dev/null
-	# Remove cruft
-	einfo "Removing files that are not in the minimal install"
-	echo "${MINIMAL_PERL_INSTALL}"
-	for f in $(find . -type f ) ; do
-		has "${f}" ${MINIMAL_PERL_INSTALL} || rm -f "${f}"
-	done
-	# Remove empty directories
-	find . -depth -type d -print0 | xargs -0 -r rmdir &> /dev/null
-	popd > /dev/null
 }
