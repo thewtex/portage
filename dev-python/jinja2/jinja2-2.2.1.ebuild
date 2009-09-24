@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/jinja2/jinja2-2.2.1.ebuild,v 1.3 2009/09/17 20:57:29 volkmar Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/jinja2/jinja2-2.2.1.ebuild,v 1.5 2009/09/22 16:33:32 arfrever Exp $
 
 EAPI="2"
 SUPPORT_PYTHON_ABIS="1"
@@ -14,14 +14,14 @@ DESCRIPTION="A small but fast and easy to use stand-alone template engine writte
 HOMEPAGE="http://jinja.pocoo.org/"
 SRC_URI="http://pypi.python.org/packages/source/J/${MY_PN}/${MY_P}.tar.gz"
 LICENSE="BSD"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~s390 ~sh ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd"
 SLOT="0"
 IUSE="doc examples i18n test"
 
 CDEPEND="dev-python/setuptools"
 DEPEND="${CDEPEND}
 	doc? ( >=dev-python/docutils-0.4
-		   >=dev-python/sphinx-0.3 )
+		   >=dev-python/sphinx-0.6 )
 	test? ( dev-python/nose )"
 RDEPEND="${CDEPEND}
 	i18n? ( >=dev-python/Babel-0.9.3 )"

@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4822 2009/09/21 02:52:31 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4828 2009/09/22 19:47:48 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -1366,6 +1366,8 @@ kde-misc/knetworkmanager:dialup - Enables Dialup (PPP) support
 kde-misc/knetworkmanager:openvpn - Adds support for the OpenVPN net-misc/openvpn client
 kde-misc/knetworkmanager:pptp - Adds support for the PPTP (PPP) VPN client
 kde-misc/ksensors:ibmacpi - Enable monitoring of ACPI sensor data on IBM Thinkpad notebooks
+kde-misc/tellico:addressbook - Add support for kdepim addressbook (kabc)
+kde-misc/tellico:xmp - Adds support for PDF/XMP metadata using media-libs/exempi
 mail-client/alpine:chappa - enhance alpine by appling Eduardo Chappa's patches
 mail-client/alpine:onlyalpine - installs only the alpine binary, so it does not collied with app-editors/pico and/or mail-client/pine
 mail-client/alpine:passfile - Adds support for caching passwords into a file between sessions
@@ -1583,6 +1585,7 @@ media-gfx/synfigstudio:fmod - Enables support for using mod files for audio supp
 media-gfx/ufraw:contrast -  enable the experimental contrast setting option 
 media-gfx/ufraw:lensfun -  enable the lensfun lens-correction library 
 media-gfx/ufraw:timezone -  enable DST correction for file timestamps 
+media-gfx/yafaray:blender - install media-gfx/blender scripts
 media-libs/a52dec:djbfft - Prefer D.J. Bernstein's library for fourier transforms
 media-libs/allegro:vga - Enables the VGA graphics driver
 media-libs/alsa-lib:alisp - Enable support for ALISP (ALSA LISP) interpreter for advanced features.
@@ -3058,7 +3061,6 @@ sci-visualization/paraview:plugins - Build and install additional plugins
 sci-visualization/veusz:fits - Add FITS format via dev-python/pyfits
 sys-apps/acl:nfs -  add support for NFS acls 
 sys-apps/busybox:make-symlinks - Create all the appropriate symlinks in /bin and /sbin.
-sys-apps/einit:relaxng - Make validator for Relax NG available
 sys-apps/gawk:libsigsegv - Support segfault recovery/debugging
 sys-apps/hal:acpi - Enables HAL to attempt to read from /proc/acpi/event, if unavailable, HAL will read events from sys-power/acpid. If you need multiple acpi readers, ensure acpid is in your default runlevel (rc-update add acpid default) along with HAL. This will also enable HAL to read Toshiba and IBM acpi events which do not get sent via /proc/acpi/event
 sys-apps/hal:consolekit - Enables HAL to interact with consolekit for determining whether a given process is running on behalf of the person setting at the console.
@@ -3139,6 +3141,7 @@ sys-boot/lilo:device-mapper - Enable support for sys-fs/device-mapper
 sys-boot/lilo:pxeserial - Avoid character echo on PXE serial console
 sys-cluster/charm:cmkopt - Enable CMK optimisation
 sys-cluster/charm:tcp - Use TCP (instead of UPD) for socket communication
+sys-cluster/glusterfs:fuse - Add FUSE mount helper
 sys-cluster/heartbeat:ldirectord - Adds support for ldiretord, use enabled because it has a lot of deps
 sys-cluster/heartbeat:management - Adds support for management GUI.
 sys-cluster/lam-mpi:pbs - Add support for the Portable Batch System (PBS)
@@ -3354,7 +3357,6 @@ www-client/mozilla-firefox:xforms - XForms is a standard to split up XHTML into 
 www-client/mozilla-firefox-bin:restrict-javascript - Pull in x11-plugins/noscript extension to disable javascript globally, putting the user fully in control of the sites he/she visits
 www-client/opera:ia32 - Install 32-bit binaries instead of 64-bit binaries
 www-client/opera:qt-static - Install binaries statically linked to Qt
-www-client/opera:qt3-static - Install binaries statically linked to Qt 3
 www-client/seamonkey:mozdevelop - Enable features for web developers (e.g. Venkman)
 www-client/seamonkey:moznocompose - Disable building of mozilla's HTML editor component
 www-client/seamonkey:moznoirc - Disable building of mozilla's IRC client
@@ -3369,10 +3371,6 @@ www-plugins/adobe-flash:32bit - For amd64-multilib, installs the 32-bit plugin
 www-plugins/adobe-flash:64bit - For amd64-multilib, installs the native 64-bit plugin
 www-plugins/gnash:agg - Rendering based on the Anti-Grain Geometry Rendering Engine library
 www-plugins/gnash:cygnal - Enable building of the cygnal server
-www-plugins/mplayerplug-in:divx - Divx Playback Support
-www-plugins/mplayerplug-in:gmedia - Google Media Playback Support
-www-plugins/mplayerplug-in:realmedia - Real Media Playback Support
-www-plugins/mplayerplug-in:wmp - Windows Media Playback Support
 www-servers/apache:peruser_dc - Enable support for the dc branch of peruser. EXPERIMENTAL!
 www-servers/apache:sni - Enable TLS Server Name Indication (SNI) - EXPERIMENTAL!
 www-servers/apache:suexec - Install suexec with apache

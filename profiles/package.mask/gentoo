@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10480 2009/09/21 03:10:35 neurogeek Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10488 2009/09/22 18:32:14 ssuominen Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -31,6 +31,22 @@
 
 #--- END OF EXAMPLES ---
 
+# Tomáš Chvátal <scarabeus@gentoo.org> (22 Sep 2009)
+# Removal in 30 days. We should keep only freeglut around.
+media-libs/vgui
+media-libs/glut
+
+# Mounir Lamouri <volkmar@gentoo.org> (21 Sep 2009)
+# net-misc/asterisk-app_rtxfax fails with >=media-libs/spandsp-0.0.3, bug 180318
+# Masked for removal in 30 days.
+net-misc/asterisk-app_rtxfax
+
+# Nirbheek Chauhan <nirbheek@gentoo.org> (21 Sep 2009)
+# No >= bluez 4 support #279384, build failures #269757 #233007 #203959 #202905
+# Abandoned upstream, masked for removal in 30 days
+# Replacement: app-pda/multisync-gui (using libopensync)
+app-pda/multisync
+
 # Jesus Rivero <neurogeek@gentoo.org> (20 Sep 2009)
 # Masked for removal in 30 days.
 # Not needed for Python versions higher then 2.4
@@ -55,7 +71,9 @@ net-libs/libunicall
 =app-admin/perl-cleaner-2*
 
 # Rémi Cardona <remi@gentoo.org> (19 Sep 2009)
-# Old useless X packages, unmaintained
+# Outdated and useless X doc packages
+# Masked for removal in 30 days
+app-doc/opengl-manpages
 app-doc/xorg-sgml-doctools
 app-doc/xorg-docs
 
@@ -281,18 +299,6 @@ dev-util/qtunit
 # Removal on 2009-10-29
 sys-process/acctail
 
-# Samuli Suominen <ssuominen@gentoo.org> (28 Aug 2009)
-# Orphaned library with modified copy of old FFmpeg.
-# Masked for removal.
-media-libs/rte
-
-# Samuli Suominen <ssuominen@gentoo.org> (28 Aug 2009)
-# Orphaned libraries. Both install only a static archive
-# and a include file. No reverse deps. QA issues.
-# Masked for removal.
-media-libs/loadpng
-media-libs/mpeg-lib
-
 # Diego E. Pettenò <flameeyes@gentoo.org> (27 Aug 2009)
 #  on behalf of QA team
 #
@@ -338,7 +344,6 @@ sys-apps/einit-modules-xml
 >=net-misc/networkmanager-0.8.0_pre20090824
 >=gnome-extra/nm-applet-0.8.0_pre20090824
 
-
 # Hans de Graaff <graaff@gentoo.org> (22 Aug 2009)
 # devel-logger is now bundled with ruby 1.8. The standalone version
 # is only suited for ruby 1.6, which has gone from our tree a long
@@ -367,10 +372,6 @@ dev-ruby/ruby-amazon
 =dev-ruby/activeresource-2.1.2
 =dev-ruby/activesupport-2.1.2
 
-# Samuli Suominen <ssuominen@gentoo.org> (21 Aug 2009)
-# Orphaned library with broken build system. Masked for removal.
-media-libs/clibpdf
-
 # Thomas Sachau <tommy@gentoo.org> (21 Aug 2009)
 # Mask alpha version of k3b
 >=app-cdr/k3b-1.66.0_alpha2
@@ -393,11 +394,6 @@ sys-libs/uclibc++
 # Alex Alexander <wired@gentoo.org> (12 Aug 2009)
 # Masked beta versions for testing
 =net-p2p/ktorrent-3.3_beta*
-
-# Samuli Suominen <ssuominen@gentoo.org> (11 Aug 2009)
-# Moved inside actual gst-plugins-bad. Masked for removal.
-# Bug 281083.
-media-plugins/gst-plugins-fluendo-mpegdemux
 
 # Samuli Suominen <ssuominen@gentoo.org> (11 Aug 2009)
 # Segmentation faults. Doesn't compile with -Wl,--as-needed.
@@ -549,11 +545,6 @@ dev-tinyos/tos-scripts
 dev-tinyos/tos-uisp
 dev-tinyos/tos-apps
 
-# Samuli Suominen <ssuominen@gentoo.org> (10 Aug 2009)
-# Mirror restricted and distfile isn't available anymore.
-# Bug 280879. Masked for removal.
-dev-lang/realbasic
-
 # Diego E. Pettenò <flameeyes@gentoo.org> (09 Aug 2009)
 #  on behalf of QA team
 #
@@ -645,16 +636,6 @@ sci-chemistry/maid
 #
 # Removal on 2009-10-08
 net-misc/bo2k_console
-
-# Diego E. Pettenò <flameeyes@gentoo.org> (09 Aug 2009)
-#  on behalf of QA team
-#
-# Multiple failures (a new one for each tinderbox type,
-# bug #249290 and #26073), accesses kernel sources badly
-# (bug #241956), uses -Werror (bug #260870).
-#
-# Removal on 2009-10-08
-app-crypt/tpm-emulator
 
 # Diego E. Pettenò <flameeyes@gentoo.org> (09 Aug 2009)
 #  on behalf of QA team
@@ -813,26 +794,6 @@ dev-lisp/cl-ansi-tests-cvs
 net-im/naim
 net-im/naim-modules
 
-# Samuli Suominen <ssuominen@gentoo.org> (08 Aug 2009)
-# Masked by treecleaners for removal. Doesn't compile wrt #223115.
-net-wireless/wlassistant
-
-# Samuli Suominen <ssuominen@gentoo.org> (08 Aug 2009)
-# Masked by treecleaners for removal. Doesn't compile wrt #277571.
-dev-util/diasce
-
-# Samuli Suominen <ssuominen@gentoo.org> (08 Aug 2009)
-# Masked by treecleaners for removal. Doesn't compile wrt #272270.
-dev-util/motor
-
-# Samuli Suominen <ssuominen@gentoo.org> (08 Aug 2009)
-# Masked by treecleaners for removal. Doesn't compile wrt #248563.
-x11-misc/glsof
-
-# Samuli Suominen <ssuominen@gentoo.org> (08 Aug 2009)
-# Masked by treecleaners for removal. Doesn't compile wrt #239588.
-app-misc/nomadii-utils
-
 # Federico Ferri <mescalinum@gentoo.org> (08 Aug 2009)
 # Doesn't build with Tcl 8.5, has several bugs open
 =dev-tcltk/tcl-debug-2.0
@@ -848,12 +809,6 @@ app-misc/nomadii-utils
 # Mask kde4 printing stuff
 <kde-base/printer-applet-4.3.0
 <kde-base/system-config-printer-kde-4.3.0
-
-# Samuli Suominen <ssuominen@gentoo.org> (03 Aug 2009)
-# USE gmplayer in mplayer is deprecated. Use smplayer or
-# gnome-mplayer as replacement. Also, this theme pack
-# is outdated and is causing problems wrt #224563.
-x11-themes/mplayer-skins
 
 # Chris PeBenito <pebenito@gentoo.org> (02 Aug 2009)
 # Masked for removal.  These policies have been
@@ -877,12 +832,6 @@ media-sound/alsa-driver
 #
 # Removal on 2009-09-30
 media-tv/ktvschedule
-
-# Samuli Suomienn <ssuominen@gentoo.org> (30 Jul 2009)
-# Needs =net-libs/xulrunner-1.8* to compile.
-# Replaced by gecko-mediaplayer, see bug #273121.
-# Masked for removal in 60 days.
-www-plugins/mplayerplug-in
 
 # Mounir Lamouri <volkmar@gentoo.org> (30 Jul 2009)
 # Masked for removal in 60 days.
@@ -1366,9 +1315,8 @@ net-irc/bitchx
 =dev-java/mx4j-3.0.2
 
 # Joe Peterson <lavajoe@gentoo.org> (09 Jun 2008)
-# Live ebuilds too volatile for normal use.
-# User's who need to test these should unmask explicitly.
-=sys-fs/btrfs-9999
+# Live ebuild too volatile for normal use.
+# Users who need to test this should unmask explicitly.
 =sys-fs/btrfs-progs-9999
 
 # Rémi Cardona <remi@gentoo.org> (27 May 2008)
