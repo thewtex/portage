@@ -1,6 +1,17 @@
 # ChangeLog for sys-apps/pmount
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/pmount/ChangeLog,v 1.65 2009/04/22 22:44:07 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/pmount/ChangeLog,v 1.68 2009/09/25 14:53:37 ranger Exp $
+
+  25 Sep 2009; Brent Baude <ranger@gentoo.org> pmount-0.9.19.ebuild:
+  Marking pmount-0.9.19 ppc64 for bug 281208
+
+  24 Sep 2009; Christian Faulhammer <fauli@gentoo.org> pmount-0.9.19.ebuild:
+  stable x86, bug 281208
+
+  23 Sep 2009; Romain Perier <mrpouet@gentoo.org>
+  pmount-0.9.19.ebuild, +files/pmount-0.9.19-testsuite-missing-dir.patch:
+  Fix testsuite due to missing sub-directory in tests dir (check_fstab, c.f
+  see gitweb on upstream), Stable for amd64 per bug #281208.
 
   22 Apr 2009; Gilles Dartiguelongue <eva@gentoo.org> pmount-0.9.19.ebuild:
   Fix install with USE="-hal", bug #266827.

@@ -1,0 +1,22 @@
+!net-print/hpijs !net-print/hpoj >=dev-lang/python-2.4.4[threads] virtual/ghostscript media-libs/jpeg !minimal? ( net-print/cups virtual/libusb:0 cupsddk? ( foomatic? ( >=net-print/foomatic-filters-3.0.20080507[cups] ) || ( >=net-print/cups-1.4.0 net-print/cupsddk ) ) ppds? ( foomatic? ( >=net-print/foomatic-filters-3.0.20080507[cups] ) ) scanner? ( >=media-gfx/sane-backends-1.0.19-r1 ) snmp? ( net-analyzer/net-snmp dev-libs/openssl ) ) kernel_linux? ( virtual/linux-sources ) >=app-shells/bash-3.2 =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
+!net-print/hpijs !net-print/hpoj >=dev-lang/python-2.4.4[threads] virtual/ghostscript media-libs/jpeg !minimal? ( net-print/cups virtual/libusb:0 cupsddk? ( foomatic? ( >=net-print/foomatic-filters-3.0.20080507[cups] ) || ( >=net-print/cups-1.4.0 net-print/cupsddk ) ) ppds? ( foomatic? ( >=net-print/foomatic-filters-3.0.20080507[cups] ) ) scanner? ( >=media-gfx/sane-backends-1.0.19-r1 ) snmp? ( net-analyzer/net-snmp dev-libs/openssl ) ) !minimal? ( kernel_linux? ( >=sys-fs/udev-114 ) scanner? ( dev-python/imaging dev-python/reportlab gtk? ( media-gfx/xsane ) !gtk? ( media-gfx/sane-frontends ) ) fax? ( dev-python/reportlab ) qt3? ( !qt4? ( dev-python/PyQt ) ) qt4? ( dev-python/PyQt4[X] ) dbus? ( sys-apps/dbus dev-python/dbus-python dev-python/pygobject ) policykit? ( sys-auth/policykit dev-python/pygobject dev-python/dbus-python ) )
+0
+mirror://sourceforge/hplip/hplip-3.9.8.tar.gz
+
+http://hplip.sourceforge.net/
+GPL-2
+HP Linux Imaging and Printing System. Includes net-print/hpijs, scanner drivers and service tools.
+~amd64 ~arm ~ppc ~ppc64 ~x86
+autotools eutils fdo-mime libtool linux-info multilib portability python toolchain-funcs versionator
++cups cupsddk dbus doc fax gtk minimal parport policykit ppds qt3 qt4 scanner snmp
+
+
+
+2
+
+configure install postinst postrm preinst prepare setup
+
+
+
+
+

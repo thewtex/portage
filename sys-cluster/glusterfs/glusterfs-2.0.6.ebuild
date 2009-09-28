@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/glusterfs/glusterfs-2.0.6.ebuild,v 1.1 2009/09/22 19:47:30 alexxy Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/glusterfs/glusterfs-2.0.6.ebuild,v 1.3 2009/09/24 16:51:56 alexxy Exp $
 
 EAPI="2"
 
@@ -13,13 +13,12 @@ SRC_URI="http://ftp.gluster.com/pub/gluster/${PN}/$(get_version_component_range 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="berkdb emacs +fuse static vim-syntax"
-#IUSE="berkdb emacs +fuse infiniband static vim-syntax"
+IUSE="emacs +fuse static vim-syntax"
+#IUSE="emacs +fuse infiniband static vim-syntax"
 
-DEPEND="berkdb? ( >=sys-libs/db-4.6.21 )
-	emacs? ( virtual/emacs )
-	fuse? ( >=sys-fs/fuse-2.7.0 )"
-#	infiniband? ( sys-cluster/libibverbs )
+DEPEND="emacs? ( virtual/emacs )
+		fuse? ( >=sys-fs/fuse-2.7.0 )"
+#		infiniband? ( sys-cluster/libibverbs )
 RDEPEND="${DEPEND}
 		!net-fs/glusterfs"
 
@@ -33,13 +32,14 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		$(use_enable berkdb bdb) \
 		$(use_enable fuse fuse-client) \
 		$(use_enable apache2 mod_glusterfs) \
 		$(use_enable static) \
+		--disable-bdb \
 		--docdir=/usr/share/doc/${PF} \
 		--localstatedir=/var || die
 #		$(use_enable infiniband ibverbs) \
+#		$(use_enable berkdb bdb) \
 }
 
 src_compile() {

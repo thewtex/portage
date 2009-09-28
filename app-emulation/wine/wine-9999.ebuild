@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/wine/wine-9999.ebuild,v 1.42 2009/09/11 07:59:11 scarabeus Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/wine/wine-9999.ebuild,v 1.43 2009/09/26 17:12:58 vapier Exp $
 
 EAPI="2"
 
@@ -26,15 +26,19 @@ SRC_URI="${SRC_URI}
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-IUSE="alsa cups dbus esd +gecko gnutls gsm hal jack jpeg lcms ldap mp3 nas ncurses +opengl oss png samba scanner ssl test win64 +X xcomposite xinerama xml"
+IUSE="alsa capi cups dbus esd fontconfig +gecko gnutls gphoto2 gsm hal jack jpeg lcms ldap mp3 nas ncurses openal +opengl oss png samba scanner ssl test win64 +X xcomposite xinerama xml"
 RESTRICT="test" #72375
 
 RDEPEND=">=media-libs/freetype-2.0.0
 	media-fonts/corefonts
 	dev-lang/perl
 	dev-perl/XML-Simple
+	capi? ( net-dialup/capi4k-utils )
 	ncurses? ( >=sys-libs/ncurses-5.2 )
+	fontconfig? ( media-libs/fontconfig )
+	gphoto2? ( media-libs/libgphoto2 )
 	jack? ( media-sound/jack-audio-connection-kit )
+	openal? ( media-libs/openal )
 	dbus? ( sys-apps/dbus )
 	gnutls? ( net-libs/gnutls )
 	hal? ( sys-apps/hal )
@@ -99,28 +103,31 @@ src_configure() {
 
 	use amd64 && ! use win64 && multilib_toolchain_setup x86
 
-	# XXX: should check out these flags too:
-	#	audioio capi fontconfig freetype gphoto
 	econf \
 		--sysconfdir=/etc/wine \
 		$(use_with alsa) \
+		$(use_with capi) \
+		$(use_with lcms cms) \
 		$(use_with cups) \
+		$(use_with ncurses curses) \
 		$(use_with esd) \
+		$(use_with fontconfig) \
 		$(use_with gnutls) \
+		$(use_with gphoto2 gphoto) \
 		$(use_with gsm) \
 		$(! use dbus && echo --without-hal || use_with hal) \
 		$(use_with jack) \
 		$(use_with jpeg) \
-		$(use_with lcms cms) \
 		$(use_with ldap) \
 		$(use_with mp3 mpg123) \
 		$(use_with nas) \
-		$(use_with ncurses curses) \
+		$(use_with openal) \
 		$(use_with opengl) \
+		$(use_with ssl openssl) \
 		$(use_with oss) \
 		$(use_with png) \
+		$(use_with threads pthread) \
 		$(use_with scanner sane) \
-		$(use_with ssl openssl) \
 		$(use_enable test tests) \
 		$(use_enable win64) \
 		$(use_with X x) \

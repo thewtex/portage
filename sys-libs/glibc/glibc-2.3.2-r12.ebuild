@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/glibc/glibc-2.3.2-r12.ebuild,v 1.25 2009/01/26 18:41:34 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/glibc/glibc-2.3.2-r12.ebuild,v 1.27 2009/09/23 22:04:09 patrick Exp $
 
 inherit eutils flag-o-matic toolchain-funcs
 

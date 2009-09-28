@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/python/python-3.1.1-r1.ebuild,v 1.1 2009/09/22 18:53:50 arfrever Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/python/python-3.1.1-r1.ebuild,v 1.4 2009/09/25 17:20:04 zmedico Exp $
 
 EAPI="2"
 
@@ -38,10 +38,11 @@ RDEPEND=">=app-admin/eselect-python-20080925
 			doc? ( dev-python/python-docs:${SLOT} )
 			xml? ( >=dev-libs/expat-2 )
 		)
-		!m68k? ( !mips? ( !sparc-fbsd? ( !x86-fbsd? ( virtual/libffi ) ) ) )"
+		!m68k? ( !mips? ( !sparc-fbsd? ( virtual/libffi ) ) )"
 DEPEND="${RDEPEND}
-		!m68k? ( !mips? ( !sparc-fbsd? ( !x86-fbsd? ( dev-util/pkgconfig ) ) ) )"
+		!m68k? ( !mips? ( !sparc-fbsd? ( dev-util/pkgconfig ) ) )"
 PDEPEND="${RDEPEND} app-admin/python-updater"
+RDEPEND+=" !build? ( app-misc/mime-types )"
 
 PROVIDE="virtual/python"
 
@@ -148,7 +149,7 @@ src_configure() {
 	fi
 	dbmliborder="${dbmliborder#:}"
 
-	if ! use m68k && ! use mips && ! use sparc-fbsd && ! use x86-fbsd; then
+	if ! use m68k && ! use mips && ! use sparc-fbsd; then
 		myconf+=" --with-system-ffi"
 	fi
 
@@ -224,7 +225,7 @@ src_install() {
 	sed -e "s:^OPT=.*:OPT=-DNDEBUG:" -i "${D}usr/$(get_libdir)/python${PYVER}/config/Makefile"
 
 	if use build; then
-		rm -fr "${D}usr/$(get_libdir)/python${PYVER}/"{email,encodings,sqlite3,test,tkinter}
+		rm -fr "${D}usr/$(get_libdir)/python${PYVER}/"{email,sqlite3,test,tkinter}
 	else
 		use elibc_uclibc && rm -fr "${D}usr/$(get_libdir)/python${PYVER}/test"
 		use sqlite || rm -fr "${D}usr/$(get_libdir)/python${PYVER}/"{sqlite3,test/test_sqlite*}

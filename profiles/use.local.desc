@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4828 2009/09/22 19:47:48 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4841 2009/09/26 22:07:44 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -94,6 +94,7 @@ app-arch/rpm:magic - Add magic file support (sys-apps/file)
 app-arch/rpm:neon - Include support for net-misc/neon
 app-arch/squeeze:pathbar - Include pathbar feature
 app-arch/squeeze:toolbar - Include toolbar feature
+app-arch/xz-utils:static-libs - Build static libraries
 app-backup/amanda:devpay - Support for using Amazon DevPay with S3
 app-backup/amanda:s3 - Support for backing up to the Amazon S3 system
 app-backup/amanda:xfs - Support for backing up raw XFS filesystems using xfsdump
@@ -304,6 +305,7 @@ app-emulation/virtualbox-ose:headless - Build without any graphic frontend
 app-emulation/virtualbox-ose:sdk - Enable building of SDK
 app-emulation/virtualbox-ose:vboxwebsrv - Build and install the VirtualBox webservice
 app-emulation/vov:gprof - build with profiling support
+app-emulation/wine:capi - Enable ISDN support via CAPI
 app-emulation/wine:gecko - Add support for the Gecko engine when using iexplore
 app-emulation/wine:samba - Add support for NTLM auth. see http://wiki.winehq.org/NtlmAuthSetupGuide and http://wiki.winehq.org/NtlmSigningAndSealing
 app-emulation/wine:win64 - Build a 64bit version of Wine (won't run Win32 binaries)
@@ -793,6 +795,7 @@ dev-libs/cyrus-sasl:sample - Build sample client and server
 dev-libs/cyrus-sasl:srp - Enable SRP
 dev-libs/cyrus-sasl:urandom - Use /dev/urandom instead of /dev/random
 dev-libs/eggdbus:largefile - Support for large files
+dev-libs/elfutils:lzma - Support automatic decompression of LZMA-compressed files and kernel images.
 dev-libs/fcgi:html - Install HTML documentation
 dev-libs/ferrisloki:stlport - Include support for dev-libs/STLport
 dev-libs/geoip:perl-geoipupdate - Install pure perl version of geoipupdate, with Proxy Server support via via the "http_proxy" environment variable and easy to customize.
@@ -1937,6 +1940,7 @@ media-tv/xmltv:za - South Africa tv listing grabber
 media-video/arista:faac - Use external faac library for AAC encoding
 media-video/avidemux:aften - Enable A/52 (AC-3) audio encoder support
 media-video/avidemux:amrnb - Enable Narrow Band Adaptive Multi-Rate Audio support
+media-video/avidemux:opencore-amr - Enable Band Adaptive Multi-Rate format support
 media-video/chaplin:transcode - Enable DVD ripping and transcoding
 media-video/cinepaint:gutenprint - Enable support for gutenprint
 media-video/clive:clipboard - Support reading from X clipboard
@@ -2719,6 +2723,7 @@ net-misc/vnc:server - Build VNC server
 net-misc/vnc:xorgmodule - Build the Xorg module
 net-misc/vpnc:hybrid-auth - Enable hybrid authentication (certificates), only if not redistributed as compiled binary
 net-misc/vpnc:resolvconf - Enable support for DNS managing framework net-dns/openresolv
+net-misc/wget:ntlm - Enable support for NTLM (Windows-based) authorization
 net-misc/wicd:ioctl - Installs additional python libraries to use as a backend. This will improve speed but is experimental.
 net-misc/wicd:ncurses - Installs a ncurses UI
 net-misc/wicd:pm-utils - Installs the pm-utils hooks for suspend/resume and requires sys-power/pm-utils
@@ -2797,6 +2802,7 @@ net-p2p/museek+:qsa - Enable QSA scripting for museeq
 net-p2p/museek+:trayicon - Enable support for trayicon
 net-p2p/rtorrent:daemon - Uses app-misc/screen to daemonize this application" 
 net-p2p/transmission:dht - Enable Distributed Hash Tables support
+net-print/hplip:cups -  Build the hpcups driver for cups. 
 net-print/hplip:cupsddk - Add support for net-print/cupsddk which enables dynamic PPD files (recommended)
 net-print/hplip:dbus - Add support for sys-apps/dbus which enables better communications with your device (recommended)
 net-print/hplip:doc - Build documentation
@@ -3015,6 +3021,7 @@ sci-mathematics/pari:elliptic - Add additional elliptic curve data
 sci-mathematics/pari:galois - Add additional data to compute Galois groups of degree 8 to 11
 sci-mathematics/singular:boost - Compile against external boost headers (dev-libs/boost)
 sci-mathematics/yacas:server - Build the network server version
+sci-misc/boinc:client -  Build client part of the boinc. Not only the manager but also the computation unit. With +X only you will have only manager which can connect to remote clients. 
 sci-misc/boinc:cuda -  Use nvidia cuda toolkit for speeding up computations. NOTE: works only for subset of nvidia graphic cards so make sure your card is supported before opening bug about it. 
 sci-misc/boinc:server - Enable compilation of server
 sci-misc/h5utils:octave - Build Octave plugins
@@ -3023,6 +3030,7 @@ sci-misc/nco:udunits - Add sci-libs/udunits files support
 sci-misc/ncview:udunits - Add sci-libs/udunits files support
 sci-physics/cernlib-montecarlo:herwig - Build Herwig internal event generator, newer version available in sci-physics/herwig
 sci-physics/clhep:exceptions - Enable zoom exceptions for user intervention
+sci-physics/geant:aida - Add support for Abstract Interfaces for Data Analysis 
 sci-physics/geant:athena - Enable the MIT Athena (x11-libs/libXaw) widget set (default is Motif)
 sci-physics/geant:data - Add a lot of standard physics data files for geant4
 sci-physics/geant:dawn - Add support for media-gfx/dawn (3D postscript rendering)
@@ -3093,6 +3101,7 @@ sys-apps/pcmcia-cs:xforms - Enable building the xforms based cardinfo binary
 sys-apps/pcmcia-cs-modules:cardbus - Enable 32bit CardBus support
 sys-apps/pcmciautils:staticsocket - Add support for static sockets
 sys-apps/portage:epydoc - Build html API documentation with epydoc.
+sys-apps/portage:python3 - Use python3 as Python interpreter.
 sys-apps/qingy:opensslcrypt - Encrypt communications between qingy and its GUI using dev-libs/openssl
 sys-apps/qtparted:jfs - Include JFS support
 sys-apps/qtparted:ntfs - Include NTFS support
@@ -3106,6 +3115,7 @@ sys-apps/tuxonice-userui:fbsplash - Add support for framebuffer splash
 sys-apps/ucspi-ssl:tls - Add TLS support (see also http://www.suspectclass.com/~sgifford/ucspi-tls/)
 sys-apps/usbutils:network-cron - Monthly cronjob the update-usbids script
 sys-apps/util-linux:loop-aes - include support for Loop AES encryption
+sys-apps/util-linux:perl - install the chkdupexe helper script
 sys-apps/v86d:x86emu - Use x86emu for Video BIOS calls
 sys-auth/consolekit:policykit -  Use the PolicyKit framework (sys-auth/policykit) to get authorization for suspend/shutdown. 
 sys-auth/pam_mysql:openssl - Use OpenSSL for md5 and sha1 support
@@ -3357,6 +3367,7 @@ www-client/mozilla-firefox:xforms - XForms is a standard to split up XHTML into 
 www-client/mozilla-firefox-bin:restrict-javascript - Pull in x11-plugins/noscript extension to disable javascript globally, putting the user fully in control of the sites he/she visits
 www-client/opera:ia32 - Install 32-bit binaries instead of 64-bit binaries
 www-client/opera:qt-static - Install binaries statically linked to Qt
+www-client/seamonkey:custom-optimization - Fine-tune custom compiler optimizations
 www-client/seamonkey:mozdevelop - Enable features for web developers (e.g. Venkman)
 www-client/seamonkey:moznocompose - Disable building of mozilla's HTML editor component
 www-client/seamonkey:moznoirc - Disable building of mozilla's IRC client
@@ -3371,6 +3382,7 @@ www-plugins/adobe-flash:32bit - For amd64-multilib, installs the 32-bit plugin
 www-plugins/adobe-flash:64bit - For amd64-multilib, installs the native 64-bit plugin
 www-plugins/gnash:agg - Rendering based on the Anti-Grain Geometry Rendering Engine library
 www-plugins/gnash:cygnal - Enable building of the cygnal server
+www-plugins/gnash:ssh - Enable using SSH for network authentication in libnet
 www-servers/apache:peruser_dc - Enable support for the dc branch of peruser. EXPERIMENTAL!
 www-servers/apache:sni - Enable TLS Server Name Indication (SNI) - EXPERIMENTAL!
 www-servers/apache:suexec - Install suexec with apache
