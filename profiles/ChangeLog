@@ -1,10 +1,35 @@
 # ChangeLog for profile directory
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.3315 2009/09/27 02:40:28 dirtyepic Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.3321 2009/09/28 02:09:04 flameeyes Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  28 Sep 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  arch/amd64/package.use.mask, default-linux/amd64/package.use.mask,
+  hardened/amd64/package.use.mask, hardened/linux/amd64/package.use.mask:
+  Mask gphoto2 USE flag for wine on 64-bit systems (it's not in the emul
+  packages).
+
+  27 Sep 2009; Mart Raudsepp <leio@gentoo.org> package.mask:
+  Remove mask on now deleted webkit-gtk snapshot
+
+  27 Sep 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Unmask xfdesktop-4.6.1-r1 since it's working again.
+
+  27 Sep 2009; Nirbheek Chauhan <nirbheek@gentoo.org> package.mask:
+  Mask net-wireless/bluez-hciemu since it's provided by
+  net-wireless/bluez[test-programs] and by
+  net-wireless/bluez-utils[test-programs], and hence has a file collision --
+  bug 257826
+
+  27 Sep 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Unmask media-plugins/gmpc-lyricwiki because >= 0.19.0 is working.
+
+  27 Sep 2009; Ryan Hill <dirtyepic@gentoo.org> package.mask:
+  Mask net-p2p/nicotine for removal on 20091026. (bug #286607)
+  Superseded by net-p2p/nicotine+, no activity since 2005.
 
   27 Sep 2009; Ryan Hill <dirtyepic@gentoo.org> package.mask:
   Remove app-misc/tipptrainer mask - removed from tree.

@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4841 2009/09/26 22:07:44 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4844 2009/09/28 04:07:46 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -2494,6 +2494,8 @@ net-misc/openswan:weak-algorithms - Include weak algorithms (DH1)
 net-misc/openvpn:iproute2 - Enabled iproute2 support instead of net-tools
 net-misc/openvpn:passwordsave - Enables openvpn to save passwords
 net-misc/openvpn:pkcs11 - Enable PKCS#11 smartcard support
+net-misc/plowshare:megaupload - Enable megaupload module
+net-misc/plowshare:view-captcha - View captcha with aview
 net-misc/quagga:bgpclassless - Enable classless prefixes for BGP
 net-misc/quagga:fix-connected-rt - Remove interface connected routes from kernel table on link loss so that no packets get routed to downed interface
 net-misc/quagga:multipath - Enable multipath routes support for any number of routes
@@ -2640,6 +2642,11 @@ net-voip/ekiga:shm - Enable the Shared Memory Extension from libXext
 net-voip/ekiga:static - Statically link to opal and ptlib
 net-voip/ekiga:xcap - Enable XML Configuration Access Protocal
 net-voip/linphone:video - Enable video support (display/capture)
+net-voip/telepathy-connection-managers:bonjour - Enable Link-Local Messaging via the bonjour protocol.
+net-voip/telepathy-connection-managers:irc - Enable Internet Relay Chat (IRC) support.
+net-voip/telepathy-connection-managers:jabber - Enable XMPP protocol handler (this is also Google Talk).
+net-voip/telepathy-connection-managers:sip - Enable SIP/SIMPLE messaging and calling.
+net-voip/telepathy-connection-managers:yahoo - Enable Yahoo! messaging support.
 net-voip/yate:amrnb -  Enables Adaptive Multi-Rate Audio support (Narrow Band) 
 net-voip/yate:h323 - Build H.323 Channel plugin
 net-voip/yate:ilbc - Build ILBC codec plugin
@@ -3138,6 +3145,7 @@ www-client/seamonkey:moznoirc - Disable building of mozilla's IRC client
 www-client/seamonkey:moznomail - Disable building mozilla's mail client
 www-client/seamonkey:moznopango - Disable x11-libs/pango during runtime
 www-client/seamonkey:moznoroaming - sroaming extension support
+www-client/seamonkey:restrict-javascript - Pull in www-plugins/noscript extension to disable javascript globally, putting the user full$ control of the sites he/she visits
 www-client/seamonkey:xforms - XForms is a standard to split up XHTML into XForms, instance data, and user interface
 www-client/w3m:lynxkeymap - If you prefer Lynx-like key binding
 www-misc/vdradmin-am:vdr -  Support for media-video/vdr. Disable this if the VDR you want to control runs at a remote machine. 
