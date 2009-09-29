@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/perl-module.eclass,v 1.116 2009/03/29 17:32:31 tove Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/perl-module.eclass,v 1.117 2009/09/27 07:00:32 tove Exp $
 #
 # Author: Seemant Kulleen <seemant@gentoo.org>
 
@@ -15,16 +15,16 @@
 inherit eutils base
 [[ ${CATEGORY} == "perl-core" ]] && inherit alternatives
 
-EXPORTED_FUNCTIONS="src_unpack src_compile src_test src_install"
+PERL_EXPF="src_unpack src_compile src_test src_install"
 
 case "${EAPI:-0}" in
 	0|1)
-		EXPORTED_FUNCTIONS="${EXPORTED_FUNCTIONS} pkg_setup pkg_preinst pkg_postinst pkg_prerm pkg_postrm"
+		PERL_EXPF="${PERL_EXPF} pkg_setup pkg_preinst pkg_postinst pkg_postrm"
 		;;
 	2)
-		EXPORTED_FUNCTIONS="${EXPORTED_FUNCTIONS} src_prepare src_configure"
+		PERL_EXPF="${PERL_EXPF} src_prepare src_configure"
 		[[ ${CATEGORY} == "perl-core" ]] && \
-			EXPORTED_FUNCTIONS="${EXPORTED_FUNCTIONS} pkg_postinst pkg_postrm"
+			PERL_EXPF="${PERL_EXPF} pkg_postinst pkg_postrm"
 
 		case "${GENTOO_DEPEND_ON_PERL:-yes}" in
 			yes)
@@ -35,7 +35,7 @@ case "${EAPI:-0}" in
 		;;
 esac
 
-EXPORT_FUNCTIONS ${EXPORTED_FUNCTIONS}
+EXPORT_FUNCTIONS ${PERL_EXPF}
 
 DESCRIPTION="Based on the $ECLASS eclass"
 
@@ -63,7 +63,7 @@ perlinfo_done=false
 
 perl-module_src_unpack() {
 	base_src_unpack unpack
-	has src_prepare ${EXPORTED_FUNCTIONS} || perl-module_src_prepare
+	has src_prepare ${PERL_EXPF} || perl-module_src_prepare
 }
 
 perl-module_src_prepare() {
@@ -78,7 +78,7 @@ perl-module_src_configure() {
 }
 
 perl-module_src_prep() {
-	[[ ${SRC_PREP} = "yes" ]] && return 0
+	[[ ${SRC_PREP} = yes ]] && return 0
 	SRC_PREP="yes"
 
 	${perlinfo_done} || perlinfo
@@ -87,7 +87,7 @@ perl-module_src_prep() {
 	# Disable ExtUtils::AutoInstall from prompting
 	export PERL_EXTUTILS_AUTOINSTALL="--skipdeps"
 
-	if [[ ${PREFER_BUILDPL} == "yes" && -f Build.PL ]] ; then
+	if [[ ${PREFER_BUILDPL} == yes && -f Build.PL ]] ; then
 		einfo "Using Module::Build"
 		perl Build.PL \
 			--installdirs=vendor \
@@ -117,7 +117,7 @@ perl-module_src_prep() {
 perl-module_src_compile() {
 	${perlinfo_done} || perlinfo
 
-	has src_configure ${EXPORTED_FUNCTIONS} || perl-module_src_prep
+	has src_configure ${PERL_EXPF} || perl-module_src_prep
 
 	if [[ -f Build ]] ; then
 		./Build build \
@@ -139,14 +139,22 @@ perl-module_src_compile() {
 #  in your bashrc | /etc/make.conf | ENV
 #
 # For ebuild writers:
-#  If a package doesn't build with mulitthreaded tests enabled,
-#  this should be considered a bug, but for a temporary workaround,
-#  add NO_TEST_MULTI=1 to your ebuild.
+#  If you wish to enable default tests w/ 'make test' ,
+#
+#   SRC_TEST="do"
+#
+#  If you wish to have threads run in parallel ( using the users makeopts )
+#  all of the following have been tested to work.
+#
+#   SRC_TEST="do parallel"
+#   SRC_TEST="parallel"
+#   SRC_TEST="parallel do"
+#   SRC_TEST=parallel
 #
 
 perl-module_src_test() {
-	if [[ ${SRC_TEST} == "do" ]] ; then
-		if has "${TEST_VERBOSE:-0}" 0 && has "${NO_TEST_MULTI:-0}" 0 ; then
+	if has 'do' ${SRC_TEST} || has 'parallel' ${SRC_TEST} ; then
+		if has "${TEST_VERBOSE:-0}" 0 && has 'parallel' ${SRC_TEST} ; then
 			export HARNESS_OPTIONS=j$(echo -j1 ${MAKEOPTS} | sed -r "s/.*(-j\s*|--jobs=)([0-9]+).*/\2/" )
 			einfo "Test::Harness Jobs=${HARNESS_OPTIONS}"
 		fi
@@ -186,11 +194,11 @@ perl-module_src_install() {
 
 	fixlocalpod
 
-	for f in Change* CHANGES README* ${mydoc}; do
-		[[ -s "${f}" ]] && dodoc ${f}
+	for f in Change* CHANGES README* TODO ${mydoc}; do
+		[[ -s ${f} ]] && dodoc ${f}
 	done
 
-	if [[ -d "${D}/${VENDOR_LIB}" ]] ; then
+	if [[ -d ${D}/${VENDOR_LIB} ]] ; then
 		find "${D}/${VENDOR_LIB}" -type f -a \( -name .packlist \
 			-o \( -name '*.bs' -a -empty \) \) -delete
 		find "${D}/${VENDOR_LIB}" -depth -mindepth 1 -type d -empty -delete
@@ -222,8 +230,6 @@ perl-module_pkg_postrm() {
 	linkduallifescripts
 }
 
-perl-module_pkg_prerm() { : ; }
-
 perlinfo() {
 	perlinfo_done=true
 
@@ -245,7 +251,7 @@ fixlocalpod() {
 }
 
 linkduallifescripts() {
-	if [[ ${CATEGORY} != "perl-core" ]] || ! has_version ">=dev-lang/perl-5.10.1" ; then
+	if [[ ${CATEGORY} != perl-core ]] || ! has_version ">=dev-lang/perl-5.10.1" ; then
 		return 0
 	fi
 
