@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10509 2009/09/27 18:34:43 leio Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10514 2009/09/29 01:59:40 arfrever Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,27 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (29 Sep 2009)
+# wsgiref module is included in Python >=2.5. Masked for deletion in 30 days.
+dev-python/wsgiref
+
+# Rémi Cardona <remi@gentoo.org> (28 Sep 2009)
+# breaks xf86-video-intel, will be unmasked when the driver has a patch
+# see bug #286746
+=x11-base/xorg-server-1.6.4
+
+# Samuli Suominen <ssuominen@gentoo.org> (28 Sep 2009)
+# Obsolete. Supported by in-kernel drivers. Masked for removal,
+# see bug 159176.
+media-video/gspca
+media-video/spca5xx
+media-video/gspcav1
+
+# Samuli Suominen <ssuominen@gentoo.org> (28 Sep 2009)
+# Obsolete. Supported by in-kernel drivers. Masked for removal,
+# see bug 277605.
+media-video/qc-usb-messenger
 
 # Nirbheek Chauhan <nirbheek@gentoo.org> (27 Sep 2009)
 # File collision with bluez-utils[test-programs] -- bug 257826
@@ -622,19 +643,6 @@ sci-chemistry/maid
 #
 # Removal on 2009-10-08
 net-misc/bo2k_console
-
-# Diego E. Pettenò <flameeyes@gentoo.org> (09 Aug 2009)
-#  on behalf of QA team
-#
-# dev-util/sgb: fails with parallel make, without stopping
-# ebuild (installing broken data).
-#
-# sci-misc/gt-itm: depend on sgb, fails to build because of
-# the bug above (bug #248373).
-#
-# Removal on 2009-10-08
-dev-util/sgb
-sci-misc/gt-itm
 
 # Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (09 Aug 2009)
 # Masked for removal in 30 days due to security vulnerability (bug #280494).
@@ -1523,11 +1531,6 @@ games-rpg/openrpg
 >=net-analyzer/nessus-core-2.3.1
 >=net-analyzer/nessus-plugins-2.3.1
 >=net-analyzer/nessus-2.3.1
-
-# Mike Doty <kingtaco@gentoo.org> (24 Mar 2007)
-# Sorting out media-video/{spca5xx,gspca{,v1}} bug 159176
-media-video/spca5xx
-media-video/gspca
 
 # Stefan Cornelius <dercorny@gentoo.org> (7 Mar 2007)
 # Masking net-misc/xsupplicant due to security bug 154995
