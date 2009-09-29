@@ -7,16 +7,14 @@ SRC_URI="http://dl.suckless.org/tools/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="x11-libs/libX11"
 RDEPEND="${DEPEND}"
 
 src_install() {
-
-dodoc README
-exeinto /usr/bin
-doexe "${PN}"
-
+	dodoc README
+	exeinto /usr/bin
+	doexe "${PN}"
 }
