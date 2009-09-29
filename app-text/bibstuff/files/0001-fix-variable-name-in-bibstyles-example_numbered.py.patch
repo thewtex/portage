@@ -1,0 +1,42 @@
+From 5fd20dda5f999ad409c5f8c86adf48fd6c925ca5 Mon Sep 17 00:00:00 2001
+From: Matt McCormick (thewtex) <matt@mmmccormick.com>
+Date: Tue, 29 Sep 2009 13:53:29 -0500
+Subject: [PATCH 1/2] fix variable name in bibstyles/example_numbered.py
+
+fixes
+Traceback (most recent call last):
+  File "/usr/bin/bib4txt.py", line 249, in <module>
+      main()
+        File "/usr/bin/bib4txt.py", line 240, in main
+	    citations_only = not options.entire_doc)
+	      File "/usr/bin/bib4txt.py", line 120, in make_text_output
+	          result = citation_manager.make_citations()
+		    File "/usr/lib/python2.6/site-packages/bibstyles/shared.py",
+		    line 438, in make_citations
+		        entries.sort(key=self.sortkey)  #TODO!!! use more
+			sensible approach (also: 2.4 dependency)
+			  File
+			  "/usr/lib/python2.6/site-packages/bibstyles/example_numbered.py",
+			  line 65, in sortkey
+			      return self.get_citation_rank(entry)
+			      NameError: global name 'entry' is not defined
+---
+ bibstyles/example_numbered.py |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/bibstyles/example_numbered.py b/bibstyles/example_numbered.py
+index 85ae93a..f02a10c 100644
+--- a/bibstyles/example_numbered.py
++++ b/bibstyles/example_numbered.py
+@@ -62,7 +62,7 @@ class CitationManager(shared.CitationManager):
+ 		return ("%d."%self.get_citation_rank(entry)).ljust(5)
+ 
+ 	def sortkey(self,bibentry):
+-		return self.get_citation_rank(entry)
++		return self.get_citation_rank(bibentry)
+ 
+ 
+ 
+-- 
+1.6.5.rc1
+

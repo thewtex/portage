@@ -2,7 +2,7 @@ EAPI="2"
 
 NEED_PYTHON="2.5"
 
-inherit distutils
+inherit distutils eutils
 
 DESCRIPTION="Classes and command-line utilities for interacting with BibTeX
 style databases."
@@ -16,6 +16,13 @@ IUSE="examples"
 
 RDEPEND="dev-python/simpleparse"
 DEPEND=""
+
+src_prepare(){
+	epatch ${FILESDIR}/0001-fix-variable-name-in-bibstyles-example_numbered.py.patch || \
+		die "patch failed"
+	epatch ${FILESDIR}/0002-fix-assert-error-syntax-in-bibstyles-shared.py.patch || \
+		die "patch failed"
+}
 
 src_install() {
 	DOCS="README.txt"
