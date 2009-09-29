@@ -1,10 +1,24 @@
 # ChangeLog for profile directory
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.3321 2009/09/28 02:09:04 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.3325 2009/09/28 22:01:03 robbat2 Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  28 Sep 2009; Robin H. Johnson <robbat2@gentoo.org> package.mask:
+  sgb and gt-itm are fixed.
+
+  28 Sep 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask spca drivers for removal wrt #159176 because they are supported by
+  in-kernel drivers.
+
+  28 Sep 2009; Rémi Cardona <remi@gentoo.org> package.mask:
+  add xorg-server-1.6.4 to p.mask
+
+  28 Sep 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask media-video/qc-usb-messenger since it's supported by in-kernel
+  drivers.
 
   28 Sep 2009; Diego E. Pettenò <flameeyes@gentoo.org>
   arch/amd64/package.use.mask, default-linux/amd64/package.use.mask,
