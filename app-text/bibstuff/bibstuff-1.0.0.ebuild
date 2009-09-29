@@ -6,7 +6,7 @@ inherit distutils
 
 DESCRIPTION="Classes and command-line utilities for interacting with BibTeX
 style databases."
-HOMEPAGE="http://code.google.com/p/${PN}/"
+HOMEPAGE="http://www.pricklysoft.org/software/bibstuff.html"
 SRC_URI="http://${PN}.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="MIT"
