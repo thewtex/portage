@@ -17,7 +17,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~spa
 IUSE=""
 
 # Avoid silent errors during upgrade from older versions.
-DEPEND="!!<=dev-python/setuptools-0.6.3"
+DEPEND="!<=dev-python/setuptools-0.6.3"
 RDEPEND=""
 
 S="${WORKDIR}/distribute-${PV}"
