@@ -13,7 +13,11 @@ KEYWORDS="~x86"
 IUSE=""
 
 DEPEND="virtual/python"
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+  app-accessibility/speech-tools
+  app-text/texlive
+  virtual/ghostscript
+  media-libs/netpbm"
 
 src_install() {
 	python_version
