@@ -1,0 +1,25 @@
+From a179b6fc5e12d1c6e9b402b4a0a96404c4af990d Mon Sep 17 00:00:00 2001
+From: Matt McCormick (thewtex) <matt@mmmccormick.com>
+Date: Tue, 29 Sep 2009 17:35:48 -0500
+Subject: [PATCH] add gentoo path to pyuno.so
+
+---
+ unoconv |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/unoconv b/unoconv
+index 36fe96f..0c6a121 100755
+--- a/unoconv
++++ b/unoconv
+@@ -17,7 +17,7 @@
+ import getopt, sys, os, glob, time
+ 
+ #extrapaths = ('/usr/lib/openoffice/program/', '/usr/lib/openoffice.org2.0/program/')
+-extrapaths = glob.glob('/usr/lib*/openoffice*/program/') + glob.glob('/usr/lib*/ooo*/program') + [ '/Applications/NeoOffice.app/Contents/program', ]
++extrapaths = glob.glob('/usr/lib*/openoffice*/program/') + glob.glob('/usr/lib*/openoffice/basis*/program/') + glob.glob('/usr/lib*/ooo*/program') + [ '/Applications/NeoOffice.app/Contents/program', ]
+ for path in extrapaths:
+     try:
+         sys.path.append(path)   
+-- 
+1.6.5.rc1
+
