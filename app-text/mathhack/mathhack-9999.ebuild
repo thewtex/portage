@@ -26,7 +26,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	python_mod_compile /usr/bin/mathhack.py /usr/bin/imgmathhack.py $(python_get_sitedir)/rolehack.py
+	python_mod_compile $(python_get_sitedir)/rolehack.py
 }
 
 pkg_postrm() {
