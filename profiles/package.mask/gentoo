@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10514 2009/09/29 01:59:40 arfrever Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10516 2009/09/29 13:28:36 ssuominen Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,11 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Samuli Suominen <ssuominen@gentoo.org> (29 Sep 2009)
+# Doesn't compile and deps on arts. Masked for removal,
+# see bug 286813.
+media-plugins/flexplaylist
 
 # Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (29 Sep 2009)
 # wsgiref module is included in Python >=2.5. Masked for deletion in 30 days.
@@ -827,15 +832,6 @@ media-tv/ktvschedule
 # Upstream's unactive since 2005. Do not support asterisk versions in tree.
 # bug 279383
 net-misc/asterisk-chan_bluetooth
-
-# Diego E. Pettenò <flameeyes@gentoo.org> (29 Jul 2009)
-#  on behalf of QA Team
-#
-# Fails to build with gcc 4.3 (bug #240614), 4.4 (bug #278432) and mixes
-# compiler flags (bug #199585).
-#
-# Removal on 2009-09-29
-media-video/mmsv2
 
 # Víctor Ostorga <vostorga@gentoo.org> (29 Jul 2009)
 # Masked for removal in 60 days. Latest release in 2005, 
