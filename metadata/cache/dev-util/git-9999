@@ -1,5 +1,5 @@
-!app-misc/git dev-libs/openssl sys-libs/zlib app-arch/cpio perl? ( dev-lang/perl ) tk? ( dev-lang/tk ) curl? ( net-misc/curl webdav? ( dev-libs/expat ) ) emacs? ( virtual/emacs ) doc? ( app-text/asciidoc app-text/xmlto app-text/docbook2X ) dev-lang/perl >=dev-util/git-1.6
-!app-misc/git dev-libs/openssl sys-libs/zlib app-arch/cpio perl? ( dev-lang/perl ) tk? ( dev-lang/tk ) curl? ( net-misc/curl webdav? ( dev-libs/expat ) ) emacs? ( virtual/emacs ) perl? ( dev-perl/Error dev-perl/Net-SMTP-SSL dev-perl/Authen-SASL cgi? ( virtual/perl-CGI ) cvs? ( >=dev-util/cvsps-2.1 dev-perl/DBI dev-perl/DBD-SQLite ) subversion? ( dev-util/subversion[-dso] dev-perl/libwww-perl dev-perl/TermReadKey ) ) gtk? ( >=dev-python/pygtk-2.8 || ( dev-python/pygtksourceview:2 dev-python/gtksourceview-python ) ) dev-lang/perl bash-completion? ( app-admin/eselect )
+!app-misc/git !blksha1? ( dev-libs/openssl ) sys-libs/zlib app-arch/cpio perl? ( dev-lang/perl ) tk? ( dev-lang/tk ) curl? ( net-misc/curl webdav? ( dev-libs/expat ) ) emacs? ( virtual/emacs ) doc? ( app-text/asciidoc app-text/xmlto app-text/docbook2X ) dev-lang/perl >=dev-util/git-1.6
+!app-misc/git !blksha1? ( dev-libs/openssl ) sys-libs/zlib app-arch/cpio perl? ( dev-lang/perl ) tk? ( dev-lang/tk ) curl? ( net-misc/curl webdav? ( dev-libs/expat ) ) emacs? ( virtual/emacs ) perl? ( dev-perl/Error dev-perl/Net-SMTP-SSL dev-perl/Authen-SASL cgi? ( virtual/perl-CGI ) cvs? ( >=dev-util/cvsps-2.1 dev-perl/DBI dev-perl/DBD-SQLite ) subversion? ( dev-util/subversion[-dso] dev-perl/libwww-perl dev-perl/TermReadKey ) ) gtk? ( >=dev-python/pygtk-2.8 || ( dev-python/pygtksourceview:2 dev-python/gtksourceview-python ) ) dev-lang/perl bash-completion? ( app-admin/eselect )
 0
 
 
@@ -8,7 +8,7 @@ GPL-2
 GIT - the stupid content tracker, the revision control system heavily used by the Linux kernel team
 
 base bash-completion elisp-common eutils git multilib perl-module portability toolchain-funcs
-curl cgi doc emacs gtk iconv mozsha1 perl ppcsha1 tk threads webdav xinetd cvs subversion bash-completion
++blksha1 +curl cgi +doc emacs gtk iconv +perl ppcsha1 tk +threads +webdav xinetd cvs +subversion bash-completion
 
 
 
