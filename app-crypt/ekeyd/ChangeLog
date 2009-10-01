@@ -1,0 +1,37 @@
+# ChangeLog for app-crypt/ekeyd
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/ekeyd/ChangeLog,v 1.4 2009/09/29 20:29:02 flameeyes Exp $
+
+*ekeyd-1.0.6 (29 Sep 2009)
+
+  29 Sep 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  -ekeyd-1.0.5-r2.ebuild, +ekeyd-1.0.6.ebuild:
+  Version bump.
+
+*ekeyd-1.0.5-r2 (29 Sep 2009)
+
+  29 Sep 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  -ekeyd-1.0.5-r1.ebuild, +ekeyd-1.0.5-r2.ebuild, files/ekey-ulusbd.conf,
+  files/ekey-ulusbd.init:
+  New revision, thanks to the comments from Rob Kendrick (upstream); the
+  init script now uses lsusb, and is only installed for non-Linux systems,
+  while the correct udev rules are installed on Linux. Add a check for the
+  CDC driver, and also add warnings about both the userland USB and CDC
+  options.
+
+*ekeyd-1.0.5-r1 (28 Sep 2009)
+
+  28 Sep 2009; Diego E. Pettenò <flameeyes@gentoo.org> -ekeyd-1.0.5.ebuild,
+  +ekeyd-1.0.5-r1.ebuild, +files/ekey-ulusbd.conf, +files/ekey-ulusbd.init,
+  files/ekeyd.init:
+  Bump already, add init script for the userland USB daemon, and move the
+  two daemon executables in /usr/libexec.
+
+*ekeyd-1.0.5 (28 Sep 2009)
+
+  28 Sep 2009; Diego E. Pettenò <flameeyes@gentoo.org> +ekeyd-1.0.5.ebuild,
+  +files/ekeyd.init, +metadata.xml:
+  Initial import of the EntropyKey daemon; this is still a work-in-progress
+  ebuild, as it lacks an init script for the USB userland driver, and checks
+  for Linux kernel options for CDC modem support.
+

@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/awesome/awesome-3.4_rc1.ebuild,v 1.1 2009/09/14 15:35:23 matsuu Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/awesome/awesome-3.4_rc2.ebuild,v 1.1 2009/09/29 14:23:39 matsuu Exp $
 
 EAPI="2"
 inherit cmake-utils eutils
@@ -34,7 +34,7 @@ DEPEND="${RDEPEND}
 	app-text/xmlto
 	>=dev-util/cmake-2.6
 	dev-util/pkgconfig
-	media-gfx/imagemagick
+	media-gfx/imagemagick[png]
 	>=x11-proto/xcb-proto-1.5
 	>=x11-proto/xproto-7.0.15
 	doc? (

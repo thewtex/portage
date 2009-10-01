@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/man/man-1.6f-r3.ebuild,v 1.11 2009/09/08 17:49:30 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/man/man-1.6f-r3.ebuild,v 1.13 2009/09/29 11:45:01 flameeyes Exp $
 
 inherit eutils toolchain-funcs
 
@@ -21,7 +21,7 @@ IUSE="lzma nls"
 # RDEPEND, so installing using binary packages can try to install this package
 # before shadow
 DEPEND="nls? ( sys-devel/gettext ) sys-apps/shadow"
-RDEPEND=">=sys-apps/groff-1.19.2-r1
+RDEPEND="|| ( >=sys-apps/groff-1.19.2-r1 app-doc/heirloom-doctools )
 	!sys-apps/man-db
 	!app-arch/lzma
 	sys-apps/shadow
@@ -133,5 +133,13 @@ pkg_postinst() {
 		ewarn "You have multiple makewhatis cron files installed."
 		ewarn "You might want to delete all but one of these:"
 		ewarn ${files}
+	fi
+
+	if has_version app-doc/heirloom-doctools; then
+		ewarn "Please note that the /etc/man.conf file installed will not"
+		ewarn "work with heirloom's nroff by default (yet)."
+		ewarn ""
+		ewarn "Check app-doc/heirloom-doctools elog messages for the proper"
+		ewarn "configuration."
 	fi
 }

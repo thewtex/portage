@@ -6,6 +6,14 @@
 #   but that is openoffice-bin; will try with open-office
 app-office/unoconv
 
+# Daniel Robbins <drobbins@funtoo.org> (29 Sep 2009)
+# readline-6.0_p4 does not build in metro stage builds. It
+# cannot find its own headers and relies on a prior 
+# readline to be installed
+
+=sys-libs/readline-6.0_p4
+
+
 # See Gentoo bug 277382:
 >=sys-apps/busybox-1.14
 
