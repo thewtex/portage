@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4855 2009/09/30 02:44:15 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4858 2009/09/30 14:48:43 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -1795,8 +1795,8 @@ media-tv/xmltv:uk_rt - Britain alternative tv listing grabber
 media-tv/xmltv:za - South Africa tv listing grabber
 media-video/arista:faac - Use external faac library for AAC encoding
 media-video/avidemux:aften - Enable A/52 (AC-3) audio encoder support
-media-video/avidemux:amrnb - Enable Narrow Band Adaptive Multi-Rate Audio support
-media-video/avidemux:opencore-amr - Enable Band Adaptive Multi-Rate format support
+media-video/avidemux:amr - Enable Adaptive Multi-Rate format support through media-libs/opencore-amr
+media-video/avidemux:amrnb - Enables Adaptive Multi-Rate Audio support (Narrow Band) through media-libs/amrnb
 media-video/chaplin:transcode - Enable DVD ripping and transcoding
 media-video/cinepaint:gutenprint - Enable support for gutenprint
 media-video/clive:clipboard - Support reading from X clipboard
@@ -3196,6 +3196,7 @@ x11-libs/fltk:games - Builds and installs some extra games
 x11-libs/fltk:noxft - Disables xft; use for non-english characters
 x11-libs/gtkdatabox:glade - Build with libglade and glade-3 supports, which includes a glade's module for GtkDataBox widget
 x11-libs/gtkmathview:t1lib - Enable media-libs/t1lib support
+x11-libs/libSM:uuid - Use UUID for session identification instead of IP address and system time. 
 x11-libs/libmatchbox:pango - Enable x11-libs/pango support
 x11-libs/libmatchbox:xsettings - Enable the use of xsettings for settings management
 x11-libs/libqxt:crypt -  Enable support for blowfish encryption using dev-libs/openssl 
@@ -3312,6 +3313,7 @@ xfce-base/xfce4-settings:sound - Enable sound event support with media-libs/libc
 xfce-base/xfdesktop:menu-plugin - Build Menu plug-in for panel
 xfce-base/xfdesktop:thunar - Build support for application launchers using xfce-base/thunar
 xfce-extra/thunar-thumbnailers:grace - Enable support for sci-visualization/grace thumbnails
+xfce-extra/thunar-vcs-plugin:git - Enable dev-util/git support
 xfce-extra/xfce4-mpc-plugin:libmpd - Build using media-libs/libmpd backend, instead of native fallback which is preferred
 xfce-extra/xfce4-playercontrol-plugin:audacious - Enable Audacious support
 xfce-extra/xfce4-playercontrol-plugin:mpd - Enable Music Player Daemon support
