@@ -15,7 +15,8 @@ KEYWORDS="~x86 ~amd64"
 IUSE=""
 
 RDEPEND=">=dev-lang/python-2.5
-	 || ( app-office/openoffice app-office/openoffice-bin )"
+	 app-office/openoffice 
+	 !app-office/openoffice-bin"
 DEPEND="dev-python/setuptools"
 
 src_prepare() {
