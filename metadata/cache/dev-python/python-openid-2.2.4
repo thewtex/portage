@@ -1,5 +1,5 @@
-|| ( >=dev-lang/python-2.5 dev-python/elementtree ) || ( >=dev-lang/python-2.5 dev-python/pycrypto ) sqlite? ( || ( >=dev-lang/python-2.5 >=dev-python/pysqlite-2 ) ) postgres? ( dev-python/psycopg ) mysql? ( >=dev-python/mysql-python-1.2.2 ) >=dev-lang/python-2.3 >=app-shells/bash-3.2 virtual/python
-|| ( >=dev-lang/python-2.5 dev-python/elementtree ) || ( >=dev-lang/python-2.5 dev-python/pycrypto ) sqlite? ( || ( >=dev-lang/python-2.5 >=dev-python/pysqlite-2 ) ) postgres? ( dev-python/psycopg ) mysql? ( >=dev-python/mysql-python-1.2.2 ) >=dev-lang/python-2.3 virtual/python
+mysql? ( >=dev-python/mysql-python-1.2.2 ) postgres? ( dev-python/psycopg ) sqlite? ( || ( dev-lang/python[sqlite] >=dev-python/pysqlite-2 ) ) >=dev-lang/python-2.5 >=app-shells/bash-3.2 >=app-admin/eselect-python-20090606 virtual/python
+mysql? ( >=dev-python/mysql-python-1.2.2 ) postgres? ( dev-python/psycopg ) sqlite? ( || ( dev-lang/python[sqlite] >=dev-python/pysqlite-2 ) ) >=dev-lang/python-2.5 virtual/python
 0
 http://www.openidenabled.com/files/python-openid/packages/python-openid-2.2.4.tar.bz2
 
@@ -12,9 +12,9 @@ doc examples mysql postgres sqlite
 
 
 
+2
 
-
-compile install postinst postrm test unpack
+compile install postinst postrm prepare test unpack
 
 
 
