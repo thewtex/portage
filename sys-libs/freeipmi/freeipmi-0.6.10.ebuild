@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/freeipmi/freeipmi-0.6.10.ebuild,v 1.2 2009/05/03 17:17:10 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/freeipmi/freeipmi-0.6.10.ebuild,v 1.3 2009/10/01 09:44:50 flameeyes Exp $
 
 WANT_AUTOMAKE=1.9
 
@@ -43,7 +43,7 @@ src_install() {
 	dodoc AUTHORS ChangeLog* DISCLAIMER* NEWS README* TODO
 	dodoc doc/*.txt
 
-	rm /usr/share/doc/${PF}/COPYING* /usr/share/doc/${PF}/INSTALL
+	rm "${D}"/usr/share/doc/${PF}/COPYING* "${D}"/usr/share/doc/${PF}/INSTALL
 
 	keepdir \
 		/var/cache/ipmimonitoringsdrcache \
