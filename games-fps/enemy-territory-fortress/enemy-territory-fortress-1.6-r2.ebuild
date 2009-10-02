@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/enemy-territory-fortress/enemy-territory-fortress-1.6-r2.ebuild,v 1.5 2009/04/07 17:12:03 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-fps/enemy-territory-fortress/enemy-territory-fortress-1.6-r2.ebuild,v 1.7 2009/10/01 21:08:17 nyhm Exp $
 
 MOD_DESC="a class-based teamplay modification"
 MOD_NAME="Fortress"
@@ -17,7 +17,9 @@ SRC_URI="http://www.sonnensturm.net/download/etf_${PV}-english-2.run
 	http://liflg.httpdnet.com/files/native/etf_${PV}-english-2.run
 	http://www.sonnensturm.net/download/etf_${PV}-english-2.run"
 
-RDEPEND="games-fps/${GAME}"
+LICENSE="freedist"
+KEYWORDS="amd64 x86"
+IUSE="dedicated opengl"
 
 QA_TEXTRELS="${GAMES_DATADIR:1}/${GAME}/etf/omnibot_etf.so
 	${GAMES_DATADIR:1}/${GAME}/omnibot_etf.so"

@@ -1,6 +1,6 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/ut2004-alienswarm/ut2004-alienswarm-1.32.ebuild,v 1.1 2007/03/13 02:18:23 wolf31o2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-fps/ut2004-alienswarm/ut2004-alienswarm-1.32.ebuild,v 1.3 2009/10/01 21:59:28 nyhm Exp $
 
 MOD_DESC="an overhead-view tactical squad-based shooter"
 MOD_NAME="Alien Swarm"
@@ -25,9 +25,9 @@ SRC_URI="${N_SRC}/AlienSwarm-v${AS_V}.zip
 	http://www.bliny.co.uk/mirror/swarm/TelicCampaign_${TC_V}.zip
 	${N_SRC}/AlienSwarm_13_or_131_to_${MY_PV}_Patch.zip"
 
-IUSE=""
-
-RDEPEND="${CATEGORY}/${GAME}"
+LICENSE="freedist"
+KEYWORDS="amd64 x86"
+IUSE="dedicated opengl"
 
 src_unpack() {
 	# It is (surprisingly) deliberate to have Music & System dirs

@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10519 2009/09/30 15:55:07 josejx Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10524 2009/10/01 22:06:31 mr_bones_ Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -31,6 +31,37 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Sterrett <mr_bones_@gentoo.org> (01 Oct 2009)
+# Doesn't work with newer openal.  Use games-action/openastromenace instead.
+games-action/astromenace-bin
+
+# Marcus D. Hanwell <cryos@gentoo.org> (01 Oct 2009)
+# Release candidates for the new CMake release
+>=dev-util/cmake-2.8.0_rc1
+
+# Bernard Cafarelli <voyageur@gentoo.org> (01 Oct 2009)
+# Live ebuilds for bleeding-edge users
+~www-client/chromium-9999
+~www-client/chromium-bin-9999
+
+# Torsten Veller <tove@gentoo.org> (01 Oct 2009)
+# Old. Replaced. Or just unmaintained.
+# - replaced by dev-perl/Gtk2-Ex-PodViewer 
+#   bug 281511 (01 Oct 2009)
+dev-perl/Gtk2-PodViewer
+# - AWW is dead!
+#   bug 281504 (01 Oct 2009)
+dev-perl/aww
+# - seems to be dead.
+#   bug 281509 (01 Oct 2009)
+dev-perl/perlsieve
+# - seems to be dead too.
+#   bug 281507 (01 Oct 2009)
+dev-perl/perlrapi
+# - replaced, dead, unneeded
+#   bug 281495 (01 Oct 2009)
+dev-perl/Gtk2-Html2
+
 # Samuli Suominen <ssuominen@gentoo.org> (29 Sep 2009)
 # Doesn't compile and deps on arts. Masked for removal,
 # see bug 286813.
@@ -41,7 +72,7 @@ media-plugins/flexplaylist
 dev-python/wsgiref
 
 # Rémi Cardona <remi@gentoo.org> (28 Sep 2009)
-# breaks xf86-video-intel, will be unmasked when the driver has a patch
+# breaks nearly all X drivers, 1.6.5 should fix the issue when it comes out
 # see bug #286746
 =x11-base/xorg-server-1.6.4
 
@@ -989,10 +1020,6 @@ media-libs/freeimage
 # Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (30 May 2009)
 # Development versions.
 =net-libs/gnutls-2.9*
-
-# Bernard Cafarelli <voyageur@gentoo.org> (27 May 2009)
-# Live ebuild for bleeding-edge users
-~www-client/chromium-bin-9999
 
 # Peter Alfredsen <loki_val@gentoo.org> (01 June 2009)
 # Development version, Work-In-Progress
