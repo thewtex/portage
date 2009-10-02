@@ -9,7 +9,7 @@ HOMEPAGE="http://docutils.sourceforge.net/sandbox/cben/rolehack/"
 
 LICENSE=""
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="virtual/python"
