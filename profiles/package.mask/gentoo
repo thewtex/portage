@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10524 2009/10/01 22:06:31 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10530 2009/10/02 22:41:32 maekke Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,10 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Markus Meier <maekke@gentoo.org> (03 Oct 2009)
+# masked for testing
+>=media-gfx/autopano-sift-C-2.5.1_rc1
 
 # Michael Sterrett <mr_bones_@gentoo.org> (01 Oct 2009)
 # Doesn't work with newer openal.  Use games-action/openastromenace instead.
@@ -70,11 +74,6 @@ media-plugins/flexplaylist
 # Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (29 Sep 2009)
 # wsgiref module is included in Python >=2.5. Masked for deletion in 30 days.
 dev-python/wsgiref
-
-# Rémi Cardona <remi@gentoo.org> (28 Sep 2009)
-# breaks nearly all X drivers, 1.6.5 should fix the issue when it comes out
-# see bug #286746
-=x11-base/xorg-server-1.6.4
 
 # Samuli Suominen <ssuominen@gentoo.org> (28 Sep 2009)
 # Obsolete. Supported by in-kernel drivers. Masked for removal,
@@ -177,30 +176,34 @@ app-doc/xorg-docs
 # Removal due 19 Oct 2009
 media-libs/mlt++
 
+# Tomáš Chvátal <scarabeus@gentoo.org> (2 Oct 2009)
+# update it a bit more to reflect what i will be adding now
 # Rémi Cardona <remi@gentoo.org> (19 Sep 2009)
 # xorg-server 1.7 packages, will be unmasked once 1.6 is stable
-=x11-libs/libX11-1.2.99*
-=x11-libs/libXext-1.0.99*
-=x11-libs/libXi-1.2.99*
-=x11-libs/libXinerama-1.0.99*
-=x11-libs/libXScrnSaver-1.2*
-=x11-libs/libXtst-1.0.99*
-=x11-libs/libXxf86vm-1.0.99*
-=x11-proto/bigreqsproto-1.1*
-=x11-proto/dmxproto-2.2.99*
-=x11-proto/evieext-1.1*
-=x11-proto/fixesproto-4.1
-=x11-proto/inputproto-1.9.99*
-=x11-proto/recordproto-1.13.99*
-=x11-proto/renderproto-0.11
-=x11-proto/scrnsaverproto-1.2*
-=x11-proto/xcmiscproto-1.2*
-=x11-proto/xextproto-7.1*
-=x11-proto/xf86bigfontproto-1.2*
-=x11-proto/xf86dgaproto-2.0.99*
-=x11-proto/xf86driproto-2.1*
-=x11-proto/xf86vidmodeproto-2.2.99*
-=x11-proto/xineramaproto-1.1.99*
+=x11-base/xorg-drivers-1.7
+>=x11-base/xorg-server-1.7.0
+>=x11-libs/libX11-1.2.99.0
+>=x11-libs/libXext-1.0.99.0
+>=x11-libs/libXi-1.2.99.0
+>=x11-libs/libXinerama-1.0.99.0
+>=x11-libs/libXScrnSaver-1.2.0
+>=x11-libs/libXtst-1.0.99.0
+>=x11-libs/libXxf86vm-1.0.99.0
+>=x11-proto/bigreqsproto-1.1
+>=x11-proto/dmxproto-2.2.99
+>=x11-proto/evieext-1.1
+>=x11-proto/fixesproto-4.1
+>=x11-proto/inputproto-1.9.99
+>=x11-proto/recordproto-1.13.99.0
+~x11-proto/renderproto-0.11
+~x11-proto/scrnsaverproto-1.2.0
+~x11-proto/xcmiscproto-1.2
+~x11-proto/xextproto-7.1.1
+~x11-proto/xf86bigfontproto-1.2
+~x11-proto/xf86dgaproto-2.1
+~x11-proto/xf86driproto-2.1
+~x11-proto/xf86vidmodeproto-2.3
+~x11-proto/xineramaproto-1.2
 
 # Bryan Stine <battousai@gentoo.org> (18 Sep 2009)
 # Mask for removal in 30 days. The x11-drm git tree is abandoned, modules have
