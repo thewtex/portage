@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/lirc/lirc-0.8.5.ebuild,v 1.6 2009/10/03 22:46:15 fauli Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/lirc/lirc-0.8.5.ebuild,v 1.8 2009/10/04 18:48:28 fauli Exp $
 
 inherit eutils linux-mod flag-o-matic autotools
 
@@ -17,7 +17,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ppc ~ppc64 x86"
 IUSE="debug doc X hardware-carrier transmitter"
 
 S="${WORKDIR}/${MY_P}"
@@ -44,7 +44,7 @@ IUSE_LIRC_DEVICES_DIRECT="
 	devinput digimatrix dsp dvico ea65
 	exaudio flyvideo ftdi gvbctv5pci hauppauge
 	hauppauge_dvb hercules_smarttv_stereo i2cuser
-	igorplugusb iguana imon imon_24g imon_knob
+	igorplugusb iguanaIR imon imon_24g imon_knob
 	imon_lcd imon_pad imon_rsc irdeo irdeo_remote
 	irlink irman irreal it87 ite8709
 	knc_one kworld leadtek_0007 leadtek_0010
