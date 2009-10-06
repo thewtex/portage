@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4868 2009/10/04 00:27:43 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4872 2009/10/06 03:21:30 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -1439,6 +1439,8 @@ media-gfx/fontforge:pasteafter - Controls whether fontforge has a paste after co
 media-gfx/fontforge:tilepath - Controls whether fontforge has a tile path command (a variant of expand stroke) This is useful for very decorative fonts, most people won't want it.
 media-gfx/fontforge:truetype-debugger - Enable truetype debugger in fontforge
 media-gfx/fontforge:type3 - Build in support for type3/svg fonts containing multilayered drawing with strokes, fills, images, etc. Type3 fonts are only supported by postscript printers (not by most windowing displays). They are capable of more exotic images than normal fonts but require much more effort to support.
+media-gfx/freewrl:libeai - Build EAI C library
+media-gfx/freewrl:spidermonkey - Use spidermonkey instead of Firefox
 media-gfx/geeqie:xmp - Adds support for XMP metadata
 media-gfx/gimp:smp -  Enable support for multiprocessors 
 media-gfx/gimp:webkit -  Enable the webkit rendering engine 
@@ -2269,8 +2271,6 @@ net-im/sim:weather - Enable weather plugin to get weather data from weather.com 
 net-im/skype:qt-static - Installs binaries statically linked to Qt
 net-im/tkabber:extras - Enables extra non official patches
 net-im/tkabber:plugins - Enables installation the extra plugins
-net-im/twinkle:ilbc - Enables use of ilbc (RFC3951) audio encoding
-net-im/twinkle:zrtp - Enables use of secure rtp using the zrtp extension of GNU RTP stack developed by Phil Zimmermann 
 net-irc/atheme:largenet - Enable support/tweaks for large networks
 net-irc/bip:oidentd - Enable oidentd support
 net-irc/ezbounce:boost - Compile against dev-libs/boost libraries
@@ -2656,6 +2656,8 @@ net-voip/telepathy-connection-managers:irc - Enable Internet Relay Chat (IRC) su
 net-voip/telepathy-connection-managers:jabber - Enable XMPP protocol handler (this is also Google Talk).
 net-voip/telepathy-connection-managers:sip - Enable SIP/SIMPLE messaging and calling.
 net-voip/telepathy-connection-managers:yahoo - Enable Yahoo! messaging support.
+net-voip/twinkle:ilbc - Enables use of ilbc (RFC3951) audio encoding
+net-voip/twinkle:zrtp - Enables use of secure rtp using the zrtp extension of GNU RTP stack developed by Phil Zimmermann 
 net-voip/yate:amrnb -  Enables Adaptive Multi-Rate Audio support (Narrow Band) 
 net-voip/yate:h323 - Build H.323 Channel plugin
 net-voip/yate:ilbc - Build ILBC codec plugin
@@ -2988,6 +2990,7 @@ sys-devel/binutils-hppa64:multitarget - Adds support to binutils for cross compi
 sys-devel/binutils-nios2:gold - Use the new gold linker (written in C++) rather than the standard linker (this _will_ break things)
 sys-devel/binutils-nios2:multislot - Allow for multiple versions of binutils to be emerged at once for same CTARGET
 sys-devel/binutils-nios2:multitarget - Adds support to binutils for cross compiling (does not work with gas)
+sys-devel/clang:static-analyzer - Install the Clang static analyzer
 sys-devel/gcc:d - Enable support for the D programming language
 sys-devel/gcc:fixed-point - Enable fixed-point arithmetic support for MIPS targets in gcc (Warning: significantly increases compile time!)
 sys-devel/gcc:graphite - Add support for the framework for loop optimizations based on a polyhedral intermediate representation
@@ -3010,6 +3013,11 @@ sys-devel/gcc-nios2:multislot - Allow for SLOTs to include minor version (3.3.4 
 sys-devel/gdb:multitarget - Support all known targets in one gdb binary
 sys-devel/kgcc64:multislot - Allow for SLOTs to include minor version (eg. 3.3.4 instead of just 3.3)
 sys-devel/libperl:ithreads - Enable Perl threads, has some compatibility problems
+sys-devel/llvm:alltargets - Build all host targets (default: host only)
+sys-devel/llvm:llvm-gcc - Build LLVM with sys-devel/llvm-gcc
+sys-devel/llvm-gcc:bootstrap - Compile the final llvm-gcc executables with llvm-gcc itself
+sys-devel/llvm-gcc:objc - Build support for the Objective C code language
+sys-devel/llvm-gcc:objc++ - Build support for the Objective C++ language
 sys-freebsd/freebsd-lib:gpib - Enable General Purpose Interface Bus support
 sys-freebsd/freebsd-lib:hesiod - Enable support for net-dns/hesiod
 sys-freebsd/freebsd-lib:netware -  Build libraries and tools to work with NetWare protocols (IPX and NCP). 
