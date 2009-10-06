@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/pulseaudio/pulseaudio-0.9.18.ebuild,v 1.2 2009/09/28 11:26:03 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/pulseaudio/pulseaudio-0.9.18.ebuild,v 1.4 2009/10/05 10:31:45 flameeyes Exp $
 
 EAPI=2
 
@@ -54,7 +54,10 @@ RDEPEND="X? ( x11-libs/libX11 x11-libs/libSM x11-libs/libICE x11-libs/libXtst )
 
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )
-	X? ( x11-proto/xproto )
+	X? (
+		x11-proto/xproto
+		|| ( >=x11-libs/libXtst-1.0.99.2 <x11-proto/xextproto-7.0.99 )
+	)
 	dev-libs/libatomic_ops
 	dev-util/pkgconfig
 	dev-util/intltool"
@@ -71,7 +74,7 @@ pkg_setup() {
 
 	if use udev && use hal; then
 		elog "Please note that enabling both udev and hal will build both"
-		elog "discover modules, but only udev will be ued automatically."
+		elog "discover modules, but only udev will be used automatically."
 		elog "If you wish to use hal you have to enable it explicitly"
 		elog "or you might just disable the hal USE flag entirely."
 	fi
@@ -84,7 +87,7 @@ src_prepare() {
 src_configure() {
 	# It's a binutils bug, once I can find time to fix that I'll add a
 	# proper dependency and fix this up. — flameeyes
-	append-ldflags -Wl,--no-as-needed
+	append-ldflags $(no-as-needed)
 
 	econf \
 		--enable-largefile \

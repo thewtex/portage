@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/lirc/lirc-0.8.5.ebuild,v 1.5 2009/08/29 18:09:00 nixnut Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/lirc/lirc-0.8.5.ebuild,v 1.8 2009/10/04 18:48:28 fauli Exp $
 
 inherit eutils linux-mod flag-o-matic autotools
 
@@ -44,7 +44,7 @@ IUSE_LIRC_DEVICES_DIRECT="
 	devinput digimatrix dsp dvico ea65
 	exaudio flyvideo ftdi gvbctv5pci hauppauge
 	hauppauge_dvb hercules_smarttv_stereo i2cuser
-	igorplugusb iguana imon imon_24g imon_knob
+	igorplugusb iguanaIR imon imon_24g imon_knob
 	imon_lcd imon_pad imon_rsc irdeo irdeo_remote
 	irlink irman irreal it87 ite8709
 	knc_one kworld leadtek_0007 leadtek_0010
@@ -73,24 +73,26 @@ IUSE_LIRC_DEVICES="${IUSE_LIRC_DEVICES_DIRECT} ${IUSE_LIRC_DEVICES_SPECIAL}"
 LIBUSB_USED_BY_DEV="
 	all atilibusb awlibusb sasem igorplugusb imon imon_lcd imon_pad
 	imon_rsc streamzap mceusb mceusb2 xboxusb irlink commandir"
+LIBFTDI_USED_BY_DEV="
+	ftdi usbirboy userspace"
 
 for dev in ${LIBUSB_USED_BY_DEV}; do
-	RDEPEND="${RDEPEND} lirc_devices_${dev}? ( dev-libs/libusb )"
+	DEPEND="${DEPEND} lirc_devices_${dev}? ( dev-libs/libusb )"
+done
+
+for dev in ${LIBFTDI_USED_BY_DEV}; do
+	DEPEND="${DEPEND} lirc_devices_${dev}? ( dev-embedded/libftdi )"
 done
 
 RDEPEND="${RDEPEND}
-	lirc_devices_ftdi? ( dev-embedded/libftdi )"
+	lirc_devices_usbirboy? ( app-misc/usbirboy )
+	lirc_devices_inputlirc? ( app-misc/inputlircd )
+	lirc_devices_iguana? ( app-misc/iguanaIR )"
 
 # adding only compile-time depends
 DEPEND="${RDEPEND}
 	virtual/linux-sources
 	lirc_devices_all? ( dev-embedded/libftdi )"
-
-# adding only run-time depends
-RDEPEND="${RDEPEND}
-	lirc_devices_usbirboy? ( app-misc/usbirboy )
-	lirc_devices_inputlirc? ( app-misc/inputlircd )
-	lirc_devices_iguana? ( app-misc/iguanaIR )"
 
 # add all devices to IUSE
 for dev in ${IUSE_LIRC_DEVICES}; do

@@ -1,10 +1,95 @@
 # ChangeLog for profile directory
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.3332 2009/09/30 15:55:07 josejx Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.3360 2009/10/05 17:26:22 ssuominen Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  05 Oct 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask release candidate of libffi for testing.
+
+  05 Oct 2009; Víctor Ostorga <vostorga@gentoo.org> package.mask:
+  Removing entries net-im/silky www-servers/shttpd and gnome-extra/gnome-art
+  since they are not in the tree
+
+  05 Oct 2009; Bernard Cafarelli <voyageur@gentoo.org> package.mask:
+  Mask LLVM pre-releases, added in tree for testing before final 2.6
+
+  05 Oct 2009; Markos Chandras <hwoarang@gentoo.org> package.mask:
+  Remove griffith masking
+
+  05 Oct 2009; Jeremy Olexa <darkside@gentoo.org> package.mask:
+  Mask multiple packages for QA/treecleaners
+
+  04 Oct 2009; Mark Loeser <halcy0n@gentoo.org> package.mask:
+  Adding mask back for >=app-crypt/gnupg-2.0.12; bug #275291
+
+  04 Oct 2009; Vlastimil Babka <caster@gentoo.org> package.mask:
+  Last rites for dev-db/xindice
+
+  04 Oct 2009; Samuli Suominen <ssuominen@gentoo.org> profiles.desc:
+  Remove 2008.0 profiles from .desc.
+
+  04 Oct 2009; Christian Faulhammer <fauli@gentoo.org>
+  desc/lirc_devices.desc:
+  correct entry of iguanaIR and add ene0100 device
+
+  04 Oct 2009; Christian Faulhammer <fauli@gentoo.org> package.mask:
+  remove mask for app-misc/iguanaIR
+
+  04 Oct 2009; Mike Doty <kingtaco@gentoo.org> package.mask:
+  More emul refresh
+
+  04 Oct 2009; Alex Alexander <wired@gentoo.org> package.mask:
+  removed Qt 4.5.3 p.mask
+
+  04 Oct 2009; Alex Alexander <wired@gentoo.org> package.mask:
+  p.masking Qt 4.5.3 before adding it to the tree
+
+  04 Oct 2009; Samuli Suominen <ssuominen@gentoo.org>
+  targets/developer/make.defaults:
+  Enable LD_AS_NEEDED="1" and FEATURES="test" by default wrt discussion in
+  -dev ML.
+
+  04 Oct 2009; Mike Doty <kingtaco@gentoo.org> package.mask:
+  p.mask emul-linux-x86-baselibs-20091003_rc1
+
+  03 Oct 2009; Vlastimil Babka <caster@gentoo.org> package.mask:
+  Last rites for dev-java/tagunit.
+
+  03 Oct 2009; Vlastimil Babka <caster@gentoo.org> package.mask:
+  Last rites for dev-java/crimson and dev-java/xmojo-bin
+
+  03 Oct 2009; Vlastimil Babka <caster@gentoo.org> package.mask:
+  Mask dev-java/axion for removal.
+
+  03 Oct 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Mask stuff that forces Python-3 down the throat of users. Don't remove the
+  mask without discussion if you don't want to have QA on your track. Feel
+  free to add more stuff as needed though.
+
+  03 Oct 2009; Rémi Cardona <remi@gentoo.org> package.mask:
+  fix xorg-server 1.7 package.mask entry, stab scarabeus
+
+  02 Oct 2009; Markus Meier <maekke@gentoo.org> package.mask:
+  mask >=media-gfx/autopano-sift-C-2.5.1_rc1 for testing
+
+  02 Oct 2009; Rémi Cardona <remi@gentoo.org> package.mask:
+  unmask xorg-server 1.6.4
+
+  02 Oct 2009; Rémi Cardona <remi@gentoo.org> package.mask:
+  update xorg-server package.mask entry, add 1.6.4.901
+
+  01 Oct 2009; Marcus D. Hanwell <cryos@gentoo.org> package.mask:
+  Added >=dev-util/cmake-2.8.0_rc1 to package.mask before final release.
+
+  01 Oct 2009; Rémi Cardona <remi@gentoo.org> package.mask:
+  update xorg-server package.mask entry
+
+  01 Oct 2009; Torsten Veller <tove@gentoo.org> package.mask:
+  Mask dev-perl/Gtk2-PodViewer, dev-perl/aww, dev-perl/perlsieve,
+  dev-perl/perlrapi, dev-perl/Gtk2-Html2 for removal
 
   30 Sep 2009; Joseph Jezak <josejx@gentoo.org> package.mask:
   Removed xac mask, bug was fixed.

@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-accessibility/eflite/eflite-0.4.1.ebuild,v 1.2 2009/08/14 15:16:32 williamh Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-accessibility/eflite/eflite-0.4.1.ebuild,v 1.4 2009/10/02 23:37:10 williamh Exp $
 
 EAPI="2"
 
@@ -12,14 +12,22 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc x86"
-IUSE=""
+KEYWORDS="amd64 ~ppc ~sparc x86"
+IUSE="+16k_voice"
 
 DEPEND=">=app-accessibility/flite-1.2"
 RDEPEND="${DEPEND}"
 
 src_prepare() {
 	sed -i 's:/etc/es.conf:/etc/eflite/es.conf:g' *
+}
+
+src_configure() {
+	local myconf
+	if use 16k_voice; then
+		myconf='--with-vox=cmu_us_kal16'
+	fi
+	econf ${myconf} || die "econf failed."
 }
 
 src_install() {

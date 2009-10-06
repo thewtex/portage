@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/python/python-3.1.1-r1.ebuild,v 1.7 2009/09/29 20:02:56 arfrever Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/python/python-3.1.1-r1.ebuild,v 1.11 2009/10/03 17:39:25 arfrever Exp $
 
 EAPI="2"
 
@@ -23,11 +23,13 @@ SRC_URI="http://www.python.org/ftp/python/${PV}/${MY_P}.tar.bz2
 
 LICENSE="PSF-2.2"
 SLOT="3.1"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~sparc-fbsd ~x86 ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd"
 IUSE="build doc elibc_uclibc examples gdbm ipv6 +ncurses +readline sqlite ssl +threads tk ucs2 wininst +xml"
 
 RDEPEND=">=app-admin/eselect-python-20090606
 		>=sys-libs/zlib-1.1.3
+		virtual/libffi
+		virtual/libintl
 		!build? (
 			doc? ( dev-python/python-docs:${SLOT} )
 			gdbm? ( sys-libs/gdbm )
@@ -39,10 +41,9 @@ RDEPEND=">=app-admin/eselect-python-20090606
 			ssl? ( dev-libs/openssl )
 			tk? ( >=dev-lang/tk-8.0 )
 			xml? ( >=dev-libs/expat-2 )
-		)
-		!m68k? ( !mips? ( !sparc-fbsd? ( virtual/libffi ) ) )"
+		)"
 DEPEND="${RDEPEND}
-		!m68k? ( !mips? ( !sparc-fbsd? ( dev-util/pkgconfig ) ) )"
+		dev-util/pkgconfig"
 RDEPEND+=" !build? ( app-misc/mime-types )"
 PDEPEND="app-admin/python-updater
 		=dev-lang/python-2*"
@@ -116,8 +117,6 @@ src_configure() {
 
 	export OPT="${CFLAGS}"
 
-	local myconf
-
 	filter-flags -malign-double
 
 	[[ "${ARCH}" == "alpha" ]] && append-flags -fPIC
@@ -155,10 +154,6 @@ src_configure() {
 	fi
 	dbmliborder="${dbmliborder#:}"
 
-	if ! use m68k && ! use mips && ! use sparc-fbsd; then
-		myconf+=" --with-system-ffi"
-	fi
-
 	econf \
 		--with-fpectl \
 		--enable-shared \
@@ -169,7 +164,7 @@ src_configure() {
 		--mandir='${prefix}'/share/man \
 		--with-libc='' \
 		--with-dbmliborder=${dbmliborder} \
-		${myconf}
+		--with-system-ffi
 }
 
 src_test() {
@@ -283,6 +278,8 @@ pkg_postinst() {
 		ewarn "Many Python modules haven't been ported yet to Python 3.*."
 		ewarn "Python 3 hasn't been activated and Python wrapper is still configured to use Python 2."
 		ewarn "You can manually activate Python ${SLOT} using \`eselect python set python${SLOT}\`."
+		ewarn "It is recommended to currently have Python wrapper configured to use Python 2."
+		ewarn "Having Python wrapper configured to use Python 3 is unsupported."
 		ewarn
 		ebeep 6
 	fi

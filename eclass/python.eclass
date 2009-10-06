@@ -1,11 +1,11 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/python.eclass,v 1.73 2009/09/18 17:50:08 arfrever Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/python.eclass,v 1.76 2009/10/02 23:09:08 arfrever Exp $
 
 # @ECLASS: python.eclass
 # @MAINTAINER:
 # python@gentoo.org
-# @BLURB: A Utility Eclass that should be inherited by anything that deals with Python or Python modules.
+# @BLURB: A utility eclass that should be inherited by anything that deals with Python or Python modules.
 # @DESCRIPTION:
 # Some useful functions for dealing with Python.
 
@@ -112,14 +112,18 @@ PYTHON() {
 
 # @FUNCTION: validate_PYTHON_ABIS
 # @DESCRIPTION:
-# Make sure PYTHON_ABIS variable has valid value.
+# Ensure that PYTHON_ABIS variable has valid value.
 validate_PYTHON_ABIS() {
 	# USE_${ABI_TYPE^^} and RESTRICT_${ABI_TYPE^^}_ABIS variables hopefully will be included in EAPI >= 4.
 	if [[ "$(declare -p PYTHON_ABIS 2> /dev/null)" != "declare -x PYTHON_ABIS="* ]] && has "${EAPI:-0}" 0 1 2 3; then
-		local ABI support_ABI supported_PYTHON_ABIS= restricted_ABI
+		local ABI python2_supported_versions python3_supported_versions restricted_ABI support_ABI supported_PYTHON_ABIS=
 		PYTHON_ABI_SUPPORTED_VALUES="2.4 2.5 2.6 2.7 3.0 3.1 3.2"
+		python2_supported_versions="2.4 2.5 2.6 2.7"
+		python3_supported_versions="3.0 3.1 3.2"
 
 		if [[ "$(declare -p USE_PYTHON 2> /dev/null)" == "declare -x USE_PYTHON="* ]]; then
+			local python2_enabled="0" python3_enabled="0"
+
 			if [[ -z "${USE_PYTHON}" ]]; then
 				die "USE_PYTHON variable is empty"
 			fi
@@ -128,6 +132,14 @@ validate_PYTHON_ABIS() {
 				if ! has "${ABI}" ${PYTHON_ABI_SUPPORTED_VALUES}; then
 					die "USE_PYTHON variable contains invalid value '${ABI}'"
 				fi
+
+				if has "${ABI}" ${python2_supported_versions}; then
+					python2_enabled="1"
+				fi
+				if has "${ABI}" ${python3_supported_versions}; then
+					python3_enabled="1"
+				fi
+
 				support_ABI="1"
 				for restricted_ABI in ${RESTRICT_PYTHON_ABIS}; do
 					if python -c "from fnmatch import fnmatch; exit(not fnmatch('${ABI}', '${restricted_ABI}'))"; then
@@ -140,18 +152,83 @@ validate_PYTHON_ABIS() {
 			export PYTHON_ABIS="${supported_PYTHON_ABIS# }"
 
 			if [[ -z "${PYTHON_ABIS//[${IFS}]/}" ]]; then
-				die "USE_PYTHON variable doesn't enable any Python version supported by ${CATEGORY}/${PF}"
+				die "USE_PYTHON variable doesn't enable any version of Python supported by ${CATEGORY}/${PF}"
+			fi
+
+			if [[ "${python2_enabled}" == "0" ]]; then
+				ewarn "USE_PYTHON variable doesn't enable any version of Python 2. This configuration is unsupported."
+			fi
+			if [[ "${python3_enabled}" == "0" ]]; then
+				ewarn "USE_PYTHON variable doesn't enable any version of Python 3. This configuration is unsupported."
 			fi
 		else
-			local restricted_ABI
-			python_version
+			local python_version python2_version= python3_version= support_python_major_version
 
-			for restricted_ABI in ${RESTRICT_PYTHON_ABIS}; do
-				if python -c "from fnmatch import fnmatch; exit(not fnmatch('${PYVER}', '${restricted_ABI}'))"; then
-					die "Active Python version isn't supported by ${CATEGORY}/${PF}"
+			python_version="$(/usr/bin/python -c 'from sys import version_info; print(".".join([str(x) for x in version_info[:2]]))')"
+
+			if has_version "=dev-lang/python-2*"; then
+				if [[ "$(readlink /usr/bin/python2)" != "python2."* ]]; then
+					die "'/usr/bin/python2' isn't valid symlink"
 				fi
-			done
-			export PYTHON_ABIS="${PYVER}"
+
+				python2_version="$(/usr/bin/python2 -c 'from sys import version_info; print(".".join([str(x) for x in version_info[:2]]))')"
+
+				for ABI in ${python2_supported_versions}; do
+					support_python_major_version="1"
+					for restricted_ABI in ${RESTRICT_PYTHON_ABIS}; do
+						if python -c "from fnmatch import fnmatch; exit(not fnmatch('${ABI}', '${restricted_ABI}'))"; then
+							support_python_major_version="0"
+						fi
+					done
+					[[ "${support_python_major_version}" == "1" ]] && break
+				done
+				if [[ "${support_python_major_version}" == "1" ]]; then
+					for restricted_ABI in ${RESTRICT_PYTHON_ABIS}; do
+						if python -c "from fnmatch import fnmatch; exit(not fnmatch('${python2_version}', '${restricted_ABI}'))"; then
+							die "Active version of Python 2 isn't supported by ${CATEGORY}/${PF}"
+						fi
+					done
+				else
+					python2_version=""
+				fi
+			fi
+
+			if has_version "=dev-lang/python-3*"; then
+				if [[ "$(readlink /usr/bin/python3)" != "python3."* ]]; then
+					die "'/usr/bin/python3' isn't valid symlink"
+				fi
+
+				python3_version="$(/usr/bin/python3 -c 'from sys import version_info; print(".".join([str(x) for x in version_info[:2]]))')"
+
+				for ABI in ${python3_supported_versions}; do
+					support_python_major_version="1"
+					for restricted_ABI in ${RESTRICT_PYTHON_ABIS}; do
+						if python -c "from fnmatch import fnmatch; exit(not fnmatch('${ABI}', '${restricted_ABI}'))"; then
+							support_python_major_version="0"
+						fi
+					done
+					[[ "${support_python_major_version}" == "1" ]] && break
+				done
+				if [[ "${support_python_major_version}" == "1" ]]; then
+					for restricted_ABI in ${RESTRICT_PYTHON_ABIS}; do
+						if python -c "from fnmatch import fnmatch; exit(not fnmatch('${python3_version}', '${restricted_ABI}'))"; then
+							die "Active version of Python 3 isn't supported by ${CATEGORY}/${PF}"
+						fi
+					done
+				else
+					python3_version=""
+				fi
+			fi
+
+			if ! has "${python_version}" "${python2_version}" "${python3_version}"; then
+				eerror "Python wrapper is configured incorrectly or /usr/bin/python2 or /usr/bin/python3 symlink"
+				eerror "is set incorrectly. Use \`eselect python\` to fix configuration."
+				die "Incorrect configuration of Python"
+			fi
+
+			PYTHON_ABIS="${python2_version} ${python3_version}"
+			PYTHON_ABIS="${PYTHON_ABIS# }"
+			export PYTHON_ABIS="${PYTHON_ABIS% }"
 		fi
 	fi
 
@@ -462,55 +539,71 @@ python_execute_function() {
 # Makes sure PYTHON_USE_WITH or PYTHON_USE_WITH_OR listed use flags
 # are respected. Only exported if one of those variables is set.
 if ! has "${EAPI:-0}" 0 1 && [[ -n ${PYTHON_USE_WITH} || -n ${PYTHON_USE_WITH_OR} ]]; then
-	python_pkg_setup_fail() {
-		eerror "${1}"
-		die "${1}"
-	}
-
 	python_pkg_setup() {
+		python_pkg_setup_fail() {
+			eerror "${1}"
+			die "${1}"
+		}
+
 		[[ ${PYTHON_USE_WITH_OPT} ]] && use !${PYTHON_USE_WITH_OPT} && return
 
-		python_version
-		local failed
-		local pyatom="dev-lang/python:${PYVER}"
-
-		for use in ${PYTHON_USE_WITH}; do
-			if ! has_version "${pyatom}[${use}]"; then
-				python_pkg_setup_fail \
-					"Please rebuild ${pyatom} with use flags: ${PYTHON_USE_WITH}"
+		python_pkg_setup_check_USE_flags() {
+			local pyatom use
+			if [[ -n "${PYTHON_ABI}" ]]; then
+				pyatom="dev-lang/python:${PYTHON_ABI}"
+			else
+				python_version
+				pyatom="dev-lang/python:${PYVER}"
 			fi
-		done
 
-		for use in ${PYTHON_USE_WITH_OR}; do
-			if has_version "${pyatom}[${use}]"; then
-				return
+			# Workaround for older versions of Portage.
+			# has_version() calls portageq which is implemented in Python.
+			if has_version "=dev-lang/python-2*"; then
+				local EPYTHON
+				export EPYTHON="$(readlink /usr/bin/python2)"
 			fi
-		done
 
-		if [[ ${PYTHON_USE_WITH_OR} ]]; then
-			python_pkg_setup_fail \
-				"Please rebuild ${pyatom} with one of: ${PYTHON_USE_WITH_OR}"
+			for use in ${PYTHON_USE_WITH}; do
+				if ! has_version "${pyatom}[${use}]"; then
+					python_pkg_setup_fail "Please rebuild ${pyatom} with the following USE flags enabled: ${PYTHON_USE_WITH}"
+				fi
+			done
+
+			for use in ${PYTHON_USE_WITH_OR}; do
+				if has_version "${pyatom}[${use}]"; then
+					return
+				fi
+			done
+
+			if [[ ${PYTHON_USE_WITH_OR} ]]; then
+				python_pkg_setup_fail "Please rebuild ${pyatom} with at least one of the following USE flags enabled: ${PYTHON_USE_WITH_OR}"
+			fi
+		}
+
+		if ! has "${EAPI:-0}" 0 1 2 || [[ -n "${SUPPORT_PYTHON_ABIS}" ]]; then
+			python_execute_function -q python_pkg_setup_check_USE_flags
+		else
+			python_pkg_setup_check_USE_flags
 		fi
 	}
 
 	EXPORT_FUNCTIONS pkg_setup
 
-	if [[ ${PYTHON_USE_WITH} ]]; then
+	if [[ -n "${PYTHON_USE_WITH}" ]]; then
 		PYTHON_USE_WITH_ATOM="${PYTHON_ATOM}[${PYTHON_USE_WITH/ /,}]"
-	elif [[ ${PYTHON_USE_WITH_OR} ]]; then
+	elif [[ -n "${PYTHON_USE_WITH_OR}" ]]; then
 		PYTHON_USE_WITH_ATOM="|| ( "
 		for use in ${PYTHON_USE_WITH_OR}; do
-			PYTHON_USE_WITH_ATOM="
-				${PYTHON_USE_WITH_ATOM}
-				${PYTHON_ATOM}[${use}]"
+			PYTHON_USE_WITH_ATOM+=" ${PYTHON_ATOM}[${use}]"
 		done
-		PYTHON_USE_WITH_ATOM="${PYTHON_USE_WITH_ATOM} )"
+		unset use
+		PYTHON_USE_WITH_ATOM+=" )"
 	fi
-	if [[ ${PYTHON_USE_WITH_OPT} ]]; then
+	if [[ -n "${PYTHON_USE_WITH_OPT}" ]]; then
 		PYTHON_USE_WITH_ATOM="${PYTHON_USE_WITH_OPT}? ( ${PYTHON_USE_WITH_ATOM} )"
 	fi
-	DEPEND="${PYTHON_USE_WITH_ATOM}"
-	RDEPEND="${PYTHON_USE_WITH_ATOM}"
+	DEPEND+=" ${PYTHON_USE_WITH_ATOM}"
+	RDEPEND+=" ${PYTHON_USE_WITH_ATOM}"
 fi
 
 # @ECLASS-VARIABLE: PYTHON_DEFINE_DEFAULT_FUNCTIONS

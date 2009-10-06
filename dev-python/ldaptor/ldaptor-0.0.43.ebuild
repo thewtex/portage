@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/ldaptor/ldaptor-0.0.43.ebuild,v 1.9 2009/09/27 18:36:08 nixnut Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/ldaptor/ldaptor-0.0.43.ebuild,v 1.11 2009/10/03 14:36:19 klausman Exp $
 
 inherit distutils
 
@@ -11,7 +11,7 @@ SRC_URI="mirror://debian/pool/main/l/ldaptor/${PN}_${PV}.orig.tar.gz
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ia64 ppc ~sparc x86"
+KEYWORDS="alpha ~amd64 ~ia64 ppc ~sparc x86"
 IUSE="web doc samba"
 
 DEPEND=">=dev-python/twisted-2
@@ -55,6 +55,14 @@ src_compile() {
 	fi
 }
 
+src_test() {
+	# Delete test with additional dependencies.
+	if ! use web; then
+		rm -f ldaptor/test/test_webui.py
+	fi
+	PYTHONPATH=. trial ldaptor || die "test failed"
+}
+
 src_install() {
 	distutils_src_install
 
@@ -74,8 +82,4 @@ src_install() {
 			doins -r doc/examples.webui
 		fi
 	fi
-}
-
-src_test() {
-	PYTHONPATH=. trial ldaptor || die "test failed"
 }

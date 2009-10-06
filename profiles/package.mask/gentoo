@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10519 2009/09/30 15:55:07 josejx Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10558 2009/10/05 17:31:14 scarabeus Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -31,6 +31,132 @@
 
 #--- END OF EXAMPLES ---
 
+# Samuli Suominen <ssuominen@gentoo.org> (05 Oct 2009)
+# Masked for testing.
+=dev-libs/libffi-3.0.9_rc*
+
+# Bernard Cafarelli <voyageur@gentoo.org> (5 Oct 2009)
+# New ebuilds, mask rc versions for testing
+<sys-devel/clang-2.6
+<sys-devel/llvm-2.6
+<sys-devel/llvm-gcc-2.6
+
+# Jeremy Olexa <darkside@gentoo.org> (5 Oct 2009)
+# Dead project, missing deps, no maintainer. Removed in 60 days by treecleaners.
+# bug 205190
+sys-apps/qtparted
+
+# Jeremy Olexa <darkside@gentoo.org> (5 Oct 2009)
+# Obsolete and produces bad isos. Upstream recommends app-cdr/iat.
+# Removed in 60 days (or sooner based on lack of usefullness), bug 281149
+app-cdr/mdf2iso
+
+# Jeremy Olexa <darkside@gentoo.org> (5 Oct 2009)
+# QA standards are seriously missing on this package. It was marked stable
+# without applying a patch, even. No maintainer, remove in 60 days. bug 282388
+net-misc/rdist
+
+# Jeremy Olexa <darkside@gentoo.org> (5 Oct 2009)
+# Dead, broken software. Upstream themselves requested the removal from Gentoo.
+# bug 282820. Removed in 60 days.
+net-im/curphoo
+net-im/magnesium
+
+# Jeremy Olexa <darkside@gentoo.org> (5 Oct 2009)
+# Depends on gtk-1, orphaned library. Nothing uses it. Removed in 60 days. bug
+# 284494
+media-libs/SoGtk
+
+# Jeremy Olexa <darkside@gentoo.org> (5 Oct 2009)
+# Does not compile properly and hence does not install any of the tools it
+# offers. No maintainer. Removed in 60 days. bug 284623
+# (Depends on dev-libs/skalibs (below)
+sys-apps/minutils
+
+# Jeremy Olexa <darkside@gentoo.org> (5 Oct 2009)
+# QA!!? Installs to /package! No maintainer in Gentoo. Removed in 60 days.
+# bug 284618
+dev-libs/skalibs
+
+# Robin H. Johnson <robbat2@gentoo.org> (4 Jul 2009)
+# Bug #275291 - New GnuPG release broke seahorse, enigmail, mutt (uncommon
+# setup, not in tree).
+# Pending release of new versions of enigmail/seahorse.
+>=app-crypt/gnupg-2.0.12
+
+# Vlastimil Babka <caster@gentoo.org> (04 Oct 2009)
+# Masked for removal in 30 days. Needs java 1.4 to build,
+# nothing uses it. Unless someone steps up and properly
+# bumps.
+dev-db/xindice
+
+# Mike Doty <kingtaco@gentoo.org> (04 Oct 2009)
+# alpha packages, kills puppies.
+=app-emulation/emul-linux-x86-baselibs-20091004_rc1
+=app-emulation/emul-linux-x86-compat-20091004_rc1
+=app-emulation/emul-linux-x86-gtklibs-20091004_rc1
+=app-emulation/emul-linux-x86-medialibs-20091004_rc1
+=app-emulation/emul-linux-x86-qtlibs-20091004_rc1
+=app-emulation/emul-linux-x86-sdl-20091004_rc1
+=app-emulation/emul-linux-x86-soundlibs-20091004_rc1
+=app-emulation/emul-linux-x86-xlibs-20091004_rc1
+
+# Mike Doty <kingtaco@gentoo.org> (03 Oct 2009)
+# alpha packages, kills puppies.
+=app-emulation/emul-linux-x86-baselibs-20091003_rc1
+
+# Vlastimil Babka <caster@gentoo.org> (03 Oct 2009)
+# Masked for removal in 30 days. Needs java 1.4 to build,
+# seems dead, nothing uses it.
+dev-java/tagunit
+
+# Vlastimil Babka <caster@gentoo.org> (03 Oct 2009)
+# Masked for removal in 30 days. Crimson needs java 1.4,
+# xmojo-bin is the only thing depending on it, nothing
+# needs xmojo-bin.
+dev-java/crimson
+dev-java/xmojo-bin
+
+# Vlastimil Babka <caster@gentoo.org> (03 Oct 2009)
+# Masked for removal in 30 days Needs java 1.4,
+# library nothing uses. 
+dev-java/axion
+
+# Markus Meier <maekke@gentoo.org> (03 Oct 2009)
+# masked for testing
+>=media-gfx/autopano-sift-C-2.5.1_rc1
+
+# Michael Sterrett <mr_bones_@gentoo.org> (01 Oct 2009)
+# Doesn't work with newer openal.  Use games-action/openastromenace instead.
+games-action/astromenace-bin
+
+# Marcus D. Hanwell <cryos@gentoo.org> (01 Oct 2009)
+# Release candidates for the new CMake release
+>=dev-util/cmake-2.8.0_rc1
+
+# Bernard Cafarelli <voyageur@gentoo.org> (01 Oct 2009)
+# Live ebuilds for bleeding-edge users
+~www-client/chromium-9999
+~www-client/chromium-bin-9999
+
+# Torsten Veller <tove@gentoo.org> (01 Oct 2009)
+# Old. Replaced. Or just unmaintained.
+# - replaced by dev-perl/Gtk2-Ex-PodViewer 
+#   bug 281511 (01 Oct 2009)
+dev-perl/Gtk2-PodViewer
+# - AWW is dead!
+#   bug 281504 (01 Oct 2009)
+dev-perl/aww
+# - seems to be dead.
+#   bug 281509 (01 Oct 2009)
+dev-perl/perlsieve
+# - seems to be dead too.
+#   bug 281507 (01 Oct 2009)
+dev-perl/perlrapi
+# - replaced, dead, unneeded
+#   bug 281495 (01 Oct 2009)
+dev-perl/Gtk2-Html2
+
 # Samuli Suominen <ssuominen@gentoo.org> (29 Sep 2009)
 # Doesn't compile and deps on arts. Masked for removal,
 # see bug 286813.
@@ -39,11 +165,6 @@ media-plugins/flexplaylist
 # Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (29 Sep 2009)
 # wsgiref module is included in Python >=2.5. Masked for deletion in 30 days.
 dev-python/wsgiref
-
-# Rémi Cardona <remi@gentoo.org> (28 Sep 2009)
-# breaks xf86-video-intel, will be unmasked when the driver has a patch
-# see bug #286746
-=x11-base/xorg-server-1.6.4
 
 # Samuli Suominen <ssuominen@gentoo.org> (28 Sep 2009)
 # Obsolete. Supported by in-kernel drivers. Masked for removal,
@@ -146,30 +267,34 @@ app-doc/xorg-docs
 # Removal due 19 Oct 2009
 media-libs/mlt++
 
+# Tomáš Chvátal <scarabeus@gentoo.org> (2 Oct 2009)
+# update it a bit more to reflect what i will be adding now
 # Rémi Cardona <remi@gentoo.org> (19 Sep 2009)
 # xorg-server 1.7 packages, will be unmasked once 1.6 is stable
-=x11-libs/libX11-1.2.99*
-=x11-libs/libXext-1.0.99*
-=x11-libs/libXi-1.2.99*
-=x11-libs/libXinerama-1.0.99*
-=x11-libs/libXScrnSaver-1.2*
-=x11-libs/libXtst-1.0.99*
-=x11-libs/libXxf86vm-1.0.99*
-=x11-proto/bigreqsproto-1.1*
-=x11-proto/dmxproto-2.2.99*
-=x11-proto/evieext-1.1*
-=x11-proto/fixesproto-4.1
-=x11-proto/inputproto-1.9.99*
-=x11-proto/recordproto-1.13.99*
-=x11-proto/renderproto-0.11
-=x11-proto/scrnsaverproto-1.2*
-=x11-proto/xcmiscproto-1.2*
-=x11-proto/xextproto-7.1*
-=x11-proto/xf86bigfontproto-1.2*
-=x11-proto/xf86dgaproto-2.0.99*
-=x11-proto/xf86driproto-2.1*
-=x11-proto/xf86vidmodeproto-2.2.99*
-=x11-proto/xineramaproto-1.1.99*
+=x11-base/xorg-drivers-1.7
+>=x11-base/xorg-server-1.7.0
+>=x11-libs/libX11-1.2.99.0
+>=x11-libs/libXext-1.0.99.0
+>=x11-libs/libXi-1.2.99.0
+>=x11-libs/libXinerama-1.0.99.0
+>=x11-libs/libXScrnSaver-1.2.0
+>=x11-libs/libXtst-1.0.99.0
+>=x11-libs/libXxf86vm-1.0.99.0
+>=x11-libs/libXxf86dga-1.1
+>=x11-libs/libdmx-1.0.99.0
+>=x11-proto/bigreqsproto-1.1
+>=x11-proto/dmxproto-2.2.99
+>=x11-proto/inputproto-1.9.99
+>=x11-proto/recordproto-1.13.99.0
+>=x11-proto/scrnsaverproto-1.2.0
+>=x11-proto/xcmiscproto-1.2.0
+>=x11-proto/fixesproto-4.1
+>=x11-proto/xextproto-7.1.1
+>=x11-proto/xf86bigfontproto-1.2.0
+>=x11-proto/xf86dgaproto-2.1
+>=x11-proto/xf86driproto-2.1.0
+>=x11-proto/xf86vidmodeproto-2.3
+>=x11-proto/xineramaproto-1.2
 
 # Bryan Stine <battousai@gentoo.org> (18 Sep 2009)
 # Mask for removal in 30 days. The x11-drm git tree is abandoned, modules have
@@ -259,33 +384,16 @@ dev-lang/nemerle
 # Convert-UUlib-1.30 breaks amavisd-new (#283797)
 =dev-perl/Convert-UUlib-1.30
 
-# Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (05 Sep 2009)
-# Replaced by net-zope/generator. Masked for deletion in 30 days.
-dev-python/generator
-
-# Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (05 Sep 2009)
-# Replaced by net-zope/validation. Masked for deletion in 30 days.
-dev-python/validation
-
 # Romain Perier <mrpouet@gentoo.org> (05 Sep 2009)
 # Masked because too old, contains a lot of QA warnings/errors
 # The last one has a lot of changes.
 =www-plugins/gnash-0.8.4
-
-# Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (04 Sep 2009)
-# Replaced by dev-python/kaa-metadata. Masked for deletion in 30 days.
-dev-python/mmpython
 
 # Alex Legler <a3li@gentoo.org> (1 Sep 2009)
 # Masked for security, has no maintainer. Bug 283434.
 # Will be proposed for treecleaning if noone steps up in let's say two weeks.
 app-office/tinyerp-client
 app-office/tinyerp-server
-
-# Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (30 Aug 2009)
-# uuid module is included in Python >=2.5. Separate dev-python/uuid package
-# isn't needed (bug #283199). Masked for deletion in 30 days.
-dev-python/uuid
 
 # Diego E. Pettenò <flameeyes@gentoo.org> (30 Aug 2009)
 #  on behalf of QA team
@@ -812,12 +920,6 @@ media-sound/alsa-driver
 # bug 279383
 net-misc/asterisk-chan_bluetooth
 
-# Víctor Ostorga <vostorga@gentoo.org> (29 Jul 2009)
-# Masked for removal in 60 days. Latest release in 2005, 
-# upstream no longer maintains it , Gnome-Art NextGen is a replacement
-# bug 245145
-gnome-extra/gnome-art
-
 # Marijn Schouten <hkBst@gentoo.org> (29 Jul 2009)
 # Masked for removal. Upstream renamed to Clozure CL which can be found in lisp overlay.
 dev-lisp/openmcl
@@ -834,12 +936,6 @@ dev-lisp/gcl
 >=dev-util/nvidia-cuda-sdk-2.3
 >=dev-util/nvidia-cuda-toolkit-2.3
 
-# Jeremy Olexa <darkside@gentoo.org> (29 Jul 2009)
-# Masked for removal in 60 days. Depends on a vulnerable package that was
-# removed (=net-im/silc-toolkit-1.0).
-# Maybe can port to new silc-toolkit?? bug 279547
-net-im/silky
-
 # Jeremy Olexa <darkside@gentoo.org> (28 Jul 2009)
 # On behalf of Robin H. Johnson <robbat2@gentoo.org>.
 # These versions are vulnerable to GLSA's and should not be used. They will stay
@@ -854,7 +950,6 @@ net-im/silky
 # For more info:
 #  http://dev.gentoo.org/~scarabeus/ati-mask-reason.txt
 <x11-drivers/ati-drivers-9.6
-x11-apps/ati-drivers-extra
 
 # Michał Januszewski <spock@gentoo.org> (26 Jul 2009)
 # Mask for beta versions of the NVIDIA drivers.
@@ -884,10 +979,6 @@ app-admin/haskell-updater
 # Builds only with >=sys-apps/lm_sensors-3 which is masked
 >=gnome-extra/hardware-monitor-1.4.2
 
-# Markos Chandras <hwoarang@gentoo.org> (21 Jul 2009)
-# Rc releases should be masked
-=media-video/griffith-0.10_rc*
-
 # Maintainer Needed <maintainer-needed@gentoo.org> (21 Jul 2009)
 # Security issues with bundled libraries.
 # See, http://bugs.gentoo.org/show_bug.cgi?id=251492
@@ -904,13 +995,6 @@ media-sound/teamspeak2-client-bin
 # Removal scheduled for 2009-08-13
 # bug #164016
 app-backup/bobs
-
-# Jeremy Olexa <darkside@gentoo.org> (11 Jul 2009)
-# QA removal, ebuild needs work, SSL support is dlopened instead of more
-# favorable ways. Project dead, now called mongoose instead. removal bug: 248484
-# mongoose bug: 173888
-# Removed in ~60 days by treecleaners
-www-servers/shttpd
 
 # Diego E. Pettenò <flameeyes@gentoo.org> (6 Jul 2009)
 #  on behalf of QA Team
@@ -931,12 +1015,6 @@ sys-cluster/gnbd-kernel
 sys-fs/gfs2
 sys-fs/gfs
 sys-fs/clvm
-
-# Robin H. Johnson <robbat2@gentoo.org> (4 Jul 2009)
-# Bug #275291 - New GnuPG release broke seahorse, enigmail, mutt (uncommon
-# setup, not in tree).
-# Pending release of new versions of enigmail/seahorse.
->=app-crypt/gnupg-2.0.12
 
 # Theo Chatzimichos <tampakrap@gentoo.org> (1 Jul 2009)
 # koffice monolithic masked, latest koffice version
@@ -989,10 +1067,6 @@ media-libs/freeimage
 # Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (30 May 2009)
 # Development versions.
 =net-libs/gnutls-2.9*
-
-# Bernard Cafarelli <voyageur@gentoo.org> (27 May 2009)
-# Live ebuild for bleeding-edge users
-~www-client/chromium-bin-9999
 
 # Peter Alfredsen <loki_val@gentoo.org> (01 June 2009)
 # Development version, Work-In-Progress
@@ -1091,6 +1165,8 @@ app-portage/udept
 # Jeremy Olexa <darkside@gentoo.org> (28 Mar 2009)
 # Upstream is very unresponsive and we had to guess at which kernel patch was
 # needed. May not work and/or may be harmful. You have been warned.
+# Jeremy Olexa <darkside@gentoo.org> (4 Oct 2009)
+# Removed in 30 days. Dead project, needs kernel patches. bug 257207
 sys-apps/sreadahead
 
 # Alex Legler <a3li@gentoo.org> (20 Mar 2009)
@@ -1301,10 +1377,6 @@ dev-cpp/bakery
 # Hanno Boeck <hanno@gentoo.org> (31 Mar 2008)
 # As 1.3.3.x became a stable series and 1.3.4 has crash issues, mask it for now.
 =app-office/scribus-1.3.4-r1
-
-# Joerg Bornkessel <hd_brummy@gentoo.org (26 Mar 2008)
-# initial ebuild masked for testing
-=app-misc/iguanaIR-0.93
 
 # William L. Thomson Jr. <wltjr@gentoo.org> (25 Mar 2008)
 # Masked due to bugs and availability of forked alternative Frostwire.
