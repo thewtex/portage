@@ -44,7 +44,8 @@ RDEPEND=">=dev-libs/dbus-glib-0.61
 	kernel_FreeBSD? ( >=dev-libs/libvolume_id-0.77 )
 	x86? ( >=sys-apps/dmidecode-2.7 )
 	selinux? ( sys-libs/libselinux sec-policy/selinux-hal )
-	consolekit? ( sys-auth/consolekit[policykit=] )
+	consolekit? ( || ( <sys-auth/console-kit-0.3.0
+		>=sys-auth/consolekit-0.3.0[policykit=] ) )
 	policykit? (
 		sys-auth/consolekit[policykit]
 		sys-auth/policykit[pam]
