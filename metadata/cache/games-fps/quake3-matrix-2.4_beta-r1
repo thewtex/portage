@@ -1,20 +1,20 @@
 app-arch/unzip
-|| ( games-fps/quake3 games-fps/quake3-bin )
+|| ( games-fps/quake3[dedicated=,opengl=] games-fps/quake3-bin[dedicated=,opengl=] )
 0
-matrix24.zip
-strip fetch
-http://mods.moddb.com/3388/matrix-quake-3/
+http://www.mirrorservice.org/sites/quakeunity.com/modifications/matrix24.zip
+mirror strip
+http://www.moddb.com/mods/matrix-quake-3
 freedist
-Quake III matrix - Matrix conversion mod
--* ~amd64 ~ppc ~x86
+Quake III Matrix - Matrix conversion mod
+~amd64 ~ppc ~x86
 base eutils games games-mods multilib portability toolchain-funcs
 dedicated opengl
 
 
 
+2
 
-
-compile install nofetch postinst preinst setup unpack
+compile configure install postinst preinst prepare setup unpack
 
 
 

@@ -1,20 +1,20 @@
 app-arch/unzip
-|| ( games-fps/quake3 games-fps/quake3-bin )
+|| ( games-fps/quake3[dedicated=,opengl=] games-fps/quake3-bin[dedicated=,opengl=] )
 0
 http://games.mirrors.tds.net/pub/planetquake3/modifications/bidforpower/bidforpower1-2.zip
 mirror strip
 http://www.planetquake.com/bidforpower/
 freedist
 Quake III Bid For Power - take control of Ki-powered superheros and battle in a mostly aerial fight
--* ~amd64 ~ppc ~x86
+~amd64 ~ppc ~x86
 base eutils games games-mods multilib portability toolchain-funcs
 dedicated opengl
 
 
 
+2
 
-
-compile install postinst preinst setup unpack
+compile configure install postinst preinst prepare setup unpack
 
 
 

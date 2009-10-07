@@ -1,20 +1,20 @@
 app-arch/unzip
-|| ( games-fps/quake3 games-fps/quake3-bin )
+|| ( games-fps/quake3[dedicated=,opengl=] games-fps/quake3-bin[dedicated=,opengl=] )
 0
 mirror://gentoo/ruin_hunters_v10.zip mirror://gentoo/ruin_hunters_v10a_patch.zip http://www.mirrorservice.org/sites/www.ibiblio.org/gentoo/distfiles/ruin_hunters_v10a_patch.zip http://www.mirrorservice.org/sites/www.ibiblio.org/gentoo/distfiles/ruin_hunters_v10.zip
 mirror strip
 http://planetquake.gamespy.com/View.php?view=Quake3.Detail&id=1824
 freedist
 Quake III Ruin Hunters - a anime/fantasy mod with cartoonish characters and arcade-like gameplay
--* ~amd64 ~ppc ~x86
+~amd64 ~ppc ~x86
 base eutils games games-mods multilib portability toolchain-funcs
 dedicated opengl
 
 
 
+2
 
-
-compile install postinst preinst setup unpack
+compile configure install postinst preinst prepare setup unpack
 
 
 

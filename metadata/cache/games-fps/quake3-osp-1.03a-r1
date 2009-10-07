@@ -1,20 +1,20 @@
 app-arch/unzip
-|| ( games-fps/quake3 games-fps/quake3-bin )
+|| ( games-fps/quake3[dedicated=,opengl=] games-fps/quake3-bin[dedicated=,opengl=] )
 0
-http://www.flatlands.ch/filebase/mods/left/osp-Quake3-1.03a_full.zip http://games13.xs4all.nl/quake3/osp-Quake3-1.03a_full.zip
+http://www.sunflow.com/orangesmoothie/downloads/osp-Quake3-1.03a_full.zip
 mirror strip
 http://www.orangesmoothie.org/
 GPL-2
 Quake III OSP - a tournament mod
--* ~amd64 ~ppc ~x86
+~amd64 ~ppc ~x86
 base eutils games games-mods multilib portability toolchain-funcs
 dedicated opengl
 
 
 
+2
 
-
-compile install nofetch postinst preinst setup unpack
+compile configure install postinst preinst prepare setup unpack
 
 
 

@@ -1,20 +1,20 @@
 app-arch/unzip
-|| ( games-fps/quake3 games-fps/quake3-bin )
+|| ( games-fps/quake3[dedicated=,opengl=] games-fps/quake3-bin[dedicated=,opengl=] )
 0
-http://mir2.ovh.net/ftp.planetquake3.net/modifications/alliance/alliance30.zip http://mir2.ovh.net/ftp.planetquake3.net/modifications/alliance/alliance30-33.zip
+http://www.mirrorservice.org/sites/quakeunity.com/modifications/alliance/alliance30.zip http://www.superkeff.net/mods/mods/alliance/alliance30.zip http://www.mirrorservice.org/sites/quakeunity.com/modifications/alliance/alliance30-33.zip http://www.superkeff.net/mods/mods/alliance/alliance30-33.zip
 mirror strip
 http://www.planetquake.com/alliance/
 freedist
 Quake III Alliance - fast paced, off-handed grapple mod
--* ~amd64 ~ppc ~x86
+~amd64 ~ppc ~x86
 base eutils games games-mods multilib portability toolchain-funcs
 dedicated opengl
 
 
 
+2
 
-
-compile install postinst preinst setup unpack
+compile configure install postinst preinst prepare setup unpack
 
 
 

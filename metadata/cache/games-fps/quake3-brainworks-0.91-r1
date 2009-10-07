@@ -1,20 +1,20 @@
 app-arch/unzip
-|| ( games-fps/quake3 games-fps/quake3-bin )
+|| ( games-fps/quake3[dedicated=,opengl=] games-fps/quake3-bin[dedicated=,opengl=] )
 0
-http://droopy.laggyservers.com/q3a/brainworks/brainworks-0-91.zip
+brainworks-0-91.zip
 strip mirror fetch
 http://www.planetquake.com/artofwar
 freedist
 Quake III Brainworks - Enhanced AI for the Quake III Bots
--* ~amd64 ~ppc ~x86
+~amd64 ~ppc ~x86
 base eutils games games-mods multilib portability toolchain-funcs
 dedicated opengl
 
 
 
+2
 
-
-compile install nofetch postinst preinst setup unpack
+compile configure install nofetch postinst preinst prepare setup unpack
 
 
 

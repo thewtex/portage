@@ -1,20 +1,20 @@
 app-arch/unzip
-|| ( games-fps/quake3 games-fps/quake3-bin )
+|| ( games-fps/quake3[dedicated=,opengl=] games-fps/quake3-bin[dedicated=,opengl=] )
 0
 http://lrctf.com/release/LRCTF_Q3A_v1.1_full.zip
 mirror strip
 http://www.lrctf.com/
 LRCTF
 Quake III Loki's Revenge CTF - offhand grapple all-weapons capture the flag mod
--* ~amd64 ~ppc ~x86
+~amd64 ~ppc ~x86
 base eutils games games-mods multilib portability toolchain-funcs
 dedicated opengl
 
 
 
-
+2
 interactive
-compile install postinst preinst setup unpack
+compile configure install postinst preinst prepare setup unpack
 
 
 
