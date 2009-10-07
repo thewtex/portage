@@ -1,5 +1,5 @@
 doc? ( app-doc/doxygen )
-|| ( ( x11-libs/qt-gui:4 x11-libs/qt-script:4 berkdb? ( x11-libs/qt-sql:4 ) sql? ( x11-libs/qt-sql:4 ) ) =x11-libs/qt-4.3*:4[png] ) berkdb? ( sys-libs/db ) crypt? ( >=dev-libs/openssl-0.9.8 || ( x11-libs/qt-core:4[ssl] =x11-libs/qt-4.3*:4[ssl] ) ) web? ( >=dev-libs/fcgi-2.4 )
+x11-libs/qt-gui:4 x11-libs/qt-script:4 sql? ( x11-libs/qt-sql:4 ) berkdb? ( sys-libs/db x11-libs/qt-sql:4 ) crypt? ( >=dev-libs/openssl-0.9.8 x11-libs/qt-core:4[ssl] ) web? ( >=dev-libs/fcgi-2.4 )
 0
 mirror://sourceforge/libqxt/libqxt-0.4.tar.gz
 

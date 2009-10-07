@@ -1,20 +1,20 @@
 app-arch/unzip
-|| ( games-fps/quake3 games-fps/quake3-bin )
+|| ( games-fps/quake3[dedicated=,opengl=] games-fps/quake3-bin[dedicated=,opengl=] )
 0
-http://games.mirrors.tds.net/pub/planetquake3/modifications/threewavectf/threewave_16_full.zip http://games.mirrors.tds.net/pub/planetquake3/modifications/threewavectf/threewave_17_update.zip
+http://games.mirrors.tds.net/pub/planetquake3/modifications/threewavectf/threewave_16_full.zip http://www.mirrorservice.org/sites/quakeunity.com/modifications/threewavectf/threewave_16_full.zip http://games.mirrors.tds.net/pub/planetquake3/modifications/threewavectf/threewave_17_update.zip http://www.mirrorservice.org/sites/quakeunity.com/modifications/threewavectf/threewave_17_update.zip
 mirror strip
 http://www.threewave.com/
 freedist
-Quake III Threewave CTF -
--* ~amd64 ~ppc ~x86
+Quake III Threewave CTF - Threewave CTF
+~amd64 ~ppc ~x86
 base eutils games games-mods multilib portability toolchain-funcs
 dedicated opengl
 
 
 
+2
 
-
-compile install postinst preinst setup unpack
+compile configure install postinst preinst prepare setup unpack
 
 
 

@@ -1,20 +1,20 @@
 app-arch/unzip
-|| ( games-fps/quake3 games-fps/quake3-bin )
+|| ( games-fps/quake3[dedicated=,opengl=] games-fps/quake3-bin[dedicated=,opengl=] )
 0
-ra3176.zip
-mirror strip fetch
+mirror://quakeunity/modifications/rocketarena3/ra3176.zip
+mirror strip
 http://www.planetquake.com/servers/arena/
 freedist
 Quake III Rocket Arena 3 - a rocket dueling mod
--* ~amd64 ~ppc ~x86
+~amd64 ~ppc ~x86
 base eutils games games-mods multilib portability toolchain-funcs
 dedicated opengl
 
 
 
+2
 
-
-compile install nofetch postinst preinst setup unpack
+compile configure install postinst preinst prepare setup unpack
 
 
 
