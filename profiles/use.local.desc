@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4872 2009/10/06 03:21:30 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4878 2009/10/07 00:07:59 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -261,8 +261,11 @@ app-emulation/open-vm-tools:unity - Enable host unity support
 app-emulation/pearpc:jit - Use the JITC-x86 CPU
 app-emulation/point2play:emerald - For people who are in the Transgaming Emerald Club
 app-emulation/q4wine:development -  Enable developer related stuff
+app-emulation/q4wine:embedded-fuseiso -  Enable q4wine-mount tools 
 app-emulation/q4wine:icotools -  Enable icotools support
+app-emulation/q4wine:icoutils -  Enable icoutils support 
 app-emulation/q4wine:winetools -  Enable winetools support
+app-emulation/q4wine:winetriks -  Enable winetricks support 
 app-emulation/qemu:alsa - Enable alsa output for sound emulation
 app-emulation/qemu:esd - Enable esound output for sound emulation
 app-emulation/qemu:gnutls - Enable TLS support for the VNC console server
@@ -694,9 +697,16 @@ dev-lang/gforth:force-reg - Enable a possibly unstable GCC flag for possibly lar
 dev-lang/ghc:binary - Install the binary version directly, rather than using it to build the source version.
 dev-lang/ghc:ghcbootstrap - Internal: Bootstrap GHC from an existing GHC installation.
 dev-lang/ghc:ghcmakebinary - Internal: Used while bootstrapping for making binaries, license related tweaking.
+dev-lang/icc:eclipse - Install the dev-util/eclipse-sdk plugins
+dev-lang/icc:idb - Install the Intel Debugger
+dev-lang/icc:ipp - Install the Intel Integrated Primitive
+dev-lang/icc:mkl - Install the Intel Math Kernel Library
 dev-lang/icon:iplsrc - install the icon programming library source
+dev-lang/idb:eclipse - Install the dev-util/eclipse-sdk plugins
 dev-lang/idb:icc - Use dev-lang/icc to install idb (default)
 dev-lang/idb:ifc - Use dev-lang/ifc to install idb
+dev-lang/ifc:idb - Install the Intel Debugger
+dev-lang/ifc:mkl - Install the Intel Math Kernel Library
 dev-lang/io:dbi - Enables dev-db/libdbi support
 dev-lang/lisaac:vim - install a syntax file for vim
 dev-lang/logtalk:fop - Support for generating pdf documentation using fop
@@ -1352,6 +1362,7 @@ mail-filter/dspam:virtual-users -  Build with virtual-users support
 mail-filter/libmilter:poll - Use poll instead of select
 mail-filter/maildrop:authlib - Add courier-authlib support
 mail-filter/mimedefang:poll - Use poll instead of select
+mail-filter/opendkim:db - Include features like stats, querycache, popauth and bodylengthdb that include berkdb
 mail-filter/postgrey:targrey - Enables the targrey patch
 mail-filter/qmail-scanner:spamassassin - Build faster mail-filter/spamassassin checks into qmail-scanner
 mail-filter/simscan:attachment - Enable attachment scanning
@@ -1704,7 +1715,7 @@ media-sound/pulseaudio:glib - Enable glib eventloop support
 media-sound/pulseaudio:gnome -  Use GConf to store user preferences on streams and so on. Don't enable this flag if you want to use a system wide instance. If unsure, enable this flag. 
 media-sound/pulseaudio:oss -  Enable OSS sink/source (output/input). Deprecated, upstream does not support this on systems where other sink/source systems are available (i.e.: Linux). The padsp wrapper is now always build if the system supports OSS at all. 
 media-sound/pulseaudio:udev -  Use sys-fs/udev for autodiscovery of sound devices; this replaces the deprecated sys-apps/hal autodiscovery code. 
-media-sound/qmmp:bs2b - Enable Bauer stereophonic-to-binaural DSP library
+media-sound/qmmp:bs2b - Enable Bauer stereophonic-to-binaural headphone filter
 media-sound/qmmp:projectm - Enable projectm music visualization plugin
 media-sound/qmmp:scrobbler - Enable audioscrobbler/last.fm support
 media-sound/qsampler:libgig - Enable libgig support for loading Gigasampler files and DLS (Downloadable Sounds) Level 1/2 files
@@ -2398,6 +2409,7 @@ net-libs/webkit-gtk:pango - Use pango as fontbackend instead of freetype
 net-libs/webkit-gtk:soup - Use SOUP as backend instead of curl
 net-libs/webkit-gtk:xslt - enable support for XSLT
 net-libs/xulrunner:custom-optimization - Fine-tune custom compiler optimizations
+net-mail/courier-imap:trashquota - include deleted messages, and the Trash folder, in the estimated quota usage for maildirs
 net-mail/cyrus-imapd:idled - Enable idled vs poll IMAP IDLE method
 net-mail/cyrus-imapd:replication - Enable replication support in the cyrus imap server
 net-mail/cyrus-imapd:sieve - Enable sieve support
