@@ -1,8 +1,10 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-auth/pam_userdb/pam_userdb-0.99.8.1.ebuild,v 1.5 2008/11/26 22:10:26 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-auth/pam_userdb/pam_userdb-0.99.8.1.ebuild,v 1.6 2009/10/07 19:59:55 flameeyes Exp $
 
-inherit libtool multilib eutils pam toolchain-funcs flag-o-matic
+EAPI=1
+
+inherit libtool multilib eutils pam toolchain-funcs flag-o-matic versionator
 
 # BDB is internalized to get a non-threaded lib for pam_userdb.so to
 # be built with.  The runtime-only dependency on BDB suggests the user
@@ -28,7 +30,7 @@ RDEPEND="nls? ( virtual/libintl )
 DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )"
 RDEPEND="${RDEPEND}
-	>=sys-libs/db-${BDB_VER}"
+	>=sys-libs/db-${BDB_VER}:$(get_version_component_range 1-2 ${BDB_VER})"
 
 S="${WORKDIR}/${MY_P}"
 

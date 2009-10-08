@@ -1,5 +1,5 @@
 app-arch/unzip
-|| ( games-fps/quake3 games-fps/quake3-bin )
+|| ( games-fps/quake3[dedicated=,opengl=] games-fps/quake3-bin[dedicated=,opengl=] )
 0
 nsco_beta191a.zip nsco_beta193upd.zip
 strip mirror fetch
@@ -12,9 +12,9 @@ dedicated opengl
 
 
 
+2
 
-
-compile install nofetch postinst preinst setup unpack
+compile configure install nofetch postinst preinst prepare setup unpack
 
 
 
