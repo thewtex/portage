@@ -19,6 +19,7 @@ RDEPEND=">=dev-libs/xerces-c-2.6
 	>=dev-cpp/libcult-1.4.2
 	>=dev-cpp/libxsd-frontend-1.15.0
 	>=dev-cpp/libbackend-elements-1.6.1
+	!dev-lang/mono
 	ace? ( dev-libs/ace )
 	dbxml? ( dev-libs/dbxml )"
 DEPEND="${RDEPEND}
