@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/freeglut/freeglut-2.6.0_rc1.ebuild,v 1.5 2009/10/01 13:10:00 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/freeglut/freeglut-2.6.0_rc1.ebuild,v 1.7 2009/10/09 20:27:33 maekke Exp $
 
 EAPI="2"
 

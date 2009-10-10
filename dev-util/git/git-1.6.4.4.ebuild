@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/git/git-1.6.4.4.ebuild,v 1.4 2009/10/02 17:11:01 josejx Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/git/git-1.6.4.4.ebuild,v 1.6 2009/10/09 22:30:02 maekke Exp $
 
 EAPI=2
 
@@ -27,7 +27,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm hppa ~ia64 ~mips ppc ppc64 ~s390 ~sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd"
+KEYWORDS="~alpha amd64 arm hppa ~ia64 ~mips ppc ppc64 ~s390 ~sh ~sparc x86 ~sparc-fbsd ~x86-fbsd"
 IUSE="curl cgi doc emacs gtk iconv mozsha1 perl ppcsha1 tk threads webdav xinetd cvs subversion"
 
 # Common to both DEPEND and RDEPEND
@@ -312,7 +312,7 @@ src_test() {
 		[[ $cvs -gt 0 ]] && \
 			has_version dev-util/cvs && \
 			let cvs=$cvs+1
-		[[ $cvs -gt 0 ]] && \
+		[[ $cvs -gt 1 ]] && \
 			built_with_use dev-util/cvs server && \
 			let cvs=$cvs+1
 		if [[ $cvs -lt 3 ]]; then

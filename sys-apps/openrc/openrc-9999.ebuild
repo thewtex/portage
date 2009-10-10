@@ -1,6 +1,8 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/openrc/openrc-9999.ebuild,v 1.51 2009/08/23 09:19:10 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/openrc/openrc-9999.ebuild,v 1.52 2009/10/09 16:48:13 zzam Exp $
+
+EAPI="1"
 
 inherit eutils flag-o-matic multilib toolchain-funcs
 
@@ -21,7 +23,7 @@ HOMEPAGE="http://roy.marples.name/openrc"
 
 LICENSE="BSD-2"
 SLOT="0"
-IUSE="debug elibc_glibc ncurses pam unicode kernel_linux kernel_FreeBSD"
+IUSE="debug elibc_glibc ncurses pam unicode kernel_linux kernel_FreeBSD +oldnet"
 
 RDEPEND="virtual/init
 	kernel_FreeBSD? ( sys-process/fuser-bsd )
@@ -47,6 +49,9 @@ pkg_setup() {
 	elif use kernel_FreeBSD ; then
 		MAKE_ARGS="${MAKE_ARGS} OS=FreeBSD"
 		brand="FreeBSD"
+	fi
+	if use oldnet; then
+		MAKE_ARGS="${MAKE_ARGS} MKOLDNET=yes"
 	fi
 	export BRANDING="Gentoo ${brand}"
 
@@ -103,6 +108,17 @@ src_install() {
 
 	# Cater to the norm
 	(use x86 || use amd64) && sed -i -e '/^windowkeys=/s:NO:YES:' "${D}"/etc/conf.d/keymaps
+
+	# Support for logfile rotation
+	insinto /etc/logrotate.d
+	newins "${FILESDIR}/openrc.logrotate" openrc
+
+	# makefile does no longer install conf.d/net in use oldnet case, so store it
+	# where we can find it at merge time
+	if use oldnet; then
+		insinto /usr/share/doc/${PN}
+		newins conf.d/net net.default
+	fi
 }
 
 add_boot_init() {
@@ -135,10 +151,15 @@ add_boot_init_mit_config() {
 pkg_preinst() {
 	local f LIBDIR=$(get_libdir)
 
-	# default net script is just comments, so no point in biting people
-	# in the ass by accident
-	mv "${D}"/etc/conf.d/net "${T}"/
-	[[ -e ${ROOT}/etc/conf.d/net ]] && cp "${ROOT}"/etc/conf.d/net "${T}"/
+	if use oldnet; then
+		# default net script is just comments, so no point in biting people
+		# in the ass by accident
+		# Can this code be moved to pkg_postinst
+		# or does it have side effects like protecting conf.d/net if old version
+		# had it in CONTENTS and it get removed if not copying it here??
+		cp "${D}"/usr/share/doc/${PN}/net.default "${T}"/net
+		[[ -e ${ROOT}/etc/conf.d/net ]] && cp "${ROOT}"/etc/conf.d/net "${T}"/
+	fi
 
 	# upgrade timezone file ... do it before moving clock
 	if [[ -e ${ROOT}/etc/conf.d/clock && ! -e ${ROOT}/etc/timezone ]] ; then
@@ -173,18 +194,20 @@ pkg_preinst() {
 		elog "and delete /etc/conf.d/rc"
 	fi
 
-	# force net init.d scripts into symlinks
-	for f in "${ROOT}"/etc/init.d/net.* ; do
-		[[ -e ${f} ]] || continue # catch net.* not matching anything
-		[[ ${f} == */net.lo ]] && continue # real file now
-		[[ ${f} == *.openrc.bak ]] && continue
-		if [[ ! -L ${f} ]] ; then
-			elog "Moved net service '${f##*/}' to '${f##*/}.openrc.bak' to force a symlink."
-			elog "You should delete '${f##*/}.openrc.bak' if you don't need it."
-			mv "${f}" "${f}.openrc.bak"
-			ln -snf net.lo "${f}"
-		fi
-	done
+	if use oldnet; then
+		# force net init.d scripts into symlinks
+		for f in "${ROOT}"/etc/init.d/net.* ; do
+			[[ -e ${f} ]] || continue # catch net.* not matching anything
+			[[ ${f} == */net.lo ]] && continue # real file now
+			[[ ${f} == *.openrc.bak ]] && continue
+			if [[ ! -L ${f} ]] ; then
+				elog "Moved net service '${f##*/}' to '${f##*/}.openrc.bak' to force a symlink."
+				elog "You should delete '${f##*/}.openrc.bak' if you don't need it."
+				mv "${f}" "${f}.openrc.bak"
+				ln -snf net.lo "${f}"
+			fi
+		done
+	fi
 
 	# termencoding was added in 0.2.1 and needed in boot
 	has_version ">=sys-apps/openrc-0.2.1" || add_boot_init termencoding
@@ -206,6 +229,21 @@ pkg_preinst() {
 				enable_udev=1
 				;;
 		esac
+	fi
+
+	if ! use oldnet; then
+		local f= links=$(find "${ROOT}"/etc/runlevels/ -name "net.*")
+		if [[ "${links}" != "" ]] ; then
+			ewarn "You have disabled installation of old-style network scripts"
+			ewarn "but they are still enabled in some runlevels:"
+			for f in $links; do
+				ewarn "\t$f"
+			done
+			ewarn "You should migrate the settings"
+			ewarn "from /etc/conf.d/net to /etc/conf.d/network"
+			ewarn "and clean runlevels from /etc/init.d/net.* and"
+			ewarn "instead add /etc/init.d/network"
+		fi
 	fi
 
 	# skip remaining migration if we already have openrc installed
@@ -289,7 +327,9 @@ pkg_postinst() {
 	# Remove old baselayout links
 	rm -f "${ROOT}"/etc/runlevels/boot/{check{fs,root},rmnologin}
 
-	[[ -e ${T}/net && ! -e ${ROOT}/etc/conf.d/net ]] && mv "${T}"/net "${ROOT}"/etc/conf.d/net
+	if use oldnet; then
+		[[ -e ${T}/net && ! -e ${ROOT}/etc/conf.d/net ]] && mv "${T}"/net "${ROOT}"/etc/conf.d/net
+	fi
 
 	# Make our runlevels if they don't exist
 	if [[ ! -e ${ROOT}/etc/runlevels ]] || [[ -e ${ROOT}/etc/runlevels/.add_boot_init.created ]] ; then
