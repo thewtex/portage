@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/newt/newt-0.52.10.ebuild,v 1.9 2009/10/04 20:42:10 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/newt/newt-0.52.10.ebuild,v 1.11 2009/10/07 18:15:26 mescalinum Exp $
 
 inherit python toolchain-funcs eutils rpm
 
