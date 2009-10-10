@@ -1,0 +1,22 @@
+virtual/init kernel_FreeBSD? ( sys-process/fuser-bsd ) elibc_glibc? ( >=sys-libs/glibc-2.5 ) ncurses? ( sys-libs/ncurses ) pam? ( virtual/pam ) >=sys-apps/baselayout-2.0.0 kernel_linux? ( !<sys-apps/module-init-tools-3.2.2-r2 ) !<sys-fs/udev-133 !<sys-apps/sysvinit-2.86-r11 virtual/os-headers >=dev-util/git-1.6
+virtual/init kernel_FreeBSD? ( sys-process/fuser-bsd ) elibc_glibc? ( >=sys-libs/glibc-2.5 ) ncurses? ( sys-libs/ncurses ) pam? ( virtual/pam ) >=sys-apps/baselayout-2.0.0 kernel_linux? ( !<sys-apps/module-init-tools-3.2.2-r2 ) !<sys-fs/udev-133 !<sys-apps/sysvinit-2.86-r11
+0
+
+
+http://roy.marples.name/openrc
+BSD-2
+OpenRC manages the services, startup and shutdown of a host
+
+eutils flag-o-matic git multilib portability toolchain-funcs
+debug elibc_glibc ncurses pam unicode kernel_linux kernel_FreeBSD +oldnet
+
+
+
+1
+
+compile install postinst preinst setup unpack
+
+
+
+
+
