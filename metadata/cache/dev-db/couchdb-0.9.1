@@ -1,5 +1,5 @@
-dev-libs/icu dev-lang/erlang >=dev-libs/openssl-0.9.8j >=net-misc/curl-7.18.2 dev-lang/spidermonkey >=app-shells/bash-3.2 virtual/python
-dev-libs/icu dev-lang/erlang >=dev-libs/openssl-0.9.8j >=net-misc/curl-7.18.2 dev-lang/spidermonkey virtual/python
+dev-libs/icu dev-lang/erlang[ssl] >=dev-libs/openssl-0.9.8j >=net-misc/curl-7.18.2 dev-lang/spidermonkey >=app-shells/bash-3.2 virtual/python
+dev-libs/icu dev-lang/erlang[ssl] >=dev-libs/openssl-0.9.8j >=net-misc/curl-7.18.2 dev-lang/spidermonkey virtual/python
 0
 mirror://apache/couchdb/0.9.1/apache-couchdb-0.9.1.tar.gz
 test mirror
@@ -12,9 +12,9 @@ distutils eutils multilib portability python toolchain-funcs
 
 
 
+2
 
-
-compile install postinst postrm setup unpack
+compile configure install postinst postrm prepare setup unpack
 
 
 

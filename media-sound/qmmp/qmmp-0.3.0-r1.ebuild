@@ -1,18 +1,26 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/qmmp/qmmp-0.3.0-r1.ebuild,v 1.1 2009/10/07 11:42:31 hwoarang Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/qmmp/qmmp-0.3.0-r1.ebuild,v 1.3 2009/10/09 18:27:01 sping Exp $
 
 EAPI="2"
 
 inherit cmake-utils
+[ "$PV" == "9999" ] && inherit subversion
 
 DESCRIPTION="Qt4-based audio player with winamp/xmms skins support"
 HOMEPAGE="http://qmmp.ylsoftware.com/index_en.php"
-SRC_URI="http://qmmp.ylsoftware.com/files/${P}.tar.bz2"
+if [ "$PV" != "9999" ]; then
+	SRC_URI="http://qmmp.ylsoftware.com/files/${P}.tar.bz2"
+	KEYWORDS="~amd64 ~x86"
+else
+	SRC_URI=""
+	ESVN_REPO_URI="http://qmmp.googlecode.com/svn/trunk/qmmp/"
+	KEYWORDS=""
+fi
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+# KEYWORDS further up
 IUSE="aac +alsa +dbus bs2b ffmpeg flac jack libsamplerate +mad modplug musepack oss projectm pulseaudio scrobbler sndfile +vorbis wavpack"
 
 RDEPEND="x11-libs/qt-gui:4
@@ -40,6 +48,8 @@ DEPEND="${RDEPEND}"
 
 DOCS="AUTHORS ChangeLog README"
 
+CMAKE_IN_SOURCE_BUILD="1"
+
 qmmp_use_enable() {
 	# uses completely non standard cmake options...
 	if use ${1}; then
@@ -53,7 +63,7 @@ src_configure() {
 	mycmakeargs="${mycmakeargs}
 		$(qmmp_use_enable alsa ALSA)
 		$(qmmp_use_enable aac AAC)
-		$(qmmp_use_enable bs2b BS2B )
+		$(qmmp_use_enable bs2b BS2B)
 		$(qmmp_use_enable dbus DBUS)
 		$(qmmp_use_enable ffmpeg FFMPEG)
 		$(qmmp_use_enable flac FLAC)
