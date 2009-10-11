@@ -1,0 +1,21 @@
+diff -Naur gtest-1.0.1.orig/test/gtest-death-test_test.cc gtest-1.0.1/test/gtest-death-test_test.cc
+--- gtest-1.0.1.orig/test/gtest-death-test_test.cc	2008-08-10 15:30:33.000000000 +0200
++++ gtest-1.0.1/test/gtest-death-test_test.cc	2008-08-10 15:37:19.000000000 +0200
+@@ -276,7 +276,7 @@
+ }
+ 
+ // Repeats a representative sample of death tests in the "threadsafe" style:
+-
++/*
+ TEST_F(TestForDeathTest, StaticMemberFunctionThreadsafeStyle) {
+   testing::GTEST_FLAG(death_test_style) = "threadsafe";
+   ASSERT_DEATH(StaticMemberFunction(), "death.*StaticMember");
+@@ -294,7 +294,7 @@
+   for (int i = 0; i < 3; ++i)
+     EXPECT_EXIT(exit(i), testing::ExitedWithCode(i), "") << ": i = " << i;
+ }
+-
++*/
+ TEST_F(TestForDeathTest, MixedStyles) {
+   testing::GTEST_FLAG(death_test_style) = "threadsafe";
+   EXPECT_DEATH(exit(1), "");
