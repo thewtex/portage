@@ -1,19 +1,17 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/games-mods.eclass,v 1.36 2009/10/09 03:44:22 nyhm Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/games-mods.eclass,v 1.40 2009/10/11 00:29:23 nyhm Exp $
 
 # Variables to specify in an ebuild which uses this eclass:
 # GAME - (doom3, quake4 or ut2004, etc), unless ${PN} starts with e.g. "doom3-"
-# MOD_BINS - Name of the binary to run
 # MOD_DESC - Description for the mod
+# MOD_NAME - Creates a command-line wrapper and desktop icon for the mod
 # MOD_DIR - Subdirectory name for the mod, if applicable
 # MOD_ICON - Custom icon for the mod, instead of the default
-# MOD_NAME - Creates a command-line wrapper and desktop icon for the mod
-# MOD_TBZ2 - File to extract within the Makeself archive
 
 inherit eutils games
 
-EXPORT_FUNCTIONS src_unpack src_install pkg_postinst
+EXPORT_FUNCTIONS src_install pkg_postinst
 
 [[ -z ${GAME} ]] && GAME=${PN%%-*}
 
@@ -95,7 +93,7 @@ games-mods_get_rdepend() {
 		2)
 			local pkg
 			for pkg in $@ ; do
-				if [[ -z ${MOD_BINS} && -z ${MOD_DIR} ]] ; then
+				if [[ -z ${MOD_DIR} ]] ; then
 					echo -n " ${pkg}"
 				else
 					echo -n " ${pkg}[dedicated=,opengl=]"
@@ -120,7 +118,7 @@ S=${WORKDIR}
 dir=${GAMES_DATADIR}/${GAME}
 
 games-mods_use_opengl() {
-	[[ -z ${MOD_BINS} && -z ${MOD_DIR} ]] && return 1
+	[[ -z ${MOD_DIR} ]] && return 1
 
 	if use opengl || ! use dedicated ; then
 		# Use opengl by default
@@ -131,46 +129,9 @@ games-mods_use_opengl() {
 }
 
 games-mods_use_dedicated() {
-	[[ -z ${MOD_BINS} && -z ${MOD_DIR} ]] && return 1
+	[[ -z ${MOD_DIR} ]] && return 1
 
 	use dedicated && return 0 || return 1
-}
-
-games-mods_src_unpack() {
-	# The first thing we do here is determine exactly what we're dealing with
-	for src_uri in ${A} ; do
-		URI_SUFFIX="${src_uri##*.}"
-		case ${URI_SUFFIX##*.} in
-			bin|run)
-				# We have a Makeself archive, use unpack_makeself
-				unpack_makeself "${src_uri}"
-				# Since this is a Makeself archive, it has a lot of useless
-				# files (for us), so we delete them.
-				rm -rf setup.data setup.sh uninstall
-				;;
-			bz2|gz|Z|z|ZIP|zip)
-				# We have a normal tarball/zip file, use unpack
-				unpack "${src_uri}"
-				;;
-		esac
-	done
-
-	# This code should only be executed for Makeself archives
-	for tarball in ${MOD_TBZ2} ; do
-		mkdir -p "${S}"/unpack
-		for name in "${tarball}_${PV}-english" "${tarball}_${PV}" "${tarball}" ; do
-			for ext in tar.bz2 tar.gz tbz2 tgz ; do
-				if [[ -e "${name}.${ext}" ]] ; then
-					tar xf "${name}.${ext}" -C "${S}"/unpack \
-						|| die "uncompressing tarball"
-					# Remove the tarball after we unpack it
-					rm -f "${name}.${ext}"
-				fi
-			done
-		done
-	done
-	# Since we remove all of these anyway, let's move it to the eclass
-	rm -f 3355_patch 3339_patch
 }
 
 games-mods_src_install() {
@@ -207,52 +168,9 @@ games-mods_src_install() {
 		fi
 
 		# Set up command-line and desktop menu entries
-		if [[ -n "${MOD_BINS}" ]] ; then
-			for binary in ${MOD_BINS} ; do
-				if [[ -n "${MOD_DIR}" ]] ; then
-					games_make_wrapper "${GAME_EXE}-${MOD_BINS}" \
-						"${GAME_EXE} ${SELECT_MOD}${MOD_DIR}" "${dir}" "${dir}"
-					make_desktop_entry "${GAME_EXE}-${MOD_BINS}" \
-						"${GAME_TITLE} - ${MOD_NAME}" "${MOD_ICON}"
-				elif [[ -e "${S}"/bin/"${binary}" ]] ; then
-					exeinto "${dir}"
-					newexe bin/${binary} ${GAME_EXE}-${binary} \
-						|| die "newexe failed"
-					new_bin_name=
-					bin_name=$(echo ${binary} | sed -e 's:[-_.]: :g')
-					# We want our wrapper to use the libraries/starting
-					# directory of our game.  If the game is in
-					# GAMES_PREFIX_OPT, then we want to start there.
-					if [[ -d "${GAMES_PREFIX_OPT}"/${GAME} ]] ; then
-						GAME_DIR="${GAMES_PREFIX_OPT}/${GAME}"
-					else
-						GAME_DIR="${dir}"
-					fi
-					games_make_wrapper "${GAME_EXE}-${binary}" \
-						./"${GAME_EXE}-${binary}" "${GAME_DIR}" "${GAME_DIR}"
-					if [[ "${bin_name}" == "${binary}" ]] ; then
-						bin_name=${MOD_NAME}
-					else
-						for tmp1 in ${bin_name} ; do
-							tmp2=$(echo ${tmp1} | cut -b1 | tr [[:lower:]] \
-								[[:upper:]])
-							tmp3=$(echo ${tmp1} | cut -b2-)
-							new_bin_name="${new_bin_name} ${tmp2}${tmp3}"
-						done
-						new_bin_name=$(echo ${new_bin_name} | cut -b1-)
-						bin_name="${MOD_NAME} (${new_bin_name})"
-					fi
-					make_desktop_entry "${GAME_EXE}-${binary}" \
-						"${GAME_TITLE} - ${bin_name}" "${MOD_ICON}"
-					# We remove the binary after we have installed it.
-					rm -f bin/${binary}
-				fi
-			done
-			# We don't want to leave the binary directory around
-			rm -rf bin
-		elif [[ -n "${MOD_DIR}" ]] ; then
+		if [[ -n ${MOD_DIR} ]] ; then
 			games_make_wrapper "${GAME_EXE}-${PN/${GAME}-}" \
-				"${GAME_EXE} ${SELECT_MOD}${MOD_DIR}" "${dir}" "${dir}"
+				"${GAME_EXE} ${SELECT_MOD}${MOD_DIR}"
 			make_desktop_entry "${GAME_EXE}-${PN/${GAME}-}" \
 				"${GAME_TITLE} - ${MOD_NAME}" "${MOD_ICON}"
 			# Since only quake3 has both a binary and a source-based install,
@@ -261,8 +179,7 @@ games-mods_src_install() {
 				"quake3")
 					if has_version games-fps/quake3-bin ; then
 						games_make_wrapper "${GAME_EXE}-bin-${PN/${GAME}-}" \
-							"${GAME_EXE}-bin ${SELECT_MOD}${MOD_DIR}" \
-							"${dir}" "${dir}"
+							"${GAME_EXE}-bin ${SELECT_MOD}${MOD_DIR}"
 					fi
 					make_desktop_entry "${GAME_EXE}-bin-${PN/${GAME}-}" \
 						"${GAME_TITLE} - ${MOD_NAME} (binary)" \
@@ -272,18 +189,9 @@ games-mods_src_install() {
 		fi
 	fi
 
-	# Copy our unpacked files, if it exists
-	if [[ -d "${S}"/unpack ]] ; then
-		insinto "${INS_DIR}"
-		doins -r "${S}"/unpack/* || die "copying files"
-		rm -rf "${S}"/unpack
-	fi
-
 	# We expect anything not wanted to have been deleted by the ebuild
-	if [[ ! -z $(ls "${S}"/* 2> /dev/null) ]] ; then
-		insinto "${INS_DIR}"
-		doins -r * || die "doins -r failed"
-	fi
+	insinto "${INS_DIR}"
+	doins -r * || die "doins -r failed"
 
 	# We are installing everything for these mods into ${INS_DIR},
 	# ${GAMES_DATADIR}/${GAME} in most cases, and symlinking it
@@ -337,13 +245,7 @@ games-mods_src_install() {
 games-mods_pkg_postinst() {
 	games_pkg_postinst
 	if games-mods_use_opengl ; then
-		if [[ -n "${MOD_BINS}" ]] ; then
-			for binary in ${MOD_BINS} ; do
-				elog "To play this mod run:"
-				elog " ${GAME_EXE}-${binary}"
-				echo
-			done
-		elif [[ -n "${MOD_DIR}" ]] ; then
+		if [[ -n ${MOD_DIR} ]] ; then
 			elog "To play this mod run:"
 			elog " ${GAME_EXE}-${PN/${GAME}-}"
 			echo
