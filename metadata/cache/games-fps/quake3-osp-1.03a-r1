@@ -1,14 +1,14 @@
 app-arch/unzip
-|| ( games-fps/quake3[dedicated=,opengl=] games-fps/quake3-bin[dedicated=,opengl=] )
+dedicated? ( || ( games-fps/quake3[dedicated] games-fps/quake3-bin[dedicated] ) ) opengl? ( || ( || ( games-fps/quake3[opengl] games-fps/quake3[-dedicated] ) || ( games-fps/quake3-bin[opengl] games-fps/quake3-bin[-dedicated] ) ) ) !dedicated? ( !opengl? ( || ( || ( games-fps/quake3[opengl] games-fps/quake3[-dedicated] ) || ( games-fps/quake3-bin[opengl] games-fps/quake3-bin[-dedicated] ) ) ) )
 0
 http://www.sunflow.com/orangesmoothie/downloads/osp-Quake3-1.03a_full.zip
 mirror strip
 http://www.orangesmoothie.org/
 GPL-2
 Quake III OSP - a tournament mod
-~amd64 ~ppc ~x86
+amd64 ~ppc x86
 base eutils games games-mods multilib portability toolchain-funcs
-dedicated opengl
+dedicated opengl dedicated opengl
 
 
 

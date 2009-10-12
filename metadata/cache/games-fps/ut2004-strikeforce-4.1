@@ -1,14 +1,14 @@
 app-arch/unzip
-games-fps/ut2004[dedicated=,opengl=]
+dedicated? ( || ( games-server/ut2004-ded games-fps/ut2004[dedicated] ) ) opengl? ( || ( games-fps/ut2004[opengl] games-fps/ut2004[-dedicated] ) ) !dedicated? ( !opengl? ( || ( games-fps/ut2004[opengl] games-fps/ut2004[-dedicated] ) ) )
 0
 StrikeForce-CE-V4.1.zip
 fetch
 http://www.strikeforcegame.com/
 freedist
 UT2004 Strike Force - a terrorist vs. strike force mod
-~amd64 ~x86
+amd64 x86
 base eutils games games-mods multilib portability toolchain-funcs
-dedicated opengl
+dedicated opengl dedicated opengl
 
 
 

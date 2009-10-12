@@ -1,14 +1,14 @@
 app-arch/unzip
-|| ( games-fps/quake3[dedicated=,opengl=] games-fps/quake3-bin[dedicated=,opengl=] )
+dedicated? ( || ( games-fps/quake3[dedicated] games-fps/quake3-bin[dedicated] ) ) opengl? ( || ( || ( games-fps/quake3[opengl] games-fps/quake3[-dedicated] ) || ( games-fps/quake3-bin[opengl] games-fps/quake3-bin[-dedicated] ) ) ) !dedicated? ( !opengl? ( || ( || ( games-fps/quake3[opengl] games-fps/quake3[-dedicated] ) || ( games-fps/quake3-bin[opengl] games-fps/quake3-bin[-dedicated] ) ) ) )
 0
 http://www.defrag.ru/files/defrag_1.91.08.zip http://www.german-defrag.de/files/defrag/defragcpmpak01.zip http://www.german-defrag.de/files/defrag/df-extras002.zip http://www.german-defrag.de/files/defrag/defragpak1.zip http://www.german-defrag.de/files/defrag/defragpak2.zip http://www.german-defrag.de/files/defrag/defragpak3.zip http://www.german-defrag.de/files/defrag/defragpak4.zip http://www.german-defrag.de/files/defrag/defragpak5.zip http://www.german-defrag.de/files/defrag/defragpak7.zip http://www.german-defrag.de/files/defrag/defragpak8.zip http://www.german-defrag.de/files/defrag/defragpak9.zip http://www.german-defrag.de/files/defrag/defragpak10.zip http://www.german-defrag.de/files/defrag/defragpak11.zip
 mirror strip
 http://www.planetquake.com/defrag/
 freedist
 Quake III Defrag - Trickjumping challenges for Quake III
-~amd64 ~ppc ~x86
+amd64 ~ppc x86
 base eutils games games-mods multilib portability toolchain-funcs
-dedicated opengl
+dedicated opengl dedicated opengl
 
 
 

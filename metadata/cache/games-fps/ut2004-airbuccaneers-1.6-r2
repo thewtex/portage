@@ -1,14 +1,14 @@
 app-arch/unzip
-games-fps/ut2004[dedicated=,opengl=]
+dedicated? ( || ( games-server/ut2004-ded games-fps/ut2004[dedicated] ) ) opengl? ( || ( games-fps/ut2004[opengl] games-fps/ut2004[-dedicated] ) ) !dedicated? ( !opengl? ( || ( games-fps/ut2004[opengl] games-fps/ut2004[-dedicated] ) ) )
 0
 http://ludocraft.oulu.fi/airbuccaneers/download/airbuccaneers1_6_zipinstall.zip
 mirror strip
 http://ludocraft.oulu.fi/airbuccaneers/
 freedist
 UT2004 Air Buccaneers - Pirate-style conversion with flying wooden ships
-~amd64 ~x86
+amd64 x86
 base eutils games games-mods multilib portability toolchain-funcs
-dedicated opengl
+dedicated opengl dedicated opengl
 
 
 
