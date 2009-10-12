@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/git/git-9999.ebuild,v 1.13 2009/10/09 19:59:16 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/git/git-9999.ebuild,v 1.14 2009/10/11 22:28:17 robbat2 Exp $
 
 EAPI=2
 
@@ -29,7 +29,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+blksha1 +curl cgi +doc emacs gtk iconv +perl ppcsha1 tk +threads +webdav xinetd cvs +subversion"
+IUSE="+blksha1 +curl cgi +doc emacs gtk iconv +perl ppcsha1 tk +threads +webdav xinetd cvs subversion"
 
 # Common to both DEPEND and RDEPEND
 CDEPEND="
@@ -119,6 +119,10 @@ exportmakeopts() {
 	use subversion \
 		|| myopts="${myopts} NO_SVN_TESTS=YesPlease"
 
+	has_version '>=app-text/asciidoc-8.0' \
+		&& myopts="${myopts} ASCIIDOC8=YesPlease"
+	myopts="${myopts} ASCIIDOC_NO_ROFF=YesPlease"
+
 	export MY_MAKEOPTS="${myopts}"
 }
 
@@ -189,10 +193,14 @@ src_compile() {
 			|| die "emake gitweb/gitweb.cgi failed"
 	fi
 
-	if [[ "$PV" == "9999" ]] && use doc; then
-		cd Documentation
-		git_emake man info html \
-			|| die "emake man html info failed"
+	cd "${S}"/Documentation
+	if [[ "$PV" == "9999" ]] ; then
+		git_emake man \
+			|| die "emake man failed"
+		if use doc ; then
+			git_emake info html \
+				|| die "emake info html failed"
+		fi
 	fi
 }
 
@@ -211,6 +219,8 @@ src_install() {
 		use doc && dohtml -p ${d} Documentation${d}*.html
 	done
 	docinto /
+	# Upstream does not ship this pre-built :-(
+	[[ "$PV" == "9999" ]] && use doc && doinfo Documentation/{git,gitman}.info
 
 	dobashcompletion contrib/completion/git-completion.bash ${PN}
 
@@ -300,7 +310,7 @@ src_test() {
 
 	cvs=0
 	use cvs && let cvs=$cvs+1
-	if ! has userpriv "${FEATURES}"; then
+	if [[ ${EUID} -eq 0 ]]; then
 		if [[ $cvs -eq 1 ]]; then
 			ewarn "Skipping CVS tests because CVS does not work as root!"
 			ewarn "You should retest with FEATURES=userpriv!"

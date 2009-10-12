@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10568 2009/10/10 18:34:17 pva Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10574 2009/10/11 17:34:32 abcd Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,44 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Jonathan Callen <abcd@gentoo.org> (11 Oct 2009)
+# Old KDE 3.5.9 monolithic ebuilds.  Replaced by kde*-meta.
+# Masked for removal in 30 days
+kde-base/kdeaccessibility
+kde-base/kdeaddons
+kde-base/kdeadmin
+kde-base/kdeartwork
+kde-base/kdebase
+kde-base/kdeedu
+kde-base/kdegames
+kde-base/kdegraphics
+kde-base/kde
+kde-base/kdemultimedia
+kde-base/kdenetwork
+kde-base/kdepim
+kde-base/kdesdk
+kde-base/kdetoys
+kde-base/kdeutils
+kde-base/kdewebdev
+
+# Ulrich Mueller <ulm@gentoo.org> (11 Oct 2009)
+# Blocked by its own dependency, therefore no longer installable.
+# Use the news module of app-admin/eselect-1.2* as replacement.
+# Masked for removal in 30 days, bug 288560.
+app-admin/eselect-news
+
+# Markus Meier <maekke@gentoo.org> (11 Oct 2009)
+# mask media-gfx/autopano-sift for removal in 30 days
+# use media-gfx/autopano-sift-C instead
+media-gfx/autopano-sift
+
+# Samuli Suominen <ssuominen@gentoo.org> (11 Oct 2009)
+# No opencore-amr support. Incorrect licensing used
+# in amwnb and amrwb, see bug 252140. Masked for removal
+# in few days.
+media-plugins/gst-plugins-amrnb
+media-plugins/gst-plugins-amrwb
 
 # Diego E. Pettenò <flameeyes@gmail.com> (9 Oct 2009)
 # Untested yet; documented only in Russian, help is appreciated.
@@ -132,8 +170,10 @@ dev-java/xmojo-bin
 dev-java/axion
 
 # Markus Meier <maekke@gentoo.org> (03 Oct 2009)
-# masked for testing
+# mask hugin and deps beta/rc versions for testing
 >=media-gfx/autopano-sift-C-2.5.1_rc1
+>=media-gfx/hugin-hugin-2009.4.0_rc1
+>=media-libs/libpano13-2.9.15_beta3
 
 # Michael Sterrett <mr_bones_@gentoo.org> (01 Oct 2009)
 # Doesn't work with newer openal.  Use games-action/openastromenace instead.
