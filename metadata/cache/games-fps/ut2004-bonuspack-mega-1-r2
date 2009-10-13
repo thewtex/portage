@@ -1,5 +1,5 @@
 app-arch/unzip
-games-fps/ut2004-data games-fps/ut2004
+dedicated? ( || ( games-server/ut2004-ded games-fps/ut2004[dedicated] ) ) opengl? ( || ( games-fps/ut2004[opengl] games-fps/ut2004[-dedicated] ) ) !dedicated? ( !opengl? ( || ( games-fps/ut2004[opengl] games-fps/ut2004[-dedicated] ) ) )
 0
 mirror://3dgamers/unrealtourn2k4/Missions/ut2004megapack-linux.tar.bz2 http://0day.icculus.org/ut2004/ut2004megapack-linux.tar.bz2 ftp://ftp.games.skynet.be/pub/misc/ut2004megapack-linux.tar.bz2 http://sonic-lux.net/data/mirror/ut2004/ut2004megapack-linux.tar.bz2
 mirror strip
@@ -12,9 +12,9 @@ dedicated opengl
 
 
 
+2
 
-
-compile install postinst preinst setup unpack
+compile configure install postinst preinst prepare setup unpack
 
 
 

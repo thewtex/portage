@@ -1,14 +1,14 @@
 app-arch/unzip
-|| ( games-fps/quake3[dedicated=,opengl=] games-fps/quake3-bin[dedicated=,opengl=] )
+dedicated? ( || ( games-fps/quake3[dedicated] games-fps/quake3-bin[dedicated] ) ) opengl? ( || ( || ( games-fps/quake3[opengl] games-fps/quake3[-dedicated] ) || ( games-fps/quake3-bin[opengl] games-fps/quake3-bin[-dedicated] ) ) ) !dedicated? ( !opengl? ( || ( || ( games-fps/quake3[opengl] games-fps/quake3[-dedicated] ) || ( games-fps/quake3-bin[opengl] games-fps/quake3-bin[-dedicated] ) ) ) )
 0
 mirror://quakeunity/modifications/threewavectf/threewave_16_full.zip mirror://quakeunity/modifications/threewavectf/threewave_17_update.zip
 mirror strip
 http://www.threewave.com/
 freedist
 Quake III Threewave CTF - Threewave CTF
-~amd64 ~ppc ~x86
+amd64 ~ppc x86
 base eutils games games-mods multilib portability toolchain-funcs
-dedicated opengl
+dedicated opengl dedicated opengl
 
 
 

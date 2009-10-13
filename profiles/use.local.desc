@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4887 2009/10/09 21:47:46 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4891 2009/10/11 09:27:48 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -434,11 +434,11 @@ app-misc/lcdproc:seamless-hbars - Try to avoid gaps in horizontal bars
 app-misc/lirc:hardware-carrier - The transmitter device generates its clock signal in hardware
 app-misc/lirc:transmitter - Add transmitter support to some lirc-drivers (e.g. serial)
 app-misc/mc:7zip - Add support for 7zip archives
+app-misc/mc:chdir - Change to latest working directory at exit
+app-misc/mc:edit - Build mcedit application
 app-misc/mc-mp:7zip - Add support for 7zip archives
 app-misc/navit:garmin - Enable the ability to read Garmin Road/Topo maps
 app-misc/navit:speechd - Enable speech output for routing notifications
-app-misc/mc:chdir - Change to latest working directory at exit
-app-misc/mc:edit - Build mcedit application
 app-misc/note:general - Add support for ascii flatfile backend
 app-misc/note:text - Add support for text backend
 app-misc/roadnav:festival - Enable support for app-accessibility/festival
@@ -2017,8 +2017,6 @@ media-video/lives:libvisual - Enable libvisual support
 media-video/mjpegtools:yv12 - Enables support for the YV12 pixel format
 media-video/motiontrack:multiprocess - Enables multi-process support (SMP/cluster) for motiontrack programs
 media-video/mplayer:3dnowext - Enable 3dnowext cpu instructions
-media-video/mplayer:amrnb - Enables Adaptive Multi-Rate Audio support (Narrow Band)
-media-video/mplayer:amrwb - Enables Adaptive Multi-Rate Audio support (Wide Band)
 media-video/mplayer:ass - Internal SRT/SSA/ASS (SubRip / SubStation Alpha) subtitle support
 media-video/mplayer:bl - Enables Blinkenlights support in mplayer
 media-video/mplayer:cdio - Use libcdio for CD support (instead of cdparanoia)
@@ -2733,6 +2731,7 @@ net-misc/openswan:ldap - Include LDAP support (used for fetching CRLs)
 net-misc/openswan:ms-bad-proposal - Allow bad IP address proposal offered by an Microsoft L2TP/IPSec servers
 net-misc/openswan:nocrypto-algorithms - Include algorithms that don't even encrypt (1DES)
 net-misc/openswan:weak-algorithms - Include weak algorithms (DH1)
+net-misc/openvpn:eurephia - Apply eurephia patch
 net-misc/openvpn:iproute2 - Enabled iproute2 support instead of net-tools
 net-misc/openvpn:passwordsave - Enables openvpn to save passwords
 net-misc/openvpn:pkcs11 - Enable PKCS#11 smartcard support
@@ -3264,6 +3263,7 @@ sys-devel/gcc-apple:objc - Build support for the Objective C code language
 sys-devel/gcc-apple:objc++ - Build support for the Objective C++ language
 sys-devel/gcc-nios2:multislot - Allow for SLOTs to include minor version (3.3.4 instead of just 3.3)
 sys-devel/gdb:multitarget - Support all known targets in one gdb binary
+sys-devel/gdb:sim - Support all known targets in one gdb binary
 sys-devel/kgcc64:multislot - Allow for SLOTs to include minor version (eg. 3.3.4 instead of just 3.3)
 sys-devel/libperl:ithreads - Enable Perl threads, has some compatibility problems
 sys-devel/scratchbox-toolchain-cs2005q3_2-glibc:arm - Install the toolchain for the ARM arch

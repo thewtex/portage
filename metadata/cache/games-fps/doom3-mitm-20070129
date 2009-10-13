@@ -1,14 +1,14 @@
 app-arch/unzip
-games-fps/doom3-roe games-fps/doom3[opengl,roe] games-fps/doom3
+games-fps/doom3-roe games-fps/doom3[opengl,roe] dedicated? ( games-fps/doom3[dedicated] ) opengl? ( || ( games-fps/doom3[opengl] games-fps/doom3[-dedicated] ) ) !dedicated? ( !opengl? ( || ( games-fps/doom3[opengl] games-fps/doom3[-dedicated] ) ) )
 0
 http://www.doomwadstation.com/doom3/maps/Morning/mitm_4.zip http://www.doomwadstation.com/doom3/maps/Morning/mitm5.zip
 mirror strip
 http://www.makeittomorning.co.uk/
 as-is
 Doom 3 Make it to Morning - Single player maps
-~amd64 ~x86
+amd64 x86
 base eutils games games-mods multilib portability toolchain-funcs
-
+dedicated opengl
 
 
 

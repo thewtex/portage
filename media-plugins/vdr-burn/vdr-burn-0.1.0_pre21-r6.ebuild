@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-burn/vdr-burn-0.1.0_pre21-r6.ebuild,v 1.4 2009/07/09 20:36:24 zzam Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-burn/vdr-burn-0.1.0_pre21-r6.ebuild,v 1.5 2009/10/10 10:07:27 zzam Exp $
 
 EAPI="2"
 
@@ -48,8 +48,8 @@ RDEPEND="${DEPEND}
 		>=app-cdr/dvd+rw-tools-5.21
 		projectx? ( >=media-video/projectx-0.90.4.00-r3 )"
 
-VDR_CONFD_FILE="${FILESDIR}/${PV}/confd"
-VDR_RCADDON_FILE="${FILESDIR}/${PV}/rc-addon.sh"
+VDR_CONFD_FILE="${FILESDIR}/confd"
+VDR_RCADDON_FILE="${FILESDIR}/rc-addon.sh"
 
 pkg_setup() {
 	local error=0

@@ -1,14 +1,14 @@
 app-arch/unzip
-games-fps/ut2004
+dedicated? ( || ( games-server/ut2004-ded games-fps/ut2004[dedicated] ) ) opengl? ( || ( games-fps/ut2004[opengl] games-fps/ut2004[-dedicated] ) ) !dedicated? ( !opengl? ( || ( games-fps/ut2004[opengl] games-fps/ut2004[-dedicated] ) ) )
 0
 http://downloads.unrealadmin.org/UT2004/BonusPack/cbp1.zip http://files.volved.com/qsr/ut2004_map_packs/cbp1.zip
 mirror strip
 http://www.planetunreal.com/cbp/
 freedist
 UT2004 Community Bonus Pack Volume 1 - UT2003 Community Bonus Pack repacked for UT2004
-~amd64 ~x86
+amd64 x86
 base eutils games games-mods multilib portability toolchain-funcs
-
+dedicated opengl
 
 
 

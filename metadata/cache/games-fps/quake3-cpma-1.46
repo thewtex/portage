@@ -1,14 +1,14 @@
 app-arch/unzip
-|| ( games-fps/quake3[dedicated=,opengl=] games-fps/quake3-bin[dedicated=,opengl=] )
+dedicated? ( || ( games-fps/quake3[dedicated] games-fps/quake3-bin[dedicated] ) ) opengl? ( || ( || ( games-fps/quake3[opengl] games-fps/quake3[-dedicated] ) || ( games-fps/quake3-bin[opengl] games-fps/quake3-bin[-dedicated] ) ) ) !dedicated? ( !opengl? ( || ( || ( games-fps/quake3[opengl] games-fps/quake3[-dedicated] ) || ( games-fps/quake3-bin[opengl] games-fps/quake3-bin[-dedicated] ) ) ) )
 0
 http://www.challenge-tv.com/demostorage/files/cpm/cpma146-nomaps.zip http://ftp1.srv.endpoint.nu/pub/repository/challenge-tv/demostorage/files/cpm/cpma146-nomaps.zip http://www.promode.org/files/cpma-mappack-full.zip
 mirror strip
 http://www.promode.org/
 as-is
 Quake III Challenge Pro Mode Arena - advanced FPS competition mod
-~amd64 ~ppc ~x86
+amd64 ~ppc x86
 base eutils games games-mods multilib portability toolchain-funcs
-dedicated opengl
+dedicated opengl dedicated opengl
 
 
 
