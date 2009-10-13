@@ -16,7 +16,6 @@ IUSE="xen moonlight minimal"
 
 #Bash requirement is for += operator
 COMMONDEPEND="!<dev-dotnet/pnet-0.6.12
-	!dev-cpp/xsd
 	!dev-util/monodoc
 	dev-libs/glib:2
 	!minimal? ( =dev-dotnet/libgdiplus-${GO_MONO_REL_PV}* )

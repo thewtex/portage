@@ -1,0 +1,143 @@
+diff -up xsd-3.2.0-2/documentation/xsd.1.xsdcxx-rename xsd-3.2.0-2/documentation/xsd.1
+--- xsd-3.2.0-2/documentation/xsd.1.xsdcxx-rename	2008-09-23 13:36:25.000000000 +0300
++++ xsd-3.2.0-2/documentation/xsd.1	2009-05-20 23:10:39.000000000 +0300
+@@ -3,14 +3,14 @@
+ .\"
+ .TH XSD 1 "September 2008" "XSD 3.2.0"
+ .SH NAME
+-xsd \- W3C XML Schema to C++ Compiler
++xsdcxx \- W3C XML Schema to C++ Compiler
+ .\"
+ .\"
+ .\"
+ .\"--------------------------------------------------------------------
+ .SH SYNOPSIS
+ .\"--------------------------------------------------------------------
+-.B xsd
++.B xsdcxx
+ .I command
+ .B [
+ .I options
+@@ -20,19 +20,19 @@ xsd \- W3C XML Schema to C++ Compiler
+ .I file
+ .B ...]
+ .in
+-.B xsd help
++.B xsdcxx help
+ .B [
+ .I command
+ .B ]
+ .in
+-.B xsd version
++.B xsdcxx version
+ .\"
+ .\"
+ .\"
+ .\"--------------------------------------------------------------------
+ .SH DESCRIPTION
+ .\"--------------------------------------------------------------------
+-.B xsd
++.B xsdcxx
+ generates vocabulary-specific, statically-typed C++ mapping from W3C XML
+ Schema definitions. Particular mapping to produce is selected by a
+ .IR command .
+@@ -96,7 +96,7 @@ Print usage information and exit. Use
+ .PP
+ .RS
+ .RS 3
+-.B xsd help
++.B xsdcxx help
+ .I command
+ .RE
+ .PP
+@@ -181,7 +181,7 @@ for the current translation unit is empt
+ with namespace
+ .B http://example.com/hello
+ and you run
+-.B xsd
++.B xsdcxx
+ on this file, then the string in question would be:
+ 
+ .B \ http://example.com/hello
+@@ -550,7 +550,7 @@ for the current translation unit is empt
+ with namespace
+ .B http://example.com/hello
+ and you run
+-.B xsd
++.B xsdcxx
+ on this file, then the string in question would be:
+ 
+ .B \ http://example.com/hello element
+@@ -1691,7 +1691,7 @@ option. With this approach you don't nee
+ .\"
+ .SH DIAGNOSTICS
+ If the input file is not a valid W3C XML Schema definition,
+-.B xsd
++.B xsdcxx
+ will issue diagnostic messages to
+ .B STDERR
+ and exit with non-zero exit code.
+diff -up xsd-3.2.0-2/documentation/xsd.xhtml.xsdcxx-rename xsd-3.2.0-2/documentation/xsd.xhtml
+--- xsd-3.2.0-2/documentation/xsd.xhtml.xsdcxx-rename	2008-08-07 14:54:35.000000000 +0300
++++ xsd-3.2.0-2/documentation/xsd.xhtml	2009-05-20 23:10:39.000000000 +0300
+@@ -50,19 +50,19 @@
+ 
+   <h1>NAME</h1>
+ 
+-  <p>xsd - W3C XML Schema to C++ Compiler</p>
++  <p>xsdcxx - W3C XML Schema to C++ Compiler</p>
+ 
+   <h1>SYNOPSIS</h1>
+ 
+   <dl id="synopsis">
+-    <dt><code><b>xsd</b> <i>command</i> [<i>options</i>] <i>file</i> [<i>file</i> ...]</code></dt>
+-    <dt><code><b>xsd help</b> [<i>command</i>]</code></dt>
+-    <dt><code><b>xsd version</b></code></dt>
++    <dt><code><b>xsdcxx</b> <i>command</i> [<i>options</i>] <i>file</i> [<i>file</i> ...]</code></dt>
++    <dt><code><b>xsdcxx help</b> [<i>command</i>]</code></dt>
++    <dt><code><b>xsdcxx version</b></code></dt>
+   </dl>
+ 
+   <h1>DESCRIPTION</h1>
+ 
+-  <p><code><b>xsd</b></code> generates vocabulary-specific, statically-typed
++  <p><code><b>xsdcxx</b></code> generates vocabulary-specific, statically-typed
+   C++ mapping from W3C XML Schema definitions. Particular mapping to
+   produce is selected by a <code><i>command</i></code>. Each mapping has
+   a number of mapping-specific <code><i>options</i></code> that should
+@@ -104,7 +104,7 @@
+ 
+     <dt><code><b>help</b></code></dt>
+     <dd>Print usage information and exit. Use
+-      <p><code><b>xsd help</b> <i>command</i></code></p>
++      <p><code><b>xsdcxx help</b> <i>command</i></code></p>
+       for command-specific help.
+     </dd>
+ 
+@@ -164,7 +164,7 @@
+       <p>The <code><i>filename</i></code> for the current translation unit
+         is empty. For example, if you have file <code><b>hello.xsd</b></code>
+         with namespace <code><b>http://example.com/hello</b></code> and you run
+-        <code><b>xsd</b></code> on this file, then the string in question
++        <code><b>xsdcxx</b></code> on this file, then the string in question
+         would be:</p>
+ 
+       <p><code>&nbsp;<b>http://example.com/hello</b></code></p>
+@@ -493,7 +493,7 @@
+       <p>The <code><i>filename</i></code> for the current translation unit
+         is empty. For example, if you have file <code><b>hello.xsd</b></code>
+         with namespace <code><b>http://example.com/hello</b></code> and you run
+-        <code><b>xsd</b></code> on this file, then the string in question
++        <code><b>xsdcxx</b></code> on this file, then the string in question
+         would be:</p>
+ 
+       <p><code>&nbsp;<b>http://example.com/hello element</b></code></p>
+@@ -1447,7 +1447,7 @@ namespace .*
+   <h1>DIAGNOSTICS</h1>
+ 
+   <p>If the input file is not a valid W3C XML Schema definition,
+-    <code><b>xsd</b></code> will issue diagnostic messages to STDERR
++    <code><b>xsdcxx</b></code> will issue diagnostic messages to STDERR
+     and exit with non-zero exit code.</p>
+ 
+   <h1>BUGS</h1>

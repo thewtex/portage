@@ -1,17 +1,20 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+# $Header: $
+
+EAPI="2"
 
 inherit toolchain-funcs
 
 DESCRIPTION="A compiler frontend for the W3C XML Schema definition language."
-HOMEPAGE="http://www.codesynthesis.com/projects/libxsd-frontend/"
+HOMEPAGE="http://kolpackov.net/projects/libxsd-frontend/"
 SRC_URI="http://www.codesynthesis.com/download/${PN}/${PV%.?}/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND=">=dev-libs/xerces-c-2.6
+RDEPEND=">=dev-libs/xerces-c-3
 	dev-libs/boost
 	>=dev-cpp/libcult-1.4.2
 	>=dev-cpp/libfrontend-elements-1.1.1"
@@ -20,14 +23,7 @@ DEPEND="${RDEPEND}
 
 BUILDDIR="${WORKDIR}/build"
 
-# test fails (I think) because tests/dump/driver is linked against both
-# libxerces-c-3.0.so and libxerces-c.so.27 
-# the problem seems to be in 
-#  build/import/libxerces-c/rules.make
-# but I am unsure exactly how to fix it 
-RESTRICT="test"
-
-src_compile() {
+src_configure() {
 	mkdir -p \
 		build/{c,cxx/gnu} \
 		build/import/lib{boost,cult,frontend-elements,xerces-c}
@@ -69,8 +65,6 @@ libfrontend_elements_installed := y
 	cat >> build/import/libxerces-c/configuration-dynamic.make <<- EOF
 libxerces_c_installed := y
 	EOF
-
-	emake || die "emake failed"
 }
 
 src_install() {
@@ -90,5 +84,6 @@ src_install() {
 }
 
 src_test() {
-	LDPATH="${S}/xsd-frontend:${LDPATH}" emake test || die "tests failed"
+	export LD_LIBRARY_PATH="${S}/xsd-frontend:${LD_LIBRARY_PATH}"
+	default
 }

@@ -2,6 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
+EAPI="2"
+
 inherit toolchain-funcs
 
 DESCRIPTION="A collection of C++ libraries"
@@ -15,7 +17,7 @@ IUSE="examples"
 DEPEND="dev-util/build"
 RDEPEND=""
 
-src_compile() {
+src_configure() {
 	mkdir -p build/{c,cxx/gnu}
 
 	cat >> build/c/configuration-lib-dynamic.make <<- EOF
@@ -45,8 +47,6 @@ cxx_gnu := $(tc-getCXX)
 cxx_gnu_libraries :=
 cxx_gnu_optimization_options :=
 	EOF
-
-	emake || die "emake failed"
 }
 
 src_install() {

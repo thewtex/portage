@@ -1,36 +1,34 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-inherit toolchain-funcs eutils versionator
+EAPI="2"
 
-MY_P="${P/_beta/.b}"
+inherit toolchain-funcs eutils versionator
 
 DESCRIPTION="An open-source, cross-platform W3C XML Schema to C++ data binding compiler."
 HOMEPAGE="http://www.codesynthesis.com/products/xsd/"
-SRC_URI="http://www.codesynthesis.com/download/${PN}/$(get_version_component_range 1-2)/${MY_P}.tar.bz2"
+SRC_URI="http://www.codesynthesis.com/download/${PN}/$(get_version_component_range 1-2)/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="ace dbxml examples"
+IUSE="ace dbxml doc examples"
 
-RDEPEND=">=dev-libs/xerces-c-2.6
+RDEPEND=">=dev-libs/xerces-c-3
 	dev-libs/boost
-	>=dev-cpp/libcult-1.4.2
-	>=dev-cpp/libxsd-frontend-1.15.0
-	>=dev-cpp/libbackend-elements-1.6.1
-	!dev-lang/mono
+	>=dev-cpp/libcult-1.4.3
+	>=dev-cpp/libxsd-frontend-1.16.0
+	>=dev-cpp/libbackend-elements-1.7.0
 	ace? ( dev-libs/ace )
 	dbxml? ( dev-libs/dbxml )"
 DEPEND="${RDEPEND}
-	dev-util/build"
+	dev-util/build
+	doc? ( app-doc/doxygen )"
 
-S="${WORKDIR}/${MY_P}"
-
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-	epatch "${FILESDIR}/3.1.0-disable_examples_and_tests.patch"
+src_prepare() {
+	epatch \
+		"${FILESDIR}/${PV}-disable_examples_and_tests.patch" \
+		"${FILESDIR}/${PV}-xsdcxx-rename.patch"
 
 	sed -i \
 		-e '/GPLv2/d' \
@@ -48,7 +46,7 @@ use_yesno() {
 	use $1 && echo "y" || echo "n"
 }
 
-src_compile() {
+src_configure() {
 	mkdir -p \
 		build/cxx/gnu \
 		build/import/lib{boost,cult,backend-elements,xerces-c,xsd-frontend}
@@ -98,12 +96,24 @@ libxerces_c_installed := y
 	cat >> build/import/libxsd-frontend/configuration-dynamic.make <<- EOF
 libxsd_frontend_installed := y
 	EOF
+}
 
-	emake || die "emake failed"
+src_compile() {
+	default
+	if use doc ; then
+		cd "${S}/documentation/cxx/tree/reference"
+		doxygen libxsd.doxygen || die "generating reference docs (tree) failed"		
+	else
+		rm -rf "${S}/documentation/cxx/tree/reference"
+	fi
 }
 
 src_install() {
 	emake install_prefix="${D}/usr" install || die "emake install failed"
+
+	# Renaming binary/manpage to avoid collision with mono-2.0's xsd/xsd2
+	mv "${D}"/usr/bin/xsd{,cxx}
+	mv "${D}"/usr/share/man/man1/xsd{,cxx}.1
 
 	dodoc NEWS README
 
