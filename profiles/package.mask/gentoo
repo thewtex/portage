@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10574 2009/10/11 17:34:32 abcd Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10578 2009/10/12 23:35:00 abcd Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -50,6 +50,9 @@ kde-base/kdesdk
 kde-base/kdetoys
 kde-base/kdeutils
 kde-base/kdewebdev
+~kde-base/arts-3.5.9
+~kde-base/kdelibs-3.5.9
+~kde-base/kde-i18n-3.5.9
 
 # Ulrich Mueller <ulm@gentoo.org> (11 Oct 2009)
 # Blocked by its own dependency, therefore no longer installable.
@@ -205,6 +208,10 @@ dev-perl/perlrapi
 # - replaced, dead, unneeded
 #   bug 281495 (01 Oct 2009)
 dev-perl/Gtk2-Html2
+# - added as dep for a package that never made it into the tree (#21549)
+#   nothing depends on it, broken, no releases for years 
+#   bug #280497 (12 Oct 2009)
+dev-perl/Net-FTPServer
 
 # Samuli Suominen <ssuominen@gentoo.org> (29 Sep 2009)
 # Doesn't compile and deps on arts. Masked for removal,
@@ -322,7 +329,6 @@ media-libs/mlt++
 # xorg-server 1.7 packages, will be unmasked once 1.6 is stable
 =x11-base/xorg-drivers-1.7
 >=x11-base/xorg-server-1.7.0
->=x11-drivers/xf86-input-synaptics-1.2.0
 >=x11-libs/libX11-1.2.99.0
 >=x11-libs/libXext-1.0.99.0
 >=x11-libs/libXi-1.2.99.0
