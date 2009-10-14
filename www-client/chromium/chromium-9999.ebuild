@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/chromium-9999.ebuild,v 1.2 2009/10/02 14:29:23 voyageur Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/chromium-9999.ebuild,v 1.3 2009/10/13 22:55:29 voyageur Exp $
 
 EAPI="2"
 inherit eutils multilib toolchain-funcs subversion
@@ -26,8 +26,8 @@ RDEPEND="app-arch/bzip2
 	media-libs/jpeg
 	media-libs/libpng
 	>=media-video/ffmpeg-0.5_p19787
-	sys-libs/zlib
 	>=x11-libs/gtk+-2.14.7"
+#	sys-libs/zlib
 #	>=dev-libs/libevent-1.4.13
 #	dev-db/sqlite:3
 DEPEND="${RDEPEND}
@@ -80,15 +80,6 @@ src_unpack() {
 }
 
 src_prepare() {
-	# Needed until we add back "rootdir=${S}", see below
-	for i in app webkit third_party/ffmpeg build/util \
-		base chrome v8/tools/gyp \
-		native_client/src/trusted/validator_*/ \
-		native_client/src/trusted/service_runtime/arch/*/
-	do
-		ln -s "${S}"/out ${i}/out
-	done
-
 	# Changing this in ~/include.gypi does not work
 	sed -i "s/'-Werror'/''/" build/common.gypi || die "Werror sed failed"
 	# Prevent automatic -march=pentium4 -msse2 enabling on x86, http://crbug.com/9007
@@ -111,7 +102,8 @@ EOF
 	export HOME="${S}"
 
 	# Configuration options (system libraries)
-	local myconf="-Duse_system_bzip2=1 -Duse_system_zlib=1 -Duse_system_libjpeg=1 -Duse_system_libpng=1 -Duse_system_libxml=1 -Duse_system_libxslt=1 -Duse_system_ffmpeg=1 -Dlinux_use_tcmalloc=1"
+	local myconf="-Duse_system_bzip2=1 -Duse_system_libjpeg=1 -Duse_system_libpng=1 -Duse_system_libxml=1 -Duse_system_libxslt=1 -Duse_system_ffmpeg=1 -Dlinux_use_tcmalloc=1"
+	# -Duse_system_zlib=1: needs mozzconf.h and some MOZ_Z_* functions
 	# -Duse_system_libevent=1: http://crbug.com/22140
 	# -Duse_system_sqlite=1 : http://crbug.com/22208
 	# Others still bundled: icu (not possible?), hunspell (changes required for sandbox support)
@@ -130,12 +122,8 @@ EOF
 }
 
 src_compile() {
-	# Broken for "Argument list too long":
-	# http://code.google.com/p/chromium/issues/detail?id=19854
-	# http://code.google.com/p/gyp/issues/detail?id=71
-	# When this is fixed, remove the src_prepare symlinks
-	# and add back "rootdir=${S}"
 	emake -r V=1 chrome chrome_sandbox BUILDTYPE=Release \
+		rootdir="${S}" \
 		CC=$(tc-getCC) \
 		CXX=$(tc-getCXX) \
 		AR=$(tc-getAR) \
