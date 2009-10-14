@@ -19,10 +19,8 @@ else
 	PYTHON_ATOM="dev-lang/python"
 fi
 
-DEPEND="${DEPEND} >=app-shells/bash-3.2"
-if ! has "${EAPI:-0}" 0 1 2 || [[ -n "${SUPPORT_PYTHON_ABIS}" ]]; then
-	DEPEND="${DEPEND} >=app-admin/eselect-python-20090606"
-fi
+DEPEND+=" >=app-admin/eselect-python-20090804
+	>=app-shells/bash-3.2"
 
 __python_eclass_test() {
 	__python_version_extract 2.3
@@ -117,6 +115,19 @@ unset PYTHON_ABIS_SANITY_CHECKS
 # @DESCRIPTION:
 # Ensure that PYTHON_ABIS variable has valid value.
 validate_PYTHON_ABIS() {
+	# Ensure that some functions cannot be accidentally successfully used in EAPI <= 2 without setting SUPPORT_PYTHON_ABIS variable.
+	if has "${EAPI:-0}" 0 1 2 && [[ -z "${SUPPORT_PYTHON_ABIS}" ]]; then
+		die "${FUNCNAME}() cannot be used in this EAPI without setting SUPPORT_PYTHON_ABIS variable"
+	fi
+
+	# Ensure that /usr/bin/python and /usr/bin/python-config are valid.
+	if [[ "$(readlink /usr/bin/python)" != "python-wrapper" ]]; then
+		die "'/usr/bin/python' isn't valid symlink"
+	fi
+	if [[ "$(</usr/bin/python-config)" != *"Gentoo python-config wrapper script"* ]]; then
+		die "'/usr/bin/python-config' isn't valid script"
+	fi
+
 	# USE_${ABI_TYPE^^} and RESTRICT_${ABI_TYPE^^}_ABIS variables hopefully will be included in EAPI >= 4.
 	if [[ "$(declare -p PYTHON_ABIS 2> /dev/null)" != "declare -x PYTHON_ABIS="* ]] && has "${EAPI:-0}" 0 1 2 3; then
 		local ABI python2_supported_versions python3_supported_versions restricted_ABI support_ABI supported_PYTHON_ABIS=
