@@ -6,7 +6,6 @@ ESVN_REPO_URI="svn://svn.berlios.de/${PN}/trunk"
 
 EAPI="2"
 
-NEED_PYTHON="2.4"
 SUPPORT_PYTHON_ABIS="1"
 
 inherit distutils eutils multilib subversion
@@ -17,19 +16,18 @@ SRC_URI="glep? ( mirror://gentoo/glep-0.4-r1.tbz2 )"
 
 LICENSE="public-domain PYTHON BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 IUSE="glep emacs"
 
-DEPEND="dev-python/setuptools"
+DEPEND=">=dev-python/setuptools-0.6.1"
 RDEPEND=""
 # Emacs support is in PDEPEND to avoid a dependency cycle (bug #183242)
 PDEPEND="emacs? ( || ( >=app-emacs/rst-0.4 >=virtual/emacs-23 ) )"
 
-RESTRICT_PYTHON_ABIS="3*"
-
-EMP="${PN}-0.3.7"
 
 GLEP_SRC="${WORKDIR}/glep-0.4-r1"
+
+DISTUTILS_USE_SEPARATE_SOURCE_DIRECTORIES="1"
 
 src_unpack() {
 	subversion_src_unpack
@@ -37,12 +35,19 @@ src_unpack() {
 }
 
 src_prepare() {
-	# simplified algorithm to select installing optparse and textwrap
-	epatch "${FILESDIR}/${EMP}-extramodules.patch"
+	# Delete internal copies of optparse and textwrap modules.
+	rm -f extras/{optparse.py,textwrap.py}
+	# Fix installation of extra modules.
+	epatch "${FILESDIR}/${PN}-0.6-extra_modules.patch"
 
 	sed -i \
 		-e 's/from distutils.core/from setuptools/' \
 		setup.py || die "sed failed"
+
+	# Fix tests.
+	sed -e "/sys\.exit(result)/d" -i test/alltests.py || die "sed test/alltests.py failed"
+
+	python_copy_sources --no-link
 }
 
 src_compile() {
@@ -53,35 +58,37 @@ src_compile() {
 	# make roman.py available for the doc building process
 	ln -s extras/roman.py
 
-	pushd tools
+	pushd tools > /dev/null
 
 	# Place html4css1.css in base directory. This makes sure the
 	# generated reference to it is correct.
 	cp ../docutils/writers/html4css1/html4css1.css ..
 
-	PYTHONPATH=.. ${python} ./buildhtml.py --stylesheet-path=../html4css1.css --traceback .. \
-		|| die "buildhtml"
+	PYTHONPATH=.. ${python} ./buildhtml.py --stylesheet-path=../html4css1.css --traceback .. || die "buildhtml.py failed"
 
-	popd
+	popd > /dev/null
 
 	# clean up after the doc building
 	rm roman.py html4css1.css
 }
 
-install_txt_doc() {
-	local doc=${1}
-	local dir="txt/$(dirname ${doc})"
-	docinto ${dir}
-	dodoc ${doc}
+src_test() {
+	testing() {
+		# Tests are broken with Python 3.
+		[[ "${PYTHON_ABI:0:1}" == "3" ]] && return
+
+		pushd test > /dev/null
+		PYTHONPATH="../build/lib" ./alltests.py || return 1
+		popd > /dev/null
+	}
+	python_execute_function -s testing
 }
 
-src_test() {
-	cd "${S}/test"
-
-	testing() {
-		PYTHONPATH="../build-${PYTHON_ABI}/lib" ./alltests.py
-	}
-	python_execute_function testing
+install_txt_doc() {
+	local doc="${1}"
+	local dir="txt/$(dirname ${doc})"
+	docinto "${dir}"
+	dodoc "${doc}"
 }
 
 src_install() {
@@ -89,9 +96,9 @@ src_install() {
 	distutils_src_install
 
 	# Tools
-	cd "${S}"/tools
+	cd tools
 	for tool in *.py; do
-		dobin ${tool}
+		dobin "${tool}"
 	done
 
 	# Docs
@@ -100,13 +107,13 @@ src_install() {
 	# Manually install the stylesheet file
 	insinto /usr/share/doc/${PF}/html
 	doins docutils/writers/html4css1/html4css1.css
-	for doc in $(find docs tools -name '*.txt'); do
-		install_txt_doc $doc
+	for doc in $(find docs tools -name "*.txt"); do
+		install_txt_doc "${doc}"
 	done
 
 	# installing Gentoo GLEP tools. Uses versioned GLEP distribution
 	if use glep; then
-		dobin ${GLEP_SRC}/glep.py || die "newbin failed"
+		dobin ${GLEP_SRC}/glep.py || die "dobin failed"
 
 		installation_of_glep_tools() {
 			insinto $(python_get_sitedir)/docutils/readers
