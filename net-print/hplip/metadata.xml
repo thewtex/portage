@@ -9,6 +9,16 @@
     <name>Denis Dupeyron</name>
   </maintainer>
 
+  <maintainer>
+    <email>flameeyes@gentoo.org</email>
+    <name>Diego Elio Pettenò</name>
+  </maintainer>
+
+  <maintainer>
+    <email>billie@gentoo.org</email>
+    <name>Daniel Pielmeier</name>
+  </maintainer>
+
   <use>
     <flag name='cupsddk'>Add support for <pkg>net-print/cupsddk</pkg> which 
     enables dynamic PPD files (recommended)</flag>
@@ -33,8 +43,27 @@
     <flag name='snmp'>Add support for <pkg>net-analyzer/net-snmp</pkg> 
     which enables this driver to work over networks (both for server and 
     client)</flag>
+	<flag name='udev-acl'>Install udev acl rules. This needs
+	<pkg>sys-fs/udev</pkg> with acl support.</flag>
     <flag name="cups">
       Build the hpcups driver for cups.
+    </flag>
+    <flag name="foomatic">
+      Build the IJS/foomatic driver for cups.
+    </flag>
+
+    <flag name="hpcups">
+      Build the hpcups driver for cups (by HP).
+    </flag>
+
+    <flag name="hpijs">
+      Build the IJS driver for cups (Foomatic)
+    </flag>
+
+    <flag name="static-ppds">
+      Use statically-generated PPDs instead of Dynamic PPDs. This is
+      deprecated, and this USE flag is thus suggested to stay turned
+      off.
     </flag>
   </use>
 
