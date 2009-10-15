@@ -11,7 +11,7 @@ DESCRIPTION="XML output extension to GCC"
 HOMEPAGE="http://www.gccxml.org/"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND=">=dev-util/cmake-2.4.6"
