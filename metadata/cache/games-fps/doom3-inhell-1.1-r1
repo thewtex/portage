@@ -1,5 +1,5 @@
 app-arch/unzip
-games-fps/doom3[dedicated=,opengl=]
+dedicated? ( games-fps/doom3[dedicated] ) opengl? ( || ( games-fps/doom3[opengl] games-fps/doom3[-dedicated] ) ) !dedicated? ( !opengl? ( || ( games-fps/doom3[opengl] games-fps/doom3[-dedicated] ) ) )
 0
 in_hell_v11.zip
 fetch
@@ -8,7 +8,7 @@ as-is
 Doom 3 In Hell - Ultimate Doom-inspired levels for Doom 3
 amd64 x86
 base eutils games games-mods multilib portability toolchain-funcs
-dedicated opengl
+dedicated opengl dedicated opengl
 
 
 

@@ -1,5 +1,5 @@
 app-arch/unzip
-games-fps/doom3[dedicated=,opengl=]
+dedicated? ( games-fps/doom3[dedicated] ) opengl? ( || ( games-fps/doom3[opengl] games-fps/doom3[-dedicated] ) ) !dedicated? ( !opengl? ( || ( games-fps/doom3[opengl] games-fps/doom3[-dedicated] ) ) )
 0
 mirror://filefront/Doom_III/Mods/Addons/phantasm_d3_1.2.zip ftp://files.mhgaming.com/doom3/mods/phantasm_d3_1.2.zip
 mirror strip
@@ -8,7 +8,7 @@ as-is
 Doom 3 Phantasm - single-player short mod based on the Phantasm horror movies
 amd64 x86
 base eutils games games-mods multilib portability toolchain-funcs
-dedicated opengl
+dedicated opengl dedicated opengl
 
 
 

@@ -1,5 +1,5 @@
 app-arch/unzip
-games-fps/ut2004[dedicated=,opengl=]
+dedicated? ( || ( games-server/ut2004-ded games-fps/ut2004[dedicated] ) ) opengl? ( || ( games-fps/ut2004[opengl] games-fps/ut2004[-dedicated] ) ) !dedicated? ( !opengl? ( || ( games-fps/ut2004[opengl] games-fps/ut2004[-dedicated] ) ) )
 0
 http://168.158.223.115/COR_Beta_v1.0.zip http://168.158.223.115/COR_Patch_B1.0_to_B1.01.zip
 mirror strip
@@ -8,7 +8,7 @@ freedist
 UT2004 Counter Organic Revolution - Shape-shifting robot teamplay mod
 ~amd64 ~x86
 base eutils games games-mods multilib portability toolchain-funcs
-dedicated opengl
+dedicated opengl dedicated opengl
 
 
 
