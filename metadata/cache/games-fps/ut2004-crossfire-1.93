@@ -1,5 +1,5 @@
 app-arch/unzip
-games-fps/ut2004[dedicated=,opengl=]
+dedicated? ( || ( games-server/ut2004-ded games-fps/ut2004[dedicated] ) ) opengl? ( || ( games-fps/ut2004[opengl] games-fps/ut2004[-dedicated] ) ) !dedicated? ( !opengl? ( || ( games-fps/ut2004[opengl] games-fps/ut2004[-dedicated] ) ) )
 0
 ftp://to-crossfire.speicherland.com/TOC/client/TOCrossfire_beta_1.93_full.zip http://www.to-crossfire.org/mirrors/client/TOCrossfire_beta_1.93_full.zip
 mirror strip
@@ -8,7 +8,7 @@ free-noncomm
 UT2004 Crossfire - Special Forces vs Terrorists
 ~amd64 ~x86
 base eutils games games-mods multilib portability toolchain-funcs
-dedicated opengl
+dedicated opengl dedicated opengl
 
 
 

@@ -2,6 +2,14 @@
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
 # $Header: /var/cvsroot/gentoo-x86/net-misc/dhcpcd/ChangeLog,v 1.260 2009/09/25 13:12:57 darkside Exp $
 
+*dhcpcd-5.1.1-r1 (15 Oct 2009)
+
+  15 Oct 2009; Daniel Robbins <drobbins@funtoo.org> +dhcpcd-5.1.1-r1.ebuild: no
+  longer provide "net" as we don't want dhcpcd to start automatically.  The
+  user must add it to their runlevel if they want it to start. Without this
+  change, the user must manually modify the dhcpcd initscript and remove
+  "provide net" manually if they don't use DHCP.
+
 *dhcpcd-4.0.15 (25 Sep 2009)
 
   25 Sep 2009; Jeremy Olexa <darkside@gentoo.org> +dhcpcd-4.0.15.ebuild:
@@ -29,12 +37,12 @@
 
 *dhcpcd-5.0.6 (09 Jul 2009)
 
-  09 Jul 2009; Raúl Porcel <armin76@gentoo.org> +dhcpcd-5.0.6.ebuild:
+  09 Jul 2009; RaÃºl Porcel <armin76@gentoo.org> +dhcpcd-5.0.6.ebuild:
   Version bump
 
 *dhcpcd-5.0.5 (08 Jul 2009)
 
-  08 Jul 2009; Raúl Porcel <armin76@gentoo.org> +dhcpcd-5.0.5.ebuild:
+  08 Jul 2009; RaÃºl Porcel <armin76@gentoo.org> +dhcpcd-5.0.5.ebuild:
   Version bump
 
   31 May 2009; Brent Baude <ranger@gentoo.org> dhcpcd-4.0.13.ebuild:
@@ -43,7 +51,7 @@
   30 May 2009; nixnut <nixnut@gentoo.org> dhcpcd-4.0.13.ebuild:
   ppc stable #271351
 
-  28 May 2009; Raúl Porcel <armin76@gentoo.org> dhcpcd-4.0.13.ebuild:
+  28 May 2009; RaÃºl Porcel <armin76@gentoo.org> dhcpcd-4.0.13.ebuild:
   alpha/arm/ia64/s390/sh/sparc stable wrt #271351
 
   28 May 2009; Steve Dibb <beandog@gentoo.org> dhcpcd-4.0.13.ebuild:
@@ -70,38 +78,38 @@
 
 *dhcpcd-5.0.4 (14 May 2009)
 
-  14 May 2009; Raúl Porcel <armin76@gentoo.org> +dhcpcd-5.0.4.ebuild:
+  14 May 2009; RaÃºl Porcel <armin76@gentoo.org> +dhcpcd-5.0.4.ebuild:
   Version bump
 
 *dhcpcd-5.0.3 (11 May 2009)
 
-  11 May 2009; Raúl Porcel <armin76@gentoo.org> +dhcpcd-5.0.3.ebuild:
+  11 May 2009; RaÃºl Porcel <armin76@gentoo.org> +dhcpcd-5.0.3.ebuild:
   Version bump
 
 *dhcpcd-5.0.1 (03 May 2009)
 
-  03 May 2009; Raúl Porcel <armin76@gentoo.org> +dhcpcd-5.0.1.ebuild:
+  03 May 2009; RaÃºl Porcel <armin76@gentoo.org> +dhcpcd-5.0.1.ebuild:
   Version bump
 
 *dhcpcd-4.99.18 (20 Apr 2009)
 
-  20 Apr 2009; Raúl Porcel <armin76@gentoo.org> +files/dhcpcd.initd,
+  20 Apr 2009; RaÃºl Porcel <armin76@gentoo.org> +files/dhcpcd.initd,
   +dhcpcd-4.99.18.ebuild:
   Version bump
 
 *dhcpcd-4.0.13 (18 Apr 2009)
 
-  18 Apr 2009; Raúl Porcel <armin76@gentoo.org> +dhcpcd-4.0.13.ebuild:
+  18 Apr 2009; RaÃºl Porcel <armin76@gentoo.org> +dhcpcd-4.0.13.ebuild:
   Version bump
 
 *dhcpcd-4.99.15 (20 Mar 2009)
 
-  20 Mar 2009; Raúl Porcel <armin76@gentoo.org> +dhcpcd-4.99.15.ebuild:
+  20 Mar 2009; RaÃºl Porcel <armin76@gentoo.org> +dhcpcd-4.99.15.ebuild:
   Version bump
 
 *dhcpcd-4.0.12 (26 Feb 2009)
 
-  26 Feb 2009; Raúl Porcel <armin76@gentoo.org> +dhcpcd-4.0.12.ebuild:
+  26 Feb 2009; RaÃºl Porcel <armin76@gentoo.org> +dhcpcd-4.0.12.ebuild:
   Version bump
 
 *dhcpcd-4.0.11 (19 Feb 2009)
@@ -109,7 +117,7 @@
   19 Feb 2009; <welp@gentoo.org> +dhcpcd-4.0.11.ebuild:
   Bump to 4.0.11
 
-  07 Feb 2009; Raúl Porcel <armin76@gentoo.org> -dhcpcd-4.0.0.ebuild,
+  07 Feb 2009; RaÃºl Porcel <armin76@gentoo.org> -dhcpcd-4.0.0.ebuild,
   -dhcpcd-4.0.1-r1.ebuild, -dhcpcd-4.0.2.ebuild, -dhcpcd-4.0.3.ebuild,
   -dhcpcd-4.0.4.ebuild, -dhcpcd-4.0.5.ebuild, -dhcpcd-4.0.6.ebuild,
   dhcpcd-4.0.7.ebuild:
@@ -124,7 +132,7 @@
 *dhcpcd-4.99.12 (28 Jan 2009)
 *dhcpcd-4.0.8 (28 Jan 2009)
 
-  28 Jan 2009; Raúl Porcel <armin76@gentoo.org> +dhcpcd-4.0.8.ebuild,
+  28 Jan 2009; RaÃºl Porcel <armin76@gentoo.org> +dhcpcd-4.0.8.ebuild,
   +dhcpcd-4.99.12.ebuild:
   Version bump
 
@@ -160,7 +168,7 @@
 
 *dhcpcd-4.0.7 (02 Dec 2008)
 
-  02 Dec 2008; Raúl Porcel <armin76@gentoo.org> +dhcpcd-4.0.7.ebuild:
+  02 Dec 2008; RaÃºl Porcel <armin76@gentoo.org> +dhcpcd-4.0.7.ebuild:
   Version bump
 
 *dhcpcd-4.99.6 (25 Nov 2008)
@@ -181,12 +189,12 @@
 
 *dhcpcd-4.99.4 (10 Nov 2008)
 
-  10 Nov 2008; Raúl Porcel <armin76@gentoo.org> +dhcpcd-4.99.4.ebuild:
+  10 Nov 2008; RaÃºl Porcel <armin76@gentoo.org> +dhcpcd-4.99.4.ebuild:
   Version bump
 
 *dhcpcd-4.0.4 (04 Nov 2008)
 
-  04 Nov 2008; Raúl Porcel <armin76@gentoo.org> +dhcpcd-4.0.4.ebuild:
+  04 Nov 2008; RaÃºl Porcel <armin76@gentoo.org> +dhcpcd-4.0.4.ebuild:
   Version bump
 
 *dhcpcd-4.99.3 (29 Oct 2008)
@@ -199,7 +207,7 @@
   05 Oct 2008; Tobias Klausmann <klausman@gentoo.org> dhcpcd-4.0.2.ebuild:
   Stable on alpha, bug #238731
 
-  05 Oct 2008; Raúl Porcel <armin76@gentoo.org> dhcpcd-4.0.2.ebuild:
+  05 Oct 2008; RaÃºl Porcel <armin76@gentoo.org> dhcpcd-4.0.2.ebuild:
   ia64 stable wrt #238731
 
   04 Oct 2008; Markus Meier <maekke@gentoo.org> dhcpcd-4.0.2.ebuild:
@@ -233,7 +241,7 @@
   28 Sep 2008; Jeroen Roovers <jer@gentoo.org> dhcpcd-4.0.1-r1.ebuild:
   Stable for HPPA (bug #238731).
 
-  28 Sep 2008; Dawid Węgliński <cla@gentoo.org> dhcpcd-4.0.1-r1.ebuild:
+  28 Sep 2008; Dawid WÄgliÅski <cla@gentoo.org> dhcpcd-4.0.1-r1.ebuild:
   Stable on amd64/x86 (bug #238731)
 
   27 Sep 2008; nixnut <nixnut@gentoo.org> dhcpcd-4.0.1-r1.ebuild:
@@ -254,29 +262,29 @@
   Minor bugfix to 4.0.1, restoring the old -I behavior better. Stable
   candidate now.
 
-  25 Aug 2008; Rémi Cardona <remi@gentoo.org> Manifest:
+  25 Aug 2008; RÃ©mi Cardona <remi@gentoo.org> Manifest:
   wrong tarball...
 
 *dhcpcd-4.0.1 (25 Aug 2008)
 
-  25 Aug 2008; Rémi Cardona <remi@gentoo.org> +dhcpcd-4.0.1.ebuild:
+  25 Aug 2008; RÃ©mi Cardona <remi@gentoo.org> +dhcpcd-4.0.1.ebuild:
   bump to 4.0.1 as per Roy's comments in bug #235643
 
 *dhcpcd-4.0.0 (24 Aug 2008)
 
-  24 Aug 2008; Raúl Porcel <armin76@gentoo.org> -dhcpcd-4.0.0_beta9.ebuild,
+  24 Aug 2008; RaÃºl Porcel <armin76@gentoo.org> -dhcpcd-4.0.0_beta9.ebuild,
   -dhcpcd-4.0.0_rc1.ebuild, -dhcpcd-4.0.0_rc2.ebuild,
   -dhcpcd-4.0.0_rc3.ebuild, -dhcpcd-4.0.0_rc4.ebuild, +dhcpcd-4.0.0.ebuild:
   Version bump
 
 *dhcpcd-4.0.0_rc5 (15 Aug 2008)
 
-  15 Aug 2008; Raúl Porcel <armin76@gentoo.org> +dhcpcd-4.0.0_rc5.ebuild:
+  15 Aug 2008; RaÃºl Porcel <armin76@gentoo.org> +dhcpcd-4.0.0_rc5.ebuild:
   Version bump
 
 *dhcpcd-4.0.0_rc4 (28 Jul 2008)
 
-  28 Jul 2008; Raúl Porcel <armin76@gentoo.org> +dhcpcd-4.0.0_rc4.ebuild:
+  28 Jul 2008; RaÃºl Porcel <armin76@gentoo.org> +dhcpcd-4.0.0_rc4.ebuild:
   Version bump
 
 *dhcpcd-4.0.0_rc3 (27 Jul 2008)
@@ -286,12 +294,12 @@
 
 *dhcpcd-4.0.0_rc2 (23 Jul 2008)
 
-  23 Jul 2008; Raúl Porcel <armin76@gentoo.org> +dhcpcd-4.0.0_rc2.ebuild:
+  23 Jul 2008; RaÃºl Porcel <armin76@gentoo.org> +dhcpcd-4.0.0_rc2.ebuild:
   Version bump
 
 *dhcpcd-4.0.0_rc1 (22 Jul 2008)
 
-  22 Jul 2008; Raúl Porcel <armin76@gentoo.org> -dhcpcd-4.0.0_beta1.ebuild,
+  22 Jul 2008; RaÃºl Porcel <armin76@gentoo.org> -dhcpcd-4.0.0_beta1.ebuild,
   -dhcpcd-4.0.0_beta2.ebuild, -dhcpcd-4.0.0_beta3.ebuild,
   -dhcpcd-4.0.0_beta4.ebuild, -dhcpcd-4.0.0_beta5.ebuild,
   -dhcpcd-4.0.0_beta6.ebuild, -dhcpcd-4.0.0_beta7.ebuild,
@@ -300,12 +308,12 @@
 
 *dhcpcd-4.0.0_beta9 (08 Jul 2008)
 
-  08 Jul 2008; Raúl Porcel <armin76@gentoo.org> +dhcpcd-4.0.0_beta9.ebuild:
+  08 Jul 2008; RaÃºl Porcel <armin76@gentoo.org> +dhcpcd-4.0.0_beta9.ebuild:
   Version bump
 
 *dhcpcd-4.0.0_beta8 (05 Jul 2008)
 
-  05 Jul 2008; Raúl Porcel <armin76@gentoo.org> +dhcpcd-4.0.0_beta8.ebuild:
+  05 Jul 2008; RaÃºl Porcel <armin76@gentoo.org> +dhcpcd-4.0.0_beta8.ebuild:
   Version bump
 
 *dhcpcd-4.0.0_beta7 (20 Jun 2008)
@@ -316,30 +324,30 @@
 
 *dhcpcd-4.0.0_beta6 (18 Jun 2008)
 
-  18 Jun 2008; Raúl Porcel <armin76@gentoo.org> +dhcpcd-4.0.0_beta6.ebuild:
+  18 Jun 2008; RaÃºl Porcel <armin76@gentoo.org> +dhcpcd-4.0.0_beta6.ebuild:
   Version bump
 
 *dhcpcd-4.0.0_beta5 (25 May 2008)
 
-  25 May 2008; Raúl Porcel <armin76@gentoo.org> +dhcpcd-4.0.0_beta5.ebuild:
+  25 May 2008; RaÃºl Porcel <armin76@gentoo.org> +dhcpcd-4.0.0_beta5.ebuild:
   Version bump
 
 *dhcpcd-4.0.0_beta4 (19 May 2008)
 
-  19 May 2008; Raúl Porcel <armin76@gentoo.org> +dhcpcd-4.0.0_beta4.ebuild:
+  19 May 2008; RaÃºl Porcel <armin76@gentoo.org> +dhcpcd-4.0.0_beta4.ebuild:
   Version bump
 
-  19 May 2008; Raúl Porcel <armin76@gentoo.org> dhcpcd-4.0.0_beta3.ebuild:
+  19 May 2008; RaÃºl Porcel <armin76@gentoo.org> dhcpcd-4.0.0_beta3.ebuild:
   Add keepdir /var/lib/dhcpcd, per Uberlord's request
 
 *dhcpcd-4.0.0_beta3 (19 May 2008)
 
-  19 May 2008; Raúl Porcel <armin76@gentoo.org> +dhcpcd-4.0.0_beta3.ebuild:
+  19 May 2008; RaÃºl Porcel <armin76@gentoo.org> +dhcpcd-4.0.0_beta3.ebuild:
   Version bump
 
 *dhcpcd-4.0.0_beta2 (08 May 2008)
 
-  08 May 2008; Raúl Porcel <armin76@gentoo.org> +dhcpcd-4.0.0_beta2.ebuild:
+  08 May 2008; RaÃºl Porcel <armin76@gentoo.org> +dhcpcd-4.0.0_beta2.ebuild:
   Version bump
 
 *dhcpcd-4.0.0_beta1 (06 May 2008)
@@ -350,7 +358,7 @@
   02 May 2008; Doug Goldstein <cardoe@gentoo.org> dhcpcd-2.0.5-r1.ebuild:
   bug #218657 berlios mirror
 
-  08 Apr 2008; Raúl Porcel <armin76@gentoo.org> dhcpcd-3.2.3.ebuild:
+  08 Apr 2008; RaÃºl Porcel <armin76@gentoo.org> dhcpcd-3.2.3.ebuild:
   ia64/sparc stable wrt #214754
 
   02 Apr 2008; Tobias Klausmann <klausman@gentoo.org> dhcpcd-3.2.3.ebuild:
@@ -380,15 +388,15 @@
 
 *dhcpcd-3.2.1 (29 Jan 2008)
 
-  29 Jan 2008; Raúl Porcel <armin76@gentoo.org> +dhcpcd-3.2.1.ebuild:
+  29 Jan 2008; RaÃºl Porcel <armin76@gentoo.org> +dhcpcd-3.2.1.ebuild:
   Version bump
 
-  26 Jan 2008; Diego Pettenò <flameeyes@gentoo.org> dhcpcd-3.2.0.ebuild:
+  26 Jan 2008; Diego PettenÃ² <flameeyes@gentoo.org> dhcpcd-3.2.0.ebuild:
   Upgrade the duid file to the new format if needed. Proxying for Roy.
 
 *dhcpcd-3.2.0 (25 Jan 2008)
 
-  25 Jan 2008; Raúl Porcel <armin76@gentoo.org> +dhcpcd-3.2.0.ebuild:
+  25 Jan 2008; RaÃºl Porcel <armin76@gentoo.org> +dhcpcd-3.2.0.ebuild:
   Version bump
 
   09 Jan 2008; <welp@gentoo.org> dhcpcd-3.1.9.ebuild:
@@ -437,7 +445,7 @@
   01 Oct 2007; Roy Marples <uberlord@gentoo.org> dhcpcd-3.1.5.ebuild:
   Add a warning about DUID behaviour vs buggy servers.
 
-  29 Sep 2007; Raúl Porcel <armin76@gentoo.org> dhcpcd-3.1.5.ebuild:
+  29 Sep 2007; RaÃºl Porcel <armin76@gentoo.org> dhcpcd-3.1.5.ebuild:
   alpha/ia64/sparc stable wrt #188284
 
   28 Sep 2007; Markus Meier <maekke@gentoo.org> dhcpcd-3.1.5.ebuild:
@@ -502,10 +510,10 @@
   28 Jun 2007; Roy Marples <uberlord@gentoo.org> +dhcpcd-3.0.18.ebuild:
   Bump with a few misc fixes.
 
-  20 Jun 2007; Raúl Porcel <armin76@gentoo.org> dhcpcd-3.0.16-r1.ebuild:
+  20 Jun 2007; RaÃºl Porcel <armin76@gentoo.org> dhcpcd-3.0.16-r1.ebuild:
   alpha stable wrt #166921, thanks to Tobias Klausmann for testing
 
-  18 Apr 2007; Alexander H. Færøy <eroyf@gentoo.org>
+  18 Apr 2007; Alexander H. FÃ¦rÃ¸y <eroyf@gentoo.org>
   dhcpcd-3.0.16-r1.ebuild:
   Stable on MIPS; bug #166921
 
@@ -531,7 +539,7 @@
   dhcpcd-3.0.16.ebuild:
   ppc stable, bug #166921
 
-  03 Apr 2007; Raúl Porcel <armin76@gentoo.org> dhcpcd-3.0.16.ebuild:
+  03 Apr 2007; RaÃºl Porcel <armin76@gentoo.org> dhcpcd-3.0.16.ebuild:
   ia64 + x86 stable wrt bug 166921
 
   03 Apr 2007; Jeroen Roovers <jer@gentoo.org> dhcpcd-3.0.16.ebuild:
@@ -886,7 +894,7 @@
   12 Jul 2005; Stephen Bennett <spb@gentoo.org> dhcpcd-1.3.22_p4-r11.ebuild:
   mips stable for #98394
 
-  11 Jul 2005; Bryan Østergaard <kloeri@gentoo.org>
+  11 Jul 2005; Bryan Ãstergaard <kloeri@gentoo.org>
   dhcpcd-1.3.22_p4-r11.ebuild:
   Stable on alpha + ia64, bug 98394.
 
