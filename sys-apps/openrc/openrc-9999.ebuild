@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/openrc/openrc-9999.ebuild,v 1.54 2009/10/15 00:49:31 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/openrc/openrc-9999.ebuild,v 1.57 2009/10/16 03:37:56 vapier Exp $
 
 EAPI="1"
 
@@ -23,7 +23,7 @@ HOMEPAGE="http://roy.marples.name/openrc"
 
 LICENSE="BSD-2"
 SLOT="0"
-IUSE="debug elibc_glibc ncurses pam unicode kernel_linux kernel_FreeBSD +oldnet"
+IUSE="debug elibc_glibc ncurses pam unicode kernel_linux kernel_FreeBSD"
 
 RDEPEND="virtual/init
 	kernel_FreeBSD? ( sys-process/fuser-bsd )
@@ -41,6 +41,7 @@ pkg_setup() {
 	unset LIBDIR #266688
 
 	MAKE_ARGS="${MAKE_ARGS} LIBNAME=$(get_libdir) LIBEXECDIR=/$(get_libdir)/rc"
+	MAKE_ARGS="${MAKE_ARGS} MKOLDNET=yes"
 
 	local brand="Unknown"
 	if use kernel_linux ; then
@@ -49,9 +50,6 @@ pkg_setup() {
 	elif use kernel_FreeBSD ; then
 		MAKE_ARGS="${MAKE_ARGS} OS=FreeBSD"
 		brand="FreeBSD"
-	fi
-	if use oldnet; then
-		MAKE_ARGS="${MAKE_ARGS} MKOLDNET=yes"
 	fi
 	export BRANDING="Gentoo ${brand}"
 
@@ -68,7 +66,10 @@ src_unpack() {
 	fi
 	cd "${S}"
 	sed -i 's:0444:0644:' mk/sys.mk
-	epatch "${FILESDIR}"/9999/*.patch
+	sed -i "/^DIR/s:/openrc:/${PF}:" doc/Makefile #241342
+	[[ -d ${FILESDIR}/${PV} ]] \
+		&& epatch "${FILESDIR}"/${PV}/*.patch \
+		|| epatch "${FILESDIR}"/9999/*.patch
 }
 
 src_compile() {
@@ -86,11 +87,16 @@ src_compile() {
 	emake ${MAKE_ARGS} || die "emake ${MAKE_ARGS} failed"
 }
 
-set_conf() {
-	local file="${D}/$1" var=$2 val=NO u
-	shift 2
-	for u ; do use $u && val=YES ; done
-	sed -i -r -e "/^#?${var}=/{s:=([\"'])?[^ ]*\1:=\1${val}\1:;s:^#::}" "${file}"
+# set_config <file> <option name> <yes value> <no value> test
+# a value of "#" will just comment out the option
+set_config() {
+	local file="${D}/$1" var=$2 val com
+	eval "${@:5}" && val=$3 || val=$4
+	[[ ${val} == "#" ]] && com="#" && val='\2'
+	sed -i -r -e "/^#?${var}=/{s:=([\"'])?([^ ]*)\1?:=\1${val}\1:;s:^#?:${com}:}" "${file}"
+}
+set_config_yes_no() {
+	set_config "$1" "$2" YES NO "${@:3}"
 }
 
 src_install() {
@@ -108,24 +114,22 @@ src_install() {
 
 	# Backup our default runlevels
 	dodir /usr/share/"${PN}"
-	mv "${D}/etc/runlevels" "${D}/usr/share/${PN}"
+	mv "${D}"/etc/runlevels "${D}"/usr/share/${PN} || die
+
+	# Stick with "old" net as the default for now
+	doconfd conf.d/net || die
+	rm -f "${D}"/usr/share/${PN}/network
+	ln -s /etc/init.d/net.lo "${D}"/usr/share/${PN}/net.lo
 
 	# Setup unicode defaults for silly unicode users
-	set_conf /etc/rc.conf unicode unicode
+	set_config_yes_no /etc/rc.conf unicode use unicode
 
 	# Cater to the norm
-	set_conf /etc/conf.d/keymaps windowkeys x86 amd64
+	set_config_yes_no /etc/conf.d/keymaps windowkeys '(' use x86 '||' use amd64 ')'
 
 	# Support for logfile rotation
 	insinto /etc/logrotate.d
-	newins "${FILESDIR}/openrc.logrotate" openrc
-
-	# makefile does no longer install conf.d/net in use oldnet case, so store it
-	# where we can find it at merge time
-	if use oldnet; then
-		insinto /usr/share/doc/${PN}
-		newins conf.d/net net.default
-	fi
+	newins "${FILESDIR}"/openrc.logrotate openrc
 }
 
 add_boot_init() {
@@ -158,15 +162,12 @@ add_boot_init_mit_config() {
 pkg_preinst() {
 	local f LIBDIR=$(get_libdir)
 
-	if use oldnet; then
-		# default net script is just comments, so no point in biting people
-		# in the ass by accident
-		# Can this code be moved to pkg_postinst
-		# or does it have side effects like protecting conf.d/net if old version
-		# had it in CONTENTS and it get removed if not copying it here??
-		cp "${D}"/usr/share/doc/${PN}/net.default "${T}"/net
-		[[ -e ${ROOT}/etc/conf.d/net ]] && cp "${ROOT}"/etc/conf.d/net "${T}"/
-	fi
+	# default net script is just comments, so no point in biting people
+	# in the ass by accident.  we save in preinst so that the package
+	# manager doesnt go throwing etc-update crap at us -- postinst is
+	# too late to prevent that.  this behavior also lets us keep the
+	# file in the CONTENTS for binary packages.
+	[[ -e ${ROOT}/etc/conf.d/net ]] && cp "${ROOT}"/etc/conf.d/net "${D}"/etc/conf.d/
 
 	# upgrade timezone file ... do it before moving clock
 	if [[ -e ${ROOT}/etc/conf.d/clock && ! -e ${ROOT}/etc/timezone ]] ; then
@@ -201,20 +202,18 @@ pkg_preinst() {
 		elog "and delete /etc/conf.d/rc"
 	fi
 
-	if use oldnet; then
-		# force net init.d scripts into symlinks
-		for f in "${ROOT}"/etc/init.d/net.* ; do
-			[[ -e ${f} ]] || continue # catch net.* not matching anything
-			[[ ${f} == */net.lo ]] && continue # real file now
-			[[ ${f} == *.openrc.bak ]] && continue
-			if [[ ! -L ${f} ]] ; then
-				elog "Moved net service '${f##*/}' to '${f##*/}.openrc.bak' to force a symlink."
-				elog "You should delete '${f##*/}.openrc.bak' if you don't need it."
-				mv "${f}" "${f}.openrc.bak"
-				ln -snf net.lo "${f}"
-			fi
-		done
-	fi
+	# force net init.d scripts into symlinks
+	for f in "${ROOT}"/etc/init.d/net.* ; do
+		[[ -e ${f} ]] || continue # catch net.* not matching anything
+		[[ ${f} == */net.lo ]] && continue # real file now
+		[[ ${f} == *.openrc.bak ]] && continue
+		if [[ ! -L ${f} ]] ; then
+			elog "Moved net service '${f##*/}' to '${f##*/}.openrc.bak' to force a symlink."
+			elog "You should delete '${f##*/}.openrc.bak' if you don't need it."
+			mv "${f}" "${f}.openrc.bak"
+			ln -snf net.lo "${f}"
+		fi
+	done
 
 	# termencoding was added in 0.2.1 and needed in boot
 	has_version ">=sys-apps/openrc-0.2.1" || add_boot_init termencoding
@@ -238,26 +237,19 @@ pkg_preinst() {
 		esac
 	fi
 
-	if ! use oldnet; then
-		local f= links=$(find "${ROOT}"/etc/runlevels/ -name "net.*")
-		if [[ "${links}" != "" ]] ; then
-			ewarn "You have disabled installation of old-style network scripts"
-			ewarn "but they are still enabled in some runlevels:"
-			for f in $links; do
-				ewarn "\t$f"
-			done
-			ewarn "You should migrate the settings"
-			ewarn "from /etc/conf.d/net to /etc/conf.d/network"
-			ewarn "and clean runlevels from /etc/init.d/net.* and"
-			ewarn "instead add /etc/init.d/network"
-		fi
-	fi
+	# set default interactive shell to sulogin if it exists
+	set_config /etc/rc.conf rc_shell /sbin/sulogin "#" test -e /sbin/sulogin
 
 	# skip remaining migration if we already have openrc installed
-	has_version sys-apps/openrc && return 0
+	has_version sys-apps/openrc || migrate_from_baselayout_1
+}
 
+migrate_from_baselayout_1() {
 	# baselayout boot init scripts have been split out
 	for f in $(cd "${D}"/usr/share/${PN}/runlevels/boot || exit; echo *) ; do
+		# baselayout-1 is always "old" net, so ignore "new" net
+		[[ ${f} == "network" ]] && continue
+
 		add_boot_init ${f}
 	done
 
@@ -333,10 +325,6 @@ pkg_postinst() {
 
 	# Remove old baselayout links
 	rm -f "${ROOT}"/etc/runlevels/boot/{check{fs,root},rmnologin}
-
-	if use oldnet; then
-		[[ -e ${T}/net && ! -e ${ROOT}/etc/conf.d/net ]] && mv "${T}"/net "${ROOT}"/etc/conf.d/net
-	fi
 
 	# Make our runlevels if they don't exist
 	if [[ ! -e ${ROOT}/etc/runlevels ]] || [[ -e ${ROOT}/etc/runlevels/.add_boot_init.created ]] ; then
