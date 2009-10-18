@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10605 2009/10/16 18:48:40 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10608 2009/10/17 20:42:35 arfrever Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,12 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Samuli Suominen <ssuominen@gentoo.org> (17 Oct 200)
+# Obsolete Musepack SV7 format support. Install
+# media-sound/musepack-tools for libs and tools to convert
+# your audio files to SV8 format.
+media-libs/libmpcdec
 
 # Samuli Suominen <ssuominen@gentoo.org> (16 Oct 2009)
 # Fails to build with KDE4 installed wrt bug #277427.
@@ -221,12 +227,6 @@ sys-apps/minutils
 # QA!!? Installs to /package! No maintainer in Gentoo. Removed in 60 days.
 # bug 284618
 dev-libs/skalibs
-
-# Robin H. Johnson <robbat2@gentoo.org> (4 Jul 2009)
-# Bug #275291 - New GnuPG release broke seahorse, enigmail, mutt (uncommon
-# setup, not in tree).
-# Pending release of new versions of enigmail/seahorse.
->=app-crypt/gnupg-2.0.12
 
 # Vlastimil Babka <caster@gentoo.org> (04 Oct 2009)
 # Masked for removal in 30 days. Needs java 1.4 to build,
@@ -938,7 +938,6 @@ media-libs/freeimage
 
 # Peter Alfredsen <loki_val@gentoo.org> (01 June 2009)
 # Development version, Work-In-Progress
-=app-misc/tomboy-0.15*
 =media-sound/banshee-1.5*
 
 # Peter Volkov <pva@gentoo.org> (26 May 2009)
