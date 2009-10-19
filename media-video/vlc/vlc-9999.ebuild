@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/vlc/vlc-9999.ebuild,v 1.44 2009/10/17 10:46:44 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/vlc/vlc-9999.ebuild,v 1.47 2009/10/18 21:28:09 aballier Exp $
 
 EAPI="2"
 
@@ -24,7 +24,6 @@ MY_P="${PN}-${MY_PV}"
 VLC_SNAPSHOT_TIME="0013"
 
 PATCHLEVEL="72"
-M4_TARBALL_VERSION="1"
 DESCRIPTION="VLC media player - Video player and streamer"
 HOMEPAGE="http://www.videolan.org/vlc/"
 if [ "${PV%9999}" != "${PV}" ] ; then # Live ebuild
@@ -39,8 +38,7 @@ else
 fi
 
 SRC_URI="${SRC_URI}
-	mirror://gentoo/${PN}-patches-${PATCHLEVEL}.tar.bz2
-	mirror://gentoo/${PN}-m4-${M4_TARBALL_VERSION}.tar.bz2"
+	mirror://gentoo/${PN}-patches-${PATCHLEVEL}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -48,7 +46,7 @@ SLOT="0"
 KEYWORDS=""
 IUSE="a52 aac aalib alsa altivec atmo avahi bidi cdda cddax cddb cdio dbus dc1394
 	debug dirac directfb dts dvb dvd elibc_glibc fbcon fluidsynth +ffmpeg flac fontconfig
-	+gcrypt ggi gnome gnutls hal httpd id3tag ieee1394 jack kate libass libcaca
+	+gcrypt ggi gnome gnutls httpd id3tag ieee1394 jack kate libass libcaca
 	libnotify libproxy libsysfs libtiger libv4l2 lirc live lua matroska mmx
 	modplug mp3 mpeg mtp musepack ncurses nsplugin ogg opengl optimisememory oss
 	png projectm pulseaudio pvr +qt4 remoteosd rtsp run-as-root samba
@@ -88,7 +86,6 @@ RDEPEND="
 		ggi? ( media-libs/libggi )
 		gnome? ( gnome-base/gnome-vfs )
 		gnutls? ( >=net-libs/gnutls-1.7.4 )
-		hal? ( sys-apps/hal )
 		id3tag? ( media-libs/libid3tag sys-libs/zlib )
 		ieee1394? ( >=sys-libs/libraw1394-2.0.1 >=sys-libs/libavc1394-0.5.3 )
 		jack? ( >=media-sound/jack-audio-connection-kit-0.99.0-r1 )
@@ -136,7 +133,7 @@ RDEPEND="
 		truetype? ( media-libs/freetype
 			media-fonts/dejavu )
 		twolame? ( media-sound/twolame )
-		udev? ( sys-fs/udev )
+		udev? ( >=sys-fs/udev-142 )
 		upnp? ( net-libs/libupnp )
 		v4l2? ( libv4l2? ( media-libs/libv4l ) )
 		vcdinfo? ( >=media-video/vcdimager-0.7.22 )
@@ -229,7 +226,7 @@ src_prepare() {
 	rm -f m4/lt* m4/libtool.m4
 
 	EPATCH_SUFFIX="patch" epatch "${WORKDIR}/patches"
-	AT_M4DIR="m4 ${WORKDIR}/${PN}-m4" eautoreconf
+	eautoreconf
 }
 
 src_configure() {
@@ -281,7 +278,6 @@ src_configure() {
 		$(use_enable ggi) \
 		$(use_enable gnome gnomevfs) \
 		$(use_enable gnutls) \
-		$(use_enable hal) \
 		$(use_enable httpd) \
 		$(use_enable id3tag) \
 		$(use_enable ieee1394 dv) \
