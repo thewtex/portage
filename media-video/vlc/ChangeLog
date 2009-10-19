@@ -1,6 +1,31 @@
 # ChangeLog for media-video/vlc
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/vlc/ChangeLog,v 1.518 2009/10/10 12:58:32 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/vlc/ChangeLog,v 1.525 2009/10/18 21:28:09 aballier Exp $
+
+  18 Oct 2009; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  we dont need an m4 tarball anymore for master
+
+  18 Oct 2009; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  hal support is gone in master, udev is preferred.
+
+  18 Oct 2009; Alexis Ballier <aballier@gentoo.org> vlc-1.0.9999.ebuild,
+  vlc-9999.ebuild:
+  Add udev useflag on 1.0 branch too and require a new enough version
+
+  18 Oct 2009; Raúl Porcel <armin76@gentoo.org> vlc-1.0.2.ebuild:
+  sparc stable wrt #285370
+
+  17 Oct 2009; Samuli Suominen <ssuominen@gentoo.org> vlc-0.9.10.ebuild,
+  vlc-1.0.2.ebuild, vlc-1.0.9999.ebuild, vlc-9999.ebuild:
+  Remove libmpcdec (SV7) support. Replaced by musepack-tools (SV7 and SV8)
+  support.
+
+  16 Oct 2009; Alexis Ballier <aballier@gentoo.org> vlc-1.0.9999.ebuild:
+  remove patch merged upstream
+
+  16 Oct 2009; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild,
+  metadata.xml:
+  Add udev useflag
 
   10 Oct 2009; Patrick Lauer <patrick@gentoo.org> vlc-1.0.9999.ebuild,
   vlc-9999.ebuild:

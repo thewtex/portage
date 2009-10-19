@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/vlc/vlc-1.0.9999.ebuild,v 1.29 2009/10/10 12:58:32 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/vlc/vlc-1.0.9999.ebuild,v 1.32 2009/10/18 21:12:30 aballier Exp $
 
 EAPI="2"
 
@@ -23,7 +23,7 @@ MY_PV="${MY_PV/-beta/-test}"
 MY_P="${PN}-${MY_PV}"
 VLC_SNAPSHOT_TIME="0013"
 
-PATCHLEVEL="78"
+PATCHLEVEL="79"
 M4_TARBALL_VERSION="1"
 DESCRIPTION="VLC media player - Video player and streamer"
 HOMEPAGE="http://www.videolan.org/vlc/"
@@ -53,7 +53,7 @@ IUSE="a52 aac aalib alsa altivec atmo avahi bidi cdda cddax cddb cdio dbus dc139
 	modplug mp3 mpeg mtp musepack ncurses nsplugin ogg opengl optimisememory oss
 	pda png pulseaudio pvr +qt4 remoteosd rtsp run-as-root samba schroedinger
 	sdl sdl-image seamonkey shine shout skins speex sse stream svg svga taglib
-	theora truetype twolame upnp v4l v4l2 vcdinfo vcdx vlm vorbis win32codecs
+	theora truetype twolame udev upnp v4l v4l2 vcdinfo vcdx vlm vorbis win32codecs
 	wma-fixed X x264 xcb xinerama xml xosd xv zvbi"
 
 RDEPEND="
@@ -110,8 +110,7 @@ RDEPEND="
 		mp3? ( media-libs/libmad )
 		mpeg? ( >=media-libs/libmpeg2-0.3.2 )
 		mtp? ( >=media-libs/libmtp-0.3.0 )
-		musepack? ( || ( >=media-sound/musepack-tools-444
-			media-libs/libmpcdec ) )
+		musepack? ( >=media-sound/musepack-tools-444 )
 		ncurses? ( sys-libs/ncurses )
 		nsplugin? (
 			seamonkey?  ( =www-client/seamonkey-1* )
@@ -138,6 +137,7 @@ RDEPEND="
 		truetype? ( media-libs/freetype
 			media-fonts/dejavu )
 		twolame? ( media-sound/twolame )
+		udev? ( >=sys-fs/udev-142 )
 		upnp? ( net-libs/libupnp )
 		v4l2? ( libv4l2? ( media-libs/libv4l ) )
 		vcdinfo? ( >=media-video/vcdimager-0.7.22 )
@@ -341,6 +341,7 @@ src_configure() {
 		$(use_enable theora) \
 		$(use_enable truetype freetype) \
 		$(use_enable twolame) \
+		$(use_enable udev) \
 		$(use_enable upnp) \
 		$(use_enable v4l) \
 		$(use_enable v4l2) \

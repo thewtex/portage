@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/bongo/bongo-20070619-r2.ebuild,v 1.2 2009/10/08 22:31:38 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/bongo/bongo-20070619-r2.ebuild,v 1.3 2009/10/16 17:48:46 ulm Exp $
 
 NEED_EMACS=22
 
@@ -11,7 +11,7 @@ HOMEPAGE="http://www.brockman.se/software/bongo/"
 # Darcs snapshot of http://www.brockman.se/software/bongo/
 # MPlayer support from http://www.emacswiki.org/emacs/bongo-mplayer.el
 SRC_URI="mirror://gentoo/${P}.tar.bz2
-	mplayer? ( mirror://gentoo/${PN}-mplayer-${PV}.tar.bz2 )"
+	mplayer? ( mirror://gentoo/${PN}-mplayer-20070204.tar.bz2 )"
 
 LICENSE="GPL-2 FDL-1.2"
 SLOT="0"
