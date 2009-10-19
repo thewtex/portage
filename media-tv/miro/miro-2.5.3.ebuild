@@ -6,10 +6,9 @@ EAPI="2"
 
 inherit distutils eutils fdo-mime flag-o-matic python
 
-MY_P="${P/m/M}"
 DESCRIPTION="Open source video player"
 HOMEPAGE="http://www.getmiro.com/"
-SRC_URI="http://ftp.osuosl.org/pub/pculture.org/miro/src/${MY_P}.tar.gz"
+SRC_URI="http://ftp.osuosl.org/pub/pculture.org/miro/src/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -38,7 +37,7 @@ DEPEND="${RDEPEND}
 	sys-devel/gettext
 	dev-util/pkgconfig"
 
-S="${WORKDIR}/${MY_P}/platform/gtk-x11"
+S="${WORKDIR}/${P}/platform/gtk-x11"
 
 pkg_setup() {
 
