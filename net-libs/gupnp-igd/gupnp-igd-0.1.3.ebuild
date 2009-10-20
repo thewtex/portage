@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/gupnp-igd/gupnp-igd-0.1.3.ebuild,v 1.7 2009/10/19 00:57:31 fauli Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/gupnp-igd/gupnp-igd-0.1.3.ebuild,v 1.9 2009/10/19 21:38:48 maekke Exp $
 
 EAPI=2
 
@@ -10,7 +10,7 @@ SRC_URI="http://gupnp.org/sources/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 hppa ~ppc x86"
+KEYWORDS="~alpha amd64 hppa ~ppc x86"
 IUSE=""
 
 RDEPEND=">=net-libs/gupnp-0.12.3
@@ -20,6 +20,9 @@ DEPEND="${RDEPEND}
 	dev-util/pkgconfig
 	sys-devel/gettext"
 
+# See bug 277956. Remove from next ebuild, when gupnp-0.13 support is available.
+RESTRICT="test"
+
 src_configure() {
 	econf \
 		--disable-dependency-tracking \
@@ -27,6 +30,6 @@ src_configure() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die "emake install failed"
+	emake DESTDIR="${D}" install || die
 	dodoc AUTHORS NEWS README TODO
 }
