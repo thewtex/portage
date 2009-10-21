@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/wine/wine-9999.ebuild,v 1.44 2009/09/27 06:58:14 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/wine/wine-9999.ebuild,v 1.45 2009/10/19 01:41:50 vapier Exp $
 
 EAPI="2"
 
@@ -26,13 +26,12 @@ SRC_URI="${SRC_URI}
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-IUSE="alsa capi cups dbus esd fontconfig +gecko gnutls gphoto2 gsm hal jack jpeg lcms ldap mp3 nas ncurses openal +opengl oss png samba scanner ssl test +threads win64 +X xcomposite xinerama xml"
+IUSE="alsa capi cups dbus esd fontconfig +gecko gnutls gphoto2 gsm hal jack jpeg lcms ldap mp3 nas ncurses openal +opengl oss +perl png samba scanner ssl test +threads win64 +X xcomposite xinerama xml"
 RESTRICT="test" #72375
 
 RDEPEND=">=media-libs/freetype-2.0.0
 	media-fonts/corefonts
-	dev-lang/perl
-	dev-perl/XML-Simple
+	perl? ( dev-lang/perl dev-perl/XML-Simple )
 	capi? ( net-dialup/capi4k-utils )
 	ncurses? ( >=sys-libs/ncurses-5.2 )
 	fontconfig? ( media-libs/fontconfig )
@@ -150,5 +149,8 @@ src_install() {
 	if use gecko ; then
 		insinto /usr/share/wine/gecko
 		doins "${DISTDIR}"/wine_gecko-${GV}.cab || die
+	fi
+	if ! use perl ; then
+		rm "${D}"/usr/bin/{wine{dump,maker},function_grep.pl} "${D}"/usr/share/man/man1/wine{dump,maker}.1 || die
 	fi
 }
