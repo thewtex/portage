@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/avidemux/avidemux-2.5.1_p5359.ebuild,v 1.1 2009/09/30 18:44:08 yngwin Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/avidemux/avidemux-2.5.1_p5359.ebuild,v 1.2 2009/10/21 22:18:56 yngwin Exp $
 
 EAPI="2"
 
@@ -36,7 +36,7 @@ RDEPEND="dev-libs/libxml2
 	truetype? ( media-libs/freetype:2
 		media-libs/fontconfig )
 	vorbis? ( media-libs/libvorbis )
-	x264? ( >=media-libs/x264-0.0.20090908 )
+	x264? ( ~media-libs/x264-0.0.20090908 )
 	xv? ( x11-libs/libXv )
 	xvid? ( media-libs/xvid )
 	gtk? ( x11-libs/gtk+:2 )
@@ -44,6 +44,7 @@ RDEPEND="dev-libs/libxml2
 DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )
 	dev-util/pkgconfig
+	dev-util/subversion
 	>=dev-util/cmake-2.6.4"
 
 S=${WORKDIR}/${MY_P}

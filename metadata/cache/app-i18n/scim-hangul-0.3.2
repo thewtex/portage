@@ -1,5 +1,5 @@
-|| ( >=app-i18n/scim-0.99.8 >=app-i18n/scim-cvs-0.99.8 ) >=app-i18n/libhangul-0.0.4 kde? ( >=app-i18n/skim-1.2.1 ) nls? ( virtual/libintl ) dev-util/pkgconfig nls? ( sys-devel/gettext )
-|| ( >=app-i18n/scim-0.99.8 >=app-i18n/scim-cvs-0.99.8 ) >=app-i18n/libhangul-0.0.4 kde? ( >=app-i18n/skim-1.2.1 ) nls? ( virtual/libintl )
+|| ( >=app-i18n/scim-0.99.8 >=app-i18n/scim-cvs-0.99.8 ) >=app-i18n/libhangul-0.0.4 nls? ( virtual/libintl ) dev-util/pkgconfig nls? ( sys-devel/gettext )
+|| ( >=app-i18n/scim-0.99.8 >=app-i18n/scim-cvs-0.99.8 ) >=app-i18n/libhangul-0.0.4 nls? ( virtual/libintl )
 0
 mirror://sourceforge/scim/scim-hangul-0.3.2.tar.gz
 
@@ -8,13 +8,13 @@ GPL-2
 Hangul IMEngine for SCIM ported from imhangul
 alpha amd64 ppc x86
 base eutils multilib portability toolchain-funcs
-kde nls
+nls
 
 
 
+2
 
-
-compile install postinst unpack
+compile configure install postinst prepare unpack
 
 
 

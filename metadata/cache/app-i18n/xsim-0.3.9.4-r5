@@ -1,5 +1,5 @@
->=sys-libs/db-4.1 >=sys-apps/sed-4 kde? ( kde-base/kdelibs:3.5 )
->=sys-libs/db-4.1 >=sys-apps/sed-4 kde? ( kde-base/kdelibs:3.5 )
+>=sys-libs/db-4.1 >=sys-apps/sed-4
+>=sys-libs/db-4.1
 0
 mirror://berlios/xsim/xsim-0.3.9.4.tar.gz
 
@@ -7,14 +7,14 @@ http://developer.berlios.de/projects/xsim/
 LGPL-2.1
 A simple and fast GB and BIG5 Chinese XIM server
 amd64 x86
-db-use eutils flag-o-matic kde-functions multilib portability qt3 toolchain-funcs versionator
-debug kde
+db-use eutils flag-o-matic multilib portability toolchain-funcs versionator
+debug
 
 
 
-1
+2
 
-compile install postinst unpack
+configure install postinst prepare
 
 
 
