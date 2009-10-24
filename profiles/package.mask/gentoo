@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10641 2009/10/22 20:19:33 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10649 2009/10/23 17:31:54 ssuominen Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,48 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (23 Oct 2009)
+#
+# Starting work toward supporting Linux Containers in Gentoo.
+# Currently, it's a tentative ebuild based upon Tiziano Müller
+# (dev-zero)'s overlay, with some differences from the upstream paths
+# and handling.
+#
+# Will be unmasked when felt “ready” (and openrc'll support it as
+# guest).
+app-emulation/lxc
+
+# Samuli Suominen <ssuominen@gentoo.org> (23 Oct 2009)
+# KDE3-only. Doesn't work with stable sqlite, wrt bug #224503.
+# Masked for removal in 30 days.
+kde-misc/krecipes
+
+# Samuli Suominen <ssuominen@gentoo.org> (23 Oct 2009)
+# KDE3-only. Doesn't work with unicode, which is Gentoo
+# default. Masked for removal in 30 days. Bug #221115.
+app-mobilephone/kmobiletools
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (23 Oct 2009)
+#  on behalf of QA team
+#
+# Fetches FFmpeg sources out of Subversion repository which makes it
+# the same as a Live SVN. Even worse, it does not figure as one since
+# it does so in the upstream-provided scripts and not in the ebuild.
+#
+# See bug #290233
+=media-video/avidemux-2.5.1_p*
+
+# Samuli Suominen <ssuominen@gentoo.org> (23 Oct 2009)
+# KDE3-only. Doesn't compile with KDE4 installed, bugs
+# 245543, 258791, 248508, 275733 and security bug 282891.
+# Masked for removal in 30 days.
+=net-irc/kvirc-3*
+
+# Samuli Suominen <ssuominen@gentoo.org> (23 Oct 2009)
+# KDE3-only. Doesn't compile wrt bug #237966.
+# Masked for removal in 30 days.
+games-board/knights
 
 # Raúl Porcel <armin76@gentoo.org> (22 Oct 2009)
 # Not needed anymore, vanilla kernel works
