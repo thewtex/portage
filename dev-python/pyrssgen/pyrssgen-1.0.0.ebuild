@@ -14,7 +14,7 @@ SRC_URI="http://www.dalkescientific.com/Python/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="*"
 IUSE=""
 
 DEPEND=""
