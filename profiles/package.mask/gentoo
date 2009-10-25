@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10649 2009/10/23 17:31:54 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10663 2009/10/24 23:46:00 ssuominen Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -31,6 +31,87 @@
 
 #--- END OF EXAMPLES ---
 
+# Samuli Suominen <ssuominen@gentoo.org> (25 Oct 2009)
+# Replaced by:
+#
+# >=media-gfx/digikam-0.10
+# kde-base/gwenview
+# >=media-gfx/kphotoalbum-4
+# >=media-plugins/kipi-plugins-0.6
+#
+# Masked for removal in 30 days.
+media-libs/libkdcraw
+=media-gfx/digikam-0.9*
+=media-gfx/kphotoalbum-3*
+media-gfx/gwenview
+=media-plugins/kipi-plugins-0.1*
+media-libs/libkipi
+media-libs/libkexiv2
+
+# Samuli Suominen <ssuominen@gentoo.org> (25 Oct 2009)
+# Replaced by kde-base/dragonplayer.
+# http://www.dragonplayer.net/
+# Masked for removal in 30 days.
+media-video/codeine
+
+# Samuli Suominen <ssuominen@gentoo.org> (24 Oct 2009)
+# Replaced by >=kde-misc/filelight-1.9_rc3.
+# Masked for removal in 30 days.
+kde-misc/filelight-i18n
+=kde-misc/filelight-1.0*
+
+# Samuli Suominen <ssuominen@gentoo.org> (24 Oct 2009)
+# Deprecated aRts support wrt bug #270575
+# Masked for removal in 30 days.
+kde-base/noatun
+kde-base/noatun-plugins
+media-plugins/hayes
+media-plugins/jefferson
+
+# Samuli Suominen <ssuominen@gentoo.org> (24 Oct 2009)
+# KDE3-only packages with QA issues.
+#
+# sci-calculators/fung-calc, bug #248340
+# kde-misc/krd, bug #276266
+# kde-misc/kadslwatch, bug #276809
+# x11-themes/thinkeramik, bug #276898
+# app-admin/klogview, bug #277182
+# app-admin/kiosktool, bug #277411
+# net-ftp/kcmpureftpd, bug #277581
+# x11-themes/lipstik, bug #277737
+# kde-misc/styleclock, bug #277767
+# net-im/kpopup, bug #278425
+#
+# Masked for removal in 30 days.
+sci-calculators/fung-calc
+kde-misc/krd
+kde-misc/kadslwatch
+x11-themes/thinkeramik
+app-admin/klogview
+app-admin/kiosktool
+net-ftp/kcmpureftpd
+x11-themes/lipstik
+kde-misc/styleclock
+net-im/kpopup
+
+# Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (24 Oct 2009)
+# Replaced by app-mobilephone/gammu[python]. Masked for deletion in 30 days.
+dev-python/python-gammu
+
+# Samuli Suominen <ssuominen@gentoo.org> (24 Oct 2009)
+# KDE3-only. Doesn't work with stable mplayer wrt bug #208786.
+# Masked for removal in 30 days.
+=media-video/kplayer-0.6*
+
+# Samuli Suominen <ssuominen@gentoo.org> (24 Oct 2009)
+# KDE3-only. Doesn't compile wrt bug #262318.
+# Masked for removal in 30 days.
+kde-misc/kio-locate
+
+# Samuli Suominen <ssuominen@gentoo.org> (24 Oct 2009)
+# Masked for testing.
+>=xfce-base/exo-0.5
+
 # Diego E. Pettenò <flameeyes@gentoo.org> (23 Oct 2009)
 #
 # Starting work toward supporting Linux Containers in Gentoo.
@@ -45,7 +126,7 @@ app-emulation/lxc
 # Samuli Suominen <ssuominen@gentoo.org> (23 Oct 2009)
 # KDE3-only. Doesn't work with stable sqlite, wrt bug #224503.
 # Masked for removal in 30 days.
-kde-misc/krecipes
+<kde-misc/krecipes-1.9999
 
 # Samuli Suominen <ssuominen@gentoo.org> (23 Oct 2009)
 # KDE3-only. Doesn't work with unicode, which is Gentoo
@@ -127,6 +208,7 @@ kde-misc/knetworkmanager
 # copies of sqlite wrt #252546.
 # Masked for removal in 30 days.
 media-gfx/showimg
+media-libs/libkexif
 
 # Samuli Suominen <ssuominen@gentoo.org> (20 Oct 2009)
 # Doesn't compile with KDE4 installed wrt #244882.
@@ -605,11 +687,6 @@ x11-plugins/desklet-weeklycalendar
 # and isn't properly maintained in Gentoo. Masked for deletion in 30 days.
 dev-python/omniorbpy
 
-# Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (14 Sep 2009)
-# dev-python/xapwrap is no longer maintained and fails to build (bug #184264).
-# Masked for deletion in 30 days.
-dev-python/xapwrap
-
 # Diego E. Pettenò <flameeyes@gentoo.org> (14 Sep 2009)
 #  on behalf of QA team
 #
@@ -642,10 +719,6 @@ dev-php5/onphp-module
 # Mission Control 5 API is compatible with MC4
 # It is also incompatible with empathy <2.27.91
 >=net-im/telepathy-mission-control-5
-
-# Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (10 Sep 2009)
-# Included in Python 2.6. Masked for deletion in 30 days.
-dev-python/ssl-py26
 
 # Peter Alfredsen <loki_val@gentoo.org> (09 Sep 2009)
 # Fails to build with newest mono, causing dependency
@@ -746,10 +819,6 @@ sys-apps/einit-modules-xml
 =media-sound/mumble-1.2.0_pre*
 =media-sound/murmur-1.2.0_pre*
 
-# Alex Alexander <wired@gentoo.org> (12 Aug 2009)
-# Masked beta versions for testing
-=net-p2p/ktorrent-3.3_beta*
-
 # Diego E. Pettenò <flameeyes@gentoo.org> (11 Aug 2009)
 #  on behalf of QA team
 #
@@ -820,11 +889,6 @@ dev-php/phpdbg-client
 # Removal on 2009-10-09
 app-backup/afbackup-client
 app-backup/afbackup-server
-
-# Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (09 Aug 2009)
-# Masked for removal in 30 days due to security vulnerability (bug #280494).
-# Manually keyword >=dev-util/subversion-1.6.4.
-<dev-util/subversion-1.6.4
 
 # Michał Januszewski <spock@gentoo.org> (08 Aug 2009)
 # Live git ebuilds for pycuda/pytools. Use at your own risk, do not

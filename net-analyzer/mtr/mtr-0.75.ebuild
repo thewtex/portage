@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/mtr/mtr-0.75.ebuild,v 1.3 2009/10/23 23:39:11 rich0 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/mtr/mtr-0.75.ebuild,v 1.6 2009/10/24 18:40:16 klausman Exp $
 
 EAPI="2"
 inherit eutils autotools
@@ -12,7 +12,7 @@ SRC_URI="ftp://ftp.bitwizard.nl/mtr/${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+KEYWORDS="alpha amd64 ~arm ~hppa ~ia64 ~mips ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE="gtk ipv6"
 
 RDEPEND="sys-libs/ncurses
@@ -25,7 +25,7 @@ src_prepare() {
 	# Keep this comment and following move, even incase ebuild does not needs
 	# it: kept gtk-2.0.m4 in SRC_URI but you'll have to mv it before autoreconf
 	mv "${WORKDIR}"/gtk-2.0-for-mtr.m4 gtk-2.0.m4 #222909
-	eautoreconf
+	AT_M4DIR="." eautoreconf
 }
 src_configure() {
 	econf \
