@@ -1,6 +1,36 @@
 # ChangeLog for x11-drivers/nvidia-drivers
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-drivers/nvidia-drivers/ChangeLog,v 1.177 2009/10/17 12:15:03 peper Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-drivers/nvidia-drivers/ChangeLog,v 1.182 2009/10/22 15:31:06 cardoe Exp $
+
+  22 Oct 2009; Doug Goldstein <cardoe@gentoo.org>
+  nvidia-drivers-185.18.36-r1.ebuild, nvidia-drivers-190.42-r1.ebuild:
+  don't install the vdpau headers since libvdpau provides those now
+
+*nvidia-drivers-190.42-r1 (22 Oct 2009)
+*nvidia-drivers-185.18.36-r1 (22 Oct 2009)
+
+  22 Oct 2009; Doug Goldstein <cardoe@gentoo.org>
+  +nvidia-drivers-185.18.36-r1.ebuild, +nvidia-drivers-190.42-r1.ebuild:
+  Update to new way of shipping VDPAU wrapper in its own library from
+  Freedesktop after discussing distro packaging with NVIDIA.
+
+*nvidia-drivers-190.42 (22 Oct 2009)
+
+  22 Oct 2009; Piotr Jaroszyński <peper@gentoo.org>
+  +nvidia-drivers-190.42.ebuild:
+  Add 190.42.
+
+  22 Oct 2009; Doug Goldstein <cardoe@gentoo.org>
+  nvidia-drivers-185.18.31.ebuild, nvidia-drivers-185.18.36.ebuild,
+  nvidia-drivers-190.32.ebuild, nvidia-drivers-190.36.ebuild,
+  nvidia-drivers-190.40.ebuild:
+  add note about needing to add QA_LDFLAGS for nvidia-smi
+
+*nvidia-drivers-185.18.36 (21 Oct 2009)
+
+  21 Oct 2009; Jeroen Roovers <jer@gentoo.org>
+  +nvidia-drivers-185.18.36.ebuild:
+  Version bump (bug #288591).
 
 *nvidia-drivers-190.40 (17 Oct 2009)
 

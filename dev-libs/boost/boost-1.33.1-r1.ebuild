@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/boost/boost-1.33.1-r1.ebuild,v 1.19 2009/07/29 15:42:38 darkside Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/boost/boost-1.33.1-r1.ebuild,v 1.22 2009/10/21 16:57:23 djc Exp $
 
 inherit eutils distutils multilib python versionator check-reqs
 
@@ -9,10 +9,10 @@ MY_P=${PN}_$(replace_all_version_separators _)
 DESCRIPTION="Boost Libraries for C++"
 HOMEPAGE="http://www.boost.org/"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.bz2"
-LICENSE="freedist Boost-1.0"
+LICENSE="Boost-1.0"
 SLOT="0"
 KEYWORDS="~x86-fbsd"
-IUSE="bcp bjam debug doc icu pyste threads threadsonly"
+IUSE="bcp bjam debug doc icu pyste test threads threadsonly"
 
 # Overriding var from python.eclass
 PYVER="2.4"
@@ -41,7 +41,7 @@ src_unpack() {
 
 pkg_setup() {
 
-	if has test ${FEATURES} ; then
+	if use test ; then
 		CHECKREQS_DISK_BUILD="2048"
 		check_reqs
 	fi
@@ -220,7 +220,7 @@ src_install () {
 		dobin bjam || die "bjam install failed"
 	fi
 
-	if has test ${FEATURES} ; then
+	if use test ; then
 		cd "${S}/status"
 		elog "Tests enabled, installing the output to:"
 		elog "  ${ROOT}usr/share/doc/${PF}/status"

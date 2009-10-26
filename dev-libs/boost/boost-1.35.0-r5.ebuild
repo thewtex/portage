@@ -1,12 +1,12 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/boost/boost-1.35.0-r5.ebuild,v 1.6 2009/08/07 05:47:41 dev-zero Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/boost/boost-1.35.0-r5.ebuild,v 1.12 2009/10/25 11:58:54 maekke Exp $
 
 EAPI="2"
 
 inherit python flag-o-matic multilib toolchain-funcs versionator check-reqs eutils
 
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm hppa ~ia64 ~mips ppc ~ppc64 ~s390 ~sh ~sparc x86"
 
 MY_P=${PN}_$(replace_all_version_separators _)
 PATCHSET_VERSION="${PV}-5"
@@ -16,9 +16,9 @@ HOMEPAGE="http://www.boost.org/"
 SRC_URI="mirror://sourceforge/boost/${MY_P}.tar.bz2
 	mirror://gentoo/boost-patches-${PATCHSET_VERSION}.tbz2
 	http://www.gentoo.org/~dev-zero/distfiles/boost-patches-${PATCHSET_VERSION}.tbz2"
-LICENSE="freedist Boost-1.0"
+LICENSE="Boost-1.0"
 SLOT="0"
-IUSE="doc +eselect expat icu mpi python tools"
+IUSE="doc +eselect expat icu mpi python test tools"
 
 RDEPEND="icu? ( >=dev-libs/icu-3.3 )
 	expat? ( dev-libs/expat )
@@ -55,7 +55,7 @@ _add_line() {
 }
 
 pkg_setup() {
-	if has test ${FEATURES} ; then
+	if use test ; then
 		CHECKREQS_DISK_BUILD="1024"
 		check_reqs
 

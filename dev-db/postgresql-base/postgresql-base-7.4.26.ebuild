@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/postgresql-base/postgresql-base-7.4.26.ebuild,v 1.2 2009/10/11 09:05:24 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/postgresql-base/postgresql-base-7.4.26.ebuild,v 1.4 2009/10/24 12:24:34 nixnut Exp $
 
 EAPI="1"
 
@@ -9,7 +9,7 @@ WANT_AUTOMAKE="none"
 
 inherit eutils multilib toolchain-funcs versionator autotools
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ppc ~x86"
 
 DESCRIPTION="PostgreSQL libraries and clients"
 HOMEPAGE="http://www.postgresql.org/"
@@ -54,7 +54,8 @@ src_unpack() {
 
 	epatch "${FILESDIR}/postgresql-${PV}-autoconf.patch" \
 		"${FILESDIR}/postgresql-${SLOT}-hppa.patch" \
-		"${FILESDIR}/postgresql-${SLOT}-base.patch"
+		"${FILESDIR}/postgresql-${SLOT}-base.patch" \
+		"${FILESDIR}/postgresql-${SLOT}-com_err.patch"
 
 	# to avoid collision - it only should be installed by server
 	rm "${S}/src/backend/nls.mk"

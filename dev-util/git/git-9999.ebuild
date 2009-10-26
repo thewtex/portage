@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/git/git-9999.ebuild,v 1.14 2009/10/11 22:28:17 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/git/git-9999.ebuild,v 1.16 2009/10/23 18:16:26 robbat2 Exp $
 
 EAPI=2
 
@@ -29,7 +29,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+blksha1 +curl cgi +doc emacs gtk iconv +perl ppcsha1 tk +threads +webdav xinetd cvs subversion"
+IUSE="+blksha1 +curl cgi doc emacs gtk iconv +perl ppcsha1 tk +threads +webdav xinetd cvs subversion"
 
 # Common to both DEPEND and RDEPEND
 CDEPEND="
@@ -59,15 +59,22 @@ RDEPEND="${CDEPEND}
 		|| ( dev-python/pygtksourceview:2  dev-python/gtksourceview-python )
 	)"
 
-DEPEND="${CDEPEND}"
+# This is how info docs are created with Git:
+#   .txt/asciidoc --(asciidoc)---------> .xml/docbook
+#   .xml/docbook  --(docbook2texi.pl)--> .texi
+#   .texi         --(makeinfo)---------> .info
+DEPEND="${CDEPEND}
+	doc?    (
+		app-text/asciidoc
+		app-text/docbook2X
+		sys-apps/texinfo
+	)"
 
-# These are needed to build the docs
+# Live ebuild builds HTML docs, additionally
 if [ "$PV" == "9999" ]; then
 	DEPEND="${DEPEND}
 		doc?    (
-			app-text/asciidoc
 			app-text/xmlto
-			app-text/docbook2X
 		)"
 fi
 
@@ -201,6 +208,11 @@ src_compile() {
 			git_emake info html \
 				|| die "emake info html failed"
 		fi
+	else
+		if use doc ; then
+			git_emake info \
+				|| die "emake info html failed"
+		fi
 	fi
 }
 
@@ -220,7 +232,7 @@ src_install() {
 	done
 	docinto /
 	# Upstream does not ship this pre-built :-(
-	[[ "$PV" == "9999" ]] && use doc && doinfo Documentation/{git,gitman}.info
+	use doc && doinfo Documentation/{git,gitman}.info
 
 	dobashcompletion contrib/completion/git-completion.bash ${PN}
 
