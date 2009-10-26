@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/compiz-fusion/compiz-fusion-0.8.4.ebuild,v 1.1 2009/10/15 21:25:17 mrpouet Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/compiz-fusion/compiz-fusion-0.8.4.ebuild,v 1.3 2009/10/23 17:35:56 ssuominen Exp $
 
 DESCRIPTION="Compiz Fusion (meta)"
 HOMEPAGE="http://www.compiz.org/"

@@ -1,5 +1,5 @@
-virtual/python >=app-shells/bash-3.2 virtual/python
-virtual/python dev-python/cryptlib_py || ( dev-python/m2crypto dev-python/pycrypto ) gmp? ( dev-python/gmpy ) virtual/python
+>=dev-libs/cryptlib-3.3.3[python] || ( dev-python/m2crypto dev-python/pycrypto ) gmp? ( dev-python/gmpy ) >=app-shells/bash-3.2 >=app-admin/eselect-python-20090606 virtual/python
+>=dev-libs/cryptlib-3.3.3[python] || ( dev-python/m2crypto dev-python/pycrypto ) gmp? ( dev-python/gmpy ) virtual/python
 0
 http://trevp.net/tlslite/tlslite-0.3.8.tar.gz
 
@@ -12,9 +12,9 @@ doc gmp
 
 
 
+2
 
-
-compile install postinst postrm unpack
+compile install postinst postrm prepare unpack
 
 
 

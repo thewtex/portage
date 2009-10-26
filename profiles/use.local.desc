@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4923 2009/10/22 22:47:48 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4929 2009/10/25 19:47:48 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -95,9 +95,10 @@ app-arch/cabextract:extra-tools - Install experimental tools: wince_info and win
 app-arch/dump:ermt - encrypted rmt support
 app-arch/file-roller:nautilus - Enable file-roller to integrate with gnome-base/nautilus by providing entries in its context menu.
 app-arch/gzip:pic - disable optimized assembly code that is not PIC friendly
-app-arch/libarchive:bzip2 -  Allow accessing bzip2-compressed archives through libbz2 (which comes with bzip2). 
-app-arch/libarchive:lzma -  Allow accessing lzma-compressed archives through the lzmadec library. 
-app-arch/libarchive:static -  Build bsdtar and bsdcpio as static archives, removing dependencies over the enabled compression libraries (lzmadec, libbz2, zlib). 
+app-arch/libarchive:bzip2 -  Allow accessing bzip2-compressed archives through libbz2 (which comes with app-arch/bzip2). This only affects libarchive's native support: bsdtar will keep using bunzip2 as a filter if that's not built-in. 
+app-arch/libarchive:lzma -  Allow accessing lzma-compressed archives through the lzma library (app-arch/xz-utils). This only affects libarchive's native support: bsdtar will keep using unlzma as a filter if that's not built-in. 
+app-arch/libarchive:static -  Build bsdtar and bsdcpio as static archives, removing dependencies over the enabled compression libraries (lzma, lzmadec, libbz2, zlib). 
+app-arch/libarchive:zlib -  Allow accessing gzip-compressed archives through sys-libs/zlib. This only affects libarchive's native support: bsdtar will keep using gunzip as a filter if that's not built-in. It's also needed for supporting extraction of ZIP files. 
 app-arch/p7zip:rar - Enable support for non-free rar decoder
 app-arch/rpm:magic - Add magic file support (sys-apps/file)
 app-arch/rpm:neon - Include support for net-misc/neon
@@ -261,12 +262,16 @@ app-emulation/kvm:test - Build tests
 app-emulation/kvm:vde - Enable VDE-based networking
 app-emulation/libvirt:iscsi - Add support for iSCSI (Internet SCSI) remote storage
 app-emulation/libvirt:kvm - Add support for app-emulation/kvm based virtual machines
+app-emulation/libvirt:libvirtd - Builds the libvirtd daemon as well as the client utilities instead of just the client utilities
 app-emulation/libvirt:lvm - Add support for the Logical Volume Manager sys-apps/lvm2
 app-emulation/libvirt:lxc - Add support for the Linux Containers
 app-emulation/libvirt:network - Enable networking support for guests
+app-emulation/libvirt:nfs - Allow the libvirtd daemon store VM images on NFS mounts
 app-emulation/libvirt:numa - Use NUMA for memory segmenting via sys-process/numactl
+app-emulation/libvirt:one - Support the ONE hypervisor protocol
 app-emulation/libvirt:openvz - Add support for sys-kernel/openvz-sources OpenVZ-based virtual machines
 app-emulation/libvirt:parted - Add support for the sys-apps/parted partition editor
+app-emulation/libvirt:phyp - Support the PHYP hypervisor protocol
 app-emulation/libvirt:qemu - Add support for app-emulation/qemu based virtual machines
 app-emulation/libvirt:uml - Add support for User Mode Linux based virtual machines
 app-emulation/libvirt:virtualbox - Adds support for VirtualBox based virtual machines
@@ -846,7 +851,7 @@ dev-libs/ntl:gf2x - Use high performance polynomial arithmetic with dev-libs/gf2
 dev-libs/opencryptoki:tpmtok - Offer support for TPM token
 dev-libs/openct:pcsc-lite - Enable support for sys-apps/pcsc-lite
 dev-libs/openobex:irda - Enable IrDA support
-dev-libs/opensc:openct - Build using dev-libs/openct compatibility 
+dev-libs/opensc:openct - Build using dev-libs/openct compatibility
 dev-libs/opensc:pcsc-lite - Build with sys-apps/pcsc-lite
 dev-libs/pkcs11-helper:nss - Enable NSS crypto engine
 dev-libs/poppler:abiword -  Enable support for app-office/abiword output. Requires dev-libs/libxml2. 
@@ -1665,7 +1670,6 @@ media-libs/mlt:compressed-lumas - Compress the luma files in png.
 media-libs/mlt:frei0r - Build the module for media-plugins/frei0r-plugins
 media-libs/mlt:melt - Build the melt commandline tool
 media-libs/netpbm:rle - Build converters for the RLE format (utah raster toolkit)
-media-libs/opencv:demos - Install applications that demo OpenCV library functions
 media-libs/opencv:deprecated - Enable deprecated (old) python support
 media-libs/opencv:ipp - Enable Intel Integrated Primitive support
 media-libs/opencv:octave - Enable octave support
@@ -1936,6 +1940,7 @@ media-tv/mythtv:mmx - Builds ffmpeg's codec libraries with mmx support.
 media-tv/mythtv:opengl - Builds MythTV with support for using OpenGL as the output painter rather then Qt3 built in painter.
 media-tv/mythtv:perl - Builds the perl bindings for MythTV. Allows you to write scripts in Perl to control your MythTV setup or communicate with it.
 media-tv/mythtv:tiff - Add support for tiff loading and rendering which is only used by media-plugins/mythgallery
+media-tv/mythtv:vdpau - enable support of NVIDIA's VDPAU for video playback
 media-tv/mythtv:video_cards_nvidia - When combined with the xvmc USE flag, enables NVIDIA specific XvMC extension usage.
 media-tv/mythtv:xvmc - Instructs MythTV to use XvMC for it's video output. By default, this will use the generic XvMC wrapper unless a specific video card driver is enabled via their VIDEO_CARDS USE flags.
 media-tv/tvbrowser:themes - Install extra theme packs
@@ -3417,6 +3422,10 @@ www-apps/viewvc:pygments - Add dev-python/pygments support for syntax highlighti
 www-client/elinks:bittorrent - Enable support for the BitTorrent protocol
 www-client/elinks:finger - Enable support for the finger protocol
 www-client/elinks:gopher - Enable support for the gopher protocol
+www-client/icecat:custom-optimization - Fine-tune custom compiler optimizations
+www-client/icecat:mozdevelop - Enable features for web developers (e.g. Venkman)
+www-client/icecat:restrict-javascript - Pull in www-plugins/noscript extension to disable javascript globally, putting the user fully in control of the sites he/she visits
+www-client/icecat:sqlite - Enable/Disable system sqlite support
 www-client/kazehakase:hyperestraier - enable hyperestraier support for full-text search in history
 www-client/kazehakase:webkit - Use net-libs/webkit-gtk for rendering rather than net-libs/xulrunner
 www-client/lynx:gnutls - Use gnutls library for HTTPS support (openssl is the default library for HTTPS support).
@@ -3578,7 +3587,6 @@ x11-themes/redhat-artwork:kdm - Install Bluecurve kde-base/kdm theme
 x11-themes/redhat-artwork:nautilus - Install Bluecurve gnome-base/nautilus icons
 x11-themes/skinenigmang-logos:dxr3 - Install logos for lower osd color depth on dxr3 cards
 x11-wm/compiz:fuse - Enables support for the filesystem in userspace plugin through sys-fs/fuse.
-x11-wm/compiz:kde3 - Compile the kde3 window decorator and add support for KDE3
 x11-wm/compiz-fusion:emerald - Install the x11-wm/emerald package.
 x11-wm/compiz-fusion:unsupported - Install the x11-plugins/compiz-fusion-plugins-unsupported package.
 x11-wm/enlightenment:pango - Enable pango font rendering
