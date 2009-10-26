@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10663 2009/10/24 23:46:00 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10678 2009/10/26 00:28:21 abcd Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,64 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Jonathan Callen <abcd@gentoo.org> (26 Oct 2009)
+# Old monolithic ebuild. Replaced by app-office/koffice-meta
+# Will be removed in 30 days
+app-office/koffice
+
+# Olivier Crête <tester@gentoo.org> (25 Oct 2009)
+# Has been replaced by its fork dev-python/papyon
+# Will be removed in 30 days
+dev-python/pymsn
+
+# Samuli Suominen <ssuominen@gentoo.org> (25 Oct 2009)
+# Masked for security. CVE-2009-{3603,3604,3606,3608,3609}.
+#
+# http://bugs.gentoo.org/290470
+#
+# Removed in 30 days.
+kde-base/kpdf
+
+# Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (25 Oct 2009)
+# Documentation for removed versions of dev-python/twisted. Masked for deletion in 30 days.
+dev-python/twisted-docs
+
+# Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (25 Oct 2009)
+# Replaced by dev-libs/cryptlib[python]. Masked for deletion in 30 days.
+dev-python/cryptlib_py
+
+# Samuli Suominen <ssuominen@gentoo.org> (25 Oct 2009)
+# KDE3-only. Replaced by >=kshutdown-2.0_beta6.
+# Masked for removal in 30 days.
+<kde-misc/kshutdown-1.9999
+
+# Samuli Suominen <ssuominen@gentoo.org> (25 Oct 2009)
+# KDE3-only. Replaced by >=kde-misc/kdiff3-0.9.95.
+# Masked for removal in 30 days.
+<kde-misc/kdiff3-0.9.95
+
+# Samuli Suominen <ssuominen@gentoo.org> (25 Oct 2009)
+# KDE3-only. Replaced by app-cdr/acetoneiso.
+# Masked for removal in 30 days.
+app-cdr/kiso
+
+# Samuli Suominen <ssuominen@gentoo.org> (25 Oct 2009)
+# KDE3 support. aRts support. Doesn't compile, install or work
+# wrt bugs 178072, 280808, 234385, 117247, 191557, and 253231.
+# Masked for removal in 30 days.
+app-office/taskjuggler
+
+# Samuli Suominen <ssuominen@gentoo.org> (25 Oct 2009)
+# KDE3-only. Replaced by >=kmplayer-0.11.1a.
+# Masked for removal in 30 days.
+<media-video/kmplayer-0.11.1a
+
+# Samuli Suominen <ssuominen@gentoo.org> (25 Oct 2009)
+# Replaced by KDE4 menu. For KDE3-only and is using
+# cmake directly wrt bug #287593.
+# Masked for removal in 30 days.
+kde-misc/kbfx
 
 # Samuli Suominen <ssuominen@gentoo.org> (25 Oct 2009)
 # Replaced by:
@@ -201,7 +259,7 @@ net-dialup/trayimonc
 # KDE3-only. Doesn't compile with stable networkmanager wrt bug 253788.
 # Other issues in bugs #197488, #217209, #255864, and #268732.
 # Masked for removal in 30 days.
-kde-misc/knetworkmanager
+=kde-misc/knetworkmanager-0.2*
 
 # Samuli Suominen <ssuominen@gentoo.org> (20 Oct 2009)
 # KDE3-only. Doesn't compile wrt #274206. Bundles internal
@@ -421,12 +479,6 @@ media-video/qc-usb
 # Masked for testing.
 =dev-libs/libffi-3.0.9_rc*
 
-# Bernard Cafarelli <voyageur@gentoo.org> (5 Oct 2009)
-# New ebuilds, mask rc versions for testing
-<sys-devel/clang-2.6
-<sys-devel/llvm-2.6
-<sys-devel/llvm-gcc-2.6
-
 # Jeremy Olexa <darkside@gentoo.org> (5 Oct 2009)
 # Dead project, missing deps, no maintainer. Removed in 60 days by treecleaners.
 # bug 205190
@@ -545,13 +597,6 @@ dev-perl/Net-FTPServer
 # Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (29 Sep 2009)
 # wsgiref module is included in Python >=2.5. Masked for deletion in 30 days.
 dev-python/wsgiref
-
-# Samuli Suominen <ssuominen@gentoo.org> (28 Sep 2009)
-# Obsolete. Supported by in-kernel drivers. Masked for removal,
-# see bug 159176.
-media-video/gspca
-media-video/spca5xx
-media-video/gspcav1
 
 # Samuli Suominen <ssuominen@gentoo.org> (28 Sep 2009)
 # Obsolete. Supported by in-kernel drivers. Masked for removal,
