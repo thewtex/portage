@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10678 2009/10/26 00:28:21 abcd Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10687 2009/10/26 22:15:56 cardoe Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -31,6 +31,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Samuli Suominen <ssuominen@gentoo.org> (26 Oct 2009)
+# Doesn't work with new xfce-base/exo API, bug #289867.
+# Replaced by media-video/parole.
+# Masked for removal in 30 days.
+media-video/xfmedia
+
 # Jonathan Callen <abcd@gentoo.org> (26 Oct 2009)
 # Old monolithic ebuild. Replaced by app-office/koffice-meta
 # Will be removed in 30 days
@@ -46,7 +52,7 @@ dev-python/pymsn
 #
 # http://bugs.gentoo.org/290470
 #
-# Removed in 30 days.
+# Replaced by kde-base/okular. Removed in 30 days.
 kde-base/kpdf
 
 # Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (25 Oct 2009)
@@ -167,7 +173,8 @@ dev-python/python-gammu
 kde-misc/kio-locate
 
 # Samuli Suominen <ssuominen@gentoo.org> (24 Oct 2009)
-# Masked for testing.
+# Masked for testing. Doesn't work with current Thunar.
+# See, http://bugs.gentoo.org/show_bug.cgi?id=289867
 >=xfce-base/exo-0.5
 
 # Diego E. Pettenò <flameeyes@gentoo.org> (23 Oct 2009)
@@ -218,16 +225,8 @@ games-board/knights
 # Removal in 30 days
 sys-kernel/sh-sources
 
-# Samuli Suominen <ssuominen@gentoo.org> (22 Oct 2009)
-# New x264 snapshot. Masked for testing.
->=media-libs/x264-0.0.20091001
->=media-video/x264-encoder-0.0.20091001
-
 # Doug Goldstein <cardoe@gentoo.org> (21 Oct 2009)
 # Work in progress
-=app-emulation/libvirt-0.7.0
-=app-emulation/libvirt-0.7.1
-=app-emulation/libvirt-0.7.2
 =x11-misc/synergy-plus-1.3.4
 
 # Dirkjan Ochtman <djc@gentoo.org> (21 Oct 2009)
@@ -428,10 +427,6 @@ kde-misc/ksynaptics
 # Requires aRTs and last released in 2007
 games-engines/kwest
 
-# Samuli Suominen <ssuominen@gentoo.org> (13 Oct 2009)
-# No bluez-4 support. See bug 276455. Masked for removal.
-net-wireless/kdebluetooth
-
 # Jonathan Callen <abcd@gentoo.org> (11 Oct 2009)
 # Old KDE 3.5.9 monolithic ebuilds.  Replaced by kde*-meta.
 # Masked for removal in 30 days
@@ -623,13 +618,6 @@ net-p2p/nicotine
 # Much testing needed, not ready for mainline by any means.
 >=www-client/seamonkey-2.0_beta2
 
-# Rémi Cardona <remi@gentoo.org> (24 Sep 2009)
-# Both require xorg-server's libxf86config library which is busted
-# and they both have no maintainer. See bug #222683
-# Masked for removal in 30 days
-dev-python/pyxf86config
-dev-python/rhpxl
-
 # Sebastien Fabbro <bicatali@gentoo.org> (23 Sep 2009)
 # Masked for more testing, especially with cint7, afs and xrootd
 # on amd64 with gcc-4.4. See bug #280925
@@ -668,41 +656,6 @@ net-libs/libunicall
 app-doc/opengl-manpages
 app-doc/xorg-sgml-doctools
 app-doc/xorg-docs
-
-# Tomáš Chvátal <scarabeus@gentoo.org> (2 Oct 2009)
-# update it a bit more to reflect what i will be adding now
-# Rémi Cardona <remi@gentoo.org> (19 Sep 2009)
-# xorg-server 1.7 packages, will be unmasked once 1.6 is stable
->=x11-apps/xinput-1.5.0
-=x11-base/xorg-drivers-1.7
->=x11-base/xorg-server-1.7.0
->=x11-libs/libdmx-1.0.99.0
->=x11-libs/libX11-1.2.99.0
->=x11-libs/libXext-1.0.99.0
->=x11-libs/libXi-1.2.99.0
->=x11-libs/libXinerama-1.0.99.0
->=x11-libs/libXScrnSaver-1.2.0
->=x11-libs/libXtst-1.0.99.0
->=x11-libs/libXxf86dga-1.1
->=x11-libs/libXxf86vm-1.0.99.0
->=x11-proto/bigreqsproto-1.1
->=x11-proto/dmxproto-2.2.99
->=x11-proto/fixesproto-4.1
->=x11-proto/inputproto-1.9.99
->=x11-proto/recordproto-1.13.99.0
->=x11-proto/scrnsaverproto-1.2.0
->=x11-proto/xcmiscproto-1.2.0
->=x11-proto/xextproto-7.1.1
->=x11-proto/xf86bigfontproto-1.2.0
->=x11-proto/xf86dgaproto-2.1
->=x11-proto/xf86driproto-2.1.0
->=x11-proto/xf86vidmodeproto-2.3
->=x11-proto/xineramaproto-1.2
-
-# Bryan Stine <battousai@gentoo.org> (18 Sep 2009)
-# Mask for removal in 30 days. The x11-drm git tree is abandoned, modules have
-# moved to the kernel. See bug #284598 for more information.
-x11-base/x11-drm
 
 # Gilles Dartiguelongue <eva@gentoo.org> (16 Sep 2009)
 # Masking at-poke, unmainted and superseeded by 
