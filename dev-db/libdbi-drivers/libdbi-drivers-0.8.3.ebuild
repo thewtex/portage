@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/libdbi-drivers/libdbi-drivers-0.8.3.ebuild,v 1.17 2009/02/24 17:44:47 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/libdbi-drivers/libdbi-drivers-0.8.3.ebuild,v 1.18 2009/10/26 07:19:33 robbat2 Exp $
 
 inherit eutils autotools
 
@@ -27,6 +27,8 @@ S="${WORKDIR}/${MY_P}"
 src_unpack() {
 	unpack ${A}
 	epatch "${FILESDIR}"/${PN}-0.8.3-doc-build-fix.patch
+	epatch "${FILESDIR}"/${PN}-0.8.3-oracle-build-fix.patch
+	epatch "${FILESDIR}"/${PN}-0.8.3-firebird-fix.patch
 	cd "${S}"
 	eautoreconf
 }

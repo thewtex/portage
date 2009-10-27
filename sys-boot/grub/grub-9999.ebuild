@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-boot/grub/grub-9999.ebuild,v 1.13 2009/10/14 00:06:34 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-boot/grub/grub-9999.ebuild,v 1.14 2009/10/26 23:05:53 vapier Exp $
 
 inherit autotools mount-boot eutils flag-o-matic toolchain-funcs
 
@@ -28,7 +28,7 @@ DEPEND="${RDEPEND}
 PROVIDE="virtual/bootloader"
 
 export STRIP_MASK="*/grub/*/*.mod"
-QA_EXECSTACK="sbin/grub-probe sbin/grub-setup"
+QA_EXECSTACK="sbin/grub-probe sbin/grub-setup sbin/grub-mkdevicemap"
 
 src_unpack() {
 	if [[ ${PV} == "9999" ]] ; then
@@ -54,7 +54,6 @@ src_compile() {
 		--bindir=/bin \
 		--libdir=/$(get_libdir) \
 		--disable-efiemu \
-		--disable-grub-pe2elf \
 		--enable-grub-mkfont \
 		$(use_enable debug mm-debug) \
 		$(use_enable debug grub-emu) \
@@ -70,9 +69,8 @@ src_install() {
 	GRUB_DISTRIBUTOR="Gentoo"
 	EOF
 	if use multislot ; then
-		sed -i s:grub-install:grub2-install: "${D}"/sbin/grub-install
+		sed -i "s:grub-install:grub2-install:" "${D}"/sbin/grub-install || die
 		mv "${D}"/sbin/grub{,2}-install || die
-		mv "${D}"/usr/share/man/man8/grub{,2}-install.8 || die
 		mv "${D}"/usr/share/info/grub{,2}.info || die
 	fi
 }

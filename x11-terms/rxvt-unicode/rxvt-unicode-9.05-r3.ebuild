@@ -1,6 +1,8 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-terms/rxvt-unicode/rxvt-unicode-9.05-r3.ebuild,v 1.2 2009/10/25 22:32:49 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-terms/rxvt-unicode/rxvt-unicode-9.05-r3.ebuild,v 1.5 2009/10/26 13:15:33 jer Exp $
+
+EAPI="1"
 
 inherit autotools flag-o-matic
 
@@ -10,8 +12,8 @@ SRC_URI="http://dist.schmorp.de/rxvt-unicode/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
-IUSE="truetype perl iso14755 afterimage xterm-color wcwidth vanilla"
+KEYWORDS="~alpha ~amd64 hppa ~ia64 ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
+IUSE="truetype perl iso14755 afterimage xterm-color wcwidth +vanilla"
 
 # see bug #115992 for modular x deps
 RDEPEND="x11-libs/libX11
