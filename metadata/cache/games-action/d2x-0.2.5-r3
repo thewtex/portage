@@ -1,5 +1,5 @@
-media-libs/libsdl media-libs/sdl-image opengl? ( virtual/opengl ) ggi? ( media-libs/libggi ) svga? ( media-libs/svgalib ) x86? ( dev-lang/nasm )
-media-libs/libsdl media-libs/sdl-image opengl? ( virtual/opengl ) ggi? ( media-libs/libggi ) svga? ( media-libs/svgalib ) cdinstall? ( games-action/descent2-data ) !cdinstall? ( games-action/descent2-demodata )
+media-libs/libsdl[audio,joystick,video] media-libs/sdl-image opengl? ( virtual/opengl ) ggi? ( media-libs/libggi ) svga? ( media-libs/svgalib ) x86? ( dev-lang/nasm )
+media-libs/libsdl[audio,joystick,video] media-libs/sdl-image opengl? ( virtual/opengl ) ggi? ( media-libs/libggi ) svga? ( media-libs/svgalib ) cdinstall? ( games-action/descent2-data ) !cdinstall? ( games-action/descent2-demodata )
 0
 http://icculus.org/d2x/src/d2x-0.2.5.tar.gz
 
@@ -12,9 +12,9 @@ cdinstall debug opengl ggi svga
 
 
 
+2
 
-
-compile install postinst preinst setup unpack
+compile configure install postinst preinst prepare setup unpack
 
 
 
