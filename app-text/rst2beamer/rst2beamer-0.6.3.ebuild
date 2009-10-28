@@ -11,7 +11,8 @@ IUSE="doc examples"
 
 DEPEND=""
 RDEPEND="app-text/texlive
->=dev-python/docutils-0.6"
+>=dev-python/docutils-0.6
+dev-tex/latex-beamer"
 
 src_install(){
 	distutils_src_install
