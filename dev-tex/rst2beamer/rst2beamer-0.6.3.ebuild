@@ -4,7 +4,7 @@ DESCRIPTION="A ReStructured Text based tool for preparing presentations."
 HOMEPAGE="http://www.agapow.net/software/${PN}"
 SRC_URI="http://www.agapow.net/software/${PN}/${PV}/${P}.tar.gz"
 
-LICENSE=""
+LICENSE="GPL"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc examples"
