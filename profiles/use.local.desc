@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4932 2009/10/26 20:47:58 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4937 2009/10/28 20:47:56 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -1440,7 +1440,6 @@ mail-client/mozilla-thunderbird:mozdom - Enable Mozilla's DOM inspector
 mail-client/mozilla-thunderbird:moznopango - Disable x11-libs/pango during runtime
 mail-client/mozilla-thunderbird:replytolist - Enable x11-plugins/replytolist plugin
 mail-client/mutt:gpg - Enable support for app-crypt/gpgme
-mail-client/mutt:gpgme - Enable support for app-crypt/gpgme
 mail-client/mutt:pop - Enable support for pop
 mail-client/mutt:sidebar - Use the vanilla tree + sidebar patch
 mail-client/mutt:smime - Enable support for smime
@@ -2027,6 +2026,7 @@ media-video/motiontrack:multiprocess - Enables multi-process support (SMP/cluste
 media-video/mplayer:3dnowext - Enable 3dnowext cpu instructions
 media-video/mplayer:ass - Internal SRT/SSA/ASS (SubRip / SubStation Alpha) subtitle support
 media-video/mplayer:bl - Enables Blinkenlights support in mplayer
+media-video/mplayer:bs2b - Enable Bauer stereophonic-to-binaural headphone filter
 media-video/mplayer:cdio - Use libcdio for CD support (instead of cdparanoia)
 media-video/mplayer:cpudetection - Enables runtime cpudetection (useful for bindist, compatability on other CPUs)
 media-video/mplayer:custom-cpuopts - Fine-tune custom CPU optimizations (UNSUPPORTED)
@@ -2060,7 +2060,9 @@ media-video/mplayer:shm - Enable support for shm
 media-video/mplayer:ssse3 - faster floating point optimization for SSSE3 capable chips (Intel Core 2 and later chips)
 media-video/mplayer:teletext - Support for TV teletext interface
 media-video/mplayer:tga - Enables Targa video output
+media-video/mplayer:toolame - Enable toolame MPEG-2 encoding
 media-video/mplayer:tremor - Enable internal support for Vorbis
+media-video/mplayer:twolame - Enable twolame MPEG-2 encoding
 media-video/mplayer:vdpau - Enables experimental VDPAU support (requires nVidia video cards) to offload MPEG2/MPEG4/VC1/WMV CPU processing to video card
 media-video/mplayer:vidix - Support for vidix video output
 media-video/mplayer:xanim - Enables support for xanim based codecs
@@ -2537,6 +2539,7 @@ net-libs/libetpan:liblockfile - Enable support for liblockfile library
 net-libs/libfwbuilder:bind - Use bind's name resolving library
 net-libs/libfwbuilder:stlport - Enagle support for STLport
 net-libs/libinfinity:server -  Build and install the server binary including init.d/conf.d-scripts. Needed if you want to host an infinote server for gobby. 
+net-libs/libnemesi:sctp - Support for Stream Control Transmission Protocol
 net-libs/libnice:upnp - Enable UPnP IGD support
 net-libs/libpcap:libnl - link with dev-libs/libnl (used to put wireless interfaces in monitore mode)
 net-libs/libpri:bri - Enable ISDN BRI support (bristuff)
@@ -2555,6 +2558,7 @@ net-libs/libssh2:gcrypt - Use dev-libs/libgcrypt for crypto
 net-libs/libvncserver:no24bpp - disable 24bpp support
 net-libs/libvncserver:nobackchannel - disable backchannel support
 net-libs/loudmouth:asyncns - Use libasyncns for asynchronous name resolution.
+net-libs/netembryo:sctp - Support for Stream Control Transmission Protocol
 net-libs/opal:audio - Enable audio support
 net-libs/opal:capi - Enable CAPI support
 net-libs/opal:celt - Enable CELT ultra-low delay audio codec
@@ -2964,6 +2968,7 @@ sci-biology/plink:webcheck -  add support for online update checking every time 
 sci-biology/tgi-tools:pvm - Use sys-cluster/pvm (Parallel Virtual Machine) and build the pvmsx utility
 sci-biology/vienna-rna:no-readseq - Do not include the modified version of Don Gilbert's readseq program
 sci-biology/vienna-rna:no-utils - Do not include sequence format conversion and representation utilities
+sci-biology/ucsc-genome-browser:server - Install genome browser Web application. If this flag is off, only libraries and utilities from the suite are installed.
 sci-chemistry/avogadro:glsl - Enable glsl features via GLEW.
 sci-chemistry/caver:pymol - Install the PyMol plugin (sci-chemistry/pymol) 
 sci-chemistry/coot:new-interface - Build with the experimental GTK+-2 interface instead of GTK+-1
@@ -3432,7 +3437,6 @@ www-client/kazehakase:webkit - Use net-libs/webkit-gtk for rendering rather than
 www-client/lynx:gnutls - Use gnutls library for HTTPS support (openssl is the default library for HTTPS support).
 www-client/lynx:ssl - Enable HTTPS support.
 www-client/midori:html - Install HTML documentation
-www-client/midori:soup - Use Soup (net-libs/libsoup) as HTTP backend instead of curl(net-misc/curl), if you want better gnome integration for URL processing
 www-client/midori:unique - Optional libunique support
 www-client/mozilla-firefox:custom-optimization - Fine-tune custom compiler optimizations
 www-client/mozilla-firefox:filepicker - Enable old gtkfilepicker from 1.0.x firefox
