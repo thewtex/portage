@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-drivers/nvidia-drivers/nvidia-drivers-185.18.36.ebuild,v 1.2 2009/10/22 02:46:36 cardoe Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-drivers/nvidia-drivers/nvidia-drivers-185.18.36.ebuild,v 1.5 2009/10/29 20:40:09 cardoe Exp $
 
 EAPI="2"
 
@@ -33,7 +33,7 @@ DEPEND="${COMMON}
 	app-admin/eselect-opengl"
 RDEPEND="${COMMON}
 	kernel_linux? ( virtual/modutils )
-	media-libs/mesa
+	!>=media-libs/mesa-7.6
 	acpi? ( sys-power/acpid )"
 PDEPEND="gtk? ( media-video/nvidia-settings )"
 
@@ -66,7 +66,8 @@ QA_TEXTRELS_amd64="usr/lib32/opengl/nvidia/tls/libnvidia-tls.so.${PV}
 
 QA_EXECSTACK_x86="usr/lib/opengl/nvidia/lib/libGL.so.${PV}
 	usr/lib/opengl/nvidia/lib/libGLcore.so.${PV}
-	usr/lib/opengl/nvidia/extensions/libglx.so"
+	usr/lib/opengl/nvidia/extensions/libglx.so
+	usr/lib/libXvMCNVIDIA.a:NVXVMC.o"
 
 QA_EXECSTACK_amd64="usr/lib32/opengl/nvidia/lib/libGLcore.so.${PV}
 	usr/lib32/opengl/nvidia/lib/libGL.so.${PV}
@@ -149,9 +150,6 @@ fi
 
 S="${WORKDIR}/${NV_PACKAGE}${PKG_V}"
 
-# PCI IDs of devices known not to work with this version of the drivers.
-BROKEN_DEVICES="10de0429c"
-
 mtrr_check() {
 	ebegin "Checking for MTRR support"
 	linux_chkconfig_present MTRR
@@ -166,19 +164,6 @@ mtrr_check() {
 		eerror "and recompile your kernel ..."
 		die "MTRR support not detected!"
 	fi
-}
-
-compat_device_check() {
-	[ ! -r /proc/bus/pci/devices -o -z "${BROKEN_DEVICES}" ] && return
-
-	for dev_id in ${BROKEN_DEVICES} ; do
-		if [ -n "$(grep ${dev_id} /proc/bus/pci/devices)" ]; then
-			ewarn "It looks like you have a graphics card that is known not to work"
-			ewarn "with this version of nvidia-drivers.  Strongly consider using an"
-			ewarn "older version for now."
-			ebeep
-		fi
-	done
 }
 
 pkg_setup() {
