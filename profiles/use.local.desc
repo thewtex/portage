@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4946 2009/10/30 00:28:31 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4948 2009/10/30 19:47:57 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -1008,6 +1008,7 @@ dev-util/nvidia-cuda-sdk:emulation -  Build binaries for device emulation mode. 
 dev-util/nvidia-cuda-toolkit:debugger -  Installs the CUDA debugger. 
 dev-util/nvidia-cuda-toolkit:profiler -  Installs the NVIDIA CUDA visual profiler. 
 dev-util/pbuilder:uml - Enable pbuilder user mode linux support
+dev-util/perf:demangle -  Enable C++ symbol name demangling, using libbfd from sys-devel/binutils. When this flag is enabled, the package will have to be rebuilt after every version bump of binutils. 
 dev-util/qct:bazaar -  Support for dev-util/bzr 
 dev-util/qct:mercurial -  Support for dev-util/mercurial 
 dev-util/qct:monotone -  Support for dev-util/monotone 
@@ -2267,7 +2268,8 @@ net-im/ejabberd:mod_irc - Irc support in ejabberd
 net-im/ejabberd:mod_muc - Multi user chat support in ejabberd
 net-im/ejabberd:mod_pubsub - Pubsub support in ejabberd
 net-im/ejabberd:web - Web support in ejabberd
-net-im/empathy:applet - Enable Empathy's applets for gnome-base/gnome-panel.
+net-im/empathy:applet - Enable Empathy's applets for gnome-base/gnome-panel
+net-im/empathy:webkit - Build support for Adium-style HTML-based conversation window themes using net-libs/webkit-gtk
 net-im/gajim:idle - Enable idle module
 net-im/gajim:srv - SRV capabilities
 net-im/gajim:trayicon - Enable support for trayicon

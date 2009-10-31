@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/twisted/twisted-8.2.0-r2.ebuild,v 1.3 2009/10/24 14:36:50 nixnut Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/twisted/twisted-8.2.0-r2.ebuild,v 1.5 2009/10/30 20:50:01 arfrever Exp $
 
 EAPI="2"
 SUPPORT_PYTHON_ABIS="1"
@@ -10,12 +10,12 @@ inherit distutils versionator
 MY_P="TwistedCore-${PV}"
 
 DESCRIPTION="An asynchronous networking framework written in Python"
-HOMEPAGE="http://www.twistedmatrix.com/"
+HOMEPAGE="http://www.twistedmatrix.com/ http://pypi.python.org/pypi/Twisted"
 SRC_URI="http://tmrc.mit.edu/mirror/${PN}/Core/$(get_version_component_range 1-2)/${MY_P}.tar.bz2"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~mips ppc ~ppc64 ~s390 ~sh ~sparc x86 ~x86-fbsd"
 IUSE="crypt gtk serial"
 
 DEPEND=">=dev-lang/python-2.3
