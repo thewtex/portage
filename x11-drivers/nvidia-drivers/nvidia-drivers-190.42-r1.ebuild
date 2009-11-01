@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-drivers/nvidia-drivers/nvidia-drivers-190.42-r1.ebuild,v 1.3 2009/10/27 14:59:44 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-drivers/nvidia-drivers/nvidia-drivers-190.42-r1.ebuild,v 1.6 2009/10/29 20:22:23 cardoe Exp $
 
 EAPI="2"
 
@@ -23,7 +23,8 @@ IUSE="acpi custom-cflags gtk multilib kernel_linux"
 RESTRICT="strip"
 EMULTILIB_PKG="true"
 
-COMMON="multilib? ( app-emulation/emul-linux-x86-xlibs )
+COMMON="<x11-base/xorg-server-1.7.99
+	multilib? ( app-emulation/emul-linux-x86-xlibs )
 	kernel_FreeBSD? ( !media-video/nvidia-freebsd )
 	!app-emulation/emul-linux-x86-nvidia
 	!x11-drivers/nvidia-legacy-drivers"
@@ -32,7 +33,7 @@ DEPEND="${COMMON}
 	app-admin/eselect-opengl"
 RDEPEND="${COMMON}
 	kernel_linux? ( virtual/modutils )
-	media-libs/mesa
+	!>=media-libs/mesa-7.6
 	acpi? ( sys-power/acpid )"
 PDEPEND="x11-libs/libvdpau
 	gtk? ( media-video/nvidia-settings )"
@@ -66,7 +67,8 @@ QA_TEXTRELS_amd64="usr/lib32/opengl/nvidia/tls/libnvidia-tls.so.${PV}
 
 QA_EXECSTACK_x86="usr/lib/opengl/nvidia/lib/libGL.so.${PV}
 	usr/lib/opengl/nvidia/lib/libGLcore.so.${PV}
-	usr/lib/opengl/nvidia/extensions/libglx.so"
+	usr/lib/opengl/nvidia/extensions/libglx.so
+	usr/lib/libXvMCNVIDIA.a:NVXVMC.o"
 
 QA_EXECSTACK_amd64="usr/lib32/opengl/nvidia/lib/libGLcore.so.${PV}
 	usr/lib32/opengl/nvidia/lib/libGL.so.${PV}

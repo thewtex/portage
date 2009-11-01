@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-base/xorg-server/xorg-server-1.6.5.ebuild,v 1.1 2009/10/12 08:19:07 remi Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-base/xorg-server/xorg-server-1.6.5.ebuild,v 1.3 2009/10/29 22:02:24 scarabeus Exp $
 
 EAPI="2"
 
@@ -19,7 +19,9 @@ KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~x86-
 
 IUSE_SERVERS="dmx kdrive xorg"
 IUSE="${IUSE_SERVERS} tslib hal ipv6 minimal nptl sdl"
-RDEPEND="hal? ( sys-apps/hal )
+
+RDEPEND="
+	hal? ( sys-apps/hal )
 	tslib? ( >=x11-libs/tslib-1.0 x11-proto/xcalibrateproto )
 	dev-libs/openssl
 	>=x11-libs/libXfont-1.4.0
