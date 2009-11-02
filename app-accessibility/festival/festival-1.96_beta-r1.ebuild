@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-accessibility/festival/festival-1.96_beta-r1.ebuild,v 1.2 2009/02/09 13:50:40 williamh Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-accessibility/festival/festival-1.96_beta-r1.ebuild,v 1.4 2009/11/01 18:52:37 eva Exp $
 
 inherit eutils toolchain-funcs
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4950 2009/10/31 13:47:48 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4956 2009/11/01 23:27:44 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -1386,7 +1386,10 @@ mail-filter/dspam:virtual-users -  Build with virtual-users support
 mail-filter/libmilter:poll - Use poll instead of select
 mail-filter/maildrop:authlib - Add courier-authlib support
 mail-filter/mimedefang:poll - Use poll instead of select
-mail-filter/opendkim:db - Include features like stats, querycache, popauth and bodylengthdb that include berkdb
+mail-filter/opendkim:asyncdns - Use inbuilt asynchronous DNS library for queries
+mail-filter/opendkim:db - Include features like stats, querycache, popauth, report intervals and bodylengthdb that include berkdb
+mail-filter/opendkim:diffheaders - On verification failure, compare the original and the received headers to look for possible munging
+mail-filter/opendkim:multiplesigs - Allow addition of multiple signatures when key lists are in use.
 mail-filter/postgrey:targrey - Enables the targrey patch
 mail-filter/qmail-scanner:spamassassin - Build faster mail-filter/spamassassin checks into qmail-scanner
 mail-filter/simscan:attachment - Enable attachment scanning
@@ -2647,6 +2650,7 @@ net-p2p/btg:event-callback - Enable calling a script or executable for certain e
 net-p2p/btg:upnp - Enable support for UPnP
 net-p2p/btg:webinterface - install webBTG
 net-p2p/dbhub:switch_user - Enable support for switching user
+net-p2p/deluge:webinterface - Install dependencies needed for the web interface 
 net-p2p/fms:frost - Add support for frost boards
 net-p2p/freenet:freemail - Add Freemail support
 net-p2p/gift:ares - pull in Ares plugin
@@ -2792,6 +2796,7 @@ sci-chemistry/pdb2pqr:opal - Add web interafce via opal
 sci-chemistry/pymol:apbs - Build the apbs plugin tool.
 sci-chemistry/pymol:shaders - Build with Shaders support - good for high-end 3D video cards.
 sci-chemistry/shelx:dosformat - Use CR/LF to end lines; useful in mixed Linux/Windows environments
+sci-chemistry/wxmacmolplt:flash - Add support for flash movie generation using media-libs/ming
 sci-electronics/geda-gschem:stroke - enable mouse gesture support
 sci-electronics/gerbv:unit-mm - Set default unit for coordinates in status bar to mm
 sci-electronics/pcb:gif - GIF graphics export
