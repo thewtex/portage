@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/pango/pango-1.26.0.ebuild,v 1.1 2009/10/29 21:25:57 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/pango/pango-1.26.0.ebuild,v 1.3 2009/11/01 12:53:20 eva Exp $
 
 EAPI="2"
 GCONF_DEBUG="yes"
@@ -25,6 +25,7 @@ RDEPEND=">=dev-libs/glib-2.17.3
 		x11-libs/libXft )"
 DEPEND="${RDEPEND}
 	>=dev-util/pkgconfig-0.9
+	dev-util/gtk-doc-am
 	doc? (
 		>=dev-util/gtk-doc-1
 		~app-text/docbook-xml-dtd-4.1.2
@@ -65,6 +66,9 @@ src_prepare() {
 	# Fix introspection automagic.
 	# https://bugzilla.gnome.org/show_bug.cgi?id=596506
 	epatch "${FILESDIR}/${PN}-1.26.0-introspection-automagic.patch"
+
+	# Fix parallel build, bug 287825
+	epatch "${FILESDIR}/${PN}-1.26.0-fix-parallel-build.patch"
 
 	eautoreconf
 }

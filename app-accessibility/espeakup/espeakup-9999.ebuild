@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-accessibility/espeakup/espeakup-9999.ebuild,v 1.3 2009/10/09 21:53:18 williamh Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-accessibility/espeakup/espeakup-9999.ebuild,v 1.5 2009/11/01 18:50:30 eva Exp $
 
 EGIT_REPO_URI="git://github.com/williamh/espeakup.git"
 inherit git

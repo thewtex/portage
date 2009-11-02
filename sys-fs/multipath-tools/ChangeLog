@@ -1,6 +1,25 @@
 # ChangeLog for sys-fs/multipath-tools
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/multipath-tools/ChangeLog,v 1.26 2009/09/19 04:47:49 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/multipath-tools/ChangeLog,v 1.29 2009/10/31 13:14:37 ranger Exp $
+
+  31 Oct 2009; Brent Baude <ranger@gentoo.org>
+  multipath-tools-0.4.8-r1.ebuild:
+  Marking multipath-tools-0.4.8-r1 ppc64 for bug 264564
+
+  30 Oct 2009; Robin H. Johnson <robbat2@gentoo.org>
+  multipath-tools-0.4.8-r1.ebuild,
+  +files/multipath-tools-0.4.8-socket-cve-2009-0115.patch:
+  Missed one more patch, bug #264564, fix for CVE-2009-0115.
+
+*multipath-tools-0.4.8-r1 (30 Oct 2009)
+
+  30 Oct 2009; Robin H. Johnson <robbat2@gentoo.org>
+  +files/init.d-multipath-0.4.8-r1, +multipath-tools-0.4.8-r1.ebuild,
+  +files/multipath-tools-0.4.8-r1-kpartx.patch,
+  +files/multipath-tools-0.4.8-udev-scsi_id-changes.patch:
+  Upstream is a slacker and has not made a release in 2+ years despite being
+  active in Git. Fixes bug #235836: udev scsi_id lost the -s option a long
+  time ago. Bug #245615: remove the 1TiB limit on kpartx.
 
   19 Sep 2009; Robin H. Johnson <robbat2@gentoo.org>
   multipath-tools-0.4.8.ebuild:
