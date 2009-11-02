@@ -1,10 +1,49 @@
 # ChangeLog for profile directory
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.3484 2009/10/29 20:38:56 abcd Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.3496 2009/11/01 23:05:55 eva Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  01 Nov 2009; Gilles Dartiguelongue <eva@gentoo.org> package.mask:
+  Mask app-misc/tracker, bug #291501.
+
+  01 Nov 2009; Vlastimil Babka <caster@gentoo.org> package.mask:
+  Remove java last rites that were removed.
+
+  01 Nov 2009; Gilles Dartiguelongue <eva@gentoo.org> package.mask:
+  Remove app-accessibility/at-poke mask, it's gone.
+
+  01 Nov 2009; Gilles Dartiguelongue <eva@gentoo.org> package.mask:
+  Mask gnome-extra/gnome-keyring-manager, see bug #291456.
+
+  01 Nov 2009; Markus Meier <maekke@gentoo.org> package.mask:
+  fix hugin mask, pointed out by leio
+
+  31 Oct 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask net-firewall/knetfilter wrt #251992.
+
+  31 Oct 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask mail-client/kcheckgmail wrt #260166.
+
+  31 Oct 2009; <kolmodin@gentoo.org> package.mask:
+  Remove masking on dev-lang/ghc-6.10.4 and related packages.
+
+  31 Oct 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask sci-calculators/qalculate-kde (replaced by
+  kde-misc/qalculate-applet).
+
+  31 Oct 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask kde-misc/systemloadviewer because it's moved into
+  kde-base/kdeplasma-addons.
+
+  30 Oct 2009; Gilles Dartiguelongue <eva@gentoo.org> package.mask:
+  Remove mask for net-im/telepathy-mission-control since it was just waiting
+  for empathy-2.28
+
+  30 Oct 2009; Nirbheek Chauhan <nirbheek@gentoo.org> package.mask:
+  Remove net-wireless/bluez-hciemu -- fix bug 257826
 
   29 Oct 2009; Jonathan Callen <abcd@gentoo.org> package.mask:
   Add comment about security bug #290470 to app-office/koffice mask

@@ -1,0 +1,22 @@
+kernel_linux? ( virtual/linux-sources )
+
+0
+mirror://sourceforge/fuse/fuse-2.8.1.tar.gz
+
+http://fuse.sourceforge.net
+GPL-2
+An interface for filesystems implemented in userspace.
+~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd
+eutils libtool linux-info multilib portability toolchain-funcs versionator
+kernel_linux kernel_FreeBSD
+
+kernel_FreeBSD? ( sys-fs/fuse4bsd )
+
+2
+
+compile configure install prepare setup
+
+
+
+
+

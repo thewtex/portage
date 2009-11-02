@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-accessibility/emacspeak/emacspeak-30.0.ebuild,v 1.3 2009/08/29 19:03:46 nixnut Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-accessibility/emacspeak/emacspeak-30.0.ebuild,v 1.5 2009/11/01 18:46:55 eva Exp $
 
 EAPI="2"
 

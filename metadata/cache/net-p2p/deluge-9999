@@ -1,5 +1,5 @@
->=dev-lang/python-2.5 >=dev-libs/boost-1.34 dev-python/setuptools >=app-shells/bash-3.2 virtual/python dev-util/subversion net-misc/rsync
->=dev-lang/python-2.5 >=dev-libs/boost-1.34 dev-python/setuptools dev-python/chardet dev-python/pyxdg dev-python/twisted dev-python/twisted-web dev-python/simplejson dev-python/pyopenssl gtk? ( dev-python/pygobject >=dev-python/pygtk-2 dev-python/pyxdg dev-python/dbus-python gnome-base/librsvg ) libnotify? ( dev-python/notify-python ) virtual/python
+>=virtual/python-2.5 >=net-libs/rb_libtorrent-0.14.5[python] dev-python/setuptools >=app-shells/bash-3.2 virtual/python dev-util/subversion net-misc/rsync
+>=virtual/python-2.5 >=net-libs/rb_libtorrent-0.14.5[python] dev-python/setuptools dev-python/chardet dev-python/pyopenssl dev-python/pyxdg || ( >=virtual/python-2.6 dev-python/simplejson ) >=dev-python/twisted-8.1 >=dev-python/twisted-web-8.1 gtk? ( dev-python/pygame dev-python/pygobject >=dev-python/pygtk-2.12 gnome-base/librsvg libnotify? ( dev-python/notify-python ) ) webinterface? ( dev-python/mako ) virtual/python
 0
 
 
@@ -8,13 +8,13 @@ GPL-2
 BitTorrent client with a client/server model.
 
 distutils eutils flag-o-matic multilib portability python subversion toolchain-funcs
-gtk libnotify
+gtk libnotify webinterface
 
 
 
+2
 
-
-compile install postinst postrm preinst setup unpack
+compile install postinst postrm preinst prepare setup unpack
 
 
 

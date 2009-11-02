@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-accessibility/brltty/brltty-3.10.ebuild,v 1.11 2009/06/11 11:35:31 williamh Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-accessibility/brltty/brltty-3.10.ebuild,v 1.13 2009/11/01 18:41:04 eva Exp $
 
 FINDLIB_USE="ocaml"
 EAPI=1

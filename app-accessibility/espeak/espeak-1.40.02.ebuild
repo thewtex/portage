@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-accessibility/espeak/espeak-1.40.02.ebuild,v 1.9 2009/05/15 16:54:32 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-accessibility/espeak/espeak-1.40.02.ebuild,v 1.11 2009/11/01 18:49:54 eva Exp $
 
 inherit eutils
 
