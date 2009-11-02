@@ -18,8 +18,8 @@ HOMEPAGE="http://www.gnu.org/software/grub/"
 
 LICENSE="GPL-3"
 use multislot && SLOT="2" || SLOT="0"
-KEYWORDS=""
-IUSE="custom-cflags debug multislot static"
+KEYWORDS="~x86 ~amd64"
+IUSE="custom-cflags debug multislot static mkfont"
 
 RDEPEND=">=sys-libs/ncurses-5.2-r5
 	dev-libs/lzo"
@@ -54,7 +54,7 @@ src_compile() {
 		--bindir=/bin \
 		--libdir=/$(get_libdir) \
 		--disable-efiemu \
-		--enable-grub-mkfont \
+		$(use_enable mkfont grub-mkfont) \
 		$(use_enable debug mm-debug) \
 		$(use_enable debug grub-emu) \
 		$(use_enable debug grub-emu-usb) \
