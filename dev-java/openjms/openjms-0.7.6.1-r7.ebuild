@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/openjms/openjms-0.7.6.1-r7.ebuild,v 1.1 2009/09/18 05:13:43 ali_bush Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/openjms/openjms-0.7.6.1-r7.ebuild,v 1.3 2009/11/01 19:20:34 caster Exp $
 
 EAPI="2"
 JAVA_PKG_IUSE="doc"
@@ -12,11 +12,10 @@ SLOT="0"
 LICENSE="GPL-2"
 DESCRIPTION="Open Java Messaging System"
 HOMEPAGE="http://openjms.sourceforge.net/"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 SRC_URI="mirror://sourceforge/${PN}/${P}-src.tar.gz mirror://gentoo/${P}-scripts.tar.gz"
 IUSE=""
-CDEPEND="=virtual/jre-1.4*
-	>=dev-java/antlr-2.7.7:0[java]
+CDEPEND=">=dev-java/antlr-2.7.7:0[java]
 	dev-java/castor:0.9
 	dev-java/commons-dbcp:0
 	dev-java/commons-logging:0
@@ -30,7 +29,7 @@ CDEPEND="=virtual/jre-1.4*
 DEPEND="|| ( =virtual/jdk-1.5* =virtual/jdk-1.4* )
 	${CDEPEND}
 	dev-java/xerces:2"
-RDEPEND=">=virtual/jdk-1.4
+RDEPEND=">=virtual/jre-1.4
 	${CDEPEND}"
 
 java_prepare() {

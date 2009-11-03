@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/clientform/clientform-0.2.10.ebuild,v 1.4 2009/10/24 14:28:22 nixnut Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/clientform/clientform-0.2.10.ebuild,v 1.6 2009/10/30 11:38:08 arfrever Exp $
 
 EAPI="2"
 SUPPORT_PYTHON_ABIS="1"
@@ -9,12 +9,12 @@ inherit distutils
 
 MY_P="ClientForm-${PV}"
 DESCRIPTION="Parse, fill out, and return HTML forms on the client side"
-HOMEPAGE="http://wwwsearch.sourceforge.net/ClientForm/"
+HOMEPAGE="http://wwwsearch.sourceforge.net/ClientForm/ http://pypi.python.org/pypi/ClientForm"
 SRC_URI="http://wwwsearch.sourceforge.net/ClientForm/src/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~ia64 ppc ~x86 ~amd64-linux ~ia64-linux ~x86-linux ~x86-macos"
+KEYWORDS="amd64 ~ia64 ppc x86 ~amd64-linux ~ia64-linux ~x86-linux ~x86-macos"
 IUSE="examples"
 
 DEPEND=""

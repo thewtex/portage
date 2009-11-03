@@ -1,6 +1,8 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/deluge/deluge-9999.ebuild,v 1.22 2009/10/04 15:11:55 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/deluge/deluge-9999.ebuild,v 1.23 2009/11/01 12:17:21 armin76 Exp $
+
+EAPI="2"
 
 inherit eutils distutils subversion flag-o-matic
 
@@ -14,26 +16,26 @@ SRC_URI=""
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="gtk libnotify"
+IUSE="gtk libnotify webinterface"
 
-DEPEND=">=dev-lang/python-2.5
-	>=dev-libs/boost-1.34
+DEPEND=">=virtual/python-2.5
+	>=net-libs/rb_libtorrent-0.14.5[python]
 	dev-python/setuptools"
 RDEPEND="${DEPEND}
 	dev-python/chardet
-	dev-python/pyxdg
-	dev-python/twisted
-	dev-python/twisted-web
-	dev-python/simplejson
 	dev-python/pyopenssl
+	dev-python/pyxdg
+	|| ( >=virtual/python-2.6 dev-python/simplejson )
+	>=dev-python/twisted-8.1
+	>=dev-python/twisted-web-8.1
 	gtk? (
+		dev-python/pygame
 		dev-python/pygobject
-		>=dev-python/pygtk-2
-		dev-python/pyxdg
-		dev-python/dbus-python
+		>=dev-python/pygtk-2.12
 		gnome-base/librsvg
+		libnotify? ( dev-python/notify-python )
 	)
-	libnotify? ( dev-python/notify-python )"
+	webinterface? ( dev-python/mako )"
 
 pkg_setup() {
 	append-ldflags $(no-as-needed)
@@ -50,10 +52,6 @@ pkg_postinst() {
 	elog "If after upgrading it doesn't work, please remove the"
 	elog "'~/.config/deluge' directory and try again, but make a backup"
 	elog "first!"
-	elog
-	einfo "Please note that Deluge is still in it's early stages"
-	einfo "of development. Use it carefully and feel free to submit bugs"
-	einfo "in upstream page."
 	elog
 	elog "To start the daemon either run 'deluged' as user"
 	elog "or modify /etc/conf.d/deluged and run"

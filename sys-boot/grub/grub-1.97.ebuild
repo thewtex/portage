@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-boot/grub/grub-1.97.ebuild,v 1.1 2009/10/26 23:05:53 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-boot/grub/grub-1.97.ebuild,v 1.2 2009/11/01 19:51:01 vapier Exp $
 
 inherit autotools mount-boot eutils flag-o-matic toolchain-funcs
 
@@ -18,8 +18,8 @@ HOMEPAGE="http://www.gnu.org/software/grub/"
 
 LICENSE="GPL-3"
 use multislot && SLOT="2" || SLOT="0"
-KEYWORDS=""
-IUSE="custom-cflags debug multislot static"
+KEYWORDS="~x86 ~amd64"
+IUSE="custom-cflags debug multislot static mkfont"
 
 RDEPEND=">=sys-libs/ncurses-5.2-r5
 	dev-libs/lzo"
@@ -38,6 +38,7 @@ src_unpack() {
 	fi
 	cd "${S}"
 	epatch "${FILESDIR}"/${PN}-1.96-genkernel.patch #256335
+	epatch_user
 
 	# autogen.sh does more than just run autotools
 	sed -i -e 's:^auto:eauto:' autogen.sh
@@ -54,7 +55,7 @@ src_compile() {
 		--bindir=/bin \
 		--libdir=/$(get_libdir) \
 		--disable-efiemu \
-		--enable-grub-mkfont \
+		$(use_enable mkfont grub-mkfont) \
 		$(use_enable debug mm-debug) \
 		$(use_enable debug grub-emu) \
 		$(use_enable debug grub-emu-usb) \
