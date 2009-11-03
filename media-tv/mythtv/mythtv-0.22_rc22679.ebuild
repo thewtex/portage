@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-tv/mythtv/mythtv-0.22_rc22679.ebuild,v 1.2 2009/11/02 00:01:33 cardoe Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-tv/mythtv/mythtv-0.22_rc22679.ebuild,v 1.4 2009/11/02 08:45:39 mr_bones_ Exp $
 
 EAPI=2
 inherit flag-o-matic multilib eutils qt4 mythtv toolchain-funcs python
@@ -11,7 +11,7 @@ KEYWORDS="~amd64 ~ppc ~x86"
 
 IUSE_VIDEO_CARDS="video_cards_nvidia"
 IUSE="alsa altivec autostart debug directv dvb dvd \
-fftw ieee1394 jack lcd lirc mmx perl python \
+fftw ieee1394 jack lcd lirc mmx perl pulseaudio python \
 tiff vdpau xvmc ${IUSE_VIDEO_CARDS}"
 
 RDEPEND=">=media-libs/freetype-2.0
@@ -290,7 +290,6 @@ pkg_postinst() {
 	ewarn "i.e. It depends on libraries and components it finds at build time"
 	ewarn "We try to mitigate this with RDEPENDs but be prepared to run"
 	ewarn "revdep-rebuild as necessary."
-
 
 }
 
