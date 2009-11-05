@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/lvm2/lvm2-2.02.42.ebuild,v 1.6 2009/09/18 02:05:33 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/lvm2/lvm2-2.02.42.ebuild,v 1.7 2009/11/04 07:20:25 robbat2 Exp $
 
 EAPI=1
 inherit eutils flag-o-matic multilib
@@ -23,7 +23,7 @@ DEPEND=">=sys-fs/device-mapper-1.02.28
 		sys-libs/glibc"
 
 RDEPEND="${DEPEND}
-	|| ( =sys-apps/baselayout-1* >=sys-apps/openrc-0.4 )
+	!<sys-apps/openrc-0.4
 	!sys-fs/lvm-user
 	!sys-fs/clvm"
 
