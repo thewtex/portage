@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4961 2009/11/03 06:48:05 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4969 2009/11/05 05:27:56 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -656,7 +656,6 @@ dev-embedded/ponyprog:epiphany - Enable support for www-client/epiphany
 dev-embedded/sdcc:boehm-gc - Enable Hans Boehm's garbage collector (dev-libs/boehm-gc)
 dev-embedded/urjtag:ftdi - Enable support for USB FTDI chips (dev-embedded/libftdi)
 dev-games/cegui:devil - Enable image loading via DevIL
-dev-games/cegui:freeimage - Enable image loading via FreeImage
 dev-games/cegui:irrlicht - Enable the Irrlicht renderer
 dev-games/cegui:xerces-c - Enable the Xerces-C++ XML parser module
 dev-games/crystalspace:3ds - Enables support for .3DS files in CrystalSpace
@@ -709,6 +708,7 @@ dev-java/commons-logging:log4j - Add optional support for log4j
 dev-java/commons-logging:servletapi - Add optional support for servletapi
 dev-java/commons-modeler:commons-digester - Add support for the commons-digester based Mbeans Descriptor source
 dev-java/diablo-jdk:jce - Enable Java Cryptographic Extension Unlimited Strength Policy files
+dev-java/eclipse-ecj:ant - Support using ecj in Ant builds via dev-java/ant-eclipse-ecj
 dev-java/emma:launcher - Install /usr/bin/emma. Collides with sci-biology/emboss.
 dev-java/fop:hyphenation - Precompile hyphenation patterns from the dev-java/offo-hyphenation package and install them as fop-hyph.jar
 dev-java/fop:jai - Enable jai support
@@ -731,6 +731,7 @@ dev-java/jython:servletapi - Add optional support for servlet-api
 dev-java/log4j:javamail - Build the SMTPAppender
 dev-java/log4j:jms - Build the JMSAppender
 dev-java/log4j:jmx - Build org.apace.log4j.jmx
+dev-java/proguard:ant - Ant task for using ProGuard in build.xml scripts
 dev-java/proguard:j2me - Adds support for J2ME Wireless Toolkit
 dev-java/qtjambi:phonon - Enable bindings to QT Phonon
 dev-java/qtjambi:webkit - Enable bindings to QT Webkit
@@ -2392,6 +2393,7 @@ net-fs/samba-libs:addns - Enable AD DNS integration
 net-fs/samba-libs:ads - Enable Active Directory support
 net-fs/samba-libs:aio - Enable asynchronous IO support
 net-fs/samba-libs:cluster - Enable support for clustering
+net-fs/samba-libs:ldb - Enable the ldb tools
 net-fs/samba-libs:netapi - Enable building of netapi bits
 net-fs/samba-libs:samba4 - Enable experimental samba4 bits
 net-fs/samba-libs:smbclient - Enable smbclient tool
@@ -2695,8 +2697,10 @@ net-misc/connman:resolvconf - Use net-dns/openresolv for managing DNS informatio
 net-misc/connman:tools - Enable testing tools.
 net-misc/connman:udev - Enable udev support.
 net-misc/curl:ares - Enabled c-ares dns support
+net-misc/curl:gnutls - Use gnutls as the crypto engine
 net-misc/curl:libssh2 - Enabled SSH urls in curl using libssh2
 net-misc/curl:nss - Use NSS as the crypto engine
+net-misc/curl:openssl - Use openssl as the crypto engine
 net-misc/dhcpcd:compat - Enable commandline compability with dhcpcd-3.x
 net-misc/directvnc:mouse - Adds mouse support
 net-misc/dropbear:bsdpty - Add support for legacy BSD pty's rather than dynamic UNIX pty's -- do not use this flag unless you are absolutely sure you actually want it
@@ -3388,6 +3392,7 @@ sys-kernel/mips-sources:ip28 - Enables support for SGI Indigo2 Impact R10000 (IP
 sys-kernel/mips-sources:ip30 - Enables support for SGI Octane (IP30, 'Speedracer')
 sys-kernel/mips-sources:ip32r10k - Enables experimental support for IP32 R10K kernels (SGI O2, 'Moosehead')
 sys-kernel/sparc-sources:ultra1 - If you have a SUN Ultra 1 with a HME interface
+sys-kernel/zen-sources:stable - Clone stable git tree
 sys-libs/glibc:erandom - Enable erandom/frandom support in glibc for ssp
 sys-libs/glibc:glibc-compat20 - Enable the glibc-compat addon
 sys-libs/glibc:glibc-omitfp - Configure glibc with --enable-omitfp which lets the build system determine when it is safe to use -fomit-frame-pointer
@@ -3491,7 +3496,6 @@ www-plugins/adobe-flash:64bit - For amd64-multilib, installs the native 64-bit p
 www-plugins/gnash:agg - Rendering based on the Anti-Grain Geometry Rendering Engine library
 www-plugins/gnash:cygnal - Enable building of the cygnal server
 www-plugins/gnash:ssh - Enable using SSH for network authentication in libnet
-www-servers/apache:peruser_dc - Enable support for the dc branch of peruser. EXPERIMENTAL!
 www-servers/apache:sni - Enable TLS Server Name Indication (SNI) - EXPERIMENTAL!
 www-servers/apache:suexec - Install suexec with apache
 www-servers/cherokee:admin - Install web based cherokee conf tool
