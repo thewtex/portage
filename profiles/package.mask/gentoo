@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10717 2009/11/01 23:05:55 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10726 2009/11/03 18:43:53 caster Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,20 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Vlastimil Babka <caster@gentoo.org> (03 Nov 2009)
+# Obsolete, needs 1.4 JDK, nothing uses it.
+dev-java/jessie
+
+# Michael Sterrett <mr_bones_@gentoo.org> (02 Nov 2009)
+# Upstream seems dead; segfaults; unplayable on modern systems
+games-rpg/tux_aqfh
+
+# Víctor Ostorga <vostorga@gentoo.org> (02 Nov 2009)
+# If you use a kernel >= 2.6.29 it is needed >=linux-headers-2.6.29 
+# as well, otherwise net-firewall/ipsec-tools won't compile. 
+# See bug #264233 for reference
+=net-firewall/ipsec-tools-0.7.2
 
 # Gilles Dartiguelongue <eva@gentoo.org> (01 Nov 2009)
 # Broken on so many setups it is just insane.
@@ -612,10 +626,6 @@ dev-libs/skalibs
 >=media-gfx/hugin-2009.4.0_rc1
 >=media-libs/libpano13-2.9.15_beta3
 
-# Michael Sterrett <mr_bones_@gentoo.org> (01 Oct 2009)
-# Doesn't work with newer openal.  Use games-action/openastromenace instead.
-games-action/astromenace-bin
-
 # Marcus D. Hanwell <cryos@gentoo.org> (01 Oct 2009)
 # Release candidates for the new CMake release
 >=dev-util/cmake-2.8.0_rc1
@@ -627,21 +637,6 @@ games-action/astromenace-bin
 
 # Torsten Veller <tove@gentoo.org> (01 Oct 2009)
 # Old. Replaced. Or just unmaintained.
-# - replaced by dev-perl/Gtk2-Ex-PodViewer
-#   bug 281511 (01 Oct 2009)
-dev-perl/Gtk2-PodViewer
-# - AWW is dead!
-#   bug 281504 (01 Oct 2009)
-dev-perl/aww
-# - seems to be dead.
-#   bug 281509 (01 Oct 2009)
-dev-perl/perlsieve
-# - seems to be dead too.
-#   bug 281507 (01 Oct 2009)
-dev-perl/perlrapi
-# - replaced, dead, unneeded
-#   bug 281495 (01 Oct 2009)
-dev-perl/Gtk2-Html2
 # - added as dep for a package that never made it into the tree (#21549)
 #   nothing depends on it, broken, no releases for years
 #   bug #280497 (12 Oct 2009)
@@ -670,27 +665,10 @@ media-video/qc-usb-messenger
 # on amd64 with gcc-4.4. See bug #280925
 =sci-physics/root-5.24.00
 
-# Mounir Lamouri <volkmar@gentoo.org> (21 Sep 2009)
-# net-misc/asterisk-app_rtxfax fails with >=media-libs/spandsp-0.0.3, bug 180318
-# Masked for removal in 30 days.
-net-misc/asterisk-app_rtxfax
-
 # Jesus Rivero <neurogeek@gentoo.org> (20 Sep 2009)
 # Masked for removal in 30 days.
 # Not needed for Python versions higher then 2.4
 dev-python/optik
-
-# Mounir Lamouri <volkmar@gentoo.org> (20 Sep 2009)
-# media-libs/libsupertone fails with >=media-libs/spandsp-0.0.5, bug 273995
-# net-misc/asterisk-chan_unicall needs media-libs/libsupertone
-# net-libs/libmfcr2 needs libsupertone and only needed by asterisk-chan_unicall
-# net-libs/libunicall is only needed by libmfcr2 and asterisk-chan_unicall
-# net-libs/libunicall has also QA issues, bug 277783
-# Masked for removal in 30 days.
-net-misc/asterisk-chan_unicall
-media-libs/libsupertone
-net-libs/libmfcr2
-net-libs/libunicall
 
 # Rémi Cardona <remi@gentoo.org> (19 Sep 2009)
 # Outdated and useless X doc packages
@@ -851,10 +829,6 @@ sys-apps/einit-modules-xml
 #
 # Removal on 2009-10-10
 app-i18n/canuum
-
-# Federico Ferri <mescalinum@gentoo.org> (10 Aug 2009)
-# Unmaintained. Masked for removal, bug #249468. (2009-10-11)
-net-irc/quirc
 
 # Diego E. Pettenò <flameeyes@gentoo.org> (10 Aug 2009)
 #  on behalf of QA team
@@ -1183,13 +1157,6 @@ app-portage/udept
 # as well. As such, this is for the adventurous only.
 # Bug reports are welcome if they carry patches.
 >=net-misc/dhcp-4.0.0
-
-# Jeremy Olexa <darkside@gentoo.org> (28 Mar 2009)
-# Upstream is very unresponsive and we had to guess at which kernel patch was
-# needed. May not work and/or may be harmful. You have been warned.
-# Jeremy Olexa <darkside@gentoo.org> (4 Oct 2009)
-# Removed in 30 days. Dead project, needs kernel patches. bug 257207
-sys-apps/sreadahead
 
 # Alex Legler <a3li@gentoo.org> (20 Mar 2009)
 # Ruby 1.9.1 for preliminary testing of libraries depending on it, bug 203706.

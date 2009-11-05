@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-drivers/nvidia-drivers/nvidia-drivers-190.42-r2.ebuild,v 1.3 2009/11/01 07:58:10 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-drivers/nvidia-drivers/nvidia-drivers-190.42-r2.ebuild,v 1.5 2009/11/03 16:36:45 cardoe Exp $
 
 EAPI="2"
 
@@ -25,26 +25,25 @@ EMULTILIB_PKG="true"
 
 COMMON="<x11-base/xorg-server-1.7.99
 	kernel_linux? ( >=sys-libs/glibc-2.6.1 )
-	multilib? ( app-emulation/emul-linux-x86-xlibs )"
+	multilib? ( app-emulation/emul-linux-x86-xlibs )
+	>=app-admin/eselect-opengl-1.0.9"
 DEPEND="${COMMON}
-	kernel_linux? ( virtual/linux-sources )
-	app-admin/eselect-opengl"
+	kernel_linux? ( virtual/linux-sources )"
 RDEPEND="${COMMON}
 	kernel_linux? ( virtual/modutils )
-	!>=media-libs/mesa-7.6
 	acpi? ( sys-power/acpid )"
 PDEPEND="x11-libs/libvdpau
 	gtk? ( media-video/nvidia-settings )"
 
-QA_TEXTRELS_x86="usr/lib/libXvMCNVIDIA.so.${PV}
-	usr/lib/opengl/nvidia/lib/libnvidia-tls.so.${PV}
+QA_TEXTRELS_x86="usr/lib/opengl/nvidia/lib/libnvidia-tls.so.${PV}
 	usr/lib/opengl/nvidia/lib/libGL.so.${PV}
 	usr/lib/opengl/nvidia/lib/libGLcore.so.${PV}
 	usr/lib/opengl/nvidia/extensions/libglx.so.${PV}
 	usr/lib/xorg/modules/drivers/nvidia_drv.so
 	usr/lib/libcuda.so.${PV}
 	usr/lib/libnvidia-cfg.so.${PV}
-	usr/lib/libvdpau_nvidia.so.${PV}"
+	usr/lib/libvdpau_nvidia.so.${PV}
+	usr/lib/libXvMCNVIDIA.so.${PV}"
 
 QA_TEXTRELS_x86_fbsd="boot/modules/nvidia.ko
 	usr/lib/opengl/nvidia/lib/libGL.so.1
@@ -108,12 +107,11 @@ QA_DT_HASH_amd64="usr/lib32/libcuda.so.${PV}
 	usr/bin/nvidia-xconfig"
 
 QA_DT_HASH_x86="usr/lib/libcuda.so.${PV}
-	usr/lib/opengl/nvidia/lib/libnvidia-cfg.so.${PV}
+	usr/lib/libnvidia-cfg.so.${PV}
 	usr/lib/opengl/nvidia/lib/libGLcore.so.${PV}
 	usr/lib/opengl/nvidia/lib/libGL.so.${PV}
 	usr/lib/opengl/nvidia/lib/libnvidia-tls.so.${PV}
-	usr/lib/opengl/nvidia/extensions/libwfb.so
-	usr/lib/opengl/nvidia/extensions/libglx.so
+	usr/lib/opengl/nvidia/extensions/libglx.so.${PV}
 	usr/lib/xorg/modules/drivers/nvidia_drv.so
 	usr/lib/libXvMCNVIDIA.so.${PV}
 	usr/lib/libvdpau_nvidia.so.${PV}
