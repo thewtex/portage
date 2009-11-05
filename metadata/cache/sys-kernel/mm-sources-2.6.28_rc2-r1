@@ -1,5 +1,5 @@
 !build? ( sys-apps/sed >=sys-devel/binutils-2.11.90.0.31 )
-!build? ( >=sys-libs/ncurses-5.2 sys-devel/make ) virtual/dev-manager
+!build? ( >=sys-libs/ncurses-5.2 sys-devel/make )
 2.6.28_rc2-r1
 mirror://kernel/linux/kernel/v2.6/testing/patch-2.6.28-rc2.bz2 mirror://kernel/linux/kernel/v2.6/linux-2.6.27.tar.bz2 mirror://kernel/linux/kernel/people/akpm/patches/2.6/2.6.28-rc2/2.6.28-rc2-mm1/2.6.28-rc2-mm1.bz2
 binchecks strip
@@ -10,7 +10,7 @@ Andrew Morton's kernel, mostly fixes for 2.6 vanilla, some vm stuff too
 eutils kernel-2 multilib portability toolchain-funcs versionator
 symlink build
 
-
+!build? ( virtual/dev-manager )
 virtual/linux-sources virtual/alsa
 
 
