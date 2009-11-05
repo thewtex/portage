@@ -1,0 +1,37 @@
+# Daniel Robbins <drobbins@funtoo.org> (17 Oct 2009)
+# New OpenRC for testing
+>=sys-apps/openrc-0.5.1-r1
+
+# Daniel Robbins <drobbins@funtoo.org> (29 Sep 2009)
+# readline-6.0_p4 does not build in metro stage builds. It
+# cannot find its own headers and relies on a prior 
+# readline to be installed
+
+=sys-libs/readline-6.0_p4
+
+# See Gentoo bug 277382:
+
+>=sys-apps/busybox-1.14
+
+# Andrew Kirch <trelane@trelane.net> (10 June 2009)
+# Paludis does not support the profiles/package.mask hierarchy.
+# See Funtoo FAQ: http://www.funtoo.org/en/funtoo/faq/
+sys-apps/paludis
+
+# Pkgcore also does not support this at present
+<=sys-apps/pkgcore-0.4.8
+
+# Daniel Robbins <drobbins@funtoo.org> (18 Mar 2009)
+# samba-3.3.1 has been less than stable for me, so masking the 3.3.x series
+# for now, and adding 3.2.8 (recommended production version)
+>=net-fs/samba-3.3.0
+
+# Daniel Robbins <drobbins@funtoo.org> (12 Mar 2009)
+# If you want to use mysql-community, unmask it and mask dev-db/mysql.
+# Having both unmasked causes "emerge dev-db/mysql" to fail, which is
+# not optimal.
+dev-db/mysql-community
+
+# Caleb Cushing <xenoterracide@gmail.com> (27 Dec 2008)
+# latest ghc, breaks other packages, fixes (bug #252176)
+>=dev-lang/ghc-6.10
