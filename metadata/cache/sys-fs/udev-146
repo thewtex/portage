@@ -1,0 +1,22 @@
+selinux? ( sys-libs/libselinux ) extras? ( dev-util/gperf ) kernel_linux? ( virtual/linux-sources )
+selinux? ( sys-libs/libselinux ) !sys-apps/coldplug !<sys-fs/lvm2-2.02.45 !sys-fs/device-mapper >=sys-apps/baselayout-2.1.6
+0
+mirror://kernel/linux/utils/kernel/hotplug/udev-146.tar.bz2
+
+http://www.kernel.org/pub/linux/utils/kernel/hotplug/udev.html
+GPL-2
+Linux dynamic and persistent device naming support (aka userspace devfs)
+alpha amd64 arm hppa ia64 m68k mips ppc ppc64 s390 sh sparc x86
+eutils flag-o-matic linux-info multilib portability toolchain-funcs versionator
+selinux
+
+
+virtual/dev-manager
+1
+
+compile install postinst preinst setup unpack
+
+
+
+
+
