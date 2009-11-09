@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4971 2009/11/06 00:07:51 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4975 2009/11/08 20:27:51 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -217,8 +217,10 @@ app-editors/joe:xterm - Enable full xterm clipboard support
 app-editors/jove:unix98 - Use Unix 98 pty's instead of BSD pts's
 app-editors/leafpad:emacs - Enable Emacs key theme
 app-editors/nano:justify - Toggle the justify option
+app-editors/tea:aspell - Enable spell checking using aspell
 app-editors/tea:enchant - Enable spell checking using enchant
 app-editors/tea:hacking - Enable hacking support
+app-editors/tea:hunspell - Enable spellchecking using hunspell
 app-editors/vim:vim-pager - Install vimpager and vimmanpager links
 app-editors/vim:vim-with-x - Link console vim against X11 libraries to enable title and clipboard features in xterm
 app-editors/xemacs:athena - Chooses the MIT Athena widget set
@@ -1672,6 +1674,7 @@ media-libs/libmp4v2:utils - Install command-line utilities
 media-libs/libquicktime:schroedinger - Enable Dirac video support (an advanced royalty-free video compression format) via libschroedinger (high-speed implementation in C of the Dirac codec).
 media-libs/libsdl:audio - Control audio support (disable at your own risk)
 media-libs/libsdl:joystick - Control joystick support (disable at your own risk)
+media-libs/libsdl:ps3 - Build the PS3 video driver
 media-libs/libsdl:video - Control video support (disable at your own risk)
 media-libs/libvorbis:aotuv - Applies the aoTuV patches. Aoyumi's Tuned Vorbis is a third-party patchset that improves the vorbis encoding quality. A previous version of the aoTuV patchset has already been merged with the official libvorbis release. The current patchset especially improves encoding quality at low bitrate settings, and is very likely to be merged at some point in the future. It is recommended that all users enable this useflag. 
 media-libs/mediastreamer:ilbc - Use of iLBC (RFC3951) codec plugin
@@ -2466,10 +2469,7 @@ net-im/kadu:audacious - Enables media-sound/audacious media player support
 net-im/kadu:avatar - Display Gadu Avatars in Kadu
 net-im/kadu:config_wizard - Enables configuration wizard module
 net-im/kadu:dragonplayer - Enables kde-base/dragonplayer KDE4 media player support
-net-im/kadu:extramodules - Enables building of extra modules
-net-im/kadu:mail - Enables mail module
 net-im/kadu:phonon - Enable phonon audio plugin
-net-im/kadu:powerkadu - Installs extra powerkadu modules
 net-im/kadu:sms - Enables SMS sending plugin
 net-im/kadu:speech - Enables speech module
 net-im/kadu:vlc - Enables media-video/vlc media player support
@@ -3394,6 +3394,7 @@ sys-kernel/mips-sources:ip28 - Enables support for SGI Indigo2 Impact R10000 (IP
 sys-kernel/mips-sources:ip30 - Enables support for SGI Octane (IP30, 'Speedracer')
 sys-kernel/mips-sources:ip32r10k - Enables experimental support for IP32 R10K kernels (SGI O2, 'Moosehead')
 sys-kernel/sparc-sources:ultra1 - If you have a SUN Ultra 1 with a HME interface
+sys-kernel/zen-sources:drm-next - Enable the drm-next patch
 sys-kernel/zen-sources:stable - Clone stable git tree
 sys-libs/glibc:erandom - Enable erandom/frandom support in glibc for ssp
 sys-libs/glibc:glibc-compat20 - Enable the glibc-compat addon

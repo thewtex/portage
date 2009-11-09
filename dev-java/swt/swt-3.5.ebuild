@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/swt/swt-3.5.ebuild,v 1.4 2009/11/04 13:59:50 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/swt/swt-3.5.ebuild,v 1.6 2009/11/07 13:39:28 caster Exp $
 
 EAPI=2
 
@@ -52,13 +52,14 @@ COMMON=">=dev-libs/glib-2.6
 # Use a blocker to avoid file collisions when upgrading to the slotted version
 # We cannot use slotmove, java packages are expected to be in /usr/share/PN-SLOT
 # so this is the only way to prevent collisions
+# libXtst/xextproto is done like this due to the XTest.h move - bug #292244
 
 DEPEND=">=virtual/jdk-1.4
 		app-arch/unzip
 		x11-libs/libX11
 		x11-libs/libXrender
 		x11-libs/libXt
-		x11-proto/xextproto
+		|| ( >=x11-libs/libXtst-1.1.0 <x11-proto/xextproto-7.1 )
 		x11-proto/inputproto
 		dev-util/pkgconfig
 		${COMMON}"
@@ -77,7 +78,7 @@ src_unpack() {
 	rm -rf about_files/ || die
 }
 
-src_prepare() {
+java_prepare() {
 	# Replace the build.xml to allow compilation without Eclipse tasks
 	cp "${FILESDIR}/build.xml" "${S}/build.xml" || die "Unable to update build.xml"
 	mkdir "${S}/src" && mv "${S}/org" "${S}/src" || die "Unable to restructure SWT sources"

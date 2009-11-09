@@ -1,15 +1,18 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/setuptools/setuptools-0.6.8.ebuild,v 1.2 2009/11/02 05:59:23 arfrever Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/setuptools/setuptools-0.6.8.ebuild,v 1.4 2009/11/08 16:54:19 arfrever Exp $
 
 EAPI="2"
 SUPPORT_PYTHON_ABIS="1"
 
 inherit distutils eutils
 
+MY_PN="distribute"
+MY_P="${MY_PN}-${PV}"
+
 DESCRIPTION="Distribute (fork of Setuptools) is a collection of extensions to Distutils"
 HOMEPAGE="http://pypi.python.org/pypi/distribute"
-SRC_URI="http://pypi.python.org/packages/source/d/distribute/distribute-${PV}.tar.gz"
+SRC_URI="http://pypi.python.org/packages/source/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="PSF-2.2"
 SLOT="0"
@@ -28,10 +31,13 @@ src_prepare() {
 
 	epatch "${FILESDIR}/${PN}-0.6_rc7-noexe.patch"
 
+	epatch "${FILESDIR}/${MY_P}-C_locale_tests.patch"
+
 	# Remove tests that access the network (bugs #198312, #191117)
 	rm setuptools/tests/test_packageindex.py
 
-	sed -e 's:if copied and outf.endswith(".py"):& and outf not in ("build/src/distribute_setup.py", "build/src/distribute_setup_3k.py"):' -i setup.py || die "sed failed"
+	# https://bitbucket.org/tarek/distribute/issue/87/
+	sed -e 's:if copied and outf.endswith(".py"):& and outf != "build/src/distribute_setup.py":' -i setup.py || die "sed setup.py failed"
 }
 
 src_test() {
@@ -39,6 +45,10 @@ src_test() {
 		PYTHONPATH="build-${PYTHON_ABI}/lib" "$(PYTHON)" setup.py build -b "build-${PYTHON_ABI}" test
 	}
 	python_execute_function tests
+}
+
+src_install() {
+	DONT_PATCH_SETUPTOOLS="1" distutils_src_install
 }
 
 pkg_preinst() {
