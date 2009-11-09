@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/beaker/beaker-1.4.2.ebuild,v 1.3 2009/10/30 19:11:55 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/beaker/beaker-1.4.2.ebuild,v 1.5 2009/11/08 20:15:52 arfrever Exp $
 
 EAPI="2"
 SUPPORT_PYTHON_ABIS="1"
@@ -11,12 +11,12 @@ MY_PN="Beaker"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="A simple WSGI middleware to use the Myghty Container API"
-HOMEPAGE="http://beaker.groovie.org/"
+HOMEPAGE="http://beaker.groovie.org/ http://pypi.python.org/pypi/Beaker"
 SRC_URI="http://cheeseshop.python.org/packages/source/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86"
+KEYWORDS="amd64 ppc x86"
 IUSE=""
 #IUSE="test"
 
