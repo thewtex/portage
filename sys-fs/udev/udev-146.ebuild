@@ -7,16 +7,15 @@ EAPI="1"
 inherit eutils flag-o-matic multilib toolchain-funcs linux-info
 DESCRIPTION="Linux dynamic and persistent device naming support (aka userspace devfs)"
 HOMEPAGE="http://www.kernel.org/pub/linux/utils/kernel/hotplug/udev.html"
-SRC_URI="mirror://kernel/linux/utils/kernel/hotplug/${P}.tar.bz2"
 PATCHSET="${P}-gentoo-patchset-v1"
+SRC_URI="mirror://kernel/linux/utils/kernel/hotplug/${P}.tar.bz2 mirror://gentoo/${PATCHSET}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="alpha amd64 arm hppa ia64 m68k mips ppc ppc64 s390 sh sparc x86"
 IUSE="selinux"
 
-COMMON_DEPEND="selinux? ( sys-libs/libselinux )"
-DEPEND="${COMMON_DEPEND} extras? ( dev-util/gperf )"
+DEPEND="selinux? ( sys-libs/libselinux )"
 RDEPEND="${COMMON_DEPEND} !sys-apps/coldplug !<sys-fs/lvm2-2.02.45 !sys-fs/device-mapper >=sys-apps/baselayout-2.1.6"
 PROVIDE="virtual/dev-manager"
 
@@ -29,7 +28,11 @@ pkg_setup() {
 }
 
 sed_libexec_dir() {
-	sed -e "s#/lib/udev#${udev_libexec_dir}#" -i "$@"
+	local x
+	for x in "$@"
+	do
+		[ -e "$x" ] && sed -e "s#/lib/udev#${udev_libexec_dir}#" -i "$x"
+	done
 }
 
 src_unpack() {
@@ -37,9 +40,8 @@ src_unpack() {
 
 	cd "${S}"
 
-	#patches go here...
 	EPATCH_SOURCE="${WORKDIR}/${PATCHSET}" EPATCH_SUFFIX="patch" EPATCH_FORCE="yes" epatch
-	epatch "${FILESDIR}/udev-141-remove-devfs-names.diff"
+	epatch "${FILESDIR}/patches/udev-141-remove-devfs-names.diff"
 
 	# change rules back to group uucp instead of dialout for now
 	sed -e 's/GROUP="dialout"/GROUP="uucp"/' -i rules/{rules.d,packages,gentoo}/*.rules || die "failed to change group dialout to uucp"
@@ -62,6 +64,7 @@ src_compile() {
 		--with-rootlibdir=/$(get_libdir) \
 		--libexecdir="${udev_libexec_dir}" \
 		--enable-logging \
+		--disable-extras \
 		$(use_with selinux)
 
 	emake || die "compiling udev failed"
@@ -163,7 +166,6 @@ modfix() {
 }
 
 pkg_preinst() {
-
 	modfix
 
 	if [[ -d ${ROOT}/lib/udev-state ]]
@@ -199,7 +201,6 @@ add_init() {
 }
 
 pkg_postinst() {
-
 	# disable coldplug script
 	rm -f $ROOT/etc/runlevels/*/coldplug
 

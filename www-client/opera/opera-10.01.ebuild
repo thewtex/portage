@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/opera/opera-10.01.ebuild,v 1.4 2009/11/01 20:40:48 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/opera/opera-10.01.ebuild,v 1.7 2009/11/09 20:55:26 jer Exp $
 
 EAPI="2"
 
@@ -13,12 +13,12 @@ HOMEPAGE="http://www.opera.com/"
 
 SLOT="0"
 LICENSE="OPERA-10.00"
-KEYWORDS="~amd64 ppc x86 ~x86-fbsd"
+KEYWORDS="amd64 ppc x86 ~x86-fbsd"
 
 RESTRICT="mirror strip test"
 QA_DT_HASH="opt/${PN}/.*"
 
-IUSE="elibc_FreeBSD gnome ia32 qt3 +qt-static"
+IUSE="elibc_FreeBSD gnome ia32 qt3 qt-static"
 MY_LINGUAS="be bg cs da de el en-GB es-ES es-LA et fi fr fr-CA fy hi hr hu id it ja ka ko lt mk nb nl nn pl pt pt-BR ro ru sk sr sv ta te tr uk zh-CN zh-HK zh-TW"
 
 for MY_LINGUA in ${MY_LINGUAS}; do
@@ -211,10 +211,6 @@ pkg_postinst() {
 		elog "To improve shared memory usage please set:"
 		elog "$ sysctl kern.ipc.shm_allow_removed=1"
 	fi
-
-	elog
-	elog "The current Opera builds may still have issues with plugins, notably"
-	elog "www-plugins/adobe-flash. See also https://bugs.gentoo.org/198162"
 }
 
 pkg_postrm() {

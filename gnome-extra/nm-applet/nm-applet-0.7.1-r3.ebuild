@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-extra/nm-applet/nm-applet-0.7.1-r3.ebuild,v 1.5 2009/10/24 12:13:02 nixnut Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/nm-applet/nm-applet-0.7.1-r3.ebuild,v 1.6 2009/11/05 14:33:36 dagger Exp $
 
 EAPI=2
 inherit gnome2 eutils versionator autotools
@@ -34,7 +34,7 @@ RDEPEND=">=sys-apps/dbus-1.2
 	>=gnome-base/gnome-keyring-2.20
 	|| ( >=gnome-base/gnome-panel-2 xfce-base/xfce4-panel x11-misc/trayer )
 	>=gnome-base/gconf-2.20
-	>=gnome-extra/policykit-gnome-0.8"
+	>=gnome-extra/policykit-gnome-0.9.2"
 DEPEND="${RDEPEND}
 	dev-util/pkgconfig
 	>=dev-util/intltool-0.35"

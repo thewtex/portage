@@ -1,6 +1,34 @@
 # ChangeLog for kde-base/kdelibs
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/kdelibs/ChangeLog,v 1.634 2009/11/02 20:57:50 wired Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/kdelibs/ChangeLog,v 1.641 2009/11/09 10:40:16 abcd Exp $
+
+  09 Nov 2009; Jonathan Callen <abcd@gentoo.org>
+  -files/kdelibs-4.3.2-fix-deadlock-in-KLocale.patch,
+  -files/kdelibs-4.3.2-fix-plasma-crash.patch,
+  -files/dist/09_disable_debug_messages_if_not_explicitly_enabled.patch,
+  -files/4.2.4-CVE-2009-1687.patch,
+  -files/4.2.4-fixPopupForPlasmaboard.patch,
+  -files/kdelibs-4.2-fixx11h.h.patch, -files/4.2.4-CVE-2009-1690.patch,
+  -files/4.2.4-CVE-2009-1698.patch, -files/4.2.4-CVE-2009-1725.patch:
+  Drop unneeded patches
+
+  09 Nov 2009; Jonathan Callen <abcd@gentoo.org>
+  -files/kdelibs-3.5.8-kinit-CVE-2008-1671.patch, -kdelibs-3.5.9-r4.ebuild,
+  -files/kdelibs-3.5.9-bug_203433_khtml.patch,
+  -files/kdelibs-3.5.9-bug_219970_khtml.patch,
+  -files/kdelibs-3.5.9-cursor.patch:
+  Drop KDE 3.5.9
+
+  08 Nov 2009; Alexey Shvetsov <alexxy@gentoo.org> -kdelibs-4.3.2-r3.ebuild:
+  Drop KDE 4.3.2
+
+  08 Nov 2009; Alexey Shvetsov <alexxy@gentoo.org> -kdelibs-4.2.4-r4.ebuild:
+  Drop KDE 4.2.4
+
+  06 Nov 2009; Samuli Suominen <ssuominen@gentoo.org> kdelibs-4.3.3.ebuild,
+  +files/kdelibs-4.3.3-glibc-2.11.patch:
+  Fix building with GLIBC 2.11+ wrt #292072, thanks to Manfred Knick for
+  reporting.
 
 *kdelibs-4.3.3 (02 Nov 2009)
 

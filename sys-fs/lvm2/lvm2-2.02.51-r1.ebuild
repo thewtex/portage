@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/lvm2/lvm2-2.02.51-r1.ebuild,v 1.4 2009/10/21 08:32:00 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/lvm2/lvm2-2.02.51-r1.ebuild,v 1.6 2009/11/09 12:05:19 fauli Exp $
 
 EAPI=2
 inherit eutils multilib toolchain-funcs autotools
@@ -12,7 +12,7 @@ SRC_URI="ftp://sources.redhat.com/pub/lvm2/${PN/lvm/LVM}.${PV}.tgz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha ~amd64 ~arm hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="alpha ~amd64 ~arm hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc x86"
 
 IUSE="readline +static clvm cman +lvm1 selinux"
 
@@ -21,7 +21,7 @@ DEPEND="!!sys-fs/device-mapper
 		cman? ( =sys-cluster/cman-2* ) )"
 
 RDEPEND="${DEPEND}
-	|| ( =sys-apps/baselayout-1* >=sys-apps/openrc-0.4 )
+	!<sys-apps/openrc-0.4
 	!!sys-fs/lvm-user
 	!!sys-fs/clvm
 	>=sys-apps/util-linux-2.16"

@@ -1,12 +1,13 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-action/xshipwars/xshipwars-2.5.5.ebuild,v 1.8 2008/11/30 08:01:23 tupone Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-action/xshipwars/xshipwars-2.5.5.ebuild,v 1.10 2009/11/06 20:43:51 mr_bones_ Exp $
 
-inherit toolchain-funcs eutils games
+EAPI=2
+inherit eutils games
 
 MY_P=xsw-${PV}
 DESCRIPTION="massively multi-player, ultra graphical, space-oriented gaming system designed for network play"
-HOMEPAGE="http://wolfpack.twu.net/ShipWars/XShipWars/"
+HOMEPAGE="http://wolfsinger.com/~wolfpack/XShipWars/"
 SRC_URI="http://wolfpack.twu.net/users/wolfpack/${MY_P}.tar.bz2
 	http://wolfpack.twu.net/users/wolfpack/xsw-data-${PV}.tar.bz2
 	http://wolfpack.twu.net/users/wolfpack/stimages-1.11.1.tar.bz2
@@ -16,22 +17,20 @@ SRC_URI="http://wolfpack.twu.net/users/wolfpack/${MY_P}.tar.bz2
 LICENSE="GPL-2 xshipwars"
 SLOT="0"
 KEYWORDS="~amd64 ppc x86"
-IUSE="joystick yiff esd debug"
+IUSE="joystick yiff debug"
 
 RDEPEND="x11-libs/libXpm
 	joystick? ( media-libs/libjsw )
-	yiff? ( media-libs/yiff )
-	esd? ( media-sound/esound )"
+	yiff? ( media-libs/yiff )"
 DEPEND="${RDEPEND}
 	x11-proto/xextproto"
 
 S=${WORKDIR}/${MY_P}
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-	epatch "${FILESDIR}"/${P}-build.patch
-	epatch "${WORKDIR}"/${P}-64bit.patch
+src_prepare() {
+	epatch \
+		"${FILESDIR}"/${P}-build.patch \
+		"${WORKDIR}"/${P}-64bit.patch
 	sed -i \
 		-e "/^BINDIR/s:=.*:=${GAMES_BINDIR}:" \
 		-e "/^DATADIR/s:=.*:=${GAMES_DATADIR}:" \
@@ -41,18 +40,22 @@ src_unpack() {
 		client/xsw.h || die "sed on xsw.h failed"
 }
 
+src_configure() {
+	:
+}
+
 src_compile() {
 	local myconf=" \
 		--disable-arch-i486 \
 		--disable-arch-i586 \
 		--disable-arch-i686 \
 		--disable-arch-pentiumpro \
+		--disable-ESounD \
 		$(use_enable joystick libjsw) \
 		$(use_enable debug) \
 		--enable-X11 \
 		--enable-libXpm \
 		$(use_enable yiff Y2) \
-		$(use_enable esd ESounD) \
 	"
 	# xsw uses --{en,dis}able=FEATURE syntax
 	myconf=${myconf//able-/able=}

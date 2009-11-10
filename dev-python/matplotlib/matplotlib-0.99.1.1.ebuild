@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/matplotlib/matplotlib-0.99.1.1.ebuild,v 1.4 2009/10/10 17:49:39 grobian Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/matplotlib/matplotlib-0.99.1.1.ebuild,v 1.7 2009/11/08 20:25:04 arfrever Exp $
 
 WX_GTK_VER=2.8
 EAPI=2
@@ -9,12 +9,12 @@ inherit distutils wxwidgets
 PDOC="users_guide_${PV}"
 
 DESCRIPTION="Pure python plotting library with matlab like syntax"
-HOMEPAGE="http://matplotlib.sourceforge.net/"
+HOMEPAGE="http://matplotlib.sourceforge.net/ http://pypi.python.org/pypi/matplotlib"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 IUSE="cairo doc excel examples fltk gtk latex qt3 qt4 traits tk wxwidgets"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86 ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="amd64 ppc x86 ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 LICENSE="PYTHON BSD"
 
 CDEPEND=">=dev-python/numpy-1.1
@@ -73,8 +73,6 @@ use_setup() {
 }
 
 src_prepare() {
-	# patch from mandriva
-	#epatch "${FILESDIR}"/${PN}-0.98.5.2-literal.patch
 	# avoid to launch xv while building examples docs
 	epatch "${FILESDIR}"/${PN}-0.98.5.2-no-xv.patch
 

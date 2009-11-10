@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-tv/xbmc/xbmc-9999.ebuild,v 1.36 2009/10/17 22:44:37 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-tv/xbmc/xbmc-9999.ebuild,v 1.38 2009/11/08 14:34:55 vapier Exp $
 
 # XXX: be nice to split out packages that come bundled and use the
 #      system libraries ...
@@ -26,7 +26,7 @@ HOMEPAGE="http://xbmc.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="alsa debug joystick opengl profile pulseaudio vdpau"
+IUSE="alsa altivec debug joystick opengl profile pulseaudio sse sse2 vdpau"
 
 RDEPEND="opengl? ( virtual/opengl )
 	app-arch/bzip2
@@ -49,6 +49,7 @@ RDEPEND="opengl? ( virtual/opengl )
 	media-libs/freetype
 	media-libs/glew
 	media-libs/jasper
+	media-libs/jbigkit
 	>=media-libs/libass-0.9.7
 	media-libs/libdca
 	media-libs/libmad
@@ -62,6 +63,7 @@ RDEPEND="opengl? ( virtual/opengl )
 	media-libs/sdl-image[gif,jpeg,png]
 	media-libs/sdl-mixer
 	media-libs/sdl-sound
+	media-libs/tiff
 	media-sound/wavpack
 	media-video/ffmpeg
 	net-misc/curl
@@ -97,6 +99,15 @@ src_unpack() {
 }
 
 src_prepare() {
+	local squish #290564
+	use altivec && squish="-DSQUISH_USE_ALTIVEC=1 -maltivec"
+	use sse && squish="-DSQUISH_USE_SSE=1 -msse"
+	use sse2 && squish="-DSQUISH_USE_SSE=2 -msse2"
+	sed -i \
+		-e '/^CXXFLAGS/{s:-D[^=]*=.::;s:-m[[:alnum:]]*::}' \
+		-e "1iCXXFLAGS += ${squish}" \
+		xbmc/lib/libsquish/Makefile.in || die
+
 	# Tweak autotool timestamps to avoid regeneration
 	find . -type f -print0 | xargs -0 touch -r configure
 
