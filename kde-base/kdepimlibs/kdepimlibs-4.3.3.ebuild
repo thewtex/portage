@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/kdepimlibs/kdepimlibs-4.3.3.ebuild,v 1.1 2009/11/02 21:01:34 wired Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/kdepimlibs/kdepimlibs-4.3.3.ebuild,v 1.3 2009/11/09 15:22:00 ssuominen Exp $
 
 EAPI="2"
 

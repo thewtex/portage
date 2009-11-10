@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/awesome/awesome-3.2.1-r3.ebuild,v 1.6 2009/09/07 17:14:58 matsuu Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/awesome/awesome-3.2.1-r3.ebuild,v 1.7 2009/11/09 23:12:02 matsuu Exp $
 
 EAPI="2"
 inherit cmake-utils eutils
@@ -75,7 +75,7 @@ src_compile() {
 	if use doc ; then
 		myargs="${myargs} doc"
 	fi
-	cmake-utils_src_compile ${myargs}
+	cmake-utils_src_make ${myargs}
 }
 
 src_install() {

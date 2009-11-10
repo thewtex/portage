@@ -1,6 +1,21 @@
 # ChangeLog for sys-libs/glibc
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/glibc/ChangeLog,v 1.655 2009/11/08 17:26:26 volkmar Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/glibc/ChangeLog,v 1.658 2009/11/10 02:04:41 vapier Exp $
+
+  10 Nov 2009; Mike Frysinger <vapier@gentoo.org> glibc-2.10.1.ebuild,
+  glibc-2.11.ebuild:
+  Fix building on x86 with older linux headers missing __NR_fallocate
+  #274269 by Mikael Magnusson.
+
+  10 Nov 2009; Mike Frysinger <vapier@gentoo.org> glibc-2.10.1.ebuild:
+  Add sparc lovin #289615.
+
+  09 Nov 2009; Mike Frysinger <vapier@gentoo.org> glibc-2.11.ebuild,
+  +files/2.11/glibc-2.11-hardened-pie.patch:
+  Update hardened-pie patch by Magnus Granberg #292139.
+
+  09 Nov 2009; Mike Frysinger <vapier@gentoo.org> glibc-2.11.ebuild:
+  Pull in newer gcc for multilib on amd64 #292174.
 
   08 Nov 2009; Mounir Lamouri <volkmar@gentoo.org> glibc-2.10.1.ebuild:
   Keywording for ppc, bug 291287
