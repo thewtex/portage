@@ -1,0 +1,538 @@
+diff --git a/funtoo/README b/funtoo/README
+new file mode 100644
+index 0000000..1f6b379
+--- /dev/null
++++ b/funtoo/README
+@@ -0,0 +1,5 @@
++Funtoo also has a very modified util/grub_mkconfig.in and a new
++util/grub.d/10_linux with a lot more functionality, written in python.
++
++Funtoo uses /etc/conf.d/grub for grub defaults, rather than /etc/default/grub.
++
+diff --git a/funtoo/grub-update b/funtoo/grub-update
+new file mode 100755
+index 0000000..4b6650f
+--- /dev/null
++++ b/funtoo/grub-update
+@@ -0,0 +1,122 @@
++#!/bin/sh
++
++quietopt=false
++i_mounted_it=false
++version=1.0
++boot=/boot
++
++BLUE="[34;01m"
++CYAN="[36;01m"
++CYANN="[36m"
++GREEN="[32;01m"
++RED="[31;01m"
++PURP="[35;01m"
++OFF="[0m"
++
++qprint() {
++    $quietopt || echo "$*" >&2
++}
++
++mesg() {
++    qprint " ${GREEN}*${OFF} $*"
++}
++
++error() {
++    echo " ${RED}* Error${OFF}: $*" >&2
++    exit 1
++}
++
++warn() {
++    echo " ${RED}* Warning${OFF}: $*" >&2
++}
++
++die() {
++    [ -n "$1" ] && error "$*"
++    qprint
++    exit 1
++}
++
++versinfo() {
++    qprint
++    qprint " Copyright ${CYANN}2009-2010${OFF} Funtoo Technologies, LLC."
++    qprint
++    qprint " grub-update is free software: you can redistribute it and/or modify"
++    qprint " it under the terms of the ${CYANN}GNU General Public License version 2${OFF} as"
++    qprint " published by the Free Software Foundation."
++    qprint
++}
++
++
++has_fstab_entry() {
++	[ -n "$(cat /etc/fstab | grep "^.*[[:space:]]$1[[:space:]]")" ]
++}
++
++is_mounted() {
++	[ -n "$(cat /proc/mounts | grep "^.*[[:space:]]$1[[:space:]]")" ]
++}
++
++get_default_boot() {
++	local def="`cat $boot/grub/grub.cfg | grep "^set default=" | cut -f2 -d=`"
++	if [ "$def" = "" ]
++	then
++		echo "-1"
++	else
++		echo $def
++	fi
++}
++
++list_menuentries() {
++	local defboot=`get_default_boot`
++	local count=0
++	local line
++	while read line
++	do
++
++		line=$( echo "$line" | sed -e 's/menuentry "\(.*\)"$/\1/' )
++		if [ "$defboot" -eq "$count" ]
++		then
++			mesg ${CYANN}$line ${CYAN}[DEFAULT]${OFF}
++		else
++			mesg $line
++		fi
++		count=$(( $count + 1 ))
++	done
++	if [ $count -eq 0 ] 
++	then
++		warn "No kernels found -- system not ready to boot."
++		qprint "            Please specify a valid ${CYANN}GRUB_SEARCH${OFF} value in ${CYANN}/etc/default/grub${OFF}"
++		qprint "            and ensure that you have a valid kernel in ${CYANN}${boot}${OFF}."
++	fi
++}
++
++qprint #initial newline
++mesg "${PURP}grub-update ${OFF}${CYANN}${version}${OFF} ~ ${GREEN}http://www.funtoo.org${OFF}"
++[ "$1" = "-v" -o "$1" = "--version" ] && versinfo && exit 0
++
++if has_fstab_entry $boot 
++then
++	if ! is_mounted $boot 
++	then
++		i_mounted_it=true
++		mesg "Mounting ${CYANN}${boot}${OFF}..."
++		mount "$boot" || die "Couldn't mount $boot"
++	else
++		mesg "${CYANN}${boot}${OFF} already mounted."
++	fi
++else
++	mesg "No ${CYANN}/etc/fstab${OFF} entry for ${CYANN}${boot}${OFF}; not mounting."
++fi
++
++/sbin/grub-mkconfig -o ${boot}/grub/grub.cfg || die "grub-mkconfig failed."
++
++qprint
++cat "$boot"/grub/grub.cfg | grep menuentry | sed -e "s/{//" | list_menuentries
++qprint
++
++[ $? -ne 0 ] && exit 1
++
++if $i_mounted_it
++then
++	mesg "Unmounting ${CYANN}${boot}${OFF}..."
++	umount $boot || warn "Couldn't unmount $boot"
++fi
+diff --git a/funtoo/grub.defaults b/funtoo/grub.defaults
+new file mode 100644
+index 0000000..e184e1b
+--- /dev/null
++++ b/funtoo/grub.defaults
+@@ -0,0 +1,13 @@
++GRUB_TIMEOUT=10
++GRUB_FEATURES="uuid altboot osprobe"
++GRUB_DEFAULT="/boot/bzImage"
++GRUB_KERNEL_PARAMS=""
++
++GRUB_LABEL="[OS] - [KF] [ALT]"
++GRUB_LABEL_OS="Funtoo Linux"
++
++GRUB_SCAN_DIR="/boot"
++GRUB_SCAN_KERNELS="bzImage[-v] kernel[-v] vmlinux[-v]"
++GRUB_SCAN_INITRD="initramfs[-v]"
++
++GRUB_ALTBOOT="init=/bin/bash"
+diff --git a/util/grub-mkconfig.in b/util/grub-mkconfig.in
+old mode 100644
+new mode 100755
+index a8c2675..c2a69b3
+--- a/util/grub-mkconfig.in
++++ b/util/grub-mkconfig.in
+@@ -16,17 +16,17 @@
+ # You should have received a copy of the GNU General Public License
+ # along with GRUB.  If not, see <http://www.gnu.org/licenses/>.
+ 
+-transform="@program_transform_name@"
++transform="s,x,x,"
+ 
+-prefix=@prefix@
+-exec_prefix=@exec_prefix@
+-sbindir=@sbindir@
+-libdir=@libdir@
+-sysconfdir=@sysconfdir@
+-package_version=@PACKAGE_VERSION@
+-datarootdir=@datarootdir@
+-datadir=@datadir@
+-pkgdatadir=${datadir}/`echo @PACKAGE_TARNAME@ | sed "${transform}"`
++prefix=/usr
++exec_prefix=${prefix}
++sbindir=/sbin
++libdir=/lib64
++sysconfdir=/etc
++package_version=1.97
++datarootdir=${prefix}/share
++datadir=/usr/share
++pkgdatadir=${datadir}/`echo grub | sed "${transform}"`
+ grub_prefix=`echo /boot/grub | sed ${transform}`
+ grub_cfg=""
+ grub_mkconfig_dir=${sysconfdir}/grub.d
+@@ -130,8 +130,8 @@ GRUB_DEVICE_BOOT_UUID="`${grub_probe} --device ${GRUB_DEVICE_BOOT} --target=fs_u
+ # choosing Hurd filesystem module.
+ GRUB_FS="`${grub_probe} --target=fs / 2> /dev/null || echo unknown`"
+ 
+-if test -f ${sysconfdir}/default/grub ; then
+-  . ${sysconfdir}/default/grub
++if test -f ${sysconfdir}/conf.d/grub ; then
++  . ${sysconfdir}/conf.d/grub
+ fi
+ 
+ # XXX: should this be deprecated at some point?
+@@ -210,21 +210,26 @@ export GRUB_DEVICE \
+   GRUB_PRELOAD_MODULES \
+   GRUB_VIDEO_BACKEND
+ 
++# These are set in the config file - Funtoo specific handling
++export GRUB_SCAN_DIR \
++  GRUB_SCAN_KERNELS \
++  GRUB_SCAN_INITRD \
++  GRUB_ALTBOOT \
++  GRUB_LABEL \
++  GRUB_LABEL_ALT \
++  GRUB_LABEL_OS \
++  GRUB_KERNEL_PARAMS \
++  GRUB_FEATURES \
++  GRUB_DEFAULT
++
+ # These are optional, user-defined variables.
+-export GRUB_DEFAULT \
+-  GRUB_HIDDEN_TIMEOUT \
++export GRUB_HIDDEN_TIMEOUT \
+   GRUB_HIDDEN_TIMEOUT_QUIET \
+   GRUB_TIMEOUT \
+-  GRUB_DISTRIBUTOR \
+-  GRUB_CMDLINE_LINUX \
+-  GRUB_CMDLINE_LINUX_DEFAULT \
+   GRUB_TERMINAL_INPUT \
+   GRUB_TERMINAL_OUTPUT \
+   GRUB_SERIAL_COMMAND \
+-  GRUB_DISABLE_LINUX_UUID \
+-  GRUB_DISABLE_LINUX_RECOVERY \
+-  GRUB_GFXMODE \
+-  GRUB_DISABLE_OS_PROBER
++  GRUB_GFXMODE
+ 
+ if test "x${grub_cfg}" != "x"; then
+   rm -f ${grub_cfg}.new
+@@ -235,14 +240,14 @@ if test "x${grub_cfg}" != "x"; then
+   chmod 400 ${grub_cfg}.new || grub_warn "Could not make ${grub_cfg}.new readable by only root.\
+   This means that if the generated config contains a password it is readable by everyone"
+ fi
+-echo "Generating grub.cfg ..." >&2
++#echo "Generating grub.cfg ..." >&2
+ 
+ cat << EOF
+ #
+ # DO NOT EDIT THIS FILE
+ #
+ # It is automatically generated by $0 using templates
+-# from ${grub_mkconfig_dir} and settings from ${sysconfdir}/default/grub
++# from ${grub_mkconfig_dir} and settings from ${sysconfdir}/conf.d/grub
+ #
+ EOF
+ 
+@@ -265,5 +270,3 @@ if test "x${grub_cfg}" != "x" ; then
+   # none of the children aborted with error, install the new grub.cfg
+   mv -f ${grub_cfg}.new ${grub_cfg}
+ fi
+-
+-echo "done" >&2
+diff --git a/util/grub.d/00_header.in b/util/grub.d/00_header.in
+index 9f421dc..0925ccc 100644
+--- a/util/grub.d/00_header.in
++++ b/util/grub.d/00_header.in
+@@ -31,14 +31,9 @@ for i in ${GRUB_PRELOAD_MODULES} ; do
+   echo "insmod $i"
+ done
+ 
+-if [ "x${GRUB_DEFAULT}" = "x" ] ; then GRUB_DEFAULT=0 ; fi
+ if [ "x${GRUB_TIMEOUT}" = "x" ] ; then GRUB_TIMEOUT=5 ; fi
+ if [ "x${GRUB_GFXMODE}" = "x" ] ; then GRUB_GFXMODE=640x480 ; fi
+ 
+-cat << EOF
+-set default=${GRUB_DEFAULT}
+-EOF
+-
+ case ${GRUB_TERMINAL_INPUT}:${GRUB_TERMINAL_OUTPUT} in
+   serial:* | *:serial)
+     if ! test -e ${grub_prefix}/serial.mod ; then
+diff --git a/util/grub.d/10_linux.in b/util/grub.d/10_linux.in
+index 1473a42..ca43798 100644
+--- a/util/grub.d/10_linux.in
++++ b/util/grub.d/10_linux.in
+@@ -1,102 +1,127 @@
+-#! /bin/sh -e
+-
+-# grub-mkconfig helper script.
+-# Copyright (C) 2006,2007,2008,2009  Free Software Foundation, Inc.
+-#
+-# GRUB is free software: you can redistribute it and/or modify
+-# it under the terms of the GNU General Public License as published by
+-# the Free Software Foundation, either version 3 of the License, or
+-# (at your option) any later version.
+-#
+-# GRUB is distributed in the hope that it will be useful,
+-# but WITHOUT ANY WARRANTY; without even the implied warranty of
+-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-# GNU General Public License for more details.
+-#
+-# You should have received a copy of the GNU General Public License
+-# along with GRUB.  If not, see <http://www.gnu.org/licenses/>.
+-
+-prefix=@prefix@
+-exec_prefix=@exec_prefix@
+-libdir=@libdir@
+-. ${libdir}/grub/grub-mkconfig_lib
+-
+-if [ "x${GRUB_DISTRIBUTOR}" = "x" ] ; then
+-  OS=GNU/Linux
+-else
+-  OS="${GRUB_DISTRIBUTOR} GNU/Linux"
+-fi
+-
+-# loop-AES arranges things so that /dev/loop/X can be our root device, but
+-# the initrds that Linux uses don't like that.
+-case ${GRUB_DEVICE} in
+-  /dev/loop/*|/dev/loop[0-9])
+-    GRUB_DEVICE=`losetup ${GRUB_DEVICE} | sed -e "s/^[^(]*(\([^)]\+\)).*/\1/"`
+-  ;;
+-esac
+-
+-if [ "x${GRUB_DEVICE_UUID}" = "x" ] || [ "x${GRUB_DISABLE_LINUX_UUID}" = "xtrue" ] \
+-    || ! test -e "/dev/disk/by-uuid/${GRUB_DEVICE_UUID}" ; then
+-  LINUX_ROOT_DEVICE=${GRUB_DEVICE}
+-else
+-  LINUX_ROOT_DEVICE=UUID=${GRUB_DEVICE_UUID}
+-fi
+-
+-linux_entry ()
+-{
+-  cat << EOF
+-menuentry "$1" {
+-EOF
+-  prepare_grub_to_access_device ${GRUB_DEVICE_BOOT} | sed -e "s/^/\t/"
+-  cat << EOF
+-	linux	${rel_dirname}/${basename} root=${linux_root_device_thisversion} ro $2
+-EOF
+-  if test -n "${initrd}" ; then
+-    cat << EOF
+-	initrd	${rel_dirname}/${initrd}
+-EOF
+-  fi
+-  cat << EOF
+-}
+-EOF
+-}
+-
+-list=`for i in /boot/vmlinu[xz]-* /vmlinu[xz]-* ; do
+-        if grub_file_is_not_garbage "$i" ; then echo -n "$i " ; fi
+-      done`
+-
+-while [ "x$list" != "x" ] ; do
+-  linux=`version_find_latest $list`
+-  echo "Found linux image: $linux" >&2
+-  basename=`basename $linux`
+-  dirname=`dirname $linux`
+-  rel_dirname=`make_system_path_relative_to_its_root $dirname`
+-  version=`echo $basename | sed -e "s,^[^0-9]*-,,g"`
+-  alt_version=`echo $version | sed -e "s,\.old$,,g"`
+-  linux_root_device_thisversion="${LINUX_ROOT_DEVICE}"
+-
+-  initrd=
+-  for i in "initrd.img-${version}" "initrd-${version}.img" \
+-	   "initrd-${version}" "initrd.img-${alt_version}" \
+-	   "initrd-${alt_version}.img" "initrd-${alt_version}"; do
+-    if test -e "${dirname}/${i}" ; then
+-      initrd="$i"
+-      break
+-    fi
+-  done
+-  if test -n "${initrd}" ; then
+-    echo "Found initrd image: ${dirname}/${initrd}" >&2
+-  else
+-    # "UUID=" magic is parsed by initrds.  Since there's no initrd, it can't work here.
+-    linux_root_device_thisversion=${GRUB_DEVICE}
+-  fi
+-
+-  linux_entry "${OS}, with Linux ${version}" \
+-      "${GRUB_CMDLINE_LINUX} ${GRUB_CMDLINE_LINUX_DEFAULT}"
+-  if [ "x${GRUB_DISABLE_LINUX_RECOVERY}" != "xtrue" ]; then
+-    linux_entry "${OS}, with Linux ${version} (recovery mode)" \
+-	"single ${GRUB_CMDLINE_LINUX}"
+-  fi
+-
+-  list=`echo $list | tr ' ' '\n' | grep -vx $linux | tr '\n' ' '`
+-done
++#!/usr/bin/python
++
++import os, sys, glob, commands
++
++def env(name):
++	if os.environ.has_key(name):
++		return os.environ[name]
++	else:
++		return ""
++
++def guppy(argstring):
++	out=commands.getstatusoutput("grub-probe "+argstring)
++	if out[0] != 0:
++		print "error: guppy fail! fail bad!"
++		print "grub-probe "+argstring
++		sys.exit(1)
++	else:
++		return out[1]
++
++def get_modules(dev):
++	mods=[]
++	for targ in [ "abstraction", "fs" ]:
++		for mod in guppy(" --device "+dev+" --target="+targ).split():
++			mods.append(mod)
++	return mods
++
++def get_rootfstype():
++	fn=open("/proc/mounts","r")
++	for line in fn.readlines():
++		split=line.split(" ")
++		if split[1] == "/":
++			return split[2]
++	return ""
++
++def get_initrd_name(scandir,kext=""):
++	return os.path.normpath(scandir+"/"+os.environ["GRUB_SCAN_INITRD"].replace("[-v]",kext))
++
++def get_rootdev():
++	if \
++		( not os.environ.has_key("GRUB_DEVICE_UUID") ) or \
++		( "uuid" not in env("GRUB_FEATURES").split() ) or \
++		not os.path.exists("/dev/disk/by-uuid/"+env("GRUB_DEVICE_UUID")):
++		return env("GRUB_DEVICE")
++	else:
++		return "UUID="+env("GRUB_DEVICE_UUID")
++
++found_kernels=[]
++
++for scandir in os.environ["GRUB_SCAN_DIR"].split(" "):
++	for scan_kernel in os.environ["GRUB_SCAN_KERNELS"].split(" "):
++		
++		# find base kernel name, ie. /boot/bzImage
++
++		base_kname=os.path.normpath(scandir+"/"+scan_kernel.replace("[-v]",""))
++		if os.path.exists(base_kname):
++			# append name of kernel and name of initrd (we don't know if initrd exists yet) and ext
++			found_kernels.append([base_kname,get_initrd_name(scandir), ""])
++	
++		# find matching kernels, ie. /boot/bzImage-foo
++
++		scan_kname=os.path.normpath(scandir+"/"+scan_kernel.replace("[-v]","-*"))
++		
++		# we are also going to use the -foo part to look for a matching initrd
++
++		scan_preflen=len(scan_kname)-2
++
++		for found_kname in glob.glob(scan_kname):
++			kext=found_kname[scan_preflen:]
++			# append name of kernel and name of initrd (we don't know if initrd exists yet) and extension name (version) of kernel
++			found_kernels.append([found_kname,get_initrd_name(scandir,kext),kext[1:]])
++
++mods=get_modules(env("GRUB_DEVICE_BOOT"))
++rdev=get_rootdev()
++rfst=get_rootfstype()
++def display_string(kernel,alt=False):
++	template=env("GRUB_LABEL")
++	altlabel=env("GRUB_LABEL_ALT")
++	if altlabel=="":
++		altlabel="Alternate Boot"
++	if alt:
++		template=template.replace("[ALT]",alt)
++	else:
++		template=template.replace("[ALT]","")
++	template=template.replace("[OS]",env("GRUB_LABEL_OS"))
++	template=template.replace("[KF]",kernel[0])
++	template=template.replace("[KV]",kernel[2])
++	template=template.replace("\"","")
++	return template
++
++def linux_entry(kernel,rdev,rfst,alt=None):
++	print "menuentry \""+display_string(kernel,alt)+"\" {"
++	for mod in mods:
++		print "	insmod %s" % mod
++	print "	set root="+guppy("--device "+env("GRUB_DEVICE_BOOT")+" --target=drive")
++	fs_uuid=guppy(" --device "+env("GRUB_DEVICE_BOOT")+" --target=fs_uuid 2> /dev/null")
++	print "	search --no-floppy --fs-uuid --set "+fs_uuid
++	print "	linux /"+os.path.relpath(kernel[0],"/boot")+" root="+rdev+" rootfstype="+rfst+" ro",env("GRUB_KERNEL_PARAMS"),
++	if alt:
++		print alt
++	else:
++		print
++	if os.path.exists(kernel[1]):
++		print "	initrd /"+os.path.relpath(kernel[1],"/boot")	
++	print "}"
++	print
++	
++def die(msg):
++	sys.stderr.pring("Error: "+msg+"\n")
++	sys.exit(1)
++
++default=None
++counter=0
++
++for kernel in found_kernels:
++	print "# DEBUG %s %s" % ( kernel[0], env("GRUB_DEFAULT") )
++	linux_entry(kernel,rdev,rfst)
++	# default?
++	if env("GRUB_DEFAULT") == kernel[0]:
++		# record that we have a match - we want this to be our default - we'll hanle this later
++		default=counter
++	if ( "altboot" in env("GRUB_FEATURES").split() ) and env("GRUB_ALTBOOT") != "":
++			linux_entry(kernel,rdev,rfst,alt=env("GRUB_ALTBOOT"))
++			counter += 1
++	counter += 1
++
++if default != None:
++	print "set default="+`default`
+diff --git a/util/grub.d/30_os-prober.in b/util/grub.d/30_os-prober.in
+index 84e227e..76be280 100644
+--- a/util/grub.d/30_os-prober.in
++++ b/util/grub.d/30_os-prober.in
+@@ -22,7 +22,7 @@ libdir=@libdir@
+ 
+ . ${libdir}/grub/grub-mkconfig_lib
+ 
+-if [ "x${GRUB_DISABLE_OS_PROBER}" = "xtrue" ]; then
++if [ "${GRUB_FEATURES/osprobe/}" = "${GRUB_FEATURES}" ]; then
+   exit 0
+ fi
+ 
+diff --git a/util/grub.d/README b/util/grub.d/README
+index 3ea109d..0a63ed1 100644
+--- a/util/grub.d/README
++++ b/util/grub.d/README
+@@ -8,4 +8,4 @@ All executable files in this directory are processed in shell expansion order.
+ The number namespace in-between is configurable by system installer and/or
+ administrator.  For example, you can add an entry to boot another OS as
+ 01_otheros, 11_otheros, etc, depending on the position you want it to occupy in
+-the menu; and then adjust the default setting via /etc/default/grub.
++the menu; and then adjust the default setting via /etc/conf.d/grub.
