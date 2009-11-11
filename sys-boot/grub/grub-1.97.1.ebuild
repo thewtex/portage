@@ -41,7 +41,9 @@ src_compile() {
 		$(use_enable debug grub-emu) \
 		$(use_enable debug grub-emu-usb) \
 		$(use_enable debug grub-fstest)
-	emake || die "making regular stuff"
+	emake -j1 || die "making regular stuff"
+
+	# As of 1.97.1, GRUB still needs -j1 to build. Reason: grub_script.tab.c
 }
 
 src_install() {

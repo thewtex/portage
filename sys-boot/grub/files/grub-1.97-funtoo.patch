@@ -139,12 +139,12 @@ index 0000000..4b6650f
 +fi
 diff --git a/funtoo/grub.defaults b/funtoo/grub.defaults
 new file mode 100644
-index 0000000..e184e1b
+index 0000000..1f1e42e
 --- /dev/null
 +++ b/funtoo/grub.defaults
 @@ -0,0 +1,13 @@
 +GRUB_TIMEOUT=10
-+GRUB_FEATURES="uuid altboot osprobe"
++GRUB_FEATURES="altboot osprobe"
 +GRUB_DEFAULT="/boot/bzImage"
 +GRUB_KERNEL_PARAMS=""
 +
@@ -155,11 +155,11 @@ index 0000000..e184e1b
 +GRUB_SCAN_KERNELS="bzImage[-v] kernel[-v] vmlinux[-v]"
 +GRUB_SCAN_INITRD="initramfs[-v]"
 +
-+GRUB_ALTBOOT="init=/bin/bash"
++GRUB_ALTBOOT_PARAMS="init=/bin/bash"
 diff --git a/util/grub-mkconfig.in b/util/grub-mkconfig.in
 old mode 100644
 new mode 100755
-index a8c2675..c2a69b3
+index a8c2675..a20b201
 --- a/util/grub-mkconfig.in
 +++ b/util/grub-mkconfig.in
 @@ -16,17 +16,17 @@
@@ -209,7 +209,7 @@ index a8c2675..c2a69b3
 +export GRUB_SCAN_DIR \
 +  GRUB_SCAN_KERNELS \
 +  GRUB_SCAN_INITRD \
-+  GRUB_ALTBOOT \
++  GRUB_ALTBOOT_PARAMS \
 +  GRUB_LABEL \
 +  GRUB_LABEL_ALT \
 +  GRUB_LABEL_OS \
@@ -280,10 +280,10 @@ index 9f421dc..0925ccc 100644
    serial:* | *:serial)
      if ! test -e ${grub_prefix}/serial.mod ; then
 diff --git a/util/grub.d/10_linux.in b/util/grub.d/10_linux.in
-index 1473a42..ca43798 100644
+index 1473a42..bf8f8f4 100644
 --- a/util/grub.d/10_linux.in
 +++ b/util/grub.d/10_linux.in
-@@ -1,102 +1,127 @@
+@@ -1,102 +1,139 @@
 -#! /bin/sh -e
 -
 -# grub-mkconfig helper script.
@@ -396,6 +396,10 @@ index 1473a42..ca43798 100644
 +	else:
 +		return ""
 +
++features={}
++for feat in env("GRUB_FEATURES").split():
++	features[feat]=1
++
 +def guppy(argstring):
 +	out=commands.getstatusoutput("grub-probe "+argstring)
 +	if out[0] != 0:
@@ -416,6 +420,8 @@ index 1473a42..ca43798 100644
 +	fn=open("/proc/mounts","r")
 +	for line in fn.readlines():
 +		split=line.split(" ")
++		if (len(split)<3) or (split[2] == "rootfs"):
++			continue
 +		if split[1] == "/":
 +			return split[2]
 +	return ""
@@ -423,14 +429,18 @@ index 1473a42..ca43798 100644
 +def get_initrd_name(scandir,kext=""):
 +	return os.path.normpath(scandir+"/"+os.environ["GRUB_SCAN_INITRD"].replace("[-v]",kext))
 +
-+def get_rootdev():
-+	if \
-+		( not os.environ.has_key("GRUB_DEVICE_UUID") ) or \
-+		( "uuid" not in env("GRUB_FEATURES").split() ) or \
-+		not os.path.exists("/dev/disk/by-uuid/"+env("GRUB_DEVICE_UUID")):
-+		return env("GRUB_DEVICE")
++def get_rootdev(has_initrd):
++	global features
++	if has_initrd:
++		if \
++			( not os.environ.has_key("GRUB_DEVICE_UUID") ) or \
++			( not features.has_key("uuid") ) or \
++			not os.path.exists("/dev/disk/by-uuid/"+env("GRUB_DEVICE_UUID")):
++				return env("GRUB_DEVICE")
++		else:
++			return "UUID="+env("GRUB_DEVICE_UUID")
 +	else:
-+		return "UUID="+env("GRUB_DEVICE_UUID")
++		return env("GRUB_DEVICE")
 +
 +found_kernels=[]
 +
@@ -458,7 +468,6 @@ index 1473a42..ca43798 100644
 +			found_kernels.append([found_kname,get_initrd_name(scandir,kext),kext[1:]])
 +
 +mods=get_modules(env("GRUB_DEVICE_BOOT"))
-+rdev=get_rootdev()
 +rfst=get_rootfstype()
 +def display_string(kernel,alt=False):
 +	template=env("GRUB_LABEL")
@@ -475,19 +484,22 @@ index 1473a42..ca43798 100644
 +	template=template.replace("\"","")
 +	return template
 +
-+def linux_entry(kernel,rdev,rfst,alt=None):
++def linux_entry(kernel,rfst,alt=None):
++	has_initrd=False
++	if os.path.exists(kernel[1]):
++		has_initrd=True
 +	print "menuentry \""+display_string(kernel,alt)+"\" {"
 +	for mod in mods:
 +		print "	insmod %s" % mod
 +	print "	set root="+guppy("--device "+env("GRUB_DEVICE_BOOT")+" --target=drive")
 +	fs_uuid=guppy(" --device "+env("GRUB_DEVICE_BOOT")+" --target=fs_uuid 2> /dev/null")
 +	print "	search --no-floppy --fs-uuid --set "+fs_uuid
-+	print "	linux /"+os.path.relpath(kernel[0],"/boot")+" root="+rdev+" rootfstype="+rfst+" ro",env("GRUB_KERNEL_PARAMS"),
++	print "	linux /"+os.path.relpath(kernel[0],"/boot")+" root="+get_rootdev(has_initrd)+" rootfstype="+rfst+" ro",env("GRUB_KERNEL_PARAMS"),
 +	if alt:
 +		print alt
 +	else:
 +		print
-+	if os.path.exists(kernel[1]):
++	if has_initrd:
 +		print "	initrd /"+os.path.relpath(kernel[1],"/boot")	
 +	print "}"
 +	print
@@ -501,13 +513,13 @@ index 1473a42..ca43798 100644
 +
 +for kernel in found_kernels:
 +	print "# DEBUG %s %s" % ( kernel[0], env("GRUB_DEFAULT") )
-+	linux_entry(kernel,rdev,rfst)
++	linux_entry(kernel,rfst)
 +	# default?
 +	if env("GRUB_DEFAULT") == kernel[0]:
 +		# record that we have a match - we want this to be our default - we'll hanle this later
 +		default=counter
-+	if ( "altboot" in env("GRUB_FEATURES").split() ) and env("GRUB_ALTBOOT") != "":
-+			linux_entry(kernel,rdev,rfst,alt=env("GRUB_ALTBOOT"))
++	if ( features.has_key("altboot") ) and env("GRUB_ALTBOOT_PARAMS") != "":
++			linux_entry(kernel,rfst,alt=env("GRUB_ALTBOOT_PARAMS"))
 +			counter += 1
 +	counter += 1
 +
