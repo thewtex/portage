@@ -11,9 +11,9 @@ HOMEPAGE="http://www.gnu.org/software/grub/"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="custom-cflags debug static"
+IUSE="custom-cflags debug static mkfont"
 
-RDEPEND=">=sys-libs/ncurses-5.2-r5 dev-libs/lzo"
+RDEPEND=">=sys-libs/ncurses-5.2-r5 dev-libs/lzo mkfont? ( >=media-libs/freetype-2 )"
 DEPEND="${RDEPEND}"
 PROVIDE="virtual/bootloader"
 
@@ -36,7 +36,7 @@ src_compile() {
 		--bindir=/bin \
 		--libdir=/$(get_libdir) \
 		--disable-efiemu \
-		--enable-grub-mkfont \
+		$(use_enable mkfont grub-mkfont ) \
 		$(use_enable debug mm-debug) \
 		$(use_enable debug grub-emu) \
 		$(use_enable debug grub-emu-usb) \
