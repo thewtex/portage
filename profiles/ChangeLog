@@ -1,10 +1,39 @@
 # ChangeLog for profile directory
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.3544 2009/11/10 23:28:53 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.3555 2009/11/11 20:34:07 yngwin Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  11 Nov 2009; Ben de Groot <yngwin@gentoo.org> arch/sparc/package.use.mask:
+  Mask doc useflag on dev-libs/uriparser on sparc, as it depends on
+  qt-assistant, which needs rekeywording (bug 292838).
+
+  11 Nov 2009; Ben de Groot <yngwin@gentoo.org> package.mask:
+  Masking dev-embedded/qvfb
+
+  11 Nov 2009; Víctor Ostorga <vostorga@gentoo.org> package.mask:
+  Masking sys-power/kpowersave for removal, bug #292799
+
+  11 Nov 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask app-laptop/khdapsmon, app-laptop/khdapsmonitor, and
+  app-laptop/kthinkbat.
+
+  11 Nov 2009; Ben de Groot <yngwin@gentoo.org> package.mask:
+  Unmask libdvdread/-nav
+
+  11 Nov 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask kde-base/arts, kde-misc/kfish and <kde-misc/krename-4.
+
+  11 Nov 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask x11-misc/lineak-kdeplugins and mail-client/mailody.
+
+  11 Nov 2009; Matthias Schwarzott <zzam@gentoo.org> package.mask:
+  Mask udev-146-r2 and udev-147 for testing their new init-scripts.
+
+  11 Nov 2009; Benedikt Böhm <hollow@gentoo.org> package.mask:
+  unmask >=sys-kernel/vserver-sources-2.3
 
   10 Nov 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
   Mask x11-themes/tiblit and <media-gfx/kflickr-0.9.1_p1.
