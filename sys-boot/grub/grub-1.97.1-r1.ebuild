@@ -3,7 +3,8 @@
 
 inherit autotools mount-boot flag-o-matic toolchain-funcs
 
-SRC_URI="ftp://alpha.gnu.org/gnu/${PN}/${P}.tar.gz mirror://gentoo/${P}.tar.gz"
+PATCH="grub-1.97-funtoo-1.1.patch"
+SRC_URI="ftp://alpha.gnu.org/gnu/${PN}/${P}.tar.gz mirror://gentoo/${P}.tar.gz http://www.funtoo.org/archive/grub/$PATCH"
 
 DESCRIPTION="GNU GRUB 2 boot loader"
 HOMEPAGE="http://www.gnu.org/software/grub/"
@@ -22,7 +23,7 @@ QA_EXECSTACK="sbin/grub-probe sbin/grub-setup sbin/grub-mkdevicemap"
 
 src_unpack() {
 	unpack ${A}; cd "${S}"
-	cat ${FILESDIR}/grub-1.97-funtoo.patch | patch -p1 || die "patch failed"
+	cat ${DISTDIR}/${PATCH} | patch -p1 || die "patch failed"
 	eautoconf; eautoheader
 }
 
