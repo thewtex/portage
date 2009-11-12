@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/udev/udev-9999.ebuild,v 1.19 2009/10/29 19:41:57 zzam Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/udev/udev-9999.ebuild,v 1.20 2009/11/11 19:15:28 zzam Exp $
 
 EAPI="1"
 
@@ -145,7 +145,7 @@ src_unpack() {
 		# (more for my own needs than anything else ...)
 		MD5=$(md5sum < "${S}/rules/rules.d/50-udev-default.rules")
 		MD5=${MD5/  -/}
-		if [[ ${MD5} != c1ad7decce54b92a3bee448fa95783f9 ]]
+		if [[ ${MD5} != 8afa8fc0fc71ada547792b5b2a608e4f ]]
 		then
 			echo
 			eerror "50-udev-default.rules has been updated, please validate!"
@@ -178,7 +178,9 @@ src_compile() {
 		--libexecdir="${udev_libexec_dir}" \
 		--enable-logging \
 		$(use_with selinux) \
-		$(use_enable extras)
+		$(use_enable extras) \
+		--disable-introspection
+	# we don't have gobject-introspection in portage tree
 
 	emake || die "compiling udev failed"
 }

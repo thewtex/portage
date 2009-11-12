@@ -1,7 +1,8 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/koffice-i18n/koffice-i18n-1.6.3.ebuild,v 1.12 2009/07/01 15:44:15 tampakrap Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/koffice-i18n/koffice-i18n-1.6.3.ebuild,v 1.14 2009/11/11 12:27:25 ssuominen Exp $
 
+ARTS_REQUIRED=never
 inherit kde
 
 RV="${PV}"
@@ -26,7 +27,7 @@ for X in ${LANGS}; do
 done
 
 src_unpack() {
-	if [ -z "${A}" ]; then
+	if [ -z ${A} ]; then
 		echo
 		eerror "You must set the LINGUAS environment variable to a list of valid"
 		eerror "language codes, one for each language you would like to install."
@@ -55,9 +56,9 @@ src_compile() {
 
 src_install() {
 	local _S="${S}"
-	for dir in ${WORKDIR}/*; do
-		cd ${dir}
-		make DESTDIR=${D} install
+	for dir in "${WORKDIR}"/*; do
+		cd "${dir}"
+		make DESTDIR="${D}" install
 	done
 	S="${_S}"
 }
