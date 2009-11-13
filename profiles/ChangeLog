@@ -1,10 +1,36 @@
 # ChangeLog for profile directory
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.3555 2009/11/11 20:34:07 yngwin Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.3563 2009/11/12 19:40:10 hwoarang Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  12 Nov 2009; Markos Chandras <hwoarang@gentoo.org> package.mask:
+  sys-fs/dazuko. Pending removal in 30 days ( bug 278414 )
+
+  12 Nov 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask media-sound/kstreamripper.
+
+  12 Nov 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask games-puzzle/easysok and sci-misc/kboincspy for kde-base/kdelibs:3.5.
+
+  12 Nov 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask dev-perl/{DCOP,PerlQt} and reverse dependencies for
+  kde-base/kdelibs:3.5.
+
+  12 Nov 2009; Daniel Pielmeier <billie@gentoo.org> desc/dvb_cards.desc:
+  Update dvb_cards.desc.
+
+  12 Nov 2009; Ben de Groot <yngwin@gentoo.org> package.mask:
+  Remove mask for qvfb, now it is bumped and bug 292834 solved.
+
+  12 Nov 2009; Ben de Groot <yngwin@gentoo.org> arch/sparc/package.use.mask:
+  Also mask doc useflag for media-libs/libxspf on sparc, pending qt-webkit
+  and qt-assistant keywording (bug 292838)
+
+  12 Nov 2009; Alexis Ballier <aballier@gentoo.org> profiles.desc:
+  remove deprecated fbsd profiles from profiles.desc
 
   11 Nov 2009; Ben de Groot <yngwin@gentoo.org> arch/sparc/package.use.mask:
   Mask doc useflag on dev-libs/uriparser on sparc, as it depends on
