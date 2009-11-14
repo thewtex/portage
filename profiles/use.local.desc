@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4986 2009/11/12 21:47:47 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4989 2009/11/14 01:47:51 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -1493,7 +1493,6 @@ media-gfx/maya:maya-shaderlibrary -  Install the maya shader library
 media-gfx/openclipart:gzip - Compresses clip art using gzip
 media-gfx/potrace:metric -  default to a4 paper size and metric measurement 
 media-gfx/pstoedit:emf -  enables media-libs/libemf support 
-media-gfx/showimg:kipi -  Support for the KDE Image Plugin Interface. 
 media-gfx/splashutils:fbcondecor -  Support for the fbcondecor kernel patch. 
 media-gfx/ufraw:contrast -  enable contrast setting option 
 media-gfx/ufraw:hotpixels -  enable hot pixel elimination 
@@ -1761,7 +1760,6 @@ media-sound/sox:id3tag - Enables ID3 tagging with id3tag library
 media-sound/squeezecenter:aac - Enable playback support for AAC (.m4a) encoded files
 media-sound/squeezecenter:alac - Enable support for alac
 media-sound/squeezecenter:bonjour - Enable support for bonjour
-media-sound/transkode:amarok - Build Amarok script
 media-sound/traverso:lv2 - Add support for Ladspa V2
 media-sound/vorbis-tools:ogg123 - Build ogg123 player, needs libao and curl
 media-sound/xwax:alsa - Enable ALSA support.
@@ -2270,17 +2268,8 @@ net-im/gossip:galago - Enable desktop presence with galago
 net-im/gossip:gnome-keyring - Allows Gossip to use gnome-keyring to store passwords.
 net-im/gossip:libnotify - Allows Gossip to show visual notifications concerning various activities via libnotify.
 net-im/jabberd2:memdebug - Enable nad and pool debug. Requires USE="debug" to be set. 
-net-im/kadu:amarok - Enables media-sound/amarok:0 (amarok1) media player support
-net-im/kadu:amarok2 - Enables media-sound/amarok:2 (amarok2) media player support
-net-im/kadu:audacious - Enables media-sound/audacious media player support
-net-im/kadu:avatar - Display Gadu Avatars in Kadu
-net-im/kadu:config_wizard - Enables configuration wizard module
-net-im/kadu:dragonplayer - Enables kde-base/dragonplayer KDE4 media player support
 net-im/kadu:phonon - Enable phonon audio plugin
-net-im/kadu:sms - Enables SMS sending plugin
 net-im/kadu:speech - Enables speech module
-net-im/kadu:vlc - Enables media-video/vlc media player support
-net-im/kadu:voice - Enables voice chat
 net-im/kmess:konqueror - Enable integration with konqueror
 net-im/mcabber:otr -  Enable encrypted conversations using Off-The-Records messaging 
 net-im/naim:screen - Enable screen support
@@ -2343,8 +2332,14 @@ net-irc/rbot:translator -  Add dependency over dev-ruby/mechanize, which is need
 net-irc/srvx:bahamut - Choose bahamut protocol over p10 protocol
 net-irc/supybot:twisted - Allows supybot to use dev-python/twisted as driver
 net-irc/unrealircd:hub - Enable hub support
+net-irc/unrealircd:operoverride - Enable OperOverride extension
+net-irc/unrealircd:operoverride-verify - Enable requiring opers to invite themselves to +s/+p channels
 net-irc/unrealircd:prefixaq - Enable chanadmin and chanowner prefixes
-net-irc/unrealircd:showlistmodes - Support displaying channel modes during compilation
+net-irc/unrealircd:showlistmodes - Support displaying channel modes in /list
+net-irc/unrealircd:shunnotices - Enable notifying a user when un-shunned
+net-irc/unrealircd:spoof - Enable the spoof protection
+net-irc/unrealircd:topicisnuhost - Enable displaying nick!user@host as topic setter
+net-irc/unrealircd:usermod - Enable /set* and /chg* commands
 net-irc/xchat:xchatdccserver - Enables support for the /dccserver command via a patch
 net-irc/xchat:xchatnogtk - Disables building the GTK front end to XChat
 net-irc/xchat-gnome:sound - Enable sound event support with media-libs/libcanberra

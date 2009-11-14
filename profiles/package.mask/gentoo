@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10805 2009/11/12 19:40:10 hwoarang Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10813 2009/11/14 01:01:43 scarabeus Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,32 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Samuli Suominen <ssuominen@gentoo.org> (13 Nov 2000)
+# kde-base/kdelibs:3.5 reverse dependencies
+#
+# Masked for removal in 30 days.
+#
+# Bug 292791.
+#
+<net-misc/kvpnc-0.9.3
+media-tv/kdetv
+media-tv/kvdr
+net-wireless/kwlaninfo
+<net-misc/guidedog-1.1
+net-misc/knutclient
+net-misc/kovpn
+net-misc/kwebget
+net-analyzer/knetscan
+net-analyzer/ksniffer
+
+# Samuli Suominen <ssuominen@gentoo.org> (13 Nov 2009)
+# For deprecated media-sound/amarok:3.5. Masked for removal in 30 days.
+media-sound/amarokfs
+
+# Peter Volkov <pva@gentoo.org> (13 Nov 2009)
+# Mask release candidate
+=net-im/psi-0.14*
 
 # Markos Chandras <hwoarang@gentoo.org> (12 Nov 2009)
 # Fails to build with recent kernels. Upstream doesn't
@@ -895,43 +921,16 @@ sys-kernel/sh-sources
 # paprefs for settings. Masked for remoal in 30 days.
 media-sound/paman
 
-# Samuli Suominen <ssuominen@gentoo.org> (21 Oct 2009)
-# KDE3-only. Doesn't work wrt #210034. Internal copy
-# of readline wrt #206953. Masked for removal in 30 days.
-kde-misc/tork
-
-# Samuli Suominen <ssuominen@gentoo.org> (21 Oct 2009)
-# KDE3-only. Doesn't compile wrt bug #276290.
-# Masked for removal in 30 days.
-net-dialup/trayimonc
-
 # Peter Alfredsen <loki_val@gentoo.org> (21 Oct 2009)
 # Masked because this needs a patch to be applied to portage
 # to not install the kitchensink and everything else
 # into /usr/src/debug with FEATURES=installsources
 =dev-util/debugedit-4.4.6-r2
 
-# Samuli Suominen <ssuominen@gentoo.org> (20 Oct 2009)
-# KDE3-only. Doesn't compile wrt #274206. Bundles internal
-# copies of sqlite wrt #252546.
-# Masked for removal in 30 days.
-media-gfx/showimg
-media-libs/libkexif
-
-# Samuli Suominen <ssuominen@gentoo.org> (20 Oct 2009)
-# Doesn't compile with KDE4 installed wrt #244882.
-# Masked for removal in 30 days.
-dev-embedded/pikdev
-
 # Peter Volkov <pva@gentoo.org> (20 Oct 2009)
 # Masked development versions
 =dev-util/bzr-2.1.0_beta1*
 =dev-util/bzrtools-2.1.0_beta1*
-
-# Samuli Suominen <ssuominen@gentoo.org> (20 Oct 2009)
-# Doesn't compile with KDE4 installed wrt bug #279486.
-# Masked for removal in 30 days.
-media-tv/mtvg
 
 # Michael Sterrett <mr_bones_@gentoo.org> (19 Oct 2009)
 # Homepage is gone; requires dev-python/numeric; last released in 2006
@@ -1050,10 +1049,6 @@ dev-libs/skalibs
 # mask hugin and deps beta/rc versions for testing
 >=media-gfx/hugin-2009.4.0_rc1
 >=media-libs/libpano13-2.9.15_beta3
-
-# Marcus D. Hanwell <cryos@gentoo.org> (01 Oct 2009)
-# Release candidates for the new CMake release
->=dev-util/cmake-2.8.0_rc1
 
 # Bernard Cafarelli <voyageur@gentoo.org> (01 Oct 2009)
 # Live ebuilds for bleeding-edge users
@@ -1235,11 +1230,6 @@ sys-apps/einit-modules-xml
 # for testing.
 >=net-misc/networkmanager-0.8.0_pre20090824
 >=gnome-extra/nm-applet-0.8.0_pre20090824
-
-# Timo Gurr <tgurr@gentoo.org> (13 Aug 2009)
-# Mask Mumble 1.2.0 snapshots for testing.
-=media-sound/mumble-1.2.0_pre*
-=media-sound/murmur-1.2.0_pre*
 
 # Diego E. Pettenò <flameeyes@gentoo.org> (11 Aug 2009)
 #  on behalf of QA team
@@ -1468,10 +1458,6 @@ sys-fs/clvm
 # masked until fixed (see bug #274092)
 =media-libs/tiff-3.8.2-r6
 
-# Theo Chatzimichos <tampakrap@gentoo.org> (14 Jun 2009)
-# Masked for removal in 30 days. Old and dead by upstream.
-app-dicts/kannadic
-
 # Markus Meier <maekke@gentoo.org> (13 Jun 2009)
 # mask pre releases of media-gfx/inkscape-0.47
 >=media-gfx/inkscape-0.47_pre0
@@ -1629,9 +1615,8 @@ dev-util/w32api
 >sys-process/audit-1.7.4
 
 # Jeroen Roovers <jer@gentoo.org> (5 Dec 2008)
-# Snapshots and alphas but not betas of Opera 10.10
-=www-client/opera-10.10_pre4678
-=www-client/opera-10.10_pre4685
+# Snapshots and alphas but not betas and RCs of Opera 10.10
+=www-client/opera-10.10_pre4694
 
 # MATSUU Takuto <matsuu@gentoo.org> (19 Nov 2008)
 # Masked for bug #196340
