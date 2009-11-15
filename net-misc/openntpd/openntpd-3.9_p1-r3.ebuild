@@ -13,17 +13,15 @@ SRC_URI="mirror://openbsd/OpenNTPD/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 s390 sh sparc x86 x86-fbsd"
 IUSE="ssl selinux"
 
-RDEPEND="ssl? ( dev-libs/openssl )
-	selinux? ( sec-policy/selinux-ntp )
-	!<=net-misc/ntp-4.2.0-r2"
+RDEPEND="ssl? ( dev-libs/openssl ) selinux? ( sec-policy/selinux-ntp ) !<=net-misc/ntp-4.2.0-r2"
 DEPEND="${RDEPEND}"
 
 S=${WORKDIR}/${MY_P}
 
-pkg_setup() {
+pkg_preinst() {
 	enewgroup ntp 123
 	enewuser ntp 123 -1 /var/lib/openntpd/chroot ntp
 
@@ -33,6 +31,10 @@ pkg_setup() {
 	if has_version net-misc/ntp && ! built_with_use net-misc/ntp openntpd ; then
 		die "you need to emerge ntp with USE=openntpd"
 	fi
+
+	install -d $ROOT/var/lib/openntpd/chroot || die "chroot dir fail"
+	chmod -R 0700 $ROOT/var/lib/openntpd || die "chmod fail"
+	chown -R root:root $ROOT/var/lib/openntpd || die "chown fail"
 }
 
 src_prepare() {
@@ -53,9 +55,6 @@ src_compile() {
 src_install() {
 	make install DESTDIR="${D}" || die
 	dodoc ChangeLog CREDITS README
-
-	newinitd "${FILESDIR}"/openntpd.rc-3.9_p1-r2 ntpd
-	newconfd "${FILESDIR}"/openntpd.conf.d-3.9_p1-r2 ntpd
-
-	dodir /var/lib/openntpd/chroot
+	newinitd "${FILESDIR}"/${PF}/ntpd ntpd || die "newinitd fail"
+	newconfd "${FILESDIR}"/${PF}/ntpd.conf.d ntpd || die "newconfd fail"
 }
