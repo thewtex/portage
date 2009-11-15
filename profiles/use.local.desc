@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4979 2009/11/10 22:08:10 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4986 2009/11/12 21:47:47 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -80,6 +80,8 @@ app-admin/rsyslog:relp - Add support for the Reliable Event Logging Protocol usi
 app-admin/sshguard:ipfilter - Enable ipfilter firewall support (only for *bsd)
 app-admin/syslog-ng:spoof-source - Enable support for spoofed source addresses
 app-admin/syslog-ng:sql - Enable support for SQL destinations
+app-admin/sysstat:cron - Install /etc/cron.d script to periodically run sar
+app-admin/sysstat:isag - Install isag, the Interactive System Activity Graph tool
 app-admin/system-tools-backends:policykit - Use sys-auth/policykit to gain privileges to change configuration files
 app-admin/testdisk:ntfs - Include the ability to read NTFS filesystems
 app-admin/testdisk:reiserfs - include reiserfs reading ability
@@ -855,7 +857,6 @@ dev-libs/libwiimote:force - Enable force feedback
 dev-libs/libwiimote:tilt - Enable tilt
 dev-libs/log4cxx:smtp - Offer SMTP support via net-libs/libesmtp
 dev-libs/nss:utils - Install utilities included with the library
-dev-libs/ntl:gf2x - Use high performance polynomial arithmetic with dev-libs/gf2x
 dev-libs/opencryptoki:tpmtok - Offer support for TPM token
 dev-libs/openct:pcsc-lite - Enable support for sys-apps/pcsc-lite
 dev-libs/openobex:irda - Enable IrDA support
@@ -1398,10 +1399,6 @@ kde-base/solid:wicd - Enable Wicd wired and wireless network manager.
 kde-base/step:qalculate - Enable the libqalculate library for unit conversion
 kde-misc/kcpufreq:icon - Add icon for GUI applet (enabled by default)
 kde-misc/kdiff3:konqueror - Enable integration with konqueror
-kde-misc/knetworkmanager:cisco - Adds support for the Cisco VPN client net-misc/vpnc
-kde-misc/knetworkmanager:dialup - Enables Dialup (PPP) support
-kde-misc/knetworkmanager:openvpn - Adds support for the OpenVPN net-misc/openvpn client
-kde-misc/knetworkmanager:pptp - Adds support for the PPTP (PPP) VPN client
 kde-misc/ksensors:ibmacpi - Enable monitoring of ACPI sensor data on IBM Thinkpad notebooks
 kde-misc/tellico:addressbook - Add support for kdepim addressbook (kabc)
 kde-misc/tellico:xmp - Adds support for PDF/XMP metadata using media-libs/exempi
@@ -2873,25 +2870,26 @@ net-p2p/museek+:qsa - Enable QSA scripting for museeq
 net-p2p/museek+:trayicon - Enable support for trayicon
 net-p2p/rtorrent:daemon - Uses app-misc/screen to daemonize this application" 
 net-p2p/transmission:dht - Enable Distributed Hash Tables support
-net-print/hplip:cups -  Build the hpcups driver for cups. 
 net-print/hplip:cupsddk - Add support for net-print/cupsddk which enables dynamic PPD files (recommended)
 net-print/hplip:dbus - Add support for sys-apps/dbus which enables better communications with your device (recommended)
 net-print/hplip:doc - Build documentation
 net-print/hplip:fax - Enable fax on multifunction devices which support it
-net-print/hplip:foomatic -  Build the IJS/foomatic driver for cups. 
-net-print/hplip:gtk - Enable GTK+ dependencies, currently only the scanner GUI with USE=scanner.
-net-print/hplip:hpcups -  Build the hpcups driver for cups (by HP). 
-net-print/hplip:hpijs -  Build the IJS driver for cups (Foomatic) 
+net-print/hplip:gtk - Enable GTK+ dependencies, currently only the scanner GUI with USE=scanner
+net-print/hplip:hpcups - Build the hpcups driver for cups (by HP)
+net-print/hplip:hpijs - Build the IJS driver for cups (Foomatic)
+net-print/hplip:libnotify - Enables desktop notifications
 net-print/hplip:minimal - Only build internal hpijs driver (not recommended at all, make sure you know what you are doing)
+net-print/hplip:new-hpcups - Build the new hpcups driver for cups which is no longer based on APDK (by HP)
 net-print/hplip:parport - Enable parallel port for devices which require it
+net-print/hplip:policykit - Enable sys-auth/policykit authentication support
 net-print/hplip:ppds - Use precompiled PPD files (obsolete, use cupsddk instead)
 net-print/hplip:qt3 - Enable graphical interface using Qt 3; when both qt3 and qt4 USE flags are enabled then qt4 has priority over qt3
 net-print/hplip:qt4 - Enable graphical interface using Qt 4; when both qt3 and qt4 USE flags are enabled then qt4 has priority over qt3
-net-print/hplip:scanner - Enable scanner on multifunction devices which support it 
+net-print/hplip:scanner - Enable scanner on multifunction devices which support it
 net-print/hplip:snmp - Add support for net-analyzer/net-snmp which enables this driver to work over networks (both for server and client)
-net-print/hplip:static-ppds -  Use statically-generated PPDs instead of Dynamic PPDs. This is deprecated, and this USE flag is thus suggested to stay turned off. 
-net-print/hplip:udev-acl - Install udev acl rules. This needs sys-fs/udev with acl support.
-net-print/hplip:zeroconf - Zeroconf support. Enable this flag to make use of the mDNS network search for network attached printers.
+net-print/hplip:static-ppds - Use statically-generated PPDs instead of Dynamic PPDs. This is deprecated, and this USE flag is thus suggested to stay turned off
+net-print/hplip:udev-acl - Install udev acl rules which needs sys-fs/udev with acl support
+net-print/hplip:zeroconf - Zeroconf support. Enable this flag to make use of the mDNS network search for network attached printers
 net-print/pkpgcounter:psyco - psyco python accelerator
 net-proxy/dansguardian:kaspersky - Adds support for Kaspersky AntiVirus software
 net-proxy/dansguardian:ntlm - Enable support for the NTLM auth plugin
@@ -3534,12 +3532,10 @@ x11-libs/qt:immqt - Enable binary incompatible version of immodule for Qt
 x11-libs/qt:immqt-bc - Enable binary compatible version of immodule for Qt
 x11-libs/qt:kde - Select media-sound/phonon as phonon variant needed for kde
 x11-libs/qt:qt3support - Enable the Qt3Support libraries for Qt4
-x11-libs/qt-assistant:webkit -  Enable x11-libs/qt-webkit support, for more sophisticated online help display using webkit's HTML renderer. 
 x11-libs/qt-core:glib - Enable dev-libs/glib eventloop support
 x11-libs/qt-core:optimized-qmake - Enable qmake optimization
 x11-libs/qt-core:qt3support - Enable the Qt3Support libraries for Qt4. Note that this does not mean you can compile pure Qt3 programs with Qt4.
 x11-libs/qt-gui:glib -  Enable dev-libs/glib eventloop support 
-x11-libs/qt-gui:gtkstyle -  Build the Qt-GTK+ style, which integrates Qt4 apps with the GTK+ theme 
 x11-libs/qt-gui:qt3support - Enable the Qt3Support libraries for Qt4. Note that this does not mean you can compile pure Qt3 programs with Qt4. 
 x11-libs/qt-gui:raster -  Use the alternative raster graphicssystem as default rendering engine 
 x11-libs/qt-opengl:qt3support - Enable the Qt3Support libraries for Qt4
