@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/iptraf/iptraf-3.0.0-r5.ebuild,v 1.8 2009/11/08 20:16:16 nixnut Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/iptraf/iptraf-3.0.0-r5.ebuild,v 1.11 2009/11/12 16:04:48 jer Exp $
 
 EAPI="2"
 
@@ -9,11 +9,11 @@ inherit eutils flag-o-matic toolchain-funcs
 DESCRIPTION="IPTraf is an ncurses-based IP LAN monitor"
 HOMEPAGE="http://iptraf.seul.org/"
 SRC_URI="ftp://iptraf.seul.org/pub/iptraf/${P}.tar.gz
-	mirror://gentoo/${P}-ipv6.patch.bz2"
+	ipv6? ( mirror://gentoo/${P}-ipv6.patch.bz2 )"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~hppa ~mips ppc ~ppc64 ~s390 ~sh ~sparc x86"
+KEYWORDS="~alpha amd64 ~arm hppa ~mips ppc ~ppc64 ~s390 ~sh sparc x86"
 IUSE="ipv6 suid unicode"
 
 DEPEND=">=sys-libs/ncurses-5.2-r1
@@ -23,7 +23,9 @@ RDEPEND="${DEPEND}"
 src_unpack() {
 	unpack ${P}.tar.gz
 	cd "${S}"
+}
 
+src_prepare() {
 	epatch "${FILESDIR}/${P}-Makefile.patch"
 	epatch "${FILESDIR}"/${P}-build.patch
 	epatch "${FILESDIR}"/${P}-add-devnames.patch

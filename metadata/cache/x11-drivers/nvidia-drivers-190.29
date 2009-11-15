@@ -1,0 +1,22 @@
+<x11-base/xorg-server-1.7.99 kernel_linux? ( >=sys-libs/glibc-2.6.1 ) multilib? ( app-emulation/emul-linux-x86-xlibs ) >=app-admin/eselect-opengl-1.0.9 kernel_linux? ( virtual/linux-sources ) kernel_linux? ( virtual/linux-sources ) kernel_linux? ( virtual/modutils ) sys-apps/sed kernel_linux? ( virtual/linux-sources ) sys-apps/pciutils
+<x11-base/xorg-server-1.7.99 kernel_linux? ( >=sys-libs/glibc-2.6.1 ) multilib? ( app-emulation/emul-linux-x86-xlibs ) >=app-admin/eselect-opengl-1.0.9 kernel_linux? ( virtual/modutils ) acpi? ( sys-power/acpid ) kernel_linux? ( virtual/modutils )
+0
+x86? ( http://developer.download.nvidia.com/compute/cuda/2_3/opencl/drivers/nvdrivers_2.3_linux_32_190.29.run ) amd64? ( http://developer.download.nvidia.com/compute/cuda/2_3/opencl/drivers/nvdrivers_2.3_linux_64_190.29.run )
+strip
+http://www.nvidia.com/
+NVIDIA
+NVIDIA X11 driver and GLX libraries
+-* ~amd64 ~x86
+eutils flag-o-matic linux-info linux-mod multilib nvidia-driver portability toolchain-funcs versionator
+acpi custom-cflags gtk multilib kernel_linux kernel_linux
+
+x11-libs/libvdpau gtk? ( media-video/nvidia-settings )
+
+2
+
+compile install postinst postrm preinst prepare setup unpack
+
+
+
+
+
