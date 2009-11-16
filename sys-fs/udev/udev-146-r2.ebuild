@@ -27,20 +27,8 @@ DEPEND="${COMMON_DEPEND} extras? ( dev-util/gperf )"
 RDEPEND="${COMMON_DEPEND} !sys-apps/coldplug !<sys-fs/lvm2-2.02.45 !sys-fs/device-mapper >=sys-apps/baselayout-2.1.6"
 PROVIDE="virtual/dev-manager"
 
-sed_helper_dir() {
-	sed -e "s#/lib/udev#${udev_libexec_dir}#" -e "s#/lib64/udev#${udev_libexec_dir}#" -i "$@"
-}
-
 pkg_setup() {
 	udev_libexec_dir="/$(get_libdir)/udev"
-}
-
-sed_libexec_dir() {
-	local x
-	for x in "$@"
-	do
-		[ -e "$x" ] && sed -e "s#/lib/udev#${udev_libexec_dir}#" -i "$x"
-	done
 }
 
 src_unpack() {
@@ -53,12 +41,6 @@ src_unpack() {
 
 	# change rules back to group uucp instead of dialout for now
 	sed -e 's/GROUP="dialout"/GROUP="uucp"/' -i rules/{rules.d,packages,gentoo}/*.rules || die "failed to change group dialout to uucp"
-
-	sed_libexec_dir \
-		rules/rules.d/50-udev-default.rules \
-		rules/rules.d/78-sound-card.rules \
-		extras/rule_generator/write_*_rules \
-		|| die "sed failed"
 }
 
 src_compile() {
@@ -137,14 +119,6 @@ src_install() {
 	insinto /etc/modprobe.d
 	newins "${FILESDIR}/${PVR}/blacklist" blacklist.conf
 	newins "${FILESDIR}/${PVR}/pnp-aliases" pnp-aliases.conf
-
-	# convert /lib/udev to real used dir
-	sed_libexec_dir \
-		"${D}/$(get_libdir)"/rcscripts/addons/*.sh \
-		"${D}/${udev_libexec_dir}"/write_root_link_rule \
-		"${D}"/etc/conf.d/udev \
-		"${D}"/etc/init.d/udev* \
-		"${D}"/etc/modprobe.d/*
 
 	# keep doc in just one directory, Bug #281137
 	rm -rf "${D}/usr/share/doc/${PN}"
