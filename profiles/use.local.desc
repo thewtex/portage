@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.4986 2009/11/12 21:47:47 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5001 2009/11/16 06:07:43 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -532,7 +532,6 @@ app-pda/libsyncml:http - Enable http transports
 app-pda/libsyncml:obex - Enable obex transports
 app-pda/synce:serial - Enable serial port support (installs app-pda/synce-serial)
 app-pda/synce-fur:void-chmod - enable a fake fuse hook for "chmod" that just returns 0
-app-pda/synce-kde:avantgo - Add support for syncing Avantgo accounts
 app-portage/conf-update:colordiff - Use colors when displaying diffs (app-misc/colordiff)
 app-portage/eix:bzip2 - Support for parsing of environment.bz2 to guess repository name of packages installed with ancient portage versions (requires app-arch/bbzip2). This flag is safe to disable for portage users that have re-merged all packages since 2007. This flag will be phased out.
 app-portage/eix:debug - Build with CXXFLAGS/LDFLAGS for debugging support. Only makes sense in combination with FEATURES=nostrip.
@@ -642,12 +641,12 @@ dev-db/mysql-community:pbxt - Add experimental support for pbxt storage engine
 dev-db/mysql-community:profiling - Add support for statement profiling (requires USE=community).
 dev-db/mysql-gui-tools:administrator - Build and install MySQL Administrator
 dev-db/mysql-gui-tools:query-browser - Build and install MySQL Query Browser
-dev-db/pgcluster:pg-intdatetime - Enable --enable-integer-datetimes configure option, which changes PG to use 64-bit integers for timestamp storage
 dev-db/postgis:geos - Add the sci-libs/geos library for exact topological tests
 dev-db/postgis:proj - Add the sci-libs/proj library for reprojection features
 dev-db/postgresql:pg-intdatetime - Enable --enable-integer-datetimes configure option, which changes PG to use 64-bit integers for timestamp storage
 dev-db/postgresql-base:pg-intdatetime - Enable --enable-integer-datetimes configure option, which changes PG to use 64-bit integers for timestamp storage
 dev-db/postgresql-server:uuid - Enable server side UUID generation (via dev-libs/ossp-uuid)
+dev-db/sqlite:fts3 - Full text search using the fts3 module
 dev-db/sqlite:soundex - Enable the soundex function to compute soundex encodings of strings
 dev-db/sqlite:threadsafe - Enable thread safe operation of sqlite
 dev-dotnet/libgdiplus:pango - Use pango instead of cairo to render text.
@@ -801,7 +800,6 @@ dev-lang/python:ucs2 - Enable byte size 2 unicode (DON'T USE THIS UNLESS YOU KNO
 dev-lang/python:wininst - Install required Windows executables to create an executable installer for MS Windows.
 dev-lang/ruby:rubytests - Install ruby tests that can only be run after ruby is installed
 dev-lang/scala:binary - Install from (Gentoo-compiled) binary instead of building from sources. Set this when you run out of memory during build.
-dev-lang/smarteiffel:tcc - use dev-lang/tcc instead of sys-devel/gcc for build (g++ is still used for c++ code)
 dev-lang/spidermonkey:threadsafe - Build a threadsafe version of spidermonkey
 dev-lang/swig:R - Enable R support
 dev-lang/swig:chicken - Enable chicken Scheme support
@@ -907,6 +905,7 @@ dev-ml/lablgtk:glade - Enable libglade bindings compilation.
 dev-ml/lablgtk:gnomecanvas - Enable libgnomecanvas bindings compilation.
 dev-ml/lablgtk:sourceview - Enable GtkSourceView support
 dev-ml/ocamlnet:httpd - Enables net-httpd web server component
+dev-ml/ocamlnet:zip - Enables netzip support to read/write gzip data using object channels
 dev-perl/App-Nopaste:clipboard - copying of URLs with -x/--copy
 dev-perl/App-Nopaste:github - Github authentication
 dev-perl/App-Nopaste:pastebin - pastebin.com support
@@ -950,7 +949,6 @@ dev-python/paste:flup - enable support for flup (and therefore for various wgsi 
 dev-python/paste:openid - enable OpenID support
 dev-python/psycopg:mxdatetime - Enable support for MX DateTime and use it instead of Python's built-in datetime module
 dev-python/pygobject:libffi - Enable support to connect to signals on python objects from C.
-dev-python/pylint:html - Install HTML documenation
 dev-python/pylons:cheetah - Add optional cheetah support
 dev-python/pylons:genshi - Add optional genshi support
 dev-python/pylons:jinja2 - Add optional jinja2 support
@@ -1399,7 +1397,6 @@ kde-base/solid:wicd - Enable Wicd wired and wireless network manager.
 kde-base/step:qalculate - Enable the libqalculate library for unit conversion
 kde-misc/kcpufreq:icon - Add icon for GUI applet (enabled by default)
 kde-misc/kdiff3:konqueror - Enable integration with konqueror
-kde-misc/ksensors:ibmacpi - Enable monitoring of ACPI sensor data on IBM Thinkpad notebooks
 kde-misc/tellico:addressbook - Add support for kdepim addressbook (kabc)
 kde-misc/tellico:xmp - Adds support for PDF/XMP metadata using media-libs/exempi
 mail-client/alpine:chappa - enhance alpine by appling Eduardo Chappa's patches
@@ -1552,7 +1549,9 @@ media-gfx/blender:verse -  Adds verse clustering features to blender
 media-gfx/comix:rar -  Pulls app-arch/unrar for rar file support 
 media-gfx/digikam:addressbook - Add support for kdepim
 media-gfx/digikam:geolocation - Add support for marble
+media-gfx/digikam:lensfun - Enable support for lens-correnction library
 media-gfx/digikam:nfs - Create sqlite db within ~/.kde, instead in the albums base directory.
+media-gfx/digikam:thumbnails - Allow thumbnail previews for images/photos
 media-gfx/eog:xmp - Adds support for XMP metadata
 media-gfx/exact-image:agg - Adds Anti-Grain Geometry supportx11-libs/agg
 media-gfx/exact-image:swig - Adds Swig support dev-lang/swig
@@ -1618,7 +1617,6 @@ media-gfx/openscenegraph:producer - Compile osgProducer
 media-gfx/openvrml:imagetexture - Support for image textures
 media-gfx/potrace:metric -  default to a4 paper size and metric measurement 
 media-gfx/pstoedit:emf -  enables media-libs/libemf support 
-media-gfx/showimg:kipi -  Support for the KDE Image Plugin Interface. 
 media-gfx/splashutils:fbcondecor -  Support for the fbcondecor kernel patch. 
 media-gfx/synfigstudio:fmod - Enables support for using mod files for audio support
 media-gfx/ufraw:contrast -  enable contrast setting option 
@@ -1657,6 +1655,7 @@ media-libs/libquicktime:schroedinger - Enable Dirac video support (an advanced r
 media-libs/libsdl:audio - Control audio support (disable at your own risk)
 media-libs/libsdl:joystick - Control joystick support (disable at your own risk)
 media-libs/libsdl:ps3 - Build the PS3 video driver
+media-libs/libsdl:tslib - Build with tslib support for touchscreen devices
 media-libs/libsdl:video - Control video support (disable at your own risk)
 media-libs/libvorbis:aotuv - Applies the aoTuV patches. Aoyumi's Tuned Vorbis is a third-party patchset that improves the vorbis encoding quality. A previous version of the aoTuV patchset has already been merged with the official libvorbis release. The current patchset especially improves encoding quality at low bitrate settings, and is very likely to be merged at some point in the future. It is recommended that all users enable this useflag. 
 media-libs/mediastreamer:ilbc - Use of iLBC (RFC3951) codec plugin
@@ -1911,7 +1910,6 @@ media-sound/sox:id3tag - Enables ID3 tagging with id3tag library
 media-sound/squeezecenter:aac - Enable playback support for AAC (.m4a) encoded files
 media-sound/squeezecenter:alac - Enable support for alac
 media-sound/squeezecenter:bonjour - Enable support for bonjour
-media-sound/transkode:amarok - Build Amarok script
 media-sound/traverso:lv2 - Add support for Ladspa V2
 media-sound/vorbis-tools:ogg123 - Build ogg123 player, needs libao and curl
 media-sound/xwax:alsa - Enable ALSA support.
@@ -1929,7 +1927,7 @@ media-tv/mythtv:autostart - Uses a custom autostart configuration gleened from e
 media-tv/mythtv:debug - Instructs Qt to use the 'debug' target instead of 'release' target. If your MythTV is crashing or you need a backtrace, you need to compile it with this option otherwise the debugging data is useless.
 media-tv/mythtv:directv - Installs the DirecTV channel changing script so that you can configure MythTV to use it to change the channels on your DirecTV box.
 media-tv/mythtv:dvb - Enables support for Linux DVB cards. These include all cards that work with digital signals such as ATSC, DVB-T, DVB-C, and DVB-S, QAM-64, and QAM-256.
-media-tv/mythtv:dvd - Adds support for MythTV's internal player to support media files found on DVDs. You still need media-plugins/mythdvd installed to play DVDs from MythTV.
+media-tv/mythtv:faad - Uses external faad library for AAC decoding instead of internal libavcodec for decoding AAC. The faad library supports additional AAC types like AAC-LATM that libavcodec does not support
 media-tv/mythtv:ieee1394 - Allows MythTV to communicate and use Firewire enabled Cable boxes. These are typically found in the United States, where such support is required by law. This will also install Firewire test programs and external channel changers if the internal changer does not work.
 media-tv/mythtv:jack - Allows MythTV to use JACK as your sound output device. You will have to manually configure the path to your JACK settings.
 media-tv/mythtv:lcd - Tells MythTV that you have an instance of app-misc/lcdproc configured on your machine and it should output information such as current time, show name, episode name, etc to that LCD.
@@ -2446,17 +2444,8 @@ net-im/gossip:galago - Enable desktop presence with galago
 net-im/gossip:gnome-keyring - Allows Gossip to use gnome-keyring to store passwords.
 net-im/gossip:libnotify - Allows Gossip to show visual notifications concerning various activities via libnotify.
 net-im/jabberd2:memdebug - Enable nad and pool debug. Requires USE="debug" to be set. 
-net-im/kadu:amarok - Enables media-sound/amarok:0 (amarok1) media player support
-net-im/kadu:amarok2 - Enables media-sound/amarok:2 (amarok2) media player support
-net-im/kadu:audacious - Enables media-sound/audacious media player support
-net-im/kadu:avatar - Display Gadu Avatars in Kadu
-net-im/kadu:config_wizard - Enables configuration wizard module
-net-im/kadu:dragonplayer - Enables kde-base/dragonplayer KDE4 media player support
 net-im/kadu:phonon - Enable phonon audio plugin
-net-im/kadu:sms - Enables SMS sending plugin
 net-im/kadu:speech - Enables speech module
-net-im/kadu:vlc - Enables media-video/vlc media player support
-net-im/kadu:voice - Enables voice chat
 net-im/kmess:konqueror - Enable integration with konqueror
 net-im/mcabber:otr -  Enable encrypted conversations using Off-The-Records messaging 
 net-im/naim:screen - Enable screen support
@@ -2519,8 +2508,14 @@ net-irc/rbot:translator -  Add dependency over dev-ruby/mechanize, which is need
 net-irc/srvx:bahamut - Choose bahamut protocol over p10 protocol
 net-irc/supybot:twisted - Allows supybot to use dev-python/twisted as driver
 net-irc/unrealircd:hub - Enable hub support
+net-irc/unrealircd:operoverride - Enable OperOverride extension
+net-irc/unrealircd:operoverride-verify - Enable requiring opers to invite themselves to +s/+p channels
 net-irc/unrealircd:prefixaq - Enable chanadmin and chanowner prefixes
-net-irc/unrealircd:showlistmodes - Support displaying channel modes during compilation
+net-irc/unrealircd:showlistmodes - Support displaying channel modes in /list
+net-irc/unrealircd:shunnotices - Enable notifying a user when un-shunned
+net-irc/unrealircd:spoof - Enable the spoof protection
+net-irc/unrealircd:topicisnuhost - Enable displaying nick!user@host as topic setter
+net-irc/unrealircd:usermod - Enable /set* and /chg* commands
 net-irc/xchat:xchatdccserver - Enables support for the /dccserver command via a patch
 net-irc/xchat:xchatnogtk - Disables building the GTK front end to XChat
 net-irc/xchat-gnome:sound - Enable sound event support with media-libs/libcanberra
@@ -2805,7 +2800,6 @@ net-misc/zaptel:ecmark - Use the MARK echo canceller
 net-misc/zaptel:ecmark2 - Use the MARK2 echo canceller (default)
 net-misc/zaptel:ecmark3 - Use the MARK3 echo canceller
 net-misc/zaptel:ecmg2 - Use the MG2 echo canceller
-net-misc/zaptel:ecoslec - Use the OSLEC echo canceller (http://www.rowetel.com/ucasterisk/oslec.html)
 net-misc/zaptel:ecsteve - Use the STEVE echo canceller
 net-misc/zaptel:ecsteve2 - Use the STEVE2 echo canceller
 net-misc/zaptel:florz - Enable florz enhancement patches for ISDN BRI

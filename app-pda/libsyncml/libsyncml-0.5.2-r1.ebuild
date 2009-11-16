@@ -1,10 +1,10 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-pda/libsyncml/libsyncml-0.5.2-r1.ebuild,v 1.1 2009/09/27 23:32:06 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-pda/libsyncml/libsyncml-0.5.2-r1.ebuild,v 1.2 2009/11/15 21:14:28 eva Exp $
 
 EAPI="2"
 
-inherit eutils cmake-utils
+inherit cmake-utils
 
 DESCRIPTION="Implementation of the SyncML protocol"
 HOMEPAGE="http://libsyncml.opensync.org/"
@@ -15,6 +15,7 @@ SLOT="0"
 LICENSE="LGPL-2.1"
 IUSE="bluetooth debug doc http +obex"
 
+# libsoup:2.2 is forced off to avoid automagic
 RDEPEND=">=dev-libs/glib-2.0
 	>=dev-libs/libwbxml-0.9.2
 	dev-libs/libxml2
@@ -45,12 +46,13 @@ pkg_setup() {
 	fi
 }
 
-src_compile() {
+src_configure() {
 	local mycmakeargs="
+		-DHAVE_LIBSOUP22=OFF
 		$(cmake-utils_use_enable http HTTP)
 		$(cmake-utils_use_enable obex OBEX)
 		$(cmake-utils_use_enable bluetooth BLUETOOTH)
 		$(cmake-utils_use_enable debug TRACE)"
 
-	cmake-utils_src_compile
+	cmake-utils_src_configure
 }
