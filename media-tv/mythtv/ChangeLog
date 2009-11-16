@@ -1,6 +1,53 @@
 # ChangeLog for media-tv/mythtv
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-tv/mythtv/ChangeLog,v 1.294 2009/11/12 22:50:10 cardoe Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-tv/mythtv/ChangeLog,v 1.302 2009/11/15 04:53:14 cardoe Exp $
+
+*mythtv-0.22_p22824-r1 (15 Nov 2009)
+
+  15 Nov 2009; Doug Goldstein <cardoe@gentoo.org>
+  +mythtv-0.22_p22824-r1.ebuild, +files/mythtv.png, metadata.xml:
+  fix bug #292665, by allowing external faad library via faad USE flag. This
+  is so we support additional AAC profiles that libavcodec does not support.
+  Add a desktop entry for MythFrontend and MythTV Setup.
+
+*mythtv-0.22_p22824 (14 Nov 2009)
+
+  14 Nov 2009; Doug Goldstein <cardoe@gentoo.org>
+  +mythtv-0.22_p22824.ebuild:
+  fix rescheduling deadlock. fix change change from EPG. fix that all
+  contrib scripts weren't executable. fix bug #292992 where backup scripts
+  weren't executable
+
+*mythtv-0.23_alpha22834 (14 Nov 2009)
+
+  14 Nov 2009; Doug Goldstein <cardoe@gentoo.org>
+  -mythtv-0.23_alpha22784.ebuild, -mythtv-0.23_alpha22823.ebuild,
+  +mythtv-0.23_alpha22834.ebuild:
+  trunk bump. remove old versions
+
+  14 Nov 2009; Doug Goldstein <cardoe@gentoo.org> mythtv-0.22_p22778.ebuild,
+  mythtv-0.22_p22811.ebuild:
+  add missing video_cards_via USE flag
+
+  14 Nov 2009; Doug Goldstein <cardoe@gentoo.org>
+  mythtv-0.21_p19961-r2.ebuild, mythtv-0.21_p20877.ebuild,
+  mythtv-0.22_p22778.ebuild, mythtv-0.22_p22811.ebuild,
+  mythtv-0.23_alpha22784.ebuild, mythtv-0.23_alpha22823.ebuild,
+  metadata.xml:
+  rename dvd USE flag to css at the insistence of bug #287247
+
+*mythtv-0.23_alpha22823 (13 Nov 2009)
+
+  13 Nov 2009; Doug Goldstein <cardoe@gentoo.org>
+  +mythtv-0.23_alpha22823.ebuild:
+  trunk bump
+
+  13 Nov 2009; Doug Goldstein <cardoe@gentoo.org>
+  -mythtv-0.22_p22764.ebuild, -mythtv-0.22_p22772.ebuild:
+  drop some older revisions
+
+  13 Nov 2009; Doug Goldstein <cardoe@gentoo.org> mythtv-0.21_p20877.ebuild:
+  stabilize newer version
 
 *mythtv-0.22_p22811 (12 Nov 2009)
 

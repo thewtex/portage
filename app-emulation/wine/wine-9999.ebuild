@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/wine/wine-9999.ebuild,v 1.45 2009/10/19 01:41:50 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/wine/wine-9999.ebuild,v 1.46 2009/11/15 02:00:50 vapier Exp $
 
 EAPI="2"
 
@@ -26,11 +26,10 @@ SRC_URI="${SRC_URI}
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-IUSE="alsa capi cups dbus esd fontconfig +gecko gnutls gphoto2 gsm hal jack jpeg lcms ldap mp3 nas ncurses openal +opengl oss +perl png samba scanner ssl test +threads win64 +X xcomposite xinerama xml"
+IUSE="alsa capi cups dbus esd fontconfig +gecko gnutls gphoto2 gsm hal jack jpeg lcms ldap mp3 nas ncurses openal +opengl oss +perl png samba scanner ssl test +threads +truetype win64 +X xcomposite xinerama xml"
 RESTRICT="test" #72375
 
-RDEPEND=">=media-libs/freetype-2.0.0
-	media-fonts/corefonts
+RDEPEND="truetype? ( >=media-libs/freetype-2.0.0 media-fonts/corefonts )
 	perl? ( dev-lang/perl dev-perl/XML-Simple )
 	capi? ( net-dialup/capi4k-utils )
 	ncurses? ( >=sys-libs/ncurses-5.2 )
@@ -66,13 +65,15 @@ RDEPEND=">=media-libs/freetype-2.0.0
 	png? ( media-libs/libpng )
 	win64? ( >=sys-devel/gcc-4.4.0 )
 	!win64? ( amd64? (
+		truetype? ( >=app-emulation/emul-linux-x86-xlibs-2.1 )
 		X? (
 			>=app-emulation/emul-linux-x86-xlibs-2.1
 			>=app-emulation/emul-linux-x86-soundlibs-2.1
 		)
 		app-emulation/emul-linux-x86-baselibs
 		>=sys-kernel/linux-headers-2.6
-	) )"
+	) )
+	xcomposite? ( x11-libs/libXcomposite ) "
 DEPEND="${RDEPEND}
 	X? (
 		x11-proto/inputproto
@@ -128,6 +129,7 @@ src_configure() {
 		$(use_with threads pthread) \
 		$(use_with scanner sane) \
 		$(use_enable test tests) \
+		$(use_with truetype freetype) \
 		$(use_enable win64) \
 		$(use_with X x) \
 		$(use_with xcomposite) \
@@ -153,4 +155,8 @@ src_install() {
 	if ! use perl ; then
 		rm "${D}"/usr/bin/{wine{dump,maker},function_grep.pl} "${D}"/usr/share/man/man1/wine{dump,maker}.1 || die
 	fi
+}
+
+pkg_postinst() {
+	paxctl -psmr "${ROOT}"/usr/bin/wine{,-preloader} 2>/dev/null #255055
 }

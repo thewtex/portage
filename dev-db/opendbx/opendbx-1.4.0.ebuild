@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/opendbx/opendbx-1.4.0.ebuild,v 1.1 2009/03/23 16:00:34 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/opendbx/opendbx-1.4.0.ebuild,v 1.2 2009/11/14 10:47:06 swegener Exp $
 
 EAPI="2"
 
@@ -40,7 +40,7 @@ pkg_setup() {
 	use oracle && append-ldflags -L"${ORACLE_HOME}"/lib
 }
 
-src_compile() {
+src_configure() {
 	local backends=""
 
 	use !bindist && use firebird && backends="${backends} firebird"
@@ -51,6 +51,9 @@ src_compile() {
 	use sqlite3 && backends="${backends} sqlite3"
 
 	econf --with-backends="${backends}" || die "econf failed"
+}
+
+src_compile() {
 	emake -j1 || die "emake failed"
 }
 
