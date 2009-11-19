@@ -8,6 +8,7 @@ SRC_URI="http://www.funtoo.org/archive/openrc/openrc-funtoo-2009.08.01.tar.bz2"
 DESCRIPTION="OpenRC manages the services, startup and shutdown of a host"
 HOMEPAGE="http://roy.marples.name/openrc"
 PROVIDE="virtual/baselayout"
+RESTRICT="nomirror"
 
 LICENSE="BSD-2"
 SLOT="0"
