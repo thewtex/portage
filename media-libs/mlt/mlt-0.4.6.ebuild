@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/mlt/mlt-0.4.6.ebuild,v 1.1 2009/10/20 06:22:29 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/mlt/mlt-0.4.6.ebuild,v 1.3 2009/11/19 20:31:54 fauli Exp $
 
 EAPI="2"
 
