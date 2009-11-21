@@ -1,6 +1,6 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/dnetc/dnetc-2.9002.479.ebuild,v 1.11 2008/04/10 00:47:43 wolf31o2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/dnetc/dnetc-2.9002.479.ebuild,v 1.13 2009/11/18 15:02:07 jer Exp $
 
 MAJ_PV=${PV:0:6}
 MIN_PV=${PV:7:9}
@@ -17,6 +17,8 @@ RESTRICT="mirror"
 
 DEPEND=""
 RDEPEND="net-dns/bind-tools"
+
+QA_PRESTRIPPED="opt/distributed.net/dnetc"
 
 S="${WORKDIR}/dnetc${MIN_PV}-linux-hppa"
 

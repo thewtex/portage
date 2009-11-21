@@ -1,8 +1,8 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/heartbeat/heartbeat-2.0.8.ebuild,v 1.15 2009/07/27 19:23:57 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/heartbeat/heartbeat-2.0.8.ebuild,v 1.17 2009/11/18 17:36:35 ssuominen Exp $
 
-inherit flag-o-matic eutils
+inherit autotools flag-o-matic eutils
 
 DESCRIPTION="Heartbeat high availability cluster manager"
 HOMEPAGE="http://www.linux-ha.org"
@@ -47,9 +47,20 @@ DEPEND="${RDEPEND}
 src_unpack() {
 	unpack ${A}
 	cd "${S}"
-	#epatch "${FILESDIR}"/${P}-update-resources-failcount.patch || die
-	epatch "${FILESDIR}"/${P}-crm-leaks.patch || die
-	epatch "${FILESDIR}"/${P}-delay.patch || die
+	#epatch "${FILESDIR}"/${P}-update-resources-failcount.patch
+	epatch "${FILESDIR}"/${P}-crm-leaks.patch
+	epatch "${FILESDIR}"/${P}-delay.patch
+	epatch "${FILESDIR}"/${P}-glibc.patch
+	epatch "${FILESDIR}"/${P}-asneeded.patch
+	sed -i \
+		-e 's:libgnutls-config:pkg-config gnutls:g' \
+		lib/mgmt/Makefile.am \
+		lib/plugins/quorumd/Makefile.am \
+		lib/plugins/quorum/Makefile.am \
+		membership/quorumd/Makefile.am \
+		mgmt/client/Makefile.am \
+		mgmt/daemon/Makefile.am
+	eautoreconf
 }
 
 src_compile() {

@@ -1,6 +1,6 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/dnetc/dnetc-2.9011.498.ebuild,v 1.5 2008/04/10 00:47:43 wolf31o2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/dnetc/dnetc-2.9011.498.ebuild,v 1.7 2009/11/18 15:02:07 jer Exp $
 
 inherit eutils versionator
 
@@ -19,6 +19,8 @@ RESTRICT="mirror"
 
 DEPEND=""
 RDEPEND=""
+
+QA_PRESTRIPPED="opt/distributed.net/dnetc"
 
 S="${WORKDIR}/dnetc${MIN_PV}-linux-x86-elf-uclibc"
 
