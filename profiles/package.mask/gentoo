@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10858 2009/11/20 04:26:36 abcd Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10866 2009/11/20 20:32:26 ssuominen Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,11 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Justin Bronder <jsbronder@gentoo.org> (20 Nov 2009)
+# Masked for removal in 30 days.  sys-cluster/osc-mpiexec
+# is a fully functional replacement.  Bug #293861
+sys-cluster/mpiexec
 
 # Alex Alexander <wired@gentoo.org> (18 Nov 2009)
 # Qt 4.6.0 rc - masking before adding for testing
@@ -133,6 +138,11 @@ games-board/ggz-kde-games
 #
 # Bug 292791.
 #
+<media-sound/amarok-2
+<app-cdr/k3b-1.68.0_alpha1
+net-print/kink
+<app-editors/kile-2.1_beta1
+kde-misc/kload
 <net-misc/kvpnc-0.9.3
 media-tv/kdetv
 media-tv/kvdr
@@ -233,51 +243,11 @@ net-misc/tkusr
 # Masked for removal in 30 days, See bug #292289 for reference
 app-text/doclifter
 
-# Samuli Suominen <ssuominen@gentoo.org> (07 Nov 2009)
-# Produces invalid files for Autoconf 2.64, bug 279482.
-# Has KDE3 dependencies. Masked for removal in 30 days.
-<dev-util/kdevelop-3.9
-
 # Ben de Groot <yngwin@gentoo.org> (06 Nov 2009)
 # Masked since 01 Feb 2009 because it's broken.
 # Now scheduled for removal by treecleaners in 30 days.
 # Several issues, see tracker bug 224951
 dev-ruby/qt4-qtruby
-
-# Samuli Suominen <ssuominen@gentoo.org> (06 Nov 2009)
-# Cleaning out packages with KDE3 dependencies.
-# Masked for removal in 30 days.
-app-laptop/kthinkbat
-app-laptop/khdapsmon
-app-laptop/khdapsmonitor
-x11-misc/lineak-kdeplugins
-mail-client/mailody
-app-portage/kelogviewer
-dev-python/pykde
-www-client/kita
-sci-mathematics/koctave
-x11-terms/kuake
-app-cdr/koverartist
-net-misc/kbandwidth
-net-irc/vyqchat
-net-im/kopete-otr
-app-backup/keep
-media-sound/musicman
-app-antivirus/klamav
-x11-plugins/khexclock
-<media-gfx/kflickr-0.9.1_p1
-x11-misc/karamba
-x11-misc/dekorator
-app-pda/libopensync-plugin-kdepim
-dev-perl/DCOP
-dev-perl/DCOP-Amarok
-dev-perl/DCOP-Amarok-Player
-dev-perl/PerlQt
-media-video/dpencoder
-media-video/qvamps
-media-video/asdf
-sci-misc/kboincspy
-games-puzzle/easysok
 
 # Rémi Cardona <remi@gentoo.org> (05 Nov 2009)
 # Broken, will stay masked until fixed.
@@ -288,12 +258,6 @@ games-puzzle/easysok
 # Broken. Will be replaced by games-fps/urbanterror when it's ready.
 # Follow progress on bug #203296
 games-fps/quake3-urbanterror
-
-# Samuli Suominen <ssuominen@gentoo.org> (04 Nov 2009)
-# media-video/mplayerthumbs replaced by kde-base/mplayerthumbs
-# <net-misc/knemo-0.5.2 replaced by >=net-misc/knemo-0.5.2
-# Removed in 30 days.
-media-video/mplayerthumbs
 
 # Alex Alexander <wired@gentoo.org> (04 Nov 2009)
 # keeping rc and live ebuilds masked
@@ -329,10 +293,6 @@ gnome-extra/gnome-keyring-manager
 # Unported to KDE4 wrt #251992. Masked for removal in 30 days.
 net-firewall/knetfilter
 
-# Samuli Suominen <ssuominen@gentoo.org> (31 Oct 2009)
-# Unported to KDE4 wrt #260166. Removed in 30 days.
-mail-client/kcheckgmail
-
 # Joe Sapp <nixphoeni@gentoo.org> (27 Oct 2009)
 # Uses old, deprecated Sensors.
 # Replaced by x11-plugins/desklet-Genesis.
@@ -355,14 +315,6 @@ media-video/xfmedia
 # Will be removed in 30 days
 dev-python/pymsn
 
-# Samuli Suominen <ssuominen@gentoo.org> (25 Oct 2009)
-# Masked for security. CVE-2009-{3603,3604,3606,3608,3609}.
-#
-# http://bugs.gentoo.org/290470
-#
-# Replaced by kde-base/okular. Removed in 30 days.
-kde-base/kpdf
-
 # Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (25 Oct 2009)
 # Documentation for removed versions of dev-python/twisted. Masked for deletion in 30 days.
 dev-python/twisted-docs
@@ -370,17 +322,6 @@ dev-python/twisted-docs
 # Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (25 Oct 2009)
 # Replaced by dev-libs/cryptlib[python]. Masked for deletion in 30 days.
 dev-python/cryptlib_py
-
-# Samuli Suominen <ssuominen@gentoo.org> (25 Oct 2009)
-# KDE3-only. Replaced by app-cdr/acetoneiso.
-# Masked for removal in 30 days.
-app-cdr/kiso
-
-# Samuli Suominen <ssuominen@gentoo.org> (24 Oct 2009)
-# Deprecated aRts support wrt bug #270575
-# Masked for removal in 30 days.
-kde-base/noatun
-kde-base/noatun-plugins
 
 # Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (24 Oct 2009)
 # Replaced by app-mobilephone/gammu[python]. Masked for deletion in 30 days.

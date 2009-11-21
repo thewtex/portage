@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5014 2009/11/20 03:37:21 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5019 2009/11/21 05:47:44 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -983,14 +983,8 @@ dev-util/git:ppcsha1 - Make use of a bundled routine that is optimized for the P
 dev-util/git:subversion - Include git-svn for dev-util/subversion support.
 dev-util/git:webdav - Adds support for push'ing to HTTP repositories via DAV.
 dev-util/global:vim - Integrate the GNU GLOBAL source code tag system with Vim
-dev-util/kdevelop:ada - Support for the Ada programming language.
-dev-util/kdevelop:clearcase - Support for the ClearCase version control system.
 dev-util/kdevelop:cmake - Support for the CMake Build System.
-dev-util/kdevelop:haskell - Support for the Haskell programming language.
-dev-util/kdevelop:pascal - Support for the Pascal programming language.
-dev-util/kdevelop:perforce - Support for the Perforce version control system.
 dev-util/kdevelop:qmake - Support for the QMake Build System.
-dev-util/kdevelop:sql - Support for the Structured Query Language (SQL).
 dev-util/kdevplatform:git - Add suport for git VCS
 dev-util/kdevplatform:mercurial - Add suport for mercurial VCS
 dev-util/mercurial:bugzilla - Support bugzilla integration.
@@ -1588,6 +1582,7 @@ media-plugins/kipi-plugins:mjpeg - Add mjpeg suppport
 media-plugins/kipi-plugins:redeyes - Add redeyes removal suppport
 media-plugins/mythmusic:libvisual - Enables media-libs/libvisual support for effects
 media-plugins/mythphone:festival - Enable app-accessibility/festival support
+media-plugins/mythvideo:jamu - Use and configure the Just Another Metadata Utility by default
 media-plugins/mythzoneminder:minimal - Don't build the mythtv side of this plugin, only the part that communicates with zoneminder. 
 media-plugins/vdr-burn:projectx - Enables support for media-video/projectx
 media-plugins/vdr-dvdconvert:projectx - Enable support for media-video/projectx
@@ -2068,6 +2063,7 @@ net-analyzer/sancp:sguil - Enable sguil (The Analyst Console for Network Securit
 net-analyzer/scanlogd:nids - Use net-libs/libnids for packet capturing
 net-analyzer/scanlogd:pcap - Use net-libs/libpcap for packet capturing
 net-analyzer/scapy:pyx - Enable dev-python/pyx support for psdump/pdfdump commands
+net-analyzer/scapy:tcpreplay - Enable net-analyzer/tcpreply support for fast packet replay
 net-analyzer/scapy:visual - Enable dev-python/visual support for 3d graphs
 net-analyzer/smokeping:speedy - Use dev-perl/SpeedyCGI instead of perl to speed up cgi scripts
 net-analyzer/snort:aruba - Enable Aruba support
@@ -2559,6 +2555,7 @@ net-misc/tightvnc:server - Build vncserver. Allows us to only build server on on
 net-misc/tor:bundledlibevent - USE bundled libevent for asynchronous DNS requests (provides a tiny bit more anonymity)
 net-misc/vde:pcap -  Enable the pcap-based plugin that allows creating a switch against a real interface. 
 net-misc/vde:ssl -  Enable the cryptcab plugin that allows creating an encrypted virtual cable. 
+net-misc/vidalia:tor - Allow to use a local tor setup
 net-misc/vinagre:applet - Enable vinagre applet for gnome-base/gnome-panel.
 net-misc/vinagre:ssh - Enable ssh plugin.
 net-misc/vinagre:telepathy - Enable access to remote desktop via a telepathy client.
@@ -2834,7 +2831,6 @@ sci-libs/plplot:itcl - Add bindings for dev-tcltk/itcl
 sci-libs/plplot:jadetex - Add device for app-text/jadetex (for processing tex files produced by the TeX backend of Jade)
 sci-libs/plplot:octave - Add bindings for sci-mathematics/octave
 sci-libs/plplot:qhull - Add bindings for media-libs/qhull bindings
-sci-libs/scipy:sandbox - Adds experimental scipy sandbox modules
 sci-libs/scipy:umfpack - Adds support for sparse solving with sci-libs/umfpack
 sci-libs/spqr:metis - Use METIS (sci-libs/metis or sci-libs/parmetis) for partitioning
 sci-libs/spqr:tbb - Enable multithreading with the Intel Threads Building Block (needs dev-cpp/tbb)
