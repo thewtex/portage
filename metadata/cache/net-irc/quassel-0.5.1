@@ -1,0 +1,22 @@
+dbus? ( x11-libs/qt-dbus:4 ) monolithic? ( !postgres? ( x11-libs/qt-sql:4[sqlite] dev-db/sqlite[threadsafe] ) postgres? ( x11-libs/qt-sql:4[postgres] >=virtual/postgresql-base-8.3 ) x11-libs/qt-script:4 x11-libs/qt-gui:4 kde? ( >=kde-base/kdelibs-4.1 ) phonon? ( || ( media-sound/phonon x11-libs/qt-phonon ) ) webkit? ( x11-libs/qt-webkit:4 ) ) !monolithic? ( server? ( !postgres? ( x11-libs/qt-sql:4[sqlite] dev-db/sqlite[threadsafe] ) postgres? ( x11-libs/qt-sql:4[postgres] ) x11-libs/qt-script:4 ) X? ( x11-libs/qt-gui:4 kde? ( >=kde-base/kdelibs-4.1 ) phonon? ( || ( media-sound/phonon x11-libs/qt-phonon ) ) webkit? ( x11-libs/qt-webkit:4 ) ) ) ssl? ( x11-libs/qt-core:4[ssl] ) >=dev-util/cmake-2.6.2-r1 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+dbus? ( x11-libs/qt-dbus:4 ) monolithic? ( !postgres? ( x11-libs/qt-sql:4[sqlite] dev-db/sqlite[threadsafe] ) postgres? ( x11-libs/qt-sql:4[postgres] >=virtual/postgresql-base-8.3 ) x11-libs/qt-script:4 x11-libs/qt-gui:4 kde? ( >=kde-base/kdelibs-4.1 ) phonon? ( || ( media-sound/phonon x11-libs/qt-phonon ) ) webkit? ( x11-libs/qt-webkit:4 ) ) !monolithic? ( server? ( !postgres? ( x11-libs/qt-sql:4[sqlite] dev-db/sqlite[threadsafe] ) postgres? ( x11-libs/qt-sql:4[postgres] ) x11-libs/qt-script:4 ) X? ( x11-libs/qt-gui:4 kde? ( >=kde-base/kdelibs-4.1 ) phonon? ( || ( media-sound/phonon x11-libs/qt-phonon ) ) webkit? ( x11-libs/qt-webkit:4 ) ) ) ssl? ( x11-libs/qt-core:4[ssl] )
+0
+http://quassel-irc.org/pub/quassel-0.5.1.tar.bz2
+
+http://quassel-irc.org/
+GPL-3
+Qt4/KDE4 IRC client suppporting a remote daemon for 24/7 connectivity.
+~amd64 ~ppc ~x86
+base cmake-utils eutils flag-o-matic multilib portability toolchain-funcs
+dbus debug kde monolithic +oxygen phonon postgres +server +ssl webkit +X linguas_cs linguas_da linguas_de linguas_fi linguas_fr linguas_hu linguas_it linguas_nb_NO linguas_ru linguas_sl linguas_tr
+
+
+
+2
+
+compile configure install postinst prepare setup test unpack
+
+
+
+
+
