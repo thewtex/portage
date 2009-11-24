@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/xxe/xxe-4.3.0.ebuild,v 1.1 2009/04/23 17:44:45 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-editors/xxe/xxe-4.3.0.ebuild,v 1.2 2009/11/21 12:36:16 patrick Exp $
 
 MY_PV="${PV//./_}"
 MY_PV="${MY_PV/_p/p}"
@@ -17,8 +17,8 @@ do
 	SRC_URI_ADDON="${SRC_URI_ADDON} http://www.xmlmind.com/xmleditor/_download/${i}-${MY_PV}.zip"
 done
 
-SRC_URI="http://www.xmlmind.com/xmleditor/_download/${PN}-perso-${MY_PV}.tar.gz
-	doc? ( http://www.xmlmind.com/xmleditor/_download/${PN}-devdocs-${MY_PV}.tar.gz )
+SRC_URI="http://www.xmlmind.com/archive/xmleditor/4.3.0_01/${PN}-perso-${MY_PV}.tar.gz
+	doc? ( http://www.xmlmind.com/archive/xmleditor/4.3.0_01/${PN}-devdocs-${MY_PV}.tar.gz )
 	!minimal? ( ${SRC_URI_ADDON} )"
 
 HOMEPAGE="http://www.xmlmind.com/xmleditor/index.html"

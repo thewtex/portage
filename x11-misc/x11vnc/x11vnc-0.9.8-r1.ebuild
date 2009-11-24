@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/x11vnc/x11vnc-0.9.8-r1.ebuild,v 1.1 2009/11/06 21:54:33 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/x11vnc/x11vnc-0.9.8-r1.ebuild,v 1.3 2009/11/21 10:42:30 swegener Exp $
 
 EAPI="2"
 
@@ -13,11 +13,13 @@ SRC_URI="mirror://sourceforge/libvncserver/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sh ~sparc ~x86 ~x86-fbsd"
-IUSE="+jpeg +zlib threads ssl crypt v4l xinerama avahi system-libvncserver"
+IUSE="fbcon +jpeg +zlib threads ssl crypt v4l xinerama avahi system-libvncserver"
 
-RDEPEND="system-libvncserver? ( >=net-libs/libvncserver-0.9.7[threads=] )
-	zlib? ( sys-libs/zlib )
-	jpeg? (	media-libs/jpeg )
+RDEPEND="system-libvncserver? ( >=net-libs/libvncserver-0.9.7[threads=,jpeg=,zlib=] )
+	!system-libvncserver? (
+		zlib? ( sys-libs/zlib )
+		jpeg? ( media-libs/jpeg )
+	)
 	ssl? ( dev-libs/openssl )
 	avahi? ( >=net-dns/avahi-0.6.4 )
 	xinerama? ( x11-libs/libXinerama )
@@ -42,7 +44,7 @@ src_prepare() {
 }
 
 pkg_setup() {
-	if use avahi && ! use threads && ! use system-libvncserver
+	if use avahi && ! use threads
 	then
 		ewarn "Non-native avahi support has been enabled."
 		ewarn "Native avahi support can be enabled by also enabling the threads USE flag."
@@ -61,6 +63,7 @@ src_configure() {
 		$(use_with jpeg) \
 		$(use_with zlib) \
 		$(use_with threads pthread) \
+		$(use_with fbcon fbdev) \
 		|| die "econf failed"
 }
 

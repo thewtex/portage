@@ -1,10 +1,74 @@
 # ChangeLog for profile directory
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.3579 2009/11/15 22:25:48 remi Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.3598 2009/11/22 17:52:32 grobian Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  22 Nov 2009; Fabian Groffen <grobian@gentoo.org> profiles.desc:
+  Added Mac OS X Snow Leopard (10.6) Prefix profiles
+
+  22 Nov 2009; MATSUU Takuto <matsuu@gentoo.org> use.local.desc:
+  Added libevent local USE flag for net-dns/unbound.
+
+  22 Nov 2009; Fabian Groffen <grobian@gentoo.org> profiles.desc:
+  Drop all Prefix profiles to experimental state for the time being. This
+  makes repoman ignore all Prefix keywords in ebuilds which is good for the
+  time being as we can't provide the full dependencies in gx86. The Prefix
+  rsync image will have the Prefix profiles reenabled as 'dev' again such
+  that we can keep on checking deps in the full Prefix environment.
+
+  22 Nov 2009; Theo Chatzimichos <tampakrap@gentoo.org> package.mask:
+  Mask koffice-2.1.0 until official release
+
+  22 Nov 2009; Torsten Veller <tove@gentoo.org> package.mask:
+  Mask net-mail/vimap for removal
+
+  22 Nov 2009; Tobias Scherbaum <dertobi123@gentoo.org> package.mask:
+  Mask app-admin/eselect-oracle for removal in 30 days.
+
+  20 Nov 2009; Justin Bronder <jsbronder@gentoo.org> package.mask:
+  Masking sys-cluster/mpiexec for removal in 30 days.
+  sys-cluster/osc-mpiexec is a fully functional replacement.
+  Bug #293861
+
+  20 Nov 2009; Jonathan Callen <abcd@gentoo.org> package.mask:
+  Remove mask for koffice
+
+  20 Nov 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Remove KDE 3.5.10 mask.
+
+  19 Nov 2009; Gordon Malm <gengor@gentoo.org> package.mask:
+  Remove sci-calculators/qalculate-kde from package.mask, already removed
+  from tree.
+
+  19 Nov 2009; Ulrich Mueller <ulm@gentoo.org> package.mask:
+  Add mask for live ebuild of app-emacs/gnus.
+
+  19 Nov 2009; Sébastien Fabbro <bicatali@gentoo.org> package.mask:
+  Removed masking of sci-physics/root
+
+  18 Nov 2009; Alex Alexander <wired@gentoo.org> package.mask:
+  masked Qt 4.6.0 rc before adding for testing
+
+  17 Nov 2009; Peter Volkov <pva@gentoo.org> package.mask:
+  Masked app-text/ghostscript-gnu, bug 264614.
+
+  17 Nov 2009; Vlastimil Babka <caster@gentoo.org> package.mask:
+  Mask also java-virtuals/jdk-with-com-sun:1.4
+
+  17 Nov 2009; Vlastimil Babka <caster@gentoo.org> package.mask:
+  Mask sun-based 1.4 jdk and jre.
+
+  17 Nov 2009; Olivier Crête <tester@gentoo.org> package.mask:
+  Unmask gst-plugins-x264, new version is coming and stable still works fine
+
+  16 Nov 2009; Jeremy Olexa <darkside@gentoo.org> updates/4Q-2009:
+  move app-misc/git app-misc/gnuit, part of bug 287863
+
+  16 Nov 2009; Matthias Schwarzott <zzam@gentoo.org> package.mask:
+  Unmask udev-146-r2 and udev-147.
 
   15 Nov 2009; Rémi Cardona <remi@gentoo.org> package.mask:
   mask dead X drivers

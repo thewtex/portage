@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/qemu/qemu-0.11.0.ebuild,v 1.2 2009/11/05 23:39:24 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/qemu/qemu-0.11.0.ebuild,v 1.5 2009/11/23 00:20:33 lu_zero Exp $
 
 EAPI="2"
 
@@ -13,7 +13,7 @@ SRC_URI="http://download.savannah.gnu.org/releases/qemu/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
-IUSE="alsa bluetooth esd gnutls ncurses pulseaudio +sdl vde kqemu kvm"
+IUSE="alsa bluetooth esd gnutls ncurses pulseaudio sasl +sdl vde kqemu kvm"
 
 COMMON_TARGETS="i386 x86_64 arm cris m68k mips mipsel mips64 mips64el ppc ppc64 sh4 sh4eb sparc"
 
@@ -37,6 +37,7 @@ RDEPEND="!app-emulation/qemu-softmmu
 	pulseaudio? ( media-sound/pulseaudio )
 	gnutls? ( net-libs/gnutls )
 	ncurses? ( sys-libs/ncurses )
+	sasl? ( dev-libs/cyrus-sasl )
 	sdl? ( >=media-libs/libsdl-1.2.11 )
 	vde? ( net-misc/vde )
 	kvm? ( >=sys-kernel/linux-headers-2.6.29 )
@@ -59,9 +60,8 @@ src_prepare() {
 	[[ -x /sbin/paxctl ]] && \
 		sed -i 's/^VL_LDFLAGS=$/VL_LDFLAGS=-Wl,-z,execheap/' \
 			Makefile.target
-	# avoid strip
-	sed -i 's/$(INSTALL) -m 755 -s/$(INSTALL) -m 755/' \
-		Makefile Makefile.target */Makefile
+	# Append CFLAGS while linking
+	sed -i 's/$(LDFLAGS)/$(QEMU_CFLAGS) $(CFLAGS) $(LDFLAGS)/' rules.mak
 	epatch "${FILESDIR}/qemu-0.11.0-mips64-user-fix.patch"
 }
 
@@ -78,12 +78,13 @@ src_configure() {
 			user_targets="${user_targets} ${target}-linux-user"
 	done
 
-	conf_opts="--disable-darwin-user --disable-bsd-user"
+	conf_opts="--disable-darwin-user --disable-bsd-user --disable-strip"
 
 	if test ! -z "${softmmu_targets}" ; then
 		einfo "Building following softmmu targets: ${softmmu_targets}"
 		use gnutls || conf_opts="$conf_opts --disable-vnc-tls"
 		use ncurses || conf_opts="$conf_opts --disable-curses"
+		use sasl || conf_opts="$conf_opts --disable-vnc-sasl"
 		use sdl || conf_opts="$conf_opts --disable-sdl"
 		use vde || conf_opts="$conf_opts --disable-vde"
 		use bluetooth || conf_opts="$conf_opts --disable-bluez"
@@ -116,7 +117,7 @@ src_configure() {
 
 	target_list="${softmmu_targets} ${user_targets}"
 
-	filter-flags -fpie -fstack-protector
+	filter-flags -fPIE
 
 	./configure ${conf_opts} \
 		--audio-drv-list="$audio_opts" \

@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10838 2009/11/16 06:13:33 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10872 2009/11/23 00:17:32 cardoe Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -31,16 +31,86 @@
 
 #--- END OF EXAMPLES ---
 
+# Doug Goldstein <cardoe@gentoo.org> (22 Nov 2009)
+# masking until this package can follow the actual
+# kvm-kmod upstream package
+app-emulation/kvm-kmod
+
+# Theo Chatzimichos <tampakrap@gentoo.org> (22 Nov 2009)
+# KOffice 2.1.0 Masked until the release
+~app-office/koffice-l10n-2.1.0
+~app-office/kpresenter-2.1.0
+~app-office/kplato-2.1.0
+~app-office/krita-2.1.0
+~app-office/koffice-data-2.1.0
+~app-office/kspread-2.1.0
+~app-office/karbon-2.1.0
+~app-office/kchart-2.1.0
+~app-office/koffice-libs-2.1.0
+~app-office/koffice-meta-2.1.0
+~app-office/kword-2.1.0
+
+# Torsten Veller <tove@gentoo.org> (22 Nov 2009)
+# Masked for removal. Probably vulnerable
+# GLSA 200502-02 and 200510-10
+net-mail/vimap
+
+# Tobias Scherbaum <dertobi123@gentoo.org> (22 Nov 2009)
+# Masked for removal in 30 days. Not of any use anymore.
+app-admin/eselect-oracle
+
+# Justin Bronder <jsbronder@gentoo.org> (20 Nov 2009)
+# Masked for removal in 30 days.  sys-cluster/osc-mpiexec
+# is a fully functional replacement.  Bug #293861
+sys-cluster/mpiexec
+
+# Alex Alexander <wired@gentoo.org> (18 Nov 2009)
+# Qt 4.6.0 rc - masking before adding for testing
+=x11-libs/qt-4.6.0_rc*
+=x11-libs/qt-assistant-4.6.0_rc*
+=x11-libs/qt-core-4.6.0_rc*
+=x11-libs/qt-dbus-4.6.0_rc*
+=x11-libs/qt-demo-4.6.0_rc*
+=x11-libs/qt-gui-4.6.0_rc*
+=x11-libs/qt-multimedia-4.6.0_rc*
+=x11-libs/qt-opengl-4.6.0_rc*
+=x11-libs/qt-phonon-4.6.0_rc*
+=x11-libs/qt-qt3support-4.6.0_rc*
+=x11-libs/qt-script-4.6.0_rc*
+=x11-libs/qt-sql-4.6.0_rc*
+=x11-libs/qt-svg-4.6.0_rc*
+=x11-libs/qt-test-4.6.0_rc*
+=x11-libs/qt-webkit-4.6.0_rc*
+=x11-libs/qt-xmlpatterns-4.6.0_rc*
+
+# Peter Volkov <pva@gentoo.org> (17 Nov 2009)
+# Masked for removal. Use app-text/ghostscript-gpl - most up to date version
+# of ghostscipt. Bug #264614.
+app-text/ghostscript-gnu
+
+# Vlastimil Babka <caster@gentoo.org> (17 Nov 2009)
+# Removal for EOL and security, bug #287615
+=app-emulation/emul-linux-x86-java-1.4*
+=dev-java/sun-jdk-1.4*
+=dev-java/sun-jre-bin-1.4*
+=dev-java/ibm-jre-bin-1.4*
+dev-java/blackdown-jre
+dev-java/blackdown-jdk
+=java-virtuals/jdk-with-com-sun-1.4*
+
 # Rémi Cardona <remi@gentoo.org> (15 Nov 2009)
+# Tomáš Chvátal <scarabeus@gentoo.org> (18 Nov 2009)
 # Broken since xorg-server 1.5 stabilization
-# see bugs #248529 and #248531
+# see bugs #248529 and #248531 and #275825
 # Masked for removal in 7 days
+x11-drivers/xf86-video-vga
 x11-drivers/xf86-video-imstt
 x11-drivers/xf86-video-vermilion
 
 # Ulrich Mueller <ulm@gentoo.org> (15 Nov 2009)
-# Pre-alpha development snapshot.
+# Keep pre-alpha development snapshot and live ebuild masked.
 =app-emacs/gnus-5.13_p*
+~app-emacs/gnus-9999
 
 # Ulrich Mueller <ulm@gentoo.org> (15 Nov 2009)
 # Last release was in May 2008 which is a long time
@@ -63,13 +133,8 @@ app-emulation/transgaming-mozctlinstaller
 
 # Ulrich Mueller <ulm@gentoo.org> (14 Nov 2009)
 # CVS snapshot, masked for one week of testing.
+# Duration extended until bug 293953 is resolved.
 =app-emacs/wanderlust-2.15.7_pre*
-
-# Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org> (14 Nov 2009)
-# Masked until tarballs are released into the public
-# Currently fails to run when built with binutils-2.20 (bug 290662)
-~media-sound/amarok-2.2.1
-~media-sound/amarok-utils-2.2.1
 
 # Tomáš Chvátal <scarabeus@gentoo.org> (14 Nov 2009)
 # Mask all packages that fail to comply to cmake eclass
@@ -78,7 +143,6 @@ app-emulation/transgaming-mozctlinstaller
 # See bug #287583 and those added to it.
 <dev-libs/boost-1.35.0-r1
 net-p2p/museek+
-dev-cpp/gccxml
 games-arcade/blinkensisters
 sys-apps/initng-ifiles
 sys-apps/initng
@@ -103,6 +167,11 @@ games-board/ggz-kde-games
 #
 # Bug 292791.
 #
+<media-sound/amarok-2
+<app-cdr/k3b-1.68.0_alpha1
+net-print/kink
+<app-editors/kile-2.1_beta1
+kde-misc/kload
 <net-misc/kvpnc-0.9.3
 media-tv/kdetv
 media-tv/kvdr
@@ -141,11 +210,6 @@ media-sound/kstreamripper
 # KDE3 app, replaced by kde-base/powerdevil in KDE4.
 # Removal in 30 days, bug #292799
 sys-power/kpowersave
-
-# Matthias Schwarzott <zzam@gentoo.org> (11 Nov 2009)
-# Mask new udev-ebuilds for testing their new init-script logic.
-=sys-fs/udev-146-r2
-~sys-fs/udev-147
 
 # Samuli Suominen <ssuominen@gentoo.org> (10 Nov 2009)
 # Has kde-base/arts depend, and it can't be removed.
@@ -208,495 +272,11 @@ net-misc/tkusr
 # Masked for removal in 30 days, See bug #292289 for reference
 app-text/doclifter
 
-# Samuli Suominen <ssuominen@gentoo.org> (07 Nov 2009)
-#
-# Mask KDE 3.5.10 for removal, excluding the dependencies
-# required for stable koffice. Removed in 30 days.
-#
-=kde-base/arts-3.5*
-=kde-base/kdenetwork-3.5*
-=kde-base/mimelib-3.5*
-=kde-base/superkaramba-3.5*
-=kde-base/kdejava-3.5*
-=kde-base/kcachegrind-3.5*
-=kde-base/kdeedu-applnk-3.5*
-=kde-base/noatun-plugins-3.5*
-=kde-base/quanta-3.5*
-=kde-base/nsplugins-3.5*
-=kde-base/kollision-3.5*
-=kde-base/thumbnailers-3.5*
-=kde-base/libkdenetwork-3.5*
-=kde-base/libkleo-3.5*
-=kde-base/kommander-3.5*
-=kde-base/kalarm-3.5*
-=kde-base/libkworkspace-3.5*
-=kde-base/knotify-3.5*
-=kde-base/kdepimlibs-3.5*
-=kde-base/kmplot-3.5*
-=kde-base/kdenetwork-meta-3.5*
-=kde-base/bovo-3.5*
-=kde-base/kdm-3.5*
-=kde-base/kabcclient-3.5*
-=kde-base/kgeography-3.5*
-=kde-base/kolourpaint-3.5*
-=kde-base/kopete-3.5*
-=kde-base/kdemultimedia-kappfinder-data-3.5*
-=kde-base/kmahjongg-3.5*
-=kde-base/konqueror-akregator-3.5*
-=kde-base/killbots-3.5*
-=kde-base/kdepim-strigi-analyzer-3.5*
-=kde-base/certmanager-3.5*
-=kde-base/ksmserver-3.5*
-=kde-base/kdeadmin-meta-3.5*
-=kde-base/kleopatra-3.5*
-=kde-base/kppp-3.5*
-=kde-base/klettres-3.5*
-=kde-base/kdeplasma-addons-3.5*
-=kde-base/kmrml-3.5*
-=kde-base/kdesdk-scripts-3.5*
-=kde-base/kdesdk-kioslaves-3.5*
-=kde-base/kdeaccessibility-colorschemes-3.5*
-=kde-base/konq-plugins-3.5*
-=kde-base/parley-3.5*
-=kde-base/kde-menu-3.5*
-=kde-base/soliduiserver-3.5*
-=kde-base/klinkstatus-3.5*
-=kde-base/kdeartwork-colorschemes-3.5*
-=kde-base/ksnapshot-3.5*
-=kde-base/libkscan-3.5*
-=kde-base/ark-3.5*
-=kde-base/step-3.5*
-=kde-base/kmousetool-3.5*
-=kde-base/kget-3.5*
-=kde-base/kdegames-meta-3.5*
-=kde-base/ksnake-3.5*
-=kde-base/kdvi-3.5*
-=kde-base/kdeadmin-kfile-plugins-3.5*
-=kde-base/kjsembed-3.5*
-=kde-base/kjumpingcube-3.5*
-=kde-base/kworldclock-3.5*
-=kde-base/libkmahjongg-3.5*
-=kde-base/kmilo-3.5*
-=kde-base/cervisia-3.5*
-=kde-base/knewsticker-scripts-3.5*
-=kde-base/ksirc-3.5*
-=kde-base/kdeartwork-sounds-3.5*
-=kde-base/kmtrace-3.5*
-=kde-base/kuser-3.5*
-=kde-base/kdeartwork-kscreensaver-3.5*
-=kde-base/keditfiletype-3.5*
-=kde-base/libkpimexchange-3.5*
-=kde-base/kdemultimedia-arts-3.5*
-=kde-base/kamera-3.5*
-=kde-base/ksvg-3.5*
-=kde-base/kpersonalizer-3.5*
-=kde-base/klickety-3.5*
-=kde-base/nepomuk-3.5*
-=kde-base/kglobalaccel-3.5*
-=kde-base/kdeaddons-kfile-plugins-3.5*
-=kde-base/kuiviewer-3.5*
-=kde-base/kspy-3.5*
-=kde-base/kdebase-startkde-3.5*
-=kde-base/kcolorchooser-3.5*
-=kde-base/renamedlg-images-3.5*
-=kde-base/kfourinline-3.5*
-=kde-base/kcron-3.5*
-=kde-base/kmoon-3.5*
-=kde-base/kapptemplate-3.5*
-=kde-base/kiconfinder-3.5*
-=kde-base/kdeaccessibility-iconthemes-3.5*
-=kde-base/kdebindings-csharp-3.5*
-=kde-base/kdebase-menu-icons-3.5*
-=kde-base/kshisen-3.5*
-=kde-base/kbruch-3.5*
-=kde-base/kbstateapplet-3.5*
-=kde-base/kbreakout-3.5*
-=kde-base/kquitapp-3.5*
-=kde-base/lskat-3.5*
-=kde-base/kruler-3.5*
-=kde-base/okteta-3.5*
-=kde-base/atlantik-3.5*
-=kde-base/knewsticker-3.5*
-=kde-base/kwalletd-3.5*
-=kde-base/kenolaba-3.5*
-=kde-base/kicker-applets-3.5*
-=kde-base/klines-3.5*
-=kde-base/kstyles-3.5*
-=kde-base/automoc-3.5*
-=kde-base/kreadconfig-3.5*
-=kde-base/libkcompactdisc-3.5*
-=kde-base/konsole-3.5*
-=kde-base/kfind-3.5*
-=kde-base/kwifimanager-3.5*
-=kde-base/kdepim-icons-3.5*
-=kde-base/artsplugin-xine-3.5*
-=kde-base/kmail-3.5*
-=kde-base/kdetoys-3.5*
-=kde-base/kalyptus-3.5*
-=kde-base/kdewebdev-3.5*
-=kde-base/kspaceduel-3.5*
-=kde-base/kdepim-kresources-3.5*
-=kde-base/kpf-3.5*
-=kde-base/kde-meta-3.5*
-=kde-base/libkpgp-3.5*
-=kde-base/artsplugin-audiofile-3.5*
-=kde-base/kitchensync-3.5*
-=kde-base/kdeutils-3.5*
-=kde-base/kmix-3.5*
-=kde-base/kolf-3.5*
-=kde-base/eyesapplet-3.5*
-=kde-base/kdebugdialog-3.5*
-=kde-base/kdeadmin-3.5*
-=kde-base/libkdcraw-3.5*
-=kde-base/ksaneplugin-3.5*
-=kde-base/kodo-3.5*
-=kde-base/knotes-3.5*
-=kde-base/kblocks-3.5*
-=kde-base/kde-3.5*
-=kde-base/krunner-3.5*
-=kde-base/kooka-3.5*
-=kde-base/kalzium-3.5*
-=kde-base/kdesdk-misc-3.5*
-=kde-base/kdepim-kioslaves-3.5*
-=kde-base/knewstuff-3.5*
-=kde-base/ksayit-3.5*
-=kde-base/svgpart-3.5*
-=kde-base/libkcddb-3.5*
-=kde-base/kdegraphics-strigi-analyzer-3.5*
-=kde-base/krossruby-3.5*
-=kde-base/dolphin-3.5*
-=kde-base/kdeedu-3.5*
-=kde-base/ksystraycmd-3.5*
-=kde-base/kjots-3.5*
-=kde-base/libkcal-3.5*
-=kde-base/libkdepim-3.5*
-=kde-base/systemsettings-3.5*
-=kde-base/kaudiocreator-3.5*
-=kde-base/sweeper-3.5*
-=kde-base/kdesdk-meta-3.5*
-=kde-base/kaddressbook-3.5*
-=kde-base/ksame-3.5*
-=kde-base/korn-3.5*
-=kde-base/kstars-3.5*
-=kde-base/kdedglobalaccel-3.5*
-=kde-base/kcmshell-3.5*
-=kde-base/kwin4-3.5*
-=kde-base/amor-3.5*
-=kde-base/korundum-3.5*
-=kde-base/kfouleggs-3.5*
-=kde-base/solid-hardware-3.5*
-=kde-base/blinken-3.5*
-=kde-base/kdelirc-3.5*
-=kde-base/kmines-3.5*
-=kde-base/keditbookmarks-3.5*
-=kde-base/kpat-3.5*
-=kde-base/gwenview-3.5*
-=kde-base/kpoker-3.5*
-=kde-base/kfax-3.5*
-=kde-base/libkdeedu-3.5*
-=kde-base/kde-menu-icons-3.5*
-=kde-base/kdeartwork-3.5*
-=kde-base/kdesdk-strigi-analyzer-3.5*
-=kde-base/kvoctrain-3.5*
-=kde-base/kdegames-3.5*
-=kde-base/kview-3.5*
-=kde-base/kdebase-pam-3.5*
-=kde-base/kdcop-3.5*
-=kde-base/kwrited-3.5*
-=kde-base/drkonqi-3.5*
-=kde-base/kmouth-3.5*
-=kde-base/kcalc-3.5*
-=kde-base/kdeartwork-desktopthemes-3.5*
-=kde-base/noatun-3.5*
-=kde-base/ksystemlog-3.5*
-=kde-base/libkholidays-3.5*
-=kde-base/ksysv-3.5*
-=kde-base/lilo-config-3.5*
-=kde-base/kaddressbook-plugins-3.5*
-=kde-base/kode-3.5*
-=kde-base/kdebase-desktoptheme-3.5*
-=kde-base/kscd-3.5*
-=kde-base/krosspython-3.5*
-=kde-base/dcopc-3.5*
-=kde-base/konquest-3.5*
-=kde-base/phonon-kde-3.5*
-=kde-base/kalgebra-3.5*
-=kde-base/kturtle-3.5*
-=kde-base/kdeaccessibility-meta-3.5*
-=kde-base/renamedlg-plugins-3.5*
-=kde-base/libkipi-3.5*
-=kde-base/kuiserver-3.5*
-=kde-base/keduca-3.5*
-=kde-base/kapman-3.5*
-=kde-base/kontactinterfaces-3.5*
-=kde-base/kig-3.5*
-=kde-base/kdegraphics-3.5*
-=kde-base/libksane-3.5*
-=kde-base/kimagemapeditor-3.5*
-=kde-base/kdeaddons-meta-3.5*
-=kde-base/umbrello-3.5*
-=kde-base/khangman-3.5*
-=kde-base/kttsd-3.5*
-=kde-base/networkstatus-3.5*
-=kde-base/kstart-3.5*
-=kde-base/kdeutils-meta-3.5*
-=kde-base/kinfocenter-3.5*
-=kde-base/libplasmaclock-3.5*
-=kde-base/kpilot-3.5*
-=kde-base/kmimetypefinder-3.5*
-=kde-base/kdesdk-3.5*
-=kde-base/kbounce-3.5*
-=kde-base/kdebase-menu-3.5*
-=kde-base/kdeartwork-iconthemes-3.5*
-=kde-base/kde-wallpapers-3.5*
-=kde-base/libknotificationitem-3.5*
-=kde-base/kcheckpass-3.5*
-=kde-base/kdf-3.5*
-=kde-base/ksmiletris-3.5*
-=kde-base/ktraderclient-3.5*
-=kde-base/kbattleship-3.5*
-=kde-base/libksieve-3.5*
-=kde-base/ktux-3.5*
-=kde-base/kfloppy-3.5*
-=kde-base/ktuberling-3.5*
-=kde-base/kdebase-3.5*
-=kde-base/kstartupconfig-3.5*
-=kde-base/kdeaddons-docs-konq-plugins-3.5*
-=kde-base/system-config-printer-kde-3.5*
-=kde-base/kdeaccessibility-3.5*
-=kde-base/marble-3.5*
-=kde-base/kanagram-3.5*
-=kde-base/khexedit-3.5*
-=kde-base/kdict-3.5*
-=kde-base/kfile-3.5*
-=kde-base/krdc-3.5*
-=kde-base/kontact-3.5*
-=kde-base/ktouch-3.5*
-=kde-base/kfmclient-3.5*
-=kde-base/kontact-specialdates-3.5*
-=kde-base/plasma-workspace-3.5*
-=kde-base/knode-3.5*
-=kde-base/ksplashml-3.5*
-=kde-base/qtjava-3.5*
-=kde-base/kdeartwork-emoticons-3.5*
-=kde-base/kdepim-meta-3.5*
-=kde-base/qtruby-3.5*
-=kde-base/kcoloredit-3.5*
-=kde-base/smoke-3.5*
-=kde-base/kdnssd-3.5*
-=kde-base/klaptopdaemon-3.5*
-=kde-base/kdepim-wizards-3.5*
-=kde-base/kdemaildir-3.5*
-=kde-base/kbugbuster-3.5*
-=kde-base/kfilereplace-3.5*
-=kde-base/kate-plugins-3.5*
-=kde-base/kpercentage-3.5*
-=kde-base/kde-l10n-3.5*
-=kde-base/kxkb-3.5*
-=kde-base/kdebase-wallpapers-3.5*
-=kde-base/korganizer-3.5*
-=kde-base/ksysguard-3.5*
-=kde-base/kcharselect-3.5*
-=kde-base/kdewebdev-meta-3.5*
-=kde-base/kandy-3.5*
-=kde-base/kteatime-3.5*
-=kde-base/solid-3.5*
-=kde-base/kdebase-meta-3.5*
-=kde-base/kwrite-3.5*
-=kde-base/kbabel-3.5*
-=kde-base/kweather-3.5*
-=kde-base/kedit-3.5*
-=kde-base/kmid-3.5*
-=kde-base/ksig-3.5*
-=kde-base/dragonplayer-3.5*
-=kde-base/kurifilter-plugins-3.5*
-=kde-base/dcopperl-3.5*
-=kde-base/ksirtet-3.5*
-=kde-base/kwordquiz-3.5*
-=kde-base/kpager-3.5*
-=kde-base/kate-3.5*
-=kde-base/kaboodle-3.5*
-=kde-base/plasma-apps-3.5*
-=kde-base/ksirk-3.5*
-=kde-base/kde-env-3.5*
-=kde-base/kwallet-3.5*
-=kde-base/kdemultimedia-kfile-plugins-3.5*
-=kde-base/konqueror-3.5*
-=kde-base/ktalkd-3.5*
-=kde-base/ktron-3.5*
-=kde-base/kompare-3.5*
-=kde-base/ksplash-3.5*
-=kde-base/kwalletmanager-3.5*
-=kde-base/kviewshell-3.5*
-=kde-base/akonadi-3.5*
-=kde-base/kwin-3.5*
-=kde-base/kdeartwork-meta-3.5*
-=kde-base/kdesktop-3.5*
-=kde-base/kdebindings-meta-3.5*
-=kde-base/kiriki-3.5*
-=kde-base/libkpimidentities-3.5*
-=kde-base/kdeprint-3.5*
-=kde-base/lokalize-3.5*
-=kde-base/policykit-kde-3.5*
-=kde-base/kdat-3.5*
-=kde-base/kdebase-cursors-3.5*
-=kde-base/fifteenapplet-3.5*
-=kde-base/katomic-3.5*
-=kde-base/knetworkconf-3.5*
-=kde-base/kdenetwork-kfile-plugins-3.5*
-=kde-base/kstartperf-3.5*
-=kde-base/kioclient-3.5*
-=kde-base/kdiamond-3.5*
-=kde-base/kgamma-3.5*
-=kde-base/kdemultimedia-kioslaves-3.5*
-=kde-base/bomber-3.5*
-=kde-base/kuickshow-3.5*
-=kde-base/kdeaddons-3.5*
-=kde-base/kdeartwork-kworldclock-3.5*
-=kde-base/kgpg-3.5*
-=kde-base/lisa-3.5*
-=kde-base/dcoprss-3.5*
-=kde-base/kverbos-3.5*
-=kde-base/okular-3.5*
-=kde-base/ktip-3.5*
-=kde-base/kdeartwork-wallpapers-3.5*
-=kde-base/solidautoeject-3.5*
-=kde-base/dcopjava-3.5*
-=kde-base/kreversi-3.5*
-=kde-base/konsolekalendar-3.5*
-=kde-base/klipper-3.5*
-=kde-base/klatin-3.5*
-=kde-base/libkmime-3.5*
-=kde-base/kpovmodeler-3.5*
-=kde-base/artsplugin-akode-3.5*
-=kde-base/plasma-runtime-3.5*
-=kde-base/ksudoku-3.5*
-=kde-base/kiconedit-3.5*
-=kde-base/kblackbox-3.5*
-=kde-base/knetwalk-3.5*
-=kde-base/libkexiv2-3.5*
-=kde-base/ktimezoned-3.5*
-=kde-base/ksokoban-3.5*
-=kde-base/kdesdk-kfile-plugins-3.5*
-=kde-base/librss-3.5*
-=kde-base/kpasswdserver-3.5*
-=kde-base/kephal-3.5*
-=kde-base/kdeartwork-icewm-themes-3.5*
-=kde-base/kregexpeditor-3.5*
-=kde-base/atlantikdesigner-3.5*
-=kde-base/knetattach-3.5*
-=kde-base/akregator-3.5*
-=kde-base/karm-3.5*
-=kde-base/kpackage-3.5*
-=kde-base/kdeartwork-weatherwallpapers-3.5*
-=kde-base/kdegraphics-kfile-plugins-3.5*
-=kde-base/ktimer-3.5*
-=kde-base/ksquares-3.5*
-=kde-base/kbackgammon-3.5*
-=kde-base/kasteroids-3.5*
-=kde-base/kdeedu-meta-3.5*
-=kde-base/kubrick-3.5*
-=kde-base/ktimetracker-3.5*
-=kde-base/kscreensaver-3.5*
-=kde-base/kdepasswd-3.5*
-=kde-base/ktnef-3.5*
-=kde-base/ksim-3.5*
-=kde-base/renamedlg-audio-3.5*
-=kde-base/libtaskmanager-3.5*
-=kde-base/kdeartwork-styles-3.5*
-=kde-base/kdeaccounts-plugin-3.5*
-=kde-base/kmag-3.5*
-=kde-base/kdetoys-meta-3.5*
-=kde-base/krossjava-3.5*
-=kde-base/oxygen-icons-3.5*
-=kde-base/kdemultimedia-3.5*
-=kde-base/kiten-3.5*
-=kde-base/kdeartwork-kwin-styles-3.5*
-=kde-base/krec-3.5*
-=kde-base/krfb-3.5*
-=kde-base/kdepim-3.5*
-=kde-base/kdemultimedia-meta-3.5*
-=kde-base/kmailcvt-3.5*
-=kde-base/secpolicy-3.5*
-=kde-base/juk-3.5*
-=kde-base/kgoldrunner-3.5*
-=kde-base/kdessh-3.5*
-=kde-base/libkdegames-3.5*
-=kde-base/kxsldbg-3.5*
-=kde-base/kappfinder-3.5*
-=kde-base/kdegraphics-meta-3.5*
-=kde-base/dcoppython-3.5*
-=kde-base/powerdevil-3.5*
-
-# Samuli Suominen <ssuominen@gentoo.org> (07 Nov 2009)
-# Produces invalid files for Autoconf 2.64, bug 279482.
-# Has KDE3 dependencies. Masked for removal in 30 days.
-<dev-util/kdevelop-3.9
-
 # Ben de Groot <yngwin@gentoo.org> (06 Nov 2009)
 # Masked since 01 Feb 2009 because it's broken.
 # Now scheduled for removal by treecleaners in 30 days.
 # Several issues, see tracker bug 224951
 dev-ruby/qt4-qtruby
-
-# Samuli Suominen <ssuominen@gentoo.org> (06 Nov 2009)
-# Cleaning out packages with KDE3 dependencies.
-# Masked for removal in 30 days.
-app-laptop/kthinkbat
-app-laptop/khdapsmon
-app-laptop/khdapsmonitor
-x11-misc/lineak-kdeplugins
-mail-client/mailody
-app-portage/kelogviewer
-dev-python/pykde
-x11-themes/qinx
-www-client/kita
-sci-mathematics/koctave
-x11-terms/kuake
-app-cdr/koverartist
-net-misc/kbandwidth
-net-irc/vyqchat
-net-im/kopete-otr
-app-backup/keep
-media-sound/musicman
-app-antivirus/klamav
-x11-plugins/khexclock
-x11-themes/domino
-x11-themes/comix
-x11-themes/baghira
-x11-themes/alloy
-x11-themes/activeheart
-x11-themes/fahrenheit
-x11-themes/fusionx-aqua
-x11-themes/knifty
-x11-themes/kwin-neos
-x11-themes/liquid
-<x11-themes/polyester-2
-<media-gfx/kflickr-0.9.1_p1
-x11-themes/tiblit
-x11-themes/qtcurve
-x11-themes/reinhardtstyle
-x11-themes/ridge
-x11-themes/thinkeramik
-x11-misc/karamba
-x11-misc/dekorator
-app-pda/libopensync-plugin-kdepim
-dev-perl/DCOP
-dev-perl/DCOP-Amarok
-dev-perl/DCOP-Amarok-Player
-dev-perl/PerlQt
-media-video/dpencoder
-media-video/qvamps
-media-video/asdf
-sci-misc/kboincspy
-games-puzzle/easysok
-
-# Vlastimil Babka <caster@gentoo.org> (06 Nov 2009)
-# Removal for EOL and security, bug #287615
-=app-emulation/emul-linux-x86-java-1.4*
-=dev-java/sun-jre-bin-1.4*
-=dev-java/ibm-jre-bin-1.4*
-dev-java/blackdown-jre
 
 # Rémi Cardona <remi@gentoo.org> (05 Nov 2009)
 # Broken, will stay masked until fixed.
@@ -707,12 +287,6 @@ dev-java/blackdown-jre
 # Broken. Will be replaced by games-fps/urbanterror when it's ready.
 # Follow progress on bug #203296
 games-fps/quake3-urbanterror
-
-# Samuli Suominen <ssuominen@gentoo.org> (04 Nov 2009)
-# media-video/mplayerthumbs replaced by kde-base/mplayerthumbs
-# <net-misc/knemo-0.5.2 replaced by >=net-misc/knemo-0.5.2
-# Removed in 30 days.
-media-video/mplayerthumbs
 
 # Alex Alexander <wired@gentoo.org> (04 Nov 2009)
 # keeping rc and live ebuilds masked
@@ -748,16 +322,6 @@ gnome-extra/gnome-keyring-manager
 # Unported to KDE4 wrt #251992. Masked for removal in 30 days.
 net-firewall/knetfilter
 
-# Samuli Suominen <ssuominen@gentoo.org> (31 Oct 2009)
-# Unported to KDE4 wrt #260166. Removed in 30 days.
-mail-client/kcheckgmail
-
-# Samuli Suominen <ssuominen@gentoo.org> (31 Oct 2009)
-# KDE3-only. Replaced by kde-misc/qalculate-applet
-# and sci-calculators/qalculate-gtk. Masked for removal
-# in 30 days.
-sci-calculators/qalculate-kde
-
 # Joe Sapp <nixphoeni@gentoo.org> (27 Oct 2009)
 # Uses old, deprecated Sensors.
 # Replaced by x11-plugins/desklet-Genesis.
@@ -775,30 +339,10 @@ x11-plugins/desklet-newsgrab
 # Masked for removal in 30 days.
 media-video/xfmedia
 
-# Jonathan Callen <abcd@gentoo.org> (26 Oct 2009)
-# Old monolithic ebuild. Replaced by app-office/koffice-meta
-# Will be removed in 30 days
-# Also affected by security bug 290470
-#
-# Theo Chatzimichos <tampakrap@gentoo.org> (1 Jul 2009)
-# koffice monolithic masked, latest koffice version
-# 1.6.3_p20090204 provides only split ebuilds, please
-# refer to the KDE guide for more info
-# http://kde.gentoo.org/kde4-guide.xml
-app-office/koffice
-
 # Olivier Crête <tester@gentoo.org> (25 Oct 2009)
 # Has been replaced by its fork dev-python/papyon
 # Will be removed in 30 days
 dev-python/pymsn
-
-# Samuli Suominen <ssuominen@gentoo.org> (25 Oct 2009)
-# Masked for security. CVE-2009-{3603,3604,3606,3608,3609}.
-#
-# http://bugs.gentoo.org/290470
-#
-# Replaced by kde-base/okular. Removed in 30 days.
-kde-base/kpdf
 
 # Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (25 Oct 2009)
 # Documentation for removed versions of dev-python/twisted. Masked for deletion in 30 days.
@@ -808,60 +352,9 @@ dev-python/twisted-docs
 # Replaced by dev-libs/cryptlib[python]. Masked for deletion in 30 days.
 dev-python/cryptlib_py
 
-# Samuli Suominen <ssuominen@gentoo.org> (25 Oct 2009)
-# KDE3-only. Replaced by app-cdr/acetoneiso.
-# Masked for removal in 30 days.
-app-cdr/kiso
-
-# Samuli Suominen <ssuominen@gentoo.org> (25 Oct 2009)
-# KDE3 support. aRts support. Doesn't compile, install or work
-# wrt bugs 178072, 280808, 234385, 117247, 191557, and 253231.
-# Masked for removal in 30 days.
-app-office/taskjuggler
-
-# Samuli Suominen <ssuominen@gentoo.org> (25 Oct 2009)
-# Replaced by KDE4 menu. For KDE3-only and is using
-# cmake directly wrt bug #287593.
-# Masked for removal in 30 days.
-kde-misc/kbfx
-
-# Samuli Suominen <ssuominen@gentoo.org> (25 Oct 2009)
-# Replaced by:
-#
-# >=media-gfx/digikam-0.10
-# kde-base/gwenview
-# >=media-gfx/kphotoalbum-4
-# >=media-plugins/kipi-plugins-0.6
-#
-# Masked for removal in 30 days.
-media-libs/libkdcraw
-=media-gfx/digikam-0.9*
-=media-gfx/kphotoalbum-3*
-media-gfx/gwenview
-=media-plugins/kipi-plugins-0.1*
-media-libs/libkipi
-media-libs/libkexiv2
-
-# Samuli Suominen <ssuominen@gentoo.org> (25 Oct 2009)
-# Replaced by kde-base/dragonplayer.
-# http://www.dragonplayer.net/
-# Masked for removal in 30 days.
-media-video/codeine
-
-# Samuli Suominen <ssuominen@gentoo.org> (24 Oct 2009)
-# Deprecated aRts support wrt bug #270575
-# Masked for removal in 30 days.
-kde-base/noatun
-kde-base/noatun-plugins
-
 # Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (24 Oct 2009)
 # Replaced by app-mobilephone/gammu[python]. Masked for deletion in 30 days.
 dev-python/python-gammu
-
-# Samuli Suominen <ssuominen@gentoo.org> (24 Oct 2009)
-# KDE3-only. Doesn't compile wrt bug #262318.
-# Masked for removal in 30 days.
-kde-misc/kio-locate
 
 # Samuli Suominen <ssuominen@gentoo.org> (24 Oct 2009)
 # Masked for testing. Doesn't work with current Thunar.
@@ -880,20 +373,11 @@ kde-misc/kio-locate
 # guest).
 app-emulation/lxc
 
-# Samuli Suominen <ssuominen@gentoo.org> (23 Oct 2009)
-# KDE3-only. Doesn't work with unicode, which is Gentoo
-# default. Masked for removal in 30 days. Bug #221115.
-app-mobilephone/kmobiletools
-
 # Raúl Porcel <armin76@gentoo.org> (22 Oct 2009)
 # Not needed anymore, vanilla kernel works
 # pretty well on SH nowadays.
 # Removal in 30 days
 sys-kernel/sh-sources
-
-# Doug Goldstein <cardoe@gentoo.org> (21 Oct 2009)
-# Work in progress
-=x11-misc/synergy-plus-1.3.4
 
 # Dirkjan Ochtman <djc@gentoo.org> (21 Oct 2009)
 # Needs some more testing before unleashing on the masses.
@@ -914,14 +398,6 @@ media-sound/paman
 # Masked development versions
 =dev-util/bzr-2.1.0_beta1*
 =dev-util/bzrtools-2.1.0_beta1*
-
-# Michael Sterrett <mr_bones_@gentoo.org> (19 Oct 2009)
-# Homepage is gone; requires dev-python/numeric; last released in 2006
-games-rpg/galaxymage
-
-# Samuli Suominen <ssuominen@gentoo.org> (19 Oct 2009)
-# No new x264 support.
-media-plugins/gst-plugins-x264
 
 # Samuli Suominen <ssuominen@gentoo.org> (17 Oct 2009)
 # Obsolete Musepack SV7 format support. Install
@@ -947,10 +423,6 @@ media-libs/libmpcdec
 =x11-libs/qt-test-4.6.0_beta*
 =x11-libs/qt-webkit-4.6.0_beta*
 =x11-libs/qt-xmlpatterns-4.6.0_beta*
-
-# Dominik Kapusta <ayoy@gentoo.org> (15 Oct 2009)
-# Masked for testing
-=dev-embedded/scratchbox-2*
 
 # Diego E. Pettenò <flameeyes@gmail.com> (9 Oct 2009)
 # Untested yet; documented only in Russian, help is appreciated.
@@ -1017,11 +489,6 @@ dev-libs/skalibs
 # Jory A. Pratt <anarchy@gentoo.org> (24 Sep 2009)
 # Much testing needed, not ready for mainline by any means.
 >=www-client/seamonkey-2.0_beta2
-
-# Sebastien Fabbro <bicatali@gentoo.org> (23 Sep 2009)
-# Masked for more testing, especially with cint7, afs and xrootd
-# on amd64 with gcc-4.4. See bug #280925
-=sci-physics/root-5.24.00
 
 # Tony Vroon <chainsaw@gentoo.org> (14 Sep 2009)
 # Alpha releases. Unmask at your own risk, bugs

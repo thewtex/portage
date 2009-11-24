@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/iproute2/iproute2-2.6.29.1-r1.ebuild,v 1.7 2009/11/11 13:54:37 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/iproute2/iproute2-2.6.29.1-r1.ebuild,v 1.11 2009/11/22 17:43:17 vapier Exp $
 
 EAPI="2"
 
@@ -10,7 +10,7 @@ if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="git://git.kernel.org/pub/scm/linux/kernel/git/shemminger/iproute2.git"
 	inherit git
 	SRC_URI=""
-	KEYWORDS=""
+	#KEYWORDS=""
 else
 	if [[ ${PV} == *.*.*.* ]] ; then
 		MY_PV=${PV%.*}-${PV##*.}
@@ -19,12 +19,12 @@ else
 	fi
 	MY_P="${PN}-${MY_PV}"
 	SRC_URI="http://developer.osdl.org/dev/iproute2/download/${MY_P}.tar.bz2"
-	KEYWORDS="alpha amd64 arm hppa ~ia64 ~m68k ~mips ppc ~ppc64 ~s390 ~sh ~sparc x86"
+	KEYWORDS="alpha amd64 arm hppa ia64 m68k ~mips ppc ~ppc64 s390 sh ~sparc x86"
 	S=${WORKDIR}/${MY_P}
 fi
 
 DESCRIPTION="kernel routing and traffic control utilities"
-HOMEPAGE="http://linux-net.osdl.org/index.php/Iproute2"
+HOMEPAGE="http://www.linuxfoundation.org/collaborate/workgroups/networking/iproute2"
 
 LICENSE="GPL-2"
 SLOT="0"

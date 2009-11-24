@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5001 2009/11/16 06:07:43 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5034 2009/11/23 06:27:43 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -197,6 +197,7 @@ app-editors/emacs:leim - Add support for Emacs input methods
 app-editors/emacs:sendmail - Build Emacs with MTA support
 app-editors/emacs:sound - Enable sound
 app-editors/emacs:toolkit-scroll-bars - Use the selected toolkit's scrollbars in preference to Emacs' own scrollbars
+app-editors/emacs-cvs:gconf - Use gnome-base/gconf to read the system font name
 app-editors/emacs-cvs:gzip-el - Compress bundled Emacs Lisp source
 app-editors/emacs-cvs:hesiod - Enable support for net-dns/hesiod
 app-editors/emacs-cvs:sound - Enable sound
@@ -254,16 +255,6 @@ app-emulation/fuse:libdsk - Enable support for the floppy disk emulation library
 app-emulation/ganeti:drbd - Enable DRBD support
 app-emulation/ganeti:kvm - Enable KVM support
 app-emulation/ganeti:xen - Enable Xen support
-app-emulation/kvm:alsa - Enable alsa output for sound emulation
-app-emulation/kvm:esd - Enable esound output for sound emulation
-app-emulation/kvm:gnutls - Enable TLS support for the VNC console server
-app-emulation/kvm:havekernel - Don't require a kernel build tree (useful if using a binary distrbuted kernel aka binary packages)
-app-emulation/kvm:modules - Build the kernel modules from the kvm package
-app-emulation/kvm:ncurses - Enable the ncurses-based console
-app-emulation/kvm:pulseaudio - Enable pulseaudio output for sound emulation
-app-emulation/kvm:sdl - Enable the SDL-based console
-app-emulation/kvm:test - Build tests
-app-emulation/kvm:vde - Enable VDE-based networking
 app-emulation/libvirt:iscsi - Add support for iSCSI (Internet SCSI) remote storage
 app-emulation/libvirt:kvm - Add support for app-emulation/kvm based virtual machines
 app-emulation/libvirt:libvirtd - Builds the libvirtd daemon as well as the client utilities instead of just the client utilities
@@ -277,6 +268,7 @@ app-emulation/libvirt:openvz - Add support for sys-kernel/openvz-sources OpenVZ-
 app-emulation/libvirt:parted - Add support for the sys-apps/parted partition editor
 app-emulation/libvirt:phyp - Support the PHYP hypervisor protocol
 app-emulation/libvirt:qemu - Add support for app-emulation/qemu based virtual machines
+app-emulation/libvirt:udev - Use sys-fs/udev to determine available devices
 app-emulation/libvirt:uml - Add support for User Mode Linux based virtual machines
 app-emulation/libvirt:virtualbox - Adds support for VirtualBox based virtual machines
 app-emulation/libvirt:xen - Add support for app-emulation/xen based virtual machines
@@ -304,6 +296,13 @@ app-emulation/qemu:ncurses - Enable the ncurses-based console
 app-emulation/qemu:pulseaudio - Enable pulseaudio output for sound emulation
 app-emulation/qemu:sdl - Enable the SDL-based console
 app-emulation/qemu:vde - Enable VDE-based networking
+app-emulation/qemu-kvm:alsa - Enable alsa output for sound emulation
+app-emulation/qemu-kvm:esd - Enable esound output for sound emulation
+app-emulation/qemu-kvm:gnutls - Enable TLS support for the VNC console server
+app-emulation/qemu-kvm:ncurses - Enable the ncurses-based console
+app-emulation/qemu-kvm:pulseaudio - Enable pulseaudio output for sound emulation
+app-emulation/qemu-kvm:sdl - Enable the SDL-based console
+app-emulation/qemu-kvm:vde - Enable VDE-based networking
 app-emulation/qemu-softmmu:alsa - Enable alsa output for sound emulation
 app-emulation/qemu-softmmu:esd - Enable esound output for sound emulation
 app-emulation/qemu-softmmu:gnutls - Enable TLS support for the VNC console server
@@ -374,7 +373,6 @@ app-i18n/uim:anthy - Enable support for app-i18n/anthy input method
 app-i18n/uim:eb - Enable support for dev-libs/eb
 app-i18n/uim:prime - Enable support for app-i18n/prime
 app-laptop/ibam:gkrellm - Enable building of app-admin/gkrellm module
-app-laptop/kthinkbat:smapi - Use extended ThinkPad battery info exported via SMAPI BIOS by app-laptop/tp_smapi
 app-laptop/laptop-mode-tools:scsi - Adds dependency on sdparm to control non-SATA SCSI drivers
 app-laptop/pbbuttonsd:ibam - Enable support for Intelligent Battery Monitoring
 app-laptop/pbbuttonsd:macbook - Enable support for the Macbook and Macbook Pro
@@ -1029,14 +1027,8 @@ dev-util/git:ppcsha1 - Make use of a bundled routine that is optimized for the P
 dev-util/git:subversion - Include git-svn for dev-util/subversion support.
 dev-util/git:webdav - Adds support for push'ing to HTTP repositories via DAV.
 dev-util/global:vim - Integrate the GNU GLOBAL source code tag system with Vim
-dev-util/kdevelop:ada - Support for the Ada programming language.
-dev-util/kdevelop:clearcase - Support for the ClearCase version control system.
 dev-util/kdevelop:cmake - Support for the CMake Build System.
-dev-util/kdevelop:haskell - Support for the Haskell programming language.
-dev-util/kdevelop:pascal - Support for the Pascal programming language.
-dev-util/kdevelop:perforce - Support for the Perforce version control system.
 dev-util/kdevelop:qmake - Support for the QMake Build System.
-dev-util/kdevelop:sql - Support for the Structured Query Language (SQL).
 dev-util/kdevplatform:git - Add suport for git VCS
 dev-util/kdevplatform:mercurial - Add suport for mercurial VCS
 dev-util/mercurial:bugzilla - Support bugzilla integration.
@@ -1101,6 +1093,7 @@ games-arcade/moleinvasion:music - Download and install the music files
 games-arcade/smc:music - Download and install the music files
 games-arcade/stepmania:force-oss - force using OSS
 games-arcade/triplexinvaders:psyco - psyco python accelerator
+games-arcade/tuxanci:sound - Enable sound
 games-arcade/ultrastar-ng:songs - Install a few demo songs
 games-arcade/ultrastar-ng:video - Enable smpeg video support
 games-board/chessdb:tb4 - Install 4 pieces table bases
@@ -1140,7 +1133,6 @@ games-fps/ezquake-bin:security - install the security module needed for some ser
 games-fps/freedoom:doomsday - Add wrapper to run it within doomsday
 games-fps/nexuiz:maps - Install the community map pack
 games-fps/quake2-icculus:demo - Install the demo files (quake2-demodata) and configure for use
-games-fps/quake2-icculus:noqmax - Do not build the pretty version (quake max)
 games-fps/quake2-icculus:qmax - Build the pretty version (quake max)
 games-fps/quake2-icculus:rogue - Build support for the 'Ground Zero' Mission Pack (rogue)
 games-fps/quake2-icculus:xatrix - Build support for the 'The Reckoning' Mission Pack (xatrix)
@@ -1206,7 +1198,6 @@ games-puzzle/xlogical:alt_gfx - Use alternate graphics which are closer to the o
 games-rpg/drascula:audio - Install optional audio files
 games-rpg/eternal-lands-data:music - Install optional music files (extra 30 meg)
 games-rpg/eternal-lands-data:sound - Install optional sound files (extra 40 meg)
-games-rpg/galaxymage:psyco - psyco python accelerator
 games-rpg/mangos:ahbot - include the AHBot-patch
 games-rpg/mangos:cli - compiles with support command line system
 games-rpg/mangos:ra - compiles with support remote console system
@@ -1304,15 +1295,12 @@ gpe-base/gpe:games - Builds and installs GPE games.
 kde-base/ark:archive - Enable support for a variety of archive formats through libarchive
 kde-base/ark:lzma - Enable lzma support
 kde-base/ark:zip - Enable zip support through LibZip
-kde-base/arts:artswrappersuid - Set artswrapper suid for realtime playing, which is a security hazard
 kde-base/dolphin:semantic-desktop -  Semantic desktop allows for storage of digital information and its metadata to allow the user to express his personal mental models, making all information become intuitively accessible. 
 kde-base/dolphin:thumbnail -  Enables video thumbnails generation for kde-base/dolphin file manager. 
 kde-base/gwenview:kipi - Support for the KDE Image Plugin Interface.
-kde-base/juk:akode - Support for the aKode audio-decoding frame-work
 kde-base/kaddressbook:gnokii - Address synchronization with mobile phones via app-mobilephone/gnokii
 kde-base/kalzium:editor - Enable the embedded molecule editor/viewer
 kde-base/kalzium:solver - Enable the equation solver
-kde-base/kbugbuster:kcal - Support for kcal (calendar) format
 kde-base/kcontrol:logitech-mouse -  Build the Control Center module to configure logitech mice 
 kde-base/kdeadmin-meta:lilo - Install lilo-config, a frontend for the lilo boot loader
 kde-base/kdeartwork-kscreensaver:eigen - Enable various aritmethic screensavers which use Eigen2 for computations.
@@ -1322,45 +1310,35 @@ kde-base/kdebindings-csharp:phonon - Compile bindings for media-sound/phonon.
 kde-base/kdebindings-csharp:plasma - Compile bindings for kde's plasma.
 kde-base/kdebindings-csharp:qscintilla - Compile bindings for x11-libs/qscintilla.
 kde-base/kdebindings-csharp:webkit - Compile bindings for x11-libs/webkit.
-kde-base/kdegraphics-meta:povray - Install kde-base/kpovmodeler, which needs POV-Ray
 kde-base/kdelibs:legacyssl - Support for some deprecated ciphers. Don't use this flag unless you really need it
 kde-base/kdelibs:lzma - Enable lzma support
 kde-base/kdelibs:utempter - Records user logins. Useful on multi-user systems
 kde-base/kdeplasma-addons:desktopglobe - Enable Desktop Globe wallpaper using kde-base/marble.
 kde-base/kdeutils-meta:floppy - Install kfloppy to format and create DOS or ext2fs filesystems in a floppy.
 kde-base/kdm:consolekit - Enables support for authorization using consolekit
-kde-base/kdvi:kpathsea - Enable integration with kpathsea search library (TeX related)
 kde-base/kig:kig-scripting - Support Python scripting
-kde-base/kmilo:pbbuttonsd - Support for the Apple PMU daemon pbbuttonsd
 kde-base/konqueror:auth -  Add dependency on authentization packages. 
 kde-base/konqueror:bookmarks -  Add dependency on bookmark package. 
 kde-base/konqueror:thumbnail -  Enables video thumbnails generation for kde-base/konqueror file manager. 
 kde-base/kopete:addbookmarks - Automaticaly add incoming urls to bookmarks.
-kde-base/kopete:alias - Enables creating of your own aliases for commands.
 kde-base/kopete:autoreplace - Automaticaly replace selected text
 kde-base/kopete:bonjour - Enable Link-Local Messaging via the bonjour protocol.
-kde-base/kopete:connectionstatus - Builds Connection Status plugin
 kde-base/kopete:contactnotes - Enables writing personal notes for contacts.
-kde-base/kopete:emoticons-manager - Enables emoticons theme manager so that the user can edit and remove emoticons or add custom ones etc
 kde-base/kopete:facebook - Enable Facebook support.
 kde-base/kopete:gadu - Enable the Gadu protocol handler.
 kde-base/kopete:groupwise - Enable the Groupwise protocol handler.
 kde-base/kopete:highlight - Allows you to specify highlights on specific events.
 kde-base/kopete:history - Enables saving chat history.
-kde-base/kopete:irc - Enable the IRC protocol handler.
 kde-base/kopete:jabber - Enable XMPP protocol handler (this is also gmail).
 kde-base/kopete:latex - Embed latex formatted text into messages.
 kde-base/kopete:meanwhile - Enable the Sametime protocol handler.
 kde-base/kopete:msn - Enable "Windows live messenger" protocol support.
-kde-base/kopete:netmeeting - Builds netmeeting plugin (require gnomemeeting)
 kde-base/kopete:nowlistening - Shows song you currently listen to in your status/etc. Bindings for many players.
 kde-base/kopete:otr - Allows crypting your chat (drugs and talking nonsense are considered as good alternatives ;]).
 kde-base/kopete:pipes - Send messages to external pipe.
 kde-base/kopete:privacy - Filter for incomming messages
 kde-base/kopete:qq - enable support for the chinese network protocol.
-kde-base/kopete:sametime - Enables support for the Sametime protocol for instant messaging
 kde-base/kopete:skype - Enable Skype protocol handler (not fully functional yet).
-kde-base/kopete:sms - Enable the sms sending plugin.
 kde-base/kopete:statistics - Everybody loves statistic graphs, especialy cake ones. ;]
 kde-base/kopete:testbed - Enable the testbed protocol.
 kde-base/kopete:texteffect - Various fancy text effects for your messages (dont ever consider writing us with this enabled ;]).
@@ -1373,7 +1351,6 @@ kde-base/kpilot:avantgo - Add support for syncing Avantgo accounts
 kde-base/krdc:rdp - Enable runtime dependency for net-misc/rdesktop
 kde-base/kstars:fits - Enable support for the FITS image format through cfitsio
 kde-base/kstars:indi - Enable support for Astronomical control library using libindi
-kde-base/kttsd:akode - Support for the aKode audio-decoding frame-work.
 kde-base/kttsd:epos - Build a plugin for app-accessibility/epos
 kde-base/kttsd:festival - Build a plugin for app-accessibility/festival
 kde-base/kttsd:flite - Build a plugin for app-accessibility/flite
@@ -1550,7 +1527,6 @@ media-gfx/comix:rar -  Pulls app-arch/unrar for rar file support
 media-gfx/digikam:addressbook - Add support for kdepim
 media-gfx/digikam:geolocation - Add support for marble
 media-gfx/digikam:lensfun - Enable support for lens-correnction library
-media-gfx/digikam:nfs - Create sqlite db within ~/.kde, instead in the albums base directory.
 media-gfx/digikam:thumbnails - Allow thumbnail previews for images/photos
 media-gfx/eog:xmp - Adds support for XMP metadata
 media-gfx/exact-image:agg - Adds Anti-Grain Geometry supportx11-libs/agg
@@ -1584,7 +1560,6 @@ media-gfx/graphviz:cgraph -  Enables cgraph (PostScript plotting library in C) l
 media-gfx/graphviz:lasi -  Enables PostScript output via media-libs/lasi library 
 media-gfx/graphviz:pango -  Enables the rendering of the graphs using pango & cairo (with antialiasing support) 
 media-gfx/gthumb:iptc -  Add support for IPTC metadata 
-media-gfx/gwenview:kipi -  Support for the KDE Image Plugin Interface. 
 media-gfx/hugin:sift - automatically align images with media-gfx/autopano-sift or media-gfx/autopano-sift-C
 media-gfx/imagemagick:autotrace -  use media-gfx/autotrace to convert bitmaps into vector graphics 
 media-gfx/imagemagick:corefonts -  pull in media-fonts/corefonts, which is required for some commands 
@@ -1730,6 +1705,7 @@ media-plugins/kipi-plugins:mjpeg - Add mjpeg suppport
 media-plugins/kipi-plugins:redeyes - Add redeyes removal suppport
 media-plugins/mythmusic:libvisual - Enables media-libs/libvisual support for effects
 media-plugins/mythphone:festival - Enable app-accessibility/festival support
+media-plugins/mythvideo:jamu - Use and configure the Just Another Metadata Utility by default
 media-plugins/mythzoneminder:minimal - Don't build the mythtv side of this plugin, only the part that communicates with zoneminder. 
 media-plugins/vdr-burn:projectx - Enables support for media-video/projectx
 media-plugins/vdr-dvdconvert:projectx - Enable support for media-video/projectx
@@ -1942,7 +1918,9 @@ media-tv/mythtv:xvmc - Instructs MythTV to use XvMC for it's video output. By de
 media-tv/tvbrowser:themes - Install extra theme packs
 media-tv/xawtv:xext - Enable use of XFree extensions (DGA,VidMode,DPMS)
 media-tv/xawtv:zvbi - Enable VBI Decoding Library for Zapping
+media-tv/xbmc:midi - Support MIDI files
 media-tv/xbmc:vdpau - enable support for Video Decode and Presentation API for Unix
+media-tv/xbmc:xrandr - Support X randr extension
 media-tv/xdtv:aqua_theme - Enable graphic theme Aqua-style
 media-tv/xdtv:carbone_theme - Adds the Carbone pixmaps theme for the GUI
 media-tv/xdtv:schedule - Adds the possibility to schedule tv recording via xdtv_record.sh
@@ -2010,6 +1988,7 @@ media-video/ffmpeg:schroedinger - Enable Dirac video support (an advanced royalt
 media-video/ffmpeg:ssse3 - faster floating point optimization for SSSE3 capable chips (Intel Core 2 and later chips)
 media-video/ffmpeg:vdpau - Enables VDPAU decoders (requires nVidia video cards to offload CPU processing to video card
 media-video/ffmpeg:vhook - Enables video hooking support.
+media-video/ffmpeg2theora:kate - Adds support for Ogg Kate subtitles via libkate.
 media-video/ffprobe:perl - Installs tools written in perl to produce plots based on video frame bitrate and size
 media-video/gpac:amr - Adaptive Multi-Rate Audio support (commonly used in telephony)
 media-video/griffith:csv - Enable proper support for csv import (respectively auto-detection encoding of csv files)
@@ -2165,6 +2144,7 @@ media-video/vlc:libass - Enables subtitles support using libass.
 media-video/vlc:libproxy - Enables support for proxy settings in the HTTP access module.
 media-video/vlc:libsysfs - Get user key from firewire connected iPod via libsysfs.
 media-video/vlc:libtiger - Enables Ogg Kate subtitles rendering using libtiger.
+media-video/vlc:libv4l - Enables Libv4l Video4Linux support.
 media-video/vlc:libv4l2 - Enables Libv4l2 Video4Linux2 support (for conversion from various video formats to standard ones, needed to use v4l2 devices with strange formats).
 media-video/vlc:live - Enables live555 streaming media support (client support for rtsp).
 media-video/vlc:optimisememory - Enable optimisation for memory rather than performance.
@@ -2237,12 +2217,15 @@ net-analyzer/net-snmp:sendmail - Enable sendmail statistics monitoring
 net-analyzer/net-snmp:smux - Enable the smux MIBS module
 net-analyzer/pchar:pcap - Use the net-libs/libpcap library
 net-analyzer/pmacct:64bit - Use 64bit counters instead of 32bit ones
+net-analyzer/rrdcollect:exec - Enable exec:/// support
+net-analyzer/rrdcollect:pcap - Use net-libs/libpcap for packet capturing
 net-analyzer/rrdtool:nls - Enable native language support (using intltool)
 net-analyzer/rrdtool:rrdcgi - Build rrdcgi support
 net-analyzer/sancp:sguil - Enable sguil (The Analyst Console for Network Security Monitoring) support
 net-analyzer/scanlogd:nids - Use net-libs/libnids for packet capturing
 net-analyzer/scanlogd:pcap - Use net-libs/libpcap for packet capturing
 net-analyzer/scapy:pyx - Enable dev-python/pyx support for psdump/pdfdump commands
+net-analyzer/scapy:tcpreplay - Enable net-analyzer/tcpreply support for fast packet replay
 net-analyzer/scapy:visual - Enable dev-python/visual support for 3d graphs
 net-analyzer/smokeping:speedy - Use dev-perl/SpeedyCGI instead of perl to speed up cgi scripts
 net-analyzer/snort:aruba - Enable Aruba support
@@ -2342,7 +2325,7 @@ net-dns/pdns:opendbx - Enable the OpenDBX backend
 net-dns/pdnsd:isdn - Enable ISDN features
 net-dns/pdnsd:underscores - Enable support for domain names containing underscores
 net-dns/pdnsd:urandom - Use /dev/urandom instead of /dev/random
-net-dns/unbound:libevent - Enable support for libevent
+net-dns/unbound:libevent - Use dev-libs/libevent instead of internal select based events
 net-firewall/arno-iptables-firewall:plugins - Install optional plugins
 net-firewall/ipsec-tools:hybrid - Makes available both mode-cfg and xauth support
 net-firewall/ipsec-tools:idea - Enable support for the patented IDEA algorithm
@@ -2464,6 +2447,11 @@ net-im/psimedia:demo -  build simple test application for the PsiMedia system.
 net-im/pyaim-t:webinterface - Install dependencies needed for the web interface 
 net-im/pyicq-t:webinterface - Install dependencies needed for the web interface 
 net-im/qtwitter:oauth - Enables authorization using OAuth for Twitter accounts
+net-im/qutim:histman - Enable histman plugin
+net-im/qutim:irc - Enable irc support
+net-im/qutim:mrim - Enable mrim plugin
+net-im/qutim:vkontakte - Enable vkontakte plugin
+net-im/qutim:yandexnarod - Enable yanderx.narod plugin
 net-im/sim:gpg - Enable gpg plugin to adds GnuPG encryption/decryption support for messages 
 net-im/sim:livejournal - Enable livejournal plugin to post in LiveJournal 
 net-im/sim:sms - Enable sms plugin
@@ -2553,7 +2541,6 @@ net-libs/libssh:sftp - Build with SFTP support
 net-libs/libssh:ssh1 - Build with SSH1 support
 net-libs/libssh2:gcrypt - Use dev-libs/libgcrypt for crypto
 net-libs/libvncserver:no24bpp - disable 24bpp support
-net-libs/libvncserver:nobackchannel - disable backchannel support
 net-libs/loudmouth:asyncns - Use libasyncns for asynchronous name resolution.
 net-libs/netembryo:sctp - Support for Stream Control Transmission Protocol
 net-libs/opal:audio - Enable audio support
@@ -2777,6 +2764,7 @@ net-misc/tightvnc:server - Build vncserver. Allows us to only build server on on
 net-misc/tor:bundledlibevent - USE bundled libevent for asynchronous DNS requests (provides a tiny bit more anonymity)
 net-misc/vde:pcap -  Enable the pcap-based plugin that allows creating a switch against a real interface. 
 net-misc/vde:ssl -  Enable the cryptcab plugin that allows creating an encrypted virtual cable. 
+net-misc/vidalia:tor - Allow to use a local tor setup
 net-misc/vinagre:applet - Enable vinagre applet for gnome-base/gnome-panel.
 net-misc/vinagre:ssh - Enable ssh plugin.
 net-misc/vinagre:telepathy - Enable access to remote desktop via a telepathy client.
@@ -2997,6 +2985,7 @@ sci-chemistry/wxmacmolplt:flash - Add support for flash movie generation using m
 sci-electronics/geda:stroke - enable mouse gesture support
 sci-electronics/geda-gschem:stroke - enable mouse gesture support
 sci-electronics/gerbv:unit-mm - Set default unit for coordinates in status bar to mm
+sci-electronics/kicad:dev-doc - Install developer documentation (requires app-doc/doxygen)
 sci-electronics/pcb:gif - GIF graphics export
 sci-electronics/pcb:jpeg - JPEG graphics export
 sci-electronics/pcb:nelma - NELMA file export
@@ -3026,6 +3015,7 @@ sci-geosciences/mapserver:proj - Enable sci-libs/proj library support (geographi
 sci-geosciences/merkaartor:gdal - Enable sci-libs/gdal library support
 sci-geosciences/merkaartor:proj - Enable sci-libs/proj library support
 sci-geosciences/merkaartor:webkit - Enable net-libs/webkit-gtk library support
+sci-geosciences/qgis:grass - Add support for sci-geosciences/grass
 sci-libs/acml:gfortran - Fetch and install acml compiled with GNU gfortran
 sci-libs/acml:ifc - Fetch and install acml compiled with Intel Fortran Compiler (dev-lang/ifc)
 sci-libs/acml:int64 - Install the 64 bits integer library
@@ -3069,7 +3059,6 @@ sci-libs/plplot:itcl - Add bindings for dev-tcltk/itcl
 sci-libs/plplot:jadetex - Add device for app-text/jadetex (for processing tex files produced by the TeX backend of Jade)
 sci-libs/plplot:octave - Add bindings for sci-mathematics/octave
 sci-libs/plplot:qhull - Add bindings for media-libs/qhull bindings
-sci-libs/scipy:sandbox - Adds experimental scipy sandbox modules
 sci-libs/scipy:umfpack - Adds support for sparse solving with sci-libs/umfpack
 sci-libs/spqr:metis - Use METIS (sci-libs/metis or sci-libs/parmetis) for partitioning
 sci-libs/spqr:tbb - Enable multithreading with the Intel Threads Building Block (needs dev-cpp/tbb)
@@ -3258,7 +3247,6 @@ sys-cluster/pvfs2:server - Enable compilation of server code
 sys-cluster/torque:cpusets - Enable pbs_mom to utilize linux cpusets if available.
 sys-cluster/torque:drmaa - Enable the Distributed Resource Management Application API.
 sys-cluster/torque:server - Enable compilation of pbs_server and pbs_sched.
-sys-cluster/vzctl:logrotate - Enable logrotate file installation
 sys-devel/binutils:gold - Use the new gold linker (written in C++) rather than the standard linker (this _will_ break things)
 sys-devel/binutils:multislot - Allow for multiple versions of binutils to be emerged at once for same CTARGET
 sys-devel/binutils:multitarget - Adds support to binutils for cross compiling (does not work with gas)
@@ -3408,6 +3396,8 @@ sys-process/procps:n32 - Enable n32 ABI support on mips
 virtual/mpi:romio - Enable romio, a high-performance portable MPI-IO
 virtual/poppler-utils:abiword -  Enable support for app-office/abiword output. Requires dev-libs/libxml2. 
 www-apache/mod_mono:aspnet2 - Handle all applications using ASP.NET 2.0 engine by default
+www-apache/mod_security:perl -  Add a dependency upon Perl and install the script to update the Core Rule Set. Please note that this script will use the original Core Rule Set, and it's currently mostly untested. 
+www-apache/mod_security:vanilla -  Provide the original ModSecurity Core Rule Set without Gentoo-specific relaxation. When this flag is enabled, we install the unadulterated Core Rule Set. Warning! The original Core Rule Set is draconic and most likely will break your web applications, including Rails-based web applications and Bugzilla. 
 www-apache/mod_suphp:checkpath - Check if script resides in DOCUMENT_ROOT
 www-apache/mod_suphp:mode-force - Run scripts with UID/GID specified in Apache configuration
 www-apache/mod_suphp:mode-owner - Run scripts with owner UID/GID
@@ -3436,6 +3426,7 @@ www-apps/viewvc:cvsgraph - Add dev-util/cvsgraph support to show graphical views
 www-apps/viewvc:highlight - Add app-text/highlight support to colourize code stored in the repository
 www-apps/viewvc:mod_python - Add www-apache/mod_python support
 www-apps/viewvc:pygments - Add dev-python/pygments support for syntax highlighting
+www-client/chromium:ffmpeg - Add support for HTML5 audio/video tags via media-video/ffmpeg
 www-client/elinks:bittorrent - Enable support for the BitTorrent protocol
 www-client/elinks:finger - Enable support for the finger protocol
 www-client/elinks:gopher - Enable support for the gopher protocol

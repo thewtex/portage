@@ -1,6 +1,13 @@
 # ChangeLog for sys-fs/udev
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
 
+*udev-146-r2.ebuild (16 Nov 2009)
+
+  16 Nov 2009; Daniel Robbins <drobbins@funtoo.org> udev-146-r2.ebuild:
+  remove references to /lib64 in scripts. lib->lib64 mapping should be
+  enough. Ebuild updated to remove sed tweaking of paths. This means
+  the ebuild is now at 6K in size. This new ebuild needs testing.
+
 *udev-146-r1.ebuild (12 Nov 2009)
 
   12 Nov 2009; Daniel Robbins <drobbins@funtoo.org> udev-146-r1.ebuild:

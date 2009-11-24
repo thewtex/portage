@@ -1,17 +1,17 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-emulation/gens/gens-2.15.5.ebuild,v 1.3 2009/09/24 21:21:53 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/gens/gens-2.15.5.ebuild,v 1.5 2009/11/23 01:10:35 mr_bones_ Exp $
 
 EAPI=2
 inherit eutils flag-o-matic games
 
 DESCRIPTION="A Sega Genesis/CD/32X emulator"
-HOMEPAGE="http://gens.consolemul.com/"
+HOMEPAGE="http://sourceforge.net/projects/gens/"
 SRC_URI="mirror://sourceforge/gens/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86"
 IUSE=""
 
 RDEPEND="virtual/opengl

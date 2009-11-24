@@ -8,13 +8,14 @@ SRC_URI="http://www.funtoo.org/archive/openrc/openrc-funtoo-2009.08.01.tar.bz2"
 DESCRIPTION="OpenRC manages the services, startup and shutdown of a host"
 HOMEPAGE="http://roy.marples.name/openrc"
 PROVIDE="virtual/baselayout"
+RESTRICT="nomirror"
 
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="alpha amd64 arm hppa ia64 m68k mips ppc ppc64 s390 sh sparc sparc-fbsd x86 x86-fbsd"
 IUSE="debug ncurses pam unicode kernel_linux kernel_FreeBSD"
 
-RDEPEND="kernel_linux? ( =sys-apps/sysvinit-2.86-r11 )
+RDEPEND="kernel_linux? ( >=sys-apps/sysvinit-2.86-r11 )
 	kernel_FreeBSD? ( virtual/init sys-process/fuser-bsd )
 	elibc_glibc? ( >=sys-libs/glibc-2.5 )
 	ncurses? ( sys-libs/ncurses )

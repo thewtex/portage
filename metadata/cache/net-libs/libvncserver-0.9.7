@@ -1,5 +1,5 @@
-avahi? ( net-dns/avahi ) jpeg? ( media-libs/jpeg ) ssl? ( dev-libs/openssl ) zlib? ( sys-libs/zlib )
-avahi? ( net-dns/avahi ) jpeg? ( media-libs/jpeg ) ssl? ( dev-libs/openssl ) zlib? ( sys-libs/zlib )
+jpeg? ( media-libs/jpeg ) zlib? ( sys-libs/zlib )
+jpeg? ( media-libs/jpeg ) zlib? ( sys-libs/zlib )
 0
 http://libvncserver.sourceforge.net/LibVNCServer-0.9.7.tar.gz mirror://sourceforge/libvncserver/LibVNCServer-0.9.7.tar.gz
 
@@ -8,13 +8,13 @@ GPL-2
 library for creating vnc servers
 ~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sh ~sparc ~x86 ~x86-fbsd
 libtool multilib toolchain-funcs
-nobackchannel no24bpp avahi crypt fbcon jpeg ssl test threads zlib
+no24bpp +jpeg test threads +zlib
 
 
 
+2
 
-
-compile install unpack
+compile configure install prepare
 
 
 
