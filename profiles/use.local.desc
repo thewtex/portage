@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5040 2009/11/25 02:11:42 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5046 2009/11/25 17:27:41 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -259,6 +259,7 @@ app-emulation/libvirt:udev - Use sys-fs/udev to determine available devices
 app-emulation/libvirt:uml - Add support for User Mode Linux based virtual machines
 app-emulation/libvirt:virtualbox - Adds support for VirtualBox based virtual machines
 app-emulation/libvirt:xen - Add support for app-emulation/xen based virtual machines
+app-emulation/lxc:doc -  Build documentation and man pages. This is optional since it requires extra dependencies. If you don't enable this flag, you will have no man pages. 
 app-emulation/mol:oldworld - Includes Macintosh's OldWorld support
 app-emulation/mol:pci - Experimental PCI proxy support
 app-emulation/mol:sheep - Support for the sheep net driver
@@ -2030,7 +2031,6 @@ net-analyzer/base:signatures - Install community signatures from net-analyzer/sn
 net-analyzer/bmon:rrdtool - Enables net-analyzer/rrdtool support
 net-analyzer/bwm-ng:csv - Enable csv output
 net-analyzer/bwm-ng:html - Enable html output
-net-analyzer/cacti:bundled-adodb - use adodb bundled with web-application instead of system wide
 net-analyzer/cacti:doc - install html documentation
 net-analyzer/echoping:http - enable support for http protocol.
 net-analyzer/echoping:icp - enable support for ICP (used to monitor proxies).
@@ -2342,11 +2342,7 @@ net-irc/xchat-gnome:sound - Enable sound event support with media-libs/libcanber
 net-irc/xchat-xsys:audacious - Enables media-sound/audacious integration
 net-irc/znc:ares - Enables support for asynchronous DNS using the c-ares library
 net-irc/znc:nomodules - Don't build modules
-net-libs/aqbanking:chipcard -  Enable support for DDV/RSA-chipcards 
-net-libs/aqbanking:dtaus -  Enable dtaus backend 
-net-libs/aqbanking:geldkarte -  Enable geldkarte backend 
-net-libs/aqbanking:hbci -  Enable support for HBCI 
-net-libs/aqbanking:yellownet -  Enable support for Yellownet 
+net-libs/aqbanking:chipcard - Enable support for DDV/RSA-chipcards
 net-libs/clinkcc:mythtv - Enable MythTV support
 net-libs/courier-authlib:vpopmail - Enable vpopmail support
 net-libs/cvm:vpopmail - Enable vpopmail support
@@ -2504,7 +2500,6 @@ net-misc/iaxmodem:logrotate -  Install support files for app-admin/logrotate
 net-misc/icecast:yp - Build support for yp public directory listings
 net-misc/iputils:SECURITY_HAZARD - Allow non-root users to flood (ping -f). This is generally a very bad idea.
 net-misc/italc:system-libvncserver - Build against the system libvncserver (experimental)
-net-misc/kvpnc:cisco - Adds support for Cisco client
 net-misc/mediatomb:libextractor - Use libextractor to gather files' metadata.
 net-misc/mediatomb:mysql -  Use dev-db/mysql as backend rather than SQLite3. If this USE flag is disabled, dev-db/sqlite is used in its stead. 
 net-misc/mediatomb:taglib -  Use media-libs/taglib for reading files' metadata rather than id3lib. If this USE flag is disabled media-libs/id3lib is used in its stead. 
@@ -2999,6 +2994,10 @@ sys-block/gparted:xfs - Include XFS support (sys-fs/xfsprogs, sys-fs/xfsdump)
 sys-block/open-iscsi:modules - Build the open-iscsi kernel modules
 sys-block/open-iscsi:utils - Build the open-iscsi utilities
 sys-block/partimage:nologin - Do not include login support
+sys-block/tgt:fcoe - Add support for FCoE protocol
+sys-block/tgt:fcp - Add support for new FC protocol
+sys-block/tgt:ibmvio - Add support for IBM Virtual I/O
+sys-block/tgt:infiniband - Add support for iSCSI over RDMA (iser). All needed libs can be found in science overlay
 sys-block/unieject:pmount - Make use of pmount wrapper and pmount-like permissions (sys-apps/pmount)
 sys-boot/arcboot:cobalt - Disable support for Cobalt Microserver hardware (Qube2/RaQ2)
 sys-boot/arcboot:ip27 - Disable support for SGI Origin (IP27)
@@ -3009,7 +3008,9 @@ sys-boot/lilo:device-mapper - Enable support for sys-fs/device-mapper
 sys-boot/lilo:pxeserial - Avoid character echo on PXE serial console
 sys-cluster/charm:cmkopt - Enable CMK optimisation
 sys-cluster/charm:tcp - Use TCP (instead of UPD) for socket communication
+sys-cluster/glusterfs:extras - Install extra helper scripts
 sys-cluster/glusterfs:fuse - Add FUSE mount helper
+sys-cluster/glusterfs:infiniband - Add support for Infiniband ibverbs transport. Librarys can be found in science overlay
 sys-cluster/heartbeat:ldirectord - Adds support for ldiretord, use enabled because it has a lot of deps
 sys-cluster/heartbeat:management - Adds support for management GUI.
 sys-cluster/lam-mpi:pbs - Add support for the Portable Batch System (PBS)
@@ -3222,7 +3223,6 @@ www-client/mozilla-firefox:moznopango - Disable x11-libs/pango during runtime
 www-client/mozilla-firefox:restrict-javascript - Pull in www-plugins/noscript extension to disable javascript globally, putting the user fully in control of the sites he/she visits
 www-client/mozilla-firefox:xforms - XForms is a standard to split up XHTML into XForms, instance data, and user interface
 www-client/mozilla-firefox-bin:restrict-javascript - Pull in x11-plugins/noscript extension to disable javascript globally, putting the user fully in control of the sites he/she visits
-www-client/opera:ia32 - Install 32-bit binaries instead of 64-bit binaries
 www-client/opera:qt-static - Install binaries statically linked to Qt
 www-client/seamonkey:custom-optimization - Fine-tune custom compiler optimizations
 www-client/seamonkey:mozdevelop - Enable features for web developers (e.g. Venkman)
