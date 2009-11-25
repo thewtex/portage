@@ -24,6 +24,7 @@ DEPEND=">=x11-libs/gtk+-2
 	dev-util/pkgconfig
 	x11-base/xorg-server
 	x11-libs/libXt
+	>=x11-libs/libXxf86vm-1.1.0
 	x11-libs/libXv
 	x11-proto/xf86driproto
 	x11-proto/xf86vidmodeproto"
