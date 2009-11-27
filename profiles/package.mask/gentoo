@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10878 2009/11/25 06:21:17 beandog Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10890 2009/11/26 04:21:02 beandog Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -31,15 +31,41 @@
 
 #--- END OF EXAMPLES ---
 
+# Diego E. Pettenò <flameeyes@gentoo.org> (25 Nov 2009)
+#  on behalf of QA team
+#
+# Fails to build, bug #250372 opened in December 2008.
+#
+# Removal on 2010-01-24
+sci-visualization/gfsview
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (25 Nov 2009)
+#  on behalf of QA team
+#
+# Fails to build (bug #276675, July 2009); imported in 2004,
+# never bumped, no maintainer, upstream homepage unavailable.
+#
+# Removal on 2010-01-24
+www-client/rabbitticker
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (25 Nov 2009)
+#  on behalf of QA team
+#
+# Fails to build, bug #248474, open since November 2008.
+#
+# Removal on 2010-01-24
+www-apps/Embperl
+
 # Steve Dibb <beandog@gentoo.org> (24 Nove 2009)
 # Need to check reverse deps
 >=media-libs/x264-0.0.20091124
+>=media-video/x264-encoder-0.0.20091124
 
 # Ben de Groot <yngwin@gentoo.org> (25 Nov 20009)
 # Temporarily mask premature version bumps until x264 is bumped as well
 # bug 294469
-=media-video/ffmpeg-0.5_p20601
-=media-video/mplayer-1.0_rc4_p20091124
+>=media-video/ffmpeg-0.5_p20601
+>=media-video/mplayer-1.0_rc4_p20091124
 
 # Diego E. Pettenò <flameeyes@gentoo.org> (24 Nov 2009)
 #  on behalf of QA team
@@ -69,20 +95,6 @@ sys-apps/inputd
 # masking until this package can follow the actual
 # kvm-kmod upstream package
 app-emulation/kvm-kmod
-
-# Theo Chatzimichos <tampakrap@gentoo.org> (22 Nov 2009)
-# KOffice 2.1.0 Masked until the release
-~app-office/koffice-l10n-2.1.0
-~app-office/kpresenter-2.1.0
-~app-office/kplato-2.1.0
-~app-office/krita-2.1.0
-~app-office/koffice-data-2.1.0
-~app-office/kspread-2.1.0
-~app-office/karbon-2.1.0
-~app-office/kchart-2.1.0
-~app-office/koffice-libs-2.1.0
-~app-office/koffice-meta-2.1.0
-~app-office/kword-2.1.0
 
 # Torsten Veller <tove@gentoo.org> (22 Nov 2009)
 # Masked for removal. Probably vulnerable
@@ -206,11 +218,9 @@ games-board/ggz-kde-games
 net-print/kink
 <app-editors/kile-2.1_beta1
 kde-misc/kload
-<net-misc/kvpnc-0.9.3
 media-tv/kdetv
 media-tv/kvdr
 net-wireless/kwlaninfo
-<net-misc/guidedog-1.1
 net-misc/knutclient
 net-misc/kovpn
 net-misc/kwebget
@@ -220,6 +230,25 @@ mail-client/kbiff
 app-text/kbarcode
 app-crypt/calcchecksum
 app-cdr/kcdlabel
+app-backup/kdar
+net-nntp/klibido
+app-office/kmymoney2
+app-office/kmm_kbanking
+x11-misc/kflog
+x11-misc/switcher
+media-gfx/kst
+sci-electronics/ktechlab
+app-text/kbibtex
+net-ftp/kftpgrabber
+media-video/okle
+media-video/ksubtile
+media-video/kmenc15
+media-radio/qsstv
+media-radio/qgrid
+media-gfx/potracegui
+app-pda/ipodslave
+app-i18n/skim-scim-anthy
+app-i18n/skim
 
 # Samuli Suominen <ssuominen@gentoo.org> (13 Nov 2009)
 # For deprecated media-sound/amarok:3.5. Masked for removal in 30 days.
@@ -640,10 +669,6 @@ media-sound/teamspeak2-client-bin
 # more than you need. This meta ebuild will be removed when we can add sets
 # to the portage tree.
 =x11-libs/qt-4*
-
-# Markus Meier <maekke@gentoo.org> (13 Jun 2009)
-# mask pre releases of media-gfx/inkscape-0.47
->=media-gfx/inkscape-0.47_pre0
 
 # Nirbheek Chauhan <nirbheek@gentoo.org> (10 Jun 2009)
 # Several feature regressions that will make our users
