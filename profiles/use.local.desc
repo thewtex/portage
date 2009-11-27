@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5047 2009/11/25 23:07:44 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5050 2009/11/26 21:47:45 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -1518,7 +1518,14 @@ media-libs/mediastreamer:video - Enable video support
 media-libs/mesa:pic - disable optimized assembly code that is not PIC friendly
 media-libs/mlt:compressed-lumas - Compress the luma files in png.
 media-libs/mlt:frei0r - Build the module for media-plugins/frei0r-plugins
+media-libs/mlt:java - Build SWIG bindings for Java
+media-libs/mlt:lua - Build SWIG bindings for Lua
 media-libs/mlt:melt - Build the melt commandline tool
+media-libs/mlt:perl - Build SWIG bindings for Perl
+media-libs/mlt:php - Build SWIG bindings for PHP
+media-libs/mlt:python - Build SWIG bindings for Python
+media-libs/mlt:ruby - Build SWIG bindings for Ruby
+media-libs/mlt:tcl - Build SWIG bindings for TCL
 media-libs/netpbm:rle - Build converters for the RLE format (utah raster toolkit)
 media-libs/opencv:deprecated - Enable deprecated (old) python support
 media-libs/opencv:ipp - Enable Intel Integrated Primitive support
@@ -3094,6 +3101,7 @@ sys-freebsd/freebsd-usbin:netware -  Build libraries and tools to work with NetW
 sys-fs/aufs2:debug - Enable additional debugging support
 sys-fs/aufs2:inotify - Enable inotify support
 sys-fs/aufs2:kernel-patch - Patch the current kernel for aufs2 support
+sys-fs/aufs2:nfs - Enable support for nfs export
 sys-fs/aufs2:ramfs - Enable initramfs/rootfs support
 sys-fs/btrfs-progs:debug-utils - Build additional utils for debugging
 sys-fs/cryptsetup:dynamic - Build cryptsetup dynamically
@@ -3317,6 +3325,7 @@ x11-misc/vnc2swf:x11vnc - Install script that depends on x11vnc
 x11-misc/x11vnc:system-libvncserver - Build x11vnc against the system libvncserver (experimental)
 x11-misc/xfce4-notifyd:libsexy - Enable support for x11-libs/libsexy
 x11-misc/xlockmore:xlockrc - Enables xlockrc for people without PAM
+x11-misc/xmobar:mail - Support the mail plugin. Pulls dependency dev-haskell/hinotify.
 x11-misc/xscreensaver:new-login - Enables New Login button using gdmflexiserver (gnome-base/gdm)
 x11-misc/zim:screenshot - Enable screenshot support (using media-gfx/scrot)
 x11-plugins/bfm:gkrellm - Enable building of app-admin/gkrellm module
