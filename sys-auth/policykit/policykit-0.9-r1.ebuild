@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-auth/policykit/policykit-0.9-r1.ebuild,v 1.12 2009/10/28 18:17:14 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-auth/policykit/policykit-0.9-r1.ebuild,v 1.14 2009/11/29 19:38:47 armin76 Exp $
 
 inherit autotools bash-completion eutils multilib pam
 
