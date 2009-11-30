@@ -1,6 +1,52 @@
 # ChangeLog for sys-fs/lvm2
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/lvm2/ChangeLog,v 1.181 2009/11/28 16:22:49 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/lvm2/ChangeLog,v 1.188 2009/11/30 00:57:50 robbat2 Exp $
+
+  30 Nov 2009; Robin H. Johnson <robbat2@gentoo.org> lvm2-2.02.33.ebuild,
+  lvm2-2.02.33-r1.ebuild, lvm2-2.02.36.ebuild, lvm2-2.02.37.ebuild,
+  lvm2-2.02.39.ebuild, lvm2-2.02.42.ebuild, lvm2-2.02.45.ebuild,
+  lvm2-2.02.45-r1.ebuild, lvm2-2.02.45-r2.ebuild, lvm2-2.02.48.ebuild,
+  lvm2-2.02.48-r1.ebuild, lvm2-2.02.48-r2.ebuild, lvm2-2.02.49.ebuild,
+  lvm2-2.02.49-r1.ebuild, lvm2-2.02.49-r2.ebuild, lvm2-2.02.49-r3.ebuild,
+  lvm2-2.02.51.ebuild, lvm2-2.02.51-r1.ebuild, lvm2-2.02.51-r2.ebuild,
+  lvm2-2.02.51-r3.ebuild, lvm2-2.02.56.ebuild, lvm2-2.02.56-r1.ebuild:
+  Bug #294744: Cleanup the rebuild message.
+
+*lvm2-2.02.56-r1 (30 Nov 2009)
+
+  30 Nov 2009; Robin H. Johnson <robbat2@gentoo.org>
+  +lvm2-2.02.56-r1.ebuild,
+  +files/lvm2-2.02.56-always-make-static-libdm.patch:
+  Bug #276803: Always build static libdevicemapper for cryptsetup to
+  optionally link to. Same behavior that sys-fs/devicemapper used to have.
+
+*lvm2-2.02.56 (30 Nov 2009)
+
+  30 Nov 2009; Robin H. Johnson <robbat2@gentoo.org> +lvm2-2.02.56.ebuild,
+  +files/lvm2-2.02.56-device-mapper-export-format.patch,
+  +files/lvm2-2.02.56-dmeventd.patch, +files/lvm.conf-2.02.56.patch:
+  Bug #294983: version bump.
+
+*lvm2-2.02.51-r3 (29 Nov 2009)
+
+  29 Nov 2009; Robin H. Johnson <robbat2@gentoo.org>
+  +lvm2-2.02.51-r3.ebuild,
+  +files/lvm2-2.02.51-dmsetup-selinux-linking-fix-r3.patch:
+  Try a different combined fix for bug #291217 (selinux compile) and bug
+  #293272 (parallel compile fix) that should work better than the previous
+  revisions.
+
+  29 Nov 2009; Robin H. Johnson <robbat2@gentoo.org> lvm2-2.02.51-r1.ebuild,
+  lvm2-2.02.51-r2.ebuild:
+  Bug #293272: Parallel compile fix for case where no LVM/DM was already
+  present on the system. Thanks to Stephan Hartmann <stha09@googlemail.com>
+  for the fix.
+
+  29 Nov 2009; Joseph Jezak <josejx@gentoo.org> lvm2-2.02.51-r1.ebuild:
+  Marked ppc/ppc64 for bug #287658.
+
+  29 Nov 2009; Raúl Porcel <armin76@gentoo.org> lvm2-2.02.51-r1.ebuild:
+  arm stable
 
   28 Nov 2009; Raúl Porcel <armin76@gentoo.org> lvm2-2.02.51-r1.ebuild:
   ia64/sparc stable wrt #287658
