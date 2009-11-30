@@ -1,0 +1,22 @@
+>=sys-apps/sed-4 >=sys-apps/sed-4
+media-libs/jpeg media-libs/libexif >=media-libs/fontconfig-2.1.94-r1 x11-libs/libXrandr x11-libs/libXp x11-libs/libXmu x11-libs/libXi x11-libs/libXft x11-libs/libXext x11-libs/libXcursor x11-libs/libX11 x11-libs/libSM x11-libs/libICE amd64? ( qt-static? ( media-libs/nas ) !qt-static? ( qt3? ( =x11-libs/qt-3*[-immqt] ) !qt3? ( x11-libs/qt-core x11-libs/qt-gui ) ) ) ppc? ( =x11-libs/qt-3*[-immqt] ) x86? ( qt-static? ( media-libs/nas ) !qt-static? ( qt3? ( =x11-libs/qt-3*[-immqt] ) !qt3? ( x11-libs/qt-core x11-libs/qt-gui ) ) ) x86-fbsd? ( =x11-libs/qt-3*[-immqt] )
+0
+amd64? ( qt-static? ( mirror://opera/linux/1010/final/en/x86_64/opera-10.10.gcc4-bundled-qt4.x86_64.tar.bz2 ) !qt-static? ( qt3? ( mirror://opera/linux/1010/final/en/x86_64/opera-10.10.gcc4-shared-qt3.x86_64.tar.bz2 ) !qt3? ( mirror://opera/linux/1010/final/en/x86_64/opera-10.10.gcc4-qt4.x86_64.tar.bz2 ) ) ) ppc? ( mirror://opera/linux/1010/final/en/ppc/shared/opera-10.10.gcc4-shared-qt3.ppc.tar.bz2 ) x86? ( qt-static? ( mirror://opera/linux/1010/final/en/i386/opera-10.10.gcc4-bundled-qt4.i386.tar.bz2 ) !qt-static? ( qt3? ( mirror://opera/linux/1010/final/en/i386/shared/opera-10.10.gcc4-shared-qt3.i386.tar.bz2 ) !qt3? ( mirror://opera/linux/1010/final/en/i386/opera-10.10.gcc4-qt4.i386.tar.bz2 ) ) ) x86-fbsd? ( mirror://opera/unix/freebsd/1010/en/intel/shared/opera-10.10-freebsd7-shared-qt3.i386.tar.bz2 )
+mirror test
+http://www.opera.com/
+OPERA-10.00
+A standards-compliant graphical Web browser
+amd64 ~ppc x86 ~x86-fbsd
+eutils fdo-mime gnome.org gnome2 gnome2-utils libtool multilib portability toolchain-funcs
+elibc_FreeBSD gnome qt3 qt-static linguas_be linguas_bg linguas_cs linguas_da linguas_de linguas_el linguas_en_GB linguas_es_ES linguas_es_LA linguas_et linguas_fi linguas_fr linguas_fr_CA linguas_fy linguas_hi linguas_hr linguas_hu linguas_id linguas_it linguas_ja linguas_ka linguas_ko linguas_lt linguas_mk linguas_nb linguas_nl linguas_nn linguas_pl linguas_pt linguas_pt_BR linguas_ro linguas_ru linguas_sk linguas_sr linguas_sv linguas_ta linguas_te linguas_tr linguas_uk linguas_zh_CN linguas_zh_HK linguas_zh_TW
+
+
+
+2
+
+compile configure install postinst postrm preinst prepare setup unpack
+
+
+
+
+

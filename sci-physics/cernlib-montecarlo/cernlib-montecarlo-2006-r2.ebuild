@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-physics/cernlib-montecarlo/cernlib-montecarlo-2006-r2.ebuild,v 1.1 2009/04/17 18:02:42 bicatali Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-physics/cernlib-montecarlo/cernlib-montecarlo-2006-r2.ebuild,v 1.3 2009/11/26 21:36:08 bicatali Exp $
 
 EAPI=2
 inherit eutils toolchain-funcs
@@ -16,7 +16,7 @@ LICENSE="GPL-2 LGPL-2 BSD"
 SRC_URI="mirror://debian/pool/main/${DEB_PN:0:1}/${DEB_PN}/${DEB_P}.orig.tar.gz
 	mirror://debian/pool/main/${DEB_PN:0:1}/${DEB_PN}/${DEB_P}-${DEB_PR}.diff.gz"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 SLOT="0"
 IUSE="+herwig"
 
@@ -30,11 +30,13 @@ DEPEND="${RDEPEND}
 	x11-misc/imake
 	x11-misc/makedepend"
 
-S="${WORKDIR}/${DEB_PN}-${DEB_PV}.orig"
+S="${WORKDIR}/${DEB_PN}-${DEB_PV}"
 
 src_prepare() {
 	cd "${WORKDIR}"
-	epatch "${WORKDIR}/${DEB_P}-${DEB_PR}.diff"
+	sed -i -e 's:/tmp/dp.*/cern:cern:g' ${DEB_P}-${DEB_PR}.diff || die
+	epatch ${DEB_P}-${DEB_PR}.diff
+	mv ${DEB_PN}-${DEB_PV}{.orig,}/upstream
 	cd "${S}"
 	cp debian/add-ons/Makefile .
 	export DEB_BUILD_OPTIONS="$(tc-getFC) nostrip nocheck"

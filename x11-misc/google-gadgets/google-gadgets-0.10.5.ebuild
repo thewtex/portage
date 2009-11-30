@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/google-gadgets/google-gadgets-0.10.5.ebuild,v 1.7 2009/04/11 19:30:29 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/google-gadgets/google-gadgets-0.10.5.ebuild,v 1.9 2009/11/23 20:29:01 halcy0n Exp $
 
 EAPI=2
 
