@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5057 2009/11/30 00:13:55 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5062 2009/12/01 01:47:49 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -993,6 +993,16 @@ dev-scheme/guile:discouraged -  (implied by deprecated) enable merely discourage
 dev-scheme/guile:elisp - Enable Emacs Lisp support
 dev-scheme/guile:networking - Include networking interfaces
 dev-scheme/guile:regex -  Include regular expression interfaces
+dev-scheme/kawa:awt - Assume AWT is available
+dev-scheme/kawa:echo2 - Enable support for the Echo2 web toolkit with dev-java/echo2
+dev-scheme/kawa:frontend - Build "kawa" front-end program using sys-libs/readline
+dev-scheme/kawa:jemacs - Build JEmacs
+dev-scheme/kawa:krl - Build BRL emulation and KRL
+dev-scheme/kawa:sax - Assume SAX2 is available with dev-java/sax
+dev-scheme/kawa:servlets - Build support for generating servlets with dev-java/servletapi
+dev-scheme/kawa:swing - Assume Swing is available
+dev-scheme/kawa:swt - Assume SWT is available with dev-java/swt
+dev-scheme/kawa:xqtests - Support XQuery Test Suite
 dev-scheme/plt-scheme:backtrace -  Support GC backtrace dumps 
 dev-scheme/plt-scheme:cgc -  Compile and install additional executables which use the conservative garbage collector 
 dev-scheme/plt-scheme:llvm -  Add support for compiling to the low-level virtual machine (llvm) 
@@ -1574,7 +1584,6 @@ media-gfx/imagemagick:q8 -  set quantum depth to 8
 media-gfx/inkscape:dia -  pull in app-office/dia for dia import extension 
 media-gfx/inkscape:inkjar -  enables support for OpenOffice.org SVG jar files 
 media-gfx/inkscape:postscript -  pull in dependencies needed for the postscript import extension 
-media-gfx/inkscape:wpg -  build with media-libs/libwpg support (C++ library to read and parse graphics in WPG) 
 media-gfx/jpeg2ps:metric -  Default to A4 paper size 
 media-gfx/k3d:3ds - Enable support for 3D Studio models
 media-gfx/k3d:cuda - Use nvidia cuda toolkit for speeding up computations
@@ -1608,6 +1617,7 @@ media-libs/cal3d:16bit-indices - Enables use of 16bit indices
 media-libs/devil:allegro - Add support for Allegro
 media-libs/esdl:image - Enable image support
 media-libs/faad2:digitalradio - Digital Radio Mondiale (warning: disables other decoders)
+media-libs/freeglut:mpx -  Enable support for multi-pointer-X. One pointer for each pointer device. 
 media-libs/freetype:fontforge - Install internal headers required for truetype debugger in media-gfx/fontforge (built with USE=truetype-debugger)
 media-libs/freetype:kpathsea - Enable TeX support (ttf2pk and ttf2pfb)
 media-libs/freetype:utils - Install utilities and examples from ft2demos
@@ -2777,6 +2787,7 @@ net-misc/vnc:xorgmodule - Build the Xorg module
 net-misc/vpnc:hybrid-auth - Enable hybrid authentication (certificates), only if not redistributed as compiled binary
 net-misc/vpnc:resolvconf - Enable support for DNS managing framework net-dns/openresolv
 net-misc/wget:ntlm - Enable support for NTLM (Windows-based) authorization
+net-misc/wicd:gtk - Installs a gtk UI. This is enabled by default because it is intended behavior. Requires dev-python/pygtk
 net-misc/wicd:ioctl - Installs additional python libraries to use as a backend. This will improve speed but is experimental.
 net-misc/wicd:ncurses - Installs a ncurses UI
 net-misc/wicd:pm-utils - Installs the pm-utils hooks for suspend/resume and requires sys-power/pm-utils
@@ -3620,6 +3631,7 @@ x11-wm/matchbox-desktop:dnotify - Use the linux kernel directory notification fe
 x11-wm/matchbox-panel:dnotify - Use the linux kernel directory notification feature.
 x11-wm/matchbox-panel:lowres - Optimize for low resolution screens.
 x11-wm/musca:apis - Optionally install the experimental `apis' window manager
+x11-wm/musca:xlisten - Optionally install the xlisten utility
 x11-wm/ratpoison:history - Use sys-libs/readline for history handling
 x11-wm/sawfish:pango - Enable pango support
 x11-wm/stumpwm:clisp - Use CLISP for the runtime
