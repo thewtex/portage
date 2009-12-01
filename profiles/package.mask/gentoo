@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10898 2009/11/29 23:53:24 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10902 2009/11/30 20:45:55 ulm Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,14 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Alex Legler <a3li@gentoo.org> (30 Nov 2009)
+# Dead upstream, fetch issues with gemcutter.
+# Masking for removal in 30 days.
+dev-ruby/nitro
+dev-ruby/glue
+dev-ruby/gen
+dev-ruby/og
 
 # Markus Meier <maekke@gentoo.org> (30 Nov 2009)
 # mask rc versions of enblend for testing
@@ -211,11 +219,6 @@ net-analyzer/cacti-cactid
 app-emulation/cedega
 app-emulation/transgaming-fontinstaller
 app-emulation/transgaming-mozctlinstaller
-
-# Ulrich Mueller <ulm@gentoo.org> (14 Nov 2009)
-# CVS snapshot, masked for one week of testing.
-# Duration extended until bug 293953 is resolved.
-=app-emacs/wanderlust-2.15.7_pre*
 
 # Tomáš Chvátal <scarabeus@gentoo.org> (14 Nov 2009)
 # Mask all packages that fail to comply to cmake eclass
