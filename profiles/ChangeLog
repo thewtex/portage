@@ -1,10 +1,67 @@
 # ChangeLog for profile directory
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.3613 2009/11/28 17:39:33 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.3630 2009/12/01 20:45:38 spatz Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  01 Dec 2009; Dror Levin <spatz@gentoo.org> package.mask:
+  Remove mask for qt-*-4.6.0_rc
+
+  01 Dec 2009; Víctor Ostorga <vostorga@gentoo.org> package.mask:
+  Cleaning out entries for removed packages: app-cdr/mdf2iso net-misc/rdist
+  net-im/curphoo net-im/magnesium media-libs/SoGtk dev-libs/skalibs
+  sys-apps/minutils net-ftp/easyftp app-office/kmymoney2 app-cdr/kcdlabel
+  app-crypt/calcchecksum sys-power/kpowersave sci-electronics/ktechlab
+
+  01 Dec 2009; Theo Chatzimichos <tampakrap@gentoo.org> package.mask:
+  Unmask KDE 4.3.4
+
+  01 Dec 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask sci-visualization/labplot wrt #209757.
+
+  01 Dec 2009; Theo Chatzimichos <tampakrap@gentoo.org> package.mask:
+  Unmask Qt 4.6.0
+
+  01 Dec 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Mask patch-2.6 and later until bug #293570 is solved.
+
+  01 Dec 2009; Alex Alexander <wired@gentoo.org> package.mask:
+  masked KDE 4.3.4 before commit run
+
+  01 Dec 2009; Alex Alexander <wired@gentoo.org> package.mask:
+  removed old qt-4.6.0_beta mask
+
+  30 Nov 2009; Ulrich Mueller <ulm@gentoo.org> package.mask:
+  Remove mask for app-emacs/wanderlust snapshot.
+
+  30 Nov 2009; Alex Legler <a3li@gentoo.org> thirdpartymirrors:
+  add bytemark mirror to mirror://rubygems, thanks to Rubyforge's Tom
+  Copeland
+
+  30 Nov 2009; Ulrich Mueller <ulm@gentoo.org> package.mask:
+  Remove mask for dev-scheme/kawa after version bump.
+
+  30 Nov 2009; Alex Legler <a3li@gentoo.org> package.mask:
+  Mask dev-ruby/{nitro,og,glue,gen} for removal
+
+  30 Nov 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Masking dev-scheme/kawa for QA removal.
+
+  29 Nov 2009; Markus Meier <maekke@gentoo.org> package.mask:
+  mask rc versions of enblend for testing
+
+  29 Nov 2009; Rémi Cardona <remi@gentoo.org> package.mask:
+  mask xorg-server 1.7.2
+
+  29 Nov 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Masking sys-apps/hwinfo for QA removal.
+
+  29 Nov 2009; Ryan Hill <dirtyepic@gentoo.org> arch/amd64/use.mask:
+  Remove emf from use.mask now that stable libemf is keyworded on amd64.
+  Also remove the related mask for plugin as no ebuild in the tree uses
+  it anymore.
 
   28 Nov 2009; Raúl Porcel <armin76@gentoo.org> package.mask:
   sh-sources were punted

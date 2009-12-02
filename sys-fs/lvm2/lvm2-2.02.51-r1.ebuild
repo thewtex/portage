@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/lvm2/lvm2-2.02.51-r1.ebuild,v 1.8 2009/11/28 16:22:49 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/lvm2/lvm2-2.02.51-r1.ebuild,v 1.12 2009/11/30 00:57:50 robbat2 Exp $
 
 EAPI=2
 inherit eutils multilib toolchain-funcs autotools
@@ -12,7 +12,7 @@ SRC_URI="ftp://sources.redhat.com/pub/lvm2/${PN/lvm/LVM}.${PV}.tgz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha ~amd64 ~arm hppa ia64 ~mips ~ppc ~ppc64 sparc x86"
+KEYWORDS="alpha ~amd64 arm hppa ia64 ~mips ppc ppc64 sparc x86"
 
 IUSE="readline +static clvm cman +lvm1 selinux"
 
@@ -140,6 +140,11 @@ src_compile() {
 	emake || die "failed to build lib"
 	popd
 
+	einfo "Doing dmeventd"
+	pushd daemons/dmeventd
+	emake device-mapper || die "failed to build lib"
+	popd
+
 	einfo "Doing main build"
 	emake || die "compile problem"
 }
@@ -203,7 +208,7 @@ src_install() {
 	elog "USE flags clvm and cman are masked"
 	elog "by default and need to be unmasked to use them"
 	elog ""
-	elog "Rebuild your genkernel initramfs if you are using lvm"
+	elog "If you are using genkernel and root-on-LVM, rebuild the initramfs."
 }
 
 pkg_postinst() {

@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5054 2009/11/29 02:43:45 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5065 2009/12/01 20:27:42 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -493,8 +493,6 @@ app-office/grisbi:print - Enable printing support
 app-office/imposter:iksemel - Enable external dev-libs/iksemel parsing support
 app-office/karbon:pstoedit - Build support for PDF and PS import.
 app-office/karbon:wpg - Build wordperfect image support.
-app-office/kmymoney2:hbci - Add HBCI online banking support
-app-office/kmymoney2:qtdesigner - Installs KMyMoney specific widget library for Qt-designer
 app-office/krita:gmm - Enable library for sparse, dense and skyline matrices.
 app-office/krita:kdcraw - Enable KDE image manipulating interface.
 app-office/kspread:solver - Use solver extension for solving lingebra and others.
@@ -993,6 +991,16 @@ dev-scheme/guile:discouraged -  (implied by deprecated) enable merely discourage
 dev-scheme/guile:elisp - Enable Emacs Lisp support
 dev-scheme/guile:networking - Include networking interfaces
 dev-scheme/guile:regex -  Include regular expression interfaces
+dev-scheme/kawa:awt - Assume AWT is available
+dev-scheme/kawa:echo2 - Enable support for the Echo2 web toolkit with dev-java/echo2
+dev-scheme/kawa:frontend - Build "kawa" front-end program using sys-libs/readline
+dev-scheme/kawa:jemacs - Build JEmacs
+dev-scheme/kawa:krl - Build BRL emulation and KRL
+dev-scheme/kawa:sax - Assume SAX2 is available with dev-java/sax
+dev-scheme/kawa:servlets - Build support for generating servlets with dev-java/servletapi
+dev-scheme/kawa:swing - Assume Swing is available
+dev-scheme/kawa:swt - Assume SWT is available with dev-java/swt
+dev-scheme/kawa:xqtests - Support XQuery Test Suite
 dev-scheme/plt-scheme:backtrace -  Support GC backtrace dumps 
 dev-scheme/plt-scheme:cgc -  Compile and install additional executables which use the conservative garbage collector 
 dev-scheme/plt-scheme:llvm -  Add support for compiling to the low-level virtual machine (llvm) 
@@ -1061,6 +1069,7 @@ dev-util/qt-creator:debugger - enable debugger plugin
 dev-util/qt-creator:designer - enable designer plugin
 dev-util/qt-creator:fakevim - enable vim-like key bindings plugin
 dev-util/qt-creator:git - enable git plugin
+dev-util/qt-creator:mercurial - enable mercurial plugin
 dev-util/qt-creator:perforce - enable perforce software configuration manager plugin
 dev-util/qt-creator:qtscript - enable qt script editor plugin
 dev-util/qt-creator:subversion - enable subersion plugin
@@ -1529,6 +1538,8 @@ media-gfx/digikam:addressbook - Add support for kdepim
 media-gfx/digikam:geolocation - Add support for marble
 media-gfx/digikam:lensfun - Enable support for lens-correnction library
 media-gfx/digikam:thumbnails - Allow thumbnail previews for images/photos
+media-gfx/enblend:gpu - GPU support for Enblend
+media-gfx/enblend:image-cache - allow for processing of large images
 media-gfx/eog:xmp - Adds support for XMP metadata
 media-gfx/exact-image:agg - Adds Anti-Grain Geometry supportx11-libs/agg
 media-gfx/exact-image:swig - Adds Swig support dev-lang/swig
@@ -1572,7 +1583,6 @@ media-gfx/imagemagick:q8 -  set quantum depth to 8
 media-gfx/inkscape:dia -  pull in app-office/dia for dia import extension 
 media-gfx/inkscape:inkjar -  enables support for OpenOffice.org SVG jar files 
 media-gfx/inkscape:postscript -  pull in dependencies needed for the postscript import extension 
-media-gfx/inkscape:wpg -  build with media-libs/libwpg support (C++ library to read and parse graphics in WPG) 
 media-gfx/jpeg2ps:metric -  Default to A4 paper size 
 media-gfx/k3d:3ds - Enable support for 3D Studio models
 media-gfx/k3d:cuda - Use nvidia cuda toolkit for speeding up computations
@@ -1606,6 +1616,7 @@ media-libs/cal3d:16bit-indices - Enables use of 16bit indices
 media-libs/devil:allegro - Add support for Allegro
 media-libs/esdl:image - Enable image support
 media-libs/faad2:digitalradio - Digital Radio Mondiale (warning: disables other decoders)
+media-libs/freeglut:mpx -  Enable support for multi-pointer-X. One pointer for each pointer device. 
 media-libs/freetype:fontforge - Install internal headers required for truetype debugger in media-gfx/fontforge (built with USE=truetype-debugger)
 media-libs/freetype:kpathsea - Enable TeX support (ttf2pk and ttf2pfb)
 media-libs/freetype:utils - Install utilities and examples from ft2demos
@@ -1639,14 +1650,10 @@ media-libs/mediastreamer:video - Enable video support
 media-libs/mesa:pic - disable optimized assembly code that is not PIC friendly
 media-libs/mlt:compressed-lumas - Compress the luma files in png.
 media-libs/mlt:frei0r - Build the module for media-plugins/frei0r-plugins
-media-libs/mlt:java - Build SWIG bindings for Java
 media-libs/mlt:lua - Build SWIG bindings for Lua
 media-libs/mlt:melt - Build the melt commandline tool
-media-libs/mlt:perl - Build SWIG bindings for Perl
-media-libs/mlt:php - Build SWIG bindings for PHP
 media-libs/mlt:python - Build SWIG bindings for Python
 media-libs/mlt:ruby - Build SWIG bindings for Ruby
-media-libs/mlt:tcl - Build SWIG bindings for TCL
 media-libs/netpbm:rle - Build converters for the RLE format (utah raster toolkit)
 media-libs/opencv:deprecated - Enable deprecated (old) python support
 media-libs/opencv:ipp - Enable Intel Integrated Primitive support
@@ -2257,7 +2264,7 @@ net-analyzer/snort:reload-error-restart - Enable restarting on reload error
 net-analyzer/snort:targetbased - Enable targetbased support
 net-analyzer/snort:timestats - Enable TimeStats functionality
 net-analyzer/symon:perl - Enables a generic perl symux client
-net-analyzer/symon:symon - Enables the lightweight system monitor. Offers no functionality but monitoring and forwarding of measured data
+net-analyzer/symon:symon - Enables the system monitor. Offers no functionality but monitoring and forwarding of measured data
 net-analyzer/symon:symux - Enables the multiplexer which stores incoming symon streams on disk in RRD (net-analyzer/rrdtool) files
 net-analyzer/tcpdump:chroot - Enable chrooting when dropping privileges
 net-analyzer/tcpdump:smi - Build with net-libs/libsmi to load MIBs on the fly to decode SNMP packets
@@ -2779,6 +2786,7 @@ net-misc/vnc:xorgmodule - Build the Xorg module
 net-misc/vpnc:hybrid-auth - Enable hybrid authentication (certificates), only if not redistributed as compiled binary
 net-misc/vpnc:resolvconf - Enable support for DNS managing framework net-dns/openresolv
 net-misc/wget:ntlm - Enable support for NTLM (Windows-based) authorization
+net-misc/wicd:gtk - Installs a gtk UI. This is enabled by default because it is intended behavior. Requires dev-python/pygtk
 net-misc/wicd:ioctl - Installs additional python libraries to use as a backend. This will improve speed but is experimental.
 net-misc/wicd:ncurses - Installs a ncurses UI
 net-misc/wicd:pm-utils - Installs the pm-utils hooks for suspend/resume and requires sys-power/pm-utils
@@ -2889,6 +2897,7 @@ net-proxy/squid:logrotate - Use app-admin/logrotate for rotating logs
 net-proxy/squid:pf-transparent - Adds transparent proxy support for systems using PF (only for *bsd)
 net-proxy/squid:zero-penalty-hit - Add Zero Penalty Hit patch (http://zph.bratcheda.org)
 net-proxy/sshproxy:client-only - Install only the client wrappers
+net-proxy/tinyproxy:http-via-header - Add Via field to HTTP headers
 net-proxy/tinyproxy:transparent-proxy - Enables support for transparent proxies
 net-proxy/tsocks:tordns -  Apply tordns patch which allows transparent TORification of the DNS queries 
 net-voip/ekiga:gconf - Enable GConf support
@@ -3621,6 +3630,7 @@ x11-wm/matchbox-desktop:dnotify - Use the linux kernel directory notification fe
 x11-wm/matchbox-panel:dnotify - Use the linux kernel directory notification feature.
 x11-wm/matchbox-panel:lowres - Optimize for low resolution screens.
 x11-wm/musca:apis - Optionally install the experimental `apis' window manager
+x11-wm/musca:xlisten - Optionally install the xlisten utility
 x11-wm/ratpoison:history - Use sys-libs/readline for history handling
 x11-wm/sawfish:pango - Enable pango support
 x11-wm/stumpwm:clisp - Use CLISP for the runtime
