@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/asterisk/asterisk-1.2.35.ebuild,v 1.6 2009/10/01 17:20:34 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/asterisk/asterisk-1.2.35.ebuild,v 1.7 2009/12/01 10:54:28 chainsaw Exp $
 
 EAPI=2
 inherit eutils multilib toolchain-funcs
@@ -21,7 +21,7 @@ S="${WORKDIR}/${MY_P}"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="alpha amd64 ~hppa ppc sparc x86"
+KEYWORDS="ppc"
 
 RDEPEND="dev-libs/newt
 	media-sound/sox
