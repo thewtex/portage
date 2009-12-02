@@ -1,6 +1,29 @@
 # ChangeLog for net-misc/asterisk
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/asterisk/ChangeLog,v 1.228 2009/11/19 14:53:33 chainsaw Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/asterisk/ChangeLog,v 1.231 2009/12/01 15:26:37 fauli Exp $
+
+  01 Dec 2009; Christian Faulhammer <fauli@gentoo.org>
+  asterisk-1.2.37.ebuild:
+  stable x86, security bug 295270
+
+*asterisk-1.2.37 (01 Dec 2009)
+
+  01 Dec 2009; <chainsaw@gentoo.org> asterisk-1.2.35.ebuild,
+  +asterisk-1.2.37.ebuild:
+  Version bump as requested by Rajiv Aaron Manglani <rajiv@gentoo.org> in
+  security bug #295270. Fixes a remote crash caused by a comfort noise
+  payload over 24 bytes in length. Reduce 1.2.35 keywords to PPC, unable to
+  delete at this time.
+
+*asterisk-1.6.1.11 (01 Dec 2009)
+
+  01 Dec 2009; <chainsaw@gentoo.org> -asterisk-1.6.1.9.ebuild,
+  -asterisk-1.6.1.10.ebuild, +asterisk-1.6.1.11.ebuild:
+  Version bump as requested by Rajiv Aaron Manglani <rajiv@gentoo.org> in
+  security bug #295270. Fixes a remote crash caused by a comfort noise
+  payload over 24 bytes in length. Also contains an SDP regression fix,
+  upstream bug reports #16368 & #16238. Vulnerable 1.6 branch ebuilds
+  killed.
 
 *asterisk-1.6.1.10 (19 Nov 2009)
 
