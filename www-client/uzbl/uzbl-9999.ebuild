@@ -1,50 +1,61 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
- 
-inherit git
- 
-EGIT_REPO_URI="git://github.com/Dieterbe/uzbl.git"
- 
-DESCRIPTION="Uzbl: a keyboard controlled (modal vim-like bindings, or with modifierkeys) browser based on Webkit."
+# $Header: /var/cvsroot/gentoo-x86/www-client/uzbl/uzbl-9999.ebuild,v 1.1 2009/12/04 01:04:12 wired Exp $
+
+EAPI="2"
+
+inherit base git
+
+DESCRIPTION="A keyboard controlled (modal vim-like bindings, or with modifierkeys) browser based on Webkit."
 HOMEPAGE="http://www.uzbl.org"
 SRC_URI=""
- 
+
+EGIT_REPO_URI="git://github.com/Dieterbe/uzbl.git"
+
 LICENSE="|| ( LGPL-2.1 MPL-1.1 )"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
-IUSE="dmenu socat xclip zenity"
- 
-RDEPEND=">=net-libs/webkit-gtk-1.1.7
-         >=net-libs/libsoup-2.26.2
-         >=x11-libs/gtk+-2.14
-         >=dev-libs/icu-4.0.1
-         dmenu? (
-             x11-misc/dmenu
-         )
-         socat? (
-             net-misc/socat
-         )
-         xclip? (
-             x11-misc/xclip
-         )
-         zenity? (
-             gnome-extra/zenity
-)"
- 
-DEPEND="${RDEPEND}
-        >=dev-util/pkgconfig-0.19
+KEYWORDS=""
+IUSE="helpers"
+
+COMMON_DEPEND="
+	>=net-libs/webkit-gtk-1.1.7
+	>=net-libs/libsoup-2.26.2
+	>=x11-libs/gtk+-2.14
+	>=dev-libs/icu-4.0.1
 "
- 
-src_install() {
-# The Makefile appends '/usr/local' to DESTDIR to get PREFIX, so we simply
-# set PREFIX ourself.
-emake PREFIX="${D}/usr" install || die "Installation failed"
-# Move the docs to /usr/share/doc instead.
-dodoc AUTHORS README docs/*
-# Move the config.h to /usr/share/uzbl instead.
-mv "${D}/usr/share/uzbl/docs/config.h" "${D}/usr/share/uzbl"
-# Remove the docs/ directory, we have everything we need.
-rm -rf "${D}/usr/share/uzbl/docs"
+
+DEPEND="
+	>=dev-util/pkgconfig-0.19
+	${COMMON_DEPEND}
+"
+
+RDEPEND="
+	${COMMON_DEPEND}
+	helpers? (
+		x11-misc/dmenu
+		net-misc/socat
+		x11-misc/xclip
+		gnome-extra/zenity
+	)
+"
+
+src_prepare() {
+	# patch Makefile to make it more sane
+	epatch "${FILESDIR}"/"${P}"-makefile-cleanup.patch
+
+	# adjust path in default config file to /usr/share
+	sed -i "s:/usr/local/share/uzbl:/usr/share/uzbl:g" \
+		examples/config/uzbl/config ||
+		die "config path sed failed"
 }
- 
+
+src_compile() {
+	emake || die "compile failed"
+}
+
+src_install() {
+	emake DESTDIR="${D}" PREFIX="/usr" install || die "Installation failed"
+
+	# Move the docs to /usr/share/doc instead.
+	dodoc AUTHORS README docs/*
+}
