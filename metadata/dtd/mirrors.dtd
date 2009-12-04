@@ -1,4 +1,4 @@
-<!-- $Header: /var/cvsroot/gentoo/xml/htdocs/dtd/mirrors.dtd,v 1.2 2008/01/13 16:16:21 neysx Exp $ -->
+<!-- $Header: /var/cvsroot/gentoo/xml/htdocs/dtd/mirrors.dtd,v 1.3 2009/12/03 09:43:39 robbat2 Exp $ -->
 <!-- This file is used for keeping the new mirrors.xml file -->
 
 <!--
@@ -16,7 +16,7 @@
            </mirrors>
 -->
 
-<!ELEMENT mirrors (mirrorgroup+, countries)>
+<!ELEMENT mirrors (mirrorgroup*, countries)>
 
 <!--
   element: mirrorgroup
@@ -30,7 +30,7 @@
            </mirrorgroup
 -->
 
-<!ELEMENT mirrorgroup (mirror+)>
+<!ELEMENT mirrorgroup (mirror*)>
 <!ATTLIST mirrorgroup region CDATA #REQUIRED
                       country IDREF #REQUIRED>
 <!--
@@ -71,7 +71,7 @@
              <country code="CA">Canada</country>
            <countries>
 -->
-<!ELEMENT countries (country+)>
+<!ELEMENT countries (country*)>
 
 <!--
   element: country
