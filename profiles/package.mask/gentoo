@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10915 2009/12/02 21:27:08 hd_brummy Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10930 2009/12/04 22:23:43 flameeyes Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,94 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (04 Dec 2009)
+#  on behalf of QA team
+#
+# Projects seem dead, hk_classes fails to build with autoconf
+# 2.64 (bug 279965).
+#
+# Removal on 2010-02-02
+dev-db/hk_classes
+dev-db/knoda
+
+# Michael Sterrett <mr_bones_@gentoo.org> (04 Dec 2009)
+# The "game" part of the experience is missing.
+# Abandoned by upstream in 2002.  Removal on 20100103
+games-action/glaxium
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (04 Dec 2009)
+#  on behalf of QA team
+#
+# Fails to build with itcl installed (bug #247940, open
+# November 2008).
+#
+# Removal on 2010-02-02
+net-analyzer/ttt
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (04 Dec 2009)
+#  on behalf of QA team
+#
+# aspectj fails to build (bug #175570; open _April 2007_);
+# aspectj4emacs depends on it.
+#
+# Removal on 2010-02-02
+dev-java/aspectj
+app-emacs/aspectj4emacs
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (04 Dec 2009)
+#  on behalf of QA team
+#
+# Uses -Werror and fails to build with _FORTIFY_SOURCE=2
+# (bug #260925; open March 2009).
+#
+# Removal on 2010-02-02
+net-misc/nstx
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (04 Dec 2009)
+#  on behalf of QA team
+#
+# Fails to build (bug #232841, open July 2008; bug #256926,
+# open January 2008).
+#
+# Removal on 2010-02-02
+dev-dotnet/mono-fuse
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (04 Dec 2009)
+#  on behalf of QA team
+#
+# qsa fails to build with Qt4 installed (bug #204537, open
+# January 2008); museek+ uses it and also misplaces man pages
+# (bug #250310) and use cmake directly rather than through
+# eclass (bug #287588).
+#
+# Removal on 2010-02-02
+dev-libs/qsa
+net-p2p/museek+
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (04 Dec 2009)
+#  on behalf of QA team
+#
+# Both use Gtk+1.2; gtk-canvas fails autotools (bug #248344,
+# open November 2008), coot uses it.
+#
+# Removal on 2010-02-02
+x11-libs/gtk-canvas
+sci-chemistry/coot
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (04 Dec 2009)
+#  on behalf of QA team
+#
+# Never bumped; uses imake; rewrites PATH inside ebuild;
+# seemingly dead.
+#
+# Removal on 2010-02-02
+x11-misc/seyon
+
+# Tomáš Chvátal <scarabeus@gentoo.org> (04 Dec 2009)
+# Mask coreutils 8.1 because of broken rm that can cause major issues.
+# For more info see bug #295654.
+=sys-apps/coreutils-8.1
 
 # Joerg Bornkessel <hd_brummy@gentoo.org> (02 Dec 2009)
 # cvs ebuild vdr-xineliboutput-9999 masked for lifetime
@@ -236,35 +324,10 @@ dev-lisp/cl-gcc-xml-ffi
 # Samuli Suominen <ssuominen@gentoo.org> (13 Nov 2009)
 # kde-base/kdelibs:3.5 reverse dependencies
 #
-# Masked for removal in 30 days.
-#
-# Bug 292791.
-#
+# Masked for removal in 30 days, bug 292791.
 <media-sound/amarok-2
-<app-cdr/k3b-1.68.0_alpha1
-net-print/kink
 <app-editors/kile-2.1_beta1
-kde-misc/kload
-media-tv/kdetv
-media-tv/kvdr
-net-misc/knutclient
-net-misc/kovpn
-net-misc/kwebget
-app-text/kbarcode
-app-backup/kdar
-app-office/kmm_kbanking
-x11-misc/kflog
-x11-misc/switcher
-media-gfx/kst
 app-text/kbibtex
-net-ftp/kftpgrabber
-media-gfx/potracegui
-app-i18n/skim-scim-anthy
-app-i18n/skim
-
-# Peter Volkov <pva@gentoo.org> (13 Nov 2009)
-# Mask release candidate
-=net-im/psi-0.14*
 
 # Markos Chandras <hwoarang@gentoo.org> (12 Nov 2009)
 # Fails to build with recent kernels. Upstream doesn't
@@ -344,10 +407,6 @@ games-fps/quake3-urbanterror
 # Vlastimil Babka <caster@gentoo.org> (03 Nov 2009)
 # Obsolete, needs 1.4 JDK, nothing uses it.
 dev-java/jessie
-
-# Michael Sterrett <mr_bones_@gentoo.org> (02 Nov 2009)
-# Upstream seems dead; segfaults; unplayable on modern systems
-games-rpg/tux_aqfh
 
 # Víctor Ostorga <vostorga@gentoo.org> (02 Nov 2009)
 # If you use a kernel >= 2.6.29 it is needed >=linux-headers-2.6.29
