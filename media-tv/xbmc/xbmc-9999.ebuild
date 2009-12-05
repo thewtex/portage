@@ -1,9 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-tv/xbmc/xbmc-9999.ebuild,v 1.40 2009/11/22 21:09:10 mr_bones_ Exp $
-
-# XXX: be nice to split out packages that come bundled and use the
-#      system libraries ...
+# $Header: /var/cvsroot/gentoo-x86/media-tv/xbmc/xbmc-9999.ebuild,v 1.42 2009/12/04 09:32:54 vapier Exp $
 
 EAPI="2"
 
@@ -113,9 +110,6 @@ src_prepare() {
 		-e "1iCXXFLAGS += ${squish}" \
 		xbmc/lib/libsquish/Makefile.in || die
 
-	# Tweak autotool timestamps to avoid regeneration
-	find . -type f -print0 | xargs -0 touch -r configure
-
 	# Fix XBMC's final version string showing as "exported"
 	# instead of the SVN revision number.
 	export SVN_REV=${ESVN_WC_REVISION:-exported}
@@ -127,6 +121,11 @@ src_prepare() {
 
 	# Do not use termcap #262822
 	sed -i 's:-ltermcap::' xbmc/lib/libPython/Python/configure
+
+	epatch_user #293109
+
+	# Tweak autotool timestamps to avoid regeneration
+	find . -type f -print0 | xargs -0 touch -r configure
 }
 
 src_configure() {
@@ -155,6 +154,9 @@ src_configure() {
 
 src_install() {
 	einstall || die "Install failed!"
+
+	insinto /usr/share/xbmc/web/styles/
+	doins -r "${S}"/web/*/styles/*/ || die
 
 	insinto /usr/share/applications
 	doins tools/Linux/xbmc.desktop
