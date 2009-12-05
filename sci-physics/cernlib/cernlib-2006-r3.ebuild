@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-physics/cernlib/cernlib-2006-r3.ebuild,v 1.3 2009/11/26 21:37:25 bicatali Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-physics/cernlib/cernlib-2006-r3.ebuild,v 1.5 2009/12/04 19:35:03 bicatali Exp $
 
 EAPI=2
 inherit eutils toolchain-funcs
@@ -15,7 +15,7 @@ HOMEPAGE="http://wwwasd.web.cern.ch/wwwasd/cernlib"
 SRC_URI="mirror://debian/pool/main/${DEB_PN:0:1}/${DEB_PN}/${DEB_P}.orig.tar.gz
 	mirror://debian/pool/main/${DEB_PN:0:1}/${DEB_PN}/${DEB_P}-${DEB_PR}.diff.gz"
 
-KEYWORDS="amd64 ~hppa ~sparc x86"
+KEYWORDS="amd64 hppa ~sparc x86"
 LICENSE="GPL-2 LGPL-2 BSD"
 
 SLOT="0"
@@ -31,13 +31,12 @@ DEPEND="${RDEPEND}
 
 IUSE=""
 
-S="${WORKDIR}/${DEB_PN}-${DEB_PV}"
+S="${WORKDIR}/${DEB_PN}-${DEB_PV}.orig"
 
 src_prepare() {
 	cd "${WORKDIR}"
 	sed -i -e 's:/tmp/dp.*/cern:cern:g' ${DEB_P}-${DEB_PR}.diff || die
 	epatch ${DEB_P}-${DEB_PR}.diff
-	mv ${DEB_PN}-${DEB_PV}{.orig,}/upstream
 	cd "${S}"
 	epatch "${FILESDIR}/${P}-nogfortran.patch"
 	# set some default paths
