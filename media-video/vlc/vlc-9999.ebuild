@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/vlc/vlc-9999.ebuild,v 1.48 2009/11/21 11:39:49 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/vlc/vlc-9999.ebuild,v 1.50 2009/12/05 08:59:38 aballier Exp $
 
 EAPI="2"
 
@@ -50,7 +50,7 @@ IUSE="a52 aac aalib alsa altivec atmo avahi bidi cdda cddax cddb cdio dbus dc139
 	libnotify libproxy libsysfs libtiger libv4l libv4l2 lirc live lua matroska mmx
 	modplug mp3 mpeg mtp musepack ncurses nsplugin ogg opengl optimisememory oss
 	png projectm pulseaudio pvr +qt4 remoteosd rtsp run-as-root samba
-	schroedinger sdl sdl-image seamonkey shine shout skins speex sse stream
+	schroedinger sdl sdl-image seamonkey shine shout skins speex sqlite sse stream
 	svg svga taglib theora truetype twolame udev upnp v4l v4l2 vcdinfo vcdx vlm
 	vorbis win32codecs wma-fixed X x264 xcb xml xosd xv zvbi"
 
@@ -126,6 +126,7 @@ RDEPEND="
 		shout? ( media-libs/libshout )
 		skins? ( x11-libs/qt-gui:4 x11-libs/qt-core:4 x11-libs/libXext x11-libs/libX11 )
 		speex? ( media-libs/speex )
+		sqlite? ( dev-db/sqlite:3 )
 		svg? ( >=gnome-base/librsvg-2.9.0 )
 		svga? ( media-libs/svgalib )
 		taglib? ( >=media-libs/taglib-1.5 sys-libs/zlib )
@@ -150,10 +151,6 @@ RDEPEND="
 		xosd? ( x11-libs/xosd )
 		zvbi? ( >=media-libs/zvbi-0.2.25 )
 		"
-
-# Disabled features and reasons:
-# xvmc? ( x11-libs/libXvMC )
-#	Will probably compile only on x86
 
 DEPEND="${RDEPEND}
 	dvb? ( sys-kernel/linux-headers )
@@ -327,6 +324,7 @@ src_configure() {
 		$(use_enable shout) \
 		$(use_enable skins skins2) \
 		$(use_enable speex) \
+		$(use_enable sqlite) \
 		$(use_enable sse) \
 		$(use_enable stream sout) \
 		$(use_enable svg) \
@@ -350,7 +348,6 @@ src_configure() {
 		$(use_enable xml libxml2) \
 		$(use_enable xosd) \
 		$(use_enable xv xvideo) \
-		--disable-xvmc \
 		$(use_enable zvbi) $(use_enable !zvbi telx) \
 		--disable-snapshot \
 		--disable-growl \

@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/uzbl/uzbl-9999.ebuild,v 1.3 2009/12/04 14:29:05 wired Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/uzbl/uzbl-9999.ebuild,v 1.5 2009/12/05 17:37:22 wired Exp $
 
 EAPI="2"
 
@@ -15,7 +15,7 @@ EGIT_REPO_URI="git://github.com/Dieterbe/uzbl.git"
 LICENSE="|| ( LGPL-2.1 MPL-1.1 )"
 SLOT="0"
 KEYWORDS=""
-IUSE="experimental helpers"
+IUSE="+browser experimental helpers +tabbed"
 
 COMMON_DEPEND="
 	>=net-libs/webkit-gtk-1.1.15
@@ -32,15 +32,32 @@ DEPEND="
 RDEPEND="
 	${COMMON_DEPEND}
 	helpers? (
-		x11-misc/dmenu
-		net-misc/socat
-		x11-misc/xclip
+		dev-lang/perl
+		dev-python/pygtk
+		dev-python/pygobject
 		gnome-extra/zenity
+		net-misc/socat
+		x11-libs/pango
+		x11-misc/dmenu
+		x11-misc/xclip
 	)
 "
 
 pkg_setup() {
 	use experimental && EGIT_BRANCH="experimental"
+
+	ewarn "Since the helpers are growing into a fine list I've decided"
+	ewarn "to keep them under a single USE flag to avoid a USE hell".
+	ewarn "You can always install the ones you need manually if you don't"
+	ewarn "need them all."
+	ewarn
+
+	if use tabbed && ! use browser; then
+		ewarn "You enabled 'tabbed' but not 'browser' which is required by"
+		ewarn "'tabbed'. uzbl-browser will be installed anyway to fulfill the"
+		ewarn "dependency."
+		ewarn
+	fi
 }
 
 src_prepare() {
@@ -60,7 +77,13 @@ src_compile() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" PREFIX="/usr" install || die "Installation failed"
+	emake DESTDIR="${D}" PREFIX="/usr" install-uzbl-core || die "Installation failed"
+	if use browser || use tabbed; then
+			emake DESTDIR="${D}" PREFIX="/usr" install-uzbl-browser || die "Installation failed"
+	fi
+	if use tabbed; then
+		emake DESTDIR="${D}" PREFIX="/usr" install-uzbl-tabbed || die "Installation failed"
+	fi
 
 	# Move the docs to /usr/share/doc instead.
 	dodoc AUTHORS README docs/*

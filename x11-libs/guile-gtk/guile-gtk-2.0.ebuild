@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/guile-gtk/guile-gtk-2.0.ebuild,v 1.7 2009/05/05 07:48:02 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/guile-gtk/guile-gtk-2.0.ebuild,v 1.8 2009/12/05 13:13:50 ulm Exp $
 
 inherit virtualx eutils
 
@@ -21,8 +21,15 @@ DEPEND="${RDEPEND}"
 pkg_setup() {
 	if has_version =dev-scheme/guile-1.8*; then
 		local flags="deprecated"
-		built_with_use dev-scheme/guile ${flags} || die "guile must be built with \"${flags}\" use flag"
+		built_with_use dev-scheme/guile ${flags} \
+			|| die "guile must be built with \"${flags}\" use flag"
 	fi
+}
+
+src_unpack() {
+	unpack ${A}
+	cd "${S}"
+	epatch "${FILESDIR}/${P}-g-object-ref.diff"
 }
 
 src_test() {
@@ -30,7 +37,7 @@ src_test() {
 }
 
 src_install() {
-	make DESTDIR="${D}" install
+	make DESTDIR="${D}" install || die "make install failed"
 	dodoc README AUTHORS ChangeLog NEWS TODO
 	insinto /usr/share/doc/${PF}/examples
 	doins -r examples/
