@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5076 2009/12/05 16:27:51 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5079 2009/12/06 19:07:37 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -752,9 +752,9 @@ dev-lang/php:suhosin - Add Suhosin support (patch and extension from http://www.
 dev-lang/php:xmlreader - Enable XMLReader support
 dev-lang/php:xmlwriter - Enable XMLWriter support
 dev-lang/php:zip - Enable ZIP file support
-dev-lang/python:threads - Enable threading support (DON'T DISABLE THIS UNLESS YOU KNOW WHAT YOU'RE DOING)
-dev-lang/python:ucs2 - Enable byte size 2 unicode (DON'T USE THIS UNLESS YOU KNOW WHAT YOU'RE DOING)
-dev-lang/python:wininst - Install required Windows executables to create an executable installer for MS Windows.
+dev-lang/python:threads - Enable threading support. (DON'T DISABLE THIS UNLESS YOU KNOW WHAT YOU'RE DOING)
+dev-lang/python:wide-unicode - Enable wide Unicode implementation which uses 4-byte Unicode characters. Switching of this USE flag changes ABI of Python and requires reinstallation of many Python modules. (DON'T DISABLE THIS UNLESS YOU KNOW WHAT YOU'RE DOING)
+dev-lang/python:wininst - Install Windows executables required to create an executable installer for MS Windows.
 dev-lang/ruby:rubytests - Install ruby tests that can only be run after ruby is installed
 dev-lang/scala:binary - Install from (Gentoo-compiled) binary instead of building from sources. Set this when you run out of memory during build.
 dev-lang/spidermonkey:threadsafe - Build a threadsafe version of spidermonkey
@@ -2433,6 +2433,7 @@ net-libs/ptlib:vxml - Enable VoiceXML support
 net-libs/ptlib:wav - Enable WAVFILE support
 net-libs/webkit-gtk:coverage - enable code coverage support
 net-libs/webkit-gtk:pango - Use pango as fontbackend instead of freetype
+net-libs/webkit-gtk:ruby - Enable HTML5 support for furigana/ruby annotation
 net-libs/webkit-gtk:soup - Use SOUP as backend instead of curl
 net-libs/webkit-gtk:websockets - enable full duplex single socket communication
 net-libs/webkit-gtk:xslt - enable support for XSLT
@@ -2972,10 +2973,6 @@ sys-apps/pcmciautils:staticsocket - Add support for static sockets
 sys-apps/portage:epydoc - Build html API documentation with epydoc.
 sys-apps/portage:python3 - Use python3 as Python interpreter.
 sys-apps/qingy:opensslcrypt - Encrypt communications between qingy and its GUI using dev-libs/openssl
-sys-apps/qtparted:jfs - Include JFS support
-sys-apps/qtparted:ntfs - Include NTFS support
-sys-apps/qtparted:reiserfs - Include ReiserFS support
-sys-apps/qtparted:xfs - Include XFS support
 sys-apps/s390-tools:zfcpdump - build the kernel disk dumping utility
 sys-apps/shadow:audit - Enable support for sys-process/audit
 sys-apps/shadow:nousuid - When nousuid is enabled only su from the shadow package will be installed with the setuid bit (mainly for single user systems)
