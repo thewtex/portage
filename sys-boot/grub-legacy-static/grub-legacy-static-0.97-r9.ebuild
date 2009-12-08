@@ -1,26 +1,36 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-boot/grub-static/grub-static-0.97-r6.ebuild,v 1.4 2009/01/11 21:04:00 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-boot/grub-static/grub-static-0.97-r9.ebuild,v 1.5 2009/07/04 18:47:53 robbat2 Exp $
 
 # XXX: we need to review menu.lst vs grub.conf handling.  We've been converting
 #      all systems to grub.conf (and symlinking menu.lst to grub.conf), but
 #      we never updated any of the source code (it still all wants menu.lst),
 #      and there is no indication that upstream is making the transition.
 
-inherit eutils mount-boot
+inherit eutils mount-boot toolchain-funcs linux-info
 
-PATCHVER="1.7" # Not used, just for tracking with main grub
+PATCHVER="1.9" # Not used, just for tracking with main grub
 
 DESCRIPTION="GNU GRUB Legacy boot loader (static build)"
 
+RPN=grub-static
+RP=${RPN}-${PV}
+
 HOMEPAGE="http://www.gnu.org/software/grub/"
-SRC_URI="mirror://gentoo/${PF}.tar.bz2"
+SRC_URI="mirror://gentoo/${RP}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="-* amd64 ~x86"
+KEYWORDS="-* amd64 x86"
 IUSE=""
 DEPEND="!sys-boot/grub"
 PROVIDE="virtual/bootloader"
+
+pkg_setup() {
+	local arch="$(tc-arch)"
+	case ${arch} in
+		amd64) CONFIG_CHECK='~IA32_EMULATION' check_extra_config ;;
+	esac
+}
 
 src_install() {
 	cp -a "${WORKDIR}"/* "${D}"/
@@ -35,7 +45,7 @@ setup_boot_dir() {
 	local boot_dir=$1
 	local dir=${boot_dir}
 
-	[[ ! -e ${dir} ]] && die "${dir} does not exist!"
+	mkdir -p "${dir}"
 	[[ ! -L ${dir}/boot ]] && ln -s . "${dir}/boot"
 	dir="${dir}/grub"
 	if [[ ! -e ${dir} ]] ; then
