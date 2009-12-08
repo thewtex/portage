@@ -1,10 +1,50 @@
 # ChangeLog for profile directory
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.3643 2009/12/04 22:23:43 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.3656 2009/12/07 15:37:18 ssuominen Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  07 Dec 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Unmask HAL 0.5.14 wrt #295600.
+
+  07 Dec 2009; Andrey Kislyuk <weaver@gentoo.org> package.mask:
+  Remove app-admin/rackview from p.mask, blocker bug fixed
+
+  07 Dec 2009; Luca Barbato <lu_zero@gentoo.org> package.mask:
+  Mask media-libs/netpbm-10.48.00 see bug #287725
+
+  06 Dec 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Add cppvm to the pvm mask.
+
+  06 Dec 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Masking dev-libs/libip_vs_user_sync for QA removal.
+
+  06 Dec 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Masking x11-apps/xmh for QA removal.
+
+  06 Dec 2009; Diego E. Pettenò <flameeyes@gentoo.org> base/use.mask,
+  package.mask:
+  Masking sys-cluster/pvm for QA removal.
+
+  05 Dec 2009; Ben de Groot <yngwin@gentoo.org> package.mask:
+  Temporarily mask =hal-0.5.14, which breaks KDE, bug 295600
+
+  05 Dec 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Masking dev-lang/sunstudioexpress for QA removal.
+
+  05 Dec 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Masking app-admin/rackview for QA removal.
+
+  05 Dec 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Masking mail-filter/simscan for QA removal.
+
+  05 Dec 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Masking dev-util/cook for QA removal.
+
+  05 Dec 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask kde-base/kdelibs:3.5 reverse dependencies.
 
   04 Dec 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
   Masking dev-db/hk_classes for QA removal.

@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/netcdf/netcdf-3.6.3.ebuild,v 1.10 2009/11/21 20:48:26 cla Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/netcdf/netcdf-3.6.3.ebuild,v 1.13 2009/12/07 18:30:46 mr_bones_ Exp $
 
 EAPI=2
 
@@ -29,7 +29,6 @@ pkg_setup() {
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-as-needed.patch
-	#epatch "${FILESDIR}"/${P}-libtool.patch
 	eautoreconf
 }
 
@@ -65,17 +64,28 @@ src_configure() {
 	else
 		myconf="${myconf} --disable-f77 --disable-f90"
 	fi
+
 	econf \
 		--enable-shared \
 		--docdir=/usr/share/doc/${PF} \
-		$(use_enable debug flag-setting ) \
+		$(use_enable fortran separate-fortran ) \
 		$(use_enable doc docs-install) \
 		${myconf}
 }
 
+src_compile() {
+	# hack to allow parallel build
+	if use doc; then
+		emake pdf || die "emake pdf failed"
+		cd man4
+		emake -j1 || die "emake doc failed"
+		cd ..
+	fi
+	emake || die "emake failed"
+}
+
 src_install() {
 	emake DESTDIR="${D}" install || die "emake install failed"
-
 	dodoc README RELEASE_NOTES VERSION || die "dodoc failed"
 	# keep only pdf,txt and html docs, info were already installed
 	if use doc; then
