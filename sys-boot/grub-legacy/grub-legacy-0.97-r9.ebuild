@@ -10,6 +10,8 @@
 inherit mount-boot eutils flag-o-matic toolchain-funcs autotools linux-info
 RPN=grub
 RP=${RPN}-${PV}
+S=${WORKDIR}/${RP}
+
 PATCHVER="1.9" # Should match the revision ideally
 DESCRIPTION="GNU GRUB Legacy boot loader"
 HOMEPAGE="http://www.gnu.org/software/grub/"
