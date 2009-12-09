@@ -15,6 +15,7 @@ DESCRIPTION="GNU GRUB Legacy boot loader (static build)"
 
 RPN=grub-static
 RP=${RPN}-${PV}
+S=${WORKDIR}/${RP}
 
 HOMEPAGE="http://www.gnu.org/software/grub/"
 SRC_URI="mirror://gentoo/${RP}.tar.bz2"
