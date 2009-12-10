@@ -1,0 +1,22 @@
+>=app-arch/rpm2targz-9.0.0.3g
+x86? ( x11-libs/gtk+:2 media-libs/fontconfig dev-libs/nss net-misc/curl >=sys-libs/glibc-2.4 || ( media-fonts/freefont-ttf media-fonts/corefonts ) ) amd64? ( multilib? ( 64bit? ( x11-libs/gtk+:2 media-libs/fontconfig dev-libs/nss net-misc/curl >=sys-libs/glibc-2.4 || ( media-fonts/freefont-ttf media-fonts/corefonts ) ) 32bit? ( app-emulation/emul-linux-x86-baselibs app-emulation/emul-linux-x86-gtklibs app-emulation/emul-linux-x86-soundlibs app-emulation/emul-linux-x86-xlibs ) ) !multilib? ( x11-libs/gtk+:2 media-libs/fontconfig dev-libs/nss net-misc/curl >=sys-libs/glibc-2.4 || ( media-fonts/freefont-ttf media-fonts/corefonts ) ) )
+0
+x86? ( http://fpdownload.macromedia.com/get/flashplayer/current/flash-plugin-10.0.42.34-release.i386.rpm ) amd64? ( multilib? ( 32bit? ( http://fpdownload.macromedia.com/get/flashplayer/current/flash-plugin-10.0.42.34-release.i386.rpm mirror://gentoo/flash-libcompat-0.2.tar.bz2 ) 64bit? ( http://download.macromedia.com/pub/labs/flashplayer10/libflashplayer-10.0.42.34.linux-x86_64.so.tar.gz ) ) !multilib? ( http://download.macromedia.com/pub/labs/flashplayer10/libflashplayer-10.0.42.34.linux-x86_64.so.tar.gz ) )
+strip mirror
+http://www.adobe.com/
+AdobeFlash-10
+Adobe Flash Player
+-* ~amd64 ~x86
+eutils multilib nsplugins portability rpm toolchain-funcs
+multilib +32bit +64bit
+
+
+
+1
+
+compile install postinst setup unpack
+
+
+
+
+

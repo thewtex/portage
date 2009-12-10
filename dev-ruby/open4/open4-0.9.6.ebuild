@@ -1,6 +1,6 @@
-# Copyright 1999-2007 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/open4/open4-0.9.6.ebuild,v 1.1 2007/12/15 22:07:45 nichoj Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/open4/open4-0.9.6.ebuild,v 1.3 2009/12/09 21:14:43 graaff Exp $
 
 inherit ruby gems
 
