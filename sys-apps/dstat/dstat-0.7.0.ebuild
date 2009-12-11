@@ -16,13 +16,14 @@ IUSE=""
 RDEPEND="virtual/python"
 DEPEND=""
 
+src_compile() {
+	# this disables unnecessary doc regeneration that depends upon asciidoc
+	return 0
+}
+
 src_install() {
 	make install DESTDIR="${D}" || die "make install failed"
-
-	dodoc \
-		AUTHORS ChangeLog README TODO \
-		examples/{mstat,read}.py docs/*.txt \
-		|| die "dodoc failed"
+	dodoc AUTHORS ChangeLog README TODO examples/{mstat,read}.py docs/*.txt || die "dodoc failed"
 	dohtml docs/*.html || die "dohtml failed"
 }
 
