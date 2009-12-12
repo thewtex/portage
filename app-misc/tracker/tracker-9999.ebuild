@@ -1,118 +1,160 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/tracker/tracker-9999.ebuild,v 1.4 2009/08/15 12:55:07 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/tracker/tracker-9999.ebuild,v 1.5 2009/12/10 23:15:03 eva Exp $
 
-EAPI=2
-inherit autotools eutils flag-o-matic linux-info subversion
+EAPI="2"
+G2CONF_DEBUG="no"
+
+inherit autotools git gnome2 linux-info
 
 DESCRIPTION="A tagging metadata database, search tool and indexer"
 HOMEPAGE="http://www.tracker-project.org/"
-ESVN_REPO_URI="http://svn.gnome.org/svn/${PN}/trunk"
-#SRC_URI="http://www.gnome.org/~jamiemcc/${PN}/${P}.tar.gz"
+EGIT_REPO_URI="git://git.gnome.org/${PN}"
+SRC_URI=""
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="applet debug deskbar gnome gsf gstreamer gtk hal jpeg pdf xine kernel_linux"
+IUSE="applet deskbar doc eds exif gsf gstreamer gtk hal iptc +jpeg kmail laptop mp3 pdf playlist test +tiff xine +xml xmp +vorbis"
 
-RDEPEND=">=dev-libs/glib-2.14.0
-		 >=x11-libs/pango-1.0.0
-		 =dev-libs/gmime-2.2*
-		 >=dev-libs/dbus-glib-0.71
-		 >=media-libs/libpng-1.2
-		 >=dev-libs/libxml2-2.6
-		 >=dev-db/sqlite-3.4[threadsafe]
-		 >=media-gfx/imagemagick-5.2.1[png,jpeg?]
-		 applet? ( >=x11-libs/libnotify-0.4.3 )
-		 deskbar? ( >=gnome-extra/deskbar-applet-2.19 )
-		 gnome? (
-					>=x11-libs/gtk+-2.8
-					>=gnome-base/libgnome-2.14
-					>=gnome-base/libgnomeui-2.14
-					>=gnome-base/gnome-vfs-2.10
-					>=gnome-base/gnome-desktop-2.14
-					>=gnome-base/libglade-2.5
-				)
-		 gsf? ( >=gnome-extra/libgsf-1.13 )
-		 gstreamer? ( >=media-libs/gstreamer-0.10 )
-		 !gstreamer? ( !xine? ( || ( media-video/totem media-video/mplayer ) ) )
-		 gtk? ( >=x11-libs/gtk+-2.8.20 )
-		 hal? ( >=sys-apps/hal-0.5 )
-		 jpeg? ( >=media-gfx/exif-0.6 )
-		 !kernel_linux? ( >=app-admin/gamin-0.1.7 )
-		 pdf?	(
-					>=x11-libs/cairo-1.0
-					>=virtual/poppler-glib-0.5
-					>=virtual/poppler-utils-0.5
-				)
-		 xine? ( >=media-libs/xine-lib-1.0 )"
+# Automagic, gconf, uuid, enca and probably more
+# TODO: quill and streamanalyzer support
+RDEPEND="
+	>=app-i18n/enca-1.9
+	>=dev-db/sqlite-3.6.16[threadsafe]
+	>=dev-libs/dbus-glib-0.78
+	>=dev-libs/glib-2.16.0
+	>=gnome-base/gconf-2
+	>=media-gfx/imagemagick-5.2.1[png,jpeg=]
+	>=media-libs/libpng-1.2
+	>=x11-libs/pango-1
+	sys-apps/util-linux
+
+	applet? (
+		>=x11-libs/libnotify-0.4.3
+		gnome-base/gnome-panel
+		>=x11-libs/gtk+-2.16 )
+	deskbar? ( >=gnome-extra/deskbar-applet-2.19 )
+	eds? (
+		>=mail-client/evolution-2.25.5
+		>=gnome-extra/evolution-data-server-2.25.5 )
+	exif? ( >=media-libs/libexif-0.6 )
+	iptc? ( media-libs/libiptcdata )
+	jpeg? ( media-libs/jpeg )
+	gsf? ( >=gnome-extra/libgsf-1.13 )
+	gstreamer? ( >=media-libs/gstreamer-0.10.12 )
+	!gstreamer? ( !xine? ( || ( media-video/totem media-video/mplayer ) ) )
+	gtk? ( >=x11-libs/gtk+-2.16.0 )
+	laptop? (
+		hal? ( >=sys-apps/hal-0.5 )
+		!hal? ( >=sys-apps/devicekit-power-007 ) )
+	mp3? ( >=media-libs/id3lib-3.8.3 )
+	pdf? (
+		>=x11-libs/cairo-1
+		>=virtual/poppler-glib-0.5[cairo]
+		>=virtual/poppler-utils-0.5
+		>=x11-libs/gtk+-2.12 )
+	playlist? ( dev-libs/totem-pl-parser )
+	tiff? ( media-libs/tiff )
+	vorbis? ( >=media-libs/libvorbis-0.22 )
+	xine? ( >=media-libs/xine-lib-1 )
+	xml? ( >=dev-libs/libxml2-2.6 )
+	xmp? ( >=media-libs/exempi-2.1 )"
 DEPEND="${RDEPEND}
-		>=dev-util/intltool-0.35
-		>=sys-devel/gettext-0.14
-		>=dev-util/pkgconfig-0.20"
+	>=dev-util/intltool-0.35
+	>=sys-devel/gettext-0.14
+	>=dev-util/pkgconfig-0.20
+	applet? (
+		dev-lang/vala
+		>=dev-libs/libgee-0.3 )
+	gtk? (
+		dev-lang/vala
+		>=dev-libs/libgee-0.3 )
+	dev-util/gtk-doc-am
+	doc? ( >=dev-util/gtk-doc-1.8 )"
+#	test? ( gcov )
+
+DOCS="AUTHORS ChangeLog NEWS README"
 
 function notify_inotify() {
 	ewarn
 	ewarn "You should enable the INOTIFY support in your kernel."
-	ewarn "Check the 'Inotify file change notification support' under the"
-	ewarn "'File systems' option.  It is marked as CONFIG_INOTIFY in the config"
-	ewarn "Also enable 'Inotify support for userland' in under the previous"
-	ewarn "option.  It is marked as CONFIG_INOTIFY_USER in the config."
+	ewarn "Check the 'Inotify support for userland' under the 'File systems'"
+	ewarn "option. It is marked as CONFIG_INOTIFY_USER in the config"
 	ewarn
 	die 'missing CONFIG_INOTIFY'
 }
 
 function inotify_enabled() {
-	linux_chkconfig_present INOTIFY && linux_chkconfig_present INOTIFY_USER
+	linux_chkconfig_present INOTIFY_USER
 }
 
 pkg_setup() {
 	linux-info_pkg_setup
 
-	if use kernel_linux ; then
-		inotify_enabled || notify_inotify
+	inotify_enabled || notify_inotify
+
+	if use gstreamer ; then
+		G2CONF="${G2CONF}
+			--enable-video-extractor=gstreamer
+			--enable-gstreamer-tagreadbin"
+		# --enable-gstreamer-helix (real media)
+	elif use xine ; then
+		G2CONF="${G2CONF} --enable-video-extractor=xine"
+	else
+		G2CONF="${G2CONF} --enable-video-extractor=external"
 	fi
+
+	# hal and dk-p are used for AC power detection
+	if use laptop; then
+		G2CONF="${G2CONF} $(use_enable hal) $(use_enable !hal devkit-power)"
+	else
+		G2CONF="${G2CONF} --disable-hal --disable-devkit-power"
+	fi
+
+	G2CONF="${G2CONF}
+		--disable-unac
+		--disable-functional-tests
+		$(use_enable applet tracker-status-icon)
+		$(use_enable applet tracker-search-bar)
+		$(use_enable deskbar deskbar-applet)
+		$(use_enable eds evolution-miner)
+		$(use_enable exif libexif)
+		$(use_enable gsf libgsf)
+		$(use_enable gtk libtrackergtk)
+		$(use_enable gtk tracker-explorer)
+		$(use_enable gtk tracker-preferences)
+		$(use_enable gtk tracker-search-tool)
+		$(use_enable iptc libiptcdata)
+		$(use_enable jpeg libjpeg)
+		$(use_enable kmail kmail-miner)
+		$(use_enable mp3 id3lib)
+		$(use_enable pdf poppler-glib)
+		$(use_enable playlist)
+		$(use_enable test unit-tests)
+		$(use_enable tiff libtiff)
+		$(use_enable xml libxml2)
+		$(use_enable xmp exempi)
+		$(use_enable vorbis libvorbis)"
+		# FIXME: Missing files to run functional tests
+		# $(use_enable test functional-tests)
+		# FIXME: useless without quill (extract mp3 albumart...)
+		# $(use_enable gtk gdkpixbuf)
+}
+
+src_unpack() {
+	git_src_unpack
 }
 
 src_prepare() {
-	subversion_src_prepare
+	gnome2_src_prepare
 
-	intltoolize --force || die "intltoolize failed"
+	gtkdocize || die "gtkdocize failed"
+	intltoolize --force --copy --automake || die "intltoolize failed"
 	eautoreconf
 }
 
-src_configure() {
-	local myconf=
-
-	if use gstreamer ; then
-		myconf="${myconf} --enable-video-extractor=gstreamer"
-	elif use xine ; then
-		myconf="${myconf} --enable-video-extractor=xine"
-	else
-		myconf="${myconf} --enable-video-extractor=external"
-	fi
-
-	if use kernel_linux ; then
-		myconf="${myconf} --enable-file-monitoring=inotify"
-	else
-		myconf="${myconf} --enable-file-monitoring=fam"
-	fi
-
-	econf ${myconf} \
-		  --disable-xmp --disable-unac \
-		  --enable-preferences --disable-external-qdbm \
-		  $(use_enable applet trackerapplet) \
-		  $(use_enable deskbar deskbar-applet auto) \
-		  $(use_enable debug debug-code) \
-		  $(use_enable gnome gui) \
-		  $(use_enable gsf) \
-		  $(use_enable gtk libtrackergtk) \
-		  $(use_enable hal) \
-		  $(use_enable jpeg exif) \
-		  $(use_enable pdf)
-}
-
-src_install() {
-	emake DESTDIR="${D}" install || die "install failed"
-	dodoc AUTHORS ChangeLog NEWS README
+src_test() {
+	export XDG_CONFIG_HOME="${T}"
+	emake check || die "tests failed"
 }
