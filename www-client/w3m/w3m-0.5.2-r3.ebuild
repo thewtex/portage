@@ -1,6 +1,6 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/w3m/w3m-0.5.2-r2.ebuild,v 1.1 2008/05/15 23:53:33 matsuu Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/w3m/w3m-0.5.2-r3.ebuild,v 1.1 2009/12/13 23:25:21 matsuu Exp $
 
 inherit eutils
 
@@ -32,7 +32,8 @@ src_unpack() {
 	cd "${S}"
 	epatch "${FILESDIR}/${P}-ambwidth.patch"
 	# http://www.sic.med.tohoku.ac.jp/~satodai/w3m-dev/200708.month/4286.html
-	epatch "${FILESDIR}/${P}-form.patch"	
+	epatch "${FILESDIR}/${P}-form.patch"
+	epatch "${FILESDIR}/${P}-gc72.patch"
 }
 
 src_compile() {

@@ -1,6 +1,13 @@
 # ChangeLog for sys-apps/hal
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/hal/ChangeLog,v 1.309 2009/12/07 11:21:12 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/hal/ChangeLog,v 1.311 2009/12/13 18:46:24 nirbheek Exp $
+
+  13 Dec 2009; Nirbheek Chauhan <nirbheek@gentoo.org> hal-0.5.14.ebuild:
+  Fix blockers due to a combination of hal[consolekit,-policykit] and polkit
+  pulling in consolekit[policykit] -- bug 296692
+
+  11 Dec 2009; Raúl Porcel <armin76@gentoo.org> hal-0.5.13-r2.ebuild:
+  sh stable wrt #287380
 
   07 Dec 2009; Samuli Suominen <ssuominen@gentoo.org> hal-0.5.13-r2.ebuild:
   amd64 stable wrt #287411
