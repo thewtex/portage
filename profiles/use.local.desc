@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5090 2009/12/12 22:07:41 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5094 2009/12/14 03:07:41 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -441,6 +441,7 @@ app-misc/tracker:iptc - Enable extraction of IPTC data from pictures
 app-misc/tracker:kmail - Build kmail data miner
 app-misc/tracker:laptop - Make tracker power management aware
 app-misc/tracker:playlist - Add support for playlists
+app-misc/tracker:wv2 - Build MS-Word .doc support.
 app-misc/tracker:xmp - Adds support for XMP metadata extraction
 app-misc/worker:avfs - Enable support for sys-fs/avfs
 app-misc/workrave:distribution - Enable networking. See http://www.workrave.org/features/
@@ -892,7 +893,6 @@ dev-python/PyQt4:assistant - Build the QtHelp and QtAssistant modules
 dev-python/PyQt4:kde -  Select media-sound/phonon as phonon variant needed for kde 
 dev-python/PyQt4:opengl - Build the QtOpenGL module
 dev-python/PyQt4:phonon - Build the phonon module
-dev-python/PyQt4:qt3support - Enable the Qt3Support libraries for Qt4
 dev-python/PyQt4:sql - Build the QtSql module
 dev-python/PyQt4:svg - Build the QtSvg module
 dev-python/PyQt4:webkit - Build the QtWebKit module
@@ -1365,6 +1365,7 @@ mail-filter/opendkim:asyncdns - Use inbuilt asynchronous DNS library for queries
 mail-filter/opendkim:db - Include features like stats, querycache, popauth, report intervals and bodylengthdb that include berkdb
 mail-filter/opendkim:diffheaders - On verification failure, compare the original and the received headers to look for possible munging
 mail-filter/opendkim:multiplesigs - Allow addition of multiple signatures when key lists are in use.
+mail-filter/opendkim:opendbx - Use opendbx backend to faciliate dataset driven OpenDKIM configuration options like stats, bodylengthdb, etc. against a wide variety of databse types
 mail-filter/postgrey:targrey - Enables the targrey patch
 mail-filter/qmail-scanner:spamassassin - Build faster mail-filter/spamassassin checks into qmail-scanner
 mail-filter/simscan:attachment - Enable attachment scanning
@@ -1540,6 +1541,7 @@ media-libs/libsdl:video - Control video support (disable at your own risk)
 media-libs/libvorbis:aotuv - Applies the aoTuV patches. Aoyumi's Tuned Vorbis is a third-party patchset that improves the vorbis encoding quality. A previous version of the aoTuV patchset has already been merged with the official libvorbis release. The current patchset especially improves encoding quality at low bitrate settings, and is very likely to be merged at some point in the future. It is recommended that all users enable this useflag. 
 media-libs/mediastreamer:ilbc - Use of iLBC (RFC3951) codec plugin
 media-libs/mediastreamer:video - Enable video support
+media-libs/mesa:gallium - Gallium3D is new architecture for building 3D graphics drivers.
 media-libs/mesa:pic - disable optimized assembly code that is not PIC friendly
 media-libs/mlt:compressed-lumas - Compress the luma files in png.
 media-libs/mlt:frei0r - Build the module for media-plugins/frei0r-plugins

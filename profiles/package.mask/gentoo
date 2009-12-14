@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10957 2009/12/12 14:22:41 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10963 2009/12/13 19:46:46 flameeyes Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,51 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (13 Dec 2009)
+#  on behalf of QA team
+#
+# Pre-strip files (bug #241534), ignore flags (bug #241556),
+# misplaces documentation (bug #241560), bump request open
+# since August 2008 (bug #235888).
+#
+# Removal on 2010-02-11
+x11-wm/ion
+
+# Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (13 Dec 2009)
+# Masked for testing.
+=net-zope/zope-2.12*
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (13 Dec 2009)
+#  on behalf of QA team
+#
+# Fails to build since at least November 2008 (bug #245506),
+# open bump request since January 2006! (bug #117892).
+#
+# Removal on 2010-02-11
+net-irc/ptlink-services
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (13 Dec 2009)
+#  on behalf of QA team
+#
+# Installs in the old /usr/X11R6 path (bug #248593),
+# unmaintained in Gentoo (last version bump in 2005), uses
+# imake that is being deprecated.
+#
+# Removal on 2010-02-11
+x11-misc/xse
+
+# Rémi Cardona <remi@gentoo.org> (13 Dec 2009)
+# ttmkfdir had multiple QA issues and bugs (bugs #209616, #235354 and #262945)
+# xfs is completely useless, even on thin clients
+# and xfsinfo is useless if xfs goes
+x11-apps/ttmkfdir
+x11-apps/xfs
+x11-apps/xfsinfo
+
+# Torsten Veller <tove@gentoo.org> (13 Dec 2009)
+# missing deps (#294330)
+=dev-perl/PDL-2.4.5
 
 # Diego E. Pettenò <flameeyes@gentoo.org> (12 Dec 2009)
 #  on behalf of QA team
