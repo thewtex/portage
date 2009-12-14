@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/tracker/tracker-0.7.10.ebuild,v 1.1 2009/12/10 23:15:03 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/tracker/tracker-0.7.10.ebuild,v 1.2 2009/12/13 21:27:14 eva Exp $
 
 EAPI="2"
 G2CONF_DEBUG="no"
@@ -73,23 +73,25 @@ DEPEND="${RDEPEND}
 
 DOCS="AUTHORS ChangeLog NEWS README"
 
-function notify_inotify() {
-	ewarn
-	ewarn "You should enable the INOTIFY support in your kernel."
-	ewarn "Check the 'Inotify support for userland' under the 'File systems'"
-	ewarn "option. It is marked as CONFIG_INOTIFY_USER in the config"
-	ewarn
-	die 'missing CONFIG_INOTIFY'
-}
-
 function inotify_enabled() {
-	linux_chkconfig_present INOTIFY_USER
+	if linux_chkconfig_exists; then
+		if ! linux_chkconfig_present INOTIFY_USER; then
+			echo
+			ewarn "You should enable the INOTIFY support in your kernel."
+			ewarn "Check the 'Inotify support for userland' under the 'File systems'"
+			ewarn "option. It is marked as CONFIG_INOTIFY_USER in the config"
+			echo
+			die 'missing CONFIG_INOTIFY'
+		fi
+	else
+		einfo "Could not check for INOTIFY support in your kernel."
+	fi
 }
 
 pkg_setup() {
 	linux-info_pkg_setup
 
-	inotify_enabled || notify_inotify
+	inotify_enabled
 
 	if use gstreamer ; then
 		G2CONF="${G2CONF}

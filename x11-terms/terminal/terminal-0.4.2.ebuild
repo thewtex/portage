@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-terms/terminal/terminal-0.4.2.ebuild,v 1.9 2009/12/03 20:38:00 ranger Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-terms/terminal/terminal-0.4.2.ebuild,v 1.10 2009/12/11 09:06:12 angelos Exp $
 
 EAPI=2
 EAUTORECONF=yes
@@ -33,6 +33,7 @@ S=${WORKDIR}/${MY_P}
 pkg_setup() {
 	PATCHES=( "${FILESDIR}"/${PN}-0.4.0-interix-fs-case.patch )
 	XFCONF="--disable-dependency-tracking
+		--docdir=/usr/share/doc/${PF}
 		$(use_enable dbus)
 		$(use_enable debug)
 		$(use_enable doc xsltproc)"
