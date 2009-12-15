@@ -1,10 +1,10 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/icu/icu-4.2.1.ebuild,v 1.10 2009/11/18 18:54:26 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/icu/icu-4.2.1.ebuild,v 1.12 2009/12/14 18:33:14 armin76 Exp $
 
 EAPI="2"
 
-inherit eutils versionator
+inherit eutils flag-o-matic versionator
 
 DESCRIPTION="International Components for Unicode"
 HOMEPAGE="http://www.icu-project.org/ http://ibm.com/software/globalization/icu/"
@@ -21,13 +21,20 @@ SRC_URI="${BASEURI}/${SRCPKG}
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm hppa ~ia64 ~mips ppc ppc64 s390 sh ~sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~x86-fbsd"
 IUSE="debug doc examples"
 
 DEPEND="doc? ( app-arch/unzip )"
 RDEPEND=""
 
 S="${WORKDIR}/${PN}/source"
+
+pkg_setup() {
+	# ICU fails to build with enabled optimizations (bug #296901).
+	if use arm || use ia64 || use sparc; then
+		filter-flags -O*
+	fi
+}
 
 src_unpack() {
 	unpack ${SRCPKG}
