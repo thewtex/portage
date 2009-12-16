@@ -1,0 +1,22 @@
+ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ruby19? ( dev-lang/ruby:1.9 ) ruby_targets_jruby? ( dev-java/jruby ) doc? ( dev-ruby/rake[ruby_targets_ruby18?,ruby_targets_ruby19?,ruby_targets_jruby?] ) test? ( dev-ruby/rake[ruby_targets_ruby18?,ruby_targets_ruby19?,ruby_targets_jruby?] ) test? ( virtual/rubygems[ruby_targets_ruby18?,ruby_targets_ruby19?,ruby_targets_jruby?] )
+ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ruby19? ( dev-lang/ruby:1.9 ) ruby_targets_jruby? ( dev-java/jruby ) virtual/rubygems[ruby_targets_ruby18?,ruby_targets_ruby19?,ruby_targets_jruby?]
+0
+mirror://rubygems/highline-1.5.1.gem
+
+http://rubyforge.org/projects/highline/
+|| ( GPL-2 Ruby )
+Highline is a high-level command-line IO library for ruby.
+~amd64 ~ia64 ~ppc ~ppc64 ~x86
+eutils multilib portability ruby-fakegem ruby-ng toolchain-funcs
+ruby_targets_ruby18 ruby_targets_ruby19 ruby_targets_jruby doc test
+
+
+
+2
+
+compile configure install prepare setup test unpack
+
+
+
+
+
