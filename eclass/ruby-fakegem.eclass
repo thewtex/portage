@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/ruby-fakegem.eclass,v 1.1 2009/12/14 12:32:18 a3li Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/ruby-fakegem.eclass,v 1.5 2009/12/16 09:51:30 flameeyes Exp $
 #
 # @ECLASS: ruby-fakegem.eclass
 # @MAINTAINER:
@@ -31,12 +31,23 @@ inherit ruby-ng
 # @ECLASS-VARIABLE: RUBY_FAKEGEM_TASK_DOC
 # @DESCRIPTION:
 # Specify the rake(1) task to run to generate documentation.
-# RUBY_FAKEGEM_VERSION="rdoc"
+# RUBY_FAKEGEM_TASK_DOC="rdoc"
 
 # @ECLASS-VARIABLE: RUBY_FAKEGEM_TASK_TEST
 # @DESCRIPTION:
 # Specify the rake(1) task used for executing tests.
-# RUBY_FAKEGEM_VERSION="test"
+# RUBY_FAKEGEM_TASK_TEST="test"
+
+# @ECLASS-VARIABLE: RUBY_FAKEGEM_DOCDIR
+# @DESCRIPTION:
+# Specify the directory under which the documentation is built;
+# if empty no documentation will be installed automatically.
+# RUBY_FAKEGEM_DOCDIR=""
+
+# @ECLASS-VARIABLE: RUBY_FAKEGEM_EXTRADOC
+# @DESCRIPTION:
+# Extra documentation to install (readme, changelogs, …).
+# RUBY_FAKEGEM_EXTRADOC=""
 
 RUBY_FAKEGEM_NAME="${RUBY_FAKEGEM_NAME:-${PN}}"
 RUBY_FAKEGEM_VERSION="${RUBY_FAKEGEM_VERSION:-${PV}}"
@@ -53,6 +64,8 @@ if [[ ${RUBY_FAKEGEM_TASK_TEST} != "" ]]; then
 	IUSE="$IUSE test"
 	ruby_add_bdepend test "dev-ruby/rake"
 fi
+
+SRC_URI="mirror://rubygems/${RUBY_FAKEGEM_NAME}-${RUBY_FAKEGEM_VERSION}.gem"
 
 ruby_add_rdepend virtual/rubygems
 
@@ -138,6 +151,7 @@ ruby_fakegem_binwrapper() {
 	(
 		local gembinary=$1
 		local newbinary=${2:-/usr/bin/$gembinary}
+		local relativegembinary=${RUBY_FAKEGEM_NAME}-${RUBY_FAKEGEM_VERSION}/bin/${gembinary}
 
 		cat - > "${T}"/gembin-wrapper-${gembinary} <<EOF
 #!/usr/bin/env ruby
@@ -147,7 +161,7 @@ ruby_fakegem_binwrapper() {
 
 require 'rubygems'
 
-load Gem::GemPathSearcher.new.find('$(tr [A-Z] [a-z] <<< ${RUBY_FAKEGEM_NAME})').full_gem_path + "/bin/${gembinary}"
+load Gem::default_path[-1] + "/gems/${relativegembinary}"
 
 EOF
 
