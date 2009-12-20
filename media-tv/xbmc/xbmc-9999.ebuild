@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-tv/xbmc/xbmc-9999.ebuild,v 1.43 2009/12/15 12:41:33 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-tv/xbmc/xbmc-9999.ebuild,v 1.44 2009/12/19 20:44:11 vapier Exp $
 
 EAPI="2"
 
@@ -14,8 +14,11 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit subversion autotools
 	KEYWORDS=""
 else
-	SRC_URI="mirror://sourceforge/${PN}/XBMC-${PV}.src.tar.gz"
+	inherit autotools
+	MY_P=${P/_/-}
+	SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
+	S=${WORKDIR}/${MY_P}
 fi
 
 DESCRIPTION="XBMC is a free and open source media-player and entertainment hub"
@@ -101,6 +104,10 @@ src_unpack() {
 }
 
 src_prepare() {
+	sed -i \
+		-e '1i#include <stdlib.h>\n#include <string.h>\n' \
+		xbmc/lib/libid3tag/libid3tag/metadata.c || die
+
 	# some dirs ship generated autotools, some dont
 	local d
 	for d in . xbmc/cores/dvdplayer/Codecs/libbdnav ; do
