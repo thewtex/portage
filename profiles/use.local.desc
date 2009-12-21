@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5097 2009/12/16 03:08:49 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5110 2009/12/21 05:27:42 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -621,6 +621,7 @@ dev-db/ingres:das - Enable das support
 dev-db/ingres:demodb - Install demo DB
 dev-db/ingres:net - Enable net support
 dev-db/ingres:nodbms - Disable dbms component
+dev-db/libdrizzle:tcmalloc -  Use the dev-util/google-perftools libraries to replace the malloc() implementation with a possibly faster one. 
 dev-db/libpq:pg-intdatetime - Enable --enable-integer-datetimes configure option, which changes PG to use 64-bit integers for timestamp storage
 dev-db/maatkit:udf - Build the MySQL UDFs shipped with maatkit, requires non-minimal MySQL
 dev-db/mysql:big-tables - Make tables contain up to 1.844E+19 rows
@@ -822,7 +823,6 @@ dev-libs/apr:older-kernels-compatibility - Enable binary compatibility with olde
 dev-libs/apr:urandom - Use /dev/urandom instead of /dev/random
 dev-libs/boolstuff:static - Enable static linking
 dev-libs/boost:eselect - Run "eselect boost update" even if version is already selected
-dev-libs/boost:pyste - Add support for the pyste frontend
 dev-libs/boost:tools - Build and install the boost tools (bcp, quickbook, inspect, wave)
 dev-libs/crypto++:sse3 - Enable optimizations via sse3 assembly code
 dev-libs/cyberjack:noudev - Disable installation of udev rules
@@ -1788,7 +1788,8 @@ media-sound/amarok:python -  Install the Amarok scripts written in Python, depen
 media-sound/amarok:real -  Build the Helix engine for Amarok, linked against media-video/realplayer. This is an alternative engine to the xine one, which supports a different set of formats. Only available for x86 architecture as it uses the binary version of RealPlayer. Please note that by enabling this USE flag, the resulting package will not be redistributable, as it links to the non-GPL compatible RealPlayer. 
 media-sound/amarok:visualization -  Support visualization plugins through media-libs/libvisual 
 media-sound/aqualung:ifp - Enable support for iRiver iFP portable audio players
-media-sound/aqualung:lua - Enable support for programmable title formatting with dev-lang/lua 
+media-sound/aqualung:lua - Enable support for programmable title formatting with dev-lang/lua
+media-sound/aqualung:mac - Enable support for decoding Monkey's Audio files
 media-sound/aqualung:podcast - Enable podcast support
 media-sound/aqualung:systray - Enable system tray support
 media-sound/ardour:freesound - Enables direct searching and download of samples from Freesound via the Import dialog
@@ -2363,9 +2364,6 @@ net-firewall/ipsec-tools:hybrid - Makes available both mode-cfg and xauth suppor
 net-firewall/ipsec-tools:idea - Enable support for the patented IDEA algorithm
 net-firewall/ipsec-tools:nat - Enable NAT-Traversal
 net-firewall/ipsec-tools:rc5 - Enable support for the patented RC5 algorithm
-net-firewall/iptables:extensions - Enable support for 3rd party patch-o-matic extensions
-net-firewall/iptables:imq - Enable support for intermediate queueing devices (http://www.linuximq.net)
-net-firewall/iptables:l7filter - Enable support for layer 7 filtering (http://l7-filter.sourceforge.net)
 net-firewall/nufw:nfconntrack - Use netfilter_conntrack
 net-firewall/nufw:nfqueue - Use NFQUEUE instead of QUEUE
 net-firewall/nufw:pam_nuauth - Add support for pam nufw from PAM
@@ -2468,12 +2466,12 @@ net-im/kadu:speech - Enables speech module
 net-im/kmess:konqueror - Enable integration with konqueror
 net-im/mcabber:otr -  Enable encrypted conversations using Off-The-Records messaging 
 net-im/naim:screen - Enable screen support
-net-im/pidgin:bonjour - Enable bonjour support
-net-im/pidgin:gadu - Enable Gadu Gadu protocol support.
-net-im/pidgin:groupwise - Enable Novell Groupwise protocol support.
-net-im/pidgin:meanwhile - Enable meanwhile support for Sametime protocol. 
-net-im/pidgin:prediction - Enable Contact Availability Prediction plugin. 
-net-im/pidgin:qq - Enable QQ protocol support.
+net-im/pidgin:bonjour - Enable bonjour (zeroconf) support
+net-im/pidgin:gadu - Enable Gadu Gadu protocol support
+net-im/pidgin:groupwise - Enable Novell Groupwise protocol support
+net-im/pidgin:meanwhile - Enable meanwhile support for Sametime protocol
+net-im/pidgin:prediction - Enable Contact Availability Prediction plugin
+net-im/pidgin:qq - Enable QQ protocol support
 net-im/pidgin:silc - Enable SILC protocol support
 net-im/pidgin:zephyr - Enable Zephyr protocol support
 net-im/psi:extras - Enables extra non official patches
@@ -2481,7 +2479,6 @@ net-im/psi:webkit - Enable chatlog rendering using webkit
 net-im/psimedia:demo -  build simple test application for the PsiMedia system. 
 net-im/pyaim-t:webinterface - Install dependencies needed for the web interface 
 net-im/pyicq-t:webinterface - Install dependencies needed for the web interface 
-net-im/qtwitter:oauth - Enables authorization using OAuth for Twitter accounts
 net-im/qutim:histman - Enable histman plugin
 net-im/qutim:irc - Enable irc support
 net-im/qutim:mrim - Enable mrim plugin
@@ -2549,6 +2546,7 @@ net-libs/aqbanking:chipcard - Enable support for DDV/RSA-chipcards
 net-libs/clinkcc:mythtv - Enable MythTV support
 net-libs/courier-authlib:vpopmail - Enable vpopmail support
 net-libs/cvm:vpopmail - Enable vpopmail support
+net-libs/farsight2:upnp - Enable UPnP IGD support
 net-libs/iax:snomhack - Use slower memset for SNOM phoneem
 net-libs/libesmtp:ssl -  Enable support for advanced SMTP authentication methods, like NTML and STARTTLS. Also use OpenSSL's MD5 implementation over internal version. 
 net-libs/libetpan:liblockfile - Enable support for liblockfile library
@@ -3113,6 +3111,7 @@ sci-mathematics/maxima:clisp - Add support for GNU CLISP (dev-lisp/clisp)
 sci-mathematics/maxima:cmucl - Add support for CMU Common Lisp (dev-lisp/cmucl)
 sci-mathematics/maxima:ecl - Add support for Embeddable Common Lisp (dev-lisp/ecls)
 sci-mathematics/maxima:gcl - Add support for GNU Common Lisp (dev-lisp/gcl)
+sci-mathematics/maxima:openmcl - Add support for Clozure Common Lisp (former OpenMCL, dev-lisp/closurecl)
 sci-mathematics/maxima:sbcl - Add support for Steel Bank Common Lisp (dev-lisp/sbcl)
 sci-mathematics/nusmv:minisat - Enable support for MiniSat
 sci-mathematics/octave:sparse - Enable enhanced support for sparse matrix algebra
@@ -3255,6 +3254,9 @@ sys-boot/lilo:device-mapper - Enable support for sys-fs/device-mapper
 sys-boot/lilo:pxeserial - Avoid character echo on PXE serial console
 sys-cluster/charm:cmkopt - Enable CMK optimisation
 sys-cluster/charm:tcp - Use TCP (instead of UPD) for socket communication
+sys-cluster/gearmand:drizzle -  Support dev-db/libdrizzle for the queue storage. This also adds support for MySQL storage. 
+sys-cluster/gearmand:memcache -  Support memcache daemon (via dev-libs/libmemcached) for the queue storage. 
+sys-cluster/gearmand:tcmalloc -  Use the dev-util/google-perftools libraries to replace the malloc() implementation with a possibly faster one. 
 sys-cluster/glusterfs:extras - Install extra helper scripts
 sys-cluster/glusterfs:fuse - Add FUSE mount helper
 sys-cluster/glusterfs:infiniband - Add support for Infiniband ibverbs transport. Librarys can be found in science overlay
@@ -3489,7 +3491,6 @@ www-client/seamonkey:moznoirc - Disable building of mozilla's IRC client
 www-client/seamonkey:moznomail - Disable building mozilla's mail client
 www-client/seamonkey:moznopango - Disable x11-libs/pango during runtime
 www-client/seamonkey:moznoroaming - sroaming extension support
-www-client/seamonkey:restrict-javascript - Pull in www-plugins/noscript extension to disable javascript globally, putting the user full$ control of the sites he/she visits
 www-client/seamonkey:xforms - XForms is a standard to split up XHTML into XForms, instance data, and user interface
 www-client/uzbl:browser - Install the uzbl-browser script
 www-client/uzbl:experimental - Enable experimental branch
