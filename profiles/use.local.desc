@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5110 2009/12/21 05:27:42 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5113 2009/12/21 22:47:38 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -297,13 +297,17 @@ app-emulation/qemu:ncurses - Enable the ncurses-based console
 app-emulation/qemu:pulseaudio - Enable pulseaudio output for sound emulation
 app-emulation/qemu:sdl - Enable the SDL-based console
 app-emulation/qemu:vde - Enable VDE-based networking
+app-emulation/qemu-kvm:aio - Enables support for Linux's Async IO
 app-emulation/qemu-kvm:alsa - Enable alsa output for sound emulation
 app-emulation/qemu-kvm:esd - Enable esound output for sound emulation
+app-emulation/qemu-kvm:fdt - Enables fdt support
 app-emulation/qemu-kvm:gnutls - Enable TLS support for the VNC console server
+app-emulation/qemu-kvm:kvm-trace - Allows you to use KVM tracing
 app-emulation/qemu-kvm:ncurses - Enable the ncurses-based console
 app-emulation/qemu-kvm:pulseaudio - Enable pulseaudio output for sound emulation
 app-emulation/qemu-kvm:sdl - Enable the SDL-based console
 app-emulation/qemu-kvm:vde - Enable VDE-based networking
+app-emulation/qemu-kvm:xen - Enables support for Xen backends
 app-emulation/qemu-softmmu:alsa - Enable alsa output for sound emulation
 app-emulation/qemu-softmmu:esd - Enable esound output for sound emulation
 app-emulation/qemu-softmmu:gnutls - Enable TLS support for the VNC console server
@@ -471,6 +475,7 @@ app-misc/tracker:gsf - Enable gnome-extra/libgsf based data extractor
 app-misc/tracker:iptc - Enable extraction of IPTC data from pictures
 app-misc/tracker:kmail - Build kmail data miner
 app-misc/tracker:laptop - Make tracker power management aware
+app-misc/tracker:nautilus - Enable tracker to integrate with gnome-base/nautilus by providing entries in its context menu 
 app-misc/tracker:playlist - Add support for playlists
 app-misc/tracker:wv2 - Build MS-Word .doc support.
 app-misc/tracker:xmp - Adds support for XMP metadata extraction
@@ -919,6 +924,7 @@ dev-perl/Eidetic:auth - Enables dev-perl/Apache-AuthTicket based cookie authenti
 dev-perl/GD:animgif - Enable animated gif support
 dev-perl/HTML-Mason:modperl - Enable www-apache/mod_perl support
 dev-perl/PDL:badval - Enable badval support
+dev-perl/Panotools-Script:gui -  Installs GUIs for some tools 
 dev-php/PEAR-PHP_Shell:auto-completion - Enable tab-completion
 dev-php5/ZendFramework:cli - Enables the CLI
 dev-php5/ZendFramework:doc - Installs the documentation
