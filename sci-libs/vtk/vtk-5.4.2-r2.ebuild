@@ -16,7 +16,7 @@ SRC_URI="http://www.${PN}.org/files/release/${SPV}/${P}.tar.gz
 
 LICENSE="BSD LGPL-2"
 KEYWORDS="~amd64 ~x86"
-SLOT="0"
+SLOT="${SPV}"
 IUSE="boost cg doc examples mpi patented python tcl tk threads qt3 qt4"
 RDEPEND="mpi? ( || (
 					sys-cluster/openmpi
@@ -40,6 +40,7 @@ RDEPEND="mpi? ( || (
 	media-libs/libpng
 	media-libs/tiff
 	virtual/opengl
+	!sci-libs/vtk:0
 	x11-libs/libXmu"
 
 DEPEND="${RDEPEND}
@@ -48,6 +49,8 @@ DEPEND="${RDEPEND}
 		>=dev-util/cmake-2.6"
 
 S="${WORKDIR}"/VTK
+VTKLIBDIR="$(get_libdir)/${PN}-${SPV}"
+VTKBINDIR="bin/${PN}-${SPV}"
 
 pkg_setup() {
 	echo
@@ -82,10 +85,8 @@ src_configure() {
 	# general configuration
 	local mycmakeargs="
 		-Wno-dev
-		-DVTK_INSTALL_PACKAGE_DIR=/$(get_libdir)/${PN}-${SPV}
 		-DCMAKE_SKIP_RPATH=YES
 		-DVTK_DIR=${S}
-		-DVTK_INSTALL_LIB_DIR=/$(get_libdir)/
 		-DVTK_DATA_ROOT:PATH=/usr/share/${PN}/data
 		-DCMAKE_INSTALL_PREFIX=/usr
 		-DBUILD_SHARED_LIBS=ON
@@ -187,39 +188,6 @@ src_install() {
 	# install docs
 	dohtml "${S}"/README.html || die "Failed to install docs"
 
-	# install Tcl docs
-	docinto vtk_tcl
-	dodoc "${S}"/Wrapping/Tcl/README || \
-		die "Failed to install Tcl docs"
-
-	# install examples
-	if use examples; then
-		dodir /usr/share/${PN} || \
-			die "Failed to create data/examples directory"
-
-		cp -pPR "${S}"/Examples "${D}"/usr/share/${PN}/examples || \
-			die "Failed to copy example files"
-
-		# fix example's permissions
-		find "${D}"/usr/share/${PN}/examples -type d -exec \
-			chmod 0755 {} \; || \
-			die "Failed to fix example directories permissions"
-		find "${D}"/usr/share/${PN}/examples -type f -exec \
-			chmod 0644 {} \; || \
-			die "Failed to fix example files permissions"
-
-		cp -pPR "${WORKDIR}"/VTKData "${D}"/usr/share/${PN}/data || \
-			die "Failed to copy data files"
-
-		# fix data's permissions
-		find "${D}"/usr/share/${PN}/data -type d -exec \
-			chmod 0755 {} \; || \
-			die "Failed to fix data directories permissions"
-		find "${D}"/usr/share/${PN}/data -type f -exec \
-			chmod 0644 {} \; || \
-			die "Failed to fix data files permissions"
-	fi
-
 	#install big docs
 	if use doc; then
 		cd "${WORKDIR}"/html
@@ -229,11 +197,62 @@ src_install() {
 		doins -r ./* || die "Failed to install docs"
 	fi
 
+	# install python modules
+	if use python; then
+		cd "${CMAKE_BUILD_DIR}"/Wrapping/Python
+		docinto vtk_python
+		distutils_src_install
+	fi
+
+	# install jar
+	use java && java-pkg_dojar "${CMAKE_BUILD_DIR}"/bin/vtk.jar
+
+	# install Tcl docs
+	docinto vtk_tcl
+	dodoc "${S}"/Wrapping/Tcl/README || \
+		die "Failed to install Tcl docs"
+
+	# install examples
+	if use examples; then
+		dodir /usr/share/${PN}-${SPV} || \
+			die "Failed to create examples directory"
+		cp -pPR "${S}"/Examples "${D}"/usr/share/${PN}-${SPV}/examples || \
+			die "Failed to copy example files"
+
+		# fix example's permissions
+		find "${D}"/usr/share/${PN}-${SPV}/examples -type d -exec \
+			chmod 0755 {} \; || \
+			die "Failed to fix example directories permissions"
+		find "${D}"/usr/share/${PN}-${SPV}/examples -type f -exec \
+			chmod 0644 {} \; || \
+			die "Failed to fix example files permissions"
+
+		cp -pPR "${WORKDIR}"/VTKData "${D}"/usr/share/${PN}-${SPV}/data || \
+			die "Failed to copy data files"
+
+		# fix data's permissions
+		find "${D}"/usr/share/${PN}-${SPV}/data -type d -exec \
+			chmod 0755 {} \; || \
+			die "Failed to fix data directories permissions"
+		find "${D}"/usr/share/${PN}-${SPV}/data -type f -exec \
+			chmod 0644 {} \; || \
+			die "Failed to fix data files permissions"
+	fi
+
 	# environment
-	echo "VTK_DATA_ROOT=/usr/share/${PN}/data" >> "${T}"/40${PN}
-	echo "VTK_DIR=/usr/$(get_libdir)/${PN}-${SPV}" >> "${T}"/40${PN}
-	echo "VTKHOME=/usr" >> "${T}"/40${PN}
-	doenvd "${T}"/40${PN}
+	# this way by default you get the most recent slot
+	echo "VTK_DATA_ROOT=/usr/share/${PN}-${SPV}/data" >> "${T}/35${PN}-${SPV}"
+	echo "VTK_DIR=/usr/${VTKLIBDIR}" >> "${T}/35${PN}-${SPV}"
+	echo "VTKHOME=/usr" >> "${T}/35${PN}-${SPV}"
+	doenvd "${T}/35${PN}-${SPV}"
+
+	# this way the most recent slot occurs higher up in ld.so.conf
+	VERCAT=$(delete_all_version_separators $(get_version_component_range 1-2))
+	VERCAT=$((${VERCAT}*-1+85))
+	LDPATHFILE="${T}/${VERCAT}${PN}-${SPV}LDPATH"
+	echo "LDPATH=/usr/${VTKLIBDIR}" >> "${LDPATHFILE}"
+	echo "PATH=/usr/${VTKBINDIR}" >> "${LDPATHFILE}"
+	doenvd "${LDPATHFILE}"
 }
 
 pkg_postinst() {
@@ -242,4 +261,10 @@ pkg_postinst() {
 		ewarn "For more information, please read:"
 		ewarn "http://public.kitware.com/cgi-bin/vtkfaq?req=show&file=faq07.005.htp"
 	fi
+
+	einfo
+	einfo "remember to 'env-update' && 'source /etc/profile'"
+	einfo "if you want to use the slotting capabilities" 
+	einfo "of this package"
+	einfo
 }
