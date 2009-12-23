@@ -1,4 +1,4 @@
-dev-libs/boost dev-libs/log4cpp dev-libs/openssl
+dev-libs/boost dev-libs/log4cpp dev-libs/openssl =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
 dev-libs/boost dev-libs/log4cpp dev-libs/openssl
 0
 http://thoughtcrime.org/software/sslsniff/sslsniff-0.6.tar.gz
@@ -6,15 +6,15 @@ http://thoughtcrime.org/software/sslsniff/sslsniff-0.6.tar.gz
 http://thoughtcrime.org/software/sslsniff/
 GPL-3
 MITM all SSL connections on a LAN and dynamically generates certs
-~x86 ~amd64
+~amd64 ~x86
+autotools eutils libtool multilib portability toolchain-funcs
 
 
 
 
+2
 
-
-
-install
+install prepare
 
 
 

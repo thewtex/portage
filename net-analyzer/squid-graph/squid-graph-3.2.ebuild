@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/squid-graph/squid-graph-3.2.ebuild,v 1.4 2009/03/08 10:48:10 cla Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/squid-graph/squid-graph-3.2.ebuild,v 1.5 2009/12/23 03:05:29 jer Exp $
 
 EAPI="2"
 
@@ -22,5 +22,5 @@ S=${WORKDIR}/${PN}
 
 src_install () {
 	dobin apacheconv generate.cgi squid-graph timeconv || die "dobin failed"
-	dodoc docs
+	dodoc README
 }

@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5110 2009/12/21 05:27:42 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5115 2009/12/22 21:27:42 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -143,7 +143,6 @@ app-cdr/xfburn:thunar - Adds integration with Thunar file manager
 app-crypt/ccid:nousb - Disable USB support via sys-apps/pcsc-lite
 app-crypt/ccid:twinserial - Enable twinserial reader
 app-crypt/ekeyd:usb -  Build the libusb-based userland daemon for accessing the entropykey (alternative to the CDC USB driver). 
-app-crypt/gnupg:ecc - Use elliptic curve cryptosystem patch
 app-crypt/gnupg:idea - Use the patented IDEA algorithm
 app-crypt/gnupg:openct - build using dev-libs/openct compat
 app-crypt/gnupg:pcsc-lite - build with sys-apps/pcsc-lite
@@ -297,13 +296,17 @@ app-emulation/qemu:ncurses - Enable the ncurses-based console
 app-emulation/qemu:pulseaudio - Enable pulseaudio output for sound emulation
 app-emulation/qemu:sdl - Enable the SDL-based console
 app-emulation/qemu:vde - Enable VDE-based networking
+app-emulation/qemu-kvm:aio - Enables support for Linux's Async IO
 app-emulation/qemu-kvm:alsa - Enable alsa output for sound emulation
 app-emulation/qemu-kvm:esd - Enable esound output for sound emulation
+app-emulation/qemu-kvm:fdt - Enables fdt support
 app-emulation/qemu-kvm:gnutls - Enable TLS support for the VNC console server
+app-emulation/qemu-kvm:kvm-trace - Allows you to use KVM tracing
 app-emulation/qemu-kvm:ncurses - Enable the ncurses-based console
 app-emulation/qemu-kvm:pulseaudio - Enable pulseaudio output for sound emulation
 app-emulation/qemu-kvm:sdl - Enable the SDL-based console
 app-emulation/qemu-kvm:vde - Enable VDE-based networking
+app-emulation/qemu-kvm:xen - Enables support for Xen backends
 app-emulation/qemu-softmmu:alsa - Enable alsa output for sound emulation
 app-emulation/qemu-softmmu:esd - Enable esound output for sound emulation
 app-emulation/qemu-softmmu:gnutls - Enable TLS support for the VNC console server
@@ -471,6 +474,7 @@ app-misc/tracker:gsf - Enable gnome-extra/libgsf based data extractor
 app-misc/tracker:iptc - Enable extraction of IPTC data from pictures
 app-misc/tracker:kmail - Build kmail data miner
 app-misc/tracker:laptop - Make tracker power management aware
+app-misc/tracker:nautilus - Enable tracker to integrate with gnome-base/nautilus by providing entries in its context menu 
 app-misc/tracker:playlist - Add support for playlists
 app-misc/tracker:wv2 - Build MS-Word .doc support.
 app-misc/tracker:xmp - Adds support for XMP metadata extraction
@@ -919,6 +923,7 @@ dev-perl/Eidetic:auth - Enables dev-perl/Apache-AuthTicket based cookie authenti
 dev-perl/GD:animgif - Enable animated gif support
 dev-perl/HTML-Mason:modperl - Enable www-apache/mod_perl support
 dev-perl/PDL:badval - Enable badval support
+dev-perl/Panotools-Script:gui -  Installs GUIs for some tools 
 dev-php/PEAR-PHP_Shell:auto-completion - Enable tab-completion
 dev-php5/ZendFramework:cli - Enables the CLI
 dev-php5/ZendFramework:doc - Installs the documentation
@@ -3457,7 +3462,6 @@ www-apps/mediawiki:math - Ads math rendering support
 www-apps/mediawiki:restrict - Initial setup will only allow sysop user to create new accounts, read and edit any pages
 www-apps/rt:lighttpd - Add www-servers/lighttpd support
 www-apps/viewvc:cvsgraph - Add dev-util/cvsgraph support to show graphical views of revisions and branches
-www-apps/viewvc:highlight - Add app-text/highlight support to colourize code stored in the repository
 www-apps/viewvc:mod_python - Add www-apache/mod_python support
 www-apps/viewvc:pygments - Add dev-python/pygments support for syntax highlighting
 www-client/chromium:ffmpeg - Add support for HTML5 audio/video tags via media-video/ffmpeg
