@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-tv/xbmc/xbmc-9999.ebuild,v 1.42 2009/12/04 09:32:54 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-tv/xbmc/xbmc-9999.ebuild,v 1.44 2009/12/19 20:44:11 vapier Exp $
 
 EAPI="2"
 
@@ -14,8 +14,11 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit subversion autotools
 	KEYWORDS=""
 else
-	SRC_URI="mirror://sourceforge/${PN}/XBMC-${PV}.src.tar.gz"
+	inherit autotools
+	MY_P=${P/_/-}
+	SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
+	S=${WORKDIR}/${MY_P}
 fi
 
 DESCRIPTION="XBMC is a free and open source media-player and entertainment hub"
@@ -89,18 +92,32 @@ src_unpack() {
 	if [[ ${PV} == "9999" ]] ; then
 		subversion_src_unpack
 		cd "${S}"
-		eautoreconf
+		rm -f configure
 	else
 		unpack ${A}
 		cd "${S}"
 	fi
 
 	# Fix case sensitivity
-	mv media/Fonts/{a,A}rial.ttf
-	mv media/{S,s}plash.png
+	mv media/Fonts/{a,A}rial.ttf || die
+	mv media/{S,s}plash.png || die
 }
 
 src_prepare() {
+	sed -i \
+		-e '1i#include <stdlib.h>\n#include <string.h>\n' \
+		xbmc/lib/libid3tag/libid3tag/metadata.c || die
+
+	# some dirs ship generated autotools, some dont
+	local d
+	for d in . xbmc/cores/dvdplayer/Codecs/libbdnav ; do
+		[[ -e ${d}/configure ]] && continue
+		pushd ${d} >/dev/null
+		einfo "Generating autotools in ${d}"
+		eautoreconf
+		popd >/dev/null
+	done
+
 	local squish #290564
 	use altivec && squish="-DSQUISH_USE_ALTIVEC=1 -maltivec"
 	use sse && squish="-DSQUISH_USE_SSE=1 -msse"

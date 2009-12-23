@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-games/ogre/ogre-1.6.4.ebuild,v 1.1 2009/12/03 01:41:58 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-games/ogre/ogre-1.6.4.ebuild,v 1.3 2009/12/21 20:44:22 mr_bones_ Exp $
 
 EAPI=2
 inherit multilib eutils autotools flag-o-matic
@@ -47,13 +47,17 @@ src_prepare() {
 			|| die "sed failed"
 	fi
 	sed -i -e '/CPPUNIT/d' configure.in || die "sed failed"
-	epatch "${FILESDIR}"/${P}-boost.patch
+	epatch "${FILESDIR}"/${P}-boost.patch \
+		"${FILESDIR}"/${P}-automake.patch
 	eautoreconf
 }
 
 src_configure() {
+	append-ldflags -L/opt/nvidia-cg-toolkit/lib
+	append-cppflags -I/opt/nvidia-cg-toolkit/include
 	strip-flags
-		econf \
+
+	econf \
 		--disable-dependency-tracking \
 		--disable-freeimage \
 		--disable-openexr \

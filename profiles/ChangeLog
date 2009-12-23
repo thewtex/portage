@@ -1,10 +1,58 @@
 # ChangeLog for profile directory
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.3680 2009/12/14 19:18:49 hwoarang Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.3695 2009/12/22 23:33:39 flameeyes Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  22 Dec 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Mask libnemesi (unfetchable).
+
+  22 Dec 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Masking dev-libs/libredblack for QA removal.
+
+  22 Dec 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Masking net-libs/libwhisker for QA removal.
+
+  21 Dec 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask media-gfx/grender and media-gfx/maya for removal.
+
+  21 Dec 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask app-dicts/vdict* for removal.
+
+  20 Dec 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Mask dev-ruby/test-unit since it's only needed for 1.9.
+
+  20 Dec 2009; Peter Volkov <pva@gentoo.org> package.mask:
+  Drop net-analyzer/cacti-cactid mask since package was removed from the
+  tree.
+
+  18 Dec 2009; Markus Meier <maekke@gentoo.org> package.mask:
+  remove enblend-4.0 rc masking as final version is in tree
+
+  17 Dec 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Masking media-video/cinepaint for QA removal.
+
+  17 Dec 2009; Jeremy Olexa <darkside@gentoo.org> arch.list,
+  +prefix/linux/arm/make.defaults, +prefix/linux/arm/parent, profiles.desc:
+  Add experimental arm-linux profiles for Gentoo Prefix
+
+  16 Dec 2009; Markus Meier <maekke@gentoo.org> package.mask:
+  remove hugin from mask as final version is out, change mask to libpano13
+
+  16 Dec 2009; Samuli Suominen <ssuominen@gentoo.org>
+  targets/desktop/make.defaults, targets/desktop/package.use:
+  Enable USE mng in make.defaults for desktop profile as required by
+  x11-libs/qt-gui:4. Do previous in make.defaults because it's a small
+  library but set mysql, sql and webkit in package.use separately for
+  kde-base/kde-meta wrt #291996.
+
+  16 Dec 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Masking sys-apps/compare for QA removal.
+
+  16 Dec 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Masking dev-ruby/ruby-xlib for QA removal.
 
   14 Dec 2009; Markos Chandras <hwoarang@gentoo.org> package.mask:
   sys-fs/dazuko has been dropped wrt bug #278414

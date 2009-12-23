@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10969 2009/12/14 19:18:49 hwoarang Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10987 2009/12/23 00:34:22 caster Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,115 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (22 Dec 2009)
+#  on behalf of QA team
+#
+# Temporary mask until somebody fixes bug #294177 (unfetchable
+# sources).
+net-libs/libnemesi
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (22 Dec 2009)
+#  on behalf of QA team
+#
+# Once again, removing libredblack; this was previously
+# saved from a 60-days removal back in August, since the
+# supplied patch *fails to apply*, this package will not be
+# deemed salvageable.
+#
+# Special note this time: last-rite time has been cut to
+# minimum 30 days, if you intend on saving this you should
+# talk *first* with QA.
+#
+# Removal on 2010-01-21
+dev-libs/libredblack
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (22 Dec 2009)
+#  on behalf of QA team
+#
+# Fails to build and ebuild does not die (bug #297970);
+# ebuild unused, last bumped in 2005, then untouched till
+# 2007 for Manifest2 bumps, and never since then.
+#
+# Removal on 2010-02-20
+net-libs/libwhisker
+
+# Michael Sterrett <mr_bones_@gentoo.org> (21 Dec 2009)
+# Doesn't work anymore; the version in portage is no longer
+# supported by upstream and no newer version is yet available.
+# Planned removal on 20100120
+games-strategy/freelords
+
+# Michael Sterrett <mr_bones_@gentoo.org> (21 Dec 2009)
+# Masked for testing.
+=app-admin/syslog-ng-3.0.5
+
+# Samuli Suominen <ssuominen@gentoo.org> (21 Dec 2009)
+# Masked for removal wrt bug 65525. Outdated, fetch-restricted,
+# binary-only package. One of two remaining packages using
+# emul-linux-x86-qtlibs qt3 libraries in gentoo-x86.
+media-gfx/maya
+media-gfx/grender
+
+# Samuli Suominen <ssuominen@gentoo.org> (21 Dec 2009)
+# Masked for QA.
+#
+# Doesn't compile wrt bugs 279334, 246875, 228241.
+# Qt3-only application with no development being done for Qt4-port.
+#
+# Removal on 2010-02-19
+app-dicts/vdict
+app-dicts/vdict-en-vi
+app-dicts/vdict-fr-vi
+app-dicts/vdict-vi-en
+app-dicts/vdict-vi-fr
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (20 Dec 2009)
+# Only needed and works for ruby 1.9 so for now no need to
+# bring it in on any dependency tree
+dev-ruby/test-unit
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (17 Dec 2009)
+#  on behalf of QA team
+#
+# Multiple build failures (bug #246374, #259331, #285726,
+# #288124), no releases upstream.
+#
+# Removal on 2010-02-15
+media-video/cinepaint
+
+# Doug Goldstein <cardoe@gentoo.org> (17 Dec 2009)
+# Mask nvidia-drivers-71.x.y since it will not work
+# with xorg-server-1.5 and later which are the only
+# available versions in the tree
+<x11-drivers/nvidia-drivers-72.0.0
+
+# Tomáš Chvátal <scarabeus@gentoo.org> (17 Dec 2009)
+# Mask xf86-video-via since it does not work for
+# xorg-server-1.6 and later.
+# use xf86-video-openchrome as replacement.
+# Kill in 30 days.
+x11-drivers/xf86-video-via
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (16 Dec 2009)
+#  on behalf of QA team
+#
+# Fails to build with glibc 2.10 (bug #297210), ignores flags
+# (bug #241982), lacks a Gentoo maintainer, never bumped
+# since its adding in 2005, substandard ebuild QA-wise
+# (does not die on _any_ failure).
+#
+# Removal on 2010-02-14
+sys-apps/compare
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (16 Dec 2009)
+#  on behalf of QA team
+#
+# No upstream release since 2005, unused in Gentoo, smaller
+# QA issues and some worrisome warnings from X11 functions.
+#
+# Removal on 2010-02-14
+dev-ruby/ruby-xlib
 
 # Tomáš Chvátal <scarabeus@gentoo.org> (14 Dec 2009)
 # QA removal
@@ -67,10 +176,6 @@ media-gfx/giram
 #
 # Removal on 2010-02-11
 x11-wm/ion
-
-# Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (13 Dec 2009)
-# Masked for testing.
-=net-zope/zope-2.12*
 
 # Diego E. Pettenò <flameeyes@gentoo.org> (13 Dec 2009)
 #  on behalf of QA team
@@ -364,10 +469,6 @@ dev-ruby/glue
 dev-ruby/gen
 dev-ruby/og
 
-# Markus Meier <maekke@gentoo.org> (30 Nov 2009)
-# mask rc versions of enblend for testing
->=media-gfx/enblend-4.0_rc2
-
 # Diego E. Pettenò <flameeyes@gentoo.org> (29 Nov 2009)
 #  on behalf of QA team
 #
@@ -492,10 +593,6 @@ x11-drivers/xf86-video-vermilion
 =app-emacs/gnus-5.13_p*
 ~app-emacs/gnus-9999
 
-# Peter Volkov <pva@gentoo.org> (15 Nov 2009)
-# Use net-analyzer/cacti-spine instead. It's the same package but newer.
-net-analyzer/cacti-cactid
-
 # Mike Frysinger <vapier@gentoo.org> (14 Nov 2009)
 # In-tree ebuilds are old, and newer upstream releases are simple GUIs
 # which download/install/update things for you.  And upstream isn't
@@ -582,10 +679,6 @@ games-fps/quake3-urbanterror
 ~sys-kernel/zen-sources-9999
 =sys-kernel/zen-sources-2.6.32_rc*
 
-# Vlastimil Babka <caster@gentoo.org> (03 Nov 2009)
-# Obsolete, needs 1.4 JDK, nothing uses it.
-dev-java/jessie
-
 # Víctor Ostorga <vostorga@gentoo.org> (02 Nov 2009)
 # If you use a kernel >= 2.6.29 it is needed >=linux-headers-2.6.29
 # as well, otherwise net-firewall/ipsec-tools won't compile.
@@ -652,8 +745,7 @@ sys-auth/pam_keystore
 =app-emulation/emul-linux-x86-baselibs-20091003_rc1
 
 # Markus Meier <maekke@gentoo.org> (03 Oct 2009)
-# mask hugin and deps beta/rc versions for testing
->=media-gfx/hugin-2009.4.0_rc1
+# mask libpano13 beta versions for testing
 >=media-libs/libpano13-2.9.15_beta3
 
 # Jory A. Pratt <anarchy@gentoo.org> (24 Sep 2009)

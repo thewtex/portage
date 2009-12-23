@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/emacs/emacs-22.3-r3.ebuild,v 1.6 2009/12/11 15:54:33 tcunha Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-editors/emacs/emacs-22.3-r3.ebuild,v 1.9 2009/12/21 07:08:45 ulm Exp $
 
 EAPI=2
 
@@ -11,7 +11,7 @@ HOMEPAGE="http://www.gnu.org/software/emacs/"
 SRC_URI="mirror://gnu/emacs/${P}.tar.gz
 	mirror://gentoo/${P}-patches-3.tar.bz2"
 
-LICENSE="GPL-3 FDL-1.2 BSD as-is X11"
+LICENSE="GPL-3 FDL-1.2 BSD as-is MIT"
 SLOT="22"
 KEYWORDS="~alpha amd64 ~arm hppa ~ia64 ~ppc ppc64 ~s390 ~sh sparc x86 ~sparc-fbsd ~x86-fbsd"
 IUSE="alsa gif gtk gzip-el hesiod jpeg kerberos motif png sound source tiff toolkit-scroll-bars X Xaw3d +xpm"
@@ -231,13 +231,7 @@ pkg_postinst() {
 
 	elisp-site-regen
 	emacs-infodir-rebuild
-
-	if [[ $(readlink "${ROOT}"/usr/bin/emacs) == emacs.emacs-${SLOT}* ]]; then
-		# transition from pre-eselect revision
-		eselect emacs set emacs-${SLOT}
-	else
-		eselect emacs update ifunset
-	fi
+	eselect emacs update ifunset
 
 	echo
 	elog "You can set the version to be started by /usr/bin/emacs through"

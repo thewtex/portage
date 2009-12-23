@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5095 2009/12/15 05:47:40 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5115 2009/12/22 21:27:42 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -143,7 +143,6 @@ app-cdr/xfburn:thunar - Adds integration with Thunar file manager
 app-crypt/ccid:nousb - Disable USB support via sys-apps/pcsc-lite
 app-crypt/ccid:twinserial - Enable twinserial reader
 app-crypt/ekeyd:usb -  Build the libusb-based userland daemon for accessing the entropykey (alternative to the CDC USB driver). 
-app-crypt/gnupg:ecc - Use elliptic curve cryptosystem patch
 app-crypt/gnupg:idea - Use the patented IDEA algorithm
 app-crypt/gnupg:openct - build using dev-libs/openct compat
 app-crypt/gnupg:pcsc-lite - build with sys-apps/pcsc-lite
@@ -297,13 +296,17 @@ app-emulation/qemu:ncurses - Enable the ncurses-based console
 app-emulation/qemu:pulseaudio - Enable pulseaudio output for sound emulation
 app-emulation/qemu:sdl - Enable the SDL-based console
 app-emulation/qemu:vde - Enable VDE-based networking
+app-emulation/qemu-kvm:aio - Enables support for Linux's Async IO
 app-emulation/qemu-kvm:alsa - Enable alsa output for sound emulation
 app-emulation/qemu-kvm:esd - Enable esound output for sound emulation
+app-emulation/qemu-kvm:fdt - Enables fdt support
 app-emulation/qemu-kvm:gnutls - Enable TLS support for the VNC console server
+app-emulation/qemu-kvm:kvm-trace - Allows you to use KVM tracing
 app-emulation/qemu-kvm:ncurses - Enable the ncurses-based console
 app-emulation/qemu-kvm:pulseaudio - Enable pulseaudio output for sound emulation
 app-emulation/qemu-kvm:sdl - Enable the SDL-based console
 app-emulation/qemu-kvm:vde - Enable VDE-based networking
+app-emulation/qemu-kvm:xen - Enables support for Xen backends
 app-emulation/qemu-softmmu:alsa - Enable alsa output for sound emulation
 app-emulation/qemu-softmmu:esd - Enable esound output for sound emulation
 app-emulation/qemu-softmmu:gnutls - Enable TLS support for the VNC console server
@@ -471,6 +474,7 @@ app-misc/tracker:gsf - Enable gnome-extra/libgsf based data extractor
 app-misc/tracker:iptc - Enable extraction of IPTC data from pictures
 app-misc/tracker:kmail - Build kmail data miner
 app-misc/tracker:laptop - Make tracker power management aware
+app-misc/tracker:nautilus - Enable tracker to integrate with gnome-base/nautilus by providing entries in its context menu 
 app-misc/tracker:playlist - Add support for playlists
 app-misc/tracker:wv2 - Build MS-Word .doc support.
 app-misc/tracker:xmp - Adds support for XMP metadata extraction
@@ -621,6 +625,7 @@ dev-db/ingres:das - Enable das support
 dev-db/ingres:demodb - Install demo DB
 dev-db/ingres:net - Enable net support
 dev-db/ingres:nodbms - Disable dbms component
+dev-db/libdrizzle:tcmalloc -  Use the dev-util/google-perftools libraries to replace the malloc() implementation with a possibly faster one. 
 dev-db/libpq:pg-intdatetime - Enable --enable-integer-datetimes configure option, which changes PG to use 64-bit integers for timestamp storage
 dev-db/maatkit:udf - Build the MySQL UDFs shipped with maatkit, requires non-minimal MySQL
 dev-db/mysql:big-tables - Make tables contain up to 1.844E+19 rows
@@ -822,7 +827,6 @@ dev-libs/apr:older-kernels-compatibility - Enable binary compatibility with olde
 dev-libs/apr:urandom - Use /dev/urandom instead of /dev/random
 dev-libs/boolstuff:static - Enable static linking
 dev-libs/boost:eselect - Run "eselect boost update" even if version is already selected
-dev-libs/boost:pyste - Add support for the pyste frontend
 dev-libs/boost:tools - Build and install the boost tools (bcp, quickbook, inspect, wave)
 dev-libs/crypto++:sse3 - Enable optimizations via sse3 assembly code
 dev-libs/cyberjack:noudev - Disable installation of udev rules
@@ -919,6 +923,7 @@ dev-perl/Eidetic:auth - Enables dev-perl/Apache-AuthTicket based cookie authenti
 dev-perl/GD:animgif - Enable animated gif support
 dev-perl/HTML-Mason:modperl - Enable www-apache/mod_perl support
 dev-perl/PDL:badval - Enable badval support
+dev-perl/Panotools-Script:gui -  Installs GUIs for some tools 
 dev-php/PEAR-PHP_Shell:auto-completion - Enable tab-completion
 dev-php5/ZendFramework:cli - Enables the CLI
 dev-php5/ZendFramework:doc - Installs the documentation
@@ -1778,6 +1783,7 @@ media-sound/alsa-tools:midi - Build the sequencer (midi) utilities
 media-sound/alsaplayer:id3tag - Enables ID3 tagging with id3tag library
 media-sound/amarok:amazon - Enable support for downloading covers from amazon.com
 media-sound/amarok:daap -  Enable the scripts for music sharing through DAAP. This flag adds dependencies on www-servers/mongrel to allow sharing of the Amarok music collection through DAAP protocol. Please note that turning this flag off has no effect on DAAP browsing. 
+media-sound/amarok:embedded -  Use libmysqld, MySQL embedded server library. Try disabling this if you encounter -PIC related in amarok, it will make amarok rely only on standalone MySQL server. 
 media-sound/amarok:ifp - Enable support for iRiver devices access through libifp
 media-sound/amarok:lastfm - Enable Last.fm streaming services support through media-libs/liblastfm
 media-sound/amarok:mp3tunes - Enable mp3tunes integration
@@ -1787,7 +1793,8 @@ media-sound/amarok:python -  Install the Amarok scripts written in Python, depen
 media-sound/amarok:real -  Build the Helix engine for Amarok, linked against media-video/realplayer. This is an alternative engine to the xine one, which supports a different set of formats. Only available for x86 architecture as it uses the binary version of RealPlayer. Please note that by enabling this USE flag, the resulting package will not be redistributable, as it links to the non-GPL compatible RealPlayer. 
 media-sound/amarok:visualization -  Support visualization plugins through media-libs/libvisual 
 media-sound/aqualung:ifp - Enable support for iRiver iFP portable audio players
-media-sound/aqualung:lua - Enable support for programmable title formatting with dev-lang/lua 
+media-sound/aqualung:lua - Enable support for programmable title formatting with dev-lang/lua
+media-sound/aqualung:mac - Enable support for decoding Monkey's Audio files
 media-sound/aqualung:podcast - Enable podcast support
 media-sound/aqualung:systray - Enable system tray support
 media-sound/ardour:freesound - Enables direct searching and download of samples from Freesound via the Import dialog
@@ -2362,9 +2369,6 @@ net-firewall/ipsec-tools:hybrid - Makes available both mode-cfg and xauth suppor
 net-firewall/ipsec-tools:idea - Enable support for the patented IDEA algorithm
 net-firewall/ipsec-tools:nat - Enable NAT-Traversal
 net-firewall/ipsec-tools:rc5 - Enable support for the patented RC5 algorithm
-net-firewall/iptables:extensions - Enable support for 3rd party patch-o-matic extensions
-net-firewall/iptables:imq - Enable support for intermediate queueing devices (http://www.linuximq.net)
-net-firewall/iptables:l7filter - Enable support for layer 7 filtering (http://l7-filter.sourceforge.net)
 net-firewall/nufw:nfconntrack - Use netfilter_conntrack
 net-firewall/nufw:nfqueue - Use NFQUEUE instead of QUEUE
 net-firewall/nufw:pam_nuauth - Add support for pam nufw from PAM
@@ -2467,12 +2471,12 @@ net-im/kadu:speech - Enables speech module
 net-im/kmess:konqueror - Enable integration with konqueror
 net-im/mcabber:otr -  Enable encrypted conversations using Off-The-Records messaging 
 net-im/naim:screen - Enable screen support
-net-im/pidgin:bonjour - Enable bonjour support
-net-im/pidgin:gadu - Enable Gadu Gadu protocol support.
-net-im/pidgin:groupwise - Enable Novell Groupwise protocol support.
-net-im/pidgin:meanwhile - Enable meanwhile support for Sametime protocol. 
-net-im/pidgin:prediction - Enable Contact Availability Prediction plugin. 
-net-im/pidgin:qq - Enable QQ protocol support.
+net-im/pidgin:bonjour - Enable bonjour (zeroconf) support
+net-im/pidgin:gadu - Enable Gadu Gadu protocol support
+net-im/pidgin:groupwise - Enable Novell Groupwise protocol support
+net-im/pidgin:meanwhile - Enable meanwhile support for Sametime protocol
+net-im/pidgin:prediction - Enable Contact Availability Prediction plugin
+net-im/pidgin:qq - Enable QQ protocol support
 net-im/pidgin:silc - Enable SILC protocol support
 net-im/pidgin:zephyr - Enable Zephyr protocol support
 net-im/psi:extras - Enables extra non official patches
@@ -2480,7 +2484,6 @@ net-im/psi:webkit - Enable chatlog rendering using webkit
 net-im/psimedia:demo -  build simple test application for the PsiMedia system. 
 net-im/pyaim-t:webinterface - Install dependencies needed for the web interface 
 net-im/pyicq-t:webinterface - Install dependencies needed for the web interface 
-net-im/qtwitter:oauth - Enables authorization using OAuth for Twitter accounts
 net-im/qutim:histman - Enable histman plugin
 net-im/qutim:irc - Enable irc support
 net-im/qutim:mrim - Enable mrim plugin
@@ -2548,6 +2551,7 @@ net-libs/aqbanking:chipcard - Enable support for DDV/RSA-chipcards
 net-libs/clinkcc:mythtv - Enable MythTV support
 net-libs/courier-authlib:vpopmail - Enable vpopmail support
 net-libs/cvm:vpopmail - Enable vpopmail support
+net-libs/farsight2:upnp - Enable UPnP IGD support
 net-libs/iax:snomhack - Use slower memset for SNOM phoneem
 net-libs/libesmtp:ssl -  Enable support for advanced SMTP authentication methods, like NTML and STARTTLS. Also use OpenSSL's MD5 implementation over internal version. 
 net-libs/libetpan:liblockfile - Enable support for liblockfile library
@@ -3112,6 +3116,7 @@ sci-mathematics/maxima:clisp - Add support for GNU CLISP (dev-lisp/clisp)
 sci-mathematics/maxima:cmucl - Add support for CMU Common Lisp (dev-lisp/cmucl)
 sci-mathematics/maxima:ecl - Add support for Embeddable Common Lisp (dev-lisp/ecls)
 sci-mathematics/maxima:gcl - Add support for GNU Common Lisp (dev-lisp/gcl)
+sci-mathematics/maxima:openmcl - Add support for Clozure Common Lisp (former OpenMCL, dev-lisp/closurecl)
 sci-mathematics/maxima:sbcl - Add support for Steel Bank Common Lisp (dev-lisp/sbcl)
 sci-mathematics/nusmv:minisat - Enable support for MiniSat
 sci-mathematics/octave:sparse - Enable enhanced support for sparse matrix algebra
@@ -3167,6 +3172,8 @@ sci-visualization/opendx:hdf - Add support for the Hierarchical Data Format (sci
 sci-visualization/paraview:boost - Enable the usage of dev-libs/boost
 sci-visualization/paraview:plugins - Build and install additional plugins
 sci-visualization/veusz:fits - Add FITS format via dev-python/pyfits
+sec-policy/selinux-base-policy:open_perms - Enable the open permissions for file object classes (SELinux policy capability).
+sec-policy/selinux-base-policy:peer_perms - Enable the labeled networking peer permissions (SELinux policy capability).
 sys-apps/acl:nfs -  add support for NFS acls 
 sys-apps/busybox:make-symlinks - Create all the appropriate symlinks in /bin and /sbin.
 sys-apps/gawk:libsigsegv - Support segfault recovery/debugging
@@ -3252,6 +3259,9 @@ sys-boot/lilo:device-mapper - Enable support for sys-fs/device-mapper
 sys-boot/lilo:pxeserial - Avoid character echo on PXE serial console
 sys-cluster/charm:cmkopt - Enable CMK optimisation
 sys-cluster/charm:tcp - Use TCP (instead of UPD) for socket communication
+sys-cluster/gearmand:drizzle -  Support dev-db/libdrizzle for the queue storage. This also adds support for MySQL storage. 
+sys-cluster/gearmand:memcache -  Support memcache daemon (via dev-libs/libmemcached) for the queue storage. 
+sys-cluster/gearmand:tcmalloc -  Use the dev-util/google-perftools libraries to replace the malloc() implementation with a possibly faster one. 
 sys-cluster/glusterfs:extras - Install extra helper scripts
 sys-cluster/glusterfs:fuse - Add FUSE mount helper
 sys-cluster/glusterfs:infiniband - Add support for Infiniband ibverbs transport. Librarys can be found in science overlay
@@ -3452,7 +3462,6 @@ www-apps/mediawiki:math - Ads math rendering support
 www-apps/mediawiki:restrict - Initial setup will only allow sysop user to create new accounts, read and edit any pages
 www-apps/rt:lighttpd - Add www-servers/lighttpd support
 www-apps/viewvc:cvsgraph - Add dev-util/cvsgraph support to show graphical views of revisions and branches
-www-apps/viewvc:highlight - Add app-text/highlight support to colourize code stored in the repository
 www-apps/viewvc:mod_python - Add www-apache/mod_python support
 www-apps/viewvc:pygments - Add dev-python/pygments support for syntax highlighting
 www-client/chromium:ffmpeg - Add support for HTML5 audio/video tags via media-video/ffmpeg
@@ -3486,7 +3495,6 @@ www-client/seamonkey:moznoirc - Disable building of mozilla's IRC client
 www-client/seamonkey:moznomail - Disable building mozilla's mail client
 www-client/seamonkey:moznopango - Disable x11-libs/pango during runtime
 www-client/seamonkey:moznoroaming - sroaming extension support
-www-client/seamonkey:restrict-javascript - Pull in www-plugins/noscript extension to disable javascript globally, putting the user full$ control of the sites he/she visits
 www-client/seamonkey:xforms - XForms is a standard to split up XHTML into XForms, instance data, and user interface
 www-client/uzbl:browser - Install the uzbl-browser script
 www-client/uzbl:experimental - Enable experimental branch

@@ -1,9 +1,9 @@
->=app-shells/bash-3.2 virtual/python
-!=app-text/calibre-0.5.9 virtual/python
+>=app-shells/bash-3.2 >=app-admin/eselect-python-20090606 virtual/python
+virtual/python
 0
 http://pybrary.net/pyPdf/pyPdf-1.12.tar.gz
 
-http://pybrary.net/pyPdf/
+http://pybrary.net/pyPdf/ http://pypi.python.org/pypi/pyPdf
 BSD-2
 Python library to work with pdf files
 ~amd64 ~x86
@@ -12,9 +12,9 @@ distutils eutils multilib portability python toolchain-funcs
 
 
 
+2
 
-
-compile install postinst postrm unpack
+compile install postinst postrm prepare unpack
 
 
 

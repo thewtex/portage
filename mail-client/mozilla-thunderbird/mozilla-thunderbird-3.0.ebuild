@@ -1,14 +1,14 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/mozilla-thunderbird/mozilla-thunderbird-3.0.ebuild,v 1.1 2009/12/08 21:39:29 anarchy Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-client/mozilla-thunderbird/mozilla-thunderbird-3.0.ebuild,v 1.4 2009/12/20 18:32:11 anarchy Exp $
 EAPI="2"
 WANT_AUTOCONF="2.1"
 
 inherit flag-o-matic toolchain-funcs eutils mozconfig-3 makeedit multilib mozextension autotools
 
-LANGS="af ar be ca cs de el en-US es-AR es-ES et eu fi fr fy-NL ga-IE hu id is it ja ko lt nb-NO nl nn-NO pa-IN pl pt-BR ro ru si sk sv-SE ta-LK uk"
+LANGS="af ar be ca cs de el en-US en-GB es-AR es-ES et eu fi fr fy-NL ga-IE hu id is it ja ko lt nb-NO nl nn-NO pa-IN pl pt-BR ro ru si sk sv-SE ta-LK uk"
 # Languages not rebuilt for beta3 "pt-PT he sr bg gl zn-CN vi"
-NOSHORTLANGS="es-AR pt-BR"
+NOSHORTLANGS="es-AR en-GB pt-BR"
 
 MY_PV2="${PV/_rc/rc}"
 MY_P="${P/_rc/rc}"
@@ -20,7 +20,7 @@ KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 SLOT="0"
 LICENSE="|| ( MPL-1.1 GPL-2 LGPL-2.1 )"
 IUSE="ldap crypt bindist mozdom replytolist lightning"
-PATCH="${PN}-3.0-patches-0.1"
+PATCH="${PN}-3.0-patches-0.3"
 
 REL_URI="http://releases.mozilla.org/pub/mozilla.org/thunderbird/releases"
 SRC_URI="${REL_URI}/${MY_PV2}/source/thunderbird-${MY_PV2}.source.tar.bz2
@@ -108,7 +108,6 @@ src_unpack() {
 
 src_prepare() {
 	# Apply our patches
-	EPATCH_EXCLUDE="104-fix_licence_file_preprocessor.patch" \
 	EPATCH_SUFFIX="patch" \
 	EPATCH_FORCE="yes" \
 	epatch "${WORKDIR}"
@@ -211,15 +210,6 @@ src_install() {
 	for X in ${linguas}; do
 		[[ ${X} != "en" ]] && xpi_install "${WORKDIR}"/"${P}-${X}"
 	done
-
-	local LANG=${linguas%% *}
-	if [[ -n ${LANG} && ${LANG} != "en" ]]; then
-		elog "Setting default locale to ${LANG}"
-		dosed -e "s:general.useragent.locale\", \"en-US\":general.useragent.locale\", \"${LANG}\":" \
-			${MOZILLA_FIVE_HOME}/defaults/pref/all-thunderbird.js \
-			${MOZILLA_FIVE_HOME}/defaults/pref/all-l10n.js || \
-			die "sed failed to change locale"
-	fi
 
 	if ! use bindist; then
 		newicon "${S}"/other-licenses/branding/thunderbird/content/icon48.png thunderbird-icon.png
