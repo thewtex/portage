@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/cmake-utils.eclass,v 1.38 2009/12/18 10:49:55 zmedico Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/cmake-utils.eclass,v 1.40 2009/12/23 00:32:02 abcd Exp $
 
 # @ECLASS: cmake-utils.eclass
 # @MAINTAINER:
@@ -112,10 +112,6 @@ _use_me_now_inverted() {
 # @ECLASS-VARIABLE: CMAKE_IN_SOURCE_BUILD
 # @DESCRIPTION:
 # Set to enable in-source build.
-
-# @ECLASS-VARIABLE: CMAKE_NO_COLOR
-# @DESCRIPTION:
-# Set to disable cmake output coloring.
 
 # @ECLASS-VARIABLE: CMAKE_VERBOSE
 # @DESCRIPTION:
@@ -235,7 +231,7 @@ cmake-utils_use_has() { _use_me_now HAVE_ "$@" ; }
 cmake-utils_use() { _use_me_now "" "$@" ; }
 
 # Internal function for modifying hardcoded definitions.
-# Removes dangerous definitionts that override Gentoo settings.
+# Removes dangerous definitions that override Gentoo settings.
 _modify-cmakelists() {
 	debug-print-function ${FUNCNAME} "$@"
 
@@ -250,8 +246,8 @@ _modify-cmakelists() {
 	cat >> CMakeLists.txt <<- _EOF_
 
 		MESSAGE(STATUS "<<< Gentoo configuration >>>
-		Build type: ${CMAKE_BUILD_TYPE}
-		Install path: ${CMAKE_INSTALL_PREFIX}\n")
+		Build type: \${CMAKE_BUILD_TYPE}
+		Install path: \${CMAKE_INSTALL_PREFIX}\n")
 	_EOF_
 }
 
@@ -314,7 +310,7 @@ enable_cmake-utils_src_configure() {
 	cat > "${common_config}" <<- _EOF_
 		SET (LIB_SUFFIX ${libdir/lib} CACHE STRING "library path suffix" FORCE)
 	_EOF_
-	[[ -n ${CMAKE_NO_COLOR} ]] && echo 'SET (CMAKE_COLOR_MAKEFILE OFF CACHE BOOL "pretty colors during make" FORCE)' >> "${common_config}"
+	[[ -n ${NOCOLOR} ]] || echo 'SET (CMAKE_COLOR_MAKEFILE OFF CACHE BOOL "pretty colors during make" FORCE)' >> "${common_config}"
 
 	# Convert mycmakeargs to an array, for backwards compatibility
 	# Make the array a local variable since <=portage-2.1.6.x does not

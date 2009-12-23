@@ -1,6 +1,26 @@
 # ChangeLog for net-analyzer/hping
-# Copyright 2002-2007 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/hping/ChangeLog,v 1.44 2007/09/06 16:42:08 jokey Exp $
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/hping/ChangeLog,v 1.47 2009/12/22 21:19:37 jer Exp $
+
+  22 Dec 2009; Jeroen Roovers <jer@gentoo.org> hping-2.0.0_rc3-r2.ebuild:
+  Do not install COPYING. Break up long line.
+
+*hping-2.0.0_rc3-r2 (22 Dec 2009)
+
+  22 Dec 2009; Jeroen Roovers <jer@gentoo.org> +hping-2.0.0_rc3-r2.ebuild,
+  +files/hping-2.0.0_rc3-gentoo.patch, hping-3_pre20051105-r1.ebuild:
+  Apply the same patches to hping-2 (see previous ChangeLog entry, bar the
+  tcl stuff). Remove useless USE=debug (set -g through CFLAGS instead if you
+  want, both v2 and v3).
+
+*hping-3_pre20051105-r1 (22 Dec 2009)
+
+  22 Dec 2009; Jeroen Roovers <jer@gentoo.org> hping-3_pre20051105.ebuild,
+  +hping-3_pre20051105-r1.ebuild, +files/hping-3_pre20051105-ldflags.patch,
+  +files/hping-3_pre20051105-tcl.patch:
+  Add tcl8.5 patch (stupid configure script). Respect LDFLAGS. Call epatch
+  just once. Call sed just once. Respect libdir. Do not call econf but
+  configure. Readd mysteriously disappearing keywords.
 
   06 Sep 2007; Markus Ullmann <jokey@gentoo.org> -hping-2.0.0_rc2-r1.ebuild,
   -hping-2.0.0_rc3.ebuild:
