@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10987 2009/12/23 00:34:22 caster Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.10997 2009/12/24 12:40:37 ssuominen Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,46 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Peter Volkov <pva@gentoo.org> (24 Dec 2009)
+# Masking release candidate. Yes, upstream supposes that we keep such
+# packages away from users. See bug #292321
+=x11-plugins/msn-pecan-0.1*
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (24 Dec 2009)
+#  on behalf of QA team
+#
+# Fails to build if /usr/X11R6 is not present (bug #247737,
+# open November 2008).
+#
+# Removal on 2010-02-22
+media-gfx/viewer
+
+# Samuli Suominen <ssuominen@gentoo.org> (24 Dec 2009)
+# Several regressions over 22.7, bug 297423
+=sys-process/psmisc-22.8
+=sys-process/psmisc-22.8-r1
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (23 Dec 2009)
+# Masked while we work on polishing the ebuild. Right now it lacks
+# init scripts, PAM configuration, proper test considerations and
+# USE flags for a few dependencies.
+dev-db/drizzle
+
+# Víctor Ostorga <vostorga@gentoo.org> (23 Dec 2009)
+# Last bump in 2005, does not build against current
+# stable net-nds/openldap-2.4.19-r1 bug #247956
+# Removal in 30 days
+net-dns/ldapdns
+
+# Samuli Suominen <ssuominen@gentoo.org> (23 Dec 2009)
+# Doesn't compile, bug 294826, and not worth fixing 
+# imake based build system. Removed in 30 days.
+x11-misc/xplore
+
+# Christian Parpart <trapni@gentoo.org> (23 Dec 2009)
+# Masked for testing/feedback.
+media-sound/teamspeak-server-bin
 
 # Diego E. Pettenò <flameeyes@gentoo.org> (22 Dec 2009)
 #  on behalf of QA team
@@ -321,9 +361,7 @@ dev-util/cook
 # Additional bugs include:
 # app-text/bibletime (#294863)
 # dev-util/kprof and kdbg (#292780)
-# net-firewall/guarddog (#270532)
 # sci-electronics/klogic (#277525)
-# media-video/kavi2svcd (#255888)
 #
 # Unresolved security bugs affecting kdelibs-3 include:
 # Remote code execution (CVE-2009-1690), bug 274566
@@ -334,42 +372,11 @@ dev-util/cook
 # which will be masked after KOffice 2.1.0 is in stable.
 #
 # Masked for removal.
-app-text/knowit
 app-office/kletterwizard
-app-mobilephone/ksms
 app-editors/kxmleditor
 <app-text/bibletime-2
-dev-db/kpogre
-dev-util/kdbg
-dev-util/kprof
-net-dialup/kdsl
-net-dialup/kmasqdialer
-net-dialup/komport
-net-dialup/rppppoek
-net-dialup/serlook
-net-firewall/guarddog
-net-firewall/kmyfirewall
 sci-visualization/kpl
-sci-calculators/abakus
-sci-calculators/pgcalc2
 sci-electronics/klogic
-sci-calculators/kconvert
-net-misc/x2gokdebindings
-net-misc/x2gosessionadministration
-media-video/kavi2svcd
-media-sound/scret
-media-sound/transkode
-media-sound/kzenexplorer
-
-# Diego E. Pettenò <flameeyes@gentoo.org> (04 Dec 2009)
-#  on behalf of QA team
-#
-# Projects seem dead, hk_classes fails to build with autoconf
-# 2.64 (bug 279965).
-#
-# Removal on 2010-02-02
-dev-db/hk_classes
-dev-db/knoda
 
 # Michael Sterrett <mr_bones_@gentoo.org> (04 Dec 2009)
 # The "game" part of the experience is missing.
@@ -434,11 +441,6 @@ sci-chemistry/coot
 #
 # Removal on 2010-02-02
 x11-misc/seyon
-
-# Tomáš Chvátal <scarabeus@gentoo.org> (04 Dec 2009)
-# Mask coreutils 8.1 because of broken rm that can cause major issues.
-# For more info see bug #295654.
-=sys-apps/coreutils-8.1
 
 # Joerg Bornkessel <hd_brummy@gentoo.org> (02 Dec 2009)
 # cvs ebuild vdr-xineliboutput-9999 masked for lifetime
@@ -550,81 +552,14 @@ sys-apps/inputd
 # kvm-kmod upstream package
 app-emulation/kvm-kmod
 
-# Torsten Veller <tove@gentoo.org> (22 Nov 2009)
-# Masked for removal. Probably vulnerable
-# GLSA 200502-02 and 200510-10
-net-mail/vimap
-
-# Tobias Scherbaum <dertobi123@gentoo.org> (22 Nov 2009)
-# Masked for removal in 30 days. Not of any use anymore.
-app-admin/eselect-oracle
-
-# Justin Bronder <jsbronder@gentoo.org> (20 Nov 2009)
-# Masked for removal in 30 days.  sys-cluster/osc-mpiexec
-# is a fully functional replacement.  Bug #293861
-sys-cluster/mpiexec
-
-# Peter Volkov <pva@gentoo.org> (17 Nov 2009)
-# Masked for removal. Use app-text/ghostscript-gpl - most up to date version
-# of ghostscipt. Bug #264614.
-app-text/ghostscript-gnu
-
-# Vlastimil Babka <caster@gentoo.org> (17 Nov 2009)
-# Removal for EOL and security, bug #287615
-=app-emulation/emul-linux-x86-java-1.4*
-=dev-java/sun-jdk-1.4*
-=dev-java/sun-jre-bin-1.4*
-=dev-java/ibm-jre-bin-1.4*
-dev-java/blackdown-jre
-dev-java/blackdown-jdk
-=java-virtuals/jdk-with-com-sun-1.4*
-
-# Rémi Cardona <remi@gentoo.org> (15 Nov 2009)
-# Tomáš Chvátal <scarabeus@gentoo.org> (18 Nov 2009)
-# Broken since xorg-server 1.5 stabilization
-# see bugs #248529 and #248531 and #275825
-# Masked for removal in 7 days
-x11-drivers/xf86-video-vga
-x11-drivers/xf86-video-imstt
-x11-drivers/xf86-video-vermilion
-
 # Ulrich Mueller <ulm@gentoo.org> (15 Nov 2009)
 # Keep pre-alpha development snapshot and live ebuild masked.
 =app-emacs/gnus-5.13_p*
 ~app-emacs/gnus-9999
 
-# Mike Frysinger <vapier@gentoo.org> (14 Nov 2009)
-# In-tree ebuilds are old, and newer upstream releases are simple GUIs
-# which download/install/update things for you.  And upstream isn't
-# interested in working with packagers.  Will punt in ~30 days.
-app-emulation/cedega
-app-emulation/transgaming-fontinstaller
-app-emulation/transgaming-mozctlinstaller
-
-# Tomáš Chvátal <scarabeus@gentoo.org> (14 Nov 2009)
-# Mask all packages that fail to comply to cmake eclass
-# and where maintainers were not responsive.
-# Will be removed in 30 days
-# See bug #287583 and those added to it.
-<dev-libs/boost-1.35.0-r1
-net-p2p/museek+
-games-arcade/blinkensisters
-sys-apps/initng-ifiles
-sys-apps/initng
-games-rpg/mangos
-dev-lisp/cl-gcc-xml-ffi
-
 # Alexis Ballier <aballier@gentoo.org> (14 Nov 2009)
 # beta release
 >=dev-ml/ocamlnet-3.0_beta
-
-# Samuli Suominen <ssuominen@gentoo.org> (13 Nov 2009)
-# kde-base/kdelibs:3.5 reverse dependencies
-#
-# Masked for removal in 30 days, bug 292791.
-<media-sound/amarok-2
-<app-editors/kile-2.1_beta1
-app-text/kbibtex
 
 # Doug Goldstein <cardoe@gentoo.org> (08 Nov 2009)
 # beta/experimental drivers
@@ -653,16 +588,6 @@ app-text/kbibtex
 >=media-plugins/mythweather-0.23_alpha1
 >=www-apps/mythweb-0.23_alpha1
 >=media-plugins/mythzoneminder-0.23_alpha1
-
-# Gilles Dartiguelongue <eva@gentoo.org> (08 Nov 2009)
-# Masked for removeal in 30 days. Discontinued upstream support, every user of
-# this library should move to 2.4 slot, bug #280906.
-<net-libs/libsoup-2.24
-
-# Víctor Ostorga <vostorga@gentoo.org> (07 Nov 2009)
-# Upstream dead, URL in package description is offline
-# security vulerability CVE-2008-5136 bug #247985
-net-misc/tkusr
 
 # Rémi Cardona <remi@gentoo.org> (05 Nov 2009)
 # Broken, will stay masked until fixed.

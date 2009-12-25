@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5115 2009/12/22 21:27:42 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5122 2009/12/24 12:47:46 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -255,7 +255,6 @@ app-emulation/ganeti:drbd - Enable DRBD support
 app-emulation/ganeti:kvm - Enable KVM support
 app-emulation/ganeti:xen - Enable Xen support
 app-emulation/libvirt:iscsi - Add support for iSCSI (Internet SCSI) remote storage
-app-emulation/libvirt:kvm - Add support for app-emulation/kvm based virtual machines
 app-emulation/libvirt:libvirtd - Builds the libvirtd daemon as well as the client utilities instead of just the client utilities
 app-emulation/libvirt:lvm - Add support for the Logical Volume Manager sys-apps/lvm2
 app-emulation/libvirt:lxc - Add support for the Linux Containers
@@ -322,7 +321,6 @@ app-emulation/uae:sdl-sound - Use media-sound/sdl-sound for audio output
 app-emulation/uae:ui - Build the user interface (could be gtk or ncurses based, depending on sdl, dga, svga and aalib USE flags)
 app-emulation/vice:resid - Enable support for ReSID media-libs/resid
 app-emulation/vice:xrandr - Enable support for the X xrandr extension
-app-emulation/virt-manager:network - Add support for creating guest networks
 app-emulation/virtualbox-bin:additions - Install Guest System Tools ISO
 app-emulation/virtualbox-bin:chm - Install kchmviewer binary to enable online help (in MS CHM format)
 app-emulation/virtualbox-bin:headless - Install without any graphic frontend
@@ -620,6 +618,14 @@ dev-cpp/sptk:excel - Enable Excel support
 dev-db/dabo:ide - Enable dabo IDE
 dev-db/hk_classes:mdb - Enables Microsoft Access DB support
 dev-db/hk_classes:xbase - Enables support for xbase databases (dBase, FoxPro, etc.)
+dev-db/drizzle:curl -  Enable the HTTP authentication plugin (using net-misc/curl). This is needed for the tests to apply properly. 
+dev-db/drizzle:doc -  Build the API documentation for the package, using app-doc/doxygen. Warning, this might take over an hour on slower machines. 
+dev-db/drizzle:gearman -  Enable the gearman plugins for user-defined functions and logging (using sys-cluster/gearman). 
+dev-db/drizzle:gnutls -  Enable the MD5 plugin for user-defined functions (using net-libs/gnutls). Note: when enabling both this flag and the curl flag, net-misc/curl has to be built with the gnutls USE flag or with no SSL support at all to avoid runtime linking conflicts. 
+dev-db/drizzle:memcache -  Enable the memcache plugin for user-defined functions and statistics in I_S tables (using dev-libs/libmemcached). Currently restricts tests because of an upstream testsuite bug. 
+dev-db/drizzle:openssl -  Enable the MD5 plugin for user-defined functions (using dev-libs/openssl). Note: when enabling both this flag and the curl flag, net-misc/curl has to be built with the openssl USE flag or with no SSL support at all to avoid runtime linking conflicts. 
+dev-db/drizzle:pam -  Enable the PAM authentication plugin (using sys-libs/pam). Warning: currently the pam configuration file is missing so it will not work out of the box. 
+dev-db/drizzle:tcmalloc -  Use the dev-util/google-perftools libraries to replace the malloc() implementation with a possibly faster one. 
 dev-db/ingres:client - Disable dbms component
 dev-db/ingres:das - Enable das support
 dev-db/ingres:demodb - Install demo DB
@@ -1221,11 +1227,6 @@ games-puzzle/xlogical:alt_gfx - Use alternate graphics which are closer to the o
 games-rpg/drascula:audio - Install optional audio files
 games-rpg/eternal-lands-data:music - Install optional music files (extra 30 meg)
 games-rpg/eternal-lands-data:sound - Install optional sound files (extra 40 meg)
-games-rpg/mangos:ahbot - include the AHBot-patch
-games-rpg/mangos:cli - compiles with support command line system
-games-rpg/mangos:ra - compiles with support remote console system
-games-rpg/mangos:sd2 - includes ScriptDev2 to distribution
-games-rpg/mangos:tools - include additional tools, such as the ad map extractor
 games-rpg/nwn:hou - Install the Hordes of the Underdark expansion pack
 games-rpg/nwn:sou - Installs the Shadows of Undrentide expension pack
 games-rpg/nwn-cep:hou - Adds support for the Hordes of the Underdark expansion pack
@@ -1926,6 +1927,7 @@ media-sound/squeezeboxserver:bonjour - Enable support for bonjour
 media-sound/squeezecenter:aac - Enable playback support for AAC (.m4a) encoded files
 media-sound/squeezecenter:alac - Enable support for alac
 media-sound/squeezecenter:bonjour - Enable support for bonjour
+media-sound/teamspeak-client-bin:builtin-qt - use bundled builtin Qt instead of system-installed x11-libs/qt-gui.
 media-sound/traverso:lv2 - Add support for Ladspa V2
 media-sound/vorbis-tools:ogg123 - Build ogg123 player, needs libao and curl
 media-sound/xwax:alsa - Enable ALSA support.
@@ -2667,7 +2669,6 @@ net-mail/tpop3d:sha1 - Use OpenSSL for sha1 encrypted passwords.
 net-mail/tpop3d:shadow - Enable /etc/shadow authentication
 net-mail/uw-imap:clearpasswd - Enables cleartext logins outside of SSL sessions
 net-mail/vchkuser:debug - Enables debug messages to syslog
-net-mail/vimap:clearpasswd - Enables cleartext logins outside of SSL sessions
 net-mail/vpopmail:clearpasswd - Enables cleartext password storage in the vpasswd files
 net-mail/vpopmail:ipalias - Enables enable-ip-alias-domains
 net-mail/vpopmail:maildrop - Enables mail-filter/maildrop support in vdelivermail
@@ -2884,8 +2885,6 @@ net-p2p/mldonkey:fasttrack - enable fasttrack support
 net-p2p/mldonkey:gnutella - enable gnutella and gnutella2 support
 net-p2p/mldonkey:guionly - enable client build only
 net-p2p/mldonkey:magic - enable use of libmagic
-net-p2p/museek+:qsa - Enable QSA scripting for museeq
-net-p2p/museek+:trayicon - Enable support for trayicon
 net-p2p/rtorrent:daemon - Uses app-misc/screen to daemonize this application" 
 net-p2p/transmission:dht - Enable Distributed Hash Tables support
 net-print/hplip:cupsddk - Add support for net-print/cupsddk which enables dynamic PPD files (recommended)
