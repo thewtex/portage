@@ -1,10 +1,33 @@
 # ChangeLog for profile directory
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.3695 2009/12/22 23:33:39 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.3702 2009/12/25 04:26:23 grozin Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  24 Dec 2009; Andrey Grozin <grozin@gentoo.org> base/package.use.mask,
+  arch/amd64/package.use.mask, arch/x86/package.use.mask:
+  sci-mathematics/maxima USE flag openmcl is for amd64 and x86 only
+
+  24 Dec 2009; Peter Volkov <pva@gentoo.org> package.mask:
+  Masking x11-plugins/msn-pecan release candidate. Upstream supposes that we
+  keep such packages away from users. bug #292321
+
+  23 Dec 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Masking media-gfx/viewer for QA removal.
+
+  23 Dec 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask =sys-process/psmisc-22.8 wrt bug #297423.
+
+  23 Dec 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Prepare preventive mask for drizzle.
+
+  23 Dec 2009; Víctor Ostorga <vostorga@gentoo.org> package.mask:
+  Masking net-dns/ldapdns for removal, bug #247956
+
+  23 Dec 2009; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask x11-misc/xplore for removal.
 
   22 Dec 2009; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
   Mask libnemesi (unfetchable).
