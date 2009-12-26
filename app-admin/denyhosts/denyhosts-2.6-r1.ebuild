@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/denyhosts/denyhosts-2.6-r1.ebuild,v 1.8 2009/12/20 04:13:49 arfrever Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/denyhosts/denyhosts-2.6-r1.ebuild,v 1.10 2009/12/25 21:59:20 arfrever Exp $
 
 EAPI="2"
 SUPPORT_PYTHON_ABIS="1"
@@ -31,8 +31,6 @@ src_prepare() {
 	# changes default file installations
 	epatch "${FILESDIR}"/${P}-gentoo.patch
 	epatch "${FILESDIR}"/${P}-log-injection-regex.patch
-	sed -i -e 's:#!/usr/bin/env python:#!/usr/bin/python:' \
-		denyhosts.py || die "sed failed"
 	sed -i -e 's:DENY_THRESHOLD_VALID = 10:DENY_THRESHOLD_VALID = 5:' \
 		denyhosts.cfg-dist || die "sed failed"
 }
@@ -45,9 +43,6 @@ src_install() {
 	newins denyhosts.cfg-dist denyhosts.conf
 
 	newinitd "${FILESDIR}"/denyhosts.init denyhosts
-
-	exeinto /usr/bin
-	newexe denyhosts.py denyhosts
 
 	dodoc CHANGELOG.txt README.txt
 
@@ -67,7 +62,7 @@ pkg_postinst() {
 	elog
 	elog "or as a cronjob, by adding the following to /etc/crontab"
 	elog "# run DenyHosts every 10 minutes"
-	elog "*/10  *  * * *	root	python /usr/bin/denyhosts -c /etc/denyhosts.conf"
+	elog "*/10  *  * * *	root	/usr/bin/denyhosts.py -c /etc/denyhosts.conf"
 	elog
 	elog "More information can be found at http://denyhosts.sourceforge.net/faq.html"
 	elog
