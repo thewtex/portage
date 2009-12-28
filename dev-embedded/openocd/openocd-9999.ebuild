@@ -1,11 +1,11 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-embedded/openocd/openocd-9999.ebuild,v 1.6 2009/06/17 10:04:16 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-embedded/openocd/openocd-9999.ebuild,v 1.8 2009/12/26 20:28:04 armin76 Exp $
 
-ESVN_REPO_URI="http://svn.berlios.de/svnroot/repos/openocd/trunk"
+EGIT_REPO_URI="git://openocd.git.sourceforge.net/gitroot/openocd/openocd"
 inherit eutils
 if [[ ${PV} == "9999" ]] ; then
-	inherit subversion autotools
+	inherit git autotools
 	KEYWORDS=""
 	SRC_URI=""
 else
@@ -37,7 +37,7 @@ pkg_setup() {
 
 src_unpack() {
 	if [[ ${PV} == "9999" ]] ; then
-		subversion_src_unpack
+		git_src_unpack
 		cd "${S}"
 		eautoreconf
 	else
@@ -46,7 +46,12 @@ src_unpack() {
 }
 
 src_compile() {
+	if [[ ${PV} == "9999" ]] ; then
+		myconf="${myconf} --enable-maintainer-mode"
+	fi
+
 	econf \
+		--disable-werror \
 		--enable-parport \
 		--enable-parport_ppdev \
 		--enable-amtjtagaccel \
@@ -58,7 +63,8 @@ src_compile() {
 		$(use_enable parport parport_giveio) \
 		$(use_enable presto presto_ftd2xx) \
 		$(use_enable ftdi ft2232_libftdi) \
-		$(use ftdi || use_enable ftd2xx ft2232_ftd2xx)
+		$(use ftdi || use_enable ftd2xx ft2232_ftd2xx) \
+		${myconf}
 	emake || die "Error in emake!"
 }
 

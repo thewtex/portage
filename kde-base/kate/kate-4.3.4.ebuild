@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/kate/kate-4.3.4.ebuild,v 1.2 2009/12/22 23:00:21 abcd Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/kate/kate-4.3.4.ebuild,v 1.4 2009/12/27 15:33:31 armin76 Exp $
 
 EAPI="2"
 

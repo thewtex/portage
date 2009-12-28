@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5123 2009/12/25 15:07:41 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5128 2009/12/27 19:27:40 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -196,11 +196,11 @@ app-editors/emacs:leim - Add support for Emacs input methods
 app-editors/emacs:sendmail - Build Emacs with MTA support
 app-editors/emacs:sound - Enable sound
 app-editors/emacs:toolkit-scroll-bars - Use the selected toolkit's scrollbars in preference to Emacs' own scrollbars
-app-editors/emacs-cvs:gconf - Use gnome-base/gconf to read the system font name
-app-editors/emacs-cvs:gzip-el - Compress bundled Emacs Lisp source
-app-editors/emacs-cvs:hesiod - Enable support for net-dns/hesiod
-app-editors/emacs-cvs:sound - Enable sound
-app-editors/emacs-cvs:toolkit-scroll-bars - Use the selected toolkit's scrollbars in preference to Emacs' own scrollbars
+app-editors/emacs-vcs:gconf - Use gnome-base/gconf to read the system font name
+app-editors/emacs-vcs:gzip-el - Compress bundled Emacs Lisp source
+app-editors/emacs-vcs:hesiod - Enable support for net-dns/hesiod
+app-editors/emacs-vcs:sound - Enable sound
+app-editors/emacs-vcs:toolkit-scroll-bars - Use the selected toolkit's scrollbars in preference to Emacs' own scrollbars
 app-editors/fe:sendmail - Send mail after editor abend
 app-editors/gedit-plugins:bookmarks - Advanced Bookmarking, it remembers all the bookmarks you ever toggled, highlights them in the text and allows you to navigate through a list with the navigation pane
 app-editors/gedit-plugins:bracketcompletion - Automatically adds closing brackets
@@ -524,7 +524,7 @@ app-office/openoffice-infra:oodict - Use Open Office dicts instead of system
 app-office/osmo:ical - Enable iCal format support
 app-office/osmo:syncml - Enable syncML support
 app-office/rabbit:gnome-print - Gnome-Print support (gnome-base/libgnomeprint)
-app-office/rabbit:gs - Ghostscript support (virtual/ghostscript)
+app-office/rabbit:gs - Ghostscript support (app-text/ghostscript-gpl)
 app-office/rabbit:tgif - tgif support (media-gfx/tgif)
 app-office/texmacs:netpbm - Add support for media-libs/netpbm
 app-office/tpp:figlet - Install app-misc/figlet to support the --huge command
@@ -916,7 +916,7 @@ dev-lisp/gcl:dlopen - Build a GCL which uses dlopen for linking
 dev-lisp/gcl:gprof - Build a GCL with profiling support
 dev-lisp/sbcl:cobalt - mips only: use mipsel binary instead of mips big endian binary to bootstrap
 dev-lisp/sbcl:ldb - Include support for the SBCL low level debugger
-dev-ml/camlimages:gs - Ghostscript support (virtual/ghostscript)
+dev-ml/camlimages:gs - Ghostscript support (app-text/ghostscript-gpl)
 dev-ml/lablgtk:glade - Enable libglade bindings compilation.
 dev-ml/lablgtk:gnomecanvas - Enable libgnomecanvas bindings compilation.
 dev-ml/lablgtk:sourceview - Enable GtkSourceView support
@@ -1835,6 +1835,7 @@ media-sound/herrie:xspf - Enable support for reading and saving XSPF playlists
 media-sound/jack-audio-connection-kit:coreaudio - Build the CoreAudio driver on Mac OS X systems
 media-sound/jack-audio-connection-kit:cpudetection - Enables runtime cpudetection
 media-sound/jack-audio-connection-kit:netjack - Build with support for Realtime Audio Transport over generic IP
+media-sound/kwave:phonon - Enable media-sound/phonon support
 media-sound/lame:mp3rtp - Build the mp3-to-RTP streaming utility. **UNSUPPORTED**
 media-sound/listen:libsexy - Enable libsexy support
 media-sound/listen:webkit - Enable webkit rendering engine instead of mozembed
@@ -3103,7 +3104,7 @@ sci-libs/vtk:cg - Use nvidia's cg shaders
 sci-libs/vtk:patented - Build patented classes
 sci-mathematics/cgal:taucs - Add support for the sparse solver library sci-libs/taucs
 sci-mathematics/coq:norealanalysis - Do not build real analysis modules (faster compilation)
-sci-mathematics/dataplot:gs - Add Ghostscript support (virtual/ghostscript) 
+sci-mathematics/dataplot:gs - Add Ghostscript support (app-text/ghostscript-gpl) 
 sci-mathematics/freemat:arpack - Add sparse eigen value support via sci-libs/arpack
 sci-mathematics/freemat:ffcall - Enable use of dev-libs/ffcall
 sci-mathematics/freemat:umfpack - Add sparse solving via sci-libs/umfpack
@@ -3556,6 +3557,7 @@ x11-libs/qt:qt3support - Enable the Qt3Support libraries for Qt4
 x11-libs/qt-core:glib - Enable dev-libs/glib eventloop support
 x11-libs/qt-core:optimized-qmake - Enable qmake optimization
 x11-libs/qt-core:qt3support - Enable the Qt3Support libraries for Qt4. Note that this does not mean you can compile pure Qt3 programs with Qt4.
+x11-libs/qt-declarative:demos - Install a set of demo applications
 x11-libs/qt-gui:glib -  Enable dev-libs/glib eventloop support 
 x11-libs/qt-gui:qt3support - Enable the Qt3Support libraries for Qt4. Note that this does not mean you can compile pure Qt3 programs with Qt4. 
 x11-libs/qt-gui:raster -  Use the alternative raster graphicssystem as default rendering engine 
