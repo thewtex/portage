@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/mtd-utils/mtd-utils-20080907.ebuild,v 1.7 2009/12/01 03:27:10 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/mtd-utils/mtd-utils-20080907.ebuild,v 1.9 2009/12/29 06:24:26 vapier Exp $
 
 inherit toolchain-funcs eutils
 
@@ -15,9 +15,11 @@ SLOT="0"
 KEYWORDS="amd64 arm ~mips ppc x86"
 IUSE="xattr"
 
+# We need libuuid
 RDEPEND="!sys-fs/mtd
 	dev-libs/lzo
-	sys-libs/zlib"
+	sys-libs/zlib
+	>=sys-apps/util-linux-2.16"
 # ACL is only required for the <sys/acl.h> header file to build mkfs.jffs2
 # And ACL brings in Attr as well.
 DEPEND="${RDEPEND}
@@ -31,11 +33,13 @@ src_unpack() {
 	sed -i 's:-Werror::' $(find . -name Makefile)
 	epatch "${FILESDIR}"/mtd-utils-fixup.patch
 	sed -i -e 's:\<ar\>:$(AR):' tests/ubi-tests/Makefile || die
+	sed -i -e 's:\<ranlib\>:$(RANLIB):' ubi-utils/new-utils/Makefile || die
 }
 
 src_compile() {
 	tc-export AR RANLIB
-	emake \
+	# -j1 for #276374
+	emake -j1 \
 		CC="$(tc-getCC)" \
 		OPTFLAGS="${CFLAGS}" \
 		$(use xattr || echo WITHOUT_XATTR=1) \
