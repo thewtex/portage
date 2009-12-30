@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/cython/cython-0.12.ebuild,v 1.1 2009/11/27 15:59:28 arfrever Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/cython/cython-0.12.ebuild,v 1.3 2009/12/29 18:14:47 arfrever Exp $
 
 EAPI="2"
 SUPPORT_PYTHON_ABIS="1"
@@ -17,7 +17,7 @@ SRC_URI="http://pypi.python.org/packages/source/${MY_PN:0:1}/${MY_PN}/${MY_P}.ta
 
 LICENSE="PSF-2.4"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x64-solaris ~x86-solaris"
+KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x64-solaris ~x86-solaris"
 IUSE="doc examples"
 
 DEPEND=""
@@ -27,13 +27,6 @@ S="${WORKDIR}/${MY_P}"
 
 PYTHON_MODNAME="${MY_PN} pyximport"
 DOCS="ToDo.txt USAGE.txt"
-
-pkg_setup() {
-	if use amd64; then
-		# Tests fail with some optimizations.
-		replace-flags -O[2-9s]* -O1
-	fi
-}
 
 src_prepare() {
 	distutils_src_prepare
