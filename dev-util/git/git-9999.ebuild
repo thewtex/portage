@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/git/git-9999.ebuild,v 1.17 2009/11/16 20:57:10 darkside Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/git/git-9999.ebuild,v 1.19 2009/12/26 00:44:34 robbat2 Exp $
 
 EAPI=2
 
@@ -18,7 +18,7 @@ if [ "$PV" != "9999" ]; then
 	SRC_URI="mirror://kernel/software/scm/git/${MY_P}.tar.bz2
 			mirror://kernel/software/scm/git/${PN}-manpages-${DOC_VER}.tar.bz2
 			doc? ( mirror://kernel/software/scm/git/${PN}-htmldocs-${DOC_VER}.tar.bz2 )"
-	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd"
+	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~s390 ~sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd"
 else
 	SRC_URI=""
 	EGIT_BRANCH="master"
@@ -35,7 +35,6 @@ IUSE="+blksha1 +curl cgi doc emacs gtk iconv +perl ppcsha1 tk +threads +webdav x
 CDEPEND="
 	!blksha1? ( dev-libs/openssl )
 	sys-libs/zlib
-	app-arch/cpio
 	perl?   ( dev-lang/perl )
 	tk?     ( dev-lang/tk )
 	curl?   (
@@ -50,7 +49,7 @@ RDEPEND="${CDEPEND}
 			dev-perl/Authen-SASL
 			cgi? ( virtual/perl-CGI )
 			cvs? ( >=dev-util/cvsps-2.1 dev-perl/DBI dev-perl/DBD-SQLite )
-			subversion? ( dev-util/subversion[-dso] dev-perl/libwww-perl dev-perl/TermReadKey )
+			subversion? ( dev-util/subversion[-dso,perl] dev-perl/libwww-perl dev-perl/TermReadKey )
 			)
 	gtk?
 	(
@@ -63,6 +62,7 @@ RDEPEND="${CDEPEND}
 #   .xml/docbook  --(docbook2texi.pl)--> .texi
 #   .texi         --(makeinfo)---------> .info
 DEPEND="${CDEPEND}
+	app-arch/cpio
 	doc?    (
 		app-text/asciidoc
 		app-text/docbook2X
@@ -129,6 +129,11 @@ exportmakeopts() {
 		&& myopts="${myopts} ASCIIDOC8=YesPlease"
 	myopts="${myopts} ASCIIDOC_NO_ROFF=YesPlease"
 
+	# Bug 290465:
+	# builtin-fetch-pack.c:816: error: 'struct stat' has no member named 'st_mtim'
+	[[ "${CHOST}" == *-uclibc* ]] && \
+		myopts="${myopts} NO_NSEC=YesPlease"
+
 	export MY_MAKEOPTS="${myopts}"
 }
 
@@ -157,6 +162,9 @@ src_prepare() {
 	# Merged in 1.6.3 final 2009/05/07
 	#epatch "${FILESDIR}"/20090505-git-1.6.2.5-getopt-fixes.patch
 
+	# JS install fixup
+	epatch "${FILESDIR}"/git-1.6.6-always-install-js.patch
+
 	sed -i \
 		-e 's:^\(CFLAGS =\).*$:\1 $(OPTCFLAGS) -Wall:' \
 		-e 's:^\(LDFLAGS =\).*$:\1 $(OPTLDFLAGS):' \
@@ -164,9 +172,15 @@ src_prepare() {
 		-e 's:^\(AR = \).*$:\1$(OPTAR):' \
 		Makefile || die "sed failed"
 
+	# Never install the private copy of Error.pm (bug #296310)
+	sed -i \
+		-e '/private-Error.pm/s,^,#,' \
+		perl/Makefile.PL
+
 	# Fix docbook2texi command
 	sed -i 's/DOCBOOK2X_TEXI=docbook2x-texi/DOCBOOK2X_TEXI=docbook2texi.pl/' \
 		Documentation/Makefile || die "sed failed"
+
 }
 
 git_emake() {
@@ -274,6 +288,9 @@ src_install() {
 		insinto /usr/share/${PN}/gitweb
 		doins "${S}"/gitweb/gitweb.cgi
 		doins "${S}"/gitweb/gitweb.css
+		js=gitweb.js
+		[ -f "${S}"/gitweb/gitweb.min.js ] && js=gitweb.min.js
+		doins "${S}"/gitweb/${js}
 		doins "${S}"/gitweb/git-{favicon,logo}.png
 
 		# Make sure it can run
@@ -312,6 +329,14 @@ src_test() {
 	local tests_perl="t5502-quickfetch.sh \
 					t5512-ls-remote.sh \
 					t5520-pull.sh"
+	# Bug #225601 - t0004 is not suitable for root perm
+	# Bug #219839 - t1004 is not suitable for root perm
+	# t0001-init.sh - check for init notices EPERM*  fails
+	local tests_nonroot="t0001-init.sh \
+		t0004-unwritable.sh \
+		t1004-read-tree-m-u-wf.sh \
+		t3700-add.sh \
+		t7300-clean.sh"
 
 	# Unzip is used only for the testcase code, not by any normal parts of Git.
 	if ! has_version app-arch/unzip ; then
@@ -327,9 +352,8 @@ src_test() {
 			ewarn "You should retest with FEATURES=userpriv!"
 			disabled="${disabled} ${tests_cvs}"
 		fi
-		# Bug #225601 - t0004 is not suitable for root perm
-		# Bug #219839 - t1004 is not suitable for root perm
-		disabled="${disabled} t0004-unwritable.sh t1004-read-tree-m-u-wf.sh"
+		einfo "Skipping other tests that require being non-root"
+		disabled="${disabled} ${tests_nonroot}"
 	else
 		[[ $cvs -gt 0 ]] && \
 			has_version dev-util/cvs && \
