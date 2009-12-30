@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5123 2009/12/25 15:07:41 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5135 2009/12/29 21:07:44 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -196,11 +196,11 @@ app-editors/emacs:leim - Add support for Emacs input methods
 app-editors/emacs:sendmail - Build Emacs with MTA support
 app-editors/emacs:sound - Enable sound
 app-editors/emacs:toolkit-scroll-bars - Use the selected toolkit's scrollbars in preference to Emacs' own scrollbars
-app-editors/emacs-cvs:gconf - Use gnome-base/gconf to read the system font name
-app-editors/emacs-cvs:gzip-el - Compress bundled Emacs Lisp source
-app-editors/emacs-cvs:hesiod - Enable support for net-dns/hesiod
-app-editors/emacs-cvs:sound - Enable sound
-app-editors/emacs-cvs:toolkit-scroll-bars - Use the selected toolkit's scrollbars in preference to Emacs' own scrollbars
+app-editors/emacs-vcs:gconf - Use gnome-base/gconf to read the system font name
+app-editors/emacs-vcs:gzip-el - Compress bundled Emacs Lisp source
+app-editors/emacs-vcs:hesiod - Enable support for net-dns/hesiod
+app-editors/emacs-vcs:sound - Enable sound
+app-editors/emacs-vcs:toolkit-scroll-bars - Use the selected toolkit's scrollbars in preference to Emacs' own scrollbars
 app-editors/fe:sendmail - Send mail after editor abend
 app-editors/gedit-plugins:bookmarks - Advanced Bookmarking, it remembers all the bookmarks you ever toggled, highlights them in the text and allows you to navigate through a list with the navigation pane
 app-editors/gedit-plugins:bracketcompletion - Automatically adds closing brackets
@@ -294,11 +294,11 @@ app-emulation/qemu:kvm - Use the KVM (Kernel Virtual Machine) infrastructure on 
 app-emulation/qemu:ncurses - Enable the ncurses-based console
 app-emulation/qemu:pulseaudio - Enable pulseaudio output for sound emulation
 app-emulation/qemu:sdl - Enable the SDL-based console
-app-emulation/qemu:vde - Enable VDE-based networking
+app-emulation/qemu:vde - Enable Virtual Distributed Ethernet (VDE) based networking
 app-emulation/qemu-kvm:aio - Enables support for Linux's Async IO
 app-emulation/qemu-kvm:alsa - Enable alsa output for sound emulation
 app-emulation/qemu-kvm:esd - Enable esound output for sound emulation
-app-emulation/qemu-kvm:fdt - Enables fdt support
+app-emulation/qemu-kvm:fdt - Enables firmware device tree support
 app-emulation/qemu-kvm:gnutls - Enable TLS support for the VNC console server
 app-emulation/qemu-kvm:kvm-trace - Allows you to use KVM tracing
 app-emulation/qemu-kvm:ncurses - Enable the ncurses-based console
@@ -524,7 +524,7 @@ app-office/openoffice-infra:oodict - Use Open Office dicts instead of system
 app-office/osmo:ical - Enable iCal format support
 app-office/osmo:syncml - Enable syncML support
 app-office/rabbit:gnome-print - Gnome-Print support (gnome-base/libgnomeprint)
-app-office/rabbit:gs - Ghostscript support (virtual/ghostscript)
+app-office/rabbit:gs - Ghostscript support (app-text/ghostscript-gpl)
 app-office/rabbit:tgif - tgif support (media-gfx/tgif)
 app-office/texmacs:netpbm - Add support for media-libs/netpbm
 app-office/tpp:figlet - Install app-misc/figlet to support the --huge command
@@ -916,7 +916,7 @@ dev-lisp/gcl:dlopen - Build a GCL which uses dlopen for linking
 dev-lisp/gcl:gprof - Build a GCL with profiling support
 dev-lisp/sbcl:cobalt - mips only: use mipsel binary instead of mips big endian binary to bootstrap
 dev-lisp/sbcl:ldb - Include support for the SBCL low level debugger
-dev-ml/camlimages:gs - Ghostscript support (virtual/ghostscript)
+dev-ml/camlimages:gs - Ghostscript support (app-text/ghostscript-gpl)
 dev-ml/lablgtk:glade - Enable libglade bindings compilation.
 dev-ml/lablgtk:gnomecanvas - Enable libgnomecanvas bindings compilation.
 dev-ml/lablgtk:sourceview - Enable GtkSourceView support
@@ -1055,8 +1055,9 @@ dev-util/git:ppcsha1 - Make use of a bundled routine that is optimized for the P
 dev-util/git:subversion - Include git-svn for dev-util/subversion support.
 dev-util/git:webdav - Adds support for push'ing to HTTP repositories via DAV.
 dev-util/global:vim - Integrate the GNU GLOBAL source code tag system with Vim
-dev-util/kdevelop:cmake - Support for the CMake Build System.
-dev-util/kdevelop:qmake - Support for the QMake Build System.
+dev-util/kdevelop:cmake - Enable support for CMAKE build system
+dev-util/kdevelop:qmake - Enable support for Qmake build system
+dev-util/kdevelop:qthelp - Enable support for QtHelp documentation browsing
 dev-util/kdevplatform:git - Add suport for git VCS
 dev-util/kdevplatform:mercurial - Add suport for mercurial VCS
 dev-util/mercurial:bugzilla - Support bugzilla integration.
@@ -1094,7 +1095,7 @@ dev-util/qt-creator:qtscript - enable qt script editor plugin
 dev-util/qt-creator:subversion - enable subersion plugin
 dev-util/radare:gui -  Enable the graphical user interface of radare (broken) 
 dev-util/radare:vala -  Enable support for the vala programming language 
-dev-util/schroot:dchroot - Enables the building of a wrapper named "dchroot", replacing dev-util/dchroot.
+dev-util/schroot:dchroot - Enables the building of a wrapper named "dchroot", replacing sys-apps/dchroot.
 dev-util/strace:aio - Enable libaio support
 dev-util/subversion:ctypes-python - Build and install ctypes python bindings
 dev-util/subversion:dso - Enable runtime module search
@@ -1117,6 +1118,7 @@ games-action/d2x-rebirth:awe32 - Enable AWE32 support
 games-action/d2x-rebirth:mpu401 - Enable MPU401 music support
 games-action/xshipwars:yiff - Add support for the YIFF sound server
 games-arcade/bomns:editor - enables building the level editor
+games-arcade/jumpnbump:music - Enable playing of background music
 games-arcade/lbreakout2:themes - Install additional themes
 games-arcade/moleinvasion:music - Download and install the music files
 games-arcade/smc:music - Download and install the music files
@@ -1621,6 +1623,7 @@ media-gfx/openscenegraph:inventor - Compile media-libs/openinventor plugin
 media-gfx/openscenegraph:jasper - Compile media-libs/jasper plugin
 media-gfx/openscenegraph:producer - Compile osgProducer
 media-gfx/openvrml:imagetexture - Support for image textures
+media-gfx/pixie:static-libs - Compile static archives
 media-gfx/potrace:metric -  default to a4 paper size and metric measurement 
 media-gfx/pstoedit:emf -  enables media-libs/libemf support 
 media-gfx/splashutils:fbcondecor -  Support for the fbcondecor kernel patch. 
@@ -1782,17 +1785,10 @@ media-sound/abcde:normalize - Add support for normalizing audio file volume leve
 media-sound/abcde:replaygain - Support for Replay Gain metadata, for relative volume adjustment
 media-sound/alsa-tools:midi - Build the sequencer (midi) utilities
 media-sound/alsaplayer:id3tag - Enables ID3 tagging with id3tag library
-media-sound/amarok:amazon - Enable support for downloading covers from amazon.com
 media-sound/amarok:daap -  Enable the scripts for music sharing through DAAP. This flag adds dependencies on www-servers/mongrel to allow sharing of the Amarok music collection through DAAP protocol. Please note that turning this flag off has no effect on DAAP browsing. 
 media-sound/amarok:embedded -  Use libmysqld, MySQL embedded server library. Try disabling this if you encounter -PIC related in amarok, it will make amarok rely only on standalone MySQL server. 
-media-sound/amarok:ifp - Enable support for iRiver devices access through libifp
 media-sound/amarok:lastfm - Enable Last.fm streaming services support through media-libs/liblastfm
 media-sound/amarok:mp3tunes - Enable mp3tunes integration
-media-sound/amarok:mp4 -  Build the TagLib plugin for writing tags in Mp4 container files (m4a). Please note that by enabling this USE flag, the resulting package will not be redistributable, as it links to media-libs/libmp4v2, distributed under a GPL-incompatible license. 
-media-sound/amarok:njb - Enable support for NJB (Creative) devices access through libnjb
-media-sound/amarok:python -  Install the Amarok scripts written in Python, depending on dev-python/PyQt. At the moment the only script installed by this flag is the webcontrol script. 
-media-sound/amarok:real -  Build the Helix engine for Amarok, linked against media-video/realplayer. This is an alternative engine to the xine one, which supports a different set of formats. Only available for x86 architecture as it uses the binary version of RealPlayer. Please note that by enabling this USE flag, the resulting package will not be redistributable, as it links to the non-GPL compatible RealPlayer. 
-media-sound/amarok:visualization -  Support visualization plugins through media-libs/libvisual 
 media-sound/aqualung:ifp - Enable support for iRiver iFP portable audio players
 media-sound/aqualung:lua - Enable support for programmable title formatting with dev-lang/lua
 media-sound/aqualung:mac - Enable support for decoding Monkey's Audio files
@@ -1835,6 +1831,7 @@ media-sound/herrie:xspf - Enable support for reading and saving XSPF playlists
 media-sound/jack-audio-connection-kit:coreaudio - Build the CoreAudio driver on Mac OS X systems
 media-sound/jack-audio-connection-kit:cpudetection - Enables runtime cpudetection
 media-sound/jack-audio-connection-kit:netjack - Build with support for Realtime Audio Transport over generic IP
+media-sound/kwave:phonon - Enable media-sound/phonon support
 media-sound/lame:mp3rtp - Build the mp3-to-RTP streaming utility. **UNSUPPORTED**
 media-sound/listen:libsexy - Enable libsexy support
 media-sound/listen:webkit - Enable webkit rendering engine instead of mozembed
@@ -2797,7 +2794,6 @@ net-misc/termpkg:uucp -  Adds support for uucp style device locking
 net-misc/tigervnc:server - Build TigerVNC server
 net-misc/tigervnc:xorgmodule - Build the Xorg module
 net-misc/tightvnc:server - Build vncserver. Allows us to only build server on one machine if set, build only viewer otherwise.
-net-misc/tor:bundledlibevent - USE bundled libevent for asynchronous DNS requests (provides a tiny bit more anonymity)
 net-misc/vde:pcap -  Enable the pcap-based plugin that allows creating a switch against a real interface. 
 net-misc/vde:ssl -  Enable the cryptcab plugin that allows creating an encrypted virtual cable. 
 net-misc/vidalia:tor - Allow to use a local tor setup
@@ -3103,7 +3099,7 @@ sci-libs/vtk:cg - Use nvidia's cg shaders
 sci-libs/vtk:patented - Build patented classes
 sci-mathematics/cgal:taucs - Add support for the sparse solver library sci-libs/taucs
 sci-mathematics/coq:norealanalysis - Do not build real analysis modules (faster compilation)
-sci-mathematics/dataplot:gs - Add Ghostscript support (virtual/ghostscript) 
+sci-mathematics/dataplot:gs - Add Ghostscript support (app-text/ghostscript-gpl) 
 sci-mathematics/freemat:arpack - Add sparse eigen value support via sci-libs/arpack
 sci-mathematics/freemat:ffcall - Enable use of dev-libs/ffcall
 sci-mathematics/freemat:umfpack - Add sparse solving via sci-libs/umfpack
@@ -3556,6 +3552,7 @@ x11-libs/qt:qt3support - Enable the Qt3Support libraries for Qt4
 x11-libs/qt-core:glib - Enable dev-libs/glib eventloop support
 x11-libs/qt-core:optimized-qmake - Enable qmake optimization
 x11-libs/qt-core:qt3support - Enable the Qt3Support libraries for Qt4. Note that this does not mean you can compile pure Qt3 programs with Qt4.
+x11-libs/qt-declarative:demos - Install a set of demo applications
 x11-libs/qt-gui:glib -  Enable dev-libs/glib eventloop support 
 x11-libs/qt-gui:qt3support - Enable the Qt3Support libraries for Qt4. Note that this does not mean you can compile pure Qt3 programs with Qt4. 
 x11-libs/qt-gui:raster -  Use the alternative raster graphicssystem as default rendering engine 
