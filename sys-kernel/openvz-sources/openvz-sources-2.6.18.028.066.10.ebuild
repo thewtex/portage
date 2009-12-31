@@ -2,26 +2,27 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: /var/cvsroot/gentoo-x86/sys-kernel/openvz-sources/openvz-sources-2.6.18.028.066.7.ebuild,v 1.1 2009/11/26 19:12:49 pva Exp $
 
-inherit versionator
-
 ETYPE="sources"
 
-CKV=$(get_version_component_range 1-3)
+CKV=2.6.18
 OKV=${OKV:-${CKV}}
 if [[ ${PR} == "r0" ]]; then
-KV_FULL=${CKV}-${PN/-*}-$(get_version_component_range 4-6)
+KV_FULL=${CKV}-${PN/-*}-028.066.10
 else
-KV_FULL=${CKV}-${PN/-*}-$(get_version_component_range 4-6)-${PR}
+KV_FULL=${CKV}-${PN/-*}-028.066.10-${PR}
 fi
-OVZ_KERNEL="$(get_version_component_range 4)stab$(get_version_component_range 5)"
-OVZ_REV="$(get_version_component_range 6)"
+OVZ_KERNEL="028stab066"
+OVZ_REV="10"
 EXTRAVERSION=-${OVZ_KERNEL}
 KERNEL_URI="mirror://kernel/linux/kernel/v${KV_MAJOR}.${KV_MINOR}/linux-${OKV}.tar.bz2"
 
 inherit kernel-2
 detect_version
 
-KEYWORDS="~amd64 ~ia64 ~ppc64 ~sparc ~x86"
+# gcc 4.1 to compile
+
+RDEPEND="=sys-devel/gcc-4.1*"
+KEYWORDS="amd64 ppc64 sparc x86"
 IUSE=""
 PATCHV="164.2.1.el5"
 DESCRIPTION="Full sources including OpenVZ patchset for the 2.6.18 kernel tree"
@@ -34,13 +35,15 @@ UNIPATCH_LIST="${DISTDIR}/patch-${PATCHV}.${OVZ_KERNEL}.${OVZ_REV}-combined.gz
 ${FILESDIR}/${PN}-2.6.18.028.064.7-bridgemac.patch"
 
 K_EXTRAEINFO="This openvz kernel uses RHEL5 patchset instead of vanilla kernel.
-This patchset considered to be more stable and security supported by upstream,
-that why they suggested us to use it. But note: RHEL5 patchset is very fragile
-and fails to build in many configurations so if you have problems use config
-files from openvz team http://wiki.openvz.org/Download/kernel/rhel5/${OVZ_KERNEL}"
+This patchset considered to be more stable and supported by upstream.
+
+This kernel is intended to be built using a specific configuration, and fails to
+build in many configurations so please always start with a .config provided by
+the OpenVZ team from http://wiki.openvz.org/Download/kernel/rhel5/${OVZ_KERNEL}
+- customize the config by enabling boot-related device drivers and filesystems
+  so they are part of the kernel"
 
 K_EXTRAEWARN="This kernel is stable only when built with gcc-4.1.x and is known
-to oops in random places if built with newer compilers. To build, emerge
-=sys-devel/gcc-4.1*, use gcc-config to switch to compiler, source /etc/profile
-and then build bzImage and modules. Then use gcc-config to switch back to
-your default compiler."
+to oops in random places if built with newer compilers. To build, use gcc-config
+to switch to gcc-4.1, source /etc/profile and then build bzImage and modules.
+Then use gcc-config to switch back to your default compiler."
