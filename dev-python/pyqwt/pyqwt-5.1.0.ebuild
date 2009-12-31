@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pyqwt/pyqwt-5.1.0.ebuild,v 1.1 2009/04/07 18:21:23 bicatali Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pyqwt/pyqwt-5.1.0.ebuild,v 1.2 2009/12/27 14:04:22 yngwin Exp $
 
 EAPI=2
 inherit eutils python toolchain-funcs
@@ -17,10 +17,10 @@ KEYWORDS="~amd64 ~ia64 ~x86"
 IUSE="debug doc examples svg"
 
 RDEPEND="=x11-libs/qwt-5.1*[svg?]
-	>=dev-python/PyQt4-4.2
+	dev-python/PyQt4
 	dev-python/numpy"
 DEPEND="${DEPEND}
-	>=dev-python/sip-4.6"
+	<dev-python/sip-4.9"
 
 src_configure() {
 	# the -j option can be buggy

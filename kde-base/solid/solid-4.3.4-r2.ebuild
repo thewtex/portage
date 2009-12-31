@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/solid/solid-4.3.4-r2.ebuild,v 1.2 2009/12/23 01:43:16 abcd Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/solid/solid-4.3.4-r2.ebuild,v 1.4 2009/12/27 15:26:24 armin76 Exp $
 
 EAPI="2"
 

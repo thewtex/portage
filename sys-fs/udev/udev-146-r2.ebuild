@@ -24,7 +24,7 @@ COMMON_DEPEND="selinux? ( sys-libs/libselinux )
 		dev-libs/glib:2
 	)"
 DEPEND="${COMMON_DEPEND} extras? ( dev-util/gperf )"
-RDEPEND="${COMMON_DEPEND} !sys-apps/coldplug !<sys-fs/lvm2-2.02.45 !sys-fs/device-mapper >=sys-apps/baselayout-2.1.6"
+RDEPEND="${COMMON_DEPEND} !sys-apps/coldplug !<sys-fs/lvm2-2.02.45 !<sys-fs/device-mapper-2.02.45 >=sys-apps/baselayout-2.1.6"
 PROVIDE="virtual/dev-manager"
 
 pkg_setup() {
@@ -73,12 +73,6 @@ src_install() {
 
 	keepdir "${udev_libexec_dir}"/state
 	keepdir "${udev_libexec_dir}"/devices
-
-	# Use Funtoo's "realdev" command to create initial set of device nodes in
-	# /lib/udev/devices. This set of device nodes will be copied to /dev when
-	# udev starts.
-
-	$ROOT/sbin/realdev ${D}${udev_libexec_dir}/devices || die
 
 	# create symlinks for these utilities to /sbin
 	# where multipath-tools expect them to be (Bug #168588)
@@ -193,6 +187,12 @@ pkg_postinst() {
 	rm -f $ROOT/etc/runlevels/*/udev
 
 	rm -f $ROOT/etc/runlevels/*/udev-postmount
+
+	# Use Funtoo's "realdev" command to create initial set of device nodes in
+	# /lib/udev/devices. This set of device nodes will be copied to /dev when
+	# udev starts.
+
+	$ROOT/sbin/realdev ${ROOT}/${udev_libexec_dir}/devices || die
 
 	add_init sysinit udev-mount
 	add_init sysinit udevd

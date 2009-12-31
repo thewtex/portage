@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/icecat/icecat-3.5.6.ebuild,v 1.1 2009/12/19 18:14:56 anarchy Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/icecat/icecat-3.5.6.ebuild,v 1.4 2009/12/28 18:45:43 pacho Exp $
 EAPI="2"
 WANT_AUTOCONF="2.1"
 
@@ -25,7 +25,7 @@ PATCH="${FIREFOX_PN}-3.5.5-patches-0.1"
 DESCRIPTION="GNU project's edition of Mozilla Firefox"
 HOMEPAGE="http://www.gnu.org/software/gnuzilla/"
 
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc ~ppc64 x86"
 SLOT="0"
 LICENSE="|| ( MPL-1.1 GPL-2 LGPL-2.1 )"
 IUSE="+alsa java mozdevelop sqlite"
@@ -63,6 +63,8 @@ RDEPEND="
 
 DEPEND="${RDEPEND}
 	dev-util/pkgconfig"
+
+QA_PRESTRIPPED="usr/$(get_libdir)/${PN}/${PN}"
 
 linguas() {
 	local LANG SLANG

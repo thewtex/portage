@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/libplasmaclock/libplasmaclock-4.3.4.ebuild,v 1.1 2009/12/01 11:23:58 wired Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/libplasmaclock/libplasmaclock-4.3.4.ebuild,v 1.3 2009/12/27 15:36:50 armin76 Exp $
 
 EAPI="2"
 

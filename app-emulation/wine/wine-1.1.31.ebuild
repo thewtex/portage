@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/wine/wine-1.1.31.ebuild,v 1.4 2009/12/12 16:20:25 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/wine/wine-1.1.31.ebuild,v 1.6 2009/12/29 06:04:52 vapier Exp $
 
 EAPI="2"
 
@@ -49,6 +49,7 @@ RDEPEND=">=media-libs/freetype-2.0.0
 		x11-libs/libXxf86vm
 		x11-apps/xmessage
 	)
+	xinerama? ( x11-libs/libXinerama )
 	alsa? ( media-libs/alsa-lib )
 	esd? ( media-sound/esound )
 	nas? ( media-libs/nas )
@@ -58,7 +59,7 @@ RDEPEND=">=media-libs/freetype-2.0.0
 	jpeg? ( media-libs/jpeg )
 	ldap? ( net-nds/openldap )
 	lcms? ( media-libs/lcms )
-	mp3? ( media-sound/mpg123 )
+	mp3? ( >=media-sound/mpg123-1.5.0 )
 	samba? ( >=net-fs/samba-3.0.25 )
 	xml? ( dev-libs/libxml2 dev-libs/libxslt )
 	scanner? ( media-gfx/sane-backends )
@@ -78,6 +79,7 @@ DEPEND="${RDEPEND}
 		x11-proto/xextproto
 		x11-proto/xf86vidmodeproto
 	)
+	xinerama? ( x11-proto/xineramaproto )
 	sys-devel/bison
 	sys-devel/flex"
 

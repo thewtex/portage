@@ -1,5 +1,5 @@
 ####################################################################
-# $Id: package.mask,v 1.43 2009/12/13 14:45:53 abcd Exp $
+# $Id: package.mask,v 1.45 2009/12/28 19:35:25 grobian Exp $
 # When you add an entry to this file, add your name, the date, and an
 # explanation of why something is getting masked.  This file is for
 # Prefix profiles only!
@@ -33,6 +33,11 @@
 #--- END OF EXAMPLES ---
 
 
+# Fabian Groffen <grobian@gentoo.org> (27 Dec 2009)
+# Needs some controlled testing before being thrown at all users.
+# (Prefix modifications may not work properly)
+=sys-devel/gcc-config-1.5
+
 # Fabian Groffen <grobian@gentoo.org> (22 Nov 2009)
 # non-portable shell code, unconditionally requires strndup (despite
 # gnulib) would need eautoreconf fix ... basically GNU got worse again
@@ -41,7 +46,10 @@
 # Jeremy Olexa <darkside@gentoo.org> (21 Aug 2009)
 # python-3 will most certainly cause problems if it ever gets unleashed without
 # a look over from a prefix dev. (not me) ;)
+# Additionally mask packages requiring it
+dev-lang/python:3.0
 dev-lang/python:3.1
+=dev-python/beautifulsoup-3.1.0.1-r1
 
 # Fabian Groffen <grobian@gentoo.org> (26 Jul 2009)
 # util-linux doesn't work on non-Linux and doesn't work in Prefix.  This

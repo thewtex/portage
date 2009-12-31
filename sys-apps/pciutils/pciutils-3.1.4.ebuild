@@ -1,8 +1,8 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/pciutils/pciutils-3.1.4.ebuild,v 1.7 2009/12/16 19:27:56 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/pciutils/pciutils-3.1.4.ebuild,v 1.10 2009/12/29 19:49:32 fauli Exp $
 
-inherit eutils multilib
+inherit eutils multilib toolchain-funcs
 
 DESCRIPTION="Various utilities dealing with the PCI bus"
 HOMEPAGE="http://atrey.karlin.mff.cuni.cz/~mj/pciutils.html"
@@ -10,7 +10,7 @@ SRC_URI="ftp://atrey.karlin.mff.cuni.cz/pub/linux/pci/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm hppa ia64 m68k ~mips ~ppc ppc64 s390 sh ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="~alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh ~sparc x86 ~x86-fbsd"
 IUSE="network-cron zlib"
 
 DEPEND="zlib? ( sys-libs/zlib )"
@@ -28,6 +28,7 @@ pemake() {
 	emake \
 		HOST="${CHOST}" \
 		CROSS_COMPILE="${CHOST}-" \
+		CC="$(tc-getCC)" \
 		DNS="yes" \
 		IDSDIR="/usr/share/misc" \
 		MANDIR="/usr/share/man" \

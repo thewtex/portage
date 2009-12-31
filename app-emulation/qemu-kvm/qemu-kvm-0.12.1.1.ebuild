@@ -1,26 +1,34 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/qemu-kvm/qemu-kvm-0.12.1.1.ebuild,v 1.3 2009/12/23 17:09:47 cardoe Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/qemu-kvm/qemu-kvm-0.12.1.1.ebuild,v 1.4 2009/12/30 02:17:53 jmbsvicetto Exp $
 
 EAPI="2"
 
-inherit eutils flag-o-matic toolchain-funcs linux-info
+if [[ ${PV} = *9999* ]]; then
+	EGIT_REPO_URI="git://git.kernel.org/pub/scm/virt/kvm/qemu-kvm.git"
+	GIT_ECLASS="git"
+fi
 
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+inherit eutils flag-o-matic ${GIT_ECLASS} linux-info toolchain-funcs
+
+if [[ ${PV} = *9999* ]]; then
+	SRC_URI=""
+	KEYWORDS=""
+else
+	SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+	KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+fi
 
 DESCRIPTION="QEMU + Kernel-based Virtual Machine userland tools"
 HOMEPAGE="http://www.linux-kvm.org"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+# xen is disabled until the deps are fixed
 IUSE="+aio alsa bluetooth curl esd gnutls fdt hardened kvm-trace ncurses \
 pulseaudio sasl +sdl vde"
 
-#xen
-
 COMMON_TARGETS="i386 x86_64 arm cris m68k microblaze mips mipsel ppc ppc64 sh4 sh4eb sparc sparc64"
-
 IUSE_SOFTMMU_TARGETS="${COMMON_TARGETS} mips64 mips64el ppcemb"
 IUSE_USER_TARGETS="${COMMON_TARGETS} alpha armeb ppc64abi32 sparc32plus"
 
@@ -34,25 +42,27 @@ done
 
 RESTRICT="test"
 
-RDEPEND="sys-libs/zlib
+RDEPEND="
+	!app-emulation/kqemu
+	!app-emulation/qemu
+	!app-emulation/qemu-softmmu
+	!app-emulation/qemu-user
 	sys-apps/pciutils
 	>=sys-apps/util-linux-2.16.0
+	sys-libs/zlib
 	aio? ( dev-libs/libaio )
 	alsa? ( >=media-libs/alsa-lib-1.0.13 )
 	bluetooth? ( net-wireless/bluez )
 	curl? ( net-misc/curl )
 	esd? ( media-sound/esound )
-	gnutls? ( net-libs/gnutls )
 	fdt? ( sys-apps/dtc )
+	gnutls? ( net-libs/gnutls )
 	ncurses? ( sys-libs/ncurses )
 	pulseaudio? ( media-sound/pulseaudio )
 	sasl? ( dev-libs/cyrus-sasl )
 	sdl? ( >=media-libs/libsdl-1.2.11[X] )
 	vde? ( net-misc/vde )
-	!app-emulation/qemu-softmmu
-	!app-emulation/qemu-user
-	!app-emulation/qemu
-	!app-emulation/kqemu"
+"
 
 DEPEND="${RDEPEND}
 	app-text/texi2html
