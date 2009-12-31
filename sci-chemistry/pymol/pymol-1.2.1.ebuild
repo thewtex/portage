@@ -1,10 +1,10 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/pymol/pymol-1.2.1.ebuild,v 1.4 2009/09/09 21:51:57 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/pymol/pymol-1.2.1.ebuild,v 1.5 2009/12/30 19:36:34 flameeyes Exp $
 
 EAPI="2"
 
-inherit distutils subversion
+inherit distutils
 
 PYTHON_MODNAME="chempy pmg_tk pymol"
 APBS_PATCH="090618"
@@ -12,8 +12,8 @@ REV="3825"
 
 DESCRIPTION="A Python-extensible molecular graphics system."
 HOMEPAGE="http://pymol.sourceforge.net/"
-SRC_URI="apbs? ( mirror://gentoo/apbs_tools.py.${APBS_PATCH}.bz2 )"
-ESVN_REPO_URI="https://pymol.svn.sourceforge.net/svnroot/pymol/trunk/pymol@${REV}"
+SRC_URI="apbs? ( mirror://gentoo/apbs_tools.py.${APBS_PATCH}.bz2 )
+	http://pymol.svn.sourceforge.net/viewvc/pymol/trunk/pymol.tar.gz?view=tar&pathrev=${REV} -> ${P}.tar.gz"
 
 LICENSE="PSF-2.2"
 SLOT="0"
@@ -33,13 +33,10 @@ DEPEND="dev-python/pmw
 		)"
 RDEPEND="${DEPEND}"
 
+S="${WORKDIR}"/${PN}
+
 pkg_setup(){
 	python_version
-}
-
-src_unpack() {
-	use apbs && unpack ${A}
-	subversion_src_unpack
 }
 
 src_prepare() {
