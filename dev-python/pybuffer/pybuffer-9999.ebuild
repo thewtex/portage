@@ -10,7 +10,7 @@ SRC_URI=""
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 EAPI="2"
 

@@ -14,8 +14,8 @@ KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc x86"
 IUSE="dynamic nls selinux"
 
 DEPEND="|| (
-		>=sys-fs/lvm2-2.02.45
 		>=sys-fs/device-mapper-1.00.07-r1
+		>=sys-fs/lvm2-2.02.45
 	)
 	>=dev-libs/libgcrypt-1.1.42
 	>=dev-libs/libgpg-error-1.0-r1
