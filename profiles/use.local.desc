@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5138 2009/12/31 22:47:45 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5142 2010/01/01 18:07:40 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -176,6 +176,10 @@ app-doc/linuxfromscratch:htmlsingle - Also install all-in-one-page HTML version
 app-doc/pms:all-options - Include both sides of kdebuild conditionals, shown in different colours (PDF only)
 app-doc/pms:html - Generate PMS as .html as well
 app-doc/pms:kdebuild - Include specification for the kdebuild EAPI, see http://www.gentoo.org/proj/en/desktop/kde/kdebuild-1.xml
+app-doc/tldp-howto:html - Install the docs in multipage HTML format (default)
+app-doc/tldp-howto:htmlsingle - Install the docs in single page HTML format
+app-doc/tldp-howto:pdf - Install the docs in pdf format
+app-doc/tldp-howto:text - Install the docs in plain text format
 app-editors/cssed:plugins - Install plugin development files
 app-editors/emacs:gzip-el - Compress bundled Emacs Lisp source
 app-editors/emacs:hesiod - Enable support for net-dns/hesiod
@@ -385,7 +389,6 @@ app-misc/beagle:ole - Enables OLE (Object Linking and Editing) support via dev-d
 app-misc/beagle:pdf - Enables support for indexing of the PDF (Portable Document Format) file format using `pdfinfo` and `pdftotext` from app-text/poppler
 app-misc/beagle:thunderbird - Compiles and installs the extension for either mail-client/mozilla-thunderbird or mail-client/mozilla-thunderbird-bin. This extension helps Beagle index your mails.
 app-misc/beagle:xscreensaver - Allow Beagle to detect when the screensaver is switched on. This allows Beagle to use more resources and index faster when the computer is not in use.
-app-misc/booh:transcode - Use media-video/transcode to extract video thumbnails
 app-misc/digitemp:ds2490 - Build support for the ds2490 sensor
 app-misc/digitemp:ds9097 - Build support for the ds9097 sensor
 app-misc/digitemp:ds9097u - Build support for the ds9097u sensor
@@ -1495,7 +1498,6 @@ media-gfx/jpeg2ps:metric -  Default to A4 paper size
 media-gfx/k3d:3ds - Enable support for 3D Studio models
 media-gfx/k3d:cuda - Use nvidia cuda toolkit for speeding up computations
 media-gfx/k3d:gts - Add Support for the GNU Triangulated Surface Library sci-libs/gts
-media-gfx/k3d:plib - build plib-based import/export library
 media-gfx/kphotoalbum:geolocation - Add support for kde-base/marble
 media-gfx/kphotoalbum:kipi - Support for the KDE Image Plugin Interface
 media-gfx/maya:bundled-libs -  Use the bundled versions of libs rather than system ones (libstdc++, libgcc_s, libqt, and libXm) 
@@ -3229,6 +3231,7 @@ www-client/elinks:bittorrent - Enable support for the BitTorrent protocol
 www-client/elinks:finger - Enable support for the finger protocol
 www-client/elinks:gopher - Enable support for the gopher protocol
 www-client/epiphany:nss - Import passwords from older gecko based www-client/epiphany keyring.
+www-client/firefox-bin:restrict-javascript - Pull in x11-plugins/noscript extension to disable javascript globally, putting the user fully in control of the sites he/she visits
 www-client/icecat:custom-optimization - Fine-tune custom compiler optimizations
 www-client/icecat:mozdevelop - Enable features for web developers (e.g. Venkman)
 www-client/icecat:restrict-javascript - Pull in www-plugins/noscript extension to disable javascript globally, putting the user fully in control of the sites he/she visits
@@ -3246,7 +3249,6 @@ www-client/mozilla-firefox:mozdevelop - Enable features for web developers (e.g.
 www-client/mozilla-firefox:moznopango - Disable x11-libs/pango during runtime
 www-client/mozilla-firefox:restrict-javascript - Pull in www-plugins/noscript extension to disable javascript globally, putting the user fully in control of the sites he/she visits
 www-client/mozilla-firefox:xforms - XForms is a standard to split up XHTML into XForms, instance data, and user interface
-www-client/mozilla-firefox-bin:restrict-javascript - Pull in x11-plugins/noscript extension to disable javascript globally, putting the user fully in control of the sites he/she visits
 www-client/opera:qt-static - Install binaries statically linked to Qt
 www-client/seamonkey:custom-optimization - Fine-tune custom compiler optimizations
 www-client/seamonkey:mozdevelop - Enable features for web developers (e.g. Venkman)
