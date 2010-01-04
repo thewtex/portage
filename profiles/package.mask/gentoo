@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11022 2009/12/31 20:26:52 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11035 2010/01/02 22:48:41 yngwin Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -31,6 +31,48 @@
 
 #--- END OF EXAMPLES ---
 
+# Ben de Groot <yngwin@gentoo.org> (02 Jan 2010)
+# Masking pending removal in 30 days
+# Does not build with >=autoconf-2.64 (bug 279332)
+# From what I understand you should be able to use scim-bridge[qt4] instead
+app-i18n/scim-qtimm
+
+# Ben de Groot <yngwin@gentoo.org> (02 Jan 2010)
+# Masking pending removal in 30 days
+# Does not compile (bugs 220785, 273416, 277227)
+dev-php5/php-qt
+
+# Ben de Groot <yngwin@gentoo.org> (02 Jan 2010)
+# Masking pending removal in 30 days
+# qt:3 removal (bug 283429), qscintilla-python already dropped qt3 support
+=x11-libs/qscintilla-1*
+=dev-db/tora-1*
+dev-python/PyQt
+app-misc/releaseforge
+dev-util/kodos
+media-gfx/imgseek
+media-sound/albumart
+media-video/quickrip
+net-nds/luma
+net-p2p/qtorrent
+net-wireless/gerix
+x11-misc/icecursorscfg
+x11-misc/iceiconcvt
+x11-misc/icemergeprefs
+=x11-misc/treeline-1.0.2
+
+# Samuli Suominen <ssuominen@gentoo.org> (02 Jan 2009)
+# mirror restricted and distfile can't be downloaded
+# anymore wrt bug #288442. missing deps wrt bug #200085.
+# replaced by hamachi-gui in bug #215492.
+# removal in 60 days
+net-misc/ghamachi
+
+# Víctor Ostorga <vostorga@gentoo.org> (01 Jan 2010)
+# Masking for removal, qt3 package, has been segfaulting for
+# 2 and half years, last release 6 years ago, bug #183103
+dev-db/mysqlnavigator
+
 # Samuli Suominen <ssuominen@gentoo.org> (31 Dec 2009)
 # Doesn't compile anymore with Autoconf >= 2.64, wv2 >= 0.4.0,
 # several open security bugs, ...
@@ -39,6 +81,9 @@
 #
 # See bugs 274566, 274918, 279027, 279482, 283429, 285018, 294676,
 # 287276, 292791, ...
+#
+# kamikaze, hearts, six, slibo, kvisualboyadvance, xpertmud,
+# kfreeflight and boson will be removed with kdelibs-3.
 #
 # Masked for removal in 30 days
 #
@@ -121,12 +166,6 @@ games-emulation/mupen64-riceplugin
 net-analyzer/fe3d
 net-analyzer/metasploit
 
-# Jonathan Callen <abcd@gentoo.org> (29 Dec 2009)
-# Project abandoned upstream (replaced by dev-util/schroot)
-# Collides with dev-util/schroot[dchroot]
-# Masked for removal in 30 days, bug 298874
-sys-apps/dchroot
-
 # Diego E. Pettenò <flameeyes@gentoo.org> (29 Dec 2009)
 #  on behalf of QA team
 #
@@ -192,13 +231,6 @@ media-sound/k3guitune
 # used by KDE3 applications. Masked for removal.
 media-libs/akode
 
-# Samuli Suominen <ssuominen@gentoo.org> (27 Dec 2009)
-# Last package using Qt3 libraries from,
-# app-emulation/emul-linux-x86-qtlibs
-# Missing deps (#180850)
-# Last release 2003. Masked for removal.
-app-i18n/kurso-de-esperanto
-
 # Torsten Veller <tove@gentoo.org> (27 Dec 2009)
 # Mask for removal
 # - old, perl4, superseded by Jcode and Encode, (#298215)
@@ -229,9 +261,8 @@ x11-misc/bbconf
 =x11-plugins/msn-pecan-0.1*
 
 # Samuli Suominen <ssuominen@gentoo.org> (24 Dec 2009)
-# Several regressions over 22.7, bug 297423
-=sys-process/psmisc-22.8
-=sys-process/psmisc-22.8-r1
+# Broken fuser command, bug 297423
+=sys-process/psmisc-22.9
 
 # Diego E. Pettenò <flameeyes@gentoo.org> (23 Dec 2009)
 # Masked while we work on polishing the ebuild. Right now it lacks
@@ -246,7 +277,7 @@ dev-db/drizzle
 net-dns/ldapdns
 
 # Samuli Suominen <ssuominen@gentoo.org> (23 Dec 2009)
-# Doesn't compile, bug 294826, and not worth fixing 
+# Doesn't compile, bug 294826, and not worth fixing
 # imake based build system. Removed in 30 days.
 x11-misc/xplore
 
@@ -295,13 +326,6 @@ games-strategy/freelords
 # Michael Sterrett <mr_bones_@gentoo.org> (21 Dec 2009)
 # Masked for testing.
 =app-admin/syslog-ng-3.0.5
-
-# Samuli Suominen <ssuominen@gentoo.org> (21 Dec 2009)
-# Masked for removal wrt bug 65525. Outdated, fetch-restricted,
-# binary-only package. One of two remaining packages using
-# emul-linux-x86-qtlibs qt3 libraries in gentoo-x86.
-media-gfx/maya
-media-gfx/grender
 
 # Samuli Suominen <ssuominen@gentoo.org> (21 Dec 2009)
 # Masked for QA.
@@ -443,7 +467,7 @@ sys-auth/nsvs
 # for 2 week testing.
 =net-fs/coda-6.9.4
 
-# Christian Faulhammer <fauli@gentoo.org> (09 Dec 2009) 
+# Christian Faulhammer <fauli@gentoo.org> (09 Dec 2009)
 # Fails on runtime due to gone web contents, has to wait for 2009
 # version.
 app-portage/g-ctan
@@ -604,14 +628,6 @@ x11-misc/seyon
 # Joerg Bornkessel <hd_brummy@gentoo.org> (02 Dec 2009)
 # cvs ebuild vdr-xineliboutput-9999 masked for lifetime
 =media-plugins/vdr-xineliboutput-9999
-
-# Diego E. Pettenò <flameeyes@gentoo.org> (29 Nov 2009)
-#  on behalf of QA team
-#
-# patch-2.6 has incompatibilities with the way we use epatch; this
-# causes patches to “silently fail“ (they won't get applied, but
-# epatch reports all a-ok). See bug #293570 and blocked bugs.
->=sys-devel/patch-2.6
 
 # Alex Legler <a3li@gentoo.org> (30 Nov 2009)
 # Dead upstream, fetch issues with gemcutter.
@@ -801,18 +817,6 @@ app-emulation/lxc
 # Diego E. Pettenò <flameeyes@gmail.com> (9 Oct 2009)
 # Untested yet; documented only in Russian, help is appreciated.
 sys-auth/pam_keystore
-
-# Mike Doty <kingtaco@gentoo.org> (04 Oct 2009)
-# alpha packages, kills puppies.
-=app-emulation/emul-linux-x86-baselibs-20091004_rc1
-=app-emulation/emul-linux-x86-compat-20091004_rc1
-=app-emulation/emul-linux-x86-gtklibs-20091004_rc1
-=app-emulation/emul-linux-x86-medialibs-20091004_rc1
-=app-emulation/emul-linux-x86-qtlibs-20091004_rc1
-=app-emulation/emul-linux-x86-sdl-20091004_rc1
-=app-emulation/emul-linux-x86-soundlibs-20091004_rc1
-=app-emulation/emul-linux-x86-xlibs-20091004_rc1
-=app-emulation/emul-linux-x86-baselibs-20091003_rc1
 
 # Markus Meier <maekke@gentoo.org> (03 Oct 2009)
 # mask libpano13 beta versions for testing
@@ -1052,8 +1056,9 @@ dev-util/w32api
 >sys-process/audit-1.7.4
 
 # Jeroen Roovers <jer@gentoo.org> (5 Dec 2008)
-# Snapshots and alphas but not betas and RCs of Opera 10.10
+# Snapshot, labs and alpha releases but not betas and RCs of Opera
 =www-client/opera-10.20_pre4744
+=www-client/opera-10.50_pre6177
 
 # Peter Volkov <pva@gentoo.org> (16 Nov 2008)
 # The development branch, to be unmasked when out of beta by upstream.
