@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/opera/opera-10.50_pre6177.ebuild,v 1.1 2010/01/02 16:54:58 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/opera/opera-10.50_pre6177.ebuild,v 1.5 2010/01/03 23:04:58 jer Exp $
 
 EAPI="2"
 
@@ -40,23 +40,23 @@ SRC_URI="
 DEPEND=">=sys-apps/sed-4"
 
 RDEPEND="
+	=x11-libs/gtk+-2*
 	dev-libs/atk
 	dev-libs/expat
 	dev-libs/glib
 	media-libs/fontconfig
 	media-libs/freetype
-	media-libs/gst-plugins-base
 	media-libs/glitz
+	media-plugins/gst-plugins-meta
 	media-libs/libpng
 	sys-apps/util-linux
 	sys-libs/zlib
+	virtual/opengl
 	x11-libs/cairo
-	=x11-libs/gtk+-2*
 	x11-libs/libICE
 	x11-libs/libSM
 	x11-libs/libX11
 	x11-libs/libXau
-	x11-libs/libxcb
 	x11-libs/libXcomposite
 	x11-libs/libXcursor
 	x11-libs/libXdamage
@@ -68,10 +68,10 @@ RDEPEND="
 	x11-libs/libXrandr
 	x11-libs/libXrender
 	x11-libs/libXt
+	x11-libs/libxcb
 	x11-libs/pango
 	x11-libs/pixman
 	x11-libs/xcb-util
-	virtual/opengl
 	"
 
 opera_linguas() {
@@ -108,8 +108,9 @@ src_unpack() {
 
 src_prepare() {
 	sed -i opera \
-		-e 's|=usr/lib/opera|=/usr/lib/opera|g' || \
-		die "sed opera script failed"
+		-e 's|=usr/lib/opera|=/usr/lib/opera|g' \
+		-e '6a\OPERA_DIR=/usr/share/opera' \
+		|| die "sed opera script failed"
 }
 
 src_install() {
@@ -138,10 +139,6 @@ src_install() {
 		done
 		[[ "$SANITY_CHECK_LIBZ_FAILED" = "1" ]] && die "failed to change libz.so.3 to libz.so.1"
 	fi
-
-	# Special for this build, otherwise opera won't find its files
-	dodir /etc/env.d
-	echo "OPERA_DIR=\"/usr/share/${PN}\"" >> "${D}"/etc/env.d/90opera
 
 	[[ -z MY_LINGUAS ]] || opera_linguas
 }

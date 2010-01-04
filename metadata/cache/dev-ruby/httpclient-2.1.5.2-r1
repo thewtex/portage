@@ -1,0 +1,22 @@
+test? ( virtual/ruby-test-unit[ruby_targets_ruby18?,ruby_targets_ruby19?,ruby_targets_jruby?] ) test? ( ruby_targets_jruby? ( dev-ruby/jruby-openssl[ruby_targets_jruby?] ) ) ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ruby19? ( dev-lang/ruby:1.9 ) ruby_targets_jruby? ( dev-java/jruby ) doc? ( dev-ruby/rake[ruby_targets_ruby18?,ruby_targets_ruby19?,ruby_targets_jruby?] ) test? ( dev-ruby/rake[ruby_targets_ruby18?,ruby_targets_ruby19?,ruby_targets_jruby?] ) test? ( virtual/rubygems[ruby_targets_ruby18?,ruby_targets_ruby19?,ruby_targets_jruby?] )
+!dev-ruby/http-access2 ruby_targets_jruby? ( dev-ruby/jruby-openssl[ruby_targets_jruby?] ) ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ruby19? ( dev-lang/ruby:1.9 ) ruby_targets_jruby? ( dev-java/jruby ) virtual/rubygems[ruby_targets_ruby18?,ruby_targets_ruby19?,ruby_targets_jruby?]
+0
+http://dev.ctor.org/download/httpclient-2.1.5.2.tar.gz
+
+http://dev.ctor.org/http-access2/
+Ruby
+'httpclient' gives something like the functionality of libwww-perl (LWP) in Ruby
+~amd64 ~ia64 ~ppc ~ppc64 ~x86 ~x86-fbsd
+eutils multilib portability ruby-fakegem ruby-ng toolchain-funcs
+ruby_targets_ruby18 ruby_targets_ruby19 ruby_targets_jruby doc test
+
+
+
+2
+
+compile configure install prepare setup test unpack
+
+
+
+
+
