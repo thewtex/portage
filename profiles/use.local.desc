@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5144 2010/01/02 22:47:40 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5151 2010/01/03 23:27:39 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -121,7 +121,7 @@ app-cdr/brasero:cdrtools - Enable app-cdr/cdrtools backend
 app-cdr/brasero:gnome - Enable integration with the gnome-base/gnome desktop (help, session management, etc.)
 app-cdr/brasero:libburn - Enable dev-libs/libburn backend
 app-cdr/brasero:nautilus -  Build gnome-base/nautilus extension
-app-cdr/brasero:totem - Enable support for media-video/totem playlists
+app-cdr/brasero:playlist - Enable support for playlists through dev-libs/totem-pl-parser
 app-cdr/cdrdao:gcdmaster - Enable building of gcdmaster application
 app-cdr/cdrdao:pccts - Use dev-util/pccts instead of the built-in substitution
 app-cdr/cdrkit:hfs - Provide building of HFS (Apple) CD-images
@@ -1338,7 +1338,6 @@ mail-client/nail:net - Enable network support (thus enabling POP, IMAP and SMTP)
 mail-client/pine:largeterminal - Add support for large terminals by doubling the size of pine's internal display buffer
 mail-client/pine:passfile - Adds support for caching IMAP passwords into a file between sessions
 mail-client/squirrelmail:filter - Enable mail-filter/amavisd-new filtering
-mail-filter/MailScanner:bitdefender - Enable usage of bitdefender virus scanner
 mail-filter/MailScanner:exim - Set mail-mta to used MTA
 mail-filter/MailScanner:f-prot - Enable usage of app-antivirus/f-prot virus scanner
 mail-filter/MailScanner:postfix - Set mail-mta/postfix to used MTA
@@ -2818,9 +2817,11 @@ sci-geosciences/gmt:gmthigh - Add high resolution bathymetry database
 sci-geosciences/gmt:gmtsuppl - Supplement functions for GMT
 sci-geosciences/gmt:gmttria - Non GNU triangulation method, more efficient
 sci-geosciences/gpsd:garmin - Enable support for Garmin simple text protocol
+sci-geosciences/gpsd:gpsd_user - Add gpsd user for daemon privileges.
 sci-geosciences/gpsd:minimal - Reduced install set, limited number of devices and client, no X deps
 sci-geosciences/gpsd:ntp - Enable net-misc/ntp shared memory interface and PPS kernel support for GPS time
 sci-geosciences/gpsd:ocean - Enable OceanServer support
+sci-geosciences/gpsd:pl2303 - Enable udev rules for PL2303 USB-serial converter
 sci-geosciences/gpsd:tntc - Enable True North Technologies digital compass support
 sci-geosciences/grass:gdal - Enable support for sci-libs/gdal (Grass 5 only)
 sci-geosciences/grass:gmath - Enable gmath wrapper for BLAS/Lapack (virtual/blas, virtual/lapack)
@@ -3276,9 +3277,14 @@ www-servers/lighttpd:memcache - Enable memcache support for mod_cml and mod_trig
 www-servers/lighttpd:rrdtool - Enable rrdtool support via mod_rrdtool
 www-servers/lighttpd:webdav - Enable webdav properties
 www-servers/nginx:addition - Enables HTTP addition filter module
+www-servers/nginx:aio - Enables file AIO support
 www-servers/nginx:flv - Enables special processing module for flv files
+www-servers/nginx:pop - Enables POP3 proxy support
 www-servers/nginx:random-index - Enables HTTP random index module
+www-servers/nginx:realip - Enables realip module
 www-servers/nginx:securelink - Enable HTTP secure link module
+www-servers/nginx:smtp - Enables SMTP proxy support
+www-servers/nginx:static-gzip - Enables support for gzipping static content
 www-servers/nginx:status - Enables stub_status module
 www-servers/nginx:sub - Enables sub_filter module
 www-servers/nginx:webdav - Enable webdav support

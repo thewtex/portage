@@ -1,6 +1,6 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/teamspeak-server-bin/teamspeak-server-bin-3.0.0_beta11.ebuild,v 1.1 2009/12/29 22:55:37 trapni Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/teamspeak-server-bin/teamspeak-server-bin-3.0.0_beta11.ebuild,v 1.2 2010/01/03 16:11:27 trapni Exp $
 
 # NOTE: The comments in this file are for instruction and documentation.
 # They're not meant to appear with your final, production ebuild.  Please
@@ -39,7 +39,7 @@ src_install() {
 	local dest="${D}/opt/teamspeak3-server"
 
 	mkdir -p "${dest}"
-	cp -R "${WORKDIR}/teamspeak3-server_linux-amd64/"* "${dest}/" || die
+	cp -R "${WORKDIR}/teamspeak3-server_linux-"*/* "${dest}/" || die
 
 	mv "${dest}/ts3server_linux_"* "${dest}/ts3server-bin" || die
 
