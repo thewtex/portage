@@ -1,6 +1,6 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-visualization/fityk/fityk-0.8.9.ebuild,v 1.2 2009/11/13 19:45:45 bicatali Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-visualization/fityk/fityk-0.8.9.ebuild,v 1.3 2010/01/06 03:15:22 bicatali Exp $
 
 EAPI=2
 WX_GTK_VER="2.8"
@@ -49,5 +49,6 @@ src_configure() {
 
 src_install() {
 	emake DESTDIR="${D}" install || die "emake install failed"
+	rm -f "${D}"usr/lib*/python*/site-packages/*.la
 	dodoc NEWS README TODO
 }
