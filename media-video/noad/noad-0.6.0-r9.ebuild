@@ -1,6 +1,6 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/noad/noad-0.6.0-r9.ebuild,v 1.7 2008/10/18 09:55:33 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/noad/noad-0.6.0-r9.ebuild,v 1.8 2010/01/05 20:09:54 hd_brummy Exp $
 
 WANT_AUTOMAKE="latest"
 WANT_AUTOCONF="latest"
@@ -20,6 +20,7 @@ IUSE="ffmpeg imagemagick"
 DEPEND="media-libs/libmpeg2
 	ffmpeg? ( >=media-video/ffmpeg-0.4.8 )
 	imagemagick? ( >=media-gfx/imagemagick-6.2.4.2-r1 )"
+RDEPEND="${DEPEND}"
 
 src_unpack() {
 
