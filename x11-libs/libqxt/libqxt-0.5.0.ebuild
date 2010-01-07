@@ -1,9 +1,9 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/libqxt/libqxt-0.5.0.ebuild,v 1.2 2009/07/13 07:35:29 hwoarang Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/libqxt/libqxt-0.5.0.ebuild,v 1.3 2010/01/06 13:03:49 hwoarang Exp $
 
 EAPI=2
-inherit eutils qt4
+inherit eutils qt4-r2
 
 DESCRIPTION="The Qt eXTension library provides cross-platform utility classes for the Qt toolkit"
 HOMEPAGE="http://libqxt.org/"
@@ -27,6 +27,8 @@ PATCHES=(
 	"${FILESDIR}/libqxt-0.5.0-gcc4.4.patch"
 )
 
+DOCS="AUTHORS README LICENSE cpl1.0.txt"
+
 src_configure() {
 	local myconf
 	myconf="-prefix /usr \
@@ -45,15 +47,8 @@ src_configure() {
 	./configure ${myconf} || die "configure failed"
 }
 
-#src_compile() {
-#	# parallel compilation fails, bug #194730
-#	emake -j1 || die "make failed"
-#}
-
 src_install() {
-	emake INSTALL_ROOT="${D}" install || die "emake install failed"
-	dodoc {AUTHORS,README,LICENSE,cpl1.0.txt}
-
+	qt4-r2_src_install
 	if use doc; then
 		doxygen Doqsyfile
 		dohtml -r deploy/docs/*
