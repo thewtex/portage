@@ -1,6 +1,28 @@
 # ChangeLog for net-misc/asterisk
-# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/asterisk/ChangeLog,v 1.237 2009/12/27 09:41:51 josejx Exp $
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/asterisk/ChangeLog,v 1.240 2010/01/05 03:59:58 josejx Exp $
+
+  05 Jan 2010; Joseph Jezak <josejx@gentoo.org> -asterisk-1.2.35.ebuild,
+  asterisk-1.2.37.ebuild:
+  Marked ppc stable for bug #295270. Removed 1.2.35 as directed by the same
+  bug.
+
+*asterisk-1.6.2.0 (04 Jan 2010)
+
+  04 Jan 2010; <chainsaw@gentoo.org> +asterisk-1.6.2.0.ebuild,
+  +files/1.6.2/asterisk-1.6.2.0-bt-line-test.patch:
+  Version bump to new branch. Rundir patch no longer required, upstream now
+  follows our convention. ODBC disable flag has vanished, dropped USE-flag.
+  BT line test patch rebased as it it still not upstream.
+
+*asterisk-1.6.1.12-r1 (04 Jan 2010)
+
+  04 Jan 2010; <chainsaw@gentoo.org> -asterisk-1.6.1.11.ebuild,
+  -asterisk-1.6.1.12.ebuild, +asterisk-1.6.1.12-r1.ebuild,
+  -files/1.6.1/asterisk-1.6.1.12-parallel-make.patch,
+  +files/1.6.1/asterisk-1.6.1.12-parallel-make-v2.patch:
+  Update parallel make patchset as it broke for USE=keepsrc with make clean.
+  An anonymous source on IRC pointed this out.
 
   27 Dec 2009; Joseph Jezak <josejx@gentoo.org> asterisk-1.2.36.ebuild:
   Marked ppc stable for bug #284892.
