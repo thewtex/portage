@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11056 2010/01/06 06:22:00 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11062 2010/01/07 00:36:45 flameeyes Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,25 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (07 Jan 2010)
+#  on behalf of QA team
+#
+# Fails to fetch, bug #228929, open June 2008, still not
+# fixed.
+#
+# Removal on 2010-03-08
+dev-java/jrockit-jdk-bin
+
+# Rémi Cardona <remi@gentoo.org> (07 Jan 2010)
+# requires KMS and needs kernel patches before it can be unmasked
+# see bug #299907
+=x11-drivers/xf86-video-intel-2.10.0
+
+# Patrick Lauer <patrick@gentoo.org> (06 Jan 2010)
+# New xen kernel needs more testing. Use 2.6.18 if you can.
+=sys-kernel/xen-sources-2.6.31*
+=sys-kernel/xen-sources-2.6.29*
 
 # Diego E. Pettenò <flameeyes@gentoo.org> (05 Jan 2010)
 #
@@ -90,14 +109,6 @@ net-p2p/qtella
 # Masking pending removal in 30 days
 # Qt3 app, bug 283429, last release almost 8 years ago
 app-doc/dox
-
-# Samuli Suominen <ssuominen@gentoo.org> (03 Jan 2010)
-# Orphaned libraries with several open bugs, see
-# 299365 and depending bugs.
-# Masked for removal
-=x11-libs/qwtplot3d-0.2.6*
-x11-libs/qwtplot3d-qt3
-x11-libs/qwt-qt3
 
 # Samuli Suominen <ssuominen@gentoo.org> (03 Jan 2010)
 # Masked for Security bug #253822. Other bugs 195614,
@@ -1136,12 +1147,6 @@ media-libs/realcodecs
 # under development
 gnome-extra/gnome-lirc-properties
 
-# Michael Marineau <marineam@gentoo.org> (03 Sep 2008)
-# Unmaintained and out of date security wise,
-# Please use 2.6.18 instead if it supports your hardware.
-=sys-kernel/xen-sources-2.6.20*
-=sys-kernel/xen-sources-2.6.21*
-
 # Raúl Porcel <armin76@gentoo.org> (1 Aug 2008)
 # This is just for preview
 >=www-client/seamonkey-bin-2.0_alpha1
@@ -1180,10 +1185,6 @@ dev-cpp/bakery
 # Masked for testing
 #>=mail-client/mozilla-thunderbird-3.0_alpha1
 >=mail-client/mozilla-thunderbird-bin-3.0_alpha1
-
-# Hanno Boeck <hanno@gentoo.org> (31 Mar 2008)
-# As 1.3.3.x became a stable series and 1.3.4 has crash issues, mask it for now.
-=app-office/scribus-1.3.4-r1
 
 # Chris Gianelloni <wolf31o2@gentoo.org> (3 Mar 2008)
 # Masking due to security bug #194607 and security bug #204067
