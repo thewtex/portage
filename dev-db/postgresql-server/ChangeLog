@@ -1,6 +1,29 @@
 # ChangeLog for dev-db/postgresql-server
-# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/postgresql-server/ChangeLog,v 1.35 2009/12/14 18:57:33 patrick Exp $
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-db/postgresql-server/ChangeLog,v 1.39 2010/01/07 01:29:42 patrick Exp $
+
+  07 Jan 2010; Patrick Lauer <patrick@gentoo.org>
+  postgresql-server-7.4.27.ebuild:
+  Adding abort for tests run as root, behaviour has changed upstream.
+
+*postgresql-server-7.4.27 (07 Jan 2010)
+
+  07 Jan 2010; Patrick Lauer <patrick@gentoo.org>
+  +postgresql-server-7.4.27.ebuild, +files/postgresql-7.4.27-autoconf.patch:
+  Bump
+
+*postgresql-server-8.4.2-r1 (07 Jan 2010)
+
+  07 Jan 2010; Patrick Lauer <patrick@gentoo.org>
+  +postgresql-server-8.4.2-r1.ebuild:
+  Fix autovacuum message and do a revision bump to force rebuilding against
+  changed postgresql-base ebuild
+
+  06 Jan 2010; Patrick Lauer <patrick@gentoo.org> files/postgresql.init-7.3,
+  files/postgresql.init-7.4, files/postgresql.init-8.0,
+  files/postgresql.init-8.1, files/postgresql.init-8.2,
+  files/postgresql.init-8.3, files/postgresql.init-8.4:
+  Fixing init script sourcing for non-bash shells, #298490
 
 *postgresql-server-8.4.2 (14 Dec 2009)
 *postgresql-server-8.3.9 (14 Dec 2009)
