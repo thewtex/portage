@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5158 2010/01/07 00:27:50 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5168 2010/01/08 02:44:35 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -690,8 +690,6 @@ dev-games/crystalspace:ode - include support for Open Dynamics Engine
 dev-games/guichan:allegro - Build the Allegro frontend
 dev-games/ode:double-precision - more precise calculations at the expense of speed
 dev-games/ode:gyroscopic - enable gyroscopic term (may cause instability)
-dev-games/ode:nogyroscopic - disable gyroscopic term maybe improving stability
-dev-games/ode:noopcode - disable OPCODE (trimesh support)
 dev-games/ogre:cegui - build the CEGUI samples
 dev-games/ogre:cg - NVIDIA toolkit plugin
 dev-games/ogre:devil - image loading support with DevIL
@@ -1696,6 +1694,7 @@ media-libs/sdl-mixer:midi - basic support for MIDI files
 media-libs/sdl-mixer:wav - support WAVE files
 media-libs/sdl-sound:physfs - Enable physfs support
 media-libs/sge:image - enable sdl-image support
+media-libs/silgraphite:pango - Enables the pango-graphite pango module.
 media-libs/spandsp:fixed-point - Enable fixed point support
 media-libs/spandsp:sse3 - Enable SSE3 support
 media-libs/spandsp:sse4 - Enable SSE4 support
@@ -1784,7 +1783,6 @@ media-radio/xastir:geotiff - Install geotiff support. Allows using USGS DRG topo
 media-sound/abcde:id3 - Support ID3, ID3v2 tagging of audio files
 media-sound/abcde:normalize - Add support for normalizing audio file volume levels
 media-sound/abcde:replaygain - Support for Replay Gain metadata, for relative volume adjustment
-media-sound/alsa-tools:midi - Build the sequencer (midi) utilities
 media-sound/alsaplayer:id3tag - Enables ID3 tagging with id3tag library
 media-sound/amarok:daap -  Enable the scripts for music sharing through DAAP. This flag adds dependencies on www-servers/mongrel to allow sharing of the Amarok music collection through DAAP protocol. Please note that turning this flag off has no effect on DAAP browsing. 
 media-sound/amarok:embedded -  Use libmysqld, MySQL embedded server library. Try disabling this if you encounter -PIC related in amarok, it will make amarok rely only on standalone MySQL server. 
@@ -2847,6 +2845,10 @@ net-nntp/inn:innkeywords - Enable automatic keyword generation support
 net-nntp/inn:inntaggedhash - Use tagged hash table for history (disables large file support)
 net-nntp/nzbget:parcheck - Enable support for checking PAR archives
 net-nntp/slrn:uudeview - Add support for yEnc coding and more using dev-libs/uulib
+net-nntp/tin:cancel-locks - Enable CancelLock functionality
+net-nntp/tin:etiquette - Enable the display off posting etiquettes
+net-nntp/tin:evil - Let tin generate a message ID
+net-nntp/tin:forgery - Cancel messages posted from a different account
 net-p2p/amule:daemon - Enable amule daemon
 net-p2p/amule:remote - Enable remote controlling of the client
 net-p2p/amule:stats - Enable statistic reporting
@@ -3106,6 +3108,12 @@ sci-mathematics/freemat:arpack - Add sparse eigen value support via sci-libs/arp
 sci-mathematics/freemat:ffcall - Enable use of dev-libs/ffcall
 sci-mathematics/freemat:umfpack - Add sparse solving via sci-libs/umfpack
 sci-mathematics/freemat:volpack - Add volume rendering via media-libs/volpack
+sci-mathematics/fricas:clisp - Add support for GNU CLISP (dev-lisp/clisp)
+sci-mathematics/fricas:clozurecl - Add support for Clozure Common Lisp (dev-lisp/closurecl)
+sci-mathematics/fricas:cmucl - Add support for CMU Common Lisp (dev-lisp/cmucl)
+sci-mathematics/fricas:ecl - Add support for Embeddable Common Lisp (dev-lisp/ecls)
+sci-mathematics/fricas:gcl - Add support for GNU Common Lisp (dev-lisp/gcl)
+sci-mathematics/fricas:sbcl - Add support for Steel Bank Common Lisp (dev-lisp/sbcl)
 sci-mathematics/geomview:avg - Enable experimental motion averaging technique
 sci-mathematics/geomview:netpbm - Add media-libs/netpbm support for external modules
 sci-mathematics/gretl:sourceview - Enable support for x11-libs/gtksourceview 
@@ -3144,6 +3152,7 @@ sci-physics/geant:vrml - Enable output of geant4 in vrml formats
 sci-physics/hepmc:cm - Build with cm instead of default mm for length units
 sci-physics/hepmc:gev - Build with GeV instead of default MeV for momentum units
 sci-physics/lhapdf:data - Install all Parton Density Function data sets system-wide
+sci-physics/lhapdf:octave - Add bindings for sci-mathematics/octave
 sci-physics/pythia:hepmc - Adds support for High Energy Physics Monte Carlo Generators sci-physics/hepmc
 sci-physics/root:cern - Build the HBOOK input/ouput functionality, needs fortran or sci-physics/cernlib
 sci-physics/root:cint7 - Build the *experimental* new C++ interpretor CINT7
@@ -3230,6 +3239,7 @@ sys-block/gparted:dmraid - Support for dmraid devices, also known as ATA-RAID, o
 sys-block/gparted:fat - Include FAT16/FAT32 support (sys-fs/dosfstools) 
 sys-block/gparted:hfs - Include HFS support (sys-fs/hfsutils)
 sys-block/gparted:jfs - Include JFS support (sys-fs/jfsutils)
+sys-block/gparted:mdadm - Support for Linux software RAID.
 sys-block/gparted:ntfs - Include NTFS support (sys-fs/ntfsprogs)
 sys-block/gparted:reiser4 - Include ReiserFS4 support (sys-fs/reiser4progs)
 sys-block/gparted:reiserfs - Include ReiserFS support (sys-fs/reiserfsprogs)
