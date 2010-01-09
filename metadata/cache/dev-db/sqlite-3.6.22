@@ -1,0 +1,22 @@
+icu? ( dev-libs/icu ) readline? ( sys-libs/readline ) tcl? ( dev-lang/tcl ) test? ( dev-lang/tcl ) doc? ( app-arch/unzip )
+icu? ( dev-libs/icu ) readline? ( sys-libs/readline ) tcl? ( dev-lang/tcl )
+3
+tcl? ( http://www.sqlite.org/sqlite-3.6.22.tar.gz ) !tcl? ( test? ( http://www.sqlite.org/sqlite-3.6.22.tar.gz ) !test? ( http://www.sqlite.org/sqlite-amalgamation-3.6.22.tar.gz ) ) doc? ( http://www.sqlite.org/sqlite_docs_3_6_22.zip )
+
+http://www.sqlite.org/
+as-is
+an SQL Database Engine in a C Library
+~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd
+eutils flag-o-matic multilib portability toolchain-funcs versionator
+debug doc +fts3 icu +readline soundex tcl +threadsafe test
+
+
+
+2
+
+compile configure install prepare test
+
+
+
+
+

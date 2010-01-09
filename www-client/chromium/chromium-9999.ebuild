@@ -1,6 +1,6 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/chromium-9999.ebuild,v 1.14 2009/12/25 18:10:23 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/chromium-9999.ebuild,v 1.16 2010/01/07 18:46:48 phajdan.jr Exp $
 
 EAPI="2"
 inherit eutils multilib toolchain-funcs subversion
@@ -90,8 +90,8 @@ src_prepare() {
 	sed -i "s/'-Werror'/''/" build/common.gypi || die "Werror sed failed"
 	# Prevent automatic -march=pentium4 -msse2 enabling on x86, http://crbug.com/9007
 	epatch "${FILESDIR}"/${PN}-drop_sse2.patch
-	# Add configuration flag to use system libevent
-	epatch "${FILESDIR}"/${PN}-use_system_libevent-1.4.13.patch
+	# Fix native build on ARM, http://crbug.com/31274
+	epatch "${FILESDIR}"/${PN}-drop_armel_m32.patch
 
 	# Disable prefixing to allow linking against system zlib
 	sed -e '/^#include "mozzconf.h"$/d' \
@@ -131,7 +131,7 @@ EOF
 	fi
 
 	if use arm; then
-		myconf="${myconf} -Dtarget_arch=arm -Ddisable_nacl=1 -Dv8_use_snapshot=false -Dlinux_use_tcmalloc=0"
+		myconf="${myconf} -Dtarget_arch=arm -Ddisable_nacl=1 -Dlinux_use_tcmalloc=0"
 	fi
 
 	if [[ "$(gcc-major-version)$(gcc-minor-version)" == "44" ]]; then
