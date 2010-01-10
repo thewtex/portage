@@ -1,5 +1,5 @@
-!sys-apps/pcmcia-cs-cis !sys-apps/pcmcia-cs-pnptools X? ( x11-libs/libX11 x11-libs/libXpm x11-libs/libXaw gtk? ( =x11-libs/gtk+-2* ) xforms? ( x11-libs/xforms ) ) dev-util/pkgconfig virtual/linux-sources >=sys-apps/sed-4 kernel_linux? ( virtual/linux-sources )
-!sys-apps/pcmcia-cs-cis !sys-apps/pcmcia-cs-pnptools X? ( x11-libs/libX11 x11-libs/libXpm x11-libs/libXaw gtk? ( =x11-libs/gtk+-2* ) xforms? ( x11-libs/xforms ) )
+!sys-apps/pcmcia-cs-cis !sys-apps/pcmcia-cs-pnptools X? ( x11-libs/libX11 x11-libs/libXpm x11-libs/libXaw gtk? ( =x11-libs/gtk+-2* ) xforms? ( x11-libs/xforms ) ) dev-util/pkgconfig virtual/linux-sources >=sys-apps/sed-4 kernel_linux? ( virtual/linux-sources ) kernel_linux? ( virtual/modutils ) sys-apps/sed kernel_linux? ( virtual/linux-sources )
+!sys-apps/pcmcia-cs-cis !sys-apps/pcmcia-cs-pnptools X? ( x11-libs/libX11 x11-libs/libXpm x11-libs/libXaw gtk? ( =x11-libs/gtk+-2* ) xforms? ( x11-libs/xforms ) ) kernel_linux? ( virtual/modutils )
 0
 mirror://sourceforge/pcmcia-cs/pcmcia-cs-3.2.8.tar.gz
 
@@ -7,14 +7,14 @@ http://pcmcia-cs.sourceforge.net
 GPL-2
 PCMCIA tools for Linux
 amd64 arm ppc sh x86
-eutils flag-o-matic linux-info multilib portability toolchain-funcs versionator
-gtk vanilla trusted X xforms
+eutils flag-o-matic linux-info linux-mod multilib portability toolchain-funcs versionator
+gtk vanilla trusted X xforms kernel_linux
 
 
 
 
 
-compile install setup unpack
+compile install postinst postrm preinst setup unpack
 
 
 
