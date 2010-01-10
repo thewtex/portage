@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/texlive-common.eclass,v 1.10 2010/01/08 15:19:20 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/texlive-common.eclass,v 1.12 2010/01/09 16:03:22 aballier Exp $
 
 # @ECLASS: texlive-common.eclass
 # @MAINTAINER:
@@ -30,8 +30,8 @@ texlive-common_handle_config_files() {
 	# Handle config files properly
 	[ -d "${D}${TEXMF_PATH}" ] || return
 	cd "${D}${TEXMF_PATH}"
-	for f in $(find . -name '*.cnf' -o -name '*.cfg' -type f | sed -e "s:\./::g") ; do
-		if [ "${f#*config}" != "${f}" ] ; then
+	for f in $(find . -name '*.cnf' -type f -o -name '*.cfg' -type f | sed -e "s:\./::g") ; do
+		if [ "${f#*config}" != "${f}" -o "${f#doc}" != "${f}" ] ; then
 			continue
 		fi
 		dodir /etc/texmf/$(dirname ${f}).d
