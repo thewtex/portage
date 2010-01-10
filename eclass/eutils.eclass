@@ -221,17 +221,10 @@ epatch() {
 
 		# Let people filter things dynamically
 		if [[ -n ${EPATCH_EXCLUDE} ]] ; then
-			# let people use globs in the exclude
-			eshopts_push -o noglob
-
-			local ex
-			for ex in ${EPATCH_EXCLUDE} ; do
-				if [[ ${patchname} == ${ex} ]] ; then
-					eshopts_pop
-					continue
-				fi
-			done
-			eshopts_pop
+			if [ "${EPATCH_EXCLUDE/${patchname}}" != "${EPATCH_EXCLUDE}" ]
+			then
+				continue
+			fi
 		fi
 
 		if [[ ${SINGLE_PATCH} == "yes" ]] ; then
