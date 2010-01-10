@@ -1,8 +1,8 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/postgresql-server/postgresql-server-8.4.2-r1.ebuild,v 1.3 2010/01/07 17:01:48 fauli Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/postgresql-server/postgresql-server-8.4.2-r1.ebuild,v 1.5 2010/01/09 19:04:31 patrick Exp $
 
-EAPI="1"
+EAPI="2"
 
 # weird test failures.
 RESTRICT="test"
@@ -23,7 +23,7 @@ IUSE_LINGUAS="
 	linguas_hr linguas_hu linguas_it linguas_ko linguas_nb linguas_pl
 	linguas_pt_BR linguas_ro linguas_ru linguas_sk linguas_sl linguas_sv
 	linguas_tr linguas_zh_CN linguas_zh_TW"
-IUSE="doc perl python selinux tcl uuid xml nls kernel_linux ${IUSE_LINGUAS}"
+IUSE="pg_legacytimestamp doc perl python selinux tcl uuid xml nls kernel_linux ${IUSE_LINGUAS}"
 
 wanted_languages() {
 	for u in ${IUSE_LINGUAS} ; do
@@ -31,7 +31,7 @@ wanted_languages() {
 	done
 }
 
-RDEPEND="~dev-db/postgresql-base-${PV}:${SLOT}
+RDEPEND="~dev-db/postgresql-base-${PV}:${SLOT}[pg_legacytimestamp=]
 	perl? ( >=dev-lang/perl-5.6.1-r2 )
 	python? ( >=dev-lang/python-2.2 dev-python/egenix-mx-base )
 	selinux? ( sec-policy/selinux-postgresql )
@@ -50,10 +50,7 @@ pkg_setup() {
 	enewuser postgres 70 /bin/bash /var/lib/postgresql postgres
 }
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-
+src_prepare() {
 	epatch "${FILESDIR}/postgresql-${SLOT}-common.patch" \
 		"${FILESDIR}/postgresql-${SLOT}-server.patch"
 
@@ -143,6 +140,11 @@ pkg_postinst() {
 	elog "The autovacuum function, which was in contrib, has been moved to the main"
 	elog "PostgreSQL functions starting with 8.1 and starting with 8.4 is now"
 	elog "enabled by default. You can disable it in the cluster's postgresql.conf."
+	elog
+	elog "The timestamp format is 64bit integers now. If you upgrade from older databases"
+	elog "this may force you to either do a dump and reload or enable pg_legacytimestamp"
+	elog "until you find time to do so. If the database can't start please try enabling"
+	elog "pg_legacytimestamp and rebuild."
 }
 
 pkg_postrm() {

@@ -1,4 +1,4 @@
-ffmpeg? ( >=media-video/ffmpeg-0.5 ) gtk? ( x11-libs/gtk+ x11-libs/gtkglext ) readline? ( sys-libs/readline ) virtual/opengl media-libs/glew sys-libs/ncurses
+ffmpeg? ( >=media-video/ffmpeg-0.5 ) gtk? ( x11-libs/gtk+ x11-libs/gtkglext ) readline? ( sys-libs/readline ) virtual/opengl media-libs/glew sys-libs/ncurses =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool
 ffmpeg? ( >=media-video/ffmpeg-0.5 ) gtk? ( x11-libs/gtk+ x11-libs/gtkglext ) readline? ( sys-libs/readline ) virtual/opengl media-libs/glew sys-libs/ncurses
 0
 mirror://sourceforge/bugle/bugle-0.0.20090801.tar.bz2
@@ -7,14 +7,14 @@ http://www.opengl.org/sdk/tools/BuGLe/
 GPL-2
 A tool for OpenGL debugging
 ~amd64 ~x86
-multilib toolchain-funcs
+autotools eutils libtool multilib portability toolchain-funcs
 ffmpeg gtk readline
 
 
 
 2
 
-configure install postinst
+configure install postinst prepare
 
 
 
