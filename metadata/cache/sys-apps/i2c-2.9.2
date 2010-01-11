@@ -1,5 +1,5 @@
-kernel_linux? ( virtual/linux-sources )
-
+kernel_linux? ( virtual/linux-sources ) kernel_linux? ( virtual/modutils ) sys-apps/sed kernel_linux? ( virtual/linux-sources )
+kernel_linux? ( virtual/modutils )
 0
 http://dl.lm-sensors.org/i2c/releases/i2c-2.9.2.tar.gz
 
@@ -7,14 +7,14 @@ http://www.lm-sensors.org/
 GPL-2
 I2C Bus kernel modules for linux-2.4.x
 -amd64 -ppc x86
-eutils linux-info multilib portability toolchain-funcs versionator
+eutils linux-info linux-mod multilib portability toolchain-funcs versionator
+kernel_linux
 
 
 
 
 
-
-compile install setup unpack
+compile install postinst postrm preinst setup unpack
 
 
 

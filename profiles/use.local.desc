@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5168 2010/01/08 02:44:35 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5176 2010/01/10 01:07:40 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -506,6 +506,7 @@ app-office/grisbi:print - Enable printing support
 app-office/imposter:iksemel - Enable external dev-libs/iksemel parsing support
 app-office/karbon:pstoedit - Build support for PDF and PS import.
 app-office/karbon:wpg - Build wordperfect image support.
+app-office/kmymoney:quotes - Enable Online Stock Quote retrieval
 app-office/krita:gmm - Enable library for sparse, dense and skyline matrices.
 app-office/krita:kdcraw - Enable KDE image manipulating interface.
 app-office/kspread:solver - Use solver extension for solving lingebra and others.
@@ -666,6 +667,7 @@ dev-db/postgis:proj - Add the sci-libs/proj library for reprojection features
 dev-db/postgresql:pg-intdatetime - Enable --enable-integer-datetimes configure option, which changes PG to use 64-bit integers for timestamp storage
 dev-db/postgresql-base:pg-intdatetime - Enable --enable-integer-datetimes configure option, which changes PG to use 64-bit integers for timestamp storage
 dev-db/postgresql-base:pg_legacytimestamp - Use double precision floating-point numbers instead of 64-bit integers for timestamp storage. 
+dev-db/postgresql-server:pg_legacytimestamp - Use double precision floating-point numbers instead of 64-bit integers for timestamp storage. 
 dev-db/postgresql-server:uuid - Enable server side UUID generation (via dev-libs/ossp-uuid)
 dev-db/sqlite:fts3 - Full text search using the fts3 module
 dev-db/sqlite:soundex - Enable the soundex function to compute soundex encodings of strings
@@ -1117,6 +1119,7 @@ games-action/d1x-rebirth:mixer - Enable mixer support
 games-action/d1x-rebirth:mpu401 - Enable MPU401 music support
 games-action/d2x-rebirth:awe32 - Enable AWE32 support
 games-action/d2x-rebirth:mpu401 - Enable MPU401 music support
+games-action/openlierox:breakpad -  Compile with support for breakpad crash reporting system 
 games-action/xshipwars:yiff - Add support for the YIFF sound server
 games-arcade/bomns:editor - enables building the level editor
 games-arcade/jumpnbump:music - Enable playing of background music
@@ -1330,7 +1333,6 @@ kde-base/gwenview:kipi - Support for the KDE Image Plugin Interface.
 kde-base/kaddressbook:gnokii - Address synchronization with mobile phones via app-mobilephone/gnokii
 kde-base/kalzium:editor - Enable the embedded molecule editor/viewer
 kde-base/kalzium:solver - Enable the equation solver
-kde-base/kcontrol:logitech-mouse -  Build the Control Center module to configure logitech mice 
 kde-base/kdeadmin-meta:lilo - Install lilo-config, a frontend for the lilo boot loader
 kde-base/kdeartwork-kscreensaver:eigen - Enable various aritmethic screensavers which use Eigen2 for computations.
 kde-base/kdebase-kioslaves:lzma - Enable lzma support
@@ -1339,9 +1341,7 @@ kde-base/kdebindings-csharp:phonon - Compile bindings for media-sound/phonon.
 kde-base/kdebindings-csharp:plasma - Compile bindings for kde's plasma.
 kde-base/kdebindings-csharp:qscintilla - Compile bindings for x11-libs/qscintilla.
 kde-base/kdebindings-csharp:webkit - Compile bindings for x11-libs/webkit.
-kde-base/kdelibs:legacyssl - Support for some deprecated ciphers. Don't use this flag unless you really need it
 kde-base/kdelibs:lzma - Enable lzma support
-kde-base/kdelibs:utempter - Records user logins. Useful on multi-user systems
 kde-base/kdeplasma-addons:desktopglobe - Enable Desktop Globe wallpaper using kde-base/marble.
 kde-base/kdeutils-meta:floppy - Install kfloppy to format and create DOS or ext2fs filesystems in a floppy.
 kde-base/kdm:consolekit - Enables support for authorization using consolekit
@@ -1906,7 +1906,6 @@ media-sound/rezound:soundtouch - compile with support for soundtouch
 media-sound/rhythmbox:brasero - Enable CD burning via app-cdr/brasero rather than gnome-extra/nautilus-cd-burner
 media-sound/rhythmbox:daap - Enable support for local network music sharing via daap
 media-sound/rhythmbox:udev - Enable hardware detection via sys-fs/udev replacing the deprecated sys-apps/hal code.
-media-sound/rosegarden:dssi - Enable support for DSSI Soft Synth Interface
 media-sound/rubyripper:cli - Build command line interface rubyripper
 media-sound/rubyripper:normalize - Add support for normalizing audio file volume levels
 media-sound/rubyripper:wav - Add support for wavegain
@@ -2845,7 +2844,7 @@ net-nntp/inn:innkeywords - Enable automatic keyword generation support
 net-nntp/inn:inntaggedhash - Use tagged hash table for history (disables large file support)
 net-nntp/nzbget:parcheck - Enable support for checking PAR archives
 net-nntp/slrn:uudeview - Add support for yEnc coding and more using dev-libs/uulib
-net-nntp/tin:cancel-locks - Enable CancelLock functionality
+net-nntp/tin:cancel-locks - Enable Cancel-Lock header functionality (also enables USE=evil)
 net-nntp/tin:etiquette - Enable the display off posting etiquettes
 net-nntp/tin:evil - Let tin generate a message ID
 net-nntp/tin:forgery - Cancel messages posted from a different account
@@ -3151,7 +3150,6 @@ sci-physics/geant:raytracerx - Enable raytracing for physics events
 sci-physics/geant:vrml - Enable output of geant4 in vrml formats
 sci-physics/hepmc:cm - Build with cm instead of default mm for length units
 sci-physics/hepmc:gev - Build with GeV instead of default MeV for momentum units
-sci-physics/lhapdf:data - Install all Parton Density Function data sets system-wide
 sci-physics/lhapdf:octave - Add bindings for sci-mathematics/octave
 sci-physics/pythia:hepmc - Adds support for High Energy Physics Monte Carlo Generators sci-physics/hepmc
 sci-physics/root:cern - Build the HBOOK input/ouput functionality, needs fortran or sci-physics/cernlib
@@ -3173,6 +3171,8 @@ sci-visualization/opendx:cdf - Add support for sci-libs/cdf data exchange format
 sci-visualization/opendx:hdf - Add support for the Hierarchical Data Format (sci-libs/hdf)
 sci-visualization/paraview:boost - Enable the usage of dev-libs/boost
 sci-visualization/paraview:plugins - Build and install additional plugins
+sci-visualization/qtiplot:ods - Import support for OpenOffice .ods sheets
+sci-visualization/qtiplot:xls - Import support for Microsoft office excel sheets
 sci-visualization/veusz:fits - Add FITS format via dev-python/pyfits
 sec-policy/selinux-base-policy:open_perms - Enable the open permissions for file object classes (SELinux policy capability).
 sec-policy/selinux-base-policy:peer_perms - Enable the labeled networking peer permissions (SELinux policy capability).

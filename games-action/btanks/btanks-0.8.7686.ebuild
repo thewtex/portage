@@ -1,6 +1,6 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-action/btanks/btanks-0.8.7686.ebuild,v 1.10 2009/11/23 01:37:57 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-action/btanks/btanks-0.8.7686.ebuild,v 1.11 2010/01/09 17:39:33 tupone Exp $
 
 EAPI=2
 inherit eutils games

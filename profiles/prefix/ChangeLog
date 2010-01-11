@@ -1,6 +1,24 @@
 # ChangeLog for profiles/prefix
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/ChangeLog,v 1.134 2010/01/07 22:18:45 fauli Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/ChangeLog,v 1.139 2010/01/09 23:38:33 fauli Exp $
+
+  09 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  -bsd/freebsd/8.0/x86/use.mask:
+  X support is now possible so unmask USE flag
+
+  09 Jan 2010; Christian Faulhammer <fauli@gentoo.org> package.use.mask:
+  mask m17n-lib and hesiod USE flags for GNU Emacs
+
+  08 Jan 2010; Jeremy Olexa <darkside@gentoo.org> package.use.mask:
+  Fix typo and add more comment description
+
+  08 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  +bsd/freebsd/8.0/x86/use.mask:
+  Mask X USE flag on FreeBSD due to missing keywords
+
+  08 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  bsd/freebsd/8.0/package.mask:
+  mask GCC 4.4 and onwards, does not compile currently on FreeBSD
 
   07 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
   bsd/freebsd/8.0/package.mask:

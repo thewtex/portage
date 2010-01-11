@@ -1,6 +1,6 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/freewnn/freewnn-1.1.1_alpha21-r1.ebuild,v 1.1 2009/12/31 14:54:59 matsuu Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/freewnn/freewnn-1.1.1_alpha21-r1.ebuild,v 1.3 2010/01/09 15:50:11 fauli Exp $
 
 inherit eutils
 
@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge.jp/freewnn/17724/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc x86"
 IUSE="X ipv6"
 
 DEPEND="X? ( x11-libs/libX11 x11-libs/libXmu x11-libs/libXt )"
@@ -26,7 +26,9 @@ src_unpack() {
 
 	cd "${S}"
 	#Change WNNOWNER to root so we don't need to add wnn user
-	sed -i -e "s/WNNOWNER = wnn/WNNOWNER = root/" makerule.mk.in || die
+	# and disable stripping of binary files
+	sed -i -e "s/WNNOWNER = wnn/WNNOWNER = root/" \
+		-e "s/@INSTPGMFLAGS@//" makerule.mk.in || die
 	# bug #298744
 	epatch "${FILESDIR}/${P}-as-needed.patch"
 }
@@ -38,15 +40,15 @@ src_compile() {
 		--without-termcap \
 		$(use_with X x) \
 		$(use_with ipv6) \
-		|| die "./configure failed"
+		|| die
 	emake -j1 || die
 }
 
 src_install() {
 	# install executables, libs ,dictionaries
-	emake DESTDIR="${D}" install || die "installation failed"
+	emake DESTDIR="${D}" install || die
 	# install man pages
-	emake DESTDIR="${D}" install.man || die "installation of manpages failed"
+	emake DESTDIR="${D}" install.man || die
 	# install docs
 	dodoc ChangeLog* CONTRIBUTORS
 	# install rc script

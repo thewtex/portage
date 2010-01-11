@@ -1,6 +1,6 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tex/pdftex/pdftex-1.40.10.ebuild,v 1.2 2009/12/12 12:27:23 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-tex/pdftex/pdftex-1.40.10.ebuild,v 1.4 2010/01/09 14:37:42 aballier Exp $
 
 inherit libtool toolchain-funcs eutils multilib
 
@@ -17,6 +17,7 @@ IUSE=""
 RDEPEND=">=virtual/poppler-0.11.3
 	media-libs/libpng
 	sys-libs/zlib
+	virtual/tex-base
 	app-admin/eselect-pdftex"
 DEPEND="${RDEPEND}
 	dev-util/pkgconfig"
@@ -35,6 +36,10 @@ src_compile() {
 	# that don't have the same alphabetical order than ascii. Bug #293199
 	# So we set LC_ALL to C in order to avoid problems.
 	export LC_ALL=C
+
+	local myconf
+	myconf=""
+	has_version '>=app-text/texlive-core-2009' && myconf="--with-system-kpathsea"
 
 	econf \
 		--disable-cxx-runtime-hack	\
@@ -102,7 +107,8 @@ src_compile() {
 		--with-system-xpdf			\
 		--with-system-zlib			\
 		--with-system-pnglib		\
-		--disable-multiplatform
+		--disable-multiplatform		\
+		${myconf}
 
 	emake SHELL=/bin/sh || die
 }
