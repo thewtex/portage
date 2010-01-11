@@ -1,6 +1,6 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-block/di/di-4.13.ebuild,v 1.5 2009/04/23 19:36:43 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-block/di/di-4.13.ebuild,v 1.6 2010/01/10 14:11:34 flameeyes Exp $
 
 inherit toolchain-funcs
 
@@ -18,7 +18,10 @@ RDEPEND=""
 
 src_compile() {
 	tc-export CC
-	SHELL=/bin/bash prefix="${D}" ${SHELL} ./Build || die
+	# execute it _with bash_; setting SHELL=/bin/bash ${SHELL} won't
+	# work because the command is interpreted _before_ the SHELL is
+	# set. And this does not work properly as a standard sh script.
+	SHELL=/bin/bash prefix="${D}" bash ./Build || die
 }
 
 src_install() {
