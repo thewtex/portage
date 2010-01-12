@@ -1,6 +1,6 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/qrupdate/qrupdate-1.0.1.ebuild,v 1.6 2009/12/26 15:43:45 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/qrupdate/qrupdate-1.0.1.ebuild,v 1.7 2010/01/12 05:16:13 markusle Exp $
 
 EAPI="2"
 
