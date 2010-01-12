@@ -1,18 +1,16 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-nntp/inn/inn-2.5.0.ebuild,v 1.1 2009/07/25 15:16:14 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-nntp/inn/inn-2.5.0.ebuild,v 1.4 2010/01/12 02:27:45 jer Exp $
 
 EAPI="2"
 
-WANT_AUTOCONF="2.1"
-
-inherit fixheadtails ssl-cert eutils multilib libtool autotools
+inherit autotools eutils fixheadtails multilib ssl-cert
 
 # they fail since 2.4.x, so ...
-RESTRICT="test"
+#RESTRICT="test"
 
 DESCRIPTION="The Internet News daemon, fully featured NNTP server"
-HOMEPAGE="http://www.isc.org/products/INN"
+HOMEPAGE="https://www.isc.org/software/inn"
 SRC_URI="ftp://ftp.isc.org/isc/inn/${P}.tar.gz"
 
 SLOT="0"
@@ -24,53 +22,44 @@ RDEPEND="virtual/mta
 	kerberos? ( virtual/krb5 )
 	sasl? ( >=dev-libs/cyrus-sasl-2 )
 	ssl? ( dev-libs/openssl )
-	perl? ( dev-lang/perl )
+	perl? ( dev-perl/MIME-tools )
 	python? ( dev-lang/python )
 	berkdb? ( sys-libs/db )"
 DEPEND="${RDEPEND}"
 
 src_prepare() {
-
 	#ht_fix_file configure.in support/fixscript.in
+	sed -i -e "s/ -B .OLD//" Makefile.global.in || die "sed failed"
 
-	sed -i \
-		-e "s/ -B .OLD//" \
-		Makefile.global.in \
-		control/Makefile \
-		doc/man/Makefile
+	# Do not treat LDFLAGS as if it contained libraries to link to
+	sed -i m4/python.m4 -e 's|LDFLAGS||g' || die "sed python.m4 failed"
 
-	sed -i \
-		-e "s:@prefix@/lib:/etc/news/cert:" \
-		samples/sasl.conf.in
+	# We do not have the biff service, but we do have comsat 
+	sed -i tests/lib/getnameinfo-t.c \
+		-e 's|"biff"|"comsat"|g' \
+		|| die "sed getnameinfo-t.c failed"
 
-	# Fixes compatibility problems with sys-libs/db-4.4 and 4.5,
-	# bug 174680.
-	#epatch "${FILESDIR}/${P}-berkdb45.patch"
-
-	# Fixes problems with the test suite.
-	#epatch "${FILESDIR}/${P}-runtests.patch"
-
-	elibtoolize
+	eautoreconf
 }
 
-src_compile() {
+src_configure() {
 	econf \
 		--prefix=/usr/$(get_libdir)/news \
+		--sysconfdir=/etc/news \
 		--mandir=/usr/share/man \
 		--infodir=/usr/share/info \
 		--with-control-dir=/usr/$(get_libdir)/news/bin/control \
-		--with-etc-dir=/etc/news \
 		--with-filter-dir=/usr/$(get_libdir)/news/bin/filter \
 		--with-db-dir=/var/spool/news/db \
 		--with-doc-dir=/usr/share/doc/${PF} \
 		--with-spool-dir=/var/spool/news \
 		--with-log-dir=/var/log/news \
 		--with-run-dir=/var/run/news \
-		--with-tmp-path=/var/spool/news/tmp \
-		--enable-libtool \
+		--with-tmp-dir=/var/spool/news/tmp \
+		--disable-libtool \
+		--with-gnu-ld \
 		--enable-setgid-inews \
 		--enable-uucp-rnews \
-		--without-tcl \
 		$(use_with perl) \
 		$(use_with python) \
 		$(use_with kerberos kerberos /usr) \
@@ -82,11 +71,10 @@ src_compile() {
 		$(use_enable inntaggedhash tagged-hash) \
 		$(use_enable innkeywords keywords) \
 		|| die "econf failed"
-	emake -j1 P="" || die "emake failed"
 }
 
 src_install() {
-	make DESTDIR="${D}/" P="" SPECIAL="" install || die "make install failed"
+	emake DESTDIR="${D}/" P="" SPECIAL="" install || die "make install failed"
 
 	chown -R root:0 "${D}"/usr/{$(get_libdir)/news/{lib,include},share/{doc,man}}
 	chmod 644 "${D}"/etc/news/*
@@ -111,7 +99,7 @@ src_install() {
 	insinto /usr/$(get_libdir)/news/include
 	doins include/*.h
 
-	doinitd "${FILESDIR}"/innd innd
+	doinitd "${FILESDIR}"/innd
 }
 
 pkg_postinst() {
