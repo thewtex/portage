@@ -1,7 +1,8 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/cppcheck/cppcheck-1.33.ebuild,v 1.1 2009/06/07 19:04:12 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/cppcheck/cppcheck-1.39.ebuild,v 1.1 2010/01/12 17:07:56 patrick Exp $
 
+EAPI=2
 inherit eutils toolchain-funcs
 
 DESCRIPTION="static analyzer of C/C++ code"
@@ -13,13 +14,12 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
+src_prepare() {
 	sed -i \
-		-e '/^CXXFLAGS/s:=:+=:' \
+		-e '/^CXXFLAGS/d' \
 		-e '/^CXX=/d' \
-		Makefile
+		Makefile \
+		|| die
 	tc-export CXX
 }
 
