@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5183 2010/01/11 22:47:45 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5188 2010/01/13 03:38:04 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -152,7 +152,6 @@ app-crypt/heimdal:X -  Building X applications
 app-crypt/heimdal:berkdb -  Berkeley DB is preferred before NDBM, but if you for some reason want to use NDBM instead, you can disable this USE flag. 
 app-crypt/heimdal:hdb-ldap -  Enable support for LDAP as database backend (not suggested to use) 
 app-crypt/heimdal:ipv6 -  Enable/Disable ipv6 support. No magic here. 
-app-crypt/heimdal:ldap -  DEPRECATED (because produces circualar dependencies): global USE which enable/disable LDAP as database backend -> see 'hd-ldap' 
 app-crypt/heimdal:otp -  Enable support for one-time passwords (OTP) in some heimdal apps 
 app-crypt/heimdal:pkinit -  Enable pkinit support to get the initial ticket 
 app-crypt/heimdal:ssl -  Enable usage of openssl 
@@ -573,6 +572,7 @@ app-text/cuneiform:imagemagick - Enables support of various input formats using 
 app-text/dictd:judy - Build Judy-based (dev-libs/judy) plugin implementing fast "exact" and especially "lev" strategies
 app-text/dictd:minimal - Don't build server but dict client, dictzip and dictfmt only.
 app-text/docbook-sgml-utils:jadetex - Add support for app-text/jadetex (for processing tex files produced by the TeX backend of Jade)
+app-text/dvipng:t1lib - Enable support for T1lib font rendering (media-libs/t1lib)
 app-text/enchant:aspell - Adds support for app-text/aspell spell checker
 app-text/enchant:hunspell - Adds support for app-text/hunspell spell checker
 app-text/enchant:zemberek - Adds support for app-text/zemberek-server spell checker server
@@ -1585,7 +1585,6 @@ media-gfx/geeqie:xmp - Adds support for XMP metadata
 media-gfx/gimp:smp -  Enable support for multiprocessors 
 media-gfx/gimp:webkit -  Enable the webkit rendering engine 
 media-gfx/graphicsmagick:fpx - Enable FlashPix support
-media-gfx/graphicsmagick:gs - Enable Ghoscript support
 media-gfx/graphicsmagick:q16 - Set quantum depth to 16
 media-gfx/graphicsmagick:q32 - Set quantum depth to 32
 media-gfx/graphviz:cgraph -  Enables cgraph (PostScript plotting library in C) library 
@@ -2898,7 +2897,7 @@ net-print/hplip:ppds - Use precompiled PPD files (obsolete, use cupsddk instead)
 net-print/hplip:qt4 - Enable graphical interface using Qt 4
 net-print/hplip:scanner - Enable scanner on multifunction devices which support it
 net-print/hplip:snmp - Add support for net-analyzer/net-snmp which enables this driver to work over networks (both for server and client)
-net-print/hplip:static-ppds - Use statically-generated PPDs instead of Dynamic PPDs. This is deprecated, and this USE flag is thus suggested to stay turned off
+net-print/hplip:static-ppds - Use statically-generated PPDs instead of Dynamic PPDs. Although this is deprecated some printers may still need it to work properly. Use this flag if hp-setup fails to find/create a valid PPD file
 net-print/hplip:udev-acl - Install udev acl rules which needs sys-fs/udev with acl support
 net-print/pkpgcounter:psyco - psyco python accelerator
 net-proxy/dansguardian:kaspersky - Adds support for Kaspersky AntiVirus software
@@ -3628,6 +3627,7 @@ x11-themes/gtk-engines-qt:gnome - Enable proper theming of buttons in gnome tool
 x11-themes/gtk-engines-qtcurve:firefox3 - Install GUI theme tweaks for version 3 of www-client/mozilla-firefox 
 x11-themes/gtk-engines-qtcurve:mozilla - Install GUI theme tweaks for mozilla based browsers, including version 2 of www-client/mozilla-firefox 
 x11-themes/qtcurve-qt4:kde - Enable KDE4 support. This adds a QtCurve configuration module to KDE's SystemSettings. 
+x11-themes/qtcurve-qt4:windeco - Enable window decoration for KWin.
 x11-themes/redhat-artwork:audacious - Install media-sound/audacious theme
 x11-themes/redhat-artwork:cursors - Install Bluecurve cursors
 x11-themes/redhat-artwork:gdm - Install Bluecurve gnome-base/gdm theme

@@ -1,13 +1,10 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-nntp/inn/inn-2.5.1.ebuild,v 1.3 2010/01/12 02:27:45 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-nntp/inn/inn-2.5.1.ebuild,v 1.5 2010/01/12 17:50:06 mr_bones_ Exp $
 
 EAPI="2"
 
 inherit autotools eutils fixheadtails multilib ssl-cert
-
-# they fail since 2.4.x, so ...
-#RESTRICT="test"
 
 DESCRIPTION="The Internet News daemon, fully featured NNTP server"
 HOMEPAGE="https://www.isc.org/software/inn"
@@ -16,15 +13,17 @@ SRC_URI="ftp://ftp.isc.org/isc/inn/${P}.tar.gz"
 SLOT="0"
 LICENSE="as-is BSD GPL-2"
 KEYWORDS="~amd64 ~ppc ~x86"
-IUSE="ipv6 kerberos sasl ssl perl python berkdb inntaggedhash innkeywords"
+IUSE="berkdb innkeywords inntaggedhash ipv6 kerberos python sasl ssl"
 
-RDEPEND="virtual/mta
+RDEPEND="
+	virtual/mta
+	dev-perl/MIME-tools
 	kerberos? ( virtual/krb5 )
 	sasl? ( >=dev-libs/cyrus-sasl-2 )
 	ssl? ( dev-libs/openssl )
-	perl? ( dev-perl/MIME-tools )
 	python? ( dev-lang/python )
-	berkdb? ( sys-libs/db )"
+	berkdb? ( sys-libs/db )
+"
 DEPEND="${RDEPEND}"
 
 src_prepare() {
@@ -34,7 +33,7 @@ src_prepare() {
 	# Do not treat LDFLAGS as if it contained libraries to link to
 	sed -i m4/python.m4 -e 's|LDFLAGS||g' || die "sed python.m4 failed"
 
-	# We do not have the biff service, but we do have comsat 
+	# We do not have the biff service, but we do have comsat
 	sed -i tests/lib/getnameinfo-t.c \
 		-e 's|"biff"|"comsat"|g' \
 		|| die "sed getnameinfo-t.c failed"

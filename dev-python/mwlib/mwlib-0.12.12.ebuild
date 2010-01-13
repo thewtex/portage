@@ -1,6 +1,6 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/mwlib/mwlib-0.12.12.ebuild,v 1.1 2009/12/21 02:42:21 arfrever Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/mwlib/mwlib-0.12.12.ebuild,v 1.4 2010/01/12 14:36:01 arfrever Exp $
 
 EAPI="2"
 NEED_PYTHON="2.5"
@@ -14,7 +14,7 @@ SRC_URI="http://pypi.python.org/packages/source/m/mwlib/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="dev-lang/perl
@@ -26,7 +26,8 @@ RDEPEND="dev-lang/perl
 	>=dev-python/pyPdf-1.12
 	>=dev-python/pyparsing-1.4.11
 	>=dev-python/timelib-0.2
-	>=dev-python/twisted-8.2.0
+	>=dev-python/twisted-9.0.0-r1
+	>=dev-python/twisted-web-9.0.0
 	>=dev-python/webob-0.9
 	virtual/latex-base
 	|| ( >=dev-lang/python-2.6 >=dev-python/simplejson-1.3 )"
