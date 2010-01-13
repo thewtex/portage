@@ -224,8 +224,8 @@ validate_PYTHON_ABIS() {
 		die "'/usr/bin/python-config' isn't valid script"
 	fi
 
-	# USE_${ABI_TYPE^^} and RESTRICT_${ABI_TYPE^^}_ABIS variables hopefully will be included in EAPI >= 4.
-	if [[ "$(declare -p PYTHON_ABIS 2> /dev/null)" != "declare -x PYTHON_ABIS="* ]] && has "${EAPI:-0}" 0 1 2 3; then
+	# USE_${ABI_TYPE^^} and RESTRICT_${ABI_TYPE^^}_ABIS variables hopefully will be included in EAPI >= 5.
+	if [[ "$(declare -p PYTHON_ABIS 2> /dev/null)" != "declare -x PYTHON_ABIS="* ]] && has "${EAPI:-0}" 0 1 2 3 4; then
 		local PYTHON_ABI python2_supported_versions python3_supported_versions restricted_ABI support_ABI supported_PYTHON_ABIS=
 		PYTHON_ABI_SUPPORTED_VALUES="2.4 2.5 2.6 2.7 3.0 3.1 3.2"
 		python2_supported_versions="2.4 2.5 2.6 2.7"
