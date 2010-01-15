@@ -1,5 +1,5 @@
-test? ( dev-ruby/shoulda[ruby_targets_ruby18?,ruby_targets_ruby19?] ) test? ( dev-ruby/fakeweb[ruby_targets_ruby18?,ruby_targets_ruby19?] ) ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ruby19? ( dev-lang/ruby:1.9 ) test? ( dev-ruby/rake[ruby_targets_ruby18?,ruby_targets_ruby19?] ) test? ( virtual/rubygems[ruby_targets_ruby18?,ruby_targets_ruby19?] )
-ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ruby19? ( dev-lang/ruby:1.9 ) virtual/rubygems[ruby_targets_ruby18?,ruby_targets_ruby19?]
+test? ( dev-ruby/shoulda[ruby_targets_ruby18?,ruby_targets_ruby19?,ruby_targets_jruby?] ) test? ( dev-ruby/fakeweb[ruby_targets_ruby18?,ruby_targets_ruby19?,ruby_targets_jruby?] ) ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ruby19? ( dev-lang/ruby:1.9 ) ruby_targets_jruby? ( dev-java/jruby ) test? ( dev-ruby/rake[ruby_targets_ruby18?,ruby_targets_ruby19?,ruby_targets_jruby?] ) test? ( virtual/rubygems[ruby_targets_ruby18?,ruby_targets_ruby19?,ruby_targets_jruby?] )
+ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ruby19? ( dev-lang/ruby:1.9 ) ruby_targets_jruby? ( dev-java/jruby ) virtual/rubygems[ruby_targets_ruby18?,ruby_targets_ruby19?,ruby_targets_jruby?]
 0
 mirror://rubygems/samuel-0.3.2.gem
 
@@ -8,7 +8,7 @@ as-is
 An automatic logger for HTTP requests in Ruby.
 ~amd64
 eutils multilib portability ruby-fakegem ruby-ng toolchain-funcs
-ruby_targets_ruby18 ruby_targets_ruby19 test
+ruby_targets_ruby18 ruby_targets_ruby19 ruby_targets_jruby test
 
 
 
