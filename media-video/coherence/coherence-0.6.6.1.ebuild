@@ -4,12 +4,14 @@
 
 inherit distutils
 
+EAPI=2
+
 MY_P="Coherence-${PV}"
 
 DESCRIPTION="Coherence is a framework written in Python for DLNA/UPnP components"
 HOMEPAGE="https://coherence.beebits.net/"
 SRC_URI="http://coherence.beebits.net/download/${MY_P}.tar.gz"
-IUSE="web gstreamer"
+IUSE="+web +gstreamer"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~x86 ~amd64"
@@ -25,8 +27,12 @@ DEPEND="
 	>=dev-python/configobj-4.3
 	gstreamer? ( >=dev-python/gst-python-0.10.12 )
 	web? ( dev-python/nevow )
-	"
-RDEPEND="${DEPEND}"
+"
+RDEPEND="${DEPEND}
+	dev-python/dbus-python
+	dev-python/axiom
+	dev-python/gdata
+"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -42,7 +48,7 @@ src_install() {
 		newinitd "${FILESDIR}"/coherence-init coherence
 	else
 		ewarn "Please make sure to create an init.d script file if you want to
-		auto-start/stop Coherence.i"
+		auto-start/stop Coherence."
 	fi
 }
 
