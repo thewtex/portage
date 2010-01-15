@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/base/package.use.force,v 1.10 2009/12/06 17:43:47 arfrever Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/base/package.use.force,v 1.12 2010/01/14 23:12:52 a3li Exp $
 
 # Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
 # Python should use wide Unicode implementation by default.
@@ -12,3 +12,9 @@ dev-lang/python wide-unicode
 # Forcing w.r.t. bug 265336. When unicode use-flag is
 # turned off, ABI is broken without a .so bump.
 dev-libs/libpcre unicode
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (14 Jan 2010)
+# List of packages working on a single (non-default) Ruby
+# implementation that cannot, thus, be turned off.
+dev-ruby/jruby-openssl ruby_targets_jruby
+dev-ruby/test-unit ruby_targets_ruby19

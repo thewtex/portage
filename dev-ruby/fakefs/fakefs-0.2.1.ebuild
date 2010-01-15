@@ -1,10 +1,11 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/fakefs/fakefs-0.2.1.ebuild,v 1.2 2010/01/13 16:33:05 ranger Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/fakefs/fakefs-0.2.1.ebuild,v 1.4 2010/01/14 16:07:23 flameeyes Exp $
 
 EAPI=2
 
-# jruby → Marshal/DeMarshal to clone directories fail
+# jruby → Marshal/DeMarshal to clone directories fail; tests fail in
+# release 0.2.1
 USE_RUBY="ruby18 ruby19"
 
 # requires sdoc
@@ -19,7 +20,7 @@ HOMEPAGE="http://github.com/defunkt/fakefs"
 
 LICENSE="as-is" # truly
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="~amd64 ~ppc ~ppc64"
 IUSE=""
 
 all_ruby_prepare() {

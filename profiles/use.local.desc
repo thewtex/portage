@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5191 2010/01/13 23:08:00 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5194 2010/01/15 00:47:44 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -238,6 +238,7 @@ app-emulation/basiliskII-jit:jit - Enables the jit compiler
 app-emulation/bochs:debugger - Enable the bochs debugger
 app-emulation/e-uae:capslib - Add CAPS library support
 app-emulation/e-uae:sdl-sound - Use media-libs/sdl-sound for audio output
+app-emulation/emul-linux-x86-soundlibs:arts - Installs deprecated 32bit kde-base/arts:3.5 libs.
 app-emulation/fuse:libdsk - Enable support for the floppy disk emulation library app-emulation/libdsk
 app-emulation/ganeti:drbd - Enable DRBD support
 app-emulation/ganeti:kvm - Enable KVM support
@@ -1471,9 +1472,7 @@ media-gfx/gimp:webkit -  Enable the webkit rendering engine
 media-gfx/graphicsmagick:fpx - Enable FlashPix support
 media-gfx/graphicsmagick:q16 - Set quantum depth to 16
 media-gfx/graphicsmagick:q32 - Set quantum depth to 32
-media-gfx/graphviz:cgraph -  Enables cgraph (PostScript plotting library in C) library 
 media-gfx/graphviz:lasi -  Enables PostScript output via media-libs/lasi library 
-media-gfx/graphviz:pango -  Enables the rendering of the graphs using pango & cairo (with antialiasing support) 
 media-gfx/gthumb:iptc -  Add support for IPTC metadata 
 media-gfx/hugin:sift - automatically align images with media-gfx/autopano-sift or media-gfx/autopano-sift-C
 media-gfx/imagemagick:autotrace -  use media-gfx/autotrace to convert bitmaps into vector graphics 
@@ -2750,6 +2749,7 @@ net-wireless/wepattack:john - Build with app-crypt/johntheripper support
 net-wireless/wifiscanner:wireshark - Use the net-analyzer/wireshark wtap library
 net-wireless/wireless-tools:multicall - Build the most commonly used tools as one binary
 net-wireless/wpa_supplicant:eap-sim - Add support for EAP-SIM authentication algorithm
+net-wireless/wpa_supplicant:fasteap - Add support for FAST-EAP authentication algorithm
 net-wireless/wpa_supplicant:madwifi - Add support for madwifi (Atheros chipset)
 net-wireless/wpa_supplicant:ps3 - Add support for ps3 hypervisor driven gelic wifi
 net-wireless/wpa_supplicant:wps - Add support for Wi-Fi Protected Setup
