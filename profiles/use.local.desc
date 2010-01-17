@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5183 2010/01/11 22:47:45 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5196 2010/01/15 15:27:42 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -152,7 +152,6 @@ app-crypt/heimdal:X -  Building X applications
 app-crypt/heimdal:berkdb -  Berkeley DB is preferred before NDBM, but if you for some reason want to use NDBM instead, you can disable this USE flag. 
 app-crypt/heimdal:hdb-ldap -  Enable support for LDAP as database backend (not suggested to use) 
 app-crypt/heimdal:ipv6 -  Enable/Disable ipv6 support. No magic here. 
-app-crypt/heimdal:ldap -  DEPRECATED (because produces circualar dependencies): global USE which enable/disable LDAP as database backend -> see 'hd-ldap' 
 app-crypt/heimdal:otp -  Enable support for one-time passwords (OTP) in some heimdal apps 
 app-crypt/heimdal:pkinit -  Enable pkinit support to get the initial ticket 
 app-crypt/heimdal:ssl -  Enable usage of openssl 
@@ -252,6 +251,7 @@ app-emulation/basiliskII-jit:jit - Enables the jit compiler
 app-emulation/bochs:debugger - Enable the bochs debugger
 app-emulation/e-uae:capslib - Add CAPS library support
 app-emulation/e-uae:sdl-sound - Use media-libs/sdl-sound for audio output
+app-emulation/emul-linux-x86-soundlibs:arts - Installs deprecated 32bit kde-base/arts:3.5 libs.
 app-emulation/fuse:libdsk - Enable support for the floppy disk emulation library app-emulation/libdsk
 app-emulation/ganeti:drbd - Enable DRBD support
 app-emulation/ganeti:kvm - Enable KVM support
@@ -365,9 +365,7 @@ app-forensics/samhain:userfiles - Compile in the module to check for files in us
 app-forensics/sleuthkit:aff - Enable extra aff formats
 app-forensics/sleuthkit:dbtool - Add patch for dbtool interface from PyFlag
 app-forensics/sleuthkit:ewf - Enable libewf support
-app-i18n/ibus-table-erbi:extra-phrases - Add extra phrases into builded Engine
-app-i18n/ibus-table-wubi:extra-phrases - Add extra phrases into builded Engine
-app-i18n/ibus-table-zhengma:extra-phrases - Add extra phrases into builded Engine
+app-i18n/ibus-table-xingma:extra-phrases - Add extra phrases into builded Engine
 app-i18n/im-ja:anthy - Support for Anthy input method
 app-i18n/im-ja:skk - Support for SKK input method
 app-i18n/kimera:anthy - Support for Anthy input method
@@ -573,6 +571,7 @@ app-text/cuneiform:imagemagick - Enables support of various input formats using 
 app-text/dictd:judy - Build Judy-based (dev-libs/judy) plugin implementing fast "exact" and especially "lev" strategies
 app-text/dictd:minimal - Don't build server but dict client, dictzip and dictfmt only.
 app-text/docbook-sgml-utils:jadetex - Add support for app-text/jadetex (for processing tex files produced by the TeX backend of Jade)
+app-text/dvipng:t1lib - Enable support for T1lib font rendering (media-libs/t1lib)
 app-text/enchant:aspell - Adds support for app-text/aspell spell checker
 app-text/enchant:hunspell - Adds support for app-text/hunspell spell checker
 app-text/enchant:zemberek - Adds support for app-text/zemberek-server spell checker server
@@ -886,7 +885,6 @@ dev-libs/poppler:abiword -  Enable support for app-office/abiword output. Requir
 dev-libs/poppler:poppler-data -  Pull in the free (as in beer) poppler-data package which is required at runtime for complete rendering of CJK PDFs. 
 dev-libs/ppl:prolog - Build SWI Prolog interface
 dev-libs/ppl:watchdog - Build the PPL Watchdog library - a C++ library for multiple, concurrent watchdog timers
-dev-libs/qsa:ide - Enable the qsa ide
 dev-libs/soprano:clucene - Enable dev-cpp/clucene backend support.
 dev-libs/soprano:java - Enables support for virtual/jre-1.6.0 (sesame2) storage backend.
 dev-libs/soprano:raptor - Enables support for media-libs/raptor RDF parser/serializer.
@@ -952,6 +950,7 @@ dev-php5/php-gtk:scintilla - Enable Scintilla support
 dev-python/PyQt4:X - Build the QtGui and QtDesigner modules
 dev-python/PyQt4:assistant - Build the QtHelp and QtAssistant modules
 dev-python/PyQt4:kde -  Select media-sound/phonon as phonon variant needed for kde 
+dev-python/PyQt4:multimedia - Build the QtMultimedia module
 dev-python/PyQt4:opengl - Build the QtOpenGL module
 dev-python/PyQt4:phonon - Build the phonon module
 dev-python/PyQt4:sql - Build the QtSql module
@@ -1298,6 +1297,7 @@ gnome-extra/gtkhtml:glade - Provide integration with dev-util/glade.
 gnome-extra/libgda:mdb - Enables Microsoft Access DB support
 gnome-extra/libgda:xbase - Enables support for xbase databases (dBase, FoxPro, etc.)
 gnome-extra/libgsf:gtk - Enable use of gdk in thumbnailer
+gnome-extra/libgsf:thumbnail - Enable libgsf supported formats thumbnailer
 gnome-extra/music-applet:mpd - Enable MPD support
 gnome-extra/nautilus-sendto:empathy - Enables support for net-im/empathy
 gnome-extra/nautilus-sendto:gajim - Enables support for net-im/gajim
@@ -1585,12 +1585,9 @@ media-gfx/geeqie:xmp - Adds support for XMP metadata
 media-gfx/gimp:smp -  Enable support for multiprocessors 
 media-gfx/gimp:webkit -  Enable the webkit rendering engine 
 media-gfx/graphicsmagick:fpx - Enable FlashPix support
-media-gfx/graphicsmagick:gs - Enable Ghoscript support
 media-gfx/graphicsmagick:q16 - Set quantum depth to 16
 media-gfx/graphicsmagick:q32 - Set quantum depth to 32
-media-gfx/graphviz:cgraph -  Enables cgraph (PostScript plotting library in C) library 
 media-gfx/graphviz:lasi -  Enables PostScript output via media-libs/lasi library 
-media-gfx/graphviz:pango -  Enables the rendering of the graphs using pango & cairo (with antialiasing support) 
 media-gfx/gthumb:iptc -  Add support for IPTC metadata 
 media-gfx/hugin:sift - automatically align images with media-gfx/autopano-sift or media-gfx/autopano-sift-C
 media-gfx/imagemagick:autotrace -  use media-gfx/autotrace to convert bitmaps into vector graphics 
@@ -2898,7 +2895,7 @@ net-print/hplip:ppds - Use precompiled PPD files (obsolete, use cupsddk instead)
 net-print/hplip:qt4 - Enable graphical interface using Qt 4
 net-print/hplip:scanner - Enable scanner on multifunction devices which support it
 net-print/hplip:snmp - Add support for net-analyzer/net-snmp which enables this driver to work over networks (both for server and client)
-net-print/hplip:static-ppds - Use statically-generated PPDs instead of Dynamic PPDs. This is deprecated, and this USE flag is thus suggested to stay turned off
+net-print/hplip:static-ppds - Use statically-generated PPDs instead of Dynamic PPDs. Although this is deprecated some printers may still need it to work properly. Use this flag if hp-setup fails to find/create a valid PPD file
 net-print/hplip:udev-acl - Install udev acl rules which needs sys-fs/udev with acl support
 net-print/pkpgcounter:psyco - psyco python accelerator
 net-proxy/dansguardian:kaspersky - Adds support for Kaspersky AntiVirus software
@@ -2950,6 +2947,7 @@ net-wireless/wepattack:john - Build with app-crypt/johntheripper support
 net-wireless/wifiscanner:wireshark - Use the net-analyzer/wireshark wtap library
 net-wireless/wireless-tools:multicall - Build the most commonly used tools as one binary
 net-wireless/wpa_supplicant:eap-sim - Add support for EAP-SIM authentication algorithm
+net-wireless/wpa_supplicant:fasteap - Add support for FAST-EAP authentication algorithm
 net-wireless/wpa_supplicant:madwifi - Add support for madwifi (Atheros chipset)
 net-wireless/wpa_supplicant:ps3 - Add support for ps3 hypervisor driven gelic wifi
 net-wireless/wpa_supplicant:wps - Add support for Wi-Fi Protected Setup
@@ -3628,6 +3626,7 @@ x11-themes/gtk-engines-qt:gnome - Enable proper theming of buttons in gnome tool
 x11-themes/gtk-engines-qtcurve:firefox3 - Install GUI theme tweaks for version 3 of www-client/mozilla-firefox 
 x11-themes/gtk-engines-qtcurve:mozilla - Install GUI theme tweaks for mozilla based browsers, including version 2 of www-client/mozilla-firefox 
 x11-themes/qtcurve-qt4:kde - Enable KDE4 support. This adds a QtCurve configuration module to KDE's SystemSettings. 
+x11-themes/qtcurve-qt4:windeco - Enable window decoration for KWin.
 x11-themes/redhat-artwork:audacious - Install media-sound/audacious theme
 x11-themes/redhat-artwork:cursors - Install Bluecurve cursors
 x11-themes/redhat-artwork:gdm - Install Bluecurve gnome-base/gdm theme

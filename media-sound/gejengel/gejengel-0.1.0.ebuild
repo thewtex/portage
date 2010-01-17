@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/gejengel/gejengel-0.1.0.ebuild,v 1.8 2010/01/05 14:51:50 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/gejengel/gejengel-0.1.0.ebuild,v 1.9 2010/01/15 17:15:37 hwoarang Exp $
 
 EAPI=2
 inherit eutils multilib
@@ -12,7 +12,7 @@ SRC_URI="http://${PN}.googlecode.com/files/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="alsa audioscrobbler debug dbus +ffmpeg flac libnotify mad openal pulseaudio syslog test"
+IUSE="+alsa audioscrobbler debug dbus +ffmpeg flac libnotify mad openal pulseaudio syslog test"
 
 RDEPEND=">=dev-cpp/gtkmm-2.16
 	>=dev-cpp/pangomm-2.24

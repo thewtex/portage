@@ -1,10 +1,55 @@
 # ChangeLog for profile directory
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.3778 2010/01/12 01:48:12 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.3792 2010/01/15 20:06:39 hwoarang Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  15 Jan 2010; Markos Chandras <hwoarang@gentoo.org> package.mask:
+  Masking new releases of qscintilla{,-python}. See bug #301130
+
+  15 Jan 2010; Sébastien Fabbro <bicatali@gentoo.org> package.mask:
+  Removed masking of sci-visualization/gfsview, now builds
+
+  15 Jan 2010; Markos Chandras <hwoarang@gentoo.org> package.mask:
+  Qt3 only application. Bug #299746
+
+  15 Jan 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> package.mask:
+  Add package.mask entry for www-client/chromium-4.0.295.0 dev channel
+  release.
+
+  15 Jan 2010; Samuli Suominen <ssuominen@gentoo.org> use.desc:
+  Remove almost unused kde-base/arts:3.5 USE="arts" from global flags.
+
+  14 Jan 2010; Andreas Proschofsky <suka@gentoo.org> desc/linguas.desc:
+  Add om and ug locales
+
+  14 Jan 2010; Markos Chandras <hwoarang@gentoo.org> package.mask:
+  Masking media-video/qdvdauthor-templates as well wrt bug #291878
+
+  14 Jan 2010; Andreas Proschofsky <suka@gentoo.org> package.mask:
+  New release Candidate for openoffice-bin, needs testing
+
+  14 Jan 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  base/package.use.force:
+  Start forcing Ruby targets for packages limited to non-default
+  implementations.
+
+  14 Jan 2010; Markos Chandras <hwoarang@gentoo.org> package.mask:
+  Qt3 only application. See bug #291878 and bug #283429
+
+  14 Jan 2010; Alistair Bush <ali_bush@gentoo.org> package.mask:
+  Mask jruby-1.4.0 for testing and waiting dep keywording.
+
+  13 Jan 2010; Samuli Suominen <ssuominen@gentoo.org> use.desc:
+  Remove unused USE="kdehiddenvisibility" from use.desc.
+
+  13 Jan 2010; Ben de Groot <yngwin@gentoo.org> package.mask:
+  Mask unused poppler Qt3 bindings (bug #300162).
+
+  12 Jan 2010; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask media-libs/jpeg-8 for testing.
 
   12 Jan 2010; Jeroen Roovers <jer@gentoo.org> default/linux/hppa/use.mask,
   package.mask:
