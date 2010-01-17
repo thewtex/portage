@@ -18,4 +18,10 @@ SRC_URI="ftp://ftp.vim.org/pub/vim/unstable/unix/vim-${VIM_VERSION}.tar.bz2
 S="${WORKDIR}/vim${VIM_VERSION/.}"
 DESCRIPTION="GUI version of the Vim text editor"
 KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
-IUSE=""
+IUSE="console-netbeans"
+
+src_prepare() {
+  vim_src_prepare
+  use console-netbeans && epatch "${FILESDIR}/vim-7.2.330-console-netbeans.patch" || \
+  die "console-netbeans patch failed."
+}
