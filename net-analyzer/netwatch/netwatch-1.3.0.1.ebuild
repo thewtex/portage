@@ -1,8 +1,10 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/netwatch/netwatch-1.3.0.1.ebuild,v 1.1 2010/01/16 12:46:11 hwoarang Exp $
 
-inherit versionator
+EAPI="2"
+
+inherit versionator eutils
 
 MY_PV=$(replace_version_separator 3 '-')
 
@@ -21,6 +23,11 @@ DEPEND="${RDEPEND}
 
 S=${WORKDIR}/${PN}-$(get_version_component_range 1-3)
 
+src_prepare() {
+	epatch "${FILESDIR}"/append_ldflags.patch
+	epatch "${FILESDIR}/${PN}.c.patch"
+}
+
 src_install() {
 	dosbin netresolv netwatch || die "dosbin failed"
 
@@ -31,4 +38,3 @@ src_install() {
 		dohtml NetwatchKeyCommands.html || die "dohtml failed"
 	fi
 }
-
