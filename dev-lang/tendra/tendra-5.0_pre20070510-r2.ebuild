@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/tendra/tendra-5.0_pre20070510-r2.ebuild,v 1.2 2009/12/23 19:53:47 truedfx Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/tendra/tendra-5.0_pre20070510-r2.ebuild,v 1.4 2010/01/16 10:43:30 truedfx Exp $
 
 inherit bsdmk eutils flag-o-matic multilib
 

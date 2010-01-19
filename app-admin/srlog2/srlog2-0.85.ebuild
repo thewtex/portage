@@ -1,8 +1,8 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/srlog2/srlog2-0.85.ebuild,v 1.2 2009/12/07 11:36:49 bangert Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/srlog2/srlog2-0.85.ebuild,v 1.4 2010/01/14 12:25:05 bangert Exp $
 
-inherit toolchain-funcs eutils
+inherit toolchain-funcs eutils multilib
 
 DESCRIPTION="Secure Remote Log transmission system"
 HOMEPAGE="http://untroubled.org/srlog2/"
@@ -11,7 +11,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~x86"
 IUSE=""
-DEPEND=">=dev-libs/bglibs-1.104
+DEPEND=">=dev-libs/bglibs-1.106
 		app-crypt/nistp224
 		>=dev-libs/libtomcrypt-1.03"
 RDEPEND="${DEPEND}"
@@ -22,7 +22,7 @@ src_unpack() {
 	echo -n "$(tc-getCC) ${CFLAGS}" > conf-cc
 	echo -n "$(tc-getCC) ${LDFLAGS}" > conf-ld
 	echo -n "/usr/include/bglibs" > conf-bgincs
-	echo -n "/usr/lib/bglibs" > conf-bglibs
+	echo -n "/usr/$(get_libdir)/bglibs" > conf-bglibs
 	echo -n /usr/bin > conf-bin
 	echo -n /usr/share/man > conf-man
 
@@ -36,6 +36,7 @@ src_unpack() {
 	#If this isn't fixed it just includes app-crypt/nistp224 support only
 
 	epatch "${FILESDIR}"/srlog2-0.85-fix-incude.patch
+	epatch "${FILESDIR}"/srlog2-0.85-jobserver-fix.patch
 }
 
 src_compile() {

@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/sqlite/sqlite-3.6.22.ebuild,v 1.6 2010/01/10 22:03:08 arfrever Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/sqlite/sqlite-3.6.22.ebuild,v 1.9 2010/01/15 08:16:21 mduft Exp $
 
 EAPI="2"
 
@@ -34,6 +34,12 @@ DEPEND="${RDEPEND}
 src_prepare() {
 	if use icu; then
 		rm -f test/like.test
+	fi
+
+	if use tcl || use test; then
+		epatch "${FILESDIR}"/${P}-interix-fixes.patch
+	else
+		epatch "${FILESDIR}"/${P}-interix-fixes-amalgamation.patch
 	fi
 
 	epunt_cxx
