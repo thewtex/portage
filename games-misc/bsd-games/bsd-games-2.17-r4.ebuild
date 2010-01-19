@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-misc/bsd-games/bsd-games-2.17-r4.ebuild,v 1.4 2010/01/15 23:06:01 fauli Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-misc/bsd-games/bsd-games-2.17-r4.ebuild,v 1.7 2010/01/19 06:13:47 mr_bones_ Exp $
 EAPI=2
 
 inherit eutils games
@@ -46,13 +46,18 @@ src_prepare() {
 		wargames/wargames \
 		|| die "sed wargames failed"
 
+	sed -i \
+		-e '/^CC :=/d' \
+		-e '/^CXX :=/d' \
+		-e '/^CFLAGS/s/OPTIMIZE/CFLAGS/' \
+		-e '/^CXXFLAGS/s/OPTIMIZE/CXXFLAGS/' \
+		Makeconfig.in \
+		|| die 'sed failed'
+
 	cp "${FILESDIR}"/config.params-gentoo config.params
 	echo bsd_games_cfg_usrlibdir=\"$(games_get_libdir)\" >> ./config.params
 	echo bsd_games_cfg_build_dirs=\"${GAMES_TO_BUILD}\" >> ./config.params
-}
-
-src_compile() {
-	emake OPTIMIZE="${CFLAGS}" || die "emake failed"
+	echo bsd_games_cfg_docdir=\"/usr/share/doc/${PF}\" >> ./config.params
 }
 
 src_test() {
@@ -71,7 +76,7 @@ do_statefile() {
 
 src_install() {
 	dodir "${GAMES_BINDIR}" "${GAMES_STATEDIR}" /usr/share/man/man{1,6}
-	make DESTDIR="${D}" install || die "make install failed"
+	emake DESTDIR="${D}" install || die "emake install failed"
 
 	dodoc AUTHORS BUGS ChangeLog ChangeLog.0 \
 		README PACKAGING SECURITY THANKS TODO YEAR2000
@@ -97,8 +102,6 @@ src_install() {
 	build_game sail && do_statefile saillog
 	build_game snake && do_statefile snake.log && do_statefile snakerawscores
 	build_game tetris && do_statefile tetris-bsd.scores
-	# state dirs
-	chmod -R ug+rw "${D}/${GAMES_STATEDIR}"/*
 
 	# extra docs
 	build_game atc && { docinto atc ; dodoc atc/BUGS; }
@@ -106,7 +109,6 @@ src_install() {
 	build_game hack && { docinto hack ; dodoc hack/{OWNER,Original_READ_ME,READ_ME,help}; }
 	build_game hunt && { docinto hunt ; dodoc hunt/README; }
 	build_game phantasia && { docinto phantasia ; dodoc phantasia/{OWNER,README}; }
-	build_game trek && { docinto trek ; dodoc trek/USD.doc/trek.me; }
 
 	# Since factor is usually not installed, and primes.6 is a symlink to
 	# factor.6, make sure that primes.6 is ok ...
@@ -117,4 +119,7 @@ src_install() {
 
 	prepalldocs
 	prepgamesdirs
+
+	# state dirs
+	chmod -R ug+rw "${D}/${GAMES_STATEDIR}"/*
 }
