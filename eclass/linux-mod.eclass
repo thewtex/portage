@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/linux-mod.eclass,v 1.96 2010/01/10 09:38:50 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/linux-mod.eclass,v 1.98 2010/01/17 04:00:07 robbat2 Exp $
 
 # Author(s): John Mylchreest <johnm@gentoo.org>,
 #            Stefan Schweizer <genstef@gentoo.org>
@@ -576,6 +576,12 @@ find_module_params() {
 linux-mod_pkg_setup() {
 	debug-print-function ${FUNCNAME} $*
 
+	# If we are installing a binpkg, take a different path.
+	if [[ $EMERGE_FROM == binary ]]; then
+		linux-mod_pkg_setup_binary
+		return
+	fi
+
 	linux-info_pkg_setup;
 	require_configured_kernel
 	check_kernel_built;
@@ -586,6 +592,25 @@ linux-mod_pkg_setup() {
 	# who intentionally use different kernel and userland compilers can be
 	# introduced - Jason Wever <weeve@gentoo.org>, 23 Oct 2005
 	#check_vermagic;
+}
+
+# @FUNCTION: linux-mod_pkg_setup_binary
+# @DESCRIPTION:
+# Perform all kernel option checks non-fatally, as the .config and
+# /proc/config.gz might not be present. Do not do anything that requires kernel
+# sources.
+linux-mod_pkg_setup_binary() {
+	debug-print-function ${FUNCNAME} $*
+	local new_CONFIG_CHECK
+	for config in $CONFIG_CHECK ; do
+		case ${config:0:1} in
+			~) optional="" ;;
+			*) optional="~" ;;
+		esac
+		new_CONFIG_CHECK="${new_CONFIG_CHECK} ${optional}${config}"
+	done
+	export CONFIG_CHECK="${new_CONFIG_CHECK}"
+	linux-info_pkg_setup;
 }
 
 strip_modulenames() {

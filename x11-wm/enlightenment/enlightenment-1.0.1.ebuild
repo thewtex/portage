@@ -1,17 +1,17 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/enlightenment/enlightenment-1.0.1.ebuild,v 1.1 2009/09/30 02:15:35 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/enlightenment/enlightenment-1.0.1.ebuild,v 1.4 2010/01/18 18:53:23 jer Exp $
 
 EAPI="2"
 if [[ ${PV} == *9999 ]] ; then
 	ESVN_REPO_URI="http://svn.enlightenment.org/svn/e/trunk/E16/e"
 	inherit subversion
 	SRC_URI=""
-	KEYWORDS=""
+	#KEYWORDS=""
 	S=${WORKDIR}/e16/e
 else
 	SRC_URI="mirror://sourceforge/enlightenment/e16-${PV/_/-}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sh ~sparc ~x86 ~x86-fbsd"
+	KEYWORDS="~alpha ~amd64 ~arm hppa ~ia64 ~ppc ~ppc64 ~sh ~sparc ~x86 ~x86-fbsd"
 	S=${WORKDIR}/e16-${PV/_pre?}
 fi
 inherit eutils
@@ -54,13 +54,10 @@ DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )"
 PDEPEND="doc? ( app-doc/edox-data )"
 
-src_unpack() {
-	if [[ ${PV} == *9999 ]] ; then
-		subversion_src_unpack
-		cd "${S}"
-		NOCONFIGURE=blah ./autogen.sh
-	else
-		unpack ${A}
+src_prepare() {
+	if [[ ! -e configure ]] ; then
+		eautopoint
+		eautoreconf
 	fi
 }
 
@@ -80,5 +77,6 @@ src_configure() {
 
 src_install() {
 	emake install DESTDIR="${D}" || die
-	dodoc AUTHORS ChangeLog COMPLIANCE README* docs/README* TODO
+	rmdir "${D}"/usr/share/doc/e16 || die #294456
+	dodoc AUTHORS ChangeLog COMPLIANCE docs/README TODO
 }

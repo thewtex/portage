@@ -1,6 +1,31 @@
 # ChangeLog for dev-java/jruby
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jruby/ChangeLog,v 1.46 2010/01/14 14:43:26 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jruby/ChangeLog,v 1.50 2010/01/16 23:34:28 flameeyes Exp $
+
+*jruby-1.4.0-r3 (16 Jan 2010)
+
+  16 Jan 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  -jruby-1.4.0-r2.ebuild, +jruby-1.4.0-r3.ebuild,
+  +files/jruby-1.4.0-system-jars.patch,
+  -files/jruby-1.4.0-system-nailgun.patch, metadata.xml:
+  Improve unbundled jar workings, make jffi and jna working as intended.
+  Drop ppc keyword so that proper keywording request can be filed. Take
+  co-maintainership with ruby team.
+
+*jruby-1.4.0-r2 (16 Jan 2010)
+
+  16 Jan 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  -jruby-1.4.0-r1.ebuild, +jruby-1.4.0-r2.ebuild,
+  +files/jruby-1.4.0-system-nailgun.patch:
+  Fix usage of system nailgun.
+
+  16 Jan 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  jruby-1.4.0-r1.ebuild:
+  Add pkg_postinst to note the JRUBY_OPTS variable behaviour.
+
+  16 Jan 2010; Diego E. Pettenò <flameeyes@gentoo.org> -jruby-1.4.0.ebuild,
+  jruby-1.4.0-r1.ebuild:
+  Fix SRC_URI, remove older broken 1.4.0 release.
 
 *jruby-1.4.0-r1 (14 Jan 2010)
 

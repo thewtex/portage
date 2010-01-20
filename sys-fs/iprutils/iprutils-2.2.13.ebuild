@@ -1,6 +1,6 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/iprutils/iprutils-2.2.13.ebuild,v 1.2 2009/09/23 20:51:28 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/iprutils/iprutils-2.2.13.ebuild,v 1.4 2010/01/18 15:06:05 ranger Exp $
 
 inherit eutils
 
@@ -10,8 +10,8 @@ SRC_URI="mirror://sourceforge/iprdd/${P}-src.tgz"
 HOMEPAGE="http://sourceforge.net/projects/iprdd/"
 
 SLOT="0"
-LICENSE="IPL-1"
-KEYWORDS="~ppc ~ppc64"
+LICENSE="IBM"
+KEYWORDS="ppc ppc64"
 IUSE=""
 
 DEPEND=">=sys-libs/ncurses-5.4-r5

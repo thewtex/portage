@@ -1,6 +1,6 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-extra/gnome-user-docs/gnome-user-docs-2.28.1.ebuild,v 1.1 2009/12/13 22:52:25 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/gnome-user-docs/gnome-user-docs-2.28.1.ebuild,v 1.3 2010/01/18 23:33:00 eva Exp $
 
 GCONF_DEBUG="no"
 

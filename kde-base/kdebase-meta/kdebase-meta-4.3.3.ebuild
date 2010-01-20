@@ -1,6 +1,6 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/kdebase-meta/kdebase-meta-4.3.3.ebuild,v 1.5 2009/12/10 14:56:29 fauli Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/kdebase-meta/kdebase-meta-4.3.3.ebuild,v 1.7 2010/01/19 01:35:57 jer Exp $
 
 EAPI="2"
 inherit kde4-functions
@@ -10,8 +10,8 @@ HOMEPAGE="http://www.kde.org/"
 
 LICENSE="GPL-2"
 SLOT="4.3"
-KEYWORDS="~alpha amd64 ~hppa ~ia64 ppc ppc64 ~sparc x86"
-IUSE="kdeprefix policykit +semantic-desktop"
+KEYWORDS="~alpha amd64 hppa ~ia64 ppc ppc64 ~sparc x86"
+IUSE="aqua kdeprefix policykit +semantic-desktop"
 
 RDEPEND="
 	$(add_kdebase_dep dolphin)

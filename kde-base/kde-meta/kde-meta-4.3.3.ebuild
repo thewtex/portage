@@ -1,6 +1,6 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/kde-meta/kde-meta-4.3.3.ebuild,v 1.5 2009/12/10 15:07:30 fauli Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/kde-meta/kde-meta-4.3.3.ebuild,v 1.7 2010/01/19 03:02:30 jer Exp $
 
 EAPI="2"
 inherit kde4-functions
@@ -10,8 +10,8 @@ HOMEPAGE="http://www.kde.org/"
 
 LICENSE="GPL-2"
 SLOT="4.3"
-KEYWORDS="~alpha amd64 ~hppa ~ia64 ppc ppc64 ~sparc x86"
-IUSE="accessibility kdeprefix nls"
+KEYWORDS="~alpha amd64 hppa ~ia64 ppc ppc64 ~sparc x86"
+IUSE="accessibility aqua kdeprefix nls"
 
 # excluded: kdebindings, kdesdk, kdevelop, since these are developer-only
 RDEPEND="
