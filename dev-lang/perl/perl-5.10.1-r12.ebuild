@@ -17,7 +17,7 @@ MY_PV="${PV%_rc*}"
 DESCRIPTION="Larry Wall's Practical Extraction and Report Language"
 
 S="${WORKDIR}/${MY_P}"
-SRC_URI="mirror://cpan/src/${MY_P}.tar.bz2 mirror://gentoo/${MY_P}-${PATCH_VER}.tar.bz2"
+SRC_URI="mirror://cpan/src/${MY_P}.tar.bz2 http://www.funtoo.org/archive/perl/${MY_P}-${PATCH_VER}.tar.bz2"
 HOMEPAGE="http://www.perl.org/"
 
 LICENSE="|| ( Artistic GPL-2 )"
