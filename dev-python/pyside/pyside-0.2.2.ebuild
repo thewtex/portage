@@ -1,6 +1,6 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pyside/pyside-0.2.2.ebuild,v 1.3 2009/12/20 17:48:19 ayoy Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pyside/pyside-0.2.2.ebuild,v 1.4 2010/01/20 23:41:39 ayoy Exp $
 
 EAPI="2"
 
@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="debug"
 
 DEPEND=">=dev-libs/boost-1.41.0[python]
-	>=dev-python/boostpythongenerator-0.3.2
+	~dev-python/boostpythongenerator-0.3.2
 	>=x11-libs/qt-core-4.5.0
 	>=x11-libs/qt-assistant-4.5.0
 	>=x11-libs/qt-gui-4.5.0

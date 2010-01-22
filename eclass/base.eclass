@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/base.eclass,v 1.44 2010/01/13 09:51:53 scarabeus Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/base.eclass,v 1.46 2010/01/20 19:21:19 scarabeus Exp $
 
 # @ECLASS: base.eclass
 # @MAINTAINER:
@@ -74,7 +74,6 @@ base_src_prepare() {
 	if [[ "$(declare -p PATCHES 2>/dev/null 2>&1)" == "declare -a"* ]]; then
 		for x in "${PATCHES[@]}"; do
 			debug-print "$FUNCNAME: applying patch from ${x}"
-			[[ -f "${x}" ]] && epatch "${x}"
 			if [[ -d "${x}" ]]; then
 				# Use standardized names and locations with bulk patching
 				# Patch directory is ${WORKDIR}/patch
@@ -88,6 +87,11 @@ base_src_prepare() {
 				EPATCH_SOURCE=${x}
 				epatch
 				EPATCH_SOURCE=${oldval}
+			elif [[ -f "${x}" ]]; then
+				epatch "${x}"
+			else
+				eqawarn "File or directory \"${x}\" does not exist."
+				eqawarn "Check your PATCHES array or add missing file/directory."
 			fi
 		done
 	else
