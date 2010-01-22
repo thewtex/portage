@@ -1,3 +1,5 @@
+EAPI="2"
+
 inherit distutils
 
 DESCRIPTION="Pyclewn allows using vim as a front end to a debugger."
@@ -9,6 +11,6 @@ IUSE=""
 SLOT="0"
 
 RDEPEND="dev-lang/python
-  app-editors/gvim[console-netbeans,netbeans]
+  =app-editors/gvim-7.2.303[console-netbeans,netbeans]
   sys-devel/gdb"
 DEPEND="${DEPEND}"
