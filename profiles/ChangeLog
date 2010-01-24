@@ -1,10 +1,30 @@
 # ChangeLog for profile directory
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.3823 2010/01/23 05:35:03 matsuu Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.3827 2010/01/23 21:47:34 ikelos Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  23 Jan 2010; Mike Auty <ikelos@gentoo.org> package.mask:
+  Mask mozilla-firefox-3.6 and xulrunner-1.9.2 pending the investigation of
+  bug 301389.
+
+  23 Jan 2010; Peter Volkov <pva@gentoo.org> package.mask:
+  Update bzr/bzrtools mask to really mask all beta versions.
+
+  23 Jan 2010; Samuli Suominen <ssuominen@gentoo.org>
+  -default-linux/make.defaults, -default-linux/mips/ChangeLog,
+  -default-linux/mips/make.defaults, -default-linux/mips/package.mask,
+  -default-linux/mips/package.use.mask, -default-linux/mips/packages,
+  -default-linux/mips/parent, -default-linux/mips/use.mask,
+  -default-linux/mips/virtuals, -default-linux/package.use.mask,
+  -default-linux/packages, -default-linux/packages.build,
+  -default-linux/parent, -default-linux/use.mask, -default-linux/virtuals:
+  Remove stray default-linux/ wrt #287976.
+
+  23 Jan 2010; Raúl Porcel <armin76@gentoo.org> package.mask:
+  Unmask mozilla-thunderbird-bin-3.0
 
   23 Jan 2010; MATSUU Takuto <matsuu@gentoo.org> base/package.use.mask:
   use.unmask sys-apps/groff-1.20.1-r2 linguas_ja, bug #290103.
