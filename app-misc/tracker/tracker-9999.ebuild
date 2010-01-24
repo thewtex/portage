@@ -1,6 +1,6 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/tracker/tracker-9999.ebuild,v 1.7 2009/12/21 22:28:02 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/tracker/tracker-9999.ebuild,v 1.8 2010/01/21 23:51:30 eva Exp $
 
 EAPI="2"
 G2CONF_DEBUG="no"
@@ -16,15 +16,15 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
 # USE="doc" is managed by eclass.
-IUSE="applet deskbar doc eds exif gsf gstreamer gtk hal iptc +jpeg kmail laptop mp3 nautilus pdf playlist test +tiff +vorbis wv2 xine +xml xmp"
+IUSE="applet deskbar doc eds exif gsf gstreamer gtk hal iptc +jpeg kmail laptop mp3 nautilus pdf playlist test +tiff +vorbis xine +xml xmp"
 
 # Automagic, gconf, uuid, enca and probably more
 # TODO: quill and streamanalyzer support
 RDEPEND="
 	>=app-i18n/enca-1.9
 	>=dev-db/sqlite-3.6.16[threadsafe]
-	>=dev-libs/dbus-glib-0.78
-	>=dev-libs/glib-2.16.0
+	>=dev-libs/dbus-glib-0.82-r1
+	>=dev-libs/glib-2.20
 	>=gnome-base/gconf-2
 	>=media-gfx/imagemagick-5.2.1[png,jpeg=]
 	>=media-libs/libpng-1.2
@@ -59,7 +59,6 @@ RDEPEND="
 	playlist? ( dev-libs/totem-pl-parser )
 	tiff? ( media-libs/tiff )
 	vorbis? ( >=media-libs/libvorbis-0.22 )
-	wv2? ( >=app-text/wv2-0.3.1 )
 	xine? ( >=media-libs/xine-lib-1 )
 	xml? ( >=dev-libs/libxml2-2.6 )
 	xmp? ( >=media-libs/exempi-2.1 )"
@@ -141,7 +140,6 @@ pkg_setup() {
 		$(use_enable test unit-tests)
 		$(use_enable tiff libtiff)
 		$(use_enable vorbis libvorbis)
-		$(use_enable wv2 libwv2)
 		$(use_enable xml libxml2)
 		$(use_enable xmp exempi)"
 		# FIXME: Missing files to run functional tests
