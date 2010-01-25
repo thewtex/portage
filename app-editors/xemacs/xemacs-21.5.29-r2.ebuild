@@ -1,6 +1,6 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/xemacs/xemacs-21.5.29-r2.ebuild,v 1.1 2009/07/07 18:26:50 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-editors/xemacs/xemacs-21.5.29-r2.ebuild,v 1.3 2010/01/23 13:39:10 graaff Exp $
 
 # Note: xemacs currently does not work with a hardened profile. If you
 # want to use xemacs on a hardened profile then compile with the
@@ -40,12 +40,12 @@ RDEPEND="
 	motif? ( >=x11-libs/openmotif-2.1.30 )
 	athena? ( x11-libs/libXaw )
 	Xaw3d? ( x11-libs/Xaw3d )
-	xft? ( media-libs/freetype x11-libs/libXrender >=media-libs/fontconfig-2.5.0 )
+	xft? ( media-libs/freetype x11-libs/libXft x11-libs/libXrender >=media-libs/fontconfig-2.5.0 )
 	neXt? ( x11-libs/neXtaw )
 	xface? ( media-libs/compface )
 	tiff? ( media-libs/tiff )
 	png? ( =media-libs/libpng-1.2* )
-	jpeg? ( media-libs/jpeg )
+	jpeg? ( media-libs/jpeg:0 )
 	canna? ( app-i18n/canna )
 	freewnn? ( app-i18n/freewnn )
 	>=sys-libs/ncurses-5.2"

@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/mailutils/mailutils-2.1.ebuild,v 1.2 2010/01/21 20:52:16 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-mail/mailutils/mailutils-2.1.ebuild,v 1.4 2010/01/25 00:30:45 jer Exp $
 
 EAPI="2"
 
@@ -13,17 +13,20 @@ LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 
 KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~sparc ~x86"
-IUSE="gdbm guile mysql nls pam postgres python test"
+IUSE="bidi gdbm guile ldap mysql nls pam postgres python test tokyocabinet"
 PROVIDE="virtual/mailx"
 
 RDEPEND="!virtual/mailx
 	!mail-client/nmh
 	!mail-filter/libsieve
+	bidi? ( dev-libs/fribidi )
 	guile? ( dev-scheme/guile )
 	gdbm? ( sys-libs/gdbm )
+	ldap? ( net-nds/openldap )
 	mysql? ( virtual/mysql )
-	postgres? ( virtual/postgresql-base )
 	nls? ( sys-devel/gettext )
+	postgres? ( virtual/postgresql-base )
+	tokyocabinet? ( dev-db/tokyocabinet )
 	virtual/mta"
 
 DEPEND="${RDEPEND}
@@ -44,13 +47,16 @@ src_configure() {
 	myconf="${myconf} --enable-sendmail"
 
 	econf ${myconf} \
+		$(use_with bidi fribidi) \
 		$(use_with gdbm) \
 		$(use_with guile) \
+		$(use_with ldap) \
 		$(use_with mysql) \
-		$(use_with postgres) \
 		$(use_enable nls) \
 		$(use_enable pam) \
+		$(use_with postgres) \
 		$(use_with python) \
+		$(use_with tokyocabinet) \
 		|| die "configure failed"
 }
 

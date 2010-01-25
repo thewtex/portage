@@ -1,9 +1,13 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/base/package.use.mask,v 1.124 2010/01/20 17:54:06 hwoarang Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/base/package.use.mask,v 1.127 2010/01/24 16:59:35 zmedico Exp $
 
 # This file requires >=portage-2.1.1
 # New entries go on top.
+
+# Zac Medico <zmedico@gentoo.org> (24 Jan 2010)
+# Mask python3 for stable portage until python-3.x is marked stable.
+=sys-apps/portage-2.1.7* python3
 
 # Markos Chandras <hwoarang@gentoo.org> (20 Jan 2010)
 # Masking qml use flag since qt-declarative-4.6.0 doesn't build
@@ -35,12 +39,6 @@ sci-mathematics/fricas gcl cmucl
 # Mask very experimental mpi use flag dfor gamess
 sci-chemistry/gamess mpi
 
-# Samuli Suominen <ssuominen@gentoo.org> (29 Nov 2009)
-# Waiting for bug 298561 to be completed.
-<kde-base/ark-4.3.4 lzma
-<kde-base/kdebase-kioslaves-4.3.4 lzma
-<kde-base/kdelibs-4.3.4 lzma
-
 # Samuli Suominen <ssuominen@gentoo.org> (10 Jan 2009)
 # Not ready for stable anytime soon.
 <kde-base/kdeadmin-meta-4.4.0 cups
@@ -67,7 +65,7 @@ media-video/totem tracker
 # Tomáš Chvátal <scarabeus@gentoo.org> (27 Oct 2009)
 # Broken on so many setups it is just insane.
 # Unmask if you really know what you are doing.
-sys-apps/groff linguas_ja
+<sys-apps/groff-1.20.1-r2 linguas_ja
 
 # Samuli Suominen <ssuominen@gentoo.org) (14 Oct 2009)
 # Conflict with dev-libs/libffi in ld.so.conf.

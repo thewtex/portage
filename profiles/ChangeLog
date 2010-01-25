@@ -1,10 +1,80 @@
 # ChangeLog for profile directory
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.3816 2010/01/21 09:42:51 fauli Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.3834 2010/01/25 06:23:02 nirbheek Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  25 Jan 2010; Nirbheek Chauhan <nirbheek@gentoo.org> package.mask:
+  Mask the final rc of networkmanager-0.8 for testing, will be unmasked in a
+  few days
+
+  24 Jan 2010; Pacho Ramos <pacho@gentoo.org> arch/amd64/package.use.mask:
+  Mask esd USE flag for wine since esound is not longer provided in emul-
+  set
+
+  24 Jan 2010; Mike Auty <ikelos@gentoo.org> package.mask:
+  Remove the mozilla-firefox-3.6 and xulrunner-1.9.2 mask now that
+  mozcoreconf-2.eclass has been updated to force -O2 optimizations on x86.
+
+  24 Jan 2010; Fabian Groffen <grobian@gentoo.org> updates/1Q-2010:
+  pkgmove apple-opengl to opengl-apple
+
+  24 Jan 2010; Raúl Porcel <armin76@gentoo.org> package.mask:
+  p.mask net-misc/vnc
+
+  24 Jan 2010; Hans de Graaff <graaff@gentoo.org> package.mask:
+  Mask dev-ruby/activerecord-jdbc.
+
+  24 Jan 2010; Hans de Graaff <graaff@gentoo.org> package.mask:
+  Mask capistrano-1.x and its dependencies.
+
+  23 Jan 2010; Mike Auty <ikelos@gentoo.org> package.mask:
+  Mask mozilla-firefox-3.6 and xulrunner-1.9.2 pending the investigation of
+  bug 301389.
+
+  23 Jan 2010; Peter Volkov <pva@gentoo.org> package.mask:
+  Update bzr/bzrtools mask to really mask all beta versions.
+
+  23 Jan 2010; Samuli Suominen <ssuominen@gentoo.org>
+  -default-linux/make.defaults, -default-linux/mips/ChangeLog,
+  -default-linux/mips/make.defaults, -default-linux/mips/package.mask,
+  -default-linux/mips/package.use.mask, -default-linux/mips/packages,
+  -default-linux/mips/parent, -default-linux/mips/use.mask,
+  -default-linux/mips/virtuals, -default-linux/package.use.mask,
+  -default-linux/packages, -default-linux/packages.build,
+  -default-linux/parent, -default-linux/use.mask, -default-linux/virtuals:
+  Remove stray default-linux/ wrt #287976.
+
+  23 Jan 2010; Raúl Porcel <armin76@gentoo.org> package.mask:
+  Unmask mozilla-thunderbird-bin-3.0
+
+  23 Jan 2010; MATSUU Takuto <matsuu@gentoo.org> base/package.use.mask:
+  use.unmask sys-apps/groff-1.20.1-r2 linguas_ja, bug #290103.
+
+  22 Jan 2010; Vlastimil Babka <caster@gentoo.org> package.mask:
+  Last rites for the rest of 1.4 JDK's.
+
+  22 Jan 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> package.mask:
+  Remove package.mask entry for www-client/chromium package version no
+  longer in tree.
+
+  22 Jan 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> package.mask:
+  Mask www-client/chromium-4.0.302.2 dev channel release.
+
+  22 Jan 2010; Matthias Schwarzott <zzam@gentoo.org> package.mask:
+  Mask media-tv/vdr-dvd-scripts and media-tv/vdrplugin-rebuild. Both are
+  already included im media-tv/gentoo-vdr-scripts.
+
+  22 Jan 2010; Hanno Boeck <hanno@gentoo.org> package.mask:
+  Remove dzip mask, have just committed dzip-2.9-r3 which fixes all known
+  issues.
+
+  22 Jan 2010; Ulrich Mueller <ulm@gentoo.org> license_groups:
+  Add AGPL-3 and UoI-NCSA to GPL-COMPATIBLE; remove Artistic from
+  GPL-COMPATIBLE; move lsof from GPL-COMPATIBLE to MISC-FREE; bug 228527.
+  Add ANTLR, eGenixPublic-1.1, IDPL, and Sendmail to MISC-FREE.
 
   21 Jan 2010; Christian Faulhammer <fauli@gentoo.org> package.mask:
   mask g-ctan and texmfind in their 2009.1 versions along with TeXLive 2009

@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/transcode/transcode-1.1.5.ebuild,v 1.7 2010/01/15 05:51:38 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/transcode/transcode-1.1.5.ebuild,v 1.9 2010/01/24 16:43:11 klausman Exp $
 
 EAPI="2"
 
@@ -16,7 +16,7 @@ HOMEPAGE="http://tcforge.berlios.de/"
 SRC_URI="mirror://berlios/tcforge/${MY_P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ppc ppc64 ~sparc x86"
+KEYWORDS="alpha amd64 ppc ppc64 ~sparc x86"
 IUSE="X 3dnow a52 aac alsa altivec dv dvd iconv imagemagick jpeg lzo mjpeg mp3 mpeg mmx nuv ogg oss postproc quicktime sdl sse sse2 theora truetype v4l2 vorbis x264 xml xvid"
 
 RDEPEND="aac? ( media-libs/faac )
@@ -33,7 +33,7 @@ RDEPEND="aac? ( media-libs/faac )
 	vorbis? ( media-libs/libvorbis )
 	ogg? ( media-libs/libogg )
 	theora? ( media-libs/libtheora )
-	jpeg? ( media-libs/jpeg )
+	jpeg? ( media-libs/jpeg:0 )
 	truetype? ( >=media-libs/freetype-2 )
 	>=media-video/ffmpeg-0.4.9_p20081014
 	|| ( sys-libs/glibc dev-libs/libiconv )

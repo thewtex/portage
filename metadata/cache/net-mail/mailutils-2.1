@@ -1,5 +1,5 @@
-!virtual/mailx !mail-client/nmh !mail-filter/libsieve guile? ( dev-scheme/guile ) gdbm? ( sys-libs/gdbm ) mysql? ( virtual/mysql ) postgres? ( virtual/postgresql-base ) nls? ( sys-devel/gettext ) virtual/mta test? ( dev-util/dejagnu ) >=app-admin/eselect-python-20090804
-!virtual/mailx !mail-client/nmh !mail-filter/libsieve guile? ( dev-scheme/guile ) gdbm? ( sys-libs/gdbm ) mysql? ( virtual/mysql ) postgres? ( virtual/postgresql-base ) nls? ( sys-devel/gettext ) virtual/mta
+!virtual/mailx !mail-client/nmh !mail-filter/libsieve bidi? ( dev-libs/fribidi ) guile? ( dev-scheme/guile ) gdbm? ( sys-libs/gdbm ) ldap? ( net-nds/openldap ) mysql? ( virtual/mysql ) nls? ( sys-devel/gettext ) postgres? ( virtual/postgresql-base ) tokyocabinet? ( dev-db/tokyocabinet ) virtual/mta test? ( dev-util/dejagnu ) >=app-admin/eselect-python-20090804
+!virtual/mailx !mail-client/nmh !mail-filter/libsieve bidi? ( dev-libs/fribidi ) guile? ( dev-scheme/guile ) gdbm? ( sys-libs/gdbm ) ldap? ( net-nds/openldap ) mysql? ( virtual/mysql ) nls? ( sys-devel/gettext ) postgres? ( virtual/postgresql-base ) tokyocabinet? ( dev-db/tokyocabinet ) virtual/mta
 0
 http://ftp.gnu.org/gnu/mailutils/mailutils-2.1.tar.bz2
 
@@ -8,7 +8,7 @@ GPL-2 LGPL-2.1
 A useful collection of mail servers, clients, and filters.
 ~alpha ~amd64 ~hppa ~ppc ~sparc ~x86
 eutils flag-o-matic multilib portability python toolchain-funcs
-gdbm guile mysql nls pam postgres python test
+bidi gdbm guile ldap mysql nls pam postgres python test tokyocabinet
 
 
 virtual/mailx
