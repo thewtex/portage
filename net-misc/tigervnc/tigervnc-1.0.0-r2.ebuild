@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/tigervnc/tigervnc-1.0.0-r2.ebuild,v 1.8 2010/01/22 18:45:12 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/tigervnc/tigervnc-1.0.0-r2.ebuild,v 1.10 2010/01/24 18:08:43 armin76 Exp $
 
 EAPI="1"
 
@@ -46,13 +46,14 @@ RDEPEND="sys-libs/zlib
 		media-fonts/font-misc-misc
 		xorgmodule? ( ~x11-base/xorg-server-${XSERVER_VERSION} )
 	)
-	x86? ( dev-lang/nasm )
 	!net-misc/vnc
 	!net-misc/tightvnc
 	!net-misc/xf4vnc"
 DEPEND="${RDEPEND}
-	x11-proto/inputproto
-	x11-proto/xextproto
+	x86? ( dev-lang/nasm )
+	>=x11-proto/inputproto-1.5
+	>=x11-proto/xextproto-7.0.3
+	>=x11-proto/xproto-7.0.13
 	server?	(
 		x11-proto/bigreqsproto
 		x11-proto/compositeproto
@@ -60,7 +61,7 @@ DEPEND="${RDEPEND}
 		x11-proto/dri2proto
 		x11-proto/fixesproto
 		x11-proto/fontsproto
-		x11-proto/randrproto
+		>=x11-proto/randrproto-1.2.99
 		x11-proto/resourceproto
 		x11-proto/scrnsaverproto
 		x11-proto/trapproto
@@ -72,10 +73,11 @@ DEPEND="${RDEPEND}
 		x11-proto/xf86driproto
 		x11-proto/xf86miscproto
 		x11-proto/xf86vidmodeproto
-		opengl? ( x11-proto/glproto )
+		opengl? ( >=x11-proto/glproto-1.4.10 )
 		>=media-libs/mesa-7.1
 		>=x11-proto/renderproto-0.9.3
 		x11-libs/libpciaccess
+		>=x11-libs/xtrans-1.2.2
 	)"
 
 S="${WORKDIR}/${PN}"
