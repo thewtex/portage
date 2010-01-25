@@ -16,7 +16,7 @@ DEPEND="virtual/python"
 RDEPEND="${DEPEND}
   app-accessibility/speech-tools
   app-text/texlive
-  virtual/ghostscript
+  app-text/ghostscript-gpl
   media-libs/netpbm"
 
 src_install() {
