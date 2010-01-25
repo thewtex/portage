@@ -24,8 +24,6 @@ RDEPEND="${DEPEND}
 
 src_compile()
 {
-	base_src_compile
-
 	if use doc; then
 		cd Documents
 		./generate_manual.sh || die "generating manuals failed"
