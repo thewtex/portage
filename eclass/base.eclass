@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/base.eclass,v 1.46 2010/01/20 19:21:19 scarabeus Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/base.eclass,v 1.48 2010/01/24 13:43:26 scarabeus Exp $
 
 # @ECLASS: base.eclass
 # @MAINTAINER:
@@ -70,6 +70,8 @@ base_src_prepare() {
 	debug-print-function $FUNCNAME "$@"
 	debug-print "$FUNCNAME: PATCHES=$PATCHES"
 
+	local patches_failed=0
+
 	pushd "${S}" > /dev/null
 	if [[ "$(declare -p PATCHES 2>/dev/null 2>&1)" == "declare -a"* ]]; then
 		for x in "${PATCHES[@]}"; do
@@ -90,10 +92,12 @@ base_src_prepare() {
 			elif [[ -f "${x}" ]]; then
 				epatch "${x}"
 			else
-				eqawarn "File or directory \"${x}\" does not exist."
-				eqawarn "Check your PATCHES array or add missing file/directory."
+				ewarn "QA: File or directory \"${x}\" does not exist."
+				ewarn "QA: Check your PATCHES array or add missing file/directory."
+				patches_failed=1
 			fi
 		done
+		[[ ${patches_failed} -eq 1 ]] && die "Some patches failed. See above messages."
 	else
 		for x in ${PATCHES}; do
 			debug-print "$FUNCNAME: patching from ${x}"

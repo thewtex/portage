@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/podofo/podofo-0.7.0.ebuild,v 1.3 2010/01/20 14:26:27 ranger Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/podofo/podofo-0.7.0.ebuild,v 1.5 2010/01/24 18:46:42 armin76 Exp $
 
 EAPI="2"
 
@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/podofo/${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
 IUSE="+boost debug test"
 
 DEPEND="dev-lang/lua
@@ -20,7 +20,7 @@ DEPEND="dev-lang/lua
 	>=dev-libs/STLport-5.1.5
 	media-libs/fontconfig
 	media-libs/freetype:2
-	media-libs/jpeg
+	media-libs/jpeg:0
 	media-libs/tiff
 	sys-libs/zlib
 	boost? ( dev-util/boost-build )

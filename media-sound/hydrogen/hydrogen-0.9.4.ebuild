@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/hydrogen/hydrogen-0.9.4.ebuild,v 1.5 2010/01/07 19:43:00 ranger Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/hydrogen/hydrogen-0.9.4.ebuild,v 1.7 2010/01/22 18:54:31 armin76 Exp $
 
 EAPI=2
 inherit eutils multilib
@@ -11,11 +11,12 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2 ZLIB"
 SLOT="0"
-KEYWORDS="amd64 ppc ppc64 ~sparc x86"
+KEYWORDS="amd64 ppc ppc64 sparc x86"
 IUSE="alsa flac jack ladspa lash oss"
 
 RDEPEND="x11-libs/qt-gui:4
 	app-arch/libarchive
+	media-libs/libsndfile
 	alsa? ( media-libs/alsa-lib )
 	flac? ( media-libs/flac[cxx] )
 	jack? ( media-sound/jack-audio-connection-kit )
