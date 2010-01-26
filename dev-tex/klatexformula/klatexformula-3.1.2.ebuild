@@ -15,7 +15,7 @@ DEPEND="x11-libs/qt-gui
 	virtual/latex-base"
 
 RDEPEND="${DEPEND}
-	virtual/ghostscript"
+	app-text/ghostscript-gpl"
 
 src_configure() {
 	eqmake4
