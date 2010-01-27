@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/chromium-4.0.249.43.ebuild,v 1.3 2010/01/13 12:15:45 voyageur Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/chromium-4.0.249.43.ebuild,v 1.6 2010/01/26 11:02:17 voyageur Exp $
 
 EAPI="2"
 inherit eutils multilib toolchain-funcs
@@ -20,7 +20,6 @@ RDEPEND="app-arch/bzip2
 	dev-libs/libxslt
 	>=dev-libs/nss-3.12.3
 	>=gnome-base/gconf-2.24.0
-	media-fonts/corefonts
 	>=media-libs/alsa-lib-1.0.19
 	media-libs/jpeg
 	media-libs/libpng
@@ -76,11 +75,11 @@ EOF
 	# Sandbox paths
 	myconf="${myconf} -Dlinux_sandbox_path=${CHROMIUM_HOME}/chrome_sandbox -Dlinux_sandbox_chrome_path=${CHROMIUM_HOME}/chrome"
 
-	if [[ "$ABI" == "amd64" ]] ; then
+	if use amd64 ; then
 		myconf="${myconf} -Dtarget_arch=x64"
 	fi
 
-	if [[ "$ABI" == "x86" ]] ; then
+	if use x86 ; then
 		myconf="${myconf} -Dtarget_arch=ia32"
 	fi
 
