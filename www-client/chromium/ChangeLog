@@ -1,6 +1,25 @@
 # ChangeLog for www-client/chromium
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/ChangeLog,v 1.42 2010/01/24 23:40:49 voyageur Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/ChangeLog,v 1.45 2010/01/26 11:02:17 voyageur Exp $
+
+  26 Jan 2010; Bernard Cafarelli <voyageur@gentoo.org>
+  +chromium-4.0.249.43.ebuild:
+  Pawel just reminded me that the beta channel latest version is 4.0.249.43,
+  not 4.0.266.0
+
+  26 Jan 2010; Bernard Cafarelli <voyageur@gentoo.org>
+  -chromium-4.0.249.43.ebuild, chromium-4.0.266.0-r1.ebuild,
+  chromium-4.0.295.0.ebuild, chromium-4.0.302.2.ebuild,
+  chromium-9999.ebuild:
+  Revert multilib change from bug #296917 as it breaks cross-compiling, bug
+  #301652. Also apply H264 patch to -9999 and remove old
+
+  26 Jan 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-4.0.249.43.ebuild, chromium-4.0.266.0.ebuild,
+  chromium-4.0.266.0-r1.ebuild, chromium-4.0.295.0.ebuild,
+  chromium-4.0.302.2.ebuild, chromium-9999.ebuild:
+  Drop dependency on media-fonts/corefonts, bug #302231 by Andrew John
+  Hughes <gnu_andrew@member.fsf.org>
 
 *chromium-4.0.266.0-r1 (24 Jan 2010)
 
