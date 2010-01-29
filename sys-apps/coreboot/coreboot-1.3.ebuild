@@ -15,10 +15,6 @@ DEPEND=""
 RDEPEND="dev-lang/python"
 FEATURES="nomirror"
 
-src_compile() {
-	return
-}
-
 src_install() {
 	insinto /usr/lib/`eselect python show --python2`/site-packages
 	cd ${S}/python/modules
@@ -32,5 +28,12 @@ src_install() {
 	dosbin sbin/boot-update
 
 	insinto /etc
-	doins etc/boot.conf
+	newins etc/boot.conf boot.conf.example
+}
+
+pkg_postinst() {
+	if [ ! -e ${ROOT}/etc/boot.conf ] && [ -e ${ROOT}/etc/boot.conf.example ]
+	then
+		cp ${ROOT}/etc/boot.conf.example ${ROOT}/etc/boot.conf
+	fi
 }
