@@ -1,6 +1,15 @@
 # ChangeLog for sys-kernel/openvz-sources
-# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-kernel/openvz-sources/ChangeLog,v 1.122 2009/11/26 19:12:49 pva Exp $
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-kernel/openvz-sources/ChangeLog,v 1.125 2010/01/28 18:56:11 pva Exp $
+
+*openvz-sources-2.6.18.028.067.4 (28 Jan 2010)
+
+  28 Jan 2010; Peter Volkov <pva@gentoo.org>
+  -files/openvz-sources-2.6.18.028.064.7-cifs-buildfix.patch,
+  -files/openvz-sources-2.6.18.028.064.7-syscall.patch,
+  -openvz-sources-2.6.18.028.064.8.ebuild,
+  +openvz-sources-2.6.18.028.067.4.ebuild, openvz-sources-2.6.27.3.1.ebuild:
+  Version bump. Dropped old. amd64/x86 stable, bug #198632.
 
   15 Jan 2010; Daniel Robbins <drobbins@funtoo.org>
   +openvz-sources-2.6.18.028.066.10-r1.ebuild: back-ported uvesafb support into
@@ -8,11 +17,23 @@
 
   15 Jan 2010; Daniel Robbins <drobbins@funtoo.org>
   openvz-sources-2.6.18.028.066.10.ebuild: added default configs.
- 
+
+*openvz-sources-2.6.27.3.1 (09 Jan 2010)
+
+  09 Jan 2010; Peter Volkov <pva@gentoo.org>
+  +openvz-sources-2.6.27.3.1.ebuild:
+  Version bump, bug #300109.
+
   31 Dec 2009; Daniel Robbins <drobbins@funtoo.org>
   openvz-sources-2.6.18.028.066.10.ebuild: remove versionator.eclass; add
   RDEPEND for =sys-devel/gcc-4.1* which is required to compile it. Cleaned up
   messages to reflect this.
+
+*openvz-sources-2.6.18.028.066.10 (14 Dec 2009)
+  14 Dec 2009; Peter Volkov <pva@gentoo.org>
+  -openvz-sources-2.6.18.028.066.7.ebuild,
+  +openvz-sources-2.6.18.028.066.10.ebuild:
+  Version bump of RHEL5 based kernel.
 
 *openvz-sources-2.6.18.028.066.10 (12 Dec 2009)
 
