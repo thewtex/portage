@@ -1,6 +1,6 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/wanderlust/wanderlust-2.14.0-r5.ebuild,v 1.4 2009/09/27 19:19:16 nixnut Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/wanderlust/wanderlust-2.14.0-r5.ebuild,v 1.5 2010/01/30 23:28:10 ulm Exp $
 
 inherit elisp eutils
 
@@ -10,7 +10,7 @@ DESCRIPTION="Yet Another Message Interface on Emacsen"
 HOMEPAGE="http://www.gohome.org/wl/"
 SRC_URI="ftp://ftp.gohome.org/wl/stable/${MY_P}.tar.gz
 	ftp://ftp.gohome.org/wl/beta/${MY_P}.tar.gz
-	http://dev.gentoo.org/~usata/distfiles/${MY_P}-20050405.diff"
+	mirror://gentoo/${P}-20050405.patch.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -28,10 +28,10 @@ S="${WORKDIR}/${MY_P}"
 SITEFILE="50${PN}-gentoo.el"
 
 src_unpack() {
-	unpack ${MY_P}.tar.gz
+	unpack ${A}
 
 	cd "${S}"
-	epatch "${DISTDIR}/${MY_P}-20050405.diff"
+	epatch "${WORKDIR}/${P}-20050405.patch"
 	epatch "${FILESDIR}/${P}-smtp-end-of-line.patch"
 	epatch "${FILESDIR}/${P}-texinfo-garbage.patch"
 }
