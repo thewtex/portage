@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5219 2010/01/28 20:07:41 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5222 2010/01/31 02:41:57 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -3095,6 +3095,7 @@ sci-libs/libghemical:mopac7 - Use sci-chemistry/mopac7 for semi-empirical calcul
 sci-libs/libghemical:mpqc - Use sci-chemistry/mpqc for quantum-mechanical calculations
 sci-libs/libnc-dap:full-test - Enables full set of regression tests (long).
 sci-libs/libsvm:tools - Install support tools
+sci-libs/mathgl:mpi - Use mpi wrappers for compilation. Requirement for sci-libs/hdf5[mpi]
 sci-libs/mathgl:octave - Add bindings for sci-mathematics/octave
 sci-libs/metis:int64 - Build the 64 bits integer library (metis >=5 only)
 sci-libs/mkl:fortran95 - Installs the BLAS/LAPACK FORTRAN95 static libraries
@@ -3407,6 +3408,7 @@ sys-fs/pysize:psyco - Adds psyco support
 sys-fs/quota:rpc - Enable quota interaction via RPC
 sys-fs/udev:devfs-compat - Install rules for devfs compatible device names
 sys-fs/udev:extras - Compile udev-extras requiring external dependencies
+sys-fs/udev:old-hd-rules - Install rules for /dev/hd* devices, removed upstream at udev-148
 sys-fs/unionfs:nfs - Adds support for NFS file system
 sys-kernel/dracut:dmraid - Add support for dmraid devices, also known as ATA-RAID, or Fake RAID.
 sys-kernel/dracut:iscsi - Add support for iSCSI
@@ -3605,6 +3607,7 @@ x11-misc/fbpager:xrender - Enable transparency support via x11-libs/libXrender
 x11-misc/fspanel:xft - Build with support for XFT font renderer (x11-libs/libXft)
 x11-misc/google-gadgets:soup - Enables XML HTTP request extension based on net-libs/libsoup
 x11-misc/google-gadgets:webkit - Enables browser element and script runtime based on net-libs/webkit-gtk
+x11-misc/googleearth:qt-bundled - Use bundled Qt4 libraries instead of system ones. Recommended only for troubleshooting.
 x11-misc/rednotebook:libyaml - enable libyaml support
 x11-misc/shutter:drawing - Enables drawing tool
 x11-misc/shutter:webphoto - Enables screenshots of websites
