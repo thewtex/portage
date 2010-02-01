@@ -1,0 +1,11 @@
+--- scipy/signal/signaltools.py.orig	2010-01-28 23:23:52.085732611 -0600
++++ scipy/signal/signaltools.py	2010-01-28 23:25:06.442399828 -0600
+@@ -971,7 +971,7 @@
+ 
+     if len(x.shape) > 1:
+         h = h[:, newaxis]
+-    x = ifft(Xf*h)
++    x = ifft(Xf*h,N,axis=0)
+     return x
+ 
+ def hilbert2(x,N=None):

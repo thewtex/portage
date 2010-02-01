@@ -71,6 +71,7 @@ src_unpack() {
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-0.7.0_beta1-implicit.patch
 	epatch "${FILESDIR}"/${PN}-0.6.0-stsci.patch
+	epatch "${FILESDIR}"/hilbert_fix.patch || die "patch failed"
 	cat > site.cfg <<-EOF
 		[DEFAULT]
 		library_dirs = /usr/$(get_libdir)
