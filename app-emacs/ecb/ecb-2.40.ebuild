@@ -1,6 +1,6 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/ecb/ecb-2.40.ebuild,v 1.4 2009/07/16 16:40:22 nixnut Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/ecb/ecb-2.40.ebuild,v 1.5 2010/01/31 11:45:10 ulm Exp $
 
 inherit elisp eutils
 
@@ -17,7 +17,7 @@ DEPEND=">=app-emacs/cedet-1.0_pre6
 	java? ( app-emacs/jde )"
 RDEPEND="${DEPEND}"
 
-SITEFILE="71${PN}-gentoo.el"
+SITEFILE="70${PN}-gentoo.el"
 
 src_unpack() {
 	unpack ${A}

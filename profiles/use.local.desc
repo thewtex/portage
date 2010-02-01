@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5222 2010/01/31 02:41:57 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5228 2010/02/01 05:29:02 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -654,10 +654,12 @@ dev-db/mysql:community - Enables the community features from upstream.
 dev-db/mysql:embedded - Build embedded server (libmysqld)
 dev-db/mysql:extraengine - Add support for alternative storage engines
 dev-db/mysql:latin1 - Use LATIN1 encoding instead of UTF8
-dev-db/mysql:max-idx-128 - Raise the max index per table limit from 64 to 128 
+dev-db/mysql:max-idx-128 - Raise the max index per table limit from 64 to 128
 dev-db/mysql:minimal - Install client programs only, no server
+dev-db/mysql:pbxt - Add experimental support for pbxt storage engine
 dev-db/mysql:profiling - Add support for statement profiling (requires USE=community).
 dev-db/mysql:raid - Deprecated option, removed in the 5.0 series
+dev-db/mysql:xtradb - Add experimental support for XtraDB storage engine
 dev-db/mysql-community:big-tables - Make tables contain up to 1.844E+19 rows
 dev-db/mysql-community:cluster - Add support for NDB clustering
 dev-db/mysql-community:community - Enables the community features from upstream.
@@ -1092,6 +1094,7 @@ dev-util/nvidia-cuda-toolkit:profiler -  Installs the NVIDIA CUDA visual profile
 dev-util/pbuilder:uml - Enable pbuilder user mode linux support
 dev-util/perf:demangle -  Enable C++ symbol name demangling, using libbfd from sys-devel/binutils. When this flag is enabled, the package will have to be rebuilt after every version bump of binutils. 
 dev-util/perf:doc -  Build documentation and man pages. With thise USE flag disabled, the --help parameter for perf and its sub-tools will not be available. This is optional because it depends on a few documentation handling tools that are not always welcome on user systems. 
+dev-util/perf:perl -  Add support for Perl as a scripting language for perf tools. 
 dev-util/qct:bazaar -  Support for dev-util/bzr 
 dev-util/qct:mercurial -  Support for dev-util/mercurial 
 dev-util/qct:monotone -  Support for dev-util/monotone 
@@ -1110,6 +1113,7 @@ dev-util/qt-creator:subversion - enable subersion plugin
 dev-util/radare:gui -  Enable the graphical user interface of radare (broken) 
 dev-util/radare:vala -  Enable support for the vala programming language 
 dev-util/schroot:dchroot - Enables the building of a wrapper named "dchroot", replacing sys-apps/dchroot.
+dev-util/schroot:lvm - Enable support for chroots on LVM.
 dev-util/strace:aio - Enable libaio support
 dev-util/subversion:ctypes-python - Build and install ctypes python bindings
 dev-util/subversion:dso - Enable runtime module search
@@ -1258,6 +1262,7 @@ games-sports/xmoto:editor - Depend on inkscape, scripts to convert svg to level 
 games-strategy/dark-oberon:fmod - Add sound support (fmod)
 games-strategy/defcon-demo:system-libs - Use system libraries instead of the ones included in the upstream distribution.
 games-strategy/freeciv:auth - Add authentication capability
+games-strategy/freeciv:ggz - Add support for GGZ Gaming Zone
 games-strategy/glest:editor - Also install a level editor
 games-strategy/heroes3:maps - Installs optional map data
 games-strategy/heroes3:music - Installs optional music data
@@ -2056,13 +2061,11 @@ media-video/mplayer:external-ffmpeg - Use shared FFmpeg libraries instead of sta
 media-video/mplayer:faac - Use external faac library for AAC encoding
 media-video/mplayer:faad - Use external faad library for AAC decoding
 media-video/mplayer:gmplayer - Build gmplayer, a GTK+ MPlayer gui (UNSUPPORTED)
-media-video/mplayer:gtk - Build gmplayer, a GTK+ MPlayer gui (UNSUPPORTED)
 media-video/mplayer:live - Enables live.com streaming media support
 media-video/mplayer:md5sum - Enables md5sum video output
 media-video/mplayer:mmxext - Enables mmx2 support
 media-video/mplayer:mng - MNG input support
 media-video/mplayer:mp2 - Enables support for twolame, an MP2 audio library
-media-video/mplayer:nemesi - Enable Nemesi Streaming Media support
 media-video/mplayer:network - Enables network streaming support
 media-video/mplayer:nut - Enables support for the NUT container format
 media-video/mplayer:opencore-amr - Enables Adaptive Multi-Rate format support
@@ -3029,7 +3032,7 @@ sci-chemistry/gromacs:single-precision - Single precision version of gromacs
 sci-chemistry/jmol:client-only - Install the viewer only, no applet files for httpd 
 sci-chemistry/openbabel:swig - Use swig to rebuild language bindings.
 sci-chemistry/pdb2pqr:opal - Add web interafce via opal
-sci-chemistry/pymol:apbs - Build the apbs plugin tool.
+sci-chemistry/pymol:apbs - Install the apbs plugin
 sci-chemistry/pymol:shaders - Build with Shaders support - good for high-end 3D video cards.
 sci-chemistry/shelx:dosformat - Use CR/LF to end lines; useful in mixed Linux/Windows environments
 sci-chemistry/wxmacmolplt:flash - Add support for flash movie generation using media-libs/ming
