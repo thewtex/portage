@@ -1,6 +1,52 @@
 # ChangeLog for dev-db/mysql
-# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/mysql/ChangeLog,v 1.497 2009/11/29 18:13:17 klausman Exp $
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-db/mysql/ChangeLog,v 1.502 2010/02/01 01:19:32 robbat2 Exp $
+
+*mysql-5.1.43 (01 Feb 2010)
+*mysql-5.1.42 (01 Feb 2010)
+*mysql-5.1.41 (01 Feb 2010)
+*mysql-5.1.39 (01 Feb 2010)
+
+  01 Feb 2010; Robin H. Johnson <robbat2@gentoo.org> +mysql-5.1.39.ebuild,
+  +mysql-5.1.41.ebuild, +mysql-5.1.42.ebuild, +mysql-5.1.43.ebuild:
+  Bring in 5.1 series again from the overlay. 5.1.39 includes working
+  Percona XtraDB. 5.1.42 should have XtraDB, but it does not compile. 5.1.43
+  is the latest from upstream, for security vulns. MANY thanks to
+  jmbsvicetto for all the work he has put in helping on 5.1 updates.
+
+  31 Jan 2010; Robin H. Johnson <robbat2@gentoo.org> mysql-5.0.54.ebuild,
+  mysql-5.0.70-r1.ebuild, mysql-5.0.72.ebuild, mysql-5.0.72-r1.ebuild,
+  mysql-5.0.76.ebuild, mysql-5.0.76-r1.ebuild, mysql-5.0.83.ebuild,
+  mysql-5.0.84.ebuild, mysql-5.0.84-r1.ebuild:
+  Disable the SSL tests in all old 5.x ebuilds because the SSL certificates
+  have expired now.
+
+  31 Jan 2010; Robin H. Johnson <robbat2@gentoo.org>
+  -mysql-5.0.26-r2.ebuild, -mysql-5.0.32.ebuild, -mysql-5.0.34.ebuild,
+  -mysql-5.0.38.ebuild, -mysql-5.0.40.ebuild, -mysql-5.0.42.ebuild,
+  -mysql-5.0.44.ebuild, -mysql-5.0.44-r1.ebuild, -mysql-5.0.44-r2.ebuild,
+  -mysql-5.0.56.ebuild, -mysql-5.0.60.ebuild, -mysql-5.0.60-r1.ebuild,
+  -mysql-5.0.70.ebuild:
+  Clean up some old versions, keeping only unstables newer than the majority
+  of the stables, and one of each of the old major versions.
+
+*mysql-5.0.90-r1 (31 Jan 2010)
+
+  31 Jan 2010; Robin H. Johnson <robbat2@gentoo.org>
+  +mysql-5.0.90-r1.ebuild:
+  Revision bump. 5.0.90-r1 includes the Percona 5.0.87-b20 patchset
+  directly. Passes upstream testsuite w/ USE='cluster profiling extraengine
+  embedded'. YMMV.
+
+*mysql-5.0.90 (31 Jan 2010)
+*mysql-5.0.88 (31 Jan 2010)
+*mysql-5.0.87 (31 Jan 2010)
+
+  31 Jan 2010; Robin H. Johnson <robbat2@gentoo.org> +mysql-5.0.87.ebuild,
+  +mysql-5.0.88.ebuild, +mysql-5.0.90.ebuild:
+  Version bumps (bugs #301185, #292241, #279493). Only 5.0.87 contains the
+  Percona patchset, as no Percona patches have been released for 5.0.88 or
+  5.0.90.
 
   29 Nov 2009; Tobias Klausmann <klausman@gentoo.org>
   mysql-5.0.84-r1.ebuild:
