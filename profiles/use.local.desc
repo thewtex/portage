@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5228 2010/02/01 05:29:02 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5233 2010/02/02 06:07:41 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -613,7 +613,7 @@ dev-db/mysql:big-tables - Make tables contain up to 1.844E+19 rows
 dev-db/mysql:cluster - Add support for NDB clustering
 dev-db/mysql:community - Enables the community features from upstream.
 dev-db/mysql:embedded - Build embedded server (libmysqld)
-dev-db/mysql:extraengine - Add support for alternative storage engines
+dev-db/mysql:extraengine - Add support for alternative storage engines (Archive, CSV, Blackhole, Federated(X), Partition)
 dev-db/mysql:latin1 - Use LATIN1 encoding instead of UTF8
 dev-db/mysql:max-idx-128 - Raise the max index per table limit from 64 to 128
 dev-db/mysql:minimal - Install client programs only, no server
@@ -2525,6 +2525,8 @@ net-misc/connman:3G - Enable plugins for 3G modems net-misc/dhcp for getting ip.
 net-misc/connman:dhclient - Use dhclient from net-misc/dhcp for getting ip.
 net-misc/connman:dnsproxy - Enable dnsproxy support.
 net-misc/connman:ethernet - Enable ethernet support.
+net-misc/connman:google - Enable Google Public DNS support.
+net-misc/connman:moblin - enable Moblin features support.
 net-misc/connman:modemmanager - Use modemmanager support from net-misc/modemmanager package.
 net-misc/connman:ofono - Use net-misc/ofono for telephony support.
 net-misc/connman:ppp - Enable ppp support.
@@ -2760,7 +2762,7 @@ net-voip/yate:zaptel - Build zaptel Channel plugin
 net-wireless/blueman:network - Add functionality to setup (host) PAN connections using either net-dns/dnsmasq or net-misc/dhcp
 net-wireless/bluez:consolekit - Use sys-auth/pambase[consolekit] to determine access to bluetooth devices based on whether a user is logged in locally or remotely
 net-wireless/bluez:old-daemons - Install old daemons like hidd and sdpd that are deprecated by the new Service framework
-net-wireless/bluez:test-programs - Install l2test and rctest
+net-wireless/bluez:test-programs - Install tools for testing of various Bluetooth functions
 net-wireless/bluez-utils:old-daemons - Install old daemons like hidd and sdpd that are deprecated by the new Service framework
 net-wireless/bluez-utils:test-programs - Install l2test and rctest
 net-wireless/hostapd:debug - Enables debuggin
@@ -2821,7 +2823,9 @@ sci-chemistry/jmol:client-only - Install the viewer only, no applet files for ht
 sci-chemistry/openbabel:swig - Use swig to rebuild language bindings.
 sci-chemistry/pdb2pqr:opal - Add web interafce via opal
 sci-chemistry/pymol:apbs - Install the apbs plugin
+sci-chemistry/pymol:numpy - Compile numpy support
 sci-chemistry/pymol:shaders - Build with Shaders support - good for high-end 3D video cards.
+sci-chemistry/pymol:vmd - Enable vmd module for trajectories
 sci-chemistry/shelx:dosformat - Use CR/LF to end lines; useful in mixed Linux/Windows environments
 sci-chemistry/wxmacmolplt:flash - Add support for flash movie generation using media-libs/ming
 sci-electronics/geda:stroke - enable mouse gesture support
@@ -3123,7 +3127,6 @@ sys-devel/gcc:objc-gc - Build support for the Objective C code language Garbage 
 sys-devel/gcc-apple:multislot - Allow for SLOTs to include minor version (3.3.4 instead of just 3.3)
 sys-devel/gcc-apple:objc - Build support for the Objective C code language
 sys-devel/gcc-apple:objc++ - Build support for the Objective C++ language
-sys-devel/gcc-nios2:multislot - Allow for SLOTs to include minor version (3.3.4 instead of just 3.3)
 sys-devel/gdb:multitarget - Support all known targets in one gdb binary
 sys-devel/kgcc64:multislot - Allow for SLOTs to include minor version (eg. 3.3.4 instead of just 3.3)
 sys-devel/libperl:ithreads - Enable Perl threads, has some compatibility problems

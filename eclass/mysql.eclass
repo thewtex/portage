@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/mysql.eclass,v 1.127 2010/02/01 01:07:08 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/mysql.eclass,v 1.131 2010/02/02 03:01:31 robbat2 Exp $
 
 # @ECLASS: mysql.eclass
 # @MAINTAINER:
@@ -85,7 +85,7 @@ elif [ "${PV#5.0}" != "${PV}" ] && mysql_version_is_at_least "5.0.82"; then
 	MYSQL_COMMUNITY_FEATURES=1
 elif [ "${PV#5.1}" != "${PV}" ] && mysql_version_is_at_least "5.1.28"; then
 	MYSQL_COMMUNITY_FEATURES=1
-elif [ "${PV#5.4}" != "${PV}" ]; then
+elif [ "${PV#5.4}" != "${PV}" ] || [ "${PV#5.4}" != "${PV}" ]; then
 	MYSQL_COMMUNITY_FEATURES=1
 else
 	MYSQL_COMMUNITY_FEATURES=0
@@ -217,7 +217,7 @@ mysql_disable_test() {
 	testsuite="${rawtestname/.*}"
 	testname="${rawtestname/*.}"
 	mysql_disable_file="${S}/mysql-test/t/disabled.def"
-	einfo "rawtestname=${rawtestname} testname=${testname} testsuite=${testsuite}"
+	#einfo "rawtestname=${rawtestname} testname=${testname} testsuite=${testsuite}"
 	echo ${testname} : ${reason} >> "${mysql_disable_file}"
 
 	# ${S}/mysql-tests/t/disabled.def
@@ -489,23 +489,25 @@ configure_51() {
 	local plugins="csv,myisam,myisammrg,heap"
 	if use extraengine ; then
 		# like configuration=max-no-ndb, archive and example removed in 5.1.11
-		plugins="${plugins},archive,blackhole,example,federated,partition"
+		# not added yet: ibmdb2i
+		# Not supporting as examples: example,daemon_example,ftexample 
+		plugins="${plugins},archive,blackhole,federated,partition"
 
 		elog "Before using the Federated storage engine, please be sure to read"
 		elog "http://dev.mysql.com/doc/refman/5.1/en/federated-limitations.html"
 	fi
 
-	# Upstream specifically requests that InnoDB always be built.
-	plugins="${plugins},innobase"
+	# Upstream specifically requests that InnoDB always be built:
+	# - innobase, innodb_plugin
+	# Build falcon if available for 6.x series.
+	for i in innobase innodb_plugin falcon ; do
+		[ -e "${S}"/storage/${i} ] && plugins="${plugins},${i}"
+	done
 
 	# like configuration=max-no-ndb
 	if use cluster ; then
 		plugins="${plugins},ndbcluster"
 		myconf="${myconf} --with-ndb-binlog"
-	fi
-
-	if mysql_version_is_at_least "5.2" ; then
-		plugins="${plugins},falcon"
 	fi
 
 	myconf="${myconf} --with-plugins=${plugins}"
