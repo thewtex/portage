@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11168 2010/01/30 17:49:29 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11173 2010/02/02 06:21:41 robbat2 Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,21 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Robin H. Johnson <robbat2@gentoo.org> (01 Feb 2010)
+# Upstream discontinued the split of -community and -enterprise specific
+# tarballs of source. You must move to dev-db/mysql as the -community split has
+# security vulnerabilities only fixed in the main package.
+# To be removed 2010/07/01.
+dev-db/mysql-community
+
+# Robin H. Johnson <robbat2@gentoo.org> (01 Feb 2010)
+# Mask 5.4 series that is nearly a release candidate upstream (expected within the next 6 months)
+# Mask 5.5/6.0 series that are alpha and and crazy experimental.
+=dev-db/mysql-5.4*
+=virtual/mysql-5.4*
+>=dev-db/mysql-5.5
+>=virtual/mysql-5.5
 
 # Rémi Cardona <remi@gentoo.org> (27 Jan 2010)
 # dev package with fatal asserts(), see bug #301892
@@ -165,11 +180,6 @@ net-misc/gfax
 ~net-libs/libmsn-4.1
 
 # Jeremy Olexa <darkside@gentoo.org> (09 Jan 2009)
-# Upstream dead, fails to unpack. Removed in 30 days by treecleaners as
-# requested by maintainer. bug 298592
-sys-devel/gcc-nios2
-
-# Jeremy Olexa <darkside@gentoo.org> (09 Jan 2009)
 # Builds against running kernel instead of /usr/src/linux. Removed in 60 days by
 # treecleaners. bug 239773
 net-misc/noarp
@@ -178,16 +188,6 @@ net-misc/noarp
 # Not loved package, missing files and doesn't respect LDFLAGS. Remvoed in 60
 # days by treecleaners, bug 248678
 x11-wm/aewm++-goodies
-
-# Jeremy Olexa <darkside@gentoo.org> (09 Jan 2009)
-# Orphaned library with broken build system. Removed in 30 days by treecleaners,
-# maintainer request. bug 284374
-media-libs/libdsp
-
-# Jeremy Olexa <darkside@gentoo.org> (09 Jan 2009)
-# Collides with suite3270. Use suite3270 instead since it has all the
-# functionality. Removed in 30 days by treecleaners, maintainer req. bug 285917
-x11-terms/x3270
 
 # Jeremy Olexa <darkside@gentoo.org> (09 Jan 2009)
 # Causes issues for users if in the wrong runlevel, (won't boot). No love,
@@ -673,17 +673,6 @@ x11-misc/seyon
 # cvs ebuild vdr-xineliboutput-9999 masked for lifetime
 =media-plugins/vdr-xineliboutput-9999
 
-# Diego E. Pettenò <flameeyes@gentoo.org> (29 Nov 2009)
-#  on behalf of QA team
-#
-# Fails to build with recent kernel headers (bug #236449,
-# September 2008); ignores LDFLAGS (bug #231934); has
-# parallel make issues (bug #264671) and is pending version
-# bump since at least April 2009 (bug #266745).
-#
-# Removal on 2010-01-28
-sys-apps/hwinfo
-
 # Torsten Veller <tove@gentoo.org> (26 Nov 2009)
 # Complete reorganization (and almost complete rewrite),
 # depends on perl-5.10, needs testing
@@ -1042,6 +1031,7 @@ dev-util/w32api
 =www-client/opera-10.20_pre4744
 =www-client/opera-10.50_pre6177
 =www-client/opera-10.50_pre6201
+=www-client/opera-10.50_pre6204
 
 # Peter Volkov <pva@gentoo.org> (16 Nov 2008)
 # The development branch, to be unmasked when out of beta by upstream.
@@ -1225,7 +1215,6 @@ app-benchmarks/ltp
 # Luca Longinotti <chtekk@gentoo.org> (12 Jan 2007)
 # Mask MySQL 5.1.* and the alpha versions
 >=dev-db/mysql-5.1
->=dev-db/mysql-community-5.1
 >=virtual/mysql-5.1
 
 # Fernando J. Pereda <ferdy@gentoo.org> (25 April 2005)
