@@ -20,7 +20,7 @@ DEPEND=""
 RDEPEND="dev-libs/expat
 	>=dev-libs/openssl-0.9.8e
 	media-libs/audiofile
-	<media-libs/jpeg-7
+	media-libs/jpeg
 	media-libs/libpng
 	media-libs/freetype
 	media-libs/fontconfig
