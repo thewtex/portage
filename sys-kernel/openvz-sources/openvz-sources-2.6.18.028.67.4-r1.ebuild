@@ -4,15 +4,16 @@
 
 ETYPE="sources"
 
+PATCHV="164.10.1.el5"
 CKV=2.6.18
 OKV=${OKV:-${CKV}}
 if [[ ${PR} == "r0" ]]; then
-KV_FULL=${CKV}-${PN/-*}-028.066.10
+KV_FULL=${CKV}-${PN/-*}-028.067.4
 else
-KV_FULL=${CKV}-${PN/-*}-028.066.10-${PR}
+KV_FULL=${CKV}-${PN/-*}-028.067.4-${PR}
 fi
-OVZ_KERNEL="028stab066"
-OVZ_REV="10"
+OVZ_KERNEL="028stab067"
+OVZ_REV="4"
 EXTRAVERSION=-${OVZ_KERNEL}
 CONFIG_URI="http://download.openvz.org/kernel/branches/rhel5-${CKV}/${OVZ_KERNEL}.${OVZ_REV}/configs/"
 KERNEL_URI="mirror://kernel/linux/kernel/v${KV_MAJOR}.${KV_MINOR}/linux-${OKV}.tar.bz2"
@@ -25,7 +26,6 @@ detect_version
 PDEPEND="=sys-devel/gcc-4.1*"
 KEYWORDS="amd64 ppc64 sparc x86"
 IUSE=""
-PATCHV="164.2.1.el5"
 DESCRIPTION="Full sources including OpenVZ patchset for the 2.6.18 kernel tree"
 HOMEPAGE="http://www.openvz.org"
 AMD64_CONFIG="kernel-${CKV}-x86_64.config.ovz"
@@ -39,7 +39,8 @@ SRC_URI="${KERNEL_URI}
 
 UNIPATCH_STRICTORDER=1
 UNIPATCH_LIST="${DISTDIR}/patch-${PATCHV}.${OVZ_KERNEL}.${OVZ_REV}-combined.gz
-${FILESDIR}/${PN}-2.6.18.028.064.7-bridgemac.patch"
+			${FILESDIR}/${PN}-2.6.18.028.064.7-bridgemac.patch
+			${FILESDIR}/uvesafb-0.1-rc3-2.6.18-openvz-028.066.10.patch"
 
 K_EXTRAEINFO="This openvz kernel uses RHEL5 patchset instead of vanilla kernel.
 This patchset considered to be more stable and supported by upstream.
