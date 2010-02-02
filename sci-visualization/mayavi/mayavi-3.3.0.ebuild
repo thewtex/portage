@@ -46,6 +46,12 @@ src_prepare() {
 	epatch "${FILESDIR}"/${P}-nodocs.patch
 }
 
+src_compile() {
+	python_enable_pyc
+	distutils_src_compile
+	python_disable_pyc
+}
+
 src_install() {
 	find "${S}" -name \*LICENSE\*.txt -delete
 	distutils_src_install
