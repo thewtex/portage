@@ -1,21 +1,18 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/sysvinit/sysvinit-2.87.ebuild,v 1.1 2009/10/18 08:55:36 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/sysvinit/sysvinit-2.87-r3.ebuild,v 1.1 2010/01/08 18:41:03 williamh Exp $
 
 inherit eutils toolchain-funcs flag-o-matic
 
-PATCH_VER="1"
+PATCH_VER="2"
 DESCRIPTION="/sbin/init - parent of all processes"
 HOMEPAGE="http://freshmeat.net/projects/sysvinit/"
 SRC_URI="mirror://debian/pool/main/s/sysvinit/${PN}_${PV}dsf.orig.tar.gz
-	mirror://gentoo/${P}-patches-${PATCH_VER}.tar.bz2"
-F="ftp://ftp.cistron.nl/pub/people/miquels/software/${P}.tar.gz
-	ftp://sunsite.unc.edu/pub/Linux/system/daemons/init/${P}.tar.gz
-	http://www.gc-linux.org/down/isobel/kexec/sysvinit/sysvinit-2.86-kexec.patch"
+	http://www.funtoo.org/archive/sysvinit/${P}-patches-${PATCH_VER}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+KEYWORDS="alpha amd64 arm hppa ia64 m68k mips ppc ppc64 s390 sh sparc x86"
 IUSE="selinux ibm static kernel_FreeBSD"
 
 RDEPEND="selinux? ( >=sys-libs/libselinux-1.28 )"
@@ -32,7 +29,7 @@ src_unpack() {
 
 	# Mung inittab for specific architectures
 	cd "${WORKDIR}"
-	cp "${FILESDIR}"/inittab-2.86-r12 inittab || die "cp inittab"
+	cp "${FILESDIR}"/inittab-2.87-r2 inittab || die "cp inittab"
 	local insert=""
 	use ppc && insert='#psc0:12345:respawn:/sbin/agetty 115200 ttyPSC0 linux'
 	use arm && insert='#f0:12345:respawn:/sbin/agetty 9600 ttyFB0 vt100'
@@ -54,9 +51,12 @@ src_unpack() {
 }
 
 src_compile() {
+	local myconf
+
 	tc-export CC
 	use static && append-ldflags -static
-	emake -C src || die
+	use selinux && myconf=WITH_SELINUX=yes
+	emake -C src ${myconf} || die
 }
 
 src_install() {
