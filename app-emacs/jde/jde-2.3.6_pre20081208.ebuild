@@ -1,6 +1,6 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/jde/jde-2.3.6_pre20081208.ebuild,v 1.1 2009/03/28 18:41:17 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/jde/jde-2.3.6_pre20081208.ebuild,v 1.2 2010/02/02 17:55:13 ulm Exp $
 
 EAPI=2
 WANT_ANT_TASKS="ant-nodeps"
@@ -36,9 +36,8 @@ src_prepare() {
 	local bshjar csjar
 	bshjar=$(java-pkg_getjar --build-only bsh bsh.jar) || die
 	csjar=$(java-pkg_getjar --build-only checkstyle checkstyle.jar) || die
-	sed  -e "s:@BSH_JAR@:${bshjar}:;s:@CHECKSTYLE_JAR@:${csjar}:" \
-		-e "s:@PF@:${PF}:" "${FILESDIR}/${SITEFILE/.el/-${PV}.el}" \
-		>"${SITEFILE}" || die
+	sed -e "s:@BSH_JAR@:${bshjar}:;s:@CHECKSTYLE_JAR@:${csjar}:" \
+		-e "s:@PF@:${PF}:" "${FILESDIR}/${SITEFILE}" >"${SITEFILE}" || die
 
 	cd java/lib || die
 	java-pkg_jar-from --build-only checkstyle checkstyle.jar checkstyle-all.jar
