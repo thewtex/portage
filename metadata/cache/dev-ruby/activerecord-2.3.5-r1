@@ -1,5 +1,5 @@
-test? ( ~dev-ruby/activesupport-2.3.5[ruby_targets_ruby18?] ) test? ( sqlite3? ( dev-ruby/sqlite3-ruby[ruby_targets_ruby18?] ) ) test? ( mysql? ( >=dev-ruby/mysql-ruby-2.7[ruby_targets_ruby18?] ) ) test? ( postgres? ( dev-ruby/pg[ruby_targets_ruby18?] ) ) test? ( >=dev-ruby/mocha-0.9.5[ruby_targets_ruby18?] ) test? ( virtual/ruby-test-unit[ruby_targets_ruby18?] ) ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) doc? ( dev-ruby/rake[ruby_targets_ruby18?] ) test? ( dev-ruby/rake[ruby_targets_ruby18?] ) test? ( virtual/rubygems[ruby_targets_ruby18?] )
-~dev-ruby/activesupport-2.3.5[ruby_targets_ruby18?] sqlite3? ( dev-ruby/sqlite3-ruby[ruby_targets_ruby18?] ) mysql? ( >=dev-ruby/mysql-ruby-2.7[ruby_targets_ruby18?] ) postgres? ( dev-ruby/pg[ruby_targets_ruby18?] ) ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) virtual/rubygems[ruby_targets_ruby18?]
+test? ( ~dev-ruby/activesupport-2.3.5[ruby_targets_ruby18?,ruby_targets_jruby?] ) test? ( sqlite3? ( ruby_targets_ruby18? ( dev-ruby/sqlite3-ruby[ruby_targets_ruby18?] ) ) ) test? ( mysql? ( ruby_targets_ruby18? ( >=dev-ruby/mysql-ruby-2.7[ruby_targets_ruby18?] ) ) ) test? ( postgres? ( ruby_targets_ruby18? ( dev-ruby/pg[ruby_targets_ruby18?] ) ) ) test? ( >=dev-ruby/mocha-0.9.5[ruby_targets_ruby18?,ruby_targets_jruby?] ) test? ( virtual/ruby-test-unit[ruby_targets_ruby18?,ruby_targets_jruby?] ) ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_jruby? ( dev-java/jruby ) doc? ( dev-ruby/rake[ruby_targets_ruby18?,ruby_targets_jruby?] ) test? ( dev-ruby/rake[ruby_targets_ruby18?,ruby_targets_jruby?] ) test? ( virtual/rubygems[ruby_targets_ruby18?,ruby_targets_jruby?] )
+~dev-ruby/activesupport-2.3.5[ruby_targets_ruby18?,ruby_targets_jruby?] sqlite3? ( ruby_targets_ruby18? ( dev-ruby/sqlite3-ruby[ruby_targets_ruby18?] ) ) mysql? ( ruby_targets_ruby18? ( >=dev-ruby/mysql-ruby-2.7[ruby_targets_ruby18?] ) ) postgres? ( ruby_targets_ruby18? ( dev-ruby/pg[ruby_targets_ruby18?] ) ) ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_jruby? ( dev-java/jruby ) virtual/rubygems[ruby_targets_ruby18?,ruby_targets_jruby?]
 2.3
 mirror://rubygems/activerecord-2.3.5.gem
 
@@ -8,7 +8,7 @@ MIT
 Implements the ActiveRecord pattern (Fowler, PoEAA) for ORM
 ~amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x64-solaris ~x86-solaris
 eutils multilib portability ruby-fakegem ruby-ng toolchain-funcs
-mysql postgres sqlite3 test ruby_targets_ruby18 doc test
+mysql postgres sqlite3 test ruby_targets_ruby18 ruby_targets_ruby18 ruby_targets_jruby doc test
 
 
 
