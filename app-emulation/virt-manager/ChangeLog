@@ -1,6 +1,20 @@
 # ChangeLog for app-emulation/virt-manager
-# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/virt-manager/ChangeLog,v 1.24 2009/12/23 17:19:47 flameeyes Exp $
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/virt-manager/ChangeLog,v 1.26 2010/02/04 19:26:07 cardoe Exp $
+
+  04 Feb 2010; Doug Goldstein <cardoe@gentoo.org> virt-manager-0.8.2.ebuild,
+  virt-manager-0.8.2-r1.ebuild:
+  add missing dependency on dev-python/urlgrabber
+
+*virt-manager-0.8.2-r1 (04 Feb 2010)
+
+  04 Feb 2010; Doug Goldstein <cardoe@gentoo.org>
+  +virt-manager-0.8.2-r1.ebuild,
+  +files/virt-manager-0.8.2-ssh-tunnel-shutdown.patch:
+  fix issue when nc doesn't handle the EOF on socket close correctly.
+  According to upstream Debian has an issue with it but they're patching up
+  their nc to respect EOF better. So, the only solution is to kill the ssh
+  tunnel instead of just assuming it'll close eventually
 
   23 Dec 2009; Diego E. Pettenò <flameeyes@gentoo.org> metadata.xml:
   Drop unused local flag.
