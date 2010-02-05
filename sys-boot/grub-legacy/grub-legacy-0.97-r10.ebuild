@@ -119,7 +119,7 @@ src_compile() {
 	if use netboot ; then
 		econf \
 		--libdir=/lib \
-		--datadir=/usr/lib/grub \
+		--datadir=/usr/lib/grub-legacy \
 		--exec-prefix=/ \
 		--disable-auto-linux-mem-opt \
 		--enable-diskless \
@@ -162,22 +162,21 @@ src_test() {
 src_install() {
 	emake DESTDIR="${D}" install || die
 	if use netboot ; then
-		exeinto /usr/lib/grub/${CHOST}
+		exeinto /usr/lib/grub-legacy/${CHOST}
 		doexe nbgrub pxegrub stage2/stage2.netboot || die "netboot install"
 	fi
 
 	dodoc AUTHORS BUGS ChangeLog NEWS README THANKS TODO
-	newdoc docs/menu.lst grub.conf.sample
-	dodoc "${FILESDIR}"/grub.conf.gentoo
 	prepalldocs
 
 	[ -n "${GRUB_STATIC_PACKAGE_BUILDING}" ] && \
 		mv \
 		"${D}"/usr/share/doc/${PF} \
-		"${D}"/usr/share/doc/grub-static-${PF/grub-}
+		"${D}"/usr/share/doc/grub-legacy-static-${PF/grub-}
 
-	insinto /usr/share/grub
+	insinto /usr/share/grub-legacy
 	doins "${DISTDIR}"/splash.xpm.gz
+	mv ${D}/usr/share/info/grub.info ${D}/usr/share/info/grub-legacy.info || die "owie"
 }
 
 setup_boot_dir() {
@@ -217,38 +216,15 @@ setup_boot_dir() {
 		ebeep
 	fi
 
-	einfo "Copying files from /lib/grub, /usr/lib/grub and /usr/share/grub to ${dir}"
-	for x in \
-		"${ROOT}"/lib*/grub/*/* \
-		"${ROOT}"/usr/lib*/grub/*/* \
-		"${ROOT}"/usr/share/grub/* ; do
+	einfo "Copying files from /lib/grub-legacy to ${dir}"
+	for x in "${ROOT}"/lib*/grub-legacy/*/*; do
 		[[ -f ${x} ]] && cp -p "${x}" "${dir}"/
 	done
 
-	if [[ ! -e ${dir}/grub.conf ]] ; then
-		s="${ROOT}/usr/share/doc/${PF}/grub.conf.gentoo"
-		[[ -e "${s}" ]] && cat "${s}" >${dir}/grub.conf
-		[[ -e "${s}.gz" ]] && zcat "${s}.gz" >${dir}/grub.conf
-		[[ -e "${s}.bz2" ]] && bzcat "${s}.bz2" >${dir}/grub.conf
-	fi
-
-	# Per bug 218599, we support grub.conf.install for users that want to run a
-	# specific set of Grub setup commands rather than the default ones.
-	grub_config=${dir}/grub.conf.install
-	[[ -e ${grub_config} ]] || grub_config=${dir}/grub.conf
-	if [[ -e ${grub_config} ]] ; then
-		egrep \
-			-v '^[[:space:]]*(#|$|default|fallback|initrd|password|splashimage|timeout|title)' \
-			"${grub_config}" | \
-		/sbin/grub --batch \
-			--device-map="${dir}"/device.map \
-			> /dev/null
-	fi
-
 	# the grub default commands silently piss themselves if
 	# the default file does not exist ahead of time
-	if [[ ! -e ${dir}/default ]] ; then
-		grub-set-default --root-directory="${boot_dir}" default
+	if [[ ! -e ${dir}/default ]] && [[ -e /sbin/grub-set-default-legacy ]] ; then
+		grub-set-default-legacy --root-directory="${boot_dir}" default
 	fi
 	einfo "Grub has been installed to ${boot_dir} successfully."
 }
