@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/cns/cns-1.2.1.ebuild,v 1.4 2009/07/07 23:26:17 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/cns/cns-1.2.1.ebuild,v 1.5 2010/02/06 21:49:39 jlec Exp $
 
 inherit eutils fortran toolchain-funcs versionator flag-o-matic
 
@@ -27,7 +27,7 @@ FORTRAN="g77 gfortran"
 pkg_nofetch() {
 	elog "Fill out the form at http://cns.csb.yale.edu/cns_request/"
 	elog "and place these files:"
-	elog "${A}"
+	elog ${A}
 	elog "in ${DISTDIR}."
 }
 
