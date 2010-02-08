@@ -30,7 +30,7 @@ RDEPEND=">=dev-python/pycairo-1.8
 	dev-python/gnome-vfs-python
 	x11-base/xorg-server
 	media-gfx/imagemagick
-	libnotify? ( dev-python/notify-python dev-libs/poppler-glib )
+	libnotify? ( dev-python/notify-python )
 	gstreamer? ( >=media-libs/gstreamer-0.10 dev-python/gst-python media-plugins/gst-plugins-meta media-video/ffmpeg media-plugins/gst-plugins-wavpack )
 	xine? ( media-libs/xine-lib[aac] )"
 DEPEND="${RDEPEND}
