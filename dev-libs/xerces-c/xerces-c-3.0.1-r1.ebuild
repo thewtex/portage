@@ -1,6 +1,6 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/xerces-c/xerces-c-3.0.1-r1.ebuild,v 1.4 2009/12/07 18:20:31 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/xerces-c/xerces-c-3.0.1-r1.ebuild,v 1.6 2010/02/07 13:54:30 fauli Exp $
 
 EAPI="2"
 
@@ -11,10 +11,10 @@ HOMEPAGE="http://xerces.apache.org/xerces-c/"
 SRC_URI="mirror://apache/xerces/c/3/sources/${P}.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 hppa ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
-IUSE="curl debug doc iconv icu libwww threads elibc_Darwin elibc_FreeBSD"
+KEYWORDS="~alpha ~amd64 hppa ppc ~ppc64 ~sparc x86 ~x86-fbsd"
+IUSE="curl debug doc iconv icu libwww test threads elibc_Darwin elibc_FreeBSD"
 
-RDEPEND="icu? ( dev-libs/icu )
+RDEPEND="icu? ( >=dev-libs/icu-4.2 )
 	curl? ( net-misc/curl )
 	libwww? ( net-libs/libwww )
 	virtual/libiconv"
@@ -35,8 +35,16 @@ src_prepare() {
 		-e 's|$(prefix)/msg|$(DESTDIR)/$(prefix)/share/xerces-c/msg|' \
 		src/xercesc/util/MsgLoaders/MsgCatalog/Makefile.in || die "sed failed"
 
-	epatch "${FILESDIR}/${P}-CVE-2009-2625.patch"
-	epatch "${FILESDIR}/${P}-libicu.patch"
+	epatch \
+		"${FILESDIR}/${P}-CVE-2009-2625.patch" \
+		"${FILESDIR}/${P}-libicu.patch"
+
+	if use test && ! use threads ; then
+		epatch "${FILESDIR}/${PV}-disable-thread-tests.patch"
+		sed -i \
+			-e 's|ThreadTest$(EXEEXT) XSerializerTest$(EXEEXT)|XSerializerTest$(EXEEXT)|g' \
+			tests/Makefile.in || die "sed failed"
+	fi
 }
 
 src_configure() {

@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/pykde4/pykde4-4.3.3.ebuild,v 1.6 2010/01/19 00:52:30 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/pykde4/pykde4-4.3.3.ebuild,v 1.7 2010/02/07 21:24:45 abcd Exp $
 
 EAPI="2"
 
@@ -14,17 +14,15 @@ DESCRIPTION="Python bindings for KDE4"
 KEYWORDS="~alpha amd64 hppa ~ia64 ppc ppc64 ~sparc x86"
 IUSE="akonadi debug examples policykit semantic-desktop"
 
-COMMON_DEPEND="
+# blocker added due to compatibility issues and error during compile time
+DEPEND="
+	!dev-python/pykde
 	>=dev-python/PyQt4-4.5[dbus,sql,svg,webkit,X]
 	$(add_kdebase_dep kdelibs 'opengl,semantic-desktop?')
 	akonadi? ( $(add_kdebase_dep kdepimlibs) )
 	policykit? ( >=sys-auth/policykit-qt-0.9.2 )
 "
-DEPEND="${COMMON_DEPEND}"
-# blocker added due to compatibility issues and error during compile time
-RDEPEND="${COMMON_DEPEND}
-	!dev-python/pykde
-"
+RDEPEND="${DEPEND}"
 
 pkg_setup() {
 	python_pkg_setup

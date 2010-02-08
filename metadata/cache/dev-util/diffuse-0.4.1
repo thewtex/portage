@@ -1,5 +1,5 @@
-!sci-chemistry/tinker >=app-admin/eselect-python-20090804 virtual/python
-dev-python/pygtk >=app-admin/eselect-python-20090804 virtual/python
+!sci-chemistry/tinker >=app-admin/eselect-python-20090804 || ( =dev-lang/python-2.7* =dev-lang/python-2.6* =dev-lang/python-2.5* =dev-lang/python-2.4* )
+dev-python/pygtk >=app-admin/eselect-python-20090804 || ( =dev-lang/python-2.7* =dev-lang/python-2.6* =dev-lang/python-2.5* =dev-lang/python-2.4* )
 0
 mirror://sourceforge/diffuse/diffuse-0.4.1.tar.bz2
 
@@ -7,14 +7,14 @@ http://diffuse.sourceforge.net/
 GPL-2
 A graphical tool to compare and merge text files
 ~amd64 ~x86
-distutils fdo-mime multilib python toolchain-funcs
+fdo-mime multilib python toolchain-funcs
 
 
 
 
 2
 
-compile install postinst postrm prepare unpack
+install postinst postrm prepare setup
 
 
 
