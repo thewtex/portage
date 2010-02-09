@@ -69,7 +69,7 @@ src_install() {
 	[ "$ARCH" = "x86" ] && cp $DISTDIR/$X86_CONFIG $CDEST
 }
 
-pkg_postinst {
+pkg_postinst() {
 	kernel-2_pkg_postinst
 
 	# All this below is here to copy the OpenVZ default config into place.
