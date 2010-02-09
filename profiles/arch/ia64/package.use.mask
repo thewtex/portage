@@ -1,6 +1,14 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/ia64/package.use.mask,v 1.20 2010/01/16 17:47:25 yngwin Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/ia64/package.use.mask,v 1.23 2010/02/08 23:03:15 alexxy Exp $
+
+# Alexey Shvetsov <alexxy@gentoo.org> (09 Feb 2010)
+# need dev-db/virtuoso-* keyworded
+dev-libs/soprano virtuoso
+
+# Alexey Shvetsov <alexxy@gentoo.org> (09 Feb 2010)
+# need sys-auth/polkit keyworded                   
+app-admin/system-config-printer-common  policykit  
 
 # Ben de Groot <yngwin@gentoo.org> (16 Jan 2010)
 # qt-multimedia is not keyworded, bug 293671
@@ -42,3 +50,7 @@ dev-lisp/clisp hyperspec pari svm
 # Steve Dibb <beandog@gentoo.org> (01 Nov 2007)
 # needs media-libs/ladspa-sdk keyworded
 media-video/mplayer ladspa
+
+# missing keywords
+media-plugins/gst-plugins-meta lame taglib
+

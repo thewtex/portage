@@ -1,6 +1,19 @@
 # ChangeLog for Gentoo/ia64 profile
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/ia64/ChangeLog,v 1.65 2010/01/25 12:22:50 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/ia64/ChangeLog,v 1.69 2010/02/08 23:03:15 alexxy Exp $
+
+  08 Feb 2010; Alexey Shvetsov <alexxy@gentoo.org> package.use.mask:
+  mask dev-libs/soprano[virtuoso] since it needs dev-db/virtuoso-* keyworded
+
+  08 Feb 2010; Alexey Shvetsov <alexxy@gentoo.org> package.use.mask:
+  mask app-admin/system-config-printer-common[policykit] since it needs
+  sys-auth/polkit keyworded
+
+  07 Feb 2010; Raúl Porcel <armin76@gentoo.org> package.use.mask:
+  package.use.mask lame, taglib
+
+  07 Feb 2010; Raúl Porcel <armin76@gentoo.org> use.mask:
+  Use.mask dvd
 
   25 Jan 2010; Alexis Ballier <aballier@gentoo.org> +package.mask:
   Move TeX Live 2009 mask here from global package.mask, remove it once
