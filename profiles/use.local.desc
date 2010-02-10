@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5260 2010/02/09 02:41:50 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5268 2010/02/09 18:07:45 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -597,7 +597,6 @@ app-text/poppler:abiword - Enable support for app-office/abiword output. Require
 app-text/poppler:exceptions - Enable exceptions throwing.
 app-text/poppler:utils - Install command-line PDF converters and various utilities.
 app-text/poppler:xpdf-headers - Install xpdf headers.
-app-text/poppler-utils:abiword -  Enable support for app-office/abiword output. Requires dev-libs/libxml2. 
 app-text/sgmltools-lite:jadetex - Add support for app-text/jadetex (for processing tex files produced by the TeX backend of Jade)
 app-text/stardict:espeak - Enable text to speech synthesizer using espeak engine
 app-text/stardict:festival - Enable text to speech synthesizer using festival engine
@@ -899,8 +898,6 @@ dev-libs/openobex:irda - Enable IrDA support
 dev-libs/opensc:openct - Build using dev-libs/openct compatibility
 dev-libs/opensc:pcsc-lite - Build with sys-apps/pcsc-lite
 dev-libs/pkcs11-helper:nss - Enable NSS crypto engine
-dev-libs/poppler:abiword -  Enable support for app-office/abiword output. Requires dev-libs/libxml2. 
-dev-libs/poppler:poppler-data -  Pull in the free (as in beer) poppler-data package which is required at runtime for complete rendering of CJK PDFs. 
 dev-libs/ppl:prolog - Build SWI Prolog interface
 dev-libs/ppl:watchdog - Build the PPL Watchdog library - a C++ library for multiple, concurrent watchdog timers
 dev-libs/soprano:clucene - Enable dev-cpp/clucene backend support.
@@ -1347,11 +1344,10 @@ gnustep-base/gnustep-make:native-exceptions - Enables use of the native Objectiv
 gnustep-libs/steptalk:gdl2 - Compile module for gnustep-libs/gdl2
 gpe-base/gpe:games - Builds and installs GPE games.
 kde-base/ark:archive - Enable support for a variety of archive formats through libarchive
-kde-base/ark:lzma - Enable lzma support
+kde-base/ark:lzma - Enable LZMA/XZ archive support
 kde-base/ark:zip - Enable zip support through LibZip
 kde-base/cantor:R - Enable R backend support
 kde-base/cantor:ps - Enable rendering EPS files
-kde-base/dolphin:semantic-desktop -  Semantic desktop allows for storage of digital information and its metadata to allow the user to express his personal mental models, making all information become intuitively accessible. 
 kde-base/dolphin:thumbnail -  Enables video thumbnails generation for kde-base/dolphin file manager. 
 kde-base/granatier:gluon - Adds support for media-libs/gluon (recommended) instead of x11-libs/qt-multimedia
 kde-base/gwenview:kipi - Support for the KDE Image Plugin Interface.
@@ -1368,17 +1364,20 @@ kde-base/kdebindings-csharp:plasma - Compile bindings for kde's plasma.
 kde-base/kdebindings-csharp:qscintilla - Compile bindings for x11-libs/qscintilla.
 kde-base/kdebindings-csharp:webkit - Compile bindings for x11-libs/webkit.
 kde-base/kdebindings-ruby:akonadi - Compile bindings for kde-base/akonadi.
+kde-base/kdebindings-ruby:kdevplatform - Compile bindings for dev-util/kdevplatform.
 kde-base/kdebindings-ruby:phonon - Compile bindings for media-sound/phonon.
 kde-base/kdebindings-ruby:plasma - Compile bindings for kde's plasma.
 kde-base/kdebindings-ruby:qscintilla - Compile bindings for x11-libs/qscintilla.
+kde-base/kdebindings-ruby:qwt - Compile bindings for x11-libs/qwt.
 kde-base/kdebindings-ruby:webkit - Compile bindings for x11-libs/webkit.
-kde-base/kdelibs:lzma - Enable lzma support
+kde-base/kdelibs:lzma - Enable LZMA/XZ archive support
+kde-base/kdelibs:opengl - Enable OpenGL support for Plasma (GLApplet)
 kde-base/kdepimlibs:akonadi - Build support for Akonadi resources.
 kde-base/kdeplasma-addons:desktopglobe - Enable Desktop Globe wallpaper using kde-base/marble
 kde-base/kdeplasma-addons:qalculate - Enable Qalculate runner using sci-libs/libqalculate
 kde-base/kdeplasma-addons:qwt - Enable applets that use x11-libs/qwt:5.
 kde-base/kdeplasma-addons:scim - Enable applets that use app-i18n/scim.
-kde-base/kdeutils-meta:floppy - Install kfloppy to format and create DOS or ext2fs filesystems in a floppy.
+kde-base/kdeutils-meta:floppy - Install kde-base/kfloppy to format and create DOS or ext2fs filesystems in a floppy.
 kde-base/kdm:consolekit - Enables support for authorization using consolekit
 kde-base/kig:kig-scripting - Support Python scripting
 kde-base/kmail:ayatana - Build in support for Ayatana notification via dev-libs/libindicate-qt
@@ -1430,12 +1429,14 @@ kde-base/plasma-workspace:google-gadgets - Add google-gadgets support
 kde-base/plasma-workspace:rss - Enables building RSSNOW plasmoid (requires kde-base/kdepimlibs)
 kde-base/powerdevil:pm-utils - Adds support for suspend/resume the system through sys-power/pm-utils
 kde-base/pykde4:akonadi - Builds Akonadi python language bindings
-kde-base/rocs:R - Enable R backend support
-kde-base/rocs:ps - Enable rendering EPS files
+kde-base/pykde4:semantic-desktop - Enables Nepomuk and Soprano python language bindings
 kde-base/smoke:akonadi - Compile bindings for kde-base/akonadi.
 kde-base/smoke:kdevplatform - Compile bindings for dev-util/kdevplatform.
+kde-base/smoke:okular - Compile bindings for kde-base/okular.
 kde-base/smoke:phonon - Compile bindings for media-sound/phonon.
+kde-base/smoke:qimageblitz - Compile bindings for kde-base/qimageblitz.
 kde-base/smoke:qscintilla - Compile bindings for x11-libs/qscintilla.
+kde-base/smoke:qtmultimedia - Compile bindings for x11-libs/qt-multimedia.
 kde-base/smoke:qwt - Compile bindings for x11-libs/qwt.
 kde-base/smoke:webkit - Compile bindings for x11-libs/webkit.
 kde-base/solid:wicd - Enable Wicd wired and wireless network manager.
@@ -1961,7 +1962,6 @@ media-sound/squeezeboxserver:bonjour - Enable support for bonjour
 media-sound/squeezecenter:aac - Enable playback support for AAC (.m4a) encoded files
 media-sound/squeezecenter:alac - Enable support for alac
 media-sound/squeezecenter:bonjour - Enable support for bonjour
-media-sound/teamspeak-client-bin:builtin-qt - use bundled builtin Qt instead of system-installed x11-libs/qt-gui.
 media-sound/traverso:lv2 - Add support for Ladspa V2
 media-sound/vorbis-tools:ogg123 - Build ogg123 player, needs libao and curl
 media-sound/xmp:audacious - Enable audacious support
@@ -3503,8 +3503,6 @@ www-apache/mod_vhs:suphp - Enable www-apache/mod_suphp support
 www-apache/pwauth:domain-aware - Ignore leading domain names in username (Windows compat)
 www-apache/pwauth:faillog - Log failed login attempts
 www-apache/pwauth:ignore-case - Ignore string case in username (mostly Windows compat)
-www-apps/Embperl:modperl - Enable www-apache/mod_perl support
-www-apps/Embperl:xalan - Enable dev-java/xalan support
 www-apps/bugzilla:extras - Optional Perl modules
 www-apps/bugzilla:modperl - Enable www-apache/mod_perl support
 www-apps/egroupware:gallery - Install gallery2 port for eGW
