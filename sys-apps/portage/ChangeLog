@@ -1,6 +1,20 @@
 # ChangeLog for sys-apps/portage
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/portage/ChangeLog,v 1.670 2010/02/07 02:11:42 arfrever Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/portage/ChangeLog,v 1.673 2010/02/10 01:04:03 zmedico Exp $
+
+  10 Feb 2010; Zac Medico <zmedico@gentoo.org> portage-2.1.6.7.ebuild,
+  portage-2.1.6.13.ebuild:
+  Remove non-essential built_with_use calls, to avoid repoman warning. The
+  latest stable portage uses EAPI 2 has_version to do the equivalent.
+
+  10 Feb 2010; Zac Medico <zmedico@gentoo.org> -portage-2.2_rc33.ebuild,
+  -portage-2.2_rc61.ebuild:
+  Remove old versions.
+
+  10 Feb 2010; Zac Medico <zmedico@gentoo.org> portage-2.1.7.16.ebuild,
+  portage-2.1.7.17.ebuild:
+  Bug #303211 - Add a ewarn message for people upgrading with
+  PORTAGE_BINHOST set.
 
   07 Feb 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
   portage-2.1.7.17.ebuild, portage-2.2_rc62.ebuild:
