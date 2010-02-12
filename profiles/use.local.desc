@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5273 2010/02/10 23:07:38 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5277 2010/02/12 04:27:42 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -308,6 +308,7 @@ app-emulation/uae:sdl-sound - Use media-sound/sdl-sound for audio output
 app-emulation/uae:ui - Build the user interface (could be gtk or ncurses based, depending on sdl, dga, svga and aalib USE flags)
 app-emulation/vice:resid - Enable support for ReSID media-libs/resid
 app-emulation/vice:xrandr - Enable support for the X xrandr extension
+app-emulation/virt-manager:policykit - Enables sys-auth/polkit authentication support, required when using app-emulation/libvirt with PolicyKit authentication
 app-emulation/virtualbox-bin:additions - Install Guest System Tools ISO
 app-emulation/virtualbox-bin:chm - Install kchmviewer binary to enable online help (in MS CHM format)
 app-emulation/virtualbox-bin:headless - Install without any graphic frontend
@@ -640,6 +641,7 @@ dev-db/postgresql-server:pg_legacytimestamp - Use double precision floating-poin
 dev-db/postgresql-server:uuid - Enable server side UUID generation (via dev-libs/ossp-uuid)
 dev-db/sqlite:extensions - Enable support for dynamic loading of extensions
 dev-db/sqlite:fts3 - Full text search using the fts3 module
+dev-db/sqlite:secure-delete - Overwrite deleted information with zeros in addition to marking the space as available for reuse. This causes a performance penalty.
 dev-db/sqlite:soundex - Enable the soundex function to compute soundex encodings of strings
 dev-db/sqlite:threadsafe - Enable thread safe operation of sqlite
 dev-dotnet/libgdiplus:pango - Use pango instead of cairo to render text.
@@ -2725,6 +2727,7 @@ net-p2p/mldonkey:guionly - enable client build only
 net-p2p/mldonkey:magic - enable use of libmagic
 net-p2p/rtorrent:daemon - Uses app-misc/screen to daemonize this application" 
 net-p2p/transmission:dht - Enable Distributed Hash Tables support
+net-p2p/transmission:sound - Enable sound event support with media-libs/libcanberra
 net-print/hplip:cupsddk - Add support for net-print/cupsddk which enables dynamic PPD files (recommended)
 net-print/hplip:dbus - Add support for sys-apps/dbus which enables better communications with your device (recommended)
 net-print/hplip:doc - Build documentation
@@ -2914,7 +2917,6 @@ sci-libs/libghemical:mopac7 - Use sci-chemistry/mopac7 for semi-empirical calcul
 sci-libs/libghemical:mpqc - Use sci-chemistry/mpqc for quantum-mechanical calculations
 sci-libs/libnc-dap:full-test - Enables full set of regression tests (long).
 sci-libs/libsvm:tools - Install support tools
-sci-libs/mathgl:mpi - Use mpi wrappers for compilation. Requirement for sci-libs/hdf5[mpi]
 sci-libs/mathgl:octave - Add bindings for sci-mathematics/octave
 sci-libs/metis:int64 - Build the 64 bits integer library (metis >=5 only)
 sci-libs/mkl:fortran95 - Installs the BLAS/LAPACK FORTRAN95 static libraries
