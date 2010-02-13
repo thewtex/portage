@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11200 2010/02/09 23:01:15 alexxy Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11203 2010/02/10 20:14:56 ssuominen Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -236,11 +236,6 @@ net-analyzer/zabbix-server
 # Masked for removal in 30 days
 x11-themes/licq-themes
 
-# Samuli Suominen <ssuominen@gentoo.org> (08 Jan 2010)
-# Obsolete Qt3 bindings for DBUS, not used by anything.
-# Masked for removal in 30 days.
-dev-libs/dbus-qt3-old
-
 # Olivier Crête <tester@gentoo.org> (07 Jan 2010)
 # Mask for removal. Replaced by net-libs/telepathy-farsight and farsight2
 net-voip/telepathy-stream-engine
@@ -332,23 +327,6 @@ app-antivirus/bitdefender-console
 # Does not compile (bugs 220785, 273416, 277227)
 dev-php5/php-qt
 
-# Ben de Groot <yngwin@gentoo.org> (02 Jan 2010)
-# Masking pending removal in 30 days
-# qt:3 removal (bug 283429), qscintilla-python already dropped qt3 support
-=x11-libs/qscintilla-1*
-dev-python/PyQt
-app-misc/releaseforge
-dev-util/kodos
-media-gfx/imgseek
-media-sound/albumart
-media-video/quickrip
-net-nds/luma
-net-p2p/qtorrent
-net-wireless/gerix
-x11-misc/icecursorscfg
-x11-misc/iceiconcvt
-x11-misc/icemergeprefs
-
 # Samuli Suominen <ssuominen@gentoo.org> (02 Jan 2009)
 # mirror restricted and distfile can't be downloaded
 # anymore wrt bug #288442. missing deps wrt bug #200085.
@@ -395,13 +373,6 @@ sys-apps/count
 #
 # Removal on 2010-02-26
 sys-apps/sdd
-
-# Samuli Suominen <ssuominen@gentoo.org> (27 Dec 2009)
-# Broken engine, see bug 277726. Replaced by
-# kde-misc/kcm_gtk
-#
-# Masked for removal
-x11-themes/gtk-engines-qt
 
 # Markos Chandras <hwoarang@gentoo.org> (26 Dec 2009)
 # keeping rc ebuilds masked

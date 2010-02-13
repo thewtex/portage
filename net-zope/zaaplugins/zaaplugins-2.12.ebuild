@@ -1,7 +1,8 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-zope/zaaplugins/zaaplugins-2.12.ebuild,v 1.6 2009/03/30 14:02:02 loki_val Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-zope/zaaplugins/zaaplugins-2.12.ebuild,v 1.8 2010/02/10 22:47:04 ssuominen Exp $
 
+EAPI=2
 inherit zproduct
 
 DESCRIPTION="A collection of ZAttachmentAttribute Plugins"
@@ -9,12 +10,14 @@ HOMEPAGE="http://ingeniweb.sourceforge.net/"
 SRC_URI="mirror://sourceforge/ingeniweb/ZAAPlugins-${PV}.tar.gz"
 
 LICENSE="ZPL"
+SLOT="0"
 KEYWORDS="~ppc ~x86"
+IUSE=""
 
 DEPEND=">=net-zope/zattachmentattribute-2.12
 	>=app-text/wv-1.0.0
 	>=app-text/xlhtml-0.5
-	>=virtual/poppler-utils-0.5"
+	>=app-text/poppler-0.12.3-r3[utils]"
 
 ZPROD_LIST="ZAAPlugins"
 
