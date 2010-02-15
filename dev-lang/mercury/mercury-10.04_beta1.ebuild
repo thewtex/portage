@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/mercury/mercury-10.04_beta1.ebuild,v 1.1 2010/02/13 02:50:34 keri Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/mercury/mercury-10.04_beta1.ebuild,v 1.3 2010/02/15 06:21:01 keri Exp $
 
 inherit elisp-common eutils flag-o-matic java-pkg-opt-2 multilib
 
@@ -35,6 +35,8 @@ src_unpack() {
 	unpack ${A}
 
 	epatch "${FILESDIR}"/${P}-multilib.patch
+	epatch "${FILESDIR}"/${P}-boehm_gc.patch
+	epatch "${FILESDIR}"/${P}-atomic-ops.patch
 	epatch "${FILESDIR}"/${P}-docs.patch
 	epatch "${FILESDIR}"/${P}-no-reconf.patch
 
@@ -44,6 +46,7 @@ src_unpack() {
 
 	if use test; then
 		epatch "${FILESDIR}"/${P}-tests-workspace.patch
+		epatch "${FILESDIR}"/${P}-tests-subdir.patch
 	fi
 }
 

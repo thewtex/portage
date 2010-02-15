@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11206 2010/02/13 19:47:10 beandog Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11210 2010/02/15 00:24:47 hanno Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -31,6 +31,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Sven Wegener <swegener@gentoo.org> (14 Feb 2010)
+# Masked for removal in 30 days. Discontinued by upstream.
+# Successor is dev-db/mysql-workbench
+dev-db/mysql-gui-tools
+
 # Ben de Groot <yngwin@gentoo.org> (09 Feb 2010)
 # Mask pending removal on 2010-03-09. Upstream dead, open bug #227717,
 # alternatives exist (e.g. media-gfx/feh)
@@ -51,12 +56,6 @@ dev-python/pyopencl
 # work properly with 3.95.0.
 # Also gnucash is pretty much untested.
 ~net-libs/aqbanking-4.2.4
-
-# Markos Chandras <hwoarang@gentoo.org> (05 Feb 2010)
-# Masking openbox and obconf ebuilds in order to perform further tests
-# on the ebuilds
-=x11-wm/openbox-9999
-=x11-misc/obconf-9999
 
 # Robin H. Johnson <robbat2@gentoo.org> (01 Feb 2010)
 # Upstream discontinued the split of -community and -enterprise specific
@@ -279,16 +278,6 @@ net-libs/libjingle
 #
 # Removal on 2010-03-06
 dev-php/roadsend-php
-
-# Diego E. Pettenò <flameeyes@gentoo.org> (05 Jan 2010)
-#  on behalf of QA team
-#
-# Fails to build with different configurations (bug #205050,
-# open January 2008, with patch and bug #262243, open
-# March 2009).
-#
-# Removal on 2010-03-06
-app-emulation/uae
 
 # Tomáš Chvátal <scarabeus@gentoo.org> (05 Jan 2010)
 # No homepage, no sources, dead.
@@ -552,16 +541,6 @@ sys-cluster/pvm-povray
 sys-cluster/pypvm
 sys-cluster/cppvm
 sys-cluster/xpvm
-
-# Diego E. Pettenò <flameeyes@gentoo.org> (05 Dec 2009)
-#  on behalf of QA team
-#
-# Upstream closed the early accesss program in favour of
-# Sun Studio 12 Update 1. The new package needs its license
-# reviewed, once that's done, it'll be added to Portage.
-#
-# Removal on 2010-02-03
-dev-lang/sunstudioexpress
 
 # Diego E. Pettenò <flameeyes@gentoo.org> (05 Dec 2009)
 #  on behalf of QA team
