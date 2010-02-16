@@ -28,7 +28,7 @@ RDEPEND="media-libs/fontconfig
 	)
 	cups? ( net-print/cups )
 	dbus? ( ~x11-libs/qt-dbus-${PV}[aqua=,debug=] )
-	gtk? ( x11-libs/gtk+:2[aqua=] )
+	gtk? ( || ( >=x11-libs/gtk+-2.18:2[aqua=] x11-libs/gtk+:2 ) )
 	mng? ( >=media-libs/libmng-1.0.9 )
 	nas? ( >=media-libs/nas-1.5 )
 	tiff? ( media-libs/tiff )
