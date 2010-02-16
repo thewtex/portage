@@ -1,8 +1,8 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/mtd-utils/mtd-utils-20090630.ebuild,v 1.4 2009/12/29 06:23:04 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/mtd-utils/mtd-utils-20090630.ebuild,v 1.7 2010/02/15 22:13:49 vapier Exp $
 
-inherit eutils
+inherit eutils toolchain-funcs
 
 # Git ID for the snapshot
 MY_PV="${PV}-22494a8d105936785af53235b088fa38112128fc"
@@ -34,13 +34,20 @@ src_unpack() {
 }
 
 makeopts() {
-	echo CROSS=${CHOST}-
+	tc-export CC
+	# bug 276374 has an interaction that makes the directories not work quite
+	# right sometimes. This needs more work.
+	tc-is-cross-compiler && echo CROSS=${CHOST}-
 	use xattr || echo WITHOUT_XATTR=1
 }
 
 src_compile() {
-	# bug #276374
-	emake -j1 $(makeopts) || die
+	# bug 276374 requires that the contents of ubi-utils gets built BEFORE the
+	# rest of the codebase. There is a parallel interference in the Makefile.
+	pushd ubi-utils
+	emake $(makeopts) || die
+	popd
+	emake $(makeopts) || die
 }
 
 src_install() {

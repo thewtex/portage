@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/tracker/tracker-9999.ebuild,v 1.10 2010/02/10 14:31:12 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/tracker/tracker-9999.ebuild,v 1.12 2010/02/15 16:52:47 lxnay Exp $
 
 EAPI="2"
 G2CONF_DEBUG="no"
@@ -16,9 +16,9 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
 # USE="doc" is managed by eclass.
-IUSE="applet deskbar doc eds exif gsf gstreamer gtk hal iptc +jpeg kmail laptop mp3 nautilus pdf playlist test +tiff +vorbis xine +xml xmp"
+IUSE="applet deskbar doc eds exif flac gsf gstreamer gtk hal iptc +jpeg kmail laptop mp3 nautilus pdf playlist test +tiff +vorbis xine +xml xmp"
 
-# Automagic, gconf, uuid, enca and probably more
+# Automagic, gconf, uuid, and probably more
 # TODO: quill and streamanalyzer support
 RDEPEND="
 	>=app-i18n/enca-1.9
@@ -40,12 +40,13 @@ RDEPEND="
 		>=mail-client/evolution-2.25.5
 		>=gnome-extra/evolution-data-server-2.25.5 )
 	exif? ( >=media-libs/libexif-0.6 )
-	iptc? ( media-libs/libiptcdata )
-	jpeg? ( media-libs/jpeg:0 )
+	flac? ( >=media-libs/flac-1.2.1 )
 	gsf? ( >=gnome-extra/libgsf-1.13 )
 	gstreamer? ( >=media-libs/gstreamer-0.10.12 )
 	!gstreamer? ( !xine? ( || ( media-video/totem media-video/mplayer ) ) )
 	gtk? ( >=x11-libs/gtk+-2.16.0 )
+	iptc? ( media-libs/libiptcdata )
+	jpeg? ( media-libs/jpeg:0 )
 	laptop? (
 		hal? ( >=sys-apps/hal-0.5 )
 		!hal? ( >=sys-apps/devicekit-power-007 ) )
@@ -116,16 +117,23 @@ pkg_setup() {
 		G2CONF="${G2CONF} --disable-hal --disable-devkit-power"
 	fi
 
+	if use nautilus; then
+		G2CONF="${G2CONF} --enable-nautilus-extension=yes"
+	else
+		G2CONF="${G2CONF} --enable-nautilus-extension=no"
+	fi
+
 	G2CONF="${G2CONF}
 		--disable-unac
 		--disable-functional-tests
+		--with-enca
 		$(use_enable applet tracker-status-icon)
 		$(use_enable applet tracker-search-bar)
 		$(use_enable deskbar deskbar-applet)
 		$(use_enable eds evolution-miner)
 		$(use_enable exif libexif)
+		$(use_enable flac libflac)
 		$(use_enable gsf libgsf)
-		$(use_enable gtk libtrackergtk)
 		$(use_enable gtk tracker-explorer)
 		$(use_enable gtk tracker-preferences)
 		$(use_enable gtk tracker-search-tool)
@@ -133,7 +141,6 @@ pkg_setup() {
 		$(use_enable jpeg libjpeg)
 		$(use_enable kmail kmail-miner)
 		$(use_enable mp3 id3lib)
-		$(use_enable nautilus nautilus-extensions)
 		$(use_enable pdf poppler-glib)
 		$(use_enable playlist)
 		$(use_enable test unit-tests)

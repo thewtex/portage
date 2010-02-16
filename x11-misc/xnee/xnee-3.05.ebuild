@@ -1,9 +1,10 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/xnee/xnee-3.05.ebuild,v 1.1 2010/02/09 18:16:40 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/xnee/xnee-3.05.ebuild,v 1.4 2010/02/13 21:48:05 ssuominen Exp $
 
 EAPI=2
-inherit eutils
+inherit autotools eutils
+# virtualx
 
 DESCRIPTION="Program suite to record, replay and distribute user actions."
 HOMEPAGE="http://www.sandklef.com/xnee/"
@@ -26,6 +27,15 @@ DEPEND="${RDEPEND}
 	gnome? ( sys-devel/gettext
 		media-gfx/imagemagick )"
 
+# This needs RECORD extension from X.org server which isn't necessarily
+# enabled. Xlib: extension "RECORD" missing on display ":0.0".
+RESTRICT="test"
+
+src_prepare() {
+	epatch "${FILESDIR}"/${P}-asneeded.patch
+	eautoreconf
+}
+
 src_configure() {
 	local myconf=""
 
@@ -43,6 +53,10 @@ src_configure() {
 		--enable-lib \
 		--disable-static-programs \
 		${myconf}
+}
+
+src_test() {
+	Xemake check || die
 }
 
 src_install() {

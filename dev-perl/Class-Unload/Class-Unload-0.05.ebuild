@@ -1,19 +1,19 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Class-Unload/Class-Unload-0.05.ebuild,v 1.1 2010/02/15 12:31:25 tove Exp $
+
+EAPI=2
 
 MODULE_AUTHOR=ILMARI
 inherit perl-module
 
 DESCRIPTION="Unload a class"
 
-LICENSE="|| ( Artistic GPL-2 )"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
-RDEPEND="dev-lang/perl
-	dev-perl/Class-Inspector"
+RDEPEND="dev-perl/Class-Inspector"
 DEPEND="${RDEPEND}
 	test? ( virtual/perl-Test-Simple
 		>=dev-perl/Test-Pod-1.22

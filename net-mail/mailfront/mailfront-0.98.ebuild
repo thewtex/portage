@@ -1,6 +1,6 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/mailfront/mailfront-0.98.ebuild,v 1.6 2009/09/23 19:07:41 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-mail/mailfront/mailfront-0.98.ebuild,v 1.7 2010/02/12 09:52:13 bangert Exp $
 
 inherit toolchain-funcs
 
@@ -29,7 +29,7 @@ src_compile() {
 	echo "/var/qmail" > conf-qmail
 	echo "${D}/var/qmail/bin" > conf-bin
 	echo "$(tc-getCC) ${CFLAGS}" > conf-cc
-	echo "$(tc-getCC) -s" > conf-ld
+	echo "$(tc-getCC)" > conf-ld
 	emake || die
 }
 
