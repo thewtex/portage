@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5277 2010/02/12 04:27:42 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5286 2010/02/15 21:07:47 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -330,6 +330,7 @@ app-emulation/virt-manager:policykit - Enables sys-auth/polkit authentication su
 app-emulation/virtualbox-bin:additions - Install Guest System Tools ISO
 app-emulation/virtualbox-bin:chm - Install kchmviewer binary to enable online help (in MS CHM format)
 app-emulation/virtualbox-bin:headless - Install without any graphic frontend
+app-emulation/virtualbox-bin:rdesktop-vrdp - Install the rdesktop client integration
 app-emulation/virtualbox-bin:sdk - Enable building of SDK
 app-emulation/virtualbox-bin:vboxwebsrv - Install the VirtualBox webservice
 app-emulation/virtualbox-ose:additions - Install Guest System Tools ISO
@@ -478,7 +479,6 @@ app-misc/tracker:kmail - Build kmail data miner
 app-misc/tracker:laptop - Make tracker power management aware
 app-misc/tracker:nautilus - Enable tracker to integrate with gnome-base/nautilus by providing entries in its context menu 
 app-misc/tracker:playlist - Add support for playlists
-app-misc/tracker:wv2 - Build MS-Word .doc support.
 app-misc/tracker:xmp - Adds support for XMP metadata extraction
 app-misc/worker:avfs - Enable support for sys-fs/avfs
 app-misc/workrave:distribution - Enable networking. See http://www.workrave.org/features/
@@ -506,6 +506,7 @@ app-office/grisbi:print - Enable printing support
 app-office/imposter:iksemel - Enable external dev-libs/iksemel parsing support
 app-office/karbon:pstoedit - Build support for PDF and PS import.
 app-office/karbon:wpg - Build wordperfect image support.
+app-office/kmymoney:hbci - Enable HBCI support using net-libs/aqbanking
 app-office/kmymoney:quotes - Enable Online Stock Quote retrieval
 app-office/krita:gmm - Enable library for sparse, dense and skyline matrices.
 app-office/krita:kdcraw - Enable KDE image manipulating interface.
@@ -898,6 +899,7 @@ dev-libs/openct:pcsc-lite - Enable support for sys-apps/pcsc-lite
 dev-libs/openobex:irda - Enable IrDA support
 dev-libs/opensc:openct - Build using dev-libs/openct compatibility
 dev-libs/opensc:pcsc-lite - Build with sys-apps/pcsc-lite
+dev-libs/openssl:rfc3779 - Enable support for RFC 3779 (X.509 Extensions for IP Addresses and AS Identifiers)
 dev-libs/pkcs11-helper:nss - Enable NSS crypto engine
 dev-libs/ppl:prolog - Build SWI Prolog interface
 dev-libs/ppl:watchdog - Build the PPL Watchdog library - a C++ library for multiple, concurrent watchdog timers
@@ -1390,7 +1392,6 @@ kde-base/kopete:addbookmarks - Automatically add incoming urls to bookmarks.
 kde-base/kopete:autoreplace - Automatically replace selected text
 kde-base/kopete:bonjour - Enable Link-Local Messaging via the bonjour protocol.
 kde-base/kopete:contactnotes - Enables writing personal notes for contacts.
-kde-base/kopete:facebook - Enable Facebook chat support.
 kde-base/kopete:gadu - Enable the Gadu protocol handler.
 kde-base/kopete:groupwise - Enable the Groupwise protocol handler.
 kde-base/kopete:highlight - Allows you to specify highlights on specific events.
@@ -2078,7 +2079,7 @@ media-video/mjpegtools:yv12 - Enables support for the YV12 pixel format
 media-video/motiontrack:multiprocess - Enables multi-process support (SMP/cluster) for motiontrack programs
 media-video/mplayer:3dnowext - Enable 3dnowext cpu instructions
 media-video/mplayer:ass - Internal SRT/SSA/ASS (SubRip / SubStation Alpha) subtitle support
-media-video/mplayer:bl - Enables Blinkenlights support in mplayer
+media-video/mplayer:bl - Blinkenlights video output
 media-video/mplayer:bs2b - Enable Bauer stereophonic-to-binaural headphone filter
 media-video/mplayer:cdio - Use libcdio for CD support (instead of cdparanoia)
 media-video/mplayer:cpudetection - Enables runtime cpudetection (useful for bindist, compatability on other CPUs)
@@ -2095,7 +2096,6 @@ media-video/mplayer:live - Enables live.com streaming media support
 media-video/mplayer:md5sum - Enables md5sum video output
 media-video/mplayer:mmxext - Enables mmx2 support
 media-video/mplayer:mng - MNG input support
-media-video/mplayer:mp2 - Enables support for twolame, an MP2 audio library
 media-video/mplayer:network - Enables network streaming support
 media-video/mplayer:nut - Enables support for the NUT container format
 media-video/mplayer:opencore-amr - Enables Adaptive Multi-Rate format support
@@ -2594,6 +2594,7 @@ net-libs/courier-authlib:vpopmail - Enable vpopmail support
 net-libs/cvm:vpopmail - Enable vpopmail support
 net-libs/farsight2:upnp - Enable UPnP IGD support
 net-libs/iax:snomhack - Use slower memset for SNOM phoneem
+net-libs/libeXosip:srv - enable support for SRV records DNS queries
 net-libs/libesmtp:ssl -  Enable support for advanced SMTP authentication methods, like NTML and STARTTLS. Also use OpenSSL's MD5 implementation over internal version. 
 net-libs/libetpan:liblockfile - Enable support for liblockfile library
 net-libs/libfwbuilder:bind - Use bind's name resolving library
@@ -3062,7 +3063,6 @@ sci-chemistry/gromacs:double-precision - More precise calculations at the expens
 sci-chemistry/gromacs:fkernels - Enable building of Fortran Kernels for platforms that dont have assembly loops
 sci-chemistry/gromacs:single-precision - Single precision version of gromacs
 sci-chemistry/jmol:client-only - Install the viewer only, no applet files for httpd 
-sci-chemistry/molrep:extra-test - Extra long tests
 sci-chemistry/oasis:minimal - Restricts functionality on free software
 sci-chemistry/openbabel:swig - Use swig to rebuild language bindings.
 sci-chemistry/pdb2pqr:opal - Add web interafce via opal

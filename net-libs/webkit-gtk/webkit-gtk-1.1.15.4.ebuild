@@ -1,10 +1,10 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/webkit-gtk/webkit-gtk-1.1.15.4.ebuild,v 1.6 2010/02/03 20:13:51 grobian Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/webkit-gtk/webkit-gtk-1.1.15.4.ebuild,v 1.8 2010/02/13 19:58:19 pacho Exp $
 
 EAPI="2"
 
-inherit autotools flag-o-matic eutils
+inherit autotools flag-o-matic eutils virtualx
 
 MY_P="webkit-${PV}"
 DESCRIPTION="Open source web browser engine"
@@ -15,7 +15,7 @@ LICENSE="LGPL-2 LGPL-2.1 BSD"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~sparc ~x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~ia64-linux ~x86-linux ~x86-macos"
 # geoclue
-IUSE="aqua coverage debug doc +gstreamer pango +websockets"
+IUSE="aqua coverage debug doc +gstreamer +websockets"
 
 # use sqlite, svg by default
 # dependency on >=x11-libs/gtk+-2.13 for gail
@@ -32,14 +32,11 @@ RDEPEND="
 	>=net-libs/libsoup-2.27.91
 	>=dev-db/sqlite-3
 	>=app-text/enchant-0.22
+	>=x11-libs/pango-1.12
 
 	gstreamer? (
 		media-libs/gstreamer:0.10
 		media-libs/gst-plugins-base:0.10 )
-	pango? ( >=x11-libs/pango-1.12 )
-	!pango? (
-		media-libs/freetype:2
-		media-libs/fontconfig )
 "
 DEPEND="${RDEPEND}
 	>=sys-devel/flex-2.5.33
@@ -85,17 +82,12 @@ src_configure() {
 		--enable-filters --enable-ruby
 		$(use aqua && echo "--with-target=quartz")"
 
-	# USE-flag controlled font backend because upstream default is freetype
-	# Remove USE-flag once font-backend becomes pango upstream
-	if use pango; then
-		ewarn "You have enabled the incomplete pango backend"
-		ewarn "Please file any and all bugs *upstream*"
-		myconf="${myconf} --with-font-backend=pango"
-	else
-		myconf="${myconf} --with-font-backend=freetype"
-	fi
-
 	econf ${myconf}
+}
+
+src_test() {
+	# Tests will fail without it, bug 294691
+	Xemake check || die "Test phase failed"
 }
 
 src_install() {

@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/qt-webkit/qt-webkit-4.6.1.ebuild,v 1.2 2010/01/19 16:03:27 yngwin Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/qt-webkit/qt-webkit-4.6.1.ebuild,v 1.3 2010/02/15 15:12:39 spatz Exp $
 
 EAPI="2"
 inherit qt4-build
@@ -27,12 +27,12 @@ tools/"
 QCONFIG_ADD="webkit"
 QCONFIG_DEFINE="QT_WEBKIT"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-4.6.0-solaris-strnstr.patch
+)
+
 src_prepare() {
 	[[ $(tc-arch) == "ppc64" ]] && append-flags -mminimal-toc #241900
-	if use sparc; then
-		epatch "${FILESDIR}"/sparc-qt-webkit-sigbus.patch
-	fi
-	epatch "${FILESDIR}"/${PN}-4.6.0-solaris-strnstr.patch
 	qt4-build_src_prepare
 }
 

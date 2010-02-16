@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/eutils.eclass,v 1.329 2010/01/28 22:00:12 betelgeuse Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/eutils.eclass,v 1.330 2010/02/15 02:10:39 vapier Exp $
 
 # @ECLASS: eutils.eclass
 # @MAINTAINER:

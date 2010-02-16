@@ -1,6 +1,6 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/qemu-kvm/qemu-kvm-9999.ebuild,v 1.2 2009/12/31 16:29:24 jmbsvicetto Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/qemu-kvm/qemu-kvm-9999.ebuild,v 1.3 2010/02/15 16:40:13 cardoe Exp $
 
 EAPI="2"
 
@@ -26,7 +26,7 @@ LICENSE="GPL-2"
 SLOT="0"
 # xen is disabled until the deps are fixed
 IUSE="+aio alsa bluetooth curl esd gnutls fdt hardened kvm-trace ncurses \
-pulseaudio sasl +sdl vde"
+pulseaudio sasl sdl static vde"
 
 COMMON_TARGETS="i386 x86_64 arm cris m68k microblaze mips mipsel ppc ppc64 sh4 sh4eb sparc sparc64"
 IUSE_SOFTMMU_TARGETS="${COMMON_TARGETS} mips64 mips64el ppcemb"
@@ -47,6 +47,8 @@ RDEPEND="
 	!app-emulation/qemu
 	!app-emulation/qemu-softmmu
 	!app-emulation/qemu-user
+	net-misc/bridge-utils
+	sys-apps/iproute2
 	sys-apps/pciutils
 	>=sys-apps/util-linux-2.16.0
 	sys-libs/zlib
@@ -95,8 +97,6 @@ pkg_setup() {
 }
 
 src_prepare() {
-	# avoid fdt till an updated release appears
-	sed -i -e 's:fdt="yes":fdt="no":' configure || die
 	# prevent docs to get automatically installed
 	sed -i '/$(DESTDIR)$(docdir)/d' Makefile || die
 	# Alter target makefiles to accept CFLAGS set via flag-o
@@ -135,6 +135,12 @@ src_configure() {
 		conf_opts="${conf_opts} --disable-linux-user"
 	fi
 
+	# Fix QA issues. QEMU needs executable heaps and we need to mark it as such
+	conf_opts="${conf_opts} --extra-ldflags=-Wl,-z,execheap"
+
+	# Add support for static builds
+	use static && conf_opts="${conf_opts} --static"
+
 	#config options
 	conf_opts="${conf_opts} $(use_enable aio linux-aio)"
 	use bluetooth || conf_opts="${conf_opts} --disable-bluez"
@@ -166,7 +172,7 @@ src_configure() {
 		--audio-drv-list="${audio_opts}" \
 		--target-list="${softmmu_targets} ${user_targets}" \
 		--cc=$(tc-getCC) \
-		--host-cc=$(tc-getCC) \
+		--host-cc=$(tc-getBUILD_CC) \
 		|| die "configure failed"
 
 		# this is for qemu upstream's threaded support which is
