@@ -15,8 +15,8 @@ DEPEND="~x11-libs/qt-core-${PV}[aqua=,debug=,ssl]
 	~x11-libs/qt-gui-${PV}[aqua=,dbus,debug=]
 	~x11-libs/qt-xmlpatterns-${PV}[aqua=,debug=]
 	!kde? ( || ( ~x11-libs/qt-phonon-${PV}:${SLOT}[aqua=,dbus,debug=]
-		media-sound/phonon[aqua=] ) )
-	kde? ( media-sound/phonon[aqua=] )"
+		>=media-sound/phonon-4.3.80[aqua=]  media-sound/phonon ) )
+	kde? ( || ( >=media-sound/phonon-4.3.80[aqua=]  media-sound/phonon[aqua=] ) )"
 RDEPEND="${DEPEND}"
 
 QT4_TARGET_DIRECTORIES="src/3rdparty/webkit/WebCore tools/designer/src/plugins/qwebview"
