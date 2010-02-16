@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11210 2010/02/15 00:24:47 hanno Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11217 2010/02/15 21:07:01 ssuominen Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -31,6 +31,41 @@
 
 #--- END OF EXAMPLES ---
 
+# Samuli Suominen <ssuominen@gentoo.org> (15 Feb 2010)
+# Masked for removal. Unrequired as FaceBook has XMPP (Jabber)
+# support.
+# http://blog.facebook.com/blog.php?post=297991732130
+net-im/kopete-facebook
+
+# Justin Lecher <jlec@gentoo.org> (15 Feb 2010)
+# Upstream changes tarball regularly and do not permit mirroring
+# I am trying to find a solution with upstream #305007
+sci-chemistry/tinker
+
+# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (15 February 2010)
+# Mask prerelease libdrm snapshot and depending xf86-video-nouveau
+=x11-libs/libdrm-2.4.18_pre*
+=x11-drivers/xf86-video-nouveau-0.0.15_pre*
+
+# Dror Levin <spatz@gentoo.org> (15 February 2010)
+# Mask Qt 4.6.2 temporarily for adding and adjusting patches.
+~x11-libs/qt-4.6.2
+~x11-libs/qt-assistant-4.6.2
+~x11-libs/qt-core-4.6.2
+~x11-libs/qt-dbus-4.6.2
+~x11-libs/qt-demo-4.6.2
+~x11-libs/qt-gui-4.6.2
+~x11-libs/qt-multimedia-4.6.2
+~x11-libs/qt-opengl-4.6.2
+~x11-libs/qt-phonon-4.6.2
+~x11-libs/qt-qt3support-4.6.2
+~x11-libs/qt-script-4.6.2
+~x11-libs/qt-sql-4.6.2
+~x11-libs/qt-svg-4.6.2
+~x11-libs/qt-test-4.6.2
+~x11-libs/qt-webkit-4.6.2
+~x11-libs/qt-xmlpatterns-4.6.2
+
 # Sven Wegener <swegener@gentoo.org> (14 Feb 2010)
 # Masked for removal in 30 days. Discontinued by upstream.
 # Successor is dev-db/mysql-workbench
@@ -50,12 +85,6 @@ x11-misc/bbrb
 # Masked until there is an unmasked OpenCL implementation in the tree.
 # (Currently only masked beta NVIDIA drivers provide libOpenCL.so)
 dev-python/pyopencl
-
-# Samuli Suominen <ssuominen@gentoo.org> (06 Feb 2010)
-# Masked until kmymoney-3.96.0 is in portage, doesn't necessarily
-# work properly with 3.95.0.
-# Also gnucash is pretty much untested.
-~net-libs/aqbanking-4.2.4
 
 # Robin H. Johnson <robbat2@gentoo.org> (01 Feb 2010)
 # Upstream discontinued the split of -community and -enterprise specific
@@ -177,10 +206,6 @@ media-tv/vdrplugin-rebuild
 # releases. Will be removed in 30 days.
 dev-ruby/ruby-libgda
 
-# Andreas Proschofsky <suka@gentoo.org> (14 Jan 2010)
-# New release Candidate for openoffice-bin, needs testing
->=app-office/openoffice-bin-3.2.0_rc2
-
 # Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (11 Jan 2010)
 # libassuan 2 is incompatible with previous versions. Masked for testing.
 >=dev-libs/libassuan-2.0.0
@@ -250,6 +275,7 @@ net-libs/libjingle
 # experimental features and accept a more unstable release.
 ~www-client/chromium-4.0.302.2
 ~www-client/chromium-5.0.307.5
+~www-client/chromium-5.0.322.2
 
 # Diego E. Pettenò <flameeyes@gentoo.org> (07 Jan 2010)
 #  on behalf of QA team

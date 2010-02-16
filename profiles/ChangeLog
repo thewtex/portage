@@ -1,10 +1,32 @@
 # ChangeLog for profile directory
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.3886 2010/02/15 00:24:47 hanno Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.3893 2010/02/15 21:07:01 ssuominen Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  15 Feb 2010; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask net-im/kopete-facebook for removal.
+
+  15 Feb 2010; Justin Lecher (jlec) <jlec@j-schmitz.net> package.mask:
+  Masked sci-chemistry/tinker, because upstream changes tarball regularly
+  and do not permit mirroring, trying to find a solution
+
+  15 Feb 2010; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> package.mask:
+  Mask prerelease libdrm snapshot and depending xf86-video-nouveau
+
+  15 Feb 2010; Dror Levin <spatz@gentoo.org> package.mask:
+  Mask Qt 4.6.2 temporarily for adding and adjusting patches.
+
+  15 Feb 2010; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Unmask AqBanking 4.2.4 for use with KMyMoney 3.96.0.
+
+  15 Feb 2010; Andreas Proschofsky <suka@gentoo.org> package.mask:
+  Remove mask on openoffice-bin-3.2.0
+
+  15 Feb 2010; Bernard Cafarelli <voyageur@gentoo.org> package.mask:
+  Update www-client/chromium dev channel releases mask
 
   15 Feb 2010; Hanno Boeck <hanno@gentoo.org> package.mask:
   Remove app-emulation/uae mask, all compilation bugs fixed.
