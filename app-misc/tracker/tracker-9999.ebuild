@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/tracker/tracker-9999.ebuild,v 1.12 2010/02/15 16:52:47 lxnay Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/tracker/tracker-9999.ebuild,v 1.14 2010/02/17 23:08:46 eva Exp $
 
 EAPI="2"
 G2CONF_DEBUG="no"
@@ -44,14 +44,16 @@ RDEPEND="
 	gsf? ( >=gnome-extra/libgsf-1.13 )
 	gstreamer? ( >=media-libs/gstreamer-0.10.12 )
 	!gstreamer? ( !xine? ( || ( media-video/totem media-video/mplayer ) ) )
-	gtk? ( >=x11-libs/gtk+-2.16.0 )
+	gtk? ( >=x11-libs/gtk+-2.16 )
 	iptc? ( media-libs/libiptcdata )
 	jpeg? ( media-libs/jpeg:0 )
 	laptop? (
 		hal? ( >=sys-apps/hal-0.5 )
 		!hal? ( >=sys-apps/devicekit-power-007 ) )
 	mp3? ( >=media-libs/id3lib-3.8.3 )
-	nautilus? ( gnome-base/nautilus )
+	nautilus? (
+		gnome-base/nautilus
+		>=x11-libs/gtk+-2.18 )
 	pdf? (
 		>=x11-libs/cairo-1
 		>=app-text/poppler-0.12.3-r3[cairo,utils]
@@ -66,6 +68,8 @@ DEPEND="${RDEPEND}
 	>=dev-util/intltool-0.35
 	>=sys-devel/gettext-0.14
 	>=dev-util/pkgconfig-0.20
+	dev-util/gtk-doc-am
+	>=dev-util/gtk-doc-1.8
 	applet? (
 		dev-lang/vala
 		>=dev-libs/libgee-0.3 )
@@ -73,7 +77,6 @@ DEPEND="${RDEPEND}
 		dev-lang/vala
 		>=dev-libs/libgee-0.3 )
 	doc? (
-		>=dev-util/gtk-doc-1.8
 		media-gfx/graphviz )"
 #	test? ( gcov )
 
