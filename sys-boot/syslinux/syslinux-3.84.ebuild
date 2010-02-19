@@ -1,8 +1,8 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-boot/syslinux/syslinux-3.84.ebuild,v 1.1 2010/02/16 12:47:45 chithanh Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-boot/syslinux/syslinux-3.84.ebuild,v 1.4 2010/02/18 21:52:04 chithanh Exp $
 
-inherit eutils
+inherit eutils toolchain-funcs
 
 DESCRIPTION="SysLinux, IsoLinux and PXELinux bootloader"
 HOMEPAGE="http://syslinux.zytor.com/"
@@ -11,7 +11,7 @@ SRC_URI="mirror://kernel/linux/utils/boot/syslinux/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
-IUSE=""
+IUSE="custom-cflags"
 
 RDEPEND="sys-fs/mtools
 		dev-perl/Crypt-PasswdMD5
@@ -29,14 +29,25 @@ src_unpack() {
 	unpack ${A}
 	cd "${S}"
 	epatch "${FILESDIR}"/${PN}-3.72-nopie.patch
-	# Don't prestrip, makes portage angry
-	epatch "${FILESDIR}"/${PN}-3.72-nostrip.patch
 
 	rm -f gethostip #bug 137081
+
+	local SYSLINUX_MAKEFILES="extlinux/Makefile linux/Makefile mtools/Makefile \
+		sample/Makefile utils/Makefile"
+	sed -i ${SYSLINUX_MAKEFILES} -e '/^LDFLAGS/d' || die "sed failed"
+
+	if use custom-cflags; then
+		sed -i ${SYSLINUX_MAKEFILES} \
+			-e 's|-g -Os||g' \
+			-e 's|-Os||g' \
+			-e 's|CFLAGS[[:space:]]\+=|CFLAGS +=|g' \
+			|| die "sed custom-cflags failed"
+	fi
+
 }
 
 src_compile() {
-	emake installer || die
+	emake CC=$(tc-getCC) installer || die
 }
 
 src_install() {
