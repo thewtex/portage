@@ -9,7 +9,7 @@ SRC_URI="http://www.funtoo.org/archive/coreboot/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 DEPEND=""
 RDEPEND="dev-lang/python >=sys-boot/grub-1.97.2"
