@@ -27,13 +27,12 @@ src_install() {
 	into /
 	dosbin sbin/boot-update
 
-	insinto /etc
-	newins etc/boot.conf boot.conf.example
+	dodoc etc/boot.conf.example
 }
 
 pkg_postinst() {
-	if [ ! -e ${ROOT}/etc/boot.conf ] && [ -e ${ROOT}/etc/boot.conf.example ]
+	if [ ! -e ${ROOT}/etc/boot.conf ] && [ -e ${ROOT}/usr/share/doc/${PF}/boot.conf.example ]
 	then
-		cp ${ROOT}/etc/boot.conf.example ${ROOT}/etc/boot.conf
+		cp ${ROOT}/usr/share/doc/${PF}/boot.conf.example ${ROOT}/etc/boot.conf
 	fi
 }
