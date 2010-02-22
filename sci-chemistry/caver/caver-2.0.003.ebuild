@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/caver/caver-2.0.003.ebuild,v 1.1 2010/02/12 17:29:36 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/caver/caver-2.0.003.ebuild,v 1.2 2010/02/21 09:56:35 jlec Exp $
 
 EAPI="2"
 SUPPORT_PYTHON_ABIS="1"
@@ -23,6 +23,7 @@ RDEPEND="
 	>=virtual/jre-1.6
 	sci-chemistry/pymol"
 DEPEND="app-arch/unzip"
+RESTRICT_PYTHON_ABIS="2.4 3.*"
 
 RESTRICT="fetch"
 
@@ -41,7 +42,7 @@ src_prepare() {
 src_install() {
 	java-pkg_dojar Caver$(replace_all_version_separators _ ${PV})/*.jar
 
-	java-pkg_jarinto /usr/share/${PN}/lib/
+	java-pkg_jarinto /usr/share/${PN}/lib/lib/
 	java-pkg_dojar Caver$(replace_all_version_separators _ ${PV})/lib/*.jar
 
 	installation() {
@@ -56,9 +57,9 @@ src_install() {
 }
 
 pkg_postinst() {
-	python_mod_optimize ${PN}
+	python_mod_optimize pmg_tk/startup/Caver$(replace_all_version_separators _ ${PV}).py
 }
 
 pkg_postrm() {
-	python_mod_cleanup ${PN}
+	python_mod_cleanup pmg_tk/startup/Caver$(replace_all_version_separators _ ${PV}).py
 }
