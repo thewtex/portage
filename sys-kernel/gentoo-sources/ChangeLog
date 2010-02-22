@@ -1,6 +1,30 @@
 # ChangeLog for sys-kernel/gentoo-sources
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-kernel/gentoo-sources/ChangeLog,v 1.677 2010/02/10 22:08:47 mpagano Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-kernel/gentoo-sources/ChangeLog,v 1.679 2010/02/21 21:44:14 mpagano Exp $
+
+  21 Feb 2010; Michael Pagano <mpagano@gentoo.org>
+  gentoo-sources-2.6.16-r13.ebuild, gentoo-sources-2.6.25-r9.ebuild,
+  gentoo-sources-2.6.26-r4.ebuild, gentoo-sources-2.6.27-r8.ebuild,
+  gentoo-sources-2.6.27-r10.ebuild, gentoo-sources-2.6.28-r5.ebuild,
+  gentoo-sources-2.6.28-r6.ebuild, gentoo-sources-2.6.29-r5.ebuild,
+  gentoo-sources-2.6.29-r6.ebuild, gentoo-sources-2.6.30-r5.ebuild,
+  gentoo-sources-2.6.30-r8.ebuild, gentoo-sources-2.6.30-r9.ebuild,
+  gentoo-sources-2.6.31-r6.ebuild, gentoo-sources-2.6.31-r7.ebuild,
+  gentoo-sources-2.6.31-r9.ebuild, gentoo-sources-2.6.31-r10.ebuild,
+  gentoo-sources-2.6.32-r2.ebuild, gentoo-sources-2.6.32-r3.ebuild,
+  gentoo-sources-2.6.32-r4.ebuild, gentoo-sources-2.6.32-r5.ebuild,
+  gentoo-sources-2.6.32-r6.ebuild:
+  Changing homepage of genpatches to finally close bug #293152
+
+*gentoo-sources-2.6.32-r6 (19 Feb 2010)
+
+  19 Feb 2010; Mike Pagano <mpagano@gentoo.org>
+  -gentoo-sources-2.6.31-r8.ebuild, -gentoo-sources-2.6.32.ebuild,
+  -gentoo-sources-2.6.32-r1.ebuild, +gentoo-sources-2.6.32-r6.ebuild:
+  Old version cleanup. 2.6.32-r6 contains patch to fistaging driver
+  rtl8187se compilation failure. Patch to fix a bug which truncated the
+  LBA49 return value in libata-scsi. Patch to fix tranmits hangs in Broadcom
+  5906 adapter.
 
 *gentoo-sources-2.6.32-r5 (10 Feb 2010)
 

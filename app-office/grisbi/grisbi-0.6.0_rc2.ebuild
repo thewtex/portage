@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/grisbi/grisbi-0.6.0_rc2.ebuild,v 1.1 2010/02/14 23:28:04 remi Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/grisbi/grisbi-0.6.0_rc2.ebuild,v 1.3 2010/02/20 15:43:46 pacho Exp $
 
 EAPI="2"
 
@@ -15,7 +15,7 @@ SRC_URI="mirror://sourceforge/grisbi/${PN}-${MY_PV}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="amd64 ~ppc ~sparc ~x86"
 
 S="${WORKDIR}/${PN}-${MY_PV}"
 
@@ -40,6 +40,9 @@ src_prepare() {
 				sed -i "s;doc/grisbi/;doc/${PF}/;g" "${i}"
 			done
 	eend 0
+
+	# Fix Icon value in desktop file
+	sed -i "s/grisbi.png/grisbi/" share/grisbi.desktop || die
 
 	AT_M4DIR="macros" eautoreconf
 }

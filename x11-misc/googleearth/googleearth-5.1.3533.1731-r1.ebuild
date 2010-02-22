@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/googleearth/googleearth-5.1.3533.1731-r1.ebuild,v 1.4 2010/02/11 15:47:30 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/googleearth/googleearth-5.1.3533.1731-r1.ebuild,v 1.6 2010/02/19 11:51:54 caster Exp $
 
 EAPI=2
 
@@ -46,7 +46,7 @@ RDEPEND=">=sys-devel/gcc-${GCC_NEEDED}[-nocxx]
 		>=app-emulation/emul-linux-x86-xlibs-20081109
 		>=app-emulation/emul-linux-x86-baselibs-20081109
 		!qt-bundled? (
-			>=app-emulation/emul-linux-x86-qtlibs-20091231
+			>=app-emulation/emul-linux-x86-qtlibs-20091231-r1
 		)
 	)
 	|| (
