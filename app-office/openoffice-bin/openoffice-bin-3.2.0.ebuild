@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/openoffice-bin/openoffice-bin-3.2.0.ebuild,v 1.1 2010/02/15 13:49:04 suka Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/openoffice-bin/openoffice-bin-3.2.0.ebuild,v 1.3 2010/02/21 12:04:57 suka Exp $
 
 EAPI="2"
 
@@ -34,7 +34,7 @@ DESCRIPTION="OpenOffice productivity suite"
 SRC_URI="x86? ( mirror://openoffice/stable/${PV}/OOo_${PV}_LinuxIntel_install_en-US.tar.gz )
 	amd64? ( mirror://openoffice/stable/${PV}/OOo_${PV}_LinuxX86-64_install_wJRE_en-US.tar.gz  )"
 
-LANGS="ar as ast bg bn ca cs da de dz el en en_GB eo es et eu fi fr gl gu hi_IN hu id is it ka km kn ko ku lt lv mk ml mr my nb nl nn oc om or pa_IN pl pt pt_BR ro ru sh si sk sl sr sv ta te th  tr ug uk uz vi zh_CN zh_TW"
+LANGS="ar as ast bg bn ca cs da de dz el en en_GB eo es et eu fi fr ga gl gu hi_IN hu id is it ja ka km kn ko ku lt lv mk ml mr my nb nl nn oc om or pa_IN pl pt pt_BR ro ru sh si sk sl sr sv ta te th tr ug uk uz vi zh_CN zh_TW"
 
 for X in ${LANGS} ; do
 	[[ ${X} != "en" ]] && SRC_URI="${SRC_URI} linguas_${X}? (
@@ -78,7 +78,7 @@ src_unpack() {
 
 	unpack ${A}
 
-	cd ${S}
+	cd "${S}"
 
 	for i in base binfilter calc core01 core02 core03 core04 core05 core06 core07 draw graphicfilter images impress math ooofonts oooimprovement ooolinguistic pyuno testtool writer xsltfilter ; do
 		rpm_unpack "./${UP}/${BASIS}-${i}-${MY_PV3}.${OOARCH}.rpm"

@@ -1,8 +1,10 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/uget/uget-1.5.0.1-r1.ebuild,v 1.1 2010/01/08 15:23:05 wired Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/uget/uget-1.5.0.1-r1.ebuild,v 1.4 2010/02/21 12:36:25 wired Exp $
 
 EAPI="2"
+
+inherit autotools base
 
 DESCRIPTION="Download manager using gtk+ and libcurl"
 HOMEPAGE="http://urlget.sourceforge.net/"
@@ -10,7 +12,7 @@ SRC_URI="mirror://sourceforge/urlget/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc ~x86"
 IUSE="gstreamer libnotify nls"
 
 RDEPEND="
@@ -24,6 +26,13 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-util/pkgconfig
 	sys-devel/gettext"
+
+src_prepare() {
+	epatch "${FILESDIR}"/"${PN}"-as-needed.patch
+	eautoreconf
+	# fix test fail
+	echo "uget-gtk/ug_list_view.c" >> "${S}"/po/POTFILES.in
+}
 
 src_configure() {
 	econf $(use_enable nls) \
