@@ -11,8 +11,8 @@ MY_P="SQLAlchemy-${PV/_/}"
 
 DESCRIPTION="Python SQL toolkit and Object Relational Mapper."
 HOMEPAGE="http://www.sqlalchemy.org/ http://pypi.python.org/pypi/SQLAlchemy"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
-
+SRC_URI="http://pypi.python.org/packages/source/S/SQLAlchemy/SQLAlchemy-0.6beta1.tar.gz mirror://sourceforge/${PN}/${MY_P}.tar.gz"
+RESTRICT="nomirror"
 LICENSE="MIT"
 SLOT="0"
 IUSE="doc examples firebird mssql mysql postgres +sqlite test"
