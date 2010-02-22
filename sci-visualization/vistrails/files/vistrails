@@ -1,0 +1,5 @@
+#!/bin/sh
+VISTRAILS_DIR=$(python -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")
+VISTRAILS_DIR="${VISTRAILS_DIR}/vistrails"
+PYTHONPATH="${VISTRAILS_DIR}:${PYTHONPATH}" python ${VISTRAILS_DIR}/vistrails.py
+
