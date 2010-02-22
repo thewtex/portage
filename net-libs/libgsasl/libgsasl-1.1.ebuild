@@ -1,10 +1,10 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/libgsasl/libgsasl-1.1.ebuild,v 1.2 2010/01/10 16:40:00 fauli Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/libgsasl/libgsasl-1.1.ebuild,v 1.5 2010/02/17 20:55:11 jer Exp $
 
 DESCRIPTION="The GNU SASL library"
 HOMEPAGE="http://www.gnu.org/software/gsasl/"
-SRC_URI="ftp://ftp.gnu.org/pub/gnu/gsasl/${P}.tar.gz"
+SRC_URI="mirror://gnu/${PN/lib}/${P}.tar.gz"
 LICENSE="LGPL-3"
 SLOT="0"
 # TODO: check http://www.gnu.org/software/gsasl/#dependencies for more
@@ -12,12 +12,11 @@ SLOT="0"
 #   * ntlm - libntlm ( http://josefsson.org/libntlm/ )
 KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-macos"
 IUSE="idn kerberos nls"
-PROVIDE="virtual/gsasl"
 DEPEND="nls? ( >=sys-devel/gettext-0.16.1 )
 	kerberos? ( virtual/krb5 )
 	idn? ( net-dns/libidn )"
 RDEPEND="${DEPEND}
-	!virtual/gsasl"
+	!net-misc/gsasl"
 
 src_compile() {
 	econf \

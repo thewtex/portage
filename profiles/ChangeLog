@@ -1,10 +1,168 @@
 # ChangeLog for profile directory
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.3868 2010/02/08 19:15:25 billie Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.3919 2010/02/21 19:23:26 ssuominen Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  21 Feb 2010; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask kde-misc/kopete-cryptography for removal.
+
+  21 Feb 2010; Pacho Ramos <pacho@gentoo.org> package.mask:
+  Masking x11-libs/gtk+extra for removal in 60 days, bug 292211
+
+  20 Feb 2010; Vlastimil Babka <caster@gentoo.org> package.mask:
+  Mask ant-1.8.0 for atomic bump and testing, bug #305929.
+
+  20 Feb 2010; Torsten Veller <tove@gentoo.org> package.mask:
+  Fix and unmask net-libs/libwhisker
+
+  19 Feb 2010; Patrick Lauer <patrick@gentoo.org> package.mask:
+  Fixing samba 3.5rc mask for newer rc
+
+  19 Feb 2010; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Mask pg pre-releases.
+
+  19 Feb 2010; Mark Loeser <halcy0n@gentoo.org> use.desc:
+  Adding java5 back to use.desc
+
+  18 Feb 2010; Vlastimil Babka <caster@gentoo.org> use.desc:
+  Remove java5 from use.desc
+
+  18 Feb 2010; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Unmask intltool for general consumption.
+
+  18 Feb 2010; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  package.mask:
+  mask prerelease versions of syslinux
+
+  18 Feb 2010; Justin Lecher (jlec) <jlec@j-schmitz.net> package.mask:
+  sci-chemistry/tinker unmasked because bug 305007 is fixed
+
+  17 Feb 2010; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  package.mask:
+  unmask nouveau and libdrm now that everything is in place
+
+  17 Feb 2010; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask intltool 0.41.0 for testing.
+
+  17 Feb 2010; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  package.mask:
+  mask libdrm and nouveau-drm for bug #305595
+
+  17 Feb 2010; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask dev-util/aegis for removal.
+
+  17 Feb 2010; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Removed sys-apps/count from tree.
+
+  17 Feb 2010; Ben de Groot <yngwin@gentoo.org> package.mask:
+  Masking smoke-4.3 and kdebindings-csharp-4.3 wrt bug 295573
+
+  17 Feb 2010; Ryan Hill <dirtyepic@gentoo.org> package.mask:
+  Mask documancer and wxmozilla for removal, bug #305471.
+
+  16 Feb 2010; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask umtsmon for removal.
+
+  16 Feb 2010; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Lastrite last of Qt3 based media-sound applications.
+
+  16 Feb 2010; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask media-sound/quasar for removal.
+
+  16 Feb 2010; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Unmask version of xfburn without deprecated thunar-vfs support.
+
+  16 Feb 2010; Ben de Groot <yngwin@gentoo.org> package.mask:
+  Remove poppler mask as offending revision was removed
+
+  16 Feb 2010; Dror Levin <spatz@gentoo.org> package.mask:
+  Unmask Qt 4.6.2 after testing.
+
+  16 Feb 2010; Samuli Suominen <ssuominen@gentoo.org> use.desc:
+  New global USE flag "xmp".
+
+  16 Feb 2010; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask new libxklavier for testing (API breakage).
+
+  15 Feb 2010; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask net-im/kopete-facebook for removal.
+
+  15 Feb 2010; Justin Lecher (jlec) <jlec@j-schmitz.net> package.mask:
+  Masked sci-chemistry/tinker, because upstream changes tarball regularly
+  and do not permit mirroring, trying to find a solution
+
+  15 Feb 2010; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> package.mask:
+  Mask prerelease libdrm snapshot and depending xf86-video-nouveau
+
+  15 Feb 2010; Dror Levin <spatz@gentoo.org> package.mask:
+  Mask Qt 4.6.2 temporarily for adding and adjusting patches.
+
+  15 Feb 2010; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Unmask AqBanking 4.2.4 for use with KMyMoney 3.96.0.
+
+  15 Feb 2010; Andreas Proschofsky <suka@gentoo.org> package.mask:
+  Remove mask on openoffice-bin-3.2.0
+
+  15 Feb 2010; Bernard Cafarelli <voyageur@gentoo.org> package.mask:
+  Update www-client/chromium dev channel releases mask
+
+  15 Feb 2010; Hanno Boeck <hanno@gentoo.org> package.mask:
+  Remove app-emulation/uae mask, all compilation bugs fixed.
+
+  14 Feb 2010; Sven Wegener <swegener@gentoo.org> package.mask:
+  Mask dev-db/mysql-gui-tools, because it has been discontinued by upstream.
+  Pending removal in 30 days.
+
+  14 Feb 2010; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Remove mask for sunstudioexpress as it's been removed from tree.
+
+  14 Feb 2010; Markos Chandras <hwoarang@gentoo.org> package.mask:
+  Unmasking openbox and obconf live ebuilds
+
+  13 Feb 2010; Steve Dibb <beandog@gentoo.org> package.mask:
+  Remove x264+mplayer+ffmpeg mask depset
+
+  13 Feb 2010; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  bitdefender-console, ghamachi and licq-themes was removed from portage.
+
+  13 Feb 2010; Patrick Lauer <patrick@gentoo.org> package.mask:
+  Remove perl 5.10 mask as all critical bugs are now fixed
+
+  11 Feb 2010; Ulrich Mueller <ulm@gentoo.org> license_groups:
+  Remove X11 from GPL-COMPATIBLE because the file is gone, bug 298556.
+
+  10 Feb 2010; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Removed x11-themes/gtk-engines-qt from tree (see #277726).
+
+  10 Feb 2010; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Removed dev-python/PyQt and reverse deps from tree.
+
+  10 Feb 2010; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Removed dev-libs/dbus-qt3-old from tree as unused.
+
+  09 Feb 2010; Alexey Shvetsov <alexxy@gentoo.org> package.mask:
+  Drop mask for KDE SC 4.4.0
+
+  09 Feb 2010; Dror Levin <spatz@gentoo.org> package.mask:
+  Remove qt-declarative-4.6.0 mask, version removed.
+
+  09 Feb 2010; Jonathan Callen <abcd@gentoo.org> package.mask:
+  Add missed kdebindings-ruby to p.mask
+
+  09 Feb 2010; Ben de Groot <yngwin@gentoo.org> package.mask:
+  Mask x11-misc/bbrb pending removal, see bug #227717.
+
+  09 Feb 2010; Ben de Groot <yngwin@gentoo.org> package.mask:
+  Temporary mask of =app-text/poppler-0.12.3-r4 to work out patch issues
+
+  09 Feb 2010; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Remove mask for libarchive 2.8.
+
+  09 Feb 2010; Christian Faulhammer <fauli@gentoo.org> updates/1Q-2010:
+  Move PMS ebuilds to correct slots
 
   08 Feb 2010; Daniel Pielmeier <billie@gentoo.org> package.mask:
   Mask media-tv/linuxtv-dvb-firmware for removal.

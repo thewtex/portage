@@ -1,20 +1,20 @@
->=dev-lang/python-2.3 >=net-libs/librsync-0.9.6 >=net-ftp/ncftp-3.1.9 app-crypt/gnupg >=app-admin/eselect-python-20090804 virtual/python
->=dev-lang/python-2.3 >=net-libs/librsync-0.9.6 >=net-ftp/ncftp-3.1.9 app-crypt/gnupg >=dev-python/py-gnupg-0.3.2 >=dev-python/pexpect-2.1 s3? ( dev-python/boto ) >=app-admin/eselect-python-20090804 virtual/python
+>=dev-lang/python-2.3 >=net-libs/librsync-0.9.6 >=net-ftp/ncftp-3.1.9 app-crypt/gnupg >=app-admin/eselect-python-20091230 virtual/python
+>=dev-lang/python-2.3 >=net-libs/librsync-0.9.6 >=net-ftp/ncftp-3.1.9 app-crypt/gnupg >=dev-python/py-gnupg-0.3.2 >=dev-python/pexpect-2.1 s3? ( dev-python/boto ) >=app-admin/eselect-python-20091230 virtual/python
 0
 http://savannah.nongnu.org/download/duplicity/duplicity-0.6.06.tar.gz
 
 http://www.nongnu.org/duplicity/
 GPL-3
 duplicity is a secure backup system using gnupg to encrypt data
-~amd64 ~ppc ~x86
-distutils eutils multilib portability python toolchain-funcs
+~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~x86-macos
+distutils multilib python toolchain-funcs
 s3
 
 
 
+3
 
-
-compile install postinst postrm unpack
+compile install postinst postrm prepare unpack
 
 
 

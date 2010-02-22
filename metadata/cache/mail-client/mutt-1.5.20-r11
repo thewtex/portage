@@ -1,0 +1,22 @@
+>=sys-libs/ncurses-5.2 tokyocabinet? ( dev-db/tokyocabinet ) !tokyocabinet? ( qdbm? ( dev-db/qdbm ) !qdbm? ( gdbm? ( sys-libs/gdbm ) !gdbm? ( berkdb? ( >=sys-libs/db-4 ) ) ) ) imap? ( gnutls? ( >=net-libs/gnutls-1.0.17 ) !gnutls? ( ssl? ( >=dev-libs/openssl-0.9.6 ) ) sasl? ( >=dev-libs/cyrus-sasl-2 ) ) pop? ( gnutls? ( >=net-libs/gnutls-1.0.17 ) !gnutls? ( ssl? ( >=dev-libs/openssl-0.9.6 ) ) sasl? ( >=dev-libs/cyrus-sasl-2 ) ) smtp? ( gnutls? ( >=net-libs/gnutls-1.0.17 ) !gnutls? ( ssl? ( >=dev-libs/openssl-0.9.6 ) ) sasl? ( >=dev-libs/cyrus-sasl-2 ) ) idn? ( net-dns/libidn ) gpg? ( >=app-crypt/gpgme-0.9.0 ) smime? ( >=dev-libs/openssl-0.9.6 ) app-misc/mime-types net-mail/mailbase doc? ( dev-libs/libxml2 dev-libs/libxslt app-text/docbook-xsl-stylesheets || ( www-client/lynx www-client/w3m www-client/elinks ) ) =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b
+>=sys-libs/ncurses-5.2 tokyocabinet? ( dev-db/tokyocabinet ) !tokyocabinet? ( qdbm? ( dev-db/qdbm ) !qdbm? ( gdbm? ( sys-libs/gdbm ) !gdbm? ( berkdb? ( >=sys-libs/db-4 ) ) ) ) imap? ( gnutls? ( >=net-libs/gnutls-1.0.17 ) !gnutls? ( ssl? ( >=dev-libs/openssl-0.9.6 ) ) sasl? ( >=dev-libs/cyrus-sasl-2 ) ) pop? ( gnutls? ( >=net-libs/gnutls-1.0.17 ) !gnutls? ( ssl? ( >=dev-libs/openssl-0.9.6 ) ) sasl? ( >=dev-libs/cyrus-sasl-2 ) ) smtp? ( gnutls? ( >=net-libs/gnutls-1.0.17 ) !gnutls? ( ssl? ( >=dev-libs/openssl-0.9.6 ) ) sasl? ( >=dev-libs/cyrus-sasl-2 ) ) idn? ( net-dns/libidn ) gpg? ( >=app-crypt/gpgme-0.9.0 ) smime? ( >=dev-libs/openssl-0.9.6 ) app-misc/mime-types
+0
+ftp://ftp.mutt.org/mutt/devel/mutt-1.5.20.tar.gz !vanilla? ( !sidebar? ( mirror://gentoo/mutt-1.5.20-gentoo-patches-r4.tar.bz2 http://dev.gentoo.org/~grobian/distfiles/mutt-1.5.20-gentoo-patches-r4.tar.bz2 ) ) sidebar? ( http://www.lunar-linux.org/~tchan/mutt/patch-1.5.20.sidebar.20090619.txt )
+
+http://www.mutt.org
+GPL-2
+a small but very powerful text-based mail client
+~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~x64-freebsd ~x86-freebsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+autotools eutils flag-o-matic libtool multilib portability toolchain-funcs
+berkdb crypt debug doc gdbm gnutls gpg idn imap mbox nls nntp pop qdbm sasl sidebar smime smtp ssl tokyocabinet vanilla
+
+
+
+
+
+compile install postinst setup unpack
+
+
+
+
+

@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/tracker/tracker-0.7.17.ebuild,v 1.2 2010/01/22 16:45:14 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/tracker/tracker-0.7.17.ebuild,v 1.5 2010/02/17 23:08:46 eva Exp $
 
 EAPI="2"
 G2CONF_DEBUG="no"
@@ -43,16 +43,17 @@ RDEPEND="
 	gsf? ( >=gnome-extra/libgsf-1.13 )
 	gstreamer? ( >=media-libs/gstreamer-0.10.12 )
 	!gstreamer? ( !xine? ( || ( media-video/totem media-video/mplayer ) ) )
-	gtk? ( >=x11-libs/gtk+-2.16.0 )
+	gtk? ( >=x11-libs/gtk+-2.16 )
 	laptop? (
 		hal? ( >=sys-apps/hal-0.5 )
 		!hal? ( >=sys-apps/devicekit-power-007 ) )
 	mp3? ( >=media-libs/id3lib-3.8.3 )
-	nautilus? ( gnome-base/nautilus )
+	nautilus? (
+		gnome-base/nautilus
+		>=x11-libs/gtk+-2.18 )
 	pdf? (
 		>=x11-libs/cairo-1
-		>=virtual/poppler-glib-0.5[cairo]
-		>=virtual/poppler-utils-0.5
+		>=app-text/poppler-0.12.3-r3[cairo,utils]
 		>=x11-libs/gtk+-2.12 )
 	playlist? ( dev-libs/totem-pl-parser )
 	tiff? ( media-libs/tiff )
@@ -119,6 +120,12 @@ pkg_setup() {
 		G2CONF="${G2CONF} --disable-hal --disable-devkit-power"
 	fi
 
+	if use nautilus; then
+		G2CONF="${G2CONF} --enable-nautilus-extension=yes"
+	else
+		G2CONF="${G2CONF} --enable-nautilus-extension=no"
+	fi
+
 	G2CONF="${G2CONF}
 		--disable-unac
 		--disable-functional-tests
@@ -136,7 +143,6 @@ pkg_setup() {
 		$(use_enable jpeg libjpeg)
 		$(use_enable kmail kmail-miner)
 		$(use_enable mp3 id3lib)
-		$(use_enable nautilus nautilus-extensions)
 		$(use_enable pdf poppler-glib)
 		$(use_enable playlist)
 		$(use_enable test unit-tests)

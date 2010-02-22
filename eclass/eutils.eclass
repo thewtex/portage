@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/eutils.eclass,v 1.329 2010/01/28 22:00:12 betelgeuse Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/eutils.eclass,v 1.333 2010/02/17 17:10:23 betelgeuse Exp $
 
 # @ECLASS: eutils.eclass
 # @MAINTAINER:
@@ -49,6 +49,18 @@ ebeep() {
 			sleep 1
 		done
 	fi
+}
+
+else
+
+ebeep() {
+	[[ $(type -t eqawarn) == function ]] && \
+		eqawarn "QA Notice: ebeep is not defined in EAPI=3, please file a bug at http://bugs.gentoo.org"
+}
+
+epause() {
+	[[ $(type -t eqawarn) == function ]] && \
+		eqawarn "QA Notice: epause is not defined in EAPI=3, please file a bug at http://bugs.gentoo.org"
 }
 
 fi

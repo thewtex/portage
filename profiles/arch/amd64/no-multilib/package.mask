@@ -1,12 +1,11 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/amd64/no-multilib/package.mask,v 1.61 2010/01/28 23:08:11 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/amd64/no-multilib/package.mask,v 1.70 2010/02/21 20:53:48 ssuominen Exp $
 
 # AMD64 Team <amd64@gentoo.org>
 # Mask packages that rely on amd64 multilib
 app-accessibility/mbrola
 app-accessibility/perlbox-voice
-app-antivirus/bitdefender-console
 app-antivirus/f-prot
 app-arch/stuffit
 app-benchmarks/cpuburn
@@ -26,9 +25,7 @@ app-emulation/vmware-server-console
 >=app-i18n/atokx3-3.0.0
 app-office/mozilla-sunbird-bin
 app-office/ooextras
-app-office/openoffice-bin
-app-pda/qtopia-desktop-bin
-app-emulation/cedega
+<app-office/openoffice-bin-3.2.0
 app-emulation/emul-linux-x86-baselibs
 app-emulation/emul-linux-x86-compat
 app-emulation/emul-linux-x86-gtklibs
@@ -39,19 +36,17 @@ app-emulation/emul-linux-x86-soundlibs
 app-emulation/emul-linux-x86-xlibs
 app-emulation/emul-linux-x86-java
 app-emulation/ies4linux
-app-emulation/transgaming-fontinstaller
-app-emulation/transgaming-mozctlinstaller
 app-emulation/wine
 app-emulation/wine-doors
 app-text/acroread
 app-text/bibus
 dev-embedded/libftd2xx
+dev-embedded/openocd
 dev-lang/dmd-bin
 dev-lang/icc
 dev-lang/idb
 dev-lang/ifc
 dev-lang/realbasic
-dev-lang/sunstudioexpress
 dev-perl/Archive-Rar
 dev-python/skype4py
 dev-util/android-sdk-update-manager
@@ -78,7 +73,6 @@ games-emulation/snes9express
 games-emulation/snes9x
 games-emulation/zinc
 games-emulation/zsnes
-games-emulation/mupen64
 games-fps/avp
 games-fps/doom3-cdoom
 games-fps/doom3-chextrek
@@ -144,6 +138,7 @@ games-rpg/nwn
 games-rpg/nwn-cep
 games-rpg/nwn-data
 games-rpg/nwn-penultima
+games-rpg/nwn-penultimarerolled
 games-rpg/rain-slick
 games-rpg/sacred-gold
 games-server/etqw-ded

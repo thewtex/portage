@@ -1,6 +1,19 @@
 # ChangeLog for x11-misc/xnee
-# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/xnee/ChangeLog,v 1.5 2009/05/02 09:42:00 ssuominen Exp $
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/xnee/ChangeLog,v 1.8 2010/02/13 20:25:31 ssuominen Exp $
+
+  13 Feb 2010; Samuli Suominen <ssuominen@gentoo.org> xnee-3.05.ebuild:
+  Use virtualx.eclass for src_test wrt #304945 but because it still needs
+  RECORD extension enabled in X.org server, restrict tests off.
+
+  13 Feb 2010; Samuli Suominen <ssuominen@gentoo.org> xnee-3.05.ebuild,
+  +files/xnee-3.05-asneeded.patch:
+  Fix building with -Wl,--as-needed.
+
+*xnee-3.05 (09 Feb 2010)
+
+  09 Feb 2010; Samuli Suominen <ssuominen@gentoo.org> +xnee-3.05.ebuild:
+  Version bump wrt #300539, thanks to Jeroen Roovers for reporting.
 
   02 May 2009; Samuli Suominen <ssuominen@gentoo.org> -xnee-3.01.ebuild,
   -files/xnee-3.01-destdir.patch, xnee-3.02.ebuild:

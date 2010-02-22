@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/xli/xli-1.17.0-r4.ebuild,v 1.10 2010/01/22 21:04:35 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/xli/xli-1.17.0-r4.ebuild,v 1.12 2010/02/21 04:31:18 abcd Exp $
 
 EAPI=1
 inherit eutils
@@ -10,9 +10,9 @@ DESCRIPTION="X Load Image: view images or load them to root window"
 HOMEPAGE="http://pantransit.reptiles.org/prog/"
 SRC_URI="http://pantransit.reptiles.org/prog/xli/xli-${SNAPSHOT}.tar.gz"
 
-LICENSE="X11"
+LICENSE="MIT as-is"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 sparc x86"
+KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 IUSE=""
 
 RDEPEND="x11-libs/libXext
@@ -31,6 +31,9 @@ S=${WORKDIR}/${PN}-${SNAPSHOT}
 src_unpack() {
 	unpack ${A}
 	cd "${S}"
+
+	# avoid conflicts on systems that have zopen in system headers
+	sed -i -e "s:zopen:xli_zopen:g" *
 
 	sed -i Imakefile \
 		-e '/^DEFINES =/s/$/ -DHAVE_GUNZIP -DHAVE_BUNZIP2 /' \

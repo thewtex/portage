@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/kopete/kopete-4.3.5.ebuild,v 1.1 2010/01/25 16:34:21 scarabeus Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/kopete/kopete-4.3.5.ebuild,v 1.4 2010/02/20 11:22:20 ssuominen Exp $
 
 EAPI="2"
 
@@ -8,7 +8,7 @@ KMNAME="kdenetwork"
 inherit kde4-meta
 
 DESCRIPTION="KDE multi-protocol IM client"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
 IUSE="debug +handbook ssl v4l2"
 
 # tests hang, last checked for 4.2.96
@@ -54,7 +54,7 @@ PLUGINS="+addbookmarks +autoreplace +contactnotes +highlight +history latex
 #   testbed: NO DEPS
 #	winpopup: NO DEPS
 #	yahoo: NO DEPS
-PROTOCOLS="bonjour facebook gadu groupwise +jabber meanwhile msn oscar qq
+PROTOCOLS="bonjour gadu groupwise +jabber meanwhile msn oscar qq
 skype testbed winpopup yahoo"
 
 # disabled protocols
@@ -75,7 +75,7 @@ COMMONDEPEND="
 		net-dns/libidn
 	)
 	meanwhile? ( net-libs/meanwhile )
-	msn? ( net-libs/libmsn )
+	msn? ( <net-libs/libmsn-4.0 )
 	otr? ( >=net-libs/libotr-3.2.0 )
 	statistics? ( dev-db/sqlite:3 )
 	webpresence? ( dev-libs/libxml2 dev-libs/libxslt )
@@ -91,9 +91,6 @@ RDEPEND="${COMMONDEPEND}
 #	telepathy? ( net-libs/decibel )"
 DEPEND="${COMMONDEPEND}
 	!aqua? ( x11-proto/scrnsaverproto )
-"
-PDEPEND="
-	facebook? ( net-im/kopete-facebook )
 "
 
 src_configure() {

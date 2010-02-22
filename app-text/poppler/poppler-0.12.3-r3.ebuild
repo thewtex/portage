@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/poppler/poppler-0.12.3-r3.ebuild,v 1.10 2010/02/08 23:37:34 yngwin Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/poppler/poppler-0.12.3-r3.ebuild,v 1.13 2010/02/16 13:59:18 yngwin Exp $
 
 EAPI="2"
 
@@ -12,7 +12,7 @@ SRC_URI="http://poppler.freedesktop.org/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 s390 sh sparc x86 ~sparc-fbsd ~x86-fbsd ~x64-freebsd ~x86-freebsd ~amd64-linux ~ia64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~sparc-fbsd ~x86-fbsd ~x64-freebsd ~x86-freebsd ~amd64-linux ~ia64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="+abiword cairo cjk debug doc exceptions jpeg jpeg2k +lcms png qt4 +utils +xpdf-headers"
 
 COMMON_DEPEND=">=media-libs/fontconfig-2.6.0
@@ -37,11 +37,14 @@ RDEPEND="${COMMON_DEPEND}
 	!app-text/poppler-utils
 	cjk? ( >=app-text/poppler-data-0.2.1 )"
 
+DOCS="AUTHORS ChangeLog NEWS README README-XPDF TODO"
+
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-cmake-disable-tests.patch
 	epatch "${FILESDIR}"/${P}-fix-headers-installation.patch
 	epatch "${FILESDIR}"/${P}-gdk.patch
 	epatch "${FILESDIR}"/${P}-darwin-gtk-link.patch
+	epatch "${FILESDIR}"/${P}-config.patch  #304407
 }
 
 src_configure() {
@@ -75,4 +78,10 @@ src_install() {
 		insinto /usr/share/gtk-doc/html/poppler
 		doins -r "${S}"/glib/reference/html/* || die 'failed to install API documentation'
 	fi
+}
+
+pkg_postinst() {
+	ewarn 'After upgrading app-text/poppler you may need to reinstall packages'
+	ewarn 'depending on it. If you have gentoolkit installed, you can find those'
+	ewarn 'with `equery d poppler`.'
 }

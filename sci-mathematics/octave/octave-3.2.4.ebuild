@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/octave/octave-3.2.4.ebuild,v 1.1 2010/02/01 07:09:46 bicatali Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/octave/octave-3.2.4.ebuild,v 1.3 2010/02/17 04:38:38 bicatali Exp $
 
 EAPI="2"
 inherit flag-o-matic xemacs-elisp-common
@@ -50,10 +50,18 @@ DEPEND="${RDEPEND}
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-3.2.0_parallel_make.patch
 	epatch "${FILESDIR}"/${PN}-3.2.0_as_needed.patch
+
+	# without this we get MPI linker errors if hdf5
+	# was compiled against mpi (see #302621)
+	if has_version sci-libs/hdf5[mpi]; then
+		export CC=mpicc
+		export FC=mpif90
+		export CXX=mpicxx
+	fi
 }
 
 src_configure() {
-	use fltk || export FLTK_CONFIG=""
+	use fltk || export FLTK_CONFIG="no"
 	econf \
 		--localstatedir=/var/state/octave \
 		--enable-shared \

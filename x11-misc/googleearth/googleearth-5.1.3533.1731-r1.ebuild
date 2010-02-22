@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/googleearth/googleearth-5.1.3533.1731-r1.ebuild,v 1.3 2010/01/31 02:24:40 caster Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/googleearth/googleearth-5.1.3533.1731-r1.ebuild,v 1.6 2010/02/19 11:51:54 caster Exp $
 
 EAPI=2
 
@@ -13,7 +13,7 @@ HOMEPAGE="http://earth.google.com/"
 SRC_URI="http://dl.google.com/earth/client/current/GoogleEarthLinux.bin
 			-> GoogleEarthLinux-${PV}.bin"
 
-LICENSE="googleearth MIT X11 SGI-B-1.1 openssl as-is ZLIB"
+LICENSE="googleearth MIT SGI-B-1.1 openssl as-is ZLIB"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 RESTRICT="mirror strip"
@@ -46,7 +46,7 @@ RDEPEND=">=sys-devel/gcc-${GCC_NEEDED}[-nocxx]
 		>=app-emulation/emul-linux-x86-xlibs-20081109
 		>=app-emulation/emul-linux-x86-baselibs-20081109
 		!qt-bundled? (
-			>=app-emulation/emul-linux-x86-qtlibs-20091231
+			>=app-emulation/emul-linux-x86-qtlibs-20091231-r1
 		)
 	)
 	|| (

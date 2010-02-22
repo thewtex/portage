@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/rake-compiler/rake-compiler-0.7.0-r1.ebuild,v 1.1 2010/01/28 12:03:14 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/rake-compiler/rake-compiler-0.7.0-r1.ebuild,v 1.3 2010/02/21 00:31:27 abcd Exp $
 
 EAPI=2
 USE_RUBY="ruby18 ruby19 jruby"
@@ -21,7 +21,7 @@ LICENSE="as-is" # truly
 SRC_URI="http://github.com/luislavena/${PN}/tarball/v${PV} -> ${P}.tar.gz"
 S="${WORKDIR}/luislavena-${PN}-2834041"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~x86-solaris"
 SLOT="0"
 IUSE=""
 
