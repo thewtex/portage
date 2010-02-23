@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5303 2010/02/21 17:47:44 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5308 2010/02/23 06:08:19 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -668,15 +668,18 @@ dev-db/mysql:raid - Deprecated option, removed in the 5.0 series
 dev-db/mysql:test - Install upstream testsuites for end use.
 dev-db/mysql:xtradb - Add experimental support for Percona's InnoDB replacement: XtraDB
 dev-db/mysql-community:big-tables - Make tables contain up to 1.844E+19 rows
-dev-db/mysql-community:cluster - Add support for NDB clustering
+dev-db/mysql-community:cluster - Add support for NDB clustering (deprecated)
 dev-db/mysql-community:community - Enables the community features from upstream.
 dev-db/mysql-community:embedded - Build embedded server (libmysqld)
-dev-db/mysql-community:extraengine - Add support for alternative storage engines
+dev-db/mysql-community:extraengine - Add support for alternative storage engines (Archive, CSV, Blackhole, Federated(X), Partition)
 dev-db/mysql-community:latin1 - Use LATIN1 encoding instead of UTF8
-dev-db/mysql-community:max-idx-128 - Raise the max index per table limit from 64 to 128 
+dev-db/mysql-community:max-idx-128 - Raise the max index per table limit from 64 to 128
 dev-db/mysql-community:minimal - Install client programs only, no server
-dev-db/mysql-community:pbxt - Add experimental support for pbxt storage engine
+dev-db/mysql-community:pbxt - Add experimental support for PBXT storage engine
 dev-db/mysql-community:profiling - Add support for statement profiling (requires USE=community).
+dev-db/mysql-community:raid - Deprecated option, removed in the 5.0 series
+dev-db/mysql-community:test - Install upstream testsuites for end use.
+dev-db/mysql-community:xtradb - Add experimental support for Percona's InnoDB replacement: XtraDB
 dev-db/mysql-gui-tools:administrator - Build and install MySQL Administrator
 dev-db/mysql-gui-tools:query-browser - Build and install MySQL Query Browser
 dev-db/postgis:geos - Add the sci-libs/geos library for exact topological tests
@@ -1377,6 +1380,7 @@ kde-base/kdebindings-ruby:qwt - Compile bindings for x11-libs/qwt.
 kde-base/kdebindings-ruby:webkit - Compile bindings for x11-libs/webkit.
 kde-base/kdelibs:lzma - Enable LZMA/XZ archive support
 kde-base/kdelibs:opengl - Enable OpenGL support for Plasma (GLApplet)
+kde-base/kdenetwork-meta:ppp - Enable support for net-dialup/ppp.
 kde-base/kdepimlibs:akonadi - Build support for Akonadi resources.
 kde-base/kdeplasma-addons:desktopglobe - Enable Desktop Globe wallpaper using kde-base/marble
 kde-base/kdeplasma-addons:qalculate - Enable Qalculate runner using sci-libs/libqalculate
@@ -3317,6 +3321,7 @@ sys-cluster/charm:tcp - Use TCP (instead of UPD) for socket communication
 sys-cluster/gearmand:drizzle -  Support dev-db/libdrizzle for the queue storage. This also adds support for MySQL storage. 
 sys-cluster/gearmand:memcache -  Support memcache daemon (via dev-libs/libmemcached) for the queue storage. 
 sys-cluster/gearmand:tcmalloc -  Use the dev-util/google-perftools libraries to replace the malloc() implementation with a possibly faster one. 
+sys-cluster/gearmand:tokyocabinet -  Support dev-db/tokyocabinet for the queue storage. 
 sys-cluster/glusterfs:extras - Install extra helper scripts
 sys-cluster/glusterfs:fuse - Add FUSE mount helper
 sys-cluster/glusterfs:infiniband - Add support for Infiniband ibverbs transport. Librarys can be found in science overlay
@@ -3600,6 +3605,7 @@ x11-libs/fltk:noxft - Disables xft; use for non-english characters
 x11-libs/gtkdatabox:glade - Build with libglade and glade-3 supports, which includes a glade's module for GtkDataBox widget
 x11-libs/gtkmathview:t1lib - Enable media-libs/t1lib support
 x11-libs/libSM:uuid - Use UUID for session identification instead of IP address and system time. 
+x11-libs/libfm:demo - Build demo
 x11-libs/libmatchbox:pango - Enable x11-libs/pango support
 x11-libs/libmatchbox:xsettings - Enable the use of xsettings for settings management
 x11-libs/libqxt:crypt -  Enable support for blowfish encryption using dev-libs/openssl 
