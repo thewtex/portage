@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/openoffice/openoffice-3.2.0.ebuild,v 1.3 2010/02/21 17:11:11 suka Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/openoffice/openoffice-3.2.0.ebuild,v 1.9 2010/02/22 22:20:50 suka Exp $
 
 WANT_AUTOMAKE="1.9"
 EAPI="2"
@@ -79,7 +79,7 @@ COMMON_DEPEND="!app-office/openoffice-bin
 		dev-java/lucene-analyzers:2.3
 		dev-java/rhino:1.5 )
 	mono? ( || ( >dev-lang/mono-2.4-r1 <dev-lang/mono-2.4 ) )
-	nsplugin? ( || ( net-libs/xulrunner:1.9 net-libs/xulrunner:1.8 )
+	nsplugin? ( net-libs/xulrunner:1.9
 		>=dev-libs/nspr-4.6.6
 		>=dev-libs/nss-3.11-r1 )
 	opengl? ( virtual/opengl
@@ -156,7 +156,7 @@ pkg_setup() {
 
 	strip-linguas ${LANGS}
 
-	if [ -z "${LINGUAS}" ] || [[ "${LINGUAS}" == en ]]; then
+	if [ -z "${LINGUAS}" ] || [[ "${LINGUAS}" == en ]] || [[ "${LINGUAS}" == en_US ]] || [[ "${LINGUAS}" == "en en_US" ]]; then
 		export LINGUAS_OOO=""
 	elif [[ ${LINGUAS} =~ en([^_]|$) ]]; then
 		export LINGUAS_OOO="$(echo ${LINGUAS} | sed -e 's/\ben\b/en_US/;s/_/-/g')"
@@ -188,16 +188,6 @@ pkg_setup() {
 		die
 	fi
 
-	if use nsplugin; then
-		if pkg-config --exists libxul; then
-			BRWS="libxul"
-		elif pkg-config --exists xulrunner-xpcom; then
-			BRWS="xulrunner"
-		else
-			die "USE flag [nsplugin] set but no installed xulrunner found!"
-		fi
-	fi
-
 	java-pkg-opt-2_pkg_setup
 
 	# sys-libs/db version used
@@ -224,6 +214,8 @@ src_prepare() {
 	epatch "${FILESDIR}/gentoo-pythonpath.diff"
 	epatch "${FILESDIR}/ooo-env_log.diff"
 	cp -f "${FILESDIR}/boost-undefined-references.diff" "${S}/patches/hotfixes" || die
+	cp -f "${FILESDIR}/qt-use-native-backend.diff" "${S}/patches/hotfixes" || die
+	cp -f "${FILESDIR}/npwrap-fix-nogtk.diff" "${S}/patches/hotfixes" || die
 
 	#Use flag checks
 	if use java ; then
@@ -242,13 +234,8 @@ src_prepare() {
 		echo "--with-rhino-jar=$(java-pkg_getjar rhino-1.5 js.jar)" >> ${CONFFILE}
 	fi
 
-	if use nsplugin ; then
-		echo "--enable-mozilla" >> ${CONFFILE}
-		echo "--with-system-mozilla=${BRWS}" >> ${CONFFILE}
-	else
-		echo "--disable-mozilla" >> ${CONFFILE}
-		echo "--without-system-mozilla" >> ${CONFFILE}
-	fi
+	echo $(use_enable nsplugin mozilla) >> ${CONFFILE}
+	echo $(use_with nsplugin system-mozilla libxul) >> ${CONFFILE}
 
 	echo $(use_enable binfilter) >> ${CONFFILE}
 	echo $(use_enable cups) >> ${CONFFILE}
@@ -286,6 +273,7 @@ src_prepare() {
 src_configure() {
 
 	use kde && export KDE4DIR="${KDEDIR}"
+	use kde && export QT4LIB="/usr/$(get_libdir)/qt4"
 
 	# Use multiprocessing by default now, it gets tested by upstream
 	export JOBS=$(echo "${MAKEOPTS}" | sed -e "s/.*-j\([0-9]\+\).*/\1/")
@@ -336,7 +324,7 @@ src_configure() {
 		$(use_enable odk) \
 		$(use_enable pam) \
 		$(use_with java) \
-		--disable-sun-templates \
+		--without-sun-templates \
 		--disable-access \
 		--disable-post-install-scripts \
 		--enable-extensions \
