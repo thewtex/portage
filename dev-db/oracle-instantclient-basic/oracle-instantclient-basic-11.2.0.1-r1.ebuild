@@ -7,13 +7,20 @@ inherit eutils
 MY_P_x86="${PN/oracle-/}-linux32-${PV}"
 MY_PSDK_x86="${MY_P_x86/basic/sdk}"
 
+#MY_P_amd64="${PN/oracle-/}-linux-x86-64-${PV}"
+#MY_PSDK_amd64="${MY_P_amd64/basic/sdk}"
+
+MY_P_amd64=oracle-instantclient11.2-basic-11.2.0.1.0-1.x86_64
+MY_PSDK_amd64=oracle-instantclient11.2-sdk-11.2.0.1.0-1.x86_64
+
 DESCRIPTION="Oracle 11g client installation for Linux with SDK"
 HOMEPAGE="http://www.oracle.com/technology/tech/oci/instantclient/index.html"
-SRC_URI="x86? ( ${MY_P_x86}.zip ${MY_PSDK_x86}.zip )"
+SRC_URI="amd64? ( ${MY_P_amd64}.zip ${MY_PSDK_amd64}.zip )
+		 x86? ( ${MY_P_x86}.zip ${MY_PSDK_x86}.zip )"
 
 LICENSE="OTN"
 SLOT="0"
-KEYWORDS="-* ~x86"
+KEYWORDS="-* ~amd64 ~x86"
 RESTRICT="fetch"
 IUSE=""
 
