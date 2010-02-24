@@ -5,15 +5,16 @@
 inherit eutils
 
 MY_P_x86="${PN/oracle-/}-linux32-${PV}"
+MY_P_amd64="oracle-instantclient11.2-sqlplus-11.2.0.1.0-1.x86_64"
 
 S="${WORKDIR}"
 DESCRIPTION="Oracle 11g client installation for Linux: SQL*Plus"
 HOMEPAGE="http://www.oracle.com/technology/tech/oci/instantclient/index.html"
-SRC_URI="x86? ( ${MY_P_x86}.zip )"
+SRC_URI="x86? ( ${MY_P_x86}.zip ) amd64? ( ${MY_P_amd64}.zip )"
 
 LICENSE="OTN"
 SLOT="0"
-KEYWORDS="-* ~x86"
+KEYWORDS="~amd64 ~x86"
 RESTRICT="fetch"
 IUSE=""
 
