@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/redland/redland-1.0.10-r1.ebuild,v 1.6 2010/02/10 20:40:21 grobian Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/redland/redland-1.0.10-r1.ebuild,v 1.8 2010/02/23 13:43:46 fauli Exp $
 
 EAPI=2
 inherit autotools eutils
@@ -11,7 +11,7 @@ SRC_URI="http://download.librdf.org/source/${P}.tar.gz"
 
 LICENSE="Apache-2.0 GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~arm hppa ~ia64 ~ppc ~ppc64 ~sparc x86 ~x86-fbsd"
 IUSE="berkdb iodbc mysql odbc postgres sqlite ssl xml"
 
 RDEPEND="mysql? ( virtual/mysql )
@@ -62,6 +62,15 @@ src_configure() {
 		--without-threads \
 		--with-html-dir=/usr/share/doc/${PF}/html \
 		${myconf}
+}
+
+src_test() {
+	if ! use berkdb; then
+		export REDLAND_TEST_CLONING_STORAGE_TYPE=hashes
+		export REDLAND_TEST_CLONING_STORAGE_NAME=test
+		export REDLAND_TEST_CLONING_STORAGE_OPTIONS="hash-type='memory',dir='.',write='yes',new='yes',contexts='yes'"
+	fi
+	default
 }
 
 src_install() {
