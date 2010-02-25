@@ -1,10 +1,14 @@
-Before actually using this package, you need to modify configuration(s) in
-/etc/cgit directory. Take a Look at configuration examples and README
-to learn more.
+There is a few variants of configuration:
+1) Via global config file: /etc/cgitrc
+2) Or via local config file, shipped in ./conf dir into webapp_dir. It has to
+   be explicitly specified with CGIT_CONFIG env variable in your web server
+   configuration.
 
-To auto-generate a list of available repositories, just run the
-following command:
+If you would like to update the list of git repositories in cgit automatically,
+you might consider adding something similar to the following as a cronjob:
 
-/usr/share/webapps/cgit/cgit-9999/htdocs/cgit.cgi --scan-tree=/your/git/repos
+"${MY_CGIBINDIR}/cgit.cgi --scan-tree=/git/repo-parent-path > /etc/cgit-repos"
 
-( That's the list of repositories you need to specify in configuration file. )
+Then add "include=/etc/cgit-repos" in /etc/cgitrc. This way it's simpler and
+more convenient. You won't need to update your cgitrc every time you add a new
+repository.
