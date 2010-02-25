@@ -13,7 +13,7 @@ KEYWORDS="amd64 x86"
 
 DEPEND=""
 RDEPEND="dev-lang/python >=sys-boot/grub-1.97.2"
-FEATURES="nomirror"
+RESTRICT="nomirror"
 
 src_install() {
 	insinto /usr/lib/`eselect python show --python2`/site-packages
@@ -23,6 +23,9 @@ src_install() {
 	cd ${S}
 	
 	dodoc doc/*.rst
+
+	doman doc/boot-update.8
+	doman doc/boot.conf.5
 
 	into /
 	dosbin sbin/boot-update
