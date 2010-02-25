@@ -13,7 +13,7 @@ KEYWORDS="amd64 x86"
 
 DEPEND=""
 RDEPEND="dev-lang/python >=sys-boot/grub-1.97.2"
-FEATURES="nomirror"
+RESTRICT="nomirror"
 
 src_install() {
 	insinto /usr/lib/`eselect python show --python2`/site-packages
