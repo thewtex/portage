@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5311 2010/02/25 06:27:42 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5315 2010/02/26 06:47:41 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -918,7 +918,6 @@ dev-libs/soprano:virtuoso - Enables support for dev-db/virtuoso storage backend.
 dev-libs/xerces-c:iconv - Use iconv (virtual/libiconv) as message loader and transcoder (in general it would be possible to use iconv only as message loader and something else like icu or the native method as transcoder and vice-versa, but this is a less common case and hard to handle)
 dev-libs/xerces-c:libwww - Use the net-libs/libwww library for fetching URLs, instead of the builtin method
 dev-libs/xerces-c:threads - Enable threading support through pthread (or other libraries on AIX, IRIX, HPUX, Solars). Highly recommended
-dev-libs/xerces-c:xqilla - Apply patches from the XQilla project and install additional header files
 dev-libs/xml-security-c:xalan - Enable support for XSLT and XPath parsing by dev-libs/xalan-c
 dev-libs/xmlrpc-c:abyss - Build the Abyss mini web-server.
 dev-libs/xmlrpc-c:threads - Controls whether to build the Abyss web-server with pthreads or fork 'threading'.
@@ -1771,6 +1770,9 @@ media-plugins/audacious-plugins:scrobbler - Build with scrobbler/LastFM submissi
 media-plugins/audacious-plugins:sid - Build with SID (Commodore 64 Audio) support
 media-plugins/audacious-plugins:tta - Build with TTA (True-Audio Loseless) support
 media-plugins/audacious-plugins:wma - Build with WMA (Windows Media Audio) support
+media-plugins/banshee-community-extensions:lirc - Enable the remote control plugin (uses app-misc/lirc)
+media-plugins/banshee-community-extensions:lyrics - Enable support for automatically fetching lyrics
+media-plugins/banshee-community-extensions:mirage - Enable the Mirage plugin which automatically, and intelligently generates playlists for you
 media-plugins/frei0r-plugins:facedetect - Enables building of facedetect plugin, which depends on media-libs/opencv 
 media-plugins/frei0r-plugins:scale0tilt - Enables building of scale0tilt and vectorscope plugins, which depend on media-libs/gavl 
 media-plugins/gkrellmpc:threads - Use separate thread to init connection (unsafe)
@@ -1917,6 +1919,7 @@ media-sound/om:patch-loader - Installs a command line patch loading client
 media-sound/peapod:bittorrent - Enable support for the BitTorrent protocol
 media-sound/peapod:id3 - Support ID3 in the player
 media-sound/picard:cdaudio - Enable support for CD Index Lookups.
+media-sound/pms:regex - Enable regular expression searches using dev-libs/boost
 media-sound/podcatcher:bittorrent - Enable support for bittorrent downloads
 media-sound/pulseaudio:X -  Build the X11 publish module to export PulseAudio information through X11 protocol for clients to make use. Don't enable this flag if you want to use a system wide instance. If unsure, enable this flag. 
 media-sound/pulseaudio:asyncns - Use libasyncns for asynchronous name resolution.
@@ -2279,6 +2282,7 @@ net-analyzer/net-snmp:sendmail - Enable sendmail statistics monitoring
 net-analyzer/net-snmp:smux - Enable the smux MIBS module
 net-analyzer/pchar:pcap - Use the net-libs/libpcap library
 net-analyzer/pmacct:64bit - Use 64bit counters instead of 32bit ones
+net-analyzer/pmacct:ulog - Enable ULOG support
 net-analyzer/rrdcollect:exec - Enable exec:/// support
 net-analyzer/rrdcollect:pcap - Use net-libs/libpcap for packet capturing
 net-analyzer/rrdtool:nls - Enable native language support (using intltool)

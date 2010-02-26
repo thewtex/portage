@@ -1,15 +1,15 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/openoffice/openoffice-3.2.0.ebuild,v 1.10 2010/02/23 16:25:50 suka Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/openoffice/openoffice-3.2.0.ebuild,v 1.14 2010/02/26 11:59:13 suka Exp $
 
 WANT_AUTOMAKE="1.9"
 EAPI="2"
 KDE_REQUIRED="optional"
 CMAKE_REQUIRED="false"
 
-inherit bash-completion check-reqs db-use eutils fdo-mime flag-o-matic java-pkg-opt-2 kde4-base mono multilib toolchain-funcs
+inherit autotools bash-completion check-reqs db-use eutils fdo-mime flag-o-matic java-pkg-opt-2 kde4-base mono multilib toolchain-funcs
 
-IUSE="binfilter cups dbus debug eds gnome gstreamer gtk kde ldap mono nsplugin odk opengl pam"
+IUSE="binfilter cups dbus debug eds gnome gstreamer gtk kde ldap mono nsplugin odk opengl pam templates"
 
 MY_PV=3.2.0.6
 PATCHLEVEL=OOO320
@@ -28,6 +28,12 @@ SRC_URI="${DEVPATH}_core.tar.bz2
 	${DEVPATH}_system.tar.bz2
 	${DEVPATH}_testautomation.tar.bz2
 	binfilter? ( ${DEVPATH}_binfilter.tar.bz2 )
+	templates? ( http://extensions.services.openoffice.org/files/273/0/Sun_ODF_Template_Pack_en-US.oxt
+		http://extensions.services.openoffice.org/files/295/1/Sun_ODF_Template_Pack_de.oxt
+		http://extensions.services.openoffice.org/files/299/0/Sun_ODF_Template_Pack_it.oxt
+		http://extensions.services.openoffice.org/files/297/0/Sun_ODF_Template_Pack_fr.oxt
+		http://extensions.services.openoffice.org/files/301/1/Sun_ODF_Template_Pack_es.oxt
+		ftp://ftp.devall.hu/kami/go-oo//Sun_ODF_Template_Pack_hu.oxt )
 	http://download.go-oo.org/${PATCHLEVEL}/ooo-build-${MY_PV}.tar.gz
 	odk? ( java? ( http://tools.openoffice.org/unowinreg_prebuild/680/unowinreg.dll ) )
 	http://download.go-oo.org/SRC680/extras-3.tar.bz2
@@ -37,7 +43,7 @@ SRC_URI="${DEVPATH}_core.tar.bz2
 	http://download.go-oo.org/DEV300/ooo_oxygen_images-2009-06-17.tar.gz
 	http://download.go-oo.org/SRC680/libwps-0.1.2.tar.gz"
 
-LANGS1="af ar as_IN be_BY bg bn br brx bs ca cs cy da de dgo dz el en en_GB en_ZA eo es et eu fa fi fr ga gl gu he hi_IN hr hu id it ja ka kk km kn_IN ko kok ks ku lt mai mk ml_IN mn mni mr_IN nb ne nl nn nr ns oc or_IN pa_IN pl pt pt_BR ru rw sa_IN sat sd sh sk sl sr ss st sv sw_TZ ta ta_IN te_IN tg th ti_ER tn tr ts uk ur_IN uz ve vi xh zh_CN zh_TW zu"
+LANGS1="af ar as_IN be_BY bg bn br brx bs ca cs cy da de dgo dz el en_GB en_ZA eo es et eu fa fi fr ga gl gu he hi_IN hr hu id it ja ka kk km kn_IN ko kok ks ku lt mai mk ml_IN mn mni mr_IN nb ne nl nn nr ns oc or_IN pa_IN pl pt pt_BR ru rw sa_IN sat sd sh sk sl sr ss st sv sw_TZ ta ta_IN te_IN tg th ti_ER tn tr ts uk ur_IN uz ve vi xh zh_CN zh_TW zu"
 LANGS="${LANGS1} en en_US"
 
 for X in ${LANGS} ; do
@@ -98,9 +104,8 @@ COMMON_DEPEND="!app-office/openoffice-bin
 	>=dev-libs/icu-4.0
 	>=sys-libs/db-4.3
 	>=app-text/libwpd-0.8.8
-	>=dev-libs/redland-1.0.8
 	>=media-libs/vigra-1.4
-	>=app-text/poppler-0.12.3-r3
+	>=app-text/poppler-0.12.3-r3[xpdf-headers]
 	>=media-libs/libwpg-0.1.3"
 
 RDEPEND="java? ( >=virtual/jre-1.5 )
@@ -156,13 +161,14 @@ pkg_setup() {
 
 	strip-linguas ${LANGS}
 
-	if [ -z "${LINGUAS}" ] || [[ "${LINGUAS}" == en ]] || [[ "${LINGUAS}" == en_US ]] || [[ "${LINGUAS}" == "en en_US" ]] || [[ "${LINGUAS}" == "en_US en" ]]; then
+	# en_US is built by default, upstream needs us to use --with-lang="" in this case though, so strip it out
+	export LINGUAS_TEMP=$(echo ${LINGUAS} | sed -e 's/\ben_US\b//g;s/en//g;s/_GB/en_GB/g;s/_ZA/en_ZA/g')
+
+	if [[ -z "${LINGUAS_TEMP}" ]] || [[ ${LINGUAS_TEMP} == " " ]]; then
 		export LINGUAS_OOO=""
-	elif [[ ${LINGUAS} =~ en([^_]|$) ]]; then
-		export LINGUAS_OOO="$(echo ${LINGUAS} | sed -e 's/\ben\b/en_US/;s/_/-/g')"
-	# case: en-US lingua not set, add
 	else
-		export LINGUAS_OOO="en-US ${LINGUAS//_/-}"
+		# always build en-US as a fallback (needed for broken code / translations)
+		export LINGUAS_OOO="en-US ${LINGUAS_TEMP//_/-}"
 	fi
 
 	if use !java; then
@@ -265,8 +271,11 @@ src_prepare() {
 	# Use splash screen without Sun logo
 	echo "--with-intro-bitmaps=\\\"${S}/build/${MST}/ooo_custom_images/nologo/introabout/intro.bmp\\\"" >> ${CONFFILE}
 
-	# Upstream this
-	echo "--with-system-redland" >> ${CONFFILE}
+	# Upstream this, disabled for now #i108911
+	#echo "--with-system-redland" >> ${CONFFILE}
+
+	# needed for sun-templates patch
+	eautoreconf
 
 }
 
@@ -324,7 +333,7 @@ src_configure() {
 		$(use_enable odk) \
 		$(use_enable pam) \
 		$(use_with java) \
-		--without-sun-templates \
+		$(use_with templates sun-templates) \
 		--disable-access \
 		--disable-post-install-scripts \
 		--enable-extensions \
