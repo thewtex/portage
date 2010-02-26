@@ -1,6 +1,6 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-embedded/scratchbox-toolchain-cs2007q3-glibc2_5/scratchbox-toolchain-cs2007q3-glibc2_5-1.0.12.ebuild,v 1.3 2009/11/30 11:08:12 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-embedded/scratchbox-toolchain-cs2007q3-glibc2_5/scratchbox-toolchain-cs2007q3-glibc2_5-1.0.12.ebuild,v 1.4 2010/02/25 17:52:35 tester Exp $
 
 SBOX_GROUP="sbox"
 
@@ -15,6 +15,9 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
+
+# Stripping BREAKS scratchbox, it runs in a chroot and is pre-stripped when needed (bug #296294)
+RESTRICT="strip binchecks"
 
 DEPEND=""
 RDEPEND="=dev-embedded/scratchbox-1.0*"
