@@ -1,6 +1,19 @@
 # ChangeLog for dev-util/kdesvn
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/kdesvn/ChangeLog,v 1.75 2010/02/11 11:21:56 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/kdesvn/ChangeLog,v 1.78 2010/02/25 14:41:21 reavertm Exp $
+
+  25 Feb 2010; Maciej Mrozowski <reavertm@gentoo.org> kdesvn-1.4.1.ebuild,
+  kdesvn-1.5.2-r1.ebuild:
+  Add sys-devel/gettext to DEPEND
+
+  25 Feb 2010; Maciej Mrozowski <reavertm@gentoo.org> -kdesvn-1.5.2.ebuild,
+  +kdesvn-1.5.2-r1.ebuild:
+  Install service menus and block kdesdk-kioslaves[subversion] (as it
+  installs service menus as well, just they're worse), remove previous
+  revision.
+
+  25 Feb 2010; Maciej Mrozowski <reavertm@gentoo.org> -kdesvn-1.5.1.ebuild:
+  Removed old
 
 *kdesvn-1.5.2 (11 Feb 2010)
 
@@ -67,7 +80,7 @@
   21 May 2009; Theo Chatzimichos <tampakrap@gentoo.org>
   -kdesvn-1.0.1.ebuild, -kdesvn-1.0.4.ebuild, +kdesvn-1.0.5.ebuild:
   Version bump for the kde3 version, remove some old kde3 versions (bug
-  269813) 
+  269813)
   1.0.5 solves compilation and linking bugs: bug 243222, bug 244714, bug
   248875 and as-needed bug 250085
   Also, rewritten in EAPI-2 and slotted in :3.5

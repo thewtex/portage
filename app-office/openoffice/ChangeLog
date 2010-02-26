@@ -1,6 +1,26 @@
 # ChangeLog for app-office/openoffice
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/openoffice/ChangeLog,v 1.516 2010/02/23 16:25:50 suka Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/openoffice/ChangeLog,v 1.520 2010/02/26 11:59:13 suka Exp $
+
+  26 Feb 2010; Andreas Proschofsky <suka@gentoo.org>
+  openoffice-3.2.0.ebuild:
+  poppler needs to be built with [xpdf-headers], depend on it. bug #306749
+  Thanks to Hanno <h.mth@web.de> for all the help in tracking this stuff 
+  down.
+
+  26 Feb 2010; Andreas Proschofsky <suka@gentoo.org>
+  openoffice-3.2.0.ebuild:
+  No matter how hard you try, there's always one LINGUAS case you forget 
+  about, bug #306221 again.
+
+  25 Feb 2010; Andreas Proschofsky <suka@gentoo.org>
+  openoffice-3.2.0.ebuild:
+  Disable system-redland for now, causes troubles, see 
+  http://qa.openoffice.org/issues/show_bug.cgi?id=108911
+
+  25 Feb 2010; Andreas Proschofsky <suka@gentoo.org>
+  openoffice-3.2.0.ebuild, files/gentoo-3.2.0.diff:
+  Properly fix linguas stuff, also brings back templates integration
 
   23 Feb 2010; Andreas Proschofsky <suka@gentoo.org>
   openoffice-3.2.0.ebuild:
