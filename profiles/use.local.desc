@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5315 2010/02/26 06:47:41 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5319 2010/02/26 22:07:50 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -1335,6 +1335,8 @@ kde-base/smoke:webkit - Compile bindings for x11-libs/webkit.
 kde-base/solid:wicd - Enable Wicd wired and wireless network manager.
 kde-base/step:qalculate - Enable the libqalculate library for unit conversion
 kde-misc/kdiff3:konqueror - Enable integration with konqueror
+kde-misc/knetworkmanager:consolekit - Enable support for sys-auth/consolekit
+kde-misc/knetworkmanager:wicd - Enable the wicd backend
 kde-misc/tellico:addressbook - Add support for kdepim addressbook (kabc)
 mail-client/alpine:chappa - enhance alpine by appling Eduardo Chappa's patches
 mail-client/alpine:onlyalpine - installs only the alpine binary, so it does not collied with app-editors/pico and/or mail-client/pine
@@ -1539,6 +1541,11 @@ media-libs/a52dec:djbfft - Prefer D.J. Bernstein's library for fourier transform
 media-libs/allegro:vga - Enables the VGA graphics driver
 media-libs/alsa-lib:alisp - Enable support for ALISP (ALSA LISP) interpreter for advanced features.
 media-libs/cal3d:16bit-indices - Enables use of 16bit indices
+media-libs/clutter:gtk - Use gdk-pixbuf from x11-libs/gtk+ as image rendering backend
+media-libs/clutter:introspection - Use dev-libs/gobject-introspection for introspection
+media-libs/clutter:opengl - Use virtual/opengl as the backend for rendering (default). If disabled, media-libs/libsdl is used.
+media-libs/clutter-gst:introspection - Use dev-libs/gobject-introspection for introspection
+media-libs/clutter-gtk:introspection - Use dev-libs/gobject-introspection for introspection
 media-libs/devil:allegro - Add support for Allegro
 media-libs/esdl:image - Enable image support
 media-libs/faad2:digitalradio - Digital Radio Mondiale (warning: disables other decoders)
@@ -2230,16 +2237,23 @@ net-fs/netatalk:xfs - Enable support for XFS Quota
 net-fs/nfs-utils:nfsv3 - Enable support for NFSv3
 net-fs/nfs-utils:nfsv4 - Enable support for NFSv4
 net-fs/nfs-utils:nonfsv4 - Disable support for NFSv4
+net-fs/samba:addns - Enable AD DNS integration
 net-fs/samba:ads - Enable Active Directory support
+net-fs/samba:aio - Enable asynchronous IO support
 net-fs/samba:async - Enables asynchronous input/output
 net-fs/samba:automount - Enables automount support
 net-fs/samba:cifsupcall - Enables userspace upcall helper
 net-fs/samba:client - Enables the client part
+net-fs/samba:cluster - Enable support for clustering
 net-fs/samba:dso - Enable dso support
+net-fs/samba:ldb - Enable the ldb tools
 net-fs/samba:netapi - Enable building of netapi bits
 net-fs/samba:oav - Enables support for the OpenAntiVirus plugins
+net-fs/samba:quota - Enables support for user quotas
 net-fs/samba:quotas - Enables support for user quotas
 net-fs/samba:server - Enables the server part
+net-fs/samba:smbclient - Enable smbclient tool
+net-fs/samba:smbsharemodes - Enable special smb share modes (?) 
 net-fs/samba:swat - Enables support for swat configuration gui
 net-fs/samba:tools - Enable extra tools
 net-fs/samba:winbind - Enables support for the winbind auth daemon
