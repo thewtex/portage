@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jgroups/jgroups-2.7.0.ebuild,v 1.4 2010/01/15 20:33:52 abcd Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jgroups/jgroups-2.7.0.ebuild,v 1.5 2010/02/28 01:32:20 caster Exp $
 
 EAPI="2"
 JAVA_PKG_IUSE="doc source"
@@ -28,7 +28,7 @@ DEPEND=">=virtual/jdk-1.5
 
 S=${WORKDIR}/${MY_P}.src
 
-src_prepare() {
+java_prepare() {
 	cd "${S}/lib" || die
 	rm -v *.jar || die
 
