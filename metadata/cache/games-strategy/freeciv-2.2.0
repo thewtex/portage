@@ -1,0 +1,22 @@
+readline? ( sys-libs/readline ) sys-libs/zlib app-arch/bzip2 !dedicated? ( nls? ( virtual/libintl ) gtk? ( x11-libs/gtk+:2 ) sdl? ( media-libs/libsdl[audio,video] media-libs/sdl-image[png] media-libs/freetype media-libs/sdl-mixer ) !gtk? ( !sdl? ( x11-libs/gtk+:2 ) ) ggz? ( dev-games/ggz-client-libs ) media-libs/libpng auth? ( virtual/mysql ) ) dev-util/pkgconfig !dedicated? ( nls? ( sys-devel/gettext ) x11-proto/xextproto ) >=sys-apps/sed-4
+readline? ( sys-libs/readline ) sys-libs/zlib app-arch/bzip2 !dedicated? ( nls? ( virtual/libintl ) gtk? ( x11-libs/gtk+:2 ) sdl? ( media-libs/libsdl[audio,video] media-libs/sdl-image[png] media-libs/freetype media-libs/sdl-mixer ) !gtk? ( !sdl? ( x11-libs/gtk+:2 ) ) ggz? ( dev-games/ggz-client-libs ) media-libs/libpng auth? ( virtual/mysql ) )
+0
+mirror://sourceforge/freeciv/freeciv-2.2.0.tar.bz2
+
+http://www.freeciv.org/
+GPL-2
+multiplayer strategy game (Civilization Clone)
+~alpha ~amd64 ~mips ~ppc ~ppc64 ~sparc ~x86
+base eutils games gnome2-utils multilib portability toolchain-funcs
+auth dedicated ggz gtk nls readline sdl
+
+
+
+2
+
+compile configure install postinst postrm preinst prepare setup unpack
+
+
+
+
+

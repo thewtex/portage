@@ -1,6 +1,6 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/php5_2-sapi.eclass,v 1.29 2010/02/05 09:40:59 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/php5_2-sapi.eclass,v 1.31 2010/02/26 21:56:58 halcy0n Exp $
 
 # ========================================================================
 # Based on robbat2's work on the php4 sapi eclass
