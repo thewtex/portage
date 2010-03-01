@@ -1,6 +1,6 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/ant-core/ant-core-1.7.1-r4.ebuild,v 1.5 2009/07/04 14:26:21 ranger Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/ant-core/ant-core-1.7.1-r4.ebuild,v 1.6 2010/02/28 14:35:43 caster Exp $
 
 EAPI="2"
 
@@ -16,7 +16,7 @@ MY_P="apache-ant-${PV}"
 DESCRIPTION="Java-based build tool similar to 'make' that uses XML configuration files."
 HOMEPAGE="http://ant.apache.org/"
 SRC_URI="mirror://apache/ant/source/${MY_P}-src.tar.bz2
-	mirror://gentoo/ant-${PV}-gentoo.tar.bz2"
+	mirror://gentoo/ant-${PV}-gentoo-r1.tar.bz2"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -34,8 +34,8 @@ src_prepare() {
 	# remove bundled xerces
 	rm -v lib/*.jar || die
 
-	epatch "${FILESDIR}/1.7.1-pkg-info.patch"
-	epatch "${FILESDIR}/1.7.1-jdk4-javadoc.patch"
+	epatch "${WORKDIR}/patches/1.7.1-pkg-info.patch"
+	epatch "${WORKDIR}/patches/1.7.1-jdk4-javadoc.patch"
 
 	# use our split-ant build.xml
 	mv -f "${WORKDIR}/build.xml" . || die
@@ -69,7 +69,7 @@ src_install() {
 		dosym /usr/share/${PN}/lib/${jar} /usr/share/ant/lib/${jar}
 	done
 
-	newbin "${FILESDIR}/${PV}-ant-r1" ant || die "failed to install wrapper"
+	dobin "${WORKDIR}/ant" || die "failed to install wrapper"
 	dodir /usr/share/${PN}/bin
 	for each in antRun runant.pl runant.py complete-ant-cmd.pl ; do
 		dobin "${S}/src/script/${each}"
