@@ -1,9 +1,9 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-puzzle/tanglet/tanglet-1.0.1.ebuild,v 1.1 2010/01/14 18:12:27 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-puzzle/tanglet/tanglet-1.0.1.ebuild,v 1.3 2010/02/28 09:46:09 phajdan.jr Exp $
 
 EAPI=2
-inherit gnome2-utils qt4 games
+inherit eutils gnome2-utils qt4 games
 
 DESCRIPTION="A single player word finding game based on Boggle"
 HOMEPAGE="http://gottcode.org/tanglet/"
@@ -11,17 +11,20 @@ SRC_URI="http://gottcode.org/${PN}/${P}-src.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 IUSE=""
 
 DEPEND="x11-libs/qt-gui:4"
 
 src_prepare() {
+	epatch "${FILESDIR}"/${P}-datadir.patch
 	sed -i \
-		-e "/PREFIX/s:/usr/local:/usr:" \
 		-e "/target.path/s:\$\$PREFIX/bin:${GAMES_BINDIR}:" \
 		-e "/data_/s:\$\$PREFIX/share:${GAMES_DATADIR}:g" \
-		${PN}.pro || die
+		tanglet.pro || die
+	sed -i \
+		-e "s:GENTOO_DIR:${GAMES_DATADIR}/${PN}/data:g" \
+		src/main.cpp || die
 }
 
 src_configure() {

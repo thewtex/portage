@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11256 2010/02/26 15:49:19 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11272 2010/02/28 17:31:34 jer Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,46 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Jeroen Roovers <jer@gentoo.org> (28 Feb 2010)
+# Development release
+=app-admin/sysstat-9.1*
+
+# Samuli Suominen <ssuominen@gentoo.org> (27 Feb 2010)
+#
+# Temporary mask until it's all in Portage and tested.
+#
+~app-office/koffice-l10n-2.1.1
+~app-office/koffice-data-2.1.1
+~app-office/koffice-libs-2.1.1
+~app-office/karbon-2.1.1
+~app-office/kchart-2.1.1
+~app-office/kplato-2.1.1
+~app-office/kpresenter-2.1.1
+~app-office/krita-2.1.1
+~app-office/kspread-2.1.1
+~app-office/kword-2.1.1
+~app-office/koffice-meta-2.1.1
+
+# Nirbheek Chauhan <nirbheek@gentoo.org> (27 Feb 2010)
+# Introspection support is sketchy, and untested
+# introspection USE-flag is already use.masked
+# gir-repository has problems being a nice package too
+dev-libs/gobject-introspection
+dev-libs/gir-repository
+
+# Patrick Lauer <patrick@gentoo.org> (26 Feb 2010)
+# Unsplit samba ebuild. might need some testing :)
+=net-fs/samba-3.4.6
+
+# Theo Chatzimichos <tampakrap@gentoo.org> (26 Feb 2010)
+# Mask knetworkmanager as it is crashy, unusable, under
+# heavy development, and snapshot
+=kde-misc/knetworkmanager-4.4*
+
+# Alex Alexander <wired@gentoo.org> (26 Feb 2010)
+# masked to let 4.7.0.3 get some more testing
+>=app-misc/mc-4.7.1
 
 # Torsten Veller <tove@gentoo.org> (25 Feb 2010)
 # Masked for removal as soon as possible
@@ -71,33 +111,6 @@ kde-misc/kopete-cryptography
 # gtk+-2.18 and nobody want to maintain it (#292211)
 # Masked for removal in 60 days
 x11-libs/gtk+extra
-
-# Vlastimil Babka <caster@gentoo.org> (21 Feb 2010)
-# Masked for atomic bump and testing, bug #305929
-~dev-java/ant-core-1.8.0
-~dev-java/ant-antlr-1.8.0
-~dev-java/ant-apache-bcel-1.8.0
-~dev-java/ant-apache-bsf-1.8.0
-~dev-java/ant-apache-log4j-1.8.0
-~dev-java/ant-apache-oro-1.8.0
-~dev-java/ant-apache-regexp-1.8.0
-~dev-java/ant-apache-resolver-1.8.0
-~dev-java/ant-apache-xalan2-1.8.0
-~dev-java/ant-commons-logging-1.8.0
-~dev-java/ant-commons-net-1.8.0
-~dev-java/ant-jai-1.8.0
-~dev-java/ant-javamail-1.8.0
-~dev-java/ant-jdepend-1.8.0
-~dev-java/ant-jmf-1.8.0
-~dev-java/ant-jsch-1.8.0
-~dev-java/ant-junit-1.8.0
-~dev-java/ant-junit4-1.8.0
-~dev-java/ant-nodeps-1.8.0
-~dev-java/ant-swing-1.8.0
-~dev-java/ant-testutil-1.8.0
-~dev-java/ant-trax-1.8.0
-~dev-java/ant-1.8.0
-
 
 # Diego E. Pettenò <flameeyes@gentoo.org> (19 Feb 2010)
 # Pre-releases
@@ -228,11 +241,6 @@ dev-db/mysql-community
 >=net-fs/samba-server-3.5.0_rc2
 >=net-fs/samba-client-3.5.0_rc2
 
-# Daniel Pielmeier <billie@gentoo.org> (26 Jan 2010)
-# Masked for removal in 30 days. Qt3 only package with
-# no Qt4 replacement available. (Bug #302278)
-media-video/dvbcut
-
 # Nirbheek Chauhan <nirbheek@gentoo.org> (25 Jan 2010)
 # Final rc of networkmanager-0.8 and friends
 # Mask for testing
@@ -256,27 +264,10 @@ net-misc/vnc
 # Last rited: to be removed in 30 days.
 dev-ruby/activerecord-jdbc
 
-# Hans de Graaff <graaff@gentoo.org> (23 Jan 2010)
-# Masked for removal in 30 days.
-# Capistrano 2.x is actively maintained and we kept
-# the 1.x series primarily to give people a
-# chance to migrate to that.
-=dev-ruby/capistrano-1*
-=dev-ruby/net-ssh-1*
-=dev-ruby/net-sftp-1*
-
 # Tomáš Chvátal <scarabeus@gentoo.org> (23 Jan 2010)
 # Obsoleted by xorg-server-1.6
 # Let us know in bugs if you have some issues with 1.6
 <x11-base/xorg-server-1.6.0
-
-# Vlastimil Babka <caster@gentoo.org> (23 Jan 2010)
-# Time to go due to EOL and security, bug #287615.
-# Will be moved to java-overlay in 30 days.
-=dev-java/ibm-jdk-bin-1.4*
-=dev-java/jrockit-jdk-bin-1.4*
-=virtual/jdk-1.4*
-=virtual/jre-1.4*
 
 # Matthias Schwarzott <zzam@gentoo.org> (22 Jan 2010)
 # since long time included in media-tv/gentoo-vdr-scripts
@@ -355,7 +346,7 @@ net-libs/libjingle
 
 # Patrick Lauer <patrick@gentoo.org> (07 Jan 2010)
 # Mask for removal. Migrate to dev-db/postgresql-{base,server}
-# still being used.  fix up the deps before re-masking (mr_bones_@gentoo.org)
+# still being used.  (please fix deps before masking again - halcy0n)
 #dev-db/libpq
 #dev-db/postgresql
 
@@ -408,16 +399,6 @@ net-libs/libjingle
 net-analyzer/fe3d
 =net-analyzer/metasploit-2.7
 =net-analyzer/metasploit-3.2_p6750
-
-# Diego E. Pettenò <flameeyes@gentoo.org> (28 Dec 2009)
-#  on behalf of QA team
-#
-# Package fails to build (second time in a row), bug #298522.
-# Unneeded, unmaintained, just use the dd from coreutils or
-# from FreeBSD userland packages.
-#
-# Removal on 2010-02-26
-sys-apps/sdd
 
 # Markos Chandras <hwoarang@gentoo.org> (26 Dec 2009)
 # keeping rc ebuilds masked

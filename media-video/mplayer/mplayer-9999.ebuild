@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/mplayer/mplayer-9999.ebuild,v 1.22 2010/02/13 19:46:16 beandog Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/mplayer/mplayer-9999.ebuild,v 1.26 2010/02/27 23:37:39 sping Exp $
 
 EAPI="2"
 
@@ -9,14 +9,14 @@ ESVN_REPO_URI="svn://svn.mplayerhq.hu/mplayer/trunk"
 
 inherit eutils flag-o-matic multilib base ${SVN_ECLASS}
 
-[[ ${PV} != *9999* ]] && MPLAYER_REVISION=SVN-r29964
+[[ ${PV} != *9999* ]] && MPLAYER_REVISION=SVN-r30554
 
 IUSE="3dnow 3dnowext +a52 +aac aalib +alsa altivec +ass bidi bindist bl bs2b
 +cddb +cdio cdparanoia cpudetection custom-cpuopts debug dga +dirac directfb
 doc +dts +dv dvb +dvd +dvdnav dxr3 +enca +encode esd +faac +faad fbcon ftp
-gif ggi -gmplayer +iconv ipv6 jack joystick jpeg kernel_linux ladspa libcaca
-lirc +live lzo mad md5sum +mmx mmxext mng +mp3 nas +network nut openal
-+opengl +osdmenu oss png pnm pulseaudio pvr +quicktime radio +rar +real +rtc
+gif ggi -gmplayer +iconv ipv6 jack joystick jpeg jpeg2k kernel_linux ladspa
+libcaca lirc +live lzo mad md5sum +mmx mmxext mng +mp3 nas +network nut openal
+opencore-amr +opengl +osdmenu oss png pnm pulseaudio pvr +quicktime radio +rar +real +rtc
 samba +shm +schroedinger sdl +speex sse sse2 ssse3 svga tga +theora +tremor
 +truetype +toolame +twolame +unicode v4l v4l2 vdpau vidix +vorbis win32codecs
 +X +x264 xanim xinerama +xscreensaver +xv +xvid xvmc zoran"
@@ -97,6 +97,7 @@ RDEPEND+="
 	aalib? ( media-libs/aalib )
 	alsa? ( media-libs/alsa-lib )
 	bidi? ( dev-libs/fribidi )
+	bs2b? ( media-libs/libbs2b )
 	cdio? ( dev-libs/libcdio )
 	cdparanoia? ( media-sound/cdparanoia )
 	dirac? ( media-video/dirac )
@@ -128,6 +129,8 @@ RDEPEND+="
 	nas? ( media-libs/nas )
 	nut? ( >=media-libs/libnut-661 )
 	openal? ( media-libs/openal )
+	opencore-amr? ( media-libs/opencore-amr )
+	jpeg2k? ( media-libs/openjpeg )
 	png? ( media-libs/libpng )
 	pnm? ( media-libs/netpbm )
 	pulseaudio? ( media-sound/pulseaudio )
@@ -154,6 +157,7 @@ X_DEPS="
 "
 ASM_DEP="dev-lang/yasm"
 DEPEND="${RDEPEND}
+	dev-util/pkgconfig
 	X? (
 		${X_DEPS}
 		dga? ( x11-proto/xf86dgaproto )
@@ -279,14 +283,16 @@ src_configure() {
 	###################
 	myconf+="
 		--disable-arts
+		--disable-kai
 		$(use_enable network)
 		$(use_enable joystick)
 	"
-	uses="ass bl enca ftp rtc" # nemesi <- not working with in-tree ebuild
+	uses="bl enca ftp rtc" # nemesi <- not working with in-tree ebuild
 	myconf+=" --disable-nemesi" # nemesi automagic disable
 	for i in ${uses}; do
 		use ${i} || myconf+=" --disable-${i}"
 	done
+	use ass || myconf+=" --disable-ass --disable-ass-internal"
 	use bidi || myconf+=" --disable-fribidi"
 	use encode || myconf+=" --disable-mencoder"
 	use ipv6 || myconf+=" --disable-inet6"
@@ -426,6 +432,7 @@ src_configure() {
 	for i in ${uses}; do
 		use ${i} || myconf+=" --disable-${i}"
 	done
+	use jpeg2k || myconf+=" --disable-libopenjpeg"
 	if use vorbis || use tremor; then
 		use tremor || myconf+=" --disable-tremor-internal"
 		use vorbis || myconf+=" --disable-libvorbis"
@@ -455,7 +462,7 @@ src_configure() {
 			--disable-toolame
 		"
 		uses="aac faac x264 xvid toolame twolame"
-		for i in uses; do
+		for i in ${uses}; do
 			use ${i} && elog "Useflag \"${i}\" require \"encode\" useflag enabled to work."
 		done
 	fi
@@ -607,7 +614,7 @@ src_configure() {
 		--disable-xvmc
 		"
 		uses="dga dxr3 ggi opengl osdmenu vdpau vidix xinerama xscreensaver xv"
-		for i in uses; do
+		for i in ${uses}; do
 			use ${i} && elog "Useflag \"${i}\" require \"X\" useflag enabled to work."
 		done
 	fi
