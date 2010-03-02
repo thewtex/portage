@@ -2,6 +2,12 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: /var/cvsroot/gentoo-x86/sys-apps/module-init-tools/ChangeLog,v 1.157 2010/02/15 02:12:40 vapier Exp $
 
+*module-init-tools-3.11.1-r1 (01 Mar 2010)
+
+  01 Mar 2010; Daniel Robbins <drobbins@funtoo.org>
+  +module-init-tools-3.11.1-r1.ebuild: moving /bin/lsmod back to /sbin/lsmod -
+  because /sbin is the right place.
+
   15 Feb 2010; Mike Frysinger <vapier@gentoo.org>
   module-init-tools-3.11.1.ebuild:
   Handle upgrades of .conf files for people #274942 by Peter Volkov.
@@ -24,7 +30,7 @@
   16 Oct 2009; Mike Frysinger <vapier@gentoo.org>
   module-init-tools-3.11.ebuild:
   Generate & distribute man pages to avoid docbook dependencies #289278 by
-  Marcin Mirosław.
+  Marcin MirosÅaw.
 
 *module-init-tools-3.11 (16 Oct 2009)
 
@@ -53,11 +59,11 @@
   +module-init-tools-3.8.ebuild:
   Version bump #271074 by Lars Wendler.
 
-  17 Mar 2009; Raúl Porcel <armin76@gentoo.org>
+  17 Mar 2009; RaÃºl Porcel <armin76@gentoo.org>
   module-init-tools-3.5.ebuild:
   m68k stable wrt #258213, thanks to kolla for testing
 
-  14 Mar 2009; Raúl Porcel <armin76@gentoo.org>
+  14 Mar 2009; RaÃºl Porcel <armin76@gentoo.org>
   module-init-tools-3.5.ebuild:
   arm/ia64/s390/sh/sparc stable wrt #258213
 
@@ -113,7 +119,7 @@
   12 Dec 2007; Jeroen Roovers <jer@gentoo.org> module-init-tools-3.4.ebuild:
   Stable for HPPA (bug #201444).
 
-  10 Dec 2007; Raúl Porcel <armin76@gentoo.org>
+  10 Dec 2007; RaÃºl Porcel <armin76@gentoo.org>
   module-init-tools-3.4.ebuild:
   alpha/ia64 stable wrt #201444
 
@@ -165,7 +171,7 @@
   module-init-tools-3.2.2-r2.ebuild:
   Stable for HPPA (bug #158637).
 
-  14 Feb 2007; Bryan Østergaard <kloeri@gentoo.org>
+  14 Feb 2007; Bryan Ãstergaard <kloeri@gentoo.org>
   module-init-tools-3.2.2-r2.ebuild:
   Stable on IA64.
 
@@ -173,7 +179,7 @@
   module-init-tools-3.2.2-r2.ebuild:
   Stable on alpha wrt bug #158637.
 
-  13 Feb 2007; Raúl Porcel <armin76@gentoo.org>
+  13 Feb 2007; RaÃºl Porcel <armin76@gentoo.org>
   module-init-tools-3.2.2-r2.ebuild:
   x86 stable wrt bug 158637
 
@@ -200,7 +206,7 @@
   14 Dec 2006; Mike Frysinger <vapier@gentoo.org>
   +files/module-init-tools-3.2.2-handle-dupliate-aliases.patch,
   +files/modules-update, +module-init-tools-3.2.2-r2.ebuild:
-  Move modules-update from baselayout to here, fix by Martin Väth for
+  Move modules-update from baselayout to here, fix by Martin VÃ¤th for
   infinite recursion troubles #149426, and make sure /etc/modprobe.d/ files
   get added to /etc/modprobe.conf #145962 by Greg Kroah-Hartman.
 
@@ -212,7 +218,7 @@
   module-init-tools-3.2.2-r1.ebuild:
   Marked stable on mips.
 
-  29 Aug 2006; Bryan Østergaard <kloeri@gentoo.org>
+  29 Aug 2006; Bryan Ãstergaard <kloeri@gentoo.org>
   module-init-tools-3.2.2-r1.ebuild:
   Stable on Alpha, bug 144559.
 
