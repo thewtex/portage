@@ -1,10 +1,41 @@
 # ChangeLog for profile directory
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.3952 2010/02/28 17:31:34 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.3962 2010/03/01 23:04:51 yngwin Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  01 Mar 2010; Ben de Groot <yngwin@gentoo.org> package.mask:
+  Add qt-embedded-3 and aabrowse to qt:3 mask
+
+  01 Mar 2010; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask media-libs/libmpcdecsv7 for removal.
+
+  01 Mar 2010; Ben de Groot <yngwin@gentoo.org> package.mask:
+  Add mythtv plugins to qt:3 mask
+
+  01 Mar 2010; Ben de Groot <yngwin@gentoo.org> base/use.mask, package.mask:
+  Masking qt:3 and remaining reverse dependencies pending removal, bug
+  283429
+
+  01 Mar 2010; Patrick Lauer <patrick@gentoo.org> package.mask:
+  Removing fe3d mask as it is using proper tarballs now
+
+  01 Mar 2010; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Remove metasploit mask (all vers are now using SRC_URI).
+
+  01 Mar 2010; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Remove mask entry for libnemesi because it was removed from tree.
+
+  01 Mar 2010; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Remove mask entry for libredblack because it was removed from tree.
+
+  01 Mar 2010; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask dev-tex/mplib for removal wrt #300595.
+
+  01 Mar 2010; Hans de Graaff <graaff@gentoo.org> package.mask:
+  Mask Passenger 2.2.10 pending investigation of problems.
 
   28 Feb 2010; Jeroen Roovers <jer@gentoo.org> package.mask:
   Mask sysstat 9.1.
