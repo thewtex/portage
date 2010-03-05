@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/xulrunner/xulrunner-1.9.1.6.ebuild,v 1.7 2010/01/02 18:29:55 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/xulrunner/xulrunner-1.9.1.6.ebuild,v 1.9 2010/03/04 18:23:04 halcy0n Exp $
 
 EAPI="2"
 WANT_AUTOCONF="2.1"
