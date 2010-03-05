@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5331 2010/03/04 00:07:46 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5339 2010/03/05 02:51:58 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -765,6 +765,14 @@ dev-java/gnu-classpath:dssi - Enable the DSSI midi synthesizer provider
 dev-java/gnu-classpath:gconf - Enable the GConf based util.peers backend
 dev-java/gnu-classpath:gjdoc - Build GNU Classpath's javadoc implementation. Formerly dev-java/gjdoc, now part of gnu-classpath upstream.
 dev-java/ibm-jdk-bin:javacomm - Enable Java Communications API support
+dev-java/icedtea:cacao - Use the CACAO virtual machine instead of HotSpot on x86, amd64 or SPARC architectures.
+dev-java/icedtea:hs16 - Use the new version of HotSpot (16).
+dev-java/icedtea:nio2 - Enable backport of NIO2 to OpenJDK6.
+dev-java/icedtea:npplugin - Enable the new alpha-quality plugin which works with Firefox 3.6+ and Chromium.
+dev-java/icedtea:nss - Enable NSS security provider support.
+dev-java/icedtea:systemtap - Enable SystemTap probes in HotSpot.
+dev-java/icedtea:xrender - Enable support for using XRender with the AWT libraries.
+dev-java/icedtea:zero - Enable the zero assembler port of HotSpot.
 dev-java/itext:rtf - Build and provide libraries for rich text format
 dev-java/itext:rups - Build and provide GUI for Reading/Updating PDF Syntax
 dev-java/jamvm:libffi - use dev-libs/libffi to call native methods
@@ -1107,9 +1115,6 @@ dev-util/pbuilder:uml - Enable pbuilder user mode linux support
 dev-util/perf:demangle -  Enable C++ symbol name demangling, using libbfd from sys-devel/binutils. When this flag is enabled, the package will have to be rebuilt after every version bump of binutils. 
 dev-util/perf:doc -  Build documentation and man pages. With thise USE flag disabled, the --help parameter for perf and its sub-tools will not be available. This is optional because it depends on a few documentation handling tools that are not always welcome on user systems. 
 dev-util/perf:perl -  Add support for Perl as a scripting language for perf tools. 
-dev-util/qct:bazaar -  Support for dev-util/bzr 
-dev-util/qct:mercurial -  Support for dev-util/mercurial 
-dev-util/qct:monotone -  Support for dev-util/monotone 
 dev-util/qt-creator:bineditor - enable bineditor plugin
 dev-util/qt-creator:bookmarks - enable bookmarks plugin
 dev-util/qt-creator:cmake - enable cmake project manager plugin
@@ -1136,6 +1141,9 @@ dev-util/svk:log4p - Enable perl logger support
 dev-util/svk:pager - Enable perl pager selection support
 dev-util/svk:patch - Enable patch creation, import support
 dev-util/universalindentgui:html - Add support for HTML files
+dev-vcs/qct:bazaar -  Support for dev-util/bzr 
+dev-vcs/qct:mercurial -  Support for dev-util/mercurial 
+dev-vcs/qct:monotone -  Support for dev-util/monotone 
 games-action/abuse:demo - Use the demo data instead of the full game
 games-action/abuse:levels - Install user-created levels (fRaBs)
 games-action/abuse:sounds - Install optional sound data
@@ -1294,6 +1302,7 @@ games-misc/fretsonfire:guitarhero - Enable Guitar Hero song importer
 games-misc/fretsonfire:psyco - Enable psyco python accelerator
 games-util/bsp:dmalloc - Enable debugging with the dmalloc library
 games-util/gslist:web - Enable the web interface
+games-util/xboxdrv:daemon - Install xboxdrv-daemon.py (and its dependencies)
 gnome-base/gdm:consolekit - Allow proper handling of removable media according to who is actually present on the machine.
 gnome-base/gdm:dmx - Enables Distributed Multihead X (DMX) support
 gnome-base/gdm:remote - Enables support for secure remote connections
@@ -1485,6 +1494,7 @@ mail-client/mozilla-thunderbird:lightning - Enable calendar support
 mail-client/mozilla-thunderbird:mozdom - Enable Mozilla's DOM inspector
 mail-client/mozilla-thunderbird:moznopango - Disable x11-libs/pango during runtime
 mail-client/mozilla-thunderbird:replytolist - Enable x11-plugins/replytolist plugin
+mail-client/mozilla-thunderbird:system-sqlite - Use the system-wide dev-db/sqlite installation with secure-delete enabled
 mail-client/mutt:gpg - Enable support for app-crypt/gpgme
 mail-client/mutt:pop - Enable support for pop
 mail-client/mutt:sidebar - Use the vanilla tree + sidebar patch
@@ -1516,6 +1526,7 @@ mail-filter/dovecot-antispam:crm114 - Build CRM114 backend
 mail-filter/dovecot-antispam:dspam - Build mail-filter/dspam backend
 mail-filter/dovecot-antispam:mailtrain - Build mailtrain backend
 mail-filter/dovecot-antispam:signature-log - Build signature-log backend
+mail-filter/dovecot-antispam:spool2dir - Build spoll directory backend
 mail-filter/dspam:daemon -  Enable support for DSPAM to run in --daemon mode 
 mail-filter/dspam:debug -  Enable debugging support (don't enable this unless something needs testing!) 
 mail-filter/dspam:debug-bnr -  Activates debugging output for Bayesian Noise Reduction 
@@ -2692,6 +2703,7 @@ net-mail/checkgmail:savepwd - Add support for saving and encrypting GMail passwo
 net-mail/cyrus-imapd:autocreate - Enable not supported (by upstream) patch from University of Athens for automatic creation of user mailboxes
 net-mail/cyrus-imapd:autosieve - Enable not supported (by upstream) patch from University of Athens for "on demand" creation of any folder requested by a sieve filter
 net-mail/cyrus-imapd:drac - Enable dynamic relay support in the cyrus imap server
+net-libs/xulrunner:system-sqlite - Use the system-wide dev-db/sqlite installation with secure-delete enabled
 net-mail/courier-imap:trashquota - include deleted messages, and the Trash folder, in the estimated quota usage for maildirs
 net-mail/cyrus-imapd:idled - Enable idled vs poll IMAP IDLE method
 net-mail/cyrus-imapd:replication - Enable replication support in the cyrus imap server
@@ -3568,15 +3580,21 @@ www-client/mozilla-firefox:iceweasel - Enable iceweasel branding
 www-client/mozilla-firefox:mozdevelop - Enable features for web developers (e.g. Venkman)
 www-client/mozilla-firefox:moznopango - Disable x11-libs/pango during runtime
 www-client/mozilla-firefox:restrict-javascript - Pull in www-plugins/noscript extension to disable javascript globally, putting the user fully in control of the sites he/she visits
+www-client/mozilla-firefox:system-sqlite - Use the system-wide dev-db/sqlite installation with secure-delete enabled
 www-client/mozilla-firefox:xforms - XForms is a standard to split up XHTML into XForms, instance data, and user interface
 www-client/opera:qt-static - Install binaries statically linked to Qt
+www-client/seamonkey:chatzilla - Build Mozilla's IRC client (default on)
+www-client/seamonkey:composer - Build Mozilla's HTML editor component (default on)
 www-client/seamonkey:custom-optimization - Fine-tune custom compiler optimizations
+www-client/seamonkey:mailclient - Build Mozilla's Mail client (default on)
 www-client/seamonkey:mozdevelop - Enable features for web developers (e.g. Venkman)
-www-client/seamonkey:moznocompose - Disable building of mozilla's HTML editor component
-www-client/seamonkey:moznoirc - Disable building of mozilla's IRC client
-www-client/seamonkey:moznomail - Disable building mozilla's mail client
+www-client/seamonkey:moznocompose - Disable building of Mozilla's HTML editor component
+www-client/seamonkey:moznoirc - Disable building of Mozilla's IRC client
+www-client/seamonkey:moznomail - Disable building Mozilla's mail client
 www-client/seamonkey:moznopango - Disable x11-libs/pango during runtime
 www-client/seamonkey:moznoroaming - sroaming extension support
+www-client/seamonkey:roaming - Build sroaming extension support (default on)
+www-client/seamonkey:system-sqlite - Use the system-wide dev-db/sqlite installation with secure-delete enabled
 www-client/seamonkey:xforms - XForms is a standard to split up XHTML into XForms, instance data, and user interface
 www-client/uzbl:browser - Install the uzbl-browser script
 www-client/uzbl:experimental - Enable experimental branch
@@ -3697,6 +3715,7 @@ x11-misc/xscreensaver:new-login - Enables New Login button using gdmflexiserver 
 x11-misc/zim:screenshot - Enable screenshot support (using media-gfx/scrot)
 x11-plugins/bfm:gkrellm - Enable building of app-admin/gkrellm module
 x11-plugins/enigmail:custom-optimization - Enable user CFLAGS
+x11-plugins/enigmail:system-sqlite - Use the system-wide dev-db/sqlite installation with secure-delete enabled
 x11-plugins/gkrellm-plugins:audacious - Enable the audacious plugin x11-plugins/gkrellmms
 x11-plugins/gkrellmbups:nut - Enable monitoring Network-UPS via sys-power/nut
 x11-plugins/purple-plugin_pack:talkfilters - Enable support for app-text/talklfilters
