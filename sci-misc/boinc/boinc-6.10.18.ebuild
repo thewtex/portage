@@ -1,10 +1,10 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-misc/boinc/boinc-6.10.18.ebuild,v 1.3 2009/12/03 20:04:11 scarabeus Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-misc/boinc/boinc-6.10.18.ebuild,v 1.4 2010/03/05 14:56:17 scarabeus Exp $
 
 EAPI="2"
 
-inherit flag-o-matic depend.apache eutils wxwidgets autotools
+inherit flag-o-matic depend.apache eutils wxwidgets autotools base
 
 DESCRIPTION="The Berkeley Open Infrastructure for Network Computing"
 HOMEPAGE="http://boinc.ssl.berkeley.edu/"
@@ -27,15 +27,20 @@ RDEPEND="
 		>=dev-util/nvidia-cuda-toolkit-2.1
 		>=x11-drivers/nvidia-drivers-180.22
 	)
-"
-DEPEND="${RDEPEND}
-	sys-devel/gettext
 	X? (
+		dev-db/sqlite:3
 		media-libs/freeglut
 		media-libs/jpeg
 		x11-libs/wxGTK:2.8[X,opengl]
 	)
 "
+DEPEND="${RDEPEND}
+	sys-devel/gettext
+"
+
+PATCHES=(
+	"${FILESDIR}"/6.4.5-glibc210.patch
+)
 
 src_prepare() {
 	# use system ssl certificates
@@ -45,8 +50,7 @@ src_prepare() {
 	# prevent bad changes in compile flags, bug 286701
 	sed -i -e "s:BOINC_SET_COMPILE_FLAGS::" configure.ac || die "sed failed"
 
-	epatch \
-		"${FILESDIR}"/6.4.5-glibc210.patch
+	base_src_prepare
 
 	eautoreconf
 }
@@ -82,7 +86,7 @@ src_configure() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die "make install failed"
+	base_src_install
 
 	dodir /var/lib/${PN}/
 	keepdir /var/lib/${PN}/
