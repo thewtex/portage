@@ -20,12 +20,13 @@ diff -Naur topal-64.orig/MIME-tool/Makefile topal-64/MIME-tool/Makefile
 diff -Naur topal-64.orig/Makefile topal-64/Makefile
 --- topal-64.orig/Makefile	2008-10-24 12:16:45.000000000 +0200
 +++ topal-64/Makefile	2009-04-22 09:37:18.000000000 +0200
-@@ -36,26 +36,28 @@
+@@ -36,26 +36,29 @@
  INSTALLPATHDOC ?= $(INSTALLPATH)/share/doc/topal
  INSTALLPATHPATCHES ?= $(INSTALLPATH)/share/topal/patches
  
 +CC=gcc
 +CFLAGS=-Wall -O2
++LDFLAGS=
 +
  # The default action.
  all:	topal mime-tool README.txt

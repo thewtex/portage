@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11306 2010/03/04 12:06:17 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11310 2010/03/06 06:01:14 dirtyepic Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -31,7 +31,12 @@
 
 #--- END OF EXAMPLES ---
 
-# Justin Lecher <jlec@gentoo.org> (03. March 2010)
+# Ryan Hill <dirtyepic@gentoo.org> (05 March 2010)
+#   No release since 2004, succeeded by nicotine+
+#   Removal April 5, 2010 - bug #307971
+net-p2p/pysoulseek
+
+# Justin Lecher <jlec@gentoo.org> (03 March 2010)
 # package is royaly screwed
 # provides only static libs, linked against static f2c
 sci-libs/clapack
@@ -100,12 +105,6 @@ net-im/naim
 #
 # Removed in 60 days
 dev-lang/squeak
-
-# Samuli Suominen <ssuominen@gentoo.org> (01 Mar 2010)
-# Orphaned library for obsolete musepack API support.
-# Doesn't work with autoconf 2.65. Masked for removal
-# in 30 days. See bug 294582.
-media-libs/libmpcdecsv7
 
 # Ben de Groot <yngwin@gentoo.org> (01 Mar 2010)
 # Grand mask of qt:3 and remaining reverse dependencies
@@ -266,14 +265,6 @@ x11-libs/gtk+extra
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (18 Feb 2010)
 # Mask prerelease versions
 =sys-boot/syslinux-4.00_pre*
-
-# Samuli Suominen <ssuominen@gentoo.org> (17 Feb 2010)
-# Doesn't compile with stable libc (#295980)
-# Vulnerable, CVE-2008-4938 (#245760)
-# Fails parallel make (#297334)
-# No maintainer
-# Masked for removal in 30 days
-dev-util/aegis
 
 # Ben de Groot <yngwin@gentoo.org> (17 Feb 2010)
 # Masking because it blocks Qt 4.6 stabilization, bug 295573
@@ -499,6 +490,7 @@ net-libs/libjingle
 # experimental features and accept a more unstable release.
 ~www-client/chromium-5.0.322.2
 ~www-client/chromium-5.0.335.0
+~www-client/chromium-5.0.342.1
 
 # Diego E. Pettenò <flameeyes@gentoo.org> (07 Jan 2010)
 #  on behalf of QA team
