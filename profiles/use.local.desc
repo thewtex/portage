@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5345 2010/03/05 20:27:38 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5352 2010/03/06 21:27:44 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -517,7 +517,7 @@ app-portage/gatt:libpaludis - Do some dependency resolution by using a sys-apps/
 app-portage/layman:bazaar - Support dev-vcs/bzr based overlays
 app-portage/layman:darcs - Support dev-util/darcs based overlays
 app-portage/layman:git - Support dev-util/git based overlays
-app-portage/layman:mercurial - Support dev-util/mercurial based overlays
+app-portage/layman:mercurial - Support dev-vcs/mercurial based overlays
 app-portage/pfl:network-cron - Adds a cron job which does a weekly submit of the package database
 app-portage/portato:userpriv - Allow emerge processes as normal user
 app-shells/bash:bashlogger - Log ALL commands typed into bash; should ONLY be used in restricted environments such as honeypots
@@ -1019,7 +1019,6 @@ dev-util/catalyst:ccache - Enables ccache support
 dev-util/codeblocks:contrib - Build additional contrib components
 dev-util/ctags:ada - Enable Ada support
 dev-util/cvs:server - Enable server support
-dev-util/cvsspam:svn - Add subversion support
 dev-util/dialog:minimal - Disable library, install command-line program only
 dev-util/gambas:corba - Enable CORBA 2 ORB (net-misc/omniORB)
 dev-util/gambas:smtp - Enable smtp support.
@@ -1037,9 +1036,6 @@ dev-util/kdevelop:qmake - Enable support for Qmake build system
 dev-util/kdevelop:qthelp - Enable support for QtHelp documentation browsing
 dev-util/kdevplatform:git - Add suport for git VCS
 dev-util/kdevplatform:mercurial - Add suport for mercurial VCS
-dev-util/mercurial:bugzilla - Support bugzilla integration.
-dev-util/mercurial:gpg - Support signing with GnuPG.
-dev-util/mercurial:tk - Install dev-lang/tk for hgk script.
 dev-util/metro:ccache - Enable support for ccache
 dev-util/metro:git - Enable support for git snapshots
 dev-util/metro:threads - Enable support for pbzip2 tarball packing/unpacking
@@ -1083,8 +1079,11 @@ dev-util/svk:pager - Enable perl pager selection support
 dev-util/svk:patch - Enable patch creation, import support
 dev-util/universalindentgui:html - Add support for HTML files
 dev-vcs/bzr:sftp - Enable sftp support
+dev-vcs/mercurial:bugzilla - Support bugzilla integration.
+dev-vcs/mercurial:gpg - Support signing with GnuPG.
+dev-vcs/mercurial:tk - Install dev-lang/tk for hgk script.
 dev-vcs/qct:bazaar -  Support for dev-vcs/bzr 
-dev-vcs/qct:mercurial -  Support for dev-util/mercurial 
+dev-vcs/qct:mercurial -  Support for dev-vcs/mercurial 
 dev-vcs/qct:monotone -  Support for dev-vcs/monotone 
 games-action/abuse:demo - Use the demo data instead of the full game
 games-action/abuse:levels - Install user-created levels (fRaBs)
@@ -1392,7 +1391,6 @@ mail-client/pine:largeterminal - Add support for large terminals by doubling the
 mail-client/pine:passfile - Adds support for caching IMAP passwords into a file between sessions
 mail-client/squirrelmail:filter - Enable mail-filter/amavisd-new filtering
 mail-filter/MailScanner:exim - Set mail-mta to used MTA
-mail-filter/MailScanner:f-prot - Enable usage of app-antivirus/f-prot virus scanner
 mail-filter/MailScanner:postfix - Set mail-mta/postfix to used MTA
 mail-filter/MailScanner:spamassassin - Enable usage of mail-filter/spamassassin for spam protection
 mail-filter/amavisd-new:courier - Add support for usage with courierfilter
@@ -2671,8 +2669,6 @@ net-misc/vinagre:applet - Enable vinagre applet for gnome-base/gnome-panel.
 net-misc/vinagre:ssh - Enable ssh plugin.
 net-misc/vinagre:telepathy - Enable access to remote desktop via a telepathy client.
 net-misc/vino:telepathy - Enable desktop sharing through a telepathy client
-net-misc/vnc:server - Build VNC server
-net-misc/vnc:xorgmodule - Build the Xorg module
 net-misc/vpnc:hybrid-auth - Enable hybrid authentication (certificates), only if not redistributed as compiled binary
 net-misc/vpnc:resolvconf - Enable support for DNS managing framework net-dns/openresolv
 net-misc/wget:ntlm - Enable support for NTLM (Windows-based) authorization
