@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/mplayer/mplayer-9999.ebuild,v 1.26 2010/02/27 23:37:39 sping Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/mplayer/mplayer-9999.ebuild,v 1.28 2010/03/02 22:26:50 ssuominen Exp $
 
 EAPI="2"
 
@@ -43,7 +43,7 @@ fi
 SRC_URI="${RELEASE_URI}
 	!truetype? ( ${FONT_URI} )
 	gmplayer? ( mirror://mplayer/skins/Blue-${BLUV}.tar.bz2 )
-	svga? (	http://dev.gentoo.org/~ssuominen/svgalib_helper-${SVGV}-mplayer.tar.gz )"
+	svga? (	mirror://gentoo/svgalib_helper-${SVGV}-mplayer.tar.gz )"
 #	svga? ( http://mplayerhq.hu/~alex/svgalib_helper-${SVGV}-mplayer.tar.bz2 )
 
 DESCRIPTION="Media Player for Linux"
@@ -558,7 +558,11 @@ src_configure() {
 
 	use debug && myconf+=" --enable-debug=3"
 
-	filter-flags -fPIC -fPIE
+	if use x86; then
+		filter-flags -fPIC -fPIE
+		append-ldflags -nopie
+	fi
+
 	append-flags -D__STDC_LIMIT_MACROS
 	is-flag -O? || append-flags -O2
 	if use x86 || use x86-fbsd; then

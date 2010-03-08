@@ -1,29 +1,48 @@
-# Copyright 1999-2007 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/sparse/sparse-9999.ebuild,v 1.2 2007/09/17 19:28:20 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/sparse/sparse-9999.ebuild,v 1.4 2010/03/02 17:45:26 cardoe Exp $
 
-EGIT_REPO_URI="git://git.kernel.org/pub/scm/devel/sparse/sparse.git"
-inherit eutils multilib git
+EAPI="2"
+
+if [[ ${PV} = *9999* ]]; then
+	EGIT_REPO_URI="git://git.kernel.org/pub/scm/devel/sparse/sparse.git"
+	GIT_ECLASS="git"
+fi
+
+inherit eutils multilib flag-o-matic ${GIT_ECLASS}
 
 DESCRIPTION="C semantic parser"
-HOMEPAGE="http://kernel.org/pub/linux/kernel/people/josh/sparse/"
-SRC_URI=""
+HOMEPAGE="http://sparse.wiki.kernel.org/index.php/Main_Page"
+
+if [[ ${PV} = *9999* ]]; then
+	SRC_URI=""
+	KEYWORDS=""
+else
+	SRC_URI="mirror://kernel/software/devel/sparse/dist/${P}.tar.bz2"
+	KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+fi
 
 LICENSE="OSL-1.1"
 SLOT="0"
-KEYWORDS=""
 IUSE=""
 
 DEPEND=""
 RDEPEND=""
 
-src_unpack() {
-	git_src_unpack
-	cd "${S}"
+src_prepare() {
 	sed -i \
 		-e '/^PREFIX=/s:=.*:=/usr:' \
 		-e "/^LIBDIR=/s:/lib:/$(get_libdir):" \
 		Makefile || die
+	append-flags -fno-strict-aliasing
+}
+
+src_configure() {
+	:
+}
+
+src_compile() {
+	:
 }
 
 src_install() {

@@ -1,6 +1,26 @@
 # ChangeLog for www-client/chromium
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/ChangeLog,v 1.61 2010/02/27 15:50:21 phajdan.jr Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/ChangeLog,v 1.64 2010/03/05 09:12:50 phajdan.jr Exp $
+
+*chromium-5.0.342.1 (05 Mar 2010)
+
+  05 Mar 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-5.0.307.7.ebuild, -chromium-5.0.322.2.ebuild,
+  +chromium-5.0.342.1.ebuild:
+  Version bump for dev channel release. Remove old.
+
+  03 Mar 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -files/chromium-use_system_libevent-1.4.13.patch,
+  chromium-5.0.335.0.ebuild, chromium-9999.ebuild:
+  Initial work on making ffmpeg support more sane wrt bug #306921. Used
+  suggestions by Carlos Augusto <silvaesilva@gmail.com> and Doktor Notor
+  <notordoktor@gmail.com>. Also remove an unused patch.
+
+  01 Mar 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-5.0.307.11.ebuild, chromium-5.0.335.0.ebuild,
+  chromium-9999.ebuild:
+  Add check for $ROOT in the /dev/shm sanity check wrt latest comments in
+  bug #299777.
 
 *chromium-5.0.307.11 (27 Feb 2010)
 

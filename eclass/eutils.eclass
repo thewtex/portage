@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/eutils.eclass,v 1.336 2010/02/26 05:33:57 abcd Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/eutils.eclass,v 1.340 2010/03/07 03:00:08 vapier Exp $
 
 # @ECLASS: eutils.eclass
 # @MAINTAINER:
@@ -54,13 +54,11 @@ ebeep() {
 else
 
 ebeep() {
-	[[ $(type -t eqawarn) == function ]] && \
-		eqawarn "QA Notice: ebeep is not defined in EAPI=3, please file a bug at http://bugs.gentoo.org"
+	ewarn "QA Notice: ebeep is not defined in EAPI=${EAPI}, please file a bug at http://bugs.gentoo.org"
 }
 
 epause() {
-	[[ $(type -t eqawarn) == function ]] && \
-		eqawarn "QA Notice: epause is not defined in EAPI=3, please file a bug at http://bugs.gentoo.org"
+	ewarn "QA Notice: epause is not defined in EAPI=${EAPI}, please file a bug at http://bugs.gentoo.org"
 }
 
 fi
@@ -824,22 +822,21 @@ make_desktop_entry() {
 			app)
 				case ${catmin} in
 					accessibility) type=Accessibility;;
-					admin)	   type=System;;
-					antivirus) type=System;;
-					arch)      type=Archiving;;
-					backup)    type=Archiving;;
-					cdr)	   type=DiscBurning;;
-					dicts)	   type=Dictionary;;
-					doc)       type=Documentation;;
-					editors)   type=TextEditor;;
-					emacs)	   type=TextEditor;;
-					emulation) type=Emulator;;
-					laptop)	   type=HardwareSettings;;
-					office)	   type=Office;;
-					pda)       type=PDA;;
-					vim)	   type=TextEditor;;
-					xemacs)	   type=TextEditor;;
-					*)		   type=;;
+					admin)         type=System;;
+					antivirus)     type=System;;
+					arch)          type=Archiving;;
+					backup)        type=Archiving;;
+					cdr)           type=DiscBurning;;
+					dicts)         type=Dictionary;;
+					doc)           type=Documentation;;
+					editors)       type=TextEditor;;
+					emacs)         type=TextEditor;;
+					emulation)     type=Emulator;;
+					laptop)        type=HardwareSettings;;
+					office)        type=Office;;
+					pda)           type=PDA;;
+					vim)           type=TextEditor;;
+					xemacs)        type=TextEditor;;
 				esac
 				;;
 
@@ -850,17 +847,16 @@ make_desktop_entry() {
 			games)
 				case ${catmin} in
 					action|fps) type=ActionGame;;
-					arcade)		type=ArcadeGame;;
-					board)		type=BoardGame;;
-					emulation)	type=Emulator;;
-					kids)		type=KidsGame;;
-					puzzle)		type=LogicGame;;
-					roguelike)	type=RolePlaying;;
-					rpg)		type=RolePlaying;;
+					arcade)     type=ArcadeGame;;
+					board)      type=BoardGame;;
+					emulation)  type=Emulator;;
+					kids)       type=KidsGame;;
+					puzzle)     type=LogicGame;;
+					roguelike)  type=RolePlaying;;
+					rpg)        type=RolePlaying;;
 					simulation) type=Simulation;;
-					sports)		type=SportsGame;;
-					strategy)	type=StrategyGame;;
-					*)			type=;;
+					sports)     type=SportsGame;;
+					strategy)   type=StrategyGame;;
 				esac
 				type="Game;${type}"
 				;;
@@ -879,28 +875,32 @@ make_desktop_entry() {
 
 			media)
 				case ${catmin} in
-					gfx)   type=Graphics;;
-					radio) type=Tuner;;
-					sound) type=Audio;;
-					tv)	   type=TV;;
-					video) type=Video;;
-					*)	   type=;;
+					gfx)
+						type=Graphics
+						;;
+					*)
+						case ${catmin} in
+							radio) type=Tuner;;
+							sound) type=Audio;;
+							tv)    type=TV;;
+							video) type=Video;;
+						esac
+						type="AudioVideo;${type}"
+						;;
 				esac
-				type="AudioVideo;${type}"
 				;;
 
 			net)
 				case ${catmin} in
 					dialup) type=Dialup;;
-					ftp)	type=FileTransfer;;
-					im)		type=InstantMessaging;;
-					irc)	type=IRCClient;;
-					mail)	type=Email;;
-					news)	type=News;;
-					nntp)	type=News;;
-					p2p)	type=FileTransfer;;
-					voip)	type=Telephony;;
-					*)		type=;;
+					ftp)    type=FileTransfer;;
+					im)     type=InstantMessaging;;
+					irc)    type=IRCClient;;
+					mail)   type=Email;;
+					news)   type=News;;
+					nntp)   type=News;;
+					p2p)    type=FileTransfer;;
+					voip)   type=Telephony;;
 				esac
 				type="Network;${type}"
 				;;
@@ -908,15 +908,14 @@ make_desktop_entry() {
 			sci)
 				case ${catmin} in
 					astro*)  type=Astronomy;;
-					bio*)	 type=Biology;;
-					calc*)	 type=Calculator;;
-					chem*)	 type=Chemistry;;
+					bio*)    type=Biology;;
+					calc*)   type=Calculator;;
+					chem*)   type=Chemistry;;
 					elec*)   type=Electronics;;
-					geo*)	 type=Geology;;
-					math*)	 type=Math;;
+					geo*)    type=Geology;;
+					math*)   type=Math;;
 					physics) type=Physics;;
 					visual*) type=DataVisualization;;
-					*)		 type=;;
 				esac
 				type="Education;Science;${type}"
 				;;
@@ -928,7 +927,6 @@ make_desktop_entry() {
 			www)
 				case ${catmin} in
 					client) type=WebBrowser;;
-					*)		type=;;
 				esac
 				type="Network;${type}"
 				;;
@@ -975,7 +973,7 @@ make_desktop_entry() {
 		# doesn't corrupt the env of the caller
 		insinto /usr/share/applications
 		doins "${desktop}"
-	)
+	) || die "installing desktop file failed"
 }
 
 # @FUNCTION: validate_desktop_entries
