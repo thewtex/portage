@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5345 2010/03/05 20:27:38 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5359 2010/03/08 00:28:19 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -221,7 +221,9 @@ app-editors/jasspa-microemacs:nanoemacs - Build NanoEmacs instead of MicroEmacs
 app-editors/joe:xterm - Enable full xterm clipboard support
 app-editors/jove:unix98 - Use Unix 98 pty's instead of BSD pts's
 app-editors/leafpad:emacs - Enable Emacs key theme
-app-editors/nano:justify - Toggle the justify option
+app-editors/nano:debug -  Enable debug messages and assert warnings. Note that these will all be sent straight to stderr rather than some logging facility. 
+app-editors/nano:justify - Enable justify/unjustify functions for text formatting.
+app-editors/nano:minimal -  Disable all fancy features, including ones that otherwise have a dedicated USE flag (such as spelling). 
 app-editors/tea:aspell - Enable spell checking using aspell
 app-editors/tea:enchant - Enable spell checking using enchant
 app-editors/tea:hacking - Enable hacking support
@@ -493,7 +495,6 @@ app-office/abiword-plugins:math - Enable support for x11-libs/gtkmathview
 app-office/abiword-plugins:ots - Enable Text Summarizer plugin
 app-office/abiword-plugins:thesaurus - Enable thesaurus support
 app-office/abiword-plugins:wordperfect - Enable wordperfect file support via app-text/libwpd
-app-office/dia:gnome-print - Gnome-Print support (gnome-base/libgnomeprint)
 app-office/gnucash:chipcard - Enable support for chipcard reading and processing.
 app-office/gnucash:hbci - Enable HBCI support, for connecting to some internet banks
 app-office/gnucash:quotes - Enable Online Stock Quote retrieval
@@ -558,7 +559,7 @@ app-portage/gatt:libpaludis - Do some dependency resolution by using a sys-apps/
 app-portage/layman:bazaar - Support dev-vcs/bzr based overlays
 app-portage/layman:darcs - Support dev-util/darcs based overlays
 app-portage/layman:git - Support dev-util/git based overlays
-app-portage/layman:mercurial - Support dev-util/mercurial based overlays
+app-portage/layman:mercurial - Support dev-vcs/mercurial based overlays
 app-portage/pfl:network-cron - Adds a cron job which does a weekly submit of the package database
 app-portage/portato:userpriv - Allow emerge processes as normal user
 app-shells/bash:bashlogger - Log ALL commands typed into bash; should ONLY be used in restricted environments such as honeypots
@@ -1072,7 +1073,6 @@ dev-util/catalyst:ccache - Enables ccache support
 dev-util/codeblocks:contrib - Build additional contrib components
 dev-util/ctags:ada - Enable Ada support
 dev-util/cvs:server - Enable server support
-dev-util/cvsspam:svn - Add subversion support
 dev-util/dialog:minimal - Disable library, install command-line program only
 dev-util/eresi:server - Build eresi server capability
 dev-util/eric:idl - Enable omniorb support
@@ -1141,8 +1141,11 @@ dev-util/svk:pager - Enable perl pager selection support
 dev-util/svk:patch - Enable patch creation, import support
 dev-util/universalindentgui:html - Add support for HTML files
 dev-vcs/bzr:sftp - Enable sftp support
+dev-vcs/mercurial:bugzilla - Support bugzilla integration.
+dev-vcs/mercurial:gpg - Support signing with GnuPG.
+dev-vcs/mercurial:tk - Install dev-lang/tk for hgk script.
 dev-vcs/qct:bazaar -  Support for dev-vcs/bzr 
-dev-vcs/qct:mercurial -  Support for dev-util/mercurial 
+dev-vcs/qct:mercurial -  Support for dev-vcs/mercurial 
 dev-vcs/qct:monotone -  Support for dev-vcs/monotone 
 games-action/abuse:demo - Use the demo data instead of the full game
 games-action/abuse:levels - Install user-created levels (fRaBs)
@@ -1177,6 +1180,8 @@ games-board/freedoko:pysolcards - Use the PySol card set
 games-board/freedoko:xskatcards - Use the XSkat card set
 games-board/grhino:gtp - Install the GTP (Go/Game Text Protocol) frontend
 games-board/pysol:extra-cardsets - Install extra cardsets
+games-board/pysolfc:extra-cardsets - Install extra cardsets
+games-board/pysolfc:sound - Enable sound support usingdev-python/pygame
 games-board/spider:xaw - Enable athena widgets
 games-board/xboard:zippy - Enable experimental zippy client
 games-emulation/generator:sdlaudio - Enable SDL Audio
@@ -1333,7 +1338,9 @@ gnome-extra/gnome-media:gnomecd - Builds the GNOME CD Player
 gnome-extra/gnome-media:sound - Adds support for sound notification themes using media-libs/libcanberra
 gnome-extra/gnome-power-manager:policykit - Enable sys-auth/policykit authentication support
 gnome-extra/gtkhtml:glade - Provide integration with dev-util/glade.
+gnome-extra/libgda:canvas - Enables support for x11-libs/goocanvas
 gnome-extra/libgda:mdb - Enables Microsoft Access DB support
+gnome-extra/libgda:sourceview - Enable support for x11-libs/gtksourceview
 gnome-extra/libgda:xbase - Enables support for xbase databases (dBase, FoxPro, etc.)
 gnome-extra/libgsf:gtk - Enable use of gdk in thumbnailer
 gnome-extra/libgsf:thumbnail - Enable libgsf supported formats thumbnailer
@@ -1507,7 +1514,6 @@ mail-client/pine:largeterminal - Add support for large terminals by doubling the
 mail-client/pine:passfile - Adds support for caching IMAP passwords into a file between sessions
 mail-client/squirrelmail:filter - Enable mail-filter/amavisd-new filtering
 mail-filter/MailScanner:exim - Set mail-mta to used MTA
-mail-filter/MailScanner:f-prot - Enable usage of app-antivirus/f-prot virus scanner
 mail-filter/MailScanner:postfix - Set mail-mta/postfix to used MTA
 mail-filter/MailScanner:spamassassin - Enable usage of mail-filter/spamassassin for spam protection
 mail-filter/amavisd-new:courier - Add support for usage with courierfilter
@@ -1988,7 +1994,13 @@ media-sound/squeezecenter:bonjour - Enable support for bonjour
 media-sound/traverso:lv2 - Add support for Ladspa V2
 media-sound/vorbis-tools:ogg123 - Build ogg123 player, needs libao and curl
 media-sound/xmp:audacious - Enable audacious support
-media-sound/xwax:alsa - Enable ALSA support.
+media-sound/xwax:alsa - Adds support for ALSA audio input/output.
+media-sound/xwax:xwax_decoders_aac - Sets runtime dependencies to support decoding AAC audio.
+media-sound/xwax:xwax_decoders_cd - Sets runtime dependencies to support decoding audio from a compact disc.
+media-sound/xwax:xwax_decoders_flac - Sets runtime dependencies to support decoding FLAC audio.
+media-sound/xwax:xwax_decoders_misc - Sets runtime dependencies to support decoding "other" audio files.
+media-sound/xwax:xwax_decoders_mp3 - Sets runtime dependencies to support decoding MP3 audio.
+media-sound/xwax:xwax_decoders_ogg - Sets runtime dependencies to support decoding Ogg Vorbis audio.
 media-tv/freevo:ivtv - Enables ivtv support
 media-tv/freevo:mixer - Enable support for adjusting volume via media-sound/aumix
 media-tv/freevo:snes - Enable Super Nintendo games support
@@ -2866,6 +2878,7 @@ net-misc/streamtuner:shout - Enable shoutcast plug-in.
 net-misc/streamtuner:xiph - Enable xiph.org plug-in.
 net-misc/strongswan:cisco - Enable support of Cisco VPN client
 net-misc/strongswan:nat - Enable NAT traversal with IPsec transport mode
+net-misc/stunnel:xforward - Enable X-Forwarded-For support for Stunnel
 net-misc/termpkg:uucp -  Adds support for uucp style device locking 
 net-misc/tigervnc:server - Build TigerVNC server
 net-misc/tigervnc:xorgmodule - Build the Xorg module
@@ -2877,8 +2890,6 @@ net-misc/vinagre:applet - Enable vinagre applet for gnome-base/gnome-panel.
 net-misc/vinagre:ssh - Enable ssh plugin.
 net-misc/vinagre:telepathy - Enable access to remote desktop via a telepathy client.
 net-misc/vino:telepathy - Enable desktop sharing through a telepathy client
-net-misc/vnc:server - Build VNC server
-net-misc/vnc:xorgmodule - Build the Xorg module
 net-misc/vpnc:hybrid-auth - Enable hybrid authentication (certificates), only if not redistributed as compiled binary
 net-misc/vpnc:resolvconf - Enable support for DNS managing framework net-dns/openresolv
 net-misc/wget:ntlm - Enable support for NTLM (Windows-based) authorization
@@ -3622,6 +3633,9 @@ www-servers/lighttpd:webdav - Enable webdav properties
 www-servers/nginx:addition - Enables HTTP addition filter module
 www-servers/nginx:aio - Enables file AIO support
 www-servers/nginx:flv - Enables special processing module for flv files
+www-servers/nginx:http - Enable HTTP core support
+www-servers/nginx:http-cache - Enable HTTP cache support
+www-servers/nginx:libatomic - Use libatomic instead of builtin atomic operations
 www-servers/nginx:pop - Enables POP3 proxy support
 www-servers/nginx:random-index - Enables HTTP random index module
 www-servers/nginx:realip - Enables realip module
