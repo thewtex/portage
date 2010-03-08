@@ -1,10 +1,137 @@
 # ChangeLog for profile directory
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.3952 2010/02/28 17:31:34 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.3992 2010/03/06 06:01:14 dirtyepic Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  06 Mar 2010; Ryan Hill <dirtyepic@gentoo.org> package.mask:
+  Mask net-p2p/pysoulseek for removal. (bug #307971)
+
+  05 Mar 2010; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Removed libmpcdecsv7 mask (it will be handled by blockers in
+  musepack-tools instead).
+
+  05 Mar 2010; Ulrich Mueller <ulm@gentoo.org> updates/3Q-2004,
+  updates/1Q-2010:
+  Move cvsweb from dev-util to www-apps, bug 56967. Update old package move.
+
+  05 Mar 2010; Alex Alexander <wired@gentoo.org> updates/1Q-2010:
+  moved www-client/urlgfe to www-client/uget - renamed by upstream
+
+  05 Mar 2010; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Removed dev-util/aegis from tree.
+
+  05 Mar 2010; Jeroen Roovers <jer@gentoo.org> updates/1Q-2010:
+  Move cssc from dev-util to dev-vcs.
+
+  05 Mar 2010; Ulrich Mueller <ulm@gentoo.org> updates/1Q-2010:
+  Move mcvs from dev-util to dev-vcs, bug 56967.
+
+  05 Mar 2010; Christian Faulhammer <fauli@gentoo.org> updates/1Q-2010:
+  Move bzr, bzr-svn, qbzr and bzrtools from dev-util to dev-vcs category
+
+  05 Mar 2010; Ulrich Mueller <ulm@gentoo.org> updates/1Q-2010:
+  Move rcs from app-text to dev-vcs, bug 56967.
+
+  05 Mar 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> package.mask:
+  Mask www-client/chromium-5.0.342.1 dev channel release.
+
+  05 Mar 2010; Jonathan Callen <abcd@gentoo.org> updates/1Q-2010:
+  Move archway from dev-util to dev-vcs for bug 56967
+
+  05 Mar 2010; Jonathan Callen <abcd@gentoo.org> updates/1Q-2010:
+  Move qct from dev-util to dev-vcs
+
+  04 Mar 2010; Torsten Veller <tove@gentoo.org> updates/1Q-2010:
+  Move mr from dev-util to dev-vcs
+
+  04 Mar 2010; Samuli Suominen <ssuominen@gentoo.org> profiles.desc:
+  Change MIPS from "dev" to "exp" in profiles.desc and delete targets
+  desktop, developer and server.
+
+  04 Mar 2010; Justin Lecher (jlec) <jlec@j-schmitz.net> package.mask:
+  Masked sci-libs/clapack, because of QA issues
+
+  03 Mar 2010; Jeremy Olexa <darkside@gentoo.org> thirdpartymirrors:
+  Audit ibiblio mirrors and remove invalid ones
+
+  03 Mar 2010; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask dev-lang/gnu-smalltalk wrt security #277089.
+
+  03 Mar 2010; Tupone Alfredo <tupone@gentoo.org> thirdpartymirrors:
+  Updating flightgear mirrors
+
+  03 Mar 2010; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask ircd-hybrid wrt security bugs 258330 and 303735.
+
+  03 Mar 2010; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask app-shells/pdsh wrt security #252398.
+
+  03 Mar 2010; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask games-fps/openarena wrt security #255453.
+
+  03 Mar 2010; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask net-nntp/bnr2 for removal wrt #251528.
+
+  03 Mar 2010; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask libnetdude, netdude and naim wrt security and QA bugs 252402, 296953,
+  296954, 215252, 297649.
+
+  03 Mar 2010; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask dev-lang/squeak wrt #247363.
+
+  02 Mar 2010; Theo Chatzimichos <tampakrap@gentoo.org> package.mask:
+  KDE SC 4.4.1 Released
+
+  02 Mar 2010; Markos Chandras <hwoarang@gentoo.org> package.mask:
+  Remove masking for tipcutils. Bug #298143
+
+  02 Mar 2010; Christian Faulhammer <fauli@gentoo.org> package.mask:
+  unmask bzr 2.1.0 series
+
+  02 Mar 2010; Theo Chatzimichos <tampakrap@gentoo.org> package.mask:
+  Remove :4.4 as slots are EAPI 1
+
+  02 Mar 2010; Markos Chandras <hwoarang@gentoo.org> package.mask:
+  Fails to build. Unmaintained. Bug #298143. It will be removed in 2010-04-02.
+  net-misc/tipcutils
+
+  02 Mar 2010; Theo Chatzimichos <tampakrap@gentoo.org> package.mask:
+  KDE 4.4.1 will be unmasked as soon as there is an official announcement in
+  kde.org
+
+  01 Mar 2010; Ben de Groot <yngwin@gentoo.org> package.mask:
+  Add qt-embedded-3 and aabrowse to qt:3 mask
+
+  01 Mar 2010; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask media-libs/libmpcdecsv7 for removal.
+
+  01 Mar 2010; Ben de Groot <yngwin@gentoo.org> package.mask:
+  Add mythtv plugins to qt:3 mask
+
+  01 Mar 2010; Ben de Groot <yngwin@gentoo.org> base/use.mask, package.mask:
+  Masking qt:3 and remaining reverse dependencies pending removal, bug
+  283429
+
+  01 Mar 2010; Patrick Lauer <patrick@gentoo.org> package.mask:
+  Removing fe3d mask as it is using proper tarballs now
+
+  01 Mar 2010; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Remove metasploit mask (all vers are now using SRC_URI).
+
+  01 Mar 2010; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Remove mask entry for libnemesi because it was removed from tree.
+
+  01 Mar 2010; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Remove mask entry for libredblack because it was removed from tree.
+
+  01 Mar 2010; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask dev-tex/mplib for removal wrt #300595.
+
+  01 Mar 2010; Hans de Graaff <graaff@gentoo.org> package.mask:
+  Mask Passenger 2.2.10 pending investigation of problems.
 
   28 Feb 2010; Jeroen Roovers <jer@gentoo.org> package.mask:
   Mask sysstat 9.1.

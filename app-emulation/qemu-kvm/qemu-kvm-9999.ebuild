@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/qemu-kvm/qemu-kvm-9999.ebuild,v 1.3 2010/02/15 16:40:13 cardoe Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/qemu-kvm/qemu-kvm-9999.ebuild,v 1.4 2010/03/02 16:56:34 cardoe Exp $
 
 EAPI="2"
 
@@ -26,7 +26,7 @@ LICENSE="GPL-2"
 SLOT="0"
 # xen is disabled until the deps are fixed
 IUSE="+aio alsa bluetooth curl esd gnutls fdt hardened kvm-trace ncurses \
-pulseaudio sasl sdl static vde"
+pulseaudio qemu-ifup sasl sdl static vde"
 
 COMMON_TARGETS="i386 x86_64 arm cris m68k microblaze mips mipsel ppc ppc64 sh4 sh4eb sparc sparc64"
 IUSE_SOFTMMU_TARGETS="${COMMON_TARGETS} mips64 mips64el ppcemb"
@@ -47,8 +47,6 @@ RDEPEND="
 	!app-emulation/qemu
 	!app-emulation/qemu-softmmu
 	!app-emulation/qemu-user
-	net-misc/bridge-utils
-	sys-apps/iproute2
 	sys-apps/pciutils
 	>=sys-apps/util-linux-2.16.0
 	sys-libs/zlib
@@ -61,6 +59,7 @@ RDEPEND="
 	gnutls? ( net-libs/gnutls )
 	ncurses? ( sys-libs/ncurses )
 	pulseaudio? ( media-sound/pulseaudio )
+	qemu-ifup? ( sys-apps/iproute2 net-misc/bridge-utils )
 	sasl? ( dev-libs/cyrus-sasl )
 	sdl? ( >=media-libs/libsdl-1.2.11[X] )
 	vde? ( net-misc/vde )
@@ -188,9 +187,11 @@ src_install() {
 	insinto /etc/udev/rules.d/
 	doins kvm/scripts/65-kvm.rules || die
 
-	insinto /etc/qemu/
-	insopts -m0755
-	doins kvm/scripts/qemu-ifup || die
+	if use qemu-ifup; then
+		insinto /etc/qemu/
+		insopts -m0755
+		doins kvm/scripts/qemu-ifup || die
+	fi
 
 	dodoc Changelog MAINTAINERS TODO pci-ids.txt || die
 	newdoc pc-bios/README README.pc-bios || die

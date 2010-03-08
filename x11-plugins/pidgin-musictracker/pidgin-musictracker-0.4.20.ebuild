@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/pidgin-musictracker/pidgin-musictracker-0.4.20.ebuild,v 1.2 2010/01/05 03:36:43 josejx Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/pidgin-musictracker/pidgin-musictracker-0.4.20.ebuild,v 1.3 2010/03/03 19:20:29 serkan Exp $
 
 EAPI="2"
 
@@ -22,7 +22,7 @@ DEPEND=">=net-im/pidgin-2.0.0
 RDEPEND="${DEPEND}"
 
 src_prepare() {
-	epatch ${FILESDIR}/${P}-fortify-abort.patch
+	epatch "${FILESDIR}"/${P}-fortify-abort.patch
 }
 
 src_configure() {
