@@ -1,8 +1,8 @@
 inherit distutils
 
 DESCRIPTION="A ReStructured Text based tool for preparing presentations."
-HOMEPAGE="http://www.agapow.net/software/${PN}"
-SRC_URI="http://www.agapow.net/software/${PN}/${PV}/${P}.tar.gz"
+HOMEPAGE="http://pypi.python.org/pypi/rst2beamer/"
+SRC_URI="http://pypi.python.org/packages/source/r/${PN}/${P}.tar.gz"
 
 LICENSE="GPL"
 SLOT="0"
