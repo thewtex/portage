@@ -1,5 +1,5 @@
-acl? ( kernel_linux? ( sys-apps/acl sys-apps/attr ) ) dbus? ( sys-apps/dbus ) gnutls? ( net-libs/gnutls ) java? ( >=virtual/jre-1.4 ) jpeg? ( >=media-libs/jpeg-6b:0 ) kerberos? ( virtual/krb5 ) ldap? ( net-nds/openldap ) pam? ( virtual/pam ) perl? ( dev-lang/perl ) php? ( dev-lang/php ) png? ( >=media-libs/libpng-1.2.1 ) python? ( dev-lang/python ) slp? ( >=net-libs/openslp-1.0.4 ) ssl? ( !gnutls? ( >=dev-libs/openssl-0.9.8g ) ) tiff? ( >=media-libs/tiff-3.5.5 ) xinetd? ( sys-apps/xinetd ) app-text/libpaper dev-libs/libgcrypt dev-libs/libusb >=app-text/poppler-0.12.3-r3[utils] !net-print/cupsddk
-acl? ( kernel_linux? ( sys-apps/acl sys-apps/attr ) ) dbus? ( sys-apps/dbus ) gnutls? ( net-libs/gnutls ) java? ( >=virtual/jre-1.4 ) jpeg? ( >=media-libs/jpeg-6b:0 ) kerberos? ( virtual/krb5 ) ldap? ( net-nds/openldap ) pam? ( virtual/pam ) perl? ( dev-lang/perl ) php? ( dev-lang/php ) png? ( >=media-libs/libpng-1.2.1 ) python? ( dev-lang/python ) slp? ( >=net-libs/openslp-1.0.4 ) ssl? ( !gnutls? ( >=dev-libs/openssl-0.9.8g ) ) tiff? ( >=media-libs/tiff-3.5.5 ) xinetd? ( sys-apps/xinetd ) app-text/libpaper dev-libs/libgcrypt dev-libs/libusb >=app-text/poppler-0.12.3-r3[utils] !net-print/cupsddk !virtual/lpr X? ( x11-misc/xdg-utils )
+app-text/libpaper dev-libs/libgcrypt dev-libs/libusb acl? ( kernel_linux? ( sys-apps/acl sys-apps/attr ) ) dbus? ( sys-apps/dbus ) gnutls? ( net-libs/gnutls ) java? ( >=virtual/jre-1.4 ) jpeg? ( >=media-libs/jpeg-6b:0 ) kerberos? ( virtual/krb5 ) ldap? ( net-nds/openldap ) pam? ( virtual/pam ) perl? ( dev-lang/perl ) php? ( dev-lang/php ) png? ( >=media-libs/libpng-1.2.1 ) python? ( dev-lang/python ) slp? ( >=net-libs/openslp-1.0.4 ) ssl? ( !gnutls? ( >=dev-libs/openssl-0.9.8g ) ) tiff? ( >=media-libs/tiff-3.5.5 ) xinetd? ( sys-apps/xinetd )
+app-text/libpaper dev-libs/libgcrypt dev-libs/libusb acl? ( kernel_linux? ( sys-apps/acl sys-apps/attr ) ) dbus? ( sys-apps/dbus ) gnutls? ( net-libs/gnutls ) java? ( >=virtual/jre-1.4 ) jpeg? ( >=media-libs/jpeg-6b:0 ) kerberos? ( virtual/krb5 ) ldap? ( net-nds/openldap ) pam? ( virtual/pam ) perl? ( dev-lang/perl ) php? ( dev-lang/php ) png? ( >=media-libs/libpng-1.2.1 ) python? ( dev-lang/python ) slp? ( >=net-libs/openslp-1.0.4 ) ssl? ( !gnutls? ( >=dev-libs/openssl-0.9.8g ) ) tiff? ( >=media-libs/tiff-3.5.5 ) xinetd? ( sys-apps/xinetd ) !net-print/cupsddk !virtual/lpr X? ( x11-misc/xdg-utils )
 0
 mirror://easysw/cups/1.4.2/cups-1.4.2-source.tar.bz2
 test
@@ -10,7 +10,7 @@ The Common Unix Printing System.
 eutils flag-o-matic multilib pam portability toolchain-funcs versionator
 acl dbus debug gnutls java +jpeg kerberos ldap pam perl php +png python samba slp +ssl static +tiff X xinetd linguas_da linguas_de linguas_es linguas_eu linguas_fi linguas_fr linguas_it linguas_ja linguas_ko linguas_nl linguas_no linguas_pl linguas_pt linguas_pt_BR linguas_ru linguas_sv linguas_zh linguas_zh_TW
 
-|| ( app-text/ghostscript-gpl[cups] app-text/ghostscript-gnu[cups] )
+|| ( app-text/ghostscript-gpl[cups] app-text/ghostscript-gnu[cups] ) >=app-text/poppler-0.12.3-r3[utils]
 virtual/lpr
 2
 

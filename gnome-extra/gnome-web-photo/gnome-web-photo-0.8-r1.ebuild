@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-extra/gnome-web-photo/gnome-web-photo-0.8-r1.ebuild,v 1.1 2010/02/08 17:44:15 mrpouet Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/gnome-web-photo/gnome-web-photo-0.8-r1.ebuild,v 1.2 2010/03/08 23:40:02 eva Exp $
 
 inherit autotools gnome2
 
@@ -15,7 +15,6 @@ IUSE="jpeg"
 RDEPEND=">=dev-libs/glib-2.6.0
 		>=x11-libs/gtk+-2.6.3
 		>=dev-libs/libxml2-2.6.12
-		>=gnome-base/gnome-vfs-2.9.2
 		media-libs/libpng
 		gnome-base/gconf
 		jpeg? ( media-libs/jpeg )
