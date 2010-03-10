@@ -177,6 +177,11 @@ src_install() {
 	insinto /usr/share/grub-legacy
 	doins "${DISTDIR}"/splash.xpm.gz
 	mv ${D}/usr/share/info/grub.info ${D}/usr/share/info/grub-legacy.info || die "owie"
+
+	dosed '/.*=${sbindir}/s:\(^.*$\):\1-legacy:g' /sbin/grub-install-legacy && \
+	dosed '/^grubdir=.*\/grub$/s:\(^.*$\):\1-legacy:g' /sbin/grub-install-legacy && \
+	dosed '/.*grub_prefix=/s:\(^.*\)grub\(.*$\):\1grub-legacy\2:g' /sbin/grub-install-legacy
+	[ $? -ne 0 ] && die "dosed error"
 }
 
 setup_boot_dir() {
