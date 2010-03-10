@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5362 2010/03/08 22:47:51 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5367 2010/03/10 01:47:41 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -273,7 +273,6 @@ app-emulation/libvirt:udev - Use sys-fs/udev to determine available devices
 app-emulation/libvirt:uml - Add support for User Mode Linux based virtual machines
 app-emulation/libvirt:virtualbox - Adds support for VirtualBox based virtual machines
 app-emulation/libvirt:xen - Add support for app-emulation/xen based virtual machines
-app-emulation/lxc:doc -  Build documentation and man pages. This is optional since it requires extra dependencies. If you don't enable this flag, you will have no man pages. 
 app-emulation/mol:oldworld - Includes Macintosh's OldWorld support
 app-emulation/mol:pci - Experimental PCI proxy support
 app-emulation/mol:sheep - Support for the sheep net driver
@@ -544,7 +543,6 @@ app-pda/synce-fur:void-chmod - enable a fake fuse hook for "chmod" that just ret
 app-portage/conf-update:colordiff - Use colors when displaying diffs (app-misc/colordiff)
 app-portage/eix:bzip2 - Support for parsing of environment.bz2 to guess repository name of packages installed with ancient portage versions (requires app-arch/bzip2). This flag is safe to disable for portage users that have re-merged all packages since 2007. This flag will be phased out.
 app-portage/eix:debug - Build with CXXFLAGS/LDFLAGS for debugging support. Only makes sense in combination with FEATURES=nostrip.
-app-portage/eix:deprecated - Installs wrapper scripts for all the previous executable names that will soon be going away. Enabled by default in 0.17.0, optional in 0.18.0, removed in next major release.
 app-portage/eix:doc - Create description of the eix cache file additionally in html format
 app-portage/eix:hardened - Add CXXFLAGS/LDFLAGS enhancing security at the cost of a slight speed loss. If a hardened gcc is used, these flags should not make a difference.
 app-portage/eix:nls - Support foreign language messages (experimental; currently only de)
@@ -2427,8 +2425,9 @@ net-dns/nsd:runtime-checks - Enable runtime checks
 net-dns/nsd:tsig - Enable TSIG support
 net-dns/pdns:opendbx - Enable the OpenDBX backend
 net-dns/pdnsd:isdn - Enable ISDN features
-net-dns/pdnsd:underscores - Enable support for domain names containing underscores
-net-dns/pdnsd:urandom - Use /dev/urandom instead of /dev/random
+net-dns/pdnsd:nptl -  Linux-only: override auto-detection of the system threading implementation and force usage of the Native Posix Thread Library. 
+net-dns/pdnsd:underscores -  Enable support for domain names containing underscores 
+net-dns/pdnsd:urandom -  Linux-only: use /dev/urandom (pseudo-random number generation) instead of the default use of random() PRNG. 
 net-dns/unbound:libevent - Use dev-libs/libevent instead of internal select based events
 net-firewall/arno-iptables-firewall:plugins - Install optional plugins
 net-firewall/ipsec-tools:hybrid - Makes available both mode-cfg and xauth support
@@ -2862,7 +2861,8 @@ net-misc/quagga:ospfapi - Enable OSPFAPI support for client applications accessi
 net-misc/quagga:realms - Enable realms support (see http://vcalinus.gemenii.ro/quaggarealms.html)
 net-misc/quagga:tcp-zebra - Enable TCP zserv interface on port 2600 for Zebra/protocol-daemon communication. Unix domain sockets are chosen otherwise.
 net-misc/quagga:tcpmd5 - Enable TCP MD5 checksumming
-net-misc/rdesktop:pcsc-lite - Enable smartcard support with pcsc-lite driver
+net-misc/rdesktop:pcsc-lite - Enable smartcard support with sys-apps/pcsc-lite driver
+net-misc/rdesktop:rdpusb - Enable USB redirection support for app-emulation/virtualbox-bin
 net-misc/scponly:gftp - Enables gFTP compatibility
 net-misc/scponly:logging - Enables SFTP logging compatibility
 net-misc/scponly:passwd - Enables passwd compatibility
@@ -3539,6 +3539,8 @@ sys-power/powerman:httppower -  Add support for HTTP based power controllers
 sys-power/suspend:crypt - Allows suspend and resume from encrypted disk
 sys-power/suspend:fbsplash - Add support for framebuffer splash
 sys-process/cronie:inotify - Enable inotify filesystem monitoring support.
+sys-process/fcron:debug -  Enable debug code and output. Since version 3.0.5 this will no longer force foreground execution, and fcron will be able to run as a service properly. 
+sys-process/fcron:doc -  Rebuild the user documentation provided with the package; this should really not be necessary as all the documentation is shipped pre-built. 
 sys-process/procps:n32 - Enable n32 ABI support on mips
 virtual/mpi:romio - Enable romio, a high-performance portable MPI-IO
 www-apache/mod_mono:aspnet2 - Handle all applications using ASP.NET 2.0 engine by default
