@@ -34,8 +34,8 @@ src_install() {
 }
 
 pkg_postinst() {
-	if [ ! -e ${ROOT}/etc/boot.conf ] && [ -e ${ROOT}/usr/share/doc/${PF}/boot.conf.example ]
+	if [ ! -e ${ROOT}/etc/boot.conf ] && [ -e ${ROOT}/usr/share/doc/${PF}/boot.conf.example.bz2 ]
 	then
-		cp ${ROOT}/usr/share/doc/${PF}/boot.conf.example ${ROOT}/etc/boot.conf
+		bzcat ${ROOT}/usr/share/doc/${PF}/boot.conf.example.bz2 > ${ROOT}/etc/boot.conf
 	fi
 }
