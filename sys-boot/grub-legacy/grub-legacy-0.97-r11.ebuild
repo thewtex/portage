@@ -191,7 +191,7 @@ setup_boot_dir() {
 
 	mkdir -p "${dir}"
 	[[ ! -L ${dir}/boot ]] && ln -s . "${dir}/boot"
-	dir="${dir}/grub"
+	dir="${dir}/grub-legacy"
 	if [[ ! -e ${dir} ]] ; then
 		mkdir "${dir}" || die "${dir} does not exist!"
 	fi
