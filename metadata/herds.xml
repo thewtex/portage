@@ -20,7 +20,7 @@
    always a description without a lang attribute. Also there are no overlapping
    descriptions allowed (multiple description tags with the same language)
 
-   $Header: /var/cvsroot/gentoo/xml/htdocs/proj/en/metastructure/herds/herds.xml,v 1.694 2010/03/09 14:06:05 beandog Exp $
+   $Header: /var/cvsroot/gentoo/xml/htdocs/proj/en/metastructure/herds/herds.xml,v 1.696 2010/03/10 19:58:30 ssuominen Exp $
 
 -->
 <herds>
@@ -38,12 +38,16 @@
     <email>apache-bugs@gentoo.org</email>
   <description>The Apache web server and supporting packages</description>
   <maintainer>
-    <email>trapni@gentoo.org</email>
-    <name>Christian Parpart</name>
+    <email>hollow@gentoo.org</email>
+    <name>Benedikt Böhm</name>
   </maintainer>
   <maintainer>
-    <email>hollow@gentoo.org</email>
-    <name>Benedikt Boehm</name>
+    <email>arfrever@gentoo.org</email>
+    <name>Benedikt Böhm</name>
+  </maintainer>
+  <maintainer>
+    <email>trapni@gentoo.org</email>
+    <name>Christian Parpart</name>
   </maintainer>
   <maintainer>
     <email>chtekk@gentoo.org</email>
@@ -747,9 +751,16 @@
   <name>qmail</name>
   <email>qmail-bugs@gentoo.org</email>
   <description>Everything to do with Qmail, and related packages.</description>
-  <maintainer><email>hollow@gentoo.org</email></maintainer>
-  <maintainer><email>xmerlin@gentoo.org</email></maintainer>
-  <maintainer><email>vapier@gentoo.org</email>
+  <maintainer>
+      <email>hollow@gentoo.org</email>
+      <name>Benedikt Böhm</name>
+      <role>vpopmail, vchkuser</role>
+  </maintainer>
+  <maintainer>
+      <email>xmerlin@gentoo.org</email>
+  </maintainer>
+  <maintainer>
+      <email>vapier@gentoo.org</email>
       <role>mini-qmail</role>
   </maintainer>
   <maintainer>
@@ -1358,6 +1369,10 @@
   <email>web-apps@gentoo.org</email>
   <description>Web based applications and their configuration</description>
   <maintainer>
+    <email>hollow@gentoo.org</email>
+    <name>Benedikt Böhm</name>
+  </maintainer>
+  <maintainer>
     <email>trapni@gentoo.org</email>
     <name>Christian Parpart</name>
     <role>Some minor/certain packages.</role>
@@ -1516,7 +1531,7 @@
   </maintainer>
   <maintainer>
     <email>hollow@gentoo.org</email>
-    <name>Benedikt Boehm</name>
+    <name>Benedikt Böhm</name>
   </maintainer>
   <maintainer>
     <email>marineam@gentoo.org</email>
@@ -2215,6 +2230,10 @@
     <email>dirtyepic@gentoo.org</email>
     <name>Ryan Hill</name>
   </maintainer>
+  <maintainer>
+    <email>ssuominen@gentoo.org</email>
+    <name>Samuli Suominen</name>
+  </maintainer>
 </herd>
 <herd>
   <name>net-news</name>
@@ -2413,11 +2432,18 @@
   <description>Linux-VServer related applications</description>
   <maintainer>
     <email>hollow@gentoo.org</email>
-    <name>Benedikt Boehm</name>
+    <name>Benedikt Böhm</name>
+    <role>Linux-VServer</role>
+  </maintainer>
+  <maintainer>
+    <email>pva@gentoo.org</email>
+    <name>Peter Volkov</name>
+    <role>OpenVZ</role>
   </maintainer>
   <maintainer>
     <email>bangert@gentoo.org</email>
     <name>Thilo Bangert</name>
+    <name>OpenVZ, KVM</name>
   </maintainer>
 </herd>
 <herd>

@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5367 2010/03/10 01:47:41 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5371 2010/03/10 23:47:46 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -1478,6 +1478,7 @@ mail-client/alpine:topal - Enable support for net-mail/topal
 mail-client/balsa:crypt - Adds support for GnuPG encryption
 mail-client/balsa:gtkspell - Use gtkspell for dictionary support
 mail-client/balsa:rubrica - Adds support for app-office/rubrica addressbook
+mail-client/balsa:webkit - Enable webkit based html renderer
 mail-client/claws-mail:bogofilter - Build mail-filter/bogofilter plugin
 mail-client/claws-mail:dillo - Enables support for inline HTTP email viewing with a plugin (which depends on the www-client/dillo browser)
 mail-client/claws-mail:smime - Build plugin for S/MIME support
@@ -2876,6 +2877,7 @@ net-misc/scponly:wildcards - Enables wildcard processing with potential security
 net-misc/scponly:winscp - Enables WinSCP 2.0 compatibility with potential security risks
 net-misc/sitecopy:rsh - This allows the use of rsh (remote shell) and rcp (remote copy) for authoring websites. sftp is a much more secure protocol and is preferred.
 net-misc/sitecopy:webdav - Enable WebDav (Web-based Distributed Authoring and Versioning) support. This system allows users to collaborate on websites using a web based interface. See the ebuild for an FAQ page. Enables neon as well to handle webdav support.
+net-misc/slimrat:X - Install also GUI client
 net-misc/streamtuner:shout - Enable shoutcast plug-in.
 net-misc/streamtuner:xiph - Enable xiph.org plug-in.
 net-misc/strongswan:cisco - Enable support of Cisco VPN client
@@ -3519,6 +3521,8 @@ sys-libs/libraw1394:juju - Use the new juju firewire stack in the Linux kernel
 sys-libs/ncurses:ada - Add bindings for the ADA programming language
 sys-libs/ncurses:trace - Enable test trace() support in ncurses calls
 sys-libs/pam:audit - Enable support for sys-process/audit
+sys-libs/pam:berkdb -  Build the pam_userdb module, that allows to authenticate users against a Berkeley DB file. Please note that enabling this USE flag will create a PAM module that links to the Berkeley DB (as provided by sys-libs/db) installed in /usr/lib and will thus not work for boot-critical services authentication. 
+sys-libs/pam:cracklib -  Build the pam_cracklib module, that allows to verify the chosen passwords' strength through the use of sys-libs/cracklib. Please note that simply enabling the USE flag on this package will not make use of pam_cracklib by default, you should also enable it in sys-auth/pambase as well as update your configuration files. 
 sys-libs/talloc:compat - Enable extra compatibility stuff
 sys-libs/tdb:tdbtest - Install tdbtest app
 sys-libs/tdb:tools - Install extra tools
@@ -3541,6 +3545,7 @@ sys-power/suspend:fbsplash - Add support for framebuffer splash
 sys-process/cronie:inotify - Enable inotify filesystem monitoring support.
 sys-process/fcron:debug -  Enable debug code and output. Since version 3.0.5 this will no longer force foreground execution, and fcron will be able to run as a service properly. 
 sys-process/fcron:doc -  Rebuild the user documentation provided with the package; this should really not be necessary as all the documentation is shipped pre-built. 
+sys-process/fcron:pam -  Enable PAM support for fcron. This means that fcron will pass through the "fcron" stack before executing the jobs, and fcrontab will use the "fcrontab" stack to authenticate the user before editing its crontab file. 
 sys-process/procps:n32 - Enable n32 ABI support on mips
 virtual/mpi:romio - Enable romio, a high-performance portable MPI-IO
 www-apache/mod_mono:aspnet2 - Handle all applications using ASP.NET 2.0 engine by default
