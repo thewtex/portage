@@ -22,13 +22,14 @@ SRC_URI="mirror://gentoo/${RP}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~x86"
 IUSE="custom-cflags ncurses netboot static"
 
 DEPEND="ncurses? (
 		>=sys-libs/ncurses-5.2-r5
 		amd64? ( app-emulation/emul-linux-x86-baselibs )
 	)"
+RDEPEND="$DEPEND >=sys-apps/coreboot-1.4.1"
 PROVIDE="virtual/bootloader"
 
 pkg_setup() {
