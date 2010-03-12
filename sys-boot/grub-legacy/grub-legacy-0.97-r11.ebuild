@@ -22,7 +22,7 @@ SRC_URI="mirror://gentoo/${RP}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="custom-cflags ncurses netboot static"
 
 DEPEND="ncurses? (
