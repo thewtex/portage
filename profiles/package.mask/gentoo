@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11336 2010/03/10 20:02:46 cardoe Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11341 2010/03/12 02:27:18 jer Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -31,6 +31,22 @@
 
 #--- END OF EXAMPLES ---
 
+# Doug Goldstein <cardoe@gentoo.org> (11 Mar 2010)
+# mask due to bug #309001
+=app-arch/tar-1.23
+
+# <s4t4n@gentoo.org> (11 Mar 2010)
+# The following packages are not compatible with lm-sensors-3, upstream is unresponsive.
+# Masked pending removal from the tree.
+# http://bugs.gentoo.org/show_bug.cgi?id=289829
+# http://bugs.gentoo.org/show_bug.cgi?id=291426
+# http://bugs.gentoo.org/show_bug.cgi?id=291429
+# http://bugs.gentoo.org/show_bug.cgi?id=291432
+x11-plugins/wmalms
+x11-plugins/wmgtemp
+x11-plugins/wmsensormon
+x11-plugins/wmmsens
+
 # Doug Goldstein <cardoe@gentoo.org> (10 Mar 2010)
 # Explicitly mask these as per NVIDIA's request
 # These drivers will destroy your video card
@@ -48,11 +64,6 @@ net-analyzer/iptraf-ng
 ~app-editors/emacs-vcs-24.0.9999
 ~virtual/emacs-24
 
-# Justin Lecher <jlec@gentoo.org> (10 Mar 2010)
-# doesn't work with current python setup (>python3)
-# bug 308691
-=sci-chemistry/viewmol-2.4.1
-
 # Jim Ramsay <lack@gentoo.org> (10 Mar 2010)
 # x11-base/xorg-server-1.7.5.901 breaks various WMs, see Bug 296514
 # Masked until a new version or fix is available from Upstream.
@@ -66,6 +77,7 @@ net-voip/wengophone-bin
 
 # Justin Lecher <jlec@gentoo.org> (08 Mar 2010)
 # Is broken somehow
+=sci-libs/blas-atlas-3.9.23-r1
 =sci-libs/lapack-atlas-3.9.23-r1
 
 # Lance Albertson <ramereth@gentoo.org> (08 Mar 2010)
@@ -960,6 +972,7 @@ dev-util/w32api
 # Snapshot, labs and alpha releases but not betas and RCs of Opera
 =www-client/opera-10.20_pre4744
 =www-client/opera-10.50*
+=www-client/opera-10.51*
 
 # Peter Volkov <pva@gentoo.org> (16 Nov 2008)
 # The development branch, to be unmasked when out of beta by upstream.
