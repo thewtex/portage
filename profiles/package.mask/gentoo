@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11325 2010/03/08 13:02:43 voyageur Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11341 2010/03/12 02:27:18 jer Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -31,8 +31,53 @@
 
 #--- END OF EXAMPLES ---
 
+# Doug Goldstein <cardoe@gentoo.org> (11 Mar 2010)
+# mask due to bug #309001
+=app-arch/tar-1.23
+
+# <s4t4n@gentoo.org> (11 Mar 2010)
+# The following packages are not compatible with lm-sensors-3, upstream is unresponsive.
+# Masked pending removal from the tree.
+# http://bugs.gentoo.org/show_bug.cgi?id=289829
+# http://bugs.gentoo.org/show_bug.cgi?id=291426
+# http://bugs.gentoo.org/show_bug.cgi?id=291429
+# http://bugs.gentoo.org/show_bug.cgi?id=291432
+x11-plugins/wmalms
+x11-plugins/wmgtemp
+x11-plugins/wmsensormon
+x11-plugins/wmmsens
+
+# Doug Goldstein <cardoe@gentoo.org> (10 Mar 2010)
+# Explicitly mask these as per NVIDIA's request
+# These drivers will destroy your video card
+# http://www.nvnews.net/vbulletin/announcement.php?f=14
+=x11-drivers/nvidia-drivers-195.36.03
+=x11-drivers/nvidia-drivers-195.36.08
+
+# Jeroen Roovers <jer@gentoo.org> (10 Mar 2010)
+# Masked until the blockers of bug #305781 are fixed
+net-analyzer/iptraf-ng
+
+# Ulrich Mueller <ulm@gentoo.org> (10 Mar 2010)
+# Emacs live ebuilds. Use at your own risk.
+~app-editors/emacs-vcs-23.1.9999
+~app-editors/emacs-vcs-24.0.9999
+~virtual/emacs-24
+
+# Jim Ramsay <lack@gentoo.org> (10 Mar 2010)
+# x11-base/xorg-server-1.7.5.901 breaks various WMs, see Bug 296514
+# Masked until a new version or fix is available from Upstream.
+=x11-base/xorg-server-1.7.5.901
+
+# Mounir Lamouri <volkmar@gentoo.org> (09 Mar 2010)
+# net-voip/wengophone-bin has been superseeded by net-im/qutecom
+# and suffers of QA issues, see bug 251575
+# Masked for removal in 30 days
+net-voip/wengophone-bin
+
 # Justin Lecher <jlec@gentoo.org> (08 Mar 2010)
 # Is broken somehow
+=sci-libs/blas-atlas-3.9.23-r1
 =sci-libs/lapack-atlas-3.9.23-r1
 
 # Lance Albertson <ramereth@gentoo.org> (08 Mar 2010)
@@ -241,22 +286,6 @@ dev-tex/mplib
 # Jeroen Roovers <jer@gentoo.org> (28 Feb 2010)
 # Development release
 =app-admin/sysstat-9.1*
-
-# Samuli Suominen <ssuominen@gentoo.org> (27 Feb 2010)
-#
-# Temporary mask until it's all in Portage and tested.
-#
-~app-office/koffice-l10n-2.1.1
-~app-office/koffice-data-2.1.1
-~app-office/koffice-libs-2.1.1
-~app-office/karbon-2.1.1
-~app-office/kchart-2.1.1
-~app-office/kplato-2.1.1
-~app-office/kpresenter-2.1.1
-~app-office/krita-2.1.1
-~app-office/kspread-2.1.1
-~app-office/kword-2.1.1
-~app-office/koffice-meta-2.1.1
 
 # Nirbheek Chauhan <nirbheek@gentoo.org> (27 Feb 2010)
 # Introspection support is sketchy, and untested
@@ -484,6 +513,7 @@ media-tv/vdrplugin-rebuild
 # Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (11 Jan 2010)
 # libassuan 2 is incompatible with previous versions. Masked for testing.
 >=dev-libs/libassuan-2.0.0
+>=app-crypt/gnupg-2.0.15
 >=app-crypt/gpgme-1.3.0
 
 # Diego E. Pettenò <flameeyes@gentoo.org> (11 Jan 2010)
@@ -596,10 +626,6 @@ dev-ruby/test-unit
 # with xorg-server-1.5 and later which are the only
 # available versions in the tree
 <x11-drivers/nvidia-drivers-72.0.0
-
-# Ulrich Mueller <ulm@gentoo.org> (14 Dec 2009)
-# Emacs live ebuild. Use at your own risk.
-~app-editors/emacs-vcs-23.1.9999
 
 # Rémi Cardona <remi@gentoo.org> (13 Dec 2009)
 # ttmkfdir had multiple QA issues and bugs (bugs #209616, #235354 and #262945)
@@ -946,6 +972,7 @@ dev-util/w32api
 # Snapshot, labs and alpha releases but not betas and RCs of Opera
 =www-client/opera-10.20_pre4744
 =www-client/opera-10.50*
+=www-client/opera-10.51*
 
 # Peter Volkov <pva@gentoo.org> (16 Nov 2008)
 # The development branch, to be unmasked when out of beta by upstream.

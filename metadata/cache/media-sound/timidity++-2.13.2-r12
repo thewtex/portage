@@ -1,0 +1,22 @@
+ncurses? ( >=sys-libs/ncurses-5 ) emacs? ( virtual/emacs ) gtk? ( x11-libs/gtk+:2 ) tk? ( dev-lang/tk ) nas? ( >=media-libs/nas-1.4 ) alsa? ( media-libs/alsa-lib ) slang? ( sys-libs/slang ) jack? ( media-sound/jack-audio-connection-kit ) vorbis? ( media-libs/libvorbis ) flac? ( media-libs/flac ) speex? ( media-libs/speex ) ao? ( >=media-libs/libao-0.8.5 ) motif? ( x11-libs/openmotif ) X? ( x11-libs/libXaw x11-libs/libXext ) =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b
+ncurses? ( >=sys-libs/ncurses-5 ) emacs? ( virtual/emacs ) gtk? ( x11-libs/gtk+:2 ) tk? ( dev-lang/tk ) nas? ( >=media-libs/nas-1.4 ) alsa? ( media-libs/alsa-lib ) slang? ( sys-libs/slang ) jack? ( media-sound/jack-audio-connection-kit ) vorbis? ( media-libs/libvorbis ) flac? ( media-libs/flac ) speex? ( media-libs/speex ) ao? ( >=media-libs/libao-0.8.5 ) motif? ( x11-libs/openmotif ) X? ( x11-libs/libXaw x11-libs/libXext ) alsa? ( media-sound/alsa-utils ) app-admin/eselect-timidity
+0
+mirror://sourceforge/timidity/TiMidity++-2.13.2.tar.bz2 mirror://gentoo/timidity++-2.13.2-exiterror.patch
+
+http://timidity.sourceforge.net/
+GPL-2
+A handy MIDI to WAV converter with OSS and ALSA output support
+~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd
+autotools elisp-common eutils libtool multilib portability toolchain-funcs
+motif oss nas X gtk vorbis tk slang alsa jack emacs ao speex flac ncurses
+
+|| ( media-sound/timidity-eawpatches media-sound/timidity-shompatches media-sound/timidity-freepats )
+
+2
+
+configure install postinst postrm prepare setup
+
+
+
+
+
