@@ -1,0 +1,24 @@
+From eefcebd5c639ba7dac33940da4efa17c14add007 Mon Sep 17 00:00:00 2001
+From: Matt McCormick (thewtex) <matt@mmmccormick.com>
+Date: Sun, 14 Mar 2010 15:59:45 -0500
+Subject: [PATCH] include cstdio
+
+---
+ ConvertException.h |    1 +
+ 1 files changed, 1 insertions(+), 0 deletions(-)
+
+diff --git a/ConvertException.h b/ConvertException.h
+index 024e675..85b1d1e 100644
+--- a/ConvertException.h
++++ b/ConvertException.h
+@@ -4,6 +4,7 @@
+ #include <exception>
+ #include <string>
+ #include <cstdarg>
++#include <cstdio>
+ 
+ class ConvertException : public std::exception
+ {
+-- 
+1.7.0.2
+
