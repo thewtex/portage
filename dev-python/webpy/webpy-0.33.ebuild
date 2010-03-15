@@ -18,7 +18,7 @@ IUSE=""
 DEPEND=">=dev-lang/python-2.3"
 RDEPEND="${DEPEND}"
 
-S="${WORKDIR}/webpy"
+S="${WORKDIR}/web.py-${PV}"
 PYTHON_MODNAME="web"
 
 src_test() {
