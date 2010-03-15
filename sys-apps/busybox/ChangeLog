@@ -1,6 +1,28 @@
 # ChangeLog for sys-apps/busybox
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/busybox/ChangeLog,v 1.240 2010/03/02 14:57:37 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/busybox/ChangeLog,v 1.245 2010/03/15 00:21:50 solar Exp $
+
+  15 Mar 2010; <solar@gentoo.org> busybox-1.16.0.ebuild, +files/mdev/dvbdev,
+  +files/mdev/ide_links, +files/mdev/usbdev, +files/mdev/usbdisk_link,
+  metadata.xml:
+  import mdev.conf support scripts from Aline Linux 1.10.0
+
+  14 Mar 2010; Markus Meier <maekke@gentoo.org> busybox-1.15.3.ebuild:
+  amd64 stable, bug #305619
+
+  14 Mar 2010; <solar@gentoo.org> metadata.xml, busybox-1.16.0.ebuild:
+  - also install mdev.conf when USE=mdev is enabled (default)
+
+*busybox-1.16.0 (14 Mar 2010)
+
+  14 Mar 2010; <solar@gentoo.org> +files/busybox-1.16.0-bb.patch,
+  +busybox-1.16.0.ebuild:
+  - Version bump. Convert EAPI=2 and disable pam by default. Add ipv6 to IUSE
+  to disable v6 applets unless requested. 8 new applets otherwise.
+  lspci,lsusb,flashcp,mkfs.reiser,mkfs_ext2,ntpd,traceroute6,tune2fs,wall
+
+  14 Mar 2010; Raúl Porcel <armin76@gentoo.org> busybox-1.15.3.ebuild:
+  alpha/arm/ia64/m68k/s390/sh/sparc stable wrt #305619
 
   02 Mar 2010; Jeroen Roovers <jer@gentoo.org> busybox-1.15.3.ebuild:
   Stable for HPPA (bug #305619).

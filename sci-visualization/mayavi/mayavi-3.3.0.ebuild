@@ -1,6 +1,6 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-visualization/mayavi/mayavi-3.3.0.ebuild,v 1.3 2009/09/14 09:17:11 grozin Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-visualization/mayavi/mayavi-3.3.0.ebuild,v 1.5 2010/03/15 03:42:46 bicatali Exp $
 
 EAPI="2"
 inherit distutils eutils
@@ -23,7 +23,7 @@ RDEPEND=">=dev-python/apptools-3.3.0
 	>=dev-python/enthoughtbase-3.0.3
 	>=dev-python/envisagecore-3.1.1
 	>=dev-python/envisageplugins-3.1.1
-	>=dev-python/traitsgui-3.1.0
+	>=dev-python/traitsgui-3.1.0[qt4?,wxwidgets]
 	dev-python/configobj
 	dev-python/ipython
 	>=dev-python/numpy-1.1
@@ -44,6 +44,9 @@ PYTHON_MODNAME=enthought
 src_prepare() {
 	# documentation generation requires X
 	epatch "${FILESDIR}"/${P}-nodocs.patch
+	sed -i \
+		-e "s/setupdocs>=1.0//" \
+		setup.py || die
 }
 
 src_install() {
