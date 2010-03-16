@@ -1,8 +1,8 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/terminus-font/terminus-font-4.30.ebuild,v 1.2 2010/02/11 19:31:07 halcy0n Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/terminus-font/terminus-font-4.30.ebuild,v 1.4 2010/03/15 20:14:49 darkside Exp $
 
-EAPI="1"
+EAPI="3"
 
 inherit eutils font
 
@@ -23,7 +23,7 @@ SRC_URI="http://www.is-vn.bg/hamster/${P}.tar.gz
 			"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux"
 IUSE="a-like-o ru-dv +ru-g quote ru-i ru-k width bolddiag +psf raw-font-data +pcf"
 
 DEPEND="dev-lang/perl
@@ -46,10 +46,7 @@ pkg_setup() {
 	font_pkg_setup
 }
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-
+src_prepare() {
 	# Upstream patches. Some of them are suggested to be applied by default
 	# dv - de NOT like latin g, but like caps greek delta
 	#      ve NOT like greek beta, but like caps latin B
@@ -71,15 +68,17 @@ src_unpack() {
 	use width && epatch "${WORKDIR}"/${P}-cm2.diff
 }
 
-src_compile() {
+src_configure() {
 	# selfwritten configure script
 	./configure \
-		--prefix=/usr \
-		--psfdir=/usr/share/consolefonts \
-		--acmdir=/usr/share/consoletrans \
-		--unidir=/usr/share/consoletrans \
-		--x11dir=${FONTDIR} || die
+		--prefix="${EPREFIX}"/usr \
+		--psfdir="${EPREFIX}"/usr/share/consolefonts \
+		--acmdir="${EPREFIX}"/usr/share/consoletrans \
+		--unidir="${EPREFIX}"/usr/share/consoletrans \
+		--x11dir="${EPREFIX}"/${FONTDIR} || die
+}
 
+src_compile() {
 	if use psf; then emake psf txt || die; fi
 	if use raw-font-data; then emake raw || die; fi
 	if use pcf; then emake pcf || die; fi
