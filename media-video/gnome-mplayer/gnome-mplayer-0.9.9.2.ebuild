@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/gnome-mplayer/gnome-mplayer-0.9.9.ebuild,v 1.1 2010/02/10 16:10:03 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/gnome-mplayer/gnome-mplayer-0.9.9.2.ebuild,v 1.1 2010/03/18 12:28:12 ssuominen Exp $
 
 EAPI=2
 GCONF_DEBUG=no
@@ -52,5 +52,5 @@ pkg_setup() {
 src_install() {
 	gnome2_src_install
 	rm -rf "${D}"/usr/share/doc/${PN}
-	rmdir -p "${D}"/var/lib # rm empty dir from destdir
+	rmdir -p "${D}"/var/lib
 }
