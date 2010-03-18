@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5407 2010/03/16 21:47:43 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5414 2010/03/17 19:07:55 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -514,7 +514,7 @@ app-portage/eix:tools - Create separate binary for script helper tools (currentl
 app-portage/gatt:libpaludis - Do some dependency resolution by using a sys-apps/paludis interface
 app-portage/layman:bazaar - Support dev-vcs/bzr based overlays
 app-portage/layman:darcs - Support dev-vcs/darcs based overlays
-app-portage/layman:git - Support dev-util/git based overlays
+app-portage/layman:git - Support dev-vcs/git based overlays
 app-portage/layman:mercurial - Support dev-vcs/mercurial based overlays
 app-portage/pfl:network-cron - Adds a cron job which does a weekly submit of the package database
 app-portage/portato:userpriv - Allow emerge processes as normal user
@@ -1034,13 +1034,6 @@ dev-util/dialog:minimal - Disable library, install command-line program only
 dev-util/gambas:corba - Enable CORBA 2 ORB (net-misc/omniORB)
 dev-util/gambas:smtp - Enable smtp support.
 dev-util/geany:vte - Enable Terminal support (x11-libs/vte)
-dev-util/git:blksha1 - Use the new optimized SHA1 implementation.
-dev-util/git:cgi - Install gitweb too
-dev-util/git:gtk - Include the gitview contrib tool.
-dev-util/git:mozsha1 - Makes git use an optimized SHA1 routine from Mozilla that should be fast on non-x86 machines.
-dev-util/git:ppcsha1 - Make use of a bundled routine that is optimized for the PPC arch.
-dev-util/git:subversion - Include git-svn for dev-util/subversion support.
-dev-util/git:webdav - Adds support for push'ing to HTTP repositories via DAV.
 dev-util/global:vim - Integrate the GNU GLOBAL source code tag system with Vim
 dev-util/kdevelop:cmake - Enable support for CMAKE build system
 dev-util/kdevelop:qmake - Enable support for Qmake build system
@@ -1094,6 +1087,13 @@ dev-vcs/bzr-gtk:gconf - Enable GConf support
 dev-vcs/bzr-gtk:gpg - Support signing with GnuPG.
 dev-vcs/bzr-gtk:nautilus - Integrate with Nautilus file manager
 dev-vcs/bzr-gtk:sourceview - Enable GtkSourceView support
+dev-vcs/git:blksha1 - Use the new optimized SHA1 implementation.
+dev-vcs/git:cgi - Install gitweb too
+dev-vcs/git:gtk - Include the gitview contrib tool.
+dev-vcs/git:mozsha1 - Makes git use an optimized SHA1 routine from Mozilla that should be fast on non-x86 machines.
+dev-vcs/git:ppcsha1 - Make use of a bundled routine that is optimized for the PPC arch.
+dev-vcs/git:subversion - Include git-svn for dev-util/subversion support.
+dev-vcs/git:webdav - Adds support for push'ing to HTTP repositories via DAV.
 dev-vcs/mercurial:bugzilla - Support bugzilla integration.
 dev-vcs/mercurial:gpg - Support signing with GnuPG.
 dev-vcs/mercurial:tk - Install dev-lang/tk for hgk script.
@@ -1744,10 +1744,12 @@ media-sound/audacity:soundtouch - Enables soundtouch library support
 media-sound/audacity:twolame - Enables twolame support (MPEG Audio Layer 2 encoder)
 media-sound/audacity:vamp - Enables vamp plugins support (Audio analysing plugins)
 media-sound/banshee:boo - Use external Boo instead of the bundled one
+media-sound/banshee:cdda - Build with audio CD support
 media-sound/banshee:daap - Build with Daap support
 media-sound/banshee:karma - Build with karma support
 media-sound/banshee:podcast - Build with podcasting support
 media-sound/banshee:wikipedia - Enable the Wikipedia context pane (requires net-libs/webkit-gtk)
+media-sound/banshee:youtube - Enable the Youtube plugin
 media-sound/cmus:pidgin - install support script for net-im/pidgin
 media-sound/cmus:wma - add support for Windows Media Audio
 media-sound/cmus:zsh-completion - enable zsh completion support
@@ -1835,7 +1837,6 @@ media-sound/qtscrobbler:cli - Build commandline client
 media-sound/quodlibet:trayicon - Enable support for trayicon
 media-sound/quodlibet:tta - Enable TTA (True-Audio Loseless) support
 media-sound/quodlibet:wma - Enable support for Windows Media Audio
-media-sound/radiomixer:hwmixer - Use hardware mixer instead of internal mixer routines
 media-sound/rezound:16bittmp - Use 16bit temporary files (default 32bit float), useful for slower computers
 media-sound/rezound:soundtouch - compile with support for soundtouch
 media-sound/rhythmbox:brasero - Enable CD burning via app-cdr/brasero rather than gnome-extra/nautilus-cd-burner
@@ -3357,7 +3358,7 @@ www-apps/mediawiki:restrict - Initial setup will only allow sysop user to create
 www-apps/postfixadmin:extras - Install contributed scripts and plugins
 www-apps/postfixadmin:tests - Install model unit tests
 www-apps/redmine:darcs - Enable support for dev-vcs/darcs
-www-apps/redmine:git - Enable support for dev-util/git
+www-apps/redmine:git - Enable support for dev-vcs/git
 www-apps/redmine:mercurial - Enable support for dev-util/mercurial
 www-apps/redmine:openid - Enable support for OpenID
 www-apps/redmine:passenger - Enable support for www-apache/passenger
@@ -3597,7 +3598,7 @@ xfce-base/xfce4-settings:sound - Enable sound event support with media-libs/libc
 xfce-base/xfdesktop:menu-plugin - Build Menu plug-in for panel
 xfce-base/xfdesktop:thunar - Build support for application launchers using xfce-base/thunar
 xfce-extra/thunar-thumbnailers:grace - Enable support for sci-visualization/grace thumbnails
-xfce-extra/thunar-vcs-plugin:git - Enable dev-util/git support
+xfce-extra/thunar-vcs-plugin:git - Enable dev-vcs/git support
 xfce-extra/xfce4-mpc-plugin:libmpd - Build using media-libs/libmpd backend, instead of native fallback which is preferred
 xfce-extra/xfce4-playercontrol-plugin:audacious - Enable Audacious support
 xfce-extra/xfce4-playercontrol-plugin:mpd - Enable Music Player Daemon support
