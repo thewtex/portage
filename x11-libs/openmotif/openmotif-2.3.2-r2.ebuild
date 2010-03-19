@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/openmotif/openmotif-2.3.2-r2.ebuild,v 1.6 2010/03/14 15:25:48 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/openmotif/openmotif-2.3.2-r2.ebuild,v 1.7 2010/03/19 00:25:59 ulm Exp $
 
 EAPI=3
 
@@ -22,22 +22,20 @@ RESTRICT="!kernel_linux? (
 		fetch bindist
 	) ) ) )"
 
-# make people unmerge motif-config and all previous slots
-# since the slotting is finally gone now
-RDEPEND="!x11-libs/motif-config
-	!x11-libs/lesstif
-	!<=x11-libs/openmotif-2.3.0
-	x11-libs/libXmu
+RDEPEND="x11-libs/libXmu
 	x11-libs/libXp
-	doc? ( app-doc/openmotif-manual )
 	unicode? ( virtual/libiconv )
 	xft? ( x11-libs/libXft )
 	jpeg? ( media-libs/jpeg )
 	png? ( media-libs/libpng )"
-
 DEPEND="${RDEPEND}
 	sys-devel/flex
 	x11-misc/xbitmaps"
+RDEPEND="${RDEPEND}
+	!x11-libs/motif-config
+	!x11-libs/lesstif
+	!<=x11-libs/openmotif-2.3.0
+	doc? ( app-doc/openmotif-manual )"
 
 pkg_nofetch() {
 	local line
