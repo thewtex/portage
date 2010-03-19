@@ -15,6 +15,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~spar
 IUSE=""
 
 RDEPEND="!<dev-libs/libxml2-2.7.7" #309623
+PDEPEND=">=dev-libs/libxml2-2.7.7"
 
 src_unpack() {
 	unpack ${A}
