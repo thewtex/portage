@@ -17,7 +17,7 @@ DEPEND=""
 RDEPEND="dev-lang/python
 	threads? ( app-arch/pbzip2 )
 	ccache? ( dev-util/ccache )
-	git? ( dev-util/git )"
+	git? ( dev-vcs/git )"
 
 src_install() {
 	insinto /usr/lib/metro
