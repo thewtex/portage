@@ -1,0 +1,22 @@
+=sys-freebsd/freebsd-lib-8.0*[ipv6?,atm?,netware?] =sys-freebsd/freebsd-libexec-8.0* ssl? ( dev-libs/openssl ) dev-libs/libedit sys-libs/readline sys-process/vixie-cron atm? ( net-analyzer/bsnmp ) !build? ( =sys-freebsd/freebsd-sources-8.0* ) =sys-freebsd/freebsd-mk-defs-8.0* virtual/pmake virtual/pmake
+=sys-freebsd/freebsd-lib-8.0*[ipv6?,atm?,netware?] =sys-freebsd/freebsd-libexec-8.0* ssl? ( dev-libs/openssl ) dev-libs/libedit sys-libs/readline sys-process/vixie-cron atm? ( net-analyzer/bsnmp )
+0
+mirror://gentoo/freebsd-sbin-8.0.tar.bz2 mirror://gentoo/freebsd-contrib-8.0.tar.bz2 mirror://gentoo/freebsd-lib-8.0.tar.bz2 mirror://gentoo/freebsd-libexec-8.0.tar.bz2 mirror://gentoo/freebsd-usbin-8.0.tar.bz2 mirror://gentoo/freebsd-etc-8.0.tar.bz2 build? ( mirror://gentoo/freebsd-sys-8.0.tar.bz2 )
+
+http://www.freebsd.org/
+BSD
+FreeBSD sbin utils
+~sparc-fbsd ~x86-fbsd
+bsdmk eutils flag-o-matic freebsd multilib portability toolchain-funcs versionator
+atm ipfilter +pf ipv6 build ssl +cxx netware profile
+
+
+virtual/dev-manager
+2
+
+compile install prepare setup unpack
+
+
+
+
+

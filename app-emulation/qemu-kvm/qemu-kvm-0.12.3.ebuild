@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/qemu-kvm/qemu-kvm-0.12.3.ebuild,v 1.2 2010/03/10 18:17:27 tommy Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/qemu-kvm/qemu-kvm-0.12.3.ebuild,v 1.4 2010/03/19 17:23:17 tommy Exp $
 
 EAPI="2"
 
@@ -81,13 +81,11 @@ kvm_kern_warn() {
 pkg_setup() {
 
 	local counter="0" check
+	use qemu_softmmu_targets_x86_64 || ewarn "You disabled default target QEMU_SOFTMMU_TARGETS=x86_64"
 	for check in ${IUSE_SOFTMMU_TARGETS} ; do
 		use "qemu_softmmu_targets_${check}" && counter="1"
 	done
-	for check in ${IUSE_USER_TARGETS} ; do
-		use "qemu_user_targets_${check}" && counter="1"
-	done
-	[[ ${counter} == 0 ]] && eerror "You did not set any targets, this is NOT SUPPORTED"
+	[[ ${counter} == 0 ]] && die "You need to set at least 1 target in QEMU_SOFTMMU_TARGETS"
 
 	if kernel_is lt 2 6 25; then
 		eerror "This version of KVM requres a host kernel of 2.6.25 or higher."
@@ -206,8 +204,13 @@ src_install() {
 	newdoc pc-bios/README README.pc-bios || die
 	dohtml qemu-doc.html qemu-tech.html || die
 
-	dobin "${FILESDIR}"/qemu-kvm
-	dosym /usr/bin/qemu-kvm /usr/bin/kvm
+	if use qemu_softmmu_targets_x86_64 ; then
+		dobin "${FILESDIR}"/qemu-kvm
+		dosym /usr/bin/qemu-kvm /usr/bin/kvm
+	else
+		elog "You disabled QEMU_SOFTMMU_TARGETS=x86_64, this disables install"
+		elog "of /usr/bin/qemu-kvm and /usr/bin/kvm"
+	fi
 }
 
 pkg_postinst() {

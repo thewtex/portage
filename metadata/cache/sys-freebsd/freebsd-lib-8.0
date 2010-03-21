@@ -1,0 +1,22 @@
+ssl? ( dev-libs/openssl ) hesiod? ( net-dns/hesiod ) kerberos? ( virtual/krb5 ) usb? ( !dev-libs/libusb ) !sys-freebsd/freebsd-headers >=sys-devel/flex-2.5.31-r2 =sys-freebsd/freebsd-sources-8.0* !bootstrap? ( app-arch/bzip2 ) =sys-freebsd/freebsd-mk-defs-8.0* virtual/pmake virtual/pmake
+ssl? ( dev-libs/openssl ) hesiod? ( net-dns/hesiod ) kerberos? ( virtual/krb5 ) usb? ( !dev-libs/libusb ) !sys-freebsd/freebsd-headers
+0
+mirror://gentoo/freebsd-lib-8.0.tar.bz2 mirror://gentoo/freebsd-contrib-8.0.tar.bz2 mirror://gentoo/freebsd-crypto-8.0.tar.bz2 mirror://gentoo/freebsd-libexec-8.0.tar.bz2 mirror://gentoo/freebsd-etc-8.0.tar.bz2 mirror://gentoo/freebsd-include-8.0.tar.bz2 mirror://gentoo/freebsd-usbin-8.0.tar.bz2 mirror://gentoo/freebsd-gnu-8.0.tar.bz2 build? ( mirror://gentoo/freebsd-sys-8.0.tar.bz2 )
+
+http://www.freebsd.org/
+BSD
+FreeBSD's base system libraries
+~sparc-fbsd ~x86-fbsd
+bsdmk eutils flag-o-matic freebsd multilib portability toolchain-funcs versionator
+atm bluetooth ssl hesiod ipv6 kerberos usb netware build bootstrap crosscompile_opts_headers-only profile
+
+
+virtual/libc virtual/os-headers
+2
+
+compile install prepare setup unpack
+
+
+
+
+
