@@ -1,5 +1,5 @@
-virtual/blas virtual/lapack metis? ( || ( sci-libs/metis sci-libs/parmetis ) ) cilk? ( dev-lang/cilk ) dev-util/pkgconfig =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b
-virtual/blas virtual/lapack metis? ( || ( sci-libs/metis sci-libs/parmetis ) ) cilk? ( dev-lang/cilk )
+virtual/blas virtual/lapack || ( sci-libs/metis sci-libs/parmetis ) cilk? ( dev-lang/cilk ) dev-util/pkgconfig
+virtual/blas virtual/lapack || ( sci-libs/metis sci-libs/parmetis ) cilk? ( dev-lang/cilk )
 0
 http://www.tau.ac.il/~stoledo/taucs/2.2/taucs.tgz -> taucs-2.2.tgz
 
@@ -7,14 +7,14 @@ http://www.tau.ac.il/~stoledo/taucs/
 LGPL-2.1
 C library of sparse linear solvers
 ~amd64 ~x86
-autotools eutils flag-o-matic fortran libtool multilib portability toolchain-funcs
-cilk doc +metis debug
+eutils flag-o-matic multilib portability toolchain-funcs
+cilk doc static-libs
 
 
 
 2
 
-compile configure install setup test unpack
+compile configure install test
 
 
 

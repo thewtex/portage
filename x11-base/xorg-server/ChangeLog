@@ -1,6 +1,35 @@
 # ChangeLog for x11-base/xorg-server
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-base/xorg-server/ChangeLog,v 1.489 2010/03/07 19:07:16 chithanh Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-base/xorg-server/ChangeLog,v 1.494 2010/03/17 15:35:54 scarabeus Exp $
+
+*xorg-server-1.7.6 (17 Mar 2010)
+
+  17 Mar 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  -xorg-server-1.7.5.ebuild, -xorg-server-1.7.5.901.ebuild,
+  -xorg-server-1.7.5.902.ebuild, -xorg-server-1.7.5.902-r1.ebuild,
+  +xorg-server-1.7.6.ebuild:
+  Version bump to 1.7.6. Drop old 1.7 releases.
+
+*xorg-server-1.7.5.902-r1 (16 Mar 2010)
+
+  16 Mar 2010; Rémi Cardona <remi@gentoo.org>
+  +files/1.7.5.902-fix-tslib-1.0-check.patch, -files/tslib-1.0-check.patch,
+  +xorg-server-1.7.5.902-r1.ebuild:
+  really fix tslib support, fixes bug #304067
+
+  16 Mar 2010; <solar@gentoo.org> xorg-server-1.7.5.902.ebuild:
+  comment out tslib patch for a few hours. We ended up making it non
+  optional
+
+  16 Mar 2010; <solar@gentoo.org> +files/tslib-1.0-check.patch,
+  xorg-server-1.7.5.902.ebuild:
+  tslib changed the tslib-0.0.pc to tslib.pc; We check for both. Bug #304067
+
+*xorg-server-1.7.5.902 (15 Mar 2010)
+
+  15 Mar 2010; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +xorg-server-1.7.5.902.ebuild:
+  version bump
 
 *xorg-server-1.7.5.901 (07 Mar 2010)
 

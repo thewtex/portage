@@ -1,6 +1,6 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/blockcanvas/blockcanvas-3.1.0.ebuild,v 1.1 2009/09/07 06:12:11 arfrever Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/blockcanvas/blockcanvas-3.1.0.ebuild,v 1.3 2010/03/16 19:24:45 bicatali Exp $
 
 EAPI="2"
 SUPPORT_PYTHON_ABIS="1"

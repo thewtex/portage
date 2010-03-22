@@ -1,10 +1,9 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/postgresql-base/postgresql-base-9.0_alpha4.ebuild,v 1.1 2010/02/26 15:47:40 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/postgresql-base/postgresql-base-9.0_alpha4.ebuild,v 1.2 2010/03/16 22:49:44 patrick Exp $
 
 EAPI="2"
 
-WANT_AUTOCONF="latest"
 WANT_AUTOMAKE="none"
 
 inherit eutils multilib toolchain-funcs versionator autotools
@@ -50,7 +49,7 @@ DEPEND="${RDEPEND}
 	sys-devel/flex
 	>=sys-devel/bison-1.875
 	nls? ( sys-devel/gettext )"
-PDEPEND="doc? ( dev-db/postgresql-docs:${SLOT} )"
+PDEPEND="doc? ( ~dev-db/postgresql-docs-${PV} )"
 
 src_prepare() {
 	epatch "${FILESDIR}/postgresql-${SLOT}-common.patch" \

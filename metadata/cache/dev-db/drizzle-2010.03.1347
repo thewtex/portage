@@ -1,0 +1,22 @@
+tcmalloc? ( dev-util/google-perftools ) dev-db/libdrizzle sys-libs/readline sys-apps/util-linux dev-libs/libpcre dev-libs/libevent dev-libs/protobuf gearman? ( sys-cluster/gearmand ) pam? ( sys-libs/pam ) curl? ( net-misc/curl ) gnutls? ( net-libs/gnutls ) memcache? ( dev-libs/libmemcached ) dev-util/gperf doc? ( app-doc/doxygen ) =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b
+tcmalloc? ( dev-util/google-perftools ) dev-db/libdrizzle sys-libs/readline sys-apps/util-linux dev-libs/libpcre dev-libs/libevent dev-libs/protobuf gearman? ( sys-cluster/gearmand ) pam? ( sys-libs/pam ) curl? ( net-misc/curl ) gnutls? ( net-libs/gnutls ) memcache? ( dev-libs/libmemcached ) curl? ( gnutls? ( || ( net-misc/curl[-ssl] net-misc/curl[gnutls] ) ) openssl? ( net-misc/curl[-gnutls,-nss] ) )
+0
+http://launchpad.net/drizzle/cherry/2010-03-15/+download/drizzle-2010.03.1347.tar.gz
+memcache? ( test ) !curl? ( test )
+http://drizzle.org
+GPL-2
+Database optimized for Cloud and Net applications
+~amd64
+autotools eutils flag-o-matic libtool multilib portability toolchain-funcs
+debug tcmalloc doc memcache curl pam gearman gnutls openssl
+
+
+
+2
+
+compile configure install postinst prepare setup test
+
+
+
+
+

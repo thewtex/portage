@@ -1,10 +1,104 @@
 # ChangeLog for profile directory
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.4017 2010/03/12 02:27:19 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.4047 2010/03/20 19:40:26 jlec Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  20 Mar 2010; Justin Lecher (jlec) <jlec@gentoo.org> package.mask:
+  unmask >=sci-libs/clapack-3.2.1.-r1
+
+  20 Mar 2010; <vostorga@gentoo.org> package.mask:
+  Removing entries for app-misc/welcome2l net-misc/noarp
+  x11-wm/aewm++-goodies because they are no longer in portage
+
+  20 Mar 2010; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask >=xfce-extra/xfce4-power-manager-0.9.90 for testing.
+
+  19 Mar 2010; Alexis Ballier <aballier@gentoo.org> profiles.desc:
+  Add freebsd 8.0 profiles.desc entries
+
+  19 Mar 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> package.mask:
+  Remove p.mask entries for www-client/chromium versions no longer in the
+  tree.
+
+  19 Mar 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> package.mask:
+  Mask www-client/chromium dev channel release.
+
+  18 Mar 2010; Alex Alexander <wired@gentoo.org> package.mask:
+  unmasked >=app-misc/mc-4.7.1 now that 4.7.0.3 is stable on most archs
+
+  18 Mar 2010; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask dev-libs/libxml wrt #281444.
+
+  18 Mar 2010; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask ~dev-libs/boost-1.36.0 and ~dev-util/boost-build-1.36.0 wrt #287638.
+
+  18 Mar 2010; Torsten Veller <tove@gentoo.org> package.mask:
+  Mask dev-perl/Astro-SunTime for removal (#309381)
+
+  17 Mar 2010; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  package.mask:
+  x11-base/xorg-server-1.7.5.901 removed
+
+  17 Mar 2010; Sebastian Pipping <sping@gentoo.org> updates/1Q-2010:
+  Move dev-util/git to dev-vcs/git
+
+  17 Mar 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> package.mask:
+  Mask www-client/chromium dev channel release.
+
+  16 Mar 2010; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask mail-filter/MailScanner wrt security #253657.
+
+  16 Mar 2010; Patrick Lauer <patrick@gentoo.org> thirdpartymirrors:
+  Removing inactive pgsql mirror
+
+  16 Mar 2010; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask media-libs/jpgalleg for removal.
+
+  16 Mar 2010; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Removed dev-tex/mplib wrt #300595.
+
+  16 Mar 2010; Vlastimil Babka <caster@gentoo.org> updates/1Q-2010:
+  Package move x11-misc/googleearth sci-geosciences/googleearth.
+
+  16 Mar 2010; Jeroen Roovers <jer@gentoo.org> thirdpartymirrors:
+  Remove stray bracket from gnu mirrors.
+
+  15 Mar 2010; Jeroen Roovers <jer@gentoo.org> desc/linguas.desc:
+  Add Kyrgyz locale (bug #194567).
+
+  15 Mar 2010; Bernard Cafarelli <voyageur@gentoo.org> package.mask:
+  Mask faulty nx/nxnode versions, bug #304743
+
+  14 Mar 2010; Alistair Bush <ali_bush@gentoo.org> package.mask:
+  Package.mask dev-java/kaffe for removal.
+
+  15 Mar 2010; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask pysol and goosnes.
+
+  14 Mar 2010; Rémi Cardona <remi@gentoo.org> package.mask:
+  unmask xf86-video-intel
+
+  14 Mar 2010; Thilo Bangert <bangert@gentoo.org> package.mask:
+  lift mask for removed rzip-2.1
+
+  14 Mar 2010; Torsten Veller <tove@gentoo.org> package.mask:
+  Mask dev-perl/XML-GDOME for removal (#309281)
+
+  14 Mar 2010; Torsten Veller <tove@gentoo.org> package.mask:
+  Mask end-of-life versions of www-apps/bugzilla
+
+  13 Mar 2010; Joe Peterson <lavajoe@gentoo.org> package.mask:
+  Last rites for sys-fs/btrfs - masked for removal (see bug #285357)
+
+  12 Mar 2010; Alexis Ballier <aballier@gentoo.org> updates/1Q-2010:
+  move freebsd-lib to slot 0, they cant be slotted and we should rely on
+  preserve-libs or the old fashioned way
+
+  12 Mar 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> package.mask:
+  Mask www-client/chromium dev channel release.
 
   12 Mar 2010; Jeroen Roovers <jer@gentoo.org> package.mask:
   Mask opera 10.51.

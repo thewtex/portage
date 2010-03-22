@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11341 2010/03/12 02:27:18 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11376 2010/03/20 19:40:26 jlec Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,96 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Petteri Räty <betelgeuse@gentoo.org> (20 Mar 2010)
+# Use the from source dev-java/openjms instead
+dev-java/openjms-bin
+
+# Samuli Suominen <ssuominen@gentoo.org> (20 Mar 2010)
+# Not ready for primetime wrt bug 308559.
+# Use 0.8 series instead for now.
+>=xfce-extra/xfce4-power-manager-0.9.90
+
+# Samuli Suominen <ssuominen@gentoo.org> (18 Mar 2010)
+# Orphaned and vulnerable library.  Use libxml2 instead.
+#
+# Bugs 281446 and 281444
+#
+# Masked for removal in 30 days
+dev-libs/libxml
+games-util/loki_setupdb
+
+# Samuli Suominen <ssuominen@gentoo.org> (18 Mar 2010)
+# Doesn't compile with next stable toolchain.
+#
+# See bug 287638 for reference.
+#
+# Removal in 30 days.
+~dev-libs/boost-1.36.0
+~dev-util/boost-build-1.36.0
+
+# Tomáš Chvátal <scarabeus@gentoo.org> (17 Mar 2010)
+# Depends on removed xorg-server. See bug #309985.
+=net-misc/tigervnc-1.0.1_pre20100306
+
+# Samuli Suominen <ssuominen@gentoo.org> (16 Mar 2010)
+# Masked for QA and security.
+#
+# Several symlink vulnerabilities
+#
+# http://bugs.gentoo.org/show_bug.cgi?id=253657#c6
+#
+# Removal in 30 days
+mail-filter/MailScanner
+
+# Samuli Suominen <ssuominen@gentoo.org> (16 Mar 2010)
+# Replaced by USE jpeg in allegro >= 4.4.1.1
+# It was merged upstream
+# Masked for removal in 30 days
+media-libs/jpgalleg
+
+# Bernard Cafarelli <voyageur@gentoo.org> (15 Mar 2010)
+# Problematic behavior with special keys (french Alt Gr,
+# multimedia keys, ...), bug #304743
+=net-misc/nx-3.4.0-r1
+=net-misc/nxnode-3.4.0.11
+
+# Alistair Bush <ali_bush@gentoo.org> (15 Mar 2010)
+# Mask for removal (#309459).  Does not compile
+# and Dead upstream. Recommend icedtea jdk's for
+# a free alternative.
+dev-java/kaffe
+
+# Samuli Suominen <ssuominen@gentoo.org> (15 Mar 2010)
+# Replaced by games-board/pysolfc which is a fork
+# of original and now unmaintained pysol.
+#
+# Masked for removal in 30 days.
+games-board/pysol
+games-board/pysol-sound-server
+
+# Samuli Suominen <ssuominen@gentoo.org> (15 Mar 2010)
+# Replaced by USE=gtk in snes9x-1.52.
+#
+# Masked for removal in 30 days.
+games-emulation/goosnes
+
+# Torsten Veller <tove@gentoo.org> (14 Mar 2010)
+# Mask for removal (#309281)
+dev-perl/XML-GDOME
+# Mask for removal (#309381)
+dev-perl/Astro-SunTime
+
+# Torsten Veller <tove@gentoo.org> (14 Mar 2010)
+# Mask "End Of Life" versions
+<www-apps/bugzilla-3.0
+
+# Joe Peterson <lavajoe@gentoo.org> (13 Mar 2010)
+# Old, unmainted standalone kernel modules for older kernels.
+# Kernels 2.6.29-rc1 and newer include integrated btrfs.
+# Bug #285357 reports version 0.17 (newest standalone) does not build.
+# Last rited: to be removed in 30 days.
+sys-fs/btrfs
 
 # Doug Goldstein <cardoe@gentoo.org> (11 Mar 2010)
 # mask due to bug #309001
@@ -63,11 +153,6 @@ net-analyzer/iptraf-ng
 ~app-editors/emacs-vcs-23.1.9999
 ~app-editors/emacs-vcs-24.0.9999
 ~virtual/emacs-24
-
-# Jim Ramsay <lack@gentoo.org> (10 Mar 2010)
-# x11-base/xorg-server-1.7.5.901 breaks various WMs, see Bug 296514
-# Masked until a new version or fix is available from Upstream.
-=x11-base/xorg-server-1.7.5.901
 
 # Mounir Lamouri <volkmar@gentoo.org> (09 Mar 2010)
 # net-voip/wengophone-bin has been superseeded by net-im/qutecom
@@ -145,7 +230,7 @@ net-p2p/pysoulseek
 # Justin Lecher <jlec@gentoo.org> (03 Mar 2010)
 # package is royaly screwed
 # provides only static libs, linked against static f2c
-sci-libs/clapack
+<=sci-libs/clapack-3.2.1
 
 # Samuli Suominen <ssuominen@gentoo.org> (03 Mar 2010)
 # Masked for QA, security
@@ -218,7 +303,6 @@ dev-lang/squeak
 =x11-libs/qt-3*
 app-misc/chesstask
 app-office/indeview
-=app-office/scribus-1.3.3*
 =app-text/kchmviewer-3*
 dev-db/qt-unixODBC
 dev-embedded/yapide
@@ -237,7 +321,7 @@ games-util/aabrowse
 games-util/agistudio
 games-util/emilia-pinedit
 games-util/showeq
-media-gfx/engauge
+=media-gfx/engauge-4.1
 =media-tv/mythtv-0.21*
 net-dialup/umtsmon
 net-im/openc6
@@ -273,11 +357,6 @@ x11-themes/polymer
 =media-tv/nuvexport-0.5*
 =www-apps/mythweb-0.21*
 
-# Samuli Suominen <ssuominen@gentoo.org> (01 Mar 2010)
-# Orphaned library. Doesn't compile with recent toolchain.
-# Masked for removal in 30 days. Bug 300595.
-dev-tex/mplib
-
 # Hans de Graaff <graaff@gentoo.org> (01 Mar 2010)
 # Several people reported memory and timeout issues. Masked
 # pending investigation.
@@ -303,19 +382,15 @@ dev-libs/gir-repository
 # heavy development, and snapshot
 =kde-misc/knetworkmanager-4.4*
 
-# Alex Alexander <wired@gentoo.org> (26 Feb 2010)
-# masked to let 4.7.0.3 get some more testing
->=app-misc/mc-4.7.1
-
 # Torsten Veller <tove@gentoo.org> (25 Feb 2010)
 # Masked for removal as soon as possible
 # Merged in dev-perl/Email-MIME
 dev-perl/Email-MIME-Modifier
 dev-perl/Email-MIME-Creator
 # Merged in dev-perl/Email-Simple (#304683)
-#dev-perl/Email-Simple-Creator
+dev-perl/Email-Simple-Creator
 # Merged in dev-perl/XML-LibXML (#304685)
-#dev-perl/XML-LibXML-Common
+dev-perl/XML-LibXML-Common
 
 # Krzysiek Pawlik <nelchael@gentoo.org> (23 Feb 2010)
 # Masked for testing.
@@ -373,48 +448,8 @@ x11-libs/wxmozilla
 net-dialup/umtsmon
 
 # Samuli Suominen <ssuominen@gentoo.org> (16 Feb 2010)
-# These are abandoned by upstream
-#
-# cheesetracker, bug 302257, replaced by schismtracker or milkytracker
-# djplay, bug 302259, replaced by mixxx
-# kaconnect, bug 302260
-# kmp, bug 302261, replaced by qmpdclient
-# museseq, bug 302262, replaced by rosegarden
-# prokyon3, bug 302264
-# qjackconnect, bug 302265, replaced by qjackctl
-# qmbtagger, bug 302267
-# qmidiarp, bug 302269
-# radiomixer, bug 302272
-# squelch, bug 302275
-#
-# Masked for removal in 30 days
-media-sound/cheesetracker
-media-sound/djplay
-media-sound/kaconnect
-media-sound/kmp
-media-sound/museseq
-media-sound/prokyon3
-media-sound/qjackconnect
-media-sound/qmbtagger
-media-sound/qmidiarp
-media-sound/radiomixer
-media-sound/squelch
-
-# Samuli Suominen <ssuominen@gentoo.org> (16 Feb 2010)
-# Doesn't compile with latest taglib wrt #304395.
-# Abandoned by upstream wrt #302270.
-# Masked for removal in 30 days.
-media-sound/quasar
-
-# Samuli Suominen <ssuominen@gentoo.org> (16 Feb 2010)
 # API breakage.   Masked for testing.
 >=x11-libs/libxklavier-5
-
-# Samuli Suominen <ssuominen@gentoo.org> (15 Feb 2010)
-# Masked for removal. Unrequired as FaceBook has XMPP (Jabber)
-# support.
-# http://blog.facebook.com/blog.php?post=297991732130
-net-im/kopete-facebook
 
 # Sven Wegener <swegener@gentoo.org> (14 Feb 2010)
 # Masked for removal in 30 days. Discontinued by upstream.
@@ -505,14 +540,10 @@ media-tv/vdrplugin-rebuild
 =media-tv/ivtv-utils-1.3.0-r2
 =media-tv/ivtv-utils-1.4.0
 
-# Thilo Bangert <bangert@gentoo.org> (17 Jan 2010)
-# silently creates broken archives (bug #217552)
-# use app-arch/lrzip instead
-=app-arch/rzip-2.1
-
 # Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (11 Jan 2010)
 # libassuan 2 is incompatible with previous versions. Masked for testing.
 >=dev-libs/libassuan-2.0.0
+>=app-crypt/dirmngr-1.1.0_rc1
 >=app-crypt/gnupg-2.0.15
 >=app-crypt/gpgme-1.3.0
 
@@ -524,21 +555,6 @@ media-tv/vdrplugin-rebuild
 #
 # Removal on 2010-03-12
 net-misc/gfax
-
-# Jeremy Olexa <darkside@gentoo.org> (09 Jan 2009)
-# Builds against running kernel instead of /usr/src/linux. Removed in 60 days by
-# treecleaners. bug 239773
-net-misc/noarp
-
-# Jeremy Olexa <darkside@gentoo.org> (09 Jan 2009)
-# Not loved package, missing files and doesn't respect LDFLAGS. Remvoed in 60
-# days by treecleaners, bug 248678
-x11-wm/aewm++-goodies
-
-# Jeremy Olexa <darkside@gentoo.org> (09 Jan 2009)
-# Causes issues for users if in the wrong runlevel, (won't boot). No love,
-# rarely used package. Removed in 60 days by treecleaners. bug 227955
-app-misc/welcome2l
 
 # Patrick Lauer <patrick@gentoo.org> (09 Jan 2010)
 # Package has been unsplit, use net-analyzer/zabbix
@@ -571,9 +587,8 @@ net-libs/libjingle
 # Pawel Hajdan jr <phajdan.jr@gentoo.org> (07 Jan 2010)
 # Dev channel releases are only for people who are developers or want more
 # experimental features and accept a more unstable release.
-~www-client/chromium-5.0.322.2
-~www-client/chromium-5.0.335.0
-~www-client/chromium-5.0.342.1
+~www-client/chromium-5.0.342.5
+~www-client/chromium-5.0.356.0
 
 # Diego E. Pettenò <flameeyes@gentoo.org> (07 Jan 2010)
 #  on behalf of QA team
@@ -584,11 +599,6 @@ net-libs/libjingle
 # Removal on 2010-03-08
 # Masking breaks deps for ia64.  Address before re-masking (mr_bones_@gentoo.org)
 #dev-java/jrockit-jdk-bin
-
-# Rémi Cardona <remi@gentoo.org> (07 Jan 2010)
-# requires KMS and needs kernel patches before it can be unmasked
-# see bug #299907
-=x11-drivers/xf86-video-intel-2.10.0
 
 # Patrick Lauer <patrick@gentoo.org> (06 Jan 2010)
 # New xen kernel needs more testing.
@@ -634,10 +644,6 @@ dev-ruby/test-unit
 x11-apps/ttmkfdir
 x11-apps/xfs
 x11-apps/xfsinfo
-
-# Torsten Veller <tove@gentoo.org> (13 Dec 2009)
-# missing deps (#294330)
-=dev-perl/PDL-2.4.5
 
 # Diego E. Pettenò <flameeyes@gentoo.org> (08 Dec 2009)
 # Beta versions of sudo
@@ -1112,7 +1118,7 @@ net-misc/xsupplicant
 # that time, the upstream team has created their own overlay:
 #     emerge -a layman
 #     layman -ka armagetron
-games-action/armagetronad
+<games-action/armagetronad-0.2.8.3.1
 
 # Stefaan De Roeck <stefaan@gentoo.org> (09 Sep 2006)
 # 1.5.x is a development branch, people should test 1.4.x by default

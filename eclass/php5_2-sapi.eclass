@@ -1,6 +1,6 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/php5_2-sapi.eclass,v 1.31 2010/02/26 21:56:58 halcy0n Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/php5_2-sapi.eclass,v 1.33 2010/03/16 14:06:11 yngwin Exp $
 
 # ========================================================================
 # Based on robbat2's work on the php4 sapi eclass
@@ -398,7 +398,7 @@ php5_2-sapi_src_unpack() {
 	if has_version '>=sys-devel/autoconf-2.64' ; then
 		sed -i -r \
 			-e 's:^((m4_)?divert)[(]([0-9]*)[)]:\1(600\3):' \
-			$(grep -l divert $(find -name '*.m4') configure.in) || die
+			$(grep -l divert $(find . -name '*.m4') configure.in) || die
 	fi
 
 	# eaclocal doesn't accept --force, so we try to force re-generation

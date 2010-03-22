@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/wpa_supplicant/wpa_supplicant-0.7.1.ebuild,v 1.1 2010/01/25 00:08:42 gurligebis Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/wpa_supplicant/wpa_supplicant-0.7.1.ebuild,v 1.2 2010/03/12 23:13:21 gurligebis Exp $
 
 EAPI="2"
 
@@ -64,7 +64,7 @@ src_prepare() {
 		-e "s:/usr/lib/pkcs11:/usr/$(get_libdir):" \
 		wpa_supplicant.conf || die
 
-	epatch "${FILESDIR}/${P}-dbus_path_fix.patch"
+	epatch "${FILESDIR}"/${P}-dbus_path_fix.patch
 }
 
 src_configure() {
