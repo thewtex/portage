@@ -1,8 +1,8 @@
 start-close a netbeans session with a vim command
 
 diff --git a/runtime/doc/index.txt b/runtime/doc/index.txt
---- a/runtime/doc/index.txt
-+++ b/runtime/doc/index.txt
+--- runtime/doc/index.txt
++++ runtime/doc/index.txt
 @@ -1321,7 +1321,9 @@
  |:mode|		:mod[e]		show or change the screen mode
  |:mzscheme|	:mz[scheme]	execute MzScheme command
@@ -15,8 +15,8 @@ diff --git a/runtime/doc/index.txt b/runtime/doc/index.txt
  |:new|		:new		create a new empty window
  |:nmap|		:nm[ap]		like ":map" but for Normal mode
 diff --git a/runtime/doc/netbeans.txt b/runtime/doc/netbeans.txt
---- a/runtime/doc/netbeans.txt
-+++ b/runtime/doc/netbeans.txt
+--- runtime/doc/netbeans.txt
++++ runtime/doc/netbeans.txt
 @@ -1,4 +1,4 @@
 -*netbeans.txt*  For Vim version 7.2.  Last change: 2010 Januray 1st
 +*netbeans.txt*  For Vim version 7.2.  Last change: 2010 February 25
@@ -115,8 +115,8 @@ diff --git a/runtime/doc/netbeans.txt b/runtime/doc/netbeans.txt
  When a hot-key has been installed with the specialKeys command, this command
  can be used to generate a hotkey messages to the Vim Controller. The events
 diff --git a/src/buffer.c b/src/buffer.c
---- a/src/buffer.c
-+++ b/src/buffer.c
+--- src/buffer.c
++++ src/buffer.c
 @@ -636,8 +636,7 @@
      buf_delete_signs(buf);		/* delete any signs */
  #endif
@@ -138,8 +138,8 @@ diff --git a/src/buffer.c b/src/buffer.c
  
      /* Change directories when the 'acd' option is set. */
 diff --git a/src/edit.c b/src/edit.c
---- a/src/edit.c
-+++ b/src/edit.c
+--- src/edit.c
++++ src/edit.c
 @@ -6267,7 +6267,7 @@
  #ifdef FEAT_SIGNS
  	if (curwin->w_buffer->b_signlist != NULL
@@ -167,8 +167,8 @@ diff --git a/src/edit.c b/src/edit.c
  	    cursor->col -= i;
  
 diff --git a/src/eval.c b/src/eval.c
---- a/src/eval.c
-+++ b/src/eval.c
+--- src/eval.c
++++ src/eval.c
 @@ -11925,7 +11925,7 @@
  #endif
  #ifdef FEAT_NETBEANS_INTG
@@ -179,8 +179,8 @@ diff --git a/src/eval.c b/src/eval.c
      }
  
 diff --git a/src/ex_cmds.c b/src/ex_cmds.c
---- a/src/ex_cmds.c
-+++ b/src/ex_cmds.c
+--- src/ex_cmds.c
++++ src/ex_cmds.c
 @@ -3821,7 +3821,7 @@
  	    workshop_file_opened((char *)curbuf->b_ffname, curbuf->b_p_ro);
  # endif
@@ -191,8 +191,8 @@ diff --git a/src/ex_cmds.c b/src/ex_cmds.c
  # endif
      }
 diff --git a/src/ex_cmds.h b/src/ex_cmds.h
---- a/src/ex_cmds.h
-+++ b/src/ex_cmds.h
+--- src/ex_cmds.h
++++ src/ex_cmds.h
 @@ -619,8 +619,12 @@
  			RANGE|FILE1|NEEDARG|CMDWIN),
  EX(CMD_next,		"next",		ex_next,
@@ -207,8 +207,8 @@ diff --git a/src/ex_cmds.h b/src/ex_cmds.h
  			BANG|FILE1|RANGE|NOTADR|EDITCMD|ARGOPT|TRLBAR),
  EX(CMD_nmap,		"nmap",		ex_map,
 diff --git a/src/ex_docmd.c b/src/ex_docmd.c
---- a/src/ex_docmd.c
-+++ b/src/ex_docmd.c
+--- src/ex_docmd.c
++++ src/ex_docmd.c
 @@ -439,7 +439,9 @@
  # define ex_wsverb		ex_ni
  #endif
@@ -220,8 +220,8 @@ diff --git a/src/ex_docmd.c b/src/ex_docmd.c
  
  #ifndef FEAT_EVAL
 diff --git a/src/fileio.c b/src/fileio.c
---- a/src/fileio.c
-+++ b/src/fileio.c
+--- src/fileio.c
++++ src/fileio.c
 @@ -3249,7 +3249,7 @@
  #endif
  
@@ -232,8 +232,8 @@ diff --git a/src/fileio.c b/src/fileio.c
  	if (whole)
  	{
 diff --git a/src/getchar.c b/src/getchar.c
---- a/src/getchar.c
-+++ b/src/getchar.c
+--- src/getchar.c
++++ src/getchar.c
 @@ -2941,8 +2941,7 @@
  
  #if defined(FEAT_NETBEANS_INTG)
@@ -245,8 +245,8 @@ diff --git a/src/getchar.c b/src/getchar.c
  
  	if (got_int || (script_char = getc(scriptin[curscript])) < 0)
 diff --git a/src/globals.h b/src/globals.h
---- a/src/globals.h
-+++ b/src/globals.h
+--- src/globals.h
++++ src/globals.h
 @@ -1364,7 +1364,6 @@
  EXTERN int netbeansForcedQuit INIT(= 0);/* don't write modified files */
  EXTERN int netbeansReadFile INIT(= 1);	/* OK to read from disk if != 0 */
@@ -256,8 +256,8 @@ diff --git a/src/globals.h b/src/globals.h
  
  /*
 diff --git a/src/gui.c b/src/gui.c
---- a/src/gui.c
-+++ b/src/gui.c
+--- src/gui.c
++++ src/gui.c
 @@ -4782,8 +4782,7 @@
  	msg_clr_eos_force();
  	gui_start();
@@ -269,8 +269,8 @@ diff --git a/src/gui.c b/src/gui.c
      }
      if (!ends_excmd(*eap->arg))
 diff --git a/src/gui_gtk_x11.c b/src/gui_gtk_x11.c
---- a/src/gui_gtk_x11.c
-+++ b/src/gui_gtk_x11.c
+--- src/gui_gtk_x11.c
++++ src/gui_gtk_x11.c
 @@ -567,7 +567,6 @@
  #endif
  #ifdef FEAT_NETBEANS_INTG
@@ -289,70 +289,9 @@ diff --git a/src/gui_gtk_x11.c b/src/gui_gtk_x11.c
  #endif
  
  	/*
-diff --git a/src/gui_w32.c b/src/gui_w32.c
---- a/src/gui_w32.c
-+++ b/src/gui_w32.c
-@@ -1278,24 +1278,12 @@
- 	for (arg = 1; arg < *argc; arg++)
- 	    if (strncmp("-nb", argv[arg], 3) == 0)
- 	    {
--		usingNetbeans++;
- 		netbeansArg = argv[arg];
- 		mch_memmove(&argv[arg], &argv[arg + 1],
- 					    (--*argc - arg) * sizeof(char *));
- 		argv[*argc] = NULL;
- 		break;	/* enough? */
- 	    }
--
--	if (usingNetbeans)
--	{
--	    WSADATA wsaData;
--	    int wsaerr;
--
--	    /* Init WinSock */
--	    wsaerr = WSAStartup(MAKEWORD(2, 2), &wsaData);
--	    if (wsaerr == 0)
--		WSInitialized = TRUE;
--	}
-     }
- #endif
- 
-@@ -4840,6 +4828,9 @@
-     int y;
-     int x;
- 
-+    if (netbeans_closed())
-+        return;
-+
-     x = 0;
-     y = TEXT_Y(row);
- 
-@@ -4854,4 +4845,21 @@
-     SetPixel(s_hdc, x+3, y++, gui.currFgColor);
-     SetPixel(s_hdc, x+2, y, gui.currFgColor);
- }
--#endif
-+
-+/*
-+ * Initialize the Winsock dll.
-+ */
-+    void
-+netbeans_init_winsock()
-+{
-+    WSADATA wsaData;
-+    int wsaerr;
-+
-+    if (WSInitialized)
-+        return;
-+
-+    wsaerr = WSAStartup(MAKEWORD(2, 2), &wsaData);
-+    if (wsaerr == 0)
-+        WSInitialized = TRUE;
-+}
-+#endif
 diff --git a/src/gui_w48.c b/src/gui_w48.c
---- a/src/gui_w48.c
-+++ b/src/gui_w48.c
+--- src/gui_w48.c
++++ src/gui_w48.c
 @@ -1999,8 +1999,7 @@
  
  #ifdef FEAT_NETBEANS_INTG
@@ -364,8 +303,8 @@ diff --git a/src/gui_w48.c b/src/gui_w48.c
  
  	/*
 diff --git a/src/gui_x11.c b/src/gui_x11.c
---- a/src/gui_x11.c
-+++ b/src/gui_x11.c
+--- src/gui_x11.c
++++ src/gui_x11.c
 @@ -710,7 +710,7 @@
      }
  #endif
@@ -384,8 +323,8 @@ diff --git a/src/gui_x11.c b/src/gui_x11.c
  	    netbeansArg = argv[arg];
  	    mch_memmove(&argv[arg], &argv[arg + 1],
 diff --git a/src/main.c b/src/main.c
---- a/src/main.c
-+++ b/src/main.c
+--- src/main.c
++++ src/main.c
 @@ -935,7 +935,7 @@
  	stuffcharReadbuff(K_NOP);
  
@@ -422,8 +361,8 @@ diff --git a/src/main.c b/src/main.c
  	    mch_errmsg(_("Vim: Error: Failure to start gvim from NetBeans\n"));
  	    exit(1);
 diff --git a/src/memline.c b/src/memline.c
---- a/src/memline.c
-+++ b/src/memline.c
+--- src/memline.c
++++ src/memline.c
 @@ -2701,13 +2701,9 @@
      ml_updatechunk(buf, lnum + 1, (long)len, ML_CHNK_ADDLINE);
  #endif
@@ -466,8 +405,8 @@ diff --git a/src/memline.c b/src/memline.c
  
  /*
 diff --git a/src/misc1.c b/src/misc1.c
---- a/src/misc1.c
-+++ b/src/misc1.c
+--- src/misc1.c
++++ src/misc1.c
 @@ -2277,7 +2277,7 @@
       * care of notifiying Netbeans.
       */
@@ -478,8 +417,8 @@ diff --git a/src/misc1.c b/src/misc1.c
      else
  #endif
 diff --git a/src/move.c b/src/move.c
---- a/src/move.c
-+++ b/src/move.c
+--- src/move.c
++++ src/move.c
 @@ -933,8 +933,8 @@
  #ifdef FEAT_SIGNS
  	    + (
@@ -492,8 +431,8 @@ diff --git a/src/move.c b/src/move.c
  		wp->w_buffer->b_signlist != NULL ? 2 : 0)
  #endif
 diff --git a/src/netbeans.c b/src/netbeans.c
---- a/src/netbeans.c
-+++ b/src/netbeans.c
+--- src/netbeans.c
++++ src/netbeans.c
 @@ -24,6 +24,8 @@
  
  #if defined(FEAT_NETBEANS_INTG) || defined(PROTO)
@@ -1351,8 +1290,8 @@ diff --git a/src/netbeans.c b/src/netbeans.c
      {
  	if (p->lnum == lnum && p->next && p->next->lnum == lnum)
 diff --git a/src/normal.c b/src/normal.c
---- a/src/normal.c
-+++ b/src/normal.c
+--- src/normal.c
++++ src/normal.c
 @@ -2730,7 +2730,7 @@
  #endif
  
@@ -1411,8 +1350,8 @@ diff --git a/src/normal.c b/src/normal.c
  	ptr = ml_get(pos.lnum);
  	count = curwin->w_cursor.col - pos.col;
 diff --git a/src/ops.c b/src/ops.c
---- a/src/ops.c
-+++ b/src/ops.c
+--- src/ops.c
++++ src/ops.c
 @@ -2249,7 +2249,7 @@
  	    did_change |= one_change;
  
@@ -1432,8 +1371,8 @@ diff --git a/src/ops.c b/src/ops.c
  		char_u *ptr;
  		int count;
 diff --git a/src/os_unix.c b/src/os_unix.c
---- a/src/os_unix.c
-+++ b/src/os_unix.c
+--- src/os_unix.c
++++ src/os_unix.c
 @@ -368,8 +368,7 @@
  
  #ifdef FEAT_NETBEANS_INTG
@@ -1484,8 +1423,8 @@ diff --git a/src/os_unix.c b/src/os_unix.c
  #if defined(FEAT_XCLIPBOARD) || defined(USE_XSMP) || defined(FEAT_MZSCHEME)
      static int	busy = FALSE;
 diff --git a/src/proto/gui_w32.pro b/src/proto/gui_w32.pro
---- a/src/proto/gui_w32.pro
-+++ b/src/proto/gui_w32.pro
+--- src/proto/gui_w32.pro
++++ src/proto/gui_w32.pro
 @@ -93,4 +93,5 @@
  BalloonEval *gui_mch_create_beval_area __ARGS((void *target, char_u *mesg, void (*mesgCB)(BalloonEval *, int), void *clientData));
  void gui_mch_destroy_beval_area __ARGS((BalloonEval *beval));
@@ -1493,8 +1432,8 @@ diff --git a/src/proto/gui_w32.pro b/src/proto/gui_w32.pro
 +void netbeans_init_winsock __ARGS((void));
  /* vim: set ft=c : */
 diff --git a/src/proto/netbeans.pro b/src/proto/netbeans.pro
---- a/src/proto/netbeans.pro
-+++ b/src/proto/netbeans.pro
+--- src/proto/netbeans.pro
++++ src/proto/netbeans.pro
 @@ -4,11 +4,13 @@
  int isNetbeansBuffer __ARGS((buf_T *bufp));
  int isNetbeansModified __ARGS((buf_T *bufp));
@@ -1521,8 +1460,8 @@ diff --git a/src/proto/netbeans.pro b/src/proto/netbeans.pro
 +int netbeans_closed __ARGS((void));
  /* vim: set ft=c : */
 diff --git a/src/screen.c b/src/screen.c
---- a/src/screen.c
-+++ b/src/screen.c
+--- src/screen.c
++++ src/screen.c
 @@ -1977,7 +1977,7 @@
  {
      return (wp->w_buffer->b_signlist != NULL
@@ -1533,8 +1472,8 @@ diff --git a/src/screen.c b/src/screen.c
  		    );
  }
 diff --git a/src/ui.c b/src/ui.c
---- a/src/ui.c
-+++ b/src/ui.c
+--- src/ui.c
++++ src/ui.c
 @@ -2935,8 +2935,7 @@
      if (col < 0)
      {
@@ -1546,8 +1485,8 @@ diff --git a/src/ui.c b/src/ui.c
  	col = 0;
      }
 diff --git a/src/undo.c b/src/undo.c
---- a/src/undo.c
-+++ b/src/undo.c
+--- src/undo.c
++++ src/undo.c
 @@ -346,7 +346,7 @@
       * Netbeans defines areas that cannot be modified.  Bail out here when
       * trying to change text in a guarded area.

@@ -23,5 +23,6 @@ IUSE=""
 src_prepare() {
   vim_src_prepare
   epatch "${FILESDIR}/vim-${PV}-console-netbeans.patch" || die "console-netbeans patch failed."
-  epatch "${FILESDIR}/vim-${PV}-nbstart-command.patch" || die "console-netbeans patch failed."
+  echo $PWD
+  epatch "${FILESDIR}/vim-${PV}-nbstart-command.patch" || die "nbstart-command patch failed."
 }
