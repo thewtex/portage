@@ -21,6 +21,7 @@ RDEPEND="dev-python/PyQt4
   dev-python/numpy
   matplotlib? ( dev-python/matplotlib )
   imagemagick? ( media-gfx/imagemagick )
+  itk? ( sci-libs/wrapitk )
   scipy? ( sci-libs/scipy )
   vtk? ( sci-libs/vtk[python,qt4] )
   x11-libs/qt-gui:4"
