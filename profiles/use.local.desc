@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5425 2010/03/22 03:33:07 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5432 2010/03/23 23:27:45 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -322,6 +322,8 @@ app-emulation/qemu-softmmu:vde - Enable VDE-based networking
 app-emulation/uae:scsi - Enable the uaescsi.device
 app-emulation/uae:sdl-sound - Use media-sound/sdl-sound for audio output
 app-emulation/uae:ui - Build the user interface (could be gtk or ncurses based, depending on sdl, dga, svga and aalib USE flags)
+app-emulation/vice:ethernet - Enable ethernet emulation
+app-emulation/vice:memmap - Enable extra monitor features
 app-emulation/vice:resid - Enable support for ReSID media-libs/resid
 app-emulation/vice:xrandr - Enable support for the X xrandr extension
 app-emulation/virt-manager:policykit - Enables sys-auth/polkit authentication support, required when using app-emulation/libvirt with PolicyKit authentication
@@ -1336,7 +1338,6 @@ gnome-base/gdm:consolekit - Allow proper handling of removable media according t
 gnome-base/gdm:dmx - Enables Distributed Multihead X (DMX) support
 gnome-base/gdm:remote - Enables support for secure remote connections
 gnome-base/gdm:xklavier - Use x11-libs/libxklavier for keyboard management
-gnome-base/gnome-control-center:sound - Enable sound event support with media-libs/libcanberra
 gnome-base/gnome-light:automount - Use gnome-base/gvfs[gdu] for automounting of drives in nautilus
 gnome-base/gnome-mount:nautilus - Enables the Nautilus plugin
 gnome-base/gnome-session:policykit - Enable sys-auth/policykit authentication support
@@ -1571,10 +1572,8 @@ mail-filter/maildrop:authlib - Add courier-authlib support
 mail-filter/mimedefang:poll - Use poll instead of select
 mail-filter/opendkim:asyncdns - Use inbuilt asynchronous DNS library for queries
 mail-filter/opendkim:db - Include features like stats, querycache, popauth, report intervals and bodylengthdb that include berkdb
-mail-filter/opendkim:diffheaders - On verification failure, compare the original and the received headers to look for possible munging
 mail-filter/opendkim:ldap - Enable openldap as a dataset facilitator or keys, determining domains to sign for, and any other dataset that opendkim supports.
 mail-filter/opendkim:lua - Enables control over signature verification, filtering and policy to be controlled by user defined lua scripts.
-mail-filter/opendkim:multiplesigs - Allow addition of multiple signatures when key lists are in use.
 mail-filter/opendkim:opendbx - Use opendbx backend to facilitate dataset driven OpenDKIM configuration options like stats, bodylengthdb, etc. against a wide variety of database types
 mail-filter/opendkim:sasl - Used to authenticate to a LDAP server in various ways if required.
 mail-filter/opendkim:unbound - Use the unbound dnssec library to perform DKIM DNS queries.
@@ -1834,7 +1833,6 @@ media-plugins/gst-plugins-meta:mythtv - Support for retrieval from media-tv/myth
 media-plugins/kipi-plugins:mjpeg - Add mjpeg support
 media-plugins/kipi-plugins:redeyes - Add redeyes removal support
 media-plugins/mythmusic:libvisual - Enables media-libs/libvisual support for effects
-media-plugins/mythphone:festival - Enable app-accessibility/festival support
 media-plugins/mythvideo:jamu - Use and configure the Just Another Metadata Utility by default
 media-plugins/mythzoneminder:minimal - Don't build the mythtv side of this plugin, only the part that communicates with zoneminder. 
 media-plugins/vdr-burn:projectx - Enables support for media-video/projectx
@@ -2049,7 +2047,6 @@ media-tv/mythtv:jack - Allows MythTV to use JACK as your sound output device. Yo
 media-tv/mythtv:lcd - Tells MythTV that you have an instance of app-misc/lcdproc configured on your machine and it should output information such as current time, show name, episode name, etc to that LCD.
 media-tv/mythtv:lirc - Adds LIRC support directly to MythTV allowing for built in control via a LIRC device.
 media-tv/mythtv:mmx - Builds ffmpeg's codec libraries with mmx support.
-media-tv/mythtv:opengl - Builds MythTV with support for using OpenGL as the output painter rather then Qt3 built in painter.
 media-tv/mythtv:perl - Builds the perl bindings for MythTV. Allows you to write scripts in Perl to control your MythTV setup or communicate with it.
 media-tv/mythtv:tiff - Add support for tiff loading and rendering which is only used by media-plugins/mythgallery
 media-tv/mythtv:vdpau - enable support of NVIDIA's VDPAU for video playback
@@ -2191,11 +2188,8 @@ media-video/totem:galago - Enable the galago plugin
 media-video/totem:iplayer - Enable BBC player support
 media-video/totem:lirc - Enable support for controlling Totem with a remote control using app-misc/lirc
 media-video/totem:nautilus - Enable the nautilus extension
-media-video/totem:nvtv - Support for nvtv to use tv in on nvidia cards
 media-video/totem:python - Build support for dev-lang/python plugins
-media-video/totem:seamonkey - same as nsplugin description but build against www-client/seamonkey
 media-video/totem:tracker - Enable the search plugin using app-misc/tracker
-media-video/totem:xulrunner - same as nsplugin description but build against net-libs/xulrunner
 media-video/totem:youtube - Enable youtube plugin
 media-video/transcode:extrafilters - Install some filters only if we ask for them
 media-video/transcode:fame - Enables libfame support
@@ -3406,6 +3400,7 @@ sys-boot/lilo:device-mapper - Enable support for sys-fs/device-mapper
 sys-boot/lilo:pxeserial - Avoid character echo on PXE serial console
 sys-cluster/charm:cmkopt - Enable CMK optimisation
 sys-cluster/charm:tcp - Use TCP (instead of UPD) for socket communication
+sys-cluster/corosync:nss - Enable NSS support for cryptography
 sys-cluster/gearmand:drizzle -  Support dev-db/libdrizzle for the queue storage. This also adds support for MySQL storage. 
 sys-cluster/gearmand:memcache -  Support memcache daemon (via dev-libs/libmemcached) for the queue storage. 
 sys-cluster/gearmand:tcmalloc -  Use the dev-util/google-perftools libraries to replace the malloc() implementation with a possibly faster one. 
@@ -3701,6 +3696,7 @@ x11-base/xorg-server:kdrive - Build the kdrive X servers
 x11-base/xorg-server:tslib - Build with tslib support for touchscreen devices
 x11-base/xorg-server:xorg - Build the Xorg X server (HIGHLY RECOMMENDED)
 x11-drivers/ati-drivers:modules - Build the kernel modules
+x11-drivers/ati-drivers:qt4 -  Install qt4 dependent optional tools (e.g Catalyst Control Panel) 
 x11-drivers/linuxwacom:modules - Build kernel module
 x11-libs/agg:gpc - Enable gpc polygon clipper library
 x11-libs/cairo:cleartype - Add ClearType-style behavior for sub-pixel hinting. Patch taken from Arch Linux
