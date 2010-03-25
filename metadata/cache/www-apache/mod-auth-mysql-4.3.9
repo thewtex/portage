@@ -1,0 +1,22 @@
+virtual/mysql =www-servers/apache-2.2*
+virtual/mysql !www-apache/mod_auth_mysql =www-servers/apache-2.2*
+0
+mirror://debian/pool/main/m/mod-auth-mysql/mod-auth-mysql_4.3.9.orig.tar.gz mirror://debian/pool/main/m/mod-auth-mysql/mod-auth-mysql_4.3.9-13.diff.gz
+
+http://packages.debian.org/source/mod-auth-mysql
+Apache-1.1
+A module for the Apache 2 web server which enables HTTP authentication against information stored in a MySQL database.
+~amd64 ~ppc ~x86
+apache-module depend.apache eutils multilib portability toolchain-funcs
+
+
+
+
+3
+
+compile configure install postinst prepare setup unpack
+
+
+
+
+
