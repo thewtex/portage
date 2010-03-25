@@ -29,7 +29,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+blksha1 +curl cgi doc emacs gtk iconv +perl ppcsha1 tk +threads +webdav xinetd cvs subversion"
+IUSE="+blksha1 +curl cgi doc emacs gtk iconv instaweb +perl ppcsha1 quilt tk +threads +webdav xinetd cvs subversion"
 
 # Common to both DEPEND and RDEPEND
 CDEPEND="
@@ -44,6 +44,8 @@ CDEPEND="
 	emacs?  ( virtual/emacs )"
 
 RDEPEND="${CDEPEND}
+	quilt? ( dev-util/quilt )
+	instaweb? ( || ( www-servers/lighttpd www-servers/apache ) )
 	perl? ( dev-perl/Error
 			dev-perl/Net-SMTP-SSL
 			dev-perl/Authen-SASL
@@ -404,12 +406,14 @@ pkg_postinst() {
 		ewarn "You must build dev-util/subversion with USE=perl"
 		ewarn "to get the full functionality of git-svn!"
 	fi
-	elog "These additional scripts need some dependencies:"
-	echo
-	showpkgdeps git-quiltimport "dev-util/quilt"
-	showpkgdeps git-instaweb \
-		"|| ( www-servers/lighttpd www-servers/apache )"
-	echo
+	if ! ( use quilt && use instaweb ) ; then
+		elog "These additional scripts need some dependencies:"
+		echo
+		use quilt || showpkgdeps git-quiltimport "dev-util/quilt"
+		use instaweb || showpkgdeps git-instaweb \
+			"|| ( www-servers/lighttpd www-servers/apache )"
+		echo
+	fi
 }
 
 pkg_postrm() {
