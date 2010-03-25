@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-arch/dpkg/dpkg-1.15.6.ebuild,v 1.3 2010/03/24 05:24:57 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-arch/dpkg/dpkg-1.15.6.ebuild,v 1.5 2010/03/24 19:30:13 jer Exp $
 
 EAPI=3
 
@@ -13,7 +13,7 @@ SRC_URI="mirror://debian/pool/main/d/${PN}/${P/-/_}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~ia64-linux ~x86-linux ~ppc-macos ~x64-solaris ~x86-solaris"
-IUSE="bzip2 nls test unicode zlib"
+IUSE="bzip2 dselect nls test unicode zlib"
 
 LANGS="sv de es ja fr hu pl ru"
 
@@ -43,15 +43,25 @@ src_prepare() {
 	# bug 310847
 	if [[ "${PV}" = "1.15.6" ]]; then
 		sed -i lib/dpkg/test/Makefile.am -e '/t[_-]ar/d'
+		sed -i scripts/Makefile.am -e '/850_Dpkg_Compression.t/d'
 	fi
 
 	eautoreconf
 }
 
 src_configure() {
+	local myconf
+	if use nls; then
+		myconf="--enable-nls $(use_with dselect)"
+	else
+		if use dselect; then
+			elog "Building dselect requires USE=nls - disabling USE=dselect..."
+		fi
+		myconf="--disable-nls --without-dselect"
+	fi
 	econf \
+		${myconf} \
 		$(use_with bzip2 bz2) \
-		$(use_enable nls) \
 		$(use_enable unicode) \
 		$(use_with zlib) \
 		--without-selinux \
