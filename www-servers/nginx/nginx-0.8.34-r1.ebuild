@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-servers/nginx/nginx-0.8.34-r1.ebuild,v 1.2 2010/03/07 16:17:10 hollow Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-servers/nginx/nginx-0.8.34-r1.ebuild,v 1.4 2010/03/25 09:16:05 hollow Exp $
 
 EAPI="2"
 
@@ -45,14 +45,17 @@ for mod in $NGINX_MODULES_3RD; do
 	IUSE="${IUSE} nginx_modules_${mod}"
 done
 
-CDEPEND=">=dev-libs/libpcre-4.2
+CDEPEND="
 	arm? ( dev-libs/libatomic_ops )
+	pcre? ( >=dev-libs/libpcre-4.2 )
 	ssl? ( dev-libs/openssl )
 	http-cache? ( userland_GNU? ( dev-libs/openssl ) )
 	nginx_modules_http_geo? ( dev-libs/geoip )
 	nginx_modules_http_gzip? ( sys-libs/zlib )
 	nginx_modules_http_gzip_static? ( sys-libs/zlib )
+	nginx_modules_http_image_filter? ( media-libs/gd )
 	nginx_modules_http_perl? ( >=dev-lang/perl-5.8 )
+	nginx_modules_http_rewrite? ( >=dev-libs/libpcre-4.2 )
 	nginx_modules_http_secure_link? ( userland_GNU? ( dev-libs/openssl ) )
 	nginx_modules_http_xslt? ( dev-libs/libxml2 dev-libs/libxslt )
 	nginx_modules_http_passenger? (
@@ -118,6 +121,7 @@ src_configure() {
 	use debug && myconf="${myconf} --with-debug"
 	use ipv6 && myconf="${myconf} --with-ipv6"
 	use libatomic && myconf="${myconf} --with-libatomic"
+	use pcre && myconf="${myconf} --with-pcre"
 
 	# HTTP modules
 	for mod in $NGINX_MODULES_STD; do
@@ -192,7 +196,6 @@ src_configure() {
 		--http-client-body-temp-path=/var/tmp/${PN}/client \
 		--http-proxy-temp-path=/var/tmp/${PN}/proxy \
 		--http-fastcgi-temp-path=/var/tmp/${PN}/fastcgi \
-		--with-pcre \
 		${myconf} || die "configure failed"
 }
 
