@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5434 2010/03/24 21:27:44 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5437 2010/03/25 22:47:41 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -1164,6 +1164,8 @@ dev-vcs/git:cgi - Install gitweb too
 dev-vcs/git:gtk - Include the gitview contrib tool.
 dev-vcs/git:mozsha1 - Makes git use an optimized SHA1 routine from Mozilla that should be fast on non-x86 machines.
 dev-vcs/git:ppcsha1 - Make use of a bundled routine that is optimized for the PPC arch.
+dev-vcs/git:quilt - Pull in dev-util/quilt for git-quiltimport support
+dev-vcs/git:instaweb - Pull in apache or lighttpd for git-instaweb support
 dev-vcs/git:subversion - Include git-svn for dev-util/subversion support.
 dev-vcs/git:webdav - Adds support for push'ing to HTTP repositories via DAV.
 dev-vcs/mercurial:bugzilla - Support bugzilla integration.
@@ -1190,6 +1192,7 @@ games-arcade/lbreakout2:themes - Install additional themes
 games-arcade/moleinvasion:music - Download and install the music files
 games-arcade/smc:music - Download and install the music files
 games-arcade/stepmania:force-oss - force using OSS
+games-arcade/teeworlds:server - Enable compilation of server
 games-arcade/triplexinvaders:psyco - psyco python accelerator
 games-arcade/tuxanci:sound - Enable sound
 games-arcade/ultrastar-ng:songs - Install a few demo songs
@@ -1828,6 +1831,7 @@ media-plugins/audacious-plugins:sid - Build with SID (Commodore 64 Audio) suppor
 media-plugins/banshee-community-extensions:lirc - Enable the remote control plugin (uses app-misc/lirc)
 media-plugins/banshee-community-extensions:lyrics - Enable support for automatically fetching lyrics
 media-plugins/banshee-community-extensions:mirage - Enable the Mirage plugin which automatically, and intelligently generates playlists for you
+media-plugins/banshee-community-extensions:telepathy - Enables the Telepathy plugin which lets you to share and stream music with IM buddies
 media-plugins/frei0r-plugins:facedetect - Enables building of facedetect plugin, which depends on media-libs/opencv 
 media-plugins/frei0r-plugins:scale0tilt - Enables building of scale0tilt and vectorscope plugins, which depend on media-libs/gavl 
 media-plugins/gkrellmpc:threads - Use separate thread to init connection (unsafe)
@@ -3681,7 +3685,6 @@ www-servers/nginx:libatomic - Use libatomic instead of builtin atomic operations
 www-servers/nginx:pop - Enables POP3 proxy support
 www-servers/nginx:random-index - Enables HTTP random index module
 www-servers/nginx:realip - Enables realip module
-www-servers/nginx:securelink - Enable HTTP secure link module
 www-servers/nginx:smtp - Enables SMTP proxy support
 www-servers/nginx:static-gzip - Enables support for gzipping static content
 www-servers/nginx:status - Enables stub_status module
