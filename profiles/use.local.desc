@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5437 2010/03/25 22:47:41 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5443 2010/03/26 22:48:03 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -270,6 +270,7 @@ app-emulation/q4wine:development -  Enable developer related stuff
 app-emulation/q4wine:embedded-fuseiso -  Enable q4wine-mount tools 
 app-emulation/q4wine:icotools -  Enable icotools support
 app-emulation/q4wine:icoutils -  Enable icoutils support 
+app-emulation/q4wine:wineappdb -  Enable Win AppDB browser subsystem
 app-emulation/q4wine:winetools -  Enable winetools support
 app-emulation/q4wine:winetriks -  Enable winetricks support 
 app-emulation/qemu:alsa - Enable alsa output for sound emulation
@@ -1120,6 +1121,7 @@ games-action/d1x-rebirth:mpu401 - Enable MPU401 music support
 games-action/d2x-rebirth:awe32 - Enable AWE32 support
 games-action/d2x-rebirth:mpu401 - Enable MPU401 music support
 games-action/openlierox:breakpad -  Compile with support for breakpad crash reporting system 
+games-action/teeworlds:server - Enable compilation of server
 games-action/xshipwars:yiff - Add support for the YIFF sound server
 games-arcade/bomns:editor - enables building the level editor
 games-arcade/jumpnbump:music - Enable playing of background music
@@ -1127,7 +1129,6 @@ games-arcade/lbreakout2:themes - Install additional themes
 games-arcade/moleinvasion:music - Download and install the music files
 games-arcade/smc:music - Download and install the music files
 games-arcade/stepmania:force-oss - force using OSS
-games-arcade/teeworlds:server - Enable compilation of server
 games-arcade/triplexinvaders:psyco - psyco python accelerator
 games-arcade/tuxanci:sound - Enable sound
 games-arcade/ultrastar-ng:songs - Install a few demo songs
@@ -1294,6 +1295,7 @@ kde-base/kdebase-kioslaves:sftp - Enable SFTP protocol support using net-libs/li
 kde-base/kdebindings-csharp:akonadi - Compile bindings for kde-base/akonadi.
 kde-base/kdebindings-csharp:phonon - Compile bindings for media-sound/phonon.
 kde-base/kdebindings-csharp:plasma - Compile bindings for kde's plasma.
+kde-base/kdebindings-csharp:qimageblitz - Compile bindings for kde-base/qimageblitz.
 kde-base/kdebindings-csharp:qscintilla - Compile bindings for x11-libs/qscintilla.
 kde-base/kdebindings-csharp:webkit - Compile bindings for x11-libs/webkit.
 kde-base/kdebindings-ruby:akonadi - Compile bindings for kde-base/akonadi.
@@ -3460,6 +3462,7 @@ x11-drivers/linuxwacom:modules - Build kernel module
 x11-libs/agg:gpc - Enable gpc polygon clipper library
 x11-libs/cairo:cleartype - Add ClearType-style behavior for sub-pixel hinting. Patch taken from Arch Linux
 x11-libs/cairo:glitz - Build with glitz support, which replaces some software render operations with Mesa OpenGL operations
+x11-libs/cairo:lcdfilter - Add FreeType LCD filtering, ClearType-style behavior for sub-pixel-hinting. Overrides cleartype USE flag. Patch taken from Ubuntu
 x11-libs/cairo:opengl - When used along with USE=glitz, enables glitz-glx usage. Requires hardware OpenGL support
 x11-libs/fltk:games - Builds and installs some extra games
 x11-libs/fltk:noxft - Disables xft; use for non-english characters
@@ -3516,7 +3519,6 @@ x11-misc/tint2:battery - Enable battery status plugin
 x11-misc/tint2:examples - Install tint2rc examples
 x11-misc/vnc2swf:x11vnc - Install script that depends on x11vnc
 x11-misc/x11vnc:system-libvncserver - Build x11vnc against the system libvncserver (experimental)
-x11-misc/xfce4-notifyd:libsexy - Enable support for x11-libs/libsexy
 x11-misc/xlockmore:xlockrc - Enables xlockrc for people without PAM
 x11-misc/xmobar:mail - Support the mail plugin. Pulls dependency dev-haskell/hinotify.
 x11-misc/xscreensaver:new-login - Enables New Login button using gdmflexiserver (gnome-base/gdm)
@@ -3603,6 +3605,7 @@ xfce-base/xfdesktop:thunar - Build support for application launchers using xfce-
 xfce-extra/thunar-thumbnailers:grace - Enable support for sci-visualization/grace thumbnails
 xfce-extra/thunar-vcs-plugin:git - Enable dev-vcs/git support
 xfce-extra/xfce4-mpc-plugin:libmpd - Build using media-libs/libmpd backend, instead of native fallback which is preferred
+xfce-extra/xfce4-notifyd:libsexy - Enable support for x11-libs/libsexy
 xfce-extra/xfce4-playercontrol-plugin:audacious - Enable Audacious support
 xfce-extra/xfce4-playercontrol-plugin:mpd - Enable Music Player Daemon support
 xfce-extra/xfce4-power-manager:plugins - Build panel plugins
