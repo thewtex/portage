@@ -1,6 +1,29 @@
 # ChangeLog for x11-libs/gtk+extra
-# Copyright 2002-2008 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/gtk+extra/ChangeLog,v 1.21 2008/05/31 13:13:56 remi Exp $
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/gtk+extra/ChangeLog,v 1.24 2010/03/27 12:02:31 pacho Exp $
+
+  27 Mar 2010; Pacho Ramos <pacho@gentoo.org> gtk+extra-2.1.2.ebuild:
+  As Samuli noticed again in bug 311611, LICENSE should be FDL-1.1 also
+
+  27 Mar 2010; Pacho Ramos <pacho@gentoo.org>
+  -files/gtk+extra-2.1.1-fix-row-deletion-segfault.patch,
+  -files/gtk+extra-2.1.1-glib2.10-full-fix.patch,
+  -files/gtk+extra-2.1.1-glib2.10.patch, gtk+extra-2.1.2.ebuild:
+  Install documentation in proper place (bug 311599), don't install useless
+  INSTALL file (bug 311601), drop no longer used patches (bug 311605), use
+  SLOT deps for gtk+ and glib (bug 311607), stop inheritting no longer used
+  eutils.eclass (bug 311609), switch license from GPL-2 to LGPL-2. Thanks a
+  lot to Samuli Suominen for noticing all the problems.
+
+*gtk+extra-2.1.2 (27 Mar 2010)
+
+  27 Mar 2010; Pacho Ramos <pacho@gentoo.org> -gtk+extra-2.1.1.ebuild,
+  -gtk+extra-2.1.1-r1.ebuild, -gtk+extra-2.1.1-r2.ebuild,
+  +gtk+extra-2.1.2.ebuild:
+  Version bump including gtk+-2.18 and SIGSEGV fixes, documentation added.
+  Thanks to Robert Pearce and Joop Stakenborg in bug 292211 for their
+  investigation regarding upstream updates. This also sets GCONF_DEBUG=no
+  due to missing --enable-debug configure option. Cleaning old versions
 
 *gtk+extra-2.1.1-r2 (31 May 2008)
 
