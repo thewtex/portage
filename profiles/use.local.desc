@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5445 2010/03/29 04:28:05 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5449 2010/03/29 22:48:11 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -2740,11 +2740,7 @@ net-libs/ptlib:wav - Enable WAVFILE support
 net-libs/raknet:autopatcher - Enable RakNet autopatcher support
 net-libs/raknet:rakvoice - Enable RakNet RakVoice module
 net-libs/webkit-gtk:coverage - enable code coverage support
-net-libs/webkit-gtk:pango - Use pango as font backend instead of freetype
-net-libs/webkit-gtk:ruby - Enable HTML5 support for furigana/ruby annotation
-net-libs/webkit-gtk:soup - Use SOUP as backend instead of curl
 net-libs/webkit-gtk:websockets - enable full duplex single socket communication
-net-libs/webkit-gtk:xslt - enable support for XSLT
 net-libs/xulrunner:custom-optimization - Fine-tune custom compiler optimizations
 net-mail/checkgmail:clickurl - Add support to click urls in the popup notification
 net-mail/checkgmail:savepwd - Add support for saving and encrypting GMail password
@@ -2809,9 +2805,7 @@ net-misc/connman:dnsproxy - Enable dnsproxy support.
 net-misc/connman:ethernet - Enable ethernet support.
 net-misc/connman:google - Enable Google Public DNS support.
 net-misc/connman:moblin - enable Moblin features support.
-net-misc/connman:modemmanager - Use modemmanager support from net-misc/modemmanager package.
 net-misc/connman:ofono - Use net-misc/ofono for telephony support.
-net-misc/connman:ppp - Enable ppp support.
 net-misc/connman:resolvconf - Use net-dns/openresolv for managing DNS information
 net-misc/connman:tools - Enable testing tools.
 net-misc/connman:udev - Enable udev support.
@@ -2852,9 +2846,12 @@ net-misc/iaxmodem:logrotate -  Install support files for app-admin/logrotate
 net-misc/icecast:yp - Build support for yp public directory listings
 net-misc/iputils:SECURITY_HAZARD - Allow non-root users to flood (ping -f). This is generally a very bad idea.
 net-misc/italc:system-libvncserver - Build against the system libvncserver (experimental)
+net-misc/mediatomb:inotify - Enable inotify filesystem monitoring support
+net-misc/mediatomb:lastfm - Enable last.fm support
 net-misc/mediatomb:libextractor - Use libextractor to gather files' metadata.
-net-misc/mediatomb:mysql -  Use dev-db/mysql as backend rather than SQLite3. If this USE flag is disabled, dev-db/sqlite is used in its stead. 
-net-misc/mediatomb:taglib -  Use media-libs/taglib for reading files' metadata rather than id3lib. If this USE flag is disabled media-libs/id3lib is used in its stead. 
+net-misc/mediatomb:mysql - Use dev-db/mysql as backend rather than SQLite3. If this USE flag is disabled, dev-db/sqlite is used instead.
+net-misc/mediatomb:taglib - Use media-libs/taglib for reading files' metadata rather than id3lib. If this USE flag is disabled media-libs/id3lib is used instead.
+net-misc/mediatomb:thumbnail - Enables video thumbnails generation through media-video/ffmpegthumbnailer
 net-misc/memcached:slabs-reassign - Allow manual reassignment of memory slabs at the cost of slab optimizations.
 net-misc/neon:libproxy - Add support for net-libs/libproxy
 net-misc/neon:pkcs11 - Add support PKCS11 support
@@ -3126,10 +3123,12 @@ sci-biology/vienna-rna:no-readseq - Do not include the modified version of Don G
 sci-biology/vienna-rna:no-utils - Do not include sequence format conversion and representation utilities
 sci-biology/ucsc-genome-browser:server - Install genome browser Web application. If this flag is off, only libraries and utilities from the suite are installed.
 sci-chemistry/apbs:arpack - Include support for arpack libs
+sci-chemistry/apbs:tools - Install optional tools
 sci-chemistry/avogadro:glsl - Enable glsl features via GLEW.
 sci-chemistry/caver:pymol - Install the PyMol plugin (sci-chemistry/pymol) 
 sci-chemistry/ccp4:arpwarp - Add binary arp-warp for molecular replacement
 sci-chemistry/ccp4:balbes - Install sci-chemistry/balbes
+sci-chemistry/ccp4-apps:balbes - Install sci-chemistry/balbes
 sci-chemistry/cns:aria -  Support patch for sci-chemistry/aria
 sci-chemistry/eden:double-precision - More precise calculations at the expense of speed
 sci-chemistry/gamess:qmmm-tinker - Enable tinker qmmm code
