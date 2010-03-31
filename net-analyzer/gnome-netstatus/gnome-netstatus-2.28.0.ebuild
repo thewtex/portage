@@ -1,6 +1,6 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/gnome-netstatus/gnome-netstatus-2.28.0.ebuild,v 1.1 2009/10/29 22:30:25 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/gnome-netstatus/gnome-netstatus-2.28.0.ebuild,v 1.2 2010/03/30 12:35:32 pacho Exp $
 
 EAPI="2"
 
@@ -37,7 +37,7 @@ pkg_setup() {
 		--disable-scrollkeeper"
 }
 
-src_prepapre() {
+src_prepare() {
 	gnome2_src_prepare
 
 	# Fix interface listing on all (known) arches; bug #183969

@@ -1,10 +1,32 @@
 # ChangeLog for profile directory
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.4064 2010/03/30 00:32:11 tampakrap Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.4070 2010/03/30 22:14:36 spatz Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  30 Mar 2010; Dror Levin <spatz@gentoo.org> package.mask:
+  Unmask KDE 4.4.2.
+
+  30 Mar 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> package.mask:
+  Mask www-client/chromium dev channel release.
+
+  30 Mar 2010; Dror Levin <spatz@gentoo.org> package.mask:
+  Temporarily mask KDE 4.4.2 for addition to tree.
+
+  30 Mar 2010; Samuli Suominen <ssuominen@gentoo.org>
+  targets/desktop/make.defaults:
+  Enable exif, lcms, pango and xcb by default.
+
+  30 Mar 2010; Samuli Suominen <ssuominen@gentoo.org>
+  targets/desktop/make.defaults:
+  Restore freedesktop.org standard startup-notification to main desktop
+  profile.
+
+  30 Mar 2010; Jonathan Callen <abcd@gentoo.org>
+  default/linux/powerpc/ppc64/10.0/64bit-userland/desktop/kde/parent:
+  fix ppc64 desktop profile - was breaking repoman
 
   30 Mar 2010; Theo Chatzimichos <tampakrap@gentoo.org>
   +default/linux/alpha/10.0/desktop/gnome/eapi,
