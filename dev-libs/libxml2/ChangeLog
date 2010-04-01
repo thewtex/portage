@@ -2,6 +2,11 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: /var/cvsroot/gentoo-x86/dev-libs/libxml2/ChangeLog,v 1.281 2010/03/24 18:17:32 ranger Exp $
 
+  01 Apr 2010; Daniel Robbins <drobbins@funtoo.org>: Add USE dep on python with
+  XML bindings, to resolve a stage3 "emerge -e system" build issue where
+  libxml2 gets a minimal python and dies due to no SAX parsers found when
+  xml.sax.make_parser() is called.
+
   24 Mar 2010; Brent Baude <ranger@gentoo.org> libxml2-2.7.6.ebuild:
   stable ppc, bug 309949
 
@@ -22,7 +27,7 @@
 
 *libxml2-2.7.6 (23 Dec 2009)
 
-  23 Dec 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  23 Dec 2009; Diego E. PettenÃ² <flameeyes@gentoo.org>
   +libxml2-2.7.6.ebuild:
   Version bump, fixes Relax-NG validation problems.
 
@@ -53,7 +58,7 @@
   14 Aug 2009; Markus Meier <maekke@gentoo.org> libxml2-2.7.3-r2.ebuild:
   amd64 stable, bug #280617
 
-  14 Aug 2009; Raúl Porcel <armin76@gentoo.org> libxml2-2.7.3-r2.ebuild:
+  14 Aug 2009; RaÃºl Porcel <armin76@gentoo.org> libxml2-2.7.3-r2.ebuild:
   alpha/arm/ia64/m68k/s390/sh/sparc stable wrt #280617
 
   13 Aug 2009; Christian Faulhammer <fauli@gentoo.org>
@@ -91,10 +96,10 @@
   18 Mar 2009; Jeroen Roovers <jer@gentoo.org> libxml2-2.7.3.ebuild:
   Stable for HPPA (maybe bug #260063).
 
-  17 Mar 2009; Raúl Porcel <armin76@gentoo.org> libxml2-2.7.3.ebuild:
+  17 Mar 2009; RaÃºl Porcel <armin76@gentoo.org> libxml2-2.7.3.ebuild:
   alpha/sparc stable
 
-  17 Mar 2009; Raúl Porcel <armin76@gentoo.org> libxml2-2.7.2-r2.ebuild,
+  17 Mar 2009; RaÃºl Porcel <armin76@gentoo.org> libxml2-2.7.2-r2.ebuild,
   libxml2-2.7.3.ebuild:
   arm/ia64/m68k/s390/sh stable
 
@@ -175,7 +180,7 @@
   24 Nov 2008; Brent Baude <ranger@gentoo.org> libxml2-2.7.2-r1.ebuild:
   Marking libxml2-2.7.2-r1 ppc64 for bug 245960
 
-  20 Nov 2008; Raúl Porcel <armin76@gentoo.org> libxml2-2.7.2-r1.ebuild:
+  20 Nov 2008; RaÃºl Porcel <armin76@gentoo.org> libxml2-2.7.2-r1.ebuild:
   alpha/arm/ia64 stable wrt #245960
 
   19 Nov 2008; Markus Meier <maekke@gentoo.org> libxml2-2.7.2-r1.ebuild:
@@ -218,7 +223,7 @@
   libxml2-2.7.2.ebuild:
   ppc stable, bug #239346
 
-  04 Oct 2008; Raúl Porcel <armin76@gentoo.org> libxml2-2.7.2.ebuild:
+  04 Oct 2008; RaÃºl Porcel <armin76@gentoo.org> libxml2-2.7.2.ebuild:
   alpha/ia64 stable wrt #239346
 
   04 Oct 2008; Markus Meier <maekke@gentoo.org> libxml2-2.7.2.ebuild:
@@ -241,7 +246,7 @@
   28 Sep 2008; Markus Meier <maekke@gentoo.org> libxml2-2.7.1.ebuild:
   amd64 stable, bug #234099
 
-  27 Sep 2008; Raúl Porcel <armin76@gentoo.org> libxml2-2.7.1.ebuild:
+  27 Sep 2008; RaÃºl Porcel <armin76@gentoo.org> libxml2-2.7.1.ebuild:
   alpha/ia64/x86 stable wrt #234099
 
   27 Sep 2008; Markus Rothe <corsair@gentoo.org> libxml2-2.7.1.ebuild:
@@ -274,7 +279,7 @@
   entities in xmlStringLenDecodeEntities() allowing possible memory and CPU
   exhaustion (CVE-2008-3281)
 
-  12 Aug 2008; Raúl Porcel <armin76@gentoo.org> libxml2-2.6.32.ebuild:
+  12 Aug 2008; RaÃºl Porcel <armin76@gentoo.org> libxml2-2.6.32.ebuild:
   alpha/ia64/sparc stable wrt #229709
 
   10 Aug 2008; Markus Meier <maekke@gentoo.org> libxml2-2.6.32.ebuild:
@@ -283,15 +288,15 @@
   30 Jul 2008; Brent Baude <ranger@gentoo.org> libxml2-2.6.32.ebuild:
   Marking libxml2-2.6.32 ppc stable for bug 229709
 
-  26 Jul 2008; Olivier Crête <tester@gentoo.org> libxml2-2.6.32.ebuild:
+  26 Jul 2008; Olivier CrÃªte <tester@gentoo.org> libxml2-2.6.32.ebuild:
   Stable on amd64, bug #229709
 
-  26 Jun 2008; Rémi Cardona <remi@gentoo.org> libxml2-2.6.32.ebuild:
+  26 Jun 2008; RÃ©mi Cardona <remi@gentoo.org> libxml2-2.6.32.ebuild:
   download the correct testsuite tarball, see bug #229421
 
 *libxml2-2.6.32 (27 May 2008)
 
-  27 May 2008; Rémi Cardona <remi@gentoo.org> +libxml2-2.6.32.ebuild:
+  27 May 2008; RÃ©mi Cardona <remi@gentoo.org> +libxml2-2.6.32.ebuild:
   bump to 2.6.32, mostly bugfixes, no major new features
 
   13 Apr 2008; Kenneth Prugh <ken69267@gentoo.org> libxml2-2.6.31.ebuild:
@@ -300,7 +305,7 @@
   13 Apr 2008; Markus Rothe <corsair@gentoo.org> libxml2-2.6.31.ebuild:
   Stable on ppc64; bug #217398
 
-  12 Apr 2008; Raúl Porcel <armin76@gentoo.org> libxml2-2.6.31.ebuild:
+  12 Apr 2008; RaÃºl Porcel <armin76@gentoo.org> libxml2-2.6.31.ebuild:
   alpha/ia64/sparc/x86 stable wrt #217398
 
   12 Apr 2008; Jeroen Roovers <jer@gentoo.org> libxml2-2.6.31.ebuild:
@@ -355,13 +360,13 @@
   19 Nov 2007; Joshua Kinard <kumba@gentoo.org> libxml2-2.6.30.ebuild:
   Stable on mips, per #199322.
 
-  17 Nov 2007; Raúl Porcel <armin76@gentoo.org> libxml2-2.6.30.ebuild:
+  17 Nov 2007; RaÃºl Porcel <armin76@gentoo.org> libxml2-2.6.30.ebuild:
   alpha/ia64/sparc stable wrt #199322
 
   17 Nov 2007; nixnut <nixnut@gentoo.org> libxml2-2.6.30.ebuild:
   Stable on ppc wrt bug 199322
 
-  17 Nov 2007; Dawid Węgliński <cla@gentoo.org> libxml2-2.6.30.ebuild:
+  17 Nov 2007; Dawid WÄgliÅski <cla@gentoo.org> libxml2-2.6.30.ebuild:
   Stable on x86 (bug #199322)
 
   16 Nov 2007; Samuli Suominen <drac@gentoo.org> libxml2-2.6.30.ebuild:
@@ -387,9 +392,9 @@
         flag fix (Richard Jones), regexp interpretation of \,
         htmlCreateDocParserCtxt (Jean-Daniel Dupas), configure.in
         typo (Bjorn Reese), entity content failure, xmlListAppend() fix
-        (Georges-André Silber), XPath number serialization (William Brack),
+        (Georges-AndrÃ© Silber), XPath number serialization (William Brack),
         nanohttp gzipped stream fix (William Brack and Alex Cornejo),
-        xmlCharEncFirstLine typo (Mark Rowe), uri bug (François Delyon),
+        xmlCharEncFirstLine typo (Mark Rowe), uri bug (FranÃ§ois Delyon),
         XPath string value of PI nodes (William Brack), XPath node set
         sorting bugs (William Brack), avoid outputting namespace decl
         dups in the writer (Rob Richards), xmlCtxtReset bug, UTF-8 encoding
@@ -413,7 +418,7 @@
   31 May 2007; Brent Baude <ranger@gentoo.org> libxml2-2.6.28.ebuild:
   Marking libxml2-2.6.28 ppc64 stable for bug #171107
 
-  30 May 2007; Raúl Porcel <armin76@gentoo.org> libxml2-2.6.28.ebuild:
+  30 May 2007; RaÃºl Porcel <armin76@gentoo.org> libxml2-2.6.28.ebuild:
   alpha/ia64 stable wrt #171107
 
   29 May 2007; Andrej Kacian <ticho@gentoo.org> libxml2-2.6.28.ebuild:
@@ -428,7 +433,7 @@
   21 May 2007; <leio@gentoo.org> -libxml2-2.6.26.ebuild:
   Remove old
 
-  21 May 2007; Raúl Porcel <armin76@gentoo.org> libxml2-2.6.27.ebuild:
+  21 May 2007; RaÃºl Porcel <armin76@gentoo.org> libxml2-2.6.27.ebuild:
   alpha stable wrt #164978
 
   12 May 2007; Joshua Kinard <kumba@gentoo.org> libxml2-2.6.27.ebuild:
@@ -452,7 +457,7 @@
   libxml2-2.6.27.ebuild:
   Stable on ppc wrt bug #164978.
 
-  03 Feb 2007; Olivier Crête <tester@gentoo.org> libxml2-2.6.27.ebuild:
+  03 Feb 2007; Olivier CrÃªte <tester@gentoo.org> libxml2-2.6.27.ebuild:
   Stable on amd64 per bug #164978
 
   02 Feb 2007; Gustavo Zacarias <gustavoz@gentoo.org> libxml2-2.6.27.ebuild:
@@ -517,7 +522,7 @@
   +files/libxml2-2.6.24-pythondir_fix.patch, +libxml2-2.6.24.ebuild:
   New release.
 
-  30 Mar 2006; Diego Pettenò <flameeyes@gentoo.org>
+  30 Mar 2006; Diego PettenÃ² <flameeyes@gentoo.org>
   libxml2-2.6.23-r1.ebuild:
   Add ~x86-fbsd keyword.
 
@@ -704,7 +709,7 @@
   09 Mar 2005; Mike Gardiner <obz@gentoo.org> libxml2-2.6.16.ebuild:
   Keyworded ppc
 
-  07 Feb 2005; Bryan Østergaard <kloeri@gentoo.org> libxml2-2.6.16.ebuild:
+  07 Feb 2005; Bryan Ãstergaard <kloeri@gentoo.org> libxml2-2.6.16.ebuild:
   Stable on alpha.
 
   06 Feb 2005; Joshua Kinard <kumba@gentoo.org> libxml2-2.6.16.ebuild:
@@ -739,7 +744,7 @@
   01 Nov 2004; Joshua Kinard <kumba@gentoo.org> libxml2-2.6.15-r1.ebuild:
   Marked stable on mips.
 
-  31 Oct 2004; Bryan Østergaard <kloeri@gentoo.org>
+  31 Oct 2004; Bryan Ãstergaard <kloeri@gentoo.org>
   libxml2-2.6.15-r1.ebuild:
   Stable on alpha, bug 69154.
 
