@@ -38,7 +38,7 @@ _autoconf_atom="sys-devel/autoconf"
 if [[ -n ${WANT_AUTOMAKE} ]]; then
 	case ${WANT_AUTOMAKE} in
 		none)   _automake_atom="" ;; # some packages don't require automake at all
-		# if you change the “latest” version here, change also autotools_run_tool
+		# if you change the âlatestâ version here, change also autotools_run_tool
 		# this MUST reflect the latest stable major version for each arch!
 		latest) 
 			t="" ; for v in ${_LATEST_AUTOMAKE} ; do
@@ -56,7 +56,7 @@ if [[ -n ${WANT_AUTOCONF} ]] ; then
 	case ${WANT_AUTOCONF} in
 		none)       _autoconf_atom="" ;; # some packages don't require autoconf at all
 		2.1)        _autoconf_atom="=sys-devel/autoconf-${WANT_AUTOCONF}*" ;;
-		# if you change the “latest” version here, change also autotools_run_tool
+		# if you change the âlatestâ version here, change also autotools_run_tool
 		latest|2.5) _autoconf_atom=">=sys-devel/autoconf-2.61" ;;
 		*)          _autoconf_atom="INCORRECT-WANT_AUTOCONF-SETTING-IN-EBUILD" ;;
 	esac
@@ -275,10 +275,12 @@ autotools_run_tool() {
 		ewarn "QA Warning: running $1 in ${EBUILD_PHASE} phase"
 	fi
 
-	# We do the “latest” → version switch here because it solves
+	# We do the âlatestâ â version switch here because it solves
 	# possible order problems, see bug #270010 as an example.
 	for pv in ${_LATEST_AUTOMAKE} ; do
-		has_version "=sys-devel/automake-${pv}*" && export WANT_AUTOMAKE="$pv"
+		# has_version respects ROOT, but in this case, we don't want it to, thus
+		# "ROOT=/" prefix:
+		ROOT=/ has_version "=sys-devel/automake-${pv}*" && export WANT_AUTOMAKE="$pv"
 	done
 	unset pv
 	[[ ${WANT_AUTOMAKE} == "latest" ]] && \
