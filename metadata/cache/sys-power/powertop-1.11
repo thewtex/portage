@@ -1,20 +1,20 @@
-sys-libs/ncurses sys-devel/gettext
-sys-libs/ncurses sys-devel/gettext
+sys-libs/ncurses[unicode?] sys-devel/gettext
+sys-libs/ncurses[unicode?] sys-devel/gettext
 0
 http://www.lesswatts.org/projects/powertop/download/powertop-1.11.tar.gz
 
 http://www.lesswatts.org/projects/powertop/
 GPL-2
 tool that helps you find what software is using the most power
-amd64 arm ppc ~sparc x86
+amd64 arm ppc ~sparc x86 ~amd64-linux ~x86-linux
 eutils multilib portability toolchain-funcs
 unicode
 
 
 
+3
 
-
-compile install postinst unpack
+configure install postinst prepare
 
 
 

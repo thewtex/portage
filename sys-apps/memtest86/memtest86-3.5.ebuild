@@ -1,6 +1,6 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/memtest86/memtest86-3.5.ebuild,v 1.1 2009/10/09 08:21:12 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/memtest86/memtest86-3.5.ebuild,v 1.3 2010/03/31 19:52:09 robbat2 Exp $
 
 inherit mount-boot eutils toolchain-funcs
 
