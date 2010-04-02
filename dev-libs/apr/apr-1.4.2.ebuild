@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/apr/apr-1.3.8.ebuild,v 1.14 2010/03/07 11:56:25 hollow Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/apr/apr-1.4.2.ebuild,v 1.1 2010/04/01 15:05:44 arfrever Exp $
 
 EAPI="2"
 
@@ -8,11 +8,11 @@ inherit autotools eutils libtool multilib
 
 DESCRIPTION="Apache Portable Runtime Library"
 HOMEPAGE="http://apr.apache.org/"
-SRC_URI="mirror://apache/apr/${P}.tar.gz"
+SRC_URI="mirror://apache/apr/${P}.tar.bz2"
 
 LICENSE="Apache-2.0"
 SLOT="1"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc ~sparc-fbsd x86 ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd"
 IUSE="doc older-kernels-compatibility +urandom"
 RESTRICT="test"
 
@@ -58,17 +58,17 @@ src_compile() {
 	emake -j1 || die "emake failed"
 
 	if use doc; then
-		emake -j1 dox || die "emake dox failed"
+		emake dox || die "emake dox failed"
 	fi
 }
 
 src_install() {
 	emake DESTDIR="${D}" install || die "emake install failed"
 
-	dodoc CHANGES NOTICE
+	dodoc CHANGES NOTICE README
 
 	if use doc; then
-		dohtml docs/dox/html/* || die "dohtml failed"
+		dohtml -r docs/dox/html/* || die "dohtml failed"
 	fi
 
 	# This file is only used on AIX systems, which Gentoo is not,

@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/banshee-community-extensions/banshee-community-extensions-1.5.4.ebuild,v 1.1 2010/02/26 06:29:52 ford_prefect Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/banshee-community-extensions/banshee-community-extensions-1.6.0.ebuild,v 1.1 2010/04/01 07:58:08 ford_prefect Exp $
 
 EAPI=3
 
@@ -13,13 +13,13 @@ SRC_URI="http://download.banshee-project.org/${PN}/${PV}/${P}.tar.bz2"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="lirc lyrics mirage"
+IUSE="lirc lyrics mirage telepathy"
 
 DEPEND=">=dev-lang/mono-2.0
-	>=media-sound/banshee-1.5.3
+	>=media-sound/banshee-1.5.4
 	>=gnome-base/gconf-2.0
+	dev-dotnet/gconf-sharp:2
 	lyrics? (
-		dev-dotnet/gconf-sharp:2
 		>=dev-dotnet/webkit-sharp-0.2
 	)
 	mirage? (
@@ -29,6 +29,10 @@ DEPEND=">=dev-lang/mono-2.0
 		media-libs/libsamplerate
 		>=media-libs/gstreamer-0.10.15
 		>=media-libs/gst-plugins-base-0.10.15
+	)
+	telepathy? (
+		dev-dotnet/notify-sharp
+		>=dev-lang/mono-2.4.2
 	)"
 RDEPEND="${DEPEND}
 	!media-plugins/banshee-lyrics
@@ -36,15 +40,21 @@ RDEPEND="${DEPEND}
 
 src_configure() {
 	# Disable ClutterFlow as we don't have clutter in tree yet
+	# Disable UbuntuOneMusicStore as we don't have ubuntuone-sharp
+	# Disable AppIndicator as it's not in tree
 	local myconf="--enable-gnome --disable-static --enable-release
 		--with-gconf-schema-file-dir=/etc/gconf/schemas
 		--with-vendor-build-id=Gentoo/${PN}/${PVR}
-		--disable-clutterflow --enable-liveradio"
+		--disable-clutterflow --enable-liveradio
+		--enable-coverwallpaper --enable-magnatune
+		--disable-ubuntuonemusicstore --disable-appindicator"
 
 	econf \
 		$(use_enable lirc) \
 		$(use_enable lyrics) \
 		$(use_enable mirage) \
+		$(use_enable telepathy) \
+		$(use_enable test tests) \
 		${myconf}
 }
 
