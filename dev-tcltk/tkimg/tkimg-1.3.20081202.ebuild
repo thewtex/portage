@@ -1,6 +1,6 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tcltk/tkimg/tkimg-1.3.20081202.ebuild,v 1.7 2009/12/07 19:51:39 bicatali Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-tcltk/tkimg/tkimg-1.3.20081202.ebuild,v 1.8 2010/04/01 19:58:54 jlec Exp $
 
 EAPI=2
 inherit eutils
@@ -40,7 +40,7 @@ src_install() {
 	# Make library links
 	for l in "${D}"/usr/lib*/Img*/*tcl*.so; do
 		bl=$(basename $l)
-		dosym Img1.3/${bl} /usr/$(get_libdir)/${bl}
+		dosym Img1.4/${bl} /usr/$(get_libdir)/${bl}
 	done
 
 	dodoc ChangeLog README Reorganization.Notes.txt changes ANNOUNCE || die
