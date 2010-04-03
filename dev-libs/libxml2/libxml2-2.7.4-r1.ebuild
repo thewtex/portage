@@ -26,7 +26,7 @@ SRC_URI="ftp://xmlsoft.org/${PN}/${P}.tar.gz
 		${XSTS_HOME}/${XSTS_NAME_2}/${XSTS_TARBALL_2} )"
 
 RDEPEND="sys-libs/zlib
-	python? ( <dev-lang/python-3[xml] )
+	python? ( <dev-lang/python-3 )
 	readline? ( sys-libs/readline )"
 
 DEPEND="${RDEPEND}
