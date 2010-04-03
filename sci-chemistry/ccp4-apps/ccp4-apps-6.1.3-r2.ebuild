@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/ccp4-apps/ccp4-apps-6.1.3-r2.ebuild,v 1.1 2010/03/28 13:42:22 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/ccp4-apps/ccp4-apps-6.1.3-r2.ebuild,v 1.3 2010/03/29 19:19:25 jlec Exp $
 
 EAPI="2"
 
@@ -81,8 +81,7 @@ SCIAPPS="
 	sci-chemistry/pdb-extract
 	sci-chemistry/pymol
 	sci-chemistry/rasmol
-	sci-chemistry/oasis
-	balbes? ( sci-chemistry/balbes )"
+	sci-chemistry/oasis"
 
 RDEPEND="
 	${TKDEPS}

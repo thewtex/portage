@@ -1,6 +1,6 @@
-# Copyright 1999-2007 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-power/acpid/acpid-1.0.4-r5.ebuild,v 1.3 2007/05/12 01:40:05 dang Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-power/acpid/acpid-1.0.4-r5.ebuild,v 1.5 2010/03/31 20:23:52 ssuominen Exp $
 
 inherit eutils toolchain-funcs
 
@@ -13,14 +13,14 @@ SRC_URI="mirror://sourceforge/acpid/${P}.tar.gz
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 ia64 -ppc x86"
-IUSE="doc logrotate"
+IUSE="doc"
 
 DEPEND="sys-apps/sed"
 RDEPEND=""
 
 src_unpack() {
 	unpack ${A}
-	cd ${S}
+	cd "${S}"
 	epatch ../${DV}.diff
 }
 
@@ -44,7 +44,7 @@ src_install() {
 
 	dodoc README Changelog TODO
 
-	newinitd ${FILESDIR}/${P}-init.d acpid
+	newinitd "${FILESDIR}"/${P}-init.d acpid
 
 	docinto examples
 	dodoc samples/{acpi_handler.sh,sample.conf}
@@ -56,10 +56,8 @@ src_install() {
 	docinto examples/panasonic
 	dodoc samples/panasonic/*
 
-	if use logrotate; then
-		insinto /etc/logrotate.d
-		newins debian/acpid.logrotate acpid
-	fi
+	insinto /etc/logrotate.d
+	newins debian/acpid.logrotate acpid
 }
 
 pkg_postinst() {
