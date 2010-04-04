@@ -1,6 +1,17 @@
 # ChangeLog for www-client/chromium
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/ChangeLog,v 1.73 2010/04/02 05:31:15 phajdan.jr Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/ChangeLog,v 1.75 2010/04/03 20:45:49 phajdan.jr Exp $
+
+  03 Apr 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +files/chromium-libpng-1.4.patch, chromium-5.0.366.2.ebuild,
+  chromium-9999.ebuild:
+  Fix build failure with libpng-1.4, bug #310959 by loki_val.
+
+  03 Apr 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-5.0.366.2.ebuild, chromium-9999.ebuild,
+  +files/chromium-ffmpeg.patch:
+  Only claim to support more audio/video codecs when we are using system
+  ffmpeg (bug #306921 by Carlos Augusto <silvaesilva@gmail.com>)
 
 *chromium-5.0.366.2 (02 Apr 2010)
 
