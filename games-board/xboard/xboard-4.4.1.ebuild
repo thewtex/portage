@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-board/xboard/xboard-4.4.1.ebuild,v 1.6 2010/01/23 15:50:46 ranger Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-board/xboard/xboard-4.4.1.ebuild,v 1.8 2010/04/04 13:35:58 hwoarang Exp $
 
 EAPI=2
 inherit autotools eutils games

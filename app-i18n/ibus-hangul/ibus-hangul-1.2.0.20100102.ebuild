@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/ibus-hangul/ibus-hangul-1.2.0.20100102.ebuild,v 1.1 2010/01/02 15:59:01 matsuu Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/ibus-hangul/ibus-hangul-1.2.0.20100102.ebuild,v 1.2 2010/04/03 04:21:46 matsuu Exp $
 
 DESCRIPTION="The Hangul engine for IBus input platform"
 HOMEPAGE="http://code.google.com/p/ibus/"
@@ -35,12 +35,4 @@ src_install() {
 	emake DESTDIR="${D}" install || die
 
 	dodoc AUTHORS ChangeLog NEWS README
-}
-
-pkg_postinst() {
-	ewarn "This package is very experimental, please report your bugs to"
-	ewarn "http://ibus.googlecode.com/issues/list"
-	elog
-	elog "You should run ibus-setup and enable IM Engines you want to use!"
-	elog
 }
