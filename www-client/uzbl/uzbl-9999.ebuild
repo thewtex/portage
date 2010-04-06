@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/uzbl/uzbl-9999.ebuild,v 1.13 2010/03/30 17:56:55 wired Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/uzbl/uzbl-9999.ebuild,v 1.16 2010/04/04 15:36:16 wired Exp $
 
 EAPI="2"
 
@@ -10,12 +10,14 @@ IUSE=""
 if [[ ${PV} == *9999* ]]; then
 	inherit git
 	EGIT_REPO_URI=${EGIT_REPO_URI:-"git://github.com/Dieterbe/uzbl.git"}
+	KEYWORDS=""
 	SRC_URI=""
 	IUSE="experimental"
 	use experimental &&
 		EGIT_BRANCH="experimental" &&
 		EGIT_COMMIT="experimental"
 else
+	KEYWORDS="~amd64 ~x86"
 	SRC_URI="http://github.com/Dieterbe/${PN}/tarball/${PV} -> ${P}.tar.gz"
 fi
 
@@ -24,7 +26,6 @@ HOMEPAGE="http://www.uzbl.org"
 
 LICENSE="LGPL-2.1 MPL-1.1"
 SLOT="0"
-KEYWORDS=""
 IUSE+=" +browser helpers +tabbed vim-syntax"
 
 COMMON_DEPEND="
@@ -48,7 +49,6 @@ RDEPEND="
 	helpers? (
 		dev-python/pygtk
 		dev-python/pygobject
-		dev-python/simplejson
 		gnome-extra/zenity
 		net-misc/socat
 		x11-libs/pango
@@ -58,7 +58,6 @@ RDEPEND="
 	vim-syntax? ( || ( app-editors/vim app-editors/gvim ) )
 "
 # TODO document what requires the above helpers
-# simplejson - save uzbl_tabbed.py sessions & presets in json.
 
 pkg_setup() {
 	if ! use helpers; then
@@ -66,7 +65,6 @@ pkg_setup() {
 		elog
 		elog "   dev-python/pygtk"
 		elog "   dev-python/pygobject"
-		elog "   dev-python/simplejson"
 		elog "   gnome-extra/zenity"
 		elog "   net-misc/socat"
 		elog "   x11-libs/pango"

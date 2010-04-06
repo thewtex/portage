@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/xine-ui/xine-ui-0.99.6.ebuild,v 1.2 2010/04/01 08:59:55 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/xine-ui/xine-ui-0.99.6.ebuild,v 1.6 2010/04/02 16:52:11 ssuominen Exp $
 
 EAPI=3
 inherit fdo-mime gnome2-utils
@@ -46,7 +46,10 @@ src_prepare() {
 }
 
 src_configure() {
-	# nvtvsimple is simply untested
+	if use lirc; then
+		export LIRC_CFLAGS="-I/usr/include/lirc" LIRC_LIBS="-llirc_client"
+	fi
+
 	econf \
 		--disable-dependency-tracking \
 		$(use_enable nls) \

@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5454 2010/04/01 23:08:12 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5460 2010/04/04 16:08:12 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -372,6 +372,7 @@ app-forensics/samhain:userfiles - Compile in the module to check for files in us
 app-forensics/sleuthkit:aff - Enable extra aff formats
 app-forensics/sleuthkit:dbtool - Add patch for dbtool interface from PyFlag
 app-forensics/sleuthkit:ewf - Enable libewf support
+app-i18n/ibus:gconf - Enable support for gnome-base/gconf
 app-i18n/ibus-table-xingma:extra-phrases - Add extra phrases into builded Engine
 app-i18n/im-ja:anthy - Support for Anthy input method
 app-i18n/im-ja:skk - Support for SKK input method
@@ -875,6 +876,8 @@ dev-lang/python:threads - Enable threading support. (DON'T DISABLE THIS UNLESS Y
 dev-lang/python:wide-unicode - Enable wide Unicode implementation which uses 4-byte Unicode characters. Switching of this USE flag changes ABI of Python and requires reinstallation of many Python modules. (DON'T DISABLE THIS UNLESS YOU KNOW WHAT YOU'RE DOING)
 dev-lang/python:wininst - Install Windows executables required to create an executable installer for MS Windows.
 dev-lang/ruby:rubytests - Install ruby tests that can only be run after ruby is installed
+dev-lang/ruby-enterprise:rubytests - Install ruby tests that can only be run after ruby is installed
+dev-lang/ruby-enterprise:tcmalloc - Add support for TCMalloc provided by dev-util/google-perftools
 dev-lang/scala:binary - Install from (Gentoo-compiled) binary instead of building from sources. Set this when you run out of memory during build.
 dev-lang/spidermonkey:threadsafe - Build a threadsafe version of spidermonkey
 dev-lang/swig:R - Enable R support
@@ -1471,6 +1474,7 @@ kde-base/kopete:urlpicpreview - Enables in conversation pictures preview.
 kde-base/kopete:webpresence - Show your status and some more information on web.
 kde-base/kopete:winpopup - Enable pop-up messages sending on windows. (same as good old "net send" messages ;])
 kde-base/kopete:yahoo - Enable yahoo protocol support.
+kde-base/kopete:zeroconf - Enable Link-Local Messaging via the bonjour protocol.
 kde-base/kpilot:avantgo - Add support for syncing Avantgo accounts
 kde-base/krdc:rdp - Enable runtime dependency for net-misc/rdesktop
 kde-base/kstars:fits - Enable support for the FITS image format through cfitsio
@@ -1718,6 +1722,7 @@ media-gfx/pstoedit:emf -  enables media-libs/libemf support
 media-gfx/splashutils:fbcondecor -  Support for the fbcondecor kernel patch. 
 media-gfx/synfigstudio:fmod - Enables support for using mod files for audio support
 media-gfx/ufraw:contrast -  enable contrast setting option 
+media-gfx/ufraw:fits -  Enable support for the FITS image format through sci-libs/cfitsio 
 media-gfx/ufraw:hotpixels -  enable hot pixel elimination 
 media-gfx/ufraw:lensfun -  enable the lensfun lens-correction library 
 media-gfx/ufraw:timezone -  enable DST correction for file timestamps 
@@ -2909,13 +2914,13 @@ net-misc/sitecopy:webdav - Enable WebDav (Web-based Distributed Authoring and Ve
 net-misc/slimrat:X - Install also GUI client
 net-misc/streamtuner:shout - Enable shoutcast plug-in.
 net-misc/streamtuner:xiph - Enable xiph.org plug-in.
-net-misc/strongswan:cisco - Enable support of Cisco VPN client
-net-misc/strongswan:gcrypt - Enable gcrypt support
-net-misc/strongswan:ikev1 - Enable ikev1 protocol
-net-misc/strongswan:ikev2 - Enable ikev2 protocol
-net-misc/strongswan:nat - Enable NAT traversal with IPsec transport mode
-net-misc/strongswan:non-root - Enable running as non-root
-net-misc/strongswan:openssl - Enable openssl support
+net-misc/strongswan:cisco -  Enable support for the Cisco VPN client. 
+net-misc/strongswan:gcrypt -  Enable dev-libs/libgcrypt plugin which provides 3DES, AES, Blowfish, Camellia, CAST, DES, Serpent and Twofish ciphers along with MD4, MD5 and SHA1/2 hash algorithms, RSA and a software random number generator. 
+net-misc/strongswan:ikev1 -  Enable IKEv1 protocol (pluto daemon). 
+net-misc/strongswan:ikev2 -  Enable IKEv2 protocol (charon daemon). 
+net-misc/strongswan:nat-transport -  Enable potentially insecure NAT traversal for transport mode in IKEv1. Only enable if you really need this. 
+net-misc/strongswan:non-root -  Force IKEv1/IKEv2 daemons to normal user privileges. This might impose some restrictions mainly to the IKEv1 daemon. Disable only if you really require superuser privileges. 
+net-misc/strongswan:openssl -  Enable dev-libs/openssl plugin which is required for Elliptic Curve Cryptography (Diffie-Hellman groups 19-21, 25, 26) and ECDSA. Also provides 3DES, AES, Blowfish, Camellia, CAST, DES, IDEA and RC5 ciphers along with MD2, MD4, MD5 and SHA1/2 hash algorithms and RSA. dev-libs/openssl has to be compiled with USE="-bindist". 
 net-misc/stunnel:xforward - Enable X-Forwarded-For support for Stunnel
 net-misc/termpkg:uucp -  Adds support for uucp style device locking 
 net-misc/tigervnc:server - Build TigerVNC server
@@ -3560,6 +3565,7 @@ sys-libs/pam:audit - Enable support for sys-process/audit
 sys-libs/pam:berkdb -  Build the pam_userdb module, that allows to authenticate users against a Berkeley DB file. Please note that enabling this USE flag will create a PAM module that links to the Berkeley DB (as provided by sys-libs/db) installed in /usr/lib and will thus not work for boot-critical services authentication. 
 sys-libs/pam:cracklib -  Build the pam_cracklib module, that allows to verify the chosen passwords' strength through the use of sys-libs/cracklib. Please note that simply enabling the USE flag on this package will not make use of pam_cracklib by default, you should also enable it in sys-auth/pambase as well as update your configuration files. 
 sys-libs/talloc:compat - Enable extra compatibility stuff
+sys-libs/talloc:swig - Install interface definitions for dev-lang/swig
 sys-libs/tdb:tdbtest - Install tdbtest app
 sys-libs/tdb:tools - Install extra tools
 sys-libs/uclibc:pregen - Use pregenerated locales
