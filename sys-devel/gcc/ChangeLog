@@ -1,6 +1,35 @@
 # ChangeLog for sys-devel/gcc
-# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/gcc/ChangeLog,v 1.739 2009/11/10 17:58:55 ranger Exp $
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/gcc/ChangeLog,v 1.746 2010/03/28 20:35:46 halcy0n Exp $
+
+  28 Mar 2010; Mark Loeser <halcy0n@gentoo.org> gcc-4.3.4.ebuild,
+  gcc-4.4.3.ebuild:
+  Fix patch exclusion; bug #309279
+
+  25 Mar 2010; Mark Loeser <halcy0n@gentoo.org> gcc-4.4.3.ebuild:
+  Excluding alpha patch for bug #309279
+
+  19 Mar 2010; Mike Frysinger <vapier@gentoo.org>
+  files/awk/fixlafiles.awk-no_gcc_la:
+  Add support for the "include" keyword in ld.so.conf #304843 by Nico R.
+
+  03 Mar 2010; <solar@gentoo.org> gcc-4.3.4.ebuild:
+  - add armv7 patch to gcc-4.3.4 to keep stable from breaking due to a
+  recent toolchain.eclass change. We also inherit some alpha fixes
+
+*gcc-4.4.3 (08 Feb 2010)
+
+  08 Feb 2010; Mike Frysinger <vapier@gentoo.org> +gcc-4.4.3.ebuild:
+  Version bump.
+
+  09 Jan 2010; Ulrich Mueller <ulm@gentoo.org> gcc-4.0.4.ebuild,
+  gcc-4.1.2.ebuild, gcc-4.2.4-r1.ebuild, gcc-4.3.2-r3.ebuild,
+  gcc-4.3.2-r4.ebuild, gcc-4.3.3-r2.ebuild, gcc-4.3.4.ebuild,
+  gcc-4.4.1.ebuild, gcc-4.4.2.ebuild:
+  Make GPL exceptions optional and add FDL-1.2 to LICENSE. Fixes bug 299996.
+
+  03 Dec 2009; Raúl Porcel <armin76@gentoo.org> gcc-4.3.4.ebuild:
+  sh stable wrt #288621
 
   10 Nov 2009; Brent Baude <ranger@gentoo.org> gcc-4.3.4.ebuild:
   Marking gcc-4.3.4 ppc64 for bug 288621
