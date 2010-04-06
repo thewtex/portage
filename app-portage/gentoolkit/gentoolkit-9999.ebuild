@@ -1,13 +1,13 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-portage/gentoolkit/gentoolkit-9999.ebuild,v 1.7 2010/03/12 20:19:12 fuzzyray Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-portage/gentoolkit/gentoolkit-9999.ebuild,v 1.8 2010/04/05 21:04:18 idl0r Exp $
 
 EAPI="2"
 SUPPORT_PYTHON_ABIS="1"
 DISTUTILS_DISABLE_VERSIONING_OF_PYTHON_SCRIPTS="1"
 RESTRICT_PYTHON_ABIS="2.[45]"
 
-inherit distutils subversion
+inherit distutils python subversion
 
 ESVN_REPO_URI="svn://anonsvn.gentoo.org/gentoolkit/trunk/gentoolkit"
 ESVN_PROJECT="gentoolkit"
@@ -22,13 +22,13 @@ IUSE=""
 
 KEYWORDS=""
 
-DEPEND=">=dev-lang/python-2.6[xml]
-	sys-apps/portage
-	dev-lang/perl
-	sys-apps/grep
-	sys-apps/gawk"
+DEPEND="sys-apps/portage
+	>=dev-lang/python-2.6[xml]
+	!!>=dev-lang/python-2.6[-xml]"
 RDEPEND="${DEPEND}
-	app-misc/realpath"
+	app-misc/realpath
+	sys-apps/gawk
+	sys-apps/grep"
 
 distutils_src_compile_pre_hook() {
 	echo VERSION="9999-r${ESVN_WC_REVISION}" "$(PYTHON)" setup.py set_version
@@ -67,8 +67,4 @@ pkg_postinst() {
 	einfo "guide: http://www.gentoo.org/doc/en/gentoolkit.xml"
 	einfo
 	einfo "Another alternative to equery is app-portage/portage-utils"
-}
-
-pkg_info() {
-	eselect python show
 }
