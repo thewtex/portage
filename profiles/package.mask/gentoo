@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11417 2010/04/05 22:16:52 caster Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11426 2010/04/06 22:54:56 polynomial-c Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -244,14 +244,6 @@ sys-libs/ss
 <sys-libs/e2fsprogs-libs-1.41.8
 <sys-fs/e2fsprogs-1.41.9
 
-# Samuli Suominen <ssuominen@gentoo.org> (06 Mar 2010)
-# Masked for QA, treecleaners, security
-#
-# Internal copy of vuln. dev-libs/expat
-#
-# Masked for removal in 60 days
-dev-lisp/cl-albert
-
 # Fabian Groffen <grobian@gentoo.org> (06 Mar 2010)
 # Masked for security issues and discontinued interest from upstream to
 # support non-Windows platforms.  Bug #233928
@@ -291,6 +283,7 @@ dev-lang/gnu-smalltalk
 net-irc/ircd-hybrid
 
 # Samuli Suominen <ssuominen@gentoo.org> (03 Mar 2010)
+# Justin Bronder <jsbronder@gentoo.org> (06 Apr 2010)
 # Masked for QA, security
 #
 # After over an year of no word from maintainers
@@ -300,38 +293,9 @@ net-irc/ircd-hybrid
 # http://bugs.gentoo.org/show_bug.cgi?id=252398
 #
 # Masked for removal in 60 days
-app-shells/pdsh
-
-# Samuli Suominen <ssuominen@gentoo.org> (03 Mar 2010)
-# Masked for QA, security
 #
-# Internal copies of vuln. libpng, zlib
-#
-# Masked for removal in 60 days
-net-nntp/bnr2
-
-# Samuli Suominen <ssuominen@gentoo.org> (03 Mar 2010)
-# Masked for QA, security
-#
-# Internal copy of vuln. libltdl, CVE-2009-3736
-#
-# Bugs 252402, 296953, 296954, 215252, 297649
-#
-# Masked for removal in 60 days
-net-libs/libnetdude
-net-analyzer/netdude
-net-im/naim
-
-# Samuli Suominen <ssuominen@gentoo.org> (03 Mar 2010)
-# Masked for QA, security
-#
-# Internal copies of vuln. libraries
-# GLSA 200606-11, GLSA 200807-03 and likely more
-#
-# http://bugs.gentoo.org/show_bug.cgi?id=247363
-#
-# Removed in 60 days
-dev-lang/squeak
+# Update:  Libtool unbundled as of 2.18-r1.
+<app-shells/pdsh-2.18-r1
 
 # Jeroen Roovers <jer@gentoo.org> (28 Feb 2010)
 # Development release
@@ -466,12 +430,6 @@ dev-ruby/activerecord-jdbc
 media-tv/vdr-dvd-scripts
 media-tv/vdrplugin-rebuild
 
-# Tony Vroon <chainsaw@gentoo.org> (19 Jan 2010)
-# Alpha releases, you are welcome to help us test
-# and report bugs *upstream* at http://jira.atheme.org
-=media-plugins/audacious-plugins-2.3_alpha*
-=media-sound/audacious-2.3_alpha*
-
 # Doug Goldstein <cardoe@gentoo.org> (18 Jan 2010)
 # masked for testing and development
 =media-tv/ivtv-utils-1.3.0-r2
@@ -516,10 +474,6 @@ net-libs/libjingle
 # still being used.  (please fix deps before masking again - halcy0n)
 #dev-db/libpq
 #dev-db/postgresql
-
-# Patrick Lauer <patrick@gentoo.org> (07 Jan 2010)
-# Upstream changed all options around again, so masking until someone fixes it
-=app-misc/emelfm2-0.7.1
 
 # Pawel Hajdan jr <phajdan.jr@gentoo.org> (07 Jan 2010)
 # Dev channel releases are only for people who are developers or want more
@@ -676,10 +630,6 @@ xfce-extra/thunar-vfs
 # guest).
 app-emulation/lxc
 
-# Dirkjan Ochtman <djc@gentoo.org> (21 Oct 2009)
-# Needs some more testing before unleashing on the masses.
-=dev-libs/boost-1.40.0
-
 # Peter Alfredsen <loki_val@gentoo.org> (21 Oct 2009)
 # Masked because this needs a patch to be applied to portage
 # to not install the kitchensink and everything else
@@ -693,16 +643,6 @@ sys-auth/pam_keystore
 # Markus Meier <maekke@gentoo.org> (03 Oct 2009)
 # mask libpano13 beta versions for testing
 >=media-libs/libpano13-2.9.15_beta3
-
-# Jory A. Pratt <anarchy@gentoo.org> (24 Sep 2009)
-# Much testing needed, not ready for mainline by any means.
->=www-client/seamonkey-2.0_beta2
-
-# Tony Vroon <chainsaw@gentoo.org> (14 Sep 2009)
-# Alpha releases. Unmask at your own risk, bugs
-# go upstream to http://jira.atheme.org/
-=media-sound/audacious-2.2_alpha*
-=media-plugins/audacious-plugins-2.2_alpha*
 
 # Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (13 Sep 2009)
 # Masked to enforce upgrade which looks like downgrade.
@@ -1036,14 +976,6 @@ games-rpg/openrpg
 # Stefan Cornelius <dercorny@gentoo.org> (7 Mar 2007)
 # Masking net-misc/xsupplicant due to security bug 154995
 net-misc/xsupplicant
-
-# Chris Gianelloni <wolf31o2@gentoo.org> (15 Jan 2007)
-# The Armagetron Advanced packages in Gentoo's repository are obsolete and will
-# likely remain masked until they can be revisted to be maintainable.  Until
-# that time, the upstream team has created their own overlay:
-#     emerge -a layman
-#     layman -ka armagetron
-<games-action/armagetronad-0.2.8.3.1
 
 # Stefaan De Roeck <stefaan@gentoo.org> (09 Sep 2006)
 # 1.5.x is a development branch, people should test 1.4.x by default
