@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/scite/scite-2.03.ebuild,v 1.1 2010/02/27 11:53:15 nelchael Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-editors/scite/scite-2.03.ebuild,v 1.3 2010/04/05 19:35:31 hwoarang Exp $
 
 inherit toolchain-funcs eutils
 
@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/scintilla/${PN}${MY_PV}.tgz"
 
 LICENSE="Scintilla"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="amd64 ~ppc ~sparc ~x86 ~x86-fbsd"
 IUSE="lua"
 
 RDEPEND=">=x11-libs/gtk+-2
@@ -30,6 +30,11 @@ src_unpack() {
 		-e "s#^\(CXXFLAGS=.*\)-Os#\1#" \
 		-e "s#^CC =\(.*\)#CC = $(tc-getCXX)#" \
 		-e "s#-Os##" \
+		|| die "error patching makefile"
+
+	cd "${WORKDIR}/scite/gtk"
+	sed -i makefile \
+		-e "s#-rdynamic#-rdynamic ${LDFLAGS}#" \
 		|| die "error patching makefile"
 
 	cd "${S}"
