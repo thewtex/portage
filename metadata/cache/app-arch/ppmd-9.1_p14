@@ -1,20 +1,20 @@
 >=sys-apps/sed-4 app-arch/gzip sys-devel/patch sys-devel/autoconf sys-devel/automake
 
 0
-http://http.us.debian.org/debian/pool/main/p/ppmd/ppmd_9.1.orig.tar.gz http://http.us.debian.org/debian/pool/main/p/ppmd/ppmd_9.1-14.diff.gz
+mirror://debian/pool/main/p/ppmd/ppmd_9.1.orig.tar.gz mirror://debian/pool/main/p/ppmd/ppmd_9.1-14.diff.gz
 
 http://http.us.debian.org/debian/pool/main/p/ppmd/
 public-domain
 PPM based compressor -- better behaved than bzip2
--alpha -amd64 hppa -ia64 ~mips ppc sparc x86
+-alpha -amd64 hppa -ia64 ~mips ppc sparc x86 ~x86-interix -amd64-linux -ia64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris
 eutils flag-o-matic multilib portability toolchain-funcs
 
 
 
 
+3
 
-
-compile install unpack
+configure install prepare
 
 
 
