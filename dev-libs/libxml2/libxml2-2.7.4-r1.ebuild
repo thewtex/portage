@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libxml2/libxml2-2.7.7.ebuild,v 1.1 2010/03/18 12:59:10 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libxml2/libxml2-2.7.4-r1.ebuild,v 1.3 2010/03/08 22:30:16 zmedico Exp $
 
 EAPI="2"
 
@@ -44,14 +44,14 @@ src_unpack() {
 			"${S}"/xstc/ \
 			|| die "Failed to install test tarballs"
 	fi
+
+	# Fix inkscape extension loader problem, bug #285125,
+	# patch import from upstream bug #595128.
+	epatch "${FILESDIR}"/${P}-parser-grow.patch
 }
 
 src_prepare() {
 	epunt_cxx
-
-	# Please do not remove, as else we get references to PORTAGE_TMPDIR
-	# in /usr/lib/python?.?/site-packages/libxml2mod.la among things.
-	elibtoolize
 }
 
 src_configure() {
@@ -64,20 +64,24 @@ src_configure() {
 
 	# --with-mem-debug causes unusual segmentation faults (bug #105120).
 
-	local myconf="--with-zlib
-		--with-html-subdir=${PF}/html
-		--docdir=/usr/share/doc/${PF}
-		$(use_with debug run-debug)
-		$(use_with python)
-		$(use_with readline)
-		$(use_with readline history)
-		$(use_enable ipv6)
+	local myconf="--with-zlib \
+		--with-html-subdir=${PF}/html \
+		--docdir=/usr/share/doc/${PF} \
+		$(use_with debug run-debug)  \
+		$(use_with python)           \
+		$(use_with readline)         \
+		$(use_with readline history) \
+		$(use_enable ipv6) \
 		PYTHON_SITE_PACKAGES=$(python_get_sitedir)"
+
+	# Please do not remove, as else we get references to PORTAGE_TMPDIR
+	# in /usr/lib/python?.?/site-packages/libxml2mod.la among things.
+	elibtoolize
 
 	# filter seemingly problematic CFLAGS (#26320)
 	filter-flags -fprefetch-loop-arrays -funroll-loops
 
-	econf ${myconf}
+	econf $myconf
 }
 
 src_install() {
