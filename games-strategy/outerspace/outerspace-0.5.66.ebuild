@@ -1,11 +1,9 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-strategy/outerspace/outerspace-0.5.66.ebuild,v 1.4 2010/04/06 09:05:42 tupone Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-strategy/outerspace/outerspace-0.5.66.ebuild,v 1.3 2009/11/25 22:13:41 maekke Exp $
 
 EAPI=2
-PYTHON_DEPEND="2"
-
-inherit eutils python games
+inherit eutils games
 
 MY_PN=${PN/outerspace/OuterSpace}
 MY_P=${MY_PN}-${PV}
@@ -18,14 +16,14 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE=""
 
-RDEPEND=">=dev-python/pygame-1.7"
+RDEPEND=">=dev-python/pygame-1.7
+	>=dev-lang/python-2.4"
 
 S=${WORKDIR}/${MY_P}
 
 src_prepare() {
 	sed -e "s:@GENTOO_DATADIR@:${GAMES_DATADIR}/${PN}:" \
 		-e "s:@GENTOO_LIBDIR@:$(games_get_libdir)/${PN}:" \
-		-e "s:python:$(PYTHON -a):" \
 		"${FILESDIR}"/${PN} > ${PN} \
 		|| die "sed failed"
 }
@@ -39,9 +37,4 @@ src_install() {
 	newicon res/icon32.png ${PN}.png
 	make_desktop_entry ${PN} ${MY_PN}
 	prepgamesdirs
-}
-
-pkg_setup() {
-	python_set_active_version 2
-	games_pkg_setup
 }

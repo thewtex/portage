@@ -1,31 +1,30 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/passook/passook-1.0.0.ebuild,v 1.23 2010/04/06 05:54:22 abcd Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/passook/passook-1.0.0.ebuild,v 1.22 2008/01/26 10:03:28 grobian Exp $
 
-EAPI="3"
-
-inherit eutils prefix
+inherit eutils
 
 S=${WORKDIR}
 DESCRIPTION="Password generator capable of generating pronounceable and/or secure passwords."
 SRC_URI="http://mackers.com/projects/passook/${PN}.tar.gz"
 HOMEPAGE="http://mackers.com/misc/scripts/passook/"
-
-LICENSE="as-is"
-SLOT="0"
-KEYWORDS="amd64 ppc ppc64 sparc x86 ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE=""
+
+SLOT="0"
+LICENSE="as-is"
+KEYWORDS="amd64 ppc ppc64 sparc x86"
 
 DEPEND="dev-lang/perl
 	sys-apps/grep
 	sys-apps/miscfiles"
 
-src_prepare() {
-	epatch "${FILESDIR}"/passook.patch
-	eprefixify passook
+src_unpack() {
+	unpack ${A}
+	cd "${S}"
+	epatch "${FILESDIR}"/passook.diff
 }
 
 src_install() {
-	dobin passook || die "dobin failed"
+	dobin passook
 	dodoc README passook.cgi
 }

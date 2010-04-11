@@ -1,8 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-dicts/wordnet/wordnet-3.0-r3.ebuild,v 1.4 2010/04/06 15:34:20 abcd Exp $
-
-EAPI="3"
+# $Header: /var/cvsroot/gentoo-x86/app-dicts/wordnet/wordnet-3.0-r3.ebuild,v 1.3 2009/10/18 01:09:34 halcy0n Exp $
 
 inherit flag-o-matic autotools
 
@@ -13,7 +11,7 @@ SRC_URI="ftp://ftp.cogsci.princeton.edu/pub/wordnet/${PV}/WordNet-${PV}.tar.gz
 LICENSE="Princeton"
 
 SLOT="0"
-KEYWORDS="~amd64 ~ppc x86 ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="~amd64 ~ppc x86"
 IUSE="doc"
 
 # In contrast to what the configure script seems to imply, Tcl/Tk is NOT optional.
@@ -24,7 +22,9 @@ RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/WordNet-${PV}"
 
-src_prepare() {
+src_unpack() {
+	unpack ${A}
+	cd "${S}"
 	# Don't install into PREFIX/dict but PREFIX/share/wordnet/dict
 	epatch "${WORKDIR}/${P}-dict-location.patch"
 	# Fixes bug 130024, make an additional shared lib
@@ -46,20 +46,15 @@ src_prepare() {
 	eautoreconf
 }
 
-src_configure() {
+src_compile() {
 	append-flags -DUNIX -I"${T}"/usr/include
 
 	PLATFORM=linux WN_ROOT="${T}/usr" \
 	WN_DICTDIR="${T}/usr/share/wordnet/dict" \
 	WN_MANDIR="${T}/usr/share/man" \
 	WN_DOCDIR="${T}/usr/share/doc/wordnet-${PV}" \
-	WNHOME="${EPREFIX}/usr/share/wordnet" \
-	econf \
-		--with-tcl="${EPREFIX}"/usr/$(get_libdir) \
-		--with-tk="${EPREFIX}"/usr/$(get_libdir)
-}
-
-src_compile() {
+	WNHOME="/usr/share/wordnet" \
+	econf
 	emake -e || die "emake Failed"
 }
 

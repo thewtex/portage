@@ -1,8 +1,8 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/enchant/enchant-1.5.0.ebuild,v 1.3 2010/04/06 16:29:39 abcd Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/enchant/enchant-1.5.0.ebuild,v 1.1 2010/03/09 17:40:33 serkan Exp $
 
-EAPI="3"
+EAPI="1"
 inherit libtool confutils autotools
 
 DESCRIPTION="Spellchecker wrapping library"
@@ -11,7 +11,7 @@ SRC_URI="http://www.abisource.com/downloads/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sh ~sparc ~x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~x86-macos ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sh ~sparc ~x86 ~x86-fbsd"
 IUSE="aspell +hunspell zemberek"
 
 COMMON_DEPENDS=">=dev-libs/glib-2
@@ -30,7 +30,9 @@ pkg_setup() {
 	confutils_require_any aspell hunspell zemberek
 }
 
-src_prepare() {
+src_unpack() {
+	unpack ${A}
+	cd "${S}"
 	# Fix for upstream bug #12305
 	# http://bugzilla.abisource.com/show_bug.cgi?id=12305
 	epatch "${FILESDIR}"/${P}-zemberek.patch
@@ -39,12 +41,13 @@ src_prepare() {
 	eautoreconf
 }
 
-src_configure() {
+src_compile() {
 	econf $(use_enable aspell) \
 		$(use_enable hunspell myspell) \
 		$(use_enable zemberek) \
 		--disable-ispell \
-		--with-myspell-dir="${EPREFIX}"/usr/share/myspell/
+		--with-myspell-dir=/usr/share/myspell/
+	emake || die "emake failed"
 }
 
 src_install() {

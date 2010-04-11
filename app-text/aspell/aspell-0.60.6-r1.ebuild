@@ -1,8 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/aspell/aspell-0.60.6-r1.ebuild,v 1.10 2010/04/06 16:09:36 abcd Exp $
-
-EAPI="3"
+# $Header: /var/cvsroot/gentoo-x86/app-text/aspell/aspell-0.60.6-r1.ebuild,v 1.9 2010/04/05 21:03:44 maekke Exp $
 
 # N.B. This is before inherit of autotools, as autotools.eclass adds the
 # relevant dependencies to DEPEND.
@@ -16,7 +14,7 @@ SRC_URI="mirror://gnu/aspell/${P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~sparc-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~sparc-fbsd ~x86-fbsd"
 IUSE="nls examples"
 # Note; app-text/aspell-0.6 and app-dicts/aspell-en-0.6 must go stable together
 
@@ -41,28 +39,26 @@ done
 PDEPEND="${PDEPEND}
 ${def}"
 
-COMMON_DEPEND=">=sys-libs/ncurses-5.2
-	nls? ( virtual/libintl )"
+RDEPEND=">=sys-libs/ncurses-5.2
+	nls? ( virtual/libintl )
+	!=app-dicts/aspell-en-0.5*"
+# English dictionary 0.5 is incompatible with aspell-0.6
 
-DEPEND="${COMMON_DEPEND}
+DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )"
 
-# English dictionary 0.5 is incompatible with aspell-0.6
-RDEPEND="${COMMON_DEPEND}
-	!=app-dicts/aspell-en-0.5*"
-
-src_prepare() {
-	epatch "${FILESDIR}/${PN}-0.60.3-templateinstantiations.patch"
+src_unpack() {
+	unpack ${A}
+	cd "${S}"
+	epatch "${FILESDIR}/aspell-0.60.3-templateinstantiations.patch"
 	epatch "${FILESDIR}/${PN}-0.60.5-nls.patch"
-	epatch "${FILESDIR}/${PN}-0.60.5-solaris.patch"
-	epatch "${FILESDIR}/${P}-darwin-bundles.patch"
 
 	rm m4/lt* m4/libtool.m4
 	eautoreconf
 	elibtoolize --reverse-deps
 }
 
-src_configure() {
+src_compile() {
 	filter-flags -fno-rtti
 	filter-flags -fvisibility=hidden #77109
 	filter-flags -maltivec -mabi=altivec
@@ -76,16 +72,18 @@ src_configure() {
 	LIBS="${mylibs}" econf \
 		$(use_enable nls) \
 		--disable-static \
-		--sysconfdir="${EPREFIX}"/etc/aspell \
-		--enable-docdir="${EPREFIX}"/usr/share/doc/${PF}
+		--sysconfdir=/etc/aspell \
+		--enable-docdir=/usr/share/doc/${PF}
+
+	emake || die "compilation failed"
 }
 
 src_install() {
 	dodoc README* TODO || die "installing docs failed"
 
 	emake DESTDIR="${D}" install || die "installation failed"
-	mv "${ED}"usr/share/doc/${PF}/man-html "${ED}"usr/share/doc/${PF}/html
-	mv "${ED}"usr/share/doc/${PF}/man-text "${ED}"usr/share/doc/${PF}/text
+	mv "${D}"/usr/share/doc/${PF}/man-html "${D}"/usr/share/doc/${PF}/html
+	mv "${D}"/usr/share/doc/${PF}/man-text "${D}"/usr/share/doc/${PF}/text
 
 	# install ispell/aspell compatibility scripts
 	exeinto /usr/bin

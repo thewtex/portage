@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-geosciences/tilecache/tilecache-2.10.ebuild,v 1.2 2010/04/06 08:24:44 scarabeus Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-geosciences/tilecache/tilecache-2.10.ebuild,v 1.1 2009/12/09 14:58:25 scarabeus Exp $
 
 EAPI="2"
 
@@ -15,10 +15,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND="dev-python/imaging"
-DEPEND="${RDEPEND}
-	dev-python/setuptools
-"
+DEPEND="dev-python/imaging"
+RDEPEND="${DEPEND}"
 
 src_install() {
 	distutils_src_install "--debian"

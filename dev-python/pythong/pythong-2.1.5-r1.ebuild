@@ -1,13 +1,9 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pythong/pythong-2.1.5-r1.ebuild,v 1.3 2010/04/06 15:20:59 arfrever Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pythong/pythong-2.1.5-r1.ebuild,v 1.2 2009/02/03 22:52:28 patrick Exp $
 
-EAPI="3"
-PYTHON_DEPEND="2"
-PYTHON_USE_WITH="tk"
-SUPPORT_PYTHON_ABIS="1"
-
-inherit python
+EAPI="2"
+inherit python distutils multilib
 
 MY_PN="pythonG"
 MY_PV=${PV/_/-}
@@ -23,54 +19,49 @@ KEYWORDS="~amd64 ~ia64 ~x86"
 SLOT="0"
 IUSE="doc"
 
-S="${WORKDIR}/${MY_PN}-${MY_PV}"
+S=${WORKDIR}/${MY_PN}-${MY_PV}
 
-RDEPEND=">=dev-lang/tk-8.3.4
+RDEPEND=">=dev-lang/python-2.2.2[tk]
+	>=dev-lang/tk-8.3.4
 	>=dev-python/pmw-1.2"
-DEPEND="${RDEPEND}"
-RESTRICT_PYTHON_ABIS="3.*"
+
+DEPEND="${RDEPEND}
+	>=sys-apps/sed-4"
+
+PYTHON_MODNAME="libpythong"
 
 src_prepare() {
-	python_copy_sources
+	default
 
-	preparation() {
-		sed -i \
-			-e "s:^\(fullpath = \).*:\1'$(python_get_sitedir)':" \
-			-e "/^url_docFuncPG/s:'+fullpath+':/usr/share/doc/${PF}:" \
-			pythong.py || die "sed in pythong.py failed"
-	}
-	python_execute_function -s preparation
+	python_version
+
+	sed -i \
+		-e "s:^\(fullpath = \).*:\1'/usr/$(get_libdir)/python${PYVER}/site-packages/':" \
+		-e "/^url_docFuncPG/s:'+fullpath+':/usr/share/doc/${PF}:" \
+		pythong.py || die "sed in pythong.py failed"
+}
+
+src_compile() {
+	:
 }
 
 src_install() {
-	installation() {
-		insinto $(python_get_sitedir)
-		doins modulepythong.py || die "doins failed"
-		doins -r libpythong || die "doins failed"
+	python_version
 
-		exeinto /usr/bin
-		newexe pythong.py pythong.py-${PYTHON_ABI} || die "doexe failed"
-		python_convert_shebangs $(python_get_version) "${ED}usr/bin/pythong.py-${PYTHON_ABI}"
-	}
-	python_execute_function -s installation
+	insinto $(python_get_sitedir)
+	doins modulepythong.py || die "doins failed"
+	doins -r libpythong || die "doins failed"
 
-	python_generate_wrapper_scripts "${ED}usr/bin/pythong.py"
+	exeinto /usr/bin
+	doexe pythong.py || die "doexe failed"
 
 	dodoc leeme.txt || die "dodoc failed"
 	insinto /usr/share/doc/${PF}
 	doins -r {LICENCIA,MANUAL,demos} || die "doins failed"
-	rm -fr "${ED}/usr/share/doc/${PF}/demos/modulepythong.py"
+	rm -f "${D}"/usr/share/doc/"${PF}"/demos/modulepythong.py
 
 	if use doc; then
 		insinto /usr/share/doc/${PF}
-		doins "${DISTDIR}/python.pdf"
+		doins "${DISTDIR}"/python.pdf
 	fi
-}
-
-pkg_postinst() {
-	python_mod_optimize libpythong
-}
-
-pkg_postrm() {
-	python_mod_cleanup libpythong
 }
