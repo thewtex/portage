@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-tv/xbmc/xbmc-9.11.ebuild,v 1.3 2010/01/17 21:26:51 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-tv/xbmc/xbmc-9.11.ebuild,v 1.5 2010/04/07 20:39:16 scarabeus Exp $
 
 EAPI="2"
 
@@ -30,7 +30,7 @@ IUSE="aac alsa altivec avahi css debug joystick midi opengl profile pulseaudio s
 
 RDEPEND="opengl? ( virtual/opengl )
 	app-arch/bzip2
-	|| ( app-arch/unrar app-arch/unrar-gpl )
+	app-arch/unrar
 	app-arch/unzip
 	app-arch/zip
 	app-i18n/enca
@@ -72,7 +72,7 @@ RDEPEND="opengl? ( virtual/opengl )
 	media-video/ffmpeg
 	avahi? ( net-dns/avahi )
 	net-misc/curl
-	|| ( net-fs/samba-libs[smbclient] <net-fs/samba-3.3 )
+	|| ( >=net-fs/samba-3.4.6[smbclient] <net-fs/samba-3.3 )
 	sys-apps/dbus
 	sys-apps/hal
 	sys-libs/zlib

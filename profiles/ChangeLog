@@ -1,10 +1,35 @@
 # ChangeLog for profile directory
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.4085 2010/04/05 22:16:52 caster Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.4093 2010/04/07 16:38:53 patrick Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  07 Apr 2010; Patrick Lauer <patrick@gentoo.org> package.mask:
+  Masking dovecot-2.0 until release
+
+  07 Apr 2010; Patrick Lauer <patrick@gentoo.org> package.mask:
+  Fixing samba mask for samba4
+
+  07 Apr 2010; Patrick Lauer <patrick@gentoo.org> package.mask:
+  Fixing samba masks for 3.5 and unsplit ebuilds
+
+  07 Apr 2010; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask x11-plugins/wmudmount because required udisks is masked too.
+
+  07 Apr 2010; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask sys-fs/udisks waiting for lvm2.
+
+  06 Apr 2010; <chainsaw@gentoo.org> package.mask:
+  Remove no longer needed Audacious masks as per Dror "spatz" Levin in
+  #gentoo-dev.
+
+  06 Apr 2010; Dror Levin <spatz@gentoo.org> package.mask:
+  Remove dev-libs/boost-1.40 mask since it's no longer in the tree.
+
+  06 Apr 2010; Justin Bronder <jsbronder@gentoo.org> package.mask:
+  Unmask >=app-shells/pdsh-2.18-r1. Libtool unbundled.
 
   05 Apr 2010; Vlastimil Babka <caster@gentoo.org> package.mask:
   Last rites for dev-java/struts-legacy
