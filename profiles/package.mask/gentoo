@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11417 2010/04/05 22:16:52 caster Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11448 2010/04/11 20:54:48 swegener Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,42 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Pacho Ramos <pacho@gentoo.org> (10 Apr 2010)
+# This version provides packages from testing to let people using
+# latest Xorg (from ~arch or overlay) have 3D support. If you don't need it,
+# keep with unmasked versions.
+#
+# Please don't ask for including testing packages in other emul
+# packages, this is an exception to current policy because some people
+# from X11 team needed 3D support even with bleeding edge Xorg.
+=app-emulation/emul-linux-x86-opengl-20100410_pre
+
+# Pacho Ramos <pacho@gentoo.org> (09 Apr 2010)
+# Latest release in 2005, man pages obsolete, masked for removal
+# in 30 days, bug #295188
+app-i18n/man-pages-es
+
+# Robert Piasek <dagger@gentoo.org> (09 Apr 2010)
+# Mask as it does have some regressions comparing to version 3
+=net-misc/modemmanager-0.3_p20100401
+
+# Patrick Lauer <patrick@gentoo.org> (07 Apr 2010)
+# Mask the 2.0_beta until release of 2.0 final
+>=net-mail/dovecot-2.0_beta4
+
+# Patrick Lauer <patrick@gentoo.org> (07 Apr 2010)
+# Migrating back to unsplit samba ebuilds. Keeping samba-4 masked until release.
+net-fs/samba-libs
+net-fs/samba-server
+net-fs/samba-client
+>net-fs/samba-4
+
+# Samuli Suominen <ssuominen@gentoo.org> (07 Apr 2010)
+# Missing required lvm2 wrt bug #309757. Unmask soon as it's in tree.
+sys-fs/udisks
+x11-plugins/wmudmount
+>=app-misc/emelfm2-0.7.2-r1
 
 # Vlastimil Babka <caster@gentoo.org> (06 Apr 2010)
 # Legacy library nothing in the tree depends on. Needs 1.5 java to compile.
@@ -121,10 +157,6 @@ games-util/loki_setupdb
 ~dev-libs/boost-1.36.0
 ~dev-util/boost-build-1.36.0
 
-# Tomáš Chvátal <scarabeus@gentoo.org> (17 Mar 2010)
-# Depends on removed xorg-server. See bug #309985.
-=net-misc/tigervnc-1.0.1_pre20100306
-
 # Samuli Suominen <ssuominen@gentoo.org> (16 Mar 2010)
 # Masked for QA and security.
 #
@@ -198,13 +230,6 @@ x11-plugins/wmalms
 x11-plugins/wmsensormon
 x11-plugins/wmmsens
 
-# Doug Goldstein <cardoe@gentoo.org> (10 Mar 2010)
-# Explicitly mask these as per NVIDIA's request
-# These drivers will destroy your video card
-# http://www.nvnews.net/vbulletin/announcement.php?f=14
-=x11-drivers/nvidia-drivers-195.36.03
-=x11-drivers/nvidia-drivers-195.36.08
-
 # Jeroen Roovers <jer@gentoo.org> (10 Mar 2010)
 # Masked until the blockers of bug #305781 are fixed
 net-analyzer/iptraf-ng
@@ -226,10 +251,6 @@ net-voip/wengophone-bin
 =sci-libs/blas-atlas-3.9.23-r1
 =sci-libs/lapack-atlas-3.9.23-r1
 
-# Lance Albertson <ramereth@gentoo.org> (08 Mar 2010)
-# Mask development branch 
-=dev-db/mongodb-1.3*
-
 # Lance Albertson <ramereth@gentoo.org> (07 Mar 2010)
 # Cfengine 3 is mostly incompatible with Cfengine 2, so lets mask 3.x
 # for a while until a sane upgrade path can be assumed in Gentoo.
@@ -243,14 +264,6 @@ sys-libs/com_err
 sys-libs/ss
 <sys-libs/e2fsprogs-libs-1.41.8
 <sys-fs/e2fsprogs-1.41.9
-
-# Samuli Suominen <ssuominen@gentoo.org> (06 Mar 2010)
-# Masked for QA, treecleaners, security
-#
-# Internal copy of vuln. dev-libs/expat
-#
-# Masked for removal in 60 days
-dev-lisp/cl-albert
 
 # Fabian Groffen <grobian@gentoo.org> (06 Mar 2010)
 # Masked for security issues and discontinued interest from upstream to
@@ -291,6 +304,7 @@ dev-lang/gnu-smalltalk
 net-irc/ircd-hybrid
 
 # Samuli Suominen <ssuominen@gentoo.org> (03 Mar 2010)
+# Justin Bronder <jsbronder@gentoo.org> (06 Apr 2010)
 # Masked for QA, security
 #
 # After over an year of no word from maintainers
@@ -300,38 +314,9 @@ net-irc/ircd-hybrid
 # http://bugs.gentoo.org/show_bug.cgi?id=252398
 #
 # Masked for removal in 60 days
-app-shells/pdsh
-
-# Samuli Suominen <ssuominen@gentoo.org> (03 Mar 2010)
-# Masked for QA, security
 #
-# Internal copies of vuln. libpng, zlib
-#
-# Masked for removal in 60 days
-net-nntp/bnr2
-
-# Samuli Suominen <ssuominen@gentoo.org> (03 Mar 2010)
-# Masked for QA, security
-#
-# Internal copy of vuln. libltdl, CVE-2009-3736
-#
-# Bugs 252402, 296953, 296954, 215252, 297649
-#
-# Masked for removal in 60 days
-net-libs/libnetdude
-net-analyzer/netdude
-net-im/naim
-
-# Samuli Suominen <ssuominen@gentoo.org> (03 Mar 2010)
-# Masked for QA, security
-#
-# Internal copies of vuln. libraries
-# GLSA 200606-11, GLSA 200807-03 and likely more
-#
-# http://bugs.gentoo.org/show_bug.cgi?id=247363
-#
-# Removed in 60 days
-dev-lang/squeak
+# Update:  Libtool unbundled as of 2.18-r1.
+<app-shells/pdsh-2.18-r1
 
 # Jeroen Roovers <jer@gentoo.org> (28 Feb 2010)
 # Development release
@@ -343,10 +328,6 @@ dev-lang/squeak
 # gir-repository has problems being a nice package too
 dev-libs/gobject-introspection
 dev-libs/gir-repository
-
-# Patrick Lauer <patrick@gentoo.org> (26 Feb 2010)
-# Unsplit samba ebuild. might need some testing :)
-=net-fs/samba-3.4.6
 
 # Theo Chatzimichos <tampakrap@gentoo.org> (26 Feb 2010)
 # Mask knetworkmanager as it is crashy, unusable, under
@@ -362,13 +343,8 @@ dev-perl/Email-MIME-Creator
 dev-perl/Email-Simple-Creator
 # Merged in dev-perl/XML-LibXML (#304685)
 dev-perl/XML-LibXML-Common
-
-# Krzysztof Pawlik <nelchael@gentoo.org> (23 Feb 2010)
-# Masked for testing.
->=dev-java/resin-servlet-api-4.0.3
->=www-servers/resin-4.0.3
->=www-apache/mod_caucho-4.0.3
-dev-java/mojarra
+# Merged in dev-perl/Class-XSAccessor (#275520)
+dev-perl/Class-XSAccessor-Array
 
 # Robert Piasek <dagger@gentoo.org> (23 Feb 2010)
 # Masking libmapi as it depends on masked samba4
@@ -391,11 +367,6 @@ dev-java/mojarra
 # Samuli Suominen <ssuominen@gentoo.org> (16 Feb 2010)
 # API breakage.   Masked for testing.
 >=x11-libs/libxklavier-5
-
-# Sven Wegener <swegener@gentoo.org> (14 Feb 2010)
-# Masked for removal in 30 days. Discontinued by upstream.
-# Successor is dev-db/mysql-workbench
-dev-db/mysql-gui-tools
 
 # Ben de Groot <yngwin@gentoo.org> (09 Feb 2010)
 # Mask pending removal on 2010-03-09. Upstream dead, open bug #227717,
@@ -434,17 +405,9 @@ dev-db/mysql-community
 >=dev-haskell/haddock-2.6
 =app-admin/haskell-updater-1*
 
-# Patrick Lauer <patrick@gentoo.org> (26 Jan 2010)
-# Masking release candidates
->=net-fs/samba-3.5.0_rc2
->=net-fs/samba-libs-3.5.0_rc2
->=net-fs/samba-server-3.5.0_rc2
->=net-fs/samba-client-3.5.0_rc2
-
 # Nirbheek Chauhan <nirbheek@gentoo.org> (25 Jan 2010)
 # Final rc of networkmanager-0.8 and friends
 # Mask for testing
-=net-misc/networkmanager-0.7.999*
 =net-misc/networkmanager-pptp-0.7.999*
 =net-misc/networkmanager-vpnc-0.7.999*
 =net-misc/networkmanager-openvpn-0.7.999*
@@ -465,12 +428,6 @@ dev-ruby/activerecord-jdbc
 # since long time included in media-tv/gentoo-vdr-scripts
 media-tv/vdr-dvd-scripts
 media-tv/vdrplugin-rebuild
-
-# Tony Vroon <chainsaw@gentoo.org> (19 Jan 2010)
-# Alpha releases, you are welcome to help us test
-# and report bugs *upstream* at http://jira.atheme.org
-=media-plugins/audacious-plugins-2.3_alpha*
-=media-sound/audacious-2.3_alpha*
 
 # Doug Goldstein <cardoe@gentoo.org> (18 Jan 2010)
 # masked for testing and development
@@ -517,18 +474,12 @@ net-libs/libjingle
 #dev-db/libpq
 #dev-db/postgresql
 
-# Patrick Lauer <patrick@gentoo.org> (07 Jan 2010)
-# Upstream changed all options around again, so masking until someone fixes it
-=app-misc/emelfm2-0.7.1
-
 # Pawel Hajdan jr <phajdan.jr@gentoo.org> (07 Jan 2010)
 # Dev channel releases are only for people who are developers or want more
 # experimental features and accept a more unstable release.
-~www-client/chromium-5.0.342.5
-~www-client/chromium-5.0.356.0
-~www-client/chromium-5.0.360.0
 ~www-client/chromium-5.0.360.5
 ~www-client/chromium-5.0.366.2
+~www-client/chromium-5.0.371.0
 
 # Diego E. Pettenò <flameeyes@gentoo.org> (07 Jan 2010)
 #  on behalf of QA team
@@ -543,10 +494,6 @@ net-libs/libjingle
 # Patrick Lauer <patrick@gentoo.org> (06 Jan 2010)
 # New xen kernel needs more testing.
 =sys-kernel/xen-sources-2.6.31*
-
-# Alexis Ballier <aballier@gentoo.org> (03 Jan 2010)
-# Release candidates
->=dev-lang/ocaml-3.11.2_rc
 
 # Markos Chandras <hwoarang@gentoo.org> (26 Dec 2009)
 # keeping rc ebuilds masked
@@ -647,20 +594,17 @@ games-fps/quake3-urbanterror
 # See bug #264233 for reference
 =net-firewall/ipsec-tools-0.7.2
 
-# Gilles Dartiguelongue <eva@gentoo.org> (01 Nov 2009)
-# Broken on so many setups it is just insane.
-# 0.7 is API/ABI incompatible but is the way to go.
-# Masking to lower maintainance headache, bug #291501.
-=app-misc/tracker-0.6*
-
 # Samuli Suominen <ssuominen@gentoo.org> (24 Oct 2009)
 # Masked for testing. Waiting for xfdesktop release.
+#
 # See, http://bugs.gentoo.org/show_bug.cgi?id=289867
 # Relatively safe to unmask and test.
+#
+# Note that you need USE flags menu-plugin and thunar
+# disabled for old xfdesktop to test these
 >=xfce-base/exo-0.5.1
 >=xfce-base/xfce4-settings-4.7.0
 >=xfce-base/thunar-1.1.0
->=xfce-base/xfdesktop-4.6.1-r2
 >=xfce-extra/thunar-media-tags-plugin-0.1.2-r1
 >=xfce-base/xfce4-panel-4.7.0
 xfce-extra/thunar-vfs
@@ -676,10 +620,6 @@ xfce-extra/thunar-vfs
 # guest).
 app-emulation/lxc
 
-# Dirkjan Ochtman <djc@gentoo.org> (21 Oct 2009)
-# Needs some more testing before unleashing on the masses.
-=dev-libs/boost-1.40.0
-
 # Peter Alfredsen <loki_val@gentoo.org> (21 Oct 2009)
 # Masked because this needs a patch to be applied to portage
 # to not install the kitchensink and everything else
@@ -693,16 +633,6 @@ sys-auth/pam_keystore
 # Markus Meier <maekke@gentoo.org> (03 Oct 2009)
 # mask libpano13 beta versions for testing
 >=media-libs/libpano13-2.9.15_beta3
-
-# Jory A. Pratt <anarchy@gentoo.org> (24 Sep 2009)
-# Much testing needed, not ready for mainline by any means.
->=www-client/seamonkey-2.0_beta2
-
-# Tony Vroon <chainsaw@gentoo.org> (14 Sep 2009)
-# Alpha releases. Unmask at your own risk, bugs
-# go upstream to http://jira.atheme.org/
-=media-sound/audacious-2.2_alpha*
-=media-plugins/audacious-plugins-2.2_alpha*
 
 # Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (13 Sep 2009)
 # Masked to enforce upgrade which looks like downgrade.
@@ -807,11 +737,6 @@ net-misc/amazonmp3
 # Peter Alfredsen <loki_val@gentoo.org> (01 June 2009)
 # Development version, Work-In-Progress
 =media-sound/banshee-1.5*
-=media-plugins/banshee-community-extensions-1.5*
-
-# Peter Volkov <pva@gentoo.org> (17 May 2009)
-# Masked development/git sources
-=sys-kernel/openvz-sources-2.6.27.9999
 
 # Diego E. Pettenò <flameeyes@gentoo.org> (27 Apr 2009)
 # Mask libopensync 0.38 since no plugin was fixed for this
@@ -858,15 +783,6 @@ app-portage/udept
 # Expect (many) breakages and incompatibilities.
 # Want to help testing? #gentoo-ruby on Freenode
 >=dev-lang/ruby-1.9.1
-
-# Nirbheek Chauhan <nirbheek@gentoo.org> (17 Mar 2009)
-# Session saving isn't implemented in >=gnome-session-2.24
-# And other stuff listed here needs gnome-session-2.24
-# GNOME bug #552387
-=gnome-base/gnome-session-2.24*
-=gnome-base/gnome-keyring-2.24*
-=app-crypt/seahorse-2.24*
-=app-crypt/seahorse-plugins-2.24*
 
 # Matti Bickel <mabi@gentoo.org> (1 Mar 2009)
 # Mask testing branch
@@ -959,31 +875,20 @@ games-fps/doom3-chextrek
 games-fps/doom3-data
 games-fps/doom3-demo
 games-fps/doom3-ducttape
-games-fps/doom3-dungeon
 games-fps/doom3-eventhorizon
 games-fps/doom3-hellcampaign
 games-fps/doom3-inhell
 games-fps/doom3-lms
 games-fps/doom3-mitm
-games-fps/doom3-opencoop
 games-fps/doom3-phantasm
 games-fps/doom3-roe
 games-fps/quake4-bin
 games-fps/quake4-data
-games-fps/quake4-deltactf
 games-fps/quake4-demo
 
 # Alon Bar-Lev <alonbl@gentoo.org> (23 Feb 2008)
 # These are not yet stable.
 sys-fs/redirfs
-
-# Chris Gianelloni <wolf31o2@gentoo.org> (20 Feb 2008)
-# Masking these so people will quit installing them on their systems.  These
-# packages are designed for use on the LiveCD only and will do unspeakably
-# horrible and unexpected things on a normal system.  YOU HAVE BEEN WARNED!!!
-=app-misc/livecd-tools-1.2
-#sys-apps/hwsetup
-#x11-misc/mkxf86config
 
 # Raúl Porcel <armin76@gentoo.org> (18 Feb 2008)
 # Probably breaks a lot of stuff, needs testing
@@ -1008,16 +913,10 @@ sys-fs/redirfs
 =app-pda/libopensync-plugin-google-calendar-9999
 =app-pda/libopensync-plugin-gpe-9999
 =app-pda/libopensync-plugin-irmc-9999
-=app-pda/libopensync-plugin-kdepim-9999
 =app-pda/libopensync-plugin-palm-9999
 =app-pda/libopensync-plugin-python-9999
 =app-pda/libopensync-plugin-syncml-9999
 =app-pda/libopensync-plugin-vformat-9999
-
-# Tristan Heaven <nyhm@gentoo.org> (25 Apr 2007)
-# Masked until it's updated to use >=wxpython-2.6
-# https://bugs.gentoo.org/show_bug.cgi?id=115079
-games-rpg/openrpg
 
 # MATSUU Takuto <matsuu@gentoo.org> (5 Apr 2007)
 # to be tested, seems unstable
@@ -1036,14 +935,6 @@ games-rpg/openrpg
 # Stefan Cornelius <dercorny@gentoo.org> (7 Mar 2007)
 # Masking net-misc/xsupplicant due to security bug 154995
 net-misc/xsupplicant
-
-# Chris Gianelloni <wolf31o2@gentoo.org> (15 Jan 2007)
-# The Armagetron Advanced packages in Gentoo's repository are obsolete and will
-# likely remain masked until they can be revisted to be maintainable.  Until
-# that time, the upstream team has created their own overlay:
-#     emerge -a layman
-#     layman -ka armagetron
-<games-action/armagetronad-0.2.8.3.1
 
 # Stefaan De Roeck <stefaan@gentoo.org> (09 Sep 2006)
 # 1.5.x is a development branch, people should test 1.4.x by default

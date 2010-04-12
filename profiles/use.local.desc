@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5462 2010/04/05 15:47:52 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5477 2010/04/11 21:07:52 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -40,7 +40,6 @@ app-admin/conky:apcupsd - enable support for sys-power/apcupsd
 app-admin/conky:audacious - enable monitoring of music played by media-sound/audacious
 app-admin/conky:eve - enable support for the eve-online skill monitor
 app-admin/conky:iostats - enable support for per-task I/O statistics
-app-admin/conky:ipv6 - disable support for tcp (ip4) port monitoring
 app-admin/conky:lua - enable if you want Lua scripting support
 app-admin/conky:lua-cairo - enable if you want Lua Cairo bindings for Conky (also enables lua support)
 app-admin/conky:lua-imlib - enable if you want Lua Imlib2 bindings for Conky (also enables lua and imlib support)
@@ -50,7 +49,6 @@ app-admin/conky:mpd - enable monitoring of music controlled by media-sound/mpd
 app-admin/conky:nano-syntax - enable syntax highlighting for app-editors/nano
 app-admin/conky:nvidia - enable reading of nvidia card temperature sensors via media-video/nvidia-settings
 app-admin/conky:portmon - enable support for tcp (ip4) port monitoring
-app-admin/conky:smapi - enable support for smapi
 app-admin/conky:thinkpad - enable support for IBM/Lenovo notebooks
 app-admin/conky:weather-metar - enable support for metar weather service
 app-admin/conky:weather-xoap - enable support for metar and xoap weather service
@@ -391,6 +389,7 @@ app-misc/beagle:xscreensaver - Allow Beagle to detect when the screensaver is sw
 app-misc/digitemp:ds2490 - Build support for the ds2490 sensor
 app-misc/digitemp:ds9097 - Build support for the ds9097 sensor
 app-misc/digitemp:ds9097u - Build support for the ds9097u sensor
+app-misc/emelfm2:udev - Enable udev support using sys-fs/udisks
 app-misc/fdupes:md5sum-external - Use external md5sum program instead of bundled md5sum routines
 app-misc/freemind:groovy - Build plugin for scripting via Groovy
 app-misc/freemind:latex - Build plugin for inserting mathematical formulas in LaTeX syntax
@@ -654,8 +653,6 @@ dev-db/mysql-community:raid - Deprecated option, removed in the 5.0 series
 dev-db/mysql-community:test - Install upstream testsuites for end use.
 dev-db/mysql-community:xtradb - Add experimental support for Percona's InnoDB replacement: XtraDB
 dev-db/mysql-connector-c++:gcov - Build coverage support
-dev-db/mysql-gui-tools:administrator - Build and install MySQL Administrator
-dev-db/mysql-gui-tools:query-browser - Build and install MySQL Query Browser
 dev-db/postgis:geos - Add the sci-libs/geos library for exact topological tests
 dev-db/postgis:proj - Add the sci-libs/proj library for reprojection features
 dev-db/postgresql:pg-intdatetime - Enable --enable-integer-datetimes configure option, which changes PG to use 64-bit integers for timestamp storage
@@ -1015,6 +1012,9 @@ dev-scheme/guile:discouraged -  (implied by deprecated) enable merely discourage
 dev-scheme/guile:elisp - Enable Emacs Lisp support
 dev-scheme/guile:networking - Include networking interfaces
 dev-scheme/guile:regex -  Include regular expression interfaces
+dev-scheme/hop:debug - Enables building with debug symbols
+dev-scheme/hop:ssl - Enable SSL support for hop
+dev-scheme/hop:threads - Enable thread support for hop, it depends on dev-scheme/bigloo built with threads use flag.
 dev-scheme/kawa:awt - Assume AWT is available
 dev-scheme/kawa:echo2 - Enable support for the Echo2 web toolkit with dev-java/echo2
 dev-scheme/kawa:frontend - Build "kawa" front-end program using sys-libs/readline
@@ -1149,7 +1149,7 @@ games-board/grhino:gtp - Install the GTP (Go/Game Text Protocol) frontend
 games-board/pysol:extra-cardsets - Install extra cardsets
 games-board/pysolfc:extra-cardsets - Install extra cardsets
 games-board/pysolfc:sound - Enable sound support usingdev-python/pygame
-games-board/spider:xaw - Enable athena widgets
+games-board/spider:athena - Enable athena widgets
 games-board/xboard:default-font - Install the default font that xboard uses
 games-board/xboard:zippy - Enable experimental zippy client
 games-emulation/generator:sdlaudio - Enable SDL Audio
@@ -1494,6 +1494,7 @@ mail-mta/exim:lmtp - Adds support for lmtp
 mail-mta/exim:mbx - Adds support for UW's mbx format
 mail-mta/exim:spf - Adds support for Sender Policy Framework
 mail-mta/exim:srs - Adds support for Sender Rewriting Scheme
+mail-mta/msmtp:mta - Enable this to install as system-wide MTA
 mail-mta/netqmail:authcram - Enable AUTHCRAM support
 mail-mta/netqmail:gencertdaily - Generate SSL certificates daily instead of hourly
 mail-mta/netqmail:highvolume - Prepare netqmail for high volume servers
@@ -1625,6 +1626,8 @@ media-libs/libdc1394:juju - Use the new juju firewire stack in the Linux kernel
 media-libs/libggi:vis - Enables sparc vis support for libggi
 media-libs/libgphoto2:bonjour - Adds Bonjour/Zeroconf support.
 media-libs/libgpod:gtk - Enables ArtWorkDB support (including Photos and album covers)
+media-libs/libgpod:iphone - Enables support for the iPhone and iPod touch
+media-libs/libgpod:udev - Enable udev support
 media-libs/libmikmod:raw - Enable raw file writer plug-in
 media-libs/libmp4v2:utils - Install command-line utilities
 media-libs/libquicktime:schroedinger - Enable Dirac video support (an advanced royalty-free video compression format) via libschroedinger (high-speed implementation in C of the Dirac codec).
@@ -1867,6 +1870,7 @@ media-sound/sonata:lyrics - Support for lyrics fetching
 media-sound/sonata:trayicon - Enable support for trayicon
 media-sound/sonic-visualiser:id3tag - Enables ID3 tagging with id3tag library
 media-sound/sox:id3tag - Enables ID3 tagging with id3tag library
+media-sound/squeezeboxserver:aac - Enable playback support for AAC (.m4a) encoded files
 media-sound/squeezeboxserver:alac - Enable support for alac
 media-sound/squeezeboxserver:bonjour - Enable support for bonjour
 media-sound/squeezecenter:aac - Enable playback support for AAC (.m4a) encoded files
@@ -1983,6 +1987,7 @@ media-video/ffmpeg2theora:kate - Adds support for Ogg Kate subtitles via libkate
 media-video/ffprobe:perl - Installs tools written in perl to produce plots based on video frame bitrate and size
 media-video/gpac:amr - Adaptive Multi-Rate Audio support (commonly used in telephony)
 media-video/griffith:csv - Enable proper support for csv import (respectively auto-detection encoding of csv files)
+media-video/gxine:udev - Use sys-fs/udev for autodiscovery of sound devices; this replaces the deprecated sys-apps/hal autodiscovery code.
 media-video/h264enc:ogm - Support for OGM container format
 media-video/kino:gpac - Enable GPAC support when exporting to 3GPP format
 media-video/kmplayer:npp - Compile the npp backend that plays xembed style browser plugins.
@@ -2400,7 +2405,6 @@ net-im/kadu:phonon - Enable phonon audio plugin
 net-im/kadu:speech - Enables speech module
 net-im/kmess:konqueror - Enable integration with konqueror
 net-im/mcabber:otr -  Enable encrypted conversations using Off-The-Records messaging 
-net-im/naim:screen - Enable screen support
 net-im/pidgin:bonjour - Enable bonjour (zeroconf) support
 net-im/pidgin:gadu - Enable Gadu Gadu protocol support
 net-im/pidgin:groupwise - Enable Novell Groupwise protocol support
@@ -2475,6 +2479,7 @@ net-irc/weechat:irc - Enable IRC protocol support.
 net-irc/weechat:logger - Enable support for logging.
 net-irc/weechat:relay - Enable relay plugin (experimental)
 net-irc/weechat:scripts - Build infrastructure for scripting.
+net-irc/xchat:ntlm - Enable NTLM authentication
 net-irc/xchat:xchatdccserver - Enables support for the /dccserver command via a patch
 net-irc/xchat:xchatnogtk - Disables building the GTK front end to XChat
 net-irc/xchat-gnome:sound - Enable sound event support with media-libs/libcanberra
@@ -2805,9 +2810,9 @@ net-p2p/mldonkey:guionly - enable client build only
 net-p2p/mldonkey:magic - enable use of libmagic
 net-p2p/rtorrent:daemon - Uses app-misc/screen to daemonize this application 
 net-p2p/transmission:sound - Enable sound event support with media-libs/libcanberra
+net-print/hplip:X - Enables scanner GUI dependencies with USE=scanner where media-gfx/xsane is preferred over media-gfx/sane-frontends
 net-print/hplip:doc - Build documentation
 net-print/hplip:fax - Enable fax on multifunction devices which support it
-net-print/hplip:gtk - Enable GTK+ dependencies, currently only the scanner GUI with USE=scanner
 net-print/hplip:hpcups - Build the hpcups driver for cups (by HP)
 net-print/hplip:hpijs - Build the IJS driver for cups (Foomatic)
 net-print/hplip:libnotify - Enables desktop notifications
@@ -3140,6 +3145,7 @@ sys-apps/smartmontools:minimal - Do not install the monitoring daemon and associ
 sys-apps/tuxonice-userui:fbsplash - Add support for framebuffer splash
 sys-apps/ucspi-ssl:tls - Add TLS support (see also http://www.suspectclass.com/~sgifford/ucspi-tls/)
 sys-apps/usbutils:network-cron - Monthly cronjob the update-usbids script
+sys-apps/usermode-utilities:fuse - Build tools (currently umlmount) needing fuse
 sys-apps/util-linux:loop-aes - include support for Loop AES encryption
 sys-apps/util-linux:perl - install the chkdupexe helper script
 sys-apps/v86d:x86emu - Use x86emu for Video BIOS calls
@@ -3292,6 +3298,7 @@ sys-fs/quota:rpc - Enable quota interaction via RPC
 sys-fs/udev:devfs-compat - Install rules for devfs compatible device names
 sys-fs/udev:extras - Compile udev-extras requiring external dependencies
 sys-fs/udev:old-hd-rules - Install rules for /dev/hd* devices, removed upstream at udev-148
+sys-fs/udisks:remote-access - Control whether connections from other clients over LAN are allowed
 sys-fs/unionfs:nfs - Adds support for NFS file system
 sys-kernel/dracut:dmraid - Add support for dmraid devices, also known as ATA-RAID, or Fake RAID.
 sys-kernel/dracut:iscsi - Add support for iSCSI

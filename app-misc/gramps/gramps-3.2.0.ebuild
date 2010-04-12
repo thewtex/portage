@@ -1,8 +1,10 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/gramps/gramps-3.2.0.ebuild,v 1.1 2010/03/18 18:08:23 fauli Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/gramps/gramps-3.2.0.ebuild,v 1.3 2010/04/08 07:25:55 fauli Exp $
 
 EAPI=2
+
+PYTHON_DEPEND="2:2.5"
 
 inherit autotools eutils gnome2 python
 
@@ -15,8 +17,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 IUSE="gnome mozembed reports spell webkit"
 
-RDEPEND=">=dev-lang/python-2.5
-	dev-python/bsddb3
+RDEPEND="dev-python/bsddb3
 	>=dev-python/pygtk-2.10.0
 	x11-misc/xdg-utils
 	gnome-base/librsvg:2
@@ -36,6 +37,7 @@ DOCS="NEWS README TODO"
 
 pkg_setup() {
 	G2CONF="${G2CONF} --disable-mime-install"
+	python_set_active_version 2
 }
 
 src_prepare() {

@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/vice/vice-2.2.ebuild,v 1.2 2010/03/23 23:58:01 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/vice/vice-2.2.ebuild,v 1.4 2010/04/11 17:04:29 phajdan.jr Exp $
 
 EAPI=2
 inherit autotools eutils games
@@ -11,7 +11,7 @@ SRC_URI="http://www.zimmers.net/anonftp/pub/cbm/crossplatform/emulators/VICE/${P
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="~amd64 ~ppc ~sparc x86"
 IUSE="Xaw3d alsa gnome nls png readline sdl ipv6 memmap ethernet oss zlib X gif jpeg xv dga xrandr ffmpeg lame pulseaudio"
 
 RDEPEND="
@@ -69,6 +69,11 @@ src_prepare() {
 		-e "/VICEDIR=/s:=.*:=\"${GAMES_DATADIR}/${PN}\";:" \
 		configure.in \
 		|| die "sed failed"
+	sed -i \
+		-e "s:\(#define LIBDIR \).*:\1\"${GAMES_DATADIR}/${PN}\":" \
+		-e "s:\(#define DOCDIR \).*:\1\"/usr/share/doc/${PF}\":" \
+		src/arch/unix/archdep.h \
+		src/arch/sdl/archdep_unix.h
 	AT_NO_RECURSIVE=1 eautoreconf
 }
 
