@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/chromium-9999.ebuild,v 1.37 2010/04/05 15:23:11 phajdan.jr Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/chromium-9999.ebuild,v 1.41 2010/04/11 17:54:34 phajdan.jr Exp $
 
 EAPI="2"
 inherit eutils flag-o-matic multilib portability subversion toolchain-funcs
@@ -14,7 +14,7 @@ EGCLIENT_REPO_URI="http://src.chromium.org/svn/trunk/src/"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-IUSE="bindist +ffmpeg +plugins-symlink"
+IUSE="bindist +plugins-symlink"
 
 RDEPEND="app-arch/bzip2
 	>=dev-libs/libevent-1.4.13
@@ -25,7 +25,7 @@ RDEPEND="app-arch/bzip2
 	>=media-libs/alsa-lib-1.0.19
 	media-libs/jpeg:0
 	media-libs/libpng
-	ffmpeg? ( >=media-video/ffmpeg-0.5_p21602 )
+	>=media-video/ffmpeg-0.5_p21602
 	sys-libs/zlib
 	>=x11-libs/gtk+-2.14.7
 	x11-libs/libXScrnSaver"
@@ -135,13 +135,10 @@ src_prepare() {
 	epatch "${FILESDIR}"/${PN}-drop_sse2.patch
 	if ! use bindist; then
 		# Allow use of MP3/MPEG-4 audio/video tags with our system ffmpeg
-		epatch "${FILESDIR}"/${PN}-ffmpeg.patch
+		epatch "${FILESDIR}"/${PN}-20100122-ubuntu-html5-video-mimetypes.patch
 	fi
 	# Fix build failure with libpng-1.4, bug 310959.
 	epatch "${FILESDIR}"/${PN}-libpng-1.4.patch
-	# Prevent the make build from filling entire disk space on some systems,
-	# bug 297273.
-	epatch "${FILESDIR}"/${PN}-fix-make-build.patch
 
 	# Disable prefixing to allow linking against system zlib
 	sed -e '/^#include "mozzconf.h"$/d' \
@@ -167,31 +164,33 @@ EOF
 	export HOME="${S}"
 
 	# Configuration options (system libraries)
-	local myconf="-Duse_system_zlib=1 -Duse_system_bzip2=1 -Duse_system_libevent=1 -Duse_system_libjpeg=1 -Duse_system_libpng=1 -Duse_system_libxml=1 -Duse_system_libxslt=1"
+	local myconf="-Duse_system_zlib=1 -Duse_system_bzip2=1 -Duse_system_ffmpeg=1 -Duse_system_libevent=1 -Duse_system_libjpeg=1 -Duse_system_libpng=1 -Duse_system_libxml=1 -Duse_system_libxslt=1"
 	# -Duse_system_sqlite=1 : http://crbug.com/22208
 	# Others still bundled: icu (not possible?), hunspell (changes required for sandbox support)
 
 	# Sandbox paths
 	myconf="${myconf} -Dlinux_sandbox_path=${CHROMIUM_HOME}/chrome_sandbox -Dlinux_sandbox_chrome_path=${CHROMIUM_HOME}/chrome"
 
-	if use amd64 ; then
+	# Disable the V8 snapshot. It breaks the build on hardened (bug #301880),
+	# and the performance gain isn't worth it.
+	myconf="${myconf} -Dv8_use_snapshot=0"
+
+	# Use target arch detection logic from bug #296917.
+	local myarch="$ABI"
+	[[ $myarch = "" ]] && myarch="$ARCH"
+
+	if [[ $myarch = amd64 ]] ; then
 		myconf="${myconf} -Dtarget_arch=x64"
-	fi
-
-	if use x86 ; then
+	elif [[ $myarch = x86 ]] ; then
 		myconf="${myconf} -Dtarget_arch=ia32"
-	fi
-
-	if use arm; then
+	elif [[ $myarch = arm ]] ; then
 		myconf="${myconf} -Dtarget_arch=arm -Ddisable_nacl=1 -Dlinux_use_tcmalloc=0"
+	else
+		die "Failed to determine target arch, got '$myarch'."
 	fi
 
 	if [[ "$(gcc-major-version)$(gcc-minor-version)" == "44" ]]; then
 		myconf="${myconf} -Dno_strict_aliasing=1 -Dgcc_version=44"
-	fi
-
-	if use ffmpeg; then
-		myconf="${myconf} -Duse_system_ffmpeg=1"
 	fi
 
 	build/gyp_chromium -f make build/all.gyp ${myconf} --depth=. || die "gyp failed"
@@ -230,13 +229,11 @@ src_install() {
 	newman out/Release/chrome.1 chrome.1
 	newman out/Release/chrome.1 chromium.1
 
-	if use ffmpeg; then
-		# Chromium looks for these in its folder
-		# See media_posix.cc and base_paths_linux.cc
-		dosym /usr/$(get_libdir)/libavcodec.so.52 ${CHROMIUM_HOME}
-		dosym /usr/$(get_libdir)/libavformat.so.52 ${CHROMIUM_HOME}
-		dosym /usr/$(get_libdir)/libavutil.so.50 ${CHROMIUM_HOME}
-	fi
+	# Chromium looks for these in its folder
+	# See media_posix.cc and base_paths_linux.cc
+	dosym /usr/$(get_libdir)/libavcodec.so.52 ${CHROMIUM_HOME}
+	dosym /usr/$(get_libdir)/libavformat.so.52 ${CHROMIUM_HOME}
+	dosym /usr/$(get_libdir)/libavutil.so.50 ${CHROMIUM_HOME}
 
 	# Plugins symlink, optional wrt bug #301911
 	if use plugins-symlink; then
