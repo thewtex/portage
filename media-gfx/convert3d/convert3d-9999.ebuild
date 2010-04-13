@@ -12,7 +12,7 @@ HOMEPAGE="http://www.itksnap.org/pmwiki/pmwiki.php?n=Convert3D.Convert3D"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="sci-libs/itk"
