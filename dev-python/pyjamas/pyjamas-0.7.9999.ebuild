@@ -46,7 +46,7 @@ src_install() {
 	distutils_src_install
 
 	dobin bin/pyjsbuild bin/pyjscompile
-	doman debian/pyjsbuild.1 # QA: Doesn't exist in 0.7 branch
+	# doman debian/pyjsbuild.1 # QA: Doesn't exist in 0.7 branch
 	use doc && dohtml -r doc/*
 }
 
