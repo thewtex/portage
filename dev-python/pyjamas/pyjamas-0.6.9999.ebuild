@@ -8,7 +8,6 @@ PYTHON_DEPEND="2"
 
 inherit distutils python
 
-DESCRIPTION="Stand-alone python to javascript compiler"
 HOMEPAGE="http://pyjs.org"
 
 # Mmm...
@@ -26,6 +25,7 @@ else
 	KEYWORDS="~x86"
 fi
 
+DESCRIPTION="Stand-alone python to javascript compiler"
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="doc"
