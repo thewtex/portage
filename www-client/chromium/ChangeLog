@@ -1,6 +1,33 @@
 # ChangeLog for www-client/chromium
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/ChangeLog,v 1.77 2010/04/05 15:23:11 phajdan.jr Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/ChangeLog,v 1.82 2010/04/11 17:54:34 phajdan.jr Exp $
+
+  11 Apr 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-5.0.371.0.ebuild, chromium-9999.ebuild:
+  Fix the build on hardened by disabling V8 snapshot, bug #301880 by Damien
+  <damienkallison@gmail.com>
+
+  11 Apr 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-5.0.371.0.ebuild, chromium-9999.ebuild:
+  Apply arch detection logic from bug #296917 by ferret
+  <ferret@explodingferret.com>
+
+  09 Apr 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-5.0.371.0.ebuild, chromium-9999.ebuild:
+  Make ffmpeg support required, starting with the most recent versions.
+
+*chromium-5.0.371.0 (09 Apr 2010)
+
+  09 Apr 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +chromium-5.0.371.0.ebuild, chromium-9999.ebuild:
+  Version bump for dev channel release. Use the old patch for ffmpeg, the
+  new one was broken. Drop the make build patch, it no longer applies.
+
+*chromium-5.0.342.9 (08 Apr 2010)
+
+  08 Apr 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +chromium-5.0.342.9.ebuild:
+  Version bump for beta channel release.
 
   05 Apr 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
   chromium-5.0.342.7.ebuild, chromium-5.0.360.5.ebuild,

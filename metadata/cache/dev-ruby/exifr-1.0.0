@@ -1,0 +1,22 @@
+test? ( virtual/ruby-test-unit[ruby_targets_ruby18?,ruby_targets_ruby19?,ruby_targets_jruby?] ) ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ruby19? ( dev-lang/ruby:1.9 ) ruby_targets_jruby? ( dev-java/jruby ) doc? ( dev-ruby/rake[ruby_targets_ruby18?,ruby_targets_ruby19?,ruby_targets_jruby?] ) test? ( dev-ruby/rake[ruby_targets_ruby18?,ruby_targets_ruby19?,ruby_targets_jruby?] ) test? ( virtual/rubygems[ruby_targets_ruby18?,ruby_targets_ruby19?,ruby_targets_jruby?] )
+ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ruby19? ( dev-lang/ruby:1.9 ) ruby_targets_jruby? ( dev-java/jruby ) virtual/rubygems[ruby_targets_ruby18?,ruby_targets_ruby19?,ruby_targets_jruby?]
+0
+mirror://rubygems/exifr-1.0.0.gem
+
+http://exifr.rubyforge.org/
+MIT
+A library to read EXIF info from JPEG and TIFF images.
+~amd64 ~x86
+eutils multilib portability ruby-fakegem ruby-ng toolchain-funcs
+test ruby_targets_ruby18 ruby_targets_ruby19 ruby_targets_jruby doc test
+
+
+
+2
+
+compile configure install prepare setup test unpack
+
+
+
+
+

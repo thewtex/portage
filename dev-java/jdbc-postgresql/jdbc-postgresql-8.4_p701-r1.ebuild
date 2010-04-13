@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jdbc-postgresql/jdbc-postgresql-8.4_p701-r1.ebuild,v 1.1 2010/04/05 22:59:45 caster Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jdbc-postgresql/jdbc-postgresql-8.4_p701-r1.ebuild,v 1.3 2010/04/11 17:11:48 caster Exp $
 
 EAPI="2"
 JAVA_PKG_IUSE="doc source"
@@ -37,6 +37,8 @@ S="${WORKDIR}/${MY_P}"
 EANT_DOC_TARGET="publicapi"
 
 java_prepare() {
+	# bug 314647
+	epatch "${FILESDIR}/${P}-stray-com.sun-import.patch"
 	# needed for src_test
 	java-ant_rewrite-classpath
 }

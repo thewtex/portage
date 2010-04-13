@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/ccpn/ccpn-2.1.3.1_p100406.ebuild,v 1.1 2010/04/06 13:29:58 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/ccpn/ccpn-2.1.3.1_p100406.ebuild,v 1.2 2010/04/09 06:09:40 jlec Exp $
 
 EAPI="3"
 PYTHON_DEPEND="2:2.5"
@@ -27,6 +27,8 @@ RDEPEND="
 	dev-lang/tk
 	dev-python/numpy
 	dev-tcltk/tix
+	x11-libs/libXext
+	x11-libs/libX11
 	opengl? ( virtual/glut )"
 DEPEND="${RDEPEND}"
 RESTRICT_PYTHON_ABIS="2.4 3.*"

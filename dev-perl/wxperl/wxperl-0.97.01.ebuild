@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/wxperl/wxperl-0.97.01.ebuild,v 1.1 2010/02/11 20:00:36 tove Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/wxperl/wxperl-0.97.01.ebuild,v 1.3 2010/04/09 07:08:14 tove Exp $
 
 EAPI=2
 
