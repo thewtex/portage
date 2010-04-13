@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5477 2010/04/11 21:07:52 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5480 2010/04/12 18:07:50 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -760,8 +760,6 @@ dev-java/ant:resolver - Enable Apache Resolver Ant tasks
 dev-java/ant:testutil - Enable optional test util classes
 dev-java/antlr:gunit -  gUnit is a "Unit Test" framework for ANTLR grammars 
 dev-java/antlr:script - Install a script to run antlr
-dev-java/avalon-logkit:javamail - Enable support for javamail
-dev-java/avalon-logkit:jms - Enable support for JMS (Java Message Service)
 dev-java/commons-collections:test-framework - Install the test framework
 dev-java/commons-logging:avalon-framework - Add optional support for avalon-framework
 dev-java/commons-logging:avalon-logkit - Add optional support for avalon-logkit
@@ -946,6 +944,7 @@ dev-libs/soprano:java - Enables support for virtual/jre-1.6.0 (sesame2) storage 
 dev-libs/soprano:raptor - Enables support for media-libs/raptor RDF parser/serializer.
 dev-libs/soprano:redland - Enables support for the dev-libs/redland storage backend (really slow one).
 dev-libs/soprano:virtuoso - Enables support for dev-db/virtuoso storage backend.
+dev-libs/tinyxml:stl - Compile with TIXML_USE_STL support
 dev-libs/xerces-c:iconv - Use iconv (virtual/libiconv) as message loader and transcoder (in general it would be possible to use iconv only as message loader and something else like icu or the native method as transcoder and vice-versa, but this is a less common case and hard to handle)
 dev-libs/xerces-c:libwww - Use the net-libs/libwww library for fetching URLs, instead of the builtin method
 dev-libs/xerces-c:threads - Enable threading support through pthread (or other libraries on AIX, IRIX, HPUX, Solars). Highly recommended
@@ -967,7 +966,8 @@ dev-lisp/clisp:new-clx - Build CLISP with support for the NEW-CLX module which i
 dev-lisp/clisp:pari - Build CLISP with support for the PARI Computer Algebra System
 dev-lisp/clisp:svm - Build CLISP with support for the Support Vector Machine module
 dev-lisp/cmucl:nosource - Don't include source code for CMUCL in installation
-dev-lisp/ecls:precisegc - Use type information during garbage collection
+dev-lisp/ecls:gengc - Use generational garbage collection (experimental)
+dev-lisp/ecls:precisegc - Use type information during garbage collection (experimental)
 dev-lisp/gcl:ansi - Build a GCL with ANSI support (else build a traditional CLtL1 image)
 dev-lisp/gcl:custreloc - Build a GCL which uses custom GCL code for linking
 dev-lisp/gcl:dlopen - Build a GCL which uses dlopen for linking
@@ -1055,7 +1055,6 @@ dev-ruby/ruby-sdl:mixer - Enable media-libs/sdl-mixer support
 dev-ruby/ruby-sdl:sge - Enable sdl-sge support
 dev-ruby/rubygems:server - Install support for the rubygems server
 dev-ruby/sqlite3-ruby:swig - Use dev-lang/swig to generate bindings
-dev-scheme/bigloo:bee - Bigloo integrated development environment
 dev-scheme/gauche-gl:cg - Enable NVidia Cg binding
 dev-scheme/gauche-gtk:glgd - Enable GL graph draw
 dev-scheme/guile:debug-freelist - Include garbage collector freelist debugging code
@@ -1563,6 +1562,7 @@ mail-filter/amavisd-new:spamassassin - Enable usage of mail-filter/spamassassin 
 mail-filter/ask:procmail - Adds support for mail-filter/procmail
 mail-filter/assp:spf - Adds support for Sender Policy Framework
 mail-filter/assp:srs - Adds support for Sender Rewriting Scheme
+mail-filter/bogofilter:tokyocabinet - Enable Tokyo Cabinet database support
 mail-filter/bsfilter:mecab - Adds support for mecab
 mail-filter/clamassassin:clamd - Use the app-antivirus/clamav daemon for virus checking
 mail-filter/clamassassin:subject-rewrite - Adds support for subject rewriting

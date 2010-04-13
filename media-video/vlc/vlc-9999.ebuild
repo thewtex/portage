@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/vlc/vlc-9999.ebuild,v 1.64 2010/04/09 09:39:49 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/vlc/vlc-9999.ebuild,v 1.68 2010/04/12 16:36:12 aballier Exp $
 
 EAPI="2"
 
@@ -47,7 +47,7 @@ SLOT="0"
 KEYWORDS=""
 IUSE="a52 aac aalib alsa altivec atmo avahi bidi cdda cddb dbus dc1394
 	debug dirac directfb dts dvb dvd elibc_glibc fbcon fluidsynth +ffmpeg flac fontconfig
-	+gcrypt ggi gnome gnutls httpd id3tag ieee1394 jack kate libass libcaca
+	+gcrypt ggi gnome gnutls httpd id3tag ieee1394 jack kate kde libass libcaca
 	libnotify libproxy libtiger libv4l libv4l2 lirc live lua matroska mmx
 	modplug mp3 mpeg mtp musepack ncurses nsplugin ogg opengl optimisememory oss
 	png projectm pulseaudio pvr +qt4 remoteosd rtsp run-as-root samba
@@ -106,7 +106,7 @@ RDEPEND="
 		mtp? ( >=media-libs/libmtp-0.3.0 )
 		musepack? ( >=media-sound/musepack-tools-444 )
 		ncurses? ( sys-libs/ncurses )
-		nsplugin? ( >=net-libs/xulrunner-1.8 x11-libs/libXpm x11-libs/libXt	<net-libs/xulrunner-1.9.2 )
+		nsplugin? ( >=net-libs/xulrunner-1.9.2 x11-libs/libXpm x11-libs/libXt )
 		ogg? ( media-libs/libogg )
 		opengl? ( virtual/opengl )
 		png? ( media-libs/libpng sys-libs/zlib )
@@ -146,6 +146,7 @@ RDEPEND="
 
 DEPEND="${RDEPEND}
 	dvb? ( sys-kernel/linux-headers )
+	kde? ( >=kde-base/kdelibs-4 )
 	v4l? ( sys-kernel/linux-headers )
 	v4l2? ( >=sys-kernel/linux-headers-2.6.25 )
 	xcb? ( x11-proto/xproto )
@@ -221,16 +222,6 @@ src_configure() {
 	# It would fail if -fforce-addr is used due to too few registers...
 	use x86 && filter-flags -fforce-addr
 
-	local MOZILLA_PC
-
-	if use nsplugin; then
-		if has_version 'net-libs/xulrunner:1.9' ; then
-			MOZILLA_PC=libxul
-		else
-			MOZILLA_PC=xulrunner-plugin
-		fi
-	fi
-
 	econf \
 		$(use_enable a52) \
 		$(use_enable aalib aa) \
@@ -264,6 +255,7 @@ src_configure() {
 		$(use_enable ieee1394 dv) \
 		$(use_enable jack) \
 		$(use_enable kate) \
+		$(use_with kde kde-solid) \
 		$(use_enable libass) \
 		$(use_enable libcaca caca) \
 		$(use_enable gcrypt libgcrypt) \
@@ -284,7 +276,7 @@ src_configure() {
 		$(use_enable mtp) \
 		$(use_enable musepack mpc) \
 		$(use_enable ncurses) \
-		$(use_enable nsplugin mozilla) --with-mozilla-pkg="${MOZILLA_PC}" \
+		$(use_enable nsplugin mozilla) --with-mozilla-pkg=libxul \
 		$(use_enable ogg) \
 		$(use_enable opengl glx) $(use_enable opengl) \
 		$(use_enable optimisememory optimize-memory) \
@@ -341,7 +333,7 @@ src_install() {
 	emake DESTDIR="${D}" install || die "make install failed"
 
 	dodoc AUTHORS HACKING THANKS NEWS README \
-		doc/fortunes.txt doc/intf-cdda.txt doc/intf-vcd.txt
+		doc/fortunes.txt doc/intf-vcd.txt
 
 	rm -rf "${D}/usr/share/doc/vlc" \
 		"${D}"/usr/share/vlc/vlc{16x16,32x32,48x48,128x128}.{png,xpm,ico}
@@ -364,8 +356,8 @@ pkg_postinst() {
 	gnome2_pkg_postinst
 
 	if [ "$ROOT" = "/" ] && [ -x "/usr/$(get_libdir)/vlc/vlc-cache-gen" ] ; then
-		einfo "Running /usr/$(get_libdir)/vlc/vlc-cache-gen"
-		"/usr/$(get_libdir)/vlc/vlc-cache-gen"
+		einfo "Running /usr/$(get_libdir)/vlc/vlc-cache-gen on /usr/$(get_libdir)/vlc/plugins/"
+		"/usr/$(get_libdir)/vlc/vlc-cache-gen" "/usr/$(get_libdir)/vlc/plugins/"
 	else
 		ewarn "We cannot run vlc-cache-gen (most likely ROOT!=/)"
 		ewarn "Please run /usr/$(get_libdir)/vlc/vlc-cache-gen manually"
