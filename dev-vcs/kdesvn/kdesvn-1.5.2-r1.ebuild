@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-vcs/kdesvn/kdesvn-1.5.2-r1.ebuild,v 1.3 2010/03/30 23:37:08 tampakrap Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-vcs/kdesvn/kdesvn-1.5.2-r1.ebuild,v 1.4 2010/04/12 14:24:09 reavertm Exp $
 
 EAPI="2"
 
@@ -18,6 +18,7 @@ IUSE="debug +handbook"
 
 DEPEND="
 	>=dev-db/sqlite-3
+	dev-libs/apr:1
 	>=dev-util/subversion-1.4
 	sys-devel/gettext
 "
