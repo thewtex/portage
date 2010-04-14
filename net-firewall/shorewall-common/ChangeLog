@@ -1,6 +1,25 @@
 # ChangeLog for net-firewall/shorewall-common
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-firewall/shorewall-common/ChangeLog,v 1.33 2010/03/16 14:23:02 chainsaw Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-firewall/shorewall-common/ChangeLog,v 1.37 2010/04/14 11:48:15 fauli Exp $
+
+  14 Apr 2010; Christian Faulhammer <fauli@gentoo.org>
+  shorewall-common-4.2.11-r1.ebuild:
+  stable x86, security bug 288992
+
+  14 Apr 2010; Jeroen Roovers <jer@gentoo.org>
+  shorewall-common-4.2.11-r1.ebuild:
+  Stable for HPPA (bug #288992).
+
+  13 Apr 2010; <chainsaw@gentoo.org> shorewall-common-4.2.11-r1.ebuild:
+  As per Gustavo Zacarias, add an ewarn noting that the detect option on
+  interfaces should be avoided with the new init script dependencies.
+
+*shorewall-common-4.2.11-r1 (13 Apr 2010)
+
+  13 Apr 2010; <chainsaw@gentoo.org> +shorewall-common-4.2.11-r1.ebuild,
+  +files/shorewall.initd2:
+  Updated init script with simplified dependencies addresses security bug
+  #288992 by Hugo Mildenberger.
 
   16 Mar 2010; <chainsaw@gentoo.org> metadata.xml:
   Taking over maintainership from Vieri who is stepping down due to time
