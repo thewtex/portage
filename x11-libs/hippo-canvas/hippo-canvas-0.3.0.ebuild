@@ -1,10 +1,11 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/hippo-canvas/hippo-canvas-0.3.0.ebuild,v 1.2 2010/03/02 10:20:34 phajdan.jr Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/hippo-canvas/hippo-canvas-0.3.0.ebuild,v 1.3 2010/04/13 20:42:52 elvanor Exp $
 
 EAPI="2"
 
 GCONF_DEBUG="no"
+G2PUNT_LA="yes"
 inherit gnome2
 
 DESCRIPTION="A canvas library based on GTK+-2, Cairo, and Pango"
