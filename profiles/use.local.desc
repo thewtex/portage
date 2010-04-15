@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5482 2010/04/14 13:07:53 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5485 2010/04/14 21:27:49 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -935,6 +935,7 @@ dev-perl/GD:animgif - Enable animated gif support
 dev-perl/HTML-Mason:modperl - Enable www-apache/mod_perl support
 dev-perl/PDL:badval - Enable badval support
 dev-perl/Panotools-Script:gui -  Installs GUIs for some tools 
+dev-perl/Sysadm-Install:hammer - Enable hammer() funtion to run a command in the shell and simulate a user hammering the ENTER key to accept defaults on prompts
 dev-php/PEAR-PHP_Shell:auto-completion - Enable tab-completion
 dev-php5/ZendFramework:cli - Enables the CLI
 dev-php5/ZendFramework:doc - Installs the documentation
@@ -1557,9 +1558,10 @@ media-gfx/freewrl:libeai - Build EAI C library
 media-gfx/freewrl:spidermonkey - Use spidermonkey instead of Firefox
 media-gfx/gimp:smp -  Enable support for multiprocessors 
 media-gfx/gimp:webkit -  Enable the webkit rendering engine 
-media-gfx/graphicsmagick:fpx - Enable FlashPix support
-media-gfx/graphicsmagick:q16 - Set quantum depth to 16
-media-gfx/graphicsmagick:q32 - Set quantum depth to 32
+media-gfx/graphicsmagick:fpx - Enable FlashPix support with media-libs/libfpx
+media-gfx/graphicsmagick:modules - Compile graphicsmagick with dynamically loadable modules
+media-gfx/graphicsmagick:q16 - Set storage quantum size to 16 (~2*memory)
+media-gfx/graphicsmagick:q32 - Set storage quantum size to 32 (~5*memory)
 media-gfx/graphviz:lasi -  Enables PostScript output via media-libs/lasi library 
 media-gfx/gthumb:http - Enable webservice integration through net-libs/libsoup
 media-gfx/gthumb:iptc - Add support for IPTC metadata
@@ -3621,4 +3623,3 @@ xfce-extra/xfce4-notifyd:libsexy - Enable support for x11-libs/libsexy
 xfce-extra/xfce4-playercontrol-plugin:audacious - Enable Audacious support
 xfce-extra/xfce4-playercontrol-plugin:mpd - Enable Music Player Daemon support
 xfce-extra/xfce4-power-manager:plugins - Build panel plugins
-xfce-extra/xfce4-screenshooter:zimagez - Optional support to host screenshots on ZimageZ, a free online image service
