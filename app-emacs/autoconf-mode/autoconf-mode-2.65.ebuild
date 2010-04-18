@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/autoconf-mode/autoconf-mode-2.65.ebuild,v 1.2 2010/04/16 15:06:50 ranger Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/autoconf-mode/autoconf-mode-2.65.ebuild,v 1.4 2010/04/17 11:55:42 armin76 Exp $
 
 inherit elisp
 
