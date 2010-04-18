@@ -1,6 +1,25 @@
 # ChangeLog for www-client/chromium
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/ChangeLog,v 1.82 2010/04/11 17:54:34 phajdan.jr Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/ChangeLog,v 1.85 2010/04/14 18:47:37 phajdan.jr Exp $
+
+*chromium-5.0.375.3 (14 Apr 2010)
+
+  14 Apr 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +chromium-5.0.375.3.ebuild, chromium-9999.ebuild,
+  +files/chromium-supported-media-mime-types.patch:
+  Version bump for dev channel release. Add USE flags for mp3 and x264
+  support, depending on the system ffmpeg.
+
+  14 Apr 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-5.0.342.7.ebuild, chromium-5.0.342.9.ebuild,
+  -chromium-5.0.360.5.ebuild, -chromium-5.0.366.2.ebuild,
+  -files/chromium-ffmpeg.patch, metadata.xml:
+  Make sure that all ebuilds have the fix for bug #314977. Remove old.
+
+  13 Apr 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-5.0.371.0.ebuild, chromium-9999.ebuild:
+  Require ffmpeg with threads USE flag. This is needed for html5 video to
+  work. Should fix bug #314977 by Julien Sanchez <julien.sanchez@gmail.com>.
 
   11 Apr 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
   chromium-5.0.371.0.ebuild, chromium-9999.ebuild:

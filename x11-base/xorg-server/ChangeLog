@@ -1,6 +1,36 @@
 # ChangeLog for x11-base/xorg-server
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-base/xorg-server/ChangeLog,v 1.497 2010/04/11 21:40:11 chithanh Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-base/xorg-server/ChangeLog,v 1.503 2010/04/13 21:56:38 polynomial-c Exp $
+
+  13 Apr 2010; Lars Wendler <polynomial-c@gentoo.org>
+  xorg-server-1.8.0.ebuild:
+  fixing version on xinit blocker (D'oh)
+
+  13 Apr 2010; Lars Wendler <polynomial-c@gentoo.org>
+  xorg-server-1.8.0.ebuild:
+  Adding blocker for <x11-apps/xinit-1.2.1
+  Permission granted by scarabeus.
+
+  13 Apr 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  xorg-server-1.8.0.ebuild:
+  Actualy use correct variable.
+
+  13 Apr 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  xorg-server-1.8.0.ebuild:
+  Silence sandbox. Thanks to Brian (ferringb) for help.
+
+  13 Apr 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  xorg-server-1.8.0.ebuild:
+  Remove never triggered sdl dependency.
+
+*xorg-server-1.8.0 (13 Apr 2010)
+
+  13 Apr 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  +files/1.8.0-match-only-sane-devices.patch, +xorg-server-1.8.0.ebuild,
+  +files/1.8.0-no-hardcoded-etc.patch, +files/xdm-setup.initd-1,
+  +files/xdm.confd-3, +files/xdm.initd,
+  +files/xorg-server-disable-acpi.patch, metadata.xml:
+  Version bump to xorg-server 1.8.
 
   11 Apr 2010; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
   xorg-server-1.7.6.ebuild:

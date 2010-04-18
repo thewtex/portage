@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/eggdbus/eggdbus-0.6.ebuild,v 1.6 2010/02/28 18:32:02 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/eggdbus/eggdbus-0.6.ebuild,v 1.8 2010/04/13 14:55:00 aballier Exp $
 
 EAPI=2
 inherit autotools eutils
@@ -11,7 +11,7 @@ SRC_URI="http://hal.freedesktop.org/releases/${P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="1"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 IUSE="debug doc +largefile test"
 
 RDEPEND=">=dev-libs/dbus-glib-0.73
@@ -28,7 +28,8 @@ DEPEND="${DEPEND}
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-0.4-ldflags.patch \
-		"${FILESDIR}"/${PN}-0.4-tests.patch
+		"${FILESDIR}"/${PN}-0.4-tests.patch \
+		"${FILESDIR}"/${P}-include-types.h.patch
 
 	eautoreconf
 }
