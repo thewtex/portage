@@ -23,8 +23,19 @@ DEPEND="${RDEPEND}
 src_configure(){
 
 	use python && mycmakeargs="${mycmakeargs}
-											  -DWRAP_ITK_PYTHON:BOOL=ON
-											  -DWRAP_signed_short:BOOL=ON"
+			-DWRAP_ITK_PYTHON:BOOL=ON
+			-DWRAP_ITK_DOC:BOOL=ON
+			-DWRAP_ITK_DOC_MAN:BOOL=ON
+			-DWRAP_unsigned_char:BOOL=ON
+			-DWRAP_signed_char:BOOL=ON
+			-DWRAP_unsigned_short:BOOL=ON
+			-DWRAP_signed_short:BOOL=ON
+			-DWRAP_float:BOOL=ON
+			-DWRAP_double:BOOL=ON
+			-DWRAP_complex_float:BOOL=ON
+			-DWRAP_complex_double:BOOL=ON
+			-DWRAP_vector_float:BOOL=ON
+			-DWRAP_vector_double:BOOL=ON"
 
 	cmake-utils_src_configure
 }
