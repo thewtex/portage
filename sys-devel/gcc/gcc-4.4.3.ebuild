@@ -61,13 +61,13 @@ DEPEND="${RDEPEND}
 	>=sys-devel/bison-1.875
 	elibc_glibc? ( >=sys-libs/glibc-2.8 )
 	amd64? ( multilib? ( gcj? ( app-emulation/emul-linux-x86-xlibs ) ) )
-	ppc? ( >=${CATEGORY}/binutils-2.17 )
-	ppc64? ( >=${CATEGORY}/binutils-2.17 )
-	>=${CATEGORY}/binutils-2.15.94"
+	=${CATEGORY}/binutils-2.20.1*"
 PDEPEND=">=sys-devel/gcc-config-1.4"
 if [[ ${CATEGORY} != cross-* ]] ; then
 	PDEPEND="${PDEPEND} elibc_glibc? ( >=sys-libs/glibc-2.8 )"
 fi
+
+IUSE="default"
 
 src_unpack() {
 	gcc_src_unpack
@@ -79,4 +79,13 @@ src_unpack() {
 	[[ ${CHOST} == ${CTARGET} ]] && epatch "${FILESDIR}"/gcc-spec-env.patch
 
 	[[ ${CTARGET} == *-softfloat-* ]] && epatch "${FILESDIR}"/4.4.0/gcc-4.4.0-softfloat.patch
+}
+
+pkg_postinst() {
+	if use default; then
+		gcc-config ${PV} || die "Unable to set ${P} as default."
+		einfo
+		einfo "Selected ${PV} as default compiler for ${ROOT}."
+		einfo
+	fi
 }

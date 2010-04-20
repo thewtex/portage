@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5487 2010/04/15 21:47:50 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5489 2010/04/16 19:27:51 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -1082,6 +1082,17 @@ dev-scheme/kawa:xqtests - Support XQuery Test Suite
 dev-scheme/plt-scheme:backtrace -  Support GC backtrace dumps 
 dev-scheme/plt-scheme:cgc -  Compile and install additional executables which use the conservative garbage collector 
 dev-scheme/plt-scheme:llvm -  Add support for compiling to the low-level virtual machine (llvm) 
+dev-scheme/scm:arrays - Support for arrays, uniform-arrays and uniform-vectors.
+dev-scheme/scm:bignums - Support for large precision integers.
+dev-scheme/scm:cautious - SCM will always check the number of arguments to interpreted closures.
+dev-scheme/scm:dynamic-linking - Be able to load compiled files while running.
+dev-scheme/scm:engineering-notation - Floats to display in engineering notation (exponents always multiples of 3) instead of scientific notation.
+dev-scheme/scm:gsubr - generalized c arguments: for arbitrary (more then 11) arguments to C functions.
+dev-scheme/scm:inexact - Support for floating point numbers.
+dev-scheme/scm:ioext - Commonly available I/O extensions: line I/O, file positioning, file delete and rename, and directory functions.
+dev-scheme/scm:macro - C level support for hygienic and referentially transparent macros (syntax-rules macros).
+dev-scheme/scm:regex - String regular expression matching.
+dev-scheme/scm:unix - Support for: nice, acct, lstat, readlink, symlink, mknod and sync.
 dev-tcltk/tktreectrl:shellicon - shellicon extension
 dev-tex/dot2texi:pgf - Enable support for dev-tex/pgf (The TeX Portable Graphic Format)
 dev-tex/dot2texi:pstricks - Enable pstricks support
@@ -1703,8 +1714,8 @@ media-gfx/imagemagick:lqr -  enable experimental liquid rescale support
 media-gfx/imagemagick:q32 -  set quantum depth to 32 
 media-gfx/imagemagick:q8 -  set quantum depth to 8 
 media-gfx/inkscape:dia -  pull in app-office/dia for dia import extension 
+media-gfx/inkscape:gs -  enables support for the PostScript import extension 
 media-gfx/inkscape:inkjar -  enables support for OpenOffice.org SVG jar files 
-media-gfx/inkscape:postscript -  pull in dependencies needed for the postscript import extension 
 media-gfx/jpeg2ps:metric -  Default to A4 paper size 
 media-gfx/k3d:3ds - Enable support for 3D Studio models
 media-gfx/k3d:cuda - Use nvidia cuda toolkit for speeding up computations

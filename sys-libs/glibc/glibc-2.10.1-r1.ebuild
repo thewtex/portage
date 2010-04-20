@@ -8,7 +8,7 @@ DESCRIPTION="GNU libc6 (also called glibc2) C library"
 HOMEPAGE="http://www.gnu.org/software/libc/libc.html"
 
 LICENSE="LGPL-2"
-KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 ~s390 sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86"
 RESTRICT="strip" # strip ourself #46186
 EMULTILIB_PKG="true"
 
@@ -81,7 +81,7 @@ fi
 
 # General: We need a new-enough binutils for as-needed
 # arch: we need to make sure our binutils/gcc supports TLS
-DEPEND=">=sys-devel/gcc-3.4.4
+DEPEND="=sys-devel/gcc-4.4.3*
 	arm? ( >=sys-devel/binutils-2.16.90 >=sys-devel/gcc-4.1.0 )
 	ppc? ( >=sys-devel/gcc-4.1.0 )
 	ppc64? ( >=sys-devel/gcc-4.1.0 )
@@ -89,7 +89,7 @@ DEPEND=">=sys-devel/gcc-3.4.4
 	${LT_VER:+nptl? (} >=sys-kernel/linux-headers-${NPTL_KERN_VER} ${LT_VER:+)}
 	>=sys-devel/gcc-config-1.3.12
 	>=app-misc/pax-utils-0.1.10
-	virtual/os-headers
+	=virtual/os-headers-2.6.32*
 	nls? ( sys-devel/gettext )
 	>=sys-apps/sandbox-1.2.18.1-r2
 	>=sys-apps/portage-2.1.2
@@ -218,6 +218,12 @@ eblit-src_unpack-post() {
 			-e 's:-fstack-protector$:-fstack-protector-all:' \
 			nscd/Makefile \
 			|| die "Failed to ensure nscd builds with ssp-all"
+	fi
+
+	local gcc_force="4.4.3"
+	# Funtoo forces glibc to be compiled using a particular gcc:
+	if [[ "$($CC -dumpversion)" -ne "$gcc_force" ]]; then 
+		gcc-config "$gcc_force" || die "Unable to force gcc to version $gcc_force; please do this manually."
 	fi
 }
 
