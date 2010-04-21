@@ -14,7 +14,7 @@ IUSE="python"
 # wrapitk may require itk with USE doc or USE examples in order to compile, more
 # investigation is required ....
 RDEPEND="python? ( dev-lang/python )
-  <=sci-libs/itk-3.16.0"
+  sci-libs/itk"
 DEPEND="${RDEPEND}
   dev-lang/cableswig"
 
