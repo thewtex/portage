@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11470 2010/04/20 03:15:40 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11476 2010/04/20 20:39:00 bicatali Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,15 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Sebastien Fabbro <bicatali@gentoo.org> (20 Apr 2010)
+# Tests fail, not aligned version
+=dev-cpp/tbb-3.0.20100310
+
+# Torsten Veller <tove@gentoo.org> (20 Apr 2010)
+# Bundles a copy of libsqlite (#258464)
+# Tests fail (#294218)
+dev-perl/DBD-SQLite2
 
 # Mounir Lamouri <volkmar@gentoo.org> (18 Apr 2010)
 # The add-on/extension manager should now be used instead of the package
@@ -155,12 +164,6 @@ dev-lang/ruby-enterprise
 # Masked for removal in 30 days.
 xfce-extra/xfce4-volstatus-icon
 
-# Samuli Suominen <ssuominen@gentoo.org> (31 Mar 2010)
-# Doesn't compile with libindicator-0.3.6, and no activity
-# on http://hg.foresightlinux.org/xfce/xfce4-indicator-plugin/
-# Masked for removal in 30 days
-xfce-extra/xfce4-indicator-plugin
-
 # Vlastimil Babka <caster@gentoo.org> (31 Mar 2010)
 # Masked for upstream EOL and pending security bugs that won't be thus fixed.
 # Removal in 30 days. Bug #306579.
@@ -193,15 +196,6 @@ dev-java/openjms-bin
 >=xfce-extra/xfce4-power-manager-0.9.90
 
 # Samuli Suominen <ssuominen@gentoo.org> (18 Mar 2010)
-# Orphaned and vulnerable library.  Use libxml2 instead.
-#
-# Bugs 281446 and 281444
-#
-# Masked for removal in 30 days
-dev-libs/libxml
-games-util/loki_setupdb
-
-# Samuli Suominen <ssuominen@gentoo.org> (18 Mar 2010)
 # Doesn't compile with next stable toolchain.
 #
 # See bug 287638 for reference.
@@ -220,12 +214,6 @@ games-util/loki_setupdb
 # Removal in 30 days
 mail-filter/MailScanner
 
-# Samuli Suominen <ssuominen@gentoo.org> (16 Mar 2010)
-# Replaced by USE jpeg in allegro >= 4.4.1.1
-# It was merged upstream
-# Masked for removal in 30 days
-media-libs/jpgalleg
-
 # Bernard Cafarelli <voyageur@gentoo.org> (15 Mar 2010)
 # Problematic behavior with special keys (french Alt Gr,
 # multimedia keys, ...), bug #304743
@@ -237,12 +225,6 @@ media-libs/jpgalleg
 # and Dead upstream. Recommend icedtea jdk's for
 # a free alternative.
 dev-java/kaffe
-
-# Samuli Suominen <ssuominen@gentoo.org> (15 Mar 2010)
-# Replaced by USE=gtk in snes9x-1.52.
-#
-# Masked for removal in 30 days.
-games-emulation/goosnes
 
 # Torsten Veller <tove@gentoo.org> (14 Mar 2010)
 # Mask "End Of Life" versions
