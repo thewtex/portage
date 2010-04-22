@@ -2,7 +2,7 @@ PORTDIR=/usr/portage
 cd $PORTDIR
 for x in `cat $PORTDIR/profiles/funtoo-revert | grep -v '^#'`
 do
-	[ ! -d "$x" ] && echo "$x does not exist. exiting." && exit 1
+	[ ! -e "$x" ] && echo "$x does not exist. exiting." && exit 1
 	git rm -rf $x
 	git checkout origin/funtoo.org -- $x
 done
