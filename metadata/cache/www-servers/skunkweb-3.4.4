@@ -1,5 +1,5 @@
->=dev-lang/python-2.2 >=dev-python/egenix-mx-base-2.0.4 app-admin/sudo =www-servers/apache-2*
->=dev-lang/python-2.2 >=dev-python/egenix-mx-base-2.0.4 app-admin/sudo =www-servers/apache-2*
+app-admin/sudo >=dev-python/egenix-mx-base-2.0.4 =www-servers/apache-2* >=app-admin/eselect-python-20091230 =dev-lang/python-2*
+app-admin/sudo >=dev-python/egenix-mx-base-2.0.4 =www-servers/apache-2* >=app-admin/eselect-python-20091230 =dev-lang/python-2*
 0
 mirror://sourceforge/skunkweb/skunkweb-3.4.4.tar.gz
 
@@ -7,14 +7,14 @@ http://skunkweb.sourceforge.net/
 GPL-2 BSD
 robust Python web application server
 ~amd64 ~ppc ~x86
-apache-module depend.apache eutils multilib portability toolchain-funcs
+apache-module depend.apache eutils multilib portability python toolchain-funcs
 
 
 
 
+3
 
-
-compile install postinst setup
+compile configure install postinst postrm setup
 
 
 

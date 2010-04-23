@@ -1,10 +1,12 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/mrbump/mrbump-0.4.4.ebuild,v 1.1 2010/02/06 23:25:56 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/mrbump/mrbump-0.4.4.ebuild,v 1.3 2010/04/22 19:36:23 jlec Exp $
 
-EAPI="2"
+EAPI="3"
 
-inherit eutils multilib
+PYTHON_DEPEND="2"
+
+inherit eutils multilib python
 
 DESCRIPTION="An automated scheme for Molecular Replacement"
 HOMEPAGE="http://www.ccp4.ac.uk/MrBUMP"
@@ -13,7 +15,7 @@ SRC_URI="${HOMEPAGE}/release/${P}.tar.gz"
 LICENSE="ccp4"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 
 IUSE="X perl"
 RDEPEND=">=sci-chemistry/ccp4-apps-6.1.3[X?]
@@ -23,9 +25,12 @@ RDEPEND=">=sci-chemistry/ccp4-apps-6.1.3[X?]
 		sci-biology/t-coffee )
 	sci-biology/fasta
 	X? ( media-gfx/graphviz )
-	perl? ( dev-perl/SOAP-Lite )
-	>=dev-lang/python-2.3"
+	perl? ( dev-perl/SOAP-Lite )"
 DEPEND="${RDEPEND}"
+
+pkg_setup() {
+	python_set_active_version 2
+}
 
 src_unpack(){
 	unpack ${A}
@@ -35,6 +40,7 @@ src_unpack(){
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PV}-superpose.patch
+	python_convert_shebangs 2 setup_lib/*
 }
 
 src_install(){
