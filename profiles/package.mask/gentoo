@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11478 2010/04/21 22:08:30 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11483 2010/04/22 19:24:35 aballier Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,20 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Alexis Ballier <aballier@gentoo.org> (22 Apr 2010)
+# Pre release
+>=media-video/vlc-1.1.0_pre
+
+# Peter Volkov <pva@gentoo.org> (22 Apr 2010)
+# Masking development kernels. Test it and report bugs upstream.
+=sys-kernel/openvz-sources-2.6.32*
+
+# Justin Lecher <jlec@gentoo.org> (22 Apr 2010)
+# Masked for removal
+# depends on sci-chemistry/pymol-0.99*, which doesn't work with recent
+# python, #269119
+sci-chemistry/pynmr
 
 # Sebastien Fabbro <bicatali@gentoo.org> (20 Apr 2010)
 # Tests fail, not aligned version
@@ -191,15 +205,6 @@ app-forensics/samhain
 # Use 0.8 series instead for now.
 >=xfce-extra/xfce4-power-manager-0.9.90
 
-# Samuli Suominen <ssuominen@gentoo.org> (18 Mar 2010)
-# Doesn't compile with next stable toolchain.
-#
-# See bug 287638 for reference.
-#
-# Removal in 30 days.
-~dev-libs/boost-1.36.0
-~dev-util/boost-build-1.36.0
-
 # Samuli Suominen <ssuominen@gentoo.org> (16 Mar 2010)
 # Masked for QA and security.
 #
@@ -305,21 +310,6 @@ dev-lang/gnu-smalltalk
 #
 # Masked for removal in 60 days.
 net-irc/ircd-hybrid
-
-# Samuli Suominen <ssuominen@gentoo.org> (03 Mar 2010)
-# Justin Bronder <jsbronder@gentoo.org> (06 Apr 2010)
-# Masked for QA, security
-#
-# After over an year of no word from maintainers
-#
-# Internal copy of vuln. libltdl, CVE-2009-3736
-#
-# http://bugs.gentoo.org/show_bug.cgi?id=252398
-#
-# Masked for removal in 60 days
-#
-# Update:  Libtool unbundled as of 2.18-r1.
-<app-shells/pdsh-2.18-r1
 
 # Jeroen Roovers <jer@gentoo.org> (28 Feb 2010)
 # Development release
