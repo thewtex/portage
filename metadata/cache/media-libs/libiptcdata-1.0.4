@@ -1,5 +1,5 @@
-python? ( dev-lang/python ) nls? ( virtual/libintl ) nls? ( >=sys-devel/gettext-0.13.1 ) doc? ( >=dev-util/gtk-doc-1 )
-python? ( dev-lang/python ) nls? ( virtual/libintl )
+python? ( dev-lang/python ) nls? ( virtual/libintl ) nls? ( >=sys-devel/gettext-0.13.1 ) doc? ( >=dev-util/gtk-doc-1 ) >=app-admin/eselect-python-20091230
+python? ( dev-lang/python ) nls? ( virtual/libintl ) >=app-admin/eselect-python-20091230
 0
 mirror://sourceforge/libiptcdata/libiptcdata-1.0.4.tar.gz
 
@@ -7,14 +7,14 @@ http://libiptcdata.sourceforge.net
 LGPL-2
 library for manipulating the International Press Telecommunications Council (IPTC) metadata
 ~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86
-eutils multilib portability toolchain-funcs
+eutils multilib portability python toolchain-funcs
 doc examples nls python
 
 
 
+3
 
-
-compile install postinst
+compile configure install postinst prepare test
 
 
 

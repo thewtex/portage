@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/silc-client/silc-client-1.1.8.ebuild,v 1.2 2010/04/19 21:16:58 polynomial-c Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-im/silc-client/silc-client-1.1.8.ebuild,v 1.4 2010/04/22 23:00:39 polynomial-c Exp $
 
 EAPI=2
 
@@ -12,7 +12,7 @@ HOMEPAGE="http://silcnet.org/"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc x86"
 IUSE="ipv6 perl debug"
 
 COMMONDEPEND="perl? ( dev-lang/perl )
@@ -21,7 +21,8 @@ COMMONDEPEND="perl? ( dev-lang/perl )
 	!<=net-im/silc-toolkit-0.9.12-r1"
 
 DEPEND="${COMMONDEPEND}
-	dev-util/pkgconfig"
+	dev-util/pkgconfig
+	>=net-im/silc-toolkit-1.1.10"
 
 RDEPEND="${COMMONDEPEND}
 	perl? (
@@ -33,6 +34,7 @@ src_prepare() {
 	sed -i -e "s:-g -O2:${CFLAGS}:g" configure
 	use amd64 && sed -i -e 's:felf\([^6]\):felf64\1:g' configure
 	epatch "${FILESDIR}/${PN}-1.1.8-docdir.patch"
+	epatch "${FILESDIR}/${P}-sandbox-errors-fix.patch"
 }
 
 src_configure() {
