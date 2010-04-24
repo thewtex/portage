@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11483 2010/04/22 19:24:35 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11486 2010/04/23 12:57:53 ssuominen Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -31,6 +31,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Samuli Suominen <ssuominen@gentoo.org> (23 Apr 2010)
+# Masked for removal wrt bug #252140 in 30 days.  Use opencore-amr instead.
+media-libs/amrnb
+media-libs/amrwb
+
 # Alexis Ballier <aballier@gentoo.org> (22 Apr 2010)
 # Pre release
 >=media-video/vlc-1.1.0_pre
@@ -53,6 +58,10 @@ sci-chemistry/pynmr
 # Bundles a copy of libsqlite (#258464)
 # Tests fail (#294218)
 dev-perl/DBD-SQLite2
+# (23 Apr 2010)
+# Requested but never used (#136223)
+# and does not work (#242524), HOMEPAGE dead
+dev-perl/perlmenu
 
 # Mounir Lamouri <volkmar@gentoo.org> (18 Apr 2010)
 # The add-on/extension manager should now be used instead of the package
@@ -220,12 +229,6 @@ mail-filter/MailScanner
 # multimedia keys, ...), bug #304743
 =net-misc/nx-3.4.0-r1
 =net-misc/nxnode-3.4.0.11
-
-# Alistair Bush <ali_bush@gentoo.org> (15 Mar 2010)
-# Mask for removal (#309459).  Does not compile
-# and Dead upstream. Recommend icedtea jdk's for
-# a free alternative.
-dev-java/kaffe
 
 # Torsten Veller <tove@gentoo.org> (14 Mar 2010)
 # Mask "End Of Life" versions
