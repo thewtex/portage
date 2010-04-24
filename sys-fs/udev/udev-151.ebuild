@@ -17,7 +17,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~x86 ~amd64"
 IUSE="selinux extras"
 
 COMMON_DEPEND="selinux? ( sys-libs/libselinux )
@@ -54,9 +54,13 @@ src_unpack() {
 src_compile() {
 	filter-flags -fprefetch-loop-arrays
 
+	# sys-fs/lvm2 may require static libs - generate them just to be on the safe
+	# side. shared libs get generated too.
+
 	econf \
 		--prefix=/usr \
 		--sysconfdir=/etc \
+		--enable-static \
 		--sbindir=/sbin \
 		--libdir=/usr/$(get_libdir) \
 		--with-rootlibdir=/$(get_libdir) \

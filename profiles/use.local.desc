@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5489 2010/04/16 19:27:51 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5496 2010/04/20 19:27:50 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -492,6 +492,14 @@ app-mobilephone/obexd:server - Enables server installation, it's incompatible wi
 app-mobilephone/obexftp:swig - Enable rebuild of dev-lang/swig bindings
 app-mobilephone/smstools:stats - Enable statistic reporting
 app-mobilephone/yaps:capi - Enable CAPI support
+app-office/abiword:collab - Enable collaborative editing plugin
+app-office/abiword:grammar - Enable grammar checking via dev-libs/link-grammar
+app-office/abiword:math - Enable support for x11-libs/gtkmathview
+app-office/abiword:openxml - Enable OpenXML support
+app-office/abiword:ots - Enable Text Summarizer plugin
+app-office/abiword:plugins - Enable plugins build
+app-office/abiword:thesaurus - Enable thesaurus support
+app-office/abiword:wordperfect - Enable wordperfect file support via app-text/libwpd
 app-office/abiword-plugins:grammar - Enable grammar checking via dev-libs/link-grammar
 app-office/abiword-plugins:math - Enable support for x11-libs/gtkmathview
 app-office/abiword-plugins:ots - Enable Text Summarizer plugin
@@ -1046,8 +1054,6 @@ dev-python/sympy:ipython - Add support for dev-python/ipython
 dev-python/sympy:mathml - Add support for mathml
 dev-python/sympy:texmacs - Add support for app-office/texmacs
 dev-python/twisted:serial - include serial port support
-dev-python/visual:numarray - enable support for numarray
-dev-python/visual:numeric - enable support for numeric
 dev-python/wxpython:doc - Install HTML wxWidgets docs and wxpython API reference.
 dev-python/wxpython:examples - Install interactive demo module browser and sample applets.
 dev-python/zsi:twisted - add support for dev-python/twisted
@@ -1220,10 +1226,13 @@ games-board/crafty:no-opts - Don't try to enable crazy CFLAG options
 games-board/dreamchess:music - Install the music pack
 games-board/dreamchess:sound - Enable support for media-libs/sdl-mixer to get sound
 games-board/freedoko:altenburgcards - Use the Altenburg card set
-games-board/freedoko:kdecards - Use the KDE card set
+games-board/freedoko:backgrounds - Install additional background images
+games-board/freedoko:gnomecards - Install the gnome-games card set
+games-board/freedoko:kdecards - Install the KDE card set
 games-board/freedoko:net - Enable network game support
-games-board/freedoko:pysolcards - Use the PySol card set
-games-board/freedoko:xskatcards - Use the XSkat card set
+games-board/freedoko:openclipartcards - Install the openclipartcards card set
+games-board/freedoko:pysolcards - Install the PySol card set
+games-board/freedoko:xskatcards - Install the XSkat card set
 games-board/grhino:gtp - Install the GTP (Go/Game Text Protocol) frontend
 games-board/pysolfc:extra-cardsets - Install extra cardsets
 games-board/pysolfc:sound - Enable sound support usingdev-python/pygame
@@ -1329,6 +1338,9 @@ games-rpg/nwn-cep:sou - Adds support for the Shadows of Undrentide expension pac
 games-rpg/nwn-data:hou - Install the Hordes of the Underdark expansion pack
 games-rpg/nwn-data:nowin - For those people who cant grab the 1.2 gigs of data files from a windows partition
 games-rpg/nwn-data:sou - Installs the Shadows of Undrentide expension pack
+games-simulation/openttd:dedicated - Build only the openttd server, and not the client.
+games-simulation/openttd:lzo - Enables LZO compression for savegames. This is only needed to load extremely old savegames. (versions before 0.2)
+games-simulation/openttd:openmedia - Enables the free open media sets: OpenGFX, OpenSFX, OpenMSX, removing the requirement for proprietary TTD assets to play OpenTTD.
 games-simulation/singularity:music - Install music files
 games-sports/xmoto:editor - Depend on inkscape, scripts to convert svg to level (svg2lvl)
 games-strategy/dark-oberon:fmod - Add sound support (fmod)
@@ -1371,6 +1383,7 @@ gnome-base/gvfs:fuse - Enables fuse mount points in $HOME/.gvfs for legacy appli
 gnome-base/gvfs:gdu - Enable sys-apps/gnome-disk-utility integration
 gnome-base/gvfs:http - Enable the HTTP/DAV backend using net-libs/libsoup-gnome
 gnome-base/gvfs:udev - Enable udev base replacement code for cdda feature
+gnome-base/librsvg:tools - Build miscellaneous tools
 gnome-base/nautilus:beagle - Enables support for searching using the Beagle (app-misc/beagle) desktop search tool
 gnome-base/nautilus:tracker - Enables support for searching using the Tracker (app-misc/tracker) search tool
 gnome-extra/avant-window-navigator:vala - Enables support for applets written in dev-lang/vala.
@@ -1934,6 +1947,7 @@ media-sound/cmus:wma - add support for Windows Media Audio
 media-sound/cmus:zsh-completion - enable zsh completion support
 media-sound/crip:normalize - Enable for being able to normalize ripped tracks
 media-sound/darkice:twolame - Build with twolame support
+media-sound/decibel-audio-player:gnome - Adds Gnome media keys support, so you can control Decibel using hotkeys. 
 media-sound/decibel-audio-player:gnome-keyring - Adds support for storing your Last.fm password using gnome-keyring.
 media-sound/dir2ogg:wma - Add support for wma files through mplayer
 media-sound/exaile:libsexy - Enable libsexy support
@@ -3651,7 +3665,6 @@ www-client/elinks:bittorrent - Enable support for the BitTorrent protocol
 www-client/elinks:finger - Enable support for the finger protocol
 www-client/elinks:gopher - Enable support for the gopher protocol
 www-client/epiphany:nss - Import passwords from older gecko based www-client/epiphany keyring.
-www-client/firefox-bin:restrict-javascript - Pull in x11-plugins/noscript extension to disable javascript globally, putting the user fully in control of the sites he/she visits
 www-client/icecat:custom-optimization - Fine-tune custom compiler optimizations
 www-client/icecat:mozdevelop - Enable features for web developers (e.g. Venkman)
 www-client/icecat:sqlite - Enable/Disable system sqlite support
@@ -3667,7 +3680,6 @@ www-client/mozilla-firefox:filepicker - Enable old gtkfilepicker from 1.0.x fire
 www-client/mozilla-firefox:iceweasel - Enable iceweasel branding
 www-client/mozilla-firefox:mozdevelop - Enable features for web developers (e.g. Venkman)
 www-client/mozilla-firefox:moznopango - Disable x11-libs/pango during runtime
-www-client/mozilla-firefox:restrict-javascript - Pull in www-plugins/noscript extension to disable javascript globally, putting the user fully in control of the sites he/she visits
 www-client/mozilla-firefox:system-sqlite - Use the system-wide dev-db/sqlite installation with secure-delete enabled
 www-client/mozilla-firefox:xforms - XForms is a standard to split up XHTML into XForms, instance data, and user interface
 www-client/opera:qt-static - Install binaries statically linked to Qt

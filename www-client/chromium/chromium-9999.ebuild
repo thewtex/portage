@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/chromium-9999.ebuild,v 1.43 2010/04/14 18:47:37 phajdan.jr Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/chromium-9999.ebuild,v 1.46 2010/04/20 07:55:14 phajdan.jr Exp $
 
 EAPI="2"
 inherit eutils flag-o-matic multilib portability subversion toolchain-funcs
@@ -31,12 +31,14 @@ RDEPEND="app-arch/bzip2
 	x11-libs/libXScrnSaver"
 #	dev-db/sqlite:3
 DEPEND="${RDEPEND}
+	dev-lang/perl
 	>=dev-util/gperf-3.0.3
 	>=dev-util/pkgconfig-0.23
 	sys-devel/flex"
 RDEPEND+="
 	|| (
 		x11-themes/gnome-icon-theme
+		x11-themes/oxygen-molecule
 		x11-themes/tango-icon-theme
 		x11-themes/xfce4-icon-theme
 	)
@@ -121,7 +123,7 @@ src_prepare() {
 	sed -i "s/'-Werror'/''/" build/common.gypi || die "Werror sed failed"
 
 	# Prevent automatic -march=pentium4 -msse2 enabling on x86, http://crbug.com/9007
-	epatch "${FILESDIR}"/${PN}-drop_sse2.patch
+	epatch "${FILESDIR}"/${PN}-drop_sse2-r1.patch
 
 	# Allow supporting more media types provided system ffmpeg supports them.
 	epatch "${FILESDIR}"/${PN}-supported-media-mime-types.patch

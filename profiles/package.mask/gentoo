@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11462 2010/04/18 01:46:34 arfrever Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11476 2010/04/20 20:39:00 bicatali Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -31,14 +31,23 @@
 
 #--- END OF EXAMPLES ---
 
+# Sebastien Fabbro <bicatali@gentoo.org> (20 Apr 2010)
+# Tests fail, not aligned version
+=dev-cpp/tbb-3.0.20100310
+
+# Torsten Veller <tove@gentoo.org> (20 Apr 2010)
+# Bundles a copy of libsqlite (#258464)
+# Tests fail (#294218)
+dev-perl/DBD-SQLite2
+
+# Mounir Lamouri <volkmar@gentoo.org> (18 Apr 2010)
+# The add-on/extension manager should now be used instead of the package
+# from the tree, bug 315999. Masked for removal in 30 days.
+www-plugins/noscript
+
 # Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (18 Apr 2010)
 # Included in Zope >=2.8.1. Masked for deletion in 30 days (bug #312501).
 net-zope/verbosesecurity
-
-# Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org> (17 Apr 2010)
-# Masked until the tarballs are released.
-=media-sound/amarok-2.3.0.90
-=media-sound/amarok-utils-2.3.0.90
 
 # Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (16 Apr 2010)
 # Masked to enforce upgrade which looks like downgrade.
@@ -120,12 +129,6 @@ net-fs/samba-server
 net-fs/samba-client
 >net-fs/samba-4
 
-# Samuli Suominen <ssuominen@gentoo.org> (07 Apr 2010)
-# Missing required lvm2 wrt bug #309757. Unmask soon as it's in tree.
-sys-fs/udisks
-x11-plugins/wmudmount
->=app-misc/emelfm2-0.7.2-r1
-
 # Vlastimil Babka <caster@gentoo.org> (06 Apr 2010)
 # Legacy library nothing in the tree depends on. Needs 1.5 java to compile.
 # Masked for removal (move to java-overlay) in 30 days. Tracker bug #292001.
@@ -161,12 +164,6 @@ dev-lang/ruby-enterprise
 # Masked for removal in 30 days.
 xfce-extra/xfce4-volstatus-icon
 
-# Samuli Suominen <ssuominen@gentoo.org> (31 Mar 2010)
-# Doesn't compile with libindicator-0.3.6, and no activity
-# on http://hg.foresightlinux.org/xfce/xfce4-indicator-plugin/
-# Masked for removal in 30 days
-xfce-extra/xfce4-indicator-plugin
-
 # Vlastimil Babka <caster@gentoo.org> (31 Mar 2010)
 # Masked for upstream EOL and pending security bugs that won't be thus fixed.
 # Removal in 30 days. Bug #306579.
@@ -199,15 +196,6 @@ dev-java/openjms-bin
 >=xfce-extra/xfce4-power-manager-0.9.90
 
 # Samuli Suominen <ssuominen@gentoo.org> (18 Mar 2010)
-# Orphaned and vulnerable library.  Use libxml2 instead.
-#
-# Bugs 281446 and 281444
-#
-# Masked for removal in 30 days
-dev-libs/libxml
-games-util/loki_setupdb
-
-# Samuli Suominen <ssuominen@gentoo.org> (18 Mar 2010)
 # Doesn't compile with next stable toolchain.
 #
 # See bug 287638 for reference.
@@ -226,12 +214,6 @@ games-util/loki_setupdb
 # Removal in 30 days
 mail-filter/MailScanner
 
-# Samuli Suominen <ssuominen@gentoo.org> (16 Mar 2010)
-# Replaced by USE jpeg in allegro >= 4.4.1.1
-# It was merged upstream
-# Masked for removal in 30 days
-media-libs/jpgalleg
-
 # Bernard Cafarelli <voyageur@gentoo.org> (15 Mar 2010)
 # Problematic behavior with special keys (french Alt Gr,
 # multimedia keys, ...), bug #304743
@@ -243,16 +225,6 @@ media-libs/jpgalleg
 # and Dead upstream. Recommend icedtea jdk's for
 # a free alternative.
 dev-java/kaffe
-
-# Samuli Suominen <ssuominen@gentoo.org> (15 Mar 2010)
-# Replaced by USE=gtk in snes9x-1.52.
-#
-# Masked for removal in 30 days.
-games-emulation/goosnes
-
-# Torsten Veller <tove@gentoo.org> (14 Mar 2010)
-# Mask for removal (#309381)
-dev-perl/Astro-SunTime
 
 # Torsten Veller <tove@gentoo.org> (14 Mar 2010)
 # Mask "End Of Life" versions
@@ -310,12 +282,6 @@ sys-libs/com_err
 sys-libs/ss
 <sys-libs/e2fsprogs-libs-1.41.8
 <sys-fs/e2fsprogs-1.41.9
-
-# Fabian Groffen <grobian@gentoo.org> (06 Mar 2010)
-# Masked for security issues and discontinued interest from upstream to
-# support non-Windows platforms.  Bug #233928
-# Pending removal on April 6, 2010
-app-antivirus/f-prot
 
 # Justin Lecher <jlec@gentoo.org> (03 Mar 2010)
 # package is royaly screwed
@@ -460,11 +426,6 @@ dev-db/mysql-community
 # Last rited: to be removed in 30 days.
 dev-ruby/activerecord-jdbc
 
-# Tomáš Chvátal <scarabeus@gentoo.org> (23 Jan 2010)
-# Obsoleted by xorg-server-1.6
-# Let us know in bugs if you have some issues with 1.6
-<x11-base/xorg-server-1.6.0
-
 # Matthias Schwarzott <zzam@gentoo.org> (22 Jan 2010)
 # since long time included in media-tv/gentoo-vdr-scripts
 media-tv/vdr-dvd-scripts
@@ -511,10 +472,8 @@ net-libs/libjingle
 # Pawel Hajdan jr <phajdan.jr@gentoo.org> (07 Jan 2010)
 # Dev channel releases are only for people who are developers or want more
 # experimental features and accept a more unstable release.
-~www-client/chromium-5.0.360.5
-~www-client/chromium-5.0.366.2
 ~www-client/chromium-5.0.371.0
-~www-client/chromium-5.0.375.3
+~www-client/chromium-5.0.375.9
 
 # Diego E. Pettenò <flameeyes@gentoo.org> (07 Jan 2010)
 #  on behalf of QA team
@@ -726,10 +685,6 @@ dev-lisp/gcl
 # For more info:
 #  http://dev.gentoo.org/~scarabeus/ati-mask-reason.txt
 <x11-drivers/ati-drivers-9.6
-
-# Torsten Veller <tove@gentoo.org> (25 Jul 2009)
-# breaks tests of POE-XS-Loop-Poll and POE-XS-Loop-EPoll
-=dev-perl/POE-Test-Loops-1.020
 
 # Jim Ramsay <lack@gentoo.org> (1 Feb 2008)
 # Weird boost dependencies, need to solve this in a different way: Probably by

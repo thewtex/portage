@@ -1,9 +1,12 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/weechat/weechat-0.3.1.1-r1.ebuild,v 1.1 2010/03/12 12:52:19 scarabeus Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-irc/weechat/weechat-0.3.1.1-r1.ebuild,v 1.4 2010/04/19 17:51:02 scarabeus Exp $
 
 EAPI=2
-inherit cmake-utils multilib
+
+PYTHON_DEPEND="python? 2"
+
+inherit python cmake-utils multilib
 
 DESCRIPTION="Portable and multi-interface IRC client."
 HOMEPAGE="http://weechat.org/"
@@ -13,7 +16,7 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86 ~x86-fbsd"
 
-NETWORKS="jabber +irc"
+NETWORKS="+irc"
 PLUGINS="+charset +fifo +logger relay +scripts +spell"
 INTERFACES="+ncurses gtk"
 SCRIPT_LANGS="lua +perl +python ruby tcl"
@@ -22,11 +25,9 @@ IUSE="${SCRIPT_LANGS} ${PLUGINS} ${INTERFACES} ${NETWORKS} doc nls +ssl"
 RDEPEND="
 	charset? ( virtual/libiconv )
 	gtk? ( x11-libs/gtk+:2 )
-	jabber? ( dev-libs/iksemel )
 	lua? ( dev-lang/lua[deprecated] )
 	ncurses? ( sys-libs/ncurses )
 	perl? ( dev-lang/perl )
-	python? ( virtual/python )
 	ruby? ( dev-lang/ruby )
 	ssl? ( net-libs/gnutls )
 	spell? ( app-text/aspell )
@@ -37,6 +38,10 @@ DEPEND="${RDEPEND}
 "
 
 DOCS="AUTHORS ChangeLog NEWS README UPGRADE_0.3"
+
+pkg_setup() {
+	python_set_active_version 2
+}
 
 src_prepare() {
 	# fix libdir placement

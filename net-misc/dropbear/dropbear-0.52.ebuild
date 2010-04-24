@@ -1,6 +1,6 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/dropbear/dropbear-0.52.ebuild,v 1.9 2009/11/05 16:02:47 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/dropbear/dropbear-0.52.ebuild,v 1.10 2010/04/20 08:04:34 vapier Exp $
 
 inherit eutils savedconfig pam
 
@@ -43,6 +43,7 @@ src_unpack() {
 	epatch "${FILESDIR}"/dropbear-0.46-dbscp.patch
 	sed -i \
 		-e '/SFTPSERVER_PATH/s:".*":"/usr/lib/misc/sftp-server":' \
+		-e '/XAUTH_COMMAND/s:/X11R6/:/:' \
 		options.h
 	sed -i \
 		-e '/pam_start/s:sshd:dropbear:' \
