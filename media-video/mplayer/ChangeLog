@@ -1,6 +1,42 @@
 # ChangeLog for media-video/mplayer
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/mplayer/ChangeLog,v 1.721 2010/04/23 13:04:43 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/mplayer/ChangeLog,v 1.731 2010/04/24 15:49:46 aballier Exp $
+
+  24 Apr 2010; Alexis Ballier <aballier@gentoo.org> mplayer-9999.ebuild:
+  fix x264 deps
+
+  24 Apr 2010; Alexis Ballier <aballier@gentoo.org> mplayer-9999.ebuild:
+  drop now unneeded append-flags
+
+  24 Apr 2010; Alexis Ballier <aballier@gentoo.org> mplayer-9999.ebuild:
+  Build and install html documentation into the correct location, based on
+  the LINGUAS variable, from on a patch by Andrew Savchenko in bug #299405
+
+  24 Apr 2010; Alexis Ballier <aballier@gentoo.org> mplayer-9999.ebuild:
+  dont depend on cdparanoia if cdio is enabled, we wont use it; patch by
+  Andrew Savchenko, bug #299405
+
+  24 Apr 2010; Alexis Ballier <aballier@gentoo.org> mplayer-9999.ebuild:
+  remove aac useflag: let faad and faac useflags handle it; otherwise there
+  is support in ffmpeg; always use system libfaad
+
+  24 Apr 2010; Alexis Ballier <aballier@gentoo.org> mplayer-9999.ebuild:
+  Disable opencore-amr support with bindist, Apache-2.0 vs GPL-2 issues,
+  https://bugs.gentoo.org/show_bug.cgi?id=299405#c6
+
+  24 Apr 2010; Alexis Ballier <aballier@gentoo.org> mplayer-9999.ebuild:
+  allow ass and truetype without X, by Andrew Savchenko, bug #299405
+
+  24 Apr 2010; Alexis Ballier <aballier@gentoo.org> mplayer-9999.ebuild:
+  use system libass, require freetype 2.2.1 at least
+
+  24 Apr 2010; Alexis Ballier <aballier@gentoo.org> mplayer-9999.ebuild:
+  fix opencore-amr automagic dep
+
+  24 Apr 2010; Alexis Ballier <aballier@gentoo.org> mplayer-9999.ebuild:
+  Fix codecsdir handling; default to real ones, the default can be overriden
+  with codecpath=somewhere in cli or config file, bug #310389 and bug
+  #309931
 
   23 Apr 2010; Samuli Suominen <ssuominen@gentoo.org>
   mplayer-1.0_rc4_p20091026-r1.ebuild, mplayer-1.0_rc4_p20100213-r1.ebuild,

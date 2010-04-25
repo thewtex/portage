@@ -1,8 +1,9 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-zope/zope/zope-2.12.3.ebuild,v 1.3 2010/02/14 19:17:00 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-zope/zope/zope-2.12.5.ebuild,v 1.1 2010/04/24 17:08:46 arfrever Exp $
 
-EAPI="2"
+EAPI="3"
+PYTHON_DEPEND="2:2.6"
 
 inherit eutils multilib python versionator
 
@@ -11,7 +12,7 @@ MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Zope is a web application platform used for building high-performance, dynamic web sites"
 HOMEPAGE="http://www.zope.org http://pypi.python.org/pypi/Zope2"
-SRC_URI="http://pypi.python.org/packages/source/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
+SRC_URI="http://pypi.python.org/packages/source/${MY_PN:0:1}/${MY_PN}/${MY_P}.zip"
 
 LICENSE="ZPL"
 SLOT="$(get_version_component_range 1-2)"
@@ -19,8 +20,7 @@ KEYWORDS="~alpha ~amd64 ~sparc ~x86"
 IUSE="doc"
 RESTRICT="test"
 
-RDEPEND="|| ( dev-lang/python:2.7 dev-lang/python:2.6 )
-	dev-python/docutils
+RDEPEND="dev-python/docutils
 	dev-python/restrictedpython
 	dev-python/setuptools
 	net-zope/acquisition
@@ -68,8 +68,10 @@ RDEPEND="|| ( dev-lang/python:2.7 dev-lang/python:2.6 )
 	net-zope/zope-testing
 	net-zope/zope-traversing
 	net-zope/zope-viewlet
+	net-zope/zopeundo
 "
 DEPEND="${RDEPEND}
+	app-arch/unzip
 	doc? ( dev-python/sphinx )"
 
 S="${WORKDIR}/${MY_P}"
@@ -89,7 +91,7 @@ pkg_setup() {
 }
 
 src_compile() {
-	"$(PYTHON -2)" setup.py build || die "Building failed"
+	"$(PYTHON)" setup.py build || die "Building failed"
 
 	if use doc; then
 		cd doc
@@ -98,8 +100,8 @@ src_compile() {
 }
 
 src_install() {
-	"$(PYTHON -2)" setup.py install --home="${ZSERVDIR}" --root="${D}" || die "Installation failed"
-	dosym "$(PYTHON -2 -a)" "${ZSERVDIR}/bin/python" || die "dosym failed"
+	"$(PYTHON)" setup.py install --home="${ZSERVDIR}" --root="${D}" || die "Installation failed"
+	dosym "$(PYTHON -a)" "${ZSERVDIR}/bin/python" || die "dosym failed"
 
 	for file in "${D}usr/$(get_libdir)/${PN}-${SLOT}/bin/"*; do
 		if [[ -f "${file}" && ! -L "${file}" ]]; then
