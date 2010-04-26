@@ -1,10 +1,10 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/blueman/blueman-1.10.ebuild,v 1.2 2009/11/07 23:08:09 volkmar Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/blueman/blueman-1.10.ebuild,v 1.4 2010/04/25 15:50:07 arfrever Exp $
 
 EAPI="2"
 
-inherit multilib python
+inherit python
 
 DESCRIPTION="GTK+ Bluetooth Manager, designed to be simple and intuitive for everyday bluetooth tasks."
 HOMEPAGE="http://blueman-project.org/"
@@ -52,18 +52,16 @@ src_install() {
 	dodoc AUTHORS ChangeLog NEWS README
 
 	if ! use gnome ; then
-		python_version
-		rm "${D}/usr/$(get_libdir)/python${PYVER}/site-packages/blueman/plugins/config/Gconf.py"
+		rm "${D}$(python_get_sitedir)/blueman/plugins/config/Gconf.py"
 	fi
 
 	python_need_rebuild
 }
 
 pkg_postinst() {
-	python_version
-	python_mod_optimize /usr/$(get_libdir)/python${PYVER}/site-packages/blueman
+	python_mod_optimize $(python_get_sitedir)/blueman
 }
 
 pkg_postrm() {
-	python_mod_cleanup
+	python_mod_cleanup $(python_get_sitedir)/blueman
 }
