@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5504 2010/04/25 22:27:48 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5507 2010/04/26 09:47:51 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -3515,6 +3515,7 @@ sys-fs/aufs:sec_perm - Enable patch for kernel with CONFIG_SECURITY enabled
 sys-devel/llvm:alltargets - Build all host targets (default: host only)
 sys-devel/llvm:libffi - Add support to call arbitrary external (natively compiled) functions via dev-libs/libffi
 sys-devel/llvm:llvm-gcc - Build LLVM with sys-devel/llvm-gcc
+sys-devel/llvm:udis86 - Enable support for dev-libs/udis86 disassembler library
 sys-devel/llvm-gcc:bootstrap - Compile the final llvm-gcc executables with llvm-gcc itself
 sys-devel/llvm-gcc:objc - Build support for the Objective C code language
 sys-devel/llvm-gcc:objc++ - Build support for the Objective C++ language
@@ -3571,21 +3572,33 @@ sys-fs/udev:extras - Compile udev-extras requiring external dependencies
 sys-fs/udev:old-hd-rules - Install rules for /dev/hd* devices, removed upstream at udev-148
 sys-fs/udisks:remote-access - Control whether connections from other clients over LAN are allowed
 sys-fs/unionfs:nfs - Adds support for NFS file system
+sys-kernel/ck-sources:deblob - Remove binary blobs from kernel sources to provide libre license compliance.
 sys-kernel/dracut:dmraid - Add support for dmraid devices, also known as ATA-RAID, or Fake RAID.
 sys-kernel/dracut:iscsi - Add support for iSCSI
 sys-kernel/dracut:lvm - Add support for the Logical Volume Manager sys-apps/lvm2
 sys-kernel/dracut:md - Add support for MD devices, also known as software raid devices
 sys-kernel/dracut:nbd - Add support for network block devices
 sys-kernel/dracut:nfs - Add support for NFS
+sys-kernel/gentoo-sources:deblob - Remove binary blobs from kernel sources to provide libre license compliance.
 sys-kernel/gentoo-sources:ultra1 - Enable if you have a SUN Ultra 1 with a HME interface
+sys-kernel/git-sources:deblob - Remove binary blobs from kernel sources to provide libre license compliance.
+sys-kernel/hardened-sources:deblob - Remove binary blobs from kernel sources to provide libre license compliance.
 sys-kernel/linux-docs:html - Install HTML documentation
 sys-kernel/mips-sources:cobalt - Enables support for Cobalt Microserver hardware (Qube2/RaQ2)
+sys-kernel/mips-sources:deblob - Remove binary blobs from kernel sources to provide libre license compliance.
 sys-kernel/mips-sources:impactdebug - Enables use of the Impact Early Console Hack. FOR DEBUGGING ONLY!
 sys-kernel/mips-sources:ip27 - Enables support for SGI Origin (IP27)
 sys-kernel/mips-sources:ip28 - Enables support for SGI Indigo2 Impact R10000 (IP28)
 sys-kernel/mips-sources:ip30 - Enables support for SGI Octane (IP30, 'Speedracer')
 sys-kernel/mips-sources:ip32r10k - Enables experimental support for IP32 R10K kernels (SGI O2, 'Moosehead')
+sys-kernel/mm-sources:deblob - Remove binary blobs from kernel sources to provide libre license compliance.
+sys-kernel/openvz-sources:deblob - Remove binary blobs from kernel sources to provide libre license compliance.
 sys-kernel/sparc-sources:ultra1 - If you have a SUN Ultra 1 with a HME interface
+sys-kernel/tuxonice-sources:deblob - Remove binary blobs from kernel sources to provide libre license compliance.
+sys-kernel/vanilla-sources:deblob - Remove binary blobs from kernel sources to provide libre license compliance.
+sys-kernel/vserver-sources:deblob - Remove binary blobs from kernel sources to provide libre license compliance.
+sys-kernel/xen-sources:deblob - Remove binary blobs from kernel sources to provide libre license compliance.
+sys-kernel/zen-sources:deblob - Remove binary blobs from kernel sources to provide libre license compliance.
 sys-kernel/zen-sources:drm-next - Enable the drm-next patch
 sys-kernel/zen-sources:stable - Clone stable git tree
 sys-libs/glibc:glibc-compat20 - Enable the glibc-compat addon
