@@ -1,10 +1,50 @@
 # ChangeLog for profile directory
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.4125 2010/04/22 19:24:35 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.4138 2010/04/26 00:34:49 halcy0n Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  26 Apr 2010; Mark Loeser <halcy0n@gentoo.org> package.mask,
+  selinux/package.mask:
+  Add missing packages to mask for selinux
+
+  25 Apr 2010; Diego E. Pettenò <flameeyes@gentoo.org> package.mask,
+  selinux/package.mask:
+  Make sure that SElinux packages are not unmasked in the wild, only unmask
+  them in the selinux profile.
+
+  25 Apr 2010; Mark Loeser <halcy0n@gentoo.org> package.mask:
+  Block all revisions of tar-1.23 for now as well
+
+  25 Apr 2010; Peter Volkov <pva@gentoo.org> package.mask:
+  Masking beta version of autogen, bug 316583#c12.
+
+  25 Apr 2010; <blackace@gentoo.org> package.mask:
+  Mask app-office/nostaples for removal (#317079)
+
+  24 Apr 2010; Mark Loeser <halcy0n@gentoo.org> package.mask:
+  Add mask for testing gcc-4.5.x
+
+  24 Apr 2010; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Add layman-dbtools to the mass-mask of live ebuilds.
+
+  24 Apr 2010; Torsten Veller <tove@gentoo.org> package.mask:
+  Mask dev-perl/Net-XWhois for removal (#276745)
+
+  24 Apr 2010; Tristan Heaven <nyhm@gentoo.org>
+  arch/amd64/no-multilib/package.mask, features/64bit-native/package.mask:
+  Unmask all quake3 mods except ra3, bug #256588
+
+  23 Apr 2010; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask amrnb and amrwb wrt #252140.
+
+  23 Apr 2010; Torsten Veller <tove@gentoo.org> package.mask:
+  Mask dev-perl/perlmenu for removal (#242524)
+
+  23 Apr 2010; Vlastimil Babka <caster@gentoo.org> package.mask:
+  Removed dev-java/kaffe from mask due to final removal, #309459.
 
   22 Apr 2010; Alexis Ballier <aballier@gentoo.org> package.mask:
   mask vlc 1.1 pre release
@@ -315,7 +355,7 @@
   21 Mar 2010; Torsten Veller <tove@gentoo.org> package.mask:
   Unmask dev-perl/XML-GDOME
 
-  20 Mar 2010; Justin Lecher (jlec) <jlec@gentoo.org> package.mask:
+  20 Mar 2010; Justin Lecher <jlec@gentoo.org> package.mask:
   unmask >=sci-libs/clapack-3.2.1.-r1
 
   20 Mar 2010; <vostorga@gentoo.org> package.mask:
@@ -412,7 +452,7 @@
   12 Mar 2010; Jeroen Roovers <jer@gentoo.org> package.mask:
   Mask opera 10.51.
 
-  11 Mar 2010; Justin Lecher (jlec) <jlec@j-schmitz.net> package.mask:
+  11 Mar 2010; Justin Lecher <jlec@gentoo.org> package.mask:
   Removed sci-chemistry/viewmol because it is removed from the tree; added
   blas-atlas-3.9.23-r1 because it only makes trouble
 
@@ -422,7 +462,7 @@
   10 Mar 2010; Ulrich Mueller <ulm@gentoo.org> package.mask:
   Update mask for emacs-vcs live ebuilds.
 
-  10 Mar 2010; Justin Lecher (jlec) <jlec@j-schmitz.net> package.mask:
+  10 Mar 2010; Justin Lecher <jlec@gentoo.org> package.mask:
   =sci-chemistry/viewmol-2.4.1 doesn't work with current python.eclass
 
   10 Mar 2010; Jim Ramsay <lack@gentoo.org> package.mask:
@@ -434,7 +474,7 @@
   08 Mar 2010; Bernard Cafarelli <voyageur@gentoo.org> package.mask:
   Clean x11-plugins/msn-pecan-0.1* Release Candidates mask
 
-  08 Mar 2010; Justin Lecher (jlec) <jlec@j-schmitz.net> package.mask:
+  08 Mar 2010; Justin Lecher <jlec@gentoo.org> package.mask:
   =sci-libs/lapack-atlas-3.9.23-r1 masked due to unforseen issues with
   EAPI=3 move
 
@@ -483,7 +523,7 @@
   06 Mar 2010; Ben de Groot <yngwin@gentoo.org> thirdpartymirrors:
   Remove fastbull sourceforge mirror (connection keeps timing out)
 
-  06 Mar 2010; Justin Lecher (jlec) <jlec@gentoo.org> updates/1Q-2010:
+  06 Mar 2010; Justin Lecher <jlec@gentoo.org> updates/1Q-2010:
   Moved dev-util/colorcvs to dev-vcs/colorcvs
 
   06 Mar 2010; Ryan Hill <dirtyepic@gentoo.org> package.mask:
@@ -531,7 +571,7 @@
   Change MIPS from "dev" to "exp" in profiles.desc and delete targets
   desktop, developer and server.
 
-  04 Mar 2010; Justin Lecher (jlec) <jlec@j-schmitz.net> package.mask:
+  04 Mar 2010; Justin Lecher <jlec@gentoo.org> package.mask:
   Masked sci-libs/clapack, because of QA issues
 
   03 Mar 2010; Jeremy Olexa <darkside@gentoo.org> thirdpartymirrors:
@@ -630,7 +670,7 @@
   28 Feb 2010; Samuli Suominen <ssuominen@gentoo.org> package.mask:
   Mask jbigkit-2.0 for testing.
 
-  28 Feb 2010; Justin Lecher (jlec) <jlec@gentoo.org> updates/1Q-2010:
+  28 Feb 2010; Justin Lecher <jlec@gentoo.org> updates/1Q-2010:
   moved CAT from sci-chemistry to sci-biology for psipred
 
   28 Feb 2010; Hans de Graaff <graaff@gentoo.org> package.mask:
@@ -752,7 +792,7 @@
   package.mask:
   mask prerelease versions of syslinux
 
-  18 Feb 2010; Justin Lecher (jlec) <jlec@j-schmitz.net> package.mask:
+  18 Feb 2010; Justin Lecher <jlec@gentoo.org> package.mask:
   sci-chemistry/tinker unmasked because bug 305007 is fixed
 
   17 Feb 2010; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
@@ -805,7 +845,7 @@
   15 Feb 2010; Samuli Suominen <ssuominen@gentoo.org> package.mask:
   Mask net-im/kopete-facebook for removal.
 
-  15 Feb 2010; Justin Lecher (jlec) <jlec@j-schmitz.net> package.mask:
+  15 Feb 2010; Justin Lecher <jlec@gentoo.org> package.mask:
   Masked sci-chemistry/tinker, because upstream changes tarball regularly
   and do not permit mirroring, trying to find a solution
 
