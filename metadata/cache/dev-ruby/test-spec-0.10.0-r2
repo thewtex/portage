@@ -1,5 +1,5 @@
-test? ( virtual/ruby-test-unit[ruby_targets_ruby18?,ruby_targets_jruby?] ) test? ( dev-ruby/mocha[ruby_targets_ruby18?,ruby_targets_jruby?] ) ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_jruby? ( dev-java/jruby ) doc? ( dev-ruby/rake[ruby_targets_ruby18?,ruby_targets_jruby?] ) test? ( dev-ruby/rake[ruby_targets_ruby18?,ruby_targets_jruby?] ) test? ( virtual/rubygems[ruby_targets_ruby18?,ruby_targets_jruby?] )
-virtual/ruby-test-unit[ruby_targets_ruby18?,ruby_targets_jruby?] ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_jruby? ( dev-java/jruby ) virtual/rubygems[ruby_targets_ruby18?,ruby_targets_jruby?]
+test? ( virtual/ruby-test-unit[ruby_targets_ruby18?,ruby_targets_ruby19?,ruby_targets_jruby?] ) test? ( ruby_targets_ruby19? ( >=dev-ruby/test-unit-2.0.6[ruby_targets_ruby19?] ) ) test? ( dev-ruby/mocha[ruby_targets_ruby18?,ruby_targets_ruby19?,ruby_targets_jruby?] ) ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ruby19? ( dev-lang/ruby:1.9 ) ruby_targets_jruby? ( dev-java/jruby ) doc? ( dev-ruby/rake[ruby_targets_ruby18?,ruby_targets_ruby19?,ruby_targets_jruby?] ) test? ( dev-ruby/rake[ruby_targets_ruby18?,ruby_targets_ruby19?,ruby_targets_jruby?] ) test? ( virtual/rubygems[ruby_targets_ruby18?,ruby_targets_ruby19?,ruby_targets_jruby?] )
+virtual/ruby-test-unit[ruby_targets_ruby18?,ruby_targets_ruby19?,ruby_targets_jruby?] ruby_targets_ruby19? ( >=dev-ruby/test-unit-2.0.6[ruby_targets_ruby19?] ) ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ruby19? ( dev-lang/ruby:1.9 ) ruby_targets_jruby? ( dev-java/jruby ) virtual/rubygems[ruby_targets_ruby18?,ruby_targets_ruby19?,ruby_targets_jruby?]
 0
 mirror://rubygems/test-spec-0.10.0.gem
 
@@ -8,7 +8,7 @@ MIT
 A library to do Behavior Driven Development with Test::Unit
 ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86
 eutils multilib portability ruby-fakegem ruby-ng toolchain-funcs
-test ruby_targets_ruby18 ruby_targets_jruby doc test
+test ruby_targets_ruby19 ruby_targets_ruby18 ruby_targets_ruby19 ruby_targets_jruby doc test
 
 
 
