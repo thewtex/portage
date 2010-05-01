@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/tracker/tracker-9999.ebuild,v 1.16 2010/03/29 20:54:36 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/tracker/tracker-9999.ebuild,v 1.17 2010/04/30 21:52:27 eva Exp $
 
 EAPI="2"
 G2CONF_DEBUG="no"
@@ -16,26 +16,26 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
 # USE="doc" is managed by eclass.
-IUSE="applet deskbar doc eds exif flac gnome-keyring gsf gstreamer gtk hal iptc +jpeg kmail laptop mp3 nautilus pdf playlist test +tiff +vorbis xine +xml xmp"
+IUSE="applet doc eds exif flac gnome-keyring gsf gstreamer gtk hal iptc +jpeg kmail laptop mp3 nautilus pdf playlist rss strigi test +tiff +vorbis xine +xml xmp"
 
 # Automagic, gconf, uuid, and probably more
-# TODO: grss, quill and streamanalyzer support
+# TODO: quill support
 RDEPEND="
 	>=app-i18n/enca-1.9
 	>=dev-db/sqlite-3.6.16[threadsafe]
 	>=dev-libs/dbus-glib-0.82-r1
 	>=dev-libs/glib-2.20
-	>=media-gfx/imagemagick-5.2.1[png,jpeg=]
+	|| (
+		>=media-gfx/imagemagick-5.2.1[png,jpeg=]
+		media-gfx/graphicsmagick[imagemagick,png,jpeg=] )
 	>=media-libs/libpng-1.2
 	>=x11-libs/pango-1
 	sys-apps/util-linux
 
 	applet? (
-		>=dev-libs/libgee-0.3
 		gnome-base/gnome-panel
 		>=x11-libs/libnotify-0.4.3
 		>=x11-libs/gtk+-2.18 )
-	deskbar? ( >=gnome-extra/deskbar-applet-2.19 )
 	eds? (
 		>=mail-client/evolution-2.25.5
 		>=gnome-extra/evolution-data-server-2.25.5 )
@@ -45,7 +45,9 @@ RDEPEND="
 	gsf? ( >=gnome-extra/libgsf-1.13 )
 	gstreamer? ( >=media-libs/gstreamer-0.10.12 )
 	!gstreamer? ( !xine? ( || ( media-video/totem media-video/mplayer ) ) )
-	gtk? ( >=x11-libs/gtk+-2.18 )
+	gtk? (
+		>=dev-libs/libgee-0.3
+		>=x11-libs/gtk+-2.18 )
 	iptc? ( media-libs/libiptcdata )
 	jpeg? ( media-libs/jpeg:0 )
 	laptop? (
@@ -60,6 +62,8 @@ RDEPEND="
 		>=app-text/poppler-0.12.3-r3[cairo,utils]
 		>=x11-libs/gtk+-2.12 )
 	playlist? ( dev-libs/totem-pl-parser )
+	rss? ( net-libs/libgrss )
+	strigi? ( >=app-misc/strigi-0.7 )
 	tiff? ( media-libs/tiff )
 	vorbis? ( >=media-libs/libvorbis-0.22 )
 	xine? ( >=media-libs/xine-lib-1 )
@@ -77,18 +81,15 @@ DEPEND="${RDEPEND}
 		>=dev-libs/libgee-0.3 )
 	doc? (
 		media-gfx/graphviz )"
-#	test? ( gcov )
 
 DOCS="AUTHORS ChangeLog NEWS README"
 
 function inotify_enabled() {
 	if linux_config_exists; then
 		if ! linux_chkconfig_present INOTIFY_USER; then
-			echo
 			ewarn "You should enable the INOTIFY support in your kernel."
 			ewarn "Check the 'Inotify support for userland' under the 'File systems'"
 			ewarn "option. It is marked as CONFIG_INOTIFY_USER in the config"
-			echo
 			die 'missing CONFIG_INOTIFY'
 		fi
 	else
@@ -131,7 +132,6 @@ pkg_setup() {
 		--with-enca
 		$(use_enable applet tracker-status-icon)
 		$(use_enable applet tracker-search-bar)
-		$(use_enable deskbar deskbar-applet)
 		$(use_enable eds evolution-miner)
 		$(use_enable exif libexif)
 		$(use_enable flac libflac)
@@ -146,13 +146,14 @@ pkg_setup() {
 		$(use_enable mp3 id3lib)
 		$(use_enable pdf poppler-glib)
 		$(use_enable playlist)
+		$(use_enable rss miner-rss)
+		$(use_enable strigi libstreamanalyzer)
 		$(use_enable test unit-tests)
+		$(use_enable test functional-tests)
 		$(use_enable tiff libtiff)
 		$(use_enable vorbis libvorbis)
 		$(use_enable xml libxml2)
 		$(use_enable xmp exempi)"
-		# FIXME: Missing files to run functional tests
-		# $(use_enable test functional-tests)
 		# FIXME: useless without quill (extract mp3 albumart...)
 		# $(use_enable gtk gdkpixbuf)
 }
@@ -171,5 +172,6 @@ src_prepare() {
 
 src_test() {
 	export XDG_CONFIG_HOME="${T}"
+	unset DBUS_SESSION_BUS_ADDRESS
 	emake check || die "tests failed"
 }
