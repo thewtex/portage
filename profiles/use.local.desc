@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5513 2010/04/28 19:47:47 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5521 2010/05/02 22:47:48 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -482,6 +482,7 @@ app-misc/tracker:kmail - Build kmail data miner
 app-misc/tracker:laptop - Make tracker power management aware
 app-misc/tracker:nautilus - Enable tracker to integrate with gnome-base/nautilus by providing entries in its context menu 
 app-misc/tracker:playlist - Add support for playlists
+app-misc/tracker:strigi - Add support for app-misc/strigi search engine.
 app-misc/worker:avfs - Enable support for sys-fs/avfs
 app-misc/workrave:distribution - Enable networking. See http://www.workrave.org/features/
 app-mobilephone/gammu:irda - Enables infrared support
@@ -717,6 +718,7 @@ dev-db/sqlite:fts3 - Full text search using the fts3 module
 dev-db/sqlite:secure-delete - Overwrite deleted information with zeros in addition to marking the space as available for reuse. This causes a performance penalty.
 dev-db/sqlite:soundex - Enable the soundex function to compute soundex encodings of strings
 dev-db/sqlite:threadsafe - Enable thread safe operation of sqlite
+dev-db/unixODBC:minimal - Don't build and install bundled drivers and extra libraries
 dev-dotnet/nant:bootstrap - Bootstrap nant by using pre-built ndoc binaries.
 dev-embedded/openocd:ftd2xx - Enable support for USB FTDI chips via dev-embedded/libftd2xx
 dev-embedded/openocd:ftdi - Enable support for USB FTDI chips via dev-embedded/libftdi
@@ -994,10 +996,12 @@ dev-perl/App-Nopaste:github - Github authentication
 dev-perl/App-Nopaste:pastebin - pastebin.com support
 dev-perl/Eidetic:auth - Enables dev-perl/Apache-AuthTicket based cookie authentication
 dev-perl/GD:animgif - Enable animated gif support
+dev-perl/Graphics-ColorNames:recommended - Install recommended support modules
 dev-perl/HTML-Mason:modperl - Enable www-apache/mod_perl support
 dev-perl/PDL:badval - Enable badval support
 dev-perl/Panotools-Script:gui -  Installs GUIs for some tools 
 dev-perl/Sysadm-Install:hammer - Enable hammer() funtion to run a command in the shell and simulate a user hammering the ENTER key to accept defaults on prompts
+dev-perl/Tie-Sub:recommended - Install recommended modules
 dev-php/PEAR-PHP_Shell:auto-completion - Enable tab-completion
 dev-php5/ZendFramework:cli - Enables the CLI
 dev-php5/ZendFramework:doc - Installs the documentation
@@ -1216,6 +1220,7 @@ games-arcade/bomns:editor - enables building the level editor
 games-arcade/jumpnbump:music - Enable playing of background music
 games-arcade/lbreakout2:themes - Install additional themes
 games-arcade/moleinvasion:music - Download and install the music files
+games-arcade/slimevolley:net - Enable network support
 games-arcade/smc:music - Download and install the music files
 games-arcade/stepmania:force-oss - force using OSS
 games-arcade/triplexinvaders:psyco - psyco python accelerator
@@ -2032,8 +2037,16 @@ media-sound/pulseaudio:realtime -  Makes PulseAudio use RealtimeKit (sys-auth/rt
 media-sound/pulseaudio:system-wide -  Allow preparation and installation of the system-wide init script for PulseAudio. Since this support is only supported for embedded situations, do not enable without reading the upstream instructions at http://pulseaudio.org/wiki/WhatIsWrongWithSystemMode . 
 media-sound/pulseaudio:udev -  Use sys-fs/udev for autodiscovery of sound devices; this replaces the deprecated sys-apps/hal autodiscovery code. 
 media-sound/qmmp:bs2b - Enable Bauer stereophonic-to-binaural headphone filter
+media-sound/qmmp:cover - Enable album cover support
+media-sound/qmmp:enca - Detects the character encoding automatically
+media-sound/qmmp:kde - Use kde4 notifier system
+media-sound/qmmp:lyrics - Fetch track lyrics from the web
+media-sound/qmmp:mms - Enable mms support
+media-sound/qmmp:mpris - Enable MPRIS support
+media-sound/qmmp:notifier - Enable qmmps' notifier system
 media-sound/qmmp:projectm - Enable projectm music visualization plugin
 media-sound/qmmp:scrobbler - Enable audioscrobbler/last.fm support
+media-sound/qmmp:tray - Build tray icon
 media-sound/qsampler:libgig - Enable libgig support for loading Gigasampler files and DLS (Downloadable Sounds) Level 1/2 files
 media-sound/qtractor:dssi - Enable support for DSSI Soft Synth Interface
 media-sound/qtractor:rubberband - Enable support for in-place audio clip pitch-shifting through the rubberband library
@@ -2590,7 +2603,8 @@ net-ftp/pure-ftpd:noiplog - Disables logging of IP addresses
 net-ftp/pure-ftpd:paranoidmsg - Display paranoid messages instead of normal ones
 net-ftp/pure-ftpd:vchroot - Enable support for virtual chroot (possible security risk)
 net-ftp/twoftpd:breakrfc - Break RFC compliance to allow control symbols in filenames (required for some (e.g. cp1251) encodings, use with caution).
-net-im/bitlbee:nss - Use NSS for SSL support in MSN and Jabber.
+net-im/bitlbee:nss - Use NSS for SSL support in MSN and Jabber
+net-im/bitlbee:twitter - Enabel Twitter protocol support
 net-im/centerim:gadu - Enable support for the Gadu-Gadu protocol
 net-im/centerim:irc - Enable support for the IRC protocol
 net-im/centerim:lj - Enable support for the LiveJournal weblog system
@@ -3782,6 +3796,7 @@ x11-libs/qt:immqt-bc - Enable binary compatible version of immodule for Qt
 x11-libs/qt:kde - Select media-sound/phonon as phonon variant needed for kde
 x11-libs/qt:qt3support - Enable the Qt3Support libraries for Qt4
 x11-libs/qt-assistant:exceptions - Add support for exceptions - like catching them inside the event loop (recommended by Nokia)
+x11-libs/qt-assistant:trace -  Build the qttracereplay utility which is required to play drawings recorded with the trace graphicssystem engine 
 x11-libs/qt-core:exceptions - Add support for exceptions - like catching them inside the event loop (recommended by Nokia)
 x11-libs/qt-core:glib - Enable dev-libs/glib eventloop support
 x11-libs/qt-core:optimized-qmake - Enable qmake optimization
@@ -3792,6 +3807,7 @@ x11-libs/qt-gui:exceptions - Add support for exceptions - like catching them ins
 x11-libs/qt-gui:glib -  Enable dev-libs/glib eventloop support 
 x11-libs/qt-gui:qt3support - Enable the Qt3Support libraries for Qt4. Note that this does not mean you can compile pure Qt3 programs with Qt4. 
 x11-libs/qt-gui:raster -  Use the alternative raster graphicssystem as default rendering engine 
+x11-libs/qt-gui:trace -  Build the new 'trace' graphicsssytem engine which allows to record all drawing operations into a trace buffer. Later it can be replayed with the qttracereplay utility 
 x11-libs/qt-multimedia:exceptions - Add support for exceptions - like catching them inside the event loop (recommended by Nokia)
 x11-libs/qt-opengl:exceptions - Add support for exceptions - like catching them inside the event loop (recommended by Nokia)
 x11-libs/qt-opengl:qt3support - Enable the Qt3Support libraries for Qt4

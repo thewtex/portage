@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-vcs/mercurial/mercurial-1.5.1.ebuild,v 1.2 2010/04/07 19:41:49 arfrever Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-vcs/mercurial/mercurial-1.5.1.ebuild,v 1.3 2010/05/02 09:23:31 djc Exp $
 
 EAPI=2
 
@@ -99,7 +99,7 @@ src_test() {
 	local testdir="${T}/tests"
 	rm -rf "${testdir}"
 	einfo "Running Mercurial tests ..."
-	python run-tests.py --tmpdir="${testdir}" test-mq-qdelete || die "test failed"
+	python run-tests.py --tmpdir="${testdir}" || die "test failed"
 }
 
 pkg_postinst() {
