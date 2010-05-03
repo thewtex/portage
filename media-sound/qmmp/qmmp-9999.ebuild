@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/qmmp/qmmp-9999.ebuild,v 1.3 2010/03/06 11:44:27 hwoarang Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/qmmp/qmmp-9999.ebuild,v 1.4 2010/05/02 09:50:57 hwoarang Exp $
 
 EAPI="2"
 
@@ -21,17 +21,24 @@ fi
 LICENSE="GPL-2"
 SLOT="0"
 # KEYWORDS further up
-IUSE="aac +alsa +dbus bs2b ffmpeg flac jack libsamplerate +mad modplug musepack oss projectm pulseaudio scrobbler sndfile +vorbis wavpack"
+IUSE="aac +alsa +dbus bs2b cover enca ffmpeg flac hal jack kde ladspa
+libsamplerate lyrics +mad mms modplug mplayer mpris musepack notifier oss projectm pulseaudio scrobbler sndfile tray +vorbis wavpack"
 
 RDEPEND="x11-libs/qt-gui:4[qt3support]
 	media-libs/taglib
 	alsa? ( media-libs/alsa-lib )
 	bs2b? ( media-libs/libbs2b )
+	cdrom? ( dev-libs/libcdio )
 	dbus? ( sys-apps/dbus )
 	aac? ( media-libs/faad2 )
+	enca? ( app-i18n/enca )
 	flac? ( media-libs/flac )
+	hal? ( sys-apps/hal )
+	ladspa? ( media-libs/ladspa-cmt )
 	libsamplerate? ( media-libs/libsamplerate )
 	mad? ( media-libs/libmad )
+	mms? ( media-libs/libmms )
+	mplayer? ( media-video/mplayer )
 	musepack? ( >=media-sound/musepack-tools-444 )
 	modplug? ( >=media-libs/libmodplug-0.8.4 )
 	vorbis? ( media-libs/libvorbis
@@ -39,7 +46,7 @@ RDEPEND="x11-libs/qt-gui:4[qt3support]
 	jack? ( media-sound/jack-audio-connection-kit
 		media-libs/libsamplerate )
 	ffmpeg? ( media-video/ffmpeg )
-	projectm? ( >=media-libs/libprojectm-1.2.0 )
+	projectm? ( media-libs/libprojectm )
 	pulseaudio? ( >=media-sound/pulseaudio-0.9.9 )
 	wavpack? ( media-sound/wavpack )
 	scrobbler? ( net-misc/curl )
@@ -64,18 +71,30 @@ src_configure() {
 		$(qmmp_use_enable alsa ALSA)
 		$(qmmp_use_enable aac AAC)
 		$(qmmp_use_enable bs2b BS2B)
+		$(qmmp_use_enable cover COVER)
+		$(qmmp_use_enable cdrom CDA)
 		$(qmmp_use_enable dbus DBUS)
+		$(qmmp_use_enable enca ENCA)
 		$(qmmp_use_enable ffmpeg FFMPEG)
 		$(qmmp_use_enable flac FLAC)
+		$(qmmp_use_enable hal HAL)
 		$(qmmp_use_enable jack JACK)
+		$(qmmp_use_enable kde KDENOTIFY)
+		$(qmmp_use_enable ladspa LADSPA)
+		$(qmmp_use_enable lyrics LYRICS)
 		$(qmmp_use_enable mad MAD)
+		$(qmmp_use_enable mplayer MPLAYER)
+		$(qmmp_use_enable mms MMS)
 		$(qmmp_use_enable modplug MODPLUG)
+		$(qmmp_use_enable mpris MPRIS)
 		$(qmmp_use_enable musepack MPC)
+		$(qmmp_use_enable notifier NOTIFIER)
 		$(qmmp_use_enable oss OSS)
 		$(qmmp_use_enable projectm PROJECTM)
 		$(qmmp_use_enable pulseaudio PULSE)
 		$(qmmp_use_enable scrobbler SCROBBLER)
 		$(qmmp_use_enable sndfile SNDFILE)
+		$(qmmp_use_enalbe tray STATICON)
 		$(qmmp_use_enable libsamplerate SRC)
 		$(qmmp_use_enable vorbis VORBIS)
 		$(qmmp_use_enable wavpack WAVPACK)"
