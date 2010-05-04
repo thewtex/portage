@@ -1,6 +1,6 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-extra/at-spi/at-spi-1.28.1.ebuild,v 1.1 2009/10/29 21:51:30 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/at-spi/at-spi-1.28.1.ebuild,v 1.3 2010/05/04 15:59:57 tester Exp $
 
 inherit autotools eutils gnome2 python virtualx
 
@@ -9,12 +9,11 @@ HOMEPAGE="http://developer.gnome.org/projects/gap/"
 
 LICENSE="LGPL-2"
 SLOT="1"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sh ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sh ~sparc ~x86 ~x86-fbsd"
 IUSE="doc"
 
 RDEPEND=">=dev-libs/atk-1.17
-	>=x11-libs/gtk+-2.10.0
-	>=gnome-base/gail-1.9.0
+	>=x11-libs/gtk+-2.13.0
 	>=gnome-base/libbonobo-1.107
 	>=gnome-base/orbit-2
 	>=dev-libs/dbus-glib-0.76

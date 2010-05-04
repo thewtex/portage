@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/plasma-workspace/plasma-workspace-4.4.2.ebuild,v 1.2 2010/04/29 04:21:21 reavertm Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/plasma-workspace/plasma-workspace-4.4.2.ebuild,v 1.4 2010/05/04 01:16:03 reavertm Exp $
 
 EAPI="3"
 
@@ -32,7 +32,7 @@ COMMONDEPEND="
 		>=dev-python/sip-4.7.1
 		$(add_kdebase_dep pykde4)
 	)
-	rss? ( $(add_kdebase_dep kdepimlibs) )
+	rss? ( $(add_kdebase_dep kdepimlibs 'akonadi') )
 	xinerama? ( x11-libs/libXinerama )
 "
 DEPEND="${COMMONDEPEND}
@@ -57,6 +57,10 @@ KMEXTRACTONLY="
 
 KMLOADLIBS="libkworkspace libplasmaclock libplasmagenericshell libtaskmanager"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-4.4.2-xinerama_cmake_automagic.patch"
+)
+
 pkg_setup() {
 	python_set_active_version 2
 	kde4-meta_pkg_setup
@@ -78,6 +82,7 @@ src_configure() {
 		$(cmake-utils_use_with python PyKDE4)
 		$(cmake-utils_use_with rss KdepimLibs)
 		$(cmake-utils_use_with semantic-desktop Nepomuk)
+		$(cmake-utils_use_with xinerama X11_Xinerama)
 		-DWITH_Xmms=OFF
 	)
 

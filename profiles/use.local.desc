@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5521 2010/05/02 22:47:48 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5533 2010/05/04 11:47:54 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -324,7 +324,6 @@ app-emulation/uae:sdl-sound - Use media-sound/sdl-sound for audio output
 app-emulation/uae:ui - Build the user interface (could be gtk or ncurses based, depending on sdl, dga, svga and aalib USE flags)
 app-emulation/vice:ethernet - Enable ethernet emulation
 app-emulation/vice:memmap - Enable extra monitor features
-app-emulation/vice:resid - Enable support for ReSID media-libs/resid
 app-emulation/vice:xrandr - Enable support for the X xrandr extension
 app-emulation/virt-manager:policykit - Enables sys-auth/polkit authentication support, required when using app-emulation/libvirt with PolicyKit authentication
 app-emulation/virtualbox-bin:additions - Install Guest System Tools ISO
@@ -352,6 +351,7 @@ app-emulation/xen-tools:acm - Enable the ACM/sHype XSM module from IBM
 app-emulation/xen-tools:api - Build the C libxenapi bindings
 app-emulation/xen-tools:flask - Enable the Flask XSM module from NSA
 app-emulation/xen-tools:hvm - Enable support for hardware based virtualization (VT-x, AMD-v
+app-emulation/xen-tools:ioemu - Enable IOEMU support
 app-emulation/xen-tools:pygrub - Install the pygrub boot loader
 app-emulation/xen-tools:screen - Enable support for running domain U console in an app-misc/screen session
 app-emulation/xenman:lvm2 - Enable lvm2 support
@@ -377,6 +377,8 @@ app-i18n/im-ja:skk - Support for SKK input method
 app-i18n/kimera:anthy - Support for Anthy input method
 app-i18n/libtomoe-gtk:gucharmap - Enable gucharmap dictionary plugin
 app-i18n/scim-tomoe:gucharmap - Enable gucharmap dictionary plugin
+app-i18n/sunpinyin:ibus - Enable support for app-i18n/ibus input method 
+app-i18n/sunpinyin:xim - Enable support for XIM
 app-i18n/tomoe:hyperestraier - Enable support for app-text/hyperestraier
 app-i18n/uim:anthy - Enable support for app-i18n/anthy input method 
 app-i18n/uim:eb - Enable support for dev-libs/eb
@@ -543,6 +545,7 @@ app-office/osmo:syncml - Enable syncML support
 app-office/rabbit:gnome-print - Gnome-Print support (gnome-base/libgnomeprint)
 app-office/rabbit:gs - Ghostscript support (app-text/ghostscript-gpl)
 app-office/rabbit:tgif - tgif support (media-gfx/tgif)
+app-office/scribus:minimal - Don't install headers (only required for e.g. plug-in developers)
 app-office/texmacs:netpbm - Add support for media-libs/netpbm
 app-office/tpp:figlet - Install app-misc/figlet to support the --huge command
 app-pda/barry:boost - Enable boost support
@@ -718,7 +721,8 @@ dev-db/sqlite:fts3 - Full text search using the fts3 module
 dev-db/sqlite:secure-delete - Overwrite deleted information with zeros in addition to marking the space as available for reuse. This causes a performance penalty.
 dev-db/sqlite:soundex - Enable the soundex function to compute soundex encodings of strings
 dev-db/sqlite:threadsafe - Enable thread safe operation of sqlite
-dev-db/unixODBC:minimal - Don't build and install bundled drivers and extra libraries
+dev-db/unixODBC:minimal - Disable bundled drivers and extra libraries (most users don't need these)
+dev-db/unixODBC:odbcmanual - Administrator, Internal Structure, Programmer and User documentation
 dev-dotnet/nant:bootstrap - Bootstrap nant by using pre-built ndoc binaries.
 dev-embedded/openocd:ftd2xx - Enable support for USB FTDI chips via dev-embedded/libftd2xx
 dev-embedded/openocd:ftdi - Enable support for USB FTDI chips via dev-embedded/libftdi
@@ -1444,6 +1448,7 @@ kde-base/gwenview:kipi - Support for the KDE Image Plugin Interface.
 kde-base/kaddressbook:gnokii - Address synchronization with mobile phones via app-mobilephone/gnokii
 kde-base/kalzium:editor - Enable the embedded molecule editor/viewer
 kde-base/kalzium:solver - Enable the equation solver
+kde-base/kde-meta:sdk - Enable instalation of SDK components
 kde-base/kdeadmin-meta:lilo - Install lilo-config, a frontend for the lilo boot loader
 kde-base/kdeartwork-kscreensaver:eigen - Enable various arithmetic screensavers which use Eigen2 for computations.
 kde-base/kdebase-kioslaves:lzma - Enable LZMA/XZ archive support
@@ -1454,6 +1459,7 @@ kde-base/kdebindings-csharp:plasma - Compile bindings for kde's plasma.
 kde-base/kdebindings-csharp:qimageblitz - Compile bindings for kde-base/qimageblitz.
 kde-base/kdebindings-csharp:qscintilla - Compile bindings for x11-libs/qscintilla.
 kde-base/kdebindings-csharp:webkit - Compile bindings for x11-libs/webkit.
+kde-base/kdebindings-meta:csharp - Enable C# language bindings for KDE and Qt
 kde-base/kdebindings-ruby:akonadi - Compile bindings for kde-base/akonadi.
 kde-base/kdebindings-ruby:kdevplatform - Compile bindings for dev-util/kdevplatform.
 kde-base/kdebindings-ruby:okular - Compile bindings for kde-base/okular.
@@ -1969,6 +1975,7 @@ media-sound/gnormalize:normalize - Enable the normalize front-end
 media-sound/gmusicbrowser:webkit - Enables gtk WebKit support
 media-sound/herrie:http - Enable http streaming
 media-sound/herrie:xspf - Enable support for reading and saving XSPF playlists
+media-sound/hydrogen:archive - Use libarchive instead of libtar
 media-sound/jack-audio-connection-kit:coreaudio - Build the CoreAudio driver on Mac OS X systems
 media-sound/jack-audio-connection-kit:cpudetection - Enables runtime cpudetection
 media-sound/jack-audio-connection-kit:netjack - Build with support for Realtime Audio Transport over generic IP
@@ -2037,6 +2044,7 @@ media-sound/pulseaudio:realtime -  Makes PulseAudio use RealtimeKit (sys-auth/rt
 media-sound/pulseaudio:system-wide -  Allow preparation and installation of the system-wide init script for PulseAudio. Since this support is only supported for embedded situations, do not enable without reading the upstream instructions at http://pulseaudio.org/wiki/WhatIsWrongWithSystemMode . 
 media-sound/pulseaudio:udev -  Use sys-fs/udev for autodiscovery of sound devices; this replaces the deprecated sys-apps/hal autodiscovery code. 
 media-sound/qmmp:bs2b - Enable Bauer stereophonic-to-binaural headphone filter
+media-sound/qmmp:cdrom - Enable audio CD support
 media-sound/qmmp:cover - Enable album cover support
 media-sound/qmmp:enca - Detects the character encoding automatically
 media-sound/qmmp:kde - Use kde4 notifier system
@@ -3225,7 +3233,6 @@ sci-geosciences/gpsd:ntp - Enable net-misc/ntp shared memory interface and PPS k
 sci-geosciences/gpsd:ocean - Enable OceanServer support
 sci-geosciences/gpsd:pl2303 - Enable udev rules for PL2303 USB-serial converter
 sci-geosciences/gpsd:tntc - Enable True North Technologies digital compass support
-sci-geosciences/grass:gdal - Enable support for sci-libs/gdal (Grass 5 only)
 sci-geosciences/grass:gmath - Enable gmath wrapper for BLAS/Lapack (virtual/blas, virtual/lapack)
 sci-geosciences/grass:largefile - Enable LFS support for huge files
 sci-geosciences/mapnik:gdal - Enable sci-libs/gdal library support
@@ -3640,7 +3647,7 @@ sys-power/acpid:consolekit - Install consolekit based powerbtn.sh (power button)
 sys-power/cpufreqd:nforce2 - Enable support for nforce2 voltage settings plug-in
 sys-power/cpufreqd:nvidia - Enable nvidia overclocking (media-video/nvclock) plug-in
 sys-power/cpufreqd:pmu - Enable Power Management Unit plug-in
-sys-power/pm-utils:ntp - install support for net-misc/ntp
+sys-power/pm-utils:ntp - Install support for net-misc/ntp
 sys-power/powerman:genders -  Add support for selecting power control targets using genders (-g option) 
 sys-power/powerman:httppower -  Add support for HTTP based power controllers 
 sys-power/suspend:crypt - Allows suspend and resume from encrypted disk
@@ -3648,8 +3655,9 @@ sys-power/suspend:fbsplash - Add support for framebuffer splash
 sys-process/acct:logrotate - Install a logrotate script to rotate /var/account/*
 sys-process/cronie:inotify - Enable inotify filesystem monitoring support.
 sys-process/fcron:debug -  Enable debug code and output. Since version 3.0.5 this will no longer force foreground execution, and fcron will be able to run as a service properly. 
-sys-process/fcron:doc -  Rebuild the user documentation provided with the package; this should really not be necessary as all the documentation is shipped pre-built. 
 sys-process/fcron:pam -  Enable PAM support for fcron. This means that fcron will pass through the "fcron" stack before executing the jobs, and fcrontab will use the "fcrontab" stack to authenticate the user before editing its crontab file. 
+sys-process/htop:openvz - Enable openvz support
+sys-process/htop:vserver - Enable vserver support
 sys-process/procps:n32 - Enable n32 ABI support on mips
 virtual/mpi:romio - Enable romio, a high-performance portable MPI-IO
 www-apache/mod_mono:aspnet2 - Handle all applications using ASP.NET 2.0 engine by default
