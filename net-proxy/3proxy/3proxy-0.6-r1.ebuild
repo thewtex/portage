@@ -1,14 +1,14 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-proxy/3proxy/3proxy-0.6-r1.ebuild,v 1.1 2009/03/24 19:30:59 mrness Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-proxy/3proxy/3proxy-0.6-r1.ebuild,v 1.2 2010/05/03 21:08:25 patrick Exp $
 
 EAPI="2"
 
 inherit toolchain-funcs eutils
 
 DESCRIPTION="really tiny cross-platform proxy servers set"
-HOMEPAGE="http:///3proxy.ru/"
-SRC_URI="http:///3proxy.ru/${PV}/${P}.tgz"
+HOMEPAGE="http://3proxy.ru/"
+SRC_URI="http://3proxy.ru/${PV}/${P}.tgz"
 
 LICENSE="3proxy"
 SLOT="0"
