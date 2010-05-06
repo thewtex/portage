@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/udev/udev-9999.ebuild,v 1.27 2010/04/19 20:28:22 zzam Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/udev/udev-9999.ebuild,v 1.28 2010/05/05 19:35:07 zzam Exp $
 
 EAPI="1"
 
@@ -15,7 +15,7 @@ if [[ ${PV} == "9999" ]]; then
 else
 	# please update testsys-tarball whenever udev-xxx/test/sys/ is changed
 	SRC_URI="mirror://kernel/linux/utils/kernel/hotplug/${P}.tar.bz2
-			test? ( mirror://gentoo/udev-151-testsys.tar.bz2 )"
+			 test? ( mirror://gentoo/${PN}-151-testsys.tar.bz2 )"
 	[[ -n "${PATCHSET}" ]] && SRC_URI="${SRC_URI} mirror://gentoo/${PATCHSET}.tar.bz2"
 fi
 DESCRIPTION="Linux dynamic and persistent device naming support (aka userspace devfs)"
@@ -24,7 +24,7 @@ HOMEPAGE="http://www.kernel.org/pub/linux/utils/kernel/hotplug/udev.html"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="selinux +devfs-compat +old-hd-rules -extras test"
+IUSE="selinux -extras test"
 
 COMMON_DEPEND="selinux? ( sys-libs/libselinux )
 	extras? (
@@ -149,11 +149,6 @@ src_unpack() {
 	  	      EPATCH_FORCE="yes" epatch
 	fi
 
-	if ! use devfs-compat; then
-		# see Bug #269359
-		epatch "${FILESDIR}"/udev-141-remove-devfs-names.diff
-	fi
-
 	# change rules back to group uucp instead of dialout for now
 	sed -e 's/GROUP="dialout"/GROUP="uucp"/' \
 		-i rules/{rules.d,packages,gentoo}/*.rules \
@@ -196,6 +191,7 @@ src_compile() {
 		--with-rootlibdir=/$(get_libdir) \
 		--libexecdir="${udev_libexec_dir}" \
 		--enable-logging \
+		--enable-static \
 		$(use_with selinux) \
 		$(use_enable extras) \
 		--disable-introspection
@@ -205,7 +201,7 @@ src_compile() {
 }
 
 src_install() {
-	local scriptdir="${FILESDIR}/151"
+	local scriptdir="${FILESDIR}/151-r4"
 
 	into /
 	emake DESTDIR="${D}" install || die "make install failed"
@@ -539,20 +535,16 @@ pkg_postinst() {
 	ewarn "set in /etc/udev/udev.conf, but in /etc/fstab"
 	ewarn "as for other directories."
 
-	if use devfs-compat; then
-		ewarn
-		ewarn "devfs-compat use flag is enabled (by default)."
-		ewarn "This enables devfs compatible device names."
-		ewarn "If you use /dev/md/*, /dev/loop/* or /dev/rd/*,"
-		ewarn "then please migrate over to using the device names"
-		ewarn "/dev/md*, /dev/loop* and /dev/ram*."
-		ewarn "The devfs-compat rules will be removed in the future."
-		ewarn "For reference see Bug #269359."
-	fi
+	ewarn
+	ewarn "If you use /dev/md/*, /dev/loop/* or /dev/rd/*,"
+	ewarn "then please migrate over to using the device names"
+	ewarn "/dev/md*, /dev/loop* and /dev/ram*."
+	ewarn "The devfs-compat rules have been removed."
+	ewarn "For reference see Bug #269359."
 
 	ewarn
 	ewarn "Rules for /dev/hd* devices have been removed"
-	ewarn "Please migrate to the new libata."
+	ewarn "Please migrate to libata."
 
 	elog
 	elog "For more information on udev on Gentoo, writing udev rules, and"
