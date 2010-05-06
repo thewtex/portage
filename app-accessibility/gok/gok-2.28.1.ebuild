@@ -1,6 +1,6 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-accessibility/gok/gok-2.28.1.ebuild,v 1.1 2009/10/29 20:53:38 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-accessibility/gok/gok-2.28.1.ebuild,v 1.3 2010/05/04 16:08:35 tester Exp $
 
 EAPI="2"
 GCONF_DEBUG="no"
@@ -12,7 +12,7 @@ HOMEPAGE="http://www.gok.ca/"
 
 LICENSE="LGPL-2"
 SLOT="1"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="~alpha amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 IUSE="accessibility doc usb"
 
 # accessibility will disappear with new xorg-server (1.6)
@@ -21,7 +21,6 @@ RDEPEND=">=dev-libs/glib-2.17.4
 	>=gnome-base/libbonobo-2.5.1
 	>=dev-libs/atk-1.3
 	>=x11-libs/gtk+-2.14
-	gnome-base/gail
 	>=x11-libs/libwnck-2.13.5
 	app-accessibility/gnome-speech
 	>=dev-libs/dbus-glib-0.7

@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/zabbix/zabbix-1.8.2.ebuild,v 1.1 2010/04/07 13:09:01 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/zabbix/zabbix-1.8.2.ebuild,v 1.3 2010/05/03 18:21:47 patrick Exp $
 
 EAPI="2"
 
@@ -25,7 +25,8 @@ DEPEND="snmp? ( net-analyzer/net-snmp )
 	mysql? ( virtual/mysql )
 	sqlite3? ( =dev-db/sqlite-3* )
 	postgres? ( virtual/postgresql-base )
-	jabber? ( dev-libs/iksemel )
+	jabber? ( dev-libs/iksemel
+		dev-util/pkgconfig )
 	curl? ( net-misc/curl )
 	openipmi? ( sys-libs/openipmi )"
 RDEPEND="${DEPEND}
@@ -177,6 +178,10 @@ pkg_postinst() {
 				;;
 		esac
 	fi
+}
+
+src_prepare() {
+	epatch "${FILESDIR}/${P}-as-needed.patch"
 }
 
 src_configure() {

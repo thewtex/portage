@@ -1,4 +1,4 @@
->=x11-libs/gtk+-2.6:2 >=media-libs/libmp3splt-0.5.6 audacious? ( media-sound/audacious ) gstreamer? ( media-libs/gst-plugins-base:0.10 ) nls? ( sys-devel/gettext )
+>=x11-libs/gtk+-2.6:2 >=media-libs/libmp3splt-0.5.6 audacious? ( media-sound/audacious ) gstreamer? ( media-libs/gst-plugins-base:0.10 ) nls? ( sys-devel/gettext ) || ( =sys-devel/automake-1.11* =sys-devel/automake-1.10* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b
 >=x11-libs/gtk+-2.6:2 >=media-libs/libmp3splt-0.5.6 audacious? ( media-sound/audacious ) gstreamer? ( media-libs/gst-plugins-base:0.10 )
 0
 mirror://sourceforge/mp3splt/mp3splt-gtk-0.5.9.tar.gz
@@ -7,14 +7,14 @@ http://mp3splt.sourceforge.net
 GPL-2
 a GTK+ based utility to split mp3 and ogg files without decoding.
 ~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86
-multilib toolchain-funcs
+autotools eutils libtool multilib portability toolchain-funcs
 audacious gstreamer nls
 
 
 
 2
 
-configure install
+configure install prepare
 
 
 

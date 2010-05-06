@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/vino/vino-2.28.2.ebuild,v 1.2 2010/04/06 14:21:07 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/vino/vino-2.28.2.ebuild,v 1.4 2010/05/04 16:31:13 tester Exp $
 
 EAPI="2"
 
@@ -11,7 +11,7 @@ HOMEPAGE="http://www.gnome.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 IUSE="avahi crypt gnutls ipv6 jpeg gnome-keyring libnotify networkmanager +telepathy zlib"
 
 RDEPEND=">=dev-libs/glib-2.17
@@ -64,4 +64,13 @@ src_prepare() {
 	# Fix intltoolize broken file, see upstream #577133
 	sed "s:'\^\$\$lang\$\$':\^\$\$lang\$\$:g" -i po/Makefile.in.in \
 		|| die "sed failed"
+}
+
+pkg_postinst() {
+	gnome2_pkg_postinst
+
+	elog "If you are getting refresh problems when using special 3D effects,"
+	elog "try disabling XDamage extension. For that, you can run the following:"
+	elog " gconftool-2 --type boolean --set /desktop/gnome/remote_access/disable_xdamage true"
+	elog "This is due http://bugs.freedesktop.org/12255"
 }

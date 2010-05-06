@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/base/use.mask,v 1.99 2010/03/22 08:58:39 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/base/use.mask,v 1.101 2010/05/03 15:50:29 a3li Exp $
 
 # These need libieee1284 which is amd64/x86 only.
 sane_backends_canon_pp
@@ -246,10 +246,10 @@ pvm
 
 # Alex Legler <a3li@gentoo.org> (7 Dec 2009)
 # Ruby 1.9 is hardmasked
-# Ruby Enterprise Edition not yet in the tree
+# JRuby and REE18 are whitelisted on supported arches
 ruby_targets_ruby19
-ruby_targets_ree18
 ruby_targets_jruby
+ruby_targets_ree18
 
 # Nirbheek Chauhan <nirbheek@gentoo.org> (30 Dec 2009)
 # gobject-introspection USE-flag

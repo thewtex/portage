@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jffi/jffi-1.0.0.ebuild,v 1.2 2010/03/13 22:33:09 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jffi/jffi-1.0.0.ebuild,v 1.4 2010/05/04 15:22:36 phajdan.jr Exp $
 
 # Probably best to leave the CFLAGS as they are here. See...
 # http://weblogs.java.net/blog/kellyohair/archive/2006/01/compilation_of_1.html
@@ -17,7 +17,7 @@ SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="LGPL-3"
 SLOT="0.4"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc x86"
 IUSE=""
 
 RDEPEND=">=virtual/jre-1.5
@@ -38,6 +38,7 @@ java_prepare() {
 	rm -rf jni/libffi || die
 
 	epatch "${FILESDIR}/${P}-makefile.patch"
+	epatch "${FILESDIR}/1.0.0-gcc-3.4.patch"
 
 	# any better function for this, excluding get_system_arch in java-vm-2 which is incorrect to inherit ?
 	local arch=""

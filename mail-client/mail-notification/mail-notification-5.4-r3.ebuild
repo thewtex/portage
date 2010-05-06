@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/mail-notification/mail-notification-5.4-r3.ebuild,v 1.1 2010/04/21 20:39:04 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-client/mail-notification/mail-notification-5.4-r3.ebuild,v 1.4 2010/05/03 12:48:37 tester Exp $
 
 EAPI=1
 
@@ -10,7 +10,7 @@ DESCRIPTION="A GNOME trayicon which checks for email, with support for many onli
 HOMEPAGE="http://www.nongnu.org/mailnotify/"
 SRC_URI="http://savannah.nongnu.org/download/mailnotify/${P}.tar.bz2"
 
-KEYWORDS="~amd64 ~hppa ~ppc ~sparc ~x86"
+KEYWORDS="amd64 ~hppa ~ppc ~sparc ~x86"
 SLOT="0"
 LICENSE="GPL-3"
 
@@ -60,8 +60,8 @@ src_unpack() {
 	# We are not Ubuntu, and I suspect that this is the cause of #215281
 	epatch "${FILESDIR}/${P}-remove-ubuntu-special-case.patch"
 
-	# Make it work ok with eds-2.24
-	epatch "${FILESDIR}/${P}-e-d-s-2.24.patch"
+	# Make it work ok with eds-2.24 and 2.29
+	epatch "${FILESDIR}/${P}-e-d-s.patch"
 
 	# Fix gtkhtml depend to solve building against evo-2.28, see bug #293374
 	epatch "${FILESDIR}/${P}-evolution-gtkhtml.patch"
@@ -72,6 +72,9 @@ src_unpack() {
 
 	# Fedora patch to build against dev-libs/gmime:2.4
 	epatch "${FILESDIR}/${P}-gmime.patch"
+
+	# Fix forced --as-needed, bug 317905
+	epatch "${FILESDIR}/${P}-asneeded.patch"
 }
 
 src_compile() {

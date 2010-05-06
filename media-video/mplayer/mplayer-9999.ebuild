@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/mplayer/mplayer-9999.ebuild,v 1.53 2010/04/28 17:40:50 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/mplayer/mplayer-9999.ebuild,v 1.56 2010/05/01 15:41:17 aballier Exp $
 
 EAPI="2"
 
@@ -113,6 +113,7 @@ RDEPEND+="
 	enca? ( app-i18n/enca )
 	faad? ( media-libs/faad2 )
 	gif? ( media-libs/giflib )
+	iconv? ( virtual/libiconv )
 	jack? ( media-sound/jack-audio-connection-kit )
 	jpeg? ( media-libs/jpeg )
 	jpeg2k? ( media-libs/openjpeg )
@@ -162,8 +163,7 @@ DEPEND="${RDEPEND}
 		xscreensaver? ( x11-proto/scrnsaverproto )
 	)
 	amd64? ( ${ASM_DEP} )
-	doc? ( dev-libs/libxslt )
-	iconv? ( virtual/libiconv )
+	doc? ( dev-libs/libxslt app-text/docbook-xml-dtd )
 	x86? ( ${ASM_DEP} )
 	x86-fbsd? ( ${ASM_DEP} )
 "
@@ -321,10 +321,6 @@ src_configure() {
 	#
 	# internal dvdread and dvdnav use flags enable internal
 	# versions of the libraries, which are snapshots of the fork.
-	#
-	# Only check for disabled a52 use flag inside the DVD check,
-	# since many users were getting confused why there was no
-	# audio stream.
 
 	if use dvd; then
 		use dvdnav || myconf+=" --disable-dvdnav"
@@ -335,7 +331,6 @@ src_configure() {
 			--disable-dvdread-internal
 			--disable-libdvdcss-internal
 		"
-		use a52 || myconf+=" --disable-liba52-internal"
 	fi
 
 	#############
@@ -399,6 +394,7 @@ src_configure() {
 	##########
 	# Won't work with external liba52
 	myconf+=" --disable-liba52"
+	use a52 && myconf+=" --enable-liba52-internal"
 	# Use internal musepack codecs for SV7 and SV8 support
 	myconf+=" --disable-musepack"
 
