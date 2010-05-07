@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-streamdev/vdr-streamdev-0.5.0_pre20100124.ebuild,v 1.1 2010/02/25 21:05:12 hd_brummy Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-streamdev/vdr-streamdev-0.5.0_pre20100124.ebuild,v 1.2 2010/05/05 15:17:49 hd_brummy Exp $
 
 EAPI="2"
 
@@ -8,7 +8,7 @@ MY_P="${PN}-${PV/_pre/-pre-}"
 inherit vdr-plugin eutils
 
 DESCRIPTION="vdr Plugin: Client/Server streaming plugin"
-HOMEPAGE="http://www.magoa.net/linux/"
+HOMEPAGE="http://streamdev.vdr-developer.org/"
 SRC_URI="http://vdr.websitec.de/download/${PN}/${MY_P}.tgz"
 
 LICENSE="GPL-2"
