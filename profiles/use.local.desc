@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5541 2010/05/05 23:27:46 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5544 2010/05/06 16:27:49 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -1836,9 +1836,7 @@ media-sound/listen:webkit - Enable webkit rendering engine instead of mozembed
 media-sound/lmms:fluidsynth - Enables Fluidsynth MIDI software synthesis plugin.
 media-sound/lmms:stk - Enables STK Mallet plugin.
 media-sound/lmms:vst - Enables the VeSTige plugin to run VST plugins through Wine.
-media-sound/mixxx:djconsole - Enable djconsole support
 media-sound/mixxx:hifieq - Enable hifi equalizer support
-media-sound/mixxx:recording - Enable experimental recording support
 media-sound/mixxx:shout - Enable shoutcast support
 media-sound/mixxx:tonal - Enable tonal analysis support
 media-sound/mixxx:vinylcontrol - Enable vinylcontrol feature
@@ -2237,6 +2235,9 @@ net-analyzer/net-snmp:mfd-rewrites - Use MFD rewrites of mib modules where avail
 net-analyzer/net-snmp:rpm - Enable the rpm snmp probing
 net-analyzer/net-snmp:sendmail - Enable sendmail statistics monitoring
 net-analyzer/net-snmp:smux - Enable the smux MIBS module
+net-analyzer/nfdump:ftconv - Build the flow-tools to nfdump converter
+net-analyzer/nfdump:nfprofile - Build nfprofile used by NfSen
+net-analyzer/nfdump:sflow - Build sflow collector sfcpad
 net-analyzer/pchar:pcap - Use the net-libs/libpcap library
 net-analyzer/pmacct:64bit - Use 64bit counters instead of 32bit ones
 net-analyzer/pmacct:ulog - Enable ULOG support
@@ -2625,6 +2626,7 @@ net-mail/dovecot:pop3d - Build pop3d support
 net-mail/dovecot:sieve - Build the sieve plugin
 net-mail/dovecot:vpopmail - Add vpopmail support
 net-mail/fetchmail:hesiod - Enable support for hesiod
+net-mail/fetchmail:tk - Adds support for Tk GUI toolkit, in particular it installs fetchmailconf
 net-mail/gnubiff:password - Enable save passwords to connect mail servers in user space
 net-mail/hotwayd:smtp - Build SMTP proxy (hotsmtpd)
 net-mail/lbdb:abook - Enables app-misc/abook support
