@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5544 2010/05/06 16:27:49 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5548 2010/05/07 19:27:46 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -1119,9 +1119,6 @@ dev-util/subversion:dso - Enable runtime module search
 dev-util/subversion:extras - Install extras scripts (examples, tools, hooks)
 dev-util/subversion:webdav-neon - Enable WebDAV support using net-misc/neon
 dev-util/subversion:webdav-serf - Enable WebDAV support using net-libs/serf
-dev-util/svk:log4p - Enable perl logger support
-dev-util/svk:pager - Enable perl pager selection support
-dev-util/svk:patch - Enable patch creation, import support
 dev-util/universalindentgui:html - Add support for HTML files
 dev-vcs/bzr:sftp - Enable sftp support
 dev-vcs/bzr-gtk:gconf - Enable GConf support
@@ -1141,6 +1138,9 @@ dev-vcs/mercurial:tk - Install dev-lang/tk for hgk script.
 dev-vcs/qct:bazaar -  Support for dev-vcs/bzr 
 dev-vcs/qct:mercurial -  Support for dev-vcs/mercurial 
 dev-vcs/qct:monotone -  Support for dev-vcs/monotone 
+dev-vcs/svk:log4p - Enable perl logger support
+dev-vcs/svk:pager - Enable perl pager selection support
+dev-vcs/svk:patch - Enable patch creation, import support
 games-action/abuse:demo - Use the demo data instead of the full game
 games-action/abuse:levels - Install user-created levels (fRaBs)
 games-action/abuse:sounds - Install optional sound data
@@ -2691,7 +2691,6 @@ net-misc/htbinit:esfq - Add support for Enhanced Stochastic Fairness queueing di
 net-misc/hylafax:faxonly - Don't depend on mgetty-fax
 net-misc/hylafax:html - Adds HTML documentation
 net-misc/hylafax:mgetty - Adds support for mgetty and vgetty
-net-misc/iaxmodem:logrotate -  Install support files for app-admin/logrotate 
 net-misc/icecast:yp - Build support for yp public directory listings
 net-misc/iputils:SECURITY_HAZARD - Allow non-root users to flood (ping -f). This is generally a very bad idea.
 net-misc/italc:system-libvncserver - Build against the system libvncserver (experimental)
@@ -3439,7 +3438,7 @@ www-apps/postfixadmin:extras - Install contributed scripts and plugins
 www-apps/postfixadmin:tests - Install model unit tests
 www-apps/redmine:darcs - Enable support for dev-vcs/darcs
 www-apps/redmine:git - Enable support for dev-vcs/git
-www-apps/redmine:mercurial - Enable support for dev-util/mercurial
+www-apps/redmine:mercurial - Enable support for dev-vcs/mercurial
 www-apps/redmine:openid - Enable support for OpenID
 www-apps/redmine:passenger - Enable support for www-apache/passenger
 www-apps/rt:lighttpd - Add www-servers/lighttpd support
