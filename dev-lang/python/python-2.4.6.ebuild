@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/python/python-2.4.6.ebuild,v 1.33 2010/05/02 16:41:19 arfrever Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/python/python-2.4.6.ebuild,v 1.35 2010/05/10 18:44:05 arfrever Exp $
 
 EAPI="1"
 
@@ -39,8 +39,8 @@ RDEPEND=">=app-admin/eselect-python-20091230
 			)
 			ssl? ( dev-libs/openssl )
 			tk? ( >=dev-lang/tk-8.0 )
-			xml? ( dev-libs/expat )
 		)"
+#			xml? ( dev-libs/expat )
 DEPEND="${RDEPEND}"
 RDEPEND+=" !build? ( app-misc/mime-types )"
 PDEPEND="app-admin/python-updater"
@@ -58,9 +58,6 @@ pkg_setup() {
 src_unpack() {
 	unpack ${A}
 	cd "${S}"
-
-	# Ensure that internal copy of expat is not used.
-	rm -fr Modules/expat
 
 	if tc-is-cross-compiler; then
 		epatch "${FILESDIR}/python-2.4.4-test-cross.patch"
@@ -138,8 +135,8 @@ src_configure() {
 	[[ "${ARCH}" == "alpha" ]] && append-flags -fPIC
 
 	# https://bugs.gentoo.org/show_bug.cgi?id=50309
-	if is-flag -O3; then
-		is-flag -fstack-protector-all && replace-flags -O3 -O2
+	if is-flagq -O3; then
+		is-flagq -fstack-protector-all && replace-flags -O3 -O2
 		use hardened && replace-flags -O3 -O2
 	fi
 
