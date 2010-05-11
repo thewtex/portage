@@ -1,10 +1,10 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/emacs-vcs/emacs-vcs-24.0.9999.ebuild,v 1.3 2010/05/01 15:16:49 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-editors/emacs-vcs/emacs-vcs-24.0.9999.ebuild,v 1.5 2010/05/08 08:31:19 ulm Exp $
 
 EAPI=2
 
-inherit autotools elisp-common eutils flag-o-matic
+inherit autotools elisp-common eutils flag-o-matic multilib
 
 if [ "${PV##*.}" = "9999" ]; then
 	inherit bzr
@@ -196,6 +196,7 @@ src_configure() {
 	econf \
 		--program-suffix=-${EMACS_SUFFIX} \
 		--infodir=/usr/share/info/${EMACS_SUFFIX} \
+		--with-crt-dir=/usr/$(get_libdir) \
 		${myconf} || die "econf emacs failed"
 }
 
@@ -244,7 +245,7 @@ src_install () {
 		c=""
 	fi
 
-	sed 's/^X//' >"${SITEFILE}" <<-EOF
+	sed 's/^X//' >"${T}/${SITEFILE}" <<-EOF
 	X
 	;;; ${PN}-${SLOT} site-lisp configuration
 	X
@@ -262,7 +263,7 @@ src_install () {
 	X	   (setcdr q (cons dir (delete dir (cdr q))))
 	X	   (setq Info-directory-list (prune-directory-list (cdr p)))))))
 	EOF
-	elisp-site-file-install "${SITEFILE}" || die
+	elisp-site-file-install "${T}/${SITEFILE}" || die
 
 	dodoc README BUGS || die "dodoc failed"
 }

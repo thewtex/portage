@@ -1,14 +1,14 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/fetchmail/fetchmail-6.3.17.ebuild,v 1.1 2010/05/06 13:29:25 tove Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-mail/fetchmail/fetchmail-6.3.17.ebuild,v 1.5 2010/05/09 18:34:18 armin76 Exp $
 
 EAPI=2
 
-PYTHON_DEPEND="2"
+PYTHON_DEPEND="tk? 2"
 PYTHON_USE_WITH_OPT="tk"
 PYTHON_USE_WITH="tk"
 
-inherit multilib python eutils
+inherit python eutils
 
 DESCRIPTION="the legendary remote-mail retrieval and forwarding utility"
 HOMEPAGE="http://fetchmail.berlios.de"
@@ -16,7 +16,7 @@ SRC_URI="mirror://berlios/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2 public-domain"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 arm hppa ia64 ~mips ~ppc ~ppc64 s390 sh sparc x86 ~x86-fbsd"
 IUSE="ssl nls kerberos hesiod tk"
 
 RDEPEND="hesiod? ( net-dns/hesiod )
@@ -56,20 +56,18 @@ src_configure() {
 		$(use_with kerberos gssapi) \
 		$(use_with kerberos kerberos5) \
 		$(use_with hesiod) \
-		${myconf} || die "Configuration failed."
+		${myconf}
 }
 
 src_install() {
 	# dir for pidfile
-	dodir /var/run/${PN} || die "dodir failed"
-	keepdir /var/run/${PN}
-	fowners ${PN}:${PN} /var/run/${PN} || die "fowners failed"
+	keepdir /var/run/${PN} || die
+	fowners ${PN}:${PN} /var/run/${PN} || die
 
 	# fetchmail's homedir (holds fetchmail's .fetchids)
-	dodir /var/lib/${PN} || die "dodir failed"
-	keepdir /var/lib/${PN}
-	fowners ${PN}:${PN} /var/lib/${PN} || die "fowners failed"
-	fperms 700 /var/lib/${PN} || die "fperms failed"
+	keepdir /var/lib/${PN} || die
+	fowners ${PN}:${PN} /var/lib/${PN} || die
+	fperms 700 /var/lib/${PN} || die
 
 	emake DESTDIR="${D}" install || die
 

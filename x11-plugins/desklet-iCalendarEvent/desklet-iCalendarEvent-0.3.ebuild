@@ -1,16 +1,14 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/desklet-iCalendarEvent/desklet-iCalendarEvent-0.3.ebuild,v 1.1 2009/09/15 01:31:33 nixphoeni Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/desklet-iCalendarEvent/desklet-iCalendarEvent-0.3.ebuild,v 1.4 2010/05/09 00:48:11 nixphoeni Exp $
 
 EAPI=2
-
-DESKLET_NAME="${PN#desklet-}"
+CONTROL_NAME="${PN#desklet-}"
 
 inherit gdesklets
 
 DESCRIPTION="iCalendarEvent Control for gDesklets"
 HOMEPAGE="http://gdesklets.de/index.php?q=control/view/231"
-SRC_URI="${SRC_URI/\/desklets//controls}"
 LICENSE="GPL-2"
 # KEYWORDS limited by dev-python/icalendar
 KEYWORDS="~x86 ~amd64"
