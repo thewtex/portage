@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-backup/bacula/bacula-5.0.1-r2.ebuild,v 1.1 2010/03/23 10:12:39 wschlich Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-backup/bacula/bacula-5.0.1-r2.ebuild,v 1.2 2010/05/11 06:50:19 wschlich Exp $
 
 EAPI="2"
 inherit eutils multilib
@@ -130,6 +130,9 @@ src_prepare() {
 
 	# bug #310087
 	epatch "${FILESDIR}"/${PV}/${P}-as-needed.patch
+
+	# bug #311161
+	epatch "${FILESDIR}"/${PV}/${P}-lib-search-path.patch
 
 	# switch from -ltermcap to -lncurses.
 	# we have to regenerate the configure script
