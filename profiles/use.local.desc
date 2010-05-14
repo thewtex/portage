@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5556 2010/05/12 03:47:47 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5561 2010/05/14 11:27:45 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -567,7 +567,6 @@ app-text/lcdf-typetools:kpathsea - Enable integration with kpathsea search libra
 app-text/lodgeit:vim -  Install a vim plugin allowing to paste and download from within vim 
 app-text/namazu:kakasi - Enable kakasi support (dev-perl/Text-Kakasi)
 app-text/noweb:icon - Enable dev-lang/icon language support
-app-text/pdftk:nodrm - Decrypt a document with the user_pw even if it has an owner_pw set
 app-text/podofo:boost - Add support for boost
 app-text/poppler:abiword -  Enable support for app-office/abiword output. Requires dev-libs/libxml2. 
 app-text/poppler:exceptions - Enable exceptions throwing.
@@ -1224,8 +1223,9 @@ games-puzzle/jag:extras - Install additional graphics
 games-puzzle/xlogical:alt_gfx - Use alternate graphics which are closer to the original Amiga version
 games-roguelike/angband:sound - Enable and install sounds
 games-rpg/drascula:audio - Install optional audio files
-games-rpg/eternal-lands-data:music - Install optional music files (extra 30 meg)
-games-rpg/eternal-lands-data:sound - Install optional sound files (extra 40 meg)
+games-rpg/eternal-lands-data:bloodsuckermaps - Will install Bloodsucker's Maps in place of the official map files.
+games-rpg/eternal-lands-data:music - Adds in-game music.
+games-rpg/eternal-lands-data:sound - Adds in-game sound effects.
 games-rpg/kqlives:cheats - Enable cheating mode
 games-rpg/nwn:hou - Install the Hordes of the Underdark expansion pack
 games-rpg/nwn:sou - Installs the Shadows of Undrentide expension pack
@@ -1260,7 +1260,7 @@ games-strategy/x2:dynamic - Use dynamic binaries instead of static
 games-strategy/x2:langpacks - Install additional language packs
 games-strategy/x2:modkit - Install the modkit
 games-util/gslist:web - Enable the web interface
-games-util/xboxdrv:daemon - Install xboxdrv-daemon.py (and its dependencies)
+games-util/xboxdrv:daemon - Install xboxdrv-daemon (and its dependencies)
 gnome-base/gdm:consolekit - Allow proper handling of removable media according to who is actually present on the machine.
 gnome-base/gdm:dmx - Enables Distributed Multihead X (DMX) support
 gnome-base/gdm:remote - Enables support for secure remote connections
@@ -1812,6 +1812,7 @@ media-sound/banshee:karma - Build with karma support
 media-sound/banshee:podcast - Build with podcasting support
 media-sound/banshee:wikipedia - Enable the Wikipedia context pane (requires net-libs/webkit-gtk)
 media-sound/banshee:youtube - Enable the Youtube plugin
+media-sound/clementine:vlc - Enable support for VLC engine
 media-sound/cmus:pidgin - install support script for net-im/pidgin
 media-sound/cmus:wma - add support for Windows Media Audio
 media-sound/cmus:zsh-completion - enable zsh completion support
@@ -2668,6 +2669,7 @@ net-misc/asterisk:newt - Include additional tools that require redhats windowing
 net-misc/asterisk:nosamples - Don't install sample sound and configuration files
 net-misc/asterisk:osp - Enable support for the Open Settlement Protocol
 net-misc/asterisk:pri - Enables pri support
+net-misc/asterisk:samples - Install sample sound and configuration files (default: on)
 net-misc/asterisk:span - Enable support for the spandsp codec
 net-misc/asterisk:zaptel - Enables deprecated zaptel support (use dahdi if available)
 net-misc/asterisk-addons:h323 - Build the chan_ooh323c H.323 channel driver
