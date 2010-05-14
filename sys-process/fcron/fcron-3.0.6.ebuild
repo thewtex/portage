@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-process/fcron/fcron-3.0.6.ebuild,v 1.1 2010/05/04 11:40:38 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-process/fcron/fcron-3.0.6.ebuild,v 1.2 2010/05/14 11:11:07 flameeyes Exp $
 
 inherit cron pam eutils
 
@@ -37,6 +37,8 @@ src_unpack() {
 
 	# respect LDFLAGS
 	sed -i "s:\(@LIBS@\):\$(LDFLAGS) \1:" Makefile.in || die "sed failed"
+
+	sed -i -e 's:/etc/fcrontab:/etc/fcron/fcrontab:' script/check_system_crontabs.sh || die
 }
 
 src_compile() {
@@ -111,7 +113,7 @@ src_install() {
 
 	# install /etc/crontab and /etc/fcrontab
 	insopts -m0640 -o ${rootuser:-root} -g ${rootgroup:-root}
-	doins "${FILESDIR}"/crontab "${FILESDIR}"/fcrontab || die
+	doins "${FILESDIR}"/fcrontab || die
 
 	# install PAM files
 	pamd_mimic system-services fcron auth account session
@@ -132,7 +134,7 @@ EOF
 	newinitd "${FILESDIR}"/fcron.init.2 fcron || die
 
 	# install the very handy check_system_crontabs script, POSIX sh variant
-	dosbin script/check_system_crontabs.sh || die
+	newsbin script/check_system_crontabs.sh check_system_crontabs || die
 
 	# doc stuff
 	dodoc MANIFEST VERSION "${FILESDIR}"/crontab \
@@ -182,9 +184,9 @@ pkg_postinst() {
 	elog "   Fortunately, it's possible to emulate vixie-cron's behavior"
 	elog "   with regards to ${ROOT}etc/crontab and ${ROOT}etc/cron.d by using a"
 	elog "   little helper script called 'check_system_crontabs'."
-	elog "   The file ${ROOT}etc/fcrontab (not ${ROOT}etc/crontab!) has been set up"
+	elog "   The file ${ROOT}etc/fcron/fcrontab (not ${ROOT}etc/crontab!) has been set up"
 	elog "   to run the script once a while to check whether"
-	elog "   ${ROOT}etc/fcrontab, ${ROOT}etc/crontab or files in ${ROOT}etc/cron.d/ have"
+	elog "   ${ROOT}etc/fcron/fcrontab, ${ROOT}etc/crontab or files in ${ROOT}etc/cron.d/ have"
 	elog "   changed since the last generation of the systab and"
 	elog "   regenerate it from those three locations as necessary."
 	elog "   You should now run 'check_system_crontabs' once to properly"
@@ -192,12 +194,12 @@ pkg_postinst() {
 	elog
 	elog "      check_system_crontabs -v -i -f"
 	elog
-	elog "   The file ${ROOT}etc/fcrontab should only be used to run that"
+	elog "   The file ${ROOT}etc/fcron/fcrontab should only be used to run that"
 	elog "   script in order to ensure independence from the standard"
 	elog "   system crontab file ${ROOT}etc/crontab."
 	elog "   You may of course adjust the schedule for the script"
 	elog "   'check_system_crontabs' or any other setting in"
-	elog "   ${ROOT}etc/fcrontab as you desire."
+	elog "   ${ROOT}etc/fcron/fcrontab as you desire."
 	elog
 	elog "If you do NOT want to use 'check_system_crontabs', you"
 	elog "might still want to activate the use of the well known"
@@ -215,8 +217,8 @@ pkg_postinst() {
 	chown ${rootuser:-root}:fcron "${ROOT}"usr/bin/fcronsighup >&/dev/null
 	chmod 6755 "${ROOT}"usr/bin/fcron{tab,dyn,sighup} >&/dev/null
 	ewarn "Fixing permissions and ownership of ${ROOT}etc/{fcron,fcrontab,crontab}"
-	chown -R ${rootuser:-root}:fcron "${ROOT}"etc/{fcron,fcrontab,crontab} >&/dev/null
-	chmod -R g+rX,o= "${ROOT}"etc/fcron "${ROOT}"etc/{fcron,fcrontab,crontab} >&/dev/null
+	chown -R ${rootuser:-root}:fcron "${ROOT}"etc/{fcron,crontab} >&/dev/null
+	chmod -R g+rX,o= "${ROOT}"etc/fcron "${ROOT}"etc/{fcron,crontab} >&/dev/null
 	ewarn
 
 	ewarn
