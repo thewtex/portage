@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/beagle/beagle-0.3.9-r1.ebuild,v 1.8 2010/04/24 18:02:42 lxnay Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/beagle/beagle-0.3.9-r1.ebuild,v 1.10 2010/05/16 17:45:54 nirbheek Exp $
 
 EAPI=2
 
@@ -57,7 +57,7 @@ RDEPEND="!!sci-libs/beagle
 	thunderbird? (
 			|| (
 				>=mail-client/mozilla-thunderbird-1.5
-				>=mail-client/mozilla-thunderbird-bin-1.5
+				>=mail-client/thunderbird-bin-1.5
 			)
 	)
 	firefox? (
@@ -143,10 +143,10 @@ src_install() {
 			xpi_install "${WORKDIR}"/firefox-beagle \
 			|| die "xpi install for mozilla-firefox failed!"
 		fi
-		if has_version '>=www-client/mozilla-firefox-bin-1.5'; then
+		if has_version '>=www-client/firefox-bin-1.5'; then
 			MOZILLA_FIVE_HOME="/opt/firefox"
 			xpi_install "${WORKDIR}"/firefox-beagle \
-			|| die "xpi install for mozilla-firefox-bin failed!"
+			|| die "xpi install for firefox-bin failed!"
 		fi
 	fi
 
@@ -160,10 +160,10 @@ src_install() {
 			xpi_install "${WORKDIR}"/thunderbird-beagle \
 			|| die "xpi install for mozilla-thunderbird failed!"
 		fi
-		if has_version '>=mail-client/mozilla-thunderbird-bin-1.5'; then
+		if has_version '>=mail-client/thunderbird-bin-1.5'; then
 			MOZILLA_FIVE_HOME="/opt/thunderbird"
 			xpi_install "${WORKDIR}"/thunderbird-beagle \
-			|| die "xpi install for mozilla-thunderbird-bin failed!"
+			|| die "xpi install for thunderbird-bin failed!"
 		fi
 	fi
 
