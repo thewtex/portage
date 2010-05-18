@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/redis/redis-1.2.5.ebuild,v 1.3 2010/05/02 22:30:19 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/redis/redis-1.2.5.ebuild,v 1.4 2010/05/17 21:32:23 lu_zero Exp $
 
 EAPI=2
 
@@ -22,7 +22,7 @@ REDIS_PIDDIR=/var/run/redis/
 REDIS_PIDFILE=${REDIS_PIDDIR}/redis.pid
 REDIS_DATAPATH=/var/lib/redis
 REDIS_LOGPATH=/var/log/redis
-REDIS_LOGFILE=${LOGPATH}/redis.log
+REDIS_LOGFILE=${REDIS_LOGPATH}/redis.log
 
 pkg_setup() {
 	enewgroup redis 75 || die "problem adding 'redis' group"
@@ -77,7 +77,7 @@ src_install() {
 	dosbin redis-server
 
 	diropts -m0750 -o redis -g redis
-	keepdir ${REDIS_DATAPATH} ${REDIS_LOGFILE} ${REDIS_PIDDIR}
+	keepdir ${REDIS_DATAPATH} ${REDIS_LOGPATH} ${REDIS_PIDDIR}
 }
 
 src_test() {
