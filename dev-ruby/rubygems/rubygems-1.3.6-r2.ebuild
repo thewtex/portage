@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/rubygems/rubygems-1.3.6-r2.ebuild,v 1.2 2010/05/13 10:45:59 a3li Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/rubygems/rubygems-1.3.6-r2.ebuild,v 1.3 2010/05/14 19:04:17 a3li Exp $
 
 EAPI="2"
 
@@ -82,12 +82,18 @@ all_ruby_install() {
 	fi
 }
 
-pkg_postinst() {
+clear_source_cache() {
 	local gemsitedir=$(ruby_rbconfig_value 'sitelibdir' | sed -e 's:site_ruby:gems:')
 	SOURCE_CACHE="${gemsitedir}/source_cache"
+
 	if [[ -e "${SOURCE_CACHE}" ]]; then
 		rm "${SOURCE_CACHE}"
+		einfo "Cleared gem source cache."
 	fi
+}
+
+pkg_postinst() {
+	_ruby_each_implementation clear_source_cache
 
 	if [[ ! -n $(readlink "${ROOT}"usr/bin/gem) ]] ; then
 		eselect ruby set $(eselect --brief --no-color ruby show | head -n1)

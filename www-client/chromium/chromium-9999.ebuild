@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/chromium-9999.ebuild,v 1.50 2010/05/11 11:23:48 phajdan.jr Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/chromium-9999.ebuild,v 1.51 2010/05/14 19:39:43 phajdan.jr Exp $
 
 EAPI="2"
 
@@ -97,15 +97,14 @@ src_unpack() {
 	elog "Installing/updating to version ${MAJOR}.${MINOR}.${BUILD}.${PATCH}_p${CREV} "
 }
 
-src_prepare() {
-	# Allow supporting more media types.
-	epatch "${FILESDIR}"/${PN}-20100122-ubuntu-html5-video-mimetypes.patch
-}
-
 src_configure() {
 	export CHROMIUM_HOME=/usr/$(get_libdir)/chromium-browser
 	# Fails to build on arm if we don't do this
 	use arm && append-flags -fno-tree-sink
+
+	# Workaround for bug #318969. Remove when upstream http://crbug.com/43778 is
+	# fixed.
+	append-cflags -D__STDC_CONSTANT_MACROS
 
 	# CFLAGS/LDFLAGS
 	mkdir -p "${S}"/.gyp || die "cflags mkdir failed"
@@ -120,7 +119,7 @@ EOF
 	export HOME="${S}"
 
 	# Configuration options (system libraries and disable forced SSE2)
-	local myconf="-Ddisable_sse2=1 -Duse_system_zlib=1 -Duse_system_bzip2=1 -Duse_system_ffmpeg=1 -Duse_system_libevent=1 -Duse_system_libjpeg=1 -Duse_system_libpng=1 -Duse_system_libxml=1 -Duse_system_libxslt=1"
+	local myconf="-Ddisable_sse2=1 -Duse_system_zlib=1 -Duse_system_bzip2=1 -Duse_system_ffmpeg=1 -Dproprietary_codecs=1 -Duse_system_libevent=1 -Duse_system_libjpeg=1 -Duse_system_libpng=1 -Duse_system_libxml=1 -Duse_system_libxslt=1"
 	# -Duse_system_sqlite=1 : http://crbug.com/22208
 	# Others still bundled: icu (not possible?), hunspell (changes required for sandbox support)
 

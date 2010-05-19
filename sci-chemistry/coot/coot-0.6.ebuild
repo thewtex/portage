@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/coot/coot-0.6.ebuild,v 1.4 2010/04/22 22:55:19 arfrever Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/coot/coot-0.6.ebuild,v 1.6 2010/05/17 10:57:32 jlec Exp $
 
 EAPI="3"
 
@@ -38,6 +38,7 @@ SCIDEPS="
 XDEPS="
 	gnome-base/libgnomecanvas
 	gnome-base/librsvg
+	media-libs/libpng
 	virtual/glut
 	>=x11-libs/gtk+-2.2
 	x11-libs/gtkglext"
@@ -55,7 +56,8 @@ RDEPEND="
 	${SCHEMEDEPS}
 	dev-python/pygtk
 	>=dev-libs/gmp-4.2.2-r2
-	>=net-misc/curl-7.19.6"
+	>=net-misc/curl-7.19.6
+	net-dns/libidn"
 DEPEND="${RDEPEND}
 	dev-lang/swig
 	test? ( dev-scheme/greg )"
@@ -117,6 +119,7 @@ src_test() {
 	export PYTHONPATH="${COOT_PYTHON_DIR}:${PYTHONPATH}"
 	export PYTHONHOME="${EPREFIX}"/usr
 	export CCP4_SCR="${T}"/coot_test
+	export CLIBD_MON="${EPREFIX}/usr/share/ccp4/data/monomers/"
 
 	export COOT_TEST_DATA_DIR="${WORKDIR}"/data/greg-data
 
@@ -141,6 +144,7 @@ src_test() {
 	einfo "PYTHONPATH $PYTHONPATH"
 	einfo "PYTHONHOME $PYTHONHOME"
 	einfo "CCP4_SCR ${CCP4_SCR}"
+	einfo "CLIBD_MON ${CLIBD_MON}"
 
 	"${S}"/src/coot-real --no-graphics --script command-line-greg.scm || die
 }

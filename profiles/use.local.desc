@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5561 2010/05/14 11:27:45 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5570 2010/05/18 03:14:47 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -509,6 +509,7 @@ app-office/abiword-plugins:math - Enable support for x11-libs/gtkmathview
 app-office/abiword-plugins:ots - Enable Text Summarizer plugin
 app-office/abiword-plugins:thesaurus - Enable thesaurus support
 app-office/abiword-plugins:wordperfect - Enable wordperfect file support via app-text/libwpd
+app-office/akonadi-server:server - Use locally installed database server.
 app-office/gnucash:chipcard - Enable support for chipcard reading and processing.
 app-office/gnucash:hbci - Enable HBCI support, for connecting to some internet banks
 app-office/gnucash:quotes - Enable Online Stock Quote retrieval
@@ -961,6 +962,7 @@ dev-libs/soprano:raptor - Enables support for media-libs/raptor RDF parser/seria
 dev-libs/soprano:redland - Enables support for the dev-libs/redland storage backend (really slow one).
 dev-libs/soprano:virtuoso - Enables support for dev-db/virtuoso storage backend.
 dev-libs/tinyxml:stl - Compile with TIXML_USE_STL support
+dev-libs/totem-pl-parser:introspection - Use dev-libs/gobject-introspection for introspection
 dev-libs/xerces-c:iconv - Use iconv (virtual/libiconv) as message loader and transcoder (in general it would be possible to use iconv only as message loader and something else like icu or the native method as transcoder and vice-versa, but this is a less common case and hard to handle)
 dev-libs/xerces-c:libwww - Use the net-libs/libwww library for fetching URLs, instead of the builtin method
 dev-libs/xerces-c:threads - Enable threading support through pthread (or other libraries on AIX, IRIX, HPUX, Solars). Highly recommended
@@ -1222,6 +1224,7 @@ games-action/openlierox:breakpad -  Compile with support for breakpad crash repo
 games-action/teeworlds:server - Enable compilation of server
 games-action/xshipwars:yiff - Add support for the YIFF sound server
 games-arcade/bomns:editor - enables building the level editor
+games-arcade/burgerspace:network - Enable client-server support
 games-arcade/jumpnbump:music - Enable playing of background music
 games-arcade/lbreakout2:themes - Install additional themes
 games-arcade/moleinvasion:music - Download and install the music files
@@ -1455,21 +1458,21 @@ kde-base/kdeadmin-meta:lilo - Install lilo-config, a frontend for the lilo boot 
 kde-base/kdeartwork-kscreensaver:eigen - Enable various arithmetic screensavers which use Eigen2 for computations.
 kde-base/kdebase-kioslaves:lzma - Enable LZMA/XZ archive support
 kde-base/kdebase-kioslaves:sftp - Enable SFTP protocol support using net-libs/libssh
-kde-base/kdebindings-csharp:akonadi - Compile bindings for kde-base/akonadi.
-kde-base/kdebindings-csharp:phonon - Compile bindings for media-sound/phonon.
-kde-base/kdebindings-csharp:plasma - Compile bindings for kde's plasma.
-kde-base/kdebindings-csharp:qimageblitz - Compile bindings for kde-base/qimageblitz.
+kde-base/kdebindings-csharp:akonadi - Compile bindings for Akonadi.
+kde-base/kdebindings-csharp:phonon - Compile bindings for Phonon.
+kde-base/kdebindings-csharp:plasma - Compile bindings for KDE's Plasma.
+kde-base/kdebindings-csharp:qimageblitz - Compile bindings for media-libs/qimageblitz.
 kde-base/kdebindings-csharp:qscintilla - Compile bindings for x11-libs/qscintilla.
-kde-base/kdebindings-csharp:webkit - Compile bindings for x11-libs/webkit.
+kde-base/kdebindings-csharp:webkit - Compile bindings for x11-libs/qt-webkit.
 kde-base/kdebindings-meta:csharp - Enable C# language bindings for KDE and Qt
-kde-base/kdebindings-ruby:akonadi - Compile bindings for kde-base/akonadi.
+kde-base/kdebindings-ruby:akonadi - Compile bindings for Akonadi.
 kde-base/kdebindings-ruby:kdevplatform - Compile bindings for dev-util/kdevplatform.
 kde-base/kdebindings-ruby:okular - Compile bindings for kde-base/okular.
-kde-base/kdebindings-ruby:phonon - Compile bindings for media-sound/phonon.
-kde-base/kdebindings-ruby:plasma - Compile bindings for kde's plasma.
+kde-base/kdebindings-ruby:phonon - Compile bindings for Phonon.
+kde-base/kdebindings-ruby:plasma - Compile bindings for KDE's Plasma.
 kde-base/kdebindings-ruby:qscintilla - Compile bindings for x11-libs/qscintilla.
 kde-base/kdebindings-ruby:qwt - Compile bindings for x11-libs/qwt.
-kde-base/kdebindings-ruby:webkit - Compile bindings for x11-libs/webkit.
+kde-base/kdebindings-ruby:webkit - Compile bindings for x11-libs/qt-webkit.
 kde-base/kdelibs:lzma - Enable LZMA/XZ archive support
 kde-base/kdelibs:opengl - Enable OpenGL support for Plasma (GLApplet)
 kde-base/kdenetwork-meta:ppp - Enable support for net-dialup/ppp.
@@ -1531,15 +1534,15 @@ kde-base/plasma-workspace:rss - Enables building RSSNOW plasmoid (requires kde-b
 kde-base/powerdevil:pm-utils - Adds support for suspend/resume the system through sys-power/pm-utils
 kde-base/pykde4:akonadi - Builds Akonadi python language bindings
 kde-base/pykde4:semantic-desktop - Enables Nepomuk and Soprano python language bindings
-kde-base/smoke:akonadi - Compile bindings for kde-base/akonadi.
+kde-base/smoke:akonadi - Compile bindings for Akonadi.
 kde-base/smoke:kdevplatform - Compile bindings for dev-util/kdevplatform.
+kde-base/smoke:multimedia - Compile bindings for x11-libs/qt-multimedia.
 kde-base/smoke:okular - Compile bindings for kde-base/okular.
-kde-base/smoke:phonon - Compile bindings for media-sound/phonon.
-kde-base/smoke:qimageblitz - Compile bindings for kde-base/qimageblitz.
+kde-base/smoke:phonon - Compile bindings for Phonon.
+kde-base/smoke:qimageblitz - Compile bindings for media-libs/qimageblitz.
 kde-base/smoke:qscintilla - Compile bindings for x11-libs/qscintilla.
-kde-base/smoke:qtmultimedia - Compile bindings for x11-libs/qt-multimedia.
 kde-base/smoke:qwt - Compile bindings for x11-libs/qwt.
-kde-base/smoke:webkit - Compile bindings for x11-libs/webkit.
+kde-base/smoke:webkit - Compile bindings for x11-libs/qt-webkit.
 kde-base/solid:wicd - Enable Wicd wired and wireless network manager.
 kde-base/step:qalculate - Enable the libqalculate library for unit conversion
 kde-misc/kcpufreq:icon - Add icon for GUI applet (enabled by default)
@@ -1577,8 +1580,6 @@ mail-client/mail-notification:sylpheed - Enable support for MH mailboxes used by
 mail-client/mozilla-thunderbird:custom-optimization - Enable user CFLAGS
 mail-client/mozilla-thunderbird:lightning - Enable calendar support
 mail-client/mozilla-thunderbird:mozdom - Enable Mozilla's DOM inspector
-mail-client/mozilla-thunderbird:moznopango - Disable x11-libs/pango during runtime
-mail-client/mozilla-thunderbird:replytolist - Enable x11-plugins/replytolist plugin
 mail-client/mozilla-thunderbird:system-sqlite - Use the system-wide dev-db/sqlite installation with secure-delete enabled
 mail-client/mutt:gpg - Enable support for app-crypt/gpgme
 mail-client/mutt:pop - Enable support for pop
@@ -2367,6 +2368,7 @@ media-video/vlc:stream - Enables vlc to stream video.
 media-video/vlc:twolame - Enables twolame support (MPEG Audio Layer 2 encoder).
 media-video/vlc:udev - Enables Linux udev services discovery.
 media-video/vlc:upnp - Enables support for Intel UPnP stack.
+media-video/vlc:vaapi - Enables VAAPI (Video Acceleration API) for hardware decoding
 media-video/vlc:vcdinfo - Enables VCD information library support.
 media-video/vlc:vcdx - Enables VCD with navigation via libvcdinfo (depends on cdio)
 media-video/vlc:vlm - New videolan (media) manager (vlm), a little manager designed to launch and manage multiple streams from within one instance of VLC.
@@ -3303,6 +3305,7 @@ sci-libs/spqr:metis - Use METIS (sci-libs/metis or sci-libs/parmetis) for partit
 sci-libs/spqr:tbb - Enable multithreading with the Intel Threads Building Block (needs dev-cpp/tbb)
 sci-libs/suitesparse:metis -  Use METIS (sci-libs/metis or sci-libs/parmetis) for partitioning 
 sci-libs/taucs:cilk - Enable multithreading using dev-lang/cilk)
+sci-libs/umfpack:metis - Use METIS via CHOLMOD(sci-libs/cholmod) for partitioning
 sci-libs/vtk:boost - Add support for boost
 sci-libs/vtk:cg - Use nvidia's cg shaders
 sci-libs/vtk:patented - Build patented classes
@@ -3862,6 +3865,7 @@ x11-misc/shutter:webphoto - Enables screenshots of websites
 x11-misc/slim:screenshot - Enable screenshot support (using media-gfx/imagemagick)
 x11-misc/tint2:battery - Enable battery status plugin
 x11-misc/tint2:examples - Install tint2rc examples
+x11-misc/tint2:tint2conf - Build/Install tint2conf as well
 x11-misc/vnc2swf:x11vnc - Install script that depends on x11vnc
 x11-misc/x11vnc:system-libvncserver - Build x11vnc against the system libvncserver (experimental)
 x11-misc/xlockmore:xlockrc - Enables xlockrc for people without PAM
