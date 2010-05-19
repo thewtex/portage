@@ -1,31 +1,27 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/ruby/ruby-1.9.1_p376.ebuild,v 1.1 2010/05/01 10:25:23 a3li Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/ruby/ruby-1.9.1_p376.ebuild,v 1.4 2010/05/18 22:59:44 flameeyes Exp $
 
 EAPI=2
 
 inherit autotools eutils flag-o-matic multilib versionator
 
-# Add patchlevel
-MY_P="${P/_/-}"
+MY_P="${PN}-$(replace_version_separator 3 '-')"
+S=${WORKDIR}/${MY_P}
 
-# 1.9.1.0 -> 1.9
 SLOT=$(get_version_component_range 1-2)
-
-# 1.9.1.0 -> 1.9.1 (used in libdirs)
-RUBYVERSION=$(get_version_component_range 1-3)
-
-# 1.9 -> 19
 MY_SUFFIX=$(delete_version_separator 1 ${SLOT})
+# 1.8 and 1.9 series disagree on this
+RUBYVERSION=$(get_version_component_range 1-3)
 
 DESCRIPTION="An object-oriented scripting language"
 HOMEPAGE="http://www.ruby-lang.org/"
 SRC_URI="mirror://ruby/${MY_P}.tar.bz2
-		http://dev.a3li.li/gentoo/distfiles/${PN}-patches-${PVR}.tar.bz2"
+		 http://dev.gentoo.org/~flameeyes/ruby-team/${PN}-patches-${PVR}.tar.bz2"
 
 LICENSE="|| ( Ruby GPL-2 )"
 KEYWORDS="~amd64 ~hppa ~x86 ~x86-fbsd"
-IUSE="berkdb debug doc emacs examples gdbm ipv6 rubytests socks5 ssl tk xemacs"
+IUSE="berkdb debug doc examples gdbm ipv6 rubytests socks5 ssl tk xemacs ncurses +readline libedit"
 
 RDEPEND="
 	berkdb? ( sys-libs/db )
@@ -33,22 +29,20 @@ RDEPEND="
 	ssl? ( dev-libs/openssl )
 	socks5? ( >=net-proxy/dante-1.1.13 )
 	tk? ( dev-lang/tk[threads] )
+	ncurses? ( sys-libs/ncurses )
+	libedit? ( dev-libs/libedit )
+	!libedit? ( readline? ( sys-libs/readline ) )
+	sys-libs/zlib
 	>=app-admin/eselect-ruby-20100402
 	!=dev-lang/ruby-cvs-${SLOT}*
 	!<dev-ruby/rdoc-2
 	!dev-ruby/rexml"
 DEPEND="${RDEPEND}"
-PDEPEND="
-	emacs? ( app-emacs/ruby-mode )
-	xemacs? ( app-xemacs/ruby-modes )"
+PDEPEND="xemacs? ( app-xemacs/ruby-modes )"
 
 PROVIDE="virtual/ruby"
 
-S="${WORKDIR}/${MY_P}"
-
 src_prepare() {
-	cd "${S}"
-
 	EPATCH_FORCE="yes" EPATCH_SUFFIX="patch" \
 	epatch "${WORKDIR}/patches-${PVR}"
 
@@ -65,6 +59,8 @@ src_prepare() {
 }
 
 src_configure() {
+	local myconf=
+
 	# -fomit-frame-pointer makes ruby segfault, see bug #150413.
 	filter-flags -fomit-frame-pointer
 	# In many places aliasing rules are broken; play it safe
@@ -85,9 +81,22 @@ src_configure() {
 	fi
 
 	# ipv6 hack, bug 168939. Needs --enable-ipv6.
-	use ipv6 || myconf="--with-lookup-order-hack=INET"
+	use ipv6 || myconf="${myconf} --with-lookup-order-hack=INET"
 
-	econf --program-suffix=${MY_SUFFIX} --enable-shared --enable-pthread \
+	if use libedit; then
+		einfo "Using libedit to provide readline extension"
+		myconf="${myconf} --enable-libedit --with-readline"
+	elif use readline; then
+		einfo "Using readline to provide readline extension"
+		myconf="${myconf} --with-readline"
+	else
+		myconf="${myconf} --without-readline"
+	fi
+
+	econf \
+		--program-suffix="${MY_SUFFIX}" \
+		--enable-shared \
+		--enable-pthread \
 		$(use_enable socks5 socks) \
 		$(use_enable doc install-doc) \
 		--enable-ipv6 \
@@ -96,6 +105,7 @@ src_configure() {
 		$(use_with gdbm) \
 		$(use_with ssl openssl) \
 		$(use_with tk) \
+		$(use_with ncurses curses) \
 		${myconf} \
 		--enable-option-checking=no \
 		|| die "econf failed"
@@ -106,18 +116,18 @@ src_compile() {
 }
 
 src_test() {
-	emake test || die "make test failed"
+	emake -j1 test || die "make test failed"
 
 	elog "Ruby's make test has been run. Ruby also ships with a make check"
 	elog "that cannot be run until after ruby has been installed."
 	elog
 	if use rubytests; then
 		elog "You have enabled rubytests, so they will be installed to"
-		elog "/usr/share/${PN}-${RUBYVERSION}/test. To run them you must be a user other"
+		elog "/usr/share/${PN}-${SLOT}/test. To run them you must be a user other"
 		elog "than root, and you must place them into a writeable directory."
 		elog "Then call: "
 		elog
-		elog "ruby19 -C /location/of/tests runner.rb"
+		elog "ruby${MY_SUFFIX} -C /location/of/tests runner.rb"
 	else
 		elog "Enable the rubytests USE flag to install the make check tests"
 	fi
@@ -131,7 +141,7 @@ src_install() {
 	local MINIRUBY=$(echo -e 'include Makefile\ngetminiruby:\n\t@echo $(MINIRUBY)'|make -f - getminiruby)
 
 	LD_LIBRARY_PATH="${D}/usr/$(get_libdir)${LD_LIBRARY_PATH+:}${LD_LIBRARY_PATH}"
-	RUBYLIB="${S}:${D}/usr/$(get_libdir)/ruby/${RUBYVERSION}"
+	RUBYLIB="${S}:${D}/usr/$(get_libdir)/ruby19/${RUBYVERSION}"
 	for d in $(find "${S}/ext" -type d) ; do
 		RUBYLIB="${RUBYLIB}:$d"
 	done
@@ -147,8 +157,8 @@ src_install() {
 	fi
 
 	if use examples; then
-		dodir /usr/share/doc/${PF}
-		cp -pPR sample "${D}/usr/share/doc/${PF}"
+		insinto /usr/share/doc/${PF}
+		doins -r sample
 	fi
 
 	dosym "libruby${MY_SUFFIX}$(get_libname ${PV%_*})" \
@@ -156,11 +166,13 @@ src_install() {
 	dosym "libruby${MY_SUFFIX}$(get_libname ${PV%_*})" \
 		"/usr/$(get_libdir)/libruby$(get_libname ${PV%_*})"
 
-	dodoc ChangeLog NEWS doc/NEWS-1.8.7 README* ToDo
+	dodoc ChangeLog NEWS doc/NEWS-1.8.7 README* ToDo || die
 
 	if use rubytests; then
-		dodir /usr/share/${PN}-${RUBYVERSION}
-		cp -pPR test "${D}/usr/share/${PN}-${RUBYVERSION}"
+		pushd test
+		insinto /usr/share/${PN}-${SLOT}
+		doins -r .
+		popd
 	fi
 }
 

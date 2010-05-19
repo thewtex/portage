@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5570 2010/05/18 03:14:47 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5577 2010/05/19 05:47:51 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -837,9 +837,13 @@ dev-lang/php:zip - Enable ZIP file support
 dev-lang/python:threads - Enable threading support. (DON'T DISABLE THIS UNLESS YOU KNOW WHAT YOU'RE DOING)
 dev-lang/python:wide-unicode - Enable wide Unicode implementation which uses 4-byte Unicode characters. Switching of this USE flag changes ABI of Python and requires reinstallation of many Python modules. (DON'T DISABLE THIS UNLESS YOU KNOW WHAT YOU'RE DOING)
 dev-lang/python:wininst - Install Windows executables required to create an executable installer for MS Windows.
-dev-lang/ruby:rubytests - Install ruby tests that can only be run after ruby is installed
-dev-lang/ruby-enterprise:rubytests - Install ruby tests that can only be run after ruby is installed
-dev-lang/ruby-enterprise:tcmalloc - Add support for TCMalloc provided by dev-util/google-perftools
+dev-lang/ruby:libedit -  Use the dev-libs/libedit library to provide the readline extension, used for instance by the irb tool. This flag will take precedence over the readline USE flag. If neither libedit nor readline USE flags are enabled, the readline extension will not be built (and irb will lose line editing functionality). 
+dev-lang/ruby:readline -  Use the sys-libs/readline library to provide the readline extension, used for instance by the irb tool. This flag is meaningful only if the libedit USE flag is disabled. If neither libedit nor readline USE flags are enabled, the readline extension will not be built (and irb will lose line editing functionality). 
+dev-lang/ruby:rubytests -  Install ruby tests that can only be run after ruby is installed 
+dev-lang/ruby-enterprise:libedit -  Use the dev-libs/libedit library to provide the readline extension, used for instance by the irb tool. This flag will take precedence over the readline USE flag. If neither libedit nor readline USE flags are enabled, the readline extension will not be built (and irb will lose line editing functionality). 
+dev-lang/ruby-enterprise:readline -  Use the sys-libs/readline library to provide the readline extension, used for instance by the irb tool. This flag is meaningful only if the libedit USE flag is disabled. If neither libedit nor readline USE flags are enabled, the readline extension will not be built (and irb will lose line editing functionality). 
+dev-lang/ruby-enterprise:rubytests -  Install ruby tests that can only be run after ruby is installed 
+dev-lang/ruby-enterprise:tcmalloc -  Add support for TCMalloc provided by dev-util/google-perftools 
 dev-lang/scala:binary - Install from (Gentoo-compiled) binary instead of building from sources. Set this when you run out of memory during build.
 dev-lang/spidermonkey:threadsafe - Build a threadsafe version of spidermonkey
 dev-lang/swig:R - Enable R support
@@ -862,8 +866,9 @@ dev-libs/boolstuff:static - Enable static linking
 dev-libs/boost:eselect - Run "eselect boost update" even if version is already selected
 dev-libs/boost:tools - Build and install the boost tools (bcp, quickbook, inspect, wave)
 dev-libs/crypto++:sse3 - Enable optimizations via sse3 assembly code
-dev-libs/cyberjack:noudev - Disable installation of udev rules
+dev-libs/cyberjack:fox - Enable installation of x11-libs/fox based fxcyberjack program
 dev-libs/cyberjack:pcsc-lite - Enable installation of sys-apps/pcsc-lite driver
+dev-libs/cyberjack:udev - Enable installation of udev rules
 dev-libs/cyrus-sasl:authdaemond - Enable Courier-IMAP authdaemond's unix socket support (net-mail/courier-imap, mail-mta/courier) 
 dev-libs/cyrus-sasl:ntlm_unsupported_patch - Add NTLM net-fs/samba NOT supported patch
 dev-libs/cyrus-sasl:sample - Build sample client and server
@@ -1081,7 +1086,6 @@ dev-util/global:vim - Integrate the GNU GLOBAL source code tag system with Vim
 dev-util/kdevelop:cmake - Enable support for CMAKE build system
 dev-util/kdevelop:qmake - Enable support for Qmake build system
 dev-util/kdevelop:qthelp - Enable support for QtHelp documentation browsing
-dev-util/kdevplatform:git - Add suport for git VCS
 dev-util/kdevplatform:mercurial - Add suport for mercurial VCS
 dev-util/metro:ccache - Enable support for ccache
 dev-util/metro:git - Enable support for git snapshots
@@ -1784,6 +1788,9 @@ media-plugins/vdr-xineliboutput:xine - Compile the xine input plugin for display
 media-radio/fldigi:hamlib - Enables support by the Hamlib amateur radio rig control library to get/set frequency and mode of the ham radio in use
 media-radio/tucnak2:ftdi - Enable support for FTDI USB chips
 media-radio/tucnak2:hamlib - Enables support by the Hamlib amateur radio rig control library to get/set frequency and mode of the ham radio
+media-radio/xastir:festival - Enable text to speech synthesizer
+media-radio/xastir:gdal - Support for some further map formats
+media-radio/xastir:geotiff - Install geotiff support. Allows using USGS DRG topo maps or other types of geotiff mapes/images
 media-sound/abcde:id3 - Support ID3, ID3v2 tagging of audio files
 media-sound/abcde:normalize - Add support for normalizing audio file volume levels
 media-sound/abcde:replaygain - Support for Replay Gain metadata, for relative volume adjustment
@@ -2562,6 +2569,7 @@ net-libs/libpcap:libnl - link with dev-libs/libnl (used to put wireless interfac
 net-libs/libpri:bri - Enable ISDN BRI support (bristuff)
 net-libs/libproxy:gnome - Enable support for reading proxy settings from GNOME using gnome-base/gconf
 net-libs/libproxy:kde - Enable support for reading proxy settings from KDE
+net-libs/libproxy:vala - Enable support for the Vala programming language
 net-libs/libproxy:webkit - Enable support for reading proxy settings from net-libs/webkit-gtk
 net-libs/libproxy:xulrunner - Enable support for reading proxy settings from net-libs/xulrunner
 net-libs/libsrtp:aesicm - Use AES ICM cryptographic algorithm
@@ -3388,7 +3396,6 @@ sys-kernel/vanilla-sources:deblob - Remove binary blobs from kernel sources to p
 sys-kernel/vserver-sources:deblob - Remove binary blobs from kernel sources to provide libre license compliance.
 sys-kernel/xen-sources:deblob - Remove binary blobs from kernel sources to provide libre license compliance.
 sys-kernel/zen-sources:deblob - Remove binary blobs from kernel sources to provide libre license compliance.
-sys-kernel/zen-sources:drm-next - Enable the drm-next patch
 sys-kernel/zen-sources:stable - Clone stable git tree
 sys-libs/glibc:glibc-compat20 - Enable the glibc-compat addon
 sys-libs/glibc:glibc-omitfp - Configure glibc with --enable-omitfp which lets the build system determine when it is safe to use -fomit-frame-pointer
