@@ -107,6 +107,6 @@ src_install() {
 
 	# do not rely on /lib -> /libXX link on multilib systems:
 
-	sed -e "s-/lib/rcscripts/-/$(get_libdir)/rcscripts/-" -i "${D}"/etc/init.d/*
+	sed -e "s-/lib/rcscripts/-/$(get_libdir)/rcscripts/-" -i "${D}"/etc/init.d/* || die
 
 }
