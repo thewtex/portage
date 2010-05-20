@@ -1,5 +1,5 @@
-net-im/pidgin[gtk?,ncurses?] talkfilters? ( app-text/talkfilters ) spell? ( app-text/gtkspell ) dev-lang/python
-net-im/pidgin[gtk?,ncurses?] talkfilters? ( app-text/talkfilters ) spell? ( app-text/gtkspell )
+net-im/pidgin[gtk?,ncurses?] talkfilters? ( app-text/talkfilters ) spell? ( app-text/gtkspell ) =dev-lang/python-2* >=app-admin/eselect-python-20091230
+net-im/pidgin[gtk?,ncurses?] talkfilters? ( app-text/talkfilters ) spell? ( app-text/gtkspell ) >=app-admin/eselect-python-20091230
 0
 mirror://gentoo/purple-plugin_pack-2.6.3.tar.bz2
 
@@ -7,14 +7,14 @@ http://plugins.guifications.org
 GPL-2
 A package with many different plugins for pidgin and libpurple
 ~amd64 ~hppa ~ppc ~x86
-eutils multilib portability toolchain-funcs
+eutils multilib portability python toolchain-funcs
 debug gtk ncurses spell talkfilters
 
 
 
 2
 
-configure install preinst
+configure install preinst setup
 
 
 
