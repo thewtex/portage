@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5577 2010/05/19 05:47:51 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5582 2010/05/20 04:07:54 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -112,8 +112,8 @@ app-backup/amanda:xfs - Support for backing up raw XFS filesystems using xfsdump
 app-backup/backup-manager:s3 - Support for backing up to the Amazon S3 system
 app-backup/bacula:bacula-clientonly - Disable DB support, and just build a client
 app-backup/bacula:bacula-console - Build (GUI) console program(s)
-app-backup/bacula:bacula-nodir - Disable building of director in 1.38.x and later
-app-backup/bacula:bacula-nosd - Disable building of storage daemon in 1.38.x and later
+app-backup/bacula:bacula-nodir - Disable building of director
+app-backup/bacula:bacula-nosd - Disable building of storage daemon
 app-backup/bacula:logrotate - Install support files for logrotate
 app-backup/bacula:logwatch - Install support files for logwatch
 app-backup/boxbackup:client-only - Disable server support, and just build a client
@@ -1013,7 +1013,6 @@ dev-perl/HTML-Mason:modperl - Enable www-apache/mod_perl support
 dev-perl/PDL:badval - Enable badval support
 dev-perl/Panotools-Script:gui -  Installs GUIs for some tools 
 dev-perl/Sysadm-Install:hammer - Enable hammer() funtion to run a command in the shell and simulate a user hammering the ENTER key to accept defaults on prompts
-dev-perl/Tie-Sub:recommended - Install recommended modules
 dev-php/PEAR-PHP_Shell:auto-completion - Enable tab-completion
 dev-php5/ZendFramework:cli - Enables the CLI
 dev-php5/ZendFramework:doc - Installs the documentation
@@ -1470,7 +1469,6 @@ kde-base/kdebindings-csharp:qscintilla - Compile bindings for x11-libs/qscintill
 kde-base/kdebindings-csharp:webkit - Compile bindings for x11-libs/qt-webkit.
 kde-base/kdebindings-meta:csharp - Enable C# language bindings for KDE and Qt
 kde-base/kdebindings-ruby:akonadi - Compile bindings for Akonadi.
-kde-base/kdebindings-ruby:kdevplatform - Compile bindings for dev-util/kdevplatform.
 kde-base/kdebindings-ruby:okular - Compile bindings for kde-base/okular.
 kde-base/kdebindings-ruby:phonon - Compile bindings for Phonon.
 kde-base/kdebindings-ruby:plasma - Compile bindings for KDE's Plasma.
@@ -1539,7 +1537,6 @@ kde-base/powerdevil:pm-utils - Adds support for suspend/resume the system throug
 kde-base/pykde4:akonadi - Builds Akonadi python language bindings
 kde-base/pykde4:semantic-desktop - Enables Nepomuk and Soprano python language bindings
 kde-base/smoke:akonadi - Compile bindings for Akonadi.
-kde-base/smoke:kdevplatform - Compile bindings for dev-util/kdevplatform.
 kde-base/smoke:multimedia - Compile bindings for x11-libs/qt-multimedia.
 kde-base/smoke:okular - Compile bindings for kde-base/okular.
 kde-base/smoke:phonon - Compile bindings for Phonon.
@@ -2654,6 +2651,7 @@ net-im/kadu:phonon - Enable phonon audio plugin
 net-im/kadu:speech - Enables speech module
 net-im/kmess:konqueror - Enable integration with konqueror
 net-im/mcabber:otr -  Enable encrypted conversations using Off-The-Records messaging 
+net-im/minbif:video - Add video support
 net-im/pidgin:bonjour - Enable bonjour (zeroconf) support
 net-im/pidgin:gadu - Enable Gadu Gadu protocol support
 net-im/pidgin:groupwise - Enable Novell Groupwise protocol support
@@ -3243,6 +3241,7 @@ sci-geosciences/gmt:gmtfull - Full resolution bathymetry database
 sci-geosciences/gmt:gmthigh - Add high resolution bathymetry database
 sci-geosciences/gmt:gmtsuppl - Supplement functions for GMT
 sci-geosciences/gmt:gmttria - Non GNU triangulation method, more efficient
+sci-geosciences/googleearth:mdns-bundled - Use bundled nss-mdns library instead of depending on sys-auth/nss-mdns. Enable this if you want to avoid the deptree.
 sci-geosciences/googleearth:qt-bundled - Use bundled Qt4 libraries instead of system ones. Recommended only for troubleshooting.
 sci-geosciences/gpsd:garmin - Enable support for Garmin simple text protocol
 sci-geosciences/gpsd:gpsd_user - Add gpsd user for daemon privileges.
