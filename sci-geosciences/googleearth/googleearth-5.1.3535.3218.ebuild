@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-geosciences/googleearth/googleearth-5.1.3535.3218.ebuild,v 1.3 2010/05/19 20:19:20 caster Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-geosciences/googleearth/googleearth-5.1.3535.3218.ebuild,v 1.5 2010/05/21 07:24:34 caster Exp $
 
 EAPI=2
 
@@ -85,10 +85,20 @@ pkg_setup() {
 }
 
 src_unpack() {
-	sh "${DISTDIR}/GoogleEarthLinux-${PV}.bin" --nox11 --nochown --keep --noexec --target .
+	unpack_makeself
+
+	cd "${WORKDIR}"/bin || die
+	unpack ./../${PN}-linux-x86.tar
+
+	mkdir "${WORKDIR}"/data && cd "${WORKDIR}"/data || die
+	unpack ./../${PN}-data.tar
 }
 
 src_prepare() {
+	cd "${WORKDIR}"/bin || die
+	# bug #262780
+	epatch "${FILESDIR}/decimal-separator.patch"
+
 	# make the postinst script only create the files; it's  installation
 	# are too complicated and inserting them ourselves is easier than
 	# hacking around it
@@ -96,7 +106,7 @@ src_prepare() {
 		-e 's:$SETUP_INSTALLPATH:1:' \
 		-e "s:^xdg-desktop-icon.*$::" \
 		-e "s:^xdg-desktop-menu.*$::" \
-		-e "s:^xdg-mime.*$::" postinstall.sh
+		-e "s:^xdg-mime.*$::" "${WORKDIR}"/postinstall.sh || die
 }
 
 src_install() {
@@ -108,15 +118,11 @@ src_install() {
 	doicon ${PN}-icon.png || die
 	dodoc README.linux || die
 
-	cd bin
-	tar xf "${WORKDIR}"/${PN}-linux-x86.tar || die
-	# bug #262780
-	epatch "${FILESDIR}/decimal-separator.patch"
+	cd bin || die
 	exeinto /opt/${PN}
 	doexe * || die
 
-	cd "${D}"/opt/${PN}
-	tar xf "${WORKDIR}"/${PN}-data.tar || die
+	cp -pPR "${WORKDIR}"/data/* "${D}"/opt/${PN} || die
 
 	if ! use qt-bundled; then
 		rm -rvf libQt{Core,Gui,Network,WebKit}.so.4 plugins/imageformats qt.conf || die
