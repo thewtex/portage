@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/uget/uget-1.5.0.2.ebuild,v 1.1 2010/03/12 17:13:49 wired Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/uget/uget-1.5.0.2.ebuild,v 1.2 2010/05/20 14:11:31 wired Exp $
 
 EAPI="2"
 
@@ -45,6 +45,6 @@ src_compile() {
 }
 
 src_install() {
-	make DESTDIR="${D}" install || die "make install failed"
+	emake DESTDIR="${D}" install || die "emake install failed"
 	dodoc AUTHORS ChangeLog NEWS README || die "dodoc failed"
 }
