@@ -81,10 +81,7 @@ src_install() {
 
 	gen_usr_ldscript liblvm2{app,cmd}.so libdevmapper.so libdevmapper-event.so libdevmapper-event-lvm2.so || die
 
-	# install default dmtab:
-
-	insinto /etc
-	doins "${FILESDIR}/${PV}/dmtab"
+	# For now, we are deprecating dmtab until a man page can be provided for it.
 
 	# the following add-ons are used by the initscripts:
 
