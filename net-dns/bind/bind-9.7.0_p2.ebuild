@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dns/bind/bind-9.7.0_p2.ebuild,v 1.1 2010/05/20 16:19:58 idl0r Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dns/bind/bind-9.7.0_p2.ebuild,v 1.3 2010/05/22 09:04:13 jlec Exp $
 
 EAPI="3"
 
@@ -95,7 +95,7 @@ src_prepare() {
 
 	if use geoip; then
 		cp "${DISTDIR}"/${GEOIP_P}.patch "${S}" || die
-		sed -i -e 's/-RELEASEVER=3/-RELEASEVER=1/' \
+		sed -i -e 's/-RELEASEVER=3/-RELEASEVER=2/' \
 			-e 's/+RELEASEVER=3-geoip-1.3/+RELEASEVER=1-geoip-1.3/' \
 			${GEOIP_P}.patch || die
 		epatch ${GEOIP_P}.patch
@@ -140,7 +140,6 @@ src_configure() {
 			ewarn
 			myconf="${myconf} --disable-linux-caps --disable-threads"
 			ewarn "Threading support disabled"
-			epause 10
 		else
 			myconf="${myconf} --enable-linux-caps --enable-threads"
 			einfo "Threading support enabled"

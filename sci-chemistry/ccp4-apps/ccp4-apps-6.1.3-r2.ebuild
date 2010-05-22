@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/ccp4-apps/ccp4-apps-6.1.3-r2.ebuild,v 1.5 2010/05/12 10:32:03 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/ccp4-apps/ccp4-apps-6.1.3-r2.ebuild,v 1.6 2010/05/22 11:34:22 jlec Exp $
 
 EAPI="2"
 
@@ -106,7 +106,7 @@ S="${WORKDIR}/${MY_P}"
 
 pkg_setup() {
 	python_set_active_version 2
-	fortan_pkg_setup
+	fortran_pkg_setup
 }
 
 src_prepare() {

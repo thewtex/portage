@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/ruby-ng.eclass,v 1.13 2010/05/01 16:05:45 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/ruby-ng.eclass,v 1.15 2010/05/22 03:39:50 flameeyes Exp $
 #
 # @ECLASS: ruby-ng.eclass
 # @MAINTAINER:
@@ -142,6 +142,19 @@ _ruby_add_rdepend() {
 	_ruby_add_bdepend "$atom" test
 }
 
+_ruby_atoms_samelib() {
+	local samelib=$(ruby_samelib)
+
+	for token in $*; do
+		case "$token" in
+			"||" | "(" | ")" )
+				echo "${token}" ;;
+			*)
+				echo "${token}${samelib}" ;;
+		esac
+	done
+}
+
 # @FUNCTION: ruby_add_rdepend
 # @USAGE: [conditions] atom
 # @DESCRIPTION:
@@ -167,9 +180,7 @@ ruby_add_rdepend() {
 			;;
 	esac
 
-	for atom in $atoms; do
-		_ruby_add_rdepend "${atom}$(ruby_samelib)" "$conditions"
-	done
+	_ruby_add_rdepend "$(_ruby_atoms_samelib "${atoms}")" "$conditions"
 }
 
 # @FUNCTION: ruby_add_bdepend
@@ -198,9 +209,7 @@ ruby_add_bdepend() {
 			;;
 	esac
 
-	for atom in $atoms; do
-		_ruby_add_bdepend "${atom}$(ruby_samelib)" "$conditions"
-	done
+	_ruby_add_bdepend "$(_ruby_atoms_samelib "${atoms}")" "$conditions"
 }
 
 for _ruby_implementation in $USE_RUBY; do
@@ -406,9 +415,9 @@ _each_ruby_check_install() {
 		> "${T}"/ruby-ng-${_ruby_implementation}-mislink.log
 
 	if [[ -s "${T}"/ruby-ng-${_ruby_implementation}-mislink.log ]]; then
-		ewarn "Extensions installed for ${_ruby_implementation} with missing links to ${libruby}"
+		ewarn "Extensions installed for ${_ruby_implementation} with missing links to ${libruby_soname}"
 		ewarn $(< "${T}"/ruby-ng-${_ruby_implementation}-mislink.log )
-		die "Missing links to ${libruby}"
+		die "Missing links to ${libruby_soname}"
 	fi
 }
 
