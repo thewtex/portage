@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/gd/gd-2.0.35-r1.ebuild,v 1.11 2010/05/21 10:34:08 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/gd/gd-2.0.35-r1.ebuild,v 1.12 2010/05/21 14:19:30 ssuominen Exp $
 
 EAPI=1
 inherit autotools
@@ -27,12 +27,6 @@ src_unpack() {
 	cd "${S}"
 	epatch "${FILESDIR}"/${P}-libpng14.patch \
 		"${FILESDIR}"/${P}-maxcolors.patch
-
-	# Try libpng14 first, then fallback to plain libpng
-	sed -i \
-		-e 's/libpng12-config/libpng14-config/g' \
-		-e 's/-lpng12/-lpng14/' \
-		configure.ac || die
 
 	eautoconf
 	find . -type f -print0 | xargs -0 touch -r configure
