@@ -36,11 +36,11 @@ src_configure() {
 	--with-user= --with-group= \
 	--with-usrlibdir=/usr/$(get_libdir) \
 	--with-usrsbindir=/usr/sbin \
-	--with-udevdir=/$(get_libdir)/udev \
 	--with-device-uid=0 --with-device-gid=6 \
 	--with-device-mode=0660 \
 	--enable-applib --enable-cmdlib \
 	--enable-dmeventd --enable-udev_sync \
+	--with-udevdir=/$(get_libdir)/udev/rules.d/ \
 	--disable-selinux --libdir=/$(get_libdir) --enable-pkgconfig \
 	--disable-readline \
 	CFLAGS="-fPIC -O2" CLDFLAGS="${LDFLAGS}" || die "configure failed"
@@ -81,10 +81,7 @@ src_install() {
 
 	gen_usr_ldscript liblvm2{app,cmd}.so libdevmapper.so libdevmapper-event.so libdevmapper-event-lvm2.so || die
 
-	# install default dmtab:
-
-	insinto /etc
-	doins "${FILESDIR}/${PV}/dmtab"
+	# For now, we are deprecating dmtab until a man page can be provided for it.
 
 	# the following add-ons are used by the initscripts:
 
