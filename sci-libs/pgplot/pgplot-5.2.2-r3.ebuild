@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/pgplot/pgplot-5.2.2-r3.ebuild,v 1.5 2010/03/15 05:45:42 bicatali Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/pgplot/pgplot-5.2.2-r3.ebuild,v 1.7 2010/05/22 07:01:22 jlec Exp $
 
 EAPI=2
 inherit eutils toolchain-funcs

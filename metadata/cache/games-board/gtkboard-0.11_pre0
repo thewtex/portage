@@ -1,5 +1,5 @@
->=x11-libs/gtk+-2 media-libs/libsdl media-libs/sdl-mixer gnome? ( gnome-base/libgnomeui ) dev-util/pkgconfig
->=x11-libs/gtk+-2 media-libs/libsdl media-libs/sdl-mixer gnome? ( gnome-base/libgnomeui )
+>=x11-libs/gtk+-2 media-libs/libsdl[audio] media-libs/sdl-mixer[vorbis] gnome? ( gnome-base/libgnomeui ) dev-util/pkgconfig
+>=x11-libs/gtk+-2 media-libs/libsdl[audio] media-libs/sdl-mixer[vorbis] gnome? ( gnome-base/libgnomeui )
 0
 mirror://sourceforge/gtkboard/gtkboard-0.11pre0.tar.gz
 
@@ -12,9 +12,9 @@ gnome
 
 
 
+2
 
-
-compile install postinst preinst setup unpack
+compile configure install postinst preinst prepare setup unpack
 
 
 
