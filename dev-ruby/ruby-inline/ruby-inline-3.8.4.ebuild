@@ -1,10 +1,10 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-inline/ruby-inline-3.8.4.ebuild,v 1.7 2010/02/13 19:12:04 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-inline/ruby-inline-3.8.4.ebuild,v 1.9 2010/05/22 23:08:53 a3li Exp $
 
 EAPI=2
 
-USE_RUBY="ruby18 ruby19"
+USE_RUBY="ruby18 ree18 ruby19"
 
 RUBY_FAKEGEM_NAME="RubyInline"
 
@@ -24,8 +24,16 @@ IUSE=""
 
 ruby_add_rdepend dev-ruby/zentest
 
-ruby_add_bdepend doc 'dev-ruby/hoe dev-ruby/hoe-seattlerb'
-ruby_add_bdepend test 'dev-ruby/hoe dev-ruby/hoe-seattlerb'
+ruby_add_bdepend "
+	doc? (
+		dev-ruby/hoe
+		dev-ruby/hoe-seattlerb
+	)
+	test? (
+		dev-ruby/hoe
+		dev-ruby/hoe-seattlerb
+		virtual/ruby-test-unit
+	)"
 
 all_ruby_install() {
 	all_fakegem_install
