@@ -5,7 +5,7 @@ EAPI="2"
 
 DESCRIPTION="Funtoo Core Boot Framework for global boot loader configuration"
 HOMEPAGE="http://www.funtoo.org/en/funtoo/core/boot"
-SRC_URI="http://www.funtoo.org/archive/coreboot/${P}.tar.bz2"
+SRC_URI="http://www.funtoo.org/archive/boot-update/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
