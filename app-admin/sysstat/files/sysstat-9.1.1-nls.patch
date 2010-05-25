@@ -65,7 +65,7 @@ Generate a list of locales instead of hardcoding individual ones
 +		cat=`basename $$cat`; \
 +		lang=`echo $$cat | sed -e 's/\.gmo$$//'`; \
 +		mkdir -p $(DESTDIR)$(NLS_DIR)/$$lang/LC_MESSAGES; \
-+	$(INSTALL_DATA) nls/$$cat $(DESTDIR)$(NLS_DIR)/$$lang/LC_MESSAGES/$(PACKAGE).mo; \
++		$(INSTALL_DATA) nls/$$cat $(DESTDIR)$(NLS_DIR)/$$lang/LC_MESSAGES/$(PACKAGE).mo; \
 +	done
  endif
  
