@@ -84,8 +84,62 @@ esvn_clean() {
 	find "$@" -type d -name '.svn' -prune -print0 | xargs -0 rm -rf
 }
 
-# eshopts_push and pop from Gentoo are buggy and have been removed by Funtoo
-# Daniel Robbins 10-Jan-2010
+# @FUNCTION: eshopts_push
+# @USAGE: [options to `set` or `shopt`]
+# @DESCRIPTION:
+# Often times code will want to enable a shell option to change code behavior.
+# Since changing shell options can easily break other pieces of code (which
+# assume the default state), eshopts_push is used to (1) push the current shell
+# options onto a stack and (2) pass the specified arguments to set.
+#
+# If the first argument is '-s' or '-u', we assume you want to call `shopt`
+# rather than `set` as there are some options only available via that.
+#
+# A common example is to disable shell globbing so that special meaning/care
+# may be used with variables/arguments to custom functions.  That would be:
+# @CODE
+#		eshopts_push -o noglob
+#		for x in ${foo} ; do
+#			if ...some check... ; then
+#				eshopts_pop
+#				return 0
+#			fi
+#		done
+#		eshopts_pop
+# @CODE
+eshopts_push() {
+	# have to assume __ESHOPTS_SAVE__ isn't screwed with
+	# as a `declare -a` here will reset its value
+	local i=${#__ESHOPTS_SAVE__[@]}
+	if [[ $1 == -[su] ]] ; then
+		__ESHOPTS_SAVE__[$i]=$(shopt -p)
+		[[ $# -eq 0 ]] && return 0
+		shopt "$@" || die "eshopts_push: bad options to shopt: $*"
+	else
+		__ESHOPTS_SAVE__[$i]=$-
+		[[ $# -eq 0 ]] && return 0
+		set "$@" || die "eshopts_push: bad options to set: $*"
+	fi
+}
+
+# @FUNCTION: eshopts_pop
+# @USAGE:
+# @DESCRIPTION:
+# Restore the shell options to the state saved with the corresponding
+# eshopts_push call.  See that function for more details.
+eshopts_pop() {
+	[[ $# -ne 0 ]] && die "eshopts_pop takes no arguments"
+	local i=$(( ${#__ESHOPTS_SAVE__[@]} - 1 ))
+	[[ ${i} -eq -1 ]] && die "eshopts_{push,pop}: unbalanced pair"
+	local s=${__ESHOPTS_SAVE__[$i]}
+	unset __ESHOPTS_SAVE__[$i]
+	if [[ ${s} == "shopt -"* ]] ; then
+		eval "${s}" || die "eshopts_pop: sanity: invalid shopt options: ${s}"
+	else
+		set +$-     || die "eshopts_pop: sanity: invalid shell settings: $-"
+		set -${s}   || die "eshopts_pop: sanity: unable to restore saved shell settings: ${s}"
+	fi
+}
 
 # @VARIABLE: EPATCH_SOURCE
 # @DESCRIPTION:
@@ -235,10 +289,18 @@ epatch() {
 
 		# Let people filter things dynamically
 		if [[ -n ${EPATCH_EXCLUDE} ]] ; then
-			if [ "${EPATCH_EXCLUDE/${patchname}}" != "${EPATCH_EXCLUDE}" ]
-			then
-				continue
-			fi
+			# let people use globs in the exclude
+			eshopts_push -o noglob
+
+			local ex
+			for ex in ${EPATCH_EXCLUDE} ; do
+				if [[ ${patchname} == ${ex} ]] ; then
+					eshopts_pop
+					continue 2
+				fi
+			done
+
+			eshopts_pop
 		fi
 
 		if [[ ${SINGLE_PATCH} == "yes" ]] ; then
@@ -1357,16 +1419,15 @@ check_license() {
 
 	# here is where we check for the licenses the user already
 	# accepted ... if we don't find a match, we make the user accept
-	local shopts=$-
 	local alic
-	set -o noglob #so that bash doesn't expand "*"
+	eshopts_push -o noglob # so that bash doesn't expand "*"
 	for alic in ${ACCEPT_LICENSE} ; do
 		if [[ ${alic} == ${l} ]]; then
-			set +o noglob; set -${shopts} #reset old shell opts
+			eshopts_pop
 			return 0
 		fi
 	done
-	set +o noglob; set -$shopts #rest old shell opts
+	eshopts_pop
 	[ ! -f "${lic}" ] && die "Could not find requested license ${lic}"
 
 	local licmsg=$(emktemp)
