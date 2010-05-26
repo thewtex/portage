@@ -12,9 +12,9 @@ SRC_URI="ftp://sources.redhat.com/pub/lvm2/${PN/lvm/LVM}.${PV}.tgz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 s390 sh sparc x86"
 
-IUSE=""
+IUSE="+rc_enable"
 
 DEPEND=">=sys-fs/udev-135-r11"
 RDEPEND="${DEPEND}"
@@ -106,4 +106,30 @@ src_install() {
 
 	sed -e "s-/lib/rcscripts/-/$(get_libdir)/rcscripts/-" -i "${D}"/etc/init.d/* || die
 
+}
+
+add_init() {
+	local runl=$1
+	shift
+	if [ ! -e ${ROOT}etc/runlevels/${runl} ]
+	then
+		install -d -m0755 ${ROOT}etc/runlevels/${runl}
+	fi
+	for initd in $*
+	do
+		[[ -e ${ROOT}etc/runlevels/${runl}/${initd} ]] && continue
+		[[ ! -e ${ROOT}etc/init.d/${initd} ]] && die "initscript $initd not found; aborting"
+		elog "Auto-adding '${initd}' service to your ${runl} runlevel"
+		ln -snf /etc/init.d/${initd} "${ROOT}etc/runlevels/${runl}/${initd}"
+	done
+}
+
+pkg_postinst() {
+	if use rc_enable; then
+		add_init boot device-mapper lvm
+		if [ "$ROOT" = "/" ]; then
+			/etc/init.d/device-mapper start
+			/etc/init.d/lvm start
+		fi
+	fi
 }

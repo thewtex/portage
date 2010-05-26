@@ -10,6 +10,7 @@ depend() {
 		before checkfs fsck
 		after modules device-mapper
 	fi
+	keyword -openvz -prefix -uml -vserver
 }
 
 run_addon() {
@@ -25,7 +26,6 @@ start() {
 		eerror "Please do not use it with baselayout-1!".
 		return 1
 	fi
-
 	run_addon lvm-start
 }
 

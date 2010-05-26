@@ -10,6 +10,7 @@ depend() {
 		after modules
 		before checkfs fsck
 	fi
+	keyword -openvz -prefix -uml -vserver
 }
 
 start() {
