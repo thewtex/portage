@@ -1,5 +1,5 @@
-test? ( dev-ruby/rspec[ruby_targets_ruby18?] ) ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) doc? ( dev-ruby/rake[ruby_targets_ruby18?] ) test? ( dev-ruby/rake[ruby_targets_ruby18?] ) test? ( virtual/rubygems[ruby_targets_ruby18?] )
-ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) virtual/rubygems[ruby_targets_ruby18?]
+ruby_targets_ruby18? ( test? ( dev-ruby/rspec[ruby_targets_ruby18] ) ) ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ruby18? ( doc? ( dev-ruby/rake[ruby_targets_ruby18] ) ) ruby_targets_ruby18? ( test? ( dev-ruby/rake[ruby_targets_ruby18] ) ) test? ( ruby_targets_ruby18? ( virtual/rubygems[ruby_targets_ruby18] ) )
+ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ruby18? ( virtual/rubygems[ruby_targets_ruby18] )
 0
 mirror://rubygems/hashie-0.1.8.gem
 
@@ -8,7 +8,7 @@ MIT
 Hashie is a small collection of tools that make hashes more powerful.
 ~amd64 ~x86
 eutils multilib portability ruby-fakegem ruby-ng toolchain-funcs
-test ruby_targets_ruby18 doc test
+ruby_targets_ruby18 doc test
 
 
 

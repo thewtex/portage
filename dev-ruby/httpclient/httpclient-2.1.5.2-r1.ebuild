@@ -1,10 +1,10 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/httpclient/httpclient-2.1.5.2-r1.ebuild,v 1.1 2010/01/04 04:03:52 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/httpclient/httpclient-2.1.5.2-r1.ebuild,v 1.3 2010/05/22 20:08:27 flameeyes Exp $
 
 EAPI=2
 
-USE_RUBY="ruby18 ruby19 jruby"
+USE_RUBY="ruby18"
 
 RUBY_FAKEGEM_TASK_TEST="-Ilib test"
 RUBY_FAKEGEM_TASK_DOC="-Ilib doc"
@@ -25,12 +25,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~ia64 ~ppc ~ppc64 ~x86 ~x86-fbsd"
 IUSE=""
 
-RDEPEND="!dev-ruby/http-access2"
+RDEPEND="${RDEPEND}
+	!dev-ruby/http-access2"
 
 # tests are known to fail, but at least they fail for all
 # implementations in the same way.
-ruby_add_bdepend test virtual/ruby-test-unit
-
-# JRuby-specific dependency
-USE_RUBY="jruby" \
-	ruby_add_rdepend ruby_targets_jruby dev-ruby/jruby-openssl
+ruby_add_bdepend "test? ( virtual/ruby-test-unit )"

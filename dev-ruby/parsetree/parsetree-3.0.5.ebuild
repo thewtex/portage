@@ -1,10 +1,10 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/parsetree/parsetree-3.0.5.ebuild,v 1.1 2010/04/30 11:10:32 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/parsetree/parsetree-3.0.5.ebuild,v 1.3 2010/05/22 23:16:34 a3li Exp $
 
 EAPI=2
 
-USE_RUBY="ruby18"
+USE_RUBY="ruby18 ree18"
 
 RUBY_FAKEGEM_NAME="ParseTree"
 
@@ -23,8 +23,17 @@ KEYWORDS="~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-maco
 IUSE=""
 
 ruby_add_rdepend '>=dev-ruby/ruby-inline-3.7.0 >=dev-ruby/sexp-processor-3.0.0'
-ruby_add_bdepend test "dev-ruby/hoe dev-ruby/hoe-seattlerb virtual/ruby-minitest dev-ruby/ruby2ruby"
-ruby_add_bdepend doc "dev-ruby/hoe dev-ruby/hoe-seattlerb"
+ruby_add_bdepend "
+	test? (
+		dev-ruby/hoe
+		dev-ruby/hoe-seattlerb
+		virtual/ruby-minitest
+		dev-ruby/ruby2ruby
+	)
+	doc? (
+		dev-ruby/hoe
+		dev-ruby/hoe-seattlerb
+	)"
 
 src_compile() {
 	chmod 0755 ${WORKDIR/work/homedir} || die "Failed to fix permissions on home"

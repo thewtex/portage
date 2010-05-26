@@ -1,5 +1,5 @@
-dev-java/gnu-classpath:0.98 app-admin/eselect-ecj =dev-java/java-config-2*
-dev-java/gnu-classpath:0.98 app-admin/eselect-ecj =dev-java/java-config-2*
+dev-java/gnu-classpath:0.98 app-admin/eselect-ecj test? ( dev-java/junit:4 || ( =sys-devel/automake-1.11* =sys-devel/automake-1.10* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b ) >=dev-java/java-config-2.1.9-r1 =dev-java/java-config-2*
+dev-java/gnu-classpath:0.98 app-admin/eselect-ecj >=dev-java/java-config-2.1.9-r1 =dev-java/java-config-2*
 0
 http://www.complang.tuwien.ac.at/cacaojvm/download/cacao-0.99.4/cacao-0.99.4.tar.bz2
 
@@ -7,14 +7,14 @@ http://cacaovm.org/
 GPL-2
 Cacao Java Virtual Machine
 ~amd64 ~ppc ~ppc64 ~x86
-eutils fdo-mime flag-o-matic java-vm-2 multilib portability toolchain-funcs
-
+autotools eutils fdo-mime flag-o-matic java-pkg-2 java-utils-2 java-vm-2 libtool multilib portability toolchain-funcs versionator
+test elibc_FreeBSD
 
 
 
 2
 
-configure install postinst postrm prerm setup
+compile configure install postinst postrm preinst prepare prerm setup
 
 
 

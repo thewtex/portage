@@ -1,5 +1,5 @@
-test? ( dev-ruby/hoe[ruby_targets_ruby18?] dev-ruby/tidy_table[ruby_targets_ruby18?] dev-ruby/dust[ruby_targets_ruby18?] ) ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) test? ( dev-ruby/rake[ruby_targets_ruby18?] ) test? ( virtual/rubygems[ruby_targets_ruby18?] )
-dev-ruby/rmagick ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) virtual/rubygems[ruby_targets_ruby18?]
+ruby_targets_ruby18? ( test? ( dev-ruby/hoe[ruby_targets_ruby18] dev-ruby/tidy_table[ruby_targets_ruby18] dev-ruby/dust[ruby_targets_ruby18] ) ) ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ruby18? ( test? ( dev-ruby/rake[ruby_targets_ruby18] ) ) test? ( ruby_targets_ruby18? ( virtual/rubygems[ruby_targets_ruby18] ) )
+dev-ruby/rmagick ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ruby18? ( virtual/rubygems[ruby_targets_ruby18] )
 0
 mirror://rubygems/sparklines-0.5.2.gem
 
@@ -8,7 +8,7 @@ MIT
 Create sparklines, small graphs to be used inline in texts.
 ~amd64 ~x86
 eutils multilib portability ruby-fakegem ruby-ng toolchain-funcs
-test ruby_targets_ruby18 test
+ruby_targets_ruby18 test
 
 
 

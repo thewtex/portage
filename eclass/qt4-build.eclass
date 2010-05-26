@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/qt4-build.eclass,v 1.66 2010/03/24 14:36:28 yngwin Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/qt4-build.eclass,v 1.70 2010/05/24 22:03:30 spatz Exp $
 
 # @ECLASS: qt4-build.eclass
 # @MAINTAINER:
@@ -67,6 +67,18 @@ S=${WORKDIR}/${MY_P}
 # @DESCRIPTION:
 # Sets up S, MY_P, PATH, and LD_LIBRARY_PATH
 qt4-build_pkg_setup() {
+	if [[ "${PN}" == "qt-webkit" ]]; then
+		if [[ "${CFLAGS}" =~ "-ggdb" ]] || [[ "${CXXFLAGS}" =~ "-ggdb" ]]; then
+			echo
+			ewarn "Your \$C{,XX}FLAGS contain -ggdb. You may experience really"
+			ewarn "long compilation times and/or increased memory usage." 
+			ewarn "If compilation fails, please try removing -ggdb before"
+			ewarn "reporting a bug."
+			ewarn "For more info check out bug #307861"
+			echo
+		fi
+	fi
+
 	[[ ${EAPI} == 2 ]] && use !prefix && EPREFIX=
 
 	# Protect users by not allowing downgrades between releases
@@ -150,6 +162,13 @@ qt4-build_src_prepare() {
 	setqtenv
 	cd "${S}"
 
+	# fix qt 4.7 regression that skips -fvisibility=hidden
+	if [[ "${PV}" == "4.7.0_beta1" ]]; then
+		sed -e "s/^gcc|g++)/*gcc|*g++)/" \
+			-i config.tests/unix/fvisibility.test ||
+				die "visibility fixing sed failed"
+	fi
+
 	if use aqua; then
 		# provide a proper macx-g++-64
 		use x64-macos && ln -s macx-g++ mkspecs/$(qt_mkspecs_dir)
@@ -169,12 +188,6 @@ qt4-build_src_prepare() {
 		# qmake bus errors with -O2 but -O3 works
 		replace-flags -O2 -O3
 	fi
-
-	# Bug 282984 && Bug 295530
-	sed -e "s:\(^SYSTEM_VARIABLES\):CC=$(tc-getCC)\nCXX=$(tc-getCXX)\n\1:" \
-		-i configure || die "sed qmake compilers failed"
-	sed -e "s:\(\$MAKE\):\1 CC=$(tc-getCC) CXX=$(tc-getCXX) LD=$(tc-getCXX):" \
-		-i config.tests/unix/compile.test || die "sed test compilers failed"
 
 	# Bug 178652
 	if [[ $(gcc-major-version) == 3 ]] && use amd64; then
@@ -197,19 +210,20 @@ qt4-build_src_prepare() {
 		append-flags -mminimal-toc
 	fi
 
+	# Bug 282984 && Bug 295530
+	sed -e "s:\(^SYSTEM_VARIABLES\):CC=$(tc-getCC)\nCXX=$(tc-getCXX)\nCFLAGS=\"${CFLAGS}\"\nCXXFLAGS=\"${CXXFLAGS}\"\nLDFLAGS=\"${LDFLAGS}\"\n\1:" \
+		-i configure || die "sed qmake compilers failed"
+	# bug 321335
+	find ./config.tests/unix -name "*.test" -type f -exec grep -lZ \$MAKE '{}' \; | \
+		xargs -0 \
+		sed -e "s:\(\$MAKE\):\1 CC=$(tc-getCC) CXX=$(tc-getCXX) LD=$(tc-getCXX) LINK=$(tc-getCXX):g" \
+			-i || die "sed test compilers failed"
+
 	# Bug 172219
-	sed -e "s:QMAKE_CFLAGS_RELEASE.*=.*:QMAKE_CFLAGS_RELEASE=${CFLAGS}:" \
-		-e "s:QMAKE_CXXFLAGS_RELEASE.*=.*:QMAKE_CXXFLAGS_RELEASE=${CXXFLAGS}:" \
-		-e "s:QMAKE_LFLAGS_RELEASE.*=.*:QMAKE_LFLAGS_RELEASE=${LDFLAGS}:" \
-		-e "s:X11R6/::" \
+	sed -e "s:X11R6/::" \
 		-i "${S}"/mkspecs/$(qt_mkspecs_dir)/qmake.conf || die "sed ${S}/mkspecs/$(qt_mkspecs_dir)/qmake.conf failed"
 
-	if [[ ${CHOST} != *-darwin* ]]; then
-		sed -e "s:QMAKE_CFLAGS_RELEASE.*=.*:QMAKE_CFLAGS_RELEASE=${CFLAGS}:" \
-			-e "s:QMAKE_CXXFLAGS_RELEASE.*=.*:QMAKE_CXXFLAGS_RELEASE=${CXXFLAGS}:" \
-			-e "s:QMAKE_LFLAGS_RELEASE.*=.*:QMAKE_LFLAGS_RELEASE=${LDFLAGS}:" \
-			-i mkspecs/common/g++.conf || die "sed mkspecs/common/g++.conf failed"
-	else
+	if [[ ${CHOST} == *-darwin* ]]; then
 		# Set FLAGS *and* remove -arch, since our gcc-apple is multilib
 		# crippled (by design) :/
 		sed -e "s:QMAKE_CFLAGS_RELEASE.*=.*:QMAKE_CFLAGS_RELEASE=${CFLAGS}:" \
@@ -464,9 +478,9 @@ build_directories() {
 			find "${S}" -name '*.pr[io]'
 		} | xargs sed -i -e "s:\$\$\[QT_INSTALL_LIBS\]:${EPREFIX}/usr/$(get_libdir)/qt4:g" || die
 		"${S}"/bin/qmake "LIBS+=-L${QTLIBDIR}" "CONFIG+=nostrip" || die "qmake failed"
-		emake CC="@echo compiling \$< && $(tc-getCC)" \
-			CXX="@echo compiling \$< && $(tc-getCXX)" \
-			LINK="@echo linking \$@ && $(tc-getCXX)" || die "emake failed"
+		emake CC="$(tc-getCC)" \
+			CXX="$(tc-getCXX)" \
+			LINK="$(tc-getCXX)" || die "emake failed"
 		popd >/dev/null
 	done
 }
