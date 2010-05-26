@@ -117,19 +117,19 @@ add_init() {
 	fi
 	for initd in $*
 	do
+		einfo "Auto-adding '${initd}' service to your ${runl} runlevel"
 		[[ -e ${ROOT}etc/runlevels/${runl}/${initd} ]] && continue
 		[[ ! -e ${ROOT}etc/init.d/${initd} ]] && die "initscript $initd not found; aborting"
-		elog "Auto-adding '${initd}' service to your ${runl} runlevel"
 		ln -snf /etc/init.d/${initd} "${ROOT}etc/runlevels/${runl}/${initd}"
 	done
 }
 
 pkg_postinst() {
 	if use rc_enable; then
+		einfo
 		add_init boot device-mapper lvm
-		if [ "$ROOT" = "/" ]; then
-			/etc/init.d/device-mapper start
-			/etc/init.d/lvm start
-		fi
+		einfo
+		einfo "Type \"rc\" to enable new services."
+		echo
 	fi
 }
