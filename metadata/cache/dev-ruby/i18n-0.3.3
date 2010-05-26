@@ -1,5 +1,5 @@
-test? ( dev-ruby/activerecord[ruby_targets_ruby18?] ) ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) test? ( dev-ruby/rake[ruby_targets_ruby18?] ) test? ( virtual/rubygems[ruby_targets_ruby18?] )
-ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) virtual/rubygems[ruby_targets_ruby18?]
+ruby_targets_ruby18? ( test? ( dev-ruby/activerecord[ruby_targets_ruby18] ) ) ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ruby18? ( test? ( dev-ruby/rake[ruby_targets_ruby18] ) ) test? ( ruby_targets_ruby18? ( virtual/rubygems[ruby_targets_ruby18] ) )
+ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ruby18? ( virtual/rubygems[ruby_targets_ruby18] )
 0.3
 mirror://rubygems/i18n-0.3.3.gem
 
@@ -8,7 +8,7 @@ MIT
 Add Internationalization support to your Ruby application.
 ~amd64 ~ppc ~ppc-macos ~x64-solaris ~x86-solaris
 eutils multilib portability ruby-fakegem ruby-ng toolchain-funcs versionator
-test ruby_targets_ruby18 test
+ruby_targets_ruby18 test
 
 
 

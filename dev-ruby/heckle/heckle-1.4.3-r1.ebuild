@@ -1,10 +1,10 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/heckle/heckle-1.4.3-r1.ebuild,v 1.5 2010/02/13 19:19:51 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/heckle/heckle-1.4.3-r1.ebuild,v 1.7 2010/05/22 23:18:05 a3li Exp $
 
 EAPI=2
 
-USE_RUBY="ruby18"
+USE_RUBY="ruby18 ree18"
 
 RUBY_FAKEGEM_TASK_DOC="docs"
 RUBY_FAKEGEM_DOCDIR="doc"
@@ -23,8 +23,12 @@ IUSE=""
 ruby_add_rdepend ">=dev-ruby/ruby2ruby-1.1.6
 	>=dev-ruby/parsetree-2.0.0
 	>=dev-ruby/zentest-3.5.2"
-ruby_add_bdepend doc dev-ruby/hoe
-ruby_add_bdepend test "dev-ruby/hoe virtual/ruby-test-unit"
+ruby_add_bdepend "
+	doc? ( dev-ruby/hoe )
+	test? (
+		dev-ruby/hoe
+		virtual/ruby-test-unit
+	)"
 
 src_compile() {
 	chmod 0755 ${WORKDIR/work/homedir} || die "Failed to fix permissions on home"

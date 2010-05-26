@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5587 2010/05/22 01:27:48 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5592 2010/05/24 18:27:47 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -789,7 +789,6 @@ dev-java/fop:hyphenation - Precompile hyphenation patterns from the dev-java/off
 dev-java/fop:jai - Enable jai support
 dev-java/fop:jimi - Enable jimi support
 dev-java/gjdoc:xmldoclet - Also build support for the xml doclet that generates output in xml instead of the traditional html javadoc.
-dev-java/glazedlists:java5 - Builds a Java 1.5 version (recommended)
 dev-java/gnu-classpath:alsa - Build with ALSA javax.sound.midi provider
 dev-java/gnu-classpath:dssi - Build with DSSI javax.sound.midi provider
 dev-java/gnu-classpath:gconf - Build with GConf preferences backend
@@ -968,6 +967,7 @@ dev-libs/soprano:redland - Enables support for the dev-libs/redland storage back
 dev-libs/soprano:virtuoso - Enables support for dev-db/virtuoso storage backend.
 dev-libs/tinyxml:stl - Compile with TIXML_USE_STL support
 dev-libs/totem-pl-parser:introspection - Use dev-libs/gobject-introspection for introspection
+dev-libs/udis86:pic - Force shared libraries to be built as PIC
 dev-libs/xerces-c:iconv - Use iconv (virtual/libiconv) as message loader and transcoder (in general it would be possible to use iconv only as message loader and something else like icu or the native method as transcoder and vice-versa, but this is a less common case and hard to handle)
 dev-libs/xerces-c:libwww - Use the net-libs/libwww library for fetching URLs, instead of the builtin method
 dev-libs/xerces-c:threads - Enable threading support through pthread (or other libraries on AIX, IRIX, HPUX, Solars). Highly recommended
@@ -1994,6 +1994,10 @@ media-sound/listen:webkit - Enable webkit rendering engine instead of mozembed
 media-sound/lmms:fluidsynth - Enables Fluidsynth MIDI software synthesis plugin.
 media-sound/lmms:stk - Enables STK Mallet plugin.
 media-sound/lmms:vst - Enables the VeSTige plugin to run VST plugins through Wine.
+media-sound/mangler:celt - High quality, low delay audio codec
+media-sound/mangler:espeak - Text to speach engine
+media-sound/mangler:g15 - Logitech g15 lcd support
+media-sound/mangler:nowplaying - Shows what music is playing
 media-sound/mixxx:hifieq - Enable hifi equalizer support
 media-sound/mixxx:shout - Enable shoutcast support
 media-sound/mixxx:tonal - Enable tonal analysis support
@@ -2130,6 +2134,7 @@ media-tv/tvbrowser:themes - Install extra theme packs
 media-tv/xawtv:xext - Enable use of XFree extensions (DGA,VidMode,DPMS)
 media-tv/xawtv:zvbi - Enable VBI Decoding Library for Zapping
 media-tv/xbmc:midi - Support MIDI files
+media-tv/xbmc:vaapi - Enables VAAPI (Video Acceleration API) for hardware decoding
 media-tv/xbmc:vdpau - enable support for Video Decode and Presentation API for Unix
 media-tv/xbmc:xrandr - Support X randr extension
 media-tv/xdtv:aqua_theme - Enable graphic theme Aqua-style
@@ -2914,7 +2919,6 @@ net-misc/gvpe:icmp - Enables icmp transport support
 net-misc/gvpe:tcp - Enables tcp transport support
 net-misc/gwget:epiphany - Build epiphany extensions
 net-misc/htbinit:esfq - Add support for Enhanced Stochastic Fairness queueing discipline.
-net-misc/hylafax:faxonly - Don't depend on mgetty-fax
 net-misc/hylafax:html - Adds HTML documentation
 net-misc/hylafax:mgetty - Adds support for mgetty and vgetty
 net-misc/icecast:yp - Build support for yp public directory listings

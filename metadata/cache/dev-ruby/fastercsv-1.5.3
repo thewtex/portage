@@ -1,5 +1,5 @@
-test? ( virtual/ruby-test-unit[ruby_targets_ruby18?] ) ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) doc? ( dev-ruby/rake[ruby_targets_ruby18?] ) test? ( dev-ruby/rake[ruby_targets_ruby18?] ) test? ( virtual/rubygems[ruby_targets_ruby18?] )
-ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) virtual/rubygems[ruby_targets_ruby18?]
+ruby_targets_ruby18? ( test? ( virtual/ruby-test-unit[ruby_targets_ruby18] ) ) ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ruby18? ( doc? ( dev-ruby/rake[ruby_targets_ruby18] ) ) ruby_targets_ruby18? ( test? ( dev-ruby/rake[ruby_targets_ruby18] ) ) test? ( ruby_targets_ruby18? ( virtual/rubygems[ruby_targets_ruby18] ) )
+ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ruby18? ( virtual/rubygems[ruby_targets_ruby18] )
 0
 mirror://rubygems/fastercsv-1.5.3.gem
 
@@ -8,7 +8,7 @@ http://fastercsv.rubyforge.org/
 FasterCSV is a replacement for the standard CSV library
 ~amd64 ~x86
 eutils multilib portability ruby-fakegem ruby-ng toolchain-funcs
-test ruby_targets_ruby18 doc test
+ruby_targets_ruby18 doc test
 
 
 

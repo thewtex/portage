@@ -1,5 +1,5 @@
-doc? ( dev-ruby/bones[ruby_targets_ruby18?,ruby_targets_ruby19?,ruby_targets_jruby?] dev-ruby/bones-extras[ruby_targets_ruby18?,ruby_targets_ruby19?,ruby_targets_jruby?] ) test? ( dev-ruby/bones[ruby_targets_ruby18?,ruby_targets_ruby19?,ruby_targets_jruby?] dev-ruby/bones-extras[ruby_targets_ruby18?,ruby_targets_ruby19?,ruby_targets_jruby?] dev-ruby/rspec[ruby_targets_ruby18?,ruby_targets_ruby19?,ruby_targets_jruby?] ) ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ruby19? ( dev-lang/ruby:1.9 ) ruby_targets_jruby? ( dev-java/jruby ) doc? ( dev-ruby/rake[ruby_targets_ruby18?,ruby_targets_ruby19?,ruby_targets_jruby?] ) test? ( dev-ruby/rake[ruby_targets_ruby18?,ruby_targets_ruby19?,ruby_targets_jruby?] ) test? ( virtual/rubygems[ruby_targets_ruby18?,ruby_targets_ruby19?,ruby_targets_jruby?] )
-ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ruby19? ( dev-lang/ruby:1.9 ) ruby_targets_jruby? ( dev-java/jruby ) virtual/rubygems[ruby_targets_ruby18?,ruby_targets_ruby19?,ruby_targets_jruby?]
+ruby_targets_ruby18? ( doc? ( dev-ruby/bones[ruby_targets_ruby18] dev-ruby/bones-extras[ruby_targets_ruby18] ) test? ( dev-ruby/bones[ruby_targets_ruby18] dev-ruby/bones-extras[ruby_targets_ruby18] dev-ruby/rspec[ruby_targets_ruby18] ) ) ruby_targets_ruby19? ( doc? ( dev-ruby/bones[ruby_targets_ruby19] dev-ruby/bones-extras[ruby_targets_ruby19] ) test? ( dev-ruby/bones[ruby_targets_ruby19] dev-ruby/bones-extras[ruby_targets_ruby19] dev-ruby/rspec[ruby_targets_ruby19] ) ) ruby_targets_jruby? ( doc? ( dev-ruby/bones[ruby_targets_jruby] dev-ruby/bones-extras[ruby_targets_jruby] ) test? ( dev-ruby/bones[ruby_targets_jruby] dev-ruby/bones-extras[ruby_targets_jruby] dev-ruby/rspec[ruby_targets_jruby] ) ) ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ruby19? ( dev-lang/ruby:1.9 ) ruby_targets_jruby? ( dev-java/jruby ) ruby_targets_ruby18? ( doc? ( dev-ruby/rake[ruby_targets_ruby18] ) ) ruby_targets_ruby19? ( doc? ( dev-ruby/rake[ruby_targets_ruby19] ) ) ruby_targets_jruby? ( doc? ( dev-ruby/rake[ruby_targets_jruby] ) ) ruby_targets_ruby18? ( test? ( dev-ruby/rake[ruby_targets_ruby18] ) ) ruby_targets_ruby19? ( test? ( dev-ruby/rake[ruby_targets_ruby19] ) ) ruby_targets_jruby? ( test? ( dev-ruby/rake[ruby_targets_jruby] ) ) test? ( ruby_targets_ruby18? ( virtual/rubygems[ruby_targets_ruby18] ) ruby_targets_ruby19? ( virtual/rubygems[ruby_targets_ruby19] ) ruby_targets_jruby? ( virtual/rubygems[ruby_targets_jruby] ) )
+ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ruby19? ( dev-lang/ruby:1.9 ) ruby_targets_jruby? ( dev-java/jruby ) ruby_targets_ruby18? ( virtual/rubygems[ruby_targets_ruby18] ) ruby_targets_ruby19? ( virtual/rubygems[ruby_targets_ruby19] ) ruby_targets_jruby? ( virtual/rubygems[ruby_targets_jruby] )
 0
 mirror://rubygems/loquacious-1.5.2.gem
 
@@ -8,7 +8,7 @@ MIT
 Descriptive configuration files for Ruby written in Ruby
 ~amd64
 eutils multilib portability ruby-fakegem ruby-ng toolchain-funcs
-doc test ruby_targets_ruby18 ruby_targets_ruby19 ruby_targets_jruby doc test
+ruby_targets_ruby18 ruby_targets_ruby19 ruby_targets_jruby doc test
 
 
 

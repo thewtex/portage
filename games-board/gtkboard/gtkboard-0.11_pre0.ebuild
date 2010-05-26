@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-board/gtkboard/gtkboard-0.11_pre0.ebuild,v 1.14 2010/05/21 16:30:44 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-board/gtkboard/gtkboard-0.11_pre0.ebuild,v 1.16 2010/05/24 14:59:29 mr_bones_ Exp $
 
 EAPI=2
 inherit eutils games
@@ -24,9 +24,10 @@ DEPEND="${RDEPEND}
 
 S=${WORKDIR}/${MY_P}
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-gcc41.patch
-}
+PATCHES=(
+	"${FILESDIR}"/${P}-gcc41.patch
+	"${FILESDIR}"/${P}-gcc45.patch
+)
 
 src_configure() {
 	egamesconf \
