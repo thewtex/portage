@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11569 2010/05/26 09:42:57 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11574 2010/05/27 00:23:46 mr_bones_ Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,24 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Michael Sterrett <mr_bones_@gentoo.org> (26 May 2010)
+# Masked for security bug #320955
+<games-simulation/openttd-1.0.1
+
+# Peter Volkov <pva@gentoo.org> (09 May 2010)
+# Masked for testing of upgrading path. PLEASE backup before upgrading. #281366
+=net-im/ejabberd-2.1*
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (26 May 2010)
+#  on behalf of QA team
+#
+# cl-smtp fails to fetch since at least September 2007
+# (bug #193627); cl-pop needs the former.
+#
+# Removal on 2010-07-25
+dev-lisp/cl-smtp
+dev-lisp/cl-pop
 
 # Diego E. Pettenò <flameeyes@gentoo.org> (26 May 2010)
 #  on behalf of QA team
@@ -1024,7 +1042,7 @@ sys-fs/redirfs
 # opensync svn ebuilds
 =app-pda/libsyncml-9999
 =app-pda/libopensync-9999
-=app-pda/msynctool-9999
+=app-pda/osynctool-9999
 =app-pda/libopensync-plugin-evolution2-9999
 =app-pda/libopensync-plugin-file-9999
 =app-pda/libopensync-plugin-gnokii-9999

@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5592 2010/05/24 18:27:47 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5599 2010/05/27 10:47:51 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -1356,6 +1356,7 @@ games-rpg/nwn-cep:sou - Adds support for the Shadows of Undrentide expension pac
 games-rpg/nwn-data:hou - Install the Hordes of the Underdark expansion pack
 games-rpg/nwn-data:nowin - For those people who cant grab the 1.2 gigs of data files from a windows partition
 games-rpg/nwn-data:sou - Installs the Shadows of Undrentide expension pack
+games-simulation/openttd:aplaymidi - Enables midi music in game, using aplaymidi as an external player
 games-simulation/openttd:dedicated - Build only the openttd server, and not the client.
 games-simulation/openttd:lzo - Enables LZO compression for savegames. This is only needed to load extremely old savegames. (versions before 0.2)
 games-simulation/openttd:openmedia - Enables the free open media sets: OpenGFX, OpenSFX, OpenMSX, removing the requirement for proprietary TTD assets to play OpenTTD.
@@ -1736,7 +1737,6 @@ media-gfx/gthumb:iptc - Add support for IPTC metadata
 media-gfx/gthumb:slideshow - Enable slideshow plugin
 media-gfx/hugin:sift - automatically align images with media-gfx/autopano-sift or media-gfx/autopano-sift-C
 media-gfx/imagemagick:autotrace -  use media-gfx/autotrace to convert bitmaps into vector graphics 
-media-gfx/imagemagick:corefonts -  pull in media-fonts/corefonts, which is required for some commands 
 media-gfx/imagemagick:fpx -  enable media-libs/libfpx support 
 media-gfx/imagemagick:gs -  enable ghostscript support 
 media-gfx/imagemagick:hdri -  enable High Dynamic Range Images formats 
@@ -2636,10 +2636,13 @@ net-im/centerim:lj - Enable support for the LiveJournal weblog system
 net-im/centerim:otr - Enable encrypted conversations
 net-im/climm:gloox - Enable support for Jabber/XMPP using gloox
 net-im/climm:otr - Enable encrypted conversations
-net-im/ejabberd:mod_irc - Irc support in ejabberd
-net-im/ejabberd:mod_muc - Multi user chat support in ejabberd
-net-im/ejabberd:mod_pubsub - Pubsub support in ejabberd
-net-im/ejabberd:web - Web support in ejabberd
+net-im/ejabberd:captcha - Support for CAPTCHA Forms (XEP-158)
+net-im/ejabberd:mod_irc - Build irc gateway 
+net-im/ejabberd:mod_muc - Build Multi User Chat module
+net-im/ejabberd:mod_proxy65 - Support for SOCKS5 Bytestreams (XEP-0065)
+net-im/ejabberd:mod_pubsub - Build Pubsub module
+net-im/ejabberd:mod_statsdx - Measures several statistics, and provides a new section in ejabberd Web Admin to view them.
+net-im/ejabberd:web - Enable web admin interface
 net-im/empathy:applet - Enable Empathy's applets for gnome-base/gnome-panel
 net-im/empathy:webkit - Build support for Adium-style HTML-based conversation window themes using net-libs/webkit-gtk
 net-im/gajim:idle - Enable idle module
@@ -2660,6 +2663,7 @@ net-im/minbif:video - Add video support
 net-im/pidgin:bonjour - Enable bonjour (zeroconf) support
 net-im/pidgin:gadu - Enable Gadu Gadu protocol support
 net-im/pidgin:groupwise - Enable Novell Groupwise protocol support
+net-im/pidgin:krb4 - Compile Zephyr plugin with Kerberos 4 support
 net-im/pidgin:meanwhile - Enable meanwhile support for Sametime protocol
 net-im/pidgin:prediction - Enable Contact Availability Prediction plugin
 net-im/pidgin:qq - Enable QQ protocol support
@@ -2973,6 +2977,9 @@ net-misc/quagga:tcp-zebra - Enable TCP zserv interface on port 2600 for Zebra/pr
 net-misc/quagga:tcpmd5 - Enable TCP MD5 checksumming
 net-misc/rdesktop:pcsc-lite - Enable smartcard support with sys-apps/pcsc-lite driver
 net-misc/rdesktop:rdpusb - Enable USB redirection support for app-emulation/virtualbox-bin
+net-misc/remmina:ssh - Enable support for SSH/SFTP using net-libs/libssh
+net-misc/remmina:unique - Enable single instance support using dev-libs/libunique
+net-misc/remmina:vte - Enable Terminal support using x11-libs/vte
 net-misc/scponly:gftp - Enables gFTP compatibility
 net-misc/scponly:logging - Enables SFTP logging compatibility
 net-misc/scponly:passwd - Enables passwd compatibility
@@ -3121,8 +3128,12 @@ net-proxy/squid:logrotate - Use app-admin/logrotate for rotating logs
 net-proxy/squid:pf-transparent - Adds transparent proxy support for systems using PF (only for *bsd)
 net-proxy/squid:zero-penalty-hit - Add Zero Penalty Hit patch (http://zph.bratcheda.org)
 net-proxy/sshproxy:client-only - Install only the client wrappers
+net-proxy/tinyproxy:filter-proxy - Enable filtering of domains/URLS
 net-proxy/tinyproxy:http-via-header - Add Via field to HTTP headers
-net-proxy/tinyproxy:transparent-proxy - Enables support for transparent proxies
+net-proxy/tinyproxy:reverse-proxy - Enable reverse proxying
+net-proxy/tinyproxy:transparent-proxy - Enable transparent proxying
+net-proxy/tinyproxy:upstream-proxy - Enable upstream proxying
+net-proxy/tinyproxy:xtinyproxy-header - Include the X-Tinyproxy header
 net-proxy/tsocks:tordns -  Apply tordns patch which allows transparent TORification of the DNS queries 
 net-voip/ekiga:gconf - Enable GConf support
 net-voip/ekiga:h323 - Enable H.323 protocol
@@ -3183,6 +3194,7 @@ rox-extra/archive:uuencode - Enable .uue extraction via app-arch/sharutils
 rox-extra/archive:zip - Enable .zip extraction via app-arch/unzip and app-arch/zip
 rox-extra/comicthumb:rar - Enable support for rar-compressed archives via app-arch/unrar
 rox-extra/magickthumbnail:xcf - Enable previews of .xcf files using media-gfx/gimp
+sci-astronomy/cpl:gasgano -  Enable support for sci-astronomy/gasgano file organizer 
 sci-astronomy/orsa:cln - Use the Class Library for Numbers (sci-libs/cln) for calculations
 sci-astronomy/predict:xforms - Add a "map" client which uses the x11-libs/xforms library for its GUI
 sci-astronomy/predict:xplanet - Project predict data onto world maps generated by x11-misc/xplanet / x11-misc/xearth
