@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/python/python-3.1.2-r3.ebuild,v 1.8 2010/05/23 20:13:15 arfrever Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/python/python-3.1.2-r3.ebuild,v 1.10 2010/05/26 16:18:24 hwoarang Exp $
 
 EAPI="3"
 
@@ -18,7 +18,8 @@ SRC_URI="http://www.python.org/ftp/python/${PV}/${MY_P}.tar.bz2
 
 LICENSE="PSF-2.2"
 SLOT="3.1"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd"
+PYTHON_ABI="${SLOT}"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd"
 IUSE="build doc elibc_uclibc examples gdbm ipv6 +ncurses +readline sqlite +ssl +threads tk +wide-unicode wininst +xml"
 
 RDEPEND=">=app-admin/eselect-python-20091230
@@ -50,8 +51,7 @@ PDEPEND=">=app-admin/python-updater-0.8
 PROVIDE="virtual/python"
 
 pkg_setup() {
-	python_set_active_version ${SLOT}
-	# python_pkg_setup
+	python_pkg_setup
 }
 
 src_prepare() {
@@ -272,7 +272,7 @@ eselect_python_update() {
 pkg_postinst() {
 	eselect_python_update
 
-	python_mod_optimize -x "/(site-packages|test|tests)/" $(python_get_libdir)
+	python_mod_optimize -f -x "/(site-packages|test|tests)/" $(python_get_libdir)
 
 	if [[ "$(eselect python show)" == "python2."* ]]; then
 		ewarn

@@ -1,8 +1,8 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/magicpoint/magicpoint-1.13a.ebuild,v 1.2 2009/01/04 20:24:18 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/magicpoint/magicpoint-1.13a.ebuild,v 1.4 2010/05/26 12:22:54 xarthisius Exp $
 
-inherit autotools elisp-common eutils fixheadtails
+inherit autotools elisp-common eutils fixheadtails toolchain-funcs
 
 DESCRIPTION="An X11 based presentation tool"
 SRC_URI="ftp://sh.wide.ad.jp/WIDE/free-ware/mgp/${P}.tar.gz
@@ -18,6 +18,7 @@ MY_DEPEND="x11-libs/libICE
 	x11-libs/libSM
 	x11-libs/libXrender
 	x11-libs/libXmu
+	>=media-libs/libpng-1.2.43-r2
 	gif? ( >=media-libs/giflib-4.0.1 )
 	imlib? ( media-libs/imlib )
 	truetype? ( x11-libs/libXft )
@@ -42,6 +43,10 @@ src_unpack() {
 	epatch "${FILESDIR}/${PN}-1.11b-gentoo.diff"
 	epatch "${FILESDIR}/${P}-implicit-declaration.patch"
 
+	sed -i \
+		-e 's:png_set_gray_1_2_4_to_8:png_set_expand_gray_1_2_4_to_8:' \
+		configure.in image/png.c || die
+
 	# bug #85720
 	sed -i -e "s/ungif/gif/g" configure.in || die "sed failed"
 	ht_fix_file configure.in
@@ -64,7 +69,9 @@ src_compile() {
 	# no parallel build possibly, anywhere
 	emake -j1 Makefiles || die "emake Makefiles failed"
 	emake -j1 clean || die "emake clean failed"
-	emake -j1 BINDIR=/usr/bin LIBDIR=/etc/X11 || die "emake failed"
+	tc-export CC
+	emake -j1 CC="${CC}" CDEBUGFLAGS="${CFLAGS}" LOCAL_LDFLAGS="${LDFLAGS}" \
+		BINDIR=/usr/bin LIBDIR=/etc/X11 || die "emake failed"
 	if use emacs; then
 	   cd contrib/
 	   elisp-compile *.el || die "elisp-compile failed"
