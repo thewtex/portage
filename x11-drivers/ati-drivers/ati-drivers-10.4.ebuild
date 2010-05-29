@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-drivers/ati-drivers/ati-drivers-10.4.ebuild,v 1.2 2010/05/21 08:59:31 lu_zero Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-drivers/ati-drivers/ati-drivers-10.4.ebuild,v 1.3 2010/05/28 13:00:24 lu_zero Exp $
 
 EAPI="2"
 
@@ -46,6 +46,7 @@ DEPEND="${RDEPEND}
 	x11-proto/xf86miscproto
 	x11-proto/xf86vidmodeproto
 	x11-proto/xineramaproto
+	x11-libs/libXtst
 "
 
 EMULTILIB_PKG="true"

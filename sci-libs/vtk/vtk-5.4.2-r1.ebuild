@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/vtk/vtk-5.4.2-r1.ebuild,v 1.10 2010/05/22 09:19:22 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/vtk/vtk-5.4.2-r1.ebuild,v 1.11 2010/05/28 11:51:24 jlec Exp $
 
 EAPI="3"
 PYTHON_DEPEND="python? 2"
@@ -24,7 +24,6 @@ RDEPEND="mpi? ( || (
 					sys-cluster/openmpi
 					sys-cluster/lam-mpi
 					sys-cluster/mpich2[cxx] ) )
-	python? ( >=dev-lang/python-2.0 )
 	cg? ( media-gfx/nvidia-cg-toolkit )
 	tcl? ( >=dev-lang/tcl-8.2.3 )
 	tk? ( >=dev-lang/tk-8.2.3 )
