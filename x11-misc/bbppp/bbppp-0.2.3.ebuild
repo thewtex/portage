@@ -1,8 +1,8 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/bbppp/bbppp-0.2.3.ebuild,v 1.7 2008/12/27 23:11:55 coldwind Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/bbppp/bbppp-0.2.3.ebuild,v 1.8 2010/05/30 18:29:20 xarthisius Exp $
 
-inherit eutils
+inherit autotools eutils
 
 DESCRIPTION="blackbox ppp frontend/monitor"
 HOMEPAGE="http://bbtools.windsofstorm.net/sources/available.phtml#bbppp"
@@ -13,17 +13,22 @@ SLOT="0"
 KEYWORDS="ppc sparc x86"
 IUSE=""
 
-DEPEND="virtual/blackbox"
+DEPEND="x11-libs/libX11"
+DEPEND="${DEPEND}
+	virtual/blackbox"
 
 src_unpack() {
 	unpack ${A}
 	cd "${S}"
-	epatch "${FILESDIR}"/${PN}-gcc3-multiline.diff
+	epatch "${FILESDIR}"/${PN}-gcc3-multiline.diff \
+		"${FILESDIR}"/${PN}-asneeded.patch
+	eautoreconf
 }
 
 src_install () {
 	make DESTDIR="${D}" install || die
-	dodoc README AUTHORS BUGS INSTALL ChangeLog NEWS TODO data/README.bbppp
+	dodoc README AUTHORS BUGS ChangeLog NEWS TODO data/README.bbppp || die
+	rm "${D}"/usr/share/bbtools/README.bbppp
 }
 
 pkg_postinst() {

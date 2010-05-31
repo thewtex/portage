@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5605 2010/05/29 09:27:48 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5609 2010/05/31 01:47:59 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -2879,6 +2879,7 @@ net-mail/vchkuser:debug - Enables debug messages to syslog
 net-mail/vpopmail:clearpasswd - Enables cleartext password storage in the vpasswd files
 net-mail/vpopmail:ipalias - Enables enable-ip-alias-domains
 net-mail/vpopmail:maildrop - Enables mail-filter/maildrop support in vdelivermail
+net-mail/vpopmail:spamassassin - Enables mail-filter/spamassassin support
 net-misc/aria2:ares - Enables support for asynchronous DNS using the c-ares library
 net-misc/aria2:bittorrent - Enables support for the bittorrent protocol
 net-misc/aria2:metalink - Enables support for metalink
@@ -3899,6 +3900,7 @@ x11-misc/google-gadgets:soup - Enables XML HTTP request extension based on net-l
 x11-misc/google-gadgets:webkit - Enables browser element and script runtime based on net-libs/webkit-gtk
 x11-misc/rednotebook:libyaml - enable libyaml support
 x11-misc/rednotebook:webkit - enable previews using webkit engine
+x11-misc/rss-glx:quesoglc - Enable support for OpenGL Character Renderer
 x11-misc/shutter:drawing - Enables drawing tool
 x11-misc/shutter:webphoto - Enables screenshots of websites
 x11-misc/slim:screenshot - Enable screenshot support (using media-gfx/imagemagick)
@@ -3930,7 +3932,8 @@ x11-terms/mrxvt:menubar - Enable mrxvt menubar
 x11-terms/mrxvt:utempter - REcords user logins. Useful on multi-user systems
 x11-terms/rxvt:linuxkeys - Define LINUX_KEYS (changes Home/End key)
 x11-terms/rxvt:xgetdefault - Enable resources via X instead of rxvt small version
-x11-terms/rxvt-unicode:afterimage - Enable support for media-libs/libafterimage 
+x11-terms/rxvt-unicode:afterimage - Enable support for media-libs/libafterimage
+x11-terms/rxvt-unicode:blink - Enable blinking text
 x11-terms/rxvt-unicode:iso14755 - Enable ISO-14755 support
 x11-terms/rxvt-unicode:wcwidth - Enable wide char width support
 x11-terms/rxvt-unicode:xterm-color - Enable xterm 256 color support
@@ -3960,6 +3963,7 @@ x11-wm/enlightenment:pango - Enable pango font rendering
 x11-wm/enlightenment:xrandr - Enable support for the X xrandr extension
 x11-wm/fluxbox:disableslit - Disables the fluxbox slit (or dock)
 x11-wm/fluxbox:disabletoolbar - Disables the fluxbox toolbar
+x11-wm/fluxbox:newmousefocus - Patches the focus model to the upcoming 1.1.2 model, which adds a new 'StrictMouseFocus' mode
 x11-wm/fluxbox:slit - Enables the fluxbox slit (or dock)
 x11-wm/fluxbox:toolbar - Enables the fluxbox toolbar
 x11-wm/fvwm:gtk2-perl - Enable GTK2 Perl bindings
