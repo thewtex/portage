@@ -1,11 +1,10 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-kernel/openvz-sources/openvz-sources-2.6.18.028.069.6.ebuild,v 1.1 2010/05/31 12:54:11 pva Exp $
-
-inherit versionator
+# $Header: /var/cvsroot/gentoo-x86/sys-kernel/openvz-sources/openvz-sources-2.6.18.028.066.7.ebuild,v 1.1 2009/11/26 19:12:49 pva Exp $
 
 ETYPE="sources"
 
+PATCHV="164.15.1.el5"
 CKV=2.6.18
 OKV=${OKV:-${CKV}}
 if [[ ${PR} == "r0" ]]; then
@@ -27,7 +26,6 @@ PDEPEND="=sys-devel/gcc-4.1*"
 DEPEND="!>=sys-fs/udev-146"
 KEYWORDS="amd64 ppc64 sparc x86"
 IUSE=""
-PATCHV="194.3.1.el5"
 DESCRIPTION="Full sources including OpenVZ patchset for the 2.6.18 kernel tree"
 HOMEPAGE="http://www.openvz.org"
 AMD64_CONFIG="kernel-${CKV}-x86_64.config.ovz"
