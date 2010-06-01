@@ -2,40 +2,6 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: /var/cvsroot/gentoo-x86/dev-vcs/git/ChangeLog,v 1.3 2010/03/24 22:04:28 robbat2 Exp $
 
-  31 May 2010; Robin H. Johnson <robbat2@gentoo.org> git-1.7.1-r1.ebuild:
-  Bug #322205: The iconv patch added for -r1 just stopped the segfaults, the
-  testsuite still fails, so forcing USE=iconv for now.
-
-  28 May 2010; Robin H. Johnson <robbat2@gentoo.org> -git-1.7.1.ebuild:
-  Remove broken 1.7.1.
-
-*git-1.7.1-r1 (28 May 2010)
-
-  28 May 2010; Robin H. Johnson <robbat2@gentoo.org> +git-1.7.1-r1.ebuild,
-  +files/git-1.7.1-noiconv-segfault-fix.patch:
-  Bug #321895: patch from upstream to avoid segfault with USE=-iconv.
-
-*git-1.7.1 (01 May 2010)
-
-  01 May 2010; Robin H. Johnson <robbat2@gentoo.org> +git-1.7.1.ebuild,
-  +files/git-1.7.1-always-install-js.patch:
-  Bug #317953: Version bump.
-
-*git-1.7.0.4 (01 Apr 2010)
-
-  01 Apr 2010; Robin H. Johnson <robbat2@gentoo.org> +git-1.7.0.4.ebuild:
-  Version bump.
-
-  31 Mar 2010; Robin H. Johnson <robbat2@gentoo.org> git-1.6.5.1-r1.ebuild,
-  git-1.6.5.2.ebuild, git-1.6.5.3.ebuild, git-1.6.5.4.ebuild,
-  git-1.6.5.5.ebuild, git-1.6.5.6.ebuild, git-1.6.5.7.ebuild,
-  git-1.6.5.8.ebuild, git-1.6.6_rc3.ebuild, git-1.6.6_rc4.ebuild,
-  git-1.6.6.ebuild, git-1.6.6-r1.ebuild, git-1.6.6-r2.ebuild,
-  git-1.6.6.1.ebuild, git-1.6.6.2.ebuild, git-1.7.0.ebuild,
-  git-1.7.0.3.ebuild:
-  Forward-port ~ppc64 keyword to other ebuilds since it came back in bug
-  #290163.
-
   24 Mar 2010; Robin H. Johnson <robbat2@gentoo.org> git-1.6.3.1.ebuild,
   git-1.6.3.3.ebuild, git-1.6.3.4.ebuild, git-1.6.4.ebuild,
   git-1.6.4.1.ebuild, git-1.6.4.2.ebuild, git-1.6.4.3.ebuild,
