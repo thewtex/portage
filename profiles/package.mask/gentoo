@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11585 2010/05/31 09:19:42 wired Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11588 2010/06/01 08:05:41 bangert Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -328,11 +328,6 @@ dev-util/awka
 # Old,unmaintained,dead upstream, doesn't build. Masked
 # for removal in 2010-06-28. Bug #316201
 x11-misc/lintar
-
-# Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org> (28 May 2010)
-# Masked until the tarballs are publicly released
-=media-sound/amarok-2.3.1
-=media-sound/amarok-utils-2.3.1
 
 # Matti Bickel <mabi@gentoo.org> (27 May 2010)
 # Masked for testing, expect breakage at this point
@@ -1262,6 +1257,7 @@ dev-util/w32api
 # Please read http://my.opera.com/desktopteam/blog/
 # for information about alpha releases
 =www-client/opera-10.54*
+=www-client/opera-10.60*
 
 # Peter Volkov <pva@gentoo.org> (16 Nov 2008)
 # The development branch, to be unmasked when out of beta by upstream.
@@ -1369,7 +1365,7 @@ sys-fs/redirfs
 
 # Stefan Cornelius <dercorny@gentoo.org> (7 Mar 2007)
 # Masking net-misc/xsupplicant due to security bug 154995
-net-misc/xsupplicant
+<net-misc/xsupplicant-2.2
 
 # Stefaan De Roeck <stefaan@gentoo.org> (09 Sep 2006)
 # 1.5.x is a development branch, people should test 1.4.x by default

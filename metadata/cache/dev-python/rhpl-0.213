@@ -1,5 +1,5 @@
-dev-lang/python !<sys-libs/libkudzu-1.2 !s390? ( >=net-wireless/wireless-tools-28 ) sys-devel/gettext >=app-admin/eselect-python-20091230 >=app-arch/rpm2targz-9.0.0.3g >=app-admin/eselect-python-20091230 dev-lang/python
-dev-lang/python !<sys-libs/libkudzu-1.2 >=app-admin/eselect-python-20091230 >=app-admin/eselect-python-20091230 dev-lang/python
+!<sys-libs/libkudzu-1.2 !s390? ( >=net-wireless/wireless-tools-28 ) sys-devel/gettext >=app-admin/eselect-python-20091230 =dev-lang/python-2* >=app-arch/rpm2targz-9.0.0.3g
+!<sys-libs/libkudzu-1.2 >=app-admin/eselect-python-20091230 =dev-lang/python-2*
 0
 mirror://fedora-dev/development/source/SRPMS/rhpl-0.213-1.src.rpm
 
@@ -7,14 +7,14 @@ http://fedoraproject.org/wiki/SystemConfig
 GPL-2
 Library of python code used by Red Hat Linux programs
 amd64 ppc x86
-distutils eutils multilib portability python rpm toolchain-funcs
+eutils multilib portability python rpm toolchain-funcs
 
 
 
 
+3
 
-
-compile install postinst postrm unpack
+compile install postinst postrm prepare unpack
 
 
 

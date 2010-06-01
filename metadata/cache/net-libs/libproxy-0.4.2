@@ -1,5 +1,5 @@
-gnome? ( gnome-base/gconf ) kde? ( >=kde-base/kdelibs-4.3 ) networkmanager? ( net-misc/networkmanager ) perl? ( dev-lang/perl ) python? ( >=dev-lang/python-2.5 ) vala? ( dev-lang/vala ) webkit? ( net-libs/webkit-gtk ) xulrunner? ( >=net-libs/xulrunner-1.9.0.11-r1:1.9 ) >=dev-util/pkgconfig-0.19 >=dev-util/cmake-2.8 userland_GNU? ( >=sys-apps/findutils-4.4.0 ) >=app-admin/eselect-python-20091230
-gnome? ( gnome-base/gconf ) kde? ( >=kde-base/kdelibs-4.3 ) networkmanager? ( net-misc/networkmanager ) perl? ( dev-lang/perl ) python? ( >=dev-lang/python-2.5 ) vala? ( dev-lang/vala ) webkit? ( net-libs/webkit-gtk ) xulrunner? ( >=net-libs/xulrunner-1.9.0.11-r1:1.9 ) >=app-admin/eselect-python-20091230
+gnome? ( gnome-base/gconf ) kde? ( >=kde-base/kdelibs-4.3 ) networkmanager? ( net-misc/networkmanager ) perl? ( dev-lang/perl ) vala? ( dev-lang/vala ) webkit? ( net-libs/webkit-gtk ) xulrunner? ( >=net-libs/xulrunner-1.9.0.11-r1:1.9 ) >=dev-util/pkgconfig-0.19 >=dev-util/cmake-2.8 userland_GNU? ( >=sys-apps/findutils-4.4.0 ) >=app-admin/eselect-python-20091230 python? ( || ( =dev-lang/python-2.7* =dev-lang/python-2.6* =dev-lang/python-2.5* ) )
+gnome? ( gnome-base/gconf ) kde? ( >=kde-base/kdelibs-4.3 ) networkmanager? ( net-misc/networkmanager ) perl? ( dev-lang/perl ) vala? ( dev-lang/vala ) webkit? ( net-libs/webkit-gtk ) xulrunner? ( >=net-libs/xulrunner-1.9.0.11-r1:1.9 ) >=app-admin/eselect-python-20091230 python? ( || ( =dev-lang/python-2.7* =dev-lang/python-2.6* =dev-lang/python-2.5* ) )
 0
 http://libproxy.googlecode.com/files/libproxy-0.4.2.tar.gz
 
@@ -14,7 +14,7 @@ debug gnome kde networkmanager perl python vala webkit xulrunner
 
 2
 
-compile configure install postinst postrm prepare test unpack
+compile configure install postinst postrm preinst prepare setup test unpack
 
 
 
