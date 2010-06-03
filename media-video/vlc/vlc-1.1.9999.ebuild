@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/vlc/vlc-1.1.9999.ebuild,v 1.2 2010/04/23 16:18:09 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/vlc/vlc-1.1.9999.ebuild,v 1.7 2010/05/25 07:02:33 aballier Exp $
 
 EAPI="2"
 
@@ -52,8 +52,8 @@ IUSE="a52 aac aalib alsa altivec atmo avahi bidi cdda cddb dbus dc1394
 	modplug mp3 mpeg mtp musepack ncurses nsplugin ogg opengl optimisememory oss
 	png projectm pulseaudio pvr +qt4 remoteosd rtsp run-as-root samba
 	schroedinger sdl sdl-image shine shout skins speex sqlite sse stream
-	svg svga taglib theora truetype twolame udev upnp v4l v4l2 vcdx vlm
-	vorbis win32codecs wma-fixed x264 +xcb xml xosd xv zvbi"
+	svg svga taglib theora truetype twolame udev upnp v4l v4l2 vaapi vcdx vlm
+	vorbis win32codecs wma-fixed +X x264 +xcb xml xosd xv zvbi"
 
 RDEPEND="
 		!!<=media-video/vlc-1.0.99999
@@ -72,9 +72,7 @@ RDEPEND="
 		dirac? ( >=media-video/dirac-0.10.0 )
 		directfb? ( dev-libs/DirectFB sys-libs/zlib )
 		dts? ( media-libs/libdca )
-		dvd? (	media-libs/libdvdread
-				>=media-libs/libdvdnav-0.1.9
-				media-libs/libdvdplay )
+		dvd? (	media-libs/libdvdread >=media-libs/libdvdnav-0.1.9 )
 		elibc_glibc? ( >=sys-libs/glibc-2.8 )
 		ffmpeg? ( >=media-video/ffmpeg-0.4.9_p20090201 )
 		flac? ( media-libs/libogg
@@ -103,7 +101,7 @@ RDEPEND="
 		modplug? ( >=media-libs/libmodplug-0.8 )
 		mp3? ( media-libs/libmad )
 		mpeg? ( >=media-libs/libmpeg2-0.3.2 )
-		mtp? ( >=media-libs/libmtp-0.3.0 )
+		mtp? ( >=media-libs/libmtp-1.0.0 )
 		musepack? ( >=media-sound/musepack-tools-444 )
 		ncurses? ( sys-libs/ncurses )
 		nsplugin? ( >=net-libs/xulrunner-1.9.2 x11-libs/libXpm x11-libs/libXt )
@@ -111,7 +109,8 @@ RDEPEND="
 		opengl? ( virtual/opengl )
 		png? ( media-libs/libpng sys-libs/zlib )
 		projectm? ( media-libs/libprojectm )
-		pulseaudio? ( >=media-sound/pulseaudio-0.9.11 )
+		pulseaudio? ( >=media-sound/pulseaudio-0.9.11
+			!X? ( >=media-sound/pulseaudio-0.9.11[-X] ) )
 		qt4? ( x11-libs/qt-gui:4 x11-libs/qt-core:4 x11-libs/libX11 )
 		remoteosd? ( >=dev-libs/libgcrypt-1.2.0 )
 		samba? ( || ( >=net-fs/samba-3.4.6[smbclient]
@@ -138,9 +137,11 @@ RDEPEND="
 		upnp? ( net-libs/libupnp )
 		v4l2? ( libv4l2? ( media-libs/libv4l ) )
 		v4l? ( libv4l? ( media-libs/libv4l ) )
+		vaapi? ( x11-libs/libva >=media-video/ffmpeg-0.5_p22846 )
 		vcdx? ( >=dev-libs/libcdio-0.78.2 >=media-video/vcdimager-0.7.22 )
 		vorbis? ( media-libs/libvorbis )
 		win32codecs? ( media-libs/win32codecs )
+		X? ( x11-libs/libX11 )
 		x264? ( >=media-libs/x264-0.0.20090923 )
 		xcb? ( x11-libs/libxcb x11-libs/xcb-util )
 		xml? ( dev-libs/libxml2 )
@@ -187,6 +188,7 @@ pkg_setup() {
 	vlc_use_force skins truetype
 	vlc_use_force skins qt4
 	vlc_use_force vlm stream
+	vlc_use_force vaapi ffmpeg
 
 	# Useflags that will be automagically discarded if deps are not met
 	vlc_use_needs bidi truetype
@@ -318,10 +320,12 @@ src_configure() {
 		$(use_enable v4l) \
 		$(use_enable v4l2) \
 		$(use_enable vcdx) \
+		$(use_enable vaapi libva) \
 		$(use_enable vlm) \
 		$(use_enable vorbis) \
 		$(use_enable win32codecs loader) \
 		$(use_enable wma-fixed) \
+		$(use_with X x) \
 		$(use_enable x264) \
 		$(use_enable xcb) \
 		$(use_enable xml libxml2) \
@@ -335,7 +339,8 @@ src_configure() {
 		$(vlc_use_enable_force vlm sout) \
 		$(vlc_use_enable_force skins qt4) \
 		$(vlc_use_enable_force skins freetype) \
-		$(vlc_use_enable_force remoteosd libgcrypt)
+		$(vlc_use_enable_force remoteosd libgcrypt) \
+		$(vlc_use_enable_force vaapi avcodec)
 }
 
 src_install() {

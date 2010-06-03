@@ -1,14 +1,12 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/tigervnc/tigervnc-1.0.1_pre20100306-r1.ebuild,v 1.5 2010/05/12 18:36:53 ranger Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/tigervnc/tigervnc-1.0.1_pre20100306-r1.ebuild,v 1.6 2010/05/29 15:22:42 armin76 Exp $
 
 EAPI="1"
 
 inherit eutils toolchain-funcs multilib autotools
 
 XSERVER_VERSION="1.7.6"
-#kPATCH="${P/_p*/}-patches-0.3"
-PATCH="${PN}-0.0.90-patches-0.3"
 OPENGL_DIR="xorg-x11"
 
 DESCRIPTION="Remote desktop viewer display system"
@@ -17,13 +15,10 @@ SRC_URI="mirror://gentoo/${P}.tar.bz2
 	http://dev.gentoo.org/~armin76/dist/${P}.tar.bz2
 	server? ( ftp://ftp.freedesktop.org/pub/xorg/individual/xserver/xorg-server-${XSERVER_VERSION}.tar.bz2	)"
 
-#	mirror://gentoo/${PATCH}.tar.bz2
-#	http://dev.gentoo.org/~armin76/dist/${PATCH}.tar.bz2
-
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~ppc ppc64 ~sh ~sparc x86"
-IUSE="+opengl server +xorgmodule"
+IUSE="nptl +opengl server +xorgmodule"
 
 RDEPEND="sys-libs/zlib
 	media-libs/freetype
@@ -112,11 +107,7 @@ src_unpack() {
 
 	if use server ; then
 		cp -r "${WORKDIR}"/xorg-server-${XSERVER_VERSION}/* unix/xserver
-#	else
-#		rm -f "${WORKDIR}"/patch/*tigervnc-server*
 	fi
-
-#	EPATCH_SUFFIX="patch" epatch "${WORKDIR}"/patch
 
 	eautoreconf
 	cd unix
@@ -128,7 +119,6 @@ src_unpack() {
 }
 
 src_compile() {
-#	cd unix
 	econf --without-included-zlib --with-system-jpeg || die "econf failed"
 	emake || die "emake failed"
 
@@ -142,10 +132,10 @@ src_compile() {
 			--with-default-font-path=/usr/share/fonts/misc,/usr/share/fonts/75dpi,/usr/share/fonts/100dpi,/usr/share/fonts/TTF,/usr/share/fonts/Type1 \
 			--enable-install-libxf86config \
 			--enable-dri2 \
-			--enable-glx \
 			--disable-config-dbus \
 			--disable-config-hal \
 			$(use_enable opengl glx) \
+			$(use_enable nptl glx-tls) \
 			|| die "econf server failed"
 		emake || die "emake server failed"
 	fi

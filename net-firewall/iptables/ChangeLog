@@ -1,6 +1,35 @@
 # ChangeLog for net-firewall/iptables
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-firewall/iptables/ChangeLog,v 1.210 2010/04/21 16:45:55 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-firewall/iptables/ChangeLog,v 1.217 2010/05/25 13:20:56 pva Exp $
+
+  25 May 2010; Peter Volkov <pva@gentoo.org> iptables-1.4.8-r1.ebuild,
+  +files/iptables-1.4.8-build.patch:
+  Fix build issue, bug #321271, thank Eray Aslan for report.
+
+*iptables-1.4.8-r1 (24 May 2010)
+
+  24 May 2010; Peter Volkov <pva@gentoo.org> -iptables-1.4.8.ebuild,
+  +iptables-1.4.8-r1.ebuild:
+  Bump revision: upstream rereleased tarball to fix version number.
+
+  24 May 2010; <nixnut@gentoo.org> iptables-1.4.6.ebuild:
+  ppc stable #318531
+
+  23 May 2010; Raúl Porcel <armin76@gentoo.org> iptables-1.4.6.ebuild:
+  alpha/arm/ia64/m68k/s390/sh/sparc stable wrt #318531
+
+*iptables-1.4.8 (21 May 2010)
+
+  21 May 2010; Peter Volkov <pva@gentoo.org> +iptables-1.4.8.ebuild,
+  metadata.xml:
+  Version bump.
+
+  20 May 2010; Peter Volkov <pva@gentoo.org> iptables-1.4.6.ebuild:
+  amd64 stable, bug 318531.
+
+  17 May 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  iptables-1.4.6.ebuild:
+  x86 stable wrt bug #318531
 
   21 Apr 2010; Robin H. Johnson <robbat2@gentoo.org> iptables-1.4.7.ebuild:
   Bug #316369: install iptables-apply util as well.

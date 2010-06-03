@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-tv/xbmc/xbmc-9.11-r3.ebuild,v 1.4 2010/05/10 12:35:50 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-tv/xbmc/xbmc-9.11-r3.ebuild,v 1.6 2010/05/23 18:38:59 vapier Exp $
 
 EAPI="2"
 
@@ -107,7 +107,9 @@ src_unpack() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-libpng14.patch # 319113
+	has_version ">=media-libs/libpng-1.4" && epatch \
+		"${FILESDIR}"/${P}-libpng14.patch
+
 	epatch "${FILESDIR}"/${P}-wavpack.patch
 	epatch "${FILESDIR}"/${P}-jpeg-speedup.patch #300909
 	epatch "${FILESDIR}"/${P}-use-cdio-system-headers-on-non-win32.patch #303030, upstream: #8026
@@ -192,7 +194,7 @@ src_install() {
 	doins tools/Linux/xbmc.desktop
 	doicon tools/Linux/xbmc.png
 
-	dodoc README.linux known_issues.txt
+	dodoc README.linux
 	rm "${D}"/usr/share/xbmc/{README.linux,LICENSE.GPL,*.txt}
 }
 

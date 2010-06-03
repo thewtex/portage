@@ -1,0 +1,22 @@
+sys-libs/readline sys-libs/ncurses >=net-misc/curl-7.18.0 >=dev-libs/libxml2-2.7.6 >=net-libs/gnutls-1.0.25 sys-fs/sysfsutils sys-apps/util-linux >=net-analyzer/netcat6-1.0-r2 avahi? ( >=net-dns/avahi-0.6[dbus] ) caps? ( sys-libs/libcap-ng ) iscsi? ( sys-block/open-iscsi ) libvirtd? ( net-misc/bridge-utils ) lvm? ( >=sys-fs/lvm2-2.02.48-r2 ) nfs? ( net-fs/nfs-utils ) numa? ( sys-process/numactl ) openvz? ( sys-kernel/openvz-sources ) parted? ( >=sys-apps/parted-1.8 ) phyp? ( net-libs/libssh2 ) policykit? ( >=sys-auth/polkit-0.9 ) qemu? ( || ( app-emulation/qemu-kvm >=app-emulation/qemu-0.10.0 ) ) sasl? ( dev-libs/cyrus-sasl ) selinux? ( sys-libs/libselinux ) virtualbox? ( || ( >=app-emulation/virtualbox-ose-2.2.0 >=app-emulation/virtualbox-bin-2.2.0 ) ) xen? ( app-emulation/xen-tools app-emulation/xen ) udev? ( >=sys-fs/udev-145 >=x11-libs/libpciaccess-0.10.9 ) dev-util/pkgconfig nls? ( sys-devel/gettext ) >=app-admin/eselect-python-20091230 python? ( || ( =dev-lang/python-2.7* =dev-lang/python-2.6* =dev-lang/python-2.5* =dev-lang/python-2.4* ) )
+sys-libs/readline sys-libs/ncurses >=net-misc/curl-7.18.0 >=dev-libs/libxml2-2.7.6 >=net-libs/gnutls-1.0.25 sys-fs/sysfsutils sys-apps/util-linux >=net-analyzer/netcat6-1.0-r2 avahi? ( >=net-dns/avahi-0.6[dbus] ) caps? ( sys-libs/libcap-ng ) iscsi? ( sys-block/open-iscsi ) libvirtd? ( net-misc/bridge-utils ) lvm? ( >=sys-fs/lvm2-2.02.48-r2 ) nfs? ( net-fs/nfs-utils ) numa? ( sys-process/numactl ) openvz? ( sys-kernel/openvz-sources ) parted? ( >=sys-apps/parted-1.8 ) phyp? ( net-libs/libssh2 ) policykit? ( >=sys-auth/polkit-0.9 ) qemu? ( || ( app-emulation/qemu-kvm >=app-emulation/qemu-0.10.0 ) ) sasl? ( dev-libs/cyrus-sasl ) selinux? ( sys-libs/libselinux ) virtualbox? ( || ( >=app-emulation/virtualbox-ose-2.2.0 >=app-emulation/virtualbox-bin-2.2.0 ) ) xen? ( app-emulation/xen-tools app-emulation/xen ) udev? ( >=sys-fs/udev-145 >=x11-libs/libpciaccess-0.10.9 ) >=app-admin/eselect-python-20091230 python? ( || ( =dev-lang/python-2.7* =dev-lang/python-2.6* =dev-lang/python-2.5* =dev-lang/python-2.4* ) )
+0
+http://libvirt.org/sources/libvirt-0.8.1.tar.gz mirror://gentoo/libvirt-0.8.1-backports-1.tar.bz2
+test
+http://www.libvirt.org/
+LGPL-2.1
+C toolkit to manipulate virtual machines
+~amd64 ~x86
+eutils multilib portability python toolchain-funcs
+avahi caps iscsi +libvirtd lvm +lxc +network nfs nls numa openvz parted phyp policykit python qemu sasl selinux uml virtualbox xen udev
+
+
+
+2
+
+configure install postinst postrm preinst prepare setup test
+
+
+
+
+

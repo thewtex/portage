@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11535 2010/05/13 19:51:13 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11589 2010/06/01 21:28:54 spatz Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,105 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (29 May 2010)
+#  on behalf of QA team
+#
+# Maintainer needed, no reverse dependencies. Fails tests,
+# code has a strcpy() overflow that aborts with fortified
+# sources (gcc 4.5 for instance). See bug #278139 and 321983.
+#
+# Removal on 2010-07-28
+dev-util/awka
+
+# Markos Chandras <hwoarang@gentoo.org> (28 May 2010)
+# Old,unmaintained,dead upstream, doesn't build. Masked
+# for removal in 2010-06-28. Bug #316201
+x11-misc/lintar
+
+# Matti Bickel <mabi@gentoo.org> (27 May 2010)
+# Masked for testing, expect breakage at this point
+# Tracker is at #312775, feel free to report new problems
+# and make them block the tracker
+=dev-lang/php-5.3*
+
+# Michael Sterrett <mr_bones_@gentoo.org> (26 May 2010)
+# Masked for security bug #320955
+<games-simulation/openttd-1.0.1
+
+# Peter Volkov <pva@gentoo.org> (09 May 2010)
+# Masked for testing of upgrading path. PLEASE backup before upgrading. #281366
+=net-im/ejabberd-2.1*
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (26 May 2010)
+#  on behalf of QA team
+#
+# cl-smtp fails to fetch since at least September 2007
+# (bug #193627); cl-pop needs the former.
+#
+# Removal on 2010-07-25
+dev-lisp/cl-smtp
+dev-lisp/cl-pop
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (26 May 2010)
+#  on behalf of QA team
+#
+# Fails to build since at least November 2008, improper
+# dependencies over freetype, bug #247917.
+#
+# Removal on 2010-07-25
+media-video/w3cam
+
+# Markos Chandras <hwoarang@gentoo.org> (25 May 2010)
+# Masking live ebuild since source code is 
+# completely broken at the moment
+=media-sound/radiotray-9999
+
+# Andreas Proschofsky <suka@gentoo.org> (23 May 2010)
+# Mask release candidates
+>=app-office/openoffice-bin-3.2.1_rc1
+>=app-office/openoffice-3.2.1_rc1
+
+# Justin Lecher <jlec@gentoo.org> (22 May 2010)
+# Mask until all deps are fixed for bug 314053
+>=sci-chemistry/ccp4-6.1.3-r1
+>=sci-chemistry/ccp4-apps-6.1.3-r3
+>=sci-libs/ccp4-libs-6.1.3-r2
+
+# Luca Barbato <lu_zero@gentoo.org> (21 May 2010)
+# development release
+=dev-db/mongodb-1.5*
+
+# Alex Alexander <wired@gentoo.org> (20 May 2010)
+# development releases
+=www-client/uget-1.5.9*
+
+# Hans de Graaff <graaff@gentoo.org> (19 May 2010)
+# Obsolete dependencies for prawn which were never released
+# by upstream on their own. Newer versions are vendored into
+# dev-ruby/prawn-core and nothing in the tree depends on them.
+# Pending removal on 2010-06-19
+dev-ruby/pdf-inspector
+dev-ruby/ttfunk
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (18 May 2010)
+# Ebuild broken in many ways, not really updated, unneeded.
+# Pending removal 2010-06-18
+dev-ruby/nimage
+
+# Justin Lecher <jlec@gentoo.org> (16 May 2010)
+# Upstreams testing version
+# Added on request
+>=sci-chemistry/refmac-5.6
+
+# Torsten Veller <tove@gentoo.org> (15 May 2010)
+# Perl 5.12 masks:
+# - Mask dev-lang/perl-5.12.1 for testing
+=dev-lang/perl-5.12.1*
+# - Mask dev-perl/Data-Alias for removal
+#   It does not work with perl-5.12 and is
+#   not needed by any package
+dev-perl/Data-Alias
 
 # Ulrich Mueller <ulm@gentoo.org> (13 May 2010)
 # No longer needed virtual, masked for removal in 30 days, bug 319601.
@@ -115,10 +214,6 @@ sci-libs/libnc-dap
 # upstream is unresponsive.  Unfortunately, there is not a suitable
 # replacement.
 app-text/manedit
-
-# Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (25 Apr 2010)
-# Replaced by dev-python/numpy. Masked for deletion in 30 days (bug #181653).
-dev-python/numeric
 
 # Diego E. Pettenò <flameeyes@gentoo.org> (25 Apr 2010)
 #  on behalf of QA team <qa@gentoo.org
@@ -221,12 +316,6 @@ app-office/nostaples
 # Masking development kernels. Test it and report bugs upstream.
 =sys-kernel/openvz-sources-2.6.32*
 
-# Justin Lecher <jlec@gentoo.org> (22 Apr 2010)
-# Masked for removal
-# depends on sci-chemistry/pymol-0.99*, which doesn't work with recent
-# python, #269119
-sci-chemistry/pynmr
-
 # Torsten Veller <tove@gentoo.org> (20 Apr 2010)
 # Bundles a copy of libsqlite (#258464)
 # Tests fail (#294218)
@@ -243,10 +332,6 @@ dev-perl/Net-XWhois
 # The add-on/extension manager should now be used instead of the package
 # from the tree, bug 315999. Masked for removal in 30 days.
 www-plugins/noscript
-
-# Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (18 Apr 2010)
-# Included in Zope >=2.8.1. Masked for deletion in 30 days (bug #312501).
-net-zope/verbosesecurity
 
 # Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (16 Apr 2010)
 # Masked to enforce upgrade which looks like downgrade.
@@ -285,10 +370,6 @@ games-puzzle/xphotohunter
 games-puzzle/xpuyopuyo
 games-simulation/corewars
 games-strategy/xscorch
-
-# Christian Ruppert <idl0r@gentoo.org> (13 Apr 2010)
-# Masked for removal in 30 days due to HAL dependency, bug 313427.
-=app-laptop/batterymon-1.2.0
 
 # Bernard Cafarelli <voyageur@gentoo.org> (12 Apr 2010)
 # Mask until bug #314833 is fixed
@@ -333,10 +414,6 @@ dev-java/struts-legacy
 # No release since 2006
 # Masked for removal on 20100505
 games-strategy/castle-combat
-
-# Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (05 Apr 2010)
-# ctypes module is included in Python >=2.5. Masked for deletion in 30 days (bug #299264).
-dev-python/ctypes
 
 # Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (05 Apr 2010)
 # Mask misversioned ebuilds.
@@ -389,10 +466,6 @@ mail-filter/MailScanner
 # Torsten Veller <tove@gentoo.org> (14 Mar 2010)
 # Mask "End Of Life" versions
 <www-apps/bugzilla-3.2
-
-# Doug Goldstein <cardoe@gentoo.org> (11 Mar 2010)
-# mask due to bug #309001
-~app-arch/tar-1.23
 
 # <s4t4n@gentoo.org> (11 Mar 2010)
 # The following packages are not compatible with lm-sensors-3, upstream is unresponsive.
@@ -491,10 +564,6 @@ dev-perl/Class-XSAccessor-Array
 =x11-libs/libfm-0.1*
 =x11-misc/pcmanfm-0.9*
 
-# Diego E. Pettenò <flameeyes@gentoo.org> (19 Feb 2010)
-# Pre-releases
-=dev-ruby/pg-0.9.0_pre*
-
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (18 Feb 2010)
 # Mask prerelease versions
 =sys-boot/syslinux-4.00_pre*
@@ -507,11 +576,6 @@ dev-perl/Class-XSAccessor-Array
 # Mask pending removal on 2010-03-09. Upstream dead, open bug #227717,
 # alternatives exist (e.g. media-gfx/feh)
 x11-misc/bbrb
-
-# Michał Januszewski <spock@gentoo.org> (08 Feb 2010)
-# Masked until there is an unmasked OpenCL implementation in the tree.
-# (Currently only masked beta NVIDIA drivers provide libOpenCL.so)
-dev-python/pyopencl
 
 # Robin H. Johnson <robbat2@gentoo.org> (01 Feb 2010)
 # Upstream discontinued the split of -community and -enterprise specific
@@ -559,30 +623,11 @@ dev-ruby/activerecord-jdbc
 media-tv/vdr-dvd-scripts
 media-tv/vdrplugin-rebuild
 
-# Doug Goldstein <cardoe@gentoo.org> (18 Jan 2010)
-# masked for testing and development
-=media-tv/ivtv-utils-1.3.0-r2
-=media-tv/ivtv-utils-1.4.0
-
-# Diego E. Pettenò <flameeyes@gentoo.org> (11 Jan 2010)
-#  on behalf of QA team
-#
-# Fails to build since at least June 2009 (bug #274333),
-# no maintainer response.
-#
-# Removal on 2010-03-12
-net-misc/gfax
-
 # Patrick Lauer <patrick@gentoo.org> (09 Jan 2010)
 # Package has been unsplit, use net-analyzer/zabbix
 net-analyzer/zabbix-agent
 net-analyzer/zabbix-frontend
 net-analyzer/zabbix-server
-
-# Michał Januszewski <spock@gentoo.org> (08 Jan 2010)
-# Masked until CUDA 3.0 is officially released in a non-beta version.
-=dev-util/nvidia-cuda-toolkit-3*
-=dev-util/nvidia-cuda-sdk-3*
 
 # Olivier Crête <tester@gentoo.org> (07 Jan 2010)
 # Mask for removal. Replaced by net-libs/telepathy-farsight and farsight2
@@ -602,6 +647,8 @@ net-libs/libjingle
 # experimental features and accept a more unstable release.
 ~www-client/chromium-5.0.375.23
 ~www-client/chromium-5.0.396.0
+~www-client/chromium-6.0.401.1
+~www-client/chromium-6.0.408.1
 
 # Diego E. Pettenò <flameeyes@gentoo.org> (07 Jan 2010)
 #  on behalf of QA team
@@ -643,10 +690,6 @@ dev-ruby/test-unit
 x11-apps/ttmkfdir
 x11-apps/xfs
 x11-apps/xfsinfo
-
-# Diego E. Pettenò <flameeyes@gentoo.org> (08 Dec 2009)
-# Beta versions of sudo
-=app-admin/sudo-1.7.3_beta*
 
 # Joerg Bornkessel <hd_brummy@gentoo.org> (02 Dec 2009)
 # cvs ebuild vdr-xineliboutput-9999 masked for lifetime
@@ -744,10 +787,6 @@ sys-auth/pam_keystore
 # Markus Meier <maekke@gentoo.org> (03 Oct 2009)
 # mask libpano13 beta versions for testing
 >=media-libs/libpano13-2.9.15_beta3
-
-# Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (13 Sep 2009)
-# Masked to enforce upgrade which looks like downgrade.
-=dev-python/fabric-0.9a_p3
 
 # Peter Alfredsen <loki_val@gentoo.org> (09 Sep 2009)
 # Fails to build with newest mono, causing dependency
@@ -935,6 +974,7 @@ dev-util/w32api
 # Please read http://my.opera.com/desktopteam/blog/
 # for information about alpha releases
 =www-client/opera-10.54*
+=www-client/opera-10.60*
 
 # Peter Volkov <pva@gentoo.org> (16 Nov 2008)
 # The development branch, to be unmasked when out of beta by upstream.
@@ -1014,7 +1054,7 @@ sys-fs/redirfs
 # opensync svn ebuilds
 =app-pda/libsyncml-9999
 =app-pda/libopensync-9999
-=app-pda/msynctool-9999
+=app-pda/osynctool-9999
 =app-pda/libopensync-plugin-evolution2-9999
 =app-pda/libopensync-plugin-file-9999
 =app-pda/libopensync-plugin-gnokii-9999
@@ -1042,7 +1082,7 @@ sys-fs/redirfs
 
 # Stefan Cornelius <dercorny@gentoo.org> (7 Mar 2007)
 # Masking net-misc/xsupplicant due to security bug 154995
-net-misc/xsupplicant
+<net-misc/xsupplicant-2.2
 
 # Stefaan De Roeck <stefaan@gentoo.org> (09 Sep 2006)
 # 1.5.x is a development branch, people should test 1.4.x by default

@@ -1,9 +1,12 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/msgpack/msgpack-0.3.9.ebuild,v 1.1 2010/04/30 08:35:36 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/msgpack/msgpack-0.3.9.ebuild,v 1.3 2010/05/26 11:55:02 flameeyes Exp $
 
 EAPI="2"
-USE_RUBY="ruby18"
+
+# ruby19 → tests fail
+# jruby → uses a binary extension
+USE_RUBY="ruby18 ree18"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_TASK_TEST=""
@@ -20,23 +23,19 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-ruby_add_bdepend test virtual/ruby-test-unit
+ruby_add_bdepend "test? ( virtual/ruby-test-unit )"
 
 each_ruby_configure() {
-	pushd ext
-	${RUBY} extconf.rb || die "Configuration of extension failed."
-	popd
+	${RUBY} -Cext extconf.rb || die "Configuration of extension failed."
 }
 
 each_ruby_compile() {
-	pushd ext
-	emake || die
-	popd
+	emake -Cext || die
 
 	mkdir lib || die "Unable to make lib directory."
 	cp ext/msgpack.so lib/ || die "Unable to install msgpack library."
 }
 
 each_ruby_test() {
-	${RUBY} test/msgpack_test.rb
+	${RUBY} test/msgpack_test.rb || die "tests failed"
 }

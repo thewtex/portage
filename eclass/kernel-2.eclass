@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/kernel-2.eclass,v 1.233 2010/05/02 11:05:28 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/kernel-2.eclass,v 1.235 2010/05/28 20:59:59 robbat2 Exp $
 
 # Description: kernel.eclass rewrite for a clean base regarding the 2.6
 #              series of kernel with back-compatibility for 2.4
@@ -86,7 +86,7 @@ HOMEPAGE="http://www.kernel.org/ http://www.gentoo.org/ ${HOMEPAGE}"
 
 # This is the latest KV_PATCH of the deblob tool available from the
 # libre-sources upstream.
-[[ -z ${DEBLOB_MAX_VERSION} ]] && DEBLOB_MAX_VERSION=33
+[[ -z ${DEBLOB_MAX_VERSION} ]] && DEBLOB_MAX_VERSION=34
 
 # No need to run scanelf/strip on kernel sources/headers (bug #134453).
 RESTRICT="binchecks strip"
@@ -158,6 +158,15 @@ detect_version() {
 		KV_PATCH=$(get_version_component_range 3- ${OKV})
 	fi
 	KV_PATCH=${KV_PATCH/[-_]*}
+	
+	local v n=0 missing
+	for v in CKV OKV KV_{MAJOR,MINOR,PATCH} ; do 
+		[[ -z ${!v} ]] && n=1 && missing="${missing}${v} "; 
+	done
+	[[ $n -eq 1 ]] && \
+		eerror "Missing variables: ${missing}" && \
+		die "Failed to extract kernel version (try explicit CKV in ebuild)!" 
+	unset v n missing
 
 	KERNEL_URI="mirror://kernel/linux/kernel/v${KV_MAJOR}.${KV_MINOR}/linux-${OKV}.tar.bz2"
 
@@ -165,7 +174,10 @@ detect_version() {
 	RELEASE=${RELEASE/_beta}
 	RELEASE=${RELEASE/_rc/-rc}
 	RELEASE=${RELEASE/_pre/-pre}
-	kernel_is ge 2 6 && RELEASE=${RELEASE/-pre/-git}
+	# We cannot trivally call kernel_is here, because it calls us to detect the
+	# version
+	#kernel_is ge 2 6 && RELEASE=${RELEASE/-pre/-git}
+	[ $(($KV_MAJOR * 1000 + $KV_MINOR)) -ge 2006 ] && RELEASE=${RELEASE/-pre/-git}
 	RELEASETYPE=${RELEASE//[0-9]}
 
 	# Now we know that RELEASE is the -rc/-git

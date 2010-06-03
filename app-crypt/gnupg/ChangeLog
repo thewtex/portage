@@ -1,6 +1,22 @@
 # ChangeLog for app-crypt/gnupg
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/gnupg/ChangeLog,v 1.368 2010/04/02 22:38:22 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/gnupg/ChangeLog,v 1.373 2010/05/30 20:01:14 grobian Exp $
+
+  30 May 2010; Fabian Groffen <grobian@gentoo.org> gnupg-2.0.15.ebuild:
+  Marked ~sparc-solaris, ~sparc64-solaris, ~x64-macos
+
+  30 May 2010; Fabian Groffen <grobian@gentoo.org> gnupg-2.0.15.ebuild:
+  Disable symcryptrun on Solaris, there is no openpty out there
+
+  26 May 2010; Markos Chandras <hwoarang@gentoo.org> gnupg-2.0.15.ebuild:
+  Stable on amd64 wrt bug #320037
+
+  24 May 2010; <nixnut@gentoo.org> gnupg-2.0.15.ebuild:
+  ppc stable #320037
+
+  19 May 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  gnupg-2.0.15.ebuild:
+  Fix building with "static" USE flag (bug #316065).
 
 *gnupg-1.4.10-r1 (02 Apr 2010)
 

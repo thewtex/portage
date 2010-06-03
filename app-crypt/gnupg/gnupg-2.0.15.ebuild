@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/gnupg/gnupg-2.0.15.ebuild,v 1.2 2010/04/01 21:28:21 abcd Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/gnupg/gnupg-2.0.15.ebuild,v 1.7 2010/05/30 20:01:14 grobian Exp $
 
 EAPI="3"
 
@@ -13,14 +13,15 @@ SRC_URI="ftp://ftp.gnupg.org/gcrypt/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~x64-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~mips ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~x64-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="adns bzip2 caps doc ldap nls openct pcsc-lite static selinux smartcard"
 
 COMMON_DEPEND_LIBS="
 	>=dev-libs/pth-1.3.7
+	>=dev-libs/libassuan-2
 	>=dev-libs/libgcrypt-1.4
-	>=dev-libs/libksba-1.0.2
 	>=dev-libs/libgpg-error-1.7
+	>=dev-libs/libksba-1.0.2
 	>=net-misc/curl-7.10
 	adns? ( >=net-libs/adns-1.4 )
 	bzip2? ( app-arch/bzip2 )
@@ -33,7 +34,7 @@ COMMON_DEPEND_BINS="app-crypt/pinentry"
 # existence of bins are checked during configure
 DEPEND="${COMMON_DEPEND_LIBS}
 	${COMMON_DEPEND_BINS}
-	>=dev-libs/libassuan-2
+	static? ( >=dev-libs/libassuan-2[static-libs] )
 	nls? ( sys-devel/gettext )
 	doc? ( sys-apps/texinfo )"
 
@@ -53,13 +54,13 @@ src_configure() {
 
 	econf \
 		--docdir="${EPREFIX}/usr/share/doc/${PF}" \
-		--enable-symcryptrun \
 		--enable-gpg \
 		--enable-gpgsm \
 		--enable-agent \
 		$(use_with adns) \
 		$(use_enable bzip2) \
 		$(use_enable smartcard scdaemon) \
+		$(use_enable !elibc_SunOS symcryptrun) \
 		$(use_enable nls) \
 		$(use_enable ldap) \
 		$(use_with caps capabilities) \

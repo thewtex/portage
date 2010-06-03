@@ -1,6 +1,36 @@
 # ChangeLog for dev-lang/swi-prolog
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/swi-prolog/ChangeLog,v 1.219 2010/05/07 20:44:10 keri Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/swi-prolog/ChangeLog,v 1.226 2010/06/02 08:47:46 keri Exp $
+
+  02 Jun 2010; <keri@gentoo.org> swi-prolog-5.10.0.ebuild,
+  swi-prolog-5.11.1.ebuild:
+  Use 32-bit compliant clib-cgi testsuite
+
+  01 Jun 2010; <keri@gentoo.org> swi-prolog-5.11.1.ebuild:
+  Support protobufs module on big endian machines
+
+  27 May 2010; <keri@gentoo.org> -swi-prolog-5.6.64.ebuild,
+  -swi-prolog-5.8.0.ebuild, -swi-prolog-5.8.1.ebuild,
+  -swi-prolog-5.8.2.ebuild, -swi-prolog-5.9.7.ebuild,
+  -swi-prolog-5.9.9.ebuild, -swi-prolog-5.9.10.ebuild,
+  -swi-prolog-5.9.11.ebuild:
+  Remove old versions
+
+  26 May 2010; Pacho Ramos <pacho@gentoo.org> swi-prolog-5.8.3.ebuild:
+  stable amd64, bug 305963
+
+  22 May 2010; <keri@gentoo.org> swi-prolog-5.8.3.ebuild,
+  swi-prolog-5.10.0.ebuild, swi-prolog-5.11.1.ebuild:
+  Do not use bounded arithmetic check in set_get_array_element_long_2 JPL
+  unit test
+
+  21 May 2010; <keri@gentoo.org> swi-prolog-5.11.1.ebuild:
+  Use iso_latin_1 encoding in semweb typed testsuite
+
+*swi-prolog-5.11.1 (21 May 2010)
+
+  21 May 2010; <keri@gentoo.org> +swi-prolog-5.11.1.ebuild:
+  Bump -5.11 development version
 
 *swi-prolog-5.11.0 (07 May 2010)
 

@@ -1,6 +1,60 @@
 # ChangeLog for www-client/opera
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/opera/ChangeLog,v 1.474 2010/05/12 14:20:31 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/opera/ChangeLog,v 1.483 2010/05/31 14:32:43 jer Exp $
+
+*opera-10.60_pre6344 (31 May 2010)
+
+  31 May 2010; Jeroen Roovers <jer@gentoo.org> +opera-10.60_pre6344.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2010/05/31/opera-10-60-alpha-1>.
+
+*opera-10.54_pre6340-r1 (26 May 2010)
+*opera-10.53_pre6330-r2 (26 May 2010)
+
+  26 May 2010; Jeroen Roovers <jer@gentoo.org>
+  -opera-10.53_pre6330-r1.ebuild, +opera-10.53_pre6330-r2.ebuild,
+  -opera-10.54_pre6336-r1.ebuild, -opera-10.54_pre6340.ebuild,
+  +opera-10.54_pre6340-r1.ebuild:
+  Set proper libdir in /usr/share/opera/defaults/pluginpath.ini thanks to
+  Henning Schild (bug #321471).
+
+*opera-10.54_pre6340 (21 May 2010)
+
+  21 May 2010; Jeroen Roovers <jer@gentoo.org> +opera-10.54_pre6340.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2010/05/21/fonts-usability-widgets-o
+  h-my>.
+
+  20 May 2010; Jeroen Roovers <jer@gentoo.org>
+  opera-10.54_pre6336-r1.ebuild, metadata.xml:
+  Improve USE flag description, make none of gtk/kde the default.
+
+  20 May 2010; Jeroen Roovers <jer@gentoo.org>
+  opera-10.54_pre6336-r1.ebuild, metadata.xml:
+  Set better USE flag descriptions than the default ones. Back from gnome ->
+  gtk and enable USE=gtk by default for plugin support.
+
+  20 May 2010; Jeroen Roovers <jer@gentoo.org>
+  opera-10.54_pre6336-r1.ebuild:
+  USE = gtk -> gnome (bug #320513).
+
+  20 May 2010; Jeroen Roovers <jer@gentoo.org>
+  opera-10.54_pre6336-r1.ebuild:
+  Do more multilib stuff (bug #318725). Split RDEPENDs according to
+  toolkit/desktop environment of choice (bug #320513).
+
+  18 May 2010; Jeroen Roovers <jer@gentoo.org>
+  opera-10.53_pre6330-r1.ebuild, opera-10.54_pre6336-r1.ebuild, files/opera:
+  Fix libdir in opera script too.
+
+*opera-10.54_pre6336-r1 (18 May 2010)
+*opera-10.53_pre6330-r1 (18 May 2010)
+
+  18 May 2010; Jeroen Roovers <jer@gentoo.org>
+  +opera-10.53_pre6330-r1.ebuild, -opera-10.54_pre6331.ebuild,
+  -opera-10.54_pre6333.ebuild, -opera-10.54_pre6335.ebuild,
+  +opera-10.54_pre6336-r1.ebuild:
+  Use multilib (bug #319861).
 
 *opera-10.54_pre6336 (12 May 2010)
 

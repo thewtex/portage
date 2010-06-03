@@ -1,10 +1,10 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/vtk/vtk-5.4.2-r1.ebuild,v 1.8 2010/04/29 01:15:58 arfrever Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/vtk/vtk-5.4.2-r1.ebuild,v 1.11 2010/05/28 11:51:24 jlec Exp $
 
-EAPI="2"
-
+EAPI="3"
 PYTHON_DEPEND="python? 2"
+
 inherit cmake-utils eutils flag-o-matic java-pkg-opt-2 python qt4 versionator toolchain-funcs
 
 # Short package version
@@ -24,14 +24,14 @@ RDEPEND="mpi? ( || (
 					sys-cluster/openmpi
 					sys-cluster/lam-mpi
 					sys-cluster/mpich2[cxx] ) )
-	python? ( >=dev-lang/python-2.0 )
 	cg? ( media-gfx/nvidia-cg-toolkit )
 	tcl? ( >=dev-lang/tcl-8.2.3 )
 	tk? ( >=dev-lang/tk-8.2.3 )
 	java? ( >=virtual/jre-1.5 )
 	qt4? ( x11-libs/qt-core:4
 			x11-libs/qt-opengl:4
-			x11-libs/qt-gui:4 )
+			x11-libs/qt-gui:4
+			x11-libs/qt-sql )
 	examples? ( x11-libs/qt-core:4[qt3support]
 			x11-libs/qt-gui:4[qt3support] )
 	dev-libs/expat
@@ -59,7 +59,6 @@ pkg_setup() {
 	einfo "using parallel make. Hence, if you experience a build"
 	einfo "failure please try re-emerging with MAKEOPTS=\"-j1\" first."
 	echo
-	epause 5
 
 	java-pkg-opt-2_pkg_setup
 
@@ -245,4 +244,13 @@ pkg_postinst() {
 	einfo "if you want to use the slotting capabilities" 
 	einfo "of this package"
 	einfo
+	if use python; then
+		python_mod_optimize vtk
+	fi
+}
+
+pkg_postrm() {
+	if use python; then
+		python_mod_cleanup vtk
+	fi
 }

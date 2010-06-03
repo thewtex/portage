@@ -1,6 +1,40 @@
 # ChangeLog for dev-lang/php
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/php/ChangeLog,v 1.376 2010/03/29 21:59:43 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/php/ChangeLog,v 1.382 2010/06/01 16:17:05 mabi Exp $
+
+  01 Jun 2010; <mabi@gentoo.org> -files/eblits/common-v2.eblit,
+  -files/eblits/src_compile-v2.eblit, -files/eblits/src_install-v2.eblit,
+  files/eblits/src_prepare-v1.eblit, php-5.3.2.ebuild, metadata.xml:
+  align more closely with original php-5.3 work from hoffie@gentoo.org, fix
+  missing mbstring use description, remove unneeded -v2 eblits, remove
+  dangling mcve references
+
+  30 May 2010; <mabi@gentoo.org> -files/20php4-envd, php-5.3.2.ebuild,
+  -files/php4-ldvs:
+  fix iodbc USE dep (bug #285419), remove unneeded php4 files
+
+  28 May 2010; <mabi@gentoo.org> php-5.3.2.ebuild:
+  add flex dependency (bug #221357)
+
+  28 May 2010; <mabi@gentoo.org> files/eblits/src_prepare-v1.eblit:
+  use portable find command (bug #321781)
+
+*php-5.3.2 (27 May 2010)
+
+  27 May 2010; <mabi@gentoo.org> files/70_mod_php5_concurr.conf-apache2,
+  files/70_mod_php5.conf-apache2, +files/eblits/common-v1.eblit,
+  +files/eblits/common-v2.eblit, +files/eblits/pkg_postinst-v1.eblit,
+  +files/eblits/pkg_setup-v1.eblit, +files/eblits/src_compile-v1.eblit,
+  +files/eblits/src_compile-v2.eblit, +files/eblits/src_configure-v1.eblit,
+  +files/eblits/src_install-v1.eblit, +files/eblits/src_install-v2.eblit,
+  +files/eblits/src_prepare-v1.eblit, +files/eblits/src_test-v1.eblit,
+  +php-5.3.2.ebuild:
+  version bump (bug #274512, #312775); see
+  http://www.php.net/ChangeLog-5.php#5.3.2 for a list of changes and the
+  migration guide for an update from 5.2:
+  http://www.php.net/manual/en/migration53.php; expect more bumps as we fix
+  open bugs
+  thanks to GiDis and olemarkus for providing patches and a lot of testing
 
   29 Mar 2010; Markus Meier <maekke@gentoo.org> php-5.2.13.ebuild:
   amd64 stable, bug #306939

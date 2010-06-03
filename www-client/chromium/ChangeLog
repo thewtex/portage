@@ -1,6 +1,52 @@
 # ChangeLog for www-client/chromium
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/ChangeLog,v 1.98 2010/05/11 12:17:26 tove Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/ChangeLog,v 1.106 2010/06/01 20:22:14 voyageur Exp $
+
+  01 Jun 2010; Bernard Cafarelli <voyageur@gentoo.org> chromium-9999.ebuild:
+  Depend on live ffmpeg to fix compilation for now, bug #321159
+
+  29 May 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-5.0.375.55.ebuild:
+  Also disable tcmalloc for 5.0.x.x versions, see bug #320419. This improves
+  our compatibility.
+
+  26 May 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-5.0.375.53.ebuild, chromium-5.0.375.55.ebuild,
+  chromium-6.0.401.1.ebuild, chromium-6.0.408.1.ebuild,
+  chromium-9999.ebuild:
+  Latest stable ffmpeg is sufficient to compile and run chromium. Adjusted
+  the dependency. This will also make chromium easier to stabilize.
+
+*chromium-5.0.375.55 (25 May 2010)
+
+  25 May 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-5.0.375.38.ebuild, +chromium-5.0.375.55.ebuild:
+  Version bump for stable channel release. Remove old.
+
+*chromium-5.0.375.53 (22 May 2010)
+
+  22 May 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -files/chromium-drop_sse2.patch, -chromium-5.0.375.29.ebuild,
+  +chromium-5.0.375.53.ebuild,
+  -files/chromium-supported-media-mime-types.patch:
+  Version bump for beta channel release. Remove old.
+
+*chromium-6.0.408.1 (21 May 2010)
+
+  21 May 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-5.0.396.0.ebuild, +chromium-6.0.408.1.ebuild,
+  chromium-9999.ebuild:
+  Version bump for dev channel release. Fix bug #319783 by Richard
+  <shiningarcanine@gmail.com>. Fix bug #320145 by Tomas Racek
+  <racek.t@seznam.cz>. Fix bug #320419 by fkhp <fkhp101@tom.com>, used
+  solution by Evan Teran <eteran@alum.rit.edu>. Remove old.
+
+*chromium-6.0.401.1 (14 May 2010)
+
+  14 May 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +chromium-6.0.401.1.ebuild, chromium-9999.ebuild:
+  Version bump for dev channel release. Fixes bug #318969 by Petr Gregor
+  <p.gregy@gmail.com>. Fixes bug #319431 by Auke Booij <auke@tulcod.com>.
 
 *chromium-5.0.375.38 (11 May 2010)
 

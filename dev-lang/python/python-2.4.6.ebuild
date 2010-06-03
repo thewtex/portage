@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/python/python-2.4.6.ebuild,v 1.35 2010/05/10 18:44:05 arfrever Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/python/python-2.4.6.ebuild,v 1.39 2010/05/25 17:09:38 arfrever Exp $
 
 EAPI="1"
 
@@ -48,6 +48,8 @@ PDEPEND="app-admin/python-updater"
 PROVIDE="virtual/python"
 
 pkg_setup() {
+	python_pkg_setup
+
 	if use berkdb; then
 		ewarn "\"bsddb\" module is out-of-date and no longer maintained inside dev-lang/python. It has"
 		ewarn "been additionally removed in Python 3. You should use external, still maintained \"bsddb3\""
@@ -194,7 +196,8 @@ src_test() {
 	done
 
 	# Rerun failed tests in verbose mode (regrtest -w).
-	EXTRATESTOPTS="-w" make test || die "make test failed"
+	EXTRATESTOPTS="-w" emake test
+	local result="$?"
 
 	for test in ${skip_tests}; do
 		mv "${T}/test_${test}.py" "${S}/Lib/test/test_${test}.py"
@@ -205,17 +208,22 @@ src_test() {
 		elog "test_${test}.py"
 	done
 
-	elog "If you'd like to run them, you may:"
+	elog "If you would like to run them, you may:"
 	elog "cd '${EPREFIX}$(python_get_libdir)/test'"
 	elog "and run the tests separately."
 
 	python_disable_pyc
+
+	if [[ "${result}" -ne 0 ]]; then
+		die "emake test failed"
+	fi
 }
 
 src_install() {
 	[[ -z "${ED}" ]] && ED="${D%/}${EPREFIX}/"
 
 	emake DESTDIR="${D}" altinstall maninstall || die "emake altinstall maninstall failed"
+	python_clean_installation_image -q
 
 	# Install our own custom python-config
 	exeinto /usr/bin
@@ -263,7 +271,7 @@ pkg_preinst() {
 }
 
 eselect_python_update() {
-	local eselect_python_options=
+	local eselect_python_options
 	[[ "$(eselect python show)" == "python2."* ]] && eselect_python_options="--python2"
 
 	# Create python2 symlink.
@@ -276,7 +284,7 @@ pkg_postinst() {
 	eselect_python_update
 
 	# Python 2.4 partially doesn't respect $(get_libdir).
-	python_mod_optimize -x "(site-packages|test)" /usr/lib/python${SLOT}
+	python_mod_optimize -f -x "/(site-packages|test|tests)/" /usr/lib/python${SLOT}
 
 	if [[ "${python_updater_warning}" == "1" ]]; then
 		ewarn

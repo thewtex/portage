@@ -14,9 +14,6 @@ HOMEPAGE="http://pyjs.org"
 if [ $PV = "9999" ]; then
 	inherit subversion
 	ESVN_REPO_URI="https://${PN}.svn.sourceforge.net/svnroot/${PN}/trunk"
-elif [ $PV = "0.7.9999" ]; then # QA: live version of a tag
-	inherit subversion
-	ESVN_REPO_URI="https://${PN}.svn.sourceforge.net/svnroot/${PN}/tags/release_0_7pre1"
 elif [ $PV = "0.6.9999" ]; then
 	inherit subversion
 	ESVN_REPO_URI="https://${PN}.svn.sourceforge.net/svnroot/${PN}/tags/release_0_6"
@@ -46,7 +43,14 @@ src_install() {
 	distutils_src_install
 
 	dobin bin/pyjsbuild bin/pyjscompile
-	# doman debian/pyjsbuild.1 # QA: Doesn't exist in 0.7 branch
+
+	if [ $PV = "9999" ] || [ $PV = "0.7" ]; then
+		doman pyjs/src/pyjs/pyjsbuild.1
+	elif [ $PV = "0.6" ] || [ $PV = "0.6.9999" ]; then
+		doman debian/pyjsbuild.1
+	fi
+
+	dodoc CHANGELOG
 	use doc && dohtml -r doc/*
 }
 

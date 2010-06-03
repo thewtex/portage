@@ -1,5 +1,5 @@
->=x11-wm/fvwm-2.5.8 gnome? ( media-gfx/imagemagick )
-x11-wm/fvwm
+>=x11-wm/fvwm-2.5.8 gnome? ( || ( media-gfx/imagemagick media-gfx/graphicsmagick[imagemagick] ) ) || ( =sys-devel/automake-1.11* =sys-devel/automake-1.10* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b
+>=x11-wm/fvwm-2.5.8
 0
 mirror://sourceforge/fvwm-themes/fvwm-themes-0.7.0.tar.bz2
 
@@ -7,14 +7,14 @@ http://fvwm-themes.sourceforge.net/
 GPL-2
 A configuration framework for the fvwm window manager
 alpha amd64 ia64 ppc ppc64 sparc x86
-eutils multilib portability toolchain-funcs
+autotools eutils libtool multilib portability toolchain-funcs
 gnome
 
 
 
+2
 
-
-compile install postinst unpack
+configure install postinst prepare
 
 
 

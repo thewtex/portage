@@ -1,6 +1,39 @@
 # ChangeLog for media-video/vlc
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/vlc/ChangeLog,v 1.581 2010/05/10 05:09:48 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/vlc/ChangeLog,v 1.587 2010/05/25 12:22:41 aballier Exp $
+
+*vlc-1.1.0_rc (25 May 2010)
+
+  25 May 2010; Alexis Ballier <aballier@gentoo.org> -vlc-1.1.0_pre4.ebuild,
+  +vlc-1.1.0_rc.ebuild:
+  bump to rc
+
+  25 May 2010; Alexis Ballier <aballier@gentoo.org> vlc-1.1.9999.ebuild,
+  vlc-9999.ebuild:
+  Pulseaudio does not require X but we need to have the X useflag enabled if
+  it is enabled on pulseaudio
+
+  19 May 2010; Alexis Ballier <aballier@gentoo.org> vlc-1.1.0_pre4.ebuild,
+  vlc-1.1.9999.ebuild, vlc-9999.ebuild:
+  mtp 1.0.0 is required by the mtp plugin, bug #319815 by Nikoli
+  <nikoli@lavabit.com>
+
+  19 May 2010; Alexis Ballier <aballier@gentoo.org> vlc-1.0.6.ebuild,
+  vlc-1.0.9999.ebuild, vlc-1.1.0_pre4.ebuild, vlc-1.1.9999.ebuild,
+  vlc-9999.ebuild:
+  pulseaudio requires libX11, bug #319003 by Tobias Jakobi
+  <liquid.acid@gmx.net>
+
+  15 May 2010; Alexis Ballier <aballier@gentoo.org> vlc-1.1.0_pre4.ebuild,
+  vlc-1.1.9999.ebuild, vlc-9999.ebuild, metadata.xml:
+  Add vaapi useflag and support, by Frank Richter <res@crystalspace3d.org>,
+  bug #317319
+
+  14 May 2010; Alexis Ballier <aballier@gentoo.org> vlc-1.0.6.ebuild,
+  vlc-1.0.9999.ebuild, vlc-1.1.0_pre4.ebuild, vlc-1.1.9999.ebuild,
+  vlc-9999.ebuild:
+  Remove useless dvdplay dep. by Matt Michalowski <me@mattm.id.au>, bug
+  #319477
 
 *vlc-1.1.0_pre4 (10 May 2010)
 

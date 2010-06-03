@@ -1,6 +1,27 @@
 # ChangeLog for sys-apps/parted
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/parted/ChangeLog,v 1.143 2010/05/11 06:30:22 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/parted/ChangeLog,v 1.149 2010/05/31 01:04:37 jer Exp $
+
+  31 May 2010; Jeroen Roovers <jer@gentoo.org> parted-2.3.ebuild:
+  Does not work with automake-1.10.3 (bug #322019).
+
+*parted-2.3 (29 May 2010)
+
+  29 May 2010; Jeroen Roovers <jer@gentoo.org> +parted-2.3.ebuild:
+  Version bump.
+
+  20 May 2010; Jeroen Roovers <jer@gentoo.org> parted-2.2.ebuild:
+  Reverting x86 stabilisation (bug #316453).
+
+  18 May 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> parted-2.2.ebuild:
+  x86 stable wrt bug #316453
+
+  17 May 2010; Jeroen Roovers <jer@gentoo.org> -parted-2.1.ebuild,
+  +parted-2.2.ebuild:
+  Reinstate 2.2.
+
+  17 May 2010; Jeroen Roovers <jer@gentoo.org> parted-2.2.ebuild:
+  Run test suite only if debugging is enabled.
 
   11 May 2010; Jeroen Roovers <jer@gentoo.org> metadata.xml:
   Explain USE=+debug very specifically (bug #304231).

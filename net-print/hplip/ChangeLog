@@ -1,6 +1,27 @@
 # ChangeLog for net-print/hplip
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-print/hplip/ChangeLog,v 1.158 2010/05/04 19:30:24 billie Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-print/hplip/ChangeLog,v 1.163 2010/05/30 18:58:18 billie Exp $
+
+  30 May 2010; Daniel Pielmeier <billie@gentoo.org>
+  files/hplip-3.10.2-plugin.patch:
+  Update plugin patch as ~arch patch does not seem to like it.
+
+  27 May 2010; Daniel Pielmeier <billie@gentoo.org>
+  files/hplip-3.10.2-plugin.patch:
+  Use upstream patch to fix bug #274538.
+
+  19 May 2010; Daniel Pielmeier <billie@gentoo.org>
+  files/hplip-3.10.5-udev-attrs.patch:
+  Patch using C locale. Don't know if this is important.
+
+  19 May 2010; Daniel Pielmeier <billie@gentoo.org>
+  +files/hplip-3.10.5-udev-attrs.patch:
+  Add missing patch. Fixes bug #320637. Thanks Richard for reporting.
+
+*hplip-3.10.5 (19 May 2010)
+
+  19 May 2010; Daniel Pielmeier <billie@gentoo.org> +hplip-3.10.5.ebuild:
+  Version bump. Fix doc installation.
 
   04 May 2010; Daniel Pielmeier <billie@gentoo.org> hplip-3.9.12-r1.ebuild,
   hplip-3.10.2-r4.ebuild, metadata.xml:

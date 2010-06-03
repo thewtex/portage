@@ -1,6 +1,6 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/luasec/luasec-0.4.ebuild,v 1.2 2010/05/27 12:03:45 djc Exp $
 
 EAPI=2
 
@@ -24,13 +24,11 @@ DEPEND="${RDEPEND}
 src_prepare() {
 	sed -i -e "s#^LUAPATH=.*#LUAPATH=$(pkg-config --variable INSTALL_LMOD lua)#" "${S}/Makefile"
 	sed -i -e "s#^LUACPATH=.*#LUACPATH=$(pkg-config --variable INSTALL_CMOD lua)#" "${S}/Makefile"
-
 	epatch "${FILESDIR}/${P}_Makefile.patch"
 }
 
 src_compile() {
 	append-flags -fPIC
-
 	emake \
 		CFLAGS="${CFLAGS}" \
 		LDFLAGS="${LDFLAGS}" \
@@ -41,5 +39,5 @@ src_compile() {
 }
 
 src_install() {
-	make DESTDIR="${D}" install || die "Install failed"
+	emake DESTDIR="${D}" install || die "Install failed"
 }

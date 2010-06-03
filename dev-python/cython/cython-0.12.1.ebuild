@@ -1,11 +1,11 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/cython/cython-0.12.1.ebuild,v 1.4 2010/04/02 15:38:24 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/cython/cython-0.12.1.ebuild,v 1.6 2010/05/22 21:03:17 arfrever Exp $
 
-EAPI="2"
+EAPI="3"
 SUPPORT_PYTHON_ABIS="1"
 
-inherit distutils
+inherit distutils flag-o-matic
 
 MY_PN="Cython"
 MY_P="${MY_PN}-${PV/_/.}"
@@ -17,7 +17,7 @@ SRC_URI="http://pypi.python.org/packages/source/${MY_PN:0:1}/${MY_PN}/${MY_P}.ta
 
 LICENSE="PSF-2.4"
 SLOT="0"
-KEYWORDS="~amd64 ~arm hppa ~ia64 ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x64-solaris ~x86-solaris"
+KEYWORDS="amd64 ~arm hppa ~ia64 ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x64-solaris ~x86-solaris"
 IUSE="doc examples"
 
 DEPEND=""
@@ -25,15 +25,16 @@ RDEPEND=""
 
 S="${WORKDIR}/${MY_P}"
 
-PYTHON_MODNAME="${MY_PN} pyximport"
 DOCS="ToDo.txt USAGE.txt"
+PYTHON_MODNAME="Cython pyximport"
+
+pkg_setup() {
+	python_pkg_setup
+	append-flags -fno-strict-aliasing
+}
 
 src_test() {
 	testing() {
-		# Tests fail with Python 3 due to bug in Python.
-		# http://bugs.python.org/issue7173
-		[[ "${PYTHON_ABI}" == 3.* ]] && return
-
 		rm -fr BUILD
 		# Tests sometimes hang with forking enabled.
 		"$(PYTHON)" runtests.py --no-fork -vv

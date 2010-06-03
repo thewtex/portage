@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/enthoughtbase/enthoughtbase-3.0.3.ebuild,v 1.6 2010/02/28 10:47:17 arfrever Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/enthoughtbase/enthoughtbase-3.0.3.ebuild,v 1.8 2010/06/01 16:56:11 arfrever Exp $
 
 EAPI="2"
 SUPPORT_PYTHON_ABIS="1"

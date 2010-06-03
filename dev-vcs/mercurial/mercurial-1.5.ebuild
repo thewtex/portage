@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-vcs/mercurial/mercurial-1.5.ebuild,v 1.4 2010/04/16 15:24:46 ranger Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-vcs/mercurial/mercurial-1.5.ebuild,v 1.6 2010/06/01 16:35:30 djc Exp $
 
 EAPI=2
 
@@ -12,7 +12,7 @@ SRC_URI="http://mercurial.selenic.com/release/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm hppa ~ia64 ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 IUSE="bugzilla emacs gpg test tk zsh-completion"
 
 CDEPEND=">=dev-lang/python-2.4[threads]"
@@ -95,6 +95,9 @@ src_test() {
 		rm -f test-lock-badness		# Test is broken when run as root
 		rm -f test-permissions		# Test is broken when run as root
 		rm -f test-pull-permission	# Test is broken when run as root
+		rm -f test-clone-failure
+		rm -f test-journal-exists
+		rm -f test-repair-strip
 	fi
 	local testdir="${T}/tests"
 	rm -rf "${testdir}"

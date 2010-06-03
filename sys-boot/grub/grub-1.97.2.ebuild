@@ -15,7 +15,8 @@ KEYWORDS="amd64 x86"
 IUSE="custom-cflags debug static mkfont +binfont"
 
 DEPEND=">=sys-libs/ncurses-5.2-r5 dev-libs/lzo mkfont? ( >=media-libs/freetype-2 )"
-RDEPEND="sys-apps/coreboot ${RDEPEND}"
+RDEPEND="${RDEPEND}"
+PDEPEND="sys-boot/boot-update"
 PROVIDE="virtual/bootloader"
 
 export STRIP_MASK="*/grub/*/*.mod"

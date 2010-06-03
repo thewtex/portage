@@ -1,6 +1,28 @@
 # ChangeLog for sys-kernel/zen-sources
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-kernel/zen-sources/ChangeLog,v 1.33 2010/04/28 01:32:45 wired Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-kernel/zen-sources/ChangeLog,v 1.35 2010/05/25 23:15:11 hwoarang Exp $
+
+*zen-sources-2.6.33_p2-r1 (25 May 2010)
+*zen-sources-2.6.32_p7-r1 (25 May 2010)
+
+  25 May 2010; Markos Chandras <hwoarang@gentoo.org>
+  +files/powernow-k8-family10-model10_fix.patch,
+  +zen-sources-2.6.32_p7-r1.ebuild, +zen-sources-2.6.33_p2-r1.ebuild:
+  Add urgent powernow-k8 patch which fixes turbo clock behavior for the new
+  Phenom II x6 processors. Please visit
+  http://git.kernel.org/?p=linux/kernel/git/stable/linux-2.6.33.y.git;a=comm
+  it;h=1ff21ff30e324d2e994a54baf9dc3df003985b60 for details
+
+  18 May 2010; Alex Alexander <wired@gentoo.org>
+  -zen-sources-2.6.31_p8.ebuild, -zen-sources-2.6.31_p9.ebuild,
+  -zen-sources-2.6.31_p10.ebuild, -zen-sources-2.6.31_p11.ebuild,
+  zen-sources-2.6.31_p12.ebuild, -zen-sources-2.6.32_p1.ebuild,
+  -zen-sources-2.6.32_p2.ebuild, -zen-sources-2.6.32_p3.ebuild,
+  -zen-sources-2.6.32_p4.ebuild, -zen-sources-2.6.32_p5.ebuild,
+  -zen-sources-2.6.33_rc2_p1-r1.ebuild, -zen-sources-2.6.33_rc4_p1.ebuild,
+  -zen-sources-2.6.33_rc5_p1.ebuild, -zen-sources-2.6.33_rc7_p1.ebuild,
+  metadata.xml:
+  removed old versions, obsolete use flag description
 
 *zen-sources-2.6.33_p2 (28 Apr 2010)
 

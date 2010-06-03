@@ -1,10 +1,12 @@
+# PLEASE KEEP MOST RECENT MASKS ON TOP, REVERSE CHRONO ORDER
+
 # Daniel Robbins <drobbins@funtoo.org> (22 Apr 2010)
 # This package is broken irt libxml2-2.7.7 (bug 316377)
 =sys-libs/zlib-1.2.5
 
-# Daniel Robbins <drobbins@funtoo.org> (19 Apr 2010)
-# Needs testing
-=sys-fs/lvm2-2.02.63*
+# Piotr Karbowski <jabberuser@gmail.com> (20 April 2010)
+# Hardmask live version.
+=media-sound/mpd-9999
 
 # Non-standard configuration that break things.
 # Matt McCormick <matthew.m.mccormick@gmail.com> (11 March 2010)
@@ -65,15 +67,3 @@ dev-db/mysql-community
 # latest ghc, breaks other packages, fixes (bug #252176)
 >=dev-lang/ghc-6.10
 
-# Piotr Karbowski <jabberuser@gmail.com> (02 April 2010)
-# Hardmask due "ioctl" issue. Still appears in latest cryptsetup.
-# Bug info: http://code.google.com/p/cryptsetup/issues/detail?id=38
->=sys-fs/cryptsetup-1.0.7
-
-# Piotr Karbowski <jabberuser@gmail.com> (13 April 2010)
-# Hardmask due quality of ebuild. Requested by author.
-dev-python/pyjamas
-
-# Piotr Karbowski <jabberuser@gmail.com> (20 April 2010)
-# Hardmask live version.
-=media-sound/mpd-9999
