@@ -18,7 +18,7 @@ SRC_URI="http://www.${PN}.org/files/release/${SPV}/${P}.tar.gz
 
 LICENSE="BSD LGPL-2"
 KEYWORDS="~amd64 ~x86"
-SLOT="0"
+SLOT="${SPV}"
 IUSE="boost cg doc examples java mpi patented python qt4 tcl theora tk threads R"
 RDEPEND="
 	mpi? ( virtual/mpi[cxx,romio] )
@@ -57,6 +57,8 @@ DEPEND="${RDEPEND}
 		>=dev-util/cmake-2.6"
 
 S="${WORKDIR}"/VTK
+VTKLIBDIR="$(get_libdir)/${PN}-${SPV}"
+VTKBINDIR="bin/${PN}-${SPV}"
 
 pkg_setup() {
 	echo
@@ -183,28 +185,28 @@ src_install() {
 
 	# install examples
 	if use examples; then
-		dodir /usr/share/${PN} || \
+		dodir /usr/share/${PN}-${SPV} || \
 			die "Failed to create data/examples directory"
 
-		cp -pPR "${S}"/Examples "${D}"/usr/share/${PN}/examples || \
+		cp -pPR "${S}"/Examples "${D}"/usr/share/${PN}-${SPV}/examples || \
 			die "Failed to copy example files"
 
 		# fix example's permissions
-		find "${D}"/usr/share/${PN}/examples -type d -exec \
+		find "${D}"/usr/share/${PN}-${SPV}/examples -type d -exec \
 			chmod 0755 {} \; || \
 			die "Failed to fix example directories permissions"
-		find "${D}"/usr/share/${PN}/examples -type f -exec \
+		find "${D}"/usr/share/${PN}-${SPV}/examples -type f -exec \
 			chmod 0644 {} \; || \
 			die "Failed to fix example files permissions"
 
-		cp -pPR "${WORKDIR}"/VTKData "${D}"/usr/share/${PN}/data || \
+		cp -pPR "${WORKDIR}"/VTKData "${D}"/usr/share/${PN}-${SPV}/data || \
 			die "Failed to copy data files"
 
 		# fix data's permissions
-		find "${D}"/usr/share/${PN}/data -type d -exec \
+		find "${D}"/usr/share/${PN}-${SPV}/data -type d -exec \
 			chmod 0755 {} \; || \
 			die "Failed to fix data directories permissions"
-		find "${D}"/usr/share/${PN}/data -type f -exec \
+		find "${D}"/usr/share/${PN}-${SPV}/data -type f -exec \
 			chmod 0644 {} \; || \
 			die "Failed to fix data files permissions"
 	fi
@@ -223,6 +225,14 @@ src_install() {
 	echo "VTK_DIR=/usr/$(get_libdir)/${PN}-${SPV}" >> "${T}"/40${PN}
 	echo "VTKHOME=/usr" >> "${T}"/40${PN}
 	doenvd "${T}"/40${PN}
+
+	# this way the most recent slot occurs higher up in ld.so.conf
+	VERCAT=$(delete_all_version_separators $(get_version_component_range 1-2))
+	VERCAT=$((${VERCAT}*-1+85))
+	LDPATHFILE="${T}/${VERCAT}${PN}-${SPV}LDPATH"
+	echo "LDPATH=/usr/${VTKLIBDIR}" >> "${LDPATHFILE}"
+	echo "PATH=/usr/${VTKBINDIR}" >> "${LDPATHFILE}"
+	doenvd "${LDPATHFILE}"
 }
 
 pkg_postinst() {
