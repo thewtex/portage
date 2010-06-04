@@ -12,9 +12,9 @@ HOMEPAGE="http://www.gnu.org/software/grub/"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="custom-cflags debug static truetype +binfont"
+IUSE="custom-cflags debug static mkfont +binfont"
 
-DEPEND=">=sys-libs/ncurses-5.2-r5 dev-libs/lzo truetype? ( >=media-libs/freetype-2 media-fonts/unifont )"
+DEPEND=">=sys-libs/ncurses-5.2-r5 dev-libs/lzo mkfont? ( >=media-libs/freetype-2 media-fonts/unifont )"
 RDEPEND="${RDEPEND}"
 PDEPEND="sys-boot/boot-update"
 PROVIDE="virtual/bootloader"
@@ -32,7 +32,7 @@ src_compile() {
 		--bindir=/bin \
 		--libdir=/$(get_libdir) \
 		--disable-efiemu \
-		$(use_enable truetype grub-mkfont ) \
+		$(use_enable mkfont grub-mkfont ) \
 		$(use_enable debug mm-debug) \
 		$(use_enable debug grub-emu) \
 		$(use_enable debug grub-emu-usb) \
