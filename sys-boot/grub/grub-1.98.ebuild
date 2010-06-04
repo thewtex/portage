@@ -32,7 +32,7 @@ src_compile() {
 		--bindir=/bin \
 		--libdir=/$(get_libdir) \
 		--disable-efiemu \
-		$(use_enable mkfont grub-mkfont ) \
+		$(use_enable truetype grub-mkfont ) \
 		$(use_enable debug mm-debug) \
 		$(use_enable debug grub-emu) \
 		$(use_enable debug grub-emu-usb) \
