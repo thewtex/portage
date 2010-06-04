@@ -43,11 +43,6 @@ src_prepare() {
 	sed -i \
 		-e 's/from distutils.core/from setuptools/' \
 		setup.py || die "sed failed"
-
-	# Fix tests.
-	sed -e "/sys\.exit(result)/d" -i test/alltests.py || die "sed test/alltests.py failed"
-
-	python_copy_sources --no-link
 }
 
 src_compile() {
