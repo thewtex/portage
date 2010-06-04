@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5619 2010/06/02 12:27:47 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5624 2010/06/04 02:51:53 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -473,7 +473,6 @@ app-misc/tasque:rememberthemilk -  Allows you to use http://www.rememberthemilk.
 app-misc/tomboy:galago - Add support for the galago desktop presence framework (dev-dotnet/galago-sharp)
 app-misc/towitoko:moneyplex - Makes libtowitoko work for the moneyplex home banking software
 app-misc/tracker:applet - Build tracker monitor applet
-app-misc/tracker:deskbar - Build gnome-extra/deskbar-applet plugin 
 app-misc/tracker:gsf - Enable gnome-extra/libgsf based data extractor 
 app-misc/tracker:iptc - Enable extraction of IPTC data from pictures
 app-misc/tracker:kmail - Build kmail data miner
@@ -1815,6 +1814,7 @@ media-libs/libgphoto2:bonjour - Adds Bonjour/Zeroconf support.
 media-libs/libgpod:gtk - Enables ArtWorkDB support (including Photos and album covers)
 media-libs/libgpod:iphone - Enables support for the iPhone and iPod touch
 media-libs/libgpod:udev - Enable udev support
+media-libs/libmediainfo:libmms - Support for Microsoft Media Server (MMS) streams via libmms
 media-libs/libmikmod:raw - Enable raw file writer plug-in
 media-libs/libmp4v2:utils - Install command-line utilities
 media-libs/libquicktime:schroedinger - Enable Dirac video support (an advanced royalty-free video compression format) via libschroedinger (high-speed implementation in C of the Dirac codec).
@@ -2221,6 +2221,7 @@ media-video/hwdecode-demos:vdpau - Enables VDPAU decoders (requires nVidia video
 media-video/kino:gpac - Enable GPAC support when exporting to 3GPP format
 media-video/kmplayer:npp - Compile the npp backend that plays xembed style browser plugins.
 media-video/lives:libvisual - Enable libvisual support
+media-video/mediainfo:libmms - Support for Microsoft Media Server (MMS) streams via libmms
 media-video/mjpegtools:yv12 - Enables support for the YV12 pixel format
 media-video/motiontrack:multiprocess - Enables multi-process support (SMP/cluster) for motiontrack programs
 media-video/mplayer:3dnowext - Enable 3dnowext cpu instructions
@@ -3435,8 +3436,16 @@ sec-policy/selinux-base-policy:peer_perms - Enable the labeled networking peer p
 sys-apps/acl:nfs -  add support for NFS acls 
 sys-apps/busybox:make-symlinks - Create all the appropriate symlinks in /bin and /sbin.
 sys-apps/busybox:mdev - Create the appropriate symlink in /sbin and install mdev.conf and support files
-sys-apps/flashrom:ftdi - Enable flashing through FTDI/SPI USB interface
-sys-apps/flashrom:serprog - Enable Serial Flasher support
+sys-apps/flashrom:buspiratespi - Enable Bus Pirate SPI programmer
+sys-apps/flashrom:drkaiser - Enable Dr. Kaiser programmer
+sys-apps/flashrom:dummy - Enable dummy tracing
+sys-apps/flashrom:ftdi - Enable ftdi programmer, flashing through FTDI/SPI USB interface
+sys-apps/flashrom:internal - Enable internal/onboard support
+sys-apps/flashrom:nic3com - Enable 3Com NIC programmer
+sys-apps/flashrom:nvidia - Enable NVIDIA programmer
+sys-apps/flashrom:satasii - Enable programmer for SiI SATA controllers
+sys-apps/flashrom:serprog - Enable Serial Flasher programmer
+sys-apps/flashrom:wiki - Enable wiki informations, like supported devices etc.
 sys-apps/gnome-disk-utility:nautilus - enable gnome-base/nautilus extension.
 sys-apps/hal:acpi - Enables HAL to attempt to read from /proc/acpi/event, if unavailable, HAL will read events from sys-power/acpid. If you need multiple acpi readers, ensure acpid is in your default runlevel (rc-update add acpid default) along with HAL. This will also enable HAL to read Toshiba and IBM acpi events which do not get sent via /proc/acpi/event
 sys-apps/hal:consolekit - Enables HAL to interact with consolekit for determining whether a given process is running on behalf of the person setting at the console.
@@ -3752,6 +3761,7 @@ www-apps/redmine:passenger - Enable support for www-apache/passenger
 www-apps/rt:lighttpd - Add www-servers/lighttpd support
 www-apps/viewvc:cvsgraph - Add dev-util/cvsgraph support to show graphical views of revisions and branches
 www-apps/viewvc:mod_python - Add www-apache/mod_python support
+www-apps/viewvc:mod_wsgi - Add www-apache/mod_wsgi support
 www-apps/viewvc:pygments - Add dev-python/pygments support for syntax highlighting
 www-client/chromium:plugins-symlink - Add support for system web browser plugins out of the box
 www-client/chromium-bin:plugins-symlink - Add support for system web browser plugins out of the box
@@ -3900,6 +3910,7 @@ x11-misc/fbpager:xrender - Enable transparency support via x11-libs/libXrender
 x11-misc/fspanel:xft - Build with support for XFT font renderer (x11-libs/libXft)
 x11-misc/google-gadgets:soup - Enables XML HTTP request extension based on net-libs/libsoup
 x11-misc/google-gadgets:webkit - Enables browser element and script runtime based on net-libs/webkit-gtk
+x11-misc/pcmanfm:udev - Use sys-fs/udev to determine available devices
 x11-misc/rednotebook:libyaml - enable libyaml support
 x11-misc/rednotebook:webkit - enable previews using webkit engine
 x11-misc/rss-glx:quesoglc - Enable support for OpenGL Character Renderer
