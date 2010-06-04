@@ -1,4 +1,4 @@
->=sys-libs/ncurses-5 X? ( x11-libs/libX11 ) X? ( x11-libs/libXt )
+>=sys-libs/ncurses-5 X? ( x11-libs/libX11 ) X? ( x11-libs/libXt ) || ( =sys-devel/automake-1.11* =sys-devel/automake-1.10* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b
 >=sys-libs/ncurses-5 X? ( x11-libs/libX11 )
 0
 mirror://sourceforge.jp/hengband/10331/hengband-1.6.2.tar.bz2 mirror://gentoo/hengband-1.6.2-mispellings.patch.gz
@@ -7,14 +7,14 @@ http://hengband.sourceforge.jp/en/
 Moria
 An Angband variant, with a Japanese/fantasy theme
 ppc x86 ~x86-fbsd
-base eutils games multilib portability toolchain-funcs
+autotools base eutils games libtool multilib portability toolchain-funcs
 X linguas_ja
 
 
 
+2
 
-
-compile install postinst preinst setup unpack
+compile configure install postinst preinst prepare setup unpack
 
 
 
