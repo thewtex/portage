@@ -7,7 +7,7 @@
 #      we never updated any of the source code (it still all wants menu.lst),
 #      and there is no indication that upstream is making the transition.
 
-inherit mount-boot eutils flag-o-matic toolchain-funcs autotools linux-info
+inherit mount-boot eutils flag-o-matic toolchain-funcs autotools
 RPN=grub
 RP=${RPN}-${PV}
 S=${WORKDIR}/${RP}
@@ -31,13 +31,6 @@ DEPEND="ncurses? (
 	)"
 RDEPEND="$DEPEND >=sys-boot/boot-update-1.4.1"
 PROVIDE="virtual/bootloader"
-
-pkg_setup() {
-	local arch="$(tc-arch)"
-	case ${arch} in
-		amd64) CONFIG_CHECK='~IA32_EMULATION' check_extra_config ;;
-	esac
-}
 
 src_unpack() {
 	unpack ${A}
@@ -73,6 +66,7 @@ src_unpack() {
 	fi
 
 	cat ${FILESDIR}/${PVR}/grub-legacy-0.97-r12-device-map.patch | patch -p1 || die "patch failure"
+	cat ${FILESDIR}/${PVR}/grub-legacy-0.97-r12-setup.patch | patch -p1 || die "patch failure"
 
 	eautoreconf
 
