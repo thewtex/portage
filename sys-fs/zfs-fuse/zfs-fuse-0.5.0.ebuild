@@ -1,6 +1,6 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/zfs-fuse/zfs-fuse-0.5.0.ebuild,v 1.2 2008/10/04 03:54:34 trapni Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/zfs-fuse/zfs-fuse-0.5.0.ebuild,v 1.4 2010/06/05 23:46:32 ssuominen Exp $
 
 IUSE="doc debug"
 
@@ -25,12 +25,14 @@ RDEPEND=">=sys-fs/fuse-2.6.1"
 S="${WORKDIR}/${P}/src"
 
 src_unpack() {
-	unpack ${A} || die
+	unpack ${A}
 	cd "${S}"
 
 	epatch "${FILESDIR}/${PV}/fix_zdb_path.patch"
 	epatch "${FILESDIR}/${PV}/fix_zfs-fuse_path.patch"
 	epatch "${FILESDIR}/${PV}/fix_ztest_path.patch"
+
+	sed -i -e 's:-Werror::' SConstruct || die
 }
 
 src_compile() {
@@ -71,6 +73,8 @@ src_install() {
 	if use doc; then
 		dodoc {INSTALL,TODO,STATUS,TESTING,HACKING,BUGS} || die
 	fi
+
+	dodir /etc/zfs
 }
 
 pkg_postinst() {

@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/alsa-driver/alsa-driver-9999.ebuild,v 1.14 2010/04/17 16:46:01 polynomial-c Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/alsa-driver/alsa-driver-9999.ebuild,v 1.16 2010/06/06 01:01:52 beandog Exp $
 
 inherit linux-mod flag-o-matic eutils multilib autotools git
 
@@ -22,7 +22,7 @@ sscape wavefront pc98-cs4232 msnd-pinnacle ad1889 als300 als4000
 ali5451 atiixp atiixp-modem au8810 au8820 au8830 azt3328 bt87x ca0106
 cmipci cs4281 cs46xx cs5535audio darla20 gina20 layla20 darla24 gina24
 layla24 mona mia echo3g indigo indigoio indigodj emu10k1 emu10k1x
-ens1370 ens1371 es1938 es1968 fm801 fm801-tea575x hda-intel hdsp hdspm
+ens1370 ens1371 es1938 es1968 fm801 hda-intel hdsp hdspm
 ice1712 ice1724 intel8x0 intel8x0m korg1212 maestro3 mixart nm256
 pcxhr riptide rme32 rme96 rme9652 sonicvibes trident via82xx
 via82xx-modem vx222 ymfpci pdplus asihpi powermac aoa
@@ -91,7 +91,7 @@ pkg_setup() {
 	local SOUND_PRIME_ERROR="Your kernel is configured to use the deprecated OSS drivers.	 Please disable them and re-emerge alsa-driver."
 
 	if use oss && kernel_is -ge 2 6 28 ; then
-		local CONFIG_CHECK+="SOUND_PRIME"
+		local CONFIG_CHECK+=" SOUND_PRIME"
 		local SOUND_PRIME_ERROR="You enabled oss USE flag but your kernel's soundcore module lacks support of the proper functions. Please enable CONFIG_SOUND_PRIME and re-emerge alsa-driver."
 	fi
 

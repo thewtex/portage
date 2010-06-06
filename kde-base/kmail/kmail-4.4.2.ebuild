@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/kmail/kmail-4.4.2.ebuild,v 1.2 2010/04/14 18:42:56 reavertm Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/kmail/kmail-4.4.2.ebuild,v 1.4 2010/06/06 00:53:11 reavertm Exp $
 
 EAPI="3"
 
@@ -9,15 +9,14 @@ inherit kde4-meta
 
 DESCRIPTION="KMail is the email component of Kontact, the integrated personal information manager of KDE."
 KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
-IUSE="ayatana debug +handbook"
+IUSE="debug +handbook"
 
 DEPEND="
 	$(add_kdebase_dep kdelibs 'semantic-desktop')
-	$(add_kdebase_dep kdepimlibs 'akonadi')
+	$(add_kdebase_dep kdepimlibs 'semantic-desktop')
 	$(add_kdebase_dep libkdepim)
 	$(add_kdebase_dep libkleo)
 	$(add_kdebase_dep libkpgp)
-	ayatana? ( >=dev-libs/libindicate-qt-0.2.1 )
 "
 RDEPEND="${DEPEND}
 	$(add_kdebase_dep kdepim-runtime)
@@ -49,7 +48,7 @@ KMLOADLIBS="libkdepim"
 
 src_configure() {
 	mycmakeargs=(
-		$(cmake-utils_use_with ayatana IndicateQt)
+		-DWITH_IndicateQt=OFF
 	)
 
 	kde4-meta_src_configure
