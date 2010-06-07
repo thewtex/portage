@@ -1,0 +1,22 @@
+>=virtual/jdk-1.5 >=dev-java/java-config-2.1.9-r1 >=dev-java/ant-core-1.7.0 >=dev-java/javatoolkit-0.3.0-r2 >=dev-util/cmake-2.6.2-r1 userland_GNU? ( >=sys-apps/findutils-4.4.0 ) dev-util/automoc dev-util/pkgconfig !aqua? ( || ( >=x11-libs/libXtst-1.1.0 <x11-proto/xextproto-7.1.0 ) x11-proto/xf86vidmodeproto ) >=x11-libs/qt-core-4.6.0:4[qt3support,ssl] >=x11-libs/qt-gui-4.6.0:4[dbus] >=x11-libs/qt-qt3support-4.6.0:4[kde] >=x11-libs/qt-script-4.6.0:4 >=x11-libs/qt-sql-4.6.0:4[qt3support] >=x11-libs/qt-svg-4.6.0:4 >=x11-libs/qt-test-4.6.0:4 !aqua? ( x11-libs/libXext x11-libs/libXt x11-libs/libXxf86vm ) dev-lang/perl !kdeprefix? ( >=kde-base/kdelibs-4.4.4[aqua=,-kdeprefix] ) kdeprefix? ( >=kde-base/kdelibs-4.4.4:4.4[aqua=,kdeprefix] )
+>=virtual/jre-1.5 >=dev-java/java-config-2.1.9-r1 !kdeprefix? ( !kde-base/krossjava:4.1[-kdeprefix] ) !kdeprefix? ( !kde-base/krossjava:4.2[-kdeprefix] ) !kdeprefix? ( !kde-base/krossjava:4.3[-kdeprefix] ) !kdeprefix? ( !kde-base/krossjava:4.5[-kdeprefix] ) !kdeprefix? ( !kde-base/krossjava:live[-kdeprefix] ) >=x11-libs/qt-core-4.6.0:4[qt3support,ssl] >=x11-libs/qt-gui-4.6.0:4[dbus] >=x11-libs/qt-qt3support-4.6.0:4[kde] >=x11-libs/qt-script-4.6.0:4 >=x11-libs/qt-sql-4.6.0:4[qt3support] >=x11-libs/qt-svg-4.6.0:4 >=x11-libs/qt-test-4.6.0:4 !aqua? ( x11-libs/libXext x11-libs/libXt x11-libs/libXxf86vm ) dev-lang/perl !kdeprefix? ( >=kde-base/kdelibs-4.4.4[aqua=,-kdeprefix] ) kdeprefix? ( >=kde-base/kdelibs-4.4.4:4.4[aqua=,kdeprefix] )
+4.4
+mirror://kde/stable/4.4.4/src/kdebindings-4.4.4.tar.bz2
+test
+http://www.kde.org/
+GPL-2
+Java plugin for the kdelibs/kross scripting framework.
+~amd64 ~x86
+base cmake-utils eutils flag-o-matic java-ant-2 java-pkg-2 java-utils-2 kde4-base kde4-functions kde4-meta multilib portability toolchain-funcs versionator
+debug elibc_FreeBSD elibc_FreeBSD kdeprefix aqua kdeenablefinal
+
+
+
+3
+
+compile configure install postinst postrm preinst prepare setup test unpack
+
+
+
+
+
