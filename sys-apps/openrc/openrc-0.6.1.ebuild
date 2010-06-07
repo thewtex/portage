@@ -4,7 +4,7 @@
 
 inherit eutils flag-o-matic multilib toolchain-funcs
 
-SRC_URI="http://roy.marples.name/downloads/openrc/openrc-0.6.1.tar.bz2 http://www.funtoo.org/archive/corenetwork/corenetwork-1.0.tar.bz2"
+SRC_URI="http://roy.marples.name/downloads/openrc/openrc-0.6.1.tar.bz2 http://www.funtoo.org/archive/corenetwork/corenetwork-1.0.1.tar.bz2"
 DESCRIPTION="OpenRC manages the services, startup and shutdown of a host"
 HOMEPAGE="http://roy.marples.name/openrc"
 PROVIDE="virtual/baselayout"
