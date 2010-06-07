@@ -1,0 +1,22 @@
+!build? ( sys-apps/sed >=sys-devel/binutils-2.11.90.0.31 ) kernel_linux? ( virtual/modutils ) sys-apps/sed kernel_linux? ( virtual/linux-sources ) app-arch/xz-utils <sys-kernel/genkernel-3.4.11 splash? ( x11-themes/sabayon-artwork-core )
+!build? ( >=sys-libs/ncurses-5.2 sys-devel/make ) kernel_linux? ( virtual/modutils ) grub? ( || ( sys-boot/grub:2 ( sys-boot/grub:0 sys-boot/grub-handler ) ) ) sys-apps/sed
+2.6.34
+mirror://kernel/linux/kernel/v2.6/linux-2.6.34.tar.bz2 http://distfiles.sabayon.org/sys-kernel/linux-sabayon-patches/2.6.34-9.tar.bz2 amd64? ( http://distfiles.sabayon.org/sys-kernel/linux-sabayon-patches/config/sabayon-2.6.34-amd64.config ) x86? ( http://distfiles.sabayon.org/sys-kernel/linux-sabayon-patches/config/sabayon-2.6.34-x86.config )
+mirror
+http://www.sabayon.org
+GPL-2 freedist
+Official Sabayon Linux Standard kernel image
+~amd64 ~x86
+eutils kernel-2 linux-info linux-mod mount-boot multilib portability sabayon-artwork sabayon-kernel toolchain-funcs versionator
+symlink build kernel_linux splash dmraid grub
+
+!build? ( virtual/dev-manager )
+virtual/linux-sources virtual/alsa
+
+
+compile install postinst postrm preinst prerm setup unpack
+
+
+
+
+

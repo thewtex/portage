@@ -23,7 +23,7 @@ detect_version
 # gcc 4.1 to compile
 
 PDEPEND="=sys-devel/gcc-4.1*"
-DEPEND="!>=sys-fs/udev-146"
+DEPEND="!>=sys-fs/udev-147"
 KEYWORDS="amd64 ppc64 sparc x86"
 IUSE=""
 DESCRIPTION="Full sources including OpenVZ patchset for the 2.6.18 kernel tree"

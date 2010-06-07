@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/alock/alock-60-r3.ebuild,v 1.7 2010/01/09 15:22:25 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/alock/alock-60-r3.ebuild,v 1.9 2010/06/05 10:50:59 hwoarang Exp $
 
 EAPI="2"
 
@@ -35,14 +35,14 @@ src_prepare() {
 src_configure() {
 	econf --with-all \
 		$(use_with pam) \
-		$(use_with imlib) \
+		$(use_with imlib imlib2) \
 	|| die "configure failed"
 }
 
 src_install() {
 	dobin src/alock || die
 	doman alock.1 || die
-	dodoc README.txt LICENSE.txt CHANGELOG.txt || die
+	dodoc README.txt CHANGELOG.txt || die
 
 	insinto /usr/share/alock/xcursors
 	doins contrib/xcursor-* || die

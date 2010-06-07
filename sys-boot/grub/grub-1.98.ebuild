@@ -22,6 +22,14 @@ PROVIDE="virtual/bootloader"
 export STRIP_MASK="*/grub/*/*.mod"
 QA_EXECSTACK="sbin/grub-probe sbin/grub-setup sbin/grub-mkdevicemap"
 
+src_unpack() {
+	cd ${WORKDIR}; unpack ${A}
+	cd ${S}
+	# from Ubuntu bug
+	# https://bugs.launchpad.net/ubuntu/+source/grub2/+bug/541670
+	cat ${FILESDIR}/jpeg_packedhuff_quant.patch | patch -p1 || die "patch failed"
+}
+
 src_compile() {
 	use custom-cflags || unset CFLAGS CPPFLAGS LDFLAGS
 	use static && append-ldflags -static
