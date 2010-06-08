@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11600 2010/06/06 15:36:22 xarthisius Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11603 2010/06/08 10:12:12 hwoarang Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,24 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Markos Chandras <hwoarang@gentoo.org> (07 Jun 2010)
+# Masking 4.6.3 until we are ready for that
+=x11-libs/qt-assistant-4.6.3
+=x11-libs/qt-core-4.6.3
+=x11-libs/qt-dbus-4.6.3
+=x11-libs/qt-demo-4.6.3
+=x11-libs/qt-gui-4.6.3
+=x11-libs/qt-multimedia-4.6.3
+=x11-libs/qt-opengl-4.6.3
+=x11-libs/qt-phonon-4.6.3
+=x11-libs/qt-qt3support-4.6.3
+=x11-libs/qt-script-4.6.3
+=x11-libs/qt-sql-4.6.3
+=x11-libs/qt-svg-4.6.3
+=x11-libs/qt-test-4.6.3
+=x11-libs/qt-webkit-4.6.3
+=x11-libs/qt-xmlpatterns-4.6.3
 
 # Markos Chandras <hwoarang@gentoo.org> (05 Jun 2010)
 # Runtime segmentation fauls and multiple failures to generate
@@ -83,10 +101,6 @@ x11-misc/lintar
 # Tracker is at #312775, feel free to report new problems
 # and make them block the tracker
 =dev-lang/php-5.3*
-
-# Michael Sterrett <mr_bones_@gentoo.org> (26 May 2010)
-# Masked for security bug #320955
-<games-simulation/openttd-1.0.1
 
 # Peter Volkov <pva@gentoo.org> (09 May 2010)
 # Masked for testing of upgrading path. PLEASE backup before upgrading. #281366
@@ -489,18 +503,6 @@ mail-filter/MailScanner
 # Torsten Veller <tove@gentoo.org> (14 Mar 2010)
 # Mask "End Of Life" versions
 <www-apps/bugzilla-3.2
-
-# <s4t4n@gentoo.org> (11 Mar 2010)
-# The following packages are not compatible with lm-sensors-3, upstream is unresponsive.
-# Masked pending removal from the tree.
-# http://bugs.gentoo.org/show_bug.cgi?id=289829
-# http://bugs.gentoo.org/show_bug.cgi?id=291426
-# http://bugs.gentoo.org/show_bug.cgi?id=291429
-# http://bugs.gentoo.org/show_bug.cgi?id=291432
-x11-plugins/wmalms
-=x11-plugins/wmgtemp-0.7
-x11-plugins/wmsensormon
-x11-plugins/wmmsens
 
 # Jeroen Roovers <jer@gentoo.org> (10 Mar 2010)
 # Masked until the blockers of bug #305781 are fixed
