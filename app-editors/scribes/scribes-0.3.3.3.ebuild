@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/scribes/scribes-0.3.3.3.ebuild,v 1.5 2010/06/06 11:28:04 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-editors/scribes/scribes-0.3.3.3.ebuild,v 1.7 2010/06/06 12:13:00 arfrever Exp $
 
 EAPI=3
 
@@ -39,7 +39,8 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-sandbox.patch
+	epatch "${FILESDIR}"/${P}-sandbox.patch \
+		"${FILESDIR}"/${P}-desktop_entry.patch
 	eautoreconf
 
 	ln -nfs $(type -P true) py-compile || die
@@ -50,5 +51,15 @@ src_prepare() {
 
 src_install() {
 	gnome2_src_install
-	find "${ED}" -name "*.py[co]" -exec rm -f {} +
+	python_clean_installation_image
+}
+
+pkg_postinst() {
+	gnome2_pkg_postinst
+	python_mod_optimize SCRIBES
+}
+
+pkg_postrm() {
+	gnome2_pkg_postrm
+	python_mod_cleanup SCRIBES
 }
