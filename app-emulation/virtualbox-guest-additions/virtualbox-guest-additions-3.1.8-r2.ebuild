@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/virtualbox-guest-additions/virtualbox-guest-additions-3.1.8-r2.ebuild,v 1.1 2010/05/20 21:02:55 polynomial-c Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/virtualbox-guest-additions/virtualbox-guest-additions-3.1.8-r2.ebuild,v 1.3 2010/06/08 17:52:54 polynomial-c Exp $
 
 inherit eutils linux-mod
 
@@ -33,7 +33,8 @@ DEPEND="${RDEPEND}
 		sys-devel/bin86
 		sys-devel/dev86
 		sys-power/iasl
-		X? ( x11-proto/renderproto )"
+		X? ( x11-proto/renderproto )
+		!X? ( x11-proto/xproto )"
 
 BUILD_TARGETS="all"
 BUILD_TARGET_ARCH="${ARCH}"
@@ -56,6 +57,9 @@ src_unpack() {
 		# kernel modules, to include all the needed files
 		"${MY_P/-OSE/_OSE}"/src/VBox/Additions/linux/export_modules "${WORKDIR}/vbox-kmod.tar.gz"
 		unpack ./vbox-kmod.tar.gz
+
+		# PaX fixes (see bug #298988)
+		epatch "${FILESDIR}"/vboxguest-log-use-c99.patch
 
 		# Remove shipped binaries (kBuild,yasm), see bug #232775
 		cd "${S}"
