@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/poppler/poppler-0.12.4-r3.ebuild,v 1.4 2010/05/19 20:39:53 grobian Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/poppler/poppler-0.12.4-r3.ebuild,v 1.7 2010/06/08 19:18:43 grobian Exp $
 
 EAPI="2"
 
@@ -59,10 +59,13 @@ src_prepare() {
 	epatch "${FILESDIR}"/${PN}-0.12.4-nanosleep-rt.patch
 	epatch "${FILESDIR}"/${PN}-0.12.4-strings_h.patch #314925
 	epatch "${FILESDIR}"/${PN}-0.12.4-xopen_source.patch #314925
-	# The whole _XOPEN_SOURCE thing breaks Tiger (kinda sad they dished
-	# configure, since it typically is good at knowing this), I need to take
-	# this upstream still, configure and cmake conflict in this regard.
-	[[ ${CHOST} == *-darwin8 ]] && \
+	# The whole _XOPEN_SOURCE thing breaks OSX Tiger and Solaris, this
+	# is introduced by #309297, and made worse by #314925.  Since
+	# vanilla sources don't have this enabled, the whole _XOPEN_SOURCE
+	# isn't set by default, and hence correct from upstream's point of
+	# view.  FreeBSD folks should file a proper bug for #314925 if they
+	# really need it to compile vanilla sources.
+	[[ ${CHOST} == *-darwin8 || ${CHOST} == *-solaris* ]] && \
 		sed -i -e '/add_definitions/d' cmake/modules/PopplerMacros.cmake
 }
 

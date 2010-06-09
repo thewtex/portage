@@ -1,4 +1,4 @@
-# Copyright 2004-2009 Sabayon Project
+# Copyright 2004-2010 Sabayon Project
 # Distributed under the terms of the GNU General Public License v2
 # $
 
@@ -73,11 +73,11 @@ fi
 
 if [ -n "${K_ONLY_SOURCES}" ]; then
 	IUSE="${IUSE}"
-	DEPEND="${DEPEND}"
+	DEPEND="sys-apps/sed"
 	RDEPEND="${RDEPEND}"
 else
 	IUSE="splash dmraid grub"
-	DEPEND="${DEPEND}
+	DEPEND="sys-apps/sed
 		app-arch/xz-utils
 		<sys-kernel/genkernel-3.4.11
 		splash? ( x11-themes/sabayon-artwork-core )"
@@ -132,21 +132,12 @@ sabayon-kernel_src_compile() {
 	use dmraid && GKARGS="${GKARGS} --dmraid"
 	export DEFAULT_KERNEL_SOURCE="${S}"
 	export CMD_KERNEL_DIR="${S}"
-	for opt in $MAKEOPTS
-	do
-		if [ "${opt:0:2}" = "-j" ]
-		then
-			mkopts="$opt"
-			break
-		fi
-	done
-	[ -z "$mkopts" ] && mkopts="-j3"
 
 	DEFAULT_KERNEL_SOURCE="${S}" CMD_KERNEL_DIR="${S}" genkernel ${GKARGS} \
 		--kerneldir="${S}" \
 		--kernel-config="${WORKDIR}"/config \
 		--cachedir="${WORKDIR}"/cache \
-		--makeopts="$mkopts" \
+		--makeopts="$MAKEOPTS" \
 		--tempdir="${S}"/temp \
 		--logfile="${WORKDIR}"/genkernel.log \
 		--bootdir="${WORKDIR}"/boot \
@@ -248,7 +239,7 @@ sabayon-kernel_pkg_postinst() {
 	linux-mod_pkg_postinst
 
 	elog "Please report kernel bugs at:"
-	elog "http://bugs.sabayonlinux.org"
+	elog "http://bugs.sabayon.org"
 
 	elog "The source code of this kernel is located at"
 	elog "=${K_KERNEL_SOURCES_PKG}."
@@ -259,7 +250,7 @@ sabayon-kernel_pkg_postinst() {
 }
 
 sabayon-kernel_pkg_postrm() {
-	# Add kernel to grub.conf
+	# Remove kernel from grub.conf
 	if use grub; then
 		if use amd64; then
 			local kern_arch="x86_64"
