@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5635 2010/06/09 08:27:49 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5639 2010/06/10 03:15:28 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -202,8 +202,8 @@ app-editors/tea:aspell - Enable spell checking using aspell
 app-editors/tea:enchant - Enable spell checking using enchant
 app-editors/tea:hacking - Enable hacking support
 app-editors/tea:hunspell - Enable spellchecking using hunspell
+app-editors/vim:X - Link console vim against X11 libraries to enable title and clipboard features in xterm
 app-editors/vim:vim-pager - Install vimpager and vimmanpager links
-app-editors/vim:vim-with-x - Link console vim against X11 libraries to enable title and clipboard features in xterm
 app-editors/xemacs:athena - Chooses the MIT Athena widget set
 app-editors/xemacs:dnd - Enables support for the x11-libs/dnd drag-n-drop library
 app-editors/xemacs:eolconv - Support detection and translation of newline conventions
@@ -336,6 +336,7 @@ app-forensics/afflib:ewf - Enable libewf extra formats
 app-forensics/afflib:fuse - Enable extra fuse thingies
 app-forensics/afflib:qemu - Enable qemu stuff
 app-forensics/afflib:s3 - Enable S3
+app-forensics/aide:audit - Enable support for sys-process/audit
 app-forensics/libewf:rawio - Enables raw IO handling
 app-forensics/rdd:rawio - Enables raw IO handling
 app-forensics/samhain:login-watch - Compile in the module to watch for login/logout events
@@ -2498,9 +2499,13 @@ net-im/mcabber:otr -  Enable encrypted conversations using Off-The-Records messa
 net-im/minbif:video - Add video support
 net-im/pidgin:gadu - Enable Gadu Gadu protocol support
 net-im/pidgin:groupwise - Enable Novell Groupwise protocol support
+net-im/pidgin:gstreamer - Enables voice and video sessions
+net-im/pidgin:gtk - Builds Pidgin, the GTK+ interface
 net-im/pidgin:krb4 - Compile Zephyr plugin with Kerberos 4 support
 net-im/pidgin:meanwhile - Enable meanwhile support for Sametime protocol
+net-im/pidgin:ncurses - Build finch, console interface
 net-im/pidgin:prediction - Enable Contact Availability Prediction plugin
+net-im/pidgin:python - Build libgnt (GLib Ncurses Toolkit used by finch) with python scripting support
 net-im/pidgin:qq - Enable QQ protocol support
 net-im/pidgin:silc - Enable SILC protocol support
 net-im/pidgin:zephyr - Enable Zephyr protocol support
@@ -3478,7 +3483,6 @@ sys-power/powerman:httppower -  Add support for HTTP based power controllers
 sys-power/suspend:crypt - Allows suspend and resume from encrypted disk
 sys-power/suspend:fbsplash - Add support for framebuffer splash
 sys-power/upower:introspection - Use dev-libs/gobject-introspection for introspection
-sys-process/acct:logrotate - Install a logrotate script to rotate /var/account/*
 sys-process/cronie:inotify - Enable inotify filesystem monitoring support.
 sys-process/fcron:debug -  Enable debug code and output. Since version 3.0.5 this will no longer force foreground execution, and fcron will be able to run as a service properly. 
 sys-process/fcron:pam -  Enable PAM support for fcron. This means that fcron will pass through the "fcron" stack before executing the jobs, and fcrontab will use the "fcrontab" stack to authenticate the user before editing its crontab file. 
