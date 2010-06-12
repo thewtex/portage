@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11615 2010/06/11 10:38:40 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11623 2010/06/12 08:18:58 fauli Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -31,8 +31,23 @@
 
 #--- END OF EXAMPLES ---
 
+# Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org> (12 Jun 2010)
+# Masked for quick tests of the merged amarok ebuild
+=media-sound/amarok-2.3.1-r1
+
+# Ben de Groot <yngwin@gentoo.org> (11 Jun 2010)
+# Masked for removal in 30 days, see bug #315067
+media-video/whaawmp
+
+# Pacho Ramos <pacho@gentoo.org> (11 Jun 2010)
+# Drop old and deprecated bluez-libs and bluez-utils. Use bluez instead.
+# Masked for removal in 30 days.
+# See bug 301630.
+net-wireless/bluez-libs
+net-wireless/bluez-utils
+
 # Samuli Suominen <ssuominen@gentoo.org> (11 Jun 2010)
-# Only used by old bluez-libs and bluez-utils. 
+# Only used by old bluez-libs and bluez-utils.
 # Masked for removal in 30 days.
 # See bug 301630.
 gnome-extra/gnome-vfs-obexftp
@@ -47,9 +62,9 @@ gnome-extra/gnome-vfs-obexftp
 app-crypt/hmaccalc
 
 # Tony Vroon <chainsaw@gentoo.org> (09 Jun 2010)
-# Alpha releases, should you wish to dip your toes in the 
+# Alpha releases, should you wish to dip your toes in the
 # water... please be aware of the sharks.
-# Bugs upstream: http://jira.atheme.org/ and *not* into 
+# Bugs upstream: http://jira.atheme.org/ and *not* into
 # the Gentoo bug tracker.
 =media-plugins/audacious-plugins-2.4_alpha*
 =media-sound/audacious-2.4_alpha*
@@ -433,6 +448,7 @@ games-strategy/xscorch
 # packages, this is an exception to current policy because some people
 # from X11 team needed 3D support even with bleeding edge Xorg.
 =app-emulation/emul-linux-x86-opengl-20100410_pre
+=app-emulation/emul-linux-x86-opengl-20100611-r99
 
 # Robert Piasek <dagger@gentoo.org> (09 Apr 2010)
 # Mask as it does have some regressions comparing to version 3
@@ -666,9 +682,9 @@ net-libs/libjingle
 
 # Patrick Lauer <patrick@gentoo.org> (07 Jan 2010)
 # Mask for removal. Migrate to dev-db/postgresql-{base,server}
-# still being used.  (please fix deps before masking again - halcy0n)
-#dev-db/libpq
-#dev-db/postgresql
+# still being used.
+dev-db/libpq
+dev-db/postgresql
 
 # Pawel Hajdan jr <phajdan.jr@gentoo.org> (07 Jan 2010)
 # Dev channel releases are only for people who are developers or want more
@@ -927,12 +943,6 @@ net-misc/amazonmp3
 # Benedikt Böhm <hollow@gentoo.org> (19 Apr 2009)
 # masked for testing
 =net-analyzer/centreon-1.4.2.7
-
-# Christian Faulhammer <fauli@gentoo.org> (13 Apr 2009)
-# Ulrich Mueller <ulm@gentoo.org>
-# Thomas Anderson <gentoofan23@gentoo.org>
-# Live version
-~app-doc/pms-99999999
 
 # Tiziano Müller <dev-zero@gentoo.org> (08 Apr 2009)
 # pre-releases

@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-pda/pilot-link/pilot-link-0.12.3-r2.ebuild,v 1.11 2010/06/11 11:22:40 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-pda/pilot-link/pilot-link-0.12.3-r2.ebuild,v 1.13 2010/06/11 21:30:10 arfrever Exp $
 
 EAPI=2
 
@@ -12,7 +12,7 @@ SRC_URI="http://pilot-link.org/source/${P}.tar.bz2"
 
 LICENSE="|| ( GPL-2 LGPL-2 )"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa ~ia64 ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~hppa ~ia64 ppc ~ppc64 ~sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 
 IUSE="perl java python png readline threads bluetooth usb debug"
 
@@ -31,6 +31,8 @@ DEPEND="${BOTH_DEPEND}
 
 RDEPEND="${BOTH_DEPEND}
 	java? ( >=virtual/jre-1.4 )"
+
+PYTHON_MODNAME="pisock.py pisockextras.py"
 
 src_prepare() {
 	# Fixing some broken configure switches and automagic deps.
@@ -129,10 +131,7 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	if use python; then
-		python_version
-		python_mod_optimize /usr/$(get_libdir)/python${PYVER}/site-packages
-	fi
+	use python && distutils_pkg_postinst
 }
 
 pkg_postrm() {
