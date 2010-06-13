@@ -1,6 +1,18 @@
 # ChangeLog for net-irc/unrealircd
-# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/unrealircd/ChangeLog,v 1.78 2009/12/22 01:01:06 vostorga Exp $
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-irc/unrealircd/ChangeLog,v 1.80 2010/06/12 21:18:26 a3li Exp $
+
+  12 Jun 2010; Alex Legler <a3li@gentoo.org> -unrealircd-3.2.8.1.ebuild,
+  unrealircd-3.2.8.1-r1.ebuild:
+  Security commit: Copying stable keywords from 3.2.8.1 to 3.2.8.1-r1. The
+  source tarball differs only in the backdoor which is removed. Removing
+  vulnerable ebuild. Reference: bug 323691
+
+*unrealircd-3.2.8.1-r1 (12 Jun 2010)
+
+  12 Jun 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +unrealircd-3.2.8.1-r1.ebuild:
+  Revision bump wrt security #323691.
 
   22 Dec 2009; Víctor Ostorga <vostorga@gentoo.org> files/unrealircd.rc:
   Fixing stop sequence in init script, patch thanks to Lars Wendler

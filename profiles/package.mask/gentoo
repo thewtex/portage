@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11615 2010/06/11 10:38:40 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11632 2010/06/13 11:09:16 hwoarang Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -31,8 +31,92 @@
 
 #--- END OF EXAMPLES ---
 
+# Markos Chandras <hwoarang@gentoo.org> (13 Jun 2010)
+# Masking lessfs beta releases
+=sys-fs/lessfs-1.1.0_beta*
+
+# Jeremy Olexa <darkside@gentoo.org> (12 Jun 2010)
+# Use in-kernel drivers. Removed in 60 days by treecleaners. bug 321535
+net-wireless/prism54
+
+# Jeremy Olexa <darkside@gentoo.org> (12 Jun 2010)
+# Orphaned library, nothing uses it. Removed in 60 days by treecleaners.
+# bug 316535
+net-libs/libbo2k
+
+# Jeremy Olexa <darkside@gentoo.org> (12 Jun 2010)
+# Nothing uses it, replaced by app-pda/libimobiledevice.
+# Removed in 60 days by treecleaners. bug 315509
+app-pda/libiphone
+
+# Jeremy Olexa <darkside@gentoo.org> (12 Jun 2010)
+# Depends on HAL, replacement is x11-plugins/wmudmount
+# Removed in 60 days by treecleaners. bug 313395
+x11-plugins/wmvolman
+
+# Jeremy Olexa <darkside@gentoo.org> (12 Jun 2010)
+# Dead upstream, last update from 2005, no maintainer.
+# Removed in 60 days by treecleaners, bug 311533
+app-misc/mved
+
+# Jeremy Olexa <darkside@gentoo.org> (12 Jun 2010)
+# Removed at maintainer's request. Needs new maintainer to stick around.
+# Removed in 60 days by treecleaners, bug 311189
+app-emulation/point2play
+
+# Jeremy Olexa <darkside@gentoo.org> (12 Jun 2010)
+# Does not compile with latest kernel. Not supported by upstream
+# Removed in 60 days by treecleaners, bug 309655
+net-firewall/ipp2p
+
+# Jeremy Olexa <darkside@gentoo.org> (12 Jun 2010)
+# Dead upstream, last release from 2005. Nothing depends on it. Multiple open
+# bugs. Removed in 60 days by treecleaners, bug 309113
+app-pda/pilot-mailsync
+
+# Jeremy Olexa <darkside@gentoo.org> (12 Jun 2010)
+# Fails with forced as-needed but most importantly no maintainer.
+# Removed in 60 days by treecleaners, bug 277640
+app-text/fmt-ptrn
+
+# Jeremy Olexa <darkside@gentoo.org> (12 Jun 2010)
+# Many, many ebuild issues. No maintainer
+# Removed in 60 days by treecleaners, bug 261745
+net-misc/hamachi
+
+# Jeremy Olexa <darkside@gentoo.org> (12 Jun 2010)
+# Depends on deprecated gtk functionality in media-libs/imlib
+# Removed in 60 days by treecleaners, bug 215341
+x11-plugins/gkacpi
+
+# Jeremy Olexa <darkside@gentoo.org> (12 Jun 2010)
+# Old, useless, no maintainer
+# Removed in 60 days by treecleaners, bug 185292
+net-wireless/ieee80211
+
+# Hans de Graaff <graaff@gentoo.org> (12 Jun 2010)
+# Abandoned by upstream, no releases since 2003. Test suite fails and
+# generates many deprecation warnings.
+# Masked for removal in 30 days.
+dev-ruby/amrita
+
+# Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org> (12 Jun 2010)
+# Masked for quick tests of the merged amarok ebuild
+=media-sound/amarok-2.3.1-r1
+
+# Ben de Groot <yngwin@gentoo.org> (11 Jun 2010)
+# Masked for removal in 30 days, see bug #315067
+media-video/whaawmp
+
+# Pacho Ramos <pacho@gentoo.org> (11 Jun 2010)
+# Drop old and deprecated bluez-libs and bluez-utils. Use bluez instead.
+# Masked for removal in 30 days.
+# See bug 301630.
+net-wireless/bluez-libs
+net-wireless/bluez-utils
+
 # Samuli Suominen <ssuominen@gentoo.org> (11 Jun 2010)
-# Only used by old bluez-libs and bluez-utils. 
+# Only used by old bluez-libs and bluez-utils.
 # Masked for removal in 30 days.
 # See bug 301630.
 gnome-extra/gnome-vfs-obexftp
@@ -47,9 +131,9 @@ gnome-extra/gnome-vfs-obexftp
 app-crypt/hmaccalc
 
 # Tony Vroon <chainsaw@gentoo.org> (09 Jun 2010)
-# Alpha releases, should you wish to dip your toes in the 
+# Alpha releases, should you wish to dip your toes in the
 # water... please be aware of the sharks.
-# Bugs upstream: http://jira.atheme.org/ and *not* into 
+# Bugs upstream: http://jira.atheme.org/ and *not* into
 # the Gentoo bug tracker.
 =media-plugins/audacious-plugins-2.4_alpha*
 =media-sound/audacious-2.4_alpha*
@@ -184,10 +268,6 @@ dev-ruby/nimage
 #   not needed by any package
 dev-perl/Data-Alias
 
-# Ulrich Mueller <ulm@gentoo.org> (13 May 2010)
-# No longer needed virtual, masked for removal in 30 days, bug 319601.
-virtual/gnus
-
 # Tony Vroon <chainsaw@gentoo.org> (11 May 2010)
 # The following Asterisk add-ons fail to build correctly against
 # current Asterisk 1.6.1 and 1.6.2 branch ebuilds. These are masked for
@@ -247,11 +327,6 @@ sci-mathematics/octave-forge
 # Fails to build, 1.6.1/1.6.2 patched to provide equivalent functionality.
 # Removal at end of May.
 net-misc/asterisk-app_nv_faxdetect
-
-# Tomáš Chvátal <scarabeus@gentoo.org> (30 Apr 2010)
-# Mask not finished ebuild. Needs .pc file cleanup and
-# install paths checking.
->sci-geosciences/grass-6.4.0_rc5
 
 # Tomáš Chvátal <scarabeus@gentoo.org> (27 Apr 2010)
 # Replaced by >sci-libs/netcdf-4.0
@@ -433,6 +508,7 @@ games-strategy/xscorch
 # packages, this is an exception to current policy because some people
 # from X11 team needed 3D support even with bleeding edge Xorg.
 =app-emulation/emul-linux-x86-opengl-20100410_pre
+=app-emulation/emul-linux-x86-opengl-20100611-r99
 
 # Robert Piasek <dagger@gentoo.org> (09 Apr 2010)
 # Mask as it does have some regressions comparing to version 3
@@ -479,13 +555,6 @@ games-strategy/castle-combat
 # Mounir Lamouri <volkmar@gentoo.org> (24 Mar 2010)
 # Masked because breaking backward compatibility and still not needed.
 >dev-util/bam-0.2.0
-
-# Tomáš Chvátal <scarabeus@gentoo.org> (22 Mar 2010)
-# QA: removal on 22. 5. 2010
-# Masked for removal due to major packaging issues
-# that were not addressed by maintainers in timely
-# manner. See bug #150091.
-app-forensics/samhain
 
 # Alistair Bush <ali_bush@gentoo.org> (22 Mar 2010)
 # Masked due to producing build failures in stable
@@ -640,12 +709,6 @@ dev-db/mysql-community
 =net-misc/networkmanager-openvpn-0.7.999*
 =gnome-extra/nm-applet-0.7.999*
 
-# Hans de Graaff <graaff@gentoo.org> (23 Jan 2010)
-# Installs only for ruby 1.8 but it actually a JRuby package
-# that installs .jar files. Deprecated.
-# Last rited: to be removed in 30 days.
-dev-ruby/activerecord-jdbc
-
 # Matthias Schwarzott <zzam@gentoo.org> (22 Jan 2010)
 # since long time included in media-tv/gentoo-vdr-scripts
 media-tv/vdr-dvd-scripts
@@ -666,9 +729,9 @@ net-libs/libjingle
 
 # Patrick Lauer <patrick@gentoo.org> (07 Jan 2010)
 # Mask for removal. Migrate to dev-db/postgresql-{base,server}
-# still being used.  (please fix deps before masking again - halcy0n)
-#dev-db/libpq
-#dev-db/postgresql
+# still being used.
+dev-db/libpq
+dev-db/postgresql
 
 # Pawel Hajdan jr <phajdan.jr@gentoo.org> (07 Jan 2010)
 # Dev channel releases are only for people who are developers or want more
@@ -746,23 +809,23 @@ x11-apps/xfsinfo
 # or if it's specific to the ebuild, any bugs that get
 # filed require a patch. i.e. if you can't patch it
 # you shouldn't be running this version
->=media-tv/mythtv-0.23_alpha1
->=x11-themes/mythtv-themes-0.23_alpha1
->=x11-themes/mythtv-themes-extra-0.23_alpha1
->=media-plugins/mytharchive-0.23_alpha1
->=media-plugins/mythbrowser-0.23_alpha1
->=media-plugins/mythcontrols-0.23_alpha1
->=media-plugins/mythflix-0.23_alpha1
->=media-plugins/mythgallery-0.23_alpha1
->=media-plugins/mythgame-0.23_alpha1
->=media-plugins/mythmovies-0.23_alpha1
->=media-plugins/mythmusic-0.23_alpha1
->=media-plugins/mythnews-0.23_alpha1
->=media-plugins/mythphone-0.23_alpha1
->=media-plugins/mythvideo-0.23_alpha1
->=media-plugins/mythweather-0.23_alpha1
->=www-apps/mythweb-0.23_alpha1
->=media-plugins/mythzoneminder-0.23_alpha1
+>=media-tv/mythtv-0.24_alpha1
+>=x11-themes/mythtv-themes-0.24_alpha1
+>=x11-themes/mythtv-themes-extra-0.24_alpha1
+>=media-plugins/mytharchive-0.24_alpha1
+>=media-plugins/mythbrowser-0.24_alpha1
+>=media-plugins/mythcontrols-0.24_alpha1
+>=media-plugins/mythgallery-0.24_alpha1
+>=media-plugins/mythgame-0.24_alpha1
+>=media-plugins/mythmovies-0.24_alpha1
+>=media-plugins/mythmusic-0.24_alpha1
+>=media-plugins/mythnetvision-0.24_alpha1
+>=media-plugins/mythnews-0.24_alpha1
+>=media-plugins/mythphone-0.24_alpha1
+>=media-plugins/mythvideo-0.24_alpha1
+>=media-plugins/mythweather-0.24_alpha1
+>=www-apps/mythweb-0.24_alpha1
+>=media-plugins/mythzoneminder-0.24_alpha1
 
 # Rémi Cardona <remi@gentoo.org> (05 Nov 2009)
 # Broken, will stay masked until fixed.
@@ -927,12 +990,6 @@ net-misc/amazonmp3
 # Benedikt Böhm <hollow@gentoo.org> (19 Apr 2009)
 # masked for testing
 =net-analyzer/centreon-1.4.2.7
-
-# Christian Faulhammer <fauli@gentoo.org> (13 Apr 2009)
-# Ulrich Mueller <ulm@gentoo.org>
-# Thomas Anderson <gentoofan23@gentoo.org>
-# Live version
-~app-doc/pms-99999999
 
 # Tiziano Müller <dev-zero@gentoo.org> (08 Apr 2009)
 # pre-releases

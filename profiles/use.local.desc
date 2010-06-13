@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5641 2010/06/10 18:48:03 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5653 2010/06/13 10:07:48 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -358,16 +358,11 @@ app-forensics/afflib:s3 - Enable S3
 app-forensics/aide:audit - Enable support for sys-process/audit
 app-forensics/libewf:rawio - Enables raw IO handling
 app-forensics/rdd:rawio - Enables raw IO handling
-app-forensics/samhain:login-watch - Compile in the module to watch for login/logout events
-app-forensics/samhain:mounts-check - Compile in the module to check for correct mount options
-app-forensics/samhain:netclient - Compile a client, rather than a standalone version 
-app-forensics/samhain:netserver - Compile a server, rather than a standalone version 
-app-forensics/samhain:suidcheck - Compile in the module to check file system for SUID/SGID binaries
-app-forensics/samhain:userfiles - Compile in the module to check for files in user home directories
 app-forensics/sleuthkit:aff - Enable extra aff formats
 app-forensics/sleuthkit:dbtool - Add patch for dbtool interface from PyFlag
 app-forensics/sleuthkit:ewf - Enable libewf support
 app-i18n/ibus:gconf - Enable support for gnome-base/gconf
+app-i18n/ibus-mozc:ibus - Enable support for app-i18n/ibus
 app-i18n/ibus-table-xingma:extra-phrases - Add extra phrases into builded Engine
 app-i18n/im-ja:anthy - Support for Anthy input method
 app-i18n/im-ja:skk - Support for SKK input method
@@ -395,14 +390,14 @@ app-misc/beagle:debug - Enables debug XML dumps of all messages passed between t
 app-misc/beagle:doc - Builds programmer documentation for Beagle using app-doc/monodoc.
 app-misc/beagle:eds - Enables Beagle to index the Addressbook and Calendar from mail-client/evolution stored in gnome-extra/evolution-data-server. The information is accessed using dev-dotnet/evolution-sharp.
 app-misc/beagle:epiphany - Compiles and installs the extension for either www-client/epiphany. This extension helps Beagle index the websites you visit.
-app-misc/beagle:firefox - Compiles and installs the extension for either www-client/mozilla-firefox or www-client/mozilla-firefox-bin. This extension helps Beagle index the websites you visit.
+app-misc/beagle:firefox - Compiles and installs the extension for either www-client/mozilla-firefox or www-client/firefox-bin. This extension helps Beagle index the websites you visit.
 app-misc/beagle:galago - Allows Beagle to get status information from applications such as Pidgin to show in the search results.
 app-misc/beagle:google - Enables google (gmail etc.) indexing support.
 app-misc/beagle:gtk - Enables the GTK+ Beagle Search UI for showing search results. This is the default GUI for Beagle.
 app-misc/beagle:inotify - Enable inotify filesystem monitoring support 
 app-misc/beagle:ole - Enables OLE (Object Linking and Editing) support via dev-dotnet/gsf-sharp, app-text/wv, and app-office/gnumeric(ssindex). These allow Beagle to index MS Powerpoint, Word, and Spreadsheet Documents.
 app-misc/beagle:pdf - Enables support for indexing of the PDF (Portable Document Format) file format using `pdfinfo` and `pdftotext` from app-text/poppler
-app-misc/beagle:thunderbird - Compiles and installs the extension for either mail-client/mozilla-thunderbird or mail-client/mozilla-thunderbird-bin. This extension helps Beagle index your mails.
+app-misc/beagle:thunderbird - Compiles and installs the extension for either mail-client/thunderbird or mail-client/thunderbird-bin. This extension helps Beagle index your mails.
 app-misc/beagle:xscreensaver - Allow Beagle to detect when the screensaver is switched on. This allows Beagle to use more resources and index faster when the computer is not in use.
 app-misc/booh:transcode - Use media-video/transcode to extract video thumbnails
 app-misc/ccpublisher:zope - Install zope stuff
@@ -874,7 +869,6 @@ dev-lang/php:intl - Enables the intl extension for extended internalization supp
 dev-lang/php:java-external - Use the external java extension rather than the bundled one
 dev-lang/php:json - Enable JSON support
 dev-lang/php:ldap-sasl - Add SASL support for the PHP LDAP extension
-dev-lang/php:mbstring - Add support for the Multi-Byte String extension
 dev-lang/php:mysqlnd - Use native driver for mysql, mysqli, PDO_Mysql
 dev-lang/php:pcre - Adds support for Perl Compatible Regular Expressions (deprecated: always "on" in php 5.3)
 dev-lang/php:pdo - Enable the bundled PDO extensions
@@ -1025,6 +1019,8 @@ dev-perl/HTML-Mason:modperl - Enable www-apache/mod_perl support
 dev-perl/PDL:badval - Enable badval support
 dev-perl/Panotools-Script:gui -  Installs GUIs for some tools 
 dev-perl/Sysadm-Install:hammer - Enable hammer() funtion to run a command in the shell and simulate a user hammering the ENTER key to accept defaults on prompts
+dev-php/PEAR-HTTP_Download:minimal - Do not include support for PEAR-MIME_Type
+dev-php/PEAR-HTTP_Download:postgres - Send postgres LOBs without buffering
 dev-php/PEAR-PHP_Shell:auto-completion - Enable tab-completion
 dev-php5/ZendFramework:cli - Enables the CLI
 dev-php5/ZendFramework:doc - Installs the documentation
@@ -1590,10 +1586,6 @@ mail-client/mail-notification:gmail - Enable Gmail mailbox checking
 mail-client/mail-notification:mh - Enable MH mailbox checking
 mail-client/mail-notification:pop - Enable support for pop
 mail-client/mail-notification:sylpheed - Enable support for MH mailboxes used by mail-client/sylpheed
-mail-client/mozilla-thunderbird:custom-optimization - Enable user CFLAGS
-mail-client/mozilla-thunderbird:lightning - Enable calendar support
-mail-client/mozilla-thunderbird:mozdom - Enable Mozilla's DOM inspector
-mail-client/mozilla-thunderbird:system-sqlite - Use the system-wide dev-db/sqlite installation with secure-delete enabled
 mail-client/mutt:gpg - Enable support for app-crypt/gpgme
 mail-client/mutt:pop - Enable support for pop
 mail-client/mutt:sidebar - Use the vanilla tree + sidebar patch
@@ -1604,6 +1596,10 @@ mail-client/nail:net - Enable network support (thus enabling POP, IMAP and SMTP)
 mail-client/pine:largeterminal - Add support for large terminals by doubling the size of pine's internal display buffer
 mail-client/pine:passfile - Adds support for caching IMAP passwords into a file between sessions
 mail-client/squirrelmail:filter - Enable mail-filter/amavisd-new filtering
+mail-client/thunderbird:custom-optimization - Enable user CFLAGS
+mail-client/thunderbird:lightning - Enable calendar support
+mail-client/thunderbird:mozdom - Enable Mozilla's DOM inspector
+mail-client/thunderbird:system-sqlite - Use the system-wide dev-db/sqlite installation with secure-delete enabled
 mail-filter/MailScanner:exim - Set mail-mta to used MTA
 mail-filter/MailScanner:postfix - Set mail-mta/postfix to used MTA
 mail-filter/MailScanner:spamassassin - Enable usage of mail-filter/spamassassin for spam protection
@@ -1688,6 +1684,7 @@ mail-mta/ssmtp:md5sum - Enables MD5 summing for ssmtp
 media-fonts/culmus-ancient:fontforge - Use media-gfx/fontforge to build fonts from source
 media-fonts/dejavu:fontforge - Use media-gfx/fontforge to build fonts from source
 media-fonts/intlfonts:bdf - Installs BDF fonts in addition to PCF
+media-fonts/liberation-fonts:fontforge - Use media-gfx/fontforge to build fonts from source
 media-fonts/mplus-outline-fonts:ipafont - Generates new fonts merged with media-fonts/ja-ipafonts
 media-fonts/sil-charis:compact - Use more compactly spaced font
 media-fonts/terminus-font:a-like-o - Changes view of letter 'a' - a looks like o (see homepage)
@@ -1828,6 +1825,8 @@ media-libs/libsdl:ps3 - Build the PS3 video driver
 media-libs/libsdl:tslib - Build with tslib support for touchscreen devices
 media-libs/libsdl:video - Control video support (disable at your own risk)
 media-libs/libvpx:postproc - Enable additional post processing filters
+media-libs/libvpx:sse3 - Enable optimization for SSE3 capable chips
+media-libs/libvpx:ssse3 - faster floating point optimization for SSSE3 capable chips (Intel Core 2 and later chips)
 media-libs/mediastreamer:ilbc - Use of iLBC (RFC3951) codec plugin
 media-libs/mediastreamer:video - Enable video support
 media-libs/mesa:gallium - Gallium3D is new architecture for building 3D graphics drivers.
@@ -1952,6 +1951,8 @@ media-sound/amarok:daap -  Enable the scripts for music sharing through DAAP. Th
 media-sound/amarok:embedded -  Use libmysqld, MySQL embedded server library. Try disabling this if you encounter -PIC related in amarok, it will make amarok rely only on standalone MySQL server. 
 media-sound/amarok:lastfm - Enable Last.fm streaming services support through media-libs/liblastfm
 media-sound/amarok:mp3tunes - Enable mp3tunes integration
+media-sound/amarok:player - Build the player
+media-sound/amarok:utils - Build the utils - old media-sound/amarok-utils
 media-sound/aqualung:ifp - Enable support for iRiver iFP portable audio players
 media-sound/aqualung:lua - Enable support for programmable title formatting with dev-lang/lua
 media-sound/aqualung:mac - Enable support for decoding Monkey's Audio files
@@ -2216,6 +2217,7 @@ media-video/ffmpeg:schroedinger - Enable Dirac video support (an advanced royalt
 media-video/ffmpeg:ssse3 - faster floating point optimization for SSSE3 capable chips (Intel Core 2 and later chips)
 media-video/ffmpeg:vaapi - Enables VAAPI (Video Acceleration API) for hardware decoding
 media-video/ffmpeg:vdpau - Enables VDPAU decoders (requires nVidia video cards to offload CPU processing to video card
+media-video/ffmpeg:vpx - Enables vp8 codec support using libvpx
 media-video/ffmpeg2theora:kate - Adds support for Ogg Kate subtitles via libkate.
 media-video/ffprobe:perl - Installs tools written in perl to produce plots based on video frame bitrate and size
 media-video/griffith:csv - Enable proper support for csv import (respectively auto-detection encoding of csv files)
@@ -2268,6 +2270,7 @@ media-video/mplayer:tremor - Enable internal support for Vorbis
 media-video/mplayer:twolame - Enable twolame MPEG-2 encoding
 media-video/mplayer:vdpau - Enables experimental VDPAU support (requires nVidia video cards) to offload MPEG2/MPEG4/VC1/WMV CPU processing to video card
 media-video/mplayer:vidix - Support for vidix video output
+media-video/mplayer:vpx - Enables vp8 codec support using libvpx
 media-video/mplayer:xanim - Enables support for xanim based codecs
 media-video/mplayer:xvmc - Enables X-Video Motion Compensation support
 media-video/mplayer:zoran - Enables ZR360[56]7/ZR36060 video output
@@ -2280,7 +2283,7 @@ media-video/qdvdauthor:plugins -  Install additional plugins.
 media-video/qdvdauthor:templates -  Install various templates. 
 media-video/rtmpdump:gnutls - Use GnuTLS library instead of the default OpenSSL
 media-video/rtmpdump:polarssl - Use PolarSSL library instead of the default OpenSSL
-media-video/totem:bluetooth - Enable support for user-presence detection via the user's bluetooth handset using net-wireless/bluez-libs
+media-video/totem:bluetooth - Enable support for user-presence detection via the user's bluetooth handset using net-wireless/bluez
 media-video/totem:galago - Enable the galago plugin
 media-video/totem:iplayer - Enable BBC player support
 media-video/totem:lirc - Enable support for controlling Totem with a remote control using app-misc/lirc
@@ -3908,6 +3911,7 @@ x11-libs/qt-qt3support:phonon -  Enable phonon configuration dialog in qtconfig
 x11-libs/qt-script:exceptions - Add support for exceptions - like catching them inside the event loop (recommended by Nokia)
 x11-libs/qt-sql:exceptions - Add support for exceptions - like catching them inside the event loop (recommended by Nokia)
 x11-libs/qt-sql:qt3support - Enable the Qt3Support libraries for Qt4
+x11-libs/qt-sql:tds - Enable support for freetds databases driver
 x11-libs/qt-svg:exceptions - Add support for exceptions - like catching them inside the event loop (recommended by Nokia)
 x11-libs/qt-test:exceptions - Add support for exceptions - like catching them inside the event loop (recommended by Nokia)
 x11-libs/qt-webkit:exceptions - Add support for exceptions - like catching them inside the event loop (recommended by Nokia)

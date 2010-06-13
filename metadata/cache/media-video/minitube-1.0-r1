@@ -1,5 +1,5 @@
-x11-libs/qt-gui:4[accessibility] kde? ( || ( media-sound/phonon[gstreamer?] x11-libs/qt-phonon:4[gstreamer?] ) ) !kde? ( || ( x11-libs/qt-phonon:4[gstreamer?] media-sound/phonon[gstreamer?] ) ) gstreamer? ( media-plugins/gst-plugins-soup media-plugins/gst-plugins-ffmpeg media-plugins/gst-plugins-faac media-plugins/gst-plugins-faad )
-x11-libs/qt-gui:4[accessibility] kde? ( || ( media-sound/phonon[gstreamer?] x11-libs/qt-phonon:4[gstreamer?] ) ) !kde? ( || ( x11-libs/qt-phonon:4[gstreamer?] media-sound/phonon[gstreamer?] ) ) gstreamer? ( media-plugins/gst-plugins-soup media-plugins/gst-plugins-ffmpeg media-plugins/gst-plugins-faac media-plugins/gst-plugins-faad )
+x11-libs/qt-gui:4[accessibility] gstreamer? ( kde? ( || ( media-sound/phonon[gstreamer] x11-libs/qt-phonon:4 ) ) !kde? ( || ( x11-libs/qt-phonon media-sound/phonon[gstreamer] ) ) media-plugins/gst-plugins-soup media-plugins/gst-plugins-ffmpeg media-plugins/gst-plugins-faac media-plugins/gst-plugins-faad ) !gstreamer? ( media-sound/phonon[-gstreamer] )
+x11-libs/qt-gui:4[accessibility] gstreamer? ( kde? ( || ( media-sound/phonon[gstreamer] x11-libs/qt-phonon:4 ) ) !kde? ( || ( x11-libs/qt-phonon media-sound/phonon[gstreamer] ) ) media-plugins/gst-plugins-soup media-plugins/gst-plugins-ffmpeg media-plugins/gst-plugins-faac media-plugins/gst-plugins-faad ) !gstreamer? ( media-sound/phonon[-gstreamer] )
 0
 http://flavio.tordini.org/files/minitube/minitube-1.0.tar.gz
 
