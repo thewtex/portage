@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5653 2010/06/13 10:07:48 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5661 2010/06/14 08:48:06 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -1291,6 +1291,7 @@ gnome-base/gvfs:fuse - Enables fuse mount points in $HOME/.gvfs for legacy appli
 gnome-base/gvfs:gdu - Enable sys-apps/gnome-disk-utility integration
 gnome-base/gvfs:http - Enable the HTTP/DAV backend using net-libs/libsoup-gnome
 gnome-base/gvfs:udev - Enable udev base replacement code for cdda feature
+gnome-base/libgnomecanvas:glade - Enable glade support
 gnome-base/librsvg:tools - Build miscellaneous tools
 gnome-base/nautilus:beagle - Enables support for searching using the Beagle (app-misc/beagle) desktop search tool
 gnome-base/nautilus:tracker - Enables support for searching using the Tracker (app-misc/tracker) search tool
@@ -1301,6 +1302,7 @@ gnome-extra/file-browser-applet:gtkhotkey - Enable hotkey support via x11-libs/g
 gnome-extra/gget:epiphany - Install epiphany extensions
 gnome-extra/gnome-do-plugins:banshee - Enables the Banshee (media-sound/banshee) plugin
 gnome-extra/gnome-games:artworkextra - Installs extra artwork for various games
+gnome-extra/gnome-games:sound - Enable sound using libcanberra
 gnome-extra/gnome-lirc-properties:policykit - Use sys-auth/policykit to gain privileges to change configuration files
 gnome-extra/gnome-media:gnomecd - Builds the GNOME CD Player
 gnome-extra/gnome-media:sound - Adds support for sound notification themes using media-libs/libcanberra
@@ -1458,6 +1460,7 @@ mail-client/evolution:mono - Build the dev-lang/mono plugins included in Evoluti
 mail-client/evolution:networkmanager - Allows Evolution to automagically toggle online/offline mode by talking to net-misc/networkmanager and getting the current network state
 mail-client/evolution:pda - Enable support for syncing Evolution Calendar and Addressbooks with PDAs using app-pda/gnome-pilot and app-pda/gnome-pilot-conduit
 mail-client/evolution:profile - Build support for profiling Evolution for development purposes
+mail-client/evolution:sound - Use Canberra and Canberra-GTK for sound
 mail-client/mail-notification:gmail - Enable Gmail mailbox checking
 mail-client/mail-notification:mh - Enable MH mailbox checking
 mail-client/mail-notification:pop - Enable support for pop
@@ -1927,9 +1930,6 @@ media-sound/qsampler:libgig - Enable libgig support for loading Gigasampler file
 media-sound/qtractor:dssi - Enable support for DSSI Soft Synth Interface
 media-sound/qtractor:rubberband - Enable support for in-place audio clip pitch-shifting through the rubberband library
 media-sound/qtscrobbler:cli - Build commandline client
-media-sound/quodlibet:trayicon - Enable support for trayicon
-media-sound/quodlibet:tta - Enable TTA (True-Audio Loseless) support
-media-sound/quodlibet:wma - Enable support for Windows Media Audio
 media-sound/rezound:16bittmp - Use 16bit temporary files (default 32bit float), useful for slower computers
 media-sound/rezound:soundtouch - compile with support for soundtouch
 media-sound/rhythmbox:brasero - Enable CD burning via app-cdr/brasero rather than gnome-extra/nautilus-cd-burner
@@ -2484,6 +2484,7 @@ net-im/ejabberd:mod_srl - Build LDAP shared roster module (https://alioth.debian
 net-im/ejabberd:mod_statsdx - Measures several statistics, and provides a new section in ejabberd Web Admin to view them.
 net-im/ejabberd:web - Enable web admin interface
 net-im/empathy:applet - Enable Empathy's applets for gnome-base/gnome-panel
+net-im/empathy:nautilus - Enable nautilus-sendto support
 net-im/empathy:webkit - Build support for Adium-style HTML-based conversation window themes using net-libs/webkit-gtk
 net-im/gajim:idle - Enable idle module
 net-im/gajim:srv - SRV capabilities
@@ -3232,7 +3233,9 @@ sys-apps/flashrom:nvidia - Enable NVIDIA programmer
 sys-apps/flashrom:satasii - Enable programmer for SiI SATA controllers
 sys-apps/flashrom:serprog - Enable Serial Flasher programmer
 sys-apps/flashrom:wiki - Enable wiki informations, like supported devices etc.
-sys-apps/gnome-disk-utility:nautilus - enable gnome-base/nautilus extension.
+sys-apps/gnome-disk-utility:fat - Include FAT16/FAT32 support (sys-fs/dosfstools)
+sys-apps/gnome-disk-utility:nautilus - Enable gnome-base/nautilus extension.
+sys-apps/gnome-disk-utility:remote-access - Enable access to remote udisks daemons.
 sys-apps/hal:acpi - Enables HAL to attempt to read from /proc/acpi/event, if unavailable, HAL will read events from sys-power/acpid. If you need multiple acpi readers, ensure acpid is in your default runlevel (rc-update add acpid default) along with HAL. This will also enable HAL to read Toshiba and IBM acpi events which do not get sent via /proc/acpi/event
 sys-apps/hal:consolekit - Enables HAL to interact with consolekit for determining whether a given process is running on behalf of the person setting at the console.
 sys-apps/hal:crypt - Allows HAL to mount volumes that are encrypted using LUKS. sys-fs/cryptsetup-luks which has recently been renamed to sys-fs/cryptsetup allows you to create such encrypted volumes. HAL will be able to handle volumes that are removable or fixed.
@@ -3525,6 +3528,7 @@ www-apps/redmine:mercurial - Enable support for dev-vcs/mercurial
 www-apps/redmine:openid - Enable support for OpenID
 www-apps/redmine:passenger - Enable support for www-apache/passenger
 www-apps/rt:lighttpd - Add www-servers/lighttpd support
+www-apps/trac:i18n - Enable support for i18n with dev-python/Babel
 www-apps/viewvc:cvsgraph - Add dev-util/cvsgraph support to show graphical views of revisions and branches
 www-apps/viewvc:mod_python - Add www-apache/mod_python support
 www-apps/viewvc:mod_wsgi - Add www-apache/mod_wsgi support
@@ -3623,6 +3627,7 @@ x11-libs/cairo:opengl - When used along with USE=glitz, enables glitz-glx usage.
 x11-libs/fltk:games - Builds and installs some extra games
 x11-libs/gtkdatabox:glade - Build with libglade and glade-3 supports, which includes a glade's module for GtkDataBox widget
 x11-libs/gtkmathview:t1lib - Enable media-libs/t1lib support
+x11-libs/gtksourceview:glade - Install a glade catalog file
 x11-libs/libSM:uuid - Use UUID for session identification instead of IP address and system time. 
 x11-libs/libfm:demo - Build demo
 x11-libs/libmatchbox:pango - Enable x11-libs/pango support
@@ -3655,7 +3660,6 @@ x11-libs/qt-qt3support:phonon -  Enable phonon configuration dialog in qtconfig
 x11-libs/qt-script:exceptions - Add support for exceptions - like catching them inside the event loop (recommended by Nokia)
 x11-libs/qt-sql:exceptions - Add support for exceptions - like catching them inside the event loop (recommended by Nokia)
 x11-libs/qt-sql:qt3support - Enable the Qt3Support libraries for Qt4
-x11-libs/qt-sql:tds - Enable support for freetds databases driver
 x11-libs/qt-svg:exceptions - Add support for exceptions - like catching them inside the event loop (recommended by Nokia)
 x11-libs/qt-test:exceptions - Add support for exceptions - like catching them inside the event loop (recommended by Nokia)
 x11-libs/qt-webkit:exceptions - Add support for exceptions - like catching them inside the event loop (recommended by Nokia)
