@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/epiphany/epiphany-2.26.3-r2.ebuild,v 1.4 2010/01/18 00:49:43 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/epiphany/epiphany-2.26.3-r2.ebuild,v 1.6 2010/06/13 21:20:56 pacho Exp $
 
 EAPI="2"
 
