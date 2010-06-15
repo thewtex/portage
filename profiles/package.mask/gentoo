@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11637 2010/06/14 08:54:12 voyageur Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11640 2010/06/14 20:35:17 voyageur Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,10 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Peter Volkov <pva@gentoo.org> (13 Jun 2010)
+# Mask release candidate
+=net-analyzer/wireshark-1.4.0*
 
 # Matti Bickel <mabi@gentoo.org> (13 Jun 2010)
 # Dead upstream (bug #321685)
@@ -239,11 +243,6 @@ dev-lisp/cl-pop
 #
 # Removal on 2010-07-25
 media-video/w3cam
-
-# Andreas Proschofsky <suka@gentoo.org> (23 May 2010)
-# Mask release candidates
->=app-office/openoffice-bin-3.2.1_rc1
->=app-office/openoffice-3.2.1_rc1
 
 # Justin Lecher <jlec@gentoo.org> (22 May 2010)
 # Mask until all deps are fixed for bug 314053
@@ -589,12 +588,6 @@ games-strategy/castle-combat
 #
 # Removal in 30 days
 mail-filter/MailScanner
-
-# Bernard Cafarelli <voyageur@gentoo.org> (15 Mar 2010)
-# Problematic behavior with special keys (french Alt Gr,
-# multimedia keys, ...), bug #304743
-=net-misc/nx-3.4.0-r1
-=net-misc/nxnode-3.4.0.11
 
 # Torsten Veller <tove@gentoo.org> (14 Mar 2010)
 # Mask "End Of Life" versions
