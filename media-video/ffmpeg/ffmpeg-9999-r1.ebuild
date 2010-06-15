@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/ffmpeg/ffmpeg-9999-r1.ebuild,v 1.35 2010/06/06 23:11:12 lu_zero Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/ffmpeg/ffmpeg-9999-r1.ebuild,v 1.37 2010/06/12 21:54:13 spatz Exp $
 
 EAPI=2
 SCM=""
@@ -24,12 +24,16 @@ FFMPEG_REVISION="${PV#*_p}"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
+if [[ ${PV} == *9999* ]]; then
+	KEYWORDS=""
+else
+	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
+fi
 IUSE="+3dnow +3dnowext alsa altivec cpudetection custom-cflags debug dirac
 	  doc ieee1394 +encode faac faad gsm jack +mmx +mmxext vorbis test
 	  theora threads x264 xvid network zlib sdl X mp3 amr
 	  oss pic rtmp schroedinger +hardcoded-tables bindist v4l v4l2
-	  speex +ssse3 jpeg2k vaapi vdpau"
+	  speex +ssse3 jpeg2k vaapi vdpau vpx"
 
 VIDEO_CARDS="nvidia"
 
@@ -60,6 +64,7 @@ RDEPEND="sdl? ( >=media-libs/libsdl-1.2.10 )
 	jack? ( media-sound/jack-audio-connection-kit )
 	X? ( x11-libs/libX11 x11-libs/libXext )
 	vaapi? ( x11-libs/libva )
+	vpx? ( media-libs/libvpx )
 	video_cards_nvidia? (
 		vdpau? ( x11-libs/libvdpau )
 	)"
@@ -67,6 +72,7 @@ RDEPEND="sdl? ( >=media-libs/libsdl-1.2.10 )
 DEPEND="${RDEPEND}
 	>=sys-devel/make-3.81
 	dirac? ( dev-util/pkgconfig )
+	rtmp? ( dev-util/pkgconfig )
 	schroedinger? ( dev-util/pkgconfig )
 	mmx? ( dev-lang/yasm )
 	doc? ( app-text/texi2html )
@@ -133,7 +139,7 @@ src_configure() {
 	# Decoders
 	use amr && myconf="${myconf} --enable-libopencore-amrwb
 		--enable-libopencore-amrnb"
-	for i in gsm faad dirac rtmp schroedinger speex; do
+	for i in gsm faad dirac rtmp schroedinger speex vpx; do
 		use $i && myconf="${myconf} --enable-lib$i"
 	done
 	use jpeg2k && myconf="${myconf} --enable-libopenjpeg"

@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/php/php-5.3.2.ebuild,v 1.5 2010/06/01 16:17:05 mabi Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/php/php-5.3.2.ebuild,v 1.7 2010/06/12 22:05:54 mabi Exp $
 
 EAPI=2
 
@@ -80,15 +80,15 @@ IUSE="${IUSE}
 	concurrentmodphp threads"
 
 IUSE="${IUSE} adabas bcmath berkdb birdstep bzip2 calendar cdb cjk
-	crypt ctype curl curlwrappers db2 dbmaker debug doc empress
-	empress-bcs enchant esoob exif frontbase fileinfo filter firebird
-	flatfile ftp gd gd-external gdbm gmp hash iconv imap inifile
-	interbase intl iodbc ipv6 json kerberos ldap ldap-sasl libedit
-	mbstring mssql mysql mysqlnd mysqli nls oci8
-	oci8-instant-client odbc pcntl pdo phar pic posix postgres qdbm
-	readline recode sapdb session sharedext sharedmem
-	simplexml snmp soap sockets solid spell sqlite sqlite3 ssl suhosin
-	sybase-ct sysvipc tidy tokenizer truetype unicode wddx
+	crypt +ctype curl curlwrappers db2 dbmaker debug doc empress
+	empress-bcs enchant esoob exif frontbase +fileinfo +filter firebird
+	flatfile ftp gd gd-external gdbm gmp +hash +iconv imap inifile
+	interbase intl iodbc ipv6 +json kerberos ldap ldap-sasl libedit
+	mssql mysql mysqlnd mysqli nls oci8
+	oci8-instant-client odbc pcntl pdo +phar pic +posix postgres qdbm
+	readline recode sapdb +session sharedext sharedmem
+	+simplexml snmp soap sockets solid spell sqlite sqlite3 ssl suhosin
+	sybase-ct sysvipc tidy +tokenizer truetype unicode wddx
 	xml xmlreader xmlwriter xmlrpc xpm xsl zip zlib"
 
 DEPEND="app-admin/php-toolkit
@@ -128,13 +128,12 @@ DEPEND="app-admin/php-toolkit
 		virtual/imap-c-client[kolab=]
 	)
 	intl? ( dev-libs/icu )
-	iodbc? ( || ( dev-db/libiodbc >=dev-db/unixODBC-1.8.13 ) )
+	iodbc? ( dev-db/libiodbc )
 	kerberos? ( virtual/krb5 )
 	kolab? ( >=net-libs/c-client-2004g-r1 )
 	ldap? ( !oci8? ( >=net-nds/openldap-1.2.11 ) )
 	ldap-sasl? ( !oci8? ( dev-libs/cyrus-sasl >=net-nds/openldap-1.2.11 ) )
 	libedit? ( || ( sys-freebsd/freebsd-lib dev-libs/libedit ) )
-	mbstring? ( dev-libs/oniguruma )
 	mssql? ( dev-db/freetds )
 	!mysqlnd? (
 		mysql? ( virtual/mysql )

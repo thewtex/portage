@@ -1,4 +1,4 @@
-x11-libs/libX11 x11-libs/libXpm x11-misc/imake x11-proto/xproto media-gfx/imagemagick app-text/gv sys-apps/less >=sys-apps/sed-4 zlib? ( sys-libs/zlib )
+x11-libs/libX11 x11-libs/libXpm x11-misc/imake x11-proto/xproto || ( media-gfx/imagemagick media-gfx/graphicsmagick[imagemagick] ) app-text/gv sys-apps/less >=sys-apps/sed-4 zlib? ( sys-libs/zlib )
 x11-libs/libX11 x11-libs/libXpm
 0
 ftp://ftp.ac-grenoble.fr/ge/geosciences/xrmap/xrmap-2.10.tgz ftp://ftp.ac-grenoble.fr/ge/geosciences/xrmap/xrmap-2.33.tar.bz2 ftp://ftp.ac-grenoble.fr/ge/geosciences/CIA_WDB2.jpd.gz
@@ -12,9 +12,9 @@ zlib
 
 
 
+2
 
-
-compile install unpack
+compile install prepare unpack
 
 
 

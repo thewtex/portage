@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-pda/pilot-link/pilot-link-0.12.3-r1.ebuild,v 1.7 2010/01/19 02:45:39 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-pda/pilot-link/pilot-link-0.12.3-r1.ebuild,v 1.9 2010/06/11 21:30:10 arfrever Exp $
 
 EAPI=2
 
@@ -24,13 +24,15 @@ BOTH_DEPEND="virtual/libiconv
 	png? ( >=media-libs/libpng-1.2.18-r1 )
 	readline? ( >=sys-libs/readline-5.2_p4 )
 	usb? ( virtual/libusb:0 )
-	bluetooth? ( || ( >=net-wireless/bluez-libs-3.10 net-wireless/bluez ) )"
+	bluetooth? ( net-wireless/bluez )"
 
 DEPEND="${BOTH_DEPEND}
 	java? ( >=virtual/jdk-1.4 )"
 
 RDEPEND="${BOTH_DEPEND}
 	java? ( >=virtual/jre-1.4 )"
+
+PYTHON_MODNAME="pisock.py pisockextras.py"
 
 src_prepare() {
 	# Fixing some broken configure switches and automagic deps.
@@ -125,10 +127,7 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	if use python; then
-		python_version
-		python_mod_optimize /usr/$(get_libdir)/python${PYVER}/site-packages
-	fi
+	use python && distutils_pkg_postinst
 }
 
 pkg_postrm() {

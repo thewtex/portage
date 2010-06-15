@@ -1,10 +1,94 @@
 # ChangeLog for profile directory
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.4243 2010/06/10 08:36:29 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.4267 2010/06/14 08:54:12 voyageur Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  14 Jun 2010; Bernard Cafarelli <voyageur@gentoo.org> package.mask:
+  Update net-ftp/filezilla mask
+
+  13 Jun 2010; Pacho Ramos <pacho@gentoo.org> arch/alpha/ChangeLog,
+  arch/alpha/package.use.mask, arch/ia64/ChangeLog,
+  arch/ia64/package.use.mask:
+  Mask net-im/empathy nautilus use until bug 323851 is fixed.
+
+  13 Jun 2010; Pacho Ramos <pacho@gentoo.org> arch/powerpc/ChangeLog,
+  arch/powerpc/ppc64/package.use.mask:
+  Mask media-video/totem youtube and iplayer USEs until bug 323845 and
+  323847 are fixed
+
+  13 Jun 2010; Pacho Ramos <pacho@gentoo.org> arch/powerpc/ChangeLog,
+  arch/powerpc/ppc32/package.use.mask:
+  Mask media-video/totem youtube USE until bug 323845 is fixed
+
+  13 Jun 2010; Matti Bickel <mabi@gentoo.org> package.mask:
+  Masking creole, dev-php5/jargon for removal
+
+  13 Jun 2010; Pacho Ramos <pacho@gentoo.org> arch/hppa/ChangeLog,
+  arch/hppa/package.use.mask, arch/powerpc/ChangeLog,
+  arch/powerpc/ppc32/package.use.mask, arch/powerpc/ppc64/package.use.mask:
+  Mask gnome-base/gvfs gdu USE flag on some arches until bug 323803 is
+  fixed.
+
+  13 Jun 2010; Pacho Ramos <pacho@gentoo.org> arch/powerpc/ChangeLog,
+  arch/powerpc/ppc64/package.use.mask:
+  Mask gnome-base/gvfs bluetooth USE flag on ppc64 and arm until bug 305913
+  is fixed.
+
+  13 Jun 2010; Markos Chandras <hwoarang@gentoo.org> package.mask:
+  Masking avidemux latest release for testing
+
+  13 Jun 2010; Pacho Ramos <pacho@gentoo.org> package.mask:
+  Unmask latest libxklavier now that Gnome 2.30 is entering the tree
+
+  13 Jun 2010; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask x11-wm/oroborus-extras for removal.
+
+  13 Jun 2010; Markos Chandras <hwoarang@gentoo.org> package.mask:
+  Masking lessfs beta releases
+
+  13 Jun 2010; Samuli Suominen <ssuominen@gentoo.org> desc/linguas.desc:
+  Missing Serbian-Ijekavian locale.
+
+  12 Jun 2010; Jeremy Olexa <darkside@gentoo.org> package.mask:
+  Mask too many packages to list. (treecleaner queue)
+
+  12 Jun 2010; Hans de Graaff <graaff@gentoo.org> package.mask:
+  Mask dev-ruby/amrita for removal.
+
+  12 Jun 2010; Jeremy Olexa <darkside@gentoo.org> package.mask:
+  Remove app-forensics/samhain & virtual/gnus masks. Removed from tree.
+
+  12 Jun 2010; Hans de Graaff <graaff@gentoo.org> package.mask:
+  Remove activerecord-jdbc mask, including the one I already put there in
+  january.
+
+  12 Jun 2010; Hans de Graaff <graaff@gentoo.org> package.mask:
+  Mask dev-ruby/activerecord-jdbc for removal.
+
+  12 Jun 2010; <fauli@gentoo.org> package.mask:
+  Mask Claws Mail 3.7.6 and plugins for sane bumping
+
+  11 Jun 2010; Zac Medico <zmedico@gentoo.org> info_pkgs:
+  Bug #323585 - Drop pycrypto from info_pkgs.
+
+  11 Jun 2010; Pacho Ramos <pacho@gentoo.org> package.mask:
+  Update app-emulation/emul-linux-x86-opengl mask.
+
+  11 Jun 2010; Ulrich Mueller <ulm@gentoo.org> package.mask:
+  Remove mask for app-doc/pms live ebuild since it is already masked by
+  empty KEYWORDS, bug 323419.
+
+  11 Jun 2010; Pacho Ramos <pacho@gentoo.org> package.mask:
+  Mask bluez-{libs,utils} for removal per bug 301630.
+
+  11 Jun 2010; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask gnome-extra/gnome-vfs-obexftp for removal wrt #301630.
+
+  10 Jun 2010; Markos Chandras <hwoarang@gentoo.org> package.mask:
+  Drop masking for radiotray live ebuild
 
   10 Jun 2010; Markus Meier <maekke@gentoo.org> package.mask:
   mask inkscape prereleases for testing

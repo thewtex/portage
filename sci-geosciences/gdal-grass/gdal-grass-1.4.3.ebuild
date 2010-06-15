@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-geosciences/gdal-grass/gdal-grass-1.4.3.ebuild,v 1.4 2010/05/28 13:52:21 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-geosciences/gdal-grass/gdal-grass-1.4.3.ebuild,v 1.5 2010/06/13 09:20:01 scarabeus Exp $
 
 EAPI=2
 inherit eutils
@@ -16,7 +16,7 @@ KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="sci-libs/gdal
-	sci-geosciences/grass"
+	<sci-geosciences/grass-6.4.0_rc6"
 DEPEND="${RDEPEND}"
 
 src_prepare() {

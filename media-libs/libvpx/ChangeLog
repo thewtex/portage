@@ -1,0 +1,25 @@
+# ChangeLog for media-libs/libvpx
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libvpx/ChangeLog,v 1.4 2010/06/12 21:45:36 spatz Exp $
+
+  12 Jun 2010; Dror Levin <spatz@gentoo.org> libvpx-0.9.0_p20100612.ebuild,
+  libvpx-9999.ebuild, metadata.xml:
+  Add altivec,mmx,sse,sse2,sse3,ssse3 USE flags, consolidate live and normal
+  ebuilds.
+
+  12 Jun 2010; Dror Levin <spatz@gentoo.org> libvpx-0.9.0_p20100612.ebuild,
+  libvpx-9999.ebuild:
+  Only dep on yasm in x86/amd64.
+
+*libvpx-0.9.0_p20100612 (12 Jun 2010)
+
+  12 Jun 2010; Dror Levin <spatz@gentoo.org> +libvpx-0.9.0_p20100612.ebuild,
+  libvpx-9999.ebuild:
+  Added snapshot, bug 320817. Remove unneeded eutils inherit.
+
+*libvpx-9999 (10 Jun 2010)
+
+  10 Jun 2010; Luca Barbato <lu_zero@gentoo.org> +libvpx-9999.ebuild:
+  Initial live ebuild, 0.9.0 release _SHOULD_NOT_ be put into portage, thanks
+  to the people in bug #320817 for the support
+

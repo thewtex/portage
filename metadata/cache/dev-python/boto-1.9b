@@ -1,9 +1,9 @@
->=app-admin/eselect-python-20091230 dev-lang/python
->=app-admin/eselect-python-20091230 dev-lang/python
+dev-python/setuptools >=app-admin/eselect-python-20091230 || ( =dev-lang/python-2.7* =dev-lang/python-2.6* =dev-lang/python-2.5* )
+>=app-admin/eselect-python-20091230 || ( =dev-lang/python-2.7* =dev-lang/python-2.6* =dev-lang/python-2.5* )
 0
 http://boto.googlecode.com/files/boto-1.9b.tar.gz
 
-http://code.google.com/p/boto/ http://pypi.python.org/pypi/boto/
+http://code.google.com/p/boto/ http://pypi.python.org/pypi/boto
 MIT
 Amazon Web Services API
 ~amd64 ~ppc ~x86 ~x86-linux ~ppc-macos ~x86-macos
@@ -12,9 +12,9 @@ distutils multilib python toolchain-funcs
 
 
 
+3
 
-
-compile install postinst postrm unpack
+compile install postinst postrm prepare
 
 
 
