@@ -1,5 +1,5 @@
-python? ( virtual/python ) !app-admin/fam !<app-admin/gamin-0.1.10 dev-util/pkgconfig || ( =sys-devel/automake-1.11* =sys-devel/automake-1.10* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b >=app-admin/eselect-python-20091230
-python? ( virtual/python ) !app-admin/fam !<app-admin/gamin-0.1.10 >=app-admin/eselect-python-20091230
+!app-admin/fam !<app-admin/gamin-0.1.10 dev-util/pkgconfig || ( =sys-devel/automake-1.11* =sys-devel/automake-1.10* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b >=app-admin/eselect-python-20091230 python? ( =dev-lang/python-2* )
+!app-admin/fam !<app-admin/gamin-0.1.10 >=app-admin/eselect-python-20091230 python? ( =dev-lang/python-2* )
 0
 http://www.gnome.org/~veillard/gamin/sources/gamin-0.1.10.tar.gz mirror://gentoo/gamin-0.1.9-freebsd.patch.bz2
 test
@@ -14,7 +14,7 @@ debug kernel_linux python
 
 2
 
-configure install postinst postrm prepare
+compile configure install postinst postrm prepare setup
 
 
 

@@ -1,4 +1,4 @@
-media-libs/libmpeg2 ffmpeg? ( >=media-video/ffmpeg-0.4.8 ) imagemagick? ( >=media-gfx/imagemagick-6.2.4.2-r1 )
+media-libs/libmpeg2 ffmpeg? ( >=media-video/ffmpeg-0.4.8 ) imagemagick? ( >=media-gfx/imagemagick-6.2.4.2-r1 ) || ( =sys-devel/automake-1.11* =sys-devel/automake-1.10* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b
 media-libs/libmpeg2 ffmpeg? ( >=media-video/ffmpeg-0.4.8 ) imagemagick? ( >=media-gfx/imagemagick-6.2.4.2-r1 )
 0
 http://noad.heliohost.org/noad-0.7.2.tar.bz2
@@ -7,7 +7,7 @@ http://noad.heliohost.org/
 GPL-2
 Mark commercial Breaks in VDR records
 ~amd64 ~x86
-eutils multilib portability toolchain-funcs
+autotools eutils flag-o-matic libtool multilib portability toolchain-funcs
 ffmpeg imagemagick
 
 
