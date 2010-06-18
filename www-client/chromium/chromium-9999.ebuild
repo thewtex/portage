@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/chromium-9999.ebuild,v 1.56 2010/06/11 09:44:59 voyageur Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/chromium-9999.ebuild,v 1.58 2010/06/18 05:30:26 phajdan.jr Exp $
 
 EAPI="2"
 
@@ -15,7 +15,7 @@ EGCLIENT_REPO_URI="http://src.chromium.org/svn/trunk/src/"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-IUSE=""
+IUSE="cups"
 
 RDEPEND="app-arch/bzip2
 	>=dev-libs/libevent-1.4.13
@@ -23,11 +23,12 @@ RDEPEND="app-arch/bzip2
 	dev-libs/libxslt
 	>=dev-libs/nss-3.12.3
 	>=gnome-base/gconf-2.24.0
+	>=gnome-base/gnome-keyring-2.28.2
 	>=media-libs/alsa-lib-1.0.19
 	media-libs/jpeg:0
 	media-libs/libpng
 	media-video/ffmpeg[threads]
-	>=net-print/cups-1.3.5
+	cups? ( >=net-print/cups-1.3.5 )
 	sys-libs/zlib
 	>=x11-libs/gtk+-2.14.7
 	x11-libs/libXScrnSaver"
@@ -104,8 +105,11 @@ src_prepare() {
 	# Disable VP8 until we have a recent enough system-provided ffmpeg.
 	epatch "${FILESDIR}"/${PN}-disable-vp8-r1.patch
 
+	# Make dependency on cups optional, bug #324105.
+	epatch "${FILESDIR}"/${PN}-optional-cups-r1.patch
+
 	# Fix gyp files to correctly support system-provided libraries.
-	epatch "${FILESDIR}"/${PN}-gyp-fixes-r1.patch
+	epatch "${FILESDIR}"/${PN}-gyp-fixes-r2.patch
 
 	remove_bundled_lib "third_party/bzip2"
 	remove_bundled_lib "third_party/libevent"
@@ -142,6 +146,13 @@ src_configure() {
 
 	# The system-provided ffmpeg supports more codecs. Enable them in chromium.
 	myconf="${myconf} -Dproprietary_codecs=1"
+
+	# The dependency on cups is optional, see bug #324105.
+	if use cups; then
+		myconf="${myconf} -Duse_cups=1"
+	else
+		myconf="${myconf} -Duse_cups=0"
+	fi
 
 	# Enable sandbox.
 	myconf="${myconf}
