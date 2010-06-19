@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11658 2010/06/18 06:56:44 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11663 2010/06/19 01:13:15 abcd Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -31,6 +31,17 @@
 
 #--- END OF EXAMPLES ---
 
+# Diego E. Pettenò <flameeyes@gentoo.org> (18 Jun 2010)
+#  on behalf of QA team
+#
+# Collides with FFmpeg, which is a dependency of it. Its
+# functionality should now be part of the main package
+# (officially since 0.6, but also in our previous
+# snapshots). See bug #314985.
+#
+# Removal on 2010-08-17
+media-video/ffprobe
+
 # Patrick Lauer <patrick@gentoo.org> (18 Jun 2010)
 # Only one provider left, so the virtuals serve
 # no purpose and will be removed soon
@@ -41,11 +52,6 @@ virtual/postgresql-server
 # Snapshots and alpha builds are to be used with care,
 # see <http://my.opera.com/desktopteam/blog/>
 =www-client/opera-10.60_pre6372
-
-# Samuli Suominen <ssuominen@gentoo.org> (17 Jun 2010)
-# Version that's using system dev-libs/popt instead of
-# bundled copy.   Masked for testing.
-=dev-util/pkgconfig-0.25-r1
 
 # Alexis Ballier <aballier@gentoo.org> (17 Jun 2010)
 # Beta release
@@ -802,10 +808,6 @@ dev-db/postgresql
 # New xen kernel needs more testing.
 =sys-kernel/xen-sources-2.6.31*
 
-# Markos Chandras <hwoarang@gentoo.org> (26 Dec 2009)
-# keeping rc ebuilds masked
-=sys-kernel/zen-sources-2.6.33_rc*
-
 # Christian Parpart <trapni@gentoo.org> (23 Dec 2009)
 # Masked for testing/feedback.
 media-sound/teamspeak-server-bin
@@ -1241,7 +1243,7 @@ app-benchmarks/ltp
 
 # Robin H. Johnson <robbat2@gentoo.org> (11 Feb 2006)
 # zlib interaction is badly broken. See bug #124733.
-=dev-util/cvs-1.12.13*
+=dev-vcs/cvs-1.12.13*
 
 # Fernando J. Pereda <ferdy@gentoo.org> (25 April 2005)
 # mask these until the new mailwrapper/mailer-config scheme is ready
