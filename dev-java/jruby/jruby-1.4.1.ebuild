@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jruby/jruby-1.4.1.ebuild,v 1.1 2010/04/27 09:23:58 caster Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jruby/jruby-1.4.1.ebuild,v 1.2 2010/06/19 11:07:14 ali_bush Exp $
 
 EAPI="2"
 JAVA_PKG_IUSE="doc source test"
@@ -51,7 +51,7 @@ PDEPEND="ssl? ( dev-ruby/jruby-openssl )"
 # Tests work for ali_bush inside the ebuild env
 # but fail when using vanilla src tarball.
 # Restrict tests so we can stablise this package.
-#RESTRICT="test"
+RESTRICT="test"
 
 S="${WORKDIR}/${PN}-${MY_PV}"
 

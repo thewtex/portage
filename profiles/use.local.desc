@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5673 2010/06/18 09:27:54 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5682 2010/06/20 11:27:47 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -483,6 +483,7 @@ app-mobilephone/gammu:irda - Enables infrared support
 app-mobilephone/gnokii:ical - Enable support for dev-libs/libical
 app-mobilephone/gnokii:irda - Enable infrared support
 app-mobilephone/gnokii:sms - Enable SMS support (build smsd)
+app-mobilephone/obexd:nokia - Add support for Nokia backup plugin
 app-mobilephone/obexd:server - Enables server installation, it's incompatible with obex-data-server provided one
 app-mobilephone/obexftp:swig - Enable rebuild of dev-lang/swig bindings
 app-mobilephone/smstools:stats - Enable statistic reporting
@@ -909,6 +910,7 @@ dev-libs/ace:ciao - Include Component Intergraced Ace ORB into the build of ace
 dev-libs/ace:tao - Include the ACE ORB (CORBA stuff) (called tao) into the build of ace
 dev-libs/apr:older-kernels-compatibility - Enable binary compatibility with older kernels
 dev-libs/apr:urandom - Use /dev/urandom instead of /dev/random
+dev-libs/atk:introspection - Use dev-libs/gobject-introspection for introspection
 dev-libs/boolstuff:static - Enable static linking
 dev-libs/boost:eselect - Run "eselect boost update" even if version is already selected
 dev-libs/boost:tools - Build and install the boost tools (bcp, quickbook, inspect, wave)
@@ -948,6 +950,7 @@ dev-libs/libtomcrypt:tomsfastmath - Use the optimized math library (dev-libs/tom
 dev-lang/xharbour:allegro - Build Allegro-based GT driver
 dev-libs/libwiimote:force - Enable force feedback
 dev-libs/libwiimote:tilt - Enable tilt
+dev-libs/libunique:introspection - Use dev-libs/gobject-introspection for introspection
 dev-libs/log4cxx:smtp - Offer SMTP support via net-libs/libesmtp
 dev-libs/nss:utils - Install utilities included with the library
 dev-libs/opencryptoki:tpmtok - Offer support for TPM token
@@ -1083,6 +1086,7 @@ dev-python/wxpython:doc - Install HTML wxWidgets docs and wxpython API reference
 dev-python/wxpython:examples - Install interactive demo module browser and sample applets.
 dev-python/zsi:twisted - add support for dev-python/twisted
 dev-ruby/camping:mongrel - Also install www-servers/mongrel
+dev-ruby/nokogiri:ffi -  Use the Foreign Function Interface library (as provided by dev-java/jruby or dev-ruby/ffi depending on the implementation) rather than building a C extension to wrap around the libxml/libxslt interfaces. Note: JRuby always uses the FFI interface as native extensions are not supported. 
 dev-ruby/ruby-sdl:image - Enable media-libs/sdl-image support
 dev-ruby/ruby-sdl:mixer - Enable media-libs/sdl-mixer support
 dev-ruby/ruby-sdl:sge - Enable sdl-sge support
@@ -1141,7 +1145,6 @@ dev-util/buildbot:manhole - Add support for manhole (debug over ssh)
 dev-util/catalyst:ccache - Enables ccache support
 dev-util/codeblocks:contrib - Build additional contrib components
 dev-util/ctags:ada - Enable Ada support
-dev-util/cvs:server - Enable server support
 dev-util/dialog:minimal - Disable library, install command-line program only
 dev-util/eresi:server - Build eresi server capability
 dev-util/eric:idl - Enable omniorb support
@@ -1204,6 +1207,7 @@ dev-vcs/bzr-gtk:gconf - Enable GConf support
 dev-vcs/bzr-gtk:gpg - Support signing with GnuPG.
 dev-vcs/bzr-gtk:nautilus - Integrate with Nautilus file manager
 dev-vcs/bzr-gtk:sourceview - Enable GtkSourceView support
+dev-vcs/cvs:server - Enable server support
 dev-vcs/cvs2svn:bazaar - Support for dev-vcs/bzr
 dev-vcs/cvs2svn:git - Support for dev-vcs/git
 dev-vcs/git:blksha1 - Use the new optimized SHA1 implementation.
@@ -2542,6 +2546,7 @@ net-dns/bind:dlz - Enables dynamic loaded zones, 3rd party extension
 net-dns/bind:resolvconf - Enable support for net-dns/openresolv
 net-dns/bind:sdb-ldap - Enables ldap-sdb backend
 net-dns/bind:urandom - Use /dev/urandom instead of /dev/random
+net-dns/bind-tools:urandom - Use /dev/urandom instead of /dev/random
 net-dns/djbdns:aliaschain - Enables a fix for the truncation of alias chains
 net-dns/djbdns:cnamefix - Changes the CNAME behavior of dnscache
 net-dns/djbdns:datadir - Enables tinydns-data to read a directory with multiple data files
@@ -3202,6 +3207,7 @@ net-wireless/bluez:old-daemons - Install old daemons like hidd and sdpd that are
 net-wireless/bluez:test-programs - Install tools for testing of various Bluetooth functions
 net-wireless/bluez-utils:old-daemons - Install old daemons like hidd and sdpd that are deprecated by the new Service framework
 net-wireless/bluez-utils:test-programs - Install l2test and rctest
+net-wireless/gnome-bluetooth:nautilus - Build nautilus-sendto plugin
 net-wireless/hostapd:debug - Enables debugging
 net-wireless/hostapd:logwatch - Install support files for sys-app/logwatch
 net-wireless/hostapd:madwifi - Add support for madwifi (Atheros chipset)
@@ -3788,7 +3794,7 @@ www-apps/redmine:openid - Enable support for OpenID
 www-apps/redmine:passenger - Enable support for www-apache/passenger
 www-apps/rt:lighttpd - Add www-servers/lighttpd support
 www-apps/trac:i18n - Enable support for i18n with dev-python/Babel
-www-apps/viewvc:cvsgraph - Add dev-util/cvsgraph support to show graphical views of revisions and branches
+www-apps/viewvc:cvsgraph - Add dev-vcs/cvsgraph support to show graphical views of revisions and branches
 www-apps/viewvc:mod_python - Add www-apache/mod_python support
 www-apps/viewvc:mod_wsgi - Add www-apache/mod_wsgi support
 www-apps/viewvc:pygments - Add dev-python/pygments support for syntax highlighting
@@ -3884,6 +3890,7 @@ x11-libs/cairo:glitz - Build with glitz support, which replaces some software re
 x11-libs/cairo:lcdfilter - Add FreeType LCD filtering, ClearType-style behavior for sub-pixel-hinting. Overrides cleartype USE flag. Patch taken from Ubuntu
 x11-libs/cairo:opengl - When used along with USE=glitz, enables glitz-glx usage. Requires hardware OpenGL support
 x11-libs/fltk:games - Builds and installs some extra games
+x11-libs/gtk+:introspection - Use dev-libs/gobject-introspection for introspection
 x11-libs/gtkdatabox:glade - Build with libglade and glade-3 supports, which includes a glade's module for GtkDataBox widget
 x11-libs/gtkmathview:t1lib - Enable media-libs/t1lib support
 x11-libs/gtksourceview:glade - Install a glade catalog file
@@ -3900,6 +3907,7 @@ x11-libs/pdcurses:nextaw - Use neXtaw instead of Xaw
 x11-libs/qt:glib - Enable dev-libs/glib eventloop support
 x11-libs/qt:immqt - Enable binary incompatible version of immodule for Qt
 x11-libs/qt:immqt-bc - Enable binary compatible version of immodule for Qt
+x11-libs/pango:introspection - Use dev-libs/gobject-introspection for introspection
 x11-libs/qt:kde - Select media-sound/phonon as phonon variant needed for kde
 x11-libs/qt:qt3support - Enable the Qt3Support libraries for Qt4
 x11-libs/qt-assistant:exceptions - Add support for exceptions - like catching them inside the event loop (recommended by Nokia)

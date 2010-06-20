@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-vcs/statcvs/statcvs-0.5.0.ebuild,v 1.1 2010/03/05 17:50:54 serkan Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-vcs/statcvs/statcvs-0.5.0.ebuild,v 1.3 2010/06/19 00:52:37 abcd Exp $
 
 EAPI=2
 JAVA_PKG_IUSE="doc source test"
@@ -12,7 +12,7 @@ HOMEPAGE="http://statcvs.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}-source.zip"
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 COMMON_DEPEND="
@@ -27,7 +27,7 @@ DEPEND=">=virtual/jdk-1.4
 	${COMMON_DEPEND}"
 
 RDEPEND=">=virtual/jre-1.4
-	dev-util/cvs
+	dev-vcs/cvs
 	dev-java/jtreemap:0
 	${COMMON_DEPEND}"
 

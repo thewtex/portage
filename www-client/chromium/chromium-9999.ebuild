@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/chromium-9999.ebuild,v 1.58 2010/06/18 05:30:26 phajdan.jr Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/chromium-9999.ebuild,v 1.61 2010/06/19 16:30:14 phajdan.jr Exp $
 
 EAPI="2"
 
@@ -15,7 +15,7 @@ EGCLIENT_REPO_URI="http://src.chromium.org/svn/trunk/src/"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-IUSE="cups"
+IUSE="cups sse2"
 
 RDEPEND="app-arch/bzip2
 	>=dev-libs/libevent-1.4.13
@@ -23,7 +23,6 @@ RDEPEND="app-arch/bzip2
 	dev-libs/libxslt
 	>=dev-libs/nss-3.12.3
 	>=gnome-base/gconf-2.24.0
-	>=gnome-base/gnome-keyring-2.28.2
 	>=media-libs/alsa-lib-1.0.19
 	media-libs/jpeg:0
 	media-libs/libpng
@@ -36,6 +35,7 @@ DEPEND="${RDEPEND}
 	dev-lang/perl
 	>=dev-util/gperf-3.0.3
 	>=dev-util/pkgconfig-0.23
+	>=gnome-base/gnome-keyring-2.28.2
 	sys-devel/flex"
 RDEPEND+="
 	|| (
@@ -108,9 +108,6 @@ src_prepare() {
 	# Make dependency on cups optional, bug #324105.
 	epatch "${FILESDIR}"/${PN}-optional-cups-r1.patch
 
-	# Fix gyp files to correctly support system-provided libraries.
-	epatch "${FILESDIR}"/${PN}-gyp-fixes-r2.patch
-
 	remove_bundled_lib "third_party/bzip2"
 	remove_bundled_lib "third_party/libevent"
 	remove_bundled_lib "third_party/libjpeg"
@@ -128,8 +125,12 @@ src_configure() {
 	# TODO: remove when http://crbug.com/43778 is fixed.
 	append-flags -D__STDC_CONSTANT_MACROS
 
+	local myconf=""
+
 	# Make it possible to build chromium on non-sse2 systems.
-	local myconf="-Ddisable_sse2=1"
+	if ! use sse2; then
+		myconf="${myconf} -Ddisable_sse2=1"
+	fi
 
 	# Use system-provided libraries.
 	# TODO: use_system_sqlite (http://crbug.com/22208).
