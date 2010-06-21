@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11674 2010/06/21 07:58:52 pva Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11677 2010/06/21 14:38:50 xarthisius Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,34 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Kacper Kowalik <xarthisius@gentoo.org> (21 Jun 2010)
+# New version modular version of heartbeat
+# Waiting for migration guide and extensive set of tests
+#
+>=sys-cluster/heartbeat-3.0.3
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (21 Jun 2010)
+#  on behalf of QA team
+#
+# The geda-1.4.3-r1 is the only “split” ebuild for geda;
+# most of its dependencies are stable x86 but not all, so
+# the split itself is not stable; the latest stable on x86 is
+# 1.4.0-r1. The newer versions are no longer split. There is
+# *no* proper blocker or dependency range to avoid collisions
+# between them.
+#
+# Removal on 2010-08-20
+=sci-electronics/geda-1.4.3-r1
+sci-libs/libgeda
+sci-electronics/geda-gattrib
+sci-electronics/geda-gnetlist
+sci-electronics/geda-gschem
+sci-electronics/geda-gsymcheck
+sci-electronics/geda-symbols
+sci-electronics/geda-utils
+sci-electronics/geda-docs
+sci-electronics/geda-examples
 
 # Samuli Suominen <ssuominen@gentoo.org> (20 Jun 2010)
 # No upstream, last release from 2002, libpng 1.4.x problems,
@@ -93,10 +121,6 @@ virtual/postgresql-server
 #
 # Removal on 2010-08-15
 sci-biology/mpiblast
-
-# Alexis Ballier <aballier@gentoo.org> (16 Jun 2010)
-# Mask FFmpeg 0.6 until reverse deps are checked and safe
->=media-video/ffmpeg-0.6
 
 # Diego E. Pettenò <flameeyes@gentoo.org> (16 Jun 2010)
 # Beta version, used to fall-in behind with older releases
