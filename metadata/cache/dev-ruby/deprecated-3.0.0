@@ -1,0 +1,22 @@
+ruby_targets_ruby18? ( test? ( dev-ruby/test-unit:2[ruby_targets_ruby18] ) ) ruby_targets_ruby19? ( test? ( dev-ruby/test-unit:2[ruby_targets_ruby19] ) ) ruby_targets_jruby? ( test? ( dev-ruby/test-unit:2[ruby_targets_jruby] ) ) ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ruby19? ( dev-lang/ruby:1.9 ) ruby_targets_jruby? ( dev-java/jruby ) test? ( ruby_targets_ruby18? ( virtual/rubygems[ruby_targets_ruby18] ) ruby_targets_ruby19? ( virtual/rubygems[ruby_targets_ruby19] ) ruby_targets_jruby? ( virtual/rubygems[ruby_targets_jruby] ) )
+ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ruby19? ( dev-lang/ruby:1.9 ) ruby_targets_jruby? ( dev-java/jruby ) ruby_targets_ruby18? ( virtual/rubygems[ruby_targets_ruby18] ) ruby_targets_ruby19? ( virtual/rubygems[ruby_targets_ruby19] ) ruby_targets_jruby? ( virtual/rubygems[ruby_targets_jruby] )
+0
+mirror://rubygems/deprecated-3.0.0.gem
+
+http://rubyforge.org/projects/deprecated
+BSD
+A Ruby library for handling deprecated code
+~amd64
+eutils multilib portability ruby-fakegem ruby-ng toolchain-funcs
+test ruby_targets_ruby18 ruby_targets_ruby19 ruby_targets_jruby test
+
+
+
+2
+
+compile configure install prepare setup test unpack
+
+
+
+
+
