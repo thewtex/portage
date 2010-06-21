@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/sphinx/sphinx-0.9.9.ebuild,v 1.3 2010/06/17 20:03:36 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/sphinx/sphinx-0.9.9.ebuild,v 1.4 2010/06/20 15:25:25 graaff Exp $
 
 EAPI=2
 inherit eutils autotools
@@ -25,6 +25,9 @@ RDEPEND="mysql? ( virtual/mysql )
 	postgres? ( dev-db/postgresql-base )"
 DEPEND="${RDEPEND}
 	test? ( dev-lang/php )"
+
+# Tests require a live database.
+RESTRICT="test"
 
 S=${WORKDIR}/${MY_P}
 

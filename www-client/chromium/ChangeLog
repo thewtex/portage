@@ -1,6 +1,23 @@
 # ChangeLog for www-client/chromium
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/ChangeLog,v 1.121 2010/06/20 10:48:08 hwoarang Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/ChangeLog,v 1.124 2010/06/21 09:25:10 phajdan.jr Exp $
+
+  21 Jun 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-5.0.375.70.ebuild, chromium-5.0.375.70-r1.ebuild,
+  -chromium-6.0.427.0.ebuild, chromium-6.0.437.1.ebuild,
+  chromium-6.0.437.3.ebuild, chromium-9999.ebuild:
+  Disable gpu rendering to fix nvidia-drivers compatibility problems, bug
+  #319331 by mjbjr@beaudesign.com.
+
+*chromium-6.0.437.3 (21 Jun 2010)
+
+  21 Jun 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +chromium-6.0.437.3.ebuild:
+  Version bump for dev channel release.
+
+  20 Jun 2010; Christian Faulhammer <fauli@gentoo.org>
+  chromium-5.0.375.70-r1.ebuild:
+  stable x86, bug 322343
 
   20 Jun 2010; Markos Chandras <hwoarang@gentoo.org>
   chromium-5.0.375.70-r1.ebuild:

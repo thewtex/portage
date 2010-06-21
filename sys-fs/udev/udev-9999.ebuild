@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/udev/udev-9999.ebuild,v 1.28 2010/05/05 19:35:07 zzam Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/udev/udev-9999.ebuild,v 1.29 2010/06/20 19:27:54 zzam Exp $
 
 EAPI="1"
 
@@ -24,7 +24,7 @@ HOMEPAGE="http://www.kernel.org/pub/linux/utils/kernel/hotplug/udev.html"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="selinux -extras test"
+IUSE="selinux extras test"
 
 COMMON_DEPEND="selinux? ( sys-libs/libselinux )
 	extras? (
@@ -151,7 +151,7 @@ src_unpack() {
 
 	# change rules back to group uucp instead of dialout for now
 	sed -e 's/GROUP="dialout"/GROUP="uucp"/' \
-		-i rules/{rules.d,packages,gentoo}/*.rules \
+		-i rules/{rules.d,arch,gentoo}/*.rules \
 	|| die "failed to change group dialout to uucp"
 
 	if [[ ${PV} != 9999 ]]; then
@@ -159,7 +159,7 @@ src_unpack() {
 		# (more for my own needs than anything else ...)
 		MD5=$(md5sum < "${S}/rules/rules.d/50-udev-default.rules")
 		MD5=${MD5/  -/}
-		if [[ ${MD5} != 8afa8fc0fc71ada547792b5b2a608e4f ]]
+		if [[ ${MD5} != 31f446c8ec2538b281d798afcdcc3f68 ]]
 		then
 			echo
 			eerror "50-udev-default.rules has been updated, please validate!"
@@ -201,7 +201,7 @@ src_compile() {
 }
 
 src_install() {
-	local scriptdir="${FILESDIR}/151-r4"
+	local scriptdir="${FILESDIR}/156"
 
 	into /
 	emake DESTDIR="${D}" install || die "make install failed"
@@ -237,13 +237,15 @@ src_install() {
 	insinto "${udev_libexec_dir}"/rules.d/
 
 	# Our rules files
-	doins gentoo/??-*.rules
-	doins packages/40-isdn.rules
+	doins "${scriptdir}"/??-*.rules
+
+	# support older kernels
+	doins misc/30-kernel-compat.rules
 
 	# Adding arch specific rules
-	if [[ -f packages/40-${ARCH}.rules ]]
+	if [[ -f arch/40-${ARCH}.rules ]]
 	then
-		doins "packages/40-${ARCH}.rules"
+		doins "arch/40-${ARCH}.rules"
 	fi
 	cd "${S}"
 

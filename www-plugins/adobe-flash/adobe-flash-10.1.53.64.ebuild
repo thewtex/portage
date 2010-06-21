@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-plugins/adobe-flash/adobe-flash-10.1.53.64.ebuild,v 1.6 2010/06/19 10:05:47 phajdan.jr Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-plugins/adobe-flash/adobe-flash-10.1.53.64.ebuild,v 1.8 2010/06/20 16:54:41 keytoaster Exp $
 
 EAPI=1
 inherit nsplugins rpm multilib toolchain-funcs
@@ -13,7 +13,7 @@ HOMEPAGE="http://www.adobe.com/"
 IUSE="multilib"
 SLOT="0"
 
-KEYWORDS="-* ~amd64 x86"
+KEYWORDS="-* amd64 x86"
 LICENSE="AdobeFlash-10.1"
 RESTRICT="strip mirror"
 
@@ -109,7 +109,7 @@ src_install() {
 pkg_postinst() {
 	if use amd64; then
 		elog "Adobe has released 10.1 in only a 32-bit version and upgrading"
-		elog "is required to close a major security exploit:"
+		elog "is required to close a major security vulnerability:"
 		elog "  http://bugs.gentoo.org/322855"
 		elog
 		elog "Furthermore, there are stability problems when running 10.1 in a"

@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5682 2010/06/20 11:27:47 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5685 2010/06/20 18:47:48 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -684,6 +684,7 @@ dev-games/cegui:devil - Enable image loading via DevIL
 dev-games/cegui:irrlicht - Enable the Irrlicht renderer
 dev-games/cegui:xerces-c - Enable the Xerces-C++ XML parser module
 dev-games/crystalspace:3ds - Enables support for .3DS files in CrystalSpace
+dev-games/crystalspace:bullet - include support for Bullet library
 dev-games/crystalspace:cal3d - include support for skeleton animation
 dev-games/crystalspace:cegui - include support for Crazy Eddie GUI
 dev-games/crystalspace:cg - NVIDIA toolkit plugin
@@ -2625,6 +2626,8 @@ net-libs/libproxy:kde - Enable support for reading proxy settings from KDE
 net-libs/libproxy:vala - Enable support for the Vala programming language
 net-libs/libproxy:webkit - Enable support for reading proxy settings from net-libs/webkit-gtk
 net-libs/libproxy:xulrunner - Enable support for reading proxy settings from net-libs/xulrunner
+net-libs/libsoup:introspection - Use dev-libs/gobject-introspection for introspection
+net-libs/libsoup-gnome:introspection - Use dev-libs/gobject-introspection for introspection
 net-libs/libsrtp:aesicm - Use AES ICM cryptographic algorithm
 net-libs/libsrtp:console -  Use /dev/console instead of stdout for error messages 
 net-libs/libsrtp:syslog - Use syslog for error messages
@@ -3273,7 +3276,6 @@ sys-apps/paludis:inquisitio - Enable inquisitio, the search client
 sys-apps/paludis:pink - Use a less boring colourscheme than the default
 sys-apps/paludis:portage - Enable experimental support for Portage configuration formats
 sys-apps/paludis:python-bindings - Enable Python bindings. Requires a lot of RAM to build (~700Mbytes per job) and adds a dependency upon dev-libs/boost
-sys-apps/paludis:qa - Enable QA tools
 sys-apps/paludis:ruby-bindings - Enable Ruby bindings.
 sys-apps/paludis:visibility - Enable visibility support (g++ >=4.1)
 sys-apps/parted:debug -  Enable debugging as encouraged by upstream: [The default configuration] includes --enable-debug (by default), which contains many assertions. Obviously, these "waste" space, but in the past, they have caught potentially dangerous bugs before they would have done damage, so we think it's worth it. Also, it means we get more bug reports ;) 
