@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/kmail/kmail-4.3.5.ebuild,v 1.4 2010/04/14 18:42:56 reavertm Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/kmail/kmail-4.3.5.ebuild,v 1.6 2010/06/22 16:16:49 reavertm Exp $
 
 EAPI="2"
 
@@ -8,7 +8,7 @@ KMNAME="kdepim"
 inherit kde4-meta
 
 DESCRIPTION="KMail is the email component of Kontact, the integrated personal information manager of KDE."
-KEYWORDS="~alpha amd64 ~hppa ~ia64 ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~ia64 ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
 IUSE="debug +handbook semantic-desktop"
 
 DEPEND="
@@ -40,6 +40,9 @@ KMLOADLIBS="libkdepim"
 PATCHES=( "${FILESDIR}/${PN}-4.1.72-fix.patch" )
 
 src_configure() {
+	# Bug 308903
+	use ppc64 && append-flags -mminimal-toc
+
 	mycmakeargs=(
 		$(cmake-utils_use_with semantic-desktop Nepomuk)
 	)

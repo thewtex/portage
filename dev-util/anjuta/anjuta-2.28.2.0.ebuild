@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/anjuta/anjuta-2.28.2.0.ebuild,v 1.5 2010/04/08 18:27:02 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/anjuta/anjuta-2.28.2.0.ebuild,v 1.7 2010/06/22 20:01:02 arfrever Exp $
 
 EAPI="2"
 
@@ -34,8 +34,8 @@ RDEPEND=">=dev-libs/glib-2.16
 		>=net-libs/webkit-gtk-1 )
 	glade? ( >=dev-util/glade-3.6.0 )
 	subversion? (
-		>=dev-util/subversion-1.5.0
-		>=net-misc/neon-0.28.2
+		>=dev-vcs/subversion-1.5.0
+		>=net-libs/neon-0.28.2
 		>=dev-libs/apr-1
 		>=dev-libs/apr-util-1 )
 	sourceview? ( >=x11-libs/gtksourceview-2.4 )

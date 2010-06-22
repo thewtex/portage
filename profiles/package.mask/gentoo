@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11677 2010/06/21 14:38:50 xarthisius Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11686 2010/06/22 20:00:12 phajdan.jr Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -31,12 +31,34 @@
 
 #--- END OF EXAMPLES ---
 
+# Pawel Hajdan jr <phajdan.jr@gentoo.org> (22 Jun 2010)
+# Masked for testing. It's quite "challenging" to package.
+>=sci-mathematics/nusmv-2.5.0
+
+# Samuli Suominen <ssuominen@gentoo.org> (22 Jun 2010)
+# Replaced by sys-kernel/dracut
+#
+# Unresolved bugs 127542, 144365, 174068, 181685, 268285
+#
+# Removal in 30 days, see bug 324741
+sys-apps/mkinitrd
+
+# Christian Faulhammer <fauli@gentoo.org> (22 Jun 2010)
+# Masked for removal in 30 days
+# Never really took off, unusable state for years
+# No upstream activity
+x11-misc/gaia
+
 # Kacper Kowalik <xarthisius@gentoo.org> (21 Jun 2010)
 # New version modular version of heartbeat
 # Waiting for migration guide and extensive set of tests
 #
 >=sys-cluster/heartbeat-3.0.3
 
+# Thomas Beierlein <tomjbe@gentoo.org> (22 Jun 2010)
+# Restrict mask to only the sci-libs/libgeda-1.4.3* ebuilds as 
+# otherwise the stable sci-electronics/geda-1.4.0 misses a dep.
+#
 # Diego E. Pettenò <flameeyes@gentoo.org> (21 Jun 2010)
 #  on behalf of QA team
 #
@@ -48,8 +70,8 @@
 # between them.
 #
 # Removal on 2010-08-20
-=sci-electronics/geda-1.4.3-r1
-sci-libs/libgeda
+=sci-electronics/geda-1.4.3*
+=sci-libs/libgeda-1.4.3*
 sci-electronics/geda-gattrib
 sci-electronics/geda-gnetlist
 sci-electronics/geda-gschem
@@ -102,6 +124,7 @@ virtual/postgresql-server
 # see <http://my.opera.com/desktopteam/blog/>
 =www-client/opera-10.60_pre6372
 =www-client/opera-10.60_pre6374
+=www-client/opera-10.60_pre6378
 
 # Alexis Ballier <aballier@gentoo.org> (17 Jun 2010)
 # Beta release
@@ -534,10 +557,6 @@ app-office/nostaples
 # doing
 =sys-devel/gcc-4.5*
 
-# Alexis Ballier <aballier@gentoo.org> (22 Apr 2010)
-# Pre release
->=media-video/vlc-1.1.0_pre
-
 # Peter Volkov <pva@gentoo.org> (22 Apr 2010)
 # Masking development kernels. Test it and report bugs upstream.
 =sys-kernel/openvz-sources-2.6.32*
@@ -755,10 +774,6 @@ dev-perl/Class-XSAccessor-Array
 # by upstream. Annoying automount error messages on startup.
 =x11-libs/libfm-0.1*
 =x11-misc/pcmanfm-0.9*
-
-# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (18 Feb 2010)
-# Mask prerelease versions
-=sys-boot/syslinux-4.00_pre*
 
 # Robin H. Johnson <robbat2@gentoo.org> (01 Feb 2010)
 # Upstream discontinued the split of -community and -enterprise specific

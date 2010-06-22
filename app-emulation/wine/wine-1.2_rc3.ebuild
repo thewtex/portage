@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/wine/wine-1.2_rc3.ebuild,v 1.1 2010/06/20 04:49:00 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/wine/wine-1.2_rc3.ebuild,v 1.3 2010/06/22 03:05:30 vapier Exp $
 
 EAPI="2"
 
@@ -19,7 +19,7 @@ else
 	S=${WORKDIR}/${MY_P}
 fi
 
-pulse_patches() { echo "$1"/winepulse-{0.36,0.35-configure.ac,0.36-winecfg}.patch ; }
+pulse_patches() { echo "$1"/winepulse-{0.36,0.35-configure.ac,0.37-winecfg}.patch ; }
 GV="1.0.0-x86"
 DESCRIPTION="free implementation of Windows(tm) on Unix"
 HOMEPAGE="http://www.winehq.org/"
@@ -61,7 +61,7 @@ RDEPEND="truetype? ( >=media-libs/freetype-2.0.0 media-fonts/corefonts )
 	gsm? ( media-sound/gsm )
 	jpeg? ( media-libs/jpeg )
 	ldap? ( net-nds/openldap )
-	lcms? ( media-libs/lcms )
+	lcms? ( =media-libs/lcms-1* )
 	mp3? ( >=media-sound/mpg123-1.5.0 )
 	samba? ( >=net-fs/samba-3.0.25 )
 	xml? ( dev-libs/libxml2 dev-libs/libxslt )

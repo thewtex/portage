@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/kdevplatform/kdevplatform-1.0.0-r1.ebuild,v 1.2 2010/06/19 00:44:52 abcd Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/kdevplatform/kdevplatform-1.0.0-r1.ebuild,v 1.4 2010/06/22 18:40:49 arfrever Exp $
 
 EAPI="2"
 
@@ -14,7 +14,7 @@ inherit kde4-base
 DESCRIPTION="KDE development support libraries and apps"
 
 LICENSE="GPL-2 LGPL-2"
-KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 # Moved to playground for now
 # bazaar git kompare mercurial
 IUSE="cvs debug subversion"
@@ -28,7 +28,7 @@ IUSE="cvs debug subversion"
 DEPEND="
 	dev-libs/boost
 	cvs? ( dev-vcs/cvs )
-	subversion? ( >=dev-util/subversion-1.3 )
+	subversion? ( >=dev-vcs/subversion-1.3 )
 "
 RDEPEND="${DEPEND}
 	!<dev-util/kdevelop-${KDEVELOP_VERSION}
