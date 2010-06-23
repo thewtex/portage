@@ -13,6 +13,7 @@ die() {
 [ ! -d $dest ] && die "dest dir $dest does not exist"
 
 ( cd $dest; git checkout gentoo.org; ) || die "couldn't checkout gentoo.org"
+( cd $dest; git pull; ) || die "couldn't pull in gentoo changes"
 ( cd $dest; git branch -D testmerge; )
 ( cd $dest; git checkout -b testmerge; ) || die "couldn't create testmerge"
 
