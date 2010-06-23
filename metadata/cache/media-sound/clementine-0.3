@@ -1,5 +1,5 @@
-x11-libs/qt-gui:4 x11-libs/qt-opengl:4 x11-libs/qt-sql:4[sqlite] >=media-libs/taglib-1.6 media-libs/liblastfm dev-libs/glib:2 gstreamer? ( >=media-libs/gstreamer-0.10 >=media-libs/gst-plugins-base-0.10 ) vlc? ( media-video/vlc ) xine? ( media-libs/xine-lib ) !gstreamer? ( !vlc? ( media-libs/xine-lib ) ) >=dev-libs/boost-1.39 dev-util/pkgconfig >=dev-util/cmake-2.6.2-r1 userland_GNU? ( >=sys-apps/findutils-4.4.0 ) >=sys-apps/sed-4
-x11-libs/qt-gui:4 x11-libs/qt-opengl:4 x11-libs/qt-sql:4[sqlite] >=media-libs/taglib-1.6 media-libs/liblastfm dev-libs/glib:2 gstreamer? ( >=media-libs/gstreamer-0.10 >=media-libs/gst-plugins-base-0.10 ) vlc? ( media-video/vlc ) xine? ( media-libs/xine-lib ) !gstreamer? ( !vlc? ( media-libs/xine-lib ) ) gstreamer? ( >=media-plugins/gst-plugins-meta-0.10 >=media-plugins/gst-plugins-gio-0.10 )
+x11-libs/qt-gui:4 x11-libs/qt-opengl:4 x11-libs/qt-sql:4[sqlite] >=media-libs/taglib-1.6 media-libs/liblastfm dev-libs/glib:2 gstreamer? ( >=media-libs/gstreamer-0.10 >=media-libs/gst-plugins-base-0.10 ) xine? ( media-libs/xine-lib ) !gstreamer? ( media-libs/xine-lib ) >=dev-libs/boost-1.39 dev-util/pkgconfig >=dev-util/cmake-2.6.2-r1 userland_GNU? ( >=sys-apps/findutils-4.4.0 ) >=sys-apps/sed-4
+x11-libs/qt-gui:4 x11-libs/qt-opengl:4 x11-libs/qt-sql:4[sqlite] >=media-libs/taglib-1.6 media-libs/liblastfm dev-libs/glib:2 gstreamer? ( >=media-libs/gstreamer-0.10 >=media-libs/gst-plugins-base-0.10 ) xine? ( media-libs/xine-lib ) !gstreamer? ( media-libs/xine-lib ) gstreamer? ( >=media-plugins/gst-plugins-meta-0.10 >=media-plugins/gst-plugins-gio-0.10 )
 0
 http://clementine-player.googlecode.com/files/clementine-0.3.tar.gz
 
@@ -8,7 +8,7 @@ GPL-3
 A modern music player and library organizer based on Amarok 1.4 and Qt4
 ~amd64 ~x86
 base cmake-utils eutils flag-o-matic gnome2-utils multilib portability toolchain-funcs
-gstreamer vlc +xine
+gstreamer +xine
 
 
 

@@ -1,5 +1,29 @@
 #!/bin/bash
 
+# This script uses the contents of the funtoo-overlay to generate 
+# a merged funtoo+gentoo unified tree, which is then used to update the
+# funtoo.org git tree with the latest changes from both funtoo and gentoo.
+# These changes are placed in a commit which can then be pushed to
+# github so users can "emerge --sync" to grab these changes.
+
+# This script is designed to run from the root of the funtoo-overlay:
+
+# cd /root/git/funtoo-overlay
+# scripts/funtoo/grabba.sh
+
+# "dest" points to a git tree that contains a gentoo.org tree that will
+# be used to generate the funtoo+gentoo unified tree data. This data is
+# then placed in a tarball.
+
+# "final" points to a git tree that contains a funtoo.org tree that will
+# receive the new updates. The contents of the working dir will be removed
+# with rm -rf, and the tarball will be unpacked, egencache will be run
+# and then git add * and git commit will be run to generate an update
+# to the funtoo tree. This commit can then be reviewed, and manually
+# pushed up to github.com so other users can grab it via emerge --sync.
+
+# I have no clue why I named this script grabba.sh.
+
 dest=/var/tmp/git/portage-gentoo
 final=/var/tmp/git/portage-prod
 src=`pwd`
@@ -65,7 +89,6 @@ cp eclass/* $dest/eclass/ || die "eclass fail"
 
 echo "Creating Portage tarball..."
 tar cf /var/tmp/git/curmerge.tar -C $dest --exclude .git . || die "tarball create error"
-
 
 ( cd $final; git checkout $desttree ) || die "couldn't checkout $desttree destree"
 ( cd $final; rm -rf * ) || die "couldn't prep tree"
