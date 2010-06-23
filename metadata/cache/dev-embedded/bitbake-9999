@@ -1,5 +1,5 @@
-dev-lang/python dev-python/pysqlite dev-vcs/subversion net-misc/rsync
-dev-lang/python dev-python/pysqlite
+|| ( >=dev-lang/python-2.5[sqlite] >=dev-python/pysqlite-2.3.2 ) >=app-admin/eselect-python-20091230 dev-lang/python dev-vcs/subversion net-misc/rsync
+|| ( >=dev-lang/python-2.5[sqlite] >=dev-python/pysqlite-2.3.2 ) >=app-admin/eselect-python-20091230 dev-lang/python
 0
 
 
@@ -7,14 +7,14 @@ http://developer.berlios.de/projects/bitbake/
 GPL-2
 package management tool for OpenEmbedded
 
-eutils multilib portability subversion toolchain-funcs
+distutils eutils multilib portability python subversion toolchain-funcs
 
 
 
 
+2
 
-
-install preinst unpack
+compile install postinst postrm preinst prepare unpack
 
 
 
