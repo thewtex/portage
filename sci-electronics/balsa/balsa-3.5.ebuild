@@ -1,10 +1,11 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-electronics/balsa/balsa-3.5.ebuild,v 1.3 2009/09/23 19:59:23 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-electronics/balsa/balsa-3.5.ebuild,v 1.4 2010/06/24 17:26:10 jlec Exp $
+
+EAPI="1"
 
 inherit eutils
 
-IUSE=""
 
 DESCRIPTION="The Balsa asynchronous synthesis system"
 HOMEPAGE="http://www.cs.manchester.ac.uk/apt/projects/tools/balsa/"
@@ -19,11 +20,12 @@ SRC_URI="ftp://ftp.cs.man.ac.uk/pub/amulet/balsa/${PV}/BalsaExamples${PV}.tar.gz
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~x86 ~ppc"
+IUSE=""
 
 DEPEND="sys-devel/binutils
 	dev-libs/gmp
 	dev-lang/perl
-	x11-libs/gtk+
+	x11-libs/gtk+:1
 	sci-electronics/iverilog
 	sci-electronics/gplcver"
 
@@ -44,10 +46,10 @@ src_unpack() {
 	if [ $TECH_AMS ]; then
 		unpack ${BALSA_TECH_AMS}
 	fi
-	sed -i -e "s:\(DEFAULT_INCLUDES = \)\(.*\):\1-I${S}/src/libs/ \2/:" ${WORKDIR}/balsa-sim-verilog-${PV}/libs/Makefile.in
-	sed -i -e 's/ $(bindir)/ $(DESTDIR)$(bindir)/' ${S}/bin/Makefile.in
-	sed -i -e 's/ $(balsatypesdir)/ $(DESTDIR)$(balsatypesdir)/' ${S}/share/balsa/types/Makefile.in
-	sed -i -e 's/ $(balsasimdir)/ $(DESTDIR)$(balsasimdir)/' ${S}/share/balsa/sim/Makefile.in
+	sed -i -e "s:\(DEFAULT_INCLUDES = \)\(.*\):\1-I"${S}"/src/libs/ \2/:" "${WORKDIR}"/balsa-sim-verilog-${PV}/libs/Makefile.in
+	sed -i -e 's/ $(bindir)/ $(DESTDIR)$(bindir)/' "${S}"/bin/Makefile.in
+	sed -i -e 's/ $(balsatypesdir)/ $(DESTDIR)$(balsatypesdir)/' "${S}"/share/balsa/types/Makefile.in
+	sed -i -e 's/ $(balsasimdir)/ $(DESTDIR)$(balsasimdir)/' "${S}"/share/balsa/sim/Makefile.in
 }
 
 src_compile() {
@@ -55,30 +57,30 @@ src_compile() {
 	einfo "Compiling balsa"
 	./configure --prefix=/usr/ || die "econf failed"
 	chmod +x bin/balsa-config
-	PATH=$PATH:${S}/bin
+	PATH=$PATH:"${S}"/bin
 	emake -j1 || die
 
 	# configure AMS035 tech
 	if [ $TECH_AMS ]; then
 		einfo "Compiling AMS035 tech"
-		cd ${WORKDIR}/balsa-tech-ams-20030506
+		cd "${WORKDIR}"/balsa-tech-ams-20030506
 		econf || die "econf failed"
 	fi
 
 	# config Xilinx FPGA backend
 	einfo "Compiling Xilinx FPGA backend"
-	cd ${WORKDIR}/balsa-tech-xilinx-${PV}
+	cd "${WORKDIR}"/balsa-tech-xilinx-${PV}
 	econf || die "econf failed"
 
 	# config example tech
 	einfo "Compiling tech example"
-	cd ${WORKDIR}/balsa-tech-example-${PV}
+	cd "${WORKDIR}"/balsa-tech-example-${PV}
 	econf || die "econf failed"
 
 	# config verilog simulator wrappers
 	einfo "Compiling verilog simulator wrappers"
-	cd ${WORKDIR}/balsa-sim-verilog-${PV}
-	./configure --includedir=${S}/src/libs/balsasim \
+	cd "${WORKDIR}"/balsa-sim-verilog-${PV}
+	./configure --includedir="${S}"/src/libs/balsasim \
 		--with-icarus-includes=/usr/include \
 		--with-icarus-libs=/usr/lib \
 		--with-cver-includes=/usr/include/cver_pli_incs || die
@@ -86,31 +88,31 @@ src_compile() {
 
 src_install() {
 	# install balsa
-	cd ${S}
+	cd "${S}"
 	einfo "Installing balsa"
 	make DESTDIR=${D} install || die
 
 	# install manual and examples
 	dodir /usr/share/doc/${P}/
-	cp -pPR ${WORKDIR}/BalsaExamples ${D}/usr/share/doc/${P}/
+	cp -pPR "${WORKDIR}"/BalsaExamples ${D}/usr/share/doc/${P}/
 	dodoc ${DISTDIR}/BalsaManual${PV}.pdf
 
 	if [ $TECH_AMS ]; then
 		einfo "Installing AMS035 tech"
-		cd ${WORKDIR}/balsa-tech-ams-20030506
+		cd "${WORKDIR}"/balsa-tech-ams-20030506
 		make DESTDIR=${D} install || die "make install failed"
 	fi
 
 	einfo "Installing Xilinx FPGA tech"
-	cd ${WORKDIR}/balsa-tech-xilinx-${PV}
+	cd "${WORKDIR}"/balsa-tech-xilinx-${PV}
 	make DESTDIR=${D} install || die "make install failed"
 
 	einfo "Installing example tech"
-	cd ${WORKDIR}/balsa-tech-example-${PV}
+	cd "${WORKDIR}"/balsa-tech-example-${PV}
 	make DESTDIR=${D} install || die "make install failed"
 
 	einfo "Installing verilog simulator wrappers"
-	cd ${WORKDIR}/balsa-sim-verilog-${PV}
+	cd "${WORKDIR}"/balsa-sim-verilog-${PV}
 	DESTDIR=${D} make install || die "make verilog wrappers failed"
 
 	# fix paths
@@ -120,7 +122,7 @@ src_install() {
 	find . -name "sed*" -exec rm -f {} \;
 
 	# add some docs
-	cd ${S}
+	cd "${S}"
 	einfo "Installing docs"
 	dodoc AUTHORS COPYING NEWS README TODO
 	mv ${D}/usr/doc/* ${D}/usr/share/doc/${P}/

@@ -1,6 +1,12 @@
 # ChangeLog for media-video/ffmpeg
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/ffmpeg/ChangeLog,v 1.357 2010/06/18 06:47:20 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/ffmpeg/ChangeLog,v 1.359 2010/06/22 08:57:42 fauli Exp $
+
+  22 Jun 2010; Christian Faulhammer <fauli@gentoo.org> ffmpeg-0.6.ebuild:
+  add ~x86, bug 324941
+
+  22 Jun 2010; Alexis Ballier <aballier@gentoo.org> ffmpeg-9999-r1.ebuild:
+  faad support has been removed
 
   18 Jun 2010; Alexis Ballier <aballier@gentoo.org> ffmpeg-9999-r1.ebuild:
   Sort IUSE and make zlib enabled by default, by Nikoli
@@ -391,9 +397,6 @@
   ffmpeg-0.4.9_p20081219.ebuild:
   Stable on alpha, bug #255008
 
-  31 Jan 2009; Daniel Robbins <drobbins@funtoo.org>: enabled some good
-  default USE flags for ffmpeg - for encoding but also for video playback.
-
   27 Jan 2009; Alexis Ballier <aballier@gentoo.org> ffmpeg-9999.ebuild:
   no need for local variables when we use them only once
 
@@ -430,10 +433,6 @@
   ffmpeg-0.4.9_p20081014.ebuild, ffmpeg-0.4.9_p20081219.ebuild,
   ffmpeg-9999.ebuild:
   make sure version.h gets created, bug #252269
-
-  30 Dec 2008; Daniel Robbins <drobbins@funtoo.org>
-  ffmpeg-0.4.9_p20081219.ebuild: added default USE for aac, encode, mp3,
-  theora, vorbis, x264, xvid.
 
   23 Dec 2008; Alexis Ballier <aballier@gentoo.org> ffmpeg-9999.ebuild:
   Sync live ebuild with latest snapshot; merely add speex useflag and remove

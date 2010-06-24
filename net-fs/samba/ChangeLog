@@ -1,6 +1,29 @@
 # ChangeLog for net-fs/samba
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-fs/samba/ChangeLog,v 1.423 2010/06/05 19:11:18 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-fs/samba/ChangeLog,v 1.425 2010/06/23 19:50:21 patrick Exp $
+
+*samba-3.5.4 (23 Jun 2010)
+
+  23 Jun 2010; Patrick Lauer <patrick@gentoo.org> +samba-3.5.4.ebuild:
+  Bump
+
+*samba-3.2.15-r1 (23 Jun 2010)
+*samba-3.0.37-r1 (23 Jun 2010)
+
+  23 Jun 2010; Víctor Ostorga <vostorga@gentoo.org>
+  +files/3.0.37-CVE-2010-2063.patch,
+  +files/3.2.15-smbclient-file-corruption-NT4.patch,
+  +samba-3.0.37-r1.ebuild, +samba-3.2.15-r1.ebuild,
+  +files/3.2.15-CVE-2010-2063.patch,
+  +files/3.0.37-allow-non-ASCII-netbios-names.patch,
+  +files/3.2.15-core-dump-overlapping-byte-lock-test.patch:
+  Samba 3.0.37 and 3.2.15
+  Adding patches fixing CVE-2010-2063 , bug #323785
+  Samba 3.0.37
+  Fixing domain and netbios name in DOS charset
+  Samba 3.2.15
+  Fix file corruption using smbclient with NT4 server
+  Fix core dump when running overlapping Byte Lock test
 
   05 Jun 2010; Raúl Porcel <armin76@gentoo.org> samba-3.4.6.ebuild:
   alpha/arm/ia64/s390/sh/sparc stable wrt #300158
@@ -316,12 +339,6 @@
   samba-3.2.0_rc2.ebuild, samba-3.2.11.ebuild:
   Replace kernel-conditional dependency on sys-apps/acl with virtual/acl.
 
-*samba-3.2.11 (08 May 2009)
-
- 08 May 2009; Daniel Robbins <drobbins@funtoo.org> samba-3.2.11.ebuild:
- Fix USE="winbind" by creating libwbclient.so.0 symlinks into the samba/
- subdir.
-
 *samba-3.2.11 (23 Apr 2009)
 
   23 Apr 2009; Patrick Lauer <patrick@gentoo.org> +samba-3.2.11.ebuild:
@@ -333,16 +350,6 @@
 
   29 Mar 2009; Patrick Lauer <patrick@gentoo.org> +samba-3.0.34.ebuild:
   Bump to 3.0.34. Fixes #256778
-
-*samba-3.2.8 (18 Mar 2009)
-
-  18 Mar 2009; Daniel Robbins <drobbins@funtoo.org> samba-3.2.8.ebuild:
-  upstream bugfix release released on 3 Mar 2009.
-
-  19 Jan 2009; Caleb Cushing <xenoterracide@gmail.com> samba-3.2.7.ebuild:
-  version bump
-
-*samba-3.2.7 (19 Jan 2009)
 
   04 Jan 2009; Raúl Porcel <armin76@gentoo.org> samba-3.0.33.ebuild:
   s390/sh stable wrt #247620
