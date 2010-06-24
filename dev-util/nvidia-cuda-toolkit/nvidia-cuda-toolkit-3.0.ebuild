@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/nvidia-cuda-toolkit/nvidia-cuda-toolkit-3.0.ebuild,v 1.3 2010/04/01 21:48:37 spock Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/nvidia-cuda-toolkit/nvidia-cuda-toolkit-3.0.ebuild,v 1.5 2010/06/24 11:02:37 spock Exp $
 
 EAPI=2
 
@@ -31,6 +31,7 @@ RDEPEND="${DEPEND}
 		x11-libs/qt-core
 		x11-libs/qt-assistant
 		x11-libs/qt-sql[sqlite] )
+		media-libs/libpng:1.2
 	)
 	debugger? ( >=sys-libs/libtermcap-compat-2.0.8-r2 )"
 RESTRICT="strip binchecks"
@@ -125,6 +126,12 @@ EOF
 				doins ${target}/doc/*
 				insinto ${DEST}/${target}/projects
 				doins ${target}/projects/*
+			fi
+
+			if [ "$target" == "cudaprof" ]; then
+				make_desktop_entry /opt/cuda/cudaprof/bin/cudaprof "CUDA Visual Profiler"
+			else
+				make_desktop_entry /opt/cuda/openclprof/bin/openclprof "OpenCL Visual Profiler"
 			fi
 		done
 	fi

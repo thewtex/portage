@@ -8,12 +8,9 @@ MODULE_AUTHOR=INGY
 inherit perl-module
 
 DESCRIPTION="Boolean support for Perl"
-LICENSE="|| ( Artistic GPL-2 )"
 
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-
 IUSE=""
-DEPEND=""
 
 SRC_TEST=do

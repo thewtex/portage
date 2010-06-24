@@ -10,11 +10,8 @@ DESCRIPTION="Refresh %INC files when updated on disk"
 LICENSE="|| ( Artistic GPL-2 )"
 SLOT="0"
 KEYWORDS="amd64 ia64 ~ppc x86"
-IUSE="test"
-
-DEPEND="dev-lang/perl
-	test? ( virtual/perl-Test-Simple
-		virtual/perl-File-Temp )"
+IUSE=""
 
 SRC_TEST="do"
 
+DEPEND="dev-lang/perl"

@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/gimp/gimp-9999.ebuild,v 1.27 2010/06/10 17:51:23 arfrever Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/gimp/gimp-9999.ebuild,v 1.28 2010/06/24 10:45:22 scarabeus Exp $
 
 EAPI=2
 PYTHON_DEPEND="python? 2:2.5"
@@ -22,6 +22,7 @@ IUSE="alsa aalib altivec curl dbus debug doc exif gnome hal jpeg lcms mmx mng pd
 RDEPEND=">=dev-libs/glib-2.18.1
 	>=x11-libs/gtk+-2.12.5
 	>=x11-libs/pango-1.18.0
+	x11-libs/libXpm
 	>=media-libs/freetype-2.1.7
 	>=media-libs/fontconfig-2.2.0
 	sys-libs/zlib

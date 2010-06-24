@@ -1,4 +1,4 @@
-net-misc/curl dev-libs/glib dev-libs/libxml2 virtual/mysql dev-util/pkgconfig
+net-misc/curl dev-libs/glib dev-libs/libxml2 virtual/mysql dev-util/pkgconfig || ( =sys-devel/automake-1.11* =sys-devel/automake-1.10* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b
 net-misc/curl dev-libs/glib dev-libs/libxml2 virtual/mysql
 0
 mirror://sourceforge/gmyth/gmyth_0.7-indt1.tar.gz
@@ -7,14 +7,14 @@ http://gmyth.sourceforge.net/
 LGPL-2
 GObject based library to access mythtv backends
 amd64 ppc ~ppc64 x86
-libtool multilib toolchain-funcs
+autotools eutils libtool multilib portability toolchain-funcs
 debug
 
 
 
 
 
-compile install
+compile install unpack
 
 
 

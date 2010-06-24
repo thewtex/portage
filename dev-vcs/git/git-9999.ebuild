@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-vcs/git/git-9999.ebuild,v 1.2 2010/03/24 22:04:28 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-vcs/git/git-9999.ebuild,v 1.4 2010/06/22 18:47:46 arfrever Exp $
 
 EAPI=2
 
@@ -360,13 +360,13 @@ src_test() {
 		disabled="${disabled} ${tests_nonroot}"
 	else
 		[[ $cvs -gt 0 ]] && \
-			has_version dev-util/cvs && \
+			has_version dev-vcs/cvs && \
 			let cvs=$cvs+1
 		[[ $cvs -gt 1 ]] && \
-			built_with_use dev-util/cvs server && \
+			built_with_use dev-vcs/cvs server && \
 			let cvs=$cvs+1
 		if [[ $cvs -lt 3 ]]; then
-			einfo "Disabling CVS tests (needs dev-util/cvs[USE=server])"
+			einfo "Disabling CVS tests (needs dev-vcs/cvs[USE=server])"
 			disabled="${disabled} ${tests_cvs}"
 		fi
 	fi

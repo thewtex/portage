@@ -79,7 +79,6 @@ src_configure() {
 		$(use_with xml libxml) \
 		$(use_with xml libxslt) \
 		$(use_with uuid ossp-uuid) \
-		--with-openssl \
 		--with-system-tzdata="/usr/share/zoneinfo" \
 		--with-includes="/usr/include/postgresql-${SLOT}/" \
 		--with-libraries="/usr/$(get_libdir)/postgresql-${SLOT}/$(get_libdir)" \

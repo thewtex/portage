@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-vcs/git/git-1.7.0.3.ebuild,v 1.2 2010/03/24 22:04:28 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-vcs/git/git-1.7.0.3.ebuild,v 1.5 2010/06/22 18:47:46 arfrever Exp $
 
 EAPI=2
 
@@ -18,7 +18,7 @@ if [ "$PV" != "9999" ]; then
 	SRC_URI="mirror://kernel/software/scm/git/${MY_P}.tar.bz2
 			mirror://kernel/software/scm/git/${PN}-manpages-${DOC_VER}.tar.bz2
 			doc? ( mirror://kernel/software/scm/git/${PN}-htmldocs-${DOC_VER}.tar.bz2 )"
-	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~s390 ~sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd"
+	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd"
 else
 	SRC_URI=""
 	EGIT_BRANCH="master"
@@ -29,7 +29,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+blksha1 +curl cgi doc emacs gtk iconv instaweb +perl ppcsha1 quilt tk +threads +webdav xinetd cvs subversion"
+IUSE="+blksha1 +curl cgi doc emacs gtk iconv +perl ppcsha1 tk +threads +webdav xinetd cvs subversion"
 
 # Common to both DEPEND and RDEPEND
 CDEPEND="
@@ -44,8 +44,6 @@ CDEPEND="
 	emacs?  ( virtual/emacs )"
 
 RDEPEND="${CDEPEND}
-	quilt? ( dev-util/quilt )
-	instaweb? ( || ( www-servers/lighttpd www-servers/apache ) )
 	perl? ( dev-perl/Error
 			dev-perl/Net-SMTP-SSL
 			dev-perl/Authen-SASL
@@ -362,13 +360,13 @@ src_test() {
 		disabled="${disabled} ${tests_nonroot}"
 	else
 		[[ $cvs -gt 0 ]] && \
-			has_version dev-util/cvs && \
+			has_version dev-vcs/cvs && \
 			let cvs=$cvs+1
 		[[ $cvs -gt 1 ]] && \
-			built_with_use dev-util/cvs server && \
+			built_with_use dev-vcs/cvs server && \
 			let cvs=$cvs+1
 		if [[ $cvs -lt 3 ]]; then
-			einfo "Disabling CVS tests (needs dev-util/cvs[USE=server])"
+			einfo "Disabling CVS tests (needs dev-vcs/cvs[USE=server])"
 			disabled="${disabled} ${tests_cvs}"
 		fi
 	fi
@@ -406,14 +404,12 @@ pkg_postinst() {
 		ewarn "You must build dev-vcs/subversion with USE=perl"
 		ewarn "to get the full functionality of git-svn!"
 	fi
-	if ! ( use quilt && use instaweb ) ; then
-		elog "These additional scripts need some dependencies:"
-		echo
-		use quilt || showpkgdeps git-quiltimport "dev-util/quilt"
-		use instaweb || showpkgdeps git-instaweb \
-			"|| ( www-servers/lighttpd www-servers/apache )"
-		echo
-	fi
+	elog "These additional scripts need some dependencies:"
+	echo
+	showpkgdeps git-quiltimport "dev-util/quilt"
+	showpkgdeps git-instaweb \
+		"|| ( www-servers/lighttpd www-servers/apache )"
+	echo
 }
 
 pkg_postrm() {
