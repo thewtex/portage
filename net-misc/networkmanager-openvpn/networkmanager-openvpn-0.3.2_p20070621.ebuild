@@ -27,6 +27,7 @@ RDEPEND=">=sys-apps/dbus-0.35.2
 	gnome? ( >=x11-libs/gtk+-2.8
 		>=gnome-base/libglade-2
 		>=gnome-base/gnome-keyring-0.4
+		>=gnome-base/gnome-panel-2
 		>=gnome-base/gconf-2
 		>=gnome-base/libgnomeui-2 )
 	!gnome? ( >=gnome-base/libglade-2

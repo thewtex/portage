@@ -31,18 +31,6 @@
   14 Jan 2009; Brent Baude <ranger@gentoo.org> gpm-1.20.5.ebuild:
   stable ppc64, bug 253354
 
-*gpm-1.20.1-r7 (17 Aug 2008)
-
-*gpm-1.20.5-r1 (17 Aug 2008)
-
-  16 Aug 2008; Daniel Robbins <drobbins@funtoo.org>
-  gpm-1.20.5-r1.ebuild, gpm-1.20.1-r7.ebuild:
-  Removed dependency on ncurses. From what I can tell 
-  (http://invisible-island.net/ncurses/ncurses.faq.html#using_gpm_lib) 
-  this is not something one should do and this solves a circular dep
-  issue (ncurses->gpm->ncurses) during stage3 build that portage
-  currently ignores but really shouldn't.
-
 *gpm-1.20.5 (19 Jun 2008)
 
   19 Jun 2008; Mike Frysinger <vapier@gentoo.org>
