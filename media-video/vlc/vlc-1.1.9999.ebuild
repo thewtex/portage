@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/vlc/vlc-1.1.9999.ebuild,v 1.9 2010/06/22 12:26:03 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/vlc/vlc-1.1.9999.ebuild,v 1.12 2010/06/25 11:30:50 aballier Exp $
 
 EAPI="2"
 
@@ -67,22 +67,20 @@ RDEPEND="
 		bidi? ( >=dev-libs/fribidi-0.10.4 )
 		cdda? (	cddb? ( >=media-libs/libcddb-1.2.0 ) )
 		dbus? ( >=sys-apps/dbus-1.0.2 )
-		dc1394? ( >=sys-libs/libraw1394-2.0.1
-			>=media-libs/libdc1394-2.0.2 )
+		dc1394? ( >=sys-libs/libraw1394-2.0.1 >=media-libs/libdc1394-2.0.2 )
 		dirac? ( >=media-video/dirac-0.10.0 )
 		directfb? ( dev-libs/DirectFB sys-libs/zlib )
 		dts? ( media-libs/libdca )
 		dvd? (	media-libs/libdvdread >=media-libs/libdvdnav-0.1.9 )
 		elibc_glibc? ( >=sys-libs/glibc-2.8 )
 		ffmpeg? ( >=media-video/ffmpeg-0.4.9_p20090201 )
-		flac? ( media-libs/libogg
-			>=media-libs/flac-1.1.2 )
+		flac? ( media-libs/libogg >=media-libs/flac-1.1.2 )
 		fluidsynth? ( media-sound/fluidsynth )
 		fontconfig? ( media-libs/fontconfig )
 		gcrypt? ( >=dev-libs/libgcrypt-1.2.0 )
 		ggi? ( media-libs/libggi )
 		gnome? ( gnome-base/gnome-vfs )
-		gnutls? ( >=net-libs/gnutls-1.7.4 )
+		gnutls? ( >=net-libs/gnutls-1.7.4 >=dev-libs/libgcrypt-1.2.0 )
 		id3tag? ( media-libs/libid3tag sys-libs/zlib )
 		ieee1394? ( >=sys-libs/libraw1394-2.0.1 >=sys-libs/libavc1394-0.5.3 )
 		jack? ( >=media-sound/jack-audio-connection-kit-0.99.0-r1 )
@@ -95,9 +93,7 @@ RDEPEND="
 		lirc? ( app-misc/lirc )
 		live? ( >=media-plugins/live-2008.07.06 )
 		lua? ( >=dev-lang/lua-5.1 )
-		matroska? (
-			>=dev-libs/libebml-0.7.6
-			>=media-libs/libmatroska-0.8.0 )
+		matroska? (	>=dev-libs/libebml-0.7.6 >=media-libs/libmatroska-0.8.0 )
 		modplug? ( >=media-libs/libmodplug-0.8 )
 		mp3? ( media-libs/libmad )
 		mpeg? ( >=media-libs/libmpeg2-0.3.2 )
@@ -106,15 +102,14 @@ RDEPEND="
 		ncurses? ( sys-libs/ncurses )
 		nsplugin? ( >=net-libs/xulrunner-1.9.2 x11-libs/libXpm x11-libs/libXt )
 		ogg? ( media-libs/libogg )
-		opengl? ( virtual/opengl )
+		opengl? ( virtual/opengl x11-libs/libX11[xcb] )
 		png? ( media-libs/libpng sys-libs/zlib )
 		projectm? ( media-libs/libprojectm )
 		pulseaudio? ( >=media-sound/pulseaudio-0.9.11
 			!X? ( >=media-sound/pulseaudio-0.9.11[-X] ) )
 		qt4? ( x11-libs/qt-gui:4 x11-libs/qt-core:4 x11-libs/libX11 )
 		remoteosd? ( >=dev-libs/libgcrypt-1.2.0 )
-		samba? ( || ( >=net-fs/samba-3.4.6[smbclient]
-			<net-fs/samba-3.4 ) )
+		samba? ( || ( >=net-fs/samba-3.4.6[smbclient] <net-fs/samba-3.4 ) )
 		schroedinger? ( >=media-libs/schroedinger-1.0.6 )
 		sdl? ( >=media-libs/libsdl-1.2.8
 			sdl-image? ( media-libs/sdl-image sys-libs/zlib	) )
@@ -130,8 +125,7 @@ RDEPEND="
 		svga? ( media-libs/svgalib )
 		taglib? ( >=media-libs/taglib-1.5 sys-libs/zlib )
 		theora? ( >=media-libs/libtheora-1.0_beta3 )
-		truetype? ( media-libs/freetype
-			media-fonts/dejavu )
+		truetype? ( media-libs/freetype media-fonts/dejavu )
 		twolame? ( media-sound/twolame )
 		udev? ( >=sys-fs/udev-142 )
 		upnp? ( net-libs/libupnp )
@@ -185,6 +179,7 @@ pkg_setup() {
 
 	# Useflags we need to forcefuly enable
 	vlc_use_force remoteosd gcrypt
+	vlc_use_force gnutls gcrypt
 	vlc_use_force skins truetype
 	vlc_use_force skins qt4
 	vlc_use_force vlm stream
@@ -340,6 +335,7 @@ src_configure() {
 		$(vlc_use_enable_force skins qt4) \
 		$(vlc_use_enable_force skins freetype) \
 		$(vlc_use_enable_force remoteosd libgcrypt) \
+		$(vlc_use_enable_force gnutls libgcrypt) \
 		$(vlc_use_enable_force vaapi avcodec)
 }
 

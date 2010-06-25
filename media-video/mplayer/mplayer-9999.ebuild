@@ -1,13 +1,13 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/mplayer/mplayer-9999.ebuild,v 1.65 2010/06/12 18:14:40 spatz Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/mplayer/mplayer-9999.ebuild,v 1.68 2010/06/25 14:46:40 ssuominen Exp $
 
 EAPI="2"
 
 ESVN_REPO_URI="svn://svn.mplayerhq.hu/mplayer/trunk"
 [[ ${PV} = *9999* ]] && SVN_ECLASS="subversion" || SVN_ECLASS=""
 
-inherit eutils flag-o-matic multilib base ${SVN_ECLASS}
+inherit toolchain-funcs eutils flag-o-matic multilib base ${SVN_ECLASS}
 
 [[ ${PV} != *9999* ]] && MPLAYER_REVISION=SVN-r30554
 
@@ -94,7 +94,7 @@ RDEPEND+="
 	aalib? ( media-libs/aalib )
 	alsa? ( media-libs/alsa-lib )
 	amr? ( !bindist? ( media-libs/opencore-amr ) )
-	ass? ( ${FONT_RDEPS} media-libs/libass )
+	ass? ( ${FONT_RDEPS} media-libs/libass[enca?] )
 	bidi? ( dev-libs/fribidi )
 	bs2b? ( media-libs/libbs2b )
 	cdio? ( dev-libs/libcdio )
@@ -107,7 +107,7 @@ RDEPEND+="
 	encode? (
 		!twolame? ( toolame? ( media-sound/toolame ) )
 		twolame? ( media-sound/twolame )
-		faac? ( media-libs/faac )
+		faac? ( !bindist? ( media-libs/faac ) )
 		mp3? ( media-sound/lame )
 		x264? ( >=media-libs/x264-0.0.20100423 )
 		xvid? ( media-libs/xvid )
@@ -450,6 +450,11 @@ src_configure() {
 			use ${i} || myconf+=" --disable-${i}"
 		done
 		use faac || myconf+=" --disable-faac-lavc"
+		if use bindist
+		then
+			use faac && ewarn "faac is nonfree and cannot be distributed; disabling faac support."
+			myconf+=" --disable-faac --disable-faac-lavc"
+		fi
 	else
 		myconf+=" --disable-mencoder"
 		myconf+=" --disable-faac-lavc"
@@ -550,7 +555,7 @@ src_configure() {
 
 	use debug && myconf+=" --enable-debug=3"
 
-	if use x86; then
+	if use x86 && gcc-specs-pie; then
 		filter-flags -fPIC -fPIE
 		append-ldflags -nopie
 	fi
