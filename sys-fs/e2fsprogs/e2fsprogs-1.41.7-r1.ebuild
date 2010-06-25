@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/e2fsprogs/e2fsprogs-1.41.7-r1.ebuild,v 1.1 2009/07/03 19:35:20 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/e2fsprogs/e2fsprogs-1.41.7-r1.ebuild,v 1.3 2009/12/01 04:47:34 vapier Exp $
 
 inherit eutils flag-o-matic toolchain-funcs multilib
 
@@ -20,8 +20,12 @@ DEPEND="${RDEPEND}
 	dev-util/pkgconfig
 	sys-apps/texinfo"
 
-src_test() {
-	return 0
+pkg_setup() {
+	if [[ ! -e ${ROOT}/etc/mtab ]] ; then
+		# add some crap to deal with missing /etc/mtab #217719
+		ewarn "No /etc/mtab file, creating one temporarily"
+		echo "${PN} crap for src_test" > "${ROOT}"/etc/mtab
+	fi
 }
 
 src_unpack() {
@@ -76,7 +80,7 @@ src_compile() {
 		--with-root-prefix=/ \
 		--enable-${libtype}-shlibs \
 		--with-ldopts="${LDFLAGS}" \
-		$(use_enable !elibc_uclibc tls) \
+		$(tc-has-tls || echo --disable-tls) \
 		--without-included-gettext \
 		$(use_enable nls) \
 		$(use_enable userland_GNU fsck) \
@@ -98,13 +102,22 @@ src_compile() {
 	fi
 }
 
-src_install() {
-	
-	emake STRIP=: \
-	DESTDIR="${D}" \
-	root_libdir="/$(get_libdir)" \
-	install install-libs || die
+pkg_preinst() {
+	if [[ -r ${ROOT}/etc/mtab ]] ; then
+		if [[ $(<"${ROOT}"/etc/mtab) == "${PN} crap for src_test" ]] ; then
+			rm -f "${ROOT}"/etc/mtab
+		fi
+	fi
+}
 
+src_install() {
+	# need to set root_libdir= manually as any --libdir options in the
+	# econf above (i.e. multilib) will screw up the default #276465
+	emake \
+		STRIP=: \
+		root_libdir="/$(get_libdir)" \
+		DESTDIR="${D}" \
+		install install-libs || die
 	dodoc README RELEASE-NOTES
 
 	if use elibc_FreeBSD ; then

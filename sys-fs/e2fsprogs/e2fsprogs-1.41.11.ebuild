@@ -1,6 +1,6 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/e2fsprogs/e2fsprogs-1.41.8.ebuild,v 1.5 2009/07/22 14:05:59 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/e2fsprogs/e2fsprogs-1.41.11.ebuild,v 1.4 2010/06/23 21:43:20 angelos Exp $
 
 inherit eutils flag-o-matic toolchain-funcs multilib
 
@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/e2fsprogs/${P}.tar.gz"
 
 LICENSE="GPL-2 BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 -x86-fbsd"
+KEYWORDS="~alpha amd64 ~arm hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc x86 -x86-fbsd"
 IUSE="nls elibc_FreeBSD"
 
 RDEPEND="~sys-libs/${PN}-libs-${PV}
@@ -21,8 +21,12 @@ DEPEND="${RDEPEND}
 	dev-util/pkgconfig
 	sys-apps/texinfo"
 
-src_test() {
-	return 0
+pkg_setup() {
+	if [[ ! -e ${ROOT}/etc/mtab ]] ; then
+		# add some crap to deal with missing /etc/mtab #217719
+		ewarn "No /etc/mtab file, creating one temporarily"
+		echo "${PN} crap for src_test" > "${ROOT}"/etc/mtab
+	fi
 }
 
 src_unpack() {
@@ -45,10 +49,9 @@ src_unpack() {
 	sed -i -r \
 		-e '/^LIB_SUBDIRS/s:lib/(et|ss)::g' \
 		Makefile.in || die "remove subdirs"
-	# stupid configure script clobbers CC for us
 	sed -i \
-		-e '/if test -z "$CC" ; then CC=cc; fi/d' \
-		configure || die "touching configure"
+		-e '/^#define _XOPEN/i#define _GNU_SOURCE' \
+		misc/mke2fs.c || die # needs open64() prototype
 
 	# Avoid rebuild
 	touch lib/ss/ss_err.h
@@ -70,8 +73,7 @@ src_compile() {
 	econf \
 		--with-root-prefix=/ \
 		--enable-${libtype}-shlibs \
-		--with-ldopts="${LDFLAGS}" \
-		$(use_enable !elibc_uclibc tls) \
+		$(tc-has-tls || echo --disable-tls) \
 		--without-included-gettext \
 		$(use_enable nls) \
 		--disable-libblkid \
@@ -93,6 +95,14 @@ src_compile() {
 	fi
 }
 
+pkg_preinst() {
+	if [[ -r ${ROOT}/etc/mtab ]] ; then
+		if [[ $(<"${ROOT}"/etc/mtab) == "${PN} crap for src_test" ]] ; then
+			rm -f "${ROOT}"/etc/mtab
+		fi
+	fi
+}
+
 src_install() {
 	# need to set root_libdir= manually as any --libdir options in the
 	# econf above (i.e. multilib) will screw up the default #276465
@@ -102,6 +112,9 @@ src_install() {
 		DESTDIR="${D}" \
 		install install-libs || die
 	dodoc README RELEASE-NOTES
+
+	insinto /etc
+	doins "${FILESDIR}"/e2fsck.conf || die
 
 	# make sure symlinks are relative, not absolute, for cross-compiling
 	cd "${D}"/usr/$(get_libdir)
