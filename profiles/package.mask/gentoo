@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11703 2010/06/25 10:52:33 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11707 2010/06/26 14:25:01 ssuominen Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,41 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Samuli Suominen <ssuominen@gentoo.org> (26 Jun 2010)
+# Vulnerable and now unused xulrunner-bin, support was dropped from acroread.
+#
+# Masked for removal in 30 days, bug 324953.
+net-libs/xulrunner-bin
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (26 Jun 2010)
+#  on behalf of QA team
+#
+# Fails to build since at least June 2009 (bug #274332). No
+# activity since initial import in November 2008.
+#
+# Removal on 2010-08-25
+app-i18n/adaptit
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (26 Jun 2010)
+#  on behalf of QA team
+#
+# Debian-related package; no maintainer; no ebuild activity
+# since 2005. Broken install phase as per bug #294975.
+#
+# Removal on 2010-08-25
+dev-util/pbuilder
+
+# Samuli Suominen <ssuominen@gentoo.org> (26 Jun 2010)
+# Masked for QA
+# 
+# Fails to compile with stable xulrunner, see bug 317275
+# Fails to compile with GTK+-2.20, see bug 325661
+# Ignores LDFLAGS, see bug 268491
+# Current stable is using vulnerable xulrunner, see bug 324953
+#
+# Removal in 30 days
+www-client/kazehakase
 
 # Samuli Suominen <ssuominen@gentoo.org> (25 Jun 2010)
 # Depends on old unslotted media-libs/ming which fails to build
