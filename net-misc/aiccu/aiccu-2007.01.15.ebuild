@@ -1,6 +1,6 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/aiccu/aiccu-2007.01.15.ebuild,v 1.10 2008/08/12 20:27:50 bluebird Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/aiccu/aiccu-2007.01.15.ebuild,v 1.11 2010/06/28 20:36:34 idl0r Exp $
 
 inherit eutils
 
@@ -24,7 +24,6 @@ src_unpack() {
 }
 
 src_compile() {
-	cd ${S}
 	export RPM_OPT_FLAGS=${CFLAGS}
 	make  || die "Build Failed"
 }

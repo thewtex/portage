@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11713 2010/06/28 14:32:22 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11720 2010/06/29 13:22:37 ssuominen Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,22 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Samuli Suominen <ssuominen@gentoo.org> (29 Jun 2010)
+# Only supports bluez-3, see bug 248192
+# Masked for removal in 30 days
+net-wireless/blueproxy
+
+# Nirbheek Chauhan <nirbheek@gentoo.org> (29 Jun 2010)
+# Mask dev-libs/seed; several ebuild issues, and missing pure-runtime deps
+# Also needs USE=introspection to be unmasked
+dev-libs/seed
+
+# Lennart Kolmodin <kolmodin@gentoo.org> (28 Jun 2010)
+# Mask dev-haskell/filepath for removal, not earlier than Aug 2010.
+# It's already part of dev-lang/ghc since version 6.6.1.
+# See bug #324411.
+dev-haskell/filepath
 
 # Samuli Suominen <ssuominen@gentoo.org> (28 Jun 2010)
 # Vulnerable xulrunner, bug #324953
@@ -255,11 +271,6 @@ media-video/ffprobe
 virtual/postgresql-base
 virtual/postgresql-server
 
-# Jeroen Roovers <jer@gentoo.org> (17 Jun 2010)
-# Snapshots and alpha builds are to be used with care,
-# see <http://my.opera.com/desktopteam/blog/>
-=www-client/opera-10.60*
-
 # Alexis Ballier <aballier@gentoo.org> (17 Jun 2010)
 # Beta release
 >=dev-lang/ocaml-3.12.0_beta
@@ -411,11 +422,6 @@ app-crypt/hmaccalc
 #
 # Masked for removal in 30 days (bz323269)
 net-p2p/Circle
-
-# Markos Chandras <hwoarang@gentoo.org> (05 Jun 2010)
-# Runtime segmentation fauls and multiple failures to generate
-# configuration data. Bug #265465. Masked for removal in 30 days
-x11-misc/wmakerconf
 
 # Samuli Suominen <ssuominen@gentoo.org> (04 Jun 2010)
 #
@@ -662,10 +668,6 @@ sec-policy/selinux-tftpd
 sec-policy/selinux-ucspi-tcp
 sec-policy/selinux-wireshark
 
-# Peter Volkov <pva@gentoo.org> (25 Apr 2010)
-# Beta version, for tests. See bug 316583#c12
-=sys-devel/autogen-5.10.2_pre1
-
 # Nicholas Wolfwood <blackace@gentoo.org> (24 Apr 2010)
 # Unmaintained/abandoned by upstream (#317079).
 # Masked for removal in 30 days.
@@ -905,10 +907,10 @@ dev-db/mysql-community
 >=virtual/mysql-5.5
 
 # Lennart Kolmodin <kolmodin@gentoo.org> (26 Jan 2010)
-# Masked GHC and friends for testing.
->=dev-lang/ghc-6.12
->=dev-haskell/haddock-2.6
-=app-admin/haskell-updater-1*
+# Masked earlier releases of dev-lang/ghc-6.12*.
+# We want to use ghc-6.12.3, not the older versions.
+=dev-lang/ghc-6.12.1*
+=dev-lang/ghc-6.12.2*
 
 # Nirbheek Chauhan <nirbheek@gentoo.org> (25 Jan 2010)
 # Final rc of networkmanager-0.8 and friends

@@ -1,5 +1,5 @@
-dev-lang/python[threads] >=dev-libs/glib-2.4.0 >=dev-libs/libxml2-2.6.0[python] sqlite? ( dev-python/dbus-python >=dev-python/pysqlite-2.3.0 ) avahi? ( net-dns/avahi[python] ) >=app-admin/eselect-python-20091230 >=dev-lang/python-2.5 dev-lang/python
-dev-lang/python[threads] >=dev-libs/glib-2.4.0 >=dev-libs/libxml2-2.6.0[python] sqlite? ( dev-python/dbus-python >=dev-python/pysqlite-2.3.0 ) avahi? ( net-dns/avahi[python] ) dev-python/pynotifier lirc? ( dev-python/pylirc ) tls? ( dev-python/tlslite ) >=app-admin/eselect-python-20091230 >=dev-lang/python-2.5 dev-lang/python
+>=dev-libs/glib-2.4.0 >=dev-libs/libxml2-2.6.0[python] sqlite? ( dev-python/dbus-python >=dev-python/pysqlite-2.3.0 ) avahi? ( net-dns/avahi[python] ) >=app-admin/eselect-python-20091230 || ( =dev-lang/python-2.7* =dev-lang/python-2.6* =dev-lang/python-2.5* ) || ( =dev-lang/python-2.7*[threads] =dev-lang/python-2.6*[threads] =dev-lang/python-2.5*[threads] )
+>=dev-libs/glib-2.4.0 >=dev-libs/libxml2-2.6.0[python] sqlite? ( dev-python/dbus-python >=dev-python/pysqlite-2.3.0 ) avahi? ( net-dns/avahi[python] ) dev-python/pynotifier lirc? ( dev-python/pylirc ) tls? ( dev-python/tlslite ) >=app-admin/eselect-python-20091230 || ( =dev-lang/python-2.7* =dev-lang/python-2.6* =dev-lang/python-2.5* ) || ( =dev-lang/python-2.7*[threads] =dev-lang/python-2.6*[threads] =dev-lang/python-2.5*[threads] )
 0
 mirror://sourceforge/freevo/kaa-base-0.6.0.tar.gz
 
@@ -12,9 +12,9 @@ avahi ssl sqlite tls lirc
 
 
 
-2
+3
 
-compile install postinst postrm prepare
+compile install postinst postrm prepare setup
 
 
 

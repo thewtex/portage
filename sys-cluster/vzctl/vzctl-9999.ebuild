@@ -1,6 +1,6 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/vzctl/vzctl-9999.ebuild,v 1.4 2009/11/06 13:12:44 pva Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/vzctl/vzctl-9999.ebuild,v 1.5 2010/06/29 09:26:42 pva Exp $
 
 EAPI="2"
 
@@ -53,17 +53,6 @@ src_install() {
 
 pkg_postinst() {
 	bash-completion_pkg_postinst
-	ewarn
-	if has_version "<sys-cluster/vzctl-3.0.10"; then
-		ewarn "The location of some vzctl files have changed. Most notably,"
-		ewarn "CT configuration files and samples directory has changed from"
-		ewarn "/etc/vz to /etc/vz/conf. In order to be able to work with"
-		ewarn "your CTs, please do the following:"
-		ewarn
-		ewarn "bash# mv /etc/vz/[0-9]*.conf /etc/vz/conf/"
-		ewarn
-	fi
-
 	local conf_without_OSTEMPLATE
 	for file in \
 		$(find "${ROOT}/etc/vz/conf/" \( -name *.conf -a \! -name 0.conf \)); do
