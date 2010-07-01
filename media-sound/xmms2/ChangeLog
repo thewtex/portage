@@ -1,6 +1,25 @@
 # ChangeLog for media-sound/xmms2
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/xmms2/ChangeLog,v 1.1 2010/06/30 05:30:53 slyfox Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/xmms2/ChangeLog,v 1.3 2010/07/01 08:22:28 slyfox Exp $
+
+*xmms2-0.7-r2 (01 Jul 2010)
+
+  01 Jul 2010; Sergei Trofimovich <slyfox@gentoo.org> -xmms2-0.7-r1.ebuild,
+  +xmms2-0.7-r2.ebuild:
+  Revision bump. Building xmms2 requires python2, pyrex became a build time
+  depend, moved to EAPI=3. Thanks to arfrever.
+  Disabled building of bundled faad2, use only external one.
+  Thanks to ssuominen.
+
+*xmms2-0.7-r1 (30 Jun 2010)
+
+  30 Jun 2010; Sergei Trofimovich <slyfox@gentoo.org> -xmms2-0.7.ebuild,
+  +xmms2-0.7-r1.ebuild, metadata.xml:
+  Revision bump. Renamed USE flags to comform to other packages in tree:
+  libmad: 'mp3' -> 'mad'
+  mpg123: 'libmpg123' -> 'mp3'
+  faad2: 'mp4' -> 'aac'
+  Thanks to Samuli Suominen.
 
 *xmms2-0.7 (30 Jun 2010)
 

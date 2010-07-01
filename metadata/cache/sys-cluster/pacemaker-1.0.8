@@ -1,0 +1,22 @@
+dev-libs/libxslt sys-cluster/cluster-glue sys-cluster/resource-agents ais? ( sys-cluster/openais ) heartbeat? ( >=sys-cluster/heartbeat-3.0.0 ) snmp? ( net-analyzer/net-snmp ) !heartbeat? ( !ais? ( sys-cluster/openais ) ) >=app-admin/eselect-python-20091230 =dev-lang/python-2* || ( =sys-devel/automake-1.11* =sys-devel/automake-1.10* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b
+dev-libs/libxslt sys-cluster/cluster-glue sys-cluster/resource-agents ais? ( sys-cluster/openais ) heartbeat? ( >=sys-cluster/heartbeat-3.0.0 ) snmp? ( net-analyzer/net-snmp ) !heartbeat? ( !ais? ( sys-cluster/openais ) ) >=app-admin/eselect-python-20091230 =dev-lang/python-2*
+0
+http://hg.clusterlabs.org/pacemaker/stable-1.0/archive/Pacemaker-1.0.8.tar.bz2
+
+http://www.linux-ha.org/wiki/Pacemaker
+GPL-2
+Pacemaker CRM
+~amd64 ~x86
+autotools base eutils flag-o-matic libtool multilib portability python toolchain-funcs
++ais heartbeat snmp static-libs
+
+
+
+2
+
+compile configure install prepare setup unpack
+
+
+
+
+

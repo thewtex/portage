@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/haml/haml-3.0.13.ebuild,v 1.1 2010/06/25 20:06:29 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/haml/haml-3.0.13.ebuild,v 1.2 2010/06/30 19:17:22 graaff Exp $
 
 EAPI=2
 
@@ -24,6 +24,8 @@ KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 
 # TODO: haml has some emacs modes that it could be installing, in case
 IUSE=""
+
+RESTRICT="test"
 
 # The html engine requires hpricot
 ruby_add_rdepend dev-ruby/hpricot
