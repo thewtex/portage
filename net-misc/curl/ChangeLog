@@ -1,6 +1,22 @@
 # ChangeLog for net-misc/curl
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/curl/ChangeLog,v 1.160 2010/05/22 20:59:55 arfrever Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/curl/ChangeLog,v 1.163 2010/07/02 13:33:38 spatz Exp $
+
+  02 Jul 2010; Dror Levin <spatz@gentoo.org> curl-7.21.0.ebuild:
+  Don't die on USE="ares threads", silently disable ares instead, bug
+  326611.
+
+  01 Jul 2010; Jeremy Olexa <darkside@gentoo.org>
+  +files/curl-7.18.2-prefix.patch, curl-7.21.0.ebuild:
+  Add modifications for Gentoo Prefix as tested in the Gentoo Prefix
+  overlay. Add keywords, add EPREFIX/ED, add patch for prefix offset instead
+  of hardcoded paths. Approved by spatz
+
+*curl-7.21.0 (01 Jul 2010)
+
+  01 Jul 2010; Dror Levin <spatz@gentoo.org> -curl-7.19.7.ebuild,
+  -curl-7.20.0.ebuild, -curl-7.20.0-r1.ebuild, +curl-7.21.0.ebuild:
+  Version bump, bug 324295.
 
   22 May 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
   curl-7.20.0-r2.ebuild:

@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/util-linux/util-linux-2.18.ebuild,v 1.1 2010/06/30 18:21:32 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/util-linux/util-linux-2.18.ebuild,v 1.3 2010/07/01 17:20:11 vapier Exp $
 
 EAPI="2"
 
@@ -48,6 +48,7 @@ src_prepare() {
 	fi
 	use uclibc && sed -i -e s/versionsort/alphasort/g -e s/strverscmp.h/dirent.h/g mount/lomount.c
 	epatch "${FILESDIR}"/${P}-ncursesw.patch
+	epatch "${FILESDIR}"/${P}-slang.patch #326373
 	elibtoolize
 }
 
@@ -77,7 +78,6 @@ src_configure() {
 		--disable-mesg \
 		--enable-partx \
 		--enable-raw \
-		--enable-rdev \
 		--enable-rename \
 		--disable-reset \
 		--disable-login-utils \
