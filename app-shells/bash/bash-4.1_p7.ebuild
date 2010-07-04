@@ -1,6 +1,6 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-shells/bash/bash-4.0_p28.ebuild,v 1.11 2009/10/10 14:57:46 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-shells/bash/bash-4.1_p7.ebuild,v 1.1 2010/05/20 03:01:41 vapier Exp $
 
 EAPI="1"
 
@@ -10,9 +10,10 @@ inherit eutils flag-o-matic toolchain-funcs multilib
 # See ftp://ftp.cwru.edu/pub/bash/bash-3.2-patches/
 PLEVEL=${PV##*_p}
 MY_PV=${PV/_p*}
+MY_PV=${MY_PV/_/-}
 MY_P=${PN}-${MY_PV}
 [[ ${PV} != *_p* ]] && PLEVEL=0
-READLINE_VER=6.0
+READLINE_VER=6.1
 READLINE_PLEVEL=0 # both readline patches are also released as bash patches
 patches() {
 	local opt=$1 plevel=${2:-${PLEVEL}} pn=${3:-${PN}} pv=${4:-${MY_PV}}
@@ -30,19 +31,19 @@ patches() {
 }
 
 DESCRIPTION="The standard GNU Bourne again shell"
-HOMEPAGE="http://cnswww.cns.cwru.edu/~chet/bash/bashtop.html"
+HOMEPAGE="http://tiswww.case.edu/php/chet/bash/bashtop.html"
 SRC_URI="mirror://gnu/bash/${MY_P}.tar.gz $(patches)
 	$(patches ${READLINE_PLEVEL} readline ${READLINE_VER})"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~sparc-fbsd ~x86-fbsd"
-IUSE="afs bashlogger examples +net nls plugins vanilla"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd"
+IUSE="afs bashlogger examples mem-scramble +net nls plugins vanilla"
 
 DEPEND=">=sys-libs/ncurses-5.2-r2
 	nls? ( virtual/libintl )"
 RDEPEND="${DEPEND}
-	!<sys-apps/portage-2.1.5
+	!<sys-apps/portage-2.1.7.16
 	!<sys-apps/paludis-0.26.0_alpha5"
 
 S=${WORKDIR}/${MY_P}
@@ -52,6 +53,10 @@ pkg_setup() {
 		eerror "Detected bad CFLAGS '-malign-double'.  Do not use this"
 		eerror "as it breaks LFS (struct stat64) on x86."
 		die "remove -malign-double from your CFLAGS mr ricer"
+	fi
+	if use bashlogger ; then
+		ewarn "The logging patch should ONLY be used in restricted (i.e. honeypot) envs."
+		ewarn "This will log ALL output you enter into the shell, you have been warned."
 	fi
 }
 
@@ -65,20 +70,11 @@ src_unpack() {
 	[[ ${READLINE_PLEVEL} -gt 0 ]] && epatch $(patches -s ${READLINE_PLEVEL} readline ${READLINE_VER})
 	cd ../..
 
+	epatch "${FILESDIR}"/${PN}-4.1-fbsd-eaccess.patch #303411
+
 	if ! use vanilla ; then
-		epatch "${FILESDIR}"/${PN}-3.2-parallel-build.patch #189671
-		epatch "${FILESDIR}"/${PN}-4.0-ldflags-for-build.patch #211947
-		epatch "${FILESDIR}"/${PN}-4.0-negative-return.patch
-		epatch "${FILESDIR}"/${PN}-4.0-parallel-build.patch #267613
-		# Log bash commands to syslog #91327
-		if use bashlogger ; then
-			ewarn "The logging patch should ONLY be used in restricted (i.e. honeypot) envs."
-			ewarn "This will log ALL output you enter into the shell, you have been warned."
-			ebeep
-			epause
-			epatch "${FILESDIR}"/${PN}-3.1-bash-logger.patch
-		fi
-		sed -i '/\.o: .*shell\.h/s:$: pathnames.h:' Makefile.in #267613
+		sed -i '1i#define NEED_FPURGE_DECL' execute_cmd.c # needs fpurge() decl
+		epatch "${FILESDIR}"/${PN}-4.1-parallel-build.patch
 	fi
 }
 
@@ -93,7 +89,8 @@ src_compile() {
 		-DSYS_BASHRC=\'\"/etc/bash/bashrc\"\' \
 		-DSYS_BASH_LOGOUT=\'\"/etc/bash/bash_logout\"\' \
 		-DNON_INTERACTIVE_LOGIN_SHELLS \
-		-DSSH_SOURCE_BASHRC
+		-DSSH_SOURCE_BASHRC \
+		$(use bashlogger && echo -DSYSLOG_HISTORY)
 
 	# Always use the buildin readline, else if we update readline
 	# bash gets borked as readline is usually not binary compadible
@@ -116,9 +113,10 @@ src_compile() {
 		$(use_with afs) \
 		$(use_enable net net-redirections) \
 		--disable-profiling \
-		--without-gnu-malloc \
+		$(use_enable mem-scramble) \
+		$(use_with mem-scramble bash-malloc) \
 		${myconf} || die
-	emake -j1 || die "make failed"
+	emake || die "make failed"
 
 	if use plugins ; then
 		emake -C examples/loadables all others || die

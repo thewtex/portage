@@ -1,6 +1,6 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-shells/bash/bash-4.0_p17-r1.ebuild,v 1.1 2009/04/14 01:52:42 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-shells/bash/bash-4.0_p38.ebuild,v 1.1 2010/03/23 02:27:42 vapier Exp $
 
 EAPI="1"
 
@@ -30,14 +30,14 @@ patches() {
 }
 
 DESCRIPTION="The standard GNU Bourne again shell"
-HOMEPAGE="http://cnswww.cns.cwru.edu/~chet/bash/bashtop.html"
+HOMEPAGE="http://tiswww.case.edu/php/chet/bash/bashtop.html"
 SRC_URI="mirror://gnu/bash/${MY_P}.tar.gz $(patches)
 	$(patches ${READLINE_PLEVEL} readline ${READLINE_VER})"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~sparc-fbsd ~x86 ~x86-fbsd"
-IUSE="afs bashlogger examples +net nls plugins vanilla"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd"
+IUSE="afs bashlogger examples mem-scramble +net nls plugins vanilla"
 
 DEPEND=">=sys-libs/ncurses-5.2-r2
 	nls? ( virtual/libintl )"
@@ -65,12 +65,15 @@ src_unpack() {
 	[[ ${READLINE_PLEVEL} -gt 0 ]] && epatch $(patches -s ${READLINE_PLEVEL} readline ${READLINE_VER})
 	cd ../..
 
+	epatch "${FILESDIR}"/${PN}-4.0-configure.patch #304901
+	epatch "${FILESDIR}"/${PN}-4.x-deferred-heredocs.patch
+
 	if ! use vanilla ; then
+		sed -i '1i#define NEED_FPURGE_DECL' execute_cmd.c # needs fpurge() decl
 		epatch "${FILESDIR}"/${PN}-3.2-parallel-build.patch #189671
 		epatch "${FILESDIR}"/${PN}-4.0-ldflags-for-build.patch #211947
 		epatch "${FILESDIR}"/${PN}-4.0-negative-return.patch
-		epatch "${FILESDIR}"/${PN}-4.0-redisplay-sigwinch.patch
-		epatch "${FILESDIR}"/${PN}-4.0-debug-trap-jobs.patch
+		epatch "${FILESDIR}"/${PN}-4.0-parallel-build.patch #267613
 		# Log bash commands to syslog #91327
 		if use bashlogger ; then
 			ewarn "The logging patch should ONLY be used in restricted (i.e. honeypot) envs."
@@ -79,6 +82,7 @@ src_unpack() {
 			epause
 			epatch "${FILESDIR}"/${PN}-3.1-bash-logger.patch
 		fi
+		sed -i '/\.o: .*shell\.h/s:$: pathnames.h:' Makefile.in #267613
 	fi
 }
 
@@ -116,11 +120,10 @@ src_compile() {
 		$(use_with afs) \
 		$(use_enable net net-redirections) \
 		--disable-profiling \
-		--without-gnu-malloc \
+		$(use_enable mem-scramble) \
+		$(use_with mem-scramble bash-malloc) \
 		${myconf} || die
-	# bash-4.0_p17-r1 isn't 100% compatible with parallel make - mkbuiltins buildext.h runs after
-	# code that needs buildext.h -- sometimes, of course.
-	emake -j1 || die "make failed"
+	emake || die "make failed"
 
 	if use plugins ; then
 		emake -C examples/loadables all others || die

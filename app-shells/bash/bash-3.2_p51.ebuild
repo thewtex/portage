@@ -1,6 +1,8 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-shells/bash/bash-3.2_p39.ebuild,v 1.19 2009/03/23 18:34:21 grobian Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-shells/bash/bash-3.2_p51.ebuild,v 1.1 2010/05/20 03:00:49 vapier Exp $
+
+EAPI=1
 
 inherit eutils flag-o-matic toolchain-funcs multilib
 
@@ -13,7 +15,7 @@ READLINE_VER=5.2
 READLINE_PLEVEL=0 # both readline patches are also released as bash patches
 
 DESCRIPTION="The standard GNU Bourne again shell"
-HOMEPAGE="http://cnswww.cns.cwru.edu/~chet/bash/bashtop.html"
+HOMEPAGE="http://tiswww.case.edu/php/chet/bash/bashtop.html"
 SRC_URI="mirror://gnu/bash/${MY_P}.tar.gz
 	ftp://ftp.cwru.edu/pub/bash/${MY_P}.tar.gz
 	$(for ((i=1; i<=PLEVEL; i++)); do
@@ -31,8 +33,8 @@ SRC_URI="mirror://gnu/bash/${MY_P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc ~sparc-fbsd x86 ~x86-fbsd"
-IUSE="afs bashlogger examples nls plugins vanilla"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd"
+IUSE="afs bashlogger examples +net nls plugins vanilla"
 
 DEPEND=">=sys-libs/ncurses-5.2-r2
 	nls? ( virtual/libintl )"
@@ -69,6 +71,8 @@ src_unpack() {
 		epatch "${FILESDIR}"/autoconf-mktime-2.59.patch #220040
 		epatch "${FILESDIR}"/${PN}-3.1-gentoo.patch
 		epatch "${FILESDIR}"/${PN}-3.2-loadables.patch
+		epatch "${FILESDIR}"/${PN}-3.2-protos.patch
+		epatch "${FILESDIR}"/${PN}-3.2-session-leader.patch #231775
 		epatch "${FILESDIR}"/${PN}-3.2-parallel-build.patch #189671
 		epatch "${FILESDIR}"/${PN}-3.2-ldflags-for-build.patch #211947
 
@@ -121,6 +125,7 @@ src_compile() {
 	use plugins && append-ldflags -Wl,-rpath,/usr/$(get_libdir)/bash
 	econf \
 		$(use_with afs) \
+		$(use_enable net net-redirections) \
 		--disable-profiling \
 		--without-gnu-malloc \
 		${myconf} || die

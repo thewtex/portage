@@ -1,6 +1,6 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-shells/bash/bash-4.0_p33.ebuild,v 1.2 2009/10/09 21:32:10 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-shells/bash/bash-4.0_p37.ebuild,v 1.10 2010/04/17 16:03:20 armin76 Exp $
 
 EAPI="1"
 
@@ -30,13 +30,13 @@ patches() {
 }
 
 DESCRIPTION="The standard GNU Bourne again shell"
-HOMEPAGE="http://cnswww.cns.cwru.edu/~chet/bash/bashtop.html"
+HOMEPAGE="http://tiswww.case.edu/php/chet/bash/bashtop.html"
 SRC_URI="mirror://gnu/bash/${MY_P}.tar.gz $(patches)
 	$(patches ${READLINE_PLEVEL} readline ${READLINE_VER})"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd"
+KEYWORDS="alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~sparc-fbsd ~x86-fbsd"
 IUSE="afs bashlogger examples mem-scramble +net nls plugins vanilla"
 
 DEPEND=">=sys-libs/ncurses-5.2-r2
@@ -64,6 +64,9 @@ src_unpack() {
 	cd lib/readline
 	[[ ${READLINE_PLEVEL} -gt 0 ]] && epatch $(patches -s ${READLINE_PLEVEL} readline ${READLINE_VER})
 	cd ../..
+
+	# bash40-037 touches configure.in :x
+	epatch "${FILESDIR}"/${PN}-4.0-configure.patch #304901
 
 	if ! use vanilla ; then
 		sed -i '1i#define NEED_FPURGE_DECL' execute_cmd.c # needs fpurge() decl
@@ -120,7 +123,7 @@ src_compile() {
 		$(use_enable mem-scramble) \
 		$(use_with mem-scramble bash-malloc) \
 		${myconf} || die
-	emake -j1 || die "make failed"
+	emake || die "make failed"
 
 	if use plugins ; then
 		emake -C examples/loadables all others || die
