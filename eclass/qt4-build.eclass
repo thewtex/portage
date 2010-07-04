@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/qt4-build.eclass,v 1.74 2010/05/30 10:31:05 spatz Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/qt4-build.eclass,v 1.76 2010/07/03 15:49:39 ayoy Exp $
 
 # @ECLASS: qt4-build.eclass
 # @MAINTAINER:
@@ -276,6 +276,8 @@ qt4-build_src_prepare() {
 	# don't flirt with non-Prefix stuff, we're quite possessive
 	sed -i -e '/^QMAKE_\(LIB\|INC\)DIR\(_X11\|_OPENGL\|\)\t/s/=.*$/=/' \
 		mkspecs/$(qt_mkspecs_dir)/qmake.conf || die
+	# strip predefined CFLAGS from qmake ( bug #312689 )
+	sed -i '/^QMAKE_CFLAGS_\(RELEASE\|DEBUG\)/s:+=.*:+=:' mkspecs/common/g++.conf
 
 	base_src_prepare
 }
@@ -334,6 +336,15 @@ qt4-build_src_compile() {
 	setqtenv
 
 	build_directories ${QT4_TARGET_DIRECTORIES}
+}
+
+# @FUNCTION: qt4-build_src_test
+# @DESCRIPTION:
+# Runs tests only in target directories.
+qt4-build_src_test() {
+	for dir in ${QT4_TARGET_DIRECTORIES}; do
+		emake -j1 check -C ${dir}
+	done
 }
 
 # @FUNCTION: fix_includes
@@ -740,4 +751,4 @@ qt_mkspecs_dir() {
 	echo "${spec}"
 }
 
-EXPORT_FUNCTIONS pkg_setup src_unpack src_prepare src_configure src_compile src_install pkg_postrm pkg_postinst
+EXPORT_FUNCTIONS pkg_setup src_unpack src_prepare src_configure src_compile src_install src_test pkg_postrm pkg_postinst

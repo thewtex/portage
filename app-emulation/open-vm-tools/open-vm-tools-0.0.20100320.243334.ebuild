@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/open-vm-tools/open-vm-tools-0.0.20100320.243334.ebuild,v 1.1 2010/03/24 17:04:34 vadimk Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/open-vm-tools/open-vm-tools-0.0.20100320.243334.ebuild,v 1.2 2010/07/04 00:50:52 vadimk Exp $
 
 EAPI="2"
 
@@ -84,6 +84,10 @@ src_configure() {
 		$(use_with pic) \
 		$(use_enable unity) \
 		$(use_enable xinerama multimon)
+
+		# Bugs 260878, 326761
+	    find ./ -name Makefile | xargs sed -i -e 's/-Werror//g'  || die "sed out Werror failed"
+
 }
 
 src_compile() {
