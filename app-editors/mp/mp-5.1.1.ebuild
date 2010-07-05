@@ -1,10 +1,10 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/mp/mp-5.1.1.ebuild,v 1.6 2010/06/20 16:18:13 hwoarang Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-editors/mp/mp-5.1.1.ebuild,v 1.7 2010/07/05 16:40:17 jlec Exp $
 
 EAPI="3"
 
-inherit eutils
+inherit eutils toolchain-funcs
 
 DESCRIPTION="Minimum Profit: A text editor for programmers"
 HOMEPAGE="http://www.triptico.com/software/mp.html"
@@ -53,6 +53,7 @@ src_configure() {
 		echo ${LDFLAGS} >> $i/config.ldflags
 	done
 
+	tc-export CC
 	sh config.sh ${myconf} || die "Configure failed"
 }
 

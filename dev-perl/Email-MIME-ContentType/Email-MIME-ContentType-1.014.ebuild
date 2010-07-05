@@ -1,6 +1,6 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Email-MIME-ContentType/Email-MIME-ContentType-1.014.ebuild,v 1.9 2007/12/08 12:16:13 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Email-MIME-ContentType/Email-MIME-ContentType-1.014.ebuild,v 1.11 2010/07/05 09:10:59 scarabeus Exp $
 
 inherit perl-module
 

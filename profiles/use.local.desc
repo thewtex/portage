@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5742 2010/07/04 14:07:55 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5745 2010/07/05 09:27:49 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -646,19 +646,6 @@ dev-db/mysql:profiling - Add support for statement profiling (requires USE=commu
 dev-db/mysql:raid - Deprecated option, removed in the 5.0 series
 dev-db/mysql:test - Install upstream testsuites for end use.
 dev-db/mysql:xtradb - Add experimental support for Percona's InnoDB replacement: XtraDB
-dev-db/mysql-community:big-tables - Make tables contain up to 1.844E+19 rows
-dev-db/mysql-community:cluster - Add support for NDB clustering (deprecated)
-dev-db/mysql-community:community - Enables the community features from upstream.
-dev-db/mysql-community:embedded - Build embedded server (libmysqld)
-dev-db/mysql-community:extraengine - Add support for alternative storage engines (Archive, CSV, Blackhole, Federated(X), Partition)
-dev-db/mysql-community:latin1 - Use LATIN1 encoding instead of UTF8
-dev-db/mysql-community:max-idx-128 - Raise the max index per table limit from 64 to 128
-dev-db/mysql-community:minimal - Install client programs only, no server
-dev-db/mysql-community:pbxt - Add experimental support for PBXT storage engine
-dev-db/mysql-community:profiling - Add support for statement profiling (requires USE=community).
-dev-db/mysql-community:raid - Deprecated option, removed in the 5.0 series
-dev-db/mysql-community:test - Install upstream testsuites for end use.
-dev-db/mysql-community:xtradb - Add experimental support for Percona's InnoDB replacement: XtraDB
 dev-db/mysql-connector-c++:gcov - Build coverage support
 dev-db/postgis:geos - Add the sci-libs/geos library for exact topological tests
 dev-db/postgis:proj - Add the sci-libs/proj library for reprojection features
@@ -784,7 +771,7 @@ dev-lang/erlang:hipe - HIgh Performance Erlang extension
 dev-lang/erlang:kpoll - Enable kernel polling support
 dev-lang/erlang:sctp - Support for Stream Control Transmission Protocol
 dev-lang/gdl:hdf - Adds support for the Hierarchical Data Format
-dev-lang/gdl:proj - Adds proj library support (geographic projections)
+dev-lang/gdl:udunits - Support for manipulating units of physical quantities
 dev-lang/gforth:force-reg - Enable a possibly unstable GCC flag for possibly large performance gains
 dev-lang/ghc:binary - Install the binary version directly, rather than using it to build the source version.
 dev-lang/ghc:ghcbootstrap - Internal: Bootstrap GHC from an existing GHC installation.
@@ -1500,9 +1487,6 @@ mail-client/thunderbird:custom-optimization - Enable user CFLAGS
 mail-client/thunderbird:lightning - Enable calendar support
 mail-client/thunderbird:mozdom - Enable Mozilla's DOM inspector
 mail-client/thunderbird:system-sqlite - Use the system-wide dev-db/sqlite installation with secure-delete enabled
-mail-filter/MailScanner:exim - Set mail-mta to used MTA
-mail-filter/MailScanner:postfix - Set mail-mta/postfix to used MTA
-mail-filter/MailScanner:spamassassin - Enable usage of mail-filter/spamassassin for spam protection
 mail-filter/amavisd-new:courier - Add support for usage with courierfilter
 mail-filter/amavisd-new:dkim - Add optional Yahoo! DomainKey support
 mail-filter/amavisd-new:qmail - Add support for qmail
@@ -2575,7 +2559,6 @@ net-irc/bip:noctcp - Disable the automatic CTCP VERSION reply which is often exp
 net-irc/bip:oidentd - Enable oidentd support
 net-irc/ezbounce:boost - Compile against dev-libs/boost libraries
 net-irc/inspircd:openssl - Build dev-libs/openssl module
-net-irc/ircd-hybrid:contrib - Build contrib modules (eg. cloaking)
 net-irc/kvirc:dcc_video - Support video connections over DCC protocol
 net-irc/kvirc:dcc_voice - Support voice connections over DCC protocol
 net-irc/kvirc:ipc - Support inter-process communication between KVIrc processes
