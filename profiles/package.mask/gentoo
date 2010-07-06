@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11738 2010/07/05 21:44:02 hwoarang Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11742 2010/07/06 14:10:53 arfrever Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -31,13 +31,22 @@
 
 #--- END OF EXAMPLES ---
 
+# Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (06 Jul 2010)
+# Replaced by dev-python/numpy. Masked for deletion in 30 days (bug #198154).
+dev-python/numarray
+
+# Joe Peterson <lavajoe@gentoo.org> (05 Jul 2010)
+# Replaced by package media-sound/squeezeboxserver (see bug #287257)
+# Masked for removal in 30 days
+media-sound/squeezecenter
+
 # Markos Chandras <hwoarang@gentoo.org> (06 Jul 2010)
 # Masking development releases
 =x11-misc/treeline-1.3.3
 
 # Tobias Heinlein <keytoaster@gentoo.org> (05 Jul 2010)
 # Severe security issues (bug #322855)
-<www-plugins/adobe-flash-10.1.53.64
+=www-plugins/adobe-flash-10.0*
 
 # Matti Bickel <mabi@gentoo.org> (04 Jul 2010)
 # Dead upstream (bug #324825)
@@ -493,16 +502,6 @@ app-pda/malsync
 # Masked for testing (changes in dependencies, flags and building)
 # ... and not my call to unmask it
 >=sys-fs/xfsprogs-3.1.2
-
-# Joe Peterson <lavajoe@gentoo.org> (03 Jun 2010)
-# Masked for removal in 30 days:
-# Fails to build with gcc 4.4 (see bug #290105)
-# Requires non-open-source components that never worked well
-#  - e.g. voice, media
-#  - this (source) package never behaved quite like the binary
-# Really should be replaced by Snowglobe, which is the OS version
-# (Note: games-simulation/secondlife-bin will remain for now)
-games-simulation/secondlife
 
 # Markos Chandras <hwoarang@gentoo.org> (02 Jun 2010)
 # Masking beta releases
