@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/autotools.eclass,v 1.98 2010/05/23 22:52:41 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/autotools.eclass,v 1.99 2010/07/06 18:55:50 vapier Exp $
 
 # @ECLASS: autotools.eclass
 # @MAINTAINER:
@@ -31,23 +31,16 @@ inherit eutils libtool
 # If a newer version is stable on any arch, and is NOT reflected in this list,
 # then circular dependencies may arise during emerge @system bootstraps.
 # Do NOT change this variable in your ebuilds!
-_LATEST_AUTOMAKE='1.11 1.10'
+_LATEST_AUTOMAKE='1.11'
 
 _automake_atom="sys-devel/automake"
 _autoconf_atom="sys-devel/autoconf"
 if [[ -n ${WANT_AUTOMAKE} ]]; then
 	case ${WANT_AUTOMAKE} in
 		none)   _automake_atom="" ;; # some packages don't require automake at all
-		# if you change the âlatestâ version here, change also autotools_run_tool
+		# if you change the "latest" version here, change also autotools_run_tool
 		# this MUST reflect the latest stable major version for each arch!
-		latest)
-			t=""
-			for v in ${_LATEST_AUTOMAKE} ; do
-				t="${t} =sys-devel/automake-${v}*"
-			done
-			_automake_atom="|| ( ${t} )"
-			unset t v
-			;;
+		latest) _automake_atom="|| ( `printf '=sys-devel/automake-%s* ' ${_LATEST_AUTOMAKE}` )" ;;
 		*)      _automake_atom="=sys-devel/automake-${WANT_AUTOMAKE}*" ;;
 	esac
 	export WANT_AUTOMAKE
@@ -57,7 +50,7 @@ if [[ -n ${WANT_AUTOCONF} ]] ; then
 	case ${WANT_AUTOCONF} in
 		none)       _autoconf_atom="" ;; # some packages don't require autoconf at all
 		2.1)        _autoconf_atom="=sys-devel/autoconf-${WANT_AUTOCONF}*" ;;
-		# if you change the âlatestâ version here, change also autotools_run_tool
+		# if you change the “latest” version here, change also autotools_run_tool
 		latest|2.5) _autoconf_atom=">=sys-devel/autoconf-2.61" ;;
 		*)          _autoconf_atom="INCORRECT-WANT_AUTOCONF-SETTING-IN-EBUILD" ;;
 	esac
@@ -282,15 +275,15 @@ autotools_run_tool() {
 		ewarn "QA Warning: running $1 in ${EBUILD_PHASE} phase"
 	fi
 
-	# We do the âlatestâ â version switch here because it solves
+	# We do the “latest” → version switch here because it solves
 	# possible order problems, see bug #270010 as an example.
 	if [[ ${WANT_AUTOMAKE} == "latest" ]]; then
+		local pv
 		for pv in ${_LATEST_AUTOMAKE} ; do
 			# has_version respects ROOT, but in this case, we don't want it to,
 			# thus "ROOT=/" prefix:
 			ROOT=/ has_version "=sys-devel/automake-${pv}*" && export WANT_AUTOMAKE="$pv"
 		done
-		unset pv
 		[[ ${WANT_AUTOMAKE} == "latest" ]] && \
 			die "Cannot find the latest automake! Tried ${_LATEST_AUTOMAKE}"
 	fi

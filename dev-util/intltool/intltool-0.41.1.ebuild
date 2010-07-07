@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/intltool/intltool-0.41.1.ebuild,v 1.7 2010/07/03 22:06:15 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/intltool/intltool-0.41.1.ebuild,v 1.9 2010/07/07 16:33:08 ssuominen Exp $
 
 EAPI=2
 
@@ -15,6 +15,8 @@ IUSE=""
 
 DEPEND=">=dev-lang/perl-5.8.1
 	dev-perl/XML-Parser"
+RDEPEND="${DEPEND}
+	sys-devel/gettext"
 
 src_install() {
 	emake DESTDIR="${D}" install || die

@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/libsoup/libsoup-2.28.2-r1.ebuild,v 1.1 2010/07/01 22:43:22 abcd Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/libsoup/libsoup-2.28.2-r1.ebuild,v 1.3 2010/07/06 21:07:10 pacho Exp $
 
 EAPI="2"
 
@@ -11,7 +11,7 @@ HOMEPAGE="http://www.gnome.org/"
 
 LICENSE="LGPL-2"
 SLOT="2.4"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sh ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sh ~sparc ~x86 ~x86-fbsd"
 # Do NOT build with --disable-debug/--enable-debug=no - gnome2.eclass takes care of that
 IUSE="debug doc gnome ssl"
 
@@ -48,9 +48,12 @@ src_prepare() {
 	if use doc; then
 		# Fix bug 268592 (build fails !gnome && doc)
 		epatch "${FILESDIR}/${PN}-2.26.3-fix-build-without-gnome-with-doc.patch"
-		eautoreconf
 	fi
 
 	# Fix for new versions of gnutls (bug #307343, GNOME bug #622857)
 	epatch "${FILESDIR}/${PN}-2.30.2-disable-tls1.2.patch"
+
+	# Skip broken tests since gnutls fix (only needed for 2.28)
+	sed -i -e '/$(CURL_TESTS)/d' tests/Makefile.am || die "sed 2 failed"
+	eautoreconf
 }
