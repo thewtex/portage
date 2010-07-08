@@ -1,0 +1,22 @@
+test? ( ruby_targets_ruby18? ( >=dev-ruby/rails-2.3.5:2.3[ruby_targets_ruby18] >=dev-ruby/coderay-0.7.6.227[ruby_targets_ruby18] >=dev-ruby/rubygems-1.3.5[ruby_targets_ruby18] >=dev-ruby/ruby-net-ldap-0.0.4[ruby_targets_ruby18] ) ) test? ( ruby_targets_ruby18? ( fastcgi? ( dev-ruby/ruby-fcgi[ruby_targets_ruby18] ) ) ) test? ( ruby_targets_ruby18? ( imagemagick? ( dev-ruby/rmagick[ruby_targets_ruby18] ) ) ) test? ( ruby_targets_ruby18? ( openid? ( dev-ruby/ruby-openid[ruby_targets_ruby18] ) ) ) test? ( ruby_targets_ruby18? ( passenger? ( =dev-ruby/rack-1.0.1*[ruby_targets_ruby18] www-apache/passenger[ruby_targets_ruby18] ) ) ) ruby_targets_ruby18? ( dev-lang/ruby:1.8 )
+ruby_targets_ruby18? ( >=dev-ruby/rails-2.3.5:2.3[ruby_targets_ruby18] >=dev-ruby/coderay-0.7.6.227[ruby_targets_ruby18] >=dev-ruby/rubygems-1.3.5[ruby_targets_ruby18] >=dev-ruby/ruby-net-ldap-0.0.4[ruby_targets_ruby18] ) ruby_targets_ruby18? ( fastcgi? ( dev-ruby/ruby-fcgi[ruby_targets_ruby18] ) ) ruby_targets_ruby18? ( imagemagick? ( dev-ruby/rmagick[ruby_targets_ruby18] ) ) ruby_targets_ruby18? ( openid? ( dev-ruby/ruby-openid[ruby_targets_ruby18] ) ) ruby_targets_ruby18? ( passenger? ( =dev-ruby/rack-1.0.1*[ruby_targets_ruby18] www-apache/passenger[ruby_targets_ruby18] ) ) dev-ruby/activerecord:2.3[mysql?,postgres?,sqlite3?] cvs? ( >=dev-vcs/cvs-1.12 ) darcs? ( dev-vcs/darcs ) git? ( dev-vcs/git ) mercurial? ( dev-vcs/mercurial ) subversion? ( >=dev-vcs/subversion-1.3 ) ruby_targets_ruby18? ( dev-lang/ruby:1.8 )
+0
+mirror://rubyforge/redmine/redmine-0.9.5.tar.gz
+
+http://www.redmine.org/
+GPL-2
+Redmine is a flexible project management web application written using Ruby on Rails framework
+~amd64 ~x86
+confutils depend.apache eutils multilib portability ruby-ng toolchain-funcs
+cvs darcs fastcgi git imagemagick mercurial mysql openid passenger postgres sqlite3 subversion test ruby_targets_ruby18
+
+
+
+2
+
+compile config configure install postinst prepare setup test unpack
+
+
+
+
+
