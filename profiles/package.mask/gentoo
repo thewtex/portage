@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11749 2010/07/08 11:33:56 hwoarang Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11755 2010/07/09 16:44:59 jer Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,21 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Jeroen Roovers <jer@gentoo.org> (08 Jul 2010)
+# Unmask this only if you need to import certificates
+# manually and when Opera >=10.60 refuses to (bug #326571)
+=www-client/opera-10.11
+
+# Pacho Ramos <pacho@gentoo.org> (09 Jul 2010)
+# Masked for removal in 30 days since it's no longer needed now that we
+# don't have old anjuta versions in the tree, see bug #327593
+dev-libs/gnome-build
+
+# Jeroen Roovers <jer@gentoo.org> (08 Jul 2010)
+# Alphas and snapshots are not for everyday use
+# <http://my.opera.com/desktopteam/blog>
+=www-client/opera-10.70*
 
 # Markos Chandras <hwoarang@gentoo.org> (08 Jul 2010)
 # Masking rc releases
@@ -384,14 +399,6 @@ sci-biology/mpiblast
 dev-php5/jargon
 dev-php5/creole
 
-# Samuli Suominen <ssuominen@gentoo.org> (13 Jun 2010)
-# Masked for QA, bugs 252122, 297956 and 297958.
-#
-# Replaced by oroborus-desklaunch, oroborus-deskmenu and oroborus-keylaunch.
-#
-# Removal in 30 days.
-x11-wm/oroborus-extras
-
 # Jeremy Olexa <darkside@gentoo.org> (12 Jun 2010)
 # Use in-kernel drivers. Removed in 60 days by treecleaners. bug 321535
 net-wireless/prism54
@@ -541,19 +548,6 @@ media-video/w3cam
 # development releases
 =www-client/uget-1.5.9*
 
-# Hans de Graaff <graaff@gentoo.org> (19 May 2010)
-# Obsolete dependencies for prawn which were never released
-# by upstream on their own. Newer versions are vendored into
-# dev-ruby/prawn-core and nothing in the tree depends on them.
-# Pending removal on 2010-06-19
-dev-ruby/pdf-inspector
-dev-ruby/ttfunk
-
-# Diego E. Pettenò <flameeyes@gentoo.org> (18 May 2010)
-# Ebuild broken in many ways, not really updated, unneeded.
-# Pending removal 2010-06-18
-dev-ruby/nimage
-
 # Justin Lecher <jlec@gentoo.org> (16 May 2010)
 # Upstreams testing version
 # Added on request
@@ -594,23 +588,6 @@ net-misc/asterisk-app_notify
 # Peter Volkov <pva@gentoo.org> (09 May 2010)
 # Fails to build/work, bug #319085
 net-analyzer/ipac-ng
-
-# Joe Sapp <nixphoeni@gentoo.org> (07 May 2010)
-# Doesn't work with python 2.6 (see bug #288887),
-# more recent stable version available.
-#
-# Masked for removal in 30 days.
-=app-misc/gourmet-0.13.8
-
-
-# Samuli Suominen <ssuominen@gentoo.org> (06 May 2010)
-# Orphaned library, see bug 309809.
-#
-# Use Hercules drivers from bug 272100 or ones from upstream
-# HOMEPAGE instead.
-#
-# Masked for removal in 30 days.
-media-libs/libdjconsole
 
 # Stanislav Ochotnicky <sochotnicky@gentoo.org> (05 May 2010)
 # Masked for testing.
@@ -704,11 +681,6 @@ sec-policy/selinux-tftpd
 sec-policy/selinux-ucspi-tcp
 sec-policy/selinux-wireshark
 
-# Nicholas Wolfwood <blackace@gentoo.org> (24 Apr 2010)
-# Unmaintained/abandoned by upstream (#317079).
-# Masked for removal in 30 days.
-app-office/nostaples
-
 # Mark Loeser <halcy0n@gentoo.org> (24 Apr 2010)
 # Masked for testing.  Only use this version of gcc if you know what you are
 # doing
@@ -729,11 +701,6 @@ dev-perl/perlmenu
 # (24 Apr 2010)
 # Unmaintained and probably broken (see rt bugs and cpanratings) (#276745)
 dev-perl/Net-XWhois
-
-# Mounir Lamouri <volkmar@gentoo.org> (18 Apr 2010)
-# The add-on/extension manager should now be used instead of the package
-# from the tree, bug 315999. Masked for removal in 30 days.
-www-plugins/noscript
 
 # Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (16 Apr 2010)
 # Masked to enforce upgrade which looks like downgrade.
@@ -804,12 +771,6 @@ net-fs/samba-server
 net-fs/samba-client
 >net-fs/samba-4
 
-# Michael Sterrett <mr_bones_@gentoo.org> (05 Apr 2010)
-# Needs dev-python/numeric which is going away.
-# No release since 2006
-# Masked for removal on 20100505
-games-strategy/castle-combat
-
 # Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (05 Apr 2010)
 # Mask misversioned ebuilds.
 =dev-python/visual-5.12
@@ -828,16 +789,6 @@ games-strategy/castle-combat
 # Masked due to producing build failures in stable
 # lucene and possibly others. see #309961
 =dev-java/javacc-5.0
-
-# Samuli Suominen <ssuominen@gentoo.org> (16 Mar 2010)
-# Masked for QA and security.
-#
-# Several symlink vulnerabilities
-#
-# http://bugs.gentoo.org/show_bug.cgi?id=253657#c6
-#
-# Removal in 30 days
-mail-filter/MailScanner
 
 # Torsten Veller <tove@gentoo.org> (14 Mar 2010)
 # Mask "End Of Life" versions
@@ -869,18 +820,6 @@ sys-libs/ss
 <sys-libs/e2fsprogs-libs-1.41.8
 <sys-fs/e2fsprogs-1.41.9
 
-# Samuli Suominen <ssuominen@gentoo.org> (03 Mar 2010)
-# Masked for QA, security
-#
-# After more than a year of no word from maintainers
-#
-# Internal copy of vulnerable libpcre, bug 258330
-# Remote command execution, CVE-2009-4016, bug 303735
-# Build issues, bug 212255
-#
-# Masked for removal in 60 days.
-net-irc/ircd-hybrid
-
 # Jeroen Roovers <jer@gentoo.org> (28 Feb 2010)
 # Development release
 =app-admin/sysstat-9.1*
@@ -890,28 +829,9 @@ net-irc/ircd-hybrid
 # heavy development, and snapshot
 =kde-misc/knetworkmanager-4.4*
 
-# Torsten Veller <tove@gentoo.org> (25 Feb 2010)
-# Masked for removal as soon as possible
-# Merged in dev-perl/Email-MIME
-dev-perl/Email-MIME-Modifier
-dev-perl/Email-MIME-Creator
-# Merged in dev-perl/Email-Simple (#304683)
-dev-perl/Email-Simple-Creator
-# Merged in dev-perl/XML-LibXML (#304685)
-dev-perl/XML-LibXML-Common
-# Merged in dev-perl/Class-XSAccessor (#275520)
-dev-perl/Class-XSAccessor-Array
-
 # Robert Piasek <dagger@gentoo.org> (23 Feb 2010)
 # Masking libmapi as it depends on masked samba4
 =net-libs/libmapi-0.9
-
-# Robin H. Johnson <robbat2@gentoo.org> (01 Feb 2010)
-# Upstream discontinued the split of -community and -enterprise specific
-# tarballs of source. You must move to dev-db/mysql as the -community split has
-# security vulnerabilities only fixed in the main package.
-# To be removed 2010/07/01.
-dev-db/mysql-community
 
 # Robin H. Johnson <robbat2@gentoo.org> (01 Feb 2010)
 # Mask 5.4 series that is nearly a release candidate upstream (expected within the next 6 months)
@@ -1139,13 +1059,6 @@ dev-lisp/gcl
 <dev-db/mysql-5.0.60-r1
 <virtual/mysql-5.0
 
-# Tomáš Chvátal <scarabeus@gentoo.org> (28 Jul 2009)
-# Upstream decided to support only r600 and newer.
-# We should no longer use them or depend on them.
-# For more info:
-#  http://dev.gentoo.org/~scarabeus/ati-mask-reason.txt
-<x11-drivers/ati-drivers-9.6
-
 # Jim Ramsay <lack@gentoo.org> (1 Feb 2008)
 # Weird boost dependencies, need to solve this in a different way: Probably by
 # actually doing 'amazonmp3-libcompat' for both x86 and amd64. (bug #272699)
@@ -1286,11 +1199,6 @@ gnome-extra/gnome-lirc-properties
 # Markus Ullmann <jokey@gentoo.org> (7 Jul 2008)
 # mask for security bug #190667
 net-irc/bitchx
-
-# Rémi Cardona <remi@gentoo.org> (14 Nov 2009)
-# Masked for removal, until there is 2.0 branch release this must go.
-# See bug #156583.
-<app-text/gtranslator-1.9
 
 # Vlastimil Babka <caster@gentoo.org> (20 May 2008)
 # Masked for testing
