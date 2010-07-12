@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5757 2010/07/09 14:27:48 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5760 2010/07/09 23:47:48 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -1597,7 +1597,8 @@ media-gfx/digikam:addressbook - Add support for kdepim
 media-gfx/digikam:geolocation - Add support for marble
 media-gfx/digikam:glib - Enable support for liquid rescale tool
 media-gfx/digikam:lensfun - Enable support for lens-correnction library
-media-gfx/digikam:thumbnails - Allow thumbnail previews for images/photos
+media-gfx/digikam:thumbnails - Enable thumbnails database support
+media-gfx/digikam:video - Pull in mplayerthumbs to enable video thumbnails
 media-gfx/enblend:gpu - GPU support for Enblend
 media-gfx/enblend:image-cache - allow for processing of large images
 media-gfx/exact-image:swig - Adds Swig support dev-lang/swig
@@ -1781,8 +1782,9 @@ media-plugins/frei0r-plugins:facedetect - Enables building of facedetect plugin,
 media-plugins/frei0r-plugins:scale0tilt - Enables building of scale0tilt and vectorscope plugins, which depend on media-libs/gavl 
 media-plugins/gkrellmpc:threads - Use separate thread to init connection (unsafe)
 media-plugins/gst-plugins-meta:mythtv - Support for retrieval from media-tv/mythtv backend
-media-plugins/kipi-plugins:mjpeg - Add mjpeg support
-media-plugins/kipi-plugins:redeyes - Add redeyes removal support
+media-plugins/kipi-plugins:expoblending - Build the expoblending plugin, which requires media-gfx/hugin
+media-plugins/kipi-plugins:mjpeg - Add mjpeg suppport
+media-plugins/kipi-plugins:redeyes - Add redeyes removal suppport
 media-plugins/mythmusic:libvisual - Enables media-libs/libvisual support for effects
 media-plugins/mythvideo:jamu - Use and configure the Just Another Metadata Utility by default
 media-plugins/mythzoneminder:minimal - Don't build the mythtv side of this plugin, only the part that communicates with zoneminder. 
@@ -1947,6 +1949,7 @@ media-sound/rhythmbox:daap - Enable support for local network music sharing via 
 media-sound/rhythmbox:udev - Enable hardware detection via sys-fs/udev replacing the deprecated sys-apps/hal code.
 media-sound/rhythmbox:upnp - Enable support for local network music sharing via upnp
 media-sound/rhythmbox:webkit - Enable context panel plugin.
+media-sound/rubyripper:cdrdao - Add support for advanced toc scanning using app-cdr/cdrdao
 media-sound/rubyripper:cli - Build command line interface rubyripper
 media-sound/rubyripper:normalize - Add support for normalizing audio file volume levels
 media-sound/rubyripper:wav - Add support for wavegain

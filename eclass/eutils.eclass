@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/eutils.eclass,v 1.345 2010/06/23 21:24:50 cardoe Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/eutils.eclass,v 1.347 2010/07/10 09:52:47 nyhm Exp $
 
 # @ECLASS: eutils.eclass
 # @MAINTAINER:
@@ -1512,7 +1512,7 @@ cdrom_get_cds() {
 		export CDROM_SET=-1
 		for f in ${CDROM_CHECK_1//:/ } ; do
 			((++CDROM_SET))
-			[[ -e ${CD_ROOT}/${f} ]] && break
+			[[ -e ${CDROM_ROOT}/${f} ]] && break
 		done
 		export CDROM_MATCH=${f}
 		return
