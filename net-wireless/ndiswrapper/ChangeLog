@@ -1,6 +1,24 @@
 # ChangeLog for net-wireless/ndiswrapper
-# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/ndiswrapper/ChangeLog,v 1.108 2009/09/27 12:07:07 maekke Exp $
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/ndiswrapper/ChangeLog,v 1.112 2010/07/09 15:38:43 pacho Exp $
+
+  09 Jul 2010; Pacho Ramos <pacho@gentoo.org> ndiswrapper-1.56.ebuild:
+  stable amd64, bug 327299
+
+  09 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  ndiswrapper-1.56.ebuild:
+  stable x86, bug 327299
+
+  27 Jun 2010; Christoph Mende <angelos@gentoo.org> ndiswrapper-1.56.ebuild:
+  Added a more verbose error message for WIRELESS_EXT (bug 325783)
+
+*ndiswrapper-1.56 (22 Jun 2010)
+
+  22 Jun 2010; Christoph Mende <angelos@gentoo.org>
+  +ndiswrapper-1.56.ebuild, +files/ndiswrapper-1.56-ldflags.patch,
+  metadata.xml:
+  Took over package and bumped to 1.56, fixed bugs #210290, #232403, #280057,
+  #322313, #323141
 
   27 Sep 2009; Markus Meier <maekke@gentoo.org> ndiswrapper-1.55-r1.ebuild:
   amd64/x86 stable, bug #286333
@@ -17,11 +35,6 @@
   +ndiswrapper-1.55.ebuild:
   Version bump wrt #274393, thanks to Fabio Correa.
 
-  22 Nov 2008; Daniel Robbins <drobbins@funtoo.org>
-  ndiswrapper-1.53-r1.patch:
-  Removed Jeff Mitchell's patch for the time being to resolve a
-  conflict.
-
   20 Nov 2008; Piotr Jaroszyński <peper@gentoo.org>
   files/ndiswrapper-2.6.27.patch:
   Use the upstream patch for 2.6.27 support instead.
@@ -35,11 +48,6 @@
   27 Oct 2008; Piotr Jaroszyński <peper@gentoo.org>
   +files/ndiswrapper-CVE-2008-4395.patch, +ndiswrapper-1.53-r1.ebuild:
   Add 1.53-r1 straight to x86. Security bug #239371.
-
-  22 Oct 2008; Jeff Mitchell <funtoo@jefferai.org>
-  +files/ndiswrapper-2.6.27-fix-build.patch
-  Add patch to fix build of 1.53 on kernel 2.6.27;
-  see Bug 241688.
 
 *ndiswrapper-1.53 (30 May 2008)
 

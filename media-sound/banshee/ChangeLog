@@ -1,6 +1,26 @@
 # ChangeLog for media-sound/banshee
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/banshee/ChangeLog,v 1.112 2010/04/01 11:59:34 ford_prefect Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/banshee/ChangeLog,v 1.116 2010/07/09 17:18:25 pacho Exp $
+
+  09 Jul 2010; Pacho Ramos <pacho@gentoo.org> banshee-1.6.1.ebuild:
+  amd64 stable, bug 324241
+
+  05 Jul 2010; Pacho Ramos <pacho@gentoo.org> -banshee-1.4.3.ebuild,
+  -banshee-1.4.3-r1.ebuild, -files/banshee-1.5.5-volume-reset-fix.patch,
+  -files/banshee-1.5.5-volume-slider-fix.patch, -banshee-1.6.0.ebuild,
+  banshee-1.6.1.ebuild:
+  Ensure sys-apps/hal is present until upstream bug #612616 is solved (bug
+  #327031 by Derek Dolney). Remove old.
+
+  18 Jun 2010; Arun Raghavan <ford_prefect@gentoo.org>
+  -banshee-1.5.6.ebuild:
+  Remove old beta.
+
+*banshee-1.6.1 (18 Jun 2010)
+
+  18 Jun 2010; Arun Raghavan <ford_prefect@gentoo.org>
+  +banshee-1.6.1.ebuild:
+  Bump to 1.6.1. Mostly bug fixes.
 
   01 Apr 2010; Arun Raghavan <ford_prefect@gentoo.org> banshee-1.6.0.ebuild:
   Fix intltool breakage (thanks to plaes for pointing this out and providing

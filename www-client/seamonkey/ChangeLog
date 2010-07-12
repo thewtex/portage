@@ -1,6 +1,63 @@
 # ChangeLog for www-client/seamonkey
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/seamonkey/ChangeLog,v 1.218 2010/06/11 14:45:56 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/seamonkey/ChangeLog,v 1.231 2010/07/08 21:02:22 polynomial-c Exp $
+
+  08 Jul 2010; Lars Wendler <polynomial-c@gentoo.org>
+  seamonkey-1.1.18.ebuild:
+  Removed remaining KEYWORDS for which we now have stable ones in
+  seamonkey-2.
+
+  08 Jul 2010; Brent Baude <ranger@gentoo.org> seamonkey-2.0.5.ebuild:
+  Marking seamonkey-2.0.5 ppc64 and ppc for bug 324735
+
+  08 Jul 2010; Lars Wendler <polynomial-c@gentoo.org>
+  -files/1002_fix-system-hunspell-dict-detections.patch,
+  -seamonkey-2.0.4-r1.ebuild:
+  Removed old.
+
+*seamonkey-1.1.19 (04 Jul 2010)
+
+  04 Jul 2010; Lars Wendler <polynomial-c@gentoo.org>
+  seamonkey-1.1.18.ebuild, +seamonkey-1.1.19.ebuild:
+  Added latest seamonkey-1 for arm which has no keyword for seamonkey-2.
+  Removed x86-fbsd from KEYWORDS.
+
+  04 Jul 2010; Lars Wendler <polynomial-c@gentoo.org>
+  seamonkey-1.1.18.ebuild:
+  Removed KEYWORDS for which we now have stable ones in seamonkey-2.
+
+  26 Jun 2010; Raúl Porcel <armin76@gentoo.org> seamonkey-2.0.5.ebuild:
+  alpha/ia64/sparc stable wrt #324735
+
+  26 Jun 2010; Lars Wendler <polynomial-c@gentoo.org>
+  seamonkey-2.0.5.ebuild:
+  New patchset...
+
+  24 Jun 2010; Christoph Mende <angelos@gentoo.org> seamonkey-2.0.5.ebuild:
+  Stable on amd64 wrt bug #324735
+
+  23 Jun 2010; Christian Faulhammer <fauli@gentoo.org>
+  seamonkey-2.0.5.ebuild:
+  stable x86, bug 324735
+
+*seamonkey-2.0.5 (22 Jun 2010)
+
+  22 Jun 2010; Lars Wendler <polynomial-c@gentoo.org>
+  -seamonkey-2.0.4-r2.ebuild, +seamonkey-2.0.5.ebuild:
+  Security bump.
+
+  21 Jun 2010; Christian Faulhammer <fauli@gentoo.org>
+  seamonkey-2.0.4-r1.ebuild:
+  stable x86, bug 314009
+
+  17 Jun 2010; Patrick Lauer <patrick@gentoo.org> seamonkey-1.1.18.ebuild:
+  Migrating away from deprecated postgres virtuals
+
+*seamonkey-2.0.4-r2 (16 Jun 2010)
+
+  16 Jun 2010; Lars Wendler <polynomial-c@gentoo.org>
+  -seamonkey-2.0.4.ebuild, +seamonkey-2.0.4-r2.ebuild:
+  Added fix against crash with x11-libs/cairo-1.8.10
 
   11 Jun 2010; Samuli Suominen <ssuominen@gentoo.org>
   seamonkey-1.1.18.ebuild, +files/seamonkey-1.1.18-libpng14.patch:

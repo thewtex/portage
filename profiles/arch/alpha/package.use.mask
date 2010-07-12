@@ -1,6 +1,19 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/alpha/package.use.mask,v 1.31 2010/06/13 20:55:35 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/alpha/package.use.mask,v 1.35 2010/07/08 17:23:35 pacho Exp $
+
+# Pacho Ramos <pacho@gentoo.org> (08 Jul 2010)
+# Needs libimobiledevice keyworded (bug 325839)
+gnome-base/gvfs iphone
+
+# Raúl Porcel <armin76@gentoo.org> (26 Jun 2010)
+# custom-optimization doesn't work on alpha
+mail-client/thunderbird custom-optimization
+net-libs/xulrunner custom-optimization
+www-client/icecat custom-optimization
+www-client/mozilla-firefox custom-optimization
+www-client/seamonkey custom-optimization
+x11-plugins/enigmail custom-optimization
 
 # Pacho Ramos <pacho@gentoo.org> (13 Jun 2010)
 # Needs gnome-extra/nautilus-sendto, wait for bug 323851
@@ -32,7 +45,7 @@ app-admin/system-config-printer-common	policykit
 # Raúl Porcel <armin76@gentoo.org> (25 Jan 2010)
 # Needs kde4 stable
 x11-themes/qtcurve-qt4 kde
-dev-util/subversion kde
+dev-vcs/subversion kde
 
 # Ben de Groot <yngwin@gentoo.org> (16 Jan 2010)
 # qt-multimedia is not keyworded, bug 293671

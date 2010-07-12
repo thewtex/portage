@@ -11,6 +11,6 @@ IUSE=""
 SLOT="0"
 
 RDEPEND="dev-lang/python
-  =app-editors/gvim-7.2.402
+  =app-editors/gvim-7.2.442
   sys-devel/gdb"
 DEPEND="${DEPEND}"

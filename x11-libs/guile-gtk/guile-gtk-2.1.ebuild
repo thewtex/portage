@@ -1,15 +1,17 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/guile-gtk/guile-gtk-2.1.ebuild,v 1.2 2009/12/28 23:34:11 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/guile-gtk/guile-gtk-2.1.ebuild,v 1.5 2010/06/28 22:28:32 jlec Exp $
 
-inherit virtualx eutils
+EAPI="2"
+
+inherit autotools eutils virtualx
 
 DESCRIPTION="GTK+ bindings for guile"
 HOMEPAGE="http://www.gnu.org/software/guile-gtk/"
 SRC_URI="ftp://ftp.gnu.org/gnu/guile-gtk/${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc ~x86"
 IUSE=""
 
 RDEPEND="dev-scheme/guile
@@ -26,10 +28,11 @@ pkg_setup() {
 	fi
 }
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
+src_prepare() {
 	epatch "${FILESDIR}/${PN}-2.0-g-object-ref.diff"
+	epatch "${FILESDIR}"/${PV}-prll-install.patch
+	epatch "${FILESDIR}"/${PV}-brokentest.patch
+	eautoreconf
 }
 
 src_test() {
@@ -38,7 +41,7 @@ src_test() {
 
 src_install() {
 	# bug #298803
-	emake -j1 DESTDIR="${D}" install || die "make install failed"
+	emake DESTDIR="${D}" install || die "make install failed"
 	dodoc README AUTHORS ChangeLog NEWS TODO
 	insinto /usr/share/doc/${PF}/examples
 	doins -r examples/

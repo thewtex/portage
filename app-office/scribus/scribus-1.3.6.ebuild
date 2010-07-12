@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/scribus/scribus-1.3.6.ebuild,v 1.6 2010/05/24 15:45:54 nixnut Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/scribus/scribus-1.3.6.ebuild,v 1.8 2010/07/04 13:21:11 ssuominen Exp $
 
 EAPI=2
 PYTHON_DEPEND="2:2.6"
@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~hppa ppc ~ppc64 ~sparc x86"
+KEYWORDS="amd64 ~hppa ppc ppc64 ~sparc x86"
 IUSE="cairo debug +minimal +pdf spell"
 
 COMMON_DEPEND="dev-libs/hyphen
@@ -21,7 +21,7 @@ COMMON_DEPEND="dev-libs/hyphen
 	media-libs/fontconfig
 	>=media-libs/freetype-2
 	>=media-libs/jpeg-8a
-	media-libs/lcms
+	=media-libs/lcms-1*
 	media-libs/libpng
 	media-libs/tiff
 	net-print/cups

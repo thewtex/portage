@@ -1,6 +1,34 @@
 # ChangeLog for dev-db/postgresql-server
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/postgresql-server/ChangeLog,v 1.64 2010/06/13 20:35:21 phajdan.jr Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/postgresql-server/ChangeLog,v 1.68 2010/06/23 20:35:20 angelos Exp $
+
+  23 Jun 2010; Christoph Mende <angelos@gentoo.org>
+  postgresql-server-7.4.29-r1.ebuild, postgresql-server-8.0.25-r1.ebuild,
+  postgresql-server-8.1.21-r1.ebuild, postgresql-server-8.2.17-r1.ebuild,
+  postgresql-server-8.3.11-r1.ebuild, postgresql-server-8.4.4-r1.ebuild:
+  Stable on amd64 wrt bug #320967
+
+  21 Jun 2010; Jeroen Roovers <jer@gentoo.org>
+  postgresql-server-7.4.29-r1.ebuild, postgresql-server-8.0.25-r1.ebuild,
+  postgresql-server-8.1.21-r1.ebuild, postgresql-server-8.2.17-r1.ebuild,
+  postgresql-server-8.3.11-r1.ebuild, postgresql-server-8.4.4-r1.ebuild:
+  Stable for HPPA (bug #320967).
+
+  20 Jun 2010; Patrick Lauer <patrick@gentoo.org>
+  postgresql-server-9.0_beta2.ebuild:
+  Adapting elog messages for unmasking
+
+  15 Jun 2010; Patrick Lauer <patrick@gentoo.org>
+  postgresql-server-7.4.26.ebuild, postgresql-server-7.4.27.ebuild,
+  postgresql-server-8.0.22.ebuild, postgresql-server-8.0.23.ebuild,
+  postgresql-server-8.1.18.ebuild, postgresql-server-8.1.19.ebuild,
+  postgresql-server-8.2.14.ebuild, postgresql-server-8.2.15.ebuild,
+  postgresql-server-8.3.8.ebuild, postgresql-server-8.3.9.ebuild,
+  postgresql-server-8.4.1.ebuild, postgresql-server-8.4.1-r1.ebuild,
+  postgresql-server-8.4.2.ebuild, postgresql-server-8.4.2-r1.ebuild,
+  -postgresql-server-9.0_alpha4.ebuild, -postgresql-server-9.0_beta1.ebuild,
+  -postgresql-server-9.0_beta1-r1.ebuild:
+  Punt 9.0 alpha and beta1, fix repoman warnings
 
   13 Jun 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
   postgresql-server-7.4.29.ebuild, postgresql-server-8.0.25.ebuild,
@@ -310,10 +338,6 @@
   +files/postgresql-8.4-server.patch:
   Bump to 8.4.0. Fixes #276125
 
-  16 Apr 2009; Jeff Mitchell <funtoo@jefferai.org>
-  postgresql-server-8.3.7.ebuild:
-  Mark stable for funtoo-stable.
-
 *postgresql-server-8.3.7 (09 Apr 2009)
 
   09 Apr 2009; Caleb Tennis <caleb@gentoo.org>
@@ -323,15 +347,6 @@
   28 Jan 2009; Caleb Tennis <caleb@gentoo.org> files/postgresql.conf-8.2,
   files/postgresql.init-8.2:
   Update init and conf scripts for 8.2 to match the changes from 8.3
-
-  17 Jan 2009; Caleb Cushing <xenoterracide@gmail.com>
-  postgresql-server-7.3.21.ebuild, postgresql-server-7.4.19.ebuild,
-  postgresql-server-7.4.21-r1.ebuild, postgresql-server-8.0.15.ebuild,
-  postgresql-server-8.0.17.ebuild, postgresql-server-8.1.11.ebuild,
-  postgresql-server-8.1.13.ebuild, postgresql-server-8.2.10.ebuild,
-  postgresql-server-8.2.11.ebuild, postgresql-server-8.2.9.ebuild,
-  postgresql-server-8.3.5.ebuild:
-  mark stable bug 230817
 
 *postgresql-server-8.2.11 (03 Dec 2008)
 

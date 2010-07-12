@@ -1,29 +1,30 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/terminus-font/terminus-font-4.30.ebuild,v 1.6 2010/05/20 13:07:27 pva Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/terminus-font/terminus-font-4.30.ebuild,v 1.9 2010/07/07 09:21:36 ssuominen Exp $
 
 EAPI="3"
 
 inherit eutils font
 
 DESCRIPTION="A clean fixed font for the console and X11"
-HOMEPAGE="http://www.is-vn.bg/hamster/"
-SRC_URI="http://www.is-vn.bg/hamster/${P}.tar.gz
-		ru-dv? ( http://www.is-vn.bg/hamster/${P}-dv1.diff.gz )
-		ru-g? ( http://www.is-vn.bg/hamster/${P}-ge1.diff.gz )
-		quote? ( http://www.is-vn.bg/hamster/${P}-gq2.diff.gz )
-		width? ( http://www.is-vn.bg/hamster/${P}-cm2.diff.gz )
-		bolddiag? ( http://www.is-vn.bg/hamster/${P}-kx3.diff.gz
-				a-like-o? ( http://www.is-vn.bg/hamster/${P}-kx3-ao2.diff.gz )
-				ru-i? ( http://www.is-vn.bg/hamster/${P}-kx3-ij1.diff.gz )
-				ru-k? ( http://www.is-vn.bg/hamster/${P}-kx3-ka2.diff.gz ) )
-		!bolddiag? ( a-like-o? ( http://www.is-vn.bg/hamster/${P}-ao2.diff.gz )
-				ru-i? ( http://www.is-vn.bg/hamster/${P}-ij1.diff.gz )
-				ru-k? ( http://www.is-vn.bg/hamster/${P}-ka2.diff.gz ) )
+HOMEPAGE="http://sourceforge.net/projects/terminus-font/"
+URI="mirror://sourceforge/${PN}/files/${P}"
+SRC_URI="${URI}/${P}.tar.gz
+		ru-dv? ( ${URI}/${P}-dv1.diff.gz )
+		ru-g? ( ${URI}/${P}-ge1.diff.gz )
+		quote? ( ${URI}/${P}-gq2.diff.gz )
+		width? ( ${URI}/${P}-cm2.diff.gz )
+		bolddiag? ( ${URI}/${P}-kx3.diff.gz
+				a-like-o? ( ${URI}/${P}-kx3-ao2.diff.gz )
+				ru-i? ( ${URI}/${P}-kx3-ij1.diff.gz )
+				ru-k? ( ${URI}/${P}-kx3-ka2.diff.gz ) )
+		!bolddiag? ( a-like-o? ( ${URI}/${P}-ao2.diff.gz )
+				ru-i? ( ${URI}/${P}-ij1.diff.gz )
+				ru-k? ( ${URI}/${P}-ka2.diff.gz ) )
 			"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm hppa ~ia64 ~mips ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux"
+KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux"
 IUSE="a-like-o ru-dv +ru-g quote ru-i ru-k width bolddiag +psf raw-font-data +pcf"
 
 DEPEND="dev-lang/perl

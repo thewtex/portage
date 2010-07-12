@@ -1,6 +1,40 @@
 # ChangeLog for kde-base/kdm
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/kdm/ChangeLog,v 1.216 2010/06/06 14:41:52 scarabeus Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/kdm/ChangeLog,v 1.224 2010/06/30 15:37:01 alexxy Exp $
+
+*kdm-4.4.5 (30 Jun 2010)
+
+  30 Jun 2010; Alexey Shvetsov <alexxy@gentoo.org> +kdm-4.4.5.ebuild:
+  Version bump
+
+*kdm-4.4.4-r2 (29 Jun 2010)
+
+  29 Jun 2010; Maciej Mrozowski <reavertm@gentoo.org> +kdm-4.4.4-r2.ebuild:
+  Install default user/root faces in new location correctly
+  (/var/lib/kdm-${SLOT}/faces - was ${PREFIX}/share/apps/kdm/faces)
+
+  27 Jun 2010; Christian Faulhammer <fauli@gentoo.org> kdm-4.4.4-r1.ebuild:
+  x86 stable, bug 322791
+
+  24 Jun 2010; Christoph Mende <angelos@gentoo.org> kdm-4.4.4-r1.ebuild:
+  Stable on amd64 wrt bug #322791
+
+*kdm-4.4.4-r1 (23 Jun 2010)
+
+  23 Jun 2010; Maciej Mrozowski <reavertm@gentoo.org>
+  +files/kdm-4.3.5-xdm-restart.patch, -kdm-4.4.4.ebuild,
+  +kdm-4.4.4-r1.ebuild:
+  Apply kdm timeout patch from bug 278473, add TerminateServer=true to kdmrc
+  (workaround for nvidia), set FaceDir (kdm doesn't respect it yet),
+  properly slot DataDir
+
+  21 Jun 2010; Tomáš Chvátal <scarabeus@gentoo.org> kdm-4.3.5.ebuild,
+  kdm-4.3.5-r1.ebuild, kdm-4.4.4.ebuild:
+  Drop 4.3.3. Drop hppa keywords per bug #304363
+
+  21 Jun 2010; Samuli Suominen <ssuominen@gentoo.org> -kdm-4.3.3.ebuild,
+  -kdm-4.3.5.ebuild:
+  Remove vulnerable kde-base/kdm from tree wrt #315235.
 
 *kdm-4.4.4 (06 Jun 2010)
 

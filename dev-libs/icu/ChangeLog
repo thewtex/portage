@@ -1,6 +1,21 @@
 # ChangeLog for dev-libs/icu
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/icu/ChangeLog,v 1.110 2010/06/12 16:36:46 arfrever Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/icu/ChangeLog,v 1.114 2010/07/02 22:45:03 arfrever Exp $
+
+  02 Jul 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  icu-4.4.1.ebuild, +files/icu-4.4.1-et_EE.patch:
+  Fix icu-config with et_EE locale (bug #260127).
+
+  26 Jun 2010; <nixnut@gentoo.org> icu-4.4.1.ebuild:
+  ppc stable #322297
+
+  22 Jun 2010; Jeroen Roovers <jer@gentoo.org> icu-4.4.1.ebuild:
+  Stable for HPPA (bug #322297).
+
+  16 Jun 2010; Patrick Lauer <patrick@gentoo.org> icu-4.0.1.ebuild,
+  icu-4.2.1.ebuild, icu-4.4.1.ebuild:
+  Makefiles are parallel-unsafe, so adding -j1 until it is properly fixed.
+  See bug #272328
 
   12 Jun 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
   icu-4.4.1.ebuild, +files/icu-4.4.1-pkgdata.patch:

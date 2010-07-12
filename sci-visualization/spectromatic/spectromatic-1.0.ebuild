@@ -1,6 +1,6 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-visualization/spectromatic/spectromatic-1.0.ebuild,v 1.2 2008/02/13 15:01:21 markusle Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-visualization/spectromatic/spectromatic-1.0.ebuild,v 1.4 2010/06/23 20:19:42 bicatali Exp $
 
 inherit eutils
 
@@ -13,11 +13,10 @@ SRC_URI="http://ieee.uow.edu.au/~daniel/software/spectromatic/dist/${MY_P}.tar.g
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~ppc x86"
-IUSE="bindist"
+IUSE=""
 
 DEPEND=">=media-libs/libpng-1.2.4
-		!bindist? ( sci-libs/gsl )
-	    bindist? ( <sci-libs/gsl-1.10 )"
+	sci-libs/gsl"
 
 src_unpack() {
 	unpack ${A}

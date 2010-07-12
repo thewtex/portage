@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/cvm/cvm-0.96.ebuild,v 1.1 2010/02/01 06:04:48 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/cvm/cvm-0.96.ebuild,v 1.3 2010/06/29 21:39:43 ssuominen Exp $
 
 inherit toolchain-funcs eutils
 
@@ -17,10 +17,12 @@ RDEPEND="dev-db/cdb"
 DEPEND="${RDEPEND}
 		>=dev-libs/bglibs-1.041
 		mysql? ( virtual/mysql )
-		postgres? ( virtual/postgresql-server )
+		postgres? ( dev-db/postgresql-server )
 		vpopmail? ( net-mail/vpopmail )
 		test? ( app-editors/vim )"
 # some of the testcases use ex/vi/xxd
+
+MAKEOPTS="${MAKEOPTS} -j1" #310843
 
 src_unpack() {
 	unpack ${A}

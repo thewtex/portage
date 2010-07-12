@@ -1,9 +1,9 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-portage/layman/layman-1.3.0-r1.ebuild,v 1.6 2010/03/17 15:39:37 sping Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-portage/layman/layman-1.3.0-r1.ebuild,v 1.9 2010/07/06 18:12:40 arfrever Exp $
 
 EAPI="2"
-NEED_PYTHON=2.5
+PYTHON_DEPEND="2:2.5"
 SUPPORT_PYTHON_ABIS="1"
 
 inherit eutils distutils
@@ -19,28 +19,28 @@ IUSE="bazaar cvs darcs git mercurial subversion test"
 
 COMMON_DEPS="dev-lang/python[xml]"
 DEPEND="${COMMON_DEPS}
-	test? ( dev-util/subversion )"
+	test? ( dev-vcs/subversion )"
 RDEPEND="${COMMON_DEPS}
 	bazaar? ( dev-vcs/bzr )
-	cvs? ( dev-util/cvs )
+	cvs? ( dev-vcs/cvs )
 	darcs? ( dev-vcs/darcs )
 	git? ( dev-vcs/git )
 	mercurial? ( dev-vcs/mercurial )
 	subversion? (
 		|| (
-			>=dev-util/subversion-1.5.4[webdav-neon]
-			>=dev-util/subversion-1.5.4[webdav-serf]
+			>=dev-vcs/subversion-1.5.4[webdav-neon]
+			>=dev-vcs/subversion-1.5.4[webdav-serf]
 		)
 	)"
 RESTRICT_PYTHON_ABIS="2.4 3.*"
 
 pkg_setup() {
-	if ! has_version dev-util/subversion; then
-		ewarn "You do not have dev-util/subversion installed!"
+	if ! has_version dev-vcs/subversion; then
+		ewarn "You do not have dev-vcs/subversion installed!"
 		ewarn "While layman does not exactly depend on this"
 		ewarn "version control system you should note that"
 		ewarn "most available overlays are offered via"
-		ewarn "dev-util/subversion. If you do not install it"
+		ewarn "dev-vcs/subversion. If you do not install it"
 		ewarn "you will be unable to use these overlays."
 		ewarn
 	fi

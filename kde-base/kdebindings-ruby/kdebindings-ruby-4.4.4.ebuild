@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/kdebindings-ruby/kdebindings-ruby-4.4.4.ebuild,v 1.1 2010/06/06 14:42:08 scarabeus Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/kdebindings-ruby/kdebindings-ruby-4.4.4.ebuild,v 1.4 2010/06/27 17:45:12 fauli Exp $
 
 EAPI="2"
 
@@ -13,7 +13,7 @@ USE_RUBY="ruby18"
 inherit kde4-meta ruby-ng
 
 DESCRIPTION="KDE Ruby bindings"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="akonadi debug okular phonon plasma qscintilla qwt semantic-desktop"
 
 DEPEND="
@@ -61,18 +61,18 @@ all_ruby_prepare() {
 each_ruby_configure() {
 	CMAKE_USE_DIR=${S}
 	mycmakeargs=(
-		$(cmake-utils_use_enable akonadi KdepimLibs)
-		$(cmake-utils_use_enable akonadi)
-		$(cmake-utils_use_enable okular)
+		$(cmake-utils_use_with akonadi)
+		$(cmake-utils_use_with akonadi KdepimLibs)
+		$(cmake-utils_use_with okular)
 		$(cmake-utils_use_enable plasma PLASMA_RUBY)
-		$(cmake-utils_use_enable phonon)
+		$(cmake-utils_use_with phonon)
 		$(cmake-utils_use_enable phonon PHONON_RUBY)
-		$(cmake-utils_use_enable qscintilla QScintilla)
+		$(cmake-utils_use_with qscintilla QScintilla)
 		$(cmake-utils_use_enable qscintilla QSCINTILLA_RUBY)
 		$(cmake-utils_use_enable qwt QWT_RUBY)
-		$(cmake-utils_use_enable semantic-desktop Soprano)
+		$(cmake-utils_use_with semantic-desktop Nepomuk)
+		$(cmake-utils_use_with semantic-desktop Soprano)
 		$(cmake-utils_use_enable semantic-desktop SOPRANO_RUBY)
-		$(cmake-utils_use_enable semantic-desktop Nepomuk)
 		$(cmake-utils_use_enable webkit QTWEBKIT_RUBY)
 		-DENABLE_KROSSRUBY=OFF
 		-DRUBY_LIBRARY=$(ruby_get_libruby)

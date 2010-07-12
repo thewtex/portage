@@ -1,6 +1,27 @@
 # ChangeLog for net-irc/quassel
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/quassel/ChangeLog,v 1.87 2010/06/07 16:33:42 billie Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-irc/quassel/ChangeLog,v 1.93 2010/07/03 19:36:15 billie Exp $
+
+  03 Jul 2010; Daniel Pielmeier <billie@gentoo.org> metadata.xml:
+  Too many cooks spoil the broth.
+
+  03 Jul 2010; Maciej Mrozowski <reavertm@gentoo.org> quassel-9999.ebuild:
+  Add missing enewgroup, rework a little
+
+  02 Jul 2010; Tomáš Chvátal <scarabeus@gentoo.org> quassel-9999.ebuild:
+  Introduce QT_MINIMAL and KDE_MINIMAL.
+
+  02 Jul 2010; Tomáš Chvátal <scarabeus@gentoo.org> quassel-9999.ebuild:
+  Create quassel user only when required...
+
+  01 Jul 2010; Tomáš Chvátal <scarabeus@gentoo.org> quassel-9999.ebuild,
+  +files/quasselcore.conf, +files/quasselcore.init:
+  Redo the live ebuild quite bit. Do not die in pkg_setup. Move confighome
+  to system location.
+
+  17 Jun 2010; Patrick Lauer <patrick@gentoo.org> quassel-0.5.1.ebuild,
+  quassel-0.5.2.ebuild:
+  Migrating away from deprecated postgres virtuals
 
   07 Jun 2010; Daniel Pielmeier <billie@gentoo.org> quassel-0.5.1.ebuild,
   quassel-0.5.2.ebuild, quassel-0.6.1.ebuild, quassel-9999.ebuild:

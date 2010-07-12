@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-geosciences/grass/grass-6.4.0_rc6.ebuild,v 1.6 2010/06/14 11:10:46 scarabeus Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-geosciences/grass/grass-6.4.0_rc6.ebuild,v 1.10 2010/06/17 21:03:51 patrick Exp $
 
 EAPI="3"
 
@@ -45,8 +45,8 @@ RDEPEND="
 	png? ( media-libs/libpng )
 	postgres? (
 		|| (
-			>=virtual/postgresql-base-8.4
-			>=virtual/postgresql-server-8.4
+			>=dev-db/postgresql-base-8.4
+			>=dev-db/postgresql-server-8.4
 		)
 	)
 	readline? ( sys-libs/readline )
@@ -121,8 +121,10 @@ pkg_setup() {
 	use wxwidgets && ! use X && ewarn "For wxwidgets support X useflag must be enabled"
 	use wxwidgets && ! use python && ewarn "For wxwidgets support python useflag must be enabled"
 
-	# only py2 is supported
-	python_set_active_version 2
+	if use python; then
+		# only py2 is supported
+		python_set_active_version 2
+	fi
 }
 
 src_prepare() {
@@ -198,6 +200,8 @@ src_configure() {
 		$(use_with jpeg) \
 		$(use_enable largefile) \
 		$(use_with mysql) \
+		--with-mysql-includes=/usr/include/mysql \
+		--with-mysql-libs=/usr/$(get_libdir)/mysql \
 		$(use_with nls) \
 		$(use_with odbc) \
 		$(use_with png) \

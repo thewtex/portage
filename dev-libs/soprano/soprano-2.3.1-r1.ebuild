@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/soprano/soprano-2.3.1-r1.ebuild,v 1.6 2010/01/18 18:52:21 abcd Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/soprano/soprano-2.3.1-r1.ebuild,v 1.8 2010/07/06 19:34:34 mr_bones_ Exp $
 
 EAPI="2"
 
@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 LICENSE="LGPL-2"
 KEYWORDS="alpha amd64 ~arm hppa ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
 SLOT="0"
-IUSE="+clucene +dbus debug doc elibc_FreeBSD +java +raptor redland"
+IUSE="+clucene +dbus debug doc elibc_FreeBSD +java +raptor redland test"
 
 COMMON_DEPEND="
 	x11-libs/qt-core:4
@@ -27,9 +27,9 @@ COMMON_DEPEND="
 	)
 	java? ( >=virtual/jdk-1.6.0 )
 "
-
 DEPEND="${COMMON_DEPEND}
 	doc? ( app-doc/doxygen )
+	test? ( >=x11-libs/qt-test-4.5.0:4 )
 "
 RDEPEND="${COMMON_DEPEND}
 "

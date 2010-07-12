@@ -1,9 +1,9 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/json/json-1.4.3-r1.ebuild,v 1.2 2010/06/12 10:43:28 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/json/json-1.4.3-r1.ebuild,v 1.4 2010/06/29 10:31:57 angelos Exp $
 
 EAPI=2
-USE_RUBY="ruby18 ree18 ruby19 jruby"
+USE_RUBY="ruby18 jruby"
 
 RUBY_FAKEGEM_TASK_DOC="doc"
 RUBY_FAKEGEM_EXTRADOC="CHANGES TODO README"
@@ -16,7 +16,7 @@ HOMEPAGE="http://json.rubyforge.org/"
 LICENSE="|| ( Ruby GPL-2 )"
 SRC_URI="mirror://rubygems/${P}.gem"
 
-KEYWORDS="~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-solaris ~x64-macos"
+KEYWORDS="amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-solaris"
 SLOT="0"
 IUSE=""
 

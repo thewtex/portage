@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/gdal/gdal-1.7.1-r1.ebuild,v 1.4 2010/05/20 03:16:24 nerdboy Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/gdal/gdal-1.7.1-r1.ebuild,v 1.6 2010/07/01 14:43:06 ssuominen Exp $
 
 EAPI="3"
 
@@ -39,7 +39,7 @@ RDEPEND=">=sys-libs/zlib-1.1.4
 	ogdi? ( sci-libs/ogdi )
 	gml? ( >=dev-libs/xerces-c-3 )
 	hdf5? ( >=sci-libs/hdf5-1.6.4 )
-	postgres? ( virtual/postgresql-base )
+	postgres? ( dev-db/postgresql-base )
 	|| (
 	    netcdf? ( sci-libs/netcdf )
 	    hdf? ( sci-libs/hdf )
@@ -142,7 +142,6 @@ src_configure() {
 
 	# mysql-config puts this in (and boy is it a PITA to get it out)
 	sed \
-	    -i -e "s;-Wl,-O1;;" \
 	    -i -e "s| -rdynamic | |" \
 	    GDALmake.opt || die "sed LIBS failed"
 

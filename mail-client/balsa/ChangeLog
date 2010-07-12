@@ -1,6 +1,19 @@
 # ChangeLog for mail-client/balsa
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/balsa/ChangeLog,v 1.98 2010/05/28 11:20:06 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-client/balsa/ChangeLog,v 1.102 2010/06/29 16:04:45 ssuominen Exp $
+
+  29 Jun 2010; Samuli Suominen <ssuominen@gentoo.org> balsa-2.4.7.ebuild,
+  +files/balsa-2.4.7-asneeded.patch:
+  Fix building with -Wl,--as-needed wrt #320349 by Kacper Kowalik.
+
+  29 Jun 2010; Nirbheek Chauhan <nirbheek@gentoo.org> -balsa-2.4.2.ebuild:
+  Remove old version, also fails with --as-needed in LDFLAGS
+
+  26 Jun 2010; Raúl Porcel <armin76@gentoo.org> balsa-2.4.7.ebuild:
+  alpha/sparc stable wrt #315361
+
+  26 Jun 2010; <nixnut@gentoo.org> balsa-2.4.7.ebuild:
+  ppc stable #315361
 
   28 May 2010; Markus Meier <maekke@gentoo.org> balsa-2.4.7.ebuild:
   x86 stable, bug #315361

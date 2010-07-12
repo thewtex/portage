@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/quassel/quassel-9999.ebuild,v 1.35 2010/06/07 16:33:42 billie Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-irc/quassel/quassel-9999.ebuild,v 1.40 2010/07/03 10:30:54 reavertm Exp $
 
 EAPI="2"
 
@@ -17,26 +17,29 @@ KEYWORDS=""
 SLOT="0"
 IUSE="ayatana dbus debug kde monolithic phonon postgres +server +ssl webkit X"
 
+QT_MINIMAL="4.6.0"
+KDE_MINIMAL="4.4"
+
 SERVER_RDEPEND="
-	!postgres? ( x11-libs/qt-sql:4[sqlite] dev-db/sqlite[threadsafe] )
-	postgres? ( x11-libs/qt-sql:4[postgres] )
+	!postgres? ( >=x11-libs/qt-sql-${QT_MINIMAL}:4[sqlite] dev-db/sqlite[threadsafe] )
+	postgres? ( >=x11-libs/qt-sql-${QT_MINIMAL}:4[postgres] )
 	x11-libs/qt-script:4
 "
 
 GUI_RDEPEND="
-	x11-libs/qt-gui:4
+	>=x11-libs/qt-gui-${QT_MINIMAL}:4
 	ayatana? ( dev-libs/libindicate-qt )
 	kde? (
-		>=kde-base/kdelibs-4.3
-		>=kde-base/oxygen-icons-4.3
+		>=kde-base/kdelibs-${KDE_MINIMAL}
+		>=kde-base/oxygen-icons-${KDE_MINIMAL}
 		ayatana? ( kde-misc/plasma-widget-message-indicator )
 	)
-	phonon? ( || ( media-sound/phonon x11-libs/qt-phonon ) )
-	webkit? ( x11-libs/qt-webkit:4 )
+	phonon? ( || ( media-sound/phonon >=x11-libs/qt-phonon-${QT_MINIMAL} ) )
+	webkit? ( >=x11-libs/qt-webkit-${QT_MINIMAL}:4 )
 "
 
 RDEPEND="
-	dbus? ( x11-libs/qt-dbus:4 )
+	dbus? ( >=x11-libs/qt-dbus-${QT_MINIMAL}:4 )
 	monolithic? (
 		${SERVER_RDEPEND}
 		${GUI_RDEPEND}
@@ -46,6 +49,14 @@ RDEPEND="
 		X? ( ${GUI_RDEPEND} )
 	)
 	ssl? ( x11-libs/qt-core:4[ssl] )
+	!monolithic? (
+		!server? (
+			!X? (
+				${SERVER_RDEPEND}
+				${GUI_RDEPEND}
+			)
+		)
+	)
 	"
 DEPEND="${RDEPEND}"
 
@@ -53,14 +64,24 @@ DOCS="AUTHORS ChangeLog README"
 
 pkg_setup() {
 	if ! use monolithic && ! use server && ! use X ; then
-		eerror "You have to build at least one of the monolithic client (USE=monolithic),"
-		eerror "the quasselclient (USE=X) or the quasselcore (USE=server)."
-		die "monolithic, server and X flag unset."
+		ewarn "You have to build at least one of the monolithic client (USE=monolithic),"
+		ewarn "the quasselclient (USE=X) or the quasselcore (USE=server)."
+		echo
+		ewarn "Enabling monolithic by default."
+		FORCED_MONO="yes"
+	fi
+
+	if use server; then
+		QUASSEL_DIR=/var/lib/${PN}
+		QUASSEL_USER=${PN}
+		# create quassel:quassel user
+		enewgroup "${QUASSEL_USER}"
+		enewuser "${QUASSEL_USER}" -1 -1 "${QUASSEL_DIR}" "${QUASSEL_USER}"
 	fi
 }
 
 src_configure() {
-	local mycmakeargs="
+	local mycmakeargs=(
 		$(cmake-utils_use_with ayatana LIBINDICATE)
 		$(cmake-utils_use_want X QTCLIENT)
 		$(cmake-utils_use_want server CORE)
@@ -71,8 +92,10 @@ src_configure() {
 		$(cmake-utils_use_with dbus)
 		$(cmake-utils_use_with ssl OPENSSL)
 		$(cmake-utils_use_with !kde OXYGEN)
-		-DEMBED_DATA=OFF
-	"
+		"-DEMBED_DATA=OFF"
+	)
+
+	[[ ${FORCED_MONO} == "yes" ]] && mycmakeargs+=( '-DWANT_MONO=ON' )
 
 	cmake-utils_src_configure
 }
@@ -81,26 +104,41 @@ src_install() {
 	cmake-utils_src_install
 
 	if use server ; then
-		newinitd "${FILESDIR}"/quasselcore-2.init quasselcore || die "newinitd failed"
-		newconfd "${FILESDIR}"/quasselcore-2.conf quasselcore || die "newconfd failed"
+		# prepare folders in /var/
+		keepdir "${QUASSEL_DIR}"
+		fowners "${QUASSEL_USER}":"${QUASSEL_USER}" "${QUASSEL_DIR}"
 
+		# init scripts
+		newinitd "${FILESDIR}"/quasselcore.init quasselcore || die "newinitd failed"
+		newconfd "${FILESDIR}"/quasselcore.conf quasselcore || die "newconfd failed"
+
+		# logrotate
 		insinto /etc/logrotate.d
-		newins "${FILESDIR}/quassel.logrotate" quassel
+		newins "${FILESDIR}/quassel.logrotate" quassel || die "newins failed"
 	fi
 }
 
 pkg_postinst() {
-	if use server ; then
-		ewarn
-		ewarn "In order to use the quassel init script you must set the"
-		ewarn "QUASSEL_USER variable in ${ROOT%/}/etc/conf.d/quasselcore to your username."
-		ewarn "Note: This is the user who runs the quasselcore and is independent"
-		ewarn "from the users you set up in the quasselclient."
+	if use server && use ssl; then
+		# inform about genreating ssl certificate
+		elog "If you want to use ssl connection to your core, please generate ssl key, with folowing command:"
+		elog "# openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout ${QUASSEL_DIR}/quasselCert.pem -ou"
+		echo
+		elog "Also remember that with the above command the key is valid only for 1 year."
 	fi
 
-	if ( use server || use monolithic ) && use ssl ; then
-		elog
+	if ( use monolithic || [[ "${FORCED_MONO}" == "yes" ]] ) && use ssl ; then
+		echo
 		elog "Information on how to enable SSL support for client/core connections"
 		elog "is available at http://bugs.quassel-irc.org/wiki/quassel-irc."
+	fi
+
+	# temporary info mesage
+	if use server; then
+		ewarn "Please note that all configuration moved from"
+		ewarn "/home/\${QUASSEL_USER}/.config/quassel-irc.org/"
+		ewarn "to: ${QUASSEL_DIR}."
+		echo
+		ewarn "For migration, stop the core, move quasselcore files (pretty much everything apart from quasselclient.conf and settings.qss) into new location and then start server again."
 	fi
 }

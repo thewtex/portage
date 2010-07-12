@@ -31,8 +31,8 @@ KEYWORDS="~alpha ~amd64 ~arm -hppa ~ia64 ~mips ~ppc ~ppc64 -sparc ~x86 ~x86-fbsd
 RDEPEND=">=sys-libs/zlib-1.1.4
 	>=sys-devel/gcc-config-1.4
 	virtual/libiconv
-	>=dev-libs/gmp-4.2.1
-	>=dev-libs/mpfr-2.3.2
+	>=dev-libs/gmp-5
+	>=dev-libs/mpfr-3
 	graphite? (
 		>=dev-libs/ppl-0.10
 		>=dev-libs/cloog-ppl-0.15.4

@@ -1,6 +1,35 @@
 # ChangeLog for sci-chemistry/gromacs
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/gromacs/ChangeLog,v 1.49 2010/01/24 19:39:09 alexxy Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/gromacs/ChangeLog,v 1.55 2010/07/09 16:28:51 pacho Exp $
+
+  09 Jul 2010; Pacho Ramos <pacho@gentoo.org> gromacs-4.0.7-r4.ebuild:
+  amd64 stable, bug 326151
+
+  08 Jul 2010; Alexey Shvetsov <alexxy@gentoo.org> gromacs-4.0.7-r4.ebuild:
+  Fix typo in ebuild for prefix setup
+
+*gromacs-4.0.7-r4 (04 Jul 2010)
+
+  04 Jul 2010; Alexey Shvetsov <alexxy@gentoo.org> +gromacs-4.0.7-r4.ebuild:
+  Fix bug #326331. thanks to Christoph Junghans
+
+  05 Jul 2010; Alexey Shvetsov <alexxy@gentoo.org> -gromacs-3.3.1-r1.ebuild,
+  -gromacs-3.3.3.ebuild:
+  Gromacs 3.x moved to sci overlay since its unmaintained and no longer
+  supported
+
+*gromacs-4.0.7-r3 (27 Jun 2010)
+
+  27 Jun 2010; Alexey Shvetsov <alexxy@gentoo.org> -gromacs-4.0.7.ebuild,
+  -gromacs-4.0.7-r1.ebuild, +gromacs-4.0.7-r3.ebuild,
+  -files/gromacs-4.0.7-docdir.patch,
+  +files/gromacs-4.0.7_upstream2010-06-08.patch:
+  Added patches from upstream stable branch. Added ffamber ports. Also fixed
+  bugs #301854 and #284431. Big thank to Christoph Junghans
+
+  24 Jun 2010; Justin Lecher <jlec@gentoo.org> gromacs-3.3.1-r1.ebuild,
+  gromacs-3.3.3.ebuild:
+  Blocking sci-mathematics/num-utils, #257566
 
 *gromacs-4.0.7-r1 (24 Jan 2010)
 

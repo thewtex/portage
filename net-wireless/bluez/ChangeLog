@@ -1,6 +1,32 @@
 # ChangeLog for net-wireless/bluez
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/bluez/ChangeLog,v 1.39 2010/06/11 22:25:13 josejx Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/bluez/ChangeLog,v 1.44 2010/07/06 22:43:26 hwoarang Exp $
+
+  06 Jul 2010; Markos Chandras <hwoarang@gentoo.org> bluez-4.66-r1.ebuild:
+  Stable on amd64 wrt bug #326897
+
+*bluez-4.67 (06 Jul 2010)
+
+  06 Jul 2010; Pacho Ramos <pacho@gentoo.org> -bluez-4.65.ebuild,
+  -bluez-4.66.ebuild, +bluez-4.67.ebuild:
+  Version bump: bugfixes and add ARMv6 optimized version of analysis filter
+  for SBC encoder. Remove old.
+
+  24 Jun 2010; Christoph Mende <angelos@gentoo.org> bluez-4.64.ebuild:
+  Stable on amd64 wrt bug #323457
+
+*bluez-4.66-r1 (19 Jun 2010)
+
+  19 Jun 2010; Pacho Ramos <pacho@gentoo.org> +bluez-4.66-r1.ebuild:
+  Stop building hid2hci since it's replaced by >=sys-fs/udev-146[extras]
+  provided one. This should fix bug #315749 (reported by Balazs Nemeth,
+  Marcin Kryczek and others). Thanks a lot to Bastien Nocera for the tip in
+  linux-bluetooth mailing list.
+
+*bluez-4.66 (18 Jun 2010)
+
+  18 Jun 2010; Pacho Ramos <pacho@gentoo.org> +bluez-4.66.ebuild:
+  Version bump fixing some bugs and regressions.
 
   11 Jun 2010; Joseph Jezak <josejx@gentoo.org> bluez-4.63.ebuild,
   bluez-4.64.ebuild, bluez-4.65.ebuild:

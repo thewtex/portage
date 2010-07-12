@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jnr-posix/jnr-posix-1.1.4.ebuild,v 1.2 2010/06/06 21:57:45 ali_bush Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jnr-posix/jnr-posix-1.1.4.ebuild,v 1.4 2010/07/06 21:35:24 hwoarang Exp $
 
 EAPI="2"
 JAVA_PKG_IUSE="source test"
@@ -13,10 +13,10 @@ HOMEPAGE="http://github.com/wmeissner/jnr-posix/"
 SRC_URI="http://github.com/wmeissner/${PN}/tarball/${PV} -> ${P}.tar.gz"
 LICENSE="|| ( CPL-1.0 GPL-2 LGPL-2.1 )"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux ~x86-solaris"
 IUSE=""
 
-CDEPEND="dev-java/jaffl:0
+CDEPEND=">=dev-java/jaffl-0.5.1:0
 	>=dev-java/constantine-0.7:0"
 
 RDEPEND=">=virtual/jre-1.5

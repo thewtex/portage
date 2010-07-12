@@ -1,6 +1,36 @@
 # ChangeLog for sci-libs/hdf5
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/hdf5/ChangeLog,v 1.55 2010/05/04 19:05:48 bicatali Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/hdf5/ChangeLog,v 1.62 2010/07/09 14:22:58 xarthisius Exp $
+
+  09 Jul 2010; Kacper Kowalik <xarthisius@gentoo.org> -hdf5-1.6.4.ebuild,
+  -files/hdf5-1.8.3-destdir.patch, -files/hdf5-1.8.3-gnutools.patch,
+  -files/hdf5-1.8.3-signal.patch, metadata.xml:
+  Remove ancient
+
+  09 Jul 2010; Samuli Suominen <ssuominen@gentoo.org> hdf5-1.8.4-r1.ebuild:
+  ppc64 stable wrt #299710
+
+  03 Jul 2010; Kacper Kowalik <xarthisius@gentoo.org> hdf5-1.8.5.ebuild,
+  metadata.xml:
+  Adding debug flag
+
+  20 Jun 2010; Kacper Kowalik <xarthisius@gentoo.org>
+  -files/hdf5-1.6.6-gcc4.3.patch, -hdf5-1.6.7.ebuild,
+  -files/hdf5-gcc4.3.3-fix.patch, -hdf5-1.8.4_p1.ebuild,
+  -files/hdf5-mpich2.patch, -hdf5-1.6.2.ebuild:
+  Removing old ebuild and obsolete patches
+
+  20 Jun 2010; Raúl Porcel <armin76@gentoo.org> hdf5-1.8.4-r1.ebuild:
+  alpha/ia64/sparc stable wrt #299710
+
+  17 Jun 2010; Justin Bronder <jsbronder@gentoo.org> hdf5-1.8.4-r1.ebuild:
+  Remove dep on sys-cluster/lam-mpi, see #324415.
+
+*hdf5-1.8.5 (16 Jun 2010)
+
+  16 Jun 2010; Kacper Kowalik <xarthisius@gentoo.org> +hdf5-1.8.5.ebuild,
+  +files/hdf5-1.8.5-noreturn.patch:
+  Version bump. Fixes bug 324119
 
   04 May 2010; Sébastien Fabbro <bicatali@gentoo.org> hdf5-1.8.4-r1.ebuild:
   Changed SRC_URI, per bug #317649

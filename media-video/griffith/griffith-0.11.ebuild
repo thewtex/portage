@@ -1,8 +1,10 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/griffith/griffith-0.11.ebuild,v 1.2 2010/05/28 18:59:49 arfrever Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/griffith/griffith-0.11.ebuild,v 1.5 2010/07/09 13:26:35 fauli Exp $
 
 EAPI="2"
+
+PYTHON_DEPEND="2"
 
 inherit eutils versionator python multilib
 
@@ -14,7 +16,7 @@ SRC_URI="http://launchpad.net/${PN}/trunk/${PV}/+download/${P}.tar.gz
 	mirror://berlios/griffith/${PN}-extra-artwork-${ARTWORK_PV}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~x86-fbsd"
+KEYWORDS="amd64 x86 ~x86-fbsd"
 IUSE="csv doc spell"
 
 RDEPEND="dev-python/imaging
@@ -28,6 +30,11 @@ RDEPEND="dev-python/imaging
 	spell? ( >=dev-python/gnome-python-extras-2.0 )"
 DEPEND="${RDEPEND}
 	doc? ( app-text/docbook2X )"
+
+pkg_setup() {
+	python_set_active_version 2
+	python_pkg_setup
+}
 
 src_prepare() {
 	sed -i \

@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/gimp/gimp-9999.ebuild,v 1.27 2010/06/10 17:51:23 arfrever Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/gimp/gimp-9999.ebuild,v 1.30 2010/07/09 15:28:44 scarabeus Exp $
 
 EAPI=2
 PYTHON_DEPEND="python? 2:2.5"
@@ -13,7 +13,7 @@ DESCRIPTION="GNU Image Manipulation Program"
 HOMEPAGE="http://www.gimp.org/"
 SRC_URI=""
 
-LICENSE="GPL-2"
+LICENSE="GPL-3"
 SLOT="2"
 KEYWORDS=""
 
@@ -22,6 +22,7 @@ IUSE="alsa aalib altivec curl dbus debug doc exif gnome hal jpeg lcms mmx mng pd
 RDEPEND=">=dev-libs/glib-2.18.1
 	>=x11-libs/gtk+-2.12.5
 	>=x11-libs/pango-1.18.0
+	x11-libs/libXpm
 	>=media-libs/freetype-2.1.7
 	>=media-libs/fontconfig-2.2.0
 	sys-libs/zlib
@@ -39,7 +40,7 @@ RDEPEND=">=dev-libs/glib-2.18.1
 	webkit? ( net-libs/webkit-gtk )
 	jpeg? ( >=media-libs/jpeg-6b-r2:0 )
 	exif? ( >=media-libs/libexif-0.6.15 )
-	lcms? ( media-libs/lcms )
+	lcms? ( media-libs/lcms:0 )
 	mng? ( media-libs/libmng )
 	pdf? ( >=app-text/poppler-0.12.3-r3[cairo] )
 	png? ( >=media-libs/libpng-1.2.2 )

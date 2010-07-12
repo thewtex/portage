@@ -1,14 +1,14 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/php/php-5.3.2.ebuild,v 1.7 2010/06/12 22:05:54 mabi Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/php/php-5.3.2.ebuild,v 1.12 2010/07/08 22:39:52 mabi Exp $
 
 EAPI=2
 
-PHPCONFUTILS_MISSING_DEPS="adabas birdstep db2 dbmaker empress empress-bcs esoob interbase oci8 sapdb solid sybase-ct"
+PHPCONFUTILS_MISSING_DEPS="adabas birdstep db2 dbmaker empress empress-bcs esoob interbase oci8 sapdb solid"
 
 inherit eutils autotools flag-o-matic versionator depend.apache apache-module db-use phpconfutils php-common-r1 libtool
 
-PHP_PATCHSET=""
+PHP_PATCHSET="1"
 SUHOSIN_VERSION="$PV-0.9.9.1"
 EXPECTED_TEST_FAILURES=""
 
@@ -74,9 +74,9 @@ SAPIS="cli cgi embed apache2"
 # Gentoo-specific, common features
 IUSE="kolab"
 
-# SAPIs and SAPI-specific USE flags:
+# SAPIs and SAPI-specific USE flags (cli SAPI is default on):
 IUSE="${IUSE}
-	${SAPIS}
+	+${SAPIS}
 	concurrentmodphp threads"
 
 IUSE="${IUSE} adabas bcmath berkdb birdstep bzip2 calendar cdb cjk
@@ -94,7 +94,7 @@ IUSE="${IUSE} adabas bcmath berkdb birdstep bzip2 calendar cdb cjk
 DEPEND="app-admin/php-toolkit
 	>=dev-libs/libpcre-7.9[unicode]
 	adabas? ( >=dev-db/unixODBC-1.8.13 )
-	apache2? ( !threads? ( www-servers/apache[-threads] ) )
+	apache2? ( www-servers/apache[threads=] )
 	berkdb? ( =sys-libs/db-4* )
 	birdstep? ( >=dev-db/unixODBC-1.8.13 )
 	bzip2? ( app-arch/bzip2 )
@@ -123,10 +123,7 @@ DEPEND="app-admin/php-toolkit
 	gdbm? ( >=sys-libs/gdbm-1.8.0 )
 	gmp? ( >=dev-libs/gmp-4.1.2 )
 	iconv? ( virtual/libiconv )
-	imap? (
-		virtual/imap-c-client[ssl=]
-		virtual/imap-c-client[kolab=]
-	)
+	imap? ( virtual/imap-c-client )
 	intl? ( dev-libs/icu )
 	iodbc? ( dev-db/libiodbc )
 	kerberos? ( virtual/krb5 )
@@ -134,7 +131,7 @@ DEPEND="app-admin/php-toolkit
 	ldap? ( !oci8? ( >=net-nds/openldap-1.2.11 ) )
 	ldap-sasl? ( !oci8? ( dev-libs/cyrus-sasl >=net-nds/openldap-1.2.11 ) )
 	libedit? ( || ( sys-freebsd/freebsd-lib dev-libs/libedit ) )
-	mssql? ( dev-db/freetds )
+	mssql? ( dev-db/freetds[mssql] )
 	!mysqlnd? (
 		mysql? ( virtual/mysql )
 		mysqli? ( >=virtual/mysql-4.1 )
@@ -166,6 +163,7 @@ DEPEND="app-admin/php-toolkit
 	sqlite? ( =dev-db/sqlite-2* pdo? ( =dev-db/sqlite-3* ) )
 	sqlite3? ( =dev-db/sqlite-3* )
 	ssl? ( >=dev-libs/openssl-0.9.7 )
+	sybase-ct? ( dev-db/freetds )
 	tidy? ( app-text/htmltidy )
 	truetype? (
 		=media-libs/freetype-2*
@@ -214,7 +212,6 @@ RDEPEND="${DEPEND}
 	empress? ( $php[odbc] )
 	esoob? ( $php[odbc] )
 	db2? ( $php[odbc] )
-	iodbc? ( $php[iodbc] )
 	sapdb? ( $php[odbc] )
 	solid? ( $php[odbc] )
 	kolab? ( $php[imap] )
@@ -255,7 +252,8 @@ PDEPEND="doc? ( app-doc/php-docs )
 # Portage doesn't support setting PROVIDE based on the USE flags that
 # have been enabled, so we have to PROVIDE everything for now and hope
 # for the best
-PROVIDE="virtual/php virtual/httpd-php"
+# see bug #319623 and new style virtual/httpd-php
+PROVIDE="virtual/php"
 
 SLOT="${PHP_MV}"
 S="${WORKDIR}/${PHP_P}"

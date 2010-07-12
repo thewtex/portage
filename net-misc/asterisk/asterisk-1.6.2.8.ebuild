@@ -1,15 +1,15 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/asterisk/asterisk-1.6.2.8.ebuild,v 1.1 2010/06/07 11:02:06 chainsaw Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/asterisk/asterisk-1.6.2.8.ebuild,v 1.4 2010/06/30 20:42:53 jlec Exp $
 
 EAPI=3
-inherit autotools base eutils linux-info
+inherit autotools base eutils linux-info multilib
 
 MY_P="${PN}-${PV/_/-}"
 
 DESCRIPTION="Asterisk: A Modular Open Source PBX System"
 HOMEPAGE="http://www.asterisk.org/"
-SRC_URI="http://downloads.digium.com/pub/telephony/asterisk/releases/${MY_P}.tar.gz"
+SRC_URI="http://downloads.asterisk.org/pub/telephony/asterisk/releases/${MY_P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
@@ -31,7 +31,7 @@ RDEPEND="sys-libs/ncurses
 	lua? ( dev-lang/lua )
 	misdn? ( net-dialup/misdnuser )
 	newt? ( dev-libs/newt )
-	postgres? ( virtual/postgresql-base )
+	postgres? ( dev-db/postgresql-base )
 	radius? ( net-dialup/radiusclient-ng )
 	snmp? ( net-analyzer/net-snmp )
 	span? ( media-libs/spandsp )
@@ -208,7 +208,7 @@ src_compile() {
 src_install() {
 	# setup directory structure
 	#
-	mkdir -p "${D}"usr/lib/pkgconfig
+	mkdir -p "${D}"usr/$(get_libdir)/pkgconfig
 
 	emake DESTDIR="${D}" install || die "emake install failed"
 

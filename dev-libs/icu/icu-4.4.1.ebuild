@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/icu/icu-4.4.1.ebuild,v 1.4 2010/06/12 16:36:46 arfrever Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/icu/icu-4.4.1.ebuild,v 1.8 2010/07/02 22:45:03 arfrever Exp $
 
 EAPI="3"
 
@@ -22,7 +22,7 @@ SRC_URI="${BASE_URI}/${SRC_ARCHIVE}
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc x86 ~x86-fbsd"
+KEYWORDS="~alpha amd64 ~arm hppa ~ia64 ~mips ppc ~ppc64 ~s390 ~sh ~sparc x86 ~x86-fbsd"
 IUSE="debug doc examples static-libs"
 
 DEPEND="doc? ( app-arch/unzip )"
@@ -51,6 +51,7 @@ src_prepare() {
 	done
 
 	epatch "${FILESDIR}/${P}-pkgdata.patch"
+	epatch "${FILESDIR}/${P}-et_EE.patch"
 }
 
 src_configure() {
@@ -63,11 +64,11 @@ src_configure() {
 }
 
 src_test() {
-	emake check || die "emake check failed"
+	emake -j1 check || die "emake check failed"
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die "emake install failed"
+	emake -j1 DESTDIR="${D}" install || die "emake install failed"
 
 	dohtml ../readme.html
 	dodoc ../unicode-license.txt

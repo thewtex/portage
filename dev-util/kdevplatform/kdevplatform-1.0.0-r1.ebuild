@@ -1,8 +1,11 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/kdevplatform/kdevplatform-1.0.0-r1.ebuild,v 1.1 2010/06/05 19:59:54 reavertm Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/kdevplatform/kdevplatform-1.0.0-r1.ebuild,v 1.5 2010/06/29 00:21:07 reavertm Exp $
 
 EAPI="2"
+
+# Bug 276208
+RESTRICT="test"
 
 if [[ ${PV} != *9999* ]]; then
 	KDE_LINGUAS="ca ca@valencia da de en_GB es et fr gl it nds pt pt_BR sv tr uk zh_CN zh_TW"
@@ -14,7 +17,7 @@ inherit kde4-base
 DESCRIPTION="KDE development support libraries and apps"
 
 LICENSE="GPL-2 LGPL-2"
-KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 # Moved to playground for now
 # bazaar git kompare mercurial
 IUSE="cvs debug subversion"
@@ -27,8 +30,8 @@ IUSE="cvs debug subversion"
 # block - some plugins moved to kdevplatform from kdevelop
 DEPEND="
 	dev-libs/boost
-	cvs? ( dev-util/cvs )
-	subversion? ( >=dev-util/subversion-1.3 )
+	cvs? ( dev-vcs/cvs )
+	subversion? ( >=dev-vcs/subversion-1.3 )
 "
 RDEPEND="${DEPEND}
 	!<dev-util/kdevelop-${KDEVELOP_VERSION}

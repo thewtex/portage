@@ -1,6 +1,38 @@
 # ChangeLog for dev-vcs/darcs
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-vcs/darcs/ChangeLog,v 1.4 2010/05/23 22:10:58 kolmodin Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-vcs/darcs/ChangeLog,v 1.8 2010/07/08 13:04:48 slyfox Exp $
+
+  08 Jul 2010; Sergei Trofimovich <slyfox@gentoo.org> darcs-2.4.4.ebuild,
+  darcs-2.4.4-r1.ebuild:
+  ~alpha keyworded
+
+  01 Jul 2010; Jeroen Roovers <jer@gentoo.org> darcs-1.0.9.ebuild,
+  darcs-2.0.2.ebuild, darcs-2.1.0-r1.ebuild, darcs-2.2.1.ebuild:
+  Drop support for ghc and darcs.
+
+*darcs-2.4.4-r1 (28 Jun 2010)
+
+  28 Jun 2010; Lennart Kolmodin <kolmodin@gentoo.org>
+  +darcs-2.4.4-r1.ebuild,
+  +files/darcs-2.4.4-issue1770-curl_multi_perform-no-running-handles.patch:
+  Attempt to solve issue1770 ( http://bugs.darcs.net/issue1770 ) which stops
+  users from fetching the Gentoo Haskell overlay. The patch is taken from
+  darcs HEAD and is written by Dmitry Kurochkin
+  <dmitry.kurochkin@gmail.com>.
+
+  Also, remove test case that required hlint. If the user would have a
+  recent version of hlint installed it would break the tests. Fix by slyfox.
+
+  16 Jun 2010; Lennart Kolmodin <kolmodin@gentoo.org>
+  -darcs-1.1.0_pre1.ebuild, darcs-2.1.0-r1.ebuild, darcs-2.2.1.ebuild,
+  -darcs-2.4.ebuild:
+  Bump requirement in darcs-2.1.0-r1 and darcs-2.2.1 to >=ghc-6.8 from
+  >=ghc-6.2.2.
+  All arches that are keyworded in those darcs versions also have ghcs
+  either stable or keyworded.
+  This makes the dependency on dev-haskell/filepath unneeded, so it has been
+  removed, see bug #324411.
+  Also remove old or rudendant darcs versions.
 
 *darcs-2.4.4 (23 May 2010)
 

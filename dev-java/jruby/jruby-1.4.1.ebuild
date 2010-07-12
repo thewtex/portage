@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jruby/jruby-1.4.1.ebuild,v 1.1 2010/04/27 09:23:58 caster Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jruby/jruby-1.4.1.ebuild,v 1.5 2010/06/30 15:43:32 phajdan.jr Exp $
 
 EAPI="2"
 JAVA_PKG_IUSE="doc source test"
@@ -14,7 +14,7 @@ HOMEPAGE="http://jruby.codehaus.org/"
 SRC_URI="http://jruby.org.s3.amazonaws.com/downloads/${PV}/${PN}-src-${MY_PV}.tar.gz"
 LICENSE="|| ( CPL-1.0 GPL-2 LGPL-2.1 )"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="bsf ssl"
 
 CDEPEND=">=dev-java/bytelist-1.0.2:0
@@ -51,7 +51,7 @@ PDEPEND="ssl? ( dev-ruby/jruby-openssl )"
 # Tests work for ali_bush inside the ebuild env
 # but fail when using vanilla src tarball.
 # Restrict tests so we can stablise this package.
-#RESTRICT="test"
+RESTRICT="test"
 
 S="${WORKDIR}/${PN}-${MY_PV}"
 
@@ -112,6 +112,9 @@ java_prepare() {
 	find build_lib -name "*.jar" ! -name "jsr292-mock.jar" -delete || die
 	rm lib/profile.jar || die
 
+	use bsf && java-pkg_jar-from --into build_lib \
+		--build-only bsf-2.3
+
 	if ! use bsf; then
 		# Remove BSF test cases.
 		cd "${S}/test/org/jruby"
@@ -123,7 +126,8 @@ java_prepare() {
 }
 
 src_compile() {
-	eant jar $(use_doc apidocs) -Djdk1.5+=true
+	eant jar $(use_doc apidocs) $(use bsf && echo "-Dbsf.present") \
+		-Djdk1.5+=true
 }
 
 src_test() {

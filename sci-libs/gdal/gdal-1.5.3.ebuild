@@ -1,6 +1,6 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/gdal/gdal-1.5.3.ebuild,v 1.4 2009/04/11 17:07:01 nerdboy Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/gdal/gdal-1.5.3.ebuild,v 1.6 2010/06/17 21:06:34 patrick Exp $
 
 WANT_AUTOCONF="2.5"
 inherit autotools distutils eutils perl-module toolchain-funcs
@@ -34,7 +34,7 @@ RDEPEND=">=sys-libs/zlib-1.1.4
 	ogdi? ( sci-libs/ogdi )
 	gml? ( >=dev-libs/xerces-c-3 )
 	hdf5? ( >=sci-libs/hdf5-1.6.4 )
-	postgres? ( virtual/postgresql-server )
+	postgres? ( dev-db/postgresql-server )
 	|| (
 	    netcdf? ( sci-libs/netcdf )
 	    hdf? ( sci-libs/hdf )
@@ -96,9 +96,6 @@ src_unpack() {
 }
 
 src_compile() {
-
-	distutils_python_version
-
 	local pkg_conf="${GDAL_CONFIGURE_OPTS}"
 	local use_conf=""
 
@@ -129,7 +126,7 @@ src_compile() {
 	fi
 
 	if useq python ; then
-	    use_conf="--with-pymoddir=/usr/$(get_libdir)/python${PYVER}/site-packages \
+	    use_conf="--with-pymoddir=$(python_get_sitedir) \
 		${use_conf}"
 	fi
 

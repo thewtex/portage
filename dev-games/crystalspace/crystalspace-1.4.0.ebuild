@@ -1,9 +1,9 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-games/crystalspace/crystalspace-1.4.0.ebuild,v 1.1 2010/06/11 19:57:53 tupone Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-games/crystalspace/crystalspace-1.4.0.ebuild,v 1.6 2010/06/24 11:33:47 tupone Exp $
 
 EAPI=2
-inherit eutils flag-o-matic multilib wxwidgets
+inherit eutils flag-o-matic multilib java-pkg-opt-2 autotools wxwidgets
 
 MY_P=${PN}-src-${PV}
 DESCRIPTION="Portable 3D Game Development Kit written in C++"
@@ -13,10 +13,10 @@ SRC_URI="mirror://sourceforge/crystal/${MY_P}.tar.bz2"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="3ds alsa cal3d cegui cg doc jpeg mng ode png python
+IUSE="3ds alsa bullet cal3d cegui cg doc java jpeg mng ode png
 sdl speex truetype vorbis wxwidgets"
 
-RDEPEND="virtual/opengl
+COMMON_DEP="virtual/opengl
 	media-libs/openal
 	x11-libs/libXt
 	x11-libs/libXxf86vm
@@ -24,6 +24,7 @@ RDEPEND="virtual/opengl
 	ode? ( dev-games/ode )
 	cal3d? ( >=media-libs/cal3d-0.11 )
 	jpeg? ( media-libs/jpeg )
+	bullet? ( sci-physics/bullet )
 	sdl? ( media-libs/libsdl )
 	vorbis? ( media-libs/libvorbis )
 	speex? ( media-libs/libogg
@@ -32,16 +33,21 @@ RDEPEND="virtual/opengl
 	alsa? ( media-libs/alsa-lib )
 	mng? ( media-libs/libmng )
 	png? ( media-libs/libpng )
-	wxwidgets? ( =x11-libs/wxGTK-2.6* )
+	wxwidgets? ( x11-libs/wxGTK:2.8[X,opengl] )
 	cegui? ( >=dev-games/cegui-0.5.0 )
 	3ds? ( media-libs/lib3ds )"
 
-DEPEND="${RDEPEND}
+RDEPEND="${COMMON_DEP}
+	java? ( >=virtual/jre-1.5 )"
+
+DEPEND="${COMMON_DEP}
+	java? ( >=virtual/jdk-1.5
+		dev-java/ant-core )
 	dev-util/ftjam
 	dev-lang/swig
 	dev-util/pkgconfig"
 
-S=${WORKDIR}/${MY_P}
+S="${WORKDIR}"/${MY_P}
 
 src_prepare() {
 	# Installing doc conflict with dodoc on src_install
@@ -51,27 +57,27 @@ src_prepare() {
 		Jamfile.in \
 		docs/Jamfile \
 		|| die "sed failed"
+	epatch "${FILESDIR}"/${P}-bullet.patch
+	AT_M4DIR=mk/autoconf
+	eautoreconf
 }
 
 src_configure() {
 	if useq wxwidgets; then
-		WX_GTK_VER=2.6
+		WX_GTK_VER="2.8"
 		need-wxwidgets gtk2
 	fi
 
-	# -O3 is hanging compilation of python script plugin
-	# trying -O2 just in case
-	replace-flags -O3 -O2
 	econf --enable-cpu-specific-optimizations=no \
 		--disable-separate-debug-info \
 		--without-lcms \
 		--without-caca \
-		--without-bullet \
 		--without-jackasyn \
 		--without-perl \
-		--without-java \
+		$(use_with java) \
 		--disable-make-emulation \
-		$(use_with python) \
+		$(use_with bullet) \
+		--without-python \
 		$(use_with png) \
 		$(use_with jpeg) \
 		$(use_with mng) \
@@ -93,15 +99,15 @@ src_configure() {
 }
 
 src_compile() {
-	jam -q || die "compile failed"
+	local jamopts=$(echo "${MAKEOPTS}" | sed -ne "/-j/ { s/.*\(-j[[:space:]]*[0-9]\+\).*/\1/; p }")
+	jam -q ${jamopts} || die "compile failed"
 }
 
 src_install() {
-	for installTarget in install_bin install_plugin install_lib \
-		install_include install_data install_config
+	for installTarget in bin plugin lib include data config bindings
 	do
-		jam -q -s DESTDIR="${D}" ${installTarget} \
-			|| die "jam ${installTarget} failed"
+		jam -q -s DESTDIR="${D}" install_${installTarget} \
+			|| die "jam install_${installTarget} failed"
 	done
 	if use doc; then
 		jam -q -s DESTDIR="${D}" install_doc || die "jam install_doc failed"
@@ -121,6 +127,6 @@ pkg_postinst() {
 	for dir in castle flarge isomap parallaxtest partsys r3dtest stenciltest \
 		terrain terrainf;
 	do
-		elog "cslight -video=null /usr/share/${PN}/data/maps/${dir}"
+		elog "cslight -video=null /usr/share/${P}/data/maps/${dir}"
 	done
 }

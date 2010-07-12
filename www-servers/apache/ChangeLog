@@ -116,13 +116,6 @@
   06 Jul 2009; Brent Baude <ranger@gentoo.org> apache-2.2.11-r1.ebuild:
   Marking apache-2.2.11-r1 ppc64 and ppc for bug 276589
 
-*apache-2.2.11-r2 (06 Jul 2009)
-
-  06 Jul 2009; Daniel Robbins <drobbins@funtoo.org> +apache-2.2.11-r2.ebuild:
-  using apache-2.2.11-r1.ebuild as a base; adding pkg_postinst information
-  about the Slowloris DOS Mitigation Guide at
-  http://www.funtoo.org/en/security/slowloris/ -- All MPMs are enabled again.
-
   06 Jul 2009; Jeroen Roovers <jer@gentoo.org> apache-2.2.11-r1.ebuild:
   Stable for HPPA (bug #276589).
 
@@ -131,12 +124,6 @@
   05 Jul 2009; Benedikt Böhm <hollow@gentoo.org> -apache-2.2.9-r1.ebuild,
   +apache-2.2.11-r1.ebuild:
   fix #263588, #265547, #231913, #268154, #271470, #272951, #276426
-
-  27 Jun 2009; Daniel Robbins <drobbins@funtoo.org> apache-2.2.11-r1.ebuild:
-  Applying anti-slowloris patch to address slowloris DOS, see
-  http://ha.ckers.org/blog/20090617/slowloris-http-dos/ .  Disabling everything
-  but prefork MPM, as this is the only MPM fixed by the patch. Removing older
-  versions.
 
   02 May 2009; Jeroen Roovers <jer@gentoo.org> apache-2.2.11.ebuild:
   Stable for HPPA (bug #265705).

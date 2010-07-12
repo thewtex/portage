@@ -1,9 +1,12 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-vcs/qct/qct-1.7.ebuild,v 1.4 2010/03/06 12:27:48 djc Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-vcs/qct/qct-1.7.ebuild,v 1.8 2010/07/08 12:38:15 arfrever Exp $
 
-EAPI="2"
-NEED_PYTHON="2.4"
+EAPI="3"
+PYTHON_DEPEND="2"
+SUPPORT_PYTHON_ABIS="1"
+RESTRICT_PYTHON_ABIS="3.*"
+
 inherit distutils
 
 DESCRIPTION="PyQt based commit tool for many VCSs"
@@ -19,13 +22,15 @@ DEPEND="app-text/asciidoc
 	app-text/xmlto
 	dev-python/PyQt4
 	bazaar? ( dev-vcs/bzr )
-	cvs? ( dev-util/cvs )
+	cvs? ( dev-vcs/cvs )
 	mercurial? ( dev-vcs/mercurial )
 	monotone? ( dev-vcs/monotone )
-	subversion? ( dev-util/subversion )"
+	subversion? ( dev-vcs/subversion )"
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${PN}"
+
+PYTHON_MODNAME="qctlib"
 
 src_prepare() {
 	distutils_src_prepare
@@ -45,9 +50,6 @@ src_prepare() {
 
 src_install() {
 	distutils_src_install
-
-	# needed for $PYVER
-	distutils_python_version
 
 	# manpage and html docs are built using asciidoc
 	make -C doc man html || die

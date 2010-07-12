@@ -11,4 +11,4 @@ SLOT="0"
 KEYWORDS="alpha amd64 ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 IUSE=""
 
-RDEPEND="|| ( ~dev-lang/perl-5.10.0 ~perl-core/Module-Pluggable-${PV} )"
+RDEPEND="|| ( ~dev-lang/perl-5.10.1 ~perl-core/Module-Pluggable-${PV} )"

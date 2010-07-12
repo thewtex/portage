@@ -1,8 +1,9 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/ffmpeg/ffmpeg-9999-r1.ebuild,v 1.37 2010/06/12 21:54:13 spatz Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/ffmpeg/ffmpeg-9999-r1.ebuild,v 1.44 2010/06/22 07:28:55 aballier Exp $
 
-EAPI=2
+EAPI="2"
+
 SCM=""
 if [ "${PV#9999}" != "${PV}" ] ; then
 	SCM=subversion
@@ -29,11 +30,10 @@ if [[ ${PV} == *9999* ]]; then
 else
 	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 fi
-IUSE="+3dnow +3dnowext alsa altivec cpudetection custom-cflags debug dirac
-	  doc ieee1394 +encode faac faad gsm jack +mmx +mmxext vorbis test
-	  theora threads x264 xvid network zlib sdl X mp3 amr
-	  oss pic rtmp schroedinger +hardcoded-tables bindist v4l v4l2
-	  speex +ssse3 jpeg2k vaapi vdpau vpx"
+IUSE="+3dnow +3dnowext alsa altivec amr bindist cpudetection custom-cflags
+debug dirac doc +encode faac gsm +hardcoded-tables ieee1394 jack jpeg2k
++mmx +mmxext mp3 network oss pic rtmp schroedinger sdl speex +ssse3 test theora
+threads v4l v4l2 vaapi vdpau vorbis vpx X x264 xvid +zlib"
 
 VIDEO_CARDS="nvidia"
 
@@ -50,7 +50,6 @@ RDEPEND="sdl? ( >=media-libs/libsdl-1.2.10 )
 		theora? ( >=media-libs/libtheora-1.1.1[encode] media-libs/libogg )
 		x264? ( >=media-libs/x264-0.0.20100605 )
 		xvid? ( >=media-libs/xvid-1.1.0 ) )
-	faad? ( >=media-libs/faad2-2.6.1 )
 	zlib? ( sys-libs/zlib )
 	ieee1394? ( media-libs/libdc1394
 				sys-libs/libraw1394 )
@@ -72,21 +71,22 @@ RDEPEND="sdl? ( >=media-libs/libsdl-1.2.10 )
 DEPEND="${RDEPEND}
 	>=sys-devel/make-3.81
 	dirac? ( dev-util/pkgconfig )
+	doc? ( app-text/texi2html )
+	mmx? ( dev-lang/yasm )
 	rtmp? ( dev-util/pkgconfig )
 	schroedinger? ( dev-util/pkgconfig )
-	mmx? ( dev-lang/yasm )
-	doc? ( app-text/texi2html )
 	test? ( net-misc/wget )
 	v4l? ( sys-kernel/linux-headers )
-	v4l2? ( sys-kernel/linux-headers )"
+	v4l2? ( sys-kernel/linux-headers )
+"
 
 src_prepare() {
 	if [[ ${PV} = *9999* ]]; then
 		# Set SVN version manually
 		subversion_wc_info
-		sed -i s/UNKNOWN/SVN-r${ESVN_WC_REVISION}/ "${S}/version.sh"
+		sed -i -e "s/UNKNOWN/SVN-r${ESVN_WC_REVISION}/" "${S}/version.sh" || die
 	elif [ "${PV%_p*}" != "${PV}" ] ; then # Snapshot
-		sed -i s/UNKNOWN/SVN-r${FFMPEG_REVISION}/ "${S}/version.sh"
+		sed -i -e "s/UNKNOWN/SVN-r${FFMPEG_REVISION}/" "${S}/version.sh" || die
 	fi
 }
 
@@ -94,22 +94,27 @@ src_configure() {
 	local myconf="${EXTRA_FFMPEG_CONF}"
 
 	# enabled by default
-	use debug || myconf="${myconf} --disable-debug"
-	use zlib || myconf="${myconf} --disable-zlib"
+	for i in debug doc network vaapi zlib; do
+		use ${i} || myconf="${myconf} --disable-${i}"
+	done
 	use sdl || myconf="${myconf} --disable-ffplay"
-	use network || myconf="${myconf} --disable-network"
 
 	use custom-cflags && myconf="${myconf} --disable-optimizations"
 	use cpudetection && myconf="${myconf} --enable-runtime-cpudetect"
 
-	# enabled by default
+	#for i in h264_vdpau mpeg1_vdpau mpeg_vdpau vc1_vdpau wmv3_vdpau; do
+	#	use video_cards_nvidia || myconf="${myconf} --disable-decoder=${i}"
+	#	use vdpau || myconf="${myconf} --disable-decoder=${i}"
+	#done
+	use video_cards_nvidia && use vdpau || myconf="${myconf} --disable-vdpau"
+
+	# Encoders
 	if use encode
 	then
 		use mp3 && myconf="${myconf} --enable-libmp3lame"
-		use vorbis && myconf="${myconf} --enable-libvorbis"
-		use theora && myconf="${myconf} --enable-libtheora"
-		use x264 && myconf="${myconf} --enable-libx264"
-		use xvid && myconf="${myconf} --enable-libxvid"
+		for i in theora vorbis x264 xvid; do
+			use ${i} && myconf="${myconf} --enable-lib${i}"
+		done
 		if use bindist
 		then
 			use faac && ewarn "faac is nonfree and cannot be distributed;
@@ -125,36 +130,27 @@ src_configure() {
 	use ieee1394 && myconf="${myconf} --enable-libdc1394"
 	# Indevs
 	for i in v4l v4l2 alsa oss jack ; do
-		use $i || myconf="${myconf} --disable-indev=$i"
-	done
-	# Outdevs
-	for i in alsa oss ; do
-		use $i || myconf="${myconf} --disable-outdev=$i"
+		use ${i} || myconf="${myconf} --disable-indev=${i}"
 	done
 	use X && myconf="${myconf} --enable-x11grab"
+	# Outdevs
+	for i in alsa oss ; do
+		use ${i} || myconf="${myconf} --disable-outdev=${i}"
+	done
 
 	# Threads; we only support pthread for now but ffmpeg supports more
 	use threads && myconf="${myconf} --enable-pthreads"
 
 	# Decoders
-	use amr && myconf="${myconf} --enable-libopencore-amrwb
-		--enable-libopencore-amrnb"
-	for i in gsm faad dirac rtmp schroedinger speex vpx; do
-		use $i && myconf="${myconf} --enable-lib$i"
+	use amr && myconf="${myconf} --enable-libopencore-amrwb --enable-libopencore-amrnb"
+	for i in gsm dirac rtmp schroedinger speex vpx; do
+		use ${i} && myconf="${myconf} --enable-lib${i}"
 	done
 	use jpeg2k && myconf="${myconf} --enable-libopenjpeg"
 
-	#for i in h264_vdpau mpeg1_vdpau mpeg_vdpau vc1_vdpau wmv3_vdpau; do
-	#	use video_cards_nvidia || myconf="${myconf} --disable-decoder=$i"
-	#	use vdpau || myconf="${myconf} --disable-decoder=$i"
-	#done
-	use video_cards_nvidia || myconf="${myconf} --disable-vdpau"
-	use vdpau || myconf="${myconf} --disable-vdpau"
-	use vaapi || myconf="${myconf} --disable-vaapi"
-
 	# CPU features
 	for i in mmx ssse3 altivec ; do
-		use $i ||  myconf="${myconf} --disable-$i"
+		use ${i} || myconf="${myconf} --disable-${i}"
 	done
 	use mmxext || myconf="${myconf} --disable-mmx2"
 	use 3dnow || myconf="${myconf} --disable-amd3dnow"
@@ -176,14 +172,19 @@ src_configure() {
 	for i in $(get-flag march) $(get-flag mcpu) $(get-flag mtune) ; do
 		[ "${i}" = "native" ] && i="host" # bug #273421
 		[[ ${i} = *-sse3 ]] && i="${i%-sse3}" # bug 283968
-		myconf="${myconf} --cpu=$i"
+		myconf="${myconf} --cpu=${i}"
 		break
 	done
 
 	# Mandatory configuration
-	myconf="${myconf} --enable-gpl --enable-version3 --enable-postproc \
-			--enable-avfilter --enable-avfilter-lavf \
-			--disable-stripping"
+	myconf="
+		--enable-gpl
+		--enable-version3
+		--enable-postproc
+		--enable-avfilter
+		--enable-avfilter-lavf
+		--disable-stripping
+		${myconf}"
 
 	# cross compile support
 	if tc-is-cross-compiler ; then
@@ -203,7 +204,6 @@ src_configure() {
 
 	# Misc stuff
 	use hardcoded-tables && myconf="${myconf} --enable-hardcoded-tables"
-	use doc || myconf="${myconf} --disable-doc"
 
 	# Specific workarounds for too-few-registers arch...
 	if [[ $(tc-arch) == "x86" ]]; then

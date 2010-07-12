@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/cctbx/cctbx-2009.11.01.0123-r1.ebuild,v 1.2 2010/02/28 14:39:00 arfrever Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/cctbx/cctbx-2009.11.01.0123-r1.ebuild,v 1.4 2010/06/16 07:03:31 jlec Exp $
 
 EAPI="3"
 PYTHON_DEPEND="2"
@@ -15,7 +15,7 @@ SRC_URI="http://cci.lbl.gov/cctbx_build/results/${MY_PV}/${PN}_bundle.tar.gz -> 
 
 LICENSE="cctbx-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="+minimal openmp threads"
 
 RDEPEND="
@@ -91,7 +91,7 @@ src_configure() {
 	myconf="${myconf} --compiler=${compiler}"
 
 	# Precompiling python scripts. It is done in upstreams install script.
-	# Perhaps use python_mod_compile, but as this script works we should stick to it.
+	# Perhaps use python_mod_optimize, but as this script works we should stick to it.
 	$(PYTHON -a) "${MY_S}/libtbx/command_line/py_compile_all.py"
 
 	# Additional USE flag usage

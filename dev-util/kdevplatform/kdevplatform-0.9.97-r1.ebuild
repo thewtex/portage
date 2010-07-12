@@ -1,8 +1,11 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/kdevplatform/kdevplatform-0.9.97-r1.ebuild,v 1.7 2010/05/12 16:24:48 ranger Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/kdevplatform/kdevplatform-0.9.97-r1.ebuild,v 1.11 2010/06/29 00:21:07 reavertm Exp $
 
 EAPI="2"
+
+# Bug 276208
+RESTRICT="test"
 
 KMNAME="extragear/sdk"
 inherit kde4-base
@@ -18,7 +21,7 @@ HOMEPAGE="http://www.kdevelop.org/"
 [[ ${PV} != *9999* ]] && SRC_URI="mirror://kde/unstable/kdevelop/${KDEVELOP_PV}/src/${P}.tar.bz2"
 
 LICENSE="GPL-2 LGPL-2"
-KEYWORDS="amd64 ~hppa ppc ppc64 x86"
+KEYWORDS="amd64 ppc ~ppc64 x86"
 SLOT="4"
 # Moved to playground for now
 # bazaar git
@@ -26,7 +29,7 @@ IUSE="cvs debug mercurial subversion"
 
 DEPEND="
 	dev-libs/boost
-	subversion? ( >=dev-util/subversion-1.3 )
+	subversion? ( >=dev-vcs/subversion-1.3 )
 "
 # Moved to playground for now
 # bazaar? ( dev-util/bzr )
@@ -34,7 +37,7 @@ DEPEND="
 # block - some plugins moved to kdevplatform from kdevelop
 RDEPEND="${DEPEND}
 	!<dev-util/kdevelop-${KDEVELOP_PV}
-	cvs? ( dev-util/cvs )
+	cvs? ( dev-vcs/cvs )
 	mercurial? ( dev-vcs/mercurial )
 "
 

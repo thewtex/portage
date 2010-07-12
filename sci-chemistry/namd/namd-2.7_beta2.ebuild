@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/namd/namd-2.7_beta2.ebuild,v 1.1 2010/04/24 00:02:02 dberkholz Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/namd/namd-2.7_beta2.ebuild,v 1.2 2010/06/24 20:37:03 jlec Exp $
 
 inherit eutils toolchain-funcs flag-o-matic
 
@@ -19,8 +19,8 @@ IUSE=""
 
 RESTRICT="fetch"
 
-DEPEND="|| ( app-shells/csh
-			app-shells/tcsh )
+DEPEND="
+	app-shells/tcsh
 	sys-cluster/charm
 	=sci-libs/fftw-2*
 	dev-lang/tcl"
@@ -52,6 +52,8 @@ src_unpack() {
 	# apply a few small fixes to make NAMD compile and
 	# link to the proper libraries
 	epatch "${FILESDIR}"/namd-2.7_beta2-gentoo.patch
+	epatch "${FILESDIR}"/namd-2.7-ldflags.patch
+	epatch "${FILESDIR}"/namd-2.7-iml-dec.patch
 	sed -e "s:charm-6.1.3:charm-${CHARM_VERSION}:" \
 		Make.charm || \
 		die

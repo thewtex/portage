@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-vcs/mercurial/mercurial-1.5.ebuild,v 1.7 2010/06/03 19:56:32 phajdan.jr Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-vcs/mercurial/mercurial-1.5.ebuild,v 1.10 2010/06/25 17:13:06 armin76 Exp $
 
 EAPI=2
 
@@ -12,7 +12,7 @@ SRC_URI="http://mercurial.selenic.com/release/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm hppa ~ia64 ppc ~ppc64 ~sparc x86 ~x86-fbsd"
+KEYWORDS="alpha ~amd64 arm hppa ia64 ppc ~ppc64 sparc x86 ~x86-fbsd"
 IUSE="bugzilla emacs gpg test tk zsh-completion"
 
 CDEPEND=">=dev-lang/python-2.4[threads]"
@@ -112,11 +112,11 @@ pkg_postinst() {
 
 	elog "If you want to convert repositories from other tools using convert"
 	elog "extension please install correct tool:"
-	elog "  dev-util/cvs"
+	elog "  dev-vcs/cvs"
 	elog "  dev-vcs/darcs"
 	elog "  dev-vcs/git"
 	elog "  dev-vcs/monotone"
-	elog "  dev-util/subversion"
+	elog "  dev-vcs/subversion"
 }
 
 pkg_postrm() {

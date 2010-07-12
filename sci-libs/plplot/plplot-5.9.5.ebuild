@@ -1,10 +1,13 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/plplot/plplot-5.9.5.ebuild,v 1.5 2010/02/01 17:41:34 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/plplot/plplot-5.9.5.ebuild,v 1.6 2010/07/04 18:27:02 jlec Exp $
 
 EAPI="2"
+
 WX_GTK_VER="2.8"
-inherit eutils cmake-utils toolchain-funcs wxwidgets java-pkg-opt-2
+PYTHON_DEPEND="python? 2"
+
+inherit eutils cmake-utils python toolchain-funcs wxwidgets java-pkg-opt-2
 
 DESCRIPTION="Multi-language scientific plotting library"
 HOMEPAGE="http://plplot.sourceforge.net/"
@@ -17,40 +20,44 @@ KEYWORDS="~amd64 ~x86"
 IUSE="ada cairo doc examples fortran gd gnome java jpeg latex octave
 	 pdf perl png python qhull qt4 svg svga tcl threads tk truetype wxwidgets X"
 
-RDEPEND="ada? ( virtual/gnat )
+RDEPEND="
+	ada? ( virtual/gnat )
 	cairo? ( x11-libs/cairo[svg?,X?] )
 	java? ( >=virtual/jre-1.5 )
 	gd? ( media-libs/gd[jpeg?,png?] )
-	gnome? ( gnome-base/libgnomeui
-			 gnome-base/libgnomeprintui
-			 python? ( dev-python/gnome-python ) )
+	gnome? (
+			gnome-base/libgnomeui
+			gnome-base/libgnomeprintui
+			python? ( dev-python/gnome-python ) )
 	latex? ( virtual/latex-base app-text/ghostscript-gpl )
 	octave? ( >=sci-mathematics/octave-3 )
 	pdf? ( media-libs/libharu )
 	perl? ( dev-perl/PDL dev-perl/XML-DOM )
 	python? ( dev-python/numpy )
-	qt4? ( x11-libs/qt-gui:4
+	qt4? (
+		x11-libs/qt-gui:4
 		x11-libs/qt-svg:4 )
 	svga? ( media-libs/svgalib )
 	tcl? ( dev-lang/tcl dev-tcltk/itcl )
 	tk? ( dev-lang/tk dev-tcltk/itk )
-	truetype? ( media-fonts/freefont-ttf
+	truetype? (
+				media-fonts/freefont-ttf
 				media-libs/lasi
 				gd? ( media-libs/gd[truetype] ) )
 	wxwidgets? ( x11-libs/wxGTK:2.8[X] x11-libs/agg[truetype?] )
 	X? ( x11-libs/libX11 x11-libs/libXau x11-libs/libXdmcp )"
-
 DEPEND="${RDEPEND}
 	>=dev-util/cmake-2.6
 	dev-util/pkgconfig
-	doc? ( app-text/opensp
-		   app-text/jadetex
-		   app-text/docbook2X
-		   app-text/docbook-dsssl-stylesheets
-		   dev-perl/XML-DOM
-		   virtual/latex-base
-		   app-text/ghostscript-gpl
-		   sys-apps/texinfo )
+	doc? (
+			app-text/opensp
+			app-text/jadetex
+			app-text/docbook2X
+			app-text/docbook-dsssl-stylesheets
+			dev-perl/XML-DOM
+			virtual/latex-base
+			app-text/ghostscript-gpl
+			sys-apps/texinfo )
 	java? ( >=virtual/jdk-1.5 dev-lang/swig )
 	python? ( dev-lang/swig )
 	qhull? ( media-libs/qhull )"
@@ -61,6 +68,9 @@ pkg_setup() {
 	else
 		export FC="" F77=""
 	fi
+	use wxwidgets && wxwidgets_pkg_setup
+	use python && python_set_active_version 2
+	use java && java-pkg-opt-2_pkg_setup
 }
 
 src_prepare() {
@@ -91,6 +101,8 @@ src_prepare() {
 	sed -i \
 		-e 's:xml/declaration:sgml:' \
 		cmake/modules/docbook.cmake || die
+
+	use java && java-utils-2_src_prepare
 }
 
 src_configure() {

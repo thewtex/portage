@@ -1,10 +1,10 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/fe3d/fe3d-0.11.2.ebuild,v 1.1 2010/03/01 13:37:47 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/fe3d/fe3d-0.11.2.ebuild,v 1.3 2010/06/29 15:06:47 ssuominen Exp $
 
-EAPI=1
+EAPI=2
 WX_GTK_VER="2.8"
-inherit eutils wxwidgets
+inherit autotools eutils wxwidgets
 
 if [[ "${PV}" =~ (_p)([0-9]+) ]] ; then
 	inherit subversion
@@ -24,8 +24,8 @@ KEYWORDS="~alpha ~amd64 ~x86"
 IUSE=""
 
 RDEPEND="x11-libs/wxGTK:2.8
-		>=dev-libs/xerces-c-2.7
-		net-analyzer/nmap"
+	>=dev-libs/xerces-c-2.7
+	net-analyzer/nmap"
 DEPEND="${RDEPEND}"
 
 S=${WORKDIR}/${PN}_${PV}
@@ -34,8 +34,13 @@ pkg_setup() {
 	check_wxuse opengl
 }
 
+src_prepare() {
+	epatch "${FILESDIR}"/${P}-asneeded.patch
+	eautoreconf
+}
+
 src_install() {
-	make DESTDIR="${D}" install || die "make install failed"
+	emake DESTDIR="${D}" install || die
 	dodoc AUTHORS doc/{ChangeLog,README}.txt
 }
 

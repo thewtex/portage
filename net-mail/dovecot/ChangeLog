@@ -1,6 +1,26 @@
 # ChangeLog for net-mail/dovecot
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/dovecot/ChangeLog,v 1.241 2010/05/19 13:26:56 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-mail/dovecot/ChangeLog,v 1.244 2010/06/20 10:29:06 patrick Exp $
+
+*dovecot-1.2.12 (20 Jun 2010)
+
+  20 Jun 2010; Patrick Lauer <patrick@gentoo.org> +dovecot-1.2.12.ebuild,
+  +files/dovecot-1.2.init:
+  Bump, fix for #324767. Small fix for init script to create needed dir if
+  absent. Thanks to Eray Aslan
+
+  17 Jun 2010; Patrick Lauer <patrick@gentoo.org> dovecot-1.1.7-r1.ebuild,
+  dovecot-1.1.16.ebuild, dovecot-1.1.19.ebuild, dovecot-1.2.6.ebuild,
+  dovecot-1.2.7.ebuild, dovecot-1.2.8.ebuild, dovecot-1.2.9-r1.ebuild,
+  dovecot-1.2.10-r1.ebuild, dovecot-1.2.11.ebuild, dovecot-1.2.11-r1.ebuild,
+  dovecot-1.2.11-r2.ebuild, dovecot-2.0_beta4.ebuild,
+  dovecot-2.0_beta5.ebuild, dovecot-2.0_beta6.ebuild:
+  Migrating away from deprecated postgres virtuals
+
+*dovecot-2.0_beta6 (15 Jun 2010)
+
+  15 Jun 2010; Patrick Lauer <patrick@gentoo.org> +dovecot-2.0_beta6.ebuild:
+  Bump to beta6, thanks to Eray Aslan. Fixes #323677
 
 *dovecot-2.0_beta5 (19 May 2010)
 

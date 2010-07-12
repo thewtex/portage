@@ -1,6 +1,20 @@
 # ChangeLog for Gentoo/PPC profile directory
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/powerpc/ChangeLog,v 1.67 2010/06/13 20:36:06 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/powerpc/ChangeLog,v 1.72 2010/07/08 17:31:21 pacho Exp $
+
+  08 Jul 2010; Pacho Ramos <pacho@gentoo.org> ppc32/package.use.mask,
+  ppc64/package.use.mask:
+  Use mask iphone gvfs USE flag until bug #325839 is fixed.
+
+  04 Jul 2010; Samuli Suominen <ssuominen@gentoo.org> use.mask:
+  Mask USE="schroedinger" wrt #316553.
+
+  23 Jun 2010; Mark Loeser <halcy0n@gentoo.org> use.mask:
+  All ppc/ppc64 keywords are being dropped from openafs, so mask afs
+
+  21 Jun 2010; Samuli Suominen <ssuominen@gentoo.org>
+  ppc64/package.use.mask:
+  Mask USE="kde" for uim and subversion because of missing stable kdelibs-4.
 
   13 Jun 2010; Pacho Ramos <pacho@gentoo.org> ppc64/package.use.mask:
   Mask media-video/totem youtube and iplayer USEs until bug 323845 and

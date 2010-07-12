@@ -1,6 +1,15 @@
 # ChangeLog for app-emulation/xen-tools
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/xen-tools/ChangeLog,v 1.61 2010/06/09 16:50:18 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/xen-tools/ChangeLog,v 1.63 2010/06/25 16:43:55 xarthisius Exp $
+
+  25 Jun 2010; Kacper Kowalik <xarthisius@gentoo.org>
+  xen-tools-4.0.0.ebuild, -files/xen-tools-4.0.0-as-needed.patch,
+  +files/xen-tools-4.0.0-asneeded.patch:
+  Fixing build with --as-neeed wrt bug 320339. Thanks to Diego for
+  reporting.
+
+  24 Jun 2010; Christoph Mende <angelos@gentoo.org> xen-tools-3.4.2.ebuild:
+  Stable on amd64 wrt bug #293714
 
   09 Jun 2010; Patrick Lauer <patrick@gentoo.org> xen-tools-4.0.0.ebuild:
   Adding iasl dep for hvm useflag. Fixes #318471
@@ -72,14 +81,6 @@
   +files/xen-tools-3.4.0-network-bridge-broadcast.patch:
   Bump to 3.4.0. Closes #271173. Patch and ebuild fixes by Sergey Morozov
 
-*xen-tools-3.3.1-r1 (28 Apr 2009)
-
-  28 Apr 2009; Daniel Robbins <drobbins@funtoo.org> xen-tools-3.3.1-r1: Patch
-  to get rid of python-2.6 deprecation warnings at boot, and new "network-null"
-  script as the default no-op network config to prevent /etc/init.d/xend from
-  clobbering your network configuration by default.  Also some cleanup and
-  simplification in the ebuild (removal of old warnings, etc.)
-
   28 Apr 2009; Patrick Lauer <patrick@gentoo.org>
   +files/xen-tools-3.3.1-sandbox-fix.patch, xen-tools-3.3.1:
   Small sandbox fix, closes 253134. Patch originally from RB.
@@ -95,12 +96,6 @@
   26 Apr 2009; Patrick Lauer <patrick@gentoo.org>
   +files/xen-tools-3.3.0-warning-fix.patch, xen-tools-3.3.0:
   Fix gcc 4.3 compile failure, part of #259670
-
-*xen-tools-3.3.1 (25 Apr 2009)
-
-  25 Apr 2009; Daniel Robbins <drobbins@funtoo.org> +xen-tools-3.3.1.ebuild:
-  New xen-tools-3.3.1.ebuild to address bug #262124. Also fixed bug #253134,
-  bug #236819, and bug #239425.
 
   28 Feb 2009; Markus Meier <maekke@gentoo.org> metadata.xml:
   custom-cflags is a global USE-flag

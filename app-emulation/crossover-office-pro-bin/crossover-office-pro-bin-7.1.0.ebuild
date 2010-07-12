@@ -41,7 +41,6 @@ src_install() {
 	rm -r "${D}"/opt/cxoffice/setup.{sh,data}
 	insinto /opt/cxoffice/etc
 	doins share/crossover/data/cxoffice.conf
-	make_desktop_entry /opt/cxoffice/bin/cxsetup "Crossover Professional Setup" /opt/cxoffice/share/icons/crossover.xpm 'Office;PackageManager'
 }
 
 pkg_postinst() {

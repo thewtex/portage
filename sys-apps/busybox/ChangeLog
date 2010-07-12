@@ -1,10 +1,52 @@
 # ChangeLog for sys-apps/busybox
-# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/busybox/ChangeLog,v 1.236 2009/12/26 17:14:22 vapier Exp $
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/busybox/ChangeLog,v 1.248 2010/07/05 19:26:19 ssuominen Exp $
 
-  29 Dec 2009; Daniel Robbins <drobbins@funtoo.org> +busybox-1.13.4.ebuild:
-  resurrecting busybox-1.13.4 from the dead to address funtoo's masking of
-  1.14+ (which requires linux-headers-2.6.30+)
+  05 Jul 2010; Samuli Suominen <ssuominen@gentoo.org> busybox-1.16.0.ebuild:
+  Remove -mminimal-toc wrt #130943.
+
+  31 Mar 2010; <solar@gentoo.org> busybox-1.14.2.ebuild,
+  busybox-1.15.2.ebuild, busybox-1.15.3.ebuild, busybox-1.16.0.ebuild:
+  - elibc_glibc has to be defined in IUSE= for profiles that are unable to
+  use.force that flag bug #312085
+
+  23 Mar 2010; Brent Baude <ranger@gentoo.org> busybox-1.15.3.ebuild:
+  stable ppc, bug 305619
+
+  15 Mar 2010; <solar@gentoo.org> busybox-1.16.0.ebuild, +files/mdev/dvbdev,
+  +files/mdev/ide_links, +files/mdev/usbdev, +files/mdev/usbdisk_link,
+  metadata.xml:
+  import mdev.conf support scripts from Aline Linux 1.10.0
+
+  14 Mar 2010; Markus Meier <maekke@gentoo.org> busybox-1.15.3.ebuild:
+  amd64 stable, bug #305619
+
+  14 Mar 2010; <solar@gentoo.org> metadata.xml, busybox-1.16.0.ebuild:
+  - also install mdev.conf when USE=mdev is enabled (default)
+
+*busybox-1.16.0 (14 Mar 2010)
+
+  14 Mar 2010; <solar@gentoo.org> +files/busybox-1.16.0-bb.patch,
+  +busybox-1.16.0.ebuild:
+  - Version bump. Convert EAPI=2 and disable pam by default. Add ipv6 to IUSE
+  to disable v6 applets unless requested. 8 new applets otherwise.
+  lspci,lsusb,flashcp,mkfs.reiser,mkfs_ext2,ntpd,traceroute6,tune2fs,wall
+
+  14 Mar 2010; Raúl Porcel <armin76@gentoo.org> busybox-1.15.3.ebuild:
+  alpha/arm/ia64/m68k/s390/sh/sparc stable wrt #305619
+
+  02 Mar 2010; Jeroen Roovers <jer@gentoo.org> busybox-1.15.3.ebuild:
+  Stable for HPPA (bug #305619).
+
+  26 Feb 2010; Brent Baude <ranger@gentoo.org> busybox-1.15.3.ebuild:
+  Marking busybox-1.15.3 ppc64 for bug 305619
+
+  23 Feb 2010; Christian Faulhammer <fauli@gentoo.org>
+  busybox-1.15.3.ebuild:
+  stable x86, bug 305619
+
+  28 Dec 2009; <solar@gentoo.org> busybox-1.15.3.ebuild:
+  Setup mdev symlink by default
 
 *busybox-1.15.3 (26 Dec 2009)
 

@@ -1,6 +1,35 @@
 # ChangeLog for www-plugins/adobe-flash
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-plugins/adobe-flash/ChangeLog,v 1.26 2010/06/13 14:21:48 lack Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-plugins/adobe-flash/ChangeLog,v 1.34 2010/06/28 19:35:40 lack Exp $
+
+  28 Jun 2010; Jim Ramsay <lack@gentoo.org> files/mms.cfg:
+  Fix typo in /etc/adobe/mms.cfg file header
+
+  20 Jun 2010; Tobias Heinlein <keytoaster@gentoo.org>
+  adobe-flash-10.0.45.2.ebuild, adobe-flash-10.0.45.2-r1.ebuild,
+  adobe-flash-10.1.53.64.ebuild:
+  Use proper security terms.
+
+  20 Jun 2010; Markos Chandras <hwoarang@gentoo.org>
+  adobe-flash-10.1.53.64.ebuild:
+  Stable on amd64 wrt bug #322855
+
+  19 Jun 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  adobe-flash-10.1.53.64.ebuild:
+  x86 stable wrt security bug #322855
+
+  18 Jun 2010; Jim Ramsay <lack@gentoo.org> adobe-flash-10.1.53.64.ebuild:
+  Reintroduce ~amd64 for 10.1, but do not automatically invoke
+  nspluginwrapper (Bug #324365)
+
+*adobe-flash-9.0.277.0 (17 Jun 2010)
+
+  17 Jun 2010; Jim Ramsay <lack@gentoo.org> -adobe-flash-9.0.262.0.ebuild,
+  +adobe-flash-9.0.277.0.ebuild:
+  Version 9 was also bumped (Bug #254011)
+
+  16 Jun 2010; Jim Ramsay <lack@gentoo.org> adobe-flash-10.1.53.64.ebuild:
+  New license for version 10.1 (Bug #323837)
 
   13 Jun 2010; Jim Ramsay <lack@gentoo.org> adobe-flash-10.1.53.64.ebuild:
   Updating dependencies to >=app-emulation/emul-linux-x86-baselibs-20100409
@@ -10,12 +39,12 @@
   adobe-flash-10.0.45.2-r1.ebuild, adobe-flash-10.1.53.64.ebuild:
   Major issues for amd64 with nspluginwrapper for 10.1: Removing ~amd64 from
   that version until a better solution presents itself. Note: This means
-  that the 10.0 version for amd64 users has a known security exploit.
+  that the 10.0 version for amd64 users has a known security bug.
 
 *adobe-flash-10.1.53.64 (11 Jun 2010)
 
   11 Jun 2010; Jim Ramsay <lack@gentoo.org> +adobe-flash-10.1.53.64.ebuild:
-  Adobe-flash 10.1.53.64 is released, and fixes security exploit
+  Adobe-flash 10.1.53.64 is released, and fixes security vulnerability
   CVE-2010-1297 (Bug #322855). Unfortunately there is no native 64bit
   version, so amd64 users are going back to a 32bit plugin plus
   nspluginwrapper.

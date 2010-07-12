@@ -23,6 +23,9 @@ IUSE=""
 src_prepare() {
 	vim_src_prepare
 
+	cd "${S}"
+	epatch "${FILESDIR}/vim-${PV}-console-netbeans.patch" || die "console-netbeans patch failed."
+	epatch "${FILESDIR}/vim-${PV}-nbstart-command.patch" || die "nbstart-command patch failed."
 	epatch "${FILESDIR}"/${PN}-7.1.285-darwin-x11link.patch
 	if [[ ${CHOST} == *-interix* ]]; then
 		epatch "${FILESDIR}"/${PN}-7.1-interix-link.patch

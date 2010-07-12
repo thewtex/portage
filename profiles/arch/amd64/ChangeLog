@@ -1,6 +1,27 @@
 # ChangeLog for Gentoo/AMD64 profile directory
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/amd64/ChangeLog,v 1.89 2010/06/13 10:08:49 spatz Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/amd64/ChangeLog,v 1.95 2010/07/05 19:40:46 halcy0n Exp $
+
+  05 Jul 2010; Mark Loeser <halcy0n@gentoo.org> +package.mask:
+  adobe-flash-10.0 has been masked for security reasons, which huludesktop
+  depends upon
+
+  01 Jul 2010; Kacper Kowalik <xarthisius@gentoo.org> package.use.mask:
+  Correct masking sys-cluster/pacemaker[heartbeat]
+
+  01 Jul 2010; Kacper Kowalik <xarthisius@gentoo.org> package.use.mask:
+  Masking sys-cluster/pacemaker[heartbeat]
+
+  27 Jun 2010; Samuli Suominen <ssuominen@gentoo.org> package.use.mask:
+  Unmask USE="mp3" for app-emulation/wine because
+  emul-linux-x86-soundlibs-20100611 is stable and has working libmpg123.so
+  for multilib.
+
+  26 Jun 2010; Nirbheek Chauhan <nirbheek@gentoo.org> package.use.mask:
+  Forgot to unmask icecat too
+
+  26 Jun 2010; Nirbheek Chauhan <nirbheek@gentoo.org> package.use.mask:
+  Unmask USE=ipc for firefox/xulrunner on amd64 due to bug 325185
 
   13 Jun 2010; Dror Levin <spatz@gentoo.org> use.mask:
   Remove vpx USE unmask.

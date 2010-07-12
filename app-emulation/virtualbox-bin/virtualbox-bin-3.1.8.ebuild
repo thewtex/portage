@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/virtualbox-bin/virtualbox-bin-3.1.8.ebuild,v 1.1 2010/05/10 13:21:17 polynomial-c Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/virtualbox-bin/virtualbox-bin-3.1.8.ebuild,v 1.4 2010/06/30 07:21:24 polynomial-c Exp $
 
 EAPI=2
 
@@ -17,10 +17,9 @@ SRC_URI="amd64? ( http://download.virtualbox.org/virtualbox/${PV}/${MY_P}_amd64.
 
 LICENSE="PUEL"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="+additions +chm headless python sdk vboxwebsrv rdesktop-vrdp"
 RESTRICT="mirror"
-PROPERTIES="interactive"
 
 DEPEND="app-arch/unzip"
 
@@ -139,12 +138,6 @@ QA_PRESTRIPPED="opt/VirtualBox/VBoxDD.so
 	opt/VirtualBox/libQtNetworkVBox.so.4
 	opt/VirtualBox/libQtOpenGLVBox.so.4
 	opt/VirtualBox/vboxwebsrv"
-
-pkg_setup() {
-	# We cannot mirror VirtualBox PUEL licensed files see:
-	# http://www.virtualbox.org/wiki/Licensing_FAQ
-	check_license
-}
 
 src_unpack() {
 	unpack_makeself ${MY_P}_${ARCH}.run

@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-power/nut/nut-2.4.3.ebuild,v 1.1 2010/05/02 22:50:51 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-power/nut/nut-2.4.3.ebuild,v 1.3 2010/06/22 20:07:21 arfrever Exp $
 
 EAPI="2"
 
@@ -12,7 +12,7 @@ DESCRIPTION="Network-UPS Tools"
 HOMEPAGE="http://www.networkupstools.org/"
 # Nut mirrors are presently broken
 SRC_URI="http://random.networkupstools.org/source/${PV%.*}/${MY_P}.tar.gz
-         http://www.networkupstools.org/source/${PV%.*}/${MY_P}.tar.gz"
+		 http://www.networkupstools.org/source/${PV%.*}/${MY_P}.tar.gz"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -26,7 +26,7 @@ RDEPEND="cgi? ( >=media-libs/gd-2[png] )
 		usb? ( =virtual/libusb-0* )
 		hal? ( >=sys-apps/hal-0.5.11 )
 		ssl? ( dev-libs/openssl )
-		xml? ( >=net-misc/neon-0.25.0 )
+		xml? ( >=net-libs/neon-0.25.0 )
 		>=sys-fs/udev-114"
 DEPEND="$RDEPEND
 		>=sys-apps/sed-4

@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/afterstep/afterstep-2.2.9.ebuild,v 1.7 2010/04/16 15:33:02 ranger Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/afterstep/afterstep-2.2.9.ebuild,v 1.14 2010/07/04 09:14:04 ssuominen Exp $
 
 EAPI=2
 inherit autotools flag-o-matic eutils
@@ -12,7 +12,7 @@ SRC_URI="ftp://ftp.afterstep.org/stable/AfterStep-${PV}.tar.bz2"
 # libAfterBase/libAfterImage are LGPL
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ppc ~ppc64 ~sparc x86"
+KEYWORDS="alpha amd64 hppa ia64 ~mips ppc ppc64 sparc x86"
 IUSE="alsa debug dbus gif gtk jpeg mmx nls png svg tiff xinerama"
 
 RDEPEND="media-libs/freetype
@@ -43,19 +43,32 @@ DEPEND="${RDEPEND}
 S=${WORKDIR}/AfterStep-${PV}
 
 src_prepare() {
-	epatch "${FILESDIR}"/no-alternatives-${PV}.patch
+	epatch "${FILESDIR}"/no-alternatives-${PV}.patch \
+		"${FILESDIR}"/${P}-make_session_data_file.patch \
+		"${FILESDIR}"/${P}-alpha.patch
 
-	# Do not strip binaries, bug #252119
-	sed -e "/STRIP_BINARIES/s/-s//" \
-		-i autoconf/configure.in || die "strip sed failed"
-	# Do not use bundled libungif, bug #253259
-	sed -e '/--with-builtin-gif/s/$with_gif/no/' \
-		-i autoconf/configure.in || die "bundled gif sed failed"
+	sed -i \
+		-e '/CFLAGS="-O3"/d' \
+		libAfter{Base,Image}/configure || die
 
-	cd "${S}"/autoconf || die "cd autoconf failed"
+	sed -i \
+		-e "/STRIP_BINARIES/s/-s//" \
+		autoconf/configure.in || die #252119
+
+	sed -i \
+		-e '/--with-builtin-gif/s/$with_gif/no/' \
+		autoconf/configure.in || die #253259
+
+	cd "${S}"/autoconf || die
 	eautoreconf
-	cp "${S}"/autoconf/autoconf/config.h.in "${S}"/autoconf || die "cp failed"
-	cp "${S}"/autoconf/configure "${S}" || die "cp failed"
+	cp "${S}"/autoconf/autoconf/config.h.in "${S}"/autoconf || die
+	cp "${S}"/autoconf/configure "${S}" || die
+}
+
+src_compile() {
+	# gcc: ../libAfterConf/libAfterConf.a: No such file or directory
+	# make[1]: *** [PrintDesktopEntries] Error 1
+	emake -j1 || die
 }
 
 src_configure() {

@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/sphinx/sphinx-0.9.9.ebuild,v 1.2 2010/06/07 14:53:54 hwoarang Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/sphinx/sphinx-0.9.9.ebuild,v 1.4 2010/06/20 15:25:25 graaff Exp $
 
 EAPI=2
 inherit eutils autotools
@@ -22,9 +22,12 @@ KEYWORDS="amd64 ~x86"
 IUSE="debug id64 mysql postgres stemmer test"
 
 RDEPEND="mysql? ( virtual/mysql )
-	postgres? ( virtual/postgresql-base )"
+	postgres? ( dev-db/postgresql-base )"
 DEPEND="${RDEPEND}
 	test? ( dev-lang/php )"
+
+# Tests require a live database.
+RESTRICT="test"
 
 S=${WORKDIR}/${MY_P}
 

@@ -1,11 +1,113 @@
 # ChangeLog for app-shells/bash
-# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-shells/bash/ChangeLog,v 1.233 2009/10/25 05:32:54 vapier Exp $
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-shells/bash/ChangeLog,v 1.260 2010/05/20 03:01:41 vapier Exp $
 
-  05 Nov 2009; Daniel Robbins <drobbins@funtoo.org> bash-4.0_p28.ebuild,
-  bash-4.0_p33.ebuild, bash-4.0_p35.ebuild: adding emake -j1 to fix parallel
-  build issues.
- 
+*bash-4.1_p7 (20 May 2010)
+
+  20 May 2010; Mike Frysinger <vapier@gentoo.org> +bash-4.1_p7.ebuild:
+  Version bump #320053 by Lars Wendler.
+
+*bash-3.2_p51 (20 May 2010)
+
+  20 May 2010; Mike Frysinger <vapier@gentoo.org> +bash-3.2_p51.ebuild:
+  Version bump.
+
+  17 Apr 2010; Raúl Porcel <armin76@gentoo.org> bash-4.0_p37.ebuild:
+  alpha stable wrt #310473
+
+*bash-4.1_p5 (07 Apr 2010)
+
+  07 Apr 2010; Mike Frysinger <vapier@gentoo.org> +bash-4.1_p5.ebuild:
+  Version bump #311655 by Lars Wendler.
+
+  05 Apr 2010; Markos Chandras <hwoarang@gentoo.org> bash-4.0_p37.ebuild:
+  Stable on amd64 wrt bug #310473
+
+  29 Mar 2010; Jeroen Roovers <jer@gentoo.org> bash-4.0_p37.ebuild:
+  Stable for HPPA (bug #310473).
+
+  28 Mar 2010; Javier Villavicencio <the_paya@gentoo.org>
+  bash-4.1_p2-r1.ebuild, +files/bash-4.1-fbsd-eaccess.patch:
+  Fix for bug 303411, reported and patched by Johan Hattne
+  <johan.hattne@utsouthwestern.edu>.
+
+  28 Mar 2010; Mike Frysinger <vapier@gentoo.org> bash-4.0_p37.ebuild:
+  Mark arm/ia64/s390/sh stable #310473.
+
+  27 Mar 2010; Tiago Cunha <tcunha@gentoo.org> bash-4.0_p37.ebuild:
+  stable sparc, bug 310473
+
+  23 Mar 2010; Brent Baude <ranger@gentoo.org> bash-4.0_p37.ebuild:
+  stable ppc, bug 310473
+
+*bash-4.1_p2-r1 (23 Mar 2010)
+*bash-4.0_p38 (23 Mar 2010)
+
+  23 Mar 2010; Mike Frysinger <vapier@gentoo.org> +bash-4.0_p38.ebuild,
+  +bash-4.1_p2-r1.ebuild, +files/bash-4.x-deferred-heredocs.patch:
+  Add fix from upstream for `set` heredoc output #310197 by Doktor Notor.
+
+  22 Mar 2010; Christian Faulhammer <fauli@gentoo.org> bash-4.0_p37.ebuild:
+  stable x86, bug 310473
+
+  21 Mar 2010; Brent Baude <ranger@gentoo.org> bash-4.0_p37.ebuild:
+  stable ppc64, bug 310473
+
+  06 Mar 2010; Mike Frysinger <vapier@gentoo.org> bash-4.0_p37.ebuild,
+  +files/bash-4.0-configure.patch:
+  Avoid autotool depends #304901 by Kevin Morgan.
+
+  04 Feb 2010; Mike Frysinger <vapier@gentoo.org> bash-4.1_p2.ebuild:
+  Move USE=bashlogger from custom patch to supported define #303333 by
+  cosmih.
+
+*bash-4.1_p2 (21 Jan 2010)
+*bash-4.0_p37 (21 Jan 2010)
+*bash-3.2_p50 (21 Jan 2010)
+
+  21 Jan 2010; Mike Frysinger <vapier@gentoo.org> +bash-3.2_p50.ebuild,
+  +bash-4.0_p37.ebuild, +bash-4.1_p2.ebuild:
+  Version bumps.
+
+  09 Jan 2010; Mike Frysinger <vapier@gentoo.org>
+  files/bash-4.0-parallel-build.patch, bash-4.1.ebuild,
+  +files/bash-4.1-parallel-build.patch:
+  Fix parallel build in glob dir #300143 by Tiago Pereira.
+
+*bash-4.1 (05 Jan 2010)
+
+  05 Jan 2010; Mike Frysinger <vapier@gentoo.org> +bash-4.1.ebuild:
+  Version bump.
+
+  01 Jan 2010; Tobias Klausmann <klausman@gentoo.org> bash-4.0_p35.ebuild:
+  Stable on alpha, bug #295405
+
+  22 Dec 2009; Mike Frysinger <vapier@gentoo.org> bash-4.0_p35.ebuild:
+  Mark ia64/s390/sh stable.
+
+  08 Dec 2009; nixnut <nixnut@gentoo.org> bash-4.0_p35.ebuild:
+  ppc stable #295405
+
+  08 Dec 2009; Brent Baude <ranger@gentoo.org> bash-4.0_p35.ebuild:
+  Marking bash-4.0_p35 ppc64 for bug 295405
+
+  07 Dec 2009; Markus Meier <maekke@gentoo.org> bash-4.0_p35.ebuild:
+  amd64/arm stable, bug #295405
+
+  04 Dec 2009; Christian Faulhammer <fauli@gentoo.org> bash-4.0_p35.ebuild:
+  stable x86, bug 295405
+
+  03 Dec 2009; Tiago Cunha <tcunha@gentoo.org> bash-4.0_p35.ebuild:
+  stable sparc, bug 295405
+
+  03 Dec 2009; Jeroen Roovers <jer@gentoo.org> bash-4.0_p35.ebuild:
+  Stable for HPPA (bug #295405).
+
+  11 Nov 2009; Mike Frysinger <vapier@gentoo.org> bash-3.1_p17.ebuild,
+  bash-3.2_p39.ebuild, bash-3.2_p48.ebuild, bash-3.2_p48-r1.ebuild,
+  bash-4.0_p28.ebuild, bash-4.0_p33.ebuild, bash-4.0_p35.ebuild:
+  Update HOMEPAGE #292650 by Justin Lecher.
+
 *bash-4.0_p35 (25 Oct 2009)
 
   25 Oct 2009; Mike Frysinger <vapier@gentoo.org> +bash-4.0_p35.ebuild:
@@ -69,10 +171,6 @@
   17 May 2009; Mike Frysinger <vapier@gentoo.org> +bash-4.0_p24.ebuild:
   Version bump #270169 by Lars Wendler and fix parallel build #267613 by
   Peter Alfredsen.
-
-  19 Apr 2009; Daniel Robbins <drobbins@funtoo.org> bash-4.0_p17-r1.ebuild: 
-  disable parallel build. Unfortunately, it doesn't
-  always work. Notes in ebuild as to what triggered the build failure.
 
 *bash-4.0_p17-r1 (14 Apr 2009)
 

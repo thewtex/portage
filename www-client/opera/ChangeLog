@@ -1,6 +1,138 @@
 # ChangeLog for www-client/opera
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/opera/ChangeLog,v 1.487 2010/06/13 16:53:18 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/opera/ChangeLog,v 1.517 2010/07/08 23:46:24 jer Exp $
+
+*opera-10.70_pre6395 (08 Jul 2010)
+
+  08 Jul 2010; Jeroen Roovers <jer@gentoo.org> +opera-10.70_pre6395.ebuild:
+  Move source mangling to src_prepare. Version bump
+  http://my.opera.com/desktopteam/blog/2010/07/08/network-fixes
+
+  08 Jul 2010; Jeroen Roovers <jer@gentoo.org> opera-10.60.ebuild:
+  Stable for PPC (bug #326413).
+
+*opera-10.60-r1 (08 Jul 2010)
+
+  08 Jul 2010; Jeroen Roovers <jer@gentoo.org> +opera-10.60-r1.ebuild:
+  Install libopera(gtk|kde4).so optionally.
+
+  02 Jul 2010; Pacho Ramos <pacho@gentoo.org> opera-10.60.ebuild:
+  stable amd64, security bug 326413
+
+  02 Jul 2010; Jeroen Roovers <jer@gentoo.org> opera-10.60.ebuild:
+  Remove libpng dependency thanks to ssuominen (bug #326583).
+
+  02 Jul 2010; Jeroen Roovers <jer@gentoo.org> opera-10.60.ebuild:
+  The GTK+ interface needs libpng-1.4, not any libpng.
+
+  02 Jul 2010; Jeroen Roovers <jer@gentoo.org> opera-10.60.ebuild:
+  Fix libpng dependency wrt desktop environment.
+
+  01 Jul 2010; Jeroen Roovers <jer@gentoo.org> opera-10.60.ebuild:
+  Make gstreamer support optional but preferred.
+
+  01 Jul 2010; Christian Faulhammer <fauli@gentoo.org> opera-10.60.ebuild:
+  stable x86, security bug 326413
+
+*opera-10.60 (01 Jul 2010)
+
+  01 Jul 2010; Jeroen Roovers <jer@gentoo.org> -opera-10.60_pre6386.ebuild,
+  +opera-10.60.ebuild:
+  http://my.opera.com/desktopteam/blog/2010/07/01/opera-10-60-goes-final
+
+*opera-10.60_pre6386 (30 Jun 2010)
+
+  30 Jun 2010; Jeroen Roovers <jer@gentoo.org> +opera-10.60_pre6386.ebuild:
+  <http://my.opera.com/desktopteam/blog/2010/06/30/opera-10-60-rc3>
+
+*opera-10.60_pre6385 (30 Jun 2010)
+
+  30 Jun 2010; Jeroen Roovers <jer@gentoo.org> +opera-10.60_pre6385.ebuild:
+  <http://my.opera.com/desktopteam/blog/opera-10-60-rc2>.
+
+  29 Jun 2010; Jeroen Roovers <jer@gentoo.org> opera-10.11.ebuild:
+  But only whe USE=qt-static thanks to Rafał Mużyło (bug #325569).
+
+  29 Jun 2010; Jeroen Roovers <jer@gentoo.org> opera-10.11.ebuild:
+  Specifically use =media-libs/libpng-1.2* (bug #325569).
+
+  29 Jun 2010; Jeroen Roovers <jer@gentoo.org> opera-10.11.ebuild:
+  Add media-libs/libpng dependency thanks to Karl-Johan Karlsson (bug
+  #325569).
+
+*opera-10.60_pre6384 (28 Jun 2010)
+
+  28 Jun 2010; Jeroen Roovers <jer@gentoo.org> -opera-10.60_pre6380.ebuild,
+  -opera-10.60_pre6382.ebuild, -opera-10.60_pre6383.ebuild,
+  +opera-10.60_pre6384.ebuild:
+  <http://my.opera.com/desktopteam/blog/2010/06/28/opera-10-60-rc1>.
+
+*opera-10.60_pre6382 (26 Jun 2010)
+
+  26 Jun 2010; Jeroen Roovers <jer@gentoo.org> +opera-10.60_pre6382.ebuild:
+  <http://my.opera.com/desktopteam/blog/2010/06/25/stability-font-work-and-g
+  eolocation-for-linux>
+
+*opera-10.60_pre6383 (26 Jun 2010)
+
+  26 Jun 2010; Jeroen Roovers <jer@gentoo.org> +opera-10.60_pre6383.ebuild:
+  <http://my.opera.com/desktopteam/blog/2010/06/25/unix-fixes-stabillity-and
+  -more-approaching-10-60-final>.
+
+*opera-10.60_pre6380 (24 Jun 2010)
+
+  24 Jun 2010; Jeroen Roovers <jer@gentoo.org> -opera-10.10.ebuild,
+  +opera-10.60_pre6380.ebuild:
+  <http://my.opera.com/desktopteam/blog/2010/06/24/more-stability-work>.
+
+*opera-10.60_pre6379 (23 Jun 2010)
+
+  23 Jun 2010; Jeroen Roovers <jer@gentoo.org> +opera-10.60_pre6379.ebuild:
+  <http://my.opera.com/desktopteam/blog/2010/06/23/stability-work>.
+
+  23 Jun 2010; Christoph Mende <angelos@gentoo.org> opera-10.11.ebuild:
+  Stable on amd64 wrt bug #325199
+
+  23 Jun 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> opera-10.11.ebuild:
+  x86 stable wrt security bug #325199
+
+*opera-10.11 (23 Jun 2010)
+
+  23 Jun 2010; Jeroen Roovers <jer@gentoo.org> -opera-10.10-r1.ebuild,
+  +opera-10.11.ebuild:
+  <http://www.opera.com/support/kb/view/955/>.
+
+*opera-10.60_pre6378 (22 Jun 2010)
+
+  22 Jun 2010; Jeroen Roovers <jer@gentoo.org> +opera-10.60_pre6378.ebuild:
+  <http://my.opera.com/desktopteam/blog/2010/06/22/nix-fixes-and-more>.
+
+*opera-10.60_pre6374 (19 Jun 2010)
+
+  19 Jun 2010; Jeroen Roovers <jer@gentoo.org> +opera-10.60_pre6374.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2010/06/18/weekend-fixes>.
+
+*opera-10.60_pre6372 (17 Jun 2010)
+
+  17 Jun 2010; Jeroen Roovers <jer@gentoo.org> +opera-10.60_pre6372.ebuild:
+  Version bump <http://my.opera.com/desktopteam/blog/2010/06/17/core-fixes>.
+
+  16 Jun 2010; Jeroen Roovers <jer@gentoo.org> opera-10.60_pre6368.ebuild:
+  The beta release candidate went beta
+  <http://my.opera.com/desktopteam/blog/2010/06/16/opera-10-6-beta-released>.
+
+*opera-10.60_pre6368 (15 Jun 2010)
+
+  15 Jun 2010; Jeroen Roovers <jer@gentoo.org> +opera-10.60_pre6368.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2010/06/15/10-60-beta-rc>.
+
+*opera-10.60_pre6363 (14 Jun 2010)
+
+  14 Jun 2010; Jeroen Roovers <jer@gentoo.org> +opera-10.60_pre6363.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2010/06/14/html5-and-then-some>.
 
   13 Jun 2010; Jeroen Roovers <jer@gentoo.org> opera-10.60_pre6355.ebuild:
   Fix SRC_URI thanks to jmrk_.

@@ -1,6 +1,6 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/pdftk/pdftk-1.41-r1.ebuild,v 1.5 2009/11/14 16:30:01 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/pdftk/pdftk-1.41-r1.ebuild,v 1.7 2010/07/09 09:25:37 ssuominen Exp $
 
 EAPI="2"
 
@@ -11,8 +11,8 @@ HOMEPAGE="http://www.pdfhacks.com/pdftk"
 SRC_URI="http://www.pdfhacks.com/pdftk/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc ~ppc64 x86"
-IUSE=""
+KEYWORDS="amd64 ppc x86"
+IUSE="nodrm"
 DEPEND=">=sys-devel/gcc-4.3.1[gcj]"
 
 S="${WORKDIR}/${P}/${PN}"
@@ -28,6 +28,10 @@ src_unpack() {
 	epatch "${FILESDIR}/${P}-honor-ldflags.patch"
 	# force usage of custom CFLAGS.
 	sed -iorig 's:-O2:\$(CFLAGS):g' "${S}"/Makefile.Generic
+	# nodrm patch, bug 296455
+	if use nodrm; then
+		sed -i 's:passwordIsOwner= false:passwordIsOwner= true:' "${WORKDIR}/${P}"/java_libs/com/lowagie/text/pdf/PdfReader.java || die
+	fi
 }
 
 src_compile() {

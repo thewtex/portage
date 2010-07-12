@@ -1,6 +1,32 @@
 # ChangeLog for dev-util/nvidia-cuda-toolkit
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/nvidia-cuda-toolkit/ChangeLog,v 1.24 2010/05/23 20:11:21 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/nvidia-cuda-toolkit/ChangeLog,v 1.29 2010/07/05 12:55:49 spock Exp $
+
+  05 Jul 2010; Michał Januszewski <spock@gentoo.org>
+  nvidia-cuda-toolkit-3.0.ebuild, nvidia-cuda-toolkit-3.1.ebuild:
+  Add env-update calls so that the CUDA libraries are picked up by other
+  ebuilds and apps (bug #320853).
+
+*nvidia-cuda-toolkit-3.1 (03 Jul 2010)
+
+  03 Jul 2010; Michał Januszewski <spock@gentoo.org>
+  +nvidia-cuda-toolkit-3.1.ebuild,
+  +files/nvidia-cuda-toolkit-3.1-enum_fix.patch:
+  Version bump (bug #325831). Thanks to Clemens Rabe for the updated ebuild.
+
+  24 Jun 2010; Michał Januszewski <spock@gentoo.org>
+  nvidia-cuda-toolkit-3.0.ebuild:
+  Add desktop entries for cudaprof and openclprof (no icons so far, as
+  NVIDIA does not provide any) (bug #323995).
+
+  24 Jun 2010; Michał Januszewski <spock@gentoo.org>
+  -nvidia-cuda-toolkit-2.0.ebuild, -nvidia-cuda-toolkit-2.1.ebuild,
+  -nvidia-cuda-toolkit-2.2-r2.ebuild:
+  Remove old ebuilds.
+
+  24 Jun 2010; Michał Januszewski <spock@gentoo.org>
+  nvidia-cuda-toolkit-3.0.ebuild:
+  Add a missing dependency on libpng-1.2 (bug #323985).
 
   23 May 2010; Pacho Ramos <pacho@gentoo.org>
   nvidia-cuda-toolkit-2.3.ebuild:

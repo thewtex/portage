@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/gnome-disk-utility/gnome-disk-utility-2.30.1.ebuild,v 1.1 2010/06/13 17:04:56 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/gnome-disk-utility/gnome-disk-utility-2.30.1.ebuild,v 1.3 2010/07/06 13:27:36 ssuominen Exp $
 
 EAPI="2"
 GCONF_DEBUG="no"
@@ -13,7 +13,7 @@ SRC_URI="http://hal.freedesktop.org/releases/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~sh ~x86"
+KEYWORDS="~amd64 ~arm ~ppc64 ~sh ~x86"
 IUSE="avahi doc fat +nautilus remote-access"
 
 RDEPEND="
@@ -52,6 +52,10 @@ src_prepare() {
 		$(use_enable remote-access)"
 
 	epatch "${FILESDIR}/${P}-optional-avahi.patch"
+
+	# Drop encoding from POTFILES.skip, see bug #313351
+	epatch "${FILESDIR}/${PN}-2.28.1-fix-potfiles_skip.patch"
+
 	eautoreconf
 }
 

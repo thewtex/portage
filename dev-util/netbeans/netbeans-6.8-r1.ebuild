@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/netbeans/netbeans-6.8-r1.ebuild,v 1.3 2010/03/09 11:53:54 abcd Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/netbeans/netbeans-6.8-r1.ebuild,v 1.6 2010/07/07 20:01:01 fauli Exp $
 
 EAPI="2"
 WANT_SPLIT_ANT="true"
@@ -14,7 +14,7 @@ SRC_URI="http://download.netbeans.org/netbeans/6.8/final/zip/netbeans-6.8-200912
 	mirror://gentoo/netbeans-6.8-l10n-20091209164706.tar.bz2"
 
 LICENSE="|| ( CDDL GPL-2-with-linking-exception )"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 IUSE_NETBEANS_MODULES="
 	+netbeans_modules_apisupport
@@ -107,7 +107,7 @@ RDEPEND=">=virtual/jdk-1.5
 		dev-java/sun-jaf:0
 		~dev-java/tomcat-servlet-api-3:2.2
 		>=dev-java/xerces-2.8.1:2
-		>=dev-util/subversion-1.6:0[java]
+		>=dev-vcs/subversion-1.6:0[java]
 	)
 	netbeans_modules_java? (
 		>=dev-java/ant-1.7:0
@@ -200,7 +200,7 @@ DEPEND=">=virtual/jdk-1.5
 		dev-java/sun-jaf:0
 		~dev-java/tomcat-servlet-api-3:2.2
 		>=dev-java/xerces-2.8.1:2
-		>=dev-util/subversion-1.6:0[java]
+		>=dev-vcs/subversion-1.6:0[java]
 	)
 	netbeans_modules_java? (
 		>=dev-java/appframework-1.03:0

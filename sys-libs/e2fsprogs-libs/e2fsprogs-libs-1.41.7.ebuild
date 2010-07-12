@@ -1,6 +1,6 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/e2fsprogs-libs/e2fsprogs-libs-1.41.7.ebuild,v 1.1 2009/07/01 14:40:50 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/e2fsprogs-libs/e2fsprogs-libs-1.41.7.ebuild,v 1.3 2010/03/31 17:59:11 solar Exp $
 
 EAPI="2"
 
@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/e2fsprogs/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd"
-IUSE="nls"
+IUSE="nls elibc_glibc"
 
 RDEPEND="elibc_glibc? ( >=sys-libs/glibc-2.6 )
 	!sys-libs/com_err
@@ -40,7 +40,7 @@ src_configure() {
 	ac_cv_path_LDCONFIG=: \
 	econf \
 		--enable-${libtype}-shlibs \
-		$(use_enable !elibc_uclibc tls) \
+		$(tc-has-tls || echo --disable-tls) \
 		$(use_enable nls)
 }
 

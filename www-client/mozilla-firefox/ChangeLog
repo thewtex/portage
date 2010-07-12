@@ -1,6 +1,43 @@
 # ChangeLog for www-client/mozilla-firefox
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/mozilla-firefox/ChangeLog,v 1.614 2010/05/31 19:25:45 josejx Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/mozilla-firefox/ChangeLog,v 1.623 2010/07/08 20:13:13 ranger Exp $
+
+  08 Jul 2010; Brent Baude <ranger@gentoo.org> mozilla-firefox-3.6.4.ebuild:
+  Marking mozilla-firefox-3.6.4 ppc64 and ppc for bug 324735
+
+*mozilla-firefox-3.6.6 (27 Jun 2010)
+
+  27 Jun 2010; Lars Wendler <polynomial-c@gentoo.org>
+  +mozilla-firefox-3.6.6.ebuild:
+  Version bump. Thanks to tman who reported this in bug #325817.
+
+  25 Jun 2010; Raúl Porcel <armin76@gentoo.org>
+  mozilla-firefox-3.6.4.ebuild:
+  alpha/arm/ia64/sparc stable wrt #324735
+
+  24 Jun 2010; Christoph Mende <angelos@gentoo.org>
+  mozilla-firefox-3.6.4.ebuild:
+  Stable on amd64 wrt bug #324735
+
+  23 Jun 2010; Christian Faulhammer <fauli@gentoo.org>
+  mozilla-firefox-3.6.4.ebuild:
+  stable x86, bug 324735
+
+  23 Jun 2010; Nirbheek Chauhan <nirbheek@gentoo.org>
+  mozilla-firefox-3.6.4.ebuild,
+  +files/137-bz460917_reload_new_plugins-gentoo-update-3.6.4.patch:
+  Fix patch that was failing, thanks to galtgendo for reporting
+
+*mozilla-firefox-3.6.4 (22 Jun 2010)
+
+  22 Jun 2010; Nirbheek Chauhan <nirbheek@gentoo.org>
+  +mozilla-firefox-3.6.4.ebuild, metadata.xml:
+  Bump to 3.6.4, fixes several security issues, stability issues, and adds
+  support for out-of-process plugins (USE=+ipc)
+
+  19 Jun 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  mozilla-firefox-3.6.3.ebuild:
+  Use Python 2 (bug #321669).
 
   31 May 2010; Joseph Jezak <josejx@gentoo.org>
   mozilla-firefox-3.6.3.ebuild:

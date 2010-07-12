@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/virtualbox-bin/virtualbox-bin-3.2.4-r1.ebuild,v 1.1 2010/06/08 15:00:07 polynomial-c Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/virtualbox-bin/virtualbox-bin-3.2.4-r1.ebuild,v 1.6 2010/07/06 14:41:06 polynomial-c Exp $
 
 EAPI=2
 
@@ -20,7 +20,6 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+additions +chm headless python sdk vboxwebsrv rdesktop-vrdp"
 RESTRICT="mirror"
-PROPERTIES="interactive"
 
 DEPEND="app-arch/unzip"
 
@@ -51,21 +50,29 @@ RDEPEND="!!app-emulation/virtualbox-ose
 	x11-libs/libSM
 	x11-libs/libICE
 	x11-libs/libXdmcp
-	python? ( dev-lang/python )"
+	python? ( || (
+			dev-lang/python:2.6
+			dev-lang/python:2.5
+			dev-lang/python:2.4
+		 ) )"
 
 S=${WORKDIR}
 
 QA_TEXTRELS_amd64="opt/VirtualBox/VBoxVMM.so"
 QA_TEXTRELS_x86="opt/VirtualBox/VBoxGuestPropSvc.so
 	opt/VirtualBox/VBoxSDL.so
-	opt/VirtualBox/VBoxPython2_4.so
-	opt/VirtualBox/VBoxPython2_6.so
 	opt/VirtualBox/VBoxDbg.so
 	opt/VirtualBox/VBoxSharedFolders.so
 	opt/VirtualBox/VBoxDD2.so
 	opt/VirtualBox/VBoxOGLrenderspu.so
 	opt/VirtualBox/VBoxPython.so
 	opt/VirtualBox/VBoxPython2_3.so
+	opt/VirtualBox/VBoxPython2_4.so
+	opt/VirtualBox/VBoxPython2_5.so
+	opt/VirtualBox/VBoxPython2_6.so
+	opt/VirtualBox/VBoxPython2_7.so
+	opt/VirtualBox/VBoxPython3_0.so
+	opt/VirtualBox/VBoxPython3_1.so
 	opt/VirtualBox/VBoxDD.so
 	opt/VirtualBox/VBoxVRDP.so
 	opt/VirtualBox/VBoxDDU.so
@@ -110,6 +117,9 @@ QA_PRESTRIPPED="opt/VirtualBox/VBoxDD.so
 	opt/VirtualBox/VBoxPython2_4.so
 	opt/VirtualBox/VBoxPython2_5.so
 	opt/VirtualBox/VBoxPython2_6.so
+	opt/VirtualBox/VBoxPython2_7.so
+	opt/VirtualBox/VBoxPython3_0.so
+	opt/VirtualBox/VBoxPython3_1.so
 	opt/VirtualBox/VBoxREM.so
 	opt/VirtualBox/VBoxREM32.so
 	opt/VirtualBox/VBoxREM64.so
@@ -141,12 +151,6 @@ QA_PRESTRIPPED="opt/VirtualBox/VBoxDD.so
 	opt/VirtualBox/libQtNetworkVBox.so.4
 	opt/VirtualBox/libQtOpenGLVBox.so.4
 	opt/VirtualBox/vboxwebsrv"
-
-pkg_setup() {
-	# We cannot mirror VirtualBox PUEL licensed files see:
-	# http://www.virtualbox.org/wiki/Licensing_FAQ
-	check_license
-}
 
 src_unpack() {
 	unpack_makeself ${MY_P}_${ARCH}.run
@@ -202,17 +206,12 @@ src_install() {
 	fi
 
 	if use python; then
-		if has_version "=dev-lang/python-2.4*"; then
-			doins VBoxPython2_4.so || die
-		fi
-
-		if has_version "=dev-lang/python-2.5*"; then
-			doins VBoxPython2_5.so || die
-		fi
-
-		if has_version "=dev-lang/python-2.6*"; then
-			doins VBoxPython2_6.so || die
-		fi
+		local pyver
+		for pyver in 2.4 2.5 2.6 2.7 3.0 3.1 ; do
+			if has_version "=dev-lang/python-${pyver}*" && [[ -f ${S}/VBoxPython${pyver/./_}.so ]] ; then
+				doins VBoxPython${pyver/./_}.so || die
+			fi
+		done
 	fi
 
 	rm -rf src rdesktop* deffiles install* routines.sh runlevel.sh \
@@ -220,7 +219,7 @@ src_install() {
 		VirtualBox.tar.bz2 LICENSE VBoxSysInfo.sh rdesktop* vboxwebsrv \
 		webtest kchmviewer VirtualBox.chm vbox-create-usb-node.sh \
 		90-vbox-usb.fdi uninstall.sh vboxshell.py vboxdrv-pardus.py \
-		VBoxPython2_*.so
+		VBoxPython?_*.so
 
 	if use headless ; then
 		rm -rf VBoxSDL VirtualBox VBoxKeyboard.so

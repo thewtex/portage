@@ -1,6 +1,33 @@
 # ChangeLog for dev-lang/php
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/php/ChangeLog,v 1.384 2010/06/12 22:05:54 mabi Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/php/ChangeLog,v 1.391 2010/07/08 22:39:52 mabi Exp $
+
+  08 Jul 2010; Matti Bickel <mabi@gentoo.org>
+  files/eblits/pkg_setup-v1.eblit, php-5.3.2.ebuild:
+  can not have use-deps on old style virtuals
+
+  05 Jul 2010; Matti Bickel <mabi@gentoo.org>
+  files/eblits/src_configure-v1.eblit:
+  fix compilation on x64 systems (bug #327025)
+
+  05 Jul 2010; Matti Bickel <mabi@gentoo.org> php-5.2.13.ebuild:
+  introduced new style virtual httpd-php (bug #319623)
+
+  05 Jul 2010; Matti Bickel <mabi@gentoo.org> -php-5.2.9-r2.ebuild,
+  -php-5.2.10.ebuild, -php-5.2.10-r1.ebuild, -php-5.2.10-r2.ebuild,
+  -php-5.2.11.ebuild, -php-5.2.11-r1.ebuild, -php-5.2.12.ebuild:
+  remove old
+
+  05 Jul 2010; Matti Bickel <mabi@gentoo.org> php-5.3.2.ebuild:
+  introduced new style virtual httpd-php (bug #319623)
+
+  04 Jul 2010; Matti Bickel <mabi@gentoo.org> php-5.3.2.ebuild:
+  include patch to compile with gmp-5* (bug #322303)
+
+  14 Jun 2010; <mabi@gentoo.org> files/eblits/src_install-v1.eblit,
+  php-5.3.2.ebuild:
+  sync with overlay: repair apache2 USE dep, cli SAPI on by default (bug
+  #310383), show all SAPIs in php-config (bug #278439)
 
   12 Jun 2010; <mabi@gentoo.org> php-5.3.2.ebuild, metadata.xml:
   USE="mbstring" already covered by USE="unicode"; set USE-defaults to match

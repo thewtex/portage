@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-mta/exim/exim-4.72.ebuild,v 1.4 2010/06/13 14:02:23 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-mta/exim/exim-4.72.ebuild,v 1.7 2010/07/08 20:22:15 ranger Exp $
 
 EAPI="3"
 
@@ -19,7 +19,7 @@ HOMEPAGE="http://www.exim.org/"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="alpha ~amd64 hppa ia64 ~ppc ~ppc64 sparc x86"
+KEYWORDS="alpha amd64 hppa ia64 ~ppc ppc64 sparc x86"
 
 PROVIDE="virtual/mta"
 
@@ -34,7 +34,7 @@ DEPEND=">=sys-apps/sed-4.0.5
 			  dev-libs/libtasn1 )
 	ldap? ( >=net-nds/openldap-2.0.7 )
 	mysql? ( virtual/mysql )
-	postgres? ( virtual/postgresql-base )
+	postgres? ( dev-db/postgresql-base )
 	sasl? ( >=dev-libs/cyrus-sasl-2.1.14 )
 	spf? ( >=mail-filter/libspf2-1.2.5-r1 )
 	srs? ( mail-filter/libsrs_alt )

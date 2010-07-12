@@ -1,6 +1,25 @@
 # ChangeLog for dev-lang/erlang
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/erlang/ChangeLog,v 1.190 2010/05/21 16:09:17 pva Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/erlang/ChangeLog,v 1.195 2010/07/03 07:02:42 fauli Exp $
+
+  03 Jul 2010; Christian Faulhammer <fauli@gentoo.org> erlang-14.1.ebuild:
+  add comment about upstreamed patch
+
+  30 Jun 2010; Samuli Suominen <ssuominen@gentoo.org> erlang-14.1.ebuild,
+  +files/erlang-14.1-lm.patch:
+  Fix building with -Wl,--as-needed wrt #325969 by Christian Faulhammer.
+
+*erlang-14.1 (28 Jun 2010)
+
+  28 Jun 2010; Christian Faulhammer <fauli@gentoo.org> +erlang-14.1.ebuild:
+  Beta version bump for bug 325073, still has --as-needed issues
+
+  27 Jun 2010; Christian Faulhammer <fauli@gentoo.org>
+  -erlang-13.2.2.ebuild, -erlang-13.2.3.ebuild:
+  clean up
+
+  26 Jun 2010; <nixnut@gentoo.org> erlang-13.2.4.ebuild:
+  ppc stable #313849
 
   21 May 2010; Peter Volkov <pva@gentoo.org> erlang-13.2.4.ebuild:
   amd64 stable, bug 313849

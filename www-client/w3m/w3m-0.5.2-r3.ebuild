@@ -57,9 +57,6 @@ src_compile() {
 		migemo_command="no"
 	fi
 
-	# http://wiki.linuxfromscratch.org/blfs/wiki/W3M
-	epatch "${FILESDIR}/${P}-gpm_wgetch_fix.patch"
-
 	# emacs-w3m doesn't like "--enable-m17n --disable-unicode,"
 	# so we better enable or disable both. Default to enable
 	# m17n and unicode, see bug #47046.

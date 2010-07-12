@@ -1,6 +1,36 @@
 # ChangeLog for app-emulation/virtualbox-bin
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/virtualbox-bin/ChangeLog,v 1.82 2010/06/08 15:00:07 polynomial-c Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/virtualbox-bin/ChangeLog,v 1.88 2010/07/06 13:47:09 polynomial-c Exp $
+
+  06 Jul 2010; Lars Wendler <polynomial-c@gentoo.org>
+  virtualbox-bin-3.2.4-r1.ebuild, virtualbox-bin-3.2.6.ebuild:
+  Simplified installation of VBoxPython.so files.
+
+  30 Jun 2010; Lars Wendler <polynomial-c@gentoo.org>
+  virtualbox-bin-3.1.8.ebuild, virtualbox-bin-3.2.4-r1.ebuild,
+  virtualbox-bin-3.2.6.ebuild:
+  Removed license check.
+
+  29 Jun 2010; Lars Wendler <polynomial-c@gentoo.org>
+  virtualbox-bin-3.2.6.ebuild:
+  Made the python dependency vice versa so that the 2.6 slot comes first.
+  Thanks to lxnay who reported that in IRC.
+
+  27 Jun 2010; Lars Wendler <polynomial-c@gentoo.org>
+  virtualbox-bin-3.2.6.ebuild:
+  Fixed python dependencies. Thanks to jlec who reported the issue in IRC.
+
+*virtualbox-bin-3.2.6 (27 Jun 2010)
+
+  27 Jun 2010; Lars Wendler <polynomial-c@gentoo.org>
+  +files/virtualbox-bin-2.desktop, -virtualbox-bin-3.2.2.ebuild,
+  +virtualbox-bin-3.2.6.ebuild:
+  Version bump. Removed old. Thanks to tman who reported this in bug
+  #325799.
+
+  21 Jun 2010; Christoph Mende <angelos@gentoo.org>
+  virtualbox-bin-3.1.8.ebuild:
+  Stable on amd64 wrt bug #320595
 
 *virtualbox-bin-3.2.4-r1 (08 Jun 2010)
 

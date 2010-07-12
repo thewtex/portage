@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-misc/gato/gato-0.99c.ebuild,v 1.6 2010/06/04 16:26:09 arfrever Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-misc/gato/gato-0.99c.ebuild,v 1.8 2010/06/24 12:52:40 jlec Exp $
 
 EAPI="3"
 PYTHON_DEPEND="2"
@@ -18,11 +18,8 @@ SRC_URI="http://gato.sourceforge.net/Download/${MY_PN}-${MY_PV}.tar.gz
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~amd64"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="doc"
-
-DEPEND=""
-RDEPEND=""
 
 S="${WORKDIR}/${MY_PN}"
 
@@ -32,8 +29,6 @@ pkg_setup() {
 }
 
 src_prepare() {
-	# convert to python >=2.4
-	epatch "${FILESDIR}"/${P}-python.patch
 	# change TKinter call to avoid crashing of X
 	sed -i \
 		-e 's:self.overrideredirect(1):self.overrideredirect(0):' \
@@ -49,9 +44,8 @@ src_install() {
 	python_convert_shebangs -r 2 "${ED}"
 
 	# create symlinks
-	dodir /usr/bin
-	dosym ${instdir}/Gato.py /usr/bin/gato
-	dosym ${instdir}/Gred.py /usr/bin/gred
+	dosym ${instdir}/Gato.py /usr/bin/gato || die
+	dosym ${instdir}/Gred.py /usr/bin/gred || die
 
 	# install data files
 	insinto /usr/share/${PN}
@@ -61,9 +55,9 @@ src_install() {
 }
 
 pkg_postinst() {
-	python_mod_optimize gato
+	python_mod_optimize ${PN}
 }
 
 pkg_postrm() {
-	python_mod_cleanup gato
+	python_mod_cleanup ${PN}
 }

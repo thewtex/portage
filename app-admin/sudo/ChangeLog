@@ -1,6 +1,44 @@
 # ChangeLog for app-admin/sudo
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/sudo/ChangeLog,v 1.225 2010/06/07 04:59:49 josejx Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/sudo/ChangeLog,v 1.232 2010/06/30 23:23:21 flameeyes Exp $
+
+*sudo-1.7.3 (30 Jun 2010)
+
+  30 Jun 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  -sudo-1.7.3_rc1.ebuild, +sudo-1.7.3.ebuild:
+  Version bump to 1.7.3 final.
+
+*sudo-1.7.3_rc1 (29 Jun 2010)
+
+  29 Jun 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  -sudo-1.7.3_beta4.ebuild, +sudo-1.7.3_rc1.ebuild:
+  Bump to release candidate (and unmask).
+
+  25 Jun 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  -sudo-1.7.2_p2-r1.ebuild:
+  Remove the old vulnerable ebuild.
+
+  25 Jun 2010; Peter Volkov <pva@gentoo.org> sudo-1.7.2_p7.ebuild,
+  sudo-1.7.3_beta4.ebuild:
+  ~mips keyworded, bug #293985
+
+  25 Jun 2010; Alexis Ballier <aballier@gentoo.org> sudo-1.7.2_p7.ebuild,
+  sudo-1.7.3_beta4.ebuild:
+  keyword ~sparc-fbsd, bug #293985
+
+*sudo-1.7.3_beta4 (24 Jun 2010)
+
+  24 Jun 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  sudo-1.7.2_p2-r1.ebuild, -files/sudo-1.7.2p1-securepath.patch,
+  -sudo-1.7.3_beta3.ebuild, +sudo-1.7.3_beta4.ebuild:
+  Update to latest beta; drop all keywords but the two that haven't updated
+  from the (very) old and unsafe sudo version. Remove a stray file.
+
+*sudo-1.7.3_beta3 (15 Jun 2010)
+
+  15 Jun 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  -sudo-1.7.2_p6.ebuild, +sudo-1.7.3_beta3.ebuild:
+  Add the new beta that should now be fine wrt security issues.
 
   07 Jun 2010; Joseph Jezak <josejx@gentoo.org> sudo-1.7.2_p7.ebuild:
   Marked ppc/ppc64 for bug #322517.

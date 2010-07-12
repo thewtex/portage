@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nagios-plugins/nagios-plugins-1.4.14.ebuild,v 1.8 2010/01/31 17:40:26 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nagios-plugins/nagios-plugins-1.4.14.ebuild,v 1.10 2010/06/25 10:34:19 hwoarang Exp $
 
 EAPI=1
 
@@ -18,7 +18,7 @@ nagios-ssh nagios-game ups ipv6 radius +suid"
 
 DEPEND="ldap? ( >=net-nds/openldap-2.0.25 )
 	mysql? ( virtual/mysql )
-	postgres? ( >=virtual/postgresql-base-7.2 )
+	postgres? ( dev-db/postgresql-base )
 	ssl? ( >=dev-libs/openssl-0.9.6g )
 	radius? ( >=net-dialup/radiusclient-0.3.2 )"
 
@@ -52,7 +52,7 @@ src_unpack() {
 		EPATCH_OPTS="-p1 -d ${S}" epatch \
 		"${FILESDIR}"/nagios-plugins-1.4.10-noradius.patch
 	fi
-
+	epatch "${FILESDIR}"/${P}-implicit-pointer-conversion.patch
 	epatch "${FILESDIR}"/${PN}-1.4.10-contrib.patch
 	epatch "${FILESDIR}"/${PN}-1.4.12-pgsqlconfigure.patch
 

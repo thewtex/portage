@@ -1,6 +1,57 @@
 # ChangeLog for mail-client/thunderbird
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/thunderbird/ChangeLog,v 1.2 2010/06/13 03:05:10 darkside Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-client/thunderbird/ChangeLog,v 1.13 2010/07/08 20:10:23 ranger Exp $
+
+  08 Jul 2010; Brent Baude <ranger@gentoo.org> thunderbird-3.0.5.ebuild:
+  Marking thunderbird-3.0.5 ppc64 and ppc for bug 324735
+
+  26 Jun 2010; <anarchy@gentoo.org> thunderbird-3.0.5.ebuild,
+  thunderbird-3.1.ebuild:
+  Fix langs variable in 3.1/3.0.5 bug #325769
+
+  26 Jun 2010; Samuli Suominen <ssuominen@gentoo.org>
+  thunderbird-3.1.ebuild, +files/thunderbird-3.1-gcc45.patch:
+  Fix buffer overflow with GCC 4.5 and _U_FORTIFY_SOURCE=2 wrt #324863 by
+  Harald van Dijk.
+
+*thunderbird-3.1 (26 Jun 2010)
+
+  26 Jun 2010; Nirbheek Chauhan <nirbheek@gentoo.org>
+  -thunderbird-3.1_rc2-r1.ebuild, +thunderbird-3.1.ebuild:
+  Bump 3.1rc2 -> 3.1, no source code changes
+
+  25 Jun 2010; Raúl Porcel <armin76@gentoo.org> thunderbird-3.0.5.ebuild:
+  alpha/ia64/sparc stable wrt #324735
+
+  24 Jun 2010; Christoph Mende <angelos@gentoo.org>
+  thunderbird-3.0.5.ebuild:
+  Stable on amd64 wrt bug #324735
+
+  23 Jun 2010; Christian Faulhammer <fauli@gentoo.org>
+  thunderbird-3.0.5.ebuild:
+  stable x86, bug 324735
+
+  21 Jun 2010; Samuli Suominen <ssuominen@gentoo.org>
+  thunderbird-3.0.5.ebuild, thunderbird-3.1_rc2-r1.ebuild:
+  Restrict media-libs/lcms depend to old version.
+
+*thunderbird-3.1_rc2-r1 (18 Jun 2010)
+
+  18 Jun 2010; <anarchy@gentoo.org>
+  +files/thunderbird-gentoo-default-prefs-1.js,
+  +thunderbird-3.1_rc2-r1.ebuild, +files/thunderbird-3.1-noalsa-fixup.patch:
+  prepare for 3.1 final release next week, work out all bugs in ~testing,
+  changed a few defaults to make easier on users.
+
+*thunderbird-3.0.5 (18 Jun 2010)
+
+  18 Jun 2010; Nirbheek Chauhan <nirbheek@gentoo.org>
+  +thunderbird-3.0.5.ebuild:
+  Bump to 3.0.5; security fixes, bugfixes, performance improvements
+
+  18 Jun 2010; Nirbheek Chauhan <nirbheek@gentoo.org>
+  thunderbird-3.0.4-r1.ebuild:
+  Add EPREFIX to MOZILLA_FIVE_HOME while passing to configure
 
   13 Jun 2010; Jeremy Olexa <darkside@gentoo.org>
   thunderbird-3.0.4-r1.ebuild:

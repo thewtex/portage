@@ -1,13 +1,13 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/kstars/kstars-4.3.5.ebuild,v 1.3 2010/03/11 18:36:24 ranger Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/kstars/kstars-4.3.5.ebuild,v 1.5 2010/06/22 16:18:28 reavertm Exp $
 EAPI="2"
 
 KMNAME="kdeedu"
 inherit kde4-meta
 
 DESCRIPTION="KDE Desktop Planetarium"
-KEYWORDS="~alpha amd64 ~hppa ~ia64 ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~ia64 ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
 IUSE="debug fits +handbook indi"
 
 DEPEND="
@@ -22,6 +22,9 @@ PATCHES=(
 )
 
 src_configure() {
+	# Bug 308903
+	use ppc64 && append-flags -mminimal-toc
+
 	mycmakeargs=(
 		$(cmake-utils_use_with fits CFitsio)
 		$(cmake-utils_use_with indi)

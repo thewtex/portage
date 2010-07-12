@@ -1,6 +1,41 @@
 # ChangeLog for www-servers/cherokee
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-servers/cherokee/ChangeLog,v 1.65 2010/05/17 09:18:19 bass Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-servers/cherokee/ChangeLog,v 1.72 2010/07/07 08:07:02 bass Exp $
+
+*cherokee-1.0.5 (07 Jul 2010)
+
+  07 Jul 2010; J. Alberto Suárez López <bass@gentoo.org>
+  +cherokee-1.0.5.ebuild:
+  version bump
+
+  06 Jul 2010; J. Alberto Suárez López <bass@gentoo.org>
+  cherokee-1.0.4.ebuild:
+  Fixed #325353 waiting for upstream to support to disable rrd
+
+  01 Jul 2010; J. Alberto Suárez López <bass@gentoo.org>
+  cherokee-1.0.4.ebuild:
+  Fixed QA bug #325617
+
+*cherokee-1.0.4 (23 Jun 2010)
+
+  23 Jun 2010; J. Alberto Suárez López <bass@gentoo.org>
+  -cherokee-0.99.30.ebuild, -cherokee-0.99.42.ebuild,
+  -cherokee-0.99.44.ebuild, -cherokee-0.99.48.ebuild,
+  -cherokee-1.0.0.ebuild, +cherokee-1.0.4.ebuild:
+  version bump. remove old ebuilds
+
+*cherokee-1.0.2-r1 (16 Jun 2010)
+
+  16 Jun 2010; J. Alberto Suárez López <bass@gentoo.org>
+  -cherokee-1.0.2.ebuild, +cherokee-1.0.2-r1.ebuild:
+  Fixed python compatibility (thanks xmw)
+
+*cherokee-1.0.2 (16 Jun 2010)
+
+  16 Jun 2010; J. Alberto Suárez López <bass@gentoo.org>
+  +cherokee-1.0.2.ebuild:
+  version bump. Fixed #324203, #316981. Forced to use python 2, upstream
+  dont have plans for python 3. Forced to use -j1
 
 *cherokee-1.0.0 (17 May 2010)
 
@@ -38,17 +73,6 @@
   +cherokee-0.99.24.ebuild:
   Bump version. Fix: #283373
 
-*cherokee-0.99.24 (03 Sep 2009)
-
-  03 Sep 2009; Daniel Robbins <drobbins@funtoo.org> +cherokee-0.99.24.ebuild:
-  new upstream release.
-
-*cherokee-0.99.23 (31 Aug 2009)
-
-  31 Aug 2009; Daniel Robbins <drobbins@funtoo.org> +cherokee-0.99.23.ebuild:
-  New cherokee release. Added some good default USE flags; added new initscript
-  since cherokee no longer uses a pidfile.
-
 *cherokee-0.99.22 (06 Aug 2009)
 
   06 Aug 2009; J. Alberto Suárez López <bass@gentoo.org>
@@ -60,13 +84,6 @@
   28 Jun 2009; J. Alberto Suárez López <bass@gentoo.org>
   +cherokee-0.99.19-r1.ebuild:
   Fix log dir perms (drobbins fix)
-
-*cherokee-0.99.19-r1 (27 Jun 2009)
-
-  27 Jun 2009; Daniel Robbins <drobbins@funtoo.org>
-  +cherokee-0.99.19-r1.ebuild: create /var/log/cherokee/ with proper
-  permissions for logs, change default configuration to reflect this, enable
-  some popular USE flags.
 
 *cherokee-0.99.19 (24 Jun 2009)
 

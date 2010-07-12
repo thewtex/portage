@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/lm_sensors/lm_sensors-3.1.2.ebuild,v 1.2 2010/06/13 16:19:40 angelos Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/lm_sensors/lm_sensors-3.1.2.ebuild,v 1.6 2010/06/27 17:44:25 armin76 Exp $
 
 EAPI="2"
 
@@ -12,7 +12,7 @@ SRC_URI="http://dl.lm-sensors.org/lm-sensors/releases/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~ppc ~sparc ~x86"
+KEYWORDS="alpha amd64 ppc ~sparc x86"
 IUSE="sensord"
 
 DEPEND="sys-apps/sed
@@ -41,8 +41,6 @@ src_compile() {
 	einfo "You may safely ignore any errors from compilation"
 	einfo "that contain \"No such file or directory\" references."
 	einfo
-
-	filter-flags -fstack-protector
 
 	emake CC=$(tc-getCC) \
 		|| die "emake failed"

@@ -1,6 +1,117 @@
 # ChangeLog for www-client/chromium
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/ChangeLog,v 1.113 2010/06/11 09:44:59 voyageur Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/ChangeLog,v 1.135 2010/07/07 15:33:09 phajdan.jr Exp $
+
+  07 Jul 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> metadata.xml:
+  Transfer ownership to the new chromium herd.
+
+  06 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  chromium-5.0.375.99.ebuild:
+  stable x86, security bug 326717
+
+  04 Jul 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-6.0.453.1.ebuild, chromium-9999.ebuild:
+  Added MimeType field to the .desktop file, so that .html and other files
+  can be opened with Chromium. Patch by Daniel Schoemer
+  <daniel.schoemer@gmx.net>, bug #326863.
+
+  03 Jul 2010; Pacho Ramos <pacho@gentoo.org> chromium-5.0.375.99.ebuild:
+  amd64 stable, security bug #326717
+
+*chromium-6.0.453.1 (03 Jul 2010)
+
+  03 Jul 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-6.0.437.1.ebuild, +chromium-6.0.453.1.ebuild,
+  chromium-9999.ebuild:
+  Version bump for dev channel release. Contains a workaround for bug
+  #326609 by Aaron Haviland <orion@parsed.net>. Removed old ebuild.
+
+*chromium-5.0.375.99 (03 Jul 2010)
+
+  03 Jul 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-5.0.375.70-r1.ebuild, +chromium-5.0.375.99.ebuild:
+  Version bump for stable channel release. Removed old ebuild.
+
+  25 Jun 2010; Christoph Mende <angelos@gentoo.org>
+  chromium-5.0.375.86.ebuild:
+  Stable on amd64 wrt bug #325451
+
+  25 Jun 2010; Christian Faulhammer <fauli@gentoo.org>
+  chromium-5.0.375.86.ebuild:
+  stable x86, bug 325451
+
+*chromium-5.0.375.86 (24 Jun 2010)
+
+  24 Jun 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +chromium-5.0.375.86.ebuild:
+  Version bump for beta channel release.
+
+  23 Jun 2010; Bernard Cafarelli <voyageur@gentoo.org> chromium-9999.ebuild:
+  Install resources.pak, bug #324645 by Mike Gilbert
+  <floppymaster@gmail.com>. Drop cups patch, it's merged usptream, and
+  enable WebM support
+
+  21 Jun 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-5.0.375.70.ebuild, chromium-5.0.375.70-r1.ebuild,
+  -chromium-6.0.427.0.ebuild, chromium-6.0.437.1.ebuild,
+  chromium-6.0.437.3.ebuild, chromium-9999.ebuild:
+  Disable gpu rendering to fix nvidia-drivers compatibility problems, bug
+  #319331 by mjbjr@beaudesign.com.
+
+*chromium-6.0.437.3 (21 Jun 2010)
+
+  21 Jun 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +chromium-6.0.437.3.ebuild:
+  Version bump for dev channel release.
+
+  20 Jun 2010; Christian Faulhammer <fauli@gentoo.org>
+  chromium-5.0.375.70-r1.ebuild:
+  stable x86, bug 322343
+
+  20 Jun 2010; Markos Chandras <hwoarang@gentoo.org>
+  chromium-5.0.375.70-r1.ebuild:
+  Stable on amd64 wrt bug #322343
+
+*chromium-5.0.375.70-r1 (20 Jun 2010)
+
+  20 Jun 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +files/chromium-flash-hang-workaround-r1.patch,
+  +chromium-5.0.375.70-r1.ebuild:
+  Version bump to work around a flash hang (bug #324365 by lack). Also fix
+  bug #323865 by Alex Barker <alex@1stleg.com>.
+
+  19 Jun 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-6.0.437.1.ebuild, chromium-9999.ebuild:
+  Move gnome-keyring from RDEPEND to DEPEND. According to
+  http://crbug.com/12351 it's a compile-time-only dependency.
+
+  19 Jun 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> chromium-9999.ebuild:
+  Do not apply a patch already applied upstream, bug #324675 by nixtrian
+  <nixtrian@gmail.com>
+
+  19 Jun 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-6.0.437.1.ebuild, chromium-9999.ebuild:
+  Add sse2 USE flag, so that SSE2-capable systems can enable it. Suggested
+  by spatz.
+
+  18 Jun 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-6.0.437.1.ebuild, chromium-9999.ebuild:
+  Add missing gnome-keyring dependency. For now it's required, making it
+  optional is non-trivial. Reported by spatz in bug #324517.
+
+*chromium-6.0.437.1 (17 Jun 2010)
+
+  17 Jun 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +files/chromium-gyp-fixes-r2.patch, +chromium-6.0.437.1.ebuild,
+  +files/chromium-optional-cups-r1.patch, chromium-9999.ebuild:
+  Version bump for dev channel release. Fix bug #323675 by Dan Douglas
+  <doug0213@metnet.edu>. Fix bug #324105 by Anthony Parsons
+  <ant@specialops.ath.cx>.
+
+  16 Jun 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-5.0.375.70.ebuild:
+  Apply the ffmpeg build workaround to the 5.0.x.x series, bug #324359 by
+  flameeyes.
 
   11 Jun 2010; Bernard Cafarelli <voyageur@gentoo.org>
   chromium-6.0.427.0.ebuild, chromium-9999.ebuild:
