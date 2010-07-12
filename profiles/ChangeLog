@@ -1,10 +1,56 @@
 # ChangeLog for profile directory
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.4384 2010/07/09 16:44:59 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.4396 2010/07/12 14:44:18 chithanh Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  12 Jul 2010; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  base/package.use.mask:
+  mask USE=lirc for gnash snapshot
+
+  12 Jul 2010; Pacho Ramos <pacho@gentoo.org> package.mask:
+  Mask eel and nautilus-cd-burner stuff for removal.
+
+  12 Jul 2010; Samuli Suominen <ssuominen@gentoo.org>
+  default/linux/make.defaults, targets/developer/make.defaults:
+  Stop using ${LDFLAGS} inside LDFLAGS="" because of dev-libs/boost-build
+  and whitespace.
+
+  11 Jul 2010; Samuli Suominen <ssuominen@gentoo.org>
+  default/linux/make.defaults, targets/developer/make.defaults:
+  Change LD_AS_NEEDED which got rejected by binutils upstream to plain
+  LDFLAGS based -Wl,--as-needed wrt #327753 by Ryan Hill.
+
+  11 Jul 2010; Pacho Ramos <pacho@gentoo.org> arch/hppa/ChangeLog,
+  arch/hppa/package.use.mask:
+  Mask gnome USE flag for net-voip/ekiga due bug 324511
+
+  11 Jul 2010; Pacho Ramos <pacho@gentoo.org> arch/hppa/ChangeLog,
+  arch/hppa/package.use.mask:
+  Mask eds USE flag for net-im/pidgin due bug 324511
+
+  11 Jul 2010; Pacho Ramos <pacho@gentoo.org> arch/hppa/ChangeLog,
+  arch/hppa/package.use.mask:
+  Mask gnome USE flag for dev-ml/lablgtk due bug 324511
+
+  11 Jul 2010; Pacho Ramos <pacho@gentoo.org> arch/hppa/ChangeLog,
+  arch/hppa/package.use.mask:
+  Mask gnome USE flag on uim due bug 324511
+
+  11 Jul 2010; Patrick Lauer <patrick@gentoo.org> package.mask:
+  Masking postgresql-{base,server,docs} 7.4 and 8.0 as upstream has EOL'ed
+  them
+
+  11 Jul 2010; Patrick Lauer <patrick@gentoo.org> package.mask:
+  Remove libpq and postgresql masks
+
+  11 Jul 2010; Markos Chandras <hwoarang@gentoo.org> package.mask:
+  Hamachi will stay
+
+  10 Jul 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> package.mask:
+  Mask www-client/chromium dev channel release.
 
   09 Jul 2010; Jeroen Roovers <jer@gentoo.org> package.mask:
   Mask Opera 10.11 (bug #326571 and bug #326413).

@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/virtualbox-ose/virtualbox-ose-3.1.8.ebuild,v 1.4 2010/06/21 13:45:47 angelos Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/virtualbox-ose/virtualbox-ose-3.1.8.ebuild,v 1.6 2010/07/11 08:15:13 polynomial-c Exp $
 
 EAPI=2
 
@@ -22,7 +22,7 @@ HOMEPAGE="http://www.virtualbox.org/"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~x86"
-IUSE="+additions alsa +hal headless pulseaudio +opengl python +qt4 sdk vboxwebsrv"
+IUSE="+additions alsa +hal headless pulseaudio python +qt4 sdk vboxwebsrv"
 
 RDEPEND="!app-emulation/virtualbox-bin
 	~app-emulation/virtualbox-modules-${PV}
@@ -30,8 +30,9 @@ RDEPEND="!app-emulation/virtualbox-bin
 	>=dev-libs/libxslt-1.1.19
 	net-misc/curl
 	!headless? (
-		qt4? ( x11-libs/qt-gui:4 x11-libs/qt-core:4 opengl?	( x11-libs/qt-opengl:4 ) )
-		opengl? ( virtual/opengl virtual/glut )
+		qt4? ( x11-libs/qt-gui:4 x11-libs/qt-core:4 x11-libs/qt-opengl:4 )
+		virtual/opengl
+		virtual/glut
 		x11-libs/libXcursor
 		media-libs/libsdl[X,video]
 		x11-libs/libXt
@@ -95,11 +96,6 @@ pkg_setup() {
 		einfo "You selected USE=\"headless qt4\", defaulting to"
 		einfo "USE=\"headless\", this build will not include any X11/Qt frontend."
 	fi
-
-	if ! use opengl ; then
-		einfo "No USE=\"opengl\" selected, this build will lack"
-		einfo "the OpenGL feature."
-	fi
 }
 
 src_prepare() {
@@ -120,7 +116,6 @@ src_prepare() {
 src_configure() {
 	local myconf
 	use alsa       || myconf="${myconf} --disable-alsa"
-	use opengl     || myconf="${myconf} --disable-opengl"
 	use pulseaudio || myconf="${myconf} --disable-pulse"
 	use python     || myconf="${myconf} --disable-python"
 	use hal        || myconf="${myconf} --disable-dbus"
@@ -128,7 +123,7 @@ src_configure() {
 	if ! use headless ; then
 		use qt4 || myconf="${myconf} --disable-qt4"
 	else
-		myconf="${myconf} --build-headless --disable-opengl"
+		myconf="${myconf} --build-headless"
 	fi
 	# not an autoconf script
 	./configure \
@@ -211,11 +206,9 @@ src_install() {
 			pax-mark -m "${D}"/usr/$(get_libdir)/${PN}/${each}
 		done
 
-		if use opengl ; then
-			doins VBoxTestOGL || die
-			fowners root:vboxusers /usr/$(get_libdir)/${PN}/VBoxTestOGL
-			fperms 0750 /usr/$(get_libdir)/${PN}/VBoxTestOGL
-		fi
+		doins VBoxTestOGL || die
+		fowners root:vboxusers /usr/$(get_libdir)/${PN}/VBoxTestOGL
+		fperms 0750 /usr/$(get_libdir)/${PN}/VBoxTestOGL
 
 		dosym /usr/$(get_libdir)/${PN}/VBox /usr/bin/VBoxSDL
 

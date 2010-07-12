@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/prelink/prelink-20100106.ebuild,v 1.4 2010/06/15 08:02:01 angelos Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/prelink/prelink-20100106.ebuild,v 1.6 2010/07/11 11:17:40 armin76 Exp $
 
 # if not on http://people.redhat.com/jakub/prelink/, releases can usually be ripped from
 # http://mirrors.kernel.org/fedora/development/source/SRPMS/prelink-<blah>.src.rpm
@@ -13,7 +13,7 @@ SRC_URI="http://people.redhat.com/jakub/prelink/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 -arm ~ppc ~ppc64 ~s390 ~sparc x86"
+KEYWORDS="amd64 -arm ~ppc ~ppc64 s390 sparc x86"
 IUSE=""
 
 DEPEND=">=dev-libs/elfutils-0.100
@@ -30,6 +30,11 @@ src_unpack() {
 	epatch "${FILESDIR}"/${PN}-20061201-prelink-conf.patch
 	sed -i -e 's:undosyslibs.sh::' testsuite/Makefile.in #254201
 	sed -i -e '/^CC=/s: : -Wl,--disable-new-dtags :' testsuite/functions.sh #100147
+}
+
+src_test() {
+	unset LD_AS_NEEDED #303797
+	emake -j1 check
 }
 
 src_install() {

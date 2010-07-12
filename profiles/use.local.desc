@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5760 2010/07/09 23:47:48 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5768 2010/07/12 14:47:51 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -621,7 +621,6 @@ dev-db/ingres:demodb - Install demo DB
 dev-db/ingres:net - Enable net support
 dev-db/ingres:nodbms - Disable dbms component
 dev-db/libdrizzle:tcmalloc -  Use the dev-util/google-perftools libraries to replace the malloc() implementation with a possibly faster one. 
-dev-db/libpq:pg-intdatetime - Enable --enable-integer-datetimes configure option, which changes PG to use 64-bit integers for timestamp storage
 dev-db/maatkit:udf - Build the MySQL UDFs shipped with maatkit, requires non-minimal MySQL
 dev-db/mariadb:big-tables - Make tables contain up to 1.844E+19 rows
 dev-db/mariadb:cluster - Add support for NDB clustering (deprecated)
@@ -651,7 +650,6 @@ dev-db/mysql:xtradb - Add experimental support for Percona's InnoDB replacement:
 dev-db/mysql-connector-c++:gcov - Build coverage support
 dev-db/postgis:geos - Add the sci-libs/geos library for exact topological tests
 dev-db/postgis:proj - Add the sci-libs/proj library for reprojection features
-dev-db/postgresql:pg-intdatetime - Enable --enable-integer-datetimes configure option, which changes PG to use 64-bit integers for timestamp storage
 dev-db/postgresql-base:pg-intdatetime - Enable --enable-integer-datetimes configure option, which changes PG to use 64-bit integers for timestamp storage
 dev-db/postgresql-base:pg_legacytimestamp - Use double precision floating-point numbers instead of 64-bit integers for timestamp storage. 
 dev-db/postgresql-server:pg_legacytimestamp - Use double precision floating-point numbers instead of 64-bit integers for timestamp storage. 
@@ -1288,6 +1286,7 @@ gnome-base/gdm:consolekit - Allow proper handling of removable media according t
 gnome-base/gdm:dmx - Enables Distributed Multihead X (DMX) support
 gnome-base/gdm:remote - Enables support for secure remote connections
 gnome-base/gdm:xklavier - Use x11-libs/libxklavier for keyboard management
+gnome-base/gnome-applets:battstat - Enable deprecated battery applet for people unable to use gnome-extra/gnome-power-manager instead.
 gnome-base/gnome-light:automount - Use gnome-base/gvfs[gdu] for automounting of drives in nautilus
 gnome-base/gnome-mount:nautilus - Enables the Nautilus plugin
 gnome-base/gnome-session:policykit - Enable sys-auth/policykit authentication support
@@ -1314,7 +1313,6 @@ gnome-extra/gnome-games:artworkextra - Installs extra artwork for various games
 gnome-extra/gnome-games:clutter - Build games that use media-libs/clutter and are written in JavaScript using dev-libs/seed
 gnome-extra/gnome-games:sound - Enable sound using media-libs/libcanberra
 gnome-extra/gnome-lirc-properties:policykit - Use sys-auth/policykit to gain privileges to change configuration files
-gnome-extra/gnome-media:gnomecd - Builds the GNOME CD Player
 gnome-extra/gnome-media:sound - Adds support for sound notification themes using media-libs/libcanberra
 gnome-extra/gnome-power-manager:policykit - Enable sys-auth/policykit authentication support
 gnome-extra/gtkhtml:glade - Provide integration with dev-util/glade.
@@ -1325,7 +1323,6 @@ gnome-extra/libgda:xbase - Enables support for xbase databases (dBase, FoxPro, e
 gnome-extra/libgsf:gtk - Enable use of gdk in thumbnailer
 gnome-extra/libgsf:thumbnail - Enable libgsf supported formats thumbnailer
 gnome-extra/music-applet:mpd - Enable MPD support
-gnome-extra/nautilus-sendto:empathy - Enables support for net-im/empathy
 gnome-extra/nautilus-sendto:gajim - Enables support for net-im/gajim
 gnome-extra/nautilus-sendto:mail - Enables support for mailto using gnome-extra/evolution-data-server
 gnome-extra/nautilus-sendto:pidgin - Enables support for net-im/pidgin
@@ -1645,7 +1642,8 @@ media-gfx/kphotoalbum:kipi - Support for the KDE Image Plugin Interface
 media-gfx/nip2:goffice - use x11-libs/goffice to show plots
 media-gfx/openclipart:gzip - Compresses clip art using gzip
 media-gfx/potrace:metric -  default to a4 paper size and metric measurement 
-media-gfx/pstoedit:emf -  enables media-libs/libemf support 
+media-gfx/pstoedit:emf - Enable media-libs/libemf support
+media-gfx/pstoedit:flash - Enable media-libs/ming SWF support
 media-gfx/scantailor:dewarping - Enable experimental dewarping support
 media-gfx/splashutils:fbcondecor -  Support for the fbcondecor kernel patch. 
 media-gfx/ufraw:contrast -  enable contrast setting option 
@@ -1944,7 +1942,6 @@ media-sound/qtractor:rubberband - Enable support for in-place audio clip pitch-s
 media-sound/qtscrobbler:cli - Build commandline client
 media-sound/rezound:16bittmp - Use 16bit temporary files (default 32bit float), useful for slower computers
 media-sound/rezound:soundtouch - compile with support for soundtouch
-media-sound/rhythmbox:brasero - Enable CD burning via app-cdr/brasero rather than gnome-extra/nautilus-cd-burner
 media-sound/rhythmbox:daap - Enable support for local network music sharing via daap
 media-sound/rhythmbox:udev - Enable hardware detection via sys-fs/udev replacing the deprecated sys-apps/hal code.
 media-sound/rhythmbox:upnp - Enable support for local network music sharing via upnp
@@ -3475,6 +3472,7 @@ sys-fs/owfs:fuse - Enable building the FUSE-based OWFS client (owfs)
 sys-fs/owfs:httpd - Enable building the OWFS web server (owhttpd)
 sys-fs/owfs:parport - Enable support for the DS1410E parallel port adapter
 sys-fs/owfs:server - Enable building the OWFS server (owserver)
+sys-fs/pysize:psyco - Adds psyco support
 sys-fs/quota:rpc - Enable quota interaction via RPC
 sys-fs/udev:devfs-compat - Install rules for devfs compatible device names
 sys-fs/udev:extras - Compile udev-extras requiring external dependencies
@@ -3561,6 +3559,7 @@ www-apache/mod_vhs:suphp - Enable www-apache/mod_suphp support
 www-apache/pwauth:domain-aware - Ignore leading domain names in username (Windows compat)
 www-apache/pwauth:faillog - Log failed login attempts
 www-apache/pwauth:ignore-case - Ignore string case in username (mostly Windows compat)
+www-apps/389-dsgw:adminserver - Install DSGW with Admin Server
 www-apps/bugzilla:extras - Optional Perl modules
 www-apps/bugzilla:modperl - Enable www-apache/mod_perl support
 www-apps/egroupware:gallery - Install gallery2 port for eGW
@@ -3638,6 +3637,7 @@ www-plugins/adobe-flash:64bit - For amd64-multilib, installs the native 64-bit p
 www-plugins/gnash:agg - Rendering based on the Anti-Grain Geometry Rendering Engine library
 www-plugins/gnash:cygnal - Enable building of the cygnal server
 www-plugins/gnash:ssh - Enable using SSH for network authentication in libnet
+www-plugins/gnash:vaapi - Enables VAAPI (Video Acceleration API) for hardware decoding
 www-servers/apache:suexec - Install suexec with apache
 www-servers/cherokee:admin - Install web based cherokee conf tool
 www-servers/cherokee:coverpage - Installs the default cherokee coverpage
