@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/gourmet/gourmet-0.15.4-r1.ebuild,v 1.1 2010/07/12 01:43:54 nixphoeni Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/gourmet/gourmet-0.15.4-r1.ebuild,v 1.2 2010/07/13 00:51:50 nixphoeni Exp $
 
 EAPI="2"
 PYTHON_DEPEND="2:2.4"
@@ -28,11 +28,11 @@ RDEPEND=">=dev-python/pygtk-2.3.93
 	=dev-python/sqlalchemy-0.5.8
 	dev-python/imaging
 	dev-python/gtkspell-python
-	dev-python/python-poppler
 	dev-db/metakit[python]
-	pdf? ( dev-python/reportlab )
+	pdf? ( dev-python/reportlab dev-python/python-poppler )
 	rtf? ( dev-python/pyrtf )
-	gnome-print? ( >=dev-python/libgnomeprint-python-2 )"
+	gnome-print? ( >=dev-python/libgnomeprint-python-2
+	               dev-python/python-poppler )"
 DEPEND="${RDEPEND}"
 
 RESTRICT_PYTHON_ABIS="3.*"

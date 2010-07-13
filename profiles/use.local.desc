@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5768 2010/07/12 14:47:51 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5772 2010/07/13 12:27:49 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -396,7 +396,7 @@ app-misc/freemind:pdf - Build plugin for exporting mindmaps to SVG and PDF
 app-misc/freemind:svg - Build plugin for exporting mindmaps to SVG and PDF
 app-misc/geneweb:ocamlopt - Enable ocamlopt support (dev-lang/ocaml native code compiler)
 app-misc/gnote:applet - Enable gnote applet for gnome-base/gnome-panel
-app-misc/gourmet:gnome-print - Enable printing support using gnome-print
+app-misc/gourmet:gnome-print - Enable pretty Python printing with gnome-print
 app-misc/gourmet:rtf - Enable export to RTF
 app-misc/gpsdrive:garmin - Adds specific support for Garmin GPS receivers (pre-2.10 only)
 app-misc/gpsdrive:gdal - Include gdal and ogr support for format conversions.
@@ -1249,8 +1249,6 @@ games-rpg/eternal-lands-data:sound - Adds in-game sound effects.
 games-rpg/kqlives:cheats - Enable cheating mode
 games-rpg/nwn:hou - Install the Hordes of the Underdark expansion pack
 games-rpg/nwn:sou - Installs the Shadows of Undrentide expension pack
-games-rpg/nwn-cep:hou - Adds support for the Hordes of the Underdark expansion pack
-games-rpg/nwn-cep:sou - Adds support for the Shadows of Undrentide expension pack
 games-rpg/nwn-data:hou - Install the Hordes of the Underdark expansion pack
 games-rpg/nwn-data:nowin - For those people who cant grab the 1.2 gigs of data files from a windows partition
 games-rpg/nwn-data:sou - Installs the Shadows of Undrentide expension pack
@@ -2297,6 +2295,7 @@ net-analyzer/net-snmp:mfd-rewrites - Use MFD rewrites of mib modules where avail
 net-analyzer/net-snmp:rpm - Enable the rpm snmp probing
 net-analyzer/net-snmp:sendmail - Enable sendmail statistics monitoring
 net-analyzer/net-snmp:smux - Enable the smux MIBS module
+net-analyzer/nfdump:compat15 - Enable read support for nfdump data files created with nfdump 1.5.x
 net-analyzer/nfdump:ftconv - Build the flow-tools to nfdump converter
 net-analyzer/nfdump:nfprofile - Build nfprofile used by NfSen
 net-analyzer/nfdump:sflow - Build sflow collector sfcpad
@@ -3015,8 +3014,6 @@ net-wireless/blueman:network - Add functionality to setup (host) PAN connections
 net-wireless/bluez:consolekit - Use sys-auth/pambase[consolekit] to determine access to bluetooth devices based on whether a user is logged in locally or remotely
 net-wireless/bluez:old-daemons - Install old daemons like hidd and sdpd that are deprecated by the new Service framework
 net-wireless/bluez:test-programs - Install tools for testing of various Bluetooth functions
-net-wireless/bluez-utils:old-daemons - Install old daemons like hidd and sdpd that are deprecated by the new Service framework
-net-wireless/bluez-utils:test-programs - Install l2test and rctest
 net-wireless/gnome-bluetooth:nautilus - Build nautilus-sendto plugin
 net-wireless/hostapd:debug - Enables debugging
 net-wireless/hostapd:logwatch - Install support files for sys-app/logwatch
