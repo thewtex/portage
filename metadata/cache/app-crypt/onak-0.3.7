@@ -1,5 +1,5 @@
-berkdb? ( =sys-libs/db-4* ) postgres? ( dev-db/postgresql-server )
-berkdb? ( =sys-libs/db-4* ) postgres? ( dev-db/postgresql-server )
+berkdb? ( >=sys-libs/db-4 ) postgres? ( dev-db/postgresql-server ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b
+berkdb? ( >=sys-libs/db-4 ) postgres? ( dev-db/postgresql-server )
 0
 http://www.earth.li/projectpurple/files/onak-0.3.7.tar.gz
 
@@ -7,14 +7,14 @@ http://www.earth.li/projectpurple/progs/onak.html
 GPL-2
 onak is an OpenPGP keyserver
 ~amd64 ~x86
-
+autotools eutils libtool multilib portability toolchain-funcs
 berkdb postgres
 
 
 
 2
 
-configure install
+configure install prepare
 
 
 
