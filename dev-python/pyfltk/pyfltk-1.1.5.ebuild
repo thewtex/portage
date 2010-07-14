@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pyfltk/pyfltk-1.1.5.ebuild,v 1.5 2010/07/08 18:30:00 arfrever Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pyfltk/pyfltk-1.1.5.ebuild,v 1.7 2010/07/11 13:32:26 maekke Exp $
 
 EAPI="3"
 PYTHON_DEPEND="2"
@@ -18,12 +18,12 @@ SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 IUSE="doc"
 
 RDEPEND=">=x11-libs/fltk-1.1.9:1.1[opengl]"
 DEPEND="${RDEPEND}
-	dev-lang/swig"
+	>=dev-lang/swig-1.3.38"
 
 S="${WORKDIR}/${MY_P}"
 

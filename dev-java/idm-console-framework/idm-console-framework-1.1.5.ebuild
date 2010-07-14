@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/idm-console-framework/idm-console-framework-1.1.5.ebuild,v 1.1 2010/07/07 15:20:10 lxnay Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/idm-console-framework/idm-console-framework-1.1.5.ebuild,v 1.3 2010/07/11 09:47:34 lxnay Exp $
 
 EAPI="2"
 
@@ -8,7 +8,7 @@ JAVA_PKG_IUSE="doc examples source"
 
 inherit java-pkg-2 eutils java-ant-2
 
-DESCRIPTION="A Java Management Console framework used for remote server management."
+DESCRIPTION="A Java Management Console framework used for remote server management"
 HOMEPAGE="http://directory.fedoraproject.org/"
 SRC_URI="http://directory.fedoraproject.org/sources/${P}.tar.bz2"
 
@@ -22,7 +22,6 @@ COMMON_DEPEND="dev-java/jss:3.4
 RDEPEND=">=virtual/jre-1.6
 	${COMMON_DEPEND}"
 DEPEND=">=virtual/jdk-1.6
-	app-arch/zip
 	${COMMON_DEPEND}"
 
 src_prepare() {
@@ -34,7 +33,6 @@ src_compile() {
 	eant -Dbuilt.dir="${S}"/build \
 	     -Dldapjdk.local.location="${S}" \
 	     -Djss.local.location="${S}" ${antflags}
-
 	use doc && eant -Dbuilt.dir="${S}"/build \
 	     -Dldapjdk.local.location="${S}" \
 	     -Djss.local.location="${S}" ${antflags} javadoc

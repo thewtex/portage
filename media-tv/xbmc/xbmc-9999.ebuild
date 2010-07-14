@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-tv/xbmc/xbmc-9999.ebuild,v 1.57 2010/06/19 00:57:39 abcd Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-tv/xbmc/xbmc-9999.ebuild,v 1.59 2010/07/11 19:39:07 vapier Exp $
 
 EAPI="2"
 
@@ -61,7 +61,8 @@ RDEPEND="virtual/opengl
 	media-libs/libmpeg2
 	media-libs/libogg
 	media-libs/libsamplerate
-	media-libs/libsdl[alsa,audio,opengl,video,X]
+	media-libs/libsdl[audio,opengl,video,X]
+	alsa? ( media-libs/libsdl[alsa] )
 	media-libs/libvorbis
 	media-libs/sdl-gfx
 	media-libs/sdl-image[gif,jpeg,png]
@@ -140,7 +141,7 @@ src_prepare() {
 
 	# Avoid lsb-release dependency
 	sed -i \
-		-e 's:/usr/bin/lsb_release -d:cat /etc/gentoo-release:' \
+		-e 's:lsb_release -d:cat /etc/gentoo-release:' \
 		xbmc/utils/SystemInfo.cpp
 
 	# Do not use termcap #262822
