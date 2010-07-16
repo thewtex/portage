@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/mutt/mutt-1.5.20-r15.ebuild,v 1.3 2010/07/02 08:14:30 grobian Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-client/mutt/mutt-1.5.20-r15.ebuild,v 1.6 2010/07/16 07:11:48 grobian Exp $
 
 EAPI="3"
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5774 2010/07/15 05:47:49 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5777 2010/07/16 10:07:57 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -878,7 +878,6 @@ dev-libs/json-glib:introspection - Use dev-libs/gobject-introspection for intros
 dev-libs/klibc:n32 - Force klibc to 32bit if on mips64 if not n32 userland
 dev-libs/libburn:track-src-odirect - Read track input with O_DIRECT (see man 2 open), this may deliver a better write performance in some situations
 dev-libs/libcdio:minimal -  Only build the libcdio library and little more, just to be used to link against from multimedia players. With this USE flag enabled, none of the command-line utilities are built, nor is the CDDA library. 
-dev-libs/libgcrypt:idea - Use the patented IDEA algorithm
 dev-libs/libgpg-error:common-lisp - Install common-lisp files
 dev-libs/libisoburn:external-filters - Allow the use of external processes as file content filters (Note: this is a potential security risk)
 dev-libs/libisoburn:external-filters-setuid - Also allow the use of external setuid processes as file content filters (Note: this is a potential security risk)
@@ -2683,6 +2682,13 @@ net-libs/opal:x264-static - Install x264 plugin statically linked with x264
 net-libs/openh323:noaudio - Disable audio codecs
 net-libs/openh323:novideo - Disable video codecs
 net-libs/ortp:srtp - Add support for Secure RTP
+net-libs/pjsip:epoll - epoll system call support
+net-libs/pjsip:ext-sound - External sound device support
+net-libs/pjsip:g711 - Builds the G711 codec
+net-libs/pjsip:g722 - Builds the G722 codec
+net-libs/pjsip:g7221 - Builds the G7221 codec
+net-libs/pjsip:ilbc - Builds the ilbc codec
+net-libs/pjsip:l16 - Builds the L16 codec
 net-libs/ptlib:asn - Enable ASN decoding/encoding support
 net-libs/ptlib:audio - Enable audio support
 net-libs/ptlib:dtmf - Enable DTMF encoding/decoding support
@@ -3014,6 +3020,7 @@ net-voip/yate:spandsp - Enable support for the spandsp codec
 net-voip/yate:zaptel - Build zaptel Channel plugin
 net-wireless/blueman:network - Add functionality to setup (host) PAN connections using either net-dns/dnsmasq or net-misc/dhcp
 net-wireless/bluez:consolekit - Use sys-auth/pambase[consolekit] to determine access to bluetooth devices based on whether a user is logged in locally or remotely
+net-wireless/bluez:maemo6 - Compile with maemo6 plugin
 net-wireless/bluez:old-daemons - Install old daemons like hidd and sdpd that are deprecated by the new Service framework
 net-wireless/bluez:test-programs - Install tools for testing of various Bluetooth functions
 net-wireless/gnome-bluetooth:nautilus - Build nautilus-sendto plugin
