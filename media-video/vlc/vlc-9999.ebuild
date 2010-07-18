@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/vlc/vlc-9999.ebuild,v 1.81 2010/07/17 15:38:23 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/vlc/vlc-9999.ebuild,v 1.84 2010/07/18 10:43:05 aballier Exp $
 
 EAPI="3"
 
@@ -24,7 +24,7 @@ MY_PV="${MY_PV/-beta/-test}"
 MY_P="${PN}-${MY_PV}"
 VLC_SNAPSHOT_TIME="0013"
 
-PATCHLEVEL="85"
+PATCHLEVEL="86"
 DESCRIPTION="VLC media player - Video player and streamer"
 HOMEPAGE="http://www.videolan.org/vlc/"
 if [ "${PV%9999}" != "${PV}" ] ; then # Live ebuild
@@ -47,12 +47,12 @@ SLOT="0"
 KEYWORDS=""
 IUSE="a52 aac aalib alsa altivec atmo avahi bidi cdda cddb dbus dc1394
 	debug dirac directfb dts dvb dvd elibc_glibc fbcon fluidsynth +ffmpeg flac fontconfig
-	+gcrypt ggi gnome gnutls httpd id3tag ieee1394 jack kate kde libass libcaca
+	+gcrypt gnome gnutls httpd id3tag ieee1394 jack kate kde libass libcaca
 	libnotify libproxy libtiger libv4l libv4l2 lirc live lua matroska mmx
 	modplug mp3 mpeg mtp musepack ncurses nsplugin ogg opengl optimisememory oss
 	png projectm pulseaudio pvr +qt4 remoteosd rtsp run-as-root samba
 	schroedinger sdl sdl-image shine shout skins speex sqlite sse stream
-	svg svga taglib theora truetype twolame udev upnp v4l v4l2 vaapi vcdx vlm
+	svg taglib theora truetype twolame udev upnp v4l v4l2 vaapi vcdx vlm
 	vorbis win32codecs wma-fixed +X x264 +xcb xml xosd xv zvbi"
 
 RDEPEND="
@@ -77,7 +77,6 @@ RDEPEND="
 		fluidsynth? ( media-sound/fluidsynth )
 		fontconfig? ( media-libs/fontconfig )
 		gcrypt? ( >=dev-libs/libgcrypt-1.2.0 )
-		ggi? ( media-libs/libggi )
 		gnome? ( gnome-base/gnome-vfs )
 		gnutls? ( >=net-libs/gnutls-1.7.4 >=dev-libs/libgcrypt-1.2.0 )
 		id3tag? ( media-libs/libid3tag sys-libs/zlib )
@@ -121,7 +120,6 @@ RDEPEND="
 		speex? ( media-libs/speex )
 		sqlite? ( >=dev-db/sqlite-3.6.0:3 )
 		svg? ( >=gnome-base/librsvg-2.9.0 )
-		svga? ( media-libs/svgalib )
 		taglib? ( >=media-libs/taglib-1.5 sys-libs/zlib )
 		theora? ( >=media-libs/libtheora-1.0_beta3 )
 		truetype? ( media-libs/freetype media-fonts/dejavu )
@@ -143,7 +141,7 @@ RDEPEND="
 		"
 
 DEPEND="${RDEPEND}
-	!!<=media-video/vlc-1.0.99999
+	!!<=media-video/vlc-1.1.99999
 	dvb? ( sys-kernel/linux-headers )
 	kde? ( >=kde-base/kdelibs-4 )
 	v4l? ( sys-kernel/linux-headers )
@@ -243,7 +241,6 @@ src_configure() {
 		$(use_enable flac) \
 		$(use_enable fluidsynth) \
 		$(use_enable fontconfig) \
-		$(use_enable ggi) \
 		$(use_enable gnome gnomevfs) \
 		$(use_enable gnutls) \
 		$(use_enable httpd) \
@@ -274,7 +271,7 @@ src_configure() {
 		$(use_enable ncurses) \
 		$(use_enable nsplugin mozilla) --with-mozilla-pkg=libxul \
 		$(use_enable ogg) \
-		$(use_enable opengl glx) $(use_enable opengl) \
+		$(use_enable opengl glx) \
 		$(use_enable optimisememory optimize-memory) \
 		$(use_enable oss) \
 		$(use_enable png) \
@@ -298,7 +295,6 @@ src_configure() {
 		$(use_enable sse) \
 		$(use_enable stream sout) \
 		$(use_enable svg) \
-		$(use_enable svga svgalib) \
 		$(use_enable taglib) \
 		$(use_enable theora) \
 		$(use_enable truetype freetype) \
