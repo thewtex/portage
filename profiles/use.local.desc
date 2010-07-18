@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5777 2010/07/16 10:07:57 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5786 2010/07/17 19:47:48 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -1072,6 +1072,7 @@ dev-scheme/scm:ioext - Commonly available I/O extensions: line I/O, file positio
 dev-scheme/scm:macro - C level support for hygienic and referentially transparent macros (syntax-rules macros).
 dev-scheme/scm:regex - String regular expression matching.
 dev-scheme/scm:unix - Support for: nice, acct, lstat, readlink, symlink, mknod and sync.
+dev-tcltk/expect-lite:debug - pull in packages needed for runtime interactive debugger
 dev-tcltk/tktreectrl:shellicon - shellicon extension
 dev-tex/dot2texi:pgf - Enable support for dev-tex/pgf (The TeX Portable Graphic Format)
 dev-tex/dot2texi:pstricks - Enable pstricks support
@@ -1101,7 +1102,7 @@ dev-util/metro:git - Enable support for git snapshots
 dev-util/metro:threads - Enable support for pbzip2 tarball packing/unpacking
 dev-util/mono-tools:webkit - Use net-libs/webkit-gtk for rendering.
 dev-util/nemiver:memoryview - Enable the optional hexadecimal memory inspection with app-editors/ghex.
-dev-util/netbeans:cxx - Adds Netbeans C/C++ Pack
+dev-util/netbeans:keychain - enables support for keychain in netbeans start script
 dev-util/nsis:config-log - Enable the logging facility (useful in debugging installers)
 dev-util/nvidia-cuda-sdk:cuda -  Build CUDA binaries. 
 dev-util/nvidia-cuda-sdk:emulation -  Build binaries for device emulation mode. These binaries will not require a CUDA-capable GPU to run. 
@@ -1677,6 +1678,7 @@ media-libs/glide-v3:voodoo2 - Support 3DFX Voodoo2 video cards
 media-libs/glide-v3:voodoo5 - Support 3DFX Voodoo4 and Voodoo5 video cards
 media-libs/imlib:deprecated - Enable deprecated GTK+-1.2 support
 media-libs/libass:enca - Enables support for charset discovery and conversion.
+media-libs/libbluray:aacs - Add support for decryption of AACS
 media-libs/libcanberra:alsa - Enables ALSA sound driver.
 media-libs/libcanberra:gstreamer - Enables gstreamer sound driver. Not useful when alsa or pulseaudio is available.
 media-libs/libcanberra:gtk - Enables building of gtk+ helper library, gtk+ runtime sound effects and the canberra-gtk-play utility. To enable the gtk+ sound effects add canberra-gtk-module to the colon separated list of modules in the GTK_MODULES environment variable.
@@ -2097,6 +2099,7 @@ media-video/mplayer:3dnowext - Enable 3dnowext cpu instructions
 media-video/mplayer:amr - Enables Adaptive Multi-Rate format support
 media-video/mplayer:ass - Internal SRT/SSA/ASS (SubRip / SubStation Alpha) subtitle support
 media-video/mplayer:bl - Blinkenlights video output
+media-video/mplayer:bluray - Enable playback of Blu-ray filesystems
 media-video/mplayer:bs2b - Enable Bauer stereophonic-to-binaural headphone filter
 media-video/mplayer:cdio - Use libcdio for CD support (instead of cdparanoia)
 media-video/mplayer:cpudetection - Enables runtime CPU detection (useful for bindist, compatibility on other CPUs)
@@ -2109,6 +2112,7 @@ media-video/mplayer:external-ffmpeg - Use shared FFmpeg libraries instead of sta
 media-video/mplayer:faac - Use external faac library for AAC encoding
 media-video/mplayer:faad - Use external faad library for AAC decoding
 media-video/mplayer:gmplayer - Build gmplayer, a GTK+ MPlayer gui (UNSUPPORTED)
+media-video/mplayer:libass - External SRT/SSA/ASS (SubRip / SubStation Alpha) subtitle support through libass
 media-video/mplayer:live - Enables live.com streaming media support
 media-video/mplayer:md5sum - Enables md5sum video output
 media-video/mplayer:mmxext - Enables mmx2 support
@@ -3622,15 +3626,8 @@ www-client/seamonkey:chatzilla - Build Mozilla's IRC client (default on)
 www-client/seamonkey:composer - Build Mozilla's HTML editor component (default on)
 www-client/seamonkey:custom-optimization - Fine-tune custom compiler optimizations
 www-client/seamonkey:mailclient - Build Mozilla's Mail client (default on)
-www-client/seamonkey:mozdevelop - Enable features for web developers (e.g. Venkman)
-www-client/seamonkey:moznocompose - Disable building of Mozilla's HTML editor component
-www-client/seamonkey:moznoirc - Disable building of Mozilla's IRC client
-www-client/seamonkey:moznomail - Disable building Mozilla's mail client
-www-client/seamonkey:moznopango - Disable x11-libs/pango during runtime
-www-client/seamonkey:moznoroaming - sroaming extension support
 www-client/seamonkey:roaming - Build sroaming extension support (default on)
 www-client/seamonkey:system-sqlite - Use the system-wide dev-db/sqlite installation with secure-delete enabled
-www-client/seamonkey:xforms - XForms is a standard to split up XHTML into XForms, instance data, and user interface
 www-client/uzbl:browser - Install the uzbl-browser script
 www-client/uzbl:experimental - Enable experimental branch
 www-client/uzbl:helpers - Optional tools used by uzbl scripts
