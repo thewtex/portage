@@ -1,20 +1,13 @@
---- a/vncstorepw/vncauth.c
-+++ b/vncstorepw/vncauth.c
-@@ -1,5 +1,6 @@
- #include <stdio.h>
- #include <stdlib.h>
-+#include <string.h>
- #include <sys/stat.h>
- #include "d3des.h"
- #if 0
---- a/vncstorepw/vncstorepw.c
-+++ b/vncstorepw/vncstorepw.c
-@@ -1,4 +1,5 @@
- #include <stdio.h>
-+#include <stdlib.h>
+--- a/vnc_unixsrc/vncviewer/sockets.c
++++ b/vnc_unixsrc/vncviewer/sockets.c
+@@ -32,6 +32,7 @@
+ #include <netdb.h>
+ #include <fcntl.h>
+ #include <assert.h>
++#include <ctype.h>
+ #include <vncviewer.h>
  
- extern int rfbEncryptAndStorePasswd(char *, char*);
- 
+ #ifndef SOL_IPV6
 --- a/Makefile
 +++ b/Makefile
 @@ -21,11 +21,11 @@
