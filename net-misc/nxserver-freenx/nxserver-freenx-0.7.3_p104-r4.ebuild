@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/nxserver-freenx/nxserver-freenx-0.7.3_p104-r4.ebuild,v 1.4 2010/05/26 18:21:11 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/nxserver-freenx/nxserver-freenx-0.7.3_p104-r4.ebuild,v 1.5 2010/07/19 15:15:10 voyageur Exp $
 
 EAPI=2
 
@@ -20,7 +20,8 @@ IUSE="+nxclient rdesktop vnc"
 
 DEPEND="x11-misc/gccmakedep
 	x11-misc/imake"
-RDEPEND="dev-tcltk/expect
+RDEPEND="!>=dev-libs/openssl-1.0
+	dev-tcltk/expect
 	media-fonts/font-cursor-misc
 	media-fonts/font-misc-misc
 	net-analyzer/gnu-netcat

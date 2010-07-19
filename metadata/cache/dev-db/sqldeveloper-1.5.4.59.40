@@ -1,5 +1,5 @@
-mssql? ( dev-java/jtds ) mysql? ( dev-java/jdbc-mysql ) sybase? ( dev-java/jtds )
->=virtual/jdk-1.5.0 mssql? ( dev-java/jtds ) mysql? ( dev-java/jdbc-mysql ) sybase? ( dev-java/jtds )
+mssql? ( dev-java/jtds:1.2 ) mysql? ( dev-java/jdbc-mysql:0 ) sybase? ( dev-java/jtds:1.2 ) >=dev-java/java-config-2.1.9-r1
+>=virtual/jre-1.5.0 mssql? ( dev-java/jtds:1.2 ) mysql? ( dev-java/jdbc-mysql:0 ) sybase? ( dev-java/jtds:1.2 ) >=dev-java/java-config-2.1.9-r1
 0
 sqldeveloper-1.5.4.59.40-no-jre.zip
 fetch
@@ -7,14 +7,14 @@ http://www.oracle.com/technology/products/database/sql_developer/
 OTN
 Oracle SQL Developer is a graphical tool for database development
 ~amd64 x86
-eutils multilib portability toolchain-funcs
-mssql mysql sybase
+eutils java-pkg-2 java-utils-2 multilib portability toolchain-funcs versionator
+mssql mysql sybase elibc_FreeBSD
 
 
 
 2
 
-configure install nofetch postinst prepare
+compile configure install nofetch postinst preinst prepare setup
 
 
 
