@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/mwlib/mwlib-0.12.12.ebuild,v 1.5 2010/07/03 21:52:22 arfrever Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/mwlib/mwlib-0.12.13.ebuild,v 1.1 2010/07/20 01:48:44 arfrever Exp $
 
 EAPI="3"
 PYTHON_DEPEND="2:2.5"
@@ -34,3 +34,5 @@ RDEPEND="dev-lang/perl
 	|| ( >=dev-lang/python-2.6 >=dev-python/simplejson-1.3 )"
 DEPEND="${RDEPEND}
 	dev-python/setuptools"
+
+PYTHON_CFLAGS=("2.* + -fno-strict-aliasing")

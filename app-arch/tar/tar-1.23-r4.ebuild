@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-arch/tar/tar-1.23-r3.ebuild,v 1.1 2010/07/18 21:05:50 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-arch/tar/tar-1.23-r4.ebuild,v 1.1 2010/07/19 21:52:44 vapier Exp $
 
 EAPI="2"
 
@@ -22,9 +22,6 @@ DEPEND="${RDEPEND}
 	nls? ( >=sys-devel/gettext-0.10.35 )"
 
 src_prepare() {
-	unpack ${A}
-	cd "${S}"
-
 	epatch "${FILESDIR}"/${P}-revert-pipe.patch #309001
 	epatch "${FILESDIR}"/${P}-strncpy.patch #317139
 	epatch "${FILESDIR}"/${P}-symlink-k-hang.patch #327641

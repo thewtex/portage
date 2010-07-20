@@ -1,10 +1,12 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/universalindentgui/universalindentgui-1.1.0-r2.ebuild,v 1.4 2010/05/24 22:03:39 wired Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/universalindentgui/universalindentgui-1.1.0-r3.ebuild,v 1.1 2010/07/19 19:43:38 wired Exp $
 
 EAPI="2"
 
-inherit eutils qt4-r2
+PYTHON_DEPEND="python? 2"
+
+inherit eutils qt4-r2 python
 
 DESCRIPTION="Cross platform compatible GUI for several code formatters, beautifiers and indenters."
 HOMEPAGE="http://universalindent.sourceforge.net/"
@@ -33,10 +35,13 @@ RDEPEND="${DEPEND}
 			perl? ( dev-lang/perl ) )
 	perl? ( dev-perl/perltidy )
 	php? ( dev-php/PEAR-PHP_Beautifier )
-	python? ( dev-lang/python )
 	ruby? ( dev-lang/ruby )
 	xml? ( dev-util/xmlindent )
 "
+
+pkg_setup() {
+	use python && python_set_active_version 2
+}
 
 src_prepare() {
 	# .pro fixes
@@ -81,6 +86,7 @@ src_prepare() {
 		UEXAMPLES="${UEXAMPLES} py"
 		UINDENTERS="${UINDENTERS} pindent.py"
 		UIGUIFILES="${UIGUIFILES} pindent"
+		python_convert_shebangs -r 2 .
 	fi
 
 	if use ruby; then
@@ -117,7 +123,9 @@ src_prepare() {
 		fi
 	done
 
-	epatch "${FILESDIR}"/${P}-gcc45.patch
+	epatch "${FILESDIR}"/"${P}"-gcc45.patch
+	# bug #325811
+	epatch "${FILESDIR}"/"${P}"-astyle_pwd_fix.patch
 }
 
 src_configure() {
