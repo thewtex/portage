@@ -1,13 +1,13 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/clang/clang-9999.ebuild,v 1.2 2010/06/02 08:29:27 voyageur Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/clang/clang-9999.ebuild,v 1.3 2010/07/20 09:35:43 voyageur Exp $
 
 EAPI=2
 
 RESTRICT_PYTHON_ABIS="3.*"
 SUPPORT_PYTHON_ABIS="1"
 
-inherit subversion eutils python
+inherit subversion eutils multilib python
 
 DESCRIPTION="C language family frontend for LLVM"
 HOMEPAGE="http://clang.llvm.org/"
@@ -83,6 +83,12 @@ src_configure() {
 	# Skip llvm-gcc parts even if installed
 	CONF_FLAGS="${CONF_FLAGS} --with-llvmgccdir=/dev/null"
 
+	# Try to get current C++ headers path
+	CONF_FLAGS="${CONF_FLAGS} --with-cxx-include-root=$(gcc-config -X| cut -d: -f1)/include/g++-v4"
+	CONF_FLAGS="${CONF_FLAGS} --with-cxx-include-arch=$CHOST"
+	if has_multilib_profile; then
+		CONF_FLAGS="${CONF_FLAGS} --with-cxx-include-32bit-dir=32"
+	fi
 	econf ${CONF_FLAGS} || die "econf failed"
 }
 
@@ -129,6 +135,9 @@ src_install() {
 
 pkg_postinst() {
 	python_mod_optimize clang
+	elog "C++ headers search path is hardcoded to the active gcc profile one"
+	elog "If you change the active gcc profile, or update gcc to a new version,"
+	elog "you will have to remerge this package to update the search path"
 }
 
 pkg_postrm() {

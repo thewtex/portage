@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-cdr/cdw/cdw-9999.ebuild,v 1.1 2010/07/15 22:57:22 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-cdr/cdw/cdw-9999.ebuild,v 1.2 2010/07/20 15:38:22 mr_bones_ Exp $
 
 EAPI=2
 ECVS_SERVER="cdw.cvs.sourceforge.net:/cvsroot/cdw"
@@ -30,6 +30,6 @@ src_prepare() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die "emake install failed."
-	dodoc AUTHORS ChangeLog NEWS THANKS
+	emake DESTDIR="${D}" install || die
+	dodoc AUTHORS ChangeLog NEWS README THANKS cdw.conf
 }

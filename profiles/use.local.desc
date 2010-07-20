@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5788 2010/07/18 11:48:03 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5793 2010/07/20 07:27:53 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -796,6 +796,7 @@ dev-lang/logtalk:yappl - Support YAP back-end compiler
 dev-lang/lua:deprecated - make deprecated data structures/routines available
 dev-lang/luarocks:curl - Uses net-misc/curl for fetching lua packages instead of net-misc/wget.
 dev-lang/luarocks:openssl - Uses dev-libs/openssl for verifying lua packages instead of md5sum.
+dev-lang/mercury:erlang - Support Mercury Erlang grade
 dev-lang/mlton:binary - install a binary version (need to do this once to bootstrap, until smlnj is supported)
 dev-lang/mono:moonlight - Generate Moonlight 2.1 assemblies
 dev-lang/mono:xen - Make mono generate code that is considerably faster on xen VMs but slightly slower on for normal systems.
@@ -2097,7 +2098,7 @@ media-video/mjpegtools:yv12 - Enables support for the YV12 pixel format
 media-video/motiontrack:multiprocess - Enables multi-process support (SMP/cluster) for motiontrack programs
 media-video/mplayer:3dnowext - Enable 3dnowext cpu instructions
 media-video/mplayer:amr - Enables Adaptive Multi-Rate format support
-media-video/mplayer:ass - Internal SRT/SSA/ASS (SubRip / SubStation Alpha) subtitle support
+media-video/mplayer:ass - SRT/SSA/ASS (SubRip / SubStation Alpha) subtitle support
 media-video/mplayer:bl - Blinkenlights video output
 media-video/mplayer:bluray - Enable playback of Blu-ray filesystems
 media-video/mplayer:bs2b - Enable Bauer stereophonic-to-binaural headphone filter
@@ -2112,7 +2113,6 @@ media-video/mplayer:external-ffmpeg - Use shared FFmpeg libraries instead of sta
 media-video/mplayer:faac - Use external faac library for AAC encoding
 media-video/mplayer:faad - Use external faad library for AAC decoding
 media-video/mplayer:gmplayer - Build gmplayer, a GTK+ MPlayer gui (UNSUPPORTED)
-media-video/mplayer:libass - External SRT/SSA/ASS (SubRip / SubStation Alpha) subtitle support through libass
 media-video/mplayer:live - Enables live.com streaming media support
 media-video/mplayer:md5sum - Enables md5sum video output
 media-video/mplayer:mmxext - Enables mmx2 support
@@ -2620,7 +2620,6 @@ net-irc/xchat-gnome:sound - Enable sound event support with media-libs/libcanber
 net-irc/xchat-xsys:audacious - Enables media-sound/audacious integration
 net-irc/znc:ares - Enables support for asynchronous DNS using the c-ares library
 net-irc/znc:extras - Enable some additional modules
-net-irc/znc:nomodules - Don't build modules
 net-libs/aqbanking:chipcard - Enable support for DDV/RSA-chipcards
 net-libs/clinkcc:mythtv - Enable MythTV support
 net-libs/courier-authlib:vpopmail - Enable vpopmail support
@@ -2944,6 +2943,7 @@ net-p2p/btg:upnp - Enable support for UPnP
 net-p2p/btg:webinterface - install webBTG
 net-p2p/dbhub:switch_user - Enable support for switching user
 net-p2p/deluge:webinterface - Install dependencies needed for the web interface 
+net-p2p/eiskaltdcpp:upnp - Forward ports using UPnP
 net-p2p/fms:frost - Add support for frost boards
 net-p2p/freenet:freemail - Add Freemail support
 net-p2p/gift:ares - pull in Ares plugin
@@ -3100,7 +3100,6 @@ sci-chemistry/mopac7:gmxmopac7 - Add support library for gromacs
 sci-chemistry/oasis:minimal - Restricts functionality on free software
 sci-chemistry/openbabel:swig - Use swig to rebuild language bindings.
 sci-chemistry/pdb2pqr:opal - Add web interface via opal
-sci-chemistry/prekin:gui - build gui support
 sci-chemistry/pymol:apbs - Install the apbs plugin
 sci-chemistry/pymol:numpy - Compile numpy support
 sci-chemistry/pymol:shaders - Build with Shaders support - good for high-end 3D video cards.

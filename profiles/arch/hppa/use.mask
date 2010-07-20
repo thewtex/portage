@@ -1,6 +1,23 @@
 # Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
-# # $Header: /var/cvsroot/gentoo-x86/profiles/arch/hppa/use.mask,v 1.21 2010/07/10 16:26:48 jer Exp $
+# # $Header: /var/cvsroot/gentoo-x86/profiles/arch/hppa/use.mask,v 1.27 2010/07/20 17:04:08 jer Exp $
 # DON'T TOUCH THIS FILE. Instead, file a bug and assign it to <hppa@gentoo.org>.
+
+# Jeroen Roovers <jer@gentoo.org> (20 Jul 2010)
+# Mask USE=gnome entirely (bug #324511)
+libnotify
+gconf
+gnome
+gnome-keyring
+
+# Jeroen Roovers <jer@gentoo.org> (19 Jul 2010)
+# Masked because of missing gnome-base/gnome-panel
+# dependency (bug #324511)
+applet
+
+# Jeroen Roovers <jer@gentoo.org> (19 Jul 2010)
+# New media-libs/schroedinger depends on dev-lang/orc
+# which is not currently ready yet (bug #316553)
+schroedinger
 
 # Jeroen Roovers <jer@gentoo.org> (10 Jul 2010)
 # libvpx is not ready for HPPA
