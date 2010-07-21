@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5794 2010/07/20 18:47:48 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5799 2010/07/21 14:07:52 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -1724,9 +1724,6 @@ media-libs/opencv:sse3 - Enable optimization for SSE3 capable chips
 media-libs/openjpeg:tools - Installs tools (j2k_to_image and image_to_j2k)
 media-libs/panda3d:fmod - Enables support for using mod files for audio support
 media-libs/panda3d:nspr - Enables support for the Netscape Portable Runtime, used in network interface functionality (ie. multiplayer online game networking).
-media-libs/ploticus:cpulimit - Limit cpu usage when generating graphics
-media-libs/ploticus:flash - Adds support for creating SWF files using Ming
-media-libs/ploticus:svgz - Compressed svg graphics support
 media-libs/sdif:ftruncate - Enables usage of ftruncate v. truncate
 media-libs/sdl-mixer:midi - basic support for MIDI files
 media-libs/sdl-mixer:wav - support WAVE files
@@ -2354,6 +2351,7 @@ net-analyzer/zabbix:proxy - Enable proxy support
 net-analyzer/zabbix:server - Enable zabbix server
 net-dialup/capi4k-utils:fax - Install capi-fax demo programs
 net-dialup/capi4k-utils:pppd - Installs pppdcapiplugin modules
+net-dialup/capi4k-utils:rcapid - Installs rcapid daemon
 net-dialup/freeradius:edirectory - Enables Novell eDirectory integration
 net-dialup/freeradius:frascend - Enables Ascend binary mode
 net-dialup/freeradius:frxp - Enables experimental modules
@@ -2616,6 +2614,9 @@ net-libs/clinkcc:mythtv - Enable MythTV support
 net-libs/courier-authlib:vpopmail - Enable vpopmail support
 net-libs/cvm:vpopmail - Enable vpopmail support
 net-libs/farsight2:upnp - Enable UPnP IGD support
+net-libs/gssdp:introspection - Use dev-libs/gobject-introspection for introspection
+net-libs/gupnp:introspection - Use dev-libs/gobject-introspection for introspection
+net-libs/gupnp-av:introspection - Use dev-libs/gobject-introspection for introspection
 net-libs/iax:snomhack - Use slower memset for SNOM phoneem
 net-libs/libeXosip:srv - enable support for SRV records DNS queries
 net-libs/libesmtp:ssl -  Enable support for advanced SMTP authentication methods, like NTML and STARTTLS. Also use OpenSSL's MD5 implementation over internal version. 
@@ -2715,6 +2716,7 @@ net-mail/dovecot:dbox - Adds dbox storage support
 net-mail/dovecot:managesieve - Adds managesieve protocol support
 net-mail/dovecot:mdbox - Adds mdbox storage support
 net-mail/dovecot:pop3d - Build pop3d support
+net-mail/dovecot:sdbox - Adds sdbox storage support
 net-mail/dovecot:sieve - Build the sieve plugin
 net-mail/dovecot:vpopmail - Add vpopmail support
 net-mail/fetchmail:hesiod - Enable support for hesiod
@@ -3597,8 +3599,6 @@ www-client/epiphany:nss - Import passwords from older gecko based www-client/epi
 www-client/icecat:custom-optimization - Fine-tune custom compiler optimizations
 www-client/icecat:ipc - Use inter-process communication between tabs and plugins. Allows for greater stability in case of plugin crashes
 www-client/icecat:system-sqlite - Use the system-wide dev-db/sqlite installation with secure-delete enabled
-www-client/kazehakase:hyperestraier - enable hyperestraier support for full-text search in history
-www-client/kazehakase:webkit - Use net-libs/webkit-gtk for rendering rather than net-libs/xulrunner
 www-client/lynx:gnutls - Use gnutls library for HTTPS support (openssl is the default library for HTTPS support).
 www-client/lynx:ssl - Enable HTTPS support.
 www-client/midori:html - Install HTML documentation
