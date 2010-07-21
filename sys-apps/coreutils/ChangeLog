@@ -1,17 +1,70 @@
 # ChangeLog for sys-apps/coreutils
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/coreutils/ChangeLog,v 1.283 2010/01/08 03:35:07 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/coreutils/ChangeLog,v 1.302 2010/07/19 20:42:59 vapier Exp $
 
-*coreutils-8.5 (30 Jun 2010)
+*coreutils-8.5-r1 (19 Jul 2010)
 
-  30 Jun 2010; Daniel Robbins <drobbins@funtoo.org> +coreutils-8.5.ebuild:
-  New coreutils imported from Gentoo.
+  19 Jul 2010; Mike Frysinger <vapier@gentoo.org> +coreutils-8.5-r1.ebuild:
+  Include i18n patch from Fedora #328827 by Arago.
+
+  19 Jul 2010; Mike Frysinger <vapier@gentoo.org> coreutils-8.5.ebuild:
+  Stabilize for alpha/arm/ia64/s390/sh #327147.
+
+  19 Jul 2010; Mike Frysinger <vapier@gentoo.org> coreutils-8.5.ebuild:
+  Workaround stdbuf build failure when USE=static #321821 by Igor
+  Novgorodov.
+
+  14 Jul 2010; Markos Chandras <hwoarang@gentoo.org> coreutils-8.5.ebuild:
+  Stable on amd64 wrt bug #327147
+
+  11 Jul 2010; Christian Faulhammer <fauli@gentoo.org> coreutils-8.5.ebuild:
+  stable x86, bug 327147
+
+  10 Jul 2010; Brent Baude <ranger@gentoo.org> coreutils-8.5.ebuild:
+  Marking coreutils-8.5 ppc64 for bug 327147
+
+  10 Jul 2010; Jeroen Roovers <jer@gentoo.org> coreutils-8.5.ebuild:
+  Stable for HPPA (bug #327147).
+
+  24 May 2010; <nixnut@gentoo.org> coreutils-8.4.ebuild:
+  ppc stable #311827
+
+  22 May 2010; Raúl Porcel <armin76@gentoo.org> coreutils-8.4.ebuild:
+  sparc stable wrt #311827
+
+  20 May 2010; Mike Frysinger <vapier@gentoo.org> coreutils-8.4.ebuild:
+  Mark alpha/arm/ia64/s390/sh stable #311827.
+
+  11 May 2010; Brent Baude <ranger@gentoo.org> coreutils-8.4.ebuild:
+  Marking coreutils-8.4 ppc64 for bug 311827
+
+  08 May 2010; Mike Frysinger <vapier@gentoo.org> coreutils-8.4.ebuild:
+  Tweak tests in i18n patch #317565 by T Chan.
+
+*coreutils-8.5 (24 Apr 2010)
+
+  24 Apr 2010; Mike Frysinger <vapier@gentoo.org> +coreutils-8.5.ebuild:
+  Version bump.
+
+  08 Apr 2010; Christian Faulhammer <fauli@gentoo.org> coreutils-8.4.ebuild:
+  stable x86, bug 311827
+
+  05 Apr 2010; Markos Chandras <hwoarang@gentoo.org> coreutils-8.4.ebuild:
+  Stable on amd64 wrt bug #311827
+
+  29 Mar 2010; Jeroen Roovers <jer@gentoo.org> coreutils-8.4.ebuild:
+  Stable for HPPA (bug #311827).
+
+  28 Mar 2010; Mike Frysinger <vapier@gentoo.org> coreutils-8.4.ebuild:
+  Force statfs tests when cross-compiling #311569 by Stephen Lewis.
+
+  24 Jan 2010; Mike Frysinger <vapier@gentoo.org> coreutils-8.4.ebuild:
+  Disable selinux tests when USE=-selinux #301782 by Philipp Riegger.
 
 *coreutils-8.4 (13 Jan 2010)
 
-  13 Jan 2010; Daniel Robbins <drobbins@funtoo.org> +coreutils-8.4.ebuild:
-  new coreutils fixes upstream glibc 2.7-2.9 build failure in coreutils
-  8.3. 
+  13 Jan 2010; Mike Frysinger <vapier@gentoo.org> +coreutils-8.4.ebuild:
+  Version bump.
 
 *coreutils-8.3 (08 Jan 2010)
 
@@ -33,7 +86,7 @@
 *coreutils-8.1 (19 Nov 2009)
 
   19 Nov 2009; Mike Frysinger <vapier@gentoo.org> +coreutils-8.1.ebuild:
-  Version bump #288253 by RafaÅ MuÅ¼yÅo.
+  Version bump #288253 by Rafał Mużyło.
 
   09 Nov 2009; Mike Frysinger <vapier@gentoo.org> coreutils-7.6.ebuild:
   Use new packager flags to tag binaries with Gentoo info.
@@ -55,7 +108,7 @@
   Inform people to reload their LS_COLOR env settings #288693 by Dirkjan
   Ochtman.
 
-  10 Oct 2009; RaÃºl Porcel <armin76@gentoo.org> coreutils-7.5.ebuild:
+  10 Oct 2009; Raúl Porcel <armin76@gentoo.org> coreutils-7.5.ebuild:
   alpha/ia64/m68k/s390/sh/sparc stable wrt #287219
 
   09 Oct 2009; Mike Frysinger <vapier@gentoo.org> coreutils-7.6.ebuild:
@@ -68,7 +121,7 @@
   05 Oct 2009; Markus Meier <maekke@gentoo.org> coreutils-7.5.ebuild:
   amd64/arm/x86 stable, bug #287219
 
-  03 Oct 2009; RaÃºl Porcel <armin76@gentoo.org> coreutils-7.4.ebuild:
+  03 Oct 2009; Raúl Porcel <armin76@gentoo.org> coreutils-7.4.ebuild:
   ia64/m68k/s390/sh/sparc stable wrt #281699
 
 *coreutils-7.6 (23 Sep 2009)
@@ -125,9 +178,9 @@
 
   27 Apr 2009; Mike Frysinger <vapier@gentoo.org> coreutils-7.1,
   coreutils-7.2:
-  Control gmp support via USE=gmp #267226 by RaÃºl Porcel.
+  Control gmp support via USE=gmp #267226 by Raúl Porcel.
 
-  18 Apr 2009; RaÃºl Porcel <armin76@gentoo.org> coreutils-7.1.ebuild:
+  18 Apr 2009; Raúl Porcel <armin76@gentoo.org> coreutils-7.1.ebuild:
   arm/ia64/sh/sparc stable wrt #265614
 
   18 Apr 2009; Markus Meier <maekke@gentoo.org> coreutils-7.1:
@@ -174,7 +227,7 @@
   Version bump #242566.
 
   27 Nov 2008; Mike Frysinger <vapier@gentoo.org> coreutils-6.12-r2.ebuild:
-  Block sys-apps/stat #248312 by Diego E. PettenÃ².
+  Block sys-apps/stat #248312 by Diego E. Pettenò.
 
 *coreutils-6.12-r2 (16 Oct 2008)
 *coreutils-6.10-r3 (16 Oct 2008)
@@ -208,7 +261,7 @@
   24 Apr 2008; <welp@gentoo.org> coreutils-6.10-r2.ebuild:
   Stable on amd64; bug 218927
 
-  24 Apr 2008; RaÃºl Porcel <armin76@gentoo.org> coreutils-6.10-r2.ebuild:
+  24 Apr 2008; Raúl Porcel <armin76@gentoo.org> coreutils-6.10-r2.ebuild:
   alpha/ia64/sparc/x86 stable wrt #218927
 
 *coreutils-6.11 (19 Apr 2008)
@@ -225,7 +278,7 @@
   14 Apr 2008; Markus Rothe <corsair@gentoo.org> coreutils-6.10-r1.ebuild:
   Stable on ppc64; bug #217239
 
-  14 Apr 2008; RaÃºl Porcel <armin76@gentoo.org> coreutils-6.10-r1.ebuild:
+  14 Apr 2008; Raúl Porcel <armin76@gentoo.org> coreutils-6.10-r1.ebuild:
   alpha/ia64/sparc stable wrt #217239
 
   13 Apr 2008; Mike Frysinger <vapier@gentoo.org> coreutils-6.10-r1.ebuild,
@@ -241,10 +294,10 @@
   Block older versions of util-linux for the lazy who havent updated in a
   while #217482.
 
-  13 Apr 2008; Benedikt BÃ¶hm <hollow@gentoo.org> coreutils-6.10-r1.ebuild:
+  13 Apr 2008; Benedikt Böhm <hollow@gentoo.org> coreutils-6.10-r1.ebuild:
   amd64 stable wrt #217239
 
-  12 Apr 2008; Dawid WÄgliÅski <cla@gentoo.org> coreutils-6.10-r1.ebuild:
+  12 Apr 2008; Dawid Węgliński <cla@gentoo.org> coreutils-6.10-r1.ebuild:
   Stable on x86 (bug #217239)
 
 *coreutils-6.10-r2 (12 Apr 2008)
@@ -277,7 +330,7 @@
   +files/gnulib-futimens-rename.patch, coreutils-6.9-r1.ebuild:
   Fix from upstream gnulib for futimens handling with newer glibc #180764.
 
-  02 Jul 2007; Piotr JaroszyÅski <peper@gentoo.org> coreutils-6.4.ebuild,
+  02 Jul 2007; Piotr Jaroszyński <peper@gentoo.org> coreutils-6.4.ebuild,
   coreutils-6.7.ebuild, coreutils-6.7-r1.ebuild, coreutils-6.9.ebuild,
   coreutils-6.9-r1.ebuild:
   (QA) RESTRICT clean up.
@@ -288,7 +341,7 @@
   13 Jun 2007; Mike Frysinger <vapier@gentoo.org> coreutils-6.9-r1.ebuild:
   Add /usr/bin/uname symlink for autotools.
 
-  12 Jun 2007; RaÃºl Porcel <armin76@gentoo.org> coreutils-6.9-r1.ebuild:
+  12 Jun 2007; Raúl Porcel <armin76@gentoo.org> coreutils-6.9-r1.ebuild:
   ia64 stable wrt #181624
 
   11 Jun 2007; Gustavo Zacarias <gustavoz@gentoo.org>
@@ -298,7 +351,7 @@
   11 Jun 2007; Markus Rothe <corsair@gentoo.org> coreutils-6.9-r1.ebuild:
   Stable on ppc64; bug #181624
 
-  11 Jun 2007; RaÃºl Porcel <armin76@gentoo.org> coreutils-6.9-r1.ebuild:
+  11 Jun 2007; Raúl Porcel <armin76@gentoo.org> coreutils-6.9-r1.ebuild:
   alpha/x86 stable wrt #181624
 
   11 Jun 2007; nixnut <nixnut@gentoo.org> coreutils-6.9-r1.ebuild:
@@ -315,7 +368,7 @@
   30 Apr 2007; Mike Frysinger <vapier@gentoo.org> +coreutils-6.9-r1.ebuild:
   Fix ls -x error #173032 and install man pages #105188.
 
-  24 Apr 2007; Bryan Ãstergaard <kloeri@gentoo.org>
+  24 Apr 2007; Bryan Østergaard <kloeri@gentoo.org>
   coreutils-6.7-r1.ebuild:
   Stable on Mips, bug 172003.
 
@@ -359,11 +412,11 @@
   24 Mar 2007; Mike Frysinger <vapier@gentoo.org> +coreutils-6.9.ebuild:
   Version bump.
 
-  13 Feb 2007; Bryan Ãstergaard <kloeri@gentoo.org>
+  13 Feb 2007; Bryan Østergaard <kloeri@gentoo.org>
   coreutils-6.7-r1.ebuild:
   Stable on Alpha.
 
-  22 Jan 2007; Bryan Ãstergaard <kloeri@gentoo.org>
+  22 Jan 2007; Bryan Østergaard <kloeri@gentoo.org>
   coreutils-6.7-r1.ebuild:
   Stable on IA64.
 
@@ -413,12 +466,12 @@
   18 Sep 2006; Mike Frysinger <vapier@gentoo.org> +coreutils-6.2.ebuild:
   Version bump.
 
-  04 Sep 2006; Diego PettenÃ² <flameeyes@gentoo.org> coreutils-5.97.ebuild,
+  04 Sep 2006; Diego Pettenò <flameeyes@gentoo.org> coreutils-5.97.ebuild,
   coreutils-6.1.ebuild:
   Backport the kernel_linux fix to 5.97 and drop keyword from 6.1 as it
   doesn't build right now.
 
-  04 Sep 2006; Diego PettenÃ² <flameeyes@gentoo.org> coreutils-6.1.ebuild:
+  04 Sep 2006; Diego Pettenò <flameeyes@gentoo.org> coreutils-6.1.ebuild:
   Remove kernel_linux conditional for acl and attr, acl can be use.masked for
   this package on non-linux profiles now.
 
@@ -427,7 +480,7 @@
   20 Aug 2006; Mike Frysinger <vapier@gentoo.org> +coreutils-6.1.ebuild:
   Version bump.
 
-  06 Jul 2006; Diego PettenÃ² <flameeyes@gentoo.org> coreutils-5.96.ebuild,
+  06 Jul 2006; Diego Pettenò <flameeyes@gentoo.org> coreutils-5.96.ebuild,
   coreutils-5.97.ebuild:
   Drop keyword from old version, and make acl deps being actual dep only on
   Linux. *BSD does not require those deps although acl works fine.
@@ -437,10 +490,10 @@
   25 Jun 2006; Mike Frysinger <vapier@gentoo.org> +coreutils-5.97.ebuild:
   Version bump.
 
-  01 Jun 2006; Diego PettenÃ² <flameeyes@gentoo.org> coreutils-5.96.ebuild:
+  01 Jun 2006; Diego Pettenò <flameeyes@gentoo.org> coreutils-5.96.ebuild:
   Restrict confcache as per bug #134459.
 
-  23 May 2006; Diego PettenÃ² <flameeyes@gentoo.org> coreutils-5.96.ebuild:
+  23 May 2006; Diego Pettenò <flameeyes@gentoo.org> coreutils-5.96.ebuild:
   Add ~x86-fbsd keyword. Change strategy for non-GNU userlands, instead of
   prefixing with 'g' (that might collide with other binaries as in FreeBSD),
   install in /usr/libexec/gnu. Don't force external regex on
@@ -476,7 +529,7 @@
   12 Apr 2006; Joseph Jezak <josejx@gentoo.org> coreutils-5.94-r1.ebuild:
   Marked ppc stable for bug #129546.
 
-  12 Apr 2006; Bryan Ãstergaard <kloeri@gentoo.org
+  12 Apr 2006; Bryan Østergaard <kloeri@gentoo.org
   coreutils-5.94-r1.ebuild:
   Stable on alpha, bug 129546.
 
@@ -565,7 +618,7 @@
   +coreutils-5.3.0-r1.ebuild:
   Update the i18n patch to fix cut again as well as expand #104286 by peteru.
 
-  30 Aug 2005; Diego PettenÃ² <flameeyes@gentoo.org> coreutils-5.3.0.ebuild:
+  30 Aug 2005; Diego Pettenò <flameeyes@gentoo.org> coreutils-5.3.0.ebuild:
   Remove charset.alias if it's present, only libiconv should install it.
 
 *coreutils-5.3.0 (30 Aug 2005)
@@ -582,7 +635,7 @@
   #104087.
 
   18 Aug 2005; Mike Frysinger <vapier@gentoo.org> coreutils-5.2.1-r6.ebuild:
-  Merge support for using coreutils on non-GNU systems by Diego PettenÃ²
+  Merge support for using coreutils on non-GNU systems by Diego Pettenò
   #101218.
 
   28 Jun 2005; Joshua Kinard <kumba@gentoo.org> coreutils-5.2.1-r6.ebuild:

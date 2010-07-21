@@ -5,10 +5,6 @@
 # unmasked in unstable overnight).
 >=dev-lang/perl-5.12
 
-# Daniel Robbins <drobbins@funtoo.org> (09 Jul 2010)
-# glib-2.24.1-r1 will not build and has other issues
->=dev-libs/glib-2.24.1-r1
-
 # Daniel Robbins <drobbins@funtoo.org> (07 Jul 2010)
 # allow users to upgrade
 =dev-lang/python-2.7*
@@ -21,10 +17,6 @@
 # This package is broken irt libxml2-2.7.7 (bug 316377)
 =sys-libs/zlib-1.2.5
 
-# Piotr Karbowski <jabberuser@gmail.com> (20 April 2010)
-# Hardmask live version.
-=media-sound/mpd-9999
-
 # Jeff Mitchell <funtoo@jefferai.org> (22 Feb 2010)
 # MySQL 5.1.43+ breaks a bunch of things, including Amarok, grass, and Akonadi
 # See Gentoo bugs 306315, 306377, 306155
@@ -33,10 +25,6 @@
 # Daniel Robbins <drobbins@funtoo.org> (28 Jan 2010)
 # man-1.6f-r4 breaks metro builds - looks like nice patches but needed more upstream testing
 =sys-apps/man-1.6f-r4
-
-# Daniel Robbins <drobbins@funtoo.org> (09 Jan 2010)
-# coreutils-8.3 has a build failure for glibc-2.7 thru 2.9. Fixed in 8.4+ 
-=sys-apps/coreutils-8.3*
 
 # Daniel Robbins <drobbins@funtoo.org> (28 Dec 2009)
 # Requested by slashbeast (Piotr Karbowski) in #funtoo due to /etc/cron.hourly
@@ -50,13 +38,6 @@
 # Daniel Robbins <drobbins@funtoo.org> (2 Dec 2009)
 # Masking as per http://blog.flameeyes.eu/2009/12/01/gentoo-service-announcement-keep-clear-of-gnu-patch-2-6
 >=sys-devel/patch-2.6
-
-# Daniel Robbins <drobbins@funtoo.org> (29 Sep 2009)
-# readline-6.0_p4 does not build in metro stage builds. It
-# cannot find its own headers and relies on a prior 
-# readline to be installed
-
-=sys-libs/readline-6.0_p4
 
 # Andrew Kirch <trelane@trelane.net> (10 June 2009)
 # Paludis does not support the profiles/package.mask hierarchy.
