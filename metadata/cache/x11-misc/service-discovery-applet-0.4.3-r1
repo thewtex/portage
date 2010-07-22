@@ -1,5 +1,5 @@
->=dev-lang/python-2.4 dev-python/libgnome-python dev-python/gconf-python dev-python/gnome-applets-python >=dev-python/pygtk-2.0 gnome-base/gconf dev-python/dbus-python net-dns/avahi >=dev-util/intltool-0.21 >=sys-apps/sed-4
->=dev-lang/python-2.4 dev-python/libgnome-python dev-python/gconf-python dev-python/gnome-applets-python >=dev-python/pygtk-2.0 gnome-base/gconf dev-python/dbus-python net-dns/avahi
+>=dev-lang/python-2.4 dev-python/libgnome-python dev-python/gconf-python dev-python/gnome-applets-python >=dev-python/pygtk-2.0 gnome-base/gconf dev-python/dbus-python net-dns/avahi[gdbm,python] dev-util/intltool >=sys-apps/sed-4
+>=dev-lang/python-2.4 dev-python/libgnome-python dev-python/gconf-python dev-python/gnome-applets-python >=dev-python/pygtk-2.0 gnome-base/gconf dev-python/dbus-python net-dns/avahi[gdbm,python]
 0
 http://0pointer.de/~sebest/service-discovery-applet-0.4.3.tar.gz
 
@@ -7,14 +7,14 @@ http://0pointer.de/~sebest/
 GPL-2
 Service Discovery Applet
 ~amd64 ~x86
-eutils fdo-mime gnome.org gnome2 gnome2-utils libtool multilib portability toolchain-funcs
+fdo-mime gnome.org gnome2 gnome2-utils libtool multilib toolchain-funcs
 debug
 
 
 
+2
 
-
-compile install postinst postrm preinst setup unpack
+compile configure install postinst postrm preinst prepare setup unpack
 
 
 
