@@ -1,0 +1,32 @@
+diff -r b4d776afda11 clewn/gdb.py
+--- a/clewn/gdb.py	Tue Jul 20 10:43:49 2010 +0200
++++ b/clewn/gdb.py	Fri Jul 23 17:08:15 2010 -0500
+@@ -94,7 +94,7 @@
+ 
+ RE_VERSION = r'GNU\s*gdb[^\d]*(?P<version>[0-9.]+)'            \
+              r'# RE: gdb version'
+-RE_COMPLETION = r'^(?P<cmd>\S+)\s*(?P<arg>\S+)(?P<rest>.*)$'    \
++RE_COMPLETION = r'^(?![=*])(?P<cmd>\S+)\s*(?P<arg>\S+)(?P<rest>.*)$'    \
+                 r'# RE: cmd 1st_arg_completion'
+ RE_MIRECORD = r'^(?P<token>\d\d\d)[\^*+=](?P<result>.*)$'       \
+               r'# gdb/mi record'
+@@ -425,6 +425,9 @@
+ 
+             if cmd in nocomplt_cmds:
+                 continue
++            # ignore async records
++            elif cmd.startswith("=") or cmd.startswith("*"):
++                continue
+             elif '-' in cmd:
+                 dash_cmds.append(cmd)
+             else:
+@@ -442,6 +445,9 @@
+                     self.cmds[cmd].append(arg)
+                 else:
+                     warning('invalid completion returned by gdb: %s', result)
++            # ignore async records
++            elif result.startswith("=") or cmd.startswith("*"):
++                continue
+             else:
+                 error('invalid completion returned by gdb: %s', result)
+ 
