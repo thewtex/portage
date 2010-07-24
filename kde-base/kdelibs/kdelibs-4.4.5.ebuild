@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/kdelibs/kdelibs-4.4.5.ebuild,v 1.3 2010/07/23 23:00:29 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/kdelibs/kdelibs-4.4.5.ebuild,v 1.5 2010/07/24 10:37:55 scarabeus Exp $
 
 EAPI="3"
 
@@ -30,9 +30,9 @@ COMMONDEPEND="
 	media-libs/fontconfig
 	media-libs/freetype:2
 	media-libs/giflib
-	virtual/jpeg
 	>=media-libs/libpng-1.4
 	sys-libs/zlib
+	virtual/jpeg
 	>=x11-misc/shared-mime-info-0.60
 	acl? ( virtual/acl )
 	alsa? ( media-libs/alsa-lib )
@@ -126,6 +126,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.3.3-klauncher_kioslave.patch"
 	"${FILESDIR}/${PN}-4.3.3-klauncher_mac.patch"
 	"${FILESDIR}/${PN}-4.4.3-mimetypes.patch"
+	"${FILESDIR}/${PN}-4.4.90-xslt.patch"
 )
 
 src_prepare() {

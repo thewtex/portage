@@ -1,4 +1,4 @@
->=dev-lang/ghc-6.4.2 readline? ( sys-libs/readline )
+>=dev-lang/ghc-6.8 dev-haskell/mtl dev-haskell/parsec readline? ( dev-haskell/readline ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b
 dev-libs/gmp readline? ( sys-libs/readline )
 0
 http://www.cs.uu.nl/helium/distr/helium-1.6-src.tar.gz mirror://gentoo/helium-1.6-ghc.patch.bz2
@@ -7,7 +7,7 @@ http://www.cs.uu.nl/helium
 GPL-2
 Helium (for learning Haskell)
 -amd64 ~ppc -sparc ~x86
-eutils multilib portability toolchain-funcs
+autotools eutils libtool multilib portability toolchain-funcs
 readline
 
 
