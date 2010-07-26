@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11793 2010/07/26 00:10:06 sping Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11797 2010/07/26 16:03:30 ssuominen Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -215,14 +215,6 @@ dev-php5/znf
 >=dev-util/nvidia-cuda-sdk-3.1
 >=dev-util/nvidia-cuda-toolkit-3.1
 
-# Samuli Suominen <ssuominen@gentoo.org> (01 Jul 2010)
-# Fails to compile with asneeded, bug 247768
-# Fails to compile with dcParser errors, bug 253381
-# Needs a version bump, bug 277620 with proper python.eclass
-# handling, bug 313543
-# Masked for removal in 30 days
-media-libs/panda3d
-
 # Vlastimil Babka <caster@gentoo.org> (30 Jun 2010)
 # Masked for removal due to EOL and security, bug #292001.
 # Do this to avoid pulling other 1.5 JDK:
@@ -308,14 +300,6 @@ dev-util/pbuilder
 mail-client/exmh
 mail-client/nmh
 
-# Kacper Kowalik <xarthisius@gentoo.org> (24 Jun 2010)
-# Last release in 2002. fails with --as-needed Bug 248356
-# Build system beyond repair, automagic dependency on Tcl
-# Fails to build with fortran
-#
-# masked for removal in 30 days
-sci-geosciences/vis5d+
-
 # Michał Januszewski <spock@gentoo.org> (24 Jun 2010)
 # Temporary mask to be removed once the ebuild is confirmed to work
 # reliably on all supported architectures.
@@ -325,12 +309,6 @@ sci-geosciences/vis5d+
 # Pawel Hajdan jr <phajdan.jr@gentoo.org> (22 Jun 2010)
 # Masked for testing. It's quite "challenging" to package.
 >=sci-mathematics/nusmv-2.5.0
-
-# Christian Faulhammer <fauli@gentoo.org> (22 Jun 2010)
-# Masked for removal in 30 days
-# Never really took off, unusable state for years
-# No upstream activity
-x11-misc/gaia
 
 # Kacper Kowalik <xarthisius@gentoo.org> (21 Jun 2010)
 # New version modular version of heartbeat
@@ -458,11 +436,6 @@ net-firewall/ipp2p
 # Dead upstream, last release from 2005. Nothing depends on it. Multiple open
 # bugs. Removed in 60 days by treecleaners, bug 309113
 app-pda/pilot-mailsync
-
-# Jeremy Olexa <darkside@gentoo.org> (12 Jun 2010)
-# Fails with forced as-needed but most importantly no maintainer.
-# Removed in 60 days by treecleaners, bug 277640
-app-text/fmt-ptrn
 
 # Jeremy Olexa <darkside@gentoo.org> (12 Jun 2010)
 # Depends on deprecated gtk functionality in media-libs/imlib
@@ -920,6 +893,7 @@ x11-apps/xfsinfo
 >=xfce-base/exo-0.5.1
 >=xfce-base/xfce4-settings-4.7.0
 >=xfce-base/thunar-1.1.0
+>=xfce-extra/thunar-volman-0.5
 >=xfce-extra/thunar-media-tags-plugin-0.1.2-r1
 >=xfce-base/xfce4-panel-4.7.0
 xfce-extra/thunar-vfs

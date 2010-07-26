@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5810 2010/07/26 01:27:48 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5815 2010/07/26 15:47:55 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -814,6 +814,7 @@ dev-lang/php:fdftk - Add supports for Adobe's FDF toolkit.
 dev-lang/php:fileinfo - Add fileinfo extension support
 dev-lang/php:filter - Add filter extension support
 dev-lang/php:force-cgi-redirect - Switch on common security setting for CGI SAPI
+dev-lang/php:fpm - Enable the FastCGI Process Manager SAPI
 dev-lang/php:hash - Enable the hash extension
 dev-lang/php:intl - Enables the intl extension for extended internalization support
 dev-lang/php:java-external - Use the external java extension rather than the bundled one
@@ -1619,6 +1620,7 @@ media-gfx/gthumb:iptc - Add support for IPTC metadata
 media-gfx/gthumb:slideshow - Enable slideshow plugin
 media-gfx/hugin:sift - automatically align images with media-gfx/autopano-sift or media-gfx/autopano-sift-C
 media-gfx/imagemagick:autotrace -  use media-gfx/autotrace to convert bitmaps into vector graphics 
+media-gfx/imagemagick:corefonts -  pull in media-fonts/corefonts, which is required for some commands 
 media-gfx/imagemagick:fpx -  enable media-libs/libfpx support 
 media-gfx/imagemagick:gs -  enable ghostscript support 
 media-gfx/imagemagick:hdri -  enable High Dynamic Range Images formats 
@@ -1719,8 +1721,6 @@ media-libs/opencv:ipp - Enable Intel Integrated Primitive support
 media-libs/opencv:octave - Enable octave support
 media-libs/opencv:sse3 - Enable optimization for SSE3 capable chips
 media-libs/openjpeg:tools - Installs tools (j2k_to_image and image_to_j2k)
-media-libs/panda3d:fmod - Enables support for using mod files for audio support
-media-libs/panda3d:nspr - Enables support for the Netscape Portable Runtime, used in network interface functionality (ie. multiplayer online game networking).
 media-libs/sdif:ftruncate - Enables usage of ftruncate v. truncate
 media-libs/sdl-mixer:midi - basic support for MIDI files
 media-libs/sdl-mixer:wav - support WAVE files
@@ -3812,6 +3812,7 @@ x11-wm/windowmaker:vdesktop - Enable dynamic virtual desktop (conflicts with sof
 xfce-base/libxfce4ui:glade - Build support for Glade 3's GtkBuilder implementation
 xfce-base/libxfcegui4:glade - Build glade bindings
 xfce-base/thunar:trash-plugin - Build Trash plug-in for panel
+xfce-base/thunar:udev - Enable gudev support (required by xfce-extra/thunar-volman)
 xfce-base/xfce-utils:lock - Enable screen locking
 xfce-base/xfce4-session:fortune - Install tips and tricks app (xfce4-tips), adds dependency on games-misc/fortune-mod
 xfce-base/xfce4-session:gnome-keyring - Support for storing your password.
