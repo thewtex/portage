@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/flask-sqlalchemy/flask-sqlalchemy-0.9.ebuild,v 1.1 2010/07/25 16:16:01 arfrever Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/flask-sqlalchemy/flask-sqlalchemy-0.9.1.ebuild,v 1.1 2010/07/25 18:39:51 arfrever Exp $
 
 EAPI="3"
 PYTHON_DEPEND="2"

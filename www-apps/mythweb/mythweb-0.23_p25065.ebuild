@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/mythweb/mythweb-0.23_p25065.ebuild,v 1.3 2010/07/03 13:42:08 mabi Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-apps/mythweb/mythweb-0.23_p25065.ebuild,v 1.4 2010/07/26 05:06:09 cardoe Exp $
 
 EAPI=2
 inherit mythtv webapp depend.php
@@ -47,4 +47,6 @@ src_install() {
 	webapp_postinst_txt en "${FILESDIR}"/postinstall-en-0.21.txt
 
 	webapp_src_install
+
+	fperms 755 /usr/share/webapps/mythweb/${PV}/htdocs/mythweb/mythweb.pl
 }
