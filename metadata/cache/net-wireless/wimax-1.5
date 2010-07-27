@@ -1,12 +1,12 @@
->=dev-libs/libnl-1.1 >=sys-kernel/linux-headers-2.6.34
->=dev-libs/libnl-1.1 >=sys-kernel/linux-headers-2.6.34 net-wireless/wimax-tools net-wireless/wpa_supplicant[wimax]
+x86? ( >=dev-libs/libnl-1.1 ) amd64? ( >=app-emulation/emul-linux-x86-baselibs-20100611 ) >=sys-kernel/linux-headers-2.6.34
+x86? ( >=dev-libs/libnl-1.1 ) amd64? ( >=app-emulation/emul-linux-x86-baselibs-20100611 ) >=sys-kernel/linux-headers-2.6.34 net-wireless/wimax-tools || ( net-wireless/wpa_supplicant[wimax] net-wireless/libeap )
 0
 http://www.linuxwimax.org/Download?action=AttachFile&do=get&target=wimax-1.5.tar.gz -> wimax-1.5.tar.gz
 
 http://www.linuxwimax.org/
 BSD
 Intel WiMAX daemon used to interface to the hardware
--amd64 ~x86
+~amd64 ~x86
 eutils linux-info multilib portability toolchain-funcs versionator
 
 
@@ -14,7 +14,7 @@ eutils linux-info multilib portability toolchain-funcs versionator
 
 3
 
-configure install prepare setup
+configure install setup
 
 
 
