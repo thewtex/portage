@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/cryptsetup/cryptsetup-1.1.2.ebuild,v 1.2 2010/07/23 07:32:39 fauli Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/cryptsetup/cryptsetup-1.1.2.ebuild,v 1.4 2010/07/27 18:52:25 robbat2 Exp $
 
 EAPI=2
 
@@ -13,7 +13,7 @@ SRC_URI="http://cryptsetup.googlecode.com/files/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc x86"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc x86"
 IUSE="dynamic nls selinux"
 
 S=${WORKDIR}/${MY_P}
@@ -91,4 +91,10 @@ pkg_postinst() {
 	elog "after 10 seconds add the following to your bootloader config:"
 	elog "key_timeout=10"
 	elog "A timeout of 0 will mean it will wait indefinitely."
+	elog
+	elog "Users using cryptsetup-1.0.x (dm-crypt plain) volumes must use"
+	elog "a compatibility mode when using cryptsetup-1.1.x. This can be"
+	elog "done by specifying the cipher (-c), key size (-s) and hash (-h)."
+	elog "For more info, see http://code.google.com/p/cryptsetup/wiki/FrequentlyAskedQuestions#6._Issues_with_Specific_Versions_of_cryptsetup"
+
 }

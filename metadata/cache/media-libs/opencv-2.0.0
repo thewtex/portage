@@ -1,5 +1,5 @@
-sys-libs/zlib python? ( >=dev-lang/python-2.5 deprecated? ( dev-lang/swig ) ) ieee1394? ( sys-libs/libraw1394 media-libs/libdc1394:2 ) ffmpeg? ( >=media-video/ffmpeg-0.5 ) gstreamer? ( media-libs/gstreamer ) gtk? ( x11-libs/gtk+:2 ) jpeg2k? ( media-libs/jasper ) jpeg? ( media-libs/jpeg ) png? ( media-libs/libpng ) tiff? ( media-libs/tiff ) xine? ( media-libs/xine-lib ) octave? ( sci-mathematics/octave dev-lang/swig ) dev-util/pkgconfig >=dev-util/cmake-2.6.2-r1 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
-sys-libs/zlib python? ( >=dev-lang/python-2.5 deprecated? ( dev-lang/swig ) ) ieee1394? ( sys-libs/libraw1394 media-libs/libdc1394:2 ) ffmpeg? ( >=media-video/ffmpeg-0.5 ) gstreamer? ( media-libs/gstreamer ) gtk? ( x11-libs/gtk+:2 ) jpeg2k? ( media-libs/jasper ) jpeg? ( media-libs/jpeg ) png? ( media-libs/libpng ) tiff? ( media-libs/tiff ) xine? ( media-libs/xine-lib ) octave? ( sci-mathematics/octave dev-lang/swig )
+sys-libs/zlib ieee1394? ( sys-libs/libraw1394 media-libs/libdc1394:2 ) ffmpeg? ( >=media-video/ffmpeg-0.5 ) gstreamer? ( media-libs/gstreamer ) gtk? ( x11-libs/gtk+:2 ) jpeg2k? ( media-libs/jasper ) jpeg? ( media-libs/jpeg ) png? ( media-libs/libpng ) tiff? ( media-libs/tiff ) xine? ( media-libs/xine-lib ) octave? ( sci-mathematics/octave ) octave? ( dev-lang/swig ) python? ( deprecated? ( dev-lang/swig ) ) dev-util/pkgconfig >=dev-util/cmake-2.6.2-r1 userland_GNU? ( >=sys-apps/findutils-4.4.0 ) >=app-admin/eselect-python-20091230 python? ( || ( =dev-lang/python-2.7* =dev-lang/python-2.6* ) )
+sys-libs/zlib ieee1394? ( sys-libs/libraw1394 media-libs/libdc1394:2 ) ffmpeg? ( >=media-video/ffmpeg-0.5 ) gstreamer? ( media-libs/gstreamer ) gtk? ( x11-libs/gtk+:2 ) jpeg2k? ( media-libs/jasper ) jpeg? ( media-libs/jpeg ) png? ( media-libs/libpng ) tiff? ( media-libs/tiff ) xine? ( media-libs/xine-lib ) octave? ( sci-mathematics/octave ) >=app-admin/eselect-python-20091230 python? ( || ( =dev-lang/python-2.7* =dev-lang/python-2.6* ) )
 0
 mirror://sourceforge/opencvlibrary/OpenCV-2.0.0.tar.bz2
 test
@@ -7,7 +7,7 @@ http://opencv.willowgarage.com
 v4l? ( GPL-2 ) xine? ( GPL-2 ) BSD
 A collection of algorithms and sample code for various computer vision problems.
 amd64 ~ppc x86
-base cmake-utils eutils flag-o-matic multilib portability toolchain-funcs
+base cmake-utils eutils flag-o-matic multilib portability python toolchain-funcs
 debug +deprecated examples ffmpeg gstreamer gtk ieee1394 jpeg jpeg2k mmx octave openmp png python sse sse2 sse3 test tiff v4l xine
 
 
