@@ -1,5 +1,5 @@
-sys-devel/gettext
-dev-lang/python vorbis? ( media-sound/vorbis-tools ) mp3? ( || ( media-sound/mpg123 media-sound/mpg321 media-sound/madplay media-sound/splay ) )
+sys-devel/gettext >=app-admin/eselect-python-20091230 =dev-lang/python-2*
+vorbis? ( media-sound/vorbis-tools ) mp3? ( || ( media-sound/mpg123 media-sound/mpg321 media-sound/madplay media-sound/splay ) ) >=app-admin/eselect-python-20091230 =dev-lang/python-2*
 0
 http://mask.tf.hut.fi/~flu/cplay/cplay-1.49.tar.gz
 
@@ -7,14 +7,14 @@ http://mask.tf.hut.fi/~flu/hacks/cplay/
 GPL-2
 A Curses front-end for various audio players.
 amd64 hppa ~ppc ppc64 sparc x86
-
+multilib python toolchain-funcs
 mp3 vorbis
 
 
 
+2
 
-
-install
+install prepare
 
 
 
