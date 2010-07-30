@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/tracker/tracker-9999.ebuild,v 1.19 2010/05/14 18:02:28 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/tracker/tracker-9999.ebuild,v 1.20 2010/07/30 06:31:52 eva Exp $
 
 EAPI="2"
 G2CONF_DEBUG="no"
@@ -24,7 +24,7 @@ RDEPEND="
 	>=app-i18n/enca-1.9
 	>=dev-db/sqlite-3.6.16[threadsafe]
 	>=dev-libs/dbus-glib-0.82-r1
-	>=dev-libs/glib-2.20
+	>=dev-libs/glib-2.24
 	|| (
 		>=media-gfx/imagemagick-5.2.1[png,jpeg=]
 		media-gfx/graphicsmagick[imagemagick,png,jpeg=] )
