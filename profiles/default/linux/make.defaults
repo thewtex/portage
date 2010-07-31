@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/default/linux/make.defaults,v 1.6 2010/07/12 08:53:08 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/default/linux/make.defaults,v 1.7 2010/07/26 19:15:05 ssuominen Exp $
 #
 # System-wide defaults for the Portage system
 # See portage(5) manpage
@@ -12,7 +12,7 @@
 
 # Default starting set of USE flags for all default/linux profiles.
 USE="berkdb crypt ipv6 ncurses nls pam perl python readline ssl tcpd zlib"
-
+ 
 #Graphics and other formats often used in both server (cmdline) and desktop (X) applications:
 USE="${USE} gif png jpeg tiff truetype xml"
 
@@ -30,7 +30,7 @@ USE="${USE} -gpm"
 # make sure toolchain has sane defaults <tooclhain@gentoo.org>
 USE="${USE} fortran mudflap openmp"
 
-# 2006/03/07 - Donnie Berkholz <dberkholz@gentoo.org>
+# 2007/03/07 - Donnie Berkholz <dberkholz@gentoo.org>
 # Modular X: Support direct rendering by default
 USE="${USE} dri"
 

@@ -1,6 +1,41 @@
 # ChangeLog for app-backup/bacula
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-backup/bacula/ChangeLog,v 1.91 2010/07/03 17:04:13 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-backup/bacula/ChangeLog,v 1.99 2010/07/23 07:10:09 tomjbe Exp $
+
+  23 Jul 2010; Thomas Beierlein <tomjbe@gentoo.org> bacula-5.0.2-r2.ebuild:
+  drop leftover comment
+
+  22 Jul 2010; Thomas Beierlein <tomjbe@gentoo.org> bacula-5.0.2-r2.ebuild:
+  Make sqlite3 the default database if none or to many database backends are
+  selected. Thanks darkside for pointing it out
+
+  22 Jul 2010; Thomas Beierlein <tomjbe@gentoo.org> bacula-5.0.2-r2.ebuild:
+  revert batch-insert to always enabled
+
+*bacula-5.0.2-r2 (22 Jul 2010)
+
+  22 Jul 2010; Thomas Beierlein <tomjbe@gentoo.org> +bacula-5.0.2-r2.ebuild,
+  +files/5.0.2/bacula-5.0.2-Makefile.patch,
+  +files/5.0.2/bacula-5.0.2-ldflags.patch:
+  - fix for bug #291160, #322181 and #326333
+  - add vimfiles
+  - make 'bat' respect LDFLAGS
+  - let 'make' fail if some error emerges in a subdir build
+
+  19 Jul 2010; Thomas Beierlein <tomjbe@gentoo.org>
+  files/5.0.2/bacula-5.0.2-openssl-1.patch:
+  Fix openssl-1 patch to work for openssl<1.0.0. See Bug #328785
+
+  17 Jul 2010; Samuli Suominen <ssuominen@gentoo.org> bacula-3.0.3.ebuild,
+  +files/3.0.3/bacula-3.0.3-openssl-1.patch:
+  Fix building with OpenSSL >= 1.0.0 wrt #328701 by Thomas Beierlein.
+
+  17 Jul 2010; Samuli Suominen <ssuominen@gentoo.org>
+  bacula-5.0.2-r1.ebuild, +files/5.0.2/bacula-5.0.2-openssl-1.patch:
+  Fix building with OpenSSL >= 1.0.0 wrt #328701 by Thomas Beierlein.
+
+  14 Jul 2010; Jeroen Roovers <jer@gentoo.org> bacula-5.0.2-r1.ebuild:
+  Stable for HPPA (bug #282020).
 
   03 Jul 2010; Raúl Porcel <armin76@gentoo.org> bacula-5.0.2-r1.ebuild:
   sparc stable wrt #282020

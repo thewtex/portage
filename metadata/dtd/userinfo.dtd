@@ -1,5 +1,5 @@
 <!ELEMENT userlist (user+)>
-<!ELEMENT user (realname, pgpkey+, alias*, email+, joined, retired?, status?, roles?, location?) >
+<!ELEMENT user (realname, pgpkey+, alias*, email+, joined*, retired*, status?, roles?, location?) >
   <!ATTLIST user username ID #REQUIRED>
   <!ELEMENT realname (firstname,familyname)>
     <!ATTLIST realname fullname CDATA #IMPLIED>

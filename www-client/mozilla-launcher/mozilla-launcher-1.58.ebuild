@@ -1,6 +1,6 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/mozilla-launcher/mozilla-launcher-1.58.ebuild,v 1.7 2008/09/22 19:56:34 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/mozilla-launcher/mozilla-launcher-1.58.ebuild,v 1.10 2010/07/26 21:18:47 polynomial-c Exp $
 
 inherit eutils
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/ghc/ghc-6.6.1.ebuild,v 1.19 2010/07/01 20:27:50 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/ghc/ghc-6.6.1.ebuild,v 1.21 2010/07/21 21:49:33 slyfox Exp $
 
 # Brief explanation of the bootstrap logic:
 #
@@ -25,7 +25,7 @@
 # re-emerge ghc (or ghc-bin). People using vanilla gcc can switch between
 # gcc-3.x and 4.x with no problems.
 
-inherit base bash-completion eutils flag-o-matic toolchain-funcs ghc-package versionator
+inherit base bash-completion eutils flag-o-matic multilib toolchain-funcs ghc-package versionator
 
 DESCRIPTION="The Glasgow Haskell Compiler"
 HOMEPAGE="http://www.haskell.org/ghc/"
@@ -159,6 +159,8 @@ src_unpack() {
 	use binary && mkdir "${S}"
 
 	base_src_unpack
+	source "${FILESDIR}/ghc-apply-gmp-hack" "$(get_libdir)"
+
 	ghc_setup_cflags
 
 	if use binary; then
@@ -268,7 +270,9 @@ src_compile() {
 
 		econf || die "econf failed"
 
-		emake all datadir="/usr/share/doc/${P}" || die "make failed"
+		# LC_ALL needs to workaround ghc's ParseCmm failure on some (es) locales
+		# bug #202212 / http://hackage.haskell.org/trac/ghc/ticket/4207
+		LC_ALL=C emake all datadir="/usr/share/doc/${P}" || die "make failed"
 		# the explicit datadir is required to make the haddock entries
 		# in the package.conf file point to the right place ...
 

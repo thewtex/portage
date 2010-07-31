@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/ncmpcpp/ncmpcpp-0.5.4.ebuild,v 1.1 2010/06/12 05:56:41 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/ncmpcpp/ncmpcpp-0.5.4.ebuild,v 1.3 2010/07/28 14:57:08 wired Exp $
 
 EAPI="2"
 inherit bash-completion eutils
@@ -12,7 +12,7 @@ SRC_URI="http://unkart.ovh.org/${PN}/${P}.tar.bz2"
 LICENSE="GPL-2"
 IUSE="bash-completion clock curl fftw iconv outputs taglib +threads unicode visualizer"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~x86"
+KEYWORDS="~amd64 hppa ~x86"
 
 DEPEND="sys-libs/ncurses[unicode?]
 	>=media-libs/libmpdclient-2.1
@@ -22,19 +22,24 @@ DEPEND="sys-libs/ncurses[unicode?]
 	taglib? ( media-libs/taglib )"
 RDEPEND="$DEPEND"
 
-pkg_setup() {
-	if ( use fftw && ! use visualizer ); then
-		die "USE=fftw requires USE=visualizer enabled"
-	fi
-}
-
 src_configure() {
-	econf $(use_enable clock) \
+	local myconf=""
+	if use fftw; then
+		myconf="$(use_with visualizer fftw)"
+		if ! use visualizer; then
+			ewarn "For the fftw USE flag to have any effect, you must also"
+			ewarn "enable the visualizer USE flag."
+		fi
+	else
+		myconf="--without-fftw"
+	fi
+	econf \
+		${myconf} \
+		$(use_enable clock) \
 		$(use_enable outputs) \
 		$(use_enable unicode) \
 		$(use_enable visualizer) \
 		$(use_with curl) \
-		$(use_with fftw) \
 		$(use_with iconv) \
 		$(use_with threads) \
 		$(use_with taglib)

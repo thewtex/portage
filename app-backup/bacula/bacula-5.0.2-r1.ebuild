@@ -1,13 +1,13 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-backup/bacula/bacula-5.0.2-r1.ebuild,v 1.5 2010/07/03 17:04:13 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-backup/bacula/bacula-5.0.2-r1.ebuild,v 1.7 2010/07/17 09:34:59 ssuominen Exp $
 
 EAPI="2"
 inherit eutils multilib
 
 IUSE="bacula-clientonly bacula-nodir bacula-nosd ipv6 logwatch mysql postgres python qt4 readline +sqlite3 ssl static tcpd X"
 # bacula-web bimagemgr brestore bweb
-KEYWORDS="amd64 ~hppa ~ppc sparc x86"
+KEYWORDS="amd64 hppa ~ppc sparc x86"
 
 DESCRIPTION="Featureful client/server network backup suite"
 HOMEPAGE="http://www.bacula.org/"
@@ -130,6 +130,8 @@ src_prepare() {
 
 	# bug #311161
 	epatch "${FILESDIR}"/${PV}/${P}-lib-search-path.patch
+
+	epatch "${FILESDIR}"/${PV}/${P}-openssl-1.patch
 }
 
 src_configure() {

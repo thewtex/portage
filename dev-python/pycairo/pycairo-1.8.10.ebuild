@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pycairo/pycairo-1.8.10.ebuild,v 1.3 2010/07/09 02:53:18 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pycairo/pycairo-1.8.10.ebuild,v 1.7 2010/07/25 17:25:42 klausman Exp $
 
 EAPI="3"
 PYTHON_DEPEND="2:2.6"
@@ -16,7 +16,7 @@ SRC_URI="http://cairographics.org/releases/py2cairo-${PV}.tar.gz"
 
 LICENSE="|| ( LGPL-2.1 MPL-1.1 )"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~x86-fbsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~x86-fbsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE="doc examples svg"
 
 RDEPEND=">=x11-libs/cairo-1.8.10[svg?]"
@@ -56,13 +56,7 @@ src_compile() {
 }
 
 src_test() {
-	# python_execute_py.test -P '$(ls -d build-${PYTHON_ABI}/lib.*):../../$(ls -d build-${PYTHON_ABI}/lib.*)'
-
-	testing() {
-		echo PYTHONPATH="$(ls -d build-${PYTHON_ABI}/lib.*):../../$(ls -d build-${PYTHON_ABI}/lib.*)" py.test
-		PYTHONPATH="$(ls -d build-${PYTHON_ABI}/lib.*):../../$(ls -d build-${PYTHON_ABI}/lib.*)" py.test
-	}
-	python_execute_function testing
+	python_execute_py.test -P '$(ls -d build-${PYTHON_ABI}/lib.*):../../$(ls -d build-${PYTHON_ABI}/lib.*)'
 }
 
 src_install() {

@@ -1,21 +1,21 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/coreutils/coreutils-8.3.ebuild,v 1.1 2010/01/08 03:35:07 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/coreutils/coreutils-8.4.ebuild,v 1.12 2010/05/24 12:26:09 nixnut Exp $
 
 inherit eutils flag-o-matic toolchain-funcs
 
-PATCH_VER="1"
+PATCH_VER="2"
 DESCRIPTION="Standard GNU file utilities (chmod, cp, dd, dir, ls...), text utilities (sort, tr, head, wc..), and shell utilities (whoami, who,...)"
 HOMEPAGE="http://www.gnu.org/software/coreutils/"
 SRC_URI="ftp://alpha.gnu.org/gnu/coreutils/${P}.tar.gz
 	mirror://gnu/${PN}/${P}.tar.gz
 	mirror://gentoo/${P}.tar.gz
-	mirror://gentoo/${PN}-8.3-patches-${PATCH_VER}.tar.lzma
-	http://dev.gentoo.org/~vapier/dist/${PN}-8.3-patches-${PATCH_VER}.tar.lzma"
+	mirror://gentoo/${P}-patches-${PATCH_VER}.tar.lzma
+	http://dev.gentoo.org/~vapier/dist/${P}-patches-${PATCH_VER}.tar.lzma"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 m68k mips ppc ppc64 s390 sh sparc x86"
+KEYWORDS="alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86"
 IUSE="acl caps gmp nls selinux static unicode vanilla xattr"
 
 RDEPEND="caps? ( sys-libs/libcap )
@@ -57,14 +57,17 @@ src_unpack() {
 }
 
 src_compile() {
+	tc-is-cross-compiler && [[ ${CHOST} == *linux* ]] && export fu_cv_sys_stat_statfs2_bsize=yes #311569
+
 	use static && append-ldflags -static
+	use selinux || export ac_cv_{header_selinux_{context,flash,selinux}_h,search_setfilecon}=no #301782
 	# kill/uptime - procps
 	# groups/su   - shadow
 	# hostname    - net-tools
 	econf \
-		--with-packager="Funtoo" \
+		--with-packager="Gentoo" \
 		--with-packager-version="${PVR} (p${PATCH_VER:-0})" \
-		--with-packager-bug-reports="http://www.funtoo.org/" \
+		--with-packager-bug-reports="http://bugs.gentoo.org/" \
 		--enable-install-program="arch" \
 		--enable-no-install-program="groups,hostname,kill,su,uptime" \
 		--enable-largefile \
@@ -75,6 +78,36 @@ src_compile() {
 		$(use_with gmp) \
 		|| die "econf"
 	emake || die "emake"
+}
+
+src_test() {
+	# Non-root tests will fail if the full path isnt
+	# accessible to non-root users
+	chmod -R go-w "${WORKDIR}"
+	chmod a+rx "${WORKDIR}"
+
+	# coreutils tests like to do `mount` and such with temp dirs
+	# so make sure /etc/mtab is writable #265725
+	# make sure /dev/loop* can be mounted #269758
+	mkdir -p "${T}"/mount-wrappers
+	mkwrap() {
+		local w ww
+		for w in "$@" ; do
+			ww="${T}/mount-wrappers/${w}"
+			cat <<-EOF > "${ww}"
+				#!/bin/sh
+				exec env SANDBOX_WRITE="\${SANDBOX_WRITE}:/etc/mtab:/dev/loop" $(type -P $w) "\$@"
+			EOF
+			chmod a+rx "${ww}"
+		done
+	}
+	mkwrap mount umount
+
+	addwrite /dev/full
+	#export RUN_EXPENSIVE_TESTS="yes"
+	#export FETISH_GROUPS="portage wheel"
+	env PATH="${T}/mount-wrappers:${PATH}" \
+	emake -j1 -k check || die "make check failed"
 }
 
 src_install() {

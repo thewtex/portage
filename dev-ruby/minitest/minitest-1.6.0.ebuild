@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/minitest/minitest-1.6.0.ebuild,v 1.4 2010/05/25 10:27:34 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/minitest/minitest-1.6.0.ebuild,v 1.5 2010/07/21 07:39:20 graaff Exp $
 
 EAPI=2
 # jruby → tests fail, reported upstream
@@ -28,3 +28,14 @@ ruby_add_bdepend "
 		virtual/ruby-test-unit
 		dev-ruby/hoe
 	)"
+
+each_ruby_test() {
+	case ${RUBY} in
+		*jruby)
+				eqawarn "Skipping tests on JRuby, bug 321055."
+				;;
+		*)
+				each_fakegem_test
+				;;
+	esac
+}

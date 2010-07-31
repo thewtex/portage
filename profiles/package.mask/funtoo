@@ -1,8 +1,18 @@
 # PLEASE KEEP MOST RECENT MASKS ON TOP, REVERSE CHRONO ORDER
 
-# Daniel Robbins <drobbins@funtoo.org> (09 Jul 2010)
-# glib-2.24.1-r1 will not build and has other issues
->=dev-libs/glib-2.24.1-r1
+# Daniel Robbins <drobbins@funtoo.org> (23 Jul 2010)
+# masked for testing
+>=sys-fs/lvm2-2.02.70
+
+# Daniel Robbins <drobbins@funtoo.org> (23 Jul 2010)
+# let's stick with a known-good version of ruby by
+# default:
+>dev-lang/ruby-1.8.7_p299
+
+# Daniel Robbins <drobbins@funtoo.org> (19 Jul 2010)
+# Masking new perl for testing (this pkg was accidentally
+# unmasked in unstable overnight).
+>=dev-lang/perl-5.12
 
 # Daniel Robbins <drobbins@funtoo.org> (07 Jul 2010)
 # allow users to upgrade
@@ -15,10 +25,6 @@
 # Daniel Robbins <drobbins@funtoo.org> (22 Apr 2010)
 # This package is broken irt libxml2-2.7.7 (bug 316377)
 =sys-libs/zlib-1.2.5
-
-# Piotr Karbowski <jabberuser@gmail.com> (20 April 2010)
-# Hardmask live version.
-=media-sound/mpd-9999
 
 # Non-standard configuration that break things.
 # Matt McCormick <matthew.m.mccormick@gmail.com> (11 March 2010)
@@ -33,10 +39,6 @@
 # man-1.6f-r4 breaks metro builds - looks like nice patches but needed more upstream testing
 =sys-apps/man-1.6f-r4
 
-# Daniel Robbins <drobbins@funtoo.org> (09 Jan 2010)
-# coreutils-8.3 has a build failure for glibc-2.7 thru 2.9. Fixed in 8.4+ 
-=sys-apps/coreutils-8.3*
-
 # Daniel Robbins <drobbins@funtoo.org> (28 Dec 2009)
 # Requested by slashbeast (Piotr Karbowski) in #funtoo due to /etc/cron.hourly
 # running up to 4 times per hour:
@@ -49,13 +51,6 @@
 # Daniel Robbins <drobbins@funtoo.org> (2 Dec 2009)
 # Masking as per http://blog.flameeyes.eu/2009/12/01/gentoo-service-announcement-keep-clear-of-gnu-patch-2-6
 >=sys-devel/patch-2.6
-
-# Daniel Robbins <drobbins@funtoo.org> (29 Sep 2009)
-# readline-6.0_p4 does not build in metro stage builds. It
-# cannot find its own headers and relies on a prior 
-# readline to be installed
-
-=sys-libs/readline-6.0_p4
 
 # Pkgcore also does not support this at present
 <=sys-apps/pkgcore-0.4.8

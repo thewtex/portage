@@ -1,6 +1,49 @@
 # ChangeLog for dev-lang/mercury
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/mercury/ChangeLog,v 1.103 2010/04/25 08:25:46 keri Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/mercury/ChangeLog,v 1.112 2010/07/28 08:24:55 keri Exp $
+
+  28 Jul 2010; <keri@gentoo.org> mercury-10.04.ebuild,
+  +files/mercury-10.04-tests-static-link.patch:
+  Disable hard-coded static link tests
+
+  26 Jul 2010; <keri@gentoo.org> mercury-10.04.ebuild,
+  +files/mercury-10.04-sparc-llds-base-grade.patch:
+  Specify llds-base-grade for sparc
+
+  25 Jul 2010; <keri@gentoo.org> mercury-10.04.ebuild,
+  +files/mercury-10.04-default-grade.patch,
+  -files/mercury-10.04-libgrades.patch:
+  Compile default-grade after default llds grade in case default llds grade
+  != default grade (used in testsuite). Only default-grade and default llds
+  grade are needed prior to running src_test() and src_install().
+
+  25 Jul 2010; <keri@gentoo.org> mercury-10.04.ebuild,
+  +files/mercury-10.04-libgrades.patch:
+  Compile libgrades after default llds grade in case default llds grade !=
+  default grade (used in testsuite)
+
+  24 Jul 2010; <keri@gentoo.org> files/mercury-10.04-boehm_gc.patch:
+  Update generic mach_dep for ASM_CLEAR_CODE targets
+
+  24 Jul 2010; <keri@gentoo.org> mercury-10.04.ebuild,
+  +files/mercury-10.04-tests-mercury-float.patch:
+  Update hlc grade testsuites for MR_sprintf_float fix
+
+  22 Jul 2010; <keri@gentoo.org> +files/50mercury-gentoo.el:
+  Add mercury site-lisp configuration
+
+  20 Jul 2010; <keri@gentoo.org> files/mercury-10.04-tests-sandbox.patch,
+  files/mercury-10.04-tests-workspace.patch:
+  Remove all beta references in testsuite patches
+
+*mercury-10.04 (19 Jul 2010)
+
+  19 Jul 2010; <keri@gentoo.org> +mercury-10.04.ebuild,
+  +files/mercury-10.04-boehm_gc.patch, +files/mercury-10.04-docs.patch,
+  +files/mercury-10.04-multilib.patch, +files/mercury-10.04-no-reconf.patch,
+  +files/mercury-10.04-tests-sandbox.patch,
+  +files/mercury-10.04-tests-workspace.patch, metadata.xml:
+  Version bump
 
   25 Apr 2010; <keri@gentoo.org> files/mercury-10.04_beta1-ppc-lexer.patch:
   Move MGNUCFLAGS-lexer definition to library/Mmakefile to allow mmc to

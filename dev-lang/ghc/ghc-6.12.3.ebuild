@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/ghc/ghc-6.12.3.ebuild,v 1.6 2010/07/10 17:59:16 slyfox Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/ghc/ghc-6.12.3.ebuild,v 1.10 2010/07/21 21:49:33 slyfox Exp $
 
 # Brief explanation of the bootstrap logic:
 #
@@ -28,7 +28,7 @@
 # re-emerge ghc (or ghc-bin). People using vanilla gcc can switch between
 # gcc-3.x and 4.x with no problems.
 
-inherit base autotools bash-completion eutils flag-o-matic toolchain-funcs ghc-package versionator
+inherit base autotools bash-completion eutils flag-o-matic multilib toolchain-funcs ghc-package versionator
 
 DESCRIPTION="The Glasgow Haskell Compiler"
 HOMEPAGE="http://www.haskell.org/ghc/"
@@ -41,12 +41,16 @@ arch_binaries="$arch_binaries amd64? ( mirror://gentoo/ghc-bin-${PV}-amd64.tbz2 
 arch_binaries="$arch_binaries ia64?  ( http://code.haskell.org/~slyfox/ghc-ia64/ghc-bin-${PV}-ia64-fixed-fiw.tbz2 )"
 #arch_binaries="$arch_binaries sparc? ( http://haskell.org/~duncan/ghc/ghc-bin-${PV}-sparc.tbz2 )"
 arch_binaries="$arch_binaries ppc64? ( mirror://gentoo/ghc-bin-${PV}-ppc64.tbz2 )"
+arch_binaries="$arch_binaries ppc? ( mirror://gentoo/ghc-bin-${PV}-ppc.tbz2 )"
+
+# various ports:
+arch_binaries="$arch_binaries x86-fbsd? ( http://code.haskell.org/~slyfox/ghc-x86-fbsd/ghc-bin-${PV}-x86-fbsd.tbz2 )"
 
 SRC_URI="!binary? ( http://darcs.haskell.org/download/dist/${PV}/${P}-src.tar.bz2 )
 	!ghcbootstrap? ( $arch_binaries )"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ia64 ~ppc64 ~x86"
+KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~x86 ~x86-fbsd"
 IUSE="binary doc ghcbootstrap"
 
 RDEPEND="
@@ -141,6 +145,8 @@ src_unpack() {
 	use binary && mkdir "${S}"
 
 	base_src_unpack
+	source "${FILESDIR}/ghc-apply-gmp-hack" "$(get_libdir)"
+
 	ghc_setup_cflags
 
 	if ! use ghcbootstrap; then
@@ -196,6 +202,7 @@ src_unpack() {
 
 		epatch "${FILESDIR}/ghc-6.12.1-configure-CHOST.patch"
 		epatch "${FILESDIR}/ghc-6.12.2-configure-CHOST-part2.patch"
+		epatch "${FILESDIR}/ghc-6.12.3-configure-CHOST-freebsd.patch"
 
 		# -r and --relax are incompatible
 		epatch "${FILESDIR}/ghc-6.12.3-ia64-fixed-relax.patch"
@@ -208,6 +215,9 @@ src_unpack() {
 
 		# native adjustor (NA) code is broken: interactive darcs-2.4 coredumps on NA
 		epatch "${FILESDIR}/ghc-6.12.3-ia64-use-libffi-for-foreign-import-wrapper.patch"
+
+		# same with NA on ppc
+		epatch "${FILESDIR}/ghc-6.12.3-ppc-use-libffi-for-foreign-import-wrapper.patch"
 
 		# as we have changed the build system
 		eautoreconf
@@ -256,7 +266,7 @@ src_compile() {
 		# we have to tell it to build unregisterised on some arches
 		# ppc64: EvilMangler currently does not understand some TOCs
 		# ia64: EvilMangler bitrot
-		if use alpha || use hppa || use ia64 || use ppc64; then
+		if use alpha || use ia64 || use ppc64; then
 			echo "GhcUnregisterised=YES" >> mk/build.mk
 			echo "GhcWithNativeCodeGen=NO" >> mk/build.mk
 			echo "SplitObjs=NO" >> mk/build.mk
@@ -277,7 +287,9 @@ src_compile() {
 
 		econf || die "econf failed"
 
-		emake all || die "make failed"
+		# LC_ALL needs to workaround ghc's ParseCmm failure on some (es) locales
+		# bug #202212 / http://hackage.haskell.org/trac/ghc/ticket/4207
+		LC_ALL=C emake all || die "make failed"
 
 	fi # ! use binary
 }

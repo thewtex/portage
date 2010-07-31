@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5772 2010/07/13 12:27:49 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5821 2010/07/28 12:08:59 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -305,7 +305,8 @@ app-emulation/uae:ui - Build the user interface (could be gtk or ncurses based, 
 app-emulation/vice:ethernet - Enable ethernet emulation
 app-emulation/vice:memmap - Enable extra monitor features
 app-emulation/vice:xrandr - Enable support for the X xrandr extension
-app-emulation/virt-manager:policykit - Enables sys-auth/polkit authentication support, required when using app-emulation/libvirt with PolicyKit authentication
+app-emulation/virt-manager:policykit -  Enables sys-auth/polkit authentication support, required when using app-emulation/libvirt with PolicyKit authentication 
+app-emulation/virt-manager:sasl -  Depend on the proper libraries needed to connect to SASL-enabled libvirtd instances (e.g. Kerberos-protected instances). 
 app-emulation/virtualbox-bin:additions - Install Guest System Tools ISO
 app-emulation/virtualbox-bin:chm - Install kchmviewer binary to enable online help (in MS CHM format)
 app-emulation/virtualbox-bin:headless - Install without any graphic frontend
@@ -322,6 +323,7 @@ app-emulation/wine:custom-cflags - Bypass strip-flags; use are your own peril
 app-emulation/wine:gecko - Add support for the Gecko engine when using iexplore
 app-emulation/wine:perl - Install helpers written in perl (winedump/winemaker)
 app-emulation/wine:samba - Add support for NTLM auth. see http://wiki.winehq.org/NtlmAuthSetupGuide and http://wiki.winehq.org/NtlmSigningAndSealing
+app-emulation/wine:win32 - Build a 32bit version of Wine (won't run Win64 binaries)
 app-emulation/wine:win64 - Build a 64bit version of Wine (won't run Win32 binaries)
 app-emulation/xen:acm - Enable the ACM/sHype XSM module from IBM
 app-emulation/xen:flask - Enable the Flask XSM module from NSA
@@ -796,6 +798,7 @@ dev-lang/logtalk:yappl - Support YAP back-end compiler
 dev-lang/lua:deprecated - make deprecated data structures/routines available
 dev-lang/luarocks:curl - Uses net-misc/curl for fetching lua packages instead of net-misc/wget.
 dev-lang/luarocks:openssl - Uses dev-libs/openssl for verifying lua packages instead of md5sum.
+dev-lang/mercury:erlang - Support Mercury Erlang grade
 dev-lang/mlton:binary - install a binary version (need to do this once to bootstrap, until smlnj is supported)
 dev-lang/mono:moonlight - Generate Moonlight 2.1 assemblies
 dev-lang/mono:xen - Make mono generate code that is considerably faster on xen VMs but slightly slower on for normal systems.
@@ -811,6 +814,7 @@ dev-lang/php:fdftk - Add supports for Adobe's FDF toolkit.
 dev-lang/php:fileinfo - Add fileinfo extension support
 dev-lang/php:filter - Add filter extension support
 dev-lang/php:force-cgi-redirect - Switch on common security setting for CGI SAPI
+dev-lang/php:fpm - Enable the FastCGI Process Manager SAPI
 dev-lang/php:hash - Enable the hash extension
 dev-lang/php:intl - Enables the intl extension for extended internalization support
 dev-lang/php:java-external - Use the external java extension rather than the bundled one
@@ -840,13 +844,7 @@ dev-lang/ruby-enterprise:rubytests -  Install ruby tests that can only be run af
 dev-lang/ruby-enterprise:tcmalloc -  Add support for TCMalloc provided by dev-util/google-perftools 
 dev-lang/scala:binary - Install from (Gentoo-compiled) binary instead of building from sources. Set this when you run out of memory during build.
 dev-lang/spidermonkey:threadsafe - Build a threadsafe version of spidermonkey
-dev-lang/swig:R - Enable R support
 dev-lang/swig:ccache - build ccache-swig(a fast compiler cache)
-dev-lang/swig:chicken - Enable chicken Scheme support
-dev-lang/swig:clisp - Enable CLisp support
-dev-lang/swig:mzscheme - Enable PLT mzscheme support
-dev-lang/swig:octave - Enable Octave support
-dev-lang/swig:pike - Enable Pike scripting support
 dev-lang/vala:coverage - Enable coverage analysis
 dev-lang/vala:vapigen - Enable vala's library binding generator
 dev-libs/DirectFB:fusion - Add Multi Application support (fusion kernel device)
@@ -878,7 +876,6 @@ dev-libs/json-glib:introspection - Use dev-libs/gobject-introspection for intros
 dev-libs/klibc:n32 - Force klibc to 32bit if on mips64 if not n32 userland
 dev-libs/libburn:track-src-odirect - Read track input with O_DIRECT (see man 2 open), this may deliver a better write performance in some situations
 dev-libs/libcdio:minimal -  Only build the libcdio library and little more, just to be used to link against from multimedia players. With this USE flag enabled, none of the command-line utilities are built, nor is the CDDA library. 
-dev-libs/libgcrypt:idea - Use the patented IDEA algorithm
 dev-libs/libgpg-error:common-lisp - Install common-lisp files
 dev-libs/libisoburn:external-filters - Allow the use of external processes as file content filters (Note: this is a potential security risk)
 dev-libs/libisoburn:external-filters-setuid - Also allow the use of external setuid processes as file content filters (Note: this is a potential security risk)
@@ -1073,6 +1070,7 @@ dev-scheme/scm:ioext - Commonly available I/O extensions: line I/O, file positio
 dev-scheme/scm:macro - C level support for hygienic and referentially transparent macros (syntax-rules macros).
 dev-scheme/scm:regex - String regular expression matching.
 dev-scheme/scm:unix - Support for: nice, acct, lstat, readlink, symlink, mknod and sync.
+dev-tcltk/expect-lite:debug - pull in packages needed for runtime interactive debugger
 dev-tcltk/tktreectrl:shellicon - shellicon extension
 dev-tex/dot2texi:pgf - Enable support for dev-tex/pgf (The TeX Portable Graphic Format)
 dev-tex/dot2texi:pstricks - Enable pstricks support
@@ -1102,7 +1100,7 @@ dev-util/metro:git - Enable support for git snapshots
 dev-util/metro:threads - Enable support for pbzip2 tarball packing/unpacking
 dev-util/mono-tools:webkit - Use net-libs/webkit-gtk for rendering.
 dev-util/nemiver:memoryview - Enable the optional hexadecimal memory inspection with app-editors/ghex.
-dev-util/netbeans:cxx - Adds Netbeans C/C++ Pack
+dev-util/netbeans:keychain - enables support for keychain in netbeans start script
 dev-util/nsis:config-log - Enable the logging facility (useful in debugging installers)
 dev-util/nvidia-cuda-sdk:cuda -  Build CUDA binaries. 
 dev-util/nvidia-cuda-sdk:emulation -  Build binaries for device emulation mode. These binaries will not require a CUDA-capable GPU to run. 
@@ -1477,7 +1475,9 @@ mail-client/mutt:sidebar - Use the vanilla tree + sidebar patch
 mail-client/mutt:smime - Enable support for smime
 mail-client/mutt:smtp - Enable support for smtp
 mail-client/mutt:tokyocabinet - Enable tokyocabinet database backend for header caching
-mail-client/nail:net - Enable network support (thus enabling POP, IMAP and SMTP)
+mail-client/nail:kerberos -  If network is enabled, this adds support for GSSAPI login on IMAP through virtual/kerberos. 
+mail-client/nail:net -  Enable support for network protocols (POP, IMAP and SMTP). If you only need to send mail with the local Transport Agent, disabling this will get you support for only /usr/sbin/sendmail call. 
+mail-client/nail:ssl -  If network is enabled, this adds support for S/MIME and SSL/TLS-powered protocols through dev-libs/openssl. 
 mail-client/pine:largeterminal - Add support for large terminals by doubling the size of pine's internal display buffer
 mail-client/pine:passfile - Adds support for caching IMAP passwords into a file between sessions
 mail-client/squirrelmail:filter - Enable mail-filter/amavisd-new filtering
@@ -1622,6 +1622,7 @@ media-gfx/gthumb:iptc - Add support for IPTC metadata
 media-gfx/gthumb:slideshow - Enable slideshow plugin
 media-gfx/hugin:sift - automatically align images with media-gfx/autopano-sift or media-gfx/autopano-sift-C
 media-gfx/imagemagick:autotrace -  use media-gfx/autotrace to convert bitmaps into vector graphics 
+media-gfx/imagemagick:corefonts -  pull in media-fonts/corefonts, which is required for some commands 
 media-gfx/imagemagick:fpx -  enable media-libs/libfpx support 
 media-gfx/imagemagick:gs -  enable ghostscript support 
 media-gfx/imagemagick:hdri -  enable High Dynamic Range Images formats 
@@ -1664,7 +1665,8 @@ media-libs/devil:allegro - Add support for Allegro
 media-libs/esdl:image - Enable image support
 media-libs/faad2:digitalradio - Digital Radio Mondiale (warning: disables other decoders)
 media-libs/freeglut:mpx -  Enable support for multi-pointer-X. One pointer for each pointer device. 
-media-libs/freetype:fontforge - Install internal headers required for truetype debugger in media-gfx/fontforge (built with USE=truetype-debugger)
+media-libs/freetype:auto-hinter - Use the unpatented auto-hinter instead of the (recommended) TrueType bytecode interpreter
+media-libs/freetype:fontforge - Install internal headers required for TrueType debugger in media-gfx/fontforge (built with USE=truetype-debugger)
 media-libs/freetype:kpathsea - Enable TeX support (ttf2pk and ttf2pfb)
 media-libs/freetype:utils - Install utilities and examples from ft2demos
 media-libs/freeverb3:audacious - Build Audacious plugin
@@ -1675,8 +1677,10 @@ media-libs/giflib:rle - Build converters for RLE format (utah raster toolkit)
 media-libs/glide-v3:voodoo1 - Support 3DFX Voodoo1 video cards
 media-libs/glide-v3:voodoo2 - Support 3DFX Voodoo2 video cards
 media-libs/glide-v3:voodoo5 - Support 3DFX Voodoo4 and Voodoo5 video cards
+media-libs/gstreamer:introspection - Use dev-libs/gobject-introspection for introspection
 media-libs/imlib:deprecated - Enable deprecated GTK+-1.2 support
 media-libs/libass:enca - Enables support for charset discovery and conversion.
+media-libs/libbluray:aacs - Add support for decryption of AACS
 media-libs/libcanberra:alsa - Enables ALSA sound driver.
 media-libs/libcanberra:gstreamer - Enables gstreamer sound driver. Not useful when alsa or pulseaudio is available.
 media-libs/libcanberra:gtk - Enables building of gtk+ helper library, gtk+ runtime sound effects and the canberra-gtk-play utility. To enable the gtk+ sound effects add canberra-gtk-module to the colon separated list of modules in the GTK_MODULES environment variable.
@@ -1718,12 +1722,8 @@ media-libs/opencv:deprecated - Enable deprecated (old) python support
 media-libs/opencv:ipp - Enable Intel Integrated Primitive support
 media-libs/opencv:octave - Enable octave support
 media-libs/opencv:sse3 - Enable optimization for SSE3 capable chips
+media-libs/opencv:ssse3 - faster floating point optimization for SSSE3 capable chips (Intel Core 2 and later chips)
 media-libs/openjpeg:tools - Installs tools (j2k_to_image and image_to_j2k)
-media-libs/panda3d:fmod - Enables support for using mod files for audio support
-media-libs/panda3d:nspr - Enables support for the Netscape Portable Runtime, used in network interface functionality (ie. multiplayer online game networking).
-media-libs/ploticus:cpulimit - Limit cpu usage when generating graphics
-media-libs/ploticus:flash - Adds support for creating SWF files using Ming
-media-libs/ploticus:svgz - Compressed svg graphics support
 media-libs/sdif:ftruncate - Enables usage of ftruncate v. truncate
 media-libs/sdl-mixer:midi - basic support for MIDI files
 media-libs/sdl-mixer:wav - support WAVE files
@@ -2095,8 +2095,9 @@ media-video/mjpegtools:yv12 - Enables support for the YV12 pixel format
 media-video/motiontrack:multiprocess - Enables multi-process support (SMP/cluster) for motiontrack programs
 media-video/mplayer:3dnowext - Enable 3dnowext cpu instructions
 media-video/mplayer:amr - Enables Adaptive Multi-Rate format support
-media-video/mplayer:ass - Internal SRT/SSA/ASS (SubRip / SubStation Alpha) subtitle support
+media-video/mplayer:ass - SRT/SSA/ASS (SubRip / SubStation Alpha) subtitle support
 media-video/mplayer:bl - Blinkenlights video output
+media-video/mplayer:bluray - Enable playback of Blu-ray filesystems
 media-video/mplayer:bs2b - Enable Bauer stereophonic-to-binaural headphone filter
 media-video/mplayer:cdio - Use libcdio for CD support (instead of cdparanoia)
 media-video/mplayer:cpudetection - Enables runtime CPU detection (useful for bindist, compatibility on other CPUs)
@@ -2154,6 +2155,7 @@ media-video/transcode:mjpeg - Enables mjpegtools support
 media-video/transcode:network - Enables network streaming support
 media-video/transcode:nuv - NuppelVideo container format demuxing
 media-video/transcode:postproc - Build with ffmpeg libpostproc support
+media-video/tsmuxer:gui - Installs tsMuxerGUI (needs Qt4)
 media-video/undvd:ogm - Support for OGM container format
 media-video/ushare:dlna - Add DLNA (media-libs/libdlna) support
 media-video/vdr:aio - Use "all in one" patch (or its successor "liemikuutio") with much additional features
@@ -2350,6 +2352,7 @@ net-analyzer/zabbix:proxy - Enable proxy support
 net-analyzer/zabbix:server - Enable zabbix server
 net-dialup/capi4k-utils:fax - Install capi-fax demo programs
 net-dialup/capi4k-utils:pppd - Installs pppdcapiplugin modules
+net-dialup/capi4k-utils:rcapid - Installs rcapid daemon
 net-dialup/freeradius:edirectory - Enables Novell eDirectory integration
 net-dialup/freeradius:frascend - Enables Ascend binary mode
 net-dialup/freeradius:frxp - Enables experimental modules
@@ -2382,15 +2385,6 @@ net-dns/bind:resolvconf - Enable support for net-dns/openresolv
 net-dns/bind:sdb-ldap - Enables ldap-sdb backend
 net-dns/bind:urandom - Use /dev/urandom instead of /dev/random
 net-dns/bind-tools:urandom - Use /dev/urandom instead of /dev/random
-net-dns/djbdns:aliaschain - Enables a fix for the truncation of alias chains
-net-dns/djbdns:cnamefix - Changes the CNAME behavior of dnscache
-net-dns/djbdns:datadir - Enables tinydns-data to read a directory with multiple data files
-net-dns/djbdns:fwdonly - Enable JDP's dnscache-strict-forwardonly patch
-net-dns/djbdns:fwdzone - Enables the forward zone patch
-net-dns/djbdns:multidata - Enables command line parameters for tinydns-data to specify the data file(s)
-net-dns/djbdns:multipleip - Enables multi-IP patch
-net-dns/djbdns:roundrobin - Enables round robin patch
-net-dns/djbdns:semanticfix - Makes tinydns=data handle more semantic errors
 net-dns/dnsmasq:dhcp - Enable support for reading ISC DHCPd lease files
 net-dns/dnsmasq:tftp - Enables built in TFTP server for netbooting
 net-dns/maradns:authonly - Allows one to build only authoritative DNS server
@@ -2524,7 +2518,8 @@ net-im/jabberd2:memdebug - Enable nad and pool debug. Requires USE="debug" to be
 net-im/kadu:phonon - Enable phonon audio plugin
 net-im/kadu:speech - Enables speech module
 net-im/kmess:konqueror - Enable integration with konqueror
-net-im/mcabber:otr -  Enable encrypted conversations using Off-The-Records messaging 
+net-im/mcabber:aspell - Adds support for app-text/aspell spell checker.
+net-im/mcabber:otr - Enable encrypted conversations using Off-The-Records messaging 
 net-im/minbif:video - Add video support
 net-im/pidgin:gadu - Enable Gadu Gadu protocol support
 net-im/pidgin:groupwise - Enable Novell Groupwise protocol support
@@ -2537,6 +2532,7 @@ net-im/pidgin:prediction - Enable Contact Availability Prediction plugin
 net-im/pidgin:python - Build libgnt (GLib Ncurses Toolkit used by finch) with python scripting support
 net-im/pidgin:qq - Enable QQ protocol support
 net-im/pidgin:silc - Enable SILC protocol support
+net-im/pidgin:xscreensaver - Use X screensaver protocol extension to monitor idle/active status based on mouse/keyboard events
 net-im/pidgin:zephyr - Enable Zephyr protocol support
 net-im/psi:enchant - Use enchant spell engine instead of aspell
 net-im/psi:extras - Enables extra non official patches
@@ -2545,6 +2541,7 @@ net-im/psi:plugins - Enable plugins support
 net-im/psi:powersave - Disable some non critical timers for much less CPU usage
 net-im/psi:webkit - Enable chatlog rendering using webkit
 net-im/psi:whiteboarding - Enable experimental interactive SVG drawing
+net-im/psi:xscreensaver - Use X screensaver protocol extension to monitor idle/active status based on mouse/keyboard events
 net-im/psimedia:demo -  build simple test application for the PsiMedia system. 
 net-im/pyaim-t:webinterface - Install dependencies needed for the web interface 
 net-im/pyicq-t:webinterface - Install dependencies needed for the web interface 
@@ -2615,12 +2612,14 @@ net-irc/xchat-gnome:sound - Enable sound event support with media-libs/libcanber
 net-irc/xchat-xsys:audacious - Enables media-sound/audacious integration
 net-irc/znc:ares - Enables support for asynchronous DNS using the c-ares library
 net-irc/znc:extras - Enable some additional modules
-net-irc/znc:nomodules - Don't build modules
 net-libs/aqbanking:chipcard - Enable support for DDV/RSA-chipcards
 net-libs/clinkcc:mythtv - Enable MythTV support
 net-libs/courier-authlib:vpopmail - Enable vpopmail support
 net-libs/cvm:vpopmail - Enable vpopmail support
 net-libs/farsight2:upnp - Enable UPnP IGD support
+net-libs/gssdp:introspection - Use dev-libs/gobject-introspection for introspection
+net-libs/gupnp:introspection - Use dev-libs/gobject-introspection for introspection
+net-libs/gupnp-av:introspection - Use dev-libs/gobject-introspection for introspection
 net-libs/iax:snomhack - Use slower memset for SNOM phoneem
 net-libs/libeXosip:srv - enable support for SRV records DNS queries
 net-libs/libesmtp:ssl -  Enable support for advanced SMTP authentication methods, like NTML and STARTTLS. Also use OpenSSL's MD5 implementation over internal version. 
@@ -2682,6 +2681,13 @@ net-libs/opal:x264-static - Install x264 plugin statically linked with x264
 net-libs/openh323:noaudio - Disable audio codecs
 net-libs/openh323:novideo - Disable video codecs
 net-libs/ortp:srtp - Add support for Secure RTP
+net-libs/pjsip:epoll - epoll system call support
+net-libs/pjsip:ext-sound - External sound device support
+net-libs/pjsip:g711 - Builds the G711 codec
+net-libs/pjsip:g722 - Builds the G722 codec
+net-libs/pjsip:g7221 - Builds the G7221 codec
+net-libs/pjsip:ilbc - Builds the ilbc codec
+net-libs/pjsip:l16 - Builds the L16 codec
 net-libs/ptlib:asn - Enable ASN decoding/encoding support
 net-libs/ptlib:audio - Enable audio support
 net-libs/ptlib:dtmf - Enable DTMF encoding/decoding support
@@ -2711,7 +2717,9 @@ net-mail/dbmail:sieve - Enable sieve filter support
 net-mail/dovecot:cydir - Adds cydir storage support
 net-mail/dovecot:dbox - Adds dbox storage support
 net-mail/dovecot:managesieve - Adds managesieve protocol support
+net-mail/dovecot:mdbox - Adds mdbox storage support
 net-mail/dovecot:pop3d - Build pop3d support
+net-mail/dovecot:sdbox - Adds sdbox storage support
 net-mail/dovecot:sieve - Build the sieve plugin
 net-mail/dovecot:vpopmail - Add vpopmail support
 net-mail/fetchmail:hesiod - Enable support for hesiod
@@ -2763,6 +2771,7 @@ net-misc/connman:ofono - Use net-misc/ofono for telephony support.
 net-misc/connman:resolvconf - Use net-dns/openresolv for managing DNS information
 net-misc/connman:tools - Enable testing tools.
 net-misc/connman:udev - Enable udev support.
+net-misc/connman:wimax - Use net-wireless/wimax for WiMAX support.
 net-misc/curl:ares - Enabled c-ares dns support
 net-misc/curl:gnutls - Prefer gnutls over nss and openssl as the crypto engine
 net-misc/curl:libssh2 - Enabled SSH urls in curl using libssh2
@@ -2931,6 +2940,7 @@ net-p2p/btg:upnp - Enable support for UPnP
 net-p2p/btg:webinterface - install webBTG
 net-p2p/dbhub:switch_user - Enable support for switching user
 net-p2p/deluge:webinterface - Install dependencies needed for the web interface 
+net-p2p/eiskaltdcpp:upnp - Forward ports using UPnP
 net-p2p/fms:frost - Add support for frost boards
 net-p2p/freenet:freemail - Add Freemail support
 net-p2p/gift:ares - pull in Ares plugin
@@ -3012,6 +3022,7 @@ net-voip/yate:spandsp - Enable support for the spandsp codec
 net-voip/yate:zaptel - Build zaptel Channel plugin
 net-wireless/blueman:network - Add functionality to setup (host) PAN connections using either net-dns/dnsmasq or net-misc/dhcp
 net-wireless/bluez:consolekit - Use sys-auth/pambase[consolekit] to determine access to bluetooth devices based on whether a user is logged in locally or remotely
+net-wireless/bluez:maemo6 - Compile with maemo6 plugin
 net-wireless/bluez:old-daemons - Install old daemons like hidd and sdpd that are deprecated by the new Service framework
 net-wireless/bluez:test-programs - Install tools for testing of various Bluetooth functions
 net-wireless/gnome-bluetooth:nautilus - Build nautilus-sendto plugin
@@ -3032,6 +3043,7 @@ net-wireless/wpa_supplicant:eap-sim - Add support for EAP-SIM authentication alg
 net-wireless/wpa_supplicant:fasteap - Add support for FAST-EAP authentication algorithm
 net-wireless/wpa_supplicant:madwifi - Add support for madwifi (Atheros chipset)
 net-wireless/wpa_supplicant:ps3 - Add support for ps3 hypervisor driven gelic wifi
+net-wireless/wpa_supplicant:wimax - Add support for Wimax EAP-PEER authentication algorithm
 net-wireless/wpa_supplicant:wps - Add support for Wi-Fi Protected Setup
 rox-base/rox:video - Enable rox-extra/videothumbnail for creating thumbnails of videos with mplayer or totem.
 rox-extra/archive:ace - Enable .ace extraction via app-arch/unace
@@ -3323,6 +3335,7 @@ sys-auth/pambase:consolekit -  Enable pam_ck_connector module on local system lo
 sys-auth/pambase:cracklib -  Enable pam_cracklib module on system authentication stack. This produces warnings when changing password to something easily crackable. It requires the same USE flag to be enabled on sys-libs/pam or system login might be impossible. 
 sys-auth/pambase:debug -  Enable debug information logging on syslog(3) for all the modules supporting this in the system authentication and system login stacks. 
 sys-auth/pambase:gnome-keyring -  Enable pam_gnome_keyring module on system login stack. This enables proper Gnome Keyring access to logins, whether they are done with the login shell, a Desktop Manager or a remote login systems such as SSH. 
+sys-auth/pambase:kerberos -  Enable pam_krb5 module on system auth stack, as an alternative to pam_unix. If Kerberos authentication succeed, only pam_unix will be ignore, and all the other modules will proceed as usual, including Gnome Keyring and other session modules. It requires sys-libs/pam as PAM implementation. 
 sys-auth/pambase:mktemp -  Enable pam_mktemp module on system auth stack for session handling. This module creates a private temporary directory for the user, and sets TMP and TMPDIR accordingly. 
 sys-auth/pambase:passwdqc -  Enable pam_passwdqc module on system auth stack for password quality validation. This is an alternative to pam_cracklib producing warnings, rejecting or providing example passwords when changing your system password. It is used by default by OpenWall GNU/*/Linux and by FreeBSD. 
 sys-auth/pambase:sha512 -  Switch Linux-PAM's pam_unix module to use sha512 for passwords hashes rather than MD5. This option requires >=sys-libs/pam-1.0.1 built against >=sys-libs/glibc-2.7, if it's built against an earlier version, it will silently be ignored, and MD5 hashes will be used. All the passwords changed after this USE flag is enabled will be saved to the shadow file hashed using SHA512 function. The password previously saved will be left untouched. Please note that while SHA512-hashed passwords will still be recognised if the USE flag is removed, the shadow file will not be compatible with systems using an earlier glibc version. 
@@ -3395,13 +3408,14 @@ sys-devel/binutils:multitarget - Adds support to binutils for cross compiling (d
 sys-devel/binutils-hppa64:multislot - Allow for multiple versions of binutils to be emerged at once for same CTARGET
 sys-devel/binutils-hppa64:multitarget - Adds support to binutils for cross compiling (does not work with gas)
 sys-devel/clang:static-analyzer - Install the Clang static analyzer
+sys-devel/clang:system-cxx-headers - By default, clang++ searchs for C++ headers in a series of hardcoded paths. Enabling this flag will force it to use the active gcc profile ones
 sys-devel/gcc:d - Enable support for the D programming language
 sys-devel/gcc:fixed-point - Enable fixed-point arithmetic support for MIPS targets in gcc (Warning: significantly increases compile time!)
 sys-devel/gcc:graphite - Add support for the framework for loop optimizations based on a polyhedral intermediate representation
 sys-devel/gcc:ip28 - Enable building a compiler capable of building a kernel for SGI Indigo2 Impact R10000 (IP28)
 sys-devel/gcc:ip32r10k - Enable building a compiler capable of building an experimental kernel for SGI O2 w/ R1x000 CPUs (IP32)
 sys-devel/gcc:libffi - Build the portable foreign function interface library
-sys-devel/gcc:lto - Add support for link-time optimizations
+sys-devel/gcc:lto - Add support for link-time optimizations (unsupported, use at your own risk).
 sys-devel/gcc:mudflap - Add support for mudflap, a pointer use checking library
 sys-devel/gcc:multislot - Allow for SLOTs to include minor version (3.3.4 instead of just 3.3)
 sys-devel/gcc:n32 - Enable n32 ABI support on mips
@@ -3589,23 +3603,16 @@ www-client/elinks:bittorrent - Enable support for the BitTorrent protocol
 www-client/elinks:finger - Enable support for the finger protocol
 www-client/elinks:gopher - Enable support for the gopher protocol
 www-client/epiphany:nss - Import passwords from older gecko based www-client/epiphany keyring.
+www-client/firefox:custom-optimization - Fine-tune custom compiler optimizations
+www-client/firefox:ipc - Use inter-process communication between tabs and plugins. Allows for greater stability in case of plugin crashes
+www-client/firefox:system-sqlite - Use the system-wide dev-db/sqlite installation with secure-delete enabled
 www-client/icecat:custom-optimization - Fine-tune custom compiler optimizations
 www-client/icecat:ipc - Use inter-process communication between tabs and plugins. Allows for greater stability in case of plugin crashes
 www-client/icecat:system-sqlite - Use the system-wide dev-db/sqlite installation with secure-delete enabled
-www-client/kazehakase:hyperestraier - enable hyperestraier support for full-text search in history
-www-client/kazehakase:webkit - Use net-libs/webkit-gtk for rendering rather than net-libs/xulrunner
 www-client/lynx:gnutls - Use gnutls library for HTTPS support (openssl is the default library for HTTPS support).
 www-client/lynx:ssl - Enable HTTPS support.
 www-client/midori:html - Install HTML documentation
 www-client/midori:unique - Optional libunique support
-www-client/mozilla-firefox:custom-optimization - Fine-tune custom compiler optimizations
-www-client/mozilla-firefox:filepicker - Enable old gtkfilepicker from 1.0.x firefox
-www-client/mozilla-firefox:iceweasel - Enable iceweasel branding
-www-client/mozilla-firefox:ipc - Use inter-process communication between tabs and plugins. Allows for greater stability in case of plugin crashes
-www-client/mozilla-firefox:mozdevelop - Enable features for web developers (e.g. Venkman)
-www-client/mozilla-firefox:moznopango - Disable x11-libs/pango during runtime
-www-client/mozilla-firefox:system-sqlite - Use the system-wide dev-db/sqlite installation with secure-delete enabled
-www-client/mozilla-firefox:xforms - XForms is a standard to split up XHTML into XForms, instance data, and user interface
 www-client/opera:gtk - Set runtime dependencies to support GTK+/GNOME desktop integration
 www-client/opera:kde - Set runtime dependencies to support KDE desktop integration
 www-client/opera:qt-static - Install binaries statically linked to Qt
@@ -3613,15 +3620,8 @@ www-client/seamonkey:chatzilla - Build Mozilla's IRC client (default on)
 www-client/seamonkey:composer - Build Mozilla's HTML editor component (default on)
 www-client/seamonkey:custom-optimization - Fine-tune custom compiler optimizations
 www-client/seamonkey:mailclient - Build Mozilla's Mail client (default on)
-www-client/seamonkey:mozdevelop - Enable features for web developers (e.g. Venkman)
-www-client/seamonkey:moznocompose - Disable building of Mozilla's HTML editor component
-www-client/seamonkey:moznoirc - Disable building of Mozilla's IRC client
-www-client/seamonkey:moznomail - Disable building Mozilla's mail client
-www-client/seamonkey:moznopango - Disable x11-libs/pango during runtime
-www-client/seamonkey:moznoroaming - sroaming extension support
-www-client/seamonkey:roaming - Build sroaming extension support (default on)
+www-client/seamonkey:roaming - Build roaming extension support (default on)
 www-client/seamonkey:system-sqlite - Use the system-wide dev-db/sqlite installation with secure-delete enabled
-www-client/seamonkey:xforms - XForms is a standard to split up XHTML into XForms, instance data, and user interface
 www-client/uzbl:browser - Install the uzbl-browser script
 www-client/uzbl:experimental - Enable experimental branch
 www-client/uzbl:helpers - Optional tools used by uzbl scripts
@@ -3775,8 +3775,8 @@ x11-themes/gentoo-artwork:pixmaps - Install pixmaps
 x11-themes/gtk-engines-murrine:animation-rtl - Progressbar animation from right to left
 x11-themes/gtk-engines-murrine:themes - Pull in themes via x11-themes/murrine-themes
 x11-themes/gtk-engines-nodoka:animation-rtl - Progressbar animation from right to left
-x11-themes/gtk-engines-qtcurve:firefox3 - Install GUI theme tweaks for version 3 of www-client/mozilla-firefox 
-x11-themes/gtk-engines-qtcurve:mozilla - Install GUI theme tweaks for mozilla based browsers, including version 2 of www-client/mozilla-firefox 
+x11-themes/gtk-engines-qtcurve:firefox3 - Install GUI theme tweaks for version 3 of www-client/firefox 
+x11-themes/gtk-engines-qtcurve:mozilla - Install GUI theme tweaks for mozilla based browsers, including version 2 of www-client/firefox 
 x11-themes/qtcurve-qt4:kde - Enable KDE4 support. This adds a QtCurve configuration module to KDE's SystemSettings. 
 x11-themes/qtcurve-qt4:windeco - Enable window decoration for KWin.
 x11-themes/redhat-artwork:audacious - Install media-sound/audacious theme
@@ -3818,6 +3818,7 @@ x11-wm/windowmaker:vdesktop - Enable dynamic virtual desktop (conflicts with sof
 xfce-base/libxfce4ui:glade - Build support for Glade 3's GtkBuilder implementation
 xfce-base/libxfcegui4:glade - Build glade bindings
 xfce-base/thunar:trash-plugin - Build Trash plug-in for panel
+xfce-base/thunar:udev - Enable gudev support (required by xfce-extra/thunar-volman)
 xfce-base/xfce-utils:lock - Enable screen locking
 xfce-base/xfce4-session:fortune - Install tips and tricks app (xfce4-tips), adds dependency on games-misc/fortune-mod
 xfce-base/xfce4-session:gnome-keyring - Support for storing your password.

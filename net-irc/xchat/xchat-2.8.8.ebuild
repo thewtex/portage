@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/xchat/xchat-2.8.8.ebuild,v 1.1 2010/06/01 08:13:55 polynomial-c Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-irc/xchat/xchat-2.8.8.ebuild,v 1.4 2010/07/28 11:27:43 polynomial-c Exp $
 
 EAPI=2
 
@@ -14,7 +14,7 @@ HOMEPAGE="http://www.xchat.org/"
 
 LICENSE="GPL-2"
 SLOT="2"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc x86"
 IUSE="dbus ipv6 libnotify mmx nls ntlm perl python spell ssl tcl xchatnogtk xchatdccserver xft"
 
 RDEPEND=">=dev-libs/glib-2.6.0
@@ -41,6 +41,7 @@ pkg_setup() {
 }
 
 src_prepare() {
+	epatch "${FILESDIR}"/${PN}-input-box4.patch
 	use xchatdccserver && epatch "${DISTDIR}"/xchat-dccserver-0.6.patch.bz2
 
 	# use libdir/xchat/plugins as the plugin directory

@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-accessibility/gok/gok-2.30.0.ebuild,v 1.1 2010/06/13 16:31:32 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-accessibility/gok/gok-2.30.0.ebuild,v 1.3 2010/07/26 06:52:15 eva Exp $
 
 EAPI="2"
 GCONF_DEBUG="no"
@@ -12,7 +12,7 @@ HOMEPAGE="http://www.gok.ca/"
 
 LICENSE="LGPL-2"
 SLOT="1"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 IUSE="accessibility doc usb"
 
 # accessibility will disappear with new xorg-server (1.6)
@@ -20,12 +20,12 @@ RDEPEND=">=dev-libs/glib-2.17.4
 	>=gnome-extra/at-spi-1.5.2
 	>=gnome-base/libbonobo-2.5.1
 	>=dev-libs/atk-1.3
-	>=x11-libs/gtk+-2.18.0
+	>=x11-libs/gtk+-2.18
 	>=x11-libs/libwnck-2.13.5
 	app-accessibility/gnome-speech
 	>=dev-libs/dbus-glib-0.7
 	>=media-libs/libcanberra-0.3[gtk]
-	>=gnome-base/libglade-2
+	dev-libs/libxml2
 	>=gnome-base/gconf-2.16
 	>=gnome-base/orbit-2
 	usb? ( =virtual/libusb-0* )
@@ -36,7 +36,6 @@ DEPEND="${RDEPEND}
 	>=dev-util/intltool-0.40.1
 	>=dev-util/pkgconfig-0.9
 	app-text/scrollkeeper
-	dev-util/gtk-doc-am
 	doc? ( >=dev-util/gtk-doc-1 )
 	x11-proto/inputproto
 	x11-proto/kbproto

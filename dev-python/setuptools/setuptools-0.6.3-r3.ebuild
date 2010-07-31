@@ -27,28 +27,6 @@ S="${WORKDIR}/${MY_P}"
 PYTHON_MODNAME="easy_install.py pkg_resources.py setuptools site.py"
 DOCS="README.txt docs/easy_install.txt docs/pkg_resources.txt docs/setuptools.txt"
 
-pkg_preinst() {
-	# Delete unneeded files which cause problems. These files were created by some older, broken versions.
-	rm -fr "${ROOT}"usr/lib*/python*/site-packages/{,._cfg????_}setuptools-*egg-info || die "Deletion of broken files failed"
-	
-	local f 
-	local df
-	
-	# we may need to replace directories with files. Portage doesn't allow this
-	# currently, so we must manually look for conflicts and remove them by hand
-	# prior to merge
-
-	for f in "${D}"/usr/lib*/python*/site-packages/*.egg-info
-	do
-		[ -d $f ] && continue # we are merging a directory, no problem
-		df="${ROOT}"`echo "$f" | sed -e "s:^${D}/::"`
-		[ -d {$df} ] || continue # if dest exists and is a directory, we'll continue
-		echo "Removing $df to allow us to overwrite it with a file..."
-		[ "${df/site-packages/}" != "${df}" ] && die "error calculating paths - safety check"
-		rm -rf ${df}
-	done
-}
-
 src_prepare() {
 	distutils_src_prepare
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/pykde4/pykde4-4.4.5.ebuild,v 1.1 2010/06/30 15:36:52 alexxy Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/pykde4/pykde4-4.4.5.ebuild,v 1.3 2010/07/17 20:36:49 scarabeus Exp $
 
 EAPI="3"
 
@@ -38,8 +38,11 @@ src_prepare() {
 			|| die "Failed to disable examples"
 	fi
 
+	# See bug 328135
+	epatch "${FILESDIR}"/${PN}-4.4.92-build-fix-sip.patch
+
 	# See bug 322351
-	use arm && epatch "${FILESDIR}/${P}-4.4.4-arm-sip.patch"
+	use arm && epatch "${FILESDIR}/${PN}-4.4.4-arm-sip.patch"
 }
 
 src_configure() {

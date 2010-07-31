@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11765 2010/07/13 12:49:58 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11803 2010/07/27 17:38:52 lack Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -31,10 +31,138 @@
 
 #--- END OF EXAMPLES ---
 
-# Lars Wendler <polynomial-c@gentoo.org> (12 Jul 2010)
+# Jim Ramsay <lack@gentoo.org> (26 Jul 2010)
+# No longer works (Bug #284182), and no longer needed since app-admin/gkrellm
+# with USE="hddtemp" supports reading drive temperatures natively.
+#
+# Removal in 30 days.
+x11-plugins/gkrellm-hddtemp
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (27 Jul 2010)
+#  on behalf of QA team
+#
+# Broken pam setup (bug #168133, bug #261695); overdue bump
+# (bug #250499); security issues (bug #255148); misc problems
+# (bug #143230, bug #168133, bug #241826, bug #252022,
+# bug #326565).
+#
+# Needs at a minimum a new maintainer.
+#
+# Removal on 2010-09-25
+net-misc/xrdp
+
+# Lars Wendler <polynomial-c@gentoo.org> (26 Jul 2010)
 # Masked for removal in 30 days.
-# No active maintainer.
-www-client/seamonkey-bin
+# Discontinued by upstream and superseded by Thunderbird with Lightning
+app-office/mozilla-sunbird
+app-office/mozilla-sunbird-bin
+www-client/mozilla-launcher
+
+# Jim Ramsay <lack@gentoo.org> (26 Jul 2010)
+# Deprecated in favour of opensource alternatives:
+#   net-misc/pymazon
+#   net-misc/clamz
+#
+# net-misc/amazonmp3 has been masked since 2008
+# Removal 30 Jul 2010
+net-misc/amazonmp3
+net-misc/amazonmp3-libcompat
+
+# Sebastian Pipping <sping@gentoo.org> (26 Jul 2010)
+# Don't push experimental patch to support Audacious 2.4_beta1 on everyone
+=media-libs/freeverb3-2.5.5-r1
+
+# Pawel Hajdan jr <phajdan.jr@gentoo.org> (25 Jul 2010)
+# The v8 package is still very experimental and not ready for general use.
+# All comments, feedback, and patches are welcome, see the project page:
+# http://www.gentoo.org/proj/en/desktop/chromium/index.xml
+dev-lang/v8
+
+# Samuli Suominen <ssuominen@gentoo.org> (25 Jul 2010)
+# Last of GTK+-1.2 consumers from media categories
+# See bug 214788.
+# Removal in 30 days
+media-sound/smurf
+media-sound/swami
+media-sound/soundtracker
+media-gfx/surf
+
+# Torsten Veller <tove@gentoo.org> (24 Jul 2010)
+# Masked for removal in 30 days.
+# Dead Upstream, last update 2005, #271939, #239615
+app-misc/gwine
+
+# Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (22 Jul 2010)
+# Development versions.
+=net-libs/gnutls-2.11*
+
+# Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (21 Jul 2010)
+# Merged into >=dev-python/mechanize-0.2.0. Masked for deletion in 30 days.
+dev-python/clientform
+
+# Luca Barbato <lu_zero@gentoo.org> (21 Jul 2010)
+# Not ready for public consumption, clashes with current mesa-git
+media-libs/shivavg
+
+# Jeroen Roovers <jer@gentoo.org> (21 Jul 2010)
+# Development snapshot
+=net-ftp/lftp-4.0.9.1
+
+# Stefan Briesenick <sbriesen@gentoo.org> (21 Jul 2010)
+# doesn't compile against latest media-libs/spandsp.
+# not needed anymore for Asterisk 1.6.
+net-misc/asterisk-spandsp_codec_g726
+
+# Stefan Briesenick <sbriesen@gentoo.org> (21 Jul 2010)
+# Abandoned upstream. Won't work with current kernels.
+net-dialup/e2220pc
+net-dialup/e5520pc
+net-dialup/fcclassic
+net-dialup/fcdsl
+net-dialup/fcdsl2
+net-dialup/fcdslsl
+net-dialup/fcdslslusb
+net-dialup/fcdslusb
+net-dialup/fcdslusba
+net-dialup/fcpci
+net-dialup/fcpcmcia
+net-dialup/fcpnp
+net-dialup/fcusb
+net-dialup/fcusb2
+net-dialup/fritzcapi
+net-dialup/fxusb
+net-dialup/fxusb_CZ 
+net-wireless/fwlanusb
+
+# Markus Meier <maekke@gentoo.org> (18 Jul 2010)
+# mask hugin beta versions for testing (needs masked libpano13)
+>=media-gfx/hugin-2010.2.0_beta1
+
+# Daniel Black <dragonheart@gentoo.org> (18 Jul 2010)
+# Abandoned upstream.
+# Difficulties transitioning to python3 as per bug 308271
+# Performs same functionality as kwallet
+app-admin/kedpm
+
+# Daniel Black <dragonheart@gentoo.org> (18 Jul 2010)
+# Abandoned upstream.
+# Difficulties transitioning to python3 as per bug 308331
+app-cdr/sync2cd
+
+# Hans de Graaff <graaff@gentoo.org> (17 Jul 2010)
+# Abandoned upstream, according to the author better alternatives
+# are available. Nothing in the tree depends on it.
+# Masked for deletion in 30 days.
+dev-ruby/testunit-mock
+
+# Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (14 Jul 2010)
+# No longer working. Masked for deletion in 30 days (bug #322069).
+dev-python/pygoogle
+
+# Jeroen Roovers <jer@gentoo.org> (13 Jul 2010)
+# The ebuild still needs work, but if you can help testing
+# it, then please unmask (bug #317325)
+=net-analyzer/net-snmp-5.5*
 
 # Pacho Ramos <pacho@gentoo.org> (12 Jul 2010)
 # Masked for removal in 30 days.
@@ -124,14 +252,6 @@ dev-php5/znf
 >=dev-util/nvidia-cuda-sdk-3.1
 >=dev-util/nvidia-cuda-toolkit-3.1
 
-# Samuli Suominen <ssuominen@gentoo.org> (01 Jul 2010)
-# Fails to compile with asneeded, bug 247768
-# Fails to compile with dcParser errors, bug 253381
-# Needs a version bump, bug 277620 with proper python.eclass
-# handling, bug 313543
-# Masked for removal in 30 days
-media-libs/panda3d
-
 # Vlastimil Babka <caster@gentoo.org> (30 Jun 2010)
 # Masked for removal due to EOL and security, bug #292001.
 # Do this to avoid pulling other 1.5 JDK:
@@ -175,47 +295,9 @@ dev-libs/seed
 # See bug #324411.
 dev-haskell/filepath
 
-# Samuli Suominen <ssuominen@gentoo.org> (28 Jun 2010)
-# Vulnerable xulrunner, bug #324953
-#
-# himerge needs gtk2hs compiled with xulrunner:1.8
-#
-# Masked for removal in 30 days
-=net-libs/xulrunner-1.8*
-app-portage/himerge
-
-# Samuli Suominen <ssuominen@gentoo.org> (28 Jun 2010)
-# Fails to compile, bug #274385
-# Internal copy of old libpcap and libtomcrypt, bug #278419
-# File collision with dev-lang/mono, bug #303957
-# Masked for removal in 30 days
-net-analyzer/paketto
-
 # Christian Faulhammer <fauli@gentoo.org> (28 Jun 2010)
 # Beta version
 ~dev-lang/erlang-14.1
-
-# Samuli Suominen <ssuominen@gentoo.org> (28 Jun 2010)
-# Wrongly stripping -Wl, from LDFLAGS causing sane-compiler-check
-# to fail from autoconf based script.
-# Broken OpenCV check, doesn't find the cvCreateImage symbol it's looking 
-# from -lcv. Orphaned library and ebuild been broken since 2008.
-# Masked for removal in 30 days. Bug 280922.
-media-libs/libdecodeqr
-
-# Samuli Suominen <ssuominen@gentoo.org> (27 Jun 2010)
-# Obsolete lm_sensors and kernel modules for Linux 2.4.
-# time to upgrade to lm_sensors-3.
-#
-# Masked for removal in 30 days
-=sys-apps/lm_sensors-2*
-sys-apps/lm_sensors-modules
-
-# Samuli Suominen <ssuominen@gentoo.org> (26 Jun 2010)
-# Vulnerable and now unused xulrunner-bin, support was dropped from acroread.
-#
-# Masked for removal in 30 days, bug 324953.
-net-libs/xulrunner-bin
 
 # Diego E. Pettenò <flameeyes@gentoo.org> (26 Jun 2010)
 #  on behalf of QA team
@@ -234,25 +316,6 @@ app-i18n/adaptit
 #
 # Removal on 2010-08-25
 dev-util/pbuilder
-
-# Samuli Suominen <ssuominen@gentoo.org> (26 Jun 2010)
-# Masked for QA
-# 
-# Fails to compile with stable xulrunner, see bug 317275
-# Fails to compile with GTK+-2.20, see bug 325661
-# Ignores LDFLAGS, see bug 268491
-# Current stable is using vulnerable xulrunner, see bug 324953
-#
-# Removal in 30 days
-www-client/kazehakase
-
-# Samuli Suominen <ssuominen@gentoo.org> (25 Jun 2010)
-# Depends on old unslotted media-libs/ming which fails to build
-# Ignores build flags wrt bug 240820
-# Needs version bump wrt bug 272974, still using old ming
-# built_with_use cleanup, bug 286253
-# masked for removal in 30 days
-media-libs/ploticus
 
 # Diego E. Pettenò <flameeyes@gentoo.org> (24 Jun 2010)
 #  on behalf of QA team
@@ -274,32 +337,6 @@ media-libs/ploticus
 mail-client/exmh
 mail-client/nmh
 
-# Samuli Suominen <ssuominen@gentoo.org> (24 Jun 2010)
-# poorly written ebuild and sources are no longer available,
-# mirror restricted
-# masked for removal in 30 days
-app-editors/xxe
-
-# Kacper Kowalik <xarthisius@gentoo.org> (24 Jun 2010)
-# Last release in 2002. fails with --as-needed Bug 248356
-# Build system beyond repair, automagic dependency on Tcl
-# Fails to build with fortran
-#
-# masked for removal in 30 days
-sci-geosciences/vis5d+
-
-# Samuli Suominen <ssuominen@gentoo.org> (24 Jun 2010)
-# these are included in KDE 4.4, so no need for separate ebuilds
-#
-# qalculate-applet, bug 321255
-# aurorae, bug 325061
-# blogilo is now kde-base/blogilo
-#
-# masked for removal in 30 days
-kde-misc/qalculate-applet
-x11-themes/aurorae
-kde-misc/blogilo
-
 # Michał Januszewski <spock@gentoo.org> (24 Jun 2010)
 # Temporary mask to be removed once the ebuild is confirmed to work
 # reliably on all supported architectures.
@@ -309,20 +346,6 @@ kde-misc/blogilo
 # Pawel Hajdan jr <phajdan.jr@gentoo.org> (22 Jun 2010)
 # Masked for testing. It's quite "challenging" to package.
 >=sci-mathematics/nusmv-2.5.0
-
-# Samuli Suominen <ssuominen@gentoo.org> (22 Jun 2010)
-# Replaced by sys-kernel/dracut
-#
-# Unresolved bugs 127542, 144365, 174068, 181685, 268285
-#
-# Removal in 30 days, see bug 324741
-sys-apps/mkinitrd
-
-# Christian Faulhammer <fauli@gentoo.org> (22 Jun 2010)
-# Masked for removal in 30 days
-# Never really took off, unusable state for years
-# No upstream activity
-x11-misc/gaia
 
 # Kacper Kowalik <xarthisius@gentoo.org> (21 Jun 2010)
 # New version modular version of heartbeat
@@ -452,11 +475,6 @@ net-firewall/ipp2p
 app-pda/pilot-mailsync
 
 # Jeremy Olexa <darkside@gentoo.org> (12 Jun 2010)
-# Fails with forced as-needed but most importantly no maintainer.
-# Removed in 60 days by treecleaners, bug 277640
-app-text/fmt-ptrn
-
-# Jeremy Olexa <darkside@gentoo.org> (12 Jun 2010)
 # Depends on deprecated gtk functionality in media-libs/imlib
 # Removed in 60 days by treecleaners, bug 215341
 x11-plugins/gkacpi
@@ -465,12 +483,6 @@ x11-plugins/gkacpi
 # Old, useless, no maintainer
 # Removed in 60 days by treecleaners, bug 185292
 net-wireless/ieee80211
-
-# Hans de Graaff <graaff@gentoo.org> (12 Jun 2010)
-# Abandoned by upstream, no releases since 2003. Test suite fails and
-# generates many deprecation warnings.
-# Masked for removal in 30 days.
-dev-ruby/amrita
 
 # Ben de Groot <yngwin@gentoo.org> (11 Jun 2010)
 # Masked for removal in 30 days, see bug #315067
@@ -539,33 +551,6 @@ media-video/w3cam
 # Upstreams testing version
 # Added on request
 >=sci-chemistry/refmac-5.6
-
-# Torsten Veller <tove@gentoo.org> (15 May 2010)
-# Perl 5.12 masks:
-# - Mask dev-lang/perl-5.12.1 for testing
-=dev-lang/perl-5.12.1*
-# - Mask dev-perl/Data-Alias for removal
-#   It does not work with perl-5.12 and is
-#   not needed by any package
-dev-perl/Data-Alias
-
-# Tony Vroon <chainsaw@gentoo.org> (11 May 2010)
-# The following Asterisk add-ons fail to build correctly against
-# current Asterisk 1.6.1 and 1.6.2 branch ebuilds. These are masked for
-# removal on or after June 15 unless a developer is willing to port
-# these forward. Relevant bug reports:
-# http://bugs.gentoo.org/show_bug.cgi?id=298682
-# http://bugs.gentoo.org/show_bug.cgi?id=299338
-# http://bugs.gentoo.org/show_bug.cgi?id=312433
-# http://bugs.gentoo.org/show_bug.cgi?id=313663
-# http://bugs.gentoo.org/show_bug.cgi?id=316365
-# http://bugs.gentoo.org/show_bug.cgi?id=316761
-net-misc/asterisk-app_authenticate_ldap
-net-misc/asterisk-app_event
-net-misc/asterisk-app_iconv
-net-misc/asterisk-app_intercept
-net-misc/asterisk-app_ldap
-net-misc/asterisk-app_notify
 
 # Robin H. Johnson <robbat2@gentoo.org> (11 May 2010)
 # Masked for testing, and some testsuite failures.
@@ -676,18 +661,6 @@ sec-policy/selinux-wireshark
 # Peter Volkov <pva@gentoo.org> (22 Apr 2010)
 # Masking development kernels. Test it and report bugs upstream.
 =sys-kernel/openvz-sources-2.6.32*
-
-# Torsten Veller <tove@gentoo.org> (20 Apr 2010)
-# Bundles a copy of libsqlite (#258464)
-# Tests fail (#294218)
-dev-perl/DBD-SQLite2
-# (23 Apr 2010)
-# Requested but never used (#136223)
-# and does not work (#242524), HOMEPAGE dead
-dev-perl/perlmenu
-# (24 Apr 2010)
-# Unmaintained and probably broken (see rt bugs and cpanratings) (#276745)
-dev-perl/Net-XWhois
 
 # Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (16 Apr 2010)
 # Masked to enforce upgrade which looks like downgrade.
@@ -857,9 +830,9 @@ net-libs/libjingle
 # Pawel Hajdan jr <phajdan.jr@gentoo.org> (07 Jan 2010)
 # Dev channel releases are only for people who are developers or want more
 # experimental features and accept a more unstable release.
-~www-client/chromium-6.0.437.3
-~www-client/chromium-6.0.453.1
 ~www-client/chromium-6.0.458.1
+~www-client/chromium-6.0.466.0
+~www-client/chromium-6.0.472.0
 
 # Diego E. Pettenò <flameeyes@gentoo.org> (07 Jan 2010)
 #  on behalf of QA team
@@ -957,9 +930,12 @@ x11-apps/xfsinfo
 >=xfce-base/exo-0.5.1
 >=xfce-base/xfce4-settings-4.7.0
 >=xfce-base/thunar-1.1.0
+>=xfce-extra/thunar-volman-0.5
 >=xfce-extra/thunar-media-tags-plugin-0.1.2-r1
 >=xfce-base/xfce4-panel-4.7.0
 xfce-extra/thunar-vfs
+# bug 330005 - needs newer xfce4-panel release
+>=xfce-base/libxfce4util-4.7.2
 
 # Diego E. Pettenò <flameeyes@gentoo.org> (23 Oct 2009)
 #
@@ -1040,11 +1016,6 @@ dev-lisp/gcl
 <dev-db/mysql-5.0.60-r1
 <virtual/mysql-5.0
 
-# Jim Ramsay <lack@gentoo.org> (1 Feb 2008)
-# Weird boost dependencies, need to solve this in a different way: Probably by
-# actually doing 'amazonmp3-libcompat' for both x86 and amd64. (bug #272699)
-net-misc/amazonmp3
-
 # Ben de Groot <yngwin@gentoo.org> (25 Jun 2009)
 # Mask the Qt4 meta ebuild, to prevent devs from being silly and depend on
 # the meta ebuild instead of on the specific split Qt ebuilds needed. See
@@ -1067,10 +1038,6 @@ net-misc/amazonmp3
 # Torsten Veller <tove@gentoo.org> (10 Jun 2009)
 # Mask unstable releases. Read the warning!
 =app-office/gnucash-2.3*
-
-# Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (30 May 2009)
-# Development versions.
-=net-libs/gnutls-2.9*
 
 # Peter Alfredsen <loki_val@gentoo.org> (01 June 2009)
 # Development version, Work-In-Progress
@@ -1172,10 +1139,6 @@ media-libs/realcodecs
 # Doug Goldstein <cardoe@gentoo.org> (17 Sep 2008)
 # under development
 gnome-extra/gnome-lirc-properties
-
-# Raúl Porcel <armin76@gentoo.org> (1 Aug 2008)
-# This is just for preview
->=www-client/seamonkey-bin-2.0_alpha1
 
 # Markus Ullmann <jokey@gentoo.org> (7 Jul 2008)
 # mask for security bug #190667

@@ -1,6 +1,28 @@
 # ChangeLog for mail-client/mutt
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/mutt/ChangeLog,v 1.187 2010/07/02 08:14:30 grobian Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-client/mutt/ChangeLog,v 1.191 2010/07/23 07:20:00 grobian Exp $
+
+  23 Jul 2010; Fabian Groffen <grobian@gentoo.org> mutt-1.5.20-r16.ebuild:
+  Bump patchset to fix some misc compilation issues, most notably when
+  USE=-nntp, bug #329501
+
+*mutt-1.5.20-r16 (22 Jul 2010)
+
+  22 Jul 2010; Fabian Groffen <grobian@gentoo.org> +mutt-1.5.20-r16.ebuild:
+  Bump, next to a little bugfix from upstream, this revision no longer has
+  USE=vanilla (because vanilla Mutt is simply useless these days), always
+  has the nntp patch applied (but enabled/disabled per configure), and has
+  (most people were longing for this) the sidebar patch applied on top of
+  all other fixes and features.
+
+  16 Jul 2010; Fabian Groffen <grobian@gentoo.org> mutt-1.5.20-r15.ebuild,
+  -files/mutt-1.5.20_ssl.patch:
+  Undo last commit, as it broke unpacking, since -r10 the patch is already
+  included.
+
+  15 Jul 2010; Markos Chandras <hwoarang@gentoo.org> mutt-1.5.20-r15.ebuild,
+  +files/mutt-1.5.20_ssl.patch:
+  Apply upstream patch to fix compilation with openssl-1.0.0. Bug #328487
 
   02 Jul 2010; Fabian Groffen <grobian@gentoo.org> mutt-1.5.20-r15.ebuild:
   Cleanup logic for USE=sidebar. Add big fat warnings that USE=sidebar

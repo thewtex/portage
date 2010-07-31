@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/virtualbox-bin/virtualbox-bin-3.1.8.ebuild,v 1.4 2010/06/30 07:21:24 polynomial-c Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/virtualbox-bin/virtualbox-bin-3.1.8.ebuild,v 1.6 2010/07/17 10:52:07 polynomial-c Exp $
 
 EAPI=2
 
@@ -17,7 +17,7 @@ SRC_URI="amd64? ( http://download.virtualbox.org/virtualbox/${PV}/${MY_P}_amd64.
 
 LICENSE="PUEL"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+additions +chm headless python sdk vboxwebsrv rdesktop-vrdp"
 RESTRICT="mirror"
 
@@ -282,6 +282,10 @@ pkg_postinst() {
 	elog ""
 	elog "For advanced networking setups you should emerge:"
 	elog "net-misc/bridge-utils and sys-apps/usermode-utilities"
+	elog ""
+	elog "Please visit http://www.virtualbox.org/wiki/Editions for"
+	elog "an overview about the different features of ${PN}"
+	elog "and virtualbox-ose"
 }
 
 pkg_postrm() {

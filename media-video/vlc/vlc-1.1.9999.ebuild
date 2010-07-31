@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/vlc/vlc-1.1.9999.ebuild,v 1.13 2010/07/03 04:48:09 zmedico Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/vlc/vlc-1.1.9999.ebuild,v 1.18 2010/07/22 20:06:19 aballier Exp $
 
 EAPI="3"
 
@@ -24,7 +24,7 @@ MY_PV="${MY_PV/-beta/-test}"
 MY_P="${PN}-${MY_PV}"
 VLC_SNAPSHOT_TIME="0013"
 
-PATCHLEVEL="85"
+PATCHLEVEL="88"
 DESCRIPTION="VLC media player - Video player and streamer"
 HOMEPAGE="http://www.videolan.org/vlc/"
 if [ "${PV%9999}" != "${PV}" ] ; then # Live ebuild
@@ -44,7 +44,11 @@ SRC_URI="${SRC_URI}
 LICENSE="GPL-2"
 SLOT="0"
 
-KEYWORDS=""
+if [ "${PV%9999}" = "${PV}" ] ; then
+	KEYWORDS="~alpha ~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
+else
+	KEYWORDS=""
+fi
 IUSE="a52 aac aalib alsa altivec atmo avahi bidi cdda cddb dbus dc1394
 	debug dirac directfb dts dvb dvd elibc_glibc fbcon fluidsynth +ffmpeg flac fontconfig
 	+gcrypt ggi gnome gnutls httpd id3tag ieee1394 jack kate kde libass libcaca
@@ -93,13 +97,13 @@ RDEPEND="
 		live? ( >=media-plugins/live-2008.07.06 )
 		lua? ( >=dev-lang/lua-5.1 )
 		matroska? (	>=dev-libs/libebml-0.7.6 >=media-libs/libmatroska-0.8.0 )
-		modplug? ( >=media-libs/libmodplug-0.8 )
+		modplug? ( >=media-libs/libmodplug-0.8.8.1 )
 		mp3? ( media-libs/libmad )
 		mpeg? ( >=media-libs/libmpeg2-0.3.2 )
 		mtp? ( >=media-libs/libmtp-1.0.0 )
 		musepack? ( >=media-sound/musepack-tools-444 )
 		ncurses? ( sys-libs/ncurses )
-		nsplugin? ( >=net-libs/xulrunner-1.9.2 x11-libs/libXpm x11-libs/libXt )
+		nsplugin? ( >=net-libs/xulrunner-1.9.2 x11-libs/libXpm x11-libs/libXt x11-libs/libxcb x11-libs/xcb-util )
 		ogg? ( media-libs/libogg )
 		opengl? ( virtual/opengl x11-libs/libX11[xcb] )
 		png? ( media-libs/libpng sys-libs/zlib )
@@ -177,6 +181,7 @@ pkg_setup() {
 	vlc_use_force skins qt4
 	vlc_use_force vlm stream
 	vlc_use_force vaapi ffmpeg
+	vlc_use_force nsplugin xcb
 
 	# Useflags that will be automagically discarded if deps are not met
 	vlc_use_needs bidi truetype
@@ -329,7 +334,8 @@ src_configure() {
 		$(vlc_use_enable_force skins freetype) \
 		$(vlc_use_enable_force remoteosd libgcrypt) \
 		$(vlc_use_enable_force gnutls libgcrypt) \
-		$(vlc_use_enable_force vaapi avcodec)
+		$(vlc_use_enable_force vaapi avcodec) \
+		$(vlc_use_enable_force nsplugin xcb)
 }
 
 src_install() {

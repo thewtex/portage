@@ -4,7 +4,7 @@
 
 WANT_AUTOMAKE="1.10"
 
-inherit eutils flag-o-matic autotools
+inherit eutils autotools
 
 MY_P="${P}-2"
 
@@ -32,10 +32,7 @@ src_unpack() {
 }
 
 src_compile() {
-	local myconf
-	# Funtoo tree via Jeff from bug attachment: fix bug #263269
-	use amd64 && myconf="--with-boost-filesystem=mt --with-boost-serialization=mt --with-boost-system=mt"
-	econf ${myconf} `use_enable nls` || die
+	econf `use_enable nls` || die
 	emake || die
 }
 

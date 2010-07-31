@@ -1,6 +1,52 @@
 # ChangeLog for media-video/vlc
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/vlc/ChangeLog,v 1.601 2010/07/03 04:48:09 zmedico Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/vlc/ChangeLog,v 1.614 2010/07/26 09:56:55 aballier Exp $
+
+  26 Jul 2010; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  v4l support has been removed in favor of v4l2
+
+  22 Jul 2010; Alexis Ballier <aballier@gentoo.org> vlc-1.1.9999.ebuild,
+  vlc-9999.ebuild:
+  Put keywords inside an if to make bumps even easier
+
+  22 Jul 2010; Alexis Ballier <aballier@gentoo.org> vlc-1.1.1.ebuild,
+  vlc-1.1.9999.ebuild, vlc-9999.ebuild:
+  nsplugin requires xcb, bug #329343 by Johannes Rauh <jarauh@hotmail.com>
+
+  22 Jul 2010; Alexis Ballier <aballier@gentoo.org> vlc-1.1.9999.ebuild:
+  remove patch merged upstream
+
+  21 Jul 2010; Alexis Ballier <aballier@gentoo.org> -vlc-1.1.0.ebuild:
+  remove old
+
+  21 Jul 2010; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  bump ffmpeg requirement
+
+*vlc-1.1.1 (21 Jul 2010)
+
+  21 Jul 2010; Alexis Ballier <aballier@gentoo.org> +vlc-1.1.1.ebuild,
+  vlc-1.1.9999.ebuild:
+  version bump and add a fix for stack protector by Tristan Heaven
+  <nyhm@gentoo.org>, bug #328969
+
+  20 Jul 2010; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  punt the .la files for 1.2
+
+  20 Jul 2010; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  id3tag module has been removed upstream, superseded by taglib
+
+  18 Jul 2010; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  block up to 1.1 for master, we still have the relink issue
+
+  18 Jul 2010; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  ggi, svga and opengl output modules have been removed
+
+  18 Jul 2010; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  update the patchset for master
+
+  17 Jul 2010; Alexis Ballier <aballier@gentoo.org> vlc-1.1.9999.ebuild,
+  vlc-9999.ebuild:
+  bump libmodplug dep
 
   03 Jul 2010; Zac Medico <zmedico@gentoo.org> vlc-1.1.0.ebuild,
   vlc-1.1.9999.ebuild, vlc-9999.ebuild:

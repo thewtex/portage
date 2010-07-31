@@ -1,6 +1,35 @@
 # ChangeLog for x11-drivers/nvidia-drivers
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-drivers/nvidia-drivers/ChangeLog,v 1.236 2010/07/13 05:24:44 cardoe Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-drivers/nvidia-drivers/ChangeLog,v 1.242 2010/07/27 00:05:19 spock Exp $
+
+  27 Jul 2010; Michał Januszewski <spock@gentoo.org>
+  nvidia-drivers-256.35.ebuild:
+  Add a dependency on x11-libs/libXvMC (bug #321061).
+
+  20 Jul 2010; Doug Goldstein <cardoe@gentoo.org>
+  nvidia-drivers-173.14.27.ebuild:
+  Conditionally install CUDA support if it was found in the package.
+  Apparently 173.14.27 drops CUDA. fixes bug #328681
+
+  17 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  nvidia-drivers-173.14.25.ebuild:
+  stable x86, bug 327003
+
+  16 Jul 2010; Maciej Mrozowski <reavertm@gentoo.org>
+  nvidia-drivers-173.14.25.ebuild:
+  amd64 stable, bug 327003
+
+*nvidia-drivers-173.14.27 (16 Jul 2010)
+*nvidia-drivers-96.43.18 (16 Jul 2010)
+
+  16 Jul 2010; Doug Goldstein <cardoe@gentoo.org>
+  +nvidia-drivers-96.43.18.ebuild, +nvidia-drivers-173.14.27.ebuild:
+  bump available legacy drivers. Added support for xorg-server-1.8 in
+  nvidia-drivers-173.14.27
+
+  15 Jul 2010; Markos Chandras <hwoarang@gentoo.org>
+  nvidia-drivers-96.43.16.ebuild:
+  Stable on amd64 wrt bug #326323
 
 *nvidia-drivers-195.36.31 (13 Jul 2010)
 

@@ -1,6 +1,32 @@
 # ChangeLog for www-client/icecat
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/icecat/ChangeLog,v 1.27 2010/07/08 20:14:45 ranger Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/icecat/ChangeLog,v 1.33 2010/07/26 19:30:03 maekke Exp $
+
+  26 Jul 2010; Markus Meier <maekke@gentoo.org> icecat-3.6.7-r1.ebuild:
+  amd64 stable, bug #329279
+
+*icecat-3.6.7-r1 (25 Jul 2010)
+
+  25 Jul 2010; Lars Wendler <polynomial-c@gentoo.org>
+  +files/mozilla-1.9.2.8.diff, -icecat-3.6.7.ebuild,
+  +icecat-3.6.7-r1.ebuild:
+  Added the fixes from firefox-3.6.8 to icecat-3.6.7. It's now technically
+  icecat-3.6.8 which still wasn't released at the time of this change.
+
+  25 Jul 2010; Jeroen Roovers <jer@gentoo.org> icecat-3.6.7.ebuild:
+  Stable for PPC (bug #329279).
+
+  23 Jul 2010; Christian Faulhammer <fauli@gentoo.org> icecat-3.6.7.ebuild:
+  stable x86, security bug 329279
+
+*icecat-3.6.7 (22 Jul 2010)
+
+  22 Jul 2010; Lars Wendler <polynomial-c@gentoo.org>
+  +files/801-enable-x86_64-tracemonkey.patch, +icecat-3.6.7.ebuild:
+  Version bump.
+
+  21 Jul 2010; Lars Wendler <polynomial-c@gentoo.org> -icecat-3.6.3.ebuild:
+  Removed old.
 
   08 Jul 2010; Brent Baude <ranger@gentoo.org> icecat-3.6.4.ebuild:
   Marking icecat-3.6.4 ppc64 and ppc for bug 324735

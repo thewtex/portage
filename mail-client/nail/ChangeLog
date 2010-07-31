@@ -1,6 +1,28 @@
 # ChangeLog for mail-client/nail
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/nail/ChangeLog,v 1.66 2010/07/12 17:16:05 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-client/nail/ChangeLog,v 1.71 2010/07/27 15:19:58 grobian Exp $
+
+  27 Jul 2010; Fabian Groffen <grobian@gentoo.org> nail-12.4-r1.ebuild:
+  Marked ~x86-linux ~amd64-linux and ~ppc-macos, bug #324129, fixed
+  src_compile emake invocation (missing backslash)
+
+*nail-12.4-r1 (26 Jul 2010)
+
+  26 Jul 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  +nail-12.4-r1.ebuild, metadata.xml:
+  Make ssl and kerberos USE flags to be dependent on net; make sure that
+  kerberos is disabled (to avoid automagic dependencies); describe the USE
+  flags better.
+
+  25 Jul 2010; Samuli Suominen <ssuominen@gentoo.org> nail-12.4.ebuild:
+  ppc64 stable wrt #324127
+
+  25 Jul 2010; Tobias Klausmann <klausman@gentoo.org> nail-12.4.ebuild:
+  Stable on alpha, bug #324127
+
+  15 Jul 2010; Samuli Suominen <ssuominen@gentoo.org> nail-12.4.ebuild,
+  +files/nail-12.4-openssl-1.patch:
+  Fix building with OpenSSL >= 1.0.0 wrt #328363 by "thanasis".
 
   12 Jul 2010; Jeroen Roovers <jer@gentoo.org> nail-12.4.ebuild:
   Stable for HPPA (bug #324127).

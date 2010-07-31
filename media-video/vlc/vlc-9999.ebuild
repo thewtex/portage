@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/vlc/vlc-9999.ebuild,v 1.80 2010/07/03 04:48:09 zmedico Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/vlc/vlc-9999.ebuild,v 1.90 2010/07/26 09:56:55 aballier Exp $
 
 EAPI="3"
 
@@ -24,7 +24,7 @@ MY_PV="${MY_PV/-beta/-test}"
 MY_P="${PN}-${MY_PV}"
 VLC_SNAPSHOT_TIME="0013"
 
-PATCHLEVEL="85"
+PATCHLEVEL="86"
 DESCRIPTION="VLC media player - Video player and streamer"
 HOMEPAGE="http://www.videolan.org/vlc/"
 if [ "${PV%9999}" != "${PV}" ] ; then # Live ebuild
@@ -44,15 +44,19 @@ SRC_URI="${SRC_URI}
 LICENSE="GPL-2"
 SLOT="0"
 
-KEYWORDS=""
+if [ "${PV%9999}" = "${PV}" ] ; then
+	KEYWORDS="~alpha ~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
+else
+	KEYWORDS=""
+fi
 IUSE="a52 aac aalib alsa altivec atmo avahi bidi cdda cddb dbus dc1394
 	debug dirac directfb dts dvb dvd elibc_glibc fbcon fluidsynth +ffmpeg flac fontconfig
-	+gcrypt ggi gnome gnutls httpd id3tag ieee1394 jack kate kde libass libcaca
-	libnotify libproxy libtiger libv4l libv4l2 lirc live lua matroska mmx
+	+gcrypt gnome gnutls httpd ieee1394 jack kate kde libass libcaca
+	libnotify libproxy libtiger libv4l2 lirc live lua matroska mmx
 	modplug mp3 mpeg mtp musepack ncurses nsplugin ogg opengl optimisememory oss
 	png projectm pulseaudio pvr +qt4 remoteosd rtsp run-as-root samba
 	schroedinger sdl sdl-image shine shout skins speex sqlite sse stream
-	svg svga taglib theora truetype twolame udev upnp v4l v4l2 vaapi vcdx vlm
+	svg taglib theora truetype twolame udev upnp v4l2 vaapi vcdx vlm
 	vorbis win32codecs wma-fixed +X x264 +xcb xml xosd xv zvbi"
 
 RDEPEND="
@@ -72,15 +76,13 @@ RDEPEND="
 		dts? ( media-libs/libdca )
 		dvd? (	media-libs/libdvdread >=media-libs/libdvdnav-0.1.9 )
 		elibc_glibc? ( >=sys-libs/glibc-2.8 )
-		ffmpeg? ( >=media-video/ffmpeg-0.4.9_p20090201 )
+		ffmpeg? ( >=media-video/ffmpeg-0.6 )
 		flac? ( media-libs/libogg >=media-libs/flac-1.1.2 )
 		fluidsynth? ( media-sound/fluidsynth )
 		fontconfig? ( media-libs/fontconfig )
 		gcrypt? ( >=dev-libs/libgcrypt-1.2.0 )
-		ggi? ( media-libs/libggi )
 		gnome? ( gnome-base/gnome-vfs )
 		gnutls? ( >=net-libs/gnutls-1.7.4 >=dev-libs/libgcrypt-1.2.0 )
-		id3tag? ( media-libs/libid3tag sys-libs/zlib )
 		ieee1394? ( >=sys-libs/libraw1394-2.0.1 >=sys-libs/libavc1394-0.5.3 )
 		jack? ( >=media-sound/jack-audio-connection-kit-0.99.0-r1 )
 		kate? ( >=media-libs/libkate-0.1.1 )
@@ -93,13 +95,13 @@ RDEPEND="
 		live? ( >=media-plugins/live-2008.07.06 )
 		lua? ( >=dev-lang/lua-5.1 )
 		matroska? (	>=dev-libs/libebml-0.7.6 >=media-libs/libmatroska-0.8.0 )
-		modplug? ( >=media-libs/libmodplug-0.8 )
+		modplug? ( >=media-libs/libmodplug-0.8.8.1 )
 		mp3? ( media-libs/libmad )
 		mpeg? ( >=media-libs/libmpeg2-0.3.2 )
 		mtp? ( >=media-libs/libmtp-1.0.0 )
 		musepack? ( >=media-sound/musepack-tools-444 )
 		ncurses? ( sys-libs/ncurses )
-		nsplugin? ( >=net-libs/xulrunner-1.9.2 x11-libs/libXpm x11-libs/libXt )
+		nsplugin? ( >=net-libs/xulrunner-1.9.2 x11-libs/libXpm x11-libs/libXt x11-libs/libxcb x11-libs/xcb-util )
 		ogg? ( media-libs/libogg )
 		opengl? ( virtual/opengl x11-libs/libX11[xcb] )
 		png? ( media-libs/libpng sys-libs/zlib )
@@ -121,7 +123,6 @@ RDEPEND="
 		speex? ( media-libs/speex )
 		sqlite? ( >=dev-db/sqlite-3.6.0:3 )
 		svg? ( >=gnome-base/librsvg-2.9.0 )
-		svga? ( media-libs/svgalib )
 		taglib? ( >=media-libs/taglib-1.5 sys-libs/zlib )
 		theora? ( >=media-libs/libtheora-1.0_beta3 )
 		truetype? ( media-libs/freetype media-fonts/dejavu )
@@ -129,8 +130,7 @@ RDEPEND="
 		udev? ( >=sys-fs/udev-142 )
 		upnp? ( net-libs/libupnp )
 		v4l2? ( libv4l2? ( media-libs/libv4l ) )
-		v4l? ( libv4l? ( media-libs/libv4l ) )
-		vaapi? ( x11-libs/libva >=media-video/ffmpeg-0.5_p22846 )
+		vaapi? ( x11-libs/libva >=media-video/ffmpeg-0.6 )
 		vcdx? ( >=dev-libs/libcdio-0.78.2 >=media-video/vcdimager-0.7.22 )
 		vorbis? ( media-libs/libvorbis )
 		win32codecs? ( media-libs/win32codecs )
@@ -143,10 +143,9 @@ RDEPEND="
 		"
 
 DEPEND="${RDEPEND}
-	!!<=media-video/vlc-1.0.99999
+	!!<=media-video/vlc-1.1.99999
 	dvb? ( sys-kernel/linux-headers )
 	kde? ( >=kde-base/kdelibs-4 )
-	v4l? ( sys-kernel/linux-headers )
 	v4l2? ( >=sys-kernel/linux-headers-2.6.25 )
 	xcb? ( x11-proto/xproto )
 	dev-util/pkgconfig"
@@ -177,13 +176,13 @@ pkg_setup() {
 	vlc_use_force skins qt4
 	vlc_use_force vlm stream
 	vlc_use_force vaapi ffmpeg
+	vlc_use_force nsplugin xcb
 
 	# Useflags that will be automagically discarded if deps are not met
 	vlc_use_needs bidi truetype
 	vlc_use_needs cddb cdda
 	vlc_use_needs fontconfig truetype
 	vlc_use_needs libv4l2 v4l2
-	vlc_use_needs libv4l v4l
 	vlc_use_needs libtiger kate
 	vlc_use_needs xv xcb
 
@@ -243,11 +242,9 @@ src_configure() {
 		$(use_enable flac) \
 		$(use_enable fluidsynth) \
 		$(use_enable fontconfig) \
-		$(use_enable ggi) \
 		$(use_enable gnome gnomevfs) \
 		$(use_enable gnutls) \
 		$(use_enable httpd) \
-		$(use_enable id3tag) \
 		$(use_enable ieee1394 dv) \
 		$(use_enable jack) \
 		$(use_enable kate) \
@@ -259,7 +256,6 @@ src_configure() {
 		$(use_enable libproxy) \
 		--disable-libtar \
 		$(use_enable libtiger tiger) \
-		$(use_enable libv4l) \
 		$(use_enable libv4l2) \
 		$(use_enable lirc) \
 		$(use_enable live live555) \
@@ -274,7 +270,7 @@ src_configure() {
 		$(use_enable ncurses) \
 		$(use_enable nsplugin mozilla) --with-mozilla-pkg=libxul \
 		$(use_enable ogg) \
-		$(use_enable opengl glx) $(use_enable opengl) \
+		$(use_enable opengl glx) \
 		$(use_enable optimisememory optimize-memory) \
 		$(use_enable oss) \
 		$(use_enable png) \
@@ -298,14 +294,12 @@ src_configure() {
 		$(use_enable sse) \
 		$(use_enable stream sout) \
 		$(use_enable svg) \
-		$(use_enable svga svgalib) \
 		$(use_enable taglib) \
 		$(use_enable theora) \
 		$(use_enable truetype freetype) \
 		$(use_enable twolame) \
 		$(use_enable udev) \
 		$(use_enable upnp) \
-		$(use_enable v4l) \
 		$(use_enable v4l2) \
 		$(use_enable vcdx) \
 		$(use_enable vaapi libva) \
@@ -329,7 +323,8 @@ src_configure() {
 		$(vlc_use_enable_force skins freetype) \
 		$(vlc_use_enable_force remoteosd libgcrypt) \
 		$(vlc_use_enable_force gnutls libgcrypt) \
-		$(vlc_use_enable_force vaapi avcodec)
+		$(vlc_use_enable_force vaapi avcodec) \
+		$(vlc_use_enable_force nsplugin xcb)
 }
 
 src_install() {
@@ -348,6 +343,9 @@ src_install() {
 	fi
 
 	use skins || rm -rf "${D}/usr/share/vlc/skins2"
+
+	# Punt useless libtool's .la files
+	find "${D}" -name '*.la' -delete
 }
 
 pkg_postinst() {

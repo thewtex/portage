@@ -1,6 +1,6 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/vim.eclass,v 1.187 2010/06/09 18:35:45 lack Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/vim.eclass,v 1.189 2010/07/20 13:53:43 lack Exp $
 
 # Authors:
 # 	Jim Ramsay <i.am@gentoo.org>
@@ -549,7 +549,8 @@ vim_src_install() {
 			# livecd. bug 65144.
 			einfo "Removing some files for a smaller livecd install ..."
 
-			shopt -s extglob
+			eshopts_push -s extglob
+
 			rm -fr "${ED}${vimfiles}"/{compiler,doc,ftplugin,indent}
 			rm -fr "${ED}${vimfiles}"/{macros,print,tools,tutor}
 			rm "${ED}"/usr/bin/vimtutor
@@ -561,6 +562,8 @@ vim_src_install() {
 			# tinkering with the next line might make bad things happen ...
 			keep_syntax="${keep_syntax}|syntax|nosyntax|synload"
 			ignore=$(rm -fr "${ED}${vimfiles}"/syntax/!(${keep_syntax}).vim )
+
+			eshopts_pop
 		fi
 
 		# These files might have slight security issues, so we won't
@@ -773,9 +776,6 @@ vim_src_test() {
 
 	# We don't want to rebuild vim before running the tests
 	sed -i -e 's,: \$(VIMPROG),: ,' Makefile
-
-	# Give the user time to read the "what to do if these break" messages
-	epause 10
 
 	# Don't try to do the additional GUI test
 	make VIMPROG=${testprog} nongui \
