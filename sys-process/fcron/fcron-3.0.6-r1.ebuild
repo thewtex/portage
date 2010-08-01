@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-process/fcron/fcron-3.0.6-r1.ebuild,v 1.1 2010/05/14 11:11:07 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-process/fcron/fcron-3.0.6-r1.ebuild,v 1.3 2010/08/01 16:42:20 hwoarang Exp $
 
 inherit cron pam eutils
 
@@ -10,7 +10,7 @@ HOMEPAGE="http://fcron.free.fr/"
 SRC_URI="http://fcron.free.fr/archives/${MY_P}.src.tar.gz"
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~sparc ~x86 ~x86-fbsd"
 IUSE="debug pam selinux linguas_fr"
 
 DEPEND="selinux? ( sys-libs/libselinux )
@@ -216,7 +216,7 @@ pkg_postinst() {
 	chown fcron:fcron "${ROOT}"usr/bin/fcron{tab,dyn} >&/dev/null
 	chown ${rootuser:-root}:fcron "${ROOT}"usr/bin/fcronsighup >&/dev/null
 	chmod 6755 "${ROOT}"usr/bin/fcron{tab,dyn,sighup} >&/dev/null
-	ewarn "Fixing permissions and ownership of ${ROOT}etc/{fcron,fcrontab,crontab}"
+	ewarn "Fixing permissions and ownership of ${ROOT}etc/{fcron,crontab}"
 	chown -R ${rootuser:-root}:fcron "${ROOT}"etc/{fcron,crontab} >&/dev/null
 	chmod -R g+rX,o= "${ROOT}"etc/fcron "${ROOT}"etc/{fcron,crontab} >&/dev/null
 	ewarn

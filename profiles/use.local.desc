@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5824 2010/07/30 15:01:45 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5827 2010/08/01 06:43:11 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -251,6 +251,7 @@ app-emulation/libvirt:udev - Use sys-fs/udev to determine available devices
 app-emulation/libvirt:uml - Add support for User Mode Linux based virtual machines
 app-emulation/libvirt:virtualbox - Adds support for VirtualBox based virtual machines
 app-emulation/libvirt:xen - Add support for app-emulation/xen based virtual machines
+app-emulation/lxc:vanilla -  Avoid adding Gentoo Linux-specific modifications, which include the custom init script. This is present as a flag to avoid forcing dependencies over users that might not want have them around as they use LXC in contexts where the init script is not useful. 
 app-emulation/mol:oldworld - Includes Macintosh's OldWorld support
 app-emulation/mol:pci - Experimental PCI proxy support
 app-emulation/mol:sheep - Support for the sheep net driver
@@ -378,7 +379,7 @@ app-misc/beagle:debug - Enables debug XML dumps of all messages passed between t
 app-misc/beagle:doc - Builds programmer documentation for Beagle using app-doc/monodoc.
 app-misc/beagle:eds - Enables Beagle to index the Addressbook and Calendar from mail-client/evolution stored in gnome-extra/evolution-data-server. The information is accessed using dev-dotnet/evolution-sharp.
 app-misc/beagle:epiphany - Compiles and installs the extension for either www-client/epiphany. This extension helps Beagle index the websites you visit.
-app-misc/beagle:firefox - Compiles and installs the extension for either www-client/mozilla-firefox or www-client/firefox-bin. This extension helps Beagle index the websites you visit.
+app-misc/beagle:firefox - Compiles and installs the extension for either www-client/firefox or www-client/firefox-bin. This extension helps Beagle index the websites you visit.
 app-misc/beagle:galago - Allows Beagle to get status information from applications such as Pidgin to show in the search results.
 app-misc/beagle:google - Enables google (gmail etc.) indexing support.
 app-misc/beagle:gtk - Enables the GTK+ Beagle Search UI for showing search results. This is the default GUI for Beagle.
@@ -1530,6 +1531,7 @@ mail-filter/spamassassin-fuzzyocr:logrotate - Install support files for app-admi
 mail-filter/spamassassin-fuzzyocr:ocrad - Enable support for the ocrad OCR engine
 mail-filter/spamassassin-fuzzyocr:tesseract - Enable support for the tesseract OCR engine
 mail-filter/spamdyke:tls - Enables TLS protocol for spamdyke
+mail-filter/zdkimfilter:debug -  Log process and signal information. Also leave the child process running for gdb examination. 
 mail-mta/courier:fax - Enables fax support in the courier mail server
 mail-mta/courier:norewrite - Prevents courier mail server from mangling virtual user addresses when sending
 mail-mta/courier:web - Enable the web interface
