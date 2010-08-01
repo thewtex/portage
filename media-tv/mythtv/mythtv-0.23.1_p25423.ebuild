@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-tv/mythtv/mythtv-0.23.1_p25423.ebuild,v 1.1 2010/07/25 23:26:15 cardoe Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-tv/mythtv/mythtv-0.23.1_p25423.ebuild,v 1.2 2010/07/30 03:54:49 cardoe Exp $
 
 EAPI=2
 inherit flag-o-matic multilib eutils qt4 mythtv toolchain-funcs python
@@ -89,6 +89,7 @@ src_prepare() {
 	# puts the SVN revision into a special file that the build system
 	# reads and embeds into the binaries for version info
 	echo "SOURCE_VERSION=${MYTHTV_REV}" > "${S}/VERSION"
+	echo "SVNREPOPATH=${MYTHTV_REPO}" >> "${S}/VERSION"
 
 	# Perl bits need to go into vender_perl and not site_perl
 	sed -e "s:pure_install:pure_install INSTALLDIRS=vendor:" \
@@ -276,6 +277,7 @@ src_install() {
 
 	# correct permissions so the scripts are actually usable
 	fperms 755 /usr/share/mythtv/contrib/*/*.pl
+	fperms 755 /usr/share/mythtv/contrib/*/*.py
 	fperms 755 /usr/share/mythtv/mythconverg_backup.pl
 	fperms 755 /usr/share/mythtv/mythconverg_restore.pl
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/storable/storable-0.7.4.ebuild,v 1.2 2010/05/23 22:37:11 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/storable/storable-0.7.4.ebuild,v 1.3 2010/07/28 23:22:35 flameeyes Exp $
 
 EAPI=2
 
@@ -29,7 +29,7 @@ S="${WORKDIR}/delano-${PN}-*"
 # would break a bit of stuff.
 ruby_add_rdepend "|| ( dev-ruby/json dev-ruby/yajl-ruby )"
 
-ruby_add_bdepend "test? ( dev-ruby/tryouts )"
+ruby_add_bdepend "test? ( dev-ruby/tryouts:0 )"
 
 all_ruby_prepare() {
 	mv bin examples || die
