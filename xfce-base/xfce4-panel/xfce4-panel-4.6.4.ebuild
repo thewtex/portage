@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-base/xfce4-panel/xfce4-panel-4.6.4.ebuild,v 1.5 2010/07/23 07:40:57 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/xfce-base/xfce4-panel/xfce4-panel-4.6.4.ebuild,v 1.7 2010/08/01 18:56:03 armin76 Exp $
 
 EAPI=2
 inherit xfconf

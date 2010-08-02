@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-base/xfce-utils/xfce-utils-4.6.2.ebuild,v 1.6 2010/07/23 07:42:29 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/xfce-base/xfce-utils/xfce-utils-4.6.2.ebuild,v 1.8 2010/08/01 18:56:43 armin76 Exp $
 
 EAPI=2
 inherit xfconf

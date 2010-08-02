@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/seamonkey/seamonkey-2.0.6.ebuild,v 1.6 2010/07/26 22:46:38 polynomial-c Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/seamonkey/seamonkey-2.0.6.ebuild,v 1.9 2010/08/01 16:42:13 polynomial-c Exp $
 
 EAPI="2"
 WANT_AUTOCONF="2.1"
@@ -32,7 +32,7 @@ else
 	# This is where arch teams should change the KEYWORDS.
 
 	REL_URI="http://releases.mozilla.org/pub/mozilla.org/${PN}/releases/${MY_PV}"
-	KEYWORDS="~alpha amd64 ~arm hppa ~ia64 ppc ~ppc64 ~sparc x86"
+	KEYWORDS="alpha amd64 arm hppa ia64 ppc ~ppc64 sparc x86"
 	[[ ${PV} == *alpha* ]] && HAS_LANGS="false"
 fi
 
@@ -41,10 +41,10 @@ HOMEPAGE="http://www.seamonkey-project.org"
 
 SLOT="0"
 LICENSE="|| ( MPL-1.1 GPL-2 LGPL-2.1 )"
-IUSE="+alsa +chatzilla +composer +crypt java ldap +mailclient +roaming system-sqlite"
+IUSE="+alsa +chatzilla +composer +crypt +cups java ldap +mailclient +roaming system-sqlite"
 
 SRC_URI="${REL_URI}/source/${MY_P}.source.tar.bz2
-	http://dev.gentoo.org/~polynomial-c/${PATCH}.tar.bz2
+	http://dev.gentoo.org/~polynomial-c/mozilla/patchsets/${PATCH}.tar.bz2
 	crypt? ( mailclient? ( http://www.mozilla-enigmail.org/download/source/enigmail-${EMVER}.tar.gz ) )"
 
 if ${HAS_LANGS} ; then
@@ -75,7 +75,8 @@ RDEPEND="java? ( virtual/jre )
 	>=x11-libs/gtk+-2.10.0
 	>=x11-libs/cairo-1.8.8[X]
 	>=x11-libs/pango-1.14.0[X]
-	crypt? ( mailclient? ( >=app-crypt/gnupg-1.4 ) )"
+	crypt? ( mailclient? ( >=app-crypt/gnupg-1.4 ) )
+	cups? ( net-print/cups[gnutls] )"
 
 DEPEND="${RDEPEND}
 	dev-util/pkgconfig
@@ -204,6 +205,7 @@ src_configure() {
 	# Enable/Disable based on USE flags
 	mozconfig_use_enable alsa ogg
 	mozconfig_use_enable alsa wave
+	mozconfig_use_enable cups printing
 	mozconfig_use_enable java javaxpcom
 	mozconfig_use_enable ldap
 	mozconfig_use_enable ldap ldap-experimental
