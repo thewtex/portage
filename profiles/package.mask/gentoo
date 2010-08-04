@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11809 2010/08/01 20:39:26 slyfox Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11820 2010/08/04 12:03:27 dagger Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,31 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Robert Piasek <dagger@gentoo.org> (04 Aug 2010)
+# NetworkManager 0.8.1 requires dhclient 4 which is masked
+>=net-misc/networkmanager-0.8.1
+
+# Markos Chandras <hwoarang@gentoo.org> (03 Aug 2010)
+# Uses old portmap, installs
+# static library but not the header files. Last 
+# release on 2007. Bug #280933
+# Masked for removal in 30 days
+mail-client/drac
+
+# Jeroen Roovers <jer@gentoo.org> (03 Aug 2010)
+# Alphas and snapshots are not for everyday use
+# <http://my.opera.com/desktopteam/blog>
+=www-client/opera-10.70*
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (03 Aug 2010)
+#  on behalf of QA team
+#
+# Breaking portage is no fun. Doing so for the second year in a row in
+# August, is even less. Bug #330937
+=dev-lang/python-2.6.5_p20100801
+=dev-lang/python-2.7_p20100801
+=dev-lang/python-3.1.2_p20100801
 
 # Sergei Trofimovich <slyfox@gentoo.org> (1 Aug 2010)
 # Masked for removal in 30 days. Bunch of serious
@@ -467,11 +492,6 @@ dev-dotnet/nautilusburn-sharp
 # don't have old anjuta versions in the tree, see bug #327593
 dev-libs/gnome-build
 
-# Jeroen Roovers <jer@gentoo.org> (08 Jul 2010)
-# Alphas and snapshots are not for everyday use
-# <http://my.opera.com/desktopteam/blog>
-=www-client/opera-10.70*
-
 # Bernard Cafarelli <voyageur@gentoo.org> (07 Jul 2010)
 # Broken with current stable gnustep base packages
 # Details in bugs #318137, #327371, #327389
@@ -532,11 +552,6 @@ dev-php5/znf
 # Masked for removal due to 1.5 JDK removal, bug #292001.
 # Use dev-java/tijmp for the 1.6 java replacement.
 dev-java/jmp
-
-# Justin Lecher <jlec@gentoo.org> (30 Jun 10)
-# Not working
-# Hopefully to be rescued
-dev-libs/excelformat
 
 # Diego E. Pettenò <flameeyes@gentoo.org> (30 Jun 2010)
 #  on behalf of QA team
@@ -649,18 +664,6 @@ sci-electronics/geda-utils
 sci-electronics/geda-docs
 sci-electronics/geda-examples
 
-# Markos Chandras <hwoarang@gentoo.org> (20 Jun 2010)
-# Bundles ffmpeg copy, doens't work with systems' ffmpeg
-# Bug #258042. Replacement is media-video/recordmydesktop
-# Pending removal in 2010-07-20
-x11-misc/xvidcap
-
-# Markos Chandras <hwoarang@gentoo.org> (19 Jun 2010)
-# Multiple failures. Look at bugs #197617, #297946, #297947. #299753
-# Not maintained by upstream anymore.
-# Pending removal in 2010-07-19
-app-doc/repodoc
-
 # Diego E. Pettenò <flameeyes@gentoo.org> (18 Jun 2010)
 #  on behalf of QA team
 #
@@ -679,8 +682,11 @@ virtual/postgresql-base
 virtual/postgresql-server
 
 # Alexis Ballier <aballier@gentoo.org> (17 Jun 2010)
-# Beta release
+# New major release, some packages fail to build
+# Mask until they are fixed
+# Also mask packages _requiring_ ocaml 3.12
 >=dev-lang/ocaml-3.12.0_beta
+>=dev-ml/type-conv-2.0.0
 
 # Justin Lecher <jlec@gentoo.org> (16 Jun 10)
 # Just working with the masked experimental version of refmac
@@ -754,10 +760,6 @@ x11-plugins/gkacpi
 # Removed in 60 days by treecleaners, bug 185292
 net-wireless/ieee80211
 
-# Ben de Groot <yngwin@gentoo.org> (11 Jun 2010)
-# Masked for removal in 30 days, see bug #315067
-media-video/whaawmp
-
 # Markus Meier <maekke@gentoo.org> (10 Jun 2010)
 # mask inkscape prereleases for testing
 >=media-gfx/inkscape-0.48_pre0
@@ -766,14 +768,6 @@ media-video/whaawmp
 # Fails to self-verify/sign in FIPS mode, pending upstream response before
 # usage for GSoC project.
 app-crypt/hmaccalc
-
-# Tony Vroon <chainsaw@gentoo.org> (09 Jun 2010)
-# Alpha releases, should you wish to dip your toes in the
-# water... please be aware of the sharks.
-# Bugs upstream: http://jira.atheme.org/ and *not* into
-# the Gentoo bug tracker.
-=media-plugins/audacious-plugins-2.4_alpha*
-=media-sound/audacious-2.4_alpha*
 
 # Tiziano Müller <dev-zero@gentoo.org> (03 Jun 2010)
 # Masked for testing (changes in dependencies, flags and building)
