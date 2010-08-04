@@ -1,7 +1,7 @@
 >=sys-devel/gcc-4.1.1 !build? ( sys-apps/sed >=sys-devel/binutils-2.11.90.0.31 )
 !build? ( >=sys-libs/ncurses-5.2 sys-devel/make )
 2.6.31
-mirror://kernel/linux/kernel/v2.6/patch-2.6.31.12.bz2 mirror://kernel/linux/kernel/v2.6/linux-2.6.31.tar.bz2 deblob? ( http://www.fsfla.org/svnwiki/selibre/linux-libre//download/releases/LATEST-2.6.31.N/deblob-2.6.31 ) mirror://gentoo/mipsgit-2.6.31-20100213.diff.bz2 mirror://gentoo/mips-sources-2.6.31-patches-v1.tar.bz2
+mirror://kernel/linux/kernel/v2.6/patch-2.6.31.12.bz2 mirror://kernel/linux/kernel/v2.6/linux-2.6.31.tar.bz2 deblob? ( http://www.fsfla.org/svnwiki/selibre/linux-libre//download/releases/LATEST-2.6.31.N/deblob-2.6.31 mirror://gentoo/deblob-check-2.6.31 ) mirror://gentoo/mipsgit-2.6.31-20100213.diff.bz2 mirror://gentoo/mips-sources-2.6.31-patches-v1.tar.bz2
 binchecks strip
 http://www.linux-mips.org/ http://www.gentoo.org/
 GPL-2 !deblob? ( freedist )
@@ -14,7 +14,7 @@ cobalt ip27 ip28 ip30 ip32r10k impactdebug symlink build deblob
 virtual/linux-sources virtual/alsa
 
 
-compile install postinst preinst setup unpack
+compile install postinst preinst setup test unpack
 
 
 
