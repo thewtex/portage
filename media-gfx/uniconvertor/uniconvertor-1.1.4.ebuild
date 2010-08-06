@@ -1,13 +1,18 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/uniconvertor/uniconvertor-1.1.4.ebuild,v 1.1 2010/01/10 14:20:36 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/uniconvertor/uniconvertor-1.1.4.ebuild,v 1.2 2010/08/06 13:43:59 jlec Exp $
 
 EAPI=2
+
+PYTHON_DEPEND="2"
+SUPPORT_PYTHON_ABIS="1"
+RESTRICT_PYTHON_ABIS="3.*"
+
 inherit distutils
 
 MY_P=UniConvertor-${PV}
 
-DESCRIPTION="UniConvertor - commandline tool for popular vector formats convertion."
+DESCRIPTION="Commandline tool for popular vector formats convertion"
 HOMEPAGE="http://sk1project.org/modules.php?name=Products&product=uniconvertor"
 SRC_URI="http://sk1project.org/downloads/${PN}/v${PV}/${P}.tar.gz"
 
@@ -16,7 +21,7 @@ SLOT="0"
 LICENSE="GPL-2 LGPL-2"
 IUSE=""
 
-DEPEND="virtual/python
+DEPEND="
 	dev-python/imaging
 	dev-python/reportlab"
 
