@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11820 2010/08/04 12:03:27 dagger Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11826 2010/08/05 21:51:23 ssuominen Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,10 +30,6 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
-
-# Robert Piasek <dagger@gentoo.org> (04 Aug 2010)
-# NetworkManager 0.8.1 requires dhclient 4 which is masked
->=net-misc/networkmanager-0.8.1
 
 # Markos Chandras <hwoarang@gentoo.org> (03 Aug 2010)
 # Uses old portmap, installs
@@ -357,16 +353,6 @@ app-office/mozilla-sunbird
 app-office/mozilla-sunbird-bin
 www-client/mozilla-launcher
 
-# Jim Ramsay <lack@gentoo.org> (26 Jul 2010)
-# Deprecated in favour of opensource alternatives:
-#   net-misc/pymazon
-#   net-misc/clamz
-#
-# net-misc/amazonmp3 has been masked since 2008
-# Removal 30 Jul 2010
-net-misc/amazonmp3
-net-misc/amazonmp3-libcompat
-
 # Sebastian Pipping <sping@gentoo.org> (26 Jul 2010)
 # Don't push experimental patch to support Audacious 2.4_beta1 on everyone
 =media-libs/freeverb3-2.5.5-r1
@@ -514,11 +500,6 @@ dev-dotnet/heap-buddy
 # Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (06 Jul 2010)
 # Replaced by dev-python/numpy. Masked for deletion in 30 days (bug #198154).
 dev-python/numarray
-
-# Joe Peterson <lavajoe@gentoo.org> (05 Jul 2010)
-# Replaced by package media-sound/squeezeboxserver (see bug #287257)
-# Masked for removal in 30 days
-media-sound/squeezecenter
 
 # Markos Chandras <hwoarang@gentoo.org> (06 Jul 2010)
 # Masking development releases
@@ -1094,11 +1075,9 @@ net-libs/libjingle
 # Pawel Hajdan jr <phajdan.jr@gentoo.org> (07 Jan 2010)
 # Dev channel releases are only for people who are developers or want more
 # experimental features and accept a more unstable release.
-~www-client/chromium-6.0.458.1
-~www-client/chromium-6.0.466.0
-~www-client/chromium-6.0.472.0
 ~www-client/chromium-6.0.472.11
 ~www-client/chromium-6.0.472.14
+~www-client/chromium-6.0.472.22
 
 # Diego E. Pettenò <flameeyes@gentoo.org> (07 Jan 2010)
 #  on behalf of QA team
@@ -1200,6 +1179,7 @@ x11-apps/xfsinfo
 >=xfce-extra/thunar-media-tags-plugin-0.1.2-r1
 >=xfce-base/xfce4-panel-4.7.0
 xfce-extra/thunar-vfs
+>=xfce-extra/xfce4-xkb-plugin-0.5.3.3-r9
 # bug 330005 - needs newer xfce4-panel release
 >=xfce-base/libxfce4util-4.7.2
 

@@ -1,6 +1,6 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/iproute2/iproute2-9999.ebuild,v 1.10 2009/12/29 06:06:42 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/iproute2/iproute2-9999.ebuild,v 1.11 2010/08/04 19:23:55 vapier Exp $
 
 EAPI="2"
 
@@ -37,16 +37,11 @@ DEPEND="${RDEPEND}
 	elibc_glibc? ( >=sys-libs/glibc-2.7 )
 	>=virtual/os-headers-2.6.27"
 
-src_unpack() {
-	if [[ ${PV} == "9999" ]] ; then
-		git_src_unpack
-	else
-		unpack ${A}
-	fi
-}
-
 src_prepare() {
-	sed -i "s:-O2:${CFLAGS} ${CPPFLAGS}:" Makefile || die "sed Makefile failed"
+	sed -i \
+		-e "/^LIBDIR/s:=.*:=/$(get_libdir):" \
+		-e "s:-O2:${CFLAGS} ${CPPFLAGS}:" \
+		Makefile || die
 
 	# build against system headers
 	rm -r include/netinet #include/linux include/ip{,6}tables{,_common}.h include/libiptc
@@ -57,10 +52,8 @@ src_prepare() {
 
 	# don't build arpd if USE=-berkdb #81660
 	use berkdb || sed -i '/^TARGETS=/s: arpd : :' misc/Makefile
-	# Multilib fixes
-	sed -i "s:/usr/lib:/usr/$(get_libdir):g" \
-		netem/Makefile tc/{Makefile,tc.c,q_netem.c,m_ipt.c} || die
-	sed -i "s:/lib/tc:$(get_libdir)/tc:g" tc/Makefile || die
+
+	use minimal && sed -i -e '/^SUBDIRS=/s:=.*:=lib tc:' Makefile
 }
 
 src_configure() {
@@ -68,8 +61,6 @@ src_configure() {
 	use atm \
 		&& echo 'y' >> Config \
 		|| echo 'n' >> Config
-
-	use minimal && sed -i -e '/^SUBDIRS=/s:=.*:=lib tc:' Makefile
 
 	# Use correct iptables dir, #144265 #293709
 	append-cppflags -DIPT_LIB_DIR=\\\"`$(tc-getPKG_CONFIG) xtables --variable=xtlibdir`\\\"
@@ -79,7 +70,7 @@ src_compile() {
 	emake \
 		CC="$(tc-getCC)" \
 		AR="$(tc-getAR)" \
-		|| die "make failed"
+		|| die
 }
 
 src_install() {
@@ -95,8 +86,16 @@ src_install() {
 		DOCDIR=/usr/share/doc/${PF} \
 		MANDIR=/usr/share/man \
 		install \
-		|| die "make install failed"
+		|| die
 	prepalldocs
+
+	dodir /bin
+	mv "${D}"/{sbin,bin}/ip || die #330115
+
+	dolib.a lib/libnetlink.a || die
+	insinto /usr/include
+	doins include/libnetlink.h || die
+
 	if use berkdb ; then
 		dodir /var/lib/arpd
 		# bug 47482, arpd doesn't need to be in /sbin

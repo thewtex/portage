@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5835 2010/08/04 14:48:02 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5840 2010/08/06 00:09:02 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -146,7 +146,6 @@ app-crypt/heimdal:ssl -  Enable usage of openssl
 app-crypt/heimdal:threads -  Enable pthread support 
 app-crypt/kstart:afs -  Enables afs support which means you can acquire an afs token and set PAGs. It's recommended to set this USE if you need authenticated access to an AFS cell for your daemon/app. 
 app-crypt/mit-krb5:doc -  Creates and installs the API and implementation documentation. This is only useful if you want to develop software which depends on kerberos. 
-app-crypt/mit-krb5:krb4 -  This option enables Kerberos V4 backwards compatibility using the builtin Kerberos V4 library. This is really outdated and dangerous to use because not safe. 
 app-crypt/ophcrack-tables:vistafree - Installs the free Vista ophcrack tables
 app-crypt/ophcrack-tables:xpfast - Installs the fast XP ophcrack tables
 app-crypt/ophcrack-tables:xpsmall - Installs the small free XP ophcrack tables
@@ -1094,6 +1093,9 @@ dev-util/geany:vte - Enable Terminal support (x11-libs/vte)
 dev-util/geany-plugins:enchant - Enable spell checking using enchant
 dev-util/geany-plugins:gtkspell - Use gtkspell for dictionary support
 dev-util/global:vim - Integrate the GNU GLOBAL source code tag system with Vim
+dev-util/google-perftools:debug -  Build a set of libraries with debug support (so-called debugalloc). These are available by default but are not needed unless you're actually developing using tcmalloc. 
+dev-util/google-perftools:largepages -  Use (experimental) larger pages for tcmalloc, this increases memory usage, but should speed up the allocation/free operations. 
+dev-util/google-perftools:minimal -  Only build the tcmalloc_minimal library, ignoring the heap checker and the profilers. 
 dev-util/kdevelop:cmake - Enable support for CMAKE build system
 dev-util/kdevelop:qmake - Enable support for Qmake build system
 dev-util/kdevelop:qthelp - Enable support for QtHelp documentation browsing
@@ -1958,9 +1960,6 @@ media-sound/sox:amr - Enables Adaptive Multi-Rate Audio support
 media-sound/sox:id3tag - Enables ID3 tagging with id3tag library
 media-sound/squeezeboxserver:aac - Enable playback support for AAC (.m4a) encoded files
 media-sound/squeezeboxserver:alac - Enable support for alac
-media-sound/squeezecenter:aac - Enable playback support for AAC (.m4a) encoded files
-media-sound/squeezecenter:alac - Enable support for alac
-media-sound/squeezecenter:bonjour - Enable support for bonjour
 media-sound/traverso:lv2 - Add support for Ladspa V2
 media-sound/vorbis-tools:kate - Adds support for Ogg Kate subtitles via libkate.
 media-sound/vorbis-tools:ogg123 - Build ogg123 player, needs libao and curl
@@ -2529,7 +2528,6 @@ net-im/pidgin:gadu - Enable Gadu Gadu protocol support
 net-im/pidgin:groupwise - Enable Novell Groupwise protocol support
 net-im/pidgin:gstreamer - Enables voice and video sessions
 net-im/pidgin:gtk - Builds Pidgin, the GTK+ interface
-net-im/pidgin:krb4 - Compile Zephyr plugin with Kerberos 4 support
 net-im/pidgin:meanwhile - Enable meanwhile support for Sametime protocol
 net-im/pidgin:ncurses - Build finch, console interface
 net-im/pidgin:prediction - Enable Contact Availability Prediction plugin
@@ -3167,7 +3165,7 @@ sci-libs/libgeda:threads - Enable (posix) threads for the GTK GUI
 sci-libs/libghemical:mopac7 - Use sci-chemistry/mopac7 for semi-empirical calculations
 sci-libs/libghemical:mpqc - Use sci-chemistry/mpqc for quantum-mechanical calculations
 sci-libs/libnc-dap:full-test - Enables full set of regression tests (long).
-sci-libs/libsvm:tools - Install support tools
+sci-libs/libsvm:tools - Install python based tool scripts
 sci-libs/mathgl:octave - Add bindings for sci-mathematics/octave
 sci-libs/metis:int64 - Build the 64 bits integer library (metis >=5 only)
 sci-libs/mkl:fortran95 - Installs the BLAS/LAPACK FORTRAN95 static libraries
