@@ -1,6 +1,24 @@
 # ChangeLog for app-emulation/libvirt
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/libvirt/ChangeLog,v 1.62 2010/08/01 19:32:02 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/libvirt/ChangeLog,v 1.66 2010/08/06 01:48:05 flameeyes Exp $
+
+  06 Aug 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  libvirt-0.8.3.ebuild:
+  Fix build with USE=-libvirtd (sent upstream); add a debug USE flag; remove
+  tests restriction (they work now).
+
+*libvirt-0.8.3 (05 Aug 2010)
+
+  05 Aug 2010; Doug Goldstein <cardoe@gentoo.org> +libvirt-0.8.3.ebuild:
+  Version bump. Add some patches that I submitted upstream to fix #322107
+
+  05 Aug 2010; Doug Goldstein <cardoe@gentoo.org> files/libvirtd.init-r1:
+  Fix issue with init script when no virtual machines are running
+
+  05 Aug 2010; Doug Goldstein <cardoe@gentoo.org> -libvirt-0.8.1-r1.ebuild,
+  libvirt-0.8.2-r1.ebuild:
+  Remove old version that wasn't properly applying patches and fix patch
+  application for the future
 
   01 Aug 2010; Diego E. Pettenò <flameeyes@gentoo.org>
   files/libvirtd.init-r1:
