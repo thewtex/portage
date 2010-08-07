@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/iproute2/iproute2-9999.ebuild,v 1.11 2010/08/04 19:23:55 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/iproute2/iproute2-9999.ebuild,v 1.12 2010/08/07 17:40:01 flameeyes Exp $
 
 EAPI="2"
 
@@ -35,6 +35,7 @@ RDEPEND="!net-misc/arpd
 	atm? ( net-dialup/linux-atm )"
 DEPEND="${RDEPEND}
 	elibc_glibc? ( >=sys-libs/glibc-2.7 )
+	sys-devel/flex
 	>=virtual/os-headers-2.6.27"
 
 src_prepare() {
@@ -90,7 +91,7 @@ src_install() {
 	prepalldocs
 
 	dodir /bin
-	mv "${D}"/{sbin,bin}/ip || die #330115
+	dosym ../sbin/ip /bin/ip || die #330115
 
 	dolib.a lib/libnetlink.a || die
 	insinto /usr/include
