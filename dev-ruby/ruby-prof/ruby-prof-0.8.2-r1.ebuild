@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-prof/ruby-prof-0.8.1.ebuild,v 1.2 2010/05/22 15:53:19 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-prof/ruby-prof-0.8.2-r1.ebuild,v 1.1 2010/08/08 18:03:58 graaff Exp $
 
 EAPI=2
 
@@ -10,7 +10,7 @@ USE_RUBY="ruby18 ruby19"
 RUBY_FAKEGEM_EXTRADOC="README CHANGES"
 RUBY_FAKEGEM_DOCDIR="doc"
 
-inherit ruby-fakegem
+inherit multilib ruby-fakegem
 
 DESCRIPTION="A module for profiling Ruby code"
 HOMEPAGE="http://rubyforge.org/projects/ruby-prof/"
@@ -31,6 +31,9 @@ all_ruby_prepare() {
 		|| die "unable to remove broken test unit"
 	sed -i -e '/thread_test/d' \
 		test/test_suite.rb || die "unable to remove broken test reference"
+
+	# We install the shared object in lib, not ext.
+	sed -i -e 's#../ext/ruby_prof#../lib/ruby_prof#' lib/ruby-prof.rb
 }
 
 each_ruby_prepare() {
@@ -45,15 +48,17 @@ each_ruby_prepare() {
 	esac
 }
 
-each_ruby_compile() {
-	pushd ext
-	${RUBY} extconf.rb || die "extconf.rb failed"
-	# gem ships with prebuild files
-	emake clean || die "clean failed"
-	emake || die "build failed"
-	popd
+each_ruby_configure() {
+	${RUBY} -Cext/ruby_prof extconf.rb || die "extconf.rb failed"
+}
 
-	cp ext/*.so lib || die "copy of extension failed"
+each_ruby_compile() {
+	# gem ships with prebuild files
+	emake -Cext/ruby_prof clean || die "clean failed"
+	emake -Cext/ruby_prof || die "build failed"
+
+	mkdir lib/ruby_prof || die "unable to create directory for shared object"
+	cp ext/ruby_prof/*$(get_modname) lib/ruby_prof || die "copy of extension failed"
 }
 
 all_ruby_install() {
