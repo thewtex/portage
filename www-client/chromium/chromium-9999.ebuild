@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/chromium-9999.ebuild,v 1.71 2010/08/08 18:41:53 phajdan.jr Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/chromium-9999.ebuild,v 1.74 2010/08/11 03:20:06 phajdan.jr Exp $
 
 EAPI="2"
 
@@ -105,6 +105,12 @@ remove_bundled_lib() {
 }
 
 src_prepare() {
+	# Fix compilation, bug #332131.
+	epatch "${FILESDIR}"/${PN}-make-3.82-compatibility-r0.patch
+
+	# Add Gentoo plugin paths.
+	epatch "${FILESDIR}"/${PN}-plugins-path-r0.patch
+
 	remove_bundled_lib "third_party/bzip2"
 	remove_bundled_lib "third_party/codesighs"
 	remove_bundled_lib "third_party/cros"
@@ -207,6 +213,11 @@ src_configure() {
 		myconf="${myconf} -Dno_strict_aliasing=1 -Dgcc_version=44"
 	fi
 
+	# Work around a likely GCC bug, see bug #331945.
+	if [[ "$(gcc-major-version)$(gcc-minor-version)" == "45" ]]; then
+		append-flags -fno-ipa-cp
+	fi
+
 	# Make sure that -Werror doesn't get added to CFLAGS by the build system.
 	# Depending on GCC version the warnings are different and we don't want
 	# the build to fail because of that.
@@ -252,9 +263,6 @@ src_install() {
 	dosym /usr/$(get_libdir)/libavcodec.so.52 "$(get_chromium_home)"
 	dosym /usr/$(get_libdir)/libavformat.so.52 "$(get_chromium_home)"
 	dosym /usr/$(get_libdir)/libavutil.so.50 "$(get_chromium_home)"
-
-	# Use system plugins by default.
-	dosym /usr/$(get_libdir)/nsbrowser/plugins "$(get_chromium_home)/plugins"
 
 	# Install icon and desktop entry.
 	newicon out/Release/product_logo_48.png ${PN}-browser.png
