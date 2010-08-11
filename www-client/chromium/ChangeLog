@@ -1,6 +1,22 @@
 # ChangeLog for www-client/chromium
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/ChangeLog,v 1.151 2010/08/10 01:28:34 phajdan.jr Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/ChangeLog,v 1.154 2010/08/11 03:20:06 phajdan.jr Exp $
+
+  11 Aug 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +files/chromium-plugins-path-r0.patch, chromium-6.0.472.25-r1.ebuild,
+  chromium-9999.ebuild:
+  Update plugins search path instead of using a symlink.
+
+  11 Aug 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +files/chromium-make-3.82-compatibility-r0.patch,
+  chromium-6.0.472.25-r1.ebuild, chromium-9999.ebuild:
+  Fix compile with make-3.82, bug #332131 by polynomial-c.
+
+  10 Aug 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-6.0.472.25-r1.ebuild, chromium-9999.ebuild:
+  Add workaround for bug #331945 by Evan Teran <eteran@alum.rit.edu>, also
+  confirmed by kernelOfTruth on forums. No bump because gcc-4.5 is not even
+  in ~arch.
 
 *chromium-6.0.472.25-r1 (10 Aug 2010)
 
