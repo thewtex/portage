@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/enlightenment/enlightenment-0.16.9999.ebuild,v 1.35 2010/05/07 23:45:40 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/enlightenment/enlightenment-0.16.9999.ebuild,v 1.36 2010/08/09 06:45:57 vapier Exp $
 
 EAPI="2"
 if [[ ${PV} == *9999 ]] ; then
@@ -21,7 +21,7 @@ HOMEPAGE="http://www.enlightenment.org/"
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="doc dbus esd nls pango pulseaudio xcomposite xinerama xrandr"
+IUSE="dbus doc esd nls pango pulseaudio xcomposite xinerama xrandr"
 
 RDEPEND="esd? ( >=media-sound/esound-0.2.19 )
 	pulseaudio? ( media-sound/pulseaudio )
@@ -78,5 +78,6 @@ src_configure() {
 src_install() {
 	emake install DESTDIR="${D}" || die
 	rmdir "${D}"/usr/share/doc/e16 || die #294456
-	dodoc AUTHORS ChangeLog COMPLIANCE TODO
+	dodoc AUTHORS ChangeLog COMPLIANCE TODO sample-scripts/*
+	dohtml docs/e16.html
 }

@@ -1,6 +1,6 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dialup/ppp/ppp-2.4.4-r25.ebuild,v 1.1 2009/11/16 22:15:16 mrness Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dialup/ppp/ppp-2.4.4-r25.ebuild,v 1.4 2010/08/09 15:04:05 hwoarang Exp $
 
 EAPI="2"
 
@@ -14,7 +14,7 @@ SRC_URI="ftp://ftp.samba.org/pub/ppp/${P}.tar.gz
 
 LICENSE="BSD GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc x86"
 IUSE="activefilter atm dhcp eap-tls gtk ipv6 mppe-mppc pam radius"
 
 DEPEND="activefilter? ( >=virtual/libpcap-0.9.4 )
@@ -109,7 +109,7 @@ src_prepare() {
 	sed -i -e "s:/lib/pppd:/$(get_libdir)/pppd:" \
 		pppd/{pathnames.h,pppd.8}
 
-	use radius && {
+	if use radius; then
 		#set the right paths in radiusclient.conf
 		sed -i -e "s:/usr/local/etc:/etc:" \
 			-e "s:/usr/local/sbin:/usr/sbin:" pppd/plugins/radius/etc/radiusclient.conf
@@ -117,7 +117,10 @@ src_prepare() {
 		sed -i -e "s:/etc/radiusclient:/etc/ppp/radius:g" \
 			pppd/plugins/radius/{*.8,*.c,*.h} \
 			pppd/plugins/radius/etc/*
-	}
+	else
+		einfo "Disabling radius"
+		sed -i -e '/+= radius/s:^:#:' pppd/plugins/Makefile.linux
+	fi
 }
 
 src_configure() {

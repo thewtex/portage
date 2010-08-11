@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5842 2010/08/07 13:04:10 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5849 2010/08/10 10:20:51 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -1350,11 +1350,9 @@ kde-base/cantor:ps - Enable rendering EPS files
 kde-base/dolphin:thumbnail -  Enables video thumbnails generation for kde-base/dolphin file manager. 
 kde-base/granatier:gluon - Adds support for media-libs/gluon (recommended) instead of x11-libs/qt-multimedia
 kde-base/gwenview:kipi - Support for the KDE Image Plugin Interface.
-kde-base/kaddressbook:gnokii - Address synchronization with mobile phones via app-mobilephone/gnokii
 kde-base/kalzium:editor - Enable the embedded molecule editor/viewer
 kde-base/kalzium:solver - Enable the equation solver
 kde-base/kde-meta:sdk - Enable instalation of SDK components
-kde-base/kdeadmin-meta:lilo - Install lilo-config, a frontend for the lilo boot loader
 kde-base/kdeartwork-kscreensaver:eigen - Enable various arithmetic screensavers which use Eigen2 for computations.
 kde-base/kdebase-kioslaves:lzma - Enable LZMA/XZ archive support
 kde-base/kdebase-kioslaves:sftp - Enable SFTP protocol support using net-libs/libssh
@@ -1386,7 +1384,6 @@ kde-base/konqueror:bookmarks -  Add dependency on bookmark package.
 kde-base/konqueror:thumbnail -  Enables video thumbnails generation for kde-base/konqueror file manager. 
 kde-base/kopete:addbookmarks - Automatically add incoming urls to bookmarks.
 kde-base/kopete:autoreplace - Automatically replace selected text
-kde-base/kopete:bonjour - Enable Link-Local Messaging via the bonjour protocol.
 kde-base/kopete:contactnotes - Enables writing personal notes for contacts.
 kde-base/kopete:gadu - Enable the Gadu protocol handler.
 kde-base/kopete:groupwise - Enable the Groupwise protocol handler.
@@ -1412,7 +1409,6 @@ kde-base/kopete:webpresence - Show your status and some more information on web.
 kde-base/kopete:winpopup - Enable pop-up messages sending on windows. (same as good old "net send" messages ;])
 kde-base/kopete:yahoo - Enable yahoo protocol support.
 kde-base/kopete:zeroconf - Enable Link-Local Messaging via the bonjour protocol.
-kde-base/kpilot:avantgo - Add support for syncing Avantgo accounts
 kde-base/krdc:rdp - Enable runtime dependency for net-misc/rdesktop
 kde-base/kstars:fits - Enable support for the FITS image format through cfitsio
 kde-base/kstars:indi - Enable support for Astronomical control library using libindi
@@ -1428,7 +1424,6 @@ kde-base/okular:ps - Add PostScript support
 kde-base/plasma-workspace:google-gadgets - Add google-gadgets support
 kde-base/plasma-workspace:rss - Enables building RSSNOW plasmoid (requires kde-base/kdepimlibs)
 kde-base/powerdevil:pm-utils - Adds support for suspend/resume the system through sys-power/pm-utils
-kde-base/pykde4:akonadi - Builds Akonadi python language bindings
 kde-base/pykde4:semantic-desktop - Enables Nepomuk and Soprano python language bindings
 kde-base/smoke:akonadi - Compile bindings for Akonadi.
 kde-base/smoke:attica - Compile bindings for dev-libs/libattica.
@@ -2076,6 +2071,7 @@ media-video/ffmpeg:hardcoded-tables - Use pre-calculated tables rather than calc
 media-video/ffmpeg:mmxext - Enables mmx2 support
 media-video/ffmpeg:network - Enables network streaming support
 media-video/ffmpeg:pic - Force shared libraries to be built as PIC (this is slower)
+media-video/ffmpeg:qt-faststart - Build and install qt-faststart application
 media-video/ffmpeg:rtmp - Enable Real Time Messaging Protocol using librtmp
 media-video/ffmpeg:schroedinger - Enable Dirac video support (an advanced royalty-free video compression format) via libschroedinger (high-speed implementation in C of the Dirac codec).
 media-video/ffmpeg:ssse3 - faster floating point optimization for SSSE3 capable chips (Intel Core 2 and later chips)
@@ -2735,9 +2731,11 @@ net-mail/libpst:dii - enable dii support
 net-mail/mailutils:tokyocabinet - Enable Tokyo Cabinet database support
 net-mail/qmailadmin:maildrop - Filter spam using maildrop
 net-mail/qpopper:apop - Enables the pop.auth file in /etc/pop.auth
+net-mail/qpopper:drac - Enables DRAC support
 net-mail/qpopper:mailbox - Enables mail spool file is in home directory ~/Mailbox
 net-mail/teapop:virtual - Enable teapop's virtual domain support.
 net-mail/tpop3d:authexternal - Enable authentication by an external program
+net-mail/tpop3d:drac - Enable dynamic relay support in the tpop3d pop3 server
 net-mail/tpop3d:flatfile - Enable authentication against /etc/passwd-style flat files
 net-mail/tpop3d:passwd - Enable /etc/passwd authentication
 net-mail/tpop3d:sha1 - Use OpenSSL for sha1 encrypted passwords.
@@ -3160,7 +3158,7 @@ sci-libs/gdal:gml - Enable support for dev-libs/xerces-c C++ API
 sci-libs/gdal:hdf - Add support for the Hierarchical Data Format v. 4 (sci-libs/hdf)
 sci-libs/gdal:ogdi - Enable support for the open geographic datastore interface (sci-libs/ogdi)
 sci-libs/gerris:dx - Enable support for sci-visualization/opendx
-sci-libs/gsl:cblas - Link gsl with external cblas provided by (virtual/cblas)
+sci-libs/gsl:cblas-external - Link gsl with external cblas provided by (virtual/cblas) instead of shipped internal version
 sci-libs/indilib:fits - Enable support for the FITS image format through cfitsio
 sci-libs/indilib:nova - Enable support for nova celestial mechanics calculations
 sci-libs/libgeda:threads - Enable (posix) threads for the GTK GUI
@@ -3382,7 +3380,7 @@ sys-cluster/gearmand:tcmalloc -  Use the dev-util/google-perftools libraries to 
 sys-cluster/gearmand:tokyocabinet -  Support dev-db/tokyocabinet for the queue storage. 
 sys-cluster/glusterfs:extras - Install extra helper scripts
 sys-cluster/glusterfs:fuse - Add FUSE mount helper
-sys-cluster/glusterfs:infiniband - Add support for Infiniband ibverbs transport. Librarys can be found in science overlay
+sys-cluster/glusterfs:infiniband - Add support for Infiniband ibverbs transport. Libraries can be found in science overlay
 sys-cluster/heartbeat:ldirectord - Adds support for ldiretord, use enabled because it has a lot of deps
 sys-cluster/heartbeat:management - Adds support for management GUI.
 sys-cluster/lam-mpi:pbs - Add support for the Portable Batch System (PBS)
@@ -3432,6 +3430,7 @@ sys-devel/gcc-apple:multislot - Allow for SLOTs to include minor version (3.3.4 
 sys-devel/gcc-apple:objc - Build support for the Objective C code language
 sys-devel/gcc-apple:objc++ - Build support for the Objective C++ language
 sys-devel/gdb:multitarget - Support all known targets in one gdb binary
+sys-devel/gettext:git - When running `autopoint`, use git to store the internal development files; this requires git at runtime, but will be faster/smaller than raw archives
 sys-devel/kgcc64:multislot - Allow for SLOTs to include minor version (eg. 3.3.4 instead of just 3.3)
 sys-devel/libperl:ithreads - Enable Perl threads, has some compatibility problems
 sys-devel/llvm:alltargets - Build all host targets (default: host only)

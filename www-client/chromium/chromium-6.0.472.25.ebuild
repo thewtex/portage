@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/chromium-6.0.472.25.ebuild,v 1.1 2010/08/07 05:00:58 phajdan.jr Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/chromium-6.0.472.25.ebuild,v 1.3 2010/08/08 18:41:53 phajdan.jr Exp $
 
 EAPI="2"
 
@@ -67,9 +67,21 @@ src_prepare() {
 	epatch "${FILESDIR}"/${PN}-ffmpeg-compatibility-r0.patch
 
 	remove_bundled_lib "third_party/bzip2"
+	remove_bundled_lib "third_party/codesighs"
+	remove_bundled_lib "third_party/cros"
+	remove_bundled_lib "third_party/jemalloc"
+	remove_bundled_lib "third_party/lcov"
 	remove_bundled_lib "third_party/libevent"
 	remove_bundled_lib "third_party/libjpeg"
 	remove_bundled_lib "third_party/libpng"
+	remove_bundled_lib "third_party/libvpx"
+	remove_bundled_lib "third_party/lzma_sdk"
+	remove_bundled_lib "third_party/molokocacao"
+	remove_bundled_lib "third_party/ocmock"
+	remove_bundled_lib "third_party/py"
+	remove_bundled_lib "third_party/pyftpdlib"
+	remove_bundled_lib "third_party/simplejson"
+	remove_bundled_lib "third_party/tlslite"
 	# TODO: also remove third_party/libxml and third_party/libxslt when
 	# http://crbug.com/29333 is fixed.
 	# TODO: also remove third_party/zlib. For now the compilation fails if we
@@ -107,6 +119,14 @@ src_configure() {
 		myconf="${myconf} -Duse_cups=1"
 	else
 		myconf="${myconf} -Duse_cups=0"
+	fi
+
+	if use gnome; then
+		myconf="${myconf} -Dlinux_link_gnome_keyring=1"
+	else
+		# TODO: we should also disable code trying to dlopen
+		# gnome-keyring in that case.
+		myconf="${myconf} -Dlinux_link_gnome_keyring=0"
 	fi
 
 	# Enable sandbox.

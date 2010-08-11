@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/soprano/soprano-2.4.3.ebuild,v 1.7 2010/06/27 08:52:40 fauli Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/soprano/soprano-2.4.3.ebuild,v 1.9 2010/08/10 02:23:08 reavertm Exp $
 
 EAPI="2"
 
@@ -12,7 +12,7 @@ HOMEPAGE="http://sourceforge.net/projects/soprano"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 LICENSE="LGPL-2"
-KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ppc ~ppc64 ~sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 SLOT="0"
 IUSE="clucene +dbus debug doc elibc_FreeBSD java +raptor +redland test +virtuoso"
 
@@ -99,5 +99,5 @@ src_test() {
 	mycmakeargs+=(-DSOPRANO_BUILD_TESTS=ON)
 	cmake-utils_src_configure
 	cmake-utils_src_compile
-	ctest --extra-verbose || die "Tests failed."
+	cmake-utils_src_test
 }
