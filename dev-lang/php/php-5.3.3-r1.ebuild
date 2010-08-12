@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/php/php-5.3.3-r1.ebuild,v 1.1 2010/08/08 20:32:23 mabi Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/php/php-5.3.3-r1.ebuild,v 1.4 2010/08/11 23:36:14 josejx Exp $
 
 EAPI=2
 
@@ -13,7 +13,7 @@ SUHOSIN_VERSION="${PV}-0.9.10"
 FPM_VERSION="builtin"
 EXPECTED_TEST_FAILURES=""
 
-KEYWORDS="~alpha ~amd64 ~hppa ~x86"
+KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~ppc64 ~x86"
 
 function php_get_uri ()
 {
@@ -102,7 +102,7 @@ IUSE="${IUSE} adabas bcmath berkdb birdstep bzip2 calendar cdb cjk
 	readline recode sapdb +session sharedext sharedmem
 	+simplexml snmp soap sockets solid spell sqlite sqlite3 ssl suhosin
 	sybase-ct sysvipc tidy +tokenizer truetype unicode wddx
-	xml xmlreader xmlwriter xmlrpc xpm xsl zip zlib"
+	+xml +xmlreader +xmlwriter xmlrpc xpm xsl zip zlib"
 
 DEPEND="app-admin/php-toolkit
 	>=dev-libs/libpcre-7.9[unicode]
@@ -245,7 +245,6 @@ RDEPEND="${DEPEND}
 	zip? ( !dev-php${PHP_MV}/pecl-zip )"
 
 DEPEND="${DEPEND}
-	sys-devel/flex
 	>=sys-devel/m4-1.4.3
 	>=sys-devel/libtool-1.5.18"
 
