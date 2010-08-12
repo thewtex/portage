@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/opera/opera-10.61_pre6430.ebuild,v 1.1 2010/08/09 15:56:25 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/opera/opera-10.61.ebuild,v 1.1 2010/08/12 04:45:02 jer Exp $
 
 EAPI="2"
 
@@ -14,7 +14,7 @@ LICENSE="OPERA-10.53 LGPL-2 LGPL-3"
 KEYWORDS="~amd64 ~ppc ~x86 ~x86-fbsd"
 IUSE="elibc_FreeBSD gtk kde +gstreamer"
 
-RESTRICT="mirror test"
+RESTRICT="test"
 
 OPREFIX="/usr/$(get_libdir)"
 
@@ -31,15 +31,16 @@ for O_LINGUA in ${O_LINGUAS}; do
 	IUSE="${IUSE} linguas_${O_LINGUA/-/_}"
 done
 
-O_V="${PV/_pre/-}"
-O_P="${PN}-${O_V}"
-O_U="http://snapshot.opera.com/unix/rc3_${O_V}/"
+O_R="6430"
+O_V="${PV/./}"
+O_U="mirror://opera/"
+O_P="${P}-${O_R}"
 
 SRC_URI="
-	amd64? ( ${O_U}${O_P}.x86_64.linux.tar.bz2 )
-	ppc? ( ${O_U}${O_P}.ppc.linux.tar.bz2 )
-	x86? ( ${O_U}${O_P}.i386.linux.tar.bz2 )
-	x86-fbsd? ( ${O_U}${O_P}.i386.freebsd.tar.bz2 )
+	amd64? ( ${O_U}linux/${O_V}/${O_P}.x86_64.linux.tar.bz2 )
+	ppc? ( ${O_U}linux/${O_V}/${O_P}.ppc.linux.tar.bz2 )
+	x86? ( ${O_U}linux/${O_V}/${O_P}.i386.linux.tar.bz2 )
+	x86-fbsd? ( ${O_U}unix/${O_V}/${O_P}.i386.freebsd.tar.bz2 )
 "
 
 DEPEND=">=sys-apps/sed-4"

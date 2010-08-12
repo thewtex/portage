@@ -1,19 +1,20 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/php/php-5.2.14.ebuild,v 1.4 2010/08/11 04:41:18 phajdan.jr Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/php/php-5.2.14.ebuild,v 1.7 2010/08/11 23:36:14 josejx Exp $
 
 EAPI=2
 
 PHPCONFUTILS_MISSING_DEPS="adabas birdstep db2 dbmaker empress empress-bcs esoob
 interbase msql oci8 sapdb solid"
 
+# inherit autotools, because we call eautoreconf in the eblits
 inherit eutils autotools flag-o-matic versionator depend.apache apache-module db-use phpconfutils php-common-r1 libtool
 
 PHP_PATCHSET=""
 SUHOSIN_VERSION="$PV-0.9.7"
 EXPECTED_TEST_FAILURES=""
 
-KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc x86 ~x86-fbsd"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ppc ppc64 ~s390 ~sh ~sparc x86 ~x86-fbsd"
 
 function php_get_uri ()
 {
@@ -78,6 +79,7 @@ IUSE="kolab"
 # SAPIs and SAPI-specific USE flags (cli SAPI is default on):
 IUSE="${IUSE}
 	${SAPIS/cli/+cli}
+	discard-path force-cgi-redirect
 	concurrentmodphp threads"
 
 IUSE="${IUSE} adabas bcmath berkdb birdstep bzip2 calendar cdb cjk
@@ -90,7 +92,7 @@ IUSE="${IUSE} adabas bcmath berkdb birdstep bzip2 calendar cdb cjk
 	readline recode reflection sapdb +session sharedext sharedmem
 	+simplexml snmp soap sockets solid spell spl sqlite ssl suhosin
 	sybase-ct sysvipc tidy +tokenizer truetype unicode wddx
-	xml xmlreader xmlwriter xmlrpc xpm xsl yaz zip zlib"
+	+xml +xmlreader +xmlwriter xmlrpc xpm xsl yaz zip zlib"
 
 DEPEND="app-admin/php-toolkit
 	pcre? ( >=dev-libs/libpcre-7.9[unicode] )
