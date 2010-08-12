@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5851 2010/08/11 16:47:01 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5856 2010/08/12 17:05:09 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -292,6 +292,17 @@ app-emulation/qemu-kvm:qemu-ifup - Provides the qemu-ifup script for use with QE
 app-emulation/qemu-kvm:sdl - Enable the SDL-based console
 app-emulation/qemu-kvm:vde - Enable VDE-based networking
 app-emulation/qemu-kvm:xen - Enables support for Xen backends
+app-emulation/qemu-kvm-spice:aio - Enables support for Linux's Async IO
+app-emulation/qemu-kvm-spice:alsa - Enable alsa output for sound emulation
+app-emulation/qemu-kvm-spice:esd - Enable esound output for sound emulation
+app-emulation/qemu-kvm-spice:fdt - Enables firmware device tree support
+app-emulation/qemu-kvm-spice:gnutls - Enable TLS support for the VNC console server
+app-emulation/qemu-kvm-spice:kvm-trace - Allows you to use KVM tracing
+app-emulation/qemu-kvm-spice:ncurses - Enable the ncurses-based console
+app-emulation/qemu-kvm-spice:pulseaudio - Enable pulseaudio output for sound emulation
+app-emulation/qemu-kvm-spice:qemu-ifup - Provides the qemu-ifup script for use with QEMU's built in bridging
+app-emulation/qemu-kvm-spice:sdl - Enable the SDL-based console
+app-emulation/qemu-kvm-spice:vde - Enable VDE-based networking
 app-emulation/qemu-softmmu:alsa - Enable alsa output for sound emulation
 app-emulation/qemu-softmmu:esd - Enable esound output for sound emulation
 app-emulation/qemu-softmmu:gnutls - Enable TLS support for the VNC console server
@@ -2010,6 +2021,7 @@ media-tv/tvbrowser:themes - Install extra theme packs
 media-tv/xawtv:xext - Enable use of XFree extensions (DGA,VidMode,DPMS)
 media-tv/xawtv:zvbi - Enable VBI Decoding Library for Zapping
 media-tv/xbmc:midi - Support MIDI files
+media-tv/xbmc:rtmp - Enable Real Time Messaging Protocol using librtmp
 media-tv/xbmc:vaapi - Enables VAAPI (Video Acceleration API) for hardware decoding
 media-tv/xbmc:vdpau - enable support for Video Decode and Presentation API for Unix
 media-tv/xbmc:xrandr - Support X randr extension
@@ -3242,7 +3254,6 @@ sci-physics/hepmc:cm - Build with cm instead of default mm for length units
 sci-physics/hepmc:gev - Build with GeV instead of default MeV for momentum units
 sci-physics/lhapdf:octave - Add bindings for sci-mathematics/octave
 sci-physics/pythia:hepmc - Adds support for High Energy Physics Monte Carlo Generators sci-physics/hepmc
-sci-physics/root:cern - Build the HBOOK input/output functionality, needs fortran or sci-physics/cernlib
 sci-physics/root:cint7 - Build the *experimental* new C++ interpretor CINT7
 sci-physics/root:clarens -  Buld the Clarens and PEAC plug-ins, to use in a GRID enabled analysis.
 sci-physics/root:geant4 - Build the sci-physics/geant (GEANT4) navigator
@@ -3402,6 +3413,7 @@ sys-cluster/openmpi:romio - Build the ROMIO MPI-IO component
 sys-cluster/openmpi:vt - Enable bundled VampirTrace support
 sys-cluster/pacemaker:ais - Enable sys-cluster/openais support.
 sys-cluster/pacemaker:heartbeat - Enable sys-cluster/heartbeat support.
+sys-cluster/pacemaker:smtp - Enable SMTP support via net-libs/libsmtp
 sys-cluster/pvfs2:apidocs - Build API documentation directly from the code using doxygen
 sys-cluster/pvfs2:server - Enable compilation of server code
 sys-cluster/torque:cpusets - Enable pbs_mom to utilize linux cpusets if available.
@@ -3636,6 +3648,7 @@ www-misc/vdradmin-am:vdr -  Support for media-video/vdr. Disable this if the VDR
 www-misc/xxv:themes - Enable more themes via x11-themes/xxv-skins
 www-plugins/adobe-flash:32bit - For amd64-multilib, installs the 32-bit plugin
 www-plugins/adobe-flash:64bit - For amd64-multilib, installs the native 64-bit plugin
+www-plugins/adobe-flash:nspluginwrapper - For amd64-multilib, installs www-plugins/nspluginwrapper to allow use in a 64-bit browser. (Not recommended, see http://bugs.gentoo.org/324365)
 www-plugins/gnash:agg - Rendering based on the Anti-Grain Geometry Rendering Engine library
 www-plugins/gnash:cygnal - Enable building of the cygnal server
 www-plugins/gnash:ssh - Enable using SSH for network authentication in libnet
