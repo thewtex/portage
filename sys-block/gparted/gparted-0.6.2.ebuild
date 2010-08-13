@@ -1,8 +1,8 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-block/gparted/gparted-0.5.0.ebuild,v 1.1 2010/01/07 22:42:34 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-block/gparted/gparted-0.6.2.ebuild,v 1.1 2010/08/12 20:28:35 eva Exp $
 
-EAPI="1"
+EAPI="2"
 GCONF_DEBUG="no"
 
 inherit gnome2
@@ -17,15 +17,15 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 IUSE="dmraid fat gnome hfs jfs kde mdadm ntfs reiserfs reiser4 xfs xfce"
 
-common_depends=">=sys-apps/parted-1.7.1
-	>=dev-cpp/gtkmm-2.14.0"
+common_depends=">=sys-apps/parted-2.3
+	>=dev-cpp/gtkmm-2.16"
 
 RDEPEND="${common_depends}
 	gnome? ( x11-libs/gksu )
 	xfce? ( x11-libs/gksu )
 	kde? ( || ( kde-base/kdesu kde-base/kdebase ) )
 
-	>=sys-fs/e2fsprogs-1.41.0
+	>=sys-fs/e2fsprogs-1.41
 	mdadm? ( sys-fs/mdadm )
 	dmraid? ( || (
 			>=sys-fs/lvm2-2.02.45
@@ -51,19 +51,19 @@ DEPEND="${common_depends}
 
 DOCS="AUTHORS NEWS ChangeLog README"
 
-src_unpack() {
-	gnome2_src_unpack
-
-	# Revert upstream changes to use gksu inconditionally
-	sed "s:Exec=@gksuprog@ :Exec=:" \
-		-i gparted.desktop.in.in || die "sed 1 failed"
-}
-
 pkg_setup() {
 	G2CONF="${G2CONF}
 		--enable-doc
 		--disable-scrollkeeper
 		GKSUPROG=$(type -P true)"
+}
+
+src_prepare() {
+	gnome2_src_prepare
+
+	# Revert upstream changes to use gksu inconditionally
+	sed "s:Exec=@gksuprog@ :Exec=:" \
+		-i gparted.desktop.in.in || die "sed 1 failed"
 }
 
 src_install() {

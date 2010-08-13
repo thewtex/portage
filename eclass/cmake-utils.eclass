@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/cmake-utils.eclass,v 1.56 2010/07/14 15:48:43 scarabeus Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/cmake-utils.eclass,v 1.58 2010/08/13 05:02:49 reavertm Exp $
 
 # @ECLASS: cmake-utils.eclass
 # @MAINTAINER:
