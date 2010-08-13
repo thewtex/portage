@@ -1,10 +1,24 @@
 # ChangeLog for profile directory
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.4468 2010/08/13 04:27:59 dirtyepic Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.4472 2010/08/13 16:39:48 phajdan.jr Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  13 Aug 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> package.mask:
+  Mask www-client/chromium dev channel release.
+
+  13 Aug 2010; Jeroen Roovers <jer@gentoo.org> package.mask:
+  Remove www-client/opera-10.11 mask now that it is gone (bug #326571).
+
+  13 Aug 2010; Hans de Graaff <graaff@gentoo.org> package.mask:
+  Mask dev-ruby/palmtree for removal.
+
+  13 Aug 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  base/package.use.force, package.mask:
+  Add support for a new-style ruby-ssl virtual needed when the OpenSSL
+  bindings are required by Ruby code.
 
   13 Aug 2010; Ryan Hill <dirtyepic@gentoo.org> package.mask:
   Mask app-crypt/wxchecksums and media-gfx/zphoto for removal.
