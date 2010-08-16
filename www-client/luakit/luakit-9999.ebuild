@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/luakit/luakit-9999.ebuild,v 1.1 2010/08/12 23:14:41 wired Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/luakit/luakit-9999.ebuild,v 1.3 2010/08/14 18:29:47 wired Exp $
 
 EAPI=3
 
@@ -19,7 +19,7 @@ else
 	SRC_URI="http://github.com/mason-larobina/${PN}/tarball/${PV} -> ${P}.tar.gz"
 fi
 
-DESCRIPTION="a webkit-gtk based, micro-browser framework in Lua"
+DESCRIPTION="fast, small, webkit-gtk based micro-browser extensible by lua"
 HOMEPAGE="http://www.luakit.org"
 
 LICENSE="GPL-3"
@@ -28,7 +28,6 @@ SLOT="0"
 RDEPEND="
 	>=dev-lang/lua-5.1
 	dev-libs/glib:2
-	dev-libs/libxdg-basedir
 	net-libs/libsoup
 	net-libs/webkit-gtk
 	x11-libs/gtk+:2

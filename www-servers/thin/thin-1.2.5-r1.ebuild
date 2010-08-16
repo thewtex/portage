@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-servers/thin/thin-1.2.5-r1.ebuild,v 1.5 2010/08/13 11:43:31 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-servers/thin/thin-1.2.5-r1.ebuild,v 1.7 2010/08/13 23:38:19 flameeyes Exp $
 
 EAPI=2
 

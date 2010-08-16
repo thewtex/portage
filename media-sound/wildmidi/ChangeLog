@@ -1,0 +1,28 @@
+# ChangeLog for media-sound/wildmidi
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/wildmidi/ChangeLog,v 1.5 2010/08/14 21:01:45 ssuominen Exp $
+
+  14 Aug 2010; Samuli Suominen <ssuominen@gentoo.org>
+  wildmidi-0.2.3.4.ebuild:
+  Workaround broken --without-oss flag.
+
+  14 Aug 2010; Markos Chandras <hwoarang@gentoo.org>
+  wildmidi-0.2.3.4.ebuild:
+  Apply patch from Samuli to fix QA issues, refactor dependencies and remove
+  .la file
+
+  14 Aug 2010; Markos Chandras <hwoarang@gentoo.org>
+  wildmidi-0.2.3.4.ebuild:
+  Drop myconf entirely. Add || die to sed. Fix LICENSE variable to list both
+  licenses as mandatory. Thanks again to Samuli for the proposals
+
+  14 Aug 2010; Markos Chandras <hwoarang@gentoo.org>
+  wildmidi-0.2.3.4.ebuild:
+  Drop -Werror check as ssuominen correctly pointed out
+
+*wildmidi-0.2.3.4 (14 Aug 2010)
+
+  14 Aug 2010; Markos Chandras <hwoarang@gentoo.org>
+  +wildmidi-0.2.3.4.ebuild, +metadata.xml:
+  Initial commit. Required for mpd-0.15.12. Bug #331471
+
