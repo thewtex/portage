@@ -1,6 +1,6 @@
-# Copyright 2004 Gentoo Foundation.
+# Copyright 2004-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License, v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/alpha/use.mask,v 1.39 2010/07/24 17:13:41 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/alpha/use.mask,v 1.41 2010/08/15 13:59:06 armin76 Exp $
 
 # Unmask the flag which corresponds to ARCH.
 -alpha
@@ -18,6 +18,7 @@ dvb
 gnokii
 gps
 hbci
+iphone
 ipod
 ivtv
 mtp
@@ -48,6 +49,7 @@ freetts
 gnustep
 hardened
 howl
+mecab
 mzscheme
 netbeans
 pike
@@ -65,32 +67,15 @@ mono
 ocamlopt
 
 # Stuff we don't want
+afs
 schroedinger
 ots
 
 # Other
 
-# Raúl Porcel <armin76@gentoo.org> (11 Apr 2009)
-# Keep kde depends minimal
-semantic-desktop
-mecab
-tunepimp
-captury
-bittorrent-external
-ktts
-redland
-raptor
-fits
-indi
-wicd
-
 # Ben de Groot <yngwin@gentoo.org> 11 Feb 2009
 # both x11-libs/qt-phonon and media-sound/phonon are unkeyworded
 phonon
-
-# 13 Jun 2007 Jose Luis Rivero <yoswink@gentoo.org>
-# acpid masked and acpi use flag is deprecated now.
-acpi
 
 # 14 May 2007 Raúl Porcel <armin76@gentoo.org>
 # Alpha doesn't have wpa_supplicant keyworded, bug 175714
@@ -164,10 +149,6 @@ audit
 
 # This works
 -x264
-
-# too complicated/invovled to test and too small user base
-# Tobias Klausmann <klausman@gentoo.org>
-afs
 
 # uses gnat/ada which is too big to support currently
 topal
