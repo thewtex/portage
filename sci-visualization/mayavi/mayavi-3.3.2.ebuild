@@ -29,7 +29,7 @@ RDEPEND=">=dev-python/apptools-3.3.2
 	dev-python/numpy
 	>=dev-python/traitsgui-3.4.0[qt4?,wxwidgets]
 	dev-python/wxpython:2.8[opengl]
-	>=sci-libs/vtk-5[python]
+	|| ( sci-libs/vtk:5.4[python] sci-libs/vtk:5.6[python] )
 	qt4? ( dev-python/PyQt4[X,opengl] )"
 DEPEND="${RDEPEND}
 	dev-python/setuptools"
