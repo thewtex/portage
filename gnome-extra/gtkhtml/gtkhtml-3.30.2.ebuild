@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-extra/gtkhtml/gtkhtml-3.30.2.ebuild,v 1.4 2010/08/01 11:16:16 fauli Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/gtkhtml/gtkhtml-3.30.2.ebuild,v 1.5 2010/08/16 21:16:59 eva Exp $
 
 EAPI="2"
 GCONF_DEBUG="no"
@@ -14,12 +14,6 @@ LICENSE="GPL-2 LGPL-2"
 SLOT="3.14"
 KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sh ~sparc x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~ia64-linux ~x86-linux"
 IUSE=""
-
-# Glade support is disabled, because it's install broken by design:
-# Install directories for glade are queried from gladeui-1.0.pc which doesn't
-# take our prefix into account. On the other side, there are maybe 3 to 4
-# people in the world who really need to install the Glade file, so they can
-# fix it themselves :)
 
 # We keep bonobo until we can make sure no apps in tree uses
 # the old composer code.
