@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/sandbox/sandbox-2.3.ebuild,v 1.1 2010/08/17 02:58:30 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/sandbox/sandbox-2.3-r1.ebuild,v 1.1 2010/08/17 21:02:30 vapier Exp $
 
 #
 # don't monkey with this ebuild unless contacting portage devs.
@@ -76,10 +76,15 @@ src_install() {
 		cd "${WORKDIR}/build-${ABI}"
 		einfo "Installing sandbox for ABI=${ABI}..."
 		emake DESTDIR="${D}" install || die "make install failed for ${ABI}"
+		insinto /etc/sandbox.d #333131
+		doins etc/sandbox.d/00default || die
 	done
 	ABI=${OABI}
 
 	doenvd "${FILESDIR}"/09sandbox
+
+	# fix 00default install #333131
+	rm "${D}"/etc/sandbox.d/*.in || die
 
 	keepdir /var/log/sandbox
 	fowners root:portage /var/log/sandbox
