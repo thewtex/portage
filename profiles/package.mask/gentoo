@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11871 2010/08/22 12:23:46 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11873 2010/08/23 03:34:25 zmedico Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,10 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Michael Sterrett <mr_bones_@gentoo.org> (22 Aug 2010)
+# Testing mask for 0.8 betas
+>games-board/pokerth-0.7.1
 
 # Samuli Suominen <ssuominen@gentoo.org> (21 Aug 2010)
 # These have been uninstallable since 2008.
@@ -1120,7 +1124,8 @@ sys-apps/baselayout-vserver
 
 # Zac Medico <zmedico@gentoo.org> (05 Jan 2009)
 # Portage 2.2 is masked due to known bugs in the
-# package sets and preserve-libs features.
+# package sets and preserve-libs features. See
+# bug #253802 for details.
 >=sys-apps/portage-2.2_pre
 
 # Diego E. Pettenò <flameeyes@gentoo.org> (03 Jan 2009)
