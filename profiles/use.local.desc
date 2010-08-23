@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5875 2010/08/18 16:55:12 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5889 2010/08/23 10:47:51 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -242,7 +242,7 @@ app-emulation/libvirt:network - Enable networking support for guests
 app-emulation/libvirt:nfs - Allow the libvirtd daemon store VM images on NFS mounts
 app-emulation/libvirt:numa - Use NUMA for memory segmenting via sys-process/numactl
 app-emulation/libvirt:openvz - Add support for sys-kernel/openvz-sources OpenVZ-based virtual machines
-app-emulation/libvirt:parted - Add support for the sys-apps/parted partition editor
+app-emulation/libvirt:parted - Add support for the sys-block/parted partition editor
 app-emulation/libvirt:pcap - Support auto learning IP addreses for routing
 app-emulation/libvirt:phyp - Support the PHYP hypervisor protocol
 app-emulation/libvirt:qemu - Add support for app-emulation/qemu based virtual machines
@@ -262,14 +262,10 @@ app-emulation/opennebula:qemu - Pull in packages needed to create Qemu/Kvm nodes
 app-emulation/opennebula:xen - Pull in packages needed to create Xen nodes.
 app-emulation/pearpc:jit - Use the JITC-x86 CPU
 app-emulation/point2play:emerald - For people who are in the Transgaming Emerald Club
-app-emulation/q4wine:development -  Enable developer related stuff
-app-emulation/q4wine:embedded-fuseiso -  Enable q4wine-mount tools 
 app-emulation/q4wine:gnome - Use the gksu sudo GUI for managing the devices
-app-emulation/q4wine:icotools -  Enable icotools support
 app-emulation/q4wine:icoutils -  Enable icoutils support 
 app-emulation/q4wine:kde - Use the kdesu sudo GUI for managing the devices
 app-emulation/q4wine:wineappdb -  Enable Win AppDB browser subsystem
-app-emulation/q4wine:winetools -  Enable winetools support
 app-emulation/q4wine:winetriks -  Enable winetricks support 
 app-emulation/qemu:alsa - Enable alsa output for sound emulation
 app-emulation/qemu:esd - Enable esound output for sound emulation
@@ -1356,7 +1352,6 @@ gnustep-base/gnustep-back-cairo:xim - Enable X11 XiM input method
 gnustep-base/gnustep-back-xlib:xim - Enable X11 XiM input method
 gnustep-base/gnustep-base:libffi - Use dev-libs/libffi instead of dev-libs/ffcall
 gnustep-base/gnustep-make:native-exceptions - Enables use of the native Objective-C exception support (@try/@catch/@finally) built-in objective-c exceptions with compilers that support it 
-gnustep-libs/steptalk:gdl2 - Compile module for gnustep-libs/gdl2
 gpe-base/gpe:games - Builds and installs GPE games.
 kde-base/ark:archive - Enable support for a variety of archive formats through libarchive
 kde-base/ark:lzma - Enable LZMA/XZ archive support
@@ -1910,6 +1905,7 @@ media-sound/mpd:libmms - Support for Microsoft Media Server (MMS) streams via li
 media-sound/mpd:network - Enables network streaming support
 media-sound/mpd:pipe - Support writing audio to a pipe
 media-sound/mpd:sid - Build with SID (Commodore 64 Audio) support
+media-sound/mpd:wildmidi - Enable MIDI support via wildmidi
 media-sound/mpd:zip - Support for ZIP files
 media-sound/mpfc:wav - Enable wav audio codec support
 media-sound/mpg123:3dnowext - Enable 3dnowext cpu instructions
@@ -2096,7 +2092,6 @@ media-video/ffmpeg:vaapi - Enables VAAPI (Video Acceleration API) for hardware d
 media-video/ffmpeg:vdpau - Enables VDPAU decoders (requires nVidia video cards to offload CPU processing to video card
 media-video/ffmpeg:vpx - Enables vp8 codec support using libvpx
 media-video/ffmpeg2theora:kate - Adds support for Ogg Kate subtitles via libkate.
-media-video/ffprobe:perl - Installs tools written in perl to produce plots based on video frame bitrate and size
 media-video/google2srt:html - Install HTML documentation
 media-video/griffith:csv - Enable proper support for csv import (respectively auto-detection encoding of csv files)
 media-video/gxine:udev - Use sys-fs/udev for autodiscovery of devices; this replaces the deprecated sys-apps/hal autodiscovery code.
@@ -2773,6 +2768,7 @@ net-misc/aria2:metalink - Enables support for metalink
 net-misc/aria2:scripts - Install additional scripts which use aria2's xmlrpc functionality
 net-misc/asterisk:dahdi - Support Digium compatible hardware (formerly known as Zaptel).
 net-misc/asterisk:keepsrc - Install sources into /usr/src for custom patching
+net-misc/asterisk:logrotate - Install a configuration snippet for the logrotate cronjob
 net-misc/asterisk:lowmem - Build Asterisk for environments with low amounts of memory (embedded devices)
 net-misc/asterisk:misdn - Build with mISDN (chan_misdn) support for BRI ISDN cards
 net-misc/asterisk:newt - Include additional tools that require redhats windowing toolkit
@@ -2783,12 +2779,39 @@ net-misc/asterisk:samples - Install sample sound and configuration files (defaul
 net-misc/asterisk:span - Enable support for the spandsp codec
 net-misc/asterisk:zaptel - Enables deprecated zaptel support (use dahdi if available)
 net-misc/asterisk-addons:h323 - Build the chan_ooh323c H.323 channel driver
+net-misc/asterisk-core-sounds:alaw - Install the sounds files for the alaw codec.
+net-misc/asterisk-core-sounds:g722 - Install the sounds files for the g722 codec.
+net-misc/asterisk-core-sounds:g729 - Install the sounds files for the g729 codec.
+net-misc/asterisk-core-sounds:gsm - Install the sounds files for the +gsm codec.
+net-misc/asterisk-core-sounds:siren14 - Install the sounds files for the siren14 codec.
+net-misc/asterisk-core-sounds:siren7 - Install the sounds files for the siren7 codec.
+net-misc/asterisk-core-sounds:sln16 - Install the sounds files for the sln16 codec.
+net-misc/asterisk-core-sounds:ulaw - Install the sounds files for the ulaw codec.
+net-misc/asterisk-core-sounds:wav - Install the sounds files for the wav codec.
+net-misc/asterisk-extra-sounds:alaw - Install the sounds files for the alaw codec.
+net-misc/asterisk-extra-sounds:g722 - Install the sounds files for the g722 codec.
+net-misc/asterisk-extra-sounds:g729 - Install the sounds files for the g729 codec.
+net-misc/asterisk-extra-sounds:gsm - Install the sounds files for the +gsm codec.
+net-misc/asterisk-extra-sounds:siren14 - Install the sounds files for the siren14 codec.
+net-misc/asterisk-extra-sounds:siren7 - Install the sounds files for the siren7 codec.
+net-misc/asterisk-extra-sounds:sln16 - Install the sounds files for the sln16 codec.
+net-misc/asterisk-extra-sounds:ulaw - Install the sounds files for the ulaw codec.
+net-misc/asterisk-extra-sounds:wav - Install the sounds files for the wav codec.
+net-misc/asterisk-moh-opsound:alaw - Install the sounds files for the alaw codec.
+net-misc/asterisk-moh-opsound:g722 - Install the sounds files for the g722 codec.
+net-misc/asterisk-moh-opsound:g729 - Install the sounds files for the g729 codec.
+net-misc/asterisk-moh-opsound:gsm - Install the sounds files for the +gsm codec.
+net-misc/asterisk-moh-opsound:siren14 - Install the sounds files for the siren14 codec.
+net-misc/asterisk-moh-opsound:siren7 - Install the sounds files for the siren7 codec.
+net-misc/asterisk-moh-opsound:sln16 - Install the sounds files for the sln16 codec.
+net-misc/asterisk-moh-opsound:ulaw - Install the sounds files for the ulaw codec.
+net-misc/asterisk-moh-opsound:wav - Install the sounds files for the wav codec.
 net-misc/connman:dhclient - Use dhclient from net-misc/dhcp for getting ip.
 net-misc/connman:dnsproxy - Enable dnsproxy support.
 net-misc/connman:ethernet - Enable ethernet support.
 net-misc/connman:google - Enable Google Public DNS support.
 net-misc/connman:ofono - Use net-misc/ofono for telephony support.
-net-misc/connman:resolvconf - Use net-dns/openresolv for managing DNS information
+net-misc/connman:resolvconf - Use rnet-dns/openresolv for resolvconf support.
 net-misc/connman:tools - Enable testing tools.
 net-misc/connman:udev - Enable udev support.
 net-misc/connman:wimax - Use net-wireless/wimax for WiMAX support.
@@ -2930,6 +2953,8 @@ net-nds/389-ds-base:dna - Enable dna (distributed numeric assignment ) plugin - 
 net-nds/389-ds-base:ldapi - Enable LDAP over unix domain socket (LDAPI) support
 net-nds/389-ds-base:pam-passthru - Enable pam-passthru plugin - for simple and fast system services used in ldap
 net-nds/389-ds-base:presence - Enable presence plugin - non-stabdart syntax validation
+net-nds/gosa-core:mail - Manage mail accounts and servers with gosa.
+net-nds/gosa-core:samba - Manage samba accounts with gosa.
 net-nds/nsscache:nsscache - Depend on sys-auth/libnss-cache to handle flat files
 net-nds/nsscache:nssdb - Depend on sys-libs/libnss_db to handle dbm files.
 net-nds/openldap:experimental - Enable experimental backend options
@@ -3126,10 +3151,11 @@ sci-chemistry/pymol:numpy - Compile numpy support
 sci-chemistry/pymol:shaders - Build with Shaders support - good for high-end 3D video cards.
 sci-chemistry/pymol:vmd - Enable vmd module for trajectories
 sci-chemistry/shelx:dosformat - Use CR/LF to end lines; useful in mixed Linux/Windows environments
+sci-chemistry/vmd:msms - Add support for MSMS SAS calcualtion tool
+sci-chemistry/vmd:povray - Add support for povray raytracer for HQ images
 sci-chemistry/vmd:tachyon - Add support for tachyon raytracer for HQ images
 sci-chemistry/wxmacmolplt:flash - Add support for flash movie generation using media-libs/ming
 sci-electronics/geda:stroke - enable mouse gesture support
-sci-electronics/geda-gschem:stroke - enable mouse gesture support
 sci-electronics/gerbv:unit-mm - Set default unit for coordinates in status bar to mm
 sci-electronics/kicad:dev-doc - Install developer documentation (requires app-doc/doxygen)
 sci-electronics/pcb:gif - GIF graphics export
@@ -3310,7 +3336,7 @@ sys-apps/hal:acpi - Enables HAL to attempt to read from /proc/acpi/event, if una
 sys-apps/hal:consolekit - Enables HAL to interact with consolekit for determining whether a given process is running on behalf of the person setting at the console.
 sys-apps/hal:crypt - Allows HAL to mount volumes that are encrypted using LUKS. sys-fs/cryptsetup-luks which has recently been renamed to sys-fs/cryptsetup allows you to create such encrypted volumes. HAL will be able to handle volumes that are removable or fixed.
 sys-apps/hal:dell - Builds and installs the Dell addon, which reads data from the Dell SM BIOS via sys-libs/libsmbios. It will read your service tag information and your hardware backlight data as well as allow you to modify the backlight settings on a Dell laptop.
-sys-apps/hal:disk-partition - Allows HAL to use libparted from sys-apps/parted to read raw partition data from your disks and process that data. Future versions of HAL (possibly 0.5.11 and higher) will allow you to create, modify, delete and format partitions from a GUI interface agnostic of your desktop environment.
+sys-apps/hal:disk-partition - Allows HAL to use libparted from sys-block/parted to read raw partition data from your disks and process that data. Future versions of HAL (possibly 0.5.11 and higher) will allow you to create, modify, delete and format partitions from a GUI interface agnostic of your desktop environment.
 sys-apps/hal:doc - Generates documentation that describes HAL's fdi format.
 sys-apps/hal:laptop - Adds support for power management scripts (sys-power/pm-utils)
 sys-apps/hal:selinux - Installs SELinux policies and links HAL to the SELinux libraries.
@@ -3329,8 +3355,6 @@ sys-apps/paludis:portage - Enable experimental support for Portage configuration
 sys-apps/paludis:python-bindings - Enable Python bindings. Requires a lot of RAM to build (~700Mbytes per job) and adds a dependency upon dev-libs/boost
 sys-apps/paludis:ruby-bindings - Enable Ruby bindings.
 sys-apps/paludis:visibility - Enable visibility support (g++ >=4.1)
-sys-apps/parted:debug -  Enable debugging as encouraged by upstream: [The default configuration] includes --enable-debug (by default), which contains many assertions. Obviously, these "waste" space, but in the past, they have caught potentially dangerous bugs before they would have done damage, so we think it's worth it. Also, it means we get more bug reports ;) 
-sys-apps/parted:device-mapper -  Enable sys-fs/device-mapper support in parted 
 sys-apps/pciutils:network-cron -  Monthly cronjob the update-pciids script 
 sys-apps/pcmcia-cs:trusted - Assume all users are trusted (Build unsafe user-space tools)
 sys-apps/pcmcia-cs:xforms - Enable building the xforms based cardinfo binary
@@ -3376,6 +3400,8 @@ sys-block/gparted:xfce - Enable integration in XFCE desktop
 sys-block/gparted:xfs - Include XFS support (sys-fs/xfsprogs, sys-fs/xfsdump)
 sys-block/open-iscsi:modules - Build the open-iscsi kernel modules
 sys-block/open-iscsi:utils - Build the open-iscsi utilities
+sys-block/parted:debug -  Enable debugging as encouraged by upstream: [The default configuration] includes --enable-debug (by default), which contains many assertions. Obviously, these "waste" space, but in the past, they have caught potentially dangerous bugs before they would have done damage, so we think it's worth it. Also, it means we get more bug reports ;) 
+sys-block/parted:device-mapper -  Enable sys-fs/device-mapper support in parted 
 sys-block/partimage:nologin - Do not include login support when connecting partimaged
 sys-block/tgt:fcoe - Add support for FCoE protocol
 sys-block/tgt:fcp - Add support for new FC protocol
@@ -3720,9 +3746,10 @@ x11-libs/libSM:uuid - Use UUID for session identification instead of IP address 
 x11-libs/libfm:demo - Build demo
 x11-libs/libmatchbox:pango - Enable x11-libs/pango support
 x11-libs/libmatchbox:xsettings - Enable the use of xsettings for settings management
-x11-libs/libqxt:crypt -  Enable support for blowfish encryption using dev-libs/openssl 
-x11-libs/libqxt:sql -  Enable support for SQL databases using x11-libs/qt-sql 
-x11-libs/libqxt:web -  Enable web support using dev-libs/fcgi 
+x11-libs/libqxt:berkdb - Build the QxtBerkeley module
+x11-libs/libqxt:sql - Build the QxtSql module
+x11-libs/libqxt:web - Enable fast cgi bindings
+x11-libs/libqxt:zeroconf - Build the QxtZeroconf module
 x11-libs/pango:introspection - Use dev-libs/gobject-introspection for introspection
 x11-libs/qt:kde - Select media-sound/phonon as phonon variant needed for kde
 x11-libs/qt:qt3support - Enable the Qt3Support libraries for Qt4

@@ -1,6 +1,25 @@
 # ChangeLog for net-misc/connman
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/connman/ChangeLog,v 1.16 2010/08/16 12:42:55 dagger Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/connman/ChangeLog,v 1.20 2010/08/23 16:20:51 dagger Exp $
+
+  23 Aug 2010; Robert Piasek <dagger@gentoo.org> connman-0.57-r2.ebuild:
+  Removed unneeded package from RDEPEND
+
+*connman-0.57-r2 (23 Aug 2010)
+
+  23 Aug 2010; Robert Piasek <dagger@gentoo.org> -connman-0.57-r1.ebuild,
+  +connman-0.57-r2.ebuild, metadata.xml:
+  Fixed QA issues, as per bug #334023.
+  Removed unused USE flags.
+
+  22 Aug 2010; Markus Meier <maekke@gentoo.org> connman-0.57-r1.ebuild:
+  add ~arm, needed for gnome-extra/connman-gnome
+
+*connman-0.57-r1 (20 Aug 2010)
+
+  20 Aug 2010; Robert Piasek <dagger@gentoo.org> -connman-0.57.ebuild,
+  +connman-0.57-r1.ebuild, +files/connman-0.57-fix-iptables-test.patch:
+  This patch fixes test/iptables to compile with iptables 1.4.9 and newer
 
 *connman-0.57 (16 Aug 2010)
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/PDL/PDL-2.4.6.ebuild,v 1.1 2010/02/19 09:08:43 tove Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/PDL/PDL-2.4.6.ebuild,v 1.3 2010/08/23 13:39:54 tove Exp $
 
 EAPI=2
 
@@ -30,6 +30,7 @@ DEPEND=">=sys-libs/ncurses-5.2
 mydoc="DEPENDENCIES DEVELOPMENT MANIFEST* Release_Notes TODO"
 
 SRC_TEST="do"
+MAKEOPTS+=" -j1" #300272
 
 src_prepare() {
 	epatch "${FILESDIR}/PDL-2.4.2-makemakerfix.patch"
@@ -83,7 +84,6 @@ pkg_postinst() {
 		elog "You must create perldl.db by running"
 	fi
 	elog "perl ${VENDOR_ARCH}/PDL/Doc/scantree.pl"
-	epause 3
 	elog "PDL requires that glx and dri support be enabled in"
 	elog "your X configuration for certain parts of the graphics"
 	elog "engine to work. See your X's documentation for futher"

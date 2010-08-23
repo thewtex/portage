@@ -1,6 +1,31 @@
 # ChangeLog for net-misc/openvpn
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/openvpn/ChangeLog,v 1.172 2010/02/28 16:21:33 cedk Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/openvpn/ChangeLog,v 1.178 2010/08/23 15:09:24 hwoarang Exp $
+
+  23 Aug 2010; Markos Chandras <hwoarang@gentoo.org>
+  openvpn-2.1.0-r1.ebuild:
+  Stable on amd64 wrt bug #293894
+
+  23 Aug 2010; Dirkjan Ochtman <djc@gentoo.org> openvpn-2.1.0-r1.ebuild,
+  openvpn-2.1.2.ebuild:
+  Get rid of useless threads flag.
+
+*openvpn-2.1.2 (23 Aug 2010)
+
+  23 Aug 2010; Dirkjan Ochtman <djc@gentoo.org> +openvpn-2.1.2.ebuild:
+  Version bump to 2.1.2.
+
+  23 Aug 2010; Dirkjan Ochtman <djc@gentoo.org> openvpn-2.1.0-r1.ebuild:
+  Remove built_with_use, upgrade to EAPI=2.
+
+  23 Aug 2010; Dirkjan Ochtman <djc@gentoo.org> -openvpn-2.0.6.ebuild,
+  -openvpn-2.0.7-r2.ebuild, -files/openvpn-2.0.7-pam.patch,
+  -files/openvpn-2.0.7-persistent.patch, -openvpn-2.1_rc19.ebuild,
+  -openvpn-2.1_rc20.ebuild, -openvpn-2.1_rc21.ebuild:
+  Clean up old versions.
+
+  23 Aug 2010; Dirkjan Ochtman <djc@gentoo.org> metadata.xml:
+  Add myself as a maintainer.
 
   28 Feb 2010; Cédric Krier <cedk@gentoo.org> files/openvpn-2.1.init,
   files/openvpn.init:

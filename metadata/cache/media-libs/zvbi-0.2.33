@@ -1,20 +1,20 @@
-X? ( x11-libs/libX11 ) media-libs/libpng sys-libs/zlib nls? ( virtual/libintl ) X? ( x11-libs/libXt ) virtual/os-headers nls? ( sys-devel/gettext ) doc? ( app-doc/doxygen )
-X? ( x11-libs/libX11 ) media-libs/libpng sys-libs/zlib nls? ( virtual/libintl )
+>=media-libs/libpng-1.4 sys-libs/zlib nls? ( virtual/libintl ) X? ( x11-libs/libX11 ) virtual/os-headers doc? ( app-doc/doxygen ) nls? ( sys-devel/gettext ) X? ( x11-libs/libXt )
+>=media-libs/libpng-1.4 sys-libs/zlib nls? ( virtual/libintl ) X? ( x11-libs/libX11 )
 0
 mirror://sourceforge/zapping/zvbi-0.2.33.tar.bz2
 
 http://zapping.sourceforge.net
-GPL-2
+GPL-2 LGPL-2
 VBI Decoding Library for Zapping
 alpha amd64 ia64 ppc ppc64 sparc x86 ~x86-fbsd
-libtool multilib toolchain-funcs
-X nls v4l dvb doc
+eutils libtool multilib portability toolchain-funcs
+doc dvb nls static-libs v4l X
 
 
 
+2
 
-
-compile install
+configure install prepare
 
 
 

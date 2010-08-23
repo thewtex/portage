@@ -5,7 +5,7 @@
 inherit eutils flag-o-matic multilib toolchain-funcs
 
 NETV=1.0.4
-SRC_URI="http://roy.marples.name/downloads/openrc/openrc-0.6.1.tar.bz2 http://www.funtoo.org/archive/corenetwork/corenetwork-${NETV}.tar.bz2"
+SRC_URI="http://roy.marples.name/downloads/openrc/openrc-${PV}.tar.bz2 http://www.funtoo.org/archive/corenetwork/corenetwork-${NETV}.tar.bz2 http://www.funtoo.org/distfiles/openrc-${PV}.tar.bz2"
 DESCRIPTION="OpenRC manages the services, startup and shutdown of a host"
 HOMEPAGE="http://roy.marples.name/openrc"
 PROVIDE="virtual/baselayout"
@@ -13,7 +13,7 @@ RESTRICT="nomirror"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="x86 amd64"
 IUSE="debug ncurses pam unicode kernel_linux kernel_FreeBSD"
 
 RDEPEND="kernel_linux? ( >=sys-apps/sysvinit-2.86-r11 )
@@ -22,7 +22,8 @@ RDEPEND="kernel_linux? ( >=sys-apps/sysvinit-2.86-r11 )
 	ncurses? ( sys-libs/ncurses )
 	pam? ( virtual/pam )
 	>=sys-apps/baselayout-2.1
-	>=sys-fs/udev-135"
+	>=sys-fs/udev-135
+	sys-apps/iproute2"
 DEPEND="ncurses? ( sys-libs/ncurses ) eclibc_glibc? ( >=sys-libs/glibc-2.5 ) pam? ( virtual/pam ) virtual/os-headers"
 
 pkg_setup() {
