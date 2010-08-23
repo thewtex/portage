@@ -1,6 +1,33 @@
 # ChangeLog for net-misc/networkmanager
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/networkmanager/ChangeLog,v 1.80 2010/08/20 10:18:04 hwoarang Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/networkmanager/ChangeLog,v 1.84 2010/08/23 15:44:52 dagger Exp $
+
+*networkmanager-0.8.1-r6 (23 Aug 2010)
+
+  23 Aug 2010; Robert Piasek <dagger@gentoo.org>
+  -networkmanager-0.8.1-r5.ebuild, +networkmanager-0.8.1-r6.ebuild,
+  +files/networkmanager-0.8.1-dhclient3-fix.patch:
+  Fix dhclient-3 backport. That should fix bug #332157 and bug #331547 for
+  good.
+
+*networkmanager-0.8.1-r5 (23 Aug 2010)
+
+  23 Aug 2010; Robert Piasek <dagger@gentoo.org>
+  -networkmanager-0.8.1-r4.ebuild, +networkmanager-0.8.1-r5.ebuild:
+  explicitly disable dhclient if dhcpcd is enabled. That should finally fix
+  bug #331547
+
+*networkmanager-0.8.1-r4 (23 Aug 2010)
+
+  23 Aug 2010; Robert Piasek <dagger@gentoo.org>
+  -networkmanager-0.8.1-r3.ebuild, +networkmanager-0.8.1-r4.ebuild:
+  Updated ifnet plugin. Added extra kernel checks.
+  Fixes bugs: #333257, #333639, #333785
+
+  23 Aug 2010; Robert Piasek <dagger@gentoo.org>
+  networkmanager-0.8-r1.ebuild, files/nm-system-settings.conf,
+  +files/nm-system-settings.conf-ifnet:
+  Added separate file for system-settings with Gentoo plugin.
 
   20 Aug 2010; Markos Chandras <hwoarang@gentoo.org>
   networkmanager-0.8-r1.ebuild:

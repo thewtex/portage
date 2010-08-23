@@ -1,6 +1,8 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/openvpn/openvpn-2.1.0-r1.ebuild,v 1.2 2010/02/28 16:11:18 cedk Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/openvpn/openvpn-2.1.0-r1.ebuild,v 1.6 2010/08/23 15:09:24 hwoarang Exp $
+
+EAPI=2
 
 inherit eutils multilib toolchain-funcs autotools flag-o-matic
 
@@ -17,12 +19,12 @@ HOMEPAGE="http://openvpn.net/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd"
-IUSE="eurephia examples iproute2 ipv6 minimal pam passwordsave selinux ssl static pkcs11 threads userland_BSD"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd"
+IUSE="eurephia examples iproute2 ipv6 minimal pam passwordsave selinux ssl static pkcs11 userland_BSD"
 
 DEPEND=">=dev-libs/lzo-1.07
 	kernel_linux? (
-		iproute2? ( sys-apps/iproute2 ) !iproute2? ( sys-apps/net-tools )
+		iproute2? ( sys-apps/iproute2[-minimal] ) !iproute2? ( sys-apps/net-tools )
 	)
 	!minimal? ( pam? ( virtual/pam ) )
 	selinux? ( sec-policy/selinux-openvpn )
@@ -30,20 +32,7 @@ DEPEND=">=dev-libs/lzo-1.07
 	pkcs11? ( >=dev-libs/pkcs11-helper-1.05 )"
 RDEPEND="${DEPEND}"
 
-pkg_setup() {
-	if use iproute2 ; then
-		if built_with_use sys-apps/iproute2 minimal ; then
-			eerror "iproute2 support requires that sys-apps/iproute2 was not"
-			eerror "built with the minimal USE flag"
-			die "iproute2 support not available"
-		fi
-	fi
-}
-
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-
+src_prepare() {
 	epatch "${FILESDIR}/${PN}-2.1_rc13-peercred.patch"
 	epatch "${FILESDIR}/${PN}-2.1_rc20-pkcs11.patch"
 	use ipv6 && epatch "${WORKDIR}/${PN}-2.1_rc22-ipv6-${IPV6_VERSION}.patch"
@@ -55,7 +44,7 @@ src_unpack() {
 	eautoreconf
 }
 
-src_compile() {
+src_configure() {
 	# basic.h defines a type 'bool' that conflicts with the altivec
 	# keyword bool which has to be fixed upstream, see bugs #293840
 	# and #297854.
@@ -76,10 +65,11 @@ src_compile() {
 		$(use_enable passwordsave password-save) \
 		$(use_enable ssl) \
 		$(use_enable ssl crypto) \
-		$(use_enable threads pthread) \
 		$(use_enable iproute2) \
 		|| die "configure failed"
+}
 
+src_compile() {
 	use static && sed -i -e '/^LIBS/s/LIBS = /LIBS = -static /' Makefile
 
 	emake || die "make failed"
