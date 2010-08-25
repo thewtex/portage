@@ -1,5 +1,5 @@
-dev-libs/glib:2 x11-libs/gtk+:2 sys-fs/udisks gnome-base/gvfs[hal?,udev?] lxde-base/menu-cache x11-misc/shared-mime-info x11-libs/libfm >=dev-util/intltool-0.40 dev-util/pkgconfig sys-devel/gettext || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b >=dev-vcs/git-1.6
-dev-libs/glib:2 x11-libs/gtk+:2 sys-fs/udisks gnome-base/gvfs[hal?,udev?] lxde-base/menu-cache x11-misc/shared-mime-info x11-libs/libfm
+dev-libs/glib:2 x11-libs/gtk+:2 sys-fs/udisks gnome? ( gnome-base/gvfs[hal?,udev?] ) lxde-base/menu-cache x11-misc/shared-mime-info x11-libs/libfm virtual/eject >=dev-util/intltool-0.40 dev-util/pkgconfig sys-devel/gettext || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b >=dev-vcs/git-1.6
+dev-libs/glib:2 x11-libs/gtk+:2 sys-fs/udisks gnome? ( gnome-base/gvfs[hal?,udev?] ) lxde-base/menu-cache x11-misc/shared-mime-info x11-libs/libfm virtual/eject
 0
 
 
@@ -8,7 +8,7 @@ GPL-2
 Fast lightweight tabbed filemanager
 
 autotools eutils fdo-mime git libtool multilib portability toolchain-funcs
-debug hal udev
+debug gnome hal udev
 
 
 

@@ -1,10 +1,10 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pyside-tools/pyside-tools-0.1.3.ebuild,v 1.2 2010/06/29 17:58:04 ayoy Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pyside-tools/pyside-tools-0.1.3.ebuild,v 1.3 2010/08/25 17:16:17 ayoy Exp $
 
 EAPI="2"
 
-inherit cmake-utils
+inherit cmake-utils python
 
 DESCRIPTION="PySide development tools"
 HOMEPAGE="http://www.pyside.org/"
@@ -22,7 +22,7 @@ RDEPEND="${DEPEND}"
 
 src_test() {
 	cd "${S}"/tests/rcc
-	./run_test.sh $(which python) ./rcc_test.py ./example.qrc . \
+	./run_test.sh $(PYTHON -a) ./rcc_test.py ./example.qrc . \
 		|| die "tests failed"
 }
 
