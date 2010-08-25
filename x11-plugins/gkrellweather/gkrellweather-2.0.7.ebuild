@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gkrellweather/gkrellweather-2.0.7.ebuild,v 1.8 2010/07/22 14:42:11 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gkrellweather/gkrellweather-2.0.7.ebuild,v 1.9 2010/08/25 00:44:14 lack Exp $
 
 inherit gkrellm-plugin
 
@@ -15,7 +15,8 @@ LICENSE="GPL-2"
 KEYWORDS="alpha amd64 ppc sparc x86"
 
 RDEPEND=">=dev-lang/perl-5.6.1
-	>=net-misc/wget-1.5.3"
+	>=net-misc/wget-1.5.3
+	!x11-misc/bbweather"
 DEPEND=">=sys-apps/sed-4.0.5"
 
 src_unpack() {

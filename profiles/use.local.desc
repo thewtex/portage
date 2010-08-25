@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5894 2010/08/24 14:13:26 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5897 2010/08/24 22:14:11 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -846,6 +846,7 @@ dev-lang/python:wide-unicode - Enable wide Unicode implementation which uses 4-b
 dev-lang/python:wininst - Install Windows executables required to create an executable installer for MS Windows.
 dev-lang/qu-prolog:pedro - Pedro subscription/notification communications system
 dev-lang/ruby:libedit -  Use the dev-libs/libedit library to provide the readline extension, used for instance by the irb tool. This flag will take precedence over the readline USE flag. If neither libedit nor readline USE flags are enabled, the readline extension will not be built (and irb will lose line editing functionality). 
+dev-lang/ruby:rdoc -  Install dev-ruby/rdoc after installing Ruby. 
 dev-lang/ruby:readline -  Use the sys-libs/readline library to provide the readline extension, used for instance by the irb tool. This flag is meaningful only if the libedit USE flag is disabled. If neither libedit nor readline USE flags are enabled, the readline extension will not be built (and irb will lose line editing functionality). 
 dev-lang/ruby:rubytests -  Install ruby tests that can only be run after ruby is installed 
 dev-lang/ruby:yaml -  Use the dev-libs/libyaml library to build the psych extension, available since Ruby 1.9.2_rc2, in alternative to the bundled syck-based parser. 
@@ -3353,6 +3354,7 @@ sys-apps/paludis:pink - Use a less boring colourscheme than the default
 sys-apps/paludis:portage - Enable experimental support for Portage configuration formats
 sys-apps/paludis:python-bindings - Enable Python bindings. Requires a lot of RAM to build (~700Mbytes per job) and adds a dependency upon dev-libs/boost
 sys-apps/paludis:ruby-bindings - Enable Ruby bindings.
+sys-apps/paludis:search-index - Enable cave search --index. Requires sqlite.
 sys-apps/paludis:visibility - Enable visibility support (g++ >=4.1)
 sys-apps/pciutils:network-cron -  Monthly cronjob the update-pciids script 
 sys-apps/pcmcia-cs:trusted - Assume all users are trusted (Build unsafe user-space tools)
@@ -3750,6 +3752,7 @@ x11-libs/libqxt:berkdb - Build the QxtBerkeley module
 x11-libs/libqxt:sql - Build the QxtSql module
 x11-libs/libqxt:web - Enable fast cgi bindings
 x11-libs/libqxt:zeroconf - Build the QxtZeroconf module
+x11-libs/libwnck:introspection - Use dev-libs/gobject-introspection for introspection
 x11-libs/pango:introspection - Use dev-libs/gobject-introspection for introspection
 x11-libs/qt:kde - Select media-sound/phonon as phonon variant needed for kde
 x11-libs/qt:qt3support - Enable the Qt3Support libraries for Qt4

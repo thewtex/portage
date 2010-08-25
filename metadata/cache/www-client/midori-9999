@@ -1,14 +1,14 @@
-libnotify? ( x11-libs/libnotify ) >=net-libs/libsoup-2.25.2 >=net-libs/webkit-gtk-1.1.1 dev-libs/libxml2 x11-libs/gtk+ gnome? ( net-libs/libsoup[gnome] ) idn? ( net-dns/libidn ) sqlite? ( >=dev-db/sqlite-3.0 ) unique? ( dev-libs/libunique ) dev-util/pkgconfig doc? ( dev-util/gtk-doc ) html? ( dev-python/docutils ) nls? ( sys-devel/gettext ) >=app-admin/eselect-python-20091230 || ( =dev-lang/python-2.7* =dev-lang/python-2.6* ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b >=sys-apps/sed-4 >=dev-vcs/git-1.6
-libnotify? ( x11-libs/libnotify ) >=net-libs/libsoup-2.25.2 >=net-libs/webkit-gtk-1.1.1 dev-libs/libxml2 x11-libs/gtk+ gnome? ( net-libs/libsoup[gnome] ) idn? ( net-dns/libidn ) sqlite? ( >=dev-db/sqlite-3.0 ) unique? ( dev-libs/libunique ) >=app-admin/eselect-python-20091230 || ( =dev-lang/python-2.7* =dev-lang/python-2.6* )
+libnotify? ( x11-libs/libnotify ) >=net-libs/libsoup-2.25.2 >=net-libs/webkit-gtk-1.1.1 >=dev-db/sqlite-3.0 dev-libs/libxml2 >=x11-libs/gtk+-2.10:2 gnome? ( net-libs/libsoup[gnome] ) idn? ( net-dns/libidn ) unique? ( dev-libs/libunique ) dev-util/intltool dev-util/pkgconfig doc? ( dev-util/gtk-doc ) html? ( dev-python/docutils ) nls? ( sys-devel/gettext ) >=app-admin/eselect-python-20091230 || ( =dev-lang/python-2.7* =dev-lang/python-2.6* ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b >=sys-apps/sed-4 >=dev-vcs/git-1.6
+libnotify? ( x11-libs/libnotify ) >=net-libs/libsoup-2.25.2 >=net-libs/webkit-gtk-1.1.1 >=dev-db/sqlite-3.0 dev-libs/libxml2 >=x11-libs/gtk+-2.10:2 gnome? ( net-libs/libsoup[gnome] ) idn? ( net-dns/libidn ) unique? ( dev-libs/libunique ) >=app-admin/eselect-python-20091230 || ( =dev-lang/python-2.7* =dev-lang/python-2.6* )
 0
 
 
 http://www.twotoasts.de/index.php?/pages/midori_summary.html
 LGPL-2
-A lightweight web browser
+A lightweight web browser based on WebKitGTK+
 
 autotools base eutils fdo-mime git gnome2-utils libtool multilib portability python toolchain-funcs xfconf
-doc gnome html idn libnotify nls +sqlite +unique
+doc gnome +html idn libnotify nls +unique vala
 
 
 
