@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/luakit/luakit-9999.ebuild,v 1.3 2010/08/14 18:29:47 wired Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/luakit/luakit-9999.ebuild,v 1.5 2010/08/27 12:00:23 wired Exp $
 
 EAPI=3
 
@@ -9,8 +9,8 @@ IUSE=""
 if [[ ${PV} == *9999* ]]; then
 	inherit git
 	EGIT_REPO_URI=${EGIT_REPO_URI:-"git://github.com/mason-larobina/luakit.git"}
-	EGIT_BRANCH="develop"
-	EGIT_COMMIT="develop"
+	[[ ${EGIT_BRANCH} == "master" ]] && EGIT_BRANCH="develop"
+	[[ ${EGIT_COMMIT} == "master" ]] && EGIT_COMMIT=${EGIT_BRANCH}
 	KEYWORDS=""
 	SRC_URI=""
 else
@@ -35,6 +35,7 @@ RDEPEND="
 
 DEPEND="
 	dev-util/gperf
+	sys-apps/help2man
 	${RDEPEND}
 "
 
