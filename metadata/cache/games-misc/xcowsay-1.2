@@ -1,5 +1,5 @@
-dbus? ( sys-apps/dbus ) games-misc/fortune-mod media-libs/freetype:2 media-libs/libpng x11-libs/pango dev-util/pkgconfig
-dbus? ( sys-apps/dbus ) games-misc/fortune-mod media-libs/freetype:2 media-libs/libpng x11-libs/pango
+dbus? ( sys-apps/dbus ) dev-libs/dbus-glib games-misc/fortune-mod media-libs/freetype:2 media-libs/libpng x11-libs/pango dev-util/pkgconfig || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b
+dbus? ( sys-apps/dbus ) dev-libs/dbus-glib games-misc/fortune-mod media-libs/freetype:2 media-libs/libpng x11-libs/pango
 0
 http://www.nickg.me.uk/files/xcowsay-1.2.tar.gz
 
@@ -7,7 +7,7 @@ http://www.doof.me.uk/xcowsay/
 GPL-3
 configurable talking graphical cow (inspired by cowsay)
 ~amd64 ~x86
-base eutils multilib portability toolchain-funcs
+autotools base eutils libtool multilib portability toolchain-funcs
 dbus
 
 
