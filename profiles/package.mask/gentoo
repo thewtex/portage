@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11874 2010/08/23 11:47:59 djc Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11892 2010/08/30 14:27:43 a3li Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -31,6 +31,92 @@
 
 #--- END OF EXAMPLES ---
 
+# Diego E. Pettenò <flameeyes@gentoo.org> (30 Aug 2010)
+#  on behalf of QA team
+#
+# Last version bump in 2003; GNU coreutils has stat(1)
+# already; BusyBox has its own applet; *BSD have their own
+# stat command.
+#
+# Removal on 2010-10-29
+sys-apps/stat
+
+# Torsten Veller <tove@gentoo.org> (30 Aug 2010)
+# Test and give feedback if you have a '-g' in CFLAGS
+# See bug 335213
+=dev-lang/perl-5.12.1-r2
+
+# Doug Goldstein <cardoe@gentoo.org> (28 Aug 2010)
+# Need to investigate build errors on some kernels
+=app-emulation/kvm-kmod-2.6.35
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (28 Aug 2010)
+#  on behalf of QA team
+#
+# Broken ebuild (dosed rather than sed during unpack); bug
+# #175327; maintainer needed; last revision bump in 2005,
+# last version bump in 2003; no user in tree.
+#
+# Removal on 2010-10-27
+sys-devel/omni
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (27 Aug 2010)
+#  on behalf of QA team
+#
+# Bumped this year after seven years, but no users in the
+# tree, and the license status seems to be uncertain.
+#
+# Removal on 2010-10-26
+dev-libs/pcl
+
+# Markos Chandras <hwoarang@gentoo.org> (26 Aug 2010)
+# Masked for further testing
+=net-p2p/qbittorrent-2.4.0
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (25 Aug 2010)
+#  on behalf of QA team
+#
+# Fails to build since July 2009 (bug #277554).
+#
+# Removal on 2010-10-24
+app-i18n/imhangul-status-applet
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (25 Aug 2010)
+#  on behalf of QA team
+#
+# 4suite fails to build depending on what is installed, as
+# per bug #246683 open since November 2008. The rest depend
+# on it.
+#
+# Removal on 2010-10-24
+dev-python/4suite
+dev-python/amara
+dev-python/testoob
+dev-python/etsdevtools
+dev-python/blockcanvas
+dev-python/ets
+
+# Jonathan Callen <abcd@gentoo.org> (24 Aug 2010)
+# Breaks API and ABI, not all packages fixed yet
+>=dev-libs/gobject-introspection-0.9.3
+
+# Dominik Kapusta <ayoy@gentoo.org> (24 Aug 2010)
+# Replaced by dev-python/shiboken
+#
+# Removal on 2010-09-23
+dev-python/boostpythongenerator
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (24 Aug 2010)
+#  on behalf of QA team
+#
+# Split samba ebuilds that are no longer relevant as the
+# un-split 3.5 is stable already. Quick removal.
+#
+# Removal on 2010-09-08
+net-fs/samba-libs
+net-fs/samba-client
+net-fs/samba-server
+
 # Dirkjan Ochtman <djc@gentoo.org> (23 Aug 2010)
 # Unmaintained, uninstallable on version of Python we ship.
 # Bugs 267346, 267347, 267348, 267356.
@@ -52,11 +138,6 @@ sys-fs/flickrfs
 # Masked for removal in 30 days.
 dev-db/stldb4
 dev-libs/libferrisstreams
-
-# Markos Chandras <hwoarang@gentoo.org> (21 Aug 2010)
-# Masking beta and rc releases
-=net-p2p/qbittorrent-2.4.0_beta*
-=net-p2p/qbittorrent-2.4.0_rc*
 
 # Samuli Suominen <ssuominen@gentoo.org> (21 Aug 2010)
 # Masked for treecleaners, QA
@@ -106,6 +187,7 @@ games-emulation/xmame
 # Experimental binary package compiled on Gentoo.
 ~www-client/chromium-bin-5.0.375.125
 ~www-client/chromium-bin-5.0.375.127
+~www-client/chromium-bin-6.0.472.51
 
 # Michael Sterrett <mr_bones_@gentoo.org> (13 Aug 2010)
 # Mask for removal 20100913
@@ -149,7 +231,7 @@ app-emulation/qemu-kvm-spice
 # Diego E. Pettenò <flameeyes@gentoo.org> (10 Aug 2010)
 #  on behalf of QA team
 #
-# Breaks about any QA policy regarding not touching
+# The ebuild breaks about any QA policy regarding not touching
 # live filesystem as it writes to LVM configuration,
 # cron configuration, current-running kernel modules, RPM
 # library, ...
@@ -260,11 +342,6 @@ media-sound/swami
 media-sound/soundtracker
 media-gfx/surf
 
-# Torsten Veller <tove@gentoo.org> (24 Jul 2010)
-# Masked for removal in 30 days.
-# Dead Upstream, last update 2005, #271939, #239615
-app-misc/gwine
-
 # Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (22 Jul 2010)
 # Development versions.
 =net-libs/gnutls-2.11*
@@ -355,11 +432,6 @@ dev-dotnet/nautilusburn-sharp
 =dev-db/postgresql-server-8.0*
 =dev-db/postgresql-docs-7.4*
 =dev-db/postgresql-docs-8.0*
-
-# Pacho Ramos <pacho@gentoo.org> (09 Jul 2010)
-# Masked for removal in 30 days since it's no longer needed now that we
-# don't have old anjuta versions in the tree, see bug #327593
-dev-libs/gnome-build
 
 # Doug Goldstein <cardoe@gentoo.org> (07 Jul 2010)
 # No actual Gentoo support yet. If you're interested, please see bug #295993
@@ -572,10 +644,6 @@ x11-plugins/gkacpi
 # Old, useless, no maintainer
 # Removed in 60 days by treecleaners, bug 185292
 net-wireless/ieee80211
-
-# Markus Meier <maekke@gentoo.org> (10 Jun 2010)
-# mask inkscape prereleases for testing
->=media-gfx/inkscape-0.48_pre0
 
 # Robin H. Johnson <robbat2@gentoo.org> (09 Jun 2010)
 # Fails to self-verify/sign in FIPS mode, pending upstream response before
@@ -873,9 +941,9 @@ net-libs/libjingle
 # Pawel Hajdan jr <phajdan.jr@gentoo.org> (07 Jan 2010)
 # Dev channel releases are only for people who are developers or want more
 # experimental features and accept a more unstable release.
-~www-client/chromium-6.0.472.25
 ~www-client/chromium-6.0.490.1
 ~www-client/chromium-6.0.495.0
+~www-client/chromium-7.0.503.1
 
 # Christian Parpart <trapni@gentoo.org> (23 Dec 2009)
 # Masked for testing/feedback.
@@ -953,13 +1021,7 @@ x11-apps/xfsinfo
 =net-firewall/ipsec-tools-0.7.2
 
 # Samuli Suominen <ssuominen@gentoo.org> (24 Oct 2009)
-# Masked for testing. Waiting for xfdesktop release.
-#
-# See, http://bugs.gentoo.org/show_bug.cgi?id=289867
-# Relatively safe to unmask and test.
-#
-# Note that you need USE flags menu-plugin and thunar
-# disabled for old xfdesktop to test these
+# This will be Xfce 4.8 one day
 >=xfce-base/exo-0.5.1
 >=xfce-base/xfce4-settings-4.7.0
 >=xfce-base/thunar-1.1.0

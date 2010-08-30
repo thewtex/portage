@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/enlightenment.eclass,v 1.84 2010/08/22 23:31:08 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/enlightenment.eclass,v 1.86 2010/08/28 21:15:24 tommy Exp $
 
 # @ECLASS: enlightenment.eclass
 # @MAINTAINER:
@@ -86,7 +86,7 @@ if [[ ${WANT_AUTOTOOLS} == "yes" ]] ; then
 	inherit autotools
 fi
 
-ENLIGHTENMENT_EXPF="pkg_setup src_unpack src_compile src_install pkg_postinst"
+ENLIGHTENMENT_EXPF="src_unpack src_compile src_install"
 case "${EAPI:-0}" in
         2|3|4) ENLIGHTENMENT_EXPF+=" src_prepare src_configure" ;;
         *) ;;
@@ -121,32 +121,6 @@ case ${EURI_STATE:-${E_STATE}} in
 	live)    S=${WORKDIR}/${E_S_APPEND};;
 esac
 
-enlightenment_warning_msg() {
-	if [[ -n ${E_LIVE_SERVER} ]] ; then
-		einfo "Using user server for live sources: ${E_LIVE_SERVER}"
-	fi
-	if [[ ${E_STATE} == "snap" ]] ; then
-		ewarn "Please do not contact the E team about bugs in Gentoo."
-		ewarn "Only contact enlightenment@gentoo.org via e-mail or bugzilla."
-		ewarn "Remember, this stuff is DEV only code so dont cry when"
-		ewarn "I break you :)."
-	elif [[ ${E_STATE} == "live" ]] ; then
-		eerror "This is a LIVE SOURCES ebuild."
-		eerror "That means there are NO promises it will work."
-		eerror "If it fails to build, FIX THE CODE YOURSELF"
-		eerror "before reporting any issues."
-	fi
-}
-
-enlightenment_die() {
-	enlightenment_warning_msg
-	die "$@"$'\n'"!!! SEND BUG REPORTS TO enlightenment@gentoo.org NOT THE E TEAM"
-}
-
-enlightenment_pkg_setup() {
-	: enlightenment_warning_msg
-}
-
 enlightenment_src_unpack() {
 	if [[ ${E_STATE} == "live" ]] ; then
 		case ${E_LIVE_SOURCE} in
@@ -167,6 +141,7 @@ enlightenment_src_prepare() {
 		# autotools require README, when README.in is around, but README
 		# is created later in configure step
 		[[ -f README.in ]] && touch README
+		export SVN_REPO_PATH=${ESVN_WC_PATH}
 		eautoreconf
 	fi
 	epunt_cxx
@@ -176,6 +151,7 @@ enlightenment_src_prepare() {
 enlightenment_src_configure() {
 	# gstreamer sucks, work around it doing stupid stuff
 	export GST_REGISTRY="${S}/registry.xml"
+	has static-libs ${IUSE} && MY_ECONF+=" $(use_enable static-libs static)"
 
 	econf ${MY_ECONF}
 }
@@ -184,29 +160,28 @@ enlightenment_src_compile() {
 	hasq src_configure ${ENLIGHTENMENT_EXPF} || enlightenment_src_configure
 
 	if [[ -z ${E_PYTHON} ]] ; then
-		emake || enlightenment_die "emake failed"
+		emake || die "emake failed"
 	else
 		distutils_src_compile
 	fi
 
 	if use doc ; then
 		if [[ -x ./gendoc ]] ; then
-			./gendoc || enlightenment_die "gendoc failed"
+			./gendoc || die
 		else
-			emake doc || enlightenment_die "emake doc failed"
+			emake doc || die
 		fi
 	fi
 }
 
 enlightenment_src_install() {
-	emake install DESTDIR="${D}" || enlightenment_die
+	emake install DESTDIR="${D}" || die
 	find "${D}" '(' -name CVS -o -name .svn -o -name .git ')' -type d -exec rm -rf '{}' \; 2>/dev/null
 	for d in AUTHORS ChangeLog NEWS README TODO ${EDOCS}; do
 		[[ -f ${d} ]] && dodoc ${d}
 	done
 	use doc && [[ -d doc ]] && dohtml -r doc/*
-}
-
-enlightenment_pkg_postinst() {
-	: enlightenment_warning_msg
+	if has static-libs ${IUSE} ; then
+		use static-libs || find "${D}" -name '*.la' -exec rm -f {} +
+	fi
 }

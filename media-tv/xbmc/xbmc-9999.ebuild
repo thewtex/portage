@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-tv/xbmc/xbmc-9999.ebuild,v 1.61 2010/08/14 17:56:24 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-tv/xbmc/xbmc-9999.ebuild,v 1.63 2010/08/28 16:13:24 vapier Exp $
 
 EAPI="2"
 
@@ -71,7 +71,7 @@ RDEPEND="virtual/opengl
 	media-libs/tiff
 	pulseaudio? ( media-sound/pulseaudio )
 	media-sound/wavpack
-	media-video/ffmpeg
+	>=media-video/ffmpeg-0.6
 	rtmp? ( media-video/rtmpdump )
 	avahi? ( net-dns/avahi )
 	webserver? ( net-libs/libmicrohttpd )
@@ -93,6 +93,7 @@ RDEPEND="virtual/opengl
 	x11-libs/libXrender"
 # The cpluff bundled addon uses gettext which needs CVS ...
 DEPEND="${RDEPEND}
+	dev-util/gperf
 	dev-vcs/cvs
 	x11-proto/xineramaproto
 	dev-util/cmake

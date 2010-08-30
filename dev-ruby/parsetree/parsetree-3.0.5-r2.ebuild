@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/parsetree/parsetree-3.0.5-r2.ebuild,v 1.1 2010/08/23 13:48:30 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/parsetree/parsetree-3.0.5-r2.ebuild,v 1.3 2010/08/29 13:01:26 graaff Exp $
 
 EAPI=2
 
@@ -12,7 +12,7 @@ RUBY_FAKEGEM_TASK_DOC="docs"
 RUBY_FAKEGEM_DOCDIR="doc"
 RUBY_FAKEGEM_EXTRADOC="README.txt History.txt"
 
-inherit ruby-fakegem
+inherit multilib ruby-fakegem
 
 DESCRIPTION="ParseTree extracts the parse tree for a Class or method and returns it as a s-expression."
 HOMEPAGE="http://www.zenspider.com/ZSS/Products/ParseTree/"
@@ -37,8 +37,14 @@ ruby_add_bdepend "
 		dev-ruby/hoe-seattlerb
 	)"
 
+all_ruby_prepare() {
+	# Fix USE=doc by removing the path that triggers running the tests
+	# and thus building the extensions in the wrong way.
+	sed -i -e '/require_paths/d' Rakefile || die
+}
+
 src_compile() {
-	chmod 0755 ${WORKDIR/work/homedir} || die "Failed to fix permissions on home"
+	chmod 0755 "${HOME}" || die "Failed to fix permissions on home"
 	ruby-ng_src_compile
 }
 
@@ -46,20 +52,15 @@ each_ruby_compile() {
 	# The ruby extension uses RubyInline to use C code within Ruby;
 	# since it causes us no little pain, we'll do our best here to
 	# prebuild the extensions.
-	local orig_HOME="${HOME}"
-	export HOME="${T}/$(basename ${RUBY})"
-	mkdir -p "$HOME"
 
-	${RUBY} -Ilib -rparse_tree -e '' || die "Unable to load ${PN}"
+	INLINEDIR="${PWD}" ${RUBY} -Ilib -rparse_tree -e '' || die "Unable to load ${PN}"
 
 	mkdir lib/inline
-	cp "$HOME"/.ruby_inline/*.so lib/inline/ || die
-
-	export HOME="$orig_home"
+	cp .ruby_inline/*$(get_modname) lib/inline/ || die
 }
 
 src_test() {
-	chmod 0755 ${WORKDIR/work/homedir} || die "Failed to fix permissions on home"
+	chmod 0755 "${HOME}" || die "Failed to fix permissions on home"
 	ruby-ng_src_test
 }
 

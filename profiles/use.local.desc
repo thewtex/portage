@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5889 2010/08/23 10:47:51 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5905 2010/08/30 08:54:07 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -846,6 +846,7 @@ dev-lang/python:wide-unicode - Enable wide Unicode implementation which uses 4-b
 dev-lang/python:wininst - Install Windows executables required to create an executable installer for MS Windows.
 dev-lang/qu-prolog:pedro - Pedro subscription/notification communications system
 dev-lang/ruby:libedit -  Use the dev-libs/libedit library to provide the readline extension, used for instance by the irb tool. This flag will take precedence over the readline USE flag. If neither libedit nor readline USE flags are enabled, the readline extension will not be built (and irb will lose line editing functionality). 
+dev-lang/ruby:rdoc -  Install dev-ruby/rdoc after installing Ruby. 
 dev-lang/ruby:readline -  Use the sys-libs/readline library to provide the readline extension, used for instance by the irb tool. This flag is meaningful only if the libedit USE flag is disabled. If neither libedit nor readline USE flags are enabled, the readline extension will not be built (and irb will lose line editing functionality). 
 dev-lang/ruby:rubytests -  Install ruby tests that can only be run after ruby is installed 
 dev-lang/ruby:yaml -  Use the dev-libs/libyaml library to build the psych extension, available since Ruby 1.9.2_rc2, in alternative to the bundled syck-based parser. 
@@ -1008,6 +1009,9 @@ dev-python/anyvc:mercurial - Add support for Mercurial
 dev-python/bpython:urwid - Backend based on dev-python/urwid
 dev-python/cgkit:3ds - Enable support for importing 3D Studio models
 dev-python/dap:server - Enable OpenDAP server support
+dev-python/django-extensions:graphviz - Create a diagram of your database entity relationships using dev-python/pygraphviz.
+dev-python/django-extensions:s3 - Upload your media files to S3.
+dev-python/django-extensions:vcard - Export your users email addresses to the vcard format.
 dev-python/docutils:glep - Install support for GLEPs
 dev-python/jinja:i18n - Enables support for i18n with dev-python/Babel
 dev-python/kaa-base:tls - SSL/TLS support via dev-python/tlslite
@@ -1026,6 +1030,7 @@ dev-python/pyyaml:libyaml - enable libyaml support
 dev-python/pyzor:pyzord - enable support for pyzord
 dev-python/rdflib:redland - enable support for Redland triplestore
 dev-python/rdflib:zodb - enable support for Zope Object Database triplestore
+dev-python/restkit:cli - Install the restcli command line interface/tool, based on dev-python/ipython
 dev-python/soya:ode - include support for Open Dynamics Engine
 dev-python/spyder:matplotlib - Add support for dev-python/matplotlib
 dev-python/spyder:mayavi - Add support for sci-visualization/mayavi
@@ -1474,7 +1479,6 @@ mail-client/evolution:mono - Build the dev-lang/mono plugins included in Evoluti
 mail-client/evolution:networkmanager - Allows Evolution to automagically toggle online/offline mode by talking to net-misc/networkmanager and getting the current network state
 mail-client/evolution:pda - Enable support for syncing Evolution Calendar and Addressbooks with PDAs using app-pda/gnome-pilot and app-pda/gnome-pilot-conduit
 mail-client/evolution:profile - Build support for profiling Evolution for development purposes
-mail-client/evolution:sound - Use Canberra and Canberra-GTK for sound
 mail-client/mail-notification:gmail - Enable Gmail mailbox checking
 mail-client/mail-notification:mh - Enable MH mailbox checking
 mail-client/mail-notification:pop - Enable support for pop
@@ -1947,6 +1951,7 @@ media-sound/qmmp:notifier - Enable qmmps' notifier system
 media-sound/qmmp:projectm - Enable projectm music visualization plugin
 media-sound/qmmp:scrobbler - Enable audioscrobbler/last.fm support
 media-sound/qmmp:tray - Build tray icon
+media-sound/qmmp:udisks - Use udisks plugins to detect removal devices
 media-sound/qsampler:libgig - Enable libgig support for loading Gigasampler files and DLS (Downloadable Sounds) Level 1/2 files
 media-sound/qtractor:dssi - Enable support for DSSI Soft Synth Interface
 media-sound/qtractor:rubberband - Enable support for in-place audio clip pitch-shifting through the rubberband library
@@ -2645,6 +2650,9 @@ net-libs/libinfinity:server -  Build and install the server binary including ini
 net-libs/libnice:upnp - Enable UPnP IGD support
 net-libs/libnids:glib - Use dev-libs/glib for multiprocessing support
 net-libs/libnids:libnet - Include code requiring net-libs/libnet
+net-libs/liboauth:bindist -  Alias for the nss USE flag, since there are license compliancy trouble when using OpenSSL. 
+net-libs/liboauth:curl -  If enabled, net-misc/curl is used thorugh the libcurl library; if it's not, the curl command is used instead. Some features are only available when using the library, but using it as library requires matching SSL implementations. 
+net-libs/liboauth:nss -  Use Mozilla NSS (dev-libs/nss) as hash library; if this is disabled, dev-libs/openssl is used instead. 
 net-libs/libpcap:libnl - link with dev-libs/libnl (used to put wireless interfaces in monitor mode)
 net-libs/libpri:bri - Enable ISDN BRI support (bristuff)
 net-libs/libproxy:gnome - Enable support for reading proxy settings from GNOME using gnome-base/gconf
@@ -2745,6 +2753,7 @@ net-mail/lbdb:abook - Enables app-misc/abook support
 net-mail/lbdb:finger - Enables finger support
 net-mail/libpst:dii - enable dii support
 net-mail/mailutils:tokyocabinet - Enable Tokyo Cabinet database support
+net-mail/mairix:gnus - Add support for the marks propagation feature in app-emacs/gnus
 net-mail/qmailadmin:maildrop - Filter spam using maildrop
 net-mail/qpopper:apop - Enables the pop.auth file in /etc/pop.auth
 net-mail/qpopper:drac - Enables DRAC support
@@ -3018,13 +3027,14 @@ net-p2p/mldonkey:guionly - enable client build only
 net-p2p/mldonkey:magic - enable use of libmagic
 net-p2p/rtorrent:daemon - Uses app-misc/screen to daemonize this application 
 net-p2p/transmission:sound - Enable sound event support with media-libs/libcanberra
-net-print/hplip:X - Enables scanner GUI dependencies with USE=scanner where media-gfx/xsane is preferred over media-gfx/sane-frontends
+net-print/hplip:X - Enables scanner GUI dependencies with USE="scanner" where media-gfx/xsane is preferred over media-gfx/sane-frontends
 net-print/hplip:doc - Build documentation
 net-print/hplip:fax - Enable fax on multifunction devices which support it
 net-print/hplip:hpcups - Build the hpcups driver for cups (by HP)
 net-print/hplip:hpijs - Build the IJS driver for cups (Foomatic)
+net-print/hplip:kde - Enables kde-misc/skanlite as scanner GUI with USE="scanner X"
 net-print/hplip:libnotify - Enables desktop notifications
-net-print/hplip:minimal - Only build internal hpijs driver (not recommended at all, make sure you know what you are doing)
+net-print/hplip:minimal - Only build internal hpijs/hpcups driver (not recommended at all, make sure you know what you are doing)
 net-print/hplip:parport - Enable parallel port for devices which require it
 net-print/hplip:policykit - Enable sys-auth/policykit authentication support
 net-print/hplip:qt4 - Enable graphical interface using Qt 4
@@ -3354,6 +3364,7 @@ sys-apps/paludis:pink - Use a less boring colourscheme than the default
 sys-apps/paludis:portage - Enable experimental support for Portage configuration formats
 sys-apps/paludis:python-bindings - Enable Python bindings. Requires a lot of RAM to build (~700Mbytes per job) and adds a dependency upon dev-libs/boost
 sys-apps/paludis:ruby-bindings - Enable Ruby bindings.
+sys-apps/paludis:search-index - Enable cave search --index. Requires sqlite.
 sys-apps/paludis:visibility - Enable visibility support (g++ >=4.1)
 sys-apps/pciutils:network-cron -  Monthly cronjob the update-pciids script 
 sys-apps/pcmcia-cs:trusted - Assume all users are trusted (Build unsafe user-space tools)
@@ -3364,6 +3375,7 @@ sys-apps/portage:epydoc - Build html API documentation with epydoc.
 sys-apps/portage:python3 - Use python3 as Python interpreter.
 sys-apps/pyrenamer:music - Enable support for renaming music
 sys-apps/qingy:opensslcrypt - Encrypt communications between qingy and its GUI using dev-libs/openssl
+sys-apps/s390-tools:fuse - build cmsfs-fuse to read files stored on a z/VM CMS disk
 sys-apps/s390-tools:zfcpdump - build the kernel disk dumping utility
 sys-apps/shadow:audit - Enable support for sys-process/audit
 sys-apps/shadow:nousuid - When nousuid is enabled only su from the shadow package will be installed with the setuid bit (mainly for single user systems)
@@ -3601,6 +3613,7 @@ sys-libs/uclibc:wordexp - Add support for word expansion (wordexp.h)
 sys-power/cpufreqd:nforce2 - Enable support for nforce2 voltage settings plug-in
 sys-power/cpufreqd:nvidia - Enable nvidia overclocking (media-video/nvclock) plug-in
 sys-power/cpufreqd:pmu - Enable Power Management Unit plug-in
+sys-power/phctool:sudo - Enable support for sudo to run gui from non-root user
 sys-power/pm-utils:ntp - Install support for net-misc/ntp
 sys-power/powerman:genders -  Add support for selecting power control targets using genders (-g option) 
 sys-power/powerman:httppower -  Add support for HTTP based power controllers 
@@ -3750,6 +3763,7 @@ x11-libs/libqxt:berkdb - Build the QxtBerkeley module
 x11-libs/libqxt:sql - Build the QxtSql module
 x11-libs/libqxt:web - Enable fast cgi bindings
 x11-libs/libqxt:zeroconf - Build the QxtZeroconf module
+x11-libs/libwnck:introspection - Use dev-libs/gobject-introspection for introspection
 x11-libs/pango:introspection - Use dev-libs/gobject-introspection for introspection
 x11-libs/qt:kde - Select media-sound/phonon as phonon variant needed for kde
 x11-libs/qt:qt3support - Enable the Qt3Support libraries for Qt4
@@ -3785,6 +3799,8 @@ x11-libs/wxGTK:gnome -  Use gnome-base/libgnomeprintui for printing tasks.
 x11-libs/wxGTK:gstreamer -  Enable the wxMediaCtrl class for playing audio and video through gstreamer. 
 x11-libs/wxGTK:sdl -  Use Simple Directmedia Layer (media-libs/libsdl) for audio. 
 x11-misc/adesklets:ctrlmenu - force CTRL to be pressed to fire context menu
+x11-misc/bmpanel:libev - Use the libev event loop interface
+x11-misc/bmpanel:libevent - Use the libevent event loop interface
 x11-misc/etm:ical - Enable export of ical format files by depending on dev-python/icalendar
 x11-misc/fbpager:xrender - Enable transparency support via x11-libs/libXrender
 x11-misc/google-gadgets:soup - Enables XML HTTP request extension based on net-libs/libsoup
@@ -3880,19 +3896,16 @@ x11-wm/windowmaker:modelock - Enable XKB language status lock support. README sa
 x11-wm/windowmaker:vdesktop - Enable dynamic virtual desktop (conflicts with software that works on the edges of the screen)
 xfce-base/libxfce4ui:glade - Build support for Glade 3's GtkBuilder implementation
 xfce-base/libxfcegui4:glade - Build glade bindings
-xfce-base/thunar:trash-plugin - Build Trash plug-in for panel
-xfce-base/thunar:udev - Enable gudev support (required by xfce-extra/thunar-volman)
+xfce-base/thunar:udev - Enable udev support (required by xfce-extra/thunar-volman)
 xfce-base/xfce-utils:lock - Enable screen locking
 xfce-base/xfce4-session:fortune - Install tips and tricks app (xfce4-tips), adds dependency on games-misc/fortune-mod
 xfce-base/xfce4-session:gnome-keyring - Support for storing your password.
 xfce-base/xfce4-settings:keyboard - Enable Keyboard layout selection with x11-libs/libxklavier
 xfce-base/xfce4-settings:sound - Enable sound event support with media-libs/libcanberra
-xfce-base/xfdesktop:menu-plugin - Build Menu plug-in for panel
-xfce-base/xfdesktop:thunar - Build support for application launchers using xfce-base/thunar
+xfce-base/xfdesktop:thunar - Build support for desktop icons (for example, launchers and folders)
 xfce-extra/thunar-thumbnailers:grace - Enable support for sci-visualization/grace thumbnails
 xfce-extra/thunar-vcs-plugin:git - Enable dev-vcs/git support
 xfce-extra/xfce4-mpc-plugin:libmpd - Build using media-libs/libmpd backend, instead of native fallback which is preferred
-xfce-extra/xfce4-notifyd:libsexy - Enable support for x11-libs/libsexy
+xfce-extra/xfce4-notifyd:libsexy - Enable support for clickable URLs by using x11-libs/libsexy
 xfce-extra/xfce4-playercontrol-plugin:audacious - Enable Audacious support
 xfce-extra/xfce4-playercontrol-plugin:mpd - Enable Music Player Daemon support
-xfce-extra/xfce4-power-manager:plugins - Build panel plugins

@@ -1,24 +1,26 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/quassel/quassel-9999.ebuild,v 1.44 2010/08/13 09:35:39 scarabeus Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-irc/quassel/quassel-9999.ebuild,v 1.51 2010/08/27 11:34:31 scarabeus Exp $
 
-EAPI="2"
-
-inherit cmake-utils eutils git
+EAPI=3
 
 EGIT_REPO_URI="git://git.quassel-irc.org/quassel.git"
 EGIT_BRANCH="master"
+[[ "${PV}" == "9999" ]] && GIT_ECLASS="git"
+
+QT_MINIMAL="4.6.0"
+KDE_MINIMAL="4.4"
+
+inherit cmake-utils eutils ${GIT_ECLASS}
 
 DESCRIPTION="Qt4/KDE4 IRC client suppporting a remote daemon for 24/7 connectivity."
 HOMEPAGE="http://quassel-irc.org/"
+[[ "${PV}" == "9999" ]] || SRC_URI="http://quassel-irc.org/pub/${P/_/-}.tar.bz2"
 
 LICENSE="GPL-3"
 KEYWORDS=""
 SLOT="0"
 IUSE="ayatana crypt dbus debug kde monolithic phonon postgres +server +ssl webkit X"
-
-QT_MINIMAL="4.6.0"
-KDE_MINIMAL="4.4"
 
 SERVER_RDEPEND="
 	crypt? ( app-crypt/qca:2 )
@@ -30,6 +32,10 @@ SERVER_RDEPEND="
 GUI_RDEPEND="
 	>=x11-libs/qt-gui-${QT_MINIMAL}:4
 	ayatana? ( dev-libs/libindicate-qt )
+	dbus? (
+		>=x11-libs/qt-dbus-${QT_MINIMAL}:4
+		dev-libs/libdbusmenu-qt
+	)
 	kde? (
 		>=kde-base/kdelibs-${KDE_MINIMAL}
 		>=kde-base/oxygen-icons-${KDE_MINIMAL}
@@ -40,7 +46,6 @@ GUI_RDEPEND="
 "
 
 RDEPEND="
-	dbus? ( >=x11-libs/qt-dbus-${QT_MINIMAL}:4 )
 	monolithic? (
 		${SERVER_RDEPEND}
 		${GUI_RDEPEND}
@@ -62,6 +67,8 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 DOCS="AUTHORS ChangeLog README"
+
+S="${WORKDIR}/${P/_/-}"
 
 pkg_setup() {
 	if ! use monolithic && ! use server && ! use X ; then
@@ -121,26 +128,43 @@ src_install() {
 }
 
 pkg_postinst() {
-	if use server && use ssl; then
-		# inform about genreating ssl certificate
-		elog "If you want to use ssl connection to your core, please generate ssl key, with following command:"
-		elog "# openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout ${QUASSEL_DIR}/quasselCert.pem -out ${QUASSEL_DIR}/quasselCert.pem"
-		echo
-		elog "Also remember that with the above command the key is valid only for 1 year."
-	fi
-
 	if ( use monolithic || [[ "${FORCED_MONO}" == "yes" ]] ) && use ssl ; then
-		echo
 		elog "Information on how to enable SSL support for client/core connections"
 		elog "is available at http://bugs.quassel-irc.org/wiki/quassel-irc."
 	fi
 
+	if use server; then
+		einfo "If you want to generate SSL certificate remember to run:"
+		einfo "	emerge --config =${CATEGORY}/${PF}"
+	fi
+
 	# temporary info mesage
 	if use server; then
+		echo
 		ewarn "Please note that all configuration moved from"
 		ewarn "/home/\${QUASSEL_USER}/.config/quassel-irc.org/"
 		ewarn "to: ${QUASSEL_DIR}."
 		echo
-		ewarn "For migration, stop the core, move quasselcore files (pretty much everything apart from quasselclient.conf and settings.qss) into new location and then start server again."
+		ewarn "For migration, stop the core, move quasselcore files (pretty much"
+		ewarn "everything apart from quasselclient.conf and settings.qss) into"
+		ewarn "new location and then start server again."
+	fi
+}
+
+pkg_config() {
+	if use server && use ssl; then
+		# generate the pem file only when it does not already exist
+		if [ ! -f "${QUASSEL_DIR}/quasselCert.pem" ]; then
+			einfo "Generating QUASSEL SSL certificate to: \"${QUASSEL_DIR}/quasselCert.pem\""
+			openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
+				-keyout "${QUASSEL_DIR}/quasselCert.pem" \
+				-out "${QUASSEL_DIR}/quasselCert.pem"
+			# permissions for the key
+			chown ${QUASSEL_USER}:${QUASSEL_USER} "${QUASSEL_DIR}/quasselCert.pem"
+			chmod 400 "${QUASSEL_DIR}/quasselCert.pem"
+		else
+			einfo "Certificate \"${QUASSEL_DIR}/quasselCert.pem\" already exists."
+			einfo "Remove it if you want to create new one."
+		fi
 	fi
 }

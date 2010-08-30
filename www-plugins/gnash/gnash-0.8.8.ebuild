@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-plugins/gnash/gnash-0.8.8.ebuild,v 1.1 2010/08/22 22:16:55 chithanh Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-plugins/gnash/gnash-0.8.8.ebuild,v 1.3 2010/08/24 14:01:19 chithanh Exp $
 
 EAPI=3
 CMAKE_REQUIRED="never"
@@ -25,7 +25,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 IUSE="+agg cairo cygnal dbus doc fbcon +ffmpeg gnome gstreamer gtk kde lirc mysql +nls nsplugin opengl openssl python +sdl sdl-sound ssh test vaapi video_cards_intel xv"
 
-RDEPEND=">=dev-libs/boost-1.35.0
+RDEPEND=">=dev-libs/boost-1.41.0
+	!!dev-libs/boost:0
 	dev-libs/expat
 	dev-libs/libxml2
 	media-libs/jpeg
@@ -252,6 +253,13 @@ src_install() {
 	dodoc AUTHORS ChangeLog NEWS README || die "dodoc failed"
 }
 pkg_postinst() {
+	if has_version net-misc/curl[threads]; then
+		ewarn "net-misc/curl was built with USE=\"threads\", which causes problems."
+		ewarn "If flash animations fail to download resources such as videos, build"
+		ewarn "net-misc/curl without threading support. For details see"
+		ewarn "https://bugs.gentoo.org/show_bug.cgi?id=332757 or"
+		ewarn "https://savannah.gnu.org/bugs/?func=detailitem&item_id=30357"
+	fi
 	if use !gnome || use !gstreamer && use !ffmpeg ; then
 		ewarn ""
 		ewarn "Gnash was built without a media handler and or http handler !"

@@ -1,6 +1,6 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/netkit-talk/netkit-talk-0.17-r4.ebuild,v 1.22 2008/05/22 02:11:28 darkside Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/netkit-talk/netkit-talk-0.17-r4.ebuild,v 1.23 2010/08/26 21:26:49 jer Exp $
 
 inherit eutils
 
@@ -21,8 +21,8 @@ RDEPEND="virtual/inetd"
 
 src_unpack() {
 	unpack ${A}
-	epatch "${FILESDIR}"/${PF}-gentoo.diff
 	cd "${S}"
+	epatch "${FILESDIR}"/${P}-time.patch
 	use ipv6 && epatch "${FILESDIR}"/${P}-ipv6.diff
 }
 

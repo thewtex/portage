@@ -1,0 +1,22 @@
+nss? ( dev-libs/nss curl? ( || ( net-misc/curl[ssl,nss,-gnutls] net-misc/curl[-ssl] ) ) ) bindist? ( dev-libs/nss curl? ( || ( net-misc/curl[ssl,nss,-gnutls] net-misc/curl[-ssl] ) ) ) !bindist? ( !nss? ( dev-libs/openssl curl? ( || ( net-misc/curl[ssl,-nss,-gnutls] net-misc/curl[-ssl] ) ) ) ) net-misc/curl doc? ( app-doc/doxygen ) dev-util/pkgconfig || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b
+nss? ( dev-libs/nss curl? ( || ( net-misc/curl[ssl,nss,-gnutls] net-misc/curl[-ssl] ) ) ) bindist? ( dev-libs/nss curl? ( || ( net-misc/curl[ssl,nss,-gnutls] net-misc/curl[-ssl] ) ) ) !bindist? ( !nss? ( dev-libs/openssl curl? ( || ( net-misc/curl[ssl,-nss,-gnutls] net-misc/curl[-ssl] ) ) ) ) net-misc/curl
+0
+http://liboauth.sourceforge.net/pool/liboauth-0.8.8.tar.gz
+
+http://liboauth.sourceforge.net/
+|| ( GPL-2 MIT )
+C library implementing the OAuth secure authentication protocol
+~amd64 ~x86
+autotools eutils libtool multilib portability toolchain-funcs
+curl doc bindist +nss
+
+
+
+2
+
+compile configure install prepare test
+
+
+
+
+
