@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11892 2010/08/30 14:27:43 a3li Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11898 2010/08/31 12:10:12 hwoarang Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,35 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (31 Aug 2010)
+#  on behalf of QA team
+#
+# Last update in 2004; does not respect LDFLAGS; hacky
+# ebuild; missing toolset to use it; basically abandoned
+# upstream.
+#
+# Removal on 2010-10-30
+sys-auth/pam_pwdfile
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (30 Aug 2010)
+#  on behalf of QA team
+#
+# Initial import in 2005 and never bumped; no users in tree;
+# since revision 1.2 it has been installing the conf.d file
+# over the init.d (so it never really worked).
+#
+# Removal on 2010-10-29
+net-misc/omnievents
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (30 Aug 2010)
+#  on behalf of QA team
+#
+# Package was added in 2004 and never bumped; the installed
+# "init script" is not compatible with Gentoo's init system.
+#
+# Removal on 2010-10-29
+net-mail/ixbiff
 
 # Diego E. Pettenò <flameeyes@gentoo.org> (30 Aug 2010)
 #  on behalf of QA team
@@ -405,10 +434,6 @@ app-cdr/sync2cd
 # Masked for deletion in 30 days.
 dev-ruby/testunit-mock
 
-# Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (14 Jul 2010)
-# No longer working. Masked for deletion in 30 days (bug #322069).
-dev-python/pygoogle
-
 # Jeroen Roovers <jer@gentoo.org> (13 Jul 2010)
 # The ebuild still needs work, but if you can help testing
 # it, then please unmask (bug #317325)
@@ -547,12 +572,6 @@ dev-util/pbuilder
 # Removal on 2010-08-23
 mail-client/exmh
 mail-client/nmh
-
-# Michał Januszewski <spock@gentoo.org> (24 Jun 2010)
-# Temporary mask to be removed once the ebuild is confirmed to work
-# reliably on all supported architectures.
->=x11-drivers/nvidia-drivers-200.0
->=media-video/nvidia-settings-200.0
 
 # Pawel Hajdan jr <phajdan.jr@gentoo.org> (22 Jun 2010)
 # Masked for testing. It's quite "challenging" to package.
@@ -1135,9 +1154,9 @@ dev-lisp/gcl
 # Mask unstable releases. Read the warning!
 =app-office/gnucash-2.3*
 
-# Peter Alfredsen <loki_val@gentoo.org> (01 June 2009)
+# Arun Raghavan <ford_prefect@gentoo.org> (31 Aug 2009)
 # Development version, Work-In-Progress
-=media-sound/banshee-1.5*
+=media-sound/banshee-1.7*
 
 # Diego E. Pettenò <flameeyes@gentoo.org> (27 Apr 2009)
 # Mask libopensync 0.38 since no plugin was fixed for this
