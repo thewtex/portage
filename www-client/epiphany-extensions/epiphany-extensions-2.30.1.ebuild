@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/epiphany-extensions/epiphany-extensions-2.30.1.ebuild,v 1.4 2010/08/01 11:55:08 fauli Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/epiphany-extensions/epiphany-extensions-2.30.1.ebuild,v 1.5 2010/08/31 18:37:36 eva Exp $
 
 EAPI="2"
 
@@ -21,8 +21,7 @@ RDEPEND=">=www-client/epiphany-${MY_MAJORV}
 	>=dev-libs/glib-2.15.5
 	>=gnome-base/gconf-2.0
 	>=dev-libs/libxml2-2.6
-	>=x11-libs/gtk+-2.12.0
-	>=gnome-base/libglade-2
+	>=x11-libs/gtk+-2.19.5
 	>=net-libs/webkit-gtk-1.1
 
 	dbus? ( >=dev-libs/dbus-glib-0.34 )
