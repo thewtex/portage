@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5910 2010/09/01 17:34:20 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5913 2010/09/02 16:53:46 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -175,6 +175,7 @@ app-editors/emacs:toolkit-scroll-bars - Use the selected toolkit's scrollbars in
 app-editors/emacs-vcs:gconf - Use gnome-base/gconf to read the system font name
 app-editors/emacs-vcs:gzip-el - Compress bundled Emacs Lisp source
 app-editors/emacs-vcs:hesiod - Enable support for net-dns/hesiod
+app-editors/emacs-vcs:imagemagick - Use media-gfx/imagemagick for image processing
 app-editors/emacs-vcs:sound - Enable sound
 app-editors/emacs-vcs:toolkit-scroll-bars - Use the selected toolkit's scrollbars in preference to Emacs' own scrollbars
 app-editors/fe:sendmail - Send mail after editor abend
@@ -1008,6 +1009,8 @@ dev-python/PyQt4:xmlpatterns - Build the QtXmlPatterns module
 dev-python/anyvc:bazaar - Add support for Bazaar
 dev-python/anyvc:git - Add support for Git
 dev-python/anyvc:mercurial - Add support for Mercurial
+dev-python/atpy:fits -  Enable support for reading and FITS with dev-python/pyfits. 
+dev-python/atpy:votable -  Enable support for reading and VOTABLE with dev-python/vo. 
 dev-python/bpython:urwid - Backend based on dev-python/urwid
 dev-python/cgkit:3ds - Enable support for importing 3D Studio models
 dev-python/dap:server - Enable OpenDAP server support
@@ -2818,6 +2821,14 @@ net-misc/asterisk-moh-opsound:siren7 - Install the sounds files for the siren7 c
 net-misc/asterisk-moh-opsound:sln16 - Install the sounds files for the sln16 codec.
 net-misc/asterisk-moh-opsound:ulaw - Install the sounds files for the ulaw codec.
 net-misc/asterisk-moh-opsound:wav - Install the sounds files for the wav codec.
+net-misc/cfengine:html - Install HTML documentation
+net-misc/cfengine:libvirt - Enable support for virtual machine management through app-emulation/libvirt
+net-misc/cfengine:mysql - Use dev-db/mysql as database backend, default would be Berkeley DB (sys-libs/db)
+net-misc/cfengine:pcre - Use PCRE rather than GNU Regex from libc
+net-misc/cfengine:postgres - Use dev-db/postgresql-server as database backend, default would be Berkeley DB (sys-libs/db)
+net-misc/cfengine:qdbm - Use dev-db/qdbm as database backend, default would be Berkeley DB (sys-libs/db)
+net-misc/cfengine:tests - Install test files
+net-misc/cfengine:tokyocabinet - Use dev-db/tokyocabinet as database backend, default would be Berkeley DB (sys-libs/db)
 net-misc/connman:dhclient - Use dhclient from net-misc/dhcp for getting ip.
 net-misc/connman:dnsproxy - Enable dnsproxy support.
 net-misc/connman:ethernet - Enable ethernet support.
