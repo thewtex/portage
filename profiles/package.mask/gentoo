@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11901 2010/09/02 00:06:48 sping Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11905 2010/09/02 16:58:15 lack Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,13 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Pacho Ramos <pacho@gentoo.org> (2 Sep 2010)
+# They don't work since >=x11-themes/gtk-engines-2.16 lost
+# support for Smooth engine (bug #330181).
+# Removal on 2010-10-01
+x11-themes/smooth-themes
+x11-themes/smoothgnome
 
 # Sebastian Pipping <sping@gentoo.org> (1 Sep 2010)
 # Mask upcoming bumps, potentially too hot to push to everyone
@@ -290,14 +297,6 @@ app-admin/webmin
 # Removal on 2010-10-09
 sys-apps/gluelog
 
-# Christian Faulhammer <fauli@gentoo.org> (10 Aug 2010)
-# Test for compatability
-# dev-vcs/bzr-gtk-0.98 does not work with it
-~dev-vcs/bzr-2.2.0
-~dev-vcs/bzrtools-2.2.0
-~dev-vcs/qbzr-0.19
-~dev-vcs/bzr-svn-1.0.3
-
 # Diego E. Pettenò <flameeyes@gentoo.org> (09 Aug 2010)
 # Merged back into sys-libs/pam (without static build of sys-libs/db).
 # Removal on 2010-09-09
@@ -334,13 +333,6 @@ mail-client/claws-mail-bsfilter
 # bugs (bug #303665), and minor ones (bug #240036).
 # Dead upstream.
 dev-lang/hugs98
-
-# Jim Ramsay <lack@gentoo.org> (26 Jul 2010)
-# No longer works (Bug #284182), and no longer needed since app-admin/gkrellm
-# with USE="hddtemp" supports reading drive temperatures natively.
-#
-# Removal in 30 days.
-x11-plugins/gkrellm-hddtemp
 
 # Diego E. Pettenò <flameeyes@gentoo.org> (27 Jul 2010)
 #  on behalf of QA team
@@ -445,15 +437,6 @@ dev-ruby/testunit-mock
 # it, then please unmask (bug #317325)
 =net-analyzer/net-snmp-5.5*
 
-# Pacho Ramos <pacho@gentoo.org> (12 Jul 2010)
-# Masked for removal in 30 days.
-# No longer developed by upstream, fails with forced as-needed (bug #277169),
-# does not compile against gnome-desktop-2.30 (bug #311563).
-gnome-base/eel
-gnome-extra/nautilus-cd-burner
-dev-python/nautilus-cd-burner-python
-dev-dotnet/nautilusburn-sharp
- 
 # Patrick Lauer <patrick@gentoo.org> (11 Jul 2010)
 # Upstream has EOL'ed 7.4 and 8.0. EOL for 8.1 is November.
 # Migration to supported / new versions recommended.
@@ -467,11 +450,6 @@ dev-dotnet/nautilusburn-sharp
 # Doug Goldstein <cardoe@gentoo.org> (07 Jul 2010)
 # No actual Gentoo support yet. If you're interested, please see bug #295993
 net-misc/netcf
-
-# Pacho Ramos <pacho@gentoo.org> (07 Jul 2010)
-# Dead upstream, no new release since 2006, no longer builds (bug #316623).
-# Masked for removal in 30 days
-dev-dotnet/heap-buddy
 
 # Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (06 Jul 2010)
 # Replaced by dev-python/numpy. Masked for deletion in 30 days (bug #198154).
@@ -849,7 +827,6 @@ games-strategy/xscorch
 # Please don't ask for including testing packages in other emul
 # packages, this is an exception to current policy because some people
 # from X11 team needed 3D support even with bleeding edge Xorg.
-=app-emulation/emul-linux-x86-opengl-20100410_pre
 =app-emulation/emul-linux-x86-opengl-20100611-r99
 
 # Robert Piasek <dagger@gentoo.org> (09 Apr 2010)
@@ -1205,12 +1182,6 @@ app-portage/udept
 # Matti Bickel <mabi@gentoo.org> (1 Mar 2009)
 # Mask testing branch
 =x11-libs/fox-1.7*
-
-# Jim Ramsay <lack@gentoo.org> (1 Feb 2008)
-# This isn't actually used by anyone, but hopefully will be soon to allow
-# net-misc/amazonmp3 to be used by amd64 users.  Once I get around to it.
-# Until then, mask it.
-net-misc/amazonmp3-libcompat
 
 # mask pending removal
 # Benedikt Böhm <hollow@gentoo.org> (10 Jan 2009)
