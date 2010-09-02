@@ -1,0 +1,22 @@
+nls? ( virtual/libintl ) cracklib? ( >=sys-libs/cracklib-2.8.3 ) audit? ( sys-process/audit ) selinux? ( >=sys-libs/libselinux-1.28 ) berkdb? ( sys-libs/db ) elibc_glibc? ( >=sys-libs/glibc-2.7 ) sys-devel/flex nls? ( sys-devel/gettext ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b
+nls? ( virtual/libintl ) cracklib? ( >=sys-libs/cracklib-2.8.3 ) audit? ( sys-process/audit ) selinux? ( >=sys-libs/libselinux-1.28 ) berkdb? ( sys-libs/db ) elibc_glibc? ( >=sys-libs/glibc-2.7 ) !sys-auth/pam_userdb
+0
+mirror://kernel/linux/libs/pam/library/Linux-PAM-1.1.2.tar.bz2 mirror://kernel/linux/libs/pam/documentation/Linux-PAM-1.1.2-docs.tar.bz2
+
+http://www.kernel.org/pub/linux/libs/pam/
+|| ( BSD GPL-2 )
+Linux-PAM (Pluggable Authentication Modules)
+~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~ia64-linux ~x86-linux
+autotools db-use eutils flag-o-matic libtool multilib pam portability toolchain-funcs versionator
+cracklib nls elibc_FreeBSD selinux vim-syntax audit test elibc_glibc debug berkdb
+
+sys-auth/pambase vim-syntax? ( app-vim/pam-syntax )
+virtual/pam
+3
+
+compile configure install postinst preinst prepare setup test
+
+
+
+
+
