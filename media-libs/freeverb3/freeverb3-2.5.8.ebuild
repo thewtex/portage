@@ -1,9 +1,9 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/freeverb3/freeverb3-2.5.5-r1.ebuild,v 1.1 2010/07/26 00:14:24 sping Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/freeverb3/freeverb3-2.5.8.ebuild,v 1.1 2010/09/02 00:12:27 sping Exp $
 
 EAPI=2
-inherit base versionator
+inherit versionator
 
 MY_PV=$(replace_version_separator 3 '')
 
@@ -17,7 +17,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="audacious jack plugdouble sse sse2 sse3 3dnow forcefpu"
 
 RDEPEND=">=sci-libs/fftw-3.0.1
-	audacious? ( >=media-sound/audacious-2.4_beta1
+	audacious? ( media-sound/audacious
 		media-libs/libsndfile )
 	jack? ( media-sound/jack-audio-connection-kit
 		media-libs/libsndfile )"
@@ -25,11 +25,7 @@ DEPEND=${RDEPEND}
 
 S="${WORKDIR}/${PN}-$(get_version_component_range 1-3)"
 
-PATCHES=( "${FILESDIR}"/${P}-audacious-2.4_beta1.patch )
-
 src_configure() {
-	use sse3 && elog 'SSE3 support is broken in 2.5.5, auto-disabling for now'
-
 	# NOTE: sse4 support not implemented, yet
 	econf \
 		--enable-release \
@@ -41,7 +37,7 @@ src_configure() {
 		$(use_enable 3dnow) \
 		$(use_enable sse) \
 		$(use_enable sse2) \
-		--disable-sse3 \
+		$(use_enable sse3) \
 		$(use_enable forcefpu) \
 		|| die "econf failed"
 }
