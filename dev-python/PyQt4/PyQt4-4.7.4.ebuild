@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/PyQt4/PyQt4-4.7.4.ebuild,v 1.2 2010/07/15 11:19:50 hwoarang Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/PyQt4/PyQt4-4.7.4.ebuild,v 1.3 2010/09/01 09:04:59 hwoarang Exp $
 
 EAPI="2"
 PYTHON_EXPORT_PHASE_FUNCTIONS="1"
@@ -88,7 +88,7 @@ src_configure() {
 	use prefix || EPREFIX=
 
 	configuration() {
-		local myconf="$(PYTHON) configure.py
+		set -- $(PYTHON) configure.py
 				--confirm-license
 				--bindir=${EPREFIX}/usr/bin
 				--destdir=${EPREFIX}$(python_get_sitedir)
@@ -114,9 +114,9 @@ src_configure() {
 				$(pyqt4_use_enable xmlpatterns QtXmlPatterns)
 				CC=$(tc-getCC) CXX=$(tc-getCXX)
 				LINK=$(tc-getCXX) LINK_SHLIB=$(tc-getCXX)
-				CFLAGS='${CFLAGS}' CXXFLAGS='${CXXFLAGS}' LFLAGS='${LDFLAGS}'"
-		echo ${myconf}
-		eval ${myconf} || return 1
+				CFLAGS='${CFLAGS}' CXXFLAGS='${CXXFLAGS}' LFLAGS='${LDFLAGS}'
+		echo "$@"
+		"$@" || die "configure.py failed"
 
 		for mod in QtCore $(use X && echo 'QtDesigner QtGui'); do
 			# Run eqmake4 inside the qpy subdirs to prevent
