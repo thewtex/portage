@@ -1,12 +1,12 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-visualization/qtiplot/qtiplot-0.9.8.ebuild,v 1.2 2010/08/04 06:29:18 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-visualization/qtiplot/qtiplot-0.9.8.ebuild,v 1.3 2010/09/03 06:12:37 jlec Exp $
 
 EAPI=3
 
 PYTHON_DEPEND="python? 2"
 
-inherit eutils qt4 fdo-mime python
+inherit eutils qt4-r2 fdo-mime python
 
 DESCRIPTION="Qt based clone of the Origin plotting package"
 HOMEPAGE="http://soft.proindependent.com/qtiplot.html"
@@ -65,11 +65,10 @@ PATCHES=(
 
 pkg_setup() {
 	use python && python_set_active_version 2
-	qt4_pkg_setup
 }
 
 src_prepare() {
-	qt4_src_prepare
+	qt4-r2_src_prepare
 
 	rm -rf 3rdparty/{liborigin,QTeXEngine,/qwtplot3d/3rdparty/gl2ps/}
 
@@ -106,8 +105,6 @@ src_prepare() {
 	EOF
 
 	use python && echo "SCRIPTING_LANGS += Python" >> build.conf
-#	use xls && echo "XLS_LIBS = -lExcelFormat" >> build.conf
-	use xls && echo "XLS_LIBS = ${EPREFIX}/usr/$(get_libdir)/libExcelFormat.a" >> build.conf
 	if use ods; then
 		echo "QUAZIP_INCLUDEPATH = ${EPREFIX}/usr/include/quazip" >> build.conf
 		echo "QUAZIP_LIBS = -lquazip" >> build.conf
