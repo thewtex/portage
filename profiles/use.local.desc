@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5917 2010/09/04 10:33:42 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5920 2010/09/04 22:35:00 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -3837,6 +3837,8 @@ x11-misc/xmobar:mail - Support the mail plugin. Pulls dependency dev-haskell/hin
 x11-misc/xscreensaver:new-login - Enables New Login button using gdmflexiserver (gnome-base/gdm)
 x11-misc/zim:screenshot - Enable screenshot support (using media-gfx/scrot)
 x11-plugins/bfm:gkrellm - Enable building of app-admin/gkrellm module
+x11-plugins/compiz-plugins-extra:gconf -  Install GConf schemas for the plugins, needed when using the GConf-based configuration backend in x11-wm/compiz. 
+x11-plugins/compiz-plugins-main:gconf -  Install GConf schemas for the plugins, needed when using the GConf-based configuration backend in x11-wm/compiz. 
 x11-plugins/enigmail:custom-optimization - Enable user CFLAGS
 x11-plugins/enigmail:system-sqlite - Use the system-wide dev-db/sqlite installation with secure-delete enabled
 x11-plugins/gkrellm-plugins:audacious - Enable the audacious plugin x11-plugins/gkrellmms
@@ -3879,7 +3881,8 @@ x11-themes/redhat-artwork:icons - Install Bluecurve icons
 x11-themes/redhat-artwork:kdm - Install Bluecurve kde-base/kdm theme
 x11-themes/redhat-artwork:nautilus - Install Bluecurve gnome-base/nautilus icons
 x11-themes/skinenigmang-logos:dxr3 - Install logos for lower osd color depth on dxr3 cards
-x11-wm/compiz:fuse - Enables support for the filesystem in userspace plugin through sys-fs/fuse.
+x11-wm/compiz:fuse -  Enables support for the filesystem in userspace plugin through sys-fs/fuse. 
+x11-wm/compiz:gconf -  Enable the GConf-based configuration backend; it is not required to work with GNOME, and might actually be faster if it's not used. 
 x11-wm/compiz-fusion:emerald - Install the x11-wm/emerald package.
 x11-wm/compiz-fusion:unsupported - Install the x11-plugins/compiz-fusion-plugins-unsupported package.
 x11-wm/enlightenment:pango - Enable pango font rendering
