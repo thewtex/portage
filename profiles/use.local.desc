@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5921 2010/09/05 17:14:30 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5925 2010/09/06 04:14:18 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -279,6 +279,7 @@ app-emulation/qemu:sdl - Enable the SDL-based console
 app-emulation/qemu:vde - Enable Virtual Distributed Ethernet (VDE) based networking
 app-emulation/qemu-kvm:aio - Enables support for Linux's Async IO
 app-emulation/qemu-kvm:alsa - Enable alsa output for sound emulation
+app-emulation/qemu-kvm:brltty - Adds support for braille displays using brltty
 app-emulation/qemu-kvm:esd - Enable esound output for sound emulation
 app-emulation/qemu-kvm:fdt - Enables firmware device tree support
 app-emulation/qemu-kvm:gnutls - Enable TLS support for the VNC console server
@@ -2750,6 +2751,7 @@ net-mail/dovecot:pop3d - Build pop3d support
 net-mail/dovecot:sdbox - Adds sdbox storage support
 net-mail/dovecot:sieve - Build the sieve plugin
 net-mail/dovecot:vpopmail - Add vpopmail support
+net-mail/fdm:courierauth - Add support for Courier authentication library
 net-mail/fetchmail:hesiod - Enable support for hesiod
 net-mail/fetchmail:tk - Adds support for Tk GUI toolkit, in particular it installs fetchmailconf
 net-mail/gnubiff:password - Enable save passwords to connect mail servers in user space
@@ -2899,6 +2901,8 @@ net-misc/quagga:bgpclassless -  Apply unofficial patch to enable classless prefi
 net-misc/quagga:fix-connected-rt -  Remove interface connected routes from kernel table on link loss so that no packets get routed to downed interface 
 net-misc/quagga:multipath -  Enable multipath routes support for any number of routes 
 net-misc/quagga:ospfapi -  Enable OSPFAPI support for client applications accessing the OSPF link state database 
+net-misc/quagga:pam -  Add support for PAM (viasys-libs/pam) to teh Quagga Virtual Terminal Interface Shell (vtysh); if the readline USE flag is disabled, this flag is ignored. 
+net-misc/quagga:readline -  Enable support for sys-libs/readline to provide the Quagga Virtual Terminal Interface Shell (vtysh). 
 net-misc/quagga:realms -  Apply unofficial patch to enable realms support. Patch and information to be found at http://vcalinus.gemenii.ro/quaggarealms.html and http://linux.mantech.ro/quagga+realm_en.php 
 net-misc/quagga:tcp-zebra -  Enable TCP zserv interface on port 2600 for Zebra/protocol-daemon communication. Unix domain sockets are chosen otherwise. 
 net-misc/quagga:tcpmd5 -  Enable TCP MD5 checksumming 
@@ -3915,8 +3919,10 @@ xfce-base/libxfce4ui:glade - Build support for Glade 3's GtkBuilder implementati
 xfce-base/libxfcegui4:glade - Build glade bindings
 xfce-base/thunar:udev - Enable udev support (required by xfce-extra/thunar-volman)
 xfce-base/xfce-utils:lock - Enable screen locking
+xfce-base/xfce4-session:consolekit - Enable support for sys-auth/consolekit
 xfce-base/xfce4-session:fortune - Install tips and tricks app (xfce4-tips), adds dependency on games-misc/fortune-mod
 xfce-base/xfce4-session:gnome-keyring - Support for storing your password.
+xfce-base/xfce4-session:udev - Enable sys-power/upower support for hibernate and suspend buttons
 xfce-base/xfce4-settings:keyboard - Enable Keyboard layout selection with x11-libs/libxklavier
 xfce-base/xfce4-settings:sound - Enable sound event support with media-libs/libcanberra
 xfce-base/xfdesktop:thunar - Build support for desktop icons (for example, launchers and folders)
