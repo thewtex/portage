@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5913 2010/09/02 16:53:46 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5929 2010/09/06 17:34:17 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -75,7 +75,6 @@ app-admin/syslog-ng:spoof-source - Enable support for spoofed source addresses
 app-admin/syslog-ng:sql - Enable support for SQL destinations
 app-admin/sysstat:cron - Install /etc/cron.d script to periodically run sar
 app-admin/sysstat:isag - Install isag, the Interactive System Activity Graph tool
-app-admin/system-tools-backends:policykit - Use sys-auth/policykit to gain privileges to change configuration files
 app-admin/testdisk:ntfs - Include the ability to read NTFS filesystems
 app-admin/testdisk:reiserfs - include reiserfs reading ability
 app-admin/ulogd:mysql - Build MYSQL output plugin to save packets in a mysql database.
@@ -279,14 +278,18 @@ app-emulation/qemu:sdl - Enable the SDL-based console
 app-emulation/qemu:vde - Enable Virtual Distributed Ethernet (VDE) based networking
 app-emulation/qemu-kvm:aio - Enables support for Linux's Async IO
 app-emulation/qemu-kvm:alsa - Enable alsa output for sound emulation
+app-emulation/qemu-kvm:brltty - Adds support for braille displays using brltty
 app-emulation/qemu-kvm:esd - Enable esound output for sound emulation
 app-emulation/qemu-kvm:fdt - Enables firmware device tree support
 app-emulation/qemu-kvm:gnutls - Enable TLS support for the VNC console server
+app-emulation/qemu-kvm:jpeg - Enable JPEG compression for the VNC console server
 app-emulation/qemu-kvm:kvm-trace - Allows you to use KVM tracing
 app-emulation/qemu-kvm:ncurses - Enable the ncurses-based console
+app-emulation/qemu-kvm:png - Enable PNG compression for the VNC console server
 app-emulation/qemu-kvm:pulseaudio - Enable pulseaudio output for sound emulation
 app-emulation/qemu-kvm:qemu-ifup - Provides the qemu-ifup script for use with QEMU's built in bridging
 app-emulation/qemu-kvm:sdl - Enable the SDL-based console
+app-emulation/qemu-kvm:ssl - Enable TLS support for the VNC console server
 app-emulation/qemu-kvm:vde - Enable VDE-based networking
 app-emulation/qemu-kvm:xen - Enables support for Xen backends
 app-emulation/qemu-kvm-spice:aio - Enables support for Linux's Async IO
@@ -1120,7 +1123,6 @@ dev-util/google-perftools:minimal -  Only build the tcmalloc_minimal library, ig
 dev-util/kdevelop:cmake - Enable support for CMAKE build system
 dev-util/kdevelop:qmake - Enable support for Qmake build system
 dev-util/kdevelop:qthelp - Enable support for QtHelp documentation browsing
-dev-util/kdevplatform:mercurial - Add suport for mercurial VCS
 dev-util/metro:ccache - Enable support for ccache
 dev-util/metro:git - Enable support for git snapshots
 dev-util/metro:threads - Enable support for pbzip2 tarball packing/unpacking
@@ -1134,7 +1136,6 @@ dev-util/nvidia-cuda-sdk:opencl -  Build OpenCL binaries.
 dev-util/nvidia-cuda-toolkit:debugger -  Installs the CUDA debugger. 
 dev-util/nvidia-cuda-toolkit:opencl -  Installs OpenCL utilities. 
 dev-util/nvidia-cuda-toolkit:profiler -  Installs the NVIDIA CUDA visual profiler. 
-dev-util/pbuilder:uml - Enable pbuilder user mode linux support
 dev-util/perf:demangle -  Enable C++ symbol name demangling, using libbfd from sys-devel/binutils. When this flag is enabled, the package will have to be rebuilt after every version bump of binutils. 
 dev-util/perf:doc -  Build documentation and man pages. With this USE flag disabled, the --help parameter for perf and its sub-tools will not be available. This is optional because it depends on a few documentation handling tools that are not always welcome on user systems. 
 dev-util/perf:perl -  Add support for Perl as a scripting language for perf tools. 
@@ -1383,6 +1384,7 @@ kde-base/kdebindings-csharp:qimageblitz - Compile bindings for media-libs/qimage
 kde-base/kdebindings-csharp:qscintilla - Compile bindings for x11-libs/qscintilla.
 kde-base/kdebindings-csharp:webkit - Compile bindings for x11-libs/qt-webkit.
 kde-base/kdebindings-meta:csharp - Enable C# language bindings for KDE and Qt
+kde-base/kdebindings-perl:plasma - Compile bindings for KDE's Plasma.
 kde-base/kdebindings-ruby:akonadi - Compile bindings for Akonadi.
 kde-base/kdebindings-ruby:okular - Compile bindings for kde-base/okular.
 kde-base/kdebindings-ruby:phonon - Compile bindings for Phonon.
@@ -1443,6 +1445,7 @@ kde-base/okular:chm - Enable support for Microsoft Compiled HTML Help files
 kde-base/okular:ebook - Add E-Book support
 kde-base/okular:ps - Add PostScript support
 kde-base/plasma-workspace:google-gadgets - Add google-gadgets support
+kde-base/plasma-workspace:qalculate - Enable Qalculate runner using sci-libs/libqalculate
 kde-base/plasma-workspace:rss - Enables building RSSNOW plasmoid (requires kde-base/kdepimlibs)
 kde-base/powerdevil:pm-utils - Adds support for suspend/resume the system through sys-power/pm-utils
 kde-base/pykde4:semantic-desktop - Enables Nepomuk and Soprano python language bindings
@@ -2482,6 +2485,7 @@ net-fs/samba-server:quota - Enables support for user quotas
 net-fs/samba-server:samba4 - Enable experimental samba4 features"
 net-fs/samba-server:swat - Enables support for swat configuration gui
 net-fs/samba-server:winbind - Enables support for the winbind auth daemon
+net-fs/smbnetfs:gnome - Use the gnome-base/gnome-keyring for password management.
 net-ftp/ftpcube:sftp - Enable sftp connection support
 net-ftp/proftpd:authfile - Enable support for the auth-file module
 net-ftp/proftpd:ban - Enable support for the mod_ban module
@@ -2751,6 +2755,7 @@ net-mail/dovecot:pop3d - Build pop3d support
 net-mail/dovecot:sdbox - Adds sdbox storage support
 net-mail/dovecot:sieve - Build the sieve plugin
 net-mail/dovecot:vpopmail - Add vpopmail support
+net-mail/fdm:courierauth - Add support for Courier authentication library
 net-mail/fetchmail:hesiod - Enable support for hesiod
 net-mail/fetchmail:tk - Adds support for Tk GUI toolkit, in particular it installs fetchmailconf
 net-mail/gnubiff:password - Enable save passwords to connect mail servers in user space
@@ -2896,13 +2901,15 @@ net-misc/openvpn:passwordsave - Enables openvpn to save passwords
 net-misc/openvpn:pkcs11 - Enable PKCS#11 smartcard support
 net-misc/pino:indicate - Use dev-libs/libindicate to notify other apps
 net-misc/plowshare:view-captcha - View captcha with aview
-net-misc/quagga:bgpclassless - Enable classless prefixes for BGP
-net-misc/quagga:fix-connected-rt - Remove interface connected routes from kernel table on link loss so that no packets get routed to downed interface
-net-misc/quagga:multipath - Enable multipath routes support for any number of routes
-net-misc/quagga:ospfapi - Enable OSPFAPI support for client applications accessing the OSPF link state database
-net-misc/quagga:realms - Enable realms support (see http://vcalinus.gemenii.ro/quaggarealms.html)
-net-misc/quagga:tcp-zebra - Enable TCP zserv interface on port 2600 for Zebra/protocol-daemon communication. Unix domain sockets are chosen otherwise.
-net-misc/quagga:tcpmd5 - Enable TCP MD5 checksumming
+net-misc/quagga:bgpclassless -  Apply unofficial patch to enable classless prefixes for BGP. Patch and information to be found at http://hasso.linux.ee/doku.php/english:network:quagga 
+net-misc/quagga:fix-connected-rt -  Remove interface connected routes from kernel table on link loss so that no packets get routed to downed interface 
+net-misc/quagga:multipath -  Enable multipath routes support for any number of routes 
+net-misc/quagga:ospfapi -  Enable OSPFAPI support for client applications accessing the OSPF link state database 
+net-misc/quagga:pam -  Add support for PAM (viasys-libs/pam) to teh Quagga Virtual Terminal Interface Shell (vtysh); if the readline USE flag is disabled, this flag is ignored. 
+net-misc/quagga:readline -  Enable support for sys-libs/readline to provide the Quagga Virtual Terminal Interface Shell (vtysh). 
+net-misc/quagga:realms -  Apply unofficial patch to enable realms support. Patch and information to be found at http://vcalinus.gemenii.ro/quaggarealms.html and http://linux.mantech.ro/quagga+realm_en.php 
+net-misc/quagga:tcp-zebra -  Enable TCP zserv interface on port 2600 for Zebra/protocol-daemon communication. Unix domain sockets are chosen otherwise. 
+net-misc/quagga:tcpmd5 -  Enable TCP MD5 checksumming 
 net-misc/rdesktop:pcsc-lite - Enable smartcard support with sys-apps/pcsc-lite driver
 net-misc/rdesktop:rdpusb - Enable USB redirection support for app-emulation/virtualbox-bin
 net-misc/remmina:ssh - Enable support for SSH/SFTP using net-libs/libssh
@@ -3838,6 +3845,8 @@ x11-misc/xmobar:mail - Support the mail plugin. Pulls dependency dev-haskell/hin
 x11-misc/xscreensaver:new-login - Enables New Login button using gdmflexiserver (gnome-base/gdm)
 x11-misc/zim:screenshot - Enable screenshot support (using media-gfx/scrot)
 x11-plugins/bfm:gkrellm - Enable building of app-admin/gkrellm module
+x11-plugins/compiz-plugins-extra:gconf -  Install GConf schemas for the plugins, needed when using the GConf-based configuration backend in x11-wm/compiz. 
+x11-plugins/compiz-plugins-main:gconf -  Install GConf schemas for the plugins, needed when using the GConf-based configuration backend in x11-wm/compiz. 
 x11-plugins/enigmail:custom-optimization - Enable user CFLAGS
 x11-plugins/enigmail:system-sqlite - Use the system-wide dev-db/sqlite installation with secure-delete enabled
 x11-plugins/gkrellm-plugins:audacious - Enable the audacious plugin x11-plugins/gkrellmms
@@ -3845,7 +3854,6 @@ x11-plugins/gkrellmbups:nut - Enable monitoring Network-UPS via sys-power/nut
 x11-plugins/purple-plugin_pack:talkfilters - Enable support for app-text/talklfilters
 x11-plugins/screenlets:svg - Highly Recommended: Enable SVG graphics via dev-python/librsvg-python
 x11-plugins/wmfire:session - Enable session management
-x11-plugins/wmhdplop:gkrellm - Enable building of app-admin/gkrellm module
 x11-plugins/wmsysmon:high-ints - Enable support for monitoring 24 interrupts. Useful on SMP machines
 x11-terms/aterm:background - Enable background image support via media-libs/libafterimage
 x11-terms/aterm:xgetdefault - Enable resources via X instead of aterm small version
@@ -3881,7 +3889,8 @@ x11-themes/redhat-artwork:icons - Install Bluecurve icons
 x11-themes/redhat-artwork:kdm - Install Bluecurve kde-base/kdm theme
 x11-themes/redhat-artwork:nautilus - Install Bluecurve gnome-base/nautilus icons
 x11-themes/skinenigmang-logos:dxr3 - Install logos for lower osd color depth on dxr3 cards
-x11-wm/compiz:fuse - Enables support for the filesystem in userspace plugin through sys-fs/fuse.
+x11-wm/compiz:fuse -  Enables support for the filesystem in userspace plugin through sys-fs/fuse. 
+x11-wm/compiz:gconf -  Enable the GConf-based configuration backend; it is not required to work with GNOME, and might actually be faster if it's not used. 
 x11-wm/compiz-fusion:emerald - Install the x11-wm/emerald package.
 x11-wm/compiz-fusion:unsupported - Install the x11-plugins/compiz-fusion-plugins-unsupported package.
 x11-wm/enlightenment:pango - Enable pango font rendering

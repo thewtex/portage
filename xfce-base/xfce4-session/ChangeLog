@@ -1,6 +1,18 @@
 # ChangeLog for xfce-base/xfce4-session
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-base/xfce4-session/ChangeLog,v 1.116 2010/08/29 17:56:10 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/xfce-base/xfce4-session/ChangeLog,v 1.118 2010/09/06 17:25:13 ssuominen Exp $
+
+  06 Sep 2010; Samuli Suominen <ssuominen@gentoo.org>
+  xfce4-session-4.7.0.ebuild:
+  Change gnome-keyring depend to libgnome-keyring. Remove USE flags for
+  consolekit, policykit and udev because they are not required at build-time
+  wrt #336146 by Matthew Turnbull.
+
+*xfce4-session-4.7.0 (05 Sep 2010)
+
+  05 Sep 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +xfce4-session-4.7.0.ebuild:
+  Version bump.
 
   29 Aug 2010; Raúl Porcel <armin76@gentoo.org> xfce4-session-4.6.2.ebuild:
   alpha/ia64/sparc stable wrt #323729

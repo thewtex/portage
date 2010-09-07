@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/bochs/bochs-2.4.1.ebuild,v 1.4 2010/02/10 06:32:50 dirtyepic Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/bochs/bochs-2.4.1.ebuild,v 1.5 2010/09/04 09:22:32 lu_zero Exp $
 
 inherit eutils wxwidgets
 
@@ -20,7 +20,7 @@ RDEPEND="X? ( x11-libs/libICE
 		x11-libs/libXpm )
 	sdl? ( media-libs/libsdl )
 	svga? ( media-libs/svgalib )
-	wxwidgets? ( =x11-libs/wxGTK-2.6* )
+	wxwidgets? ( =x11-libs/wxGTK-2.8* )
 	readline? ( sys-libs/readline )
 	ncurses? ( sys-libs/ncurses )"
 
@@ -42,10 +42,10 @@ src_unpack() {
 }
 
 src_compile() {
-	WX_GTK_VER=2.6
+	WX_GTK_VER=2.8
 
 	use wxwidgets && \
-		need-wxwidgets ansi
+		need-wxwidgets unicode
 
 	use x86 && \
 		myconf="--enable-idle-hack --enable-fast-function-calls"
