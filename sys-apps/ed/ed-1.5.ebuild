@@ -1,16 +1,16 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/ed/ed-1.1.ebuild,v 1.1 2008/12/31 09:38:42 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/ed/ed-1.5.ebuild,v 1.1 2010/09/06 20:33:31 vapier Exp $
 
 inherit eutils toolchain-funcs
 
 DESCRIPTION="Your basic line editor"
 HOMEPAGE="http://www.gnu.org/software/ed/"
-SRC_URI="mirror://gnu/ed/${P}.tar.bz2"
+SRC_URI="mirror://gnu/ed/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~sparc-fbsd ~x86 ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd"
 IUSE=""
 
 DEPEND="sys-apps/texinfo"
@@ -19,11 +19,11 @@ RDEPEND=""
 src_unpack() {
 	unpack ${A}
 	cd "${S}"
-	epatch "${FILESDIR}"/${PN}-1.0-build.patch
+	epatch "${FILESDIR}"/${PN}-1.5-build.patch
 }
 
 src_compile() {
-	tc-export CC CXX
+	tc-export CC
 	# custom configure script ... econf wont work
 	./configure \
 		--prefix=/ \
