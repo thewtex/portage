@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5929 2010/09/06 17:34:17 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5934 2010/09/07 21:14:29 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -815,6 +815,7 @@ dev-lang/luarocks:openssl - Uses dev-libs/openssl for verifying lua packages ins
 dev-lang/mercury:erlang - Support Mercury Erlang grade
 dev-lang/mlton:binary - install a binary version (need to do this once to bootstrap, until smlnj is supported)
 dev-lang/mono:moonlight - Generate Moonlight 2.1 assemblies
+dev-lang/mono:profile4 - Include partial support for C# 4.0 and some of the upcoming .NET 4.0 APIs.
 dev-lang/mono:xen - Make mono generate code that is considerably faster on xen VMs but slightly slower on for normal systems.
 dev-lang/perl:ithreads - Enable Perl threads, has some compatibility problems
 dev-lang/perl:perlsuid - Enable Perl SUID install. Has some risks associated.
@@ -3090,6 +3091,7 @@ net-voip/ekiga:shm - Enable the Shared Memory Extension from libXext
 net-voip/ekiga:static - Statically link to opal and ptlib
 net-voip/ekiga:xcap - Enable XML Configuration Access Protocal
 net-voip/linphone:video - Enable video support (display/capture)
+net-voip/sflphone:iax - Support for IAX (Inter Asterisk eXchange)
 net-voip/telepathy-connection-managers:irc - Enable Internet Relay Chat (IRC) support.
 net-voip/telepathy-connection-managers:jabber - Enable XMPP protocol handler (this is also Google Talk).
 net-voip/telepathy-connection-managers:sip - Enable SIP/SIMPLE messaging and calling.
@@ -3101,9 +3103,11 @@ net-voip/yate:sctp -  Support for Stream Control Transmission Protocol
 net-voip/yate:spandsp - Enable support for the spandsp codec
 net-voip/yate:zaptel - Build zaptel Channel plugin
 net-wireless/blueman:network - Add functionality to setup (host) PAN connections using either net-dns/dnsmasq or net-misc/dhcp
+net-wireless/bluez:attrib - Enable attrib plugin
 net-wireless/bluez:consolekit - Use sys-auth/pambase[consolekit] to determine access to bluetooth devices based on whether a user is logged in locally or remotely
 net-wireless/bluez:maemo6 - Compile with maemo6 plugin
 net-wireless/bluez:old-daemons - Install old daemons like hidd and sdpd that are deprecated by the new Service framework
+net-wireless/bluez:pnat - Enable pnat plugin
 net-wireless/bluez:test-programs - Install tools for testing of various Bluetooth functions
 net-wireless/gnome-bluetooth:nautilus - Build nautilus-sendto plugin
 net-wireless/hostapd:debug - Enables debugging
@@ -3706,7 +3710,7 @@ www-client/lynx:gnutls - Use gnutls library for HTTPS support (openssl is the de
 www-client/lynx:ssl - Enable HTTPS support.
 www-client/midori:html - Install HTML documentation, requires dev-python/docutils
 www-client/midori:unique - Optional libunique support
-www-client/midori:vala - Optional vala support
+www-client/midori:vala - Enable support for dev-lang/vala based extensions
 www-client/opera:gtk - Set runtime dependencies to support GTK+/GNOME desktop integration
 www-client/opera:kde - Set runtime dependencies to support KDE desktop integration
 www-client/seamonkey:chatzilla - Build Mozilla's IRC client (default on)
@@ -3828,6 +3832,7 @@ x11-misc/etm:ical - Enable export of ical format files by depending on dev-pytho
 x11-misc/fbpager:xrender - Enable transparency support via x11-libs/libXrender
 x11-misc/google-gadgets:soup - Enables XML HTTP request extension based on net-libs/libsoup
 x11-misc/google-gadgets:webkit - Enables browser element and script runtime based on net-libs/webkit-gtk
+x11-misc/lightdm:consolekit - Enables support for authorization using consolekit
 x11-misc/pcmanfm:udev - Use sys-fs/udev to determine available devices
 x11-misc/rednotebook:libyaml - enable libyaml support
 x11-misc/rednotebook:webkit - enable previews using webkit engine

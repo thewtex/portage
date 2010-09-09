@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/chromium-9999.ebuild,v 1.80 2010/08/28 18:10:20 phajdan.jr Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/chromium-9999.ebuild,v 1.81 2010/09/07 17:19:25 phajdan.jr Exp $
 
 EAPI="2"
 
@@ -34,8 +34,8 @@ DEPEND="${RDEPEND}
 	dev-lang/perl
 	>=dev-util/gperf-3.0.3
 	>=dev-util/pkgconfig-0.23
-	>=gnome-base/gnome-keyring-2.28.2
-	sys-devel/flex"
+	sys-devel/flex
+	virtual/perl-version"
 RDEPEND+="
 	|| (
 		x11-themes/gnome-icon-theme
@@ -108,6 +108,9 @@ src_prepare() {
 	# Add Gentoo plugin paths.
 	epatch "${FILESDIR}"/${PN}-plugins-path-r0.patch
 
+	# Make compile-time dependency on gnome-keyring optional, bug #332411.
+	epatch "${FILESDIR}"/${PN}-gnome-keyring-r0.patch
+
 	remove_bundled_lib "third_party/bzip2"
 	remove_bundled_lib "third_party/codesighs"
 	remove_bundled_lib "third_party/cros"
@@ -161,11 +164,11 @@ src_configure() {
 	fi
 
 	if use "gnome-keyring"; then
-		myconf="${myconf} -Dlinux_link_gnome_keyring=1"
+		myconf="${myconf} -Duse_gnome_keyring=1 -Dlinux_link_gnome_keyring=1"
 	else
 		# TODO: we should also disable code trying to dlopen
 		# gnome-keyring in that case.
-		myconf="${myconf} -Dlinux_link_gnome_keyring=0"
+		myconf="${myconf} -Duse_gnome_keyring=0 -Dlinux_link_gnome_keyring=0"
 	fi
 
 	# Enable sandbox.
