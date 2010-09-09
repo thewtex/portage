@@ -1,8 +1,8 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-emulation/snes9x/snes9x-1.52-r1.ebuild,v 1.5 2010/07/19 19:14:58 josejx Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/snes9x/snes9x-1.52-r1.ebuild,v 1.7 2010/09/09 16:51:44 ssuominen Exp $
 
-EAPI=3
+EAPI=2
 inherit autotools eutils flag-o-matic multilib gnome2-utils games
 
 DESCRIPTION="Super Nintendo Entertainment System (SNES) emulator"
@@ -11,7 +11,7 @@ SRC_URI="http://snes9x-gtk.googlecode.com/files/${P}-src.tar.bz2"
 
 LICENSE="as-is GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ppc ppc64 x86 ~amd64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="amd64 ppc ppc64 x86"
 IUSE="alsa debug gtk joystick multilib netplay nls opengl oss png pulseaudio portaudio +xv +xrandr zlib"
 
 RDEPEND="x11-libs/libX11
@@ -72,7 +72,7 @@ src_configure() {
 	if use gtk; then
 		cd ../gtk
 		egamesconf \
-			--datadir="${EPREFIX}/usr/share" \
+			--datadir=/usr/share \
 			$(use_enable nls) \
 			$(use_with opengl) \
 			$(use_with joystick) \
