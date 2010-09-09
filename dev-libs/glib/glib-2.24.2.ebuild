@@ -47,7 +47,7 @@ src_prepare() {
 
 	# Don't check for python, hence removing the build-time python dep.
 	# We remove the gdb python scripts in src_install due to bug 291328
-	epatch "${FILESDIR}/${PN}-2.24-punt-python-check.patch"
+	#epatch "${FILESDIR}/${PN}-2.24-punt-python-check.patch"
 
 	# Fix test failure when upgrading from 2.22 to 2.24, upstream bug 621368
 	epatch "${FILESDIR}/${PN}-2.24-assert-test-failure.patch"
@@ -58,7 +58,7 @@ src_prepare() {
 
 	# Needed for the punt-python-check patch.
 	# Also needed to prevent croscompile failures, see bug #267603
-	eautoreconf
+	#eautoreconf
 
 	[[ ${CHOST} == *-freebsd* ]] && elibtoolize
 }
