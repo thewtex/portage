@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/evolution/evolution-2.30.2-r1.ebuild,v 1.6 2010/08/24 08:19:58 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-client/evolution/evolution-2.30.2-r1.ebuild,v 1.7 2010/09/08 18:57:54 eva Exp $
 
 EAPI="2"
 GCONF_DEBUG="no"
@@ -10,7 +10,7 @@ inherit autotools gnome2 flag-o-matic python versionator
 DESCRIPTION="Integrated mail, addressbook and calendaring functionality"
 HOMEPAGE="http://www.gnome.org/projects/evolution/"
 SRC_URI="${SRC_URI}
-	mirror://gentoo/${P}-patches.tar.bz2"
+	mirror://gentoo/${PN}-2.30.2-patches.tar.bz2"
 
 LICENSE="GPL-2 LGPL-2 OPENLDAP"
 SLOT="2.0"

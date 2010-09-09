@@ -1,9 +1,13 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/base/package.use.mask,v 1.163 2010/09/01 17:31:40 a3li Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/base/package.use.mask,v 1.165 2010/09/08 20:11:01 scarabeus Exp $
 
 # This file requires >=portage-2.1.1
 # New entries go on top.
+
+# Tomáš Chvátal <scarabeus@gentoo.org> (8 Sep 2010)
+# Drm don't even build here so mask everywhere expect live.
+<x11-libs/cairo-9999 drm
 
 # Alex Legler <a3li@gentoo.org> (1 Sep 2010)
 # This feature is marked as experimental by upstream.
@@ -76,6 +80,7 @@ sci-mathematics/fricas gcl cmucl
 # Tomáš Chvátal <scarabeus@gentoo.org> (6 Jan 2010)
 # Still not really functional, upstream requires not building it.
 <media-libs/mesa-7.9 gallium
+x11-libs/cairo gallium
 
 # Alexey Shvetsov <alexxy@gentoo.org> (3 Dec 2009)
 # Mask very experimental mpi use flag dfor gamess
