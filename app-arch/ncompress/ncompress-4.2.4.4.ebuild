@@ -1,6 +1,6 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-arch/ncompress/ncompress-4.2.4.2.ebuild,v 1.11 2008/09/13 18:23:55 solar Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-arch/ncompress/ncompress-4.2.4.4.ebuild,v 1.1 2010/09/10 03:49:02 vapier Exp $
 
 inherit toolchain-funcs
 
@@ -10,20 +10,14 @@ SRC_URI="mirror://sourceforge/ncompress/${P}.tar.gz"
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 m68k mips ppc ppc64 s390 sh sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE=""
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-	sed \
-		-e 's:options= :options= $(CFLAGS) -DNOFUNCDEF -DUTIME_H $(LDFLAGS) :' \
-		Makefile.def > Makefile
-}
 src_compile() {
 	tc-export CC
-	emake || die "compiled failed"
+	emake || die
 }
+
 src_install() {
 	dobin compress || die
 	dosym compress /usr/bin/uncompress
