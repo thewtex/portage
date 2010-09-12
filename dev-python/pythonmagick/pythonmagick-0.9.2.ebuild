@@ -1,10 +1,10 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pythonmagick/pythonmagick-0.9.1.ebuild,v 1.6 2010/05/29 15:50:32 arfrever Exp $
 
 EAPI="3"
-PYTHON_DEPEND="2"
+PYTHON_DEPEND="2:2.6"
 SUPPORT_PYTHON_ABIS="1"
+RESTRICT_PYTHON_ABIS="2.4 2.5 3.*"
 PYTHON_EXPORT_PHASE_FUNCTIONS="1"
 
 inherit autotools eutils python

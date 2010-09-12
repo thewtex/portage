@@ -1,7 +1,8 @@
-# Copyright 1999-2007 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-sports/race/race-0.5.ebuild,v 1.12 2007/03/13 23:25:53 nyhm Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-sports/race/race-0.5.ebuild,v 1.14 2010/09/09 16:37:31 mr_bones_ Exp $
 
+EAPI=2
 inherit eutils toolchain-funcs games
 
 DESCRIPTION="OpenGL Racing Game"
@@ -15,19 +16,19 @@ IUSE=""
 
 DEPEND="virtual/opengl
 	virtual/glu
-	media-libs/libsdl
-	media-libs/sdl-image
-	media-libs/sdl-mixer"
+	media-libs/libsdl[audio,opengl,video]
+	media-libs/sdl-image[jpeg,png]
+	media-libs/sdl-mixer[mikmod]"
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"/src
-	epatch "${FILESDIR}"/${PV}-gentoo.patch
+src_prepare() {
+	epatch \
+		"${FILESDIR}"/${PV}-gentoo.patch \
+		"${FILESDIR}"/${P}-ldflags.patch
 	sed -i \
 		-e "s:GENTOO_DATADIR:${GAMES_DATADIR}/${PN}:g" \
 		-e "s:GENTOO_CONFDIR:${GAMES_SYSCONFDIR}:g" \
-		*.c || die "sed failed"
-	find "${S}"/data/ -type d -name .xvpics -print0 | xargs -0 rm -rf
+		src/*.c || die "sed failed"
+	find data/ -type d -name .xvpics -print0 | xargs -0 rm -rf
 }
 
 src_compile() {

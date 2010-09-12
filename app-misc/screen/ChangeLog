@@ -2,6 +2,14 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: /var/cvsroot/gentoo-x86/app-misc/screen/ChangeLog,v 1.147 2010/06/15 11:47:35 jlec Exp $
 
+*screen-4.0.3-r2 (10 Sep 2010)
+
+  10 Sep 2010; Daniel Robbins <drobbins@funtoo.og> +screen-4.0.3-r2.ebuild:
+  new screen ebuild that fixes an important lock-up condition, where
+  having XON/XOFF on (the default in Gentoo/Funtoo as of forever) and
+  pressing ^S to freeze output and then ^A ESC to enter scrollback mode
+  will hard-lock screen.
+
 *screen-4.0.3-r1 (15 Jun 2010)
 
   15 Jun 2010; Justin Lecher <jlec@gentoo.org> +screen-4.0.3-r1.ebuild,

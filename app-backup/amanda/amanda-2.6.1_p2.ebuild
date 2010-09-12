@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-backup/amanda/amanda-2.6.1_p2.ebuild,v 1.4 2010/05/08 19:48:53 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-backup/amanda/amanda-2.6.1_p2.ebuild,v 1.5 2010/09/10 21:41:01 robbat2 Exp $
 
 inherit autotools eutils
 
@@ -274,9 +274,9 @@ src_install() {
 	einfo "Installing xinetd service file"
 	insinto /etc/xinetd.d
 	if use minimal ; then
-		newins "${MYFILESDIR}"/amanda-xinetd-${PV}-client amanda
+		newins "${MYFILESDIR}"/amanda-xinetd-2.6.1_p1-client amanda
 	else
-		newins "${MYFILESDIR}"/amanda-xinetd-${PV}-server amanda
+		newins "${MYFILESDIR}"/amanda-xinetd-2.6.1_p1-server amanda
 	fi
 
 	einfo "Installing Sample Daily Cron Job for Amanda"

@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11914 2010/09/07 18:34:32 xarthisius Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11928 2010/09/11 10:25:27 scarabeus Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,26 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Tomáš Chvátal <scarabeus@gentoo.org> (11 Sep 2010)
+# Masked for removal in 30 days.
+# Depends on removed xorg-server version.
+# Migrate to x11-drivers/xf86-input-wacom
+x11-drivers/linuxwacom
+
+# Christian Birchinger <joker@gentoo.org> (11 Sep 2010)
+# Masked for removal in 30 days. Doesn't work
+# with recent Audacious and the included ghosd
+# plugin is a perfect replacment.
+media-plugins/audacious-xosd
+
+# Doug Goldstein <cardoe@gentoo.org> (8 Sep 2010)
+# masked live version
+=x11-libs/cairo-9999*
+
+# Doug Goldstein <cardoe@gentoo.org> (7 Sep 2010)
+# beta series mask
+>=x11-drivers/nvidia-drivers-260
 
 # Kacper Kowalik <xarthisius@gentoo.org> (7 Sep 2010)
 # Mask until fully tested
@@ -370,14 +390,6 @@ net-mail/ixbiff
 # Removal on 2010-10-29
 sys-apps/stat
 
-# Torsten Veller <tove@gentoo.org> (30 Aug 2010)
-# TODO:
-# Test and give feedback if you have a '-g' in CFLAGS (#335213),
-# fix tests/sandbox failure when run as root (#328793),
-# fix parallel make failure (#331113)
-=dev-lang/perl-5.12.1-r2
-=dev-perl/perl-5.12.2
-
 # Doug Goldstein <cardoe@gentoo.org> (28 Aug 2010)
 # Need to investigate build errors on some kernels
 =app-emulation/kvm-kmod-2.6.35
@@ -400,10 +412,6 @@ sys-devel/omni
 #
 # Removal on 2010-10-26
 dev-libs/pcl
-
-# Markos Chandras <hwoarang@gentoo.org> (26 Aug 2010)
-# Masked for further testing
-=net-p2p/qbittorrent-2.4.0
 
 # Diego E. Pettenò <flameeyes@gentoo.org> (25 Aug 2010)
 #  on behalf of QA team
@@ -437,17 +445,6 @@ dev-python/ets
 #
 # Removal on 2010-09-23
 dev-python/boostpythongenerator
-
-# Diego E. Pettenò <flameeyes@gentoo.org> (24 Aug 2010)
-#  on behalf of QA team
-#
-# Split samba ebuilds that are no longer relevant as the
-# un-split 3.5 is stable already. Quick removal.
-#
-# Removal on 2010-09-08
-net-fs/samba-libs
-net-fs/samba-client
-net-fs/samba-server
 
 # Dirkjan Ochtman <djc@gentoo.org> (23 Aug 2010)
 # Unmaintained, uninstallable on version of Python we ship.
@@ -582,11 +579,6 @@ app-admin/webmin
 #
 # Removal on 2010-10-09
 sys-apps/gluelog
-
-# Diego E. Pettenò <flameeyes@gentoo.org> (09 Aug 2010)
-# Merged back into sys-libs/pam (without static build of sys-libs/db).
-# Removal on 2010-09-09
-sys-auth/pam_userdb
 
 # Diego E. Pettenò <flameeyes@gentoo.org> (06 Aug 2010)
 #  on behalf of QA team
@@ -1066,10 +1058,6 @@ games-strategy/xscorch
 =net-misc/modemmanager-0.3_p20100401
 
 # Patrick Lauer <patrick@gentoo.org> (07 Apr 2010)
-# Mask the 2.0_beta until release of 2.0 final
->=net-mail/dovecot-2.0_beta4
-
-# Patrick Lauer <patrick@gentoo.org> (07 Apr 2010)
 # Migrating back to unsplit samba ebuilds. Keeping samba-4 masked until release.
 net-fs/samba-libs
 net-fs/samba-server
@@ -1128,11 +1116,6 @@ sys-libs/ss
 # Jeroen Roovers <jer@gentoo.org> (28 Feb 2010)
 # Development release
 =app-admin/sysstat-9.1*
-
-# Theo Chatzimichos <tampakrap@gentoo.org> (26 Feb 2010)
-# Mask knetworkmanager as it is crashy, unusable, under
-# heavy development, and snapshot
-=kde-misc/knetworkmanager-4.4*
 
 # Robert Piasek <dagger@gentoo.org> (23 Feb 2010)
 # Masking libmapi as it depends on masked samba4
@@ -1424,12 +1407,6 @@ app-portage/udept
 # baselayout-vserver is unmaintained and obsoleted by baselayout-2/openrc.
 # Please, upgrade to openrc. removal after openrc goes stable, bug #254519
 sys-apps/baselayout-vserver
-
-# Zac Medico <zmedico@gentoo.org> (05 Jan 2009)
-# Portage 2.2 is masked due to known bugs in the
-# package sets and preserve-libs features. See
-# bug #253802 for details.
->=sys-apps/portage-2.2_pre
 
 # Diego E. Pettenò <flameeyes@gentoo.org> (03 Jan 2009)
 # These packages are not supposed to be merged directly, instead

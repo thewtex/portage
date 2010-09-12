@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/thunderbird/thunderbird-3.1.3.ebuild,v 1.1 2010/09/08 00:09:50 anarchy Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-client/thunderbird/thunderbird-3.1.3.ebuild,v 1.4 2010/09/11 10:26:50 hwoarang Exp $
 
 EAPI="3"
 WANT_AUTOCONF="2.1"
@@ -19,7 +19,7 @@ MY_P="${P/_rc/rc}"
 DESCRIPTION="Thunderbird Mail Client"
 HOMEPAGE="http://www.mozilla.com/en-US/thunderbird/"
 
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 SLOT="0"
 LICENSE="|| ( MPL-1.1 GPL-2 LGPL-2.1 )"
 IUSE="+alsa ldap +cups +crypt bindist libnotify +lightning mozdom system-sqlite wifi"
@@ -46,8 +46,8 @@ for X in ${LANGS} ; do
 done
 
 RDEPEND=">=sys-devel/binutils-2.16.1
-	>=dev-libs/nss-3.12.3
-	>=dev-libs/nspr-4.8
+	>=dev-libs/nss-3.12.7
+	>=dev-libs/nspr-4.8.6
 	>=app-text/hunspell-1.2
 	x11-libs/cairo[X]
 	x11-libs/pango[X]

@@ -1,6 +1,58 @@
 # ChangeLog for x11-libs/cairo
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/cairo/ChangeLog,v 1.252 2010/08/29 18:23:36 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/cairo/ChangeLog,v 1.262 2010/09/10 12:21:15 scarabeus Exp $
+
+  10 Sep 2010; Tomáš Chvátal <scarabeus@gentoo.org> cairo-9999.ebuild:
+  Drop lafiles removal from live too.
+
+*cairo-1.10.0-r3 (10 Sep 2010)
+
+  10 Sep 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  -cairo-1.10.0-r1.ebuild, -cairo-1.10.0-r2.ebuild, +cairo-1.10.0-r3.ebuild,
+  +files/cairo-1.10.0-install-sh.patch:
+  Revision bump to keep .la files around per bug #336671. Fix configure
+  phase per bug #336329, thanks to Erik Zeek for patch.
+
+*cairo-1.10.0-r2 (10 Sep 2010)
+
+  10 Sep 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +cairo-1.10.0-r2.ebuild, +files/cairo-1.10.0-buggy_gradients.patch:
+  Do not use server-side gradients. It hurts performance, and causes bad
+  rendering on at least nvidia. Bug 336696.
+
+  09 Sep 2010; Tomáš Chvátal <scarabeus@gentoo.org> metadata.xml:
+  Drop unused local use desc.
+
+  09 Sep 2010; Doug Goldstein <cardoe@gentoo.org> cairo-1.10.0-r1.ebuild,
+  cairo-9999.ebuild:
+  Fix qt USE flag to be qt4 and fix qt depends. fixes bug #336633
+
+  09 Sep 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  cairo-1.10.0-r1.ebuild, cairo-9999.ebuild:
+  Fix qa warning about undefined option.
+
+*cairo-1.10.0-r1 (09 Sep 2010)
+
+  09 Sep 2010; Tomáš Chvátal <scarabeus@gentoo.org> -cairo-1.10.0.ebuild,
+  +cairo-1.10.0-r1.ebuild, cairo-9999.ebuild:
+  Disable xlib over xcb by default. To make the choice of backend up to
+  application. Thanks to remi for pointing out.
+
+  08 Sep 2010; Tomáš Chvátal <scarabeus@gentoo.org> cairo-1.10.0.ebuild,
+  cairo-9999.ebuild:
+  Fix useflag copy-pasto i missed.
+
+*cairo-9999 (08 Sep 2010)
+
+  08 Sep 2010; Tomáš Chvátal <scarabeus@gentoo.org> cairo-1.10.0.ebuild,
+  +cairo-9999.ebuild, metadata.xml:
+  Sync with x11 overlay. Move live ebuild here from overlay.
+
+*cairo-1.10.0 (08 Sep 2010)
+
+  08 Sep 2010; Doug Goldstein <cardoe@gentoo.org> +cairo-1.10.0.ebuild:
+  Version bump. Currently masked why we develop all the necessary build
+  requirements and steps for all the various backends.
 
   29 Aug 2010; Raúl Porcel <armin76@gentoo.org> cairo-1.8.10.ebuild:
   ia64/s390/sh/sparc stable wrt #329175

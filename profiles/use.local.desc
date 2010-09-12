@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5934 2010/09/07 21:14:29 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5941 2010/09/10 13:53:34 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -2163,7 +2163,6 @@ media-video/mplayer:vpx - Enables vp8 codec support using libvpx
 media-video/mplayer:xanim - Enables support for xanim based codecs
 media-video/mplayer:xvmc - Enables X-Video Motion Compensation support
 media-video/mplayer:zoran - Enables ZR360[56]7/ZR36060 video output
-media-video/nvclock:gtk - Install the GTK+ based graphical interface
 media-video/ogmrip:ogm - Support for OGM container format
 media-video/ogmrip:srt - Support for SRT subtitle format
 media-video/rtmpdump:gnutls - Use GnuTLS library instead of the default OpenSSL
@@ -2463,29 +2462,6 @@ net-fs/samba:smbsharemodes - Enable special smb share modes (?)
 net-fs/samba:swat - Enables support for swat configuration gui
 net-fs/samba:tools - Enable extra tools
 net-fs/samba:winbind - Enables support for the winbind auth daemon
-net-fs/samba-client:ads - Enable Active Directory support
-net-fs/samba-client:aio - Enable asynchronous IO support
-net-fs/samba-client:cluster - Enable support for clustering
-net-fs/samba-client:samba4 - Enable experimental samba4 bits
-net-fs/samba-client:winbind - Enables support for the winbind auth daemon
-net-fs/samba-libs:addns - Enable AD DNS integration
-net-fs/samba-libs:ads - Enable Active Directory support
-net-fs/samba-libs:aio - Enable asynchronous IO support
-net-fs/samba-libs:cluster - Enable support for clustering
-net-fs/samba-libs:ldb - Enable the ldb tools
-net-fs/samba-libs:netapi - Enable building of netapi bits
-net-fs/samba-libs:samba4 - Enable experimental samba4 bits
-net-fs/samba-libs:smbclient - Enable smbclient tool
-net-fs/samba-libs:smbsharemodes - Enable special smb share modes (?) 
-net-fs/samba-libs:tools - Enable extra tools
-net-fs/samba-libs:winbind - Enables support for the winbind auth daemon
-net-fs/samba-server:ads - Enable Active Directory support
-net-fs/samba-server:aio - Enable asynchronous IO support
-net-fs/samba-server:cluster - Enable support for clustering
-net-fs/samba-server:quota - Enables support for user quotas
-net-fs/samba-server:samba4 - Enable experimental samba4 features"
-net-fs/samba-server:swat - Enables support for swat configuration gui
-net-fs/samba-server:winbind - Enables support for the winbind auth daemon
 net-fs/smbnetfs:gnome - Use the gnome-base/gnome-keyring for password management.
 net-ftp/ftpcube:sftp - Enable sftp connection support
 net-ftp/proftpd:authfile - Enable support for the auth-file module
@@ -2840,7 +2816,6 @@ net-misc/connman:dnsproxy - Enable dnsproxy support.
 net-misc/connman:ethernet - Enable ethernet support.
 net-misc/connman:google - Enable Google Public DNS support.
 net-misc/connman:ofono - Use net-misc/ofono for telephony support.
-net-misc/connman:resolvconf - Use rnet-dns/openresolv for resolvconf support.
 net-misc/connman:tools - Enable testing tools.
 net-misc/connman:udev - Enable udev support.
 net-misc/connman:wimax - Use net-wireless/wimax for WiMAX support.
@@ -3106,6 +3081,7 @@ net-wireless/blueman:network - Add functionality to setup (host) PAN connections
 net-wireless/bluez:attrib - Enable attrib plugin
 net-wireless/bluez:consolekit - Use sys-auth/pambase[consolekit] to determine access to bluetooth devices based on whether a user is logged in locally or remotely
 net-wireless/bluez:maemo6 - Compile with maemo6 plugin
+net-wireless/bluez:mcap - Compile with initial support for MCAP
 net-wireless/bluez:old-daemons - Install old daemons like hidd and sdpd that are deprecated by the new Service framework
 net-wireless/bluez:pnat - Enable pnat plugin
 net-wireless/bluez:test-programs - Install tools for testing of various Bluetooth functions
@@ -3640,6 +3616,7 @@ sys-libs/uclibc:wordexp - Add support for word expansion (wordexp.h)
 sys-power/cpufreqd:nforce2 - Enable support for nforce2 voltage settings plug-in
 sys-power/cpufreqd:nvidia - Enable nvidia overclocking (media-video/nvclock) plug-in
 sys-power/cpufreqd:pmu - Enable Power Management Unit plug-in
+sys-power/nvclock:gtk - Install the GTK+ based graphical interface
 sys-power/phctool:sudo - Enable support for sudo to run gui from non-root user
 sys-power/pm-utils:ntp - Install support for net-misc/ntp
 sys-power/powerman:genders -  Add support for selecting power control targets using genders (-g option) 
@@ -3774,9 +3751,12 @@ x11-drivers/ati-drivers:qt4 -  Install qt4 dependent optional tools (e.g Catalys
 x11-drivers/linuxwacom:modules - Build kernel module
 x11-libs/agg:gpc - Enable gpc polygon clipper library
 x11-libs/cairo:cleartype - Add ClearType-style behavior for sub-pixel hinting. Patch taken from Arch Linux
+x11-libs/cairo:drm - Use Linux DRM for backend acceleration
+x11-libs/cairo:gallium - Use Mesa's Gallium backend for acceleration
 x11-libs/cairo:glitz - Build with glitz support, which replaces some software render operations with Mesa OpenGL operations
 x11-libs/cairo:lcdfilter - Add FreeType LCD filtering, ClearType-style behavior for sub-pixel-hinting. Overrides cleartype USE flag. Patch taken from Ubuntu
-x11-libs/cairo:opengl - When used along with USE=glitz, enables glitz-glx usage. Requires hardware OpenGL support
+x11-libs/cairo:opengl -  When used along with USE=glitz, enables glitz-glx usage. Requires hardware OpenGL support 
+x11-libs/cairo:openvg - Use OpenVG for backend acceleration
 x11-libs/fltk:games - Builds and installs some extra games
 x11-libs/gtk+:introspection - Use dev-libs/gobject-introspection for introspection
 x11-libs/gtkdatabox:glade - Build with libglade and glade-3 supports, which includes a glade's module for GtkDataBox widget
@@ -3833,6 +3813,7 @@ x11-misc/fbpager:xrender - Enable transparency support via x11-libs/libXrender
 x11-misc/google-gadgets:soup - Enables XML HTTP request extension based on net-libs/libsoup
 x11-misc/google-gadgets:webkit - Enables browser element and script runtime based on net-libs/webkit-gtk
 x11-misc/lightdm:consolekit - Enables support for authorization using consolekit
+x11-misc/lightdm:webkit - Build greeter based on net-libs/webkit-gtk
 x11-misc/pcmanfm:udev - Use sys-fs/udev to determine available devices
 x11-misc/rednotebook:libyaml - enable libyaml support
 x11-misc/rednotebook:webkit - enable previews using webkit engine

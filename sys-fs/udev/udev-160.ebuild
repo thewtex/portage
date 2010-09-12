@@ -35,6 +35,40 @@ PROVIDE="virtual/dev-manager"
 
 pkg_setup() {
 	udev_libexec_dir="/$(get_libdir)/udev"
+	[ "$ROOT" != "/" ] && return 0
+	local fkv="$(uname -r)"
+	local kv="${fkv%-*}"
+	local k2="${kv%.*}"
+	local kmin="${kv##*.}"
+	echo $USE
+	if ! use bindist && [ "$k2" == "2.6" ] && [ "$kmin" -lt 27 ] && [ "${FEATURES/safetydance/}" = "${FEATURES}" ]
+	then
+		eerror
+		eerror "Current kernel version: $kv"
+		eerror "Minimum kernel version: 2.6.27"
+		eerror
+		ewarn "You are installing a version of udev that is incompatible with your"
+		ewarn "currently-running kernel. This version of udev requires a kernel"
+		ewarn "version of 2.6.27 or greater. Please use an earlier version of udev"
+		ewarn "with your running kernel by masking this version of udev, by adding"
+		ewarn "the following line to /etc/portage/package.mask:"
+		ewarn
+		ewarn ">=sys-fs/udev-160"
+		ewarn
+		ewarn "Alternatively, you may choose to upgrade to a compatible kernel, update"
+		ewarn "your boot loader and reboot your system so that the new kernel is"
+		ewarn "active. Then this version of udev will be compatible with your kernel"
+		ewarn "and the udev merge will then proceed without warning."
+		ewarn
+		ewarn "If you know what you are doing and want to override this safety check,"
+		ewarn "add 'safetydance' to FEATURES as follows:"
+		ewarn
+		ewarn "FEATURES=\"safetydance\" emerge <emerge arguments here>"
+		ewarn
+		ewarn "This will cause this runtime safety check to be skipped."
+		die
+	fi
+	return 0
 }
 
 src_unpack() {

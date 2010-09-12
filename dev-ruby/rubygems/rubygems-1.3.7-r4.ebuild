@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/rubygems/rubygems-1.3.7-r4.ebuild,v 1.1 2010/08/24 18:10:01 a3li Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/rubygems/rubygems-1.3.7-r4.ebuild,v 1.3 2010/09/08 08:44:49 grobian Exp $
 
 EAPI="3"
 
@@ -14,7 +14,7 @@ LICENSE="|| ( Ruby GPL-2 )"
 
 SRC_URI="mirror://rubyforge/${PN}/${P}.tgz"
 
-KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~mips ~ppc64 ~s390 ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~mips ~ppc64 ~s390 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 SLOT="0"
 IUSE="server test"
 
@@ -85,7 +85,8 @@ each_ruby_install() {
 
 	case "${RUBY}" in
 		*ruby19)
-			insinto $(ruby_rbconfig_value 'sitelibdir')
+			local sld=$(ruby_rbconfig_value 'sitelibdir')
+			insinto ${sld#${EPREFIX}}  # bug #320813
 			newins "${FILESDIR}/auto_gem.rb.ruby19" auto_gem.rb || die
 			;;
 		*)

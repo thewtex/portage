@@ -1,6 +1,22 @@
 # ChangeLog for net-irc/bip
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/bip/ChangeLog,v 1.15 2010/08/07 16:41:44 a3li Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-irc/bip/ChangeLog,v 1.19 2010/09/11 13:33:19 a3li Exp $
+
+  11 Sep 2010; Alex Legler <a3li@gentoo.org> -bip-0.8.4.ebuild,
+  -bip-0.8.5.ebuild:
+  Removing old and vulnerable versions.
+
+  10 Sep 2010; Markos Chandras <hwoarang@gentoo.org> bip-0.8.5-r1.ebuild:
+  Stable on amd64 wrt bug #336321
+
+  10 Sep 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> bip-0.8.5-r1.ebuild:
+  x86 stable wrt security bug #336321
+
+*bip-0.8.5-r1 (09 Sep 2010)
+
+  09 Sep 2010; Alex Legler <a3li@gentoo.org> +bip-0.8.5-r1.ebuild,
+  +files/bip-CVE-2010-3071.patch:
+  Revbump to fix CVE-2010-3071 (remote DoS), bug 336321.
 
   07 Aug 2010; Alex Legler <a3li@gentoo.org> bip-0.8.5.ebuild,
   +files/bip-configure.patch:

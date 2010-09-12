@@ -1,7 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation, 2004 Richard Garand <richard@garandnet.net>
+# Copyright 1999-2010 Gentoo Foundation, 2004 Richard Garand <richard@garandnet.net>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-games/hawknl/hawknl-1.68-r1.ebuild,v 1.5 2005/12/17 03:09:42 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-games/hawknl/hawknl-1.68-r1.ebuild,v 1.7 2010/09/10 15:04:32 mr_bones_ Exp $
 
+EAPI=2
 inherit toolchain-funcs eutils multilib
 
 DESCRIPTION="A cross-platform network library designed for games"
@@ -14,14 +15,11 @@ KEYWORDS="amd64 hppa ppc x86"
 IUSE="doc"
 
 RDEPEND=""
-DEPEND="${RDEPEND}
-	>=sys-apps/sed-4"
+DEPEND=""
 
 S=${WORKDIR}/hawknl${PV}
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
+src_prepare() {
 	epatch "${FILESDIR}"/${P}-build.patch
 	sed -i \
 		-e '/echo /d' src/makefile.linux \

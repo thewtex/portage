@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/firefox-bin/firefox-bin-3.6.9.ebuild,v 1.1 2010/09/08 01:26:32 anarchy Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/firefox-bin/firefox-bin-3.6.9.ebuild,v 1.4 2010/09/11 10:28:09 hwoarang Exp $
 EAPI="2"
 
 inherit eutils mozilla-launcher multilib mozextension
@@ -23,7 +23,7 @@ SRC_URI="${REL_URI}/${MY_PV}/linux-i686/en-US/${MY_P}.tar.bz2"
 HOMEPAGE="http://www.mozilla.com/firefox"
 RESTRICT="strip mirror"
 
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* amd64 x86"
 SLOT="0"
 LICENSE="|| ( MPL-1.1 GPL-2 LGPL-2.1 )"
 IUSE="startup-notification"
@@ -120,7 +120,7 @@ src_install() {
 
 	linguas
 	for X in ${linguas}; do
-		[[ ${X} != "en" ]] && xpi_install "${WORKDIR}"/"${P/-bin/}-${X}.xpi"
+		[[ ${X} != "en" ]] && xpi_install "${WORKDIR}"/"${P/-bin/}-${X}"
 	done
 
 	local LANG=${linguas%% *}
