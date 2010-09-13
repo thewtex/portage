@@ -1,10 +1,10 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/libfwbuilder/libfwbuilder-4.0.1.ebuild,v 1.1 2010/06/05 22:37:28 kumba Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/libfwbuilder/libfwbuilder-4.0.1.ebuild,v 1.2 2010/09/13 01:02:23 kumba Exp $
 
 EAPI="2"
 
-inherit qt4 autotools
+inherit qt4-r2 autotools
 
 DESCRIPTION="Firewall Builder 4.0 API library and compiler framework"
 HOMEPAGE="http://www.fwbuilder.org/"
@@ -21,7 +21,7 @@ DEPEND=">=dev-libs/libxml2-2.4.10
 RDEPEND="${DEPEND}"
 
 src_prepare() {
-	qt4_src_prepare
+	qt4-r2_src_prepare
 	eautoreconf || die "eautoreconf failed"
 
 	# This package fundamentally changed its build system.  We have to

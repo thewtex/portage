@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-visualization/grace/grace-5.1.22-r1.ebuild,v 1.7 2010/07/22 19:21:49 bicatali Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-visualization/grace/grace-5.1.22-r1.ebuild,v 1.8 2010/09/12 19:50:53 xarthisius Exp $
 
 EAPI=3
 inherit eutils toolchain-funcs
@@ -57,7 +57,7 @@ src_prepare() {
 		gracerc || die
 }
 
-src_compile() {
+src_configure() {
 	local myconf
 	if use fortran; then
 		myconf="--with-f77=$(tc-getFC)"
