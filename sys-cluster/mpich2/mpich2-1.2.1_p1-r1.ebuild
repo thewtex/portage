@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/mpich2/mpich2-1.2.1_p1-r1.ebuild,v 1.1 2010/08/05 04:03:08 jsbronder Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/mpich2/mpich2-1.2.1_p1-r1.ebuild,v 1.3 2010/09/14 21:52:35 jsbronder Exp $
 
 EAPI=2
 PYTHON_DEPEND="2"
@@ -15,11 +15,10 @@ SRC_URI="http://www.mcs.anl.gov/research/projects/mpich2/downloads/tarballs/${MY
 LICENSE="as-is"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
-IUSE="+cxx debug doc fortran pvfs2 threads romio mpi-threads"
+IUSE="+cxx debug doc fortran threads romio mpi-threads"
 
 COMMON_DEPEND="dev-libs/libaio
-	romio? ( net-fs/nfs-utils )
-	pvfs2? ( >=sys-cluster/pvfs2-2.7.0 )"
+	romio? ( net-fs/nfs-utils )"
 
 DEPEND="${COMMON_DEPEND}
 	dev-lang/perl
@@ -109,15 +108,10 @@ src_configure() {
 			c="${c} --enable-f77 --disable-f90";;
 	esac
 
-	if use pvfs2; then
-		# nfs and ufs are default.
-	    romio_conf="--with-file-system=pvfs2+nfs+ufs --with-pvfs2=/usr"
-	fi
-
 	c="${c} --sysconfdir=/etc/${PN}"
 	econf ${c} ${romio_conf} \
 		--docdir=/usr/share/doc/${PF} \
-		--with-pm=mpd:hydra:gforker \
+		--with-pm=mpd:hydra \
 		--disable-mpe \
 		$(use_enable romio) \
 		$(use_enable cxx) \

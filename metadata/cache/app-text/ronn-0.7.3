@@ -1,0 +1,22 @@
+test? ( ruby_targets_ruby18? ( >=dev-ruby/hpricot-0.8.2[ruby_targets_ruby18] >=dev-ruby/mustache-0.7.0[ruby_targets_ruby18] >=dev-ruby/rdiscount-1.5.8[ruby_targets_ruby18] ) ruby_targets_ree18? ( >=dev-ruby/hpricot-0.8.2[ruby_targets_ree18] >=dev-ruby/mustache-0.7.0[ruby_targets_ree18] >=dev-ruby/rdiscount-1.5.8[ruby_targets_ree18] ) ) ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ree18? ( dev-lang/ruby-enterprise:1.8 ) ruby_targets_ruby18? ( test? ( dev-ruby/rake[ruby_targets_ruby18] ) ) ruby_targets_ree18? ( test? ( dev-ruby/rake[ruby_targets_ree18] ) ) test? ( ruby_targets_ruby18? ( virtual/rubygems[ruby_targets_ruby18] ) ruby_targets_ree18? ( virtual/rubygems[ruby_targets_ree18] ) )
+ruby_targets_ruby18? ( >=dev-ruby/hpricot-0.8.2[ruby_targets_ruby18] >=dev-ruby/mustache-0.7.0[ruby_targets_ruby18] >=dev-ruby/rdiscount-1.5.8[ruby_targets_ruby18] ) ruby_targets_ree18? ( >=dev-ruby/hpricot-0.8.2[ruby_targets_ree18] >=dev-ruby/mustache-0.7.0[ruby_targets_ree18] >=dev-ruby/rdiscount-1.5.8[ruby_targets_ree18] ) ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ree18? ( dev-lang/ruby-enterprise:1.8 ) ruby_targets_ruby18? ( virtual/rubygems[ruby_targets_ruby18] ) ruby_targets_ree18? ( virtual/rubygems[ruby_targets_ree18] )
+0
+mirror://rubygems/ronn-0.7.3.gem
+
+http://foo.bar.com/
+MIT
+This is a sample skeleton ebuild file
+~amd64
+eutils multilib portability ruby-fakegem ruby-ng toolchain-funcs
+test ruby_targets_ruby18 ruby_targets_ree18 test
+
+
+
+2
+
+compile configure install prepare setup test unpack
+
+
+
+
+
