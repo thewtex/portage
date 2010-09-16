@@ -1,6 +1,6 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/gdbserver/gdbserver-7.0.ebuild,v 1.1 2009/12/16 23:06:34 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/gdbserver/gdbserver-7.0.ebuild,v 1.2 2010/09/16 10:27:34 flameeyes Exp $
 
 inherit eutils flag-o-matic
 
@@ -24,6 +24,8 @@ SLOT="0"
 RDEPEND=""
 DEPEND="${RDEPEND}
 	${PATCH_VER:+!vanilla? ( || ( app-arch/xz-utils app-arch/lzma-utils ) )}"
+RDEPEND="${RDEPEND}
+	!>=sys-devel/gdb-7.2"
 
 S="${WORKDIR}/${MY_P}/gdb/gdbserver"
 
