@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pygraphviz/pygraphviz-0.99.1.ebuild,v 1.4 2010/06/30 01:03:35 arfrever Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pygraphviz/pygraphviz-1.0.ebuild,v 1.1 2010/09/15 19:51:05 arfrever Exp $
 
 EAPI="3"
 PYTHON_DEPEND="2"
@@ -9,7 +9,7 @@ RESTRICT_PYTHON_ABIS="3.*"
 
 inherit distutils eutils
 
-DESCRIPTION="Python bindings for the agraph library in the graphviz package."
+DESCRIPTION="Python wrapper for the Graphviz Agraph data structure"
 HOMEPAGE="http://networkx.lanl.gov/pygraphviz/ http://pypi.python.org/pypi/pygraphviz"
 SRC_URI="http://networkx.lanl.gov/download/${PN}/${P}.tar.gz"
 
@@ -40,4 +40,9 @@ src_install() {
 		insinto /usr/share/doc/${PF}
 		doins -r examples || die
 	fi
+
+	delete_tests() {
+		rm -fr "${ED}$(python_get_sitedir)/${PN}/tests"
+	}
+	python_execute_function -q delete_tests
 }
