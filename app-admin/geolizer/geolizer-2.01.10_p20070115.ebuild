@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/geolizer/geolizer-2.01.10_p20070115.ebuild,v 1.2 2010/03/12 23:08:46 spatz Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/geolizer/geolizer-2.01.10_p20070115.ebuild,v 1.3 2010/09/17 06:47:32 sping Exp $
 
 # uses webapp.eclass to create directories with right permissions
 # probably slight overkill but works well
@@ -47,8 +47,9 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${WORKDIR}"/${PN}_${MY_PV}-patch/${PN}.patch
-	epatch "${FILESDIR}"/${P}-etc-geolizer-conf.patch
+	epatch "${WORKDIR}"/${PN}_${MY_PV}-patch/${PN}.patch \
+			"${FILESDIR}"/${P}-etc-geolizer-conf.patch \
+			"${FILESDIR}"/${P}-strip.patch
 	eautoreconf
 }
 
