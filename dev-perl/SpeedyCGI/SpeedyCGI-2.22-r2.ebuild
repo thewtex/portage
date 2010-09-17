@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/SpeedyCGI/SpeedyCGI-2.22-r2.ebuild,v 1.1 2010/09/15 14:21:11 pva Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/SpeedyCGI/SpeedyCGI-2.22-r2.ebuild,v 1.3 2010/09/17 05:01:06 mr_bones_ Exp $
 
 EAPI="2"
 inherit perl-module
@@ -34,11 +34,5 @@ PATCHES=( "${DISTDIR}/speedy-error.patch"
 "${FILESDIR}/${P}-uninit-crash.patch"
 "${FILESDIR}/${P}-big-socket-buffers.patch"
 "${FILESDIR}/${P}-ldflags.patch"
+"${FILESDIR}/${P}-parallel-build.patch"
 )
-
-MAKEOPTS="${MAKEOPTS} -j1"
-
-#src_configure() {
-#	export myconf="OPTIMIZE=\"${LDFLAGS}\""
-#	perl-module_src_configure
-#}

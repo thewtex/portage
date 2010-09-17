@@ -1,10 +1,10 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/arpd/arpd-0.2-r1.ebuild,v 1.1 2010/02/16 21:08:15 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/arpd/arpd-0.2-r1.ebuild,v 1.3 2010/09/17 05:01:33 mr_bones_ Exp $
 
 EAPI="3"
 
-inherit eutils
+inherit autotools eutils
 
 DESCRIPTION="ARP server which claims all unassigned addresses (for network monitoring or simulation)"
 HOMEPAGE="http://www.citi.umich.edu/u/provos/honeyd/"
@@ -26,10 +26,10 @@ src_prepare() {
 	epatch "${FILESDIR}"/arpd.c.patch
 	epatch "${FILESDIR}"/${P}-libevent.patch
 
-	sed -i \
-		-e 's|$withval/lib/libevent.a; then||' \
-		-e 's|if test -f $withval/include/event.h -a -f|if test -f $withval/include/event.h -a -f $withval/lib/libevent.a; then|' \
-		configure || die "sed failed"
+	#fix bug 337481, replace test on libevent.a with libevent.so
+	epatch "${FILESDIR}"/${P}-buildsystem-libevent-test.patch
+
+	eautoreconf
 }
 
 src_configure() {
