@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/dbus/dbus-1.4.0.ebuild,v 1.2 2010/09/13 21:23:52 reavertm Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/dbus/dbus-1.4.0.ebuild,v 1.4 2010/09/18 10:33:57 ssuominen Exp $
 
 EAPI="2"
 
@@ -167,9 +167,7 @@ src_install() {
 	fi
 
 	# Remove .la files
-	if ! use static-libs; then
-		find "${D}" -type f -name '*.la' -exec rm -f {} + || die
-	fi
+	find "${D}" -type f -name '*.la' -exec rm -f '{}' +
 }
 
 pkg_postinst() {
@@ -182,13 +180,7 @@ pkg_postinst() {
 	elog
 	ewarn "You must restart D-Bus \`/etc/init.d/dbus restart\` to run"
 	ewarn "the new version of the daemon."
-
-	if has_version "x11-base/xorg-server[hal]"; then
-		elog
-		ewarn "You are currently running X with the hal useflag enabled"
-		ewarn "restarting the dbus service WILL restart X as well"
-		ebeep 5
-	fi
+	ewarn "Don't do this while X is running because it will restart your X as well."
 
 	# Ensure unique id is generated
 	dbus-uuidgen --ensure="${ROOT}"/var/lib/dbus/machine-id

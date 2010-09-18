@@ -1,4 +1,4 @@
-x11-libs/libXrandr x11-libs/libXcursor x11-libs/fox-wrapper bzip2? ( >=app-arch/bzip2-1.0.2 ) cups? ( net-print/cups ) jpeg? ( >=media-libs/jpeg-6b ) opengl? ( virtual/opengl ) png? ( >=media-libs/libpng-1.2.5 ) tiff? ( >=media-libs/tiff-3.5.7 ) truetype? ( =media-libs/freetype-2* x11-libs/libXft ) zlib? ( >=sys-libs/zlib-1.1.4 ) x11-proto/xextproto x11-libs/libXt !<x11-libs/fox-1.0.53 !=x11-libs/fox-1.2.4 !~x11-libs/fox-1.2.6 !=x11-libs/fox-1.4.11 doc? ( app-doc/doxygen ) dev-util/reswrap =sys-devel/automake-1.4* >=sys-apps/sed-4
+x11-libs/libXrandr x11-libs/libXcursor x11-libs/fox-wrapper bzip2? ( >=app-arch/bzip2-1.0.2 ) cups? ( net-print/cups ) jpeg? ( >=media-libs/jpeg-6b ) opengl? ( virtual/opengl ) png? ( >=media-libs/libpng-1.2.5 ) tiff? ( >=media-libs/tiff-3.5.7 ) truetype? ( =media-libs/freetype-2* x11-libs/libXft ) zlib? ( >=sys-libs/zlib-1.1.4 ) x11-proto/xextproto x11-libs/libXt || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b doc? ( app-doc/doxygen ) dev-util/reswrap =sys-devel/automake-1.4* >=sys-apps/sed-4
 x11-libs/libXrandr x11-libs/libXcursor x11-libs/fox-wrapper bzip2? ( >=app-arch/bzip2-1.0.2 ) cups? ( net-print/cups ) jpeg? ( >=media-libs/jpeg-6b ) opengl? ( virtual/opengl ) png? ( >=media-libs/libpng-1.2.5 ) tiff? ( >=media-libs/tiff-3.5.7 ) truetype? ( =media-libs/freetype-2* x11-libs/libXft ) zlib? ( >=sys-libs/zlib-1.1.4 )
 1.6
 http://www.fox-toolkit.org/ftp/fox-1.6.35.tar.gz
@@ -7,7 +7,7 @@ http://www.fox-toolkit.org/
 LGPL-2.1
 C++ based Toolkit for developing Graphical User Interfaces easily and effectively
 alpha amd64 hppa ia64 ppc ppc64 sparc x86
-eutils fox libtool multilib portability toolchain-funcs versionator
+autotools eutils fox libtool multilib portability toolchain-funcs versionator
 bzip2 cups jpeg opengl png threads tiff truetype zlib debug doc profile
 
 

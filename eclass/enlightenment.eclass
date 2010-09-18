@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/enlightenment.eclass,v 1.86 2010/08/28 21:15:24 tommy Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/enlightenment.eclass,v 1.88 2010/09/18 08:39:07 vapier Exp $
 
 # @ECLASS: enlightenment.eclass
 # @MAINTAINER:
@@ -73,11 +73,9 @@ fi
 # Parse requested python state
 : ${E_PYTHON:=${E_CYTHON}}
 if [[ -n ${E_PYTHON} ]] ; then
-	WANT_AUTOTOOLS="no"
-
 	PYTHON_DEPEND="2:2.4"
 
-	inherit python distutils
+	inherit python
 fi
 
 if [[ ${WANT_AUTOTOOLS} == "yes" ]] ; then
@@ -110,10 +108,10 @@ case ${EKEY_STATE:-${E_STATE}} in
 esac
 IUSE="nls doc"
 
-DEPEND="doc? ( app-doc/doxygen )"
+DEPEND="doc? ( app-doc/doxygen )
+	${E_PYTHON:+>=dev-python/setuptools-0.6_rc9}
+	${E_CYTHON:+>=dev-python/cython-0.12.1}"
 RDEPEND="nls? ( sys-devel/gettext )"
-[[ -n ${E_PYTHON} ]] && DEPEND+=" >=dev-python/setuptools-0.6_rc9"
-[[ -n ${E_CYTHON} ]] && DEPEND+=" >=dev-python/cython-0.12.1"
 
 case ${EURI_STATE:-${E_STATE}} in
 	release) S=${WORKDIR}/${P};;
@@ -159,11 +157,7 @@ enlightenment_src_configure() {
 enlightenment_src_compile() {
 	hasq src_configure ${ENLIGHTENMENT_EXPF} || enlightenment_src_configure
 
-	if [[ -z ${E_PYTHON} ]] ; then
-		emake || die "emake failed"
-	else
-		distutils_src_compile
-	fi
+	emake || die
 
 	if use doc ; then
 		if [[ -x ./gendoc ]] ; then

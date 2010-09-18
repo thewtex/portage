@@ -1,4 +1,4 @@
-x11-libs/fox:1.6 jpeg? ( >=media-libs/jpeg-6b ) png? ( >=media-libs/libpng-1.2.5 ) tiff? ( >=media-libs/tiff-3.5.7 ) !<x11-libs/fox-1.0.53 !=x11-libs/fox-1.2.4 !~x11-libs/fox-1.2.6 !=x11-libs/fox-1.4.11 dev-util/reswrap =sys-devel/automake-1.4* >=sys-apps/sed-4
+x11-libs/fox:1.6 jpeg? ( >=media-libs/jpeg-6b ) png? ( >=media-libs/libpng-1.2.5 ) tiff? ( >=media-libs/tiff-3.5.7 ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b dev-util/reswrap =sys-devel/automake-1.4* >=sys-apps/sed-4
 x11-libs/fox:1.6 jpeg? ( >=media-libs/jpeg-6b ) png? ( >=media-libs/libpng-1.2.5 ) tiff? ( >=media-libs/tiff-3.5.7 )
 0
 http://www.fox-toolkit.org/ftp/fox-1.6.35.tar.gz
@@ -7,7 +7,7 @@ http://www.fox-toolkit.org/
 GPL-2
 File manager based on the FOX Toolkit
 ~alpha ~amd64 hppa ppc ppc64 ~sparc x86
-eutils fox libtool multilib portability toolchain-funcs versionator
+autotools eutils fox libtool multilib portability toolchain-funcs versionator
 jpeg png tiff debug doc profile
 
 
