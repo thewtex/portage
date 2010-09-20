@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/llvm/llvm-9999.ebuild,v 1.4 2010/08/28 14:07:15 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/llvm/llvm-9999.ebuild,v 1.5 2010/09/17 14:35:32 voyageur Exp $
 
 EAPI="3"
 inherit subversion eutils multilib toolchain-funcs
@@ -71,8 +71,10 @@ src_prepare() {
 	einfo "Fixing install dirs"
 	sed -e 's,^PROJ_docsdir.*,PROJ_docsdir := $(PROJ_prefix)/share/doc/'${PF}, \
 		-e 's,^PROJ_etcdir.*,PROJ_etcdir := '"${EPREFIX}"'/etc/llvm,' \
-		-e 's,^PROJ_libdir.*,PROJ_libdir := $(PROJ_prefix)/'$(get_libdir), \
+		-e 's,^PROJ_libdir.*,PROJ_libdir := $(PROJ_prefix)/'$(get_libdir)/${PN}, \
 		-i Makefile.config.in || die "Makefile.config sed failed"
+	sed -e 's,$ABS_RUN_DIR/lib,'"${EPREFIX}"/usr/$(get_libdir)/${PN}, \
+		-i tools/llvm-config/llvm-config.in.in || die "llvm-config sed failed"
 
 	einfo "Fixing rpath"
 	sed -e 's/\$(RPATH) -Wl,\$(\(ToolDir\|LibDir\))//g' -i Makefile.rules || die "sed failed"
@@ -82,7 +84,7 @@ src_prepare() {
 }
 
 src_configure() {
-	local CONF_FLAGS=""
+	local CONF_FLAGS="--enable-shared"
 
 	if use debug; then
 		CONF_FLAGS="${CONF_FLAGS} --disable-optimized"
@@ -154,9 +156,11 @@ src_install() {
 	# Fix install_names on Darwin.  The build system is too complicated
 	# to just fix this, so we correct it post-install
 	if [[ ${CHOST} == *-darwin* ]] ; then
-		for lib in lib{LLVMHello,LTO,profile_rt}.dylib ; do
-			install_name_tool -id "${EPREFIX}"/usr/lib/${lib} \
-				"${ED}"/usr/lib/${lib}
+		for lib in lib{EnhancedDisassembly,LLVM-${PN},LLVMHello,LTO,profile_rt}.dylib ; do
+			# libEnhancedDisassembly is Darwin10 only
+			[[ -f ${ED}/usr/lib/${PN}/${lib} ]] || continue
+			install_name_tool -id "${EPREFIX}"/usr/lib/${PN}/${lib} \
+				"${ED}"/usr/lib/${PN}/${lib}
 		done
 	fi
 }

@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-plugins/moonlight/moonlight-2.3.ebuild,v 1.1 2010/09/12 13:10:23 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-plugins/moonlight/moonlight-2.3.ebuild,v 1.3 2010/09/19 12:40:03 pacho Exp $
 
 EAPI=2
 
@@ -104,11 +104,13 @@ src_configure() {
 src_compile() {
 	einfo "Running make in "${WORKDIR}/${MONO}""
 	cd "${WORKDIR}/${MONO}"
-	emake || die "emake mono failed"
+	# mono does not like parallel build, bug #249985
+	emake -j1 || die "emake mono failed"
 
 	einfo "Running make in "${S}""
 	cd "${S}"
-	emake || die "emake moonlight failed"
+	# and moonlight neither, bug #337960, upstream bug #640395
+	emake -j1 || die "emake moonlight failed"
 }
 
 src_install() {

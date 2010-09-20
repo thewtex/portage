@@ -1,10 +1,74 @@
 # ChangeLog for profile directory
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.4552 2010/09/12 22:22:17 keytoaster Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.4571 2010/09/19 05:44:13 dirtyepic Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  19 Sep 2010; Ryan Hill <dirtyepic@gentoo.org> package.mask:
+  Mask media-fonts/cronyx-fonts for removal.
+
+  18 Sep 2010; Panagiotis Christopoulos <pchrist@gentoo.org> package.mask:
+  Remove the tinyurl link from my yesterday's commit and place instead bug
+  number, after jer's suggestion in gentoo-dev ml
+
+  18 Sep 2010; Alin Năstac <mrness@gentoo.org> package.mask:
+  Unmask net-misc/openswan-2.6.
+
+  18 Sep 2010; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Unmask sys-apps/dbus-1.4.0, tested functional with several consumers,
+  including Xfce4, KDE, X.org, polkit, consolekit, gvfs, upower and udisks.
+
+  17 Sep 2010; Panagiotis Christopoulos <pchrist@gentoo.org> package.mask:
+  Mask various old common-lisp packages in order to cleanup the herd a bit.
+
+  17 Sep 2010; Fabian Groffen <grobian@gentoo.org> package.mask:
+  Mask upcoming mutt-1.5.21 because of missing USE=sidebar
+
+  17 Sep 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> package.mask:
+  Mask www-client/chromium dev channel release.
+
+  17 Sep 2010; Tomáš Chvátal <scarabeus@gentoo.org> package.mask:
+  Mask x11-drivers/xf86-video-radeonhd
+
+  17 Sep 2010; Ryan Hill <dirtyepic@gentoo.org> package.mask:
+  Drop mask for removed packages.
+
+  16 Sep 2010; Theo Chatzimichos <tampakrap@gentoo.org>
+  base/package.use.mask:
+  Mask ayatana USE flag, as its deps aren't in good shape
+
+  16 Sep 2010; Vlastimil Babka <caster@gentoo.org> package.mask:
+  Remove mask for sun-jdk-1.5 and jmp which were removed.
+
+  15 Sep 2010; Pacho Ramos <pacho@gentoo.org> package.mask:
+  Mask new emul-linux-x86-opengl version for ~arch and overlay users.
+
+  14 Sep 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> package.mask:
+  Mask www-client/chromium dev channel release.
+
+  14 Sep 2010; Chris PeBenito <pebenito@gentoo.org> base/package.mask,
+  package.mask, +selinux/parent:
+  Fix up SELinux profile issues from #336692. Move maskings out of global
+  package.mask to base/package.mask and inerit that profile in SELinux
+  profile.
+
+  13 Sep 2010; Ulrich Mueller <ulm@gentoo.org> package.mask:
+  Mask app-emacs/gnus for removal.
+
+  13 Sep 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  package.mask:
+  Mask Zope 2.13 and 3.
+
+  13 Sep 2010; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Add gprof2dot to the list of masked ebuilds for fetching live data.
+
+  13 Sep 2010; Pacho Ramos <pacho@gentoo.org> package.mask:
+  Mask x11-libs/gtkscintilla2 for removal.
+
+  13 Sep 2010; Pacho Ramos <pacho@gentoo.org> package.mask:
+  Mask x11-libs/diacanvas for removal, bug #276918
 
   12 Sep 2010; Tobias Heinlein <keytoaster@gentoo.org> package.mask:
   Masked pidgin-knotify, bug #336916

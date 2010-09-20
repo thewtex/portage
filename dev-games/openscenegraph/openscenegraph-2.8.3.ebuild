@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-games/openscenegraph/openscenegraph-2.8.3.ebuild,v 1.6 2010/09/03 17:18:18 nyhm Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-games/openscenegraph/openscenegraph-2.8.3.ebuild,v 1.9 2010/09/18 17:32:49 armin76 Exp $
 
 EAPI=2
 
@@ -14,7 +14,7 @@ HOMEPAGE="http://www.openscenegraph.org/projects/osg/"
 SRC_URI="http://www.openscenegraph.org/downloads/stable_releases/${MY_P}/source/${MY_P}.zip"
 
 LICENSE="wxWinLL-3 LGPL-2.1"
-KEYWORDS="amd64 ~ppc ~sparc x86"
+KEYWORDS="amd64 ~ppc sparc x86"
 SLOT="0"
 IUSE="curl debug doc examples ffmpeg fltk fox gdal gif glut gtk jpeg jpeg2k
 openexr openinventor osgapps pdf png qt4 sdl static-libs svg tiff truetype vnc
@@ -29,13 +29,12 @@ wxwidgets xine xrandr zlib"
 RDEPEND="
 	x11-libs/libSM
 	x11-libs/libXext
-	virtual/glu
 	virtual/opengl
 	curl? ( net-misc/curl )
 	examples? (
 		fltk? ( x11-libs/fltk:1.1[opengl] )
 		fox? ( x11-libs/fox:1.6[opengl] )
-		glut? ( virtual/glut )
+		glut? ( media-libs/freeglut )
 		gtk? ( x11-libs/gtkglext )
 		qt4? (
 			x11-libs/qt-core:4

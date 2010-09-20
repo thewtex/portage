@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/jail/jail-1.9-r2.ebuild,v 1.13 2010/01/01 19:05:54 scarabeus Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/jail/jail-1.9-r2.ebuild,v 1.14 2010/09/17 05:36:42 jer Exp $
 
 inherit eutils flag-o-matic
 
@@ -21,10 +21,9 @@ RDEPEND="dev-lang/perl
 src_unpack() {
 	unpack ${PN}_${PV}.tar.gz
 	cd "${S}"
-	epatch "${FILESDIR}"/${PN}-gentoo.diff || die "failed to apply patch"
-	epatch "${FILESDIR}"/wrongshell.patch || die "failed to apply patch"
-	cd src
-	epatch "${FILESDIR}"/multiuser-rsa.patch || die "failed to apply patch"
+	epatch "${FILESDIR}"/${P}-gentoo.patch || die "failed to apply patch"
+	epatch "${FILESDIR}"/${P}-wrongshell.patch || die "failed to apply patch"
+	epatch "${FILESDIR}"/${P}-multiuser-rsa.patch || die "failed to apply patch"
 }
 
 src_compile() {

@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-games/newton/newton-1.53.ebuild,v 1.4 2010/03/08 22:12:34 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-games/newton/newton-1.53.ebuild,v 1.6 2010/09/17 11:01:42 scarabeus Exp $
 
 EAPI=2
 inherit eutils
@@ -16,8 +16,7 @@ IUSE="doc"
 
 DEPEND="doc? (
 		virtual/opengl
-		virtual/glu
-		virtual/glut
+		media-libs/freeglut
 	)"
 
 S=${WORKDIR}/newtonSDK

@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/libva/libva-0.31.0_p13.ebuild,v 1.4 2010/06/22 12:31:30 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/libva/libva-0.31.0_p13.ebuild,v 1.6 2010/09/17 09:44:54 fauli Exp $
 
 EAPI="2"
 inherit eutils autotools
@@ -15,16 +15,15 @@ SRC_URI="http://www.splitted-desktop.com/~gbeauchesne/${PN}/${PN}_${MY_PV}-1+sds
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 IUSE="opengl"
 
-VIDEO_CARDS="dummy nvidia intel" # fglrx
+VIDEO_CARDS="dummy nvidia" # fglrx
 for x in ${VIDEO_CARDS}; do
 	IUSE+=" video_cards_${x}"
 done
 
 RDEPEND=">=x11-libs/libdrm-2.4
-	video_cards_intel? ( >=x11-libs/libdrm-2.4.21 )
 	x11-libs/libX11
 	x11-libs/libXext
 	x11-libs/libXfixes
@@ -47,7 +46,6 @@ src_prepare() {
 src_configure() {
 	econf \
 	$(use_enable video_cards_dummy dummy-driver) \
-	$(use_enable video_cards_intel i965-driver) \
 	$(use_enable opengl glx)
 }
 

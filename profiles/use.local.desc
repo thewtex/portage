@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5946 2010/09/12 22:14:05 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5962 2010/09/18 22:34:38 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -175,6 +175,7 @@ app-editors/emacs-vcs:gconf - Use gnome-base/gconf to read the system font name
 app-editors/emacs-vcs:gzip-el - Compress bundled Emacs Lisp source
 app-editors/emacs-vcs:hesiod - Enable support for net-dns/hesiod
 app-editors/emacs-vcs:imagemagick - Use media-gfx/imagemagick for image processing
+app-editors/emacs-vcs:libxml2 - Use dev-libs/libxml2 to parse XML instead of the internal Lisp implementations
 app-editors/emacs-vcs:sound - Enable sound
 app-editors/emacs-vcs:toolkit-scroll-bars - Use the selected toolkit's scrollbars in preference to Emacs' own scrollbars
 app-editors/fe:sendmail - Send mail after editor abend
@@ -865,7 +866,6 @@ dev-lang/spidermonkey:threadsafe - Build a threadsafe version of spidermonkey
 dev-lang/swig:ccache - build ccache-swig(a fast compiler cache)
 dev-lang/vala:coverage - Enable coverage analysis
 dev-lang/vala:vapigen - Enable vala's library binding generator
-dev-libs/DirectFB:fusion - Add Multi Application support (fusion kernel device)
 dev-libs/DirectFB:sysfs - Add support for the sysfs filesystem (requires Linux-2.6+)
 dev-libs/STLport:boost - Enable the usage of dev-libs/boost
 dev-libs/ace:ciao - Include Component Intergraced Ace ORB into the build of ace
@@ -1352,6 +1352,7 @@ gnome-extra/nautilus-sendto:gajim - Enables support for net-im/gajim
 gnome-extra/nautilus-sendto:mail - Enables support for mailto using gnome-extra/evolution-data-server
 gnome-extra/nautilus-sendto:pidgin - Enables support for net-im/pidgin
 gnome-extra/nautilus-sendto:upnp - Enables support for sending files over upnp using net-libs/gupnp-av
+gnome-extra/panflute:mpd - Enable MPD support
 gnome-extra/sensors-applet:nvidia - Enables support for sensors on NVidia chips
 gnome-extra/yelp:beagle - Enables support for the Beagle (app-misc/beagle) desktop search tool
 gnome-extra/yelp:lzma - Enables support for LZMA compressed info and man pages
@@ -1400,9 +1401,11 @@ kde-base/kdeplasma-addons:desktopglobe - Enable Desktop Globe wallpaper using kd
 kde-base/kdeplasma-addons:qalculate - Enable Qalculate runner using sci-libs/libqalculate
 kde-base/kdeplasma-addons:qwt - Enable applets that use x11-libs/qwt:5.
 kde-base/kdeplasma-addons:scim - Enable applets that use app-i18n/scim.
-kde-base/kdesdk-misc:extras - Build p2xml and swappo tools
+kde-base/kdesdk-misc:extras - Build po2xml and swappo tools
 kde-base/kdeutils-meta:floppy - Install kde-base/kfloppy to format and create DOS or ext2fs filesystems in a floppy.
 kde-base/kdm:consolekit - Enables support for authorization using consolekit
+kde-base/kget:bittorrent - Enable bittorrent transfer plugin through net-libs/libktorrent
+kde-base/kget:webkit - Enable KdeWebkit browser plugin using kde-misc/kwebkitpart
 kde-base/kig:kig-scripting - Support Python scripting
 kde-base/konqueror:bookmarks -  Add dependency on bookmark package. 
 kde-base/konqueror:thumbnail -  Enables video thumbnails generation for kde-base/konqueror file manager. 
@@ -1616,6 +1619,7 @@ media-gfx/digikam:addressbook - Add support for kdepim
 media-gfx/digikam:geolocation - Add support for marble
 media-gfx/digikam:glib - Enable support for liquid rescale tool
 media-gfx/digikam:lensfun - Enable support for lens-correnction library
+media-gfx/digikam:themedesigner - Build the digikam theme designer
 media-gfx/digikam:thumbnails - Enable thumbnails database support
 media-gfx/digikam:video - Pull in mplayerthumbs to enable video thumbnails
 media-gfx/enblend:gpu - GPU support for Enblend
@@ -1769,6 +1773,7 @@ media-libs/swfdec:gtk - Enable GTK+ convenience library while is necessary for a
 media-libs/swfdec:oss - Use Open Sound System for audio output
 media-libs/swfdec:pulseaudio - Use media-sound/pulseaudio for audio output
 media-libs/taglib:asf - Provide support for Microsoft's 'advanced systems format' media container.
+media-libs/tiff:12-bit - Add support for 12/8-bit jpeg compression.
 media-libs/urt:gs - Add support for postscript
 media-libs/win32codecs:real - Installs the real video codecs
 media-libs/x264:pic - disable optimized assembly code that is not PIC friendly
@@ -2446,17 +2451,12 @@ net-fs/nfs-utils:nonfsv4 - Disable support for NFSv4
 net-fs/samba:addns - Enable AD DNS integration
 net-fs/samba:ads - Enable Active Directory support
 net-fs/samba:aio - Enable asynchronous IO support
-net-fs/samba:async - Enables asynchronous input/output
-net-fs/samba:automount - Enables automount support
-net-fs/samba:cifsupcall - Enables userspace upcall helper
 net-fs/samba:client - Enables the client part
 net-fs/samba:cluster - Enable support for clustering
 net-fs/samba:dso - Enable dso support
 net-fs/samba:ldb - Enable the ldb tools
 net-fs/samba:netapi - Enable building of netapi bits
-net-fs/samba:oav - Enables support for the OpenAntiVirus plugins
 net-fs/samba:quota - Enables support for user quotas
-net-fs/samba:quotas - Enables support for user quotas
 net-fs/samba:server - Enables the server part
 net-fs/samba:smbclient - Enable smbclient tool
 net-fs/samba:smbsharemodes - Enable special smb share modes (?) 
@@ -2607,12 +2607,16 @@ net-irc/unrealircd:shunnotices - Enable notifying a user when un-shunned
 net-irc/unrealircd:spoof - Enable the spoof protection
 net-irc/unrealircd:topicisnuhost - Enable displaying nick!user@host as topic setter
 net-irc/unrealircd:usermod - Enable /set* and /chg* commands
+net-irc/weechat:alias - Enable plugin for alias control.
 net-irc/weechat:charset - Enable encoding conversions.
 net-irc/weechat:fifo - Enable FIFO support (sh pipes).
+net-irc/weechat:gtk - Enable (experimental) gtk interface.
 net-irc/weechat:irc - Enable IRC protocol support.
 net-irc/weechat:logger - Enable support for logging.
 net-irc/weechat:relay - Enable relay plugin (experimental)
+net-irc/weechat:rmodifier - Enable rmodifier plugin.
 net-irc/weechat:scripts - Build infrastructure for scripting.
+net-irc/weechat:xfer - Enable xfer plugin support.
 net-irc/xchat:ntlm - Enable NTLM authentication
 net-irc/xchat:xchatdccserver - Enables support for the /dccserver command via a patch
 net-irc/xchat:xchatnogtk - Disables building the GTK front end to XChat
@@ -2626,6 +2630,7 @@ net-libs/clinkcc:mythtv - Enable MythTV support
 net-libs/courier-authlib:vpopmail - Enable vpopmail support
 net-libs/cvm:vpopmail - Enable vpopmail support
 net-libs/farsight2:upnp - Enable UPnP IGD support
+net-libs/gnutls:nettle - Use dev-libs/nettle as crypto backend
 net-libs/gssdp:introspection - Use dev-libs/gobject-introspection for introspection
 net-libs/gupnp:introspection - Use dev-libs/gobject-introspection for introspection
 net-libs/gupnp-av:introspection - Use dev-libs/gobject-introspection for introspection
@@ -2636,6 +2641,7 @@ net-libs/libetpan:liblockfile - Enable support for liblockfile library
 net-libs/libfwbuilder:bind - Use bind's name resolving library
 net-libs/libfwbuilder:stlport - Enagle support for STLport
 net-libs/libinfinity:server -  Build and install the server binary including init.d/conf.d-scripts. Needed if you want to host an infinote server for gobby. 
+net-libs/libmicrohttpd:messages - enable error messages
 net-libs/libnice:upnp - Enable UPnP IGD support
 net-libs/libnids:glib - Use dev-libs/glib for multiprocessing support
 net-libs/libnids:libnet - Include code requiring net-libs/libnet
@@ -2826,6 +2832,7 @@ net-misc/curl:gnutls - Prefer gnutls over nss and openssl as the crypto engine
 net-misc/curl:libssh2 - Enabled SSH urls in curl using libssh2
 net-misc/curl:nss - Prefer NSS over openssl as the crypto engine
 net-misc/curl:ssl - Enable crypto engine support (via openssl if USE='-gnutls -nss')
+net-misc/dahdi-tools:ppp - Enables PPP/DAHDIRAS support
 net-misc/dhcpcd:compat - Enable commandline compatibility with dhcpcd-3.x
 net-misc/directvnc:mouse - Adds mouse support
 net-misc/dnetstats:gnome - Use gksu to gain root access
@@ -2996,6 +3003,8 @@ net-p2p/btg:upnp - Enable support for UPnP
 net-p2p/btg:webinterface - install webBTG
 net-p2p/dbhub:switch_user - Enable support for switching user
 net-p2p/deluge:webinterface - Install dependencies needed for the web interface 
+net-p2p/eiskaltdcpp:emoticons - Install emoticon packs
+net-p2p/eiskaltdcpp:sounds - Install sound files
 net-p2p/eiskaltdcpp:upnp - Forward ports using UPnP
 net-p2p/fms:frost - Add support for frost boards
 net-p2p/freenet:freemail - Add Freemail support
@@ -3221,6 +3230,7 @@ sci-libs/gdal:gml - Enable support for dev-libs/xerces-c C++ API
 sci-libs/gdal:hdf - Add support for the Hierarchical Data Format v. 4 (sci-libs/hdf)
 sci-libs/gdal:ogdi - Enable support for the open geographic datastore interface (sci-libs/ogdi)
 sci-libs/gerris:dx - Enable support for sci-visualization/opendx
+sci-libs/getdata:lzma - Support for encodings provided by liblzma
 sci-libs/gsl:cblas-external - Link gsl with external cblas provided by (virtual/cblas) instead of shipped internal version
 sci-libs/indilib:fits - Enable support for the FITS image format through cfitsio
 sci-libs/indilib:nova - Enable support for nova celestial mechanics calculations
@@ -3265,17 +3275,17 @@ sci-mathematics/geomview:avg - Enable experimental motion averaging technique
 sci-mathematics/geomview:netpbm - Add media-libs/netpbm support for external modules
 sci-mathematics/gretl:R - Enable support for dev-lang/R
 sci-mathematics/gretl:sourceview - Enable support for x11-libs/gtksourceview 
-sci-mathematics/maxima:clisp - Add support for GNU CLISP (dev-lisp/clisp)
-sci-mathematics/maxima:cmucl - Add support for CMU Common Lisp (dev-lisp/cmucl)
-sci-mathematics/maxima:ecl - Add support for Embeddable Common Lisp (dev-lisp/ecls)
-sci-mathematics/maxima:gcl - Add support for GNU Common Lisp (dev-lisp/gcl)
-sci-mathematics/maxima:openmcl - Add support for Clozure Common Lisp (former OpenMCL, dev-lisp/closurecl)
-sci-mathematics/maxima:sbcl - Add support for Steel Bank Common Lisp (dev-lisp/sbcl)
+sci-mathematics/maxima:clisp - Compile maxima with GNU CLISP (dev-lisp/clisp)
+sci-mathematics/maxima:clozurecl - Compile maxima with Clozure Common Lisp (dev-lisp/clozurecl)
+sci-mathematics/maxima:cmucl - Compile maxima with CMU Common Lisp (dev-lisp/cmucl)
+sci-mathematics/maxima:ecl - Compile maxima with Embeddable Common Lisp (dev-lisp/ecls)
+sci-mathematics/maxima:ecls - Compile maxima with Embeddable Common Lisp (dev-lisp/ecls)
+sci-mathematics/maxima:gcl - Compile maxima with GNU Common Lisp (dev-lisp/gcl)
+sci-mathematics/maxima:openmcl - Compile maxima with Clozure Common Lisp (former OpenMCL, dev-lisp/closurecl)
+sci-mathematics/maxima:sbcl - Compile maxima with Steel Bank Common Lisp (dev-lisp/sbcl)
 sci-mathematics/nusmv:minisat - Enable support for MiniSat
 sci-mathematics/octave:sparse - Enable enhanced support for sparse matrix algebra
 sci-mathematics/pari:data - Add additional data (elldata, galdata, seadata, nftables)
-sci-mathematics/pari:elliptic - Add additional elliptic curve data
-sci-mathematics/pari:galois - Add additional data to compute Galois groups of degree 8 to 11
 sci-mathematics/singular:boost - Compile against external boost headers (dev-libs/boost)
 sci-mathematics/yacas:server - Build the network server version
 sci-misc/boinc:client -  Build client part of the boinc. Not only the manager but also the computation unit. With +X only you will have only manager which can connect to remote clients. 

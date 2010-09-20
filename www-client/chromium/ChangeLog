@@ -1,6 +1,39 @@
 # ChangeLog for www-client/chromium
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/ChangeLog,v 1.173 2010/09/11 16:10:20 phajdan.jr Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/ChangeLog,v 1.178 2010/09/18 09:56:11 hwoarang Exp $
+
+  18 Sep 2010; Markos Chandras <hwoarang@gentoo.org>
+  chromium-6.0.472.59.ebuild:
+  Stable on amd64 wrt bug #335750
+
+  17 Sep 2010; Christian Faulhammer <fauli@gentoo.org>
+  chromium-6.0.472.59.ebuild:
+  stable x86, security bug 335750
+
+*chromium-7.0.517.8 (17 Sep 2010)
+
+  17 Sep 2010; Bernard Cafarelli <voyageur@gentoo.org>
+  +chromium-7.0.517.8.ebuild:
+  Version bump for dev channel release.
+
+*chromium-6.0.472.59-r1 (15 Sep 2010)
+*chromium-6.0.472.59 (15 Sep 2010)
+
+  15 Sep 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-6.0.472.55.ebuild, +chromium-6.0.472.59.ebuild,
+  +chromium-6.0.472.59-r1.ebuild:
+  Version bump for stable channel release. Provide a target for
+  stabilization (-r0) with lower cups dependency. There are some problems
+  both with older and newer cups, but we need to stabilize this version of
+  chromium quickly due to security bug #335750.
+
+*chromium-7.0.517.5 (14 Sep 2010)
+
+  14 Sep 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-7.0.503.1.ebuild, +chromium-7.0.517.5.ebuild,
+  chromium-9999.ebuild:
+  Version bump for dev channel release. Now we use system libxml and libxslt
+  again. Removed old version.
 
   11 Sep 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
   chromium-7.0.503.1-r1.ebuild, chromium-9999.ebuild:

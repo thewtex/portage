@@ -1,15 +1,15 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/kremotecontrol/kremotecontrol-4.5.1.ebuild,v 1.2 2010/09/06 04:50:47 reavertm Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/kremotecontrol/kremotecontrol-4.5.1.ebuild,v 1.5 2010/09/19 04:23:28 abcd Exp $
 
 EAPI="3"
 
-KDE_HANDBOOK=1
+KDE_HANDBOOK="optional"
 KMNAME="kdeutils"
 inherit kde4-meta
 
 DESCRIPTION="KDE frontend for remote controls"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="debug"
 
 DEPEND="

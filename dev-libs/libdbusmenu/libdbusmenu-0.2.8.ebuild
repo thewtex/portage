@@ -1,21 +1,19 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libdbusmenu/libdbusmenu-0.2.8.ebuild,v 1.1 2010/03/31 16:40:34 tampakrap Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libdbusmenu/libdbusmenu-0.2.8.ebuild,v 1.3 2010/09/16 12:04:31 tampakrap Exp $
 
 EAPI=2
 
 inherit autotools eutils versionator
 
 DESCRIPTION="Library to pass menu structure across DBus"
-HOMEPAGE="https://launchpad.net/libdbusmenu/"
+HOMEPAGE="https://launchpad.net/dbusmenu"
 SRC_URI="http://launchpad.net/dbusmenu/$(get_version_component_range 1-2)/${PV}/+download/${P}.tar.gz"
 
 LICENSE="LGPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="gtk test"
-
-RESTRICT="test"
 
 RDEPEND="dev-libs/glib:2
 	dev-libs/dbus-glib
@@ -40,7 +38,9 @@ src_prepare() {
 src_configure() {
 	econf \
 		$(use_enable gtk) \
-		$(use_enable test tests)
+		--disable-tests
+		# tests disabled, bug 315217
+		# $(use_enable test tests)
 }
 
 src_test() {
