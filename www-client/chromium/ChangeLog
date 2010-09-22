@@ -1,6 +1,25 @@
 # ChangeLog for www-client/chromium
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/ChangeLog,v 1.178 2010/09/18 09:56:11 hwoarang Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/ChangeLog,v 1.184 2010/09/20 16:39:31 phajdan.jr Exp $
+
+*chromium-6.0.472.62-r1 (20 Sep 2010)
+*chromium-6.0.472.62 (20 Sep 2010)
+
+  20 Sep 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-5.0.375.127.ebuild, -chromium-6.0.472.59-r1.ebuild,
+  +chromium-6.0.472.62.ebuild, +chromium-6.0.472.62-r1.ebuild,
+  -files/chromium-6.0.495.0-gcc-4.5.patch,
+  -files/chromium-disable-vp8-r1.patch, -chromium-7.0.503.1-r1.ebuild,
+  -files/chromium-ffmpeg-compatibility-r0.patch,
+  -files/chromium-20100122-ubuntu-html5-video-mimetypes.patch,
+  -files/chromium-drop_sse2-r0.patch, -files/chromium-yuv-crash-r0.patch,
+  -files/chromium-libpng-1.4.patch, -files/chromium-yuv-crash-r1.patch:
+  Version bump for stable channel release. Remove old. Remove unusded
+  patches.
+
+  20 Sep 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> chromium-9999.ebuild:
+  Use gclient sync --nohooks to avoid a problem with gyp running to early.
+  Thanks to Mike Gilbert <floppymaster@gmail.com> in bug #337543.
 
   18 Sep 2010; Markos Chandras <hwoarang@gentoo.org>
   chromium-6.0.472.59.ebuild:

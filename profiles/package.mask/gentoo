@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11956 2010/09/19 05:44:13 dirtyepic Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11963 2010/09/21 16:37:17 tampakrap Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -31,10 +31,24 @@
 
 #--- END OF EXAMPLES ---
 
-# Ryan Hill <dirtyepic@gentoo.org> (19 Sep 2010)
-# Mask for removal 20101019 (bug #304621).
-# Use font-cronyx-cyrillic instead.
-media-fonts/cronyx-fonts
+# Theo Chatzimichos <tampakrap@gentoo.org> (21 Sep 2010)
+# Mask Qt 4.7.0, it will be unmasked as soon as it is tinderboxed
+~x11-libs/qt-assistant-4.7.0
+~x11-libs/qt-core-4.7.0
+~x11-libs/qt-dbus-4.7.0
+~x11-libs/qt-declarative-4.7.0
+~x11-libs/qt-demo-4.7.0
+~x11-libs/qt-gui-4.7.0
+~x11-libs/qt-multimedia-4.7.0
+~x11-libs/qt-opengl-4.7.0
+~x11-libs/qt-phonon-4.7.0
+~x11-libs/qt-qt3support-4.7.0
+~x11-libs/qt-script-4.7.0
+~x11-libs/qt-sql-4.7.0
+~x11-libs/qt-svg-4.7.0
+~x11-libs/qt-test-4.7.0
+~x11-libs/qt-webkit-4.7.0
+~x11-libs/qt-xmlpatterns-4.7.0
 
 # Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org> (19 Sep 2010)
 # Masked until the public release
@@ -48,7 +62,7 @@ media-fonts/cronyx-fonts
 dev-lisp/cl-acclaim
 dev-lisp/cl-acl-compat
 dev-lisp/cl-aim
-dev-lisp/cl-aima
+=dev-lisp/cl-aima-1.0.4
 dev-lisp/cl-anaphora
 dev-lisp/cl-ansi-tests-cvs
 dev-lisp/cl-araneida
@@ -58,7 +72,8 @@ dev-lisp/cl-asdf-system-connections
 dev-lisp/cl-aserve
 dev-lisp/cl-aspectl
 dev-lisp/cl-awk
-dev-lisp/cl-base64
+=dev-lisp/cl-base64-3.3.2
+=dev-lisp/cl-base64-3.3.1
 dev-lisp/cl-bayescl
 dev-lisp/cl-binary-types
 dev-lisp/cl-bind
@@ -82,43 +97,55 @@ dev-lisp/cl-cxml
 dev-lisp/cl-defpatt
 dev-lisp/cl-defsystem3
 dev-lisp/cl-diff
-dev-lisp/cl-difflib
+=dev-lisp/cl-difflib-0.1
 dev-lisp/cl-dot
 dev-lisp/cl-drakma
 dev-lisp/cl-elephant
-dev-lisp/cl-emb
+=dev-lisp/cl-emb-0.4.2
+=dev-lisp/cl-emb-0.4.1
+=dev-lisp/cl-emb-0.4.3
 dev-lisp/cl-environment
-dev-lisp/cl-fad
+=dev-lisp/cl-fad-0.4.1
+=dev-lisp/cl-fad-0.4.0
+=dev-lisp/cl-fad-0.5.0
+=dev-lisp/cl-fad-0.5.1
+=dev-lisp/cl-fad-0.4.2
+=dev-lisp/cl-fad-0.4.3
 dev-lisp/cl-fare-matcher
 dev-lisp/cl-fiveam-darcs
 dev-lisp/cl-flexi-streams
-dev-lisp/cl-ftp
+=dev-lisp/cl-ftp-1.3.3
 dev-lisp/cl-fucc
 dev-lisp/cl-gcc-xml-ffi
-dev-lisp/cl-gd
+=dev-lisp/cl-gd-0.4.6
+=dev-lisp/cl-gd-0.5.1
+=dev-lisp/cl-gd-0.5.0
+=dev-lisp/cl-gd-0.4.7
 dev-lisp/cl-genhash
 dev-lisp/cl-getopt
 dev-lisp/cl-gordon
 dev-lisp/cl-hello
-dev-lisp/cl-html-diff
+=dev-lisp/cl-html-diff-0.1
 dev-lisp/cl-html-encode
-dev-lisp/cl-html-parse
+=dev-lisp/cl-html-parse-1.0
 dev-lisp/cl-html-template
 dev-lisp/cl-htmlgen
 dev-lisp/cl-hunchentoot
 dev-lisp/cl-hyperobject
 dev-lisp/cl-inflate
-dev-lisp/cl-interpol
-dev-lisp/cl-irc
+=dev-lisp/cl-interpol-0.1.2
+=dev-lisp/cl-irc-0.7
 dev-lisp/cl-irc-logger
 dev-lisp/cl-ironclad
 dev-lisp/cl-isbn
 dev-lisp/cl-iterate
-dev-lisp/cl-jpeg
+=dev-lisp/cl-jpeg-1.033-r1
 dev-lisp/cl-kmrcl
 dev-lisp/cl-kr
 dev-lisp/cl-lambda-gtk
-dev-lisp/cl-launch
+=dev-lisp/cl-launch-2.02
+=dev-lisp/cl-launch-1.88
+=dev-lisp/cl-launch-2.03
 dev-lisp/cl-lexer
 dev-lisp/cl-linedit
 dev-lisp/cl-lisp2wish
@@ -149,18 +176,19 @@ dev-lisp/cl-packer
 dev-lisp/cl-paip
 dev-lisp/cl-parenscript-darcs
 dev-lisp/cl-parse-number
-dev-lisp/cl-pdf
+=dev-lisp/cl-pdf-110
 dev-lisp/cl-periodic-table
 dev-lisp/cl-pg
 dev-lisp/cl-pipes
-dev-lisp/cl-plus
-dev-lisp/cl-plus-ssl
+=dev-lisp/cl-plus-1.0
+=dev-lisp/cl-plus-ssl-20051204
 dev-lisp/cl-png
 dev-lisp/cl-poly-pen
 dev-lisp/cl-pop
 dev-lisp/cl-port
 dev-lisp/cl-postoffice
-dev-lisp/cl-prevalence
+=dev-lisp/cl-prevalence-20040709
+=dev-lisp/cl-prevalence-20060521
 dev-lisp/cl-psgraph
 dev-lisp/cl-ptester
 dev-lisp/cl-puri
@@ -195,19 +223,18 @@ dev-lisp/cl-s-xml
 dev-lisp/cl-s-xml-rpc
 dev-lisp/cl-salza
 dev-lisp/cl-sapaclisp
-dev-lisp/cl-sasl
+=dev-lisp/cl-sasl-0.2
 dev-lisp/cl-sb-readline
 dev-lisp/cl-scribble
 dev-lisp/cl-sdl
 dev-lisp/cl-series
 dev-lisp/cl-sha1
-dev-lisp/cl-smtp
 dev-lisp/cl-spatial-trees
 dev-lisp/cl-split-sequence
 dev-lisp/cl-sql
 dev-lisp/cl-ssl
 dev-lisp/cl-statistics
-dev-lisp/cl-store
+=dev-lisp/cl-store-0.6
 dev-lisp/cl-syslog
 dev-lisp/cl-tbnl
 dev-lisp/cl-tclink
@@ -217,15 +244,18 @@ dev-lisp/cl-trivial-configuration-parser
 dev-lisp/cl-trivial-gray-streams
 dev-lisp/cl-trivial-http
 dev-lisp/cl-trivial-sockets
-dev-lisp/cl-typesetting
+=dev-lisp/cl-typesetting-110
 dev-lisp/cl-ubf
 dev-lisp/cl-uffi
 dev-lisp/cl-unit
 dev-lisp/cl-url-rewrite
-dev-lisp/cl-utilities
+=dev-lisp/cl-utilities-1.2.3
+=dev-lisp/cl-utilities-1.0.2
 dev-lisp/cl-utils-kt
 dev-lisp/cl-webactions
-dev-lisp/cl-who
+=dev-lisp/cl-who-0.6.1
+=dev-lisp/cl-who-0.6.0
+=dev-lisp/cl-who-0.5.0
 dev-lisp/cl-with
 dev-lisp/cl-xlunit
 dev-lisp/cl-xml-emitter
@@ -233,9 +263,11 @@ dev-lisp/cl-xml-psychiatrist
 dev-lisp/cl-xmls
 dev-lisp/cl-xmls-valid
 dev-lisp/cl-xptest
-dev-lisp/cl-yacc
+=dev-lisp/cl-yacc-0.1
+=dev-lisp/cl-yacc-0.2
 dev-lisp/cl-yaclml-darcs
-dev-lisp/cl-yahoo
+=dev-lisp/cl-yahoo-0.4
+=dev-lisp/cl-yahoo-0.5
 dev-lisp/cl-z80
 dev-lisp/cl-zebu
 dev-lisp/cl-zip
@@ -432,21 +464,6 @@ dev-libs/pcl
 #
 # Removal on 2010-10-24
 app-i18n/imhangul-status-applet
-
-# Diego E. Pettenò <flameeyes@gentoo.org> (25 Aug 2010)
-#  on behalf of QA team
-#
-# 4suite fails to build depending on what is installed, as
-# per bug #246683 open since November 2008. The rest depend
-# on it.
-#
-# Removal on 2010-10-24
-dev-python/4suite
-dev-python/amara
-dev-python/testoob
-dev-python/etsdevtools
-dev-python/blockcanvas
-dev-python/ets
 
 # Jonathan Callen <abcd@gentoo.org> (24 Aug 2010)
 # Breaks API and ABI, not all packages fixed yet
@@ -802,20 +819,6 @@ sci-biology/mpiblast
 =net-analyzer/wireshark-1.4.0*
 
 # Jeremy Olexa <darkside@gentoo.org> (12 Jun 2010)
-# Use in-kernel drivers. Removed in 60 days by treecleaners. bug 321535
-net-wireless/prism54
-
-# Jeremy Olexa <darkside@gentoo.org> (12 Jun 2010)
-# Orphaned library, nothing uses it. Removed in 60 days by treecleaners.
-# bug 316535
-net-libs/libbo2k
-
-# Jeremy Olexa <darkside@gentoo.org> (12 Jun 2010)
-# Nothing uses it, replaced by app-pda/libimobiledevice.
-# Removed in 60 days by treecleaners. bug 315509
-app-pda/libiphone
-
-# Jeremy Olexa <darkside@gentoo.org> (12 Jun 2010)
 # Depends on HAL, replacement is x11-plugins/wmudmount
 # Removed in 60 days by treecleaners. bug 313395
 x11-plugins/wmvolman
@@ -826,29 +829,9 @@ x11-plugins/wmvolman
 app-misc/mved
 
 # Jeremy Olexa <darkside@gentoo.org> (12 Jun 2010)
-# Removed at maintainer's request. Needs new maintainer to stick around.
-# Removed in 60 days by treecleaners, bug 311189
-app-emulation/point2play
-
-# Jeremy Olexa <darkside@gentoo.org> (12 Jun 2010)
 # Does not compile with latest kernel. Not supported by upstream
 # Removed in 60 days by treecleaners, bug 309655
 net-firewall/ipp2p
-
-# Jeremy Olexa <darkside@gentoo.org> (12 Jun 2010)
-# Dead upstream, last release from 2005. Nothing depends on it. Multiple open
-# bugs. Removed in 60 days by treecleaners, bug 309113
-app-pda/pilot-mailsync
-
-# Jeremy Olexa <darkside@gentoo.org> (12 Jun 2010)
-# Depends on deprecated gtk functionality in media-libs/imlib
-# Removed in 60 days by treecleaners, bug 215341
-x11-plugins/gkacpi
-
-# Jeremy Olexa <darkside@gentoo.org> (12 Jun 2010)
-# Old, useless, no maintainer
-# Removed in 60 days by treecleaners, bug 185292
-net-wireless/ieee80211
 
 # Robin H. Johnson <robbat2@gentoo.org> (09 Jun 2010)
 # Fails to self-verify/sign in FIPS mode, pending upstream response before

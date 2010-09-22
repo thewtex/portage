@@ -1,10 +1,34 @@
 # ChangeLog for profile directory
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.4571 2010/09/19 05:44:13 dirtyepic Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.4578 2010/09/21 13:23:48 tampakrap Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  21 Sep 2010; Theo Chatzimichos <tampakrap@gentoo.org> package.mask:
+  Mask Qt 4.7.0, it will be unmasked as soon as it is tinderboxed
+
+  21 Sep 2010; Jeremy Olexa <darkside@gentoo.org> package.mask:
+  Remove entries for removed packages (treecleaners)
+
+  20 Sep 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  base/package.use.mask, package.mask:
+  Unmask 4Suite and reverse dependencies.
+
+  20 Sep 2010; Panagiotis Christopoulos <pchrist@gentoo.org> package.mask:
+  Minor fixes in my previous commit, let's hope the last
+
+  20 Sep 2010; Panagiotis Christopoulos <pchrist@gentoo.org> package.mask:
+  Change 25 unversioned masks to 45 versioned cause these packages also
+  exist in the lisp overlay and unversioned masks mask also overlay's
+  ebuilds
+
+  20 Sep 2010; Gilles Dartiguelongue <eva@gentoo.org> updates/3Q-2010:
+  Slotmove >=dev-lang/vala-0.9.5 to 0.10, bug #338067.
+
+  20 Sep 2010; Ryan Hill <dirtyepic@gentoo.org> package.mask:
+  Revert media-fonts/cronyx-fonts mask.
 
   19 Sep 2010; Ryan Hill <dirtyepic@gentoo.org> package.mask:
   Mask media-fonts/cronyx-fonts for removal.

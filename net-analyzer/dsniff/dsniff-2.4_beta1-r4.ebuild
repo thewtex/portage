@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/dsniff/dsniff-2.4_beta1-r4.ebuild,v 1.6 2010/05/07 18:10:51 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/dsniff/dsniff-2.4_beta1-r4.ebuild,v 1.7 2010/09/20 11:07:17 jer Exp $
 
 inherit autotools eutils flag-o-matic toolchain-funcs
 
@@ -37,7 +37,7 @@ src_unpack() {
 	epatch "${FILESDIR}"/2.3-makefile.patch
 
 	# Bug 125084
-	epatch "${FILESDIR}"/${PN}-httppostfix.patch
+	epatch "${FILESDIR}"/${PV}-httppostfix.patch
 
 	eautoreconf
 }
