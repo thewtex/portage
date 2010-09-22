@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11966 2010/09/21 21:41:13 remi Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11969 2010/09/22 15:42:50 nirbheek Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -31,10 +31,18 @@
 
 #--- END OF EXAMPLES ---
 
+# Nirbheek Chauhan <nirbheek@gentoo.org> (22 Sep 2010)
+# Dead upstream, doesn't work anymore
+# Masked for removal in 30 days
+# Replacement is net-wireless/gnome-bluetooth:2
+net-wireless/libbtctl
+=net-wireless/gnome-bluetooth-0*
+
 # Rémi Cardona <remi@gentoo.org> (21 Sep 2010)
 # Dead upstream, ebuild does more work than its Makefiles,
 # Xorg folks told me its output looked very unsafe for hareware.
 # Masked for removal in 30 days.
+# Users should use cvt or gtf, both provided by xorg-server.
 x11-misc/videogen
 
 # Rémi Cardona <remi@gentoo.org> (21 Sep 2010)
