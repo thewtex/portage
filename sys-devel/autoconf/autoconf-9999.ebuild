@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/autoconf/autoconf-9999.ebuild,v 1.2 2010/09/19 22:28:55 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/autoconf/autoconf-9999.ebuild,v 1.3 2010/09/22 23:56:18 vapier Exp $
 
 EAPI="2"
 
@@ -26,7 +26,7 @@ DEPEND=">=sys-apps/texinfo-4.3
 	>=sys-devel/m4-1.4.6
 	dev-lang/perl"
 RDEPEND="${DEPEND}
-	>=sys-devel/autoconf-wrapper-9-r1"
+	>=sys-devel/autoconf-wrapper-10"
 PDEPEND="emacs? ( app-emacs/autoconf-mode )"
 
 src_prepare() {
