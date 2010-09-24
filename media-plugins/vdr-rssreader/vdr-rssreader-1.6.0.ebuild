@@ -1,6 +1,6 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-rssreader/vdr-rssreader-1.6.0.ebuild,v 1.2 2008/04/28 09:09:00 zzam Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-rssreader/vdr-rssreader-1.6.0.ebuild,v 1.3 2010/09/24 00:28:16 hd_brummy Exp $
 
 inherit vdr-plugin
 
@@ -10,7 +10,7 @@ SRC_URI="http://www.saunalahti.fi/~rahrenbe/vdr/rssreader/files/${P}.tgz"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 IUSE=""
 
 DEPEND=">=media-video/vdr-1.6.0
