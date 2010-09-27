@@ -1,5 +1,5 @@
->=dev-libs/glib-2 >=x11-libs/gtk+-2.6 >=x11-libs/libwnck-2.10 dev-util/pkgconfig
->=dev-libs/glib-2 >=x11-libs/gtk+-2.6 >=x11-libs/libwnck-2.10
+dev-libs/dbus-glib dev-libs/glib:2 >=gnome-base/gconf-2 x11-libs/gtk+:2 >=x11-libs/libwnck-2.10 x11-libs/libXcomposite x11-libs/libXinerama x11-libs/libXrender dev-util/pkgconfig gnome-base/gnome-common || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b
+dev-libs/dbus-glib dev-libs/glib:2 >=gnome-base/gconf-2 x11-libs/gtk+:2 >=x11-libs/libwnck-2.10 x11-libs/libXcomposite x11-libs/libXinerama x11-libs/libXrender
 0
 http://superswitcher.googlecode.com/files/superswitcher-0.6.tar.gz
 
@@ -7,14 +7,14 @@ http://code.google.com/p/superswitcher/
 GPL-2
 A more feature-full replacement of the Alt-Tab window switching behavior.
 ~amd64 ~x86
-eutils multilib portability toolchain-funcs
+autotools eutils libtool multilib portability toolchain-funcs
 
 
 
 
+2
 
-
-install unpack
+install prepare
 
 
 
