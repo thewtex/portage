@@ -1,4 +1,4 @@
->=net-libs/gupnp-0.13.2 >=dev-libs/glib-2.16:2 python? ( >=dev-python/pygobject-2.16 ) dev-util/pkgconfig sys-devel/gettext
+>=net-libs/gupnp-0.13.2 >=dev-libs/glib-2.16:2 python? ( >=dev-python/pygobject-2.16 ) dev-util/pkgconfig sys-devel/gettext dev-util/gtk-doc-am || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b
 >=net-libs/gupnp-0.13.2 >=dev-libs/glib-2.16:2 python? ( >=dev-python/pygobject-2.16 )
 0
 http://www.gupnp.org/sites/all/files/sources/gupnp-igd-0.1.7.tar.gz
@@ -7,14 +7,14 @@ http://gupnp.org
 LGPL-2
 This is a library to handle UPnP IGD port mapping for GUPnP.
 ~alpha amd64 ~hppa ia64 ppc ppc64 sparc x86
-
+autotools eutils libtool multilib portability toolchain-funcs
 python
 
 
 
 2
 
-configure install
+configure install prepare
 
 
 

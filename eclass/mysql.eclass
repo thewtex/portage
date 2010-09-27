@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/mysql.eclass,v 1.146 2010/05/13 19:45:47 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/mysql.eclass,v 1.151 2010/09/06 08:02:08 robbat2 Exp $
 
 # @ECLASS: mysql.eclass
 # @MAINTAINER:
@@ -61,6 +61,14 @@ esac
 # mysql_upgrade.
 MYSQL_PV_MAJOR="$(get_version_component_range 1-2 ${PV})"
 
+# Cluster is a special case...
+if [[ "${PN}" == "mysql-cluster" ]]; then
+	case $PV in
+		6.1*|7.0*|7.1*) MYSQL_PV_MAJOR=5.1 ;;
+	esac
+fi
+
+
 # @ECLASS-VARIABLE: MYSQL_VERSION_ID
 # @DESCRIPTION:
 # MYSQL_VERSION_ID will be:
@@ -97,7 +105,9 @@ elif [ "${PV#5.4}" != "${PV}" ] ; then
 	MYSQL_COMMUNITY_FEATURES=1
 elif [ "${PV#5.5}" != "${PV}" ] ; then
 	MYSQL_COMMUNITY_FEATURES=1
-elif [ "${PV#6.0}" != "${PV}" ] ; then
+elif [ "${PV#6}" != "${PV}" ] ; then
+	MYSQL_COMMUNITY_FEATURES=1
+elif [ "${PV#7}" != "${PV}" ] ; then
 	MYSQL_COMMUNITY_FEATURES=1
 else
 	MYSQL_COMMUNITY_FEATURES=0
@@ -126,7 +136,7 @@ DEPEND="ssl? ( >=dev-libs/openssl-0.9.6d )
 && DEPEND="${DEPEND} libevent? ( >=dev-libs/libevent-1.4 )"
 
 # Having different flavours at the same time is not a good idea
-for i in "mysql" "mysql-community" "mariadb" ; do
+for i in "mysql" "mysql-community" "mysql-cluster" "mariadb" ; do
 	[[ "${i}" == ${PN} ]] ||
 	DEPEND="${DEPEND} !dev-db/${i}"
 done
@@ -160,9 +170,20 @@ if [ -z "${SERVER_URI}" ]; then
 		http://maria.llarian.net/download/${MARIA_FULL_P}/kvm-tarbake-jaunty-x86/${MARIA_FULL_P}.tar.gz
 		http://launchpad.net/maria/${MYSQL_PV_MAJOR}/ongoing/+download/${MARIA_FULL_P}.tar.gz
 		"
-	# The community build is on the mirrors
-	elif [ "${MYSQL_COMMUNITY_FEATURES}" == "1" ]; then
-		SERVER_URI="mirror://mysql/Downloads/MySQL-${PV%.*}/mysql-${MY_PV}.tar.gz"
+	# The community and cluster builds are on the mirrors
+	elif [[ "${MYSQL_COMMUNITY_FEATURES}" == "1" || ${PN} == "mysql-cluster" ]] ; then
+		if [[ "${PN}" == "mysql-cluster" ]] ; then
+			URI_DIR="MySQL-Cluster"
+			URI_FILE="mysql-cluster-gpl"
+		else
+			URI_DIR="MySQL"
+			URI_FILE="mysql"
+		fi
+		URI_A="${URI_FILE}-${MY_PV}.tar.gz"
+		MIRROR_PV=$(get_version_component_range 1-2 ${PV})
+		# Recently upstream switched to an archive site, and not on mirrors
+		SERVER_URI="http://downloads.mysql.com/archives/${URI_FILE}-${MIRROR_PV}/${URI_A}
+					mirror://mysql/Downloads/${URI_DIR}-${PV%.*}/${URI_A}"
 	# The (old) enterprise source is on the primary site only
 	elif [ "${PN}" == "mysql" ]; then
 		SERVER_URI="ftp://ftp.mysql.com/pub/mysql/src/mysql-${MY_PV}.tar.gz"
@@ -195,8 +216,12 @@ IUSE="big-tables debug embedded minimal ${IUSE_DEFAULT_ON}perl selinux ssl stati
 mysql_version_is_at_least "4.1" \
 && IUSE="${IUSE} latin1"
 
-mysql_version_is_at_least "4.1.3" \
-&& IUSE="${IUSE} cluster extraengine"
+if mysql_version_is_at_least "4.1.3" ; then
+	IUSE="${IUSE} extraengine"
+	if [[ "${PN}" != "mysql-cluster" ]] ; then
+		IUSE="${IUSE} cluster"
+	fi
+fi
 
 mysql_version_is_at_least "5.0" \
 || IUSE="${IUSE} raid"
@@ -367,8 +392,10 @@ mysql_init_vars() {
 		fi
 	fi
 
-	MY_SOURCEDIR=${SERVER_URI##*/}
-	MY_SOURCEDIR=${MY_SOURCEDIR%.tar*}
+	if [ "${MY_SOURCEDIR:-unset}" == "unset" ]; then
+		MY_SOURCEDIR=${SERVER_URI##*/}
+		MY_SOURCEDIR=${MY_SOURCEDIR%.tar*}
+	fi
 
 	export MY_SHAREDSTATEDIR MY_SYSCONFDIR
 	export MY_LIBDIR MY_LOCALSTATEDIR MY_LOGDIR
@@ -425,7 +452,7 @@ configure_common() {
 	else
 		myconf="${myconf} --without-debug"
 		mysql_version_is_at_least "4.1.3" \
-		&& use cluster \
+		&& ( use cluster || [[ "${PN}" == "mysql-cluster" ]] ) \
 		&& myconf="${myconf} --without-ndb-debug"
 	fi
 
@@ -447,11 +474,16 @@ configure_common() {
 		myconf="${myconf} --with-embedded-privilege-control"
 		myconf="${myconf} --with-embedded-server"
 
+		# This fix is from Caleb Cushing - Dec 11 2008 - not sure if we still
+		# need it. (drobbins - 9/23/2010)
+		
 		# fix for amarok 2
+
 		if mysql_version_is_at_least "5.1" ; then
 			CFLAGS="${CFLAGS} -DPIC -fPIC"
 			CXXFLAGS="${CXXFLAGS} -DPIC -fPIC"
 		fi
+
 	else
 		myconf="${myconf} --without-embedded-privilege-control"
 		myconf="${myconf} --without-embedded-server"
@@ -498,7 +530,9 @@ configure_40_41_50() {
 
 	if mysql_version_is_at_least "4.1.3" ; then
 		myconf="${myconf} --with-geometry"
-		myconf="${myconf} $(use_with cluster ndbcluster)"
+		if [[ "${PN}" != "mysql-cluster" ]] ; then
+			myconf="${myconf} $(use_with cluster ndbcluster)"
+		fi
 	fi
 
 	if mysql_version_is_at_least "4.1.3" && use extraengine ; then
@@ -619,7 +653,7 @@ configure_51() {
 	done
 
 	# like configuration=max-no-ndb
-	if use cluster ; then
+	if ( use cluster || [[ "${PN}" == "mysql-cluster" ]] ) ; then
 		plugins_sta="${plugins_sta} ndbcluster partition"
 		plugins_dis="${plugins_dis//partition}"
 		myconf="${myconf} --with-ndb-binlog"
@@ -666,7 +700,7 @@ pbxt_src_configure() {
 	pushd "${WORKDIR}/pbxt-${PBXT_VERSION}" &>/dev/null
 
 	einfo "Reconfiguring dir '${PWD}'"
-	AT_GNUCONF_UPDATE="yes" eautoreconf
+	eautoreconf
 
 	local myconf=""
 	myconf="${myconf} --with-mysql=${S} --libdir=/usr/$(get_libdir)"
@@ -817,9 +851,12 @@ mysql_src_prepare() {
 	i="${S}"/storage/innodb_plugin/plug.in	
 	[ -f "${i}" ] && sed -i -e '/CFLAGS/s,-prefer-non-pic,,g' "${i}"
 
-	# Additional checks, remove bundled zlib
-	rm -f "${S}/zlib/"*.[ch]
-	sed -i -e "s/zlib\/Makefile dnl/dnl zlib\/Makefile/" "${S}/configure.in"
+	# Additional checks, remove bundled zlib (Cluster needs this, for static
+	# memory management in zlib, leave available for Cluster)
+	if [[ "${PN}" != "mysql-cluster" ]] ; then
+		rm -f "${S}/zlib/"*.[ch]
+		sed -i -e "s/zlib\/Makefile dnl/dnl zlib\/Makefile/" "${S}/configure.in"
+	fi
 	rm -f "scripts/mysqlbug"
 
 	# Make charsets install in the right place
@@ -877,7 +914,7 @@ mysql_src_prepare() {
 	for d in ${rebuilddirlist} ; do
 		einfo "Reconfiguring dir '${d}'"
 		pushd "${d}" &>/dev/null
-		AT_GNUCONF_UPDATE="yes" eautoreconf
+		eautoreconf
 		popd &>/dev/null
 	done
 
@@ -1151,6 +1188,11 @@ mysql_pkg_postinst() {
 		elog "\"emerge --config =${CATEGORY}/${PF}\""
 		elog "if this is a new install."
 		einfo
+
+		einfo
+		elog "If you are upgrading major versions, you should run the"
+		elog "mysql_upgrade tool."
+		einfo
 	fi
 
 	if pbxt_available && use pbxt ; then
@@ -1275,6 +1317,7 @@ mysql_pkg_config() {
 	${ROOT}/usr/sbin/mysqld --verbose --help >"${helpfile}" 2>/dev/null
 	for opt in grant-tables host-cache name-resolve networking slave-start bdb \
 		federated innodb ssl log-bin relay-log slow-query-log external-locking \
+		ndbcluster \
 		; do
 		optexp="--(skip-)?${opt}" optfull="--skip-${opt}"
 		egrep -sq -- "${optexp}" "${helpfile}" && options="${options} ${optfull}"

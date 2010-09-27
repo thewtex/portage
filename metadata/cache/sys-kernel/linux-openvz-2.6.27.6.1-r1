@@ -1,0 +1,22 @@
+!build? ( sys-apps/sed >=sys-devel/binutils-2.11.90.0.31 ) kernel_linux? ( virtual/modutils ) sys-apps/sed kernel_linux? ( virtual/linux-sources ) sys-apps/sed app-arch/xz-utils sys-kernel/genkernel splash? ( x11-themes/sabayon-artwork-core ) dracut? ( sys-kernel/dracut )
+!build? ( >=sys-libs/ncurses-5.2 sys-devel/make ) kernel_linux? ( virtual/modutils ) grub? ( || ( >=sys-boot/grub-1.98 ( <sys-boot/grub-1 sys-boot/grub-handler ) ) ) sys-apps/sed >=sys-kernel/linux-firmwares-2.6.27.6.1
+2.6.27-kuindzhi.1-r1
+mirror://kernel/linux/kernel/v2.6/linux-2.6.27.tar.bz2 http://download.openvz.org/kernel/branches/2.6.27/2.6.27-kuindzhi.1/patches/patch-kuindzhi.1-combined.gz mirror://gentoo/openvz-2.6.27-2.6.27.53.patch.bz2
+binchecks strip
+http://www.openvz.org
+GPL-2 freedist
+Kernel binaries with OpenVZ patchset
+~amd64 ~x86
+eutils kernel-2 linux-info linux-mod mount-boot multilib portability sabayon-artwork sabayon-kernel toolchain-funcs versionator
+symlink build kernel_linux dmraid dracut grub splash
+
+!build? ( virtual/dev-manager )
+virtual/linux-sources virtual/alsa virtual/linux-binary
+
+
+compile install postinst postrm preinst prerm setup test unpack
+
+
+
+
+

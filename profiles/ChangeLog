@@ -1,10 +1,73 @@
 # ChangeLog for profile directory
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.4581 2010/09/22 21:47:25 arfrever Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.4601 2010/09/27 13:20:42 flameeyes Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  27 Sep 2010; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Masking net-p2p/edonkey for QA removal.
+
+  27 Sep 2010; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Unmask lxc; remove obsolete mask on opensync.
+
+  27 Sep 2010; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Remove masking for removed packages.
+
+  27 Sep 2010; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Masking app-benchmarks/xfbsuite for QA removal.
+
+  27 Sep 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> package.mask:
+  Mask www-client/chromium dev channel release.
+
+  26 Sep 2010; Jeroen Roovers <jer@gentoo.org> thirdpartymirrors:
+  Remove bad mirrors.
+
+  26 Sep 2010; Andreas K. Huettel <dilfridge@gentoo.org> package.mask:
+  Masked dev-tex/achemso for removal (obsolete)
+
+  26 Sep 2010; Markos Chandras <hwoarang@gentoo.org> package.mask:
+  Masking qt-creator-2.0.1 because of masked Qt-4.7
+
+  26 Sep 2010; Mart Raudsepp <leio@gentoo.org> profiles.desc:
+  Fix x86-cygwin profiles.desc entries typo
+
+  26 Sep 2010; Joerg Bornkessel <hd_brummy@gentoo.org> package.mask:
+  media-plugins/vdr-graphtft-0.1.21_alpha-r1 masked for removel
+
+  26 Sep 2010; Tomáš Chvátal <scarabeus@gentoo.org> base/make.defaults:
+  Add new GPSD_PROTOCOLS to make.defaults.
+
+  26 Sep 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  +desc/gpsd_protocols.desc:
+  Add new gpsd_protocols desc file for gpsd ebuild.
+
+  26 Sep 2010; Fabian Groffen <grobian@gentoo.org> profiles.desc:
+  Add x86-cygwin keyword/profile for Prefix
+
+  25 Sep 2010; Andreas K. Huettel <dilfridge@gentoo.org> package.mask:
+  Masked koffice-2.2.2 until keywords are sorted out.
+
+  25 Sep 2010; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask quanta-docs and qucs for removal.
+
+  25 Sep 2010; <nirbheek@gentoo.org> package.mask:
+  Add polkit and polkit-gnome to the gtk+/glib mask
+
+  24 Sep 2010; <nirbheek@gentoo.org> package.mask:
+  Add librsvg to the gtk+-2.22 mask
+
+  24 Sep 2010; Pacho Ramos <pacho@gentoo.org> package.mask:
+  Mask net-wireless/bluez-gnome for removal and update emul mask.
+
+  24 Sep 2010; <nirbheek@gentoo.org> package.mask:
+  Mask new versions of glib/gtk etc
+
+  23 Sep 2010; Jeroen Roovers <jer@gentoo.org>
+  targets/desktop/gnome/package.use:
+  Move from sys-apps/parted to sys-block/parted thanks to DEMAINE
+  Benoît-Pierre, aka DoubleHP (bug #338358).
 
   22 Sep 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
   package.mask:

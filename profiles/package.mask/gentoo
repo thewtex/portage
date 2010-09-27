@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11971 2010/09/22 21:47:25 arfrever Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.11989 2010/09/27 13:20:42 flameeyes Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,95 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (27 Sep 2010)
+#  on behalf of QA team
+#
+# Last bump in 2004; minor QA annoyances (bug #241028 and
+# #241310); website seems dead; LICENSE seems fishy (as-is,
+# but it's actually binary package); package is binary so
+# we have no way to assure safety for it at all.
+#
+# Removal on 2010-11-26
+net-p2p/edonkey
+net-p2p/overnet
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (27 Sep 2010)
+#  on behalf of QA team
+#
+# Unmaintained; creates subdirectory in /usr/bin rather than
+# /usr/(lib|libexec) (bug #248160 open since November 2008),
+# contains binary x86 applications (but KEYWORDS are not
+# set -* — and for a while it was keyworded ~ppc without
+# good reason to be so); last ebuild bump (and release) in
+# 2004; last fix (without revbump) in 2007. Binaries make
+# the reported LICENSE (GPL-2) sound fishy.
+#
+# Removal on 2010-11-26
+app-benchmarks/xfbsuite
+
+# Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org> (27 Sep 2010)
+# Updated mask - now pending on adding to the tree the versions of
+# mysql/mariadb with the working shared lib patch.
+# Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org> (19 Sep 2010)
+# Masked until the public release
+~media-sound/amarok-2.3.2
+
+# Andreas K. Huettel <dilfridge@gentoo.org> (26 Sep 2010)
+# Masking for removal in 30 days
+# This package is obsolete, texlive contains a way newer version
+dev-tex/achemso
+
+# Markos Chandras <hwoarang@gentoo.org> ( 26 Sep 2010 )
+# Masking because of masked Qt-4.7
+=dev-util/qt-creator-2.0.1
+
+# Joerg Bornkessel <hd_brummy@gentoo.org> ( 26 Sep 2010 )
+# masked for removel in 30 days,
+# bug 335785  
+# ttf-bitstream-vera issues
+=media-plugins/vdr-graphtft-0.1.21_alpha-r1
+
+# Andreas K. Huettel <dilfridge@gentoo.org> (25 Sep 2010)
+# Masked until kexi and koffice-meta are keyworded ~ppc64 and ~ppc
+# to avoid potential upgrade mess. See bug 338732
+~app-office/karbon-2.2.2
+~app-office/kchart-2.2.2
+~app-office/kexi-2.2.2
+~app-office/koffice-data-2.2.2
+~app-office/koffice-l10n-2.2.2
+~app-office/koffice-libs-2.2.2
+~app-office/koffice-meta-2.2.2
+~app-office/kplato-2.2.2
+~app-office/kpresenter-2.2.2
+~app-office/krita-2.2.2
+~app-office/kspread-2.2.2
+~app-office/kword-2.2.2
+
+# Samuli Suominen <ssuominen@gentoo.org> (25 Sep 2010)
+# quanta-docs, bug 338647, or for KDE4 version bug 336761
+# qucs, bug 301665, working Qt3 version at kde-sunset overlay
+#
+# Masked for removal in 30 days.
+~app-doc/quanta-docs-20051201
+~sci-electronics/qucs-0.0.15_p20100115
+
+# Nirbheek Chauhan <nirbheek@gentoo.org> (25 Sep 2010)
+# Mask new versions of glib, polkit, gtk+, etc
+# Will be unmasked after proper testing
+>=dev-libs/glib-2.25
+>=x11-libs/gdk-pixbuf-2.21
+>=gnome-base/librsvg-2.31
+>=sys-auth/polkit-0.99
+>=gnome-extra/polkit-gnome-0.99
+>=x11-libs/gtk+-2.21
+
+# Pacho Ramos <pacho@gentoo.org> (24 Sep 2010)
+# Broken since more than a year when using nvidia-drivers (bug #260433), 
+# upstream no longer develops neither maintains it, most common 
+# distributions have already dropped it. 
+# Please use net-wireless/gnome-bluetooth:2 instead. Will be removed at 24 Nov 2010.
+net-wireless/bluez-gnome
 
 # Samuli Suominen <ssuominen@gentoo.org> (22 Sep 2010)
 # Package is masked because of missing exo-0.5 and garcon support.
@@ -76,10 +165,6 @@ x11-misc/transset
 ~x11-libs/qt-test-4.7.0
 ~x11-libs/qt-webkit-4.7.0
 ~x11-libs/qt-xmlpatterns-4.7.0
-
-# Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org> (19 Sep 2010)
-# Masked until the public release
-=media-sound/amarok-2.3.2
 
 # Panagiotis Christopoulos <pchrist@gentoo.org> (17 Sep 2010)
 # Masked for removal in 30 days. Most of them are too old/
@@ -390,11 +475,6 @@ media-plugins/audacious-xosd
 # Mask until fully tested
 x11-misc/lightdm
 
-# Diego E. Pettenò <flameeyes@gentoo.org> (6 Spt 2010)
-# Upstream merged this with dev-db/drizzle.
-# Pending (quick) removal 2010-09-21
-dev-db/libdrizzle
-
 # Michele Noberasco <s4t4n@gentoo.org> (3 Sep 2010)
 # Package has many open bugs, dead upstream.
 # Removal on 2010-10-02
@@ -502,50 +582,9 @@ app-i18n/imhangul-status-applet
 # Removal on 2010-09-23
 dev-python/boostpythongenerator
 
-# Dirkjan Ochtman <djc@gentoo.org> (23 Aug 2010)
-# Unmaintained, uninstallable on version of Python we ship.
-# Bugs 267346, 267347, 267348, 267356.
-# Masked for removal in 30 days.
-app-admin/conary
-app-admin/conary-policy
-app-admin/rmake
-sys-fs/flickrfs
-
 # Michael Sterrett <mr_bones_@gentoo.org> (22 Aug 2010)
 # Testing mask for 0.8 betas
 >games-board/pokerth-0.7.1
-
-# Samuli Suominen <ssuominen@gentoo.org> (21 Aug 2010)
-# These have been uninstallable since 2008.
-#
-# libferrisstreams, bug 220507
-#
-# Masked for removal in 30 days.
-dev-db/stldb4
-dev-libs/libferrisstreams
-
-# Samuli Suominen <ssuominen@gentoo.org> (21 Aug 2010)
-# Masked for treecleaners, QA
-#
-# etheme, bug 332685
-# btg, bugs 277655, 295006, 295009, 326639 and 326643
-# modplugplay is replaced by modplugtools
-# realbasic, bug 324891
-# playspc, bug 328843
-# qt-faststart, bug 276268
-# media-plugins/audacious-g15-spectrum, bug 298134
-#
-# Removal in 30 days
-media-plugins/audacious-g15-spectrum
-media-video/qt-faststart
-media-sound/modplugplay
-media-sound/playspc
-dev-lang/realbasic
-net-p2p/btg
-x11-themes/etheme-BlueSteel
-x11-themes/etheme-BrushedMetal-Tigert
-x11-themes/etheme-Ganymede
-x11-themes/etheme-ShinyMetal
 
 # Christian Faulhammer <fauli@gentoo.org> (19 Aug 2010)
 # Mask for removal in 30 days
@@ -630,33 +669,11 @@ mail-client/claws-mail-bsfilter
 # <http://my.opera.com/desktopteam/blog>
 =www-client/opera-10.70*
 
-# Diego E. Pettenò <flameeyes@gentoo.org> (03 Aug 2010)
-#  on behalf of QA team
-#
-# Breaking portage is no fun. Doing so for the second year in a row in
-# August, is even less. Bug #330937
-=dev-lang/python-2.6.5_p20100801
-=dev-lang/python-2.7_p20100801
-=dev-lang/python-3.1.2_p20100801
-
 # Sergei Trofimovich <slyfox@gentoo.org> (1 Aug 2010)
 # Masked for removal in 30 days. Bunch of serious
 # bugs (bug #303665), and minor ones (bug #240036).
 # Dead upstream.
 dev-lang/hugs98
-
-# Diego E. Pettenò <flameeyes@gentoo.org> (27 Jul 2010)
-#  on behalf of QA team
-#
-# Broken pam setup (bug #168133, bug #261695); overdue bump
-# (bug #250499); security issues (bug #255148); misc problems
-# (bug #143230, bug #168133, bug #241826, bug #252022,
-# bug #326565).
-#
-# Needs at a minimum a new maintainer.
-#
-# Removal on 2010-09-25
-net-misc/xrdp
 
 # Lars Wendler <polynomial-c@gentoo.org> (26 Jul 2010)
 # Masked for removal in 30 days.
@@ -670,15 +687,6 @@ www-client/mozilla-launcher
 # All comments, feedback, and patches are welcome, see the project page:
 # http://www.gentoo.org/proj/en/desktop/chromium/index.xml
 dev-lang/v8
-
-# Samuli Suominen <ssuominen@gentoo.org> (25 Jul 2010)
-# Last of GTK+-1.2 consumers from media categories
-# See bug 214788.
-# Removal in 30 days
-media-sound/smurf
-media-sound/swami
-media-sound/soundtracker
-media-gfx/surf
 
 # Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (22 Jul 2010)
 # Development versions.
@@ -952,7 +960,6 @@ games-strategy/xscorch
 # Please don't ask for including testing packages in other emul
 # packages, this is an exception to current policy because some people
 # from X11 team needed 3D support even with bleeding edge Xorg.
-=app-emulation/emul-linux-x86-opengl-20100611-r99
 =app-emulation/emul-linux-x86-opengl-20100915-r99
 
 # Robert Piasek <dagger@gentoo.org> (09 Apr 2010)
@@ -1058,6 +1065,7 @@ net-libs/libjingle
 ~www-client/chromium-7.0.503.1
 ~www-client/chromium-7.0.517.5
 ~www-client/chromium-7.0.517.8
+~www-client/chromium-7.0.517.13
 
 # Christian Parpart <trapni@gentoo.org> (23 Dec 2009)
 # Masked for testing/feedback.
@@ -1131,17 +1139,6 @@ xfce-extra/thunar-vfs
 >=xfce-extra/xfce4-xkb-plugin-0.5.3.3-r9
 # bug 330005 - needs newer xfce4-panel release
 >=xfce-base/libxfce4util-4.7.2
-
-# Diego E. Pettenò <flameeyes@gentoo.org> (23 Oct 2009)
-#
-# Starting work toward supporting Linux Containers in Gentoo.
-# Currently, it's a tentative ebuild based upon Tiziano Müller
-# (dev-zero)'s overlay, with some differences from the upstream paths
-# and handling.
-#
-# Will be unmasked when felt “ready” (and openrc'll support it as
-# guest).
-app-emulation/lxc
 
 # Peter Alfredsen <loki_val@gentoo.org> (21 Oct 2009)
 # Masked because this needs a patch to be applied to portage
@@ -1238,10 +1235,6 @@ dev-lisp/gcl
 # Arun Raghavan <ford_prefect@gentoo.org> (31 Aug 2009)
 # Development version, Work-In-Progress
 =media-sound/banshee-1.7*
-
-# Diego E. Pettenò <flameeyes@gentoo.org> (27 Apr 2009)
-# Mask libopensync 0.38 since no plugin was fixed for this
-~app-pda/libopensync-0.38
 
 # Jeroen Roovers <jer@gentoo.org> (21 Apr 2009)
 # Masked until out of beta
