@@ -1,6 +1,23 @@
 # ChangeLog for dev-libs/openssl
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/openssl/ChangeLog,v 1.351 2010/09/14 00:30:14 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/openssl/ChangeLog,v 1.355 2010/09/28 17:22:42 darkside Exp $
+
+  28 Sep 2010; Jeremy Olexa <darkside@gentoo.org> openssl-1.0.0a-r3.ebuild,
+  -files/openssl-c_rehash.sh-rev-1.7:
+  Revert revision 1.8 and just modify the SRC_URI to the converted character
+  instead for bug 339027
+
+  28 Sep 2010; Jeremy Olexa <darkside@gentoo.org> openssl-1.0.0a-r3.ebuild,
+  +files/openssl-c_rehash.sh-rev-1.7:
+  QA: Fix SRC_URI of c_rehash and move it to FILESDIR, bug 339027
+
+  28 Sep 2010; Samuli Suominen <ssuominen@gentoo.org>
+  openssl-0.9.8o-r2.ebuild, openssl-1.0.0a-r3.ebuild:
+  amd64 stable wrt #330437
+
+  28 Sep 2010; Samuli Suominen <ssuominen@gentoo.org>
+  openssl-1.0.0a-r3.ebuild:
+  ppc64 stable wrt #330437
 
   14 Sep 2010; Mike Frysinger <vapier@gentoo.org> openssl-1.0.0a-r3.ebuild,
   files/openssl-1.0.0a-alpha-mont.patch:
