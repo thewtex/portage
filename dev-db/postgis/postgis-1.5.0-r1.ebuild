@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/postgis/postgis-1.5.0-r1.ebuild,v 1.2 2010/06/17 19:09:52 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/postgis/postgis-1.5.0-r1.ebuild,v 1.3 2010/09/28 10:26:05 patrick Exp $
 
 EAPI="2"
 
@@ -54,16 +54,16 @@ src_configure(){
 	econf --enable-autoconf \
 		--datadir=/usr/share/postgresql/contrib/ \
 		--libdir=/usr/$(get_libdir)/postgresql/ \
-		--docdir=${D}/usr/share/doc/${PF}/html/ \
+		--docdir="${D}/usr/share/doc/${PF}/html/" \
 		${myconf} ||\
 			die "Error: econf failed"
 
-        if use doc; then
-                cd doc
-                sed -i -e 's:PGSQL_DOCDIR=/:PGSQL_DOCDIR=${D}/:' Makefile || die "Fixing doc install paths failed"
-                sed -i -e 's:PGSQL_MANDIR=/:PGSQL_MANDIR=${D}/:' Makefile || die "Fixing doc install paths failed"
-                sed -i -e 's:PGSQL_SHAREDIR=/:PGSQL_SHAREDIR=${D}/:' Makefile || die "Fixing doc install paths failed"
-        fi
+	if use doc; then
+		cd doc
+		sed -i -e 's:PGSQL_DOCDIR=/:PGSQL_DOCDIR=${D}/:' Makefile || die "Fixing doc install paths failed"
+		sed -i -e 's:PGSQL_MANDIR=/:PGSQL_MANDIR=${D}/:' Makefile || die "Fixing doc install paths failed"
+		sed -i -e 's:PGSQL_SHAREDIR=/:PGSQL_SHAREDIR=${D}/:' Makefile || die "Fixing doc install paths failed"
+	fi
 }
 
 src_compile() {

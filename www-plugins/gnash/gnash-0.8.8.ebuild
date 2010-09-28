@@ -1,13 +1,13 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-plugins/gnash/gnash-0.8.8.ebuild,v 1.3 2010/08/24 14:01:19 chithanh Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-plugins/gnash/gnash-0.8.8.ebuild,v 1.6 2010/09/28 14:14:24 chithanh Exp $
 
 EAPI=3
 CMAKE_REQUIRED="never"
 KDE_REQUIRED="optional"
 AT_M4DIR="cygnal"
 
-inherit autotools eutils kde4-base multilib nsplugins flag-o-matic
+inherit autotools eutils kde4-base multilib nsplugins python flag-o-matic
 
 DESCRIPTION="GNU Flash movie player that supports many SWF v7,8,9 features"
 HOMEPAGE="http://www.gnu.org/software/gnash/"
@@ -69,7 +69,7 @@ RDEPEND=">=dev-libs/boost-1.41.0
 	media-libs/speex[ogg]
 	sys-libs/zlib
 	>=sys-devel/libtool-2.2
-	mysql? ( dev-db/mysql )
+	mysql? ( virtual/mysql )
 	lirc? ( app-misc/lirc )
 	dbus? ( sys-apps/dbus )
 	ssh?  ( >=net-libs/libssh-0.4[server] )
@@ -146,7 +146,7 @@ src_prepare() {
 	eautoreconf
 }
 src_configure() {
-	local gui hwaccel input myconf myext renderers
+	local gui hwaccel input media myconf myext renderers
 
 	# Set nsplugin install directory.
 	use nsplugin && myconf="${myconf} --with-npapi-plugindir=/usr/$(get_libdir)/gnash/npapi/"
@@ -174,13 +174,10 @@ src_configure() {
 	fi
 
 	# Set media handler.
-	if use ffmpeg; then
-		myconf="${myconf} --enable-media=ffmpeg"
-	elif use gstreamer; then
-		myconf="${myconf} --enable-media=gst"
-	else
-		myconf="${myconf} --enable-media=none"
-	fi
+	use ffmpeg || use gstreamer || media+=",none"
+	use ffmpeg && media+=",ffmpeg"
+	use gstreamer && media+=",gst"
+
 	# Set gui.
 	use gtk && gui=",gtk"
 	use fbcon && gui="${gui},fb"
@@ -202,6 +199,7 @@ src_configure() {
 	hwaccel=$( echo $hwaccel | sed -e 's/,//' )
 	myext=$( echo $myext | sed -e 's/,//' )
 	renderers=$( echo $renderers | sed -e 's/,//' )
+	media=$( echo $media | sed -e 's/,//' )
 
 	econf \
 		--docdir=/usr/share/doc/${PF} \
@@ -224,6 +222,7 @@ src_configure() {
 		--enable-extensions=${myext} \
 		--enable-renderer=${renderers} \
 		--enable-hwaccel=${hwaccel} \
+		--enable-media=${media} \
 		${myconf}
 }
 src_test() {
@@ -249,6 +248,11 @@ src_install() {
 	fi
 	# Create a symlink in /usr/$(get_libdir)/nsbrowser/plugins to the nsplugin install directory.
 	use nsplugin && inst_plugin /usr/$(get_libdir)/gnash/npapi/libgnashplugin.so \
+
+	# Remove pointless .la file, bug 338831
+	if use python; then
+		rm "${D}/$(python_get_sitedir)"/gtk-2.0/${PN}.la || die
+	fi
 
 	dodoc AUTHORS ChangeLog NEWS README || die "dodoc failed"
 }
