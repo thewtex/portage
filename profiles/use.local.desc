@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5992 2010/09/28 15:33:41 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5995 2010/09/29 01:53:58 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -318,6 +318,7 @@ app-emulation/ganeti:drbd - Enable DRBD support
 app-emulation/ganeti:filestorage - Enable File Storage
 app-emulation/ganeti:kvm - Enable KVM support
 app-emulation/ganeti:xen - Enable Xen support
+app-emulation/lib765:libdsk - Enable support for the floppy disk emulation library app-emulation/libdsk
 app-emulation/libvirt:iscsi - Add support for iSCSI (Internet SCSI) remote storage
 app-emulation/libvirt:libvirtd - Builds the libvirtd daemon as well as the client utilities instead of just the client utilities
 app-emulation/libvirt:lvm - Add support for the Logical Volume Manager sys-apps/lvm2
@@ -1864,7 +1865,6 @@ media-libs/swfdec:gtk - Enable GTK+ convenience library while is necessary for a
 media-libs/swfdec:oss - Use Open Sound System for audio output
 media-libs/swfdec:pulseaudio - Use media-sound/pulseaudio for audio output
 media-libs/taglib:asf - Provide support for Microsoft's 'advanced systems format' media container.
-media-libs/tiff:12-bit - Add support for 12/8-bit jpeg compression.
 media-libs/urt:gs - Add support for postscript
 media-libs/win32codecs:real - Installs the real video codecs
 media-libs/x264:pic - disable optimized assembly code that is not PIC friendly
@@ -3275,6 +3275,10 @@ sci-electronics/geda:stroke - enable mouse gesture support
 sci-electronics/gerbv:unit-mm - Set default unit for coordinates in status bar to mm
 sci-electronics/gspiceui:schematics - Use sci-electronics/geda for schematics editing
 sci-electronics/gspiceui:waveform - Use sci-electronics/gwave for waveform display
+sci-electronics/gtkwave:fasttree - Enables experimental Fast SST Tree widget code.
+sci-electronics/gtkwave:fatlines - Renders lines as double width in gtkwave.
+sci-electronics/gtkwave:judy - Enables Judy array support.
+sci-electronics/gtkwave:xz - Enables LZMA support for VZT
 sci-electronics/kicad:dev-doc - Install developer documentation (requires app-doc/doxygen)
 sci-electronics/pcb:gif - GIF graphics export
 sci-electronics/pcb:jpeg - JPEG graphics export

@@ -1,12 +1,12 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/midori/midori-9999.ebuild,v 1.18 2010/09/06 21:07:20 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/midori/midori-9999.ebuild,v 1.19 2010/09/29 02:40:29 ssuominen Exp $
 
 EAPI=2
 
 PYTHON_DEPEND="2:2.6"
 
-inherit eutils multilib python xfconf git
+inherit pax-utils eutils multilib python xfconf git
 
 DESCRIPTION="A lightweight web browser based on WebKitGTK+"
 HOMEPAGE="http://www.twotoasts.de/index.php?/pages/midori_summary.html"
@@ -27,7 +27,8 @@ RDEPEND="libnotify? ( x11-libs/libnotify )
 	>=x11-libs/gtk+-2.10:2
 	gnome? ( net-libs/libsoup[gnome] )
 	idn? ( net-dns/libidn )
-	unique? ( dev-libs/libunique )"
+	unique? ( dev-libs/libunique )
+	vala? ( dev-lang/vala:0 )"
 DEPEND="${RDEPEND}
 	dev-util/intltool
 	dev-util/pkgconfig
@@ -57,10 +58,10 @@ src_configure() {
 		$(use_enable html userdocs) \
 		$(use_enable idn libidn) \
 		$(use_enable libnotify) \
-		$(use_enable nls nls) \
+		$(use_enable nls) \
 		$(use_enable unique) \
 		$(use_enable vala) \
-		configure || die "configure failed"
+		configure || die
 }
 
 src_compile() {
@@ -73,12 +74,14 @@ src_compile() {
 		jobs="${j#-j}"; done; echo ${jobs} ) )
 	if [[ "${jobs}" != "" ]]; then NUMJOBS="-j"${jobs}; fi;
 
-	./waf build ${NUMJOBS} || die "build failed"
+	./waf build ${NUMJOBS} || die
 }
 
 src_install() {
-	DESTDIR=${D} ./waf install || die "install failed"
-	dodoc AUTHORS ChangeLog INSTALL TODO || die "dodoc failed"
+	DESTDIR=${D} ./waf install || die
+	dodoc AUTHORS ChangeLog INSTALL TODO || die
+
+	pax-mark -m "${D}"/usr/bin/midori #338561
 }
 
 pkg_postinst() {
