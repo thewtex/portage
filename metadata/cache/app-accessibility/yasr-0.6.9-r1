@@ -1,4 +1,4 @@
->=sys-devel/autoconf-2.58 || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b
+nls? ( sys-devel/gettext ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b
 
 0
 mirror://sourceforge/yasr/yasr-0.6.9.tar.gz
@@ -12,9 +12,9 @@ nls
 
 
 
+2
 
-
-compile install postinst unpack
+configure install postinst prepare
 
 
 
