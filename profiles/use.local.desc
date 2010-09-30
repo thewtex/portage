@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.5995 2010/09/29 01:53:58 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.6002 2010/09/30 03:53:50 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -213,7 +213,7 @@ app-cdr/k3b:wav - Enable support for reading WAVE files
 app-cdr/mybashburn:normalize - Add support for normalizing audio file volume levels
 app-cdr/serpentine:muine - Enable support for the GNOME music player Muine
 app-crypt/ccid:twinserial - Enable twinserial reader
-app-crypt/ekeyd:usb -  Build the libusb-based userland daemon for accessing the entropykey (alternative to the CDC USB driver). 
+app-crypt/ekeyd:usb -  Build the libusb-based userland daemon for accessing the EntropyKey (alternative to the CDC USB driver). It is suggested to use this option by default, as the CDC driver in the kernel often seems to be fragile (or the gadget implementation on the EntropyKey is too buggy), and can cause various problems. 
 app-crypt/gnupg:idea - Use the patented IDEA algorithm
 app-crypt/gnupg:openct - build using dev-libs/openct compat
 app-crypt/gnupg:pcsc-lite - build with sys-apps/pcsc-lite
@@ -1433,6 +1433,9 @@ gnome-extra/gnome-media:sound - Adds support for sound notification themes using
 gnome-extra/gnome-power-manager:policykit - Enable sys-auth/policykit authentication support
 gnome-extra/gtkhtml:glade - Provide integration with dev-util/glade.
 gnome-extra/libgda:canvas - Enables support for x11-libs/goocanvas
+gnome-extra/libgda:http - Enable embedded net-libs/libsoup based server
+gnome-extra/libgda:introspection - Use dev-libs/gobject-introspection for introspection
+gnome-extra/libgda:json - Enable support for JSON format
 gnome-extra/libgda:mdb - Enables Microsoft Access DB support
 gnome-extra/libgda:sourceview - Enable support for x11-libs/gtksourceview
 gnome-extra/libgda:xbase - Enables support for xbase databases (dBase, FoxPro, etc.)
@@ -2814,6 +2817,7 @@ net-libs/ptlib:tts - Enable Text-To-Speech server support
 net-libs/ptlib:video - Enable video support
 net-libs/ptlib:vxml - Enable VoiceXML support
 net-libs/ptlib:wav - Enable WAVFILE support
+net-libs/telepathy-glib:introspection - Use dev-libs/gobject-introspection for introspection
 net-libs/webkit-gtk:coverage - enable code coverage support
 net-libs/webkit-gtk:websockets - enable full duplex single socket communication
 net-libs/xulrunner:custom-optimization - Fine-tune custom compiler optimizations
@@ -3827,9 +3831,9 @@ www-plugins/adobe-flash:64bit - For amd64-multilib, installs the native 64-bit p
 www-plugins/adobe-flash:nspluginwrapper - For amd64-multilib, installs www-plugins/nspluginwrapper to allow use in a 64-bit browser. (Not recommended, see http://bugs.gentoo.org/324365)
 www-plugins/gnash:agg - Rendering based on the Anti-Grain Geometry Rendering Engine library
 www-plugins/gnash:cygnal - Enable building of the cygnal server
-www-plugins/gnash:openssl - Enable directly using OpenSSL
 www-plugins/gnash:sdl-sound - Enable SDL audio output for the standalone player
 www-plugins/gnash:ssh - Enable using SSH for network authentication in libnet
+www-plugins/gnash:ssl - Enable directly using OpenSSL in libnet (not needed for nsplugin ssl support)
 www-plugins/gnash:vaapi - Enables VAAPI (Video Acceleration API) for hardware decoding
 www-plugins/moonlight:sdk - Enable building of monodevelop SDK
 www-servers/apache:suexec - Install suexec with apache
@@ -3884,6 +3888,7 @@ x11-libs/gtkdatabox:glade - Build with libglade and glade-3 supports, which incl
 x11-libs/gtkmathview:t1lib - Enable media-libs/t1lib support
 x11-libs/gtksourceview:glade - Install a glade catalog file
 x11-libs/libSM:uuid - Use UUID for session identification instead of IP address and system time. 
+x11-libs/libdrm:libkms - Enable building of libkms, a library for applications to interface with KMS
 x11-libs/libfm:demo - Build demo
 x11-libs/libmatchbox:pango - Enable x11-libs/pango support
 x11-libs/libmatchbox:xsettings - Enable the use of xsettings for settings management

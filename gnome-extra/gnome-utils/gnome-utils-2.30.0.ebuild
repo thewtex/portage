@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-extra/gnome-utils/gnome-utils-2.30.0.ebuild,v 1.7 2010/09/26 19:39:24 nirbheek Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/gnome-utils/gnome-utils-2.30.0.ebuild,v 1.9 2010/09/29 16:01:42 mr_bones_ Exp $
 
 EAPI="2"
 
@@ -51,8 +51,13 @@ src_prepare() {
 	gnome2_src_prepare
 
 	# Remove idiotic -D.*DISABLE_DEPRECATED cflags
-	find . -iname 'Makefile.*' -exec \
-		sed -e 's/-D[A-Z_]*DISABLE_DEPRECATED//g' -i {} + || die "sed 1 failed"
+	# This method is kinda prone to breakage. Recheck carefully with next bump.
+	# bug 339074
+	find . -iname 'Makefile.am' -exec \
+		sed -e '/-D[A-Z_]*DISABLE_DEPRECATED/d' -i {} + || die "sed 1 failed"
+	# Do Makefile.in after Makefile.am to avoid automake maintainer-mode
+	find . -iname 'Makefile.in' -exec \
+		sed -e '/-D[A-Z_]*DISABLE_DEPRECATED/d' -i {} + || die "sed 1 failed"
 
 	if ! use test ; then
 		sed -e 's/ tests//' -i logview/Makefile.{am,in} || die "sed 2 failed"
