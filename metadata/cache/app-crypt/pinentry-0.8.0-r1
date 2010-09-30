@@ -1,5 +1,5 @@
-static? ( >=sys-libs/ncurses-5.7-r5[static-libs] ) !static? ( gtk? ( x11-libs/gtk+:2 ) ncurses? ( sys-libs/ncurses ) qt4? ( >=x11-libs/qt-gui-4.4.1 ) !gtk? ( !qt4? ( !ncurses? ( sys-libs/ncurses ) ) ) ) caps? ( sys-libs/libcap )
-static? ( >=sys-libs/ncurses-5.7-r5[static-libs] ) !static? ( gtk? ( x11-libs/gtk+:2 ) ncurses? ( sys-libs/ncurses ) qt4? ( >=x11-libs/qt-gui-4.4.1 ) !gtk? ( !qt4? ( !ncurses? ( sys-libs/ncurses ) ) ) ) caps? ( sys-libs/libcap )
+app-admin/eselect-pinentry static? ( >=sys-libs/ncurses-5.7-r5[static-libs] ) !static? ( gtk? ( x11-libs/gtk+:2 ) ncurses? ( sys-libs/ncurses ) qt4? ( >=x11-libs/qt-gui-4.4.1 ) !gtk? ( !qt4? ( !ncurses? ( sys-libs/ncurses ) ) ) ) caps? ( sys-libs/libcap )
+app-admin/eselect-pinentry static? ( >=sys-libs/ncurses-5.7-r5[static-libs] ) !static? ( gtk? ( x11-libs/gtk+:2 ) ncurses? ( sys-libs/ncurses ) qt4? ( >=x11-libs/qt-gui-4.4.1 ) !gtk? ( !qt4? ( !ncurses? ( sys-libs/ncurses ) ) ) ) caps? ( sys-libs/libcap )
 0
 mirror://gnupg/pinentry/pinentry-0.8.0.tar.gz
 
@@ -14,7 +14,7 @@ gtk ncurses qt4 caps static
 
 3
 
-configure install postinst prepare setup
+configure install postinst postrm prepare setup
 
 
 
