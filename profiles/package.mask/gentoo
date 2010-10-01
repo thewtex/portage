@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12000 2010/09/30 20:11:17 dilfridge Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12006 2010/10/01 17:25:51 rafaelmartins Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -31,6 +31,36 @@
 
 #--- END OF EXAMPLES ---
 
+# Rafael G. Martins <rafaelmartins@gentoo.org> (01 Oct 2010)
+# Upstream moved the source control from SVN to BZR.
+# The live ebuild will be masked until fix bug #339374
+=sci-electronics/kicad-99999999
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (01 Oct 2010)
+#  on behalf of QA team
+#
+# Upstream seems to be dead, and keeping importing it from
+# OpenSolaris unlikely; too many man pages installed by our
+# packages are not compatible with it.
+#
+# Removal on 2010-11-30
+app-doc/heirloom-doctools
+
+# Luca Barbato <lu_zero@gentoo.org> (01 Oct 2010)
+# beta version, has known issues
+=x11-drivers/ati-drivers-8.780*
+
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (01 Oct 2010)
+#  on behalf of QA team
+#
+# Overflows during build (bug #301795); need a new maintainer
+# at least, but there are a number of alternative IMEs that
+# shouldn't have these problems.
+#
+# Removal on 2010-11-30
+app-i18n/fcitx
+
 # Andreas K. Huettel <dilfridge@gentoo.org> (30 Sep 2010)
 # Masking for removal in 30 days
 # This package is obsolete, texlive contains a way newer version
@@ -48,7 +78,7 @@ net-p2p/ed2k-gtk-gui
 
 # Pacho Ramos <pacho@gentoo.org> (30 Sep 2010)
 # Unmaintained since a lot of time by upstream, it's
-# replaced by net-libs/telepathy-glib (bug #338681) and 
+# replaced by net-libs/telepathy-glib (bug #338681) and
 # masked with Tester's approval.
 #
 # Removal on 2010-10-30
@@ -110,7 +140,7 @@ dev-tex/achemso
 
 # Joerg Bornkessel <hd_brummy@gentoo.org> ( 26 Sep 2010 )
 # masked for removel in 30 days,
-# bug 335785  
+# bug 335785
 # ttf-bitstream-vera issues
 =media-plugins/vdr-graphtft-0.1.21_alpha-r1
 
@@ -149,9 +179,9 @@ dev-tex/achemso
 >=x11-libs/gtk+-2.21
 
 # Pacho Ramos <pacho@gentoo.org> (24 Sep 2010)
-# Broken since more than a year when using nvidia-drivers (bug #260433), 
-# upstream no longer develops neither maintains it, most common 
-# distributions have already dropped it. 
+# Broken since more than a year when using nvidia-drivers (bug #260433),
+# upstream no longer develops neither maintains it, most common
+# distributions have already dropped it.
 # Please use net-wireless/gnome-bluetooth:2 instead. Will be removed at 24 Nov 2010.
 net-wireless/bluez-gnome
 
@@ -203,7 +233,7 @@ x11-misc/transset
 
 # Panagiotis Christopoulos <pchrist@gentoo.org> (17 Sep 2010)
 # Masked for removal in 30 days. Most of them are too old/
-# problematic. They will be moved to a temporary overlay 
+# problematic. They will be moved to a temporary overlay
 # after their removal until we (the lisp team) decide if/how we will
 # handle/update them. For more information, please see bug #337963
 dev-lisp/cl-acclaim
@@ -444,7 +474,7 @@ games-server/greenhouse
 # Last stand-alone release in 2008. Newer versions are included
 # with app-editors/emacs or app-editors/emacs-vcs.
 # Masked for removal in 30 days, bug 337133.
-app-emacs/gnus 
+app-emacs/gnus
 
 # Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (13 Sep 2010)
 # Masked before final release.
@@ -454,14 +484,14 @@ app-emacs/gnus
 # Unmaintained. Masked so that Zope 2.12/2.13 is preferred.
 =net-zope/zope-3*
 
-# Pacho Ramos <pacho@gentoo.org> (13 Sep 2010) 
+# Pacho Ramos <pacho@gentoo.org> (13 Sep 2010)
 # Nothing in the tree requires this, unable to see
-# any major distribution still shipping this, unable to find any 
+# any major distribution still shipping this, unable to find any
 # upstream update since a lot of time, does not respect LDFLAGS
 # (bug 333957) and doesn't have an autotools based build system.
 x11-libs/gtkscintilla2
 
-# Pacho Ramos <pacho@gentoo.org> (13 Sep 2010) 
+# Pacho Ramos <pacho@gentoo.org> (13 Sep 2010)
 # Upstream says is no longer developed, no updates since 2007,
 # nothing in the tree uses it, build failures (bug #276918).
 # Removal on 2010-10-13
@@ -472,13 +502,13 @@ x11-libs/diacanvas
 # Removal in 30 days if upstream does not respond
 x11-plugins/pidgin-knotify
 
-# Pacho Ramos <pacho@gentoo.org> (12 Sep 2010) 
+# Pacho Ramos <pacho@gentoo.org> (12 Sep 2010)
 # No developed by upstream since years, orca replaces it,
 # fails to compile (bug #221283).
 # Removal on 2010-10-12
 app-accessibility/gnopernicus
 
-# Pacho Ramos <pacho@gentoo.org> (12 Sep 2010) 
+# Pacho Ramos <pacho@gentoo.org> (12 Sep 2010)
 # No upstream update since 2004, looks to be no longer supported
 # by them. Unable to locate any distribution still shipping it
 # but PLD (with last update in 2007), nothing in the tree needs it,
@@ -754,7 +784,7 @@ net-dialup/fcusb
 net-dialup/fcusb2
 net-dialup/fritzcapi
 net-dialup/fxusb
-net-dialup/fxusb_CZ 
+net-dialup/fxusb_CZ
 net-wireless/fwlanusb
 
 # Markus Meier <maekke@gentoo.org> (18 Jul 2010)
@@ -1088,11 +1118,8 @@ net-libs/libjingle
 # Pawel Hajdan jr <phajdan.jr@gentoo.org> (07 Jan 2010)
 # Dev channel releases are only for people who are developers or want more
 # experimental features and accept a more unstable release.
-~www-client/chromium-7.0.503.1
-~www-client/chromium-7.0.517.5
-~www-client/chromium-7.0.517.8
 ~www-client/chromium-7.0.517.13
-~www-client/chromium-7.0.517.24
+~www-client/chromium-7.0.536.2
 
 # Christian Parpart <trapni@gentoo.org> (23 Dec 2009)
 # Masked for testing/feedback.
