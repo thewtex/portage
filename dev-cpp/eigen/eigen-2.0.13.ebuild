@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-cpp/eigen/eigen-2.0.13.ebuild,v 1.6 2010/08/27 18:55:21 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-cpp/eigen/eigen-2.0.13.ebuild,v 1.7 2010/10/03 16:29:08 jlec Exp $
 
 EAPI="2"
 
@@ -8,7 +8,7 @@ inherit cmake-utils
 
 DESCRIPTION="Lightweight C++ template library for vector and matrix math, a.k.a. linear algebra"
 HOMEPAGE="http://eigen.tuxfamily.org/"
-SRC_URI="http://bitbucket.org/eigen/eigen/get/${PV}.tar.bz2"
+SRC_URI="http://bitbucket.org/eigen/eigen/get/${PV}.tar.bz2 -> ${P}.tar.bz2"
 
 LICENSE="GPL-3"
 KEYWORDS="alpha amd64 hppa ia64 ~ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
