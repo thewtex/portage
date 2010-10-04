@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-arch/p7zip/p7zip-9.13-r1.ebuild,v 1.1 2010/09/19 09:26:59 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-arch/p7zip/p7zip-9.13-r1.ebuild,v 1.4 2010/10/02 12:37:57 grobian Exp $
 
 EAPI="2"
 WX_GTK_VER="2.8"
@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/${PN}/${PN}_${PV}_src_all.tar.bz2"
 
 LICENSE="LGPL-2.1 rar? ( unRAR )"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
+KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="doc kde rar +pch static wxwidgets"
 
 RDEPEND="kde? ( x11-libs/wxGTK:2.8[X,-odbc] kde-base/konqueror )
@@ -64,9 +64,11 @@ src_prepare() {
 			|| cp -f makefile.macosx_32bits makefile.machine
 		# bundles have extension .bundle but don't die because USE=-rar
 		# removes the Rar directory
+		sed -i -e '/strcpy(name/s/\.so/.bundle/' \
+			CPP/Windows/DLL.cpp || die
 		sed -i -e '/^PROG=/s/\.so/.bundle/' \
 			CPP/7zip/Bundles/Format7zFree/makefile \
-			CPP/7zip/Compress/Rar/makefile
+			$(use rar && echo CPP/7zip/Compress/Rar/makefile) || die
 	elif use x86-fbsd; then
 		# FreeBSD needs this special makefile, because it hasn't -ldl
 		sed -e 's/-lc_r/-pthread/' makefile.freebsd > makefile.machine
