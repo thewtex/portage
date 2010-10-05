@@ -1,6 +1,6 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-engines/frotz/frotz-2.43.ebuild,v 1.17 2009/06/14 00:04:27 nyhm Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-engines/frotz/frotz-2.43.ebuild,v 1.19 2010/10/04 14:59:19 mr_bones_ Exp $
 
 EAPI=2
 inherit eutils games
@@ -21,14 +21,16 @@ src_prepare() {
 	sed -i \
 		-e '/^CC /d' \
 		Makefile \
-		|| die 'sed failed'
-	epatch "${FILESDIR}"/${P}-glibc2.10.patch
+		|| die
+	epatch \
+		"${FILESDIR}"/${P}-glibc2.10.patch \
+		"${FILESDIR}"/${P}-ldflags.patch
 }
 
 src_compile() {
 	local OPTS="CONFIG_DIR=${GAMES_SYSCONFDIR}"
-	use oss && OPTS="${MAKE_OPTS} SOUND_DEFS=-DOSS_SOUND SOUND_DEV=/dev/dsp"
-	emake ${MAKE_OPTS} all || die "emake failed"
+	use oss && OPTS="${OPTS} SOUND_DEFS=-DOSS_SOUND SOUND_DEV=/dev/dsp"
+	emake ${OPTS} all || die "emake failed"
 }
 
 src_install () {
