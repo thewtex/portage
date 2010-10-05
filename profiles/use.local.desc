@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.6007 2010/10/03 21:14:38 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.6010 2010/10/05 00:33:31 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -983,6 +983,7 @@ dev-libs/json-glib:introspection - Use dev-libs/gobject-introspection for intros
 dev-libs/klibc:n32 - Force klibc to 32bit if on mips64 if not n32 userland
 dev-libs/libburn:track-src-odirect - Read track input with O_DIRECT (see man 2 open), this may deliver a better write performance in some situations
 dev-libs/libcdio:minimal -  Only build the libcdio library and little more, just to be used to link against from multimedia players. With this USE flag enabled, none of the command-line utilities are built, nor is the CDDA library. 
+dev-libs/libgdata:introspection - Use dev-libs/gobject-introspection for introspection
 dev-libs/libgee:introspection - Use dev-libs/gobject-introspection for introspection
 dev-libs/libgpg-error:common-lisp - Install common-lisp files
 dev-libs/libisoburn:external-filters - Allow the use of external processes as file content filters (Note: this is a potential security risk)
@@ -1809,6 +1810,7 @@ media-libs/libcanberra:gtk - Enables building of gtk+ helper library, gtk+ runti
 media-libs/libcanberra:pulseaudio - Enables PulseAudio sound driver that should be able to support positional event sounds. This is the preferred choice for best sound events experience and picked by default if compiled in and possible to use at runtime.
 media-libs/libcanberra:sound - Install x11-themes/sound-theme-freedesktop to get sounds on Gnome and Xfce.
 media-libs/libcanberra:tdb - Enables Trivial Database support
+media-libs/libchamplain:html - Install gtk-doc html version for this package
 media-libs/libchamplain:introspection - Use dev-libs/gobject-introspection for introspection
 media-libs/libggi:vis - Enables sparc vis support for libggi
 media-libs/libgpod:gtk - Enables ArtWorkDB support (including Photos and album covers)
@@ -4000,7 +4002,9 @@ x11-themes/gtk-engines-murrine:themes - Pull in themes via x11-themes/murrine-th
 x11-themes/gtk-engines-nodoka:animation-rtl - Progressbar animation from right to left
 x11-themes/gtk-engines-qtcurve:firefox3 - Install GUI theme tweaks for version 3 of www-client/firefox 
 x11-themes/gtk-engines-qtcurve:mozilla - Install GUI theme tweaks for mozilla based browsers, including version 2 of www-client/firefox 
+x11-themes/gtk-engines-qtcurve:parentless-dialog-fix - Enable support for the "parent-less dialog fix" option. WARNING: Upstream allows this, but does NOT support it. 
 x11-themes/qtcurve-qt4:kde - Enable KDE4 support. This adds a QtCurve configuration module to KDE's SystemSettings. 
+x11-themes/qtcurve-qt4:parentless-dialog-fix - Enable support for the "parent-less dialog fix" option. WARNING: Upstream allows this, but does NOT support it. 
 x11-themes/qtcurve-qt4:windeco - Enable window decoration for KWin.
 x11-themes/redhat-artwork:audacious - Install media-sound/audacious theme
 x11-themes/redhat-artwork:cursors - Install Bluecurve cursors
