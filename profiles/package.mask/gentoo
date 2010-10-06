@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12018 2010/10/05 23:19:11 alexxy Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12023 2010/10/06 13:34:26 mpagano Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,19 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Ole Markus With ( 5 Oct 2010 )
+# PHP and PHP-related ebuilds supporting minor version 
+# slotting are masked for testing
+=dev-lang/php-5.2.14-r1
+=dev-lang/php-5.3.3-r2
+app-admin/eselect-php
+=dev-php5/pecl-oauth-0.99.9
+=dev-php5/pecl-memcache-3.0.4-r1
+=dev-php5/pecl-oauth-0.99.9
+=dev-php5/xdebug-2.1.0-r1
+=dev-php5/pecl-gearman-0.7.0-r1
+=dev-php5/pecl-cairo-0.2.0-r1
 
 # Ricardo Mendoza <ricmm@gentoo.org> (04 Oct 2010)
 # Dead upstream, project no longer exists and doesn't work.
@@ -161,13 +174,6 @@ net-p2p/overnet
 #
 # Removal on 2010-11-26
 app-benchmarks/xfbsuite
-
-# Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org> (27 Sep 2010)
-# Updated mask - now pending on adding to the tree the versions of
-# mysql/mariadb with the working shared lib patch.
-# Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org> (19 Sep 2010)
-# Masked until the public release
-~media-sound/amarok-2.3.2
 
 # Andreas K. Huettel <dilfridge@gentoo.org> (26 Sep 2010)
 # Masking for removal in 30 days
@@ -1374,7 +1380,7 @@ dev-util/w32api
 
 # Mike Pagano <mpagano@gentoo.org> (17 Dec 2008)
 # Masked waiting on >=portage-2.2* to be unmasked
->=app-portage/portpeek-1.6
+>=app-portage/portpeek-2
 
 # Robin H. Johnson <robbat2@gentoo.org> (06 Dec 2008)
 # The init.d scripts and default rules need updating and serious testing.
