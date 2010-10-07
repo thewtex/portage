@@ -1,8 +1,8 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-cdr/kcdemu/kcdemu-0.3.ebuild,v 1.1 2009/12/04 11:07:12 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-cdr/kcdemu/kcdemu-0.3.ebuild,v 1.2 2010/10/06 20:02:40 tampakrap Exp $
 
-EAPI=2
+EAPI=3
 KDE_LINGUAS="de es"
 inherit kde4-base
 
@@ -21,4 +21,4 @@ RDEPEND=">=app-cdr/cdemu-1.2.0"
 
 S=${WORKDIR}/${MY_P}
 
-DOCS="ChangeLog"
+DOCS=( ChangeLog )

@@ -1,12 +1,12 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/fakefs/fakefs-0.2.1.ebuild,v 1.8 2010/05/22 23:05:42 a3li Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/fakefs/fakefs-0.2.1.ebuild,v 1.9 2010/10/06 17:45:12 graaff Exp $
 
 EAPI=2
 
 # jruby → Marshal/DeMarshal to clone directories fail; tests fail in
 # release 0.2.1
-USE_RUBY="ruby18 ree18 ruby19"
+USE_RUBY="ruby18 ree18"
 
 # requires sdoc
 RUBY_FAKEGEM_TASK_DOC=""

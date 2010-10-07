@@ -1,6 +1,6 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-misc/gx-mail-notify/gx-mail-notify-0.4.2.ebuild,v 1.1 2009/11/03 13:03:41 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-misc/gx-mail-notify/gx-mail-notify-0.4.2.ebuild,v 1.2 2010/10/06 20:45:45 tampakrap Exp $
 
 EAPI=2
 inherit kde4-base
@@ -18,6 +18,7 @@ IUSE="debug"
 
 DEPEND=">=kde-base/kdelibs-${KDE_MINIMAL}[opengl]
 	>=kde-base/plasma-workspace-${KDE_MINIMAL}"
+RDEPEND="${DEPEND}"
 
 S=${WORKDIR}/${MY_P}
 
