@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12025 2010/10/06 21:59:46 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12027 2010/10/07 08:51:23 pacho Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,14 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Pacho Ramos <pacho@gentoo.org> (7 Oct 2010)
+# Unmaintained since 2006 by upstream, no required by
+# any package in the tree (bug #340039) and most
+# distributions have already dropped it.
+#
+# Removal on 2010-11-07
+dev-dotnet/ant-dotnet
 
 # Ole Markus With <olemarkus@gentoo.org> (5 Oct 2010)
 # PHP and PHP-related ebuilds supporting minor version 
@@ -1157,6 +1165,7 @@ net-libs/libjingle
 # experimental features and accept a more unstable release.
 ~www-client/chromium-7.0.517.13
 ~www-client/chromium-7.0.536.2
+~www-client/chromium-7.0.544.0
 
 # Christian Parpart <trapni@gentoo.org> (23 Dec 2009)
 # Masked for testing/feedback.

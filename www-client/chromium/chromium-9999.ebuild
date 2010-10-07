@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/chromium-9999.ebuild,v 1.90 2010/10/05 14:51:39 phajdan.jr Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/chromium-9999.ebuild,v 1.92 2010/10/07 15:20:09 phajdan.jr Exp $
 
 EAPI="2"
 
@@ -25,7 +25,7 @@ RDEPEND="app-arch/bzip2
 	>=dev-libs/libevent-1.4.13
 	dev-libs/libxml2
 	dev-libs/libxslt
-	>=dev-libs/nss-3.12.8
+	>=dev-libs/nss-3.12.3
 	>=gnome-base/gconf-2.24.0
 	gnome-keyring? ( >=gnome-base/gnome-keyring-2.28.2 )
 	>=media-libs/alsa-lib-1.0.19
@@ -109,15 +109,10 @@ pkg_setup() {
 }
 
 src_prepare() {
-	# Allow us to build with system SSL support,
-	# see http://crbug.com/57275.
-	epatch "${FILESDIR}"/${PN}-system-ssl-r0.patch
-
-	# Small fixes to the system-provided sqlite support,
+	# Small fix to the system-provided icu support,
 	# to be upstreamed.
-	epatch "${FILESDIR}"/${PN}-system-sqlite-r0.patch
+	epatch "${FILESDIR}"/${PN}-system-icu-r0.patch
 
-	remove_bundled_lib "net/third_party/nss"
 	remove_bundled_lib "third_party/bzip2"
 	remove_bundled_lib "third_party/codesighs"
 	remove_bundled_lib "third_party/cros"
@@ -154,6 +149,7 @@ src_configure() {
 	# Use system-provided libraries.
 	# TODO: use_system_ffmpeg (http://crbug.com/50678).
 	# TODO: use_system_hunspell (upstream changes needed).
+	# TODO: use_system_ssl (need to consult upstream).
 	myconf+="
 		-Duse_system_bzip2=1
 		-Duse_system_icu=1
@@ -161,7 +157,6 @@ src_configure() {
 		-Duse_system_libjpeg=1
 		-Duse_system_libpng=1
 		-Duse_system_libxml=1
-		-Duse_system_ssl=1
 		-Duse_system_zlib=1"
 
 	if use system-sqlite; then
