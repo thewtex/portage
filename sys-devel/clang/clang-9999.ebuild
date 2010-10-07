@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/clang/clang-9999.ebuild,v 1.8 2010/09/21 16:14:35 voyageur Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/clang/clang-9999.ebuild,v 1.10 2010/10/06 09:22:22 voyageur Exp $
 
 EAPI=3
 
@@ -20,8 +20,7 @@ KEYWORDS=""
 IUSE="debug +static-analyzer system-cxx-headers test"
 
 # Note: for LTO support, clang will depend on binutils with gold plugins, and LLVM built after that - http://llvm.org/docs/GoldPlugin.html
-DEPEND="static-analyzer? ( dev-lang/perl )
-	test? ( dev-util/dejagnu )"
+DEPEND="static-analyzer? ( dev-lang/perl )"
 RDEPEND="~sys-devel/llvm-${PV}"
 
 S="${WORKDIR}/llvm"
@@ -145,8 +144,8 @@ src_install() {
 	# to just fix this, so we correct it post-install
 	if [[ ${CHOST} == *-darwin* ]] ; then
 		for lib in libCIndex.dylib ; do
-			install_name_tool -id "${EPREFIX}"/usr/lib/${lib} \
-				"${ED}"/usr/lib/${lib}
+			install_name_tool -id "${EPREFIX}"/usr/lib/llvm/${lib} \
+				"${ED}"/usr/lib/llvm/${lib}
 		done
 	fi
 }
