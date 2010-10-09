@@ -1,0 +1,22 @@
+ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ree18? ( dev-lang/ruby-enterprise:1.8 ) ruby_targets_ruby19? ( dev-lang/ruby:1.9 ) ruby_targets_ruby18? ( test? ( dev-ruby/rake[ruby_targets_ruby18] ) ) ruby_targets_ree18? ( test? ( dev-ruby/rake[ruby_targets_ree18] ) ) ruby_targets_ruby19? ( test? ( dev-ruby/rake[ruby_targets_ruby19] ) ) test? ( ruby_targets_ruby18? ( virtual/rubygems[ruby_targets_ruby18] ) ruby_targets_ree18? ( virtual/rubygems[ruby_targets_ree18] ) ruby_targets_ruby19? ( virtual/rubygems[ruby_targets_ruby19] ) )
+ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ree18? ( dev-lang/ruby-enterprise:1.8 ) ruby_targets_ruby19? ( dev-lang/ruby:1.9 ) ruby_targets_ruby18? ( virtual/rubygems[ruby_targets_ruby18] ) ruby_targets_ree18? ( virtual/rubygems[ruby_targets_ree18] ) ruby_targets_ruby19? ( virtual/rubygems[ruby_targets_ruby19] )
+0
+mirror://rubygems/fakefs-0.2.1.gem
+
+http://github.com/defunkt/fakefs
+as-is
+A fake filesystem. Use it in your tests.
+~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86
+eutils multilib portability ruby-fakegem ruby-ng toolchain-funcs
+ruby_targets_ruby18 ruby_targets_ree18 ruby_targets_ruby19 test
+
+
+
+2
+
+compile configure install prepare setup test unpack
+
+
+
+
+

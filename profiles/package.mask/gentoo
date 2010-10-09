@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12023 2010/10/06 13:34:26 mpagano Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12031 2010/10/08 17:12:14 djc Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -31,7 +31,29 @@
 
 #--- END OF EXAMPLES ---
 
-# Ole Markus With ( 5 Oct 2010 )
+# Dirkjan Ochtman <djc@gentoo.org> (08 Oct 2010)
+# testing new python release
+=dev-lang/python-2.6.6
+
+# Samuli Suominen <ssuominen@gentoo.org> (07 Oct 2010)
+# Packages using obsolete policykit:
+#
+# kde-base/policykit-kde replaced by sys-auth/polkit-kde
+# sys-auth/policykit-qt replaced by sys-auth/polkit-qt
+#
+# Masked for removal in 30 days or sooner
+kde-base/policykit-kde
+sys-auth/policykit-qt
+
+# Pacho Ramos <pacho@gentoo.org> (07 Oct 2010)
+# Unmaintained since 2006 by upstream, no required by
+# any package in the tree (bug #340039) and most
+# distributions have already dropped it.
+#
+# Removal on 2010-11-07
+dev-dotnet/ant-dotnet
+
+# Ole Markus With <olemarkus@gentoo.org> (05 Oct 2010)
 # PHP and PHP-related ebuilds supporting minor version 
 # slotting are masked for testing
 =dev-lang/php-5.2.14-r1
@@ -40,6 +62,7 @@ app-admin/eselect-php
 =dev-php5/pecl-oauth-0.99.9
 =dev-php5/pecl-memcache-3.0.4-r1
 =dev-php5/pecl-oauth-0.99.9
+=dev-php5/pecl-apc-3.1.4-r1
 =dev-php5/xdebug-2.1.0-r1
 =dev-php5/pecl-gearman-0.7.0-r1
 =dev-php5/pecl-cairo-0.2.0-r1
@@ -145,10 +168,6 @@ net-libs/libtelepathy
 # Removal on 2010-10-29
 net-voip/cohoba
 
-# Tim Harder <radhermit@gentoo.org> (28 Sep 2010)
-# Mask development releases
-=media-sound/solfege-3.17*
-
 # Diego E. Pettenò <flameeyes@gentoo.org> (27 Sep 2010)
 #  on behalf of QA team
 #
@@ -223,6 +242,7 @@ dev-tex/achemso
 >=sys-auth/polkit-0.99
 >=gnome-extra/polkit-gnome-0.99
 >=x11-libs/gtk+-2.21
+>=dev-lang/vala-0.11
 
 # Pacho Ramos <pacho@gentoo.org> (24 Sep 2010)
 # Broken since more than a year when using nvidia-drivers (bug #260433),
@@ -769,7 +789,6 @@ mail-client/claws-mail-bsfilter
 # Jeroen Roovers <jer@gentoo.org> (03 Aug 2010)
 # Alphas and snapshots are not for everyday use
 # <http://my.opera.com/desktopteam/blog>
-=www-client/opera-10.63_pre6447
 =www-client/opera-10.70*
 
 # Sergei Trofimovich <slyfox@gentoo.org> (1 Aug 2010)
@@ -1155,6 +1174,7 @@ net-libs/libjingle
 # experimental features and accept a more unstable release.
 ~www-client/chromium-7.0.517.13
 ~www-client/chromium-7.0.536.2
+~www-client/chromium-7.0.544.0
 
 # Christian Parpart <trapni@gentoo.org> (23 Dec 2009)
 # Masked for testing/feedback.
