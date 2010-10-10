@@ -1,5 +1,5 @@
-sys-libs/zlib >=x11-libs/qwt-5.1[svg] >=x11-libs/qwtplot3d-0.2.7 x11-libs/qt-assistant:4 x11-libs/qt-qt3support:4 >=dev-cpp/muParser-1.30 >=sci-libs/gsl-1.8 dev-util/pkgconfig >=dev-python/sip-4.7
-sys-libs/zlib >=x11-libs/qwt-5.1[svg] >=x11-libs/qwtplot3d-0.2.7 x11-libs/qt-assistant:4 x11-libs/qt-qt3support:4 >=dev-cpp/muParser-1.30 >=sci-libs/gsl-1.8 >=dev-python/PyQt4-4.4[X] dev-python/pygsl sci-libs/scipy
+sys-libs/zlib >=x11-libs/qwt-5.1[svg] >=x11-libs/qwtplot3d-0.2.7 || ( >=x11-libs/qt-assistant-4.7.0:4[compat] <x11-libs/qt-assistant-4.7.0:4 ) x11-libs/qt-qt3support:4 >=dev-cpp/muParser-1.30 >=sci-libs/gsl-1.8 dev-util/pkgconfig >=dev-python/sip-4.7
+sys-libs/zlib >=x11-libs/qwt-5.1[svg] >=x11-libs/qwtplot3d-0.2.7 || ( >=x11-libs/qt-assistant-4.7.0:4[compat] <x11-libs/qt-assistant-4.7.0:4 ) x11-libs/qt-qt3support:4 >=dev-cpp/muParser-1.30 >=sci-libs/gsl-1.8 >=dev-python/PyQt4-4.4[X] dev-python/pygsl sci-libs/scipy
 0
 mirror://sourceforge/scidavis/scidavis-0.2.4.tar.bz2
 
@@ -7,14 +7,14 @@ http://scidavis.sourceforge.net/
 GPL-2
 Scientific Data Analysis and Visualization
 ~amd64 ~x86
-base eutils fdo-mime multilib portability prefix qt4 toolchain-funcs versionator
+base eutils fdo-mime multilib portability prefix qt4-r2 toolchain-funcs
 linguas_de linguas_es linguas_fr linguas_ja linguas_ru linguas_sv
 
 
 
 3
 
-compile configure install postinst postrm prepare setup unpack
+compile configure install postinst postrm prepare unpack
 
 
 
