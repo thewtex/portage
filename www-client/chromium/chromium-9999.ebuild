@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/chromium-9999.ebuild,v 1.92 2010/10/07 15:20:09 phajdan.jr Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/chromium-9999.ebuild,v 1.93 2010/10/09 14:00:31 phajdan.jr Exp $
 
 EAPI="2"
 
@@ -15,7 +15,7 @@ EGCLIENT_REPO_URI="http://src.chromium.org/svn/trunk/src/"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-IUSE="cups gnome gnome-keyring system-sqlite"
+IUSE="cups +gecko-mediaplayer gnome gnome-keyring system-sqlite"
 
 RDEPEND="app-arch/bzip2
 	system-sqlite? (
@@ -49,7 +49,8 @@ RDEPEND+="
 	)
 	x11-apps/xmessage
 	x11-misc/xdg-utils
-	virtual/ttf-fonts"
+	virtual/ttf-fonts
+	gecko-mediaplayer? ( !www-plugins/gecko-mediaplayer[gnome] )"
 
 src_unpack() {
 	subversion_src_unpack
@@ -112,6 +113,9 @@ src_prepare() {
 	# Small fix to the system-provided icu support,
 	# to be upstreamed.
 	epatch "${FILESDIR}"/${PN}-system-icu-r0.patch
+
+	# Enable optional support for gecko-mediaplayer.
+	epatch "${FILESDIR}"/${PN}-gecko-mediaplayer-r0.patch
 
 	remove_bundled_lib "third_party/bzip2"
 	remove_bundled_lib "third_party/codesighs"
@@ -187,6 +191,14 @@ src_configure() {
 		# Prevent the build from failing (bug #301880). The performance
 		# difference is very small.
 		myconf+=" -Dv8_use_snapshot=0"
+	fi
+
+	if use gecko-mediaplayer; then
+		# Disable hardcoded blacklist for gecko-mediaplayer.
+		# When www-plugins/gecko-mediaplayer is compiled with USE=gnome, it causes
+		# the browser to hang. We can handle the situation via dependencies,
+		# thus making it possible to use gecko-mediaplayer.
+		append-flags -DGENTOO_CHROMIUM_ENABLE_GECKO_MEDIAPLAYER
 	fi
 
 	# Use target arch detection logic from bug #296917.

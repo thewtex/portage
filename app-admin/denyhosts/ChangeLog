@@ -1,19 +1,35 @@
 # ChangeLog for app-admin/denyhosts
-# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/denyhosts/ChangeLog,v 1.37 2009/12/20 04:13:49 arfrever Exp $
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/denyhosts/ChangeLog,v 1.42 2010/10/07 17:49:01 darkside Exp $
 
- 22 May 2010; Piotr Karbowski <jabberuser@gmail.com>:
- Merge gentoo changes into funtoo's denyhosts.
+  07 Oct 2010; Jeremy Olexa <darkside@gentoo.org> -denyhosts-2.6-r1.ebuild,
+  denyhosts-2.6-r4.ebuild:
+  Stabilize for all. Tested on stable x86 host, only text files changed.
+  Remove old version
+
+*denyhosts-2.6-r4 (07 Oct 2010)
+
+  07 Oct 2010; Jeremy Olexa <darkside@gentoo.org> -denyhosts-2.6-r3.ebuild,
+  +denyhosts-2.6-r4.ebuild, files/denyhosts.init:
+  Modify init script (in place) to fix bug 244700 affecting baselayout-2
+  users. Revision bump to force the new file install. Work by Lex Brugman
+
+  05 Oct 2010; Jeremy Olexa <darkside@gentoo.org> files/denyhosts.init:
+  Add CVS Header for easier troubleshooting
+
+*denyhosts-2.6-r3 (01 Jun 2010)
+
+  01 Jun 2010; Jeremy Olexa <darkside@gentoo.org> -denyhosts-2.6-r2.ebuild,
+  +denyhosts-2.6-r3.ebuild, files/denyhosts.logrotate:
+  Revision bump to install logrotate file with proper line endings, bug
+  319133
 
 *denyhosts-2.6-r2 (04 May 2010)
-  
+
   04 May 2010; Jeremy Olexa <darkside@gentoo.org> +denyhosts-2.6-r2.ebuild,
   +files/denyhosts.logrotate:
   Revision bump to not install dupicate docs and install log rotate file,
   bug 274253 by Michael
-
-  30 Mar 2010; Piotr Karbowski <jabberuser@gmail.com>
-  Init script fix.
 
   20 Dec 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
   denyhosts-2.6-r1.ebuild:
