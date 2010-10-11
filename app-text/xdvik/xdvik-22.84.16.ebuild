@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/xdvik/xdvik-22.84.16.ebuild,v 1.10 2010/10/02 13:13:03 grobian Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/xdvik/xdvik-22.84.16.ebuild,v 1.12 2010/10/10 17:34:56 ulm Exp $
 
 EAPI=3
 inherit eutils flag-o-matic elisp-common toolchain-funcs
@@ -18,7 +18,7 @@ RDEPEND=">=media-libs/t1lib-5.0.2
 	x11-libs/libXmu
 	x11-libs/libXp
 	x11-libs/libXpm
-	motif? ( x11-libs/openmotif )
+	motif? ( >=x11-libs/openmotif-2.3:0 )
 	!motif? ( neXt? ( x11-libs/neXtaw )
 		!neXt? ( Xaw3d? ( x11-libs/Xaw3d ) ) )
 	virtual/latex-base
@@ -31,6 +31,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/${P}-open-mode.patch \
 		"${FILESDIR}"/${P}-cvararg.patch \
 		"${FILESDIR}"/${P}-parallel_make.patch
+	has_version '>=app-text/texlive-2009' && epatch "${FILESDIR}"/${P}-kpathsea_version.patch
 	# Make sure system kpathsea headers are used
 	cd "${WORKDIR}/${P}/texk/kpathsea"
 	for i in *.h ; do echo "#include_next \"$i\"" > $i; done

@@ -1,0 +1,22 @@
+math? ( >=dev-lang/ocaml-3.0.6[ocamlopt?] ) || ( virtual/httpd-cgi virtual/httpd-fastcgi ) virtual/httpd-php >=app-admin/webapp-config-1.50.15
+math? ( >=dev-lang/ocaml-3.0.6[ocamlopt?] ) math? ( app-text/dvipng virtual/tex-base app-text/ghostscript-gpl media-gfx/imagemagick ) imagemagick? ( media-gfx/imagemagick ) || ( <dev-lang/php-5.3[mysql?,pcre,postgres?,session,spl,xml] >=dev-lang/php-5.3[mysql?,postgres?,session,xml] ) || ( dev-lang/php[gd] dev-lang/php[gd-external] ) sqlite3? ( >=dev-db/sqlite-3.6[fts3] ) virtual/httpd-php >=app-admin/webapp-config-1.50.15
+1.16.0
+http://download.wikimedia.org/mediawiki/1.16/mediawiki-1.16.0.tar.gz
+test
+http://www.mediawiki.org
+GPL-2
+The MediaWiki wiki web application (as used on wikipedia.org)
+~alpha ~amd64 ~ppc ~sparc ~x86
+depend.php eutils multilib phpconfutils portability toolchain-funcs versionator webapp
+imagemagick math mysql postgres +ocamlopt sqlite3 vhosts
+
+
+
+3
+
+compile install postinst preinst prerm setup
+
+
+
+
+

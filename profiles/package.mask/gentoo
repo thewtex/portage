@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12031 2010/10/08 17:12:14 djc Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12039 2010/10/11 09:45:19 djc Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -31,9 +31,33 @@
 
 #--- END OF EXAMPLES ---
 
-# Dirkjan Ochtman <djc@gentoo.org> (08 Oct 2010)
-# testing new python release
-=dev-lang/python-2.6.6
+# Pacho Ramos <pacho@gentoo.org> (09 Oct 2010)
+# This is Gnome 2.32 mask (#339225) , here will appear 
+# packages depending on our available time for bumping them.
+# Then, *don't report bugs* requesting version bumps
+# or blaming due missing dependencies in the tree. 
+# The mask will be dropped when all pieces are in the tree
+# and working and, then, you will finally able to report
+# missing dependencies and so ;-)
+>=gnome-base/gnome-desktop-2.32
+>=dev-libs/atk-1.32
+>=x11-libs/vte-0.26
+>=net-libs/libsoup-gnome-2.32
+>=net-libs/libsoup-2.32
+>=dev-libs/totem-pl-parser-2.32
+>=gnome-base/gnome-keyring-2.32
+>=gnome-base/libgnome-keyring-2.32
+
+# Pacho Ramos <pacho@gentoo.org> (09 Oct 2010)
+# Removal of app-text/gnome-spell as it's no used by
+# anything in the tree and its functionality is in
+# gtkhtml through enchant (bug #339771)
+# Removal on 2010-11-09
+app-text/gnome-spell
+
+# Robin H. Johnson <robbat2@gentoo.org> (08 Oct 2010)
+# Masked for testing, and some testsuite failures.
+>=sys-libs/db-5.1
 
 # Samuli Suominen <ssuominen@gentoo.org> (07 Oct 2010)
 # Packages using obsolete policykit:
@@ -60,7 +84,7 @@ dev-dotnet/ant-dotnet
 =dev-lang/php-5.3.3-r2
 app-admin/eselect-php
 =dev-php5/pecl-oauth-0.99.9
-=dev-php5/pecl-memcache-3.0.4-r1
+=dev-php5/pecl-memcache-3.0.5-r1
 =dev-php5/pecl-oauth-0.99.9
 =dev-php5/pecl-apc-3.1.4-r1
 =dev-php5/xdebug-2.1.0-r1
@@ -96,7 +120,9 @@ dev-python/IcePy
 # Masking for removal in 30 days
 # Upstream is dead, does not build, would need massive work for current
 # gcc. Seems like nobody has missed it for some time. Bug 296651.
+# Also mask maxit as it depends on validation - halcy0n
 sci-chemistry/validation
+sci-chemistry/maxit
 
 # Diego E. Pettenò <flameeyes@gentoo.org> (02 Oct 2010)
 #  on behalf of QA team
@@ -601,16 +627,6 @@ media-plugins/audacious-xosd
 # Mask until fully tested
 x11-misc/lightdm
 
-# Michele Noberasco <s4t4n@gentoo.org> (3 Sep 2010)
-# Package has many open bugs, dead upstream.
-# Removal on 2010-10-02
-x11-misc/adesklets
-
-# Michele Noberasco <s4t4n@gentoo.org> (3 Sep 2010)
-# Package is old, has open bugs, upstream not responsive.
-# Removal on 2010-10-02
-net-misc/ksb26
-
 # Pacho Ramos <pacho@gentoo.org> (2 Sep 2010)
 # They don't work since >=x11-themes/gtk-engines-2.16 lost
 # support for Smooth engine (bug #330181).
@@ -991,7 +1007,7 @@ app-crypt/hmaccalc
 # Robin H. Johnson <robbat2@gentoo.org> (11 May 2010)
 # Masked for testing, and some testsuite failures.
 # Bug 313769
-=sys-libs/db-5*
+=sys-libs/db-5.0*
 
 # Peter Volkov <pva@gentoo.org> (09 May 2010)
 # Fails to build/work, bug #319085

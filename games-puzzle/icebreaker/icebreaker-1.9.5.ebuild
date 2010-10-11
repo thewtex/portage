@@ -1,7 +1,8 @@
-# Copyright 1999-2007 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-puzzle/icebreaker/icebreaker-1.9.5.ebuild,v 1.11 2007/03/13 13:39:14 nyhm Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-puzzle/icebreaker/icebreaker-1.9.5.ebuild,v 1.13 2010/10/11 16:12:26 mr_bones_ Exp $
 
+EAPI=2
 inherit eutils games
 
 DESCRIPTION="Trap and capture penguins on Antarctica"
@@ -13,13 +14,13 @@ SLOT="0"
 KEYWORDS="amd64 ppc x86"
 IUSE=""
 
-DEPEND="media-libs/libsdl
+RDEPEND="media-libs/libsdl
 	media-libs/sdl-mixer"
+DEPEND="${RDEPEND}"
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
+src_prepare() {
 	sed -i '/install/s/-s //' Makefile || die "sed failed"
+	epatch "${FILESDIR}"/${P}-ldflags.patch
 }
 
 src_compile() {

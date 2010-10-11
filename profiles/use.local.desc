@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.6019 2010/10/08 14:14:27 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.6037 2010/10/11 17:14:01 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -296,7 +296,7 @@ app-editors/xmlcopyeditor:guidexml - Install GuideXML templates to work with Gen
 app-editors/zile:valgrind - Enable usage of dev-util/valgrind in tests
 app-emacs/auctex:preview-latex - Use bundled preview-latex
 app-emacs/bbdb:tex - Install plain TeX support files
-app-emacs/company-mode:ropemacs - Install backend for ropemacs (app-emacs/pymacs)
+app-emacs/company-mode:ropemacs - Install backend for dev-python/ropemacs 
 app-emacs/company-mode:semantic - Install backend for semantic (app-emacs/cedet)
 app-emacs/delicious:planner - Include support for app-emacs/planner
 app-emacs/easypg:gnus - Include support for the Gnus newsreader
@@ -1883,7 +1883,6 @@ media-libs/swfdec:doc - Build documentation
 media-libs/swfdec:ffmpeg - Use media-plugins/gst-plugins-ffmpeg to enable Flash video support. Necessary if you want to use sites like youtube
 media-libs/swfdec:gstreamer - Enable media-libs/gstreamer to support various media input formats. i.e. audio (mp3) and video (flv)
 media-libs/swfdec:gtk - Enable GTK+ convenience library while is necessary for all GTK+ apps using swfdec (gnome-extra/swfdec-gnome and www-plugins/swfdec-mozilla)
-media-libs/swfdec:oss - Use Open Sound System for audio output
 media-libs/swfdec:pulseaudio - Use media-sound/pulseaudio for audio output
 media-libs/taglib:asf - Provide support for Microsoft's 'advanced systems format' media container.
 media-libs/urt:gs - Add support for postscript
@@ -1995,6 +1994,7 @@ media-sound/cmus:zsh-completion - enable zsh completion support
 media-sound/darkice:twolame - Build with twolame support
 media-sound/decibel-audio-player:gnome - Adds Gnome media keys support, so you can control Decibel using hotkeys. 
 media-sound/decibel-audio-player:gnome-keyring - Adds support for storing your Last.fm password using gnome-keyring.
+media-sound/dir2ogg:mac - Add support for decoding Monkey's Audio files
 media-sound/dir2ogg:wma - Add support for wma files through mplayer
 media-sound/fapg:xspf - Enable support for saving XSPF playlists.
 media-sound/freewheeling:fluidsynth - compile with support for fluidsynth
@@ -2061,6 +2061,8 @@ media-sound/ncmpcpp:visualizer - Enable visualizer screen with sound wave/freque
 media-sound/picard:coverart - Install plugin for direct coverart dowload
 media-sound/pms:regex - Enable regular expression searches using dev-libs/boost
 media-sound/podcatcher:bittorrent - Enable support for bittorrent downloads
+media-sound/puddletag:cover -  Enables editing of FLAC cover art
+media-sound/puddletag:quodlibet - Enables editing a QuodLibet library
 media-sound/pulseaudio:X -  Build the X11 publish module to export PulseAudio information through X11 protocol for clients to make use. Don't enable this flag if you want to use a system wide instance. If unsure, enable this flag. 
 media-sound/pulseaudio:asyncns - Use libasyncns for asynchronous name resolution.
 media-sound/pulseaudio:doc - Build the doxygen-described API documentation.
@@ -2096,6 +2098,8 @@ media-sound/rubyripper:cdrdao - Add support for advanced toc scanning using app-
 media-sound/rubyripper:cli - Build command line interface rubyripper
 media-sound/rubyripper:normalize - Add support for normalizing audio file volume levels
 media-sound/rubyripper:wav - Add support for wavegain
+media-sound/shntool:alac - Add support for Apple Lossless Audio Codec files
+media-sound/shntool:mac - Add support for Monkey's Audio files
 media-sound/sonata:lyrics - Support for lyrics fetching
 media-sound/sonata:trayicon - Enable support for trayicon
 media-sound/sonic-visualiser:id3tag - Enables ID3 tagging with id3tag library
@@ -2270,6 +2274,7 @@ media-video/mplayer:radio - Enable V4L2 radio interface and support
 media-video/mplayer:rar - Enable Unique RAR File Library
 media-video/mplayer:real - Adds real audo/video support
 media-video/mplayer:rtc - Enables usage of the linux real time clock. The alternative is software emulation of rtc
+media-video/mplayer:rtmp - Enables RTMPDump Streaming Media support
 media-video/mplayer:schroedinger - Enable Dirac video support (an advanced royalty-free video compression format) via libschroedinger (high-speed implementation in C of the Dirac codec).
 media-video/mplayer:shm - Enable support for shm
 media-video/mplayer:ssse3 - faster floating point optimization for SSSE3 capable chips (Intel Core 2 and later chips)
@@ -2594,6 +2599,7 @@ net-ftp/pure-ftpd:anonres - Permit anonymous to resume file transfers
 net-ftp/pure-ftpd:charconv - Enables charset conversion
 net-ftp/pure-ftpd:noiplog - Disables logging of IP addresses
 net-ftp/pure-ftpd:paranoidmsg - Display paranoid messages instead of normal ones
+net-ftp/pure-ftpd:sysquota - Enables system quota support (needs sys-fs/quota) 
 net-ftp/pure-ftpd:vchroot - Enable support for virtual chroot (possible security risk)
 net-ftp/twoftpd:breakrfc - Break RFC compliance to allow control symbols in filenames (required for some (e.g. cp1251) encodings, use with caution).
 net-im/bitlbee:nss - Use NSS for SSL support in MSN and Jabber
@@ -2848,6 +2854,7 @@ net-libs/ptlib:vxml - Enable VoiceXML support
 net-libs/ptlib:wav - Enable WAVFILE support
 net-libs/telepathy-glib:introspection - Use dev-libs/gobject-introspection for introspection
 net-libs/webkit-gtk:coverage - enable code coverage support
+net-libs/webkit-gtk:introspection - Use dev-libs/gobject-introspection for introspection
 net-libs/webkit-gtk:websockets - enable full duplex single socket communication
 net-libs/xulrunner:custom-optimization - Fine-tune custom compiler optimizations
 net-libs/xulrunner:ipc - Use inter-process communication between tabs and plugins. Allows for greater stability in case of plugin crashes
@@ -3167,7 +3174,7 @@ net-print/hplip:kde - Enables kde-misc/skanlite as scanner GUI with USE="scanner
 net-print/hplip:libnotify - Enables desktop notifications
 net-print/hplip:minimal - Only build internal hpijs/hpcups driver (not recommended at all, make sure you know what you are doing)
 net-print/hplip:parport - Enable parallel port for devices which require it
-net-print/hplip:policykit - Enable sys-auth/policykit authentication support
+net-print/hplip:policykit - Enable sys-auth/polkit authentication support
 net-print/hplip:qt4 - Enable graphical interface using Qt 4
 net-print/hplip:scanner - Enable scanner on multifunction devices which support it
 net-print/hplip:snmp - Add support for net-analyzer/net-snmp which enables this driver to work over networks (both for server and client)
@@ -3310,7 +3317,7 @@ sci-electronics/gspiceui:waveform - Use sci-electronics/gwave for waveform displ
 sci-electronics/gtkwave:fasttree - Enables experimental Fast SST Tree widget code.
 sci-electronics/gtkwave:fatlines - Renders lines as double width in gtkwave.
 sci-electronics/gtkwave:judy - Enables Judy array support.
-sci-electronics/gtkwave:xz - Enables LZMA support for VZT
+sci-electronics/gtkwave:lzma - Enables LZMA support for VZT
 sci-electronics/kicad:dev-doc - Install developer documentation (requires app-doc/doxygen)
 sci-electronics/pcb:gif - GIF graphics export
 sci-electronics/pcb:jpeg - JPEG graphics export
@@ -3378,6 +3385,7 @@ sci-libs/mkl:serial - Installs the serial (as non-threaded) libraries
 sci-libs/netcdf:dap - Support for remote data access with the built-in OPeNDAP client
 sci-libs/nlopt:octave - Add plugin for sci-mathematics/octave
 sci-libs/plplot:ada - Add bindings for the ADA programming language
+sci-libs/plplot:d - Add bindings for the D programming language
 sci-libs/plplot:octave - Add bindings for sci-mathematics/octave
 sci-libs/plplot:qhull - Add bindings for media-libs/qhull bindings
 sci-libs/scipy:umfpack - Adds support for sparse solving with sci-libs/umfpack
@@ -3672,6 +3680,7 @@ sys-fs/aufs2:inotify - Enable inotify support
 sys-fs/aufs2:kernel-patch - Patch the current kernel for aufs2 support
 sys-fs/aufs2:nfs - Enable support for nfs export
 sys-fs/aufs2:ramfs - Enable initramfs/rootfs support
+sys-fs/avfs:xz - Enable LZMA/XZ archive support
 sys-fs/btrfs-progs:debug-utils - Build additional utils for debugging
 sys-fs/cryptsetup:dynamic - Build cryptsetup dynamically
 sys-fs/ecryptfs-utils:gpg - Enable app-crypt/gnupg key module
@@ -3822,8 +3831,8 @@ www-apps/viewvc:cvsgraph - Add dev-vcs/cvsgraph support to show graphical views 
 www-apps/viewvc:mod_python - Add www-apache/mod_python support
 www-apps/viewvc:mod_wsgi - Add www-apache/mod_wsgi support
 www-apps/viewvc:pygments - Add dev-python/pygments support for syntax highlighting
+www-client/chromium:gecko-mediaplayer - Allow the browser to load www-plugins/gecko-mediaplayer
 www-client/chromium:system-sqlite - Use the system-wide dev-db/sqlite installation with secure-delete enabled
-www-client/chromium-bin:plugins-symlink - Add support for system web browser plugins out of the box
 www-client/elinks:bittorrent - Enable support for the BitTorrent protocol
 www-client/elinks:finger - Enable support for the finger protocol
 www-client/elinks:gopher - Enable support for the gopher protocol
@@ -3932,6 +3941,7 @@ x11-libs/libwnck:introspection - Use dev-libs/gobject-introspection for introspe
 x11-libs/pango:introspection - Use dev-libs/gobject-introspection for introspection
 x11-libs/qt:kde - Select media-sound/phonon as phonon variant needed for kde
 x11-libs/qt:qt3support - Enable the Qt3Support libraries for Qt4
+x11-libs/qt-assistant:compat - Build the extra compatibility package required by a few packages. More information at http://labs.qt.nokia.com/2010/06/22/qt-assistant-compat-version-available-as-extra-source-package/
 x11-libs/qt-assistant:exceptions - Add support for exceptions - like catching them inside the event loop (recommended by Nokia)
 x11-libs/qt-assistant:glib - Enable dev-libs/glib eventloop support
 x11-libs/qt-assistant:trace - Build the qttracereplay utility which is required to play drawings recorded with the trace graphicssystem engine
@@ -3968,10 +3978,10 @@ x11-libs/qt-test:exceptions - Add support for exceptions - like catching them in
 x11-libs/qt-webkit:exceptions - Add support for exceptions - like catching them inside the event loop (recommended by Nokia)
 x11-libs/qt-webkit:kde -  Select media-sound/phonon as phonon variant needed for kde 
 x11-libs/vte:glade - Provide integration with dev-util/glade.
+x11-libs/vte:introspection - Use dev-libs/gobject-introspectionfor introspection
 x11-libs/wxGTK:gnome -  Use gnome-base/libgnomeprintui for printing tasks. 
 x11-libs/wxGTK:gstreamer -  Enable the wxMediaCtrl class for playing audio and video through gstreamer. 
 x11-libs/wxGTK:sdl -  Use Simple Directmedia Layer (media-libs/libsdl) for audio. 
-x11-misc/adesklets:ctrlmenu - force CTRL to be pressed to fire context menu
 x11-misc/bmpanel:libev - Use the libev event loop interface
 x11-misc/bmpanel:libevent - Use the libevent event loop interface
 x11-misc/etm:ical - Enable export of ical format files by depending on dev-python/icalendar

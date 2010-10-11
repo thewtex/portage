@@ -1,10 +1,34 @@
 # ChangeLog for profile directory
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.4635 2010/10/08 13:58:12 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.4642 2010/10/10 16:04:18 halcy0n Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  10 Oct 2010; Mark Loeser <halcy0n@gentoo.org> package.mask:
+  Mask maxit as it depends on validation, which is also masked
+
+  10 Oct 2010; Ulrich Mueller <ulm@gentoo.org> updates/2Q-2008:
+  Remove old slotmove for x11-libs/openmotif, in order to prepare for
+  package move from openmotif-compat to openmotif:2.2.
+
+  09 Oct 2010; Pacho Ramos <pacho@gentoo.org> package.mask:
+  Start Gnome 2.32 mask, here will more packages be added when I have time
+  for bumping and testing them.
+
+  09 Oct 2010; Pacho Ramos <pacho@gentoo.org> package.mask:
+  Mask app-text/gnome-spell for removal.
+
+  08 Oct 2010; Ole Markus With <olemarkus@gentoo.org> 
+	base/make.defaults,desc/php_targets.desc:
+  Added PHP_TARGETS to USE_EXPAND
+
+  08 Oct 2010; Ole Markus With <olemarkus@gentoo.org> package.mask:
+	Masked dev-php/pecl-memcache-3.0.5-r1 for testing
+
+  08 Oct 2010; Robin H. Johnson <robbat2@gentoo.org> package.mask:
+  Mask sys-libs/db-5.1 for testing.
 
   08 Oct 2010; Jeroen Roovers <jer@gentoo.org> package.mask:
   Unmask opera 10.63.

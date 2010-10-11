@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-electronics/pcb/pcb-20091103.ebuild,v 1.2 2010/07/19 14:00:19 tomjbe Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-electronics/pcb/pcb-20091103.ebuild,v 1.4 2010/10/10 21:36:08 ulm Exp $
 
 EAPI="2"
 
@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/pcb/files/pcb/${P}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="~amd64 ~ppc ~sparc ~x86 ~x86-macos"
 IUSE="dbus doc gif gtk jpeg m4lib-png motif nelma nls png xrender test tk toporouter"
 # toporouter-output USE flag removed for pcb-20091103 (output was disabled always)
 # debug USE flag removed for pcb-20091103 (many crashes, should be fixed for next release)
@@ -22,7 +22,7 @@ CDEPEND="gif? ( >=media-libs/gd-2.0.23 )
 		dbus? ( sys-apps/dbus ) )
 	jpeg? ( >=media-libs/gd-2.0.23[jpeg] )
 	motif? ( !gtk? (
-		>=x11-libs/openmotif-2.3
+		>=x11-libs/openmotif-2.3:0
 		dbus? ( sys-apps/dbus )
 		xrender? ( >=x11-libs/libXrender-0.9 ) ) )
 	nelma? ( >=media-libs/gd-2.0.23 )

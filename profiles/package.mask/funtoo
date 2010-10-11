@@ -34,10 +34,6 @@
 net-zope/zope-fixers
 >=net-zope/zope-interface-3.6.1
 
-# Daniel Robbins <drobbins@funtoo.org> (22 Apr 2010)
-# This package is broken irt libxml2-2.7.7 (bug 316377)
-=sys-libs/zlib-1.2.5
-
 # Non-standard configuration that break things.
 # Matt McCormick <matthew.m.mccormick@gmail.com> (11 March 2010)
 >=sys-boot/grub-legacy-0.97-r10
@@ -51,10 +47,6 @@ net-zope/zope-fixers
 # running up to 4 times per hour:
 =sys-process/cronbase-0.3.3*
 
-# Daniel Robbins <drobbins@funtoo.org> (2 Dec 2009)
-# Masking as per http://blog.flameeyes.eu/2009/12/01/gentoo-service-announcement-keep-clear-of-gnu-patch-2-6
->=sys-devel/patch-2.6
-
 # Pkgcore also does not support this at present
 <=sys-apps/pkgcore-0.4.8
 
@@ -63,8 +55,3 @@ net-zope/zope-fixers
 # Having both unmasked causes "emerge dev-db/mysql" to fail, which is
 # not optimal.
 dev-db/mysql-community
-
-# Caleb Cushing <xenoterracide@gmail.com> (27 Dec 2008)
-# latest ghc, breaks other packages, fixes (bug #252176)
->=dev-lang/ghc-6.10
-

@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/rake-compiler/rake-compiler-0.7.1.ebuild,v 1.1 2010/09/18 12:50:47 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/rake-compiler/rake-compiler-0.7.1.ebuild,v 1.3 2010/10/09 08:30:41 graaff Exp $
 
 EAPI=2
 USE_RUBY="ruby18 ree18 ruby19 jruby"
@@ -21,14 +21,14 @@ LICENSE="as-is" # truly
 SRC_URI="http://github.com/luislavena/${PN}/tarball/v${PV} -> ${P}.tar.gz"
 S="${WORKDIR}/luislavena-${PN}-*"
 
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~x86-solaris"
+KEYWORDS="~amd64 ~ia64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~x86-solaris"
 SLOT="0"
 IUSE=""
 
 ruby_add_bdepend "doc? ( >=dev-ruby/rdoc-2.4.3 )"
 
 USE_RUBY=ruby18 \
-	ruby_add_bdepend "test? ( dev-ruby/rspec dev-util/cucumber dev-ruby/rubygems )"
+	ruby_add_bdepend "test? ( dev-ruby/rspec:0 dev-util/cucumber dev-ruby/rubygems )"
 
 ruby_add_rdepend "dev-ruby/rake"
 

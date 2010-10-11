@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/seahorse/seahorse-2.30.1.ebuild,v 1.6 2010/09/11 18:49:41 josejx Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/seahorse/seahorse-2.30.1.ebuild,v 1.8 2010/10/09 10:02:47 ssuominen Exp $
 
 EAPI="2"
 
@@ -11,7 +11,7 @@ HOMEPAGE="http://www.gnome.org/projects/seahorse/index.html"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~ia64 ppc ~ppc64 ~sparc x86 ~x86-fbsd"
+KEYWORDS="~alpha amd64 ~ia64 ppc ppc64 ~sparc x86 ~x86-fbsd"
 IUSE="avahi debug doc ldap libnotify test"
 
 # FIXME: add introspection support
@@ -27,8 +27,8 @@ RDEPEND="
 	net-misc/openssh
 	>=app-crypt/gpgme-1.0.0
 	|| (
-		=app-crypt/gnupg-1.4*
-		=app-crypt/gnupg-2.0* )
+		=app-crypt/gnupg-2.0*
+		=app-crypt/gnupg-1.4* )
 
 	avahi? ( >=net-dns/avahi-0.6 )
 	ldap? ( net-nds/openldap )
