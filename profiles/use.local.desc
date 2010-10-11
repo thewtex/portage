@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.6033 2010/10/10 21:14:58 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.6037 2010/10/11 17:14:01 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -2599,6 +2599,7 @@ net-ftp/pure-ftpd:anonres - Permit anonymous to resume file transfers
 net-ftp/pure-ftpd:charconv - Enables charset conversion
 net-ftp/pure-ftpd:noiplog - Disables logging of IP addresses
 net-ftp/pure-ftpd:paranoidmsg - Display paranoid messages instead of normal ones
+net-ftp/pure-ftpd:sysquota - Enables system quota support (needs sys-fs/quota) 
 net-ftp/pure-ftpd:vchroot - Enable support for virtual chroot (possible security risk)
 net-ftp/twoftpd:breakrfc - Break RFC compliance to allow control symbols in filenames (required for some (e.g. cp1251) encodings, use with caution).
 net-im/bitlbee:nss - Use NSS for SSL support in MSN and Jabber
@@ -2853,6 +2854,7 @@ net-libs/ptlib:vxml - Enable VoiceXML support
 net-libs/ptlib:wav - Enable WAVFILE support
 net-libs/telepathy-glib:introspection - Use dev-libs/gobject-introspection for introspection
 net-libs/webkit-gtk:coverage - enable code coverage support
+net-libs/webkit-gtk:introspection - Use dev-libs/gobject-introspection for introspection
 net-libs/webkit-gtk:websockets - enable full duplex single socket communication
 net-libs/xulrunner:custom-optimization - Fine-tune custom compiler optimizations
 net-libs/xulrunner:ipc - Use inter-process communication between tabs and plugins. Allows for greater stability in case of plugin crashes
@@ -3315,7 +3317,7 @@ sci-electronics/gspiceui:waveform - Use sci-electronics/gwave for waveform displ
 sci-electronics/gtkwave:fasttree - Enables experimental Fast SST Tree widget code.
 sci-electronics/gtkwave:fatlines - Renders lines as double width in gtkwave.
 sci-electronics/gtkwave:judy - Enables Judy array support.
-sci-electronics/gtkwave:xz - Enables LZMA support for VZT
+sci-electronics/gtkwave:lzma - Enables LZMA support for VZT
 sci-electronics/kicad:dev-doc - Install developer documentation (requires app-doc/doxygen)
 sci-electronics/pcb:gif - GIF graphics export
 sci-electronics/pcb:jpeg - JPEG graphics export
@@ -3980,7 +3982,6 @@ x11-libs/vte:introspection - Use dev-libs/gobject-introspectionfor introspection
 x11-libs/wxGTK:gnome -  Use gnome-base/libgnomeprintui for printing tasks. 
 x11-libs/wxGTK:gstreamer -  Enable the wxMediaCtrl class for playing audio and video through gstreamer. 
 x11-libs/wxGTK:sdl -  Use Simple Directmedia Layer (media-libs/libsdl) for audio. 
-x11-misc/adesklets:ctrlmenu - force CTRL to be pressed to fire context menu
 x11-misc/bmpanel:libev - Use the libev event loop interface
 x11-misc/bmpanel:libevent - Use the libevent event loop interface
 x11-misc/etm:ical - Enable export of ical format files by depending on dev-python/icalendar
