@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/texlive-module.eclass,v 1.34 2010/01/13 15:16:49 fauli Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/texlive-module.eclass,v 1.36 2010/10/11 20:44:19 aballier Exp $
 
 # @ECLASS: texlive-module.eclass
 # @MAINTAINER:
@@ -107,14 +107,18 @@ if [ "${PV#2008}" == "${PV}" ]; then
 RELOC_TARGET=texmf-dist
 
 texlive-module_src_unpack() {
-	local i s
-	for i in ${A}
-	do
-		s="${DISTDIR%/}/${i}"
-		einfo "Unpacking ${s} to ${PWD}"
-		test -s "${s}" || die "${s} does not exist"
-		xz -dc -- "${s}" | tar xof - || die "Unpacking ${s} failed"
-	done
+	if has "${EAPI:-0}" 0 1 2 ; then
+		local i s
+		for i in ${A}
+		do
+			s="${DISTDIR%/}/${i}"
+			einfo "Unpacking ${s} to ${PWD}"
+			test -s "${s}" || die "${s} does not exist"
+			xz -dc -- "${s}" | tar xof - || die "Unpacking ${s} failed"
+		done
+	else
+		unpack ${A}
+	fi
 	grep RELOC tlpkg/tlpobj/* | awk '{print $2}' | sed 's#^RELOC/##' > "${T}/reloclist"
 	{ for i in $(<"${T}/reloclist"); do  dirname $i; done; } | uniq > "${T}/dirlist"
 	for i in $(<"${T}/dirlist"); do
@@ -201,7 +205,7 @@ texlive-module_src_compile() {
 	# TeX Live 2007 was providing lists. For 2008 they are now tlpobj.
 	for i in "${S}"/tlpkg/tlpobj/*;
 	do
-		grep '^execute ' "${i}" | sed -e 's/^execute //' | tr ' ' '@' |sort|uniq >> "${T}/jobs"
+		grep '^execute ' "${i}" | sed -e 's/^execute //' | tr ' \t' '@@' |sort|uniq >> "${T}/jobs"
 	done
 
 	for i in $(<"${T}/jobs");
