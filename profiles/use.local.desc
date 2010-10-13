@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.6038 2010/10/11 20:53:56 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.6042 2010/10/12 12:53:54 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -1265,7 +1265,8 @@ dev-util/radare:vala -  Enable support for the vala programming language
 dev-util/schroot:btrfs - Enable support for chroots using btrfs snapshots.
 dev-util/schroot:dchroot - Enables the building of a wrapper named "dchroot", replacing sys-apps/dchroot.
 dev-util/schroot:lvm - Enable support for chroots using LVM snapshots.
-dev-util/strace:aio - Enable libaio support
+dev-util/strace:aio -  Enable dev-libs/libaio support for tracing Asynchronous I/O operations 
+dev-util/strace:alsa -  Read ioctl() values from media-sound/alsa-headers for ALSA device. 
 dev-util/universalindentgui:html - Add support for HTML files
 dev-vcs/bzr:sftp - Enable sftp support
 dev-vcs/bzr-gtk:gconf - Enable GConf support
@@ -1990,7 +1991,6 @@ media-sound/clementine:projectm - Build with ProjectM visualization
 media-sound/clementine:wiimote - Enable support for Wii remote
 media-sound/cmus:pidgin - install support script for net-im/pidgin
 media-sound/cmus:wma - add support for Windows Media Audio
-media-sound/cmus:zsh-completion - enable zsh completion support
 media-sound/darkice:twolame - Build with twolame support
 media-sound/decibel-audio-player:gnome - Adds Gnome media keys support, so you can control Decibel using hotkeys. 
 media-sound/decibel-audio-player:gnome-keyring - Adds support for storing your Last.fm password using gnome-keyring.
@@ -3019,14 +3019,12 @@ net-misc/openvpn:pkcs11 - Enable PKCS#11 smartcard support
 net-misc/pino:indicate - Use dev-libs/libindicate to notify other apps
 net-misc/plowshare:view-captcha - View captcha with aview
 net-misc/quagga:bgpclassless -  Apply unofficial patch to enable classless prefixes for BGP. Patch and information to be found at http://hasso.linux.ee/doku.php/english:network:quagga 
-net-misc/quagga:fix-connected-rt -  Remove interface connected routes from kernel table on link loss so that no packets get routed to downed interface 
 net-misc/quagga:multipath -  Enable multipath routes support for any number of routes 
 net-misc/quagga:ospfapi -  Enable OSPFAPI support for client applications accessing the OSPF link state database 
-net-misc/quagga:pam -  Add support for PAM (viasys-libs/pam) to teh Quagga Virtual Terminal Interface Shell (vtysh); if the readline USE flag is disabled, this flag is ignored. 
+net-misc/quagga:pam -  Add support for PAM (viasys-libs/pam) to the Quagga Virtual Terminal Interface Shell (vtysh); if the readline USE flag is disabled, this flag is ignored. 
 net-misc/quagga:readline -  Enable support for sys-libs/readline to provide the Quagga Virtual Terminal Interface Shell (vtysh). 
 net-misc/quagga:realms -  Apply unofficial patch to enable realms support. Patch and information to be found at http://vcalinus.gemenii.ro/quaggarealms.html and http://linux.mantech.ro/quagga+realm_en.php 
 net-misc/quagga:tcp-zebra -  Enable TCP zserv interface on port 2600 for Zebra/protocol-daemon communication. Unix domain sockets are chosen otherwise. 
-net-misc/quagga:tcpmd5 -  Enable TCP MD5 checksumming 
 net-misc/rdesktop:pcsc-lite - Enable smartcard support with sys-apps/pcsc-lite driver
 net-misc/rdesktop:rdpusb - Enable USB redirection support for app-emulation/virtualbox-bin
 net-misc/remmina:ssh - Enable support for SSH/SFTP using net-libs/libssh
@@ -3625,6 +3623,7 @@ sys-devel/binutils:multislot - Allow for multiple versions of binutils to be eme
 sys-devel/binutils:multitarget - Adds support to binutils for cross compiling (does not work with gas)
 sys-devel/binutils-hppa64:multislot - Allow for multiple versions of binutils to be emerged at once for same CTARGET
 sys-devel/binutils-hppa64:multitarget - Adds support to binutils for cross compiling (does not work with gas)
+sys-devel/clang:alltargets - Build all host targets (default: host only)
 sys-devel/clang:static-analyzer - Install the Clang static analyzer
 sys-devel/clang:system-cxx-headers - By default, clang++ searchs for C++ headers in a series of hardcoded paths. Enabling this flag will force it to use the active gcc profile ones
 sys-devel/gcc:d - Enable support for the D programming language
