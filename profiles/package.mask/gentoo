@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12041 2010/10/12 12:23:12 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12045 2010/10/13 15:26:39 voyageur Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -31,6 +31,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Bernard Cafarelli <voyageur@gentoo.org> (13 Oct 2010)
+# New Objective-C Runtime for GNUstep
+# Masked until I add proper support for it in gnustep-base
+gnustep-base/libobjc2
+
 # Ulrich Mueller <ulm@gentoo.org> (12 Oct 2010)
 # Compatibility library for out-of-tree binaries, moved from
 # separate openmotif-compat package to SLOT 2.2 of openmotif.
@@ -54,6 +59,24 @@ x11-libs/openmotif-compat
 >=dev-libs/totem-pl-parser-2.32
 >=gnome-base/gnome-keyring-2.32
 >=gnome-base/libgnome-keyring-2.32
+>=gnome-extra/gtkhtml-3.32
+>=x11-themes/gnome-backgrounds-2.32
+>=x11-themes/gnome-themes-2.32
+>=app-accessibility/accerciser-1.12
+>=gnome-extra/at-spi-1.32
+>=app-accessibility/orca-2.32
+>=gnome-base/libbonobo-2.32
+>=gnome-base/libgnome-2.32
+>=gnome-base/libgnomekbd-2.32
+>=gnome-base/gconf-2.32
+>=sys-apps/gnome-disk-utility-2.32
+>=gnome-extra/zenity-2.32
+>=gnome-base/nautilus-2.32
+>=gnome-base/gnome-panel-2.32
+>=gnome-base/gnome-session-2.32
+>=gnome-base/gnome-settings-daemon-2.32
+>=gnome-base/gnome-applets-2.32
+>=gnome-extra/bug-buddy-2.32
 
 # Pacho Ramos <pacho@gentoo.org> (09 Oct 2010)
 # Removal of app-text/gnome-spell as it's no used by
@@ -859,10 +882,6 @@ net-dialup/fxusb
 net-dialup/fxusb_CZ
 net-wireless/fwlanusb
 
-# Markus Meier <maekke@gentoo.org> (18 Jul 2010)
-# mask hugin beta versions for testing (needs masked libpano13)
->=media-gfx/hugin-2010.2.0_beta1
-
 # Daniel Black <dragonheart@gentoo.org> (18 Jul 2010)
 # Abandoned upstream.
 # Difficulties transitioning to python3 as per bug 308271
@@ -1190,9 +1209,8 @@ net-libs/libjingle
 # Pawel Hajdan jr <phajdan.jr@gentoo.org> (07 Jan 2010)
 # Dev channel releases are only for people who are developers or want more
 # experimental features and accept a more unstable release.
-~www-client/chromium-7.0.517.13
-~www-client/chromium-7.0.536.2
 ~www-client/chromium-7.0.544.0
+~www-client/chromium-8.0.552.0
 
 # Christian Parpart <trapni@gentoo.org> (23 Dec 2009)
 # Masked for testing/feedback.
@@ -1280,10 +1298,6 @@ xfce-extra/thunar-vfs
 # Diego E. Pettenò <flameeyes@gmail.com> (9 Oct 2009)
 # Untested yet; documented only in Russian, help is appreciated.
 sys-auth/pam_keystore
-
-# Markus Meier <maekke@gentoo.org> (03 Oct 2009)
-# mask libpano13 beta versions for testing
->=media-libs/libpano13-2.9.15_beta3
 
 # Peter Alfredsen <loki_val@gentoo.org> (09 Sep 2009)
 # Fails to build with newest mono, causing dependency
