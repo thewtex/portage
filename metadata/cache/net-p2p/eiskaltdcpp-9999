@@ -1,5 +1,5 @@
-app-arch/bzip2 sys-libs/zlib >=dev-libs/openssl-0.9.8 virtual/libiconv sys-devel/gettext lua? ( >=dev-lang/lua-5.1 ) upnp? ( net-libs/miniupnpc ) gtk? ( x11-libs/pango >=x11-libs/gtk+-2.10:2 >=dev-libs/glib-2.10:2 >=gnome-base/libglade-2.4:2.0 >=x11-libs/libnotify-0.4.1 gnome? ( gnome-base/libgnome ) ) qt4? ( >=x11-libs/qt-gui-4.4.0:4[dbus?] javascript? ( x11-libs/qt-script x11-libs/qtscriptgenerator ) kde? ( kde-base/oxygen-icons >=x11-libs/qt-gui-4.6.0:4 ) spell? ( app-text/aspell ) ) >=dev-libs/boost-1.34.1 dev-util/pkgconfig >=dev-util/cmake-2.6.0 userland_GNU? ( >=sys-apps/findutils-4.4.0 ) dev-vcs/subversion net-misc/rsync
-app-arch/bzip2 sys-libs/zlib >=dev-libs/openssl-0.9.8 virtual/libiconv sys-devel/gettext lua? ( >=dev-lang/lua-5.1 ) upnp? ( net-libs/miniupnpc ) gtk? ( x11-libs/pango >=x11-libs/gtk+-2.10:2 >=dev-libs/glib-2.10:2 >=gnome-base/libglade-2.4:2.0 >=x11-libs/libnotify-0.4.1 gnome? ( gnome-base/libgnome ) ) qt4? ( >=x11-libs/qt-gui-4.4.0:4[dbus?] javascript? ( x11-libs/qt-script x11-libs/qtscriptgenerator ) kde? ( kde-base/oxygen-icons >=x11-libs/qt-gui-4.6.0:4 ) spell? ( app-text/aspell ) )
+app-arch/bzip2 sys-libs/zlib >=dev-libs/openssl-0.9.8 virtual/libiconv sys-devel/gettext lua? ( >=dev-lang/lua-5.1 ) upnp? ( net-libs/miniupnpc ) gtk? ( x11-libs/pango >=x11-libs/gtk+-2.10:2 >=dev-libs/glib-2.10:2 >=gnome-base/libglade-2.4:2.0 libnotify? ( >=x11-libs/libnotify-0.4.1 ) gnome? ( gnome-base/libgnome ) ) qt4? ( >=x11-libs/qt-gui-4.4.0:4[dbus?] javascript? ( x11-libs/qt-script x11-libs/qtscriptgenerator ) kde? ( kde-base/oxygen-icons >=x11-libs/qt-gui-4.6.0:4 ) spell? ( app-text/aspell ) ) web? ( net-libs/wt[extjs] ) >=dev-libs/boost-1.34.1 dev-util/pkgconfig >=dev-util/cmake-2.6.0 userland_GNU? ( >=sys-apps/findutils-4.4.0 ) dev-vcs/subversion net-misc/rsync
+app-arch/bzip2 sys-libs/zlib >=dev-libs/openssl-0.9.8 virtual/libiconv sys-devel/gettext lua? ( >=dev-lang/lua-5.1 ) upnp? ( net-libs/miniupnpc ) gtk? ( x11-libs/pango >=x11-libs/gtk+-2.10:2 >=dev-libs/glib-2.10:2 >=gnome-base/libglade-2.4:2.0 libnotify? ( >=x11-libs/libnotify-0.4.1 ) gnome? ( gnome-base/libgnome ) ) qt4? ( >=x11-libs/qt-gui-4.4.0:4[dbus?] javascript? ( x11-libs/qt-script x11-libs/qtscriptgenerator ) kde? ( kde-base/oxygen-icons >=x11-libs/qt-gui-4.6.0:4 ) spell? ( app-text/aspell ) ) web? ( net-libs/wt[extjs] )
 0
 
 
@@ -8,7 +8,7 @@ GPL-2 GPL-3
 Qt4 based client for DirectConnect and ADC protocols, based on DC++ library
 
 base cmake-utils eutils flag-o-matic multilib portability qt4-r2 subversion toolchain-funcs
-dbus +emoticons examples -gnome -gtk -javascript kde lua +qt4 sounds spell upnp linguas_be linguas_bg linguas_en linguas_es linguas_fr linguas_hu linguas_pl linguas_ru linguas_sr linguas_uk
+dbus +emoticons examples -gnome -gtk -javascript kde libnotify lua +qt4 sounds spell upnp web linguas_be linguas_bg linguas_en linguas_es linguas_fr linguas_hu linguas_pl linguas_ru linguas_sr linguas_uk
 
 
 
