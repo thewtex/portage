@@ -1,5 +1,5 @@
-dev-libs/glib:2 x11-libs/gtk+:2 sys-fs/udisks gnome? ( hal? ( gnome-base/gnome-mount ) ) gnome? ( gnome-base/gvfs[hal?,udev?] ) >=lxde-base/menu-cache-0.3.2 >=dev-util/intltool-0.40 dev-util/gtk-doc dev-util/pkgconfig sys-devel/gettext || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b >=dev-vcs/git-1.6
-dev-libs/glib:2 x11-libs/gtk+:2 sys-fs/udisks gnome? ( hal? ( gnome-base/gnome-mount ) ) gnome? ( gnome-base/gvfs[hal?,udev?] ) >=lxde-base/menu-cache-0.3.2
+dev-libs/glib:2 x11-libs/gtk+:2 udisks? ( sys-fs/udisks ) gnome? ( hal? ( gnome-base/gnome-mount ) ) gnome? ( gnome-base/gvfs[hal?,udev?] ) >=lxde-base/menu-cache-0.3.2 >=dev-util/intltool-0.40 dev-util/gtk-doc dev-util/pkgconfig sys-devel/gettext || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b >=dev-vcs/git-1.6
+dev-libs/glib:2 x11-libs/gtk+:2 udisks? ( sys-fs/udisks ) gnome? ( hal? ( gnome-base/gnome-mount ) ) gnome? ( gnome-base/gvfs[hal?,udev?] ) >=lxde-base/menu-cache-0.3.2
 0
 
 
@@ -8,7 +8,7 @@ GPL-2
 Library for file management
 
 autotools eutils git libtool multilib portability toolchain-funcs
-debug demo gnome hal udev
+debug demo gnome hal udev udisks
 
 
 
