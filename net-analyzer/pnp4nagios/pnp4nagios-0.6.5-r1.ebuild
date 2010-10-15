@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/pnp4nagios/pnp4nagios-0.6.5-r1.ebuild,v 1.4 2010/10/15 17:08:18 fauli Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/pnp4nagios/pnp4nagios-0.6.5-r1.ebuild,v 1.6 2010/10/15 17:53:41 c1pher Exp $
 
 EAPI="2"
 
