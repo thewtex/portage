@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12053 2010/10/15 22:04:39 dilfridge Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12055 2010/10/16 10:27:00 ayoy Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,12 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Samuli Suominen <ssuominen@gentoo.org> (16 Oct 2010)
+# dev-libs/soprano with USE redland is unported to raptor2 API
+# see bug 341237
+>=dev-libs/rasqal-0.9.20
+>=dev-libs/redland-1.0.12
 
 # Diego E. Pettenò <flameeyes@gentoo.org> (15 Oct 2010)
 #  on behalf of QA team
@@ -758,12 +764,6 @@ app-i18n/imhangul-status-applet
 # Jonathan Callen <abcd@gentoo.org> (24 Aug 2010)
 # Breaks API and ABI, not all packages fixed yet
 >=dev-libs/gobject-introspection-0.9.3
-
-# Dominik Kapusta <ayoy@gentoo.org> (24 Aug 2010)
-# Replaced by dev-python/shiboken
-#
-# Removal on 2010-09-23
-dev-python/boostpythongenerator
 
 # Alex Legler <a3li@gentoo.org> (18 Aug 2010)
 # Fails to install with the latest stable versions of OpenSSL and Tk.

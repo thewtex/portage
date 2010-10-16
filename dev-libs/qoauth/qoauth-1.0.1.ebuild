@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/qoauth/qoauth-1.0.1.ebuild,v 1.1 2010/08/01 14:48:43 ayoy Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/qoauth/qoauth-1.0.1.ebuild,v 1.3 2010/10/16 13:04:51 ayoy Exp $
 
 EAPI="2"
 
@@ -17,23 +17,24 @@ IUSE="debug doc static-libs test"
 
 COMMON_DEPEND="app-crypt/qca:2[debug?]"
 DEPEND="${COMMON_DEPEND}
-	doc? ( app-doc/doxygen )"
+	doc? ( app-doc/doxygen )
+	test? ( x11-libs/qt-test )"
 RDEPEND="${COMMON_DEPEND}
 	app-crypt/qca-ossl:2[debug?]"
 
 S="${WORKDIR}/${P}-src"
 
 src_prepare() {
+	# disable functional tests that require network connection and rely
+	# on 3rd party external server (bug #341267)
+	epatch "${FILESDIR}/${P}-disable-ft.patch"
+
 	sed -i -e '/^ *docs \\$/d' \
 		   -e '/^ *build_all \\$/d' \
 		   -e 's/^\#\(!macx\)/\1/' \
 		src/src.pro || die "sed failed"
 
 	sed -i -e "s/\(.*\)lib$/\1$(get_libdir)/" src/pcfile.sh || die "sed failed"
-
-	if ! use test; then
-		sed -i -e 's/^\(SUBDIRS.*\) tests/\1/' ${PN}.pro || die "sed failed"
-	fi
 }
 
 src_compile() {
