@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/liborigin/liborigin-20100630.ebuild,v 1.1 2010/06/30 06:45:14 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/liborigin/liborigin-20100630.ebuild,v 1.3 2010/10/18 16:03:58 jlec Exp $
 
 EAPI="3"
 

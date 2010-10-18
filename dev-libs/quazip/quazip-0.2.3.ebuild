@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/quazip/quazip-0.2.3.ebuild,v 1.2 2010/04/26 20:39:21 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/quazip/quazip-0.2.3.ebuild,v 1.4 2010/10/18 10:19:57 jlec Exp $
 
 EAPI=2
 inherit multilib qt4

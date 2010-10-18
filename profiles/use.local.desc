@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.6059 2010/10/18 01:54:24 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.6063 2010/10/18 13:14:19 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -32,7 +32,6 @@ app-accessibility/freetts:mbrola - Adds support for mbrola voices
 app-accessibility/gnome-speech:espeak - Adds support for the espeak speech driver (default)
 app-accessibility/gnome-speech:festival - Adds support for the festival speech driver
 app-accessibility/gnome-speech:freetts - Adds support for the freetts speech driver
-app-accessibility/gnopernicus:brltty - Adds support for braille displays using brltty
 app-accessibility/speech-dispatcher:espeak - Adds support for espeak speech engine
 app-accessibility/speech-dispatcher:flite - Adds support for flite speech engine
 app-admin/bcfg2:server - Installs scripts to be used on the server-side of this app
@@ -714,6 +713,7 @@ dev-cpp/sptk:excel - Enable Excel support
 dev-db/drizzle:curl -  Enable the HTTP authentication plugin (using net-misc/curl). This is needed for the tests to apply properly. 
 dev-db/drizzle:doc -  Build the API documentation for the package, using app-doc/doxygen. Warning, this might take over an hour on slower machines. 
 dev-db/drizzle:gearman -  Enable the gearman plugins for user-defined functions and logging (using sys-cluster/gearman). 
+dev-db/drizzle:haildb -  Use the dev-db/haildb libraries to replace the innodb plugin storage engine with haildb (an innodb fork). 
 dev-db/drizzle:md5 -  Enable the MD5 plugin, using dev-libs/libgcrypt; this replaces the older openssl and gnutls USE flags. 
 dev-db/drizzle:memcache -  Enable the memcache plugin for user-defined functions and statistics in I_S tables (using dev-libs/libmemcached). Currently restricts tests because of an upstream testsuite bug. 
 dev-db/drizzle:pam -  Enable the PAM authentication plugin (using sys-libs/pam). The configuration file created will be /etc/pam.d/drizzle. 
@@ -1343,7 +1343,6 @@ games-board/xboard:zippy - Enable experimental zippy client
 games-emulation/generator:sdlaudio - Enable SDL Audio
 games-emulation/snes9x:netplay - Enable playing ROMs over the network (not recommended)
 games-emulation/snes9x:xrandr - Enable support for the X xrandr extension
-games-emulation/xmame:net - Add network support
 games-emulation/xmess:net - Add network support
 games-engines/frobtads:tads2compiler - Build TADS2 compiler
 games-engines/frobtads:tads3compiler - Build TADS3 compiler
@@ -3488,7 +3487,9 @@ sci-visualization/paraview:gui - Build paraview's gui not just the server
 sci-visualization/paraview:overview - Enable the OverView plugin framework
 sci-visualization/paraview:plugins - Build and install additional plugins
 sci-visualization/paraview:streaming - Enable streaming paraview application
+sci-visualization/qtiplot:emf - Export support for Windows Enhanced Metafile
 sci-visualization/qtiplot:ods - Import support for OpenOffice .ods sheets
+sci-visualization/qtiplot:origin - Import support for Origin project files
 sci-visualization/qtiplot:xls - Import support for Microsoft office excel sheets
 sci-visualization/veusz:fits - Add FITS format via dev-python/pyfits
 sec-policy/selinux-base-policy:open_perms - Enable the open permissions for file object classes (SELinux policy capability).
@@ -3926,7 +3927,6 @@ x11-base/xorg-server:udev - Enable devices discovery via udev
 x11-base/xorg-server:xorg - Build the Xorg X server (HIGHLY RECOMMENDED)
 x11-drivers/ati-drivers:modules - Build the kernel modules
 x11-drivers/ati-drivers:qt4 -  Install qt4 dependent optional tools (e.g Catalyst Control Panel) 
-x11-drivers/linuxwacom:modules - Build kernel module
 x11-libs/agg:gpc - Enable gpc polygon clipper library
 x11-libs/cairo:cleartype - Add ClearType-style behavior for sub-pixel hinting. Patch taken from Arch Linux
 x11-libs/cairo:drm - Use Linux DRM for backend acceleration

@@ -1,9 +1,9 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-power/upower/upower-0.9.6.ebuild,v 1.1 2010/10/17 08:16:04 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-power/upower/upower-0.9.6.ebuild,v 1.3 2010/10/18 09:46:48 ssuominen Exp $
 
 EAPI=3
-inherit linux-info
+inherit autotools eutils linux-info
 
 DESCRIPTION="D-Bus abstraction for enumerating power devices and querying history and statistics"
 HOMEPAGE="http://upower.freedesktop.org/"
@@ -12,7 +12,7 @@ SRC_URI="http://upower.freedesktop.org/releases/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~x86-fbsd"
-IUSE="debug doc introspection ipod kernel_FreeBSD kernel_linux"
+IUSE="debug doc +introspection ipod kernel_FreeBSD kernel_linux"
 
 COMMON_DEPEND=">=dev-libs/dbus-glib-0.76
 	>=dev-libs/glib-2.21.5:2
@@ -31,7 +31,8 @@ DEPEND="${COMMON_DEPEND}
 	>=dev-util/intltool-0.40.0
 	dev-util/pkgconfig
 	doc? ( dev-util/gtk-doc
-		app-text/docbook-xml-dtd:4.1.2 )"
+		app-text/docbook-xml-dtd:4.1.2 )
+	introspection? ( dev-util/gtk-doc-am )" # eautoreconf
 
 RESTRICT="test" # error getting system bus
 
@@ -45,7 +46,13 @@ pkg_setup() {
 }
 
 src_prepare() {
-	sed -i -e '/DISABLE_DEPRECATED/d' configure || die
+	if use introspection; then
+		sed -i -e '/DISABLE_DEPRECATED/d' configure.ac || die
+		epatch "${FILESDIR}"/${P}-introspection{,-2}.patch
+		eautoreconf
+	else
+		sed -i -e '/DISABLE_DEPRECATED/d' configure || die
+	fi
 }
 
 src_configure() {
