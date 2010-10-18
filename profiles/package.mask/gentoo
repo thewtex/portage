@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12060 2010/10/17 16:36:38 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12066 2010/10/18 00:01:44 flameeyes Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,35 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (18 Oct 2010)
+#  on behalf of QA team
+#
+# Another package that originally failed to work with Perl
+# 5.12 (bug #330087) and that shown itself as not working
+# right. Additionally, it currently bundles an enormous
+# amount of Perl modules (bug #335396).
+#
+# Removal on 2010-12-17
+net-analyzer/sara
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (18 Oct 2010)
+#  on behalf of QA team
+#
+# TCT has been retired upstream for a while, the site
+# pointing to sleuthkit as its successor. Within Gentoo
+# there hasn't been a committed maintainer since 2004 and the
+# latest bumps have been done blindly. Bug #336254 was opened
+# for a build failure with Perl 5.12, and reports a number
+# of other issues making the package useless. Furthermore,
+# it fails to respect LDFLAGS.
+#
+# Removal on 2010-12-17
+app-forensics/tct
+
+# Markos Chandras <hwoarang@gentoo.org> (17 Oct 2010)
+# Masking beta releases
+=net-p2p/qbittorrent-2.5.0_beta*
 
 # Justin Lecher <jlec@gentoo.org> (17 Oct 2010)
 # Broke the package. Masked until fixed
@@ -126,6 +155,19 @@ x11-libs/openmotif-compat
 >=gnome-base/gnome-settings-daemon-2.32
 >=gnome-base/gnome-applets-2.32
 >=gnome-extra/bug-buddy-2.32
+>=gnome-extra/gnome-media-2.32
+>=gnome-extra/gnome-power-manager-2.32
+>=app-arch/file-roller-2.32
+>=app-cdr/brasero-2.32
+>=app-crypt/seahorse-2.32
+>=app-text/evince-2.32
+>=gnome-base/gnome-control-center-2.32
+>=gnome-extra/gcalctool-5.32
+gnome-base/dconf
+>=gnome-extra/gucharmap-2.32
+>=gnome-extra/mousetweaks-2.32
+>=media-gfx/eog-2.32
+>=media-sound/sound-juicer-2.32
 
 # Pacho Ramos <pacho@gentoo.org> (09 Oct 2010)
 # Removal of app-text/gnome-spell as it's no used by
@@ -610,12 +652,6 @@ media-sound/rip-l
 # Dead upstream. Masked for removal in 30 days.
 # Please switch to x11-drivers/xf86-video-ati
 x11-drivers/xf86-video-radeonhd
-
-# Ulrich Mueller <ulm@gentoo.org> (13 Sep 2010)
-# Last stand-alone release in 2008. Newer versions are included
-# with app-editors/emacs or app-editors/emacs-vcs.
-# Masked for removal in 30 days, bug 337133.
-app-emacs/gnus
 
 # Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (13 Sep 2010)
 # Masked before final release.
@@ -1138,11 +1174,6 @@ net-fs/samba-client
 # and suffers of QA issues, see bug 251575
 # Masked for removal in 30 days
 net-voip/wengophone-bin
-
-# Lance Albertson <ramereth@gentoo.org> (07 Mar 2010)
-# Cfengine 3 is mostly incompatible with Cfengine 2, so lets mask 3.x
-# for a while until a sane upgrade path can be assumed in Gentoo.
->=net-misc/cfengine-3
 
 # Mike Frysinger <vapier@gentoo.org> (07 Mar 2010)
 # Very old packages that people should have upgraded away from

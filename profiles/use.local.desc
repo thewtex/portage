@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.6055 2010/10/17 12:14:38 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.6059 2010/10/18 01:54:24 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -201,6 +201,7 @@ app-benchmarks/bootchart:acct - Enable process accounting
 app-benchmarks/jmeter:beanshell - Enable BeanShell scripting support
 app-cdr/backlite:mplayer - Add support for mplayer preview in addition to X11 and phonon
 app-cdr/brasero:beagle - Enable app-misc/beagle support for searches
+app-cdr/brasero:introspection - Use dev-libs/gobject-introspection for introspection
 app-cdr/brasero:libburn - Enable dev-libs/libburn backend
 app-cdr/brasero:nautilus -  Build gnome-base/nautilus extension
 app-cdr/brasero:playlist - Enable support for playlists through dev-libs/totem-pl-parser
@@ -232,6 +233,7 @@ app-crypt/mit-krb5:doc -  Creates and installs the API and implementation docume
 app-crypt/ophcrack-tables:vistafree - Installs the free Vista ophcrack tables
 app-crypt/ophcrack-tables:xpfast - Installs the fast XP ophcrack tables
 app-crypt/ophcrack-tables:xpsmall - Installs the small free XP ophcrack tables
+app-crypt/seahorse:introspection - Use dev-libs/gobject-introspection for introspection
 app-crypt/seahorse:ldap - Enable seahorse to manipulate GPG keys on a LDAP server.
 app-crypt/seahorse-plugins:applet - Enable seahorse applet for gnome-base/gnome-panel
 app-crypt/seahorse-plugins:epiphany - Enable text encryption plugin to integrate into the www-client/epiphany context menu
@@ -656,6 +658,7 @@ app-text/enchant:hunspell - Adds support for app-text/hunspell spell checker
 app-text/enchant:zemberek - Adds support for app-text/zemberek-server spell checker server
 app-text/evince:dvi - Enable the built-in DVI viewer
 app-text/evince:gnome - Enable the use of gnome-base/gconf to honour lockdown settings
+app-text/evince:introspection - Use dev-libs/gobject-introspection for introspection
 app-text/evince:nautilus - Enable property page extension in gnome-base/nautilus
 app-text/evince:t1lib - Enable the Type-1 fonts for the built-in DVI viewer (media-libs/t1lib)
 app-text/gtranslator:http - Enable support for open translation plugin using net-libs/libsoup
@@ -715,6 +718,9 @@ dev-db/drizzle:md5 -  Enable the MD5 plugin, using dev-libs/libgcrypt; this repl
 dev-db/drizzle:memcache -  Enable the memcache plugin for user-defined functions and statistics in I_S tables (using dev-libs/libmemcached). Currently restricts tests because of an upstream testsuite bug. 
 dev-db/drizzle:pam -  Enable the PAM authentication plugin (using sys-libs/pam). The configuration file created will be /etc/pam.d/drizzle. 
 dev-db/drizzle:tcmalloc -  Use the dev-util/google-perftools libraries to replace the malloc() implementation with a possibly faster one. 
+dev-db/haildb:debug -  Enable extra debug codepaths and assertions. If disabled, both the debug code and assertions are removed from the resulting binaries. Optimisations are untouched. 
+dev-db/haildb:tcmalloc -  Use the dev-util/google-perftools libraries to replace the malloc() implementation with a possibly faster one. 
+dev-db/haildb:zlib -  Add support for compressed tables through sys-libs/zlib. 
 dev-db/ingres:client - Disable dbms component
 dev-db/ingres:das - Enable das support
 dev-db/ingres:demodb - Install demo DB
@@ -1084,6 +1090,7 @@ dev-php5/php-gtk:glade - Enable libglade support
 dev-php5/php-gtk:libsexy - Enable libsexy support
 dev-php5/php-gtk:mozembed - Enable GtkMozembed support
 dev-php5/php-gtk:scintilla - Enable Scintilla support
+dev-python/PyFoam:extras - Enable optional dependencies
 dev-python/PyQt4:X - Build the QtGui and QtDesigner modules
 dev-python/PyQt4:assistant - Build the QtHelp and QtAssistant modules
 dev-python/PyQt4:kde -  Select media-sound/phonon as phonon variant needed for kde 
@@ -1411,6 +1418,7 @@ games-strategy/x2:langpacks - Install additional language packs
 games-strategy/x2:modkit - Install the modkit
 games-util/gslist:web - Enable the web interface
 games-util/xboxdrv:daemon - Install xboxdrv-daemon (and its dependencies)
+gnome-base/dconf:introspection - Use dev-libs/gobject-introspection for introspection
 gnome-base/gconf:introspection - Use dev-libs/gobject-introspection for introspection
 gnome-base/gdm:consolekit - Allow proper handling of removable media according to who is actually present on the machine.
 gnome-base/gdm:dmx - Enables Distributed Multihead X (DMX) support
@@ -1451,6 +1459,7 @@ gnome-extra/gnome-lirc-properties:policykit - Use sys-auth/policykit to gain pri
 gnome-extra/gnome-media:sound - Adds support for sound notification themes using media-libs/libcanberra
 gnome-extra/gnome-power-manager:policykit - Enable sys-auth/policykit authentication support
 gnome-extra/gtkhtml:glade - Provide integration with dev-util/glade.
+gnome-extra/gucharmap:introspection - Use dev-libs/gobject-introspection for introspection
 gnome-extra/libgda:canvas - Enables support for x11-libs/goocanvas
 gnome-extra/libgda:http - Enable embedded net-libs/libsoup based server
 gnome-extra/libgda:introspection - Use dev-libs/gobject-introspection for introspection
