@@ -1,8 +1,8 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-misc/bsd-games/bsd-games-2.17-r4.ebuild,v 1.10 2010/05/28 14:57:07 tupone Exp $
-EAPI=2
+# $Header: /var/cvsroot/gentoo-x86/games-misc/bsd-games/bsd-games-2.17-r4.ebuild,v 1.12 2010/10/19 15:55:33 mr_bones_ Exp $
 
+EAPI=2
 inherit eutils games
 
 DEB_PATCH_VER=16
@@ -52,6 +52,7 @@ src_prepare() {
 		-e '/^CXX :=/d' \
 		-e '/^CFLAGS/s/OPTIMIZE/CFLAGS/' \
 		-e '/^CXXFLAGS/s/OPTIMIZE/CXXFLAGS/' \
+		-e '/^LDFLAGS/s/LDFLAGS := /LDFLAGS := \$(LDFLAGS) /' \
 		Makeconfig.in \
 		|| die 'sed failed'
 

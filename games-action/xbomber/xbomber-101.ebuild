@@ -1,6 +1,6 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-action/xbomber/xbomber-101.ebuild,v 1.14 2009/01/29 02:00:17 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-action/xbomber/xbomber-101.ebuild,v 1.16 2010/10/19 07:52:53 mr_bones_ Exp $
 
 EAPI=2
 inherit eutils games
@@ -31,11 +31,8 @@ src_prepare() {
 		|| die "sed failed"
 	epatch \
 		"${FILESDIR}"/${P}-va_list.patch \
-		"${FILESDIR}"/${P}-gcc4.patch
-}
-
-src_compile() {
-	emake CFLAGS="${CFLAGS}" || die "emake failed"
+		"${FILESDIR}"/${P}-gcc4.patch \
+		"${FILESDIR}"/${P}-ldflags.patch
 }
 
 src_install() {

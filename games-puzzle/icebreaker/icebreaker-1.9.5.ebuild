@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-puzzle/icebreaker/icebreaker-1.9.5.ebuild,v 1.15 2010/10/15 13:24:19 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-puzzle/icebreaker/icebreaker-1.9.5.ebuild,v 1.17 2010/10/19 15:14:32 mr_bones_ Exp $
 
 EAPI=2
 inherit eutils games
@@ -17,7 +17,9 @@ IUSE=""
 DEPEND="media-libs/libsdl[video]
 	media-libs/sdl-mixer"
 
-PATCHES=( "${FILESDIR}"/${P}-ldflags.patch "${FILESDIR}"/${P}-gentoo.patch )
+PATCHES=( "${FILESDIR}"/${P}-ldflags.patch
+	"${FILESDIR}"/${P}-gentoo.patch
+	"${FILESDIR}"/${P}-parallell-install.patch )
 
 src_compile() {
 	emake \
@@ -30,8 +32,7 @@ src_compile() {
 }
 
 src_install() {
-	# bug #341111
-	emake -j1 \
+	emake \
 		prefix="${D}/usr" \
 		bindir="${D}${GAMES_BINDIR}" \
 		datadir="${D}${GAMES_DATADIR}" \
