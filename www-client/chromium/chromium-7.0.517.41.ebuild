@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/chromium-7.0.517.41.ebuild,v 1.1 2010/10/14 08:07:08 phajdan.jr Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/chromium-7.0.517.41.ebuild,v 1.4 2010/10/20 10:31:19 fauli Exp $
 
 EAPI="2"
 
@@ -12,7 +12,7 @@ SRC_URI="http://build.chromium.org/buildbot/official/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="cups gnome gnome-keyring"
 
 RDEPEND="app-arch/bzip2
@@ -26,7 +26,7 @@ RDEPEND="app-arch/bzip2
 	>=media-libs/alsa-lib-1.0.19
 	media-libs/jpeg:0
 	media-libs/libpng
-	cups? ( >=net-print/cups-1.4.4 )
+	cups? ( >=net-print/cups-1.3.11 )
 	sys-libs/zlib
 	>=x11-libs/gtk+-2.14.7
 	x11-libs/libXScrnSaver"
