@@ -1,18 +1,18 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-cdr/brasero/brasero-2.32.0.ebuild,v 1.1 2010/10/17 19:08:51 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-cdr/brasero/brasero-2.32.0.ebuild,v 1.3 2010/10/20 20:25:40 eva Exp $
 
 EAPI="3"
 GCONF_DEBUG="no"
 
-inherit eutils gnome2 multilib
+inherit autotools eutils gnome2 multilib
 
 DESCRIPTION="Brasero (aka Bonfire) is yet another application to burn CD/DVD for the gnome desktop."
 HOMEPAGE="http://www.gnome.org/projects/brasero"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="beagle +cdr +css doc +introspection +libburn nautilus playlist test"
 
 COMMON_DEPEND="
