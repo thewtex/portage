@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12075 2010/10/21 02:35:43 sping Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12081 2010/10/21 21:57:36 eva Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,19 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Michael Sterrett <mr_bones_@gentoo.org> (21 Oct 2010)
+# Dead upstream
+# masked for removal on 20101120
+games-arcade/emergence-bin
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (21 Oct 2010)
+#  on behalf of QA team
+#
+# Fails build since at least July 2009 (bug #277577).
+#
+# Removal on 2010-12-20
+media-plugins/vdr-audiorecorder
 
 # Samuli Suominen <ssuominen@gentoo.org> (18 Oct 2010)
 # Fix your package to depend on media-libs/freeglut
@@ -131,6 +144,7 @@ x11-libs/openmotif-compat
 # The mask will be dropped when all pieces are in the tree
 # and working and, then, you will finally able to report
 # missing dependencies and so ;-)
+# BEGIN GNOME 2.32 mask
 >=gnome-base/gnome-desktop-2.32
 >=dev-libs/atk-1.32
 >=x11-libs/vte-0.26
@@ -172,6 +186,9 @@ gnome-base/dconf
 >=media-gfx/eog-2.32
 >=media-sound/sound-juicer-2.32
 >=net-misc/vino-2.32
+>=net-wireless/gnome-bluetooth-2.32
+>=gnome-extra/nautilus-sendto-2.32
+# END GNOME 2.32 mask
 
 # Pacho Ramos <pacho@gentoo.org> (09 Oct 2010)
 # Removal of app-text/gnome-spell as it's no used by
@@ -792,6 +809,7 @@ app-admin/webmin
 # Alphas and snapshots are not for everyday use
 # <http://my.opera.com/desktopteam/blog>
 =www-client/opera-10.70*
+=www-client/opera-11*
 
 # Sergei Trofimovich <slyfox@gentoo.org> (1 Aug 2010)
 # Masked for removal in 30 days. Bunch of serious
@@ -1125,11 +1143,6 @@ media-sound/teamspeak-server-bin
 # Joerg Bornkessel <hd_brummy@gentoo.org> (02 Dec 2009)
 # cvs ebuild vdr-xineliboutput-9999 masked for lifetime
 =media-plugins/vdr-xineliboutput-9999
-
-# Torsten Veller <tove@gentoo.org> (26 Nov 2009)
-# Complete reorganization (and almost complete rewrite),
-# depends on perl-5.10, needs testing
->=dev-perl/DateManip-6.0
 
 # Krzysztof Pawlik <nelchael@gentoo.org> (23 Nov 2009)
 # Borken TPM patch, see bug #294119

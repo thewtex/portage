@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/thunderbird/thunderbird-3.1.5.ebuild,v 1.1 2010/10/20 03:00:58 anarchy Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-client/thunderbird/thunderbird-3.1.5.ebuild,v 1.4 2010/10/22 01:46:06 anarchy Exp $
 
 EAPI="3"
 WANT_AUTOCONF="2.1"
@@ -46,14 +46,14 @@ for X in ${LANGS} ; do
 done
 
 RDEPEND=">=sys-devel/binutils-2.16.1
-	>=dev-libs/nss-3.12.7
+	>=dev-libs/nss-3.12.8
 	>=dev-libs/nspr-4.8.6
 	>=app-text/hunspell-1.2
 	x11-libs/cairo[X]
 	x11-libs/pango[X]
 	alsa? ( media-libs/alsa-lib )
 	libnotify? ( >=x11-libs/libnotify-0.4 )
-	system-sqlite? ( >=dev-db/sqlite-3.6.22-r2[fts3,secure-delete] )
+	system-sqlite? ( >=dev-db/sqlite-3.7.1[fts3,secure-delete] )
 	wifi? ( net-wireless/wireless-tools )
 	!x11-plugins/lightning"
 
@@ -113,6 +113,8 @@ src_prepare() {
 	EPATCH_SUFFIX="patch" \
 	EPATCH_FORCE="yes" \
 	epatch "${WORKDIR}"
+
+	epatch "${FILESDIR}/bug-606109.patch"
 
 	# Allow user to apply any additional patches without modifing ebuild
 	epatch_user

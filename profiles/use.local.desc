@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.6068 2010/10/20 19:53:59 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.6071 2010/10/21 22:13:35 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -152,6 +152,8 @@ app-admin/prelude-manager:tcpwrapper - Add support for tcp_wrappers
 app-admin/puppet:augeas - Enable augeas support
 app-admin/puppet:rrdtool - Enable rrdtool support
 app-admin/puppet:shadow - Enable shadow support
+app-admin/rsyslog:extras - Add support for the UDP spoofing module (omudpspoof) using net-libs/libnet
+app-admin/rsyslog:logrotate - Add a configuration snippet for logrotate
 app-admin/rsyslog:relp - Add support for the Reliable Event Logging Protocol using dev-libs/librelp
 app-admin/sshguard:ipfilter - Enable ipfilter firewall support (only for *bsd)
 app-admin/syslog-ng:spoof-source - Enable support for spoofed source addresses
@@ -1442,9 +1444,7 @@ gnome-base/gvfs:udev - Enable udev base replacement code for cdda feature
 gnome-base/libgnome:sound - Enable sound using media-libs/libcanberra
 gnome-base/libgnomecanvas:glade - Enable glade support
 gnome-base/librsvg:tools - Build miscellaneous tools
-gnome-base/nautilus:beagle - Enables support for searching using the Beagle (app-misc/beagle) desktop search tool
 gnome-base/nautilus:introspection - Use dev-libs/gobject-introspection for introspection
-gnome-base/nautilus:tracker - Enables support for searching using the Tracker (app-misc/tracker) search tool
 gnome-extra/avant-window-navigator:vala - Enables support for applets written in dev-lang/vala.
 gnome-extra/avant-window-navigator:xfce - Enables support for the XFCE 4 desktop environment
 gnome-extra/avant-window-navigator-extras:webkit - Enables support for net-libs/webkit-gtk.
@@ -3242,6 +3242,7 @@ net-wireless/bluez:mcap - Compile with initial support for MCAP
 net-wireless/bluez:old-daemons - Install old daemons like hidd and sdpd that are deprecated by the new Service framework
 net-wireless/bluez:pnat - Enable pnat plugin
 net-wireless/bluez:test-programs - Install tools for testing of various Bluetooth functions
+net-wireless/gnome-bluetooth:introspection - Use dev-libs/gobject-introspection for introspection
 net-wireless/gnome-bluetooth:nautilus - Build nautilus-sendto plugin
 net-wireless/hostapd:debug - Enables debugging
 net-wireless/hostapd:logwatch - Install support files for sys-app/logwatch
