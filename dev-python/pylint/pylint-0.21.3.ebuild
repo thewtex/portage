@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pylint/pylint-0.21.3.ebuild,v 1.1 2010/09/29 01:01:16 arfrever Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pylint/pylint-0.21.3.ebuild,v 1.3 2010/10/23 14:06:15 hwoarang Exp $
 
 EAPI="3"
 PYTHON_DEPEND="2"
@@ -17,7 +17,7 @@ SRC_URI="ftp://ftp.logilab.org/pub/${PN}/${P}.tar.gz mirror://pypi/${PN:0:1}/${P
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ia64 ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
+KEYWORDS="amd64 ~ia64 ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
 IUSE="examples tk"
 
 # Versions specified in __pkginfo__.py.
@@ -29,6 +29,11 @@ DEPEND="${RDEPEND}
 DOCS="doc/*.txt"
 
 src_test() {
+	if has_version "<dev-python/logilab-common-0.52.0"; then
+		ewarn "Skipping tests due to old version of dev-python/logilab-common"
+		return
+	fi
+
 	testing() {
 		PYTHONPATH="build-${PYTHON_ABI}/lib" pytest -v
 	}
