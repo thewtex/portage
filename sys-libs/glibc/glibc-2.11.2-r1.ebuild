@@ -1,6 +1,6 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/glibc/glibc-2.11.ebuild,v 1.8 2009/12/10 01:31:25 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/glibc/glibc-2.11.2-r1.ebuild,v 1.1 2010/10/14 00:00:20 vapier Exp $
 
 inherit eutils versionator libtool toolchain-funcs flag-o-matic gnuconfig multilib
 
@@ -8,7 +8,7 @@ DESCRIPTION="GNU libc6 (also called glibc2) C library"
 HOMEPAGE="http://www.gnu.org/software/libc/libc.html"
 
 LICENSE="LGPL-2"
-KEYWORDS="~amd64 ~ia64 ~s390 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 RESTRICT="strip" # strip ourself #46186
 EMULTILIB_PKG="true"
 
@@ -25,13 +25,13 @@ fi
 MANPAGE_VER=""                                 # pregenerated manpages
 INFOPAGE_VER=""                                # pregenerated infopages
 LIBIDN_VER=""                                  # it's integrated into the main tarball now
-PATCH_VER="3"                                  # Gentoo patchset
-PORTS_VER= #${RELEASE_VER}                     # version of glibc ports addon
+PATCH_VER="4"                                  # Gentoo patchset
+PORTS_VER=${RELEASE_VER%.?}                    # version of glibc ports addon
 LT_VER=""                                      # version of linuxthreads addon
 NPTL_KERN_VER=${NPTL_KERN_VER:-"2.6.9"}        # min kernel version nptl requires
 #LT_KERN_VER=${LT_KERN_VER:-"2.4.1"}           # min kernel version linuxthreads requires
 
-IUSE="debug glibc-omitfp hardened multilib nls selinux profile vanilla crosscompile_opts_headers-only ${LT_VER:+glibc-compat20 nptl nptlonly}"
+IUSE="debug gd glibc-omitfp hardened multilib nls selinux profile vanilla crosscompile_opts_headers-only ${LT_VER:+glibc-compat20 nptl nptlonly}"
 S=${WORKDIR}/glibc-${RELEASE_VER}${SNAP_VER:+-${SNAP_VER}}
 
 # Here's how the cross-compile logic breaks down ...
@@ -80,12 +80,9 @@ fi
 
 # General: We need a new-enough binutils for as-needed
 # arch: we need to make sure our binutils/gcc supports TLS
-DEPEND=">=sys-devel/gcc-3.4.4
-	arm? ( >=sys-devel/binutils-2.16.90 >=sys-devel/gcc-4.1.0 )
-	x86? ( >=sys-devel/gcc-4.3 )
-	amd64? ( >=sys-devel/binutils-2.19 multilib? ( >=sys-devel/gcc-4.3 ) )
-	ppc? ( >=sys-devel/gcc-4.1.0 )
-	ppc64? ( >=sys-devel/gcc-4.1.0 )
+DEPEND="=sys-devel/gcc-4.4*
+	arm? ( >=sys-devel/binutils-2.16.90 )
+	amd64? ( >=sys-devel/binutils-2.19 )
 	>=sys-devel/binutils-2.15.94
 	${LT_VER:+nptl? (} >=sys-kernel/linux-headers-${NPTL_KERN_VER} ${LT_VER:+)}
 	>=sys-devel/gcc-config-1.3.12
@@ -93,7 +90,7 @@ DEPEND=">=sys-devel/gcc-3.4.4
 	virtual/os-headers
 	nls? ( sys-devel/gettext )
 	>=sys-apps/sandbox-1.2.18.1-r2
-	>=sys-apps/portage-2.1.2
+	!<sys-apps/portage-2.1.2
 	selinux? ( sys-libs/libselinux )"
 RDEPEND="!sys-kernel/ps3-sources
 	nls? ( sys-devel/gettext )
@@ -103,8 +100,10 @@ if [[ ${CATEGORY/cross-} != ${CATEGORY} ]] ; then
 	DEPEND="${DEPEND} !crosscompile_opts_headers-only? ( ${CATEGORY}/gcc )"
 	[[ ${CATEGORY} == *-linux* ]] && DEPEND="${DEPEND} ${CATEGORY}/linux-headers"
 else
-	DEPEND="${DEPEND} >=sys-libs/timezone-data-2007c"
-	RDEPEND="${RDEPEND} sys-libs/timezone-data"
+	DEPEND="${DEPEND} !vanilla? ( >=sys-libs/timezone-data-2007c )"
+	RDEPEND="${RDEPEND}
+		vanilla? ( !sys-libs/timezone-data )
+		!vanilla? ( sys-libs/timezone-data )"
 fi
 
 SRC_URI=$(
