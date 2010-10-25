@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/kpathsea/kpathsea-6.0.0_p20100722.ebuild,v 1.1 2010/10/23 02:47:32 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/kpathsea/kpathsea-6.0.0_p20100722.ebuild,v 1.3 2010/10/25 04:38:36 jer Exp $
 
 EAPI=3
 
@@ -15,7 +15,7 @@ SRC_URI="mirror://gentoo/texlive-${PV#*_p}-source.tar.xz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~hppa"
 IUSE="doc source static-libs"
 
 DEPEND="!<app-text/texlive-core-2010
@@ -80,4 +80,12 @@ src_install() {
 	keepdir /var/lib/texmf
 
 	dodoc BUGS ChangeLog NEWS PROJECTS README || die
+}
+
+pkg_postinst() {
+	etexmf-update
+}
+
+pkg_postrm() {
+	etexmf-update
 }
