@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12095 2010/10/25 05:10:08 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12103 2010/10/26 17:02:07 ssuominen Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,32 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Markos Chandras <hwoarang@gentoo.org> (26 Oct 2010)
+# master branch is heavily broken at the moment. Use 
+# 2.0.9999 instead if you want a kmess 
+# that actually builds
+=net-im/kmess-9999
+
+# Samuli Suominen <ssuominen@gentoo.org> (26 Oct 2010)
+# Orphaned library and bindings. Bugs 149150, 193595 and 239569
+# Masked for removal in 30 days
+dev-python/PyAmanith
+media-libs/amanith
+
+# Samuli Suominen <ssuominen@gentoo.org> (26 Oct 2010)
+# Broken -C switch, see bug 342735.  For instance, nothing from kde-base/ can
+# be installed, bug 342785. Also known to break binpkgs created with portage.
+=app-arch/tar-1.24
+
+# Arun Raghavan <ford_prefect@gentoo.org> (26 Oct 2010)
+# Mask development versions of Rygel
+>=net-misc/rygel-0.9.1
+
+# Nirbheek Chauhan <nirbheek@gentoo.org> (26 Oct 2010)
+# Breaks ABI/API, mask till we figure out what all is affected
+# Needed for gnome-shell, which is masked (in the gnome overlay) anyway
+=media-libs/clutter-1.4*
 
 # Jeroen Roovers <jer@gentoo.org> (25 Oct 2010)
 # Masked until reverse dependencies are sorted out (bug #342461)
