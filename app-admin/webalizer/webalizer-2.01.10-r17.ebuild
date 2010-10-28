@@ -1,6 +1,8 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/webalizer/webalizer-2.01.10-r17.ebuild,v 1.3 2010/03/10 16:50:36 sping Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/webalizer/webalizer-2.01.10-r17.ebuild,v 1.6 2010/10/28 03:35:18 sping Exp $
+
+EAPI="2"
 
 # uses webapp.eclass to create directories with right permissions
 # probably slight overkill but works well
@@ -33,6 +35,7 @@ DEPEND=">=sys-libs/db-4.2
 	>=media-libs/libpng-1.2
 	>=media-libs/gd-1.8.3
 	geoip? ( dev-libs/geoip )"
+RDEPEND="${DEPEND}"
 
 S="${WORKDIR}"/${MY_P}
 
@@ -48,12 +51,10 @@ pkg_setup() {
 	fi
 }
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-
+src_prepare() {
 	if use geoip && ! use xtended; then
-		epatch "${WORKDIR}"/geolizer_${MY_PV}-patch/geolizer.patch
+		epatch "${WORKDIR}"/geolizer_${MY_PV}-patch/geolizer.patch \
+				"${FILESDIR}"/geolizer-2.01.10_p20070115-strip.patch
 	else
 		epatch "${FILESDIR}"/${PN}-db4.2.patch
 		if use xtended; then
@@ -66,7 +67,7 @@ src_unpack() {
 	eautoreconf
 }
 
-src_compile() {
+src_configure() {
 	# really dirty hack; necessary due to a really gross ./configure
 	# basically, it just sets the natural language the program uses
 	# unfortunatly, this program only allows for one lang, so only the first
@@ -90,7 +91,6 @@ src_compile() {
 		--with-dblib=$(db_libname) \
 		${myconf} \
 		|| die "econf failed"
-	emake || die "emake failed"
 }
 
 src_install() {

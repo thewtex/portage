@@ -1,6 +1,8 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/webalizer/webalizer-2.01.10-r15.ebuild,v 1.11 2010/03/10 16:50:36 sping Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/webalizer/webalizer-2.01.10-r15.ebuild,v 1.14 2010/10/28 03:35:18 sping Exp $
+
+EAPI="2"
 
 # uses webapp.eclass to create directories with right permissions
 # probably slight overkill but works well
@@ -30,18 +32,12 @@ IUSE="apache2 geoip nls xtended"
 DEPEND=">=sys-libs/db-4.2
 	>=sys-libs/zlib-1.1.4
 	>=media-libs/libpng-1.2
-	>=media-libs/gd-1.8.3
+	>=media-libs/gd-1.8.3[png]
 	geoip? ( dev-libs/geoip )"
+RDEPEND="${DEPEND}"
 
 pkg_setup() {
 	webapp_pkg_setup
-
-	# prevents "undefined reference" errors... see bug #65163
-	if ! built_with_use media-libs/gd png; then
-		ewarn "media-libs/gd must be built with png for this package"
-		ewarn "to function."
-		die "recompile gd with USE=\"png\""
-	fi
 
 	# USE=nls has no real meaning if LINGUAS isn't set
 	if use nls && [ -z "${LINGUAS}" ]; then
@@ -51,11 +47,10 @@ pkg_setup() {
 	fi
 }
 
-src_unpack() {
-	unpack ${A} ; cd "${S}"
-
+src_prepare() {
 	if use geoip; then
-		epatch "${WORKDIR}"/geolizer_${MY_PV}-patch/geolizer.patch || die
+		epatch "${WORKDIR}"/geolizer_${MY_PV}-patch/geolizer.patch \
+				"${FILESDIR}"/geolizer-2.01.10_p20070115-strip.patch
 		use xtended && elog "Xtended doesn't work with geolizer, skipping"
 	else
 		epatch "${FILESDIR}"/${PN}-db4.2.patch || die
@@ -66,9 +61,12 @@ src_unpack() {
 
 	# bug 121816: prevent truncated useragent fields
 	sed -i -e 's:^#define MAXAGENT 64:#define MAXAGENT 128:' webalizer.h
+
+	# stupid broken configuration file
+	eautoreconf
 }
 
-src_compile() {
+src_configure() {
 	local myconf=" --enable-dns \
 		--with-db=$(db_includedir) \
 		--with-dblib=$(db_libname)"
@@ -86,12 +84,7 @@ src_compile() {
 		myconf="${myconf} --with-language=english"
 	fi
 
-	# stupid broken configuration file
-	eautoreconf
-
 	econf ${myconf} || die "econf failed"
-
-	emake || die "emake failed"
 }
 
 src_install() {
