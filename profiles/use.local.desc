@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.6086 2010/10/27 00:54:08 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.6089 2010/10/28 21:54:10 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -178,6 +178,7 @@ app-arch/libarchive:lzma -  Allow accessing lzma-compressed archives through the
 app-arch/libarchive:static -  Build bsdtar and bsdcpio as static archives, removing dependencies over the enabled compression libraries (lzma, lzmadec, libbz2, zlib). 
 app-arch/libarchive:zlib -  Allow accessing gzip-compressed archives through sys-libs/zlib. This only affects libarchive's native support: bsdtar will keep using gunzip as a filter if that's not built-in. It's also needed for supporting extraction of ZIP files. 
 app-arch/p7zip:rar - Enable support for non-free rar decoder
+app-arch/pbzip2:symlink - Install symlinks which override app-arch/bzip2 implementation
 app-arch/rpm:magic - Add magic file support (sys-apps/file)
 app-arch/rpm:neon - Include support for net-libs/neon
 app-arch/squeeze:pathbar - Include pathbar feature
@@ -540,6 +541,7 @@ app-misc/tracker:laptop - Make tracker power management aware
 app-misc/tracker:nautilus - Enable tracker to integrate with gnome-base/nautilus by providing entries in its context menu 
 app-misc/tracker:playlist - Add support for playlists
 app-misc/tracker:strigi - Add support for app-misc/strigi search engine.
+app-misc/tracker:upnp - Add support for video extraction via media-libs/gupnp-dlna.
 app-misc/worker:avfs - Enable support for sys-fs/avfs
 app-misc/workrave:distribution - Enable networking. See http://www.workrave.org/features/
 app-mobilephone/gammu:irda - Enables infrared support
@@ -2612,8 +2614,12 @@ net-ftp/pure-ftpd:paranoidmsg - Display paranoid messages instead of normal ones
 net-ftp/pure-ftpd:sysquota - Enables system quota support (needs sys-fs/quota) 
 net-ftp/pure-ftpd:vchroot - Enable support for virtual chroot (possible security risk)
 net-ftp/twoftpd:breakrfc - Break RFC compliance to allow control symbols in filenames (required for some (e.g. cp1251) encodings, use with caution).
+net-im/bitlbee:libevent - Use libevent for event handling
 net-im/bitlbee:nss - Use NSS for SSL support in MSN and Jabber
-net-im/bitlbee:twitter - Enabel Twitter protocol support
+net-im/bitlbee:otr - Enable support for encrypted conversations
+net-im/bitlbee:plugins - Enable support for plugins
+net-im/bitlbee:purple - Use libpurple instead of the built-in IM protocol support
+net-im/bitlbee:twitter - Enable Twitter protocol support
 net-im/centerim:gadu - Enable support for the Gadu-Gadu protocol
 net-im/centerim:irc - Enable support for the IRC protocol
 net-im/centerim:lj - Enable support for the LiveJournal weblog system
