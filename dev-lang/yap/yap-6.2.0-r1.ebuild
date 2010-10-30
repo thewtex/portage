@@ -1,8 +1,8 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/yap/yap-6.2.0-r1.ebuild,v 1.2 2010/10/24 05:18:11 keri Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/yap/yap-6.2.0-r1.ebuild,v 1.4 2010/10/30 03:52:12 keri Exp $
 
-inherit eutils flag-o-matic java-pkg-opt-2
+inherit autotools eutils flag-o-matic java-pkg-opt-2
 
 DESCRIPTION="YAP is a high-performance Prolog compiler."
 HOMEPAGE="http://www.ncc.up.pt/~vsc/Yap/"
@@ -31,8 +31,11 @@ src_unpack() {
 	epatch "${FILESDIR}"/${P}-parallel-make.patch
 	epatch "${FILESDIR}"/${P}-yapsharedir.patch
 	epatch "${FILESDIR}"/${P}-ldflags.patch
+	epatch "${FILESDIR}"/${P}-ld-library-path.patch
 	epatch "${FILESDIR}"/${P}-have-config.patch
 	epatch "${FILESDIR}"/${P}-chr-sublist.patch
+
+	eautoconf
 }
 
 src_compile() {
@@ -59,8 +62,7 @@ src_compile() {
 		$(use_with mpi) \
 		$(use_with mpi mpe) \
 		$(use_with java) \
-		${myddas_conf} \
-		|| die "econf failed"
+		${myddas_conf}
 
 	emake || die "emake failed"
 
@@ -72,26 +74,31 @@ src_compile() {
 src_install() {
 	emake DESTDIR="${D}" install || die "make install failed."
 
-	dodoc changes*.html README
+	dodoc changes*.html README || die
 
 	if use doc ; then
-		dodoc yap.html
+		dodoc yap.html || die
 	fi
 
 	if use examples ; then
-		docinto examples/chr
-		dodoc packages/chr/Examples/*.{chr,pl}
-		docinto examples/plunit
-		dodoc packages/plunit/examples/*.pl
+		insinto /usr/share/doc/${PF}/examples/chr
+		doins packages/chr/Examples/* || die
+		insinto /usr/share/doc/${PF}/examples/clib
+		doins packages/clib/demo/* || die
+		insinto /usr/share/doc/${PF}/examples/http
+		doins -r packages/http/examples/* || die
+		insinto /usr/share/doc/${PF}/examples/plunit
+		doins packages/plunit/examples/* || die
 		if use java ; then
-			docinto examples/jpl/prolog
-			dodoc packages/jpl/examples/prolog/*.pl
-			docinto examples/jpl/java
-			dodoc packages/jpl/examples/java/*/*.java
+			insinto /usr/share/doc/${PF}/examples/jpl/prolog
+			doins packages/jpl/examples/prolog/* || die
+			insinto /usr/share/doc/${PF}/examples/jpl/java
+			doins packages/jpl/examples/java/README || die
+			doins -r packages/jpl/examples/java/*/*.{java,pl} || die
 		fi
 		if use mpi ; then
-			docinto examples/mpi
-			dodoc library/mpi/examples/*.pl
+			insinto /usr/share/doc/${PF}/examples/mpi
+			doins library/mpi/examples/*.pl || die
 		fi
 	fi
 }
