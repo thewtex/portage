@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/maloc/maloc-0.2.1-r3.ebuild,v 1.3 2010/06/27 14:14:27 nixnut Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/maloc/maloc-0.2.1-r3.ebuild,v 1.4 2010/10/31 14:23:12 jlec Exp $
 
 EAPI="3"
 
@@ -8,8 +8,8 @@ inherit autotools eutils
 
 MY_PV="0.2-1"
 
-DESCRIPTION="Small, portable, abstract C environment library for object-oriented C programming"
-HOMEPAGE="http://scicomp.ucsd.edu/~mholst/codes/maloc/index.html#overview"
+DESCRIPTION="Minimal Abstraction Layer for Object-oriented C/C++ programs"
+HOMEPAGE="http://www.fetk.org/codes/maloc/index.html"
 SRC_URI=" http://cam.ucsd.edu/~mholst/codes/${PN}/${PN}-${MY_PV}.tar.gz"
 
 SLOT="0"
@@ -17,15 +17,17 @@ LICENSE="GPL-2"
 IUSE="mpi static-libs"
 KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux"
 
-DEPEND="
+RDEPEND="
 	sys-libs/readline
 	mpi? ( virtual/mpi )"
+DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${PN}"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PV}-mpi.patch
-	epatch "${FILESDIR}"/${PV}-asneeded.patch
+	epatch \
+		"${FILESDIR}"/${PV}-mpi.patch \
+		"${FILESDIR}"/${PV}-asneeded.patch
 	eautoreconf
 }
 
