@@ -1,5 +1,5 @@
-sdl? ( x11-libs/libX11 media-libs/libsdl ) X? ( x11-libs/libX11 ) svga? ( media-libs/svgalib ) !sdl? ( !X? ( !svga? ( sys-libs/ncurses ) ) )
-sdl? ( x11-libs/libX11 media-libs/libsdl ) X? ( x11-libs/libX11 ) svga? ( media-libs/svgalib ) !sdl? ( !X? ( !svga? ( sys-libs/ncurses ) ) )
+sdl? ( x11-libs/libX11 media-libs/libsdl[video] ) X? ( x11-libs/libX11 ) !sdl? ( !X? ( sys-libs/ncurses ) )
+sdl? ( x11-libs/libX11 media-libs/libsdl[video] ) X? ( x11-libs/libX11 ) !sdl? ( !X? ( sys-libs/ncurses ) )
 0
 http://www.cs.helsinki.fi/u/jpihlaja/cw/pmars-sdl/pmars-0.9.2-5.tar.gz
 
@@ -8,13 +8,13 @@ BSD GPL-2
 Portable redcode simulator's sdl port for core war
 ~amd64 ~ppc x86
 base eutils games multilib portability toolchain-funcs
-sdl X svga
+sdl X
 
 
 
+2
 
-
-compile install postinst preinst setup unpack
+compile configure install postinst preinst prepare setup unpack
 
 
 

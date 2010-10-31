@@ -1,6 +1,24 @@
 # ChangeLog for app-arch/file-roller
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-arch/file-roller/ChangeLog,v 1.280 2010/10/09 09:52:47 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-arch/file-roller/ChangeLog,v 1.283 2010/10/20 20:15:18 eva Exp $
+
+  20 Oct 2010; Gilles Dartiguelongue <eva@gentoo.org>
+  -file-roller-2.26.3.ebuild,
+  -files/file-roller-2.26.3-typedefs-header-typo.patch,
+  -file-roller-2.28.2.ebuild, file-roller-2.32.0.ebuild:
+  Clean old revisions. Drop la file for nautilus extension since it does not
+  use it.
+
+*file-roller-2.32.0 (17 Oct 2010)
+
+  17 Oct 2010; Pacho Ramos <pacho@gentoo.org> +file-roller-2.32.0.ebuild:
+  Version bump for Gnome 2.32: Migrated from dbus-glib to glib's GDBus,
+  added support for lrzip archives and lrzip compressed tar archives, bring
+  back support for archives on remote GIO mounts when the fuse daemon is not
+  available, other bugfixes and translation updates.
+
+  17 Oct 2010; Raúl Porcel <armin76@gentoo.org> file-roller-2.30.2.ebuild:
+  alpha/ia64/sparc stable wrt #324077
 
   09 Oct 2010; Samuli Suominen <ssuominen@gentoo.org>
   file-roller-2.30.2.ebuild:

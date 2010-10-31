@@ -1,6 +1,28 @@
 # ChangeLog for sci-physics/root
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-physics/root/ChangeLog,v 1.73 2010/07/10 19:05:23 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-physics/root/ChangeLog,v 1.76 2010/10/22 07:11:29 xarthisius Exp $
+
+*root-5.26.00e-r1 (22 Oct 2010)
+
+  22 Oct 2010; Kacper Kowalik <xarthisius@gentoo.org> -root-5.26.00e.ebuild,
+  +root-5.26.00e-r1.ebuild, -files/root-5.26.00e-configure-paths.patch,
+  -files/root-5.26.00e-glibc212.patch, -files/root-5.26.00e-make-3.82.patch,
+  -files/root-5.26.00e-nobyte-compile.patch,
+  -files/root-5.26.00e-prop-ldflags.patch:
+  Move patches to mirrors. Fixes bug 341971.
+
+*root-5.26.00e (19 Oct 2010)
+
+  19 Oct 2010; Sébastien Fabbro <bicatali@gentoo.org>
+  +root-5.26.00e.ebuild, +files/root-5.26.00e-configure-paths.patch,
+  +files/root-5.26.00e-glibc212.patch, +files/root-5.26.00e-make-3.82.patch,
+  +files/root-5.26.00e-nobyte-compile.patch,
+  +files/root-5.26.00e-prop-ldflags.patch:
+  Version bump, patch for afs submitted by Andrew Savchenko.
+
+  16 Oct 2010; Kacper Kowalik <xarthisius@gentoo.org>
+  root-5.26.00-r4.ebuild, +files/root-5.26.00-make-3.82.patch:
+  Fix building with gmake-3.82 wrt 333083. Thanks to Diego for reporting.
 
   10 Jul 2010; Raúl Porcel <armin76@gentoo.org> root-5.26.00-r2.ebuild:
   sparc stable wrt #318469

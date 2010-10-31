@@ -1,21 +1,21 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/eiskaltdcpp/eiskaltdcpp-9999.ebuild,v 1.13 2010/09/15 08:47:18 pva Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/eiskaltdcpp/eiskaltdcpp-9999.ebuild,v 1.15 2010/10/25 13:34:31 pva Exp $
 
 EAPI="2"
 
 LANGS="be bg en es fr hu pl ru sr uk"
 CMAKE_MIN_VERSION="2.6.0"
-inherit qt4-r2 cmake-utils subversion
+inherit qt4-r2 cmake-utils git
 
 DESCRIPTION="Qt4 based client for DirectConnect and ADC protocols, based on DC++ library"
 HOMEPAGE="http://eiskaltdc.googlecode.com/"
-ESVN_REPO_URI="http://${PN%pp}.googlecode.com/svn/branches/trunk/"
+EGIT_REPO_URI="git://github.com/negativ/${PN}.git"
 
 LICENSE="GPL-2 GPL-3"
 SLOT="0"
 KEYWORDS=""
-IUSE="dbus +emoticons examples -gnome -gtk -javascript kde lua +qt4 sounds spell upnp"
+IUSE="dbus +emoticons examples -gnome -gtk -javascript kde libnotify lua +qt4 sounds spell upnp"
 
 RDEPEND="
 	app-arch/bzip2
@@ -30,7 +30,7 @@ RDEPEND="
 		>=x11-libs/gtk+-2.10:2
 		>=dev-libs/glib-2.10:2
 		>=gnome-base/libglade-2.4:2.0
-		>=x11-libs/libnotify-0.4.1
+		libnotify? ( >=x11-libs/libnotify-0.4.1 )
 		gnome? ( gnome-base/libgnome )
 	)
 	qt4? (
@@ -52,13 +52,9 @@ DEPEND="${RDEPEND}
 "
 DOCS="AUTHORS ChangeLog.txt"
 
-pkg_setup() {
-	use gtk && ewarn "GTK UI is very experimental, only Qt4 frontend is stable."
-}
-
 src_configure() {
 	# linguas
-	local langs
+	local langs x
 	for x in ${LANGS}; do
 		use linguas_${x} && langs+=" ${x}"
 	done
@@ -75,7 +71,7 @@ src_configure() {
 		-DLOCAL_MINIUPNP="0"
 		"$(cmake-utils_use gtk USE_GTK)"
 		"$(cmake-utils_use gnome USE_LIBGNOME2)"
-		-DUSE_WT="0"
+		"$(cmake-utils_use libnotify USE_LIBNOTIFY)"
 		"$(cmake-utils_use emoticons WITH_EMOTICONS)"
 		"$(cmake-utils_use examples WITH_EXAMPLES)"
 		"$(cmake-utils_use lua WITH_LUASCRIPTS)"

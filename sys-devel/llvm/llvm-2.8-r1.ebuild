@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/llvm/llvm-2.8-r1.ebuild,v 1.1 2010/10/08 13:52:47 voyageur Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/llvm/llvm-2.8-r1.ebuild,v 1.3 2010/10/24 14:50:09 grobian Exp $
 
 EAPI="3"
 inherit eutils multilib toolchain-funcs
@@ -83,6 +83,7 @@ src_prepare() {
 
 	epatch "${FILESDIR}"/${PN}-2.7-nodoctargz.patch
 	epatch "${FILESDIR}"/${PN}-2.6-commandguide-nops.patch
+	epatch "${FILESDIR}"/${PN}-2.8-darwin8.patch
 }
 
 src_configure() {
@@ -158,11 +159,22 @@ src_install() {
 	# Fix install_names on Darwin.  The build system is too complicated
 	# to just fix this, so we correct it post-install
 	if [[ ${CHOST} == *-darwin* ]] ; then
-		for lib in lib{EnhancedDisassembly,LLVM-${PN},LLVMHello,LTO,profile_rt}.dylib ; do
-			# libEnhancedDisassembly is Darwin10 only
+		for lib in lib{EnhancedDisassembly,LLVM-${PV},BugpointPasses,LLVMHello,LTO,profile_rt}.dylib ; do
+			# libEnhancedDisassembly is Darwin10 only, so non-fatal
 			[[ -f ${ED}/usr/lib/${PN}/${lib} ]] || continue
-			install_name_tool -id "${EPREFIX}"/usr/lib/${PN}/${lib} \
+			ebegin "fixing install_name of $lib"
+			install_name_tool \
+				-id "${EPREFIX}"/usr/lib/${PN}/${lib} \
 				"${ED}"/usr/lib/${PN}/${lib}
+			eend $?
+		done
+		for f in "${ED}"/usr/bin/* "${ED}"/usr/lib/${PN}/libLTO.dylib ; do
+			ebegin "fixing install_name reference to libLLVM-${PV}.dylib of ${f##*/}"
+			install_name_tool \
+				-change "${S}"/Release/lib/libLLVM-${PV}.dylib \
+					"${EPREFIX}"/usr/lib/${PN}/libLLVM-${PV}.dylib \
+				"${f}"
+			eend $?
 		done
 	fi
 }

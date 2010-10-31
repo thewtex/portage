@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12045 2010/10/13 15:26:39 voyageur Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12107 2010/10/27 13:15:17 ssuominen Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -31,6 +31,294 @@
 
 #--- END OF EXAMPLES ---
 
+# Tony Vroon <chainsaw@gentoo.org> (27 Oct 2010)
+# This is very new, very exciting and quite probably not ready for your 
+# production kit yet. Bug reports? Sure, if they have patches!
+>=net-misc/asterisk-1.8.0
+
+# Markos Chandras <hwoarang@gentoo.org> (26 Oct 2010)
+# master branch is heavily broken at the moment. Use 
+# 2.0.9999 instead if you want a kmess 
+# that actually builds
+=net-im/kmess-9999
+
+# Samuli Suominen <ssuominen@gentoo.org> (26 Oct 2010)
+# Orphaned library and bindings. Bugs 149150, 193595 and 239569
+# Masked for removal in 30 days
+dev-python/PyAmanith
+media-libs/amanith
+
+# Samuli Suominen <ssuominen@gentoo.org> (26 Oct 2010)
+# Broken -C switch, see bug 342735.  For instance, nothing from kde-base/ can
+# be installed, bug 342785. Also known to break binpkgs created with portage.
+=app-arch/tar-1.24
+
+# Arun Raghavan <ford_prefect@gentoo.org> (26 Oct 2010)
+# Mask development versions of Rygel
+>=net-misc/rygel-0.9.1
+
+# Nirbheek Chauhan <nirbheek@gentoo.org> (26 Oct 2010)
+# Breaks ABI/API, mask till we figure out what all is affected
+# Needed for gnome-shell, which is masked (in the gnome overlay) anyway
+=media-libs/clutter-1.4*
+
+# Jeroen Roovers <jer@gentoo.org> (25 Oct 2010)
+# Masked until reverse dependencies are sorted out (bug #342461)
+=dev-libs/libnl-2*
+
+# Alexis Ballier <aballier@gentoo.org> (24 Oct 2010)
+# Mask TeX Live 2010 for testing and keywording
+>=app-text/texlive-2010
+>=app-text/texlive-core-2010
+>=dev-texlive/texlive-basic-2010
+>=dev-texlive/texlive-bibtexextra-2010
+>=dev-texlive/texlive-context-2010
+>=dev-texlive/texlive-documentation-arabic-2010
+>=dev-texlive/texlive-documentation-base-2010
+>=dev-texlive/texlive-documentation-bulgarian-2010
+>=dev-texlive/texlive-documentation-chinese-2010
+>=dev-texlive/texlive-documentation-czechslovak-2010
+>=dev-texlive/texlive-documentation-dutch-2010
+>=dev-texlive/texlive-documentation-english-2010
+>=dev-texlive/texlive-documentation-finnish-2010
+>=dev-texlive/texlive-documentation-french-2010
+>=dev-texlive/texlive-documentation-german-2010
+>=dev-texlive/texlive-documentation-greek-2010
+>=dev-texlive/texlive-documentation-italian-2010
+>=dev-texlive/texlive-documentation-japanese-2010
+>=dev-texlive/texlive-documentation-korean-2010
+>=dev-texlive/texlive-documentation-mongolian-2010
+>=dev-texlive/texlive-documentation-polish-2010
+>=dev-texlive/texlive-documentation-portuguese-2010
+>=dev-texlive/texlive-documentation-russian-2010
+>=dev-texlive/texlive-documentation-serbian-2010
+>=dev-texlive/texlive-documentation-slovenian-2010
+>=dev-texlive/texlive-documentation-spanish-2010
+>=dev-texlive/texlive-documentation-thai-2010
+>=dev-texlive/texlive-documentation-turkish-2010
+>=dev-texlive/texlive-documentation-ukrainian-2010
+>=dev-texlive/texlive-documentation-vietnamese-2010
+>=dev-texlive/texlive-fontsextra-2010
+>=dev-texlive/texlive-fontsrecommended-2010
+>=dev-texlive/texlive-fontutils-2010
+>=dev-texlive/texlive-formatsextra-2010
+>=dev-texlive/texlive-games-2010
+>=dev-texlive/texlive-genericextra-2010
+>=dev-texlive/texlive-genericrecommended-2010
+>=dev-texlive/texlive-htmlxml-2010
+>=dev-texlive/texlive-humanities-2010
+>=dev-texlive/texlive-langafrican-2010
+>=dev-texlive/texlive-langarab-2010
+>=dev-texlive/texlive-langarabic-2010
+>=dev-texlive/texlive-langarmenian-2010
+>=dev-texlive/texlive-langcjk-2010
+>=dev-texlive/texlive-langcroatian-2010
+>=dev-texlive/texlive-langcyrillic-2010
+>=dev-texlive/texlive-langczechslovak-2010
+>=dev-texlive/texlive-langdanish-2010
+>=dev-texlive/texlive-langdutch-2010
+>=dev-texlive/texlive-langenglish-2010
+>=dev-texlive/texlive-langfinnish-2010
+>=dev-texlive/texlive-langfrench-2010
+>=dev-texlive/texlive-langgerman-2010
+>=dev-texlive/texlive-langgreek-2010
+>=dev-texlive/texlive-langhebrew-2010
+>=dev-texlive/texlive-langhungarian-2010
+>=dev-texlive/texlive-langindic-2010
+>=dev-texlive/texlive-langitalian-2010
+>=dev-texlive/texlive-langlatin-2010
+>=dev-texlive/texlive-langlatvian-2010
+>=dev-texlive/texlive-langlithuanian-2010
+>=dev-texlive/texlive-langmongolian-2010
+>=dev-texlive/texlive-langnorwegian-2010
+>=dev-texlive/texlive-langother-2010
+>=dev-texlive/texlive-langpolish-2010
+>=dev-texlive/texlive-langportuguese-2010
+>=dev-texlive/texlive-langspanish-2010
+>=dev-texlive/texlive-langswedish-2010
+>=dev-texlive/texlive-langtibetan-2010
+>=dev-texlive/texlive-langturkmen-2010
+>=dev-texlive/texlive-langukenglish-2010
+>=dev-texlive/texlive-langvietnamese-2010
+>=dev-texlive/texlive-latex-2010
+>=dev-texlive/texlive-latex3-2010
+>=dev-texlive/texlive-latexextra-2010
+>=dev-texlive/texlive-latexrecommended-2010
+>=dev-texlive/texlive-luatex-2010
+>=dev-texlive/texlive-mathextra-2010
+>=dev-texlive/texlive-metapost-2010
+>=dev-texlive/texlive-music-2010
+>=dev-texlive/texlive-omega-2010
+>=dev-texlive/texlive-pictures-2010
+>=dev-texlive/texlive-plainextra-2010
+>=dev-texlive/texlive-pstricks-2010
+>=dev-texlive/texlive-psutils-2010
+>=dev-texlive/texlive-publishers-2010
+>=dev-texlive/texlive-science-2010
+>=dev-texlive/texlive-texinfo-2010
+>=dev-texlive/texlive-xetex-2010
+
+# Samuli Suominen <ssuominen@gentoo.ogr> (23 Oct 2010)
+# Replaced by media-tv/v4l-utils, bug 333291
+# Removal in about 30 days
+media-tv/ivtv-utils
+media-tv/v4l2-ctl
+
+# Markos Chandras <hwoarang@gentoo.org> (23 Oct 2010)
+#  on behalf of QA team
+#
+# Does not work with recent versions of ffmpeg.
+# Does not work with youtube anymore due to API changes.
+# Dead upstream.
+# Removal in 30 days.
+# Alternatives:
+# media-video/minitube
+# media-video/xvideoservicethief
+media-video/elltube
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (23 Oct 2010)
+#  on behalf of QA team
+#
+# Ebuilds are in very sorry state; they all try to workaround
+# distcc/ccache which an ebuild should never do; they
+# are ready to call autogen.sh and not use the autotools
+# eclass; USE=debug tinkers with flags; don't call econf and
+# don't use elog. See bugs #213197; #255872 and #293931 at
+# least. Maintainer is unresponsive, the ebuilds should all
+# be rewritten at the very least.
+#
+# Removal on 2010-12-22
+media-libs/capseo
+media-libs/libcaptury
+media-video/captury
+
+# Torsten Veller <tove@gentoo.org> (23 Oct 2010)
+# yamcha and tinysvm fail to built the Perl extension (#299983).
+# Removal on 2010-12-23 if not fixed
+app-text/yamcha
+sci-misc/tinysvm
+app-text/cabocha
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (22 Oct 2010)
+#  on behalf of QA team
+#
+# Obsolete even by upstream standard, since version 0.1.2
+# is out since 2007 (and has a version bump request in bug
+# #223299 since May 2008); uses “obsolete” tail/head
+# syntax (bug #159606, the warning has since been removed
+# from coreutils); more importantly autotools are rebuilt by
+# a maintainer-mode-triggered check, but no dependency over
+# autotools, with or without the correct version is present
+# (bug #318487; automake 1.8 is nowadays not that common to
+# find installed).
+# Use sys-fs/ddrescue as replacement
+#
+# Removal on 2010-12-21
+sys-fs/dd-rhelp
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (22 Oct 2010)
+#  on behalf of QA team
+#
+# Fails to work properly, upstream doesn't seem to care. As
+# maintainer I'm going to remove this, and eventually package
+# something for mod_security to query it.
+#
+# Removal on 2010-11-21
+www-apache/mod_httpbl
+
+# Michael Sterrett <mr_bones_@gentoo.org> (21 Oct 2010)
+# Dead upstream
+# masked for removal on 20101120
+games-arcade/emergence-bin
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (21 Oct 2010)
+#  on behalf of QA team
+#
+# Fails build since at least July 2009 (bug #277577).
+#
+# Removal on 2010-12-20
+media-plugins/vdr-audiorecorder
+
+# Samuli Suominen <ssuominen@gentoo.org> (18 Oct 2010)
+# Fix your package to depend on media-libs/freeglut
+# or emerge -C virtual/glut
+# This mask entry will go away in about 30 days
+virtual/glut
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (18 Oct 2010)
+#  on behalf of QA team
+#
+# Another package that originally failed to work with Perl
+# 5.12 (bug #330087) and that shown itself as not working
+# right. Additionally, it currently bundles an enormous
+# amount of Perl modules (bug #335396).
+#
+# Removal on 2010-12-17
+net-analyzer/sara
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (18 Oct 2010)
+#  on behalf of QA team
+#
+# TCT has been retired upstream for a while, the site
+# pointing to sleuthkit as its successor. Within Gentoo
+# there hasn't been a committed maintainer since 2004 and the
+# latest bumps have been done blindly. Bug #336254 was opened
+# for a build failure with Perl 5.12, and reports a number
+# of other issues making the package useless. Furthermore,
+# it fails to respect LDFLAGS.
+#
+# Removal on 2010-12-17
+app-forensics/tct
+
+# Markos Chandras <hwoarang@gentoo.org> (17 Oct 2010)
+# Masking beta releases
+=net-p2p/qbittorrent-2.5.0_beta*
+
+# Markos Chandras <hwoarang@gentoo.org> (17 Oct 2010)
+# Masking experimental releases
+=x11-libs/libfm-0.1.14
+=x11-misc/pcmanfm-0.9.8
+
+# Samuli Suominen <ssuominen@gentoo.org> (16 Oct 2010)
+# dev-libs/soprano with USE redland is unported to raptor2 API
+# see bug 341237
+>=dev-libs/rasqal-0.9.20
+>=dev-libs/redland-1.0.12
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (15 Oct 2010)
+#  on behalf of QA team
+#
+# gkrellm needs more maintainers, but these packages
+# in particular are gong to cause trouble, as they have
+# either obsolete gtk+ API calls (bug #340959, #340137,
+# #339910, #339908, #339907, #339905), have been failing
+# for a while because of their dependencies (bug #338307)
+# or have overflows (bug #338971).
+#
+# Further broken packages may be added in the future as
+# they are discovered, removal date will be the same for
+# all of them.
+#
+# Removal on 2010-12-14
+x11-plugins/gkrellm-timers
+x11-plugins/gkrellm-reminder
+x11-plugins/gkrellmitime
+x11-plugins/gkrellm-gkfreq
+x11-plugins/gkrellm-gamma
+x11-plugins/gkrellmbups
+x11-plugins/gkrellmms
+x11-plugins/gkrellm-bgchanger
+x11-plugins/gkrellmwho2
+x11-plugins/gkrellm-mailwatch
+
+# Christian Faulhammer <fauli@gentoo.org> (15 Oct 2010)
+# Mask for removal in 30 days
+# Has lots of bundled libraries for ages (bug 250049), even as so
+# files, upstream does not care, even with security vulnerable expat
+# library, about that
+# No real use in the last couple of years
+dev-tex/mpm
+
 # Bernard Cafarelli <voyageur@gentoo.org> (13 Oct 2010)
 # New Objective-C Runtime for GNUstep
 # Masked until I add proper support for it in gnustep-base
@@ -51,9 +339,11 @@ x11-libs/openmotif-compat
 # The mask will be dropped when all pieces are in the tree
 # and working and, then, you will finally able to report
 # missing dependencies and so ;-)
+# BEGIN GNOME 2.32 mask
 >=gnome-base/gnome-desktop-2.32
 >=dev-libs/atk-1.32
 >=x11-libs/vte-0.26
+>=x11-terms/gnome-terminal-2.32
 >=net-libs/libsoup-gnome-2.32
 >=net-libs/libsoup-2.32
 >=dev-libs/totem-pl-parser-2.32
@@ -77,6 +367,28 @@ x11-libs/openmotif-compat
 >=gnome-base/gnome-settings-daemon-2.32
 >=gnome-base/gnome-applets-2.32
 >=gnome-extra/bug-buddy-2.32
+>=gnome-extra/gnome-media-2.32
+>=gnome-extra/gnome-power-manager-2.32
+>=app-arch/file-roller-2.32
+>=app-cdr/brasero-2.32
+>=app-crypt/seahorse-2.32
+>=app-text/evince-2.32
+>=gnome-base/gnome-control-center-2.32
+>=gnome-extra/gcalctool-5.32
+gnome-base/dconf
+>=gnome-extra/gucharmap-2.32
+>=gnome-extra/mousetweaks-2.32
+>=media-gfx/eog-2.32
+>=media-sound/sound-juicer-2.32
+>=net-misc/vino-2.32
+>=net-wireless/gnome-bluetooth-2.32
+>=gnome-extra/nautilus-sendto-2.32
+>=gnome-extra/gconf-editor-2.32
+>=dev-util/devhelp-2.32
+>=x11-themes/gnome-icon-theme-2.31
+>=net-analyzer/gnome-nettool-2.32
+>=gnome-extra/gnome-utils-2.32
+# END GNOME 2.32 mask
 
 # Pacho Ramos <pacho@gentoo.org> (09 Oct 2010)
 # Removal of app-text/gnome-spell as it's no used by
@@ -120,6 +432,7 @@ app-admin/eselect-php
 =dev-php5/xdebug-2.1.0-r1
 =dev-php5/pecl-gearman-0.7.0-r1
 =dev-php5/pecl-cairo-0.2.0-r1
+=dev-php5/pecl-bbcode-1.0.2-r1
 
 # Ricardo Mendoza <ricmm@gentoo.org> (04 Oct 2010)
 # Dead upstream, project no longer exists and doesn't work.
@@ -260,30 +573,6 @@ dev-tex/achemso
 # ttf-bitstream-vera issues
 =media-plugins/vdr-graphtft-0.1.21_alpha-r1
 
-# Andreas K. Huettel <dilfridge@gentoo.org> (25 Sep 2010)
-# Masked until kexi and koffice-meta are keyworded ~ppc64 and ~ppc
-# to avoid potential upgrade mess. See bug 338732
-~app-office/karbon-2.2.2
-~app-office/kchart-2.2.2
-~app-office/kexi-2.2.2
-~app-office/koffice-data-2.2.2
-~app-office/koffice-l10n-2.2.2
-~app-office/koffice-libs-2.2.2
-~app-office/koffice-meta-2.2.2
-~app-office/kplato-2.2.2
-~app-office/kpresenter-2.2.2
-~app-office/krita-2.2.2
-~app-office/kspread-2.2.2
-~app-office/kword-2.2.2
-
-# Samuli Suominen <ssuominen@gentoo.org> (25 Sep 2010)
-# quanta-docs, bug 338647, or for KDE4 version bug 336761
-# qucs, bug 301665, working Qt3 version at kde-sunset overlay
-#
-# Masked for removal in 30 days.
-~app-doc/quanta-docs-20051201
-~sci-electronics/qucs-0.0.15_p20100115
-
 # Nirbheek Chauhan <nirbheek@gentoo.org> (25 Sep 2010)
 # Mask new versions of glib, polkit, gtk+, etc
 # Will be unmasked after proper testing
@@ -294,6 +583,7 @@ dev-tex/achemso
 >=gnome-extra/polkit-gnome-0.99
 >=x11-libs/gtk+-2.21
 >=dev-lang/vala-0.11
+>=sys-power/upower-0.9.6
 
 # Pacho Ramos <pacho@gentoo.org> (24 Sep 2010)
 # Broken since more than a year when using nvidia-drivers (bug #260433),
@@ -572,22 +862,6 @@ dev-lisp/xlispstat
 dev-vcs/mcvs
 media-sound/rip-l
 
-# Tomáš Chvátal <scarabeus@gentoo.org> (17 Sep 2010)
-# Dead upstream. Masked for removal in 30 days.
-# Please switch to x11-drivers/xf86-video-ati
-x11-drivers/xf86-video-radeonhd
-
-# Michael Sterrett <mr_bones_@gentoo.org> (14 Sep 2010)
-# Mask for removal 20101014
-# Looks dead upstream.
-games-server/greenhouse
-
-# Ulrich Mueller <ulm@gentoo.org> (13 Sep 2010)
-# Last stand-alone release in 2008. Newer versions are included
-# with app-editors/emacs or app-editors/emacs-vcs.
-# Masked for removal in 30 days, bug 337133.
-app-emacs/gnus
-
 # Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (13 Sep 2010)
 # Masked before final release.
 =net-zope/zope-2.13*
@@ -603,43 +877,6 @@ app-emacs/gnus
 # (bug 333957) and doesn't have an autotools based build system.
 x11-libs/gtkscintilla2
 
-# Pacho Ramos <pacho@gentoo.org> (13 Sep 2010)
-# Upstream says is no longer developed, no updates since 2007,
-# nothing in the tree uses it, build failures (bug #276918).
-# Removal on 2010-10-13
-x11-libs/diacanvas
-
-# Tobias Heinlein <keytoaster@gentoo.org> (12 Sep 2010)
-# Remote command injection, bug #336916
-# Removal in 30 days if upstream does not respond
-x11-plugins/pidgin-knotify
-
-# Pacho Ramos <pacho@gentoo.org> (12 Sep 2010)
-# No developed by upstream since years, orca replaces it,
-# fails to compile (bug #221283).
-# Removal on 2010-10-12
-app-accessibility/gnopernicus
-
-# Pacho Ramos <pacho@gentoo.org> (12 Sep 2010)
-# No upstream update since 2004, looks to be no longer supported
-# by them. Unable to locate any distribution still shipping it
-# but PLD (with last update in 2007), nothing in the tree needs it,
-# does not respect LDFLAGS (bug #335227).
-# Removal on 2010-10-12
-dev-libs/phlib
-
-# Tomáš Chvátal <scarabeus@gentoo.org> (11 Sep 2010)
-# Masked for removal in 30 days.
-# Depends on removed xorg-server version.
-# Migrate to x11-drivers/xf86-input-wacom
-x11-drivers/linuxwacom
-
-# Christian Birchinger <joker@gentoo.org> (11 Sep 2010)
-# Masked for removal in 30 days. Doesn't work
-# with recent Audacious and the included ghosd
-# plugin is a perfect replacment.
-media-plugins/audacious-xosd
-
 # Doug Goldstein <cardoe@gentoo.org> (8 Sep 2010)
 # masked live version
 =x11-libs/cairo-9999*
@@ -651,13 +888,6 @@ media-plugins/audacious-xosd
 # Kacper Kowalik <xarthisius@gentoo.org> (7 Sep 2010)
 # Mask until fully tested
 x11-misc/lightdm
-
-# Pacho Ramos <pacho@gentoo.org> (2 Sep 2010)
-# They don't work since >=x11-themes/gtk-engines-2.16 lost
-# support for Smooth engine (bug #330181).
-# Removal on 2010-10-01
-x11-themes/smooth-themes
-x11-themes/smoothgnome
 
 # Sebastian Pipping <sping@gentoo.org> (1 Sep 2010)
 # Mask upcoming bumps, potentially too hot to push to everyone
@@ -743,44 +973,16 @@ app-i18n/imhangul-status-applet
 # Breaks API and ABI, not all packages fixed yet
 >=dev-libs/gobject-introspection-0.9.3
 
-# Dominik Kapusta <ayoy@gentoo.org> (24 Aug 2010)
-# Replaced by dev-python/shiboken
-#
-# Removal on 2010-09-23
-dev-python/boostpythongenerator
-
-# Christian Faulhammer <fauli@gentoo.org> (19 Aug 2010)
-# Mask for removal in 30 days
-# Has a bundled library for ages (bug 221925), upstream does not care
-# about that
-# GtkHTML development is a bit stalled
-# There are two other HTML display facilities for Claws:
-# mail-client/claws-mail-fancy (WebKit) and USE=dillo on
-# mail-client/claws-mail
-mail-client/claws-mail-gtkhtml
-
 # Alex Legler <a3li@gentoo.org> (18 Aug 2010)
 # Fails to install with the latest stable versions of OpenSSL and Tk.
 # The 1.8.6 packages will be removed in 60 days. Reference: Bug 332597.
 =dev-lang/ruby-1.8.6*
-
-# Michael Sterrett <mr_bones_@gentoo.org> (17 Aug 2010)
-# Mask for removal 20100916
-# Development has moved to games-emulation/sdlmame;
-# use that package instead.
-games-emulation/xmame
 
 # Pawel Hajdan jr <phajdan.jr@gentoo.org> (16 Aug 2010)
 # Experimental binary package compiled on Gentoo.
 ~www-client/chromium-bin-5.0.375.125
 ~www-client/chromium-bin-5.0.375.127
 ~www-client/chromium-bin-6.0.472.51
-
-# Hans de Graaff <graaff@gentoo.org> (13 Aug 2010)
-# Mask for removal 20100913
-# Dead upstream. No longer compatible with recent capistrano versions
-# in our tree.
-dev-ruby/palmtree
 
 # Tiziano Müller <dev-zero@gentoo.org> (11 Aug 2010)
 # Mask until prime time
@@ -803,34 +1005,11 @@ app-emulation/qemu-kvm-spice
 # Removal on 2010-10-09
 app-admin/webmin
 
-# Diego E. Pettenò <flameeyes@gentoo.org> (10 Aug 2010)
-#  on behalf of QA team
-#
-# Website's dead; install init scripts not suited for Gentoo
-# rc system; there are no source packages, the files are
-# directly in CVS; code comes 2002, and no way to track down
-# anything newer; LICENSE value and source files don't agree
-# on a GPL-2.
-#
-# Removal on 2010-10-09
-sys-apps/gluelog
-
-# Diego E. Pettenò <flameeyes@gentoo.org> (06 Aug 2010)
-#  on behalf of QA team
-#
-# bsfilter is dead upstream, not bumped since 2006;
-# current stable was added in 2005 (and is not the last one
-# available); claws-mail-bsfilter is the only user and also
-# has broken dependencies.
-#
-# Removal on 2010-10-05
-mail-filter/bsfilter
-mail-client/claws-mail-bsfilter
-
 # Jeroen Roovers <jer@gentoo.org> (03 Aug 2010)
 # Alphas and snapshots are not for everyday use
 # <http://my.opera.com/desktopteam/blog>
 =www-client/opera-10.70*
+=www-client/opera-11*
 
 # Sergei Trofimovich <slyfox@gentoo.org> (1 Aug 2010)
 # Masked for removal in 30 days. Bunch of serious
@@ -893,12 +1072,6 @@ app-admin/kedpm
 # Difficulties transitioning to python3 as per bug 308331
 app-cdr/sync2cd
 
-# Hans de Graaff <graaff@gentoo.org> (17 Jul 2010)
-# Abandoned upstream, according to the author better alternatives
-# are available. Nothing in the tree depends on it.
-# Masked for deletion in 30 days.
-dev-ruby/testunit-mock
-
 # Jeroen Roovers <jer@gentoo.org> (13 Jul 2010)
 # The ebuild still needs work, but if you can help testing
 # it, then please unmask (bug #317325)
@@ -926,25 +1099,14 @@ net-misc/netcf
 # Severe security issues (bug #322855)
 =www-plugins/adobe-flash-10.0*
 
-# Matti Bickel <mabi@gentoo.org> (04 Jul 2010)
-# Dead upstream (bug #324825)
-# Masked for removal in 30 days
-dev-php5/znf
-
 # Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (04 Jul 2010)
 # Python 2.7 masked until sufficient number of reverse dependencies is fixed.
-=dev-lang/python-2.7*
+~dev-lang/python-2.7
 
 # Nirbheek Chauhan <nirbheek@gentoo.org> (29 Jun 2010)
 # Mask dev-libs/seed; several ebuild issues, and missing pure-runtime deps
 # Also needs USE=introspection to be unmasked
 dev-libs/seed
-
-# Lennart Kolmodin <kolmodin@gentoo.org> (28 Jun 2010)
-# Mask dev-haskell/filepath for removal, not earlier than Aug 2010.
-# It's already part of dev-lang/ghc since version 6.6.1.
-# See bug #324411.
-dev-haskell/filepath
 
 # Christian Faulhammer <fauli@gentoo.org> (28 Jun 2010)
 # Beta version
@@ -960,12 +1122,6 @@ dev-haskell/filepath
 #
 >=sys-cluster/heartbeat-3.0.3
 
-# Patrick Lauer <patrick@gentoo.org> (18 Jun 2010)
-# Only one provider left, so the virtuals serve
-# no purpose and will be removed soon
-virtual/postgresql-base
-virtual/postgresql-server
-
 # Alexis Ballier <aballier@gentoo.org> (17 Jun 2010)
 # New major release, some packages fail to build
 # Mask until they are fixed
@@ -977,35 +1133,14 @@ virtual/postgresql-server
 # Just working with the masked experimental version of refmac
 >=sci-libs/monomer-db-5.16
 
-# Diego E. Pettenò <flameeyes@gentoo.org> (16 Jun 2010)
-#  on behalf of QA team
-#
-# Has a number of QA issues, see bug #278192. Build happens
-# in src_test or src_install, and it has been failing since
-# July 2009 in the tinderbox. No reverse dependencies to
-# take into consideration.
-#
-# Removal on 2010-08-15
-sci-biology/mpiblast
-
 # Peter Volkov <pva@gentoo.org> (13 Jun 2010)
 # Mask release candidate
 =net-analyzer/wireshark-1.4.0*
 
 # Jeremy Olexa <darkside@gentoo.org> (12 Jun 2010)
-# Depends on HAL, replacement is x11-plugins/wmudmount
-# Removed in 60 days by treecleaners. bug 313395
-x11-plugins/wmvolman
-
-# Jeremy Olexa <darkside@gentoo.org> (12 Jun 2010)
 # Dead upstream, last update from 2005, no maintainer.
 # Removed in 60 days by treecleaners, bug 311533
 app-misc/mved
-
-# Jeremy Olexa <darkside@gentoo.org> (12 Jun 2010)
-# Does not compile with latest kernel. Not supported by upstream
-# Removed in 60 days by treecleaners, bug 309655
-net-firewall/ipp2p
 
 # Robin H. Johnson <robbat2@gentoo.org> (09 Jun 2010)
 # Fails to self-verify/sign in FIPS mode, pending upstream response before
@@ -1051,6 +1186,7 @@ sci-libs/libnc-dap
 # Masked for testing.  Only use this version of gcc if you know what you are
 # doing
 =sys-devel/gcc-4.5*
+=dev-java/gcj-jdk-4.5*
 
 # Peter Volkov <pva@gentoo.org> (22 Apr 2010)
 # Masking development kernels. Test it and report bugs upstream.
@@ -1144,17 +1280,6 @@ net-fs/samba-client
 ~app-editors/emacs-vcs-24.0.9999
 ~virtual/emacs-24
 
-# Mounir Lamouri <volkmar@gentoo.org> (09 Mar 2010)
-# net-voip/wengophone-bin has been superseeded by net-im/qutecom
-# and suffers of QA issues, see bug 251575
-# Masked for removal in 30 days
-net-voip/wengophone-bin
-
-# Lance Albertson <ramereth@gentoo.org> (07 Mar 2010)
-# Cfengine 3 is mostly incompatible with Cfengine 2, so lets mask 3.x
-# for a while until a sane upgrade path can be assumed in Gentoo.
->=net-misc/cfengine-3
-
 # Mike Frysinger <vapier@gentoo.org> (07 Mar 2010)
 # Very old packages that people should have upgraded away from
 # long ago.  Courtesy mask ... time to upgrade.
@@ -1199,18 +1324,12 @@ sys-libs/ss
 media-tv/vdr-dvd-scripts
 media-tv/vdrplugin-rebuild
 
-# Olivier Crête <tester@gentoo.org> (07 Jan 2010)
-# Mask for removal. Replaced by net-libs/telepathy-farsight and farsight2
-net-voip/telepathy-stream-engine
-media-libs/farsight
-media-plugins/gst-plugins-farsight
-net-libs/libjingle
-
 # Pawel Hajdan jr <phajdan.jr@gentoo.org> (07 Jan 2010)
 # Dev channel releases are only for people who are developers or want more
 # experimental features and accept a more unstable release.
-~www-client/chromium-7.0.544.0
 ~www-client/chromium-8.0.552.0
+~www-client/chromium-8.0.552.11
+~www-client/chromium-8.0.552.18
 
 # Christian Parpart <trapni@gentoo.org> (23 Dec 2009)
 # Masked for testing/feedback.
@@ -1219,11 +1338,6 @@ media-sound/teamspeak-server-bin
 # Joerg Bornkessel <hd_brummy@gentoo.org> (02 Dec 2009)
 # cvs ebuild vdr-xineliboutput-9999 masked for lifetime
 =media-plugins/vdr-xineliboutput-9999
-
-# Torsten Veller <tove@gentoo.org> (26 Nov 2009)
-# Complete reorganization (and almost complete rewrite),
-# depends on perl-5.10, needs testing
->=dev-perl/DateManip-6.0
 
 # Krzysztof Pawlik <nelchael@gentoo.org> (23 Nov 2009)
 # Borken TPM patch, see bug #294119
@@ -1262,12 +1376,6 @@ media-sound/teamspeak-server-bin
 # see bug #290086 for more info
 =x11-apps/xdm-1.1.9
 
-# Víctor Ostorga <vostorga@gentoo.org> (02 Nov 2009)
-# If you use a kernel >= 2.6.29 it is needed >=linux-headers-2.6.29
-# as well, otherwise net-firewall/ipsec-tools won't compile.
-# See bug #264233 for reference
-=net-firewall/ipsec-tools-0.7.2
-
 # Samuli Suominen <ssuominen@gentoo.org> (24 Oct 2009)
 # Mask pre-4.8 Xfce4 for testing.
 #
@@ -1304,10 +1412,6 @@ sys-auth/pam_keystore
 # conflicts (#259700).
 dev-lang/nemerle
 
-# Christian Faulhammer <fauli@gentoo.org> (24 Aug 2009)
-# Has bundled security-vulnerable expat library, see bug 250049
-dev-tex/mpm
-
 # Diego E. Pettenò <flameeyes@gentoo.org> (8 Aug 2009)
 #  on behalf of QA Team
 #
@@ -1330,8 +1434,6 @@ net-irc/irssi-svn
 net-misc/netcomics-cvs
 dev-lisp/cl-ansi-tests-cvs
 app-portage/layman-dbtools
-dev-util/gprof2dot
-dev-java/jsr305
 
 # Federico Ferri <mescalinum@gentoo.org> (08 Aug 2009)
 # Doesn't build with Tcl 8.5, has several bugs open

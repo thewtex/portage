@@ -1,6 +1,27 @@
 # ChangeLog for dev-lang/yap
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/yap/ChangeLog,v 1.40 2010/09/12 06:43:40 keri Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/yap/ChangeLog,v 1.44 2010/10/24 05:18:11 keri Exp $
+
+  24 Oct 2010; <keri@gentoo.org> yap-6.2.0-r1.ebuild,
+  +files/yap-6.2.0-parallel-make.patch:
+  Support parallel make install
+
+*yap-6.2.0-r1 (23 Oct 2010)
+
+  23 Oct 2010; <keri@gentoo.org> +yap-6.2.0-r1.ebuild:
+  Yap client mode is unsupported; accordingly, drop tkyap client
+
+  23 Oct 2010; <keri@gentoo.org> yap-6.2.0.ebuild,
+  +files/yap-6.2.0-have-config.patch:
+  Enable Prolog engine to bootstrap with gcc-4.5; QA tidyup - include
+  config.h when compiling SWI packages
+
+*yap-6.2.0 (19 Oct 2010)
+
+  19 Oct 2010; <keri@gentoo.org> +yap-6.2.0.ebuild,
+  +files/yap-6.2.0-chr-sublist.patch, +files/yap-6.2.0-ldflags.patch,
+  +files/yap-6.2.0-yapsharedir.patch:
+  Version bump
 
 *yap-6.0.6 (12 Sep 2010)
 

@@ -82,10 +82,8 @@ fi
 
 # General: We need a new-enough binutils for as-needed
 # arch: we need to make sure our binutils/gcc supports TLS
-DEPEND="=sys-devel/gcc-4.4.3*
-	arm? ( >=sys-devel/binutils-2.16.90 >=sys-devel/gcc-4.1.0 )
-	ppc? ( >=sys-devel/gcc-4.1.0 )
-	ppc64? ( >=sys-devel/gcc-4.1.0 )
+DEPEND="=sys-devel/gcc-4.4*
+	arm? ( >=sys-devel/binutils-2.16.90 )
 	>=sys-devel/binutils-2.15.94
 	${LT_VER:+nptl? (} >=sys-kernel/linux-headers-${NPTL_KERN_VER} ${LT_VER:+)}
 	>=sys-devel/gcc-config-1.3.12
@@ -221,9 +219,9 @@ eblit-src_unpack-post() {
 			|| die "Failed to ensure nscd builds with ssp-all"
 	fi
 
-	local gcc_force="4.4.3"
+	local gcc_force="4.4"
 	# Funtoo forces glibc to be compiled using a particular gcc:
-	if [[ "$($CC -dumpversion)" -ne "$gcc_force" ]]; then 
+	if [[ "$(gcc -dumpversion | cut -b1-3)" != "$gcc_force" ]]; then 
 		gcc-config "$gcc_force" || die "Unable to force gcc to version $gcc_force; please do this manually."
 	fi
 }

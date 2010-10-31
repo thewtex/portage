@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/php/files/eblits/src_install-v2.eblit,v 1.3 2010/10/08 18:25:10 olemarkus Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/php/files/eblits/src_install-v2.eblit,v 1.7 2010/10/27 10:33:18 olemarkus Exp $
 
 eblit-php-src_install() {
 	# see bug #324739 for what happens when we don't have that
@@ -94,6 +94,9 @@ php_install_ini() {
 	local phpinisrc="${PHP_INI_UPSTREAM}-${phpsapi}"
 	cp "${PHP_INI_UPSTREAM}" "${phpinisrc}"
 
+	# default to allow_url_open=Off, bug 332763
+	sed -e 's|^allow_url_fopen .*|allow_url_fopen = Off|g' -i "${phpinisrc}"
+
 	# default to expose_php=Off, bug 300695
 	sed -e 's|^expose_php .*|expose_php = Off|g' -i "${phpinisrc}"
 
@@ -127,8 +130,7 @@ php_install_ini() {
 
 	# SAPI-specific handling
 	if [[ "${sapi}" == "apache2" ]] ; then
-			einfo "Installing Apache2 config 70_mod_php${PHP_MV}.conf"
-			insinto ${PHP_DESTDIR}/apache2
+			insinto "${APACHE_MODULES_CONFDIR}"
 			newins "${FILESDIR}/70_mod_php${PHP_MV}.conf-apache2" \
 				"70_mod_php${PHP_MV}.conf"
 	fi
@@ -140,8 +142,7 @@ php_install_ini() {
 		doins "${WORKDIR}/sapis-build/fpm/sapi/fpm/php-fpm.conf"
 		dodir "/etc/init.d"
 		insinto "/etc/init.d"
-		newins  "${FILESDIR}/php-fpm.init" "php-fpm"
-		fperms 755 "/etc/init.d/php-fpm"
+		newinitd "${FILESDIR}/php-fpm-r1.init" "php-fpm"
 #		dosym "${PHP_DESTDIR}/bin/php-fpm" "/usr/bin/php-fpm"
 	fi
 }

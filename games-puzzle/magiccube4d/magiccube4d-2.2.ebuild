@@ -1,7 +1,8 @@
-# Copyright 1999-2007 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-puzzle/magiccube4d/magiccube4d-2.2.ebuild,v 1.12 2007/12/12 02:11:06 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-puzzle/magiccube4d/magiccube4d-2.2.ebuild,v 1.14 2010/10/18 15:42:39 mr_bones_ Exp $
 
+EAPI=2
 inherit eutils games
 
 MY_PV=${PV/./_}
@@ -16,14 +17,13 @@ IUSE=""
 
 DEPEND="x11-libs/libXaw"
 
-S="${WORKDIR}/${PN}-src-${MY_PV}"
+S=${WORKDIR}/${PN}-src-${MY_PV}
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
+src_prepare() {
 	epatch "${FILESDIR}"/${PN}-EventHandler.patch \
 		"${FILESDIR}/${P}"-gcc41.patch \
-		"${FILESDIR}/${P}"-64bit-ptr.patch
+		"${FILESDIR}/${P}"-64bit-ptr.patch \
+		"${FILESDIR}"/${P}-ldflags.patch
 	sed -i \
 		-e "s:-Werror::" \
 		configure \
@@ -31,7 +31,6 @@ src_unpack() {
 }
 
 src_compile() {
-	egamesconf || die
 	emake DFLAGS="${CFLAGS}" || die "emake failed"
 }
 

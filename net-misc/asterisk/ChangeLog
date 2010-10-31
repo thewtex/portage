@@ -1,6 +1,38 @@
-\# ChangeLog for net-misc/asterisk
+# ChangeLog for net-misc/asterisk
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/asterisk/ChangeLog,v 1.269 2010/09/16 17:31:54 chainsaw Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/asterisk/ChangeLog,v 1.273 2010/10/27 00:32:28 chainsaw Exp $
+
+*asterisk-1.8.0 (27 Oct 2010)
+
+  27 Oct 2010; <chainsaw@gentoo.org> +asterisk-1.8.0.ebuild,
+  +files/1.8.0/asterisk-1.8.0-alarm-receiver-use-playtones.patch,
+  +files/1.8.0/asterisk-1.8.0-confbridge-menu-invocation.patch,
+  +files/1.8.0/asterisk-1.8.0-dahdiras-without-root.patch,
+  +files/1.8.0/asterisk-1.8.0-gsm-pic.patch,
+  +files/1.8.0/asterisk-1.8.0-iax2-peerstate.patch,
+  +files/1.8.0/asterisk-1.8.0-inband-indications.patch,
+  +files/1.8.0/asterisk-1.8.0-pbxstart-failed-spurious-bye.patch,
+  +files/1.8.0/asterisk-1.8.0-pri-missing-keyword.patch,
+  +files/1.8.0/asterisk-1.8.0-uclibc.patch, metadata.xml:
+  Initial 1.8 branch ebuild, masked for your protection. Extensive patch
+  rebasing, dropped oddball fax detection. Closes bug #342225 by Oliver
+  Jaksch. Ebuild changes inspired by Oliver, some additional work done.
+
+  15 Oct 2010; <chainsaw@gentoo.org>
+  -files/1.6.1/asterisk-1.6.1.6-fxsks-hookstate.patch,
+  -files/1.6.2/asterisk.initd, -asterisk-1.6.2.10.ebuild,
+  -asterisk-1.6.2.11.ebuild, -asterisk-1.6.2.11-r1.ebuild:
+  Remove old ebuilds & patches.
+
+*asterisk-1.6.2.13-r2 (15 Oct 2010)
+
+  15 Oct 2010; <chainsaw@gentoo.org> +asterisk-1.6.2.13-r2.ebuild,
+  +files/1.6.2/asterisk-1.6.2.13-alarm-receiver-use-playtones.patch,
+  +files/1.6.2/asterisk-1.6.2.13-confbridge-menu-invocation.patch,
+  +files/1.6.2/asterisk-1.6.2.13-pbxstart-failed-spurious-bye.patch,
+  +files/1.6.2/asterisk.logrotate3:
+  Log rotation fixes by Jaco Kroon, closes bug #339799. Scavenged fixes from
+  upstream issue reports #17368, #17524 & #18010.
 
 *asterisk-1.6.2.13-r1 (16 Sep 2010)
 

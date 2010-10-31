@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/libfm/libfm-9999.ebuild,v 1.3 2010/10/01 10:59:27 hwoarang Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/libfm/libfm-9999.ebuild,v 1.5 2010/10/17 12:00:33 hwoarang Exp $
 
 EAPI="2"
 
@@ -17,7 +17,7 @@ IUSE="debug demo gnome hal udev"
 
 RDEPEND="dev-libs/glib:2
 	x11-libs/gtk+:2
-	sys-fs/udisks
+	udev? ( sys-fs/udisks )
 	gnome? ( hal? ( gnome-base/gnome-mount ) )
 	gnome? ( gnome-base/gvfs[hal?,udev?] )
 	>=lxde-base/menu-cache-0.3.2"
@@ -41,7 +41,10 @@ src_prepare() {
 }
 
 src_configure() {
-	econf --sysconfdir=/etc $(use_enable debug) $(use_enable demo)
+	econf --sysconfdir=/etc \
+		$(use_enable debug) \
+		$(use_enable demo) \
+		$(use_enable udev udisks)
 }
 
 src_install() {

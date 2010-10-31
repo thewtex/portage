@@ -1,0 +1,22 @@
+|| ( >=sys-apps/util-linux-2.12r[crypt] >=sys-apps/util-linux-2.12r[loop-aes] ) kernel_linux? ( virtual/modutils ) sys-apps/sed kernel_linux? ( virtual/linux-sources )
+|| ( >=sys-apps/util-linux-2.12r[crypt] >=sys-apps/util-linux-2.12r[loop-aes] ) kernel_linux? ( virtual/modutils )
+0
+mirror://sourceforge/loop-aes/loop-AES-v3.4b.tar.bz2
+
+http://loop-aes.sourceforge.net/loop-AES.README
+GPL-2
+Linux kernel module to encrypt local file systems and disk partitions with AES cipher.
+~amd64 ~arm ~hppa ~ppc ~sparc ~x86
+eutils linux-info linux-mod multilib portability toolchain-funcs versionator
+extra-ciphers keyscrub padlock kernel_linux
+
+
+
+3
+
+compile install postinst postrm preinst prepare setup
+
+
+
+
+

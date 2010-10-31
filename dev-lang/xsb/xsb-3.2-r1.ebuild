@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/xsb/xsb-3.2-r1.ebuild,v 1.1 2010/08/21 07:29:23 keri Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/xsb/xsb-3.2-r1.ebuild,v 1.3 2010/10/27 12:47:24 fauli Exp $
 
 MY_P="XSB"
 
@@ -15,7 +15,7 @@ SRC_URI="http://xsb.sourceforge.net/downloads/${MY_P}.tar.gz
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 IUSE="debug examples iodbc java libwww mysql odbc perl threads xml"
 
 RDEPEND="iodbc? ( dev-db/libiodbc )
@@ -55,8 +55,6 @@ src_compile() {
 		$(use_with iodbc) \
 		$(use_enable threads mt) \
 		$(use_enable debug) \
-		$(use_enable debug debug-verbose) \
-		$(use_enable debug profile) \
 		|| die "econf failed"
 	emake || die "emake failed"
 

@@ -1,6 +1,6 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-puzzle/galaxis/galaxis-1.7.ebuild,v 1.10 2009/01/29 02:10:20 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-puzzle/galaxis/galaxis-1.7.ebuild,v 1.12 2010/10/18 17:14:37 mr_bones_ Exp $
 
 EAPI=2
 inherit games
@@ -16,17 +16,7 @@ IUSE=""
 
 DEPEND=">=sys-libs/ncurses-5.3"
 
-src_prepare() {
-	# Modify CFLAGS
-	sed -i \
-		-e '/^CC/d' \
-		-e '/^CFLAGS/s:-g:$(E_CFLAGS):' \
-		Makefile || die "sed Makefile failed"
-}
-
-src_compile() {
-	emake E_CFLAGS="${CFLAGS}" || die "emake failed"
-}
+PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
 
 src_install() {
 	dogamesbin galaxis || die "dogamesbin failed"

@@ -1,6 +1,23 @@
 # ChangeLog for media-gfx/digikam
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/digikam/ChangeLog,v 1.159 2010/09/25 16:40:23 dilfridge Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/digikam/ChangeLog,v 1.162 2010/10/26 19:14:54 dilfridge Exp $
+
+  26 Oct 2010; Andreas K. Huettel <dilfridge@gentoo.org>
+  digikam-1.5.0.ebuild:
+  Corrected dependency: the geolocation functionality requires MarbleWidget,
+  i.e. marble[plasma]. Fixes bug 342229
+
+  21 Oct 2010; Markos Chandras <hwoarang@gentoo.org>
+  digikam-1.2.0-r3.ebuild:
+  Stable on amd64 wrt bug #342073
+
+*digikam-1.5.0 (15 Oct 2010)
+
+  15 Oct 2010; Andreas K. Huettel <dilfridge@gentoo.org>
+  -digikam-1.2.0-r2.ebuild, -files/digikam-1.2.0-libpgf.patch,
+  -files/digikam-1.3.0-docs.patch, -digikam-1.4.0.ebuild,
+  +digikam-1.5.0.ebuild, +files/digikam-1.5.0-unbundle.patch:
+  Version bump; cleanup
 
 *digikam-1.2.0-r3 (25 Sep 2010)
 

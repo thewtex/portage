@@ -2,12 +2,13 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: /var/cvsroot/gentoo-x86/dev-python/ipython/ipython-0.10.ebuild,v 1.9 2009/11/11 00:06:28 ranger Exp $
 
-EAPI="2"
+EAPI="3"
 
 EBZR_REPO_URI="lp:ipython"
 
-NEED_PYTHON="2.5"
+PYTHON_DEPEND="2"
 SUPPORT_PYTHON_ABIS="1"
+RESTRICT_PYTHON_ABIS="3.*"
 
 inherit eutils distutils elisp-common bzr
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/apbs/apbs-1.2.1b-r4.ebuild,v 1.7 2010/07/09 13:36:47 fauli Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/apbs/apbs-1.2.1b-r4.ebuild,v 1.8 2010/10/27 17:19:45 jlec Exp $
 
 EAPI="3"
 
@@ -18,7 +18,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}-source.tar.gz"
 
 SLOT="0"
 LICENSE="BSD"
-IUSE="arpack doc mpi openmp python tinker tools"
+IUSE="arpack doc mpi openmp python tools"
 KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux"
 
 DEPEND="dev-libs/maloc[mpi=]
@@ -81,21 +81,15 @@ src_configure() {
 		--with-blas=-lblas \
 		$(use_enable openmp) \
 		$(use_enable python) \
-		$(use_enable tinker) \
 		$(use_enable tools) \
 		${myconf}
 }
 
 src_test() {
-	if use tinker; then
-		elog "tinker code make apbs to not reach the expected precission"
-		elog "https://sourceforge.net/tracker/?func=detail&aid=3019465&group_id=148472&atid=771704"
-	else
-		export LC_NUMERIC=C
-		cd examples && make test \
-			|| die "Tests failed"
-		grep -q 'FAILED' "${S}"/examples/TESTRESULTS.log && die "Tests failed"
-	fi
+	export LC_NUMERIC=C
+	cd examples && make test \
+		|| die "Tests failed"
+	grep -q 'FAILED' "${S}"/examples/TESTRESULTS.log && die "Tests failed"
 }
 
 src_install() {

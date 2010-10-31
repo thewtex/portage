@@ -1,6 +1,6 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-strategy/liquidwar/liquidwar-5.6.4.ebuild,v 1.5 2009/02/13 22:40:21 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-strategy/liquidwar/liquidwar-5.6.4.ebuild,v 1.7 2010/10/26 19:17:23 mr_bones_ Exp $
 
 EAPI=2
 inherit eutils games
@@ -18,7 +18,8 @@ RESTRICT="test"
 DEPEND=">=media-libs/allegro-4.2"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-exec-stack.patch
+	epatch "${FILESDIR}"/${P}-exec-stack.patch \
+		"${FILESDIR}"/${P}-ovflfix.patch
 	sed -i \
 		-e 's:/games::' \
 		-e '/^MANDIR/ s:=.*:= $(mandir)/man6:' \

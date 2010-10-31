@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-extra/nautilus-sendto/nautilus-sendto-2.28.5.ebuild,v 1.3 2010/09/24 21:38:12 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/nautilus-sendto/nautilus-sendto-2.28.5.ebuild,v 1.5 2010/10/25 12:01:41 fauli Exp $
 
 EAPI="2"
 
@@ -11,7 +11,7 @@ HOMEPAGE="http://www.gnome.org"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~ia64 ~ppc ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~ia64 ~ppc ~sparc x86"
 IUSE="bluetooth doc gajim cdr pidgin upnp +mail"
 
 RDEPEND=">=x11-libs/gtk+-2.18
@@ -20,7 +20,8 @@ RDEPEND=">=x11-libs/gtk+-2.18
 	>=gnome-base/gconf-2.13.0
 	bluetooth? (
 		>=net-wireless/gnome-bluetooth-2.27
-		>=dev-libs/dbus-glib-0.60 )
+		>=dev-libs/dbus-glib-0.60
+		!>=net-wireless/gnome-bluetooth-2.30.0[nautilus] )
 	cdr? ( >=app-cdr/brasero-2.26.0[nautilus] )
 	gajim? (
 		net-im/gajim

@@ -1,6 +1,50 @@
 # ChangeLog for net-analyzer/pnp4nagios
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/pnp4nagios/ChangeLog,v 1.21 2010/07/30 15:56:07 dertobi123 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/pnp4nagios/ChangeLog,v 1.30 2010/10/25 22:49:00 hwoarang Exp $
+
+  25 Oct 2010; Markos Chandras <hwoarang@gentoo.org>
+  pnp4nagios-0.6.7.ebuild:
+  Stable on amd64 wrt bug #330539
+
+  25 Oct 2010; Christian Faulhammer <fauli@gentoo.org>
+  pnp4nagios-0.6.7.ebuild:
+  stable x86, bug 330539
+
+*pnp4nagios-0.6.7 (20 Oct 2010)
+
+  20 Oct 2010; Tobias Scherbaum <dertobi123@gentoo.org>
+  -pnp4nagios-0.6.4.ebuild, -pnp4nagios-0.6.5.ebuild,
+  -pnp4nagios-0.6.5-r1.ebuild, -files/pnp4nagios-0.6.5-makefile.patch,
+  -files/pnp4nagios-0.6.5-stripped.patch, +pnp4nagios-0.6.7.ebuild,
+  +files/pnp4nagios-0.6.7-makefile.patch, files/npcd:
+  Really fix QA issues (#332451), Version bump (#341001), fix init-script
+  deps (#334139)
+
+  15 Oct 2010; Dane Smith <c1pher@gentoo.org> pnp4nagios-0.6.5-r1.ebuild:
+  Re-reverting to ~x86. bug 330539.
+
+  15 Oct 2010; Dane Smith <c1pher@gentoo.org> pnp4nagios-0.6.5-r1.ebuild:
+  x86 stable wrt bug 330539.
+
+  15 Oct 2010; Christian Faulhammer <fauli@gentoo.org>
+  pnp4nagios-0.6.5-r1.ebuild:
+  revert stable KEYWORDS as per bug 330539
+
+  14 Oct 2010; Markos Chandras <hwoarang@gentoo.org>
+  pnp4nagios-0.6.5-r1.ebuild:
+  Stable on amd64 wrt bug #330539
+
+  14 Oct 2010; Christian Faulhammer <fauli@gentoo.org>
+  pnp4nagios-0.6.5-r1.ebuild:
+  stable x86, bug 330539
+
+*pnp4nagios-0.6.5-r1 (13 Oct 2010)
+
+  13 Oct 2010; <olemarkus@gentoo.org> +pnp4nagios-0.6.5-r1.ebuild,
+  +files/pnp4nagios-0.6.5-makefile.patch,
+  +files/pnp4nagios-0.6.5-stripped.patch:
+  Added pnp4nagios-0.6.5-r1.ebuild with QA fixes from bug 332451 by c1pher
+  as well as fixes required for PHP 5.3
 
   30 Jul 2010; Tobias Scherbaum <dertobi123@gentoo.org>
   pnp4nagios-0.6.4.ebuild, pnp4nagios-0.6.5.ebuild:

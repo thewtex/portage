@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/soprano/soprano-2.4.4.ebuild,v 1.6 2010/09/30 21:18:10 ranger Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/soprano/soprano-2.4.4.ebuild,v 1.8 2010/10/24 14:11:26 ranger Exp $
 
 EAPI="2"
 
@@ -12,7 +12,7 @@ HOMEPAGE="http://sourceforge.net/projects/soprano"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 LICENSE="LGPL-2"
-KEYWORDS="amd64 ~arm ~hppa ~ppc ppc64 x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~hppa ppc ppc64 x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 SLOT="0"
 IUSE="clucene +dbus debug doc elibc_FreeBSD java +raptor +redland test +virtuoso"
 
@@ -22,7 +22,8 @@ COMMON_DEPEND="
 	>=x11-libs/qt-core-4.5.0:4
 	clucene? ( dev-cpp/clucene )
 	dbus? ( >=x11-libs/qt-dbus-4.5.0:4 )
-	raptor? ( >=media-libs/raptor-1.4.16 )
+	raptor? ( >=media-libs/raptor-1.4.16
+		<media-libs/raptor-1.9.0 )
 	redland? (
 		>=dev-libs/rasqal-0.9.15
 		>=dev-libs/redland-1.0.10

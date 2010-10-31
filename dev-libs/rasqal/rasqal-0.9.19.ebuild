@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/rasqal/rasqal-0.9.19.ebuild,v 1.2 2010/08/11 15:49:17 scarabeus Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/rasqal/rasqal-0.9.19.ebuild,v 1.4 2010/10/25 19:23:33 armin76 Exp $
 
 EAPI=3
 inherit libtool
@@ -11,10 +11,11 @@ SRC_URI="http://download.librdf.org/source/${P}.tar.gz"
 
 LICENSE="Apache-2.0 GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~ia64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~ia64-linux ~x86-linux ~ppc-macos"
 IUSE="gmp pcre test xml"
 
 RDEPEND=">=media-libs/raptor-1.4.18
+	<media-libs/raptor-1.9.0
 	pcre? ( dev-libs/libpcre )
 	xml? ( dev-libs/libxml2 )
 	!gmp? ( dev-libs/mpfr )

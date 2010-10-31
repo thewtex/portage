@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/gaupol/gaupol-0.17.ebuild,v 1.1 2010/09/21 22:10:01 arfrever Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/gaupol/gaupol-0.17.ebuild,v 1.3 2010/10/24 20:40:10 hwoarang Exp $
 
 EAPI="3"
 PYTHON_DEPEND="2:2.6"
@@ -17,7 +17,7 @@ SRC_URI="http://download.gna.org/${PN}/${MAJOR_MINOR_VERSION}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="spell"
 
 RDEPEND="dev-python/chardet
@@ -37,6 +37,10 @@ src_compile() {
 	addpredict /root/.gconf
 	addpredict /root/.gconfd
 	distutils_src_compile
+}
+
+pkg_preinst() {
+	gnome2_icon_savelist
 }
 
 pkg_postinst() {

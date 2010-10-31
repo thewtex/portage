@@ -1,6 +1,6 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-puzzle/xblockout/xblockout-1.1.5-r1.ebuild,v 1.6 2009/02/22 15:48:16 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-puzzle/xblockout/xblockout-1.1.5-r1.ebuild,v 1.8 2010/10/18 18:06:19 mr_bones_ Exp $
 
 EAPI=2
 inherit flag-o-matic eutils games
@@ -35,6 +35,7 @@ src_compile() {
 		USE_SETGID= \
 		SCOREDIR="${GAMES_DATADIR}/${PN}" \
 		RESOURCEDIR="${GAMES_DATADIR}/${PN}" \
+		LDOPTIONS="${LDFLAGS}" \
 		|| die "emake failed"
 }
 

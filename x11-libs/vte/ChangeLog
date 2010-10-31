@@ -1,6 +1,24 @@
 # ChangeLog for x11-libs/vte
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/vte/ChangeLog,v 1.259 2010/10/09 20:45:22 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/vte/ChangeLog,v 1.263 2010/10/20 20:43:30 eva Exp $
+
+  20 Oct 2010; Gilles Dartiguelongue <eva@gentoo.org> vte-0.26.1.ebuild:
+  Assign glib/gtk+ dependencies to slot 2. Force maintainer mode to off.
+  Clean unneeded files for python module.
+
+  17 Oct 2010; Raúl Porcel <armin76@gentoo.org> vte-0.24.3.ebuild:
+  alpha/ia64/sh/sparc stable wrt #324077
+
+  14 Oct 2010; Markus Meier <maekke@gentoo.org> vte-0.24.3.ebuild:
+  arm stable, bug #324077
+
+*vte-0.26.1 (13 Oct 2010)
+
+  13 Oct 2010; Pacho Ramos <pacho@gentoo.org> -vte-0.26.0.ebuild,
+  +vte-0.26.1.ebuild:
+  Version bump with important fix: Pass the correct TERM value inside envp
+  when spawning (that will stop 'less' from working awfully). Remove old and
+  broken version.
 
 *vte-0.26.0 (09 Oct 2010)
 

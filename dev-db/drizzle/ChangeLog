@@ -1,6 +1,32 @@
 # ChangeLog for dev-db/drizzle
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/drizzle/ChangeLog,v 1.15 2010/09/06 20:21:39 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/drizzle/ChangeLog,v 1.19 2010/10/25 00:24:09 fauli Exp $
+
+  25 Oct 2010; Christian Faulhammer <fauli@gentoo.org>
+  drizzle-7.2010.10.01-r1.ebuild:
+  add ~x86, bug 341633
+
+  18 Oct 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  drizzle-7.2010.10.01-r1.ebuild:
+  Move flex to build-time dependencies only.
+
+*drizzle-7.2010.10.01-r1 (18 Oct 2010)
+
+  18 Oct 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  +drizzle-7.2010.10.01-r1.ebuild, metadata.xml:
+  Bump ebuild to support haildb (bug right now tests fail if haildb is used,
+  waiting for upstream to express their recommendation); also improve
+  parallel build of documentation, running it within the same make process
+  as the code build. Cleanup metadata.
+
+*drizzle-7.2010.10.01 (14 Oct 2010)
+*drizzle-6.2010.08.1742 (14 Oct 2010)
+
+  14 Oct 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  +drizzle-6.2010.08.1742.ebuild, +drizzle-7.2010.10.01.ebuild,
+  -drizzle-2010.08.1742.ebuild:
+  Version bump from Pavel; rename old version to 6. so that the upgrade path
+  is clear.
 
   06 Sep 2010; Diego E. Pettenò <flameeyes@gentoo.org>
   drizzle-2010.08.1742.ebuild:
