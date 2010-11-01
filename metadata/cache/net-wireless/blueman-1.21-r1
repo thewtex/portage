@@ -1,5 +1,5 @@
 dev-libs/glib:2 >=x11-libs/gtk+-2.12:2 x11-libs/startup-notification dev-python/pygobject >=net-wireless/bluez-4.21 nls? ( dev-util/intltool sys-devel/gettext ) dev-util/pkgconfig >=dev-python/pyrex-0.9.8 >=app-admin/eselect-python-20091230 =dev-lang/python-2* >=sys-apps/sed-4
-dev-libs/glib:2 >=x11-libs/gtk+-2.12:2 x11-libs/startup-notification dev-python/pygobject >=net-wireless/bluez-4.21 >=app-mobilephone/obex-data-server-0.4.4 sys-apps/dbus dev-python/pygtk dev-python/notify-python dev-python/dbus-python gnome? ( dev-python/gconf-python ) network? ( || ( net-dns/dnsmasq =net-misc/dhcp-3* >=net-misc/networkmanager-0.8 ) ) pulseaudio? ( media-sound/pulseaudio ) >=app-admin/eselect-python-20091230 =dev-lang/python-2*
+dev-libs/glib:2 >=x11-libs/gtk+-2.12:2 x11-libs/startup-notification dev-python/pygobject >=net-wireless/bluez-4.21 >=app-mobilephone/obex-data-server-0.4.4 sys-apps/dbus dev-python/pygtk dev-python/notify-python dev-python/dbus-python gnome? ( dev-python/gconf-python ) network? ( || ( net-dns/dnsmasq =net-misc/dhcp-3* >=net-misc/networkmanager-0.8 ) ) policykit? ( sys-auth/polkit ) pulseaudio? ( media-sound/pulseaudio ) >=app-admin/eselect-python-20091230 =dev-lang/python-2*
 0
 http://download.tuxfamily.org/blueman/blueman-1.21.tar.gz
 
@@ -8,13 +8,13 @@ GPL-3
 GTK+ Bluetooth Manager, designed to be simple and intuitive for everyday bluetooth tasks.
 ~amd64 ~ppc ~x86
 gnome2-utils multilib python toolchain-funcs
-gnome hal network nls pulseaudio
+gnome hal network nls policykit pulseaudio
 
 
 
 3
 
-configure install postinst postrm prepare setup
+configure install postinst postrm preinst prepare setup
 
 
 
