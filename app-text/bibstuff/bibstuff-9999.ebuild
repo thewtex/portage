@@ -2,7 +2,7 @@ EAPI="2"
 
 ESVN_REPO_URI="http://bibstuff.googlecode.com/svn/trunk/"
 
-NEED_PYTHON="2.5"
+PYTHON_DEPEND="2"
 
 inherit distutils subversion
 

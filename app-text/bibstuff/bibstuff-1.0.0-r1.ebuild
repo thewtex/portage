@@ -1,6 +1,6 @@
 EAPI="2"
 
-NEED_PYTHON="2.5"
+PYTHON_DEPEND="2"
 
 inherit distutils eutils
 
