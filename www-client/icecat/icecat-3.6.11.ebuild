@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/icecat/icecat-3.6.11.ebuild,v 1.1 2010/10/27 17:24:06 polynomial-c Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/icecat/icecat-3.6.11.ebuild,v 1.4 2010/10/28 15:58:01 polynomial-c Exp $
 EAPI="3"
 WANT_AUTOCONF="2.1"
 
@@ -26,16 +26,14 @@ PATCH="${FIREFOX_PN}-3.6-patches-0.2"
 DESCRIPTION="GNU project's edition of Mozilla Firefox"
 HOMEPAGE="http://www.gnu.org/software/gnuzilla/"
 
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc ~ppc64 ~x86"
 SLOT="0"
 LICENSE="|| ( MPL-1.1 GPL-2 LGPL-2.1 )"
 IUSE="+alsa +ipc java libnotify system-sqlite wifi"
 
 SRC_URI="mirror://gnu/gnuzilla/${MY_PV}/${PN}-${MY_PV}.tar.xz
 	http://dev.gentoo.org/~anarchy/mozilla/patchsets/${PATCH}.tar.bz2"
-# Currently most 3.6.11 xpi language files are malformed. As soon as upstream
-# replaced them with working ones we can go back using those from 3.6.11
-LANGPACK_URI="http://gnuzilla.gnu.org/download/langpacks/3.6.10"
+LANGPACK_URI="http://gnuzilla.gnu.org/download/langpacks/${MY_PV}"
 
 for X in ${LANGS} ; do
 	if [ "${X}" != "en" ] && [ "${X}" != "en-US" ]; then
@@ -134,6 +132,8 @@ src_prepare() {
 	EPATCH_SUFFIX="patch" \
 	EPATCH_FORCE="yes" \
 	epatch "${WORKDIR}"
+
+	epatch "${FILESDIR}/xulrunner-1.9.2-gtk+-2.21.patch"
 
 	# Fix rebranding
 	sed -i 's|\$(DIST)/bin/firefox|\$(DIST)/bin/icecat|' browser/app/Makefile.in

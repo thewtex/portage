@@ -1,6 +1,6 @@
-# Copyright 1999-2006 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/asterisk-rate_engine/asterisk-rate_engine-0.5.4.ebuild,v 1.4 2006/11/23 20:37:34 vivo Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/asterisk-rate_engine/asterisk-rate_engine-0.5.4.ebuild,v 1.6 2010/10/28 12:31:06 ssuominen Exp $
 
 inherit eutils
 
@@ -26,9 +26,9 @@ S=${WORKDIR}/${MY_PN}-${PV}
 src_unpack() {
 	unpack ${A}
 
-	cd ${S}
+	cd "${S}"
 	# cflag fixes, install fixes and changes for asterisk-config
-	epatch ${FILESDIR}/${MY_PN}-${PV}-astcfg.diff
+	epatch "${FILESDIR}"/${MY_PN}-${PV}-astcfg.diff
 }
 
 src_compile() {
@@ -36,9 +36,6 @@ src_compile() {
 }
 
 src_install() {
-	make DESTDIR=${D} install samples || die "make install failed"
-
-	dodoc COPYING COPYRIGHT ChangeLog
-	dodoc DISCLAIMER NEWS README TODO
-	dodoc *.sql *.conf*
+	make DESTDIR="${D}" install samples || die
+	dodoc ChangeLog DISCLAIMER NEWS README TODO *.sql *.conf*
 }

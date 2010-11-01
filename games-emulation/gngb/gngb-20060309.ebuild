@@ -1,9 +1,9 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-emulation/gngb/gngb-20060309.ebuild,v 1.6 2010/10/15 12:32:08 ranger Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/gngb/gngb-20060309.ebuild,v 1.8 2010/10/28 16:00:21 mr_bones_ Exp $
 
 EAPI=2
-inherit eutils games
+inherit games
 
 DESCRIPTION="Gameboy / Gameboy Color emulator"
 HOMEPAGE="http://m.peponas.free.fr/gngb/"
@@ -18,6 +18,8 @@ DEPEND="media-libs/libsdl[audio,joystick,video]
 	sys-libs/zlib
 	app-arch/bzip2
 	opengl? ( virtual/opengl )"
+
+PATCHES=( "${FILESDIR}"/${P}-ovflfix.patch )
 
 src_configure() {
 	egamesconf $(use_with opengl gl)

@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.6086 2010/10/27 00:54:08 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.6100 2010/10/31 21:34:10 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -59,6 +59,7 @@ app-admin/collectd:collectd_plugins_fscache - Build the fscache input plugin (in
 app-admin/collectd:collectd_plugins_gmond - Build the gmond input plugin (receive data from gmond, the client daemon of the Ganglia project)
 app-admin/collectd:collectd_plugins_hddtemp - Build the hddtemp input plugin (temperature of hard disks)
 app-admin/collectd:collectd_plugins_interface - Build the interface input plugin (information about traffic, packets and errors of interfaces)
+app-admin/collectd:collectd_plugins_ipmi - Build the ipmi input plugin (read hardware sensors from servers using the Intelligent Platform Management Interface (IPMI))
 app-admin/collectd:collectd_plugins_iptables - Build the iptables input plugin (statistics from a ip_tables based packet filter)
 app-admin/collectd:collectd_plugins_irq - Build the irq input plugin (number of times each interrupt has been handled by the os)
 app-admin/collectd:collectd_plugins_java - Build the java input plugin (embeds a JVM into collectd for writing plugins)
@@ -77,6 +78,7 @@ app-admin/collectd:collectd_plugins_memcached - Build the memcached input plugin
 app-admin/collectd:collectd_plugins_memory - Build the memory input plugin (physical memory utilization)
 app-admin/collectd:collectd_plugins_multimeter - Build the multimeter input plugin (reads a voltage or current from a multimeter connected to a serial bus)
 app-admin/collectd:collectd_plugins_mysql - Build the mysql input plugin (connects to an MySQL-database and issues a SHOW STATUS command)
+app-admin/collectd:collectd_plugins_netlink - Build the netlink input plugin (opens a netlink socket to the Linux kernel for getting statistics)
 app-admin/collectd:collectd_plugins_network - Build the network input/output plugin (communicates with other instances of collectd)
 app-admin/collectd:collectd_plugins_nfs - Build the nfs input plugin (usage of the Network File System)
 app-admin/collectd:collectd_plugins_nginx - Build the nginx input plugin (number of requests handled by the nginx daemon)
@@ -178,6 +180,7 @@ app-arch/libarchive:lzma -  Allow accessing lzma-compressed archives through the
 app-arch/libarchive:static -  Build bsdtar and bsdcpio as static archives, removing dependencies over the enabled compression libraries (lzma, lzmadec, libbz2, zlib). 
 app-arch/libarchive:zlib -  Allow accessing gzip-compressed archives through sys-libs/zlib. This only affects libarchive's native support: bsdtar will keep using gunzip as a filter if that's not built-in. It's also needed for supporting extraction of ZIP files. 
 app-arch/p7zip:rar - Enable support for non-free rar decoder
+app-arch/pbzip2:symlink - Install symlinks which override app-arch/bzip2 implementation
 app-arch/rpm:magic - Add magic file support (sys-apps/file)
 app-arch/rpm:neon - Include support for net-libs/neon
 app-arch/squeeze:pathbar - Include pathbar feature
@@ -321,22 +324,23 @@ app-emulation/ganeti:filestorage - Enable File Storage
 app-emulation/ganeti:kvm - Enable KVM support
 app-emulation/ganeti:xen - Enable Xen support
 app-emulation/lib765:libdsk - Enable support for the floppy disk emulation library app-emulation/libdsk
-app-emulation/libvirt:iscsi - Add support for iSCSI (Internet SCSI) remote storage
-app-emulation/libvirt:libvirtd - Builds the libvirtd daemon as well as the client utilities instead of just the client utilities
-app-emulation/libvirt:lvm - Add support for the Logical Volume Manager sys-apps/lvm2
-app-emulation/libvirt:lxc - Add support for the Linux Containers
-app-emulation/libvirt:macvtap - Support for MAC-based TAP (macvlan/macvtap). For networking instead of the normal TUN/TAP. It has its advantages and disadvantages. macvtap support requires very new kernels and is currently evolving. Support for this is experimental at best
-app-emulation/libvirt:network - Enable networking support for guests
-app-emulation/libvirt:nfs - Allow the libvirtd daemon store VM images on NFS mounts
-app-emulation/libvirt:numa - Use NUMA for memory segmenting via sys-process/numactl
-app-emulation/libvirt:openvz - Add support for sys-kernel/openvz-sources OpenVZ-based virtual machines
-app-emulation/libvirt:parted - Add support for the sys-block/parted partition editor
-app-emulation/libvirt:pcap - Support auto learning IP addreses for routing
-app-emulation/libvirt:phyp - Support the PHYP hypervisor protocol
-app-emulation/libvirt:qemu - Add support for app-emulation/qemu based virtual machines
-app-emulation/libvirt:uml - Add support for User Mode Linux based virtual machines
-app-emulation/libvirt:virtualbox - Adds support for VirtualBox based virtual machines
-app-emulation/libvirt:xen - Add support for app-emulation/xen based virtual machines
+app-emulation/libvirt:iscsi -  Allow using an iSCSI remote storage server as pool for disk image storage 
+app-emulation/libvirt:json -  Support QEmu 0.13 JSON-based interface, using dev-libs/yajl. 
+app-emulation/libvirt:libvirtd -  Builds the libvirtd daemon as well as the client utilities instead of just the client utilities 
+app-emulation/libvirt:lvm -  Allow using the Logical Volume Manager (sys-apps/lvm2) as pool for disk image storage 
+app-emulation/libvirt:lxc -  Support management of Linux Containers virtualisation (app-emulation/lxc) 
+app-emulation/libvirt:macvtap -  Support for MAC-based TAP (macvlan/macvtap). For networking instead of the normal TUN/TAP. It has its advantages and disadvantages. macvtap support requires very new kernels and is currently evolving. Support for this is experimental at best 
+app-emulation/libvirt:network -  Enable networking support for guests 
+app-emulation/libvirt:nfs -  Allow using Network File System mounts as pool for disk image storage 
+app-emulation/libvirt:numa -  Use NUMA for memory segmenting via sys-process/numactl 
+app-emulation/libvirt:openvz -  Support management of OpenVZ virtualisation (see sys-kernel/openvz-sources) 
+app-emulation/libvirt:parted -  Allow using real disk partitions as pool for disk image storage, using sys-block/parted to create, resize and delete them. 
+app-emulation/libvirt:pcap -  Support auto learning IP addreses for routing 
+app-emulation/libvirt:phyp -  Support management of virtualisation through the PHYP hypervisor protocol. 
+app-emulation/libvirt:qemu -  Support management of QEmu virtualisation (one of app-emulation/qemu, app-emulation/qemu-kvm or app-emulation/qemu-spice) 
+app-emulation/libvirt:uml -  Support management of User Mode Linux virtualisation 
+app-emulation/libvirt:virtualbox -  Support management of VirtualBox virtualisation (one of app-emulation/virtualbox or app-emulation/virtualbox-ose) 
+app-emulation/libvirt:xen -  Support management of Xen virtualisation (app-emulation/xen) 
 app-emulation/lxc:vanilla -  Avoid adding Gentoo Linux-specific modifications, which include the custom init script. This is present as a flag to avoid forcing dependencies over users that might not want have them around as they use LXC in contexts where the init script is not useful. 
 app-emulation/mol:oldworld - Includes Macintosh's OldWorld support
 app-emulation/mol:pci - Experimental PCI proxy support
@@ -540,6 +544,7 @@ app-misc/tracker:laptop - Make tracker power management aware
 app-misc/tracker:nautilus - Enable tracker to integrate with gnome-base/nautilus by providing entries in its context menu 
 app-misc/tracker:playlist - Add support for playlists
 app-misc/tracker:strigi - Add support for app-misc/strigi search engine.
+app-misc/tracker:upnp - Add support for video extraction via media-libs/gupnp-dlna.
 app-misc/worker:avfs - Enable support for sys-fs/avfs
 app-misc/workrave:distribution - Enable networking. See http://www.workrave.org/features/
 app-mobilephone/gammu:irda - Enables infrared support
@@ -665,7 +670,6 @@ app-text/hyperestraier:mecab - Enable app-text/mecab support for Estraier
 app-text/lcdf-typetools:kpathsea - Enable integration with kpathsea search library (TeX related)
 app-text/lodgeit:vim -  Install a vim plugin allowing to paste and download from within vim 
 app-text/namazu:kakasi - Enable kakasi support (dev-perl/Text-Kakasi)
-app-text/noweb:icon - Enable dev-lang/icon language support
 app-text/pdf2djvu:graphicsmagick - Enable media-gfx/graphicsmagick support
 app-text/pdftk:nodrm - Decrypt a document with the user_pw even if it has an owner_pw set
 app-text/podofo:boost - Add support for boost
@@ -829,6 +833,7 @@ dev-java/commons-logging:log4j - Add optional support for log4j
 dev-java/commons-logging:servletapi - Add optional support for servletapi
 dev-java/commons-modeler:commons-digester - Add support for the commons-digester based Mbeans Descriptor source
 dev-java/diablo-jdk:jce - Enable Java Cryptographic Extension Unlimited Strength Policy files
+dev-java/ecj-gcj:native - Build a native binary along with the jar. Provides faster execution time, but needs about 1G memory and some patience to compile.
 dev-java/eclipse-ecj:ant - Support using ecj in Ant builds via dev-java/ant-eclipse-ecj
 dev-java/emma:launcher - Install /usr/bin/emma. Collides with sci-biology/emboss.
 dev-java/fop:hyphenation - Precompile hyphenation patterns from the dev-java/offo-hyphenation package and install them as fop-hyph.jar
@@ -1119,6 +1124,7 @@ dev-python/ldaptor:web - enable the web front end for ldaptor (uses dev-python/n
 dev-python/markdown:pygments - Enable fancy pygments support
 dev-python/matplotlib:excel - Pull dev-python/xlwt for the exceltools toolkit
 dev-python/matplotlib:traits - Pull dev-python/traits for the experimental enthought traits support
+dev-python/mpmath:matplotlib - Add support for dev-python/matplotlib
 dev-python/numexpr:mkl - Enable support for Intel Vector Math Library, part of sci-libs/mkl.
 dev-python/paste:flup - enable support for flup (and therefore for various wgsi servers and middleware)
 dev-python/paste:openid - enable OpenID support
@@ -1458,7 +1464,6 @@ gnome-extra/gnome-do-plugins:banshee - Enables the Banshee (media-sound/banshee)
 gnome-extra/gnome-games:artworkextra - Installs extra artwork for various games
 gnome-extra/gnome-games:clutter - Build games that use media-libs/clutter and are written in JavaScript using dev-libs/seed
 gnome-extra/gnome-games:sound - Enable sound using media-libs/libcanberra
-gnome-extra/gnome-media:sound - Adds support for sound notification themes using media-libs/libcanberra
 gnome-extra/gtkhtml:glade - Provide integration with dev-util/glade.
 gnome-extra/gucharmap:introspection - Use dev-libs/gobject-introspection for introspection
 gnome-extra/libgda:canvas - Enables support for x11-libs/goocanvas
@@ -2017,6 +2022,7 @@ media-sound/gimmix:cover - Enable cover art fetching
 media-sound/gimmix:lyrics - Enable lyric fetching
 media-sound/gmpc:xspf - Enable support for reading and saving XSPF playlists
 media-sound/gmusicbrowser:webkit - Enables gtk WebKit support
+media-sound/gpodder:webkit - Enable the webkit rendering engine for HTML episode shownotes
 media-sound/herrie:http - Enable http streaming
 media-sound/herrie:xspf - Enable support for reading and saving XSPF playlists
 media-sound/hydrogen:archive - Use libarchive instead of libtar
@@ -2033,7 +2039,6 @@ media-sound/lmms:vst - Enables the VeSTige plugin to run VST plugins through Win
 media-sound/mangler:celt - High quality, low delay audio codec
 media-sound/mangler:espeak - Text to speach engine
 media-sound/mangler:g15 - Logitech g15 lcd support
-media-sound/mangler:nowplaying - Shows what music is playing
 media-sound/mixxx:hifieq - Enable hifi equalizer support
 media-sound/mixxx:shout - Enable shoutcast support
 media-sound/mixxx:tonal - Enable tonal analysis support
@@ -2612,8 +2617,12 @@ net-ftp/pure-ftpd:paranoidmsg - Display paranoid messages instead of normal ones
 net-ftp/pure-ftpd:sysquota - Enables system quota support (needs sys-fs/quota) 
 net-ftp/pure-ftpd:vchroot - Enable support for virtual chroot (possible security risk)
 net-ftp/twoftpd:breakrfc - Break RFC compliance to allow control symbols in filenames (required for some (e.g. cp1251) encodings, use with caution).
+net-im/bitlbee:libevent - Use libevent for event handling
 net-im/bitlbee:nss - Use NSS for SSL support in MSN and Jabber
-net-im/bitlbee:twitter - Enabel Twitter protocol support
+net-im/bitlbee:otr - Enable support for encrypted conversations
+net-im/bitlbee:plugins - Enable support for plugins
+net-im/bitlbee:purple - Use libpurple instead of the built-in IM protocol support
+net-im/bitlbee:twitter - Enable Twitter protocol support
 net-im/centerim:gadu - Enable support for the Gadu-Gadu protocol
 net-im/centerim:irc - Enable support for the IRC protocol
 net-im/centerim:lj - Enable support for the LiveJournal weblog system
@@ -3240,7 +3249,6 @@ net-wireless/bluez:attrib - Enable attrib plugin
 net-wireless/bluez:consolekit - Use sys-auth/pambase[consolekit] to determine access to bluetooth devices based on whether a user is logged in locally or remotely
 net-wireless/bluez:health - Compile with initial support for HDP
 net-wireless/bluez:maemo6 - Compile with maemo6 plugin
-net-wireless/bluez:mcap - Compile with initial support for MCAP
 net-wireless/bluez:old-daemons - Install old daemons like hidd and sdpd that are deprecated by the new Service framework
 net-wireless/bluez:pnat - Enable pnat plugin
 net-wireless/bluez:test-programs - Install tools for testing of various Bluetooth functions
@@ -3298,7 +3306,6 @@ sci-biology/ucsc-genome-browser:server - Install genome browser Web application.
 sci-biology/yass:dmalloc - Enable debugging with the dmalloc library
 sci-biology/yass:lowmem - Build for environments with low amounts of memory
 sci-chemistry/apbs:arpack - Include support for arpack libs
-sci-chemistry/apbs:tinker - Provide support for sci-chemistry/tinker
 sci-chemistry/apbs:tools - Install optional tools
 sci-chemistry/avogadro:glsl - Enable glsl features via GLEW.
 sci-chemistry/caver:pymol - Install the PyMol plugin (sci-chemistry/pymol) 
@@ -3530,6 +3537,7 @@ sys-apps/hal:selinux - Installs SELinux policies and links HAL to the SELinux li
 sys-apps/halevt:rpath - Hardcode runtime library paths
 sys-apps/hwdata-gentoo:binary-drivers - Adds support for ATI/NVIDIA binary drivers
 sys-apps/ipmitool:openipmi - Use the system OpenIPMI implementation.
+sys-apps/kexec-tools:lzma - Enables support for LZMA compressed kernel images
 sys-apps/kexec-tools:xen - Enable extended xen support
 sys-apps/lm_sensors:sensord - Enable sensord - a daemon that can be used to periodically log sensor readings from hardware health-monitoring chips
 sys-apps/man:lzma - Uses app-arch/lzma-utils for the COMPRESS feature. Could also be used to guarantee that lzma is on the system.
@@ -3567,7 +3575,8 @@ sys-apps/util-linux:perl - install the chkdupexe helper script
 sys-apps/v86d:x86emu - Use x86emu for Video BIOS calls
 sys-auth/consolekit:policykit -  Use the PolicyKit framework (sys-auth/polkit) to get authorization for suspend/shutdown. 
 sys-auth/pam_mysql:openssl - Use OpenSSL for md5 and sha1 support
-sys-auth/pam_pkcs11:pcsc-lite - build with sys-apps/pcsc-lite instead of dev-libs/openct
+sys-auth/pam_pkcs11:nss -  Use Mozilla NSS (dev-libs/nss) as provider for PKCS#11 access, rather than using OpenSSL with a custom implementation of the PKC#11 protocol. 
+sys-auth/pam_pkcs11:pcsc-lite -  Build the card_eventmanager binary used to detect card removal and lock the sessions. This needs sys-apps/pcsc-lite. 
 sys-auth/pambase:consolekit -  Enable pam_ck_connector module on local system logins. This allows for console logins to make use of ConsoleKit authorization. 
 sys-auth/pambase:cracklib -  Enable pam_cracklib module on system authentication stack. This produces warnings when changing password to something easily crackable. It requires the same USE flag to be enabled on sys-libs/pam or system login might be impossible. 
 sys-auth/pambase:debug -  Enable debug information logging on syslog(3) for all the modules supporting this in the system authentication and system login stacks. 
@@ -3856,6 +3865,7 @@ www-apps/viewvc:mod_wsgi - Add www-apache/mod_wsgi support
 www-apps/viewvc:pygments - Add dev-python/pygments support for syntax highlighting
 www-client/chromium:gecko-mediaplayer - Allow the browser to load www-plugins/gecko-mediaplayer
 www-client/chromium:system-sqlite - Use the system-wide dev-db/sqlite installation with secure-delete enabled
+www-client/chromium:system-v8 - Use the system-wide dev-lang/v8 installation
 www-client/elinks:bittorrent - Enable support for the BitTorrent protocol
 www-client/elinks:finger - Enable support for the finger protocol
 www-client/elinks:gopher - Enable support for the gopher protocol

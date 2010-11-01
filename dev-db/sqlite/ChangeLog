@@ -1,6 +1,19 @@
 # ChangeLog for dev-db/sqlite
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/sqlite/ChangeLog,v 1.351 2010/10/25 00:25:42 fauli Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/sqlite/ChangeLog,v 1.354 2010/10/31 09:27:03 betelgeuse Exp $
+
+*sqlite-3.7.3 (31 Oct 2010)
+
+  31 Oct 2010; Petteri Räty <betelgeuse@gentoo.org> +sqlite-3.7.3.ebuild:
+  Version bump. Enables extensions use flag by default as that's the
+  upstream default. Fixes bug #341257 and bug #335506. Tests still fail with
+  icu use flag like in 3.7.2.
+
+  30 Oct 2010; Markus Meier <maekke@gentoo.org> sqlite-3.7.2.ebuild:
+  arm stable, bug #342323
+
+  30 Oct 2010; Mark Loeser <halcy0n@gentoo.org> sqlite-3.7.2.ebuild:
+  Stable for ppc64; bug #342847
 
   25 Oct 2010; Christian Faulhammer <fauli@gentoo.org> sqlite-3.7.2.ebuild:
   x86 stable, bug 342323
