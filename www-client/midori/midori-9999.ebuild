@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/midori/midori-9999.ebuild,v 1.21 2010/10/23 13:00:01 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/midori/midori-9999.ebuild,v 1.22 2010/11/01 19:41:13 ssuominen Exp $
 
 EAPI=2
 inherit pax-utils eutils multilib python xfconf git
@@ -40,8 +40,7 @@ pkg_setup() {
 
 src_prepare() {
 	# moving docs to version-specific directory
-	sed -i -e "s:\${DOCDIR}/${PN}:\${DOCDIR}/${PF}/:g" wscript || die
-	sed -i -e "s:/${PN}/user/midori.html:/${PF}/user/midori.html:g" midori/midori-browser.c || die
+	sed -i -e "s:/${PN}/user/midori.html:/user/midori.html:g" midori/midori-browser.c || die
 }
 
 src_configure() {
@@ -50,6 +49,7 @@ src_configure() {
 	CCFLAGS="${CFLAGS}" LINKFLAGS="${LDFLAGS}" ./waf \
 		--prefix="/usr/" \
 		--libdir="/usr/$(get_libdir)" \
+		--docdir="/usr/share/doc/${PF}/html" \
 		--disable-docs \
 		--enable-addons \
 		$(use_enable doc apidocs) \
