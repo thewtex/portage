@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.6109 2010/11/02 21:34:32 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.6115 2010/11/03 14:54:15 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -372,7 +372,6 @@ app-emulation/qemu-kvm:alsa - Enable alsa output for sound emulation
 app-emulation/qemu-kvm:brltty - Adds support for braille displays using brltty
 app-emulation/qemu-kvm:esd - Enable esound output for sound emulation
 app-emulation/qemu-kvm:fdt - Enables firmware device tree support
-app-emulation/qemu-kvm:gnutls - Enable TLS support for the VNC console server
 app-emulation/qemu-kvm:jpeg - Enable JPEG compression for the VNC console server
 app-emulation/qemu-kvm:kvm-trace - Allows you to use KVM tracing
 app-emulation/qemu-kvm:ncurses - Enable the ncurses-based console
@@ -3335,6 +3334,7 @@ sci-chemistry/gromacs:ffamber - Enable ffamber ports for gromacs
 sci-chemistry/gromacs:fkernels - Enable building of Fortran Kernels for platforms that dont have assembly loops
 sci-chemistry/gromacs:single-precision - Single precision version of gromacs
 sci-chemistry/gromacs:zsh-completion - Enable zsh completion support
+sci-chemistry/gsim:emf - Support for .emf export
 sci-chemistry/jmol:client-only - Install the viewer only, no applet files for httpd 
 sci-chemistry/mopac7:gmxmopac7 - Add support library for gromacs
 sci-chemistry/oasis:minimal - Restricts functionality on free software
@@ -3412,6 +3412,7 @@ sci-libs/getdata:lzma - Support for encodings provided by liblzma
 sci-libs/gsl:cblas-external - Link gsl with external cblas provided by (virtual/cblas) instead of shipped internal version
 sci-libs/indilib:fits - Enable support for the FITS image format through cfitsio
 sci-libs/indilib:nova - Enable support for nova celestial mechanics calculations
+sci-libs/libcmatrix:atlas - Use of atlas blas implementation
 sci-libs/libgeda:threads - Enable (posix) threads for the GTK GUI
 sci-libs/libghemical:mopac7 - Use sci-chemistry/mopac7 for semi-empirical calculations
 sci-libs/libghemical:mpqc - Use sci-chemistry/mpqc for quantum-mechanical calculations
@@ -3463,6 +3464,7 @@ sci-mathematics/maxima:ecls - Compile maxima with Embeddable Common Lisp (dev-li
 sci-mathematics/maxima:gcl - Compile maxima with GNU Common Lisp (dev-lisp/gcl)
 sci-mathematics/maxima:openmcl - Compile maxima with Clozure Common Lisp (former OpenMCL, dev-lisp/closurecl)
 sci-mathematics/maxima:sbcl - Compile maxima with Steel Bank Common Lisp (dev-lisp/sbcl)
+sci-mathematics/normaliz:extras -  Install Macaulay2 and Singular packages as shipped by upstream
 sci-mathematics/nusmv:minisat - Enable support for MiniSat
 sci-mathematics/octave:sparse - Enable enhanced support for sparse matrix algebra
 sci-mathematics/pari:data - Add additional data (elldata, galdata, seadata, nftables)
@@ -3777,6 +3779,7 @@ sys-kernel/gentoo-sources:deblob - Remove binary blobs from kernel sources to pr
 sys-kernel/gentoo-sources:ultra1 - Enable if you have a SUN Ultra 1 with a HME interface
 sys-kernel/hardened-sources:deblob - Remove binary blobs from kernel sources to provide libre license compliance.
 sys-kernel/linux-docs:html - Install HTML documentation
+sys-kernel/linuxwacom-module:modules - Build kernel module
 sys-kernel/mips-sources:cobalt - Enables support for Cobalt Microserver hardware (Qube2/RaQ2)
 sys-kernel/mips-sources:deblob - Remove binary blobs from kernel sources to provide libre license compliance.
 sys-kernel/mips-sources:impactdebug - Enables use of the Impact Early Console Hack. FOR DEBUGGING ONLY!
@@ -3798,6 +3801,7 @@ sys-kernel/zen-sources:stable - Clone stable git tree
 sys-libs/glibc:glibc-compat20 - Enable the glibc-compat addon
 sys-libs/glibc:glibc-omitfp - Configure glibc with --enable-omitfp which lets the build system determine when it is safe to use -fomit-frame-pointer
 sys-libs/glibc:nptlonly - Disables building the linuxthreads fallback in glibc ebuilds that support building both linuxthread and nptl
+sys-libs/gwenhywfar:fox - Use x11-libs/fox graphical toolkit
 sys-libs/libraw1394:juju - Use the new juju firewire stack in the Linux kernel
 sys-libs/ncurses:ada - Add bindings for the ADA programming language
 sys-libs/ncurses:trace - Enable test trace() support in ncurses calls
