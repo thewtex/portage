@@ -1,0 +1,22 @@
+dev-lang/php[unicode] || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b >=sys-devel/m4-1.4.3 >=sys-devel/libtool-1.5.18
+dev-lang/php[unicode] || ( =dev-php5/suhosin-0.9.32.1-r2[php_targets_php5-2] =dev-php5/suhosin-0.9.32.1-r2[php_targets_php5-3] ) php_targets_php5-2? ( dev-lang/php:5.2 ) php_targets_php5-3? ( dev-lang/php:5.3 )
+0
+http://download.suhosin.org/suhosin-0.9.32.1.tar.gz
+
+http://www.suhosin.org/
+PHP-3
+Suhosin is an advanced protection system for PHP installations.
+~amd64 ~x86
+autotools depend.php eutils flag-o-matic libtool multilib php-ext-source-r2 phpconfutils portability toolchain-funcs
+php_targets_php5-2 php_targets_php5-3
+
+
+
+2
+
+compile configure install prepare test unpack
+
+
+
+
+
