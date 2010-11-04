@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/quassel/quassel-0.7.1.ebuild,v 1.2 2010/10/20 10:01:16 hwoarang Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-irc/quassel/quassel-0.7.1.ebuild,v 1.6 2010/11/04 14:44:52 scarabeus Exp $
 
 EAPI=3
 
@@ -18,15 +18,15 @@ HOMEPAGE="http://quassel-irc.org/"
 [[ "${PV}" == "9999" ]] || SRC_URI="http://quassel-irc.org/pub/${P/_/-}.tar.bz2"
 
 LICENSE="GPL-3"
-KEYWORDS="amd64 ~x86 ~amd64-linux"
+KEYWORDS="amd64 x86 ~amd64-linux"
 SLOT="0"
 IUSE="ayatana crypt dbus debug kde monolithic phonon postgres +server +ssl webkit X"
 
 SERVER_RDEPEND="
 	crypt? ( app-crypt/qca:2 )
-	!postgres? ( >=x11-libs/qt-sql-${QT_MINIMAL}:4[sqlite] dev-db/sqlite[threadsafe] )
+	!postgres? ( >=x11-libs/qt-sql-${QT_MINIMAL}:4[sqlite] dev-db/sqlite[threadsafe,-secure-delete] )
 	postgres? ( >=x11-libs/qt-sql-${QT_MINIMAL}:4[postgres] )
-	x11-libs/qt-script:4
+	>=x11-libs/qt-script-${QT_MINIMAL}:4
 "
 
 GUI_RDEPEND="
@@ -46,6 +46,7 @@ GUI_RDEPEND="
 "
 
 RDEPEND="
+	>=x11-libs/qt-core-${QT_MINIMAL}:4[ssl?]
 	monolithic? (
 		${SERVER_RDEPEND}
 		${GUI_RDEPEND}
@@ -54,7 +55,6 @@ RDEPEND="
 		server? ( ${SERVER_RDEPEND} )
 		X? ( ${GUI_RDEPEND} )
 	)
-	ssl? ( x11-libs/qt-core:4[ssl] )
 	!monolithic? (
 		!server? (
 			!X? (

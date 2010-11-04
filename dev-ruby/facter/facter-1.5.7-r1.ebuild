@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/facter/facter-1.5.7-r1.ebuild,v 1.4 2010/09/20 20:07:40 gmsoft Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/facter/facter-1.5.7-r1.ebuild,v 1.6 2010/11/04 06:49:59 matsuu Exp $
 
 EAPI="2"
 
