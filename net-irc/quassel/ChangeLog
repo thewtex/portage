@@ -1,6 +1,33 @@
 # ChangeLog for net-irc/quassel
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/quassel/ChangeLog,v 1.112 2010/10/20 10:01:16 hwoarang Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-irc/quassel/ChangeLog,v 1.119 2010/11/04 14:46:11 scarabeus Exp $
+
+  04 Nov 2010; Tomáš Chvátal <scarabeus@gentoo.org> quassel-9999.ebuild,
+  metadata.xml:
+  Drop also local use desc.
+
+  04 Nov 2010; Tomáš Chvátal <scarabeus@gentoo.org> quassel-0.7.1.ebuild,
+  quassel-9999.ebuild:
+  Revert logrotate useflag per popular demand...
+
+  04 Nov 2010; Tomáš Chvátal <scarabeus@gentoo.org> quassel-0.7.1.ebuild,
+  quassel-9999.ebuild:
+  Adjust the deps to be more exact.
+
+  04 Nov 2010; Tomáš Chvátal <scarabeus@gentoo.org> quassel-0.7.1.ebuild,
+  quassel-9999.ebuild, metadata.xml:
+  Introduce logrotate useflag.
+
+  04 Nov 2010; Tomáš Chvátal <scarabeus@gentoo.org> -quassel-0.6.3.ebuild,
+  -files/quasselcore-2.conf, -files/quasselcore-2.init:
+  old
+
+  04 Nov 2010; Tomáš Chvátal <scarabeus@gentoo.org> files/quasselcore.conf,
+  files/quasselcore.init:
+  Update initscript and confdscript to allow more options settings.
+
+  04 Nov 2010; Markus Meier <maekke@gentoo.org> quassel-0.7.1.ebuild:
+  x86 stable, bug #341637
 
   20 Oct 2010; Markos Chandras <hwoarang@gentoo.org> quassel-0.7.1.ebuild:
   Stable on amd64 wrt bug #341637
