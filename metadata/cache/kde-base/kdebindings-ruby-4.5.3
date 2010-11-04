@@ -1,0 +1,22 @@
+!kdeprefix? ( >=kde-base/smoke-4.5.3[aqua=,-kdeprefix,akonadi?,okular?,phonon?,qscintilla?,qwt?,semantic-desktop?,webkit?] ) kdeprefix? ( >=kde-base/smoke-4.5.3:4.5[aqua=,kdeprefix,akonadi?,okular?,phonon?,qscintilla?,qwt?,semantic-desktop?,webkit?] ) ruby_targets_ruby18? ( virtual/rubygems[ruby_targets_ruby18] ) >=dev-util/cmake-2.8.1 userland_GNU? ( >=sys-apps/findutils-4.4.0 ) dev-util/automoc dev-util/pkgconfig !aqua? ( || ( >=x11-libs/libXtst-1.1.0 <x11-proto/xextproto-7.1.0 ) x11-proto/xf86vidmodeproto ) webkit? ( >=x11-libs/qt-webkit-4.6.3:4[kde] ) dev-lang/perl >=x11-libs/qt-core-4.6.3:4[qt3support,ssl] >=x11-libs/qt-gui-4.6.3:4[accessibility,dbus] >=x11-libs/qt-qt3support-4.6.3:4[accessibility,kde] >=x11-libs/qt-script-4.6.3:4 >=x11-libs/qt-sql-4.6.3:4[qt3support] >=x11-libs/qt-svg-4.6.3:4 >=x11-libs/qt-test-4.6.3:4 !aqua? ( x11-libs/libXext x11-libs/libXt x11-libs/libXxf86vm ) !kdeprefix? ( >=kde-base/kdelibs-4.5.3[aqua=,-kdeprefix] ) kdeprefix? ( >=kde-base/kdelibs-4.5.3:4.5[aqua=,kdeprefix] ) ruby_targets_ruby18? ( dev-lang/ruby:1.8 )
+!kdeprefix? ( >=kde-base/smoke-4.5.3[aqua=,-kdeprefix,akonadi?,okular?,phonon?,qscintilla?,qwt?,semantic-desktop?,webkit?] ) kdeprefix? ( >=kde-base/smoke-4.5.3:4.5[aqua=,kdeprefix,akonadi?,okular?,phonon?,qscintilla?,qwt?,semantic-desktop?,webkit?] ) ruby_targets_ruby18? ( virtual/rubygems[ruby_targets_ruby18] ) !dev-ruby/qt4-qtruby !kdeprefix? ( !kde-base/krossruby:4.1[-kdeprefix] ) !kdeprefix? ( !kde-base/krossruby:4.2[-kdeprefix] ) !kdeprefix? ( !kde-base/krossruby:4.3[-kdeprefix] ) !kdeprefix? ( !kde-base/krossruby:4.4[-kdeprefix] ) !kde-base/krossruby:4.5 !kdeprefix? ( !kde-base/krossruby:4.6[-kdeprefix] ) !kdeprefix? ( !kde-base/krossruby:live[-kdeprefix] ) !kdeprefix? ( !kde-base/kdebindings-ruby:4.1[-kdeprefix] ) !kdeprefix? ( !kde-base/kdebindings-ruby:4.2[-kdeprefix] ) !kdeprefix? ( !kde-base/kdebindings-ruby:4.3[-kdeprefix] ) !kdeprefix? ( !kde-base/kdebindings-ruby:4.4[-kdeprefix] ) !kdeprefix? ( !kde-base/kdebindings-ruby:4.6[-kdeprefix] ) !kdeprefix? ( !kde-base/kdebindings-ruby:live[-kdeprefix] ) webkit? ( >=x11-libs/qt-webkit-4.6.3:4[kde] ) dev-lang/perl >=x11-libs/qt-core-4.6.3:4[qt3support,ssl] >=x11-libs/qt-gui-4.6.3:4[accessibility,dbus] >=x11-libs/qt-qt3support-4.6.3:4[accessibility,kde] >=x11-libs/qt-script-4.6.3:4 >=x11-libs/qt-sql-4.6.3:4[qt3support] >=x11-libs/qt-svg-4.6.3:4 >=x11-libs/qt-test-4.6.3:4 !aqua? ( x11-libs/libXext x11-libs/libXt x11-libs/libXxf86vm ) !kdeprefix? ( >=kde-base/kdelibs-4.5.3[aqua=,-kdeprefix] ) kdeprefix? ( >=kde-base/kdelibs-4.5.3:4.5[aqua=,kdeprefix] ) ruby_targets_ruby18? ( dev-lang/ruby:1.8 )
+4.5
+mirror://kde/stable/4.5.3/src/kdebindings-4.5.3.tar.bz2
+
+http://www.kde.org/
+GPL-2
+KDE Ruby bindings
+~amd64 ~ppc ~x86
+base cmake-utils eutils flag-o-matic kde4-base kde4-functions kde4-meta multilib portability ruby-ng toolchain-funcs versionator
+akonadi debug okular phonon plasma qscintilla qwt semantic-desktop kdeprefix webkit aqua kdeenablefinal ruby_targets_ruby18
+
+
+
+2
+
+compile configure install postinst postrm prepare setup test unpack
+
+
+
+
+
