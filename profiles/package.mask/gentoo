@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12165 2010/11/05 23:41:17 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12168 2010/11/06 12:44:03 ssuominen Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,10 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Michael Weber <xmw@gentoo.org> (06 Nov 2010)
+# Doesn't support >=x11-libs/qt-gui-4.7 (bug #338476).
+=dev-db/sqlitebrowser-2.00_beta1
 
 # Pacho Ramos <pacho@gentoo.org> (06 Nov 2010)
 # No longer maintained neither developed by upstream since 
@@ -66,14 +70,6 @@ app-pda/synce-software-manager
 app-pda/synce-sync-engine
 app-pda/synce-trayicon
 app-pda/libopensync-plugin-synce
-
-# Samuli Suominen <ssuominen@gentoo.org> (03 Nov 2010)
-# Only package.masked gnucash is compiling against 5.x, and doesn't work:
-# http://lists.gnucash.org/pipermail/gnucash-devel/2010-August/029188.html
->=net-libs/aqbanking-5
->=sys-libs/gwenhywfar-4
->=sys-libs/libchipcard-5
->=app-office/kmymoney-4.5-r1
 
 # Samuli Suominen <ssuominen@gentoo.org> (02 Nov 2010)
 # acerhk fails to build with Linux >= 2.6.30 wrt #277598
@@ -736,25 +732,6 @@ x11-misc/videogen
 # maintained fork (x11-misc/transset-df) and doesn't respect LDFLAGS
 # (see bug #338150). Masked for removal in 30 days.
 x11-misc/transset
-
-# Theo Chatzimichos <tampakrap@gentoo.org> (21 Sep 2010)
-# Mask Qt 4.7.0, it will be unmasked as soon as it is tinderboxed
-~x11-libs/qt-assistant-4.7.0
-~x11-libs/qt-core-4.7.0
-~x11-libs/qt-dbus-4.7.0
-~x11-libs/qt-declarative-4.7.0
-~x11-libs/qt-demo-4.7.0
-~x11-libs/qt-gui-4.7.0
-~x11-libs/qt-multimedia-4.7.0
-~x11-libs/qt-opengl-4.7.0
-~x11-libs/qt-phonon-4.7.0
-~x11-libs/qt-qt3support-4.7.0
-~x11-libs/qt-script-4.7.0
-~x11-libs/qt-sql-4.7.0
-~x11-libs/qt-svg-4.7.0
-~x11-libs/qt-test-4.7.0
-~x11-libs/qt-webkit-4.7.0
-~x11-libs/qt-xmlpatterns-4.7.0
 
 # Panagiotis Christopoulos <pchrist@gentoo.org> (17 Sep 2010)
 # Masked for removal in 30 days. Most of them are too old/
