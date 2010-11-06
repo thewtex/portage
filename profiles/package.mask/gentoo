@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12162 2010/11/05 17:19:03 ricmm Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12165 2010/11/05 23:41:17 pacho Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,12 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Pacho Ramos <pacho@gentoo.org> (06 Nov 2010)
+# No longer maintained neither developed by upstream since 
+# a lot of time. Nothing in the tree needs it (bug #344331)
+# Replaced by gnome-base/nautilus. Removal 2010-12-06.
+gnome-base/gnome-volume-manager
 
 # Markos Chandras <hwoarang@gentoo.org> (05 Nov 2010)
 # Masking bugfix revision for testing
@@ -299,12 +305,6 @@ media-libs/amanith
 >=dev-texlive/texlive-texinfo-2010
 >=dev-texlive/texlive-xetex-2010
 
-# Samuli Suominen <ssuominen@gentoo.ogr> (23 Oct 2010)
-# Replaced by media-tv/v4l-utils, bug 333291
-# Removal in about 30 days
-media-tv/ivtv-utils
-media-tv/v4l2-ctl
-
 # Markos Chandras <hwoarang@gentoo.org> (23 Oct 2010)
 #  on behalf of QA team
 #
@@ -540,7 +540,23 @@ gnome-base/dconf
 dev-cpp/atkmm
 >=dev-cpp/gtkmm-2.22
 >=dev-util/anjuta-2.32
+>=dev-python/gnome-python-desktop-base-2.32
+>=dev-python/bug-buddy-python-2.32
+>=dev-python/evolution-python-2.32
 >=dev-python/evince-python-2.32
+>=dev-python/gnome-applets-python-2.32
+>=dev-python/gnome-desktop-python-2.32
+>=dev-python/gnome-keyring-python-2.32
+>=dev-python/gnome-media-python-2.32
+>=dev-python/gtksourceview-python-2.32
+>=dev-python/libgnomeprint-python-2.32
+>=dev-python/libgtop-python-2.32
+>=dev-python/librsvg-python-2.32
+>=dev-python/libwnck-python-2.32
+>=dev-python/metacity-python-2.32
+>=dev-python/brasero-python-2.32
+>=dev-python/totem-python-2.32
+>=dev-python/gnome-python-desktop-2.32
 # END GNOME 2.32 mask
 
 # Pacho Ramos <pacho@gentoo.org> (09 Oct 2010)

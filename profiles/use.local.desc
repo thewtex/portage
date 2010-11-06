@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.6124 2010/11/05 14:33:51 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.6128 2010/11/06 04:33:41 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -440,6 +440,7 @@ app-forensics/afflib:s3 - Enable S3
 app-forensics/aide:audit - Enable support for sys-process/audit
 app-forensics/aide:prelink - Enable support for sys-devel/prelink
 app-forensics/libewf:rawio - Enables raw IO handling
+app-forensics/openscap:nss - Prefer NSS over libgcrypt as the crypto engine
 app-forensics/rdd:rawio - Enables raw IO handling
 app-forensics/sleuthkit:aff - Enable extra aff formats
 app-forensics/sleuthkit:dbtool - Add patch for dbtool interface from PyFlag
@@ -906,8 +907,6 @@ dev-lang/logtalk:xsbpl - Support XSB back-end compiler
 dev-lang/logtalk:xslt - Support for generating html documentation using xslt
 dev-lang/logtalk:yappl - Support YAP back-end compiler
 dev-lang/lua:deprecated - make deprecated data structures/routines available
-dev-lang/luarocks:curl - Uses net-misc/curl for fetching lua packages instead of net-misc/wget.
-dev-lang/luarocks:openssl - Uses dev-libs/openssl for verifying lua packages instead of md5sum.
 dev-lang/mercury:erlang - Support Mercury Erlang grade
 dev-lang/mlton:binary - install a binary version (need to do this once to bootstrap, until smlnj is supported)
 dev-lang/mono:moonlight - Generate Moonlight 2.1 assemblies
@@ -1058,6 +1057,8 @@ dev-lisp/gcl:dlopen - Build a GCL which uses dlopen for linking
 dev-lisp/gcl:gprof - Build a GCL with profiling support
 dev-lisp/sbcl:cobalt - mips only: use mipsel binary instead of mips big endian binary to bootstrap
 dev-lisp/sbcl:ldb - Include support for the SBCL low level debugger
+dev-lua/luarocks:curl - Uses net-misc/curl for fetching lua packages instead of net-misc/wget.
+dev-lua/luarocks:openssl - Uses dev-libs/openssl for verifying lua packages instead of md5sum.
 dev-ml/camlimages:gs - Ghostscript support (app-text/ghostscript-gpl)
 dev-ml/lablgtk:glade - Enable libglade bindings compilation.
 dev-ml/lablgtk:gnomecanvas - Enable libgnomecanvas bindings compilation.
@@ -1128,6 +1129,7 @@ dev-python/numexpr:mkl - Enable support for Intel Vector Math Library, part of s
 dev-python/paste:flup - enable support for flup (and therefore for various wgsi servers and middleware)
 dev-python/paste:openid - enable OpenID support
 dev-python/psycopg:mxdatetime - Enable support for MX DateTime and use it instead of Python's built-in datetime module
+dev-python/pygobject:introspection - Use dev-libs/gobject-introspection for introspection
 dev-python/pygobject:libffi - Enable support to connect to signals on python objects from C.
 dev-python/pylons:genshi - Add optional genshi support
 dev-python/pylons:jinja - Add optional jinja support
@@ -3476,6 +3478,7 @@ sci-misc/nco:ncap2 - Build next generation netcdf arithmetic processor (needs de
 sci-misc/nco:udunits - Add sci-libs/udunits files support
 sci-misc/ncview:udunits - Add sci-libs/udunits files support
 sci-physics/abinit:plugins - Build all plugins
+sci-physics/bullet:extras - Build additional libraries
 sci-physics/cernlib-montecarlo:herwig - Build Herwig internal event generator, newer version available in sci-physics/herwig
 sci-physics/clhep:exceptions - Enable zoom exceptions for user intervention
 sci-physics/geant:aida - Add support for Abstract Interfaces for Data Analysis 
