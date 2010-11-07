@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12168 2010/11/06 12:44:03 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12172 2010/11/07 17:11:04 aballier Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,10 +30,6 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
-
-# Michael Weber <xmw@gentoo.org> (06 Nov 2010)
-# Doesn't support >=x11-libs/qt-gui-4.7 (bug #338476).
-=dev-db/sqlitebrowser-2.00_beta1
 
 # Pacho Ramos <pacho@gentoo.org> (06 Nov 2010)
 # No longer maintained neither developed by upstream since 
@@ -958,10 +954,6 @@ dev-vcs/mcvs
 media-sound/rip-l
 
 # Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (13 Sep 2010)
-# Masked before final release.
-=net-zope/zope-2.13*
-
-# Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (13 Sep 2010)
 # Unmaintained. Masked so that Zope 2.12/2.13 is preferred.
 =net-zope/zope-3*
 
@@ -1212,6 +1204,7 @@ dev-libs/seed
 # Also mask packages _requiring_ ocaml 3.12
 >=dev-lang/ocaml-3.12.0_beta
 >=dev-ml/type-conv-2.0.0
+>=dev-ml/ocamlduce-3.12.0
 
 # Justin Lecher <jlec@gentoo.org> (16 Jun 10)
 # Just working with the masked experimental version of refmac
@@ -1428,10 +1421,6 @@ media-sound/teamspeak-server-bin
 # Krzysztof Pawlik <nelchael@gentoo.org> (23 Nov 2009)
 # Borken TPM patch, see bug #294119
 =sys-apps/rng-tools-2-r2
-
-# Alexis Ballier <aballier@gentoo.org> (14 Nov 2009)
-# beta release
->=dev-ml/ocamlnet-3.0_beta
 
 # Doug Goldstein <cardoe@gentoo.org> (07 Nov 2009)
 # upstream MythTV development versions

@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/mplayer/mplayer-9999.ebuild,v 1.83 2010/11/01 13:50:53 scarabeus Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/mplayer/mplayer-9999.ebuild,v 1.84 2010/11/07 14:58:26 scarabeus Exp $
 
 EAPI=3
 
@@ -10,7 +10,7 @@ ESVN_REPO_URI="svn://svn.mplayerhq.hu/mplayer/trunk"
 inherit toolchain-funcs eutils flag-o-matic multilib base ${SVN_ECLASS}
 
 # BUMP ME PLZ, NO COOKIES OTHERWISE
-[[ ${PV} != *9999* ]] && MPLAYER_REVISION=SVN-r30554
+[[ ${PV} != *9999* ]] && MPLAYER_REVISION=SVN-r32598
 
 IUSE="3dnow 3dnowext +a52 aalib +alsa altivec aqua +ass bidi bindist bl bluray
 bs2b +cddb +cdio cdparanoia cpudetection custom-cpuopts debug dga +dirac
@@ -37,7 +37,7 @@ FONT_URI="
 if [[ ${PV} == *9999* ]]; then
 	RELEASE_URI=""
 else
-	RELEASE_URI="mirror://gentoo/${P}.tbz2"
+	RELEASE_URI="mirror://gentoo/${P}.tar.xz"
 fi
 SRC_URI="${RELEASE_URI}
 	!truetype? ( ${FONT_URI} )"

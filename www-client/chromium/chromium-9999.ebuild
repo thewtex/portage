@@ -1,10 +1,11 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/chromium-9999.ebuild,v 1.101 2010/11/04 20:58:33 phajdan.jr Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/chromium-9999.ebuild,v 1.103 2010/11/07 17:41:17 phajdan.jr Exp $
 
-EAPI="2"
+EAPI="3"
+PYTHON_DEPEND="2:2.6"
 
-inherit eutils flag-o-matic multilib pax-utils subversion toolchain-funcs
+inherit eutils flag-o-matic multilib pax-utils python subversion toolchain-funcs
 
 DESCRIPTION="Open-source version of Google Chrome web browser"
 HOMEPAGE="http://chromium.org/"
@@ -27,7 +28,7 @@ RDEPEND="app-arch/bzip2
 	dev-libs/libxml2
 	dev-libs/libxslt
 	>=dev-libs/nss-3.12.3
-	>=gnome-base/gconf-2.24.0
+	gnome? ( >=gnome-base/gconf-2.24.0 )
 	gnome-keyring? ( >=gnome-base/gnome-keyring-2.28.2 )
 	>=media-libs/alsa-lib-1.0.19
 	media-libs/jpeg:0
@@ -112,11 +113,17 @@ pkg_setup() {
 
 	# Make sure the build system will use the right tools, bug #340795.
 	tc-export AR CC CXX RANLIB
+
+	# Make sure the build system will use the right python, bug #344367.
+	python_set_active_version 2
 }
 
 src_prepare() {
 	# Enable optional support for gecko-mediaplayer.
 	epatch "${FILESDIR}"/${PN}-gecko-mediaplayer-r0.patch
+
+	# Make GConf dependency optional, http://crbug.com/13322.
+	epatch "${FILESDIR}"/${PN}-gconf-optional-r0.patch
 
 	remove_bundled_lib "third_party/bzip2"
 	remove_bundled_lib "third_party/codesighs"
@@ -157,6 +164,12 @@ src_prepare() {
 		rmdir v8/include || die
 		ln -s /usr/include v8/include || die
 	fi
+
+	# Make sure the build system will use the right python, bug #344367.
+	# Only convert directories that need it, to save time.
+	for dir in build tools; do
+		python_convert_shebangs -q -r 2 "${dir}"
+	done
 }
 
 src_configure() {
@@ -188,6 +201,13 @@ src_configure() {
 		myconf+=" -Duse_cups=1"
 	else
 		myconf+=" -Duse_cups=0"
+	fi
+
+	# Make GConf dependency optional, http://crbug.com/13322.
+	if use gnome; then
+		myconf+=" -Duse_gconf=1"
+	else
+		myconf+=" -Duse_gconf=0"
 	fi
 
 	if use "gnome-keyring"; then
