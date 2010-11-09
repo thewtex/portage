@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/kipi-plugins/kipi-plugins-1.5.0.ebuild,v 1.2 2010/10/16 17:59:18 dilfridge Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/kipi-plugins/kipi-plugins-1.5.0.ebuild,v 1.3 2010/11/08 21:32:43 dilfridge Exp $
 
 EAPI="2"
 
@@ -29,7 +29,7 @@ DEPEND="
 	>=kde-base/libkdcraw-${KDE_MINIMAL}
 	>=kde-base/libkexiv2-${KDE_MINIMAL}
 	>=kde-base/libkipi-${KDE_MINIMAL}
-	>=media-libs/jpeg-6b
+	virtual/jpeg
 	>=media-libs/libpng-1.2
 	>=media-libs/tiff-3.6
 	calendar? ( >=kde-base/kdepimlibs-${KDE_MINIMAL} )
