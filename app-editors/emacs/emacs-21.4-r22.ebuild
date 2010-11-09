@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/emacs/emacs-21.4-r22.ebuild,v 1.4 2010/10/25 21:02:24 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-editors/emacs/emacs-21.4-r22.ebuild,v 1.8 2010/11/07 21:11:46 ulm Exp $
 
 EAPI=2
 
@@ -14,7 +14,7 @@ SRC_URI="mirror://gnu/emacs/${P}a.tar.gz
 
 LICENSE="GPL-2 FDL-1.1 BSD as-is MIT"
 SLOT="21"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~ppc ppc64 ~s390 ~sh ~sparc x86 ~x86-fbsd"
 IUSE="X Xaw3d leim motif sendmail"
 
 DEPEND="sys-libs/ncurses
@@ -27,7 +27,7 @@ DEPEND="sys-libs/ncurses
 		x11-libs/libXpm
 		x11-misc/xbitmaps
 		>=media-libs/giflib-4.1.0.1b
-		>=media-libs/jpeg-6b-r2:0
+		virtual/jpeg
 		>=media-libs/tiff-3.5.5-r3
 		>=media-libs/libpng-1.2.1
 		Xaw3d? ( x11-libs/Xaw3d )

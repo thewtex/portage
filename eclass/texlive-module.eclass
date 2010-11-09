@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/texlive-module.eclass,v 1.55 2010/10/24 16:26:36 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/texlive-module.eclass,v 1.57 2010/11/07 19:46:55 aballier Exp $
 
 # @ECLASS: texlive-module.eclass
 # @MAINTAINER:
@@ -53,6 +53,11 @@
 # Normally the module's PV reflects the TeXLive release it belongs to.
 # If this is not the case, TL_PV takes the version number for the
 # needed app-text/texlive-core.
+
+# @ECLASS-VARIABLE: TL_MODULE_INFORMATION
+# @DESCRIPTION:
+# Information to display about the package.
+# e.g. for enabling/disabling a feature
 
 inherit texlive-common
 
@@ -114,6 +119,9 @@ RELOC_TARGET=texmf-dist
 texlive-module_src_unpack() {
 	if has "${EAPI:-0}" 0 1 2 ; then
 		local i s
+		# Avoid installing world writable files 
+		# Bugs #309997, #310039, #338881
+		umask 022
 		for i in ${A}
 		do
 			s="${DISTDIR%/}/${i}"
@@ -357,6 +365,7 @@ texlive-module_src_install() {
 
 texlive-module_pkg_postinst() {
 	etexmf-update
+	[ -n "${TL_MODULE_INFORMATION}" ] && elog "${TL_MODULE_INFORMATION}"
 }
 
 # @FUNCTION: texlive-module_pkg_postrm

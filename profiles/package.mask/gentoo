@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12153 2010/11/04 11:52:14 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12182 2010/11/08 18:15:56 arfrever Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -31,13 +31,66 @@
 
 #--- END OF EXAMPLES ---
 
-# Samuli Suominen <ssuominen@gentoo.org> (03 Nov 2010)
-# Only package.masked gnucash is compiling against 5.x, and doesn't work:
-# http://lists.gnucash.org/pipermail/gnucash-devel/2010-August/029188.html
->=net-libs/aqbanking-5
->=sys-libs/gwenhywfar-4
->=sys-libs/libchipcard-5
->=app-office/kmymoney-4.5-r1
+# Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (08 Nov 2010)
+# csv module is included in Python >=2.3. Masked for deletion in 30 days.
+dev-python/csv
+
+# Markos Chandras <hwoarang@gentoo.org> (08 Nov 2010)
+# Beta releases should be masked
+=dev-util/qt-creator-2.1.0_beta*
+
+# Michael Sterrett <mr_bones_@gentoo.org> (08 Oct 2010)
+# Broken on newer X setups and public server seems dead.
+# Also the last user of yiff in the tree.  Time to move on.
+# Mask for removal on 20101208
+games-action/xshipwars
+media-libs/yiff
+
+# MATSUU Takuto <matsuu@gentoo.org> (08 Oct 2010)
+# testing mask for development series
+>=app-i18n/ibus-1.3.99
+>=app-i18n/ibus-pinyin-1.3.99
+
+# Michael Sterrett <mr_bones_@gentoo.org> (07 Oct 2010)
+# No release since 2002; uses gnome-vfs
+# Mask for removal on 20101207
+games-mud/panache
+
+# Pacho Ramos <pacho@gentoo.org> (06 Nov 2010)
+# No longer maintained neither developed by upstream since 
+# a lot of time. Nothing in the tree needs it (bug #344331)
+# Replaced by gnome-base/nautilus. Removal 2010-12-06.
+gnome-base/gnome-volume-manager
+
+# Markos Chandras <hwoarang@gentoo.org> (05 Nov 2010)
+# Masking bugfix revision for testing
+# due 2010-11-10
+=net-analyzer/fail2ban-0.8.4-r1
+
+# Samuli Suominen <ssuominen@gentoo.org> (04 Nov 2010)
+# Over 20 open bugs, http://tinyurl.com/2wurbtz
+# Bugs assigned to a proxy maintainer without CVS access
+# Every package outdated, bug 340007
+# Removal 2011-01-01
+app-pda/synce
+app-pda/synce-dccm
+app-pda/synce-fur
+app-pda/synce-gcemirror
+app-pda/synce-gnomevfs
+app-pda/synce-gvfs
+app-pda/synce-hal
+app-pda/synce-kpm
+app-pda/synce-librapi2
+app-pda/synce-librra
+app-pda/synce-librtfcomp
+<app-pda/synce-libsynce-0.15
+app-pda/synce-odccm
+app-pda/synce-pywbxml
+app-pda/synce-serial
+app-pda/synce-software-manager
+app-pda/synce-sync-engine
+app-pda/synce-trayicon
+app-pda/libopensync-plugin-synce
 
 # Samuli Suominen <ssuominen@gentoo.org> (02 Nov 2010)
 # acerhk fails to build with Linux >= 2.6.30 wrt #277598
@@ -69,16 +122,6 @@ dev-python/workingenv
 # Uninstallable for over a year now, bug 276203
 # Removal in 30 days
 dev-scheme/sisc
-
-# Samuli Suominen <ssuominen@gentoo.org> (30 Oct 2010)
-# Unmaintained, 17 open bugs, http://tinyurl.com/33h7fny
-# dev-tinyos category will be removed in 30 days
-dev-tinyos/channelgen
-dev-tinyos/listen
-dev-tinyos/nesc
-dev-tinyos/serial-forwarder
-dev-tinyos/tos
-dev-tinyos/tos-getenv
 
 # Samuli Suominen <ssuominen@gentoo.org> (30 Oct 2010)
 # Still using GTK+-1.2, bug 343061
@@ -268,12 +311,6 @@ media-libs/amanith
 >=dev-texlive/texlive-science-2010
 >=dev-texlive/texlive-texinfo-2010
 >=dev-texlive/texlive-xetex-2010
-
-# Samuli Suominen <ssuominen@gentoo.ogr> (23 Oct 2010)
-# Replaced by media-tv/v4l-utils, bug 333291
-# Removal in about 30 days
-media-tv/ivtv-utils
-media-tv/v4l2-ctl
 
 # Markos Chandras <hwoarang@gentoo.org> (23 Oct 2010)
 #  on behalf of QA team
@@ -509,7 +546,24 @@ gnome-base/dconf
 >=gnome-extra/gnome-user-docs-2.32
 dev-cpp/atkmm
 >=dev-cpp/gtkmm-2.22
+>=dev-util/anjuta-2.32
+>=dev-python/gnome-python-desktop-base-2.32
+>=dev-python/bug-buddy-python-2.32
+>=dev-python/evolution-python-2.32
 >=dev-python/evince-python-2.32
+>=dev-python/gnome-applets-python-2.32
+>=dev-python/gnome-desktop-python-2.32
+>=dev-python/gnome-keyring-python-2.32
+>=dev-python/gnome-media-python-2.32
+>=dev-python/gtksourceview-python-2.32
+>=dev-python/libgnomeprint-python-2.32
+>=dev-python/libgtop-python-2.32
+>=dev-python/librsvg-python-2.32
+>=dev-python/libwnck-python-2.32
+>=dev-python/metacity-python-2.32
+>=dev-python/brasero-python-2.32
+>=dev-python/totem-python-2.32
+>=dev-python/gnome-python-desktop-2.32
 # END GNOME 2.32 mask
 
 # Pacho Ramos <pacho@gentoo.org> (09 Oct 2010)
@@ -541,11 +595,6 @@ sys-auth/policykit-qt
 # Removal on 2010-11-07
 dev-dotnet/ant-dotnet
 
-# Ricardo Mendoza <ricmm@gentoo.org> (04 Oct 2010)
-# Dead upstream, project no longer exists and doesn't work.
-# Masked for removal in 30 days.
-net-misc/metacafe-dl
-
 # Diego E. Pettenò <flameeyes@gentoo.org> (04 Oct 2010)
 #  on behalf of QA team
 #
@@ -560,14 +609,6 @@ dev-util/autotoolset
 # Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (02 Oct 2010)
 # Included in >=dev-libs/Ice-3.3. Masked for deletion in 30 days.
 dev-python/IcePy
-
-# Andreas K. Huettel <dilfridge@gentoo.org> (02 Oct 2010)
-# Masking for removal in 30 days
-# Upstream is dead, does not build, would need massive work for current
-# gcc. Seems like nobody has missed it for some time. Bug 296651.
-# Also mask maxit as it depends on validation - halcy0n
-sci-chemistry/validation
-sci-chemistry/maxit
 
 # Diego E. Pettenò <flameeyes@gentoo.org> (02 Oct 2010)
 #  on behalf of QA team
@@ -660,10 +701,6 @@ net-p2p/overnet
 # Removal on 2010-11-26
 app-benchmarks/xfbsuite
 
-# Markos Chandras <hwoarang@gentoo.org> ( 26 Sep 2010 )
-# Masking because of masked Qt-4.7
-=dev-util/qt-creator-2.0.1
-
 # Joerg Bornkessel <hd_brummy@gentoo.org> ( 26 Sep 2010 )
 # masked for removel in 30 days,
 # bug 335785
@@ -682,13 +719,6 @@ app-benchmarks/xfbsuite
 >=dev-lang/vala-0.11
 >=sys-power/upower-0.9.6
 
-# Samuli Suominen <ssuominen@gentoo.org> (22 Sep 2010)
-# Package is masked because of missing exo-0.5 and garcon support.
-# exo-0.3 and libxfce4menu is deprecated, no reason to provide vala bindings to them anymore
-# Also missing vala-0.10.0 support, pulls in old slot of vala
-# Unless 4.7.0 is out in 60 days, the package will be removed
-xfce-extra/xfce4-vala
-
 # Rémi Cardona <remi@gentoo.org> (21 Sep 2010)
 # Dead upstream, ebuild does more work than its Makefiles,
 # Xorg folks told me its output looked very unsafe for hareware.
@@ -701,253 +731,6 @@ x11-misc/videogen
 # maintained fork (x11-misc/transset-df) and doesn't respect LDFLAGS
 # (see bug #338150). Masked for removal in 30 days.
 x11-misc/transset
-
-# Theo Chatzimichos <tampakrap@gentoo.org> (21 Sep 2010)
-# Mask Qt 4.7.0, it will be unmasked as soon as it is tinderboxed
-~x11-libs/qt-assistant-4.7.0
-~x11-libs/qt-core-4.7.0
-~x11-libs/qt-dbus-4.7.0
-~x11-libs/qt-declarative-4.7.0
-~x11-libs/qt-demo-4.7.0
-~x11-libs/qt-gui-4.7.0
-~x11-libs/qt-multimedia-4.7.0
-~x11-libs/qt-opengl-4.7.0
-~x11-libs/qt-phonon-4.7.0
-~x11-libs/qt-qt3support-4.7.0
-~x11-libs/qt-script-4.7.0
-~x11-libs/qt-sql-4.7.0
-~x11-libs/qt-svg-4.7.0
-~x11-libs/qt-test-4.7.0
-~x11-libs/qt-webkit-4.7.0
-~x11-libs/qt-xmlpatterns-4.7.0
-
-# Panagiotis Christopoulos <pchrist@gentoo.org> (17 Sep 2010)
-# Masked for removal in 30 days. Most of them are too old/
-# problematic. They will be moved to a temporary overlay
-# after their removal until we (the lisp team) decide if/how we will
-# handle/update them. For more information, please see bug #337963
-dev-lisp/cl-acclaim
-dev-lisp/cl-acl-compat
-dev-lisp/cl-aim
-=dev-lisp/cl-aima-1.0.4
-dev-lisp/cl-anaphora
-dev-lisp/cl-ansi-tests-cvs
-dev-lisp/cl-araneida
-dev-lisp/cl-archive
-dev-lisp/cl-arnesi-darcs
-dev-lisp/cl-asdf-system-connections
-dev-lisp/cl-aserve
-dev-lisp/cl-aspectl
-dev-lisp/cl-awk
-=dev-lisp/cl-base64-3.3.2
-=dev-lisp/cl-base64-3.3.1
-dev-lisp/cl-bayescl
-dev-lisp/cl-binary-types
-dev-lisp/cl-bind
-dev-lisp/cl-blowfish
-dev-lisp/cl-bouquet
-dev-lisp/cl-cclan
-dev-lisp/cl-cells
-dev-lisp/cl-cffi
-dev-lisp/cl-cgi-utils
-dev-lisp/cl-ch-util
-dev-lisp/cl-chemical-compounds
-dev-lisp/cl-chunga
-dev-lisp/cl-clem
-dev-lisp/cl-closer-mop
-dev-lisp/cl-colorize
-dev-lisp/cl-common-idioms
-dev-lisp/cl-contextl
-dev-lisp/cl-csv
-dev-lisp/cl-curl
-dev-lisp/cl-cxml
-dev-lisp/cl-defpatt
-dev-lisp/cl-defsystem3
-dev-lisp/cl-diff
-=dev-lisp/cl-difflib-0.1
-dev-lisp/cl-dot
-dev-lisp/cl-drakma
-dev-lisp/cl-elephant
-=dev-lisp/cl-emb-0.4.2
-=dev-lisp/cl-emb-0.4.1
-=dev-lisp/cl-emb-0.4.3
-dev-lisp/cl-environment
-=dev-lisp/cl-fad-0.4.1
-=dev-lisp/cl-fad-0.4.0
-=dev-lisp/cl-fad-0.5.0
-=dev-lisp/cl-fad-0.5.1
-=dev-lisp/cl-fad-0.4.2
-=dev-lisp/cl-fad-0.4.3
-dev-lisp/cl-fare-matcher
-dev-lisp/cl-fiveam-darcs
-dev-lisp/cl-flexi-streams
-=dev-lisp/cl-ftp-1.3.3
-dev-lisp/cl-fucc
-dev-lisp/cl-gcc-xml-ffi
-=dev-lisp/cl-gd-0.4.6
-=dev-lisp/cl-gd-0.5.1
-=dev-lisp/cl-gd-0.5.0
-=dev-lisp/cl-gd-0.4.7
-dev-lisp/cl-genhash
-dev-lisp/cl-getopt
-dev-lisp/cl-gordon
-dev-lisp/cl-hello
-=dev-lisp/cl-html-diff-0.1
-dev-lisp/cl-html-encode
-=dev-lisp/cl-html-parse-1.0
-dev-lisp/cl-html-template
-dev-lisp/cl-htmlgen
-dev-lisp/cl-hunchentoot
-dev-lisp/cl-hyperobject
-dev-lisp/cl-inflate
-=dev-lisp/cl-interpol-0.1.2
-=dev-lisp/cl-irc-0.7
-dev-lisp/cl-irc-logger
-dev-lisp/cl-ironclad
-dev-lisp/cl-isbn
-dev-lisp/cl-iterate
-=dev-lisp/cl-jpeg-1.033-r1
-dev-lisp/cl-kmrcl
-dev-lisp/cl-kr
-dev-lisp/cl-lambda-gtk
-=dev-lisp/cl-launch-2.02
-=dev-lisp/cl-launch-1.88
-=dev-lisp/cl-launch-2.03
-dev-lisp/cl-lexer
-dev-lisp/cl-linedit
-dev-lisp/cl-lisp2wish
-dev-lisp/cl-lml
-dev-lisp/cl-lml2
-dev-lisp/cl-log4cl
-dev-lisp/cl-ltk
-dev-lisp/cl-lw-compat
-dev-lisp/cl-mcclim
-dev-lisp/cl-md5
-dev-lisp/cl-mel-base
-dev-lisp/cl-memoization
-dev-lisp/cl-menusystem
-dev-lisp/cl-meta
-dev-lisp/cl-mop-features
-dev-lisp/cl-mpd
-dev-lisp/cl-mt19937
-dev-lisp/cl-ncurses
-dev-lisp/cl-net-telent-date
-dev-lisp/cl-odcl
-dev-lisp/cl-org-davep-cldict
-dev-lisp/cl-org-davep-dict
-dev-lisp/cl-org-davep-dictrepl
-dev-lisp/cl-org-davep-newsrc
-dev-lisp/cl-org-davep-nntp
-dev-lisp/cl-osicat
-dev-lisp/cl-packer
-dev-lisp/cl-paip
-dev-lisp/cl-parenscript-darcs
-dev-lisp/cl-parse-number
-=dev-lisp/cl-pdf-110
-dev-lisp/cl-periodic-table
-dev-lisp/cl-pg
-dev-lisp/cl-pipes
-=dev-lisp/cl-plus-1.0
-=dev-lisp/cl-plus-ssl-20051204
-dev-lisp/cl-png
-dev-lisp/cl-poly-pen
-dev-lisp/cl-pop
-dev-lisp/cl-port
-dev-lisp/cl-postoffice
-=dev-lisp/cl-prevalence-20040709
-=dev-lisp/cl-prevalence-20060521
-dev-lisp/cl-psgraph
-dev-lisp/cl-ptester
-dev-lisp/cl-puri
-dev-lisp/cl-pxmlutils
-dev-lisp/cl-quick-arrays
-dev-lisp/cl-regex
-dev-lisp/cl-resolver
-dev-lisp/cl-rfc2109-darcs
-dev-lisp/cl-rfc2388
-dev-lisp/cl-rfc2388-darcs
-dev-lisp/cl-rsm-bitcomp
-dev-lisp/cl-rsm-bool-comp
-dev-lisp/cl-rsm-cache
-dev-lisp/cl-rsm-delayed
-dev-lisp/cl-rsm-filter
-dev-lisp/cl-rsm-finance
-dev-lisp/cl-rsm-fuzzy
-dev-lisp/cl-rsm-memo
-dev-lisp/cl-rsm-mod
-dev-lisp/cl-rsm-modal
-dev-lisp/cl-rsm-mpoly
-dev-lisp/cl-rsm-queue
-dev-lisp/cl-rsm-rand
-dev-lisp/cl-rsm-random
-dev-lisp/cl-rsm-rsa
-dev-lisp/cl-rsm-string
-dev-lisp/cl-rss
-dev-lisp/cl-rt
-dev-lisp/cl-s-base64
-dev-lisp/cl-s-sysdeps
-dev-lisp/cl-s-xml
-dev-lisp/cl-s-xml-rpc
-dev-lisp/cl-salza
-dev-lisp/cl-sapaclisp
-=dev-lisp/cl-sasl-0.2
-dev-lisp/cl-sb-readline
-dev-lisp/cl-scribble
-dev-lisp/cl-sdl
-dev-lisp/cl-series
-dev-lisp/cl-sha1
-dev-lisp/cl-spatial-trees
-dev-lisp/cl-split-sequence
-dev-lisp/cl-sql
-dev-lisp/cl-ssl
-dev-lisp/cl-statistics
-=dev-lisp/cl-store-0.6
-dev-lisp/cl-syslog
-dev-lisp/cl-tbnl
-dev-lisp/cl-tclink
-dev-lisp/cl-terminfo
-dev-lisp/cl-torta
-dev-lisp/cl-trivial-configuration-parser
-dev-lisp/cl-trivial-gray-streams
-dev-lisp/cl-trivial-http
-dev-lisp/cl-trivial-sockets
-=dev-lisp/cl-typesetting-110
-dev-lisp/cl-ubf
-dev-lisp/cl-uffi
-dev-lisp/cl-unit
-dev-lisp/cl-url-rewrite
-=dev-lisp/cl-utilities-1.2.3
-=dev-lisp/cl-utilities-1.0.2
-dev-lisp/cl-utils-kt
-dev-lisp/cl-webactions
-=dev-lisp/cl-who-0.6.1
-=dev-lisp/cl-who-0.6.0
-=dev-lisp/cl-who-0.5.0
-dev-lisp/cl-with
-dev-lisp/cl-xlunit
-dev-lisp/cl-xml-emitter
-dev-lisp/cl-xml-psychiatrist
-dev-lisp/cl-xmls
-dev-lisp/cl-xmls-valid
-dev-lisp/cl-xptest
-=dev-lisp/cl-yacc-0.1
-=dev-lisp/cl-yacc-0.2
-dev-lisp/cl-yaclml-darcs
-=dev-lisp/cl-yahoo-0.4
-=dev-lisp/cl-yahoo-0.5
-dev-lisp/cl-z80
-dev-lisp/cl-zebu
-dev-lisp/cl-zip
-dev-lisp/cl-zpb-ttf
-dev-lisp/hedgehog
-dev-lisp/lush
-dev-lisp/xlispstat
-dev-vcs/mcvs
-media-sound/rip-l
-
-# Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (13 Sep 2010)
-# Masked before final release.
-=net-zope/zope-2.13*
 
 # Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (13 Sep 2010)
 # Unmaintained. Masked so that Zope 2.12/2.13 is preferred.
@@ -976,11 +759,6 @@ x11-misc/lightdm
 # Mask upcoming bumps, potentially too hot to push to everyone
 =media-libs/libdvdread-4.1.3_p1217
 =media-video/dvdbackup-0.4.1
-
-# Markos Chandras <hwoarang@gentoo.org> (31 Aug 2010)
-# Several QA issues listed on bug #272200. Masked until
-# I clean this up
-net-analyzer/w3af
 
 # Diego E. Pettenò <flameeyes@gentoo.org> (31 Aug 2010)
 #  on behalf of QA team
@@ -1185,10 +963,6 @@ net-misc/netcf
 # Also needs USE=introspection to be unmasked
 dev-libs/seed
 
-# Christian Faulhammer <fauli@gentoo.org> (28 Jun 2010)
-# Beta version
-~dev-lang/erlang-14.1
-
 # Pawel Hajdan jr <phajdan.jr@gentoo.org> (22 Jun 2010)
 # Masked for testing. It's quite "challenging" to package.
 >=sci-mathematics/nusmv-2.5.0
@@ -1205,6 +979,7 @@ dev-libs/seed
 # Also mask packages _requiring_ ocaml 3.12
 >=dev-lang/ocaml-3.12.0_beta
 >=dev-ml/type-conv-2.0.0
+>=dev-ml/ocamlduce-3.12.0
 
 # Justin Lecher <jlec@gentoo.org> (16 Jun 10)
 # Just working with the masked experimental version of refmac
@@ -1418,14 +1193,6 @@ media-sound/teamspeak-server-bin
 # cvs ebuild vdr-xineliboutput-9999 masked for lifetime
 =media-plugins/vdr-xineliboutput-9999
 
-# Krzysztof Pawlik <nelchael@gentoo.org> (23 Nov 2009)
-# Borken TPM patch, see bug #294119
-=sys-apps/rng-tools-2-r2
-
-# Alexis Ballier <aballier@gentoo.org> (14 Nov 2009)
-# beta release
->=dev-ml/ocamlnet-3.0_beta
-
 # Doug Goldstein <cardoe@gentoo.org> (07 Nov 2009)
 # upstream MythTV development versions
 # complain upstream if something is broken
@@ -1454,29 +1221,6 @@ media-sound/teamspeak-server-bin
 # Broken, will stay masked until fixed.
 # see bug #290086 for more info
 =x11-apps/xdm-1.1.9
-
-# Samuli Suominen <ssuominen@gentoo.org> (24 Oct 2009)
-# Mask pre-4.8 Xfce4 for testing.
-#
->=xfce-base/xfwm4-4.7.0
->=xfce-base/xfdesktop-4.7.0
->=xfce-base/xfce4-session-4.7.0
->=xfce-base/xfce-utils-4.7.0
->=xfce-base/exo-0.5.1
->=xfce-base/xfce4-settings-4.7.0
->=xfce-base/thunar-1.1.0
->=xfce-extra/thunar-volman-0.5
->=xfce-extra/thunar-media-tags-plugin-0.1.2-r1
->=xfce-base/xfce4-panel-4.7.0
-xfce-extra/thunar-vfs
->=xfce-extra/xfce4-xkb-plugin-0.5.3.3-r9
->=xfce-base/libxfce4util-4.7.2
->=xfce-extra/thunar-thumbnailers-4.7.0
->=dev-util/xfce4-dev-tools-4.7.3
->=xfce-base/libxfcegui4-4.7.0
->=xfce-base/garcon-0.1.2
->=xfce-base/libxfce4ui-4.7.4
->=xfce-extra/xfce4-appfinder-4.7.1
 
 # Peter Alfredsen <loki_val@gentoo.org> (21 Oct 2009)
 # Masked because this needs a patch to be applied to portage

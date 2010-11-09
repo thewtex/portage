@@ -1,0 +1,22 @@
+sys-libs/zlib ssl? ( gnutls? ( >=net-libs/gnutls-1.2.9 ) !gnutls? ( dev-libs/openssl ) ) ares? ( >=net-dns/c-ares-1.5.0 ) bittorrent? ( gnutls? ( >=net-libs/gnutls-1.2.9 >=dev-libs/libgcrypt-1.2.2 ) !gnutls? ( dev-libs/openssl ) ) metalink? ( !expat? ( >=dev-libs/libxml2-2.6.26 ) expat? ( dev-libs/expat ) ) sqlite? ( dev-db/sqlite:3 ) xmlrpc? ( !expat? ( >=dev-libs/libxml2-2.6.26 ) expat? ( dev-libs/expat ) ) dev-util/pkgconfig nls? ( sys-devel/gettext ) test? ( >=dev-util/cppunit-1.12.0 )
+sys-libs/zlib ssl? ( gnutls? ( >=net-libs/gnutls-1.2.9 ) !gnutls? ( dev-libs/openssl ) ) ares? ( >=net-dns/c-ares-1.5.0 ) bittorrent? ( gnutls? ( >=net-libs/gnutls-1.2.9 >=dev-libs/libgcrypt-1.2.2 ) !gnutls? ( dev-libs/openssl ) ) metalink? ( !expat? ( >=dev-libs/libxml2-2.6.26 ) expat? ( dev-libs/expat ) ) sqlite? ( dev-db/sqlite:3 ) xmlrpc? ( !expat? ( >=dev-libs/libxml2-2.6.26 ) expat? ( dev-libs/expat ) ) scripts? ( dev-lang/ruby ) nls? ( virtual/libiconv virtual/libintl )
+0
+mirror://sourceforge/aria2/aria2-1.10.6.tar.bz2
+test
+http://aria2.sourceforge.net/
+GPL-2
+A download utility with resuming and segmented downloading with HTTP/HTTPS/FTP/BitTorrent support.
+~amd64 ~ppc ~ppc64 ~sparc ~x86
+
+ares bittorrent expat gnutls metalink nls scripts sqlite ssl test xmlrpc
+
+
+
+2
+
+configure install prepare setup
+
+
+
+
+

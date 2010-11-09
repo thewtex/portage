@@ -1,10 +1,11 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/chromium-9999.ebuild,v 1.100 2010/11/03 17:56:06 phajdan.jr Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/chromium-9999.ebuild,v 1.106 2010/11/08 16:45:35 arfrever Exp $
 
-EAPI="2"
+EAPI="3"
+PYTHON_DEPEND="2:2.6"
 
-inherit eutils flag-o-matic multilib pax-utils subversion toolchain-funcs
+inherit eutils flag-o-matic multilib pax-utils portability python subversion toolchain-funcs
 
 DESCRIPTION="Open-source version of Google Chrome web browser"
 HOMEPAGE="http://chromium.org/"
@@ -27,13 +28,13 @@ RDEPEND="app-arch/bzip2
 	dev-libs/libxml2
 	dev-libs/libxslt
 	>=dev-libs/nss-3.12.3
-	>=gnome-base/gconf-2.24.0
+	gnome? ( >=gnome-base/gconf-2.24.0 )
 	gnome-keyring? ( >=gnome-base/gnome-keyring-2.28.2 )
 	>=media-libs/alsa-lib-1.0.19
-	media-libs/jpeg:0
+	virtual/jpeg
 	media-libs/libpng
 	>=media-video/ffmpeg-0.6_p25423[threads]
-	cups? ( >=net-print/cups-1.4.4 )
+	cups? ( >=net-print/cups-1.3.11 )
 	sys-libs/zlib
 	>=x11-libs/gtk+-2.14.7
 	x11-libs/libXScrnSaver"
@@ -49,7 +50,6 @@ RDEPEND+="
 		x11-themes/tango-icon-theme
 		x11-themes/xfce4-icon-theme
 	)
-	x11-apps/xmessage
 	x11-misc/xdg-utils
 	virtual/ttf-fonts
 	gecko-mediaplayer? ( !www-plugins/gecko-mediaplayer[gnome] )"
@@ -112,11 +112,30 @@ pkg_setup() {
 
 	# Make sure the build system will use the right tools, bug #340795.
 	tc-export AR CC CXX RANLIB
+
+	# Make sure the build system will use the right python, bug #344367.
+	python_set_active_version 2
+
+	# Prevent user problems like bug #299777.
+	if ! grep -q /dev/shm <<< $(get_mounts); then
+		ewarn "You don't have tmpfs mounted at /dev/shm."
+		ewarn "${PN} may fail to start in that configuration."
+		ewarn "Please uncomment the /dev/shm entry in /etc/fstab,"
+		ewarn "and run 'mount /dev/shm'."
+	fi
+	if [ `stat -c %a /dev/shm` -ne 1777 ]; then
+		ewarn "/dev/shm does not have correct permissions."
+		ewarn "${PN} may fail to start in that configuration."
+		ewarn "Please run 'chmod 1777 /dev/shm'."
+	fi
 }
 
 src_prepare() {
 	# Enable optional support for gecko-mediaplayer.
 	epatch "${FILESDIR}"/${PN}-gecko-mediaplayer-r0.patch
+
+	# Make GConf dependency optional, http://crbug.com/13322.
+	epatch "${FILESDIR}"/${PN}-gconf-optional-r0.patch
 
 	remove_bundled_lib "third_party/bzip2"
 	remove_bundled_lib "third_party/codesighs"
@@ -157,6 +176,10 @@ src_prepare() {
 		rmdir v8/include || die
 		ln -s /usr/include v8/include || die
 	fi
+
+	# Make sure the build system will use the right python, bug #344367.
+	# Only convert directories that need it, to save time.
+	python_convert_shebangs -q -r 2 build tools
 }
 
 src_configure() {
@@ -188,6 +211,13 @@ src_configure() {
 		myconf+=" -Duse_cups=1"
 	else
 		myconf+=" -Duse_cups=0"
+	fi
+
+	# Make GConf dependency optional, http://crbug.com/13322.
+	if use gnome; then
+		myconf+=" -Duse_gconf=1"
+	else
+		myconf+=" -Duse_gconf=0"
 	fi
 
 	if use "gnome-keyring"; then

@@ -1,6 +1,19 @@
 # ChangeLog for sci-libs/gdal
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/gdal/ChangeLog,v 1.98 2010/09/18 23:25:59 nerdboy Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/gdal/ChangeLog,v 1.101 2010/11/08 17:37:06 xarthisius Exp $
+
+  08 Nov 2010; Kacper Kowalik <xarthisius@gentoo.org> gdal-1.6.3-r1.ebuild,
+  -gdal-1.7.1-r1.ebuild, -files/gdal-1.7.1-warp_fix.patch,
+  gdal-1.7.2-r1.ebuild:
+  media-libs/jpeg -> virtual/jpeg. Drop old.
+
+  06 Nov 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -files/gdal-1.5.0-makefile.patch, -files/gdal-1.5.2-xerces-64-bit.patch,
+  -files/gdal-1.6.0-mysql_ogr_header.patch, -gdal-1.6.1.ebuild:
+  Delete.
+
+  05 Nov 2010; Mark Loeser <halcy0n@gentoo.org> gdal-1.6.3-r1.ebuild:
+  Stable for ppc64; bug #315659
 
   18 Sep 2010; Steve Arnold <nerdboy@gentoo.org> metadata.xml:
   Removed crufty old local USE flags from metadata.

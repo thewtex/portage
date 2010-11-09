@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/gnofract4d/gnofract4d-3.12.ebuild,v 1.3 2010/03/29 21:35:45 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/gnofract4d/gnofract4d-3.12.ebuild,v 1.4 2010/11/08 13:48:44 ssuominen Exp $
 
 EAPI=2
 
@@ -18,8 +18,8 @@ KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND=">=x11-libs/gtk+-2:2
-	media-libs/libpng
-	media-libs/jpeg
+	>=media-libs/libpng-1.4
+	virtual/jpeg
 	>=dev-python/pygtk-2
 	>=gnome-base/gconf-2"
 DEPEND="${RDEPEND}

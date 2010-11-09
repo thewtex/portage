@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/emacs/emacs-22.3-r6.ebuild,v 1.4 2010/10/25 21:02:24 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-editors/emacs/emacs-22.3-r6.ebuild,v 1.8 2010/11/07 21:11:46 ulm Exp $
 
 EAPI=2
 
@@ -13,7 +13,7 @@ SRC_URI="mirror://gnu/emacs/${P}.tar.gz
 
 LICENSE="GPL-3 FDL-1.2 BSD as-is MIT"
 SLOT="22"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~ppc ppc64 ~s390 ~sh ~sparc x86 ~sparc-fbsd ~x86-fbsd"
 IUSE="alsa gif gtk gzip-el hesiod jpeg kerberos motif png sound source tiff toolkit-scroll-bars X Xaw3d +xpm"
 RESTRICT="strip"
 
@@ -28,7 +28,7 @@ RDEPEND="sys-libs/ncurses
 		x11-libs/libXt
 		x11-misc/xbitmaps
 		gif? ( media-libs/giflib )
-		jpeg? ( media-libs/jpeg:0 )
+		jpeg? ( virtual/jpeg )
 		png? ( media-libs/libpng )
 		tiff? ( media-libs/tiff )
 		xpm? ( x11-libs/libXpm )

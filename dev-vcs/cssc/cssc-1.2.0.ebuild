@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-vcs/cssc/cssc-1.2.0.ebuild,v 1.3 2010/06/07 10:16:40 angelos Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-vcs/cssc/cssc-1.2.0.ebuild,v 1.4 2010/11/07 19:22:17 jer Exp $
 
 EAPI="2"
 
@@ -13,8 +13,6 @@ S=${WORKDIR}/CSSC-${PV}
 KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 IUSE=""
 
-DEPEND=""
-
 src_prepare() {
 	# The large test takes a long time
 	sed -i tests/Makefile.* \
@@ -22,6 +20,7 @@ src_prepare() {
 }
 
 src_configure() { econf --enable-binary; }
+
 src_compile() {
 	emake all || die "emake failed"
 }
