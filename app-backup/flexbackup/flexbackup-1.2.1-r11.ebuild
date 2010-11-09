@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-backup/flexbackup/flexbackup-1.2.1-r9.ebuild,v 1.1 2010/08/14 08:44:41 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-backup/flexbackup/flexbackup-1.2.1-r11.ebuild,v 1.1 2010/11/09 18:26:21 graaff Exp $
 
 inherit eutils versionator
 
