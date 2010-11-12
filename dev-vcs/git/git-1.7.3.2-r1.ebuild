@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-vcs/git/git-1.7.3.2-r1.ebuild,v 1.2 2010/10/27 07:42:07 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-vcs/git/git-1.7.3.2-r1.ebuild,v 1.4 2010/11/11 03:26:16 sping Exp $
 
 EAPI=3
 
@@ -25,7 +25,7 @@ else
 	EGIT_BRANCH="master"
 	EGIT_REPO_URI="git://git.kernel.org/pub/scm/git/git.git"
 	# EGIT_REPO_URI="http://www.kernel.org/pub/scm/git/git.git"
-	KEYWORDS="~ppc ~ppc64"
+	KEYWORDS=""
 fi
 
 LICENSE="GPL-2"
@@ -70,12 +70,11 @@ DEPEND="${CDEPEND}
 		sys-apps/texinfo
 	)"
 
-# Live ebuild builds HTML docs, additionally
+# Live ebuild builds man pages and HTML docs, additionally
 if [ "$PV" == "9999" ]; then
 	DEPEND="${DEPEND}
-		doc?    (
-			app-text/xmlto
-		)"
+		app-text/asciidoc
+		app-text/xmlto"
 fi
 
 SITEFILE=50${PN}-gentoo.el
