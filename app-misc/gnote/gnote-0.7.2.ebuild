@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/gnote/gnote-0.7.2.ebuild,v 1.2 2010/10/20 13:55:37 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/gnote/gnote-0.7.2.ebuild,v 1.3 2010/11/11 19:21:56 eva Exp $
 
 EAPI="2"
 
@@ -55,5 +55,5 @@ src_prepare() {
 
 src_install() {
 	gnome2_src_install
-	find -name "${D}" -name "*.la" -delete || die "la file removal failed"
+	find "${D}" -name "*.la" -delete || die "la file removal failed"
 }
