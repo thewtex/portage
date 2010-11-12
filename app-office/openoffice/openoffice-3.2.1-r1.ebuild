@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/openoffice/openoffice-3.2.1.ebuild,v 1.5 2010/11/07 18:50:48 anarchy Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/openoffice/openoffice-3.2.1-r1.ebuild,v 1.1 2010/11/11 19:24:21 suka Exp $
 
 WANT_AUTOMAKE="1.9"
 EAPI="2"
@@ -13,7 +13,7 @@ inherit autotools bash-completion check-reqs db-use eutils fdo-mime flag-o-matic
 
 IUSE="binfilter cups dbus debug eds gnome gstreamer gtk kde ldap nsplugin odk opengl pam templates"
 
-MY_PV=3.2.1.4
+MY_PV=3.2.1.6
 PATCHLEVEL=OOO320
 SRC=OOo_${PV}_src
 MST=OOO320_m19
@@ -221,6 +221,8 @@ src_prepare() {
 	epatch "${FILESDIR}/gentoo-${PV}.diff"
 	epatch "${FILESDIR}/gentoo-pythonpath.diff"
 	epatch "${FILESDIR}/ooo-env_log.diff"
+	epatch "${FILESDIR}/scrap-pixmap-links.diff"
+	epatch "${FILESDIR}/enable-startup-notification.diff"
 	cp -f "${FILESDIR}/qt-use-native-backend.diff" "${S}/patches/hotfixes" || die
 	cp -f "${FILESDIR}/neon-remove-SSPI-support.diff" "${S}/patches/hotfixes" || die
 

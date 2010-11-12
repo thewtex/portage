@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/coq/coq-8.2_p2.ebuild,v 1.2 2010/10/18 18:30:07 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/coq/coq-8.2_p2.ebuild,v 1.4 2010/11/11 20:29:52 aballier Exp $
 
 EAPI=2
 inherit eutils multilib
@@ -22,12 +22,13 @@ RDEPEND=">=dev-lang/ocaml-3.10[ocamlopt?]
 	gtk? ( >=dev-ml/lablgtk-2.10.1[ocamlopt?] )"
 DEPEND="${RDEPEND}
 	doc? (
-		media-libs/netpbm[png]
+		media-libs/netpbm[png,zlib]
 		virtual/latex-base
 		dev-tex/hevea
 		dev-tex/xcolor
 		|| ( dev-texlive/texlive-pictures app-text/ptex )
 		|| ( dev-texlive/texlive-mathextra app-text/ptex )
+		|| ( dev-texlive/texlive-latexextra app-text/ptex )
 		)"
 
 S=${WORKDIR}/${MY_P}
