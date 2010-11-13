@@ -1,10 +1,50 @@
 # ChangeLog for profile directory
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.4778 2010/11/11 20:11:24 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.4782 2010/11/13 17:05:22 aballier Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  13 Nov 2010; Alexis Ballier <aballier@gentoo.org> package.mask:
+  last rites ptex
+
+  13 Nov 2010; Alexis Ballier <aballier@gentoo.org> arch/alpha/ChangeLog,
+  +arch/alpha/package.mask, arch/ia64/ChangeLog, +arch/ia64/package.mask,
+  arch/mips/ChangeLog, arch/mips/package.mask, arch/powerpc/ChangeLog,
+  arch/powerpc/package.mask, arch/s390/ChangeLog, arch/s390/package.mask,
+  arch/sh/ChangeLog, +arch/sh/package.mask, arch/sparc/ChangeLog,
+  arch/sparc/package.mask, arch/x86-fbsd/ChangeLog,
+  arch/x86-fbsd/package.mask, package.mask:
+  Move TeX Live 2010 package.mask to per-arch package.mask, bug #342513
+
+  13 Nov 2010; Anthony G. Basile <blueness@gentoo.org>
+  -hardened/linux/ia64/10.0/make.defaults, profiles.desc:
+  Updated profile description for hardened/linux/ia64, bug #344861
+
+  13 Nov 2010; Anthony G. Basile <blueness@gentoo.org>
+  hardened/ia64/deprecated, +hardened/linux/ia64/10.0/deprecated,
+  +hardened/linux/ia64/10.0/desktop/deprecated,
+  hardened/linux/ia64/10.0/desktop/parent,
+  +hardened/linux/ia64/10.0/developer/deprecated,
+  hardened/linux/ia64/10.0/developer/parent,
+  hardened/linux/ia64/10.0/parent,
+  +hardened/linux/ia64/10.0/server/deprecated,
+  hardened/linux/ia64/10.0/server/parent,
+  -hardened/linux/ia64/2008.0/deprecated,
+  -hardened/linux/ia64/2008.0/desktop/deprecated,
+  -hardened/linux/ia64/2008.0/desktop/make.defaults,
+  -hardened/linux/ia64/2008.0/desktop/parent,
+  -hardened/linux/ia64/2008.0/developer/deprecated,
+  -hardened/linux/ia64/2008.0/developer/parent,
+  -hardened/linux/ia64/2008.0/make.defaults,
+  -hardened/linux/ia64/2008.0/parent,
+  -hardened/linux/ia64/2008.0/server/deprecated,
+  -hardened/linux/ia64/2008.0/server/parent,
+  +hardened/linux/ia64/desktop/parent,
+  +hardened/linux/ia64/developer/parent, +hardened/linux/ia64/make.defaults,
+  hardened/linux/ia64/parent, +hardened/linux/ia64/server/parent:
+  Updated hardened/linux/ia64 profiles, bug #344861
 
   11 Nov 2010; Michał Górny <mgorny@gentoo.org> package.mask:
   Mentioned app-portage/flaggie as an alternative to masked
