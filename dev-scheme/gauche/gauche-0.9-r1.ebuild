@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-scheme/gauche/gauche-0.9-r1.ebuild,v 1.1 2010/10/06 19:32:42 chiiph Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-scheme/gauche/gauche-0.9-r1.ebuild,v 1.2 2010/11/14 15:53:29 jlec Exp $
 
 EAPI="3"
 
@@ -11,7 +11,7 @@ IUSE="ipv6"
 MY_P="${P/g/G}"
 
 DESCRIPTION="A Unix system friendly Scheme Interpreter"
-HOMEPAGE="http://practical-scheme.net/gauche/"
+HOMEPAGE="http://practical-scheme.net/gauche"
 SRC_URI="mirror://sourceforge/gauche/${MY_P}.tgz"
 
 LICENSE="BSD"
@@ -31,7 +31,7 @@ src_prepare() {
 src_configure() {
 #    strip-flags
 	econf \
-		`use_enable ipv6` \
+		$(use_enable ipv6) \
 		--enable-multibyte=utf8 \
 		--with-slib=/usr/share/slib
 }
