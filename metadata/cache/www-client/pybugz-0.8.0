@@ -1,5 +1,5 @@
->=dev-lang/python-2.5[readline] >=app-admin/eselect-python-20091230 dev-lang/python
->=dev-lang/python-2.5[readline] zsh-completion? ( app-shells/zsh ) bash-completion? ( app-admin/eselect ) >=app-admin/eselect-python-20091230 dev-lang/python
+>=app-admin/eselect-python-20091230 || ( =dev-lang/python-2.7* =dev-lang/python-2.6* =dev-lang/python-2.5* ) || ( =dev-lang/python-2.7*[readline] =dev-lang/python-2.6*[readline] =dev-lang/python-2.5*[readline] )
+zsh-completion? ( app-shells/zsh ) bash-completion? ( app-admin/eselect ) >=app-admin/eselect-python-20091230 || ( =dev-lang/python-2.7* =dev-lang/python-2.6* =dev-lang/python-2.5* ) || ( =dev-lang/python-2.7*[readline] =dev-lang/python-2.6*[readline] =dev-lang/python-2.5*[readline] )
 0
 http://pybugz.googlecode.com/files/pybugz-0.8.0.tar.gz
 
@@ -14,7 +14,7 @@ bash-completion? ( app-shells/bash-completion )
 
 2
 
-compile install postinst postrm prepare
+compile install postinst postrm prepare setup
 
 
 
