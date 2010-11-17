@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/psi/psi-9999.ebuild,v 1.6 2010/10/25 12:43:26 pva Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-im/psi/psi-9999.ebuild,v 1.8 2010/11/16 20:15:46 pva Exp $
 
 EAPI="2"
 
@@ -21,7 +21,7 @@ HOMEPAGE="http://psi-im.org/"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="crypt dbus debug doc enchant extras jingle iconsets spell ssl xscreensaver powersave
+IUSE="crypt dbus doc enchant extras jingle iconsets spell ssl xscreensaver powersave
 plugins -whiteboarding webkit"
 
 RDEPEND=">=x11-libs/qt-gui-4.4:4[qt3support,dbus?]
@@ -104,7 +104,7 @@ src_unpack() {
 		if use iconsets; then
 			subversion_fetch "${ESVN_REPO_URI}/iconsets" "iconsets"
 		else
-			for x in clients moods activities system roster; do
+			for x in activities affiliations clients moods roster system; do
 				ESVN_PROJECT="psiplus/${x}"
 				subversion_fetch "${ESVN_REPO_URI}/iconsets/${x}/default" "iconsets/${x}/default"
 			done
@@ -147,7 +147,6 @@ src_configure() {
 			--disable-bundled-qca
 			--disable-growl
 			$(use dbus || echo '--disable-qdbus')
-			$(use debug && echo '--debug')
 			$(use spell && {
 				use enchant && echo '--disable-aspell' || echo '--disable-enchant'
 				} || echo '--disable-aspell --disable-enchant')

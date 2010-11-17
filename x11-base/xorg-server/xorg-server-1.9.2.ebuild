@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-base/xorg-server/xorg-server-1.9.2.ebuild,v 1.1 2010/11/01 11:41:57 scarabeus Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-base/xorg-server/xorg-server-1.9.2.ebuild,v 1.2 2010/11/16 14:19:40 scarabeus Exp $
 
 EAPI=3
 # They generate the configure.ac with wrong version of util-macros
@@ -223,8 +223,8 @@ pkg_postinst() {
 	eselect opengl set --use-old xorg-x11
 
 	if [[ ${INFO} = yes ]]; then
-		einfo "You should consider reading upgrade guide for this release:"
-		einfo "	http://www.gentoo.org/proj/en/desktop/x/x11/xorg-server-$(get_version_component_range 1-2)-upgrade-guide.xml"
+		elog "You should consider reading upgrade guide for this release:"
+		elog "	http://www.gentoo.org/proj/en/desktop/x/x11/xorg-server-$(get_version_component_range 1-2)-upgrade-guide.xml"
 		echo
 		ewarn "You must rebuild all drivers if upgrading from <xorg-server-$(get_version_component_range 1-2)"
 		ewarn "because the ABI changed. If you cannot start X because"
