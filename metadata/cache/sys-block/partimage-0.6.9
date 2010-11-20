@@ -1,0 +1,22 @@
+!static? ( pam? ( virtual/pam ) ) app-arch/bzip2 >=dev-libs/newt-0.52 >=sys-libs/slang-2 sys-libs/zlib ssl? ( dev-libs/openssl ) nls? ( sys-devel/gettext )
+!static? ( pam? ( virtual/pam ) ) !static? ( app-arch/bzip2 >=dev-libs/newt-0.52 >=sys-libs/slang-2 sys-libs/zlib ssl? ( dev-libs/openssl ) )
+0
+mirror://sourceforge/partimage/partimage-0.6.9.tar.bz2
+
+http://www.partimage.org/
+GPL-2
+Console-based application to efficiently save raw partition data to an image file
+~amd64 ~ppc ~sparc ~x86
+eutils flag-o-matic multilib pam portability toolchain-funcs
+nls nologin pam ssl static
+
+
+
+3
+
+config configure install postinst setup
+
+
+
+
+
