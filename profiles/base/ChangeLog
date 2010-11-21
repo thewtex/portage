@@ -1,6 +1,19 @@
 # ChangeLog for Gentoo base-profile
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/base/ChangeLog,v 1.184 2010/11/10 19:13:47 c1pher Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/base/ChangeLog,v 1.188 2010/11/18 20:25:24 ford_prefect Exp $
+
+  19 Nov 2010; Arun Raghavan <ford_prefect@gentoo.org> package.use.mask:
+  Mask orc for gst-plugins-base by default (to be unmasked on supported platforms)
+
+  18 Nov 2010; Pacho Ramos <pacho@gentoo.org> package.use.mask:
+  Mask clutter USE on evolution due bug #345937
+
+  18 Nov 2010; Justin Lecher <jlec@gentoo.org> package.use.mask:
+  Fix Version of cns which is masked
+
+  17 Nov 2010; Justin Lecher <jlec@gentoo.org> package.use.mask:
+  Mask USE=aria sci-chemistry/cns
+  Upstream didn't release patches for aria yet
 
   10 Nov 2010; Dane Smith <c1pher@gentoo.org> package.use.mask:
   Mask the valgrind use flag for net-libs/gnutls.

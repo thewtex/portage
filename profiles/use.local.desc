@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.6160 2010/11/16 21:54:27 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.6175 2010/11/20 16:14:46 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -726,6 +726,9 @@ dev-db/drizzle:md5 -  Enable the MD5 plugin, using dev-libs/libgcrypt; this repl
 dev-db/drizzle:memcache -  Enable the memcache plugin for user-defined functions and statistics in I_S tables (using dev-libs/libmemcached). Currently restricts tests because of an upstream testsuite bug. 
 dev-db/drizzle:pam -  Enable the PAM authentication plugin (using sys-libs/pam). The configuration file created will be /etc/pam.d/drizzle. 
 dev-db/drizzle:tcmalloc -  Use the dev-util/google-perftools libraries to replace the malloc() implementation with a possibly faster one. 
+dev-db/firebird:client - Install client library and header files only
+dev-db/firebird:superserver - Install SuperServer
+dev-db/firebird:xinetd - Install ClassicServer
 dev-db/haildb:debug -  Enable extra debug codepaths and assertions. If disabled, both the debug code and assertions are removed from the resulting binaries. Optimisations are untouched. 
 dev-db/haildb:tcmalloc -  Use the dev-util/google-perftools libraries to replace the malloc() implementation with a possibly faster one. 
 dev-db/haildb:zlib -  Add support for compressed tables through sys-libs/zlib. 
@@ -977,7 +980,24 @@ dev-libs/cyrus-sasl:ntlm_unsupported_patch - Add NTLM net-fs/samba NOT supported
 dev-libs/cyrus-sasl:sample - Build sample client and server
 dev-libs/cyrus-sasl:srp - Enable SRP
 dev-libs/cyrus-sasl:urandom - Use /dev/urandom instead of /dev/random
+dev-libs/e_dbus:bluetooth - Enable interfacing with net-wireless/bluez DBus API.
+dev-libs/e_dbus:connman - Enable interfacing with net-misc/connman DBus API.
+dev-libs/e_dbus:hal - Enable interfacing with sys-apps/hal DBus API.
+dev-libs/e_dbus:libnotify - Enable interfacing with x11-libs/libnotify DBus API.
+dev-libs/e_dbus:ofono - Enable interfacing with net-misc/ofono DBus API.
+dev-libs/e_dbus:ukit - Enable interfacing with sys-power/upower and sys-fs/udisks DBus API.
+dev-libs/ecore:ares - Enables support for asynchronous DNS using the net-dns/c-ares library
+dev-libs/ecore:evas - Provides easy to use canvas by gluing media-libs/evas and various input/output systems.
+dev-libs/ecore:glib - Enable dev-libs/glib eventloop support
+dev-libs/ecore:inotify - Enable support for inotify
+dev-libs/ecore:tslib - Build with tslib support for touchscreen devices.
+dev-libs/ecore:xprint - Enable X11 Xprint support
 dev-libs/eggdbus:largefile - Support for large files
+dev-libs/eina:default-mempool - By default use system's allocator (pass-through) instead of custom choice for Eina's own data structures.
+dev-libs/eina:mempool-buddy - Compile "buddy" memory pool allocation.
+dev-libs/eina:mempool-chained - Compile "chained-pool" memory pool allocation.
+dev-libs/eina:mempool-fixed-bitmap - Compile "fixed-bitmap" memory pool allocation.
+dev-libs/eina:mempool-pass-through - Compile "pass-through" (system's malloc) memory pool allocation.
 dev-libs/elfutils:lzma - Support automatic decompression of LZMA-compressed files and kernel images.
 dev-libs/fcgi:html - Install HTML documentation
 dev-libs/ferrisloki:stlport - Include support for dev-libs/STLport
@@ -1283,7 +1303,6 @@ dev-util/schroot:btrfs - Enable support for chroots using btrfs snapshots.
 dev-util/schroot:dchroot - Enables the building of a wrapper named "dchroot", replacing sys-apps/dchroot.
 dev-util/schroot:lvm - Enable support for chroots using LVM snapshots.
 dev-util/strace:aio -  Enable dev-libs/libaio support for tracing Asynchronous I/O operations 
-dev-util/strace:alsa -  Read ioctl() values from media-sound/alsa-headers for ALSA device. 
 dev-util/universalindentgui:html - Add support for HTML files
 dev-vcs/bzr:sftp - Enable sftp support
 dev-vcs/bzr-gtk:gconf - Enable GConf support
@@ -1825,7 +1844,10 @@ media-libs/clutter-gst:introspection - Use dev-libs/gobject-introspection for in
 media-libs/clutter-gtk:introspection - Use dev-libs/gobject-introspection for introspection
 media-libs/coin:simage - Texture loading via media-libs/simage library
 media-libs/devil:allegro - Add support for Allegro
+media-libs/edje:cache - Enable caching
 media-libs/esdl:image - Enable image support
+media-libs/evas:cache - Enable experimental caching to speed up rendering
+media-libs/evas:eet - Support dev-libs/eet
 media-libs/faad2:digitalradio - Digital Radio Mondiale (warning: disables other decoders)
 media-libs/freeglut:mpx -  Enable support for multi-pointer-X. One pointer for each pointer device. 
 media-libs/freetype:auto-hinter - Use the unpatented auto-hinter instead of the (recommended) TrueType bytecode interpreter
@@ -1840,6 +1862,8 @@ media-libs/giflib:rle - Build converters for RLE format (utah raster toolkit)
 media-libs/glide-v3:voodoo1 - Support 3DFX Voodoo1 video cards
 media-libs/glide-v3:voodoo2 - Support 3DFX Voodoo2 video cards
 media-libs/glide-v3:voodoo5 - Support 3DFX Voodoo4 and Voodoo5 video cards
+media-libs/gst-plugins-base:introspection - Use dev-libs/gobject-introspection for introspection
+media-libs/gst-plugins-base:orc - Use dev-lang/orc for runtime optimisations
 media-libs/gstreamer:introspection - Use dev-libs/gobject-introspection for introspection
 media-libs/imlib:deprecated - Enable deprecated GTK+-1.2 support
 media-libs/libass:enca - Enables support for charset discovery and conversion.
@@ -2315,12 +2339,13 @@ media-video/ogmrip:srt - Support for SRT subtitle format
 media-video/rtmpdump:gnutls - Use GnuTLS library instead of the default OpenSSL
 media-video/rtmpdump:polarssl - Use PolarSSL library instead of the default OpenSSL
 media-video/totem:bluetooth - Enable support for user-presence detection via the user's bluetooth handset using net-wireless/bluez
-media-video/totem:galago - Enable the galago plugin
+media-video/totem:galago - Allow Totem to set your IM client to "away" when a movie is playing in fullscreen using dev-libs/libgalago
 media-video/totem:iplayer - Enable BBC player support
 media-video/totem:lirc - Enable support for controlling Totem with a remote control using app-misc/lirc
 media-video/totem:nautilus - Enable the nautilus extension
 media-video/totem:python - Build support for dev-lang/python plugins
-media-video/totem:tracker - Enable the search plugin using app-misc/tracker
+media-video/totem:tracker - Enable support for searching media files using the indexer app-misc/tracker
+media-video/totem:upnp - Enable DLNA support through media-video/coherence
 media-video/totem:youtube - Enable youtube plugin
 media-video/transcode:extrafilters - Install some filters only if we ask for them
 media-video/transcode:fame - Enables libfame support
@@ -3199,6 +3224,7 @@ net-p2p/ktorrent:upnp - Forward ports using UPnP
 net-p2p/ktorrent:webinterface - Allows control of KTorrent via a web interface
 net-p2p/ktorrent:zeroconf - Discover peers on the local network using the Zeroconf protocol
 net-p2p/mktorrent:largefile - Enable largefile support on 32 bit systems
+net-p2p/mldonkey:bittorrent - enable bittorrent support
 net-p2p/mldonkey:fasttrack - enable fasttrack support
 net-p2p/mldonkey:gnutella - enable gnutella and gnutella2 support
 net-p2p/mldonkey:guionly - enable client build only
@@ -3674,6 +3700,7 @@ sys-cluster/torque:drmaa - Enable the Distributed Resource Management Applicatio
 sys-cluster/torque:server - Enable compilation of pbs_server and pbs_sched.
 sys-devel/binutils:multislot - Allow for multiple versions of binutils to be emerged at once for same CTARGET
 sys-devel/binutils:multitarget - Adds support to binutils for cross compiling (does not work with gas)
+sys-devel/binutils-apple:lto - Add support for Link-Time Optimization with LLVM
 sys-devel/binutils-hppa64:multislot - Allow for multiple versions of binutils to be emerged at once for same CTARGET
 sys-devel/binutils-hppa64:multitarget - Adds support to binutils for cross compiling (does not work with gas)
 sys-devel/clang:alltargets - Build all host targets (default: host only)
@@ -3792,6 +3819,7 @@ sys-kernel/mips-sources:ip32r10k - Enables experimental support for IP32 R10K ke
 sys-kernel/mm-sources:deblob - Remove binary blobs from kernel sources to provide libre license compliance.
 sys-kernel/openvz-sources:deblob - Remove binary blobs from kernel sources to provide libre license compliance.
 sys-kernel/pf-sources:deblob - Remove binary blobs from kernel sources to provide libre license compliance.
+sys-kernel/pf-sources:experimental - Apply patches that are considered experimental. For more information, check out the ChangeLog or the ebuild that interests you.
 sys-kernel/sparc-sources:ultra1 - If you have a SUN Ultra 1 with a HME interface
 sys-kernel/tuxonice-sources:deblob - Remove binary blobs from kernel sources to provide libre license compliance.
 sys-kernel/vanilla-sources:deblob - Remove binary blobs from kernel sources to provide libre license compliance.
@@ -3934,6 +3962,7 @@ www-servers/cherokee:admin - Install web based cherokee conf tool
 www-servers/cherokee:coverpage - Installs the default cherokee coverpage
 www-servers/cherokee:rrdtool - Enable rrdtool support
 www-servers/fnord:auth - Enable HTTP authentication support
+www-servers/lighttpd:libev - Enable fdevent handler
 www-servers/lighttpd:memcache - Enable memcache support for mod_cml and mod_trigger_b4_dl
 www-servers/lighttpd:rrdtool - Enable rrdtool support via mod_rrdtool
 www-servers/lighttpd:webdav - Enable webdav properties
@@ -3998,6 +4027,7 @@ x11-libs/qt-assistant:qt3support - Enable the Qt3Support libraries for Qt4. Note
 x11-libs/qt-assistant:trace - Build the qttracereplay utility which is required to play drawings recorded with the trace graphicssystem engine
 x11-libs/qt-core:exceptions - Add support for exceptions - like catching them inside the event loop (recommended by Nokia)
 x11-libs/qt-core:glib - Enable dev-libs/glib eventloop support
+x11-libs/qt-core:jit - Enables JIT for Javascript usage inside Qt
 x11-libs/qt-core:optimized-qmake - Enable qmake optimization
 x11-libs/qt-core:private-headers - Install Qt declarative private headers required by Qt-creator QmlDesigner and QmlInspector plugins"
 x11-libs/qt-core:qt3support - Enable the Qt3Support libraries for Qt4. Note that this does not mean you can compile pure Qt3 programs with Qt4.
@@ -4023,12 +4053,14 @@ x11-libs/qt-qt3support:exceptions - Add support for exceptions - like catching t
 x11-libs/qt-qt3support:kde -  Select media-sound/phonon as phonon variant needed for kde 
 x11-libs/qt-qt3support:phonon -  Enable phonon configuration dialog in qtconfig 
 x11-libs/qt-script:exceptions - Add support for exceptions - like catching them inside the event loop (recommended by Nokia)
+x11-libs/qt-script:jit - Enables JIT for Javascript usage inside Qt
 x11-libs/qt-script:private-headers - Install Qt declarative private headers required by Qt-creator QmlDesigner and QmlInspector plugins"
 x11-libs/qt-sql:exceptions - Add support for exceptions - like catching them inside the event loop (recommended by Nokia)
 x11-libs/qt-sql:qt3support - Enable the Qt3Support libraries for Qt4
 x11-libs/qt-svg:exceptions - Add support for exceptions - like catching them inside the event loop (recommended by Nokia)
 x11-libs/qt-test:exceptions - Add support for exceptions - like catching them inside the event loop (recommended by Nokia)
 x11-libs/qt-webkit:exceptions - Add support for exceptions - like catching them inside the event loop (recommended by Nokia)
+x11-libs/qt-webkit:jit - Enables JIT for Javascript usage inside Qt
 x11-libs/qt-webkit:kde -  Select media-sound/phonon as phonon variant needed for kde 
 x11-libs/vte:glade - Provide integration with dev-util/glade.
 x11-libs/vte:introspection - Use dev-libs/gobject-introspectionfor introspection

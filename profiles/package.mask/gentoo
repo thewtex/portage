@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12206 2010/11/16 12:26:16 tove Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12215 2010/11/21 00:30:38 mpagano Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,30 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Mike Pagano <mpagano@gentoo.org> (20 Nov 2010)
+# Mask this version of gentoo-sources while we test
+# the effectiveness of the TTY-based group scheduling 
+# patch. 
+=sys-kernel/gentoo-sources-2.6.36-r2
+
+# Michael Sterrett <mr_bones_@gentoo.org> (20 Nov 2010)
+# Unsupportable.  masked for removal on 20101220
+# Use games-action/gltron instead
+games-action/armagetronad
+
+# Markos Chandras <hwoarang@gentoo.org> (20 Nov 2010)
+# Masking qbittorrent live ebuild
+=net-p2p/qbittorrent-9999
+
+# Pawel Hajdan jr <phajdan.jr@gentoo.org> (19 Nov 2010)
+# Mask v8 versions used for www-client/chromium dev channel releases.
+# Currently v8-2.5.x versions are used for chromium-9.x versions.
+>=dev-lang/v8-2.5.0
+
+# Michael Sterrett <mr_bones_@gentoo.org> (17 Nov 2010)
+# Security mask for bug #345691
+games-simulation/openttd
 
 # Peter Volkov <pva@gentoo.org> (16 Nov 2010)
 # Last rites: dev-python/py-rrdtool #345701
@@ -700,10 +724,6 @@ x11-libs/gtkscintilla2
 # masked live version
 =x11-libs/cairo-9999*
 
-# Doug Goldstein <cardoe@gentoo.org> (7 Sep 2010)
-# beta series mask
->=x11-drivers/nvidia-drivers-260
-
 # Kacper Kowalik <xarthisius@gentoo.org> (7 Sep 2010)
 # Mask until fully tested
 x11-misc/lightdm
@@ -818,12 +838,6 @@ app-admin/webmin
 # <http://my.opera.com/desktopteam/blog>
 =www-client/opera-10.70*
 =www-client/opera-11*
-
-# Pawel Hajdan jr <phajdan.jr@gentoo.org> (25 Jul 2010)
-# The v8 package is still very experimental and not ready for general use.
-# All comments, feedback, and patches are welcome, see the project page:
-# http://www.gentoo.org/proj/en/desktop/chromium/index.xml
-dev-lang/v8
 
 # Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (22 Jul 2010)
 # Development versions.
@@ -1120,6 +1134,7 @@ media-tv/vdrplugin-rebuild
 # experimental features and accept a more unstable release.
 ~www-client/chromium-9.0.570.0
 ~www-client/chromium-9.0.576.0
+~www-client/chromium-9.0.587.0
 
 # Christian Parpart <trapni@gentoo.org> (23 Dec 2009)
 # Masked for testing/feedback.

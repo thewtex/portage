@@ -1,0 +1,22 @@
+ruby_targets_ruby18? ( test? ( virtual/ruby-test-unit[ruby_targets_ruby18] ) ) ruby_targets_ree18? ( test? ( virtual/ruby-test-unit[ruby_targets_ree18] ) ) ruby_targets_jruby? ( test? ( virtual/ruby-test-unit[ruby_targets_jruby] ) ) ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ree18? ( dev-lang/ruby-enterprise:1.8 ) ruby_targets_jruby? ( dev-java/jruby ) test? ( ruby_targets_ruby18? ( virtual/rubygems[ruby_targets_ruby18] ) ruby_targets_ree18? ( virtual/rubygems[ruby_targets_ree18] ) ruby_targets_jruby? ( virtual/rubygems[ruby_targets_jruby] ) )
+ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ree18? ( dev-lang/ruby-enterprise:1.8 ) ruby_targets_jruby? ( dev-java/jruby ) ruby_targets_ruby18? ( virtual/rubygems[ruby_targets_ruby18] ) ruby_targets_ree18? ( virtual/rubygems[ruby_targets_ree18] ) ruby_targets_jruby? ( virtual/rubygems[ruby_targets_jruby] )
+0
+mirror://rubygems/fattr-2.2.0.gem
+
+http://rubyforge.org/projects/codeforpeople/
+Ruby
+fattr.rb is a "fatter attr" for ruby.
+~amd64 ~x86
+eutils multilib portability ruby-fakegem ruby-ng toolchain-funcs
+test ruby_targets_ruby18 ruby_targets_ree18 ruby_targets_jruby test
+
+
+
+2
+
+compile configure install prepare setup test unpack
+
+
+
+
+
