@@ -1,12 +1,12 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/calibre/calibre-0.7.25.ebuild,v 1.1 2010/10/30 14:25:40 zmedico Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/calibre/calibre-0.7.29.ebuild,v 1.1 2010/11/22 01:12:37 zmedico Exp $
 
 EAPI=3
 PYTHON_DEPEND=2:2.6
 PYTHON_USE_WITH=sqlite
 
-inherit python distutils eutils fdo-mime bash-completion
+inherit python distutils eutils fdo-mime bash-completion multilib
 
 DESCRIPTION="Ebook management application."
 HOMEPAGE="http://calibre-ebook.com/"
@@ -109,10 +109,14 @@ src_install() {
 
 	# This code may fail if behavior of --root, --bindir or
 	# --sharedir changes in the future.
-	dodir /usr/lib
-	mv "${D}lib/calibre" "${D}usr/lib/" ||
-		die "failed to move lib dir"
+	local libdir=$(get_libdir)
+	dodir /usr/$libdir
+	mv "${D}lib/calibre" "${D}usr/$libdir/" ||
+		die "failed to move libdir"
 	find "${D}"lib -type d -empty -delete
+	grep -rlZ "/usr/lib/calibre" "${D}" | \
+		xargs -0 sed -e "s:/usr/lib/calibre:/usr/$libdir/calibre:g" -i ||
+		die "failed to fix harcoded libdir paths"
 
 	dodir /usr/bin
 	mv "${D}bin/"* "${D}usr/bin/" ||
