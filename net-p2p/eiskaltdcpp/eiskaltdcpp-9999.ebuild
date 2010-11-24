@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/eiskaltdcpp/eiskaltdcpp-9999.ebuild,v 1.15 2010/10/25 13:34:31 pva Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/eiskaltdcpp/eiskaltdcpp-9999.ebuild,v 1.16 2010/11/24 11:42:22 pva Exp $
 
 EAPI="2"
 
@@ -15,7 +15,7 @@ EGIT_REPO_URI="git://github.com/negativ/${PN}.git"
 LICENSE="GPL-2 GPL-3"
 SLOT="0"
 KEYWORDS=""
-IUSE="dbus +emoticons examples -gnome -gtk -javascript kde libnotify lua +qt4 sounds spell upnp"
+IUSE="dbus +emoticons examples -gnome -gtk -javascript libnotify lua +qt4 pcre sounds spell upnp"
 
 RDEPEND="
 	app-arch/bzip2
@@ -39,12 +39,9 @@ RDEPEND="
 			x11-libs/qt-script
 			x11-libs/qtscriptgenerator
 		)
-		kde? (
-			kde-base/oxygen-icons
-			>=x11-libs/qt-gui-4.6.0:4
-		)
 		spell? ( app-text/aspell )
 	)
+	pcre? ( >=dev-libs/libpcre-4.2 )
 "
 DEPEND="${RDEPEND}
 	>=dev-libs/boost-1.34.1
@@ -64,7 +61,6 @@ src_configure() {
 		"$(cmake-utils_use lua LUA_SCRIPT)"
 		"$(cmake-utils_use dbus DBUS_NOTIFY)"
 		"$(cmake-utils_use javascript USE_JS)"
-		"$(cmake-utils_use kde USE_ICON_THEME)"
 		"$(cmake-utils_use spell USE_ASPELL)"
 		"$(cmake-utils_use qt4 USE_QT)"
 		"$(cmake-utils_use upnp USE_MINIUPNP)"
@@ -75,6 +71,7 @@ src_configure() {
 		"$(cmake-utils_use emoticons WITH_EMOTICONS)"
 		"$(cmake-utils_use examples WITH_EXAMPLES)"
 		"$(cmake-utils_use lua WITH_LUASCRIPTS)"
+		"$(cmake-utils_use pcre PERL_REGEX)"
 		"$(cmake-utils_use sounds WITH_SOUNDS)"
 		-Dlinguas="${langs}"
 	)
