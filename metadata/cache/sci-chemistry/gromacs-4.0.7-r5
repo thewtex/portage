@@ -1,0 +1,22 @@
+app-shells/tcsh X? ( x11-libs/libX11 x11-libs/libSM x11-libs/libICE ) dmalloc? ( dev-libs/dmalloc ) blas? ( virtual/blas ) fftw? ( sci-libs/fftw:3.0 ) gsl? ( sci-libs/gsl ) lapack? ( virtual/lapack ) mpi? ( virtual/mpi ) xml? ( dev-libs/libxml2 ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b
+app-shells/tcsh X? ( x11-libs/libX11 x11-libs/libSM x11-libs/libICE ) dmalloc? ( dev-libs/dmalloc ) blas? ( virtual/blas ) fftw? ( sci-libs/fftw:3.0 ) gsl? ( sci-libs/gsl ) lapack? ( virtual/lapack ) mpi? ( virtual/mpi ) xml? ( dev-libs/libxml2 ) bash-completion? ( app-admin/eselect )
+0
+ftp://ftp.gromacs.org/pub/gromacs/gromacs-4.0.7.tar.gz mirror://gentoo/gromacs-4.0.7_upstream2010-09-15.patch.bz2 mirror://gentoo/gromacs-4.0.7_missing_distfiles.patch.bz2 test? ( ftp://ftp.gromacs.org/pub/tests/gmxtest-4.0.4.tgz ) doc? ( ftp://ftp.gromacs.org/pub/manual/manual-4.0.pdf -> gromacs-manual-4.0.pdf ) ffamber? ( http://ffamber.cnsm.csulb.edu/ffamber_v4.0-doc.tar.gz )
+test
+http://www.gromacs.org/
+GPL-2
+The ultimate molecular dynamics simulation package
+~alpha ~amd64 ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux
+autotools bash-completion eutils fortran libtool multilib portability toolchain-funcs
+X blas dmalloc doc -double-precision ffamber +fftw fkernels +gsl lapack mpi +single-precision static static-libs test +xml zsh-completion bash-completion debug
+
+bash-completion? ( app-shells/bash-completion )
+
+3
+
+compile configure install postinst prepare setup test unpack
+
+
+
+
+

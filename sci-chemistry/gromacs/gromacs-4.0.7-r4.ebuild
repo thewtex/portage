@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/gromacs/gromacs-4.0.7-r4.ebuild,v 1.8 2010/10/25 08:53:31 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/gromacs/gromacs-4.0.7-r4.ebuild,v 1.9 2010/11/25 13:08:58 alexxy Exp $
 
 EAPI="3"
 
@@ -14,7 +14,7 @@ HOMEPAGE="http://www.gromacs.org/"
 SRC_URI="ftp://ftp.gromacs.org/pub/${PN}/${P}.tar.gz
 		mirror://gentoo/${P}_upstream2010-06-08.patch.gz
 		test? ( ftp://ftp.gromacs.org/pub/tests/gmxtest-${TEST_PV}.tgz )
-		doc? ( ftp://ftp.gromacs.org/pub/manual/manual-4.0.pdf )
+		doc? ( ftp://ftp.gromacs.org/pub/manual/manual-4.0.pdf -> gromacs-manual-4.0.pdf )
 		ffamber? ( http://ffamber.cnsm.csulb.edu/ffamber_v4.0-doc.tar.gz )"
 
 LICENSE="GPL-2"
