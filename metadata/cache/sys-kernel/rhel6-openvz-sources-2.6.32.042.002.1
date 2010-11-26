@@ -1,0 +1,22 @@
+>=sys-fs/udev-147 !build? ( sys-apps/sed >=sys-devel/binutils-2.11.90.0.31 )
+>=sys-fs/udev-147 !build? ( >=sys-libs/ncurses-5.2 sys-devel/make )
+2.6.32.042.002.1
+mirror://kernel/linux/kernel/v./linux-2.6.32.tar.bz2 http://download.openvz.org/kernel/branches/rhel6-2.6.32/042test002.1/configs/config-2.6.32-042test002.1.i686 http://download.openvz.org/kernel/branches/rhel6-2.6.32/042test002.1/configs/config-2.6.32-042test002.1.x86_64 http://download.openvz.org/kernel/branches/rhel6-2.6.32/042test002.1/patches/patch-042test002.1-combined.gz
+binchecks strip
+http://www.openvz.org
+GPL-2 freedist
+Full Linux kernel sources - RHEL6 kernel with OpenVZ patchset
+amd64 x86
+eutils kernel-2 multilib portability toolchain-funcs versionator
+symlink build
+
+!build? ( virtual/dev-manager )
+virtual/linux-sources
+
+
+compile install postinst preinst setup test unpack
+
+
+
+
+
