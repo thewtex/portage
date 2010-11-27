@@ -71,8 +71,7 @@ src_unpack() {
 		epatch "${i}"
 	done
 	# Add crypt support
-	epatch "${FILESDIR}"/${PN}-crypt-config.patch
-
+	#epatch "${FILESDIR}"/${PN}-crypt-config.patch
 }
 
 src_install() {
