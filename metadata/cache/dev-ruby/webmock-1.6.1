@@ -1,0 +1,22 @@
+test? ( ruby_targets_ruby18? ( >=dev-ruby/addressable-2.2.2[ruby_targets_ruby18] >=dev-ruby/crack-0.1.7[ruby_targets_ruby18] ) ruby_targets_ruby19? ( >=dev-ruby/addressable-2.2.2[ruby_targets_ruby19] >=dev-ruby/crack-0.1.7[ruby_targets_ruby19] ) ) ruby_targets_ruby18? ( test? ( virtual/ruby-test-unit[ruby_targets_ruby18] dev-ruby/rspec:2[ruby_targets_ruby18] >=dev-ruby/httpclient-2.1.5.2[ruby_targets_ruby18] >=dev-ruby/patron-0.4.9-r1[ruby_targets_ruby18] >=dev-ruby/em-http-request-0.2.14[ruby_targets_ruby18] ) ) ruby_targets_ruby19? ( test? ( virtual/ruby-test-unit[ruby_targets_ruby19] dev-ruby/rspec:2[ruby_targets_ruby19] >=dev-ruby/httpclient-2.1.5.2[ruby_targets_ruby19] >=dev-ruby/patron-0.4.9-r1[ruby_targets_ruby19] >=dev-ruby/em-http-request-0.2.14[ruby_targets_ruby19] ) ) ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ruby19? ( dev-lang/ruby:1.9 ) ruby_targets_ruby18? ( doc? ( dev-ruby/rake[ruby_targets_ruby18] ) ) ruby_targets_ruby19? ( doc? ( dev-ruby/rake[ruby_targets_ruby19] ) ) ruby_targets_ruby18? ( test? ( dev-ruby/rake[ruby_targets_ruby18] ) ) ruby_targets_ruby19? ( test? ( dev-ruby/rake[ruby_targets_ruby19] ) ) test? ( ruby_targets_ruby18? ( virtual/rubygems[ruby_targets_ruby18] ) ruby_targets_ruby19? ( virtual/rubygems[ruby_targets_ruby19] ) )
+ruby_targets_ruby18? ( >=dev-ruby/addressable-2.2.2[ruby_targets_ruby18] >=dev-ruby/crack-0.1.7[ruby_targets_ruby18] ) ruby_targets_ruby19? ( >=dev-ruby/addressable-2.2.2[ruby_targets_ruby19] >=dev-ruby/crack-0.1.7[ruby_targets_ruby19] ) ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ruby19? ( dev-lang/ruby:1.9 ) ruby_targets_ruby18? ( virtual/rubygems[ruby_targets_ruby18] ) ruby_targets_ruby19? ( virtual/rubygems[ruby_targets_ruby19] )
+0
+mirror://rubygems/webmock-1.6.1.gem
+
+http://github.com/bblimke/webmock
+GPL-2
+Allows stubbing HTTP requests and setting expectations on HTTP requests
+~amd64 ~x86
+eutils multilib portability ruby-fakegem ruby-ng toolchain-funcs
+test ruby_targets_ruby18 ruby_targets_ruby19 doc doc test
+
+
+
+2
+
+compile configure install prepare setup test unpack
+
+
+
+
+
