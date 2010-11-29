@@ -25,18 +25,23 @@ src_prepare() {
 	eautoreconf
 }
 
-
 src_configure() {
 	if ! use gtk; then myconf+=" --disable-gpaco"; fi
 	if ! use tools; then myconf+=" --disable-scripts"; fi
-
+	myconf+=" -with-paco-logdir=/var/lib/paco"
 	econf $myconf
 }
 
 src_install() {
-	einstall || die
+	make DESTDIR="${D}" install || die
 	dodoc BUGS ChangeLog README doc/pacorc doc/faq.txt
-	
 	# We want docs in /usr/share/doc/paco.
 	rm -fr "${D}/usr/share/paco" || die
+}
+
+pkg_postinst() {
+	ewarn
+	ewarn "Funtoo's Paco use /var/lib/paco instead of /var/log/paco."
+	ewarn "If it is upgrade, remember to move your current log to new location."
+	ewarn
 }
