@@ -277,6 +277,12 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
+
+	PYTHON_ABI="$(eselect python show --python2 --ABI)"
+	if [ -z "${PYTHON_ABI}" ]; then
+		eselect python update --python2 > /dev/null
+	fi
+
 	python_mod_optimize -f -x "/(site-packages|test|tests)/" $(python_get_libdir)
 
 	if [[ "${python_updater_warning}" == "1" ]]; then

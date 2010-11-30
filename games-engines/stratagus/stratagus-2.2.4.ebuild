@@ -1,11 +1,11 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-engines/stratagus/stratagus-2.2.4.ebuild,v 1.3 2009/08/11 06:15:01 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-engines/stratagus/stratagus-2.2.4.ebuild,v 1.4 2010/11/29 06:40:37 mr_bones_ Exp $
 
 inherit eutils games
 
 DESCRIPTION="A realtime strategy game engine"
-HOMEPAGE="http://www.stratagus.org/"
+HOMEPAGE="http://stratagus.sourceforge.net/"
 SRC_URI="mirror://sourceforge/stratagus/${P}-src.tar.gz"
 
 LICENSE="GPL-2"

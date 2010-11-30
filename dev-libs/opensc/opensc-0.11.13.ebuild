@@ -1,8 +1,10 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/opensc/opensc-0.11.13.ebuild,v 1.7 2010/10/17 18:02:28 arfrever Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/opensc/opensc-0.11.13.ebuild,v 1.8 2010/11/29 13:43:03 flameeyes Exp $
 
 EAPI="2"
+
+inherit eutils
 
 DESCRIPTION="SmartCard library and applications"
 HOMEPAGE="http://www.opensc-project.org/opensc/"
@@ -14,8 +16,11 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 IUSE="doc openct pcsc-lite"
 
+# libtool is required at runtime for libltdl
 RDEPEND="dev-libs/openssl
 	sys-libs/zlib
+	sys-devel/libtool
+	sys-libs/readline
 	openct? ( >=dev-libs/openct-0.5.0 )
 	pcsc-lite? ( >=sys-apps/pcsc-lite-1.3.0 )"
 DEPEND="${RDEPEND}
@@ -26,6 +31,10 @@ pkg_setup() {
 		elog "Support for openct is deprecated."
 		elog "It is recommended to use pcsc-lite."
 	fi
+}
+
+src_prepare() {
+	epatch "${FILESDIR}"/${P}+pcsc-lite-1.6.2.patch
 }
 
 src_configure() {

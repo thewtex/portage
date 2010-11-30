@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.6191 2010/11/28 21:54:30 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.6195 2010/11/30 03:13:46 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -646,7 +646,6 @@ app-shells/bash:mem-scramble - Build with custom malloc/free overwriting allocat
 app-shells/bash:net - Enable /dev/tcp/host/port redirection
 app-shells/bash:plugins - Add support for loading builtins at runtime via 'enable'
 app-shells/pdsh:rsh - This allows the use of rsh (remote shell) and rcp (remote copy) for authoring websites. sftp is a much more secure protocol and is preferred.
-app-shells/scsh:scsh - Use a non-FHS directory layout
 app-shells/scsh-install-lib:scsh - Use a non-FHS directory layout
 app-shells/shish:diet - Use dev-libs/dietlibc
 app-shells/tcsh:catalogs - Add support for NLS catalogs
@@ -2440,7 +2439,7 @@ media-video/vlc:sdl-image - Enables sdl image video decoder (depends on sdl)
 media-video/vlc:shine - Enables shine fixed point mp3 encoder.
 media-video/vlc:shout - Enables libshout output.
 media-video/vlc:skins - Enables support for the skins2 interface.
-media-video/vlc:stream - Enables vlc to stream video.
+media-video/vlc:stream - Enables sout module for audio/video data streaming/transcoding/etc..
 media-video/vlc:twolame - Enables twolame support (MPEG Audio Layer 2 encoder).
 media-video/vlc:upnp - Enables support for Intel UPnP stack.
 media-video/vlc:vaapi - Enables VAAPI (Video Acceleration API) for hardware decoding
@@ -3437,6 +3436,7 @@ sci-libs/blas-goto:int64 - Build the 64 bits integer library
 sci-libs/cholmod:metis - Enable the Partition module to cholmod using metis (sci-libs/metis, sci-libs/parmetis)
 sci-libs/cholmod:supernodal - Enable the Supernodal module (needs virtual/lapack)
 sci-libs/fftw:float - Link default library to single precision instead of double (symlinks only and fftw-2.1)
+sci-libs/gdal:aux_xml - Enable Portable Auxilliary Metadata generation
 sci-libs/gdal:ecwj2k - Enable support for alternate jpeg2k library sci-libs/libecwj2
 sci-libs/gdal:fits - Enable support for NASA's sci-libs/cfitsio library
 sci-libs/gdal:geos - Add support for geometry engine (sci-libs/geos 
@@ -3694,7 +3694,6 @@ sys-cluster/lam-mpi:xmpi - Build support for the external XMPI debugging GUI
 sys-cluster/mpi-dotnet:doc - Install tutorials for C# and IronPython (requires a Word document reader)
 sys-cluster/mpi-dotnet:examples - Install small, illustrative projects using MPI.Net
 sys-cluster/mpich2:mpi-threads - Enable MPI_THREAD_MULTIPLE
-sys-cluster/mpich2:pvfs2 - Add pvfs2 support
 sys-cluster/mpich2:romio - Enable romio, a high-performance portable MPI-IO implementation
 sys-cluster/ocfs:aio - Add aio support
 sys-cluster/openmpi:heterogeneous - Enable features required for heterogeneous platform support
