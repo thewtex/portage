@@ -278,9 +278,11 @@ pkg_preinst() {
 
 pkg_postinst() {
 
-	PYTHON_ABI="$(eselect python show --python2 --ABI)"
-	if [ -z "${PYTHON_ABI}" ]; then
-		eselect python update --python2 > /dev/null
+	if [ -z "$(eselect python show --ABI)" ]
+	then
+		# no default version of python enabled - enable ourselves, so
+		# /usr/bin/python exists:
+		eselect python set --python2 > /dev/null 2>&1
 	fi
 
 	python_mod_optimize -f -x "/(site-packages|test|tests)/" $(python_get_libdir)
