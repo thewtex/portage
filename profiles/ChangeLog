@@ -1,10 +1,27 @@
 # ChangeLog for profile directory
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.4824 2010/12/01 07:18:43 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.4829 2010/12/02 21:15:44 alexxy Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  02 Dec 2010; Alexey Shvetsov <alexxy@gentoo.org> arch/powerpc/package.mask,
+  hardened/linux/powerpc/package.mask:
+  Mask KDE SC 4.5 due to missing deps on ppc ppc64 and x86-fbsd. bug #336158
+
+  02 Dec 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> package.mask:
+  Mask www-client/chromium dev channel release.
+
+  02 Dec 2010; Robin H. Johnson <robbat2@gentoo.org> desc/apache2_modules.desc:
+  Bug #347227: add in mod_reqtimeout (for use on Gentoo Infra). Also add
+  mod_proxy_scgi.
+
+  01 Dec 2010; Michał Januszewski <spock@gentoo.org> package.mask:
+  Mask the latest beta drivers from NVIDIA.
+
+  01 Dec 2010; Joerg Bornkessel <hd_brummy@gentoo.org> package.mask:
+  removed ebuild mask, depend on bug 335785
 
   01 Dec 2010; Ulrich Mueller <ulm@gentoo.org> license_groups:
   Add CPL-0.5 to the MISC-FREE license group, as it is almost identical with

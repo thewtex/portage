@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12240 2010/11/30 20:51:21 pva Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12244 2010/12/02 15:38:29 ssuominen Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,11 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Michal Januszewski <spock@gentoo.org> <1 Dec 2010)
+# Beta NVIDIA drivers.  This is the first 260.x release that works on GF330M,
+# so it might be useful for some users.
+=x11-drivers/nvidia-drivers-260.19.26
 
 # Michael Sterrett <mr_bones_@gentoo.org> (29 Nov 2010)
 # Non-games-team addition that is too painful to maintain.
@@ -683,12 +688,6 @@ net-p2p/overnet
 # Removal on 2010-11-26
 app-benchmarks/xfbsuite
 
-# Joerg Bornkessel <hd_brummy@gentoo.org> ( 26 Sep 2010 )
-# masked for removel in 30 days,
-# bug 335785
-# ttf-bitstream-vera issues
-=media-plugins/vdr-graphtft-0.1.21_alpha-r1
-
 # Nirbheek Chauhan <nirbheek@gentoo.org> (25 Sep 2010)
 # Mask new versions of glib, polkit, gtk+, etc
 # Will be unmasked after proper testing
@@ -701,6 +700,7 @@ app-benchmarks/xfbsuite
 >=dev-lang/vala-0.11
 >=sys-power/upower-0.9.6
 >=dev-libs/dbus-glib-0.92
+>=sys-fs/udisks-1.0.2
 
 # Rémi Cardona <remi@gentoo.org> (21 Sep 2010)
 # Dead upstream, ebuild does more work than its Makefiles,
@@ -1121,6 +1121,7 @@ media-tv/vdrplugin-rebuild
 ~www-client/chromium-9.0.570.0
 ~www-client/chromium-9.0.576.0
 ~www-client/chromium-9.0.587.0
+~www-client/chromium-9.0.597.0
 
 # Christian Parpart <trapni@gentoo.org> (23 Dec 2009)
 # Masked for testing/feedback.
