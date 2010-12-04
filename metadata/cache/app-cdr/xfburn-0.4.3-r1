@@ -1,5 +1,5 @@
->=dev-libs/libburn-0.4.2 >=dev-libs/libisofs-0.6.2 >=x11-libs/gtk+-2.10:2 >=xfce-base/libxfcegui4-4.4 >=xfce-base/exo-0.3 dbus? ( dev-libs/dbus-glib ) gstreamer? ( media-libs/gstreamer >=media-libs/gst-plugins-base-0.10.20 ) dev-util/pkgconfig dev-util/intltool sys-devel/gettext || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b >=sys-apps/sed-4
->=dev-libs/libburn-0.4.2 >=dev-libs/libisofs-0.6.2 >=x11-libs/gtk+-2.10:2 >=xfce-base/libxfcegui4-4.4 >=xfce-base/exo-0.3 dbus? ( dev-libs/dbus-glib ) gstreamer? ( media-libs/gstreamer >=media-libs/gst-plugins-base-0.10.20 )
+>=dev-libs/libburn-0.4.2 >=dev-libs/libisofs-0.6.2 >=x11-libs/gtk+-2.10:2 >=xfce-base/libxfcegui4-4.4 >=xfce-base/exo-0.3 dbus? ( dev-libs/dbus-glib ) gstreamer? ( media-libs/gstreamer >=media-libs/gst-plugins-base-0.10.20 ) thunar? ( || ( xfce-extra/thunar-vfs <xfce-base/thunar-1.1.0 ) ) dev-util/pkgconfig dev-util/intltool sys-devel/gettext || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b >=sys-apps/sed-4
+>=dev-libs/libburn-0.4.2 >=dev-libs/libisofs-0.6.2 >=x11-libs/gtk+-2.10:2 >=xfce-base/libxfcegui4-4.4 >=xfce-base/exo-0.3 dbus? ( dev-libs/dbus-glib ) gstreamer? ( media-libs/gstreamer >=media-libs/gst-plugins-base-0.10.20 ) thunar? ( || ( xfce-extra/thunar-vfs <xfce-base/thunar-1.1.0 ) )
 0
 mirror://xfce/src/apps/xfburn/0.4/xfburn-0.4.3.tar.bz2
 
@@ -8,11 +8,11 @@ GPL-2
 GTK+ based CD and DVD burning application
 amd64 ppc x86
 autotools base eutils fdo-mime gnome2-utils libtool multilib portability toolchain-funcs xfconf
-dbus debug gstreamer
+dbus debug gstreamer thunar
 
 
 
-2
+3
 
 compile configure install postinst postrm preinst prepare setup unpack
 

@@ -1,14 +1,14 @@
-ruby_targets_ruby18? ( test? ( virtual/ruby-test-unit[ruby_targets_ruby18] ) ) ruby_targets_ruby19? ( test? ( virtual/ruby-test-unit[ruby_targets_ruby19] ) ) ruby_targets_jruby? ( test? ( virtual/ruby-test-unit[ruby_targets_jruby] ) ) test? ( sys-apps/coreutils ) ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ruby19? ( dev-lang/ruby:1.9 ) ruby_targets_jruby? ( dev-java/jruby ) test? ( ruby_targets_ruby18? ( virtual/rubygems[ruby_targets_ruby18] ) ruby_targets_ruby19? ( virtual/rubygems[ruby_targets_ruby19] ) ruby_targets_jruby? ( virtual/rubygems[ruby_targets_jruby] ) )
-ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ruby19? ( dev-lang/ruby:1.9 ) ruby_targets_jruby? ( dev-java/jruby ) ruby_targets_ruby18? ( virtual/rubygems[ruby_targets_ruby18] ) ruby_targets_ruby19? ( virtual/rubygems[ruby_targets_ruby19] ) ruby_targets_jruby? ( virtual/rubygems[ruby_targets_jruby] )
+ruby_targets_ruby18? ( test? ( virtual/ruby-test-unit[ruby_targets_ruby18] ) ) ruby_targets_ruby19? ( test? ( virtual/ruby-test-unit[ruby_targets_ruby19] ) ) ruby_targets_jruby? ( test? ( virtual/ruby-test-unit[ruby_targets_jruby] ) ) ruby_targets_ree18? ( test? ( virtual/ruby-test-unit[ruby_targets_ree18] ) ) test? ( sys-apps/coreutils ) ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ruby19? ( dev-lang/ruby:1.9 ) ruby_targets_jruby? ( dev-java/jruby ) ruby_targets_ree18? ( dev-lang/ruby-enterprise:1.8 ) test? ( ruby_targets_ruby18? ( virtual/rubygems[ruby_targets_ruby18] ) ruby_targets_ruby19? ( virtual/rubygems[ruby_targets_ruby19] ) ruby_targets_jruby? ( virtual/rubygems[ruby_targets_jruby] ) ruby_targets_ree18? ( virtual/rubygems[ruby_targets_ree18] ) )
+ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ruby19? ( dev-lang/ruby:1.9 ) ruby_targets_jruby? ( dev-java/jruby ) ruby_targets_ree18? ( dev-lang/ruby-enterprise:1.8 ) ruby_targets_ruby18? ( virtual/rubygems[ruby_targets_ruby18] ) ruby_targets_ruby19? ( virtual/rubygems[ruby_targets_ruby19] ) ruby_targets_jruby? ( virtual/rubygems[ruby_targets_jruby] ) ruby_targets_ree18? ( virtual/rubygems[ruby_targets_ree18] )
 0
 mirror://rubygems/session-3.1.0.gem
 
 http://codeforpeople.com/lib/ruby/session/
 Ruby
 A set of classes to drive external programs via pipe
-~amd64 ~hppa ~sparc ~x86
+~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86
 eutils multilib portability ruby-fakegem ruby-ng toolchain-funcs
-test ruby_targets_ruby18 ruby_targets_ruby19 ruby_targets_jruby test
+test ruby_targets_ruby18 ruby_targets_ruby19 ruby_targets_jruby ruby_targets_ree18 test
 
 
 
