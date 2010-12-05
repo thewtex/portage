@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/thor/thor-0.14.2.ebuild,v 1.2 2010/10/20 11:06:35 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/thor/thor-0.14.6.ebuild,v 1.1 2010/12/04 20:40:07 graaff Exp $
 
 EAPI=2
 USE_RUBY="ruby18 ree18 ruby19"
@@ -25,17 +25,20 @@ KEYWORDS="~amd64 ~x86"
 IUSE="doc"
 
 ruby_add_bdepend "
-	test? ( dev-ruby/fakeweb )
+	test? ( dev-ruby/fakeweb dev-ruby/rspec:2 )
 	doc? ( dev-ruby/rdoc )"
 
 all_ruby_prepare() {
-	einfo $(pwd)
-	# Having VERSION in the docs makes the rdoc generation fail.
-	sed -i -e '/EXTRA_RDOC_FILES/s/"VERSION", //' Thorfile || die
+	# Remove Bundler
+	rm Gemfile Gemfile.lock || die
+	sed -i -e '/[Bb]undler/d' Thorfile || die
+
+	# Remove mandatory coverage collection using simplecov which is not
+	# packaged.
+	sed -i -e '3,7d' spec/spec_helper.rb || die
 }
 
 all_ruby_compile() {
-	einfo $(pwd)
 	if use doc; then
 		ruby -Ilib bin/thor rdoc || die "RDoc generation failed"
 	fi
