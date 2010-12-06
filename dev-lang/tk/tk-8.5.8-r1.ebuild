@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/tk/tk-8.5.8-r1.ebuild,v 1.9 2010/10/24 15:32:37 ranger Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/tk/tk-8.5.8-r1.ebuild,v 1.10 2010/12/06 17:16:55 jlec Exp $
 
 EAPI="3"
 
@@ -47,7 +47,7 @@ src_configure() {
 	local mylibdir=$(get_libdir) ; mylibdir=${mylibdir//\/}
 
 	econf \
-		--with-tcl="${EPREFIX}"/usr/${mylibdir} \
+		--with-tcl="${EPREFIX}/usr/${mylibdir}" \
 		$(use_enable threads) \
 		$(use_enable aqua) \
 		$(use_enable truetype xft) \
