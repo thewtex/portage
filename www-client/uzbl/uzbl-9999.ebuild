@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/uzbl/uzbl-9999.ebuild,v 1.16 2010/04/04 15:36:16 wired Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/uzbl/uzbl-9999.ebuild,v 1.17 2010/12/05 22:26:37 wired Exp $
 
 EAPI="2"
 
@@ -29,6 +29,7 @@ SLOT="0"
 IUSE+=" +browser helpers +tabbed vim-syntax"
 
 COMMON_DEPEND="
+	dev-libs/glib:2
 	>=dev-libs/icu-4.0.1
 	>=net-libs/libsoup-2.24
 	>=net-libs/webkit-gtk-1.1.15
