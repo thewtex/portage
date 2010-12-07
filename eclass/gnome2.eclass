@@ -1,6 +1,6 @@
 # Copyright 1999-2006 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/gnome2.eclass,v 1.87 2010/04/26 19:37:25 abcd Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/gnome2.eclass,v 1.90 2010/12/07 06:20:40 eva Exp $
 
 #
 # gnome2.eclass
@@ -18,9 +18,10 @@ case "${EAPI:-0}" in
 	0|1)
 		EXPORT_FUNCTIONS src_unpack src_compile src_install pkg_preinst pkg_postinst pkg_postrm
 		;;
-	*)
+	2|3)
 		EXPORT_FUNCTIONS src_unpack src_prepare src_configure src_compile src_install pkg_preinst pkg_postinst pkg_postrm
 		;;
+	*) die "EAPI=${EAPI} is not supported" ;;
 esac
 
 # Extra configure opts passed to econf
@@ -87,7 +88,7 @@ gnome2_src_install() {
 	# if this is not present, scrollkeeper-update may segfault and
 	# create bogus directories in /var/lib/
 	local sk_tmp_dir="/var/lib/scrollkeeper"
-	dodir "${sk_tmp_dir}"
+	dodir "${sk_tmp_dir}" || die "dodir failed"
 
 	# we must delay gconf schema installation due to sandbox
 	export GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL="1"
@@ -103,7 +104,9 @@ gnome2_src_install() {
 	unset GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL
 
 	# Manual document installation
-	[[ -n "${DOCS}" ]] && dodoc ${DOCS}
+	if [[ -n "${DOCS}" ]]; then
+		dodoc ${DOCS} || die "dodoc failed"
+	fi
 
 	# Do not keep /var/lib/scrollkeeper because:
 	# 1. The scrollkeeper database is regenerated at pkg_postinst()
@@ -121,6 +124,7 @@ gnome2_src_install() {
 gnome2_pkg_preinst() {
 	gnome2_gconf_savelist
 	gnome2_icon_savelist
+	gnome2_schemas_savelist
 }
 
 gnome2_pkg_postinst() {
@@ -128,6 +132,7 @@ gnome2_pkg_postinst() {
 	fdo-mime_desktop_database_update
 	fdo-mime_mime_database_update
 	gnome2_icon_cache_update
+	gnome2_schemas_update
 
 	if [[ "${SCROLLKEEPER_UPDATE}" = "1" ]]; then
 		gnome2_scrollkeeper_update
@@ -142,6 +147,7 @@ gnome2_pkg_postrm() {
 	fdo-mime_desktop_database_update
 	fdo-mime_mime_database_update
 	gnome2_icon_cache_update
+	gnome2_schemas_update --uninstall
 
 	if [[ "${SCROLLKEEPER_UPDATE}" = "1" ]]; then
 		gnome2_scrollkeeper_update

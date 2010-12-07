@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.6209 2010/12/05 15:32:48 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.6212 2010/12/07 18:32:49 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -3294,6 +3294,8 @@ net-proxy/tinyproxy:transparent-proxy - Enable transparent proxying
 net-proxy/tinyproxy:upstream-proxy - Enable upstream proxying
 net-proxy/tinyproxy:xtinyproxy-header - Include the X-Tinyproxy header
 net-proxy/tsocks:tordns -  Apply tordns patch which allows transparent TORification of the DNS queries 
+net-proxy/ufdbguard:doc -  Download and install the ufdbguard reference manual in PDF. 
+net-proxy/ufdbguard:httpd -  Build, install and start the provided mini-http daemon with the redirect CGI integrated. Since there is no way to tell ufdbguard to not start it, this is a build-time option. 
 net-voip/ekiga:gconf - Enable GConf support
 net-voip/ekiga:h323 - Enable H.323 protocol
 net-voip/ekiga:shm - Enable the Shared Memory Extension from libXext
@@ -3373,6 +3375,7 @@ sci-biology/plink:webcheck -  add support for online update checking every time 
 sci-biology/ucsc-genome-browser:server - Install genome browser Web application. If this flag is off, only libraries and utilities from the suite are installed.
 sci-biology/yass:dmalloc - Enable debugging with the dmalloc library
 sci-biology/yass:lowmem - Build for environments with low amounts of memory
+sci-chemistry/PyMca:matplotlib - Support for plotting through matplotlib
 sci-chemistry/apbs:arpack - Include support for arpack libs
 sci-chemistry/apbs:fetk - Include support for FeTK
 sci-chemistry/apbs:tools - Install optional tools
@@ -3706,6 +3709,9 @@ sys-boot/arcboot:ip30 - Disable support for SGI Octane (IP30)
 sys-boot/grub:multislot - Allow grub1 and grub2 to be installed simultaneously
 sys-boot/lilo:device-mapper - Enable support for sys-fs/device-mapper
 sys-boot/lilo:pxeserial - Avoid character echo on PXE serial console
+sys-cluster/ceph:fuse - Build fuse client
+sys-cluster/ceph:libatomic - Use libatomic instead of builtin atomic operations
+sys-cluster/ceph:radosgw - Add radosgw support
 sys-cluster/charm:cmkopt - Enable CMK optimisation
 sys-cluster/charm:tcp - Use TCP (instead of UPD) for socket communication
 sys-cluster/corosync:infiniband - Enable Infiniband RDMA transport support
