@@ -1,6 +1,25 @@
 # ChangeLog for Gentoo/MIPS profile directory
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/mips/ChangeLog,v 1.29 2010/11/21 06:15:49 dirtyepic Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/mips/ChangeLog,v 1.35 2010/12/07 03:20:31 mattst88 Exp $
+
+  07 Dec 2010; Matt Turner <mattst88@gentoo.org> package.use.mask:
+  Added 'dev-perl/Authen-SASL kerberos' to package.use.mask since we don't
+  have dev-perl/GSSAPI keyworded.
+
+  07 Dec 2010; Matt Turner <mattst88@gentoo.org> package.use.mask:
+  Add 'mail-client/mutt tokyocabinet' package.use.mask
+
+  06 Dec 2010; Matt Turner <mattst88@gentoo.org> make.defaults:
+  Add ALSA_CARDS.
+
+  06 Dec 2010; Matt Turner <mattst88@gentoo.org> make.defaults:
+  Add -fortran to default USE.
+
+  06 Dec 2010; Matt Turner <mattst88@gentoo.org> make.defaults:
+  Remove ccache from default FEATURES.
+
+  06 Dec 2010; Matt Turner <mattst88@gentoo.org> use.mask:
+  Remove lm_sensors from use.mask. I've got hardware to test with.
 
   21 Nov 2010; Ryan Hill <dirtyepic@gentoo.org> use.mask:
   Mask lpsol USE flag, needs sci-mathematics/glpk.

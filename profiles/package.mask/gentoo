@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12251 2010/12/06 14:00:51 hd_brummy Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12258 2010/12/07 05:15:56 graaff Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -31,9 +31,27 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (7 Dec 2010)
+# Mask until all issues with it are worked out and the bundler
+# bug 313279 has been fixed.
+=dev-ruby/actionmailer-3.0.3
+=dev-ruby/actionpack-3.0.3
+=dev-ruby/activerecord-3.0.3
+=dev-ruby/activeresource-3.0.3
+=dev-ruby/activesupport-3.0.3
+=dev-ruby/railties-3.0.3
+=dev-ruby/rack-1.2.1
+
+# Hans de Graaff <graaff@gentoo.org> (6 Dec 2010)
+# No longer builds with perl 5.12. Various open bugs and QA issues.
+# Not maintained upstream since 2006.
+# Masked for removal on 2011-02-06
+dev-lang/wml
+
 # Joerg Bornkessel <hd_brummy@gentoo.org> (6 Dec 2010)
-# masked for testing #30078
+# masked for testing #300078 #263956
 =media-tv/gentoo-vdr-scripts-0.4.8_rc1
+=media-tv/gentoo-vdr-scripts-0.4.8_rc2
 
 # Nirbheek Chauhan <nirbheek@gentoo.org> (5 Dec 2010)
 # Breaks ABI/API, mask till we figure out what all is affected
@@ -87,10 +105,6 @@ www-apps/horde-groupware
 # Markus Meier <maekke@gentoo.org> (27 Nov 2010)
 # hugin-2010.4 testing mask
 >=media-gfx/hugin-2010.4.0_beta1
-
-# Markos Chandras <hwoarang@gentoo.org> (27 Nov 2010)
-# Masking rc releases
-=net-p2p/qbittorrent-2.5.0_rc*
 
 # Sebastian Pipping <sping@gentoo.org> (27 Nov 2010)
 # Test suite gives one error, previous version did not.
