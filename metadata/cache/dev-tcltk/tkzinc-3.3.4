@@ -1,5 +1,5 @@
->=dev-lang/tk-8.4 virtual/opengl doc? ( virtual/latex-base )
->=dev-lang/tk-8.4 virtual/opengl doc? ( virtual/latex-base )
+dev-lang/tk media-libs/glew virtual/opengl doc? ( virtual/latex-base ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b
+dev-lang/tk media-libs/glew virtual/opengl doc? ( virtual/latex-base )
 0
 http://www.tkzinc.org/Packages/zinc-tk_3.3.4.tar.gz
 
@@ -7,14 +7,14 @@ http://www.tkzinc.org
 LGPL-2
 A Tk widget library.
 ~amd64 ~x86 ~ppc
-eutils multilib portability toolchain-funcs
-threads doc
+autotools eutils libtool multilib portability toolchain-funcs
+debug doc threads
 
 
 
+3
 
-
-compile install
+compile configure install prepare
 
 
 
