@@ -1,0 +1,22 @@
+|| ( virtual/httpd-cgi virtual/httpd-fastcgi ) >=app-admin/webapp-config-1.50.15
+dev-lang/php[gd,hash,iconv,mysql,session,unicode,xml,zlib] || ( <dev-lang/php-5.3[pcre] >=dev-lang/php-5.3 ) transcode? ( media-sound/lame aac? ( || ( media-libs/faad2 media-sound/alac_decoder ) ) flac? ( media-libs/flac ) mp3? ( media-sound/mp3splt ) ogg? ( media-sound/mp3splt media-sound/vorbis-tools ) ) >=app-admin/webapp-config-1.50.15
+3.5.4
+http://www.ampache.org/downloads/ampache-3.5.4.tar.gz
+
+http://www.ampache.org/
+GPL-2
+Ampache is a PHP-based tool for managing, updating and playing your audio files via a web interface.
+~amd64 ~ppc ~sparc ~x86
+depend.php eutils multilib phpconfutils portability toolchain-funcs webapp
+aac flac mp3 ogg transcode vhosts
+
+
+
+2
+
+install postinst prerm setup
+
+
+
+
+
