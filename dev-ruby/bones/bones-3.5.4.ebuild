@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/bones/bones-3.4.1.ebuild,v 1.2 2010/05/22 13:16:49 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/bones/bones-3.5.4.ebuild,v 1.1 2010/12/11 08:17:37 graaff Exp $
 
 EAPI=2
 
@@ -26,13 +26,18 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 ruby_add_rdepend "
-	>=dev-ruby/loquacious-1.5.0
+	>=dev-ruby/loquacious-1.7.0
 	>=dev-ruby/little-plugger-1.1.2-r1
 	>=dev-ruby/rake-0.8.7"
 
 ruby_add_bdepend "
 	test? (
 		>=dev-ruby/bones-extras-1.2.2
-		>=dev-ruby/rspec-1.2.9
+		>=dev-ruby/rspec-1.2.9:0
 	)
 	doc? ( >=dev-ruby/bones-extras-1.2.2 )"
+
+all_ruby_prepare() {
+	# Avoid double --format specdoc option which causes problems for rspec.
+	sed -i -e 's/--format specdoc//' Rakefile || die
+}
