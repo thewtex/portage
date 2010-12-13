@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/basenji/basenji-0.7.1.ebuild,v 1.1 2010/11/07 14:39:56 elvanor Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/basenji/basenji-0.7.1.ebuild,v 1.2 2010/12/13 15:55:53 elvanor Exp $
 
 EAPI="3"
 
@@ -28,7 +28,7 @@ src_prepare() {
 }
 
 src_configure() {
-	./configure --prefix=${EPREFIX}/usr
+	./configure --prefix="${EPREFIX}/usr"
 }
 
 src_install() {
