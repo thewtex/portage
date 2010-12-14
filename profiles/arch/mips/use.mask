@@ -1,4 +1,4 @@
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/mips/use.mask,v 1.28 2010/12/06 22:30:14 mattst88 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/mips/use.mask,v 1.34 2010/12/14 02:51:24 mattst88 Exp $
 
 # Unmask the flag which corresponds to ARCH.
 -mips
@@ -348,6 +348,26 @@ kerberos
 # mask ladspa USE
 # [22:30] <beandog> mips: plz to mask ladspa use flag
 ladspa
+
+# Matt Turner <mattst88@gentoo.org> (13 Dec 2010)
+# Dropping app-arch/rpm keywords, mask rpm USE accordingly
+rpm
+
+# Matt Turner <mattst88@gentoo.org> (13 Dec 2010)
+# We don't care much about bluetooth
+bluetooth
+
+# Matt Turner <mattst88@gentoo.org> (13 Dec 2010)
+# We don't have net-libs/libsmi keyworded
+smi
+
+# Matt Turner <mattst88@gentoo.org> (13 Dec 2010)
+# We don't have dev-libs/ocaml
+ocaml
+
+# Matt Turner <mattst88@gentoo.org> (13 Dec 2010)
+# We don't have sys-devel/llvm
+llvm
 
 # Mips USE flags
 -n32
