@@ -1,4 +1,4 @@
-pbs? ( sys-cluster/torque ) vt? ( !dev-libs/libotf !app-text/lcdf-typetools ) elibc_FreeBSD? ( dev-libs/libexecinfo ) !sys-cluster/mpich !sys-cluster/lam-mpi !sys-cluster/mpich2 !sys-cluster/mpiexec || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b
+pbs? ( sys-cluster/torque ) vt? ( !dev-libs/libotf !app-text/lcdf-typetools ) elibc_FreeBSD? ( dev-libs/libexecinfo ) !sys-cluster/mpich !sys-cluster/lam-mpi !sys-cluster/mpich2 !sys-cluster/mpiexec
 pbs? ( sys-cluster/torque ) vt? ( !dev-libs/libotf !app-text/lcdf-typetools ) elibc_FreeBSD? ( dev-libs/libexecinfo ) !sys-cluster/mpich !sys-cluster/lam-mpi !sys-cluster/mpich2 !sys-cluster/mpiexec
 0
 http://www.open-mpi.org/software/ompi/v1.4/downloads/openmpi-1.4.1.tar.bz2
@@ -7,14 +7,14 @@ http://www.open-mpi.org
 BSD
 A high-performance message passing library (MPI)
 alpha amd64 ~ia64 ppc ppc64 sparc x86 ~x86-fbsd
-autotools eutils flag-o-matic fortran libtool multilib portability toolchain-funcs
-+cxx elibc_FreeBSD fortran heterogeneous ipv6 mpi-threads pbs romio threads vt debug
+eutils flag-o-matic multilib portability toolchain-funcs
++cxx elibc_FreeBSD fortran heterogeneous ipv6 mpi-threads pbs romio threads vt
 
 
 
 2
 
-configure install prepare setup test unpack
+configure install prepare setup test
 
 
 

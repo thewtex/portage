@@ -1,4 +1,4 @@
-virtual/blas virtual/lapack mpi? ( virtual/mpi[cxx] ) tk? ( dev-lang/tk ) dev-lang/perl sys-devel/flex >=sys-apps/sed-4 doc? ( app-doc/doxygen media-gfx/graphviz ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b
+virtual/blas virtual/lapack mpi? ( virtual/mpi[cxx] ) tk? ( dev-lang/tk ) dev-lang/perl sys-devel/flex >=sys-apps/sed-4 doc? ( app-doc/doxygen media-gfx/graphviz ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b
 virtual/blas virtual/lapack mpi? ( virtual/mpi[cxx] ) tk? ( dev-lang/tk )
 0
 mirror://sourceforge/mpqc/mpqc-2.3.1.tar.bz2
@@ -7,14 +7,14 @@ http://www.mpqc.org/
 GPL-2
 The Massively Parallel Quantum Chemistry Program
 ~amd64 ~ppc ~ppc64 x86
-autotools eutils fortran libtool multilib portability toolchain-funcs
-doc mpi threads tk debug
+autotools eutils libtool multilib portability toolchain-funcs
+doc mpi threads tk
 
 
 
 2
 
-configure install postinst prepare setup test unpack
+configure install postinst prepare test
 
 
 

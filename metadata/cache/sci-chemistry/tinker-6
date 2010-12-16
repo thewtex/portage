@@ -1,4 +1,4 @@
->=virtual/jdk-1.6 || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b java? ( >=dev-java/java-config-2.1.9-r1 )
+>=virtual/jdk-1.6 java? ( >=dev-java/java-config-2.1.9-r1 )
 >=sci-libs/fftw-3.2.2-r1[fortran,threads] dev-libs/maloc !dev-util/diffuse >=virtual/jre-1.6 java? ( >=dev-java/java-config-2.1.9-r1 )
 0
 http://dasher.wustl.edu/tinker/downloads/tinker-6.tar.gz
@@ -7,14 +7,14 @@ http://dasher.wustl.edu/tinker/
 Tinker
 Molecular modeling package that includes force fields, such as AMBER and CHARMM
 ~amd64 ~x86 ~amd64-linux ~x86-linux
-autotools eutils flag-o-matic fortran java-pkg-opt-2 java-utils-2 libtool multilib portability toolchain-funcs versionator
-examples debug elibc_FreeBSD java
+eutils flag-o-matic java-pkg-opt-2 java-utils-2 multilib portability toolchain-funcs versionator
+examples elibc_FreeBSD java
 
 
 
 2
 
-compile install preinst prepare setup test unpack
+compile install preinst prepare setup test
 
 
 

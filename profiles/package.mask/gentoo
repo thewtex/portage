@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12273 2010/12/15 11:37:14 fauli Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12276 2010/12/16 15:27:13 phajdan.jr Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -121,10 +121,6 @@ games-simulation/secondlife-bin
 # Masked for removal on 20101229
 games-sports/race
 
-# Pawel Hajdan jr <phajdan.jr@gentoo.org> (28 Nov 2010)
-# New, experimental package.
-dev-util/chromium-tools
-
 # Alex Legler <a3li@gentoo.org> (28 Nov 2010)
 # Not maintained, multiple security issues.
 # Use the split horde ebuilds instaed.
@@ -172,22 +168,11 @@ dev-cpp/libgtksourceviewmm
 # Use games-action/gltron instead
 games-action/armagetronad
 
-# Pawel Hajdan jr <phajdan.jr@gentoo.org> (19 Nov 2010)
-# Mask v8 versions used for www-client/chromium dev channel releases.
-# Currently v8-2.5.x versions are used for chromium-9.x versions.
->=dev-lang/v8-2.5.0
-
 # Peter Volkov <pva@gentoo.org> (16 Nov 2010)
 # Last rites: dev-python/py-rrdtool #345701
 # Old python bindins that currently are included into net-analyzer/rrdtool
 # Removal on 16 Dec 2010
 dev-python/py-rrdtool
-
-# Alexis Ballier <aballier@gentoo.org> (14 Nov 2010)
-# Last rites: dev-tex/ha-prosper
-# Old standalone ebuild, provided by dev-texlive/texlive-latexextra these days
-# Removal on 14 Dec 2010
-dev-tex/ha-prosper
 
 # Samuli Suominen <ssuominen@gentoo.org> (14 Nov 2010)
 # No longer developed and replaced by sys-apps/mlocate
@@ -752,12 +737,6 @@ app-emulation/qemu-kvm-spice
 # Removal on 2010-10-09
 app-admin/webmin
 
-# Jeroen Roovers <jer@gentoo.org> (03 Aug 2010)
-# Alphas and snapshots are not for everyday use
-# <http://my.opera.com/desktopteam/blog>
-=www-client/opera-10.70*
-=www-client/opera-11*
-
 # Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (22 Jul 2010)
 # Development versions.
 =net-libs/gnutls-2.11*
@@ -1021,7 +1000,6 @@ media-tv/vdrplugin-rebuild
 # experimental features and accept a more unstable release.
 ~www-client/chromium-9.0.597.0
 ~www-client/chromium-9.0.597.16
-~www-client/chromium-9.0.597.19
 
 # Christian Parpart <trapni@gentoo.org> (23 Dec 2009)
 # Masked for testing/feedback.

@@ -1,4 +1,4 @@
-app-admin/eselect-blas >=sys-devel/binutils-2.17 || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b
+app-admin/eselect-blas >=sys-devel/binutils-2.17
 app-admin/eselect-blas doc? ( app-doc/blas-docs )
 0
 http://www-prc.tacc.utexas.edu/resources/software/login/gotoblas/GotoBLAS-1.22.tar.gz
@@ -7,14 +7,14 @@ http://www.tacc.utexas.edu/research-development/tacc-projects/
 tacc
 Fast implementations of the Basic Linear Algebra Subroutines
 amd64 x86
-autotools eutils flag-o-matic fortran libtool multilib portability toolchain-funcs
-int64 threads doc debug
+eutils flag-o-matic multilib portability toolchain-funcs
+int64 threads doc
 
 
 
 
 
-compile install postinst setup test unpack
+compile install postinst test unpack
 
 
 

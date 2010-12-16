@@ -1,4 +1,4 @@
-virtual/blas virtual/cblas app-admin/eselect-lapack ~sci-libs/blas-atlas-3.9.23 dev-util/pkgconfig >=sys-devel/libtool-1.5 || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b
+virtual/blas virtual/cblas app-admin/eselect-lapack ~sci-libs/blas-atlas-3.9.23 dev-util/pkgconfig >=sys-devel/libtool-1.5 || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b
 virtual/blas virtual/cblas app-admin/eselect-lapack ~sci-libs/blas-atlas-3.9.23 doc? ( app-doc/lapack-docs )
 0
 mirror://sourceforge/math-atlas/atlas3.9.23.tar.bz2 http://www.netlib.org/lapack/lapack-lite-3.1.1.tgz mirror://gentoo/atlas-3.9.21-shared-libs.2.patch.bz2 mirror://gentoo/lapack-reference-3.1.1-autotools.patch.bz2
@@ -7,14 +7,14 @@ http://math-atlas.sourceforge.net/
 BSD
 F77 and C LAPACK implementations using available ATLAS routines
 ~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86
-autotools eutils flag-o-matic fortran libtool multilib portability toolchain-funcs versionator
-doc debug
+autotools eutils flag-o-matic libtool multilib portability toolchain-funcs versionator
+doc
 
 
 
 
 
-compile install postinst setup test unpack
+compile install postinst test unpack
 
 
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tex/luatex/luatex-0.64.0.ebuild,v 1.1 2010/11/13 22:45:23 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-tex/luatex/luatex-0.65.0.ebuild,v 1.1 2010/12/16 12:43:39 aballier Exp $
 
 EAPI="2"
 
@@ -8,8 +8,8 @@ inherit libtool
 
 DESCRIPTION="An extended version of pdfTeX using Lua as an embedded scripting language."
 HOMEPAGE="http://www.luatex.org/"
-SRC_URI="http://foundry.supelec.fr/gf/download/frsrelease/385/1673/${PN}-beta-${PV}-source.tar.bz2
-	http://foundry.supelec.fr/gf/download/frsrelease/385/1674/${PN}-beta-${PV}-doc.tar.bz2"
+SRC_URI="http://foundry.supelec.fr/gf/download/frsrelease/386/1704/${PN}-beta-${PV}-source.tar.bz2
+	http://foundry.supelec.fr/gf/download/frsrelease/386/1705/${PN}-beta-${PV}-doc.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

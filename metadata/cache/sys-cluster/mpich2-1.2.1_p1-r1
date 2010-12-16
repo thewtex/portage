@@ -1,4 +1,4 @@
-dev-libs/libaio romio? ( net-fs/nfs-utils ) dev-lang/perl sys-devel/libtool || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b >=app-admin/eselect-python-20091230 =dev-lang/python-2*
+dev-libs/libaio romio? ( net-fs/nfs-utils ) dev-lang/perl sys-devel/libtool >=app-admin/eselect-python-20091230 =dev-lang/python-2*
 dev-libs/libaio romio? ( net-fs/nfs-utils ) !media-sound/mpd !sys-cluster/openmpi !sys-cluster/lam-mpi >=app-admin/eselect-python-20091230 =dev-lang/python-2*
 0
 http://www.mcs.anl.gov/research/projects/mpich2/downloads/tarballs/1.2.1p1/mpich2-1.2.1p1.tar.gz
@@ -7,14 +7,14 @@ http://www.mcs.anl.gov/research/projects/mpich2/index.php
 as-is
 MPICH2 - A portable MPI implementation
 amd64 hppa ppc ppc64 x86
-autotools eutils fortran libtool multilib portability python toolchain-funcs
-+cxx debug doc fortran threads romio mpi-threads debug
+eutils multilib portability python toolchain-funcs
++cxx debug doc fortran threads romio mpi-threads
 
 
 
 2
 
-compile configure install postinst postrm prepare setup test unpack
+compile configure install postinst postrm prepare setup test
 
 
 

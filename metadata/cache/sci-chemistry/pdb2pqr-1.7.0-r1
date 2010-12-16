@@ -1,5 +1,5 @@
-|| ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b >=app-admin/eselect-python-20091230 dev-lang/python >=app-admin/eselect-python-20091230
-dev-python/numpy sci-chemistry/openbabel opal? ( dev-python/zsi ) pdb2pka? ( sci-chemistry/apbs[python,-mpi] ) >=app-admin/eselect-python-20091230 dev-lang/python >=app-admin/eselect-python-20091230
+>=app-admin/eselect-python-20091230 dev-lang/python
+dev-python/numpy sci-chemistry/openbabel opal? ( dev-python/zsi ) pdb2pka? ( sci-chemistry/apbs[python,-mpi] ) >=app-admin/eselect-python-20091230 dev-lang/python
 0
 mirror://sourceforge/pdb2pqr/pdb2pqr-1.7.tar.gz
 
@@ -7,14 +7,14 @@ http://pdb2pqr.sourceforge.net/
 BSD
 An automated pipeline for performing Poisson-Boltzmann electrostatics calculations
 ~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux
-autotools distutils eutils flag-o-matic fortran libtool multilib portability python toolchain-funcs versionator
-doc examples opal +pdb2pka debug
+distutils eutils flag-o-matic multilib portability python toolchain-funcs versionator
+doc examples opal +pdb2pka
 
 
 
 3
 
-compile configure install postinst postrm prepare setup test unpack
+compile configure install postinst postrm prepare setup test
 
 
 
