@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/ragel/ragel-6.6.ebuild,v 1.12 2010/12/04 15:29:27 grobian Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/ragel/ragel-6.6.ebuild,v 1.13 2010/12/16 07:06:59 flameeyes Exp $
 
 EAPI="3"
 
@@ -19,9 +19,8 @@ RDEPEND=""
 # We need to get the txl language in Portage to have the tests :(
 RESTRICT=test
 
-src_compile() {
+src_configure() {
 	econf --docdir="${EPREFIX}"/usr/share/doc/${PF} || die "econf failed"
-	emake || die "emake failed"
 }
 
 src_test() {
