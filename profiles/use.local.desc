@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.6224 2010/12/16 17:52:55 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.6226 2010/12/17 01:52:55 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -90,6 +90,7 @@ app-admin/collectd:collectd_plugins_onewire - Build the onewire input plugin (co
 app-admin/collectd:collectd_plugins_openvpn - Build the openvpn input plugin (reads the status file printed by OpenVPN)
 app-admin/collectd:collectd_plugins_oracle - Build the oracle input plugin (SQL-queries one or more Oracle database systems)
 app-admin/collectd:collectd_plugins_perl - Build the perl language binding plugin (embeds a Perl interpreter into collectd for writing plugins)
+app-admin/collectd:collectd_plugins_ping - Build the ping input plugin (measures network latency)
 app-admin/collectd:collectd_plugins_postgresql - Build the postgresql input plugin (connects to and executes SQL statements on a PostgreSQL database)
 app-admin/collectd:collectd_plugins_powerdns - Build the powerdns input plugin (connects to a local PowerDNS instance)
 app-admin/collectd:collectd_plugins_processes - Build the processes input plugin (statistics about processes)
@@ -1482,8 +1483,6 @@ gnome-base/gnome-mount:nautilus - Enables the Nautilus plugin
 gnome-base/gnome-panel:bonobo - Enable Bonobo compatibility modules for applets still not ported to DBUS.
 gnome-base/gnome-panel:introspection - Use dev-libs/gobject-introspection for introspection
 gnome-base/gnome-session:splash - Enable gnome splash screen
-gnome-base/gnome-volume-manager:automount - Enable support for automounting devices that are handled by gnome-base/nautilus since 2.22. This should be off on most Gnome systems.
-gnome-base/gnome-volume-manager:consolekit - Use sys-auth/consolekit to determine policy on removable media.
 gnome-base/gvfs:archive - Enables support for accessing files in archives transparently via app-arch/libarchive
 gnome-base/gvfs:fuse - Enables fuse mount points in $HOME/.gvfs for legacy application access
 gnome-base/gvfs:gdu - Enable sys-apps/gnome-disk-utility integration
