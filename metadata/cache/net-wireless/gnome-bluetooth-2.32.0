@@ -1,5 +1,5 @@
->=dev-libs/glib-2.25.7:2 >=x11-libs/gtk+-2.19.1:2 >=x11-libs/libnotify-0.4.3 >=dev-libs/dbus-glib-0.74 dev-libs/libunique nautilus? ( >=gnome-extra/nautilus-sendto-2.31.7 ) !!net-wireless/bluez-gnome app-text/gnome-doc-utils app-text/scrollkeeper dev-libs/libxml2 dev-util/intltool dev-util/pkgconfig sys-devel/gettext x11-libs/libX11 x11-libs/libXi x11-proto/xproto doc? ( >=dev-util/gtk-doc-1.9 ) >=sys-apps/sed-4
->=dev-libs/glib-2.25.7:2 >=x11-libs/gtk+-2.19.1:2 >=x11-libs/libnotify-0.4.3 >=dev-libs/dbus-glib-0.74 dev-libs/libunique nautilus? ( >=gnome-extra/nautilus-sendto-2.31.7 ) >=net-wireless/bluez-4.34 app-mobilephone/obexd sys-fs/udev
+>=dev-libs/glib-2.25.7:2 >=x11-libs/gtk+-2.19.1:2 >=x11-libs/libnotify-0.4.3 >=dev-libs/dbus-glib-0.74 dev-libs/libunique nautilus? ( >=gnome-extra/nautilus-sendto-2.31.7 ) !!net-wireless/bluez-gnome app-text/gnome-doc-utils app-text/scrollkeeper dev-libs/libxml2 dev-util/intltool dev-util/pkgconfig sys-devel/gettext x11-libs/libX11 x11-libs/libXi x11-proto/xproto doc? ( >=dev-util/gtk-doc-1.9 ) gnome-base/gnome-common dev-util/gtk-doc-am >=sys-apps/sed-4 || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b
+>=dev-libs/glib-2.25.7:2 >=x11-libs/gtk+-2.19.1:2 >=x11-libs/libnotify-0.4.3 >=dev-libs/dbus-glib-0.74 dev-libs/libunique nautilus? ( >=gnome-extra/nautilus-sendto-2.31.7 ) >=net-wireless/bluez-4.34 app-mobilephone/obexd sys-fs/udev introspection? ( >=dev-libs/gobject-introspection-0.6.7 )
 2
 mirror://gnome/sources/gnome-bluetooth/2.32/gnome-bluetooth-2.32.0.tar.bz2
 
@@ -7,7 +7,7 @@ http://live.gnome.org/GnomeBluetooth
 GPL-2 LGPL-2.1
 Fork of bluez-gnome focused on integration with GNOME
 ~amd64 ~ppc ~x86
-eutils fdo-mime gnome.org gnome2 gnome2-utils libtool multilib portability toolchain-funcs
+autotools eutils fdo-mime gnome.org gnome2 gnome2-utils libtool multilib portability toolchain-funcs
 doc +introspection nautilus debug
 
 
