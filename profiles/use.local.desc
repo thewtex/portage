@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.6230 2010/12/17 22:52:48 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.6235 2010/12/19 03:33:06 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -623,8 +623,6 @@ app-pda/libopensync-plugin-syncml:http - Enable http transports
 app-pda/libopensync-plugin-syncml:obex - Enable obex transports
 app-pda/libsyncml:http - Enable http transports
 app-pda/libsyncml:obex - Enable obex transports
-app-pda/synce:serial - Enable serial port support (installs app-pda/synce-serial)
-app-pda/synce-fur:void-chmod - enable a fake fuse hook for "chmod" that just returns 0
 app-portage/conf-update:colordiff - Use colors when displaying diffs (app-misc/colordiff)
 app-portage/eix:bzip2 - Support for parsing of environment.bz2 to guess repository name of packages installed with ancient portage versions (requires app-arch/bzip2). This flag is safe to disable for portage users that have re-merged all packages since 2007. This flag will be phased out.
 app-portage/eix:debug - Build with CXXFLAGS/LDFLAGS for debugging support; not recommended for normal use.
@@ -989,8 +987,6 @@ dev-libs/cyrus-sasl:srp - Enable SRP
 dev-libs/cyrus-sasl:urandom - Use /dev/urandom instead of /dev/random
 dev-libs/e_dbus:bluetooth - Enable interfacing with net-wireless/bluez DBus API.
 dev-libs/e_dbus:connman - Enable interfacing with net-misc/connman DBus API.
-dev-libs/e_dbus:hal - Enable interfacing with sys-apps/hal DBus API.
-dev-libs/e_dbus:libnotify - Enable interfacing with x11-libs/libnotify DBus API.
 dev-libs/e_dbus:ofono - Enable interfacing with net-misc/ofono DBus API.
 dev-libs/e_dbus:test-binaries - Enable building of test binaries for enabled features
 dev-libs/e_dbus:ukit - Enable interfacing with sys-power/upower and sys-fs/udisks DBus API.
@@ -1399,6 +1395,7 @@ games-emulation/xmess:net - Add network support
 games-engines/frobtads:tads2compiler - Build TADS2 compiler
 games-engines/frobtads:tads3compiler - Build TADS3 compiler
 games-engines/scummvm:fluidsynth - compile with support for fluidsynth
+games-fps/alienarena:vidmode - Link against x11-libs/libXxf86vm. Required for full-screen support.
 games-fps/darkplaces:cdsound - Enables using CD audio in the engine
 games-fps/darkplaces:demo - Uses the demo data from quake1 (quake1-demodata)
 games-fps/darkplaces:lights - Install and setup the updated light maps
@@ -2060,6 +2057,7 @@ media-sound/banshee:podcast - Build with podcasting support
 media-sound/banshee:web - Enable support for plugins that access web-based services such as Amazon and wikipedia (requires net-libs/webkit-gtk)
 media-sound/banshee:wikipedia - Enable the Wikipedia context pane (require net-libs/webkit-gtk)
 media-sound/banshee:youtube - Enable the Youtube plugin
+media-sound/clementine:ayatana - Build in support for Ayatana notification using the libindicate-qt plugin.
 media-sound/clementine:iphone - Enable support for iPod Touch, iPhone, iPad
 media-sound/clementine:projectm - Build with ProjectM visualization
 media-sound/clementine:wiimote - Enable support for Wii remote
@@ -2157,7 +2155,6 @@ media-sound/qmmp:notifier - Enable qmmps' notifier system
 media-sound/qmmp:projectm - Enable projectm music visualization plugin
 media-sound/qmmp:scrobbler - Enable audioscrobbler/last.fm support
 media-sound/qmmp:tray - Build tray icon
-media-sound/qmmp:udisks - Use udisks plugins to detect removal devices
 media-sound/qsampler:libgig - Enable libgig support for loading Gigasampler files and DLS (Downloadable Sounds) Level 1/2 files
 media-sound/qtractor:dssi - Enable support for DSSI Soft Synth Interface
 media-sound/qtractor:rubberband - Enable support for in-place audio clip pitch-shifting through the rubberband library

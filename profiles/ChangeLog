@@ -1,10 +1,28 @@
 # ChangeLog for profile directory
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.4869 2010/12/18 17:38:51 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.4874 2010/12/19 01:40:01 ssuominen Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  19 Dec 2010; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Lastrite app-misc/hal-cups-utils wrt #344313.
+
+  19 Dec 2010; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Lastrite gnome-extra/gnome-device-manager.
+
+  18 Dec 2010; Samuli Suominen <ssuominen@gentoo.org>
+  targets/desktop/gnome/make.defaults, targets/desktop/gnome/package.use,
+  targets/desktop/make.defaults, targets/desktop/package.use:
+  Move generic USE flags like "policykit" from desktop/gnome to desktop. Remove
+  "hal" from default USE flags.
+
+  18 Dec 2010; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Lastrite rox-base/devtray wrt #313431.
+
+  18 Dec 2010; Sergei Trofimovich <slyfox@gentoo.org> package.mask:
+  Mask dev-haskell/hsshellscript (poor quality).
 
   18 Dec 2010; Jeroen Roovers <jer@gentoo.org> package.mask:
   Add bug number to libevent-2 mask description.
