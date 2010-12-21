@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-vcs/git/git-1.6.4.5.ebuild,v 1.2 2010/12/19 12:40:52 phajdan.jr Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-vcs/git/git-1.6.4.5.ebuild,v 1.4 2010/12/20 10:40:09 klausman Exp $
 
 EAPI=2
 
@@ -28,7 +28,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc x86 ~sparc-fbsd ~x86-fbsd"
+KEYWORDS="alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc x86 ~sparc-fbsd ~x86-fbsd"
 IUSE="curl cgi doc emacs gtk iconv mozsha1 perl ppcsha1 tk threads webdav xinetd cvs subversion"
 
 # Common to both DEPEND and RDEPEND
@@ -204,7 +204,10 @@ src_install() {
 		install || \
 		die "make install failed"
 
-	doman man?/*.[157] Documentation/*.[157]
+	# Depending on the tarball and manual rebuild of the documentation, the
+	# manpages may exist in either OR both of these directories.
+	find man?/*.[157] >/dev/null 2>&1 && doman man?/*.[157]
+	find Documentation/*.[157] >/dev/null 2>&1 && doman Documentation/*.[157]
 
 	dodoc README Documentation/{SubmittingPatches,CodingGuidelines}
 	use doc && dodir /usr/share/doc/${PF}/html

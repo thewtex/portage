@@ -1,12 +1,12 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/libisds/libisds-9999.ebuild,v 1.4 2010/07/09 10:37:37 scarabeus Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/libisds/libisds-9999.ebuild,v 1.6 2010/12/20 13:53:30 scarabeus Exp $
 
 EAPI=3
 
 [[ ${PV} = 9999* ]] && GIT="git autotools"
 EGIT_REPO_URI="git://repo.or.cz/${PN}.git"
-inherit base ${GIT}
+inherit autotools-utils ${GIT}
 
 DESCRIPTION="Client library for accessing ISDS Soap services"
 HOMEPAGE="http://xpisar.wz.cz/libisds/"
@@ -14,7 +14,7 @@ if [[ ${PV} = 9999* ]]; then
 	SRC_URI=""
 	KEYWORDS=""
 else
-	SRC_URI="http://xpisar.wz.cz/${PN}/dist/${P}.tar.bz2"
+	SRC_URI="http://xpisar.wz.cz/${PN}/dist/${P}.tar.xz"
 	KEYWORDS="~amd64 ~x86"
 fi
 
@@ -40,15 +40,25 @@ RDEPEND="${COMMON_DEPEND}
 DOCS=( "NEWS" "README" "AUTHORS" "ChangeLog" )
 
 src_prepare() {
-	base_src_prepare
+	autotools-utils_src_prepare
 	[[ ${PV} = 9999* ]] && eautoreconf
 }
 
 src_configure() {
-	econf \
-		--disable-fatalwarnings \
-		$(use_enable debug) \
-		$(use_enable nls) \
-		$(use_enable static-libs static) \
+	local myeconfargs=(
+		"--disable-fatalwarnings"
+		$(use_enable debug)
+		$(use_enable nls)
+		$(use_enable static-libs static)
 		$(use_enable test)
+	)
+
+	autotools-utils_src_configure
+}
+
+src_test() {
+	# hack for failing gnupg testing
+	export HOME="${T}"
+	mkdir "${HOME}/.gnupg"
+	autotools-utils_src_test
 }
