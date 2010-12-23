@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12295 2010/12/20 13:17:04 hwoarang Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12297 2010/12/23 16:31:20 hd_brummy Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -365,14 +365,6 @@ sys-fs/dd-rhelp
 #
 # Removal on 2010-11-21
 www-apache/mod_httpbl
-
-# Diego E. Pettenò <flameeyes@gentoo.org> (21 Oct 2010)
-#  on behalf of QA team
-#
-# Fails build since at least July 2009 (bug #277577).
-#
-# Removal on 2010-12-20
-media-plugins/vdr-audiorecorder
 
 # Diego E. Pettenò <flameeyes@gentoo.org> (18 Oct 2010)
 #  on behalf of QA team
@@ -1040,8 +1032,10 @@ dev-lisp/gcl
 >=gnome-base/gdm-2.26
 
 # Torsten Veller <tove@gentoo.org> (10 Jun 2009)
-# Mask unstable releases. Read the warning!
+# Mask unstable releases. Mask stable release for testing:
+# upgrading and tests fail and configure of python bindings sucks.
 =app-office/gnucash-2.3*
+~app-office/gnucash-2.4.0
 
 # Jeroen Roovers <jer@gentoo.org> (21 Apr 2009)
 # Masked until reverse dependencies are fixed (bug #333077)
