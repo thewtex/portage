@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/php/php-5.3.4.ebuild,v 1.3 2010/12/20 00:46:38 hwoarang Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/php/php-5.3.4.ebuild,v 1.5 2010/12/25 17:22:42 jer Exp $
 
 EAPI=2
 
@@ -13,7 +13,7 @@ SUHOSIN_VERSION=""
 FPM_VERSION="builtin"
 EXPECTED_TEST_FAILURES=""
 
-KEYWORDS="amd64 ~arm ~hppa x86"
+KEYWORDS="amd64 ~arm hppa x86"
 
 function php_get_uri ()
 {
@@ -238,7 +238,7 @@ RDEPEND="${DEPEND}
 	firebird? ( $php[-interbase] )
 	sharedmem? ( $php[-threads] )
 
-	!cli? ( !cgi? ( !apache2? ( !embed? ( $php[cli] ) ) ) )
+	!cli? ( !cgi? ( !fpm? ( !apache2? ( !embed? ( $php[cli] ) ) ) ) )
 
 	enchant? ( !dev-php${PHP_MV}/pecl-enchant )
 	fileinfo? ( !<dev-php${PHP_MV}/pecl-fileinfo-1.0.4-r2 )

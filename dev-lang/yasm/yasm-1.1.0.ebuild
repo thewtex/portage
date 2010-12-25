@@ -1,9 +1,9 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/yasm/yasm-1.1.0.ebuild,v 1.3 2010/11/03 12:02:48 phajdan.jr Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/yasm/yasm-1.1.0.ebuild,v 1.4 2010/12/25 05:29:26 ssuominen Exp $
 
 EAPI=2
-PYTHON_DEPEND="python? 2:2.4"
+PYTHON_DEPEND="python? 2:2.6"
 
 inherit autotools eutils python
 
@@ -18,7 +18,7 @@ IUSE="nls python"
 
 RDEPEND="nls? ( virtual/libintl )"
 DEPEND="nls? ( sys-devel/gettext )
-	python? ( >=dev-python/cython-0.11.3 )"
+	python? ( >=dev-python/cython-0.11.3 <dev-python/cython-0.14 )"
 
 pkg_setup() {
 	if use python; then
