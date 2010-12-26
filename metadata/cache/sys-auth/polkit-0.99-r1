@@ -1,0 +1,22 @@
+>=dev-libs/glib-2.25.12 dev-libs/expat introspection? ( dev-libs/gobject-introspection ) pam? ( virtual/pam ) !!>=sys-auth/policykit-0.92 !<sys-auth/policykit-0.92 dev-libs/libxslt app-text/docbook-xsl-stylesheets dev-util/pkgconfig >=dev-util/intltool-0.36 doc? ( >=dev-util/gtk-doc-1.13 )
+>=dev-libs/glib-2.25.12 dev-libs/expat introspection? ( dev-libs/gobject-introspection ) pam? ( virtual/pam )
+0
+http://hal.freedesktop.org/releases/polkit-0.99.tar.gz
+
+http://hal.freedesktop.org/docs/polkit/
+GPL-2
+Policy framework for controlling privileges for system-wide services
+~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sh ~sparc ~x86 ~x86-fbsd
+eutils multilib pam portability toolchain-funcs
+debug doc examples gtk +introspection nls pam
+
+>=sys-auth/consolekit-0.4[policykit] gtk? ( || ( >=gnome-extra/polkit-gnome-0.96-r1 >=lxde-base/lxpolkit-0_p20101225 ) )
+
+2
+
+configure install postinst prepare
+
+
+
+
+
