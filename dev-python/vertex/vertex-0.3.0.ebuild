@@ -1,9 +1,11 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/vertex/vertex-0.3.0.ebuild,v 1.2 2009/11/30 16:35:31 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/vertex/vertex-0.3.0.ebuild,v 1.4 2010/12/26 15:50:00 arfrever Exp $
 
-EAPI="2"
+EAPI="3"
+PYTHON_DEPEND="2"
 SUPPORT_PYTHON_ABIS="1"
+RESTRICT_PYTHON_ABIS="3.*"
 
 # setup.py uses epsilon.setuphelper.autosetup(), which tries to use
 # build-${PYTHON_ABI} directories as packages.
@@ -16,7 +18,7 @@ MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="An implementation of the Q2Q protocol"
 HOMEPAGE="http://divmod.org/trac/wiki/DivmodVertex http://pypi.python.org/pypi/Vertex"
-SRC_URI="http://pypi.python.org/packages/source/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
+SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
@@ -28,7 +30,6 @@ DEPEND=">=dev-libs/openssl-0.9.7
 	>=dev-python/pyopenssl-0.6
 	>=dev-python/twisted-2.4"
 RDEPEND="${DEPEND}"
-RESTRICT_PYTHON_ABIS="3.*"
 
 S="${WORKDIR}/${MY_P}"
 
