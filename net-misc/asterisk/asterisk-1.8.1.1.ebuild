@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/asterisk/asterisk-1.6.2.13-r2.ebuild,v 1.1 2010/10/15 17:30:59 chainsaw Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/asterisk/asterisk-1.8.1.1.ebuild,v 1.1 2010/12/30 17:18:02 chainsaw Exp $
 
 EAPI=3
 inherit autotools base eutils linux-info multilib
@@ -9,34 +9,59 @@ MY_P="${PN}-${PV/_/-}"
 
 DESCRIPTION="Asterisk: A Modular Open Source PBX System"
 HOMEPAGE="http://www.asterisk.org/"
-SRC_URI="http://downloads.asterisk.org/pub/telephony/asterisk/releases/${MY_P}.tar.gz"
+SRC_URI="http://downloads.asterisk.org/pub/telephony/asterisk/${MY_P}.tar.gz
+	 mirror://gentoo/gentoo-asterisk-patchset-0.2.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-IUSE="alsa +caps dahdi debug doc freetds iconv jabber ldap lua keepsrc logrotate misdn newt +samples oss postgres radius snmp span speex ssl sqlite static vorbis"
+IUSE="ais alsa bluetooth calendar +caps curl dahdi debug doc freetds gtalk h323 http iconv jabber jingle ldap logrotate lua keepsrc misdn mysql newt +samples odbc osplookup oss portaudio postgres radius snmp span speex ssl sqlite sqlite3 srtp static syslog usb vorbis"
+
+EPATCH_SUFFIX="patch"
+PATCHES=( "${WORKDIR}/asterisk-patchset" )
 
 RDEPEND="sys-libs/ncurses
 	dev-libs/popt
 	sys-libs/zlib
+	dev-libs/libxml2
+	ais? ( sys-cluster/openais )
 	alsa? ( media-libs/alsa-lib )
+	bluetooth? ( net-wireless/bluez )
+	calendar? ( net-libs/neon
+		 dev-libs/libical
+		 dev-libs/iksemel )
 	caps? ( sys-libs/libcap )
-	dahdi? ( >=net-libs/libpri-1.4.7
+	curl? ( net-misc/curl )
+	dahdi? ( >=net-libs/libpri-1.4.12_beta2
 		net-misc/dahdi-tools )
 	freetds? ( dev-db/freetds )
+	gtalk? ( dev-libs/iksemel )
+	h323? ( net-libs/openh323 )
+	http? ( dev-libs/gmime:0 )
 	iconv? ( virtual/libiconv )
 	jabber? ( dev-libs/iksemel )
-	ldap?	( net-nds/openldap )
+	jingle? ( dev-libs/iksemel )
+	ldap? ( net-nds/openldap )
 	lua? ( dev-lang/lua )
 	misdn? ( net-dialup/misdnuser )
+	mysql? ( dev-db/mysql )
 	newt? ( dev-libs/newt )
+	odbc? ( dev-db/unixODBC )
+	osplookup? ( net-libs/osptoolkit
+		dev-libs/openssl )
+	portaudio? ( media-libs/portaudio )
 	postgres? ( dev-db/postgresql-base )
 	radius? ( net-dialup/radiusclient-ng )
 	snmp? ( net-analyzer/net-snmp )
 	span? ( media-libs/spandsp )
 	speex? ( media-libs/speex )
-	sqlite? ( dev-db/sqlite )
+	sqlite? ( dev-db/sqlite:0 )
+	sqlite3? ( dev-db/sqlite:3 )
+	srtp? ( net-libs/libsrtp )
 	ssl? ( dev-libs/openssl )
+	syslog? ( app-admin/syslog-ng )
+	usb? ( dev-libs/libusb
+		media-libs/alsa-lib )
 	vorbis? ( media-libs/libvorbis )"
 
 DEPEND="${RDEPEND}
@@ -49,21 +74,6 @@ PDEPEND="net-misc/asterisk-core-sounds
 	net-misc/asterisk-moh-opsound"
 
 S="${WORKDIR}/${MY_P}"
-
-PATCHES=(
-	"${FILESDIR}/1.6.2/${PN}-1.6.2.9-gsm-pic.patch"
-	"${FILESDIR}/1.6.2/${PN}-1.6.2.8-pri-missing-keyword.patch"
-	"${FILESDIR}/1.6.2/${PN}-1.6.2.8-inband-indications.patch"
-	"${FILESDIR}/1.6.1/${PN}-1.6.1-uclibc.patch"
-	"${FILESDIR}/1.6.2/${PN}-1.6.2.2-nv-faxdetect.patch"
-	"${FILESDIR}/1.6.2/${PN}-1.6.2.11-strip-noapi.patch"
-	"${FILESDIR}/1.6.2/${P}-iax2-peerstate.patch"
-	"${FILESDIR}/1.6.2/${P}-dahdiras-without-root.patch"
-	"${FILESDIR}/1.6.2/${P}-backport-bri-net-ptmp.patch"
-	"${FILESDIR}/1.6.2/${P}-pbxstart-failed-spurious-bye.patch"
-	"${FILESDIR}/1.6.2/${P}-confbridge-menu-invocation.patch"
-	"${FILESDIR}/1.6.2/${P}-alarm-receiver-use-playtones.patch"
-)
 
 pkg_setup() {
 	CONFIG_CHECK="~!NF_CONNTRACK_SIP"
@@ -85,29 +95,45 @@ src_configure() {
 		--with-gsm=internal \
 		--with-popt \
 		--with-z \
+		$(use_with ais openais) \
 		$(use_with alsa asound) \
+		$(use_with bluetooth) \
+		$(use_with calendar neon) \
+		$(use_with calendar neon29) \
+		$(use_with calendar ical) \
+		$(use_with calendar iksemel) \
 		$(use_with caps cap) \
+		$(use_with curl libcurl) \
 		$(use_with dahdi pri) \
 		$(use_with dahdi tonezone) \
 		$(use_with dahdi) \
 		$(use_with freetds tds) \
+		$(use_with h323) \
+		$(use_with http gmime) \
 		$(use_with iconv) \
 		$(use_with jabber iksemel) \
+		$(use_with jingle iksemel) \
 		$(use_with lua) \
 		$(use_with misdn isdnnet) \
 		$(use_with misdn suppserv) \
 		$(use_with misdn) \
+		$(use_with mysql mysqlclient) \
 		$(use_with newt) \
+		$(use_with osplookup osptk) \
 		$(use_with oss) \
+		$(use_with portaudio) \
 		$(use_with postgres) \
 		$(use_with radius) \
 		$(use_with snmp netsnmp) \
 		$(use_with span spandsp) \
 		$(use_with speex) \
 		$(use_with speex speexdsp) \
-		$(use_with sqlite sqlite3) \
+		$(use_with sqlite) \
+		$(use_with sqlite3) \
+		$(use_with srtp) \
 		$(use_with ssl crypto) \
 		$(use_with ssl) \
+		$(use_with usb) \
 		$(use_with vorbis ogg) \
 		$(use_with vorbis) || die "econf failed"
 
@@ -192,14 +218,6 @@ src_install() {
 		dodoc doc/tex/*.pdf
 	fi
 
-	# install snmp mib files
-	#
-	if use snmp
-	then
-		insinto /usr/share/snmp/mibs/
-		doins doc/digium-mib.txt doc/asterisk-mib.txt
-	fi
-
 	# install SIP scripts; bug #300832
 	#
 	dodoc "${FILESDIR}/1.6.2/sip_calc_auth"
@@ -237,9 +255,7 @@ pkg_postinst() {
 	elog "#gentoo-voip @ irc.freenode.net"
 	echo
 	echo
-	elog "1.6.1 -> 1.6.2 changes that you may care about:"
-	elog "canreinvite -> directmedia (sip.conf)"
-	elog "extensive T.38 (fax) changes"
+	elog "1.6 -> 1.8 changes that you may care about:"
 	elog "http://svn.asterisk.org/svn/${PN}/tags/${PV}/UPGRADE.txt"
 	elog "or: bzless ${ROOT}usr/share/doc/${PF}/UPGRADE.txt.bz2"
 }
