@@ -1,6 +1,6 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/nqc/nqc-3.1_p4.ebuild,v 1.4 2009/10/23 15:48:24 vostorga Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/nqc/nqc-3.1_p4.ebuild,v 1.5 2010/12/30 18:42:58 jer Exp $
 
 inherit eutils
 
@@ -12,7 +12,7 @@ S=${WORKDIR}/${P/_p/.r}
 
 SLOT="0"
 LICENSE="MPL-1.0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="usb"
 
 DEPEND="usb? ( dev-libs/legousbtower )"

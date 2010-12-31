@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/soprano/soprano-2.5.2.ebuild,v 1.1 2010/10/15 18:54:18 scarabeus Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/soprano/soprano-2.5.2.ebuild,v 1.3 2010/12/30 23:48:04 tampakrap Exp $
 
 EAPI="2"
 

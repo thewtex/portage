@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12315 2010/12/30 12:55:41 betelgeuse Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12318 2010/12/31 09:52:58 graaff Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -31,11 +31,11 @@
 
 #--- END OF EXAMPLES ---
 
-# Petteri Räty <betelgeuse@gentoo.org> (30 Dec 2010)
-# Fetch restricted binary package for which we have an open
-# source alternative: dev-java/glassfish-transaction-api
-# Will be moved to Java overlay after 30 days.
-dev-java/jta
+# Richard Freeman <rich0@gentoo.org> (30 Dec 2010)
+# New version will not function correctly until game server
+# is updated.  Will unmask in a few days.
+>=games-rpg/eternal-lands-1.9.1
+>=games-rpg/eternal-lands-data-1.9.1
 
 # Thomas Sachau <tommy@gentoo.org> (29 Dec 2010)
 # Masked because of ABI change, breaks
@@ -643,11 +643,6 @@ dev-libs/pcl
 #
 # Removal on 2010-10-24
 app-i18n/imhangul-status-applet
-
-# Alex Legler <a3li@gentoo.org> (18 Aug 2010)
-# Fails to install with the latest stable versions of OpenSSL and Tk.
-# The 1.8.6 packages will be removed in 60 days. Reference: Bug 332597.
-=dev-lang/ruby-1.8.6*
 
 # Tiziano Müller <dev-zero@gentoo.org> (11 Aug 2010)
 # Mask until prime time
