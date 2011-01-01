@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/msgpack/msgpack-0.3.9.ebuild,v 1.3 2010/05/26 11:55:02 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/msgpack/msgpack-0.4.4.ebuild,v 1.1 2010/12/31 22:41:00 graaff Exp $
 
 EAPI="2"
 
@@ -10,8 +10,6 @@ USE_RUBY="ruby18 ree18"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_TASK_TEST=""
-
-RUBY_FAKEGEM_EXTRADOC="ChangeLog README"
 
 inherit ruby-fakegem
 
@@ -37,5 +35,6 @@ each_ruby_compile() {
 }
 
 each_ruby_test() {
-	${RUBY} test/msgpack_test.rb || die "tests failed"
+	${RUBY} test/test_cases.rb || die "tests failed"
+	${RUBY} test/test_pack_unpack.rb || die "tests failed"
 }

@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/flask/flask-0.6.ebuild,v 1.2 2010/10/30 19:42:49 arfrever Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/flask/flask-0.6.1.ebuild,v 1.1 2010/12/31 22:31:02 arfrever Exp $
 
 EAPI="3"
 PYTHON_DEPEND="2"
@@ -28,13 +28,6 @@ DEPEND="${RDEPEND}
 	doc? ( >=dev-python/sphinx-0.6 )"
 
 S="${WORKDIR}/${MY_P}"
-
-src_prepare() {
-	distutils_src_prepare
-
-	# Delete reference to nonexistent artwork/LICENSE file.
-	sed -e "41,48d" -i docs/license.rst || die "sed failed"
-}
 
 src_compile() {
 	distutils_src_compile
