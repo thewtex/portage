@@ -1,0 +1,22 @@
+ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ree18? ( dev-lang/ruby-enterprise:1.8 ) ruby_targets_ruby18? ( test? ( dev-ruby/rake[ruby_targets_ruby18] ) ) ruby_targets_ree18? ( test? ( dev-ruby/rake[ruby_targets_ree18] ) ) ruby_targets_ruby18? ( dev-ruby/rubygems[ruby_targets_ruby18] ) ruby_targets_ree18? ( dev-ruby/rubygems[ruby_targets_ree18] ) test? ( ruby_targets_ruby18? ( dev-ruby/rubygems[ruby_targets_ruby18] ) ruby_targets_ree18? ( dev-ruby/rubygems[ruby_targets_ree18] ) )
+ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ree18? ( dev-lang/ruby-enterprise:1.8 ) ruby_targets_ruby18? ( dev-ruby/rubygems[ruby_targets_ruby18] ) ruby_targets_ree18? ( dev-ruby/rubygems[ruby_targets_ree18] )
+0
+mirror://rubygems/iobuffer-1.0.0.gem
+
+http://mynyml.com/ruby/flexible-continuous-testing
+MIT
+IO::Buffer is a fast byte queue which is primarily intended for non-blocking I/O applications
+~amd64 ~x86 ~x86-macos
+eutils multilib portability ruby-fakegem ruby-ng toolchain-funcs
+ruby_targets_ruby18 ruby_targets_ree18 test
+
+
+
+2
+
+compile configure install prepare setup test unpack
+
+
+
+
+

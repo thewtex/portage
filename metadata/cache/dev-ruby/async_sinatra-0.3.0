@@ -1,0 +1,22 @@
+ruby_targets_ruby18? ( test? ( dev-ruby/test-unit:2[ruby_targets_ruby18] dev-ruby/eventmachine[ruby_targets_ruby18] ) ) ruby_targets_ree18? ( test? ( dev-ruby/test-unit:2[ruby_targets_ree18] dev-ruby/eventmachine[ruby_targets_ree18] ) ) test? ( ruby_targets_ruby18? ( >=dev-ruby/sinatra-1.0[ruby_targets_ruby18] >=www-servers/thin-1.2.0[ruby_targets_ruby18] ) ruby_targets_ree18? ( >=dev-ruby/sinatra-1.0[ruby_targets_ree18] >=www-servers/thin-1.2.0[ruby_targets_ree18] ) ) ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ree18? ( dev-lang/ruby-enterprise:1.8 ) ruby_targets_ruby18? ( dev-ruby/rubygems[ruby_targets_ruby18] ) ruby_targets_ree18? ( dev-ruby/rubygems[ruby_targets_ree18] ) test? ( ruby_targets_ruby18? ( dev-ruby/rubygems[ruby_targets_ruby18] ) ruby_targets_ree18? ( dev-ruby/rubygems[ruby_targets_ree18] ) )
+ruby_targets_ruby18? ( >=dev-ruby/sinatra-1.0[ruby_targets_ruby18] >=www-servers/thin-1.2.0[ruby_targets_ruby18] ) ruby_targets_ree18? ( >=dev-ruby/sinatra-1.0[ruby_targets_ree18] >=www-servers/thin-1.2.0[ruby_targets_ree18] ) ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ree18? ( dev-lang/ruby-enterprise:1.8 ) ruby_targets_ruby18? ( dev-ruby/rubygems[ruby_targets_ruby18] ) ruby_targets_ree18? ( dev-ruby/rubygems[ruby_targets_ree18] )
+0
+mirror://rubygems/async_sinatra-0.3.0.gem
+
+http://libraggi.rubyforge.org/async_sinatra
+MIT
+Asynchronous response API for Sinatra and Thin
+~amd64
+eutils multilib portability ruby-fakegem ruby-ng toolchain-funcs
+test ruby_targets_ruby18 ruby_targets_ree18 doc test
+
+
+
+2
+
+compile configure install prepare setup test unpack
+
+
+
+
+
