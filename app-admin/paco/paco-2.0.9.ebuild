@@ -26,10 +26,10 @@ src_prepare() {
 }
 
 src_configure() {
+	local myconf="-with-paco-logdir=/var/lib/paco"
 	if ! use gtk; then myconf+=" --disable-gpaco"; fi
 	if ! use tools; then myconf+=" --disable-scripts"; fi
-	myconf+=" -with-paco-logdir=/var/lib/paco"
-	econf $myconf
+	econf ${myconf}
 }
 
 src_install() {
