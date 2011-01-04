@@ -1,5 +1,5 @@
->=dev-libs/libgcrypt-1.1.91 >=sys-apps/iproute2-2.6.19.20061214 gnutls? ( net-libs/gnutls ) bindist? ( net-libs/gnutls ) !gnutls? ( !bindist? ( dev-libs/openssl ) )
->=dev-libs/libgcrypt-1.1.91 >=sys-apps/iproute2-2.6.19.20061214 gnutls? ( net-libs/gnutls ) bindist? ( net-libs/gnutls ) !gnutls? ( !bindist? ( dev-libs/openssl ) ) resolvconf? ( net-dns/openresolv )
+>=dev-libs/libgcrypt-1.1.91 >=sys-apps/iproute2-2.6.19.20061214 bindist? ( net-libs/gnutls ) openssl? ( !bindist? ( dev-libs/openssl ) )
+>=dev-libs/libgcrypt-1.1.91 >=sys-apps/iproute2-2.6.19.20061214 bindist? ( net-libs/gnutls ) openssl? ( !bindist? ( dev-libs/openssl ) ) resolvconf? ( net-dns/openresolv )
 0
 mirror://gentoo/vpnc-0.5.3_p451.tar.bz2
 
@@ -8,7 +8,7 @@ GPL-2 BSD
 Free client for Cisco VPN routing software
 ~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86
 
-resolvconf gnutls bindist
+resolvconf openssl bindist
 
 
 
