@@ -1,11 +1,11 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-cpp/clucene/clucene-0.9.21b-r1.ebuild,v 1.4 2010/12/03 10:41:24 grozin Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-cpp/clucene/clucene-0.9.21b-r1.ebuild,v 1.6 2011/01/05 14:11:09 hwoarang Exp $
 
-EAPI="3"
+EAPI=3
 
 MY_P=${PN}-core-${PV}
-inherit base
+inherit base autotools
 
 DESCRIPTION="High-performance, full-featured text search engine based off of lucene in C++"
 HOMEPAGE="http://clucene.sourceforge.net/"
@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/clucene/${MY_P}.tar.bz2"
 
 LICENSE="|| ( Apache-2.0 LGPL-2.1 )"
 SLOT="1"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="debug doc static-libs threads"
 
 DEPEND="doc? ( >=app-doc/doxygen-1.4.2 )"
@@ -25,6 +25,17 @@ PATCHES=(
 )
 
 S="${WORKDIR}/${MY_P}"
+
+src_prepare() {
+	base_src_prepare
+
+	# fix wrong aclocal_amflags
+	sed -i \
+		-e '/ACLOCAL_AMFLAGS/d' \
+		Makefile.am || die
+
+	AT_M4DIR='-I m4' eautoreconf
+}
 
 src_configure() {
 	econf \
@@ -45,8 +56,6 @@ src_install() {
 	base_src_install
 	use doc && { dohtml "${S}"/doc/html/* ; }
 
-	if ! use static-libs; then
-		find "${D}" -type f -name '*.la' -exec rm -f {} + \
-			|| die "la removal failed"
-	fi
+	find "${D}" -type f -name '*.la' -exec rm -f {} + \
+		|| die "la removal failed"
 }

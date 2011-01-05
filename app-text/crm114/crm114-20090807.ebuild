@@ -1,10 +1,10 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/crm114/crm114-20090807.ebuild,v 1.1 2009/12/25 03:13:41 darkside Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/crm114/crm114-20090807.ebuild,v 1.2 2011/01/05 17:30:44 jlec Exp $
 
 EAPI=2
+
 MY_P="${P}-BlameThorstenAndJenny.src"
-S=${WORKDIR}/${MY_P}
 
 inherit eutils toolchain-funcs
 
@@ -17,32 +17,40 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86 ~x86-fbsd"
 IUSE="mew mimencode nls normalizemime +static test"
 
-RDEPEND="normalizemime? ( mail-filter/normalizemime )
+RDEPEND="
+	dev-libs/tre
 	mew? ( app-emacs/mew )
 	mimencode? ( net-mail/metamail )
-	>=dev-libs/tre-0.7.5"
+	normalizemime? ( mail-filter/normalizemime )"
 DEPEND="${RDEPEND}
 	test? ( sys-apps/miscfiles )"
 
+S="${WORKDIR}"/${MY_P}
+
 src_prepare() {
-	sed -i "s#^CFLAGS += -O3 -Wall##" Makefile || die
-	sed -i "s#^CC=.*#CC=$(tc-getCC)#" Makefile || die
+	sed \
+		-e "s#^CFLAGS += -O3 -Wall##" \
+		-e "s#^CC=.*#CC=$(tc-getCC)#" \
+		-i Makefile || die
 	# Upstream recommends static linking
 	if ! use static ; then
-		sed -i "s#LDFLAGS += -static -static-libgcc#LDFLAGS += ${LDFLAGS}#"	Makefile || die
+		sed -i "s#LDFLAGS += -static -static-libgcc#LDFLAGS += ${LDFLAGS}#" Makefile || die
 	else
-		sed -i "s#LDFLAGS += -static -static-libgcc#LDFLAGS += ${LDFLAGS} \
-		 -static -static-libgcc#"  Makefile || die
+		sed \
+			-e "s#LDFLAGS += -static -static-libgcc#LDFLAGS += ${LDFLAGS} -static -static-libgcc#" \
+			-i Makefile || die
 	fi
 
 	if use mimencode ; then
-		sed -i -e 's%#:mime_decoder: /mimencode -u/%:mime_decoder: /mimencode -u/%' \
-		-e 's%:mime_decoder: /mewdecode/%#:mime_decoder: /mewdecode/%' \
-			mailfilter.cf || die
+		sed \
+			-e 's%#:mime_decoder: /mimencode -u/%:mime_decoder: /mimencode -u/%' \
+			-e 's%:mime_decoder: /mewdecode/%#:mime_decoder: /mewdecode/%' \
+			-i mailfilter.cf || die
 	elif use normalizemime ; then
-		sed -i -e 's%#:mime_decoder: /normalizemime/%:mime_decoder: /normalizemime/%' \
-		-e 's%:mime_decoder: /mewdecode/%#:mime_decoder: /mewdecode/%' \
-			mailfilter.cf || die
+		sed \
+			-e 's%#:mime_decoder: /normalizemime/%:mime_decoder: /normalizemime/%' \
+			-e 's%:mime_decoder: /mewdecode/%#:mime_decoder: /mewdecode/%' \
+			-i mailfilter.cf || die
 	fi
 
 }
@@ -65,7 +73,7 @@ src_install() {
 }
 
 src_test() {
-	emake megatest
+	emake megatest || die
 }
 
 pkg_postinst() {
