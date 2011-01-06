@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-vcs/git/git-1.7.3.4-r1.ebuild,v 1.12 2011/01/01 15:39:13 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-vcs/git/git-1.7.3.4-r1.ebuild,v 1.13 2011/01/06 03:37:11 robbat2 Exp $
 
 EAPI=3
 
@@ -441,6 +441,14 @@ src_test() {
 	for i in ${disabled} ; do
 		[[ -f "${i}" ]] && mv -f "${i}" "${i}.DISABLED" && einfo "Disabled $i"
 	done
+
+	# Avoid the test system removing the results because we want them ourselves
+	sed -e '/^[[:space:]]*$(MAKE) clean/s,^,#,g' \
+		-i "${S}"/t/Makefile
+
+	# Clean old results first
+	cd "${S}/t"
+	git_emake clean
 
 	# Now run the tests
 	cd "${S}"

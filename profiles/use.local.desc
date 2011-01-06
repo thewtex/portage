@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.6260 2011/01/05 15:12:59 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.6265 2011/01/06 04:53:17 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -1434,6 +1434,7 @@ games-fps/warsow:angelscript - Enable AngelScript support
 games-fps/warsow:irc - Enable IRC support
 games-fps/worldofpadman:maps - Install extra maps (PadPack)
 games-kids/gcompris:gnet - will let GCompris fetch content from a web server
+games-misc/xcowsay:fortune - Installs the fortune-mod xcow binary
 games-puzzle/cuyo:music - Enable playing of background music
 games-puzzle/jag:editor - Install level editor
 games-puzzle/jag:extras - Install additional graphics
@@ -2118,6 +2119,7 @@ media-sound/mpd:curl - Support for web stream listening
 media-sound/mpd:fifo - Support writing audio to a FIFO
 media-sound/mpd:fluidsynth - Enables Fluidsynth MIDI software synthesis
 media-sound/mpd:id3 - Support for ID3 tags
+media-sound/mpd:inotify - Use the Linux kernel inotify subsystem to notice changes to mpd music library
 media-sound/mpd:lame - Support for MP3 streaming via Icecast2
 media-sound/mpd:lastfmradio - Support listening to last.fm radio stations
 media-sound/mpd:libmms - Support for Microsoft Media Server (MMS) streams via libmms
@@ -2189,7 +2191,6 @@ media-sound/sonic-visualiser:id3tag - Enables ID3 tagging with id3tag library
 media-sound/sox:amr - Enables Adaptive Multi-Rate Audio support
 media-sound/sox:id3tag - Enables ID3 tagging with id3tag library
 media-sound/squeezeboxserver:aac - Enable playback support for AAC (.m4a) encoded files
-media-sound/squeezeboxserver:alac - Enable support for alac
 media-sound/traverso:lv2 - Add support for Ladspa V2
 media-sound/vorbis-tools:kate - Adds support for Ogg Kate subtitles via libkate.
 media-sound/vorbis-tools:ogg123 - Build ogg123 player, needs libao and curl
@@ -3114,6 +3115,8 @@ net-misc/openvpn:passwordsave - Enables openvpn to save passwords
 net-misc/openvpn:pkcs11 - Enable PKCS#11 smartcard support
 net-misc/pino:indicate - Use dev-libs/libindicate to notify other apps
 net-misc/plowshare:view-captcha - View captcha with aview
+net-misc/ps3mediaserver:transcode - Install optional dependencies for transcoding support via media-video/mplayer
+net-misc/ps3mediaserver:tsmuxer - Install optional dependencies for transcoding support via media-video/tsmuxer
 net-misc/quagga:bgpclassless -  Apply unofficial patch to enable classless prefixes for BGP. Patch and information to be found at http://hasso.linux.ee/doku.php/english:network:quagga 
 net-misc/quagga:multipath -  Enable multipath routes support for any number of routes 
 net-misc/quagga:ospfapi -  Enable OSPFAPI support for client applications accessing the OSPF link state database 
@@ -4235,8 +4238,9 @@ x11-wm/windowmaker:vdesktop - Enable dynamic virtual desktop (conflicts with sof
 xfce-base/libxfce4ui:glade - Build support for Glade 3's GtkBuilder implementation
 xfce-base/libxfcegui4:glade - Build glade bindings
 xfce-base/xfce-utils:lock - Enable screen locking
+xfce-base/xfce4-session:consolekit - Enable support for sys-auth/consolekit
 xfce-base/xfce4-session:fortune - Install tips and tricks app (xfce4-tips), adds dependency on games-misc/fortune-mod
-xfce-base/xfce4-session:gnome-keyring - Support for storing your password.
+xfce-base/xfce4-session:gnome-keyring - Support for storing your password
 xfce-base/xfce4-settings:keyboard - Enable Keyboard layout selection with x11-libs/libxklavier
 xfce-base/xfce4-settings:sound - Enable sound event support with media-libs/libcanberra
 xfce-base/xfdesktop:thunar - Build support for desktop icons (for example, launchers and folders)
