@@ -1,5 +1,5 @@
-dev-util/pkgconfig dev-util/intltool >=x11-proto/damageproto-1.0 >=x11-libs/libXdamage-1.0 >=dev-libs/glib-2.16 >=x11-libs/gtk+-2.17.10 >=gnome-base/gconf-2.10 >=gnome-base/gnome-panel-2.10 >=media-libs/gst-plugins-base-0.10.24 >=x11-libs/cairo-1.8.10 >=sys-apps/sed-4
->=x11-libs/libXdamage-1.0 >=dev-libs/glib-2.16 >=x11-libs/gtk+-2.17.10 >=gnome-base/gconf-2.10 >=gnome-base/gnome-panel-2.10 >=media-libs/gst-plugins-base-0.10.24 >=x11-libs/cairo-1.8.10
+>=x11-libs/libXdamage-1.0 >=dev-libs/glib-2.16:2 >=x11-libs/gtk+-2.17.10:2 >=gnome-base/gconf-2.10 || ( gnome-base/gnome-panel[bonobo] <gnome-base/gnome-panel-2.32 ) >=media-libs/gst-plugins-base-0.10.24 >=x11-libs/cairo-1.8.10 dev-util/pkgconfig dev-util/intltool >=x11-proto/damageproto-1.0 >=sys-apps/sed-4
+>=x11-libs/libXdamage-1.0 >=dev-libs/glib-2.16:2 >=x11-libs/gtk+-2.17.10:2 >=gnome-base/gconf-2.10 || ( gnome-base/gnome-panel[bonobo] <gnome-base/gnome-panel-2.32 ) >=media-libs/gst-plugins-base-0.10.24 >=x11-libs/cairo-1.8.10
 0
 mirror://gnome/sources/byzanz/0.2/byzanz-0.2.2.tar.bz2
 
@@ -12,9 +12,9 @@ fdo-mime gnome.org gnome2 gnome2-utils libtool multilib toolchain-funcs
 
 
 
+2
 
-
-compile install postinst postrm preinst unpack
+compile configure install postinst postrm preinst prepare unpack
 
 
 
