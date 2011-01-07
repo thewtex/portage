@@ -1,12 +1,12 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/freshmeat-submit/freshmeat-submit-1.6.ebuild,v 1.5 2010/06/17 10:53:41 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/freshmeat-submit/freshmeat-submit-1.6.ebuild,v 1.6 2011/01/06 21:15:31 jlec Exp $
 
 PYTHON_DEPEND="2"
 
 inherit python
 
-DESCRIPTION="A utility for submitting version updates to freshmeat.net, designed to run from within a project release script, using freshmeat.net's XML- RPC interface"
+DESCRIPTION="A utility for submitting version updates to freshmeat.net, using freshmeat.net's XML-RPC interface"
 HOMEPAGE="http://www.catb.org/~esr/freshmeat-submit/"
 SRC_URI="http://www.catb.org/~esr/${PN}/${P}.tar.gz"
 

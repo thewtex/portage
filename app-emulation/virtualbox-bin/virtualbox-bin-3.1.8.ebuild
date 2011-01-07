@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/virtualbox-bin/virtualbox-bin-3.1.8.ebuild,v 1.6 2010/07/17 10:52:07 polynomial-c Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/virtualbox-bin/virtualbox-bin-3.1.8.ebuild,v 1.7 2011/01/06 22:16:32 polynomial-c Exp $
 
 EAPI=2
 
@@ -23,7 +23,8 @@ RESTRICT="mirror"
 
 DEPEND="app-arch/unzip"
 
-RDEPEND="!!app-emulation/virtualbox-ose
+RDEPEND="!!app-emulation/virtualbox
+	!!app-emulation/virtualbox-ose
 	!app-emulation/virtualbox-ose-additions
 	~app-emulation/virtualbox-modules-${PV}
 	!headless? (

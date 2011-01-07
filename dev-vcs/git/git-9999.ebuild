@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-vcs/git/git-9999.ebuild,v 1.8 2010/11/11 01:04:46 sping Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-vcs/git/git-9999.ebuild,v 1.9 2011/01/07 02:01:48 robbat2 Exp $
 
 EAPI=3
 
@@ -30,13 +30,14 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+blksha1 +curl cgi doc emacs gtk iconv +perl ppcsha1 tk +threads +webdav xinetd cvs subversion"
+IUSE="+blksha1 +curl cgi doc emacs gtk iconv +perl +python ppcsha1 tk +threads +webdav xinetd cvs subversion"
 
 # Common to both DEPEND and RDEPEND
 CDEPEND="
 	!blksha1? ( dev-libs/openssl )
 	sys-libs/zlib
 	perl?   ( dev-lang/perl[-build] )
+	python? ( dev-lang/python )
 	tk?     ( dev-lang/tk )
 	curl?   (
 		net-misc/curl
@@ -52,11 +53,11 @@ RDEPEND="${CDEPEND}
 			cvs? ( >=dev-vcs/cvsps-2.1 dev-perl/DBI dev-perl/DBD-SQLite )
 			subversion? ( dev-vcs/subversion[-dso,perl] dev-perl/libwww-perl dev-perl/TermReadKey )
 			)
-	gtk?
+	python? ( gtk?
 	(
 		>=dev-python/pygtk-2.8
 		|| ( dev-python/pygtksourceview:2  dev-python/gtksourceview-python )
-	)"
+	) )"
 
 # This is how info docs are created with Git:
 #   .txt/asciidoc --(asciidoc)---------> .xml/docbook
@@ -135,10 +136,12 @@ exportmakeopts() {
 	use perl \
 		&& myopts="${myopts} INSTALLDIRS=vendor" \
 		|| myopts="${myopts} NO_PERL=YesPlease"
-	use threads \
-		&& myopts="${myopts} THREADED_DELTA_SEARCH=YesPlease"
+	use python \
+		|| myopts="${myopts} NO_PYTHON=YesPlease"
 	use subversion \
 		|| myopts="${myopts} NO_SVN_TESTS=YesPlease"
+	use threads \
+		&& myopts="${myopts} THREADED_DELTA_SEARCH=YesPlease"
 # Disabled until ~m68k-mint can be keyworded again
 #	if [[ ${CHOST} == *-mint* ]] ; then
 #		myopts="${myopts} NO_MMAP=YesPlease"
@@ -196,6 +199,15 @@ src_prepare() {
 	# Gentoo bug #321895
 	#epatch "${FILESDIR}"/git-1.7.1-noiconv-segfault-fix.patch
 
+	# Fix false positives with t3404 due to SHELL=/bin/false for the portage
+	# user.
+	# Merged upstream
+	#epatch "${FILESDIR}"/git-1.7.3.4-avoid-shell-issues.patch
+
+	# bug #350075: t9001: fix missing prereq on some tests
+	# Merged upstream
+	#epatch "${FILESDIR}"/git-1.7.3.4-fix-perl-test-prereq.patch
+
 	sed -i \
 		-e 's:^\(CFLAGS =\).*$:\1 $(OPTCFLAGS) -Wall:' \
 		-e 's:^\(LDFLAGS =\).*$:\1 $(OPTLDFLAGS):' \
@@ -215,10 +227,15 @@ src_prepare() {
 		Documentation/Makefile || die "sed failed"
 
 	# bug #318289
-	epatch "${FILESDIR}"/git-1.7.3.2-interix.patch
+	# Merged upstream
+	#epatch "${FILESDIR}"/git-1.7.3.2-interix.patch
 }
 
 git_emake() {
+	# bug #326625: PERL_PATH, PERL_MM_OPT
+	# bug #320647: PYTHON_PATH
+	PYTHON_PATH=""
+	use python && PYTHON_PATH="${EPREFIX}/usr/bin/python"
 	emake ${MY_MAKEOPTS} \
 		DESTDIR="${D}" \
 		OPTCFLAGS="${CFLAGS}" \
@@ -228,6 +245,10 @@ git_emake() {
 		prefix="${EPREFIX}"/usr \
 		htmldir="${EPREFIX}"/usr/share/doc/${PF}/html \
 		sysconfdir="${EPREFIX}"/etc \
+		PYTHON_PATH="${PYTHON_PATH}" \
+		PERL_PATH="${EPREFIX}/usr/bin/env perl" \
+		PERL_MM_OPT="" \
+		GIT_TEST_OPTS="--no-color" \
 		"$@"
 }
 
@@ -298,7 +319,7 @@ src_install() {
 		elisp-site-file-install "${FILESDIR}"/${SITEFILE} || die
 	fi
 
-	if use gtk ; then
+	if use python && use gtk ; then
 		dobin "${S}"/contrib/gitview/gitview
 		dodoc "${S}"/contrib/gitview/gitview.txt
 	fi
@@ -330,14 +351,11 @@ src_install() {
 	done
 
 	if use perl && use cgi ; then
-		exeinto /usr/share/${PN}/gitweb
-		doexe "${S}"/gitweb/gitweb.cgi
-		insinto /usr/share/${PN}/gitweb/static
-		doins "${S}"/gitweb/static/gitweb.css
-		js=gitweb.js
-		[ -f "${S}"/gitweb/static/gitweb.min.js ] && js=gitweb.min.js
-		doins "${S}"/gitweb/static/${js}
-		doins "${S}"/gitweb/static/git-{favicon,logo}.png
+		# We used to install in /usr/share/${PN}/gitweb
+		# but upstream installs in /usr/share/gitweb
+		# so we will install a symlink and use their location for compat with other
+		# distros
+		dosym /usr/share/gitweb /usr/share/${PN}/gitweb
 
 		# INSTALL discusses configuration issues, not just installation
 		docinto /
@@ -347,7 +365,10 @@ src_install() {
 		find "${ED}"/usr/lib64/perl5/ \
 			-name .packlist \
 			-exec rm \{\} \;
+	else
+		rm -rf "${D}"/usr/share/gitweb
 	fi
+
 	if ! use subversion ; then
 		rm -f "${ED}"/usr/libexec/git-core/git-svn \
 			"${ED}"/usr/share/man/man1/git-svn.1*
@@ -428,11 +449,27 @@ src_test() {
 	for i in ${disabled} ; do
 		[[ -f "${i}" ]] && mv -f "${i}" "${i}.DISABLED" && einfo "Disabled $i"
 	done
-	cd "${S}"
+
+	# Avoid the test system removing the results because we want them ourselves
+	sed -e '/^[[:space:]]*$(MAKE) clean/s,^,#,g' \
+		-i "${S}"/t/Makefile
+
+	# Clean old results first
+	cd "${S}/t"
+	git_emake clean
+
 	# Now run the tests
+	cd "${S}"
 	einfo "Start test run"
-	git_emake \
-		test || die "tests failed"
+	git_emake test
+	rc=$?
+
+	# Display nice results
+	cd "${S}/t"
+	git_emake aggregate-results
+
+	# And exit
+	[ $rc -eq 0 ] || die "tests failed. Please file a bug."
 }
 
 showpkgdeps() {

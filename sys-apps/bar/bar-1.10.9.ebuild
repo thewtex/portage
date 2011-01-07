@@ -1,6 +1,6 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/bar/bar-1.10.9.ebuild,v 1.4 2009/05/29 22:57:31 tcunha Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/bar/bar-1.10.9.ebuild,v 1.5 2011/01/06 21:28:57 jlec Exp $
 
 inherit autotools
 
@@ -20,7 +20,7 @@ src_unpack() {
 	unpack ${A}
 	cd "${S}"
 	sed -e '/^LDFLAGS/d' \
-		-e '/cd $(WEB_DIR) && $(MAKE)/d' -i Makefile.am
+		-e '/cd $(WEB_DIR) && $(MAKE)/d' -i Makefile.am || die
 	eautomake
 }
 
