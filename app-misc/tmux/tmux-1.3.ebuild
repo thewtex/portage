@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/tmux/tmux-1.3.ebuild,v 1.7 2010/10/10 17:50:23 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/tmux/tmux-1.3.ebuild,v 1.8 2011/01/07 14:06:29 jlec Exp $
 
 EAPI=3
 
@@ -15,12 +15,29 @@ SLOT="0"
 KEYWORDS="amd64 ~ppc sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="vim-syntax"
 
-DEPEND="<dev-libs/libevent-2
+DEPEND="
+	<dev-libs/libevent-2
 	sys-libs/ncurses"
 RDEPEND="${DEPEND}
 	vim-syntax? ( || (
 			app-editors/vim
 			app-editors/gvim ) )"
+
+pkg_setup() {
+	echo
+	ewarn "Commands 'up-pane', 'down-pane' and 'select-prompt' were removed in version 1.3."
+	ewarn "You may want to update your configuration file accordingly to avoid errors on"
+	ewarn "tmux startup."
+	ewarn
+	ewarn "For the full 1.3 Changelog, together with details on what replaced the above"
+	ewarn "commands, visit http://tmux.cvs.sourceforge.net/viewvc/tmux/tmux/CHANGES."
+	ewarn
+	ewarn "WARNING: after updating to tmux 1.3 you will _not_ be able to connect to any"
+	ewarn "running 1.2 tmux server instances. You'll have to use an existing client to"
+	ewarn "end your old sessions or kill the old server instances. Otherwise you'll have"
+	ewarn "to temporarily downgrade to tmux 1.2 to access them."
+	echo
+}
 
 src_configure() {
 	# The configure script isn't created by GNU autotools.
@@ -47,20 +64,4 @@ src_install() {
 		insinto /usr/share/vim/vimfiles/ftdetect
 		doins "${FILESDIR}"/tmux.vim || die "doins ftdetect failed"
 	fi
-}
-
-pkg_setup() {
-	ewarn
-	ewarn "Commands 'up-pane', 'down-pane' and 'select-prompt' were removed in version 1.3."
-	ewarn "You may want to update your configuration file accordingly to avoid errors on"
-	ewarn "tmux startup."
-	ewarn
-	ewarn "For the full 1.3 Changelog, together with details on what replaced the above"
-	ewarn "commands, visit http://tmux.cvs.sourceforge.net/viewvc/tmux/tmux/CHANGES."
-	ewarn
-	ewarn "WARNING: after updating to tmux 1.3 you will _not_ be able to connect to any"
-	ewarn "running 1.2 tmux server instances. You'll have to use an existing client to"
-	ewarn "end your old sessions or kill the old server instances. Otherwise you'll have"
-	ewarn "to temporarily downgrade to tmux 1.2 to access them."
-	ewarn
 }

@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/mysql-ruby/mysql-ruby-2.8.1-r2.ebuild,v 1.2 2010/10/11 12:14:46 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/mysql-ruby/mysql-ruby-2.8.1-r2.ebuild,v 1.4 2011/01/07 14:57:36 graaff Exp $
 
 EAPI="2"
 USE_RUBY="ruby18 ree18 ruby19"
@@ -26,9 +26,9 @@ RDEPEND="${DEPEND}"
 
 TEST_DIR="/usr/share/${PN}/test/"
 
-all_ruby_prepare() {
-	epatch "${FILESDIR}/${P}-test.patch"
-}
+#all_ruby_prepare() {
+#	epatch "${FILESDIR}/${P}-test.patch"
+#}
 
 each_ruby_configure() {
 	${RUBY} extconf.rb || die
@@ -40,7 +40,7 @@ each_ruby_compile() {
 
 each_ruby_install() {
 	emake DESTDIR="${D}" install || die
-	ruby_fakegem_genspec
+	ruby_fakegem_install_gemspec
 }
 
 all_fakegem_install() {

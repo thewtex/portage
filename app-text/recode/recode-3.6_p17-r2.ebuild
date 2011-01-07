@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/recode/recode-3.6_p17-r2.ebuild,v 1.2 2010/10/21 10:38:51 grobian Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/recode/recode-3.6_p17-r2.ebuild,v 1.4 2011/01/07 18:25:03 hwoarang Exp $
 
 EAPI="3"
 
@@ -17,7 +17,7 @@ SRC_URI="mirror://gnu/${PN}/${MY_P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 IUSE="nls"
 
 DEPEND="
@@ -28,9 +28,10 @@ RDEPEND=""
 S=${WORKDIR}/${MY_P}
 
 src_prepare() {
-	epatch "${FILESDIR}/${MY_P}-gettextfix.diff" #239372
-	epatch "${FILESDIR}"/${MY_P}-as-if.patch #283029
-	epatch "${WORKDIR}"/${PN}_${MY_PV}-${DEB_PATCH}.diff
+	epatch \
+		"${FILESDIR}/${MY_P}-gettextfix.diff" \
+		"${FILESDIR}"/${MY_P}-as-if.patch \
+		"${WORKDIR}"/${PN}_${MY_PV}-${DEB_PATCH}.diff
 	sed -i '1i#include <stdlib.h>' src/argmatch.c || die
 
 	# Remove old libtool macros
@@ -51,6 +52,6 @@ src_configure() {
 
 src_install() {
 	emake DESTDIR="${D}" install || die "make install failed"
-	dodoc AUTHORS BACKLOG ChangeLog NEWS README THANKS TODO
+	dodoc AUTHORS BACKLOG ChangeLog NEWS README THANKS TODO || die
 	rm -f "${ED}"/usr/lib/charset.alias
 }

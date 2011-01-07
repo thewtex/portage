@@ -1,6 +1,23 @@
 # ChangeLog for dev-ruby/mysql-ruby
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/mysql-ruby/ChangeLog,v 1.86 2010/10/11 16:15:42 jer Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/mysql-ruby/ChangeLog,v 1.89 2011/01/07 14:57:36 graaff Exp $
+
+  07 Jan 2011; Hans de Graaff <graaff@gentoo.org>
+  mysql-ruby-2.8.1-r1.ebuild, mysql-ruby-2.8.1-r2.ebuild,
+  mysql-ruby-2.8.2.ebuild:
+  Use proper call to install gemspec now that the eclass changed interface.
+
+*mysql-ruby-2.8.2 (07 Jan 2011)
+
+  07 Jan 2011; Hans de Graaff <graaff@gentoo.org>
+  mysql-ruby-2.8.1-r2.ebuild, +mysql-ruby-2.8.2.ebuild,
+  +files/mysql-ruby-2.8.2-test.patch:
+  Version bump with fix for large ids. Apply fix from jer for bug 348788 by
+  using proper mysqlconfig. Fix bug 350805 by requesting a mysql version
+  with dynamic libraries.
+
+  07 Jan 2011; Hans de Graaff <graaff@gentoo.org> -mysql-ruby-2.8.1.ebuild:
+  Remove old version.
 
   11 Oct 2010; Jeroen Roovers <jer@gentoo.org> mysql-ruby-2.8.1-r1.ebuild:
   Stable for HPPA (bug #333949).
