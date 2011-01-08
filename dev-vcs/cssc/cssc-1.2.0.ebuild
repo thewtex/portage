@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-vcs/cssc/cssc-1.2.0.ebuild,v 1.4 2010/11/07 19:22:17 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-vcs/cssc/cssc-1.2.0.ebuild,v 1.6 2011/01/08 18:29:02 jer Exp $
 
 EAPI="2"
 

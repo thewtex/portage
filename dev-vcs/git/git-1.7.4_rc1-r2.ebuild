@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-vcs/git/git-1.7.4_rc1-r2.ebuild,v 1.2 2011/01/08 01:23:25 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-vcs/git/git-1.7.4_rc1-r2.ebuild,v 1.4 2011/01/08 14:11:18 arfrever Exp $
 
 EAPI=3
 
@@ -246,9 +246,8 @@ src_prepare() {
 git_emake() {
 	# bug #326625: PERL_PATH, PERL_MM_OPT
 	# bug #320647: PYTHON_PATH
-	# bug #329479: EPYTHON
 	PYTHON_PATH=""
-	use python && PYTHON_PATH="${EPREFIX}/usr/bin/${EPYTHON}"
+	use python && PYTHON_PATH="$(PYTHON -a)"
 	emake ${MY_MAKEOPTS} \
 		DESTDIR="${D}" \
 		OPTCFLAGS="${CFLAGS}" \
@@ -334,7 +333,7 @@ src_install() {
 
 	if use python && use gtk ; then
 		dobin "${S}"/contrib/gitview/gitview
-		python_convert_shebangs ${PYTHON_ABI} "${D}"/usr/bin/gitview
+		python_convert_shebangs ${PYTHON_ABI} "${ED}"/usr/bin/gitview
 		dodoc "${S}"/contrib/gitview/gitview.txt
 	fi
 
