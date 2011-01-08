@@ -1,11 +1,15 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-vcs/git/git-9999.ebuild,v 1.10 2011/01/07 07:49:33 grobian Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-vcs/git/git-9999.ebuild,v 1.13 2011/01/08 01:23:25 robbat2 Exp $
 
 EAPI=3
 
 GENTOO_DEPEND_ON_PERL=no
-inherit toolchain-funcs eutils elisp-common perl-module bash-completion
+
+# bug #329479: git-remote-testgit is not multiple-version aware
+PYTHON_DEPEND="python? 2"
+
+inherit toolchain-funcs eutils elisp-common perl-module bash-completion python
 [ "$PV" == "9999" ] && inherit git
 
 MY_PV="${PV/_rc/.rc}"
@@ -37,7 +41,6 @@ CDEPEND="
 	!blksha1? ( dev-libs/openssl )
 	sys-libs/zlib
 	perl?   ( dev-lang/perl[-build] )
-	python? ( dev-lang/python )
 	tk?     ( dev-lang/tk )
 	curl?   (
 		net-misc/curl
@@ -95,6 +98,10 @@ pkg_setup() {
 		ewarn "with USE=dso, there may be weird crashes in git-svn. You"
 		ewarn "have been warned."
 	fi
+	if use python ; then
+		python_set_active_version 2
+		python_pkg_setup
+	fi
 }
 
 # This is needed because for some obscure reasons future calls to make don't
@@ -142,6 +149,8 @@ exportmakeopts() {
 		|| myopts="${myopts} NO_SVN_TESTS=YesPlease"
 	use threads \
 		&& myopts="${myopts} THREADED_DELTA_SEARCH=YesPlease"
+	use cvs \
+		|| myopts="${myopts} NO_CVS=YesPlease"
 # Disabled until ~m68k-mint can be keyworded again
 #	if [[ ${CHOST} == *-mint* ]] ; then
 #		myopts="${myopts} NO_MMAP=YesPlease"
@@ -208,6 +217,9 @@ src_prepare() {
 	# Merged upstream
 	#epatch "${FILESDIR}"/git-1.7.3.4-fix-perl-test-prereq.patch
 
+	# bug #350330 - automagic CVS when we don't want it is bad.
+	epatch "${FILESDIR}"/git-1.7.3.5-optional-cvs.patch
+
 	sed -i \
 		-e 's:^\(CFLAGS =\).*$:\1 $(OPTCFLAGS) -Wall:' \
 		-e 's:^\(LDFLAGS =\).*$:\1 $(OPTLDFLAGS):' \
@@ -234,8 +246,9 @@ src_prepare() {
 git_emake() {
 	# bug #326625: PERL_PATH, PERL_MM_OPT
 	# bug #320647: PYTHON_PATH
+	# bug #329479: EPYTHON
 	PYTHON_PATH=""
-	use python && PYTHON_PATH="${EPREFIX}/usr/bin/python"
+	use python && PYTHON_PATH="${EPREFIX}/usr/bin/${EPYTHON}"
 	emake ${MY_MAKEOPTS} \
 		DESTDIR="${D}" \
 		OPTCFLAGS="${CFLAGS}" \
@@ -321,6 +334,7 @@ src_install() {
 
 	if use python && use gtk ; then
 		dobin "${S}"/contrib/gitview/gitview
+		python_convert_shebangs ${PYTHON_ABI} "${D}"/usr/bin/gitview
 		dodoc "${S}"/contrib/gitview/gitview.txt
 	fi
 

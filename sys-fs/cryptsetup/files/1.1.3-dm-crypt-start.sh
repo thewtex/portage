@@ -1,7 +1,13 @@
 # /lib/rcscripts/addons/dm-crypt-start.sh
 
-# For backwards compatability with baselayout < 1.13.0
-: ${SVCNAME:=${myservice}} #174256
+# For backwards compatability with baselayout < 1.13.0 #174256
+if [[ -z ${SVCNAME} ]] ; then
+	case ${myservice} in
+		""|checkfs|localmount) SVCNAME=dmcrypt ;;
+		*) SVCNAME=${myservice} ;;
+	esac
+fi
+
 dm_crypt_execute_checkfs() {
 	dm_crypt_execute_dmcrypt
 }
@@ -54,7 +60,11 @@ dm_crypt_execute_dmcrypt() {
 
 	cryptsetup isLuks ${source} 2>/dev/null && { arg1="luksOpen"; arg2="$source"; arg3="$target"; luks=1; }
 
-	if /sbin/cryptsetup status ${target} | egrep -q '\<active:' ; then
+	# Older versions reported:
+	#	${target} is active:
+	# Newer versions report:
+	#	${target} is active[ and is in use.]
+	if cryptsetup status ${target} | egrep -q ' is active' ; then
 		einfo "dm-crypt mapping ${target} is already configured"
 		return
 	fi

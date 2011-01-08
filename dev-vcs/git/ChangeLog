@@ -1,6 +1,26 @@
 # ChangeLog for dev-vcs/git
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-vcs/git/ChangeLog,v 1.74 2011/01/07 15:11:30 hwoarang Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-vcs/git/ChangeLog,v 1.78 2011/01/08 01:23:25 robbat2 Exp $
+
+  08 Jan 2011; Robin H. Johnson <robbat2@gentoo.org> git-1.7.3.5-r2.ebuild,
+  -git-1.7.3.5-r2.ebuild.orig, git-1.7.4_rc1-r2.ebuild, git-9999.ebuild:
+  Fix missing argument in call to python_convert_shebangs, and drop accidently
+  added .orig file.
+
+  07 Jan 2011; Robin H. Johnson <robbat2@gentoo.org> git-9999.ebuild:
+  Also import python improvements to 9999 ebuild.
+
+*git-1.7.4_rc1-r2 (07 Jan 2011)
+*git-1.7.3.5-r2 (07 Jan 2011)
+
+  07 Jan 2011; Robin H. Johnson <robbat2@gentoo.org> +git-1.7.3.5-r2.ebuild,
+  +git-1.7.3.5-r2.ebuild.orig, +git-1.7.4_rc1-r2.ebuild:
+  Bug #329479: improve python usage to new python eclass. Does not support
+  multiple active versions of python easily.
+
+  07 Jan 2011; Robin H. Johnson <robbat2@gentoo.org> git-1.7.4_rc1-r1.ebuild,
+  git-9999.ebuild:
+  Port bug #350330 fixes to newer ebuilds.
 
   07 Jan 2011; Markos Chandras <hwoarang@gentoo.org> git-1.6.4.5.ebuild,
   git-1.7.2.5.ebuild, git-1.7.3.4-r1.ebuild:
