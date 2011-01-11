@@ -1,19 +1,21 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-vcs/svn2git/svn2git-9999.ebuild,v 1.3 2010/06/22 18:51:38 arfrever Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-vcs/svn2git/svn2git-9999.ebuild,v 1.4 2011/01/11 08:43:47 sping Exp $
 
 EAPI="2"
 
-inherit qt4-r2
+inherit eutils qt4-r2
 [ "$PV" == "9999" ] && inherit git
 
-DESCRIPTION="Importer for one time conversion from svn to git."
+MY_PV="1.0.2-1-gebac099"
+
+DESCRIPTION="Tool for one-time conversion from svn to git."
 HOMEPAGE="http://gitorious.org/svn2git/svn2git"
 if [ "$PV" == "9999" ]; then
 	EGIT_REPO_URI="git://gitorious.org/svn2git/svn2git.git"
 	KEYWORDS=""
 else
-	SRC_URI="http://www.hartwork.org/public/${P}.tar.gz"
+	SRC_URI="http://gitorious.org/${PN}/${PN}/archive-tarball/${MY_PV} -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 fi
 
@@ -27,8 +29,13 @@ DEPEND="dev-vcs/subversion
 RDEPEND="${DEPEND}
 	dev-vcs/git"
 
+S=${WORKDIR}/${PN}-${PN}
+
 src_prepare() {
-	sed -i 's|^\(APR_INCLUDE = /usr/include/apr-1\)\.0|\1|' "${S}"/src/src.pro
+	# Note: patching order matters
+	epatch "${FILESDIR}"/${PN}-1.0.2.1-include-path.patch
+	[ "$PV" != "9999" ] && epatch "${FILESDIR}"/${PN}-1.0.2.1-version.patch
+
 	qt4-r2_src_prepare
 }
 
