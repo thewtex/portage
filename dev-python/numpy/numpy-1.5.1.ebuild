@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/numpy/numpy-1.5.1.ebuild,v 1.3 2010/12/19 16:41:54 arfrever Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/numpy/numpy-1.5.1.ebuild,v 1.5 2011/01/12 17:55:03 xarthisius Exp $
 
 EAPI="3"
 PYTHON_DEPEND="*"
@@ -110,6 +110,15 @@ src_prepare() {
 		export {ATLAS,PTATLAS,BLAS,LAPACK,MKL}=None
 	fi
 	epatch "${FILESDIR}"/${PN}-1.4.0-interix.patch
+
+	# Disable tests failing on ppc/ppc64.
+	# http://projects.scipy.org/numpy/ticket/1664
+	if use ppc || use ppc64; then
+		sed \
+			-e "s/test_nextafterl/_&/" \
+			-e "s/test_spacingl/_&/" \
+			-i numpy/core/tests/test_umath.py
+	fi
 }
 
 src_compile() {
