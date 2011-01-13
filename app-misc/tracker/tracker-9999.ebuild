@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/tracker/tracker-9999.ebuild,v 1.31 2010/12/22 22:52:27 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/tracker/tracker-9999.ebuild,v 1.32 2011/01/13 00:17:06 eva Exp $
 
 EAPI="3"
 GCONF_DEBUG="no"
@@ -76,13 +76,14 @@ RDEPEND="
 	xml? ( >=dev-libs/libxml2-2.6 )
 	xmp? ( >=media-libs/exempi-2.1 )"
 DEPEND="${RDEPEND}
-	>=dev-util/intltool-0.35
-	>=sys-devel/gettext-0.14
+	>=dev-util/intltool-0.40
+	>=sys-devel/gettext-0.17
 	>=dev-util/pkgconfig-0.20
 	dev-util/gtk-doc-am
 	>=dev-util/gtk-doc-1.8
 	applet? ( >=dev-lang/vala-0.11.2:0.12 )
 	gtk? (
+		app-office/dia
 		>=dev-lang/vala-0.11.2:0.12
 		>=dev-libs/libgee-0.3 )
 	doc? (
@@ -139,6 +140,7 @@ pkg_setup() {
 		--enable-tracker-fts
 		--with-enca
 		--with-unicode-support=glib
+		--enable-guarantee-metadata
 		$(use_enable applet tracker-status-icon)
 		$(use_enable applet tracker-search-bar)
 		$(use_enable eds miner-evolution)
