@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/fftw/fftw-2.1.5-r7.ebuild,v 1.1 2010/11/03 07:02:32 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/fftw/fftw-2.1.5-r7.ebuild,v 1.3 2011/01/15 17:19:37 hwoarang Exp $
 
 EAPI="3"
 
@@ -17,7 +17,7 @@ SLOT="2.1"
 LICENSE="GPL-2"
 IUSE="doc float fortran mpi openmp threads"
 
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 
 pkg_setup() {
 	# this one is reported to cause trouble on pentium4 m series
@@ -28,11 +28,7 @@ pkg_setup() {
 	if use x86; then
 		is-flag "-fomit-frame-pointer" || append-flags "-fomit-frame-pointer"
 	fi
-	if use openmp &&
-		[[ $(tc-getCC)$ == *gcc* ]] &&
-		( [[ $(gcc-major-version)$(gcc-minor-version) -lt 42 ]] ||
-		! has_version sys-devel/gcc[openmp] )
-	then
+	if use openmp && [[ $(tc-getCC) == *gcc* ]] && ! $(tc-has-openmp); then
 		ewarn "You are using gcc and OpenMP is only available with gcc >= 4.2 "
 		ewarn "If you want to build fftw with OpenMP, abort now,"
 		ewarn "and switch CC to an OpenMP capable compiler"
@@ -71,6 +67,7 @@ src_prepare() {
 }
 
 src_configure() {
+	local dir
 	local myconf="
 		--enable-shared
 		--enable-type-prefix
@@ -91,42 +88,47 @@ src_configure() {
 			--disable-threads
 			--without-openmp"
 	fi
-	cd "${S}-single"
-	econf ${myconf} \
-		--enable-float \
-		--with-gcc=$(tc-getCC) \
-		|| die "econf for float failed"
 
-	cd "${S}-double"
-	econf ${myconf} \
-		--with-gcc=$(tc-getCC) \
-		|| die "econf for double failed"
+	for dir in "${S}-single" "${S}-double"
+	do
+		einfo "Running configuration in ${dir}"
+		cd ${dir}
+		econf ${myconf} \
+			--enable-float \
+			--with-gcc=$(tc-getCC)
+	done
 }
 
 src_compile() {
-	cd "${S}-single"
-	emake || die "emake for float failed"
-
-	cd "${S}-double"
-	emake || die "emake for double failed"
+	local dir
+	for dir in "${S}-single" "${S}-double"
+	do
+		einfo "Running compilation in ${dir}"
+		cd ${dir}
+		emake || die "emake failed in ${dir}"
+	done
 }
 
 src_test() {
-	cd "${S}-single"
-	emake -j1 check || die "emake check single failed"
-	cd "${S}-double"
-	emake -j1 check || die "emake check double failed"
+	local dir
+	for dir in "${S}-single" "${S}-double"
+	do
+		einfo "Running tests in ${dir}"
+		cd ${dir}
+		emake -j1 check || die "test failed in ${dir}"
+	done
 }
 
 src_install () {
 	# both builds are installed in the same place
 	# libs are distinguished by prefix (s or d), see docs for details
 
-	cd "${S}-single"
-	emake DESTDIR="${D}" install || die "emake install float failed"
-
-	cd "${S}-double"
-	emake DESTDIR="${D}" install || die "emake install double failed"
+	local dir
+	for dir in "${S}-single" "${S}-double"
+	do
+		cd ${dir}
+		emake DESTDIR="${D}" install || die "installation failed in ${dir}"
+	done
 
 	insinto /usr/include
 	doins fortran/fftw_f77.i || die "doins failed"
