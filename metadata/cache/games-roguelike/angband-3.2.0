@@ -1,0 +1,22 @@
+gtk? ( gnome-base/libglade x11-libs/pango x11-libs/gtk+:2 dev-libs/glib:2 ) X? ( x11-libs/libSM x11-libs/libX11 ) !ncurses? ( !X? ( !sdl? ( !gtk? ( sys-libs/ncurses ) ) ) ) sdl? ( media-libs/libsdl[video,X] media-libs/sdl-ttf media-libs/sdl-image sound? ( media-libs/sdl-mixer media-libs/libsdl[audio] ) ) dev-util/pkgconfig || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b
+gtk? ( gnome-base/libglade x11-libs/pango x11-libs/gtk+:2 dev-libs/glib:2 ) X? ( x11-libs/libSM x11-libs/libX11 ) !ncurses? ( !X? ( !sdl? ( !gtk? ( sys-libs/ncurses ) ) ) ) sdl? ( media-libs/libsdl[video,X] media-libs/sdl-ttf media-libs/sdl-image sound? ( media-libs/sdl-mixer media-libs/libsdl[audio] ) )
+0
+http://rephial.org/downloads/3.2/angband-3.2.0.tar.gz
+
+http://rephial.org/
+GPL-2
+A roguelike dungeon exploration game based on the books of J.R.R. Tolkien
+~amd64 ~ppc ~x86
+autotools base eutils games libtool multilib portability toolchain-funcs versionator
+gtk ncurses sdl +sound X
+
+
+
+2
+
+compile configure install postinst preinst prepare setup unpack
+
+
+
+
+

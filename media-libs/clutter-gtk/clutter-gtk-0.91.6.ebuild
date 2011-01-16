@@ -1,13 +1,13 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/clutter-gtk/clutter-gtk-0.91.6.ebuild,v 1.1 2010/12/24 12:05:26 nirbheek Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/clutter-gtk/clutter-gtk-0.91.6.ebuild,v 1.3 2011/01/15 19:11:07 nirbheek Exp $
 
 EAPI="2"
 
 # inherit clutter after gnome2 so that defaults aren't overriden
 inherit gnome2 clutter
 
-DESCRIPTION="Clutter-GTK - GTK+ Integration library for Clutter"
+DESCRIPTION="Clutter-GTK - GTK+3 Integration library for Clutter"
 
 SLOT="1.0"
 KEYWORDS="~amd64 ~ppc64 ~x86"
@@ -24,9 +24,12 @@ DEPEND="${RDEPEND}
 	doc? ( >=dev-util/gtk-doc-1.14 )"
 EXAMPLES="examples/{*.c,redhand.png}"
 
-pkg_setup() {
+src_prepare() {
 	G2CONF="${G2CONF}
 		--with-flavour=x11
 		--enable-maintainer-flags=no
 		$(use_enable introspection)"
+
+	sed -e "s/\(DOC_MODULE.*=.*${PN}\).*/\1-1.0/" \
+		-i doc/reference/Makefile.{am,in} || die "sed failed"
 }
