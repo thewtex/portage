@@ -1,9 +1,9 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/midori/midori-9999.ebuild,v 1.23 2010/11/08 02:45:35 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/midori/midori-9999.ebuild,v 1.24 2011/01/16 18:32:50 ssuominen Exp $
 
 EAPI=2
-inherit pax-utils eutils multilib python xfconf git
+inherit eutils multilib python xfconf git
 
 DESCRIPTION="A lightweight web browser based on WebKitGTK+"
 HOMEPAGE="http://www.twotoasts.de/index.php?/pages/midori_summary.html"
@@ -73,8 +73,6 @@ src_compile() {
 src_install() {
 	DESTDIR=${D} ./waf install || die
 	dodoc AUTHORS ChangeLog INSTALL TODO || die
-
-	pax-mark -m "${D}"/usr/bin/midori #338561
 }
 
 pkg_postinst() {

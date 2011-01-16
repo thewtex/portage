@@ -1,11 +1,11 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/axiom/axiom-0.6.0.ebuild,v 1.5 2011/01/07 09:36:10 xmw Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/axiom/axiom-0.6.0.ebuild,v 1.8 2011/01/16 17:25:08 arfrever Exp $
 
 EAPI="3"
 PYTHON_DEPEND="2"
 SUPPORT_PYTHON_ABIS="1"
-RESTRICT_PYTHON_ABIS="3.*"
+RESTRICT_PYTHON_ABIS="3.* *-jython"
 
 # setup.py uses epsilon.setuphelper.autosetup(), which tries to use
 # build-${PYTHON_ABI} directories as packages.
@@ -22,7 +22,7 @@ SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~ia64 ~ppc64 ~sparc x86"
+KEYWORDS="amd64 ~ia64 ~ppc64 sparc x86"
 IUSE=""
 
 DEPEND="|| ( dev-lang/python:2.7[sqlite] dev-lang/python:2.6[sqlite] dev-lang/python:2.5[sqlite] dev-python/pysqlite:2 )
@@ -49,10 +49,7 @@ src_compile() {
 }
 
 src_test() {
-	testing() {
-		PYTHONPATH="." trial axiom
-	}
-	python_execute_function testing
+	python_execute_trial -P . axiom
 }
 
 src_install() {

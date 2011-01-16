@@ -1,6 +1,20 @@
 # ChangeLog for Gentoo/PPC profile directory
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/powerpc/ChangeLog,v 1.101 2011/01/06 16:50:24 josejx Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/powerpc/ChangeLog,v 1.105 2011/01/16 12:28:19 xarthisius Exp $
+
+  16 Jan 2011; Kacper Kowalik <xarthisius@gentoo.org> package.use.mask:
+  Add sci-chemistry/ccp4[arpwarp] wrt #303931
+
+  16 Jan 2011; Kacper Kowalik <xarthisius@gentoo.org> package.use.force,
+  package.use.mask:
+  Use package.use.force to set sci-chemistry/oasis[minimal] wrt #303931,
+  correct package.use.mask
+
+  16 Jan 2011; Kacper Kowalik <xarthisius@gentoo.org> package.use.mask:
+  Add sci-chemistry/oasis[-minimal] wrt #303931
+
+  16 Jan 2011; Kacper Kowalik <xarthisius@gentoo.org> package.use.mask:
+  Mask sci-biology/fasta[icc] since there is no icc for PPC
 
   06 Jan 2011; Joseph Jezak <josejx@gentoo.org> package.mask:
   Unmasked KDE again, the deps have been marked.
