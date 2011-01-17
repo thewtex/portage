@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/gnupg/gnupg-2.0.17.ebuild,v 1.1 2011/01/14 23:44:35 arfrever Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/gnupg/gnupg-2.0.17.ebuild,v 1.3 2011/01/16 19:54:18 arfrever Exp $
 
 EAPI="3"
 
@@ -34,7 +34,12 @@ COMMON_DEPEND_BINS="|| ( app-crypt/pinentry app-crypt/pinentry-qt )"
 # Existence of executables is checked during configuration.
 DEPEND="${COMMON_DEPEND_LIBS}
 	${COMMON_DEPEND_BINS}
-	static? ( >=dev-libs/libassuan-2[static-libs] )
+	static? (
+		>=dev-libs/libassuan-2[static-libs]
+		>=dev-libs/libgcrypt-1.4[static-libs]
+		>=dev-libs/libgpg-error-1.7[static-libs]
+		>=dev-libs/libksba-1.0.7[static-libs]
+	)
 	nls? ( sys-devel/gettext )
 	doc? ( sys-apps/texinfo )"
 
@@ -113,10 +118,11 @@ src_install() {
 	echo ".so man1/gpg2.1" > "${ED}usr/share/man/man1/gpg.1"
 	echo ".so man1/gpgv2.1" > "${ED}usr/share/man/man1/gpgv.1"
 
+	dodir /etc/env.d
 	echo "CONFIG_PROTECT=/usr/share/gnupg/qualified.txt" >>"${ED}etc/env.d/30gnupg"
 
 	if use doc; then
-		dohtml doc/gnupg.html/* doc/*jpg doc/*png || die "dohtml failed"
+		dohtml doc/gnupg.html/* doc/*.png || die "dohtml failed"
 	fi
 }
 
