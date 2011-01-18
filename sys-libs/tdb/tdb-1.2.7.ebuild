@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/tdb/tdb-1.2.7.ebuild,v 1.1 2011/01/03 19:45:20 vostorga Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/tdb/tdb-1.2.7.ebuild,v 1.3 2011/01/18 16:00:32 vostorga Exp $
 
 EAPI="2"
 PYTHON_DEPEND="python? 2"

@@ -1,10 +1,10 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/eiskaltdcpp/eiskaltdcpp-9999.ebuild,v 1.16 2010/11/24 11:42:22 pva Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/eiskaltdcpp/eiskaltdcpp-9999.ebuild,v 1.17 2011/01/18 11:13:08 pva Exp $
 
 EAPI="2"
 
-LANGS="be bg en es fr hu pl ru sr uk"
+LANGS="be bg cs en es fr hu pl ru sk sr uk"
 CMAKE_MIN_VERSION="2.6.0"
 inherit qt4-r2 cmake-utils git
 
@@ -15,7 +15,7 @@ EGIT_REPO_URI="git://github.com/negativ/${PN}.git"
 LICENSE="GPL-2 GPL-3"
 SLOT="0"
 KEYWORDS=""
-IUSE="dbus +emoticons examples -gnome -gtk -javascript libnotify lua +qt4 pcre sounds spell upnp"
+IUSE="daemon dbus +emoticons examples -gnome -gtk -javascript libnotify lua +qt4 pcre sounds spell sqlite upnp xmlrpc"
 
 RDEPEND="
 	app-arch/bzip2
@@ -23,6 +23,7 @@ RDEPEND="
 	>=dev-libs/openssl-0.9.8
 	virtual/libiconv
 	sys-devel/gettext
+	daemon? ( xmlrpc? ( dev-libs/xmlrpc-c[abyss,cxx,curl] ) )
 	lua? ( >=dev-lang/lua-5.1 )
 	upnp? ( net-libs/miniupnpc )
 	gtk? (
@@ -40,6 +41,7 @@ RDEPEND="
 			x11-libs/qtscriptgenerator
 		)
 		spell? ( app-text/aspell )
+		sqlite? ( x11-libs/qt-sql:4[sqlite] )
 	)
 	pcre? ( >=dev-libs/libpcre-4.2 )
 "
@@ -62,6 +64,7 @@ src_configure() {
 		"$(cmake-utils_use dbus DBUS_NOTIFY)"
 		"$(cmake-utils_use javascript USE_JS)"
 		"$(cmake-utils_use spell USE_ASPELL)"
+		"$(cmake-utils_use sqlite USE_QT_SQLITE)"
 		"$(cmake-utils_use qt4 USE_QT)"
 		"$(cmake-utils_use upnp USE_MINIUPNP)"
 		-DLOCAL_MINIUPNP="0"
@@ -73,6 +76,8 @@ src_configure() {
 		"$(cmake-utils_use lua WITH_LUASCRIPTS)"
 		"$(cmake-utils_use pcre PERL_REGEX)"
 		"$(cmake-utils_use sounds WITH_SOUNDS)"
+		"$(cmake-utils_use daemon NO_UI_DAEMON)"
+		"$(cmake-utils_use xmlrpc XMLRPC_DAEMON)"
 		-Dlinguas="${langs}"
 	)
 	cmake-utils_src_configure

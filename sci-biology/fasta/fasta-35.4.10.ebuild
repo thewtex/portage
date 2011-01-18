@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/fasta/fasta-35.4.10.ebuild,v 1.4 2011/01/16 11:02:47 xarthisius Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/fasta/fasta-35.4.10.ebuild,v 1.7 2011/01/18 17:03:34 tomka Exp $
 
 EAPI="2"
 
@@ -12,13 +12,23 @@ SRC_URI="http://faculty.virginia.edu/wrpearson/${PN}/${PN}3/${P}.tar.gz"
 
 LICENSE="fasta"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~ppc x86 ~amd64-linux ~x86-linux"
 IUSE="debug icc sse2 test"
 
 DEPEND="
 	icc? ( dev-lang/icc )
 	test? ( app-shells/tcsh )"
 RDEPEND=""
+
+pkg_setup() {
+	if use icc; then
+		elog "Please make your CFLAGS are supported by icc"
+		elog "Either make sure they are set in /etc/make.conf"
+		elog "or run"
+		elog "env CFLAGS="..." emerge fasta"
+		epause 5
+	fi
+}
 
 src_prepare() {
 	CC_ALT=

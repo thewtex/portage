@@ -1,10 +1,10 @@
-net-libs/libpcap ssl? ( >=dev-libs/openssl-0.6.9 ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b
-net-libs/libpcap ssl? ( >=dev-libs/openssl-0.6.9 )
+net-libs/libpcap ssl? ( >=dev-libs/openssl-1 ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b
+net-libs/libpcap ssl? ( >=dev-libs/openssl-1 )
 0
 http://www.rtfm.com/ssldump/ssldump-0.9b3.tar.gz
 
 http://www.rtfm.com/ssldump/
-GPL-2
+openssl
 A Tool for network monitoring and data acquisition
 amd64 ppc sparc x86
 autotools eutils libtool multilib portability toolchain-funcs
@@ -12,9 +12,9 @@ ssl
 
 
 
+2
 
-
-compile install unpack
+configure install prepare
 
 
 
