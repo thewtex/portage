@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-base/gnome/gnome-2.30.2-r1.ebuild,v 1.3 2011/01/18 14:11:00 fauli Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-base/gnome/gnome-2.30.2-r1.ebuild,v 1.5 2011/01/19 16:25:09 pacho Exp $
 
 EAPI="2"
 
@@ -76,7 +76,7 @@ RDEPEND="
 
 	!ppc64? ( >=www-client/epiphany-2.30.6 )
 	>=app-arch/file-roller-2.30.2
-	>=gnome-extra/gcalctool-5.30.2
+	>=gnome-extra/gcalctool-5.28.2
 
 	>=gnome-extra/gconf-editor-2.30.0
 	>=gnome-base/gdm-2.20.11
@@ -108,7 +108,7 @@ RDEPEND="
 
 	>=gnome-extra/gnome-utils-2.30.0
 
-	>=gnome-extra/gnome-games-2.30.2
+	>=gnome-extra/gnome-games-2.28.2
 	>=gnome-base/librsvg-2.26.3
 
 	>=gnome-extra/gnome-system-monitor-2.28.2
@@ -136,7 +136,7 @@ RDEPEND="
 	>=app-admin/pessulus-2.30.3
 	ldap? (
 		>=app-admin/sabayon-2.30.1
-		>=net-voip/ekiga-3.2.7 )
+		>=net-voip/ekiga-2.0.12 )
 
 	>=gnome-extra/gnome-screensaver-2.30.2
 	>=x11-misc/alacarte-0.13.2
