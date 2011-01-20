@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/siproxd/siproxd-0.8.0-r1.ebuild,v 1.3 2010/06/21 20:14:38 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/siproxd/siproxd-0.8.0-r1.ebuild,v 1.4 2011/01/20 16:39:28 chithanh Exp $
 
 EAPI="2"
 
@@ -20,6 +20,7 @@ IUSE="examples doc static"
 RDEPEND=">=net-libs/libosip-3.0.0"
 #	debug? ( dev-libs/dmalloc[threads] )"
 DEPEND="${RDEPEND}
+	<sys-devel/libtool-2.4:2
 	doc? ( app-text/docbook-sgml-utils
 		app-text/docbook-sgml-dtd:4.2 )"
 # docbook-sgml-utils is for building doc
