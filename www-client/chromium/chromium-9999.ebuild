@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/chromium-9999.ebuild,v 1.126 2011/01/16 09:49:50 phajdan.jr Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/chromium-9999.ebuild,v 1.127 2011/01/21 07:51:23 phajdan.jr Exp $
 
 EAPI="3"
 PYTHON_DEPEND="2:2.6"
@@ -17,13 +17,13 @@ EGCLIENT_REPO_URI="http://src.chromium.org/svn/trunk/src/"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-IUSE="cups +gecko-mediaplayer gnome gnome-keyring system-sqlite system-v8"
+IUSE="cups +gecko-mediaplayer gnome gnome-keyring system-sqlite"
 
 RDEPEND="app-arch/bzip2
 	system-sqlite? (
 		>=dev-db/sqlite-3.6.23.1[fts3,icu,secure-delete,threadsafe]
 	)
-	system-v8? ( dev-lang/v8 )
+	dev-lang/v8
 	dev-libs/dbus-glib
 	>=dev-libs/icu-4.4.1
 	>=dev-libs/libevent-1.4.13
@@ -150,9 +150,6 @@ src_prepare() {
 	# Make sure we don't use bundled libvpx headers.
 	epatch "${FILESDIR}"/${PN}-system-vpx-r2.patch
 
-	# Make sure we don't use bundled xdg-utils.
-	epatch "${FILESDIR}"/${PN}-system-xdg-utils-r0.patch
-
 	# Remove most bundled libraries. Some are still needed.
 	find third_party -type f \! -iname '*.gyp*' \
 		\! -path 'third_party/WebKit/*' \
@@ -161,6 +158,7 @@ src_prepare() {
 		\! -path 'third_party/cld/*' \
 		\! -path 'third_party/expat/*' \
 		\! -path 'third_party/ffmpeg/*' \
+		\! -path 'third_party/flac/*' \
 		\! -path 'third_party/gpsd/*' \
 		\! -path 'third_party/harfbuzz/*' \
 		\! -path 'third_party/hunspell/*' \
@@ -182,27 +180,21 @@ src_prepare() {
 		\! -path 'third_party/zlib/contrib/minizip/*' \
 		-delete || die
 
+	# Remove bundled v8.
+	find v8 -type f \! -iname '*.gyp*' -delete || die
+
+	# The implementation files include v8 headers with full path,
+	# like #include "v8/include/v8.h". Make sure the system headers
+	# will be used.
+	# TODO: find a solution that can be upstreamed.
+	rmdir v8/include || die
+	ln -s /usr/include v8/include || die
+
 	if use system-sqlite; then
 		# Remove bundled sqlite, preserving the shim header.
 		find third_party/sqlite -type f \! -iname '*.gyp*' \
 			\! -path 'third_party/sqlite/sqlite3.h' \
 			-delete || die
-	fi
-
-	if use system-v8; then
-		# Provide our own gyp file that links with the system v8.
-		# TODO: move this upstream.
-		cp "${FILESDIR}"/v8.gyp v8/tools/gyp || die
-
-		# Remove bundled v8.
-		find v8 -type f \! -iname '*.gyp*' -delete || die
-
-		# The implementation files include v8 headers with full path,
-		# like #include "v8/include/v8.h". Make sure the system headers
-		# will be used.
-		# TODO: find a solution that can be upstreamed.
-		rmdir v8/include || die
-		ln -s /usr/include v8/include || die
 	fi
 
 	# Make sure the build system will use the right python, bug #344367.
@@ -229,6 +221,7 @@ src_configure() {
 		-Duse_system_libpng=1
 		-Duse_system_libxml=1
 		-Duse_system_speex=1
+		-Duse_system_v8=1
 		-Duse_system_vpx=1
 		-Duse_system_xdg_utils=1
 		-Duse_system_zlib=1"
@@ -263,12 +256,6 @@ src_configure() {
 	myconf+="
 		-Dlinux_sandbox_path=${CHROMIUM_HOME}/chrome_sandbox
 		-Dlinux_sandbox_chrome_path=${CHROMIUM_HOME}/chrome"
-
-	if host-is-pax; then
-		# Prevent the build from failing (bug #301880). The performance
-		# difference is very small.
-		myconf+=" -Dv8_use_snapshot=0"
-	fi
 
 	if use gecko-mediaplayer; then
 		# Disable hardcoded blacklist for gecko-mediaplayer.

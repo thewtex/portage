@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tcltk/tdom/tdom-0.8.2.ebuild,v 1.6 2011/01/18 14:47:35 hwoarang Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-tcltk/tdom/tdom-0.8.2.ebuild,v 1.7 2011/01/21 08:00:52 jlec Exp $
 
 EAPI="3"
 
@@ -9,8 +9,8 @@ inherit autotools eutils
 MY_P="tDOM-${PV}"
 
 DESCRIPTION="A XML/DOM/XPath/XSLT Implementation for Tcl"
-HOMEPAGE="http://www.tdom.org/"
-SRC_URI="http://www.tdom.org/files/${MY_P}.tgz"
+HOMEPAGE="http://tdom.github.com"
+SRC_URI="https://github.com/downloads/tDOM/${PN}/${MY_P}.tgz"
 
 LICENSE="MPL-1.1"
 SLOT="0"

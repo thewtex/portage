@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.6292 2011/01/21 00:13:35 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.6299 2011/01/21 18:13:31 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -345,6 +345,7 @@ app-emulation/libvirt:pcap -  Support auto learning IP addreses for routing
 app-emulation/libvirt:phyp -  Support management of virtualisation through the PHYP hypervisor protocol. 
 app-emulation/libvirt:qemu -  Support management of QEmu virtualisation (one of app-emulation/qemu, app-emulation/qemu-kvm or app-emulation/qemu-spice) 
 app-emulation/libvirt:uml -  Support management of User Mode Linux virtualisation 
+app-emulation/libvirt:virt-network -  To help people out, this flag includes the dependencies for NATed network mode. Effectively any network setup that relies on libvirt to setup and configure network interfaces on your host. This does not include bridged or routed networks. 
 app-emulation/libvirt:virtualbox -  Support management of VirtualBox virtualisation (one of app-emulation/virtualbox or app-emulation/virtualbox-ose) 
 app-emulation/libvirt:xen -  Support management of Xen virtualisation (app-emulation/xen) 
 app-emulation/lxc:vanilla -  Avoid adding Gentoo Linux-specific modifications, which include the custom init script. This is present as a flag to avoid forcing dependencies over users that might not want have them around as they use LXC in contexts where the init script is not useful. 
@@ -382,9 +383,12 @@ app-emulation/qemu-kvm:ncurses - Enable the ncurses-based console
 app-emulation/qemu-kvm:png - Enable PNG compression for the VNC console server
 app-emulation/qemu-kvm:pulseaudio - Enable pulseaudio output for sound emulation
 app-emulation/qemu-kvm:qemu-ifup - Provides the qemu-ifup script for use with QEMU's built in bridging
+app-emulation/qemu-kvm:rbd - Enable rados block device backend support, see http://ceph.newdream.net/wiki/QEMU-RBD
 app-emulation/qemu-kvm:sdl - Enable the SDL-based console
+app-emulation/qemu-kvm:spice - Enable Spice protocol support via app-emulation/spice
 app-emulation/qemu-kvm:ssl - Enable TLS support for the VNC console server
 app-emulation/qemu-kvm:vde - Enable VDE-based networking
+app-emulation/qemu-kvm:vhost-net - Enable accelerated networking using vhost-net, see http://www.linux-kvm.org/page/VhostNet
 app-emulation/qemu-kvm:xen - Enables support for Xen backends
 app-emulation/qemu-kvm-spice:aio - Enables support for Linux's Async IO
 app-emulation/qemu-kvm-spice:alsa - Enable alsa output for sound emulation
@@ -1283,6 +1287,8 @@ dev-util/dialog:minimal - Disable library, install command-line program only
 dev-util/geany:vte - Enable Terminal support (x11-libs/vte)
 dev-util/geany-plugins:enchant - Enable spell checking using enchant
 dev-util/geany-plugins:gtkspell - Use gtkspell for dictionary support
+dev-util/geany-plugins:soup - Enable updatechecker plugin which requires net-libs/libsoup
+dev-util/geany-plugins:webkit - Enable webhelper plugin which requires net-libs/webkit-gtk
 dev-util/global:vim - Integrate the GNU GLOBAL source code tag system with Vim
 dev-util/google-perftools:debug -  Build a set of libraries with debug support (so-called debugalloc). These are available by default but are not needed unless you're actually developing using tcmalloc. 
 dev-util/google-perftools:largepages -  Use (experimental) larger pages for tcmalloc, this increases memory usage, but should speed up the allocation/free operations. 
@@ -2734,6 +2740,7 @@ net-im/ekg2:sqlite3 - Support logging messages into SQLite3 database. If 'sqlite
 net-im/ekg2:ssl - Enable the complete SSL/TLS support through OpenSSL. This also enables the 'sim' plugin which relies on OpenSSL.
 net-im/empathy:nautilus - Enable nautilus-sendto support
 net-im/empathy:webkit - Build support for Adium-style HTML-based conversation window themes using net-libs/webkit-gtk
+net-im/gajim:gmail - Depend on net-dns/bind-tools to get gmail chats working
 net-im/gajim:idle - Enable idle module
 net-im/gajim:srv - SRV capabilities
 net-im/gajim:trayicon - Enable support for trayicon
@@ -3061,10 +3068,10 @@ net-misc/cfengine:postgres - Use dev-db/postgresql-server as database backend, d
 net-misc/cfengine:qdbm - Use dev-db/qdbm as database backend, default would be Berkeley DB (sys-libs/db)
 net-misc/cfengine:tests - Install test files
 net-misc/cfengine:tokyocabinet - Use dev-db/tokyocabinet as database backend, default would be Berkeley DB (sys-libs/db)
-net-misc/connman:dhclient - Use dhclient from net-misc/dhcp for getting ip.
 net-misc/connman:dnsproxy - Enable dnsproxy support.
 net-misc/connman:ethernet - Enable ethernet support.
 net-misc/connman:google - Enable Google Public DNS support.
+net-misc/connman:ntpd - Use net-misc/ntp for nptd plugin.
 net-misc/connman:ofono - Use net-misc/ofono for telephony support.
 net-misc/connman:openvpn - Use net-misc/openvpn for openvpn support.
 net-misc/connman:tools - Enable testing tools.
@@ -3082,6 +3089,15 @@ net-misc/dnetstats:gnome - Use gksu to gain root access
 net-misc/dnetstats:kde - Use kdesu to gain root access
 net-misc/dropbear:bsdpty - Add support for legacy BSD pty's rather than dynamic UNIX pty's -- do not use this flag unless you are absolutely sure you actually want it
 net-misc/dropbear:multicall - Build all the programs as one little binary (to save space)
+net-misc/freerdp:X - Install also GUI client
+net-misc/freerdp:alsa - Enable sound support (using alsa)
+net-misc/freerdp:cups - Enable printing support (using cups)
+net-misc/freerdp:debug - Enable all debugging options
+net-misc/freerdp:gnutls - Use GnuTLS as crypto backend
+net-misc/freerdp:largefile - Support for large files
+net-misc/freerdp:nss - Use NSS as crypto backend
+net-misc/freerdp:polarssl - Use PolarSSL as crypto backend
+net-misc/freerdp:ssl - Use OpenSSL as crypto backend
 net-misc/gwget:epiphany - Build epiphany extensions
 net-misc/htbinit:esfq - Add support for Enhanced Stochastic Fairness queueing discipline.
 net-misc/hylafax:html - Adds HTML documentation
