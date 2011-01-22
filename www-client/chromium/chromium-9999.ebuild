@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/chromium-9999.ebuild,v 1.127 2011/01/21 07:51:23 phajdan.jr Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/chromium-9999.ebuild,v 1.128 2011/01/22 16:18:21 phajdan.jr Exp $
 
 EAPI="3"
 PYTHON_DEPEND="2:2.6"
@@ -33,6 +33,7 @@ RDEPEND="app-arch/bzip2
 	gnome? ( >=gnome-base/gconf-2.24.0 )
 	gnome-keyring? ( >=gnome-base/gnome-keyring-2.28.2 )
 	>=media-libs/alsa-lib-1.0.19
+	media-libs/flac
 	virtual/jpeg
 	media-libs/libpng
 	media-libs/libvpx
@@ -150,6 +151,9 @@ src_prepare() {
 	# Make sure we don't use bundled libvpx headers.
 	epatch "${FILESDIR}"/${PN}-system-vpx-r2.patch
 
+	# Make sure we don't use bundled FLAC.
+	epatch "${FILESDIR}"/${PN}-system-flac-r0.patch
+
 	# Remove most bundled libraries. Some are still needed.
 	find third_party -type f \! -iname '*.gyp*' \
 		\! -path 'third_party/WebKit/*' \
@@ -158,7 +162,7 @@ src_prepare() {
 		\! -path 'third_party/cld/*' \
 		\! -path 'third_party/expat/*' \
 		\! -path 'third_party/ffmpeg/*' \
-		\! -path 'third_party/flac/*' \
+		\! -path 'third_party/flac/flac.h' \
 		\! -path 'third_party/gpsd/*' \
 		\! -path 'third_party/harfbuzz/*' \
 		\! -path 'third_party/hunspell/*' \
@@ -179,6 +183,10 @@ src_prepare() {
 		\! -path 'third_party/undoview/*' \
 		\! -path 'third_party/zlib/contrib/minizip/*' \
 		-delete || die
+
+	# Provide our own gyp file to use system flac.
+	# TODO: move this upstream.
+	cp "${FILESDIR}/flac.gyp" "third_party/flac" || die
 
 	# Remove bundled v8.
 	find v8 -type f \! -iname '*.gyp*' -delete || die

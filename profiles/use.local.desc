@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.6301 2011/01/22 02:34:34 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.6304 2011/01/22 16:13:21 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -2731,7 +2731,6 @@ net-im/ejabberd:mod_pubsub - Build Pubsub module
 net-im/ejabberd:mod_srl - Build LDAP shared roster module (https://alioth.debian.org/projects/ejabberd-msrl/)
 net-im/ejabberd:mod_statsdx - Measures several statistics, and provides a new section in ejabberd Web Admin to view them.
 net-im/ejabberd:web - Enable web admin interface
-net-im/ekg2:expat - Enable plugins relying on dev-libs/expat (jabber & feed plugins).
 net-im/ekg2:gadu - Enable Gadu-Gadu protocol support (requires net-libs/libgadu).
 net-im/ekg2:gif - GIF token support for Gadu-Gadu protocol.
 net-im/ekg2:gnutls - Enable SSL/TLS support through GnuTLS for the plugins supporting it. If 'ssl' is enabled too, GnuTLS will be preferred where possible (and OpenSSL will be used elsewhere).
@@ -3162,6 +3161,10 @@ net-misc/remmina:ssh - Enable support for SSH/SFTP using net-libs/libssh
 net-misc/remmina:unique - Enable single instance support using dev-libs/libunique
 net-misc/remmina:vte - Enable Terminal support using x11-libs/vte
 net-misc/remmina:xdmcp - Enable support for X Display Manager Control Protocol
+net-misc/remmina-plugins:nx - Enable support for NX protocol
+net-misc/remmina-plugins:ssh - Enable support for SSH protocol
+net-misc/remmina-plugins:telepathy - Enable telepathy support
+net-misc/remmina-plugins:xdmcp - Use Xephyr for XDMCP protocol
 net-misc/rygel:tracker - Install dependencies for the tracker plugin
 net-misc/rygel:transcode - Install dependencies for transcoding support
 net-misc/scponly:gftp - Enables gFTP compatibility
@@ -4192,7 +4195,6 @@ x11-misc/google-gadgets:webkit - Enables browser element and script runtime base
 x11-misc/lightdm:consolekit - Enables support for authorization using consolekit
 x11-misc/lightdm:introspection - Use dev-libs/gobject-introspection for introspection
 x11-misc/lightdm:webkit - Build greeter based on net-libs/webkit-gtk
-x11-misc/pcmanfm:desktop-integration - Enable/disable the desktop integration from pcmanfm
 x11-misc/rednotebook:libyaml - enable libyaml support
 x11-misc/rednotebook:webkit - enable previews using webkit engine
 x11-misc/rss-glx:quesoglc - Enable support for OpenGL Character Renderer
