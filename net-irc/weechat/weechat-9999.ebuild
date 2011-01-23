@@ -1,19 +1,28 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/weechat/weechat-9999.ebuild,v 1.2 2010/12/13 22:35:41 idl0r Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-irc/weechat/weechat-9999.ebuild,v 1.4 2011/01/23 17:34:17 scarabeus Exp $
 
-EAPI=2
-inherit cmake-utils git
+EAPI=3
+
+PYTHON_DEPEND="python? 2"
+
+EGIT_REPO_URI="git://git.sv.gnu.org/weechat.git"
+[[ ${PV} == "9999" ]] && GIT_ECLASS="git"
+inherit python multilib cmake-utils ${GIT_ECLASS}
 
 DESCRIPTION="Portable and multi-interface IRC client."
 HOMEPAGE="http://weechat.org/"
-EGIT_REPO_URI="git://git.sv.gnu.org/weechat.git"
+[[ ${PV} == "9999" ]] || SRC_URI="http://${PN}.org/files/src/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
+if [[ ${PV} == "9999" ]]; then
+	KEYWORDS=""
+else
+	KEYWORDS="~amd64 ~ppc ~x86 ~x86-fbsd"
+fi
 
-NETWORKS="jabber +irc"
+NETWORKS="+irc"
 PLUGINS="+alias +charset +fifo +logger +relay +rmodifier +scripts +spell +xfer"
 INTERFACES="+ncurses gtk"
 SCRIPT_LANGS="lua +perl +python ruby tcl"
@@ -22,11 +31,9 @@ IUSE="${SCRIPT_LANGS} ${PLUGINS} ${INTERFACES} ${NETWORKS} +crypt doc nls +ssl"
 RDEPEND="
 	charset? ( virtual/libiconv )
 	gtk? ( x11-libs/gtk+:2 )
-	jabber? ( dev-libs/iksemel )
 	lua? ( dev-lang/lua[deprecated] )
 	ncurses? ( sys-libs/ncurses )
 	perl? ( dev-lang/perl )
-	python? ( virtual/python )
 	ruby? ( dev-lang/ruby )
 	ssl? ( net-libs/gnutls )
 	spell? ( app-text/aspell )
@@ -36,7 +43,19 @@ DEPEND="${RDEPEND}
 	nls? ( >=sys-devel/gettext-0.15 )
 "
 
-DOCS="AUTHORS ChangeLog NEWS README "
+DOCS="AUTHORS ChangeLog NEWS README"
+
+pkg_setup() {
+	python_set_active_version 2
+}
+
+src_prepare() {
+	# fix libdir placement
+	sed -i \
+		-e "s:lib/:$(get_libdir)/:g" \
+		-e "s:lib\":$(get_libdir)\":g" \
+		CMakeLists.txt || die "sed failed"
+}
 
 # alias, rmodifier, xfer
 src_configure() {
