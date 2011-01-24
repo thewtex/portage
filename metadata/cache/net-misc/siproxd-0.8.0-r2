@@ -1,4 +1,4 @@
->=net-libs/libosip-3.0.0 >=sys-devel/libtool-2.4 doc? ( app-text/docbook-sgml-utils app-text/docbook-sgml-dtd:4.2 )
+>=net-libs/libosip-3.0.0 >=sys-devel/libtool-2.4 doc? ( app-text/docbook-sgml-utils app-text/docbook-sgml-dtd:4.2 ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b
 >=net-libs/libosip-3.0.0
 0
 mirror://sourceforge/siproxd/siproxd-0.8.0.tar.gz
@@ -7,7 +7,7 @@ http://siproxd.sourceforge.net/
 GPL-2
 A proxy/masquerading daemon for the SIP protocol
 ~amd64 ~x86
-eutils multilib portability toolchain-funcs
+autotools eutils libtool multilib portability toolchain-funcs
 examples doc static
 
 
