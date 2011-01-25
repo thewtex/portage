@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/kdelibs/kdelibs-4.4.5-r2.ebuild,v 1.2 2011/01/24 12:27:39 phajdan.jr Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/kdelibs/kdelibs-4.4.5-r2.ebuild,v 1.4 2011/01/25 10:04:40 hwoarang Exp $
 
 EAPI="3"
 
@@ -12,7 +12,7 @@ inherit kde4-base fdo-mime
 DESCRIPTION="KDE libraries needed by all KDE programs."
 HOMEPAGE="http://www.kde.org/"
 
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 LICENSE="LGPL-2.1"
 IUSE="3dnow acl alsa altivec bindist +bzip2 debug doc fam +handbook jpeg2k kerberos
 lzma mmx nls openexr policykit semantic-desktop spell sse sse2 ssl zeroconf"
@@ -31,14 +31,13 @@ COMMONDEPEND="
 	media-libs/freetype:2
 	media-libs/giflib
 	>=media-libs/libpng-1.4
+	>=media-sound/phonon-4.3.80
 	sys-libs/zlib
 	virtual/jpeg
 	>=x11-misc/shared-mime-info-0.60
 	acl? ( virtual/acl )
 	alsa? ( media-libs/alsa-lib )
-	aqua? ( >=media-sound/phonon-4.3.80 )
 	!aqua? (
-		>=media-sound/phonon-4.3.80[xcb]
 		x11-libs/libICE
 		x11-libs/libSM
 		x11-libs/libX11

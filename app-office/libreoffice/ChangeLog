@@ -1,0 +1,41 @@
+# ChangeLog for app-office/libreoffice
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-office/libreoffice/ChangeLog,v 1.6 2011/01/25 12:35:53 suka Exp $
+
+  25 Jan 2011; Andreas Proschofsky <suka@gentoo.org> libreoffice-3.3.0.ebuild:
+  Ooops, another little fix for bash-completion
+
+  25 Jan 2011; Andreas Proschofsky <suka@gentoo.org> libreoffice-3.3.0.ebuild:
+  Fix bash_completion installation, bug #352656
+
+*libreoffice-3.3.0 (25 Jan 2011)
+
+  25 Jan 2011; Andreas Proschofsky <suka@gentoo.org>
+  -libreoffice-3.3.0_rc4.ebuild, +libreoffice-3.3.0.ebuild,
+  -files/gentoo-3.3.0_rc4.diff, +files/gentoo-3.3.0.diff:
+  Bump to final release of LibreOffice 3.3.0
+
+  24 Jan 2011; Andreas Proschofsky <suka@gentoo.org>
+  libreoffice-3.3.0_rc4.ebuild, +files/sdext-presenter.diff:
+  Fix extensions stuff, patch from bug #339057
+
+  24 Jan 2011; Andreas Proschofsky <suka@gentoo.org>
+  libreoffice-3.3.0_rc4.ebuild:
+  Fix the Homepage entry
+
+*libreoffice-3.3.0_rc4 (24 Jan 2011)
+
+  24 Jan 2011; Andreas Proschofsky <suka@gentoo.org>
+  +libreoffice-3.3.0_rc4.ebuild, +files/gentoo-3.3.0_rc4.diff,
+  +files/enable-startup-notification.diff, +files/env_log.diff,
+  +files/fix-ooo-collision.diff, +files/gentoo-pythonpath.diff,
+  +files/scrap-pixmap-links.diff, +metadata.xml:
+  Initial ebuild for LibreOffice, masked for now as it needs some testing.
+  Also:
+
+  * Extensions are not built atm, otherwise this breaks the build
+  * ebuild needs some cleanups
+
+  Thanks especially to Hanno Meyer-Thurow (geki) which did a lot of the ground
+  work in his overlay! 
+
