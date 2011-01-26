@@ -1,13 +1,15 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-embedded/bitbake/bitbake-9999.ebuild,v 1.6 2010/06/23 05:16:59 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-embedded/bitbake/bitbake-9999.ebuild,v 1.8 2011/01/26 16:40:21 arfrever Exp $
 
-EAPI="2"
+EAPI="3"
+PYTHON_DEPEND="2:2.5"
+
 inherit distutils
 
 if [[ ${PV} == "9999" ]] ; then
-	ESVN_REPO_URI="svn://svn.berlios.de/bitbake/trunk/bitbake"
-	inherit subversion
+	EGIT_REPO_URI="git://git.openembedded.org/bitbake.git"
+	inherit git
 	SRC_URI=""
 	KEYWORDS=""
 else
@@ -20,10 +22,23 @@ HOMEPAGE="http://developer.berlios.de/projects/bitbake/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE=""
+IUSE="doc"
 
-DEPEND="
-	|| (
-		>=dev-lang/python-2.5[sqlite]
-		>=dev-python/pysqlite-2.3.2
-	)"
+RDEPEND="|| ( dev-lang/python:2.7[sqlite] dev-lang/python:2.6[sqlite] dev-lang/python:2.5[sqlite] >=dev-python/pysqlite-2.3.2 )"
+DEPEND="${RDEPEND}
+	doc? ( dev-libs/libxslt )"
+
+pkg_setup() {
+	python_set_active_version 2
+	python_pkg_setup
+}
+
+src_prepare() {
+	if ! use doc ; then
+		sed -i -e 's:doctype = "html":doctype = "none":' \
+			-e 's:("share/doc/bitbake-%s/manual.*))::' setup.py
+		echo "none:" >> doc/manual/Makefile
+	else
+	    sed -i -e "s:\(share/doc/bitbake-%s.* %\) __version__:\1 \"${PV}\":" setup.py
+	fi
+}
