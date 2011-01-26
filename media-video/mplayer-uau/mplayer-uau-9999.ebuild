@@ -1,4 +1,4 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -105,7 +105,7 @@ RDEPEND+="
 	gif? ( media-libs/giflib )
 	iconv? ( virtual/libiconv )
 	jack? ( media-sound/jack-audio-connection-kit )
-	jpeg? ( media-libs/jpeg )
+	jpeg? ( virtual/jpeg )
 	ladspa? ( media-libs/ladspa-sdk )
 	libcaca? ( media-libs/libcaca )
 	lirc? ( app-misc/lirc )
@@ -460,7 +460,6 @@ src_configure() {
 	use dts || myconf+=" --disable-libdca"
 	if ! use mp3; then
 		myconf+="
-			--disable-mp3lame
 			--disable-mp3lib
 		"
 	fi
@@ -483,7 +482,7 @@ src_configure() {
 		"
 	fi
 	# Encoding
-	uses="faac x264 xvid toolame twolame"
+	uses="xvid"
 	for i in ${uses}; do
 		myconf+=" --disable-${i}"
 	done
