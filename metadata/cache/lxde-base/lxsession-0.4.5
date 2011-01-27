@@ -1,5 +1,5 @@
-dev-libs/glib:2 x11-libs/gtk+:2 sys-apps/dbus >=lxde-base/lxde-common-0.5.0 sys-power/upower dev-util/pkgconfig sys-devel/gettext
-dev-libs/glib:2 x11-libs/gtk+:2 sys-apps/dbus >=lxde-base/lxde-common-0.5.0 sys-power/upower
+dev-libs/glib:2 x11-libs/gtk+:2 >=lxde-base/lxde-common-0.5.0 x11-libs/libX11 udev? ( >=sys-apps/dbus-1.4.1 ) dev-util/intltool dev-util/pkgconfig sys-devel/gettext x11-proto/xproto
+dev-libs/glib:2 x11-libs/gtk+:2 >=lxde-base/lxde-common-0.5.0 x11-libs/libX11 udev? ( >=sys-apps/dbus-1.4.1 ) udev? ( >=sys-power/upower-0.9.5 )
 0
 mirror://sourceforge/lxde/lxsession-0.4.5.tar.gz
 
@@ -8,13 +8,13 @@ GPL-2
 LXDE session manager (lite version)
 ~amd64 ~arm ~ppc ~x86
 
-
+nls udev
 
 
 
 2
 
-install
+configure install
 
 
 

@@ -22,14 +22,17 @@ RDEPEND=""
 
 S=$WORKDIR/feedparser-5.0
 
-
 src_prepare() {
 	python_copy_sources
 }
 
+src_compile() {
+	return
+}
+
 src_install() {
 	realinst() {
-		[ "${PYTHON_ABI}" != "3.*" ] && return
+		[ "${PYTHON_ABI%%.*}" != "3" ] && return
 		insinto "$(python_get_libdir)"
 		newins feedparser/sgmllib3.py sgmllib.py || die "newins fail"
 	}
