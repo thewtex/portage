@@ -1,8 +1,8 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/qtcurve-qt4/qtcurve-qt4-1.6.4-r1.ebuild,v 1.6 2011/01/03 12:46:25 xmw Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/qtcurve-qt4/qtcurve-qt4-1.6.4-r1.ebuild,v 1.8 2011/01/29 18:12:52 scarabeus Exp $
 
-EAPI="2"
+EAPI=3
 KDE_REQUIRED="optional"
 inherit confutils cmake-utils kde4-base
 
@@ -13,7 +13,7 @@ SRC_URI="http://craigd.wikispaces.com/file/view/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 hppa ~ppc ~ppc64 sparc x86"
+KEYWORDS="alpha amd64 hppa ~ppc ~ppc64 sparc x86"
 IUSE="kde windeco"
 
 DEPEND="x11-libs/qt-gui:4[dbus]
