@@ -74,7 +74,7 @@ RDEPEND+="
 			media-libs/libggiwmh
 		)
 		opengl? ( virtual/opengl )
-		vdpau? ( || ( x11-libs/libvdpau >=x11-drivers/nvidia-drivers-180.51 ) )
+		vdpau? ( x11-libs/libvdpau )
 		xinerama? ( x11-libs/libXinerama )
 		xscreensaver? ( x11-libs/libXScrnSaver )
 		xv? (
@@ -588,14 +588,13 @@ src_configure() {
 	fi
 
 	is-flag -O? || append-flags -O2
-	if use x86 || use x86-fbsd; then
-		use debug || append-flags -fomit-frame-pointer
-	fi
 
 	# workaround bug, x86 just has too few registers, see c.f.
 	# http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=402950#44
-	# and 32b osx, bug 329861
-	[[ ${CHOST} == i?86-*solaris* || ${CHOST} == i?86-*darwin* ]] && append-flags -fomit-frame-pointer
+	# and 32-bits OSX, bug 329861
+	if [[ ${CHOST} == i?86-* ]] ; then
+		use debug || append-flags -fomit-frame-pointer
+	fi
 
 	###########################
 	# X enabled configuration #
