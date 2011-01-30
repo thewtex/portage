@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/php/php-5.2.17.ebuild,v 1.7 2011/01/11 19:20:11 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/php/php-5.2.17.ebuild,v 1.8 2011/01/29 22:05:22 mabi Exp $
 
 EAPI=2
 
@@ -228,7 +228,7 @@ RDEPEND="${DEPEND}
 	json? ( !dev-php${PHP_MV}/pecl-json )
 	zip? ( !dev-php${PHP_MV}/pecl-zip )"
 
-[[ -n $SUHOSIN_VERSION ]] && DEPEND="${DEPEND} suhosin? ( $php[unicode] )"
+[[ -n $SUHOSIN_VERSION ]] && RDEPEND="${RDEPEND} suhosin? ( $php[unicode] )"
 
 DEPEND="${DEPEND}
 	sys-devel/flex
