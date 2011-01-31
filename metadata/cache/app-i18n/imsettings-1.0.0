@@ -1,5 +1,5 @@
->=dev-libs/check-0.9.4 >=dev-libs/glib-2.26 sys-apps/dbus >=x11-libs/gtk+-2.12:2 >=x11-libs/libgxim-0.3.1 x11-libs/libnotify x11-libs/libX11 qt4? ( x11-libs/qt-core:4 ) xfce? ( xfce-base/xfconf ) dev-util/pkgconfig
->=dev-libs/check-0.9.4 >=dev-libs/glib-2.26 sys-apps/dbus >=x11-libs/gtk+-2.12:2 >=x11-libs/libgxim-0.3.1 x11-libs/libnotify x11-libs/libX11 qt4? ( x11-libs/qt-core:4 ) xfce? ( xfce-base/xfconf )
+>=dev-libs/check-0.9.4 >=dev-libs/glib-2.26 sys-apps/dbus >=x11-libs/gtk+-2.12:2 >=x11-libs/libgxim-0.3.1 x11-libs/libnotify x11-libs/libX11 qt4? ( x11-libs/qt-core:4 ) xfconf? ( xfce-base/xfconf ) dev-util/pkgconfig
+>=dev-libs/check-0.9.4 >=dev-libs/glib-2.26 sys-apps/dbus >=x11-libs/gtk+-2.12:2 >=x11-libs/libgxim-0.3.1 x11-libs/libnotify x11-libs/libX11 qt4? ( x11-libs/qt-core:4 ) xfconf? ( xfce-base/xfconf )
 0
 http://imsettings.googlecode.com/files/imsettings-1.0.0.tar.bz2
 test
@@ -8,13 +8,13 @@ LGPL-2.1
 Delivery framework for general Input Method configuration
 ~amd64 ~x86
 
-qt4 static-libs xfce
+qt4 static-libs xfconf
 
 
 
 3
 
-configure install postinst
+configure install postinst prepare
 
 
 
