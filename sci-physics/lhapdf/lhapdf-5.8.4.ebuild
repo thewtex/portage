@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-physics/lhapdf/lhapdf-5.8.4.ebuild,v 1.2 2011/01/20 12:16:39 hwoarang Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-physics/lhapdf/lhapdf-5.8.4.ebuild,v 1.3 2011/01/30 21:00:20 bicatali Exp $
 
 EAPI=2
 
@@ -34,8 +34,8 @@ S="${WORKDIR}/${MY_PF}"
 
 src_unpack() {
 	unpack ${MY_PF}.tar.gz
-	mv "${DISTDIR}"/wrapheragrid.f "${WORKDIR}/${MY_PF}"/src/wrapheragrid.f
-	mv "${DISTDIR}"/wrapheragrid-lite.f "${WORKDIR}/${MY_PF}"/src/wrapheragrid-lite.f
+	cp "${DISTDIR}"/wrapheragrid.f "${S}"/src/wrapheragrid.f
+	cp "${DISTDIR}"/wrapheragrid-lite.f "${S}"/src/wrapheragrid-lite.f
 }
 
 src_prepare() {
@@ -46,11 +46,14 @@ src_prepare() {
 }
 
 src_configure() {
+	local myconf="--enable-ccwrap"
+	! use octave && ! use cxx && myconf="--disable-ccwrap"
 	econf \
-		$(use_enable cxx ccwrap) \
 		$(use_enable cxx old-ccwrap ) \
+		$(use_enable octave) \
 		$(use_enable python pyext) \
-		$(use_enable doc doxygen)
+		$(use_enable doc doxygen) \
+		${myconf}
 }
 
 src_test() {

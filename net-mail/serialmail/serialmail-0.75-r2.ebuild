@@ -1,6 +1,6 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/serialmail/serialmail-0.75-r2.ebuild,v 1.10 2009/09/23 19:13:10 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-mail/serialmail/serialmail-0.75-r2.ebuild,v 1.11 2011/01/30 19:18:12 jer Exp $
 
 inherit eutils
 
@@ -14,7 +14,7 @@ DEPEND="sys-apps/groff
 
 RDEPEND="sys-apps/groff
 	>=sys-apps/ucspi-tcp-0.88
-	>=sys-process/daemontools-0.76-r1"
+	virtual/daemontools"
 
 SLOT="0"
 LICENSE="as-is"
