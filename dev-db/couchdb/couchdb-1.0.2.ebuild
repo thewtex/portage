@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/couchdb/couchdb-1.0.2.ebuild,v 1.1 2011/01/30 17:02:31 djc Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/couchdb/couchdb-1.0.2.ebuild,v 1.3 2011/02/01 18:27:10 hwoarang Exp $
 
 EAPI="2"
 

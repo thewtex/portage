@@ -17,9 +17,9 @@ ftp gif ggi gsm +iconv ipv6 jack joystick jpeg jpeg2k kernel_linux ladspa
 libcaca libmpeg2 lirc +live lzo mad md5sum +mmx mmxext mng +mp3 mpg123 nas
 +network nut amr +opengl +osdmenu oss png pnm pulseaudio pvr +quicktime
 radio +rar +real +rtc rtmp samba +shm +schroedinger +hardcoded-tables sdl +speex sse sse2 ssse3
-tga +theora threads +tremor +truetype +unicode v4l v4l2 vdpau vidix
+tga +theora threads +tremor +truetype +unicode v4l v4l2 vdpau
 +vorbis vpx win32codecs +X xanim xinerama +xscreensaver +xv xvmc
-zoran"
+"
 IUSE+=" +ffmpeg-mt -external-ffmpeg symlink"
 
 VIDEO_CARDS="s3virge mga tdfx vesa"
@@ -284,7 +284,6 @@ src_prepare() {
 		sed -e '/^mplayer: /s/libass//' -i Makefile || die "sed failed"
 		rm -rf \
 			libass \
-			mplayer/libfaad2 \
 			mplayer/libdvdcss \
 		|| die
 	fi
@@ -346,7 +345,7 @@ src_configure() {
 	# disable svga since we don't want it
 	# disable arts since we don't have kde3
 	myconf+="
-		--disable-svga --disable-svgalib_helper
+		--disable-svga
 		--disable-arts
 		--disable-kai
 		$(use_enable network networking)
@@ -456,7 +455,6 @@ src_configure() {
 	# Codecs #
 	##########
 	myconf+=" --disable-musepack" # Use internal musepack codecs for SV7 and SV8 support
-	myconf+=" --disable-faad-internal" # always use system media-libs/faad2
 	use dts || myconf+=" --disable-libdca"
 	if ! use mp3; then
 		myconf+="
@@ -526,7 +524,6 @@ src_configure() {
 	use fbcon || myconf+=" --disable-fbdev"
 	use fbcon && use video_cards_s3virge && myconf+=" --enable-s3fb"
 	use libcaca || myconf+=" --disable-caca"
-	use zoran || myconf+=" --disable-zr"
 
 	if ! use kernel_linux || ! use video_cards_mga; then
 		 myconf+=" --disable-mga --disable-xmga"
@@ -609,7 +606,6 @@ src_configure() {
 		use osdmenu && myconf+=" --enable-menu"
 		use vdpau || myconf+=" --disable-vdpau"
 		use video_cards_vesa || myconf+=" --disable-vesa"
-		use vidix || myconf+=" --disable-vidix --disable-vidix-pcidb"
 		use xscreensaver || myconf+=" --disable-xss"
 
 		if use xv; then
@@ -633,15 +629,13 @@ src_configure() {
 			--disable-ggi
 			--disable-gl
 			--disable-vdpau
-			--disable-vidix
-			--disable-vidix-pcidb
 			--disable-xinerama
 			--disable-xss
 			--disable-xv
 			--disable-xvmc
 			--disable-x11
 		"
-		uses="dga dxr3 ggi opengl osdmenu vdpau vidix xinerama xscreensaver xv"
+		uses="dga dxr3 ggi opengl osdmenu vdpau xinerama xscreensaver xv"
 		for i in ${uses}; do
 			use ${i} && elog "Useflag \"${i}\" require \"X\" useflag enabled to work."
 		done
@@ -794,7 +788,7 @@ src_install() {
 	dodoc AUTHORS Changelog Copyright README etc/codecs.conf || die
 
 	docinto tech/
-	dodoc DOCS/tech/{*.txt,mpsub.sub,playtree,TODO,wishlist} || die
+	dodoc DOCS/tech/{*.txt,mpsub.sub,playtree} || die
 	docinto TOOLS/
 	dodoc TOOLS/* || die
 	if use real; then
@@ -803,8 +797,6 @@ src_install() {
 		docinto TOOLS/realcodecs/
 		dodoc TOOLS/realcodecs/* || die
 	fi
-	docinto tech/mirrors/
-	dodoc DOCS/tech/mirrors/* || die
 
 	if use doc; then
 		docinto html/

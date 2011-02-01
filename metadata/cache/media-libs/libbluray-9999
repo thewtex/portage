@@ -1,20 +1,20 @@
-java? ( virtual/jdk ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b >=dev-vcs/git-1.6
-aacs? ( media-video/aacskeys )
+dev-libs/libxml2 xine? ( media-libs/xine-lib ) java? ( >=virtual/jdk-1.6 ) dev-util/pkgconfig || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b java? ( >=dev-java/java-config-2.1.9-r1 ) >=dev-vcs/git-1.6
+dev-libs/libxml2 xine? ( media-libs/xine-lib ) aacs? ( media-video/aacskeys ) java? ( >=virtual/jre-1.6 ) java? ( >=dev-java/java-config-2.1.9-r1 )
 0
 
 
-http://www.videolan.org/ http://git.videolan.org/?p=libbluray.git;a=summary
+http://www.videolan.org/developers/libbluray.html
 GPL-2
 Blu-ray playback libraries
 
-autotools eutils git libtool multilib portability toolchain-funcs
-aacs java
+autotools eutils flag-o-matic git java-pkg-opt-2 java-utils-2 libtool multilib portability toolchain-funcs versionator
+aacs java static-libs utils xine elibc_FreeBSD java
 
 
 
 2
 
-configure install prepare unpack
+compile configure install preinst prepare setup unpack
 
 
 
