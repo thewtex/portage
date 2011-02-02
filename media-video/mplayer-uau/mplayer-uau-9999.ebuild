@@ -11,13 +11,13 @@ inherit toolchain-funcs eutils flag-o-matic multilib base ${VCS_ECLASS}
 namesuf="${PN/mplayer/}"
 
 IUSE="3dnow 3dnowext +a52 aalib +alsa altivec aqua +ass bidi bindist bl bluray
-bs2b +cddb +cdio cdparanoia cpudetection custom-cpuopts custom-cflags debug dga +dirac
+bs2b +bzip2 +cddb +cdio cdparanoia cpudetection custom-cpuopts custom-cflags debug dga +dirac
 directfb doc +dts +dv dvb +dvd +dvdnav dxr3 +enca esd +faad fbcon
 ftp gif ggi gsm +iconv ipv6 jack joystick jpeg jpeg2k kernel_linux ladspa
-libcaca libmpeg2 lirc +live lzo mad md5sum +mmx mmxext mng +mp3 mpg123 nas
+libcaca lirc +live mad md5sum +mmx mmxext mng +mp3 mpg123 nas
 +network nut amr +opengl +osdmenu oss png pnm pulseaudio pvr +quicktime
 radio +rar +real +rtc rtmp samba +shm +schroedinger +hardcoded-tables sdl +speex sse sse2 ssse3
-tga +theora threads +tremor +truetype +unicode v4l v4l2 vdpau
+tga +theora threads +truetype +unicode v4l v4l2 vdpau
 +vorbis vpx win32codecs +X xanim xinerama +xscreensaver +xv xvmc
 "
 IUSE+=" +ffmpeg-mt -external-ffmpeg symlink"
@@ -59,7 +59,6 @@ X_RDEPS="
 #	nemesi? ( net-libs/libnemesi )
 RDEPEND+="
 	sys-libs/ncurses
-	app-arch/bzip2
 	sys-libs/zlib
 	!bindist? (
 		x86? (
@@ -110,7 +109,6 @@ RDEPEND+="
 	libcaca? ( media-libs/libcaca )
 	lirc? ( app-misc/lirc )
 	live? ( media-plugins/live )
-	lzo? ( >=dev-libs/lzo-2 )
 	mad? ( media-libs/libmad )
 	mng? ( media-libs/libmng )
 	mpg123? ( media-sound/mpg123 )
@@ -133,10 +131,11 @@ RDEPEND+="
 	vorbis? ( media-libs/libvorbis )
 	xanim? ( media-video/xanim )
 	external-ffmpeg? (
-		>=media-video/ffmpeg-0.6_p25423[amr?,dirac?,gsm?,hardcoded-tables?,jpeg2k?,rtmp?,schroedinger?,threads?,vpx?]
+		>=media-video/ffmpeg-0.6_p25423[amr?,bzip2?,dirac?,gsm?,hardcoded-tables?,jpeg2k?,rtmp?,schroedinger?,threads?,vpx?]
 	)
 	!external-ffmpeg? (
 		amr? ( media-libs/opencore-amr )
+		bzip2? ( app-arch/bzip2 )
 		dirac? ( media-video/dirac )
 		gsm? ( >=media-sound/gsm-1.0.12-r1 )
 		jpeg2k? ( >=media-libs/openjpeg-1.3-r2 )
@@ -344,10 +343,12 @@ src_configure() {
 	###################
 	# disable svga since we don't want it
 	# disable arts since we don't have kde3
+	# disable tremor, it needs libvorbisidec and is for FPU-less systems only
 	myconf+="
 		--disable-svga
 		--disable-arts
 		--disable-kai
+		--disable-tremor
 		$(use_enable network networking)
 		$(use_enable joystick)
 	"
@@ -461,24 +462,15 @@ src_configure() {
 			--disable-mp3lib
 		"
 	fi
-	uses="a52 bs2b dv lzo"
+	uses="a52 bs2b dv vorbis"
 	for i in ${uses}; do
 		use ${i} || myconf+=" --disable-lib${i}"
 	done
-	uses="faad gif jpeg libmpeg2 live mad mng mpg123 png pnm speex tga theora xanim"
+	uses="faad gif jpeg live mad mng mpg123 png pnm speex tga theora xanim"
 	for i in ${uses}; do
 		use ${i} || myconf+=" --disable-${i}"
 	done
-	if use vorbis || use tremor; then
-		use tremor || myconf+=" --disable-tremor-internal"
-		use vorbis || myconf+=" --disable-libvorbis"
-	else
-		myconf+="
-			--disable-tremor-internal
-			--disable-tremor
-			--disable-libvorbis
-		"
-	fi
+
 	# Encoding
 	uses="xvid"
 	for i in ${uses}; do
@@ -676,6 +668,7 @@ src_configure() {
 		# enabled by default
 		use debug || ffconf+=" --disable-debug"
 		use network || ffconf+=" --disable-network"
+		use bzip2 || ffconf+=" --disable-bzlib"
 
 		use custom-cflags && ffconf+=" --disable-optimizations"
 		use cpudetection && ffconf+=" --enable-runtime-cpudetect"

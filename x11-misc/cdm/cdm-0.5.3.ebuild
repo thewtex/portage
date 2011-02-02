@@ -3,14 +3,10 @@
 
 EAPI="3"
 
-inherit eutils
-
 DESCRIPTION="The Console Display Manager"
-#HOMEPAGE="http://cdm.ghost1227.com/X11"
-#SRC_URI="http://cdm.ghost1227.com/repo/${P}.tar.gz"
 GITHUB_USER="tarsius"
 GITHUB_TAG="funtoo-${PV}"
-HOMEPAGE="https://github.com/${GITHUB_USER}/${PN}"
+HOMEPAGE="http://cdm.ghost1227.com/X11 https://github.com/${GITHUB_USER}/${PN}"
 SRC_URI="https://github.com/${GITHUB_USER}/${PN}/tarball/${GITHUB_TAG} -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
@@ -54,5 +50,5 @@ src_install() {
 
 pkg_postinst() {
 	ewarn "If you want cdm to be started automatically after login then"
-	ewarn "copy /etc/share/cdm/zzz-cdm-profile.sh to /etc/profile.d/."
+	ewarn "move /etc/share/cdm/zzz-cdm-profile.sh to /etc/profile.d/."
 }
