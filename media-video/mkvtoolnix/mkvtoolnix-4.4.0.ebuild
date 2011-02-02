@@ -1,10 +1,10 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/mkvtoolnix/mkvtoolnix-4.4.0.ebuild,v 1.2 2011/01/21 17:51:38 spatz Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/mkvtoolnix/mkvtoolnix-4.4.0.ebuild,v 1.3 2011/02/02 07:17:35 radhermit Exp $
 
 EAPI=3
 
-inherit autotools
+inherit wxwidgets
 
 DESCRIPTION="Tools to create, alter, and inspect Matroska files"
 HOMEPAGE="http://www.bunkus.org/videotools/mkvtoolnix"
@@ -33,15 +33,16 @@ DEPEND="${RDEPEND}
 	dev-ruby/rake
 "
 
-src_prepare() {
-	eautoreconf
-}
-
 src_configure() {
 	local myconf
 
-	use pch       || myconf="${myconf} --disable-precompiled-headers"
-	use wxwidgets && myconf="${myconf} --with-wx-config=${WX_CONFIG}"
+	use pch || myconf="${myconf} --disable-precompiled-headers"
+
+	if use wxwidgets ; then
+		WX_GTK_VER="2.8"
+		need-wxwidgets unicode
+		myconf="${myconf} --with-wx-config=${WX_CONFIG}"
+	fi
 
 	econf \
 		$(use_enable lzo) \
