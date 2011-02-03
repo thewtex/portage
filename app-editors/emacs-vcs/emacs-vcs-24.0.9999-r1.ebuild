@@ -1,9 +1,8 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/emacs-vcs/emacs-vcs-24.0.9999-r1.ebuild,v 1.2 2011/01/31 21:19:35 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-editors/emacs-vcs/emacs-vcs-24.0.9999-r1.ebuild,v 1.4 2011/02/02 19:29:05 ulm Exp $
 
 EAPI=4
-WANT_AUTOMAKE="none"
 
 inherit autotools elisp-common eutils flag-o-matic multilib
 
@@ -297,7 +296,7 @@ pkg_postinst() {
 	for f in "${EROOT}"/var/lib/games/emacs/{snake,tetris}-scores; do
 		[ -e "${f}" ] || touch "${f}"
 	done
-	chown "${GAMES_USER_DED:-games}" "${ROOT}"/var/lib/games/emacs
+	chown "${GAMES_USER_DED:-games}" "${EROOT}"/var/lib/games/emacs
 
 	elisp-site-regen
 	eselect emacs update ifunset
