@@ -1,13 +1,13 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/setproctitle/setproctitle-1.1.ebuild,v 1.4 2010/12/26 15:44:19 arfrever Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/setproctitle/setproctitle-1.1.1.ebuild,v 1.1 2011/02/03 18:44:48 arfrever Exp $
 
 EAPI="3"
 SUPPORT_PYTHON_ABIS="1"
 RESTRICT_PYTHON_ABIS="*-jython"
 DISTUTILS_SRC_TEST="nosetests"
 
-inherit distutils
+inherit distutils toolchain-funcs
 
 DESCRIPTION="Allow customization of the process title."
 HOMEPAGE="http://code.google.com/p/py-setproctitle/ http://pypi.python.org/pypi/setproctitle"
@@ -35,4 +35,18 @@ src_prepare() {
 		--action-message 'Applying patches for $(python_get_implementation) $(python_get_version)' \
 		--failure-message 'Applying patches for $(python_get_implementation) $(python_get_version) failed' \
 		-s conversion
+}
+
+distutils_src_test_pre_hook() {
+	ln -fs pyrun-${PYTHON_ABI} tests/pyrun
+}
+
+src_test() {
+	build_pyrun() {
+		echo $(tc-getCC) ${CPPFLAGS} ${CFLAGS} ${LDFLAGS} -I$(python_get_includedir) -o tests/pyrun-${PYTHON_ABI} tests/pyrun.c $(python_get_library -l)
+		$(tc-getCC) ${CPPFLAGS} ${CFLAGS} ${LDFLAGS} -I$(python_get_includedir) -o tests/pyrun-${PYTHON_ABI} tests/pyrun.c $(python_get_library -l)
+	}
+	python_execute_function -q -s build_pyrun
+
+	distutils_src_test
 }
