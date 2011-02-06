@@ -1,6 +1,41 @@
 # ChangeLog for sys-apps/iproute2
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/iproute2/ChangeLog,v 1.161 2010/09/18 11:33:40 vapier Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/iproute2/ChangeLog,v 1.170 2011/01/07 18:37:20 vapier Exp $
+
+*iproute2-2.6.37 (07 Jan 2011)
+
+  07 Jan 2011; Mike Frysinger <vapier@gentoo.org> +iproute2-2.6.37.ebuild:
+  Version bump.
+
+  05 Dec 2010; Raúl Porcel <armin76@gentoo.org> iproute2-2.6.35-r2.ebuild:
+  alpha/ia64/m68k/s390/sh stable wrt #346385
+
+  29 Nov 2010; Brent Baude <ranger@gentoo.org> iproute2-2.6.35-r2.ebuild:
+  stable ppc64, bug 346385
+
+  28 Nov 2010; Markus Meier <maekke@gentoo.org> iproute2-2.6.35-r2.ebuild:
+  x86 stable, bug #346385
+
+  27 Nov 2010; nixnut <nixnut@gentoo.org> iproute2-2.6.35-r2.ebuild:
+  ppc stable #346385
+
+  27 Nov 2010; Michael Weber <xmw@gentoo.org> iproute2-2.6.35-r2.ebuild:
+  arm stable (bug 346385)
+
+  26 Nov 2010; Jeroen Roovers <jer@gentoo.org> iproute2-2.6.35-r2.ebuild:
+  Stable for HPPA SPARC (bug #346385).
+
+  26 Nov 2010; Markos Chandras <hwoarang@gentoo.org> iproute2-2.6.35-r2.ebuild:
+  Stable on amd64 wrt bug #346385
+
+*iproute2-2.6.35-r3 (21 Nov 2010)
+
+  21 Nov 2010; Mike Frysinger <vapier@gentoo.org>
+  +iproute2-2.6.35-r3.ebuild, +files/iproute2-2.6.35-no-iptables.patch,
+  +files/iproute2-2.6.35-xtables.patch, metadata.xml:
+  Add USE=iptables to control support for it, and fix up iptables handling
+  in the process to use the newer x_xt module. Pull in pkg-config when
+  necessary #346137 by Mike Gilbert.
 
 *iproute2-2.6.35-r2 (18 Sep 2010)
 

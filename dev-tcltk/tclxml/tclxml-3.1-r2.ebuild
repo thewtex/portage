@@ -1,8 +1,8 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tcltk/tclxml/tclxml-3.1-r2.ebuild,v 1.3 2010/10/23 17:41:21 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-tcltk/tclxml/tclxml-3.1-r2.ebuild,v 1.6 2011/01/05 20:36:47 hwoarang Exp $
 
-inherit autotools eutils
+inherit autotools eutils toolchain-funcs
 
 DESCRIPTION="Pure Tcl implementation of an XML parser."
 HOMEPAGE="http://tclxml.sourceforge.net/"
@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/tclxml/${P}.tar.gz"
 IUSE="debug expat threads xml"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="alpha ~amd64 ~ppc sparc x86"
+KEYWORDS="alpha amd64 ~ppc sparc x86"
 
 DEPEND=">=dev-lang/tcl-8.2
 	>=dev-tcltk/tcllib-1.2
@@ -21,6 +21,8 @@ DEPEND=">=dev-lang/tcl-8.2
 		virtual/libiconv )
 	!dev-tcltk/tclxml-expat"
 #	test? ( dev-tcltk/tclparser )
+RDEPEND="${DEPEND}"
+
 RESTRICT="test"
 
 MAKEOPTS="${MAKEOPTS} -j1"
@@ -37,9 +39,12 @@ src_unpack() {
 }
 
 src_compile() {
+	export LDFLAGS_OPTIMIZE="${LDFLAGS}"
+	tc-export CC
+
 	econf ${myconf} \
-      --with-tclinclude="${EPREFIX}"/usr/include \
-      --with-tcl="${EPREFIX}"/usr/$(get_libdir) \
+		--with-tclinclude="${EPREFIX}"/usr/include \
+		--with-tcl="${EPREFIX}"/usr/$(get_libdir) \
 		$(use_enable amd64 64bit) \
 		$(use_enable debug symbols) \
 		$(use_enable threads)
@@ -48,12 +53,12 @@ src_compile() {
 
 	if use xml ; then
 		cd "${S}"/libxml2
-		econf ${myconf} --with-Tclxml=.. || die
+		econf ${myconf} --with-Tclxml=..
 		emake || die
 	fi
 	if use expat ; then
 		cd "${S}"/expat
-		econf ${myconf} --with-Tclxml=.. || die
+		econf ${myconf} --with-Tclxml=..
 		emake || die
 	fi
 }

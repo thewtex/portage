@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-strategy/widelands/widelands-0.15.ebuild,v 1.2 2010/11/20 17:48:59 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-strategy/widelands/widelands-0.15.ebuild,v 1.6 2011/01/11 22:11:39 ranger Exp $
 
 EAPI=2
 inherit eutils versionator cmake-utils games
@@ -13,7 +13,7 @@ SRC_URI="http://launchpad.net/widelands/${MY_PV}/${MY_PV}/+download/${MY_P}.tar.
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 IUSE=""
 
 RDEPEND="dev-games/ggz-client-libs
@@ -35,7 +35,8 @@ S=${WORKDIR}/${MY_P}
 src_prepare() {
 	epatch \
 		"${FILESDIR}"/${P}-build.patch \
-		"${FILESDIR}"/${P}-locale.patch
+		"${FILESDIR}"/${P}-locale.patch \
+		"${FILESDIR}"/${P}-gcc45.patch
 
 	sed -i \
 		-e 's:__ppc__:__PPC__:' src/s2map.cc \

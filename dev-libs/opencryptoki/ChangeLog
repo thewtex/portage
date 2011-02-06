@@ -1,6 +1,79 @@
 # ChangeLog for dev-libs/opencryptoki
-# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/opencryptoki/ChangeLog,v 1.7 2009/06/28 10:48:58 arfrever Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/opencryptoki/ChangeLog,v 1.18 2011/01/31 00:12:52 flameeyes Exp $
+
+*opencryptoki-2.3.3-r3 (31 Jan 2011)
+
+  31 Jan 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  -opencryptoki-2.3.3-r2.ebuild, +opencryptoki-2.3.3-r3.ebuild:
+  Remove compatibility symlink (we don't have software needing them in
+  Portage), and move libopencryptoki to the linkers' search path instead of
+  changing those paths.
+
+  21 Jan 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  -opencryptoki-2.3.2.ebuild, opencryptoki-2.3.3-r2.ebuild:
+  Remove old version; delete .la files as they are unneeded.
+
+  20 Jan 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  opencryptoki-2.3.3-r2.ebuild:
+  Fix build with USE=-tpm.
+
+  15 Jan 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  opencryptoki-2.3.3-r2.ebuild:
+  Fix format string warnings as the code could be security-sensitive.
+
+  15 Jan 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  opencryptoki-2.3.3-r2.ebuild:
+  Fix build with USE=debug enabled.
+
+*opencryptoki-2.3.3-r2 (15 Jan 2011)
+
+  15 Jan 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  -opencryptoki-2.3.3-r1.ebuild, +opencryptoki-2.3.3-r2.ebuild:
+  Revision bump: avoid /var/lib/lib directory prefix (thanks to frank Swiderski
+  for reportign); disable CCA token so that the whole package is under CPL-0.5
+  (and also it seems to be limited to s390 hardware).
+
+*opencryptoki-2.3.3-r1 (14 Jan 2011)
+
+  14 Jan 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  -opencryptoki-2.3.3.ebuild, +opencryptoki-2.3.3-r1.ebuild:
+  Missed one patch from the Chromium project; also solve implicit declarations,
+  and restrict tests with an explanation on why.
+
+*opencryptoki-2.3.3 (13 Jan 2011)
+
+  13 Jan 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  +opencryptoki-2.3.3.ebuild:
+  Version bump; some of the patches have been merged in but we still have two
+  to apply until next version.
+
+  07 Jan 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  -files/opencryptoki-2.2.4.1-tpm_util.c.patch,
+  -files/opencryptoki-2.2.8-remove_openlog.patch,
+  -files/opencryptoki-2.2.8-remove_recursive_chmod.patch,
+  -files/opencryptoki-2.2.8-steal_shmem.patch, opencryptoki-2.3.2.ebuild,
+  -files/opencryptoki-2.3.2-build.patch:
+  Move the patches out of the tree in a backports tarball. The backports are
+  maintained in a git repository that more easily syncs up with upstream.
+
+  01 Dec 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  opencryptoki-2.3.2.ebuild, files/pkcsslotd.init.2:
+  Make it a use, not need, dependency as you might not have tpm hardware.
+
+*opencryptoki-2.3.2 (01 Dec 2010)
+
+  01 Dec 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  -opencryptoki-2.2.4.1.ebuild, -opencryptoki-2.2.8.ebuild,
+  +files/opencryptoki-2.2.8-remove_openlog.patch,
+  +files/opencryptoki-2.2.8-remove_recursive_chmod.patch,
+  +files/opencryptoki-2.2.8-steal_shmem.patch, +opencryptoki-2.3.2.ebuild,
+  +files/opencryptoki-2.3.2-build.patch, +files/pkcsslotd.init.2,
+  -files/pkcsslotd.init, metadata.xml:
+  Version bump, rewrite ebuild to actually make sense and work, with the help
+  of the one to be found in chromiumos-overlay. Many thanks to Nathan Williams
+  and Chris Masone for their fixes and the patches. Drop all the previous
+  ebuilds and the previous init script as they are totally broken by design.
 
 *opencryptoki-2.2.8 (28 Jun 2009)
 

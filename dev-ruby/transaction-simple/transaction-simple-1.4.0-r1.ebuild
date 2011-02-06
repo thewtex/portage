@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/transaction-simple/transaction-simple-1.4.0-r1.ebuild,v 1.1 2010/06/26 19:14:51 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/transaction-simple/transaction-simple-1.4.0-r1.ebuild,v 1.4 2011/02/02 10:01:27 hwoarang Exp $
 
 EAPI=2
 USE_RUBY="ruby18"
@@ -16,7 +16,7 @@ HOMEPAGE="http://rubyforge.org/projects/trans-simple/"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~ia64 ~ppc ~x86"
+KEYWORDS="amd64 ia64 ~ppc x86"
 IUSE=""
 
 ruby_add_bdepend "test? ( dev-ruby/hoe ) doc? ( dev-ruby/hoe )"

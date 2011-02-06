@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/mediainfo/mediainfo-0.7.36.ebuild,v 1.3 2010/10/29 06:01:17 radhermit Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/mediainfo/mediainfo-0.7.36.ebuild,v 1.5 2010/12/02 12:50:42 hwoarang Exp $
 
 EAPI="2"
 
@@ -15,7 +15,7 @@ S="${WORKDIR}/MediaInfo"
 
 LICENSE="LGPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="curl debug libmms static wxwidgets"
 
 RDEPEND="
@@ -48,7 +48,7 @@ src_configure() {
 	for target in ${TARGETS}; do
 		cd "${S}/Project/GNU/${target}"
 		local myconf=""
-		use wxwidgets && myconf="${myconf} --with-wxwidgets --with-wx-gui"
+		[[ ${target} == "GUI" ]] && myconf="${myconf} --with-wxwidgets --with-wx-gui"
 		econf \
 			${myconf} \
 			--disable-dependency-tracking \

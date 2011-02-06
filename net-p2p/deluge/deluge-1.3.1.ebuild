@@ -1,8 +1,9 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/deluge/deluge-1.3.1.ebuild,v 1.1 2010/11/17 17:22:14 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/deluge/deluge-1.3.1.ebuild,v 1.5 2010/12/20 12:29:53 hwoarang Exp $
 
 EAPI="2"
+PYTHON_DEPEND="2:2.5"
 
 inherit eutils distutils flag-o-matic python
 
@@ -12,18 +13,17 @@ SRC_URI="http://download.deluge-torrent.org/source/${P}.tar.lzma"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~x86"
+KEYWORDS="amd64 ~arm ~ppc ~sparc x86"
 IUSE="gtk libnotify webinterface"
 
-DEPEND=">=virtual/python-2.5
-	|| ( app-arch/xz-utils app-arch/lzma-utils )
+DEPEND="|| ( app-arch/xz-utils app-arch/lzma-utils )
 	>=net-libs/rb_libtorrent-0.14.9[python]
 	dev-python/setuptools"
 RDEPEND="${DEPEND}
 	dev-python/chardet
 	dev-python/pyopenssl
 	dev-python/pyxdg
-	|| ( >=virtual/python-2.6 dev-python/simplejson )
+	|| ( dev-lang/python:2.7 dev-lang/python:2.6 dev-python/simplejson )
 	>=dev-python/twisted-8.1
 	>=dev-python/twisted-web-8.1
 	gtk? (
@@ -37,6 +37,12 @@ RDEPEND="${DEPEND}
 
 pkg_setup() {
 	append-ldflags $(no-as-needed)
+	python_set_active_version 2
+}
+
+src_prepare() {
+	distutils_src_prepare
+	python_convert_shebangs -r 2 .
 }
 
 src_install() {

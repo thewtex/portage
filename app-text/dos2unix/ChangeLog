@@ -1,6 +1,37 @@
 # ChangeLog for app-text/dos2unix
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/dos2unix/ChangeLog,v 1.53 2010/09/03 05:29:35 jlec Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/dos2unix/ChangeLog,v 1.60 2011/02/02 08:52:12 polynomial-c Exp $
+
+  02 Feb 2011; Lars Wendler <polynomial-c@gentoo.org> dos2unix-5.2.ebuild,
+  +files/dos2unix-5.2-makefile.patch:
+  non-maintainer commit: Don't create a pdf file from the man page as this
+  would require ghostscript as build dependency. Thanks to Cédric Jeanneret
+  who reported this in bug #353483.
+
+*dos2unix-5.2 (01 Feb 2011)
+
+  01 Feb 2011; Lars Wendler <polynomial-c@gentoo.org> +dos2unix-5.2.ebuild:
+  non-maintainer commit: version bump.
+
+  13 Jan 2011; Brent Baude <ranger@gentoo.org> dos2unix-5.1.1.ebuild:
+  stable ppc, bug 350646
+
+  13 Jan 2011; Jeroen Roovers <jer@gentoo.org> dos2unix-5.1.1.ebuild:
+  Stable for HPPA (bug #350646).
+
+  09 Jan 2011; Raúl Porcel <armin76@gentoo.org> dos2unix-5.1.1.ebuild:
+  alpha/arm/ia64/s390/sh/sparc/x86 stable wrt #350646
+
+  05 Jan 2011; Markos Chandras <hwoarang@gentoo.org> dos2unix-5.1.1.ebuild:
+  Stable on amd64 wrt bug #350646
+
+  05 Jan 2011; Justin Lecher <jlec@gentoo.org> -dos2unix-3.1-r2.ebuild,
+  -files/dos2unix-3.1-includes.patch, -files/dos2unix-3.1-manpage-update.patch,
+  -files/dos2unix-3.1-preserve-file-modes.patch,
+  -files/dos2unix-3.1-safeconv.patch, -files/dos2unix-3.1-segfault.patch,
+  -files/dos2unix-3.1-workaround-rename-EXDEV.patch, -files/dos2unix-3.1.patch,
+  -dos2unix-5.0.ebuild, dos2unix-5.1.ebuild, dos2unix-5.1.1.ebuild:
+  Some Clean up, removed old
 
 *dos2unix-5.1.1 (03 Sep 2010)
 

@@ -1,23 +1,22 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/shelx/shelx-20060317-r1.ebuild,v 1.6 2010/08/20 15:11:08 dberkholz Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/shelx/shelx-20060317-r1.ebuild,v 1.8 2011/01/16 12:38:11 xarthisius Exp $
 
-inherit autotools eutils flag-o-matic fortran
+inherit autotools eutils flag-o-matic toolchain-funcs
 
 DESCRIPTION="Programs for crystal structure determination from single-crystal diffraction data"
 HOMEPAGE="http://shelx.uni-ac.gwdg.de/SHELX/"
 SRC_URI="${P}.tgz
 	openmp? ( ${P}-mp.tgz )"
-RESTRICT="fetch"
+
 LICENSE="free-noncomm"
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86"
+KEYWORDS="amd64 ppc x86"
 IUSE="dosformat openmp"
-RDEPEND=""
-DEPEND="${RDEPEND}"
+
 S="${WORKDIR}/unix"
 
-FORTRAN="ifc gfortran"
+RESTRICT="fetch"
 
 pkg_nofetch() {
 	elog "Go to ${HOMEPAGE}"
@@ -60,8 +59,7 @@ src_compile() {
 	esac
 
 	econf \
-		FC="${FORTRANC}" \
-		|| die "configure failed"
+		FC="$(tc-getFC)"
 	emake || die "make failed"
 }
 

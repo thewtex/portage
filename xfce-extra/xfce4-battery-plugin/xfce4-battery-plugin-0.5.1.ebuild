@@ -1,8 +1,8 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-battery-plugin/xfce4-battery-plugin-0.5.1.ebuild,v 1.1 2009/08/25 10:34:19 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-battery-plugin/xfce4-battery-plugin-0.5.1.ebuild,v 1.3 2011/01/29 21:03:10 ssuominen Exp $
 
-EAPI=2
+EAPI=3
 inherit xfconf
 
 DESCRIPTION="Battery status panel plugin"
@@ -11,7 +11,7 @@ SRC_URI="mirror://xfce/src/panel-plugins/${PN}/0.5/${P}.tar.bz2"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm ppc x86 ~x86-fbsd"
+KEYWORDS="amd64 arm ppc x86"
 IUSE="debug"
 
 RDEPEND=">=x11-libs/gtk+-2.6:2
@@ -23,11 +23,17 @@ DEPEND="${RDEPEND}
 	dev-util/intltool"
 
 pkg_setup() {
-	PATCHES=( "${FILESDIR}/${PV}-freebsd.patch"
-		"${FILESDIR}/${PV}-libacpi.patch"
-		"${FILESDIR}/${PV}-2.6.24-headers.patch"
-		"${FILESDIR}/${PV}-sysfs.patch" )
+	PATCHES=(
+		"${FILESDIR}"/${PV}-freebsd.patch
+		"${FILESDIR}"/${PV}-libacpi.patch
+		"${FILESDIR}"/${PV}-2.6.24-headers.patch
+		"${FILESDIR}"/${PV}-sysfs.patch
+		)
+
 	DOCS="AUTHORS ChangeLog README"
-	XFCONF="--disable-dependency-tracking
-		$(use_enable debug)"
+
+	XFCONF=(
+		--disable-dependency-tracking
+		$(use_enable debug)
+		)
 }

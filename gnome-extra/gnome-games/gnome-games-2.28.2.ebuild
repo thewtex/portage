@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-extra/gnome-games/gnome-games-2.28.2.ebuild,v 1.6 2010/08/18 22:22:59 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/gnome-games/gnome-games-2.28.2.ebuild,v 1.8 2011/01/27 12:53:51 xarthisius Exp $
 
 EAPI="2"
 GCONF_DEBUG="no"
@@ -15,7 +15,7 @@ HOMEPAGE="http://live.gnome.org/GnomeGames/"
 
 LICENSE="GPL-2 FDL-1.1"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ia64 ~ppc ~ppc64 sh sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 arm ia64 ppc ppc64 sh sparc x86 ~x86-fbsd"
 IUSE="artworkextra guile opengl sdl test" # introspection
 
 # Introspection support needs
@@ -26,16 +26,16 @@ RDEPEND="
 	>=dev-games/libggz-0.0.14
 	>=dev-games/ggz-client-libs-0.0.14
 	>=dev-libs/dbus-glib-0.75
-	>=dev-libs/glib-2.6.3
+	>=dev-libs/glib-2.6.3:2
 	>=dev-libs/libxml2-2.4.0
 	>=dev-python/gconf-python-2.17.3
-	>=dev-python/pygobject-2
-	>=dev-python/pygtk-2.14
+	>=dev-python/pygobject-2:2
+	>=dev-python/pygtk-2.14:2
 	>=dev-python/pycairo-1
 	>=gnome-base/gconf-2
 	>=gnome-base/librsvg-2.14
 	>=x11-libs/cairo-1
-	>=x11-libs/gtk+-2.16
+	>=x11-libs/gtk+-2.16:2
 	x11-libs/libSM
 
 	!sdl? ( media-libs/libcanberra[gtk] )

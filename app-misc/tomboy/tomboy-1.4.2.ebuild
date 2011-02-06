@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/tomboy/tomboy-1.4.2.ebuild,v 1.1 2010/10/25 18:39:43 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/tomboy/tomboy-1.4.2.ebuild,v 1.4 2011/01/29 17:03:44 hwoarang Exp $
 
 EAPI="3"
 GCONF_DEBUG="no"
@@ -12,7 +12,7 @@ HOMEPAGE="http://projects.gnome.org/tomboy/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE="+applet eds galago"
 
 RDEPEND=">=dev-lang/mono-2
@@ -28,7 +28,7 @@ RDEPEND=">=dev-lang/mono-2
 	>=dev-libs/atk-1.2.4
 	>=gnome-base/gconf-2
 	>=app-text/gtkspell-2.0.9
-	>=gnome-base/gnome-panel-2.24.0
+	applet? ( || ( gnome-base/gnome-panel[bonobo] <gnome-base/gnome-panel-2.32 ) )
 	eds? ( dev-libs/gmime:2.4[mono] )
 	galago? ( =dev-dotnet/galago-sharp-0.5* )"
 DEPEND="${RDEPEND}

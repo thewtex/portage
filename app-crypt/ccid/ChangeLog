@@ -1,6 +1,45 @@
 # ChangeLog for app-crypt/ccid
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/ccid/ChangeLog,v 1.52 2010/09/29 15:47:52 jer Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/ccid/ChangeLog,v 1.61 2011/01/10 18:48:52 flameeyes Exp $
+
+  10 Jan 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  -files/ccid-1.3.13-bcm5880v3.patch:
+  Remove old versions.
+
+  10 Jan 2011; Kacper Kowalik <xarthisius@gentoo.org> ccid-1.4.1-r1.ebuild:
+  ppc64 stable wrt #349559
+
+*ccid-1.4.1-r2 (05 Jan 2011)
+
+  05 Jan 2011; Diego E. Pettenò <flameeyes@gentoo.org> +ccid-1.4.1-r2.ebuild:
+  Add a patch to reintroduce compatibility with a few readers such as the
+  O2Micro Oz776 and the blutronics bludrive II CCID that were threw off 1.4.x
+  series after the libusb 1.0 switch.
+
+  29 Dec 2010; Thomas Kahle <tomka@gentoo.org> ccid-1.4.1-r1.ebuild:
+  x86 stable per bug 349559
+
+  29 Dec 2010; Jeroen Roovers <jer@gentoo.org> ccid-1.4.1-r1.ebuild:
+  Stable for HPPA PPC (bug #349559).
+
+  29 Dec 2010; Markos Chandras <hwoarang@gentoo.org> ccid-1.4.1-r1.ebuild:
+  Stable on amd64 wrt bug #349559
+
+  26 Dec 2010; Diego E. Pettenò <flameeyes@gentoo.org> -ccid-1.4.0.ebuild:
+  Remove old version as 1.4.1-r1 is the one going stable.
+
+*ccid-1.4.1-r1 (05 Dec 2010)
+
+  05 Dec 2010; Diego E. Pettenò <flameeyes@gentoo.org> -ccid-1.4.1.ebuild,
+  +ccid-1.4.1-r1.ebuild:
+  Set the PCSCD env variable rather than changing the group directly so that we
+  can hotplug pcscd.
+
+*ccid-1.4.1 (04 Dec 2010)
+
+  04 Dec 2010; Diego E. Pettenò <flameeyes@gentoo.org> -ccid-1.3.13.ebuild,
+  ccid-1.4.0.ebuild, +ccid-1.4.1.ebuild:
+  Version bump to support pcsc-lite 1.6.5 and the new pcscd group.
 
   29 Sep 2010; Jeroen Roovers <jer@gentoo.org> ccid-1.3.13-r1.ebuild:
   Stable for HPPA (bug #331517).

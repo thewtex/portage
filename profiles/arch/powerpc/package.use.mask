@@ -1,15 +1,29 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/powerpc/package.use.mask,v 1.58 2010/11/14 20:15:54 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/powerpc/package.use.mask,v 1.71 2011/02/03 13:53:54 xarthisius Exp $
+
+# Joseph Jezak <JoseJX@gentoo.org> (25 Jan 2011)
+# x11-libs/qt-webkit doesn't have a working JIT yet on PowerPC
+x11-libs/qt-webkit jit
+
+# Kacper Kowalik <xarthisius@gentoo.org> (16 Jan 2011)
+# bug 303931
+# dev-lang/icc is not available for ppc
+# sci-chemistry/arp-warp-bin is not available for ppc
+sci-biology/fasta icc
+sci-chemistry/ccp4 arpwarp
+
+# Brent Baude <ranger@gentoo.org> (13 Jan 2011)
+# no oracle stuff for powerpc
+net-im/ekg2 oracle
+
+# Nirbheek Chauhan <nirbheek@gentoo.org> (10 Dec 2010)
+# net-misc/connman is not keyworded, bug 348308
+mail-client/evolution connman
 
 # Dane Smith <c1pher@gentoo.org> (12 Nov 2010)
 # Valgrind is only available on amd64/x86/ppc/ppc64.
 net-libs/gnutls -valgrind
-
-# Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (08 Nov 2010)
-# Tests masked until dev-python/mock is keyworded.
->=dev-util/buildbot-0.8.1 test
-dev-util/buildbot-slave test
 
 # Justin Lecher <jlec@gentoo.org> (01 Nov 2010)
 # Deps not Keyworded
@@ -108,3 +122,7 @@ app-emulation/pearpc jit
 # >=dev-texlive/texlive-langcjk-2010 provides ptex too but is masked
 # unmask when TeX Live 2010 keywording is done (bug #342513)
 app-i18n/canna doc
+
+# Tomas Touceda <chiiph@gentoo.org> (21 Nov 2010)
+# JIT isn't implemented on ppc: bug #346167
+x11-libs/qt-script jit

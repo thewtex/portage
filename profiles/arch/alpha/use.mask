@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation.
+# Copyright 1999-2011 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License, v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/alpha/use.mask,v 1.42 2010/10/10 18:39:26 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/alpha/use.mask,v 1.45 2011/01/30 18:24:33 armin76 Exp $
 
 # Unmask the flag which corresponds to ARCH.
 -alpha
@@ -59,6 +59,7 @@ vaapi
 rtmp
 vpx
 kde
+quvi
 
 # Stuff that doesn't compile on alpha
 clisp
@@ -71,6 +72,7 @@ afs
 schroedinger
 ots
 frei0r
+libev
 
 # Other
 
@@ -153,3 +155,7 @@ audit
 
 # uses gnat/ada which is too big to support currently
 topal
+
+# Matt Turner <mattst88@gentoo.org> (13 Dec 2010)
+# We don't have sys-devel/llvm
+llvm

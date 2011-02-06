@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/elisp-common.eclass,v 1.68 2010/10/09 15:30:43 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/elisp-common.eclass,v 1.70 2010/11/29 17:07:22 ulm Exp $
 #
 # Copyright 2002-2004 Matthew Kennedy <mkennedy@gentoo.org>
 # Copyright 2003      Jeremy Maitin-Shepard <jbms@attbi.com>
@@ -28,6 +28,19 @@
 #
 # to your DEPEND/RDEPEND line and use the functions provided here to
 # bring the files to the correct locations.
+#
+# If your package requires a minimum Emacs version, e.g. Emacs 23, then
+# the dependency should be on >=virtual/emacs-23 instead.  Because the
+# user can select the Emacs executable with eselect, you should also
+# make sure that the active Emacs version is sufficient.  This can be
+# tested with function elisp-need-emacs(), which would typically be
+# called from pkg_setup(), as in the following example:
+#
+#   	elisp-need-emacs 23 || die "Emacs version too low"
+#
+# Please note that such tests should be limited to packages that are
+# known to fail with lower Emacs versions; the standard case is to
+# depend on virtual/emacs without version.
 #
 # .SS
 # src_compile() usage:
@@ -126,11 +139,6 @@
 # the emacs USE flag is taken from the package database and not from the
 # environment, so it is no problem when you unset USE=emacs between
 # merge and unmerge of a package.
-#
-# .SS
-# Miscellaneous functions:
-#
-# elisp-emacs-version() outputs the version of the currently active Emacs.
 
 # @ECLASS-VARIABLE: SITELISP
 # @DESCRIPTION:
@@ -158,6 +166,36 @@ EMACSFLAGS="-batch -q --no-site-file"
 # Emacs flags used for byte-compilation in elisp-compile().
 BYTECOMPFLAGS="-L ."
 
+# @FUNCTION: elisp-emacs-version
+# @DESCRIPTION:
+# Output version of currently active Emacs.
+
+elisp-emacs-version() {
+	# The following will work for at least versions 18-23.
+	echo "(princ emacs-version)" >"${T}"/emacs-version.el
+	${EMACS} ${EMACSFLAGS} -l "${T}"/emacs-version.el
+	rm -f "${T}"/emacs-version.el
+}
+
+# @FUNCTION: elisp-need-emacs
+# @USAGE: <version>
+# @RETURN: 0 if true, 1 otherwise
+# @DESCRIPTION:
+# Test if the eselected Emacs version is at least the major version
+# specified as argument.
+
+elisp-need-emacs() {
+	local need_emacs=$1
+	local have_emacs=$(elisp-emacs-version)
+	einfo "Emacs version: ${have_emacs}"
+	if ! [[ ${have_emacs%%.*} -ge ${need_emacs%%.*} ]]; then
+		eerror "This package needs at least Emacs ${need_emacs%%.*}."
+		eerror "Use \"eselect emacs\" to select the active version."
+		return 1
+	fi
+	return 0
+}
+
 # @FUNCTION: elisp-compile
 # @USAGE: <list of elisp files>
 # @DESCRIPTION:
@@ -175,21 +213,6 @@ elisp-compile() {
 	ebegin "Compiling GNU Emacs Elisp files"
 	${EMACS} ${EMACSFLAGS} ${BYTECOMPFLAGS} -f batch-byte-compile "$@"
 	eend $? "elisp-compile: batch-byte-compile failed"
-}
-
-elisp-comp() {
-	die "Function elisp-comp is not supported any more, see bug 235442"
-}
-
-# @FUNCTION: elisp-emacs-version
-# @DESCRIPTION:
-# Output version of currently active Emacs.
-
-elisp-emacs-version() {
-	# The following will work for at least versions 18-23.
-	echo "(princ emacs-version)" >"${T}"/emacs-version.el
-	${EMACS} ${EMACSFLAGS} -l "${T}"/emacs-version.el
-	rm -f "${T}"/emacs-version.el
 }
 
 # @FUNCTION: elisp-make-autoload-file
@@ -330,9 +353,9 @@ elisp-site-regen() {
 	sed '$q' "${sflist[@]}" </dev/null >>"${T}"/site-gentoo.el
 	cat <<-EOF >>"${T}"/site-gentoo.el
 
+	${page}
 	(provide 'site-gentoo)
 
-	${page}
 	;; Local ${null}Variables:
 	;; no-byte-compile: t
 	;; buffer-read-only: t

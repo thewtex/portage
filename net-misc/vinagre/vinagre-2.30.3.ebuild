@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/vinagre/vinagre-2.30.3.ebuild,v 1.1 2010/09/28 21:46:52 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/vinagre/vinagre-2.30.3.ebuild,v 1.6 2011/01/30 19:10:27 armin76 Exp $
 
 EAPI="2"
 GCONF_DEBUG="no"
@@ -12,19 +12,19 @@ HOMEPAGE="http://www.gnome.org/projects/vinagre/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 ia64 ~ppc ~ppc64 sparc x86 ~x86-fbsd"
 IUSE="applet avahi +ssh +telepathy test"
 
 # Telepathy-glib version in tarball is wrong:
 # https://bugzilla.gnome.org/show_bug.cgi?id=614716
-RDEPEND=">=dev-libs/glib-2.17
+RDEPEND=">=dev-libs/glib-2.17:2
 	dev-libs/dbus-glib
-	>=x11-libs/gtk+-2.16
+	>=x11-libs/gtk+-2.16:2
 	>=gnome-base/gconf-2.16
 	>=net-libs/gtk-vnc-0.3.10
 	>=gnome-base/gnome-keyring-1
 	x11-libs/libX11
-	applet? ( >=gnome-base/gnome-panel-2 )
+	applet? ( || ( gnome-base/gnome-panel[bonobo] <gnome-base/gnome-panel-2.32 ) )
 	avahi? (
 		>=dev-libs/libxml2-2.6.31
 		>=net-dns/avahi-0.6.22[dbus,gtk] )
@@ -42,9 +42,8 @@ DEPEND="${RDEPEND}
 	app-text/gnome-doc-utils
 	test? ( ~app-text/docbook-xml-dtd-4.3 )"
 
-DOCS="AUTHORS ChangeLog MAINTAINERS NEWS README"
-
 pkg_setup() {
+	DOCS="AUTHORS ChangeLog MAINTAINERS NEWS README"
 	G2CONF="${G2CONF}
 		--disable-scrollkeeper
 		$(use_enable avahi)

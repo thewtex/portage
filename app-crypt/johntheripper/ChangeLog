@@ -1,6 +1,46 @@
 # ChangeLog for app-crypt/johntheripper
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/johntheripper/ChangeLog,v 1.118 2010/10/13 17:28:08 c1pher Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/johntheripper/ChangeLog,v 1.125 2011/02/02 06:16:28 jer Exp $
+
+  02 Feb 2011; Jeroen Roovers <jer@gentoo.org> johntheripper-1.7.6-r1.ebuild:
+  Remove extra escapes. Stable for HPPA (bug #350730).
+
+  29 Jan 2011; Raúl Porcel <armin76@gentoo.org> johntheripper-1.7.6-r1.ebuild:
+  alpha/sparc stable wrt #350730
+
+  06 Jan 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  johntheripper-1.7.6-r1.ebuild:
+  x86 stable wrt bug #350730
+
+  05 Jan 2011; Markos Chandras <hwoarang@gentoo.org>
+  johntheripper-1.7.6-r1.ebuild:
+  Stable on amd64 wrt bug #350730
+
+  05 Jan 2011; Samuli Suominen <ssuominen@gentoo.org>
+  johntheripper-1.7.3.4.ebuild:
+  Remove ppc/ppc64 keywording from old version wrt #327211 and #350730.
+
+  05 Jan 2011; Dane Smith <c1pher@gentoo.org>
+  -johntheripper-1.7.2-r3.ebuild, -johntheripper-1.7.2-r4.ebuild,
+  -johntheripper-1.7.2-r5.ebuild,
+  -files/johntheripper-1.7.2-mkdir-sandbox.patch,
+  -files/johntheripper-1.7.2-sha1-memset.patch,
+  -files/johntheripper-1.7.2-stackdef.S.patch,
+  -files/johntheripper-1.7.2-stackdef-2.S.patch,
+  -johntheripper-1.7.3.1.ebuild, -johntheripper-1.7.3.1-r1.ebuild,
+  -files/johntheripper-1.7.3.1-all-5-stackdef.S.patch,
+  -files/johntheripper-1.7.3.1-params.h.patch,
+  -files/johntheripper-1.7.3.1-stackdef.S.patch,
+  -johntheripper-1.7.4.2.ebuild, -johntheripper-1.7.6.ebuild:
+  Remove obsolete version and their associate patches.
+
+*johntheripper-1.7.6-r1 (03 Dec 2010)
+
+  03 Dec 2010; Dane Smith <c1pher@gentoo.org>
+  +johntheripper-1.7.6-r1.ebuild:
+  Revision bump. Adds 'openmp' use flag to enable the built in
+  parallelization
+  support.
 
   13 Oct 2010; Dane Smith <c1pher@gentoo.org> johntheripper-1.7.6.ebuild:
   QA fixes. Added a number of missing || die.

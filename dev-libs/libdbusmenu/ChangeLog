@@ -1,6 +1,22 @@
 # ChangeLog for dev-libs/libdbusmenu
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libdbusmenu/ChangeLog,v 1.3 2010/09/16 12:04:31 tampakrap Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libdbusmenu/ChangeLog,v 1.5 2011/01/29 15:58:13 tampakrap Exp $
+
+*libdbusmenu-0.3.16 (29 Jan 2011)
+
+  29 Jan 2011; Theo Chatzimichos <tampakrap@gentoo.org>
+  +files/libdbusmenu-0.3.14-fix-aclocal.patch,
+  +files/libdbusmenu-0.3.14-optional-dumper.patch, +libdbusmenu-0.3.16.ebuild,
+  +files/libdbusmenu-0.3.16-decouple-testapp.patch,
+  +files/libdbusmenu-0.3.16-optional-gtk.patch,
+  +files/libdbusmenu-0.3.16-optional-tests.patch,
+  +files/libdbusmenu-0.3.16-parallel-make.patch, metadata.xml:
+  Version bump, fix tests, support USE=introspection. Ebuild and patches by
+  Dennis Schridde, bug 352470 and bug 315217
+
+  06 Jan 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  libdbusmenu-0.2.8.ebuild:
+  Added DEPEND on dev-until/intltool, bug 348060
 
   16 Sep 2010; Theo Chatzimichos <tampakrap@gentoo.org>
   libdbusmenu-0.2.8.ebuild:

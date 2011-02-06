@@ -1,6 +1,29 @@
 # ChangeLog for Gentoo/hppa profile
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/hppa/ChangeLog,v 1.101 2010/11/16 21:09:17 jer Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/hppa/ChangeLog,v 1.108 2011/01/21 17:14:41 jer Exp $
+
+  21 Jan 2011; Jeroen Roovers <jer@gentoo.org> package.use.mask:
+  Mask sys-auth/polkit[gtk] (bug #296548).
+
+  05 Jan 2011; Samuli Suominen <ssuominen@gentoo.org> package.use.mask:
+  Mask USE="udev" for xfce-base/xfce4-session because sys-power/upower is
+  missing keywording.
+
+  25 Dec 2010; Samuli Suominen <ssuominen@gentoo.org> package.use.mask,
+  use.mask:
+  Mask USE="thunar" because xfce-base/thunar is now using gnome-base/gvfs.
+
+  05 Dec 2010; Jeroen Roovers <jer@gentoo.org> package.use.mask:
+  Mask dev-lang/spidermonkey (bug #347827).
+
+  30 Nov 2010; Jeroen Roovers <jer@gentoo.org> package.use.mask:
+  Mask doc-pdf because of Java dependencies (bug #347259).
+
+  26 Nov 2010; Jeroen Roovers <jer@gentoo.org> package.use.mask:
+  Unmask sci-libs/hdf5[mpi] (bug #324417).
+
+  25 Nov 2010; Jeroen Roovers <jer@gentoo.org> package.use.mask:
+  No support for sci-libs/ipp on HPPA (bug #340269).
 
   16 Nov 2010; Jeroen Roovers <jer@gentoo.org> -package.mask:
   Remove dev-libs/gmp-5 mask (bug #344613).

@@ -1,8 +1,8 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-misc/filelight/filelight-1.9_rc3.ebuild,v 1.8 2010/06/21 17:09:21 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-misc/filelight/filelight-1.9_rc3.ebuild,v 1.10 2011/01/31 03:16:42 tampakrap Exp $
 
-EAPI=2
+EAPI=3
 KMNAME="playground/utils"
 
 inherit kde4-base
@@ -17,8 +17,6 @@ LICENSE="GPL-2"
 SLOT="4"
 KEYWORDS="amd64 ~ppc x86"
 IUSE="debug"
-
-RDEPEND="x11-apps/xdpyinfo"
 
 S=${WORKDIR}/${MY_P}
 

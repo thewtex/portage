@@ -1,6 +1,73 @@
 # ChangeLog for net-dns/bind
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-dns/bind/ChangeLog,v 1.296 2010/10/24 20:47:16 idl0r Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-dns/bind/ChangeLog,v 1.310 2011/01/07 23:37:37 robbat2 Exp $
+
+*bind-9.7.2_p3-r3 (07 Jan 2011)
+
+  07 Jan 2011; Robin H. Johnson <robbat2@gentoo.org> +bind-9.7.2_p3-r3.ebuild:
+  Upstream respun the geoip patch, no functional changes
+
+  29 Dec 2010; Markos Chandras <hwoarang@gentoo.org> bind-9.6.2_p3-r1.ebuild:
+  Stable on amd64 wrt bug #347621
+
+  27 Dec 2010; Brent Baude <ranger@gentoo.org> bind-9.6.2_p3-r1.ebuild,
+  bind-9.7.2_p3-r1.ebuild:
+  marking -9.6.2_p3-r1 and -9.7.2_p3-r1 ppc64 for sec bug 347621
+
+  19 Dec 2010; Raúl Porcel <armin76@gentoo.org> bind-9.6.2_p3-r1.ebuild,
+  bind-9.7.2_p3-r1.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #347621
+
+  15 Dec 2010; Christian Ruppert <idl0r@gentoo.org> files/named.init-r9:
+  Rework the fuser call.
+
+*bind-9.7.2_p3-r2 (13 Dec 2010)
+*bind-9.6.2_p3-r2 (13 Dec 2010)
+
+  13 Dec 2010; Christian Ruppert <idl0r@gentoo.org> +bind-9.6.2_p3-r2.ebuild,
+  -bind-9.7.1_p2.ebuild, +bind-9.7.2_p3-r2.ebuild, +files/named.confd-r5,
+  +files/named.init-r9:
+  Revision bump. Use the new init script and it's configuration. Added support
+  for GeoIP binmount. Remove all rndc stuff, bug 335398. Add checkconfig and
+  checkzones to opts to allow one to check config and zones. Some improvements.
+
+  08 Dec 2010; Markus Meier <maekke@gentoo.org> bind-9.6.2_p3-r1.ebuild:
+  arm stable, bug #347621
+
+  08 Dec 2010; Markus Meier <maekke@gentoo.org> bind-9.7.2_p3-r1.ebuild:
+  arm stable, bug #347621
+
+  04 Dec 2010; Richard Freeman <rich0@gentoo.org> bind-9.7.2_p3-r1.ebuild:
+  amd64 stable - 347621
+
+  04 Dec 2010; Jeroen Roovers <jer@gentoo.org> bind-9.6.2_p3-r1.ebuild,
+  bind-9.7.2_p3-r1.ebuild:
+  Stable for HPPA PPC (bug #347621).
+
+  04 Dec 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  bind-9.6.2_p3-r1.ebuild, bind-9.7.2_p3-r1.ebuild:
+  x86 stable wrt security bug #347621
+
+*bind-9.7.2_p3-r1 (03 Dec 2010)
+*bind-9.6.2_p3-r1 (03 Dec 2010)
+*bind-9.4.3_p5-r3 (03 Dec 2010)
+
+  03 Dec 2010; Christian Ruppert <idl0r@gentoo.org> -bind-9.4.3_p5-r2.ebuild,
+  +bind-9.4.3_p5-r3.ebuild, -bind-9.6.2_p3.ebuild, +bind-9.6.2_p3-r1.ebuild,
+  -bind-9.7.2_p3.ebuild, +bind-9.7.2_p3-r1.ebuild, +files/named.conf-r5:
+  Bump named-conf. Now without views again to not confuse users.
+
+  02 Dec 2010; Christian Ruppert <idl0r@gentoo.org> bind-9.6.2_p3.ebuild,
+  bind-9.7.2_p3.ebuild:
+  Fix geoip patch, bug 347525.
+
+*bind-9.7.2_p3 (01 Dec 2010)
+*bind-9.6.2_p3 (01 Dec 2010)
+
+  01 Dec 2010; Christian Ruppert <idl0r@gentoo.org> -bind-9.6.2_p2-r1.ebuild,
+  -bind-9.6.2_p2-r2.ebuild, +bind-9.6.2_p3.ebuild, -bind-9.7.1_p2-r2.ebuild,
+  -bind-9.7.2_p2-r1.ebuild, +bind-9.7.2_p3.ebuild:
+  Version bumps.
 
 *bind-9.7.2_p2-r1 (24 Oct 2010)
 *bind-9.7.1_p2-r2 (24 Oct 2010)

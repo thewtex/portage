@@ -1,8 +1,8 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/acml/acml-4.0.1.ebuild,v 1.5 2008/04/22 08:13:19 bicatali Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/acml/acml-4.0.1.ebuild,v 1.7 2010/12/17 08:08:00 jlec Exp $
 
-inherit eutils toolchain-funcs fortran
+inherit eutils toolchain-funcs
 
 MY_PV=${PV//\./\-}
 
@@ -38,31 +38,43 @@ pkg_nofetch() {
 	einfo "SRC=${A} $SRC_URI"
 }
 
+get_fcomp() {
+	case $(tc-getFC) in
+		*gfortran* )
+			FCOMP="gfortran" ;;
+		ifort )
+			FCOMP="ifc" ;;
+		* )
+			FCOMP=$(tc-getFC) ;;
+	esac
+}
+
 pkg_setup() {
-	FORTRAN="gfortran"
-	use ifc && FORTRAN="ifc"
-	fortran_pkg_setup
-	if [[ ${FORTRANC} == gfortran ]]; then
+	if [[ $(tc-getFC) =~ gfortran ]]; then
 		local gcc_version=$(gcc-major-version)$(gcc-minor-version)
 		if ! use openmp && (( ${gcc_version} != 41 )); then
 			eerror "You need gcc-4.1.x to test acml."
 			eerror "Please use gcc-config to swicth gcc version 4.1.x"
 			die "setup gcc failed"
-		elif use openmp && (( ${gcc_version} != 42 )); then
+		elif use openmp && ! tc-has-openmp; then
 			eerror "You need gfortran >= 4.2 to use openmp features."
 			eerror "Please use gcc-config to switch gcc version >= 4.2"
 			die "setup gcc failed"
 		fi
 	fi
+	if use openmp; then
+		tc-has-openmp || die "Please ensure your compiler has openmp support"
+	fi
+	get_fcomp
 }
 
 src_unpack() {
 	unpack ${A}
 	(DISTDIR="${S}" unpack contents-acml-*.tgz)
-	case ${FORTRANC} in
+	case ${FCOMP} in
 		gfortran) FORT=gfortran ;;
 		if*) FORT=ifort ;;
-		*) eerror "Unsupported fortran compiler: ${FORTRANC}"
+		*) eerror "Unsupported fortran compiler: $(tc-getFC)"
 		   die "failed configuring fortran";;
 	esac
 	use openmp || rm -rf ${FORT}*_mp*
@@ -80,7 +92,7 @@ src_test() {
 			cd "${S}"/${fort}/examples/${d}
 			emake \
 				ACMLDIR="${S}"/${fort} \
-				F77=${FORTRANC} \
+				F77=$(tc-getFC) \
 				CC="$(tc-getCC)" \
 				CPLUSPLUS="$(tc-getCXX)" \
 				|| die "emake test in ${fort}/examples/${d} failed"
@@ -100,7 +112,7 @@ src_install() {
 		cp -pPR "${S}"/${fort} "${D}"${instdir} || die "copy ${fort} failed"
 
 		# install profiles
-		ESELECT_PROF=acml-${FORTRANC}
+		ESELECT_PROF=acml-${FCOMP}
 		local acmldir=${instdir}/${fort}
 		local acmllibs="-lacml -lacml_mv"
 		local libname=${acmldir}/lib/libacml

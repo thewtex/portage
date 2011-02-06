@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/autotools-utils.eclass,v 1.5 2010/10/03 19:30:22 reavertm Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/autotools-utils.eclass,v 1.9 2011/02/01 00:08:19 reavertm Exp $
 
 # @ECLASS: autotools-utils.eclass
 # @MAINTAINER:
@@ -56,7 +56,7 @@
 # )
 #
 # src_configure() {
-# 	myeconfargs=(
+# 	local myeconfargs=(
 # 		$(use_with qt4)
 # 		$(use_enable threads multithreading)
 # 		$(use_with tiff)
@@ -83,7 +83,7 @@
 # Keep variable names synced with cmake-utils and the other way around!
 
 case ${EAPI:-0} in
-	2|3) ;;
+	2|3|4) ;;
 	*) die "EAPI=${EAPI} is not supported" ;;
 esac
 
@@ -109,7 +109,7 @@ EXPORT_FUNCTIONS src_prepare src_configure src_compile src_install src_test
 # Optional econf arguments as Bash array. Should be defined before calling src_configure.
 # @CODE
 # src_configure() {
-# 	myeconfargs=(
+# 	local myeconfargs=(
 # 		--disable-readline
 # 		--with-confdir="/etc/nasty foo confdir/"
 # 		$(use_enable debug cnddebug)
@@ -240,7 +240,7 @@ autotools-utils_src_install() {
 
 	_check_build_dir
 	pushd "${AUTOTOOLS_BUILD_DIR}" > /dev/null
-	base_src_install
+	base_src_install "$@"
 	popd > /dev/null
 
 	# Remove libtool files and unnecessary static libs

@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/gthumb/gthumb-2.12.0.ebuild,v 1.2 2010/11/08 22:27:27 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/gthumb/gthumb-2.12.0.ebuild,v 1.4 2010/12/24 13:35:20 nirbheek Exp $
 
 EAPI="3"
 
@@ -22,7 +22,7 @@ RDEPEND=">=dev-libs/glib-2.16:2
 	media-libs/libpng:0
 	virtual/jpeg:0
 	cdr? ( >=app-cdr/brasero-2.28 )
-	exif? ( >=media-gfx/exiv2-0.18 )
+	exif? ( >=media-gfx/exiv2-0.18 <media-gfx/exiv2-0.21 )
 	gnome-keyring? ( >=gnome-base/gnome-keyring-2.28 )
 	gstreamer? (
 		>=media-libs/gstreamer-0.10
@@ -32,7 +32,7 @@ RDEPEND=">=dev-libs/glib-2.16:2
 		>=net-libs/libsoup-gnome-2.26:2.4 )
 	slideshow? (
 		>=media-libs/clutter-1:1.0
-		>=media-libs/clutter-gtk-0.10:1.0 )
+		>=media-libs/clutter-gtk-0.10:0.10 )
 	tiff? ( media-libs/tiff )
 	raw? ( >=media-libs/libopenraw-0.0.8 )
 	!raw? ( media-gfx/dcraw )"

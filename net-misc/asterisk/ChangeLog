@@ -1,6 +1,144 @@
 # ChangeLog for net-misc/asterisk
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/asterisk/ChangeLog,v 1.274 2010/10/27 22:57:59 chainsaw Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/asterisk/ChangeLog,v 1.289 2011/02/03 19:17:49 chainsaw Exp $
+
+*asterisk-1.8.2.3 (03 Feb 2011)
+
+  03 Feb 2011; Tony Vroon <chainsaw@gentoo.org> +asterisk-1.8.2.3.ebuild:
+  An ABI breakage occured in fax session reservation, which is fixed in this
+  release. This is not a security update but rather a bugfix.
+
+*asterisk-1.8.2.2 (22 Jan 2011)
+
+  22 Jan 2011; Tony Vroon <chainsaw@gentoo.org> -asterisk-1.8.2.1.ebuild,
+  +asterisk-1.8.2.2.ebuild:
+  Upstream reports that a merging accident kept the fix out of the 1.8.2.1
+  tarball. 1.8.2.2 does include the security fix. Removed insecure ebuild.
+
+*asterisk-1.4.39.1-r1 (19 Jan 2011)
+
+  19 Jan 2011; Tony Vroon <chainsaw@gentoo.org> -asterisk-1.4.39.1.ebuild,
+  +asterisk-1.4.39.1-r1.ebuild:
+  Remove dodoc call for PDFs in tex, these do not longer exist as pointed out
+  by Agostino "ago" Sarubbo in bug #352136. Remove USE="keepsrc" as it is
+  defective. The 1.6.2 & 1.8 branch ebuilds no longer have it either. Closes
+  bug #352137 by Agostino "ago" Sarubbo. Remove misdn dependency as the
+  dependencies refuse to build for several arch testers. Revision bump, kill
+  off old ebuild.
+
+  19 Jan 2011; Dane Smith <c1pher@gentoo.org> asterisk-1.2.37.ebuild,
+  asterisk-1.2.40.ebuild, asterisk-1.4.39.1.ebuild,
+  asterisk-1.6.2.16.1.ebuild, asterisk-1.8.2.1.ebuild:
+  Move enew{user,group} to the appropriate place wtr bug 352139. Thanks
+  Agostino for reporting.
+
+*asterisk-1.4.39.1 (19 Jan 2011)
+
+  19 Jan 2011; Tony Vroon <chainsaw@gentoo.org>
+  -files/1.4.0/asterisk-1.4.0-uclibc.patch,
+  -files/1.4.0/asterisk-1.4.0-var_rundir.patch,
+  -files/1.4.0/asterisk-1.4.33-gsm-pic.patch,
+  -files/1.4.0/asterisk-1.4.33-inband-indications.patch,
+  -asterisk-1.4.37.ebuild, -files/1.4.0/asterisk-1.4.37-imap-libs.patch,
+  +asterisk-1.4.39.1.ebuild:
+  Trim down 1.4 branch by culling vulnerable ebuild for security bug #352059.
+  Adding 1.4.39.1 which fixes a stack buffer overflow in SIP URI encoding.
+  Patchset repackaged but otherwise unchanged.
+
+*asterisk-1.6.2.16.1 (19 Jan 2011)
+
+  19 Jan 2011; Tony Vroon <chainsaw@gentoo.org> -asterisk-1.6.2.14.ebuild,
+  +asterisk-1.6.2.16.1.ebuild:
+  Trim down 1.6.2 branch by culling vulnerable ebuild for security bug #352059.
+  Adding 1.6.2.16.1 which fixes a stack buffer overflow in SIP URI encoding.
+  Patchset unchanged.
+
+*asterisk-1.8.2.1 (19 Jan 2011)
+
+  19 Jan 2011; Tony Vroon <chainsaw@gentoo.org> -asterisk-1.8.1.1-r1.ebuild,
+  -asterisk-1.8.1.1-r2.ebuild, -asterisk-1.8.2.ebuild,
+  +asterisk-1.8.2.1.ebuild:
+  Trim down 1.8 branch by culling vulnerable ebuilds for security bug #352059.
+  Adding 1.8.2.1 which fixes a stack buffer overflow in SIP URI encoding.
+  Patchset unchanged.
+
+*asterisk-1.8.2 (18 Jan 2011)
+
+  18 Jan 2011; Tony Vroon <chainsaw@gentoo.org> +asterisk-1.8.2.ebuild:
+  Version bump. The previously mentioned fix for blind transfers is now
+  upstream.
+
+*asterisk-1.8.1.1-r2 (13 Jan 2011)
+
+  13 Jan 2011; Tony Vroon <chainsaw@gentoo.org> +asterisk-1.8.1.1-r2.ebuild:
+  Scavenge fix from upstream bug #18185 to avoid blind transfer failures. If
+  you are also a Cisco 7960 "SIP" phone victim, this is for you. New attempt at
+  a serialisation fix for mkdir/install race that causes a build failure on some
+  systems.
+
+*asterisk-1.8.1.1-r1 (04 Jan 2011)
+
+  04 Jan 2011; Tony Vroon <chainsaw@gentoo.org> -asterisk-1.8.0.ebuild,
+  -asterisk-1.8.1.1.ebuild, +asterisk-1.8.1.1-r1.ebuild:
+  As pointed out by Ivan L. Isaev in bug #344533, MySQL was not fully enabled.
+  Together with Michael Lesniewski I have redone all conditional statements
+  through menuselect instead of through use_with. Pre-creating directories in
+  the installation image allows parallel install with MAKEOPTS above -j1,
+  closes bug #350339 by rad0xicated@gmail.com. Kill USE=logrotate which snuck
+  back in. Kill USE=keepsrc as I do not believe it is used. Petition me through
+  a bug report if you disagree and present a clear use case. Nuke older 1.8
+  branch ebuilds, they are useless now because of a gtalk protocol change.
+
+  30 Dec 2010; Tony Vroon <chainsaw@gentoo.org>
+  -files/1.6.1/asterisk-1.6.1-uclibc.patch,
+  -files/1.6.2/asterisk-1.6.2.2-nv-faxdetect.patch,
+  -files/1.6.2/asterisk-1.6.2.8-inband-indications.patch,
+  -files/1.6.2/asterisk-1.6.2.8-pri-missing-keyword.patch,
+  -files/1.6.2/asterisk-1.6.2.9-gsm-pic.patch,
+  -files/1.6.2/asterisk-1.6.2.11-strip-noapi.patch,
+  -asterisk-1.6.2.13-r2.ebuild,
+  -files/1.6.2/asterisk-1.6.2.13-alarm-receiver-use-playtones.patch,
+  -files/1.6.2/asterisk-1.6.2.13-backport-bri-net-ptmp.patch,
+  -files/1.6.2/asterisk-1.6.2.13-confbridge-menu-invocation.patch,
+  -files/1.6.2/asterisk-1.6.2.13-dahdiras-without-root.patch,
+  -files/1.6.2/asterisk-1.6.2.13-iax2-peerstate.patch,
+  -files/1.6.2/asterisk-1.6.2.13-pbxstart-failed-spurious-bye.patch:
+  Remove last 1.6.2 branch ebuild that uses in-tree patching. Clean up
+  surrounding directories accordingly.
+
+*asterisk-1.8.1.1 (30 Dec 2010)
+
+  30 Dec 2010; Tony Vroon <chainsaw@gentoo.org> +asterisk-1.8.1.1.ebuild:
+  Version bump, skipping 1.8.1 as upstream released 1.8.1.1 with two regression
+  fixes. Google Talk fix committed upstream, closes bug #348572 by
+  candrews@integralblue.com. Scavenged patches from upstream bug reports
+  #18545, #18547, #18555 & #18556. Diffs in the patch tarball now have
+  comments, thanks to Michael Lesniewski.
+
+*asterisk-1.6.2.14 (02 Dec 2010)
+
+  02 Dec 2010; <chainsaw@gentoo.org> +files/1.6.2/asterisk.initd3,
+  -files/1.6.2/asterisk.logrotate, -files/1.6.2/asterisk.logrotate2,
+  -asterisk-1.6.2.13.ebuild, -asterisk-1.6.2.13-r1.ebuild,
+  +asterisk-1.6.2.14.ebuild:
+  Consolidate patchset in a tarball on the mirrors, closes bug #344015 by
+  Marcin Baczyński. Drop logrotate USE-flag, always install snippet, closes
+  bug #344181 by Jeroen Roovers. Updated init script to fix restart bug by Jaco
+  Kroon, closes bug #345307. Version bump closes bug #346737 by Jesse Adelman,
+  with an honourable mention for Kerin Millar for pointing out some QA matters
+  which are now fixed.
+
+*asterisk-1.4.37 (01 Dec 2010)
+
+  01 Dec 2010; <chainsaw@gentoo.org> +files/1.4.0/asterisk-1.4.0-uclibc.patch,
+  +files/1.4.0/asterisk-1.4.0-var_rundir.patch,
+  +files/1.4.0/asterisk-1.4.33-inband-indications.patch,
+  +files/1.4.0/asterisk-1.4.37-imap-libs.patch, +files/1.4.0/asterisk.confd,
+  +files/1.4.0/asterisk.initd, +files/1.4.0/asterisk-1.4.33-gsm-pic.patch,
+  +files/1.4.0/asterisk.logrotate, +asterisk-1.4.37.ebuild,
+  +files/1.4.0/func_devstate-r6.c, +files/1.4.0/func_volume.c:
+  Add 1.4 branch ebuild & patchset by Kerin Millar, who will be proxy
+  maintaining.
 
   27 Oct 2010; <chainsaw@gentoo.org> asterisk-1.8.0.ebuild:
   Apparently production releases can now depend on beta code. Notch up

@@ -1,8 +1,8 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/elinks/elinks-0.12_pre5-r1.ebuild,v 1.2 2010/09/05 10:24:48 lxnay Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/elinks/elinks-0.12_pre5-r1.ebuild,v 1.8 2011/01/31 16:53:59 darkside Exp $
 
-EAPI="2"
+EAPI="3"
 
 inherit eutils autotools flag-o-matic
 
@@ -14,7 +14,7 @@ SRC_URI="http://elinks.or.cz/download/${MY_P}.tar.bz2
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE="bittorrent bzip2 debug finger ftp gopher gpm guile idn ipv6 \
 	  javascript lua +mouse nls nntp perl ruby samba ssl unicode X zlib"
 RESTRICT="test"
@@ -30,9 +30,9 @@ DEPEND="dev-libs/boehm-gc
 	guile? ( >=dev-scheme/guile-1.6.4-r1[deprecated,discouraged] )
 	idn? ( net-dns/libidn )
 	perl? ( sys-devel/libperl )
-	ruby? ( dev-lang/ruby )
+	ruby? ( dev-lang/ruby dev-ruby/rubygems )
 	samba? ( net-fs/samba )
-	!hppa? ( !mips? ( !alpha? ( javascript? ( dev-lang/spidermonkey ) ) ) )"
+	javascript? ( <=dev-lang/spidermonkey-1.9 )"
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${MY_P}"
@@ -71,13 +71,13 @@ src_configure() {
 	fi
 
 	if use ssl ; then
-		myconf="${myconf} --with-openssl"
+		myconf="${myconf} --with-openssl=${EPREFIX}/usr"
 	else
 		myconf="${myconf} --without-openssl --without-gnutls"
 	fi
 
 	econf \
-		--sysconfdir=/etc/elinks \
+		--sysconfdir="${EPREFIX}"/etc/elinks \
 		--enable-leds \
 		--enable-88-colors \
 		--enable-256-colors \
@@ -102,7 +102,7 @@ src_configure() {
 		$(use_enable finger) \
 		$(use_enable samba smb) \
 		$(use_enable mouse) \
-		${myconf} || die
+		${myconf}
 }
 
 src_install() {
@@ -121,7 +121,7 @@ src_install() {
 
 	# Remove some conflicting files on OSX.  The files provided by OSX 10.4
 	# are more or less the same.  -- Fabian Groffen (2005-06-30)
-	rm -f "${D}"/usr/share/locale/locale.alias "${D}"/usr/lib/charset.alias
+	rm -f "${ED}"/usr/share/locale/locale.alias "${ED}"/usr/lib/charset.alias
 }
 
 pkg_postinst() {

@@ -1,17 +1,17 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/glib/glib-2.24.2.ebuild,v 1.2 2010/09/08 20:41:23 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/glib/glib-2.24.2.ebuild,v 1.7 2011/01/30 18:00:12 armin76 Exp $
 
 EAPI="2"
 
-inherit autotools gnome.org libtool eutils flag-o-matic
+inherit autotools gnome.org libtool eutils flag-o-matic pax-utils
 
 DESCRIPTION="The GLib library of C routines"
 HOMEPAGE="http://www.gtk.org/"
 
 LICENSE="LGPL-2"
 SLOT="2"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd"
+KEYWORDS="alpha amd64 arm hppa ia64 m68k ~mips ~ppc ~ppc64 s390 sh sparc x86 ~sparc-fbsd ~x86-fbsd"
 IUSE="debug doc fam selinux xattr"
 
 RDEPEND="virtual/libiconv
@@ -47,7 +47,7 @@ src_prepare() {
 
 	# Don't check for python, hence removing the build-time python dep.
 	# We remove the gdb python scripts in src_install due to bug 291328
-	#epatch "${FILESDIR}/${PN}-2.24-punt-python-check.patch"
+	epatch "${FILESDIR}/${PN}-2.24-punt-python-check.patch"
 
 	# Fix test failure when upgrading from 2.22 to 2.24, upstream bug 621368
 	epatch "${FILESDIR}/${PN}-2.24-assert-test-failure.patch"
@@ -58,7 +58,7 @@ src_prepare() {
 
 	# Needed for the punt-python-check patch.
 	# Also needed to prevent croscompile failures, see bug #267603
-	#eautoreconf
+	eautoreconf
 
 	[[ ${CHOST} == *-freebsd* ]] && elibtoolize
 }
@@ -72,7 +72,8 @@ src_configure() {
 	# an unusable form as it disables some commonly used API.  Please do not
 	# convert this to the use_enable form, as it results in a broken build.
 	# -- compnerd (3/27/06)
-	use debug && myconf="--enable-debug"
+	# disable-visibility needed for reference debug, bug #274647
+	use debug && myconf="--enable-debug --disable-visibility"
 
 	# Always build static libs, see #153807
 	# Always use internal libpcre, bug #254659
@@ -105,5 +106,12 @@ src_test() {
 	export XDG_CONFIG_DIRS=/etc/xdg
 	export XDG_DATA_DIRS=/usr/local/share:/usr/share
 	export XDG_DATA_HOME="${T}"
+
+	# Hardened: gdb needs this, bug #338891
+	if host-is-pax ; then
+		pax-mark -mr "${S}"/tests/.libs/assert-msg-test \
+			|| die "Hardened adjustment failed"
+	fi
+
 	emake check || die "tests failed"
 }

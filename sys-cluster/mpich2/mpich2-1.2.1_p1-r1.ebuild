@@ -1,11 +1,11 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/mpich2/mpich2-1.2.1_p1-r1.ebuild,v 1.8 2010/10/27 01:16:51 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/mpich2/mpich2-1.2.1_p1-r1.ebuild,v 1.11 2010/12/19 19:12:06 jlec Exp $
 
 EAPI=2
 PYTHON_DEPEND="2"
 
-inherit eutils fortran python
+inherit eutils python toolchain-funcs
 
 MY_PV=${PV/_/}
 DESCRIPTION="MPICH2 - A portable MPI implementation"
@@ -14,7 +14,7 @@ SRC_URI="http://www.mcs.anl.gov/research/projects/mpich2/downloads/tarballs/${MY
 
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="amd64 ~hppa ppc ppc64 x86"
+KEYWORDS="amd64 hppa ppc ppc64 x86"
 IUSE="+cxx debug doc fortran threads romio mpi-threads"
 
 COMMON_DEPEND="dev-libs/libaio
@@ -34,11 +34,6 @@ S="${WORKDIR}"/${PN}-${MY_PV}
 pkg_setup() {
 	python_set_active_version 2
 	python_pkg_setup
-
-	if use fortran ; then
-		FORTRAN="g77 gfortran ifort ifc"
-		fortran_pkg_setup
-	fi
 
 	if use mpi-threads && ! use threads; then
 		ewarn "mpi-threads requires threads, assuming that's what you want"
@@ -101,7 +96,7 @@ src_configure() {
 	fi
 
 	# enable f90 support for appropriate compilers
-	case "${FORTRANC}" in
+	case "$(tc-getFC)" in
 	    gfortran|if*)
 			c="${c} --enable-f77 --enable-f90";;
 	    g77)
@@ -114,8 +109,7 @@ src_configure() {
 		--with-pm=mpd:hydra \
 		--disable-mpe \
 		$(use_enable romio) \
-		$(use_enable cxx) \
-		|| die
+		$(use_enable cxx)
 }
 
 src_compile() {

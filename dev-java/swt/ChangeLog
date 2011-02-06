@@ -1,6 +1,32 @@
 # ChangeLog for dev-java/swt
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/swt/ChangeLog,v 1.128 2010/08/16 09:38:50 ali_bush Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/swt/ChangeLog,v 1.134 2011/01/24 19:43:51 xarthisius Exp $
+
+  24 Jan 2011; Kacper Kowalik <xarthisius@gentoo.org> swt-3.5.2.ebuild:
+  ppc/ppc64 stable wrt #316565
+
+  11 Jan 2011; Markus Meier <maekke@gentoo.org> swt-3.6.1.ebuild:
+  x86 stable, bug #349740
+
+  08 Jan 2011; Markos Chandras <hwoarang@gentoo.org> swt-3.6.1.ebuild:
+  Stable on amd64 wrt bug #349740
+
+  03 Jan 2011; Vlastimil Babka <caster@gentoo.org> swt-3.3.1.1-r1.ebuild,
+  swt-3.4-r4.ebuild, swt-3.5.2.ebuild, swt-3.6.ebuild, swt-3.6.1.ebuild:
+  Add QA_SONAME to suppress warnings about missing SONAME, which JNI libraries
+  don't need. Fixes bug #253756.
+
+  27 Nov 2010; Vlastimil Babka <caster@gentoo.org> swt-3.5.2.ebuild,
+  swt-3.6.ebuild, swt-3.6.1.ebuild:
+  Restrict xulrunner dep also for 3.5.2. Hopefully fix ppc64, #344309.
+
+*swt-3.6.1 (26 Nov 2010)
+
+  26 Nov 2010; Vlastimil Babka <caster@gentoo.org> swt-3.6.ebuild,
+  +swt-3.6.1.ebuild, metadata.xml:
+  Version bump. Fixes bug #342931. Xulrunner dep restricted to 1.9 as 2.0 is
+  not supported anymore. Disable the flag if you have xulrunner-2.0. In
+  future versions, swt should use webkit instead. Bug #335165.
 
 *swt-3.6 (16 Aug 2010)
 

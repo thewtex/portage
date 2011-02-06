@@ -1,10 +1,11 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/werkzeug/werkzeug-0.6.2.ebuild,v 1.4 2010/06/11 18:47:29 phajdan.jr Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/werkzeug/werkzeug-0.6.2.ebuild,v 1.6 2010/12/26 15:51:48 arfrever Exp $
 
 EAPI="3"
 PYTHON_DEPEND="2"
 SUPPORT_PYTHON_ABIS="1"
+RESTRICT_PYTHON_ABIS="3.*"
 DISTUTILS_SRC_TEST="nosetests"
 
 inherit distutils
@@ -13,7 +14,7 @@ MY_P="Werkzeug-${PV}"
 
 DESCRIPTION="Collection of various utilities for WSGI applications"
 HOMEPAGE="http://werkzeug.pocoo.org/ http://pypi.python.org/pypi/Werkzeug"
-SRC_URI="http://pypi.python.org/packages/source/W/Werkzeug/${MY_P}.tar.gz"
+SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
@@ -23,11 +24,11 @@ IUSE="test"
 RDEPEND=""
 DEPEND="dev-python/setuptools
 	app-arch/unzip
-	test? ( dev-python/py
+	test? (
 		dev-python/lxml
-		dev-python/nose
-		dev-python/simplejson )"
-RESTRICT_PYTHON_ABIS="3.*"
+		dev-python/pytest
+		dev-python/simplejson
+	)"
 
 S="${WORKDIR}/${MY_P}"
 

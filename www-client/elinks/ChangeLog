@@ -1,6 +1,47 @@
 # ChangeLog for www-client/elinks
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/elinks/ChangeLog,v 1.128 2010/09/05 10:24:48 lxnay Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-client/elinks/ChangeLog,v 1.137 2011/01/31 16:53:59 darkside Exp $
+
+  31 Jan 2011; Jeremy Olexa <darkside@gentoo.org>
+  elinks-0.12_pre5-r1.ebuild:
+  Port changes from Gentoo Prefix, use EPREFIX/ED, add KEYWORDS, convert to
+  EAPI3. bug 352839
+
+  29 Jan 2011; Raúl Porcel <armin76@gentoo.org> elinks-0.11.7.ebuild:
+  ia64 stable
+
+  10 Jan 2011; Michał Januszewski <spock@gentoo.org>
+  +files/elinks-0.10.1-utf_8_io-default.patch:
+  Restore mistakenly deleted patch (bug #351269).
+
+  06 Jan 2011; Michał Januszewski <spock@gentoo.org> elinks-0.11.7.ebuild,
+  elinks-0.12_pre5.ebuild, elinks-0.12_pre5-r1.ebuild:
+  Depend on <=spidermonkey-1.9 as more recent versions of spidermonkey cause
+  elinks to fail to compile (bug #350256).
+
+  06 Jan 2011; Michał Januszewski <spock@gentoo.org>
+  -files/elinks-0.10.1-utf_8_io-default.patch, -elinks-0.11.5.ebuild,
+  -elinks-0.11.6.ebuild, -files/elinks-po-path.patch:
+  Remove old ebuilds.
+
+  06 Jan 2011; Michał Januszewski <spock@gentoo.org> elinks-0.11.5.ebuild,
+  elinks-0.11.6.ebuild, elinks-0.11.7.ebuild, elinks-0.12_pre5.ebuild,
+  elinks-0.12_pre5-r1.ebuild:
+  Add a dependency on dev-ruby/rubygems (bug #325327).
+
+  26 Dec 2010; Matt Turner <mattst88@gentoo.org> elinks-0.11.5.ebuild,
+  elinks-0.11.6.ebuild, elinks-0.11.7.ebuild, elinks-0.12_pre5.ebuild,
+  elinks-0.12_pre5-r1.ebuild:
+  Remove alpha and mips masks, bug 347827
+
+  05 Dec 2010; Jeroen Roovers <jer@gentoo.org> elinks-0.11.5.ebuild,
+  elinks-0.11.6.ebuild, elinks-0.11.7.ebuild, elinks-0.12_pre5.ebuild,
+  elinks-0.12_pre5-r1.ebuild:
+  Remove USE=hppa mask (bug #347827).
+
+  05 Dec 2010; Raúl Porcel <armin76@gentoo.org> elinks-0.11.7.ebuild,
+  elinks-0.12_pre5.ebuild, elinks-0.12_pre5-r1.ebuild:
+  Add ~ia64
 
   05 Sep 2010; Fabio Erculiani <lxnay@gentoo.org> ChangeLog:
   adding missing (R)DEPEND dev-libs/boehm-gc to 0.12

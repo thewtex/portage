@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/xca/xca-0.9.0.ebuild,v 1.1 2010/11/07 18:28:38 c1pher Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/xca/xca-0.9.0.ebuild,v 1.5 2011/01/07 16:39:47 ranger Exp $
 
 EAPI="3"
 
@@ -12,10 +12,10 @@ SRC_URI="mirror://sourceforge/xca/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 IUSE="doc"
 
-RDEPEND=">=dev-libs/openssl-0.9.8
+RDEPEND=">=dev-libs/openssl-0.9.8[-bindist]
 	x11-libs/qt-gui:4"
 DEPEND="${RDEPEND}
 	doc? ( app-text/linuxdoc-tools )"

@@ -1,6 +1,58 @@
 # ChangeLog for dev-python/PyQt4
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/PyQt4/ChangeLog,v 1.134 2010/11/06 17:32:34 jer Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/PyQt4/ChangeLog,v 1.146 2011/01/28 15:55:22 arfrever Exp $
+
+  28 Jan 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  PyQt4-4.8.3.ebuild:
+  Update dependencies (bug #353053).
+
+*PyQt4-4.8.3 (25 Jan 2011)
+
+  25 Jan 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +PyQt4-4.8.3.ebuild, +files/PyQt4-4.8.3-configure-multilib.patch:
+  Version bump.
+
+  16 Jan 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> PyQt4-4.8.1.ebuild:
+  x86 stable wrt bug #349607
+
+  07 Jan 2011; Brent Baude <ranger@gentoo.org> PyQt4-4.8.1.ebuild:
+  Marking PyQt4-4.8.1 ppc stable for bug 349607
+
+  04 Jan 2011; Markos Chandras <hwoarang@gentoo.org> PyQt4-4.8.1.ebuild:
+  Stable on amd64 wrt bug #349607
+
+  30 Dec 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  PyQt4-4.8.1.ebuild, PyQt4-4.8.1-r1.ebuild, PyQt4-4.8.2.ebuild:
+  Require x11-libs/qt-opengl[-egl] until bug #344513 is fixed.
+
+*PyQt4-4.8.1-r1 (30 Dec 2010)
+
+  30 Dec 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  PyQt4-4.8.1.ebuild, +PyQt4-4.8.1-r1.ebuild:
+  Copy 4.8.1 to 4.8.1-r1. Delete "declarative" USE flag in 4.8.1.
+
+  25 Dec 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  PyQt4-4.8.2.ebuild:
+  Fix dependencies (bug #349672).
+
+*PyQt4-4.8.2 (24 Dec 2010)
+
+  24 Dec 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +PyQt4-4.8.2.ebuild:
+  Version bump.
+
+  19 Dec 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  PyQt4-4.7.3.ebuild, PyQt4-4.7.7-r1.ebuild, PyQt4-4.8.1.ebuild:
+  Restrict Jython ABIs.
+
+  19 Dec 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -files/PyQt4-4.5.4-qgraphicslinearlayout-fix.patch,
+  -files/configure-4.6.1.py.patch, -PyQt4-4.6.2.ebuild, -PyQt4-4.8.ebuild,
+  -files/configure.py.patch:
+  Delete.
+
+  06 Dec 2010; Alex Alexander <wired@gentoo.org> -PyQt4-4.5.4-r4.ebuild:
+  old, depends on qt 4.5
 
   06 Nov 2010; Jeroen Roovers <jer@gentoo.org> PyQt4-4.5.4-r4.ebuild,
   PyQt4-4.6.2.ebuild, PyQt4-4.7.3.ebuild, PyQt4-4.7.7-r1.ebuild,

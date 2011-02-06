@@ -1,6 +1,49 @@
 # ChangeLog for media-video/mplayer
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/mplayer/ChangeLog,v 1.768 2010/11/14 15:13:00 polynomial-c Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/mplayer/ChangeLog,v 1.778 2011/01/30 21:08:15 scarabeus Exp $
+
+  30 Jan 2011; Tomáš Chvátal <scarabeus@gentoo.org> mplayer-9999.ebuild:
+  Clone the ffmpeg from git as svn external was removed.
+
+  30 Jan 2011; Tomáš Chvátal <scarabeus@gentoo.org> mplayer-9999.ebuild:
+  Update live verison to eapi4 and use_required syntax. Fix default
+  configuration section, some setitngs were eaten for me otherwise.
+
+  30 Jan 2011; Tomáš Chvátal <scarabeus@gentoo.org> mplayer-9999.ebuild:
+  Fix dependency on vdpau (it specificaly check for headers in libvdpau). Per
+  bug #352422.
+
+  26 Jan 2011; Jeroen Roovers <jer@gentoo.org>
+  mplayer-1.0_rc4_p20101114.ebuild:
+  Stable for HPPA (bug #343977).
+
+  22 Jan 2011; Markos Chandras <hwoarang@gentoo.org>
+  mplayer-1.0_rc4_p20101114.ebuild:
+  Stable on amd64 wrt bug #343977
+
+  22 Jan 2011; Christian Faulhammer <fauli@gentoo.org>
+  mplayer-1.0_rc4_p20101114.ebuild:
+  stable x86, bug 343977
+
+  14 Jan 2011; Fabian Groffen <grobian@gentoo.org> mplayer-9999.ebuild:
+  Simplify and generalise too few registers logic for all x86 hosts, bug
+  #351588
+
+  02 Jan 2011; Tobias Klausmann <klausman@gentoo.org>
+  mplayer-1.0_rc4_p20101114.ebuild:
+  Stable on alpha, bug #343977
+
+  02 Jan 2011; Alexis Ballier <aballier@gentoo.org> mplayer-9999.ebuild:
+  The internal copy of faad2 is gone, bug #350316
+
+*mplayer-1.0_rc4_p20101219 (19 Dec 2010)
+
+  19 Dec 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  -mplayer-1.0_rc4_p20100506.ebuild, -mplayer-1.0_rc4_p20100612.ebuild,
+  -mplayer-1.0_rc4_p20101107.ebuild, +mplayer-1.0_rc4_p20101219.ebuild,
+  mplayer-9999.ebuild:
+  Version bump (add new snapshot that should fix vorbis failiture). Drop old.
+  Sort keywords in live ebuild.
 
 *mplayer-1.0_rc4_p20101114 (14 Nov 2010)
 

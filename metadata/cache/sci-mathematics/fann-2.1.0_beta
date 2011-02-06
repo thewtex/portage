@@ -1,5 +1,5 @@
-python? ( virtual/python ) python? ( dev-lang/swig ) app-arch/unzip >=app-admin/eselect-python-20091230 || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b
-python? ( virtual/python ) >=app-admin/eselect-python-20091230
+python? ( dev-lang/swig ) app-arch/unzip >=app-admin/eselect-python-20091230 python? ( =dev-lang/python-2* ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b
+>=app-admin/eselect-python-20091230 python? ( =dev-lang/python-2* )
 0
 mirror://sourceforge/fann/fann-2.1.0beta.zip
 
@@ -14,7 +14,7 @@ doc python
 
 2
 
-compile install prepare test
+compile install postinst postrm prepare test
 
 
 

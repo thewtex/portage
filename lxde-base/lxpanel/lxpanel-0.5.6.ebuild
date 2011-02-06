@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/lxde-base/lxpanel/lxpanel-0.5.6.ebuild,v 1.3 2010/10/15 21:21:25 vostorga Exp $
+# $Header: /var/cvsroot/gentoo-x86/lxde-base/lxpanel/lxpanel-0.5.6.ebuild,v 1.8 2011/01/22 14:13:54 xarthisius Exp $
 
 EAPI="2"
 inherit eutils autotools
@@ -10,7 +10,7 @@ HOMEPAGE="http://lxde.org/"
 SRC_URI="mirror://sourceforge/lxde/${P}.tar.gz"
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~arm ~ppc ~x86 ~x86-interix ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm ppc x86 ~x86-interix ~amd64-linux ~x86-linux"
 SLOT="0"
 IUSE="+alsa"
 RESTRICT="test"  # bug 249598
@@ -28,6 +28,7 @@ DEPEND="${RDEPEND}
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-0.5.1-sandbox.patch
 	epatch "${FILESDIR}"/${P}-symbol-alarm.patch
+	epatch "${FILESDIR}"/${P}-broken-apps.patch
 	eautoreconf
 }
 
@@ -45,4 +46,10 @@ src_install () {
 
 	# Get rid of the .la files.
 	find "${D}" -name '*.la' -delete
+}
+
+pkg_postinst() {
+	elog "If you have problems with broken icons shown in the main panel,"
+	elog "you will have to configure panel settings via its menu."
+	elog "This will not be an issue with first time installations."
 }

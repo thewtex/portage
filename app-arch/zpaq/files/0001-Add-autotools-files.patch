@@ -1,0 +1,77 @@
+From e1d785c3f47252beab63242408a575fe64bc3e52 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Tue, 4 Jan 2011 21:04:53 +0100
+Subject: [PATCH] Add autotools files.
+
+---
+ Makefile.am  |   19 +++++++++++++++++++
+ configure.ac |   31 +++++++++++++++++++++++++++++++
+ 2 files changed, 50 insertions(+), 0 deletions(-)
+ create mode 100644 Makefile.am
+ create mode 100644 configure.ac
+
+diff --git a/Makefile.am b/Makefile.am
+new file mode 100644
+index 0000000..1fc781a
+--- /dev/null
++++ b/Makefile.am
+@@ -0,0 +1,19 @@
++bin_PROGRAMS = zpaq
++lib_LIBRARIES = libzpaqstub.a
++
++if HAVE_POD2MAN
++man1_MANS = zpaq.1
++
++zpaq.1: zpaq.1.pod
++	$(POD2MAN) $< > $@
++endif
++
++libzpaqstub_a_SOURCES = zpaq.cpp
++
++zpaq_SOURCES = zpaq.cpp libzpaq.h
++zpaq_CPPFLAGS = $(AM_CPPFLAGS) -DOPT='"$(CXX) $(CXXFLAGS) zpaqopt.cpp $(LDFLAGS) @RUNTIME_LDFLAGS@ -o zpaqopt.exe $(LIBS) -lzpaqstub"'
++
++AM_CPPFLAGS = -DNDEBUG
++
++MOSTLYCLEANFILES = zpaq.1
++EXTRA_DIST = zpaq.1.pod
+diff --git a/configure.ac b/configure.ac
+new file mode 100644
+index 0000000..ae211d7
+--- /dev/null
++++ b/configure.ac
+@@ -0,0 +1,31 @@
++AC_PREREQ([2.60])
++AC_INIT([zpaq], [2.04])
++AC_CONFIG_AUX_DIR([build-aux])
++AM_INIT_AUTOMAKE([1.6 foreign no-dependencies])
++
++AC_LANG([C++])
++AC_PROG_CXX
++AC_PROG_RANLIB
++
++AC_CHECK_LIB([zpaq], [main],,
++	[AC_MSG_ERROR([Unable to find libzpaq, please install it before zpaq])])
++
++runtime_LDFLAGS='-Wl,--strip-all'
++AC_MSG_CHECKING([whether the linker supports $runtime_LDFLAGS])
++save_LDFLAGS=$LDFLAGS
++LDFLAGS="$LDFLAGS $runtime_LDFLAGS"
++AC_LINK_IFELSE(
++	[AC_LANG_PROGRAM([], [])],
++	[AC_MSG_RESULT([yes])], [AC_MSG_RESULT([no])
++runtime_LDFLAGS=])
++LDFLAGS=$save_LDFLAGS
++AC_SUBST([RUNTIME_LDFLAGS], [$runtime_LDFLAGS])
++
++AC_CHECK_PROG([POD2MAN], [pod2man], [pod2man])
++AM_CONDITIONAL([HAVE_POD2MAN], [test x"$POD2MAN" != x""])
++AS_IF([test "x$POD2MAN" = x], [
++   AC_MSG_WARN([Unable to find pod2man, manpage will not be generated])
++])
++
++AC_CONFIG_FILES([Makefile])
++AC_OUTPUT
+-- 
+1.7.3.4
+

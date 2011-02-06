@@ -1,6 +1,52 @@
 # ChangeLog for mail-mta/exim
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/mail-mta/exim/ChangeLog,v 1.170 2010/07/18 20:49:46 josejx Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/mail-mta/exim/ChangeLog,v 1.179 2011/02/04 23:24:28 fauli Exp $
+
+  04 Feb 2011; Christian Faulhammer <fauli@gentoo.org> exim-4.74-r1.ebuild:
+  stable x86, security bug 353352
+
+  02 Feb 2011; Kacper Kowalik <xarthisius@gentoo.org> exim-4.74-r1.ebuild:
+  ppc/ppc64 stable wrt #353352
+
+  01 Feb 2011; Jeroen Roovers <jer@gentoo.org> exim-4.74-r1.ebuild:
+  Stable for HPPA (bug #353352).
+
+  01 Feb 2011; Fabian Groffen <grobian@gentoo.org> exim-4.74-r1.ebuild,
+  +files/exim-4.74-radius-db-ENV-clash.patch:
+  Build related fixes for #287426 and possibly #352265
+
+*exim-4.74-r1 (01 Feb 2011)
+
+  01 Feb 2011; Fabian Groffen <grobian@gentoo.org> -exim-4.74.ebuild,
+  +exim-4.74-r1.ebuild, +files/exim-4.74-makefile-command-envs.patch,
+  +files/exim-4.74-makefile-posix.patch, +files/exim-4.74-pcre.patch:
+  Grabbed some fixes from upstream to resolve misc building issues
+
+*exim-4.74 (01 Feb 2011)
+
+  01 Feb 2011; Fabian Groffen <grobian@gentoo.org> -exim-4.73.ebuild,
+  +exim-4.74.ebuild:
+  Version bump to 4.74, drop 4.73, bug #353352
+
+*exim-4.73 (10 Jan 2011)
+
+  10 Jan 2011; Fabian Groffen <grobian@gentoo.org> +exim-4.73.ebuild:
+  Version bump, ALT_CONFIG_ROOT_ONLY has been removed, further restrictions for
+  configuration files per CVE-2010-4345. Bug #351204
+
+  11 Dec 2010; Fabian Groffen <grobian@gentoo.org>
+  -files/exim-4.30-conf.patch, -exim-4.69.ebuild, -exim-4.69-r3.ebuild,
+  -exim-4.69-r4.ebuild, -files/exim-4.69-buildconfig-cross-compile.patch,
+  -files/exim-4.69-dovecot-auth.patch,
+  -files/exim-4.69-r1.boolean_redefine_protect.152706.patch,
+  exim-4.71.ebuild, exim-4.72.ebuild, exim-4.72-r1.ebuild,
+  -files/mailer.conf, -files/pam.d-exim:
+  Drop old versions
+
+*exim-4.72-r1 (09 Dec 2010)
+
+  09 Dec 2010; Tobias Klausmann <klausman@gentoo.org> +exim-4.72-r1.ebuild:
+  Add mitigation (not a fix) for security bug #348249
 
   18 Jul 2010; Joseph Jezak <josejx@gentoo.org> exim-4.72.ebuild:
   Marked ppc stable for bug #322665.

@@ -1,6 +1,38 @@
 # ChangeLog for sys-fs/fuse
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/fuse/ChangeLog,v 1.133 2010/10/07 22:11:09 radhermit Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/fuse/ChangeLog,v 1.142 2010/12/10 21:40:06 radhermit Exp $
+
+  10 Dec 2010; Tim Harder <radhermit@gentoo.org> -fuse-2.7.0.ebuild,
+  -fuse-2.7.3.ebuild, -fuse-2.7.4.ebuild, -fuse-2.7.4-r1.ebuild,
+  -fuse-2.8.1.ebuild, -files/fuse-fix-lazy-binding.patch:
+  Remove old versions with security issues (bug #308073).
+
+  10 Dec 2010; Brent Baude <ranger@gentoo.org> fuse-2.8.5.ebuild:
+  Marking fuse-2.8.5 ppc64 for bug 308073
+
+  07 Dec 2010; Jeroen Roovers <jer@gentoo.org> fuse-2.8.5.ebuild:
+  Stable for PPC (bug #308073).
+
+  04 Dec 2010; Raúl Porcel <armin76@gentoo.org> fuse-2.8.5.ebuild:
+  alpha/ia64/sparc stable wrt #308073
+
+  30 Nov 2010; Jeroen Roovers <jer@gentoo.org> fuse-2.8.5.ebuild:
+  Stable for HPPA (bug #308073).
+
+  29 Nov 2010; Markos Chandras <hwoarang@gentoo.org> fuse-2.8.5.ebuild:
+  Stable on amd64 wrt bug #308073
+
+  29 Nov 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> fuse-2.8.5.ebuild:
+  x86 stable wrt security bug #308073
+
+  27 Nov 2010; Michael Weber <xmw@gentoo.org> fuse-2.8.1.ebuild,
+  fuse-2.8.5.ebuild:
+  add ~arm.
+
+  24 Nov 2010; Diego E. Pettenò <flameeyes@gentoo.org> fuse-2.8.5.ebuild,
+  +files/fuse-2.8.5-double-version.patch:
+  Add patch to avoid listing the same function in two versions to (partially)
+  fix build with gold.
 
 *fuse-2.8.5 (07 Oct 2010)
 

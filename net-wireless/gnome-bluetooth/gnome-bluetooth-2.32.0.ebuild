@@ -1,20 +1,22 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/gnome-bluetooth/gnome-bluetooth-2.32.0.ebuild,v 1.2 2010/10/22 21:34:36 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/gnome-bluetooth/gnome-bluetooth-2.32.0.ebuild,v 1.7 2011/01/17 18:01:20 pacho Exp $
 
 EAPI="3"
+GCONF_DEBUG="yes"
 
-inherit eutils gnome2
+inherit eutils gnome2 multilib autotools
 
 DESCRIPTION="Fork of bluez-gnome focused on integration with GNOME"
 HOMEPAGE="http://live.gnome.org/GnomeBluetooth"
+SRC_URI="${SRC_URI} mirror://gentoo/introspection.m4.bz2"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="2"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="doc +introspection nautilus"
 
-COMMON_DEPEND=">=dev-libs/glib-2.25.7:2
+COMMON_DEPEND=">=dev-libs/glib-2.26.1-r1:2
 	>=x11-libs/gtk+-2.19.1:2
 	>=x11-libs/libnotify-0.4.3
 	>=dev-libs/dbus-glib-0.74
@@ -22,7 +24,9 @@ COMMON_DEPEND=">=dev-libs/glib-2.25.7:2
 	nautilus? ( >=gnome-extra/nautilus-sendto-2.31.7 )"
 RDEPEND="${COMMON_DEPEND}
 	>=net-wireless/bluez-4.34
-	app-mobilephone/obexd"
+	app-mobilephone/obexd
+	sys-fs/udev
+	introspection? ( >=dev-libs/gobject-introspection-0.6.7 )"
 DEPEND="${COMMON_DEPEND}
 	!!net-wireless/bluez-gnome
 	app-text/gnome-doc-utils
@@ -34,7 +38,9 @@ DEPEND="${COMMON_DEPEND}
 	x11-libs/libX11
 	x11-libs/libXi
 	x11-proto/xproto
-	doc? ( >=dev-util/gtk-doc-1.9 )"
+	doc? ( >=dev-util/gtk-doc-1.9 )
+	gnome-base/gnome-common
+	dev-util/gtk-doc-am"
 # eautoreconf needs:
 #	gnome-base/gnome-common
 #	dev-util/gtk-doc-am
@@ -45,8 +51,25 @@ pkg_setup() {
 		$(use_enable nautilus nautilus-sendto)
 		--disable-moblin
 		--disable-desktop-update
-		--disable-icon-update"
+		--disable-icon-update
+		--disable-schemas-compile"
 	DOCS="AUTHORS README NEWS ChangeLog"
+
+	enewgroup plugdev
+}
+
+src_prepare() {
+	gnome2_src_prepare
+
+	# Fix build with gobject-introspection 0.9, bug #344227
+	epatch "${FILESDIR}/${P}-introspection-build.patch"
+
+	# Fix nautilus-sendto automagic support, upstream bug #639130
+	epatch "${FILESDIR}/${P}-nsd-automagic.patch"
+
+	cp "${WORKDIR}"/introspection.m4 . || die
+	intltoolize --force --copy --automake || die "intltoolize failed"
+	AT_M4DIR="." eautoreconf
 }
 
 src_install() {
@@ -57,6 +80,9 @@ src_install() {
 		find "${ED}"/usr/$(get_libdir)/nautilus-sendto/plugins -name "*.la" -delete \
 			|| die "la file removal failed (1)"
 	fi
+
+	insinto /$(get_libdir)/udev/rules.d
+	doins "${FILESDIR}"/80-rfkill.rules || die "udev rules installation failed"
 }
 
 pkg_preinst() {
@@ -67,4 +93,7 @@ pkg_preinst() {
 pkg_postinst() {
 	gnome2_pkg_postinst
 	preserve_old_lib_notify /usr/$(get_libdir)/libgnome-bluetooth.so.7
+
+	elog "Don't forget to add yourself to the plugdev group "
+	elog "if you want to be able to control bluetooth transmitter."
 }

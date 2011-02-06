@@ -1,6 +1,27 @@
 # ChangeLog for media-libs/gst-plugins-base
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/gst-plugins-base/ChangeLog,v 1.147 2010/11/19 05:31:11 ford_prefect Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/gst-plugins-base/ChangeLog,v 1.151 2011/01/12 17:33:30 ford_prefect Exp $
+
+*gst-plugins-base-0.10.31 (12 Jan 2011)
+
+  12 Jan 2011; Arun Raghavan <ford_prefect@gentoo.org>
+  +gst-plugins-base-0.10.31.ebuild:
+  Bump to 0.10.31. Adds new API for metadata discovery, codec info extraction,
+  and lots of fixes.
+
+  22 Nov 2010; Arun Raghavan <ford_prefect@gentoo.org>
+  gst-plugins-base-0.10.30.ebuild:
+  Enable the introspection flag by default. Doesn't really affect anyone
+  yet, since the USE flag is masked.
+
+  22 Nov 2010; Arun Raghavan <ford_prefect@gentoo.org>
+  gst-plugins-base-0.10.30.ebuild,
+  +files/gst-plugins-base-0.10.30-fix-tag-test-linking.patch:
+  Fix include order problem in tags test. Fixes bug #346169.
+
+  22 Nov 2010; Arun Raghavan <ford_prefect@gentoo.org>
+  gst-plugins-base-0.10.30.ebuild:
+  Fix gstreamer required version as pointed out by EvaSDK (bug #346363)
 
 *gst-plugins-base-0.10.30 (19 Nov 2010)
 

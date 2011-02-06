@@ -1,6 +1,28 @@
 # ChangeLog for mail-mta/courier
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/mail-mta/courier/ChangeLog,v 1.131 2010/10/24 00:05:44 ranger Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/mail-mta/courier/ChangeLog,v 1.135 2011/01/23 22:32:46 hanno Exp $
+
+*courier-0.65.2-r1 (23 Jan 2011)
+
+  23 Jan 2011; Hanno Boeck <hanno@gentoo.org> +courier-0.65.2-r1.ebuild,
+  +files/courier-init-r3:
+  Fix init-script to work with openrc/baselayout2.
+
+  23 Jan 2011; Hanno Boeck <hanno@gentoo.org> -courier-0.60.0.ebuild,
+  -courier-0.61.1.ebuild, -courier-0.61.2.ebuild, -courier-0.63.0.ebuild,
+  -courier-0.64.0.ebuild, -courier-0.65.0.ebuild, -files/courier-init:
+  Clean out some old versions.
+
+*courier-0.65.2 (08 Dec 2010)
+
+  08 Dec 2010; Hanno Boeck <hanno@gentoo.org> +courier-0.65.2.ebuild:
+  Version bump.
+
+  05 Dec 2010; Matt Turner <mattst88@gentoo.org> courier-0.59.0.ebuild,
+  courier-0.60.0.ebuild, courier-0.61.1.ebuild, courier-0.61.2.ebuild,
+  courier-0.62.2.ebuild, courier-0.63.0.ebuild, courier-0.64.0.ebuild,
+  courier-0.64.1.ebuild, courier-0.65.0.ebuild:
+  Drop ~mips keywords due to broken dependencies. Bug 247702.
 
   24 Oct 2010; Brent Baude <ranger@gentoo.org> courier-0.64.1.ebuild:
   Marking courier-0.64.1 ppc for bug 319785

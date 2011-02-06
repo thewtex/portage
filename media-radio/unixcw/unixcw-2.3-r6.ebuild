@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-radio/unixcw/unixcw-2.3-r6.ebuild,v 1.1 2010/09/12 10:07:30 tomjbe Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-radio/unixcw/unixcw-2.3-r6.ebuild,v 1.3 2011/01/10 19:14:09 tomjbe Exp $
 
 EAPI=2
 
@@ -13,13 +13,14 @@ SRC_URI="ftp://metalab.unc.edu/pub/Linux/apps/ham/morse/${P}.tgz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~alpha ~amd64 ~x86"
 IUSE="ncurses suid qt4"
 
 RDEPEND="ncurses? ( sys-libs/ncurses )
 	qt4? ( x11-libs/qt-gui:4[qt3support] )"
 DEPEND="${RDEPEND}
-	dev-util/pkgconfig"
+	dev-util/pkgconfig
+	!<=app-misc/cw-1.0.16-r1"
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-destdir.patch \

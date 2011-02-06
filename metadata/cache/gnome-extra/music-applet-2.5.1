@@ -1,5 +1,5 @@
-dev-util/pkgconfig dev-util/intltool >=sys-apps/sed-4 >=app-admin/eselect-python-20091230
->=x11-libs/gtk+-2.6 >=x11-libs/pango-1.6 >=gnome-base/libgnomeui-2 >=gnome-base/gnome-panel-2 >=dev-python/gconf-python-2.14 >=dev-python/gnome-keyring-python-2.14 >=dev-python/gnome-applets-python-2.14 >=dev-python/dbus-python-0.80 >=dev-libs/dbus-glib-0.71 >=dev-python/pygtk-2.6 dev-python/pygobject libnotify? ( dev-python/notify-python ) mpd? ( >=dev-python/python-mpd-0.2.1 ) >=app-admin/eselect-python-20091230
+dev-util/pkgconfig dev-util/intltool >=sys-apps/sed-4 >=app-admin/eselect-python-20091230 =dev-lang/python-2*
+>=x11-libs/gtk+-2.6 >=x11-libs/pango-1.6 >=gnome-base/libgnomeui-2 || ( gnome-base/gnome-panel[bonobo] <gnome-base/gnome-panel-2.32 ) >=dev-python/gconf-python-2.14 >=dev-python/gnome-keyring-python-2.14 >=dev-python/gnome-applets-python-2.14 >=dev-python/dbus-python-0.80 >=dev-libs/dbus-glib-0.71 >=dev-python/pygtk-2.6 dev-python/pygobject libnotify? ( dev-python/notify-python ) mpd? ( >=dev-python/python-mpd-0.2.1 ) >=app-admin/eselect-python-20091230 =dev-lang/python-2*
 0
 http://www.kuliniewicz.org/music-applet/downloads/music-applet-2.5.1.tar.gz
 
@@ -12,9 +12,9 @@ libnotify mpd debug
 
 
 
+3
 
-
-compile install postinst postrm preinst unpack
+compile configure install postinst postrm preinst prepare setup unpack
 
 
 

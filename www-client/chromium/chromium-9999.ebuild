@@ -1,12 +1,12 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/chromium-9999.ebuild,v 1.111 2010/11/19 14:45:41 phajdan.jr Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/chromium-9999.ebuild,v 1.130 2011/01/30 17:08:04 phajdan.jr Exp $
 
 EAPI="3"
 PYTHON_DEPEND="2:2.6"
 
 inherit eutils flag-o-matic multilib pax-utils portability python subversion \
-	toolchain-funcs versionator
+	toolchain-funcs versionator virtualx
 
 DESCRIPTION="Open-source version of Google Chrome web browser"
 HOMEPAGE="http://chromium.org/"
@@ -17,13 +17,10 @@ EGCLIENT_REPO_URI="http://src.chromium.org/svn/trunk/src/"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-IUSE="cups +gecko-mediaplayer gnome gnome-keyring system-sqlite system-v8"
+IUSE="cups +gecko-mediaplayer gnome gnome-keyring"
 
 RDEPEND="app-arch/bzip2
-	system-sqlite? (
-		>=dev-db/sqlite-3.6.23.1[fts3,icu,secure-delete,threadsafe]
-	)
-	system-v8? ( dev-lang/v8 )
+	dev-lang/v8
 	dev-libs/dbus-glib
 	>=dev-libs/icu-4.4.1
 	>=dev-libs/libevent-1.4.13
@@ -33,9 +30,12 @@ RDEPEND="app-arch/bzip2
 	gnome? ( >=gnome-base/gconf-2.24.0 )
 	gnome-keyring? ( >=gnome-base/gnome-keyring-2.28.2 )
 	>=media-libs/alsa-lib-1.0.19
+	media-libs/flac
 	virtual/jpeg
 	media-libs/libpng
 	media-libs/libvpx
+	media-libs/speex
+	>=media-video/ffmpeg-0.6_p25767[threads]
 	cups? ( >=net-print/cups-1.3.11 )
 	sys-libs/zlib
 	>=x11-libs/gtk+-2.14.7
@@ -43,10 +43,11 @@ RDEPEND="app-arch/bzip2
 	x11-libs/libXtst"
 DEPEND="${RDEPEND}
 	dev-lang/perl
-	>=dev-lang/yasm-1.1.0
+	>=dev-util/chromium-tools-0.1.4
 	>=dev-util/gperf-3.0.3
 	>=dev-util/pkgconfig-0.23
-	sys-devel/flex"
+	sys-devel/flex
+	>=sys-devel/make-3.81-r2"
 RDEPEND+="
 	|| (
 		x11-themes/gnome-icon-theme
@@ -107,23 +108,6 @@ egyp() {
 	"${@}"
 }
 
-get_bundled_v8_version() {
-	"$(PYTHON -2)" "${FILESDIR}"/extract_v8_version.py v8/src/version.cc
-}
-
-get_installed_v8_version() {
-	best_version dev-lang/v8 | sed -e 's@dev-lang/v8-@@g'
-}
-
-remove_bundled_lib() {
-	local out
-	out="$(find $1 -type f \! -iname '*.gyp' -print -delete)" \
-		|| ewarn "failed to remove bundled library $1"
-	if [[ -z $out ]]; then
-		ewarn "no files matched when removing bundled library $1"
-	fi
-}
-
 pkg_setup() {
 	CHROMIUM_HOME="/usr/$(get_libdir)/chromium-browser"
 
@@ -132,6 +116,7 @@ pkg_setup() {
 
 	# Make sure the build system will use the right python, bug #344367.
 	python_set_active_version 2
+	python_pkg_setup
 
 	# Prevent user problems like bug #299777.
 	if ! grep -q /dev/shm <<< $(get_mounts); then
@@ -145,64 +130,70 @@ pkg_setup() {
 		ewarn "${PN} may fail to start in that configuration."
 		ewarn "Please run 'chmod 1777 /dev/shm'."
 	fi
+
+	# Prevent user problems like bug #348235.
+	eshopts_push -s extglob
+	if is-flagq '-g?(gdb)?([1-9])'; then
+		ewarn "You have enabled debug info (probably have -g or -ggdb in your \$C{,XX}FLAGS)."
+		ewarn "You may experience really long compilation times and/or increased memory usage."
+		ewarn "If compilation fails, please try removing -g{,gdb} before reporting a bug."
+	fi
+	eshopts_pop
 }
 
 src_prepare() {
 	# Enable optional support for gecko-mediaplayer.
-	epatch "${FILESDIR}"/${PN}-gecko-mediaplayer-r0.patch
+	epatch "${FILESDIR}"/${PN}-gecko-mediaplayer-r1.patch
 
 	# Make sure we don't use bundled libvpx headers.
-	epatch "${FILESDIR}"/${PN}-system-vpx-r1.patch
+	epatch "${FILESDIR}"/${PN}-system-vpx-r2.patch
 
-	remove_bundled_lib "third_party/bzip2"
-	remove_bundled_lib "third_party/codesighs"
-	remove_bundled_lib "third_party/icu"
-	remove_bundled_lib "third_party/jemalloc"
-	remove_bundled_lib "third_party/lcov"
-	remove_bundled_lib "third_party/libevent"
-	remove_bundled_lib "third_party/libjpeg"
-	remove_bundled_lib "third_party/libpng"
-	remove_bundled_lib "third_party/libvpx"
-	remove_bundled_lib "third_party/libxml"
-	remove_bundled_lib "third_party/libxslt"
-	remove_bundled_lib "third_party/lzma_sdk"
-	remove_bundled_lib "third_party/molokocacao"
-	remove_bundled_lib "third_party/ocmock"
-	remove_bundled_lib "third_party/pyftpdlib"
-	remove_bundled_lib "third_party/simplejson"
-	remove_bundled_lib "third_party/tlslite"
-	remove_bundled_lib "third_party/yasm"
-	# TODO: also remove third_party/zlib. For now the compilation fails if we
-	# remove it (minizip-related).
+	# Make sure we don't use bundled FLAC.
+	epatch "${FILESDIR}"/${PN}-system-flac-r0.patch
 
-	local v8_bundled="$(get_bundled_v8_version)"
-	if use system-v8; then
-		local v8_installed="$(get_installed_v8_version)"
-		einfo "V8 version: bundled - ${v8_bundled}; installed - ${v8_installed}"
-		version_is_at_least "${v8_bundled}" "${v8_installed}" || die
-	else
-		einfo "Bundled V8 version: ${v8_bundled}"
-	fi
+	# Remove most bundled libraries. Some are still needed.
+	find third_party -type f \! -iname '*.gyp*' \
+		\! -path 'third_party/WebKit/*' \
+		\! -path 'third_party/angle/*' \
+		\! -path 'third_party/cacheinvalidation/*' \
+		\! -path 'third_party/cld/*' \
+		\! -path 'third_party/expat/*' \
+		\! -path 'third_party/ffmpeg/*' \
+		\! -path 'third_party/flac/flac.h' \
+		\! -path 'third_party/gpsd/*' \
+		\! -path 'third_party/harfbuzz/*' \
+		\! -path 'third_party/hunspell/*' \
+		\! -path 'third_party/iccjpeg/*' \
+		\! -path 'third_party/libjingle/*' \
+		\! -path 'third_party/libsrtp/*' \
+		\! -path 'third_party/libwebp/*' \
+		\! -path 'third_party/mesa/*' \
+		\! -path 'third_party/modp_b64/*' \
+		\! -path 'third_party/npapi/*' \
+		\! -path 'third_party/openmax/*' \
+		\! -path 'third_party/ots/*' \
+		\! -path 'third_party/protobuf/*' \
+		\! -path 'third_party/skia/*' \
+		\! -path 'third_party/speex/speex.h' \
+		\! -path 'third_party/sqlite/*' \
+		\! -path 'third_party/tcmalloc/*' \
+		\! -path 'third_party/undoview/*' \
+		\! -path 'third_party/zlib/contrib/minizip/*' \
+		-delete || die
 
-	if use system-sqlite; then
-		remove_bundled_lib "third_party/sqlite/src"
-		remove_bundled_lib "third_party/sqlite/preprocessed"
-	fi
+	# Provide our own gyp file to use system flac.
+	# TODO: move this upstream.
+	cp "${FILESDIR}/flac.gyp" "third_party/flac" || die
 
-	if use system-v8; then
-		# Provide our own gyp file that links with the system v8.
-		# TODO: move this upstream.
-		cp "${FILESDIR}"/v8.gyp v8/tools/gyp || die
+	# Remove bundled v8.
+	find v8 -type f \! -iname '*.gyp*' -delete || die
 
-		remove_bundled_lib "v8"
-
-		# The implementation files include v8 headers with full path,
-		# like #include "v8/include/v8.h". Make sure the system headers
-		# will be used.
-		# TODO: find a solution that can be upstreamed.
-		rmdir v8/include || die
-		ln -s /usr/include v8/include || die
-	fi
+	# The implementation files include v8 headers with full path,
+	# like #include "v8/include/v8.h". Make sure the system headers
+	# will be used.
+	# TODO: find a solution that can be upstreamed.
+	rmdir v8/include || die
+	ln -s /usr/include v8/include || die
 
 	# Make sure the build system will use the right python, bug #344367.
 	# Only convert directories that need it, to save time.
@@ -217,23 +208,22 @@ src_configure() {
 	myconf+=" -Ddisable_sse2=1"
 
 	# Use system-provided libraries.
-	# TODO: use_system_ffmpeg (bug #345325).
 	# TODO: use_system_hunspell (upstream changes needed).
 	# TODO: use_system_ssl (need to consult upstream).
+	# TODO: use_system_sqlite (http://crbug.com/22208).
 	myconf+="
 		-Duse_system_bzip2=1
+		-Duse_system_ffmpeg=1
 		-Duse_system_icu=1
 		-Duse_system_libevent=1
 		-Duse_system_libjpeg=1
 		-Duse_system_libpng=1
 		-Duse_system_libxml=1
+		-Duse_system_speex=1
+		-Duse_system_v8=1
 		-Duse_system_vpx=1
-		-Duse_system_yasm=1
+		-Duse_system_xdg_utils=1
 		-Duse_system_zlib=1"
-
-	if use system-sqlite; then
-		myconf+=" -Duse_system_sqlite=1"
-	fi
 
 	# The dependency on cups is optional, see bug #324105.
 	if use cups; then
@@ -262,12 +252,6 @@ src_configure() {
 		-Dlinux_sandbox_path=${CHROMIUM_HOME}/chrome_sandbox
 		-Dlinux_sandbox_chrome_path=${CHROMIUM_HOME}/chrome"
 
-	if host-is-pax; then
-		# Prevent the build from failing (bug #301880). The performance
-		# difference is very small.
-		myconf+=" -Dv8_use_snapshot=0"
-	fi
-
 	if use gecko-mediaplayer; then
 		# Disable hardcoded blacklist for gecko-mediaplayer.
 		# When www-plugins/gecko-mediaplayer is compiled with USE=gnome, it causes
@@ -275,6 +259,10 @@ src_configure() {
 		# thus making it possible to use gecko-mediaplayer.
 		append-flags -DGENTOO_CHROMIUM_ENABLE_GECKO_MEDIAPLAYER
 	fi
+
+	# Our system ffmpeg should support more codecs than the bundled one
+	# for Chromium.
+	myconf+=" -Dproprietary_codecs=1"
 
 	# Use target arch detection logic from bug #296917.
 	local myarch="$ABI"
@@ -299,20 +287,42 @@ src_configure() {
 	# the build to fail because of that.
 	myconf+=" -Dwerror="
 
+	# Avoid a build error with -Os, bug #352457.
+	replace-flags "-Os" "-O2"
+
 	egyp ${myconf} || die
 }
 
 src_compile() {
 	emake chrome chrome_sandbox BUILDTYPE=Release V=1 || die
+	pax-mark m out/Release/chrome
+	if use test; then
+		emake base_unittests BUILDTYPE=Release V=1 || die
+		pax-mark m out/Release/base_unittests
+	fi
+}
+
+src_test() {
+	# For more info see bug #350349.
+	local mylocale='en_US.utf8'
+	if ! locale -a | grep -q "$mylocale"; then
+		eerror "${PN} requires ${mylocale} locale for tests"
+		eerror "Please read the following guides for more information:"
+		eerror "  http://www.gentoo.org/doc/en/guide-localization.xml"
+		eerror "  http://www.gentoo.org/doc/en/utf-8.xml"
+		die "locale ${mylocale} is not supported"
+	fi
+
+	# For more info see bug #350347.
+	LC_ALL="${mylocale}" maketype=out/Release/base_unittests virtualmake \
+		'--gtest_filter=-ICUStringConversionsTest.*' || die
 }
 
 src_install() {
 	exeinto "${CHROMIUM_HOME}"
-	pax-mark m out/Release/chrome
 	doexe out/Release/chrome
 	doexe out/Release/chrome_sandbox || die
 	fperms 4755 "${CHROMIUM_HOME}/chrome_sandbox"
-	doexe out/Release/xdg-settings || die
 	doexe "${FILESDIR}"/chromium-launcher.sh || die
 
 	insinto "${CHROMIUM_HOME}"
@@ -326,11 +336,14 @@ src_install() {
 	newman out/Release/chrome.1 chrome.1 || die
 	newman out/Release/chrome.1 chromium.1 || die
 
-	doexe out/Release/ffmpegsumo_nolink || die
-	doexe out/Release/libffmpegsumo.so || die
+	# Chromium looks for these in its folder
+	# See media_posix.cc and base_paths_linux.cc
+	dosym /usr/$(get_libdir)/libavcodec.so.52 "${CHROMIUM_HOME}" || die
+	dosym /usr/$(get_libdir)/libavformat.so.52 "${CHROMIUM_HOME}" || die
+	dosym /usr/$(get_libdir)/libavutil.so.50 "${CHROMIUM_HOME}" || die
 
 	# Install icon and desktop entry.
-	newicon out/Release/product_logo_48.png ${PN}-browser.png || die
+	newicon chrome/app/theme/chromium/product_logo_48.png ${PN}-browser.png || die
 	dosym "${CHROMIUM_HOME}/chromium-launcher.sh" /usr/bin/chromium || die
 	make_desktop_entry chromium "Chromium" ${PN}-browser "Network;WebBrowser" \
 		"MimeType=text/html;text/xml;application/xhtml+xml;"

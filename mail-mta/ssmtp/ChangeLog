@@ -1,6 +1,61 @@
 # ChangeLog for mail-mta/ssmtp
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/mail-mta/ssmtp/ChangeLog,v 1.95 2010/06/27 09:18:44 fauli Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/mail-mta/ssmtp/ChangeLog,v 1.109 2011/01/27 18:33:18 jer Exp $
+
+*ssmtp-2.64-r1 (27 Jan 2011)
+
+  27 Jan 2011; Jeroen Roovers <jer@gentoo.org> -ssmtp-2.64.ebuild,
+  +ssmtp-2.64-r1.ebuild:
+  Install the ChangeLog now there is one.
+
+  20 Jan 2011; Diego E. Pettenò <flameeyes@gentoo.org> ssmtp-2.64.ebuild:
+  Silence a harmless warning from repoman by renaming a variable.
+
+  20 Jan 2011; Diego E. Pettenò <flameeyes@gentoo.org> ssmtp-2.64.ebuild:
+  Update patchset for a little mistake of mine.
+
+*ssmtp-2.64 (19 Jan 2011)
+
+  19 Jan 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  -files/ssmtp-2.61-bug127592.patch, +ssmtp-2.64.ebuild:
+  Version bump; move patches to tarball; simplify ebuild. The md5sum (misnamed)
+  and maxsysuid USE flags are gone (enabled by default); package builds with
+  parallel make; automake is not used (faster src_prepare); add optional
+  support for GnuTLS for those not wanting to use OpenSSL.
+
+  18 Jan 2011; Diego E. Pettenò <flameeyes@gentoo.org> -ssmtp-2.62-r6.ebuild,
+  -ssmtp-2.62-r7.ebuild, -files/CVE-2008-3962.patch, -files/mailer.conf:
+  Remove old versions and cleanup files.
+
+  07 Jan 2011; Kacper Kowalik <xarthisius@gentoo.org> ssmtp-2.62-r8.ebuild:
+  ppc stable wrt #346453
+
+  28 Dec 2010; Brent Baude <ranger@gentoo.org> ssmtp-2.62-r8.ebuild:
+  Marking ssmtp-2.62-r8 ppc64 for bug 346453
+
+  27 Nov 2010; Raúl Porcel <armin76@gentoo.org> ssmtp-2.62-r8.ebuild:
+  alpha/ia64/m68k/s390/sh/sparc stable wrt #346453
+
+  27 Nov 2010; Michael Weber <xmw@gentoo.org> ssmtp-2.62-r8.ebuild:
+  Stable for arm/sparc (bug #346453).
+
+  26 Nov 2010; Jeroen Roovers <jer@gentoo.org> ssmtp-2.62-r8.ebuild:
+  Stable for HPPA (bug #346453).
+
+  26 Nov 2010; Markos Chandras <hwoarang@gentoo.org> ssmtp-2.62-r8.ebuild:
+  Stable on amd64 wrt bug #346453
+
+  23 Nov 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  files/ssmtp-2.62-darwin-crypto.patch:
+  Fix patch to work with all patch(1) versions; thanks to kirin yuri and Jyrki
+  Launonen in bug #346497.
+
+  23 Nov 2010; Thomas Kahle <tomka@gentoo.org> ssmtp-2.62-r8.ebuild:
+  x86 stable per bug 346453
+
+  22 Nov 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  files/ssmtp-2.62-darwin-crypto.patch:
+  Use a saner approacy to link in libcrypto.
 
   27 Jun 2010; Christian Faulhammer <fauli@gentoo.org> ssmtp-2.62-r8.ebuild:
   add ~x86-freebsd

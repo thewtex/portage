@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-portage/tatt/tatt-9999.ebuild,v 1.1 2010/07/27 12:36:56 fauli Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-portage/tatt/tatt-9999.ebuild,v 1.3 2010/12/03 17:18:33 tomka Exp $
 
 EAPI="2"
 SUPPORT_PYTHON_ABIS="1"
@@ -14,7 +14,7 @@ EGIT_REPO_URI="git://github.com/tom111/tatt.git"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE=""
+IUSE="+templates"
 
 DEPEND="dev-python/setuptools"
 RDEPEND="app-portage/eix
@@ -22,6 +22,15 @@ RDEPEND="app-portage/eix
 		www-client/pybugz
 		dev-python/configobj"
 
+#configobj does not support python-3
 RESTRICT_PYTHON_ABIS="3.*"
 
 S="${WORKDIR}/${PN}"
+
+src_install() {
+	distutils_src_install
+	if use templates; then
+		insinto "/usr/share/${PN}"
+		doins -r templates || die
+	fi
+}

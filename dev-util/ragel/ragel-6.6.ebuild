@@ -1,6 +1,8 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/ragel/ragel-6.6.ebuild,v 1.11 2010/10/10 13:08:37 klausman Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/ragel/ragel-6.6.ebuild,v 1.13 2010/12/16 07:06:59 flameeyes Exp $
+
+EAPI="3"
 
 DESCRIPTION="Compiles finite state machines from regular languages into executable code."
 HOMEPAGE="http://www.complang.org/ragel/"
@@ -8,7 +10,7 @@ SRC_URI="http://www.complang.org/ragel/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd"
+KEYWORDS="~alpha amd64 ~arm hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris"
 IUSE="vim-syntax"
 
 DEPEND=""
@@ -17,9 +19,8 @@ RDEPEND=""
 # We need to get the txl language in Portage to have the tests :(
 RESTRICT=test
 
-src_compile() {
-	econf --docdir=/usr/share/doc/${PF} || die "econf failed"
-	emake || die "emake failed"
+src_configure() {
+	econf --docdir="${EPREFIX}"/usr/share/doc/${PF} || die "econf failed"
 }
 
 src_test() {

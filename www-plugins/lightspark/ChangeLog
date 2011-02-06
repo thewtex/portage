@@ -1,6 +1,30 @@
 # ChangeLog for www-plugins/lightspark
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-plugins/lightspark/ChangeLog,v 1.19 2010/10/18 16:20:16 chithanh Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-plugins/lightspark/ChangeLog,v 1.23 2010/12/23 00:07:59 chithanh Exp $
+
+  23 Dec 2010; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  lightspark-0.4.5.1.ebuild:
+  Add missing boost dependency, bug #349397
+
+*lightspark-0.4.5.1 (21 Dec 2010)
+
+  21 Dec 2010; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  -files/lightspark-0.4.4.3-cmakelists.patch, -lightspark-0.4.5.ebuild,
+  +lightspark-0.4.5.1.ebuild,
+  -files/lightspark-0.4.5-llvm-2.8-gcc-4.5.patch,
+  +files/lightspark-0.4.5.1-cmakelists.patch:
+  Version bump, bug #349093
+
+  12 Dec 2010; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  lightspark-0.4.5.ebuild, +files/lightspark-0.4.5-llvm-2.8-gcc-4.5.patch:
+  Work around llvm-2.8 issue with gcc-4.5, bug #348552
+
+*lightspark-0.4.5 (12 Dec 2010)
+
+  12 Dec 2010; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  -lightspark-0.4.4.3.ebuild, +lightspark-0.4.5.ebuild,
+  +files/lightspark-0.4.5-allow-disabling-pulseaudio.patch:
+  Version bump, bug #346841. Now builds against llvm-2.8, bug #340437.
 
 *lightspark-0.4.4.3 (18 Oct 2010)
 

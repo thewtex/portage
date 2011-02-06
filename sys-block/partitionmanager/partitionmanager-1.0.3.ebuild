@@ -1,8 +1,8 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-block/partitionmanager/partitionmanager-1.0.3.ebuild,v 1.1 2010/10/05 19:40:52 reavertm Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-block/partitionmanager/partitionmanager-1.0.3.ebuild,v 1.3 2011/01/30 18:31:31 scarabeus Exp $
 
-EAPI="2"
+EAPI=3
 
 KDE_LINGUAS="bg ca da de el en_GB es et fr gl ja lt nb nds nl nn pa pl pt
 pt_BR ro ru sv tr uk zh_CN zh_TW"
@@ -15,7 +15,7 @@ HOMEPAGE="http://partitionman.sourceforge.net/"
 SRC_URI="mirror://sourceforge/partitionman/${P}.tar.bz2"
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 SLOT="0"
 IUSE="debug"
 

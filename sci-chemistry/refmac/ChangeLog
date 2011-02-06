@@ -1,6 +1,94 @@
 # ChangeLog for sci-chemistry/refmac
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/refmac/ChangeLog,v 1.25 2010/11/17 07:49:03 jlec Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/refmac/ChangeLog,v 1.42 2011/01/31 21:14:39 dberkholz Exp $
+
+*refmac-5.6.0102-r1 (31 Jan 2011)
+*refmac-5.5.0110-r3 (31 Jan 2011)
+
+  31 Jan 2011; Donnie Berkholz <dberkholz@gentoo.org>;
+  +refmac-5.5.0110-r3.ebuild, +refmac-5.6.0102-r1.ebuild:
+  Fix for ARP/wARP. It looked for Refmac in a location where we didn't have it,
+  so make another symlink.
+
+*refmac-5.6.0102 (28 Jan 2011)
+
+  28 Jan 2011; Justin Lecher <jlec@gentoo.org>
+  +files/5.6.0102-allow-dynamic-linking.patch, +refmac-5.6.0102.ebuild:
+  Version Bump
+
+  20 Jan 2011; Markos Chandras <hwoarang@gentoo.org> refmac-5.5.0110-r2.ebuild:
+  Stable on amd64 wrt bug #349587
+
+  16 Jan 2011; Thomas Kahle <tomka@gentoo.org> refmac-5.5.0110-r2.ebuild:
+  x86 stable per bug 349587
+
+  16 Jan 2011; Justin Lecher <jlec@gentoo.org> refmac-5.5.0110-r2.ebuild,
+  refmac-5.6.0097.ebuild, refmac-5.6.0098.ebuild, refmac-5.6.0099.ebuild:
+  Fix sourcing of ccp4 profile file for test
+
+  16 Jan 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  refmac-5.5.0110-r2.ebuild, refmac-5.6.0099.ebuild:
+  marked ~ppc wrt #303931
+
+  16 Jan 2011; Justin Lecher <jlec@gentoo.org> refmac-5.5.0110-r2.ebuild,
+  refmac-5.6.0097.ebuild, refmac-5.6.0098.ebuild, refmac-5.6.0099.ebuild:
+  Source /etc/profile before testing
+
+*refmac-5.6.0099 (14 Jan 2011)
+
+  14 Jan 2011; Justin Lecher <jlec@gentoo.org> +refmac-5.6.0099.ebuild:
+  Version Bump
+
+*refmac-5.6.0098 (11 Jan 2011)
+
+  11 Jan 2011; Justin Lecher <jlec@gentoo.org>
+  +files/5.6.0098-allow-dynamic-linking.patch, +refmac-5.6.0098.ebuild:
+  Version Bump
+
+  10 Jan 2011; Justin Lecher <jlec@gentoo.org> -refmac-5.5.0109.ebuild,
+  -refmac-5.5.0110.ebuild, -refmac-5.5.0110-r1.ebuild,
+  refmac-5.5.0110-r2.ebuild, -refmac-5.6.0093.ebuild, -refmac-5.6.0094.ebuild,
+  -refmac-5.6.0096.ebuild, refmac-5.6.0097.ebuild:
+  Moved the installation of profile files from sci-chemistry/ccp4-apps to
+  sci-libs/ccp4-libs, #349700
+
+*refmac-5.6.0097 (04 Jan 2011)
+
+  04 Jan 2011; Justin Lecher <jlec@gentoo.org>
+  +files/5.6.0097-allow-dynamic-linking.patch, +refmac-5.6.0097.ebuild:
+  Version Bump
+
+  31 Dec 2010; Justin Lecher <jlec@gentoo.org> refmac-5.5.0110-r2.ebuild:
+  Depend correct ccp4-libs version to make test work
+
+  25 Dec 2010; Justin Lecher <jlec@gentoo.org> refmac-5.5.0110-r2.ebuild:
+  Removed installation of libcheck again, #349700
+
+*refmac-5.5.0110-r2 (24 Dec 2010)
+
+  24 Dec 2010; Justin Lecher <jlec@gentoo.org>
+  files/5.5.0110-allow-dynamic-linking.patch, +refmac-5.5.0110-r2.ebuild:
+  Don't mix FLAGS
+
+*refmac-5.6.0096 (21 Dec 2010)
+
+  21 Dec 2010; Justin Lecher <jlec@gentoo.org>
+  +files/5.6.0096-allow-dynamic-linking.patch, +refmac-5.6.0096.ebuild:
+  Version Bump
+
+  16 Dec 2010; Justin Lecher <jlec@gentoo.org> refmac-5.5.0109.ebuild,
+  refmac-5.5.0110.ebuild, refmac-5.5.0110-r1.ebuild, refmac-5.6.0093.ebuild,
+  refmac-5.6.0094.ebuild:
+  Removal of fortran.eclass, #348851
+
+*refmac-5.6.0094 (07 Dec 2010)
+
+  07 Dec 2010; Justin Lecher <jlec@gentoo.org>
+  +files/5.6.0094-allow-dynamic-linking.patch, -refmac-5.6.0085.ebuild,
+  -refmac-5.6.0086.ebuild, -refmac-5.6.0088.ebuild, -refmac-5.6.0089.ebuild,
+  -refmac-5.6.0090.ebuild, -refmac-5.6.0091.ebuild, -refmac-5.6.0092.ebuild,
+  +refmac-5.6.0094.ebuild:
+  Version Bump, cleaned old
 
 *refmac-5.6.0093 (17 Nov 2010)
 

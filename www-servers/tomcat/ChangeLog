@@ -1,6 +1,37 @@
 # ChangeLog for www-servers/tomcat
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-servers/tomcat/ChangeLog,v 1.233 2010/08/31 15:19:58 nelchael Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-servers/tomcat/ChangeLog,v 1.237 2011/01/30 17:50:02 fordfrog Exp $
+
+*tomcat-7.0.6 (30 Jan 2011)
+
+  30 Jan 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +files/7/7.0.6-build-xml.patch, +tomcat-7.0.6.ebuild:
+  Version bump
+
+*tomcat-5.5.27-r5 (19 Jan 2011)
+
+  19 Jan 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +files/5.5/build-jspc-classpath.patch, +tomcat-5.5.27-r5.ebuild:
+  Fixed bug #339603, thanks to Isaac Richter <LaughingJudge@gmail.com>
+
+*tomcat-7.0.5-r1 (18 Jan 2011)
+*tomcat-6.0.29-r1 (18 Jan 2011)
+*tomcat-6.0.28-r1 (18 Jan 2011)
+*tomcat-6.0.26-r2 (18 Jan 2011)
+
+  18 Jan 2011; Miroslav Šulc <fordfrog@gentoo.org> -tomcat-6.0.26-r1.ebuild,
+  +tomcat-6.0.26-r2.ebuild, -tomcat-6.0.28.ebuild, +tomcat-6.0.28-r1.ebuild,
+  -tomcat-6.0.29.ebuild, +tomcat-6.0.29-r1.ebuild, -tomcat-7.0.5.ebuild,
+  +tomcat-7.0.5-r1.ebuild:
+  Fixed bug #350645 in all versions except 5.5.27 where it does not seem to
+  occur, thanks to gentoo@ddrs.ath.cx pointing it out and for the fix
+
+*tomcat-7.0.5 (21 Dec 2010)
+
+  21 Dec 2010; Alistair Bush <ali_bush@gentoo.org> +files/7/build-xml.patch,
+  +files/7/examples-cal.patch, +files/7/tomcat.init, +tomcat-7.0.5.ebuild,
+  +files/7/tomcat.conf:
+  Version Bump. Thanks to wltjr for all the work.
 
 *tomcat-6.0.29 (31 Aug 2010)
 

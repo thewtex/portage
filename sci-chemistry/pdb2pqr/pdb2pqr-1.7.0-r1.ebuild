@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/pdb2pqr/pdb2pqr-1.7.0-r1.ebuild,v 1.1 2010/11/04 09:35:20 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/pdb2pqr/pdb2pqr-1.7.0-r1.ebuild,v 1.4 2010/12/20 08:44:08 jlec Exp $
 
 EAPI="3"
 
@@ -8,9 +8,7 @@ SUPPORT_PYTHON_ABIS="1"
 PYTHON_EXPORT_PHASE_FUNCTIONS="1"
 RESTRICT_PYTHON_ABIS="2.4 3.*"
 
-inherit eutils fortran multilib flag-o-matic distutils python versionator toolchain-funcs
-
-FORTRAN="g77 gfortran"
+inherit autotools distutils eutils flag-o-matic multilib toolchain-funcs versionator
 
 MY_PV=$(get_version_component_range 1-2)
 MY_P="${PN}-${MY_PV}"
@@ -64,16 +62,22 @@ src_configure() {
 
 	configuration() {
 		# Avoid automagic to numeric
-		NUMPY="${EPREFIX}/$(python_get_sitedir)" \
-			F77="${FORTRANC}" \
-			econf \
+		econf \
 			--enable-propka \
 			--with-max-atoms=${MAXATOMS:-10000} \
 			$(use_enable pdb2pka) \
-			$(use_with opal) || \
-			die "econf failed"
+			$(use_with opal) \
+			NUMPY="${EPREFIX}/$(python_get_sitedir)" \
+			F77="$(tc-getFC)"
 	}
 	python_execute_function -s configuration
+}
+
+src_compile() {
+	compilation() {
+		emake || die
+	}
+	python_execute_function -s compilation
 }
 
 src_test() {

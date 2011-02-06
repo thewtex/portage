@@ -1,10 +1,10 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/gnome-mplayer/gnome-mplayer-1.0.0.ebuild,v 1.1 2010/11/06 17:57:58 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/gnome-mplayer/gnome-mplayer-1.0.0.ebuild,v 1.6 2011/01/30 18:44:42 armin76 Exp $
 
 EAPI=2
 GCONF_DEBUG=no
-inherit gnome2
+inherit eutils flag-o-matic gnome2
 
 DESCRIPTION="A GTK+ interface to MPlayer"
 HOMEPAGE="http://code.google.com/p/gnome-mplayer/"
@@ -12,7 +12,7 @@ SRC_URI="http://${PN}.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 ppc ~ppc64 x86 ~x86-fbsd"
 IUSE="alsa gnome ipod libnotify musicbrainz pulseaudio"
 
 RDEPEND=">=dev-libs/glib-2.14:2
@@ -33,6 +33,8 @@ DEPEND="${RDEPEND}
 	sys-devel/gettext"
 
 pkg_setup() {
+	has_version ">=x11-libs/libnotify-0.7" && append-cppflags -DNOTIFY0_7_ENABLED
+
 	G2CONF="--disable-dependency-tracking
 		$(use_enable gnome schemas-install)
 		$(use_enable gnome nautilus)
@@ -49,6 +51,11 @@ pkg_setup() {
 		--without-gpm-old-method"
 
 	DOCS="ChangeLog README DOCS/keyboard_shortcuts.txt"
+}
+
+src_prepare() {
+	epatch "${FILESDIR}"/${P}-libnotify-0.7.patch
+	gnome2_src_prepare
 }
 
 src_install() {

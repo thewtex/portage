@@ -1,8 +1,8 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/mkl/mkl-10.0.2.018-r2.ebuild,v 1.2 2010/06/17 01:54:40 jsbronder Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/mkl/mkl-10.0.2.018-r2.ebuild,v 1.8 2010/12/19 18:38:31 jlec Exp $
 
-inherit eutils toolchain-funcs fortran check-reqs
+inherit eutils toolchain-funcs check-reqs
 
 PID=967
 PB=${PN}
@@ -29,6 +29,17 @@ RDEPEND="${DEPEND}
 MKL_DIR=/opt/intel/${PN}/${PV}
 INTEL_LIC_DIR=/opt/intel/licenses
 
+get_fcomp() {
+	case $(tc-getFC) in
+		*gfortran* )
+			FCOMP="gfortran" ;;
+		ifort )
+			FCOMP="ifc" ;;
+		* )
+			FCOMP=$(tc-getFC) ;;
+	esac
+}
+
 pkg_setup() {
 	# Check the license
 	if [[ -z ${MKL_LICENSE} ]]; then
@@ -48,16 +59,13 @@ pkg_setup() {
 	check_reqs
 
 	# Check and setup fortran
-	FORTRAN="gfortran ifc g77"
-	use int64 && FORTRAN="gfortran ifc"
 	if use fortran95; then
-		FORTRAN="gfortran ifc"
 		# blas95 and lapack95 don't compile with gfortran < 4.2
-		[[ $(gcc-major-version)$(gcc-minor-version) -lt 42 ]] && FORTRAN="ifc"
+		[[ $(tc-getFC) =~ (gfortran|g77) ]] && [[ $(gcc-major-version)$(gcc-minor-version) -lt 42 ]] &&
+		die "blas95 and lapack95 don't compile with gfortran < 4.2"
 	fi
-	fortran_pkg_setup
 	MKL_FC="gnu"
-	[[ ${FORTRANC} == if* ]] && MKL_FC="intel"
+	[[ $(tc-getFC) =~ if ]] && MKL_FC="intel"
 
 	# build profiles according to what compiler is installed
 	MKL_CC="gnu"
@@ -72,6 +80,7 @@ pkg_setup() {
 	else
 		MKL_MPI=intelmpi
 	fi
+	get_fcomp
 }
 
 src_unpack() {
@@ -145,11 +154,11 @@ src_compile() {
 	if use fortran95; then
 		einfo "Compiling fortan95 static lib wrappers"
 		local myconf="lib${MKL_ARCH}"
-		[[ ${FORTRANC} == gfortran ]] && \
+		[[ $(tc-getFC) =~ gfortran ]] && \
 			myconf="${myconf} FC=gfortran"
 		if use int64; then
 			myconf="${myconf} interface=ilp64"
-			[[ ${FORTRANC} == gfortran ]] && \
+			[[ $(tc-getFC) =~ gfortran ]] && \
 				myconf="${myconf} FOPTS=-fdefault-integer-8"
 		fi
 		for x in blas95 lapack95; do

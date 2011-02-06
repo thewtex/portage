@@ -1,9 +1,10 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/offlineimap/offlineimap-6.2.0.2.ebuild,v 1.2 2010/11/15 16:25:13 arfrever Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-mail/offlineimap/offlineimap-6.2.0.2.ebuild,v 1.6 2010/12/05 18:30:57 armin76 Exp $
 
 EAPI="3"
 PYTHON_DEPEND="2"
+PYTHON_USE_WITH="threads ssl?"
 SUPPORT_PYTHON_ABIS="1"
 RESTRICT_PYTHON_ABIS="3.*"
 
@@ -15,12 +16,11 @@ SRC_URI="mirror://debian/pool/main/o/offlineimap/${P/-/_}.orig.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="alpha amd64 ia64 ~ppc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="doc ssl"
 
 DEPEND="doc? ( app-text/docbook-sgml-utils )"
-# PYTHON_USE_WITH* don't support this situation. PYTHON_DEPEND in EAPI >=4 maybe will support it.
-RDEPEND="=dev-lang/python-2*[threads,ssl?]"
+RDEPEND=""
 
 src_prepare() {
 	distutils_src_prepare

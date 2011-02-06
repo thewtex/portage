@@ -1,0 +1,39 @@
+From 8b35ebadbef9cc0dd24694a50c39450f44f75cba Mon Sep 17 00:00:00 2001
+From: Jonas Bernoulli <jonas@bernoul.li>
+Date: Tue, 30 Nov 2010 22:20:25 +0100
+Subject: [PATCH 2/2] dont install bup-web
+
+---
+ Makefile |    9 +--------
+ 1 files changed, 1 insertions(+), 8 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 966f787..4001b79 100644
+--- a/Makefile
++++ b/Makefile
+@@ -33,8 +33,7 @@ BINDIR=$(DESTDIR)/usr/bin
+ LIBDIR=$(DESTDIR)/usr/lib/bup
+ install: all
+ 	$(INSTALL) -d $(MANDIR)/man1 $(DOCDIR) $(BINDIR) \
+-		$(LIBDIR)/bup $(LIBDIR)/cmd \
+-		$(LIBDIR)/web $(LIBDIR)/web/static
++		$(LIBDIR)/bup $(LIBDIR)/cmd
+ 	[ ! -e Documentation/.docs-available ] || \
+ 	  $(INSTALL) -m 0644 \
+ 		Documentation/*.1 \
+@@ -53,12 +52,6 @@ install: all
+ 	$(INSTALL) -m 0755 \
+ 		lib/bup/*$(SOEXT) \
+ 		$(LIBDIR)/bup
+-	$(INSTALL) -m 0644 \
+-		lib/web/static/* \
+-		$(LIBDIR)/web/static/
+-	$(INSTALL) -m 0644 \
+-		lib/web/*.html \
+-		$(LIBDIR)/web/
+ %/all:
+ 	$(MAKE) -C $* all
+ 
+-- 
+1.7.3.2
+

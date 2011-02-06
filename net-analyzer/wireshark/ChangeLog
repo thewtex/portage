@@ -1,6 +1,83 @@
 # ChangeLog for net-analyzer/wireshark
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/wireshark/ChangeLog,v 1.254 2010/10/25 23:03:58 halcy0n Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/wireshark/ChangeLog,v 1.274 2011/01/29 13:33:37 armin76 Exp $
+
+  29 Jan 2011; Raúl Porcel <armin76@gentoo.org> wireshark-1.4.3.ebuild:
+  alpha/ia64/sparc stable wrt #350551
+
+  24 Jan 2011; Jeroen Roovers <jer@gentoo.org> wireshark-1.4.3.ebuild:
+  Stable for HPPA (bug #350551).
+
+  23 Jan 2011; Peter Volkov <pva@gentoo.org> -wireshark-1.2.12.ebuild,
+  -wireshark-1.4.2.ebuild, wireshark-1.4.3.ebuild:
+  Drop old. Fixed warning reported in bug #350551 by Kacper Kowalik
+  (Xarthisius).
+
+  23 Jan 2011; Peter Volkov <pva@gentoo.org> wireshark-1.4.3.ebuild:
+  Fixed build issue, bug #349231 again. Thank Nathan Caldwell again...
+
+  22 Jan 2011; Christian Faulhammer <fauli@gentoo.org>
+  wireshark-1.4.3.ebuild:
+  stable x86, security bug 350551
+
+  22 Jan 2011; Markos Chandras <hwoarang@gentoo.org> wireshark-1.4.3.ebuild:
+  Stable on amd64 wrt bug #350551
+
+  22 Jan 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  wireshark-1.4.3.ebuild:
+  ppc/ppc64 stable wrt 350551
+
+*wireshark-1.4.3 (22 Jan 2011)
+
+  22 Jan 2011; Peter Volkov <pva@gentoo.org> +wireshark-1.4.3.ebuild:
+  Version bump, fixes multiple vulnerabilities bug #350551, thank Stefan
+  Behte for report.
+
+  27 Dec 2010; Brent Baude <ranger@gentoo.org> wireshark-1.2.13.ebuild:
+  Marking wireshark-1.2.13 ppc64 for bug 346191
+
+  21 Dec 2010; Peter Volkov <pva@gentoo.org> wireshark-1.4.2.ebuild:
+  Fixed build issue, bug #349231, thank Nathan Caldwell for report and Rafał
+  Mużyło for preliminary investigations.
+
+  05 Dec 2010; Raúl Porcel <armin76@gentoo.org> wireshark-1.4.2.ebuild:
+  Add ~alpha/~ia64/~sparc wrt #347259
+
+  30 Nov 2010; Peter Volkov <pva@gentoo.org> wireshark-1.4.2.ebuild:
+  Depend on x11-misc/xdg-utils only if gtk gui is built, bug #347325, thank
+  Guillaume Castagnino for report.
+
+  30 Nov 2010; Jeroen Roovers <jer@gentoo.org> wireshark-1.4.2.ebuild:
+  Spelling, grammar.
+
+  30 Nov 2010; Jeroen Roovers <jer@gentoo.org> wireshark-1.4.2.ebuild:
+  Marked ~hppa (bug #347259).
+
+*wireshark-1.4.2 (30 Nov 2010)
+
+  30 Nov 2010; Peter Volkov <pva@gentoo.org> -wireshark-1.4.0_rc2.ebuild,
+  +wireshark-1.4.2.ebuild:
+  Version bump, #346529 wrt Mike Auty.
+
+  27 Nov 2010; Raúl Porcel <armin76@gentoo.org> wireshark-1.2.13.ebuild:
+  alpha/ia64/sparc stable wrt #346191
+
+  26 Nov 2010; Christian Faulhammer <fauli@gentoo.org>
+  wireshark-1.2.13.ebuild:
+  stable x86, security bug 346191
+
+  26 Nov 2010; Markos Chandras <hwoarang@gentoo.org> wireshark-1.2.13.ebuild:
+  Stable on amd64 wrt bug #346191
+
+  25 Nov 2010; Jeroen Roovers <jer@gentoo.org> wireshark-1.2.13.ebuild:
+  Stable for HPPA PPC (bug #346191).
+
+*wireshark-1.2.13 (25 Nov 2010)
+
+  25 Nov 2010; Peter Volkov <pva@gentoo.org> -wireshark-1.2.10.ebuild,
+  -wireshark-1.2.11.ebuild, +wireshark-1.2.13.ebuild:
+  Version bump, fixes buffer overflow vulnerability, bug #346191, thank Tim
+  Sammut for report.
 
   25 Oct 2010; Mark Loeser <halcy0n@gentoo.org> wireshark-1.2.12.ebuild:
   Stable for ppc64; bug #339401

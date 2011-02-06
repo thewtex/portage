@@ -1,6 +1,49 @@
 # ChangeLog for app-portage/gentoolkit
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-portage/gentoolkit/ChangeLog,v 1.199 2010/11/19 20:24:24 fuzzyray Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-portage/gentoolkit/ChangeLog,v 1.207 2011/02/04 18:59:54 fuzzyray Exp $
+
+  04 Feb 2011; Paul Varner <fuzzyray@gentoo.org> gentoolkit-9999.ebuild:
+  Completely remove revdep-rebuild for prefix users that are not running on AIX
+  (Bug 353654). Remove redundant chown and chmod of /var/cache/revdep-rebuild
+  in pkg_postinst(). Import Gentoo Prefix changes and bump to EAPI 3.
+
+  04 Feb 2011; Paul Varner <fuzzyray@gentoo.org>
+  gentoolkit-0.3.0_rc11-r3.ebuild:
+  Completely remove revdep-rebuild for prefix users that are not running on AIX
+  (Bug 353654). Remove redundant chown and chmod of /var/cache/revdep-rebuild
+  in pkg_postinst().
+
+  10 Jan 2011; Paul Varner <fuzzyray@gentoo.org>
+  gentoolkit-0.2.4.6.1-r1.ebuild:
+  Adjust the gentoolkit-0.2.4.6.1-r1.ebuild to only use python2. This fixes bug
+  350979 which occurs when python is set to python3.
+
+  27 Dec 2010; Christian Ruppert <idl0r@gentoo.org> gentoolkit-9999.ebuild:
+  Update the live ebuild to use git from now on.
+
+  26 Dec 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  gentoolkit-0.3.0_rc10-r1.ebuild, gentoolkit-0.3.0_rc11-r3.ebuild,
+  gentoolkit-9999.ebuild:
+  DISTUTILS_DISABLE_VERSIONING_OF_PYTHON_SCRIPTS -> PYTHON_NONVERSIONED_EXECUTABLES.
+
+  03 Dec 2010; Jeremy Olexa <darkside@gentoo.org>
+  gentoolkit-0.3.0_rc11-r3.ebuild:
+  Add ~amd64-linux, not sure how/why it was missed earlier by me
+
+*gentoolkit-0.3.0_rc11-r3 (24 Nov 2010)
+
+  24 Nov 2010; Paul Varner <fuzzyray@gentoo.org> +files/0.3.0_rc11-euse.patch,
+  +files/0.3.0_rc11-euse_prefix.patch, -gentoolkit-0.3.0_rc11-r2.ebuild,
+  +gentoolkit-0.3.0_rc11-r3.ebuild:
+  Update euse to look for portage config files in new as well as old paths -
+  bug 346519. Make euse prefix aware
+
+*gentoolkit-0.3.0_rc11-r2 (22 Nov 2010)
+
+  22 Nov 2010; Paul Varner <fuzzyray@gentoo.org>
+  +files/0.3.0_rc11-cpv.py.patch, -gentoolkit-0.3.0_rc11-r1.ebuild,
+  +gentoolkit-0.3.0_rc11-r2.ebuild:
+  Revision bump: Fix cpv.py to handle prefix ebuild inter-revisions. Bug 313295
 
   19 Nov 2010; Paul Varner <fuzzyray@gentoo.org>
   +files/0.3.0_rc11-setup.py.patch, gentoolkit-0.3.0_rc11-r1.ebuild:

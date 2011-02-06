@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-fs/samba/samba-3.5.6.ebuild,v 1.2 2010/11/05 15:24:44 scarabeus Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-fs/samba/samba-3.5.6.ebuild,v 1.5 2011/01/28 15:23:12 vostorga Exp $
 
 EAPI="2"
 
@@ -23,6 +23,7 @@ DEPEND="dev-libs/popt
 	!net-fs/samba-client
 	!net-fs/samba-libs
 	!net-fs/samba-server
+	!net-fs/cifs-utils
 	sys-libs/talloc
 	sys-libs/tdb
 	virtual/libiconv
@@ -86,9 +87,9 @@ pkg_setup() {
 
 	if use winbind ; then
 		BINPROGS="${BINPROGS} bin/wbinfo"
-		SHAREDMODS="${SHAREDMODS}idmap_rid"
+		SHAREDMODS="${SHAREDMODS}idmap_rid,idmap_hash"
 		use ads && SHAREDMODS="${SHAREDMODS},idmap_ad"
-		use ldap && SHAREDMODS="${SHAREDMODS},idmap_ldap"
+		use ldap && SHAREDMODS="${SHAREDMODS},idmap_ldap,idmap_adex"
 	fi
 
 	if use winbind &&
@@ -112,6 +113,8 @@ src_prepare() {
 	sed -i \
 		-e 's|LDSHFLAGS="|LDSHFLAGS="\\${LDFLAGS} |g' \
 		configure || die "sed failed"
+
+	epatch "${CONFDIR}"/${P}-kerberos-dummy.patch
 }
 
 src_configure() {
@@ -288,6 +291,16 @@ src_install() {
 		dosym libnss_wins.so /usr/$(get_libdir)/libnss_wins.so.2
 		dolib.so ../nsswitch/libnss_winbind.so
 		dosym libnss_winbind.so /usr/$(get_libdir)/libnss_winbind.so.2
+		einfo "install libwbclient related manpages"
+		doman ../docs/manpages/idmap_rid.8
+		doman ../docs/manpages/idmap_hash.8
+		if use ldap ; then
+			doman ../docs/manpages/idmap_adex.8
+			doman ../docs/manpages/idmap_ldap.8
+		fi
+		if use ads ; then
+			doman ../docs/manpages/idmap_ad.8
+		fi
 	fi
 
 	# install binaries

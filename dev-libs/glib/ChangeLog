@@ -1,6 +1,117 @@
 # ChangeLog for dev-libs/glib
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/glib/ChangeLog,v 1.421 2010/09/08 20:41:23 eva Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/glib/ChangeLog,v 1.442 2011/02/04 00:10:58 eva Exp $
+
+*glib-2.27.93 (04 Feb 2011)
+
+  04 Feb 2011; Gilles Dartiguelongue <eva@gentoo.org> +glib-2.27.93.ebuild:
+  Version bump for early new glib testing.
+
+  03 Feb 2011; Pacho Ramos <pacho@gentoo.org> glib-2.26.1-r1.ebuild:
+  Disable dtrace and systemtap supports until bug #351931 is solved instead of
+  letting them be automagic.
+
+  30 Jan 2011; Raúl Porcel <armin76@gentoo.org> glib-2.24.2.ebuild:
+  alpha/arm/ia64/m68k/s390/sh/sparc stable wrt #348987
+
+  25 Jan 2011; Jeroen Roovers <jer@gentoo.org> glib-2.24.2.ebuild:
+  Stable for HPPA (bug #348987).
+
+  24 Jan 2011; Pacho Ramos <pacho@gentoo.org> glib-2.26.1-r1.ebuild,
+  +files/glib-2.26.1-gatomic-header.patch,
+  +files/glib-2.26.1-gdatetime-test.patch:
+  Add openbsd patch to fix build on several arches (bug #351387 by Alan
+  Hourihane and Raúl Porcel) once I confirmed it doesn't cause any test
+  failure regression. Remove test that seems to fail depending on time of day
+  as done by upstream (was causing one of the failures in bug #352451) and
+  unset GSETTINGS_BACKEND (bug #352451) until upstream takes care (upstream bug
+  #640412).
+
+  19 Jan 2011; Markos Chandras <hwoarang@gentoo.org> glib-2.24.2.ebuild:
+  Stable on amd64 wrt bug #348987
+
+  18 Jan 2011; Christian Faulhammer <fauli@gentoo.org> glib-2.24.2.ebuild:
+  stable x86, bug 348987
+
+*glib-2.26.1-r1 (17 Jan 2011)
+
+  17 Jan 2011; Pacho Ramos <pacho@gentoo.org> -glib-2.26.0-r1.ebuild,
+  -files/glib-2.26.0-error-pileup.patch, -files/glib-2.26.0-not-close.patch,
+  -files/glib-2.26.0-unref-null.patch, +glib-2.26.1-r1.ebuild,
+  +files/glib-2.26.1-deprecation-tests.patch,
+  +files/glib-2.26.1-gdbus-flushes.patch,
+  +files/glib-2.26.1-gsettings-read.patch,
+  +files/glib-2.26.1-gsettings-rules.patch,
+  +files/glib-2.26.1-locked-message.patch:
+  Revision bump to include upstream patches from 2.32 branch and fix
+  gsettings.m4 rules to work when there are no schemas, bug #350020. Remove old
+  testing.
+
+  11 Jan 2011; Pacho Ramos <pacho@gentoo.org> glib-2.26.1.ebuild:
+  Inform users about possible breakage when updating glib and not dbus-glib,
+  bug #297483.
+
+  16 Dec 2010; Fabian Groffen <grobian@gentoo.org> glib-2.26.1.ebuild:
+  Do not use ED with DESTDIR
+
+  07 Dec 2010; Gilles Dartiguelongue <eva@gentoo.org>
+  -files/glib-2.6.3-testglib-ssp.patch, -glib-2.20.5-r1.ebuild,
+  -glib-2.22.4.ebuild, -files/glib2-CVE-2008-4316.patch,
+  -files/glib2-CVE-2009-3289.patch:
+  Clean up old revisions.
+
+*glib-2.26.1 (04 Dec 2010)
+
+  04 Dec 2010; Pacho Ramos <pacho@gentoo.org> -glib-2.25.17.ebuild,
+  +glib-2.26.1.ebuild:
+  Version bump with bugfixes and translation updates, remove old and skip tests
+  building when unneeded.
+
+*glib-2.26.0-r1 (17 Oct 2010)
+
+  17 Oct 2010; Pacho Ramos <pacho@gentoo.org> -glib-2.26.0.ebuild,
+  +glib-2.26.0-r1.ebuild, +files/glib-2.26.0-error-pileup.patch,
+  +files/glib-2.26.0-not-close.patch, +files/glib-2.26.0-unref-null.patch:
+  Revision bump to include one important upstream fix to prevent evince
+  crash at startup, also fix test and prevent error pileup. Remove previous
+  broken version.
+
+  17 Oct 2010; Raúl Porcel <armin76@gentoo.org> glib-2.24.1-r1.ebuild:
+  alpha/ia64/m68k/s390/sh/sparc stable wrt #324077
+
+  14 Oct 2010; Markus Meier <maekke@gentoo.org> glib-2.24.1-r1.ebuild:
+  arm stable, bug #324077
+
+  07 Oct 2010; Samuli Suominen <ssuominen@gentoo.org> glib-2.24.1-r1.ebuild:
+  ppc64 stable wrt #324077
+
+  06 Oct 2010; Gilles Dartiguelongue <eva@gentoo.org> glib-2.24.2.ebuild,
+  glib-2.26.0.ebuild,
+  +files/glib-2.26.0-disable-locale-sensitive-test.patch,
+  +files/glib-2.26.0-disable-volumemonitor-broken-test.patch:
+  Fix testsuite failure on hardened, bug #338891. Disable visibility with
+  USE=debug, bug #274647. Disable 3 tests in the 2.26 testsuite to allow a
+  successful run and sync the ebuild back with latest changes in 2.24.
+
+*glib-2.26.0 (28 Sep 2010)
+
+  28 Sep 2010; <nirbheek@gentoo.org> +glib-2.26.0.ebuild:
+  Bump to 2.26.0, stable release with various bug fixes
+
+  25 Sep 2010; <nirbheek@gentoo.org> glib-2.25.17.ebuild:
+  Drop patch that is no longer used for in-tree 2.24 ebuilds. Syncing error
+  pointed out by eva
+
+*glib-2.25.17 (25 Sep 2010)
+
+  25 Sep 2010; <nirbheek@gentoo.org> +glib-2.25.17.ebuild,
+  +files/glib-2.25-punt-python-check.patch,
+  +files/glib-2.25-skip-tests-with-dbus-keyring.patch, metadata.xml:
+  Bump to 2.25.17, needed for gdk-pixbuf-2.22 and gtk+-2.22. Stable release
+  will be made within the next week.
+
+  11 Sep 2010; Joseph Jezak <josejx@gentoo.org> glib-2.24.1-r1.ebuild:
+  Marked ppc for bug #324077.
 
   08 Sep 2010; Gilles Dartiguelongue <eva@gentoo.org> glib-2.20.5-r1.ebuild,
   glib-2.22.4.ebuild, glib-2.22.5.ebuild, glib-2.24.1-r1.ebuild,

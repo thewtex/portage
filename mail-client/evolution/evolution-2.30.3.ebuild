@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/evolution/evolution-2.30.3.ebuild,v 1.3 2010/11/14 22:43:27 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-client/evolution/evolution-2.30.3.ebuild,v 1.9 2011/01/30 19:38:03 armin76 Exp $
 
 EAPI="2"
 GCONF_DEBUG="no"
@@ -12,8 +12,8 @@ HOMEPAGE="http://www.gnome.org/projects/evolution/"
 
 LICENSE="GPL-2 LGPL-2 OPENLDAP"
 SLOT="2.0"
-KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
-IUSE="crypt doc gstreamer kerberos ldap networkmanager nntp pda profile python ssl"
+KEYWORDS="alpha amd64 ia64 ~ppc ~ppc64 sparc x86 ~x86-fbsd"
+IUSE="crypt doc gstreamer kerberos ldap networkmanager nntp pda python ssl"
 # pst
 # mono - disabled because it just crashes on startup :S
 
@@ -27,13 +27,14 @@ RDEPEND=">=dev-libs/glib-2.22
 	>=gnome-extra/evolution-data-server-$(get_version_component_range 1-2)[weather]
 	>=gnome-base/gnome-desktop-2.26
 	>=gnome-extra/gtkhtml-3.29.6
+	<gnome-extra/gtkhtml-3.31
 	>=gnome-base/gconf-2
 	>=gnome-base/libgnomecanvas-2
 	dev-libs/atk
 	>=dev-libs/dbus-glib-0.74
 	>=dev-libs/libunique-1.1.2
 	>=dev-libs/libxml2-2.7.3
-	>=dev-libs/libgweather-2.25.3
+	>=dev-libs/libgweather-2.25.3:2
 	>=net-libs/libsoup-2.4
 	>=media-gfx/gtkimageview-1.6
 	media-libs/libcanberra[gtk]
@@ -90,9 +91,9 @@ pkg_setup() {
 		$(use_enable networkmanager nm)
 		$(use_enable nntp)
 		$(use_enable gstreamer audio-inline)
-		--disable-pst-import
 		$(use_enable pda pilot-conduits)
-		$(use_enable profile profiling)
+		--disable-profiling
+		--disable-pst-import
 		$(use_enable python)
 		$(use_with ldap openldap)
 		$(use_with kerberos krb5 /usr)

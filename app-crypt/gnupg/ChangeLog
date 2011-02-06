@@ -1,6 +1,51 @@
 # ChangeLog for app-crypt/gnupg
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/gnupg/ChangeLog,v 1.394 2010/10/19 05:35:30 robbat2 Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/gnupg/ChangeLog,v 1.405 2011/01/16 19:54:18 arfrever Exp $
+
+  16 Jan 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  gnupg-2.0.17.ebuild:
+  Fix dependencies.
+
+  16 Jan 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  gnupg-2.0.17.ebuild:
+  Fix installation (bug #351831).
+
+*gnupg-2.0.17 (14 Jan 2011)
+
+  14 Jan 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -gnupg-1.4.10.ebuild, -gnupg-1.4.10-r1.ebuild,
+  -files/gnupg-2.0.12-adns.patch, -gnupg-2.0.16.ebuild, +gnupg-2.0.17.ebuild:
+  Version bump.
+
+  06 Jan 2011; Raúl Porcel <armin76@gentoo.org> gnupg-1.4.11.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #348093
+
+  28 Dec 2010; Brent Baude <ranger@gentoo.org> gnupg-1.4.11.ebuild:
+  stable ppc64, bug 348093
+
+  15 Dec 2010; Markus Meier <maekke@gentoo.org> gnupg-1.4.11.ebuild:
+  arm stable, bug #348093
+
+  10 Dec 2010; Markos Chandras <hwoarang@gentoo.org> gnupg-1.4.11.ebuild:
+  Stable on amd64 wrt bug #348093
+
+  10 Dec 2010; Jeroen Roovers <jer@gentoo.org> gnupg-1.4.11.ebuild:
+  Stable for HPPA (bug #348093).
+
+  10 Dec 2010; Jeroen Roovers <jer@gentoo.org> gnupg-1.4.11.ebuild:
+  Stable for PPC (bug #348093).
+
+  09 Dec 2010; Dane Smith <c1pher@gentoo.org> gnupg-1.4.11.ebuild:
+  Stable x86 wrt bug 348093.
+
+  09 Dec 2010; Dane Smith <c1pher@gentoo.org> gnupg-1.4.11.ebuild:
+  *Removed $(use_enable) static. No longer used upstream wrt bug 348200.
+  *Changed --disable-capabilities to --without-capabilities wrt bug 348200.
+  *Added some missing || die.
+  Not revbumping. --with-capabilites defaults to without so all current
+  installs
+  will be without. $(use_enable static) is gone completely so it also
+  won't change any current install.
 
   19 Oct 2010; Robin H. Johnson <robbat2@gentoo.org> -gnupg-2.0.11.ebuild,
   -gnupg-2.0.12.ebuild, -gnupg-2.0.13.ebuild, -gnupg-2.0.14.ebuild,

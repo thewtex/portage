@@ -1,6 +1,34 @@
 # ChangeLog for sci-libs/fftw
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/fftw/ChangeLog,v 1.105 2010/11/03 07:02:32 jer Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/fftw/ChangeLog,v 1.112 2011/01/29 16:55:50 armin76 Exp $
+
+  29 Jan 2011; Raúl Porcel <armin76@gentoo.org> fftw-2.1.5-r8.ebuild:
+  alpha/ia64/s390/sparc stable wrt #351745
+
+  18 Jan 2011; Jeroen Roovers <jer@gentoo.org> fftw-2.1.5-r8.ebuild:
+  Stable for HPPA (bug #351745).
+
+  16 Jan 2011; Thomas Kahle <tomka@gentoo.org> fftw-2.1.5-r8.ebuild:
+  x86 stable per bug 351745
+
+*fftw-2.1.5-r8 (15 Jan 2011)
+
+  15 Jan 2011; Justin Lecher <jlec@gentoo.org> -fftw-2.1.5-r7.ebuild,
+  +fftw-2.1.5-r8.ebuild:
+  Revert changes in src_configure, #351786
+
+  15 Jan 2011; Markos Chandras <hwoarang@gentoo.org> fftw-2.1.5-r7.ebuild:
+  Stable on amd64 wrt bug #351745
+
+  15 Jan 2011; Justin Lecher <jlec@gentoo.org> fftw-2.1.5-r5.ebuild,
+  -fftw-2.1.5-r6.ebuild, fftw-2.1.5-r7.ebuild:
+  Removed old, restructured double building, fixed openmp check, #340469
+
+*fftw-3.2.2-r1 (02 Dec 2010)
+
+  02 Dec 2010; Justin Lecher <jlec@gentoo.org> +fftw-3.2.2-r1.ebuild,
+  +files/fftw-3.2.2-pc-threads.patch:
+  Install pc files for threads
 
 *fftw-2.1.5-r7 (03 Nov 2010)
 

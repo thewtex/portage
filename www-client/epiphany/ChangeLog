@@ -1,6 +1,29 @@
 # ChangeLog for www-client/epiphany
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/epiphany/ChangeLog,v 1.256 2010/10/17 15:38:14 armin76 Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-client/epiphany/ChangeLog,v 1.261 2011/01/30 19:12:36 armin76 Exp $
+
+  30 Jan 2011; Raúl Porcel <armin76@gentoo.org> epiphany-2.30.6.ebuild:
+  alpha/ia64/sparc stable wrt #348987
+
+  28 Jan 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  epiphany-2.30.6.ebuild:
+  Added ~ppc64 wrt #323857
+
+  19 Jan 2011; Markos Chandras <hwoarang@gentoo.org> epiphany-2.30.6.ebuild:
+  Stable on amd64 wrt bug #348987
+
+  18 Jan 2011; Christian Faulhammer <fauli@gentoo.org>
+  epiphany-2.30.6.ebuild:
+  x86 stable, bug 348987
+
+  23 Nov 2010; Gilles Dartiguelongue <eva@gentoo.org>
+  -files/epiphany-2.22.3-CVE-2008-5985.patch,
+  -files/epiphany-2.22.3-firefox2.0-header-fix.patch,
+  -files/epiphany-2.22.3-notify-crash-fix.patch, -epiphany-2.28.2.ebuild,
+  -epiphany-2.30.5.ebuild, epiphany-2.30.6.ebuild:
+  Add missing ca-certificates to RDEPEND, bug #344539. Pin some dependencies to
+  approriate slots. Use gnome2_src_compile instead of plain emake. Clean up old
+  revisions.
 
   17 Oct 2010; Raúl Porcel <armin76@gentoo.org> epiphany-2.30.2-r1.ebuild:
   alpha/ia64/sparc stable wrt #324077

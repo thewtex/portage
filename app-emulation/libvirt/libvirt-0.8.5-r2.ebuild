@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/libvirt/libvirt-0.8.5-r2.ebuild,v 1.1 2010/11/09 13:25:58 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/libvirt/libvirt-0.8.5-r2.ebuild,v 1.5 2011/02/02 19:25:07 cardoe Exp $
 
 BACKPORTS=2
 
@@ -20,7 +20,7 @@ SRC_URI="http://libvirt.org/sources/${P}.tar.gz
 		http://dev.gentoo.org/~cardoe/${PN}/${P}-backports-${BACKPORTS}.tar.bz2}"
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 IUSE="avahi caps debug iscsi +libvirtd lvm +lxc macvtap +network nfs nls \
 	numa openvz parted pcap phyp policykit python qemu sasl selinux
 	uml virtualbox xen udev +json"
@@ -51,7 +51,7 @@ RDEPEND="sys-libs/readline
 	qemu? ( || ( app-emulation/qemu-kvm >=app-emulation/qemu-0.10.0 app-emulation/qemu-kvm-spice ) )
 	sasl? ( dev-libs/cyrus-sasl )
 	selinux? ( >=sys-libs/libselinux-2.0.85 )
-	virtualbox? ( || ( >=app-emulation/virtualbox-ose-2.2.0 >=app-emulation/virtualbox-bin-2.2.0 ) )
+	virtualbox? ( || ( app-emulation/virtualbox >=app-emulation/virtualbox-bin-2.2.0 ) )
 	xen? ( app-emulation/xen-tools app-emulation/xen )
 	udev? ( >=sys-fs/udev-145 >=x11-libs/libpciaccess-0.10.9 )
 	json? ( dev-libs/yajl )"
@@ -221,7 +221,7 @@ pkg_postinst() {
 	elog "following packages":
 	elog
 	elog "	net-dns/dnsmasq"
-	elog "	>=net-firewall/iptables-1.4.9"
+	elog "	>=net-firewall/iptables-1.4.10"
 	elog "	net-firewall/ebtables"
 	elog
 	if has_version net-dns/dnsmasq; then

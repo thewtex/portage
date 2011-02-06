@@ -1,8 +1,10 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/facets/facets-2.8.4-r1.ebuild,v 1.1 2010/07/04 12:39:32 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/facets/facets-2.8.4-r1.ebuild,v 1.3 2011/01/25 15:10:29 hwoarang Exp $
 
 EAPI=2
+# ree18 -> test failure on hash ordering
+# jruby -> many failures and jruby crash
 USE_RUBY="ruby18"
 
 RUBY_FAKEGEM_EXTRADOC="AUTHORS HISTORY.rdoc NOTES README.rdoc demo/hook.rdoc demo/scenario_require.rdoc"
@@ -15,9 +17,11 @@ HOMEPAGE="http://facets.rubyforge.org/"
 
 LICENSE="Ruby"
 SLOT="0"
-KEYWORDS="~amd64 ~ia64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
+KEYWORDS="amd64 ~ia64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
 IUSE=""
 
 all_ruby_prepare() {
+	epatch "${FILESDIR}/${P}-fix-tests.patch"
+
 	mkdir -p doc/rdoc || die "Unable to make directory for documentation."
 }

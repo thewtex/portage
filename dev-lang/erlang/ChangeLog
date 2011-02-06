@@ -1,6 +1,38 @@
 # ChangeLog for dev-lang/erlang
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/erlang/ChangeLog,v 1.201 2010/11/11 13:44:58 fauli Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/erlang/ChangeLog,v 1.207 2011/01/18 15:44:20 fauli Exp $
+
+  18 Jan 2011; Christian Faulhammer <fauli@gentoo.org>
+  files/erlang-14.2.1-fortify.patch:
+  Update fix for FORTIFY_SOURCE failure on 64bit as taken from upstream
+
+  12 Jan 2011; Christian Faulhammer <fauli@gentoo.org> metadata.xml:
+  Dropping maintainership and handing over to djc
+
+  12 Jan 2011; Christian Faulhammer <fauli@gentoo.org> erlang-14.2.1.ebuild,
+  +files/erlang-14.2.1-fortify.patch:
+  Add fix from PLD Linux for buffer overflow detected by FORTIFY_SOURCE=2 in
+  on 64bit arches. Research done by Arkadiusz Miskiewicz <arekm AT pld-linux DOT
+  org> for bug 348559
+
+*erlang-14.2.1 (12 Dec 2010)
+
+  12 Dec 2010; Christian Faulhammer <fauli@gentoo.org>
+  +erlang-14.2.1.ebuild:
+  version bump for bug 348365 by Boris Faure <billiob AT gmail DOT com>
+
+  24 Nov 2010; Christian Faulhammer <fauli@gentoo.org>
+  erlang-14.2-r1.ebuild:
+  Remove warning for HiPE as it seems to be ok on hardened these days,
+  update some comments
+
+*erlang-14.2-r1 (24 Nov 2010)
+
+  24 Nov 2010; Christian Faulhammer <fauli@gentoo.org>
+  +erlang-14.2-r1.ebuild, +files/erlang-14.2-respect_LDFLAGS-wx.patch:
+  Fix runtime issues with --as-needed and wxWidgets interface as reported by
+  Andrian Nord <NightNord AT gmail DOT com> in bug 338664. With help by
+  dirtyepic.
 
   11 Nov 2010; <fauli@gentoo.org> erlang-14.2.ebuild:
   block app-accessibility/speech-dispatcher to avoid file collisions as

@@ -1,6 +1,40 @@
 # ChangeLog for net-misc/openssh
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/openssh/ChangeLog,v 1.393 2010/10/11 22:50:07 flameeyes Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/openssh/ChangeLog,v 1.402 2011/01/25 06:40:20 vapier Exp $
+
+*openssh-5.7_p1-r1 (25 Jan 2011)
+
+  25 Jan 2011; Mike Frysinger <vapier@gentoo.org> +openssh-5.7_p1-r1.ebuild,
+  +files/openssh-5.7_p1-x509-hpn-glue.patch:
+  Add x509/ldap/hpn support back in. Auto-remove ecdsa support from init.d if
+  openssl lacks support #352645 by William Throwe.
+
+*openssh-5.7_p1 (24 Jan 2011)
+
+  24 Jan 2011; Mike Frysinger <vapier@gentoo.org> +openssh-5.7_p1.ebuild,
+  +files/sshd.rc6.2:
+  Version bump.
+
+  10 Dec 2010; Robin H. Johnson <robbat2@gentoo.org> metadata.xml:
+  Update restrict in metadata per mgorny's request to use DEPEND syntax.
+
+  04 Dec 2010; Raúl Porcel <armin76@gentoo.org> openssh-5.6_p1-r2.ebuild:
+  alpha/ia64/m68k/s390/sh stable wrt #346395
+
+  29 Nov 2010; Brent Baude <ranger@gentoo.org> openssh-5.6_p1-r2.ebuild:
+  stable ppc64, bug 346395
+
+  27 Nov 2010; Michael Weber <xmw@gentoo.org> openssh-5.6_p1-r2.ebuild:
+  arm/sparc stable (bug 346395)
+
+  24 Nov 2010; Jeroen Roovers <jer@gentoo.org> openssh-5.6_p1-r2.ebuild:
+  Stable for HPPA PPC (bug #346395).
+
+  22 Nov 2010; Markos Chandras <hwoarang@gentoo.org> openssh-5.6_p1-r2.ebuild:
+  Stable on amd64 wrt bug #346395
+
+  22 Nov 2010; Thomas Kahle <tomka@gentoo.org> openssh-5.6_p1-r2.ebuild:
+  x86 stable per bug 346395
 
   11 Oct 2010; Diego E. Pettenò <flameeyes@gentoo.org>
   openssh-5.6_p1-r2.ebuild, +files/sshd.rc6.1:

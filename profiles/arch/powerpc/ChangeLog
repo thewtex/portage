@@ -1,6 +1,57 @@
 # ChangeLog for Gentoo/PPC profile directory
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/powerpc/ChangeLog,v 1.96 2010/11/14 20:15:54 aballier Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/powerpc/ChangeLog,v 1.110 2011/02/03 13:53:54 xarthisius Exp $
+
+  03 Feb 2011; Kacper Kowalik <xarthisius@gentoo.org> package.use.mask:
+  unmask kde-base/kdebindings-meta-4.6.0[java,ruby]
+
+  03 Feb 2011; Kacper Kowalik <xarthisius@gentoo.org> package.use.mask:
+  Mask java and ruby kdebinding wrt #280629 and #353538
+
+  26 Jan 2011; Kacper Kowalik <xarthisius@gentoo.org> package.use.mask:
+  Unmask >=net-libs/telepathy-glib-0.12[vala] since
+  dev-libs/gobject-introspection is keyworded
+
+  26 Jan 2011; Alexey Shvetsov <alexxy@gentoo.org> ppc64/package.use.mask:
+  Mask marble with gps
+
+  25 Jan 2011; Joseph Jezak <josejx@gentoo.org> package.use.mask:
+  Mask jit on qt-webkit.
+
+  22 Jan 2011; Zac Medico <zmedico@gentoo.org> ppc64/package.use.mask:
+  Unmask USE=python3 for sys-apps/portage since python-3.x has a stable ppc64
+  keyword now.
+
+  16 Jan 2011; Kacper Kowalik <xarthisius@gentoo.org> package.use.mask:
+  Add sci-chemistry/ccp4[arpwarp] wrt #303931
+
+  16 Jan 2011; Kacper Kowalik <xarthisius@gentoo.org> package.use.force,
+  package.use.mask:
+  Use package.use.force to set sci-chemistry/oasis[minimal] wrt #303931,
+  correct package.use.mask
+
+  16 Jan 2011; Kacper Kowalik <xarthisius@gentoo.org> package.use.mask:
+  Add sci-chemistry/oasis[-minimal] wrt #303931
+
+  16 Jan 2011; Kacper Kowalik <xarthisius@gentoo.org> package.use.mask:
+  Mask sci-biology/fasta[icc] since there is no icc for PPC
+
+  06 Jan 2011; Joseph Jezak <josejx@gentoo.org> package.mask:
+  Unmasked KDE again, the deps have been marked.
+
+  09 Dec 2010; <nirbheek@gentoo.org> package.use.mask:
+  Mask USE=vala on >=net-libs/telepathy-glib-0.12 because
+  dev-libs/gobject-introspection is not keyworded, bug 348313
+
+  09 Dec 2010; <nirbheek@gentoo.org> package.use.mask:
+  net-misc/connman is not keyworded, bug 348308
+
+  28 Nov 2010; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  ppc32/package.use.mask:
+  Unmask mesa's llvm flag
+
+  21 Nov 2010; Tomas Touceda <chiiph@gentoo.org> package.use.mask:
+  Mask x11-libs/qt-script[jit] wrt bug 346167
 
   14 Nov 2010; Alexis Ballier <aballier@gentoo.org> package.use.mask:
   Mask app-i18n/canna[doc], app-text/ptex does not build and ptex is

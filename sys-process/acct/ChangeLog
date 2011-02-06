@@ -1,6 +1,32 @@
 # ChangeLog for sys-process/acct
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-process/acct/ChangeLog,v 1.40 2010/11/15 15:00:59 jer Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-process/acct/ChangeLog,v 1.47 2011/01/26 05:36:22 jer Exp $
+
+*acct-6.5.5-r1 (26 Jan 2011)
+
+  26 Jan 2011; Jeroen Roovers <jer@gentoo.org> +acct-6.5.5-r1.ebuild,
+  +files/acct.initd-r1, +files/acct.logrotate-r1, files/acct.initd,
+  files/acct.logrotate:
+  Make logrotate script compatible with both baselayout 1 and 2, by Eugeny
+  Shkrigunov (bug #351428), patches by Robert Trace.
+
+  23 Jan 2011; Raúl Porcel <armin76@gentoo.org> acct-6.5.5.ebuild:
+  alpha stable wrt #350050
+
+  12 Jan 2011; Jeroen Roovers <jer@gentoo.org> acct-6.5.5.ebuild:
+  Stable for HPPA (bug #350050).
+
+  07 Jan 2011; Brent Baude <ranger@gentoo.org> acct-6.5.5.ebuild:
+  stable ppc, bug 350050
+
+  02 Jan 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> acct-6.5.5.ebuild:
+  x86 stable wrt bug #350050
+
+  01 Jan 2011; Markos Chandras <hwoarang@gentoo.org> acct-6.5.5.ebuild:
+  Stable on amd64 wrt bug #350050
+
+  05 Dec 2010; Raúl Porcel <armin76@gentoo.org> acct-6.5.4-r2.ebuild:
+  alpha stable wrt #323105
 
   15 Nov 2010; Jeroen Roovers <jer@gentoo.org> files/acct.logrotate:
   Whitespace.

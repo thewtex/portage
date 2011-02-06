@@ -1,6 +1,31 @@
 # ChangeLog for app-backup/amanda
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-backup/amanda/ChangeLog,v 1.71 2010/10/27 14:03:09 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-backup/amanda/ChangeLog,v 1.78 2010/12/29 16:29:58 idl0r Exp $
+
+  29 Dec 2010; Christian Ruppert <idl0r@gentoo.org> amanda-3.2.1.ebuild:
+  Move elog block regarding the AMANDA_SERVER environment variable into
+  pkg_setup. Install the sample cronjob only on non-minimal setups. Remove the
+  --without-krb4-security option since it's no longer valid.
+
+  28 Dec 2010; Christian Ruppert <idl0r@gentoo.org> amanda-3.2.1.ebuild:
+  Fix libcurl dependency again.
+
+  28 Dec 2010; Christian Ruppert <idl0r@gentoo.org> amanda-3.2.1.ebuild:
+  Make curl and readline optional.
+
+  28 Dec 2010; Christian Ruppert <idl0r@gentoo.org> amanda-3.2.1.ebuild:
+  Fix amandahomedir in amaddclient and amserverconfig to use /var/spool/amanda
+  instead of /var/spool/amanda/lib/amanda.
+
+*amanda-3.2.1 (19 Dec 2010)
+
+  19 Dec 2010; Robin H. Johnson <robbat2@gentoo.org> +amanda-3.2.1.ebuild:
+  Version bump.
+
+*amanda-3.2.0 (07 Dec 2010)
+
+  07 Dec 2010; Robin H. Johnson <robbat2@gentoo.org> +amanda-3.2.0.ebuild:
+  Bug #344317: version bump.
 
   27 Oct 2010; Samuli Suominen <ssuominen@gentoo.org>
   amanda-2.6.0_p2-r4.ebuild, +files/amanda-2.6.0_p2-coreutils.patch:

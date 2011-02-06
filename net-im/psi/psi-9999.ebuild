@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/psi/psi-9999.ebuild,v 1.8 2010/11/16 20:15:46 pva Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-im/psi/psi-9999.ebuild,v 1.10 2010/11/30 19:24:56 pva Exp $
 
 EAPI="2"
 
@@ -11,7 +11,7 @@ EGIT_HAS_SUBMODULES=1
 LANGS_URI="git://pv.et-inf.fho-emden.de/git/psi-l10n"
 
 ESVN_DISABLE_DEPENDENCIES="true"
-ESVN_REPO_URI="http://psi-dev.googlecode.com/svn/trunk"
+ESVN_REPO_URI="http://psi-dev.googlecode.com/svn/trunk/patches"
 ESVN_PROJECT="psiplus"
 
 inherit eutils qt4-r2 multilib git subversion
@@ -21,10 +21,11 @@ HOMEPAGE="http://psi-im.org/"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="crypt dbus doc enchant extras jingle iconsets spell ssl xscreensaver powersave
+IUSE="crypt dbus debug doc enchant extras jingle iconsets spell ssl xscreensaver powersave
 plugins -whiteboarding webkit"
 
-RDEPEND=">=x11-libs/qt-gui-4.4:4[qt3support,dbus?]
+RDEPEND="
+	>=x11-libs/qt-gui-4.4:4[qt3support,dbus?]
 	>=x11-libs/qt-qt3support-4.4:4
 	>=app-crypt/qca-2.0.2:2
 	whiteboarding? ( x11-libs/qt-svg:4 )
@@ -34,46 +35,47 @@ RDEPEND=">=x11-libs/qt-gui-4.4:4[qt3support,dbus?]
 	)
 	xscreensaver? ( x11-libs/libXScrnSaver )
 	extras? ( webkit? ( x11-libs/qt-webkit ) )
-	app-arch/unzip"
-
+	app-arch/unzip
+"
 DEPEND="${RDEPEND}
 	extras? (
 		${SUBVERSION_DEPEND}
 		sys-devel/qconf
 	)
-	doc? ( app-doc/doxygen )"
-
-PDEPEND="crypt? ( app-crypt/qca-gnupg:2 )
+	doc? ( app-doc/doxygen )
+	dev-util/pkgconfig
+"
+PDEPEND="
+	crypt? ( app-crypt/qca-gnupg:2 )
 	jingle? (
 		net-im/psimedia
 		app-crypt/qca-ossl:2
 	)
-	ssl? ( app-crypt/qca-ossl:2 )"
-
+	ssl? ( app-crypt/qca-ossl:2 )
+"
 RESTRICT="test"
 
 pkg_setup() {
-	for x in iconsets plugins powersave webkit whiteboarding;do
-	        use ${x} && use !extras && \
+	for x in iconsets plugins powersave webkit whiteboarding; do
+		use ${x} && use !extras && \
 			ewarn "USE=${x} is only available in Psi+ and requires USE=extras, ${x} will be disabled."
 	done
 
 	if use extras; then
-		ewarn
+		echo
 		ewarn "You're about to build heavily patched version of Psi called Psi+."
 		ewarn "It has really nice features but still is under heavy development."
 		ewarn "Take a look at homepage for more info: http://code.google.com/p/psi-dev"
 		ewarn "If you wish to disable some patches just put"
 		ewarn "MY_EPATCH_EXCLUDE=\"list of patches\""
 		ewarn "into /etc/portage/env/${CATEGORY}/${PN} file."
-		ewarn
+		echo
 		ewarn "Note: some patches depend on other. So if you disabled some patch"
 		ewarn "and other started to fail to apply, you'll have to disable patches"
 		ewarn "that fail too."
-		ebeep
 
 		if use iconsets; then
-			ewarn
+			echo
 			ewarn "Some artwork is from open source projects, but some is provided 'as-is'"
 			ewarn "and has not clear licensing."
 			ewarn "Possibly this build is not redistributable in some countries."
@@ -100,13 +102,13 @@ src_unpack() {
 	done
 
 	if use extras; then
-		S="${WORKDIR}/patches" subversion_fetch "${ESVN_REPO_URI}/patches"
+		S="${WORKDIR}/patches" subversion_fetch
 		if use iconsets; then
-			subversion_fetch "${ESVN_REPO_URI}/iconsets" "iconsets"
+			subversion_fetch "${ESVN_REPO_URI%patches}iconsets" "iconsets"
 		else
 			for x in activities affiliations clients moods roster system; do
-				ESVN_PROJECT="psiplus/${x}"
-				subversion_fetch "${ESVN_REPO_URI}/iconsets/${x}/default" "iconsets/${x}/default"
+				ESVN_PROJECT="psiplus/${x}" \
+				subversion_fetch "${ESVN_REPO_URI%patches}iconsets/${x}/default" "iconsets/${x}/default"
 			done
 		fi
 	fi
@@ -115,7 +117,7 @@ src_unpack() {
 src_prepare() {
 	if use extras; then
 		EPATCH_EXCLUDE="${MY_EPATCH_EXCLUDE}
-				" \
+		" \
 		EPATCH_SOURCE="${WORKDIR}/patches/" EPATCH_SUFFIX="diff" EPATCH_FORCE="yes" epatch
 
 		use powersave && epatch "${WORKDIR}/patches/dev/psi-reduce-power-consumption.patch"
@@ -141,23 +143,32 @@ src_prepare() {
 src_configure() {
 	# unable to use econf because of non-standard configure script
 	# disable growl as it is a MacOS X extension only
-	local confcmd="./configure
-			--prefix=/usr
-			--qtdir=/usr
-			--disable-bundled-qca
-			--disable-growl
-			$(use dbus || echo '--disable-qdbus')
-			$(use spell && {
-				use enchant && echo '--disable-aspell' || echo '--disable-enchant'
-				} || echo '--disable-aspell --disable-enchant')
-			$(use xscreensaver || echo '--disable-xss')
-			$(use extras && {
-				use plugins && echo '--enable-plugins'
-				use webkit && echo '--enable-webkit'
-				} )"
+	local myconf="
+		--prefix=/usr
+		--qtdir=/usr
+		--disable-bundled-qca
+		--disable-growl
+		--no-separate-debug-info
+	"
+	use dbus || myconf+=" --disable-qdbus"
+	use debug && myconf+=" --debug"
+	if use spell; then
+		if use enchant; then
+			myconf+=" --disable-aspell"
+		else
+			myconf+=" --disable-enchant"
+		fi
+	else
+		myconf+=" --disable-aspell --disable-enchant"
+	fi
+	use xscreensaver || myconf+=" --disable-xss"
+	if use extras; then
+		use plugins && myconf+=" --enable-plugins"
+		use webkit && myconf+=" --enable-webkit"
+	fi
 
-	echo "${confcmd}"
-	${confcmd} || die "configure failed"
+	einfo "./configure ${myconf}"
+	./configure ${myconf} || die "configure failed"
 
 	eqmake4
 }
@@ -174,9 +185,9 @@ src_compile() {
 
 src_install() {
 	emake INSTALL_ROOT="${D}" install || die "emake install failed"
-	rm -f "${D}"/usr/share/psi/{COPYING,README}
 
 	# this way the docs will be installed in the standard gentoo dir
+	rm -f "${D}"/usr/share/psi/{COPYING,README}
 	newdoc iconsets/roster/README README.roster || die
 	newdoc iconsets/system/README README.system || die
 	newdoc certs/README README.certs || die
@@ -193,8 +204,7 @@ src_install() {
 	fi
 
 	if use doc; then
-		cd doc
-		dohtml -r api || die "dohtml failed"
+		dohtml -r doc/api || die "dohtml failed"
 	fi
 
 	# install translations
@@ -204,7 +214,7 @@ src_install() {
 		if use linguas_${x}; then
 			lrelease "${x}/${PN}_${x}.ts" || die "lrelease ${x} failed"
 			doins "${x}/${PN}_${x}.qm" || die
-			newins "${x}/INFO" "INFO.${x}"
+			newins "${x}/INFO" "${PN}_${x}.INFO"
 		fi
 	done
 }

@@ -5,7 +5,7 @@
  #    include <sys/sockio.h>
  #  endif
 +#  ifdef __linux__
-+#    include <linux/if.h>
++/*#    include <linux/if.h> */
 +#    include <linux/netlink.h>
 +#    include <linux/rtnetlink.h>
 +/* Under Linux, we reopen socket in get_if_addr() every time */

@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/fltk/fltk-1.1.9-r1.ebuild,v 1.15 2010/11/08 12:50:02 nelchael Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/fltk/fltk-1.1.9-r1.ebuild,v 1.17 2011/01/19 19:10:16 jlec Exp $
 
 EAPI=2
 inherit eutils autotools versionator fdo-mime

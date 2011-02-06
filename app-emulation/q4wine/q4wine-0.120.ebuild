@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/q4wine/q4wine-0.120.ebuild,v 1.3 2010/11/01 20:51:31 hwoarang Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/q4wine/q4wine-0.120.ebuild,v 1.5 2010/12/30 19:25:50 hwoarang Exp $
 
 EAPI="2"
 inherit cmake-utils

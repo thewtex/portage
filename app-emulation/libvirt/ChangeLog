@@ -1,6 +1,55 @@
 # ChangeLog for app-emulation/libvirt
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/libvirt/ChangeLog,v 1.80 2010/11/09 13:25:58 flameeyes Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/libvirt/ChangeLog,v 1.90 2011/02/04 17:39:52 angelos Exp $
+
+  04 Feb 2011; <angelos@gentoo.org> libvirt-0.8.7.ebuild:
+  Stable on amd64 (bug #352277)
+
+  02 Feb 2011; Doug Goldstein <cardoe@gentoo.org> libvirt-0.8.5-r2.ebuild,
+  libvirt-0.8.6-r1.ebuild, libvirt-0.8.7.ebuild, libvirt-0.8.7-r1.ebuild:
+  Update iptables depend for the checksum-fill option that libvirt tries to
+  use. bug #334921
+
+*libvirt-0.8.7-r1 (27 Jan 2011)
+
+  27 Jan 2011; Doug Goldstein <cardoe@gentoo.org> +libvirt-0.8.7-r1.ebuild,
+  +files/libvirtd.confd-r2, +files/libvirtd.init-r2:
+  Add to the init script the shutting down of NATed networks created by libvirt
+  itself. This functionality was written by Jan Vansteenkiste <jan@vstone.eu>.
+  It complements the 'virt-network' USE flag.
+
+  21 Jan 2011; Doug Goldstein <cardoe@gentoo.org> libvirt-0.8.7.ebuild,
+  metadata.xml:
+  Add a USE flag called 'virt-network' that pulls in the depends for NATed
+  networks. This should make it easier for people to install and setup libvirt.
+
+  20 Jan 2011; Doug Goldstein <cardoe@gentoo.org> libvirt-0.8.7.ebuild:
+  Update elog message about optional depends for bug #351374
+
+  07 Jan 2011; Lars Wendler <polynomial-c@gentoo.org> libvirt-0.8.5-r2.ebuild,
+  libvirt-0.8.6-r1.ebuild, libvirt-0.8.7.ebuild:
+  app-emulation/virtualbox-ose was pkgmoved to app-emulation/virtualbox.
+
+  06 Jan 2011; Tiziano Müller <dev-zero@gentoo.org> +libvirt-0.8.5-r2.ebuild:
+  Resurrect libvirt-0.8.5-r2 (without keywords) for php-libvirt.
+
+*libvirt-0.8.7 (06 Jan 2011)
+
+  06 Jan 2011; Diego E. Pettenò <flameeyes@gentoo.org> +libvirt-0.8.7.ebuild:
+  Version bump; add a workaround for tests failing with sandbox enabled.
+
+*libvirt-0.8.6-r1 (13 Dec 2010)
+
+  13 Dec 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  -libvirt-0.8.5-r2.ebuild, -libvirt-0.8.6.ebuild, +libvirt-0.8.6-r1.ebuild:
+  Fix build with USE=pcap; thanks to Alexander E. Patrakov in bug #348489 for
+  reporting.
+
+*libvirt-0.8.6 (01 Dec 2010)
+
+  01 Dec 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  -libvirt-0.8.5-r1.ebuild, +libvirt-0.8.6.ebuild:
+  Version bump, backports from day one, since the release is broken upstream.
 
 *libvirt-0.8.5-r2 (09 Nov 2010)
 

@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/emacs-vcs/emacs-vcs-24.0.9999.ebuild,v 1.20 2010/11/07 22:19:08 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-editors/emacs-vcs/emacs-vcs-24.0.9999.ebuild,v 1.24 2011/01/31 21:19:35 ulm Exp $
 
 EAPI=2
 
@@ -91,8 +91,8 @@ pkg_setup() {
 
 src_prepare() {
 	if [ "${PV##*.}" = "9999" ]; then
-		FULL_VERSION=$(grep 'const char emacs_version' src/emacs.c \
-			| sed -e 's/^[^"]*"\([^"]*\)".*$/\1/')
+		FULL_VERSION=$(sed -n 's/^AC_INIT(emacs,[ \t]*\([^ \t,)]*\).*/\1/p' \
+			configure.in)
 		[ "${FULL_VERSION}" ] || die "Cannot determine current Emacs version"
 		echo
 		einfo "Emacs branch: ${EMACS_BRANCH}"
@@ -103,11 +103,6 @@ src_prepare() {
 	#else
 	#	EPATCH_SUFFIX=patch epatch
 	fi
-
-	sed -i \
-		-e "s:/usr/lib/crtbegin.o:$(`tc-getCC` -print-file-name=crtbegin.o):g" \
-		-e "s:/usr/lib/crtend.o:$(`tc-getCC` -print-file-name=crtend.o):g" \
-		"${S}"/src/s/freebsd.h || die "unable to sed freebsd.h settings"
 
 	if ! use alsa; then
 		# ALSA is detected even if not requested by its USE flag.
@@ -123,7 +118,7 @@ src_prepare() {
 			|| die "unable to sed configure.in"
 	fi
 
-	eautoreconf
+	AT_M4DIR=m4 eautoreconf
 }
 
 src_configure() {
@@ -206,6 +201,7 @@ src_configure() {
 		--program-suffix=-${EMACS_SUFFIX} \
 		--infodir=/usr/share/info/${EMACS_SUFFIX} \
 		--with-crt-dir=/usr/$(get_libdir) \
+		--with-gameuser="${GAMES_USER_DED:-games}" \
 		--without-compress-info \
 		${myconf} || die "econf emacs failed"
 }
@@ -302,7 +298,7 @@ pkg_postinst() {
 	for f in "${ROOT}"/var/lib/games/emacs/{snake,tetris}-scores; do
 		[ -e "${f}" ] || touch "${f}"
 	done
-	chown games:games "${ROOT}"/var/lib/games/emacs
+	chown "${GAMES_USER_DED:-games}" "${ROOT}"/var/lib/games/emacs
 
 	elisp-site-regen
 	eselect emacs update ifunset

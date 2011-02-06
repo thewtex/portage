@@ -1,6 +1,42 @@
 # ChangeLog for media-sound/lastfmplayer
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/lastfmplayer/ChangeLog,v 1.55 2010/10/26 20:55:12 hwoarang Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/lastfmplayer/ChangeLog,v 1.61 2011/01/25 12:39:06 fauli Exp $
+
+  25 Jan 2011; Christian Faulhammer <fauli@gentoo.org>
+  lastfmplayer-1.5.4.26862-r3.ebuild:
+  stable x86, security bug 352608
+
+  24 Jan 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  lastfmplayer-1.5.4.26862-r3.ebuild:
+  ppc stable wrt #352608
+
+  24 Jan 2011; Markos Chandras <hwoarang@gentoo.org>
+  lastfmplayer-1.5.4.26862-r3.ebuild:
+  Stable on amd64 wrt bug #352608
+
+*lastfmplayer-1.5.4.27091-r1 (24 Jan 2011)
+
+  24 Jan 2011; Markos Chandras <hwoarang@gentoo.org>
+  +lastfmplayer-1.5.4.27091-r1.ebuild,
+  +files/lastfmplayer-extensions-path.patch:
+  Add new 'dbus' use flag to support dbus extension. See
+  http://www.last.fm/forum/21716/_/397336 for more info. This plugin supports
+  both dbus and mpris interfaces
+
+*lastfmplayer-1.5.4.27091 (23 Jan 2011)
+
+  23 Jan 2011; Markos Chandras <hwoarang@gentoo.org>
+  +lastfmplayer-1.5.4.27091.ebuild:
+  New bugfix release. Using patches from
+  http://www.mehercule.net/staticpages/index.php/lastfm.
+
+*lastfmplayer-1.5.4.26862-r3 (23 Jan 2011)
+
+  23 Jan 2011; Markos Chandras <hwoarang@gentoo.org>
+  +lastfmplayer-1.5.4.26862-r3.ebuild:
+  Revision bump using new Debian patchset
+  Changelog: http://packages.debian.org/changelogs/pool/main/l/lastfm/current/changelog
+  Security Fix: http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-3362
 
   26 Oct 2010; Markos Chandras <hwoarang@gentoo.org>
   -lastfmplayer-1.5.4.26862-r1.ebuild:

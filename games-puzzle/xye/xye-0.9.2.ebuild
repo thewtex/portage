@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-puzzle/xye/xye-0.9.2.ebuild,v 1.1 2010/11/14 07:05:36 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-puzzle/xye/xye-0.9.2.ebuild,v 1.4 2010/12/18 18:29:17 mr_bones_ Exp $
 
 EAPI=2
 inherit autotools eutils games
@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/xye/${P}.tar.gz"
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="media-libs/libsdl[video]
@@ -28,7 +28,7 @@ src_install() {
 	dogamesbin "${PN}" || die
 	insinto "${GAMES_DATADIR}/${PN}"
 	doins -r levels res || die
-	rm -f "${GAMES_DATADIR}/${PN}"/res/DejaVuSans*
+	rm -f "${D}${GAMES_DATADIR}/${PN}"/res/DejaVuSans*
 	dosym /usr/share/fonts/dejavu/DejaVuSans.ttf "${GAMES_DATADIR}/${PN}"/res/
 	dosym /usr/share/fonts/dejavu/DejaVuSans-Bold.ttf "${GAMES_DATADIR}/${PN}"/res/
 	dodoc readme.txt GAMEINTRO.txt AUTHORS ChangeLog README NEWS

@@ -1,6 +1,30 @@
 # ChangeLog for Gentoo/ARM profile directory
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/arm/ChangeLog,v 1.103 2010/11/10 13:00:16 maekke Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/arm/ChangeLog,v 1.111 2011/01/30 18:25:08 armin76 Exp $
+
+  30 Jan 2011; Raúl Porcel <armin76@gentoo.org> use.mask:
+  Use.mask quvi
+
+  27 Jan 2011; Pacho Ramos <pacho@gentoo.org> package.use.mask:
+  Mask more gst-plugins-meta USE flags.
+
+  14 Jan 2011; Justin Lecher <jlec@gentoo.org> package.use.mask:
+  Mask app-misc/nut with USE=X as x11-libs/fltk is not keyworded
+
+  02 Jan 2011; Markus Meier <maekke@gentoo.org> use.mask:
+  use.mask upnp
+
+  08 Dec 2010; Raúl Porcel <armin76@gentoo.org> make.defaults:
+  Add omapfb
+
+  08 Dec 2010; Raúl Porcel <armin76@gentoo.org> use.mask:
+  Unmask omapfb
+
+  27 Nov 2010; Raúl Porcel <armin76@gentoo.org> package.use.mask:
+  Add portage python3 use-flag to p.use.mask
+
+  21 Nov 2010; Ryan Hill <dirtyepic@gentoo.org> use.mask:
+  Mask lpsol USE flag, needs sci-mathematics/glpk.
 
   10 Nov 2010; Markus Meier <maekke@gentoo.org> package.use.mask:
   remove buildbot{,-slave}[test] mask, as dev-python/mock is keyworded

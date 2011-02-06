@@ -1,6 +1,42 @@
 # ChangeLog for dev-ruby/hoe
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/hoe/ChangeLog,v 1.95 2010/11/13 16:43:47 armin76 Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/hoe/ChangeLog,v 1.103 2011/02/02 07:06:15 graaff Exp $
+
+*hoe-2.9.0 (02 Feb 2011)
+
+  02 Feb 2011; Hans de Graaff <graaff@gentoo.org> +hoe-2.9.0.ebuild:
+  Version bump.
+
+  16 Jan 2011; Markos Chandras <hwoarang@gentoo.org> hoe-2.6.0-r1.ebuild:
+  Stable on amd64 wrt bug #333947
+
+  15 Jan 2011; Kacper Kowalik <xarthisius@gentoo.org> hoe-2.6.0-r1.ebuild:
+  ppc64 stable wrt #333947
+
+  09 Jan 2011; Hans de Graaff <graaff@gentoo.org> hoe-2.5.0.ebuild,
+  hoe-2.6.0-r1.ebuild, hoe-2.6.2.ebuild:
+  Generate our stub gem specifications again to avoid issues with differing
+  dependencies between gem and ebuild.
+
+  09 Jan 2011; Hans de Graaff <graaff@gentoo.org> hoe-2.6.2.ebuild:
+  Drop ruby19 keyword to create a stable candidate for ree18.
+
+  09 Jan 2011; Hans de Graaff <graaff@gentoo.org> -hoe-2.3.2.ebuild,
+  -hoe-2.6.1.ebuild:
+  Remove old versions.
+
+  02 Jan 2011; Hans de Graaff <graaff@gentoo.org> hoe-2.6.2.ebuild,
+  hoe-2.8.0.ebuild:
+  Move ~alpha forward as was intended.
+
+  27 Dec 2010; Fabian Groffen <grobian@gentoo.org> hoe-2.8.0.ebuild:
+  Marked ~x64-solaris
+
+*hoe-2.8.0 (11 Dec 2010)
+
+  11 Dec 2010; Hans de Graaff <graaff@gentoo.org> +hoe-2.8.0.ebuild,
+  +files/hoe-2.8.0-test-file-ordering.patch:
+  Version bump.
 
   13 Nov 2010; Raúl Porcel <armin76@gentoo.org> hoe-2.6.0-r1.ebuild:
   ia64/sparc stable

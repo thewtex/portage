@@ -1,10 +1,10 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/blas-reference/blas-reference-20070226-r2.ebuild,v 1.1 2010/11/14 12:35:39 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/blas-reference/blas-reference-20070226-r2.ebuild,v 1.4 2010/12/17 13:35:46 jlec Exp $
 
 EAPI="3"
 
-inherit eutils autotools fortran multilib flag-o-matic
+inherit eutils autotools multilib flag-o-matic toolchain-funcs
 
 LAPACKPV="3.1.1"
 LAPACKPN="lapack-lite"
@@ -24,17 +24,8 @@ RDEPEND="${DEPEND}
 
 S="${WORKDIR}/${LAPACKPN}-${LAPACKPV}"
 
-pkg_setup() {
-	FORTRAN="g77 gfortran ifc"
-	fortran_pkg_setup
-	if  [[ ${FORTRANC} == if* ]]; then
-		ewarn "Using Intel Fortran at your own risk"
-		LDFLAGS="$(raw-ldflags)"
-	fi
-	ESELECT_PROF=reference
-}
-
 src_prepare() {
+	ESELECT_PROF=reference
 	epatch \
 		"${FILESDIR}"/${P}-autotool.patch \
 		"${FILESDIR}"/${P}-pkg-config.patch
@@ -50,8 +41,7 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		--libdir="${EPREFIX}"/usr/$(get_libdir)/blas/reference \
-		|| die "econf failed"
+		--libdir="${EPREFIX}"/usr/$(get_libdir)/blas/reference
 }
 
 src_compile() {

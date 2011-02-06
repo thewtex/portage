@@ -1,18 +1,18 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/tracker/tracker-0.8.17.ebuild,v 1.5 2010/11/14 16:17:32 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/tracker/tracker-0.8.17.ebuild,v 1.11 2011/02/02 15:59:25 halcy0n Exp $
 
-EAPI="2"
-G2CONF_DEBUG="no"
+EAPI="3"
+GCONF_DEBUG="no"
 
-inherit eutils gnome2 linux-info
+inherit autotools eutils gnome2 linux-info virtualx
 
 DESCRIPTION="A tagging metadata database, search tool and indexer"
-HOMEPAGE="http://www.tracker-project.org/"
+HOMEPAGE="http://projects.gnome.org/tracker/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~alpha ~amd64 ~ia64 ~ppc64 ~sparc ~x86"
 # USE="doc" is managed by eclass.
 IUSE="applet doc eds exif flac gnome-keyring gsf gstreamer gtk hal iptc +jpeg kmail laptop mp3 nautilus pdf playlist rss strigi test +tiff +vorbis xine +xml xmp"
 
@@ -22,7 +22,7 @@ RDEPEND="
 	>=app-i18n/enca-1.9
 	>=dev-db/sqlite-3.6.16[threadsafe]
 	>=dev-libs/dbus-glib-0.82-r1
-	>=dev-libs/glib-2.24
+	>=dev-libs/glib-2.24:2
 	|| (
 		>=media-gfx/imagemagick-5.2.1[png,jpeg=]
 		media-gfx/graphicsmagick[imagemagick,png,jpeg=] )
@@ -31,9 +31,9 @@ RDEPEND="
 	sys-apps/util-linux
 
 	applet? (
-		gnome-base/gnome-panel
+		|| ( gnome-base/gnome-panel[bonobo] <gnome-base/gnome-panel-2.32 )
 		>=x11-libs/libnotify-0.4.3
-		>=x11-libs/gtk+-2.18 )
+		>=x11-libs/gtk+-2.18:2 )
 	eds? (
 		>=mail-client/evolution-2.25.5
 		>=gnome-extra/evolution-data-server-2.25.5 )
@@ -47,20 +47,20 @@ RDEPEND="
 	!gstreamer? ( !xine? ( || ( media-video/totem media-video/mplayer ) ) )
 	gtk? (
 		>=dev-libs/libgee-0.3
-		>=x11-libs/gtk+-2.18 )
+		>=x11-libs/gtk+-2.18:2 )
 	iptc? ( media-libs/libiptcdata )
 	jpeg? ( virtual/jpeg:0 )
 	laptop? (
 		hal? ( >=sys-apps/hal-0.5 )
-		!hal? ( sys-power/upower ) )
+		!hal? ( >=sys-power/upower-0.9 ) )
 	mp3? ( >=media-libs/id3lib-3.8.3 )
 	nautilus? (
 		gnome-base/nautilus
-		>=x11-libs/gtk+-2.18 )
+		>=x11-libs/gtk+-2.18:2 )
 	pdf? (
 		>=x11-libs/cairo-1
 		>=app-text/poppler-0.12.3-r3[cairo,utils]
-		>=x11-libs/gtk+-2.12 )
+		>=x11-libs/gtk+-2.12:2 )
 	playlist? ( dev-libs/totem-pl-parser )
 	rss? ( net-libs/libgrss )
 	strigi? ( >=app-misc/strigi-0.7 )
@@ -73,16 +73,15 @@ DEPEND="${RDEPEND}
 	>=dev-util/intltool-0.35
 	>=sys-devel/gettext-0.14
 	>=dev-util/pkgconfig-0.20
-	applet? ( dev-lang/vala )
+	>=dev-util/gtk-doc-am-1.8
+	applet? ( dev-lang/vala:0 )
 	gtk? (
-		dev-lang/vala
+		dev-lang/vala:0
 		>=dev-libs/libgee-0.3 )
 	doc? (
 		>=dev-util/gtk-doc-1.8
 		media-gfx/graphviz )
 	test? ( sys-apps/dbus[X] )"
-
-DOCS="AUTHORS ChangeLog NEWS README"
 
 function inotify_enabled() {
 	if linux_config_exists; then
@@ -113,22 +112,15 @@ pkg_setup() {
 		G2CONF="${G2CONF} --enable-video-extractor=external"
 	fi
 
-	# hal and dk-p are used for AC power detection
+	# hal and upower are used for AC power detection
 	if use laptop; then
-		G2CONF="${G2CONF} $(use_enable hal) $(use_enable !hal devkit-power)"
+		G2CONF="${G2CONF} $(use_enable hal) $(use_enable !hal upower)"
 	else
-		G2CONF="${G2CONF} --disable-hal --disable-devkit-power"
-	fi
-
-	if use nautilus; then
-		G2CONF="${G2CONF} --enable-nautilus-extension=yes"
-	else
-		G2CONF="${G2CONF} --enable-nautilus-extension=no"
+		G2CONF="${G2CONF} --disable-hal --disable-upower"
 	fi
 
 	G2CONF="${G2CONF}
 		--disable-unac
-		--disable-functional-tests
 		--with-enca
 		$(use_enable applet tracker-status-icon)
 		$(use_enable applet tracker-search-bar)
@@ -144,6 +136,7 @@ pkg_setup() {
 		$(use_enable jpeg libjpeg)
 		$(use_enable kmail miner-kmail)
 		$(use_enable mp3 id3lib)
+		$(use_enable nautilus nautilus-extension)
 		$(use_enable pdf poppler-glib)
 		$(use_enable playlist)
 		$(use_enable rss miner-rss)
@@ -156,6 +149,8 @@ pkg_setup() {
 		$(use_enable xmp exempi)"
 		# FIXME: useless without quill (extract mp3 albumart...)
 		# $(use_enable gtk gdkpixbuf)
+
+	DOCS="AUTHORS ChangeLog NEWS README"
 }
 
 src_prepare() {
@@ -168,19 +163,24 @@ src_prepare() {
 	epatch "${FILESDIR}/${PN}-0.8.17-build-with-eds232.patch"
 
 	# FIXME: report broken tests
-	sed -e '/\/libtracker-common\/tracker-dbus\/request-client-lookup/,+1 s:^\(.*\)$:/*\1*/:' \
-		-i tests/libtracker-common/tracker-dbus-test.c || die
+	epatch "${FILESDIR}/${PN}-0.8.17-tests-fixes.patch"
 	sed -e '/\/libtracker-miner\/tracker-password-provider\/setting/,+1 s:^\(.*\)$:/*\1*/:' \
 		-e '/\/libtracker-miner\/tracker-password-provider\/getting/,+1 s:^\(.*\)$:/*\1*/:' \
 		-i tests/libtracker-miner/tracker-password-provider-test.c || die
-	sed -e '/\/libtracker-db\/tracker-db-journal\/init-and-shutdown/,+1 s:^\(.*\)$:/*\1*/:' \
-		-i tests/libtracker-db/tracker-db-journal.c || die
+
+	# Build with upower instead of devicekit-power
+	epatch "${FILESDIR}/${PN}-0.8.17-use-upower.patch"
+
+	# Fix build against poppler-0.16
+	epatch "${FILESDIR}/${PN}-0.8.17-poppler-0.16.patch"
+
+	intltoolize --force --copy --automake || die "intltoolize failed"
+	eautoreconf
 }
 
 src_test() {
-	export XDG_CONFIG_HOME="${T}"
 	unset DBUS_SESSION_BUS_ADDRESS
-	emake check || die "tests failed"
+	Xemake check XDG_DATA_HOME="${T}" XDG_CONFIG_HOME="${T}" || die "tests failed"
 }
 
 src_install() {

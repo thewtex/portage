@@ -1,6 +1,28 @@
 # ChangeLog for x11-libs/cairo
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/cairo/ChangeLog,v 1.265 2010/11/06 15:34:56 scarabeus Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/cairo/ChangeLog,v 1.269 2011/01/23 11:02:44 grobian Exp $
+
+  23 Jan 2011; Fabian Groffen <grobian@gentoo.org> cairo-1.10.2-r1.ebuild:
+  Fix compilation on PPC Darwin hosts
+
+  22 Jan 2011; Fabian Groffen <grobian@gentoo.org> cairo-1.10.2-r1.ebuild:
+  Fix for Solaris, cairo-trace doesn't build
+
+*cairo-1.10.2-r1 (13 Jan 2011)
+
+  13 Jan 2011; Dror Levin <spatz@gentoo.org>
+  +files/cairo-1.10.0-buggy_gradients.patch, -cairo-1.10.2.ebuild,
+  +cairo-1.10.2-r1.ebuild:
+  Restore buggy_gradients.patch accidently removed by scarabeus.
+
+*cairo-1.10.2 (11 Jan 2011)
+
+  11 Jan 2011; Tomáš Chvátal <scarabeus@gentoo.org> -cairo-1.8.8.ebuild,
+  -cairo-1.8.8-r1.ebuild, -files/cairo-1.8.8-libpng14.patch,
+  -cairo-1.10.0-r3.ebuild, -files/cairo-1.10.0-buggy_gradients.patch,
+  -files/cairo-1.10.0-install-sh.patch, +cairo-1.10.2.ebuild,
+  cairo-9999.ebuild:
+  Version bump fixes bug #351319. Drop older.
 
   06 Nov 2010; Tomáš Chvátal <scarabeus@gentoo.org> cairo-1.10.0-r3.ebuild,
   cairo-9999.ebuild:

@@ -1,6 +1,65 @@
 # ChangeLog for profiles/prefix
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/ChangeLog,v 1.227 2010/11/16 08:16:36 mduft Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/ChangeLog,v 1.242 2011/02/03 14:20:27 grobian Exp $
+
+  03 Feb 2011; Fabian Groffen <grobian@gentoo.org> package.mask:
+  Mask sys-devel/flex-2.5.35_p10 for bug #353609
+
+  25 Jan 2011; Fabian Groffen <grobian@gentoo.org> linux/package.mask:
+  Fix mistake, really unmask e2fsprogs-1.4.14 on Linux
+
+  24 Jan 2011; Fabian Groffen <grobian@gentoo.org> darwin/package.mask:
+  Widen mask for media-gfx/povray, to also include the beta versions
+
+  24 Jan 2011; Fabian Groffen <grobian@gentoo.org> linux/package.mask,
+  package.mask:
+  Mask sys-fs/e2fsprogs-1.41.14, it's broken in multiple ways
+
+  22 Jan 2011; Fabian Groffen <grobian@gentoo.org> linux/package.mask,
+  package.mask:
+  Drop ghostscript mask, the old version becomes a maintenance problem
+
+  08 Jan 2011; Fabian Groffen <grobian@gentoo.org> darwin/package.use.mask:
+  Unmask uuid on Darwin
+
+  05 Jan 2011; Fabian Groffen <grobian@gentoo.org>
+  +darwin/macos/10.5/ppc64/make.defaults,
+  +darwin/macos/10.5/ppc64/package.mask, +darwin/macos/10.5/ppc64/parent,
+  +darwin/macos/10.5/ppc64/use.mask:
+  Add 10.5/ppc64 profile
+
+  23 Dec 2010; Michael Haubenwallner <haubi@gentoo.org> hpux/profile.bashrc:
+  must not use korn shell /bin/sh as CONFIG_SHELL on hpux too, but bash
+  instead
+
+  23 Dec 2010; Michael Haubenwallner <haubi@gentoo.org> aix/package.mask:
+  >=gcc-4.3 still does not work on aix
+
+  14 Dec 2010; Fabian Groffen <grobian@gentoo.org>
+  +bsd/freebsd/8.1/package.mask, +bsd/freebsd/8.1/package.provided,
+  +bsd/freebsd/8.1/parent, +bsd/freebsd/8.1/sparc64/make.defaults,
+  +bsd/freebsd/8.1/sparc64/parent, +bsd/freebsd/8.1/x64/make.defaults,
+  +bsd/freebsd/8.1/x64/parent, +bsd/freebsd/8.1/x86/make.defaults,
+  +bsd/freebsd/8.1/x86/parent:
+  Add FreeBSD 8.1 profiles, including experimental sparc64 profile, bug
+  #348673
+
+  05 Dec 2010; Fabian Groffen <grobian@gentoo.org> package.mask:
+  Drop unmasks of old e2fsprogs/util-linux versions, because only the latest
+  version of e2fsprogs was migrated to gx86, we have to go through the mess
+  now to get it compiling everywhere
+
+  30 Nov 2010; Fabian Groffen <grobian@gentoo.org> package.mask:
+  Drop mask for no longer existant portage version
+
+  30 Nov 2010; Jeremy Olexa <darkside@gentoo.org> package.mask:
+  mask latest portage, reported issues
+
+  23 Nov 2010; Fabian Groffen <grobian@gentoo.org> darwin/package.mask:
+  Grabbed patch for grep-2.7 issue, drop mask
+
+  23 Nov 2010; Jeremy Olexa <darkside@gentoo.org> darwin/package.mask:
+  Pre-emptive mask for =grep-2.7, breaks bootstrapping on macos. bug 346335
 
   16 Nov 2010; Markus Duft <mduft@gentoo.org> windows/interix/package.mask,
   windows/interix/package.use.force, windows/interix/package.use.mask:

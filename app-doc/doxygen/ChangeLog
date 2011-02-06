@@ -1,6 +1,53 @@
 # ChangeLog for app-doc/doxygen
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-doc/doxygen/ChangeLog,v 1.183 2010/11/02 07:28:59 nerdboy Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-doc/doxygen/ChangeLog,v 1.196 2011/02/01 04:12:47 nerdboy Exp $
+
+*doxygen-1.7.3 (01 Feb 2011)
+
+  01 Feb 2011; Steve Arnold <nerdboy@gentoo.org> +doxygen-1.7.3.ebuild:
+  Added latest upstream release, closes bug #351578.
+
+  18 Jan 2011; Kacper Kowalik <xarthisius@gentoo.org> doxygen-1.7.2.ebuild:
+  ppc64 stable wrt #338632
+
+  18 Jan 2011; Steve Arnold <nerdboy@gentoo.org> doxygen-1.7.2.ebuild:
+  Updated with suggested workaround for ppc64 stable-ing (see comment #17 
+  of bug #263641).
+
+  15 Jan 2011; Raúl Porcel <armin76@gentoo.org> doxygen-1.7.2.ebuild:
+  ia64/s390/sh stable wrt #338632
+
+  13 Jan 2011; Brent Baude <ranger@gentoo.org> doxygen-1.7.2.ebuild:
+  Marking doxygen-1.7.2 ppc for bug 338632
+
+  04 Jan 2011; Michael Weber <xmw@gentoo.org> doxygen-1.7.2.ebuild:
+  sparc stable (bug 338632)
+
+  29 Dec 2010; Markos Chandras <hwoarang@gentoo.org> doxygen-1.7.2.ebuild:
+  Stable on amd64 wrt bug #338632
+
+  27 Dec 2010; Jeroen Roovers <jer@gentoo.org> doxygen-1.7.2.ebuild:
+  Stable for HPPA (bug #338632).
+
+  27 Dec 2010; Markus Meier <maekke@gentoo.org> doxygen-1.7.2.ebuild:
+  arm stable, bug #338632
+
+  21 Dec 2010; Steve Arnold <nerdboy@gentoo.org> doxygen-1.7.2.ebuild:
+  Updated anti-flag mangling per bug 348629 (artifact of EAPI update).  But
+  even with some extra massaging (and brute force sedding) doxywizard is
+  being stubborn with all that tmake/qmake on-the-fly writing of things...
+
+  20 Dec 2010; Tobias Klausmann <klausman@gentoo.org> doxygen-1.7.2.ebuild:
+  Stable on alpha, bug #338632
+
+  13 Dec 2010; Thomas Kahle <tomka@gentoo.org> doxygen-1.7.2.ebuild:
+  x86 stable per bug 338632
+
+  07 Dec 2010; Steve Arnold <nerdboy@gentoo.org>
+  -files/doxygen-1.4.3-cp1251.patch, -files/doxygen-gcc4.patch,
+  -files/doxygen-1.4.3-nls.patch, -files/doxygen-1.4.4-darwin.patch,
+  -files/bsd-configure.patch:
+  Removing stale patch files, closes bug 340547.
 
 *doxygen-1.7.2 (02 Nov 2010)
 

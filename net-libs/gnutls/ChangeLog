@@ -1,6 +1,55 @@
 # ChangeLog for net-libs/gnutls
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/gnutls/ChangeLog,v 1.280 2010/11/13 12:08:40 armin76 Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-libs/gnutls/ChangeLog,v 1.291 2011/01/30 17:49:46 armin76 Exp $
+
+  30 Jan 2011; Raúl Porcel <armin76@gentoo.org> gnutls-2.10.4.ebuild:
+  alpha/arm/ia64/m68k/s390/sh/sparc stable wrt #352744
+
+  28 Jan 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> gnutls-2.10.4.ebuild:
+  x86 stable wrt bug #352744
+
+  26 Jan 2011; Markos Chandras <hwoarang@gentoo.org> gnutls-2.10.4.ebuild:
+  Stable on amd64 wrt bug #352744
+
+  25 Jan 2011; Jeroen Roovers <jer@gentoo.org> gnutls-2.10.4.ebuild:
+  Stable for HPPA (bug #352744).
+
+  10 Jan 2011; Samuli Suominen <ssuominen@gentoo.org> gnutls-2.10.4.ebuild,
+  gnutls-2.11.6.ebuild:
+  Prevent valgrind detection (we definately don't want to run valgrind from
+  Portage because it's too unreliable).
+
+  27 Dec 2010; Brent Baude <ranger@gentoo.org> gnutls-2.10.2.ebuild:
+  stable ppc64, bug 343755
+
+*gnutls-2.11.6 (27 Dec 2010)
+
+  27 Dec 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +gnutls-2.11.6.ebuild:
+  Version bump.
+
+*gnutls-2.11.5 (27 Dec 2010)
+
+  27 Dec 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +gnutls-2.11.5.ebuild:
+  Version bump.
+
+*gnutls-2.10.4 (27 Dec 2010)
+
+  27 Dec 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +gnutls-2.10.4.ebuild:
+  Version bump.
+
+*gnutls-2.10.3 (27 Dec 2010)
+
+  27 Dec 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -files/gnutls-2.6.0-cxx-configure.in.patch, -gnutls-2.10.0.ebuild,
+  +gnutls-2.10.3.ebuild, -gnutls-2.11.0.ebuild, -gnutls-2.11.1.ebuild,
+  -gnutls-2.11.2.ebuild, -gnutls-2.11.3.ebuild:
+  Version bump.
+
+  27 Nov 2010; Raúl Porcel <armin76@gentoo.org> gnutls-2.10.2.ebuild:
+  alpha/ia64/m68k/s390/sh/sparc stable wrt #343755
 
   13 Nov 2010; Raúl Porcel <armin76@gentoo.org> gnutls-2.10.2-r1.ebuild:
   Add ~ia64/~m68k/~s390/~sh/~sparc wrt #326999

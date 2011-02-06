@@ -1,9 +1,9 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-power/upower/upower-0.9.5.ebuild,v 1.13 2010/11/13 17:42:13 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-power/upower/upower-0.9.5.ebuild,v 1.16 2011/01/29 17:05:37 ssuominen Exp $
 
 EAPI=3
-inherit linux-info
+inherit eutils linux-info
 
 DESCRIPTION="D-Bus abstraction for enumerating power devices and querying history and statistics"
 HOMEPAGE="http://upower.freedesktop.org/"
@@ -11,7 +11,7 @@ SRC_URI="http://upower.freedesktop.org/releases/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ia64 ~ppc ppc64 x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 arm ia64 ppc ppc64 sparc x86 ~x86-fbsd"
 IUSE="debug doc introspection ipod kernel_FreeBSD kernel_linux"
 
 COMMON_DEPEND=">=dev-libs/dbus-glib-0.76
@@ -46,6 +46,8 @@ pkg_setup() {
 }
 
 src_prepare() {
+	epatch "${FILESDIR}"/${P}-linux-headers-2.6.36.patch
+
 	if ! use ipod; then
 		sed -i -e 's:libimobiledevice:dIsAbLe&:' configure || die
 	fi

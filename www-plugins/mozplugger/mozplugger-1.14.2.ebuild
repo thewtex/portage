@@ -1,9 +1,9 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-plugins/mozplugger/mozplugger-1.14.2.ebuild,v 1.1 2010/11/09 15:40:14 phajdan.jr Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-plugins/mozplugger/mozplugger-1.14.2.ebuild,v 1.3 2011/01/15 10:37:14 mgorny Exp $
 
 EAPI=2
-inherit nsplugins multilib toolchain-funcs
+inherit eutils multilib toolchain-funcs
 
 DESCRIPTION="Configurable browser plugin to launch streaming media players."
 SRC_URI="http://mozplugger.mozdev.org/files/${P}.tar.gz"
@@ -15,10 +15,10 @@ KEYWORDS="~alpha ~amd64 ~ppc ~sparc ~x86"
 IUSE=""
 
 RDEPEND="x11-libs/libX11"
-DEPEND="${RDEPEND}
-	net-libs/xulrunner:1.9"
+DEPEND="${RDEPEND}"
 
 src_prepare() {
+	epatch "${FILESDIR}/${PN}-1.14.2-fix-nsplugin-install.patch"
 	sed -i "s:libprefix=.*:libprefix=/$(get_libdir):" Makefile
 }
 

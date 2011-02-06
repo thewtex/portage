@@ -1,10 +1,11 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/totem/totem-2.32.0.ebuild,v 1.1 2010/11/19 19:04:22 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/totem/totem-2.32.0.ebuild,v 1.8 2011/01/26 23:00:12 xarthisius Exp $
 
 EAPI="3"
 GCONF_DEBUG="yes"
-#PYTHON_DEPEND="2"
+PYTHON_DEPEND="python? 2"
+PYTHON_USE_WITH="threads"
 
 inherit autotools eutils gnome2 multilib python
 
@@ -63,7 +64,6 @@ RDEPEND=">=dev-libs/glib-2.25.11:2
 	nautilus? ( >=gnome-base/nautilus-2.10 )
 	nsplugin? ( media-plugins/gst-plugins-soup )
 	python? (
-		dev-lang/python[threads]
 		>=dev-python/pygtk-2.12:2
 		dev-python/pyxdg
 		dev-python/gst-python
@@ -82,7 +82,7 @@ DEPEND="${RDEPEND}
 	x11-proto/xextproto
 	x11-proto/xf86vidmodeproto
 	app-text/scrollkeeper
-	app-text/gnome-doc-utils
+	>=app-text/gnome-doc-utils-0.20.3
 	>=dev-util/intltool-0.40
 	>=dev-util/pkgconfig-0.20
 	app-text/docbook-xml-dtd:4.5
@@ -135,6 +135,9 @@ pkg_setup() {
 
 src_prepare() {
 	gnome2_src_prepare
+
+	# Use fixed gnome-doc-utils.make, bug #348403 (can be dropped in next bump)
+	cp -f /usr/share/gnome-doc-utils/gnome-doc-utils.make . || die
 
 	# Fix broken smclient option passing
 	epatch "${FILESDIR}/${PN}-2.32.0-smclient-target-detection.patch"

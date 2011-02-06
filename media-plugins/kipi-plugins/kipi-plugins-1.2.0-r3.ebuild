@@ -1,8 +1,8 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/kipi-plugins/kipi-plugins-1.2.0-r3.ebuild,v 1.1 2010/11/08 21:32:43 dilfridge Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/kipi-plugins/kipi-plugins-1.2.0-r3.ebuild,v 1.4 2011/01/31 11:05:06 phajdan.jr Exp $
 
-EAPI="2"
+EAPI=3
 
 OPENGL_REQUIRED="optional"
 KDE_LINGUAS="ar be ca cs da de el en_GB es et fi fr ga gl hi hne is it ja km
@@ -15,7 +15,7 @@ HOMEPAGE="http://www.kipi-plugins.org"
 [[ ${PV} != *9999* ]] && SRC_URI="mirror://sourceforge/kipi/${P}.tar.bz2 mirror://gentoo/${P}-jpeg.patch.bz2"
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 SLOT="4"
 IUSE="cdr calendar crypt debug expoblending +imagemagick ipod mjpeg redeyes scanner"
 

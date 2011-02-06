@@ -1,6 +1,45 @@
 # ChangeLog for dev-libs/crypto++
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/crypto++/ChangeLog,v 1.62 2010/11/04 20:00:16 jer Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/crypto++/ChangeLog,v 1.69 2011/01/20 13:17:22 hwoarang Exp $
+
+  20 Jan 2011; Markos Chandras <hwoarang@gentoo.org> crypto++-5.6.1-r1.ebuild:
+  Stable on amd64 wrt bug #343373
+
+  10 Jan 2011; Brent Baude <ranger@gentoo.org> crypto++-5.6.1-r1.ebuild:
+  stable ppc, bug 343373
+
+  08 Jan 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  crypto++-5.6.1-r1.ebuild:
+  Copy hppa/ppc64/x86 keywords from 5.6.1.
+
+*crypto++-5.6.1-r1 (08 Jan 2011)
+
+  08 Jan 2011; Dane Smith <c1pher@gentoo.org> +crypto++-5.6.1-r1.ebuild:
+  Remove no longer needed -DCRYPTOPP_DISABLE_ASM on amd64.
+  *Fix crypto++ issues on amd64 wrt amule as noted in bug 322713.
+  *Fix issues with tests on amd64 as noted in bug 343373.
+  There is an upstream patch to fix these issues with DCRYPTOPP_DISABLE_ASM
+  at
+  http://sourceforge.net/apps/trac/cryptopp/ticket/6 but as we no longer
+  use it,I didn't include it.
+
+  08 Jan 2011; Dane Smith <c1pher@gentoo.org> crypto++-5.6.1.ebuild:
+  Revert my earlier changes. This should probably be revbumped. Sorry for
+  the
+  confusion.
+
+  08 Jan 2011; Dane Smith <c1pher@gentoo.org> crypto++-5.6.1.ebuild:
+  Remove -DCRYPTOPP_DISABLE_ASM for amd64 in order to:
+  *Fix crypto++ issues on amd64 wrt amule as noted in bug 322713.
+  *Fix issues with tests on amd64 as noted in bug 343373.
+  There is an upstream patch to fix these issues with DCRYPTOPP_DISABLE_ASM
+  at
+  http://sourceforge.net/apps/trac/cryptopp/ticket/6 but as we no longer use
+  it,
+  I didn't include it.
+
+  27 Dec 2010; Brent Baude <ranger@gentoo.org> crypto++-5.6.1.ebuild:
+  stable ppc64, bug 343373
 
   04 Nov 2010; Jeroen Roovers <jer@gentoo.org> crypto++-5.6.1.ebuild:
   Stable for HPPA (bug #343373).

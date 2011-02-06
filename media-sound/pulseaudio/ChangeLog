@@ -1,6 +1,56 @@
 # ChangeLog for media-sound/pulseaudio
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/pulseaudio/ChangeLog,v 1.196 2010/09/21 22:36:43 abcd Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/pulseaudio/ChangeLog,v 1.206 2011/01/19 05:44:02 ford_prefect Exp $
+
+*pulseaudio-9999 (19 Jan 2011)
+
+  19 Jan 2011; Arun Raghavan <ford_prefect@gentoo.org> +pulseaudio-9999.ebuild,
+  metadata.xml:
+  Add a (masked) live ebuild.
+
+  09 Jan 2011; Raúl Porcel <armin76@gentoo.org> pulseaudio-0.9.22.ebuild:
+  Add ~ia64/~sh/~sparc wrt #308971
+
+  04 Jan 2011; Samuli Suominen <ssuominen@gentoo.org> pulseaudio-0.9.22.ebuild:
+  Remove deprecated hal support wrt #349050.
+
+  22 Dec 2010; Arun Raghavan <ford_prefect@gentoo.org>
+  pulseaudio-0.9.19.ebuild, pulseaudio-0.9.21.ebuild,
+  pulseaudio-0.9.21.1.ebuild, pulseaudio-0.9.21.2.ebuild,
+  pulseaudio-0.9.21.2-r1.ebuild, pulseaudio-0.9.21.2-r2.ebuild,
+  pulseaudio-0.9.22.ebuild:
+  Drop incorrect liboil dependency (thanks to Rafał Mużyło for reporting -
+  bug #348465)
+
+  16 Dec 2010; Tim Harder <radhermit@gentoo.org> pulseaudio-0.9.22.ebuild:
+  Fix libX11 dependency order (bug #348806 by Rodolphe Rocca).
+
+  01 Dec 2010; Markus Meier <maekke@gentoo.org> pulseaudio-0.9.21.1.ebuild:
+  arm stable, bug #299913
+
+  30 Nov 2010; Markus Meier <maekke@gentoo.org> pulseaudio-0.9.22.ebuild:
+  add ~arm, bug #308971
+
+  27 Nov 2010; Arun Raghavan <ford_prefect@gentoo.org>
+  +files/pulseaudio-0.9.21-armv5-build-fix.patch,
+  pulseaudio-0.9.21.1.ebuild, pulseaudio-0.9.21.2-r2.ebuild,
+  pulseaudio-0.9.22.ebuild:
+  Add a patch to fix compilation on ARMv5. Adding to stable candidate and 2
+  most recent ebuilds. 0.9.21.2 and 0.9.21.2-r1 can be removed after a newer
+  version is keyworded on arm.
+
+  26 Nov 2010; Tim Harder <radhermit@gentoo.org> pulseaudio-0.9.22.ebuild:
+  Fix libX11 xcb USE flag dependency since >=x11-libs/libX11-1.4.0 comes with
+  xcb by default.
+
+*pulseaudio-0.9.22 (26 Nov 2010)
+
+  26 Nov 2010; Arun Raghavan <ford_prefect@gentoo.org>
+  +pulseaudio-0.9.22.ebuild:
+  Bump to 0.9.22. Lots of bug fixes. Remove SRC_URI munging till a newer
+  release scheme gets decided. Also use --with-udev-rules-dir instead of
+  emake variable override and make pulling gnome-sounds dependent on USE=X
+  (bug #341551).
 
 *pulseaudio-0.9.21.2-r2 (21 Sep 2010)
 

@@ -1,6 +1,27 @@
 # ChangeLog for app-backup/bacula
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-backup/bacula/ChangeLog,v 1.105 2010/11/04 20:07:24 tomjbe Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-backup/bacula/ChangeLog,v 1.110 2010/12/30 20:36:20 tomjbe Exp $
+
+  30 Dec 2010; Thomas Beierlein <tomjbe@gentoo.org> bacula-5.0.3-r2.ebuild:
+  Fix installation of 'bat' console (bug #350168). Finally correct.
+
+  30 Dec 2010; Thomas Beierlein <tomjbe@gentoo.org> bacula-5.0.3-r2.ebuild:
+  Fix installation of 'bat' console (bug #350168). Thanks for reporting Phil
+  <alaric@caerllewys.net>
+
+  29 Dec 2010; Thomas Kahle <tomka@gentoo.org> bacula-5.0.3-r1.ebuild:
+  x86 stable per bug 341471
+
+*bacula-5.0.3-r2 (29 Dec 2010)
+
+  29 Dec 2010; Thomas Beierlein <tomjbe@gentoo.org> +bacula-5.0.3-r2.ebuild,
+  +files/5.0.3/bacula-5.0.3-fix-static.patch:
+  Fix USE=static - only supported for bacula-clientonly now. bug #341983.
+  Thanks dabbott@gentoo.org for reporting
+
+  27 Dec 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  bacula-5.0.3-r1.ebuild:
+  Use Python 2 (bug #308309).
 
   04 Nov 2010; Thomas Beierlein <tomjbe@gentoo.org>
   -files/2.4.1/2.4.1-mount.patch, -files/2.4.1/2.4.1-mysql-timeout.patch,

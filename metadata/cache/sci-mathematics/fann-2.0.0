@@ -1,20 +1,20 @@
-python? ( dev-lang/python ) python? ( dev-lang/swig )
-python? ( dev-lang/python )
+python? ( dev-lang/swig ) >=app-admin/eselect-python-20091230 python? ( =dev-lang/python-2* )
+>=app-admin/eselect-python-20091230 python? ( =dev-lang/python-2* )
 0
 mirror://sourceforge/fann/fann-2.0.0.tar.bz2
 
 http://leenissen.dk/fann/
 LGPL-2.1
-Fast Artificial Neural Network Library implements multilayer artificial neural networks in C
+Fast Artificial Neural Network Library
 ~amd64 ~ppc ~x86
-eutils multilib portability toolchain-funcs
+eutils multilib portability python toolchain-funcs
 doc python
 
 
 
+2
 
-
-compile install unpack
+compile install postinst postrm prepare
 
 
 

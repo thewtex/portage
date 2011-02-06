@@ -1,6 +1,43 @@
 # ChangeLog for sci-chemistry/gamess
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/gamess/ChangeLog,v 1.42 2010/08/12 16:10:05 xarthisius Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/gamess/ChangeLog,v 1.49 2011/01/23 12:42:58 alexxy Exp $
+
+*gamess-20101001.1-r1 (23 Jan 2011)
+
+  23 Jan 2011; Alexey Shvetsov <alexxy@gentoo.org> -gamess-20101001.1.ebuild,
+  +gamess-20101001.1-r1.ebuild, +files/gamess-neo-fix.patch:
+  Fix neo build for gamess
+
+  29 Dec 2010; Alexey Shvetsov <alexxy@gentoo.org>
+  -gamess-20090112.1-r1.ebuild, -files/gamess-20090112.1.gentoo.patch,
+  gamess-20101001.1.ebuild:
+  Fix gamess build. Aslo remove old versions since upstream provides only
+  latest tarball
+
+  20 Dec 2010; Justin Lecher <jlec@gentoo.org> gamess-20090112.1-r1.ebuild,
+  gamess-20101001.1.ebuild:
+  Fix for fortran detection, thanks alexxy noting this
+
+  16 Dec 2010; Justin Lecher <jlec@gentoo.org> gamess-20090112.1-r1.ebuild,
+  gamess-20101001.1.ebuild:
+  Removal of fortran.eclass, #348851
+
+  08 Dec 2010; Alexey Shvetsov <alexxy@gentoo.org> gamess-20101001.1.ebuild:
+  Fix neo code
+
+  07 Dec 2010; Alexey Shvetsov <alexxy@gentoo.org> gamess-20101001.1.ebuild,
+  +files/gamess-qmmm-tinker-fix-idate.patch, metadata.xml:
+  Make neo optional also fix qmmm compilation
+
+*gamess-20101001.1 (07 Dec 2010)
+
+  07 Dec 2010; Alexey Shvetsov <alexxy@gentoo.org> -gamess-20080411.1.ebuild,
+  -files/gamess-20080411.1.gentoo.patch, -gamess-20090112.1.ebuild,
+  -gamess-20090112.3.ebuild, -gamess-20090112.3-r1.ebuild,
+  -gamess-20100325.2.ebuild, -files/gamess-20100325.2.gentoo.patch,
+  +gamess-20101001.1.ebuild, +files/gamess-20101001.1.gentoo.patch:
+  Add new gamess release. Clean up old ones. TODO: Add cuda support and fix
+  broken mpi stuff
 
   12 Aug 2010; Kacper Kowalik <xarthisius@gentoo.org>
   gamess-20100325.2.ebuild:

@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/cone/cone-0.84.20100819-r1.ebuild,v 1.2 2010/11/15 02:37:53 radhermit Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-client/cone/cone-0.84.20100819-r1.ebuild,v 1.4 2010/11/30 21:08:08 maekke Exp $
 
 EAPI="2"
 
@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/courier/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="amd64 ~ppc ~sparc x86"
 IUSE="crypt fam gnutls idn ipv6 ldap spell"
 
 RDEPEND=">=dev-libs/openssl-0.9.6
@@ -30,10 +30,13 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-aspell-automagic.patch
-	epatch "${FILESDIR}"/${P}-rfc2045-tests-lang.patch
+	epatch "${FILESDIR}"/${P}-skip-rfc2045-test.patch
 
-	cd cone
+	cd "${S}"/cone
 	LIBTOOLIZE="true" eautoreconf
+
+	cd "${S}"/rfc2045
+	eautomake
 }
 
 src_configure() {

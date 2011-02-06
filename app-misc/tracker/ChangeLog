@@ -1,6 +1,52 @@
 # ChangeLog for app-misc/tracker
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/tracker/ChangeLog,v 1.85 2010/11/14 17:43:22 eva Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/tracker/ChangeLog,v 1.94 2011/02/02 15:59:25 halcy0n Exp $
+
+  02 Feb 2011; Mark Loeser <halcy0n@gentoo.org> tracker-0.8.17.ebuild:
+  Mark ~ppc64; bug #296794
+
+  28 Jan 2011; Pacho Ramos <pacho@gentoo.org> tracker-0.8.17.ebuild,
+  +files/tracker-0.8.17-poppler-0.16.patch:
+  Fix build against poppler-0.16 with PLD linux patch (bug #349921).
+
+*tracker-0.9.35 (23 Jan 2011)
+
+  23 Jan 2011; Gilles Dartiguelongue <eva@gentoo.org> +tracker-0.9.35.ebuild,
+  tracker-9999.ebuild:
+  Version bump. Only a few libs not ported to gdbus.
+
+  15 Jan 2011; Arun Raghavan <ford_prefect@gentoo.org> tracker-0.9.30.ebuild,
+  tracker-0.9.33.ebuild:
+  Restrict gupnp-dlna dependency to <0.5 (since it breaks API)
+
+*tracker-0.9.33 (13 Jan 2011)
+
+  13 Jan 2011; Gilles Dartiguelongue <eva@gentoo.org> +tracker-0.9.33.ebuild,
+  tracker-9999.ebuild:
+  Version bump.
+
+  22 Dec 2010; Gilles Dartiguelongue <eva@gentoo.org> tracker-0.8.17.ebuild,
+  +files/tracker-0.8.17-tests-fixes.patch,
+  +files/tracker-0.8.17-use-upower.patch, -tracker-0.9.28.ebuild,
+  tracker-0.9.30.ebuild, tracker-9999.ebuild:
+  Arrange to build against upower since devicekit-power was removed a bit too
+  early. Reduce testsuite hacks. Pin dependencies to appropriate slots. Remove
+  old revision.
+
+  08 Dec 2010; Pacho Ramos <pacho@gentoo.org> tracker-0.8.17.ebuild,
+  tracker-0.9.28.ebuild, tracker-0.9.30.ebuild, tracker-9999.ebuild:
+  Needs gnome-panel with bonobo support.
+
+*tracker-0.9.30 (08 Dec 2010)
+
+  08 Dec 2010; Gilles Dartiguelongue <eva@gentoo.org> tracker-0.8.17.ebuild,
+  -tracker-0.9.27.ebuild, tracker-0.9.28.ebuild, +tracker-0.9.30.ebuild,
+  tracker-9999.ebuild:
+  Version bump. Still some missing files for functional tests. Fix usage of
+  GCONF_DEBUG.
+
+  28 Nov 2010; Raúl Porcel <armin76@gentoo.org> tracker-0.8.17.ebuild:
+  Add ~alpha/~ia64/~sparc wrt #296794
 
 *tracker-0.9.28 (14 Nov 2010)
 

@@ -1,8 +1,10 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/libbufr/libbufr-000360.ebuild,v 1.2 2008/12/31 03:41:08 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/libbufr/libbufr-000360.ebuild,v 1.4 2010/12/28 03:20:41 nerdboy Exp $
 
-inherit fortran eutils flag-o-matic toolchain-funcs
+EAPI="2"
+
+inherit eutils flag-o-matic toolchain-funcs
 
 MY_P="${PN/lib/}_${PV}"
 
@@ -15,7 +17,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 # needs someone to test on these: ~alpha ~hppa ~ia64 ~ppc ~ppc64 ~sparc etc ...
 
-IUSE="doc examples"
+IUSE="debug doc examples"
 
 RDEPEND=""
 
@@ -24,16 +26,14 @@ DEPEND="sys-apps/findutils"
 S=${WORKDIR}/${MY_P}
 
 pkg_setup() {
-	FORTRAN="gfortran g77 ifc ifort pgf77 pgf90"
-	fortran_pkg_setup
-	case "${FORTRANC}" in
-		gfortran)
+	case "$(tc-getFC)" in
+		*gfortran)
 			export CNAME="_gfortran"
 			;;
-		g77)
+		*g77)
 			export CNAME="_gnu"
 			;;
-		pgf90|pgf77)
+		*pgf90|*pgf77)
 			export CNAME="_linux"
 			;;
 		ifc|ifort)
@@ -63,9 +63,7 @@ pkg_setup() {
 	esac
 }
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
+src_prepare() {
 	find . -type f | xargs chmod -x
 	chmod +x bufrtables/links.sh
 	if use debug ; then
@@ -75,6 +73,9 @@ src_unpack() {
 		sed -i -e "s:-O2:${CFLAGS}:g" \
 			config/config.$target$CNAME$R64$A64
 	fi
+
+	# updated for newer gcc
+	epatch "${FILESDIR}"/${P}-gcc-includes.patch
 }
 
 src_compile() {

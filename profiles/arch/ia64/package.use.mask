@@ -1,6 +1,20 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/ia64/package.use.mask,v 1.37 2010/11/14 16:43:59 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/ia64/package.use.mask,v 1.43 2011/01/27 18:07:46 pacho Exp $
+
+# Diego Elio Pettenò <flameeyes@gentoo.org> (17 Dec 2010)
+# needs sys-libs/libcap-ng that is masked right now
+sys-apps/smartmontools caps
+
+# Nirbheek Chauhan <nirbheek@gentoo.org> (10 Dec 2010)
+# net-misc/connman is not keyworded, bug 348308
+mail-client/evolution connman
+
+# Raúl Porcel <armin76@gentoo.org> (5 Dec 2010)
+# Mask doc-pdf because of Java dependencies (bug #347259)
+net-analyzer/wireshark doc-pdf
+# Needs testing
+www-client/elinks javascript
 
 # Raúl Porcel <armin76@gentoo.org> (19 Sep 2010)
 # dev-ruby/ffi fails to build
@@ -8,6 +22,7 @@ dev-ruby/nokogiri ffi
 
 # Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (29 Jul 2010)
 # Mask python3 for stable portage until python-3.x is marked stable.
+=sys-apps/portage-2.1.9* python3
 =sys-apps/portage-2.1.8* python3
 =sys-apps/portage-2.1.7* python3
 
@@ -46,5 +61,4 @@ dev-lisp/clisp hyperspec pari svm
 media-video/mplayer ladspa
 
 # missing keywords
-media-plugins/gst-plugins-meta lame taglib
-
+media-plugins/gst-plugins-meta dv lame taglib wavpack

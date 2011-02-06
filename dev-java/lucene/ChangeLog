@@ -1,6 +1,23 @@
 # ChangeLog for dev-java/lucene
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/lucene/ChangeLog,v 1.72 2010/06/01 14:49:21 josejx Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/lucene/ChangeLog,v 1.75 2011/01/31 21:19:52 grobian Exp $
+
+  31 Jan 2011; Fabian Groffen <grobian@gentoo.org> lucene-2.1.0-r1.ebuild,
+  lucene-2.2.0.ebuild, lucene-2.4.1.ebuild, lucene-2.9.4.ebuild,
+  lucene-3.0.0.ebuild, lucene-3.0.3.ebuild:
+  Fix all slots for Prefix, bug #351447
+
+*lucene-2.9.4 (28 Jan 2011)
+
+  28 Jan 2011; Miroslav Šulc <fordfrog@gentoo.org> +lucene-2.9.4.ebuild:
+  Version bump. The new ebuild removes bundled jars and puts junit on classpath
+  for compilation always, because javacc builds tests too.
+
+*lucene-3.0.3 (28 Jan 2011)
+
+  28 Jan 2011; Miroslav Šulc <fordfrog@gentoo.org> +lucene-3.0.3.ebuild:
+  Version bump. The new ebuild removes bundled jars and puts junit on classpath
+  for compilation always, because javacc builds tests too.
 
   01 Jun 2010; Joseph Jezak <josejx@gentoo.org> lucene-3.0.0.ebuild:
   Marked ppc stable for bug #300002.

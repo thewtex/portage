@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/vlc/vlc-1.1.9999.ebuild,v 1.21 2010/11/07 18:30:02 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/vlc/vlc-1.1.9999.ebuild,v 1.23 2011/01/26 10:40:09 aballier Exp $
 
 EAPI="3"
 
@@ -65,7 +65,7 @@ RDEPEND="
 		a52? ( >=media-libs/a52dec-0.7.4-r3 )
 		aalib? ( media-libs/aalib )
 		aac? ( >=media-libs/faad2-2.6.1 )
-		alsa? ( media-libs/alsa-lib )
+		alsa? ( >=media-libs/alsa-lib-1.0.23 )
 		avahi? ( >=net-dns/avahi-0.6[dbus] )
 		bidi? ( >=dev-libs/fribidi-0.10.4 )
 		cdda? (	cddb? ( >=media-libs/libcddb-1.2.0 ) )
@@ -109,8 +109,8 @@ RDEPEND="
 		opengl? ( virtual/opengl || ( <x11-libs/libX11-1.3.99.901[xcb] >=x11-libs/libX11-1.3.99.901 ) )
 		png? ( media-libs/libpng sys-libs/zlib )
 		projectm? ( media-libs/libprojectm )
-		pulseaudio? ( >=media-sound/pulseaudio-0.9.11
-			!X? ( >=media-sound/pulseaudio-0.9.11[-X] ) )
+		pulseaudio? ( || ( >=media-sound/pulseaudio-0.9.22
+			( >=media-sound/pulseaudio-0.9.11 x11-libs/libX11 ) ) )
 		qt4? ( x11-libs/qt-gui:4 x11-libs/qt-core:4 x11-libs/libX11 )
 		remoteosd? ( >=dev-libs/libgcrypt-1.2.0 )
 		samba? ( || ( >=net-fs/samba-3.4.6[smbclient] <net-fs/samba-3.4 ) )
@@ -149,6 +149,7 @@ RDEPEND="
 
 DEPEND="${RDEPEND}
 	!!<=media-video/vlc-1.0.99999
+	alsa? ( >=media-sound/alsa-headers-1.0.23 )
 	dvb? ( sys-kernel/linux-headers )
 	kde? ( >=kde-base/kdelibs-4 )
 	v4l? ( sys-kernel/linux-headers )
@@ -183,6 +184,7 @@ pkg_setup() {
 	vlc_use_force vlm stream
 	vlc_use_force vaapi ffmpeg
 	vlc_use_force nsplugin xcb
+	has_version '<media-sound/pulseaudio-0.9.22' && vlc_use_force pulseaudio X
 
 	# Useflags that will be automagically discarded if deps are not met
 	vlc_use_needs bidi truetype
@@ -337,7 +339,8 @@ src_configure() {
 		$(vlc_use_enable_force remoteosd libgcrypt) \
 		$(vlc_use_enable_force gnutls libgcrypt) \
 		$(vlc_use_enable_force vaapi avcodec) \
-		$(vlc_use_enable_force nsplugin xcb)
+		$(vlc_use_enable_force nsplugin xcb) \
+		$(has_version '<media-sound/pulseaudio-0.9.22' && use pulseaudio && echo '--with-x')
 }
 
 src_install() {

@@ -1,6 +1,25 @@
 # ChangeLog for dev-libs/libchewing
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libchewing/ChangeLog,v 1.19 2010/04/16 18:21:46 hwoarang Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libchewing/ChangeLog,v 1.21 2011/01/19 15:41:31 flameeyes Exp $
+
+  19 Jan 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  libchewing-0.3.2-r1.ebuild:
+  Introduce static-libs USE flag to avoid building the static archive for
+  libchewing; remove .la file that is never required (no dependencies for the
+  static archive); ncurses is not a runtime dependency but rather only a test
+  dependency (with libncursesw which is provided by the unicode USE flag). Drop
+  the pkg_postinst as the old libraries are not preserved, so they cannot be
+  there unless user did copy them manually.
+
+*libchewing-0.3.2-r1 (12 Dec 2010)
+
+  12 Dec 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  +files/0.3.2-fix-chewing-zuin-String.patch, -libchewing-0.2.5.ebuild,
+  -libchewing-0.3.0-r1.ebuild, -libchewing-0.3.1.ebuild,
+  +libchewing-0.3.2-r1.ebuild, +files/0.3.2-fix-crosscompile.patch:
+  Cleanup old versions (revdeps would require 0.3.2 anyway); add new revision
+  with patches from ChromiumOS overlay (including cross-compile fixes), using
+  EAPI=2 and with proper implementation of tests.
 
   16 Apr 2010; Markos Chandras <hwoarang@gentoo.org>
   libchewing-0.3.2.ebuild:

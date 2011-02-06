@@ -1,6 +1,18 @@
 # ChangeLog for media-libs/libgphoto2
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libgphoto2/ChangeLog,v 1.181 2010/11/14 23:06:06 eva Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libgphoto2/ChangeLog,v 1.183 2011/01/12 22:14:05 eva Exp $
+
+  12 Jan 2011; Gilles Dartiguelongue <eva@gentoo.org> libgphoto2-2.4.10.ebuild:
+  Change selective cameras build logic. Builds all when CAMERAS is set to *,
+  nothing if empty and only the ones specified otherwise in order to not
+  violate package manager handling, bug #346491.
+
+*libgphoto2-2.4.10 (21 Nov 2010)
+
+  21 Nov 2010; Gilles Dartiguelongue <eva@gentoo.org>
+  +libgphoto2-2.4.10.ebuild:
+  Version bump. Enable jl2005c driver since it is now considered stable. Move
+  udev rules to /$(get_libdir)/udev/rules.d, bug #345731.
 
   14 Nov 2010; Gilles Dartiguelongue <eva@gentoo.org>
   -libgphoto2-2.4.6.ebuild, -libgphoto2-2.4.8.ebuild,

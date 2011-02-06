@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/gtk+/gtk+-2.22.1.ebuild,v 1.1 2010/11/19 22:58:11 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/gtk+/gtk+-2.22.1.ebuild,v 1.3 2010/12/17 07:59:35 grobian Exp $
 
 EAPI="3"
 PYTHON_DEPEND="2:2.4"
@@ -124,9 +124,7 @@ src_configure() {
 	# Passing --disable-debug is not recommended for production use
 	use debug && myconf="${myconf} --enable-debug=yes"
 
-	# need libdir here to avoid a double slash in a path that libtool doesn't
-	# grok so well during install (// between $EPREFIX and usr ...)
-	econf --libdir="${EPREFIX}/usr/$(get_libdir)" ${myconf}
+	econf ${myconf}
 }
 
 src_test() {
@@ -164,7 +162,7 @@ src_install() {
 		sed -i -e "s:Libs\: :Libs\: -framework Carbon :" "${ED%/}"/usr/lib/pkgconfig/$i || die "sed failed"
 	done
 
-	python_convert_shebangs 2 "${D}"usr/bin/gtk-builder-convert
+	python_convert_shebangs 2 "${ED}"usr/bin/gtk-builder-convert
 }
 
 pkg_postinst() {

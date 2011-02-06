@@ -1,6 +1,34 @@
 # ChangeLog for app-i18n/uim
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/uim/ChangeLog,v 1.223 2010/11/08 07:10:58 matsuu Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/uim/ChangeLog,v 1.227 2011/01/08 06:21:31 matsuu Exp $
+
+*uim-1.6.1 (08 Jan 2011)
+
+  08 Jan 2011; MATSUU Takuto <matsuu@gentoo.org> -uim-1.6.0-r1.ebuild,
+  +uim-1.6.1.ebuild, +files/xinput-uim:
+  Version bumped. Support imsettings. Removed old version.
+
+*uim-1.6.0-r2 (05 Jan 2011)
+
+  05 Jan 2011; MATSUU Takuto <matsuu@gentoo.org> -uim-1.5.6-r1.ebuild,
+  -uim-1.5.6-r4.ebuild, -files/uim-1.5.6-toplevel-delete-event.patch,
+  -uim-1.6.0.ebuild, +uim-1.6.0-r2.ebuild, +files/uim-1.6.0-gettext.patch,
+  +files/uim-1.6.0-linker.patch, +files/uim-1.6.0-xcompose.patch,
+  -files/uim-disable-notify.diff:
+  Fixed Qt4 issue, bug #349859. Fixed gtk issue, bug #350207. These patches are
+  submitted by Muneyuki Noguchi. Respect CXX and LDFLAGS, bug #349689. Removed
+  old versions.
+
+  26 Dec 2010; Jeroen Roovers <jer@gentoo.org> uim-1.6.0.ebuild,
+  uim-1.6.0-r1.ebuild:
+  Marked ~hppa (bug #335075).
+
+*uim-1.6.0-r1 (25 Nov 2010)
+
+  25 Nov 2010; MATSUU Takuto <matsuu@gentoo.org> +uim-1.6.0-r1.ebuild,
+  +files/uim-1.6.0-sandbox-violation.patch:
+  Fixed sandbox violation. The patch is submitted by Muneyuki Noguchi, bug
+  #345217.
 
 *uim-1.6.0 (08 Nov 2010)
 

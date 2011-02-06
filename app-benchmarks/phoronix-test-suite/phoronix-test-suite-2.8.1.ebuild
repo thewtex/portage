@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-benchmarks/phoronix-test-suite/phoronix-test-suite-2.8.1.ebuild,v 1.1 2010/11/10 20:18:09 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-benchmarks/phoronix-test-suite/phoronix-test-suite-2.8.1.ebuild,v 1.2 2011/02/01 21:50:49 cardoe Exp $
 
 EAPI=2
 
@@ -18,7 +18,7 @@ IUSE="gd gtk"
 DEPEND=""
 
 # php 5.3 doesn't have pcre useflag anymore
-RDEPEND="|| ( dev-lang/php:5.3[cli,gd,posix,pcntl,truetype] dev-lang/php:5.2[cli,gd,posix,pcntl,truetype,pcre] )
+RDEPEND="|| ( dev-lang/php:5.3[cli,curl,gd,posix,pcntl,truetype] dev-lang/php:5.2[cli,curl,gd,posix,pcntl,truetype,pcre] )
 		app-arch/unzip
 		dev-php5/pecl-ps
 		gtk? ( dev-php5/php-gtk )"

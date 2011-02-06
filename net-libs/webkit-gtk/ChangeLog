@@ -1,6 +1,77 @@
 # ChangeLog for net-libs/webkit-gtk
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/webkit-gtk/ChangeLog,v 1.83 2010/11/07 21:13:34 ssuominen Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-libs/webkit-gtk/ChangeLog,v 1.100 2011/01/23 14:42:06 armin76 Exp $
+
+  23 Jan 2011; Raúl Porcel <armin76@gentoo.org> webkit-gtk-1.2.6.ebuild:
+  alpha/ia64/sparc stable wrt #350598
+
+  15 Jan 2011; Pacho Ramos <pacho@gentoo.org> -webkit-gtk-1.2.3.ebuild,
+  webkit-gtk-1.2.6.ebuild:
+  Filter -mvis on sparc due bug #351561, thanks to Alex Buell. Remove old.
+
+  15 Jan 2011; Markus Meier <maekke@gentoo.org> webkit-gtk-1.2.6.ebuild:
+  arm stable, bug #350598
+
+  11 Jan 2011; Pacho Ramos <pacho@gentoo.org> webkit-gtk-1.2.6.ebuild:
+  tests need x11-themes/hicolor-icon-theme per bug #351388 by Kacper Kowalik
+  (Xarthisius).
+
+  11 Jan 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  webkit-gtk-1.2.6.ebuild:
+  ppc stable wrt #350598, add ~ppc64 wrt #279241 after applying workaround
+
+  10 Jan 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  webkit-gtk-1.2.6.ebuild:
+  x86 stable wrt security bug #350598
+
+  10 Jan 2011; Markos Chandras <hwoarang@gentoo.org> webkit-gtk-1.2.6.ebuild:
+  Stable on amd64 wrt bug #350598
+
+  09 Jan 2011; Brent Baude <ranger@gentoo.org> webkit-gtk-1.2.5.ebuild:
+  Marking webkit-gtk-1.2.5 ppc for bug 281819
+
+  08 Jan 2011; Kacper Kowalik <xarthisius@gentoo.org> webkit-gtk-1.2.6.ebuild:
+  Workaround TOC errors wrt #301634
+
+*webkit-gtk-1.2.6 (04 Jan 2011)
+
+  04 Jan 2011; Pacho Ramos <pacho@gentoo.org>
+  -files/webkit-gtk-1.1.15.2-unaligned.patch, -webkit-gtk-1.1.15.4.ebuild,
+  -files/webkit-gtk-1.1.15.4-darwin-quartz.patch,
+  -files/webkit-gtk-1.1.15.4-icu44.patch, +webkit-gtk-1.2.6.ebuild,
+  metadata.xml:
+  Version bump: Fixes crashes with newer libpng (>= 1.4), security fixes
+  CVE-2010-4198 CVE-2010-4197 CVE-2010-4204 CVE-2010-4206 CVE-2010-1791
+  CVE-2010-3812 CVE-2010-3813. Also makes JIT support optional as it causes
+  problems with hardened (bug #338213). Remove old.
+
+  29 Dec 2010; <nirbheek@gentoo.org> webkit-gtk-1.1.15.4.ebuild,
+  webkit-gtk-1.2.3.ebuild, webkit-gtk-1.2.5.ebuild:
+  Slot move from 0 to 2 for gtk+:2 versions, gtk+:3 versions will be added
+  for SLOT=3
+
+  26 Dec 2010; Markos Chandras <hwoarang@gentoo.org> webkit-gtk-1.2.5.ebuild:
+  Stable on amd64 wrt bug #281819
+
+  25 Dec 2010; Raúl Porcel <armin76@gentoo.org> webkit-gtk-1.2.5.ebuild:
+  alpha/arm/ia64/sparc stable wrt #281819
+
+  24 Dec 2010; Thomas Kahle <tomka@gentoo.org> webkit-gtk-1.2.5.ebuild:
+  x86 stable per bug 281819
+
+  22 Dec 2010; Gilles Dartiguelongue <eva@gentoo.org> webkit-gtk-1.2.5.ebuild,
+  +files/webkit-gtk-1.2.5-tests-build.patch:
+  Make sure tests are built only when needed, bug #343249. Pin slotted
+  dependencies to needed slots. Replace addpredict by appropriate env variable
+  adjustement and do the same for tests.
+
+  25 Nov 2010; Fabian Groffen <grobian@gentoo.org> webkit-gtk-1.2.5.ebuild,
+  +files/webkit-gtk-1.2.5-darwin-quartz.patch,
+  +files/webkit-gtk-1.2.5-darwin8.patch:
+  Re-introduce USE=aqua, add necessary patches
+
+  24 Nov 2010; Fabian Groffen <grobian@gentoo.org> webkit-gtk-1.2.5.ebuild:
+  Fix double-prefix issue, bug #346595
 
   07 Nov 2010; Samuli Suominen <ssuominen@gentoo.org>
   webkit-gtk-1.1.15.4.ebuild, webkit-gtk-1.2.3.ebuild,

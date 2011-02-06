@@ -1,6 +1,190 @@
 # ChangeLog for dev-vcs/git
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-vcs/git/ChangeLog,v 1.47 2010/11/11 03:26:16 sping Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-vcs/git/ChangeLog,v 1.85 2011/02/01 01:24:33 robbat2 Exp $
+
+*git-1.7.4 (01 Feb 2011)
+
+  01 Feb 2011; Robin H. Johnson <robbat2@gentoo.org> +git-1.7.4.ebuild:
+  Version bump.
+
+*git-1.7.4_rc3 (24 Jan 2011)
+
+  24 Jan 2011; Robin H. Johnson <robbat2@gentoo.org> +git-1.7.4_rc3.ebuild:
+  version bump
+
+*git-1.7.4_rc2 (15 Jan 2011)
+
+  15 Jan 2011; Robin H. Johnson <robbat2@gentoo.org> +git-1.7.4_rc2.ebuild,
+  git-9999.ebuild:
+  Version bump.
+
+  12 Jan 2011; Michael Haubenwallner <haubi@gentoo.org>
+  git-1.7.4_rc1-r2.ebuild:
+  aix lacks FNMATCH_CASEFOLD
+
+  10 Jan 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  git-1.7.3.5-r2.ebuild, git-1.7.4_rc1-r2.ebuild, git-9999.ebuild:
+  Call python_mod_optimize() and python_mod_cleanup() (bug #329479).
+
+  08 Jan 2011; Fabian Groffen <grobian@gentoo.org> git-1.7.3.5-r2.ebuild,
+  git-1.7.4_rc1-r2.ebuild, git-9999.ebuild:
+  Fix for Prefix
+
+  08 Jan 2011; Robin H. Johnson <robbat2@gentoo.org> git-1.7.3.4-r1.ebuild:
+  Backport bug #350330 automagic CVS to stable ebuild.
+
+  08 Jan 2011; Robin H. Johnson <robbat2@gentoo.org> git-1.7.3.5-r2.ebuild,
+  -git-1.7.3.5-r2.ebuild.orig, git-1.7.4_rc1-r2.ebuild, git-9999.ebuild:
+  Fix missing argument in call to python_convert_shebangs, and drop accidently
+  added .orig file.
+
+  07 Jan 2011; Robin H. Johnson <robbat2@gentoo.org> git-9999.ebuild:
+  Also import python improvements to 9999 ebuild.
+
+*git-1.7.4_rc1-r2 (07 Jan 2011)
+*git-1.7.3.5-r2 (07 Jan 2011)
+
+  07 Jan 2011; Robin H. Johnson <robbat2@gentoo.org> +git-1.7.3.5-r2.ebuild,
+  +git-1.7.3.5-r2.ebuild.orig, +git-1.7.4_rc1-r2.ebuild:
+  Bug #329479: improve python usage to new python eclass. Does not support
+  multiple active versions of python easily.
+
+  07 Jan 2011; Robin H. Johnson <robbat2@gentoo.org> git-1.7.4_rc1-r1.ebuild,
+  git-9999.ebuild:
+  Port bug #350330 fixes to newer ebuilds.
+
+  07 Jan 2011; Markos Chandras <hwoarang@gentoo.org> git-1.6.4.5.ebuild,
+  git-1.7.2.5.ebuild, git-1.7.3.4-r1.ebuild:
+  Stable on amd64 wrt bug #349045
+
+  07 Jan 2011; Robin H. Johnson <robbat2@gentoo.org> git-1.7.3.5-r1.ebuild,
+  +files/git-1.7.3.5-optional-cvs.patch:
+  Bug #350330: Avoid automagic CVS.
+
+  07 Jan 2011; Fabian Groffen <grobian@gentoo.org> git-1.7.3.5-r1.ebuild,
+  git-1.7.4_rc1-r1.ebuild, git-9999.ebuild:
+  Fix gitweb removal for Prefix
+
+*git-1.7.4_rc1-r1 (07 Jan 2011)
+
+  07 Jan 2011; Robin H. Johnson <robbat2@gentoo.org> +git-1.7.4_rc1-r1.ebuild,
+  git-9999.ebuild:
+  Port the 1.7.3.5-r1 Prefix USE=python code to newer ebuilds since Prefix team
+  has tested.
+
+*git-1.7.3.5-r1 (06 Jan 2011)
+
+  06 Jan 2011; Robin H. Johnson <robbat2@gentoo.org> +git-1.7.3.5-r1.ebuild:
+  Bug #320647 redux: Full ability to disable Python usage for Prefix (needed to
+  work around circular dependency loop).
+
+*git-1.7.4_rc1 (06 Jan 2011)
+
+  06 Jan 2011; Robin H. Johnson <robbat2@gentoo.org> +git-1.7.4_rc1.ebuild:
+  Version bump for new major release.
+
+*git-1.7.3.5 (06 Jan 2011)
+
+  06 Jan 2011; Robin H. Johnson <robbat2@gentoo.org> git-1.7.3.4-r1.ebuild,
+  +git-1.7.3.5.ebuild:
+  Version bump. Also backport minor improvement to testsuite running to get
+  cleaner repeat results.
+
+  01 Jan 2011; Raúl Porcel <armin76@gentoo.org> git-1.6.4.5.ebuild,
+  git-1.7.2.5.ebuild, git-1.7.3.4-r1.ebuild:
+  alpha/arm/ia64/s390/sh/sparc stable wrt #349045
+
+  31 Dec 2010; Christian Faulhammer <fauli@gentoo.org>
+  git-1.7.3.4-r1.ebuild:
+  stable x86, security bug 349045
+
+  29 Dec 2010; Robin H. Johnson <robbat2@gentoo.org> git-1.7.3.4-r1.ebuild,
+  +files/git-1.7.3.4-fix-perl-test-prereq.patch:
+  Bug #350075: t/t9001: fix missing prereq on some tests.
+
+  27 Dec 2010; Brent Baude <ranger@gentoo.org> git-1.6.4.5.ebuild,
+  git-1.7.2.5.ebuild, git-1.7.3.4-r1.ebuild:
+  marking -1.6.4.5 -1.7.2.5 -1.7.3.4-r1 ppc64 stable for bug 349045
+
+  26 Dec 2010; Robin H. Johnson <robbat2@gentoo.org> git-1.7.3.2.ebuild,
+  git-1.7.3.2-r1.ebuild, git-1.7.3.3.ebuild, git-1.7.3.4.ebuild,
+  git-1.7.3.4-r1.ebuild, +files/git-1.7.3.4-avoid-shell-issues.patch:
+  Bug #349083: Fix a false positive in the Git testsuite, triggered when the
+  portage user had a shell of /bin/false.
+
+  25 Dec 2010; Robin H. Johnson <robbat2@gentoo.org> git-1.7.2.5.ebuild,
+  git-1.7.3.4-r1.ebuild:
+  Minor fail with displaying aggregate-results to fix.
+
+  25 Dec 2010; Robin H. Johnson <robbat2@gentoo.org> git-1.7.2.5.ebuild,
+  git-1.7.3.4-r1.ebuild:
+  Improve output phase of src_test block for new stables.
+
+  23 Dec 2010; Jeroen Roovers <jer@gentoo.org> git-1.7.3.4-r1.ebuild:
+  Stable for HPPA PPC (bug #349045).
+
+  23 Dec 2010; Jeroen Roovers <jer@gentoo.org> git-1.6.4.5.ebuild,
+  git-1.7.2.5.ebuild:
+  Stable for PPC (bug #349045).
+
+  22 Dec 2010; Jeroen Roovers <jer@gentoo.org> git-1.7.2.5.ebuild:
+  Stable for HPPA (bug #349045).
+
+  22 Dec 2010; Jeroen Roovers <jer@gentoo.org> git-1.6.4.5.ebuild:
+  Stable for HPPA (bug #349045).
+
+  20 Dec 2010; Tobias Klausmann <klausman@gentoo.org> git-1.7.3.4-r1.ebuild:
+  Stable on alpha, bug #349045
+
+  20 Dec 2010; Tobias Klausmann <klausman@gentoo.org> git-1.7.2.5.ebuild:
+  Stable on alpha, bug #349045
+
+  20 Dec 2010; Tobias Klausmann <klausman@gentoo.org> git-1.6.4.5.ebuild:
+  Stable on alpha, bug #349045
+
+  20 Dec 2010; Robin H. Johnson <robbat2@gentoo.org> git-1.6.4.4.ebuild,
+  git-1.6.4.4-r1.ebuild, git-1.6.4.5.ebuild, git-1.7.2.2.ebuild,
+  git-1.7.2.3.ebuild, git-1.7.2.4.ebuild, git-1.7.2.4-r1.ebuild,
+  git-1.7.2.5.ebuild, git-1.7.3.2.ebuild:
+  Backport the doman cosmetic fix to ALL ebuilds since I got yet another bug
+  about it.
+
+  19 Dec 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> git-1.6.4.5.ebuild,
+  git-1.7.2.5.ebuild:
+  x86 stable wrt security bug #349045
+
+*git-1.7.3.4-r1 (19 Dec 2010)
+
+  19 Dec 2010; Robin H. Johnson <robbat2@gentoo.org> +git-1.7.3.4-r1.ebuild:
+  Bug #339278: Do not install gitweb with USE=-cgi. Bug #320647: Python path
+  for G/FreeBSD. Bug #326625: Perl path with local::lib. Bug #333405: no color
+  for test output to make log parsing easier.
+
+*git-1.7.2.5 (19 Dec 2010)
+*git-1.6.4.5 (19 Dec 2010)
+
+  19 Dec 2010; Robin H. Johnson <robbat2@gentoo.org> +git-1.6.4.5.ebuild,
+  +git-1.7.2.5.ebuild:
+  Version bump to official releases with gitweb XSS fixes, rather than our
+  revbumps with the patch.
+
+*git-1.7.3.4 (16 Dec 2010)
+*git-1.7.2.4-r1 (16 Dec 2010)
+*git-1.6.4.4-r1 (16 Dec 2010)
+
+  16 Dec 2010; Robin H. Johnson <robbat2@gentoo.org> +git-1.6.4.4-r1.ebuild,
+  +files/git-1.6.4.5-gitweb-cve-2010-3906.patch, +git-1.7.2.4-r1.ebuild,
+  +git-1.7.3.4.ebuild:
+  Version bump. Contains fix for CVE-2010-3906: gitweb XSS.
+
+*git-1.7.3.3 (07 Dec 2010)
+*git-1.7.2.4 (07 Dec 2010)
+
+  07 Dec 2010; Robin H. Johnson <robbat2@gentoo.org> -git-1.7.0.ebuild,
+  -git-1.7.1-r1.ebuild, -git-1.7.1.1.ebuild, -git-1.7.2.ebuild,
+  -git-1.7.2-r2.ebuild, +git-1.7.2.4.ebuild, -git-1.7.3.ebuild,
+  -git-1.7.3.1.ebuild, +git-1.7.3.3.ebuild:
+  Version bump and cleanup.
 
   11 Nov 2010; Sebastian Pipping <sping@gentoo.org> git-1.7.3.2-r1.ebuild:
   Merge changes to 9999 back into latest release ebuild.

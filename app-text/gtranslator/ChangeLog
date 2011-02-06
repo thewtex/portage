@@ -1,6 +1,22 @@
 # ChangeLog for app-text/gtranslator
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/gtranslator/ChangeLog,v 1.36 2010/05/31 21:16:51 eva Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/gtranslator/ChangeLog,v 1.39 2011/01/12 10:15:14 eva Exp $
+
+  12 Jan 2011; Gilles Dartiguelongue <eva@gentoo.org>
+  -gtranslator-1.9.11.ebuild, gtranslator-1.9.13.ebuild,
+  +files/gtranslator-1.9.13-desktop-database.patch:
+  Fix sandbox violation due to unneeded call to update-desktop-database, bug
+  #318797.
+
+  17 Dec 2010; Gilles Dartiguelongue <eva@gentoo.org>
+  gtranslator-1.9.13.ebuild:
+  TODO does not exist.
+
+*gtranslator-1.9.13 (09 Dec 2010)
+
+  09 Dec 2010; Gilles Dartiguelongue <eva@gentoo.org>
+  +gtranslator-1.9.13.ebuild:
+  Version bump. Port to GSettings.
 
   31 May 2010; Gilles Dartiguelongue <eva@gentoo.org>
   -gtranslator-1.9.9.ebuild, -gtranslator-1.9.10.ebuild:

@@ -1,10 +1,717 @@
 # ChangeLog for profile directory
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.4801 2010/11/20 12:30:22 hwoarang Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.5014 2011/02/04 22:49:49 reavertm Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  04 Feb 2011; Maciej Mrozowski <reavertm@gentoo.org> package.mask:
+  Unmask poppler-0.16.x
+
+  04 Feb 2011; Theo Chatzimichos <tampakrap@gentoo.org> package.mask:
+  Unmask KDE SC 4.6.0
+
+  04 Feb 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> package.mask:
+  Mask www-client/chromium dev channel release.
+
+  04 Feb 2011; Pacho Ramos <pacho@gentoo.org> package.mask:
+  Drop gossip package.mask entry and update emul-linux one.
+
+  04 Feb 2011; Pacho Ramos <pacho@gentoo.org>
+  arch/powerpc/ppc64/package.use.mask:
+  Mask mathml on ppc64 until needed deps are stabilized.
+
+  03 Feb 2011; Gilles Dartiguelongue <eva@gentoo.org> package.mask:
+  Install mask entries for new glib/gtk+.
+
+  02 Feb 2011; Markos Chandras <hwoarang@gentoo.org> package.mask:
+  broken libfm and pcmanfm are no longer on tree
+
+  02 Feb 2011; Theo Chatzimichos <tampakrap@gentoo.org> package.mask:
+  Sort the kde4.6 deps mask a bit
+
+  02 Feb 2011; Hans de Graaff <graaff@gentoo.org> package.mask:
+  Mask dev-ruby/IceRuby for removal.
+
+  02 Feb 2011; Vlastimil Babka <caster@gentoo.org> package.mask:
+  Unmask icedtea6-bin
+
+  02 Feb 2011; Vlastimil Babka <caster@gentoo.org> package.mask:
+  Mask icedtea6-bin-1.9.5 for distfiles propagation.
+
+  02 Feb 2011; Theo Chatzimichos <tampakrap@gentoo.org> base/package.use.mask,
+  base/use.mask:
+  mask ayatana use flag globally
+
+  02 Feb 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> package.mask:
+  Mask www-client/chromium dev channel release.
+
+  01 Feb 2011; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Lastrite net-dialup/slmodem.
+
+  31 Jan 2011; Andreas K. Huettel <dilfridge@gentoo.org> package.mask:
+  Added pmask for sci-libs/linux-gpib (about to be committed)
+
+  31 Jan 2011; Patrick Lauer <patrick@gentoo.org> package.mask:
+  Masking postgres 8.1 as it is EOL upstream
+
+  31 Jan 2011; Nirbheek Chauhan <nirbheek@gentoo.org> package.mask:
+  Mask sys-apps/gnome-disk-utility-2.32.1, which needs libnotify-0.7
+
+  31 Jan 2011; Nirbheek Chauhan <nirbheek@gentoo.org> package.mask:
+  Add clutter-gst-1.3 to the clutter mask
+
+  30 Jan 2011; Tony Vroon <chainsaw@gentoo.org> package.mask:
+  Mask Audacious & libmowgli alpha releases.
+
+  30 Jan 2011; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Lastrite net-p2p/lince.
+
+  30 Jan 2011; MATSUU Takuto <matsuu@gentoo.org> package.mask:
+  Mask >=net-dns/maradns-2 wrt security #352569.
+
+  30 Jan 2011; Hanno Boeck <hanno@gentoo.org> license_groups:
+  Add tanuki-community to GPL-compatible, this is just GPL and a BSD-alike
+  license.
+
+  30 Jan 2011; Hanno Boeck <hanno@gentoo.org> license_groups:
+  Add MaxMind2 license to FREE-DOCUMENTS.
+
+  30 Jan 2011; Ulrich Mueller <ulm@gentoo.org> package.mask:
+  Remove mask for virtual/emacs-24, removed from tree.
+
+  29 Jan 2011; Pacho Ramos <pacho@gentoo.org> package.mask:
+  Update emul-linux-x86-opengl mask.
+
+  29 Jan 2011; Hanno Boeck <hanno@gentoo.org> license_groups:
+  Add Allegro license to MISC-FREE, similar to public domain.
+
+  29 Jan 2011; Torsten Veller <tove@gentoo.org> package.mask:
+  Unmask =dev-lang/perl-5.12.3
+
+  27 Jan 2011; Jeroen Roovers <jer@gentoo.org> package.mask:
+  Unmask www-client/opera-11.01.
+
+  27 Jan 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> package.mask:
+  Mask www-client/chromium dev channel release.
+
+  26 Jan 2011; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Unmask gnome-mount for ~x86-fbsd and gnome-base/gvfs with USE hal.
+
+  26 Jan 2011; Alexey Shvetsov <alexxy@gentoo.org> package.mask:
+  Mask KDE SC 4.6.0 and its deps
+
+  26 Jan 2011; Pacho Ramos <pacho@gentoo.org> package.mask:
+  Mask gnome-extra/quick-lounge-applet due its gnome-panel-2.32 problems.
+
+  26 Jan 2011; Pacho Ramos <pacho@gentoo.org> package.mask:
+  Mask media-sound/last-exit for removal.
+
+  26 Jan 2011; Pacho Ramos <pacho@gentoo.org> package.mask:
+  Mask www-plugins/moonlight until works with mono-2.8 (bug #340375).
+
+  26 Jan 2011; Robin H. Johnson <robbat2@gentoo.org> thirdpartymirrors:
+  Update apache mirrors.
+
+  26 Jan 2011; Robin H. Johnson <robbat2@gentoo.org> thirdpartymirrors:
+  Update alsaproject mirrors.
+
+  26 Jan 2011; Robin H. Johnson <robbat2@gentoo.org> thirdpartymirrors:
+  Sort thirdpartymirrors back into alphabetical order.
+
+  25 Jan 2011; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Masking dev-util/plan9port for QA removal.
+
+  25 Jan 2011; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Lastrite sys-auth/policykit.
+
+  25 Jan 2011; Joerg Bornkessel <hd_brummy@gentoo.org> package.mask:
+  removed mask for gentoo-vdr-scripts-0.4.8_rc*
+
+  24 Jan 2011; Gilles Dartiguelongue <eva@gentoo.org> package.mask:
+  Add x11-libs/libnotify mask for early breakage detection.
+
+  24 Jan 2011; Andreas Proschofsky <suka@gentoo.org> package.mask:
+  Add mask for upcoming libreoffice package
+
+  24 Jan 2011; Tim Harder <radhermit@gentoo.org> updates/1Q-2011:
+  Move app-vim/latexsuite to app-vim/vim-latex (bug #289890).
+
+  23 Jan 2011; Joerg Bornkessel <hd_brummy@gentoo.org> package.mask:
+  media-tv/vdr-dvd-scripts masked for removal due 24 Feb 2011, not needed by
+  any other packages, bug #352558
+
+  23 Jan 2011; Joerg Bornkessel <hd_brummy@gentoo.org> package.mask:
+  media-tv/vdrplugin-rebuild masked for removal due 24 Feb 2011, not needed
+  by any other packages, bug *352552
+
+  23 Jan 2011; Gilles Dartiguelongue <eva@gentoo.org> package.mask:
+  Add net-misc/rygel mask for pre-gnome 3 releases.
+
+  23 Jan 2011; Maciej Mrozowski <reavertm@gentoo.org> package.mask:
+  Unmask split phonon
+
+  23 Jan 2010; Andreas Proschofsky <suka@gentoo.org> desc/linguas.desc:
+  Add a bunch of new locales for libreoffice-bin
+
+  23 Jan 2011; Maciej Mrozowski <reavertm@gentoo.org> package.mask:
+  Initial mask for split phonon inclusion
+
+  22 Jan 2011; Pacho Ramos <pacho@gentoo.org> arch/amd64/ChangeLog,
+  arch/amd64/package.use.mask:
+  Update wine package.use.mask entry.
+
+  22 Jan 2011; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Lastrite xfce-extra/thunar-thumbnailers.
+
+  22 Jan 2011; Markos Chandras <hwoarang@gentoo.org> package.mask:
+  Mask remmina and remmina-plugins for testing
+
+  22 Jan 2011; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Lastrite x11-themes/gion-icon-theme.
+
+  22 Jan 2011; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Lastrite app-editors/mousepad.
+
+  22 Jan 2011; Torsten Veller <tove@gentoo.org> package.mask:
+  Mask perl-5.12.3 until the virtuals are updated and for testing (change INC
+  order: prefer former vendor-/sitedirs to current priv-/archlib)
+
+  22 Jan 2011; Ryan Hill <dirtyepic@gentoo.org> package.mask:
+  Mask development versions due to unstable API as requested by leio
+  >=dev-python/wxpython-2.9 >=x11-libs/wxGTK-2.9
+
+  22 Jan 2011; Sébastien Fabbro <bicatali@gentoo.org> package.mask:
+  masked sci-physics/geant4.9.4 beta cmake version
+
+  22 Jan 2011; Sébastien Fabbro <bicatali@gentoo.org> package.mask:
+  csparse now removed
+
+  21 Jan 2011; Tim Harder <radhermit@gentoo.org> package.mask:
+  Unmask mail-mta/postfix-2.8.0.
+
+  21 Jan 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> package.mask:
+  Mask www-client/chromium dev channel release.
+
+  21 Jan 2011; Anthony G. Basile <blueness@gentoo.org> package.mask:
+  Replaced by dev-lua/luaevent; masked for removal in 30 days; bug #333097
+
+  20 Jan 2011; Alexis Ballier <aballier@gentoo.org> package.mask:
+  unmask lwt, ocsigen 1.3.4 is fine with it
+
+  20 Jan 2011; Diego E. Pettenò <flameeyes@gentoo.org> license_groups:
+  Add intel-ucode to BINARY_REDISTRIBUTABLE licenses.
+
+  20 Jan 2011; Andreas K. Huettel <dilfridge@gentoo.org> updates/1Q-2011:
+  package move: rename kcm_tablet to wacomtablet to reflect upstream name
+  change
+
+  20 Jan 2011; Peter Volkov <pva@gentoo.org> package.mask:
+  Unmask net-analyzer/ipcad as it is fixed, #335592.
+
+  20 Jan 2011; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Remove deleted packages from mask.
+
+  19 Jan 2011; Joerg Bornkessel <hd_brummy@gentoo.org> package.mask:
+  removed mask dev-libs/tntnet-2.0 dev-libs/cxxtools-2.0
+
+  19 Jan 2011; Joerg Bornkessel <hd_brummy@gentoo.org> package.mask:
+  masked dev-libs/tntnet-2.0 dev-libs/cxxtools-2.0, bug #331417
+
+  19 Jan 2011; Dane Smith <c1pher@gentoo.org> package.mask:
+  Mask net-analyzer/ipcad, net-dns/ez-ipupdate, app-cdr/pxlinux,
+  app-cdr/cdrdetect, app-emulation/basiliskII-jit for removal.
+
+  18 Jan 2011; Christian Faulhammer <fauli@gentoo.org> package.mask:
+  Unmask dev-lang/erlang 14.2.1, all issues resolved
+
+  18 Jan 2011; Joerg Bornkessel <hd_brummy@gentoo.org> package.mask:
+  media-plugins/vdr-avolctl masked for removel on 18 Feb 2011
+
+  18 Jan 2011; Tim Harder <radhermit@gentoo.org> package.mask:
+  Mask mail-mta/postfix-2.8.0 release candidates.
+
+  17 Jan 2011; Hans de Graaff <graaff@gentoo.org> package.mask,
+  profiles.desc:
+  Remove ruby-rrd mask, package has been removed.
+
+  17 Jan 2011; Pacho Ramos <pacho@gentoo.org> package.mask:
+  Mask >=dev-cpp/libxmlpp-2.33.1 for bug #350150
+
+  16 Jan 2011; Markos Chandras <hwoarang@gentoo.org> package.mask:
+  Mask lessfs-1.3.1
+
+  15 Jan 2011; Torsten Veller <tove@gentoo.org> updates/2Q-2005:
+  Remove old dev-perl/Text-CSV to dev-perl/Text-CSV_XS move.
+  Both exist in the tree (#351760)
+
+  15 Jan 2011; Markos Chandras <hwoarang@gentoo.org> package.mask:
+  Mask old net-misc/hamachi client for removal
+
+  15 Jan 2011; Theo Chatzimichos <tampakrap@gentoo.org> package.mask:
+  Remove amarok mask, released
+
+  15 Jan 2011; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Masking net-print/gqueue for QA removal.
+
+  13 Jan 2011; Samuli Suominen <ssuominen@gentoo.org> desc/xfce_plugins.desc:
+  Update xfce_plugins.desc for app-office/orage.
+
+  12 Jan 2011; Andreas K. Huettel <dilfridge@gentoo.org> package.mask:
+  Starting with KOffice version 2.2.0, the functionality of
+  app-office/kchart is provided by the app-office/koffice-libs ebuild. So,
+  add pmask as incentive to unmerge.
+
+  12 Jan 2011; Theo Chatzimichos <tampakrap@gentoo.org> package.mask:
+  Mask Amarok 2.4.0, not released yet
+
+  12 Jan 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> package.mask:
+  Mask www-client/chromium dev channel release.
+
+  12 Jan 2011; <nirbheek@gentoo.org> package.mask:
+  Add pyclutter-1.3 to the >=clutter-1.4 mask
+
+  11 Jan 2011; Samuli Suominen <ssuominen@gentoo.org> thirdpartymirrors:
+  Update Xfce mirrors wrt upstream http://www.xfce.org/download/
+
+  11 Jan 2011; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Masking net-mail/cyrus-imspd for QA removal.
+
+  10 Jan 2011; Markos Chandras <hwoarang@gentoo.org>
+  arch/amd64/no-multilib/package.mask, features/64bit-native/package.mask:
+  Masking net-misc/ps3mediaserver for amd64 no-multilib profiles
+
+  10 Jan 2011; Fabian Groffen <grobian@gentoo.org> use.desc:
+  Update description for aqua USE-flag
+
+  10 Jan 2011; Anthony G. Basile <blueness@gentoo.org> package.mask:
+  Masking =net-misc/tor-0.2.2* until libevent-2* is unmasked (bug #333077)
+
+  10 Jan 2011; Jory A. Pratt <anarchy@gentoo.org> package.mask:
+  Remove wireless-tools mask on 30_pre* releases.
+
+  10 Jan 2011; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Masking app-i18n/skktools for QA removal.
+
+  10 Jan 2011; Pacho Ramos <pacho@gentoo.org> arch/amd64/ChangeLog,
+  arch/amd64/package.use.mask:
+  Mask nls USE flag for wine until gettext is included in emul set (bug
+  #351224).
+
+  10 Jan 2011; Zac Medico <zmedico@gentoo.org> updates/3Q-2008:
+  Remove obsolete virtualbox and virtualbox-additions package moves from
+  3Q-2008 since they are reversed in 1Q-2011.
+
+  09 Jan 2011; Markos Chandras <hwoarang@gentoo.org> package.mask:
+  Unmask qbittorrent
+
+  09 Jan 2011; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  package.mask:
+  [package.mask] Masked KDE-4.5.5 while moving it into the tree.
+
+  08 Jan 2011; Jeroen Roovers <jer@gentoo.org> package.mask:
+  Mask www-client/opera-11.01 and up.
+
+  08 Jan 2011; Markos Chandras <hwoarang@gentoo.org> package.mask:
+  Mask qbittorrent RC releases
+
+  08 Jan 2011; Robin H. Johnson <robbat2@gentoo.org> package.mask:
+  Block virtual/mysql-5.2 that is used in the overlay.
+
+  07 Jan 2011; Sebastian Pipping <sping@gentoo.org> package.mask:
+  Unmask rss2email >=2.69, transition from 2.65 to 2.69 got basic testing now
+
+  07 Jan 2011; Tiziano Müller <dev-zero@gentoo.org> package.mask:
+  Mask version bump for uwsgi for testing of the gcc compilation and since I
+  added apache-support
+
+  06 Jan 2011; Tiziano Müller <dev-zero@gentoo.org> package.mask:
+  Added masks for boost-1.45* stuff
+
+  06 Jan 2011; Samuli Suominen <ssuominen@gentoo.org> base/virtuals:
+  virtual/fam was converted to new-style.
+
+  06 Jan 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> package.mask:
+  Mask www-client/chromium dev channel release.
+
+  06 Jan 2011; Torsten Veller <tove@gentoo.org> package.mask:
+  Mask <dev-lang/perl-5.12.2 and <sys-devel/libperl-5.10.1
+
+  06 Jan 2011; Alexey Shvetsov <alexxy@gentoo.org> package.mask:
+  Drop drupal 7.0_rc mask
+
+  05 Jan 2011; Michał Górny <mgorny@gentoo.org> package.mask:
+  Mask the live ebuild for net-im/ekg2 for removal.
+
+  05 Jan 2011; Tiziano Müller <dev-zero@gentoo.org> package.mask:
+  Unmasked stable versions of spice and spice-protocol as well as the slotted
+  celt-0.5.1.3.
+
+  04 Jan 2011; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Lastrite sys-fs/gnomevfs-mount.
+
+  04 Jan 2011; Markos Chandras <hwoarang@gentoo.org> package.mask:
+  app-emulation/ies4linux removed. Bug #344233
+
+  04 Jan 2011; Gilles Dartiguelongue <eva@gentoo.org> package.mask:
+  Remove dev-cpp/libgtksourceviewmm mask, package has been removed, bug
+  #298158.
+
+  03 Jan 2011; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Lastrite thunar-vcs-plugin wrt #350358.
+
+  01 Jan 2011; Markus Meier <maekke@gentoo.org> package.mask:
+  remove media-gfx/2010.4.0 mask, as final version is in tree
+
+  31 Dec 2010; Hans de Graaff <graaff@gentoo.org> package.mask,
+  profiles.desc:
+  Remove dev-lang/ruby-1.8.6 mask, package has been removed.
+
+  30 Dec 2010; Eray Aslan <eras@gentoo.org> package.mask:
+  Drop app-crypt/mit-krb5-1.9_beta* entry. No longer in the tree.
+
+  29 Dec 2010; Thomas Sachau (Tommy[D]) <tommy@gentoo.org> package.mask:
+  Mask =app-text/poppler-0.16.0 until depending packages are fixed
+
+  29 Dec 2010; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Lastrite thunar-media-tags-plugin.
+
+  29 Dec 2010; Peter Volkov <pva@gentoo.org> updates/4Q-2010:
+  move app-dicts/goldendict app-text/goldendict, #347535
+
+  29 Dec 2010; Peter Volkov <pva@gentoo.org> updates/4Q-2010:
+  move net-dns/shelldap net-nds/shelldap, #347643
+
+  28 Dec 2010; Pacho Ramos <pacho@gentoo.org> package.mask:
+  Drop dev-dotnet/ant-dotnet entry, it was removed.
+
+  28 Dec 2010; Pacho Ramos <pacho@gentoo.org> package.mask:
+  Mask net-im/gossip for removal.
+
+  28 Dec 2010; Kacper Kowalik <xarthisius@gentoo.org> package.mask:
+  Lastrite sys-cluster/tentakel
+
+  28 Dec 2010; Hans de Graaff <graaff@gentoo.org> package.mask:
+  Unmask Rails 3 components.
+
+  28 Dec 2010; Hans de Graaff <graaff@gentoo.org> package.mask:
+  Unmask rack 1.2.1 since bug 341941 is now resolved.
+
+  27 Dec 2010; Samuli Suominen <ssuominen@gentoo.org> thirdpartymirrors:
+  List three sys-libs/slang mirrors.
+
+  26 Dec 2010; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Masking dev-util/devel-chroots for QA removal.
+
+  26 Dec 2010; Samuli Suominen <ssuominen@gentoo.org>
+  targets/desktop/make.defaults:
+  Enable USE="udev" by default wrt #347604 by Alessandro Capogna.
+
+  26 Dec 2010; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Lastrite gnome-base/gnome-mount wrt #349012.
+
+  25 Dec 2010; Rafael G. Martins <rafaelmartins@gentoo.org> package.mask:
+  Unmasked sci-electronics/kicad live ebuild
+
+  25 Dec 2010; Alexis Ballier <aballier@gentoo.org> package.mask:
+  mask lwt-2.2.0, breaks ocsigen
+
+  25 Dec 2010; Sebastian Pipping <sping@gentoo.org> thirdpartymirrors:
+  Remove cran thirdparty mirror (domain up for sale): http://cran.r-mirror.de
+
+  24 Dec 2010; Matti Bickel <mabi@gentoo.org> base/make.defaults:
+  Switch PHP_TARGETS to php5-3
+
+  24 Dec 2010; <nirbheek@gentoo.org> package.mask:
+  Also mask >=media-libs/clutter-gtk-0.90
+
+  24 Dec 2010; <nirbheek@gentoo.org> thirdpartymirrors:
+  Remove outdated gnome mirrors from thirdpartymirrors
+
+  23 Dec 2010; Joerg Bornkessel <hd_brummy@gentoo.org> package.mask:
+  removed block for removal vdr-audiorecorder-0.1.0_pre6, bug #277577
+
+  22 Dec 2010; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  targets/desktop/package.use:
+  Enable hal for xorg-server-1.7 input device autoconfiguration in the
+  desktop profile, bug #349331
+
+  20 Dec 2010; Markos Chandras <hwoarang@gentoo.org> package.mask:
+  Mask qbittorrent beta packages
+
+  19 Dec 2010; Alexey Shvetsov <alexxy@gentoo.org> package.mask:
+  Mask drupal prereleases
+
+  19 Dec 2010; Peter Volkov <pva@gentoo.org> package.mask:
+  Unmask openvz-sources-2.6.32
+
+  19 Dec 2010; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Lastrite app-misc/hal-cups-utils wrt #344313.
+
+  19 Dec 2010; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Lastrite gnome-extra/gnome-device-manager.
+
+  18 Dec 2010; Samuli Suominen <ssuominen@gentoo.org>
+  targets/desktop/gnome/make.defaults, targets/desktop/gnome/package.use,
+  targets/desktop/make.defaults, targets/desktop/package.use:
+  Move generic USE flags like "policykit" from desktop/gnome to desktop. Remove
+  "hal" from default USE flags.
+
+  18 Dec 2010; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Lastrite rox-base/devtray wrt #313431.
+
+  18 Dec 2010; Sergei Trofimovich <slyfox@gentoo.org> package.mask:
+  Mask dev-haskell/hsshellscript (poor quality).
+
+  18 Dec 2010; Jeroen Roovers <jer@gentoo.org> package.mask:
+  Add bug number to libevent-2 mask description.
+
+  18 Dec 2010; Hans de Graaff <graaff@gentoo.org> package.mask:
+  Mask virtual/rubygems for removal.
+
+  17 Dec 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> package.mask:
+  Mask dev-lang/v8 dev channel versions.
+
+  17 Dec 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> package.mask:
+  Mask www-client/chromium dev channel release.
+
+  17 Dec 2010; <fauli@gentoo.org> package.mask:
+  remove mask for sys-block/iscsitarget-1.4.20.2, enough tested
+
+  17 Dec 2010; <fauli@gentoo.org> package.mask:
+  Mask dev-lang/erlang-14.2.1 because of build failures
+
+  16 Dec 2010; Gilles Dartiguelongue <eva@gentoo.org> package.mask:
+  Clean up after package removal.
+
+  16 Dec 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> package.mask:
+  Unmask www-client/chromium beta channel release (and also dev-lang/v8 and
+  dev-util/chromium-tools).
+
+  16 Dec 2010; Jeroen Roovers <jer@gentoo.org> package.mask:
+  Remove =www-client/opera-{10.70,11} mask.
+
+  16 Dec 2010; Alexis Ballier <aballier@gentoo.org> package.mask:
+  ha-propser is gone, remove the mask
+
+  15 Dec 2010; Christian Faulhammer <fauli@gentoo.org> package.mask:
+  Mark newer sys-block/iscsitarget for testing
+
+  14 Dec 2010; Fabian Groffen <grobian@gentoo.org> arch.list, profiles.desc:
+  sparc64-freebsd profile was added
+
+  14 Dec 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> package.mask:
+  Mask www-client/chromium dev channel release.
+
+  13 Dec 2010; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Lastrite net-print/xfprint.
+
+  13 Dec 2010; Tiziano Müller <dev-zero@gentoo.org> package.mask:
+  Added mask for nginx-0.8.53-r1 to test the passenger-3.0.1 module
+
+  10 Dec 2010; Alexey Shvetsov <alexxy@gentoo.org> package.mask:
+  update chromium p.mask
+
+  10 Dec 2010; Pacho Ramos <pacho@gentoo.org> thirdpartymirrors:
+  Drop ftp.no.gnome.org as it's unreachable.
+
+  10 Dec 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> package.mask:
+  Mask www-client/chromium dev channel release.
+
+  09 Dec 2010; Alex Alexander <wired@gentoo.org> package.mask:
+  lastrite: dev-java/qtjambi. requires Qt 4.5.
+
+  08 Dec 2010; Ulrich Mueller <ulm@gentoo.org> package.mask:
+  Remove mask for x11-libs/openmotif-compat, package has been removed.
+
+  08 Dec 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  package.mask:
+  Delete old entries.
+
+  07 Dec 2010; Hans de Graaff <graaff@gentoo.org> package.mask:
+  Add activemodel to the Rails mask.
+
+  07 Dec 2010; Magnus Granberg <zorry@gentoo.org> hardened/linux/make.defaults
+  Add -jit as defult use-flag
+
+  07 Dec 2010; Justin Lecher <jlec@gentoo.org> package.mask:
+  mask and Last rite dev-tcltk/tclxml-expat
+
+  07 Dec 2010; Gilles Dartiguelongue <eva@gentoo.org> package.mask:
+  Remove Gnome 2.32 mask except for libbonobo 2.32 which is too broken to be
+  used, at least for me.
+
+  07 Dec 2010; Hans de Graaff <graaff@gentoo.org> package.mask:
+  Add dev-ruby/rack to the Rails mask.
+
+  07 Dec 2010; Hans de Graaff <graaff@gentoo.org> package.mask:
+  Mask Rails 3 components until issues with it have beenfixed.
+
+  07 Dec 2010; Matt Turner <mattst88@gentoo.org> profiles.desc:
+  Added default/linux/mips/10.0 to profiles.desc
+
+  07 Dec 2010; Ulrich Mueller <ulm@gentoo.org> package.mask:
+  Remove mask for app-emacs/proofgeneral-4.0.
+
+  07 Dec 2010; Joerg Bornkessel <hd_brummy@gentoo.org> package.mask:
+  masked media-tv/gentoo-vdr-scripts-0.4.8_rc2, #263956
+
+  06 Dec 2010; Hans de Graaff <graaff@gentoo.org> package.mask:
+  Mask dev-lang/wml for removal.
+
+  06 Dec 2010; Markos Chandras <hwoarang@gentoo.org> package.mask:
+  Unmask qbittorrent
+
+  06 Dec 2010; Christian Faulhammer <fauli@gentoo.org> package.mask:
+  Mask app-emacs/proofgeneral-4.0 for testing
+
+  05 Dec 2010; Joerg Bornkessel <hd_brummy@gentoo.org> package.mask:
+  # masked for testing #30078
+  =media-tv/gentoo-vdr-scipts-0.4.8_rc1
+
+  05 Dec 2010; <nirbheek@gentoo.org> package.mask:
+  Update clutter-1.4 mask to include 1.5, and update the masking message
+
+  04 Dec 2010; Pacho Ramos <pacho@gentoo.org> package.mask:
+  Update Gnome 2.32 mask for empathy.
+
+  04 Dec 2010; Pacho Ramos <pacho@gentoo.org> package.mask:
+  Move packages that will need to be unmasked together with Gnome 2.32 to that
+  section.
+
+  04 Dec 2010; Pacho Ramos <pacho@gentoo.org> base/package.use.mask:
+  Only mask 'vala' USE flag for <net-libs/telepathy-glib-0.12.5 (needed for bug
+  #341291).
+
+  04 Dec 2010; Markos Chandras <hwoarang@gentoo.org> package.mask:
+  Masking ies4linux for removal. Bug #344233
+
+  03 Dec 2010; Hans de Graaff <graaff@gentoo.org> package.mask:
+  Mask dev-ruby/rrd for removal.
+
+  02 Dec 2010; Alexey Shvetsov <alexxy@gentoo.org> arch/powerpc/package.mask,
+  hardened/linux/powerpc/package.mask:
+  Mask KDE SC 4.5 due to missing deps on ppc ppc64 and x86-fbsd. bug #336158
+
+  02 Dec 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> package.mask:
+  Mask www-client/chromium dev channel release.
+
+  02 Dec 2010; Robin H. Johnson <robbat2@gentoo.org> desc/apache2_modules.desc:
+  Bug #347227: add in mod_reqtimeout (for use on Gentoo Infra). Also add
+  mod_proxy_scgi.
+
+  01 Dec 2010; Michał Januszewski <spock@gentoo.org> package.mask:
+  Mask the latest beta drivers from NVIDIA.
+
+  01 Dec 2010; Joerg Bornkessel <hd_brummy@gentoo.org> package.mask:
+  removed ebuild mask, depend on bug 335785
+
+  01 Dec 2010; Ulrich Mueller <ulm@gentoo.org> license_groups:
+  Add CPL-0.5 to the MISC-FREE license group, as it is almost identical with
+  CPL-1.0.
+
+  30 Nov 2010; Peter Volkov <pva@gentoo.org> package.mask:
+  Unmask wireshark-1.4*, stable version in tree now.
+
+  30 Nov 2010; Justin Lecher <jlec@gentoo.org> ChangeLog:
+  Moving app-admin/patchelf to dev-util/patchelf
+
+  30 Nov 2010; Zac Medico <zmedico@gentoo.org> license_groups:
+  Bug #347219 - Add LPPL-1.3b to MISC-FREE group.
+
+  28 Nov 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> package.mask:
+  Mask dev-util/chromium-tools.
+
+  28 Nov 2010; Alex Legler <a3li@gentoo.org> ChangeLog:
+  Mask horde-{groupware,webmail} which have multiple sec issues and no real
+  maintainer.
+
+  27 Nov 2010; Markus Meier <maekke@gentoo.org> package.mask:
+  add hugin-2010.4 testing mask
+
+  27 Nov 2010; Lennart Kolmodin <kolmodin@gentoo.org> package.mask:
+  Remove masking of dev-lang/ghc-6.12.1 and dev-lang/ghc-6.12.2, they've
+  been
+  removed from portage.
+
+  27 Nov 2010; Markos Chandras <hwoarang@gentoo.org> package.mask:
+  Mask qbittorrent rc releases. Remove masking for live ebuild
+
+  27 Nov 2010; Sebastian Pipping <sping@gentoo.org> package.mask:
+  app-text/xmlstarlet-1.0.3: Mask upcoming bump as test suite one error
+
+  25 Nov 2010; Anthony G. Basile <blueness@gentoo.org>
+  hardened/amd64/deprecated, hardened/amd64/multilib/deprecated,
+  +hardened/linux/amd64/10.0/deprecated,
+  +hardened/linux/amd64/10.0/desktop/deprecated,
+  hardened/linux/amd64/10.0/desktop/parent,
+  +hardened/linux/amd64/10.0/developer/deprecated,
+  hardened/linux/amd64/10.0/developer/parent,
+  -hardened/linux/amd64/10.0/make.defaults,
+  +hardened/linux/amd64/10.0/no-multilib/deprecated,
+  -hardened/linux/amd64/10.0/no-multilib/make.defaults,
+  hardened/linux/amd64/10.0/no-multilib/parent,
+  hardened/linux/amd64/10.0/parent,
+  +hardened/linux/amd64/10.0/server/deprecated,
+  hardened/linux/amd64/10.0/server/parent,
+  -hardened/linux/amd64/2008.0/deprecated,
+  -hardened/linux/amd64/2008.0/desktop/deprecated,
+  -hardened/linux/amd64/2008.0/desktop/make.defaults,
+  -hardened/linux/amd64/2008.0/desktop/parent,
+  -hardened/linux/amd64/2008.0/developer/deprecated,
+  -hardened/linux/amd64/2008.0/developer/parent,
+  -hardened/linux/amd64/2008.0/make.defaults,
+  -hardened/linux/amd64/2008.0/no-multilib/deprecated,
+  -hardened/linux/amd64/2008.0/no-multilib/make.defaults,
+  -hardened/linux/amd64/2008.0/no-multilib/parent,
+  -hardened/linux/amd64/2008.0/parent,
+  -hardened/linux/amd64/2008.0/server/deprecated,
+  -hardened/linux/amd64/2008.0/server/parent,
+  +hardened/linux/amd64/desktop/parent,
+  +hardened/linux/amd64/developer/parent,
+  hardened/linux/amd64/make.defaults,
+  +hardened/linux/amd64/no-multilib/make.defaults,
+  +hardened/linux/amd64/no-multilib/parent, hardened/linux/amd64/parent,
+  +hardened/linux/amd64/server/parent, profiles.desc:
+  Update hardened/linux/amd64 profile, bug #344861
+
+  25 Nov 2010; Sebastian Pipping <sping@gentoo.org> package.mask:
+  Mask upcoming net-mail/rss2email-2.69 experimental bump
+
+  24 Nov 2010; Eray Aslan <eras@gentoo.org> package.mask:
+  Masking beta versions =app-crypt/mit-krb5-1.9_beta*
+
+  23 Nov 2010; Markos Chandras <hwoarang@gentoo.org> package.mask:
+  Remove elltube entry
+
+  23 Nov 2010; Jeroen Roovers <jer@gentoo.org> package.mask:
+  Remove development version of net-ftp/lftp.
+
+  23 Nov 2010; Gilles Dartiguelongue <eva@gentoo.org> package.mask:
+  Add mask for dev-cpp/libgtksourceviewmm.
+
+  23 Nov 2010; Tomáš Chvátal <scarabeus@gentoo.org> package.mask:
+  More finegrain the openttd pmask entry.
+
+  22 Nov 2010; Christian Faulhammer <fauli@gentoo.org> package.mask:
+  Raise mask for Claws Mail 3.7.7 and friends, all plugins bumped
+
+  22 Nov 2010; Christian Faulhammer <fauli@gentoo.org> package.mask:
+  Mask Claws Mail 3.7.7 and plug-ins until they are bumped
+
+  21 Nov 2010; Gilles Dartiguelongue <eva@gentoo.org> desc/cameras.desc:
+  Add jl2005c driver, clean up old descriptions.
+
+  21 Nov 2010; Ryan Hill <dirtyepic@gentoo.org> package.mask:
+  Unmask gcc-4.5.1.
+
+  21 Nov 2010; Markos Chandras <hwoarang@gentoo.org> package.mask:
+  Unmask fail2ban
+
+  21 Nov 2010; Pacho Ramos <pacho@gentoo.org> arch/amd64/ChangeLog,
+  arch/amd64/package.use.mask:
+  Mask gstreamer USE flag on wine due bug #346077
 
   20 Nov 2010; Markos Chandras <hwoarang@gentoo.org> package.mask:
   Masking qbittorrent live ebuild

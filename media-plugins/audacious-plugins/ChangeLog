@@ -1,6 +1,40 @@
 # ChangeLog for media-plugins/audacious-plugins
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/audacious-plugins/ChangeLog,v 1.187 2010/11/09 19:51:45 jer Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/audacious-plugins/ChangeLog,v 1.192 2011/01/30 20:29:13 chainsaw Exp $
+
+*audacious-plugins-2.5_alpha1 (30 Jan 2011)
+
+  30 Jan 2011; Tony Vroon <chainsaw@gentoo.org>
+  +audacious-plugins-2.5_alpha1.ebuild:
+  This is to become 2.5 with time. Masked for your protection. If you unmask &
+  use this, note that bugs go upstream at http://jira.atheme.org/ for the
+  Audacious or Audacious-Plugins project as appropriate. Replace make with
+  emake as suggested by Agostino "ago" Sarubbo in bug #349858.
+
+*audacious-plugins-2.4.3-r1 (29 Jan 2011)
+
+  29 Jan 2011; Tony Vroon <chainsaw@gentoo.org>
+  +audacious-plugins-2.4.3-r1.ebuild:
+  Make libsamplerate dependency both explicit & optional. Patch by Rafał Mużyło
+  closes bug #348837 by Mike Gilbert.
+
+*audacious-plugins-2.4.3 (12 Jan 2011)
+
+  12 Jan 2011; Tony Vroon <chainsaw@gentoo.org>
+  +audacious-plugins-2.4.3.ebuild:
+  Version bump. Many bug fixes as usual.
+
+  04 Jan 2011; Michael Weber <xmw@gentoo.org> audacious-plugins-2.2-r2.ebuild,
+  audacious-plugins-2.4.0.ebuild:
+  sparc stable, dropping keywords (bug 297894)
+
+*audacious-plugins-2.4.2 (07 Dec 2010)
+
+  07 Dec 2010; <chainsaw@gentoo.org> audacious-plugins-2.2-r2.ebuild,
+  -audacious-plugins-2.3.ebuild, -audacious-plugins-2.4_rc3.ebuild,
+  +audacious-plugins-2.4.2.ebuild:
+  Third release on the 2.4 branch. A timing bug in ALSA Dmix could cause high
+  CPU usage during playback. A workaround is now in place.
 
   09 Nov 2010; Jeroen Roovers <jer@gentoo.org>
   audacious-plugins-2.4.0.ebuild:

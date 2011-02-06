@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-extra/gnome-games/gnome-games-2.30.2-r1.ebuild,v 1.8 2010/10/17 15:45:35 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/gnome-games/gnome-games-2.30.2-r1.ebuild,v 1.10 2011/01/24 16:50:50 eva Exp $
 
 EAPI="2"
 GCONF_DEBUG="no"
@@ -26,23 +26,23 @@ COMMON_DEPEND="
 	>=dev-games/libggz-0.0.14
 	>=dev-games/ggz-client-libs-0.0.14
 	>=dev-libs/dbus-glib-0.75
-	>=dev-libs/glib-2.6.3
+	>=dev-libs/glib-2.6.3:2
 	>=dev-libs/libxml2-2.4.0
 	>=dev-python/gconf-python-2.17.3
-	>=dev-python/pygobject-2
-	>=dev-python/pygtk-2.14
+	>=dev-python/pygobject-2:2
+	>=dev-python/pygtk-2.14:2
 	>=dev-python/pycairo-1
 	>=gnome-base/gconf-2
 	>=gnome-base/librsvg-2.14
 	>=x11-libs/cairo-1
-	>=x11-libs/gtk+-2.16
+	>=x11-libs/gtk+-2.16:2
 	x11-libs/libSM
 
 	artworkextra? ( gnome-extra/gnome-games-extra-data )
 	clutter? (
 		>=dev-libs/gobject-introspection-0.6.3
 		>=media-libs/clutter-1.0.0:1.0
-		>=media-libs/clutter-gtk-0.10.2:1.0 )
+		>=media-libs/clutter-gtk-0.10.2:0.10 )
 	guile? ( >=dev-scheme/guile-1.6.5[deprecated,regex] )
 	opengl? (
 		dev-python/pygtkglext
@@ -54,7 +54,7 @@ RDEPEND="${COMMON_DEPEND}
 		dev-libs/seed
 		x11-libs/gtk+[introspection]
 		>=media-libs/clutter-1.0.0:1.0[introspection]
-		>=media-libs/clutter-gtk-0.10.2:1.0[introspection] )"
+		>=media-libs/clutter-gtk-0.10.2:0.10[introspection] )"
 DEPEND="${COMMON_DEPEND}
 	>=sys-devel/autoconf-2.53
 	>=dev-util/pkgconfig-0.15

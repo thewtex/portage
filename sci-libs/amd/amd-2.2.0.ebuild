@@ -1,8 +1,8 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/amd/amd-2.2.0.ebuild,v 1.17 2010/07/09 10:13:00 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/amd/amd-2.2.0.ebuild,v 1.20 2010/12/22 18:18:12 bicatali Exp $
 
-inherit autotools eutils fortran
+inherit autotools eutils toolchain-funcs
 
 MY_PN=AMD
 DESCRIPTION="Library to order a sparse matrix prior to Cholesky factorization"
@@ -13,17 +13,17 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="alpha amd64 hppa ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~x86-macos"
 IUSE="doc"
+
 DEPEND="sci-libs/ufconfig"
+RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${MY_PN}"
-
-FORTRAN="gfortran g77 ifc"
 
 src_unpack() {
 	unpack ${A}
 	cd "${S}"
-	epatch "${FILESDIR}"/${P}-autotools.patch
-	epatch "${FILESDIR}"/${P}-tests.patch
+	epatch \
+		"${FILESDIR}"/${P}-autotools.patch
 	eautoreconf
 }
 

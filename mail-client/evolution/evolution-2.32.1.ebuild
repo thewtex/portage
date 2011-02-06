@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/evolution/evolution-2.32.1.ebuild,v 1.2 2010/11/20 09:50:39 nirbheek Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-client/evolution/evolution-2.32.1.ebuild,v 1.5 2011/01/15 19:56:39 nirbheek Exp $
 
 EAPI="3"
 GCONF_DEBUG="no"
@@ -9,8 +9,6 @@ PYTHON_DEPEND="python? 2:2.4"
 inherit autotools flag-o-matic gnome2 python versionator
 
 MY_MAJORV=$(get_version_component_range 1-2)
-# Redefined due to bug 345831, remove for next release cycle
-MY_MAJORV="2.32.1"
 
 DESCRIPTION="Integrated mail, addressbook and calendaring functionality"
 HOMEPAGE="http://www.gnome.org/projects/evolution/"
@@ -18,7 +16,7 @@ HOMEPAGE="http://www.gnome.org/projects/evolution/"
 LICENSE="GPL-2 LGPL-2 OPENLDAP"
 SLOT="2.0"
 KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
-IUSE="clutter connman crypt doc gstreamer kerberos ldap networkmanager profile python ssl"
+IUSE="clutter connman crypt doc gstreamer kerberos ldap networkmanager python ssl"
 
 # We need a graphical pinentry frontend to be able to ask for the GPG
 # password from inside evolution, bug 160302
@@ -32,11 +30,11 @@ RDEPEND=">=dev-libs/glib-2.25.12:2
 	>=x11-libs/gtk+-2.20.0:2
 	>=dev-libs/libunique-1.1.2
 	>=gnome-base/gnome-desktop-2.26:2
-	>=dev-libs/libgweather-2.25.3
+	>=dev-libs/libgweather-2.25.3:2
 	media-libs/libcanberra[gtk]
 	>=x11-libs/libnotify-0.3
-	>=gnome-extra/evolution-data-server-${MY_MAJORV}[weather]
-	>=gnome-extra/gtkhtml-3.31.90
+	>=gnome-extra/evolution-data-server-${PV}[weather]
+	>=gnome-extra/gtkhtml-3.31.90:3.14
 	>=gnome-base/gconf-2
 	>=gnome-base/libgnomecanvas-2
 	dev-libs/atk
@@ -47,7 +45,7 @@ RDEPEND=">=dev-libs/glib-2.25.12:2
 	>=x11-themes/gnome-icon-theme-2.30.2.1
 	>=dev-libs/libgdata-0.4
 
-	clutter? ( media-libs/clutter[gtk] )
+	clutter? ( media-libs/clutter:1.0[gtk] )
 	connman? ( net-misc/connman )
 	crypt? ( || (
 				  ( >=app-crypt/gnupg-2.0.1-r2
@@ -94,7 +92,7 @@ pkg_setup() {
 		$(use_enable networkmanager nm)
 		$(use_enable connman)
 		$(use_enable gstreamer audio-inline)
-		$(use_enable profile profiling)
+		--disable-profiling
 		--disable-pst-import
 		$(use_enable python)
 		$(use_with clutter)

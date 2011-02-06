@@ -1,6 +1,5 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/mount-boot.eclass,v 1.17 2009/10/09 20:57:08 vapier Exp $
 #
 # This eclass is really only useful for bootloaders.
 #
@@ -8,9 +7,9 @@
 # function tries to ensure that it's mounted in rw mode, exiting with an
 # error if it cant. It does nothing if /boot isn't a separate partition.
 #
-# MAINTAINER: base-system@gentoo.org
+# MAINTAINER: drobbins@funtoo.org
 
-EXPORT_FUNCTIONS pkg_preinst pkg_prerm
+EXPORT_FUNCTIONS pkg_preinst pkg_postinst
 
 mount-boot_mount_boot_partition() {
 	if [[ -n ${DONT_MOUNT_BOOT} ]] ; then
@@ -22,12 +21,36 @@ mount-boot_mount_boot_partition() {
 		elog
 	fi
 
-	# note that /dev/BOOT is in the Gentoo default /etc/fstab file
-	local fstabstate=$(awk '!/^#|^[[:blank:]]+#|^\/dev\/BOOT/ {print $2}' /etc/fstab | egrep "^/boot$" )
-	local procstate=$(awk '$2 ~ /^\/boot$/ {print $2}' /proc/mounts)
-	local proc_ro=$(awk '{ print $2 " ," $4 "," }' /proc/mounts | sed -n '/\/boot .*,ro,/p')
+	# get configured /boot setting from fstab, or "" if not available or
+	# unconfigured:
 
-	if [ -n "${fstabstate}" ] && [ -n "${procstate}" ]; then
+	local fstabstate=$(awk '!/^#|^[[:blank:]]+#|^\/dev\/BOOT/ {print $2}' /etc/fstab | egrep "^/boot$" )
+
+	# if it's not in fstab, we can't do anything anyway. Exit.
+
+	[ -z "${fstabstate}" ] && return 0
+
+	# Get /proc/mount entries matching /boot and /foo/bar/boot, respectively, or
+	# "" if not found:
+
+	local procstate=$(awk '$2 ~ /^\/boot$/ {print $2}' /proc/mounts)
+	local procstate_install=$(awk '$2 ~ /^.*\/boot$/ {print $2}' /proc/mounts)
+
+	# no /boot proc entry, but there's a /foo/bar/boot entry, so we're likely
+	# installing gentoo in chroot. Don't interfere with mounting:
+
+	[ -z "${procstate}" ] && [ -n "${procstate_install}" ] && return 0
+
+	# We are on an already-installed, non-chrooted system.
+	# We have an fstab entry. It is now safe to perform ro/rw remount logic.
+	# First, let's see if it /proc is already mounted:
+
+	if [ -n "${procstate}" ]; then
+
+		# Determine if /proc was mounted read-only:
+
+		local proc_ro=$(awk '{ print $2 " ," $4 "," }' /proc/mounts | sed -n '/\/boot .*,ro,/p')
+
 		if [ -n "${proc_ro}" ]; then
 			einfo
 			einfo "Your boot partition, detected as being mounted as /boot, is read-only."
@@ -40,13 +63,14 @@ mount-boot_mount_boot_partition() {
 				eerror
 				die "Can't remount in rw mode. Please do it manually!"
 			fi
+			touch /boot/.e.remount
 		else
 			einfo
 			einfo "Your boot partition was detected as being mounted as /boot."
 			einfo "Files will be installed there for ${PN} to function correctly."
 			einfo
 		fi
-	elif [ -n "${fstabstate}" ] && [ -z "${procstate}" ]; then
+	else
 		mount /boot -o rw
 		if [ "$?" -eq 0 ]; then
 			einfo
@@ -62,10 +86,7 @@ mount-boot_mount_boot_partition() {
 			eerror
 			die "Please mount your /boot partition manually!"
 		fi
-	else
-		einfo
-		einfo "Assuming you do not have a separate /boot partition."
-		einfo
+		touch /boot/.e.mount
 	fi
 }
 
@@ -73,8 +94,26 @@ mount-boot_pkg_preinst() {
 	mount-boot_mount_boot_partition
 }
 
-mount-boot_pkg_prerm() {
-	touch "${ROOT}"/boot/.keep 2>/dev/null
-	mount-boot_mount_boot_partition
-	touch "${ROOT}"/boot/.keep 2>/dev/null
+mount-boot_umount_boot_partition() {
+	if [[ -n ${DONT_MOUNT_BOOT} ]] ; then
+		return
+	fi
+
+	if [ -e /boot/.e.remount ] ; then
+		einfo
+		einfo "Automatically remounting /boot as ro"
+		einfo
+		rm -f /boot/.e.remount
+		mount -o remount,ro /boot
+	elif [ -e /boot/.e.mount ] ; then
+		einfo
+		einfo "Automatically unmounting /boot"
+		einfo
+		rm -f /boot/.e.mount
+		umount /boot
+	fi
+}
+
+mount-boot_pkg_postinst() {
+	mount-boot_umount_boot_partition
 }

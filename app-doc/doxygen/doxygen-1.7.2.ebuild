@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-doc/doxygen/doxygen-1.7.2.ebuild,v 1.1 2010/11/02 07:28:59 nerdboy Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-doc/doxygen/doxygen-1.7.2.ebuild,v 1.12 2011/01/18 14:07:38 xarthisius Exp $
 
 EAPI=3
 
@@ -11,7 +11,7 @@ HOMEPAGE="http://www.doxygen.org/"
 SRC_URI="ftp://ftp.stack.nl/pub/users/dimitri/${P}.src.tar.gz
 	tcl? ( mirror://gentoo/${PN}-1.7-tcl_support.patch.bz2 )"
 
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
+KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 s390 sh sparc x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
 
 IUSE="debug doc nodot qt4 latex tcl elibc_FreeBSD"
 LICENSE="GPL-2"
@@ -33,6 +33,8 @@ EPATCH_SUFFIX="patch"
 
 src_prepare() {
 	# use CFLAGS, CXXFLAGS, LDFLAGS
+	export ECFLAGS="${CFLAGS}" ECXXFLAGS="${CXXFLAGS}" ELDFLAGS="${LDFLAGS}"
+
 	sed -i.orig -e 's:^\(TMAKE_CFLAGS_RELEASE\t*\)= .*$:\1= $(ECFLAGS):' \
 		-e 's:^\(TMAKE_CXXFLAGS_RELEASE\t*\)= .*$:\1= $(ECXXFLAGS):' \
 		-e 's:^\(TMAKE_LFLAGS_RELEASE\s*\)=.*$:\1= $(ELDFLAGS):' \
@@ -75,11 +77,11 @@ src_prepare() {
 }
 
 src_configure() {
-	export ECFLAGS="${CFLAGS}" ECXXFLAGS="${CXXFLAGS}" ELDFLAGS="${LDFLAGS}"
 	# set ./configure options (prefix, Qt based wizard, docdir)
 
 	local my_conf=""
 	use debug && my_conf="--debug"
+	use ppc64 && my_conf="${my_conf} --english-only" #263641
 
 	export CC="${QMAKE_CC}"
 	export CXX="${QMAKE_CXX}"
@@ -93,6 +95,7 @@ src_configure() {
 		export LD_LIBRARY_PATH="${QTDIR}/$(get_libdir)${LD_LIBRARY_PATH:+:}${LD_LIBRARY_PATH}"
 		einfo "using QT LIBRARY_PATH: '$LIBRARY_PATH'."
 		einfo "using QT LD_LIBRARY_PATH: '$LD_LIBRARY_PATH'."
+
 		./configure --prefix "${EPREFIX}/usr" ${my_conf} $(use_with qt4 doxywizard) \
 		|| die 'configure with qt4 failed'
 	else
@@ -101,7 +104,8 @@ src_configure() {
 }
 
 src_compile() {
-	emake all || die 'emake failed'
+	CFLAGS+="${ECFLAGS}" CXXFLAGS+="${ECXXFLAGS}" LFLAGS+="${ELDFLAGS}" \
+		emake all || die 'emake failed'
 
 	# generate html and pdf (if tetex in use) documents.
 	# errors here are not considered fatal, hence the ewarn message

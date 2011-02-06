@@ -1,6 +1,26 @@
 # ChangeLog for app-accessibility/emacspeak
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-accessibility/emacspeak/ChangeLog,v 1.42 2010/03/03 13:41:06 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-accessibility/emacspeak/ChangeLog,v 1.47 2010/12/03 18:35:56 williamh Exp $
+
+  03 Dec 2010; William Hubbs <williamh@gentoo.org> emacspeak-33.0.ebuild,
+  emacspeak-9999.ebuild:
+  Add ~amd64 for bug #347668.
+
+  02 Dec 2010; William Hubbs <williamh@gentoo.org> emacspeak-9999.ebuild:
+  Rework live ebuild so that it can be a template for future ebuilds and
+  allow user patches.
+  I would also like to thank Ulrich Muller for the greader patch for
+  emacspeak 33.0.
+
+*emacspeak-33.0 (02 Dec 2010)
+
+  02 Dec 2010; William Hubbs <williamh@gentoo.org> +emacspeak-33.0.ebuild,
+  +files/emacspeak-33.0-greader-garbage.patch,
+  +files/emacspeak-33.0-respect-ldflags.patch:
+  version bump
+
+  29 Nov 2010; Christian Faulhammer <fauli@gentoo.org> metadata.xml:
+  Add to emacs herd
 
   03 Mar 2010; Ulrich Mueller <ulm@gentoo.org> metadata.xml:
   Fix metadata.xml, bug 298013.

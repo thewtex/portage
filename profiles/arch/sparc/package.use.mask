@@ -1,14 +1,26 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/sparc/package.use.mask,v 1.60 2010/11/14 20:15:54 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/sparc/package.use.mask,v 1.66 2011/01/27 18:09:28 pacho Exp $
+
+# Pacho Ramos <pacho@gentoo.org> (27 Jan 2011)
+# missing keywords on needed plugins
+media-plugins/gst-plugins-meta dv wavpack
+
+# Michael Weber <xmw@gentoo.org> (03 Jan 2011)
+# dev-libs/libev is not keyworded
+www-servers/lighttpd libev
+
+# Nirbheek Chauhan <nirbheek@gentoo.org> (10 Dec 2010)
+# net-misc/connman is not keyworded, bug 348308
+mail-client/evolution connman
+
+# Raúl Porcel <armin76@gentoo.org> (5 Dec 2010)
+# Mask doc-pdf because of Java dependencies (bug #347259)
+net-analyzer/wireshark doc-pdf
 
 # Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (07 Nov 2010)
 # x11-libs/qt-declarative is not keyworded.
 dev-python/PyQt4 declarative
-
-# Raúl Porcel <armin76@gentoo.org> (25 Sep 2010)
-# not tested
-media-sound/rhythmbox upnp
 
 # Justin Lecher <jlec@gentoo.org> (13 Aug 2010)
 # MKL not available on this arch
@@ -16,6 +28,7 @@ media-gfx/povray mkl
 
 # Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (29 Jul 2010)
 # Mask python3 for stable portage until python-3.x is marked stable.
+=sys-apps/portage-2.1.9* python3
 =sys-apps/portage-2.1.8* python3
 =sys-apps/portage-2.1.7* python3
 

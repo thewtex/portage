@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/perl-module.eclass,v 1.126 2010/07/15 11:44:48 tove Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/perl-module.eclass,v 1.129 2011/01/30 08:18:42 tove Exp $
 #
 # Author: Seemant Kulleen <seemant@gentoo.org>
 
@@ -21,7 +21,7 @@ case "${EAPI:-0}" in
 	0|1)
 		PERL_EXPF+=" pkg_setup pkg_preinst pkg_postinst pkg_prerm pkg_postrm"
 		;;
-	2|3)
+	2|3|4)
 		PERL_EXPF+=" src_prepare src_configure"
 		[[ ${CATEGORY} == "perl-core" ]] && \
 			PERL_EXPF+=" pkg_postinst pkg_postrm"
@@ -34,7 +34,7 @@ case "${EAPI:-0}" in
 		esac
 		;;
 	*)
-		DEPEND="EAPI-UNSUPPORTED"
+		die "EAPI=${EAPI} is not supported by perl-module.eclass"
 		;;
 esac
 
@@ -46,7 +46,7 @@ case "${PERL_EXPORT_PHASE_FUNCTIONS:-yes}" in
 		debug-print "PERL_EXPORT_PHASE_FUNCTIONS=no"
 		;;
 	*)
-		DEPEND+=" PERL_EXPORT_PHASE_FUNCTIONS-UNSUPPORTED"
+		die "PERL_EXPORT_PHASE_FUNCTIONS=${PERL_EXPORT_PHASE_FUNCTIONS} is not supported by perl-module.eclass"
 		;;
 esac
 
@@ -54,7 +54,14 @@ DESCRIPTION="Based on the $ECLASS eclass"
 
 LICENSE="${LICENSE:-|| ( Artistic GPL-1 GPL-2 GPL-3 )}"
 
-[[ -z "${SRC_URI}" && -z "${MODULE_A}" ]] && MODULE_A="${MY_P:-${P}}.tar.gz"
+# TODO: Document variables: MODULE_VERSION, MODULE_A, MODULE_A_EXT,
+# MODULE_AUTHOR, MODULE_SECTION, GENTOO_DEPEND_ON_PERL, PREFER_BUILDPL
+if [[ -n ${MY_PN} || -n ${MY_PV} || -n ${MODULE_VERSION} ]] ; then
+	: ${MY_P:=${MY_PN:-${PN}}-${MY_PV:-${MODULE_VERSION:-${PV}}}}
+	S=${MY_S:-${WORKDIR}/${MY_P}}
+fi
+[[ -z "${SRC_URI}" && -z "${MODULE_A}" ]] && \
+	MODULE_A="${MY_P:-${P}}.${MODULE_A_EXT:-tar.gz}"
 [[ -z "${SRC_URI}" && -n "${MODULE_AUTHOR}" ]] && \
 	SRC_URI="mirror://cpan/authors/id/${MODULE_AUTHOR:0:1}/${MODULE_AUTHOR:0:2}/${MODULE_AUTHOR}/${MODULE_SECTION:+${MODULE_SECTION}/}${MODULE_A}"
 [[ -z "${HOMEPAGE}" ]] && \
@@ -97,21 +104,31 @@ perl-module_src_prep() {
 	# Disable ExtUtils::AutoInstall from prompting
 	export PERL_EXTUTILS_AUTOINSTALL="--skipdeps"
 
-	if [[ ${PREFER_BUILDPL} == yes && -f Build.PL ]] ; then
+	if [[ $(declare -p myconf 2>&-) != "declare -a myconf="* ]]; then
+		local myconf_local=(${myconf})
+	else
+		local myconf_local=("${myconf[@]}")
+	fi
+
+	if [[ ( ${PREFER_BUILDPL} == yes || ! -f Makefile.PL ) && -f Build.PL ]] ; then
 		einfo "Using Module::Build"
 		if [[ ${DEPEND} != *virtual/perl-Module-Build* && ${PN} != Module-Build ]] ; then
 			eqawarn "QA Notice: The ebuild uses Module::Build but doesn't depend on it."
 			eqawarn "           Add virtual/perl-Module-Build to DEPEND!"
+			if [[ -n ${PERLQAFATAL} ]]; then
+				eerror "Bailing out due to PERLQAFATAL=1";
+				die;
+			fi
 		fi
 		set -- \
 			--installdirs=vendor \
 			--libdoc= \
 			--destdir="${D}" \
 			--create_packlist=0 \
-			${myconf}
+			"${myconf_local[@]}"
 		einfo "perl Build.PL" "$@"
 		perl Build.PL "$@" <<< "${pm_echovar}" \
-				|| die "Unable to build! (are you using USE=\"build\"?)"
+				|| die "Unable to build!"
 	elif [[ -f Makefile.PL ]] ; then
 		einfo "Using ExtUtils::MakeMaker"
 		set -- \
@@ -119,10 +136,10 @@ perl-module_src_prep() {
 			INSTALLDIRS=vendor \
 			INSTALLMAN3DIR='none' \
 			DESTDIR="${D}" \
-			${myconf}
+			"${myconf_local[@]}"
 		einfo "perl Makefile.PL" "$@"
 		perl Makefile.PL "$@" <<< "${pm_echovar}" \
-				|| die "Unable to build! (are you using USE=\"build\"?)"
+				|| die "Unable to build!"
 	fi
 	if [[ ! -f Build.PL && ! -f Makefile.PL ]] ; then
 		einfo "No Make or Build file detected..."
@@ -136,14 +153,22 @@ perl-module_src_compile() {
 
 	has src_configure ${PERL_EXPF} || perl-module_src_prep
 
+	if [[ $(declare -p mymake 2>&-) != "declare -a mymake="* ]]; then
+		local mymake_local=(${mymake})
+	else
+		local mymake_local=("${mymake[@]}")
+	fi
+
 	if [[ -f Build ]] ; then
 		./Build build \
-			|| die "compilation failed"
+			|| die "Compilation failed"
 	elif [[ -f Makefile ]] ; then
-		emake \
+		set -- \
 			OTHERLDFLAGS="${LDFLAGS}" \
-			${mymake} \
-				|| die "compilation failed"
+			"${mymake_local[@]}"
+		einfo "emake" "$@"
+		emake "$@" \
+			|| die "Compilation failed"
 #			OPTIMIZE="${CFLAGS}" \
 	fi
 }
@@ -200,12 +225,18 @@ perl-module_src_install() {
 		esac
 	fi
 
+	if [[ $(declare -p myinst 2>&-) != "declare -a myinst="* ]]; then
+		local myinst_local=(${myinst})
+	else
+		local myinst_local=("${myinst[@]}")
+	fi
+
 	if [[ -f Build ]] ; then
 		./Build ${mytargets} \
 			|| die "./Build ${mytargets} failed"
 	elif [[ -f Makefile ]] ; then
-		emake ${myinst} ${mytargets} \
-			|| die "emake ${myinst} ${mytargets} failed"
+		emake "${myinst_local[@]}" ${mytargets} \
+			|| die "emake ${myinst_local[@]} ${mytargets} failed"
 	fi
 
 	perl_delete_module_manpages

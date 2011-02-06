@@ -1,6 +1,49 @@
 # ChangeLog for Gentoo/MIPS profile directory
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/mips/ChangeLog,v 1.28 2010/11/13 16:56:02 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/mips/ChangeLog,v 1.42 2010/12/27 01:24:09 mattst88 Exp $
+
+  27 Dec 2010; Matt Turner <mattst88@gentoo.org> package.use.mask:
+  Add 'media-gfx/imagemagick raw' package.use.mask
+
+  26 Dec 2010; Matt Turner <mattst88@gentoo.org> package.use.mask:
+  Add 'www-client/elinks javascript' package.use.mask
+
+  14 Dec 2010; Matt Turner <mattst88@gentoo.org> use.mask:
+  use.mask llvm.
+
+  14 Dec 2010; Matt Turner <mattst88@gentoo.org> use.mask:
+  use.mask ocaml.
+
+  14 Dec 2010; Matt Turner <mattst88@gentoo.org> use.mask:
+  use.mask smi.
+
+  14 Dec 2010; Matt Turner <mattst88@gentoo.org> use.mask:
+  use.mask bluetooth.
+
+  14 Dec 2010; Matt Turner <mattst88@gentoo.org> use.mask:
+  use.mask USE=rpm. Dropping app-arch/rpm keywords.
+
+  07 Dec 2010; Matt Turner <mattst88@gentoo.org> package.use.mask:
+  Added 'dev-perl/Authen-SASL kerberos' to package.use.mask since we don't
+  have dev-perl/GSSAPI keyworded.
+
+  07 Dec 2010; Matt Turner <mattst88@gentoo.org> package.use.mask:
+  Add 'mail-client/mutt tokyocabinet' package.use.mask
+
+  06 Dec 2010; Matt Turner <mattst88@gentoo.org> make.defaults:
+  Add ALSA_CARDS.
+
+  06 Dec 2010; Matt Turner <mattst88@gentoo.org> make.defaults:
+  Add -fortran to default USE.
+
+  06 Dec 2010; Matt Turner <mattst88@gentoo.org> make.defaults:
+  Remove ccache from default FEATURES.
+
+  06 Dec 2010; Matt Turner <mattst88@gentoo.org> use.mask:
+  Remove lm_sensors from use.mask. I've got hardware to test with.
+
+  21 Nov 2010; Ryan Hill <dirtyepic@gentoo.org> use.mask:
+  Mask lpsol USE flag, needs sci-mathematics/glpk.
 
   13 Nov 2010; Alexis Ballier <aballier@gentoo.org> package.mask:
   Move TeX Live 2010 package.mask to per-arch package.mask, bug #342513

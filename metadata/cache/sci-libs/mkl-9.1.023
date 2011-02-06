@@ -1,4 +1,4 @@
-app-admin/eselect-blas app-admin/eselect-cblas app-admin/eselect-lapack || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b
+app-admin/eselect-blas app-admin/eselect-cblas app-admin/eselect-lapack
 app-admin/eselect-blas app-admin/eselect-cblas app-admin/eselect-lapack doc? ( app-doc/blas-docs app-doc/lapack-docs )
 0
 !int64? ( !serial? ( http://registrationcenter-download.intel.com/irc_nas/779/l_mkl_p_9.1.023.tgz ) ) int64? ( http://registrationcenter-download.intel.com/irc_nas/779/l_mkl_enh_p_9.1.023.tgz ) serial? ( http://registrationcenter-download.intel.com/irc_nas/779/l_mkl_enh_p_9.1.023.tgz )
@@ -7,8 +7,8 @@ http://developer.intel.com/software/products/mkl/
 Intel-SDP
 Intel(R) Math Kernel Library: linear algebra, fft, random number generators.
 ~x86 ~amd64 ~ia64
-autotools eutils fortran libtool multilib portability toolchain-funcs versionator
-serial int64 fortran95 fftw doc examples debug
+eutils multilib portability toolchain-funcs versionator
+serial int64 fortran95 fftw doc examples
 
 
 

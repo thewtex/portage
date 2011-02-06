@@ -1,6 +1,24 @@
 # ChangeLog for app-emulation/qemu-kvm
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/qemu-kvm/ChangeLog,v 1.46 2010/11/03 14:40:38 jmbsvicetto Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/qemu-kvm/ChangeLog,v 1.50 2011/01/21 13:49:43 dev-zero Exp $
+
+  21 Jan 2011; Tiziano Müller <dev-zero@gentoo.org> qemu-kvm-9999.ebuild,
+  metadata.xml:
+  spice (resp. the QXL graphics device) support has been finally merged at
+  qemu-upstream, added a USE flag for it. Added USE flags to toggle vhost-net
+  support (which requires newer kernel-headers) and rados block device storage
+  backend support.
+
+  17 Jan 2011; Jory A. Pratt <anarchy@gentoo.org> qemu-kvm-0.13.0-r1.ebuild,
+  qemu-kvm-0.13.0-r2.ebuild, qemu-kvm-9999.ebuild:
+  convert to virtual/jpeg instead of forcing media-libs/jpeg
+
+  05 Jan 2011; Markos Chandras <hwoarang@gentoo.org> qemu-kvm-0.13.0-r2.ebuild:
+  Stable on amd64 wrt bug #346681
+
+  25 Nov 2010; Christian Faulhammer <fauli@gentoo.org>
+  qemu-kvm-0.13.0-r2.ebuild:
+  stable x86, bug 346681
 
 *qemu-kvm-0.13.0-r2 (03 Nov 2010)
 

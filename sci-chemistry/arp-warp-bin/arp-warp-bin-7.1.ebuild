@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/arp-warp-bin/arp-warp-bin-7.1.ebuild,v 1.4 2010/05/22 09:05:34 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/arp-warp-bin/arp-warp-bin-7.1.ebuild,v 1.7 2011/01/11 14:22:23 jlec Exp $
 
 EAPI="3"
 
@@ -15,9 +15,8 @@ SRC_URI="${MY_P}.tar.gz"
 HOMEPAGE="http://www.embl-hamburg.de/ARP/"
 
 LICENSE="ArpWarp"
-RESTRICT="fetch"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* ~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 RDEPEND="
@@ -28,6 +27,8 @@ RDEPEND="
 	virtual/opengl
 	x11-libs/libX11"
 DEPEND=""
+
+RESTRICT="fetch"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -45,6 +46,7 @@ src_prepare() {
 	eprefixify "${S}"/share/arpwarp_setup_base.*
 	sed "s:PYVER:$(python_get_version):g" -i "${S}"/share/arpwarp_setup_base.*
 	python_convert_shebangs $(python_get_version) flex-wARP-src-354/*py
+	sed -e "s:/usr/:${EPREFIX}/usr/:g" -i flex-wARP-src-354/*py || die
 }
 
 src_install(){
@@ -53,7 +55,7 @@ src_install(){
 	os_type=$(uname)
 
 	insinto /opt/${PN}/byte-code/python-${PYVER}
-	doins "${S}"/flex-wARP-src-354/*py
+	doins "${S}"/flex-wARP-src-354/*py || die
 
 	exeinto /opt/${PN}/bin/bin-${m_type}-${os_type}
 	doexe "${S}"/bin/bin-${m_type}-${os_type}/* && \

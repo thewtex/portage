@@ -1,0 +1,22 @@
+>=app-admin/eselect-python-20091230 =dev-lang/python-2*
+dev-python/dbus-python X? ( gtk? ( dev-python/pygtk || ( x11-misc/ktsuss x11-libs/gksu kde-base/kdesu ) ) ) || ( net-misc/dhcpcd net-misc/dhcp net-misc/pump ) net-wireless/wireless-tools net-wireless/wpa_supplicant || ( sys-apps/net-tools sys-apps/ethtool ) !gtk? ( dev-python/pygobject ) ioctl? ( dev-python/python-iwscan dev-python/python-wpactrl ) libnotify? ( dev-python/notify-python ) ncurses? ( >=dev-python/urwid-0.9.9.1 ) pm-utils? ( >=sys-power/pm-utils-1.1.1 ) >=app-admin/eselect-python-20091230 =dev-lang/python-2*
+0
+http://downloads.wicd.net/src/stable/1.7.x/wicd-1.7.0.tar.bz2
+
+http://wicd.sourceforge.net/
+GPL-2
+A lightweight wired and wireless network manager for Linux
+~amd64 ~ppc ~ppc64 ~x86
+distutils eutils multilib portability python toolchain-funcs
+X +gtk ioctl libnotify ncurses nls +pm-utils
+
+
+
+3
+
+compile configure install postinst postrm prepare
+
+
+
+
+

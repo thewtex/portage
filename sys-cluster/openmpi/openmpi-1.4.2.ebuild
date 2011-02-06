@@ -1,9 +1,9 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/openmpi/openmpi-1.4.2.ebuild,v 1.6 2010/10/24 17:28:17 xarthisius Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/openmpi/openmpi-1.4.2.ebuild,v 1.14 2011/01/14 08:06:47 xarthisius Exp $
 
 EAPI=3
-inherit eutils multilib flag-o-matic toolchain-funcs fortran
+inherit eutils multilib flag-o-matic toolchain-funcs
 
 MY_P=${P/-mpi}
 S=${WORKDIR}/${MY_P}
@@ -14,7 +14,7 @@ SRC_URI="http://www.open-mpi.org/software/ompi/v1.4/downloads/${MY_P}.tar.bz2"
 LICENSE="BSD"
 SLOT="0"
 RESTRICT="mpi-threads? ( test )"
-KEYWORDS="alpha amd64 ~ia64 ~ppc ~ppc64 sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 ia64 ppc ppc64 sparc x86 ~x86-fbsd"
 IUSE="+cxx elibc_FreeBSD fortran heterogeneous ipv6 mpi-threads pbs romio threads vt"
 RDEPEND="pbs? ( sys-cluster/torque )
 	vt? (
@@ -42,11 +42,6 @@ pkg_setup() {
 	elog "Don't forget the EXTRA_ECONF environment variable can let you"
 	elog "specify configure options if you find them necessary."
 	echo
-
-	if use fortran; then
-		FORTRAN="g77 gfortran ifc"
-		fortran_pkg_setup
-	fi
 }
 
 src_prepare() {
@@ -59,46 +54,42 @@ src_prepare() {
 }
 
 src_configure() {
-	local myconf="
-		--sysconfdir=${EPREFIX}/etc/${PN}
+	local myconf=(
+		--sysconfdir="${EPREFIX}/etc/${PN}"
 		--without-xgrid
 		--enable-pretty-print-stacktrace
 		--enable-orterun-prefix-by-default
-		--without-slurm"
+		--without-slurm)
 
 	if use mpi-threads; then
-		myconf="${myconf}
-			--enable-mpi-threads
-			--enable-progress-threads"
+		myconf+=(--enable-mpi-threads
+			--enable-progress-threads)
 	fi
 
 	if use fortran; then
-		if [[ "${FORTRANC}" = "g77" ]]; then
-			myconf="${myconf} --disable-mpi-f90"
-		elif [[ "${FORTRANC}" = if* ]]; then
+		if [[ $(tc-getFC) =~ g77 ]]; then
+			myconf+=(--disable-mpi-f90)
+		elif [[ $(tc-getFC) =~ if ]]; then
 			# Enabled here as gfortran compile times are huge with this enabled.
-			myconf="${myconf} --with-mpi-f90-size=medium"
+			myconf+=(--with-mpi-f90-size=medium)
 		fi
 	else
-		myconf="${myconf}
-			--disable-mpi-f90
-			--disable-mpi-f77"
+		myconf+=(--disable-mpi-f90 --disable-mpi-f77)
 	fi
 
-	! use vt && myconf="${myconf} --enable-contrib-no-build=vt"
+	! use vt && myconf+=(--enable-contrib-no-build=vt)
 
-	econf ${myconf} \
+	econf "${myconf[@]}" \
 		$(use_enable cxx mpi-cxx) \
 		$(use_enable romio io-romio) \
 		$(use_enable heterogeneous) \
 		$(use_with pbs tm) \
-		$(use_enable ipv6) \
-	|| die "econf failed"
+		$(use_enable ipv6)
 }
 
 src_install () {
 	emake DESTDIR="${D}" install || die "make install failed"
-	dodoc README AUTHORS NEWS VERSION
+	dodoc README AUTHORS NEWS VERSION || die
 }
 
 src_test() {

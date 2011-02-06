@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/countrycodes/countrycodes-1.0.5-r1.ebuild,v 1.4 2010/10/24 15:50:11 ranger Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/countrycodes/countrycodes-1.0.5-r1.ebuild,v 1.7 2011/01/04 17:47:51 jlec Exp $
 
 EAPI="3"
 
@@ -12,7 +12,7 @@ SRC_URI="http://www.grigna.com/diego/linux/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~ia64 ~mips ppc ~ppc64 ~sparc x86"
+KEYWORDS="alpha amd64 ~ia64 ~mips ppc ppc64 sparc x86"
 IUSE=""
 
 S="${WORKDIR}"/${P}/src
@@ -21,10 +21,6 @@ src_prepare() {
 	epatch "${FILESDIR}"/${PV}-Makefile.patch
 	tc-export CC
 }
-
-#src_compile() {
-#	emake -C src CCOPTS="${CFLAGS}" || die "emake failed"
-#}
 
 src_install() {
 	emake \

@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/audacity/audacity-1.3.12.ebuild,v 1.4 2010/11/09 20:36:36 radhermit Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/audacity/audacity-1.3.12.ebuild,v 1.9 2011/01/14 21:05:24 ranger Exp $
 
 EAPI=2
 
@@ -17,7 +17,7 @@ SRC_URI="http://${PN}.googlecode.com/files/${MY_T}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ~hppa ppc ~ppc64 sparc x86"
 RESTRICT="test"
 
 COMMON_DEPEND="x11-libs/wxGTK:2.8[X]
@@ -52,6 +52,7 @@ src_prepare() {
 	epatch "${FILESDIR}/${P}-gcc45.patch"
 	epatch "${FILESDIR}/${P}-ffmpeg.patch"
 	epatch "${FILESDIR}/${P}-portaudio-shell.patch"
+	epatch "${FILESDIR}/${P}-widget-extra-only-needed-cflags.patch"
 	AT_M4DIR="${S}/m4" eautoreconf
 }
 

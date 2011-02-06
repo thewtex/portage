@@ -1,11 +1,11 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-zope/zope/zope-2.12.13.ebuild,v 1.1 2010/11/07 16:46:10 arfrever Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-zope/zope/zope-2.12.13.ebuild,v 1.4 2011/02/04 22:24:14 arfrever Exp $
 
 EAPI="3"
 PYTHON_DEPEND="2:2.6"
 SUPPORT_PYTHON_ABIS="1"
-RESTRICT_PYTHON_ABIS="2.4 2.5 3.*"
+RESTRICT_PYTHON_ABIS="2.4 2.5 3.* *-jython"
 
 inherit distutils eutils multilib versionator
 
@@ -32,7 +32,7 @@ RDEPEND="dev-python/docutils
 	net-zope/initgroups
 	net-zope/missing
 	net-zope/multimapping
-	net-zope/namespaces
+	|| ( net-zope/namespaces-zope[Products,Shared,Shared-DC] net-zope/namespaces )
 	net-zope/persistence
 	net-zope/record
 	net-zope/tempstorage
@@ -100,7 +100,7 @@ src_compile() {
 }
 
 distutils_src_install_post_hook() {
-	mv "${D}${ZOPE_INSTALLATION_DIR}/lib/python" "${D}${ZOPE_INSTALLATION_DIR}/lib/python-${PYTHON_ABI}"
+	mv "${T}/images/${PYTHON_ABI}/${ZOPE_INSTALLATION_DIR}/lib/python"{,-${PYTHON_ABI}}
 }
 
 src_install() {

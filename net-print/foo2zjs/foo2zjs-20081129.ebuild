@@ -28,7 +28,7 @@ http://foo2zjs.rkkda.com/icm/km2430.tar.gz"
 "http://foo2lava.rkkda.com/icm/km2530.tar.gz"
 "http://foo2lava.rkkda.com/icm/km2530.tar.gz"
 "http://foo2zjs.rkkda.com/icm/km2430.tar.gz"
-"ftp://ftp.minolta-qms.com/pub/crc/out_going/other/m23dlicc.exe
+"ftp://ftp.minolta-qms.com/pub/crc/out_going/win/m23dlicc.exe
 http://foo2zjs.rkkda.com/icm/km2430.tar.gz"
 "ftp://ftp.minolta-qms.com/pub/crc/out_going/win2000/m22dlicc.exe"
 "ftp://ftp.minolta-qms.com/pub/crc/out_going/windows/cpplxp.exe"

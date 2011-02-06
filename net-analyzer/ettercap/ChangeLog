@@ -1,6 +1,29 @@
 # ChangeLog for net-analyzer/ettercap
-# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/ettercap/ChangeLog,v 1.76 2009/10/17 18:27:12 hwoarang Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/ettercap/ChangeLog,v 1.82 2011/01/05 13:57:24 hwoarang Exp $
+
+  05 Jan 2011; Markos Chandras <hwoarang@gentoo.org> ettercap-0.7.3-r4.ebuild:
+  Stable on amd64 wrt bug #347593
+
+  18 Dec 2010; Raúl Porcel <armin76@gentoo.org> ettercap-0.7.3-r4.ebuild:
+  alpha/arm/sparc stable wrt #347593
+
+  07 Dec 2010; Jeroen Roovers <jer@gentoo.org> ettercap-0.7.3-r4.ebuild:
+  Stable for HPPA (bug #347593).
+
+  07 Dec 2010; Jeroen Roovers <jer@gentoo.org> ettercap-0.7.3-r4.ebuild:
+  Stable for PPC (bug #347593).
+
+  07 Dec 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  ettercap-0.7.3-r4.ebuild:
+  x86 stable wrt bug #347593
+
+  01 Dec 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  ettercap-0.7.3-r4.ebuild, +files/ettercap-0.7.3-autotools.patch:
+  Fix build with libtool 2.4 by patching up the build system to work with
+  automake 1.11; dependency tracking is broken though, so make sure to
+  hard-disable it (we don't need it anyway). Also make it more obvious that
+  libtool is a _runtime_ dependency for this package.
 
 *ettercap-0.7.3-r4 (17 Oct 2009)
 

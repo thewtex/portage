@@ -1,25 +1,26 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tcltk/thread/thread-2.6.2.ebuild,v 1.15 2009/08/14 00:45:12 fauli Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-tcltk/thread/thread-2.6.2.ebuild,v 1.16 2010/12/07 13:40:30 jlec Exp $
 
 EAPI=2
 
 inherit autotools eutils multilib
 
-DESCRIPTION="the Tcl Thread extension"
+DESCRIPTION="Tcl Thread extension"
 HOMEPAGE="http://www.tcl.tk/"
 SRC_URI="mirror://sourceforge/tcl/${PN}${PV}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~x86-fbsd"
-IUSE="gdbm"
+IUSE="debug gdbm"
 
-DEPEND="gdbm? ( sys-libs/gdbm )
-	dev-lang/tcl[threads]"
+DEPEND="
+	dev-lang/tcl[threads]
+	gdbm? ( sys-libs/gdbm )"
 RDEPEND="${DEPEND}"
 
-S=${WORKDIR}/${PN}${PV}
+S="${WORKDIR}"/${PN}${PV}
 
 RESTRICT="test"
 
@@ -41,10 +42,10 @@ src_configure() {
 		--with-threads \
 		--with-tclinclude=/usr/include \
 		--with-tcl="/usr/$(get_libdir)" \
-		${use_gdbm} || die "econf failed"
+		${use_gdbm}
 }
 
 src_install() {
 	emake DESTDIR="${D}" install || die "emake install failed"
-	dodoc ChangeLog README
+	dodoc ChangeLog README || die
 }

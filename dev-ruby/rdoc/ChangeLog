@@ -1,6 +1,62 @@
 # ChangeLog for dev-ruby/rdoc
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/rdoc/ChangeLog,v 1.36 2010/10/25 01:29:12 jer Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/rdoc/ChangeLog,v 1.49 2011/01/31 07:16:47 graaff Exp $
+
+*rdoc-3.5.1 (31 Jan 2011)
+
+  31 Jan 2011; Hans de Graaff <graaff@gentoo.org> +rdoc-3.5.1.ebuild:
+  Version bump.
+
+*rdoc-3.5 (30 Jan 2011)
+
+  30 Jan 2011; Hans de Graaff <graaff@gentoo.org> +rdoc-3.5.ebuild:
+  Version bump.
+
+  30 Jan 2011; Hans de Graaff <graaff@gentoo.org> rdoc-3.0.1.ebuild,
+  rdoc-3.0.1-r1.ebuild, rdoc-3.2.ebuild, rdoc-3.4.ebuild:
+  Move alpha keyword forward, no reason to only keyword an old version.
+
+*rdoc-3.4 (08 Jan 2011)
+
+  08 Jan 2011; Hans de Graaff <graaff@gentoo.org> +rdoc-3.4.ebuild:
+  Version bump.
+
+  02 Jan 2011; Tobias Klausmann <klausman@gentoo.org> rdoc-2.5.11.ebuild:
+  Keyworded on alpha, bug #332593
+
+  31 Dec 2010; Hans de Graaff <graaff@gentoo.org> rdoc-3.2.ebuild:
+  Be explicit about the slots to avoid wrong edge cases, reported by
+  Arfrever.
+
+*rdoc-3.2 (30 Dec 2010)
+
+  30 Dec 2010; Hans de Graaff <graaff@gentoo.org> +rdoc-3.2.ebuild:
+  Version bump: more bug fixes.
+
+  28 Dec 2010; Fabian Groffen <grobian@gentoo.org> rdoc-3.0.1-r1.ebuild:
+  Marked ~x64-solaris
+
+*rdoc-3.0.1-r1 (28 Dec 2010)
+
+  28 Dec 2010; Hans de Graaff <graaff@gentoo.org> +rdoc-3.0.1-r1.ebuild,
+  +files/rdoc-3.0.1-bin-require.patch:
+  Fix include path for script, thanks for James le Cuirot for the patch.
+
+  27 Dec 2010; Hans de Graaff <graaff@gentoo.org> rdoc-2.5.11.ebuild:
+  Drop ruby19 support to create a stable candidate.
+
+*rdoc-3.0.1 (27 Dec 2010)
+
+  27 Dec 2010; Hans de Graaff <graaff@gentoo.org> +rdoc-3.0.1.ebuild:
+  Version bump: major enhancements and bug fixing. Ruby 1.8.6 is no longer
+  supported.
+
+  27 Dec 2010; Hans de Graaff <graaff@gentoo.org> -rdoc-2.5.6.ebuild,
+  -rdoc-2.5.9.ebuild:
+  Remove old versions.
+
+  04 Dec 2010; Fabian Groffen <grobian@gentoo.org> rdoc-2.5.11.ebuild:
+  Marked ~x{86,64}-macos
 
   25 Oct 2010; Jeroen Roovers <jer@gentoo.org> rdoc-2.5.11.ebuild:
   Marked ~hppa (bug #337956).

@@ -1,6 +1,46 @@
 # ChangeLog for dev-libs/cloog-ppl
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/cloog-ppl/ChangeLog,v 1.24 2010/11/12 13:33:02 mattst88 Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/cloog-ppl/ChangeLog,v 1.35 2011/01/09 14:39:08 grobian Exp $
+
+  09 Jan 2011; Fabian Groffen <grobian@gentoo.org> cloog-ppl-0.15.10.ebuild:
+  Fix for Prefix, marked ~amd64-linux
+
+*cloog-ppl-0.15.10 (06 Jan 2011)
+
+  06 Jan 2011; Ryan Hill <dirtyepic@gentoo.org> +cloog-ppl-0.15.10.ebuild:
+  Version bump allowing use of PPL 0.11. No other code changes. Ported to
+  EAPI 3 and autotools-utils eclass. Changed include path and etc. to avoid
+  collisions with upstream CLooG.
+
+  06 Jan 2011; Raúl Porcel <armin76@gentoo.org> cloog-ppl-0.15.9.ebuild:
+  ia64/s390/sh/sparc stable wrt #347239
+
+  02 Jan 2011; Tobias Klausmann <klausman@gentoo.org> cloog-ppl-0.15.9.ebuild:
+  Stable on alpha, bug #347239
+
+  29 Dec 2010; Brent Baude <ranger@gentoo.org> cloog-ppl-0.15.9.ebuild:
+  stable ppc64, bug 347239
+
+  11 Dec 2010; Markus Meier <maekke@gentoo.org> cloog-ppl-0.15.9.ebuild:
+  arm stable, bug #347239
+
+  05 Dec 2010; Markos Chandras <hwoarang@gentoo.org> cloog-ppl-0.15.9.ebuild:
+  Stable on amd64 wrt bug #347239
+
+  02 Dec 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  cloog-ppl-0.15.9.ebuild:
+  x86 stable wrt bug #347239
+
+  30 Nov 2010; Ryan Hill <dirtyepic@gentoo.org> cloog-ppl-0.15.8.ebuild,
+  cloog-ppl-0.15.9.ebuild:
+  These versions won't configure with >=dev-libs/ppl-0.11.
+
+  30 Nov 2010; Jeroen Roovers <jer@gentoo.org> cloog-ppl-0.15.9.ebuild:
+  Stable for HPPA (bug #347239).
+
+  30 Nov 2010; Ryan Hill <dirtyepic@gentoo.org> -cloog-ppl-0.15.7.ebuild,
+  cloog-ppl-0.15.9.ebuild:
+  Remove old. Drop useless autotools inherit.
 
   12 Nov 2010; <mattst88@gentoo.org> cloog-ppl-0.15.9.ebuild:
   Add ~mips keyword, bug #269088.

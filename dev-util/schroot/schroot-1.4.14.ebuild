@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/schroot/schroot-1.4.14.ebuild,v 1.2 2010/10/19 02:32:52 abcd Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/schroot/schroot-1.4.14.ebuild,v 1.5 2011/01/25 15:15:57 hwoarang Exp $
 
 EAPI="3"
 WANT_AUTOMAKE="1.11"
@@ -15,7 +15,7 @@ SRC_URI="mirror://debian/pool/main/${PN::1}/${PN}/${MY_P}.orig.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="btrfs +dchroot debug doc lvm nls pam test"
 
 COMMON_DEPEND="
@@ -43,6 +43,7 @@ RDEPEND="${COMMON_DEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.4.7-tests.patch"
+	"${FILESDIR}/${P}-debug.patch"
 )
 
 src_prepare() {

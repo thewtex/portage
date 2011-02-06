@@ -1,12 +1,12 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/tracker/tracker-9999.ebuild,v 1.28 2010/11/14 17:43:22 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/tracker/tracker-9999.ebuild,v 1.33 2011/01/23 23:06:19 eva Exp $
 
-EAPI="2"
-G2CONF_DEBUG="no"
-PYTHON_DEPEND="2"
+EAPI="3"
+GCONF_DEBUG="no"
+PYTHON_DEPEND="2:2.6"
 
-inherit autotools git gnome2 linux-info python
+inherit autotools git gnome2 linux-info python virtualx
 
 DESCRIPTION="A tagging metadata database, search tool and indexer"
 HOMEPAGE="http://www.tracker-project.org/"
@@ -24,9 +24,7 @@ IUSE="applet doc eds exif flac gif gnome-keyring gsf gstreamer gtk hal iptc +jpe
 RDEPEND="
 	>=app-i18n/enca-1.9
 	>=dev-db/sqlite-3.7[threadsafe]
-	>=dev-libs/dbus-glib-0.82-r1
-	>=sys-apps/dbus-1.3.1
-	>=dev-libs/glib-2.24:2
+	>=dev-libs/glib-2.26:2
 	|| (
 		>=media-gfx/imagemagick-5.2.1[png,jpeg=]
 		media-gfx/graphicsmagick[imagemagick,png,jpeg=] )
@@ -35,7 +33,7 @@ RDEPEND="
 	sys-apps/util-linux
 
 	applet? (
-		gnome-base/gnome-panel
+		|| ( gnome-base/gnome-panel[bonobo] <gnome-base/gnome-panel-2.32 )
 		>=x11-libs/gtk+-2.18:2 )
 	eds? (
 		>=mail-client/evolution-2.29.1
@@ -47,14 +45,14 @@ RDEPEND="
 	gsf? (
 		app-text/odt2txt
 		>=gnome-extra/libgsf-1.13 )
-	upnp? ( >=media-libs/gupnp-dlna-0.3 )
+	upnp? ( >=media-libs/gupnp-dlna-0.5 )
 	!upnp? (
 		gstreamer? ( >=media-libs/gstreamer-0.10.12 )
 		!gstreamer? ( !xine? ( || ( media-video/totem media-video/mplayer ) ) )
 	)
 	gtk? (
 		>=dev-libs/libgee-0.3
-		>=x11-libs/gtk+-2.18 )
+		>=x11-libs/gtk+-2.18:2 )
 	iptc? ( media-libs/libiptcdata )
 	jpeg? ( virtual/jpeg:0 )
 	laptop? (
@@ -68,7 +66,7 @@ RDEPEND="
 	pdf? (
 		>=x11-libs/cairo-1
 		>=app-text/poppler-0.12.3-r3[cairo,utils]
-		>=x11-libs/gtk+-2.12 )
+		>=x11-libs/gtk+-2.12:2 )
 	playlist? ( dev-libs/totem-pl-parser )
 	rss? ( net-libs/libgrss )
 	strigi? ( >=app-misc/strigi-0.7 )
@@ -78,14 +76,15 @@ RDEPEND="
 	xml? ( >=dev-libs/libxml2-2.6 )
 	xmp? ( >=media-libs/exempi-2.1 )"
 DEPEND="${RDEPEND}
-	>=dev-util/intltool-0.35
-	>=sys-devel/gettext-0.14
+	>=dev-util/intltool-0.40
+	>=sys-devel/gettext-0.17
 	>=dev-util/pkgconfig-0.20
 	dev-util/gtk-doc-am
 	>=dev-util/gtk-doc-1.8
-	applet? ( >=dev-lang/vala-0.11.1:0.12 )
+	applet? ( >=dev-lang/vala-0.11.4:0.12 )
 	gtk? (
-		>=dev-lang/vala-0.11.1:0.12
+		app-office/dia
+		>=dev-lang/vala-0.11.4:0.12
 		>=dev-libs/libgee-0.3 )
 	doc? (
 		media-gfx/graphviz )
@@ -141,6 +140,7 @@ pkg_setup() {
 		--enable-tracker-fts
 		--with-enca
 		--with-unicode-support=glib
+		--enable-guarantee-metadata
 		$(use_enable applet tracker-status-icon)
 		$(use_enable applet tracker-search-bar)
 		$(use_enable eds miner-evolution)
@@ -150,7 +150,7 @@ pkg_setup() {
 		$(use_enable gsf libgsf)
 		$(use_enable gtk tracker-explorer)
 		$(use_enable gtk tracker-preferences)
-		$(use_enable gtk tracker-search-tool)
+		$(use_enable gtk tracker-needle)
 		$(use_enable iptc libiptcdata)
 		$(use_enable jpeg libjpeg)
 		$(use_enable mp3 taglib)
@@ -195,13 +195,12 @@ src_prepare() {
 }
 
 src_test() {
-	export XDG_CONFIG_HOME="${T}"
 	unset DBUS_SESSION_BUS_ADDRESS
-	emake check || die "tests failed"
+	Xemake check XDG_DATA_HOME="${T}" XDG_CONFIG_HOME="${T}" || die "tests failed"
 }
 
 src_install() {
 	gnome2_src_install
 	# Tracker and none of the plugins it provides needs la files
-	find "${D}" -name "*.la" -delete || die
+	find "${ED}" -name "*.la" -delete || die
 }

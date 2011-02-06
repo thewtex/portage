@@ -1,6 +1,58 @@
 # ChangeLog for net-misc/cfengine
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/cfengine/ChangeLog,v 1.116 2010/11/19 20:20:34 idl0r Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/cfengine/ChangeLog,v 1.127 2011/01/31 21:28:30 idl0r Exp $
+
+*cfengine-3.1.4 (31 Jan 2011)
+
+  31 Jan 2011; Christian Ruppert <idl0r@gentoo.org> -cfengine-3.1.3.ebuild,
+  +cfengine-3.1.4.ebuild:
+  Version bump to 3.1.4.
+
+  30 Jan 2011; Christian Ruppert <idl0r@gentoo.org> cfengine-3.1.2.ebuild,
+  cfengine-3.1.3.ebuild:
+  QDBM and Tokyo Cabinet can't be used together
+
+  23 Jan 2011; Christian Ruppert <idl0r@gentoo.org> cfengine-3.1.2.ebuild,
+  cfengine-3.1.3.ebuild:
+  Always depend on libpcre, upstream forces it from now on.
+
+  21 Jan 2011; Markos Chandras <hwoarang@gentoo.org> cfengine-3.1.2.ebuild:
+  Stable on amd64 wrt bug #352280
+
+  20 Jan 2011; Christian Ruppert <idl0r@gentoo.org> cfengine-3.1.2.ebuild,
+  cfengine-3.1.3.ebuild:
+  Re-add ~ppc keyword, bug 341163.
+
+  20 Jan 2011; Christian Ruppert <idl0r@gentoo.org> cfengine-3.1.2.ebuild,
+  cfengine-3.1.3.ebuild:
+  libvirt disabled for now because it blocks stabilization etc.
+
+*cfengine-3.1.3 (20 Jan 2011)
+
+  20 Jan 2011; Christian Ruppert <idl0r@gentoo.org> +cfengine-3.1.3.ebuild:
+  Version bump to 3.1.3.
+
+  10 Jan 2011; Brent Baude <ranger@gentoo.org> cfengine-2.2.10-r3.ebuild:
+  stable ppc, bug 344841
+
+*cfengine-3.1.2 (10 Dec 2010)
+
+  10 Dec 2010; Christian Ruppert <idl0r@gentoo.org>
+  -files/cfengine-3.1.0-cf-key.patch, -cfengine-3.1.1.ebuild,
+  +cfengine-3.1.2.ebuild:
+  Version bump to 3.1.2.
+
+*cfengine-3.1.1 (24 Nov 2010)
+
+  24 Nov 2010; Christian Ruppert <idl0r@gentoo.org>
+  -cfengine-3.0.5_p1-r3.ebuild, -files/cfengine-3.0.5_p1-Makefile.am.patch,
+  -files/cfengine-3.0.5_p1-configure.ac.patch,
+  -files/cfengine-3.0.5_p1-regex.c.patch, -cfengine-3.1.0-r1.ebuild,
+  -files/cfengine-3.1.0-configure.ac.patch, +cfengine-3.1.1.ebuild:
+  Version bump to 3.1.1. Cleanup.
+
+  21 Nov 2010; Raúl Porcel <armin76@gentoo.org> cfengine-2.2.10-r3.ebuild:
+  arm/sparc stable wrt #344841
 
 *cfengine-3.1.0-r1 (19 Nov 2010)
 

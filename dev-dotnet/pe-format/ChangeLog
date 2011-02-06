@@ -1,6 +1,31 @@
 # ChangeLog for dev-dotnet/pe-format
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-dotnet/pe-format/ChangeLog,v 1.22 2010/10/31 17:15:17 armin76 Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-dotnet/pe-format/ChangeLog,v 1.27 2011/01/05 14:37:28 mgorny Exp $
+
+  05 Jan 2011; Michał Górny <mgorny@gentoo.org> -pe-format-2.0.4.ebuild,
+  pe-format-2.0.5.ebuild:
+  EAPI bump, drop old version.
+
+  20 Dec 2010; Michał Górny <mgorny@gentoo.org> pe-format-2.0.4.ebuild,
+  pe-format-2.0.5.ebuild:
+  Change the SRC_URIs to use cloud.github.com directly. This avoids issues with
+  (pointless) SSL and old wget versions.
+
+  19 Dec 2010; Michał Górny <mgorny@gentoo.org> metadata.xml:
+  Add a <bugs-to/> to clarify bug reporting preference.
+
+*pe-format-2.0.5 (19 Dec 2010)
+
+  19 Dec 2010; Michał Górny <mgorny@gentoo.org> -pe-format-2.0.3.ebuild,
+  +pe-format-2.0.5.ebuild:
+  Version bump. The new version features a general code cleanup and fixed
+  alternate installation path support (supposedly Prefix support?).
+
+*pe-format-2.0.4 (27 Nov 2010)
+
+  27 Nov 2010; Michał Górny <mgorny@gentoo.org> +pe-format-2.0.4.ebuild:
+  Version bump. The new version uses autotools, and adds support for 64-bit
+  Windows executables (for use with wine64).
 
   31 Oct 2010; Raúl Porcel <armin76@gentoo.org> pe-format-1.ebuild:
   Drop sparc keywords

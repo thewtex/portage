@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/virtuoso.eclass,v 1.6 2010/08/22 08:09:51 scarabeus Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/virtuoso.eclass,v 1.8 2011/01/26 18:25:46 reavertm Exp $
 
 # @ECLASS: virtuoso.eclass
 # @MAINTAINER:
@@ -15,7 +15,7 @@ case ${EAPI:-0} in
 	*) die "EAPI=${EAPI} is not supported" ;;
 esac
 
-inherit base autotools flag-o-matic multilib
+inherit base autotools multilib
 
 MY_P="virtuoso-opensource-${PV}"
 
@@ -108,8 +108,6 @@ virtuoso_src_prepare() {
 # Runs ./configure with common and user options specified via myconf variable
 virtuoso_src_configure() {
 	debug-print-function ${FUNCNAME} "$@"
-
-	use amd64 && append-flags '-m64'
 
 	# Override some variables to make tests work
 	if [[ ${PN} != virtuoso-server ]]; then

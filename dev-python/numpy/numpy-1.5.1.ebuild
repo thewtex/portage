@@ -1,10 +1,11 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/numpy/numpy-1.5.1.ebuild,v 1.1 2010/11/19 04:35:55 bicatali Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/numpy/numpy-1.5.1.ebuild,v 1.11 2011/01/25 16:57:01 jer Exp $
 
 EAPI="3"
 PYTHON_DEPEND="*"
 SUPPORT_PYTHON_ABIS="1"
+RESTRICT_PYTHON_ABIS="*-jython"
 
 inherit distutils eutils flag-o-matic toolchain-funcs versionator
 
@@ -21,7 +22,7 @@ SRC_URI="mirror://sourceforge/numpy/${P}.tar.gz
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips -ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm hppa ~ia64 ~mips ppc ppc64 ~s390 ~sh ~sparc x86 ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
 IUSE="doc lapack test"
 
 RDEPEND="dev-python/setuptools
@@ -66,8 +67,10 @@ src_unpack() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-1.1.0-f2py.patch
-	epatch "${FILESDIR}"/${PN}-1.3.0-fenv-freebsd.patch # bug 279487
+	epatch "${FILESDIR}/${PN}-1.1.0-f2py.patch"
+	epatch "${FILESDIR}/${PN}-1.3.0-fenv-freebsd.patch" # Bug #279487
+	epatch "${FILESDIR}/${PN}-1.4.0-interix.patch"
+	epatch "${FILESDIR}/${P}-python-3.2.patch"
 
 	# Gentoo patch for ATLAS library names
 	sed -i \
@@ -108,7 +111,15 @@ src_prepare() {
 	else
 		export {ATLAS,PTATLAS,BLAS,LAPACK,MKL}=None
 	fi
-	epatch "${FILESDIR}"/${PN}-1.4.0-interix.patch
+
+	# Disable tests failing on ppc/ppc64.
+	# http://projects.scipy.org/numpy/ticket/1664
+	if use ppc || use ppc64; then
+		sed \
+			-e "s/test_nextafterl/_&/" \
+			-e "s/test_spacingl/_&/" \
+			-i numpy/core/tests/test_umath.py
+	fi
 }
 
 src_compile() {
@@ -117,9 +128,6 @@ src_compile() {
 
 src_test() {
 	testing() {
-		# Disable tests with Python 3 until dev-python/nose supports Python 3.
-		[[ "$(python_get_version --major)" == 3 ]] && return
-
 		"$(PYTHON)" setup.py ${NUMPY_FCONFIG} build -b "build-${PYTHON_ABI}" install \
 			--home="${S}/test-${PYTHON_ABI}" --no-compile || die "install test failed"
 		pushd "${S}/test-${PYTHON_ABI}/"lib* > /dev/null

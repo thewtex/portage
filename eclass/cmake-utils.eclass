@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/cmake-utils.eclass,v 1.60 2010/10/13 16:40:34 scarabeus Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/cmake-utils.eclass,v 1.66 2011/01/26 20:51:42 scarabeus Exp $
 
 # @ECLASS: cmake-utils.eclass
 # @MAINTAINER:
@@ -30,8 +30,8 @@ WANT_CMAKE="${WANT_CMAKE:-always}"
 
 # @ECLASS-VARIABLE: CMAKE_MIN_VERSION
 # @DESCRIPTION:
-# Specify the minimum required CMake version.  Default is 2.6.2-r1
-CMAKE_MIN_VERSION="${CMAKE_MIN_VERSION:-2.6.2-r1}"
+# Specify the minimum required CMake version.  Default is 2.8.1
+CMAKE_MIN_VERSION="${CMAKE_MIN_VERSION:-2.8.1}"
 
 CMAKEDEPEND=""
 case ${WANT_CMAKE} in
@@ -46,7 +46,7 @@ inherit toolchain-funcs multilib flag-o-matic base
 
 CMAKE_EXPF="src_compile src_test src_install"
 case ${EAPI:-0} in
-	3|2) CMAKE_EXPF+=" src_configure" ;;
+	4|3|2) CMAKE_EXPF+=" src_configure" ;;
 	1|0) ;;
 	*) die "Unknown EAPI, Bug eclass maintainers." ;;
 esac
@@ -137,6 +137,11 @@ _use_me_now_inverted() {
 # Eclass respects PREFIX variable, though it's not recommended way to set
 # install/lib/bin prefixes.
 # Use -DCMAKE_INSTALL_PREFIX=... CMake variable instead.
+
+# @ECLASS-VARIABLE: CMAKE_BINARY
+# @DESCRIPTION:
+# Eclass can use different cmake binary than the one provided in by system.
+: ${CMAKE_BINARY:=cmake}
 
 # Determine using IN or OUT source build
 _check_build_dir() {
@@ -263,7 +268,7 @@ _modify-cmakelists() {
 enable_cmake-utils_src_configure() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	_check_build_dir init
+	_check_build_dir
 
 	# check if CMakeLists.txt exist and if no then die
 	if [[ ! -e ${CMAKE_USE_DIR}/CMakeLists.txt ]] ; then
@@ -304,6 +309,17 @@ enable_cmake-utils_src_configure() {
 			SET (CMAKE_SKIP_RPATH OFF CACHE BOOL "" FORCE)
 			SET (CMAKE_PLATFORM_REQUIRED_RUNTIME_PATH "${EPREFIX}/usr/${CHOST}/lib/gcc;${EPREFIX}/usr/${CHOST}/lib;${EPREFIX}/usr/$(get_libdir);${EPREFIX}/$(get_libdir)"
 			CACHE STRING "" FORCE)
+
+			ELSE ()
+
+			SET(CMAKE_PREFIX_PATH "${EPREFIX}${PREFIX:-/usr}" CACHE STRING ""FORCE)
+			SET(CMAKE_SKIP_BUILD_RPATH OFF CACHE BOOL "" FORCE)
+			SET(CMAKE_SKIP_RPATH OFF CACHE BOOL "" FORCE)
+			SET(CMAKE_BUILD_WITH_INSTALL_RPATH TRUE CACHE BOOL "" FORCE) 
+			SET(CMAKE_INSTALL_RPATH "${EPREFIX}${PREFIX:-/usr}/lib;${EPREFIX}/usr/${CHOST}/lib/gcc;${EPREFIX}/usr/${CHOST}/lib;${EPREFIX}/usr/$(get_libdir);${EPREFIX}/$(get_libdir)" CACHE STRING "" FORCE)
+			SET(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE CACHE BOOL "" FORCE)
+			SET(CMAKE_INSTALL_NAME_DIR "${EPREFIX}${PREFIX:-/usr}/lib" CACHE STRING "" FORCE)
+
 			ENDIF (NOT APPLE)
 		_EOF_
 	fi
@@ -344,8 +360,8 @@ enable_cmake-utils_src_configure() {
 	mkdir -p "${CMAKE_BUILD_DIR}"
 	pushd "${CMAKE_BUILD_DIR}" > /dev/null
 	debug-print "${LINENO} ${ECLASS} ${FUNCNAME}: mycmakeargs is ${mycmakeargs_local[*]}"
-	echo cmake "${cmakeargs[@]}" "${CMAKE_USE_DIR}"
-	cmake "${cmakeargs[@]}" "${CMAKE_USE_DIR}" || die "cmake failed"
+	echo "${CMAKE_BINARY}" "${cmakeargs[@]}" "${CMAKE_USE_DIR}"
+	"${CMAKE_BINARY}" "${cmakeargs[@]}" "${CMAKE_USE_DIR}" || die "cmake failed"
 	popd > /dev/null
 }
 
@@ -399,7 +415,7 @@ enable_cmake-utils_src_test() {
 	pushd "${CMAKE_BUILD_DIR}" > /dev/null
 	local ctestargs
 	[[ -n ${TEST_VERBOSE} ]] && ctestargs="--extra-verbose --output-on-failure"
-	ctest ${ctestargs} || die "Tests failed."
+	ctest ${ctestargs} "$@" || die "Tests failed."
 	popd > /dev/null
 }
 

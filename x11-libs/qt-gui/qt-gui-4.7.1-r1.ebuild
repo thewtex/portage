@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/qt-gui/qt-gui-4.7.1-r1.ebuild,v 1.2 2010/11/10 11:35:07 wired Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/qt-gui/qt-gui-4.7.1-r1.ebuild,v 1.4 2010/12/10 19:18:39 grobian Exp $
 
 EAPI="3"
 inherit confutils qt4-build
@@ -33,6 +33,7 @@ RDEPEND="media-libs/fontconfig
 	tiff? ( media-libs/tiff )
 	xinerama? ( x11-libs/libXinerama )"
 DEPEND="${RDEPEND}
+	dev-util/pkgconfig
 	!aqua? (
 		x11-proto/xextproto
 		x11-proto/inputproto
@@ -128,8 +129,11 @@ src_install() {
 
 	qt4-build_src_install
 
-	# remove some unnecessary headers
-	rm -f "${D}${QTHEADERDIR}"/{Qt,QtGui}/{qmacstyle_mac.h,qwindowdefs_win.h} \
+	# remove unnecessary Windows headers
+	rm -f "${D}${QTHEADERDIR}"/{Qt,QtGui}/qwindowdefs_win.h
+	# remove Mac OS X headers
+	use aqua || rm -f \
+		"${D}${QTHEADERDIR}"/{Qt,QtGui}/qmacstyle_mac.h \
 		"${D}${QTHEADERDIR}"/QtGui/QMacStyle
 
 	# qt-creator
@@ -139,14 +143,25 @@ src_install() {
 	# which are located under tools/designer/src/lib/*
 	# So instead of installing both, we create the private folder
 	# and drop tools/designer/src/lib/* headers in it.
-	dodir /usr/include/qt4/QtDesigner/private/ || die
-	insinto /usr/include/qt4/QtDesigner/private/
+	if use aqua && [[ ${CHOST##*-darwin} -ge 9 ]] ; then
+		insinto "${QTLIBDIR#${EPREFIX}}"/QtDesigner.framework/Headers/private/
+	else
+		insinto "${QTHEADERDIR#${EPREFIX}}"/QtDesigner/private/
+	fi
 	doins "${S}"/tools/designer/src/lib/shared/* || die
 	doins "${S}"/tools/designer/src/lib/sdk/* || die
 	#install private headers
 	if use private-headers; then
-		insinto "${QTHEADERDIR#${EPREFIX}}"/QtGui/private
+		if use aqua && [[ ${CHOST##*-darwin} -ge 9 ]] ; then
+			insinto "${QTLIBDIR#${EPREFIX}}"/QtGui.framework/Headers/private/
+		else
+			insinto "${QTHEADERDIR#${EPREFIX}}"/QtGui/private
+		fi
 		find "${S}"/src/gui -type f -name "*_p.h" -exec doins {} \;
+	fi
+	if use aqua && [[ ${CHOST##*-darwin} -ge 9 ]] ; then
+		# rerun to get links to headers right
+		fix_includes
 	fi
 
 	# install correct designer and linguist icons, bug 241208

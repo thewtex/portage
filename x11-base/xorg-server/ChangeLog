@@ -1,6 +1,57 @@
 # ChangeLog for x11-base/xorg-server
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-base/xorg-server/ChangeLog,v 1.549 2010/11/16 14:19:40 scarabeus Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-base/xorg-server/ChangeLog,v 1.561 2011/01/31 12:00:32 scarabeus Exp $
+
+*xorg-server-1.9.3.902 (31 Jan 2011)
+
+  31 Jan 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  +xorg-server-1.9.3.902.ebuild:
+  Version bump.
+
+*xorg-server-1.9.3.901-r1 (22 Jan 2011)
+
+  22 Jan 2011; Fabio Erculiani <lxnay@gentoo.org>
+  +xorg-server-1.9.3.901-r1.ebuild:
+  revision bump, this is the first version supporting lxdm
+
+  22 Jan 2011; Fabio Erculiani <lxnay@gentoo.org> files/xdm.initd-3:
+  add lxdm support, see bug #330355
+
+  19 Jan 2011; Rémi Cardona <remi@gentoo.org> xorg-server-1.9.3.901.ebuild:
+  Remove useless eautoreconf (bug #351830)
+
+*xorg-server-1.9.3.901 (09 Jan 2011)
+
+  09 Jan 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  +xorg-server-1.9.3.901.ebuild:
+  Add latest 1.9 RC.
+
+  31 Dec 2010; Jeroen Roovers <jer@gentoo.org> xorg-server-1.9.2.ebuild:
+  Stable for HPPA (bug #344827).
+
+  29 Dec 2010; Markus Meier <maekke@gentoo.org> xorg-server-1.9.2.ebuild:
+  arm stable, bug #344827
+
+  27 Dec 2010; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-server-1.9.2.ebuild, xorg-server-1.9.2.902.ebuild:
+  (#349798) Pull in xinit 1.3. Do it in RDEPEND instead of PDEPEND so that
+  files moving around between packages don't run into conflicts.
+
+  25 Dec 2010; Christian Faulhammer <fauli@gentoo.org>
+  xorg-server-1.9.2.ebuild:
+  x86 stable, bug 344827
+
+  23 Dec 2010; Samuli Suominen <ssuominen@gentoo.org> xorg-server-1.9.2.ebuild:
+  amd64 stable wrt #344827
+
+  19 Dec 2010; Samuli Suominen <ssuominen@gentoo.org> xorg-server-1.9.2.ebuild:
+  ppc64 stable wrt #344827
+
+*xorg-server-1.9.2.902 (05 Dec 2010)
+
+  05 Dec 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  -xorg-server-1.9.2.901.ebuild, +xorg-server-1.9.2.902.ebuild:
+  Version bump to latest RC.
 
 *xorg-server-1.9.2.901 (16 Nov 2010)
 

@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/mutt/mutt-1.5.21-r1.ebuild,v 1.1 2010/10/02 16:40:16 grobian Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-client/mutt/mutt-1.5.21-r1.ebuild,v 1.3 2011/01/30 19:24:40 grobian Exp $
 
 EAPI="3"
 
@@ -16,7 +16,7 @@ SRC_URI="ftp://ftp.mutt.org/mutt/devel/${P}.tar.gz
 IUSE="berkdb crypt debug doc gdbm gnutls gpg idn imap mbox nls nntp pop qdbm sasl sidebar smime smtp ssl tokyocabinet"
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~x64-freebsd ~x86-freebsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~x64-freebsd ~x86-freebsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 RDEPEND=">=sys-libs/ncurses-5.2
 	tokyocabinet?  ( dev-db/tokyocabinet )
 	!tokyocabinet? (
@@ -59,9 +59,11 @@ PATCHDIR="${WORKDIR}"/${P}-gentoo-patches${PATCHSET_REV}
 src_prepare() {
 	# Post-release hot-fixes grabbed from HG, this is what all following
 	# patches are based on in my Mercurial patchqueue (mq).
-	# If you ever take over or need to modify patches here, just ask me
-	# (grobian) for a Mercurial clone of my gentoo branch(es) and
-	# patchqueue as it'll save you a lot of work.
+	# If you ever take over or need to modify patches here, just check
+	# out the gentoo branch(es) of Gentoo's Mutt Mercurial clone, and
+	# the patchqueue as it'll save you a lot of work.
+	# http://prefix.gentooexperimental.org:8000/mutt/
+	# http://prefix.gentooexperimental.org:8000/mutt-patches/
 	for rev in $(eval echo {0..${PR#r}}) ; do
 		local revpatch="${PATCHDIR}"/mutt-gentoo-${PV}-r${rev}.patch
 		[[ -e ${revpatch} ]] && \
@@ -184,7 +186,6 @@ src_configure() {
 
 src_install() {
 	make DESTDIR="${D}" install || die "install failed"
-	find "${ED}"/usr/share/doc -type f | grep -v "html\|manual" | xargs gzip
 	if use mbox; then
 		insinto /etc/mutt
 		newins "${FILESDIR}"/Muttrc.mbox Muttrc

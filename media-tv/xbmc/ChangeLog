@@ -1,6 +1,38 @@
 # ChangeLog for media-tv/xbmc
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-tv/xbmc/ChangeLog,v 1.69 2010/11/19 08:46:51 vapier Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-tv/xbmc/ChangeLog,v 1.77 2011/01/18 05:17:37 vapier Exp $
+
+  18 Jan 2011; Mike Frysinger <vapier@gentoo.org> xbmc-9999.ebuild:
+  Convert to git #346381 by Mathieu Rochette.
+
+  03 Jan 2011; Mike Frysinger <vapier@gentoo.org> xbmc-9999.ebuild,
+  metadata.xml:
+  Add USE=bluray support #350362 by hal.
+
+  02 Jan 2011; Mike Frysinger <vapier@gentoo.org> xbmc-10.0.ebuild,
+  xbmc-9999.ebuild:
+  Punt deprecated liba52/libdts usage #350360 by hal.
+
+  01 Jan 2011; Mike Frysinger <vapier@gentoo.org> xbmc-10.0.ebuild,
+  +files/xbmc-10.0-python-2.7.patch:
+  Add support from upstream for python-2.7 #350098 by Tom Flair.
+
+  31 Dec 2010; Mike Frysinger <vapier@gentoo.org> xbmc-9999.ebuild:
+  Patch by Samuli Suominen to drop hal support in favor of upstream
+  replacements #349523.
+
+  23 Dec 2010; Mike Frysinger <vapier@gentoo.org> xbmc-10.0.ebuild,
+  xbmc-9999.ebuild:
+  Require USE=cxx in libpcre #349533 by Oliver Schinagl.
+
+*xbmc-10.0 (22 Dec 2010)
+
+  22 Dec 2010; Mike Frysinger <vapier@gentoo.org> +xbmc-10.0.ebuild:
+  Version bump.
+
+  22 Dec 2010; Mike Frysinger <vapier@gentoo.org> xbmc-9999.ebuild:
+  Only delay for 3 seconds when dbus services are missing #348580 by James
+  Bowlin.
 
   19 Nov 2010; Mike Frysinger <vapier@gentoo.org> xbmc-9999.ebuild:
   Drop USE=aac like upstream has #345939 by BT.

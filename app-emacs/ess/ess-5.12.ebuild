@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/ess/ess-5.12.ebuild,v 1.1 2010/11/09 20:58:59 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/ess/ess-5.12.ebuild,v 1.6 2011/02/03 20:27:47 ulm Exp $
 
 EAPI=3
 
@@ -12,7 +12,7 @@ SRC_URI="http://ess.r-project.org/downloads/ess/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-macos"
+KEYWORDS="alpha amd64 ppc sparc x86 ~amd64-linux ~x86-linux ~x86-macos"
 IUSE=""
 
 DEPEND="app-text/texi2html
@@ -35,7 +35,7 @@ src_install() {
 	elisp-site-file-install "${FILESDIR}/${SITEFILE}" || die
 
 	# Most documentation is installed by the package's build system
-	rm -f "${ED}${SITELISP}/ess/lisp/ChangeLog"
+	rm -f "${ED}${SITELISP}/${PN}/ChangeLog"
 	dodoc ChangeLog *NEWS doc/{TODO,ess-intro.pdf} || die "dodoc failed"
 	newdoc lisp/ChangeLog ChangeLog-lisp || die "newdoc failed"
 	prepalldocs

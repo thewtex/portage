@@ -1,0 +1,32 @@
+# ChangeLog for app-office/libreoffice-bin
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-office/libreoffice-bin/ChangeLog,v 1.5 2011/01/27 14:59:13 suka Exp $
+
+  27 Jan 2011; Andreas Proschofsky <suka@gentoo.org>
+  libreoffice-bin-3.3.0.ebuild, metadata.xml:
+  Introduce "offlinehelp" use flag, if not set the LibreOffice Wiki will be
+  used for help, reducing download size 
+  quite a bit.
+
+  27 Jan 2011; Andreas Proschofsky <suka@gentoo.org>
+  libreoffice-bin-3.3.0.ebuild:
+  Add accidentally lost strip-linguas statement, bug #352820
+
+*libreoffice-bin-3.3.0 (25 Jan 2011)
+
+  25 Jan 2011; Andreas Proschofsky <suka@gentoo.org>
+  -libreoffice-bin-3.3.0_rc4.ebuild, +libreoffice-bin-3.3.0.ebuild:
+  Bump to final release, also fix some of the wrapper, desktop-file mess
+
+  24 Jan 2011; Andreas Proschofsky <suka@gentoo.org>
+  libreoffice-bin-3.3.0_rc4.ebuild:
+  Don't care about parallel installability (which causes all sorts of problems
+  anyway) and get starter symlinks 
+  back
+
+*libreoffice-bin-3.3.0_rc4 (23 Jan 2011)
+
+  23 Jan 2011; Andreas Proschofsky <suka@gentoo.org> +files/50-libreoffice-bin,
+  +libreoffice-bin-3.3.0_rc4.ebuild, +files/wrapper.in, +metadata.xml:
+  Initial commit for libreoffice-bin, final release should be coming soon
+

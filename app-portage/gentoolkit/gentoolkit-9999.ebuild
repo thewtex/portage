@@ -1,16 +1,19 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-portage/gentoolkit/gentoolkit-9999.ebuild,v 1.10 2010/10/28 20:22:15 scarabeus Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-portage/gentoolkit/gentoolkit-9999.ebuild,v 1.13 2011/02/04 18:59:54 fuzzyray Exp $
 
-EAPI="2"
+EAPI="3"
 SUPPORT_PYTHON_ABIS="1"
-DISTUTILS_DISABLE_VERSIONING_OF_PYTHON_SCRIPTS="1"
 RESTRICT_PYTHON_ABIS="2.[45]"
+PYTHON_USE_WITH="xml"
+PYTHON_NONVERSIONED_EXECUTABLES=(".*")
 
-inherit distutils python subversion
+EGIT_MASTER="gentoolkit"
+EGIT_BRANCH="gentoolkit"
 
-ESVN_REPO_URI="svn://anonsvn.gentoo.org/gentoolkit/trunk/gentoolkit"
-ESVN_PROJECT="gentoolkit"
+inherit distutils python git
+
+EGIT_REPO_URI="git://git.overlays.gentoo.org/proj/gentoolkit.git"
 
 DESCRIPTION="Collection of administration scripts for Gentoo"
 HOMEPAGE="http://www.gentoo.org/proj/en/portage/tools/index.xml"
@@ -22,12 +25,7 @@ IUSE=""
 
 KEYWORDS=""
 
-DEPEND="sys-apps/portage
-	>=dev-lang/python-2.6[xml]
-	!!>=dev-lang/python-2.6[-xml]"
-# argparse will need virtual because is also provided by
-# dev-lang/python:2.7 and 3.2 or later
-# gentoolkit-dev blocker for eshowkw
+DEPEND="sys-apps/portage"
 RDEPEND="${DEPEND}
 	!<=app-portage/gentoolkit-dev-0.2.7
 	dev-python/argparse
@@ -36,12 +34,11 @@ RDEPEND="${DEPEND}
 	sys-apps/grep"
 
 distutils_src_compile_pre_hook() {
-	echo VERSION="9999-r${ESVN_WC_REVISION}" "$(PYTHON)" setup.py set_version
-	VERSION="9999-r${ESVN_WC_REVISION}" "$(PYTHON)" setup.py set_version
+	echo VERSION="9999-${EGIT_VERSION}" "$(PYTHON)" setup.py set_version
+	VERSION="9999-${EGIT_VERSION}" "$(PYTHON)" setup.py set_version
 }
 
 src_compile() {
-	subversion_wc_info
 	distutils_src_compile
 }
 
@@ -52,9 +49,20 @@ src_install() {
 	# Create cache directory for revdep-rebuild
 	dodir /var/cache/revdep-rebuild
 	keepdir /var/cache/revdep-rebuild
-	fowners root:root /var/cache/revdep-rebuild
+	use prefix || fowners root:root /var/cache/revdep-rebuild
 	fperms 0700 /var/cache/revdep-rebuild
 
+	# remove on Gentoo Prefix platforms where it's broken anyway
+	if use prefix; then
+		if [[ ${CHOST} != *-aix* ]]; then
+			elog "The revdep-rebuild command is removed, the preserve-libs"
+			elog "feature of portage will handle issues."
+			rm "${ED}"/usr/bin/revdep-rebuild
+			rm "${ED}"/usr/share/man/man1/revdep-rebuild.1.bz2
+			rm -rf "${ED}"/etc/revdep-rebuild
+			rm -rf "${ED}"/var
+		fi
+	fi
 	# Can distutils handle this?
 	dosym eclean /usr/bin/eclean-dist
 	dosym eclean /usr/bin/eclean-pkg
@@ -62,10 +70,6 @@ src_install() {
 
 pkg_postinst() {
 	distutils_pkg_postinst
-
-	# Make sure that our ownership and permissions stuck
-	chown root:root "${ROOT}/var/cache/revdep-rebuild"
-	chmod 0700 "${ROOT}/var/cache/revdep-rebuild"
 
 	einfo
 	einfo "For further information on gentoolkit, please read the gentoolkit"

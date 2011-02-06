@@ -1,12 +1,10 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/amd/amd-2.2.1.ebuild,v 1.2 2010/10/31 20:16:21 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/amd/amd-2.2.1.ebuild,v 1.5 2010/12/22 18:18:12 bicatali Exp $
 
 EAPI="3"
 
-inherit autotools eutils fortran
-
-FORTRAN="gfortran ifc"
+inherit autotools eutils toolchain-funcs
 
 MY_PN=AMD
 
@@ -17,7 +15,7 @@ SRC_URI="http://www.cise.ufl.edu/research/sparse/${PN}/${MY_PN}-${PV}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-macos"
-IUSE="doc"
+IUSE="doc static-libs"
 
 RDEPEND="sci-libs/ufconfig"
 DEPEND="${RDEPEND}"
@@ -25,8 +23,13 @@ DEPEND="${RDEPEND}"
 S="${WORKDIR}/${MY_PN}"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-2.2.0-autotools.patch
+	epatch \
+		"${FILESDIR}"/${PN}-2.2.0-autotools.patch
 	eautoreconf
+}
+
+src_configure() {
+	econf $(use_enable static-libs static)
 }
 
 src_install() {

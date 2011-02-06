@@ -1,6 +1,31 @@
 # ChangeLog for gnome-base/gnome-panel
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-base/gnome-panel/ChangeLog,v 1.317 2010/10/20 16:41:04 pacho Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/gnome-base/gnome-panel/ChangeLog,v 1.322 2011/02/04 11:03:45 pacho Exp $
+
+  04 Feb 2011; Pacho Ramos <pacho@gentoo.org> gnome-panel-2.32.1.ebuild:
+  Drop eggdbus dependency as looks to be not really needed as told by upstream
+  and confirmed by me.
+
+  15 Jan 2011; <nirbheek@gentoo.org> gnome-panel-2.30.2.ebuild,
+  gnome-panel-2.32.1.ebuild:
+  libgweather slotmove 0 -> 2, new gtk+:3 version coming up
+
+  03 Jan 2011; Gilles Dartiguelongue <eva@gentoo.org>
+  gnome-panel-2.32.1.ebuild:
+  Add missing introspection USE-depend, bug #350096.
+
+*gnome-panel-2.32.1 (04 Dec 2010)
+
+  04 Dec 2010; Pacho Ramos <pacho@gentoo.org> -gnome-panel-2.28.0.ebuild,
+  -files/gnome-panel-2.28.0-clock-applet-missing-cflags.patch,
+  -files/gnome-panel-2.28.0-crashes-xrandr.patch, -gnome-panel-2.32.0.2.ebuild,
+  +gnome-panel-2.32.1.ebuild:
+  Version bump with bugfixes and translation updates, fix bonobo deps and
+  require eggdbus (bug #343841), remove old.
+
+  03 Dec 2010; Arun Raghavan <ford_prefect@gentoo.org>
+  gnome-panel-2.32.0.2.ebuild:
+  Clarify gnome-desktop dep as being slot 2
 
   20 Oct 2010; Pacho Ramos <pacho@gentoo.org>
   -files/gnome-panel-2.24.3-daylight.patch,

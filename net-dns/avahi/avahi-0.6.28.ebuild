@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dns/avahi/avahi-0.6.28.ebuild,v 1.4 2010/11/20 00:50:07 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dns/avahi/avahi-0.6.28.ebuild,v 1.6 2011/01/23 20:24:45 swegener Exp $
 
 EAPI="3"
 
@@ -26,8 +26,7 @@ RDEPEND=">=dev-libs/libdaemon-0.14
 	gdbm? ( sys-libs/gdbm )
 	qt4? ( x11-libs/qt-core:4 )
 	gtk? (
-		>=x11-libs/gtk+-2.4.0:2
-		>=gnome-base/libglade-2.4.0
+		>=x11-libs/gtk+-2.14.0:2
 	)
 	dbus? (
 		${DBUS_DEPEND}
@@ -93,6 +92,8 @@ src_prepare() {
 	sed -i\
 		-e "s:\\.\\./\\.\\./\\.\\./doc/avahi-docs/html/:../../../doc/${PF}/html/:" \
 		doxygen_to_devhelp.xsl || die
+
+	epatch "${FILESDIR}"/netlink-request-all-matches-when-requesting-interface.patch
 }
 
 src_configure() {

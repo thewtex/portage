@@ -1,10 +1,10 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/swi-prolog/swi-prolog-5.10.2.ebuild,v 1.2 2010/11/19 18:14:02 keri Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/swi-prolog/swi-prolog-5.10.2.ebuild,v 1.9 2011/01/13 18:54:15 ranger Exp $
 
 inherit eutils flag-o-matic java-pkg-opt-2
 
-PATCHSET_VER="0"
+PATCHSET_VER="4"
 
 DESCRIPTION="free, small, and standard compliant Prolog compiler"
 HOMEPAGE="http://www.swi-prolog.org/"
@@ -13,7 +13,7 @@ SRC_URI="http://www.swi-prolog.org/download/stable/src/pl-${PV}.tar.gz
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="~alpha amd64 ppc ~sparc x86"
 IUSE="berkdb debug doc gmp hardened java minimal odbc readline ssl static test zlib X"
 
 RDEPEND="sys-libs/ncurses
@@ -50,6 +50,7 @@ src_unpack() {
 
 src_compile() {
 	append-flags -fno-strict-aliasing
+	use ppc && append-flags -mno-altivec
 	use hardened && append-flags -fno-unit-at-a-time
 	use debug && append-flags -DO_DEBUG
 

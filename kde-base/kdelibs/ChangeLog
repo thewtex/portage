@@ -1,6 +1,59 @@
 # ChangeLog for kde-base/kdelibs
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/kdelibs/ChangeLog,v 1.708 2010/11/14 13:46:54 jlec Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/kde-base/kdelibs/ChangeLog,v 1.718 2011/02/02 11:13:45 scarabeus Exp $
+
+*kdelibs-4.6.0-r1 (02 Feb 2011)
+
+  02 Feb 2011; Tomáš Chvátal <scarabeus@gentoo.org> -kdelibs-4.6.0.ebuild,
+  +kdelibs-4.6.0-r1.ebuild:
+  Revision bump so everyone gets the fix.
+
+  02 Feb 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  kdelibs-4.6.0.ebuild, +files/kdelibs-4.6.0-logoutcrash.patch:
+  Added fix for crash on logout/reboot/shutdown. Thanks lxnay and aseigo.
+
+*kdelibs-4.6.0 (26 Jan 2011)
+
+  26 Jan 2011; Alexey Shvetsov <alexxy@gentoo.org>
+  +files/kdelibs-4.5.73-module-suffix.patch,
+  +files/kdelibs-4.5.74-klauncher_mac.patch,
+  +files/kdelibs-4.5.90-mimetypes.patch, +kdelibs-4.6.0.ebuild:
+  Version bump KDE SC 4.6.0
+
+  25 Jan 2011; Markos Chandras <hwoarang@gentoo.org> kdelibs-4.4.5-r2.ebuild:
+  Stable on amd64 wrt bug #352491
+
+  24 Jan 2011; Maciej Mrozowski <reavertm@gentoo.org> kdelibs-4.4.5.ebuild,
+  kdelibs-4.4.5-r1.ebuild, kdelibs-4.4.5-r2.ebuild, kdelibs-4.5.5.ebuild:
+  Drop xcb USE dep on phonon. Related to bug 352611.
+
+  24 Jan 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  kdelibs-4.4.5-r2.ebuild:
+  x86 stable wrt bug #352491
+
+*kdelibs-4.5.5 (10 Jan 2011)
+
+  10 Jan 2011; Theo Chatzimichos <tampakrap@gentoo.org> +kdelibs-4.5.5.ebuild:
+  Version bump KDE SC 4.5.5
+
+*kdelibs-4.4.5-r2 (30 Dec 2010)
+
+  30 Dec 2010; Andreas K. Huettel <dilfridge@gentoo.org>
+  +kdelibs-4.4.5-r2.ebuild, +files/kdelibs-4.4.5-formpainter.patch:
+  Added upstream patch to kill the multitudes of QPainter::...: Painter not
+  active error messages. Should fix bug 341289, please test.
+
+*kdelibs-4.4.5-r1 (14 Dec 2010)
+
+  14 Dec 2010; Andreas K. Huettel <dilfridge@gentoo.org>
+  +kdelibs-4.4.5-r1.ebuild, +files/kdelibs-4.4.5-qt471.patch:
+  Added compilation fix for qt-4.7.1 in new (non-stable) revision, 
+  bug 345185
+
+*kdelibs-4.5.4 (02 Dec 2010)
+
+  02 Dec 2010; Alexey Shvetsov <alexxy@gentoo.org> +kdelibs-4.5.4.ebuild:
+  Version bump KDE SC 4.5.4
 
   14 Nov 2010; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Move local USE lzma to global USE

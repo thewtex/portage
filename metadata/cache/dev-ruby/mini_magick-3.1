@@ -1,0 +1,22 @@
+test? ( media-gfx/imagemagick[tiff,jpeg] ) ruby_targets_ruby18? ( test? ( virtual/ruby-test-unit[ruby_targets_ruby18] ) ) ruby_targets_ruby19? ( test? ( virtual/ruby-test-unit[ruby_targets_ruby19] ) ) test? ( ruby_targets_ruby18? ( >=dev-ruby/subexec-0.0.4[ruby_targets_ruby18] ) ruby_targets_ruby19? ( >=dev-ruby/subexec-0.0.4[ruby_targets_ruby19] ) ) ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ruby19? ( dev-lang/ruby:1.9 ) ruby_targets_ruby18? ( doc? ( dev-ruby/rake[ruby_targets_ruby18] ) ) ruby_targets_ruby19? ( doc? ( dev-ruby/rake[ruby_targets_ruby19] ) ) ruby_targets_ruby18? ( test? ( dev-ruby/rake[ruby_targets_ruby18] ) ) ruby_targets_ruby19? ( test? ( dev-ruby/rake[ruby_targets_ruby19] ) ) ruby_targets_ruby18? ( dev-ruby/rubygems[ruby_targets_ruby18] ) ruby_targets_ruby19? ( dev-ruby/rubygems[ruby_targets_ruby19] ) test? ( ruby_targets_ruby18? ( dev-ruby/rubygems[ruby_targets_ruby18] ) ruby_targets_ruby19? ( dev-ruby/rubygems[ruby_targets_ruby19] ) )
+media-gfx/imagemagick ruby_targets_ruby18? ( >=dev-ruby/subexec-0.0.4[ruby_targets_ruby18] ) ruby_targets_ruby19? ( >=dev-ruby/subexec-0.0.4[ruby_targets_ruby19] ) ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ruby19? ( dev-lang/ruby:1.9 ) ruby_targets_ruby18? ( dev-ruby/rubygems[ruby_targets_ruby18] ) ruby_targets_ruby19? ( dev-ruby/rubygems[ruby_targets_ruby19] )
+0
+mirror://rubygems/mini_magick-3.1.gem
+
+http://github.com/probablycorey/mini_magick
+MIT
+Manipulate images with minimal use of memory.
+~amd64
+eutils multilib portability ruby-fakegem ruby-ng toolchain-funcs
+test ruby_targets_ruby18 ruby_targets_ruby19 doc doc test
+
+
+
+2
+
+compile configure install prepare setup test unpack
+
+
+
+
+

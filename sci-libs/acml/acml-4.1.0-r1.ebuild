@@ -1,10 +1,10 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/acml/acml-4.1.0-r1.ebuild,v 1.4 2008/12/07 18:28:37 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/acml/acml-4.1.0-r1.ebuild,v 1.6 2010/12/17 08:08:00 jlec Exp $
 
 EAPI="1"
 
-inherit eutils toolchain-funcs fortran versionator
+inherit eutils toolchain-funcs versionator
 
 MY_P=${PN}-$(replace_all_version_separators -)
 
@@ -54,16 +54,22 @@ pkg_nofetch() {
 	einfo "SRC=${A} $SRC_URI"
 }
 
+get_fcomp() {
+	case $(tc-getFC) in
+		*gfortran* )
+			FCOMP="gfortran" ;;
+		ifort )
+			FCOMP="ifc" ;;
+		* )
+			FCOMP=$(tc-getFC) ;;
+	esac
+}
+
 pkg_setup() {
-	FORTRAN=""
 	if use test; then
-		use gfortran &&	FORTRAN="${FORTRAN} gfortran"
-		use ifc && FORTRAN="${FORTRAN} ifc"
-		use gfortran || use ifc || FORTRAN="gfortran"
-		fortran_pkg_setup
 		# work around incomplete fortran eclass
-		if  use gfortran &&
-			[[ ${FORTRANC} == gfortran ]] &&
+		if use gfortran &&
+			[[ $(tc-getFC) =~ gfortran ]] &&
 			[[ $(gcc-version) != 4.2 ]]
 		then
 			eerror "You need gfortran-4.2 to test acml"
@@ -71,6 +77,10 @@ pkg_setup() {
 			die "gfortran check failed"
 		fi
 	fi
+	if use openmp; then
+		tc-has-openmp || die "Please ensure your compiler has openmp support"
+	fi
+	get_fcomp
 	# construct default profile dprof from default ddir
 	local ddir=gfortran
 	use ifc && ddir=ifort
@@ -94,7 +104,7 @@ src_test() {
 			cd "${S}"/${fdir}/examples/${d}
 			emake \
 				ACMLDIR="${S}"/${fdir} \
-				F77=${FORTRANC} \
+				F77=$(tc-getFC) \
 				CC="$(tc-getCC)" \
 				CPLUSPLUS="$(tc-getCXX)" \
 				|| die "emake test in ${fdir}/examples/${d} failed"

@@ -1,19 +1,24 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/coherence/coherence-0.6.6.1.ebuild,v 1.4 2010/08/12 09:09:52 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/coherence/coherence-0.6.6.1.ebuild,v 1.8 2011/01/16 15:10:23 armin76 Exp $
 
 EAPI=2
-inherit distutils
+PYTHON_DEPEND="2:2.5"
+PYTHON_USE_WITH="sqlite"
+SUPPORT_PYTHON_ABIS="1"
+RESTRICT_PYTHON_ABIS="2.4 3.* *-jython"
+
+inherit distutils python
 
 MY_P="Coherence-${PV}"
 
-DESCRIPTION="Coherence is a framework written in Python for DLNA/UPnP components"
+DESCRIPTION="A framework written in Python for DLNA/UPnP components"
 HOMEPAGE="https://coherence.beebits.net/"
 SRC_URI="http://coherence.beebits.net/download/${MY_P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~ppc64 x86"
+KEYWORDS="amd64 ~ia64 ~ppc64 sparc x86"
 IUSE=""
 
 # deps are not exact and need some work
@@ -27,7 +32,6 @@ RDEPEND="${DEPEND}
 	dev-python/axiom
 	dev-python/gdata
 	dev-python/feedparser
-	dev-lang/python[sqlite]
 	dev-python/tagpy"
 
 S="${WORKDIR}/${MY_P}"

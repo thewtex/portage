@@ -1,10 +1,10 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/sane-backends/sane-backends-1.0.21-r1.ebuild,v 1.3 2010/11/16 21:00:45 phosphan Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/sane-backends/sane-backends-1.0.21-r1.ebuild,v 1.8 2011/01/30 17:53:14 armin76 Exp $
 
 EAPI="1"
 
-inherit eutils flag-o-matic
+inherit eutils flag-o-matic multilib
 
 # gphoto and v4l are handled by their usual USE flags.
 # The pint backend was disabled because I could not get it to compile.
@@ -134,7 +134,7 @@ SRC_URI="http://alioth.debian.org/frs/download.php/3258/${P}.tar.gz
 	ftp://ftp.sane-project.org/pub/sane/${P}/${P}-i18n.patch"
 SLOT="0"
 LICENSE="GPL-2 public-domain"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="alpha amd64 arm hppa ia64 ~ppc ~ppc64 sparc x86"
 
 # the blank is intended - an empty string would result in building ALL backends.
 BACKENDS=" "
@@ -210,8 +210,8 @@ src_install () {
 		cd ../..
 	fi
 	cd tools/udev
-	dodir /etc/udev/rules.d
-	insinto /etc/udev/rules.d
+	dodir /$(get_libdir)/udev/rules.d
+	insinto /$(get_libdir)/udev/rules.d
 	newins libsane.rules 41-libsane.rules
 	cd ../..
 	dodoc NEWS AUTHORS ChangeLog* README README.linux

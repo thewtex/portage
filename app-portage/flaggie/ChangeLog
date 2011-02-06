@@ -1,6 +1,66 @@
 # ChangeLog for app-portage/flaggie
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-portage/flaggie/ChangeLog,v 1.5 2010/11/17 15:03:02 mgorny Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-portage/flaggie/ChangeLog,v 1.17 2011/01/19 21:42:05 mgorny Exp $
+
+*flaggie-0.1.1 (19 Jan 2011)
+
+  19 Jan 2011; Michał Górny <mgorny@gentoo.org> -flaggie-0.1.ebuild,
+  +flaggie-0.1.1.ebuild:
+  Version bump. The new version fixes treating license groups as incorrect args
+  and adds support for USE_EXPAND variables in make.conf.
+
+  16 Jan 2011; Michał Górny <mgorny@gentoo.org> flaggie-0.0.4.ebuild,
+  flaggie-0.1.ebuild:
+  Add missing app-shells/gentoo-bashcomp RDEP for bash-completion. Thanks to
+  Jacek Sowiński.
+
+*flaggie-0.1 (15 Jan 2011)
+
+  15 Jan 2011; Michał Górny <mgorny@gentoo.org> -flaggie-0.0.3.ebuild,
+  +flaggie-0.1.ebuild:
+  Version bump. The new version introduces preliminary support for global
+  (make.conf) actions.
+
+  08 Jan 2011; Michał Górny <mgorny@gentoo.org> flaggie-0.0.4.ebuild:
+  Use bash-completion.eclass.
+
+*flaggie-0.0.4 (07 Jan 2011)
+
+  07 Jan 2011; Michał Górny <mgorny@gentoo.org> +flaggie-0.0.4.ebuild:
+  Version bump. Fixes #349108 (package.accept_keywords support) and #349207
+  ('*' special keyword), adds a bash-completion script.
+
+  06 Jan 2011; Dane Smith <c1pher@gentoo.org> flaggie-0.0.3.ebuild:
+  Tested on arm. Marking ~arm.
+
+  05 Jan 2011; Michał Górny <mgorny@gentoo.org> -flaggie-0.0.2.4.ebuild,
+  flaggie-0.0.3.ebuild:
+  EAPI bump, drop old version.
+
+  20 Dec 2010; Michał Górny <mgorny@gentoo.org> flaggie-0.0.2.4.ebuild,
+  flaggie-0.0.3.ebuild:
+  Change the SRC_URIs to use cloud.github.com directly. This avoids issues with
+  (pointless) SSL and old wget versions.
+
+  19 Dec 2010; Michał Górny <mgorny@gentoo.org> flaggie-0.0.2.4.ebuild,
+  flaggie-0.0.3.ebuild:
+  Clarify the Portage RDEP.
+
+  19 Dec 2010; Michał Górny <mgorny@gentoo.org> metadata.xml:
+  Clarify the <bugs-to/> URL.
+
+*flaggie-0.0.3 (08 Dec 2010)
+
+  08 Dec 2010; Michał Górny <mgorny@gentoo.org> -flaggie-0.0.2.3.ebuild,
+  +flaggie-0.0.3.ebuild:
+  Version bump. The new version introduces package.env file support and further
+  bugfixes.
+
+*flaggie-0.0.2.4 (23 Nov 2010)
+
+  23 Nov 2010; Michał Górny <mgorny@gentoo.org> +flaggie-0.0.2.4.ebuild:
+  Version bump. The new version fixes '**' keyword argument support and uses
+  atomic writes.
 
 *flaggie-0.0.2.3 (17 Nov 2010)
 

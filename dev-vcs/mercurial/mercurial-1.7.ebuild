@@ -1,12 +1,12 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-vcs/mercurial/mercurial-1.7.ebuild,v 1.1 2010/11/02 08:01:22 djc Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-vcs/mercurial/mercurial-1.7.ebuild,v 1.8 2011/01/15 11:59:04 armin76 Exp $
 
 EAPI=3
 PYTHON_DEPEND="2"
 PYTHON_USE_WITH="threads"
 SUPPORT_PYTHON_ABIS="1"
-RESTRICT_PYTHON_ABIS="3.*"
+RESTRICT_PYTHON_ABIS="3.* *-jython"
 
 inherit bash-completion elisp-common eutils distutils
 
@@ -16,7 +16,7 @@ SRC_URI="http://mercurial.selenic.com/release/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 arm ~hppa ia64 ppc ~ppc64 sparc x86 ~x86-fbsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="bugzilla emacs gpg test tk zsh-completion"
 
 RDEPEND="bugzilla? ( dev-python/mysql-python )
@@ -107,7 +107,7 @@ src_test() {
 	testing() {
 		local testdir="${T}/tests-${PYTHON_ABI}"
 		rm -rf "${testdir}"
-		"$(PYTHON)" run-tests.py -j4 --tmpdir="${testdir}"
+		"$(PYTHON)" run-tests.py --tmpdir="${testdir}"
 	}
 	python_execute_function testing
 }

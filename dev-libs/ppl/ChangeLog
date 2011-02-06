@@ -1,6 +1,23 @@
 # ChangeLog for dev-libs/ppl
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/ppl/ChangeLog,v 1.28 2010/07/10 13:18:40 ssuominen Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/ppl/ChangeLog,v 1.32 2011/01/23 20:03:54 vapier Exp $
+
+  23 Jan 2011; Mike Frysinger <vapier@gentoo.org> ppl-0.11.ebuild:
+  Inherit eutils for epause #352519 by Diego Elio Pettenò.
+
+  08 Jan 2011; Jeremy Olexa <darkside@gentoo.org> ppl-0.11.ebuild:
+  add ~amd64-linux, bug 346861
+
+*ppl-0.11 (07 Jan 2011)
+
+  07 Jan 2011; Ryan Hill <dirtyepic@gentoo.org> +ppl-0.11.ebuild:
+  Version bump. (bug #345679)
+
+  21 Nov 2010; Ryan Hill <dirtyepic@gentoo.org> -ppl-0.10.2.ebuild,
+  ppl-0.10.2-r1.ebuild, -files/ppl-0.10.2-gmp-5-fix.patch, metadata.xml:
+  Add lpsol USE for automagic dependency on sci-mathematics/glpk discovered in
+  bug #346173 by mehrunes. Push GMP patch to mirrors, bug #331051 by jer.
+  Remove old.
 
   10 Jul 2010; Samuli Suominen <ssuominen@gentoo.org> ppl-0.10.2-r1.ebuild:
   ppc64 stable wrt #319885

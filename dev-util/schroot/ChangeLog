@@ -1,6 +1,22 @@
 # ChangeLog for dev-util/schroot
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/schroot/ChangeLog,v 1.21 2010/10/19 02:32:52 abcd Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/schroot/ChangeLog,v 1.25 2011/01/25 15:15:57 hwoarang Exp $
+
+  25 Jan 2011; Markos Chandras <hwoarang@gentoo.org> schroot-1.4.14.ebuild:
+  Stable on amd64 wrt bug #344615
+
+  24 Jan 2011; Christian Faulhammer <fauli@gentoo.org>
+  schroot-1.4.14.ebuild:
+  stable x86, bug 344615
+
+  23 Jan 2011; Jonathan Callen <abcd@gentoo.org> schroot-1.4.14.ebuild,
+  +files/schroot-1.4.14-debug.patch, schroot-1.4.17.ebuild:
+  Add patch to fix build with USE=debug. Debian bug 609067, Gentoo bug 344615
+
+*schroot-1.4.17 (06 Jan 2011)
+
+  06 Jan 2011; Jonathan Callen <abcd@gentoo.org> +schroot-1.4.17.ebuild:
+  Bump to latest upstream version
 
   19 Oct 2010; Jonathan Callen <abcd@gentoo.org> schroot-1.4.14.ebuild:
   Fix build with USE=doc (bug 340078)

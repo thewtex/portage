@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/coreutils/coreutils-8.7.ebuild,v 1.1 2010/11/13 23:33:52 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/coreutils/coreutils-8.7.ebuild,v 1.11 2011/01/03 17:03:11 xmw Exp $
 
 EAPI="3"
 
@@ -17,7 +17,7 @@ SRC_URI="ftp://alpha.gnu.org/gnu/coreutils/${P}.tar.xz
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+KEYWORDS="alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86"
 IUSE="acl caps gmp nls selinux static unicode vanilla xattr"
 
 RDEPEND="caps? ( sys-libs/libcap )
@@ -32,8 +32,7 @@ RDEPEND="caps? ( sys-libs/libcap )
 	!sys-apps/mktemp
 	!<app-forensics/tct-1.18-r1
 	!<net-fs/netatalk-2.0.3-r4
-	!<sci-chemistry/ccp4-6.1.1
-	>=sys-libs/ncurses-5.3-r5"
+	!<sci-chemistry/ccp4-6.1.1"
 DEPEND="${RDEPEND}
 	app-arch/xz-utils"
 
@@ -45,6 +44,9 @@ src_prepare() {
 		EPATCH_EXCLUDE="001_all_coreutils-gen-progress-bar.patch" \
 		epatch
 	fi
+
+	# Avoid perl dep for compiled in dircolors default #348642
+	has_version dev-lang/perl || touch src/dircolors.h
 
 	# Since we've patched many .c files, the make process will try to
 	# re-build the manpages by running `./bin --help`.  When doing a

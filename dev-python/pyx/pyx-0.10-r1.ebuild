@@ -1,31 +1,35 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pyx/pyx-0.10-r1.ebuild,v 1.1 2008/09/03 10:58:40 bicatali Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pyx/pyx-0.10-r1.ebuild,v 1.4 2011/01/02 09:23:38 phajdan.jr Exp $
+
+EAPI="3"
+PYTHON_DEPEND="2"
+SUPPORT_PYTHON_ABIS="1"
+RESTRICT_PYTHON_ABIS="3.* *-jython"
 
 inherit distutils eutils
 
-MY_P=${P/pyx/PyX}
+MY_P="${P/pyx/PyX}"
+
 DESCRIPTION="Python package for the generation of encapsulated PostScript figures"
 HOMEPAGE="http://pyx.sourceforge.net/"
 SRC_URI="mirror://sourceforge/pyx/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ia64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~ia64 ~ppc ~ppc64 x86"
 IUSE="doc"
 
-DEPEND="virtual/python
-	virtual/tex-base
+RDEPEND="virtual/tex-base"
+DEPEND="${RDEPEND}
 	doc? ( virtual/latex-base )"
-RDEPEND="virtual/python
-	virtual/tex-base"
 
-S=${WORKDIR}/${MY_P}
+S="${WORKDIR}/${MY_P}"
 
 DOCS="AUTHORS CHANGES INSTALL"
 
-src_unpack() {
-	distutils_src_unpack
+src_prepare() {
+	distutils_src_prepare
 
 	epatch "${FILESDIR}"/${P}.patch
 	sed -i \

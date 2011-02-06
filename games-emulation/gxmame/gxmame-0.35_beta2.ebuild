@@ -1,8 +1,9 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-emulation/gxmame/gxmame-0.35_beta2.ebuild,v 1.9 2008/04/08 01:44:15 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/gxmame/gxmame-0.35_beta2.ebuild,v 1.11 2011/01/24 22:29:44 mr_bones_ Exp $
 
-inherit games
+EAPI=2
+inherit eutils games
 
 MY_P="${PN}-${PV/_beta/beta}"
 DESCRIPTION="frontend for XMame using the GTK library"
@@ -15,8 +16,8 @@ KEYWORDS="amd64 ppc ~sparc x86"
 IUSE="nls joystick"
 
 RDEPEND="dev-libs/expat
-	>=x11-libs/gtk+-2.4
-	>=dev-libs/glib-2.4
+	>=x11-libs/gtk+-2.4:2
+	>=dev-libs/glib-2.4:2
 	x11-themes/gnome-icon-theme
 	nls? ( virtual/libintl )"
 DEPEND="${RDEPEND}
@@ -25,9 +26,8 @@ DEPEND="${RDEPEND}
 
 S=${WORKDIR}/${MY_P}
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
+src_prepare() {
+	epatch "${FILESDIR}"/${P}-ovflfix.patch
 	sed -i \
 		-e "s:-O2 -fomit-frame-pointer -ffast-math:${CFLAGS}:" \
 		-e "s:-O2:${CFLAGS}:" \
@@ -51,18 +51,16 @@ src_unpack() {
 		|| die "sed failed"
 }
 
-src_compile() {
+src_configure() {
 	egamesconf \
 		--disable-dependency-tracking \
 		--with-xmame-dir="${GAMES_DATADIR}"/xmame \
 		$(use_enable nls) \
-		$(use_enable joystick) \
-		|| die
-	emake || die "emake failed"
+		$(use_enable joystick)
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die "emake install failed"
+	emake DESTDIR="${D}" install || die
 	dodoc AUTHORS BUGS ChangeLog NEWS README TODO
 	prepgamesdirs
 }

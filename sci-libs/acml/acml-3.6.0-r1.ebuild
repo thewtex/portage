@@ -1,8 +1,8 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/acml/acml-3.6.0-r1.ebuild,v 1.9 2008/04/22 08:13:19 bicatali Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/acml/acml-3.6.0-r1.ebuild,v 1.11 2010/12/17 08:08:00 jlec Exp $
 
-inherit eutils toolchain-funcs fortran
+inherit eutils toolchain-funcs
 
 DESCRIPTION="AMD Core Math Library (ACML) for x86 and amd64 CPUs"
 HOMEPAGE="http://developer.amd.com/acml.jsp"
@@ -42,6 +42,17 @@ pkg_nofetch() {
 	einfo "SRC=${A} $SRC_URI"
 }
 
+get_fcomp() {
+	case $(tc-getFC) in
+		*gfortran* )
+			FCOMP="gfortran" ;;
+		ifort )
+			FCOMP="ifc" ;;
+		* )
+			FCOMP=$(tc-getFC) ;;
+	esac
+}
+
 pkg_setup() {
 	elog "From version 3.5.0 on, ACML no longer supports"
 	elog "hardware without SSE/SSE2 instructions. "
@@ -51,7 +62,10 @@ pkg_setup() {
 	FORTRAN=ifc
 	FORT=ifort
 	! use ifc && ! use openmp && FORTRAN=g77 && FORT=gnu
-	fortran_pkg_setup
+	if use openmp; then
+		tc-has-openmp || die "Please ensure your compiler has openmp support"
+	fi
+	get_fcomp
 }
 
 src_unpack() {
@@ -69,7 +83,7 @@ src_test() {
 			cd "${S}"/${fort}/examples/${d}
 			emake \
 				ACMLDIR="${S}"/${fort} \
-				F77=${FORTRANC} \
+				F77=$(tc-getFC) \
 				CC="$(tc-getCC)" \
 				CPLUSPLUS="$(tc-getCXX)" \
 				|| die "emake test in ${fort}/examples/${d} failed"
@@ -89,7 +103,7 @@ src_install() {
 		cp -pPR "${S}/${fort}" "${D}"${instdir} || die "copy ${fort} failed"
 
 		# install profiles
-		ESELECT_PROF=acml-${FORTRANC}
+		ESELECT_PROF=acml-${FCOMP}
 		local acmldir=${instdir}/${fort}
 		local acmllibs="-lacml -lacml_mv"
 		local libname=${acmldir}/lib/libacml

@@ -1,6 +1,78 @@
 # ChangeLog for media-sound/mpd
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/mpd/ChangeLog,v 1.218 2010/11/18 00:18:44 hwoarang Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/mpd/ChangeLog,v 1.237 2011/01/14 09:36:17 hwoarang Exp $
+
+*mpd-0.16.1-r1 (14 Jan 2011)
+
+  14 Jan 2011; Markos Chandras <hwoarang@gentoo.org> -mpd-0.16.ebuild,
+  -mpd-0.16.1.ebuild, +mpd-0.16.1-r1.ebuild:
+  Add missing backslash on libwrap configure option. Remove affected ebuilds
+
+*mpd-0.16.1 (12 Jan 2011)
+
+  12 Jan 2011; Markos Chandras <hwoarang@gentoo.org> +mpd-0.16.1.ebuild:
+  Version bump. Check for inotify in-kernel support
+
+  05 Jan 2011; Markos Chandras <hwoarang@gentoo.org> mpd-0.16.ebuild,
+  metadata.xml:
+  Add inotify and tcpd use flags. Thanks to Hopeless
+  <hopeless@hamiltonshells.ca>. Bug #350312
+
+  03 Jan 2011; Michael Weber <xmw@gentoo.org> mpd-0.15.15.ebuild:
+  sparc stable (bug 348798)
+
+  30 Dec 2010; Jeroen Roovers <jer@gentoo.org> mpd-0.15.15.ebuild:
+  Stable for HPPA PPC (bug #348798).
+
+  26 Dec 2010; Markus Meier <maekke@gentoo.org> mpd-0.15.15.ebuild:
+  arm stable, bug #348798
+
+  21 Dec 2010; Markos Chandras <hwoarang@gentoo.org> mpd-0.15.15.ebuild:
+  Stable on amd64 wrt bug #348798
+
+  20 Dec 2010; Dane Smith <c1pher@gentoo.org> mpd-0.15.15.ebuild:
+  Stable x86 wrt bug 348798.
+
+  18 Dec 2010; Markos Chandras <hwoarang@gentoo.org> mpd-0.16.ebuild:
+  Apply Dane Smiths' patch as for 0.15.15 series
+
+  17 Dec 2010; Dane Smith <c1pher@gentoo.org> mpd-0.15.15.ebuild:
+  Fixed another smaller and much less obvious typo regarding the patch I
+  suggested.
+
+  17 Dec 2010; Dane Smith <c1pher@gentoo.org> mpd-0.15.15.ebuild:
+  Fixed the obvious typo in my patch wrt bug 348881. Missing "&&". Thanks
+  for
+  spotting it Tove.
+
+  17 Dec 2010; Markos Chandras <hwoarang@gentoo.org> mpd-0.15.15.ebuild:
+  Patch from Dane Smith <c1pher@gentoo.org> to disable lastfm when curl is not
+  enabled. Bug #348881
+
+  14 Dec 2010; Christoph Mende <angelos@gentoo.org> mpd-0.16.ebuild:
+  Renamed avahi to zeroconf and changed avahi dependency to avahi[dbus] (bug
+  337165)
+
+  14 Dec 2010; Markos Chandras <hwoarang@gentoo.org> files/mpd-0.16.conf.patch:
+  Fix typo
+
+  13 Dec 2010; Markos Chandras <hwoarang@gentoo.org> mpd-0.16.ebuild:
+  Delete unrecognised option entirely
+
+  13 Dec 2010; Markos Chandras <hwoarang@gentoo.org> mpd-0.16.ebuild:
+  Fix typo on configure option. Bug #348585
+
+*mpd-0.16 (13 Dec 2010)
+
+  13 Dec 2010; Markos Chandras <hwoarang@gentoo.org> +mpd-0.16.ebuild,
+  +files/mpd-0.16.conf.patch, metadata.xml:
+  Version bump
+
+  26 Nov 2010; Jeroen Roovers <jer@gentoo.org> mpd-0.15.13.ebuild:
+  Stable for PPC (bug #345245).
+
+  26 Nov 2010; Jeroen Roovers <jer@gentoo.org> mpd-0.15.13.ebuild:
+  Stable for HPPA (bug #345245).
 
   18 Nov 2010; Markos Chandras <hwoarang@gentoo.org> mpd-0.15.13.ebuild:
   Stable on amd64 wrt bug #345245

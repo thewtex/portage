@@ -1,9 +1,9 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/rdoc/rdoc-2.5.11.ebuild,v 1.3 2010/10/25 01:29:12 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/rdoc/rdoc-2.5.11.ebuild,v 1.6 2011/01/02 18:26:44 klausman Exp $
 
 EAPI=3
-USE_RUBY="ruby18 ree18 ruby19 jruby"
+USE_RUBY="ruby18 ree18 jruby"
 
 RUBY_FAKEGEM_TASK_DOC="docs"
 
@@ -20,7 +20,7 @@ SRC_URI="mirror://rubyforge/${PN}/${P}.tgz"
 
 LICENSE="Ruby"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~ppc-macos ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris"
 IUSE=""
 
 ruby_add_bdepend "
@@ -28,12 +28,6 @@ ruby_add_bdepend "
 	test? (
 		>=dev-ruby/hoe-2.5.0
 		dev-ruby/minitest
-	)"
-
-# This ebuild replaces rdoc in ruby-1.9.2 and later
-RDEPEND="${RDEPEND}
-	ruby_targets_ruby19? (
-		>=dev-lang/ruby-1.9.2
 	)"
 
 all_ruby_prepare() {
@@ -46,11 +40,5 @@ all_ruby_install() {
 
 	for bin in rdoc ri; do
 		ruby_fakegem_binwrapper $bin /usr/bin/$bin-2
-
-		if use ruby_targets_ruby19; then
-			ruby_fakegem_binwrapper $bin /usr/bin/${bin}19
-			sed -i -e "1s/env ruby/ruby19/" \
-				"${ED}/usr/bin/${bin}19" || die
-		fi
 	done
 }

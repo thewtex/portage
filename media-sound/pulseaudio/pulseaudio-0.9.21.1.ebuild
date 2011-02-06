@@ -1,10 +1,10 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/pulseaudio/pulseaudio-0.9.21.1.ebuild,v 1.10 2010/09/21 22:36:43 abcd Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/pulseaudio/pulseaudio-0.9.21.1.ebuild,v 1.13 2010/12/22 06:22:26 ford_prefect Exp $
 
 EAPI=2
 
-inherit eutils libtool flag-o-matic versionator
+inherit autotools eutils libtool flag-o-matic versionator
 
 DESCRIPTION="A networked sound server with an advanced plugin system"
 HOMEPAGE="http://www.pulseaudio.org/"
@@ -23,7 +23,7 @@ S="${WORKDIR}/${P/_rc/-test}"
 
 LICENSE="LGPL-2 GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm hppa ia64 ppc ppc64 sh sparc x86"
+KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 sh sparc x86"
 IUSE="+alsa avahi +caps jack lirc oss tcpd +X hal dbus libsamplerate gnome bluetooth +asyncns +glib test doc +udev ipv6 system-wide"
 
 RDEPEND="X? ( x11-libs/libX11 x11-libs/libSM x11-libs/libICE x11-libs/libXtst )
@@ -32,7 +32,6 @@ RDEPEND="X? ( x11-libs/libX11 x11-libs/libSM x11-libs/libICE x11-libs/libXtst )
 	alsa? ( >=media-libs/alsa-lib-1.0.19 )
 	glib? ( >=dev-libs/glib-2.4.0 )
 	avahi? ( >=net-dns/avahi-0.6.12[dbus] )
-	>=dev-libs/liboil-0.3.0
 	jack? ( >=media-sound/jack-audio-connection-kit-0.100 )
 	tcpd? ( sys-apps/tcp-wrappers )
 	lirc? ( app-misc/lirc )
@@ -52,7 +51,6 @@ RDEPEND="X? ( x11-libs/libX11 x11-libs/libSM x11-libs/libICE x11-libs/libXtst )
 	>=media-libs/audiofile-0.2.6-r1
 	>=media-libs/speex-1.2_beta
 	>=media-libs/libsndfile-1.0.20
-	>=dev-libs/liboil-0.3.6
 	sys-libs/gdbm
 	>=sys-devel/libtool-2.2.4" # it's a valid RDEPEND, libltdl.so is used
 
@@ -92,6 +90,12 @@ pkg_setup() {
 }
 
 src_prepare() {
+	if use arm; then
+		# Fix build on armv5 - bug #294599
+		epatch "${FILESDIR}/${PN}-0.9.21-armv5-build-fix.patch"
+		eautoreconf
+	fi
+
 	elibtoolize
 }
 

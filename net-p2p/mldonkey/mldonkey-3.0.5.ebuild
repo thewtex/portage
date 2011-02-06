@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/mldonkey/mldonkey-3.0.5.ebuild,v 1.1 2010/09/29 13:35:02 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/mldonkey/mldonkey-3.0.5.ebuild,v 1.6 2011/01/05 16:13:55 hwoarang Exp $
 
 EAPI="2"
 WANT_AUTOCONF=2.5
@@ -15,7 +15,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="~alpha amd64 hppa ~ia64 ppc ~sparc x86 ~x86-fbsd"
 
 RDEPEND="dev-lang/perl
 	guionly? ( >=gnome-base/librsvg-2.4.0
@@ -26,8 +26,7 @@ RDEPEND="dev-lang/perl
 	magic? ( sys-apps/file )"
 
 DEPEND="${RDEPEND}
-	>=dev-lang/ocaml-3.10.2[ocamlopt?]
-	sys-apps/sed"
+	>=dev-lang/ocaml-3.10.2[ocamlopt?]"
 
 MLUSER="p2p"
 
@@ -87,7 +86,7 @@ src_configure() {
 		$(use_enable gnutella gnutella2) \
 		$(use_enable gd) \
 		$(use_enable magic) \
-		${myconf} || die "econf failed"
+		${myconf}
 }
 
 src_compile() {

@@ -1,6 +1,28 @@
 # ChangeLog for www-client/midori
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/midori/ChangeLog,v 1.44 2010/11/08 02:45:35 ssuominen Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-client/midori/ChangeLog,v 1.49 2011/02/01 18:37:22 hwoarang Exp $
+
+  01 Feb 2011; Markos Chandras <hwoarang@gentoo.org> midori-0.2.9-r1.ebuild:
+  Stable on amd64 wrt bug #353346
+
+*midori-0.3.0 (31 Jan 2011)
+
+  31 Jan 2011; Samuli Suominen <ssuominen@gentoo.org> +midori-0.3.0.ebuild:
+  Version bump.
+
+  30 Jan 2011; Samuli Suominen <ssuominen@gentoo.org> midori-0.2.9-r1.ebuild,
+  +files/midori-0.2.9-libnotify-0.7.patch:
+  Fix building with x11-libs/libnotify >= 0.7.
+
+*midori-0.2.9-r1 (16 Jan 2011)
+
+  16 Jan 2011; Samuli Suominen <ssuominen@gentoo.org> +midori-0.2.9-r1.ebuild,
+  midori-9999.ebuild:
+  Don't disable PaX anymore wrt #351407 by Faustus.
+
+  18 Dec 2010; Samuli Suominen <ssuominen@gentoo.org> midori-0.2.9.ebuild:
+  Remove USE="vala" because it's not ready to be stabilized yet. Stabilize for
+  amd64/x86 wrt #344667.
 
   08 Nov 2010; Samuli Suominen <ssuominen@gentoo.org> midori-9999.ebuild:
   Remove docdir sed from src_prepare because it was fixed upstream.

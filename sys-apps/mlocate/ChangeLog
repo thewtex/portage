@@ -1,6 +1,28 @@
 # ChangeLog for sys-apps/mlocate
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/mlocate/ChangeLog,v 1.81 2010/11/15 12:31:09 jer Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/mlocate/ChangeLog,v 1.85 2011/01/31 13:17:10 scarabeus Exp $
+
+  31 Jan 2011; Tomáš Chvátal <scarabeus@gentoo.org> files/mlocate.cron-r2:
+  Fix premature removing of the lock file and parse the args more sanely when
+  there is no config around. This fixes bug #353270.
+
+*mlocate-0.23.1-r1 (30 Jan 2011)
+
+  30 Jan 2011; Tomáš Chvátal <scarabeus@gentoo.org> -mlocate-0.22.4.ebuild,
+  -mlocate-0.23.1.ebuild, +mlocate-0.23.1-r1.ebuild, files/mlocate.cron-r2:
+  Revision bump with perserved stable keywords. Fix typo in cronfile that
+  prevented cronjob to operate per bug #353122. Drop older affected version to
+  ensure everyone upgrade.
+
+  24 Jan 2011; Tomáš Chvátal <scarabeus@gentoo.org> files/mlocate.cron-r2,
+  files/mlocate-cron.conf, files/updatedb.conf:
+  Update cronscript and config to be more strict and flexible.
+
+  21 Nov 2010; Christian Faulhammer <fauli@gentoo.org>
+  mlocate-0.23.1.ebuild, files/updatedb.conf:
+  Add hostfs to the list of pruned file systems (bug 345629) and make a
+  warning that the updatedb command can be run manually when mlocate is
+  installed for the first time (bug 345881)
 
   15 Nov 2010; Jeroen Roovers <jer@gentoo.org> mlocate-0.23.1.ebuild:
   Stable for PPC (bug #343987).

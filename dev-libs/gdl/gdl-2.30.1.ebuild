@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/gdl/gdl-2.30.1.ebuild,v 1.1 2010/09/28 22:02:05 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/gdl/gdl-2.30.1.ebuild,v 1.6 2011/01/30 17:58:56 armin76 Exp $
 
 EAPI="3"
 GCONF_DEBUG="no"
@@ -12,11 +12,11 @@ HOMEPAGE="http://www.gnome.org/"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 hppa ia64 ~ppc ~ppc64 sparc x86 ~x86-fbsd"
 IUSE="doc"
 
-RDEPEND=">=dev-libs/glib-2
-	>=x11-libs/gtk+-2.12
+RDEPEND=">=dev-libs/glib-2:2
+	>=x11-libs/gtk+-2.12:2
 	>=dev-libs/libxml2-2.4"
 DEPEND="${RDEPEND}
 	!<dev-python/gdl-python-2.19.1-r1

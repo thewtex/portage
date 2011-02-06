@@ -1,6 +1,6 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/php-ext-pecl-r2.eclass,v 1.2 2010/10/06 19:58:45 olemarkus Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/php-ext-pecl-r2.eclass,v 1.4 2011/01/28 13:33:53 mabi Exp $
 #
 # Author: Tal Peer <coredumb@gentoo.org>
 # Author: Luca Longinotti <chtekk@gentoo.org>
@@ -43,6 +43,8 @@ PECL_PKG_V="${PECL_PKG}-${MY_PV}"
 
 [[ -z "${PHP_EXT_NAME}" ]] && PHP_EXT_NAME="${PECL_PKG}"
 
+S="${WORKDIR}/${PECL_PKG_V}"
+
 inherit php-ext-source-r2
 
 EXPORT_FUNCTIONS src_compile src_install src_test
@@ -56,7 +58,6 @@ fi
 SRC_URI="http://pecl.php.net/get/${FILENAME}"
 HOMEPAGE="http://pecl.php.net/${PECL_PKG}"
 
-S="${WORKDIR}/${PECL_PKG_V}"
 
 # @FUNCTION: php-ext-pecl-r1_src_compile
 # @DESCRIPTION:
@@ -91,12 +92,11 @@ php-ext-pecl-r2_src_install() {
 # @FUNCTION: php-ext-pecl-r2_src_test
 # @DESCRIPTION:
 # Takes care of running any tests delivered with the PECL package.
-# Testing is somewhat standardized across pecl extensions through phpize's
-# run-tests.php - unfortunatly there are some quirks we need to work around
+# Standard phpize generates a run-tests.php file that is executed in make test
+# We only need to force it to non-interactive mode
 php-ext-pecl-r2_src_test() {
-		
 	for slot in `php_get_slots`; do
+		php_init_slot_env ${slot}
 		NO_INTERACTION="yes" emake test || die "emake test failed for slot ${slot}"
 	done
-
 }

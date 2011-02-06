@@ -1,6 +1,42 @@
 # ChangeLog for sys-apps/busybox
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/busybox/ChangeLog,v 1.257 2010/11/16 12:14:41 vapier Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/busybox/ChangeLog,v 1.266 2011/01/08 00:56:39 ranger Exp $
+
+  08 Jan 2011; Brent Baude <ranger@gentoo.org> busybox-1.17.4.ebuild:
+  Marking busybox-1.17.4 ppc for bug 349309
+
+  07 Jan 2011; Mike Frysinger <vapier@gentoo.org> busybox-1.18.1.ebuild,
+  +files/busybox-1.18.1-bzip2.patch, +files/busybox-1.18.1-cpio.patch,
+  +files/busybox-1.18.1-hush.patch, +files/busybox-1.18.1-mkswap.patch,
+  +files/busybox-1.18.1-warning.patch:
+  Add upstream hotfixes #350604 by Chris Richards.
+
+  28 Dec 2010; Markus Meier <maekke@gentoo.org> busybox-1.17.4.ebuild:
+  arm stable, bug #349309
+
+  27 Dec 2010; Jeroen Roovers <jer@gentoo.org> busybox-1.17.4.ebuild:
+  Stable for HPPA (bug #349309).
+
+  22 Dec 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  busybox-1.17.4.ebuild:
+  x86 stable wrt bug #349309
+
+  22 Dec 2010; Markos Chandras <hwoarang@gentoo.org> busybox-1.17.4.ebuild:
+  Stable on amd64 wrt bug #349309
+
+*busybox-1.18.1 (22 Dec 2010)
+
+  22 Dec 2010; Mike Frysinger <vapier@gentoo.org>
+  +files/busybox-1.18.0-bb.patch, +busybox-1.18.1.ebuild:
+  Version bump.
+
+  27 Nov 2010; Mike Frysinger <vapier@gentoo.org> busybox-1.17.4.ebuild:
+  Respect env AR/LD #311589 by Thomas Sachau.
+
+*busybox-1.17.4 (24 Nov 2010)
+
+  24 Nov 2010; Mike Frysinger <vapier@gentoo.org> +busybox-1.17.4.ebuild:
+  Version bump.
 
   16 Nov 2010; Mike Frysinger <vapier@gentoo.org> busybox-1.17.1-r1.ebuild:
   Disable USE=pam when building the static rescue shell #345665 by Paweł

@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/man/man-1.6f-r4.ebuild,v 1.1 2010/01/27 02:35:14 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/man/man-1.6f-r4.ebuild,v 1.8 2010/10/30 16:17:51 armin76 Exp $
 
 EAPI="2"
 inherit eutils toolchain-funcs
@@ -11,14 +11,10 @@ SRC_URI="http://primates.ximian.com/~flucifredi/man/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd"
+KEYWORDS="alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~sparc-fbsd ~x86-fbsd"
 IUSE="lzma nls"
 
-# drobbins - sys-apps/shadow is needed as a dependency simply because eutils'
-# group adding function needs the "groupadd" command in the shadow package. And
-# I don't want to add a global shadow dep to eutils even though one probabl
-# should be added - don't want to break too much stuff.
-DEPEND="nls? ( sys-devel/gettext ) sys-apps/shadow"
+DEPEND="nls? ( sys-devel/gettext )"
 RDEPEND="|| ( >=sys-apps/groff-1.19.2-r1 app-doc/heirloom-doctools )
 	!sys-apps/man-db
 	!app-arch/lzma
@@ -49,6 +45,7 @@ src_prepare() {
 	sed -i -e '/^DEFAULTLESSOPT=/s:"$:R":' configure
 }
 
+echoit() { echo "$@" ; "$@" ; }
 src_configure() {
 	strip-linguas $(eval $(grep ^LANGUAGES= configure) ; echo ${LANGUAGES//,/ })
 
@@ -66,12 +63,13 @@ src_configure() {
 	else
 		mylang="none"
 	fi
-	if use lzma; then
-		mycompress=/usr/bin/lzma
+	export COMPRESS
+	if use lzma ; then
+		COMPRESS=/usr/bin/xz
 	else
-		mycompress=/bin/bzip2
+		COMPRESS=/bin/bzip2
 	fi
-	COMPRESS=$mycompress \
+	echoit \
 	./configure \
 		-confdir=/etc \
 		+sgid +fhs \

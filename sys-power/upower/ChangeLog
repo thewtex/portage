@@ -1,6 +1,26 @@
 # ChangeLog for sys-power/upower
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-power/upower/ChangeLog,v 1.26 2010/11/13 17:42:13 armin76 Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-power/upower/ChangeLog,v 1.31 2011/01/29 17:05:37 ssuominen Exp $
+
+  29 Jan 2011; Samuli Suominen <ssuominen@gentoo.org> upower-0.9.5.ebuild,
+  +files/upower-0.9.5-linux-headers-2.6.36.patch:
+  Fix building with Linux >= 2.6.36 wrt #352335.
+
+  28 Jan 2011; Samuli Suominen <ssuominen@gentoo.org> upower-0.9.8.ebuild:
+  Check ACPI_SYSFS_POWER only for Linux version less than 2.6.37 wrt #352360.
+
+*upower-0.9.8 (21 Jan 2011)
+
+  21 Jan 2011; Samuli Suominen <ssuominen@gentoo.org> +upower-0.9.8.ebuild:
+  Version bump.
+
+  11 Jan 2011; Kacper Kowalik <xarthisius@gentoo.org> -upower-0.9.4.ebuild,
+  upower-0.9.5.ebuild:
+  ppc stable wrt #338988. Drop old.
+
+  12 Dec 2010; Raúl Porcel <armin76@gentoo.org> upower-0.9.5.ebuild,
+  upower-0.9.7.ebuild:
+  sparc stable
 
   13 Nov 2010; Raúl Porcel <armin76@gentoo.org> upower-0.9.5.ebuild,
   upower-0.9.7.ebuild:

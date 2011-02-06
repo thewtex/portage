@@ -1,6 +1,175 @@
 # ChangeLog for sys-kernel/hardened-sources
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-kernel/hardened-sources/ChangeLog,v 1.359 2010/11/18 02:27:12 blueness Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-kernel/hardened-sources/ChangeLog,v 1.386 2011/02/03 14:29:29 blueness Exp $
+
+  03 Feb 2011; Anthony G. Basile <blueness@gentoo.org>
+  hardened-sources-2.6.36-r9.ebuild:
+  Stable on amd64, ppc64, x86
+
+  03 Feb 2011; Anthony G. Basile <blueness@gentoo.org>
+  hardened-sources-2.6.32-r34.ebuild:
+  Stable on amd64, ppc64, x86
+
+*hardened-sources-2.6.37-r1 (29 Jan 2011)
+
+  29 Jan 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.37-r1.ebuild:
+  Based on vanilla 2.6.37 + genpatches-2.6.37-1 +
+  grsecurity-2.2.1-2.6.37-201101272240
+
+*hardened-sources-2.6.32-r36 (29 Jan 2011)
+
+  29 Jan 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r36.ebuild:
+  Based on vanilla 2.6.32.28 + genpatches-2.6.32-30 +
+  grsecurity-2.2.1-2.6.32.28-201101272313
+
+  28 Jan 2011; Anthony G. Basile <blueness@gentoo.org>
+  -hardened-sources-2.6.32-r30.ebuild, -hardened-sources-2.6.32-r32.ebuild,
+  -hardened-sources-2.6.32-r33.ebuild, -hardened-sources-2.6.36-r5.ebuild,
+  -hardened-sources-2.6.36-r7.ebuild, -hardened-sources-2.6.36-r8.ebuild:
+  Removed deprecated versions
+
+  20 Jan 2011; Anthony G. Basile <blueness@gentoo.org>
+  -hardened-sources-2.6.28-r9.ebuild:
+  Deprecated
+
+*hardened-sources-2.6.37 (20 Jan 2011)
+
+  20 Jan 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.37.ebuild:
+  Based on vanilla 2.6.37 + genpatches-2.6.37-1 +
+  grsecurity-2.2.1-2.6.37-201101172105
+
+*hardened-sources-2.6.32-r35 (20 Jan 2011)
+
+  20 Jan 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r35.ebuild:
+  Based on vanilla 2.6.32.28 + genpatches-2.6.32-30 +
+  grsecurity-2.2.1-2.6.32.28-201101170305
+
+*hardened-sources-2.6.36-r9 (15 Jan 2011)
+
+  15 Jan 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.36-r9.ebuild:
+  Based on vanilla 2.6.36.3 + genpatches-2.6.36-10 +
+  grsecurity-2.2.1-2.6.36.3-201101131705
+
+*hardened-sources-2.6.32-r34 (15 Jan 2011)
+
+  15 Jan 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r34.ebuild:
+  Based on vanilla 2.6.32.28 + genpatches-2.6.32-30 +
+  grsecurity-2.2.1-2.6.32.28-201101131705
+
+*hardened-sources-2.6.36-r8 (07 Jan 2011)
+
+  07 Jan 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.36-r8.ebuild:
+  Based on vanilla 2.6.36.2 + genpatches-2.6.36-8 +
+  grsecurity-2.2.1-2.6.36.2-201101052002
+
+*hardened-sources-2.6.32-r33 (07 Jan 2011)
+
+  07 Jan 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r33.ebuild:
+  Based on vanilla 2.6.32.27 + genpatches-2.6.32-29 +
+  grsecurity-2.2.1-2.6.32.27-201101052002
+
+*hardened-sources-2.6.36-r7 (27 Dec 2010)
+
+  27 Dec 2010; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.36-r7.ebuild:
+  Based on vanilla 2.6.36.2 + genpatches-2.6.36-7 +
+  grsecurity-2.2.1-2.6.36.2-201012221906
+
+*hardened-sources-2.6.32-r32 (27 Dec 2010)
+
+  27 Dec 2010; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r32.ebuild:
+  Based on vanilla 2.6.32.27 + genpatches-2.6.32-29 +
+  grsecurity-2.2.1-2.6.32.27-201012182005
+
+  21 Dec 2010; Anthony G. Basile <blueness@gentoo.org>
+  -hardened-sources-2.6.32-r24.ebuild, -hardened-sources-2.6.32-r25.ebuild,
+  -hardened-sources-2.6.32-r26.ebuild, -hardened-sources-2.6.32-r27.ebuild,
+  -hardened-sources-2.6.32-r29.ebuild, -hardened-sources-2.6.35-r4.ebuild,
+  -hardened-sources-2.6.35-r5.ebuild, -hardened-sources-2.6.35-r6.ebuild,
+  -hardened-sources-2.6.36.ebuild, -hardened-sources-2.6.36-r1.ebuild,
+  -hardened-sources-2.6.36-r2.ebuild, -hardened-sources-2.6.36-r4.ebuild:
+  Removed deprecated versions
+
+  20 Dec 2010; Anthony G. Basile <blueness@gentoo.org>
+  hardened-sources-2.6.32-r31.ebuild, hardened-sources-2.6.36-r6.ebuild:
+  amd64, ppc64, x86 fast track stabilization. See CVE-2010-4258,
+  CVE-2010-3849, CVE-2010-3850
+
+*hardened-sources-2.6.36-r6 (14 Dec 2010)
+
+  14 Dec 2010; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.36-r6.ebuild:
+  Based on vanilla 2.6.36.2 + genpatches-2.6.36-7 +
+  grsecurity-2.2.1-2.6.36.2-201012121726
+
+*hardened-sources-2.6.32-r31 (14 Dec 2010)
+
+  14 Dec 2010; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r31.ebuild:
+  Based on vanilla 2.6.32.27 + genpatches-2.6.32-29 +
+  grsecurity-2.2.1-2.6.32.27-201012130740
+
+  09 Dec 2010; Anthony G. Basile <blueness@gentoo.org>
+  hardened-sources-2.6.32-r30.ebuild, hardened-sources-2.6.36-r5.ebuild:
+  Fixed bug #348238
+
+*hardened-sources-2.6.36-r5 (09 Dec 2010)
+
+  09 Dec 2010; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.36-r5.ebuild:
+  Based on vanilla-2.6.36.1 + genpatches-2.6.36-6 +
+  grsecurity-2.2.1-2.6.36.1-201012040057
+
+*hardened-sources-2.6.32-r30 (09 Dec 2010)
+
+  09 Dec 2010; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r30.ebuild:
+  Based on vanilla-2.6.32.26 + genpatches-2.6.32-28 +
+  grsecurity-2.2.1-2.6.32.26-201012040057
+
+*hardened-sources-2.6.36-r4 (02 Dec 2010)
+
+  02 Dec 2010; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.36-r4.ebuild:
+  Based on vanilla-2.6.36.1 + genpatches-.2.6.36-5 +
+  grsecurity-2.2.1-2.6.36.1-201011280939
+
+*hardened-sources-2.6.32-r29 (02 Dec 2010)
+
+  02 Dec 2010; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r29.ebuild:
+  Based on vanilla-2.6.32.26 + genpatches-2.6.32-27 +
+  grsecurity-2.2.1-2.6.32.26-201011280939
+
+  30 Nov 2010; Anthony G. Basile <blueness@gentoo.org>
+  -hardened-sources-2.6.32-r28.ebuild, -hardened-sources-2.6.36-r3.ebuild:
+  Removed because of multiple breakage (pulseaudio, install, etc).
+
+*hardened-sources-2.6.36-r3 (29 Nov 2010)
+
+  29 Nov 2010; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.36-r3.ebuild:
+  hardened-sources-2.6.36-r3 based on 2.6.36.1 + genpatches +
+  grsecurity-2.2.1-2.6.36.1-201011261834
+
+*hardened-sources-2.6.32-r28 (29 Nov 2010)
+
+  29 Nov 2010; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r28.ebuild:
+  hardened-sources-2.6.32-r28 based on 2.6.32.26 + genpatches +
+  grsecurity-2.2.1-2.6.32.26-201011261834
+
+  28 Nov 2010; Robin H. Johnson <robbat2@gentoo.org> Manifest:
+  Update Manifest for deblob 2.6.36.
 
 *hardened-sources-2.6.36-r2 (18 Nov 2010)
 

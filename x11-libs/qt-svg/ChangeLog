@@ -1,6 +1,25 @@
 # ChangeLog for x11-libs/qt-svg
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/qt-svg/ChangeLog,v 1.79 2010/11/09 15:47:55 wired Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/qt-svg/ChangeLog,v 1.83 2011/01/16 15:57:33 spatz Exp $
+
+  16 Jan 2011; Dror Levin <spatz@gentoo.org> qt-svg-4.7.1-r1.ebuild:
+  Make accessibility USE flag on by default to be consistent with other Qt
+  modules, bug 351829.
+
+*qt-svg-4.7.1-r1 (15 Jan 2011)
+
+  15 Jan 2011; Theo Chatzimichos <tampakrap@gentoo.org>
+  +qt-svg-4.7.1-r1.ebuild:
+  Revision bump, add accessibility USE flag to fix crash caused by splitting
+  qt-svg from qt-gui, bug 301476, thanks to Jaak Ristioja and Davide Pesavento
+  for the patch
+
+  23 Dec 2010; Samuli Suominen <ssuominen@gentoo.org> qt-svg-4.6.3.ebuild:
+  ppc64 stable wrt #341703
+
+  05 Dec 2010; Alex Alexander <wired@gentoo.org> -qt-svg-4.5.3-r1.ebuild,
+  -files/qt-4.5.3-glib-event-loop.patch:
+  removed 4.5.3
 
 *qt-svg-4.7.1 (09 Nov 2010)
 

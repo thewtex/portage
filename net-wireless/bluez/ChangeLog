@@ -1,6 +1,51 @@
 # ChangeLog for net-wireless/bluez
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/bluez/ChangeLog,v 1.61 2010/11/09 22:37:13 pacho Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/bluez/ChangeLog,v 1.71 2011/02/02 01:22:24 jer Exp $
+
+  02 Feb 2011; Jeroen Roovers <jer@gentoo.org> bluez-4.82.ebuild:
+  Stable for HPPA (bug #353034).
+
+  28 Jan 2011; Markos Chandras <hwoarang@gentoo.org> bluez-4.82.ebuild:
+  Stable on amd64 wrt bug #353034
+
+*bluez-4.87 (28 Jan 2011)
+
+  28 Jan 2011; Pacho Ramos <pacho@gentoo.org> -bluez-4.75.ebuild,
+  -bluez-4.77.ebuild, -bluez-4.81.ebuild, +bluez-4.87.ebuild:
+  Version bump fixing lots of bugs and trying to behave better with oui.txt
+  (thanks to Thomas Kahle and Zac Medico for their help with this). Remove old.
+
+  23 Jan 2011; Thomas Kahle <tomka@gentoo.org> bluez-4.80.ebuild:
+  x86 stable per bug 349473
+
+  02 Jan 2011; Markos Chandras <hwoarang@gentoo.org> bluez-4.80.ebuild:
+  Stable on amd64 wrt bug #349473
+
+  31 Dec 2010; Markus Meier <maekke@gentoo.org> bluez-4.80.ebuild:
+  arm stable, bug #349473
+
+  27 Dec 2010; Jeroen Roovers <jer@gentoo.org> bluez-4.80.ebuild:
+  Stable for HPPA (bug #349473).
+
+*bluez-4.82 (19 Dec 2010)
+
+  19 Dec 2010; Pacho Ramos <pacho@gentoo.org> +bluez-4.82.ebuild:
+  Version bump and install udev rules under proper path (bug #348708 by Ben
+  Sagal).
+
+*bluez-4.81 (10 Dec 2010)
+
+  10 Dec 2010; Pacho Ramos <pacho@gentoo.org> +bluez-4.81.ebuild:
+  Version bump with some upstream fixes.
+
+*bluez-4.80 (25 Nov 2010)
+
+  25 Nov 2010; Pacho Ramos <pacho@gentoo.org> -bluez-4.69.ebuild,
+  +bluez-4.80.ebuild:
+  Version bump with multiple upstream fixes, also handle oui.txt file
+  downloading in a better way as suggested by Zac in bug #345263, update
+  HOMEPAGE, remove .la files, and fix cups location (bug #346033 by Florian
+  Steinel). Remove old.
 
   09 Nov 2010; Pacho Ramos <pacho@gentoo.org> ChangeLog:
   Fix digest (bug #344815 by Isidoro Garcia).

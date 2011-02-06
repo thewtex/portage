@@ -1,6 +1,42 @@
 # ChangeLog for Gentoo base-profile
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/base/ChangeLog,v 1.188 2010/11/18 20:25:24 ford_prefect Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/base/ChangeLog,v 1.199 2011/01/30 08:38:20 ford_prefect Exp $
+
+  30 Jan 2011; Arun Raghavan <ford_prefect@gentoo.org> package.use.mask:
+  Mask orc USE flag on gst-plugins-ffmpeg (unmasked only on supported arches).
+
+  19 Jan 2011; Nirbheek Chauhan <nirbheek@gentoo.org> package.use.mask:
+  Restrict gnome-extra/gnome-games clutter use-flag masking to =2.3*
+
+  18 Jan 2011; Kacper Kowalik <xarthisius@gentoo.org> package.use.mask:
+  Unmask x11-base/xorg-server doc since #323647 is resolved
+
+  06 Jan 2011; Ulrich Mueller <ulm@gentoo.org> virtuals:
+  Remove stale virtual/j2ee, no ebuild provides it.
+
+  27 Dec 2010; Mart Raudsepp <leio@gentoo.org> package.use.mask:
+  Add gst-plugins-a52dec to the orc package.use.mask set
+
+  17 Dec 2010; Ulrich Mueller <ulm@gentoo.org> virtuals:
+  Remove old-style virtual/commonlisp.
+
+  08 Dec 2010; Raúl Porcel <armin76@gentoo.org> use.mask:
+  Use.mask omapfb
+
+  06 Dec 2010; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  package.use.mask:
+  Mask x11-base/xorg-server doc until #323647 is resolved
+
+  02 Dec 2010; Diego E. Pettenò <flameeyes@gentoo.org> package.use.mask:
+  Mask jack USE flag for audacious-plugins so that we can drop from stable the
+  broken bio2jack ebuilds.
+
+  28 Nov 2010; Robin H. Johnson <robbat2@gentoo.org> package.use.mask:
+  Bug #344885: Upstream has broken USE=debug for 5.1 series >=5.1.51
+
+  28 Nov 2010; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  package.use.mask:
+  Mask mesa's llvm flag, bug #320221
 
   19 Nov 2010; Arun Raghavan <ford_prefect@gentoo.org> package.use.mask:
   Mask orc for gst-plugins-base by default (to be unmasked on supported platforms)

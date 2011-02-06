@@ -1,6 +1,25 @@
 # ChangeLog for mail-client/mutt
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/mutt/ChangeLog,v 1.203 2010/10/10 11:58:49 armin76 Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/mail-client/mutt/ChangeLog,v 1.206 2011/01/30 19:24:39 grobian Exp $
+
+  30 Jan 2011; Fabian Groffen <grobian@gentoo.org> mutt-1.5.21-r1.ebuild:
+  Add urls for our mercurial sources, don't compress files, fixes bug #352764
+
+  07 Dec 2010; Fabian Groffen <grobian@gentoo.org>
+  -files/mutt-1.5.13-prefix-mailcap.patch,
+  -files/mutt-1.5.16-parallel-make.patch,
+  -files/mutt-1.5.18-bdb-prefix.patch, -files/mutt-1.5.18-interix.patch,
+  -files/mutt-1.5.18-solaris-ncurses-chars.patch, -mutt-1.5.20-r6.ebuild,
+  -mutt-1.5.20-r10.ebuild, -mutt-1.5.20-r13.ebuild, -mutt-1.5.20-r15.ebuild,
+  -mutt-1.5.20-r17.ebuild,
+  -files/mutt-1.5.20-crash-on-invalid-limit-pattern.patch,
+  -files/mutt-1.5.20-dont-reveal-bbc.patch,
+  -files/mutt-1.5.20-gpgme-1.2.0.patch,
+  -files/mutt-1.5.20-realpath-slowness.patch:
+  Drop old versions, 1.5.20-r6 can be removed per bug #347994
+
+  07 Dec 2010; Matt Turner <mattst88@gentoo.org> mutt-1.5.21-r1.ebuild:
+  Readded ~mips keyword, bug 290154.
 
   10 Oct 2010; Raúl Porcel <armin76@gentoo.org> mutt-1.5.20-r18.ebuild:
   ia64/sparc stable wrt #339040

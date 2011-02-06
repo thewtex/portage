@@ -1,14 +1,14 @@
 dev-vcs/subversion net-misc/rsync || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b
-!minimal? ( virtual/mailx )
+!minimal? ( virtual/mailx caps? ( sys-libs/libcap-ng ) )
 0
 
 
 http://smartmontools.sourceforge.net/
 GPL-2
-control and monitor storage systems using the Self-Monitoring, Analysis and Reporting Technology System (S.M.A.R.T.)
+Self-Monitoring, Analysis and Reporting Technology System (S.M.A.R.T.) monitoring tools
 
 autotools eutils flag-o-matic libtool multilib portability subversion toolchain-funcs
-static minimal
+static minimal caps
 
 
 

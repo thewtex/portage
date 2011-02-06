@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/racc/racc-1.4.6.ebuild,v 1.8 2010/07/14 20:37:20 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/racc/racc-1.4.6.ebuild,v 1.10 2011/01/07 11:10:13 graaff Exp $
 
 EAPI=2
 
@@ -9,7 +9,7 @@ USE_RUBY="ree18 ruby18 ruby19 jruby"
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_EXTRADOC="README.en.rdoc README.ja.rdoc TODO ChangeLog"
 
-inherit ruby-fakegem
+inherit multilib ruby-fakegem
 
 DESCRIPTION="A LALR(1) parser generator for Ruby"
 HOMEPAGE="http://www.loveruby.net/en/racc.html"
@@ -17,7 +17,7 @@ HOMEPAGE="http://www.loveruby.net/en/racc.html"
 LICENSE="LGPL-2.1"
 SLOT="0"
 
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
 IUSE=""
 
 ruby_add_bdepend "test? ( virtual/ruby-test-unit )"
@@ -51,7 +51,7 @@ each_ruby_compile() {
 			# Copy over the file here so that we don't have to do
 			# special ruby install for JRuby and the other
 			# implementations.
-			cp -l ext/racc/cparse/cparse.so lib/racc/cparse.so || die
+			cp -l ext/racc/cparse/cparse$(get_modname) lib/racc/cparse$(get_modname) || die
 			;;
 	esac
 }

@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/transfig/transfig-3.2.5d.ebuild,v 1.1 2010/09/28 14:41:51 pva Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/transfig/transfig-3.2.5d.ebuild,v 1.9 2011/01/09 13:58:23 ranger Exp $
 
 EAPI="2"
 inherit toolchain-funcs eutils flag-o-matic
@@ -14,11 +14,11 @@ SRC_URI="mirror://sourceforge/mcj/${MY_P}.tar.gz
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86"
 IUSE=""
 
 RDEPEND="x11-libs/libXpm
-	>=media-libs/jpeg-6
+	virtual/jpeg
 	media-libs/libpng
 	x11-apps/rgb"
 DEPEND="${RDEPEND}

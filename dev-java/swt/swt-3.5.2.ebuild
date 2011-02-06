@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/swt/swt-3.5.2.ebuild,v 1.3 2010/04/13 18:24:31 fauli Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/swt/swt-3.5.2.ebuild,v 1.6 2011/01/24 19:43:51 xarthisius Exp $
 
 EAPI=2
 
@@ -30,7 +30,7 @@ SRC_URI="x86? (
 
 SLOT="3.5"
 LICENSE="CPL-1.0 LGPL-2.1 MPL-1.1"
-KEYWORDS="amd64 ~ppc ~ppc64 x86"
+KEYWORDS="amd64 ppc ppc64 x86"
 
 IUSE="cairo gnome opengl xulrunner"
 COMMON=">=dev-libs/glib-2.6
@@ -42,7 +42,7 @@ COMMON=">=dev-libs/glib-2.6
 				=gnome-base/gnome-vfs-2*
 				=gnome-base/libgnomeui-2*
 				)
-		xulrunner? ( net-libs/xulrunner:1.9 )
+		xulrunner? ( =net-libs/xulrunner-1.9* )
 		opengl?	(
 			virtual/opengl
 			virtual/glu
@@ -68,6 +68,9 @@ RDEPEND=">=virtual/jre-1.4
 	${COMMON}"
 
 S="${WORKDIR}"
+
+# JNI libraries don't need SONAME, bug #253756
+QA_SONAME="usr/$(get_libdir)/libswt-.*.so"
 
 src_unpack() {
 	local DISTFILE=${A}
@@ -114,7 +117,7 @@ src_compile() {
 	fi
 
 	# Fix the pointer size for AMD64
-	[[ ${ARCH} == "amd64" || ${ARCH} == "ppc64" ]] && export SWT_PTR_CFLAGS=-DSWT_PTR_SIZE_64
+	[[ ${ARCH} == "amd64" || ${ARCH} == "ppc64" ]] && export SWT_PTR_CFLAGS=-DJNI64
 
 	local platform="linux"
 

@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/vlc/vlc-9999.ebuild,v 1.100 2010/11/07 19:14:31 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/vlc/vlc-9999.ebuild,v 1.102 2011/01/02 14:40:08 aballier Exp $
 
 EAPI="3"
 
@@ -51,7 +51,7 @@ IUSE="a52 aac aalib alsa altivec atmo avahi bidi cdda cddb dbus dc1394
 	libnotify libproxy libtiger libv4l2 lirc live lua matroska mmx
 	modplug mp3 mpeg mtp musepack ncurses ogg opengl optimisememory oss
 	png projectm pulseaudio pvr +qt4 remoteosd rtsp run-as-root samba
-	schroedinger sdl sdl-image shine shout skins speex sqlite sse stream
+	schroedinger sdl sdl-image shine shout sid skins speex sqlite sse stream
 	svg taglib theora truetype twolame udev upnp v4l2 vaapi vcdx vlm
 	vorbis win32codecs wma-fixed +X x264 +xcb xml xosd xv zvbi"
 
@@ -61,7 +61,7 @@ RDEPEND="
 		a52? ( >=media-libs/a52dec-0.7.4-r3 )
 		aalib? ( media-libs/aalib )
 		aac? ( >=media-libs/faad2-2.6.1 )
-		alsa? ( media-libs/alsa-lib )
+		alsa? ( >=media-libs/alsa-lib-1.0.23 )
 		avahi? ( >=net-dns/avahi-0.6[dbus] )
 		bidi? ( >=dev-libs/fribidi-0.10.4 )
 		cdda? (	cddb? ( >=media-libs/libcddb-1.2.0 ) )
@@ -110,6 +110,7 @@ RDEPEND="
 		sdl? ( >=media-libs/libsdl-1.2.8
 			sdl-image? ( media-libs/sdl-image sys-libs/zlib	) )
 		shout? ( media-libs/libshout )
+		sid? ( media-libs/libsidplay:2 )
 		skins? (
 				x11-libs/qt-gui:4 x11-libs/qt-core:4
 				x11-libs/libXext x11-libs/libX11
@@ -139,6 +140,7 @@ RDEPEND="
 
 DEPEND="${RDEPEND}
 	!!<=media-video/vlc-1.1.99999
+	alsa? ( >=media-sound/alsa-headers-1.0.23 )
 	dvb? ( sys-kernel/linux-headers )
 	kde? ( >=kde-base/kdelibs-4 )
 	v4l2? ( >=sys-kernel/linux-headers-2.6.25 )
@@ -208,6 +210,10 @@ src_configure() {
 
 	# It would fail if -fforce-addr is used due to too few registers...
 	use x86 && filter-flags -fforce-addr
+
+	# needs libresid-builder from libsidplay:2 which is in another directory...
+	# FIXME!
+	use sid && append-ldflags "-L/usr/$(get_libdir)/sidplay/builders/"
 
 	econf \
 		--docdir=/usr/share/doc/${PF} \
@@ -279,6 +285,7 @@ src_configure() {
 		$(use_enable sdl) \
 		$(use_enable sdl-image) \
 		$(use_enable shine) \
+		$(use_enable sid) \
 		$(use_enable shout) \
 		$(use_enable skins skins2) \
 		$(use_enable speex) \
