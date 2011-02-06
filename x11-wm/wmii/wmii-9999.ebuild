@@ -27,7 +27,6 @@ COMMON_DEPEND="
 	>=media-libs/freetype-2"
 RDEPEND="${COMMON_DEPEND}
 	x11-apps/xmessage
-	x11-apps/xsetroot
 	media-fonts/font-misc-misc
 	plan9? ( dev-util/plan9port )
 	ruby? ( dev-lang/ruby )"
@@ -53,7 +52,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	alt=alternative_wmiircs/Makefile
+	local alt=alternative_wmiircs/Makefile
 
 	if use python || use plan9 || use ruby
 	then
@@ -68,6 +67,11 @@ src_prepare() {
 
 	sed -i -e "/^CONFDIR =/s|wmii-hg|wmii|" mk/wmii.mk || die
 
+	sed -i \
+		-e "/^export WMII_BACKGROUND='#333333'/d" \
+		-e '/^xsetroot -solid "$WMII_BACKGROUND" &/d' \
+		rc/wmiirc.sh || die
+
 	rm -f man/*.1
 }
 
@@ -80,7 +84,11 @@ src_install() {
 	emake "${mywmiiconf[@]}" install || die
 	dodoc ${DOCS} || die
 
-	echo "until wmii; do :; done" > "${T}"/wmii
+	cat > "${T}"/wmii << "EOF"
+# xsetroot -solid #333333 &
+# feh --bg-center /path/to/image &
+until wmii; do :; done
+EOF
 	exeinto /etc/X11/Sessions
 	doexe "${T}"/wmii || die
 

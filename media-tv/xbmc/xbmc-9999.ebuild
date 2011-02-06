@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-tv/xbmc/xbmc-9999.ebuild,v 1.71 2011/01/18 05:17:37 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-tv/xbmc/xbmc-9999.ebuild,v 1.73 2011/02/06 07:34:05 vapier Exp $
 
 EAPI="2"
 
@@ -26,7 +26,6 @@ IUSE="alsa altivec avahi bluray css debug joystick midi profile pulseaudio rtmp 
 
 COMMON_DEPEND="virtual/opengl
 	app-arch/bzip2
-	app-arch/unrar
 	app-arch/unzip
 	app-arch/zip
 	app-i18n/enca
@@ -112,7 +111,7 @@ src_unpack() {
 src_prepare() {
 	# some dirs ship generated autotools, some dont
 	local d
-	for d in . xbmc/cores/dvdplayer/Codecs/{libdts,libdvd/lib*/} lib/cpluff ; do
+	for d in . lib/{libdts,libdvd/lib*/,cpluff} ; do
 		[[ -e ${d}/configure ]] && continue
 		pushd ${d} >/dev/null
 		einfo "Generating autotools in ${d}"
@@ -127,7 +126,7 @@ src_prepare() {
 	sed -i \
 		-e '/^CXXFLAGS/{s:-D[^=]*=.::;s:-m[[:alnum:]]*::}' \
 		-e "1iCXXFLAGS += ${squish}" \
-		xbmc/lib/libsquish/Makefile.in || die
+		lib/libsquish/Makefile.in || die
 
 	# Fix XBMC's final version string showing as "exported"
 	# instead of the SVN revision number.
@@ -136,10 +135,10 @@ src_prepare() {
 	# Avoid lsb-release dependency
 	sed -i \
 		-e 's:lsb_release -d:cat /etc/gentoo-release:' \
-		xbmc/utils/SystemInfo.cpp
+		xbmc/utils/SystemInfo.cpp || die
 
 	# Do not use termcap #262822
-	sed -i 's:-ltermcap::' xbmc/lib/libPython/Python/configure
+	sed -i 's:-ltermcap::' lib/python/configure || die
 
 	# avoid long delays when powerkit isn't running #348580
 	sed -i \
