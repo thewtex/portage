@@ -1,5 +1,5 @@
->=sys-libs/libsepol-2.0.41 dev-lang/swig ruby? ( dev-lang/ruby ) >=app-admin/eselect-python-20091230 =dev-lang/python-2*
->=sys-libs/libsepol-2.0.41 ruby? ( dev-lang/ruby ) >=app-admin/eselect-python-20091230 =dev-lang/python-2*
+>=sys-libs/libsepol-2.0.41 ruby? ( dev-lang/ruby ) ruby? ( dev-lang/swig ) >=app-admin/eselect-python-20091230 python? ( =dev-lang/python-2* )
+>=sys-libs/libsepol-2.0.41 ruby? ( dev-lang/ruby ) >=app-admin/eselect-python-20091230 python? ( =dev-lang/python-2* )
 0
 http://userspace.selinuxproject.org/releases/20100525/devel/libselinux-2.0.94.tar.gz
 
@@ -8,13 +8,13 @@ public-domain
 SELinux userland library
 ~amd64 ~x86
 multilib python toolchain-funcs
-ruby
+python ruby
 
 
 
 2
 
-compile install postinst postrm prepare
+compile install postinst postrm prepare setup
 
 
 
