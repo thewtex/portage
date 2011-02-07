@@ -1,8 +1,7 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/libixp/libixp-0.5-r1.ebuild,v 1.3 2010/06/22 15:04:23 jer Exp $
 
-EAPI=2
+EAPI="3"
 
 inherit eutils multilib toolchain-funcs
 
@@ -12,7 +11,7 @@ SRC_URI="http://code.suckless.org/dl/libs/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ppc64 ~x86"
+KEYWORDS="amd64 ~hppa ~ppc64 x86"
 IUSE=""
 
 src_prepare() {

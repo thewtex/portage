@@ -1,0 +1,76 @@
+From 28ff241bb0fc3fb85b37b4e88ff18f52edf2398c Mon Sep 17 00:00:00 2001
+From: Jonas Bernoulli <jonas@bernoul.li>
+Date: Mon, 7 Feb 2011 14:21:17 +0100
+Subject: [PATCH] various fixes in wmiirc
+
+* do not run wi_proglist in the background
+
+Otherwise if the user tries to use wimenu before this is complete wimenu
+will freeze and never release input requiring a reboot.
+
+* do not set background color
+
+This should be done in a common place so that it applies to all wms, or
+if it should be different in the respective xsession files.  Also this
+allows as to drop the dependency on xsetroot.  This way the user is free
+to instead use a tool that can set a background images and not have the
+useless xsetroot installed.
+
+* set ui colors earlier
+
+Without this the build in colors are used for a short period, not nice.
+---
+ rc/wmiirc.sh |   22 ++++++++++------------
+ 1 files changed, 10 insertions(+), 12 deletions(-)
+
+diff --git a/rc/wmiirc.sh b/rc/wmiirc.sh
+index 4d439c6..d0e642e 100644
+--- a/rc/wmiirc.sh
++++ b/rc/wmiirc.sh
+@@ -19,12 +19,20 @@ noticebar=/rbar/!notice
+ export WMII_NORMCOLORS='#000000 #c1c48b #81654f'
+ export WMII_FOCUSCOLORS='#000000 #81654f #000000'
+ 
+-export WMII_BACKGROUND='#333333'
+ export WMII_FONT='-*-fixed-medium-r-*-*-13-*-*-*-*-*-*-*'
+ 
+ set -- $(echo $WMII_NORMCOLORS $WMII_FOCUSCOLORS)
+ export WMII_TERM="@TERMINAL@"
+ 
++# WM Configuration
++wmiir write /ctl <<!
++	font $WMII_FONT
++	focuscolors $WMII_FOCUSCOLORS
++	normcolors $WMII_NORMCOLORS
++	grabmod $MODKEY
++	border 1
++!
++
+ if ! test -d "${WMII_CONFPATH%%:*}"; then
+     mkdir "${WMII_CONFPATH%%:*}"
+     res=$(wihack -type DIALOG xmessage -nearmouse -buttons Windows,Alt -print -fn $WMII_FONT \
+@@ -236,20 +244,10 @@ Key $MODKEY-Shift-$i     # Retag selected client with the numbered tag
+ }
+ wi_events events local_events
+ 
+-# WM Configuration
+-wmiir write /ctl <<!
+-	font $WMII_FONT
+-	focuscolors $WMII_FOCUSCOLORS
+-	normcolors $WMII_NORMCOLORS
+-	grabmod $MODKEY
+-	border 1
+-!
+-xsetroot -solid "$WMII_BACKGROUND" &
+-
+ # Misc
+ progsfile="$(wmiir namespace)/.proglist"
+ action status &
+-wi_proglist $PATH >$progsfile &
++wi_proglist $PATH >$progsfile
+ 
+ # Setup Tag Bar
+ IFS="$wi_newline"
+-- 
+1.7.4
+
