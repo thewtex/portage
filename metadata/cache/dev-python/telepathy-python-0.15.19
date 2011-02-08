@@ -1,4 +1,4 @@
-dev-libs/libxslt >=app-admin/eselect-python-20091230
+dev-libs/libxslt >=app-admin/eselect-python-20091230 || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b
 >=dev-python/dbus-python-0.80 >=app-admin/eselect-python-20091230
 0
 http://telepathy.freedesktop.org/releases/telepathy-python/telepathy-python-0.15.19.tar.gz
@@ -7,7 +7,7 @@ http://telepathy.freedesktop.org/
 LGPL-2.1
 Telepathy Python base classes for use in connection managers, and proxy classes for use in clients.
 ~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86
-multilib python toolchain-funcs
+autotools eutils libtool multilib portability python toolchain-funcs
 
 
 
