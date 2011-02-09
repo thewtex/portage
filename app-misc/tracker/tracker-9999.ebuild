@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/tracker/tracker-9999.ebuild,v 1.33 2011/01/23 23:06:19 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/tracker/tracker-9999.ebuild,v 1.34 2011/02/08 22:53:33 eva Exp $
 
 EAPI="3"
 GCONF_DEBUG="no"
@@ -33,7 +33,7 @@ RDEPEND="
 	sys-apps/util-linux
 
 	applet? (
-		|| ( gnome-base/gnome-panel[bonobo] <gnome-base/gnome-panel-2.32 )
+		>=gnome-base/gnome-panel-2.32
 		>=x11-libs/gtk+-2.18:2 )
 	eds? (
 		>=mail-client/evolution-2.29.1
