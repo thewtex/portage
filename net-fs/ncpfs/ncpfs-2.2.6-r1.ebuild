@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-fs/ncpfs/ncpfs-2.2.6-r1.ebuild,v 1.2 2010/10/08 16:22:59 mabi Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-fs/ncpfs/ncpfs-2.2.6-r1.ebuild,v 1.3 2011/02/10 09:26:38 kumba Exp $
 
 EAPI="2"
 
@@ -18,6 +18,8 @@ IUSE="nls pam php"
 DEPEND="nls? ( sys-devel/gettext )
 	pam? ( virtual/pam )
 	php? ( || ( dev-lang/php virtual/httpd-php ) )"
+
+RDEPEND="${DEPEND}"
 
 src_prepare() {
 	# add patch for PHP extension sandbox violation
