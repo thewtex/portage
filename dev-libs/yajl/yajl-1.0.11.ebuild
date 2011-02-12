@@ -1,8 +1,8 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/yajl/yajl-1.0.11.ebuild,v 1.6 2011/02/03 17:50:46 xarthisius Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/yajl/yajl-1.0.11.ebuild,v 1.7 2011/02/11 18:41:01 scarabeus Exp $
 
-EAPI="2"
+EAPI=2
 
 inherit cmake-utils
 
@@ -26,5 +26,5 @@ src_prepare() {
 }
 
 src_test() {
-	emake test || die
+	emake test
 }

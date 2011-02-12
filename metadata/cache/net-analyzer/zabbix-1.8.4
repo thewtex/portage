@@ -1,4 +1,4 @@
-snmp? ( net-analyzer/net-snmp ) ldap? ( net-nds/openldap =dev-libs/cyrus-sasl-2* net-libs/gnutls ) mysql? ( virtual/mysql ) sqlite3? ( =dev-db/sqlite-3* ) postgres? ( dev-db/postgresql-base ) jabber? ( dev-libs/iksemel ) curl? ( net-misc/curl ) openipmi? ( sys-libs/openipmi ) ssh? ( net-libs/libssh2 ) jabber? ( dev-util/pkgconfig )
+snmp? ( net-analyzer/net-snmp ) ldap? ( net-nds/openldap =dev-libs/cyrus-sasl-2* net-libs/gnutls ) mysql? ( virtual/mysql ) sqlite3? ( =dev-db/sqlite-3* ) postgres? ( dev-db/postgresql-base ) jabber? ( dev-libs/iksemel ) curl? ( net-misc/curl ) openipmi? ( sys-libs/openipmi ) ssh? ( net-libs/libssh2 ) jabber? ( dev-util/pkgconfig ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b
 snmp? ( net-analyzer/net-snmp ) ldap? ( net-nds/openldap =dev-libs/cyrus-sasl-2* net-libs/gnutls ) mysql? ( virtual/mysql ) sqlite3? ( =dev-db/sqlite-3* ) postgres? ( dev-db/postgresql-base ) jabber? ( dev-libs/iksemel ) curl? ( net-misc/curl ) openipmi? ( sys-libs/openipmi ) ssh? ( net-libs/libssh2 ) proxy? ( net-analyzer/fping ) server? ( net-analyzer/fping app-admin/webapp-config ) frontend? ( dev-lang/php[bcmath,ctype,sockets,gd,truetype,xml,session] media-libs/gd[png] app-admin/webapp-config )
 0
 http://prdownloads.sourceforge.net/zabbix/zabbix-1.8.4.tar.gz
@@ -7,7 +7,7 @@ http://www.zabbix.com/
 GPL-2
 ZABBIX is software for monitoring of your applications, network and servers.
 ~amd64 ~ppc ~x86
-depend.php eutils flag-o-matic multilib phpconfutils portability toolchain-funcs webapp
+autotools depend.php eutils flag-o-matic libtool multilib phpconfutils portability toolchain-funcs webapp
 agent curl frontend ipv6 jabber ldap mysql openipmi oracle postgres proxy server -ssh snmp +sqlite3
 
 
