@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/rdoc/rdoc-3.0.1-r1.ebuild,v 1.3 2011/01/30 09:27:47 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/rdoc/rdoc-3.5.3.ebuild,v 1.1 2011/02/12 08:47:11 graaff Exp $
 
 EAPI=3
 USE_RUBY="ruby18 ree18 ruby19 jruby"
@@ -16,7 +16,6 @@ inherit ruby-fakegem eutils
 
 DESCRIPTION="An extended version of the RDoc library from Ruby 1.8"
 HOMEPAGE="http://rubyforge.org/projects/rdoc/"
-SRC_URI="mirror://rubyforge/${PN}/${P}.tgz"
 
 LICENSE="Ruby"
 SLOT="0"
@@ -24,9 +23,9 @@ KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~ppc-ma
 IUSE=""
 
 ruby_add_bdepend "
-	doc? ( >=dev-ruby/hoe-2.5.0 )
+	doc? ( >=dev-ruby/hoe-2.7.0 )
 	test? (
-		>=dev-ruby/hoe-2.5.0
+		>=dev-ruby/hoe-2.7.0
 		dev-ruby/minitest
 	)"
 
@@ -34,17 +33,20 @@ ruby_add_bdepend "
 # ruby 1.8.6 is no longer supported.
 RDEPEND="${RDEPEND}
 	ruby_targets_ruby19? (
-		>=dev-lang/ruby-1.9.2
+		>=dev-lang/ruby-1.9.2:1.9
 	)
 	ruby_targets_ruby18? (
-		>=dev-lang/ruby-1.8.7
+		>=dev-lang/ruby-1.8.7:1.8
 	)"
 
 all_ruby_prepare() {
 	# Other packages also have use for a nonexistent directory, bug 321059
 	sed -i -e 's#/nonexistent#/nonexistent_rdoc_tests#g' test/test_rdoc*.rb || die
 
-	epatch "${FILESDIR}/${P}-bin-require.patch"
+	# Remove unavailable and unneeded isolate plugin for Hoe
+	sed -i -e '/isolate/d' Rakefile || die
+
+	epatch "${FILESDIR}/${PN}-3.0.1-bin-require.patch"
 }
 
 each_ruby_prepare() {
@@ -52,7 +54,7 @@ each_ruby_prepare() {
 		*jruby)
 			# Remove tests that will fail due to a bug in JRuby affecting
 			# Dir.mktmpdir: http://jira.codehaus.org/browse/JRUBY-4082
-			rm test/test_rdoc_options.rb test/test_rdoc_rdoc.rb || die
+			rm test/test_rdoc_options.rb || die
 			;;
 		*)
 			;;
