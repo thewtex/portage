@@ -1,10 +1,94 @@
 # ChangeLog for profile directory
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.5014 2011/02/04 22:49:49 reavertm Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.5039 2011/02/12 15:51:20 ssuominen Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  12 Feb 2011; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Lastrite sys-apps/halevt.
+
+  12 Feb 2011; Andreas Proschofsky <suka@gentoo.org> package.mask:
+  Mask new LibreOffice 3.3.1 release candidate
+
+  12 Feb 2011; Peter Volkov <pva@gentoo.org> package.mask:
+  Masked =net-p2p/transmission-2.21 as it depends on libevent-2.
+
+  11 Feb 2011; Christian Faulhammer <fauli@gentoo.org> package.mask:
+  Mask new versions of dev-vcs/bzr and bzrtools because of API breakage
+
+  11 Feb 2011; Pacho Ramos <pacho@gentoo.org> package.mask:
+  Mask app-text/ggv for removal.
+
+  11 Feb 2011; Pacho Ramos <pacho@gentoo.org> package.mask:
+  Mask app-misc/magicdev for removal.
+
+  11 Feb 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> package.mask:
+  Mask www-client/chromium dev channel release.
+
+  10 Feb 2011; Ulrich Mueller <ulm@gentoo.org> updates/1Q-2011:
+  Move packages easygit, qgit, rapidsvn, rcsi, and svn2cl to dev-vcs.
+
+  10 Feb 2011; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Lastrite app-pda/libopensync and reverse dependencies.
+
+  10 Feb 2011; Tomáš Chvátal <scarabeus@gentoo.org> package.mask:
+  TREECLEAN: Drop no longer relevant pmask entries.
+
+  10 Feb 2011; Mike Frysinger <vapier@gentoo.org> arch/alpha/package.use.mask,
+  arch/arm/package.use.mask, arch/m68k/package.use.mask,
+  arch/mips/package.use.mask, arch/powerpc/ppc64/package.use.mask,
+  arch/s390/package.use.mask, arch/sh/package.use.mask:
+  Mask net-firewall/iptables[netlink] pending keywording #354309.
+
+  09 Feb 2011; Nirbheek Chauhan <nirbheek@gentoo.org> updates/1Q-2011:
+  Change libwnck SLOT from 0 to 1, new SLOT=3 ebuild coming
+
+  09 Feb 2011; Pacho Ramos <pacho@gentoo.org> package.mask:
+  Fix gtk+-2.24 masking (bug #354275 by Dennis Schridde).
+
+  09 Feb 2011; Nirbheek Chauhan <nirbheek@gentoo.org> updates/1Q-2011:
+  Change libunique SLOT from 0 to 1, new SLOT=3 ebuild coming
+
+  09 Feb 2011; Hans de Graaff <graaff@gentoo.org> package.mask:
+  Mask Rails 2.2 due to bug 354249.
+
+  09 Feb 2011; Andreas Proschofsky <suka@gentoo.org> package.mask:
+  Remove mask on app-office/libreoffice, should be ready for the masses
+
+  08 Feb 2011; Gilles Dartiguelongue <eva@gentoo.org> package.mask:
+  Fix type for new glib/gtk+ mask.
+
+  08 Feb 2011; Hanno Boeck <hanno@gentoo.org> license_groups:
+  Add HTML-Tidy to MISC_FREE license group, BSD-alike.
+
+  08 Feb 2011; Diego E. Pettenò <flameeyes@gentoo.org> base/package.mask,
+  uclibc/package.mask:
+  Make sys-libs/uclibc appear masked on non-uclibc profiles. This hides the
+  ebuild that has broken dynamic SLOT generation (the same as newlib).
+
+  07 Feb 2011; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Add newlib to the list of crossdev-only packages. The SLOT tricks it has been
+  using up to today are not bright and break with the new metadata
+  regeneration.
+
+  07 Feb 2011; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  desc/video_cards.desc:
+  Add qxl to VIDEO_CARDS.
+
+  07 Feb 2011; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Temporarily mask net-misc/pino until upstream release is out.
+
+  07 Feb 2011; <olemarkus@gentoo.org> package.mask:
+  Lastrite dev-php5/mongo
+
+  05 Feb 2011; Nirbheek Chauhan <nirbheek@gentoo.org> package.mask:
+  Re-add libnotify-0.7 mask according to general consensus on #gentoo-dev.
+  We need to fix the broken packages first.
+
+  05 Feb 2011; Michał Górny <mgorny@gentoo.org> package.mask:
+  Remove mask for ekg2-9999 (the ebuild was removed).
 
   04 Feb 2011; Maciej Mrozowski <reavertm@gentoo.org> package.mask:
   Unmask poppler-0.16.x

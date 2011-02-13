@@ -1,13 +1,15 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="2"
+EAPI="3"
 
 inherit toolchain-funcs mercurial
 
+: ${EHG_REPO_URI:="http://hg.suckless.org/${PN}"}
+
 DESCRIPTION="Standalone client/server 9P library"
 HOMEPAGE="http://libs.suckless.org/libixp"
-EHG_REPO_URI="http://hg.suckless.org/${PN}"
+SRC_URI=""
 
 LICENSE="MIT"
 SLOT="0"

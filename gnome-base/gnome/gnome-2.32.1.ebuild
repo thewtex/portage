@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-base/gnome/gnome-2.32.1.ebuild,v 1.1 2011/02/01 19:54:01 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-base/gnome/gnome-2.32.1.ebuild,v 1.4 2011/02/11 19:39:50 ssuominen Exp $
 
 EAPI="3"
 
@@ -21,7 +21,6 @@ S=${WORKDIR}
 # FIXME: bump gstreamer to 0.10.26
 # XXX: lower gdm to 2.20 since we still keep 2.28 masked
 # Lower epiphany to 2.26 since 2.28 is not ready to go stable
-# Lower ekiga since 3.x cannot be stabilized yet as talked with voip herd
 # ppc64 and epiphany, bug 323857
 RDEPEND="
 	>=dev-libs/glib-2.26.1:2
@@ -53,7 +52,6 @@ RDEPEND="
 	>=gnome-base/libbonobo-2.24.3
 	>=gnome-base/libbonoboui-2.24.4
 	>=gnome-base/libgnome-2.32.0
-	>=gnome-base/libgnomeui-2.24.4
 	>=gnome-base/libgnomecanvas-2.30.2
 	>=gnome-base/libglade-2.6.4
 
@@ -135,9 +133,7 @@ RDEPEND="
 	>=net-misc/vino-2.32.0
 
 	>=app-admin/pessulus-2.30.4
-	ldap? (
-		>=app-admin/sabayon-2.30.1
-		>=net-voip/ekiga-2.0.12 )
+	ldap? (	>=app-admin/sabayon-2.30.1 )
 
 	>=gnome-extra/gnome-screensaver-2.30.2
 	>=x11-misc/alacarte-0.13.2
@@ -191,9 +187,5 @@ pkg_postinst() {
 	elog "such as Gentoo/FreeBSD systems. A global USE=fam can also"
 	elog "be useful for other packages that do not use the new file"
 	elog "monitoring API yet that the new glib provides."
-	elog
-	elog
-	elog "Add yourself to the plugdev group if you want"
-	elog "automounting to work."
 	elog
 }

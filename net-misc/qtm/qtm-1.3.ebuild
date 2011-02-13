@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/qtm/qtm-1.3.ebuild,v 1.3 2010/10/14 15:11:39 phajdan.jr Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/qtm/qtm-1.3.ebuild,v 1.4 2011/02/11 21:43:15 hwoarang Exp $
 
 EAPI="2"
 
@@ -30,7 +30,8 @@ DOCS="Changelog README"
 
 src_configure() {
 	mycmakeargs="-DDONT_USE_PTE=FALSE -DINSTALL_MARKDOWN=TRUE
-	$(cmake-utils_use debug QDEBUG) $(cmake-utils_use dbus)
+	$(cmake-utils_use debug QDEBUG)
 	$(cmake-utils_use ssl)"
+	! use dbus && mycmakeargs="${mycmakeargs} -DDONT_USE_DBUS=TRUE"
 	cmake-utils_src_configure
 }

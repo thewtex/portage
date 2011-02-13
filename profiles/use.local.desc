@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.6345 2011/02/05 05:53:42 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.local.desc,v 1.6362 2011/02/12 18:13:26 robbat2 Exp $
 # This file contains descriptions of local USE flags, and the ebuilds which
 # contain them.
 # Keep it sorted (use "LC_ALL=C sort -t: -k1,1 -k2 | LC_ALL=C sort -s -t/ -k1,1")
@@ -229,14 +229,9 @@ app-crypt/gnupg:openct - build using dev-libs/openct compat
 app-crypt/gnupg:pcsc-lite - build with sys-apps/pcsc-lite
 app-crypt/gpgme:common-lisp - Install common-lisp files
 app-crypt/gpgme:pth - Enable support for GNU Portable Threads multithreading library
-app-crypt/heimdal:X - Building X applications
-app-crypt/heimdal:berkdb - Berkeley DB is preferred before NDBM, but if you for some reason want to use NDBM instead, you can disable this USE flag.
-app-crypt/heimdal:hdb-ldap - Enable support for LDAP as database backend (not suggested to use)
-app-crypt/heimdal:ipv6 - Enable/Disable ipv6 support. No magic here.
-app-crypt/heimdal:otp - Enable support for one-time passwords (OTP) in some heimdal apps
-app-crypt/heimdal:pkinit - Enable pkinit support to get the initial ticket
-app-crypt/heimdal:ssl - Enable usage of openssl
-app-crypt/heimdal:threads - Enable pthread support
+app-crypt/heimdal:hdb-ldap - Adds support for LDAP as a database backend
+app-crypt/heimdal:otp - Adds support for one-time passwords
+app-crypt/heimdal:pkinit - Adds support for PKINIT for the initial ticket
 app-crypt/kstart:afs - Enables afs support which means you can acquire an afs token and set PAGs. It's recommended to set this USE if you need authenticated access to an AFS cell for your daemon/app.
 app-crypt/mit-krb5:doc - Creates and installs the API and implementation documentation. This is only useful if you want to develop software which depends on kerberos.
 app-crypt/mit-krb5:pkinit - Enable pkinit support for the initial ticket.
@@ -645,7 +640,6 @@ app-office/texmacs:netpbm - Add support for media-libs/netpbm
 app-office/tpp:figlet - Install app-misc/figlet to support the --huge command
 app-pda/barry:boost - Enable boost support
 app-pda/barry:gui - Gui backup tool support
-app-pda/barry:opensync - Enabling opensync plugin
 app-pda/libopensync-plugin-irmc:irda - Enable IrDA support
 app-pda/libopensync-plugin-syncml:http - Enable http transports
 app-pda/libopensync-plugin-syncml:obex - Enable obex transports
@@ -916,9 +910,6 @@ dev-java/log4j:jms - Build the JMSAppender
 dev-java/log4j:jmx - Build org.apace.log4j.jmx
 dev-java/proguard:ant - Ant task for using ProGuard in build.xml scripts
 dev-java/proguard:j2me - Adds support for J2ME Wireless Toolkit
-dev-java/qtjambi:phonon - Enable bindings to QT Phonon
-dev-java/qtjambi:webkit - Enable bindings to QT Webkit
-dev-java/qtjambi:xmlpatterns - Enable bindings to QT xmlpatterns
 dev-java/rxtx:lfd - Installs and uses LockFileServer daemon (lfd)
 dev-java/sun-jdk:derby - Enable Installation of Bundled Derby (Java DB)
 dev-java/sun-jdk:jce - Enable Java Cryptographic Extension Unlimited Strength Policy files
@@ -1051,6 +1042,8 @@ dev-libs/json-glib:introspection - Use dev-libs/gobject-introspection for intros
 dev-libs/klibc:n32 - Force klibc to 32bit if on mips64 if not n32 userland
 dev-libs/libburn:track-src-odirect - Read track input with O_DIRECT (see man 2 open), this may deliver a better write performance in some situations
 dev-libs/libcdio:minimal - Only build the libcdio library and little more, just to be used to link against from multimedia players. With this USE flag enabled, none of the command-line utilities are built, nor is the CDDA library.
+dev-libs/libdbusmenu:introspection - Use dev-libs/gobject-introspection for introspection
+dev-libs/libdbusmenu:vala - Enable bindings for dev-lang/vala
 dev-libs/libgdata:introspection - Use dev-libs/gobject-introspection for introspection
 dev-libs/libgee:introspection - Use dev-libs/gobject-introspection for introspection
 dev-libs/libgpg-error:common-lisp - Install common-lisp files
@@ -1141,6 +1134,7 @@ dev-ml/ocamlnet:zip - Enables netzip support to read/write gzip data using objec
 dev-perl/App-Nopaste:clipboard - copying of URLs with -x/--copy
 dev-perl/App-Nopaste:github - Github authentication
 dev-perl/App-Nopaste:pastebin - pastebin.com support
+dev-perl/DBD-mysql:embedded - Support embedded server (libmysqld)
 dev-perl/DBIx-Class:admin - Modules required for the DBIx::Class administrative library
 dev-perl/DBIx-Class:admin_script - Modules required for the CLI DBIx::Class interface dbicadmin
 dev-perl/DBIx-Class:deploy - Modules required for "deploy" in DBIx::Class::Storage::DBI and "deploymen_statements" in DBIx::Class::Storage::DBI
@@ -1155,6 +1149,8 @@ dev-perl/Sysadm-Install:hammer - Enable hammer() funtion to run a command in the
 dev-php/PEAR-HTTP_Download:minimal - Do not include support for PEAR-MIME_Type
 dev-php/PEAR-HTTP_Download:postgres - Send postgres LOBs without buffering
 dev-php/PEAR-PHP_Shell:auto-completion - Enable tab-completion
+dev-php/smarty-docs:html - Install the documentation in HTML format
+dev-php/smarty-docs:pdf - Install the documentation in PDF format
 dev-php5/ZendFramework:cli - Enables the CLI
 dev-php5/ZendFramework:doc - Installs the documentation
 dev-php5/ZendFramework:examples - Installs the examples
@@ -1386,6 +1382,7 @@ dev-vcs/qct:monotone - Support for dev-vcs/monotone
 dev-vcs/rabbitvcs:cli - Eanble console based frontend
 dev-vcs/rabbitvcs:diff - Use for diff command dev-util/meld
 dev-vcs/rabbitvcs:gedit - Enable plugin for app-editors/gedit
+dev-vcs/rabbitvcs:git - Enable plugin for dev-vcs/git
 dev-vcs/rabbitvcs:nautilus - Enable extension for gnome-base/nautilus
 dev-vcs/rabbitvcs:thunar - Enable extension for xfce-base/thunar
 dev-vcs/subversion:ctypes-python - Build and install Ctypes Python bindings
@@ -1857,7 +1854,6 @@ media-gfx/enblend:gpu - GPU support for Enblend
 media-gfx/enblend:image-cache - allow for processing of large images
 media-gfx/exact-image:swig - Adds Swig support dev-lang/swig
 media-gfx/exiv2:contrib - Build additional contrib components
-media-gfx/f-spot:beagle - Enable app-misc/beagle support for searches
 media-gfx/f-spot:flickr - Enable building of the Flickr exported.
 media-gfx/fontforge:cjk - Controls whether fontforge understands the gb12345 encoding and installs cidmap package to edit CID-keyed fonts
 media-gfx/fontforge:pango - Enable pango font rendering
@@ -1970,7 +1966,6 @@ media-libs/libsdl:joystick - Control joystick support (disable at your own risk)
 media-libs/libsdl:ps3 - Build the PS3 video driver
 media-libs/libsdl:tslib - Build with tslib support for touchscreen devices
 media-libs/libsdl:video - Control video support (disable at your own risk)
-media-libs/libsfml:csfml - Build the C libraries for SFML
 media-libs/libvpx:postproc - Enable additional post processing filters
 media-libs/libvpx:sse3 - Enable optimization for SSE3 capable chips
 media-libs/libvpx:ssse3 - faster floating point optimization for SSSE3 capable chips (Intel Core 2 and later chips)
@@ -2688,6 +2683,7 @@ net-firewall/ipsec-tools:hybrid - Makes available both mode-cfg and xauth suppor
 net-firewall/ipsec-tools:idea - Enable support for the patented IDEA algorithm
 net-firewall/ipsec-tools:nat - Enable NAT-Traversal
 net-firewall/ipsec-tools:rc5 - Enable support for the patented RC5 algorithm
+net-firewall/iptables:netlink - Build against libnfnetlink which enables the nfnl_osf util
 net-firewall/nufw:nfconntrack - Use netfilter_conntrack
 net-firewall/nufw:nfqueue - Use NFQUEUE instead of QUEUE
 net-firewall/nufw:pam_nuauth - Add support for pam nufw from PAM
@@ -3196,7 +3192,7 @@ net-misc/ps3mediaserver:tsmuxer - Install optional dependencies for transcoding 
 net-misc/quagga:bgpclassless - Apply unofficial patch to enable classless prefixes for BGP. Patch and information to be found at http://hasso.linux.ee/doku.php/english:network:quagga
 net-misc/quagga:multipath - Enable multipath routes support for any number of routes
 net-misc/quagga:ospfapi - Enable OSPFAPI support for client applications accessing the OSPF link state database
-net-misc/quagga:pam - Add support for PAM (viasys-libs/pam) to the Quagga Virtual Terminal Interface Shell (vtysh); if the readline USE flag is disabled, this flag is ignored.
+net-misc/quagga:pam - Add support for PAM (via sys-libs/pam) to the Quagga Virtual Terminal Interface Shell (vtysh); if the readline USE flag is disabled, this flag is ignored.
 net-misc/quagga:readline - Enable support for sys-libs/readline to provide the Quagga Virtual Terminal Interface Shell (vtysh).
 net-misc/quagga:realms - Apply unofficial patch to enable realms support. Patch and information to be found at http://vcalinus.gemenii.ro/quaggarealms.html and http://linux.mantech.ro/quagga+realm_en.php
 net-misc/quagga:tcp-zebra - Enable TCP zserv interface on port 2600 for Zebra/protocol-daemon communication. Unix domain sockets are chosen otherwise.
@@ -3355,7 +3351,7 @@ net-p2p/mldonkey:gnutella - enable gnutella and gnutella2 support
 net-p2p/mldonkey:guionly - enable client build only
 net-p2p/mldonkey:magic - enable use of libmagic
 net-p2p/rtorrent:daemon - Uses app-misc/screen to daemonize this application
-net-p2p/transmission:sound - Enable sound event support with media-libs/libcanberra
+net-p2p/transmission:libcanberra - Enable sound event support with media-libs/libcanberra
 net-print/hplip:X - Enables scanner GUI dependencies with USE="scanner" where media-gfx/xsane is preferred over media-gfx/sane-frontends
 net-print/hplip:doc - Build documentation
 net-print/hplip:fax - Enable fax on multifunction devices which support it
@@ -3506,6 +3502,7 @@ sci-chemistry/shelx:dosformat - Use CR/LF to end lines; useful in mixed Linux/Wi
 sci-chemistry/vmd:msms - Add support for MSMS SAS calcualtion tool
 sci-chemistry/vmd:povray - Add support for povray raytracer for HQ images
 sci-chemistry/vmd:tachyon - Add support for tachyon raytracer for HQ images
+sci-chemistry/votca-csg:gromacs - Add support for gromacs file formats (sci-chemistry/gromacs)
 sci-chemistry/wxmacmolplt:flash - Add support for flash movie generation using media-libs/ming
 sci-electronics/geda:stroke - enable mouse gesture support
 sci-electronics/gerbv:unit-mm - Set default unit for coordinates in status bar to mm
@@ -3595,6 +3592,7 @@ sci-libs/spqr:tbb - Enable multithreading with the Intel Threads Building Block 
 sci-libs/suitesparse:metis - Use METIS (sci-libs/metis or sci-libs/parmetis) for partitioning
 sci-libs/taucs:cilk - Enable multithreading using dev-lang/cilk)
 sci-libs/umfpack:metis - Use METIS via CHOLMOD(sci-libs/cholmod) for partitioning
+sci-libs/votca-tools:boost - Compile against external boost headers (dev-libs/boost)
 sci-libs/vtk:R - Enable support for dev-lang/R
 sci-libs/vtk:boost - Add support for boost
 sci-libs/vtk:cg - Use nvidia's cg shaders
@@ -3747,6 +3745,7 @@ sys-apps/pcmcia-cs-modules:cardbus - Enable 32bit CardBus support
 sys-apps/pcmciautils:staticsocket - Add support for static sockets
 sys-apps/portage:epydoc - Build html API documentation with epydoc.
 sys-apps/portage:ipc - Use inter-process communication between portage and running ebuilds.
+sys-apps/portage:python2 - Use python2 as Python interpreter.
 sys-apps/portage:python3 - Use python3 as Python interpreter.
 sys-apps/pyrenamer:music - Enable support for renaming music
 sys-apps/qingy:opensslcrypt - Encrypt communications between qingy and its GUI using dev-libs/openssl
@@ -4110,6 +4109,7 @@ www-misc/xxv:themes - Enable more themes via x11-themes/xxv-skins
 www-plugins/adobe-flash:32bit - For amd64-multilib, installs the 32-bit plugin
 www-plugins/adobe-flash:64bit - For amd64-multilib, installs the native 64-bit plugin
 www-plugins/adobe-flash:nspluginwrapper - For amd64-multilib, installs www-plugins/nspluginwrapper to allow use in a 64-bit browser. (Not recommended, see http://bugs.gentoo.org/324365)
+www-plugins/adobe-flash:vdpau - Enables VDPAU support to offload video processing (32-bit flash player only)
 www-plugins/gnash:agg - Rendering based on the Anti-Grain Geometry Rendering Engine library
 www-plugins/gnash:cygnal - Enable building of the cygnal server
 www-plugins/gnash:sdl-sound - Enable SDL audio output for the standalone player
@@ -4343,7 +4343,7 @@ xfce-base/xfce4-session:consolekit - Enable support for sys-auth/consolekit
 xfce-base/xfce4-session:fortune - Install tips and tricks app (xfce4-tips), adds dependency on games-misc/fortune-mod
 xfce-base/xfce4-session:gnome-keyring - Support for storing your password
 xfce-base/xfce4-settings:keyboard - Enable Keyboard layout selection with x11-libs/libxklavier
-xfce-base/xfce4-settings:sound - Enable sound event support with media-libs/libcanberra
+xfce-base/xfce4-settings:libcanberra - Enable sound event support with media-libs/libcanberra
 xfce-base/xfdesktop:thunar - Build support for desktop icons (for example, launchers and folders)
 xfce-extra/thunar-thumbnailers:grace - Enable support for sci-visualization/grace thumbnails
 xfce-extra/xfce4-mpc-plugin:libmpd - Build using media-libs/libmpd backend, instead of native fallback which is preferred

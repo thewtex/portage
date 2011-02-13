@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/gtk+/gtk+-2.22.1-r1.ebuild,v 1.3 2011/01/12 16:24:39 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/gtk+/gtk+-2.22.1-r1.ebuild,v 1.5 2011/02/09 21:47:30 ssuominen Exp $
 
 EAPI="3"
 PYTHON_DEPEND="2:2.4"
@@ -106,6 +106,16 @@ src_prepare() {
 	sed 's:\(g_test_add_func ("/ui-tests/keys-events.*\):/*\1*/:g' \
 		-i gtk/tests/testing.c || die "sed 1 failed"
 
+	# Cannot work because glib is too clever to find real user's home
+	# gentoo bug #285687, upstream bug #639832
+	# XXX: /!\ Pay extra attention to second sed when bumping /!\
+	sed '/TEST_PROGS.*recentmanager/d' -i gtk/tests/Makefile.am \
+		|| die "failed to disable recentmanager test (1)"
+	sed '/^TEST_PROGS =/,+3 s/recentmanager//' -i gtk/tests/Makefile.in \
+		|| die "failed to disable recentmanager test (2)"
+	sed 's:\({ "GtkFileChooserButton".*},\):/*\1*/:g' -i gtk/tests/object.c \
+		|| die "failed to disable recentmanager test (3)"
+
 	if use x86-interix; then
 		# activate the itx-bind package...
 		append-flags "-I${EPREFIX}/usr/include/bind"
@@ -175,6 +185,9 @@ src_install() {
 	use aqua && for i in gtk+-2.0.pc gtk+-quartz-2.0.pc gtk+-unix-print-2.0.pc; do
 		sed -i -e "s:Libs\: :Libs\: -framework Carbon :" "${ED%/}"/usr/lib/pkgconfig/$i || die "sed failed"
 	done
+
+	# Clean up useless la files
+	find "${ED}"/usr/$(get_libdir)/gtk-2.0/ -name "*.la" -delete
 
 	python_convert_shebangs 2 "${ED}"usr/bin/gtk-builder-convert
 }

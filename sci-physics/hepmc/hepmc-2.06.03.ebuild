@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-physics/hepmc/hepmc-2.06.03.ebuild,v 1.2 2011/01/18 16:45:55 xarthisius Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-physics/hepmc/hepmc-2.06.03.ebuild,v 1.4 2011/02/10 23:04:58 hwoarang Exp $
 
 EAPI=2
 
@@ -12,7 +12,7 @@ SRC_URI="http://lcgapp.cern.ch/project/simu/HepMC/download/${MYP}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~sparc ~x86"
+KEYWORDS="amd64 ~hppa ~sparc x86"
 IUSE="doc examples gev cm static-libs"
 
 RDEPEND=""

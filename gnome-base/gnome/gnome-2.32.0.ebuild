@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-base/gnome/gnome-2.32.0.ebuild,v 1.5 2011/01/27 08:34:14 xarthisius Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-base/gnome/gnome-2.32.0.ebuild,v 1.7 2011/02/11 19:39:50 ssuominen Exp $
 
 EAPI="2"
 
@@ -52,7 +52,6 @@ RDEPEND="
 	>=gnome-base/libbonobo-2.24.3
 	>=gnome-base/libbonoboui-2.24.4
 	>=gnome-base/libgnome-2.32.0
-	>=gnome-base/libgnomeui-2.24.4
 	>=gnome-base/libgnomecanvas-2.30.2
 	>=gnome-base/libglade-2.6.4
 
@@ -190,9 +189,5 @@ pkg_postinst() {
 	elog "such as Gentoo/FreeBSD systems. A global USE=fam can also"
 	elog "be useful for other packages that do not use the new file"
 	elog "monitoring API yet that the new glib provides."
-	elog
-	elog
-	elog "Add yourself to the plugdev group if you want"
-	elog "automounting to work."
 	elog
 }

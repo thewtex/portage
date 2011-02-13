@@ -1,6 +1,25 @@
 # ChangeLog for app-office/libreoffice
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/libreoffice/ChangeLog,v 1.8 2011/02/02 09:11:56 suka Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/libreoffice/ChangeLog,v 1.12 2011/02/12 15:43:10 suka Exp $
+
+*libreoffice-3.3.1_rc1 (12 Feb 2011)
+
+  12 Feb 2011; Andreas Proschofsky <suka@gentoo.org>
+  +libreoffice-3.3.1_rc1.ebuild, +files/gentoo-3.3.1_rc1.diff:
+  Release Candidate for LibreOffice 3.3.1
+
+  08 Feb 2011; Andreas Proschofsky <suka@gentoo.org> libreoffice-3.3.0.ebuild:
+  Until we have a better fix, disable extensions for -java build, preventing
+  breakage, bug #352812
+
+  05 Feb 2011; Andreas Proschofsky <suka@gentoo.org> libreoffice-3.3.0.ebuild,
+  +files/libreoffice-3.3-prefix.patch:
+  Another bunch of prefix fixes
+
+  05 Feb 2011; Andreas Proschofsky <suka@gentoo.org> libreoffice-3.3.0.ebuild,
+  files/gentoo-3.3.0.diff:
+  Cleanup work: Prefix fixes, remove outated deps and config-flags, fix pax
+  stuff
 
   02 Feb 2011; Andreas Proschofsky <suka@gentoo.org> libreoffice-3.3.0.ebuild:
   Fix desktop files, thanks to Sanders Sweers <Sander.Sweers@gmail.com>, see

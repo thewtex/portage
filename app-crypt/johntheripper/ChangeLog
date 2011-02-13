@@ -1,6 +1,37 @@
 # ChangeLog for app-crypt/johntheripper
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/johntheripper/ChangeLog,v 1.125 2011/02/02 06:16:28 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/johntheripper/ChangeLog,v 1.131 2011/02/09 18:44:09 c1pher Exp $
+
+  09 Feb 2011; Dane Smith <c1pher@gentoo.org>
+  -files/johntheripper-1.7.3.1-cflags.patch, -johntheripper-1.7.3.4.ebuild,
+  johntheripper-1.7.6-r1.ebuild:
+  *Remove altivec use flag wrt bug 353969.
+  *Mark ppc/ppc64 as stable in 1.7.6-r1 with permission from ssuominen now
+  that
+  the altivec issues are resolved.
+  *Drop old version and old patch.
+
+  08 Feb 2011; Jeroen Roovers <jer@gentoo.org> johntheripper-1.7.6-r1.ebuild:
+  Stable for HPPA (bug #350730).
+
+  08 Feb 2011; Dane Smith <c1pher@gentoo.org> johntheripper-1.7.6-r1.ebuild:
+  Apply patch from Jeroen Roovers to fix too much / lack of enough 
+  escaping as seen in bug 350730. No changes to installed files 
+  therefore no revbump.
+
+  08 Feb 2011; Dane Smith <c1pher@gentoo.org> johntheripper-1.7.6-r1.ebuild:
+  Revert back to ~hppa. The whitespace changes that caused issues on
+  x86/amd64
+  were fixing issues on hppa wrt bug 350730.
+
+  07 Feb 2011; Dane Smith <c1pher@gentoo.org>
+  files/johntheripper-1.7.6-cflags.patch:
+  Fix typos in -cflags.patch wrt bug 353969.
+
+  07 Feb 2011; Dane Smith <c1pher@gentoo.org> johntheripper-1.7.6-r1.ebuild:
+  Re-fix some escaping issues wrt bug 327211. Thanks Kevin Quinn for making
+  me
+  aware of the changes.
 
   02 Feb 2011; Jeroen Roovers <jer@gentoo.org> johntheripper-1.7.6-r1.ebuild:
   Remove extra escapes. Stable for HPPA (bug #350730).

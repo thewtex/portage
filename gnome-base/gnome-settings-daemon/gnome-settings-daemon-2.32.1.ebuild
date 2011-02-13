@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-base/gnome-settings-daemon/gnome-settings-daemon-2.32.1.ebuild,v 1.1 2010/12/04 16:50:12 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-base/gnome-settings-daemon/gnome-settings-daemon-2.32.1.ebuild,v 1.3 2011/02/09 17:59:20 ssuominen Exp $
 
 EAPI="3"
 GCONF_DEBUG="yes"
@@ -76,6 +76,8 @@ pkg_setup() {
 src_prepare() {
 	gnome2_src_prepare
 
+	epatch "${FILESDIR}"/${P}-libnotify-0.7.patch
+
 	# Restore gstreamer volume control support, upstream bug #571145
 	# Keep using old patch as it doesn't cause problems like bug #339732
 	#epatch "${WORKDIR}/${PN}-2.30.2-gst-vol-control-support.patch"
@@ -91,6 +93,11 @@ src_prepare() {
 
 	intltoolize --force --copy --automake || die "intltoolize failed"
 	eautoreconf
+}
+
+src_install() {
+	gnome2_src_install
+	find "${ED}" -name "*.la" -delete
 }
 
 pkg_postinst() {
