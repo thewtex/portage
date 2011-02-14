@@ -1,5 +1,5 @@
-ruby_targets_ruby18? ( test? ( virtual/ruby-test-unit[ruby_targets_ruby18] dev-ruby/rspec:0[ruby_targets_ruby18] dev-ruby/tilt[ruby_targets_ruby18] ) ) test? ( ruby_targets_ruby18? ( >=dev-ruby/builder-2.0.0[ruby_targets_ruby18] ) ) ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ruby18? ( test? ( dev-ruby/rake[ruby_targets_ruby18] ) ) ruby_targets_ruby18? ( dev-ruby/rubygems[ruby_targets_ruby18] ) test? ( ruby_targets_ruby18? ( dev-ruby/rubygems[ruby_targets_ruby18] ) )
-ruby_targets_ruby18? ( >=dev-ruby/builder-2.0.0[ruby_targets_ruby18] ) ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ruby18? ( dev-ruby/rubygems[ruby_targets_ruby18] )
+ruby_targets_ruby18? ( test? ( virtual/ruby-test-unit[ruby_targets_ruby18] dev-ruby/rspec:0[ruby_targets_ruby18] dev-ruby/tilt[ruby_targets_ruby18] ) ) ruby_targets_ree18? ( test? ( virtual/ruby-test-unit[ruby_targets_ree18] dev-ruby/rspec:0[ruby_targets_ree18] dev-ruby/tilt[ruby_targets_ree18] ) ) test? ( ruby_targets_ruby18? ( >=dev-ruby/builder-2.0.0[ruby_targets_ruby18] ) ruby_targets_ree18? ( >=dev-ruby/builder-2.0.0[ruby_targets_ree18] ) ) ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ree18? ( dev-lang/ruby-enterprise:1.8 ) ruby_targets_ruby18? ( test? ( dev-ruby/rake[ruby_targets_ruby18] ) ) ruby_targets_ree18? ( test? ( dev-ruby/rake[ruby_targets_ree18] ) ) ruby_targets_ruby18? ( dev-ruby/rubygems[ruby_targets_ruby18] ) ruby_targets_ree18? ( dev-ruby/rubygems[ruby_targets_ree18] ) test? ( ruby_targets_ruby18? ( dev-ruby/rubygems[ruby_targets_ruby18] ) ruby_targets_ree18? ( dev-ruby/rubygems[ruby_targets_ree18] ) )
+ruby_targets_ruby18? ( >=dev-ruby/builder-2.0.0[ruby_targets_ruby18] ) ruby_targets_ree18? ( >=dev-ruby/builder-2.0.0[ruby_targets_ree18] ) ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ree18? ( dev-lang/ruby-enterprise:1.8 ) ruby_targets_ruby18? ( dev-ruby/rubygems[ruby_targets_ruby18] ) ruby_targets_ree18? ( dev-ruby/rubygems[ruby_targets_ree18] )
 0
 mirror://rubygems/markaby-0.7.1.gem
 
@@ -8,7 +8,7 @@ MIT
 A templating language for Ruby to write HTML templates in pre Ruby
 ~amd64 ~ia64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
 eutils multilib portability ruby-fakegem ruby-ng toolchain-funcs
-test ruby_targets_ruby18 test
+test ruby_targets_ruby18 ruby_targets_ree18 test
 
 
 
