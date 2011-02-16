@@ -1,8 +1,8 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/uzbl/uzbl-9999.ebuild,v 1.17 2010/12/05 22:26:37 wired Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/uzbl/uzbl-9999.ebuild,v 1.19 2011/02/15 21:29:09 wired Exp $
 
-EAPI="2"
+EAPI="4"
 
 inherit base
 
@@ -27,6 +27,8 @@ HOMEPAGE="http://www.uzbl.org"
 LICENSE="LGPL-2.1 MPL-1.1"
 SLOT="0"
 IUSE+=" +browser helpers +tabbed vim-syntax"
+
+REQUIRED_USE="tabbed? ( browser )"
 
 COMMON_DEPEND="
 	dev-libs/glib:2
@@ -79,36 +81,25 @@ pkg_setup() {
 		einfo "You have enabled the *helpers* USE flag that installs"
 		einfo "various optional applications used by uzbl's extra scripts."
 	fi
+}
 
-	if use tabbed && ! use browser; then
-		ewarn
-		ewarn "You enabled the *tabbed* USE flag but not *browser*."
-		ewarn "*tabbed* depends on *browser*, so it will be disabled."
-		ewarn
-		ebeep 3
+src_unpack() {
+	if [[ ${PV} == *9999* ]]; then
+		git_src_unpack
+	else
+		unpack ${A}
+		mv Dieterbe-uzbl-* "${S}"
 	fi
 }
 
 src_prepare() {
 	if [[ ${PV} == *9999* ]]; then
 		git_src_prepare
-	else
-		cd "${WORKDIR}"/Dieterbe-uzbl-*
-		S=$(pwd)
 	fi
 
 	# remove -ggdb
 	sed -i "s/-ggdb //g" Makefile ||
 		die "-ggdb removal sed failed"
-
-	# adjust path in default config file to /usr/share
-	sed -i "s:/usr/local/share/uzbl:/usr/share/uzbl:g" \
-		examples/config/config ||
-		die "config path sed failed"
-}
-
-src_compile() {
-	emake || die "compile failed"
 }
 
 src_install() {

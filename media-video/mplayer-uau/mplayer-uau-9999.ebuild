@@ -20,7 +20,7 @@ radio +rar +real +rtc rtmp samba +shm +schroedinger +hardcoded-tables sdl +speex
 tga +theora threads +truetype +unicode v4l v4l2 vdpau
 +vorbis vpx win32codecs +X xanim xinerama +xscreensaver +xv xvmc
 "
-IUSE+=" +ffmpeg-mt -external-ffmpeg symlink"
+IUSE+=" +ffmpeg-mt -system-ffmpeg symlink"
 
 VIDEO_CARDS="s3virge mga tdfx vesa"
 for x in ${VIDEO_CARDS}; do
@@ -43,8 +43,8 @@ SRC_URI="${RELEASE_URI}
 	!truetype? ( ${FONT_URI} )
 "
 
-DESCRIPTION="Media Player for Linux, Uoti Urpala's fork"
-HOMEPAGE="http://www.mplayerhq.hu/"
+DESCRIPTION="Media Player for Linux, Uoti Urpala's fork (aka mplayer2)"
+HOMEPAGE="http://www.mplayer2.org/"
 
 FONT_RDEPS="
 	virtual/ttf-fonts
@@ -130,10 +130,10 @@ RDEPEND+="
 	truetype? ( ${FONT_RDEPS} )
 	vorbis? ( media-libs/libvorbis )
 	xanim? ( media-video/xanim )
-	external-ffmpeg? (
+	system-ffmpeg? (
 		>=media-video/ffmpeg-0.6_p25423[amr?,bzip2?,dirac?,gsm?,hardcoded-tables?,jpeg2k?,rtmp?,schroedinger?,threads?,vpx?]
 	)
-	!external-ffmpeg? (
+	!system-ffmpeg? (
 		amr? ( media-libs/opencore-amr )
 		bzip2? ( app-arch/bzip2 )
 		dirac? ( media-video/dirac )
@@ -154,6 +154,7 @@ ASM_DEP="dev-lang/yasm"
 DEPEND="${RDEPEND}
 	dev-util/pkgconfig
 	dev-lang/python
+	sys-devel/gettext
 	X? (
 		${X_DEPS}
 		dga? ( x11-proto/xf86dgaproto )
@@ -219,8 +220,8 @@ pkg_setup() {
 		ewarn "3dnowext mmx mmxext sse sse2 ssse3) are properly set."
 	fi
 
-	if use ffmpeg-mt && use external-ffmpeg; then
-		ewarn "USE flags ffmpeg-mt and external-ffmpeg are not compatible, external-ffmpeg will be used."
+	if use ffmpeg-mt && use system-ffmpeg; then
+		ewarn "USE flags ffmpeg-mt and system-ffmpeg are not compatible, system-ffmpeg will be used."
 	fi
 }
 
@@ -234,7 +235,7 @@ src_unpack() {
 		git_fetch
 		S="${WORKDIR}/${P}"
 
-		if ! use external-ffmpeg; then
+		if ! use system-ffmpeg; then
 			if use ffmpeg-mt; then
 				EGIT_BRANCH="mt"
 				EGIT_COMMIT="mt"
@@ -287,7 +288,7 @@ src_prepare() {
 		|| die
 	fi
 
-	if use external-ffmpeg; then
+	if use system-ffmpeg; then
 		sed -e '/^mplayer: /s/ffmpeg//' -i Makefile || die "sed failed"
 	else
 		if use ffmpeg-mt; then
@@ -455,7 +456,7 @@ src_configure() {
 	##########
 	# Codecs #
 	##########
-	myconf+=" --disable-musepack" # Use internal musepack codecs for SV7 and SV8 support
+	myconf+=" --disable-musepack" # deprecated, libavcodec Musepack decoder is preferred
 	use dts || myconf+=" --disable-libdca"
 	if ! use mp3; then
 		myconf+="
@@ -649,15 +650,19 @@ src_configure() {
 	"
 	myconf+="
 		--prefix=${EPREFIX}/usr
+		--bindir=${EPREFIX}/usr/bin
+		--libdir=${EPREFIX}/usr/$(get_libdir)
 		--confdir=${EPREFIX}/etc/mplayer
 		--datadir=${EPREFIX}/usr/share/mplayer${namesuf}
-		--libdir=${EPREFIX}/usr/$(get_libdir)
+		--mandir=${EPREFIX}/usr/share/man
+		--localedir=${EPREFIX}/usr/share/locale
+		--enable-translation
 		"
 
 	echo "${common_options}" > common_options
 	echo "${myconf}" > mplayer_options
 
-	if ! use external-ffmpeg; then
+	if ! use system-ffmpeg; then
 		local ffconf="
 			--enable-gpl
 			--enable-version3
@@ -767,18 +772,14 @@ src_compile() {
 src_install() {
 	local i
 
-	emake prefix="${ED}/usr" \
-		BINDIR="${ED}/usr/bin" \
-		LIBDIR="${ED}/usr/$(get_libdir)" \
-		CONFDIR="${ED}/etc/mplayer" \
-		DATADIR="${ED}/usr/share/mplayer${namesuf}" \
-		MANDIR="${ED}/usr/share/man" \
+	emake \
+		DESTDIR="${D}" \
 		INSTALLSTRIP="" \
 		install || die "emake install failed"
 
 	S+="/mplayer"
 	cd "${S}"
-	dodoc AUTHORS Changelog Copyright README etc/codecs.conf || die
+	dodoc AUTHORS Copyright README etc/codecs.conf || die
 
 	docinto tech/
 	dodoc DOCS/tech/{*.txt,mpsub.sub,playtree} || die
@@ -842,18 +843,9 @@ _EOF_
 	fi
 }
 
-pkg_preinst() {
-	[[ -d ${EROOT}/usr/share/mplayer${namesuf}/Skin/default ]] && \
-		rm -rf "${EROOT}/usr/share/mplayer${namesuf}/Skin/default"
-}
-
 pkg_postrm() {
 	# Cleanup stale symlinks
 	[ -L "${EROOT}/usr/share/mplayer${namesuf}/font" -a \
 			! -e "${EROOT}/usr/share/mplayer${namesuf}/font" ] && \
 		rm -f "${EROOT}/usr/share/mplayer${namesuf}/font"
-
-	[ -L "${EROOT}/usr/share/mplayer${namesuf}/subfont.ttf" -a \
-			! -e "${EROOT}/usr/share/mplayer${namesuf}/subfont.ttf" ] && \
-		rm -f "${EROOT}/usr/share/mplayer${namesuf}/subfont.ttf"
 }
