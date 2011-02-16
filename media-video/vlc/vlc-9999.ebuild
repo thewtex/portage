@@ -1,8 +1,8 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/vlc/vlc-9999.ebuild,v 1.102 2011/01/02 14:40:08 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/vlc/vlc-9999.ebuild,v 1.113 2011/02/16 18:28:20 aballier Exp $
 
-EAPI="3"
+EAPI="4"
 
 SCM=""
 if [ "${PV%9999}" != "${PV}" ] ; then
@@ -17,7 +17,7 @@ if [ "${PV%9999}" != "${PV}" ] ; then
 	fi
 fi
 
-inherit eutils multilib autotools toolchain-funcs gnome2 qt4-r2 flag-o-matic ${SCM}
+inherit eutils multilib autotools toolchain-funcs flag-o-matic ${SCM}
 
 MY_PV="${PV/_/-}"
 MY_PV="${MY_PV/-beta/-test}"
@@ -45,31 +45,32 @@ if [ "${PV%9999}" = "${PV}" ] ; then
 else
 	KEYWORDS=""
 fi
-IUSE="a52 aac aalib alsa altivec atmo avahi bidi cdda cddb dbus dc1394
-	debug dirac directfb dts dvb dvd elibc_glibc fbcon fluidsynth +ffmpeg flac fontconfig
-	+gcrypt gme gnome gnutls httpd ieee1394 jack kate kde libass libcaca
-	libnotify libproxy libtiger libv4l2 lirc live lua matroska mmx
-	modplug mp3 mpeg mtp musepack ncurses ogg opengl optimisememory oss
-	png projectm pulseaudio pvr +qt4 remoteosd rtsp run-as-root samba
-	schroedinger sdl sdl-image shine shout sid skins speex sqlite sse stream
+IUSE="a52 aac aalib alsa altivec atmo avahi bda bidi bluray cdda cddb dbus dc1394
+	debug dirac directfb dshow dts dvb +dvbpsi dvd elibc_glibc +encode fbcon fluidsynth +ffmpeg flac fontconfig
+	+gcrypt gme gnome gnutls growl httpd ieee1394 jack kate kde libass libcaca
+	libnotify libproxy libtiger libv4l2 linsys lirc live lua matroska mmx
+	modplug mp3 mpeg mtp musepack ncurses ogg omxil opengl optimisememory oss
+	png projectm pulseaudio pvr +qt4 rtsp run-as-root samba
+	schroedinger sdl sdl-image shine shout sid skins speex sqlite sse
 	svg taglib theora truetype twolame udev upnp v4l2 vaapi vcdx vlm
 	vorbis win32codecs wma-fixed +X x264 +xcb xml xosd xv zvbi"
 
 RDEPEND="
 		sys-libs/zlib
-		>=media-libs/libdvbpsi-0.1.6
 		a52? ( >=media-libs/a52dec-0.7.4-r3 )
 		aalib? ( media-libs/aalib )
 		aac? ( >=media-libs/faad2-2.6.1 )
 		alsa? ( >=media-libs/alsa-lib-1.0.23 )
 		avahi? ( >=net-dns/avahi-0.6[dbus] )
 		bidi? ( >=dev-libs/fribidi-0.10.4 )
-		cdda? (	cddb? ( >=media-libs/libcddb-1.2.0 ) )
+		bluray? ( media-libs/libbluray )
+		cddb? ( >=media-libs/libcddb-1.2.0 )
 		dbus? ( >=sys-apps/dbus-1.0.2 )
 		dc1394? ( >=sys-libs/libraw1394-2.0.1 >=media-libs/libdc1394-2.0.2 )
 		dirac? ( >=media-video/dirac-0.10.0 )
 		directfb? ( dev-libs/DirectFB sys-libs/zlib )
 		dts? ( media-libs/libdca )
+		dvbpsi? ( >=media-libs/libdvbpsi-0.1.6 )
 		dvd? (	media-libs/libdvdread >=media-libs/libdvdnav-0.1.9 )
 		elibc_glibc? ( >=sys-libs/glibc-2.8 )
 		ffmpeg? ( >=media-video/ffmpeg-0.6 )
@@ -79,15 +80,16 @@ RDEPEND="
 		gcrypt? ( >=dev-libs/libgcrypt-1.2.0 )
 		gme? ( media-libs/game-music-emu )
 		gnome? ( gnome-base/gnome-vfs )
-		gnutls? ( >=net-libs/gnutls-1.7.4 >=dev-libs/libgcrypt-1.2.0 )
+		gnutls? ( >=net-libs/gnutls-1.7.4 )
 		ieee1394? ( >=sys-libs/libraw1394-2.0.1 >=sys-libs/libavc1394-0.5.3 )
 		jack? ( >=media-sound/jack-audio-connection-kit-0.99.0-r1 )
 		kate? ( >=media-libs/libkate-0.1.1 )
 		libass? ( >=media-libs/libass-0.9.6 media-libs/fontconfig )
 		libcaca? ( >=media-libs/libcaca-0.99_beta14 )
-		libnotify? ( x11-libs/libnotify )
+		libnotify? ( x11-libs/libnotify x11-libs/gtk+:2 )
 		libproxy? ( net-libs/libproxy )
 		libtiger? ( media-libs/libtiger )
+		linsys? ( >=media-libs/zvbi-0.2.28 )
 		lirc? ( app-misc/lirc )
 		live? ( >=media-plugins/live-2010.10.15 )
 		lua? ( >=dev-lang/lua-5.1 )
@@ -99,23 +101,17 @@ RDEPEND="
 		musepack? ( >=media-sound/musepack-tools-444 )
 		ncurses? ( sys-libs/ncurses )
 		ogg? ( media-libs/libogg )
-		opengl? ( virtual/opengl || ( <x11-libs/libX11-1.3.99.901[xcb] >=x11-libs/libX11-1.3.99.901 ) )
+		opengl? ( virtual/opengl || ( >=x11-libs/libX11-1.3.99.901 <x11-libs/libX11-1.3.99.901[xcb] ) )
 		png? ( media-libs/libpng sys-libs/zlib )
 		projectm? ( media-libs/libprojectm )
 		pulseaudio? ( >=media-sound/pulseaudio-0.9.22 )
-		qt4? ( x11-libs/qt-gui:4 x11-libs/qt-core:4 x11-libs/libX11 )
-		remoteosd? ( >=dev-libs/libgcrypt-1.2.0 )
+		qt4? ( x11-libs/qt-gui:4 x11-libs/qt-core:4 )
 		samba? ( || ( >=net-fs/samba-3.4.6[smbclient] <net-fs/samba-3.4 ) )
 		schroedinger? ( >=media-libs/schroedinger-1.0.6 )
 		sdl? ( >=media-libs/libsdl-1.2.8
 			sdl-image? ( media-libs/sdl-image sys-libs/zlib	) )
 		shout? ( media-libs/libshout )
 		sid? ( media-libs/libsidplay:2 )
-		skins? (
-				x11-libs/qt-gui:4 x11-libs/qt-core:4
-				x11-libs/libXext x11-libs/libX11
-				media-libs/freetype media-fonts/dejavu
-			   )
 		speex? ( media-libs/speex )
 		sqlite? ( >=dev-db/sqlite-3.6.0:3 )
 		svg? ( >=gnome-base/librsvg-2.9.0 )
@@ -125,8 +121,8 @@ RDEPEND="
 		twolame? ( media-sound/twolame )
 		udev? ( >=sys-fs/udev-142 )
 		upnp? ( net-libs/libupnp )
-		v4l2? ( libv4l2? ( media-libs/libv4l ) )
-		vaapi? ( x11-libs/libva >=media-video/ffmpeg-0.6 )
+		libv4l2? ( media-libs/libv4l )
+		vaapi? ( x11-libs/libva )
 		vcdx? ( >=dev-libs/libcdio-0.78.2 >=media-video/vcdimager-0.7.22 )
 		vorbis? ( media-libs/libvorbis )
 		win32codecs? ( media-libs/win32codecs )
@@ -147,46 +143,22 @@ DEPEND="${RDEPEND}
 	xcb? ( x11-proto/xproto )
 	dev-util/pkgconfig"
 
+REQUIRED_USE="
+	bidi? ( truetype )
+	cddb? ( cdda )
+	dvb? ( dvbpsi )
+	fontconfig? ( truetype )
+	gnutls? ( gcrypt )
+	libtiger? ( kate )
+	libv4l2? ( v4l2 )
+	qt4? ( X )
+	skins? ( truetype qt4 )
+	vaapi? ( ffmpeg )
+	vlm? ( encode )
+	xv? ( xcb )
+"
+
 S="${WORKDIR}/${MY_P}"
-
-# Displays a warning if the first use flag is set but the second is not
-vlc_use_needs() {
-	use $1 && use !$2 && ewarn "USE=$1 requires $2, $1 will be disabled."
-}
-
-# Notify the user that some useflag have been forced on
-vlc_use_force() {
-	use $1 && use !$2 && ewarn "USE=$1 requires $2, $2 will be enabled."
-}
-
-# Use when $1 depends strictly on $2
-# if use $1 then enable $2
-vlc_use_enable_force() {
-	use $1 && echo "--enable-$2"
-}
-
-pkg_setup() {
-	# Useflags we need to forcefuly enable
-	vlc_use_force remoteosd gcrypt
-	vlc_use_force gnutls gcrypt
-	vlc_use_force skins truetype
-	vlc_use_force skins qt4
-	vlc_use_force vlm stream
-	vlc_use_force vaapi ffmpeg
-
-	# Useflags that will be automagically discarded if deps are not met
-	vlc_use_needs bidi truetype
-	vlc_use_needs cddb cdda
-	vlc_use_needs fontconfig truetype
-	vlc_use_needs libv4l2 v4l2
-	vlc_use_needs libtiger kate
-	vlc_use_needs xv xcb
-
-	if use !qt4 && use !skins ; then
-		ewarn "You have disabled the qt4 useflag, ${PN} will not have any"
-		ewarn "graphical interface. Maybe that is not what you want..."
-	fi
-}
 
 src_unpack() {
 	unpack ${A}
@@ -207,10 +179,6 @@ src_prepare() {
 }
 
 src_configure() {
-
-	# It would fail if -fforce-addr is used due to too few registers...
-	use x86 && filter-flags -fforce-addr
-
 	# needs libresid-builder from libsidplay:2 which is in another directory...
 	# FIXME!
 	use sid && append-ldflags "-L/usr/$(get_libdir)/sidplay/builders/"
@@ -224,7 +192,9 @@ src_configure() {
 		$(use_enable altivec) \
 		$(use_enable atmo) \
 		$(use_enable avahi bonjour) \
+		$(use_enable bda) \
 		$(use_enable bidi fribidi) \
+		$(use_enable bluray) \
 		$(use_enable cdda vcd) \
 		$(use_enable cddb libcddb) \
 		$(use_enable dbus) $(use_enable dbus dbus-control) \
@@ -232,9 +202,12 @@ src_configure() {
 		$(use_enable directfb) \
 		$(use_enable dc1394) \
 		$(use_enable debug) \
+		$(use_enable dshow) \
 		$(use_enable dts dca) \
 		$(use_enable dvb) \
+		$(use_enable dvbpsi) \
 		$(use_enable dvd dvdread) $(use_enable dvd dvdnav) \
+		$(use_enable encode sout) \
 		$(use_enable fbcon fb) \
 		$(use_enable ffmpeg avcodec) $(use_enable ffmpeg avformat) $(use_enable ffmpeg swscale) $(use_enable ffmpeg postproc) \
 		$(use_enable flac) \
@@ -243,6 +216,7 @@ src_configure() {
 		$(use_enable gme) \
 		$(use_enable gnome gnomevfs) \
 		$(use_enable gnutls) \
+		$(use_enable growl) \
 		$(use_enable httpd) \
 		$(use_enable ieee1394 dv) \
 		$(use_enable jack) \
@@ -256,6 +230,7 @@ src_configure() {
 		--disable-libtar \
 		$(use_enable libtiger tiger) \
 		$(use_enable libv4l2) \
+		$(use_enable linsys) \
 		$(use_enable lirc) \
 		$(use_enable live live555) \
 		$(use_enable lua) \
@@ -268,6 +243,7 @@ src_configure() {
 		$(use_enable musepack mpc) \
 		$(use_enable ncurses) \
 		$(use_enable ogg) \
+		$(use_enable omxil) \
 		$(use_enable opengl glx) \
 		$(use_enable optimisememory optimize-memory) \
 		$(use_enable oss) \
@@ -277,7 +253,6 @@ src_configure() {
 		$(use_enable pulseaudio pulse) \
 		$(use_enable pvr) \
 		$(use_enable qt4) \
-		$(use_enable remoteosd) \
 		$(use_enable rtsp realrtsp) \
 		$(use_enable run-as-root) \
 		$(use_enable samba smb) \
@@ -291,7 +266,6 @@ src_configure() {
 		$(use_enable speex) \
 		$(use_enable sqlite) \
 		$(use_enable sse) \
-		$(use_enable stream sout) \
 		$(use_enable svg) \
 		$(use_enable taglib) \
 		$(use_enable theora) \
@@ -314,15 +288,8 @@ src_configure() {
 		$(use_enable xv xvideo) \
 		$(use_enable zvbi) $(use_enable !zvbi telx) \
 		--disable-snapshot \
-		--disable-growl \
 		--disable-optimizations \
-		--enable-fast-install \
-		$(vlc_use_enable_force vlm sout) \
-		$(vlc_use_enable_force skins qt4) \
-		$(vlc_use_enable_force skins freetype) \
-		$(vlc_use_enable_force remoteosd libgcrypt) \
-		$(vlc_use_enable_force gnutls libgcrypt) \
-		$(vlc_use_enable_force vaapi avcodec)
+		--enable-fast-install
 }
 
 src_install() {
@@ -336,8 +303,6 @@ src_install() {
 }
 
 pkg_postinst() {
-	gnome2_pkg_postinst
-
 	if [ "$ROOT" = "/" ] && [ -x "/usr/$(get_libdir)/vlc/vlc-cache-gen" ] ; then
 		einfo "Running /usr/$(get_libdir)/vlc/vlc-cache-gen on /usr/$(get_libdir)/vlc/plugins/"
 		"/usr/$(get_libdir)/vlc/vlc-cache-gen" -f "/usr/$(get_libdir)/vlc/plugins/"

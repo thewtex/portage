@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/base/package.use.mask,v 1.195 2011/02/13 12:51:10 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/base/package.use.mask,v 1.198 2011/02/16 18:30:31 aballier Exp $
 
 # This file requires >=portage-2.1.1
 # New entries go on top.
@@ -240,10 +240,6 @@ media-video/mplayer cpudetection custom-cpuopts bindist vdpau
 # Unmask internal real player codec support on newer mplayer
 >=media-video/mplayer-1.0_rc2_p20090226 -real
 
-# Alexis Ballier <aballier@gentoo.org> (07 Jul 2009)
-# The pda interface doesnt build, bug #277037
->=media-video/vlc-1.0.0 pda
-
 # Arun Raghavan <ford_prefect@gentoo.org> (19 Nov 2010)
 # Mart Raudsepp <leio@gentoo.org> (27 Dec 2010)
 # Arun Raghavan <ford_prefect@gentoo.org> (30 Jan 2011)
@@ -251,3 +247,7 @@ media-video/mplayer cpudetection custom-cpuopts bindist vdpau
 >=media-libs/gst-plugins-base-0.10.30 orc
 >=media-plugins/gst-plugins-a52dec-0.10.16 orc
 >=media-plugins/gst-plugins-ffmpeg-0.10.11 orc
+
+# Alexis Ballier <aballier@gentoo.org> <16 Feb 2011>
+# Win32 specific useflags for vlc. Can be used for cross-compiling.
+media-video/vlc dshow bda dxva2

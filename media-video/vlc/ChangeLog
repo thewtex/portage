@@ -1,6 +1,50 @@
 # ChangeLog for media-video/vlc
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/vlc/ChangeLog,v 1.661 2011/02/14 11:55:11 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/vlc/ChangeLog,v 1.672 2011/02/16 18:28:20 aballier Exp $
+
+  16 Feb 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild,
+  metadata.xml:
+  add omxil useflag
+
+  16 Feb 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild,
+  metadata.xml:
+  Allow to build without dvbpsi
+
+  16 Feb 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild,
+  metadata.xml:
+  Add bluray useflag
+
+  16 Feb 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild,
+  metadata.xml:
+  Add dshow and bda useflags (win32 only)
+
+  16 Feb 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild,
+  metadata.xml:
+  Add linsys useflag
+
+  16 Feb 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild,
+  metadata.xml:
+  Add growl useflag for growl notification support (over UDP for remote access
+  and native on OSX)
+
+  16 Feb 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  libnotify plugin requires gtk+-2.0
+
+  16 Feb 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  Rename the stream useflag to encode and enable it by default which makes more
+  sense.
+
+  16 Feb 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  Remove the babysitting line for the qt4 gui, it is well known these days that
+  vlc has a qt4 gui, remove the flag filtering for x86, gcc should be fixed
+  instead.
+
+  16 Feb 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  Convert to EAPI-4, make use of REQUIRED_USE, simplify and remove useless
+  eclass inherits.
+
+  16 Feb 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  remoteosd is now controlled by the gcrypt useflag
 
   14 Feb 2011; Alexis Ballier <aballier@gentoo.org> -vlc-1.1.4.ebuild,
   -vlc-1.1.4.1.ebuild, -vlc-1.1.5.ebuild, -vlc-1.1.6.ebuild:
