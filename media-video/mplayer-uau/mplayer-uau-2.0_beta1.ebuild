@@ -84,7 +84,7 @@ RDEPEND+="
 	a52? ( media-libs/a52dec )
 	aalib? ( media-libs/aalib )
 	alsa? ( media-libs/alsa-lib )
-	ass? ( ${FONT_RDEPS} >=media-libs/libass-0.9.10[enca?] )
+	ass? ( ${FONT_RDEPS} >=media-libs/libass-0.9.10[enca?,fontconfig] )
 	bidi? ( dev-libs/fribidi )
 	bluray? ( media-libs/libbluray )
 	bs2b? ( media-libs/libbs2b )
@@ -277,47 +277,47 @@ src_prepare() {
 		# Set GIT version manually
 		pushd mplayer
 		echo "GIT-r$(git rev-list HEAD|wc -l)-$(git describe --always)" \
-			> VERSION || die "set vesrion failed"
+			> VERSION || die
 		popd
 	fi
 
 	# remove internal libs and use system:
 	sed -e '/^mplayer: /s/libass//' \
-		-i Makefile || die "sed failed"
+		-i Makefile || die
 	rm -rf \
 		libass \
 		mplayer/libdvdcss \
 		|| die
 
 	if use system-ffmpeg; then
-		sed -e '/^mplayer: /s/ffmpeg//' -i Makefile || die "sed failed"
+		sed -e '/^mplayer: /s/ffmpeg//' \
+			-i Makefile || die
+		rm -rf ffmpeg-mt || die
 	else
-		touch ffmpeg-mt-enabled || die "enable-mt failed"
-		rm -rf ffmpeg || die
 		sed -i \
 			-e "/'--cpu=host',/d" \
 			-e "/'--disable-debug',/d" \
 			-e "/'--enable-pthreads',/d" \
-			script/ffmpeg-config || die "sed failed"
+			script/ffmpeg-config || die
 	fi
 
 	# fix path to bash executable in configure scripts
+	local bash_scripts="mplayer/configure mplayer/version.sh"
+	use system-ffmpeg || bash_scripts+=" ffmpeg*/configure ffmpeg*/version.sh"
 	sed -i -e "1c\#!${EPREFIX}/bin/bash" \
-		ffmpeg*/configure ffmpeg*/version.sh \
-		mplayer/configure mplayer/version.sh \
-		|| ewarn
+		${bash_scripts} || die
 
 	# We want mplayer${namesuf}
 	if [[ "${namesuf}" != "" ]]; then
 		pushd mplayer
 		sed -e "/elif linux ; then/a\  _exesuf=\"${namesuf}\"" \
-			-i configure || die "sed configure failed"
+			-i configure || die
 		sed -e "/ -m 644 DOCS\/man\/en\/mplayer/i\	mv DOCS\/man\/en\/mplayer.1 DOCS\/man\/en\/mplayer${namesuf}.1" \
 			-e "/ -m 644 DOCS\/man\/\$(lang)\/mplayer/i\	mv DOCS\/man\/\$(lang)\/mplayer.1 DOCS\/man\/\$(lang)\/mplayer${namesuf}.1" \
 			-e "s/er.1/er${namesuf}.1/g" \
-			-i Makefile || die "sed Makefile failed"
+			-i Makefile || die
 		sed -e "s/mplayer/mplayer${namesuf}/" \
-			-i TOOLS/midentify.sh || die "sed midentify failed"
+			-i TOOLS/midentify.sh || die
 		popd
 	fi
 
@@ -741,7 +741,7 @@ src_configure() {
 		-e 's/\t//g' \
 		-e 's/ --/\n--/g' \
 		-e '/^$/d' \
-		*_options || die "sed *_options failed"
+		*_options || die
 }
 
 src_compile() {

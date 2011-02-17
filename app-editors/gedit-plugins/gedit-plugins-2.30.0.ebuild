@@ -1,9 +1,11 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/gedit-plugins/gedit-plugins-2.30.0.ebuild,v 1.1 2010/06/18 13:10:29 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-editors/gedit-plugins/gedit-plugins-2.30.0.ebuild,v 1.3 2011/01/23 23:17:48 eva Exp $
 
 EAPI="2"
 GCONF_DEBUG="no"
+PYTHON_DEPEND="session? 2"
+PYTHON_USE_WITH_OPT="session? xml"
 
 inherit gnome2 multilib python eutils
 
@@ -16,21 +18,19 @@ SLOT="0"
 
 IUSE="bookmarks +bracketcompletion charmap colorpicker +drawspaces +joinlines python +session showtabbar smartspaces terminal"
 
-RDEPEND=">=x11-libs/gtk+-2.14
+RDEPEND=">=x11-libs/gtk+-2.14:2
 		gnome-base/gconf
-		>=x11-libs/gtksourceview-2.6
+		>=x11-libs/gtksourceview-2.6:2.0
 		>=app-editors/gedit-2.29.3[python]
-		>=dev-python/pygtk-2.14
+		>=dev-python/pygtk-2.14:2
 		charmap? (
 			>=gnome-extra/gucharmap-2.24.3
 		)
-		session? (
-			dev-lang/python[xml]
-		)
 		python? (
-			>=dev-python/pygtksourceview-2.2.0
+			>=dev-python/pygtksourceview-2.2:2
 		)
 		terminal? (
+			dev-python/gconf-python
 			>=x11-libs/vte-0.19.4[python]
 		)"
 DEPEND="${RDEPEND}
@@ -54,6 +54,8 @@ pkg_setup() {
 		--disable-dependency-tracking
 		--with-plugins=${myplugins}
 		$(use_enable python)"
+
+	python_set_active_version 2
 }
 
 src_prepare() {
