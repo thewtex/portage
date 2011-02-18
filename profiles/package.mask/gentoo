@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12469 2011/02/17 18:46:35 olemarkus Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12474 2011/02/18 16:15:47 vadimk Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,22 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Vadim Kuznetsov <vadimk@gentoo.org> (18 Feb 2011)
+# Upstream EOS Reached. Masked for removal 
+# in 30 days.
+# Bug #354383 
+=app-emulation/vmware-workstation-5.5.9.126128
+
+# Pawel Hajdan jr <phajdan.jr@gentoo.org> (18 Feb 2011)
+# Dev channel releases are only for people who are developers or want more
+# experimental features and accept a more unstable release.
+>=www-client/chromium-11
+
+# Pawel Hajdan jr <phajdan.jr@gentoo.org> (18 Feb 2011)
+# Mask v8 versions used for www-client/chromium dev channel releases.
+# Currently v8-3.1 versions are used for chromium-11.x versions.
+>=dev-lang/v8-3.1
 
 # Ole Markus With <olemarkus@gentoo.org> (17 Feb 2011)
 # Only a release candidate, so masked for now
@@ -67,6 +83,16 @@ app-emulation/vmware-gsx-console
 <x11-libs/libXtst-1.1.0
 <x11-libs/libfontenc-1.1.0
 <x11-libs/libxcb-1.7
+=x11-drivers/nvidia-drivers-256.44
+=x11-drivers/nvidia-drivers-195.36.31
+=x11-drivers/nvidia-drivers-195.36.24
+=x11-drivers/nvidia-drivers-190.53-r1
+=x11-drivers/nvidia-drivers-173.14.27
+=x11-drivers/nvidia-drivers-173.14.25
+=x11-drivers/nvidia-drivers-96.43.18
+=x11-drivers/nvidia-drivers-96.43.16
+=x11-drivers/ati-drivers-10.9-r1
+=x11-drivers/ati-drivers-10.8
 
 # Samuli Suominen <ssuominen@gentoo.org> (15 Feb 2011)
 # Upstream discontinued qbankmanager. Use kmymoney or gnucash
@@ -456,11 +482,6 @@ dev-util/devel-chroots
 # Upstream it not dead, but package needs cabal adoption
 # to be maintainable.
 dev-haskell/hsshellscript
-
-# Pawel Hajdan jr <phajdan.jr@gentoo.org> (17 Dec 2010)
-# Mask v8 versions used for www-client/chromium dev channel releases.
-# Currently v8-3.0 versions are used for chromium-10.x versions.
->=dev-lang/v8-3.0
 
 # Tiziano Müller <dev-zero@gentoo.org> (13 Dec 2010)
 # Mask for testing the passenger-3.0.1 module
@@ -864,13 +885,6 @@ sys-libs/ss
 # since long time included in media-tv/gentoo-vdr-scripts
 media-tv/vdr-dvd-scripts
 media-tv/vdrplugin-rebuild
-
-# Pawel Hajdan jr <phajdan.jr@gentoo.org> (07 Jan 2010)
-# Dev channel releases are only for people who are developers or want more
-# experimental features and accept a more unstable release.
-~www-client/chromium-10.0.648.18
-~www-client/chromium-10.0.648.45
-~www-client/chromium-10.0.648.82
 
 # Christian Parpart <trapni@gentoo.org> (23 Dec 2009)
 # Masked for testing/feedback.
