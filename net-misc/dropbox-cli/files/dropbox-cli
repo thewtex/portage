@@ -1,7 +1,0 @@
-#!/bin/sh
-
-DISPLAY=''
-workdir="$(dirname $(readlink -f $0))"
-LD_LIBRARY_PATH="${workdir}:${LD_LIBRARY_PATH}"
-exec ${workdir}/dropbox $@
-
