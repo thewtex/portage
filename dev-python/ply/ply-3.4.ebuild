@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/ply/ply-3.3.ebuild,v 1.4 2010/11/01 20:35:22 arfrever Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/ply/ply-3.4.ebuild,v 1.1 2011/02/18 18:37:01 arfrever Exp $
 
 EAPI="3"
 SUPPORT_PYTHON_ABIS="1"
@@ -16,12 +16,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~ia64 ~ppc ~x86"
 IUSE="examples"
 
-DOCS="ANNOUNCE CHANGES"
+DEPEND=""
+RDEPEND=""
 
-src_prepare() {
-	distutils_src_prepare
-	sed -e "s/print repr(result)/print(repr(result))/" -i test/testyacc.py || die "sed failed"
-}
+DOCS="ANNOUNCE CHANGES README TODO"
 
 src_test() {
 	python_enable_pyc
@@ -49,10 +47,10 @@ src_test() {
 src_install() {
 	distutils_src_install
 
-	dohtml doc/*
+	dohtml doc/* || die "dohtml failed"
 
 	if use examples; then
-		insinto /usr/share/doc/${PF}
-		doins -r example || die "doins failed"
+		insinto /usr/share/doc/${PF}/examples
+		doins -r example/* || die "doins failed"
 	fi
 }
