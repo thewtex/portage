@@ -1,10 +1,25 @@
 # ChangeLog for profile directory
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.5066 2011/02/21 13:07:34 arfrever Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.5070 2011/02/22 05:13:03 darkside Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  22 Feb 2011; Jeremy Olexa <darkside@gentoo.org> package.mask:
+  p.mask yafc, atftp, gwydion-dylan for removal in 60 days
+
+  21 Feb 2011; Gilles Dartiguelongue <eva@gentoo.org> package.mask:
+  Add gupnp-dlna-0.5.1 mask due to unsatisfied dependencies.
+
+  21 Feb 2011; Anthony G. Basile <blueness@gentoo.org>
+  hardened/linux/amd64/parent, hardened/linux/ia64/parent,
+  hardened/linux/powerpc/parent, hardened/linux/powerpc/ppc32/parent,
+  hardened/linux/powerpc/ppc64/parent, hardened/linux/x86/parent:
+  Reordered profile stacking to fix USE="-unicode" on hardened profiles.
+
+  21 Feb 2011; Markos Chandras <hwoarang@gentoo.org> package.mask:
+  Masking x11-misc/talika for removal. Bug #355901
 
   21 Feb 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
   package.mask:
