@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/asciidoc/asciidoc-9999.ebuild,v 1.1 2010/11/14 19:28:43 sping Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/asciidoc/asciidoc-9999.ebuild,v 1.2 2011/02/22 07:40:40 sping Exp $
 
 EAPI="3"
 
@@ -24,14 +24,20 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="examples vim-syntax"
+IUSE="examples test vim-syntax"
 
 RDEPEND=">=app-text/docbook-xsl-stylesheets-1.75
 		dev-libs/libxslt
 		media-gfx/graphviz
 		app-text/docbook-xml-dtd:4.5
 "
-DEPEND=""
+DEPEND="test? ( dev-util/source-highlight
+			media-sound/lilypond
+			media-gfx/imagemagick
+			dev-texlive/texlive-latex
+			app-text/dvipng
+			media-gfx/graphviz )
+"
 
 if [ "$PV" == "9999" ]; then
 	DEPEND="${DEPEND}
@@ -91,4 +97,10 @@ src_install() {
 
 	dodoc BUGS CHANGELOG README docbook-xsl/asciidoc-docbook-xsl.txt \
 			dblatex/dblatex-readme.txt filters/code/code-filter-readme.txt || die
+}
+
+src_test() {
+	cd tests || die
+	ASCIIDOC_PY=../asciidoc.py "$(PYTHON)" test${PN}.py update || die
+	ASCIIDOC_PY=../asciidoc.py "$(PYTHON)" test${PN}.py run || die
 }
