@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-boot/grub-static/grub-static-0.97-r10.ebuild,v 1.4 2011/02/21 19:46:16 hwoarang Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-boot/grub-static/grub-static-0.97-r10.ebuild,v 1.6 2011/02/24 09:25:11 robbat2 Exp $
 
 # XXX: we need to review menu.lst vs grub.conf handling.  We've been converting
 #      all systems to grub.conf (and symlinking menu.lst to grub.conf), but
@@ -39,7 +39,9 @@ pkg_setup() {
 
 src_install() {
 	cp -a "${WORKDIR}"/* "${D}"/
-	run_test_grub "${D}"/sbin/grub && einfo "New grub can run on your system, good!"
+	if [[ -z "${I_KNOW_WHAT_I_AM_DOING}" ]]; then
+		run_test_grub "${D}"/sbin/grub && einfo "New grub can run on your system, good!"
+	fi
 }
 
 run_test_grub() {
@@ -62,7 +64,9 @@ setup_boot_dir() {
 	local boot_dir=$1
 	local dir=${boot_dir}
 
-	run_test_grub /sbin/grub
+	if [[ -z "${I_KNOW_WHAT_I_AM_DOING}" ]]; then
+		run_test_grub /sbin/grub
+	fi
 
 	mkdir -p "${dir}"
 	[[ ! -L ${dir}/boot ]] && ln -s . "${dir}/boot"
