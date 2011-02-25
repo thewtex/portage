@@ -1,10 +1,10 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/luakit/luakit-9999.ebuild,v 1.12 2011/02/14 07:49:34 wired Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/luakit/luakit-9999.ebuild,v 1.14 2011/02/25 15:35:22 wired Exp $
 
 EAPI=3
 
-IUSE="helpers vim-syntax"
+IUSE="vim-syntax"
 
 if [[ ${PV} == *9999* ]]; then
 	inherit git
@@ -15,8 +15,9 @@ if [[ ${PV} == *9999* ]]; then
 	SRC_URI=""
 else
 	inherit base
+	MY_PV="${PV/_p/-r}"
 	KEYWORDS="~amd64 ~x86"
-	SRC_URI="http://github.com/mason-larobina/${PN}/tarball/${PV} -> ${P}.tar.gz"
+	SRC_URI="http://github.com/mason-larobina/${PN}/tarball/${MY_PV} -> ${P}.tar.gz"
 fi
 
 DESCRIPTION="fast, small, webkit-gtk based micro-browser extensible by lua"
@@ -26,6 +27,7 @@ LICENSE="GPL-3"
 SLOT="0"
 
 COMMON_DEPEND="
+	dev-db/sqlite:3
 	>=dev-lang/lua-5.1
 	dev-libs/glib:2
 	net-libs/libsoup
@@ -34,6 +36,7 @@ COMMON_DEPEND="
 "
 
 DEPEND="
+	dev-util/pkgconfig
 	sys-apps/help2man
 	${COMMON_DEPEND}
 "
@@ -41,9 +44,6 @@ DEPEND="
 RDEPEND="
 	${COMMON_DEPEND}
 	dev-lua/luafilesystem
-	helpers? (
-		x11-misc/dmenu
-	)
 	vim-syntax? ( || ( app-editors/vim app-editors/gvim ) )
 "
 
@@ -59,9 +59,9 @@ src_prepare() {
 
 src_compile() {
 	if [[ ${PV} == *9999* ]]; then
-		emake PREFIX="/usr"
+		emake PREFIX="/usr" DEVELOPMENT_PATHS=0
 	else
-		emake PREFIX="/usr" VERSION="${PV}"
+		emake PREFIX="/usr" VERSION="${PV}" DEVELOPMENT_PATHS=0
 	fi
 }
 
