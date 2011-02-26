@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/link-grammar/link-grammar-4.7.2.ebuild,v 1.3 2011/02/24 20:49:23 tomka Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/link-grammar/link-grammar-4.7.2.ebuild,v 1.4 2011/02/26 11:41:38 pacho Exp $
 
 EAPI="3"
 
@@ -8,7 +8,7 @@ inherit java-pkg-opt-2
 
 DESCRIPTION="Link Grammar Parser is a syntactic English parser based on
 link grammar."
-HOMEPAGE="http://www.link.cs.cmu.edu/link/"
+HOMEPAGE="http://www.abisource.com/projects/link-grammar/ http://www.link.cs.cmu.edu/link/"
 SRC_URI="http://www.abisource.com/downloads/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="as-is"
@@ -33,14 +33,17 @@ pkg_setup() {
 }
 
 src_configure() {
+	local myconf
+
+	use hunspell && myconf="${myconf} --with-hunspell-dictdir=/usr/share/myspell"
 	econf \
 		--enable-shared \
 		$(use_enable aspell) \
 		$(use_enable hunspell) \
-		$(use_with hunspell hunspell-dictdir=/usr/share/myspell) \
 		$(use_enable java java-bindings) \
 		$(use_enable static-libs static) \
-		$(use_enable threads pthreads)
+		$(use_enable threads pthreads) \
+		${myconf}
 }
 
 src_install() {

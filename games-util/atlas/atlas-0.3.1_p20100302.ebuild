@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-util/atlas/atlas-0.3.1_p20100302.ebuild,v 1.6 2010/10/14 20:26:06 ranger Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-util/atlas/atlas-0.3.1_p20100302.ebuild,v 1.8 2011/02/26 16:55:11 signals Exp $
 
 EAPI=2
 inherit autotools flag-o-matic games
@@ -11,13 +11,13 @@ SRC_URI="mirror://gentoo/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ppc ~sparc x86"
+KEYWORDS="~amd64 ppc x86"
 IUSE=""
 
 # broken, 315409
 DEPEND="=games-simulation/flightgear-1.9*
 	media-libs/libpng
-	media-libs/jpeg:0
+	virtual/jpeg
 	x11-libs/libX11
 	x11-libs/libXext
 	x11-libs/libXi
