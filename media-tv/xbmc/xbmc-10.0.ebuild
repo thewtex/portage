@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-tv/xbmc/xbmc-10.0.ebuild,v 1.5 2011/02/06 07:27:15 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-tv/xbmc/xbmc-10.0.ebuild,v 1.7 2011/02/26 00:50:21 vapier Exp $
 
 EAPI="2"
 
@@ -24,14 +24,13 @@ HOMEPAGE="http://xbmc.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="alsa altivec avahi css debug hal joystick midi profile pulseaudio rtmp sse sse2 vaapi vdpau webserver xrandr"
+IUSE="alsa altivec avahi css debug hal joystick midi profile pulseaudio rtmp sse sse2 vaapi vdpau webserver +xrandr"
 
 RDEPEND="virtual/opengl
 	app-arch/bzip2
 	app-arch/unzip
 	app-arch/zip
 	app-i18n/enca
-	>=dev-lang/python-2.4
 	dev-libs/boost
 	dev-libs/fribidi
 	dev-libs/libcdio[-minimal]
@@ -164,6 +163,7 @@ src_configure() {
 		--disable-ccache \
 		--disable-optimizations \
 		--enable-external-libraries \
+		--disable-external-python \
 		--enable-goom \
 		--enable-gl \
 		--disable-liba52 \

@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/farsight2/farsight2-0.0.20.ebuild,v 1.7 2011/02/22 19:41:53 tomka Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/farsight2/farsight2-0.0.20.ebuild,v 1.8 2011/02/25 22:13:14 nirbheek Exp $
 
 EAPI="2"
 PYTHON_DEPEND="2"
@@ -23,6 +23,7 @@ COMMONDEPEND=">=media-libs/gstreamer-0.10.26
 	>=media-libs/gst-plugins-base-0.10.26
 	>=dev-libs/glib-2.16:2
 	>=net-libs/libnice-0.0.9[gstreamer]
+	<net-libs/libnice-0.1.0
 	python? (
 		>=dev-python/pygobject-2.16:2
 		>=dev-python/gst-python-0.10.10 )
