@@ -996,7 +996,6 @@ dev-libs/atk:introspection - Use dev-libs/gobject-introspection for introspectio
 dev-libs/boolstuff:static - Enable static linking
 dev-libs/boost:eselect - Run "eselect boost update" even if version is already selected
 dev-libs/boost:tools - Build and install the boost tools (bcp, quickbook, inspect, wave)
-dev-libs/crypto++:sse3 - Enable optimizations via sse3 assembly code
 dev-libs/cyberjack:fox - Enable installation of x11-libs/fox based fxcyberjack program
 dev-libs/cyberjack:pcsc-lite - Enable installation of sys-apps/pcsc-lite driver
 dev-libs/cyrus-sasl:authdaemond - Enable Courier-IMAP authdaemond's unix socket support (net-mail/courier-imap, mail-mta/courier)
@@ -1725,6 +1724,7 @@ mail-client/nail:net - Enable support for network protocols (POP, IMAP and SMTP)
 mail-client/nail:ssl - If network is enabled, this adds support for S/MIME and SSL/TLS-powered protocols through dev-libs/openssl.
 mail-client/pine:largeterminal - Add support for large terminals by doubling the size of pine's internal display buffer
 mail-client/pine:passfile - Adds support for caching IMAP passwords into a file between sessions
+mail-client/postler:indicate - Enable Messaging Menu support (Ayatana)
 mail-client/squirrelmail:filter - Enable mail-filter/amavisd-new filtering
 mail-client/thunderbird:custom-optimization - Enable user CFLAGS
 mail-client/thunderbird:lightning - Enable calendar support
@@ -2109,7 +2109,6 @@ media-sound/banshee:daap - Build with Daap support
 media-sound/banshee:karma - Build with karma support
 media-sound/banshee:podcast - Build with podcasting support
 media-sound/banshee:web - Enable support for plugins that access web-based services such as Amazon and wikipedia (requires net-libs/webkit-gtk)
-media-sound/banshee:wikipedia - Enable the Wikipedia context pane (require net-libs/webkit-gtk)
 media-sound/banshee:youtube - Enable the Youtube plugin
 media-sound/clementine:ayatana - Build in support for Ayatana notification using the libindicate-qt plugin.
 media-sound/clementine:iphone - Enable support for iPod Touch, iPhone, iPad
@@ -2815,6 +2814,7 @@ net-im/ekg2:oracle - Support logging messages into Oracle database.
 net-im/ekg2:sqlite - Support logging messages into SQLite2 database. If 'sqlite3' is set too, it will be used instead.
 net-im/ekg2:sqlite3 - Support logging messages into SQLite3 database. If 'sqlite' is set too, SQLite3 will be used.
 net-im/ekg2:ssl - Enable the complete SSL/TLS support through OpenSSL. This also enables the 'sim' plugin which relies on OpenSSL.
+net-im/empathy:map - Enable world map support through media-libs/libchamplain.
 net-im/empathy:nautilus - Enable nautilus-sendto support
 net-im/empathy:webkit - Build support for Adium-style HTML-based conversation window themes using net-libs/webkit-gtk
 net-im/gajim:gmail - Depend on net-dns/bind-tools to get gmail chats working
@@ -3529,6 +3529,7 @@ sci-chemistry/pymol:apbs - Install the apbs plugin
 sci-chemistry/pymol:numpy - Compile numpy support
 sci-chemistry/pymol:shaders - Build with Shaders support - good for high-end 3D video cards.
 sci-chemistry/pymol:vmd - Enable vmd module for trajectories
+sci-chemistry/raster3d:gd - libgd support for PNG and JPEG output
 sci-chemistry/shelx:dosformat - Use CR/LF to end lines; useful in mixed Linux/Windows environments
 sci-chemistry/vmd:msms - Add support for MSMS SAS calcualtion tool
 sci-chemistry/vmd:povray - Add support for povray raytracer for HQ images
