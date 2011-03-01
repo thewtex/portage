@@ -1,5 +1,5 @@
-gtk? ( =x11-libs/gtk+-2* ) !gtk? ( x11-libs/libXaw ) dev-util/pkgconfig || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b
-gtk? ( =x11-libs/gtk+-2* ) !gtk? ( x11-libs/libXaw )
+gtk? ( x11-libs/gtk+:2 ) !gtk? ( x11-libs/libXaw ) dev-util/pkgconfig || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b
+gtk? ( x11-libs/gtk+:2 ) !gtk? ( x11-libs/libXaw )
 0
 http://www.xbill.org/download/xbill-2.1.tar.gz
 
@@ -12,9 +12,9 @@ gtk
 
 
 
+2
 
-
-compile install postinst preinst setup unpack
+compile configure install postinst preinst prepare setup unpack
 
 
 
