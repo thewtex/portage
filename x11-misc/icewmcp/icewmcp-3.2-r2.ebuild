@@ -1,7 +1,8 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/icewmcp/icewmcp-3.2-r2.ebuild,v 1.2 2010/07/22 03:47:19 phajdan.jr Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/icewmcp/icewmcp-3.2-r2.ebuild,v 1.4 2011/03/02 18:22:55 signals Exp $
 
+EAPI=2
 PYTHON_DEPEND="2"
 
 inherit python multilib
@@ -20,8 +21,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc x86"
 IUSE=""
 DEPEND="x11-wm/icewm
-		>=dev-python/pygtk-1.99
-		>=x11-libs/gtk+-2.0.0"
+		dev-python/pygtk:2
+		x11-libs/gtk+:2"
 
 pkg_setup() {
 	python_set_active_version 2

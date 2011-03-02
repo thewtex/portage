@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/mplayer/mplayer-9999.ebuild,v 1.92 2011/03/01 15:31:15 scarabeus Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/mplayer/mplayer-9999.ebuild,v 1.93 2011/03/02 16:54:36 scarabeus Exp $
 
 EAPI=4
 
@@ -12,7 +12,7 @@ ESVN_REPO_URI="svn://svn.mplayerhq.hu/mplayer/trunk"
 inherit toolchain-funcs eutils flag-o-matic multilib base ${SVN_ECLASS}
 
 # BUMP ME PLZ, NO COOKIES OTHERWISE
-[[ ${PV} != *9999* ]] && MPLAYER_REVISION=SVN-r32598
+[[ ${PV} != *9999* ]] && MPLAYER_REVISION=SVN-r32999
 
 IUSE="3dnow 3dnowext +a52 aalib +alsa altivec aqua +ass bidi bindist bl bluray
 bs2b cddb +cdio cdparanoia cpudetection custom-cpuopts debug dga +dirac
@@ -633,12 +633,10 @@ src_install() {
 	docinto tech/
 	dodoc DOCS/tech/{*.txt,MAINTAINERS,mpsub.sub,playtree,TODO,wishlist}
 	docinto TOOLS/
-	dodoc TOOLS/*
+	dodoc -r TOOLS/
 	if use real; then
 		docinto tech/realcodecs/
 		dodoc DOCS/tech/realcodecs/*
-		docinto TOOLS/realcodecs/
-		dodoc TOOLS/realcodecs/*
 	fi
 	docinto tech/mirrors/
 	dodoc DOCS/tech/mirrors/*
