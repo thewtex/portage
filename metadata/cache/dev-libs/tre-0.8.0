@@ -1,20 +1,20 @@
-!app-misc/glimpse !app-text/agrep dev-util/pkgconfig nls? ( sys-devel/gettext )
-!app-misc/glimpse !app-text/agrep
+!app-misc/glimpse !app-text/agrep dev-util/pkgconfig nls? ( sys-devel/gettext ) >=app-admin/eselect-python-20091230 =dev-lang/python-2*
+!app-misc/glimpse !app-text/agrep >=app-admin/eselect-python-20091230 =dev-lang/python-2*
 0
 http://laurikari.net/tre/tre-0.8.0.tar.bz2
 
 http://laurikari.net/tre/
 BSD-2
-Lightweight, robust, and efficient POSIX compliant regexp matching library.
+Lightweight, robust, and efficient POSIX compliant regexp matching library
 alpha amd64 hppa ia64 ppc ~ppc64 sparc x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~x86-solaris
-
-nls static-libs
+distutils eutils multilib portability python toolchain-funcs
+nls python static-libs
 
 
 
 2
 
-configure install postinst test
+compile configure install postinst postrm prepare setup test
 
 
 

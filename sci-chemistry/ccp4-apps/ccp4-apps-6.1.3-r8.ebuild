@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/ccp4-apps/ccp4-apps-6.1.3-r8.ebuild,v 1.3 2011/03/02 17:53:22 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/ccp4-apps/ccp4-apps-6.1.3-r8.ebuild,v 1.4 2011/03/04 17:02:15 jlec Exp $
 
 EAPI="3"
 
@@ -133,16 +133,6 @@ src_prepare() {
 	# libraries come from sci-libs/ccp4-libs
 	ccp_patch "${FILESDIR}"/${PV}-dont-build-libs.patch
 
-	# coreutils installs a binary called truncate
-#	ccp_patch "${FILESDIR}"/${PV}-rename-truncate.patch
-#	mv ./doc/truncate.doc ./doc/ftruncate.doc || die
-#	mv ./html/truncate.html ./html/ftruncate.html || die
-
-	# conflicts with media-libs/raptor
-#	ccp_patch "${FILESDIR}"/${PV}-rename-rapper.patch
-#	mv ./doc/rapper.doc ./doc/rappermc.doc || die
-#	mv ./html/rapper.html ./html/rappermc.html || die
-
 	# We have seperate ebuilds for those
 	for bin in molref xia scala imosflm balbes; do
 		ccp_patch "${FILESDIR}"/${PV}-dont-build-${bin}.patch
@@ -162,6 +152,9 @@ src_prepare() {
 
 	# Fix upstreams code
 	ccp_patch "${FILESDIR}"/${PV}-impl-dec.patch
+
+	# Not renaming, but unbundling libs
+	ccp_patch "${FILESDIR}"/${PV}-rename-rapper-ng.patch
 
 	# Update things for oasis 4 usage
 	epatch "${WORKDIR}"/${PV}-oasis4.0.patch
@@ -186,19 +179,7 @@ src_prepare() {
 
 	# Rapper bundles libxml2 and boehm-gc. Don't build, use or install those.
 	pushd src/rapper 2>/dev/null
-	sed -i \
-		-e '/^AC_CONFIG_SUBDIRS(\[gc7.0 libxml2\])/d' \
-		configure.ac
-	sed -i \
-		-e '/^SUBDIRS/s:libxml2 gc7.0::g' \
-		Makefile.am
-	sed -i \
-		-e '/^rapper_LDADD/s:../gc7.0/libgc.la ../libxml2/libxml2.la:-lgc -lxml2:g' \
-		LOOP/Makefile.am
-	sed -i \
-		-e "/^INCLUDES/s:-I../gc7.0/include -I../libxml2/include:-I${EPREFIX}/usr/include/gc -I${EPREFIX}/usr/include/libxml2:g" \
-		LOOP/Makefile.am
-	eautoreconf
+		eautoreconf
 	popd 2>/dev/null
 
 	gnuconfig_update
