@@ -1,13 +1,14 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pyzmq/pyzmq-2.0.10.1.ebuild,v 1.1 2011/03/04 17:27:48 djc Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pyzmq/pyzmq-2.0.10.1.ebuild,v 1.4 2011/03/06 23:10:18 arfrever Exp $
 
 EAPI="3"
-PYTHON_DEPEND="2"
+PYTHON_DEPEND="*:2.5"
 SUPPORT_PYTHON_ABIS="1"
-RESTRICT_PYTHON_ABIS="2.4 3.*"
+RESTRICT_PYTHON_ABIS="2.4 *-jython"
+DISTUTILS_SRC_TEST="nosetests"
 
-inherit distutils
+inherit distutils eutils
 
 DESCRIPTION="PyZMQ is a lightweight and super-fast messaging library built on top of the ZeroMQ library"
 HOMEPAGE="http://www.zeromq.org/bindings:python http://pypi.python.org/pypi/pyzmq"
@@ -18,26 +19,35 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc"
 
-DEPEND="net-libs/zeromq
-		dev-python/setuptools
-		doc? ( >=dev-python/sphinx-0.6 )"
-RDEPEND=""
+RDEPEND="net-libs/zeromq"
+DEPEND="${RDEPEND}
+	dev-python/setuptools
+	doc? ( >=dev-python/sphinx-0.6 )"
 
 DOCS="README.rst"
+PYTHON_MODNAME="zmq"
+
+src_prepare() {
+	distutils_src_prepare
+
+	epatch "${FILESDIR}/${P}-python-2.7.patch"
+	epatch "${FILESDIR}/${P}-python-3.1.patch"
+}
 
 src_compile() {
 	distutils_src_compile
 	if use doc; then
 		einfo "Generation of documentation"
-		cd docs
-		PYTHONPATH=".." emake html || die "Building of documentation failed"
+		pushd docs > /dev/null
+#		PYTHONPATH="$(ls -d ../build-$(PYTHON -f --ABI)/lib.*)" emake html || die "Generation of documentation failed"
+		PYTHONPATH=".." emake html || die "Generation of documentation failed"
+		popd > /dev/null
 	fi
 }
 
 src_test() {
 	testing() {
-		"$(PYTHON)" setup.py build_ext --inplace
-		"$(PYTHON)" setup.py test
+		PYTHONPATH="$(ls -d build-${PYTHON_ABI}/lib.*)" nosetests -sv $(ls -d build-${PYTHON_ABI}/lib.*)
 	}
 	python_execute_function testing
 }
