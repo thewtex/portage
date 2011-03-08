@@ -1,0 +1,22 @@
+purple? ( net-im/pidgin ) libevent? ( dev-libs/libevent ) !libevent? ( >=dev-libs/glib-2.4 ) otr? ( net-libs/libotr ) gnutls? ( net-libs/gnutls ) !gnutls? ( nss? ( dev-libs/nss ) !nss? ( ssl? ( dev-libs/openssl ) ) ) dev-util/pkgconfig test? ( dev-libs/check )
+purple? ( net-im/pidgin ) libevent? ( dev-libs/libevent ) !libevent? ( >=dev-libs/glib-2.4 ) otr? ( net-libs/libotr ) gnutls? ( net-libs/gnutls ) !gnutls? ( nss? ( dev-libs/nss ) !nss? ( ssl? ( dev-libs/openssl ) ) ) virtual/logger xinetd? ( sys-apps/xinetd )
+0
+http://get.bitlbee.org/src/bitlbee-3.0.2.tar.gz
+
+http://www.bitlbee.org/
+GPL-2
+irc to IM gateway that support multiple IM protocols
+~amd64 ~ppc ~x86 ~x86-fbsd
+eutils multilib portability toolchain-funcs
+debug gnutls ipv6 +jabber libevent msn nss +oscar otr +plugins purple ssl test twitter +yahoo xinetd
+^^ ( purple || ( jabber msn oscar yahoo ) ) msn? ( || ( gnutls nss ssl ) ) jabber? ( !nss )
+
+
+4
+
+configure install postinst prepare setup
+
+
+
+
+
