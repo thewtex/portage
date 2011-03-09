@@ -286,7 +286,6 @@ src_prepare() {
 		-i Makefile || die
 	rm -rf \
 		libass \
-		mplayer/libdvdcss \
 		|| die
 
 	if use system-ffmpeg; then

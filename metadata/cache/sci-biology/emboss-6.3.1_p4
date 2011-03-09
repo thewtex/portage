@@ -1,0 +1,22 @@
+dev-libs/expat dev-libs/libpcre:3 sci-libs/plplot sys-libs/zlib mysql? ( dev-db/mysql ) pdf? ( media-libs/libharu ) png? ( sys-libs/zlib media-libs/libpng media-libs/gd ) postgres? ( dev-db/postgresql-base ) !minimal? ( sci-biology/primer3 sci-biology/clustalw ) X? ( x11-libs/libXt ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b
+dev-libs/expat dev-libs/libpcre:3 sci-libs/plplot sys-libs/zlib mysql? ( dev-db/mysql ) pdf? ( media-libs/libharu ) png? ( sys-libs/zlib media-libs/libpng media-libs/gd ) postgres? ( dev-db/postgresql-base ) !minimal? ( sci-biology/primer3 sci-biology/clustalw ) X? ( x11-libs/libXt ) !sys-devel/cons
+0
+ftp://emboss.open-bio.org/pub/EMBOSS/EMBOSS-6.3.1.tar.gz ftp://emboss.open-bio.org/pub/EMBOSS/fixes/patches/patch-1-4.gz -> emboss-6.3.1_p4.patch.gz
+
+http://emboss.sourceforge.net/
+GPL-2 LGPL-2
+The European Molecular Biology Open Software Suite - A sequence analysis package
+~amd64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos
+autotools eutils libtool multilib portability toolchain-funcs
+doc +largefile minimal mysql pdf png postgres static-libs X
+
+!minimal? ( sci-biology/aaindex sci-biology/cutg sci-biology/prints sci-biology/prosite sci-biology/rebase sci-biology/transfac )
+
+4
+
+configure install prepare
+
+
+
+
+
