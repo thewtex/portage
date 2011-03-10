@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/multilib.eclass,v 1.80 2011/03/07 02:46:28 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/multilib.eclass,v 1.84 2011/03/10 05:01:47 vapier Exp $
 
 # @ECLASS: multilib.eclass
 # @MAINTAINER:
@@ -255,9 +255,9 @@ get_all_libdirs() {
 # if we're in the last (or only) run through src_{unpack,compile,install}
 is_final_abi() {
 	has_multilib_profile || return 0
-	local ALL_ABIS=$(get_install_abis)
-	local LAST_ABI=${ALL_ABIS/* /}
-	[[ ${LAST_ABI} == ${ABI} ]]
+	set -- $(get_install_abis)
+	local LAST_ABI=$#
+	[[ ${!LAST_ABI} == ${ABI} ]]
 }
 
 # @FUNCTION: number_abis
@@ -589,8 +589,14 @@ multilib_env() {
 			export CDEFINE_amd64="__x86_64__"
 			export LIBDIR_amd64="lib64"
 
-			export MULTILIB_ABIS="amd64 x86"
-			export DEFAULT_ABI="amd64"
+			export CFLAGS_x32=${CFLAGS_x32--mx32}
+			export CHOST_x32=${CTARGET}
+			export CTARGET_x32=${CHOST_x32}
+			export CDEFINE_x32="__i386__"
+			export LIBDIR_x32="libx32"
+
+			: ${MULTILIB_ABIS=amd64 x86}
+			: ${DEFAULT_ABI=amd64}
 		;;
 		mips64*)
 			export CFLAGS_o32=${CFLAGS_o32--mabi=32}
@@ -611,8 +617,8 @@ multilib_env() {
 			export CDEFINE_n64="_MIPS_SIM == _ABI64"
 			export LIBDIR_n64="lib64"
 
-			export MULTILIB_ABIS="n64 n32 o32"
-			export DEFAULT_ABI="n32"
+			: ${MULTILIB_ABIS=n64 n32 o32}
+			: ${DEFAULT_ABI=n32}
 		;;
 		powerpc64*)
 			export CFLAGS_ppc=${CFLAGS_ppc--m32}
@@ -627,8 +633,8 @@ multilib_env() {
 			export CDEFINE_ppc64="__powerpc64__"
 			export LIBDIR_ppc64="lib64"
 
-			export MULTILIB_ABIS="ppc64 ppc"
-			export DEFAULT_ABI="ppc64"
+			: ${MULTILIB_ABIS=ppc64 ppc}
+			: ${DEFAULT_ABI=ppc64}
 		;;
 		s390x*)
 			export CFLAGS_s390=${CFLAGS_s390--m31} # the 31 is not a typo
@@ -643,8 +649,8 @@ multilib_env() {
 			export CDEFINE_s390x="__s390x__"
 			export LIBDIR_s390x="lib64"
 
-			export MULTILIB_ABIS="s390x s390"
-			export DEFAULT_ABI="s390x"
+			: ${MULTILIB_ABIS=s390x s390}
+			: ${DEFAULT_ABI=s390x}
 		;;
 		sparc*)
 			export CFLAGS_sparc32=${CFLAGS_sparc32}
@@ -659,14 +665,16 @@ multilib_env() {
 			export CDEFINE_sparc64="__arch64__"
 			export LIBDIR_sparc64="lib64"
 
-			export MULTILIB_ABIS="${MULTILIB_ABIS-sparc64 sparc32}"
-			export DEFAULT_ABI="${DEFAULT_ABI-sparc64}"
+			: ${MULTILIB_ABIS=sparc64 sparc32}
+			: ${DEFAULT_ABI=sparc64}
 		;;
 		*)
-			export MULTILIB_ABIS="default"
-			export DEFAULT_ABI="default"
+			: ${MULTILIB_ABIS=default}
+			: ${DEFAULT_ABI=default}
 		;;
 	esac
+
+	export MULTILIB_ABIS DEFAULT_ABI
 }
 
 # @FUNCTION: multilib_toolchain_setup
@@ -678,15 +686,24 @@ multilib_toolchain_setup() {
 
 	export ABI=$1
 
+	# First restore any saved state we have laying around.
+	if [[ ${__DEFAULT_ABI_SAVED} == "true" ]] ; then
+		for v in CHOST CBUILD AS CC CXX LD ; do
+			vv="__abi_saved_${v}"
+			export ${v}="${!vv}"
+			unset ${vv}
+		done
+		unset __DEFAULT_ABI_SAVED
+	fi
+
 	# We want to avoid the behind-the-back magic of gcc-config as it
 	# screws up ccache and distcc.  See #196243 for more info.
 	if [[ ${ABI} != ${DEFAULT_ABI} ]] ; then
-		if [[ ${DEFAULT_ABI_SAVED} != "true" ]] ; then
-			for v in CHOST CBUILD AS CC CXX LD ; do
-				export __abi_saved_${v}="${!v}"
-			done
-			export DEFAULT_ABI_SAVED="true"
-		fi
+		# Back that multilib-ass up so we can restore it later
+		for v in CHOST CBUILD AS CC CXX LD ; do
+			export __abi_saved_${v}="${!v}"
+		done
+		export __DEFAULT_ABI_SAVED="true"
 
 		# Set the CHOST native first so that we pick up the native
 		# toolchain and not a cross-compiler by accident #202811.
@@ -697,11 +714,5 @@ multilib_toolchain_setup() {
 		export LD="$(tc-getLD) $(get_abi_LDFLAGS)"
 		export CHOST=$(get_abi_CHOST $1)
 		export CBUILD=$(get_abi_CHOST $1)
-
-	elif [[ ${DEFAULT_ABI_SAVED} == "true" ]] ; then
-		for v in CHOST CBUILD AS CC CXX LD ; do
-			vv="__abi_saved_${v}"
-			export ${v}="${!vv}"
-		done
 	fi
 }
