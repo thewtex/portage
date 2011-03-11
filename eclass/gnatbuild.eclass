@@ -1,6 +1,6 @@
 # Copyright 1999-2006 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/gnatbuild.eclass,v 1.51 2011/03/10 19:36:24 george Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/gnatbuild.eclass,v 1.50 2010/01/22 13:27:36 george Exp $
 #
 # Author: George Shapovalov <george@gentoo.org>
 # Belongs to: ada herd <ada@gentoo.org>
@@ -14,8 +14,6 @@
 #  SLOT
 #  BOOT_SLOT - where old bootstrap is used as it works fine
 
-#WANT_AUTOMAKE="1.8"
-#WANT_AUTOCONF="2.1"
 
 inherit eutils versionator toolchain-funcs flag-o-matic multilib autotools \
 	libtool fixheadtails gnuconfig pax-utils
@@ -346,10 +344,10 @@ gnatbuild_src_unpack() {
 			# Replacing obsolete head/tail with POSIX compliant ones
 			ht_fix_file */configure
 
-#			if ! is_crosscompile && is_multilib && \
-#				[[ ( $(tc-arch) == "amd64" || $(tc-arch) == "ppc64" ) && -z ${SKIP_MULTILIB_HACK} ]] ; then
-#					disgusting_gcc_multilib_HACK || die "multilib hack failed"
-#			fi
+			if ! is_crosscompile && is_multilib && \
+				[[ ( $(tc-arch) == "amd64" || $(tc-arch) == "ppc64" ) && -z ${SKIP_MULTILIB_HACK} ]] ; then
+					disgusting_gcc_multilib_HACK || die "multilib hack failed"
+			fi
 
 			# Fixup libtool to correctly generate .la files with portage
 			cd "${S}"
@@ -388,12 +386,10 @@ gnatbuild_src_unpack() {
 				epatch "${FILESDIR}"/gnat-Make-lang.in.patch
 			fi
 
-			# gcc 4.3 sources seem to have a common omission of $(DESTDIR),
+			# gcc sources as of 4.3 seem to have a common omission of $(DESTDIR),
 			# that leads to make install trying to rm -f file on live system.
 			# As we do not need this rm, we simply remove the whole line
-			if [ "4.3" == "${GCCBRANCH}" ] ; then
-				sed -i -e "/\$(RM) \$(bindir)/d" "${S}"/gcc/ada/Make-lang.in
-			fi
+			sed -i -e "/\$(RM) \$(bindir)/d" "${S}"/gcc/ada/Make-lang.in
 
 			mkdir -p "${GNATBUILD}"
 		;;
@@ -437,8 +433,6 @@ gnatbuild_src_compile() {
 
 		export CC="${GNATBOOT}/bin/gnatgcc"
 		export INCLUDE_DIR="${GNATLIB}/include"
-		export C_INCLUDE_PATH="${GNATLIB}/include"
-		export CPLUS_INCLUDE_PATH="${GNATLIB}/include"
 		export LIB_DIR="${GNATLIB}"
 		export LDFLAGS="-L${GNATLIB}"
 
@@ -478,31 +472,18 @@ gnatbuild_src_compile() {
 				fi
 
 				# reasonably sane globals (from toolchain)
-				# also disable mudflap and ssp
 				confgcc="${confgcc} \
 					--with-system-zlib \
 					--disable-checking \
 					--disable-werror \
-					--disable-libmudflap \
-					--disable-libssp \
 					--disable-libunwind-exceptions"
 
 				# ACT's gnat-gpl does not like libada for whatever reason..
-				if version_is_at_least 4.2 ; then
-					confgcc="${confgcc} --enable-libada"
-#				else
-#					einfo "ACT's gnat-gpl does not like libada, disabling"
-#					confgcc="${confgcc} --disable-libada"
-				fi
-
-				# set some specifics available in later versions
-				if version_is_at_least 4.3 ; then
-					einfo "setting gnat thread model"
-					confgcc="${confgcc} --enable-threads=gnat"
-					confgcc="${confgcc} --enable-shared=boehm-gc,ada,libada"
+				if [[ ${PN} == ${PN_GnatGpl} ]]; then
+					einfo "ACT's gnat-gpl does not like libada, disabling"
+					confgcc="${confgcc} --disable-libada"
 				else
-					confgcc="${confgcc} --enable-threads=posix"
-					confgcc="${confgcc} --enable-shared"
+					confgcc="${confgcc} --enable-libada"
 				fi
 
 				# multilib support
@@ -512,14 +493,7 @@ gnatbuild_src_compile() {
 					confgcc="${confgcc} --disable-multilib"
 				fi
 
-				# __cxa_atexit is "essential for fully standards-compliant handling of
-				# destructors", but apparently requires glibc.
-				if [[ ${CTARGET} == *-gnu* ]] ; then
-					confgcc="${confgcc} --enable-__cxa_atexit"
-					confgcc="${confgcc} --enable-clocale=gnu"
-				fi
-
-				einfo "confgcc=${confgcc}"
+#				einfo "confgcc=${confgcc}"
 
 				cd "${GNATBUILD}"
 				CFLAGS="${CFLAGS}" CXXFLAGS="${CXXFLAGS}" "${S}"/configure \
@@ -534,6 +508,9 @@ gnatbuild_src_compile() {
 					--program-prefix=gnat \
 					--enable-languages="c,ada" \
 					--with-gcc \
+					--enable-threads=posix \
+					--enable-shared \
+					--with-system-zlib \
 					${confgcc} || die "configure failed"
 			;;
 
@@ -545,7 +522,6 @@ gnatbuild_src_compile() {
 				cp "${S}"/gcc/ada/xsinfo.adb   .
 				cp "${S}"/gcc/ada/xeinfo.adb   .
 				cp "${S}"/gcc/ada/xnmake.adb   .
-				cp "${S}"/gcc/ada/xutil.ad{s,b}   .
 				gnatmake xtreeprs && \
 				gnatmake xsinfo   && \
 				gnatmake xeinfo   && \
@@ -603,16 +579,10 @@ gnatbuild_src_install() {
 		# The spotted obuser was xgnatugn, used to process gnat_ugn_urw.texi,
 		# during preparison of the docs.
 		export PATH="${GNATBOOT}/bin:${PATH}"
-		if [[ ${BOOT_SLOT} > 4.1 ]] ; then
-			GNATLIB="${GNATBOOT}/lib"
-		else
-			GNATLIB="${GNATBOOT}/lib/gnatgcc/${BOOT_TARGET}/${BOOT_SLOT}"
-		fi
+		GNATLIB="${GNATBOOT}/lib/gnatgcc/${BOOT_TARGET}/${BOOT_SLOT}"
 
 		export CC="${GNATBOOT}/bin/gnatgcc"
 		export INCLUDE_DIR="${GNATLIB}/include"
-		export C_INCLUDE_PATH="${GNATLIB}/include"
-		export CPLUS_INCLUDE_PATH="${GNATLIB}/include"
 		export LIB_DIR="${GNATLIB}"
 		export LDFLAGS="-L${GNATLIB}"
 		export ADA_OBJECTS_PATH="${GNATLIB}/adalib"

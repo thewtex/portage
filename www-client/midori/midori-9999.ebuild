@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/midori/midori-9999.ebuild,v 1.27 2011/03/07 13:37:05 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/midori/midori-9999.ebuild,v 1.26 2011/02/05 12:46:32 ssuominen Exp $
 
 EAPI=3
 inherit eutils multilib python xfconf git
@@ -25,7 +25,7 @@ RDEPEND="libnotify? ( x11-libs/libnotify )
 	gnome? ( net-libs/libsoup-gnome )
 	idn? ( net-dns/libidn )
 	unique? ( dev-libs/libunique )
-	vala? ( dev-lang/vala:0.10 )"
+	vala? ( dev-lang/vala:0 )"
 DEPEND="${RDEPEND}
 	|| ( dev-lang/python:2.7 dev-lang/python:2.6 )
 	dev-util/intltool
@@ -36,11 +36,6 @@ DEPEND="${RDEPEND}
 
 pkg_setup() {
 	python_set_active_version 2
-}
-
-src_prepare() {
-	# Make it work with slotted vala versions
-	sed -i -e "s/conf.env, 'valac'/conf.env, 'valac-0.10', var='VALAC'/" wscript || die
 }
 
 src_configure() {

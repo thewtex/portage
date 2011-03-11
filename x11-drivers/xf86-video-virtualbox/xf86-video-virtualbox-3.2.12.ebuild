@@ -1,10 +1,10 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-drivers/xf86-video-virtualbox/xf86-video-virtualbox-3.2.12.ebuild,v 1.5 2011/03/05 19:06:53 arfrever Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-drivers/xf86-video-virtualbox/xf86-video-virtualbox-3.2.12.ebuild,v 1.4 2011/02/03 07:54:36 tomka Exp $
 
 EAPI=2
 
-inherit eutils linux-mod multilib python versionator
+inherit eutils linux-mod multilib versionator
 
 MY_P=VirtualBox-${PV}-OSE
 DESCRIPTION="VirtualBox video driver"
@@ -19,7 +19,6 @@ IUSE="dri"
 RDEPEND="x11-base/xorg-server[-minimal]"
 DEPEND="${RDEPEND}
 		>=dev-util/kbuild-0.1.5-r1
-		=dev-lang/python-2*
 		>=dev-lang/yasm-0.6.2
 		sys-devel/dev86
 		sys-power/iasl
@@ -49,9 +48,6 @@ QA_TEXTRELS_x86="usr/lib/VBoxOGL.so"
 pkg_setup() {
 		linux-mod_pkg_setup
 		BUILD_PARAMS="KERN_DIR=${KV_DIR} KERNOUT=${KV_OUT_DIR}"
-
-		python_set_active_version 2
-		python_pkg_setup
 }
 
 src_prepare() {

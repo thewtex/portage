@@ -1,14 +1,13 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-news/liferea/liferea-1.7.4.ebuild,v 1.3 2011/03/09 18:11:07 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-news/liferea/liferea-1.7.4.ebuild,v 1.2 2011/01/04 17:35:35 vostorga Exp $
 
-EAPI=2
+EAPI="2"
 
-GCONF_DEBUG=no
+inherit gnome2 pax-utils
+GCONF_DEBUG="no"
 
-inherit eutils gnome2 pax-utils
-
-MY_P=${P/_/-}
+MY_P="${P/_/-}"
 
 DESCRIPTION="News Aggregator for RDF/RSS/CDF/Atom/Echo/etc feeds"
 HOMEPAGE="http://liferea.sourceforge.net/"
@@ -37,7 +36,7 @@ DEPEND="${RDEPEND}
 
 DOCS="AUTHORS ChangeLog README"
 
-S=${WORKDIR}/${MY_P}
+S="${WORKDIR}/${MY_P}"
 
 pkg_setup() {
 	G2CONF="${G2CONF}
@@ -46,11 +45,6 @@ pkg_setup() {
 		$(use_enable dbus)
 		$(use_enable networkmanager nm)
 		$(use_enable libnotify)"
-}
-
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-libnotify-0.7.patch
-	gnome2_src_prepare
 }
 
 src_install() {

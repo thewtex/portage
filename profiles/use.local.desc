@@ -425,7 +425,6 @@ app-emulation/vov:gprof - build with profiling support
 app-emulation/wine:capi - Enable ISDN support via CAPI
 app-emulation/wine:custom-cflags - Bypass strip-flags; use are your own peril
 app-emulation/wine:gecko - Add support for the Gecko engine when using iexplore
-app-emulation/wine:mousewarp - Add mouse warp patch -- enable this if you primarily play games (http://bugs.winehq.org/show_bug.cgi?id=6971)
 app-emulation/wine:perl - Install helpers written in perl (winedump/winemaker)
 app-emulation/wine:samba - Add support for NTLM auth. see http://wiki.winehq.org/NtlmAuthSetupGuide and http://wiki.winehq.org/NtlmSigningAndSealing
 app-emulation/wine:win32 - Build a 32bit version of Wine (won't run Win64 binaries)
@@ -508,16 +507,6 @@ app-misc/freemind:latex - Build plugin for inserting mathematical formulas in La
 app-misc/freemind:pdf - Build plugin for exporting mindmaps to SVG and PDF
 app-misc/freemind:svg - Build plugin for exporting mindmaps to SVG and PDF
 app-misc/geneweb:ocamlopt - Enable ocamlopt support (dev-lang/ocaml native code compiler)
-app-misc/geoclue:geonames - Install geonames.org provider
-app-misc/geoclue:gpsd - Install sci-geosciences/gpsd provider
-app-misc/geoclue:gsmloc - Install GSM location provider
-app-misc/geoclue:gtk - Install gtk-based geoclue-test-gui
-app-misc/geoclue:hostip - Install hostip.info provder
-app-misc/geoclue:manual - Install manual provider
-app-misc/geoclue:nominatim - Install openstreetmap.org provider
-app-misc/geoclue:plazes - Install plazes.com provider
-app-misc/geoclue:skyhook - Install skyhookwireless.com provider
-app-misc/geoclue:yahoo-geo - Install Yahoo geolocation provider
 app-misc/gnote:applet - Enable gnote applet for gnome-base/gnome-panel
 app-misc/gourmet:gnome-print - Enable pretty Python printing with gnome-print
 app-misc/gourmet:rtf - Enable export to RTF
@@ -890,10 +879,7 @@ dev-java/gnu-classpath:qt4 - Build with Qt4 AWT peers
 dev-java/gnu-classpath:xml - Build with native XML backend
 dev-java/ibm-jdk-bin:javacomm - Enable Java Communications API support
 dev-java/icedtea:cacao - Use the CACAO virtual machine instead of HotSpot on x86, amd64 or SPARC architectures.
-dev-java/icedtea:hs16 - Use the new version of HotSpot (16).
 dev-java/icedtea:hs19 - Use the new version of HotSpot (19).
-dev-java/icedtea:hs20 - Use the new version of HotSpot (20).
-dev-java/icedtea:jamvm - Use the JamVM virtual machine instead of HotSpot.
 dev-java/icedtea:nio2 - Enable backport of NIO2 to OpenJDK6.
 dev-java/icedtea:nsplugin - Enable browser plugin (NPPlugin), requires also the webstart flag to be enabled.
 dev-java/icedtea:nss - Enable NSS security provider support.
@@ -1049,8 +1035,6 @@ dev-libs/json-glib:introspection - Use dev-libs/gobject-introspection for intros
 dev-libs/klibc:n32 - Force klibc to 32bit if on mips64 if not n32 userland
 dev-libs/libburn:track-src-odirect - Read track input with O_DIRECT (see man 2 open), this may deliver a better write performance in some situations
 dev-libs/libcdio:minimal - Only build the libcdio library and little more, just to be used to link against from multimedia players. With this USE flag enabled, none of the command-line utilities are built, nor is the CDDA library.
-dev-libs/libcgroup:daemon - Install the configuration tools and init/config files.
-dev-libs/libcgroup:tools - Install the cgroup rules processing daemon and init/config files.
 dev-libs/libdbusmenu:introspection - Use dev-libs/gobject-introspection for introspection
 dev-libs/libdbusmenu:vala - Enable bindings for dev-lang/vala
 dev-libs/libgdata:introspection - Use dev-libs/gobject-introspection for introspection
@@ -1212,9 +1196,6 @@ dev-python/pygobject:introspection - Use dev-libs/gobject-introspection for intr
 dev-python/pygobject:libffi - Enable support to connect to signals on python objects from C.
 dev-python/pylons:genshi - Add optional genshi support
 dev-python/pylons:jinja - Add optional jinja support
-dev-python/pyudev:pygobject - Install PyGobject binding
-dev-python/pyudev:pyqt4 - Install PyQt4 binding
-dev-python/pyudev:pyside - Install PySide binding
 dev-python/pyyaml:libyaml - enable libyaml support
 dev-python/pyzor:pyzord - enable support for pyzord
 dev-python/rdflib:redland - enable support for Redland triplestore
@@ -2958,6 +2939,7 @@ net-libs/daq:dump - Build the Dump data acquisition module
 net-libs/daq:pcap - Build the PCAP data acquisition module
 net-libs/farsight2:upnp - Enable UPnP IGD support
 net-libs/gnutls:nettle - Use dev-libs/nettle as crypto backend
+net-libs/gnutls:valgrind - Enable testing using dev-util/valgrind.
 net-libs/gssdp:introspection - Use dev-libs/gobject-introspection for introspection
 net-libs/gtk-vnc:introspection - Use dev-libs/gobject-introspection for introspection
 net-libs/gupnp:introspection - Use dev-libs/gobject-introspection for introspection
@@ -3233,7 +3215,6 @@ net-misc/openvpn:iproute2 - Enabled iproute2 support instead of net-tools
 net-misc/openvpn:passwordsave - Enables openvpn to save passwords
 net-misc/openvpn:pkcs11 - Enable PKCS#11 smartcard support
 net-misc/pino:indicate - Use dev-libs/libindicate to notify other apps
-net-misc/plowshare:scripts - Install some additional helper scripts
 net-misc/plowshare:view-captcha - View captcha with aview
 net-misc/ps3mediaserver:transcode - Install optional dependencies for transcoding support via media-video/mplayer
 net-misc/ps3mediaserver:tsmuxer - Install optional dependencies for transcoding support via media-video/tsmuxer
@@ -3344,8 +3325,7 @@ net-p2p/amule:stats - Enable statistic reporting
 net-p2p/amule:upnp - Enables support for Intel UPnP stack.
 net-p2p/dbhub:switch_user - Enable support for switching user
 net-p2p/deluge:webinterface - Install dependencies needed for the web interface
-net-p2p/eiskaltdcpp:cli - Enable eiskaltdcpp-daemon with sample cli based on readline
-net-p2p/eiskaltdcpp:daemon - Enable eiskaltdcpp-daemon without any UI
+net-p2p/eiskaltdcpp:daemon - Enable eiskaltdcpp-daemon
 net-p2p/eiskaltdcpp:emoticons - Install emoticon packs
 net-p2p/eiskaltdcpp:sounds - Install sound files
 net-p2p/eiskaltdcpp:upnp - Forward ports using UPnP
@@ -3492,7 +3472,7 @@ sci-biology/bioperl:network - Install sci-biology/bioperl-run
 sci-biology/bioperl:run - Install sci-biology/bioperl-run
 sci-biology/clustalw-mpi:mpi_njtree - Use MPI (as opposed to serial) code for computing neighbor-joining trees
 sci-biology/clustalw-mpi:static_pairalign - Use static (as opposed to dynamic) scheduling for pair alignments
-sci-biology/emboss:largefile - Support for large files
+sci-biology/exonerate:largefile - Enable largefile support on 32 bit systems
 sci-biology/exonerate:utils - Install all utilities
 sci-biology/fasta:icc - Use intel compiler instead of gcc
 sci-biology/hmmer:pvm - Add support for parallel virtual machine (sys-cluster/pvm)
@@ -3538,7 +3518,7 @@ sci-chemistry/shelx:dosformat - Use CR/LF to end lines; useful in mixed Linux/Wi
 sci-chemistry/vmd:msms - Add support for MSMS SAS calcualtion tool
 sci-chemistry/vmd:povray - Add support for povray raytracer for HQ images
 sci-chemistry/vmd:tachyon - Add support for tachyon raytracer for HQ images
-sci-chemistry/votca-csg:gromacs - Add support for file formats from sci-chemistry/gromacs
+sci-chemistry/votca-csg:gromacs - Add support for gromacs file formats (sci-chemistry/gromacs)
 sci-chemistry/wxmacmolplt:flash - Add support for flash movie generation using media-libs/ming
 sci-electronics/geda:stroke - enable mouse gesture support
 sci-electronics/gerbv:unit-mm - Set default unit for coordinates in status bar to mm
@@ -3571,6 +3551,7 @@ sci-geosciences/gpsd:ocean - Enable OceanServer support
 sci-geosciences/gpsd:pl2303 - Enable udev rules for PL2303 USB-serial converter
 sci-geosciences/gpsd:tntc - Enable True North Technologies digital compass support
 sci-geosciences/grass:gmath - Enable gmath wrapper for BLAS/Lapack (virtual/blas, virtual/lapack)
+sci-geosciences/grass:largefile - Enable LFS support for huge files
 sci-geosciences/mapnik:gdal - Enable sci-libs/gdal library support
 sci-geosciences/mapserver:agg - Enable x11-libs/agg library support
 sci-geosciences/mapserver:flash - Add support for creating SWF files using media-libs/ming
@@ -3585,7 +3566,6 @@ sci-geosciences/qgis:grass - Add support for sci-geosciences/grass
 sci-libs/acml:gfortran - Fetch and install acml compiled with GNU gfortran
 sci-libs/acml:ifc - Fetch and install acml compiled with Intel Fortran Compiler (dev-lang/ifc)
 sci-libs/acml:int64 - Install the 64 bits integer library
-sci-libs/armadillo:atlas - Link with ATLAS libraries for cblas and clapack (needs sci-libs/lapack-atlas)
 sci-libs/arprec:qd - Use sci-libs/qd
 sci-libs/blas-goto:int64 - Build the 64 bits integer library
 sci-libs/cholmod:metis - Enable the Partition module to cholmod using metis (sci-libs/metis, sci-libs/parmetis)
@@ -3766,7 +3746,6 @@ sys-apps/lm_sensors:sensord - Enable sensord - a daemon that can be used to peri
 sys-apps/memtest86:serial - Compile with serial console support
 sys-apps/memtest86+:floppy - Install a script to create floppy disks containing memtest86+ binaries.
 sys-apps/memtest86+:serial - Compile with serial console support
-sys-apps/moreutils:perl - Install scripts written in Perl
 sys-apps/paludis:inquisitio - Enable inquisitio, the search client
 sys-apps/paludis:pbins - Enable binary package support. Adds dependency upon app-arch/libarchive
 sys-apps/paludis:pink - Use a less boring colourscheme than the default
@@ -3780,8 +3759,6 @@ sys-apps/pcmcia-cs:trusted - Assume all users are trusted (Build unsafe user-spa
 sys-apps/pcmcia-cs:xforms - Enable building the xforms based cardinfo binary
 sys-apps/pcmcia-cs-modules:cardbus - Enable 32bit CardBus support
 sys-apps/pcmciautils:staticsocket - Add support for static sockets
-sys-apps/pcsc-lite:usb - Use dev-libs/libusb detection to hotplug new smartcard readers. This flag only makes sense on non-Linux systems, as on Linux, sys-fs/udev is used instead.
-sys-apps/pcsc-tools:network-cron - Monthly cronjob the update-smartcard_list script
 sys-apps/portage:epydoc - Build html API documentation with epydoc.
 sys-apps/portage:ipc - Use inter-process communication between portage and running ebuilds.
 sys-apps/portage:python2 - Use python2 as Python interpreter.
@@ -4127,7 +4104,6 @@ www-client/icecat:custom-optimization - Fine-tune custom compiler optimizations
 www-client/icecat:ipc - Use inter-process communication between tabs and plugins. Allows for greater stability in case of plugin crashes
 www-client/icecat:system-sqlite - Use the system-wide dev-db/sqlite installation with secure-delete enabled
 www-client/luakit:helpers - Optional tools used by luakit
-www-client/luakit:luajit - Use the lua just-in-time compiler dev-lang/luajit instead of dev-lang/lua, which should make luakit faster.
 www-client/lynx:gnutls - Use gnutls library for HTTPS support (openssl is the default library for HTTPS support).
 www-client/lynx:ssl - Enable HTTPS support.
 www-client/midori:html - Install HTML documentation, requires dev-python/docutils
@@ -4202,6 +4178,7 @@ x11-libs/agg:gpc - Enable gpc polygon clipper library
 x11-libs/cairo:cleartype - Add ClearType-style behavior for sub-pixel hinting. Patch taken from Arch Linux
 x11-libs/cairo:drm - Use Linux DRM for backend acceleration
 x11-libs/cairo:gallium - Use Mesa's Gallium backend for acceleration
+x11-libs/cairo:glitz - Build with glitz support, which replaces some software render operations with Mesa OpenGL operations
 x11-libs/cairo:lcdfilter - Add FreeType LCD filtering, ClearType-style behavior for sub-pixel-hinting. Overrides cleartype USE flag. Patch taken from Ubuntu
 x11-libs/cairo:opengl - Use Mesa backend for acceleration
 x11-libs/cairo:openvg - Use OpenVG for backend acceleration
