@@ -1,5 +1,5 @@
-dev-libs/dotconf >=dev-libs/glib-2 alsa? ( media-libs/alsa-lib ) ao? ( media-libs/libao ) espeak? ( app-accessibility/espeak ) flite? ( app-accessibility/flite ) nas? ( media-libs/nas ) pulseaudio? ( media-sound/pulseaudio ) python? ( dev-lang/python ) dev-util/pkgconfig
-dev-libs/dotconf >=dev-libs/glib-2 alsa? ( media-libs/alsa-lib ) ao? ( media-libs/libao ) espeak? ( app-accessibility/espeak ) flite? ( app-accessibility/flite ) nas? ( media-libs/nas ) pulseaudio? ( media-sound/pulseaudio ) python? ( dev-lang/python )
+dev-libs/dotconf >=dev-libs/glib-2 alsa? ( media-libs/alsa-lib ) ao? ( media-libs/libao ) espeak? ( app-accessibility/espeak ) flite? ( app-accessibility/flite ) nas? ( media-libs/nas ) pulseaudio? ( media-sound/pulseaudio ) dev-util/pkgconfig || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b >=app-admin/eselect-python-20091230 python? ( =dev-lang/python-2* )
+dev-libs/dotconf >=dev-libs/glib-2 alsa? ( media-libs/alsa-lib ) ao? ( media-libs/libao ) espeak? ( app-accessibility/espeak ) flite? ( app-accessibility/flite ) nas? ( media-libs/nas ) pulseaudio? ( media-sound/pulseaudio ) >=app-admin/eselect-python-20091230 python? ( =dev-lang/python-2* )
 0
 http://www.freebsoft.org/pub/projects/speechd/speech-dispatcher-0.7.1.tar.gz
 
@@ -7,14 +7,14 @@ http://www.freebsoft.org/speechd
 GPL-2
 speech-dispatcher speech synthesis interface
 ~alpha ~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux
-eutils multilib portability toolchain-funcs
+autotools eutils libtool multilib portability python toolchain-funcs
 alsa ao +espeak flite nas pulseaudio python
 
 
 
 3
 
-compile configure install postinst
+compile configure install postinst postrm prepare setup
 
 
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/toolchain-binutils.eclass,v 1.95 2011/03/02 06:37:28 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/toolchain-binutils.eclass,v 1.97 2011/03/10 04:28:07 vapier Exp $
 #
 # Maintainer: Toolchain Ninjas <toolchain@gentoo.org>
 #
@@ -271,7 +271,7 @@ toolchain-binutils_src_compile() {
 
 toolchain-binutils_src_test() {
 	cd "${MY_BUILDDIR}"
-	make check || die "check failed :("
+	emake -k check || die "check failed :("
 }
 
 toolchain-binutils_src_install() {

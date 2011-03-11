@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/gajim/gajim-0.14.1-r2.ebuild,v 1.2 2011/01/24 10:36:56 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-im/gajim/gajim-0.14.1-r2.ebuild,v 1.4 2011/03/08 23:14:19 hwoarang Exp $
 
 EAPI="2"
 
@@ -15,18 +15,16 @@ SRC_URI="http://www.gajim.org/downloads/$(get_version_component_range 1-2)/${P}.
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="~alpha amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 IUSE="avahi crypt dbus gmail gnome idle jingle libnotify networkmanager nls spell srv X xhtml"
 
 COMMON_DEPEND="
 	x11-libs/gtk+:2
-	>=dev-python/pygtk-2.16.0"
-
+	dev-python/pygtk:2"
 DEPEND="${COMMON_DEPEND}
 	>=sys-devel/gettext-0.17-r1
 	>=dev-util/intltool-0.40.1
 	dev-util/pkgconfig"
-
 RDEPEND="${COMMON_DEPEND}
 	dev-python/pyopenssl
 	dev-python/sexy-python

@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/aufs2/aufs2-0_p20110120.ebuild,v 1.3 2011/02/27 13:09:23 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/aufs2/aufs2-0_p20110120.ebuild,v 1.4 2011/03/06 08:33:14 jlec Exp $
 
 EAPI="2"
 
@@ -84,7 +84,7 @@ src_prepare() {
 	fi
 
 	if use hfs; then
-		sed -i "s:AUFS_BR_FUSE =:AUFS_BR_FUSE = y:g" config.mk || die
+		sed -i "s:AUFS_BR_HFSPLUS =:AUFS_BR_HFSPLUS = y:g" config.mk || die
 	fi
 
 	if use hardened ; then
