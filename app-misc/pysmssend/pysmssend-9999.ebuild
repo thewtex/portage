@@ -1,13 +1,12 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/pysmssend/pysmssend-9999.ebuild,v 1.2 2011/03/05 22:49:52 arfrever Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/pysmssend/pysmssend-9999.ebuild,v 1.1 2010/10/18 08:09:01 hwoarang Exp $
 
-EAPI="3"
 PYTHON_DEPEND="2:2.5"
-SUPPORT_PYTHON_ABIS="1"
-RESTRICT_PYTHON_ABIS="2.4 3.*"
 
-inherit distutils eutils git
+EAPI="2"
+
+inherit distutils eutils python multilib git
 
 DESCRIPTION="Python Application for sending sms over multiple ISPs"
 HOMEPAGE="http://pysmssend.sourceforge.net/"
@@ -18,13 +17,11 @@ SLOT="0"
 KEYWORDS=""
 IUSE="qt4"
 
-DEPEND=">=dev-python/mechanize-0.1.9
-	qt4? ( >=dev-python/PyQt4-4.3[X] )"
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+		>=dev-python/mechanize-0.1.9
+		qt4? ( >=dev-python/PyQt4-4.3[X] )"
 
 S="${WORKDIR}/pysmssend"
-
-PYTHON_MODNAME="pysmssendmod"
 
 src_prepare() {
 	python_convert_shebangs -r 2 .

@@ -1,11 +1,6 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-backup/rdiff-backup/rdiff-backup-1.2.8.ebuild,v 1.7 2011/03/05 23:08:24 arfrever Exp $
-
-EAPI="3"
-PYTHON_DEPEND="2"
-SUPPORT_PYTHON_ABIS="1"
-RESTRICT_PYTHON_ABIS="3.* *-jython"
+# $Header: /var/cvsroot/gentoo-x86/app-backup/rdiff-backup/rdiff-backup-1.2.8.ebuild,v 1.6 2010/01/01 19:50:50 fauli Exp $
 
 inherit distutils
 
@@ -24,4 +19,3 @@ DEPEND=">=net-libs/librsync-0.9.7
 RDEPEND="${DEPEND}"
 
 DOCS="examples.html"
-PYTHON_MODNAME="rdiff_backup"

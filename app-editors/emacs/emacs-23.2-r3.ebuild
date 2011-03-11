@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/emacs/emacs-23.2-r3.ebuild,v 1.7 2011/03/10 08:58:39 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-editors/emacs/emacs-23.2-r3.ebuild,v 1.5 2011/02/20 19:38:32 ulm Exp $
 
 EAPI=4
 WANT_AUTOMAKE="none"
@@ -98,8 +98,7 @@ src_prepare() {
 src_configure() {
 	ALLOWED_FLAGS=""
 	strip-flags
-	filter-flags -fstack-protector -fstack-protector-all -fstrict-aliasing
-	append-flags $(test-flags -fno-strict-aliasing)
+	filter-flags -fstack-protector -fstack-protector-all	#285778
 
 	if use sh; then
 		replace-flags -O[1-9] -O0		#262359
@@ -171,6 +170,10 @@ src_configure() {
 		myconf="${myconf} --without-x --without-ns"
 	fi
 
+	myconf="${myconf} $(use_with hesiod)"
+	myconf="${myconf} $(use_with kerberos) $(use_with kerberos kerberos5)"
+	myconf="${myconf} $(use_with gpm) $(use_with dbus)"
+
 	# According to configure, this option is only used for GNU/Linux
 	# (x86_64 and s390). For Gentoo Prefix we have to explicitly spell
 	# out the location because $(get_libdir) does not necessarily return
@@ -183,10 +186,6 @@ src_configure() {
 		--infodir="${EPREFIX}"/usr/share/info/${EMACS_SUFFIX} \
 		--with-crt-dir="${crtdir}" \
 		--with-gameuser="${GAMES_USER_DED:-games}" \
-		$(use_with hesiod) \
-		$(use_with kerberos) $(use_with kerberos kerberos5) \
-		$(use_with gpm) \
-		$(use_with dbus) \
 		${myconf}
 }
 

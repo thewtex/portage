@@ -1,70 +1,10 @@
 # ChangeLog for profile directory
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.5123 2011/03/10 17:26:50 olemarkus Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.5105 2011/03/04 16:56:39 jlec Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
-
-  10 Mar 2011; <olemarkus@gentoo.org> package.mask:
-  Masking another PHP RC
-
-  09 Mar 2011; Diego E. Pettenò <flameeyes@gentoo.org>
-  default/linux/package.use.mask:
-  Mask usb USE flag for pcsc-lite-1.7.0 and later on Linux.
-
-  09 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org> package.mask:
-  Unmask telepathy-glib and telepathy-farsight
-
-  09 Mar 2011; Torsten Veller <tove@gentoo.org> package.mask:
-  Mask libwww-perl-6 for testing: upgrade path, SSL, cert-checking
-
-  09 Mar 2011; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
-  Mask perf.
-
-  08 Mar 2011; Samuli Suominen <ssuominen@gentoo.org> package.mask:
-  Unmask xfce4-xkb-plugin with a new snapshot.
-
-  08 Mar 2011; Justin Lecher <jlec@gentoo.org> package.mask:
-  Removed dev-tcltk/tclxml-expat from package.mask after removal
-
-  08 Mar 2011; Anthony G. Basile <blueness@gentoo.org>
-  -hardened/linux/amd64/package.use.mask, hardened/linux/package.mask,
-  hardened/linux/package.use.mask, hardened/linux/x86/package.use.mask:
-  Removed outdated maskings for hardened profiles, bug #355915.
-
-  07 Mar 2011; Torsten Veller <tove@gentoo.org> package.mask:
-  Unmask net-mail/imapsync again. Latest versions can be fetched from fedora
-
-  07 Mar 2011; Samuli Suominen <ssuominen@gentoo.org> package.mask:
-  Lastrite media-libs/glitz.
-
-  07 Mar 2011; <olemarkus@gentoo.org> package.mask:
-  Removed dev-php5/mongo from p.mask as it was removed from the tree
-
-  07 Mar 2011; Anthony G. Basile <blueness@gentoo.org> base/package.mask,
-  selinux/package.mask, selinux/v2refpolicy/package.mask:
-  Added maskings and unmaskings for sec-policy/selinux-sasl.
-
-  07 Mar 2011; Anthony G. Basile <blueness@gentoo.org> base/package.mask,
-  selinux/package.mask, selinux/v2refpolicy/package.mask:
-  Added maskings and unmaskings for sec-policy/selinux-courier.
-
-  06 Mar 2011; Torsten Veller <tove@gentoo.org> package.mask:
-  Mask perl-core/Module-Build for testing
-
-  06 Mar 2011; Magnus Granberg <zorry@gentoo.org>
-  hardened/linux/amd64/make.default, +hardened/linux/amd64/package.use:
-  Remove the pic use flag #348050
-
-  05 Mar 2011; Andreas K. Huettel <dilfridge@gentoo.org> package.mask:
-  Mask sys-power/guidance-power-manager for removal.
-
-  04 Mar 2011; Alexey Shvetsov <alexxy@gentoo.org> package.mask:
-  unmask kde
-
-  04 Mar 2011; Alexey Shvetsov <alexxy@gentoo.org> package.mask:
-  Mask kde 4.6.1
 
   04 Mar 2011; Justin Lecher <jlec@gentoo.org> package.mask:
   Masked =sci-libs/mmdb-1.23.2, because of problems during linking against the

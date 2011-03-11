@@ -1,6 +1,6 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/emboss/emboss-6.0.1.ebuild,v 1.8 2011/03/09 19:50:38 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/emboss/emboss-6.0.1.ebuild,v 1.6 2010/07/18 14:17:56 nixnut Exp $
 
 EAPI=1
 
@@ -12,31 +12,29 @@ SRC_URI="ftp://${PN}.open-bio.org/pub/EMBOSS/EMBOSS-${PV}.tar.gz"
 LICENSE="GPL-2 LGPL-2"
 
 SLOT="0"
-KEYWORDS="amd64 ppc ppc64 x86"
+KEYWORDS="amd64 ppc ppc64 ~sparc x86"
 IUSE="X png minimal"
 
-DEPEND="
-	X? ( x11-libs/libXt )
+DEPEND="X? ( x11-libs/libXt )
 	png? (
 		sys-libs/zlib
 		media-libs/libpng
 		media-libs/gd
-		)
+	)
 	!minimal? (
 		sci-biology/primer3
-		sci-biology/clustalw
-		)"
+		sci-biology/clustalw:1
+	)"
 
 RDEPEND="${DEPEND}
 	!sys-devel/cons"
 
-PDEPEND="
-	!minimal? (
+PDEPEND="!minimal? (
 		sci-biology/aaindex
 		sci-biology/cutg
 		sci-biology/prints
 		sci-biology/prosite
-		sci-biology/rebase
+		>=sci-biology/rebase-707
 		sci-biology/transfac
 	)"
 
@@ -47,21 +45,20 @@ src_unpack() {
 	cd "${S}"
 	epatch "${FILESDIR}"/${PN}-5.0.0-as-needed.patch
 
-	local link_string="$(pkg-config --libs x11)"
+	local link_string="-lX11";
 	if use png; then
-		link_string="${link_string} -lgd $(pkg-config --libs libpng)"
+		link_string="${link_string} -lgd -lpng"
 	fi
 	sed -e "s:PATCH_PLPLOT:${link_string}:" -i plplot/Makefile.in \
 		|| die "Failed to patch ajax Makefile"
 }
 
 src_compile() {
-	local myconf
-	myconf="--includedir=${D}/usr/include/emboss"
-	use X || myconf="${EXTRA_CONF} --without-x"
-	use png || myconf="${EXTRA_CONF} --without-pngdriver"
+	EXTRA_CONF="--includedir=${D}/usr/include/emboss"
+	! use X && EXTRA_CONF="${EXTRA_CONF} --without-x"
+	! use png && EXTRA_CONF="${EXTRA_CONF} --without-pngdriver"
 
-	econf ${myconf}
+	econf ${EXTRA_CONF} || die
 	# Do not install the JEMBOSS component (the --without-java configure option
 	# does not work). JEMBOSS will eventually be available as a separate package.
 	sed -i -e "s/SUBDIRS = plplot ajax nucleus emboss test doc jemboss/SUBDIRS = plplot ajax nucleus emboss test doc/" \
@@ -92,21 +89,21 @@ src_install() {
 	dosym /usr/share/EMBOSS/doc/tutorials /usr/share/doc/${PF}/tutorials || die
 	dosym /usr/share/EMBOSS/doc/html /usr/share/doc/${PF}/html || die
 
-	# Clashes #330507
-	mv "${ED}"/usr/bin/{digest,pepdigest} || die
-
 	# Remove useless dummy files from the image.
-	find emboss/data -name dummyfile -delete || die "Failed to remove dummy files."
+	rm "${D}"/usr/share/EMBOSS/data/{AAINDEX,PRINTS,PROSITE,REBASE}/dummyfile \
+			|| die "Failed to remove dummy files."
 
 	# Move the provided codon files to a different directory. This will avoid
 	# user confusion and file collisions on case-insensitive file systems (see
 	# bug #115446). This change is documented in "README.Gentoo".
-	mv "${ED}"/usr/share/EMBOSS/data/CODONS{,.orig} || \
+	mv "${D}"/usr/share/EMBOSS/data/CODONS \
+			"${D}"/usr/share/EMBOSS/data/CODONS.orig || \
 			die "Failed to move CODON directory."
 
 	# Move the provided restriction enzyme prototypes file to a different name.
 	# This avoids file collisions with versions of rebase that install their
 	# own enzyme prototypes file (see bug #118832).
-	mv "${ED}"/usr/share/EMBOSS/data/embossre.equ{,.orig} || \
+	mv "${D}"/usr/share/EMBOSS/data/embossre.equ \
+			"${D}"/usr/share/EMBOSS/data/embossre.equ.orig || \
 			die "Failed to move enzyme equivalence file."
 }

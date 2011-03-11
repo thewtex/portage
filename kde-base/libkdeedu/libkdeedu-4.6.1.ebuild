@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/libkdeedu/libkdeedu-4.6.1.ebuild,v 1.3 2011/03/07 02:23:02 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/libkdeedu/libkdeedu-4.6.1.ebuild,v 1.1 2011/03/04 17:59:57 alexxy Exp $
 
 EAPI=3
 
@@ -11,8 +11,7 @@ DESCRIPTION="Common library for KDE educational apps"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="debug"
 
-# 4 of 4 tests fail. Last checked for 4.6.1. Tests are fundamentally broken,
-# see bug 258857 for details.
+# 4 of 4 tests fail. Last checked for 4.2.87
 RESTRICT=test
 
 src_install() {
