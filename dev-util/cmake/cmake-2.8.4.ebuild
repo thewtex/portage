@@ -1,8 +1,8 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/cmake/cmake-2.8.4.ebuild,v 1.4 2011/02/23 14:01:02 scarabeus Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/cmake/cmake-2.8.4.ebuild,v 1.7 2011/03/09 01:41:57 jer Exp $
 
-EAPI=4
+EAPI=3
 
 inherit elisp-common toolchain-funcs eutils versionator flag-o-matic base cmake-utils
 
@@ -13,7 +13,7 @@ HOMEPAGE="http://www.cmake.org/"
 SRC_URI="http://www.cmake.org/files/v$(get_version_component_range 1-2)/${MY_P}.tar.gz"
 
 LICENSE="CMake"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~sparc-fbsd ~x86-fbsd ~hppa-hpux ~ia64-hpux ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 ~arm hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~sparc-fbsd ~x86-fbsd ~hppa-hpux ~ia64-hpux ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 SLOT="0"
 IUSE="emacs ncurses qt4 vim-syntax"
 
@@ -138,13 +138,13 @@ src_install() {
 	fi
 	if use vim-syntax; then
 		insinto /usr/share/vim/vimfiles/syntax
-		doins Docs/cmake-syntax.vim
+		doins Docs/cmake-syntax.vim || die
 
 		insinto /usr/share/vim/vimfiles/indent
-		doins Docs/cmake-indent.vim
+		doins Docs/cmake-indent.vim || die
 
 		insinto /usr/share/vim/vimfiles/ftdetect
-		doins "${FILESDIR}/${VIMFILE}"
+		doins "${FILESDIR}/${VIMFILE}" || die
 	fi
 }
 
