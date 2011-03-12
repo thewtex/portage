@@ -223,6 +223,7 @@ app-crypt/heimdal:otp - Adds support for one-time passwords
 app-crypt/heimdal:pkinit - Adds support for PKINIT for the initial ticket
 app-crypt/kstart:afs - Enables afs support which means you can acquire an afs token and set PAGs. It's recommended to set this USE if you need authenticated access to an AFS cell for your daemon/app.
 app-crypt/mit-krb5:doc - Creates and installs the API and implementation documentation. This is only useful if you want to develop software which depends on kerberos.
+app-crypt/mit-krb5:openldap - Enable support for ldap as a database backend.
 app-crypt/mit-krb5:pkinit - Enable pkinit support for the initial ticket.
 app-crypt/ophcrack-tables:vistafree - Installs the free Vista ophcrack tables
 app-crypt/ophcrack-tables:xpfast - Installs the fast XP ophcrack tables
@@ -630,7 +631,6 @@ app-office/lyx:rtf - Add support for RTF import/export packages
 app-office/openoffice:binfilter - Enable support for legacy StarOffice 5.x and earlier file formats
 app-office/openoffice:odk - Build the Office Development Kit
 app-office/openoffice:templates - Enable installation of Sun templates
-app-office/rabbit:gnome-print - Gnome-Print support (gnome-base/libgnomeprint)
 app-office/rabbit:gs - Ghostscript support (app-text/ghostscript-gpl)
 app-office/rabbit:tgif - tgif support (media-gfx/tgif)
 app-office/scribus:minimal - Don't install headers (only required for e.g. plug-in developers)
@@ -1530,6 +1530,7 @@ games-util/xboxdrv:daemon - Install xboxdrv-daemon (and its dependencies)
 gnome-base/dconf:introspection - Use dev-libs/gobject-introspection for introspection
 gnome-base/dconf:vala - Add support for dev-lang/vala
 gnome-base/gconf:introspection - Use dev-libs/gobject-introspection for introspection
+gnome-base/gconf:ldap - Build backend which enables default mail accounts, addressbooks and calendars for Evolution to be configured using each user's LDAP entry."
 gnome-base/gdm:consolekit - Allow proper handling of removable media according to who is actually present on the machine.
 gnome-base/gdm:dmx - Enables Distributed Multihead X (DMX) support
 gnome-base/gdm:remote - Enables support for secure remote connections
@@ -3806,6 +3807,7 @@ sys-apps/util-linux:perl - install the chkdupexe helper script
 sys-apps/v86d:x86emu - Use x86emu for Video BIOS calls
 sys-auth/consolekit:policykit - Use the PolicyKit framework (sys-auth/polkit) to get authorization for suspend/shutdown.
 sys-auth/munge:gcrypt - Use libgcrypt instead of openssl
+sys-auth/pam_mktemp:prevent-removal - If supported, set EXT2_APPEND_FL on /tmp/.private to prevent temporary directories from being removed
 sys-auth/pam_mysql:openssl - Use OpenSSL for md5 and sha1 support
 sys-auth/pam_pkcs11:nss - Use Mozilla NSS (dev-libs/nss) as provider for PKCS#11 access, rather than using OpenSSL with a custom implementation of the PKC#11 protocol.
 sys-auth/pam_pkcs11:pcsc-lite - Build the card_eventmanager binary used to detect card removal and lock the sessions. This needs sys-apps/pcsc-lite.
@@ -4116,7 +4118,6 @@ www-apps/viewvc:mod_python - Add www-apache/mod_python support
 www-apps/viewvc:mod_wsgi - Add www-apache/mod_wsgi support
 www-apps/viewvc:pygments - Add dev-python/pygments support for syntax highlighting
 www-client/chromium:gecko-mediaplayer - Allow the browser to load www-plugins/gecko-mediaplayer
-www-client/chromium:system-v8 - Use the system-wide dev-lang/v8 installation
 www-client/elinks:bittorrent - Enable support for the BitTorrent protocol
 www-client/elinks:finger - Enable support for the finger protocol
 www-client/elinks:gopher - Enable support for the gopher protocol
