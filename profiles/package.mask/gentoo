@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12548 2011/03/12 15:18:35 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12551 2011/03/13 05:08:06 dirtyepic Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -31,6 +31,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Joerg Bornkessel <hd_brummy@gentoo.org> (12 Mar 2011)
+# no maintainer, dead on upstream, dead Homepage
+# bug 358591
+# Removal April 10 2011
+media-plugins/vdr-vdricq
+
 # Pacho Ramos <pacho@gentoo.org> (12 Mar 2011)
 # Old, unused, no longer developed (bug #355825).
 # Removal in 30 days.
@@ -57,7 +63,8 @@ dev-ruby/ruby-gnomeprintui
 # Mask net-p2p/bittorrent for removal 20110412 (#336166)
 # Dead upstream. Requires wxpython-2.6 which is being removed.
 # Doesn't build with python-2.6.  Doesn't start.
-net-p2p/bittorrent
+# (temp unmasked for bug #358485)
+#net-p2p/bittorrent
 
 # Torsten Veller <tove@gentoo.org> (11 Mar 2011)
 # Mask deprecated dev-perl/gnome2-print for removal (#358423)
@@ -480,16 +487,6 @@ dev-util/plan9port
 # Doug Goldstein <cardoe@gentoo.org> (24 Jan 2011)
 # Masked beta versions
 >=x11-drivers/nvidia-drivers-270
-
-# Joerg Bornkessel <hd_brummy@gentoo.org> (24 Jan 2011)
-# Masked for removal, not needed by any other packages
-# bug #352558
-media-tv/vdr-dvd-scripts
-
-# Joerg Bornkessel <hd_brummy@gentoo.org (24 Jan 2011)
-# Masked for removal, not needed by any other packages
-# bug #352552
-media-tv/vdrplugin-rebuild
 
 # Gilles Dartiguelongue <eva@gentoo.org> (24 Jan 2011)
 # Masked due to unsatisfied requirements in tree

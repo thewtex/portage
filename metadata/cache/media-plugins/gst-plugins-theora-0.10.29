@@ -1,5 +1,5 @@
->=media-libs/libtheora-1.0 media-libs/libogg >=media-libs/gst-plugins-base-0.10.29 ~media-libs/gst-plugins-base-0.10.29 >=sys-apps/sed-4 dev-util/pkgconfig
->=media-libs/libtheora-1.0 media-libs/libogg >=media-libs/gst-plugins-base-0.10.29
+>=media-libs/libtheora-1.0[encode] media-libs/libogg >=media-libs/gst-plugins-base-0.10.29 ~media-libs/gst-plugins-base-0.10.29 >=sys-apps/sed-4 dev-util/pkgconfig
+>=media-libs/libtheora-1.0[encode] media-libs/libogg >=media-libs/gst-plugins-base-0.10.29
 0.10
 http://gstreamer.freedesktop.org/src/gst-plugins-base/gst-plugins-base-0.10.29.tar.bz2
 test
@@ -12,9 +12,9 @@ eutils gst-plugins-base gst-plugins10 multilib portability toolchain-funcs
 
 
 
+2
 
-
-compile install unpack
+compile configure install prepare unpack
 
 
 
