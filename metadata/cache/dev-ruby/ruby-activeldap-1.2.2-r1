@@ -1,0 +1,22 @@
+ruby_targets_ruby18? ( dev-ruby/hoe[ruby_targets_ruby18] ) ruby_targets_ruby18? ( test? ( virtual/ruby-test-unit[ruby_targets_ruby18] ) ) test? ( ruby_targets_ruby18? ( =dev-ruby/activerecord-2.3*[ruby_targets_ruby18] ~dev-ruby/locale-2.0.5[ruby_targets_ruby18] =dev-ruby/ruby-gettext-2.1.0*[ruby_targets_ruby18] =dev-ruby/gettext_activerecord-2.1.0*[ruby_targets_ruby18] >=dev-ruby/ruby-ldap-0.8.2[ruby_targets_ruby18] ) ) ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ruby18? ( doc? ( dev-ruby/rake[ruby_targets_ruby18] ) ) ruby_targets_ruby18? ( test? ( dev-ruby/rake[ruby_targets_ruby18] ) ) ruby_targets_ruby18? ( dev-ruby/rubygems[ruby_targets_ruby18] ) test? ( ruby_targets_ruby18? ( dev-ruby/rubygems[ruby_targets_ruby18] ) )
+ruby_targets_ruby18? ( =dev-ruby/activerecord-2.3*[ruby_targets_ruby18] ~dev-ruby/locale-2.0.5[ruby_targets_ruby18] =dev-ruby/ruby-gettext-2.1.0*[ruby_targets_ruby18] =dev-ruby/gettext_activerecord-2.1.0*[ruby_targets_ruby18] >=dev-ruby/ruby-ldap-0.8.2[ruby_targets_ruby18] ) ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ruby18? ( dev-ruby/rubygems[ruby_targets_ruby18] )
+0
+mirror://rubygems/activeldap-1.2.2.gem
+test
+http://ruby-activeldap.rubyforge.org/doc/
+GPL-2
+Ruby/ActiveLDAP provides an activerecord inspired object oriented interface to LDAP
+~amd64 ~ia64 ~x86 ~x86-macos
+eutils multilib portability ruby-fakegem ruby-ng toolchain-funcs
+test ruby_targets_ruby18 doc doc test
+
+
+
+2
+
+compile configure install prepare setup test unpack
+
+
+
+
+
