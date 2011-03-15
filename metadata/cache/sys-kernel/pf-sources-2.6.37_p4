@@ -1,14 +1,14 @@
 !build? ( sys-apps/sed >=sys-devel/binutils-2.11.90.0.31 )
 !build? ( >=sys-libs/ncurses-5.2 sys-devel/make )
 2.6.37_p4
-mirror://kernel/linux/kernel/v2.6/linux-2.6.37.tar.bz2 http://pf.natalenko.name/sources/2.6.37/patch-2.6.37-pf4.bz2 experimental? ( http://ck.kolivas.org/patches/bfs/bfs357-penalise_fork_depth_account_threads.patch )
+mirror://kernel/linux/kernel/v2.6/linux-2.6.37.tar.bz2 deblob? ( http://www.fsfla.org/svnwiki/selibre/linux-libre//download/releases/LATEST-2.6.37.N/deblob-2.6.37 http://www.fsfla.org/svnwiki/selibre/linux-libre//download/releases/LATEST-2.6.37.N/deblob-check -> deblob-check-2.6.37 ) http://pf.natalenko.name/sources/2.6.37/patch-2.6.37-pf4.bz2 experimental? ( http://ck.kolivas.org/patches/bfs/bfs357-penalise_fork_depth_account_threads.patch )
 binchecks strip
 http://pf.natalenko.name/
-GPL-2 freedist
+GPL-2 !deblob? ( freedist )
 Linux kernel fork with new features, including the -ck patchset (BFS), BFQ, TuxOnIce and LinuxIMQ
 -* ~amd64 ~ppc ~ppc64 ~x86
 eutils kernel-2 multilib portability toolchain-funcs versionator
-experimental symlink build
+experimental symlink build deblob
 
 !build? ( virtual/dev-manager )
 virtual/linux-sources virtual/alsa

@@ -1,4 +1,4 @@
-doc? ( app-doc/doxygen )
+doc? ( app-doc/doxygen ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b
 
 0
 mirror://sourceforge/zthread/ZThread-2.3.2.tar.gz
@@ -7,7 +7,7 @@ http://zthread.sourceforge.net/
 MIT
 A platform-independent multi-threading and synchronization library for C++
 alpha amd64 ~hppa ~mips ppc sparc x86
-eutils multilib portability toolchain-funcs
+autotools eutils libtool multilib portability toolchain-funcs
 debug doc kernel_linux static-libs
 
 
