@@ -1,5 +1,5 @@
-!net-mail/vimap !virtual/imap-c-client >=sys-libs/pam-0.72 >=net-mail/mailbase-0.00-r8 ssl? ( dev-libs/openssl ) kerberos? ( virtual/krb5 )
-!net-mail/vimap !virtual/imap-c-client >=sys-libs/pam-0.72 >=net-mail/mailbase-0.00-r8 ssl? ( dev-libs/openssl ) kerberos? ( virtual/krb5 ) >=net-mail/uw-mailutils-2007e sys-apps/xinetd !virtual/imapd
+!net-mail/vimap !net-libs/c-client >=sys-libs/pam-0.72 >=net-mail/mailbase-0.00-r8 ssl? ( dev-libs/openssl ) kerberos? ( virtual/krb5 )
+!net-mail/vimap !net-libs/c-client >=sys-libs/pam-0.72 >=net-mail/mailbase-0.00-r8 ssl? ( dev-libs/openssl ) kerberos? ( virtual/krb5 ) >=net-mail/uw-mailutils-2007e sys-apps/xinetd !virtual/imapd
 0
 ftp://ftp.cac.washington.edu/imap/imap-2007e.tar.Z
 
@@ -11,7 +11,7 @@ eutils flag-o-matic multilib portability toolchain-funcs
 ipv6 ssl kerberos clearpasswd
 
 
-virtual/imapd virtual/imap-c-client
+virtual/imapd
 
 
 compile install setup unpack
