@@ -1,12 +1,12 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/openoffice-bin/openoffice-bin-3.3.0.ebuild,v 1.1 2011/03/16 23:31:55 suka Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/openoffice-bin/openoffice-bin-3.3.0.ebuild,v 1.6 2011/03/17 13:51:00 suka Exp $
 
 EAPI="3"
 
-inherit eutils fdo-mime pax-utils prefix rpm multilib
+inherit eutils fdo-mime gnome2-utils pax-utils prefix rpm multilib
 
-IUSE="gnome java kde"
+IUSE="gnome java"
 
 BUILDID="9567"
 BUILDID2="9556"
@@ -46,41 +46,41 @@ done
 
 HOMEPAGE="http://www.openoffice.org/"
 
-LICENSE="LGPL-2"
+LICENSE="LGPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 
-RDEPEND="!app-office/openoffice
+RDEPEND="!app-office/libreoffice
+	!app-office/openoffice
+	!app-office/libreoffice-bin
 	x11-libs/libXaw
 	!prefix? ( sys-libs/glibc )
 	>=dev-lang/perl-5.0
 	app-arch/zip
 	app-arch/unzip
-	>=media-libs/freetype-2.1.10-r2
-	java? ( >=virtual/jre-1.5 )
-	linguas_ja? ( >=media-fonts/kochi-substitute-20030809-r3 )
-	linguas_zh_CN? ( >=media-fonts/arphicfonts-0.1-r2 )
-	linguas_zh_TW? ( >=media-fonts/arphicfonts-0.1-r2 )"
+	x11-libs/libXinerama
+	>=media-libs/freetype-2.1.10-r2"
 
 DEPEND="${RDEPEND}
 	sys-apps/findutils"
 
+PDEPEND="java? ( >=virtual/jre-1.5 )"
+
 RESTRICT="strip"
 
-QA_EXECSTACK="usr/$(get_libdir)/openoffice/basis3.2/program/*
+QA_EXECSTACK="usr/$(get_libdir)/openoffice/basis3.3/program/*
 	usr/$(get_libdir)/openoffice/ure/lib/*"
-QA_TEXTRELS="usr/$(get_libdir)/openoffice/basis3.2/program/libvclplug_genli.so \
-	usr/$(get_libdir)/openoffice/basis3.2/program/python-core-2.3.4/lib/lib-dynload/_curses_panel.so \
-	usr/$(get_libdir)/openoffice/basis3.2/program/python-core-2.3.4/lib/lib-dynload/_curses.so \
+QA_TEXTRELS="usr/$(get_libdir)/openoffice/basis3.3/program/libvclplug_genli.so \
+	usr/$(get_libdir)/openoffice/basis3.3/program/python-core-2.6.1/lib/lib-dynload/_curses_panel.so \
+	usr/$(get_libdir)/openoffice/basis3.3/program/python-core-2.6.1/lib/lib-dynload/_curses.so \
 	usr/$(get_libdir)/openoffice/ure/lib/*"
 
 src_unpack() {
 
 	unpack ${A}
+
 	cp "${FILESDIR}"/{50-openoffice-bin,wrapper.in} "${T}"
 	eprefixify "${T}"/{50-openoffice-bin,wrapper.in}
-
-	cd "${S}"
 
 	for i in base binfilter calc core01 core02 core03 core04 core05 core06 core07 draw graphicfilter images impress math ooofonts oooimprovement ooolinguistic pyuno testtool writer xsltfilter ; do
 		rpm_unpack "./${UP}/${BASIS}-${i}-${MY_PV3}.${OOARCH}.rpm"
@@ -96,7 +96,6 @@ src_unpack() {
 	rpm_unpack "./${UP}/desktop-integration/openoffice.org3.3-freedesktop-menus-3.3-${BUILDID2}.noarch.rpm"
 
 	use gnome && rpm_unpack "./${UP}/${BASIS}-gnome-integration-${MY_PV3}.${OOARCH}.rpm"
-	use kde && rpm_unpack "./${UP}/${BASIS}-kde-integration-${MY_PV3}.${OOARCH}.rpm"
 	use java && rpm_unpack "./${UP}/${BASIS}-javafilter-${MY_PV3}.${OOARCH}.rpm"
 
 	# Unpack provided dictionaries, unless there is a better solution...
@@ -104,8 +103,8 @@ src_unpack() {
 	rpm_unpack "./${UP}/openoffice.org3-dict-es-${MY_PV3}.${OOARCH}.rpm"
 	rpm_unpack "./${UP}/openoffice.org3-dict-fr-${MY_PV3}.${OOARCH}.rpm"
 
+	# Localization
 	strip-linguas ${LANGS}
-
 	if [[ -z "${LINGUAS}" ]]; then
 		export LINGUAS="en"
 	fi
@@ -138,17 +137,17 @@ src_install () {
 
 	#Menu entries, icons and mime-types
 	cd "${ED}${INSTDIR}/share/xdg/"
-
-	for desk in base calc draw impress math printeradmin qstart writer; do
+	for desk in base calc draw impress javafilter math printeradmin qstart startcenter writer; do
+		if [ "${desk}" = "javafilter" ] ; then
+			use java || { rm javafilter.desktop; continue; }
+		fi
 		mv ${desk}.desktop openoffice.org-${desk}.desktop
 		sed -i -e s/openoffice.org3/ooffice/g openoffice.org-${desk}.desktop || die
-		sed -i -e s/openofficeorg3-${desk}/ooo-${desk}/g openoffice.org-${desk}.desktop || die
 		domenu openoffice.org-${desk}.desktop
-		insinto /usr/share/pixmaps
-		if [ "${desk}" != "qstart" ] ; then
-			newins "${WORKDIR}/usr/share/icons/gnome/48x48/apps/openofficeorg3-${desk}.png" ooo-${desk}.png
-		fi
 	done
+	insinto /usr/share
+	doins -r "${WORKDIR}"/usr/share/icons
+	doins -r "${WORKDIR}"/usr/share/mime
 
 	# Make sure the permissions are right
 	use prefix || fowners -R root:0 /
@@ -179,10 +178,17 @@ src_install () {
 
 }
 
+pkg_preinst() {
+
+	use gnome && gnome2_icon_savelist
+
+}
+
 pkg_postinst() {
 
 	fdo-mime_desktop_database_update
 	fdo-mime_mime_database_update
+	use gnome && gnome2_icon_cache_update
 
 	pax-mark -m "${EPREFIX}"/usr/$(get_libdir)/openoffice/program/soffice.bin
 
@@ -195,5 +201,12 @@ pkg_postinst() {
 	elog " ${EPREFIX}/usr/$(get_libdir)/openoffice/share/extension/install "
 	elog " Other dictionaries can be found at Suns extension site. "
 	elog
+
+}
+
+pkg_postrm() {
+
+	fdo-mime_desktop_database_update
+	use gnome && gnome2_icon_cache_update
 
 }

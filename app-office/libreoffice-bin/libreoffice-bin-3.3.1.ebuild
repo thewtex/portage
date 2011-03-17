@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/libreoffice-bin/libreoffice-bin-3.3.1.ebuild,v 1.3 2011/03/16 22:24:08 suka Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/libreoffice-bin/libreoffice-bin-3.3.1.ebuild,v 1.6 2011/03/17 13:49:58 suka Exp $
 
 EAPI="3"
 
@@ -44,7 +44,7 @@ for X in ${LANGS} ; do
 	IUSE="${IUSE} linguas_${X}"
 done
 
-HOMEPAGE="http://www.documentfoundation.org"
+HOMEPAGE="http://www.libreoffice.org"
 
 LICENSE="LGPL-3"
 SLOT="0"
@@ -66,7 +66,7 @@ DEPEND="${RDEPEND}
 
 PDEPEND="java? ( >=virtual/jre-1.5 )"
 
-RESTRICT="strip binchecks"
+RESTRICT="strip"
 
 QA_EXECSTACK="usr/$(get_libdir)/libreoffice/basis3.3/program/*
 	usr/$(get_libdir)/libreoffice/ure/lib/*"
@@ -76,8 +76,6 @@ QA_PRESTRIPPED="usr/$(get_libdir)/libreoffice/basis3.3/program/*
 	usr/$(get_libdir)/libreoffice/program/*
 	usr/$(get_libdir)/libreoffice/ure/bin/*
 	usr/$(get_libdir)/libreoffice/ure/lib/*"
-
-RESTRICT="mirror"
 
 src_unpack() {
 
@@ -118,11 +116,8 @@ src_unpack() {
 		rpm_unpack "./${UP}/${BASIS}-en-US-${s}-${BVER}.${LOARCH}.rpm"
 	done
 
-	# Lang files
-	# TODO: Install dictionaries
-
+	# Localization
 	strip-linguas ${LANGS}
-
 	for l in ${LINGUAS}; do
 		m="${l/_/-}"
 		if [[ ${m} != "en" ]] ; then
@@ -148,6 +143,7 @@ src_unpack() {
 			fi
 		fi
 	done
+
 }
 
 src_install () {
@@ -160,7 +156,6 @@ src_install () {
 
 	#Menu entries, icons and mime-types
 	cd "${ED}${INSTDIR}/share/xdg/"
-
 	for desk in base calc draw impress javafilter math printeradmin qstart startcenter writer; do
 		if [ "${desk}" = "javafilter" ] ; then
 			use java || { rm javafilter.desktop; continue; }
@@ -177,7 +172,6 @@ src_install () {
 	sed -i -e s/LIBDIR/$(get_libdir)/g "${ED}/usr/bin/libreoffice" || die
 
 	# Component symlinks
-	# Disabled, trouble with parallel installing openoffice
 	for app in base calc draw impress math writer; do
 		dosym ${INSTDIR}/program/s${app} /usr/bin/lo${app}
 	done
@@ -197,7 +191,9 @@ src_install () {
 }
 
 pkg_preinst() {
+
 	use gnome && gnome2_icon_savelist
+
 }
 
 pkg_postinst() {
@@ -211,6 +207,8 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
+
 	fdo-mime_desktop_database_update
 	use gnome && gnome2_icon_cache_update
+
 }

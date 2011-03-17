@@ -1,17 +1,17 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-embedded/openocd/openocd-9999.ebuild,v 1.11 2011/03/14 19:36:54 slyfox Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-embedded/openocd/openocd-9999.ebuild,v 1.13 2011/03/17 12:50:00 hwoarang Exp $
 
-EGIT_REPO_URI="git://openocd.git.sourceforge.net/gitroot/openocd/openocd"
-EGIT_HAS_SUBMODULES=YES
-inherit eutils
+EAPI="2"
+
+inherit autotools eutils
 if [[ ${PV} == "9999" ]] ; then
-	inherit git autotools
-	#KEYWORDS=""
-	SRC_URI=""
+	inherit git
+	KEYWORDS=""
+	EGIT_REPO_URI="git://openocd.git.sourceforge.net/gitroot/openocd/openocd"
 else
 	KEYWORDS="~amd64 ~x86"
-	SRC_URI="mirror://berlios/${PN}/${P}.tar.gz"
+	SRC_URI="http://dev.gentoo.org/~hwoarang/distfiles/${P}.tar.gz"
 fi
 
 DESCRIPTION="OpenOCD - Open On-Chip Debugger"
@@ -19,11 +19,12 @@ HOMEPAGE="http://openocd.berlios.de/web/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="ftd2xx ftdi parport presto usb"
+IUSE="blaster ftd2xx ftdi parport presto segger versaloon usb"
 RESTRICT="strip" # includes non-native binaries
 
 # libftd2xx is the default because it is reported to work better.
-DEPEND="usb? ( dev-libs/libusb )
+DEPEND="dev-lang/jimtcl
+	usb? ( dev-libs/libusb )
 	presto? ( dev-embedded/libftd2xx )
 	ftd2xx? ( dev-embedded/libftd2xx )
 	ftdi? ( dev-embedded/libftdi )"
@@ -36,39 +37,39 @@ pkg_setup() {
 	fi
 }
 
-src_unpack() {
-	if [[ ${PV} == "9999" ]] ; then
-		git_src_unpack
-		cd "${S}"
-		eautoreconf
-	else
-		unpack ${A}
-	fi
+src_prepare() {
+		[[ ${PV} != "9999" ]]  && sed -i -e "/@include version.texi/d" doc/${PN}.texi
+		AT_NO_RECURSIVE=yes eautoreconf
 }
 
-src_compile() {
-	if [[ ${PV} == "9999" ]] ; then
-		myconf="${myconf} --enable-maintainer-mode"
+src_configure() {
+	if use usb;then
+		myconf="${myconf} --enable-usbprog --enable-jlink --enable-rlink \
+			--enable-vsllink --enable-arm-jtag-ew"
 	fi
-
+	[[ ${PV} != "9999" ]] && myconf="${myconf} --enable-maintainer-mode"
+	# add explicitely the path to libftd2xx
+	use ftd2xx && ! use ftdi && LDFLAGS="${LDFLAGS} -L/opt/$(get_libdir)"
 	econf \
 		--disable-werror \
+		--disable-internal-jimtcl \
 		--enable-amtjtagaccel \
 		--enable-ep93xx \
 		--enable-at91rm9200 \
 		--enable-gw16012 \
 		--enable-oocd_trace \
-		$(use_enable usb usbprog) \
-		$(use_enable parport) \
-		$(use_enable presto presto_ftd2xx) \
+		$(use_enable blaster usb_flaster_libftdi) \
 		$(use_enable ftdi ft2232_libftdi) \
 		$(use ftdi || use_enable ftd2xx ft2232_ftd2xx) \
+		$(use_enable parport) \
+		$(use_enable presto presto_ftd2xx) \
+		$(use_enable segger jlink) \
+		$(use_enable versaloon vsllink) \
 		${myconf}
-	emake || die "Error in emake!"
 }
 
 src_install() {
 	emake DESTDIR="${D}" install || die
-	dodoc AUTHORS ChangeLog NEWS README TODO
+	dodoc AUTHORS ChangeLog NEWS README TODO || die
 	prepstrip "${D}"/usr/bin
 }
