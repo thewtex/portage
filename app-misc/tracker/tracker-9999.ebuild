@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/tracker/tracker-9999.ebuild,v 1.35 2011/02/21 22:28:45 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/tracker/tracker-9999.ebuild,v 1.36 2011/03/18 07:50:16 eva Exp $
 
 EAPI="3"
 GCONF_DEBUG="no"
@@ -66,7 +66,7 @@ RDEPEND="
 	networkmanager? ( >=net-misc/networkmanager-0.8 )
 	pdf? (
 		>=x11-libs/cairo-1
-		>=app-text/poppler-0.12.3-r3[cairo,utils]
+		>=app-text/poppler-0.16[cairo,utils]
 		>=x11-libs/gtk+-2.12:2 )
 	playlist? ( dev-libs/totem-pl-parser )
 	rss? ( net-libs/libgrss )
@@ -142,7 +142,6 @@ pkg_setup() {
 		--with-enca
 		--with-unicode-support=libicu
 		--enable-guarantee-metadata
-		$(use_enable applet tracker-status-icon)
 		$(use_enable applet tracker-search-bar)
 		$(use_enable eds miner-evolution)
 		$(use_enable exif libexif)
