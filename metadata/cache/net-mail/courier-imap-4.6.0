@@ -1,5 +1,5 @@
 gnutls? ( net-libs/gnutls ) !gnutls? ( >=dev-libs/openssl-0.9.6 ) >=net-libs/courier-authlib-0.61 >=net-mail/mailbase-0.00-r8 berkdb? ( sys-libs/db ) fam? ( virtual/fam ) gdbm? ( >=sys-libs/gdbm-1.8.0 ) selinux? ( sec-policy/selinux-courier-imap ) dev-lang/perl !mail-mta/courier userland_GNU? ( sys-process/procps ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b
-gnutls? ( net-libs/gnutls ) !gnutls? ( >=dev-libs/openssl-0.9.6 ) >=net-libs/courier-authlib-0.61 >=net-mail/mailbase-0.00-r8 berkdb? ( sys-libs/db ) fam? ( virtual/fam ) gdbm? ( >=sys-libs/gdbm-1.8.0 ) selinux? ( sec-policy/selinux-courier-imap ) !virtual/imapd
+gnutls? ( net-libs/gnutls ) !gnutls? ( >=dev-libs/openssl-0.9.6 ) >=net-libs/courier-authlib-0.61 >=net-mail/mailbase-0.00-r8 berkdb? ( sys-libs/db ) fam? ( virtual/fam ) gdbm? ( >=sys-libs/gdbm-1.8.0 ) selinux? ( sec-policy/selinux-courier-imap ) !net-mail/dovecot !mail-mta/courier !net-mail/bincimap !net-mail/cyrus-imapd !net-mail/uw-imap
 0
 mirror://sourceforge/courier/courier-imap-4.6.0.tar.bz2
 
@@ -11,7 +11,7 @@ autotools eutils libtool multilib portability toolchain-funcs
 berkdb debug fam gdbm ipv6 nls selinux gnutls trashquota
 
 
-virtual/imapd
+
 2
 
 compile configure install postinst prepare setup test

@@ -1,6 +1,8 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-pda/libopensync-plugin-irmc/libopensync-plugin-irmc-9999.ebuild,v 1.5 2010/06/11 12:15:30 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-pda/libopensync-plugin-irmc/libopensync-plugin-irmc-9999.ebuild,v 1.6 2011/03/19 09:57:57 dirtyepic Exp $
+
+EAPI="4"
 
 inherit eutils cmake-utils subversion
 
@@ -15,34 +17,15 @@ SLOT="0"
 LICENSE="GPL-2"
 IUSE="bluetooth irda"
 
-DEPEND="=app-pda/libopensync-${PV}*
-	>=dev-libs/openobex-1.0
+REQUIRED_USE="|| ( bluetooth irda )"
+
+RDEPEND="~app-pda/libopensync-${PV}
+	dev-libs/glib:2
+	dev-libs/libxml2
+	>=dev-libs/openobex-1.0[bluetooth?,irda?]
 	bluetooth? ( net-wireless/bluez )"
-RDEPEND="${DEPEND}"
-
-pkg_setup() {
-	if ! use irda && ! use bluetooth; then
-		eerror "${CATEGORY}/${P} without support for bluetooth nor irda is unusable."
-		eerror "Please enable \"bluetooth\" or/and \"irda\" USE flags."
-		die "Please enable \"bluetooth\" or/and \"irda\" USE flags."
-	fi
-
-	if use bluetooth && ! built_with_use dev-libs/openobex bluetooth; then
-		eerror "You are trying to build ${CATEGORY}/${P} with the \"bluetooth\""
-		eerror "USE flag, but dev-libs/openobex was built without"
-		eerror "the \"bluetooth\" USE flag."
-		eerror "Please rebuild dev-libs/openobex with \"bluetooth\" USE flag."
-		die "Please rebuild dev-libs/openobex with \"bluetooth\" USE flag."
-	fi
-
-	if use irda && ! built_with_use dev-libs/openobex irda; then
-		eerror "You are trying to build ${CATEGORY}/${P} with the \"irda\""
-		eerror "USE flag, but dev-libs/openobex was built without"
-		eerror "the \"irda\" USE flag."
-		eerror "Please rebuild dev-libs/openobex with \"irda\" USE flag."
-		die "Please rebuild dev-libs/openobex with \"irda\" USE flag."
-	fi
-}
+DEPEND="${RDEPEND}
+	>=dev-util/pkgconfig-0.9.0"
 
 src_compile() {
 	local mycmakeargs="
