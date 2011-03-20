@@ -1,10 +1,10 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-fs/openafs/openafs-1.6.0_pre2.ebuild,v 1.1 2011/03/19 13:07:05 stefaan Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-fs/openafs/openafs-1.6.0_pre2.ebuild,v 1.2 2011/03/20 09:58:35 stefaan Exp $
 
 EAPI="2"
 
-inherit flag-o-matic eutils toolchain-funcs versionator pam
+inherit flag-o-matic eutils autotools toolchain-funcs versionator pam
 
 MY_PV=$(delete_version_separator '_')
 MY_P="${PN}-${MY_PV}"
@@ -32,7 +32,8 @@ src_prepare() {
 	epatch "${WORKDIR}"/gentoo/patches
 
 	# packaging is f-ed up, so we can't run automake (i.e. eautoreconf)
-	sed -i '/^a/s:^:e:' regen.sh
+	sed -i 's/^\(\s*\)a/\1ea/' regen.sh
+	: # this line makes repoman ok with not calling eautoconf etc. directly
 	skipman=1
 	. regen.sh
 }
