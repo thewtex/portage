@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-doc/doxygen/doxygen-1.7.3.ebuild,v 1.1 2011/02/01 04:12:47 nerdboy Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-doc/doxygen/doxygen-1.7.3.ebuild,v 1.3 2011/03/20 01:39:54 nerdboy Exp $
 
 EAPI=3
 
@@ -11,7 +11,7 @@ HOMEPAGE="http://www.doxygen.org/"
 SRC_URI="ftp://ftp.stack.nl/pub/users/dimitri/${P}.src.tar.gz
 	tcl? ( mirror://gentoo/${PN}-1.7-tcl_support.patch.bz2 )"
 
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
 
 IUSE="debug doc nodot qt4 latex tcl elibc_FreeBSD"
 LICENSE="GPL-2"
@@ -38,7 +38,7 @@ src_prepare() {
 	sed -i.orig -e 's:^\(TMAKE_CFLAGS_RELEASE\t*\)= .*$:\1= $(ECFLAGS):' \
 		-e 's:^\(TMAKE_CXXFLAGS_RELEASE\t*\)= .*$:\1= $(ECXXFLAGS):' \
 		-e 's:^\(TMAKE_LFLAGS_RELEASE\s*\)=.*$:\1= $(ELDFLAGS):' \
-		tmake/lib/{{linux,freebsd,netbsd,openbsd,solaris}-g++,macosx-c++}/tmake.conf \
+		tmake/lib/{{linux,gnu,freebsd,netbsd,openbsd,solaris}-g++,macosx-c++,linux-64}/tmake.conf \
 		|| die "sed 1 failed"
 
 	# Ensure we link to -liconv
@@ -106,6 +106,14 @@ src_configure() {
 src_compile() {
 	CFLAGS+="${ECFLAGS}" CXXFLAGS+="${ECXXFLAGS}" LFLAGS+="${ELDFLAGS}" \
 		emake all || die 'emake failed'
+
+	# force stupid qmake to use LDFLAGS - yes, it's a big kluge...
+	if use qt4 ; then
+		rm -f bin/doxywizard
+		sed -i -e "s|\-Wl,\-O1 |\-Wl,\-O1 ${ELDFLAGS} |" \
+			addon/doxywizard/Makefile.doxywizard
+		make -C addon/doxywizard
+	fi
 
 	# generate html and pdf (if tetex in use) documents.
 	# errors here are not considered fatal, hence the ewarn message
