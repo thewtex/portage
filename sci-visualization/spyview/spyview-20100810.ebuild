@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header $
+# $Header: /var/cvsroot/gentoo-x86/sci-visualization/spyview/spyview-20100810.ebuild,v 1.5 2011/03/20 19:57:59 jlec Exp $
 
 EAPI=2
 
@@ -17,7 +17,7 @@ IUSE=""
 
 COMMON_DEPEND=">=dev-libs/boost-1.39
 	media-libs/netpbm
-	>=x11-libs/fltk-1.1.9:1.1
+	x11-libs/fltk:1
 	app-text/ghostscript-gpl"
 
 DEPEND="${COMMON_DEPEND}
@@ -35,7 +35,7 @@ src_prepare() {
 	# append-ldflags $(fltk-config --ldflags)
 	# this one leads to an insane amount of warnings
 
-	append-ldflags -L/usr/$(get_libdir)/fltk-1.1
+	append-ldflags -L$(dirname $(fltk-config --libs))
 }
 
 src_configure() {
