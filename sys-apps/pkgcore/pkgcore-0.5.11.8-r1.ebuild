@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/pkgcore/pkgcore-0.5.11.8-r1.ebuild,v 1.1 2011/03/05 22:13:29 ferringb Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/pkgcore/pkgcore-0.5.11.8-r1.ebuild,v 1.3 2011/03/22 06:20:44 ferringb Exp $
 
 DISTUTILS_SRC_TEST="setup.py"
 
@@ -24,8 +24,14 @@ DEPEND="${RDEPEND}
 
 DOCS="AUTHORS NEWS"
 
+pkg_setup() {
+	# disable snakeoil 2to3 caching...
+	unset PY2TO3_CACHEDIR
+	python_pkg_setup
+}
+
 src_unpack() {
-	unpack "$A"
+	unpack ${A}
 	cd "${S}"
 	epatch "${FILESDIR}/${PV}-magic-compat.patch"
 	distutils_src_prepare
