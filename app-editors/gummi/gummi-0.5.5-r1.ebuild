@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/gummi/gummi-0.5.5-r1.ebuild,v 1.1 2011/02/21 18:50:14 hwoarang Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-editors/gummi/gummi-0.5.5-r1.ebuild,v 1.3 2011/03/21 22:48:06 nirbheek Exp $
 
 EAPI=2
 inherit base eutils
@@ -11,7 +11,7 @@ SRC_URI="http://dev.midnightcoding.org/redmine/attachments/download/111/${P}.tar
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE=""
 
 LANGS="ca da de fr el es it nl pl pt_BR ro ru zh_TW"
@@ -25,7 +25,7 @@ RDEPEND="app-text/gtkspell
 	dev-texlive/texlive-latex
 	dev-texlive/texlive-latexextra
 	>=x11-libs/gtk+-2.16:2
-	x11-libs/gtksourceview"
+	x11-libs/gtksourceview:2.0"
 DEPEND="${RDEPEND}
 	app-text/poppler[cairo]
 	x11-libs/gtksourceview:2.0
