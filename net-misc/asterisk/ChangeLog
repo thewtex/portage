@@ -1,6 +1,37 @@
 # ChangeLog for net-misc/asterisk
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/asterisk/ChangeLog,v 1.298 2011/02/28 17:42:25 chainsaw Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/asterisk/ChangeLog,v 1.303 2011/03/23 16:35:15 chainsaw Exp $
+
+  23 Mar 2011; Tony Vroon <chainsaw@gentoo.org> -asterisk-1.6.2.16.2-r2.ebuild:
+  Remove vulnerable ebuild for CVE-2011-1174 & CVE-2011-1175 now that a secure
+  ebuild has been stabled.
+
+  23 Mar 2011; Thomas Kahle <tomka@gentoo.org> asterisk-1.6.2.17.2.ebuild:
+  x86 stable per bug 359767
+
+  23 Mar 2011; Christoph Mende <angelos@gentoo.org> asterisk-1.6.2.17.2.ebuild:
+  Stable on amd64 wrt bug #359767
+
+*asterisk-1.6.2.17.2 (23 Mar 2011)
+
+  23 Mar 2011; Tony Vroon <chainsaw@gentoo.org> -asterisk-1.6.2.17.ebuild,
+  +asterisk-1.6.2.17.2.ebuild:
+  Secure ebuild for the 1.6.2 branch; robustness fixes for the manager
+  interface. As per advisory AST-2011-003, a denial of service is possible
+  through resource exhaustion in previous versions. As per advisory
+  AST-2011-004, it is possible to cause a NULL pointer dereference by rapidly
+  opening & closing TCP/TLS connections. Removed all but the last stable
+  ebuild. For security bug #359767 filed by Pawel Hajdan, Jr.
+
+*asterisk-1.8.3.2 (23 Mar 2011)
+
+  23 Mar 2011; Tony Vroon <chainsaw@gentoo.org> -asterisk-1.8.2.4.ebuild,
+  -asterisk-1.8.3.ebuild, +asterisk-1.8.3.2.ebuild:
+  Secure ebuild for the 1.8 branch; robustness fixes for the manager interface.
+  As per advisory AST-2011-003, a denial of service is possible through
+  resource exhaustion in previous versions. As per advisory AST-2011-004, it is
+  possible to cause a NULL pointer dereference by rapidly opening & closing
+  TCP/TLS connections. Removed insecure ebuilds.
 
 *asterisk-1.6.2.17 (28 Feb 2011)
 

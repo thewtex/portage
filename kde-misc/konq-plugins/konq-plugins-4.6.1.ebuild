@@ -1,9 +1,10 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-misc/konq-plugins/konq-plugins-4.6.1.ebuild,v 1.2 2011/03/22 14:04:48 scarabeus Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-misc/konq-plugins/konq-plugins-4.6.1.ebuild,v 1.4 2011/03/23 12:05:42 scarabeus Exp $
 
 EAPI=4
 
+KDE_MINIMAL="4.6"
 inherit kde4-base
 
 DESCRIPTION="Various plugins for konqueror"
