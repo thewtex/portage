@@ -1539,7 +1539,6 @@ gnome-base/gnome-menus:introspection - Use dev-libs/gobject-introspection for in
 gnome-base/gnome-mount:nautilus - Enables the Nautilus plugin
 gnome-base/gnome-panel:bonobo - Enable Bonobo compatibility modules for applets still not ported to DBUS.
 gnome-base/gnome-panel:introspection - Use dev-libs/gobject-introspection for introspection
-gnome-base/gnome-session:splash - Enable gnome splash screen
 gnome-base/gvfs:archive - Enables support for accessing files in archives transparently via app-arch/libarchive
 gnome-base/gvfs:fuse - Enables fuse mount points in $HOME/.gvfs for legacy application access
 gnome-base/gvfs:gdu - Enable sys-apps/gnome-disk-utility integration
@@ -2397,6 +2396,23 @@ media-video/hwdecode-demos:vaapi - Enables VAAPI (Video Acceleration API) for ha
 media-video/hwdecode-demos:vdpau - Enables VDPAU decoders (requires nVidia video cards to offload CPU processing to video card
 media-video/kino:gpac - Enable GPAC support when exporting to 3GPP format
 media-video/kmplayer:npp - Compile the npp backend that plays xembed style browser plugins.
+media-video/libav:3dnowext - Enable manually-optimised routines using the AMD 3DNow!Ex SIMD instruction set, present in modern AMD CPUs. (Check for 3dnowext in /proc/cpuinfo to know whether your CPU supports it).
+media-video/libav:amr - Enables Adaptive Multi-Rate Audio support
+media-video/libav:cpudetection - Enables runtime CPU detection (useful for bindist, compatibility on other CPUs)
+media-video/libav:dirac - Enable Dirac video support (an advanced royalty-free video compression format) via the reference library: dirac.
+media-video/libav:faac - Use external faac library for AAC encoding
+media-video/libav:frei0r - Enable frei0r wrapping in libavfilter
+media-video/libav:hardcoded-tables - Use pre-calculated tables rather than calculating them on the fly.
+media-video/libav:mmxext - Enables mmx2 support
+media-video/libav:network - Enables network streaming support
+media-video/libav:pic - Force shared libraries to be built as PIC (this is slower)
+media-video/libav:qt-faststart - Build and install qt-faststart application
+media-video/libav:rtmp - Enable Real Time Messaging Protocol using librtmp
+media-video/libav:schroedinger - Enable Dirac video support (an advanced royalty-free video compression format) via libschroedinger (high-speed implementation in C of the Dirac codec).
+media-video/libav:ssse3 - faster floating point optimization for SSSE3 capable chips (Intel Core 2 and later chips)
+media-video/libav:vaapi - Enables VAAPI (Video Acceleration API) for hardware decoding
+media-video/libav:vdpau - Enables VDPAU decoders (requires nVidia video cards to offload CPU processing to video card
+media-video/libav:vpx - Enables vp8 codec support using libvpx: Decoding vp8 does not require this to be enabled but libvpx can also be used for decoding; encoding vp8 requires this useflag to be enabled though.
 media-video/lives:libvisual - Enable libvisual support
 media-video/mediainfo:libmms - Support for Microsoft Media Server (MMS) streams via libmms
 media-video/mjpegtools:yv12 - Enables support for the YV12 pixel format
@@ -3074,7 +3090,7 @@ net-libs/xulrunner:crashreporter - Enable crash reporter for bugs
 net-libs/xulrunner:custom-optimization - Fine-tune custom compiler optimizations
 net-libs/xulrunner:ipc - Use inter-process communication between tabs and plugins. Allows for greater stability in case of plugin crashes
 net-libs/xulrunner:system-sqlite - Use the system-wide dev-db/sqlite installation with secure-delete enabled
-net-libs/xulrunner:webm - Use system libvpxmedia-libs/libvpx
+net-libs/xulrunner:webm - Use system libvpx media-libs/libvpx
 net-libs/zeromq:pgm - 0MQ is build with 'Pragmatic General Multicast' (RFC 3208) support using the excellent OpenPGM implementation.
 net-mail/courier-imap:trashquota - include deleted messages, and the Trash folder, in the estimated quota usage for maildirs
 net-mail/cyrus-imapd:idled - Enable idled vs poll IMAP IDLE method
@@ -3181,6 +3197,8 @@ net-misc/curl:nss - Prefer NSS over openssl as the crypto engine
 net-misc/curl:ssl - Enable crypto engine support (via openssl if USE='-gnutls -nss')
 net-misc/dahdi:flash - Support (short) flash on FXS
 net-misc/dahdi-tools:ppp - Enables PPP/DAHDIRAS support
+net-misc/dhcp:client - Install the dhclient program
+net-misc/dhcp:server - Install the dhcpd and dhcrelay programs
 net-misc/dhcpcd:compat - Enable commandline compatibility with dhcpcd-3.x
 net-misc/directvnc:mouse - Adds mouse support
 net-misc/dnetstats:gnome - Use gksu to gain root access
@@ -3681,6 +3699,7 @@ sci-misc/nco:ncap2 - Build next generation netcdf arithmetic processor (needs de
 sci-misc/nco:udunits - Add sci-libs/udunits files support
 sci-misc/ncview:udunits - Add sci-libs/udunits files support
 sci-physics/abinit:plugins - Build all plugins
+sci-physics/bullet:double-precision - Build libraries in double precision
 sci-physics/bullet:extras - Build additional libraries
 sci-physics/cernlib-montecarlo:herwig - Build Herwig internal event generator, newer version available in sci-physics/herwig
 sci-physics/clhep:exceptions - Enable zoom exceptions for user intervention
@@ -4132,7 +4151,7 @@ www-client/epiphany:nss - Import passwords from older gecko based www-client/epi
 www-client/firefox:custom-optimization - Fine-tune custom compiler optimizations
 www-client/firefox:ipc - Use inter-process communication between tabs and plugins. Allows for greater stability in case of plugin crashes
 www-client/firefox:system-sqlite - Use the system-wide dev-db/sqlite installation with secure-delete enabled
-www-client/firefox:webm - Use system libvpxmedia-libs/libvpx
+www-client/firefox:webm - Use system libvpx media-libs/libvpx
 www-client/icecat:custom-optimization - Fine-tune custom compiler optimizations
 www-client/icecat:ipc - Use inter-process communication between tabs and plugins. Allows for greater stability in case of plugin crashes
 www-client/icecat:system-sqlite - Use the system-wide dev-db/sqlite installation with secure-delete enabled

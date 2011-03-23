@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-plugins/gecko-mediaplayer/gecko-mediaplayer-1.0.0.ebuild,v 1.6 2011/03/03 19:33:45 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-plugins/gecko-mediaplayer/gecko-mediaplayer-1.0.0.ebuild,v 1.9 2011/03/22 19:50:03 ssuominen Exp $
 
 EAPI=2
 GCONF_DEBUG=no
@@ -12,7 +12,7 @@ SRC_URI="http://${PN}.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ppc ~ppc64 x86"
+KEYWORDS="alpha amd64 ppc ppc64 x86"
 IUSE="gnome"
 
 RDEPEND=">=dev-libs/glib-2.14:2
@@ -33,6 +33,15 @@ pkg_setup() {
 		--with-plugin-dir=/usr/$(get_libdir)/${PLUGINS_DIR}"
 
 	DOCS="ChangeLog DOCS/tech/javascript.txt"
+}
+
+src_prepare() {
+	if has_version ">=net-libs/xulrunner-2"; then
+		sed -i -e '/PKG_CONFIG/s:libxul >= 2.0:libxul >= 2:' configure || die
+		sed -i -e '/NPP_Initialize/d' src/np_entry.cpp || die
+	fi
+
+	gnome2_src_prepare
 }
 
 src_install() {
