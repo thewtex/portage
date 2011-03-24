@@ -1,9 +1,9 @@
-dev-python/setuptools test? ( dev-python/nose ) >=app-admin/eselect-python-20091230 dev-lang/python
-dev-python/setproctitle >=app-admin/eselect-python-20091230 dev-lang/python
+dev-python/setuptools test? ( dev-python/nose ) >=app-admin/eselect-python-20091230 || ( =dev-lang/python-2.7* =dev-lang/python-2.6* =dev-lang/python-2.5* )
+dev-python/setproctitle >=app-admin/eselect-python-20091230 || ( =dev-lang/python-2.7* =dev-lang/python-2.6* =dev-lang/python-2.5* )
 0
 mirror://pypi/g/gunicorn/gunicorn-0.12.1.tar.gz
 
-http://gunicorn.org
+http://gunicorn.org http://pypi.python.org/pypi/gunicorn
 MIT
 A WSGI HTTP Server for UNIX, fast clients and nothing else
 ~amd64 ~x86
@@ -12,7 +12,7 @@ doc examples test
 
 
 
-2
+3
 
 compile install postinst postrm prepare test
 

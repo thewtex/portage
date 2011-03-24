@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12592 2011/03/23 16:53:34 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12594 2011/03/24 15:14:34 angelos Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -308,10 +308,6 @@ games-puzzle/gtetrinet
 =net-dns/bind-9.4*
 =net-dns/bind-tools-9.4*
 
-# Christoph Mende <angelos@gentoo.org> (22 Feb 2011)
-# Masked for removal, inotify support has been in tail -f since coreutils-7.5
-sys-apps/inotail
-
 # Jeremy Olexa <darkside@gentoo.org> (22 Feb 2011)
 # Masked for removal in 60 days by treecleaners
 # - Open bugs, tracked in bug 355961
@@ -331,11 +327,6 @@ net-ftp/atftp
 # Masked for removal in 60 days by treecleaners
 # Doesn't build, gentoo maintainer is not interested. bug 316501 & bug 247043
 dev-lang/gwydion-dylan
-
-# Markos Chandras <hwoarang@gentoo.org> (21 Feb 2011)
-# Does not work with gnome-panel-2.32.1. Bug #355901
-# Removal in 30 days
-x11-misc/talika
 
 # Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (21 Feb 2011)
 # Python 3.2 masked until sufficient number of reverse dependencies is fixed.

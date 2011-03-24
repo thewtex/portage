@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=3
+EAPI=4
 
 [[ ${PV} = *9999* ]] && VCS_ECLASS="git" || VCS_ECLASS=""
 
@@ -11,7 +11,7 @@ inherit toolchain-funcs eutils flag-o-matic multilib base ${VCS_ECLASS}
 namesuf="${PN/mplayer/}"
 
 IUSE="3dnow 3dnowext +a52 aalib +alsa altivec aqua +ass bidi bindist bl bluray
-bs2b +bzip2 +cddb +cdio cdparanoia cpudetection custom-cpuopts custom-cflags debug dga +dirac
+bs2b +bzip2 cddb +cdio cdparanoia cpudetection custom-cpuopts custom-cflags debug dga +dirac
 directfb doc +dts +dv dvb +dvd +dvdnav dxr3 +enca esd +faad fbcon
 ftp gif ggi gsm +iconv ipv6 jack joystick jpeg jpeg2k kernel_linux ladspa
 libcaca lirc +live mad md5sum +mmx mmxext mng +mp3 mpg123 nas
@@ -174,10 +174,20 @@ DEPEND="${RDEPEND}
 SLOT="0"
 LICENSE="GPL-2"
 if [[ ${PV} != *9999* ]]; then
-	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris ~x64-macos"
+	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 else
 	KEYWORDS=""
 fi
+
+# bindist does not cope with amr codecs (#299405#c6), win32codecs are nonfree
+# libcdio support: prefer libcdio over cdparanoia and don't check for cddb w/cdio
+# dvd navigation requires dvd read support
+# ass and freetype font require iconv and ass requires freetype fonts
+# unicode transformations are usefull only with iconv
+# libvorbis require external tremor to work
+# radio requires oss or alsa backend
+# xvmc requires xvideo support
+REQUIRED_USE="bindist? ( !win32codecs )"
 
 PATCHES=(
 )
@@ -392,7 +402,6 @@ src_configure() {
 	#
 	# use external libdvdcss, dvdread and dvdnav
 	myconf+=" --disable-dvdread-internal --disable-libdvdcss-internal"
-
 	if use dvd; then
 		use dvdnav || myconf+=" --disable-dvdnav"
 	else
@@ -504,9 +513,8 @@ src_configure() {
 	if use real; then
 		use x86 && myconf+=" --codecsdir=/opt/RealPlayer/codecs"
 		use amd64 && myconf+=" --codecsdir=/usr/$(get_libdir)/codecs"
-	elif ! use bindist; then
-		myconf+=" $(use_enable win32codecs win32dll)"
 	fi
+	myconf+=" $(use_enable win32codecs win32dll)"
 
 	################
 	# Video Output #
@@ -557,9 +565,7 @@ src_configure() {
 	# Advanced Options #
 	####################
 	# Platform specific flags, hardcoded on amd64 (see below)
-	if use cpudetection; then
-		myconf+=" --enable-runtime-cpudetection"
-	fi
+	use cpudetection && myconf+=" --enable-runtime-cpudetection"
 
 	# Turning off CPU optimizations usually will break the build.
 	# However, this use flag, if enabled, will allow users to completely
@@ -762,10 +768,10 @@ src_compile() {
 			hasq ${i} ${ALLOWED_LINGUAS} && BUILT_DOCS+=" ${i}"
 		done
 		if [[ -z $BUILT_DOCS ]]; then
-			emake -j1 -C DOCS/xml html-chunked || die "Failed to generate html docs"
+			emake -j1 -C DOCS/xml html-chunked
 		else
 			for i in ${BUILT_DOCS}; do
-				emake -j1 -C DOCS/xml html-chunked-${i} || die "Failed to generate html docs for ${i}"
+				emake -j1 -C DOCS/xml html-chunked-${i}
 			done
 		fi
 	fi
@@ -777,26 +783,24 @@ src_install() {
 	emake \
 		DESTDIR="${D}" \
 		INSTALLSTRIP="" \
-		install || die "emake install failed"
+		install
 
 	S+="/mplayer"
 	cd "${S}"
-	dodoc AUTHORS Copyright README etc/codecs.conf || die
+	dodoc AUTHORS Copyright README etc/codecs.conf
 
 	docinto tech/
-	dodoc DOCS/tech/{*.txt,mpsub.sub,playtree} || die
+	dodoc DOCS/tech/{*.txt,mpsub.sub,playtree}
 	docinto TOOLS/
-	dodoc TOOLS/* || die
+	dodoc -r TOOLS
 	if use real; then
 		docinto tech/realcodecs/
-		dodoc DOCS/tech/realcodecs/* || die
-		docinto TOOLS/realcodecs/
-		dodoc TOOLS/realcodecs/* || die
+		dodoc DOCS/tech/realcodecs/*
 	fi
 
 	if use doc; then
 		docinto html/
-		dohtml -r "${S}"/DOCS/HTML/* || die
+		dohtml -r "${S}"/DOCS/HTML/*
 	fi
 
 	if ! use ass && ! use truetype; then
@@ -813,10 +817,10 @@ src_install() {
 
 	if use symlink; then
 		insinto /etc/mplayer
-		newins "${S}/etc/example.conf" mplayer.conf || die
-		doins "${S}/etc/input.conf" || die
+		newins "${S}/etc/example.conf" mplayer.conf
+		doins "${S}/etc/input.conf"
 		if use osdmenu; then
-			doins "${S}/etc/menu.conf" || die
+			doins "${S}/etc/menu.conf"
 		fi
 
 		if use ass || use truetype; then
@@ -837,7 +841,7 @@ _EOF_
 		dosym ../../../etc/mplayer/mplayer.conf /usr/share/mplayer${namesuf}/mplayer.conf
 	fi
 
-	newbin "${S}/TOOLS/midentify.sh" midentify${namesuf} || die
+	newbin "${S}/TOOLS/midentify.sh" midentify${namesuf}
 
 	if [[ "${namesuf}" != "" ]] && use symlink; then
 		dosym "mplayer${namesuf}" /usr/bin/mplayer
