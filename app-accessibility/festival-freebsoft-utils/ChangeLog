@@ -1,6 +1,23 @@
 # ChangeLog for app-accessibility/festival-freebsoft-utils
-# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-accessibility/festival-freebsoft-utils/ChangeLog,v 1.19 2009/11/01 20:58:15 eva Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-accessibility/festival-freebsoft-utils/ChangeLog,v 1.21 2011/03/24 21:38:45 cbrannon Exp $
+
+  24 Mar 2011; Christopher Brannon <cbrannon@gentoo.org>
+  -festival-freebsoft-utils-0.4.ebuild,
+  -festival-freebsoft-utils-0.6.ebuild:
+  Get rid of old versions.
+  0.4 and 0.6 were not stable on any architecture. They can go, now
+  that we have the latest version in the tree.
+
+*festival-freebsoft-utils-0.10 (24 Mar 2011)
+
+  24 Mar 2011; Christopher Brannon <cbrannon@gentoo.org>
+  +festival-freebsoft-utils-0.10.ebuild:
+  * Version bump.
+  * Migrate to EAPI="4".
+  * Stop trying to install non-existent doc files (fixes bug #316847).
+  * Add missing RDEPENDs: media-sound/sox and virtual/libiconv.
+  * Add FDL-1.2 to LICENSE, since the documentation is covered under it.
 
   17 Oct 2009; Mark Loeser <halcy0n@gentoo.org>
   festival-freebsoft-utils-0.2.ebuild, festival-freebsoft-utils-0.4.ebuild,
