@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/carl/carl-0.9.ebuild,v 1.3 2010/10/12 08:30:57 phajdan.jr Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/carl/carl-0.9.ebuild,v 1.5 2011/03/25 13:32:23 klausman Exp $
 
 EAPI="3"
 SUPPORT_PYTHON_ABIS="1"
