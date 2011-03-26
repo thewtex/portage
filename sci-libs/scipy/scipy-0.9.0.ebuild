@@ -1,8 +1,9 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/scipy/scipy-0.9.0.ebuild,v 1.2 2011/03/08 21:08:00 arfrever Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/scipy/scipy-0.9.0.ebuild,v 1.4 2011/03/26 17:20:48 arfrever Exp $
 
 EAPI="3"
+
 SUPPORT_PYTHON_ABIS="1"
 RESTRICT_PYTHON_ABIS="*-jython"
 
@@ -23,11 +24,12 @@ SLOT="0"
 IUSE="doc umfpack"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 
-CDEPEND=">=dev-python/numpy-1.5
-	virtual/cblas
-	virtual/lapack
+CDEPEND="
+	>=dev-python/numpy-1.5
 	media-libs/qhull
 	sci-libs/arpack
+	virtual/cblas
+	virtual/lapack
 	umfpack? ( sci-libs/umfpack )"
 
 DEPEND="${CDEPEND}
