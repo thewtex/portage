@@ -420,6 +420,9 @@ app-emulation/virtualbox-bin:headless - Install without any graphic frontend
 app-emulation/virtualbox-bin:rdesktop-vrdp - Install the rdesktop client integration
 app-emulation/virtualbox-bin:sdk - Enable building of SDK
 app-emulation/virtualbox-bin:vboxwebsrv - Install the VirtualBox webservice
+app-emulation/vmware-player:vmware-tools - Install VMware Tools images
+app-emulation/vmware-workstation:vix - Install VIX. The VIX API allows you to write programs and scripts that automate virtual machine operations, and run programs or manipulate files within guest operating systems.
+app-emulation/vmware-workstation:vmware-tools - Install VMware Tools images
 app-emulation/vov:gprof - build with profiling support
 app-emulation/wine:capi - Enable ISDN support via CAPI
 app-emulation/wine:custom-cflags - Bypass strip-flags; use are your own peril
@@ -1005,7 +1008,6 @@ dev-libs/apr:older-kernels-compatibility - Enable binary compatibility with olde
 dev-libs/apr:urandom - Use /dev/urandom instead of /dev/random
 dev-libs/apr:uuid - Enable UUID support
 dev-libs/atk:introspection - Use dev-libs/gobject-introspection for introspection
-dev-libs/boolstuff:static - Enable static linking
 dev-libs/boost:eselect - Run "eselect boost update" even if version is already selected
 dev-libs/boost:tools - Build and install the boost tools (bcp, quickbook, inspect, wave)
 dev-libs/cyberjack:fox - Enable installation of x11-libs/fox based fxcyberjack program
@@ -1019,7 +1021,6 @@ dev-libs/e_dbus:bluetooth - Enable interfacing with net-wireless/bluez DBus API.
 dev-libs/e_dbus:connman - Enable interfacing with net-misc/connman DBus API.
 dev-libs/e_dbus:ofono - Enable interfacing with net-misc/ofono DBus API.
 dev-libs/e_dbus:test-binaries - Enable building of test binaries for enabled features
-dev-libs/e_dbus:ukit - Enable interfacing with sys-power/upower and sys-fs/udisks DBus API.
 dev-libs/ecore:ares - Enables support for asynchronous DNS using the net-dns/c-ares library
 dev-libs/ecore:evas - Provides easy to use canvas by gluing media-libs/evas and various input/output systems.
 dev-libs/ecore:glib - Enable dev-libs/glib eventloop support
@@ -1531,17 +1532,15 @@ gnome-base/gdm:consolekit - Allow proper handling of removable media according t
 gnome-base/gdm:dmx - Enables Distributed Multihead X (DMX) support
 gnome-base/gdm:remote - Enables support for secure remote connections
 gnome-base/gdm:xklavier - Use x11-libs/libxklavier for keyboard management
-gnome-base/gnome-applets:battstat - Enable deprecated battery applet for people unable to use gnome-extra/gnome-power-manager instead.
 gnome-base/gnome-light:automount - Use gnome-base/gvfs[gdu] for automounting of drives in nautilus
 gnome-base/gnome-menus:introspection - Use dev-libs/gobject-introspection for introspection
-gnome-base/gnome-mount:nautilus - Enables the Nautilus plugin
 gnome-base/gnome-panel:bonobo - Enable Bonobo compatibility modules for applets still not ported to DBUS.
 gnome-base/gnome-panel:introspection - Use dev-libs/gobject-introspection for introspection
 gnome-base/gvfs:archive - Enables support for accessing files in archives transparently via app-arch/libarchive
 gnome-base/gvfs:fuse - Enables fuse mount points in $HOME/.gvfs for legacy application access
 gnome-base/gvfs:gdu - Enable sys-apps/gnome-disk-utility integration
 gnome-base/gvfs:http - Enable the HTTP/DAV backend using net-libs/libsoup-gnome
-gnome-base/gvfs:iphone - Enables support for the iPhone and iPod touch
+gnome-base/gvfs:ios - Enable iOS support
 gnome-base/gvfs:udev - Enable udev base replacement code for cdda feature
 gnome-base/libgnomecanvas:glade - Enable glade support
 gnome-base/libgtop:introspection - Use dev-libs/gobject-introspection for introspection
@@ -1966,12 +1965,12 @@ media-libs/libcanberra:gstreamer - Enables gstreamer sound driver. Not useful wh
 media-libs/libcanberra:gtk - Enables building of gtk+ helper library, gtk+ runtime sound effects and the canberra-gtk-play utility. To enable the gtk+ sound effects add canberra-gtk-module to the colon separated list of modules in the GTK_MODULES environment variable.
 media-libs/libcanberra:pulseaudio - Enables PulseAudio sound driver that should be able to support positional event sounds. This is the preferred choice for best sound events experience and picked by default if compiled in and possible to use at runtime.
 media-libs/libcanberra:sound - Install x11-themes/sound-theme-freedesktop to get sounds on Gnome and Xfce.
-media-libs/libcanberra:tdb - Enables Trivial Database support
+media-libs/libcanberra:tdb - Enables Trivial Database support for caching purposes.
 media-libs/libchamplain:html - Install gtk-doc html version for this package
 media-libs/libchamplain:introspection - Use dev-libs/gobject-introspection for introspection
 media-libs/libggi:vis - Enables sparc vis support for libggi
-media-libs/libgpod:gtk - Enables ArtWorkDB support (including Photos and album covers)
-media-libs/libgpod:iphone - Enables support for the iPhone and iPod touch
+media-libs/libgpod:gtk - Enable ArtworkDB support
+media-libs/libgpod:ios - Enable iOS support
 media-libs/libmediainfo:libmms - Support for Microsoft Media Server (MMS) streams via libmms
 media-libs/libmikmod:raw - Enable raw file writer plug-in
 media-libs/libmp4v2:utils - Install command-line utilities
@@ -2137,7 +2136,7 @@ media-sound/banshee:podcast - Build with podcasting support
 media-sound/banshee:web - Enable support for plugins that access web-based services such as Amazon and wikipedia (requires net-libs/webkit-gtk)
 media-sound/banshee:youtube - Enable the Youtube plugin
 media-sound/clementine:ayatana - Build in support for Ayatana notification using the libindicate-qt plugin.
-media-sound/clementine:iphone - Enable support for iPod Touch, iPhone, iPad
+media-sound/clementine:ios - Enable iOS support
 media-sound/clementine:lastfm - Enable Last.fm streaming services support through media-libs/liblastfm
 media-sound/clementine:projectm - Build with ProjectM visualization
 media-sound/clementine:wiimote - Enable support for Wii remote
@@ -3788,7 +3787,6 @@ sys-apps/hal:disk-partition - Allows HAL to use libparted from sys-block/parted 
 sys-apps/hal:doc - Generates documentation that describes HAL's fdi format.
 sys-apps/hal:laptop - Adds support for power management scripts (sys-power/pm-utils)
 sys-apps/hal:selinux - Installs SELinux policies and links HAL to the SELinux libraries.
-sys-apps/halevt:rpath - Hardcode runtime library paths
 sys-apps/hwdata-gentoo:binary-drivers - Adds support for ATI/NVIDIA binary drivers
 sys-apps/ipmitool:openipmi - Use the system OpenIPMI implementation.
 sys-apps/iproute2:iptables - include support for iptables filtering
@@ -4092,12 +4090,14 @@ sys-power/powermgmt-base:pm-utils - Adds support for on_ac_power through sys-pow
 sys-power/suspend:crypt - Allows suspend and resume from encrypted disk
 sys-power/suspend:fbsplash - Add support for framebuffer splash
 sys-power/upower:introspection - Use dev-libs/gobject-introspection for introspection
+sys-power/upower:ios - Enable iOS support
 sys-process/cronie:inotify - Enable inotify filesystem monitoring support.
 sys-process/fcron:debug - Enable debug code and output. Since version 3.0.5 this will no longer force foreground execution, and fcron will be able to run as a service properly.
 sys-process/fcron:pam - Enable PAM support for fcron. This means that fcron will pass through the "fcron" stack before executing the jobs, and fcrontab will use the "fcrontab" stack to authenticate the user before editing its crontab file.
 sys-process/htop:openvz - Enable openvz support
 sys-process/htop:vserver - Enable vserver support
 sys-process/procps:n32 - Enable n32 ABI support on mips
+virtual/ffmpeg:vaapi - Enables VAAPI (Video Acceleration API) for hardware decoding
 virtual/ffmpeg:vdpau - Enables VDPAU decoders (requires nVidia video cards to offload CPU processing to video card
 virtual/mpi:romio - Enable romio, a high-performance portable MPI-IO
 virtual/mysql:embedded - Build embedded server (libmysqld)

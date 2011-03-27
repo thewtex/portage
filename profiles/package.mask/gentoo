@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12607 2011/03/27 04:22:12 darkside Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12613 2011/03/27 14:23:42 ssuominen Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,22 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Samuli Suominen <ssuominen@gentoo.org> (27 Mar 2011)
+# Orphaned library with bad habit of spreading around the system from libtool's
+# files. Not used by anything in tree. If you have problems after removal,
+# look into using lafilefixer or revdep-rebuild.
+# Removal in 30 days.
+dev-libs/eggdbus
+
+# Samuli Suominen <ssuominen@gentoo.org> (27 Mar 2011)
+# Last packages with hardcoded sys-apps/hal depend.
+# Upstream has either stopped development, or it's too slow.
+# Bugs 313425, 358935 and finally 313389.
+# Removal in 30 days.
+app-crypt/luks-tools
+media-video/thoggen
+sys-auth/pam_usb
 
 # Pawel Hajdan jr <phajdan.jr@gentoo.org> (26 Mar 2011)
 # Mask v8 versions used for www-client/chromium dev channel releases.
@@ -222,15 +238,6 @@ dev-perl/gnome2-print
 dev-tex/memoir
 dev-tex/listings
 
-# Samuli Suominen <ssuominen@gentoo.org> (11 Mar 2011)
-# No longer required by anything in tree. Has depends on
-# sys-apps/hal which is going away. Use USE=mono in libgpod
-# instead.
-# Removal in 30 days.
-dev-dotnet/ipod-sharp
-media-libs/libipoddevice
-dev-dotnet/podsleuth
-
 # Ulrich Mueller <ulm@gentoo.org> (11 Mar 2011)
 # Part of app-editors/emacs since version 22.1 or 23.1.
 # Masked for removal in 60 days, bug 358351.
@@ -263,11 +270,6 @@ media-libs/glitz
 # Mask for testing
 =virtual/perl-Module-Build-0.380.0
 =perl-core/Module-Build-0.380.0
-
-# Andreas K. Huettel <dilfridge@gentoo.org> (05 Mar 2011)
-# No new releases since 2007, no visible development, hard 
-# dependency on sys-apps/hal, bug 352856. Masked for removal.
-sys-power/guidance-power-manager
 
 # Justin Lecher <jlec@gentoo.org> (04 Mar 2011)
 # Probably API change, packages fail to compile
@@ -404,13 +406,6 @@ x11-drivers/nouveau-firmware
 # x11-drivers/xf86-video-vesa instead.
 x11-drivers/xf86-video-xgi
 
-# Samuli Suominen <ssuominen@gentoo.org> (12 Feb 2011)
-# Masked for removal.
-# Replaced by udisks-glue, udiskie, uam or traydevice.
-# You have 60 days left to migrate your configuration.
-dev-libs/boolstuff
-sys-apps/halevt
-
 # Christian Faulhammer <fauli@gentoo.org> (12 Feb 2011)
 # dev-vcs/bzr-gtk, dev-vcs/bzr-rewrite and dev-vcs/bzr-svn are not
 # compatible with new version, upstream is notified.
@@ -469,21 +464,6 @@ dev-ruby/IceRuby
 # New package, masked for an initial testing period. Needs exotic
 # hardware. Please post feedback on bug 165399.
 >=sci-libs/linux-gpib-3.2.15
-
-# Nirbheek Chauhan <nirbheek@gentoo.org> (31 Jan 2011)
-# ... also mask clutter-gst-1.3
-# Nirbheek Chauhan <nirbheek@gentoo.org> (12 Jan 2011)
-# Also mask pyclutter-1.3
-# Nirbheek Chauhan <nirbheek@gentoo.org> (24 Dec 2010)
-# Also mask clutter-gtk-0.90
-# Nirbheek Chauhan <nirbheek@gentoo.org> (5 Dec 2010)
-# Breaks ABI/API, mask till we figure out what all is affected
-# Needed for gnome-shell, which is masked (in the gnome overlay)
-# Also, clutter-1.5 needs glib-2.26 from the GNOME 2.32 mask
->=media-libs/clutter-1.4
->=media-libs/clutter-gtk-0.90
->=media-libs/clutter-gst-1.3
->=dev-python/pyclutter-1.3
 
 # Tony Vroon <chainsaw@gentoo.org> (30 Jan 2011)
 # Alpha releases; marked for your protection. If you

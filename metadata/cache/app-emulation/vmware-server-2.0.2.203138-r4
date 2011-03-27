@@ -1,0 +1,22 @@
+>=dev-lang/perl-5 >=sys-libs/glibc-2.3.5 sys-apps/pciutils sys-apps/findutils x11-misc/shared-mime-info virtual/os-headers
+>=dev-lang/perl-5 >=sys-libs/glibc-2.3.5 sys-apps/pciutils dev-libs/expat dev-libs/glib dev-libs/libxml2 =media-libs/libpng-1.2* sys-fs/fuse sys-libs/zlib virtual/pam x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXau x11-libs/libXdmcp x11-libs/libXext x11-libs/libXft x11-libs/libXt x11-libs/libXtst x11-misc/xdg-utils !<sys-apps/dbus-0.62 !app-emulation/vmware-player !app-emulation/vmware-workstation
+0
+x86? ( mirror://vmware/software/vmserver/VMware-server-2.0.2-203138.i386.tar.gz ) amd64? ( mirror://vmware/software/vmserver/VMware-server-2.0.2-203138.x86_64.tar.gz )
+fetch strip
+http://www.vmware.com/
+vmware
+VMware Server for Linux
+-* ~x86 ~amd64
+eutils flag-o-matic multilib pam pax-utils portability toolchain-funcs versionator
+
+
+~app-emulation/vmware-modules-208.2 app-emulation/vmware-vix
+
+2
+
+config install nofetch postinst postrm prepare prerm setup
+
+
+
+
+
