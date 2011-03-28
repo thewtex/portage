@@ -1,5 +1,5 @@
 >=sys-apps/sed-4
-mailwrapper? ( net-mail/mailwrapper ) !mailwrapper? ( !virtual/mta )
+!mail-mta/courier !mail-mta/esmtp !mail-mta/exim !mail-mta/msmtp !mail-mta/nbsmtp !mail-mta/netqmail !mail-mta/nullmailer !mail-mta/postfix !mail-mta/qmail-ldap !mail-mta/sendmail !mail-mta/ssmtp
 0
 mirror://qmail/netqmail-1.06.tar.gz http://dev.gentoo.org/~hollow/distfiles/genqmail-20080406.tar.bz2
 
@@ -8,10 +8,10 @@ public-domain
 a small null client that forwards mail via QMQP to a full qmail server
 ~amd64 ~arm ~hppa ~mips ~ppc ~sparc ~x86
 eutils fixheadtails flag-o-matic multilib portability qmail toolchain-funcs
-mailwrapper
 
 
-virtual/mta
+
+
 
 
 compile install unpack

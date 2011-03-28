@@ -172,7 +172,7 @@ DEPEND="${RDEPEND}
 "
 
 SLOT="0"
-LICENSE="GPL-2"
+LICENSE="GPL-3"
 if [[ ${PV} != *9999* ]]; then
 	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 else

@@ -1,5 +1,5 @@
 idn? ( net-dns/libidn ) nls? ( virtual/libintl ) gnome-keyring? ( gnome-base/gnome-keyring dev-python/gnome-keyring-python ) gnutls? ( >=net-libs/gnutls-1.2.0 ) !gnutls? ( ssl? ( >=dev-libs/openssl-0.9.6 ) ) sasl? ( >=virtual/gsasl-0.2.4 ) nls? ( sys-devel/gettext ) dev-util/pkgconfig
-idn? ( net-dns/libidn ) nls? ( virtual/libintl ) gnome-keyring? ( gnome-base/gnome-keyring dev-python/gnome-keyring-python ) gnutls? ( >=net-libs/gnutls-1.2.0 ) !gnutls? ( ssl? ( >=dev-libs/openssl-0.9.6 ) ) sasl? ( >=virtual/gsasl-0.2.4 ) mta? ( !virtual/mta ) !net-mail/mailwrapper
+idn? ( net-dns/libidn ) nls? ( virtual/libintl ) gnome-keyring? ( gnome-base/gnome-keyring dev-python/gnome-keyring-python ) gnutls? ( >=net-libs/gnutls-1.2.0 ) !gnutls? ( ssl? ( >=dev-libs/openssl-0.9.6 ) ) sasl? ( >=virtual/gsasl-0.2.4 ) !net-mail/mailwrapper mta? ( !mail-mta/courier !mail-mta/esmtp !mail-mta/exim !mail-mta/mini-qmail !mail-mta/nbsmtp !mail-mta/netqmail !mail-mta/nullmailer !mail-mta/postfix !mail-mta/qmail-ldap !mail-mta/sendmail !mail-mta/ssmtp )
 0
 mirror://sourceforge/msmtp/msmtp-1.4.23.tar.bz2
 
@@ -11,7 +11,7 @@ alpha amd64 ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-mac
 doc gnome-keyring gnutls idn +mta nls sasl ssl vim-syntax
 
 
-mta? ( virtual/mta )
+
 3
 
 configure install prepare

@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/pidgin-libnotify/pidgin-libnotify-0.14-r1.ebuild,v 1.1 2011/03/12 19:09:01 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/pidgin-libnotify/pidgin-libnotify-0.14-r1.ebuild,v 1.3 2011/03/28 12:35:35 phajdan.jr Exp $
 
 EAPI=2
 inherit eutils
@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/gaim-libnotify/${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc x86"
 IUSE="nls debug"
 
 RDEPEND=">=x11-libs/libnotify-0.3.2
@@ -24,6 +24,7 @@ DEPEND="${RDEPEND}
 src_prepare() {
 	EPATCH_FORCE=yes EPATCH_SUFFIX=diff epatch "${WORKDIR}"/debian/patches
 	epatch "${FILESDIR}"/${P}-libnotify-0.7.patch
+	sed -i -e '/CFLAGS/s:-g3::' configure || die
 }
 
 src_configure() {

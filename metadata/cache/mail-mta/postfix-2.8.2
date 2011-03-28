@@ -1,5 +1,5 @@
 >=sys-libs/db-3.2 >=dev-libs/libpcre-3.4 cdb? ( || ( >=dev-db/cdb-0.75-r1 >=dev-db/tinycdb-0.76 ) ) ldap? ( >=net-nds/openldap-1.2 ) mysql? ( virtual/mysql ) pam? ( virtual/pam ) postgres? ( dev-db/postgresql-base ) sasl? ( >=dev-libs/cyrus-sasl-2 ) sqlite? ( dev-db/sqlite:3 ) ssl? ( >=dev-libs/openssl-0.9.6g ) ssl? ( dev-libs/openssl )
->=sys-libs/db-3.2 >=dev-libs/libpcre-3.4 cdb? ( || ( >=dev-db/cdb-0.75-r1 >=dev-db/tinycdb-0.76 ) ) ldap? ( >=net-nds/openldap-1.2 ) mysql? ( virtual/mysql ) pam? ( virtual/pam ) postgres? ( dev-db/postgresql-base ) sasl? ( >=dev-libs/cyrus-sasl-2 ) sqlite? ( dev-db/sqlite:3 ) ssl? ( >=dev-libs/openssl-0.9.6g ) net-mail/mailbase !virtual/mta !net-mail/mailwrapper selinux? ( sec-policy/selinux-postfix )
+>=sys-libs/db-3.2 >=dev-libs/libpcre-3.4 cdb? ( || ( >=dev-db/cdb-0.75-r1 >=dev-db/tinycdb-0.76 ) ) ldap? ( >=net-nds/openldap-1.2 ) mysql? ( virtual/mysql ) pam? ( virtual/pam ) postgres? ( dev-db/postgresql-base ) sasl? ( >=dev-libs/cyrus-sasl-2 ) sqlite? ( dev-db/sqlite:3 ) ssl? ( >=dev-libs/openssl-0.9.6g ) net-mail/mailbase !virtual/mta !net-mail/mailwrapper selinux? ( sec-policy/selinux-postfix ) !mail-mta/courier !mail-mta/esmtp !mail-mta/exim !mail-mta/mini-qmail !mail-mta/msmtp !mail-mta/nbsmtp !mail-mta/netqmail !mail-mta/nullmailer !mail-mta/qmail-ldap !mail-mta/sendmail !mail-mta/ssmtp
 0
 ftp://ftp.porcupine.org/mirrors/postfix-release/official/postfix-2.8.2.tar.gz vda? ( http://vda.sourceforge.net/VDA/postfix-vda-v10-2.8.1.patch )
 
@@ -11,7 +11,7 @@ eutils flag-o-matic multilib pam portability ssl-cert toolchain-funcs
 cdb doc dovecot-sasl examples hardened ipv6 ldap mbox mysql nis pam postgres sasl selinux sqlite ssl vda ssl
 
 
-virtual/mta
+
 4
 
 configure install postinst prepare setup

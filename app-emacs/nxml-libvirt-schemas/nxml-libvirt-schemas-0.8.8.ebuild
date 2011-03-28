@@ -1,14 +1,15 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/nxml-libvirt-schemas/nxml-libvirt-schemas-0.8.8.ebuild,v 1.2 2011/03/12 14:42:29 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/nxml-libvirt-schemas/nxml-libvirt-schemas-0.8.8.ebuild,v 1.3 2011/03/28 07:58:56 flameeyes Exp $
 
 EAPI=2
 
-BACKPORTS=
+#BACKPORTS=
 NEED_EMACS=23
+
 inherit elisp eutils
 
-MY_P="libvirt-${PV}"
+MY_P="libvirt-${PV/_rc/-rc}"
 
 DESCRIPTION="Extension for nxml-mode with libvirt schemas"
 HOMEPAGE="http://www.libvirt.org/"
@@ -28,7 +29,7 @@ DEPEND="app-text/trang"
 RDEPEND=""
 
 SITEFILE=60${PN}-gentoo.el
-S="${WORKDIR}/${MY_P}"
+S="${WORKDIR}/${MY_P%-rc*}"
 
 src_prepare() {
 	[[ -d "${WORKDIR}/patches" ]] && \

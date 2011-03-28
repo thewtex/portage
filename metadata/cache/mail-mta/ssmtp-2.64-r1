@@ -1,5 +1,5 @@
 ssl? ( !gnutls? ( dev-libs/openssl ) gnutls? ( net-libs/gnutls ) ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b
-ssl? ( !gnutls? ( dev-libs/openssl ) gnutls? ( net-libs/gnutls ) ) net-mail/mailbase !net-mail/mailwrapper !virtual/mta
+ssl? ( !gnutls? ( dev-libs/openssl ) gnutls? ( net-libs/gnutls ) ) net-mail/mailbase !net-mail/mailwrapper !mail-mta/courier !mail-mta/esmtp !mail-mta/exim !mail-mta/mini-qmail !mail-mta/msmtp !mail-mta/nbsmtp !mail-mta/netqmail !mail-mta/nullmailer !mail-mta/postfix !mail-mta/qmail-ldap !mail-mta/sendmail
 0
 mirror://debian/pool/main/s/ssmtp/ssmtp_2.64.orig.tar.bz2 http://dev.gentoo.org/~flameeyes/ssmtp/ssmtp-2.64-patches-2.tar.bz2
 
@@ -11,7 +11,7 @@ autotools eutils libtool multilib portability toolchain-funcs
 ipv6 ssl gnutls
 
 
-virtual/mta
+
 3
 
 compile configure install prepare setup

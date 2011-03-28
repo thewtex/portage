@@ -1,8 +1,10 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/libssh/libssh-9999.ebuild,v 1.3 2011/02/21 15:09:51 scarabeus Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/libssh/libssh-9999.ebuild,v 1.4 2011/03/28 11:14:42 scarabeus Exp $
 
-EAPI=3
+# Maintainer: check IUSE-defaults at DefineOptions.cmake
+
+EAPI=4
 
 inherit eutils cmake-utils git
 
@@ -13,7 +15,7 @@ EGIT_REPO_URI="git://git.libssh.org/projects/libssh.git"
 LICENSE="LGPL-2.1"
 KEYWORDS=""
 SLOT="0"
-IUSE="debug gcrypt examples +sftp ssh1 server static-libs zlib"
+IUSE="debug examples gcrypt pcap +sftp ssh1 server static-libs zlib"
 
 DEPEND="
 	zlib? ( >=sys-libs/zlib-1.2 )
@@ -22,10 +24,13 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-DOCS=(AUTHORS README ChangeLog)
+DOCS=( AUTHORS README ChangeLog )
 
 src_prepare() {
-	sed -i '/add_subdirectory(examples)/s/^/#DONOTWANT/' CMakeLists.txt
+	# just install the examples do not compile them
+	sed -i \
+		-e '/add_subdirectory(examples)/s/^/#DONOTWANT/' \
+		CMakeLists.txt || die
 }
 
 src_configure() {
@@ -49,6 +54,6 @@ src_install() {
 
 	if use examples; then
 		insinto /usr/share/doc/"${PF}"/examples
-		doins examples/*.c
+		doins examples/*.{c,h,cpp}
 	fi
 }
