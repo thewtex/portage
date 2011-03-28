@@ -427,6 +427,7 @@ app-emulation/vov:gprof - build with profiling support
 app-emulation/wine:capi - Enable ISDN support via CAPI
 app-emulation/wine:custom-cflags - Bypass strip-flags; use are your own peril
 app-emulation/wine:gecko - Add support for the Gecko engine when using iexplore
+app-emulation/wine:hal - Enable obsolete sys-apps/hal support
 app-emulation/wine:mousewarp - Add mouse warp patch -- enable this if you primarily play games (http://bugs.winehq.org/show_bug.cgi?id=6971)
 app-emulation/wine:perl - Install helpers written in perl (winedump/winemaker)
 app-emulation/wine:samba - Add support for NTLM auth. see http://wiki.winehq.org/NtlmAuthSetupGuide and http://wiki.winehq.org/NtlmSigningAndSealing
@@ -639,6 +640,7 @@ app-pda/libopensync-plugin-syncml:http - Enable http transports
 app-pda/libopensync-plugin-syncml:obex - Enable obex transports
 app-pda/libsyncml:http - Enable http transports
 app-pda/libsyncml:obex - Enable obex transports
+app-pda/synce-sync-engine:opensync - Enable OpenSync (app-pda/libopensync) python plug-in
 app-portage/conf-update:colordiff - Use colors when displaying diffs (app-misc/colordiff)
 app-portage/eix:bzip2 - Support for parsing of environment.bz2 to guess repository name of packages installed with ancient portage versions (requires app-arch/bzip2). This flag is safe to disable for portage users that have re-merged all packages since 2007. This flag will be phased out.
 app-portage/eix:debug - Build with CXXFLAGS/LDFLAGS for debugging support; not recommended for normal use.
@@ -1382,6 +1384,7 @@ dev-vcs/git:mozsha1 - Makes git use an optimized SHA1 routine from Mozilla that 
 dev-vcs/git:ppcsha1 - Make use of a bundled routine that is optimized for the PPC arch.
 dev-vcs/git:subversion - Include git-svn for dev-vcs/subversion support.
 dev-vcs/git:webdav - Adds support for push'ing to HTTP repositories via DAV.
+dev-vcs/gitg:glade - Install a glade catalog file
 dev-vcs/gitolite:contrib - Install user-contributed files
 dev-vcs/gitolite-gentoo:contrib - Install user-contributed files
 dev-vcs/mercurial:bugzilla - Support bugzilla integration.
@@ -1539,6 +1542,7 @@ gnome-base/gnome-panel:introspection - Use dev-libs/gobject-introspection for in
 gnome-base/gvfs:archive - Enables support for accessing files in archives transparently via app-arch/libarchive
 gnome-base/gvfs:fuse - Enables fuse mount points in $HOME/.gvfs for legacy application access
 gnome-base/gvfs:gdu - Enable sys-apps/gnome-disk-utility integration
+gnome-base/gvfs:hal - Enable obsolete sys-apps/hal support
 gnome-base/gvfs:http - Enable the HTTP/DAV backend using net-libs/libsoup-gnome
 gnome-base/gvfs:ios - Enable iOS support
 gnome-base/gvfs:udev - Enable udev base replacement code for cdda feature
@@ -1698,6 +1702,7 @@ kde-base/smoke:qscintilla - Compile bindings for x11-libs/qscintilla.
 kde-base/smoke:qthelp - Compile bindings for QtHelp from x11-libs/qt-assistant.
 kde-base/smoke:qwt - Compile bindings for x11-libs/qwt.
 kde-base/smoke:webkit - Compile bindings for x11-libs/qt-webkit.
+kde-base/solid:hal - Enable obsolete sys-apps/hal support.
 kde-base/solid:wicd - Enable Wicd wired and wireless network manager.
 kde-base/step:qalculate - Enable the libqalculate library for unit conversion
 kde-misc/kdiff3:konqueror - Enable integration with konqueror
@@ -1853,6 +1858,7 @@ media-gfx/asymptote:sigsegv - Enables using dev-libs/libsigsegv
 media-gfx/blender:blender-game - Adds game engine support to blender
 media-gfx/blender:player - Enable blender player
 media-gfx/blender:verse - Adds verse clustering features to blender
+media-gfx/brlcad:benchmarks - Run benchmarks during test phase (need test option enabled)
 media-gfx/comix:rar - Pulls app-arch/unrar for rar file support
 media-gfx/digikam:addressbook - Add support for kdepim
 media-gfx/digikam:geolocation - Add support for marble
@@ -2224,6 +2230,7 @@ media-sound/pulseaudio:doc - Build the doxygen-described API documentation.
 media-sound/pulseaudio:equalizer - Enable the equalizer module (requires sci-libs/fftw).
 media-sound/pulseaudio:glib - Enable glib eventloop support
 media-sound/pulseaudio:gnome - Use GConf to store user preferences on streams and so on. Don't enable this flag if you want to use a system wide instance. If unsure, enable this flag.
+media-sound/pulseaudio:hal - Enable obsolete sys-apps/hal support
 media-sound/pulseaudio:orc - Use dev-lang/orc for runtime optimisations.
 media-sound/pulseaudio:oss - Enable OSS sink/source (output/input). Deprecated, upstream does not support this on systems where other sink/source systems are available (i.e.: Linux). The padsp wrapper is now always build if the system supports OSS at all.
 media-sound/pulseaudio:realtime - Makes PulseAudio use RealtimeKit (sys-auth/rtkit) to get real-time priority while running.
@@ -2740,9 +2747,7 @@ net-dns/maradns:authonly - Allows one to build only authoritative DNS server
 net-dns/mydns:alias - Enable David Phillips aliasing
 net-dns/mydns:status - Enable the STATUS opcode to check server status
 net-dns/pdns:opendbx - Enable the OpenDBX backend
-net-dns/pdnsd:isdn - Enable ISDN features
-net-dns/pdnsd:nptl - Linux-only: override auto-detection of the system threading implementation and force usage of the Native Posix Thread Library.
-net-dns/pdnsd:underscores - Enable support for domain names containing underscores
+net-dns/pdnsd:isdn - Linux-only: check status of ippp interfaces with ISDN-specific system calls.
 net-dns/pdnsd:urandom - Linux-only: use /dev/urandom (pseudo-random number generation) instead of the default use of random() PRNG.
 net-dns/unbound:gost - Enable GOST support
 net-dns/unbound:libevent - Use dev-libs/libevent instead of internal select based events
@@ -3696,7 +3701,6 @@ sci-mathematics/unuran:rngstreams - Use sci-mathematics/rngstreams library
 sci-mathematics/yacas:server - Build the network server version
 sci-misc/boinc:client - Build client part of the boinc. Not only the manager but also the computation unit. With +X only you will have only manager which can connect to remote clients.
 sci-misc/boinc:cuda - Use nvidia cuda toolkit for speeding up computations. NOTE: works only for subset of nvidia graphic cards so make sure your card is supported before opening bug about it.
-sci-misc/brlcad:benchmarks - Run benchmarks during test phase (need test option enabled)
 sci-misc/h5utils:octave - Build Octave plugins
 sci-misc/nco:ncap2 - Build next generation netcdf arithmetic processor (needs dev-java/antlr)
 sci-misc/nco:udunits - Add sci-libs/udunits files support
@@ -3753,6 +3757,7 @@ sci-visualization/qtiplot:xls - Import support for Microsoft office excel sheets
 sci-visualization/veusz:fits - Add FITS format via dev-python/pyfits
 sec-policy/selinux-base-policy:open_perms - Enable the open permissions for file object classes (SELinux policy capability).
 sec-policy/selinux-base-policy:peer_perms - Enable the labeled networking peer permissions (SELinux policy capability).
+sec-policy/selinux-desktop:hal - Enable obsolete sys-apps/hal support
 sys-apps/acl:nfs - add support for NFS acls
 sys-apps/baselayout-prefix:prefix-chaining - install in a chained Prefix environment
 sys-apps/busybox:make-symlinks - Create all the appropriate symlinks in /bin and /sbin.
@@ -4081,6 +4086,7 @@ sys-libs/uclibc:wordexp - Add support for word expansion (wordexp.h)
 sys-power/cpufreqd:nforce2 - Enable support for nforce2 voltage settings plug-in
 sys-power/cpufreqd:nvidia - Enable nvidia overclocking (media-video/nvclock) plug-in
 sys-power/cpufreqd:pmu - Enable Power Management Unit plug-in
+sys-power/nut:hal - Enable obsolete sys-apps/hal support
 sys-power/nvclock:gtk - Install the GTK+ based graphical interface
 sys-power/phctool:sudo - Enable support for sudo to run gui from non-root user
 sys-power/pm-utils:ntp - Install support for net-misc/ntp

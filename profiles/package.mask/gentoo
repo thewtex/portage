@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12613 2011/03/27 14:23:42 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12620 2011/03/28 04:09:56 ssuominen Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,33 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Samuli Suominen <ssuominen@gentoo.org> (28 Mar 2011)
+# Masked temporarily until bug 360849 is solved so people
+# can emerge udev.
+=sys-apps/pciutils-3.1.7-r1
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (27 Mar 2011)
+# Last release in 2006, nobody looking after it.
+# Pending removal on 2011-04-27
+app-text/ssddiff
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (27 Mar 2011)
+# Abandoned project of mine. Nothing really use it.
+# Pending removal on 2011-04-27
+app-text/mxml2man
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (27 Mar 2011)
+# Abandoned project of mine; doesn't work as intended on Linux
+# nowadays.
+# Pending removal on 2011-04-27
+sys-block/unieject
+
+# Jeroen Roovers <jer@gentoo.org> (27 Mar 2011)
+# Unmaintained, does not work with IPv6 (bug #257353), forked to iptraf-ng (bug
+# #305781) - please use net-analyzer/iptraf-ng instead.
+# To be removed in 30 days.
+net-analyzer/iptraf
 
 # Samuli Suominen <ssuominen@gentoo.org> (27 Mar 2011)
 # Orphaned library with bad habit of spreading around the system from libtool's
@@ -417,13 +444,10 @@ x11-drivers/xf86-video-xgi
 ~dev-vcs/bzr-svn-1.1.0
 
 # Samuli Suominen <ssuominen@gentoo.org> (10 Feb 2011)
-# Masked for QA. Talk to QA before touching this mask.
-# Unmaintained and completely broken wrt bugs
-# 185475, 211262, 247268, 276220, 287751, 293501, 298109,
-# 301729, 308801, 311763, 311765, 328691, 340605, 348483,
-# 352506, 237366, 250054
-# Removal in 30 days
-app-pda/libopensync
+# Temporarily masked until the new maintainer is ready
+# for unmasking.
+# http://bugs.gentoo.org/show_bug.cgi?id=354423
+>=app-pda/libopensync-0.30
 app-pda/libopensync-plugin-evolution2
 app-pda/libopensync-plugin-file
 app-pda/libopensync-plugin-gnokii
@@ -431,7 +455,7 @@ app-pda/libopensync-plugin-google-calendar
 app-pda/libopensync-plugin-gpe
 app-pda/libopensync-plugin-irmc
 app-pda/libopensync-plugin-palm
-app-pda/libopensync-plugin-python
+>=app-pda/libopensync-plugin-python-0.30
 app-pda/libopensync-plugin-sunbird
 app-pda/libopensync-plugin-syncml
 app-pda/libopensync-plugin-vformat

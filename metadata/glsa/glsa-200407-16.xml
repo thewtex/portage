@@ -17,7 +17,7 @@
   </synopsis>
   <product type="ebuild">Kernel</product>
   <announced>July 22, 2004</announced>
-  <revised>October 29, 2004: 02</revised>
+  <revised>March 27, 2011: 03</revised>
   <bug>56171</bug>
   <bug>56479</bug>
   <access>local</access>
@@ -140,8 +140,10 @@
       <vulnerable range="lt">2.6.6-r4</vulnerable>
     </package>
     <package name="sys-kernel/vserver-sources" auto="yes" arch="*">
-      <unaffected range="ge">2.4.26.1.28-r1</unaffected>
+      <unaffected range="ge">2.0</unaffected>
       <vulnerable range="lt">2.4.26.1.28-r1</vulnerable>
+      <vulnerable range="ge">2.4</vulnerable>
+      <vulnerable range="lt">2.0</vulnerable>
     </package>
     <package name="sys-kernel/win4lin-sources" auto="yes" arch="*">
       <unaffected range="rge">2.4.26-r3</unaffected>
@@ -171,102 +173,102 @@
   <background>
     <p>
     The Linux kernel is responsible for managing the core aspects of a
-    GNU/Linux system, providing an interface for core system applications as
-    well as providing the essential structure and capability to access hardware
-    that is needed for a running system.
+    GNU/Linux system, providing an interface for core system applications
+    as well as providing the essential structure and capability to access
+    hardware that is needed for a running system.
     </p>
   </background>
   <description>
     <p>
-    The Linux kernel allows a local attacker to mount a remote file system on a
-    vulnerable Linux host and modify files' group IDs. On 2.4 series kernels
-    this vulnerability only affects shared NFS file systems. This vulnerability
-    has been assigned CAN-2004-0497 by the Common Vulnerabilities and Exposures
-    project.
+    The Linux kernel allows a local attacker to mount a remote file system
+    on a vulnerable Linux host and modify files' group IDs. On 2.4 series
+    kernels this vulnerability only affects shared NFS file systems. This
+    vulnerability has been assigned CAN-2004-0497 by the Common
+    Vulnerabilities and Exposures project.
     </p>
     <p>
     Also, a flaw in the handling of /proc attributes has been found in 2.6
-    series kernels; allowing the unauthorized modification of /proc entries,
-    especially those which rely solely on file permissions for security to
-    vital kernel parameters.
+    series kernels; allowing the unauthorized modification of /proc
+    entries, especially those which rely solely on file permissions for
+    security to vital kernel parameters.
     </p>
     <p>
     An issue specific to the VServer Linux sources has been found, by which
-    /proc related changes in one virtual context are applied to other contexts
-    as well, including the host system.
+    /proc related changes in one virtual context are applied to other
+    contexts as well, including the host system.
     </p>
     <p>
-    CAN-2004-0447 resolves a local DoS vulnerability on IA64 platforms which
-    can cause unknown behaviour and CAN-2004-0565 resolves a floating point
-    information leak on IA64 platforms by which registers of other processes
-    can be read by a local user.
+    CAN-2004-0447 resolves a local DoS vulnerability on IA64 platforms
+    which can cause unknown behaviour and CAN-2004-0565 resolves a floating
+    point information leak on IA64 platforms by which registers of other
+    processes can be read by a local user.
     </p>
     <p>
-    Finally, CAN-2004-0496 addresses some more unknown vulnerabilities in 2.6
-    series Linux kernels older than 2.6.7 which were found by the Sparse source
-    code checking tool.
+    Finally, CAN-2004-0496 addresses some more unknown vulnerabilities in
+    2.6 series Linux kernels older than 2.6.7 which were found by the
+    Sparse source code checking tool.
     </p>
   </description>
   <impact type="high">
     <p>
-    Bad Group IDs can possibly cause a Denial of Service on parts of a host if
-    the changed files normally require a special GID to properly operate. By
-    exploiting this vulnerability, users in the original file group would also
-    be blocked from accessing the changed files.
+    Bad Group IDs can possibly cause a Denial of Service on parts of a host
+    if the changed files normally require a special GID to properly
+    operate. By exploiting this vulnerability, users in the original file
+    group would also be blocked from accessing the changed files.
     </p>
     <p>
     The /proc attribute vulnerability allows local users with previously no
-    permissions to certain /proc entries to exploit the vulnerability and then
-    gain read, write and execute access to entries.
+    permissions to certain /proc entries to exploit the vulnerability and
+    then gain read, write and execute access to entries.
     </p>
     <p>
-    These new privileges can be used to cause unknown behaviour ranging from
-    reduced system performance to a Denial of Service by manipulating various
-    kernel options which are usually reserved for the superuser. This flaw
-    might also be used for opening restrictions set through /proc entries,
-    allowing further attacks to take place through another possibly unexpected
-    attack vector.
+    These new privileges can be used to cause unknown behaviour ranging
+    from reduced system performance to a Denial of Service by manipulating
+    various kernel options which are usually reserved for the superuser.
+    This flaw might also be used for opening restrictions set through /proc
+    entries, allowing further attacks to take place through another
+    possibly unexpected attack vector.
     </p>
     <p>
-    The VServer issue can also be used to induce similar unexpected behaviour
-    to other VServer contexts, including the host. By successful exploitation,
-    a Denial of Service for other contexts can be caused allowing only root to
-    read certain /proc entries. Such a change would also be replicated to other
-    contexts, forbidding normal users on those contexts to read /proc entries
-    which could contain details needed by daemons running as a non-root user,
-    for example.
+    The VServer issue can also be used to induce similar unexpected
+    behaviour to other VServer contexts, including the host. By successful
+    exploitation, a Denial of Service for other contexts can be caused
+    allowing only root to read certain /proc entries. Such a change would
+    also be replicated to other contexts, forbidding normal users on those
+    contexts to read /proc entries which could contain details needed by
+    daemons running as a non-root user, for example.
     </p>
     <p>
     Additionally, this vulnerability allows an attacker to read information
-    from another context, possibly hosting a different server, gaining critical
-    information such as what processes are running. This may be used for
-    furthering the exploitation of either context.
+    from another context, possibly hosting a different server, gaining
+    critical information such as what processes are running. This may be
+    used for furthering the exploitation of either context.
     </p>
     <p>
     CAN-2004-0447 and CAN-2004-0496 permit various local unknown Denial of
-    Service vulnerabilities with unknown impacts - these vulnerabilities can be
-    used to possibly elevate privileges or access reserved kernel memory which
-    can be used for further exploitation of the system.
+    Service vulnerabilities with unknown impacts - these vulnerabilities
+    can be used to possibly elevate privileges or access reserved kernel
+    memory which can be used for further exploitation of the system.
     </p>
     <p>
-    CAN-2004-0565 allows FPU register values of other processes to be read by a
-    local user setting the MFH bit during a floating point operation - since no
-    check was in place to ensure that the FPH bit was owned by the requesting
-    process, but only an MFH bit check, an attacker can simply set the MFH bit
-    and access FPU registers of processes running as other users, possibly
-    those running as root.
+    CAN-2004-0565 allows FPU register values of other processes to be read
+    by a local user setting the MFH bit during a floating point operation -
+    since no check was in place to ensure that the FPH bit was owned by the
+    requesting process, but only an MFH bit check, an attacker can simply
+    set the MFH bit and access FPU registers of processes running as other
+    users, possibly those running as root.
     </p>
   </impact>
   <workaround>
     <p>
-    2.4 users may not be affected by CAN-2004-0497 if they do not use remote
-    network filesystems and do not have support for any such filesystems in
-    their kernel configuration. All 2.6 users are affected by the /proc
-    attribute issue and the only known workaround is to disable /proc support.
-    The VServer flaw applies only to vserver-sources, and no workaround is
-    currently known for the issue. There is no known fix to CAN-2004-0447,
-    CAN-2004-0496 or CAN-2004-0565 other than to upgrade the kernel to a
-    patched version.
+    2.4 users may not be affected by CAN-2004-0497 if they do not use
+    remote network filesystems and do not have support for any such
+    filesystems in their kernel configuration. All 2.6 users are affected
+    by the /proc attribute issue and the only known workaround is to
+    disable /proc support. The VServer flaw applies only to
+    vserver-sources, and no workaround is currently known for the issue.
+    There is no known fix to CAN-2004-0447, CAN-2004-0496 or CAN-2004-0565
+    other than to upgrade the kernel to a patched version.
     </p>
     <p>
     As a result, all users affected by any of these vulnerabilities should
@@ -275,14 +277,14 @@
   </workaround>
   <resolution>
     <p>
-    Users are encouraged to upgrade to the latest available sources for their
-    system:
+    Users are encouraged to upgrade to the latest available sources for
+    their system:
     </p>
     <code>
     # emerge sync
     # emerge -pv your-favorite-sources
     # emerge your-favorite-sources
-
+    
     # # Follow usual procedure for compiling and installing a kernel.
     # # If you use genkernel, run genkernel as you would do normally.</code>
   </resolution>
