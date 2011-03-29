@@ -1,10 +1,50 @@
 # ChangeLog for profile directory
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.5218 2011/03/28 09:40:38 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.5228 2011/03/29 01:58:47 flameeyes Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  29 Mar 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  arch/amd64/package.use.mask, arch/amd64/use.mask, arch/hppa/use.mask,
+  arch/x86/package.use.mask, arch/x86/use.mask, base/package.use.mask,
+  default/linux/use.mask, prefix/linux/use.mask:
+  Only unmask nouveau for x86 and amd64; follow the x11-base/xorg-drivers
+  masking this time, but cover _all_ packages.
+
+  28 Mar 2011; Andreas K. Huettel <dilfridge@gentoo.org> updates/1Q-2011:
+  Add package move media-sound/phonon-xine > media-libs/phonon-xine, bug
+  325319
+
+  28 Mar 2011; Andreas K. Huettel <dilfridge@gentoo.org> updates/1Q-2011:
+  Add package move media-sound/phonon-vlc > media-libs/phonon-vlc, bug
+  325319
+
+  28 Mar 2011; Luca Barbato <lu_zero@gentoo.org> arch/ia64/package.use.mask:
+  Mask mplayer2 arch specific flags (part II)
+
+  28 Mar 2011; Luca Barbato <lu_zero@gentoo.org>
+  arch/amd64/package.use.mask, arch/x86/package.use.mask,
+  base/package.use.mask:
+  Mask mplayer2 arch specific flags
+
+  28 Mar 2011; Diego E. Pettenò <flameeyes@gentoo.org> base/use.mask,
+  default/linux/use.mask, prefix/linux/use.mask:
+  Mask nouveau VIDEO_CARDS flag on non-Linux systems.
+
+  28 Mar 2011; Amadeusz Żołnowski <aidecoe@gentoo.org>
+  desc/dracut_modules.desc:
+  Reworded DRACUT_MODULES descriptions and updated for 009 release.
+
+  28 Mar 2011; Markos Chandras <hwoarang@gentoo.org> package.mask:
+  Unmasking qmmp-0.5.0
+
+  28 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org> package.mask:
+  Re-mask clutter-gtk-0.91*, gtk+3 still can't be added to the tree
+
+  28 Mar 2011; Sébastien Fabbro <bicatali@gentoo.org> package.mask:
+  Masking =dev-python/numpy-1.6* beta release
 
   28 Mar 2011; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
   Masking x11-plugins/wmnetmon for QA removal.
@@ -1576,7 +1616,7 @@
   +hardened/linux/powerpc/ppc64/server/parent, hardened/ppc/deprecated,
   hardened/ppc64/deprecated, profiles.desc:
   Update profiles, bug #344861
-  hardened/linux/powerpc/ppc32 
+  hardened/linux/powerpc/ppc32
   hardened/linux/powerpc/ppc64/32bit-userland
   hardened/linux/powerpc/ppc64/64bit-userland
 
@@ -1974,7 +2014,7 @@
   20 Oct 2010; Gilles Dartiguelongue <eva@gentoo.org> package.mask:
   Add x11-terms/gnome-terminal to gnome 2.32 mask.
 
-  19 Oct 2010; Ole Markus With <olemarkus@gentoo.org> 
+  19 Oct 2010; Ole Markus With <olemarkus@gentoo.org>
   default/bsd/fbsd/make.defaults, default/linux/make.defaults:
   PHP ebuilds now make use of default USE flags. No longer any point in enabling
   them by default in make.defaults.
@@ -2074,7 +2114,7 @@
   09 Oct 2010; Pacho Ramos <pacho@gentoo.org> package.mask:
   Mask app-text/gnome-spell for removal.
 
-  08 Oct 2010; Ole Markus With <olemarkus@gentoo.org> 
+  08 Oct 2010; Ole Markus With <olemarkus@gentoo.org>
 	base/make.defaults,desc/php_targets.desc:
   Added PHP_TARGETS to USE_EXPAND
 
@@ -2143,7 +2183,7 @@
   Mask dev-python/IcePy.
 
   02 Oct 2010; Andreas K. Huettel <dilfridge@gentoo.org> package.mask:
-  Masking sci-chemistry/validation for removal in 30 days. Does not 
+  Masking sci-chemistry/validation for removal in 30 days. Does not
   build, upstream is dead.
 
   02 Oct 2010; Fabian Groffen <grobian@gentoo.org> package.mask:

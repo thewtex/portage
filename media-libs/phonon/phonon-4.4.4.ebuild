@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/phonon/phonon-4.4.4.ebuild,v 1.2 2011/03/27 12:35:19 dilfridge Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/phonon/phonon-4.4.4.ebuild,v 1.4 2011/03/28 23:13:46 dilfridge Exp $
 
 EAPI="3"
 
@@ -32,8 +32,8 @@ COMMON_DEPEND="
 # waveout? ( media-sound/phonon-waveout )
 PDEPEND="
 	gstreamer? ( media-libs/phonon-gstreamer )
-	vlc? ( >=media-sound/phonon-vlc-0.3.2 )
-	xine? ( >=media-sound/phonon-xine-0.4.4 )
+	vlc? ( >=media-libs/phonon-vlc-0.3.2 )
+	xine? ( >=media-libs/phonon-xine-0.4.4 )
 "
 RDEPEND="${COMMON_DEPEND}
 	!kde-base/phonon-xine

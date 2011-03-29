@@ -2013,6 +2013,7 @@ media-libs/opencv:sse3 - Enable optimization for SSE3 capable chips
 media-libs/opencv:ssse3 - faster floating point optimization for SSSE3 capable chips (Intel Core 2 and later chips)
 media-libs/openjpeg:tools - Installs tools (j2k_to_image and image_to_j2k)
 media-libs/phonon:vlc - Install VLC Phonon backend
+media-libs/phonon-xine:xcb - Enable video support in Xine backend, via x11-libs/libxcb
 media-libs/raptor:json - Enable support for JSON parsing
 media-libs/sdif:ftruncate - Enables usage of ftruncate v. truncate
 media-libs/sdl-mixer:midi - basic support for MIDI files
@@ -2218,7 +2219,6 @@ media-sound/ncmpcpp:clock - Enable clock screen
 media-sound/ncmpcpp:fftw - Build the visualizer plugin that pulls in sci-libs/fftw
 media-sound/ncmpcpp:outputs - Enable outputs screen
 media-sound/ncmpcpp:visualizer - Enable visualizer screen with sound wave/frequency spectrum modes
-media-sound/phonon-xine:xcb - Enable video support in Xine backend, via x11-libs/libxcb
 media-sound/picard:coverart - Install plugin for direct coverart dowload
 media-sound/pms:regex - Enable regular expression searches using dev-libs/boost
 media-sound/podcatcher:bittorrent - Enable support for bittorrent downloads
@@ -2473,6 +2473,46 @@ media-video/mplayer:vpx - Enables vp8 codec support using libvpx: Decoding vp8 d
 media-video/mplayer:xanim - Enables support for xanim based codecs
 media-video/mplayer:xvmc - Enables X-Video Motion Compensation support
 media-video/mplayer:zoran - Enables ZR360[56]7/ZR36060 video output
+media-video/mplayer2:3dnowext - Enable 3dnowext cpu instructions
+media-video/mplayer2:amr - Enables Adaptive Multi-Rate format support
+media-video/mplayer2:ass - SRT/SSA/ASS (SubRip / SubStation Alpha) subtitle support
+media-video/mplayer2:bl - Blinkenlights video output
+media-video/mplayer2:bluray - Enable playback of Blu-ray filesystems
+media-video/mplayer2:bs2b - Enable Bauer stereophonic-to-binaural headphone filter
+media-video/mplayer2:cdio - Use libcdio for CD support (instead of cdparanoia)
+media-video/mplayer2:cpudetection - Enables runtime CPU detection (useful for bindist, compatibility on other CPUs)
+media-video/mplayer2:custom-cpuopts - Fine-tune custom CPU optimizations (UNSUPPORTED)
+media-video/mplayer2:dirac - Enable Dirac video support (an advanced royalty-free video compression format) via the reference library: dirac.
+media-video/mplayer2:dvdnav - Use forked libdvdnav, navigate menus in GUIs
+media-video/mplayer2:dxr3 - Enable DXR3/H+ video output
+media-video/mplayer2:enca - Enables support for charset discovery and conversion
+media-video/mplayer2:faad - Use external faad library for AAC decoding
+media-video/mplayer2:ffmpeg-mt - Enable multithreaded ffmpeg
+media-video/mplayer2:hardcoded-tables - Use pre-calculated tables rather than calculating them on the fly.
+media-video/mplayer2:live - Enables live.com streaming media support
+media-video/mplayer2:md5sum - Enables md5sum video output
+media-video/mplayer2:mmxext - Enables mmx2 support
+media-video/mplayer2:mng - MNG input support
+media-video/mplayer2:mpg123 - Enable support for mp3 decoding over media-sound/mpg123.
+media-video/mplayer2:network - Enables network streaming support
+media-video/mplayer2:nut - Enables support for the NUT container format
+media-video/mplayer2:osdmenu - Enables support for on-screen display (OSD) menus
+media-video/mplayer2:pnm - Add PNM video output option, to create PPM/PGM/PGMYUV images
+media-video/mplayer2:pvr - Enable Video4Linux2 MPEG PVR
+media-video/mplayer2:radio - Enable V4L2 radio interface and support
+media-video/mplayer2:rar - Enable Unique RAR File Library
+media-video/mplayer2:real - Adds real audo/video support
+media-video/mplayer2:rtc - Enables usage of the linux real time clock. The alternative is software emulation of rtc
+media-video/mplayer2:rtmp - Enables RTMPDump Streaming Media support
+media-video/mplayer2:schroedinger - Enable Dirac video support (an advanced royalty-free video compression format) via libschroedinger (high-speed implementation in C of the Dirac codec).
+media-video/mplayer2:shm - Enable support for shm
+media-video/mplayer2:ssse3 - faster floating point optimization for SSSE3 capable chips (Intel Core 2 and later chips)
+media-video/mplayer2:system-ffmpeg - Use shared FFmpeg libraries instead of static bundled ones. May not have ffmpeg-mt.
+media-video/mplayer2:tga - Enables Targa video output
+media-video/mplayer2:vdpau - Enables experimental VDPAU support (requires nVidia video cards) to offload MPEG2/MPEG4/VC1/WMV CPU processing to video card
+media-video/mplayer2:vpx - Enables vp8 codec support using libvpx: Decoding vp8 does not require this to be enabled but libvpx can also be used for decoding; encoding vp8 requires this useflag to be enabled though.
+media-video/mplayer2:xanim - Enables support for xanim based codecs
+media-video/mplayer2:xvmc - Enables X-Video Motion Compensation support
 media-video/ogmrip:ogm - Support for OGM container format
 media-video/ogmrip:srt - Support for SRT subtitle format
 media-video/rtmpdump:gnutls - Use GnuTLS library instead of the default OpenSSL
@@ -4110,6 +4150,7 @@ virtual/mysql:embedded - Build embedded server (libmysqld)
 www-apache/mod_extract_forwarded:mod_proxy - Enable support for Apache's internal proxy
 www-apache/mod_mono:aspnet2 - Handle all applications using ASP.NET 2.0 engine by default
 www-apache/mod_nss:ecc - enable Elliptical Curve Cyptography
+www-apache/mod_security:geoip - Configure ModSecurity to query the GeoIP database from MaxMind, provided by dev-libs/geoip. This flag only controls the default configuration, as the GeoIP query code is part of ModSecurity's source code.
 www-apache/mod_security:perl - Add a dependency upon Perl and install the script to update the Core Rule Set. Please note that this script will use the original Core Rule Set, and it's currently mostly untested.
 www-apache/mod_security:vanilla - Provide the original ModSecurity Core Rule Set without Gentoo-specific relaxation. When this flag is enabled, we install the unadulterated Core Rule Set. Warning! The original Core Rule Set is draconic and most likely will break your web applications, including Rails-based web applications and Bugzilla.
 www-apache/mod_suphp:checkpath - Check if script resides in DOCUMENT_ROOT
@@ -4328,9 +4369,7 @@ x11-misc/etm:ical - Enable export of ical format files by depending on dev-pytho
 x11-misc/fbpager:xrender - Enable transparency support via x11-libs/libXrender
 x11-misc/google-gadgets:soup - Enables XML HTTP request extension based on net-libs/libsoup
 x11-misc/google-gadgets:webkit - Enables browser element and script runtime based on net-libs/webkit-gtk
-x11-misc/lightdm:consolekit - Enables support for authorization using consolekit
 x11-misc/lightdm:introspection - Use dev-libs/gobject-introspection for introspection
-x11-misc/lightdm:webkit - Build greeter based on net-libs/webkit-gtk
 x11-misc/rednotebook:libyaml - enable libyaml support
 x11-misc/rednotebook:webkit - enable previews using webkit engine
 x11-misc/rss-glx:quesoglc - Enable support for OpenGL Character Renderer

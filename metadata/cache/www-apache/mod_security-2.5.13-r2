@@ -1,5 +1,5 @@
 dev-libs/libxml2 lua? ( >=dev-lang/lua-5.1 ) www-servers/apache[apache2_modules_unique_id] =www-servers/apache-2* || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b
-dev-libs/libxml2 lua? ( >=dev-lang/lua-5.1 ) www-servers/apache[apache2_modules_unique_id] =www-servers/apache-2*
+dev-libs/libxml2 lua? ( >=dev-lang/lua-5.1 ) www-servers/apache[apache2_modules_unique_id] geoip? ( dev-libs/geoip ) =www-servers/apache-2*
 0
 http://www.modsecurity.org/download/modsecurity-apache_2.5.13.tar.gz
 
@@ -8,11 +8,11 @@ GPL-2
 Web application firewall and Intrusion Detection System for Apache.
 ~amd64 ~ppc ~sparc ~x86
 apache-module autotools depend.apache eutils libtool multilib portability toolchain-funcs
-lua
+lua geoip
 
 www-apache/modsecurity-crs
 
-2
+3
 
 compile configure install postinst prepare setup test
 

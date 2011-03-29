@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Header: /var/cvsroot/gentoo-x86/media-video/mplayer2/mplayer2-2.0.ebuild,v 1.1 2011/03/28 22:59:02 lu_zero Exp $
 
 EAPI=4
 
@@ -43,7 +43,7 @@ SRC_URI="${RELEASE_URI}
 	!truetype? ( ${FONT_URI} )
 "
 
-DESCRIPTION="Media Player for Linux, Uoti Urpala's fork"
+DESCRIPTION="Media Player for Linux"
 HOMEPAGE="http://www.mplayer2.org/"
 
 FONT_RDEPS="
@@ -651,13 +651,13 @@ src_configure() {
 		--host-cc=$(tc-getBUILD_CC)
 	"
 	myconf+="
-		--prefix=${EPREFIX}/usr
-		--bindir=${EPREFIX}/usr/bin
-		--libdir=${EPREFIX}/usr/$(get_libdir)
-		--confdir=${EPREFIX}/etc/mplayer
-		--datadir=${EPREFIX}/usr/share/mplayer${namesuf}
-		--mandir=${EPREFIX}/usr/share/man
-		--localedir=${EPREFIX}/usr/share/locale
+		--prefix="${EPREFIX}"/usr
+		--bindir="${EPREFIX}"/usr/bin
+		--libdir="${EPREFIX}"/usr/$(get_libdir)
+		--confdir="${EPREFIX}"/etc/mplayer
+		--datadir="${EPREFIX}"/usr/share/mplayer${namesuf}
+		--mandir="${EPREFIX}"/usr/share/man
+		--localedir="${EPREFIX}"/usr/share/locale
 		--enable-translation
 		"
 
