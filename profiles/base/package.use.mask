@@ -1,10 +1,18 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/base/package.use.mask,v 1.217 2011/03/29 01:58:48 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/base/package.use.mask,v 1.220 2011/03/29 15:27:45 grozin Exp $
 
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# Andrey Grozin <grozin@gentoo.org> (29 Mar 2011)
+# dev-lang/swig-2.0.2 with -octave generated .cpp files
+# incompatible with >=sci-mathematics/octave-3.4.0
+sci-libs/mathgl octave
+
+# Samuli Suominen <ssuominen@gentoo.org> (29 Mar 2011)
+# This would need x11-libs/gtk+:3 stable.
+x11-libs/libnotify test
 
 # Luca Barbato <lu_zero@gentoo.org> (28 Mar 2011)
 # Mask mplayer2 arch specific flags
@@ -36,10 +44,6 @@ app-text/stardict pronounce
 # Raúl Porcel <armin76@gentoo.org> (13 Feb 2011)
 # Masked until devs know how to use repoman
 <media-video/mplayer-9999 bluray
-
-# Samuli Suominen <ssuominen@gentoo.org> (05 Feb 2011)
-# Mask until x11-libs/gtk+:3 is in tree.
-x11-libs/libnotify test
 
 # Diego Elio Pettenò <flameeyes@gentoo.org> (02 Dec 2010)
 # Unmask as soon as bio2jack is back into stable (0.9-r1 or later).

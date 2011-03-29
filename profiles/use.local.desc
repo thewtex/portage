@@ -635,6 +635,7 @@ app-office/texmacs:netpbm - Add support for media-libs/netpbm
 app-office/tpp:figlet - Install app-misc/figlet to support the --huge command
 app-pda/barry:boost - Enable boost support
 app-pda/barry:gui - Gui backup tool support
+app-pda/gtkpod:webkit - Enable webkit support for browsing and downloading album covers
 app-pda/libopensync-plugin-irmc:irda - Enable infrared support
 app-pda/libopensync-plugin-syncml:http - Enable http transports
 app-pda/libopensync-plugin-syncml:obex - Enable obex transports
@@ -1544,7 +1545,6 @@ gnome-base/gvfs:fuse - Enables fuse mount points in $HOME/.gvfs for legacy appli
 gnome-base/gvfs:gdu - Enable sys-apps/gnome-disk-utility integration
 gnome-base/gvfs:hal - Enable obsolete sys-apps/hal support
 gnome-base/gvfs:http - Enable the HTTP/DAV backend using net-libs/libsoup-gnome
-gnome-base/gvfs:ios - Enable support for Apples iOS
 gnome-base/gvfs:udev - Enable udev base replacement code for cdda feature
 gnome-base/libgnomecanvas:glade - Enable glade support
 gnome-base/libgtop:introspection - Use dev-libs/gobject-introspection for introspection
@@ -1976,7 +1976,6 @@ media-libs/libchamplain:html - Install gtk-doc html version for this package
 media-libs/libchamplain:introspection - Use dev-libs/gobject-introspection for introspection
 media-libs/libggi:vis - Enables sparc vis support for libggi
 media-libs/libgpod:gtk - Enable ArtworkDB support
-media-libs/libgpod:ios - Enable support for Apples iOS
 media-libs/libmediainfo:libmms - Support for Microsoft Media Server (MMS) streams via libmms
 media-libs/libmikmod:raw - Enable raw file writer plug-in
 media-libs/libmp4v2:utils - Install command-line utilities
@@ -2143,7 +2142,6 @@ media-sound/banshee:podcast - Build with podcasting support
 media-sound/banshee:web - Enable support for plugins that access web-based services such as Amazon and wikipedia (requires net-libs/webkit-gtk)
 media-sound/banshee:youtube - Enable the Youtube plugin
 media-sound/clementine:ayatana - Build in support for Ayatana notification using the libindicate-qt plugin.
-media-sound/clementine:ios - Enable support for Apples iOS
 media-sound/clementine:lastfm - Enable Last.fm streaming services support through media-libs/liblastfm
 media-sound/clementine:projectm - Build with ProjectM visualization
 media-sound/clementine:wiimote - Enable support for Wii remote
@@ -2474,7 +2472,6 @@ media-video/mplayer:xanim - Enables support for xanim based codecs
 media-video/mplayer:xvmc - Enables X-Video Motion Compensation support
 media-video/mplayer:zoran - Enables ZR360[56]7/ZR36060 video output
 media-video/mplayer2:3dnowext - Enable 3dnowext cpu instructions
-media-video/mplayer2:amr - Enables Adaptive Multi-Rate format support
 media-video/mplayer2:ass - SRT/SSA/ASS (SubRip / SubStation Alpha) subtitle support
 media-video/mplayer2:bl - Blinkenlights video output
 media-video/mplayer2:bluray - Enable playback of Blu-ray filesystems
@@ -2482,13 +2479,10 @@ media-video/mplayer2:bs2b - Enable Bauer stereophonic-to-binaural headphone filt
 media-video/mplayer2:cdio - Use libcdio for CD support (instead of cdparanoia)
 media-video/mplayer2:cpudetection - Enables runtime CPU detection (useful for bindist, compatibility on other CPUs)
 media-video/mplayer2:custom-cpuopts - Fine-tune custom CPU optimizations (UNSUPPORTED)
-media-video/mplayer2:dirac - Enable Dirac video support (an advanced royalty-free video compression format) via the reference library: dirac.
 media-video/mplayer2:dvdnav - Use forked libdvdnav, navigate menus in GUIs
 media-video/mplayer2:dxr3 - Enable DXR3/H+ video output
 media-video/mplayer2:enca - Enables support for charset discovery and conversion
 media-video/mplayer2:faad - Use external faad library for AAC decoding
-media-video/mplayer2:ffmpeg-mt - Enable multithreaded ffmpeg
-media-video/mplayer2:hardcoded-tables - Use pre-calculated tables rather than calculating them on the fly.
 media-video/mplayer2:live - Enables live.com streaming media support
 media-video/mplayer2:md5sum - Enables md5sum video output
 media-video/mplayer2:mmxext - Enables mmx2 support
@@ -2503,14 +2497,10 @@ media-video/mplayer2:radio - Enable V4L2 radio interface and support
 media-video/mplayer2:rar - Enable Unique RAR File Library
 media-video/mplayer2:real - Adds real audo/video support
 media-video/mplayer2:rtc - Enables usage of the linux real time clock. The alternative is software emulation of rtc
-media-video/mplayer2:rtmp - Enables RTMPDump Streaming Media support
-media-video/mplayer2:schroedinger - Enable Dirac video support (an advanced royalty-free video compression format) via libschroedinger (high-speed implementation in C of the Dirac codec).
 media-video/mplayer2:shm - Enable support for shm
 media-video/mplayer2:ssse3 - faster floating point optimization for SSSE3 capable chips (Intel Core 2 and later chips)
-media-video/mplayer2:system-ffmpeg - Use shared FFmpeg libraries instead of static bundled ones. May not have ffmpeg-mt.
 media-video/mplayer2:tga - Enables Targa video output
 media-video/mplayer2:vdpau - Enables experimental VDPAU support (requires nVidia video cards) to offload MPEG2/MPEG4/VC1/WMV CPU processing to video card
-media-video/mplayer2:vpx - Enables vp8 codec support using libvpx: Decoding vp8 does not require this to be enabled but libvpx can also be used for decoding; encoding vp8 requires this useflag to be enabled though.
 media-video/mplayer2:xanim - Enables support for xanim based codecs
 media-video/mplayer2:xvmc - Enables X-Video Motion Compensation support
 media-video/ogmrip:ogm - Support for OGM container format
@@ -4073,7 +4063,6 @@ sys-kernel/dracut:dmsquash-live - Module which might be used for Live CDs
 sys-kernel/dracut:gensplash - Add support for framebuffer splash at boot-time
 sys-kernel/dracut:iscsi - Add support for iSCSI
 sys-kernel/dracut:lvm - Add support for the Logical Volume Manager (sys-apps/lvm2)
-sys-kernel/dracut:md - Add support for MD devices, also known as software RAID devices
 sys-kernel/dracut:mdraid - Add support for MD devices, also known as software RAID devices
 sys-kernel/dracut:multipath - Add support for Device Mapper multipathing
 sys-kernel/dracut:nbd - Add support for network block devices
@@ -4136,7 +4125,6 @@ sys-power/powermgmt-base:pm-utils - Adds support for on_ac_power through sys-pow
 sys-power/suspend:crypt - Allows suspend and resume from encrypted disk
 sys-power/suspend:fbsplash - Add support for framebuffer splash
 sys-power/upower:introspection - Use dev-libs/gobject-introspection for introspection
-sys-power/upower:ios - Enable support for Apples iOS
 sys-process/cronie:inotify - Enable inotify filesystem monitoring support.
 sys-process/fcron:debug - Enable debug code and output. Since version 3.0.5 this will no longer force foreground execution, and fcron will be able to run as a service properly.
 sys-process/fcron:pam - Enable PAM support for fcron. This means that fcron will pass through the "fcron" stack before executing the jobs, and fcrontab will use the "fcrontab" stack to authenticate the user before editing its crontab file.

@@ -15,7 +15,7 @@ IUSE="X encode mp3 sdl theora threads vaapi vdpau x264"
 
 RDEPEND="
 	|| (
-		media-video/libav[X=,encode=,mp3=,sdl=,theora=,threads=,vaapi=,vdpau=,x264=]
+		!media-video/libav[X=,encode=,mp3=,sdl=,theora=,threads=,vaapi=,vdpau=,x264=]
 		media-video/ffmpeg[X=,encode=,mp3=,sdl=,theora=,threads=,vaapi=,vdpau=,x264=]
 	)
 "
