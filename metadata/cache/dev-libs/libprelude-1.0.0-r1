@@ -1,5 +1,5 @@
->=net-libs/gnutls-1.0.17 !net-analyzer/prelude-nids sys-devel/flex dev-lang/perl[-build]
->=net-libs/gnutls-1.0.17 !net-analyzer/prelude-nids dev-lang/perl[-build]
+>=net-libs/gnutls-1.0.17 !net-analyzer/prelude-nids sys-devel/flex || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b >=app-admin/eselect-python-20091230 python? ( =dev-lang/python-2* ) dev-lang/perl[-build]
+>=net-libs/gnutls-1.0.17 !net-analyzer/prelude-nids >=app-admin/eselect-python-20091230 python? ( =dev-lang/python-2* ) dev-lang/perl[-build]
 0
 http://www.prelude-technologies.com/download/releases/libprelude/libprelude-1.0.0.tar.gz
 
@@ -7,14 +7,14 @@ http://www.prelude-technologies.com
 GPL-2
 Prelude-IDS Framework Library
 ~alpha ~amd64 ~arm ~ia64 ~ppc ~sparc ~x86
-base eutils flag-o-matic libtool multilib perl-module portability toolchain-funcs
+autotools base distutils eutils flag-o-matic libtool multilib perl-module portability python toolchain-funcs
 doc easy-bindings perl python swig
 
 
 
-2
+3
 
-compile configure install prepare test unpack
+compile configure install postinst postrm prepare setup test unpack
 
 
 
