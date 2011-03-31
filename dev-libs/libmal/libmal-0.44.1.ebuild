@@ -1,8 +1,8 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libmal/libmal-0.44.1.ebuild,v 1.7 2011/01/12 15:56:48 ranger Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libmal/libmal-0.44.1.ebuild,v 1.9 2011/03/31 04:07:34 ssuominen Exp $
 
-EAPI=2
+EAPI=4
 
 DESCRIPTION="convenience library of the functions malsync distribution"
 HOMEPAGE="http://www.jlogday.com/code/libmal/index.html"
@@ -10,10 +10,13 @@ SRC_URI="http://www.jlogday.com/code/libmal/${P}.tar.gz"
 
 LICENSE="MPL-1.0"
 SLOT="0"
-KEYWORDS="alpha amd64 ~hppa ia64 ppc ppc64 sparc x86"
+KEYWORDS="alpha amd64 ~hppa ia64 ppc ppc64 x86"
 IUSE="static-libs"
 
-DEPEND=">=app-pda/pilot-link-0.12.3"
+RDEPEND=">=app-pda/pilot-link-0.12.3"
+DEPEND="${RDEPEND}"
+
+DOCS="ChangeLog README"
 
 src_configure() {
 	econf \
@@ -22,11 +25,10 @@ src_configure() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die
-	dodoc ChangeLog README || die
+	default
 
 	docinto malsync
 	dodoc malsync/{ChangeLog,README,Doc/README*} || die
 
-	find "${D}" -name '*.la' -delete
+	find "${D}" -name '*.la' -exec rm -f {} +
 }

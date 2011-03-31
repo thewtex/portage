@@ -1,5 +1,5 @@
->=dev-libs/libprelude-0.9.9 mysql? ( virtual/mysql ) postgres? ( dev-db/postgresql-server ) sqlite? ( =dev-db/sqlite-3* ) doc? ( dev-util/gtk-doc ) dev-lang/perl[-build]
->=dev-libs/libprelude-0.9.9 mysql? ( virtual/mysql ) postgres? ( dev-db/postgresql-server ) sqlite? ( =dev-db/sqlite-3* ) dev-lang/perl[-build]
+>=dev-libs/libprelude-0.9.9 mysql? ( virtual/mysql ) perl? ( dev-lang/perl ) postgres? ( dev-db/postgresql-server ) sqlite? ( =dev-db/sqlite-3* ) doc? ( dev-util/gtk-doc ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b >=app-admin/eselect-python-20091230 python? ( =dev-lang/python-2* )
+>=dev-libs/libprelude-0.9.9 mysql? ( virtual/mysql ) perl? ( dev-lang/perl ) postgres? ( dev-db/postgresql-server ) sqlite? ( =dev-db/sqlite-3* ) >=app-admin/eselect-python-20091230 python? ( =dev-lang/python-2* )
 0
 http://www.prelude-technologies.com/download/releases/libpreludedb/libpreludedb-1.0.0.tar.gz
 
@@ -7,14 +7,14 @@ http://www.prelude-technologies.com
 GPL-2
 Prelude-IDS framework for easy access to the Prelude database
 ~amd64 ~ppc ~sparc ~x86
-base eutils flag-o-matic multilib perl-module portability toolchain-funcs
-doc mysql postgres perl python sqlite swig
+autotools base distutils eutils libtool multilib perl-module portability python toolchain-funcs
+doc mysql postgres perl python sqlite
 
 
 
-2
+3
 
-compile configure install postinst prepare test unpack
+compile configure install postinst postrm prepare setup test unpack
 
 
 

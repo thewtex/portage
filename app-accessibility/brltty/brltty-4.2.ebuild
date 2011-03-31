@@ -1,8 +1,8 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-accessibility/brltty/brltty-4.2.ebuild,v 1.6 2011/03/29 22:37:28 williamh Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-accessibility/brltty/brltty-4.2.ebuild,v 1.8 2011/03/30 18:24:44 williamh Exp $
 
-EAPI="2"
+EAPI="4"
 FINDLIB_USE="ocaml"
 
 inherit findlib eutils multilib toolchain-funcs java-pkg-opt-2 flag-o-matic \
@@ -17,7 +17,12 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~x86"
 IUSE="+api +beeper bluetooth +contracted-braille doc +fm gpm iconv icu
 		java +learn-mode +midi nls ocaml +pcm python usb +speech
-		static tcl X"
+		tcl X"
+REQUIRED_USE="doc? ( api )
+	java? ( api )
+	ocaml? ( api )
+	python? ( api )
+	tcl? ( api )"
 
 COMMON_DEP="bluetooth? ( net-wireless/bluez )
 	gpm? ( >=sys-libs/gpm-1.20 )
@@ -75,23 +80,22 @@ src_configure() {
 		$(use_enable pcm pcm-support) \
 		$(use_enable python python-bindings) \
 		$(use_enable speech speech-support) \
-		$(use_enable static standalone-programs) \
 		$(use_enable tcl tcl-bindings) \
 		$(use_enable X x) \
 		$(use_with bluetooth bluetooth-package) \
-		$(use_with usb usb-package) \
-		|| die
+		$(use_with usb usb-package)
 }
 
 src_compile() {
 	local JAVAC_CONF=""
+	local OUR_JNI_FLAGS=""
 	if use java; then
-		append-flags "$(java-pkg_get-jni-cflags)"
+		OUR_JNI_FLAGS="$(java-pkg_get-jni-cflags)"
 		JAVAC_CONF="${JAVAC} -encoding UTF-8 $(java-pkg_javac-args)"
 	fi
 
 	# workaround for parallel build failure, bug #340903.
-	emake -j1 JAVAC="${JAVAC_CONF}" || die
+	emake -j1 JAVA_JNI_FLAGS="${OUR_JNI_FLAGS}" JAVAC="${JAVAC_CONF}"
 }
 
 src_install() {
@@ -99,7 +103,7 @@ src_install() {
 		findlib_src_preinst
 	fi
 
-	emake OCAML_LDCONF= install || die
+	emake OCAML_LDCONF= install
 
 	if use java; then
 		# make install puts the _java.so there, and no it's not $(get_libdir)
@@ -126,7 +130,7 @@ src_install() {
 	dodoc CONTRIBUTORS ChangeLog HISTORY README* TODO BRLTTY-*.txt
 	dohtml -r Manual-BRLTTY
 	if use doc; then
-		dohtml -r Manual-BRLAPI
+		dohtml -r Manual-BrlAPI
 		dodoc BrlAPI-*.txt
 	fi
 }
