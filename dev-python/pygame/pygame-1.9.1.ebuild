@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pygame/pygame-1.9.1.ebuild,v 1.10 2010/08/10 02:36:10 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pygame/pygame-1.9.1.ebuild,v 1.12 2011/03/31 18:29:44 ssuominen Exp $
 
 EAPI="2"
 SUPPORT_PYTHON_ABIS="1"
@@ -22,15 +22,16 @@ RDEPEND=">=media-libs/libsdl-1.2.5[X?]
 	>=media-libs/sdl-mixer-1.2.4
 	dev-python/numpy
 	>=media-libs/smpeg-0.4.4-r1"
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	!>=sys-kernel/linux-headers-2.6.38"
 
-S="${WORKDIR}/${P}release"
+S=${WORKDIR}/${P}release
 
 DOCS="WHATSNEW"
 
 src_prepare() {
 	distutils_src_prepare
-	epatch "${FILESDIR}/config.patch"
+	epatch "${FILESDIR}"/config.patch
 }
 
 src_configure() {
