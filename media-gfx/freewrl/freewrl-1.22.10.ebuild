@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/freewrl/freewrl-1.22.10.ebuild,v 1.3 2011/04/01 14:23:54 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/freewrl/freewrl-1.22.10.ebuild,v 1.4 2011/04/02 14:29:43 ssuominen Exp $
 
 EAPI="2"
 
@@ -13,7 +13,7 @@ HOMEPAGE="http://freewrl.sourceforge.net/"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="curl debug libeai +glew +java +motif nsplugin +sox spidermonkey static"
+IUSE="curl debug libeai +glew +java +motif nsplugin +sox spidermonkey static-libs"
 
 COMMONDEPEND="x11-libs/libXau
 	x11-libs/libXdmcp
@@ -91,7 +91,7 @@ src_configure() {
 		$(use_enable libeai) \
 		$(use_enable java) \
 		$(use_enable nsplugin plugin) \
-		$(use_enable static) \
+		$(use_enable static-libs static) \
 		$(use_enable sox sound)
 }
 

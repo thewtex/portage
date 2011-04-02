@@ -1,8 +1,8 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/gromacs/gromacs-4.5.4.ebuild,v 1.3 2011/03/25 10:52:14 xarthisius Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/gromacs/gromacs-4.5.4.ebuild,v 1.6 2011/04/02 16:08:05 xarthisius Exp $
 
-EAPI="3"
+EAPI="4"
 
 LIBTOOLIZE="true"
 TEST_PV="4.0.4"
@@ -29,6 +29,7 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="X altivec blas dmalloc doc -double-precision +fftw fkernels +gsl lapack
 mpi +single-precision sse sse2 static-libs test +threads +xml zsh-completion"
+REQUIRED_USE="fkernels? ( !threads )"
 
 CDEPEND="
 	X? ( x11-libs/libX11
@@ -49,8 +50,12 @@ RDEPEND="${CDEPEND}
 RESTRICT="test"
 
 #gromacs has gnu exec stacks for speedup
-QA_EXECSTACK="usr/lib/libgmx.so.*
-	usr/lib/libgmx_d.so.*"
+# - ebuild author
+#it's not legal to hide execstacks in source based packages by QA_ vars,
+#and if this were a binary-only package these libs would be in /opt instead
+# - ssuominen, for the QA team
+#QA_EXECSTACK="usr/$(get_libdir)/libgmx.so.*
+#	usr/$(get_libdir)/libgmx_d.so.*"
 
 src_prepare() {
 	if use mpi && use threads; then

@@ -4,7 +4,7 @@
 EAPI="3"
 
 DESCRIPTION="The Console Display Manager"
-GITHUB_USER="tarsius"
+GITHUB_USER="golodhrim"
 GITHUB_TAG="funtoo-${PV}"
 HOMEPAGE="http://cdm.ghost1227.com/X11 https://github.com/${GITHUB_USER}/${PN}"
 SRC_URI="https://github.com/${GITHUB_USER}/${PN}/tarball/${GITHUB_TAG} -> ${P}.tar.gz"
@@ -50,5 +50,5 @@ src_install() {
 
 pkg_postinst() {
 	ewarn "If you want cdm to be started automatically after login then"
-	ewarn "move /etc/share/cdm/zzz-cdm-profile.sh to /etc/profile.d/."
+	ewarn "move /usr/share/cdm/zzz-cdm-profile.sh to /etc/profile.d/."
 }
