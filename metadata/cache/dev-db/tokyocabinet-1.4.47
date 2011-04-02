@@ -1,4 +1,4 @@
-sys-libs/zlib app-arch/bzip2
+sys-libs/zlib app-arch/bzip2 || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b
 sys-libs/zlib app-arch/bzip2
 0
 http://fallabs.com/tokyocabinet/tokyocabinet-1.4.47.tar.gz
@@ -7,7 +7,7 @@ http://fallabs.com/tokyocabinet/
 LGPL-2.1
 A library of routines for managing a database
 ~alpha ~amd64 ~hppa ~ppc ~ppc64 ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris
-eutils multilib portability toolchain-funcs
+autotools eutils libtool multilib portability toolchain-funcs
 debug doc examples
 
 

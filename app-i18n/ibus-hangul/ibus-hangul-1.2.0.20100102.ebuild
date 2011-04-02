@@ -1,6 +1,9 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/ibus-hangul/ibus-hangul-1.2.0.20100102.ebuild,v 1.4 2010/05/26 10:33:28 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/ibus-hangul/ibus-hangul-1.2.0.20100102.ebuild,v 1.5 2011/04/02 02:24:38 matsuu Exp $
+
+PYTHON_DEPEND="2:2.5"
+inherit python
 
 DESCRIPTION="The Hangul engine for IBus input platform"
 HOMEPAGE="http://code.google.com/p/ibus/"
