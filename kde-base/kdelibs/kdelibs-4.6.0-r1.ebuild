@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/kdelibs/kdelibs-4.6.0-r1.ebuild,v 1.1 2011/02/02 11:13:45 scarabeus Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/kdelibs/kdelibs-4.6.0-r1.ebuild,v 1.3 2011/03/26 17:19:25 dilfridge Exp $
 
 EAPI="3"
 
@@ -33,7 +33,7 @@ COMMONDEPEND="
 	media-libs/freetype:2
 	media-libs/giflib
 	>=media-libs/libpng-1.4
-	>=media-sound/phonon-4.4.3
+	>=media-libs/phonon-4.4.3
 	sys-libs/zlib
 	virtual/jpeg
 	>=x11-misc/shared-mime-info-0.60
@@ -134,6 +134,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.5.90-mimetypes.patch"
 	"${FILESDIR}/${PN}-4.4.90-xslt.patch"
 	"${FILESDIR}/${PN}-4.6.0-logoutcrash.patch"
+	"${FILESDIR}/${PN}-4.6.0-kateacc.patch"
 )
 
 src_prepare() {

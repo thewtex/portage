@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-base/gnome-settings-daemon/gnome-settings-daemon-2.32.1.ebuild,v 1.3 2011/02/09 17:59:20 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-base/gnome-settings-daemon/gnome-settings-daemon-2.32.1.ebuild,v 1.9 2011/03/22 19:12:32 ranger Exp $
 
 EAPI="3"
 GCONF_DEBUG="yes"
@@ -16,13 +16,13 @@ SRC_URI="${SRC_URI}
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sh ~sparc ~x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="alpha amd64 arm ia64 ppc ppc64 sh sparc x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~x86-solaris"
 IUSE="debug libnotify policykit pulseaudio smartcard"
 
 RDEPEND=">=dev-libs/dbus-glib-0.74
 	>=dev-libs/glib-2.18:2
 	>=x11-libs/gtk+-2.21.2:2
-	>=gnome-base/gconf-2.6.1
+	>=gnome-base/gconf-2.6.1:2
 	>=gnome-base/libgnomekbd-2.31.2
 	>=gnome-base/gnome-desktop-2.29.92:2
 
@@ -42,8 +42,8 @@ RDEPEND=">=dev-libs/dbus-glib-0.74
 		>=media-sound/pulseaudio-0.9.15
 		media-libs/libcanberra[gtk] )
 	!pulseaudio? (
-		>=media-libs/gstreamer-0.10.1.2
-		>=media-libs/gst-plugins-base-0.10.1.2 )
+		>=media-libs/gstreamer-0.10.1.2:0.10
+		>=media-libs/gst-plugins-base-0.10.1.2:0.10 )
 	smartcard? ( >=dev-libs/nss-3.11.2 )"
 
 DEPEND="${RDEPEND}

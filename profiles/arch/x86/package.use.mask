@@ -1,8 +1,20 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/x86/package.use.mask,v 1.44 2011/01/30 08:30:35 ford_prefect Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/x86/package.use.mask,v 1.53 2011/03/31 08:31:25 scarabeus Exp $
 
 # This file requires >=portage-2.1.1
+
+# Luca Barbato <lu_zero@gentoo.org> (28 Feb 2011)
+# # Masked in base, unmask for amd64/x86
+media-video/mplayer2 -bluray -vdpau
+
+# Kacper Kowalik <xarthisius@gentoo.org> (22 Feb 2011)
+# >=heartbeat-3.0 is pmasked
+sys-cluster/pacemaker-gui heartbeat
+
+# Tim Harder <radhermit@gentoo.org> (13 Feb 2011)
+# Masked in base, unmask for amd64/x86
+>=media-video/mplayer-1.0_rc4_p20101219 -bluray
 
 # Thomas Kahle <tomka@gentoo.org> (15 Jan 2011)
 # we dropped stable prelude but don't want to drop stable nufw
@@ -15,10 +27,12 @@ media-libs/mesa -llvm
 # Arun Raghavan <ford_prefect@gentoo.org> (19 Nov 2010)
 # Mart Raudsepp <leio@gentoo.org> (27 Dec 2010)
 # Arun Raghavan <ford_prefect@gentoo.org> (30 Jan 2011)
-# Orc optimisations in gst-plugins-{base,a52dec} work fine on x86
+# Mart Raudsepp <leio@gentoo.org> (20 Mar 2010)
+# Orc optimisations in gst-plugins-{base,a52dec,ffmpeg,good} work fine on x86
 >=media-libs/gst-plugins-base-0.10.30 -orc
 >=media-plugins/gst-plugins-a52dec-0.10.16 -orc
 >=media-plugins/gst-plugins-ffmpeg-0.10.11 -orc
+>=media-libs/gst-plugins-good-0.10.28 -orc
 
 # Dane Smith <c1pher@gentoo.org> (10 Nov 2010)
 # Valgrind is only available on amd64/x86/ppc/ppc64.
@@ -35,10 +49,6 @@ net-libs/xulrunner -ipc
 www-client/firefox -ipc
 www-client/icecat -ipc
 
-# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (13 Apr 2010)
-# xf86-video-nouveau is supported on x86.
-x11-base/xorg-drivers -video_cards_nouveau
-
 # Tomáš Chvátal <scarabeus@gentoo.org> (4 Apr 2010)
 # x86 platforms works
 sys-power/pm-utils -video_cards_intel -video_cards_radeon
@@ -46,13 +56,12 @@ sys-power/pm-utils -video_cards_intel -video_cards_radeon
 # Vlastimil Babka <caster@gentoo.org> (31 Mar 2010)
 >=dev-java/sun-jdk-1.6 -nsplugin
 >=dev-java/sun-jre-bin-1.6 -nsplugin
->=dev-java/ibm-jdk-bin-1.5 -nsplugin 
+>=dev-java/ibm-jdk-bin-1.5 -nsplugin
 >=dev-java/ibm-jre-bin-1.5 -nsplugin
 
-# Jim Ramsay <lack@gentoo.org> (12 August 2010)
+# Jim Ramsay <lack@gentoo.org> (24 March 2011)
 # '64bit' '32bit' 'nspluginwrapper' are for amd64 only
-=www-plugins/adobe-flash-10.0* 64bit 32bit
-=www-plugins/adobe-flash-10.1* nspluginwrapper
+www-plugins/adobe-flash nspluginwrapper 32bit 64bit
 
 # Andrey Grozin <grozin@gentoo.org> (24 Dec 2009)
 # openmcl (aka clozurecl) is only available on x86 and amd64

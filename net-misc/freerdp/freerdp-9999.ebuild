@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/freerdp/freerdp-9999.ebuild,v 1.1 2011/01/21 18:06:13 hwoarang Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/freerdp/freerdp-9999.ebuild,v 1.4 2011/03/15 11:16:19 hwoarang Exp $
 
 EAPI=2
 WANT_AUTOMAKE="1.11"
@@ -8,7 +8,7 @@ EGIT_BOOTSTRAP="eautoreconf"
 
 inherit autotools base git
 
-EGIT_REPO_URI="git://${PN}.git.sourceforge.net/gitroot/${PN}/${PN}"
+EGIT_REPO_URI="git://github.com/FreeRDP/FreeRDP.git"
 
 DESCRIPTION="A Remote Desktop Protocol Client, forked from rdesktop"
 HOMEPAGE="http://www.freerdp.com/"
@@ -17,7 +17,7 @@ SRC_URI=""
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="alsa cups debug gnutls iconv ipv6 largefile libsamplerate nss polarssl \
+IUSE="alsa cups debug gnutls iconv ipv6 libsamplerate nss polarssl \
 ssl X"
 
 DEPEND="
@@ -30,7 +30,8 @@ DEPEND="
 	libsamplerate? ( media-libs/libsamplerate )
 	cups? ( net-print/cups )
 	iconv? ( virtual/libiconv )"
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	x11-apps/setxkbmap"
 
 DOCS=( AUTHORS ChangeLog NEWS README )
 
@@ -74,6 +75,7 @@ src_configure() {
 	# chipcard and directfb are configurable according to ./configure
 	# but they are currently not usable...
 	econf \
+		--enable-largefile \
 		--with-crypto="${MY_CRYPTOBACKEND}" \
 		$(use_enable ssl tls) \
 		$(use_with debug) \
@@ -86,7 +88,6 @@ src_configure() {
 		$(use_with cups printer cups) \
 		$(use_enable iconv) \
 		$(use_enable ipv6) \
-		$(use_enable largefile) \
 		$(use_with libsamplerate) \
 		$(use_with X x)
 }

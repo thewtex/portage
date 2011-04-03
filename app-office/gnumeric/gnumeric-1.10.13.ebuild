@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/gnumeric/gnumeric-1.10.13.ebuild,v 1.1 2011/02/05 15:31:47 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/gnumeric/gnumeric-1.10.13.ebuild,v 1.8 2011/03/22 19:56:44 ranger Exp $
 
 EAPI="3"
 GCONF_DEBUG="no"
@@ -13,7 +13,7 @@ HOMEPAGE="http://projects.gnome.org/gnumeric/"
 LICENSE="GPL-2"
 
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 ia64 ppc ppc64 sparc x86 ~x86-fbsd"
 
 IUSE="gnome perl python"
 # Missing gnome-extra/libgnomedb required version in tree
@@ -24,17 +24,17 @@ RESTRICT="test"
 
 RDEPEND="sys-libs/zlib
 	app-arch/bzip2
-	>=dev-libs/glib-2.12
+	>=dev-libs/glib-2.12:2
 	>=gnome-extra/libgsf-1.14.19[gnome?]
 	>=x11-libs/goffice-0.8.10:0.8
-	>=dev-libs/libxml2-2.4.12
+	>=dev-libs/libxml2-2.4.12:2
 	>=x11-libs/pango-1.12
 
 	>=x11-libs/gtk+-2.18:2
 	x11-libs/cairo[svg]
 
 	gnome? (
-		>=gnome-base/gconf-2
+		>=gnome-base/gconf-2:2
 		>=gnome-base/libgnome-2
 		>=gnome-base/libgnomeui-2
 		>=gnome-base/libbonobo-2.2
@@ -46,7 +46,7 @@ RDEPEND="sys-libs/zlib
 #		>=gnome-extra/libgda-4.1.1:4.0
 #		>=gnome-extra/libgnomedb-3.99.6:4.0 )
 DEPEND="${RDEPEND}
-	>=dev-util/intltool-0.25
+	>=dev-util/intltool-0.35.0
 	>=dev-util/pkgconfig-0.18
 	app-text/scrollkeeper"
 

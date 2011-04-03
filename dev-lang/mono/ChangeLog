@@ -1,6 +1,40 @@
 # ChangeLog for dev-lang/mono
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/mono/ChangeLog,v 1.210 2011/01/29 17:02:55 hwoarang Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/mono/ChangeLog,v 1.217 2011/03/21 20:25:55 ranger Exp $
+
+  21 Mar 2011; Brent Baude <ranger@gentoo.org> mono-2.10.1-r2.ebuild:
+  Marking mono-2.10.1-r2 ppc stable for bug 359651
+
+*mono-2.10.1-r2 (21 Mar 2011)
+
+  21 Mar 2011; Pacho Ramos <pacho@gentoo.org> +mono-2.10.1-r2.ebuild,
+  +files/mono-2.10.1-ppc-len.patch:
+  Remove old patches as recommended by upstream, they also look unneeded.
+  Include upstream fix to allow mono-basic compilation on ppc.
+
+  20 Mar 2011; Pacho Ramos <pacho@gentoo.org> mono-2.10.1-r1.ebuild:
+  Fix building on ppc (bug #359515 by Brent Baude).
+
+  05 Mar 2011; Pacho Ramos <pacho@gentoo.org> mono-2.10.1-r1.ebuild:
+  Drop again unneeded depend.
+
+  05 Mar 2011; Pacho Ramos <pacho@gentoo.org> mono-2.8.2-r1.ebuild,
+  mono-2.10.1-r1.ebuild:
+  Fix building on hardened (bug #347365 by onox). Thanks a lot to Anders
+  Hellgren and Magnus Granberg for their help.
+
+*mono-2.10.1-r1 (27 Feb 2011)
+
+  27 Feb 2011; Pacho Ramos <pacho@gentoo.org> -mono-2.10.1.ebuild,
+  +mono-2.10.1-r1.ebuild:
+  Build again against internal gc as boehm causes banshee to crash a lot.
+
+*mono-2.10.1 (27 Feb 2011)
+
+  27 Feb 2011; Pacho Ramos <pacho@gentoo.org> +mono-2.10.1.ebuild,
+  +files/mono-2.10.1-libdir.patch:
+  Version bump to 2.10, build against system boehm (bug #252547 by Diego Elio
+  Pettenò), drop some no longer needed changes at src_install.
 
   29 Jan 2011; Markos Chandras <hwoarang@gentoo.org> mono-2.8.2-r1.ebuild:
   Stable on amd64 wrt bug #352808

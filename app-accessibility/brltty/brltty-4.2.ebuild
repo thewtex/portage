@@ -1,11 +1,12 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-accessibility/brltty/brltty-4.2.ebuild,v 1.2 2010/10/05 17:19:34 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-accessibility/brltty/brltty-4.2.ebuild,v 1.12 2011/04/02 07:06:55 angelos Exp $
 
-EAPI="2"
+EAPI="4"
 FINDLIB_USE="ocaml"
 
-inherit findlib eutils multilib toolchain-funcs java-pkg-opt-2 flag-o-matic
+inherit findlib eutils multilib toolchain-funcs java-pkg-opt-2 flag-o-matic \
+	autotools
 
 DESCRIPTION="Daemon that provides access to the Linux/Unix console for a blind person"
 HOMEPAGE="http://mielke.cc/brltty/"
@@ -13,10 +14,15 @@ SRC_URI="http://mielke.cc/brltty/releases/${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~alpha amd64 ~hppa ~ia64 ppc ppc64 x86"
 IUSE="+api +beeper bluetooth +contracted-braille doc +fm gpm iconv icu
 		java +learn-mode +midi nls ocaml +pcm python usb +speech
-		static tcl X"
+		tcl X"
+REQUIRED_USE="doc? ( api )
+	java? ( api )
+	ocaml? ( api )
+	python? ( api )
+	tcl? ( api )"
 
 COMMON_DEP="bluetooth? ( net-wireless/bluez )
 	gpm? ( >=sys-libs/gpm-1.20 )
@@ -33,9 +39,17 @@ RDEPEND="java? ( >=virtual/jre-1.4 )
 	${COMMON_DEP}"
 
 src_prepare() {
+	epatch "${FILESDIR}"/${P}-fix-ldflags.patch
+	epatch "${FILESDIR}"/${P}-fix-ocaml-install.patch
+	epatch "${FILESDIR}"/${P}-fix-svnversion.patch
 	epatch "${FILESDIR}"/${P}-glibc-212.patch
 
 	java-pkg-opt-2_src_prepare
+
+	# We run eautoconf instead of using eautoreconf because brltty uses
+	# a custom build system that uses autoconf without the rest of the
+	# autotools.
+	eautoconf
 }
 
 src_configure() {
@@ -67,22 +81,22 @@ src_configure() {
 		$(use_enable pcm pcm-support) \
 		$(use_enable python python-bindings) \
 		$(use_enable speech speech-support) \
-		$(use_enable static standalone-programs) \
 		$(use_enable tcl tcl-bindings) \
 		$(use_enable X x) \
 		$(use_with bluetooth bluetooth-package) \
-		$(use_with usb usb-package) \
-		|| die
+		$(use_with usb usb-package)
 }
 
 src_compile() {
 	local JAVAC_CONF=""
+	local OUR_JNI_FLAGS=""
 	if use java; then
-		append-flags "$(java-pkg_get-jni-cflags)"
+		OUR_JNI_FLAGS="$(java-pkg_get-jni-cflags)"
 		JAVAC_CONF="${JAVAC} -encoding UTF-8 $(java-pkg_javac-args)"
 	fi
 
-	emake JAVAC="${JAVAC_CONF}" || die
+	# workaround for parallel build failure, bug #340903.
+	emake -j1 JAVA_JNI_FLAGS="${OUR_JNI_FLAGS}" JAVAC="${JAVAC_CONF}"
 }
 
 src_install() {
@@ -90,7 +104,7 @@ src_install() {
 		findlib_src_preinst
 	fi
 
-	emake install || die
+	emake OCAML_LDCONF= install
 
 	if use java; then
 		# make install puts the _java.so there, and no it's not $(get_libdir)
@@ -117,7 +131,7 @@ src_install() {
 	dodoc CONTRIBUTORS ChangeLog HISTORY README* TODO BRLTTY-*.txt
 	dohtml -r Manual-BRLTTY
 	if use doc; then
-		dohtml -r Manual-BRLAPI
+		dohtml -r Manual-BrlAPI
 		dodoc BrlAPI-*.txt
 	fi
 }

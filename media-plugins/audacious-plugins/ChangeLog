@@ -1,6 +1,46 @@
 # ChangeLog for media-plugins/audacious-plugins
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/audacious-plugins/ChangeLog,v 1.194 2011/02/06 17:48:09 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/audacious-plugins/ChangeLog,v 1.202 2011/03/30 16:31:53 ssuominen Exp $
+
+  30 Mar 2011; Samuli Suominen <ssuominen@gentoo.org>
+  audacious-plugins-2.4.4-r1.ebuild:
+  amd64 stable wrt #361267
+
+  30 Mar 2011; Tony Vroon <chainsaw@gentoo.org>
+  audacious-plugins-2.4.4-r1.ebuild, audacious-plugins-2.5_alpha1.ebuild:
+  Replace explicit ffmpeg depend with the ffmpeg virtual for libav
+  compatibility. As suggested by "tbartdev" in bug #361285.
+
+  29 Mar 2011; Christoph Mende <angelos@gentoo.org>
+  audacious-plugins-2.2-r2.ebuild, audacious-plugins-2.4.0.ebuild,
+  audacious-plugins-2.4.1.ebuild, audacious-plugins-2.4.2.ebuild,
+  audacious-plugins-2.4.3.ebuild, audacious-plugins-2.4.3-r1.ebuild:
+  Fixed slot deps
+
+  28 Mar 2011; Gilles Dartiguelongue <eva@gentoo.org>
+  audacious-plugins-2.4.4-r1.ebuild, audacious-plugins-2.5_alpha1.ebuild:
+  Pin gtk and libxml to slot 2.
+
+  25 Mar 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  audacious-plugins-2.4.0.ebuild:
+  ppc stable wrt #297894
+
+  21 Mar 2011; Mike Frysinger <vapier@gentoo.org>
+  audacious-plugins-2.4.4-r1.ebuild, audacious-plugins-2.5_alpha1.ebuild,
+  metadata.xml:
+  Add USE=mms to control libmms dep #295807 by Alexis Ballier.
+
+*audacious-plugins-2.4.4-r1 (28 Feb 2011)
+
+  28 Feb 2011; Tony Vroon <chainsaw@gentoo.org>
+  -audacious-plugins-2.4.4.ebuild, +audacious-plugins-2.4.4-r1.ebuild:
+  Redo ebuild with missed libnotify changes. Patch from Samuli is upstream now.
+
+*audacious-plugins-2.4.4 (28 Feb 2011)
+
+  28 Feb 2011; Tony Vroon <chainsaw@gentoo.org>
+  +audacious-plugins-2.4.4.ebuild:
+  Version bump. Use emake like on 2.5-alpha ebuild.
 
   06 Feb 2011; Samuli Suominen <ssuominen@gentoo.org>
   +files/2.4.3-libnotify-0.7.patch, audacious-plugins-2.4.3-r1.ebuild,

@@ -1,6 +1,26 @@
 # ChangeLog for sys-power/powertop
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-power/powertop/ChangeLog,v 1.40 2011/01/26 10:44:34 bangert Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-power/powertop/ChangeLog,v 1.44 2011/03/15 09:42:47 scarabeus Exp $
+
+  15 Mar 2011; Tomáš Chvátal <scarabeus@gentoo.org> powertop-1.97-r1.ebuild,
+  powertop-9999.ebuild:
+  Sync live ebuild again. There is no manpage now so drop needless gunzip.
+
+  14 Mar 2011; Jeroen Roovers <jer@gentoo.org> powertop-1.97-r1.ebuild:
+  Add more build time and run time dependencies (bug #358869).
+
+*powertop-1.97-r1 (14 Mar 2011)
+
+  14 Mar 2011; Jeroen Roovers <jer@gentoo.org> -powertop-1.97.ebuild,
+  +powertop-1.97-r1.ebuild:
+  Respect CC, CXX, CFLAGS, add cache dir.
+
+*powertop-1.97 (14 Mar 2011)
+
+  14 Mar 2011; Tomáš Chvátal <scarabeus@gentoo.org> +powertop-1.97.ebuild,
+  powertop-9999.ebuild:
+  Update live ebuild to reflect reality. Add latest version with only amd64 and
+  x86 because it is completely different stuff. Non-maintainer commit.
 
   26 Jan 2011; Thilo Bangert <bangert@gentoo.org> powertop-9999.ebuild:
   fix git url (#350783)

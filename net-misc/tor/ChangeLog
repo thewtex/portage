@@ -1,6 +1,52 @@
 # ChangeLog for net-misc/tor
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/tor/ChangeLog,v 1.237 2011/02/12 17:50:38 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/tor/ChangeLog,v 1.248 2011/04/02 15:42:33 armin76 Exp $
+
+  02 Apr 2011; Raúl Porcel <armin76@gentoo.org> tor-0.2.1.30.ebuild:
+  arm/sparc stable wrt #359789
+
+  28 Mar 2011; Anthony G. Basile <blueness@gentoo.org>
+  files/tor-0.2.2.23_alpha-respect-CFLAGS.patch:
+  Improved fix to build system, see bug #360765
+
+*tor-0.2.2.23_alpha-r1 (25 Mar 2011)
+
+  25 Mar 2011; Anthony G. Basile <blueness@gentoo.org>
+  +tor-0.2.2.23_alpha-r1.ebuild,
+  +files/tor-0.2.2.23_alpha-respect-CFLAGS.patch:
+  Fixed build system to fully respect CFLAGS
+
+  25 Mar 2011; Anthony G. Basile <blueness@gentoo.org>
+  tor-0.2.2.23_alpha.ebuild:
+  Removed superfluous USE flag
+
+  25 Mar 2011; Anthony G. Basile <blueness@gentoo.org>
+  -tor-0.2.2.22_alpha-r1.ebuild:
+  Removed outdated alpha
+
+  22 Mar 2011; Thomas Kahle <tomka@gentoo.org> tor-0.2.1.30.ebuild:
+  x86 stable per bug 359789
+
+  21 Mar 2011; Christoph Mende <angelos@gentoo.org> tor-0.2.1.30.ebuild:
+  Stable on amd64 wrt bug #359789
+
+  21 Mar 2011; Kacper Kowalik <xarthisius@gentoo.org> tor-0.2.1.30.ebuild:
+  ppc/ppc64 stable wrt #359789
+
+*tor-0.2.2.23_alpha (11 Mar 2011)
+
+  11 Mar 2011; Anthony G. Basile <blueness@gentoo.org>
+  +tor-0.2.2.23_alpha.ebuild:
+  Version bump on alpha and removal of deprecated vesion.
+
+  27 Feb 2011; Anthony G. Basile <blueness@gentoo.org> +tor-0.2.1.29.ebuild:
+  Reverted removal of only stable ebuild on most arches.
+
+*tor-0.2.1.30 (27 Feb 2011)
+
+  27 Feb 2011; Tomas Touceda <chiiph@gentoo.org> -tor-0.2.1.29.ebuild,
+  +tor-0.2.1.30.ebuild:
+  Version bump and clean up.
 
   12 Feb 2011; Raúl Porcel <armin76@gentoo.org> tor-0.2.1.29-r1.ebuild:
   sparc stable wrt #351920

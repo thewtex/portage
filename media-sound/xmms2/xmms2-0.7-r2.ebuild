@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/xmms2/xmms2-0.7-r2.ebuild,v 1.6 2011/02/12 16:19:49 xarthisius Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/xmms2/xmms2-0.7-r2.ebuild,v 1.11 2011/03/06 12:10:57 klausman Exp $
 
 EAPI=3
 
@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.bz2"
 LICENSE="GPL-2 LGPL-2.1"
 
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ppc ~x86"
+KEYWORDS="alpha amd64 ppc x86"
 
 IUSE="aac airplay +alsa ao asf avahi cdda curl cxx ffmpeg flac gvfs ices
 jack mac mlib-update mms +mad modplug mp3 musepack ofa oss
@@ -28,8 +28,9 @@ RDEPEND="server? (
 		airplay? ( dev-libs/openssl )
 		alsa? ( media-libs/alsa-lib )
 		ao? ( media-libs/libao )
-		avahi? ( net-dns/avahi )
-		cdda? ( >=media-libs/libdiscid-0.1.1
+		avahi? ( net-dns/avahi[mdnsresponder-compat] )
+		cdda? ( dev-libs/libcdio
+			>=media-libs/libdiscid-0.1.1
 			>=media-sound/cdparanoia-3.9.8 )
 		curl? ( >=net-misc/curl-7.15.1 )
 		ffmpeg? ( media-video/ffmpeg )

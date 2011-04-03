@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ml/camlimages/camlimages-3.0.2.ebuild,v 1.7 2010/04/15 14:47:40 ranger Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ml/camlimages/camlimages-3.0.2.ebuild,v 1.9 2011/02/28 18:10:41 ssuominen Exp $
 
 EAPI=2
 
@@ -20,9 +20,9 @@ RDEPEND=">=dev-lang/ocaml-3.10.2[X,ocamlopt]
 	gif? ( media-libs/giflib )
 	gtk? ( dev-ml/lablgtk )
 	gs? ( app-text/ghostscript-gpl )
-	jpeg? ( media-libs/jpeg )
+	jpeg? ( virtual/jpeg )
 	tiff? ( media-libs/tiff )
-	media-libs/libpng
+	>=media-libs/libpng-1.4
 	truetype? ( >=media-libs/freetype-2 )
 	xpm? ( x11-libs/libXpm )
 	"
@@ -35,6 +35,7 @@ src_prepare() {
 	epatch "${FILESDIR}/${P}-ocaml-autoconf11.patch"
 	epatch "${FILESDIR}/${P}-annot.patch"
 	epatch "${FILESDIR}/${P}-noxpm.patch"
+	epatch "${FILESDIR}/${P}-libpng15.patch"
 	eautoreconf
 }
 

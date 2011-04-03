@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/libfm/libfm-9999.ebuild,v 1.9 2011/01/22 14:26:45 hwoarang Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/libfm/libfm-9999.ebuild,v 1.13 2011/02/27 22:54:15 hwoarang Exp $
 
 EAPI=2
 
@@ -8,11 +8,11 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="git://pcmanfm.git.sourceforge.net/gitroot/pcmanfm/${PN}"
 	inherit autotools git
 	SRC_URI=""
-	EXTRA_DEPEND="dev-util/gtk-doc
-		dev-util/gtk-doc-am"
 else
-	SRC_URI="mirror://sourceforge/pcmanfm/${P}.tar.gz"
+	inherit autotools
+	SRC_URI="http://dev.gentoo.org/~hwoarang/distfiles/${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~ppc ~x86"
+	S="${WORKDIR}"
 fi
 
 inherit fdo-mime
@@ -22,7 +22,7 @@ HOMEPAGE="http://pcmanfm.sourceforge.net/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="debug examples udev"
+IUSE="debug doc examples udev"
 
 COMMON_DEPEND=">=dev-libs/glib-2.18:2
 	>=x11-libs/gtk+-2.16:2
@@ -32,17 +32,34 @@ RDEPEND="${COMMON_DEPEND}
 	x11-misc/shared-mime-info
 	udev? ( sys-fs/udisks )"
 DEPEND="${COMMON_DEPEND}
+	doc? (
+		dev-util/gtk-doc
+		dev-util/gtk-doc-am
+	)
 	>=dev-util/intltool-0.40
 	dev-util/pkgconfig
-	sys-devel/gettext
-	${EXTRA_DEPEND}"
+	sys-devel/gettext"
 
 src_prepare() {
-	if [[ ${PV} == 9999 ]]; then
+	if ! use doc; then
+		sed -ie '/SUBDIRS=/s#docs##' "${S}"/Makefile.am || die "sed failed"
+		sed -ie '/^[[:space:]]*docs/d' configure.ac || die "sed failed"
+	else
 		gtkdocize --copy || die
-		intltoolize --force --copy --automake || die
-		eautoreconf
 	fi
+	intltoolize --force --copy --automake || die
+	#disable unused translations. Bug #356029
+	data/ui/app-chooser.ui
+	data/ui/ask-rename.ui
+	data/ui/exec-file.ui
+	data/ui/file-prop.ui
+	data/ui/preferred-apps.ui
+	data/ui/progress.ui
+	for trans in app-chooser ask-rename exec-file file-prop preferred-apps \
+		progress;do
+		echo "data/ui/"${trans}.ui >> po/POTFILES.in
+	done
+	eautoreconf
 }
 
 src_configure() {
@@ -53,6 +70,9 @@ src_configure() {
 		$(use_enable udev udisks) \
 		$(use_enable examples demo) \
 		$(use_enable debug) \
+		# Documentation fails to build at the moment
+		# $(use_enable doc gtk-doc) \
+		# $(use_enable doc gtk-doc-html) \
 		--with-html-dir=/usr/share/doc/${PF}/html
 }
 

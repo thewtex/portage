@@ -1,5 +1,5 @@
-=app-pda/libopensync-9999* >=dev-libs/openobex-1.0 bluetooth? ( net-wireless/bluez ) >=dev-util/cmake-2.8.1 userland_GNU? ( >=sys-apps/findutils-4.4.0 ) dev-vcs/subversion net-misc/rsync
-=app-pda/libopensync-9999* >=dev-libs/openobex-1.0 bluetooth? ( net-wireless/bluez )
+~app-pda/libopensync-9999 dev-libs/glib:2 dev-libs/libxml2 >=dev-libs/openobex-1.0[bluetooth?,irda?] bluetooth? ( net-wireless/bluez ) >=dev-util/pkgconfig-0.9.0 >=dev-util/cmake-2.8.1 userland_GNU? ( >=sys-apps/findutils-4.4.0 ) dev-vcs/subversion net-misc/rsync
+~app-pda/libopensync-9999 dev-libs/glib:2 dev-libs/libxml2 >=dev-libs/openobex-1.0[bluetooth?,irda?] bluetooth? ( net-wireless/bluez )
 0
 
 
@@ -9,12 +9,12 @@ OpenSync IrMC plugin
 ~amd64 ~x86
 base cmake-utils eutils flag-o-matic multilib portability subversion toolchain-funcs
 bluetooth irda
+|| ( bluetooth irda )
 
 
+4
 
-
-
-compile install preinst setup test unpack
+compile configure install preinst prepare test unpack
 
 
 

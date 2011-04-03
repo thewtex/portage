@@ -1,9 +1,8 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/fail2ban/fail2ban-0.8.4-r2.ebuild,v 1.4 2011/02/10 23:35:21 hwoarang Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/fail2ban/fail2ban-0.8.4-r2.ebuild,v 1.6 2011/03/21 11:31:15 xarthisius Exp $
 
-EAPI=2
-
+EAPI="3"
 PYTHON_DEPEND="2"
 
 inherit distutils eutils
@@ -14,12 +13,17 @@ SRC_URI="mirror://sourceforge/fail2ban/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 hppa ~ppc ~ppc64 ~sparc x86 ~x86-fbsd"
+KEYWORDS="amd64 hppa ppc ppc64 ~sparc x86 ~x86-fbsd"
 IUSE=""
 
 RDEPEND="net-misc/whois
 	virtual/mta
 	net-firewall/iptables"
+
+pkg_setup() {
+	python_set_active_version 2
+	python_pkg_setup
+}
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-hashlib.patch \
@@ -48,6 +52,8 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
+	distutils_pkg_postinst
+
 	if [[ $previous_less_than_0_7 = 0 ]] ; then
 		elog
 		elog "Configuration files are now in /etc/fail2ban/"

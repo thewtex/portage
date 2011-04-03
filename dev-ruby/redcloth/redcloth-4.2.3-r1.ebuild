@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/redcloth/redcloth-4.2.3-r1.ebuild,v 1.5 2011/01/23 09:39:11 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/redcloth/redcloth-4.2.3-r1.ebuild,v 1.10 2011/04/01 08:27:08 xmw Exp $
 
 EAPI=2
 
@@ -29,7 +29,7 @@ SRC_URI="http://github.com/jgarber/redcloth/tarball/RELEASE_$(replace_all_versio
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris"
+KEYWORDS="amd64 ~hppa ~ia64 ppc ~ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris"
 IUSE=""
 
 DEPEND="$DEPEND
@@ -42,7 +42,7 @@ ruby_add_bdepend "
 	dev-ruby/rake
 	>=dev-ruby/echoe-3.0.1
 	test? (
-		dev-ruby/rspec
+		dev-ruby/rspec:0
 		dev-ruby/diff-lcs
 	)"
 

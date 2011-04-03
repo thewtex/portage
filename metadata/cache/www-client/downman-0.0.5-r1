@@ -1,5 +1,5 @@
->=x11-libs/gtk+-2 >=gnome-base/libgnome-2 >=gnome-base/libgnomeui-2 >=gnome-base/libglade-2 >=dev-libs/libxml2-2 dev-util/pkgconfig || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b >=sys-apps/sed-4
->=x11-libs/gtk+-2 >=gnome-base/libgnome-2 >=gnome-base/libgnomeui-2 >=gnome-base/libglade-2 >=dev-libs/libxml2-2
+x11-libs/gtk+:2 >=gnome-base/libgnome-2 >=gnome-base/libgnomeui-2 gnome-base/libglade:2.0 dev-libs/libxml2:2 dev-util/pkgconfig || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b >=sys-apps/sed-4
+x11-libs/gtk+:2 >=gnome-base/libgnome-2 >=gnome-base/libgnomeui-2 gnome-base/libglade:2.0 dev-libs/libxml2:2
 0
 mirror://sourceforge/downman/downman-0.0.5.tar.gz
 
@@ -7,14 +7,14 @@ http://downman.sourceforge.net
 GPL-2
 Suite of programs to download files.
 ~x86 ppc ~sparc alpha amd64
-autotools eutils fdo-mime gnome.org gnome2 gnome2-utils libtool multilib portability toolchain-funcs
+autotools eutils fdo-mime gnome.org gnome2 gnome2-utils libtool multilib portability toolchain-funcs versionator
 debug
 
 
 
+3
 
-
-compile install postinst postrm preinst unpack
+compile configure install postinst postrm preinst prepare unpack
 
 
 

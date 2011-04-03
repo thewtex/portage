@@ -1,0 +1,22 @@
+selinux? ( sec-policy/selinux-dhcp ) kernel_linux? ( sys-apps/net-tools ) vim-syntax? ( app-vim/dhcpd-syntax ) ldap? ( net-nds/openldap ssl? ( dev-libs/openssl ) )
+selinux? ( sec-policy/selinux-dhcp ) kernel_linux? ( sys-apps/net-tools ) vim-syntax? ( app-vim/dhcpd-syntax ) ldap? ( net-nds/openldap ssl? ( dev-libs/openssl ) )
+0
+ftp://ftp.isc.org/isc/dhcp/dhcp-4.2.1.tar.gz
+
+http://www.isc.org/products/DHCP
+as-is BSD
+ISC Dynamic Host Configuration Protocol (DHCP) client/server
+~alpha ~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~sparc-fbsd ~x86 ~x86-fbsd
+eutils multilib portability toolchain-funcs
++client ipv6 kernel_linux ldap selinux +server ssl vim-syntax
+
+
+virtual/dhcpc
+2
+
+config configure install postinst preinst prepare
+
+
+
+
+

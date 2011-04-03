@@ -1,6 +1,49 @@
 # ChangeLog for net-im/empathy
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/empathy/ChangeLog,v 1.72 2011/02/05 17:10:33 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-im/empathy/ChangeLog,v 1.83 2011/03/28 20:59:44 eva Exp $
+
+  28 Mar 2011; Gilles Dartiguelongue <eva@gentoo.org> empathy-2.34.0.ebuild:
+  Use slot dependency for webkit-gtk.
+
+*empathy-2.34.0 (25 Mar 2011)
+
+  25 Mar 2011; Gilles Dartiguelongue <eva@gentoo.org> -empathy-2.33.2.ebuild,
+  +empathy-2.34.0.ebuild:
+  Version bump. Bug fixes and backports from 3.0 branch.
+
+  22 Mar 2011; Brent Baude <ranger@gentoo.org> empathy-2.32.2.ebuild:
+  Marking empathy-2.32.2 ppc stable for bug 353436
+
+  21 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org> empathy-2.30.2.ebuild,
+  -empathy-2.30.3.ebuild, empathy-2.32.2.ebuild, empathy-2.33.2.ebuild:
+  Fix slot-deps on gnome libs
+
+  12 Mar 2011; Raúl Porcel <armin76@gentoo.org> empathy-2.32.2.ebuild:
+  alpha stable wrt #353436
+
+  02 Mar 2011; Kevin McCarthy <signals@gentoo.org> empathy-2.30.2.ebuild,
+  empathy-2.30.3.ebuild:
+  Slotted gtk+, glib, and libunique depends.
+
+*empathy-2.33.2 (27 Feb 2011)
+
+  27 Feb 2011; Gilles Dartiguelongue <eva@gentoo.org> empathy-2.32.2.ebuild,
+  +empathy-2.33.2.ebuild, metadata.xml:
+  Add <folks-0.3 blocker for empathy-2.32. Bump to 2.33.2, uses new
+  telepathy-logger and folks APIs.
+
+  27 Feb 2011; Gilles Dartiguelongue <eva@gentoo.org> empathy-2.32.2.ebuild:
+  Pin libunique dependency to slot 1.
+
+  25 Feb 2011; Nirbheek Chauhan <nirbheek@gentoo.org> empathy-2.30.2.ebuild,
+  empathy-2.30.3.ebuild, empathy-2.32.2.ebuild:
+  Restrict valid versions of telepathy-logger
+
+  24 Feb 2011; Thomas Kahle <tomka@gentoo.org> empathy-2.32.2.ebuild:
+  x86 stable per bug 353436
+
+  23 Feb 2011; Markos Chandras <hwoarang@gentoo.org> empathy-2.32.2.ebuild:
+  Stable on amd64 wrt bug #353436
 
   05 Feb 2011; Samuli Suominen <ssuominen@gentoo.org> empathy-2.32.2.ebuild,
   +files/empathy-2.32.2-libnotify-0.7.patch:

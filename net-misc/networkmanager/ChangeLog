@@ -1,6 +1,34 @@
 # ChangeLog for net-misc/networkmanager
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/networkmanager/ChangeLog,v 1.97 2011/02/08 13:31:01 dagger Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/networkmanager/ChangeLog,v 1.103 2011/03/09 14:14:23 dagger Exp $
+
+*networkmanager-0.8.2-r10 (09 Mar 2011)
+
+  09 Mar 2011; Robert Piasek <dagger@gentoo.org>
+  -networkmanager-0.8.2-r9.ebuild, +networkmanager-0.8.2-r10.ebuild,
+  +files/networkmanager-0.8.2-fix-dnsmasq-config.patch,
+  +files/networkmanager-0.8.2-fix-shutdown.patch:
+  fix some shutdown crashes. Fix >=dnsmasq-2.56 connection sharing - Gentoo bug
+  #357671
+
+*networkmanager-0.8.2-r9 (26 Feb 2011)
+
+  26 Feb 2011; Mu Qiao <qiaomuf@gentoo.org> -networkmanager-0.8.2-r8.ebuild,
+  +networkmanager-0.8.2-r9.ebuild,
+  files/networkmanager-0.8.2-ifnet-smarter-write.patch:
+  Display printable conn_name in nm-applet. (bug #356337)
+
+*networkmanager-0.8.2-r8 (26 Feb 2011)
+
+  26 Feb 2011; Mu Qiao <qiaomuf@gentoo.org> +networkmanager-0.8.2-r8.ebuild,
+  files/networkmanager-0.8.2-ifnet-smarter-write.patch:
+  Accept non-alnum ssid (bug #356337)
+
+*networkmanager-0.8.2-r7 (25 Feb 2011)
+
+  25 Feb 2011; Mu Qiao <qiaomuf@gentoo.org> +networkmanager-0.8.2-r7.ebuild,
+  +files/networkmanager-0.8.2-ifnet-smarter-write.patch, metadata.xml:
+  Won't write when nothing changed
 
 *networkmanager-0.8.2-r6 (08 Feb 2011)
 

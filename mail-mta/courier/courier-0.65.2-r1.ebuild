@@ -1,8 +1,8 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-mta/courier/courier-0.65.2-r1.ebuild,v 1.1 2011/01/23 22:32:46 hanno Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-mta/courier/courier-0.65.2-r1.ebuild,v 1.10 2011/04/01 23:25:41 hanno Exp $
 
-inherit eutils flag-o-matic
+inherit eutils flag-o-matic multilib
 
 DESCRIPTION="An MTA designed specifically for maildirs"
 SRC_URI="mirror://sourceforge/courier/${P}.tar.bz2"
@@ -10,13 +10,9 @@ HOMEPAGE="http://www.courier-mta.org/"
 SLOT="0"
 LICENSE="GPL-2"
 # not in keywords due to missing dependencies: ~arm ~s390 ~ppc64
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~sparc ~x86"
-IUSE="postgres ldap mysql pam nls ipv6 spell fax crypt norewrite mailwrapper \
+KEYWORDS="~alpha amd64 ~hppa ~ia64 ppc ~sparc ~x86"
+IUSE="postgres ldap mysql pam nls ipv6 spell fax crypt norewrite \
 	fam web webmail"
-
-PROVIDE="virtual/mta
-	 virtual/mda
-	 virtual/imapd"
 
 DEPEND="
 	>=net-libs/courier-authlib-0.61.0
@@ -31,16 +27,33 @@ DEPEND="
 	postgres? ( dev-db/postgresql-base )
 	spell? ( virtual/aspell-dict )
 	fam? ( virtual/fam )
-	!mailwrapper? ( !virtual/mta )
-	!virtual/imapd
-	!mail-filter/maildrop"
+	!mail-filter/maildrop
+	!mail-mta/esmtp
+	!mail-mta/exim
+	!mail-mta/mini-qmail
+	!mail-mta/msmtp
+	!mail-mta/nbsmtp
+	!mail-mta/netqmail
+	!mail-mta/nullmailer
+	!mail-mta/postfix
+	!mail-mta/qmail-ldap
+	!mail-mta/sendmail
+	!mail-mta/ssmtp
+	"
 
 RDEPEND="${DEPEND}
 	dev-lang/perl
 	sys-process/procps"
 
-PDEPEND="mailwrapper? ( >=net-mail/mailwrapper-0.2 )
-	pam? ( net-mail/mailbase )
+# get rid of old style virtual/imapd - bug 350792
+# all blockers really needed?
+RDEPEND="${RDEPEND}
+	!net-mail/bincimap
+	!net-mail/courier-imap
+	!net-mail/cyrus-imapd
+	!net-mail/uw-imap"
+
+PDEPEND="pam? ( net-mail/mailbase )
 	crypt? ( >=app-crypt/gnupg-1.0.4 )"
 
 src_unpack() {
@@ -113,13 +126,19 @@ src_install() {
 
 	# Get rid of files we dont want
 	if ! use webmail ; then
-		cd "${D}"
-		cat "${FILESDIR}/webmail_files" | xargs rm -rf
+		rm -rf "${D}/usr/$(get_libdir)/courier/courier/webmail" \
+			"${D}/usr/$(get_libdir)/courier/courier/sqwebmaild" \
+			"${D}/usr/share/courier/sqwebmail/" \
+			"${D}/usr/sbin/webmaild" \
+			"${D}/usr/sbin/webgpg" \
+			"${D}/etc/courier/webmail.authpam" \
+			"${D}/var/lib/courier/webmail-logincache" \
+			"${D}"/etc/courier/sqwebmaild*
 	fi
 
 	if ! use web ; then
-		cd "${D}"
-		cat "${FILESDIR}/webadmin_files" | xargs rm -rf
+		rm -rf "${D}/usr/share/courier/courierwebadmin/" \
+			"${D}/etc/courier/webadmin"
 	fi
 
 	for dir2keep in $(cd "${D}" && find ./var/lib/courier -type d) ; do
@@ -164,7 +183,6 @@ src_install() {
 
 	# Fix for a sandbox violation on subsequential merges
 	# - ticho@gentoo.org, 2005-07-10
-	rm "${D}"/usr/sbin/{pop3d,imapd}{,-ssl}
 	dosym /usr/share/courier/pop3d /usr/sbin/courier-pop3d
 	dosym /usr/share/courier/pop3d-ssl /usr/sbin/courier-pop3d-ssl
 	dosym /usr/share/courier/imapd /usr/sbin/courier-imapd
@@ -175,7 +193,7 @@ src_install() {
 	use nls && cp unicode/README README.unicode
 	dodoc AUTHORS BENCHMARKS COPYING* ChangeLog* INSTALL NEWS README* TODO courier/doc/*.txt
 	dodoc tcpd/README.couriertls
-	mv "${D}/usr/share/courier/htmldoc" "${D}/usr/share/doc/${P}/html"
+	mv "${D}/usr/share/courier/htmldoc" "${D}/usr/share/doc/${PF}/html"
 
 	if use webmail ; then
 		insinto /usr/$(get_libdir)/courier/courier
@@ -206,24 +224,7 @@ src_install() {
 	# users should be able to send mail. Could be restricted with suictl.
 	chmod u+s "${D}/usr/bin/sendmail"
 
-	if use mailwrapper ; then
-		mv "${D}/usr/bin/sendmail" "${D}/usr/bin/sendmail.courier"
-		mv "${D}/usr/bin/rmail" "${D}/usr/bin/rmail.courier"
-		mv "${D}/usr/bin/mailq" "${D}/usr/bin/mailq.courier"
-
-		mv "${D}/usr/share/man/man1/sendmail.1" \
-			"${D}/usr/share/man/man1/sendmail-courier.1"
-		mv "${D}/usr/share/man/man1/mailq.1" \
-			"${D}/usr/share/man/man1/mailq-courier.1"
-		mv "${D}/usr/share/man/man1/rmail.1" \
-			"${D}/usr/share/man/man1/rmail-courier.1"
-
-		insopts -m 444 -o mail -g mail
-		insinto /etc/mail
-		doins "${FILESDIR}/mailer.conf"
-	else
-		dosym /usr/bin/sendmail /usr/sbin/sendmail
-	fi
+	dosym /usr/bin/sendmail /usr/sbin/sendmail
 }
 
 src_test() {

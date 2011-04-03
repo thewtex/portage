@@ -1,10 +1,10 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-power/powertop/powertop-9999.ebuild,v 1.2 2011/01/26 10:44:34 bangert Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-power/powertop/powertop-9999.ebuild,v 1.5 2011/03/15 11:08:34 angelos Exp $
 
-EAPI=3
+EAPI=4
 
-inherit git toolchain-funcs eutils
+inherit eutils toolchain-funcs git
 
 DESCRIPTION="tool that helps you find what software is using the most power"
 HOMEPAGE="http://www.lesswatts.org/projects/powertop/"
@@ -16,22 +16,37 @@ SLOT="0"
 KEYWORDS=""
 IUSE="unicode"
 
-DEPEND="sys-libs/ncurses[unicode?]
-	sys-devel/gettext"
-RDEPEND="${DEPEND}"
+DEPEND="
+	dev-libs/libnl
+	sys-apps/pciutils
+	sys-devel/gettext
+	sys-libs/ncurses[unicode?]
+	sys-libs/zlib
+"
+RDEPEND="
+	${DEPEND}
+	net-wireless/bluez
+	x11-apps/xset
+"
 
 src_prepare() {
 	use unicode || sed -i 's:-lncursesw:-lncurses:' Makefile
+	# fix ldflags
+	sed -i \
+		-e '/-o powertop/s:g++:$(CXX) $(CFLAGS) $(LDFLAGS):' \
+		-e 's: -O2 -g -fno-omit-frame-pointer -fstack-protector::g' \
+		-e 's:gcc:$(CC) $(CFLAGS):' \
+		Makefile || die
 }
 
 src_configure() {
-	tc-export CC
+	tc-export CC CXX
 }
 
 src_install() {
-	emake install DESTDIR="${ED}" || die
-	dodoc Changelog README
-	gunzip "${ED}"/usr/share/man/man1/powertop.1.gz
+	emake install DESTDIR="${ED}"
+	dodoc TODO README
+	keepdir /var/cache/powertop
 }
 
 pkg_postinst() {

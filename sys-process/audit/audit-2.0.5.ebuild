@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-process/audit/audit-2.0.5.ebuild,v 1.3 2011/02/07 21:38:55 arfrever Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-process/audit/audit-2.0.5.ebuild,v 1.6 2011/03/30 17:29:56 ssuominen Exp $
 
 EAPI="3"
 PYTHON_DEPEND="2"
@@ -47,11 +47,11 @@ src_prepare() {
 	# Do not build GUI tools
 	sed -i \
 		-e '/AC_CONFIG_SUBDIRS.*system-config-audit/d' \
-		"${S}"/configure.ac
+		"${S}"/configure.ac || die
 	sed -i \
 		-e 's,system-config-audit,,g' \
 		-e '/^SUBDIRS/s,\\$,,g' \
-		"${S}"/Makefile.am
+		"${S}"/Makefile.am || die
 	rm -rf "${S}"/system-config-audit
 
 	# Probably goes away in 1.6.9
@@ -60,10 +60,10 @@ src_prepare() {
 	if ! use ldap; then
 		sed -i \
 			-e '/^AC_OUTPUT/s,audisp/plugins/zos-remote/Makefile,,g' \
-			"${S}"/configure.ac
+			"${S}"/configure.ac || die
 		sed -i \
 			-e '/^SUBDIRS/s,zos-remote,,g' \
-			"${S}"/audisp/plugins/Makefile.am
+			"${S}"/audisp/plugins/Makefile.am || die
 	fi
 
 	# Don't build static version of Python module.
@@ -106,7 +106,7 @@ src_compile() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die "emake install failed"
+	emake DESTDIR="${D}" install || die
 
 	installation() {
 		emake \

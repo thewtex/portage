@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-physics/root/root-5.26.00-r2.ebuild,v 1.8 2010/11/08 17:54:05 xarthisius Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-physics/root/root-5.26.00-r2.ebuild,v 1.10 2011/03/02 21:12:42 jlec Exp $
 
 EAPI=2
 inherit versionator eutils qt4 elisp-common fdo-mime toolchain-funcs flag-o-matic
@@ -21,7 +21,7 @@ HOMEPAGE="http://root.cern.ch/"
 
 SLOT="0"
 LICENSE="LGPL-2.1"
-KEYWORDS="amd64 hppa sparc x86"
+KEYWORDS="amd64 hppa x86"
 
 IUSE="afs cint7 clarens doc emacs examples fftw geant4 kerberos ldap
 	+math mysql	odbc +opengl openmp oracle postgres pythia6 pythia8 python
@@ -64,7 +64,7 @@ CDEPEND=">=dev-lang/cfortran-4.4-r2
 	ruby? ( dev-lang/ruby
 			dev-ruby/rubygems )
 	ssl? ( dev-libs/openssl )
-	xml? ( dev-libs/libxml2 )"
+	xml? ( dev-libs/libxml2:2 )"
 
 DEPEND="${CDEPEND}
 	dev-util/pkgconfig"

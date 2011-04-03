@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/roundcube/roundcube-0.4.2.ebuild,v 1.4 2010/12/28 16:50:00 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-client/roundcube/roundcube-0.4.2.ebuild,v 1.6 2011/03/24 06:59:00 radhermit Exp $
 
 EAPI="2"
 
@@ -16,12 +16,12 @@ SRC_URI="mirror://sourceforge/${MY_PN}/${MY_P}.tar.gz"
 # roundcube is GPL-licensed, the rest of the licenses here are
 # for bundled PEAR components, googiespell and utf8.class.php
 LICENSE="GPL-2 BSD PHP-2.02 PHP-3 MIT public-domain"
-KEYWORDS="amd64 arm ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="amd64 arm ppc ppc64 ~sparc x86"
 IUSE="ldap mysql postgres ssl spell"
 
 DEPEND=""
-RDEPEND="|| ( <dev-lang/php-5.3[crypt,iconv,ldap?,pcre,postgres?,session,spl,ssl?,unicode]
-		>=dev-lang/php-5.3[crypt,iconv,ldap?,postgres?,session,ssl?,unicode] )
+RDEPEND="|| ( <dev-lang/php-5.3[crypt,iconv,json,ldap?,pcre,postgres?,session,spl,ssl?,unicode]
+		>=dev-lang/php-5.3[crypt,iconv,json,ldap?,postgres?,session,ssl?,unicode] )
 	!postgres? ( !mysql? ( dev-lang/php[sqlite] ) )
 	spell? ( dev-lang/php[curl,spell] )
 	dev-php/PEAR-PEAR"

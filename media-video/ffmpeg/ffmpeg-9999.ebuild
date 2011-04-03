@@ -1,13 +1,13 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/ffmpeg/ffmpeg-9999.ebuild,v 1.30 2011/01/29 20:03:52 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/ffmpeg/ffmpeg-9999.ebuild,v 1.37 2011/04/01 23:16:20 aballier Exp $
 
 EAPI="2"
 
 SCM=""
 if [ "${PV#9999}" != "${PV}" ] ; then
 	SCM="git"
-	EGIT_REPO_URI="git://git.ffmpeg.org/ffmpeg.git"
+	EGIT_REPO_URI="git://git.videolan.org/ffmpeg.git"
 fi
 
 inherit eutils flag-o-matic multilib toolchain-funcs ${SCM}
@@ -28,7 +28,13 @@ SLOT="0"
 if [ "${PV#9999}" = "${PV}" ] ; then
 	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 fi
-IUSE="+3dnow +3dnowext alsa altivec amr bindist +bzip2 cpudetection custom-cflags debug dirac doc +encode faac frei0r gsm +hardcoded-tables ieee1394 jack jpeg2k +mmx +mmxext mp3 network oss pic qt-faststart rtmp schroedinger sdl speex +ssse3 static-libs test theora threads v4l v4l2 vaapi vdpau vorbis vpx X x264 xvid +zlib"
+IUSE="
+	+3dnow +3dnowext alsa altivec amr avx bindist +bzip2 cpudetection
+	custom-cflags debug dirac doc +encode faac frei0r gsm +hardcoded-tables
+	ieee1394 jack jpeg2k +mmx +mmxext mp3 network oss pic qt-faststart rtmp
+	schroedinger sdl speex +ssse3 static-libs test theora threads truetype v4l
+	v4l2 vaapi vdpau vorbis vpx X x264 xvid +zlib
+	"
 
 VIDEO_CARDS="nvidia"
 
@@ -58,7 +64,8 @@ RDEPEND="
 	sdl? ( >=media-libs/libsdl-1.2.13-r1[audio,video] )
 	schroedinger? ( media-libs/schroedinger )
 	speex? ( >=media-libs/speex-1.2_beta3 )
-	vaapi? ( x11-libs/libva )
+	truetype? ( media-libs/freetype:2 )
+	vaapi? ( >=x11-libs/libva-0.32 )
 	video_cards_nvidia? ( vdpau? ( x11-libs/libvdpau ) )
 	vpx? ( media-libs/libvpx )
 	X? ( x11-libs/libX11 x11-libs/libXext )
@@ -80,7 +87,7 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	if [ "${PV%_p*}" != "${PV}" ] ; then # Snapshot
-		sed -i -e "s/UNKNOWN/SVN-r${FFMPEG_REVISION}/" "${S}/version.sh" || die
+		export revision=git-N-${FFMPEG_REVISION}
 	fi
 }
 
@@ -93,7 +100,6 @@ src_configure() {
 	done
 	use bzip2 || myconf="${myconf} --disable-bzlib"
 	use sdl || myconf="${myconf} --disable-ffplay"
-	use static-libs || myconf="${myconf} --disable-static"
 
 	use custom-cflags && myconf="${myconf} --disable-optimizations"
 	use cpudetection && myconf="${myconf} --enable-runtime-cpudetect"
@@ -135,6 +141,7 @@ src_configure() {
 	done
 	# libavfilter options
 	use frei0r && myconf="${myconf} --enable-frei0r"
+	use truetype && myconf="${myconf} --enable-libfreetype"
 
 	# Threads; we only support pthread for now but ffmpeg supports more
 	use threads && myconf="${myconf} --enable-pthreads"
@@ -147,7 +154,7 @@ src_configure() {
 	use jpeg2k && myconf="${myconf} --enable-libopenjpeg"
 
 	# CPU features
-	for i in mmx ssse3 altivec ; do
+	for i in mmx ssse3 altivec avx ; do
 		use ${i} || myconf="${myconf} --disable-${i}"
 	done
 	use mmxext || myconf="${myconf} --disable-mmx2"
@@ -223,8 +230,9 @@ src_configure() {
 		--libdir=/usr/$(get_libdir) \
 		--shlibdir=/usr/$(get_libdir) \
 		--mandir=/usr/share/man \
-		--enable-static --enable-shared \
+		--enable-shared \
 		--cc="$(tc-getCC)" \
+		$(use_enable static-libs static) \
 		${myconf} || die
 }
 

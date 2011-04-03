@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tcltk/blt/blt-2.4z-r8.ebuild,v 1.2 2011/01/16 19:30:10 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-tcltk/blt/blt-2.4z-r8.ebuild,v 1.7 2011/03/20 11:45:54 armin76 Exp $
 
 EAPI="3"
 
@@ -16,11 +16,11 @@ DESCRIPTION="Extension to Tk, adding new widgets, geometry managers, and misc co
 IUSE="jpeg X"
 SLOT="0"
 LICENSE="BSD"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux"
 
 DEPEND="
 	dev-lang/tk
-	jpeg? ( media-libs/jpeg:0 )
+	jpeg? ( virtual/jpeg )
 	X? ( x11-libs/libX11 )"
 RDEPEND="${DEPEND}"
 

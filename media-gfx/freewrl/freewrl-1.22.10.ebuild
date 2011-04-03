@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/freewrl/freewrl-1.22.10.ebuild,v 1.1 2010/11/02 18:24:07 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/freewrl/freewrl-1.22.10.ebuild,v 1.4 2011/04/02 14:29:43 ssuominen Exp $
 
 EAPI="2"
 
@@ -13,7 +13,7 @@ HOMEPAGE="http://freewrl.sourceforge.net/"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="curl debug libeai +glew +java +motif nsplugin +sox spidermonkey static"
+IUSE="curl debug libeai +glew +java +motif nsplugin +sox spidermonkey static-libs"
 
 COMMONDEPEND="x11-libs/libXau
 	x11-libs/libXdmcp
@@ -24,15 +24,15 @@ COMMONDEPEND="x11-libs/libXau
 	glew? ( media-libs/glew )
 	virtual/opengl
 	media-libs/libpng
-	media-libs/jpeg
+	virtual/jpeg
 	media-libs/imlib2
 	>=media-libs/freetype-2
 	media-libs/fontconfig
 	curl? ( net-misc/curl )
-	!spidermonkey? ( <=net-libs/xulrunner-2.0 )
+	!spidermonkey? ( <net-libs/xulrunner-2.0 )
 	spidermonkey? ( dev-lang/spidermonkey )
 	nsplugin? ( || (
-		<=net-libs/xulrunner-2.0
+		<net-libs/xulrunner-2.0
 		www-client/firefox
 		) )"
 DEPEND="${COMMONDEPEND}
@@ -91,7 +91,7 @@ src_configure() {
 		$(use_enable libeai) \
 		$(use_enable java) \
 		$(use_enable nsplugin plugin) \
-		$(use_enable static) \
+		$(use_enable static-libs static) \
 		$(use_enable sox sound)
 }
 

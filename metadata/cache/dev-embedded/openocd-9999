@@ -1,5 +1,5 @@
-usb? ( dev-libs/libusb ) presto? ( dev-embedded/libftd2xx ) ftd2xx? ( dev-embedded/libftd2xx ) ftdi? ( dev-embedded/libftdi ) >=dev-vcs/git-1.6 || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b
-usb? ( dev-libs/libusb ) presto? ( dev-embedded/libftd2xx ) ftd2xx? ( dev-embedded/libftd2xx ) ftdi? ( dev-embedded/libftdi )
+dev-lang/jimtcl usb? ( dev-libs/libusb ) presto? ( dev-embedded/libftd2xx ) ftd2xx? ( dev-embedded/libftd2xx ) ftdi? ( dev-embedded/libftdi ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b >=dev-vcs/git-1.6
+dev-lang/jimtcl usb? ( dev-libs/libusb ) presto? ( dev-embedded/libftd2xx ) ftd2xx? ( dev-embedded/libftd2xx ) ftdi? ( dev-embedded/libftdi )
 0
 
 strip
@@ -8,13 +8,13 @@ GPL-2
 OpenOCD - Open On-Chip Debugger
 
 autotools eutils git libtool multilib portability toolchain-funcs
-ftd2xx ftdi parport presto usb
+blaster ftd2xx ftdi parport presto segger versaloon usb
 
 
 
+2
 
-
-compile install setup unpack
+configure install prepare setup unpack
 
 
 

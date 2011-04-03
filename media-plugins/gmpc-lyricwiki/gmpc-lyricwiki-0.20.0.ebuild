@@ -1,8 +1,8 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/gmpc-lyricwiki/gmpc-lyricwiki-0.20.0.ebuild,v 1.1 2010/05/25 09:52:11 angelos Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/gmpc-lyricwiki/gmpc-lyricwiki-0.20.0.ebuild,v 1.5 2011/03/19 16:43:22 angelos Exp $
 
-EAPI=2
+EAPI=3
 
 DESCRIPTION="This plugin uses lyricwiki to fetch lyrics"
 HOMEPAGE="http://gmpc.wikia.com/wiki/GMPC_PLUGIN_LYRICWIKI"
@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/musicpd/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE="nls"
 
 RDEPEND=">=media-sound/gmpc-${PV}
@@ -28,4 +28,5 @@ src_configure() {
 
 src_install() {
 	emake DESTDIR="${D}" install || die
+	find "${ED}" -name "*.la" -delete || die
 }

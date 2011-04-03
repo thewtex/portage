@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/clementine/clementine-0.6-r2.ebuild,v 1.2 2011/02/10 23:59:10 hwoarang Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/clementine/clementine-0.6-r2.ebuild,v 1.5 2011/03/27 15:41:48 ssuominen Exp $
 
 EAPI=3
 
@@ -15,8 +15,8 @@ SRC_URI="http://clementine-player.googlecode.com/files/${P}.tar.gz
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
-IUSE="ayatana +dbus iphone ipod +lastfm mtp projectm +udev wiimote"
+KEYWORDS="amd64 x86"
+IUSE="ayatana +dbus ios ipod +lastfm mtp projectm +udev wiimote"
 IUSE+="${LANGS// / linguas_}"
 
 COMMON_DEPEND="
@@ -31,8 +31,8 @@ COMMON_DEPEND="
 	>=media-libs/gst-plugins-base-0.10
 	ayatana? ( dev-libs/libindicate-qt )
 	ipod? (
-		>=media-libs/libgpod-0.7.92
-		iphone? (
+		>=media-libs/libgpod-0.8.0[ios?]
+		ios? (
 			app-pda/libplist
 			>=app-pda/libimobiledevice-1.0
 			app-pda/usbmuxd
@@ -83,11 +83,10 @@ src_configure() {
 		$(cmake-utils_use dbus ENABLE_DBUS)
 		$(cmake-utils_use udev ENABLE_DEVICEKIT)
 		$(cmake-utils_use ipod ENABLE_LIBGPOD)
-		$(cmake-utils_use iphone ENABLE_IMOBILEDEVICE)
+		$(cmake-utils_use ios ENABLE_IMOBILEDEVICE)
 		$(cmake-utils_use lastfm ENABLE_LIBLASTFM)
 		$(cmake-utils_use mtp ENABLE_LIBMTP)
 		-DENABLE_GIO=ON
-		$(cmake-utils_use wiimote ENABLE_WIIMOTEDEV)
 		$(cmake-utils_use projectm ENABLE_VISUALISATIONS)
 		$(cmake-utils_use ayatana ENABLE_SOUNDMENU)
 		-DSTATIC_SQLITE=OFF
@@ -96,6 +95,13 @@ src_configure() {
 		-DENGINE_LIBVLC_ENABLED=OFF
 		-DENGINE_LIBXINE_ENABLED=OFF
 		)
+
+	# bug #355259
+	if use dbus; then
+		mycmakeargs+=(
+			$(cmake-utils_use wiimote ENABLE_WIIMOTEDEV)
+			)
+	fi
 
 	cmake-utils_src_configure
 }

@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-accessibility/accerciser/accerciser-1.12.1.ebuild,v 1.1 2010/10/20 21:12:25 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-accessibility/accerciser/accerciser-1.12.1.ebuild,v 1.5 2011/03/22 20:01:49 ranger Exp $
 
 EAPI="3"
 GCONF_DEBUG="no"
@@ -13,7 +13,7 @@ HOMEPAGE="http://live.gnome.org/Accerciser"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 IUSE=""
 
 RDEPEND="dev-python/ipython
@@ -22,7 +22,7 @@ RDEPEND="dev-python/ipython
 	dev-python/pycairo
 	dev-python/libgnome-python
 	dev-python/libwnck-python
-	dev-python/gtksourceview-python
+	dev-python/pygtksourceview
 	dev-python/gconf-python
 	dev-python/librsvg-python
 	>=gnome-extra/at-spi-1.7

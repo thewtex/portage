@@ -1,6 +1,6 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/uw-imap/uw-imap-2007e.ebuild,v 1.8 2009/09/23 19:14:33 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-mail/uw-imap/uw-imap-2007e.ebuild,v 1.11 2011/03/19 17:03:13 eras Exp $
 
 inherit eutils flag-o-matic
 
@@ -16,10 +16,8 @@ SLOT="0"
 KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86"
 IUSE="ipv6 ssl kerberos clearpasswd"
 
-PROVIDE="virtual/imapd"
-PROVIDE="${PROVIDE} virtual/imap-c-client"
 DEPEND="!net-mail/vimap
-	!virtual/imap-c-client
+	!net-libs/c-client
 	>=sys-libs/pam-0.72
 	>=net-mail/mailbase-0.00-r8
 	ssl? ( dev-libs/openssl )
@@ -27,8 +25,16 @@ DEPEND="!net-mail/vimap
 
 RDEPEND="${DEPEND}
 	>=net-mail/uw-mailutils-${PV}
-	sys-apps/xinetd
-	!virtual/imapd"
+	sys-apps/xinetd"
+
+# get rid of old style virtual - bug 350792
+# all blockers really needed?
+RDEPEND="${RDEPEND}
+	!net-mail/dovecot
+	!mail-mta/courier
+	!net-mail/bincimap
+	!net-mail/courier-imap
+	!net-mail/cyrus-imapd"
 
 pkg_setup() {
 	echo

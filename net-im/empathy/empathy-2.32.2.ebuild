@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/empathy/empathy-2.32.2.ebuild,v 1.6 2011/02/05 17:10:33 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-im/empathy/empathy-2.32.2.ebuild,v 1.14 2011/03/22 19:40:56 ranger Exp $
 
 EAPI="3"
 GCONF_DEBUG="yes"
@@ -13,7 +13,7 @@ HOMEPAGE="http://live.gnome.org/Empathy"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~sparc ~x86"
+KEYWORDS="alpha amd64 ~ia64 ppc ~sparc x86"
 # FIXME: Add location support once geoclue stops being idiotic with automagic deps
 IUSE="eds nautilus networkmanager spell test webkit" # map
 
@@ -29,18 +29,20 @@ RDEPEND=">=dev-libs/glib-2.25.9:2
 	>=gnome-base/gnome-keyring-2.26
 	>=net-libs/gnutls-2.8.5
 	>=dev-libs/folks-0.1.15
+	<dev-libs/folks-0.3
 
-	>=dev-libs/libunique-1.1.6
+	>=dev-libs/libunique-1.1.6:1
 	net-libs/farsight2
 	media-libs/gstreamer:0.10
 	media-libs/gst-plugins-base:0.10
 	media-libs/gst-plugins-bad
-	media-plugins/gst-plugins-gconf
+	media-plugins/gst-plugins-gconf:0.10
 	>=net-libs/telepathy-farsight-0.0.14
-	dev-libs/libxml2
+	dev-libs/libxml2:2
 	x11-libs/libX11
 	net-voip/telepathy-connection-managers
 	>=net-im/telepathy-logger-0.1.5
+	<net-im/telepathy-logger-0.2.0
 
 	eds? ( >=gnome-extra/evolution-data-server-1.2 )
 	nautilus? ( >=gnome-extra/nautilus-sendto-2.31.7 )
@@ -48,10 +50,10 @@ RDEPEND=">=dev-libs/glib-2.25.9:2
 	spell? (
 		>=app-text/enchant-1.2
 		>=app-text/iso-codes-0.35 )
-	webkit? ( >=net-libs/webkit-gtk-1.1.15 )"
+	webkit? ( >=net-libs/webkit-gtk-1.1.15:2 )"
 #	map? (
 #		>=media-libs/libchamplain-0.7.1[gtk]
-#		>=media-libs/clutter-gtk-0.10:1.0 )
+#		>=media-libs/clutter-gtk-0.10:0.10 )
 DEPEND="${RDEPEND}
 	app-text/scrollkeeper
 	>=app-text/gnome-doc-utils-0.17.3

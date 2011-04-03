@@ -1,6 +1,37 @@
 # ChangeLog for app-misc/tomboy
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/tomboy/ChangeLog,v 1.110 2011/01/29 17:03:44 hwoarang Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/tomboy/ChangeLog,v 1.117 2011/03/15 08:51:50 pacho Exp $
+
+  15 Mar 2011; Pacho Ramos <pacho@gentoo.org> -tomboy-1.2.1.ebuild,
+  -files/tomboy-1.2.1-xmllint-validation.patch, tomboy-1.4.2-r1.ebuild:
+  dev-dotnet/gnome-panel-sharp is only needed with USE 'applet' and
+  dev-dotnet/gnome-desktop-sharp is not needed at all (bug #358673 by Christoph
+  Mende). Remove old.
+
+  12 Mar 2011; <angelos@gentoo.org> tomboy-1.2.1.ebuild, tomboy-1.4.2.ebuild,
+  tomboy-1.4.2-r1.ebuild:
+  Updated ndesk-dbus dependencies (bug 356391)
+
+  06 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org> tomboy-1.2.1.ebuild,
+  tomboy-1.4.2.ebuild, tomboy-1.4.2-r1.ebuild:
+  Fix slot-deps on gtk+ and other libs
+
+  02 Mar 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  tomboy-1.4.2-r1.ebuild:
+  ppc stable wrt #356583
+
+  27 Feb 2011; Christian Faulhammer <fauli@gentoo.org>
+  tomboy-1.4.2-r1.ebuild:
+  stable x86, security bug 356583
+
+  27 Feb 2011; Markos Chandras <hwoarang@gentoo.org> tomboy-1.4.2-r1.ebuild:
+  Stable on amd64 wrt bug #356583
+
+*tomboy-1.4.2-r1 (26 Feb 2011)
+
+  26 Feb 2011; Pacho Ramos <pacho@gentoo.org> +tomboy-1.4.2-r1.ebuild,
+  +files/tomboy-1.4.2-insecure-path.patch:
+  Fix tomboy insecure LD_LIBRARY_PATH (CVE-2010-4005).
 
   29 Jan 2011; Markos Chandras <hwoarang@gentoo.org> tomboy-1.4.2.ebuild:
   Stable on amd64 wrt bug #352808

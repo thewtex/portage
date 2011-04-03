@@ -1,10 +1,14 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/sh/package.use.mask,v 1.14 2011/02/10 04:05:53 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/sh/package.use.mask,v 1.18 2011/03/27 17:19:39 ssuominen Exp $
 
-# Mike Frysinger <vapier@gentoo.org> (10 Feb 2011)
-# Waiting for keywording #354309
-net-firewall/iptables netlink
+# Sebastian Pipping <sping@gentoo.org> (22 Feb 2011)
+# No media-sound/lilypond here, yet (bug #356069)
+app-text/asciidoc test
+
+# Raúl Porcel <armin76@gentoo.org> (13 Feb 2011)
+# Fails to build, pending to send a report upstream
+media-libs/mesa gallium
 
 # Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (29 Jul 2010)
 # Mask python3 for stable portage until python-3.x is marked stable.
@@ -34,9 +38,6 @@ media-libs/taglib test
 
 # missing keyword for sys-cluster/openmpi sys-cluster/mpich2
 dev-libs/boost mpi
-
-# missing keyword for dev-libs/oniguruma
-sys-libs/slang cjk
 
 # Needs testing
 media-plugins/gst-plugins-meta lame taglib

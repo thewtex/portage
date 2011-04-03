@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/kvirc/kvirc-9999.ebuild,v 1.27 2010/12/31 16:29:24 arfrever Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-irc/kvirc/kvirc-9999.ebuild,v 1.30 2011/03/26 17:27:43 dilfridge Exp $
 
 EAPI="3"
 PYTHON_DEPEND="python? 2"
@@ -21,9 +21,9 @@ IUSE="audiofile dcc_video +dcc_voice debug doc gsm +ipc ipv6 kde +nls oss +perl 
 RDEPEND=">=dev-libs/crypto++-5.6.0-r1
 	sys-libs/zlib
 	x11-libs/libX11
-	>=x11-libs/qt-core-4.5
-	>=x11-libs/qt-gui-4.5
-	>=x11-libs/qt-sql-4.5
+	>=x11-libs/qt-core-4.6
+	>=x11-libs/qt-gui-4.6
+	>=x11-libs/qt-sql-4.6
 	dcc_video? (
 		media-libs/libv4l
 		theora? ( media-libs/libogg media-libs/libtheora )
@@ -31,9 +31,9 @@ RDEPEND=">=dev-libs/crypto++-5.6.0-r1
 	kde? ( >=kde-base/kdelibs-4 )
 	oss? ( audiofile? ( media-libs/audiofile ) )
 	perl? ( dev-lang/perl )
-	phonon? ( || ( media-sound/phonon >=x11-libs/qt-phonon-4.5 ) )
-	qt-dbus? ( >=x11-libs/qt-dbus-4.5 )
-	qt-webkit? ( >=x11-libs/qt-webkit-4.5 )
+	phonon? ( || ( media-libs/phonon >=x11-libs/qt-phonon-4.6 ) )
+	qt-dbus? ( >=x11-libs/qt-dbus-4.6 )
+	qt-webkit? ( >=x11-libs/qt-webkit-4.6 )
 	ssl? ( dev-libs/openssl )"
 DEPEND="${RDEPEND}
 	>=dev-util/cmake-2.6.4
@@ -70,15 +70,14 @@ src_prepare() {
 
 src_configure() {
 	local libdir="$(get_libdir)"
-	local mycmakeargs="
-		-DCMAKE_INSTALL_PREFIX=/usr
-		-DCOEXISTENCE=1
+	local mycmakeargs=(
 		-DLIB_SUFFIX=${libdir#lib}
 		-DMANUAL_REVISION=${VERSIO_PRAESENS}
-		-DUSE_ENV_FLAGS=1
-		-DVERBOSE=1
+		-DWANT_COEXISTENCE=1
 		-DWANT_CRYPT=1
-		-DWANT_NO_EMBEDDED_CODE=1
+		-DWANT_CRYPTOPP=1
+		-DWANT_ENV_FLAGS=1
+		-DWANT_VERBOSE=1
 		$(cmake-utils_use_want audiofile AUDIOFILE)
 		$(cmake-utils_use_want dcc_video DCC_VIDEO)
 		$(cmake-utils_use_want dcc_voice DCC_VOICE)
@@ -98,7 +97,8 @@ src_configure() {
 		$(cmake-utils_use_want qt-webkit QTWEBKIT)
 		$(cmake-utils_use_want ssl OPENSSL)
 		$(cmake-utils_use_want theora OGG_THEORA)
-		$(cmake-utils_use_want transparency TRANSPARENCY)"
+		$(cmake-utils_use_want transparency TRANSPARENCY)
+	)
 
 	cmake-utils_src_configure
 }

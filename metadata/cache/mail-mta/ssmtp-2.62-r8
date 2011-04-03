@@ -1,5 +1,5 @@
 ssl? ( dev-libs/openssl ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b
-ssl? ( dev-libs/openssl ) net-mail/mailbase !net-mail/mailwrapper !virtual/mta
+ssl? ( dev-libs/openssl ) net-mail/mailbase !net-mail/mailwrapper !mail-mta/courier !mail-mta/esmtp !mail-mta/exim !mail-mta/mini-qmail !mail-mta/msmtp !mail-mta/nbsmtp !mail-mta/netqmail !mail-mta/nullmailer !mail-mta/postfix !mail-mta/qmail-ldap !mail-mta/sendmail
 0
 mirror://debian/pool/main/s/ssmtp/ssmtp_2.62.orig.tar.gz
 
@@ -11,7 +11,7 @@ autotools eutils libtool multilib portability toolchain-funcs
 ssl ipv6 md5sum maxsysuid
 
 
-virtual/mta
+
 3
 
 compile configure install prepare setup

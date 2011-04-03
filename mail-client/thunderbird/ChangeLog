@@ -1,6 +1,46 @@
 # ChangeLog for mail-client/thunderbird
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/thunderbird/ChangeLog,v 1.60 2011/01/02 21:13:49 anarchy Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-client/thunderbird/ChangeLog,v 1.70 2011/03/18 17:20:35 armin76 Exp $
+
+  18 Mar 2011; Raúl Porcel <armin76@gentoo.org> thunderbird-3.1.9.ebuild:
+  alpha/ia64/sparc stable wrt #357057
+
+  14 Mar 2011; Jory A. Pratt <anarchy@gentoo.org> thunderbird-3.1.9.ebuild:
+  pax mark -m for hardened users
+
+  14 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org>
+  -thunderbird-3.1.3.ebuild, -thunderbird-3.1.5.ebuild,
+  -thunderbird-3.1.6.ebuild, thunderbird-3.1.7.ebuild,
+  -thunderbird-3.1.7-r2.ebuild, thunderbird-3.1.9.ebuild:
+  Remove old ebuilds and duplicate gnome-use-flag related stuff to allow
+  eclass changes from overlay to be merged into tree
+
+  08 Mar 2011; Thomas Kahle <tomka@gentoo.org> thunderbird-3.1.9.ebuild:
+  x86 stable per bug 357057
+
+  08 Mar 2011; Kacper Kowalik <xarthisius@gentoo.org> thunderbird-3.1.9.ebuild:
+  ppc/ppc64 stable wrt #357057
+
+  06 Mar 2011; Markos Chandras <hwoarang@gentoo.org> thunderbird-3.1.9.ebuild:
+  Stable on amd64 wrt bug #357057
+
+  06 Mar 2011; Jory A. Pratt <anarchy@gentoo.org> thunderbird-3.1.9.ebuild:
+  ensure ldap respects ldflags
+
+*thunderbird-3.1.9 (06 Mar 2011)
+
+  06 Mar 2011; Jory A. Pratt <anarchy@gentoo.org> +files/libnotify-0.7.patch,
+  +thunderbird-3.1.9.ebuild:
+  Security bump, bug #357057
+
+  05 Mar 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  thunderbird-3.1.7.ebuild:
+  Call python_set_active_version() in pkg_setup() (bug #357525).
+
+  04 Mar 2011; Lars Wendler <polynomial-c@gentoo.org> thunderbird-3.1.3.ebuild,
+  thunderbird-3.1.5.ebuild, thunderbird-3.1.6.ebuild, thunderbird-3.1.7.ebuild,
+  thunderbird-3.1.7-r2.ebuild:
+  Forced usage of python-2 for building (bug #355585 by Adrian Bassett).
 
 *thunderbird-3.1.7-r2 (02 Jan 2011)
 

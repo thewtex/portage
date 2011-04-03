@@ -1,12 +1,12 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/coreutils/coreutils-8.10.ebuild,v 1.1 2011/02/05 18:53:33 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/coreutils/coreutils-8.10.ebuild,v 1.3 2011/03/17 04:06:21 vapier Exp $
 
 EAPI="3"
 
 inherit eutils flag-o-matic toolchain-funcs
 
-PATCH_VER="1"
+PATCH_VER="2"
 DESCRIPTION="Standard GNU file utilities (chmod, cp, dd, dir, ls...), text utilities (sort, tr, head, wc..), and shell utilities (whoami, who,...)"
 HOMEPAGE="http://www.gnu.org/software/coreutils/"
 SRC_URI="ftp://alpha.gnu.org/gnu/coreutils/${P}.tar.xz
@@ -149,5 +149,16 @@ pkg_postinst() {
 			einfo "Deleting orphaned GNU /bin/dircolors for you"
 			rm -f "${ROOT}/bin/dircolors"
 		fi
+	fi
+
+	# Help out users using experimental filesystems
+	if grep -qs btrfs "${ROOT}"/etc/fstab /proc/mounts ; then
+		case $(uname -r) in
+		2.6.[12][0-9]|2.6.3[0-7]*)
+			ewarn "You are running a system with a buggy btrfs driver."
+			ewarn "Please upgrade your kernel to avoid silent corruption."
+			ewarn "See: https://bugs.gentoo.org/353907"
+			;;
+		esac
 	fi
 }

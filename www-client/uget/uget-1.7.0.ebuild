@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/uget/uget-1.7.0.ebuild,v 1.1 2011/01/06 21:31:42 wired Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/uget/uget-1.7.0.ebuild,v 1.3 2011/03/30 10:56:23 angelos Exp $
 
 EAPI="2"
 
@@ -12,14 +12,14 @@ SRC_URI="mirror://sourceforge/urlget/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc ~x86"
 IUSE="gstreamer hide-temp-files libnotify nls"
 
 RDEPEND="
 	dev-libs/libpcre
-	>=dev-libs/glib-2
+	>=dev-libs/glib-2:2
 	>=net-misc/curl-7.10
-	>=x11-libs/gtk+-2.18
+	>=x11-libs/gtk+-2.18:2
 	gstreamer? ( media-libs/gstreamer )
 	libnotify? ( x11-libs/libnotify )
 	"

@@ -1,6 +1,28 @@
 # ChangeLog for www-client/epiphany
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/epiphany/ChangeLog,v 1.262 2011/02/05 16:13:05 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/epiphany/ChangeLog,v 1.267 2011/03/22 19:46:27 ranger Exp $
+
+  22 Mar 2011; Brent Baude <ranger@gentoo.org> epiphany-2.30.6.ebuild:
+  Marking epiphany-2.30.6 ppc stable for bug 353436
+
+  22 Mar 2011; Gilles Dartiguelongue <eva@gentoo.org> epiphany-2.30.6.ebuild:
+  Add missing introspection USE-dependencies.
+
+  21 Mar 2011; Kacper Kowalik <xarthisius@gentoo.org> epiphany-2.30.6.ebuild:
+  ppc64 stable wrt #353436
+
+  20 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org>
+  epiphany-2.26.3-r4.ebuild, epiphany-2.30.2-r1.ebuild:
+  Fix slot-deps on gtk+ and other libs, drop keywords on old ebuild
+
+  11 Mar 2011; Pacho Ramos <pacho@gentoo.org> epiphany-2.30.6.ebuild,
+  +files/epiphany-2.30.6-dbus-fix.patch,
+  +files/epiphany-2.30.6-introspection-prefix.patch:
+  Fix building with latest libnotify (bug #358043), fix introspection build by
+  telling g-ir-scanner what the prefix is, ping dependencies to proper slots,
+  bump to eapi3, prepare this for supporting introspection (without revbump as
+  introspection USE flag is still masked and we will need to check the tree
+  before unmasking it anyway).
 
   05 Feb 2011; Samuli Suominen <ssuominen@gentoo.org> epiphany-2.30.6.ebuild,
   +files/epiphany-2.30.6-libnotify-0.7.patch:

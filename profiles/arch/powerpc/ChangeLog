@@ -1,6 +1,28 @@
 # ChangeLog for Gentoo/PPC profile directory
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/powerpc/ChangeLog,v 1.110 2011/02/03 13:53:54 xarthisius Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/powerpc/ChangeLog,v 1.117 2011/03/31 14:44:38 chithanh Exp $
+
+  31 Mar 2011; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  package.use.mask:
+  Unmask libdrm video_cards_nouveau for x11-drivers/xf86-video-nouveau
+
+  21 Mar 2011; Kacper Kowalik <xarthisius@gentoo.org> package.use.mask:
+  Mask mail-client/claws-mail[pda] since app-pda/jpilot is not keyworded
+
+  18 Mar 2011: Mike Frysinger <vapier@gentoo.org> ppc64/make.defaults:
+  Drop CDEFINE_<abi> variables now that nothing uses them.
+
+  16 Mar 2011; Andreas Proschofsky <suka@gentoo.org> package.mask:
+  Remove old-style virtual/ooo, bug #358895.
+
+  09 Mar 2011; Justin Lecher <jlec@gentoo.org> package.mask:
+  Corrected mask entry
+
+  09 Mar 2011; Justin Lecher <jlec@gentoo.org> package.mask:
+  Mask sci-biology/emboss-6.3.1 due to missing keyworded dep (sci-libs/plplot)
+
+  04 Mar 2011; Alexey Shvetsov <alexxy@gentoo.org> package.use.mask:
+  mask kde use for bug #357403
 
   03 Feb 2011; Kacper Kowalik <xarthisius@gentoo.org> package.use.mask:
   unmask kde-base/kdebindings-meta-4.6.0[java,ruby]

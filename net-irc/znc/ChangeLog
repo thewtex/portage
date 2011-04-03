@@ -1,6 +1,24 @@
 # ChangeLog for net-irc/znc
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/znc/ChangeLog,v 1.46 2010/11/08 18:08:03 wired Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-irc/znc/ChangeLog,v 1.49 2011/04/01 12:14:41 wired Exp $
+
+*znc-0.098 (01 Apr 2011)
+
+  01 Apr 2011; Alex Alexander <wired@gentoo.org> +znc-0.098.ebuild,
+  +files/znc-0.098-modpython-as-needed.patch:
+  version bump
+
+*znc-0.096-r1 (03 Mar 2011)
+
+  03 Mar 2011; Alex Alexander <wired@gentoo.org> +znc-0.096-r1.ebuild,
+  +files/znc-0.096-clearbuffersonmsg-fix.patch:
+  added upstream fix for the clearbuffersonmsg module that makes it ignore user
+  joins and client logins, making it more useful.
+
+  21 Feb 2011; Alex Alexander <wired@gentoo.org>
+  -files/znc-0.090-null-pointer-dereference-fix.patch,
+  -files/znc-0.092-dos-fix.patch, znc-0.094.ebuild, znc-0.096.ebuild:
+  updated SRC_URI, removed old patches
 
   08 Nov 2010; Alex Alexander <wired@gentoo.org> -znc-0.090-r1.ebuild,
   -znc-0.092.ebuild, -znc-0.092-r1.ebuild:

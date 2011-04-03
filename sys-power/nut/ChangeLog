@@ -1,6 +1,33 @@
 # ChangeLog for sys-power/nut
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-power/nut/ChangeLog,v 1.83 2011/01/16 10:36:55 robbat2 Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-power/nut/ChangeLog,v 1.90 2011/04/02 15:07:00 ssuominen Exp $
+
+*nut-2.6.0-r1 (02 Apr 2011)
+
+  02 Apr 2011; Samuli Suominen <ssuominen@gentoo.org> +nut-2.6.0-r1.ebuild:
+  Rename @LIBSSL_LDFLAGS@ to @LIBSSL_LIBS@ in libupsclient.pc.in wrt #361685 by
+  Bruno.
+
+  27 Mar 2011; Christoph Mende <angelos@gentoo.org> nut-2.6.0.ebuild:
+  Stable on amd64 wrt bug #360739
+
+  27 Mar 2011; Samuli Suominen <ssuominen@gentoo.org> metadata.xml:
+  Move USE="hal" description here from use.desc.
+
+  27 Mar 2011; Tobias Klausmann <klausman@gentoo.org> nut-2.6.0.ebuild:
+  Stable on alpha, bug #360739
+
+  15 Mar 2011; Samuli Suominen <ssuominen@gentoo.org> nut-2.6.0.ebuild:
+  Stop installing 70-nut-usbups.rules to /etc/udev/rules.d because it's
+  installed by upstream Makefile to correct location at /lib/udev/rules.d.
+
+*nut-2.6.0 (13 Mar 2011)
+
+  13 Mar 2011; Samuli Suominen <ssuominen@gentoo.org> +nut-2.6.0.ebuild:
+  Version bump wrt #353090. Fix multilib install wrt #338096.
+
+  25 Feb 2011; Kacper Kowalik <xarthisius@gentoo.org> nut-2.4.3-r2.ebuild:
+  ppc/ppc64 stable wrt #321493
 
   18 Sep 2010; Raúl Porcel <armin76@gentoo.org> nut-2.4.3-r2.ebuild:
   sparc stable wrt #321493

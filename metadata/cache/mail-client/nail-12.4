@@ -1,5 +1,5 @@
-ssl? ( dev-libs/openssl ) kerberos? ( virtual/krb5 ) !virtual/mailx
-ssl? ( dev-libs/openssl ) kerberos? ( virtual/krb5 ) !virtual/mailx
+ssl? ( dev-libs/openssl ) kerberos? ( virtual/krb5 ) !mail-client/mailx !net-mail/mailutils
+ssl? ( dev-libs/openssl ) kerberos? ( virtual/krb5 ) !mail-client/mailx !net-mail/mailutils
 0
 mirror://sourceforge/project/heirloom/heirloom-mailx/12.4/mailx-12.4.tar.bz2
 
@@ -11,7 +11,7 @@ eutils multilib portability toolchain-funcs
 ssl net kerberos
 
 
-virtual/mailx
+
 3
 
 compile configure install prepare

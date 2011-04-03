@@ -1,5 +1,5 @@
-nls? ( >=sys-devel/gettext-0.16.1 ) kerberos? ( virtual/krb5 ) idn? ( net-dns/libidn )
-nls? ( >=sys-devel/gettext-0.16.1 ) kerberos? ( virtual/krb5 ) idn? ( net-dns/libidn ) !net-misc/gsasl
+gcrypt? ( dev-libs/libgcrypt ) idn? ( net-dns/libidn ) kerberos? ( virtual/krb5 ) nls? ( >=sys-devel/gettext-0.16.1 )
+gcrypt? ( dev-libs/libgcrypt ) idn? ( net-dns/libidn ) kerberos? ( virtual/krb5 ) nls? ( >=sys-devel/gettext-0.16.1 ) !net-misc/gsasl
 0
 mirror://gnu/gsasl/libgsasl-1.6.0.tar.gz
 
@@ -8,7 +8,7 @@ GPL-3 LGPL-3
 The GNU SASL library
 ~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-macos
 
-idn kerberos nls
+idn gcrypt kerberos nls
 
 
 

@@ -1,6 +1,47 @@
 # ChangeLog for app-emulation/libvirt
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/libvirt/ChangeLog,v 1.91 2011/02/12 04:57:45 cardoe Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/libvirt/ChangeLog,v 1.99 2011/03/28 07:57:02 flameeyes Exp $
+
+*libvirt-0.9.0_rc1 (28 Mar 2011)
+
+  28 Mar 2011; Diego E. Pettenò <flameeyes@gentoo.org> -libvirt-0.8.7.ebuild,
+  +libvirt-0.9.0_rc1.ebuild, libvirt-9999.ebuild:
+  Remove old version; bump to 0.9.0_rc1; add the new 9999 ebuild.
+
+  17 Mar 2011; Thomas Kahle <tomka@gentoo.org> libvirt-0.8.8-r1.ebuild:
+  x86 stable per bug 358877
+
+  15 Mar 2011; Markos Chandras <hwoarang@gentoo.org> libvirt-0.8.8-r1.ebuild:
+  Stable on amd64 wrt bug #358877
+
+*libvirt-0.8.8-r1 (14 Mar 2011)
+
+  14 Mar 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  -libvirt-0.8.6-r1.ebuild, -libvirt-0.8.7-r1.ebuild, -libvirt-0.8.8.ebuild,
+  +libvirt-0.8.8-r1.ebuild:
+  Backport fix for CVE-2011-1146 (bug #358877).
+
+*libvirt-0.8.8 (17 Feb 2011)
+
+  17 Feb 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  -libvirt-0.8.8_rc3.ebuild, +libvirt-0.8.8.ebuild:
+  Bump to final 0.8.8.
+
+*libvirt-0.8.8_rc3 (15 Feb 2011)
+
+  15 Feb 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  -libvirt-0.8.8_rc2.ebuild, +libvirt-0.8.8_rc3.ebuild:
+  Bump to rc3.
+
+*libvirt-0.8.8_rc2 (14 Feb 2011)
+
+  14 Feb 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  +libvirt-0.8.8_rc2.ebuild:
+  Version bump to 0.8.8_rc2; unmasked since the code is frozen and looks quite
+  fine as it is. Dropped tests workaround (fixed now).
+
+  12 Feb 2011; Christian Faulhammer <fauli@gentoo.org> libvirt-0.8.7.ebuild:
+  stable x86, bug 352277
 
 *libvirt-9999 (12 Feb 2011)
 

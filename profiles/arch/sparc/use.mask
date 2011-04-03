@@ -1,17 +1,11 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License, v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/sparc/use.mask,v 1.66 2011/01/30 18:26:30 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/sparc/use.mask,v 1.71 2011/03/31 03:56:14 ssuominen Exp $
 
 # Unmask the flag which corresponds to ARCH.
 -sparc
 
 # This file contains a list of useflags that cannot be used on sparc.
-
-# Samuli Suominen <ssuominen@gentoo.org> (17 Oct 2009)
-# Required packages:
-# media-sound/musepack-tools
-# media-plugins/gst-plugins-musepack
-musepack
 
 # Raúl Porcel <armin76@gentoo.org>
 # Stuff that sigbuses
@@ -53,6 +47,9 @@ dar64
 # doomsday ebuild is not available on this architecture
 doomsday
 
+# Needs java
+pdfannotextractor
+
 # Stuff that won't ever work on sparc
 3dfx
 acpi
@@ -75,7 +72,7 @@ voodoo3
 xfs
 
 # Need testing
-ifp
+musepack
 pyste
 v4l2
 topal
@@ -102,6 +99,9 @@ gme
 quvi
 
 # No hardware to test
+ifp
+chipcard
+hbci
 ivtv
 laptop
 lm_sensors
@@ -111,7 +111,9 @@ openct
 bluetooth
 dmraid
 ipod
+ios
 mtp
+pda
 
 # Stuff we don't want
 schroedinger

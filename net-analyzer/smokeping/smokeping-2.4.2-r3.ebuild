@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/smokeping/smokeping-2.4.2-r3.ebuild,v 1.4 2010/11/21 15:44:21 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/smokeping/smokeping-2.4.2-r3.ebuild,v 1.6 2011/04/01 15:57:16 pva Exp $
 
 EAPI="2"
 
@@ -30,7 +30,9 @@ DEPEND="dev-lang/perl
 		speedy? ( dev-perl/SpeedyCGI )
 		!apache2? ( virtual/httpd-cgi )
 		apache2? ( >=www-apache/mod_perl-2.0.1 )
-		!dev-perl/JSON"
+		!dev-perl/Config-Grammar
+		!dev-perl/JSON
+		!perl-core/JSON-PP"
 
 RDEPEND="${DEPEND}"
 

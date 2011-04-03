@@ -1,8 +1,10 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-tv/freevo/freevo-1.9.0.ebuild,v 1.5 2010/08/17 07:16:15 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-tv/freevo/freevo-1.9.0.ebuild,v 1.9 2011/03/24 09:42:10 tomka Exp $
 
-EAPI="2"
+EAPI="3"
+PYTHON_DEPEND="2:2.5"
+PYTHON_USE_WITH="xml"
 
 inherit distutils eutils
 
@@ -10,16 +12,14 @@ DESCRIPTION="Digital video jukebox (PVR, DVR)."
 HOMEPAGE="http://www.freevo.org/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
-IUSE="directfb cdparanoia doc dvd encode fbcon flac gphoto2 jpeg lame lirc matrox mixer nls sqlite tv tvtime vorbis xine X"
-
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
+IUSE="directfb cdparanoia doc dvd encode fbcon flac gphoto2 jpeg lame lirc matrox mixer nls sqlite tv tvtime vorbis xine X"
 
-RDEPEND=">=dev-lang/python-2.5[xml]
-	dev-python/pygame
+RDEPEND="dev-python/beautifulsoup
 	dev-python/imaging
-	dev-python/beautifulsoup
+	dev-python/pygame
 	>=dev-python/twisted-2.5
 	>=dev-python/twisted-web-0.6
 	net-zope/zope-interface
@@ -43,12 +43,12 @@ RDEPEND=">=dev-lang/python-2.5[xml]
 	)
 	flac? ( media-libs/flac )
 	gphoto2? ( media-libs/libgphoto2 )
-	jpeg? ( media-libs/jpeg )
+	jpeg? ( virtual/jpeg )
 	lame? ( media-sound/lame )
 	lirc? ( app-misc/lirc >=dev-python/pylirc-0.0.3 )
 	matrox? ( >=media-video/matroxset-0.3 )
 	mixer? ( media-sound/aumix )
-	sqlite? ( ~dev-python/pysqlite-1.0.1 )
+	sqlite? ( dev-python/pysqlite:0 )
 	tv? (	media-tv/xmltv
 		tvtime? ( media-tv/tvtime ) )
 	xine? ( media-video/xine-ui )
@@ -62,6 +62,14 @@ pkg_setup() {
 		ewarn "support (X11, fbcon, directfb, etc) you plan on using."
 		echo
 	fi
+
+	python_set_active_version 2
+	python_pkg_setup
+}
+
+src_prepare() {
+	distutils_src_prepare
+	python_convert_shebangs -r 2 .
 }
 
 src_install() {
@@ -117,10 +125,12 @@ src_install() {
 		myconf="${myconf} --geometry=800x600 --display=fbdev"
 	fi
 	sed -i "s:/etc/freevo/freevo.conf:${D}/etc/freevo/freevo.conf:g" setup_freevo.py || die "Could not fix setup_freevo.py"
-	python setup_freevo.py ${myconf} || die "Could not create new freevo.conf"
+	"$(PYTHON)" setup_freevo.py ${myconf} || die "Could not create new freevo.conf"
 }
 
 pkg_postinst() {
+	distutils_pkg_postinst
+
 	echo
 	einfo "Please check /etc/freevo/freevo.conf and"
 	einfo "/etc/freevo/local_conf.py before starting Freevo."

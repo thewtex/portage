@@ -1,11 +1,11 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/pidgin/pidgin-2.7.10.ebuild,v 1.5 2011/02/12 18:20:32 xarthisius Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-im/pidgin/pidgin-2.7.10.ebuild,v 1.8 2011/03/25 14:25:56 pva Exp $
 
 EAPI=2
 
 GENTOO_DEPEND_ON_PERL=no
-inherit flag-o-matic eutils toolchain-funcs multilib perl-app gnome2 python autotools
+inherit flag-o-matic eutils toolchain-funcs multilib perl-app gnome2 python
 
 DESCRIPTION="GTK Instant Messenger client"
 HOMEPAGE="http://pidgin.im/"
@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha ~amd64 ~arm ~hppa ia64 ppc ppc64 sparc x86"
+KEYWORDS="alpha amd64 ~arm hppa ia64 ppc ppc64 sparc x86"
 IUSE="dbus debug doc eds gadu gnutls +gstreamer +gtk idn meanwhile"
 IUSE+=" networkmanager nls perl silc tcl tk spell qq sasl +startup-notification"
 IUSE+=" ncurses groupwise prediction python +xscreensaver zephyr zeroconf" # mono"
@@ -48,7 +48,8 @@ RDEPEND="
 		>=sys-apps/dbus-0.90
 		dev-python/dbus-python )
 	perl? ( >=dev-lang/perl-5.8.2-r1[-build] )
-	gadu?  ( >=net-libs/libgadu-1.9.0[-ssl] )
+	gadu? ( || ( >=net-libs/libgadu-1.10.1[ssl,gnutls]
+		<net-libs/libgadu-1.10.1[-ssl] ) )
 	gnutls? ( net-libs/gnutls )
 	!gnutls? ( >=dev-libs/nss-3.11 )
 	meanwhile? ( net-libs/meanwhile )

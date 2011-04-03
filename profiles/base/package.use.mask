@@ -1,13 +1,49 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/base/package.use.mask,v 1.193 2011/02/05 12:07:36 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/base/package.use.mask,v 1.222 2011/03/30 13:10:39 aballier Exp $
 
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
-# Samuli Suominen <ssuominen@gentoo.org> (05 Feb 2011)
-# Mask until x11-libs/gtk+:3 is in tree.
+# Andrey Grozin <grozin@gentoo.org> (29 Mar 2011)
+# dev-lang/swig-2.0.2 with -octave generated .cpp files
+# incompatible with >=sci-mathematics/octave-3.4.0
+sci-libs/mathgl octave
+
+# Samuli Suominen <ssuominen@gentoo.org> (29 Mar 2011)
+# This would need x11-libs/gtk+:3 stable.
 x11-libs/libnotify test
+
+# Luca Barbato <lu_zero@gentoo.org> (28 Mar 2011)
+# Mask mplayer2 arch specific flags
+media-video/mplayer2 vdpau bluray
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (27 Mar 2011)
+#
+# Mask pdnsd's Linux-specific USE flags.
+net-dns/pdnsd isdn urandom
+
+# Samuli Suominen <ssuominen@gentoo.org> (27 Mar 2011)
+# Remove this when KDE 4.6 is stable.
+kde-base/solid -hal
+
+# Gilles Dartiguelongue <eva@gentoo.org> (26 Mar 2011)
+# Mask due to unsatisfied dependencies
+# applet is required for the search panel applet
+>=app-misc/tracker-0.10 applet
+
+# Ultrabug <ultrabug@gentoo.org> (20 Mar 2011)
+# Mask clustering support until new sys-cluster/cman is pushed.
+sys-fs/lvm2 clvm cman
+
+# Gilles Dartiguelongue <eva@gentoo.org> (23 Feb 2011)
+# libgnome[esd] ABI broken, bug #348644 and bug #352260.
+>=gnome-base/libgnome-2.32 esd
+app-text/stardict pronounce
+
+# Raúl Porcel <armin76@gentoo.org> (13 Feb 2011)
+# Masked until devs know how to use repoman
+<media-video/mplayer-9999 bluray
 
 # Diego Elio Pettenò <flameeyes@gentoo.org> (02 Dec 2010)
 # Unmask as soon as bio2jack is back into stable (0.9-r1 or later).
@@ -37,18 +73,9 @@ mail-client/evolution clutter
 # on several of the archs gnutls is stable for.
 net-libs/gnutls valgrind
 
-# Tomáš Chvátal <scarabeus@gentoo.org> (07 Nov 2010)
-# Masked since there is no release just git version of the library
-<media-video/mplayer-9999 bluray
-
 # Pawel Hajdan jr <phajdan.jr@gentoo.org> (29 Oct 2010)
 # Masked, it's work in progress not supported by upstream.
 www-client/chromium system-v8
-
-# Gilles Dartiguelongue <eva@gentoo.org> (13 Oct 2010)
-# Mask vala USE flag since it depends on a masked revision
-# of dev-libs/gobject-introspection
-<net-libs/telepathy-glib-0.12.5 vala
 
 # Patrick Lauer <patrick@gentoo.org> (15 Sep 2010)
 # Feature broken in dovecot-1, see #337014
@@ -86,17 +113,9 @@ www-client/icecat ipc
 # Masking support for vulnerable firefox and xulrunner.
 =dev-java/swt-3.3* firefox xulrunner
 
-# Nirbheek Chauhna <nirbheek@gentoo.org> (26 Jun 2010)
-# Mask till gstreamer and gst-plugins-base get introspection support
-media-libs/clutter-gst introspection
-
 # Tomas Touceda <chiiph@gentoo.org> (13 Apr 2010)
 # Masked because libsvm module is broken with this release on every arch.
 dev-lisp/clisp svm
-
-# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (13 Apr 2010)
-# Masked because xf86-video-nouveau is not supported on most archs.
-x11-base/xorg-drivers video_cards_nouveau
 
 # Tomáš Chvátal <scarabeus@gentoo.org> (4 Apr 2010)
 # Masked because tools pulled in are not supported on most archs.
@@ -120,7 +139,6 @@ sci-mathematics/fricas gcl cmucl
 
 # Tomáš Chvátal <scarabeus@gentoo.org> (6 Jan 2010)
 # Still not really functional, upstream requires not building it.
-<media-libs/mesa-7.9_rc gallium
 x11-libs/cairo gallium
 
 # Alexey Shvetsov <alexxy@gentoo.org> (3 Dec 2009)
@@ -183,11 +201,6 @@ games-fps/quakeforge video_cards_tdfx
 # openmcl (aka clozurecl) is only available on x86 and amd64
 sci-mathematics/maxima gcl openmcl clozurecl
 
-# Jeremy Olexa <darkside@gentoo.org> (31 Jul 2009)
-# Mask the gnome USE flag globally for app-office/abiword-plugins-2.4.6 because
-# it depends on a GLSA affected atom. bug 271708
-=app-office/abiword-plugins-2.4.6 gnome
-
 # Tomas Chvatal <scarabeus@gentoo.org> (31 Jan 2009)
 # mask cuda for boinc. Works only on amd64 and x86
 sci-misc/boinc cuda
@@ -204,7 +217,7 @@ app-text/enchant zemberek
 # Php module fails to build due to newer autotools.
 >=media-libs/ming-0.4.0_beta5 php
 
-# Christian Faulhammer <opfer@gentoo.org> (03 Mar 2008) 
+# Christian Faulhammer <opfer@gentoo.org> (03 Mar 2008)
 # This feature is experimental and should be used by people willing to
 # test it
 app-portage/gatt libpaludis
@@ -215,7 +228,7 @@ dev-lang/php java-external
 
 dev-java/sun-jdk nsplugin
 dev-java/sun-jre-bin nsplugin
-dev-java/ibm-jdk-bin nsplugin 
+dev-java/ibm-jdk-bin nsplugin
 dev-java/ibm-jre-bin nsplugin
 
 # These are for BSD only
@@ -240,14 +253,18 @@ media-video/mplayer cpudetection custom-cpuopts bindist vdpau
 # Unmask internal real player codec support on newer mplayer
 >=media-video/mplayer-1.0_rc2_p20090226 -real
 
-# Alexis Ballier <aballier@gentoo.org> (07 Jul 2009)
-# The pda interface doesnt build, bug #277037
->=media-video/vlc-1.0.0 pda
-
 # Arun Raghavan <ford_prefect@gentoo.org> (19 Nov 2010)
 # Mart Raudsepp <leio@gentoo.org> (27 Dec 2010)
 # Arun Raghavan <ford_prefect@gentoo.org> (30 Jan 2011)
+# Mart Raudsepp <leio@gentoo.org> (20 Mar 2010)
 # Orc isn't yet ready to be used on anything other than x86/amd64/arm
 >=media-libs/gst-plugins-base-0.10.30 orc
 >=media-plugins/gst-plugins-a52dec-0.10.16 orc
 >=media-plugins/gst-plugins-ffmpeg-0.10.11 orc
+>=media-libs/gst-plugins-good-0.10.28 orc
+
+# Alexis Ballier <aballier@gentoo.org> <16 Feb 2011>
+# Win32 specific useflags for vlc. Can be used for cross-compiling.
+media-video/vlc direct2d directx dshow dxva2 waveout wingdi
+# Mac OSX / iPhone OS specific useflags
+media-video/vlc audioqueue ios-vout macosx macosx-audio macosx-dialog-provider macosx-eyetv macosx-quartztext macosx-qtcapture macosx-vout

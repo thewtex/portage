@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/f-spot/f-spot-0.8.2.ebuild,v 1.2 2011/02/12 17:51:05 xarthisius Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/f-spot/f-spot-0.8.2.ebuild,v 1.5 2011/03/21 20:26:43 ranger Exp $
 
 EAPI="2"
 
@@ -10,25 +10,25 @@ DESCRIPTION="Personal photo management application for the gnome desktop"
 HOMEPAGE="http://f-spot.org"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ppc ~x86"
 IUSE="doc flickr raw"
 
 RDEPEND=">=dev-lang/mono-2.2
 	>=gnome-base/libgnome-2.2
 	>=gnome-base/libgnomeui-2.2
 	dev-dotnet/gnome-keyring-sharp
-	>=dev-dotnet/gtk-sharp-2.12.2
-	>=dev-dotnet/glib-sharp-2.12.2
-	>=x11-libs/gtk+-2.16
-	>=dev-libs/glib-2.22
-	>=dev-libs/libunique-1.0
-	>=dev-dotnet/gnome-sharp-2.8
-	>=dev-dotnet/glib-sharp-2.12
-	>=dev-dotnet/gconf-sharp-2.20.2
+	>=dev-dotnet/gtk-sharp-2.12.2:2
+	>=dev-dotnet/glib-sharp-2.12.2:2
+	>=x11-libs/gtk+-2.16:2
+	>=dev-libs/glib-2.22:2
+	>=dev-libs/libunique-1.0:1
+	>=dev-dotnet/gnome-sharp-2.8:2
+	>=dev-dotnet/glib-sharp-2.12:2
+	>=dev-dotnet/gconf-sharp-2.20.2:2
 	>=dev-dotnet/mono-addins-0.3
 	>=dev-libs/dbus-glib-0.71
-	>=dev-dotnet/dbus-sharp-0.4.2
-	>=dev-dotnet/dbus-glib-sharp-0.3.0
+	>=dev-dotnet/ndesk-dbus-0.4.2
+	>=dev-dotnet/ndesk-dbus-glib-0.3.0
 	>=media-libs/lcms-1.12:0
 	>=x11-libs/cairo-1.4
 	doc? (	virtual/monodoc

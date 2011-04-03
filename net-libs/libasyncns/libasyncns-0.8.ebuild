@@ -1,9 +1,9 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/libasyncns/libasyncns-0.8.ebuild,v 1.1 2010/06/01 20:43:06 darkside Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/libasyncns/libasyncns-0.8.ebuild,v 1.2 2011/03/28 04:37:12 ford_prefect Exp $
 
 EAPI=3
-inherit libtool flag-o-matic
+inherit eutils libtool flag-o-matic
 
 DESCRIPTION="C library for executing name service queries asynchronously."
 HOMEPAGE="http://0pointer.de/lennart/projects/libasyncns/"

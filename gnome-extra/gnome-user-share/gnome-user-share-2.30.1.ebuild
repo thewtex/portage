@@ -1,18 +1,18 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-extra/gnome-user-share/gnome-user-share-2.30.1.ebuild,v 1.2 2011/02/08 22:41:35 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/gnome-user-share/gnome-user-share-2.30.1.ebuild,v 1.6 2011/03/29 07:50:09 angelos Exp $
 
 EAPI="3"
 GCONF_DEBUG="no"
 
-inherit gnome2 multilib
+inherit eutils gnome2 multilib
 
 DESCRIPTION="Personal file sharing for the GNOME desktop"
 HOMEPAGE="http://www.gnome.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE=""
 
 # FIXME: could libnotify be made optional ?
@@ -23,8 +23,8 @@ RDEPEND=">=dev-libs/glib-2.16.0
 	>=x11-libs/gtk+-2.14:2
 	>=app-mobilephone/obex-data-server-0.4
 	>=dev-libs/dbus-glib-0.70
-	dev-libs/libunique
-	>=gnome-base/gconf-2.10
+	dev-libs/libunique:1
+	>=gnome-base/gconf-2.10:2
 	>=gnome-base/nautilus-2
 	media-libs/libcanberra[gtk]
 	>=net-wireless/gnome-bluetooth-2.27.7.2:2
@@ -45,6 +45,12 @@ pkg_setup() {
 	G2CONF="${G2CONF}
 		--with-httpd=apache2
 		--with-modules-path=/usr/$(get_libdir)/apache2/modules/"
+}
+
+src_prepare() {
+	has_version ">=x11-libs/libnotify-0.7" && epatch \
+		"${FILESDIR}"/${P}-libnotify-0.7.patch
+	gnome2_src_prepare
 }
 
 src_install() {

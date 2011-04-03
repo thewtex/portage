@@ -1,8 +1,8 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/preload/preload-0.6.4-r2.ebuild,v 1.1 2010/09/07 12:11:05 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/preload/preload-0.6.4-r2.ebuild,v 1.5 2011/02/27 20:48:25 hwoarang Exp $
 
-EAPI="2"
+EAPI="3"
 
 inherit eutils autotools
 
@@ -12,13 +12,15 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="vanilla"
 
 WANT_AUTOCONF="2.56"
 
-RDEPEND=">=dev-libs/glib-2.6"
-DEPEND="${RDEPEND}"
+RDEPEND=">=dev-libs/glib-2.6:2"
+DEPEND="${RDEPEND}
+	dev-util/pkgconfig
+	sys-apps/help2man"
 
 src_prepare() {
 	epatch "${FILESDIR}"/00-patch-configure.diff
@@ -40,8 +42,8 @@ src_install() {
 	emake DESTDIR="${D}" install || die "install failed"
 	# Remove log and state file from image or they will be
 	# truncated during merge
-	rm "${D}"/var/lib/preload/preload.state || die "cleanup failed"
-	rm "${D}"/var/log/preload.log || die "cleanup failed"
+	rm "${ED}"/var/lib/preload/preload.state || die "cleanup failed"
+	rm "${ED}"/var/log/preload.log || die "cleanup failed"
 	keepdir /var/lib/preload
 	keepdir /var/log
 }

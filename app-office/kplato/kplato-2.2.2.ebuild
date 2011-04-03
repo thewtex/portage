@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/kplato/kplato-2.2.2.ebuild,v 1.7 2011/01/28 09:55:03 tampakrap Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/kplato/kplato-2.2.2.ebuild,v 1.10 2011/03/13 08:29:23 dilfridge Exp $
 
 EAPI="3"
 
@@ -13,7 +13,8 @@ DESCRIPTION="KPlato is a project management application."
 KEYWORDS="amd64 x86"
 IUSE=""
 
-DEPEND="~app-office/koffice-libs-${PV}:${SLOT}[reports]"
+DEPEND="<kde-base/kdelibs-4.6
+	~app-office/koffice-libs-${PV}:${SLOT}[reports]"
 RDEPEND="${DEPEND}"
 
 KMEXTRACTONLY="libs/"
@@ -25,7 +26,7 @@ KMLOADLIBS="koffice-libs"
 
 src_configure() {
 	mycmakeargs=(
-		$(cmake-utils_use_with python PythonLibs)
+		-DWITH_PythonLibs=OFF
 		-DBUILD_kplato=ON
 	)
 

@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-geosciences/grass/grass-6.3.0.ebuild,v 1.18 2010/11/08 17:27:39 xarthisius Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-geosciences/grass/grass-6.3.0.ebuild,v 1.22 2011/03/26 15:27:44 scarabeus Exp $
 
 EAPI=1
 
@@ -16,9 +16,9 @@ SRC_URI="http://download.osgeo.org/grass/${MY_PM}/source/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="6"
-KEYWORDS="amd64 ppc ~ppc64 sparc x86"
+KEYWORDS="amd64 ppc ~ppc64 x86"
 
-IUSE="ffmpeg fftw gmath jpeg largefile motif mysql nls odbc opengl png \
+IUSE="ffmpeg fftw gmath jpeg motif mysql nls odbc opengl png \
 postgres python readline sqlite tiff truetype wxwidgets X"
 
 RESTRICT="strip"
@@ -31,7 +31,7 @@ RDEPEND=">=sys-libs/zlib-1.1.4
 	    sys-apps/man-db )
 	sci-libs/gdal
 	>=sci-libs/proj-4.4.7
-	ffmpeg? ( media-video/ffmpeg )
+	ffmpeg? ( virtual/ffmpeg )
 	fftw? ( sci-libs/fftw )
 	gmath? ( virtual/blas
 	    virtual/lapack )
@@ -178,13 +178,7 @@ src_compile() {
 	if use ffmpeg; then
 	    myconf="${myconf} --with-ffmpeg \
 	        --with-ffmpeg-libs=/usr/$(get_libdir)"
-	    if has_version ">=media-video/ffmpeg-0.4.9_p20080326" ; then
-		# must pass multiple include dirs now; if you have a better
-		# way to do this, please speak up and file a bug :)
-	        myconf="${myconf} --with-ffmpeg-includes=/usr/include/libav*"
-	    else
-		myconf="${myconf} --with-ffmpeg-includes=/usr/include/ffmpeg"
-	    fi
+	    myconf="${myconf} --with-ffmpeg-includes=/usr/include/libav*"
 	else
 		myconf="${myconf} --without-ffmpeg"
 	fi
@@ -214,14 +208,14 @@ src_compile() {
 		$(use_with gmath blas) \
 		$(use_with gmath lapack) \
 		$(use_with jpeg) \
-		$(use_enable largefile) \
 		$(use_with motif) \
 		$(use_with nls) \
 		$(use_with odbc) \
 		$(use_with png) \
 		$(use_with postgres) \
 		$(use_with readline) \
-		$(use_with tiff) || die "configure failed!"
+		$(use_with tiff) \
+		--enable-largefile \
 
 	if use wxwidgets; then
 	    # can't use die here since we need to hack the vdigit build

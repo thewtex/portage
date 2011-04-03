@@ -1,6 +1,8 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-terms/mlterm/mlterm-2.9.4-r4.ebuild,v 1.7 2009/10/10 15:12:14 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-terms/mlterm/mlterm-2.9.4-r4.ebuild,v 1.9 2011/03/28 14:32:57 nirbheek Exp $
+
+EAPI="1"
 
 inherit eutils toolchain-funcs
 
@@ -13,14 +15,14 @@ SRC_URI="mirror://sourceforge/mlterm/${P}.tar.gz
 	http://shinh.skr.jp/dat_dir/${P}_256.patch"
 
 SLOT="0"
-KEYWORDS="amd64 hppa ppc ppc64 sparc x86"
+KEYWORDS="amd64 hppa ppc ppc64 x86"
 LICENSE="BSD"
 
 RDEPEND="virtual/utempter
 	x11-libs/libX11
 	x11-libs/libICE
 	x11-libs/libSM
-	gtk? ( >=x11-libs/gtk+-2 )
+	gtk? ( x11-libs/gtk+:2 )
 	!gtk? ( imlib? ( >=media-libs/imlib-1.9.14 ) )
 	truetype? ( x11-libs/libXft )
 	bidi? ( >=dev-libs/fribidi-0.10.4 )

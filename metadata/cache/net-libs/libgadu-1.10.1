@@ -1,0 +1,22 @@
+ssl? ( gnutls? ( net-libs/gnutls ) !gnutls? ( >=dev-libs/openssl-0.9.6m ) ) doc? ( app-doc/doxygen ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b
+ssl? ( gnutls? ( net-libs/gnutls ) !gnutls? ( >=dev-libs/openssl-0.9.6m ) ) !=net-im/kadu-0.6.0.2 !=net-im/kadu-0.6.0.1
+0
+http://toxygen.net/libgadu/files/libgadu-1.10.1.tar.gz
+
+http://toxygen.net/libgadu/
+LGPL-2.1
+This library implements the client side of the Gadu-Gadu protocol
+~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos
+autotools autotools-utils base eutils libtool multilib portability toolchain-funcs
+doc gnutls ssl static-libs threads
+gnutls? ( ssl )
+
+
+4
+
+compile configure install prepare test unpack
+
+
+
+
+

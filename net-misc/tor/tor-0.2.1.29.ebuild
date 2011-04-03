@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/tor/tor-0.2.1.29.ebuild,v 1.6 2011/01/24 21:12:49 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/tor/tor-0.2.1.29.ebuild,v 1.8 2011/02/27 22:59:09 blueness Exp $
 
 EAPI=2
 

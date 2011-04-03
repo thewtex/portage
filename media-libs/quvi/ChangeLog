@@ -1,6 +1,38 @@
 # ChangeLog for media-libs/quvi
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/quvi/ChangeLog,v 1.14 2011/02/09 05:13:42 radhermit Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/quvi/ChangeLog,v 1.22 2011/03/30 20:48:31 radhermit Exp $
+
+  30 Mar 2011; Tim Harder <radhermit@gentoo.org> quvi-0.2.14-r1.ebuild:
+  Add dependency on >=sys-devel/autoconf-2.68 (bug #361261 by Pacho Ramos).
+
+*quvi-0.2.14-r1 (30 Mar 2011)
+
+  30 Mar 2011; Tim Harder <radhermit@gentoo.org> +quvi-0.2.14-r1.ebuild,
+  +files/quvi-0.2.14-docs.patch, +files/quvi-0.2.14-youtube-video-ids.patch:
+  Revision bump. Update to EAPI 4, apply upstream patch to fix totem-pl-parser
+  and youtube videos (bug #360643 by Pacho Ramos), use bash syntax instead of
+  versionator eclass for SRC_URI, and remove empty doc directory.
+
+  13 Mar 2011; Tim Harder <radhermit@gentoo.org> -quvi-0.2.11.ebuild,
+  -quvi-0.2.12.ebuild:
+  Remove old.
+
+  13 Mar 2011; Kacper Kowalik <xarthisius@gentoo.org> quvi-0.2.13.ebuild:
+  ppc64 stable wrt #354739
+
+*quvi-0.2.14 (11 Mar 2011)
+
+  11 Mar 2011; Tim Harder <radhermit@gentoo.org> +quvi-0.2.14.ebuild:
+  Version bump. Update to EAPI 3 and use xz tarball.
+
+  05 Mar 2011; Brent Baude <ranger@gentoo.org> quvi-0.2.13.ebuild:
+  stable ppc, bug 354739
+
+  18 Feb 2011; Thomas Kahle <tomka@gentoo.org> quvi-0.2.13.ebuild:
+  x86 stable per bug 354739
+
+  16 Feb 2011; Markos Chandras <hwoarang@gentoo.org> quvi-0.2.13.ebuild:
+  Stable on amd64 wrt bug #354739
 
 *quvi-0.2.13 (09 Feb 2011)
 

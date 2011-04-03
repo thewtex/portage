@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/PyQt4/PyQt4-4.8.1.ebuild,v 1.9 2011/01/16 10:06:11 phajdan.jr Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/PyQt4/PyQt4-4.8.1.ebuild,v 1.13 2011/03/26 16:38:02 dilfridge Exp $
 
 EAPI="3"
 PYTHON_DEPEND="*"
@@ -21,7 +21,7 @@ SRC_URI="http://www.riverbankcomputing.com/static/Downloads/${PN}/${MY_P}.tar.gz
 
 LICENSE="|| ( GPL-2 GPL-3 )"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~ia64 ppc ~ppc64 ~sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="alpha amd64 ~arm ia64 ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 IUSE="X assistant +dbus debug doc examples kde multimedia opengl phonon sql svg webkit xmlpatterns"
 
 DEPEND=">=dev-python/sip-4.11.2
@@ -37,8 +37,8 @@ DEPEND=">=dev-python/sip-4.11.2
 	multimedia? ( >=x11-libs/qt-multimedia-${QT_VER}:4 )
 	opengl? ( >=x11-libs/qt-opengl-${QT_VER}:4 || ( >=x11-libs/qt-opengl-4.7.0:4[-egl] <x11-libs/qt-opengl-4.7.0:4 ) )
 	phonon? (
-		!kde? ( || ( >=x11-libs/qt-phonon-${QT_VER}:4 media-sound/phonon ) )
-		kde? ( media-sound/phonon )
+		!kde? ( || ( >=x11-libs/qt-phonon-${QT_VER}:4 media-libs/phonon ) )
+		kde? ( media-libs/phonon )
 	)
 	sql? ( >=x11-libs/qt-sql-${QT_VER}:4 )
 	svg? ( >=x11-libs/qt-svg-${QT_VER}:4 )

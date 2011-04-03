@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/ccpn-data/ccpn-data-2.1.5.ebuild,v 1.3 2010/09/21 19:23:44 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/ccpn-data/ccpn-data-2.1.5.ebuild,v 1.4 2011/04/01 10:29:45 jlec Exp $
 
 EAPI="3"
 
@@ -14,8 +14,8 @@ HOMEPAGE="http://www.ccpn.ac.uk/ccpn"
 SRC_URI="http://www.bio.cam.ac.uk/ccpn/download/${MY_PN}/analysis${MY_PV}.tar.gz"
 
 SLOT="0"
+LICENSE="|| ( CCPN LGPL-2.1 )"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-LICENSE="CCPN"
 IUSE=""
 
 RDEPEND="!<sci-chemistry/ccpn-${PV}"

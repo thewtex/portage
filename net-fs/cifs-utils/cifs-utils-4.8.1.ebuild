@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-fs/cifs-utils/cifs-utils-4.8.1.ebuild,v 1.2 2011/01/28 17:06:04 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-fs/cifs-utils/cifs-utils-4.8.1.ebuild,v 1.6 2011/03/31 17:31:15 jer Exp $
 
 EAPI=2
 
@@ -12,14 +12,15 @@ SRC_URI="ftp://ftp.samba.org/pub/linux-cifs/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~x86"
 IUSE="ads +caps caps-ng creds setuid"
 
 DEPEND="!net-fs/mount-cifs
 	!<net-fs/samba-3.6
 	ads? ( sys-libs/talloc virtual/krb5 sys-apps/keyutils )
 	caps? ( sys-libs/libcap )
-	caps-ng? ( sys-libs/libcap-ng )"
+	caps-ng? ( sys-libs/libcap-ng )
+	creds? ( sys-apps/keyutils )"
 RDEPEND="${DEPEND}"
 
 cifs_check() {

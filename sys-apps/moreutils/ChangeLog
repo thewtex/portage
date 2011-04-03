@@ -1,6 +1,30 @@
 # ChangeLog for sys-apps/moreutils
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/moreutils/ChangeLog,v 1.20 2010/10/22 07:12:59 radhermit Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/moreutils/ChangeLog,v 1.24 2011/04/01 05:07:36 radhermit Exp $
+
+  01 Apr 2011; Tim Harder <radhermit@gentoo.org> moreutils-0.43.ebuild,
+  moreutils-0.44.ebuild:
+  Remove unnecessary perl dependencies from DEPEND (bug #361329 by Jeroen
+  Roovers).
+
+  30 Mar 2011; Jeroen Roovers <jer@gentoo.org> moreutils-0.43.ebuild,
+  moreutils-0.44.ebuild:
+  Marked ~hppa (bug #361155).
+
+*moreutils-0.44 (29 Mar 2011)
+
+  29 Mar 2011; Tim Harder <radhermit@gentoo.org> -moreutils-0.40.ebuild,
+  -moreutils-0.42.ebuild, moreutils-0.43.ebuild, +moreutils-0.44.ebuild:
+  Version bump and remove old. Add dependency on dev-perl/IPC-Run (bug #358751
+  by Siim Ainsaar) and temporarily drop ~hppa keyword.
+
+*moreutils-0.43 (10 Mar 2011)
+
+  10 Mar 2011; Tim Harder <radhermit@gentoo.org> +moreutils-0.43.ebuild,
+  metadata.xml:
+  Version bump (bug #351043). Update to EAPI 4, add doc and perl USE flags (bug
+  #333977 thanks to Diego Pettenò and Kevin Pyle), and add myself as a
+  maintainer.
 
 *moreutils-0.42 (22 Oct 2010)
 

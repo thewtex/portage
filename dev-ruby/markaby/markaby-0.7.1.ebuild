@@ -1,9 +1,9 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/markaby/markaby-0.7.1.ebuild,v 1.3 2010/11/27 17:44:04 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/markaby/markaby-0.7.1.ebuild,v 1.5 2011/02/26 16:33:08 xarthisius Exp $
 
 EAPI=2
-USE_RUBY="ruby18"
+USE_RUBY="ruby18 ree18"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.rdoc README.rdoc"
@@ -19,7 +19,7 @@ HOMEPAGE="http://rubyforge.org/projects/markaby/"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~ia64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
+KEYWORDS="~amd64 ~ia64 ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 IUSE=""
 
 ruby_add_bdepend "test? ( virtual/ruby-test-unit dev-ruby/rspec:0 dev-ruby/tilt )"

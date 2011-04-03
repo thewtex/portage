@@ -1,6 +1,58 @@
 # ChangeLog for media-libs/gst-plugins-base
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/gst-plugins-base/ChangeLog,v 1.154 2011/02/11 00:56:46 hwoarang Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/gst-plugins-base/ChangeLog,v 1.165 2011/03/29 11:12:00 leio Exp $
+
+  28 Mar 2011; Mart Raudsepp <leio@gentoo.org> gst-plugins-base-0.10.32.ebuild:
+  Add ~mips keyword
+
+  18 Mar 2011; Gilles Dartiguelongue <eva@gentoo.org>
+  gst-plugins-base-0.10.32.ebuild:
+  Set GST_REGISTRY to avoid sandbox access violation, bug #356283. With
+  approval of leio.
+
+  18 Mar 2011; Mart Raudsepp <leio@gentoo.org>
+  +files/gst-plugins-base-0.10.32-fix-tests-encodebin.patch,
+  gst-plugins-base-0.10.32.ebuild:
+  Fix tests for 0.10.32; second report on bug #352944
+
+  13 Mar 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  gst-plugins-base-0.10.31.ebuild:
+  ppc64 stable wrt #353434
+
+  05 Mar 2011; Raúl Porcel <armin76@gentoo.org>
+  gst-plugins-base-0.10.31.ebuild:
+  alpha/ia64/sh/sparc stable wrt #353434
+
+  01 Mar 2011; Jeroen Roovers <jer@gentoo.org> gst-plugins-base-0.10.31.ebuild:
+  Stable for HPPA (bug #353434).
+
+  27 Feb 2011; Brent Baude <ranger@gentoo.org>
+  gst-plugins-base-0.10.31.ebuild:
+  Marking gst-plugins-base-0.10.31 ppc stable for bug 353434
+
+  24 Feb 2011; Mart Raudsepp <leio@gentoo.org> metadata.xml,
+  -gst-plugins-base-0.10.24.ebuild, -gst-plugins-base-0.10.25.ebuild,
+  -gst-plugins-base-0.10.28.ebuild, -gst-plugins-base-0.10.30.ebuild:
+  Remove old. gstreamer@ is sole maintainer right now, document it
+
+*gst-plugins-base-0.10.32 (24 Feb 2011)
+
+  24 Feb 2011; Mart Raudsepp <leio@gentoo.org>
+  +gst-plugins-base-0.10.32.ebuild:
+  Version bump. Don't build examples as they aren't installed, avoids issues
+  like bug 348623 too. Has new encodebin element as a playbin2 alike
+  convenience aggregate element, but for encoding instead of playback for
+  the benefit of encoding/transcoding applications once they port to it;
+  encode profile system to go along with it to have 'profiles' of encoding
+  targets. Many other improvements and bug fixes
+
+  20 Feb 2011; Markus Meier <maekke@gentoo.org>
+  gst-plugins-base-0.10.31.ebuild:
+  arm stable, bug #353434
+
+  14 Feb 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  gst-plugins-base-0.10.31.ebuild:
+  x86 stable wrt bug #353434
 
   11 Feb 2011; Markos Chandras <hwoarang@gentoo.org>
   gst-plugins-base-0.10.31.ebuild:

@@ -1,8 +1,10 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libxml2/libxml2-2.7.7.ebuild,v 1.1 2010/03/18 12:59:10 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libxml2/libxml2-2.7.7.ebuild,v 1.14 2010/12/31 23:49:15 arfrever Exp $
 
 EAPI="2"
+SUPPORT_PYTHON_ABIS="1"
+RESTRICT_PYTHON_ABIS="3.* *-jython"
 
 inherit libtool flag-o-matic eutils python
 
@@ -11,7 +13,7 @@ HOMEPAGE="http://www.xmlsoft.org/"
 
 LICENSE="MIT"
 SLOT="2"
-KEYWORDS="alpha amd64 arm hppa ia64 m68k mips ppc ppc64 s390 sh sparc x86 sparc-fbsd x86-fbsd"
+KEYWORDS="alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~sparc-fbsd ~x86-fbsd"
 IUSE="debug doc examples ipv6 python readline test"
 
 XSTS_HOME="http://www.w3.org/XML/2004/xml-schema-test-suite"
@@ -26,11 +28,17 @@ SRC_URI="ftp://xmlsoft.org/${PN}/${P}.tar.gz
 		${XSTS_HOME}/${XSTS_NAME_2}/${XSTS_TARBALL_2} )"
 
 RDEPEND="sys-libs/zlib
-	python? ( <dev-lang/python-3 )
+	python? ( || ( <dev-lang/python-3[xml] ( <dev-lang/python-3 dev-python/pyxml ) ) )
 	readline? ( sys-libs/readline )"
 
 DEPEND="${RDEPEND}
 	hppa? ( >=sys-devel/binutils-2.15.92.0.2 )"
+
+pkg_setup() {
+	if use python; then
+		python_pkg_setup
+	fi
+}
 
 src_unpack() {
 	# ${A} isn't used to avoid unpacking of test tarballs into $WORKDIR,
@@ -52,6 +60,9 @@ src_prepare() {
 	# Please do not remove, as else we get references to PORTAGE_TMPDIR
 	# in /usr/lib/python?.?/site-packages/libxml2mod.la among things.
 	elibtoolize
+
+	# Python bindings are built/tested/installed manually.
+	sed -e "s/@PYTHON_SUBDIR@//" -i Makefile.in || die "sed failed"
 }
 
 src_configure() {
@@ -71,8 +82,7 @@ src_configure() {
 		$(use_with python)
 		$(use_with readline)
 		$(use_with readline history)
-		$(use_enable ipv6)
-		PYTHON_SITE_PACKAGES=$(python_get_sitedir)"
+		$(use_enable ipv6)"
 
 	# filter seemingly problematic CFLAGS (#26320)
 	filter-flags -fprefetch-loop-arrays -funroll-loops
@@ -80,12 +90,47 @@ src_configure() {
 	econf ${myconf}
 }
 
+src_compile() {
+	default
+
+	if use python; then
+		python_copy_sources python
+		building() {
+			emake PYTHON_INCLUDES="$(python_get_includedir)" \
+				PYTHON_SITE_PACKAGES="$(python_get_sitedir)"
+		}
+		python_execute_function -s --source-dir python building
+	fi
+}
+
+src_test() {
+	default
+
+	if use python; then
+		testing() {
+			emake test
+		}
+		python_execute_function -s --source-dir python testing
+	fi
+}
+
 src_install() {
 	emake DESTDIR="${D}" \
 		EXAMPLES_DIR=/usr/share/doc/${PF}/examples \
-		docsdir=/usr/share/doc/${PF}/python \
-		exampledir=/usr/share/doc/${PF}/python/examples \
 		install || die "Installation failed"
+
+	if use python; then
+		installation() {
+			emake DESTDIR="${D}" \
+				PYTHON_SITE_PACKAGES="$(python_get_sitedir)" \
+				docsdir=/usr/share/doc/${PF}/python \
+				exampledir=/usr/share/doc/${PF}/python/examples \
+				install
+		}
+		python_execute_function -s --source-dir python installation
+
+		python_clean_installation_image
+	fi
 
 	rm -rf "${D}"/usr/share/doc/${P}
 	dodoc AUTHORS ChangeLog Copyright NEWS README* TODO* || die "dodoc failed"
@@ -108,8 +153,7 @@ src_install() {
 
 pkg_postinst() {
 	if use python; then
-		python_need_rebuild
-		python_mod_optimize $(python_get_sitedir)
+		python_mod_optimize drv_libxml2.py libxml2.py
 	fi
 
 	# We don't want to do the xmlcatalog during stage1, as xmlcatalog will not
@@ -133,5 +177,7 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
-	python_mod_cleanup /usr/$(get_libdir)/python*/site-packages
+	if use python; then
+		python_mod_cleanup drv_libxml2.py libxml2.py
+	fi
 }

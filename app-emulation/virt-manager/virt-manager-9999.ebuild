@@ -1,14 +1,14 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/virt-manager/virt-manager-9999.ebuild,v 1.2 2011/02/04 15:24:59 cardoe Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/virt-manager/virt-manager-9999.ebuild,v 1.4 2011/03/28 08:40:20 flameeyes Exp $
 
 #BACKPORTS=1
 
 EAPI=2
 
 if [[ ${PV} = *9999* ]]; then
-	EHG_REPO_URI="http://hg.fedorahosted.org/hg/virt-manager"
-	HG_ECLASS="mercurial autotools"
+	EGIT_REPO_URI="http://git.fedorahosted.org/git/virt-manager.git"
+	GIT_ECLASS="git autotools"
 fi
 
 PYTHON_DEPEND="2:2.4"
@@ -16,7 +16,7 @@ PYTHON_DEPEND="2:2.4"
 # Stop gnome2.eclass from doing stuff on USE=debug
 GCONF_DEBUG="no"
 
-inherit eutils gnome2 python ${HG_ECLASS}
+inherit eutils gnome2 python ${GIT_ECLASS}
 
 if [[ ${PV} = *9999* ]]; then
 	SRC_URI=""
@@ -26,7 +26,7 @@ else
 	SRC_URI="http://virt-manager.org/download/sources/${PN}/${P}.tar.gz
 		${BACKPORTS:+mirror://gentoo/${P}-backports-${BACKPORTS}.tar.bz2}"
 	KEYWORDS="~amd64 ~x86"
-	VIRTINSTDEP=">=app-emulation/virtinst-0.500.4"
+	VIRTINSTDEP=">=app-emulation/virtinst-0.500.6"
 fi
 
 DESCRIPTION="A graphical tool for administering virtual machines (KVM/Xen)"
@@ -39,13 +39,13 @@ RDEPEND=">=dev-python/pygtk-1.99.12
 	>=dev-libs/libxml2-2.6.23[python]
 	${VIRTINSTDEP}
 	>=gnome-base/librsvg-2
-	>=x11-libs/vte-0.12.2[python]
+	>=x11-libs/vte-0.12.2:0[python]
 	>=net-libs/gtk-vnc-0.3.8[python,sasl?]
 	>=dev-python/dbus-python-0.61
 	>=dev-python/gconf-python-1.99.11
 	dev-python/urlgrabber
 	gnome-keyring? ( dev-python/gnome-keyring-python )
-	policykit? ( gnome-extra/polkit-gnome )"
+	policykit? ( sys-auth/polkit )"
 DEPEND="${RDEPEND}
 	app-text/rarian
 	dev-util/intltool"

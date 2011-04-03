@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/luakit/luakit-2010.09.24.ebuild,v 1.1 2010/09/24 10:04:31 wired Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/luakit/luakit-2010.09.24.ebuild,v 1.4 2011/03/21 23:26:04 nirbheek Exp $
 
 EAPI=3
 
@@ -26,14 +26,15 @@ LICENSE="GPL-3"
 SLOT="0"
 
 COMMON_DEPEND="
-	>=dev-lang/lua-5.1
+	>=dev-lang/lua-5.1[deprecated]
 	dev-libs/glib:2
-	net-libs/libsoup
-	net-libs/webkit-gtk
+	net-libs/libsoup:2.4
+	net-libs/webkit-gtk:2
 	x11-libs/gtk+:2
 "
 
 DEPEND="
+	dev-util/pkgconfig
 	sys-apps/help2man
 	${COMMON_DEPEND}
 "

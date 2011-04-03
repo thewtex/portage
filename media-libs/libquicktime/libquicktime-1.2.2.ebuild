@@ -1,6 +1,8 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libquicktime/libquicktime-1.2.2.ebuild,v 1.1 2011/01/09 18:22:29 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libquicktime/libquicktime-1.2.2.ebuild,v 1.8 2011/03/23 21:22:52 xarthisius Exp $
+
+EAPI=1
 
 inherit libtool eutils
 
@@ -12,11 +14,11 @@ SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 ia64 ppc ppc64 sparc x86 ~x86-fbsd"
 IUSE="mmx X opengl dv gtk alsa aac encode png jpeg vorbis lame x264 ffmpeg doc schroedinger"
 
 RDEPEND="dv? ( media-libs/libdv )
-	gtk? ( >=x11-libs/gtk+-2.4.0 )
+	gtk? ( >=x11-libs/gtk+-2.4.0:2 )
 	aac? (
 		media-libs/faad2
 		encode? ( media-libs/faac )
@@ -35,8 +37,7 @@ RDEPEND="dv? ( media-libs/libdv )
 		x11-libs/libX11
 		opengl? ( media-libs/mesa )
 	)
-	virtual/libintl
-	!virtual/quicktime"
+	virtual/libintl"
 DEPEND="${RDEPEND}
 	X? (
 		x11-proto/videoproto
@@ -45,8 +46,6 @@ DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )
 	dev-util/pkgconfig
 	sys-devel/gettext"
-
-PROVIDE="virtual/quicktime"
 
 S=${WORKDIR}/${MY_P}
 

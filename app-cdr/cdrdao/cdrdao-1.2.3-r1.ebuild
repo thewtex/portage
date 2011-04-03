@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-cdr/cdrdao/cdrdao-1.2.3-r1.ebuild,v 1.2 2010/08/11 13:57:04 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-cdr/cdrdao/cdrdao-1.2.3-r1.ebuild,v 1.7 2011/03/29 20:05:35 jer Exp $
 
 EAPI=2
 inherit eutils
@@ -16,14 +16,14 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sh ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 sh sparc ~x86 ~x86-fbsd"
 IUSE="gcdmaster encode pccts mad vorbis"
 
 RDEPEND="virtual/cdrtools
 	encode? ( >=media-sound/lame-3.90 )
 	gcdmaster? ( dev-libs/libsigc++:2
-		>=dev-cpp/gtkmm-2.4
-		>=dev-cpp/libgnomeuimm-2.6
+		>=dev-cpp/gtkmm-2.4:2.4
+		>=dev-cpp/libgnomeuimm-2.6:2.6
 		media-libs/libao )
 	mad? ( media-libs/libmad
 		media-libs/libao )

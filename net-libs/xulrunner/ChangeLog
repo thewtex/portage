@@ -1,6 +1,68 @@
 # ChangeLog for net-libs/xulrunner
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/xulrunner/ChangeLog,v 1.389 2011/01/02 22:28:37 betelgeuse Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/xulrunner/ChangeLog,v 1.403 2011/03/27 20:20:23 anarchy Exp $
+
+  27 Mar 2011; Jory A. Pratt <anarchy@gentoo.org> xulrunner-2.0.ebuild:
+  ensure cairo dep correct for xul-2.0
+
+  26 Mar 2011; Brent Baude <ranger@gentoo.org> xulrunner-1.9.2.16.ebuild:
+  Marking xulrunner-1.9.2.16 ppc64 and ppc for bug 360055
+
+  25 Mar 2011; Christoph Mende <angelos@gentoo.org> xulrunner-1.9.2.16.ebuild:
+  Stable on amd64 wrt bug #360055
+
+*xulrunner-1.9.2.16 (25 Mar 2011)
+
+  25 Mar 2011; Lars Wendler <polynomial-c@gentoo.org>
+  -files/1009-armv4t-nanojit-v2.patch, -files/cups-1.4.4-fixup.patch,
+  -xulrunner-1.9.2.13.ebuild, +xulrunner-1.9.2.16.ebuild,
+  -files/xulrunner-1.9.2-noalsa-fixup.patch,
+  -files/xulrunner-1.9_beta5-prefix.patch,
+  -files/xulrunner-1.9.2-solaris-madvise.patch,
+  -files/fix_crash_in_windowwatcher.patch:
+  Security bump of 1.9 version for icecat. Cleaned up FILESDIR.
+
+  23 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org> xulrunner-2.0.ebuild:
+  Fix automagic GConf dependency
+
+*xulrunner-2.0 (22 Mar 2011)
+
+  22 Mar 2011; Jory A. Pratt <anarchy@gentoo.org> +xulrunner-2.0.ebuild:
+  Version Bump
+
+  18 Mar 2011; Raúl Porcel <armin76@gentoo.org> xulrunner-1.9.2.15.ebuild:
+  alpha/ia64 stable wrt #357057
+
+  14 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org>
+  -xulrunner-1.9.2.8.ebuild, -xulrunner-1.9.2.9.ebuild,
+  -xulrunner-1.9.2.9-r1.ebuild, -xulrunner-1.9.2.11.ebuild,
+  xulrunner-1.9.2.12.ebuild, -xulrunner-1.9.2.12-r1.ebuild,
+  xulrunner-1.9.2.13.ebuild, -xulrunner-1.9.2.13-r1.ebuild,
+  xulrunner-1.9.2.15.ebuild:
+  Remove old ebuilds and duplicate gnome-use-flag related stuff to allow
+  eclass changes from overlay to be merged into tree
+
+  13 Mar 2011; Markus Meier <maekke@gentoo.org> xulrunner-1.9.2.15.ebuild:
+  arm stable, bug #357057
+
+  08 Mar 2011; Thomas Kahle <tomka@gentoo.org> xulrunner-1.9.2.15.ebuild:
+  x86 stable per bug 357057
+
+  08 Mar 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  xulrunner-1.9.2.15.ebuild:
+  ppc/ppc64 stable wrt #357057
+
+  07 Mar 2011; Jeroen Roovers <jer@gentoo.org> xulrunner-1.9.2.15.ebuild:
+  Stable for HPPA (bug #357057).
+
+  06 Mar 2011; Markos Chandras <hwoarang@gentoo.org> xulrunner-1.9.2.15.ebuild:
+  Stable on amd64 wrt bug #357057
+
+*xulrunner-1.9.2.15 (06 Mar 2011)
+
+  06 Mar 2011; Jory A. Pratt <anarchy@gentoo.org> +files/libnotify-0.7.patch,
+  +xulrunner-1.9.2.15.ebuild:
+  Security bump, bug #357057
 
 *xulrunner-1.9.2.13-r1 (02 Jan 2011)
 

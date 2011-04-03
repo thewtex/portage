@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/scim-bridge/scim-bridge-0.4.16-r1.ebuild,v 1.3 2010/01/02 22:40:39 yngwin Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/scim-bridge/scim-bridge-0.4.16-r1.ebuild,v 1.5 2011/03/27 11:34:40 nirbheek Exp $
 
 EAPI="2"
 
@@ -12,14 +12,14 @@ SRC_URI="mirror://sourceforge/scim/${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ppc64 ~sparc ~x86"
+KEYWORDS="~amd64 ~hppa ~ppc64 ~x86"
 IUSE="doc gtk qt4"
 
 RESTRICT="test"
 
 RDEPEND=">=app-i18n/scim-1.4.6
 	gtk? (
-		>=x11-libs/gtk+-2.2
+		>=x11-libs/gtk+-2.2:2
 		>=x11-libs/pango-1.1
 	)
 	qt4? (

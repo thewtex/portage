@@ -1,6 +1,39 @@
 # ChangeLog for app-arch/libarchive
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-arch/libarchive/ChangeLog,v 1.85 2010/12/31 09:18:01 ferringb Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-arch/libarchive/ChangeLog,v 1.93 2011/03/27 14:34:31 klausman Exp $
+
+  27 Mar 2011; Tobias Klausmann <klausman@gentoo.org>
+  libarchive-2.8.4-r1.ebuild:
+  Stable on alpha, bug #357771
+
+  25 Mar 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  libarchive-2.8.4-r1.ebuild:
+  ppc/ppc64 stable wrt #357771
+
+  21 Mar 2011; Brent Baude <ranger@gentoo.org> libarchive-2.8.4.ebuild:
+  Marking libarchive-2.8.4 ppc for bug 357771
+
+  18 Mar 2011; Markus Meier <maekke@gentoo.org> libarchive-2.8.4-r1.ebuild:
+  arm stable, bug #357771
+
+  09 Mar 2011; Jeroen Roovers <jer@gentoo.org> libarchive-2.8.4-r1.ebuild:
+  Stable for HPPA (bug #357771).
+
+  08 Mar 2011; Markos Chandras <hwoarang@gentoo.org>
+  libarchive-2.8.4-r1.ebuild:
+  Stable on amd64 wrt bug #357773
+
+*libarchive-2.8.4-r1 (14 Feb 2011)
+*libarchive-2.8.3-r1 (14 Feb 2011)
+
+  14 Feb 2011; Brian Harring <ferringb@gentoo.org> +libarchive-2.8.3-r1.ebuild,
+  +libarchive-2.8.4-r1.ebuild:
+  revisit 352464; revbump (missed in the last round), add IUSE=expat to
+  enforce linkage via expat, else libxml2 is used.
+
+  14 Feb 2011; Brian Harring <ferringb@gentoo.org> libarchive-2.8.3.ebuild,
+  libarchive-2.8.4.ebuild:
+  add missing libxml2/expat dep for xar support. bug #352464
 
   31 Dec 2010; Brian Harring <ferringb@gentoo.org> libarchive-2.7.1-r1.ebuild,
   -libarchive-2.8.0.ebuild, libarchive-2.8.3.ebuild, libarchive-2.8.4.ebuild,

@@ -1,6 +1,34 @@
 # ChangeLog for media-video/ffmpeg
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/ffmpeg/ChangeLog,v 1.392 2011/01/29 20:03:52 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/ffmpeg/ChangeLog,v 1.399 2011/04/01 23:16:20 aballier Exp $
+
+  01 Apr 2011; Alexis Ballier <aballier@gentoo.org> ffmpeg-9999.ebuild:
+  disable-stripping option is back, we need to pass it
+
+  31 Mar 2011; Alexis Ballier <aballier@gentoo.org> ffmpeg-0.6_p28715.ebuild,
+  ffmpeg-9999.ebuild:
+  libva 0.32 is required now, bug #361373
+
+*ffmpeg-0.6_p28715 (30 Mar 2011)
+
+  30 Mar 2011; Alexis Ballier <aballier@gentoo.org> +ffmpeg-0.6_p28715.ebuild,
+  ffmpeg-9999.ebuild:
+  Change the way version is hardcoded to match the current git based one, bump
+  a new snapshot
+
+  30 Mar 2011; Alexis Ballier <aballier@gentoo.org> ffmpeg-9999.ebuild,
+  metadata.xml:
+  add truetype and avx useflags, by Alphat-PC, bug #359493
+
+  30 Mar 2011; Alexis Ballier <aballier@gentoo.org> ffmpeg-9999.ebuild:
+  disable-stripping isnt needed anymore
+
+  21 Mar 2011; Alexis Ballier <aballier@gentoo.org> ffmpeg-9999.ebuild:
+  fix git uri to the one pointed by http://ffmpeg.org/download.html
+
+  10 Mar 2011; Tim Harder <radhermit@gentoo.org> ffmpeg-0.6_p25423.ebuild,
+  ffmpeg-0.6_p25767.ebuild, ffmpeg-9999.ebuild:
+  Fix static-libs usage (bug #336431 by Nikoli).
 
   29 Jan 2011; Alexis Ballier <aballier@gentoo.org> ffmpeg-9999.ebuild:
   fix git URI

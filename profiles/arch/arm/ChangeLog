@@ -1,6 +1,34 @@
 # ChangeLog for Gentoo/ARM profile directory
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/arm/ChangeLog,v 1.111 2011/01/30 18:25:08 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/arm/ChangeLog,v 1.120 2011/04/02 12:50:28 ulm Exp $
+
+  02 Apr 2011; Ulrich Mueller <ulm@gentoo.org> virtuals:
+  Remove old-style virtual/bootloader, bug 359971.
+
+  02 Apr 2011; Pacho Ramos <pacho@gentoo.org> package.use.mask:
+  Mask media-video/totem youtube USE flag as quvi support is needed to play
+  youtube files now.
+
+  31 Mar 2011; Tomáš Chvátal <scarabeus@gentoo.org> package.use.mask:
+  Drop mask on non-existant portage version.
+
+  20 Mar 2011; Raúl Porcel <armin76@gentoo.org> use.mask:
+  Use.mask dvb
+
+  13 Mar 2011; Markus Meier <maekke@gentoo.org> package.use.mask:
+  remove net-firewall/iptables[netlink] mask wrt bug #354309
+
+  13 Mar 2011; Markus Meier <maekke@gentoo.org> package.use.mask:
+  package.use.mask sys-auth/polkit[kde], needs stable kde
+
+  04 Mar 2011; Alexey Shvetsov <alexxy@gentoo.org> +package.mask:
+  mask kde use for bug #357403
+
+  04 Mar 2011; Alexey Shvetsov <alexxy@gentoo.org> package.use.mask:
+  mask kde use for bug #357403
+
+  20 Feb 2011; Markus Meier <maekke@gentoo.org> use.mask:
+  use.mask pdfannotextractor (needs java)
 
   30 Jan 2011; Raúl Porcel <armin76@gentoo.org> use.mask:
   Use.mask quvi

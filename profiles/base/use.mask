@@ -1,6 +1,9 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/base/use.mask,v 1.109 2011/02/02 13:25:14 tampakrap Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/base/use.mask,v 1.116 2011/03/30 20:06:32 chithanh Exp $
+
+# deprecated and replaced by USE="udev"
+hal
 
 # Its deps are not mature enough yet
 ayatana
@@ -66,6 +69,9 @@ ps3
 vis
 ultra1
 
+# arm arch specific USE flags
+neon
+
 # nVidia XvMC requires nvidia-drivers/nvidia-legacy-drivers
 nvidia
 
@@ -107,6 +113,10 @@ video_cards_virtualbox
 
 # not needed on non-arm systems
 video_cards_omapfb
+
+# linux-only drivers
+video_cards_nouveau
+video_cards_qxl
 
 # not needed on non-x86, non-amd64, non-ppc systems
 input_devices_synaptics
@@ -217,9 +227,7 @@ macbook
 ada
 
 # lvm2 clustered use flags (moved from default-linux)
-clvm
 gulm
-cman
 
 # tcc is x86 only
 tcc
@@ -233,10 +241,9 @@ pam_console
 # The prefix USE flag should never be used on non prefix profiles
 prefix
 
-# Diego E. Pettenò <flameeyes@gentoo.org> (6 Jul 2009)
-#  on behalf of QA Team
-# Removal of cman is scheduled for 2009-10-06
-cman
+# Alexey Shvetsov <alexxy@gentoo.org>
+# Mask kdeprefix since its broken by now
+kdeprefix
 
 # Samuli Suominen <ssuominen@gentoo.org> (01 Aug 2009)
 # RealMagic Hollywood+/Creative DXR3 support
@@ -252,16 +259,12 @@ pvm
 ruby_targets_jruby
 ruby_targets_ree18
 
-# Nirbheek Chauhan <nirbheek@gentoo.org> (30 Dec 2009)
-# gobject-introspection USE-flag
-# introspection is not mature yet. 
-# gir-repository especially is a big pile of junk
-introspection
-
-# Jonathan Callen <abcd@gentoo.org> (23 Jun 2010)
-# x11-libs/gtk+:3 is not yet in the tree
-gtk3
-
 # Diego E. Pettenò <flameeyes@gentoo.org> (19 oct 2010)
 # masking flags that only apply to FreeBSD
 kqueue
+
+# Nirbheek Chauahn <nirbheek@gentoo.org> (17 Mar 2011)
+# Nirbheek Chauhan <nirbheek@gentoo.org> (30 Dec 2009)
+# gobject-introspection USE-flag
+# introspection still has some kinks to iron out
+introspection

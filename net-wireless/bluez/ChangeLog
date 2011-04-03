@@ -1,6 +1,52 @@
 # ChangeLog for net-wireless/bluez
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/bluez/ChangeLog,v 1.72 2011/02/10 11:15:54 phajdan.jr Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/bluez/ChangeLog,v 1.82 2011/03/30 09:49:26 pacho Exp $
+
+*bluez-4.91 (30 Mar 2011)
+
+  30 Mar 2011; Pacho Ramos <pacho@gentoo.org> -bluez-4.82.ebuild,
+  +bluez-4.91.ebuild:
+  Version bump, remove old.
+
+  21 Mar 2011; Markus Meier <maekke@gentoo.org> bluez-4.87.ebuild:
+  arm stable, bug #356255
+
+*bluez-4.90 (20 Mar 2011)
+
+  20 Mar 2011; Pacho Ramos <pacho@gentoo.org> +files/bluetooth-conf.d,
+  +files/conf.d-hidd, -files/4.31-as_needed.patch, -bluez-4.39-r2.ebuild,
+  -files/4.34-conditional_libsbc.patch,
+  -files/bluez-4.62-makefile_ipctest.patch, +bluez-4.90.ebuild,
+  -files/bluez-alsa_location.patch, files/bluetooth-init.d:
+  Version bump, remove old, bump to eapi4, don't install .c and .o files (bug
+  #356529 by Alec M.), init script needs hostname (bug #356739 by Johan
+  Myreen), libnl dep is no longer needed (bug #359105 by Yaroslav Isakov).
+
+  12 Mar 2011; Thomas Kahle <tomka@gentoo.org> bluez-4.87.ebuild:
+  x86 stable per bug 356255
+
+  11 Mar 2011; Kacper Kowalik <xarthisius@gentoo.org> bluez-4.87.ebuild:
+  ppc/ppc64 stable #356255
+
+  28 Feb 2011; Jeroen Roovers <jer@gentoo.org> bluez-4.87.ebuild:
+  Stable for HPPA (bug #356255).
+
+  27 Feb 2011; Markos Chandras <hwoarang@gentoo.org> bluez-4.87.ebuild:
+  Stable on amd64 wrt bug #356255
+
+  26 Feb 2011; Samuli Suominen <ssuominen@gentoo.org> bluez-4.89.ebuild:
+  Replace sys-auth/pambase[consolekit] RDEPEND with sys-auth/consolekit because
+  pam_ck_connector.so is not used by display managers with internal ConsoleKit
+  support.
+
+*bluez-4.89 (21 Feb 2011)
+
+  21 Feb 2011; Pacho Ramos <pacho@gentoo.org> -bluez-4.80.ebuild,
+  +bluez-4.89.ebuild:
+  Version bump, remove old.
+
+  20 Feb 2011; Markus Meier <maekke@gentoo.org> bluez-4.82.ebuild:
+  arm stable, bug #353034
 
   10 Feb 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> bluez-4.82.ebuild:
   x86 stable wrt bug #353034

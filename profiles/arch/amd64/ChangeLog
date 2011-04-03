@@ -1,6 +1,28 @@
 # ChangeLog for Gentoo/AMD64 profile directory
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/amd64/ChangeLog,v 1.115 2011/01/30 08:38:20 ford_prefect Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/amd64/ChangeLog,v 1.122 2011/03/31 08:31:24 scarabeus Exp $
+
+  31 Mar 2011; Tomáš Chvátal <scarabeus@gentoo.org> package.use.mask:
+  xmame is no longer in portage
+
+  30 Mar 2011; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  use.mask:
+  Unmask video_cards_qxl
+
+  28 Mar 2011; Luca Barbato <lu_zero@gentoo.org> package.use.mask:
+  Unmask bluray and vdpau for mplayer2
+
+  20 Mar 2011; Mart Raudsepp <leio@gentoo.org> package.use.mask:
+  Unmask orc USE flag on gst-plugins-good
+
+  18 Mar 2011: Mike Frysinger <vapier@gentoo.org> make.defaults:
+  Drop CDEFINE_<abi> variables now that nothing uses them.
+
+  22 Feb 2011; Kacper Kowalik <xarthisius@gentoo.org> package.use.mask:
+  Mask pacemaker-gui[heartbeat] since >=heartbeat-3.0 is still masked
+
+  13 Feb 2011; Tim Harder <radhermit@gentoo.org> package.use.mask:
+  Unmask bluray USE flag on mplayer
 
   30 Jan 2011; Arun Raghavan <ford_prefect@gentoo.org> package.use.mask:
   Unmask orc USE flag on gst-plugins-ffmpeg

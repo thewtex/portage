@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-cdr/brasero/brasero-2.32.1.ebuild,v 1.4 2011/02/12 18:11:55 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-cdr/brasero/brasero-2.32.1.ebuild,v 1.11 2011/03/22 18:43:57 ranger Exp $
 
 EAPI="3"
 GCONF_DEBUG="no"
@@ -12,18 +12,18 @@ HOMEPAGE="http://projects.gnome.org/brasero/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="alpha amd64 arm ia64 ppc ppc64 sparc x86"
 IUSE="+cdr +css doc +introspection +libburn nautilus playlist test"
 
 COMMON_DEPEND="
-	>=dev-libs/glib-2.25.10
+	>=dev-libs/glib-2.25.10:2
 	media-libs/libcanberra[gtk]
 	>=x11-libs/gtk+-2.21.9:2[introspection?]
-	>=gnome-base/gconf-2.31.1
-	>=media-libs/gstreamer-0.10.15
-	>=media-libs/gst-plugins-base-0.10
-	>=dev-libs/libxml2-2.6
-	>=dev-libs/libunique-1
+	>=gnome-base/gconf-2.31.1:2
+	>=media-libs/gstreamer-0.10.15:0.10
+	>=media-libs/gst-plugins-base-0.10:0.10
+	>=dev-libs/libxml2-2.6:2
+	>=dev-libs/libunique-1:1
 	x11-libs/libSM
 	introspection? ( >=dev-libs/gobject-introspection-0.6.3 )
 	libburn? (
@@ -34,9 +34,9 @@ COMMON_DEPEND="
 RDEPEND="${COMMON_DEPEND}
 	app-cdr/cdrdao
 	app-cdr/dvd+rw-tools
-	media-plugins/gst-plugins-meta
+	media-plugins/gst-plugins-meta:0.10
 	x11-themes/hicolor-icon-theme
-	css? ( media-libs/libdvdcss )
+	css? ( media-libs/libdvdcss:1.2 )
 	cdr? ( virtual/cdrtools )
 	!libburn? ( virtual/cdrtools )"
 DEPEND="${COMMON_DEPEND}
@@ -44,7 +44,7 @@ DEPEND="${COMMON_DEPEND}
 	dev-util/pkgconfig
 	sys-devel/gettext
 	dev-util/intltool
-	gnome-base/gnome-common
+	gnome-base/gnome-common:3
 	>=dev-util/gtk-doc-am-1.12
 	doc? ( >=dev-util/gtk-doc-1.12 )
 	test? ( app-text/docbook-xml-dtd:4.3 )"

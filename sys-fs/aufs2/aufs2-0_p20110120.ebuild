@@ -1,13 +1,13 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/aufs2/aufs2-0_p20110120.ebuild,v 1.2 2011/01/21 07:37:53 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/aufs2/aufs2-0_p20110120.ebuild,v 1.5 2011/03/27 13:09:40 jlec Exp $
 
 EAPI="2"
 
 inherit linux-mod multilib toolchain-funcs
 
 DESCRIPTION="An entirely re-designed and re-implemented Unionfs"
-HOMEPAGE="http://aufs.sourceforge.net"
+HOMEPAGE="http://aufs.sourceforge.net/"
 SRC_URI="
 	http://dev.gentoo.org/~jlec/distfiles/${P}.tar.bz2
 	mirror://gentoo/${P}.tar.bz2"
@@ -47,8 +47,8 @@ pkg_setup() {
 			patch --no-backup-if-mismatch --force -p1 -R -d ${KV_DIR} < "${FILESDIR}"/aufs2-standalone-${KV_PATCH}.patch >/dev/null
 			patch --no-backup-if-mismatch --force -p1 -R -d ${KV_DIR} < "${FILESDIR}"/aufs2-base-${KV_PATCH}.patch >/dev/null
 			epatch "${FILESDIR}"/aufs2-{base,standalone}-${KV_PATCH}.patch
-			elog "You need to compile your kernel with the applied patch"
-			elog "to be able to load and use the aufs kernel module"
+			ewarn "You need to compile your kernel with the applied patch"
+			ewarn "to be able to load and use the aufs kernel module"
 		else
 			eerror "You need to apply a patch to your kernel to compile and run the aufs2 module"
 			eerror "Either enable the kernel-patch useflag to do it with this ebuild"
@@ -84,7 +84,7 @@ src_prepare() {
 	fi
 
 	if use hfs; then
-		sed -i "s:AUFS_BR_FUSE =:AUFS_BR_FUSE = y:g" config.mk || die
+		sed -i "s:AUFS_BR_HFSPLUS =:AUFS_BR_HFSPLUS = y:g" config.mk || die
 	fi
 
 	if use hardened ; then

@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-games/openscenegraph/openscenegraph-2.8.3.ebuild,v 1.11 2010/12/08 16:34:42 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-games/openscenegraph/openscenegraph-2.8.3.ebuild,v 1.15 2011/03/31 15:41:23 scarabeus Exp $
 
 EAPI=2
 
@@ -14,7 +14,7 @@ HOMEPAGE="http://www.openscenegraph.org/projects/osg/"
 SRC_URI="http://www.openscenegraph.org/downloads/stable_releases/${MY_P}/source/${MY_P}.zip"
 
 LICENSE="wxWinLL-3 LGPL-2.1"
-KEYWORDS="amd64 ppc sparc x86"
+KEYWORDS="amd64 ppc x86"
 SLOT="0"
 IUSE="curl debug doc examples ffmpeg fltk fox gdal gif glut gtk jpeg jpeg2k
 openexr openinventor osgapps pdf png qt4 sdl static-libs svg tiff truetype vnc
@@ -32,7 +32,7 @@ RDEPEND="
 	virtual/opengl
 	curl? ( net-misc/curl )
 	examples? (
-		fltk? ( x11-libs/fltk:1.1[opengl] )
+		fltk? ( x11-libs/fltk:1[opengl] )
 		fox? ( x11-libs/fox:1.6[opengl] )
 		glut? ( media-libs/freeglut )
 		gtk? ( x11-libs/gtkglext )
@@ -44,10 +44,10 @@ RDEPEND="
 		sdl? ( media-libs/libsdl )
 		wxwidgets? ( x11-libs/wxGTK[opengl,X] )
 	)
-	ffmpeg? ( media-video/ffmpeg )
+	ffmpeg? ( virtual/ffmpeg )
 	gdal? ( sci-libs/gdal )
 	gif? ( media-libs/giflib )
-	jpeg? ( media-libs/jpeg:0 )
+	jpeg? ( virtual/jpeg )
 	jpeg2k? ( media-libs/jasper )
 	openexr? (
 		media-libs/ilmbase

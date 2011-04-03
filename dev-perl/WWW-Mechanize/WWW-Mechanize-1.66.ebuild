@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/WWW-Mechanize/WWW-Mechanize-1.66.ebuild,v 1.5 2011/01/13 17:51:28 ranger Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/WWW-Mechanize/WWW-Mechanize-1.66.ebuild,v 1.7 2011/03/16 09:03:31 tove Exp $
 
 EAPI=3
 
@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Handy web browsing in a Perl object"
 
 SLOT="0"
-KEYWORDS="amd64 ppc ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
+KEYWORDS="amd64 ppc sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 IUSE="test"
 
 # Bug in the tests - improper use of HTTP::Server
@@ -20,7 +20,10 @@ SRC_TEST="do"
 myconf="--local --nolive"
 
 RDEPEND="dev-perl/IO-Socket-SSL
-	>=dev-perl/libwww-perl-5.829
+	|| (
+		( >dev-perl/libwww-perl-6 dev-perl/HTML-Form )
+		<dev-perl/libwww-perl-6
+	)
 	>=dev-perl/URI-1.36
 	>=dev-perl/HTML-Parser-3.34
 	dev-perl/Test-LongString"

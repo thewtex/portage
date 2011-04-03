@@ -1,6 +1,31 @@
 # ChangeLog for app-misc/beagle
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/beagle/ChangeLog,v 1.124 2011/02/06 16:28:01 idl0r Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/beagle/ChangeLog,v 1.130 2011/03/12 11:51:42 angelos Exp $
+
+  12 Mar 2011; <angelos@gentoo.org> beagle-0.3.9-r3.ebuild,
+  beagle-0.3.9-r4.ebuild, beagle-0.3.9-r5.ebuild:
+  Updated ndesk-dbus dependencies (bug 356391)
+
+  06 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org>
+  beagle-0.3.9-r3.ebuild, beagle-0.3.9-r4.ebuild, beagle-0.3.9-r5.ebuild:
+  Fix slot-deps on gtk+ and other libs
+
+  27 Feb 2011; Brent Baude <ranger@gentoo.org> beagle-0.3.9-r5.ebuild:
+  Marking beagle-0.3.9-r5 ppc for bug 355001
+
+  20 Feb 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  beagle-0.3.9-r5.ebuild:
+  x86 stable wrt bug #355001
+
+  16 Feb 2011; Markos Chandras <hwoarang@gentoo.org> beagle-0.3.9-r5.ebuild:
+  Stable on amd64 wrt bug #355001
+
+*beagle-0.3.9-r5 (15 Feb 2011)
+
+  15 Feb 2011; Pacho Ramos <pacho@gentoo.org> +beagle-0.3.9-r5.ebuild,
+  +files/beagle-0.3.9-UnixConnectionHandler-exceptions.patch:
+  Fix crash on second search (bug #353533 by Kai Wüstermann and fix by
+  Alexandre Rostovtsev).
 
   29 Jan 2011; Markos Chandras <hwoarang@gentoo.org> beagle-0.3.9-r4.ebuild:
   Stable on amd64 wrt bug #352808

@@ -1,8 +1,10 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/arista/arista-0.9.3-r1.ebuild,v 1.6 2011/02/01 05:48:04 ford_prefect Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/arista/arista-0.9.3-r1.ebuild,v 1.8 2011/03/28 22:00:54 eva Exp $
 
-EAPI=2
+EAPI="3"
+PYTHON_DEPEND="2"
+PYTHON_USE_WITH="xml"
 
 inherit distutils
 
@@ -19,15 +21,14 @@ KEYWORDS="amd64 x86"
 IUSE="+faac +xvid"
 
 DEPEND="dev-python/setuptools"
-RDEPEND="dev-lang/python[xml]
-	>=x11-libs/gtk+-2.16
-	>=dev-python/pygtk-2.14
-	dev-python/pygobject
+RDEPEND=">=x11-libs/gtk+-2.16:2
+	>=dev-python/pygtk-2.14:2
+	dev-python/pygobject:2
 	dev-python/pycairo
-	dev-python/gconf-python
+	dev-python/gconf-python:2
 	dev-python/dbus-python
-	>=media-libs/gstreamer-0.10.22
-	dev-python/gst-python
+	>=media-libs/gstreamer-0.10.22:0.10
+	dev-python/gst-python:0.10
 	media-libs/gst-plugins-base:0.10
 	media-libs/gst-plugins-good:0.10
 	media-libs/gst-plugins-bad
@@ -36,7 +37,14 @@ RDEPEND="dev-lang/python[xml]
 	faac? ( media-plugins/gst-plugins-faac:0.10 )
 	xvid? ( media-plugins/gst-plugins-xvid:0.10 )"
 
+pkg_setup() {
+	python_set_active_version 2
+	python_pkg_setup
+}
+
 pkg_postinst() {
+	distutils_pkg_postinst
+
 	einfo "If you find that a format you want is not supported in Arista,"
 	einfo "please make sure that you have the corresponding USE-flag enabled"
 	einfo "media-plugins/gst-plugins-meta"

@@ -1,0 +1,22 @@
+sci-libs/fftw:3.0 fltk? ( x11-libs/fltk:1 ) jack? ( media-sound/jack-audio-connection-kit ) alsa? ( media-libs/alsa-lib ) lash? ( media-sound/lash ) >=dev-libs/mini-xml-2.2.1 dev-util/pkgconfig >=dev-util/cmake-2.8.1 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+sci-libs/fftw:3.0 fltk? ( x11-libs/fltk:1 ) jack? ( media-sound/jack-audio-connection-kit ) alsa? ( media-libs/alsa-lib ) lash? ( media-sound/lash ) >=dev-libs/mini-xml-2.2.1
+0
+mirror://sourceforge/zynaddsubfx/ZynAddSubFX-2.4.1.tar.bz2
+
+http://zynaddsubfx.sourceforge.net/
+GPL-2
+ZynAddSubFX is an opensource software synthesizer.
+~amd64 ~ppc ~x86
+base cmake-utils eutils flag-o-matic multilib portability toolchain-funcs
+alsa +fltk jack lash
+!alsa? ( jack )
+
+
+4
+
+compile configure install prepare test unpack
+
+
+
+
+

@@ -1,6 +1,44 @@
 # ChangeLog for profiles/prefix
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/ChangeLog,v 1.245 2011/02/09 18:59:26 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/ChangeLog,v 1.256 2011/03/30 08:33:21 grobian Exp $
+
+  30 Mar 2011; Fabian Groffen <grobian@gentoo.org>
+  +sunos/solaris/5.11/package.use.mask:
+  Mask USE=git for gettext, due to some weird git brokeness
+
+  29 Mar 2011; Michael Haubenwallner <haubi@gentoo.org>
+  +linux/x86/profile.bashrc:
+  set SYMLINK_LIB=yes for sys-devel/binutils when needed (#360197)
+
+  26 Mar 2011; Jeremy Olexa <darkside@gentoo.org> package.mask:
+  remove baselayout-prefix mask because there is only one version in the
+  tree
+
+  23 Mar 2011; Fabian Groffen <grobian@gentoo.org> -virtuals:
+  Drop old-style virtuals file to provide packages, bug #358823
+
+  21 Mar 2011; Fabian Groffen <grobian@gentoo.org> darwin/package.mask:
+  SpanKY applied zziplib fix for us, so drop mask
+
+  20 Mar 2011; Fabian Groffen <grobian@gentoo.org> darwin/package.mask:
+  Mask dev-libs/zziplib-0.13.60-r1 on Darwin, broken due to GCC 4.6 patch, bug
+  #357899
+
+  04 Mar 2011; Jonathan Callen <abcd@gentoo.org> bsd/package.mask,
+  darwin/package.mask, package.mask, sunos/solaris/package.mask:
+  Move Qt mask into bsd/ darwin/ and sunos/ to unmask on linux
+
+  04 Mar 2011; Jonathan Callen <abcd@gentoo.org> aix/package.mask,
+  bsd/freebsd/7.1/package.mask, bsd/freebsd/7.2/package.mask,
+  bsd/freebsd/8.0/package.mask, bsd/freebsd/8.1/package.mask,
+  bsd/freebsd/package.mask, package.mask, sunos/solaris/package.mask:
+  Remove obsolete masks
+
+  16 Feb 2011; Fabian Groffen <grobian@gentoo.org> darwin/package.use.mask:
+  Unmask OSX-specific USE-flags for VLC on OSX
+
+  14 Feb 2011; Fabian Groffen <grobian@gentoo.org> sunos/solaris/package.mask:
+  Mask gdb-7.2.50.20101117.4.15 on Solaris, it doesn't compile, bug #354263
 
   09 Feb 2011; Ulrich Mueller <ulm@gentoo.org> -darwin/macos/10.5/package.mask,
   -darwin/macos/10.6/package.mask, darwin/macos/package.use.mask:

@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-base/gnome-control-center/gnome-control-center-2.32.1.ebuild,v 1.1 2010/12/04 00:46:57 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-base/gnome-control-center/gnome-control-center-2.32.1.ebuild,v 1.8 2011/03/22 19:09:18 ranger Exp $
 
 EAPI="3"
 GCONF_DEBUG="yes"
@@ -12,7 +12,7 @@ HOMEPAGE="http://www.gnome.org/"
 
 LICENSE="GPL-2"
 SLOT="2"
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sh ~sparc ~x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="alpha amd64 arm ia64 ppc ppc64 sh sparc x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~x86-solaris"
 IUSE="eds"
 
 # TODO: appindicator
@@ -20,8 +20,8 @@ RDEPEND="x11-libs/libXft
 	>=x11-libs/libXi-1.2
 	>=x11-libs/gtk+-2.20:2
 	>=dev-libs/glib-2.17.4:2
-	>=gnome-base/gconf-2.0
-	>=gnome-base/librsvg-2.0
+	>=gnome-base/gconf-2.0:2
+	>=gnome-base/librsvg-2.0:2
 	>=gnome-base/nautilus-2.6
 	>=media-libs/fontconfig-1
 	>=dev-libs/dbus-glib-0.73
@@ -32,7 +32,7 @@ RDEPEND="x11-libs/libXft
 	>=gnome-base/gnome-menus-2.11.1
 	gnome-base/gnome-settings-daemon
 
-	dev-libs/libunique
+	dev-libs/libunique:1
 	x11-libs/pango
 	dev-libs/libxml2
 	media-libs/freetype

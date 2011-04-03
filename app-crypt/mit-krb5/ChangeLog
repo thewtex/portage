@@ -1,6 +1,50 @@
 # ChangeLog for app-crypt/mit-krb5
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/mit-krb5/ChangeLog,v 1.259 2011/02/12 18:06:47 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/mit-krb5/ChangeLog,v 1.271 2011/03/22 07:18:34 eras Exp $
+
+  22 Mar 2011; Eray Aslan <eras@gentoo.org> -mit-krb5-1.8.3-r3.ebuild:
+  remove vulnerable version
+
+  21 Mar 2011; Markos Chandras <hwoarang@gentoo.org> mit-krb5-1.8.3-r4.ebuild:
+  Stable on amd64 wrt bug #359129
+
+  19 Mar 2011; Eray Aslan <eras@gentoo.org> -mit-krb5-1.9-r1.ebuild:
+  remove vulnerable version.
+
+  18 Mar 2011; Raúl Porcel <armin76@gentoo.org> mit-krb5-1.8.3-r4.ebuild:
+  alpha/arm/ia64/m68k/s390/sh/sparc stable wrt #359129
+
+  17 Mar 2011; Thomas Kahle <tomka@gentoo.org> mit-krb5-1.8.3-r4.ebuild:
+  x86 stable per bug 359129
+
+  17 Mar 2011; Jeroen Roovers <jer@gentoo.org> mit-krb5-1.8.3-r4.ebuild:
+  Stable for HPPA (bug #359129).
+
+  16 Mar 2011; Kacper Kowalik <xarthisius@gentoo.org> mit-krb5-1.8.3-r4.ebuild:
+  ppc/ppc64 stable wrt #359129
+
+*mit-krb5-1.9-r2 (16 Mar 2011)
+*mit-krb5-1.8.3-r4 (16 Mar 2011)
+
+  16 Mar 2011; Eray Aslan <eras@gentoo.org> +mit-krb5-1.8.3-r4.ebuild,
+  +mit-krb5-1.9-r2.ebuild, +files/CVE-2011-0284.patch:
+  version bump - security bug #359129
+
+  13 Mar 2011; Eray Aslan <eras@gentoo.org> mit-krb5-1.8.3-r3.ebuild,
+  mit-krb5-1.9-r1.ebuild:
+  Change to new style virtual: Remove PROVIDE.
+
+  12 Mar 2011; Jonathan Callen <abcd@gentoo.org> mit-krb5-1.9-r1.ebuild,
+  metadata.xml:
+  Add prefix support from prefix overlay. Bump to EAPI 3. Add prefix keywords.
+
+  12 Mar 2011; Eray Aslan <eras@gentoo.org> mit-krb5-1.9-r1.ebuild,
+  metadata.xml:
+  Remove circular dependency with global kerberos and ldap USE flags. ldap
+  -> openldap renamed
+
+  14 Feb 2011; Eray Aslan <eras@gentoo.org> -mit-krb5-1.8.3-r2.ebuild:
+  Remove vulnerable version.
 
   12 Feb 2011; Jeroen Roovers <jer@gentoo.org> mit-krb5-1.8.3-r3.ebuild:
   Stable for HPPA (bug #352859).

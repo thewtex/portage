@@ -1,0 +1,29 @@
+# ChangeLog for app-accessibility/edbrowse
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-accessibility/edbrowse/ChangeLog,v 1.3 2011/03/28 20:05:10 cbrannon Exp $
+
+  28 Mar 2011; Christopher Brannon <cbrannon@gentoo.org>
+  edbrowse-3.4.6.ebuild, files/edbrowse-3.4.6-fix-makefile.patch,
+  metadata.xml:
+  * Make it possible to build with either dev-lang/spidermonkey-1.7.x or
+  dev-lang/spidermonkey-1.9.x (fixes bug #359035).
+  * I am now upstream for this package. HOMEPAGE and SRC_URI were changed
+  accordingly.
+  * Change maintainer to myself (after discussion with WilliamH).
+
+  16 Mar 2011; William Hubbs <williamh@gentoo.org> edbrowse-3.4.6.ebuild:
+  fix dependency on dev-lang/spidermonkey for #359035.
+  Thanks to Chris Brannon.
+
+*edbrowse-3.4.6 (23 Feb 2011)
+
+  23 Feb 2011; William Hubbs <williamh@gentoo.org> +edbrowse-3.4.6.ebuild,
+  +files/edbrowse-3.4.6-fix-makefile.patch,
+  +files/edbrowse-3.4.6-fix-off-by-one.patch, +metadata.xml:
+  Initial commit for edbrowse, a line editor, web browser and email
+  client using the ed user interface.
+  This was added to app-accessibility due to it mostly being used by blind
+  users. 
+  Thanks to Chris Brannon <chris@the-brannons.com> for the submission.
+  This closes #350183.
+

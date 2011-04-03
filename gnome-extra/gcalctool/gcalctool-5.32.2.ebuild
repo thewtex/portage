@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-extra/gcalctool/gcalctool-5.32.2.ebuild,v 1.1 2010/11/28 14:53:45 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/gcalctool/gcalctool-5.32.2.ebuild,v 1.7 2011/03/23 08:11:09 nirbheek Exp $
 
 EAPI="3"
 GCONF_DEBUG="no"
@@ -12,12 +12,12 @@ HOMEPAGE="http://live.gnome.org/Gcalctool http://calctool.sourceforge.net/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sh ~sparc ~x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux"
+KEYWORDS="alpha amd64 arm ia64 ppc ppc64 sh sparc x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux"
 IUSE=""
 
 RDEPEND=">=x11-libs/gtk+-2.18:2
 	>=dev-libs/glib-2.25.10:2
-	dev-libs/libxml2
+	dev-libs/libxml2:2
 	!<gnome-extra/gnome-utils-2.3"
 DEPEND="${RDEPEND}
 	sys-devel/gettext

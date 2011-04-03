@@ -1,10 +1,10 @@
 Index: Makefile
 ===================================================================
 RCS file: /cvsroot/xineliboutput/vdr-xineliboutput/Makefile,v
-retrieving revision 1.105
-diff -u -b -B -r1.105 Makefile
---- Makefile	15 Dec 2010 14:43:36 -0000	1.105
-+++ Makefile	15 Dec 2010 17:05:50 -0000
+retrieving revision 1.106
+diff -u -b -B -r1.106 Makefile
+--- Makefile	23 Jan 2011 19:42:08 -0000	1.106
++++ Makefile	28 Feb 2011 21:16:10 -0000
 @@ -323,7 +323,7 @@
  install : XINELIBOUTPUT_INSTALL_MSG =
  
@@ -23,43 +23,3 @@ diff -u -b -B -r1.105 Makefile
  ifeq ($(XINELIBOUTPUT_XINEPLUGIN), yes)
  	@mkdir -p $(DESTDIR)/$(XINEPLUGINDIR)/post
  	@echo Installing $(DESTDIR)/$(XINEPLUGINDIR)/$(XINEINPUTVDR)
-Index: configure
-===================================================================
-RCS file: /cvsroot/xineliboutput/vdr-xineliboutput/configure,v
-retrieving revision 1.29
-diff -u -b -B -r1.29 configure
---- configure	23 Nov 2010 13:21:06 -0000	1.29
-+++ configure	15 Dec 2010 17:05:50 -0000
-@@ -231,7 +231,6 @@
-   xshm
-   xdpms
-   xinerama
--  xrandr
-   xrender
-   xshape
-   opengl
-@@ -267,7 +266,6 @@
-   echo "  --disable-xshm         disable XShm support [no]"
-   echo "  --disable-xdpms        disable Xdpms support [no]"
-   echo "  --disable-xinerama     disable Xinerama support [no]"
--  echo "  --disable-xrandr       disable Xrandr support (video mode switching) [no]"
-   echo "  --disable-xrender      disable Xrender support (HUD OSD) [no]"
-   echo "  --disable-xshape       disable Xshape support (non-transparent HUD OSD without composite manager) [no]"
-   echo "  --disable-opengl       disable OpenGL support (transparent HUD OSD without composite manager) [no]"
-@@ -326,7 +324,7 @@
- 
- check_deps(){
-   disabled libxine && disable x11 fb libavutil libjpeg
--  disabled x11     && disable dbus-glib-1 xshm xrender xshape opengl xrandr xdpms xinerama vdpau
-+  disabled x11     && disable dbus-glib-1 xshm xrender xshape opengl xdpms xinerama vdpau
-   disabled vdr     && disable libextractor
-   disabled xrender && disable opengl
-   disabled xshape  && disable opengl
-@@ -367,7 +365,6 @@
-     test_library X11  xshm         "X11/extensions/XShm.h"     "-lXext"      "XShmQueryExtension(0)"
-     test_library X11  xrender      "X11/extensions/Xrender.h"  "-lXrender"   "XRenderQueryFormats(0)"
-     test_library X11  xshape       "X11/extensions/shape.h"    "-lXext"      "XShapeQueryExtension(0,0,0)"
--    test_library X11  xrandr       "X11/extensions/Xrandr.h"   "-lXrandr"    "XRRGetScreenInfo(0,0)"
-     test_library X11  xdpms        "X11/extensions/dpms.h"     "-lXext"      "DPMSDisable(0)"
-     test_library X11  xinerama     "X11/extensions/Xinerama.h" "-lXinerama"  "XineramaQueryScreens(0,0)"
-     test_library X11  opengl       "GL/glx.h"                  "-lGL -lGLU -lglut"  "glXQueryVersion(0,0,0)"

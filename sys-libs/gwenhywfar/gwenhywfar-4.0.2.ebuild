@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/gwenhywfar/gwenhywfar-4.0.2.ebuild,v 1.1 2010/12/15 19:26:01 hanno Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/gwenhywfar/gwenhywfar-4.0.2.ebuild,v 1.7 2011/03/13 15:39:06 xarthisius Exp $
 
 EAPI=2
 
@@ -10,7 +10,7 @@ SRC_URI="http://www.aquamaniac.de/sites/download/download.php?package=01&release
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 hppa ppc ~ppc64 ~sparc x86"
 IUSE="debug doc fox gtk qt4"
 
 RDEPEND="dev-libs/libgpg-error
@@ -27,9 +27,12 @@ DEPEND="${RDEPEND}
 	sys-devel/gettext
 	doc? ( app-doc/doxygen )"
 
+# broken upstream, reported but got no reply
+RESTRICT="test"
+
 src_configure() {
 	local guis
-	use fox && guis="${guis} fox"
+	use fox && guis="${guis} fox16"
 	use gtk && guis="${guis} gtk2"
 	use qt4 && guis="${guis} qt4"
 

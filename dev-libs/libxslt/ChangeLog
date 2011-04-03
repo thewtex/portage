@@ -1,6 +1,35 @@
 # ChangeLog for dev-libs/libxslt
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libxslt/ChangeLog,v 1.206 2011/02/12 15:16:29 arfrever Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libxslt/ChangeLog,v 1.214 2011/03/18 17:30:53 armin76 Exp $
+
+  18 Mar 2011; Raúl Porcel <armin76@gentoo.org> libxslt-1.1.26-r1.ebuild:
+  arm/ia64/s390/sh/sparc stable wrt #358615
+
+  15 Mar 2011; Jeroen Roovers <jer@gentoo.org> libxslt-1.1.26-r1.ebuild:
+  Stable for HPPA (bug #358615).
+
+  13 Mar 2011; Tobias Klausmann <klausman@gentoo.org> libxslt-1.1.26-r1.ebuild:
+  Stable on alpha, bug #358615
+
+  13 Mar 2011; Markos Chandras <hwoarang@gentoo.org> libxslt-1.1.26-r1.ebuild:
+  Stable on amd64 wrt bug #358615
+
+  13 Mar 2011; Christian Faulhammer <fauli@gentoo.org>
+  libxslt-1.1.26-r1.ebuild:
+  stable x86, security bug 358615
+
+  13 Mar 2011; Kacper Kowalik <xarthisius@gentoo.org> libxslt-1.1.26-r1.ebuild:
+  ppc/ppc64 stable wrt #358615
+
+*libxslt-1.1.26-r1 (12 Mar 2011)
+
+  12 Mar 2011; Pacho Ramos <pacho@gentoo.org> +libxslt-1.1.26-r1.ebuild,
+  +files/libxslt-1.1.26-id-generation.patch:
+  Fix heap address leak (CVE-2011-1202).
+
+  26 Feb 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  libxslt-1.1.26.ebuild, +files/libxslt-1.1.26-disable_static_modules.patch:
+  Don't install .a files in Python site-packages directories.
 
   12 Feb 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
   libxslt-1.1.26.ebuild:

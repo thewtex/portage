@@ -1,6 +1,38 @@
 # ChangeLog for net-misc/networkmanager-openvpn
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/networkmanager-openvpn/ChangeLog,v 1.14 2010/11/10 13:11:02 dagger Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/networkmanager-openvpn/ChangeLog,v 1.19 2011/03/29 12:51:37 angelos Exp $
+
+  29 Mar 2011; Christoph Mende <angelos@gentoo.org>
+  networkmanager-openvpn-0.8.ebuild, networkmanager-openvpn-0.8-r1.ebuild,
+  networkmanager-openvpn-0.8.1-r1.ebuild,
+  networkmanager-openvpn-0.8.2-r1.ebuild:
+  Fix gtk+ slot deps
+
+  18 Mar 2011; Thomas Kahle <tomka@gentoo.org>
+  networkmanager-openvpn-0.8-r1.ebuild:
+  x86 stable per bug 326907
+
+  09 Mar 2011; Markos Chandras <hwoarang@gentoo.org>
+  networkmanager-openvpn-0.8-r1.ebuild:
+  Stable on amd64 wrt bug #326907
+
+*networkmanager-openvpn-0.8.2-r1 (21 Feb 2011)
+*networkmanager-openvpn-0.8.1-r1 (21 Feb 2011)
+
+  21 Feb 2011; Robert Piasek <dagger@gentoo.org>
+  -networkmanager-openvpn-0.8.1.ebuild,
+  +networkmanager-openvpn-0.8.1-r1.ebuild,
+  -networkmanager-openvpn-0.8.2.ebuild,
+  +networkmanager-openvpn-0.8.2-r1.ebuild:
+  Remove rdep on gnome-base/libgnomeui. It's not longer required. Fixes
+  bug #355201
+
+*networkmanager-openvpn-0.8-r1 (19 Feb 2011)
+
+  19 Feb 2011; Christoph Junghans <ottxor@gentoo.org>
+  +networkmanager-openvpn-0.8-r1.ebuild,
+  +files/networkmanager-openvpn-secrets-for-tls.patch:
+  fixes bug #317085 and bug #326907#c5
 
 *networkmanager-openvpn-0.8.2 (10 Nov 2010)
 

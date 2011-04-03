@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/numpy/numpy-1.5.1.ebuild,v 1.11 2011/01/25 16:57:01 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/numpy/numpy-1.5.1.ebuild,v 1.14 2011/03/25 04:45:06 bicatali Exp $
 
 EAPI="3"
 PYTHON_DEPEND="*"
@@ -22,7 +22,7 @@ SRC_URI="mirror://sourceforge/numpy/${P}.tar.gz
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm hppa ~ia64 ~mips ppc ppc64 ~s390 ~sh ~sparc x86 ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 arm hppa ~ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
 IUSE="doc lapack test"
 
 RDEPEND="dev-python/setuptools
@@ -120,6 +120,7 @@ src_prepare() {
 			-e "s/test_spacingl/_&/" \
 			-i numpy/core/tests/test_umath.py
 	fi
+	export CC="$(tc-getCC) ${CFLAGS}"
 }
 
 src_compile() {

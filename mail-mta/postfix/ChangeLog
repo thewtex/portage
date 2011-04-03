@@ -1,6 +1,79 @@
 # ChangeLog for mail-mta/postfix
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/mail-mta/postfix/ChangeLog,v 1.232 2011/01/29 18:54:30 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-mta/postfix/ChangeLog,v 1.249 2011/03/28 17:07:23 eras Exp $
+
+  28 Mar 2011; Eray Aslan <eras@gentoo.org> postfix-2.8.2.ebuild:
+  correct blocking against virtual/mta
+
+  28 Mar 2011; Eray Aslan <eras@gentoo.org> postfix-2.7.3-r1.ebuild,
+  postfix-2.8.1-r1.ebuild, postfix-2.8.2.ebuild:
+  change to new style virtual/mta - bug 360305
+
+*postfix-2.8.2 (24 Mar 2011)
+
+  24 Mar 2011; Tim Harder <radhermit@gentoo.org> +postfix-2.8.2.ebuild:
+  Version bump. Update to EAPI 4 and bump vda patch.
+
+*postfix-2.8.1-r1 (23 Mar 2011)
+*postfix-2.7.3-r1 (23 Mar 2011)
+
+  23 Mar 2011; Tim Harder <radhermit@gentoo.org> -postfix-2.7.3.ebuild,
+  +postfix-2.7.3-r1.ebuild, -postfix-2.8.1.ebuild, +postfix-2.8.1-r1.ebuild:
+  Revision bump and remove old as per request on bug #359289.
+
+  21 Mar 2011; Tim Harder <radhermit@gentoo.org> postfix-2.7.3.ebuild,
+  postfix-2.8.1.ebuild:
+  Re-add legacy sendmail symlink (bug #359289 by James Newby).
+
+  20 Mar 2011; Tim Harder <radhermit@gentoo.org> -postfix-2.7.2.ebuild:
+  Remove old, insecure version (bug #358085).
+
+  18 Mar 2011; Raúl Porcel <armin76@gentoo.org> postfix-2.7.3.ebuild:
+  arm/ia64/s390/sh/sparc stable wrt #358085
+
+  16 Mar 2011; Eray Aslan <eras@gentoo.org> -postfix-2.7.1.ebuild,
+  postfix-2.7.2.ebuild, postfix-2.7.3.ebuild, -postfix-2.8.0-r1.ebuild,
+  postfix-2.8.1.ebuild:
+  change to new style virtual/mda. remove old.
+
+  15 Mar 2011; Tim Harder <radhermit@gentoo.org> postfix-2.7.3.ebuild,
+  postfix-2.8.1.ebuild:
+  Revert change for bug #349944 until a better solution is found.
+
+  13 Mar 2011; Kacper Kowalik <xarthisius@gentoo.org> postfix-2.7.3.ebuild:
+  ppc/ppc64 stable wrt #358085
+
+  13 Mar 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> postfix-2.7.3.ebuild:
+  x86 stable wrt security bug #358085
+
+  12 Mar 2011; Tobias Klausmann <klausman@gentoo.org> postfix-2.7.3.ebuild:
+  Stable on alpha, bug #358085
+
+  10 Mar 2011; Markos Chandras <hwoarang@gentoo.org> postfix-2.7.3.ebuild:
+  Stable on amd64 wrt bug #358085
+
+  10 Mar 2011; Jeroen Roovers <jer@gentoo.org> postfix-2.7.3.ebuild:
+  Stable for HPPA (bug #358085).
+
+*postfix-2.7.3 (10 Mar 2011)
+
+  10 Mar 2011; Tim Harder <radhermit@gentoo.org> -postfix-2.6.5.ebuild,
+  -postfix-2.6.6.ebuild, -postfix-2.6.7.ebuild, +postfix-2.7.3.ebuild,
+  -files/mailer.conf:
+  Version bump to new security release (bug #358085) and remove old. Backport
+  ebuild changes from 2.8.* series.
+
+  05 Mar 2011; Brent Baude <ranger@gentoo.org> postfix-2.7.2.ebuild:
+  Marking postfix-2.7.2 ppc for bug 352654
+
+*postfix-2.8.1 (28 Feb 2011)
+
+  28 Feb 2011; Tim Harder <radhermit@gentoo.org> +postfix-2.8.1.ebuild:
+  Version bump. Update vda patch, add doc and examples USE flags to selectively
+  install optional files, use mysql_config to get the mysql linking libraries,
+  don't install legacy sendmail symlink, remove unnecessary config files, and
+  don't install a new main.cf config file if one already exists (fixes bug
+  #349944).
 
   29 Jan 2011; Raúl Porcel <armin76@gentoo.org> postfix-2.7.2.ebuild:
   alpha/arm/ia64/s390/sh/sparc stable wrt #352654

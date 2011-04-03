@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/razertool/razertool-0.0.7-r3.ebuild,v 1.1 2010/04/07 21:27:33 voyageur Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/razertool/razertool-0.0.7-r3.ebuild,v 1.3 2011/03/28 01:02:33 ssuominen Exp $
 
 EAPI=2
 inherit eutils
@@ -14,11 +14,11 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="gtk"
 
-RDEPEND="=virtual/libusb-0*
+RDEPEND="virtual/libusb:0
 	gtk? (
 		>=gnome-base/librsvg-2.0
 		>=x11-libs/cairo-1.0.0
-		>=x11-libs/gtk+-2.8.0 )"
+		>=x11-libs/gtk+-2.8.0:2 )"
 DEPEND="${RDEPEND}
 	dev-util/pkgconfig"
 
@@ -34,15 +34,14 @@ src_prepare() {
 }
 
 src_configure() {
-	econf $(use_enable gtk) || die "econf failed"
+	econf $(use_enable gtk)
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die "emake install failed"
+	emake DESTDIR="${D}" install || die
 
-	insinto /etc/udev/rules.d
-	newins razertool.rules.example 90-razertool.rules \
-		|| die "newins failed"
+	insinto /lib/udev/rules.d
+	newins razertool.rules.example 90-razertool.rules || die
 
 	dodoc AUTHORS ChangeLog NEWS README
 

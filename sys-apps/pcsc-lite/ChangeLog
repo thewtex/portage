@@ -1,6 +1,48 @@
 # ChangeLog for sys-apps/pcsc-lite
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/pcsc-lite/ChangeLog,v 1.103 2011/01/10 18:51:08 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/pcsc-lite/ChangeLog,v 1.111 2011/03/31 20:52:06 flameeyes Exp $
+
+*pcsc-lite-1.7.2 (31 Mar 2011)
+
+  31 Mar 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  -pcsc-lite-1.7.1.ebuild, +pcsc-lite-1.7.2.ebuild:
+  Version bump.
+
+*pcsc-lite-1.7.1 (30 Mar 2011)
+
+  30 Mar 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  -pcsc-lite-1.7.0.ebuild, +pcsc-lite-1.7.1.ebuild:
+  Version bump.
+
+  10 Mar 2011; Diego E. Pettenò <flameeyes@gentoo.org> pcsc-lite-1.7.0.ebuild:
+  Avoid warning by not passing --disable-libhal.
+
+  09 Mar 2011; Diego E. Pettenò <flameeyes@gentoo.org> metadata.xml:
+  Fix metadata.xml (was missing category; thanks tove).
+
+  09 Mar 2011; Diego E. Pettenò <flameeyes@gentoo.org> metadata.xml:
+  Comment out minor restriction (egencache bug?)
+
+*pcsc-lite-1.7.0 (09 Mar 2011)
+
+  09 Mar 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  +pcsc-lite-1.7.0.ebuild, metadata.xml:
+  Version bump; update metadata to reflect the new meaning of usb USE flag.
+
+*pcsc-lite-1.6.7 (23 Feb 2011)
+
+  23 Feb 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  -pcsc-lite-1.6.6-r1.ebuild,
+  -files/pcsc-lite-1.6.6-libusb-multiinterface.patch, +pcsc-lite-1.6.7.ebuild:
+  Version bump; upstream merged my patch and made a new release. Also drop .la
+  file.
+
+*pcsc-lite-1.6.6-r1 (22 Feb 2011)
+
+  22 Feb 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  +pcsc-lite-1.6.6-r1.ebuild,
+  +files/pcsc-lite-1.6.6-libusb-multiinterface.patch:
+  Add patch from upstream and me to avoid a feature regression with libusb.
 
   10 Jan 2011; Diego E. Pettenò <flameeyes@gentoo.org>
   -pcsc-lite-1.6.1.ebuild, -files/pcscd-confd, -files/pcscd-init,

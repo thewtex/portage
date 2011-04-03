@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-strategy/ufo-ai/ufo-ai-2.3.1-r1.ebuild,v 1.1 2010/12/20 05:09:05 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-strategy/ufo-ai/ufo-ai-2.3.1-r1.ebuild,v 1.4 2011/03/23 16:48:32 eva Exp $
 
 EAPI=2
 inherit eutils flag-o-matic games
@@ -15,7 +15,7 @@ SRC_URI="mirror://sourceforge/ufoai/${MY_P}-source.tar.bz2
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc x86"
 IUSE="debug dedicated doc editor"
 
 # Dependencies and more instructions can be found here:
@@ -27,7 +27,7 @@ RDEPEND="!dedicated? (
 		media-libs/sdl-image[jpeg,png]
 		media-libs/sdl-ttf
 		media-libs/sdl-mixer
-		media-libs/jpeg
+		virtual/jpeg
 		media-libs/libpng
 		media-libs/libogg
 		media-libs/libvorbis
@@ -37,11 +37,11 @@ RDEPEND="!dedicated? (
 	sys-devel/gettext
 	sys-libs/zlib
 	editor? (
-		dev-libs/libxml2
-		media-libs/jpeg
+		dev-libs/libxml2:2
+		virtual/jpeg
 		media-libs/openal
 		x11-libs/gtkglext
-		x11-libs/gtksourceview
+		x11-libs/gtksourceview:2.0
 	)"
 
 DEPEND="${RDEPEND}

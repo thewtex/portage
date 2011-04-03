@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/glabels/glabels-2.3.0.ebuild,v 1.2 2010/10/12 13:06:56 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/glabels/glabels-2.3.0.ebuild,v 1.4 2011/03/16 07:59:43 nirbheek Exp $
 
 EAPI="2"
 GCONF_DEBUG="no"
@@ -12,13 +12,13 @@ HOMEPAGE="http://glabels.sourceforge.net/"
 
 LICENSE="GPL-2 FDL-1.1 LGPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~sparc ~x86"
+KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 IUSE="barcode doc eds"
 
 RDEPEND=">=dev-libs/glib-2.24:2
 	>=x11-libs/gtk+-2.20:2
-	>=dev-libs/libxml2-2.7
-	>=gnome-base/gconf-2.28
+	>=dev-libs/libxml2-2.7:2
+	>=gnome-base/gconf-2.28:2
 	barcode? (
 		>=app-text/barcode-0.98
 		>=media-gfx/qrencode-3.1 )

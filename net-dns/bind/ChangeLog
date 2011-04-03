@@ -1,6 +1,90 @@
 # ChangeLog for net-dns/bind
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-dns/bind/ChangeLog,v 1.311 2011/02/05 13:38:45 idl0r Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dns/bind/ChangeLog,v 1.329 2011/03/28 17:43:31 idl0r Exp $
+
+  28 Mar 2011; Christian Ruppert <idl0r@gentoo.org> -bind-9.4.3_p5.ebuild,
+  -bind-9.4.3_p5-r3.ebuild, -files/named.conf-r3, -files/named.confd-r2,
+  -files/named.init-r5:
+  Remove 9.4.x.
+
+  10 Mar 2011; Christian Ruppert <idl0r@gentoo.org> bind-9.6.3-r1.ebuild:
+  Add sdb-ldap back to 9.6.x, bug 302735, thanks to Mario Fetka (geos_one)
+  <mario.fetka@gmail.com>.
+
+  10 Mar 2011; Christian Ruppert <idl0r@gentoo.org> -bind-9.6.2_p3-r2.ebuild,
+  -bind-9.6.3.ebuild:
+  Remove 9.6.2_p3-r2 and 9.6.3.
+
+  10 Mar 2011; Christian Ruppert <idl0r@gentoo.org> bind-9.8.0.ebuild,
+  files/named.init-r10:
+  Improve OpenSSL/libgost stuff, bug 357569, thanks to Duncan
+  <1i5t5.duncan@cox.net>.
+
+  03 Mar 2011; Christian Ruppert <idl0r@gentoo.org> files/named.init-r10:
+  Check chroot on restart.
+
+*bind-9.8.0 (01 Mar 2011)
+
+  01 Mar 2011; Christian Ruppert <idl0r@gentoo.org> -bind-9.8.0_rc1.ebuild,
+  +bind-9.8.0.ebuild:
+  Version bump to 9.8.0
+
+  27 Feb 2011; Christian Ruppert <idl0r@gentoo.org> bind-9.6.3-r1.ebuild,
+  -bind-9.7.2_p3-r1.ebuild, bind-9.7.3-r1.ebuild, bind-9.8.0_rc1.ebuild,
+  files/named.init-r10:
+  Remove 9.7.2_p3-r1. Copy /etc/localtime in the init script instead of emerge
+  --config. Add openssl libgost support as of 9.8.0.
+
+  26 Feb 2011; Raúl Porcel <armin76@gentoo.org> bind-9.7.3.ebuild:
+  alpha/arm/ia64/s390/sh/sparc stable wrt #356223
+
+  26 Feb 2011; Markos Chandras <hwoarang@gentoo.org> bind-9.7.3.ebuild:
+  Stable on amd64 wrt bug #356223
+
+  25 Feb 2011; Jeroen Roovers <jer@gentoo.org> bind-9.7.3.ebuild:
+  Stable for HPPA (bug #356223).
+
+*bind-9.8.0_rc1 (25 Feb 2011)
+
+  25 Feb 2011; Christian Ruppert <idl0r@gentoo.org> +bind-9.8.0_rc1.ebuild:
+  Version bump to 9.8.0_rc1.
+
+*bind-9.7.3-r1 (25 Feb 2011)
+*bind-9.6.3-r1 (25 Feb 2011)
+
+  25 Feb 2011; Christian Ruppert <idl0r@gentoo.org> +bind-9.6.3-r1.ebuild,
+  +bind-9.7.3-r1.ebuild, +files/named.confd-r6, +files/named.init-r10,
+  metadata.xml:
+  Revision bumps.
+
+  Create /var/bind/dyn by default, writeable by bind itself, bug 354679.
+  Add a CHROOT_NOCHECK option to the init/conf.d script, bug 354375.
+  Add sdb-ldap back in bind 9.7.3-r1, bug 302735.
+
+  24 Feb 2011; Kacper Kowalik <xarthisius@gentoo.org> bind-9.7.3.ebuild:
+  ppc/ppc64 stable wrt #356223
+
+  24 Feb 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> bind-9.7.3.ebuild:
+  x86 stable wrt security bug #356223
+
+  23 Feb 2011; Christian Ruppert <idl0r@gentoo.org> -files/named.conf-r4,
+  -files/named.confd-r3, -files/named.init-r7:
+  Remove unused files
+
+  23 Feb 2011; Christian Ruppert <idl0r@gentoo.org> bind-9.6.3.ebuild,
+  bind-9.7.3.ebuild, +files/bind-9.7.3-odbc-dlz-detect.patch:
+  Fix ODBC detection when using dlz & odbc, bug 347621 comment #8, thanks to
+  Agostino Sarubbo <ago@autistici.org>. Remove useless patches from 9.6.3,
+  already applied by upstream.
+
+  22 Feb 2011; Christian Ruppert <idl0r@gentoo.org> -bind-9.6.2_p2.ebuild,
+  -bind-9.7.2_p3-r2.ebuild, -bind-9.7.2_p3-r3.ebuild:
+  Cleanup
+
+*bind-9.7.3 (15 Feb 2011)
+
+  15 Feb 2011; Christian Ruppert <idl0r@gentoo.org> +bind-9.7.3.ebuild:
+  Version bump to 9.7.3
 
 *bind-9.6.3 (05 Feb 2011)
 

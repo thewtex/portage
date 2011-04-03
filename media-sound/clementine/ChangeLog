@@ -1,6 +1,46 @@
 # ChangeLog for media-sound/clementine
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/clementine/ChangeLog,v 1.27 2011/02/10 23:59:10 hwoarang Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/clementine/ChangeLog,v 1.37 2011/04/02 06:30:05 ssuominen Exp $
+
+*clementine-0.7.1 (02 Apr 2011)
+
+  02 Apr 2011; Samuli Suominen <ssuominen@gentoo.org> +clementine-0.7.1.ebuild:
+  Version bump.
+
+  29 Mar 2011; Samuli Suominen <ssuominen@gentoo.org> metadata.xml:
+  "ios" is now global USE flag.
+
+  28 Mar 2011; Samuli Suominen <ssuominen@gentoo.org> clementine-0.7.ebuild:
+  Disable only failing test and revert RESTRICT for test by Nikoli.
+
+  28 Mar 2011; Samuli Suominen <ssuominen@gentoo.org> clementine-0.7.ebuild:
+  RESTRICT="test" until upstream
+  http://code.google.com/p/clementine-player/issues/detail?id=1634 is solved.
+
+  28 Mar 2011; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Make ios USE description understandable without using google
+
+*clementine-0.7 (28 Mar 2011)
+
+  28 Mar 2011; Samuli Suominen <ssuominen@gentoo.org> +clementine-0.7.ebuild:
+  Version bump wrt #360845 by Agostino Sarubbo. Remove -Werror from
+  src/CMakeLists.txt wrt #360703 by Zeev Tarantov.
+
+  27 Mar 2011; Samuli Suominen <ssuominen@gentoo.org> clementine-0.6-r2.ebuild,
+  clementine-0.7_rc1.ebuild, metadata.xml:
+  Rename USE="iphone" to USE="ios" wrt #344763.
+
+*clementine-0.7_rc1 (26 Mar 2011)
+
+  26 Mar 2011; Samuli Suominen <ssuominen@gentoo.org>
+  +clementine-0.7_rc1.ebuild, +files/clementine-0.7_rc1-tests-liblastfm.patch:
+  Version bump to release candidate.
+
+  16 Mar 2011; Thomas Kahle <tomka@gentoo.org> clementine-0.6-r2.ebuild:
+  x86 stable per bug 353297
+
+  15 Mar 2011; Samuli Suominen <ssuominen@gentoo.org> clementine-0.6-r2.ebuild:
+  Fix build failure with USE="-dbus wiimote" wrt #355259 by Nikoli.
 
   10 Feb 2011; Markos Chandras <hwoarang@gentoo.org> clementine-0.6-r2.ebuild:
   Stable on amd64 wrt bug #353297

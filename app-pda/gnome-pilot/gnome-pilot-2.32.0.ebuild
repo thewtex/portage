@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-pda/gnome-pilot/gnome-pilot-2.32.0.ebuild,v 1.2 2010/12/08 16:38:33 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-pda/gnome-pilot/gnome-pilot-2.32.0.ebuild,v 1.8 2011/03/31 03:58:28 ssuominen Exp $
 
 EAPI="3"
 G2CONF_DEBUG="no"
@@ -11,8 +11,8 @@ DESCRIPTION="Gnome Palm Pilot and Palm OS Device Syncing Library"
 HOMEPAGE="http://live.gnome.org/GnomePilot"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86"
-IUSE="eds hal"
+KEYWORDS="amd64 ppc x86"
+IUSE="eds"
 
 RDEPEND="
 	|| ( gnome-base/gnome-panel[bonobo] <gnome-base/gnome-panel-2.32 )
@@ -20,10 +20,9 @@ RDEPEND="
 	dev-libs/libxml2
 	>=app-pda/pilot-link-0.11.7
 	>=x11-libs/gtk+-2.13:2
-	>=dev-libs/dbus-glib-0.74
+	>=dev-libs/dbus-glib-0.88
 
-	eds? ( >=gnome-extra/evolution-data-server-2 )
-	hal? ( >=sys-apps/hal-0.5.4 )"
+	eds? ( >=gnome-extra/evolution-data-server-2 )"
 
 DEPEND="${RDEPEND}
 	dev-util/pkgconfig
@@ -36,12 +35,9 @@ DEPEND="${RDEPEND}
 pkg_setup() {
 	DOCS="AUTHORS COPYING* ChangeLog README NEWS"
 	G2CONF="${G2CONF}
-		--enable-usb
-		--enable-network
-		--enable-pilotlinktest
 		--disable-static
 		$(use_enable eds eds-conduits)
-		$(use_with hal)"
+		--without-hal"
 }
 
 src_install() {

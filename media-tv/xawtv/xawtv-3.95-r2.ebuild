@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-tv/xawtv/xawtv-3.95-r2.ebuild,v 1.6 2010/10/10 18:13:09 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-tv/xawtv/xawtv-3.95-r2.ebuild,v 1.8 2011/03/15 22:29:14 ulm Exp $
 
 EAPI=1
 
@@ -22,7 +22,7 @@ LICENSE="GPL-2"
 KEYWORDS="alpha amd64 ia64 ~ppc ~sparc x86"
 
 RDEPEND=">=sys-libs/ncurses-5.1
-	>=media-libs/jpeg-7
+	virtual/jpeg
 	X? (
 		x11-libs/libFS
 		x11-libs/libXmu
@@ -47,7 +47,7 @@ RDEPEND=">=sys-libs/ncurses-5.1
 	dv? ( media-libs/libdv )
 	lirc? ( app-misc/lirc )
 	opengl? ( virtual/opengl )
-	quicktime? ( virtual/quicktime )
+	quicktime? ( media-libs/libquicktime )
 	zvbi? ( media-libs/zvbi
 		media-libs/libpng )"
 

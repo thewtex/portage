@@ -1,6 +1,115 @@
 # ChangeLog for sys-kernel/dracut
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-kernel/dracut/ChangeLog,v 1.8 2011/01/09 03:27:27 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-kernel/dracut/ChangeLog,v 1.22 2011/04/01 22:54:36 aidecoe Exp $
+
+*dracut-010-r1 (01 Apr 2011)
+
+  01 Apr 2011; Amadeusz Żołnowski <aidecoe@gentoo.org> +dracut-010-r1.ebuild,
+  +files/dracut-010-empty-etc-ld.so.conf.d.patch:
+  Rev-bump. Fixes #361603.
+
+*dracut-010 (01 Apr 2011)
+
+  01 Apr 2011; Amadeusz Żołnowski <aidecoe@gentoo.org> +dracut-010.ebuild,
+  +files/dracut-010-multipath-udev-rules.patch:
+  Version bump. No, it's not a joke. It's generally a bugfix release.
+
+  31 Mar 2011; Samuli Suominen <ssuominen@gentoo.org> dracut-007.ebuild,
+  dracut-008.ebuild, dracut-008-r1.ebuild, dracut-009-r1.ebuild:
+  Use virtual/eject instead of sys-apps/eject.
+
+  29 Mar 2011; Amadeusz Żołnowski <aidecoe@gentoo.org>
+  -files/dracut-002-add-missing-functions.patch,
+  -files/dracut-002-custom-paths.patch, -files/dracut-002-dir-symlinks.patch,
+  -files/dracut-002-gencmdline-check-for-keyboard-i18n-files.patch,
+  -files/dracut-002-makefile-add-with_switch_root.patch,
+  -files/dracut-002-unmount.patch,
+  -files/dracut-006-console_init-not-necessary.patch,
+  -files/dracut-006-dhcp6.patch, -files/dracut-006-dm-udev-rules.patch,
+  -files/dracut-006-lc-all-c.patch:
+  Removed patches of not existing ebuilds.
+
+  29 Mar 2011; Amadeusz Żołnowski <aidecoe@gentoo.org> -dracut-002-r1.ebuild,
+  -dracut-003.ebuild, -dracut-004.ebuild, -dracut-006.ebuild,
+  -dracut-006-r1.ebuild, -dracut-009.ebuild, metadata.xml:
+  Removed ancient versions and broken dracut-009.ebuild.
+
+*dracut-009-r1 (29 Mar 2011)
+
+  29 Mar 2011; Amadeusz Żołnowski <aidecoe@gentoo.org> +dracut-009-r1.ebuild:
+  Not removing 97biosdevname module anymore.
+
+*dracut-009 (28 Mar 2011)
+
+  28 Mar 2011; Amadeusz Żołnowski <aidecoe@gentoo.org> +dracut-009.ebuild,
+  +files/dracut-009-don-t-skip-zero-length-string-outfile.patch,
+  +files/dracut-009-multipath-udev-rules.patch:
+  Version bump.
+
+  This version provides new modules:
+  - biosdevname
+  - caps
+
+  sys-block/open-iscsi is restricted to 2.0.871.3 and above because of required
+  iBFT support which starts with this version.
+
+  net-misc/dhcp restricted to 4.2.1-r1 and above because dhcp-3 doesn't work
+  with Qemu and dhcp-4 is already ~arch keyworded.
+
+  21 Mar 2011; Amadeusz Żołnowski <aidecoe@gentoo.org> dracut-002-r1.ebuild,
+  dracut-003.ebuild, dracut-004.ebuild, dracut-006.ebuild,
+  dracut-006-r1.ebuild, dracut-007.ebuild, dracut-008.ebuild,
+  dracut-008-r1.ebuild:
+  Tests are restricted for all ebuilds. See bug #298014.
+
+  16 Mar 2011; Amadeusz Żołnowski <aidecoe@gentoo.org> dracut-002-r1.ebuild,
+  dracut-003.ebuild, dracut-004.ebuild, dracut-006.ebuild,
+  dracut-006-r1.ebuild, dracut-007.ebuild, dracut-008.ebuild,
+  dracut-008-r1.ebuild:
+  Project's home page update.
+
+*dracut-008-r1 (07 Mar 2011)
+
+  07 Mar 2011; Amadeusz Żołnowski <aidecoe@gentoo.org> +dracut-008-r1.ebuild:
+  Revision bump. Added plymouth module. Related to bug #353577.
+
+  02 Mar 2011; Amadeusz Żołnowski <aidecoe@gentoo.org> dracut-007.ebuild:
+  Propagated few improvements from dracut-008.ebuild. Resolves bug #348085.
+
+  Changes include:
+  - removed mount-boot and mkdir of /boot/dracut (user can create it
+    him/herself if really needed)
+
+  01 Mar 2011; Amadeusz Żołnowski <aidecoe@gentoo.org> dracut-007.ebuild:
+  Added dependency on baselayout-1.12.14-r1 or above.
+
+  01 Mar 2011; Amadeusz Żołnowski <aidecoe@gentoo.org> dracut-008.ebuild:
+  Added notice about new options format.
+
+*dracut-008 (01 Mar 2011)
+
+  01 Mar 2011; Amadeusz Żołnowski <aidecoe@gentoo.org> +dracut-008.ebuild,
+  +files/dracut-008-dm-udev-rules.patch,
+  +files/dracut-008-i18n-config-file-parsing-in-hostonly.patch,
+  +files/dracut-008-multipath-udev-rules.patch:
+  Version bump, resolves bug #353577
+
+  Changes:
+  - modules controlled by DRACUT_MODULES USE_EXPAND instead of regular IUSE
+    (except of 'debug' and 'selinux')
+  - removed mount-boot and mkdir of /boot/dracut (user can create it
+    him/herself if really needed)
+  - added dependency on baselayout-1.12.14-r1 or above
+  - few minor fixes in the ebuild like missing 'die' and so
+
+  Other notes:
+  - removing biosdevname module (there's no package yet)
+  - removing broken modules: bootchart and busybox
+
+  Thanks to
+    Lucian Muresan <lucianm@users.sourceforge.net>
+    and Xake <xake@rymdraket.net>
+  for report and comments.
 
   09 Jan 2011; Mike Frysinger <vapier@gentoo.org> dracut-007.ebuild:
   Use new mount-boot_pkg_postinst helper.

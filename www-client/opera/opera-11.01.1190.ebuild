@@ -1,16 +1,16 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/opera/opera-11.01.1190.ebuild,v 1.4 2011/01/27 15:09:53 hwoarang Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/opera/opera-11.01.1190.ebuild,v 1.8 2011/03/17 17:29:14 jer Exp $
 
 EAPI="3"
 
 inherit eutils fdo-mime gnome2-utils multilib pax-utils versionator
 
-DESCRIPTION="A standards-compliant graphical Web browser"
+DESCRIPTION="A fast and secure web browser and Internet suite"
 HOMEPAGE="http://www.opera.com/"
 
 SLOT="0"
-LICENSE="OPERA-10.53 LGPL-2 LGPL-3"
+LICENSE="OPERA-11 LGPL-2 LGPL-3"
 KEYWORDS="amd64 x86 ~x86-fbsd"
 IUSE="elibc_FreeBSD gtk kde +gstreamer"
 
@@ -51,40 +51,33 @@ DEPEND="
 "
 RDEPEND="
 	gtk? (
-		=x11-libs/gtk+-2*
 		dev-libs/atk
-		dev-libs/glib
+		dev-libs/glib:2
 		x11-libs/cairo
+		x11-libs/gdk-pixbuf
+		x11-libs/gtk+:2
 		x11-libs/pango
 		x11-libs/pixman
+	)
+	gstreamer? (
+		dev-libs/glib
+		dev-libs/libxml2
+		media-libs/gstreamer
+		media-plugins/gst-plugins-meta
 	)
 	kde? (
 		kde-base/kdelibs
 	)
-	dev-libs/expat
 	media-libs/fontconfig
 	media-libs/freetype
-	gstreamer? ( media-plugins/gst-plugins-meta )
-	sys-apps/util-linux
 	sys-libs/zlib
 	virtual/opengl
 	x11-libs/libICE
 	x11-libs/libSM
 	x11-libs/libX11
-	x11-libs/libXau
-	x11-libs/libXcomposite
-	x11-libs/libXcursor
-	x11-libs/libXdamage
-	x11-libs/libXdmcp
 	x11-libs/libXext
-	x11-libs/libXfixes
-	x11-libs/libXi
-	x11-libs/libXmu
-	x11-libs/libXrandr
+	x11-libs/libXft
 	x11-libs/libXrender
-	x11-libs/libXt
-	x11-libs/libxcb
-	x11-libs/xcb-util
 "
 
 pkg_setup() {

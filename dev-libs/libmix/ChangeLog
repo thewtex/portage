@@ -1,6 +1,20 @@
 # ChangeLog for dev-libs/libmix
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libmix/ChangeLog,v 1.15 2011/02/06 12:38:27 leio Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libmix/ChangeLog,v 1.19 2011/04/02 12:45:48 ssuominen Exp $
+
+  02 Apr 2011; Samuli Suominen <ssuominen@gentoo.org> libmix-2.05.ebuild,
+  libmix-2.05-r5.ebuild, metadata.xml:
+  Use net-libs/libpcap instead of virtual/libpcap wrt #358835.
+
+  27 Mar 2011; Tobias Klausmann <klausman@gentoo.org> libmix-2.05-r5.ebuild:
+  Stable on alpha, bug #359741
+
+  21 Mar 2011; Christoph Mende <angelos@gentoo.org> libmix-2.05-r5.ebuild:
+  Stable on amd64 wrt bug #359741
+
+  21 Mar 2011; Christoph Mende <angelos@gentoo.org> libmix-2.05-r5.ebuild,
+  +files/libmix-2.05-gentoo2.patch:
+  Fixed build when CLIB is set (bug #353719)
 
   06 Feb 2011; Mart Raudsepp <leio@gentoo.org> libmix-2.05.ebuild:
   Drop to ~mips

@@ -1,6 +1,44 @@
 # ChangeLog for dev-util/cmake
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/cmake/ChangeLog,v 1.151 2011/01/17 23:29:32 scarabeus Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/cmake/ChangeLog,v 1.162 2011/03/27 14:34:18 klausman Exp $
+
+  27 Mar 2011; Tobias Klausmann <klausman@gentoo.org> cmake-2.8.4.ebuild:
+  Stable on alpha, bug #357771
+
+  25 Mar 2011; Kacper Kowalik <xarthisius@gentoo.org> cmake-2.8.4.ebuild:
+  ppc64 stable wrt #357771
+
+  21 Mar 2011; Brent Baude <ranger@gentoo.org> cmake-2.8.4.ebuild:
+  Marking cmake-2.8.4 ppc for bug 357771
+
+  18 Mar 2011; Markus Meier <maekke@gentoo.org> cmake-2.8.4.ebuild:
+  arm stable, bug #357771
+
+  09 Mar 2011; Jeroen Roovers <jer@gentoo.org> cmake-2.8.4.ebuild:
+  Stable for HPPA (bug #357771).
+
+  08 Mar 2011; Markos Chandras <hwoarang@gentoo.org> cmake-2.8.4.ebuild:
+  Stable on amd64 wrt bug #357771
+
+  07 Mar 2011; Tomáš Chvátal <scarabeus@gentoo.org> cmake-2.8.4.ebuild:
+  Revert to eapi3 for now so it can go stable.
+
+  23 Feb 2011; Tomáš Chvátal <scarabeus@gentoo.org> cmake-2.8.4.ebuild:
+  Use only one -E exclude parameter, obviously duplication is not working.
+
+  21 Feb 2011; Tomáš Chvátal <scarabeus@gentoo.org> cmake-2.8.4.ebuild:
+  Exclude sdcc test.
+
+  21 Feb 2011; Tomáš Chvátal <scarabeus@gentoo.org> cmake-2.8.4.ebuild:
+  Exclude bootstraptest because it is pointless for us.
+
+*cmake-2.8.4 (21 Feb 2011)
+
+  21 Feb 2011; Tomáš Chvátal <scarabeus@gentoo.org> +cmake-2.8.4.ebuild,
+  +files/cmake-2.8.4-FindBoost.patch,
+  +files/cmake-2.8.4-FindPythonInterp.patch,
+  +files/cmake-2.8.4-FindPythonLibs.patch:
+  Version bump to the latest (some tests still fail, to be fixed).
 
   17 Jan 2011; Tomáš Chvátal <scarabeus@gentoo.org> cmake-2.8.3-r1.ebuild:
   Fix tests per bug #315223.

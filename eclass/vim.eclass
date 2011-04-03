@@ -1,6 +1,6 @@
-# Copyright 1999-2007 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/vim.eclass,v 1.192 2011/01/04 13:55:57 lack Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/vim.eclass,v 1.196 2011/03/28 06:47:45 flameeyes Exp $
 
 # Authors:
 # 	Jim Ramsay <i.am@gentoo.org>
@@ -19,8 +19,8 @@
 # -aqua gtk gnome               GNOME2
 # -aqua gtk -gnome              GTK2
 # -aqua -gtk  motif             MOTIF
-# -aqua -gtk -motif nextaw      NEXTAW
-# -aqua -gtk -motif -nextaw     ATHENA
+# -aqua -gtk -motif neXt        NEXTAW
+# -aqua -gtk -motif -neXt       ATHENA
 
 # Support -cvs ebuilds, even though they're not in the official tree.
 MY_PN=${PN%-cvs}
@@ -119,7 +119,7 @@ else
 				dev-util/ctags )
 			!<app-editors/nvi-1.81.5-r4"
 	elif [[ ${MY_PN} == gvim ]] ; then
-		IUSE="${IUSE} aqua gnome gtk motif nextaw netbeans"
+		IUSE="${IUSE} aqua gnome gtk motif neXt netbeans"
 		DEPEND="${DEPEND}
 			dev-util/ctags
 			!aqua? (
@@ -133,7 +133,7 @@ else
 			x11-libs/libXext
 			!aqua? (
 				gtk? (
-					>=x11-libs/gtk+-2.6
+					>=x11-libs/gtk+-2.6:2
 					x11-libs/libXft
 					gnome? ( >=gnome-base/libgnomeui-2.6 )
 				)
@@ -142,10 +142,10 @@ else
 						>=x11-libs/openmotif-2.3:0
 					)
 					!motif? (
-						nextaw? (
+						neXt? (
 							x11-libs/neXtaw
 						)
-						!nextaw? ( x11-libs/libXaw )
+						!neXt? ( x11-libs/libXaw )
 					)
 				)
 			)"
@@ -348,6 +348,10 @@ END
 			'/-S check.vim/s,..VIM.,ln -s $(VIM) testvim \; ./testvim -X,' \
 			"${S}"/src/po/Makefile
 	fi
+
+	if version_is_at_least 7.3.122; then
+		cp "${S}"/src/config.mk.dist "${S}"/src/auto/config.mk
+	fi
 }
 
 vim_src_unpack() {
@@ -378,7 +382,7 @@ vim_src_configure() {
 	# autoconf-2.13 needed for this package -- bug 35319
 	# except it seems we actually need 2.5 now -- bug 53777
 	WANT_AUTOCONF=2.5 \
-		make -j1 -C src autoconf || die "make autoconf failed"
+		emake -j1 -C src autoconf || die "make autoconf failed"
 	eend $?
 
 	# This should fix a sandbox violation (see bug 24447). The hvc
@@ -448,7 +452,7 @@ vim_src_configure() {
 			elif use motif ; then
 				einfo "Building gvim with the MOTIF GUI"
 				myconf="${myconf} --enable-gui=motif"
-			elif use nextaw ; then
+			elif use neXt ; then
 				einfo "Building gvim with the neXtaw GUI"
 				myconf="${myconf} --enable-gui=nextaw"
 			else
@@ -497,7 +501,7 @@ vim_src_compile() {
 	has src_configure ${TO_EXPORT} || vim_src_configure
 
 	# The following allows emake to be used
-	make -j1 -C src auto/osdef.h objects || die "make failed"
+	emake -j1 -C src auto/osdef.h objects || die "make failed"
 
 	if [[ ${MY_PN} == "vim-core" ]] ; then
 		emake tools || die "emake tools failed"

@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/seahorse/seahorse-2.32.0.ebuild,v 1.2 2011/02/06 12:50:14 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/seahorse/seahorse-2.32.0.ebuild,v 1.8 2011/03/22 18:44:52 ranger Exp $
 
 EAPI="3"
 GCONF_DEBUG="yes"
@@ -12,11 +12,11 @@ HOMEPAGE="http://www.gnome.org/projects/seahorse/index.html"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 ia64 ppc ppc64 sparc x86 ~x86-fbsd"
 IUSE="avahi debug doc +introspection ldap libnotify test"
 
 RDEPEND="
-	>=gnome-base/gconf-2
+	>=gnome-base/gconf-2:2
 	>=dev-libs/glib-2.10:2
 	>=x11-libs/gtk+-2.18:2[introspection?]
 	>=dev-libs/dbus-glib-0.72

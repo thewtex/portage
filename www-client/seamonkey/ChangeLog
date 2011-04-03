@@ -1,6 +1,61 @@
 # ChangeLog for www-client/seamonkey
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/seamonkey/ChangeLog,v 1.286 2011/01/05 15:24:08 polynomial-c Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/seamonkey/ChangeLog,v 1.300 2011/03/27 13:08:06 nirbheek Exp $
+
+  27 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org>
+  seamonkey-2.0.12.ebuild, seamonkey-2.0.13.ebuild:
+  Fix slot-dep on gtk+
+
+  26 Mar 2011; Brent Baude <ranger@gentoo.org> seamonkey-2.0.13.ebuild:
+  Marking seamonkey-2.0.13 ppc64 and ppc for bug 360055
+
+  25 Mar 2011; Christoph Mende <angelos@gentoo.org> seamonkey-2.0.13.ebuild:
+  Stable on amd64 wrt bug #360055
+
+*seamonkey-2.0.13 (23 Mar 2011)
+
+  23 Mar 2011; Lars Wendler <polynomial-c@gentoo.org> +seamonkey-2.0.13.ebuild:
+  Security bump (bug #360055).
+
+  21 Mar 2011; Lars Wendler <polynomial-c@gentoo.org>
+  -files/seamonkey-2.0-gtk+-2.21.patch, -seamonkey-2.0.11.ebuild,
+  -seamonkey-2.0.11-r2.ebuild, -files/bug-606109.patch,
+  -files/seamonkey-respect-ldflags.patch:
+  Removed old.
+
+  18 Mar 2011; Raúl Porcel <armin76@gentoo.org> seamonkey-2.0.12.ebuild:
+  alpha/ia64/sparc stable wrt #357057
+
+  14 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org>
+  seamonkey-2.0.11.ebuild, seamonkey-2.0.11-r2.ebuild,
+  seamonkey-2.0.12.ebuild:
+  Remove old ebuilds and duplicate gnome-use-flag related stuff to allow
+  eclass changes from overlay to be merged into tree
+
+  13 Mar 2011; Markus Meier <maekke@gentoo.org> seamonkey-2.0.12.ebuild:
+  arm stable, bug #357057
+
+  08 Mar 2011; Thomas Kahle <tomka@gentoo.org> seamonkey-2.0.12.ebuild:
+  x86 stable per bug 357057
+
+  08 Mar 2011; Kacper Kowalik <xarthisius@gentoo.org> seamonkey-2.0.12.ebuild:
+  ppc/ppc64 stable wrt #357057
+
+  07 Mar 2011; Jeroen Roovers <jer@gentoo.org> seamonkey-2.0.12.ebuild:
+  Stable for HPPA (bug #357057).
+
+  06 Mar 2011; Markos Chandras <hwoarang@gentoo.org> seamonkey-2.0.12.ebuild:
+  Stable on amd64 wrt bug #357057
+
+  04 Mar 2011; Lars Wendler <polynomial-c@gentoo.org> seamonkey-2.0.11.ebuild,
+  seamonkey-2.0.11-r2.ebuild, seamonkey-2.0.12.ebuild:
+  Forced usage of python-2 for building (bug #357239 by Pacho Ramos).
+
+*seamonkey-2.0.12 (02 Mar 2011)
+
+  02 Mar 2011; Lars Wendler <polynomial-c@gentoo.org> -seamonkey-2.0.10.ebuild,
+  +seamonkey-2.0.12.ebuild, files/icon/seamonkey.desktop:
+  Security bump. Removed old.
 
 *seamonkey-2.0.11-r2 (05 Jan 2011)
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/clutter-gtk/clutter-gtk-0.91.8-r1.ebuild,v 1.1 2011/02/11 21:09:02 nirbheek Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/clutter-gtk/clutter-gtk-0.91.8-r1.ebuild,v 1.3 2011/03/21 03:09:11 nirbheek Exp $
 
 EAPI="2"
 CLUTTER_LA_PUNT="yes"
@@ -11,7 +11,7 @@ inherit gnome2 clutter
 DESCRIPTION="Clutter-GTK - GTK+3 Integration library for Clutter"
 
 SLOT="1.0"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE="doc debug examples +introspection"
 
 # XXX: Needs gtk with X support (!directfb)
@@ -31,6 +31,8 @@ src_prepare() {
 		--enable-maintainer-flags=no
 		$(use_enable introspection)"
 
-	sed -e "s/\(DOC_MODULE.*=.*${PN}\).*/\1-1.0/" \
+	# Slot the documentation
+	sed -e "s/\(DOC_MODULE.*=.*${PN}\).*/\1-${SLOT}/" \
 		-i doc/reference/Makefile.{am,in} || die "sed failed"
+	mv ${S}/doc/reference/clutter-gtk{,-${SLOT}}-docs.xml || die "mv failed"
 }

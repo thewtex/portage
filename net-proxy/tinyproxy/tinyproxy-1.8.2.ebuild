@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-proxy/tinyproxy/tinyproxy-1.8.2.ebuild,v 1.2 2011/01/25 02:22:45 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-proxy/tinyproxy/tinyproxy-1.8.2.ebuild,v 1.9 2011/03/28 12:16:08 phajdan.jr Exp $
 
 EAPI="2"
 
@@ -12,11 +12,13 @@ SRC_URI="http://www.banu.com/pub/${PN}/1.8/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~sparc ~x86"
-IUSE="debug +filter-proxy minimal reverse-proxy transparent-proxy
-	+upstream-proxy +xtinyproxy-header"
+KEYWORDS="alpha amd64 ~ia64 ~ppc ~sparc x86"
+IUSE="debug +filter-proxy minimal reverse-proxy
+	transparent-proxy +upstream-proxy +xtinyproxy-header"
 
-DEPEND="!minimal? ( app-text/asciidoc )"
+DEPEND="
+	!minimal? ( app-text/asciidoc )
+"
 RDEPEND=""
 
 pkg_setup() {
@@ -26,13 +28,8 @@ pkg_setup() {
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-1.8.1-ldflags.patch
-	use minimal && epatch "${FILESDIR}/${P}-minimal.patch"
+	use minimal && epatch "${FILESDIR}/${PN}-1.8.1-minimal.patch"
 	sed -i etc/${PN}.conf.in -e "s|nobody|${PN}|g" || die "sed failed"
-	sed \
-		-e "/CONFFILE/s:${PN}/::g" \
-		"${FILESDIR}/${PN}.initd" \
-		> "${WORKDIR}"/${PN}.initd \
-		|| die "sed failed"
 	eautoreconf
 }
 
@@ -52,7 +49,12 @@ src_configure() {
 }
 
 src_test() {
-	emake test || die
+	if use xtinyproxy-header;then
+		# The make check target does not run the test suite
+		emake test || die
+	else
+		einfo "The test suite needs USE=xtinyproxy-header to succeed"
+	fi
 }
 
 src_install() {
@@ -69,7 +71,7 @@ src_install() {
 	keepdir /var/log/${PN}
 	keepdir /var/run/${PN}
 
-	newinitd "${WORKDIR}"/tinyproxy.initd tinyproxy
+	newinitd "${FILESDIR}"/${P}.initd tinyproxy
 }
 
 pkg_postinst() {

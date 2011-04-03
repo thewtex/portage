@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/php/php-5.3.3-r1.ebuild,v 1.9 2011/01/30 16:00:34 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/php/php-5.3.3-r1.ebuild,v 1.12 2011/03/17 16:34:47 olemarkus Exp $
 
 EAPI=2
 
@@ -113,7 +113,7 @@ DEPEND="app-admin/php-toolkit
 	bzip2? ( app-arch/bzip2 )
 	cdb? ( || ( dev-db/cdb dev-db/tinycdb ) )
 	cjk? ( !gd? ( !gd-external? (
-		>=media-libs/jpeg-6b
+		virtual/jpeg
 		media-libs/libpng
 		sys-libs/zlib
 	) ) )
@@ -126,18 +126,18 @@ DEPEND="app-admin/php-toolkit
 	enchant? ( app-text/enchant )
 	esoob? ( >=dev-db/unixODBC-1.8.13 )
 	exif? ( !gd? ( !gd-external? (
-		>=media-libs/jpeg-6b
+		virtual/jpeg
 		media-libs/libpng
 		sys-libs/zlib
 	) ) )
 	firebird? ( dev-db/firebird )
 	fpm? ( >=dev-libs/libevent-1.4.12 )
-	gd? ( >=media-libs/jpeg-6b media-libs/libpng sys-libs/zlib )
+	gd? ( virtual/jpeg media-libs/libpng sys-libs/zlib )
 	gd-external? ( media-libs/gd )
 	gdbm? ( >=sys-libs/gdbm-1.8.0 )
 	gmp? ( >=dev-libs/gmp-4.1.2 )
 	iconv? ( virtual/libiconv )
-	imap? ( virtual/imap-c-client )
+	imap? ( virtual/imap-c-client[ssl=] )
 	intl? ( dev-libs/icu )
 	iodbc? ( dev-db/libiodbc )
 	kerberos? ( virtual/krb5 )
@@ -173,7 +173,7 @@ DEPEND="app-admin/php-toolkit
 		=media-libs/freetype-2*
 		>=media-libs/t1lib-5.0.0
 		!gd? ( !gd-external? (
-			>=media-libs/jpeg-6b media-libs/libpng sys-libs/zlib ) )
+			virtual/jpeg media-libs/libpng sys-libs/zlib ) )
 	)
 	unicode? ( dev-libs/oniguruma )
 	wddx? ( >=dev-libs/libxml2-2.6.8 )
@@ -183,7 +183,7 @@ DEPEND="app-admin/php-toolkit
 	xmlwriter? ( >=dev-libs/libxml2-2.6.8 )
 	xpm? (
 		x11-libs/libXpm
-		>=media-libs/jpeg-6b
+		virtual/jpeg
 		media-libs/libpng sys-libs/zlib
 	)
 	xsl? ( dev-libs/libxslt >=dev-libs/libxml2-2.6.8 )
@@ -251,11 +251,6 @@ DEPEND="${DEPEND}
 # They are in PDEPEND because we need PHP installed first!
 PDEPEND="doc? ( app-doc/php-docs )
 	suhosin? ( dev-php${PHP_MV}/suhosin )"
-
-# Portage doesn't support setting PROVIDE based on the USE flags that
-# have been enabled, so we have to PROVIDE everything for now and hope
-# for the best
-PROVIDE="virtual/php"
 
 SLOT="${PHP_MV}"
 S="${WORKDIR}/${PHP_P}"

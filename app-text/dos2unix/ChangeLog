@@ -1,6 +1,32 @@
 # ChangeLog for app-text/dos2unix
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/dos2unix/ChangeLog,v 1.60 2011/02/02 08:52:12 polynomial-c Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/dos2unix/ChangeLog,v 1.66 2011/03/27 21:55:05 darkside Exp $
+
+  27 Mar 2011; Jeremy Olexa <darkside@gentoo.org> -dos2unix-5.1.ebuild,
+  -dos2unix-5.2.ebuild:
+  remove old ebuilds
+
+  20 Mar 2011; Justin Lecher <jlec@gentoo.org> dos2unix-5.1.ebuild,
+  dos2unix-5.1.1.ebuild, dos2unix-5.2.ebuild, dos2unix-5.2.1.ebuild:
+  Removed virtual/PodParser from dep again and correct perl to be only a build
+  dep
+
+  18 Mar 2011; Justin Lecher <jlec@gentoo.org> dos2unix-5.1.ebuild,
+  dos2unix-5.1.1.ebuild, dos2unix-5.2.ebuild, dos2unix-5.2.1.ebuild:
+  Added missing DEPENDs to build manpages, #359183
+
+  10 Mar 2011; Justin Lecher <jlec@gentoo.org> dos2unix-5.2.1.ebuild,
+  metadata.xml:
+  Remove largefile USE support and default to it
+
+*dos2unix-5.2.1 (05 Mar 2011)
+
+  05 Mar 2011; Justin Lecher <jlec@gentoo.org> +dos2unix-5.2.1.ebuild,
+  metadata.xml:
+  Version Bump
+
+  01 Mar 2011; Brent Baude <ranger@gentoo.org> dos2unix-5.1.1.ebuild:
+  stable ppc64, bug 350646
 
   02 Feb 2011; Lars Wendler <polynomial-c@gentoo.org> dos2unix-5.2.ebuild,
   +files/dos2unix-5.2-makefile.patch:

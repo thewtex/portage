@@ -1,6 +1,68 @@
 # ChangeLog for dev-lang/php
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/php/ChangeLog,v 1.468 2011/01/30 16:00:34 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/php/ChangeLog,v 1.482 2011/04/02 16:31:27 jer Exp $
+
+  02 Apr 2011; Jeroen Roovers <jer@gentoo.org> php-5.3.6.ebuild:
+  Stable for HPPA (bug #358791).
+
+  01 Apr 2011; Kacper Kowalik <xarthisius@gentoo.org> php-5.3.6.ebuild:
+  ppc/ppc64 stable wrt #358791
+
+  20 Mar 2011; <olemarkus@gentoo.org> -php-5.3.6_rc3.ebuild:
+  Removed RC as PHP 5.3.6 is now released
+
+  18 Mar 2011; <olemarkus@gentoo.org> +php-5.2.14.ebuild:
+  Readded 5.2.14 to unbreak a few neglected packages
+
+*php-5.3.6 (17 Mar 2011)
+
+  17 Mar 2011; Ole Markus With <olemarkus@gentoo.org> +php-5.3.6.ebuild:
+  Version bump
+
+  17 Mar 2011; Ole Markus With <olemarkus@gentoo.org>
+  files/eblits/pkg_setup-v1.eblit, php-5.2.17.ebuild, php-5.3.3-r1.ebuild,
+  php-5.3.5.ebuild, php-5.3.5-r1.ebuild, files/eblits/pkg_setup-v2.eblit,
+  php-5.3.6_rc3.ebuild:
+  Removed use of php_check_imap. #359221
+
+  17 Mar 2011; Ole Markus With <olemarkus@gentoo.org> -php-5.2.14.ebuild,
+  -php-5.2.16.ebuild, -php-5.3.4.ebuild:
+  Removed older versions
+
+  16 Mar 2011; <olemarkus@gentoo.org> php-5.3.6_rc3.ebuild:
+  Reordered the SAPIs so that embed is always the first sapi to be built if
+  selected. Fixes #358687
+
+  13 Mar 2011; <olemarkus@gentoo.org> +files/eblits/src_prepare-v3.eblit,
+  php-5.3.6_rc3.ebuild:
+  Added epatch_user. #357637
+
+*php-5.3.6_rc3 (10 Mar 2011)
+
+  10 Mar 2011; <olemarkus@gentoo.org> -php-5.3.6_rc1.ebuild,
+  -php-5.3.6_rc2.ebuild, +php-5.3.6_rc3.ebuild:
+  Another RC added
+
+*php-5.3.6_rc2 (03 Mar 2011)
+
+  03 Mar 2011; Ole Markus With <olemarkus@gentoo.org> +php-5.3.6_rc2.ebuild:
+  New 5.3.6 RC2
+
+  25 Feb 2011; Kevin McCarthy <signals@gentoo.org> php-5.2.14.ebuild,
+  php-5.2.16.ebuild, php-5.2.17.ebuild, php-5.3.3-r1.ebuild:
+  Updated depends from media-libs/jpeg to virtual/jpeg
+
+  25 Feb 2011; Ole Markus With <olemarkus@gentoo.org> php-5.3.5.ebuild,
+  php-5.3.6_rc1.ebuild:
+  Remove dependency on libevent
+
+  17 Feb 2011; Ole Markus With <olemarkus@gentoo.org> +php-5.3.6_rc1.ebuild,
+  metadata.xml:
+  Added an ebuild for 5.3.6 RC1
+  The suhosin USE flag no longer installs the extension, only the suhosin
+  patch
+
+*php-5.3.6_rc1 (17 Feb 2011)
 
   30 Jan 2011; Raúl Porcel <armin76@gentoo.org> php-5.2.16.ebuild,
   php-5.2.17.ebuild, php-5.3.3-r1.ebuild, php-5.3.4.ebuild, php-5.3.5.ebuild,

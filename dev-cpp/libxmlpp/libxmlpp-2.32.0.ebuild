@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-cpp/libxmlpp/libxmlpp-2.32.0.ebuild,v 1.1 2010/10/27 22:37:59 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-cpp/libxmlpp/libxmlpp-2.32.0.ebuild,v 1.7 2011/03/22 20:00:24 ranger Exp $
 
 EAPI="3"
 
@@ -16,7 +16,7 @@ SRC_URI="mirror://gnome/sources/libxml++/${PV%.*}/${MY_P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="2.6"
-KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="alpha amd64 hppa ia64 ppc ~ppc64 sparc x86 ~amd64-linux ~x86-linux ~x86-solaris"
 IUSE="doc"
 
 RDEPEND=">=dev-libs/libxml2-2.6.1
@@ -39,5 +39,5 @@ src_install() {
 	gnome2_src_install
 
 	rm -fr "${ED}"usr/share/doc/libxml++*
-	use doc && dohtml docs/reference/${PV%.*}/html/*
+	use doc && dohtml docs/reference/html/*
 }

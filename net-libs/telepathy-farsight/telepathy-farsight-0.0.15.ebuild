@@ -1,8 +1,11 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/telepathy-farsight/telepathy-farsight-0.0.15.ebuild,v 1.1 2010/09/29 10:46:31 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/telepathy-farsight/telepathy-farsight-0.0.15.ebuild,v 1.7 2011/03/22 20:09:00 ranger Exp $
 
-EAPI="2"
+EAPI="3"
+PYTHON_DEPEND="python? 2:2.6"
+
+inherit python
 
 DESCRIPTION="Farsight connection manager for the Telepathy framework"
 HOMEPAGE="http://telepathy.freedesktop.org"
@@ -10,10 +13,10 @@ SRC_URI="http://telepathy.freedesktop.org/releases/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~sparc ~x86"
+KEYWORDS="alpha amd64 ia64 ppc sparc x86"
 IUSE="python"
 
-RDEPEND=">=dev-libs/glib-2.16
+RDEPEND=">=dev-libs/glib-2.16:2
 	>=sys-apps/dbus-0.60
 	>=dev-libs/dbus-glib-0.60
 	>=net-libs/telepathy-glib-0.7.34
@@ -23,6 +26,19 @@ RDEPEND=">=dev-libs/glib-2.16
 		>=dev-python/gst-python-0.10.10 )"
 
 DEPEND="${RDEPEND}"
+
+pkg_setup() {
+	if use python; then
+		python_set_active_version 2
+		python_pkg_setup
+	fi
+}
+
+src_prepare() {
+	if use python; then
+		python_convert_shebangs -r 2 .
+	fi
+}
 
 src_configure() {
 	econf $(use_enable python)

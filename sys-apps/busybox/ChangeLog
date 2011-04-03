@@ -1,6 +1,26 @@
 # ChangeLog for sys-apps/busybox
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/busybox/ChangeLog,v 1.266 2011/01/08 00:56:39 ranger Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/busybox/ChangeLog,v 1.271 2011/03/27 04:48:38 vapier Exp $
+
+  27 Mar 2011; Mike Frysinger <vapier@gentoo.org> busybox-1.18.3.ebuild:
+  We respect $CC, and LD in build defaults to $CC, so dont force LD directly
+  #346953.
+
+  20 Feb 2011; Kacper Kowalik <xarthisius@gentoo.org> busybox-1.17.4.ebuild:
+  Workaround TOC issue wrt #130943
+
+*busybox-1.18.3 (13 Feb 2011)
+
+  13 Feb 2011; Mike Frysinger <vapier@gentoo.org> +busybox-1.18.3.ebuild,
+  +files/busybox-1.18.3-buildsys.patch, +files/busybox-1.18.3-modutils24.patch,
+  +files/busybox-1.18.3-wget.patch:
+  Version bump #352592.
+
+  13 Feb 2011; Mike Frysinger <vapier@gentoo.org> busybox-1.17.4.ebuild:
+  Mark ppc64 stable #349309.
+
+  13 Feb 2011; Raúl Porcel <armin76@gentoo.org> busybox-1.17.4.ebuild:
+  alpha/ia64/m68k/s390/sh/sparc stable wrt #349309
 
   08 Jan 2011; Brent Baude <ranger@gentoo.org> busybox-1.17.4.ebuild:
   Marking busybox-1.17.4 ppc for bug 349309

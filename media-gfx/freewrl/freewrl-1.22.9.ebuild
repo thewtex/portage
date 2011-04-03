@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/freewrl/freewrl-1.22.9.ebuild,v 1.3 2010/10/10 18:38:12 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/freewrl/freewrl-1.22.9.ebuild,v 1.5 2011/04/01 14:23:55 patrick Exp $
 
 EAPI="2"
 
@@ -24,14 +24,14 @@ COMMONDEPEND="x11-libs/libXau
 	glew? ( media-libs/glew )
 	virtual/opengl
 	media-libs/libpng
-	media-libs/jpeg
+	virtual/jpeg
 	media-libs/imlib2
 	>=media-libs/freetype-2
 	curl? ( net-misc/curl )
-	!spidermonkey? ( net-libs/xulrunner )
+	!spidermonkey? ( <net-libs/xulrunner-2.0 )
 	spidermonkey? ( dev-lang/spidermonkey )
 	nsplugin? ( || (
-		net-libs/xulrunner
+		<net-libs/xulrunner-2.0
 		www-client/firefox
 		) )"
 DEPEND="${COMMONDEPEND}

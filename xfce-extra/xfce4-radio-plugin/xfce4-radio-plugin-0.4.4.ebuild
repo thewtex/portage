@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-radio-plugin/xfce4-radio-plugin-0.4.4.ebuild,v 1.1 2010/11/04 15:59:58 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-radio-plugin/xfce4-radio-plugin-0.4.4.ebuild,v 1.4 2011/03/22 10:47:45 tomka Exp $
 
 EAPI=3
 inherit xfconf
@@ -11,7 +11,7 @@ SRC_URI="mirror://xfce/src/panel-plugins/${PN}/0.4/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="debug"
 
 RDEPEND=">=xfce-base/libxfcegui4-4.3.22
@@ -27,4 +27,9 @@ pkg_setup() {
 		)
 
 	DOCS="AUTHORS NEWS README"
+}
+
+src_prepare() {
+	sed -i -e '/ALL_LINGUAS/s:ug ::' configure || die #358421
+	xfconf_src_prepare
 }

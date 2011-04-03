@@ -1,21 +1,22 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/vienna-rna/vienna-rna-1.8.4-r1.ebuild,v 1.3 2010/07/15 09:11:27 fauli Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/vienna-rna/vienna-rna-1.8.4-r1.ebuild,v 1.5 2011/03/20 20:32:09 jlec Exp $
 
 EAPI="2"
 
 inherit toolchain-funcs multilib autotools perl-module
 
-DESCRIPTION="The Vienna RNA Package - RNA secondary structure prediction and comparison"
-LICENSE="vienna-rna"
-HOMEPAGE="http://www.tbi.univie.ac.at/~ivo/RNA"
+DESCRIPTION="RNA secondary structure prediction and comparison"
+HOMEPAGE="http://www.tbi.univie.ac.at/~ivo/RNA/"
 SRC_URI="http://www.tbi.univie.ac.at/~ivo/RNA/ViennaRNA-${PV}.tar.gz"
 
+LICENSE="vienna-rna"
 SLOT="0"
 IUSE=""
 KEYWORDS="amd64 ~ppc x86"
 
-DEPEND="dev-lang/perl
+DEPEND="
+	dev-lang/perl
 	media-libs/gd"
 RDEPEND="${DEPEND}"
 
@@ -34,13 +35,14 @@ src_prepare() {
 	base_src_prepare
 	sed -i 's/ getline/ v_getline/' Readseq/ureadseq.c || die
 	sed -i '1 i #include <cstdio>' RNAforester/src/rnafuncs.cpp || die
+	sed -i 's/@PerlCmd@ Makefile.PL/& INSTALLDIRS=vendor/' Perl/Makefile.am || die
 
 	eautoreconf
 	(cd RNAforester; eautoreconf)
 }
 
 src_configure() {
-	econf --with-cluster || die "Configuration failed."
+	econf --with-cluster
 	sed -e "s:LIBDIR = /usr/lib:LIBDIR = ${D}/usr/$(get_libdir):" \
 		-e "s:INCDIR = /usr/include:INCDIR = ${D}/usr/include:" \
 		-i RNAforester/g2-0.70/Makefile \

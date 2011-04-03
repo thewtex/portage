@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-extra/gnome-power-manager/gnome-power-manager-2.32.0.ebuild,v 1.7 2011/02/09 21:38:34 nirbheek Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/gnome-power-manager/gnome-power-manager-2.32.0.ebuild,v 1.14 2011/03/22 19:26:20 ranger Exp $
 
 EAPI="3"
 GCONF_DEBUG="no"
@@ -12,7 +12,7 @@ HOMEPAGE="http://www.gnome.org/projects/gnome-power-manager/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 ia64 ppc ppc64 sparc x86 ~x86-fbsd"
 IUSE="doc policykit test"
 
 # FIXME: Interactive testsuite (upstream ? I'm so...pessimistic)
@@ -68,6 +68,8 @@ pkg_setup() {
 }
 
 src_prepare() {
+	epatch "${FILESDIR}"/${P}-libnotify-0.7.patch
+
 	gnome2_src_prepare
 
 	# Fix intltoolize broken file, see upstream #577133
@@ -78,14 +80,6 @@ src_prepare() {
 	sed -e 's:^CPPFLAGS="$CPPFLAGS -g"$::g' \
 		-i configure.ac configure || die "debugger sed failed"
 
-	if ! use doc; then
-		# Remove the docbook2man rules here since it's not handled by a proper
-		# parameter in configure.in.
-		sed -e 's:@HAVE_DOCBOOK2MAN_TRUE@.*::' \
-			-i man/Makefile.am man/Makefile.in \
-			|| die "docbook sed failed"
-	fi
-
 	# glibc splits this out, whereas other libc's do not tend to
 	if use elibc_glibc; then
 		sed -e 's/-lresolv//' \
@@ -95,6 +89,14 @@ src_prepare() {
 	# FIXME: This is required to prevent maintainer mode after "debugger sed"
 	intltoolize --force --copy --automake || die "intltoolize failed"
 	eautoreconf
+
+	# This needs to be after eautoreconf to prevent problems like bug #356277
+	if ! use doc; then
+		# Remove the docbook2man rules here since it's not handled by a proper
+		# parameter in configure.in.
+		sed -e 's:@HAVE_DOCBOOK2MAN_TRUE@.*::' -i man/Makefile.in \
+			|| die "docbook sed failed"
+	fi
 }
 
 src_test() {

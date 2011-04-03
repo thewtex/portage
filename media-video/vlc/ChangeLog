@@ -1,6 +1,156 @@
 # ChangeLog for media-video/vlc
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/vlc/ChangeLog,v 1.660 2011/02/12 17:55:02 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/vlc/ChangeLog,v 1.700 2011/04/02 07:59:18 xarthisius Exp $
+
+  02 Apr 2011; Kacper Kowalik <xarthisius@gentoo.org> vlc-1.1.8.ebuild:
+  ppc64 stable wrt #360189
+
+  31 Mar 2011; Brent Baude <ranger@gentoo.org> vlc-1.1.8.ebuild:
+  Marking vlc-1.1.8 ppc for bug 360189
+
+  30 Mar 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild,
+  metadata.xml:
+  bda and snapshot useflags are gone
+
+  30 Mar 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  remove the blocker on old versions, this seems fine with recent libtools
+
+  30 Mar 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  fix the freetype default font patch, by Artem Karimov, bug #360841
+
+  29 Mar 2011; Christoph Mende <angelos@gentoo.org> vlc-1.1.8.ebuild:
+  Stable on amd64 wrt bug #360189
+
+*vlc-1.1.8 (29 Mar 2011)
+
+  29 Mar 2011; Alexis Ballier <aballier@gentoo.org> +vlc-1.1.8.ebuild:
+  version bump
+
+  29 Mar 2011; Alexis Ballier <aballier@gentoo.org> vlc-1.1.9999.ebuild,
+  vlc-9999.ebuild:
+  bump schroedinger dep, by Lorenzo Marussi, bug #359813
+
+  21 Mar 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  merge dvb and dvbpsi useflags as per upstream, remove fbcon one
+
+  04 Mar 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild,
+  metadata.xml:
+  android useflag is gone
+
+  24 Feb 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild,
+  metadata.xml:
+  add android useflag
+
+  22 Feb 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild,
+  metadata.xml:
+  add media-library useflag
+
+  21 Feb 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  aalib, sdl and vaapi require X too
+
+  21 Feb 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  egl requires X
+
+  21 Feb 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  Bump xcb/xcb-util requirements
+
+  19 Feb 2011; Alexis Ballier <aballier@gentoo.org> vlc-1.1.7.ebuild:
+  Add patch to fix build with libnotify 0.7, by Samuli Suominen, bug #353848
+
+  16 Feb 2011; Alexis Ballier <aballier@gentoo.org> vlc-1.1.7.ebuild,
+  vlc-1.1.9999.ebuild:
+  switch libX11 dep to a sane one, bug #348518
+
+  16 Feb 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild,
+  metadata.xml:
+  add neon useflag
+
+  16 Feb 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild,
+  metadata.xml:
+  add libtar useflag
+
+  16 Feb 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  add portaudio useflag
+
+  16 Feb 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild,
+  metadata.xml:
+  add an useflag for the snapshot vout plugin
+
+  16 Feb 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild,
+  metadata.xml:
+  split ffmpeg in avcodec, avformat, postproc and swscale useflags as done
+  upstream to allow a more finegrained control on what to install.
+
+  16 Feb 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild,
+  metadata.xml:
+  Add fbosd and macosx specific useflags
+
+  16 Feb 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  readd some deps for skins useflag that were lost
+
+  16 Feb 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild,
+  metadata.xml:
+  more win32 specific useflags
+
+  16 Feb 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild,
+  metadata.xml:
+  add egl useflag
+
+  16 Feb 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild,
+  metadata.xml:
+  add switcher useflag
+
+  16 Feb 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild,
+  metadata.xml:
+  add dxva2 useflag
+
+  16 Feb 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild,
+  metadata.xml:
+  add omxil useflag
+
+  16 Feb 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild,
+  metadata.xml:
+  Allow to build without dvbpsi
+
+  16 Feb 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild,
+  metadata.xml:
+  Add bluray useflag
+
+  16 Feb 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild,
+  metadata.xml:
+  Add dshow and bda useflags (win32 only)
+
+  16 Feb 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild,
+  metadata.xml:
+  Add linsys useflag
+
+  16 Feb 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild,
+  metadata.xml:
+  Add growl useflag for growl notification support (over UDP for remote access
+  and native on OSX)
+
+  16 Feb 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  libnotify plugin requires gtk+-2.0
+
+  16 Feb 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  Rename the stream useflag to encode and enable it by default which makes more
+  sense.
+
+  16 Feb 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  Remove the babysitting line for the qt4 gui, it is well known these days that
+  vlc has a qt4 gui, remove the flag filtering for x86, gcc should be fixed
+  instead.
+
+  16 Feb 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  Convert to EAPI-4, make use of REQUIRED_USE, simplify and remove useless
+  eclass inherits.
+
+  16 Feb 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  remoteosd is now controlled by the gcrypt useflag
+
+  14 Feb 2011; Alexis Ballier <aballier@gentoo.org> -vlc-1.1.4.ebuild,
+  -vlc-1.1.4.1.ebuild, -vlc-1.1.5.ebuild, -vlc-1.1.6.ebuild:
+  remove old
 
   12 Feb 2011; Raúl Porcel <armin76@gentoo.org> vlc-1.1.6.ebuild,
   vlc-1.1.7.ebuild:

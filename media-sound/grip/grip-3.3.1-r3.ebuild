@@ -1,12 +1,12 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/grip/grip-3.3.1-r3.ebuild,v 1.1 2010/10/15 16:40:50 polynomial-c Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/grip/grip-3.3.1-r3.ebuild,v 1.3 2011/03/23 07:35:38 ssuominen Exp $
 
 EAPI=2
 inherit eutils flag-o-matic toolchain-funcs libtool
 
-DESCRIPTION="GTK+ based Audio CD Player/Ripper."
-HOMEPAGE="http://www.nostatic.org/grip"
+DESCRIPTION="GTK+ based Audio CD Player/Ripper"
+HOMEPAGE="http://www.nostatic.org/grip/"
 SRC_URI="mirror://sourceforge/grip/${P}.tar.gz"
 
 LICENSE="GPL-2"
@@ -15,7 +15,7 @@ KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 IUSE="nls vorbis"
 
 RDEPEND=">=x11-libs/gtk+-2.2:2
-	x11-libs/vte
+	x11-libs/vte:0
 	media-sound/lame
 	media-sound/cdparanoia
 	>=media-libs/id3lib-3.8.3
@@ -30,8 +30,9 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-implicit-declaration.patch
-	# bug #285105
-	epatch "${FILESDIR}"/${P}-invalid-genre-size.patch
+	epatch "${FILESDIR}"/${P}-invalid-genre-size.patch #285105
+	# fix include syntax for newer versions of bash
+	sed -i '/[.] conftest[.]id3/s: c: ./c:' configure || die
 	elibtoolize
 }
 
@@ -47,6 +48,6 @@ src_configure() {
 }
 
 src_install () {
-	emake DESTDIR="${D}" install || die "emake install failed"
+	emake DESTDIR="${D}" install || die
 	dodoc AUTHORS CREDITS ChangeLog README TODO
 }

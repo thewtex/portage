@@ -1,6 +1,54 @@
 # ChangeLog for sci-chemistry/gromacs
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/gromacs/ChangeLog,v 1.64 2011/01/04 04:52:32 darkside Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/gromacs/ChangeLog,v 1.77 2011/04/02 16:11:59 armin76 Exp $
+
+  02 Apr 2011; Raúl Porcel <armin76@gentoo.org> gromacs-4.5.3-r4.ebuild:
+  alpha/sparc stable wrt #357017
+
+  02 Apr 2011; Kacper Kowalik <xarthisius@gentoo.org> gromacs-4.5.4.ebuild:
+  Bump to EAPI=4 for REQUIRED_USE on fkernels and threads wrt #361687. Mark
+  ppc64 stable wrt #357017
+
+  02 Apr 2011; Samuli Suominen <ssuominen@gentoo.org> gromacs-4.5.4.ebuild:
+  Remove illegal QA_EXECSTACK for source based package.
+
+  02 Apr 2011; Kacper Kowalik <xarthisius@gentoo.org> gromacs-4.5.4.ebuild:
+  Revert to ~ppc64
+
+  25 Mar 2011; Kacper Kowalik <xarthisius@gentoo.org> gromacs-4.5.4.ebuild:
+  ppc64 stable wrt #357017
+
+  22 Mar 2011; Christoph Junghans <ottxor@gentoo.org> gromacs-4.5.4.ebuild:
+  New manual, added back pkg-config to DEPEND
+
+*gromacs-4.5.4 (21 Mar 2011)
+
+  21 Mar 2011; Alexey Shvetsov <alexxy@gentoo.org> +gromacs-4.5.4.ebuild:
+  Version bump
+
+  17 Mar 2011; Alexey Shvetsov <alexxy@gentoo.org> gromacs-4.5.3-r4.ebuild:
+  Clean up ebuild a bit
+
+  09 Mar 2011; Thomas Kahle <tomka@gentoo.org> gromacs-4.5.3-r4.ebuild:
+  x86 stable per bug 357017
+
+  08 Mar 2011; Markos Chandras <hwoarang@gentoo.org> gromacs-4.5.3-r4.ebuild:
+  Stable on amd64 wrt bug #357017
+
+*gromacs-4.5.3-r4 (05 Mar 2011)
+
+  05 Mar 2011; Alexey Shvetsov <alexxy@gentoo.org> +gromacs-4.5.3-r4.ebuild:
+  Rework using of external blas & lapack. Also fix issues with prefix and mpi
+  build
+
+  02 Mar 2011; Justin Lecher <jlec@gentoo.org> gromacs-4.0.7-r4.ebuild,
+  gromacs-4.0.7-r5.ebuild, gromacs-4.5.3.ebuild, gromacs-4.5.3-r3.ebuild:
+  Correct Slots for gtk 3 introduction to tree
+
+*gromacs-4.5.3-r3 (19 Feb 2011)
+
+  19 Feb 2011; Christoph Junghans <ottxor@gentoo.org> +gromacs-4.5.3-r3.ebuild:
+  Version bump (fixes bug #339837)
 
   04 Jan 2011; Jeremy Olexa <darkside@gentoo.org> metadata.xml:
   QA: Remove redundant local use flag description

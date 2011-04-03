@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-tv/xbmc/xbmc-9999.ebuild,v 1.74 2011/02/10 02:51:55 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-tv/xbmc/xbmc-9999.ebuild,v 1.78 2011/03/01 02:46:05 vapier Exp $
 
 EAPI="2"
 
@@ -22,7 +22,7 @@ HOMEPAGE="http://xbmc.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="alsa altivec avahi bluray css debug joystick midi profile pulseaudio rtmp sse sse2 udev vaapi vdpau webserver xrandr"
+IUSE="alsa altivec avahi bluray css debug joystick midi profile pulseaudio rtmp sse sse2 udev vaapi vdpau webserver +xrandr"
 
 COMMON_DEPEND="virtual/opengl
 	app-arch/bzip2
@@ -37,14 +37,13 @@ COMMON_DEPEND="virtual/opengl
 	dev-libs/lzo
 	>=dev-python/pysqlite-2
 	media-libs/alsa-lib
-	media-libs/faad2
 	media-libs/flac
 	media-libs/fontconfig
 	media-libs/freetype
 	media-libs/glew
 	media-libs/jasper
 	media-libs/jbigkit
-	media-libs/jpeg:0
+	virtual/jpeg
 	>=media-libs/libass-0.9.7
 	bluray? ( media-libs/libbluray )
 	css? ( media-libs/libdvdcss )
@@ -163,8 +162,6 @@ src_configure() {
 		--enable-external-libraries \
 		--enable-goom \
 		--enable-gl \
-		--disable-liba52 \
-		--disable-libdts \
 		$(use_enable avahi) \
 		$(use_enable bluray libbluray) \
 		$(use_enable css dvdcss) \

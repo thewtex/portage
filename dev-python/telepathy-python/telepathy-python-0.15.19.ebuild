@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/telepathy-python/telepathy-python-0.15.19.ebuild,v 1.2 2011/02/08 09:39:07 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/telepathy-python/telepathy-python-0.15.19.ebuild,v 1.7 2011/03/22 20:07:03 ranger Exp $
 
 EAPI="3"
 SUPPORT_PYTHON_ABIS="1"
@@ -15,18 +15,18 @@ SRC_URI="http://telepathy.freedesktop.org/releases/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="alpha amd64 ia64 ppc ~ppc64 sparc x86"
 IUSE=""
 
 DEPEND="dev-libs/libxslt"
 RDEPEND=">=dev-python/dbus-python-0.80"
 
 src_prepare() {
-	python_src_prepare
-
 	# Don't install _generated/errors.py twice, bug #348386
 	epatch "${FILESDIR}/${P}-install-twice.patch"
 	eautoreconf
+
+	python_src_prepare
 }
 
 src_install() {

@@ -1,6 +1,46 @@
 # ChangeLog for www-servers/tomcat
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-servers/tomcat/ChangeLog,v 1.241 2011/02/12 16:51:04 fordfrog Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-servers/tomcat/ChangeLog,v 1.249 2011/03/13 00:08:31 fordfrog Exp $
+
+  13 Mar 2011; Miroslav Šulc <fordfrog@gentoo.org> -tomcat-7.0.8.ebuild,
+  -tomcat-7.0.10.ebuild:
+  Removed tomcat 7.x versions affected by security vulnerability as stated in
+  bug #358607
+
+  11 Mar 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  -files/7/7.0.6-build-xml.patch, -tomcat-7.0.5-r1.ebuild,
+  -tomcat-7.0.6.ebuild:
+  Removed old versions
+
+*tomcat-7.0.11 (11 Mar 2011)
+
+  11 Mar 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +files/7/7.0.11-build-xml.patch, +tomcat-7.0.11.ebuild:
+  Version bump
+
+*tomcat-7.0.10 (08 Mar 2011)
+
+  08 Mar 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +files/7/7.0.10-build-xml.patch, +tomcat-7.0.10.ebuild:
+  Version bump
+
+*tomcat-6.0.32-r2 (14 Feb 2011)
+
+  14 Feb 2011; Miroslav Šulc <fordfrog@gentoo.org> +files/6/tomcat.init.3,
+  +tomcat-6.0.32-r2.ebuild:
+  Fixed bug #326979 (thanks to Pavel Goran <via-gentoo@pvgoran.name> for the
+  fix)
+
+  13 Feb 2011; Markos Chandras <hwoarang@gentoo.org> tomcat-6.0.32-r1.ebuild:
+  Stable on amd64 wrt bug #329937
+
+  13 Feb 2011; Christian Faulhammer <fauli@gentoo.org>
+  tomcat-6.0.32-r1.ebuild:
+  stable x86, security bug 329937
+
+  12 Feb 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  tomcat-6.0.32-r1.ebuild:
+  ppc/ppc64 stable wrt #329937
 
 *tomcat-6.0.32-r1 (12 Feb 2011)
 

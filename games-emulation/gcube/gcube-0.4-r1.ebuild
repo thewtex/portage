@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-emulation/gcube/gcube-0.4-r1.ebuild,v 1.4 2010/10/12 07:48:55 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/gcube/gcube-0.4-r1.ebuild,v 1.6 2011/03/15 20:18:15 mr_bones_ Exp $
 
 EAPI=2
 inherit eutils games
@@ -15,8 +15,8 @@ KEYWORDS="~amd64 ~ppc x86"
 IUSE=""
 
 DEPEND="virtual/opengl
-	media-libs/libsdl
-	media-libs/jpeg
+	media-libs/libsdl[audio,joystick,video]
+	virtual/jpeg
 	sys-libs/ncurses
 	sys-libs/zlib"
 

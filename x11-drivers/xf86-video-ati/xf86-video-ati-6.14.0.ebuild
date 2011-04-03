@@ -1,13 +1,13 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-drivers/xf86-video-ati/xf86-video-ati-6.14.0.ebuild,v 1.3 2011/02/12 17:29:14 fauli Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-drivers/xf86-video-ati/xf86-video-ati-6.14.0.ebuild,v 1.7 2011/03/05 18:09:51 xarthisius Exp $
 
 EAPI=3
 inherit xorg-2
 
 DESCRIPTION="ATI video driver"
 
-KEYWORDS="~alpha amd64 ~ia64 ~ppc ~ppc64 ~sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 ia64 ppc ppc64 sparc x86 ~x86-fbsd"
 IUSE=""
 
 RDEPEND=">=x11-base/xorg-server-1.6.3[-minimal]"
@@ -21,6 +21,10 @@ DEPEND="${RDEPEND}
 	x11-proto/xf86driproto
 	x11-proto/xf86miscproto
 	x11-proto/xproto"
+
+PATCHES=(
+	"${FILESDIR}/${P}-xorg-server-1.10.patch"
+)
 
 pkg_setup() {
 	xorg-2_pkg_setup

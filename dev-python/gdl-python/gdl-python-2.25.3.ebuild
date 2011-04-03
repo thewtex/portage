@@ -1,9 +1,13 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/gdl-python/gdl-python-2.25.3.ebuild,v 1.7 2011/01/30 18:11:20 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/gdl-python/gdl-python-2.25.3.ebuild,v 1.9 2011/02/26 19:22:50 eva Exp $
 
 EAPI="2"
 G_PY_PN="gnome-python-extras"
+
+SUPPORT_PYTHON_ABIS="1"
+PYTHON_DEPEND="2"
+RESTRICT_PYTHON_ABIS="3.*"
 
 inherit gnome-python-common
 
@@ -16,7 +20,7 @@ SLOT="0"
 KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd"
 IUSE="examples"
 
-RDEPEND=">=dev-libs/gdl-2.28"
+RDEPEND=">=dev-libs/gdl-2.28:1"
 DEPEND="${RDEPEND}"
 
 EXAMPLES="examples/gdl/*"

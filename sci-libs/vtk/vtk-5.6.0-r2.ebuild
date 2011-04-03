@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/vtk/vtk-5.6.0-r2.ebuild,v 1.6 2010/11/08 17:48:45 xarthisius Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/vtk/vtk-5.6.0-r2.ebuild,v 1.8 2011/03/31 15:50:21 scarabeus Exp $
 
 EAPI="3"
 PYTHON_DEPEND="python? 2"
@@ -25,7 +25,7 @@ RDEPEND="
 	examples? (
 			x11-libs/qt-core:4[qt3support]
 			x11-libs/qt-gui:4[qt3support] )
-	ffmpeg? ( media-video/ffmpeg )
+	ffmpeg? ( virtual/ffmpeg )
 	java? ( >=virtual/jre-1.5 )
 	mpi? ( virtual/mpi[cxx,romio] )
 	mysql? ( virtual/mysql )
@@ -42,7 +42,7 @@ RDEPEND="
 	tk? ( >=dev-lang/tk-8.2.3 )
 	R? ( dev-lang/R )
 	dev-libs/expat
-	dev-libs/libxml2
+	dev-libs/libxml2:2
 	media-libs/freetype
 	virtual/jpeg
 	media-libs/libpng

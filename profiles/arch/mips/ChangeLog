@@ -1,6 +1,33 @@
 # ChangeLog for Gentoo/MIPS profile directory
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/mips/ChangeLog,v 1.42 2010/12/27 01:24:09 mattst88 Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/mips/ChangeLog,v 1.50 2011/04/01 21:14:06 ulm Exp $
+
+  01 Apr 2011; Ulrich Mueller <ulm@gentoo.org> -packages:
+  Remove virtual/bootloader from system set, with permission from mattst88,
+  bug 359971. Remove then empty file.
+
+  31 Mar 2011; Mart Raudsepp <leio@gentoo.org> package.use.mask:
+  Add x11-libs/vte to glade USE mask list
+
+  19 Mar 2011; Samuli Suominen <ssuominen@gentoo.org> virtuals:
+  Remove virtual/alsa.
+
+  18 Mar 2011: Mike Frysinger <vapier@gentoo.org> mips64/multilib/make.defaults,
+  mipsel/mips64el/multilib/make.defaults:
+  Drop CDEFINE_<abi> variables now that nothing uses them.
+
+  04 Mar 2011; Matt Turner <mattst88@gentoo.org> package.use.mask:
+  Drop net-firewall/iptables[netlink], per bug 354309
+
+  21 Feb 2011; Matt Turner <mattst88@gentoo.org> make.defaults:
+  Remove -unicode from USE. No one remembers why it was there
+
+  18 Feb 2011; Matt Turner <mattst88@gentoo.org> +mips64/n32/make.defaults,
+  +mipsel/mips64el/n32/make.defaults:
+  Add make.defaults to n32 profiles to set LIBDIR to the correct location.
+
+  15 Feb 2011; Matt Turner <mattst88@gentoo.org> make.defaults:
+  Added -openmp to default MIPS USE flags.
 
   27 Dec 2010; Matt Turner <mattst88@gentoo.org> package.use.mask:
   Add 'media-gfx/imagemagick raw' package.use.mask

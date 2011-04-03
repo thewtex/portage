@@ -1,5 +1,5 @@
-test? ( dev-python/coverage dev-python/minimock dev-python/nose ) >=app-admin/eselect-python-20091230 || ( =dev-lang/python-2.7* =dev-lang/python-2.6* )
->=app-admin/eselect-python-20091230 || ( =dev-lang/python-2.7* =dev-lang/python-2.6* )
+dev-python/simplejson test? ( dev-python/coverage dev-python/minimock ) >=app-admin/eselect-python-20091230 =dev-lang/python-2* test? ( dev-python/nose )
+dev-python/simplejson >=app-admin/eselect-python-20091230 =dev-lang/python-2*
 0
 http://thp.io/2010/mygpoclient/mygpoclient-1.5.tar.gz
 
@@ -8,13 +8,13 @@ GPL-3
 A gpodder.net client library
 ~amd64 ~x86
 distutils multilib python toolchain-funcs
-test
+test test
 
 
 
 3
 
-compile install postinst postrm prepare
+compile install postinst postrm prepare test
 
 
 

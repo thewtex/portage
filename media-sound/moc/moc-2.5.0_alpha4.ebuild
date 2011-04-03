@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/moc/moc-2.5.0_alpha4.ebuild,v 1.8 2010/07/18 12:28:48 nixnut Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/moc/moc-2.5.0_alpha4.ebuild,v 1.9 2011/03/26 15:10:25 scarabeus Exp $
 
 EAPI=2
 MY_P=${P/_/-}
@@ -29,7 +29,7 @@ RDEPEND=">=sys-libs/db-4
 		>=media-libs/taglib-1.3.1 )
 	timidity? ( media-libs/libtimidity media-sound/timidity++ )
 	sid? ( >=media-libs/libsidplay-2 )
-	ffmpeg? ( media-video/ffmpeg )
+	ffmpeg? ( virtual/ffmpeg )
 	speex? ( >=media-libs/speex-1 )
 	libsamplerate? ( >=media-libs/libsamplerate-0.1 )
 	curl? ( >=net-misc/curl-7.12.2 )"

@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/povray/povray-3.7.0_rc3.ebuild,v 1.1 2011/01/28 19:01:32 lavajoe Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/povray/povray-3.7.0_rc3.ebuild,v 1.3 2011/03/24 15:57:10 jlec Exp $
 
 EAPI="3"
 
@@ -26,7 +26,7 @@ IUSE="debug mkl openexr tiff X"
 
 DEPEND="
 	>=dev-libs/boost-1.41
-	media-libs/jpeg
+	virtual/jpeg
 	media-libs/libpng
 	sys-libs/zlib
 	openexr? (
@@ -58,6 +58,8 @@ src_prepare() {
 	# The "+p" option on the test command line causes a pause and
 	# prompts the user to interact, so remove it.
 	sed -i -e "s:biscuit.pov -f +d +p:biscuit.pov -f +d:" Makefile.am || die
+
+	epatch "${FILESDIR}"/${PV}-user-conf.patch
 
 	eautoreconf
 }

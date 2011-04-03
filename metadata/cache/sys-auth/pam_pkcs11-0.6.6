@@ -1,0 +1,22 @@
+dev-libs/opensc sys-libs/pam curl? ( net-misc/curl ) ldap? ( net-nds/openldap ) nss? ( dev-libs/nss curl? ( || ( net-misc/curl[-ssl] net-misc/curl[ssl,nss,-gnutls] ) ) ) !nss? ( dev-libs/openssl curl? ( || ( net-misc/curl[-ssl] net-misc/curl[ssl,-nss,-gnutls] ) ) ) pcsc-lite? ( sys-apps/pcsc-lite ) dev-util/pkgconfig
+dev-libs/opensc sys-libs/pam curl? ( net-misc/curl ) ldap? ( net-nds/openldap ) nss? ( dev-libs/nss curl? ( || ( net-misc/curl[-ssl] net-misc/curl[ssl,nss,-gnutls] ) ) ) !nss? ( dev-libs/openssl curl? ( || ( net-misc/curl[-ssl] net-misc/curl[ssl,-nss,-gnutls] ) ) ) pcsc-lite? ( sys-apps/pcsc-lite )
+0
+http://www.opensc-project.org/files/pam_pkcs11/pam_pkcs11-0.6.6.tar.gz
+
+http://www.opensc-project.org/pam_pkcs11
+LGPL-2.1
+PKCS#11 PAM library
+~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
+eutils flag-o-matic multilib pam portability toolchain-funcs
+curl ldap nss +pcsc-lite
+
+
+
+3
+
+config configure install postinst prepare
+
+
+
+
+

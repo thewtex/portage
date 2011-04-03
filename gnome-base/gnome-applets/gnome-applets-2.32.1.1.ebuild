@@ -1,57 +1,55 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-base/gnome-applets/gnome-applets-2.32.1.1.ebuild,v 1.6 2011/02/08 19:04:13 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-base/gnome-applets/gnome-applets-2.32.1.1.ebuild,v 1.14 2011/03/27 10:15:15 ssuominen Exp $
 
 EAPI="3"
 GCONF_DEBUG="no"
 PYTHON_DEPEND="2:2.4"
 
-inherit eutils gnome2 python
+inherit eutils gnome2 python autotools
 
 DESCRIPTION="Applets for the GNOME Desktop and Panel"
 HOMEPAGE="http://www.gnome.org/"
 
 LICENSE="GPL-2 FDL-1.1 LGPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux"
-IUSE="battstat gnome gstreamer hal ipv6 networkmanager policykit"
+KEYWORDS="alpha amd64 ~arm ia64 ppc ppc64 sparc x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux"
+IUSE="gnome gstreamer ipv6 networkmanager policykit"
 
 # TODO: configure says python stuff is optional
 # null applet still needs bonobo support for gnome-panel
-HALDEPEND=" hal? ( >=sys-apps/hal-0.5.3 ) "
 RDEPEND=">=x11-libs/gtk+-2.20:2
 	>=dev-libs/glib-2.22:2
-	>=gnome-base/gconf-2.8
+	>=gnome-base/gconf-2.8:2
 	>=gnome-base/gnome-panel-2.31.2[bonobo]
 	>=x11-libs/libxklavier-4.0
-	>=x11-libs/libwnck-2.9.3
+	>=x11-libs/libwnck-2.9.3:1
 	>=gnome-base/gnome-desktop-2.11.1:2
 	>=x11-libs/libnotify-0.3.2
 	>=sys-apps/dbus-1.1.2
 	>=dev-libs/dbus-glib-0.74
-	>=dev-libs/libxml2-2.5.0
+	>=dev-libs/libxml2-2.5.0:2
 	>=x11-themes/gnome-icon-theme-2.15.91
 	>=dev-libs/libgweather-2.22.1:2
 	x11-libs/libX11
 
-	battstat? ( $HALDEPEND )
 	gnome?	(
 		gnome-base/gnome-settings-daemon
 		gnome-base/libgnome
 
 		>=gnome-extra/gucharmap-2.23
-		>=gnome-base/libgtop-2.11.92
+		>=gnome-base/libgtop-2.11.92:2
 
-		>=dev-python/pygobject-2.6
-		>=dev-python/pygtk-2.6
-		>=dev-python/gconf-python-2.10
+		>=dev-python/pygobject-2.6:2
+		>=dev-python/pygtk-2.6:2
+		>=dev-python/gconf-python-2.10:2
 		>=dev-python/gnome-applets-python-2.10 )
 	gstreamer?	(
-		>=media-libs/gstreamer-0.10.2
-		>=media-libs/gst-plugins-base-0.10.14
+		>=media-libs/gstreamer-0.10.2:0.10
+		>=media-libs/gst-plugins-base-0.10.14:0.10
 		|| (
-			>=media-plugins/gst-plugins-alsa-0.10.14
-			>=media-plugins/gst-plugins-oss-0.10.14 ) )
+			>=media-plugins/gst-plugins-alsa-0.10.14:0.10
+			>=media-plugins/gst-plugins-oss-0.10.14:0.10 ) )
 	networkmanager? ( >=net-misc/networkmanager-0.7.0 )
 	policykit? ( >=sys-auth/polkit-0.92 )"
 
@@ -61,11 +59,15 @@ DEPEND="${RDEPEND}
 	>=dev-util/pkgconfig-0.19
 	>=dev-util/intltool-0.35
 	dev-libs/libxslt
-	~app-text/docbook-xml-dtd-4.3"
+	~app-text/docbook-xml-dtd-4.3
+	gnome-base/gnome-common"
+# gnome-base/gnome-common for eautoreconf
 
 pkg_setup() {
 	DOCS="AUTHORS ChangeLog NEWS README"
 	G2CONF="${G2CONF}
+		--without-hal
+		--disable-battstat
 		--disable-scrollkeeper
 		--disable-schemas-install
 		$(use_enable gstreamer mixer-applet)
@@ -73,19 +75,16 @@ pkg_setup() {
 		$(use_enable networkmanager)
 		$(use_enable policykit polkit)"
 
-	if use battstat; then
-		G2CONF="${G2CONF} $(use_with hal)"
-	else
-		G2CONF="${G2CONF} --without-hal --disable-battstat"
-	fi
-
 	python_set_active_version 2
 }
 
 src_prepare() {
+	gnome2_src_prepare
+
 	epatch "${FILESDIR}"/${P}-libnotify-0.7.patch
 
-	gnome2_src_prepare
+	# gweather: fix NetworkManager support to compile, see upstream bug 636217 and bug 358043
+	epatch "${FILESDIR}"/${P}-dbus-fix.patch
 
 	# disable pyc compiling
 	mv py-compile py-compile.orig
@@ -96,6 +95,9 @@ src_prepare() {
 		invest-applet/invest/Makefile.in || die "disabling invest tests failed"
 
 	python_convert_shebangs -r 2 .
+
+	intltoolize --force --copy --automake || die "intltoolize failed"
+	eautoreconf
 }
 
 src_test() {
@@ -106,7 +108,7 @@ src_test() {
 src_install() {
 	gnome2_src_install
 
-	local APPLETS="accessx-status battstat charpick cpufreq drivemount geyes
+	local APPLETS="accessx-status charpick cpufreq drivemount geyes
 			 gkb-new gswitchit gweather invest-applet mini-commander
 			 mixer modemlights multiload null_applet stickynotes trashapplet"
 
@@ -123,12 +125,6 @@ src_install() {
 
 pkg_postinst() {
 	gnome2_pkg_postinst
-
-	if use battstat && ! use hal ; then
-		elog "It is highly recommended that you install acpid if you use the"
-		elog "battstat applet to prevent any issues with other applications"
-		elog "trying to read acpi information."
-	fi
 
 	# check for new python modules on bumps
 	python_mod_optimize invest

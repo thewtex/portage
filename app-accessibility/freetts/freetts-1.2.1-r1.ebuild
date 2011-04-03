@@ -1,6 +1,6 @@
-# Copyright 1999-2007 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-accessibility/freetts/freetts-1.2.1-r1.ebuild,v 1.5 2007/09/14 21:45:45 angelos Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-accessibility/freetts/freetts-1.2.1-r1.ebuild,v 1.6 2011/03/23 17:15:06 cbrannon Exp $
 
 inherit eutils java-pkg-2 java-ant-2
 
@@ -9,7 +9,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}-src.zip"
 HOMEPAGE="http://freetts.sourceforge.net/"
 
 RDEPEND=">=virtual/jre-1.4
-	mbrola? ( >=app-accessibility/mbrola-3.0.1h-r3 )"
+	mbrola? ( <=app-accessibility/mbrola-3.0.1h-r5 ) "
 DEPEND=">=virtual/jdk-1.4
 	${RDEPEND}
 	jsapi? ( app-arch/sharutils )

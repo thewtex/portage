@@ -1,6 +1,10 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/s390/package.use.mask,v 1.11 2011/02/10 04:05:53 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/s390/package.use.mask,v 1.14 2011/03/31 08:31:25 scarabeus Exp $
+
+# Sebastian Pipping <sping@gentoo.org> (22 Feb 2011)
+# No media-sound/lilypond here, yet (bug #356069)
+app-text/asciidoc test
 
 # Mike Frysinger <vapier@gentoo.org> (10 Feb 2011)
 # Waiting for keywording #354309
@@ -10,22 +14,13 @@ net-firewall/iptables netlink
 # Mask python3 for stable portage until python-3.x is marked stable.
 =sys-apps/portage-2.1.9* python3
 =sys-apps/portage-2.1.8* python3
-=sys-apps/portage-2.1.7* python3
 
 # Raúl Porcel <armin76@gentoo.org> (27 Mar 2008)
 # Needs gtk USE-flag
 net-dns/avahi python
-
-# Doug Goldstein <cardoe@gentoo.org> (10 Sep 2007)
-# bug #172097
-# The app in question is sys-auth/consolekit
-x11-apps/xinit hal
 
 # Masking this so repoman shuts up about paludis
 sys-apps/paludis ruby-bindings
 
 # missing keyword for sys-cluster/openmpi sys-cluster/mpich2
 dev-libs/boost mpi
-
-# missing keyword for dev-libs/oniguruma
-sys-libs/slang cjk

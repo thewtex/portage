@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/gthumb/gthumb-2.12.2.ebuild,v 1.1 2011/01/12 22:29:41 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/gthumb/gthumb-2.12.2.ebuild,v 1.6 2011/03/22 19:36:16 ranger Exp $
 
 EAPI="3"
 GCONF_DEBUG="yes"
@@ -12,14 +12,14 @@ HOMEPAGE="http://gthumb.sourceforge.net"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ppc ppc64 x86"
 IUSE="cdr exif gnome-keyring gstreamer http raw slideshow tiff test"
 
 # TODO: beware, can link to brasero-3
 RDEPEND=">=dev-libs/glib-2.16:2
 	>=x11-libs/gtk+-2.20:2
 	>=gnome-base/gconf-2.6
-	>=dev-libs/libunique-1.1.2
+	>=dev-libs/libunique-1.1.2:1
 	media-libs/libpng:0
 	virtual/jpeg:0
 	cdr? ( >=app-cdr/brasero-2.28 )

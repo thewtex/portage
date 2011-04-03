@@ -1,10 +1,10 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/luakit/luakit-9999.ebuild,v 1.11 2010/11/06 11:05:18 wired Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/luakit/luakit-9999.ebuild,v 1.16 2011/03/21 23:26:04 nirbheek Exp $
 
 EAPI=3
 
-IUSE="helpers vim-syntax"
+IUSE="luajit vim-syntax"
 
 if [[ ${PV} == *9999* ]]; then
 	inherit git
@@ -15,8 +15,9 @@ if [[ ${PV} == *9999* ]]; then
 	SRC_URI=""
 else
 	inherit base
+	MY_PV="${PV/_p/-r}"
 	KEYWORDS="~amd64 ~x86"
-	SRC_URI="http://github.com/mason-larobina/${PN}/tarball/${PV} -> ${P}.tar.gz"
+	SRC_URI="http://github.com/mason-larobina/${PN}/tarball/${MY_PV} -> ${P}.tar.gz"
 fi
 
 DESCRIPTION="fast, small, webkit-gtk based micro-browser extensible by lua"
@@ -26,14 +27,17 @@ LICENSE="GPL-3"
 SLOT="0"
 
 COMMON_DEPEND="
-	>=dev-lang/lua-5.1
+	luajit? ( dev-lang/luajit:2 )
+	!luajit? ( >=dev-lang/lua-5.1 )
+	dev-db/sqlite:3
 	dev-libs/glib:2
-	net-libs/libsoup
-	net-libs/webkit-gtk
+	net-libs/libsoup:2.4
+	net-libs/webkit-gtk:2
 	x11-libs/gtk+:2
 "
 
 DEPEND="
+	dev-util/pkgconfig
 	sys-apps/help2man
 	${COMMON_DEPEND}
 "
@@ -41,9 +45,6 @@ DEPEND="
 RDEPEND="
 	${COMMON_DEPEND}
 	dev-lua/luafilesystem
-	helpers? (
-		x11-misc/dmenu
-	)
 	vim-syntax? ( || ( app-editors/vim app-editors/gvim ) )
 "
 
@@ -53,15 +54,19 @@ src_prepare() {
 	else
 		cd "${WORKDIR}"/mason-larobina-luakit-*
 		S=$(pwd)
+		base_src_prepare
 	fi
 }
 
 src_compile() {
-	if [[ ${PV} == *9999* ]]; then
-		emake PREFIX="/usr"
-	else
-		emake PREFIX="/usr" VERSION="${PV}"
+	myconf="PREFIX=/usr DEVELOPMENT_PATHS=0"
+	use luajit && myconf+=" USE_LUAJIT=1"
+
+	if [[ ${PV} != *9999* ]]; then
+		myconf+=" VERSION=${PV}"
 	fi
+
+	emake ${myconf} || die "emake failed"
 }
 
 src_install() {

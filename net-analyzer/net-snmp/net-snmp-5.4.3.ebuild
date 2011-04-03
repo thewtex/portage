@@ -1,8 +1,9 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/net-snmp/net-snmp-5.4.3.ebuild,v 1.2 2010/08/11 02:08:34 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/net-snmp/net-snmp-5.4.3.ebuild,v 1.4 2011/03/01 20:02:12 arfrever Exp $
 
-EAPI=2
+EAPI="3"
+PYTHON_DEPEND="python? 2"
 
 inherit fixheadtails flag-o-matic perl-module python autotools
 
@@ -43,6 +44,13 @@ DEPEND="${COMMON}
 	>=sys-devel/autoconf-2.61-r2
 	>=sys-apps/sed-4
 	doc? ( app-doc/doxygen )"
+
+pkg_setup() {
+	if use python; then
+		python_set_active_version 2
+		python_pkg_setup
+	fi
+}
 
 src_prepare() {
 	# lm_sensors-3 support
@@ -195,7 +203,7 @@ src_install () {
 
 pkg_postinst() {
 	if use python; then
-		python_mod_optimize $(python_get_sitedir)/netsnmp
+		python_mod_optimize netsnmp
 	fi
 
 	elog "An example configuration file has been installed in"
@@ -204,6 +212,6 @@ pkg_postinst() {
 
 pkg_postrm() {
 	if use python; then
-		python_mod_cleanup $(python_get_sitedir)/netsnmp
+		python_mod_cleanup netsnmp
 	fi
 }

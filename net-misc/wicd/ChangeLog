@@ -1,6 +1,27 @@
 # ChangeLog for net-misc/wicd
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/wicd/ChangeLog,v 1.79 2011/01/02 10:59:01 tomka Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/wicd/ChangeLog,v 1.84 2011/03/28 17:29:42 angelos Exp $
+
+  28 Mar 2011; Christoph Mende <angelos@gentoo.org> wicd-1.7.1_beta2-r3.ebuild:
+  Stable on amd64 wrt bug #358715
+
+*wicd-1.7.1_beta2-r3 (28 Mar 2011)
+
+  28 Mar 2011; Dane Smith <c1pher@gentoo.org> -wicd-1.7.1_beta2-r2.ebuild,
+  +wicd-1.7.1_beta2-r3.ebuild, +files/wicd-1.7.1_beta2-init.patch:
+  Revision bump & remove old.. Adds patch which addresses bug 335393. 
+  Cantidate for stabilization.
+
+  19 Mar 2011; Thomas Kahle <tomka@gentoo.org> -wicd-1.7.1_beta2-r1.ebuild:
+  Really remove old revision :(
+
+  19 Mar 2011; Thomas Kahle <tomka@gentoo.org> wicd-1.7.0.ebuild,
+  wicd-1.7.0-r1.ebuild, -wicd-1.7.1_beta2.ebuild:
+  Removed old beta revisions.
+
+  19 Mar 2011; Thomas Kahle <tomka@gentoo.org> wicd-1.7.0.ebuild,
+  wicd-1.7.0-r1.ebuild, wicd-1.7.1_beta2-r2.ebuild:
+  Adding pygobjects dependency per bug 359067. Thanks Piotr Karbowski.
 
   02 Jan 2011; Thomas Kahle <tomka@gentoo.org> wicd-1.7.1_beta2-r2.ebuild:
   Updated python dependencies to use eclass

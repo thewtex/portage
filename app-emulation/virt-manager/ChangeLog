@@ -1,6 +1,27 @@
 # ChangeLog for app-emulation/virt-manager
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/virt-manager/ChangeLog,v 1.40 2011/02/04 15:43:27 cardoe Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/virt-manager/ChangeLog,v 1.43 2011/03/28 08:40:20 flameeyes Exp $
+
+*virt-manager-0.8.7 (28 Mar 2011)
+
+  28 Mar 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  -virt-manager-0.8.3.ebuild, -virt-manager-0.8.4-r1.ebuild,
+  -virt-manager-0.8.4-r2.ebuild, -virt-manager-0.8.5.ebuild,
+  virt-manager-0.8.6.ebuild, +virt-manager-0.8.7.ebuild,
+  virt-manager-9999.ebuild:
+  Version bump; remove old; fix live ebuild (bug #360081).
+
+  23 Mar 2011; Samuli Suominen <ssuominen@gentoo.org>
+  virt-manager-0.8.3.ebuild, virt-manager-0.8.4-r1.ebuild,
+  virt-manager-0.8.4-r2.ebuild, virt-manager-0.8.5.ebuild,
+  virt-manager-0.8.6.ebuild, virt-manager-9999.ebuild:
+  Use SLOT dependencies for x11-libs/vte. Change gnome-extra/polkit-gnome
+  depend to sys-auth/polkit because there are other authentication agents
+  thesedays available, such as lxpolkit or polkit-kde-agent.
+
+  28 Feb 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  virt-manager-0.8.6.ebuild:
+  Fix dependency for virtinst. Thanks to Elliot Rezny in bug #356763.
 
 *virt-manager-0.8.6 (04 Feb 2011)
 

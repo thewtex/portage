@@ -1,6 +1,51 @@
 # ChangeLog for www-plugins/adobe-flash
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-plugins/adobe-flash/ChangeLog,v 1.62 2011/02/11 13:54:15 lack Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-plugins/adobe-flash/ChangeLog,v 1.72 2011/03/28 12:51:55 lack Exp $
+
+  28 Mar 2011; Jim Ramsay <lack@gentoo.org> adobe-flash-10.2.153.1.ebuild,
+  adobe-flash-10.2.153.1_p201011173.ebuild:
+  Removing nspluginwrapper USE flag, bug #360235
+
+  24 Mar 2011; Christoph Mende <angelos@gentoo.org>
+  adobe-flash-10.2.153.1.ebuild:
+  Stable on amd64 wrt bug #359019
+
+  23 Mar 2011; Jim Ramsay <lack@gentoo.org> adobe-flash-10.2.153.1.ebuild,
+  adobe-flash-10.2.153.1_p201011173.ebuild, metadata.xml:
+  Defaulting USE=+nspluginwrapper since most amd64 users will be using this
+  (probably)
+
+  23 Mar 2011; Thomas Kahle <tomka@gentoo.org> adobe-flash-10.2.153.1.ebuild:
+  x86 stable per bug 359019
+
+*adobe-flash-10.2.153.1_p201011173 (22 Mar 2011)
+*adobe-flash-10.2.153.1 (22 Mar 2011)
+
+  22 Mar 2011; Jim Ramsay <lack@gentoo.org> +adobe-flash-10.2.153.1.ebuild,
+  +adobe-flash-10.2.153.1_p201011173.ebuild:
+  Version bump for security bug #359019
+
+  02 Mar 2011; Kevin McCarthy <signals@gentoo.org>
+  adobe-flash-9.0.289.0.ebuild:
+  Changed gtk+ dep to slot 2 and bump EAPI for slot dep support.
+
+  21 Feb 2011; Jim Ramsay <lack@gentoo.org>
+  adobe-flash-10.2.152.27_p201011173-r2.ebuild:
+  memcpy-to-memmove.sh requires bash, no just any sh (Bug #354073)
+
+*adobe-flash-10.2.152.27_p201011173-r2 (17 Feb 2011)
+
+  17 Feb 2011; Jim Ramsay <lack@gentoo.org>
+  +adobe-flash-10.2.152.27_p201011173-r2.ebuild, +files/memcpy-to-memmove.sh:
+  Bug #354073: Patch 64-bit flash to fix memcpy issue with glibc-2.13
+
+  13 Feb 2011; Christian Faulhammer <fauli@gentoo.org>
+  adobe-flash-10.2.152.27.ebuild:
+  stable x86, security bug 354207
+
+  12 Feb 2011; Markos Chandras <hwoarang@gentoo.org>
+  adobe-flash-10.2.152.27.ebuild:
+  Stable on amd64 wrt bug #354207
 
 *adobe-flash-10.2.152.27_p201011173-r1 (11 Feb 2011)
 

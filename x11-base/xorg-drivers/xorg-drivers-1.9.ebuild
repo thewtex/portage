@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-base/xorg-drivers/xorg-drivers-1.9.ebuild,v 1.7 2010/12/31 20:26:40 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-base/xorg-drivers/xorg-drivers-1.9.ebuild,v 1.12 2011/03/15 17:56:59 chithanh Exp $
 
 DESCRIPTION="Meta package containing deps on all xorg drivers"
 HOMEPAGE="http://www.gentoo.org/"
@@ -8,7 +8,7 @@ SRC_URI=""
 
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm hppa ~ia64 ~mips ~ppc ppc64 ~sh ~sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 sh sparc x86 ~x86-fbsd"
 
 IUSE_INPUT_DEVICES="
 	input_devices_acecad
@@ -48,6 +48,7 @@ IUSE_VIDEO_CARDS="
 	video_cards_newport
 	video_cards_nouveau
 	video_cards_nv
+	video_cards_omapfb
 	video_cards_r128
 	video_cards_radeon
 	video_cards_rendition
@@ -74,7 +75,6 @@ IUSE_VIDEO_CARDS="
 	video_cards_virtualbox
 	video_cards_vmware
 	video_cards_voodoo
-	video_cards_xgi
 	video_cards_fglrx
 	video_cards_nvidia
 "
@@ -118,6 +118,7 @@ PDEPEND="
 	video_cards_nv?            ( x11-drivers/xf86-video-nv )
 	video_cards_nvidia?        ( x11-drivers/nvidia-drivers )
 	video_cards_fglrx?         ( x11-drivers/ati-drivers )
+	video_cards_omapfb?        ( x11-drivers/xf86-video-omapfb )
 	video_cards_r128?          ( x11-drivers/xf86-video-r128 )
 	video_cards_radeon?        ( x11-drivers/xf86-video-ati )
 	video_cards_rendition?     ( x11-drivers/xf86-video-rendition )
@@ -127,8 +128,12 @@ PDEPEND="
 	video_cards_siliconmotion? ( x11-drivers/xf86-video-siliconmotion )
 	video_cards_sis?           ( x11-drivers/xf86-video-sis )
 	video_cards_sisusb?        ( x11-drivers/xf86-video-sisusb )
+	video_cards_suncg14?       ( x11-drivers/xf86-video-suncg14 )
+	video_cards_suncg3?        ( x11-drivers/xf86-video-suncg3 )
+	video_cards_suncg6?        ( !x11-drivers/xf86-video-suncg6 )
 	video_cards_sunffb?        ( x11-drivers/xf86-video-sunffb )
 	video_cards_sunleo?        ( x11-drivers/xf86-video-sunleo )
+	video_cards_suntcx?        ( x11-drivers/xf86-video-suntcx )
 	video_cards_tdfx?          ( x11-drivers/xf86-video-tdfx )
 	video_cards_tga?           ( x11-drivers/xf86-video-tga )
 	video_cards_trident?       ( x11-drivers/xf86-video-trident )
@@ -139,7 +144,6 @@ PDEPEND="
 	video_cards_virtualbox?    ( x11-drivers/xf86-video-virtualbox )
 	video_cards_vmware?        ( x11-drivers/xf86-video-vmware )
 	video_cards_voodoo?        ( x11-drivers/xf86-video-voodoo )
-	video_cards_xgi?           ( x11-drivers/xf86-video-xgi )
 
 	!x11-drivers/xf86-input-citron
 	!x11-drivers/xf86-input-hyperpen
@@ -148,8 +152,4 @@ PDEPEND="
 	!x11-drivers/xf86-video-impact
 	!x11-drivers/xf86-video-nsc
 	!x11-drivers/xf86-video-sunbw2
-	!x11-drivers/xf86-video-suncg14
-	!x11-drivers/xf86-video-suncg3
-	!x11-drivers/xf86-video-suncg6
-	!x11-drivers/xf86-video-suntcx
 "

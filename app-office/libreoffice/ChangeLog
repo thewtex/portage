@@ -1,6 +1,80 @@
 # ChangeLog for app-office/libreoffice
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/libreoffice/ChangeLog,v 1.12 2011/02/12 15:43:10 suka Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/libreoffice/ChangeLog,v 1.26 2011/03/27 09:48:47 fauli Exp $
+
+  27 Mar 2011; Christian Faulhammer <fauli@gentoo.org>
+  libreoffice-3.3.1.ebuild:
+  stable x86, bug 358907
+
+*libreoffice-3.3.2 (22 Mar 2011)
+
+  22 Mar 2011; Andreas Proschofsky <suka@gentoo.org>
+  -libreoffice-3.3.2_rc2.ebuild, +files/gentoo-3.3.2.diff,
+  +files/libreoffice-libdb5-fix-check.diff, +libreoffice-3.3.2.ebuild,
+  -files/gentoo-3.3.2_rc2.diff:
+  Bump to LibreOffice 3.3.2, also fix db-5 support
+
+  18 Mar 2011; Andreas Proschofsky <suka@gentoo.org>
+  libreoffice-3.3.2_rc2.ebuild:
+  Some more changes for custom-cflags
+
+*libreoffice-3.3.2_rc2 (18 Mar 2011)
+
+  18 Mar 2011; Andreas Proschofsky <suka@gentoo.org>
+  -libreoffice-3.3.2_rc1.ebuild, +libreoffice-3.3.2_rc2.ebuild,
+  -files/gentoo-3.3.2_rc1.diff, +files/gentoo-3.3.2_rc2.diff:
+  New release candidate, also brings some further improvements to the ebuild
+  *) Add custom-optimization flag, thanks mostly to geki <h.mth@web.de>
+   bug #355981
+  *) Fixed dependency on cairo, we really want that not to be optional
+  *) Bunch of cleanups
+
+  17 Mar 2011; Andreas Proschofsky <suka@gentoo.org> libreoffice-3.3.1.ebuild,
+  libreoffice-3.3.2_rc1.ebuild:
+  Fix Homepage entry
+
+  16 Mar 2011; Andreas Proschofsky <suka@gentoo.org> libreoffice-3.3.1.ebuild,
+  libreoffice-3.3.2_rc1.ebuild:
+  Remove old style virtuals PROVIDE, bug #358895
+
+  16 Mar 2011; Andreas Proschofsky <suka@gentoo.org> libreoffice-3.3.1.ebuild,
+  libreoffice-3.3.2_rc1.ebuild:
+  Update icon caches after installation
+
+  16 Mar 2011; Markos Chandras <hwoarang@gentoo.org> libreoffice-3.3.1.ebuild:
+  Stable on amd64 wrt bug #358907
+
+*libreoffice-3.3.2_rc1 (13 Mar 2011)
+
+  13 Mar 2011; Andreas Proschofsky <suka@gentoo.org>
+  +libreoffice-3.3.2_rc1.ebuild, +files/gentoo-3.3.2_rc1.diff:
+  Add first release candidate for LibreOffice 3.3.2, masked for now
+
+  13 Mar 2011; Andreas Proschofsky <suka@gentoo.org> libreoffice-3.3.1.ebuild:
+  Properly slot gtk+-2 dependencies, also move pre-compilation checks to right
+  stage, bug #358491
+
+  02 Mar 2011; Andreas Proschofsky <suka@gentoo.org> libreoffice-3.3.1.ebuild,
+  +files/libreoffice-3.3.1-neon_remove_SSPI_support.diff:
+  Fix build with neon supporting SSPI, bug #356581
+
+  24 Feb 2011; Andreas Proschofsky <suka@gentoo.org> -libreoffice-3.3.0.ebuild,
+  -files/gentoo-3.3.0.diff, libreoffice-3.3.1.ebuild,
+  +files/libreoffice-3.3-libpng-1.5.diff, -files/libreoffice-3.3-prefix.patch:
+  Fix build with libpng 1.5 #356281, also remove outdated ebuild 
+
+*libreoffice-3.3.1 (23 Feb 2011)
+
+  23 Feb 2011; Andreas Proschofsky <suka@gentoo.org>
+  -libreoffice-3.3.1_rc1.ebuild, +libreoffice-3.3.1.ebuild,
+  -files/gentoo-3.3.1_rc1.diff, +files/gentoo-3.3.1.diff:
+  Bump to LibreOffice 3.3.1, bugfix release
+
+  17 Feb 2011; Andreas Proschofsky <suka@gentoo.org> libreoffice-3.3.0.ebuild,
+  +files/libreoffice-3.3.0_libxmlsec_fix_extern_c.diff,
+  libreoffice-3.3.1_rc1.ebuild:
+  Fix build problem with libxml2[+icu], thanks to Neil Cathey <cneil@yahoo.com>
+  for the patch, bug #354911 
 
 *libreoffice-3.3.1_rc1 (12 Feb 2011)
 

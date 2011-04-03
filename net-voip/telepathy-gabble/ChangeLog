@@ -1,6 +1,37 @@
 # ChangeLog for net-voip/telepathy-gabble
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-voip/telepathy-gabble/ChangeLog,v 1.67 2011/02/07 18:45:37 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-voip/telepathy-gabble/ChangeLog,v 1.74 2011/03/23 16:03:03 eva Exp $
+
+  23 Mar 2011; Gilles Dartiguelongue <eva@gentoo.org>
+  -telepathy-gabble-0.8.14.ebuild:
+  Remove security vulnerable version, bug #355219.
+
+  22 Mar 2011; Brent Baude <ranger@gentoo.org>
+  telepathy-gabble-0.10.5.ebuild:
+  Marking telepathy-gabble-0.10.5 ppc stable for bug 353436
+
+  12 Mar 2011; Raúl Porcel <armin76@gentoo.org>
+  telepathy-gabble-0.10.5.ebuild:
+  alpha/ia64/sparc stable wrt #353436
+
+  24 Feb 2011; Thomas Kahle <tomka@gentoo.org> telepathy-gabble-0.10.5.ebuild:
+  x86 stable per bug 353436
+
+  23 Feb 2011; Markos Chandras <hwoarang@gentoo.org>
+  telepathy-gabble-0.10.5.ebuild:
+  Stable on amd64 wrt bug #353436
+
+  18 Feb 2011; Nirbheek Chauhan <nirbheek@gentoo.org>
+  telepathy-gabble-0.10.5.ebuild:
+  Fix libsoup dependency: after 2.33.1, libsoup started using
+  glib-networking for ssl instead of gnutls, and it is now enabled
+  unconditionally)
+
+*telepathy-gabble-0.10.5 (16 Feb 2011)
+
+  16 Feb 2011; Pacho Ramos <pacho@gentoo.org> -telepathy-gabble-0.10.2.ebuild,
+  -telepathy-gabble-0.10.4.ebuild, +telepathy-gabble-0.10.5.ebuild:
+  Bump fixing a crash and a security issue, remove old.
 
   07 Feb 2011; Pacho Ramos <pacho@gentoo.org> metadata.xml:
   Add gnome to metadata as talked between us since empathy relies on this.

@@ -1,13 +1,13 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-kernel/dracut/dracut-007.ebuild,v 1.3 2011/01/09 03:27:27 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-kernel/dracut/dracut-007.ebuild,v 1.8 2011/03/31 15:26:33 ssuominen Exp $
 
 EAPI=2
 
-inherit eutils mount-boot
+inherit eutils
 
 DESCRIPTION="Generic initramfs generation tool"
-HOMEPAGE="http://sourceforge.net/projects/dracut/"
+HOMEPAGE="http://dracut.wiki.kernel.org"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
@@ -19,6 +19,7 @@ uswsusp xen"
 NETWORK_IUSE="iscsi nbd nfs"
 DM_IUSE="crypt dmraid dmsquash-live lvm"
 IUSE="${COMMON_IUSE} ${DM_IUSE} ${NETWORK_IUSE}"
+RESTRICT="test"
 
 NETWORK_DEPS="net-misc/bridge-utils >=net-misc/dhcp-3.1.2_p1 sys-apps/iproute2"
 DM_DEPS="|| ( sys-fs/device-mapper >=sys-fs/lvm2-2.02.33 )"
@@ -26,6 +27,7 @@ DM_DEPS="|| ( sys-fs/device-mapper >=sys-fs/lvm2-2.02.33 )"
 RDEPEND="
 	>=app-shells/bash-4.0
 	>=app-shells/dash-0.5.4.11
+	>=sys-apps/baselayout-1.12.14-r1
 	>=sys-apps/module-init-tools-3.5
 	>=sys-apps/sysvinit-2.87-r3
 	>=sys-apps/util-linux-2.16
@@ -36,7 +38,7 @@ RDEPEND="
 	crypt? ( sys-fs/cryptsetup ${DM_DEPS} )
 	debug? ( dev-util/strace )
 	dmraid? ( sys-fs/dmraid sys-fs/multipath-tools ${DM_DEPS} )
-	dmsquash-live? ( sys-apps/eject ${DM_DEPS} )
+	dmsquash-live? ( virtual/eject ${DM_DEPS} )
 	gensplash? ( media-gfx/splashutils )
 	iscsi? ( sys-block/open-iscsi[utils] ${NETWORK_DEPS} )
 	lvm? ( >=sys-fs/lvm2-2.02.33 )
@@ -110,18 +112,18 @@ src_prepare() {
 }
 
 src_compile() {
-	emake WITH_SWITCH_ROOT=0 prefix=/usr sysconfdir=/etc || die "emake failed"
+	emake WITH_SWITCH_ROOT=0 || die "emake failed"
 }
 
 src_install() {
 	emake WITH_SWITCH_ROOT=0 \
-		prefix=/usr sysconfdir=/etc \
-		DESTDIR="${D}" install || die "emake install failed"
+		prefix=/usr sysconfdir=/etc DESTDIR="${D}" \
+		install || die "emake install failed"
 
 	local gen2conf
 
-	dodir /boot/dracut /var/lib/dracut/overlay /etc/dracut.conf.d
-	dodoc HACKING TODO AUTHORS NEWS README*
+	dodir /var/lib/dracut/overlay
+	dodoc HACKING TODO AUTHORS NEWS README* || die 'dodoc failed'
 
 	case "$(base_sys_maj_ver)" in
 		1) gen2conf=gentoo.conf ;;
@@ -130,7 +132,8 @@ src_install() {
 	esac
 
 	insinto /etc/dracut.conf.d
-	newins dracut.conf.d/${gen2conf}.example ${gen2conf}
+	newins dracut.conf.d/${gen2conf}.example ${gen2conf} \
+		|| die 'gen2conf ins failed'
 
 	#
 	# Modules
@@ -138,9 +141,10 @@ src_install() {
 	local module
 	modules_dir="${D}/usr/share/dracut/modules.d"
 
-	echo "${PF}" > "${modules_dir}"/10rpmversion/dracut-version
+	echo "${PF}" > "${modules_dir}"/10rpmversion/dracut-version \
+		|| die 'dracut-version failed'
 
-	# Disable modules not enabled by USE flags
+	# Remove modules not enabled by USE flags
 	for module in ${IUSE} ; do
 		! use ${module} && rm_module ${module}
 	done
@@ -148,10 +152,10 @@ src_install() {
 	! any_module ${DM_IUSE} && rm_module 90dm
 	! any_module ${NETWORK_IUSE} && rm_module 45ifcfg 40network
 
-	# Disable S/390 modules which are not tested at all
+	# Remove S/390 modules which are not tested at all
 	rm_module 95dasd 95dasd_mod 95zfcp 95znet
 
-	# Disable modules which won't work for sure
+	# Remove modules which won't work for sure
 	rm_module 95fcoe # no tools
 
 	# fips module depends on masked app-crypt/hmaccalc
@@ -159,13 +163,11 @@ src_install() {
 }
 
 pkg_postinst() {
-	mount-boot_pkg_postinst
-
 	elog 'To generate the initramfs:'
 	elog '    # mount /boot (if necessary)'
 	elog '    # dracut "" <kernel-version>'
 	elog ''
-	elog 'For command line documentation see man 7 dracut.kernel.'
+	elog 'For command line documentation see dracut.kernel(7).'
 	elog ''
 	elog 'Simple example to select root and resume partition:'
 	elog '    root=/dev/sda1 resume=/dev/sda2'
@@ -175,16 +177,6 @@ pkg_postinst() {
 	elog 'modules and kernel drivers for this system, use the "-H" option.'
 	elog 'Some modules need to be explicitly added with "-a" option even if'
 	elog 'required tools are installed.'
-
-	[[ $(base_sys_maj_ver) = 1 ]] && {
-		echo
-		ewarn 'You might encounter following problem during boot time when using'
-		ewarn 'baselayout1:'
-		ewarn '    devpts is already mounted or /dev/pts is busy'
-		ewarn 'See discussion on the Gentoo Forums:'
-		ewarn 'http://forums.gentoo.org/viewtopic-p-6377431.html'
-	}
-
 	echo
 	ewarn 'dhcp-3 is known to not work with QEMU. You will need dhcp-4 or'
 	ewarn 'later for it.'

@@ -1,13 +1,13 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/base/make.defaults,v 1.60 2010/12/24 15:44:26 mabi Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/base/make.defaults,v 1.64 2011/03/20 18:45:06 ssuominen Exp $
 #
 # System-wide defaults for the Portage system
 # See portage(5) manpage
 
 # Env vars to expand into USE vars.  Modifying this requires prior
 # discussion on gentoo-dev@gentoo.org.
-USE_EXPAND="APACHE2_MODULES APACHE2_MPMS FOO2ZJS_DEVICES MISDN_CARDS FRITZCAPI_CARDS FCDSL_CARDS VIDEO_CARDS DVB_CARDS LIRC_DEVICES INPUT_DEVICES LINGUAS USERLAND KERNEL ELIBC CROSSCOMPILE_OPTS ALSA_CARDS ALSA_PCM_PLUGINS LCD_DEVICES CAMERAS NETBEANS_MODULES QEMU_SOFTMMU_TARGETS QEMU_USER_TARGETS SANE_BACKENDS RUBY_TARGETS PHP_TARGETS NGINX_MODULES_HTTP NGINX_MODULES_MAIL XFCE_PLUGINS XTABLES_ADDONS GPSD_PROTOCOLS COLLECTD_PLUGINS"
+USE_EXPAND="APACHE2_MODULES APACHE2_MPMS FOO2ZJS_DEVICES MISDN_CARDS FRITZCAPI_CARDS FCDSL_CARDS VIDEO_CARDS DVB_CARDS LIRC_DEVICES INPUT_DEVICES LINGUAS USERLAND KERNEL ELIBC CROSSCOMPILE_OPTS ALSA_CARDS ALSA_PCM_PLUGINS LCD_DEVICES CAMERAS NETBEANS_MODULES QEMU_SOFTMMU_TARGETS QEMU_USER_TARGETS SANE_BACKENDS RUBY_TARGETS PHP_TARGETS NGINX_MODULES_HTTP NGINX_MODULES_MAIL XFCE_PLUGINS XTABLES_ADDONS GPSD_PROTOCOLS COLLECTD_PLUGINS DRACUT_MODULES"
 
 # USE_EXPAND variables whose contents are not shown in package manager
 # output. Changes need discussion on gentoo-dev.
@@ -25,6 +25,10 @@ ELIBC="glibc"
 KERNEL="linux"
 USERLAND="GNU"
 INPUT_DEVICES="keyboard mouse"
+
+# Pacho Ramos <pacho@gentoo.org> (14 Feb 2010)
+# Enable 'ptp2' by default as it is available for most cameras.
+CAMERAS="ptp2"
 
 # Ole Markus With <olemarkus@gentoo.org> (09 Oct 2010)
 # Default PHP targets (should always be latest stable version)
@@ -62,7 +66,7 @@ LCD_DEVICES="bayrad cfontz cfontz633 glk hd44780 lb216 lcdm001 mtxorb ncurses te
 # Diego Pettenò <flameeyes@gentoo.org> (14 Jul 2007)
 # Moved to base/ profile from default-linux/ so that it also applies to
 # embedded and hardened profiles.
-USE="${USE} cracklib"
+USE="cracklib"
 
 # Miroslav Šulc <fordfrog@gentoo.org> (19 Nov 2008)
 # Netbeans modules/clusters
@@ -87,6 +91,3 @@ USE="${USE} cxx"
 # We usually don't want python to (re)write .py[co] files during phase runs
 # since it could cause sandbox violations
 PYTHONDONTWRITEBYTECODE="1"
-
-# Let XZ use all memory when unpacking to avoid failure with low-mem #303975
-XZ_OPT="--memory=max"

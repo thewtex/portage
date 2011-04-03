@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/mesa/mesa-7.9.1.ebuild,v 1.3 2011/02/12 17:07:02 fauli Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/mesa/mesa-7.9.1.ebuild,v 1.8 2011/03/05 17:57:50 xarthisius Exp $
 
 EAPI=3
 
@@ -35,7 +35,7 @@ fi
 
 LICENSE="LGPL-2 kilgard"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 sh sparc x86 ~x86-fbsd"
 
 INTEL_CARDS="intel"
 RADEON_CARDS="radeon"
@@ -75,6 +75,7 @@ RDEPEND="
 		)
 	)
 	${LIBDRM_DEPSTRING}[video_cards_nouveau?,video_cards_vmware?]
+	video_cards_nouveau? ( <x11-libs/libdrm-2.4.24 )
 "
 for card in ${INTEL_CARDS}; do
 	RDEPEND="${RDEPEND}

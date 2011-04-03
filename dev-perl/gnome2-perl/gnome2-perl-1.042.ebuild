@@ -1,8 +1,9 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/gnome2-perl/gnome2-perl-1.042.ebuild,v 1.2 2010/07/20 15:17:41 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/gnome2-perl/gnome2-perl-1.042.ebuild,v 1.4 2011/03/29 10:22:53 angelos Exp $
 
 MODULE_AUTHOR=TSCH
+EAPI=1
 inherit perl-module
 
 DESCRIPTION="Perl interface to the 2.x series of the Gnome libraries"
@@ -16,8 +17,7 @@ IUSE=""
 
 S=${WORKDIR}/Gnome2-${PV}
 
-RDEPEND=">=x11-libs/gtk+-2
-	>=gnome-base/libgnomeprint-2
+RDEPEND="x11-libs/gtk+:2
 	>=dev-perl/gtk2-perl-1.0
 	gnome-base/libgnomeui
 	gnome-base/libbonoboui

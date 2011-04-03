@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/metacity/metacity-2.30.3.ebuild,v 1.4 2011/01/30 19:21:30 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/metacity/metacity-2.30.3.ebuild,v 1.7 2011/03/27 13:04:59 nirbheek Exp $
 
 EAPI="3"
 # debug only changes CFLAGS
@@ -13,14 +13,14 @@ HOMEPAGE="http://blogs.gnome.org/metacity/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ia64 ~ppc ~ppc64 sh sparc x86 ~x86-fbsd ~x86-interix ~amd64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="alpha amd64 arm ia64 ppc ppc64 sh sparc x86 ~x86-fbsd ~x86-interix ~amd64-linux ~x86-linux ~x86-solaris"
 IUSE="test xinerama"
 
 # XXX: libgtop is automagic, hard-enabled instead
 RDEPEND=">=x11-libs/gtk+-2.20:2
 	>=x11-libs/pango-1.2[X]
-	>=gnome-base/gconf-2
-	>=dev-libs/glib-2.6
+	>=gnome-base/gconf-2:2
+	>=dev-libs/glib-2.6:2
 	>=x11-libs/startup-notification-0.7
 	>=x11-libs/libXcomposite-0.2
 	x11-libs/libXfixes

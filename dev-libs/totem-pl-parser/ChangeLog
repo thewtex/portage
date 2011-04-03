@@ -1,6 +1,69 @@
 # ChangeLog for dev-libs/totem-pl-parser
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/totem-pl-parser/ChangeLog,v 1.79 2011/01/30 19:31:10 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/totem-pl-parser/ChangeLog,v 1.92 2011/04/02 11:37:04 pacho Exp $
+
+  02 Apr 2011; Pacho Ramos <pacho@gentoo.org> -totem-pl-parser-2.30.1.ebuild,
+  -totem-pl-parser-2.30.4.ebuild, totem-pl-parser-2.32.4.ebuild:
+  Pull fixed quvi version (bug #355903) and enable it by default as it's now
+  the only way of playing youtube videos. Commend unneeded ebuild parts when
+  eautoreconf is not used. Remove old
+
+  23 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org>
+  +files/totem-pl-parser-2.32.3-fix-quvi.patch:
+  Re-add patch file, fixes bug 360151
+
+  22 Mar 2011; Brent Baude <ranger@gentoo.org>
+  totem-pl-parser-2.32.3.ebuild:
+  Marking totem-pl-parser-2.32.3 ppc stable for bug 353436
+
+*totem-pl-parser-2.32.4 (22 Mar 2011)
+
+  22 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org>
+  -totem-pl-parser-2.32.3-r1.ebuild,
+  -files/totem-pl-parser-2.32.3-fix-quvi.patch,
+  +totem-pl-parser-2.32.4.ebuild:
+  Bump to 2.32.4, remove old
+
+  21 Mar 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  totem-pl-parser-2.32.3.ebuild:
+  ppc64 stable wrt #353436
+
+  18 Mar 2011; Pacho Ramos <pacho@gentoo.org> totem-pl-parser-2.32.3.ebuild,
+  totem-pl-parser-2.32.3-r1.ebuild:
+  Readd x86-fbsd keywords as they don't need to be dropped (yet) if we use.mask
+  quvi for them.
+
+  12 Mar 2011; Raúl Porcel <armin76@gentoo.org> totem-pl-parser-2.32.3.ebuild:
+  alpha/arm/ia64/sparc stable wrt #353436
+
+  24 Feb 2011; Thomas Kahle <tomka@gentoo.org> totem-pl-parser-2.32.3.ebuild:
+  x86 stable per bug 353436
+
+  23 Feb 2011; Markos Chandras <hwoarang@gentoo.org>
+  totem-pl-parser-2.32.3.ebuild:
+  Stable on amd64 wrt bug #353436
+
+  22 Feb 2011; Pacho Ramos <pacho@gentoo.org> -totem-pl-parser-2.32.2.ebuild,
+  totem-pl-parser-2.32.3.ebuild, totem-pl-parser-2.32.3-r1.ebuild:
+  Fix building without dev-libs/gobject-introspection (bug #355979 by Timo A.
+  Hummel). Remove old.
+
+*totem-pl-parser-2.32.3-r1 (21 Feb 2011)
+
+  21 Feb 2011; Pacho Ramos <pacho@gentoo.org> totem-pl-parser-2.32.3.ebuild,
+  +totem-pl-parser-2.32.3-r1.ebuild:
+  Stable candidate won't have quvi support due bug #355903, keep it in testing
+  as talked with Nirbheek.
+
+  21 Feb 2011; Pacho Ramos <pacho@gentoo.org> totem-pl-parser-2.32.3.ebuild,
+  +files/totem-pl-parser-2.32.3-fix-quvi.patch:
+  Fix --enable-quvi configure option.
+
+*totem-pl-parser-2.32.3 (21 Feb 2011)
+
+  21 Feb 2011; Pacho Ramos <pacho@gentoo.org> -totem-pl-parser-2.32.1.ebuild,
+  +totem-pl-parser-2.32.3.ebuild:
+  Version bump with bugfixes, remove old.
 
   30 Jan 2011; Raúl Porcel <armin76@gentoo.org> totem-pl-parser-2.30.4.ebuild:
   alpha/arm/ia64/sparc stable wrt #348987

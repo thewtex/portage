@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-mta/mini-qmail/mini-qmail-1.05.ebuild,v 1.10 2010/10/19 05:30:27 leio Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-mta/mini-qmail/mini-qmail-1.05.ebuild,v 1.12 2011/03/28 08:46:35 eras Exp $
 
 inherit eutils toolchain-funcs fixheadtails
 
@@ -15,9 +15,19 @@ KEYWORDS="amd64 arm hppa ~mips ppc sparc x86"
 IUSE=""
 
 DEPEND="sys-apps/groff"
-RDEPEND="!virtual/mta"
-PROVIDE="virtual/mta
-	 virtual/mda"
+RDEPEND="
+	!mail-mta/courier
+	!mail-mta/esmtp
+	!mail-mta/exim
+	!mail-mta/msmtp
+	!mail-mta/nbsmtp
+	!mail-mta/netqmail
+	!mail-mta/nullmailer
+	!mail-mta/postfix
+	!mail-mta/qmail-ldap
+	!mail-mta/sendmail
+	!mail-mta/ssmtp
+	"
 
 S=${WORKDIR}/netqmail-${PV}/netqmail-${PV}
 

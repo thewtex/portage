@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-base/gnome-session/gnome-session-2.32.1.ebuild,v 1.4 2011/01/03 11:41:21 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-base/gnome-session/gnome-session-2.32.1.ebuild,v 1.11 2011/03/22 19:11:59 ranger Exp $
 
 EAPI="3"
 GCONF_DEBUG="yes"
@@ -12,14 +12,14 @@ HOMEPAGE="http://www.gnome.org/"
 
 LICENSE="GPL-2 LGPL-2 FDL-1.1"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="alpha amd64 arm ia64 ppc ppc64 sparc x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~x86-solaris"
 
 IUSE="doc ipv6 elibc_FreeBSD"
 
 RDEPEND=">=dev-libs/glib-2.16:2
 	>=x11-libs/gtk+-2.22.0:2
 	>=dev-libs/dbus-glib-0.76
-	>=gnome-base/gconf-2
+	>=gnome-base/gconf-2:2
 	>=sys-power/upower-0.9.0
 	elibc_FreeBSD? ( dev-libs/libexecinfo )
 
@@ -34,10 +34,12 @@ DEPEND="${RDEPEND}
 	>=sys-devel/gettext-0.10.40
 	>=dev-util/pkgconfig-0.17
 	>=dev-util/intltool-0.40
+	gnome-base/gnome-common
 	!<gnome-base/gdm-2.20.4
 	doc? (
 		app-text/xmlto
 		dev-libs/libxslt )"
+# gnome-common needed for eautoreconf
 # gnome-base/gdm does not provide gnome.desktop anymore
 
 pkg_setup() {

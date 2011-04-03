@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/dahdi-tools/dahdi-tools-2.4.0.ebuild,v 1.1 2010/09/14 15:14:32 chainsaw Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/dahdi-tools/dahdi-tools-2.4.0.ebuild,v 1.4 2011/02/27 18:58:35 chainsaw Exp $
 
 EAPI=3
 
@@ -13,10 +13,11 @@ SRC_URI="http://downloads.digium.com/pub/telephony/dahdi-tools/releases/${P}.tar
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="ppp"
 
 DEPEND="dev-libs/newt
+	ppp? ( net-dialup/ppp )
 	net-misc/dahdi
 	!net-misc/zaptel
 	>=sys-kernel/linux-headers-2.6.35

@@ -1,6 +1,50 @@
 # ChangeLog for media-libs/gstreamer
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/gstreamer/ChangeLog,v 1.278 2011/02/12 03:38:23 leio Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/gstreamer/ChangeLog,v 1.288 2011/03/29 11:10:27 leio Exp $
+
+  28 Mar 2011; Mart Raudsepp <leio@gentoo.org> gstreamer-0.10.32-r1.ebuild:
+  Add ~mips keyword
+
+  13 Mar 2011; Kacper Kowalik <xarthisius@gentoo.org> gstreamer-0.10.31.ebuild:
+  ppc64 stable wrt #353434
+
+*gstreamer-0.10.32-r1 (12 Mar 2011)
+
+  12 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org>
+  +gstreamer-0.10.32-r1.ebuild,
+  +files/gstreamer-0.10.32-fix-valve-drops.patch:
+  Fix audio problems with voice and video calling, patch taken from
+  upstream: https://bugzilla.gnome.org/show_bug.cgi?id=643455
+
+  05 Mar 2011; Raúl Porcel <armin76@gentoo.org> gstreamer-0.10.31.ebuild:
+  alpha/ia64/sh/sparc stable wrt #353434
+
+  01 Mar 2011; Jeroen Roovers <jer@gentoo.org> gstreamer-0.10.31.ebuild:
+  Stable for HPPA (bug #353434).
+
+  27 Feb 2011; Brent Baude <ranger@gentoo.org> gstreamer-0.10.31.ebuild:
+  Marking gstreamer-0.10.31 ppc stable for bug 353434
+
+  24 Feb 2011; Mart Raudsepp <leio@gentoo.org>
+  -files/gstreamer-0.10.30-make-382.patch, -gstreamer-0.10.24.ebuild,
+  -gstreamer-0.10.25.ebuild, -gstreamer-0.10.28.ebuild,
+  -gstreamer-0.10.30.ebuild:
+  Remove old
+
+*gstreamer-0.10.32 (24 Feb 2011)
+
+  24 Feb 2011; Mart Raudsepp <leio@gentoo.org> +gstreamer-0.10.32.ebuild:
+  Version bump. valve, input-selector and output-selector elements have
+  matured and moved from gst-plugins-bad to here, while ignoring the old
+  ones if -bad isn't upgraded yet. Lots of performance improvements in
+  heavily-used code paths. Many other improvements and bug fixes.
+
+  20 Feb 2011; Markus Meier <maekke@gentoo.org> gstreamer-0.10.31.ebuild:
+  arm stable, bug #353434
+
+  14 Feb 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  gstreamer-0.10.31.ebuild:
+  x86 stable wrt bug #353434
 
   12 Feb 2011; Mart Raudsepp <leio@gentoo.org> metadata.xml,
   gstreamer-0.10.31.ebuild:

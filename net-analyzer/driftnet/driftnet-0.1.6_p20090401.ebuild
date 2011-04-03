@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/driftnet/driftnet-0.1.6_p20090401.ebuild,v 1.4 2010/03/11 16:32:44 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/driftnet/driftnet-0.1.6_p20090401.ebuild,v 1.6 2011/03/28 21:33:55 radhermit Exp $
 
 EAPI=2
 inherit eutils flag-o-matic toolchain-funcs
@@ -15,8 +15,8 @@ SLOT="0"
 IUSE="gtk mp3 suid"
 
 CDEPEND="net-libs/libpcap
-	gtk? ( >=x11-libs/gtk+-2.0.0
-		media-libs/jpeg
+	gtk? ( x11-libs/gtk+:2
+		virtual/jpeg
 		media-libs/giflib
 		media-libs/libpng )"
 

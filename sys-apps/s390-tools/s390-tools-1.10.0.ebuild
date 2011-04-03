@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/s390-tools/s390-tools-1.10.0.ebuild,v 1.1 2010/10/03 17:42:35 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/s390-tools/s390-tools-1.10.0.ebuild,v 1.3 2011/04/02 12:02:23 armin76 Exp $
 
 inherit eutils
 
@@ -18,7 +18,7 @@ SRC_URI="http://download.boulder.ibm.com/ibmdl/pub/software/dw/linux390/ht_src/$
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="-* ~s390"
+KEYWORDS="-* s390"
 IUSE="fuse snmp zfcpdump"
 
 RDEPEND="sys-fs/sysfsutils
@@ -27,7 +27,6 @@ RDEPEND="sys-fs/sysfsutils
 DEPEND="${RDEPEND}
 	dev-util/indent
 	app-admin/genromfs"
-PROVIDE="virtual/bootloader"
 
 src_unpack() {
 	unpack ${P}.tar.bz2

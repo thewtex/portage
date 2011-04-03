@@ -1,9 +1,9 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tex/pdftex/pdftex-1.40.11.ebuild,v 1.1 2011/01/02 16:16:50 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-tex/pdftex/pdftex-1.40.11.ebuild,v 1.4 2011/02/27 16:47:01 armin76 Exp $
 
 EAPI=2
-inherit libtool toolchain-funcs
+inherit libtool toolchain-funcs eutils
 
 DESCRIPTION="Standalone version of pdftex that can be used to replace TeX Live's"
 HOMEPAGE="http://www.pdftex.org/"
@@ -12,11 +12,11 @@ LICENSE="GPL-2"
 
 SRC_URI="http://sarovar.org/frs/download.php/1300/${P}.tar.bz2"
 
-KEYWORDS="~amd64 ~arm ~hppa ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE=""
 
 RDEPEND=">=app-text/poppler-0.12.3-r3[xpdf-headers]
-	media-libs/libpng
+	>=media-libs/libpng-1.4
 	sys-libs/zlib
 	dev-libs/kpathsea
 	app-admin/eselect-pdftex"
@@ -28,6 +28,7 @@ S=${WORKDIR}/${P}/build
 src_prepare() {
 	mkdir "${S}"
 	cd "${WORKDIR}/${P}/src"
+	epatch "${FILESDIR}/${P}-libpng15.patch"
 	elibtoolize
 }
 

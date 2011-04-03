@@ -1,6 +1,6 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/amd64/make.defaults,v 1.6 2010/08/23 21:16:17 chithanh Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/amd64/make.defaults,v 1.8 2011/03/18 22:09:09 vapier Exp $
 
 ARCH="amd64"
 ACCEPT_KEYWORDS="${ARCH}"
@@ -18,19 +18,17 @@ ABI="amd64"
 
 # 64bit specific settings.
 CHOST_amd64="x86_64-pc-linux-gnu"
-CDEFINE_amd64="__x86_64__"
 
 # 32bit specific settings.
 CFLAGS_x86="-m32"
 LDFLAGS_x86="-m elf_i386"
 ASFLAGS_x86="--32"
 CHOST_x86="i686-pc-linux-gnu"
-CDEFINE_x86="__i386__"
 
 # 2006/10/24 - Simon Stelling <blubb@gentoo.org>
 # They are masked, but we can enable them anyway for those who have 
 # >=portage-2.1.2_pre3-r4
-USE="${USE} mmx sse sse2"
+USE="mmx sse sse2"
 
 # 2006/08/18 - Donnie Berkholz <dberkholz@gentoo.org>
 # Defaults for video drivers

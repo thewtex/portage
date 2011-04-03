@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-puzzle/kmagnet/kmagnet-0.09.ebuild,v 1.4 2011/01/30 13:19:03 tampakrap Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-puzzle/kmagnet/kmagnet-0.09.ebuild,v 1.5 2011/02/18 20:40:31 dilfridge Exp $
 
 EAPI=3
 KDE_LINGUAS="ca cs"
@@ -18,5 +18,6 @@ IUSE="debug +handbook"
 DEPEND="
 	$(add_kdebase_dep libkdegames)
 "
+RDEPEND=${DEPEND}
 
 DOCS="AUTHORS ChangeLog README TODO"

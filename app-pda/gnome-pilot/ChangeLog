@@ -1,6 +1,35 @@
 # ChangeLog for app-pda/gnome-pilot
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-pda/gnome-pilot/ChangeLog,v 1.64 2010/12/08 16:38:33 pacho Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-pda/gnome-pilot/ChangeLog,v 1.71 2011/03/31 03:58:28 ssuominen Exp $
+
+  31 Mar 2011; Samuli Suominen <ssuominen@gentoo.org>
+  gnome-pilot-2.32.0.ebuild, gnome-pilot-2.32.1.ebuild:
+  Remove sparc keywording wrt #353436, Comment #28.
+
+  27 Mar 2011; Samuli Suominen <ssuominen@gentoo.org>
+  gnome-pilot-2.0.17-r1.ebuild, gnome-pilot-2.32.0.ebuild,
+  gnome-pilot-2.32.1.ebuild:
+  Remove support for sys-apps/hal wrt #313389.
+
+  22 Mar 2011; Brent Baude <ranger@gentoo.org> gnome-pilot-2.32.0.ebuild:
+  Marking gnome-pilot-2.32.0 ppc stable for bug 353436
+
+*gnome-pilot-2.32.1 (21 Mar 2011)
+
+  21 Mar 2011; Pacho Ramos <pacho@gentoo.org> +gnome-pilot-2.32.1.ebuild:
+  Version bump with lots of bugfixes.
+
+  24 Feb 2011; Thomas Kahle <tomka@gentoo.org> gnome-pilot-2.32.0.ebuild:
+  x86 stable per bug 353436
+
+  23 Feb 2011; Markos Chandras <hwoarang@gentoo.org> gnome-pilot-2.32.0.ebuild:
+  Stable on amd64 wrt bug #353436
+
+  21 Feb 2011; Pacho Ramos <pacho@gentoo.org> gnome-pilot-2.32.0.ebuild:
+  configure enabled HAL support if --enable-usb --enable-network OR
+  --enable-pilotlinktest are forced, dropping them as it will result in them
+  being enabled (as wanted) without breaking HAL support configure handling
+  (bug #355859 by Markos Chandras).
 
   08 Dec 2010; Pacho Ramos <pacho@gentoo.org> gnome-pilot-2.32.0.ebuild:
   Needs gnome-panel with bonobo support.

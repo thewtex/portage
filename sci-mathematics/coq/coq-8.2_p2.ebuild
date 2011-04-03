@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/coq/coq-8.2_p2.ebuild,v 1.4 2010/11/11 20:29:52 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/coq/coq-8.2_p2.ebuild,v 1.6 2011/02/27 18:12:02 armin76 Exp $
 
 EAPI=2
 inherit eutils multilib
@@ -14,7 +14,7 @@ SRC_URI="http://coq.inria.fr/distrib/V${MY_PV}/files/${MY_P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="+realanalysis gtk debug +ocamlopt doc"
 
 RDEPEND=">=dev-lang/ocaml-3.10[ocamlopt?]
@@ -35,6 +35,7 @@ S=${WORKDIR}/${MY_P}
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-make-3.82.patch
+	epatch "${FILESDIR}"/${P}-camlp5-6-compat.patch
 }
 
 src_configure() {

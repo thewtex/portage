@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-geosciences/grass/grass-6.4.0.ebuild,v 1.3 2010/11/08 17:27:39 xarthisius Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-geosciences/grass/grass-6.4.0.ebuild,v 1.8 2011/03/26 15:27:44 scarabeus Exp $
 
 EAPI="3"
 
@@ -17,9 +17,9 @@ SRC_URI="http://grass.osgeo.org/${MY_PM}/source/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="6"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 
-IUSE="X cairo cxx ffmpeg fftw gmath jpeg largefile motif mysql nls odbc opengl png postgres python readline sqlite tiff truetype wxwidgets"
+IUSE="X cairo cxx ffmpeg fftw gmath jpeg motif mysql nls odbc opengl png postgres python readline sqlite tiff truetype wxwidgets"
 
 TCL_DEPS="
 	>=dev-lang/tcl-8.5
@@ -33,14 +33,14 @@ RDEPEND="
 	sys-libs/ncurses
 	sys-libs/zlib
 	cairo? ( x11-libs/cairo[X?,opengl?] )
-	ffmpeg? ( media-video/ffmpeg )
+	ffmpeg? ( virtual/ffmpeg )
 	fftw? ( sci-libs/fftw:3.0 )
 	gmath? (
 		virtual/blas
 		virtual/lapack
 	)
 	jpeg? ( virtual/jpeg )
-	mysql? ( dev-db/mysql )
+	mysql? ( virtual/mysql )
 	odbc? ( dev-db/unixODBC )
 	png? ( media-libs/libpng )
 	postgres? (
@@ -51,9 +51,7 @@ RDEPEND="
 	)
 	readline? ( sys-libs/readline )
 	sqlite? ( dev-db/sqlite:3 )
-	tiff? ( media-libs/tiff
-		largefile? ( >=media-libs/tiff-4 )
-	)
+	tiff? ( >=media-libs/tiff-4 )
 	truetype? ( media-libs/freetype:2 )
 	X? (
 		x11-libs/libICE
@@ -126,18 +124,6 @@ pkg_setup() {
 		# only py2 is supported
 		python_set_active_version 2
 	fi
-
-	if use wxwidgets; then
-		# only 2.8 is supported or the wx-gui barfs at runtime...
-		local success=0
-		ewarn "Attempting to select a compatible wxwidgets"
-		eselect wxwidgets set gtk2-unicode-release-2.8
-		success=1
-	fi
-	if [ $success != 1 ]; then
-		 eerror "Unable to select a compatible wxwidgets!"
-		 die "Please set wxwidgets to at least 2.8 (see \`eselect wxwidgets --help\`)."
-	fi
 }
 
 src_prepare() {
@@ -163,7 +149,7 @@ src_configure() {
 		if use python && use wxwidgets; then
 			WX_BUILD=yes
 			WX_GTK_VER=2.8
-			need-wxwidgets base
+			need-wxwidgets unicode
 			myconf+="
 				--without-tcltk
 				--with-wxwidgets=${WX_CONFIG}
@@ -203,14 +189,10 @@ src_configure() {
 		$(use_with cxx) \
 		$(use_with fftw) \
 		$(use_with ffmpeg) \
-		--with-ffmpeg-includes="/usr/include/libavcodec \
-			/usr/include/libavdevice /usr/include/libavfilter \
-			/usr/include/libavformat /usr/include/libavutil \
-			/usr/include/libpostproc /usr/include/libswscale" \
+		--with-ffmpeg-includes="/usr/include/libavcodec /usr/include/libavdevice /usr/include/libavfilter /usr/include/libavformat /usr/include/libavutil /usr/include/libpostproc /usr/include/libswscale" \
 		$(use_with gmath blas) \
 		$(use_with gmath lapack) \
 		$(use_with jpeg) \
-		$(use_enable largefile) \
 		$(use_with mysql) \
 		--with-mysql-includes=/usr/include/mysql \
 		--with-mysql-libs=/usr/$(get_libdir)/mysql \
@@ -224,6 +206,7 @@ src_configure() {
 		$(use_with tiff) \
 		$(use_with truetype freetype) \
 		--with-freetype-includes="/usr/include/freetype2/" \
+		--enable-largefile \
 		${myconf}
 }
 

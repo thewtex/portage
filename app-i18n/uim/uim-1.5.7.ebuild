@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/uim/uim-1.5.7.ebuild,v 1.11 2011/02/05 09:50:03 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/uim/uim-1.5.7.ebuild,v 1.14 2011/03/29 10:50:04 ssuominen Exp $
 
 EAPI="2"
 inherit autotools eutils multilib elisp-common flag-o-matic
@@ -11,7 +11,7 @@ SRC_URI="http://uim.googlecode.com/files/${P}.tar.bz2"
 
 LICENSE="BSD GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ppc ppc64 sparc x86"
+KEYWORDS="amd64 hppa ppc ppc64 x86"
 IUSE="+anthy canna eb emacs gnome gtk kde libedit libnotify m17n-lib ncurses nls prime qt4 unicode X xft linguas_zh_CN linguas_zh_TW linguas_ja linguas_ko"
 
 RDEPEND="X? (
@@ -31,10 +31,10 @@ RDEPEND="X? (
 	eb? ( dev-libs/eb )
 	emacs? ( virtual/emacs )
 	gnome? ( >=gnome-base/gnome-panel-2.14 )
-	gtk? ( >=x11-libs/gtk+-2.4 )
+	gtk? ( >=x11-libs/gtk+-2.4:2 )
 	kde? ( >=kde-base/kdelibs-4 )
 	libedit? ( dev-libs/libedit )
-	libnotify? ( >=x11-libs/libnotify-0.4 <x11-libs/libnotify-0.7 )
+	libnotify? ( >=x11-libs/libnotify-0.4.5 )
 	m17n-lib? ( >=dev-libs/m17n-lib-1.3.1 )
 	ncurses? ( sys-libs/ncurses )
 	nls? ( virtual/libintl )
@@ -85,7 +85,8 @@ src_prepare() {
 	epatch \
 		"${FILESDIR}/${PN}-1.5.4-gentoo.patch" \
 		"${FILESDIR}/${PN}-1.5.4-gcc43.patch" \
-		"${FILESDIR}/${PN}-1.5.4-zhTW.patch"
+		"${FILESDIR}/${PN}-1.5.4-zhTW.patch" \
+		"${FILESDIR}/${PN}-1.6.1-libnotify-0.7.patch"
 
 	# bug 275420
 	sed -i -e "s:\$libedit_path/lib:/$(get_libdir):g" configure.ac || die

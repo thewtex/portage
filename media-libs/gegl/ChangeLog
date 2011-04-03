@@ -1,6 +1,36 @@
 # ChangeLog for media-libs/gegl
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/gegl/ChangeLog,v 1.35 2010/11/07 18:53:16 anarchy Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/gegl/ChangeLog,v 1.42 2011/04/01 10:31:33 scarabeus Exp $
+
+  01 Apr 2011; Tomáš Chvátal <scarabeus@gentoo.org> gegl-0.1.6.ebuild:
+  Use ED since we use eapi3.
+
+  29 Mar 2011; Christoph Mende <angelos@gentoo.org> gegl-0.0.22.ebuild:
+  Fixed slot deps
+
+  26 Mar 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  -files/gegl-0.0.18-newffmpeg.diff, -gegl-0.0.20.ebuild, -gegl-0.1.0.ebuild,
+  -gegl-0.1.0-r1.ebuild, -files/gegl-0.1.0-GLIB_CFLAGS.patch,
+  -gegl-0.1.2.ebuild, -files/gegl-0.1.2-backtrace.patch,
+  -files/gegl-0.1.2-buffer-overflow.patch, gegl-0.1.6.ebuild,
+  -files/gegl-18-configure-ac.patch, -files/gegl-20-configure-ac.patch:
+  Depend on virtual/ffmpeg instead of media-video/ffmpeg. Drop older.
+
+  23 Mar 2011; Gilles Dartiguelongue <eva@gentoo.org> gegl-0.1.0.ebuild,
+  gegl-0.1.0-r1.ebuild, gegl-0.1.2.ebuild, gegl-0.1.6.ebuild:
+  Fix slot-deps on gnome libs.
+
+  16 Feb 2011; Hanno Boeck <hanno@gentoo.org> gegl-0.1.6.ebuild:
+  Raise babl dep to 0.1.4.
+
+  16 Feb 2011; Hanno Boeck <hanno@gentoo.org> gegl-0.1.6.ebuild,
+  +files/gegl-doubledestdir.diff:
+  Fix installation into DESTDIR/DESTDIR, see #355193.
+
+*gegl-0.1.6 (15 Feb 2011)
+
+  15 Feb 2011; Hanno Boeck <hanno@gentoo.org> +gegl-0.1.6.ebuild:
+  Version bump.
 
   07 Nov 2010; Jory A. Pratt <anarchy@gentoo.org> gegl-0.1.2.ebuild:
   Convert media-libs/jpeg to virtual/jpeg

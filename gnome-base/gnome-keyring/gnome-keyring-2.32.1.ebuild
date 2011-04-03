@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-base/gnome-keyring/gnome-keyring-2.32.1.ebuild,v 1.4 2011/01/02 21:32:23 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-base/gnome-keyring/gnome-keyring-2.32.1.ebuild,v 1.12 2011/03/27 14:35:11 pacho Exp $
 
 EAPI="3"
 GCONF_DEBUG="yes"
@@ -12,13 +12,13 @@ HOMEPAGE="http://www.gnome.org/"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sh ~sparc ~x86"
+KEYWORDS="alpha amd64 arm ia64 ppc ppc64 sh sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~sparc-solaris ~x86-solaris"
 IUSE="debug doc pam test"
 # USE=valgrind is probably not a good idea for the tree
 
 RDEPEND=">=dev-libs/glib-2.25:2
 	>=x11-libs/gtk+-2.20:2
-	gnome-base/gconf
+	gnome-base/gconf:2
 	>=sys-apps/dbus-1.0
 	pam? ( virtual/pam )
 	>=dev-libs/libgcrypt-1.2.2
@@ -45,7 +45,7 @@ pkg_setup() {
 		$(use_enable test tests)
 		$(use_enable pam)
 		$(use_with pam pam-dir $(getpam_mod_dir))
-		--with-root-certs=/usr/share/ca-certificates/
+		--with-root-certs=${EPREFIX}/usr/share/ca-certificates/
 		--enable-acl-prompts
 		--enable-ssh-agent
 		--enable-gpg-agent

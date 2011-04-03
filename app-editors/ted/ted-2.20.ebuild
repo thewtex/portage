@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/ted/ted-2.20.ebuild,v 1.7 2010/05/24 18:50:44 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-editors/ted/ted-2.20.ebuild,v 1.9 2011/03/27 10:21:33 nirbheek Exp $
 
 EAPI=2
 inherit eutils
@@ -14,9 +14,9 @@ SLOT="0"
 KEYWORDS="amd64 ppc sparc x86"
 IUSE=""
 
-DEPEND="x11-libs/gtk+
+DEPEND="x11-libs/gtk+:2
 	>=media-libs/tiff-3.5.7
-	>=media-libs/jpeg-6b:0
+	virtual/jpeg
 	>=media-libs/libpng-1.2.3"
 RDEPEND="${DEPEND}"
 

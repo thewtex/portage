@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/dos2unix/dos2unix-5.1.1.ebuild,v 1.6 2011/01/13 20:45:19 ranger Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/dos2unix/dos2unix-5.1.1.ebuild,v 1.9 2011/03/20 08:19:15 jlec Exp $
 
 EAPI="3"
 
@@ -14,14 +14,16 @@ SRC_URI="
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ~ppc64 s390 sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~sparc64-solaris"
+KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~sparc64-solaris"
 IUSE="nls"
 
-DEPEND="virtual/libintl"
 RDEPEND="
-	${DEPEND}
 	!app-text/hd2u
-	!app-text/unix2dos"
+	!app-text/unix2dos
+	virtual/libintl"
+DEPEND="
+	${RDEPEND}
+	dev-lang/perl"
 
 src_prepare() {
 	sed \
@@ -39,13 +41,13 @@ lintl() {
 }
 
 src_compile() {
-	emake prefix="${EPREFIX}"/usr \
+	emake prefix="${EPREFIX}/usr" \
 		$(use nls && echo "LDFLAGS_EXTRA=$(lintl)" || echo "ENABLE_NLS=") \
 		|| die
 }
 
 src_install() {
-	emake DESTDIR="${D}" prefix="${EPREFIX}"/usr \
+	emake DESTDIR="${D}" prefix="${EPREFIX}/usr" \
 		$(use nls || echo "ENABLE_NLS=") install \
 		|| die "emake install failed"
 }

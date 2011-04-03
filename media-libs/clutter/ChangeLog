@@ -1,6 +1,56 @@
 # ChangeLog for media-libs/clutter
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/clutter/ChangeLog,v 1.18 2011/02/11 21:09:03 nirbheek Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/clutter/ChangeLog,v 1.30 2011/03/23 08:33:38 nirbheek Exp $
+
+  23 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org> clutter-1.2.14.ebuild:
+  Fix slot-deps on gnome libs
+
+  23 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org> -clutter-9999.ebuild:
+  Remove live ebuild, it's now in the gnome overlay
+
+  22 Mar 2011; Brent Baude <ranger@gentoo.org> clutter-1.2.14.ebuild:
+  Marking clutter-1.2.14 ppc stable for bug 353436
+
+*clutter-1.6.10 (22 Mar 2011)
+
+  22 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org> -clutter-1.6.4.ebuild,
+  -clutter-1.6.6.ebuild, +clutter-1.6.10.ebuild:
+  Bump to 1.6.10, remove old
+
+  21 Mar 2011; Kacper Kowalik <xarthisius@gentoo.org> clutter-1.2.14.ebuild:
+  ppc64 stable wrt #353436
+
+*clutter-1.6.8 (08 Mar 2011)
+
+  08 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org> +clutter-1.6.8.ebuild:
+  Bump to 1.6.8, bugfix release
+
+  24 Feb 2011; Thomas Kahle <tomka@gentoo.org> clutter-1.2.14.ebuild:
+  x86 stable per bug 353436
+
+  23 Feb 2011; Markos Chandras <hwoarang@gentoo.org> clutter-1.2.14.ebuild:
+  Stable on amd64 wrt bug #353436
+
+*clutter-1.6.6 (21 Feb 2011)
+
+  21 Feb 2011; Nirbheek Chauhan <nirbheek@gentoo.org> clutter-1.6.4.ebuild,
+  +clutter-1.6.6.ebuild, clutter-9999.ebuild:
+  Bump to 1.6.6, fix slot-deps, do only one inherit: avoids DESCRIPTION and
+  other variables from being overriden by eclasses
+
+  19 Feb 2011; Nirbheek Chauhan <nirbheek@gentoo.org> -clutter-1.6.2.ebuild,
+  -clutter-1.6.2-r1.ebuild, clutter-9999.ebuild:
+  Remove old.
+
+  19 Feb 2011; Kacper Kowalik <xarthisius@gentoo.org> clutter-1.2.14.ebuild,
+  clutter-1.6.4.ebuild:
+  Marked ~ppc wrt #318691
+
+*clutter-1.6.4 (15 Feb 2011)
+
+  15 Feb 2011; Nirbheek Chauhan <nirbheek@gentoo.org>
+  -clutter-1.5.14.ebuild, -clutter-1.6.0.ebuild, +clutter-1.6.4.ebuild:
+  Bump to 1.6.4, remove old
 
 *clutter-1.6.2-r1 (11 Feb 2011)
 

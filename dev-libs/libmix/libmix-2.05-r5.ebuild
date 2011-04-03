@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libmix/libmix-2.05-r5.ebuild,v 1.1 2011/01/23 10:32:25 xarthisius Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libmix/libmix-2.05-r5.ebuild,v 1.5 2011/04/02 12:45:48 ssuominen Exp $
 
 EAPI="2"
 
@@ -12,11 +12,11 @@ SRC_URI="http://mixter.void.ru/${P/.}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd"
 IUSE="static-libs"
 #IUSE="net2 static-libs"
 
-#DEPEND="net2? ( virtual/libpcap net-libs/libnet:1.0 )"
+#DEPEND="net2? ( net-libs/libpcap net-libs/libnet:1.0 )"
 #RDEPEND="${DEPEND}"
 
 S=${WORKDIR}/${PN}-v${PV}
@@ -25,6 +25,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-fix-pattern.patch
 	"${FILESDIR}"/${P}-gentoo.patch
 	"${FILESDIR}"/${P}-libnet.patch
+	"${FILESDIR}"/${P}-gentoo2.patch
 )
 
 DOCS=( CHANGES )

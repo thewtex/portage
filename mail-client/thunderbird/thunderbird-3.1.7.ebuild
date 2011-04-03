@@ -1,11 +1,11 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/thunderbird/thunderbird-3.1.7.ebuild,v 1.6 2011/01/01 19:51:39 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-client/thunderbird/thunderbird-3.1.7.ebuild,v 1.9 2011/03/14 06:54:45 nirbheek Exp $
 
 EAPI="3"
 WANT_AUTOCONF="2.1"
 
-inherit flag-o-matic toolchain-funcs eutils mozconfig-3 makeedit multilib mozextension autotools
+inherit flag-o-matic toolchain-funcs eutils mozconfig-3 makeedit multilib mozextension autotools python
 
 # This list can be updated using get_langs.sh from the mozilla overlay
 LANGS="af ar be bg bn-BD ca cs da de el en en-GB en-US es-AR es-ES et eu fi fr \
@@ -22,7 +22,7 @@ HOMEPAGE="http://www.mozilla.com/en-US/thunderbird/"
 KEYWORDS="alpha amd64 ~arm ia64 ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 SLOT="0"
 LICENSE="|| ( MPL-1.1 GPL-2 LGPL-2.1 )"
-IUSE="+alsa ldap +crypt bindist libnotify +lightning mozdom system-sqlite wifi"
+IUSE="+alsa ldap +crypt bindist gnome libnotify +lightning mozdom system-sqlite wifi"
 PATCH="${PN}-3.1-patches-1.2"
 
 REL_URI="http://releases.mozilla.org/pub/mozilla.org/${PN}/releases"
@@ -52,10 +52,17 @@ RDEPEND=">=sys-devel/binutils-2.16.1
 	x11-libs/cairo[X]
 	x11-libs/pango[X]
 	alsa? ( media-libs/alsa-lib )
+	gnome? ( >=gnome-base/gnome-vfs-2.16.3
+		>=gnome-base/libgnomeui-2.16.1
+		>=gnome-base/gconf-2.16.0
+		>=gnome-base/libgnome-2.16.0 )
 	libnotify? ( >=x11-libs/libnotify-0.4 )
 	system-sqlite? ( >=dev-db/sqlite-3.7.1[fts3,secure-delete] )
 	wifi? ( net-wireless/wireless-tools )
 	!x11-plugins/lightning"
+
+DEPEND="${RDEPEND}
+	=dev-lang/python-2*[threads]"
 
 PDEPEND="crypt? ( >=x11-plugins/enigmail-1.1 )"
 
@@ -93,6 +100,8 @@ pkg_setup() {
 		elog "a legal problem with Mozilla Foundation"
 		elog "You can disable it by emerging ${PN} _with_ the bindist USE-flag"
 	fi
+
+	python_set_active_version 2
 }
 
 src_unpack() {
@@ -144,6 +153,7 @@ src_configure() {
 	# It doesn't compile on alpha without this LDFLAGS
 	use alpha && append-ldflags "-Wl,--no-relax"
 
+	mozconfig_annotate '' --enable-crypto
 	mozconfig_annotate '' --enable-extensions="${MEXTENSIONS}"
 	mozconfig_annotate '' --enable-application=mail
 	mozconfig_annotate '' --with-default-mozilla-five-home="${EPREFIX}${MOZILLA_FIVE_HOME}"
@@ -158,6 +168,8 @@ src_configure() {
 	# Use enable features
 	mozconfig_use_enable ldap
 	mozconfig_use_enable ldap ldap-experimental
+	mozconfig_use_enable gnome gnomevfs
+	mozconfig_use_enable gnome gnomeui
 	mozconfig_use_enable libnotify
 	mozconfig_use_enable lightning calendar
 	mozconfig_use_enable wifi necko-wifi

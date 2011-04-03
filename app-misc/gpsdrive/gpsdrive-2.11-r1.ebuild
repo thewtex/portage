@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/gpsdrive/gpsdrive-2.11-r1.ebuild,v 1.1 2010/10/30 01:12:00 nerdboy Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/gpsdrive/gpsdrive-2.11-r1.ebuild,v 1.3 2011/03/21 21:04:05 nirbheek Exp $
 
 EAPI=2
 
@@ -22,15 +22,16 @@ IUSE="dbus -debug -kismet libgda gdal mapnik scripts -speech"
 
 COMMON_DEP=">=sci-geosciences/gpsd-2.94
 	net-misc/curl
-	dev-libs/libxml2
+	dev-libs/libxml2:2
 	dev-db/sqlite:3
 	x11-libs/gtk+:2
+	x11-libs/gdk-pixbuf:2
 	dbus? ( dev-libs/dbus-glib )
 	gdal? ( sci-libs/gdal )
 	kismet? ( net-wireless/kismet )
 	mapnik? ( >=sci-geosciences/mapnik-0.7.0[postgres]
 		>=dev-db/postgis-1.5.2 )
-	libgda? ( =gnome-extra/libgda-3.0*[postgres] )
+	libgda? ( =gnome-extra/libgda-3.0*:3[postgres] )
 	speech? ( >=app-accessibility/speech-dispatcher-0.6.7 )"
 
 DEPEND="${COMMON_DEP}
@@ -67,7 +68,8 @@ src_prepare() {
 		-e "s:Graphics;Network;Geography:Education;Science;Geography;GPS:g" \
 		data/gpsdrive.desktop || die "sed failed"
 
-	epatch "${FILESDIR}"/gpsdrive-2.11_DefineOptions_gpsd.patch
+	epatch "${FILESDIR}"/${P}_DefineOptions_gpsd.patch
+	epatch "${FILESDIR}"/${P}-add-gdk-pixbuf2.patch
 }
 
 src_configure() {

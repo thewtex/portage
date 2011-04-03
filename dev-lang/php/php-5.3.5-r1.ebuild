@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/php/php-5.3.5-r1.ebuild,v 1.2 2011/01/30 16:00:34 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/php/php-5.3.5-r1.ebuild,v 1.4 2011/03/17 16:34:47 olemarkus Exp $
 
 EAPI=2
 
@@ -143,7 +143,7 @@ DEPEND="!dev-lang/php:5
 	gdbm? ( >=sys-libs/gdbm-1.8.0 )
 	gmp? ( >=dev-libs/gmp-4.1.2 )
 	iconv? ( virtual/libiconv )
-	imap? ( virtual/imap-c-client )
+	imap? ( virtual/imap-c-client[ssl=] )
 	intl? ( dev-libs/icu )
 	iodbc? ( dev-db/libiodbc )
 	kerberos? ( virtual/krb5 )
@@ -262,11 +262,6 @@ DEPEND="${DEPEND}
 PDEPEND="doc? ( app-doc/php-docs )"
 
 [[ -n $SUHOSIN_VERSION ]] && PDEPEND="${PDEPEND} suhosin? ( dev-php${PHP_MV}/suhosin )"
-
-# Portage doesn't support setting PROVIDE based on the USE flags that
-# have been enabled, so we have to PROVIDE everything for now and hope
-# for the best
-PROVIDE="virtual/php"
 
 # Allow users to install production version if they want to
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/gtranslator/gtranslator-1.9.13.ebuild,v 1.3 2011/01/12 10:15:14 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/gtranslator/gtranslator-1.9.13.ebuild,v 1.7 2011/03/22 18:47:54 ranger Exp $
 
 EAPI="3"
 GCONF_DEBUG="no"
@@ -12,13 +12,13 @@ HOMEPAGE="http://gtranslator.sourceforge.net/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="amd64 ppc ~sparc x86"
 IUSE="doc http gnome spell"
 
 RDEPEND="
 	>=dev-libs/glib-2.25.10:2
-	>=dev-libs/gdl-2.26
-	>=dev-libs/libunique-1
+	>=dev-libs/gdl-2.26:1
+	>=dev-libs/libunique-1:1
 	>=dev-libs/libxml2-2.4.12
 	gnome-base/gsettings-desktop-schemas
 	gnome-extra/libgda:4
