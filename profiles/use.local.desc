@@ -1212,6 +1212,7 @@ dev-python/paste:openid - enable OpenID support
 dev-python/psycopg:mxdatetime - Enable support for MX DateTime and use it instead of Python's built-in datetime module
 dev-python/pygobject:introspection - Use dev-libs/gobject-introspection for introspection
 dev-python/pygobject:libffi - Enable support to connect to signals on python objects from C.
+dev-python/pygtk:glade - Enable gnome-base/libglade bindings compilation
 dev-python/pylons:genshi - Add optional genshi support
 dev-python/pylons:jinja - Add optional jinja support
 dev-python/pyudev:pygobject - Install PyGobject binding
@@ -1244,21 +1245,21 @@ dev-ruby/ruby-sdl:mixer - Enable media-libs/sdl-mixer support
 dev-ruby/ruby-sdl:sge - Enable sdl-sge support
 dev-ruby/rubygems:server - Install support for the rubygems server
 dev-ruby/sqlite3-ruby:swig - Use dev-lang/swig to generate bindings
-dev-scheme/bigloo:bglpkg - Build bglpkg binary, which can be use to access scmpkg servers
+dev-scheme/bigloo:bglpkg - Build bglpkg binary, which can be use to access scmpkg servers (requires web)
 dev-scheme/bigloo:calendar - Build the embedded library for calendar programming
 dev-scheme/bigloo:crypto - Build the embedded cryptographic library
 dev-scheme/bigloo:debug - Enable extra debug codepaths
 dev-scheme/bigloo:doc - Install Bigloo Manual (HTML docs of Bigloo and r5rs)
 dev-scheme/bigloo:emacs - Build and install the Bigloo Developement Environment for Emacs (aka bee-mode)
 dev-scheme/bigloo:gmp - Adds support for dev-libs/gmp (GNU MP library)
-dev-scheme/bigloo:gstreamer - Adds support for media-libs/gstreamer
 dev-scheme/bigloo:java - Enable the JVM backend for the Bigloo compiler
 dev-scheme/bigloo:mail - Mail library for email management (e.g. maildir and imap support)
 dev-scheme/bigloo:multimedia - Build multimedia library (e.g. for managing images). Needed for dev-scheme/hop
-dev-scheme/bigloo:packrat - Bigloo port of Tony Garnock-Jones' packrat parser
+dev-scheme/bigloo:openpgp - Build OpenPGP support (requires crypto)
+dev-scheme/bigloo:packrat - Bigloo port of Tony Garnock-Jones' packrat parser (requires srfi1)
 dev-scheme/bigloo:sqlite - Use the system-wide dev-db/sqlite
 dev-scheme/bigloo:srfi1 - Build the srfi1 library: List library
-dev-scheme/bigloo:srfi27 - Build the srfi27 library: Source of Random Bits (32bit-arch only)
+dev-scheme/bigloo:srfi27 - Build the srfi27 library: Source of Random Bits (32bit-arch only, requires gmp)
 dev-scheme/bigloo:ssl - Adds support for SSL connections through dev-libs/openssl
 dev-scheme/bigloo:text - Library for dealing with text (e.g. BibTeX parser)
 dev-scheme/bigloo:threads - Enable thread support, it depends on dev-libs/boehm-gc built with threads use flag
@@ -3970,6 +3971,7 @@ sys-devel/clang:static-analyzer - Install the Clang static analyzer
 sys-devel/clang:system-cxx-headers - By default, clang++ searchs for C++ headers in a series of hardcoded paths. Enabling this flag will force it to use the active gcc profile ones
 sys-devel/gcc:d - Enable support for the D programming language
 sys-devel/gcc:fixed-point - Enable fixed-point arithmetic support for MIPS targets in gcc (Warning: significantly increases compile time!)
+sys-devel/gcc:go - Build the GCC Go language frontend.
 sys-devel/gcc:graphite - Add support for the framework for loop optimizations based on a polyhedral intermediate representation
 sys-devel/gcc:ip28 - Enable building a compiler capable of building a kernel for SGI Indigo2 Impact R10000 (IP28)
 sys-devel/gcc:ip32r10k - Enable building a compiler capable of building an experimental kernel for SGI O2 w/ R1x000 CPUs (IP32)
@@ -4124,7 +4126,9 @@ sys-power/nvclock:gtk - Install the GTK+ based graphical interface
 sys-power/phctool:sudo - Enable support for sudo to run gui from non-root user
 sys-power/pm-utils:ntp - Install support for net-misc/ntp
 sys-power/powerman:genders - Add support for selecting power control targets using genders (-g option)
+sys-power/powerman:h8power - Add support for h8 based power controllers
 sys-power/powerman:httppower - Add support for HTTP based power controllers
+sys-power/powerman:snmppower - Add support for SNMP based power controllers
 sys-power/powermgmt-base:pm-utils - Adds support for on_ac_power through sys-power/pm-utils
 sys-power/suspend:crypt - Allows suspend and resume from encrypted disk
 sys-power/suspend:fbsplash - Add support for framebuffer splash
