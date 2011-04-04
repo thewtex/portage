@@ -1079,6 +1079,8 @@ dev-libs/libunique:introspection - Use dev-libs/gobject-introspection for intros
 dev-libs/link-grammar:aspell - Adds support for app-text/aspell spell checker
 dev-libs/link-grammar:hunspell - Adds support for app-text/hunspell spell checker
 dev-libs/log4cxx:smtp - Offer SMTP support via net-libs/libesmtp
+dev-libs/m17n-lib:X - Builds the Graphical User Interface API and utilities for the package.
+dev-libs/m17n-lib:gd - Build API and utilities based on media-libs/gd. This flag is only meaningful if the X USE flag is also enabled.
 dev-libs/nss:utils - Install utilities included with the library
 dev-libs/opencryptoki:tpm - Enable support for Trusted Platform Module (TPM) using app-crypt/trousers
 dev-libs/openct:pcsc-lite - Enable support for sys-apps/pcsc-lite
@@ -1212,7 +1214,6 @@ dev-python/paste:openid - enable OpenID support
 dev-python/psycopg:mxdatetime - Enable support for MX DateTime and use it instead of Python's built-in datetime module
 dev-python/pygobject:introspection - Use dev-libs/gobject-introspection for introspection
 dev-python/pygobject:libffi - Enable support to connect to signals on python objects from C.
-dev-python/pygtk:glade - Enable gnome-base/libglade bindings compilation
 dev-python/pylons:genshi - Add optional genshi support
 dev-python/pylons:jinja - Add optional jinja support
 dev-python/pyudev:pygobject - Install PyGobject binding
@@ -1223,6 +1224,8 @@ dev-python/pyzor:pyzord - enable support for pyzord
 dev-python/rdflib:redland - enable support for Redland triplestore
 dev-python/rdflib:zodb - enable support for Zope Object Database triplestore
 dev-python/restkit:cli - Install the restcli command line interface/tool, based on dev-python/ipython
+dev-python/scrapy:boto - Add support for Amazon S3 via dev-python/boto
+dev-python/scrapy:ibl - Use Instace Based Learning alrogirithm for automatic extraction
 dev-python/spyder:ipython - Add support for dev-python/ipython
 dev-python/spyder:matplotlib - Add support for dev-python/matplotlib
 dev-python/spyder:numpy - Add support for dev-python/numpy
@@ -1752,7 +1755,10 @@ mail-client/pine:largeterminal - Add support for large terminals by doubling the
 mail-client/pine:passfile - Adds support for caching IMAP passwords into a file between sessions
 mail-client/postler:ayatana - Enable Messaging Menu support via dev-libs/libindicate
 mail-client/squirrelmail:filter - Enable mail-filter/amavisd-new filtering
+mail-client/thunderbird:crashreporter - Enable crash reporter for bugs
 mail-client/thunderbird:custom-optimization - Enable user CFLAGS
+mail-client/thunderbird:gconf - Enable gnome2 gconf support
+mail-client/thunderbird:ipc - Use inter-process communication between tabs and plugins. Allows for greater stability in case of plugin crashes
 mail-client/thunderbird:lightning - Enable calendar support
 mail-client/thunderbird:mozdom - Enable Mozilla's DOM inspector
 mail-client/thunderbird:system-sqlite - Use the system-wide dev-db/sqlite installation with secure-delete enabled
@@ -2505,7 +2511,6 @@ media-video/mplayer2:real - Adds real audo/video support
 media-video/mplayer2:rtc - Enables usage of the linux real time clock. The alternative is software emulation of rtc
 media-video/mplayer2:shm - Enable support for shm
 media-video/mplayer2:ssse3 - Faster floating point optimization for SSSE3 capable chips (Intel Core 2 and later chips)
-media-video/mplayer2:symlink - Copy all binaries and configuration into locations occupied by media-video/mplayer and thus act like drop-in replacement.
 media-video/mplayer2:tga - Enables Targa video output
 media-video/mplayer2:vdpau - Enables experimental VDPAU support (requires nVidia video cards) to offload MPEG2/MPEG4/VC1/WMV CPU processing to video card
 media-video/mplayer2:xanim - Enables support for xanim based codecs
@@ -3131,6 +3136,7 @@ net-libs/wt:resources - Install resources directory
 net-libs/wt:server - Compile in stand-alone httpd connector
 net-libs/xulrunner:crashreporter - Enable crash reporter for bugs
 net-libs/xulrunner:custom-optimization - Fine-tune custom compiler optimizations
+net-libs/xulrunner:gconf - Enable gnome2 gconf support
 net-libs/xulrunner:ipc - Use inter-process communication between tabs and plugins. Allows for greater stability in case of plugin crashes
 net-libs/xulrunner:system-sqlite - Use the system-wide dev-db/sqlite installation with secure-delete enabled
 net-libs/xulrunner:webm - Use system libvpx media-libs/libvpx
@@ -3913,6 +3919,7 @@ sys-boot/arcboot:cobalt - Disable support for Cobalt Microserver hardware (Qube2
 sys-boot/arcboot:ip27 - Disable support for SGI Origin (IP27)
 sys-boot/arcboot:ip28 - Disable support for SGI Indigo2 Impact R10000 (IP28)
 sys-boot/arcboot:ip30 - Disable support for SGI Octane (IP30)
+sys-boot/grub:device-mapper - Enable support for sys-fs/device-mapper
 sys-boot/grub:multislot - Allow grub1 and grub2 to be installed simultaneously
 sys-boot/lilo:device-mapper - Enable support for sys-fs/device-mapper
 sys-boot/lilo:pxeserial - Avoid character echo on PXE serial console
