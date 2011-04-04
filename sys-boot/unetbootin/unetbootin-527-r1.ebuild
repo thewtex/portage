@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-boot/unetbootin/unetbootin-527-r1.ebuild,v 1.1 2011/04/04 04:27:07 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-boot/unetbootin/unetbootin-527-r1.ebuild,v 1.2 2011/04/04 16:37:47 jer Exp $
 
 EAPI="3"
 
@@ -37,7 +37,6 @@ src_install() {
 	for file in ${PN}*.png; do
 		size="${file/unetbootin_}"
 		size="${size/.png}x${size/.png}"
-		echo $file $size
 		insinto /usr/share/icons/hicolor/${size}
 		newins ${file} ${PN}.png
 	done
