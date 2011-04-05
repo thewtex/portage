@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/ffmpeg/ffmpeg-9999.ebuild,v 1.37 2011/04/01 23:16:20 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/ffmpeg/ffmpeg-9999.ebuild,v 1.38 2011/04/05 04:49:22 aballier Exp $
 
 EAPI="2"
 
@@ -19,7 +19,7 @@ if [ "${PV#9999}" != "${PV}" ] ; then
 elif [ "${PV%_p*}" != "${PV}" ] ; then # Snapshot
 	SRC_URI="mirror://gentoo/${P}.tar.bz2"
 else # Release
-	SRC_URI="http://ffmpeg.org/releases/${P}.tar.bz2"
+	SRC_URI="http://ffmpeg.org/releases/${P/_/-}.tar.bz2"
 fi
 FFMPEG_REVISION="${PV#*_p}"
 
@@ -84,6 +84,8 @@ DEPEND="${RDEPEND}
 	v4l? ( sys-kernel/linux-headers )
 	v4l2? ( sys-kernel/linux-headers )
 "
+
+S=${WORKDIR}/${P/_/-}
 
 src_prepare() {
 	if [ "${PV%_p*}" != "${PV}" ] ; then # Snapshot
