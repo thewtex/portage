@@ -1,0 +1,25 @@
+From 08288d7f284b27f0a5446384cf397fe39a2196d4 Mon Sep 17 00:00:00 2001
+From: Jonas Bernoulli <jonas@bernoul.li>
+Date: Wed, 6 Apr 2011 20:44:35 +0200
+Subject: [PATCH 3/4] dont generate manpages
+
+---
+ Makefile |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 4816395..aa5e165 100644
+--- a/Makefile
++++ b/Makefile
+@@ -8,7 +8,7 @@ endif
+ 
+ default: all
+ 
+-all: bup Documentation/all
++all: bup
+ 
+ bup: lib/bup/_version.py lib/bup/_helpers$(SOEXT) cmds
+ 
+-- 
+1.7.4.1
+

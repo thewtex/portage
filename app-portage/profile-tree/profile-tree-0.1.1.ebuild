@@ -15,16 +15,15 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="app-text/pandoc"
-RDEPEND=">=app-portage/gentoolkit-0.3.0_rc10-r1"
+DEPEND=""
+RDEPEND=">=app-portage/gentoolkit-0.3.0_rc10-r1
+	>=sys-apps/portage-2.2.2"
 
 src_prepare() {
 	mv tarsius-${PN}-* ${PF}
 }
 
-src_compile() {
-	emake man || die "emake failed"
-}
+src_compile() { :; }
 
 src_install() {
 	dobin ${PN} || die "dobin failed"

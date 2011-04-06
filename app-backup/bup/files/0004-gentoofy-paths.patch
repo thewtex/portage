@@ -1,0 +1,67 @@
+From 03a4f323541f2c65408ca40a917c45ccacca2210 Mon Sep 17 00:00:00 2001
+From: Jonas Bernoulli <jonas@bernoul.li>
+Date: Wed, 6 Apr 2011 21:01:57 +0200
+Subject: [PATCH 4/4] gentoofy paths
+
+---
+ Makefile |    5 +++--
+ main.py  |   17 +++--------------
+ 2 files changed, 6 insertions(+), 16 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index aa5e165..71b359d 100644
+--- a/Makefile
++++ b/Makefile
+@@ -19,10 +19,11 @@ PYTHON=python
+ MANDIR=$(DESTDIR)/usr/share/man
+ DOCDIR=$(DESTDIR)/usr/share/doc/bup
+ BINDIR=$(DESTDIR)/usr/bin
++CMDDIR=$(DESTDIR)/usr/libexec/bup
+ LIBDIR=$(DESTDIR)/usr/lib/bup
+ install: all
+ 	$(INSTALL) -d $(MANDIR)/man1 $(DOCDIR) $(BINDIR) \
+-		$(LIBDIR)/bup $(LIBDIR)/cmd
++		$(LIBDIR)/bup $(CMDDIR)
+ 	[ ! -e Documentation/.docs-available ] || \
+ 	  $(INSTALL) -m 0644 \
+ 		Documentation/*.1 \
+@@ -34,7 +35,7 @@ install: all
+ 	$(INSTALL) -m 0755 bup $(BINDIR)
+ 	$(INSTALL) -m 0755 \
+ 		cmd/bup-* \
+-		$(LIBDIR)/cmd
++		$(CMDDIR)
+ 	$(INSTALL) -m 0644 \
+ 		lib/bup/*.py \
+ 		$(LIBDIR)/bup
+diff --git a/main.py b/main.py
+index c8ffce2..79cb726 100755
+--- a/main.py
++++ b/main.py
+@@ -4,20 +4,9 @@ import sys, os, subprocess, signal, getopt
+ argv = sys.argv
+ exe = argv[0]
+ exepath = os.path.split(exe)[0] or '.'
+-exeprefix = os.path.split(os.path.abspath(exepath))[0]
+-
+-# fix the PYTHONPATH to include our lib dir
+-if os.path.exists("%s/lib/bup/cmd/." % exeprefix):
+-    # installed binary in /.../bin.
+-    # eg. /usr/bin/bup means /usr/lib/bup/... is where our libraries are.
+-    cmdpath = "%s/lib/bup/cmd" % exeprefix
+-    libpath = "%s/lib/bup" % exeprefix
+-    resourcepath = libpath
+-else:
+-    # running from the src directory without being installed first
+-    cmdpath = os.path.join(exepath, 'cmd')
+-    libpath = os.path.join(exepath, 'lib')
+-    resourcepath = libpath
++cmdpath = "/usr/libexec/bup"
++libpath = "/usr/lib/bup"
++resourcepath = libpath
+ sys.path[:0] = [libpath]
+ os.environ['PYTHONPATH'] = libpath + ':' + os.environ.get('PYTHONPATH', '')
+ os.environ['BUP_MAIN_EXE'] = os.path.abspath(exe)
+-- 
+1.7.4.1
+

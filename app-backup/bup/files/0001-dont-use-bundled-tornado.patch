@@ -1,17 +1,17 @@
-From 8634e38a8cbc95f52fead1492fb21c53ddbb743f Mon Sep 17 00:00:00 2001
+From a0db223de17b13f982408c768d15c05a73496a09 Mon Sep 17 00:00:00 2001
 From: Jonas Bernoulli <jonas@bernoul.li>
 Date: Tue, 30 Nov 2010 22:16:41 +0100
-Subject: [PATCH 1/2] dont use bundled tornado
+Subject: [PATCH 1/4] dont use bundled tornado
 
 ---
  Makefile |    5 +----
  1 files changed, 1 insertions(+), 4 deletions(-)
 
 diff --git a/Makefile b/Makefile
-index a9c8f04..966f787 100644
+index daa5a1d..4647f59 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -33,7 +33,7 @@ BINDIR=$(DESTDIR)/usr/bin
+@@ -22,7 +22,7 @@ BINDIR=$(DESTDIR)/usr/bin
  LIBDIR=$(DESTDIR)/usr/lib/bup
  install: all
  	$(INSTALL) -d $(MANDIR)/man1 $(DOCDIR) $(BINDIR) \
@@ -20,7 +20,7 @@ index a9c8f04..966f787 100644
  		$(LIBDIR)/web $(LIBDIR)/web/static
  	[ ! -e Documentation/.docs-available ] || \
  	  $(INSTALL) -m 0644 \
-@@ -54,9 +54,6 @@ install: all
+@@ -43,9 +43,6 @@ install: all
  		lib/bup/*$(SOEXT) \
  		$(LIBDIR)/bup
  	$(INSTALL) -m 0644 \
@@ -31,5 +31,5 @@ index a9c8f04..966f787 100644
  		$(LIBDIR)/web/static/
  	$(INSTALL) -m 0644 \
 -- 
-1.7.3.2
+1.7.4.1
 
