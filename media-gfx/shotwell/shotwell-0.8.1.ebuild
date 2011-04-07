@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/shotwell/shotwell-0.8.1.ebuild,v 1.3 2011/03/21 22:03:15 nirbheek Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/shotwell/shotwell-0.8.1.ebuild,v 1.4 2011/04/07 06:43:57 hollow Exp $
 
 EAPI="2"
 GCONF_DEBUG="no"
@@ -32,7 +32,8 @@ RDEPEND=">=dev-db/sqlite-3.5.9:3
 	>=media-libs/libraw-0.9.0
 	>=media-libs/gexiv2-0.2.0
 	>=dev-libs/json-glib-0.7.6
-	media-libs/lcms:2"
+	media-libs/lcms:2
+	media-libs/gstreamer:0.10"
 DEPEND="${RDEPEND}
 	>=dev-lang/vala-0.9.7:0.10"
 
