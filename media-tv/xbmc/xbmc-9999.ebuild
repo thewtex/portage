@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-tv/xbmc/xbmc-9999.ebuild,v 1.78 2011/03/01 02:46:05 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-tv/xbmc/xbmc-9999.ebuild,v 1.81 2011/04/06 22:30:37 vapier Exp $
 
 EAPI="2"
 
@@ -34,13 +34,13 @@ COMMON_DEPEND="virtual/opengl
 	dev-libs/fribidi
 	dev-libs/libcdio[-minimal]
 	dev-libs/libpcre[cxx]
-	dev-libs/lzo
+	>=dev-libs/lzo-2.04
 	>=dev-python/pysqlite-2
 	media-libs/alsa-lib
 	media-libs/flac
 	media-libs/fontconfig
 	media-libs/freetype
-	media-libs/glew
+	>=media-libs/glew-1.5.6
 	media-libs/jasper
 	media-libs/jbigkit
 	virtual/jpeg
@@ -56,13 +56,13 @@ COMMON_DEPEND="virtual/opengl
 	alsa? ( media-libs/libsdl[alsa] )
 	media-libs/libvorbis
 	media-libs/sdl-gfx
-	media-libs/sdl-image[gif,jpeg,png]
+	>=media-libs/sdl-image-1.2.10[gif,jpeg,png]
 	media-libs/sdl-mixer
 	media-libs/sdl-sound
 	media-libs/tiff
 	pulseaudio? ( media-sound/pulseaudio )
 	media-sound/wavpack
-	>=media-video/ffmpeg-0.6
+	>=virtual/ffmpeg-0.6
 	rtmp? ( media-video/rtmpdump )
 	avahi? ( net-dns/avahi )
 	webserver? ( net-libs/libmicrohttpd )
@@ -76,7 +76,7 @@ COMMON_DEPEND="virtual/opengl
 	vaapi? ( x11-libs/libva )
 	vdpau? (
 		|| ( x11-libs/libvdpau >=x11-drivers/nvidia-drivers-180.51 )
-		media-video/ffmpeg[vdpau]
+		virtual/ffmpeg[vdpau]
 	)
 	x11-libs/libXinerama
 	xrandr? ( x11-libs/libXrandr )
@@ -109,7 +109,7 @@ src_unpack() {
 src_prepare() {
 	# some dirs ship generated autotools, some dont
 	local d
-	for d in . lib/{libdts,libdvd/lib*/,cpluff} ; do
+	for d in . lib/{libdvd/lib*/,cpluff} ; do
 		[[ -e ${d}/configure ]] && continue
 		pushd ${d} >/dev/null
 		einfo "Generating autotools in ${d}"
