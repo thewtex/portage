@@ -1,5 +1,5 @@
-net-libs/rb_libtorrent >=x11-libs/qt-core-4.7.1:4 >=x11-libs/qt-dbus-4.7.1:4 X? ( >=x11-libs/qt-gui-4.7.1:4 libnotify? ( >=x11-libs/qt-gui-4.7.1:4[glib] ) ) dev-libs/boost dev-util/pkgconfig >=app-admin/eselect-python-20091230 =dev-lang/python-2* dev-vcs/subversion net-misc/rsync
-net-libs/rb_libtorrent >=x11-libs/qt-core-4.7.1:4 >=x11-libs/qt-dbus-4.7.1:4 X? ( >=x11-libs/qt-gui-4.7.1:4 libnotify? ( >=x11-libs/qt-gui-4.7.1:4[glib] ) ) dev-libs/boost geoip? ( dev-libs/geoip ) libnotify? ( x11-libs/libnotify ) >=app-admin/eselect-python-20091230 =dev-lang/python-2*
+net-libs/rb_libtorrent >=x11-libs/qt-core-4.7.1:4 X? ( >=x11-libs/qt-gui-4.7.1:4 ) dbus? ( >=x11-libs/qt-dbus-4.7.1:4 ) dev-libs/boost dev-util/pkgconfig >=app-admin/eselect-python-20091230 =dev-lang/python-2* dev-vcs/subversion net-misc/rsync
+net-libs/rb_libtorrent >=x11-libs/qt-core-4.7.1:4 X? ( >=x11-libs/qt-gui-4.7.1:4 ) dbus? ( >=x11-libs/qt-dbus-4.7.1:4 ) dev-libs/boost geoip? ( dev-libs/geoip ) >=app-admin/eselect-python-20091230 =dev-lang/python-2*
 0
 
 
@@ -7,8 +7,8 @@ http://www.qbittorrent.org/
 GPL-2
 BitTorrent client in C++ and Qt
 
-base confutils eutils multilib portability python qt4-r2 subversion toolchain-funcs versionator
-+X geoip libnotify
+base eutils multilib portability python qt4-r2 subversion toolchain-funcs versionator
+dbus +X geoip
 
 
 

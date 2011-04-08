@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/v8/v8-9999.ebuild,v 1.7 2011/03/26 20:39:22 phajdan.jr Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/v8/v8-9999.ebuild,v 1.8 2011/04/08 15:32:02 phajdan.jr Exp $
 
 EAPI="2"
 
@@ -18,9 +18,10 @@ IUSE="readline"
 RDEPEND="readline? ( >=sys-libs/readline-6.1 )"
 DEPEND="${RDEPEND}"
 
-# To make tests work, we compile with sample=shell.
+# To make tests work, we compile with sample=shell and visibility=default.
 # For more info see http://groups.google.com/group/v8-users/browse_thread/thread/61ca70420e4476bc
-EXTRA_ESCONS="library=shared sample=shell importenv=\"LINKFLAGS\""
+# and http://groups.google.com/group/v8-users/browse_thread/thread/165f89728ed6f97d
+EXTRA_ESCONS="library=shared sample=shell visibility=default importenv=\"LINKFLAGS\""
 
 pkg_setup() {
 	tc-export AR CC CXX RANLIB

@@ -897,7 +897,6 @@ dev-java/gnu-classpath:qt4 - Build with Qt4 AWT peers
 dev-java/gnu-classpath:xml - Build with native XML backend
 dev-java/ibm-jdk-bin:javacomm - Enable Java Communications API support
 dev-java/icedtea:cacao - Use the CACAO virtual machine instead of HotSpot on x86, amd64 or SPARC architectures.
-dev-java/icedtea:hs16 - Use the new version of HotSpot (16).
 dev-java/icedtea:hs19 - Use the new version of HotSpot (19).
 dev-java/icedtea:hs20 - Use the new version of HotSpot (20).
 dev-java/icedtea:jamvm - Use the JamVM virtual machine instead of HotSpot.
@@ -1564,6 +1563,7 @@ gnome-extra/avant-window-navigator:vala - Enables support for applets written in
 gnome-extra/avant-window-navigator-extras:webkit - Enables support for net-libs/webkit-gtk.
 gnome-extra/evolution-data-server:weather - Enable optional weather calendar support.
 gnome-extra/file-browser-applet:gtkhotkey - Enable hotkey support via x11-libs/gtkhotkey
+gnome-extra/gdesklets-core:dbus - Enable gDesklets Controls to use DBus
 gnome-extra/gget:epiphany - Install epiphany extensions
 gnome-extra/gnome-do-plugins:banshee - Enables the Banshee (media-sound/banshee) plugin
 gnome-extra/gnome-games:artworkextra - Installs extra artwork for various games
@@ -4269,20 +4269,22 @@ www-servers/lighttpd:libev - Enable fdevent handler
 www-servers/lighttpd:memcache - Enable memcache support for mod_cml and mod_trigger_b4_dl
 www-servers/lighttpd:rrdtool - Enable rrdtool support via mod_rrdtool
 www-servers/lighttpd:webdav - Enable webdav properties
-www-servers/nginx:addition - Enables HTTP addition filter module
 www-servers/nginx:aio - Enables file AIO support
-www-servers/nginx:flv - Enables special processing module for flv files
 www-servers/nginx:http - Enable HTTP core support
 www-servers/nginx:http-cache - Enable HTTP cache support
 www-servers/nginx:libatomic - Use libatomic instead of builtin atomic operations
-www-servers/nginx:pop - Enables POP3 proxy support
-www-servers/nginx:random-index - Enables HTTP random index module
-www-servers/nginx:realip - Enables realip module
-www-servers/nginx:smtp - Enables SMTP proxy support
-www-servers/nginx:static-gzip - Enables support for gzipping static content
-www-servers/nginx:status - Enables stub_status module
-www-servers/nginx:sub - Enables sub_filter module
-www-servers/nginx:webdav - Enable webdav support
+www-servers/nginx:nginx_modules_http_addition - This module adds contents of other locations before and after the current location's content.
+www-servers/nginx:nginx_modules_http_dav - This module adds the HTTP and WebDAV methods PUT, DELETE, MKCOL, COPY and MOVE.
+www-servers/nginx:nginx_modules_http_flv - This module provides the ability to seek within FLV (Flash) files using time-based offsets.
+www-servers/nginx:nginx_modules_http_gzip_static - Enables support for gzipping static content on disk
+www-servers/nginx:nginx_modules_http_random_index - Pick a random directory index from a directory.
+www-servers/nginx:nginx_modules_http_realip - This module allows to change the client's IP address to value from request header (e. g. X-Real-IP or X-Forwarded-For).
+www-servers/nginx:nginx_modules_http_stub_status - This module provides the ability to get some status from nginx
+www-servers/nginx:nginx_modules_http_sub - Enable support for search and replace text in the nginx response
+www-servers/nginx:nginx_modules_http_upload - Enable support for handling file uploads using multipart/form-data encoding
+www-servers/nginx:nginx_modules_mail_imap - Enables IMAP proxy support
+www-servers/nginx:nginx_modules_mail_pop3 - Enables POP3 proxy support
+www-servers/nginx:nginx_modules_mail_smtp - Enables SMTP proxy support
 www-servers/ocsigen:ocamlduce - Enables ocamlduce XML typechecking for generated web pages
 www-servers/pound:dynscaler - Enable dynamic rescaling of back-end priorities
 www-servers/resin:admin - Enable Resin admin webapp
