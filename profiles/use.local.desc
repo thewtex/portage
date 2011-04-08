@@ -213,6 +213,7 @@ app-cdr/mybashburn:normalize - Add support for normalizing audio file volume lev
 app-cdr/serpentine:muine - Enable support for the GNOME music player Muine
 app-cdr/xfburn:thunar - Use Thunar VFS layer for mimetype and icons support (WARNING: deprecated, will be replaced by GIO in future)
 app-crypt/ccid:twinserial - Enable twinserial reader
+app-crypt/ekeyd:minimal - Only install the ekey-egd-linux service rather than the full ekeyd package.
 app-crypt/ekeyd:munin - Install a plugin for net-analyzer/munin to graph statistical data from ekeyd.
 app-crypt/ekeyd:usb - Build the libusb-based userland daemon for accessing the EntropyKey (alternative to the CDC USB driver). It is suggested to use this option by default, as the CDC driver in the kernel often seems to be fragile (or the gadget implementation on the EntropyKey is too buggy), and can cause various problems.
 app-crypt/gnupg:idea - Use the patented IDEA algorithm
@@ -1604,10 +1605,12 @@ kde-base/dolphin:thumbnail - Enables video thumbnails generation for kde-base/do
 kde-base/dolphin-plugins:git - Enable support for the git VCS
 kde-base/granatier:gluon - Adds support for media-libs/gluon (recommended) instead of x11-libs/qt-multimedia
 kde-base/gwenview:kipi - Support for the KDE Image Plugin Interface.
+kde-base/kaccessible:speechd - Enable support for the speech-dispatcher speech synthesizer
 kde-base/kalzium:editor - Enable the embedded molecule editor/viewer
 kde-base/kalzium:solver - Enable the equation solver
 kde-base/kde-meta:sdk - Enable instalation of SDK components
 kde-base/kdeartwork-kscreensaver:eigen - Enable various arithmetic screensavers which use Eigen2 for computations.
+kde-base/kdeartwork-kscreensaver:kexiv2 - Enable image rotation based on exif tags with libkexiv2.
 kde-base/kdebase-kioslaves:sftp - Enable SFTP protocol support using net-libs/libssh
 kde-base/kdebindings-csharp:akonadi - Compile bindings for Akonadi.
 kde-base/kdebindings-csharp:phonon - Compile bindings for Phonon.
@@ -4014,6 +4017,8 @@ sys-devel/llvm:udis86 - Enable support for dev-libs/udis86 disassembler library
 sys-devel/llvm-gcc:bootstrap - Compile the final llvm-gcc executables with llvm-gcc itself
 sys-devel/llvm-gcc:objc - Build support for the Objective C code language
 sys-devel/llvm-gcc:objc++ - Build support for the Objective C++ language
+sys-devel/sparse:gtk - Build the test-inspect utility (requires x11-libs/gtk+ version 2)
+sys-devel/sparse:xml - Build the c2xml utility (requires dev-libs/libxml2).
 sys-freebsd/boot0:tftp - Enable PXE/TFTP boot support.
 sys-freebsd/boot0:zfs - Enable booting on ZFS filesystems.
 sys-freebsd/freebsd-lib:hesiod - Enable support for net-dns/hesiod
