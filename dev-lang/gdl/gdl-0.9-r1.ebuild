@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/gdl/gdl-0.9-r1.ebuild,v 1.1 2011/01/04 05:04:15 bicatali Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/gdl/gdl-0.9-r1.ebuild,v 1.2 2011/04/08 21:37:21 bicatali Exp $
 
 EAPI=3
 
@@ -36,7 +36,7 @@ RDEPEND="sys-libs/readline
 	wxwidgets? ( x11-libs/wxGTK:2.8[X] )"
 
 DEPEND="${RDEPEND}
-	dev-java/antlr"
+	dev-java/antlr:0"
 
 pkg_setup() {
 	use wxwidgets && wxwidgets_pkg_setup
