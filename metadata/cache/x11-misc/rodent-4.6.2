@@ -1,20 +1,20 @@
-dev-libs/glib:2 dev-libs/libxml2:2 dev-libs/libzip x11-libs/gtk+:2 x11-libs/libSM x11-libs/libX11 dev-util/pkgconfig dev-util/intltool || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b
-dev-libs/glib:2 dev-libs/libxml2:2 dev-libs/libzip x11-libs/gtk+:2 x11-libs/libSM x11-libs/libX11
+dev-libs/glib:2 dev-libs/libxml2:2 dev-libs/libzip sys-apps/file x11-libs/gtk+:2 x11-libs/libSM x11-libs/libX11 dev-util/intltool dev-util/pkgconfig || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b >=sys-apps/sed-4
+dev-libs/glib:2 dev-libs/libxml2:2 dev-libs/libzip sys-apps/file x11-libs/gtk+:2 x11-libs/libSM x11-libs/libX11
 0
 mirror://sourceforge/project/xffm/4.6.2/rodent-4.6.2.tar.bz2
 
 http://sourceforge.net/projects/xffm/
 GPL-3
 a fast, small and powerful file manager and graphical shell
-~amd64
-autotools eutils libtool multilib portability toolchain-funcs
+~amd64 ~x86
+autotools eutils fdo-mime gnome2-utils libtool multilib portability toolchain-funcs
 
 
 
 
 4
 
-prepare
+install postinst postrm preinst prepare
 
 
 

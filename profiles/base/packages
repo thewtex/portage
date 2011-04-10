@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License, v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/base/packages,v 1.47 2011/04/03 11:29:58 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/base/packages,v 1.48 2011/04/09 21:28:09 ulm Exp $
 
 # Gentoo Base Profile
 
@@ -24,7 +24,7 @@
 # specific information in here. This file serves as a high level description
 # of the minimum set of packages needed for any Gentoo based system.
 
-*sys-apps/baselayout
+*app-admin/eselect-vi
 *app-arch/bzip2
 *app-arch/cpio
 *app-arch/gzip
@@ -33,9 +33,11 @@
 *app-shells/bash
 *dev-lang/perl
 *dev-lang/python
+*net-dns/openresolv
 *net-misc/iputils
 *net-misc/rsync
 *net-misc/wget
+*sys-apps/baselayout
 *sys-apps/coreutils
 #*sys-apps/debianutils
 *sys-apps/diffutils
@@ -48,6 +50,7 @@
 #*>=sys-apps/portage-2.0.51.22
 *sys-process/procps
 *sys-process/psmisc
+*sys-apps/iproute2
 *sys-apps/sed
 *sys-apps/shadow
 *sys-apps/texinfo
@@ -67,14 +70,14 @@
 *sys-libs/ncurses
 *sys-libs/readline
 *sys-libs/zlib
+*virtual/baselayout
 *virtual/dev-manager
 *virtual/editor
+*virtual/init
 *virtual/libc
 *virtual/man
 *virtual/modutils
 *virtual/os-headers
+*virtual/package-manager
 *virtual/pager
-*virtual/portage
 *virtual/ssh
-*virtual/init
-*virtual/baselayout

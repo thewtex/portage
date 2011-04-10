@@ -1,0 +1,22 @@
+>=dev-php/adodb-4.70 app-arch/unzip || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b >=sys-devel/m4-1.4.3 >=sys-devel/libtool-1.5.18
+>=dev-php/adodb-4.70 || ( =dev-php/adodb-ext-504-r2[php_targets_php5-2] =dev-php/adodb-ext-504-r2[php_targets_php5-3] ) php_targets_php5-2? ( dev-lang/php:5.2 ) php_targets_php5-3? ( dev-lang/php:5.3 )
+0
+http://phplens.com/lens/dl/adodb-ext-504.zip
+
+http://adodb.sourceforge.net/
+BSD
+PHP extension providing up to 100% speedup by replacing parts of ADOdb with C code.
+~amd64 ~x86
+autotools eutils flag-o-matic libtool multilib php-ext-source-r2 portability toolchain-funcs
+php_targets_php5-2 php_targets_php5-3
+
+
+
+2
+
+compile configure install prepare unpack
+
+
+
+
+
