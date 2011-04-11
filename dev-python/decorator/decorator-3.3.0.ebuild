@@ -1,15 +1,15 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/decorator/decorator-3.3.0.ebuild,v 1.6 2011/02/27 18:08:59 ranger Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/decorator/decorator-3.3.0.ebuild,v 1.8 2011/04/11 16:05:33 arfrever Exp $
 
 EAPI="3"
 SUPPORT_PYTHON_ABIS="1"
 PYTHON_TESTS_RESTRICTED_ABIS="2.4 2.5"
 
-inherit distutils
+inherit distutils eutils
 
 DESCRIPTION="Simplifies the usage of decorators for the average programmer"
-HOMEPAGE="http://pypi.python.org/pypi/decorator"
+HOMEPAGE="http://pypi.python.org/pypi/decorator http://code.google.com/p/micheles/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
@@ -22,6 +22,11 @@ RDEPEND=""
 
 DOCS="README.txt"
 PYTHON_MODNAME="decorator.py"
+
+src_prepare() {
+	distutils_src_prepare
+	epatch "${FILESDIR}/${P}-python-3.2.patch"
+}
 
 src_test() {
 	testing() {
