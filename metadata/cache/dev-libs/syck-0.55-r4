@@ -1,5 +1,5 @@
-python? ( dev-lang/python !dev-python/pysyck ) >=app-admin/eselect-python-20091230 dev-lang/python
-python? ( dev-lang/python !dev-python/pysyck ) >=app-admin/eselect-python-20091230 dev-lang/python
+python? ( !dev-python/pysyck ) >=app-admin/eselect-python-20091230 python? ( =dev-lang/python-2* )
+python? ( !dev-python/pysyck ) >=app-admin/eselect-python-20091230 python? ( =dev-lang/python-2* )
 0
 http://rubyforge.org/frs/download.php/4492/syck-0.55.tar.gz
 
@@ -12,9 +12,9 @@ php python
 
 php? ( dev-php5/pecl-syck !=dev-libs/syck-0.55-r1 )
 
+3
 
-
-compile install postinst postrm unpack
+compile configure install postinst postrm prepare setup
 
 
 

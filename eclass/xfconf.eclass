@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/xfconf.eclass,v 1.27 2011/04/09 18:00:29 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/xfconf.eclass,v 1.30 2011/04/10 18:25:08 ssuominen Exp $
 
 # @ECLASS: xfconf.eclass
 # @MAINTAINER:
@@ -11,31 +11,31 @@
 
 # @ECLASS-VARIABLE: EAUTORECONF
 # @DESCRIPTION:
-# Run eautoreconf instead of elibtoolize if set "yes"
+# Run eautoreconf instead of elibtoolize if the variable is set.
 
 # @ECLASS-VARIABLE: EINTLTOOLIZE
 # @DESCRIPTION:
-# Run intltoolize --force --copy --automake if set "yes"
+# Run intltoolize --force --copy --automake if the variable is set.
 
 # @ECLASS-VARIABLE: DOCS
 # @DESCRIPTION:
-# Define documentation to install
+# This should be an variable defining documentation to install.
 
 # @ECLASS-VARIABLE: PATCHES
 # @DESCRIPTION:
-# Define patches to apply
+# This should be an array defining patches to apply.
 
 # @ECLASS-VARIABLE: XFCONF
 # @DESCRIPTION:
-# Define options for econf
+# This should be an array defining arguments for econf.
 
 inherit autotools base eutils fdo-mime gnome2-utils libtool
 
-if [[ "${EINTLTOOLIZE}" == "yes" ]]; then
+if [[ -n $EINTLTOOLIZE ]]; then
 	_xfce4_intltool="dev-util/intltool"
 fi
 
-if [[ "${EAUTORECONF}" == "yes" ]]; then
+if [[ -n $EAUTORECONF ]]; then
 	_xfce4_m4=">=dev-util/xfce4-dev-tools-4.8.0"
 fi
 
@@ -79,11 +79,11 @@ xfconf_src_prepare() {
 	debug-print-function ${FUNCNAME} "$@"
 	base_src_prepare
 
-	if [[ "${EINTLTOOLIZE}" == "yes" ]]; then
+	if [[ -n $EINTLTOOLIZE ]]; then
 		intltoolize --force --copy --automake || die
 	fi
 
-	if [[ "${EAUTORECONF}" == "yes" ]]; then
+	if [[ -n $EAUTORECONF ]]; then
 		AT_M4DIR="${EPREFIX}/usr/share/xfce4/dev-tools/m4macros" eautoreconf
 	else
 		elibtoolize
