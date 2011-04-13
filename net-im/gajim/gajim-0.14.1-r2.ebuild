@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/gajim/gajim-0.14.1-r2.ebuild,v 1.8 2011/03/29 12:43:44 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-im/gajim/gajim-0.14.1-r2.ebuild,v 1.9 2011/04/13 14:05:41 jlec Exp $
 
 EAPI="2"
 
@@ -27,7 +27,6 @@ DEPEND="${COMMON_DEPEND}
 	dev-util/pkgconfig"
 RDEPEND="${COMMON_DEPEND}
 	dev-python/pyopenssl
-	dev-python/sexy-python
 	crypt? (
 		app-crypt/gnupg
 		dev-python/pycrypto
