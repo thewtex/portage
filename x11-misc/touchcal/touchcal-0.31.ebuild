@@ -1,18 +1,23 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/touchcal/touchcal-0.31.ebuild,v 1.5 2008/10/05 10:13:48 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/touchcal/touchcal-0.31.ebuild,v 1.6 2011/04/14 06:56:52 jlec Exp $
+
+EAPI="4"
+
+inherit eutils
 
 DESCRIPTION="Touchscreen calibration utility"
-HOMEPAGE="http://touchcal.sourceforge.net"
+HOMEPAGE="http://touchcal.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
-LICENSE="GPL-2"
 
+LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~x86"
-DEPEND="sys-libs/ncurses"
 IUSE=""
 
-src_install() {
-	emake install DESTDIR="${D}" || die "failed to emake install"
-	dodoc README ChangeLog
+DEPEND="sys-libs/ncurses"
+RDEPEND="${DEPEND}"
+
+src_prepare() {
+	epatch "${FILESDIR}"/${P}-buff-overflow.patch
 }

@@ -1,0 +1,22 @@
+>=x11-libs/qt-gui-4.5:4[dbus?] >=x11-libs/qt-opengl-4.5:4 >=x11-libs/qt-sql-4.5:4[sqlite] dev-db/sqlite[fts3] >=media-libs/taglib-1.6 >=dev-libs/glib-2.24.1-r1:2 dev-libs/libxml2 media-libs/libechonest >=media-libs/gstreamer-0.10 >=media-libs/gst-plugins-base-0.10 ayatana? ( dev-libs/libindicate-qt ) ipod? ( >=media-libs/libgpod-0.8.0[ios?] ios? ( app-pda/libplist >=app-pda/libimobiledevice-1.0 app-pda/usbmuxd ) ) lastfm? ( media-libs/liblastfm ) mtp? ( >=media-libs/libmtp-1.0.0 ) projectm? ( media-libs/glew ) >=dev-libs/boost-1.39 dev-util/pkgconfig sys-devel/gettext x11-libs/qt-test:4 >=dev-util/cmake-2.8.1 userland_GNU? ( >=sys-apps/findutils-4.4.0 ) >=sys-apps/sed-4 test? ( !prefix? ( x11-base/xorg-server[-minimal] ) x11-apps/xhost )
+>=x11-libs/qt-gui-4.5:4[dbus?] >=x11-libs/qt-opengl-4.5:4 >=x11-libs/qt-sql-4.5:4[sqlite] dev-db/sqlite[fts3] >=media-libs/taglib-1.6 >=dev-libs/glib-2.24.1-r1:2 dev-libs/libxml2 media-libs/libechonest >=media-libs/gstreamer-0.10 >=media-libs/gst-plugins-base-0.10 ayatana? ( dev-libs/libindicate-qt ) ipod? ( >=media-libs/libgpod-0.8.0[ios?] ios? ( app-pda/libplist >=app-pda/libimobiledevice-1.0 app-pda/usbmuxd ) ) lastfm? ( media-libs/liblastfm ) mtp? ( >=media-libs/libmtp-1.0.0 ) projectm? ( media-libs/glew ) dbus? ( udev? ( sys-fs/udisks ) ) mtp? ( gnome-base/gvfs ) projectm? ( >=media-libs/libprojectm-1.2.0 ) >=media-plugins/gst-plugins-meta-0.10 >=media-plugins/gst-plugins-gio-0.10 >=media-plugins/gst-plugins-soup-0.10
+0
+http://clementine-player.googlecode.com/files/clementine-0.7.1.tar.gz
+
+http://www.clementine-player.org/ http://code.google.com/p/clementine-player/
+GPL-3
+A modern music player and library organizer based on Amarok 1.4 and Qt4
+~amd64 ~x86
+base cmake-utils eutils flag-o-matic gnome2-utils multilib portability toolchain-funcs virtualx
+ayatana +dbus ios ipod +lastfm mtp projectm +udev wiimote linguas_ar linguas_be linguas_bg linguas_br linguas_ca linguas_cs linguas_cy linguas_da linguas_de linguas_el linguas_en_CA linguas_en_GB linguas_eo linguas_es linguas_et linguas_eu linguas_fi linguas_fr linguas_gl linguas_he linguas_hi linguas_hr linguas_hu linguas_is linguas_it linguas_ja linguas_kk linguas_lt linguas_lv linguas_nb linguas_nl linguas_oc linguas_pa linguas_pl linguas_pt linguas_pt_BR linguas_ro linguas_ru linguas_sk linguas_sl linguas_sr linguas_sv linguas_tr linguas_uk linguas_vi linguas_zh_CN linguas_zh_TW test
+ios? ( ipod ) udev? ( dbus ) wiimote? ( dbus )
+
+
+4
+
+compile configure install postinst postrm preinst prepare test unpack
+
+
+
+
+
