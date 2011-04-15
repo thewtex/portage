@@ -1,4 +1,4 @@
->=dev-libs/libxml2-2.6.1 >=dev-cpp/glibmm-2.4 dev-util/pkgconfig >=sys-apps/sed-4
+>=dev-libs/libxml2-2.6.1 >=dev-cpp/glibmm-2.4 dev-util/pkgconfig doc? ( || ( <dev-cpp/glibmm-2.27.97:2[doc?] >=dev-cpp/mm-common-0.9.3 ) ) >=sys-apps/sed-4 || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b
 >=dev-libs/libxml2-2.6.1 >=dev-cpp/glibmm-2.4
 2.6
 mirror://gnome/sources/libxml++/2.33/libxml++-2.33.2.tar.bz2
@@ -6,15 +6,15 @@ mirror://gnome/sources/libxml++/2.33/libxml++-2.33.2.tar.bz2
 http://libxmlplusplus.sourceforge.net/
 LGPL-2.1
 C++ wrapper for the libxml2 XML parser library
-~alpha ~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-solaris
-eutils fdo-mime gnome.org gnome2 gnome2-utils libtool multilib portability toolchain-funcs versionator
+~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-solaris
+autotools eutils fdo-mime gnome.org gnome2 gnome2-utils libtool multilib portability toolchain-funcs versionator
 doc
 
 
 
 3
 
-compile configure install postinst postrm preinst prepare unpack
+compile configure install postinst postrm preinst prepare setup unpack
 
 
 

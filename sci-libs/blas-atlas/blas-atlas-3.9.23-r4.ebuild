@@ -23,7 +23,8 @@ RDEPEND="app-admin/eselect-blas
 	doc? ( app-doc/blas-docs )"
 DEPEND="app-admin/eselect-blas
 	app-admin/eselect-cblas
-	>=sys-devel/libtool-1.5"
+	>=sys-devel/libtool-1.5
+	sys-devel/gcc[fortran]"
 
 S="${WORKDIR}/ATLAS"
 BLD_DIR="${S}"/gentoo-build
