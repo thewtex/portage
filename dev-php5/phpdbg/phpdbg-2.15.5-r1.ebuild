@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-php5/phpdbg/phpdbg-2.15.5-r1.ebuild,v 1.4 2011/01/08 18:31:35 ranger Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-php5/phpdbg/phpdbg-2.15.5-r1.ebuild,v 1.6 2011/04/16 14:01:51 olemarkus Exp $
 
 EAPI=3
 
@@ -32,7 +32,7 @@ src_install() {
 	php-ext-source-r2_src_install
 	dodoc-php AUTHORS COPYING INSTALL
 
-	php-ext-base-r1_addtoinifiles "[Debugger]"
-	php-ext-base-r1_addtoinifiles "debugger.enabled" "on"
-	php-ext-base-r1_addtoinifiles "debugger.profiler_enabled" "on"
+	php-ext-source-r2_addtoinifiles "[Debugger]"
+	php-ext-source-r2_addtoinifiles "debugger.enabled" "on"
+	php-ext-source-r2_addtoinifiles "debugger.profiler_enabled" "on"
 }
