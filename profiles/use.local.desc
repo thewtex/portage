@@ -218,8 +218,10 @@ app-crypt/ekeyd:minimal - Only install the ekey-egd-linux service rather than th
 app-crypt/ekeyd:munin - Install a plugin for net-analyzer/munin to graph statistical data from ekeyd.
 app-crypt/ekeyd:usb - Build the libusb-based userland daemon for accessing the EntropyKey (alternative to the CDC USB driver). It is suggested to use this option by default, as the CDC driver in the kernel often seems to be fragile (or the gadget implementation on the EntropyKey is too buggy), and can cause various problems.
 app-crypt/gnupg:idea - Use the patented IDEA algorithm
-app-crypt/gnupg:openct - build using dev-libs/openct compat
-app-crypt/gnupg:pcsc-lite - build with sys-apps/pcsc-lite
+app-crypt/gnupg:openct - Bring in dev-libs/openct as a dependency; enable scdaemon.
+app-crypt/gnupg:pcsc-lite - Bring in sys-apps/pcsc-lite as a dependency; enable scdaemon.
+app-crypt/gnupg:smartcard - Build scdaemon software. Enables usage of OpenPGP cards. For other type of smartcards, try app-crypt/gnupg-pkcs11-scd.
+app-crypt/gnupg:usb - Build direct CCID access for scdaemon; requires dev-libs/libusb.
 app-crypt/gpgme:common-lisp - Install common-lisp files
 app-crypt/gpgme:pth - Enable support for GNU Portable Threads multithreading library
 app-crypt/heimdal:hdb-ldap - Adds support for LDAP as a database backend
@@ -1541,7 +1543,6 @@ games-strategy/x2:dynamic - Use dynamic binaries instead of static
 games-strategy/x2:langpacks - Install additional language packs
 games-strategy/x2:modkit - Install the modkit
 games-util/gslist:web - Enable the web interface
-games-util/xboxdrv:daemon - Install xboxdrv-daemon (and its dependencies)
 gnome-base/dconf:introspection - Use dev-libs/gobject-introspection for introspection
 gnome-base/dconf:vala - Add support for dev-lang/vala
 gnome-base/gconf:introspection - Use dev-libs/gobject-introspection for introspection
@@ -2084,10 +2085,8 @@ media-plugins/audacious-plugins:adplug - Build with AdPlug (Adlib sound card emu
 media-plugins/audacious-plugins:bs2b - Enable Bauer Bauer stereophonic-to-binaural headphone filter
 media-plugins/audacious-plugins:cue - Support CUE sheets using the libcue library
 media-plugins/audacious-plugins:fluidsynth - Support FluidSynth as MIDI synth backend
-media-plugins/audacious-plugins:icecast - Support for Icecast2 streaming
 media-plugins/audacious-plugins:midi - Build with amidi-plug (MIDI synth) support
 media-plugins/audacious-plugins:mms - Build with mms (Microsoft Media Server) support
-media-plugins/audacious-plugins:projectm - Build with ProjectM visualization
 media-plugins/audacious-plugins:scrobbler - Build with scrobbler/LastFM submission support
 media-plugins/audacious-plugins:sid - Build with SID (Commodore 64 Audio) support
 media-plugins/banshee-community-extensions:lastfmfingerprint - Enable support to ientify your music automatically, using the Last.fm online service.
