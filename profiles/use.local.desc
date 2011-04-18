@@ -407,8 +407,6 @@ app-emulation/qemu-kvm-spice:qemu-ifup - Provides the qemu-ifup script for use w
 app-emulation/qemu-kvm-spice:sdl - Enable the SDL-based console
 app-emulation/qemu-kvm-spice:vde - Enable VDE-based networking
 app-emulation/spice:gui - Build some GUI components (inside the guest window).
-app-emulation/spice:kde - Install a KDE protocol handler configuration for spice (only in combination with the uri USE flag)
-app-emulation/spice:uri - Add uri-handling support to spicec using dev-libs/uriparser.
 app-emulation/uae:scsi - Enable the uaescsi.device
 app-emulation/uae:sdl-sound - Use media-sound/sdl-sound for audio output
 app-emulation/uae:ui - Build the user interface (could be gtk or ncurses based, depending on sdl, dga, svga and aalib USE flags)
@@ -4284,10 +4282,12 @@ www-servers/nginx:http-cache - Enable HTTP cache support
 www-servers/nginx:libatomic - Use libatomic instead of builtin atomic operations
 www-servers/nginx:nginx_modules_http_addition - This module adds contents of other locations before and after the current location's content.
 www-servers/nginx:nginx_modules_http_dav - This module adds the HTTP and WebDAV methods PUT, DELETE, MKCOL, COPY and MOVE.
+www-servers/nginx:nginx_modules_http_ey_balancer - This module adds an upstream connection queue to nginx
 www-servers/nginx:nginx_modules_http_flv - This module provides the ability to seek within FLV (Flash) files using time-based offsets.
 www-servers/nginx:nginx_modules_http_gzip_static - Enables support for gzipping static content on disk
 www-servers/nginx:nginx_modules_http_random_index - Pick a random directory index from a directory.
 www-servers/nginx:nginx_modules_http_realip - This module allows to change the client's IP address to value from request header (e. g. X-Real-IP or X-Forwarded-For).
+www-servers/nginx:nginx_modules_http_slowfs_cache - This module adds the ability to cache static files
 www-servers/nginx:nginx_modules_http_stub_status - This module provides the ability to get some status from nginx
 www-servers/nginx:nginx_modules_http_sub - Enable support for search and replace text in the nginx response
 www-servers/nginx:nginx_modules_http_upload - Enable support for handling file uploads using multipart/form-data encoding
