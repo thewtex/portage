@@ -1,8 +1,8 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/minisat/minisat-2.2.0-r3.ebuild,v 1.1 2011/04/16 21:43:53 nerdboy Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/minisat/minisat-2.2.0-r3.ebuild,v 1.2 2011/04/17 22:54:19 nerdboy Exp $
 
-EAPI="4"
+EAPI="2"
 
 inherit eutils toolchain-funcs
 
@@ -37,6 +37,15 @@ pkg_setup() {
 		mydir="core"
 	fi
 	tc-export CXX
+
+	if has_version "=sci-mathematics/minisat-2.1*" ; then
+		elog ""
+		elog "The minisat2 2.1 and 2.2 ABIs are not compatible and there"
+		elog "is currently no slotting.  Please mask it yourself (eg, in"
+		elog "packages.mask) if you still need the older version."
+		elog ""
+		epause 5
+	fi
 }
 
 src_prepare() {
