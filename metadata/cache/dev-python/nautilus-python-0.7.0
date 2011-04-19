@@ -1,5 +1,5 @@
-dev-python/pygtk dev-python/pygobject gnome-base/nautilus dev-python/gnome-python-base doc? ( >=dev-util/gtk-doc-1.9 ) >=sys-apps/sed-4
-dev-python/pygtk dev-python/pygobject gnome-base/nautilus
+>=dev-python/pygtk-2.8 >=dev-python/pygobject-2.16 >=gnome-base/nautilus-2.22 >=dev-python/gconf-python-2.12 doc? ( >=dev-util/gtk-doc-1.9 ) >=sys-apps/sed-4 >=app-admin/eselect-python-20091230 =dev-lang/python-2* || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b
+>=dev-python/pygtk-2.8 >=dev-python/pygobject-2.16 >=gnome-base/nautilus-2.22 >=app-admin/eselect-python-20091230 =dev-lang/python-2*
 0
 mirror://gnome/sources/nautilus-python/0.7/nautilus-python-0.7.0.tar.bz2
 
@@ -7,14 +7,14 @@ http://www.gnome.org/
 GPL-2
 Python bindings for the Nautilus file manager
 ~amd64 ~x86
-eutils fdo-mime gnome.org gnome2 gnome2-utils libtool multilib portability toolchain-funcs versionator
+autotools eutils fdo-mime gnome.org gnome2 gnome2-utils libtool multilib portability python toolchain-funcs versionator
 doc debug
 
 
 
 3
 
-compile configure install postinst postrm preinst prepare unpack
+compile configure install postinst postrm preinst prepare setup unpack
 
 
 
