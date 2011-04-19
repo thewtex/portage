@@ -1091,8 +1091,8 @@ dev-libs/opencryptoki:tpm - Enable support for Trusted Platform Module (TPM) usi
 dev-libs/openct:debug - Add debug output to the driver library for pcsc-lite.
 dev-libs/openct:pcsc-lite - Build a driver library for sys-apps/pcsc-lite, providing PC/SC API access to devices supported by OpenCT.
 dev-libs/openobex:irda - Enable IrDA support
-dev-libs/opensc:openct - Build using dev-libs/openct compatibility
-dev-libs/opensc:pcsc-lite - Build with sys-apps/pcsc-lite
+dev-libs/opensc:openct - Use dev-libs/openct (and CT-API) for accessing Smartcard hardware. If neither openct nor pcsc-lite are enabled, only CT-API dynamic linking is enabled.
+dev-libs/opensc:pcsc-lite - Use sys-apps/pcsc-lite (and PC/SC API) for accessing Smartcard hardware. If neither openct nor pcsc-lite are enabled, only CT-API dynamic linking is enabled.
 dev-libs/openssl:rfc3779 - Enable support for RFC 3779 (X.509 Extensions for IP Addresses and AS Identifiers)
 dev-libs/pkcs11-helper:nss - Enable NSS crypto engine
 dev-libs/ppl:lpsol - Build the ppl_lpsol linear programming problem solver
@@ -2140,7 +2140,9 @@ media-sound/amarok:daap - Enable the scripts for music sharing through DAAP. Thi
 media-sound/amarok:embedded - Use libmysqld, MySQL embedded server library. Try disabling this if you encounter -PIC related in amarok, it will make amarok rely only on standalone MySQL server.
 media-sound/amarok:lastfm - Enable Last.fm streaming services support through media-libs/liblastfm
 media-sound/amarok:mp3tunes - Enable mp3tunes integration
+media-sound/amarok:playdar - Build the playdar collection
 media-sound/amarok:player - Build the player
+media-sound/amarok:upnp - Support for upnp servers
 media-sound/amarok:utils - Build the utils - old media-sound/amarok-utils
 media-sound/aqualung:ifp - Enable support for iRiver iFP portable audio players
 media-sound/aqualung:lua - Enable support for programmable title formatting with dev-lang/lua
@@ -3473,6 +3475,7 @@ net-p2p/mldonkey:fasttrack - enable fasttrack support
 net-p2p/mldonkey:gnutella - enable gnutella and gnutella2 support
 net-p2p/mldonkey:guionly - enable client build only
 net-p2p/mldonkey:magic - enable use of libmagic
+net-p2p/rtorrent:color - Add custom color support for torrent list
 net-p2p/rtorrent:daemon - Uses app-misc/screen to daemonize this application
 net-p2p/transmission:libcanberra - Enable sound event support with media-libs/libcanberra
 net-p2p/transmission:utp - Adds support for µTP (Micro Transport Protocol)
