@@ -1,6 +1,6 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nload/nload-0.7.1.ebuild,v 1.4 2008/06/29 14:04:11 nixnut Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nload/nload-0.7.1.ebuild,v 1.5 2011/04/20 00:10:14 jer Exp $
 
 inherit eutils autotools
 
@@ -14,6 +14,7 @@ KEYWORDS="amd64 ppc sparc x86"
 IUSE=""
 
 DEPEND=">=sys-libs/ncurses-5.2"
+RDEPEND="${DEPEND}"
 
 src_unpack() {
 	unpack ${A}
