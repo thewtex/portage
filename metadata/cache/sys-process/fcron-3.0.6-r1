@@ -1,5 +1,5 @@
 selinux? ( sys-libs/libselinux ) pam? ( virtual/pam ) >=sys-apps/sed-4.0.5
-selinux? ( sys-libs/libselinux ) pam? ( virtual/pam ) app-shells/bash app-editors/gentoo-editor pam? ( >=sys-auth/pambase-20100310 ) !virtual/cron virtual/mta >=sys-process/cronbase-0.3.2
+selinux? ( sys-libs/libselinux ) pam? ( virtual/pam ) app-shells/bash app-editors/gentoo-editor pam? ( >=sys-auth/pambase-20100310 ) !sys-process/vixie-cron !sys-process/bcron !sys-process/cronie !sys-process/dcron !sys-process/fcron virtual/mta >=sys-process/cronbase-0.3.2
 0
 http://fcron.free.fr/archives/fcron-3.0.6.src.tar.gz
 
@@ -11,7 +11,7 @@ cron eutils flag-o-matic multilib pam portability toolchain-funcs
 debug pam selinux linguas_fr
 
 
-virtual/cron
+
 
 
 compile install postinst setup unpack

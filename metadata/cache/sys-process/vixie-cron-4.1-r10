@@ -1,5 +1,5 @@
 selinux? ( sys-libs/libselinux ) pam? ( virtual/pam ) >=sys-apps/sed-4.0.5
-selinux? ( sys-libs/libselinux ) pam? ( virtual/pam ) !virtual/cron virtual/mta >=sys-process/cronbase-0.3.2
+selinux? ( sys-libs/libselinux ) pam? ( virtual/pam ) !sys-process/vixie-cron !sys-process/bcron !sys-process/cronie !sys-process/dcron !sys-process/fcron virtual/mta >=sys-process/cronbase-0.3.2
 0
 mirror://gentoo/vixie-cron-4.1.tar.bz2 mirror://gentoo/vixie-cron-4.1-gentoo-r4.patch.bz2
 
@@ -11,7 +11,7 @@ cron eutils flag-o-matic multilib pam portability toolchain-funcs
 selinux pam debug
 
 
-virtual/cron
+
 
 
 compile install postinst preinst setup unpack
