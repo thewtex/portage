@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/gnome2.eclass,v 1.91 2011/04/09 13:14:06 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/gnome2.eclass,v 1.95 2011/04/21 21:27:40 eva Exp $
 
 # @ECLASS: gnome2.eclass
 # @MAINTAINER:
@@ -16,7 +16,7 @@ case "${EAPI:-0}" in
 	0|1)
 		EXPORT_FUNCTIONS src_unpack src_compile src_install pkg_preinst pkg_postinst pkg_postrm
 		;;
-	2|3)
+	2|3|4)
 		EXPORT_FUNCTIONS src_unpack src_prepare src_configure src_compile src_install pkg_preinst pkg_postinst pkg_postrm
 		;;
 	*) die "EAPI=${EAPI} is not supported" ;;
@@ -27,6 +27,12 @@ esac
 # @DESCRIPTION:
 # Extra configure opts passed to econf
 G2CONF=${G2CONF:-""}
+
+# @ECLASS-VARIABLE: GNOME2_LA_PUNT
+# @DESCRIPTION:
+# Should we delete all the .la files?
+# NOT to be used without due consideration.
+GNOME2_LA_PUNT=${GNOME2_LA_PUNT:-"no"}
 
 # @ECLASS-VARIABLE: ELTCONF
 # @DEFAULT-UNSET
@@ -41,7 +47,7 @@ ELTCONF=${ELTCONF:-""}
 # Should we use EINSTALL instead of DESTDIR
 USE_EINSTALL=${USE_EINSTALL:-""}
 
-# @ECLASS-VARIABLE: USE_EINSTALL
+# @ECLASS-VARIABLE: SCROLLKEEPER_UPDATE
 # @DEPRECATED
 # @DESCRIPTION:
 # Whether to run scrollkeeper for this package or not.
@@ -85,7 +91,13 @@ gnome2_src_prepare() {
 	gnome2_omf_fix
 
 	# Run libtoolize
-	elibtoolize ${ELTCONF}
+	if has ${EAPI:-0} 0 1 2 3; then
+		elibtoolize ${ELTCONF}
+	else
+		# Everything is fatal EAPI 4 onwards
+		nonfatal elibtoolize ${ELTCONF}
+	fi
+
 }
 
 # @FUNCTION: gnome2_src_configure
@@ -108,7 +120,7 @@ gnome2_src_configure() {
 	addwrite "/root/.gnome2"
 
 	# GST_REGISTRY is to work around gst-inspect trying to read/write /root
-	GST_REGISTRY="${S}/registry.xml" econf "$@" ${G2CONF} || die "configure failed"
+	GST_REGISTRY="${S}/registry.xml" econf "$@" ${G2CONF}
 }
 
 # @FUNCTION: gnome2_src_compile
@@ -122,7 +134,7 @@ gnome2_src_compile() {
 # @FUNCTION: gnome2_src_install
 # @DESCRIPTION:
 # Gnome specific install. Handles typical GConf and scrollkeeper setup
-# in packages.
+# in packages and removal of .la files if requested
 gnome2_src_install() {
 	has ${EAPI:-0} 0 1 2 && ! use prefix && ED="${D}"
 	# if this is not present, scrollkeeper-update may segfault and
@@ -159,6 +171,13 @@ gnome2_src_install() {
 
 	# Make sure this one doesn't get in the portage db
 	rm -fr "${ED}/usr/share/applications/mimeinfo.cache"
+
+	# Delete all .la files
+	if [[ "${GNOME2_LA_PUNT}" != "no" ]]; then
+		ebegin "Removing .la files"
+		find "${ED}" -name '*.la' -delete || die "la file removal failed"
+		eend
+	fi
 }
 
 # @FUNCTION: gnome2_pkg_preinst
