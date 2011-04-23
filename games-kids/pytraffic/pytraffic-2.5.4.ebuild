@@ -1,10 +1,10 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-kids/pytraffic/pytraffic-2.5.4.ebuild,v 1.6 2010/10/10 23:15:57 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-kids/pytraffic/pytraffic-2.5.4.ebuild,v 1.8 2011/04/12 17:15:51 arfrever Exp $
 
-EAPI=2
+EAPI=3
 PYTHON_DEPEND="2"
-inherit python distutils eutils games
+inherit distutils eutils games
 
 DESCRIPTION="Python version of the board game Rush Hour"
 HOMEPAGE="http://alpha.uhasselt.be/Research/Algebra/Members/pytraffic/"
@@ -48,10 +48,15 @@ src_install() {
 
 pkg_setup() {
 	python_set_active_version 2
+	python_pkg_setup
 	games_pkg_setup
 }
 
 pkg_postinst() {
-	distutils_pkg_postinst
+	python_mod_optimize "$(games_get_libdir)/${PN}"
 	games_pkg_postinst
+}
+
+pkg_postrm() {
+	python_mod_cleanup "$(games_get_libdir)/${PN}"
 }

@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-drivers/nvidia-drivers/nvidia-drivers-260.19.44.ebuild,v 1.1 2011/01/22 22:34 megabaks Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-drivers/nvidia-drivers/nvidia-drivers-260.19.44.ebuild,v 1.1 2011/04/07 06:33:38 jlec Exp $
 
 EAPI="2"
 
@@ -12,9 +12,9 @@ X86_FBSD_NV_PACKAGE="NVIDIA-FreeBSD-x86-${PV}"
 
 DESCRIPTION="NVIDIA X11 driver and GLX libraries"
 HOMEPAGE="http://www.nvidia.com/"
-SRC_URI="x86? ( ftp://download.nvidia.com/XFree86/Linux-x86/${PV}/${X86_NV_PACKAGE}.run )
-	 amd64? ( ftp://download.nvidia.com/XFree86/Linux-x86_64/${PV}/${AMD64_NV_PACKAGE}.run )
-	 x86-fbsd? ( ftp://download.nvidia.com/XFree86/FreeBSD-x86/${PV}/${X86_FBSD_NV_PACKAGE}.tar.gz )"
+SRC_URI="x86? ( http://us.download.nvidia.com/XFree86/Linux-x86/${PV}/${X86_NV_PACKAGE}.run )
+	 amd64? ( http://us.download.nvidia.com/XFree86/Linux-x86_64/${PV}/${AMD64_NV_PACKAGE}.run )
+	 x86-fbsd? ( http://us.download.nvidia.com/XFree86/FreeBSD-x86/${PV}/${X86_FBSD_NV_PACKAGE}.tar.gz )"
 
 LICENSE="NVIDIA"
 SLOT="0"
@@ -132,6 +132,7 @@ QA_DT_HASH_amd64="usr/lib32/libcuda.so.${PV}
 	usr/lib64/libvdpau_nvidia.so.${PV}
 	usr/lib64/libOpenCL.so.1.0.0
 	usr/lib64/libnvidia-compiler.so.${PV}
+	usr/lib64/libnvcuvid.so.${PV}
 	usr/bin/nvidia-smi
 	usr/bin/nvidia-xconfig
 	usr/bin/nvidia-settings"
@@ -147,6 +148,7 @@ QA_DT_HASH_x86="usr/lib/libcuda.so.${PV}
 	usr/lib/libvdpau_nvidia.so.${PV}
 	usr/lib/libOpenCL.so.1.0.0
 	usr/lib/libnvidia-compiler.so.${PV}
+	usr/lib/libnvcuvid.so.${PV}
 	usr/bin/nvidia-smi
 	usr/bin/nvidia-xconfig
 	usr/bin/nvidia-settings"
@@ -172,9 +174,11 @@ mtrr_check() {
 lockdep_check() {
 	if linux_chkconfig_present LOCKDEP; then
 		eerror "You've enabled LOCKDEP -- lock tracking -- in the kernel."
-		eerror "Unfortunately, this option exports the symbol 'lockdep_init_map' as GPL-only"
-		eerror "which will prevent ${P} from compiling."
+		eerror "Unfortunately, this option exports the symbol "
+		eerror "'lockdep_init_map' as GPL-only which will prevent "
+		eerror "${P} from compiling."
 		eerror "Please make sure the following options have been unset:"
+		eerror
 		eerror "    Kernel hacking  --->"
 		eerror "        [ ] Lock debugging: detect incorrect freeing of live locks"
 		eerror "        [ ] Lock debugging: prove locking correctness"
@@ -322,6 +326,16 @@ src_install() {
 	# NVIDIA kernel <-> userspace driver config lib
 	dolib.so ${NV_LIB}/libnvidia-cfg.so.${NV_SOVER} || \
 		die "failed to install libnvidia-cfg"
+	dosym /usr/$(get_libdir)/libnvidia-cfg.so.${NV_SOVER} \
+		/usr/$(get_libdir)/libnvidia-cfg.so || \
+		die "failed to create libnvidia-cfg.so symlink"
+
+	# NVIDIA video decode <-> CUDA
+	dolib.so ${NV_LIB}/libnvcuvid.so.${NV_SOVER} || \
+		die "failed to install libnvcuvid.so"
+	dosym /usr/$(get_libdir)/libnvcuvid.so.${NV_SOVER} \
+		/usr/$(get_libdir)/libnvcuvid.so || \
+		die "failed to create libnvcuvid.so symlink"
 
 	# Xorg DDX driver
 	insinto /usr/$(get_libdir)/xorg/modules/drivers
@@ -343,9 +357,8 @@ src_install() {
 	dosym libXvMCNVIDIA.so.${NV_SOVER} /usr/$(get_libdir)/libXvMCNVIDIA.so || \
 		die "failed to create libXvMCNVIDIA.so symlink"
 
-	# CUDA and OpenCL headers
+	# OpenCL ICD for NVIDIA
 	if use kernel_linux; then
-		# OpenCL ICD for NVIDIA
 		dodir /etc/OpenCL/vendors
 		insinto /etc/OpenCL/vendors
 		doins nvidia.icd
@@ -368,7 +381,9 @@ src_install() {
 
 	# Helper Apps
 	dobin ${NV_EXEC}/nvidia-xconfig || die
-	use gtk && dobin ${NV_EXEC}/nvidia-settings
+	if use gtk; then
+		dobin ${NV_EXEC}/nvidia-settings || die
+	fi
 	dobin ${NV_EXEC}/nvidia-bug-report.sh || die
 	if use kernel_linux; then
 		dobin ${NV_EXEC}/nvidia-smi || die
@@ -376,16 +391,12 @@ src_install() {
 
 	# Desktop entries for nvidia-settings
 	if use gtk; then
-		dodir /usr/share/applications/
-		insinto /usr/share/applications/
-		doins ${NV_EXEC}/nvidia-settings.desktop
 		sed -e 's:__UTILS_PATH__:/usr/bin:' \
 			-e 's:__PIXMAP_PATH__:/usr/share/pixmaps:' \
-			-i "${D}"/usr/share/applications/nvidia-settings.desktop
+			-i "${NV_EXEC}/nvidia-settings.desktop"
+		domenu ${NV_EXEC}/nvidia-settings.desktop
 
-		dodir /usr/share/pixmaps/
-		insinto /usr/share/pixmaps/
-		doins ${NV_EXEC}/nvidia-settings.png
+		doicon ${NV_EXEC}/nvidia-settings.png
 	fi
 
 	if has_multilib_profile ; then
@@ -499,7 +510,15 @@ pkg_postinst() {
 	elog "To work with compiz, you must enable the AddARGBGLXVisuals option."
 	elog
 	elog "If you are having resolution problems, try disabling DynamicTwinView."
-	echo
+	elog
+
+	if ! use gtk; then
+		elog "USE=gtk controls whether the nvidia-settings application"
+		elog "is installed. If you would like to use it, enable that"
+		elog "flag and re-emerge this ebuild. media-video/nvidia-settings"
+		elog "no longer installs nvidia-settings but only installs the"
+		elog "associated user space libraries."
+	fi
 }
 
 pkg_postrm() {

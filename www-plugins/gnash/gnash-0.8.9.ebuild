@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-plugins/gnash/gnash-0.8.9.ebuild,v 1.2 2011/03/27 12:03:45 chithanh Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-plugins/gnash/gnash-0.8.9.ebuild,v 1.5 2011/04/10 22:26:46 chithanh Exp $
 
 EAPI=3
 CMAKE_REQUIRED="never"
@@ -23,7 +23,7 @@ fi
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
-IUSE="+agg cairo cygnal dbus doc fbcon +ffmpeg gnome gstreamer gtk kde lirc mysql +nls nsplugin opengl openvg python sdl +sdl-sound ssh ssl test vaapi video_cards_intel"
+IUSE="+agg cairo cygnal dbus doc fbcon +ffmpeg gnome gstreamer gtk kde lirc mysql +nls nsplugin opengl openvg python sdl +sdl-sound ssh ssl test vaapi"
 
 # gnash fails if obsolete boost is installed, bug #334259
 RDEPEND=">=dev-libs/boost-1.41.0
@@ -147,6 +147,14 @@ src_prepare() {
 	# Use external dejagnu for tests, bug #321017
 	epatch "${FILESDIR}"/${PN}-0.8.9-external-dejagnu.patch
 
+	# Fix detection of recent ffmpeg, bug #362683
+	epatch "${FILESDIR}"/${PN}-0.8.9-ffmpeg-detection.patch
+	epatch "${FILESDIR}"/${PN}-0.8.9-libavcodec-version.patch
+	epatch "${FILESDIR}"/${PN}-0.8.9-look-harder-for-version_h.patch
+
+	# Fix linking against recent ffmpeg, bug #362949, upstream #107657
+	epatch "${FILESDIR}"/${PN}-0.8.9-no-deprecated-avcodec-parser.patch
+
 	# Fix building on ppc64, bug #342535
 	use ppc64 && append-flags -mminimal-toc
 
@@ -229,7 +237,6 @@ src_configure() {
 		$(use_enable ssh) \
 		$(use_enable ssl) \
 		$(use_enable test testsuite) \
-		$(use_enable video_cards_intel i810-lod-bias) \
 		--enable-gui=${gui} \
 		--enable-extensions=${myext} \
 		--enable-renderer=${renderers} \

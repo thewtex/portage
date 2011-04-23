@@ -1,6 +1,41 @@
 # ChangeLog for kde-base/plasma-workspace
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/plasma-workspace/ChangeLog,v 1.92 2011/03/04 18:00:00 alexxy Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/plasma-workspace/ChangeLog,v 1.99 2011/04/19 20:56:06 dilfridge Exp $
+
+  19 Apr 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  plasma-workspace-4.6.2-r1.ebuild:
+  Force same semantic-desktop setting for kdelibs, should fix bug 363683
+
+*plasma-workspace-4.6.2-r1 (18 Apr 2011)
+
+  18 Apr 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  -plasma-workspace-4.6.2.ebuild, +plasma-workspace-4.6.2-r1.ebuild,
+  +files/plasma-workspace-4.6.2-oldpimcrash.patch:
+  Add workaround patch for plasma crash with kdepim-4.4, bug 364015
+
+  12 Apr 2011; Theo Chatzimichos <tampakrap@gentoo.org>
+  plasma-workspace-4.6.2.ebuild:
+  Add another cmake switch to make akonadi more optional, bug 361643
+
+  08 Apr 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  -files/plasma-workspace-4.6.0-optional_akonadi-server.patch:
+  Cleanup
+
+  06 Apr 2011; Theo Chatzimichos <tampakrap@gentoo.org>
+  plasma-workspace-4.6.2.ebuild:
+  rss useflag is now on by default
+
+  06 Apr 2011; Theo Chatzimichos <tampakrap@gentoo.org>
+  plasma-workspace-4.6.2.ebuild:
+  Make kdepimlibs optional again, through the rss useflag, bug 353726
+
+*plasma-workspace-4.6.2 (06 Apr 2011)
+
+  06 Apr 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  -plasma-workspace-4.5.5.ebuild, -plasma-workspace-4.6.0.ebuild,
+  -plasma-workspace-4.6.1.ebuild, +plasma-workspace-4.6.2.ebuild,
+  +files/plasma-workspace-4.6.2-optional_akonadi-server.patch:
+  Version bump KDE SC 4.6.2
 
 *plasma-workspace-4.6.1 (04 Mar 2011)
 

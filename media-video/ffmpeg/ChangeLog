@@ -1,6 +1,52 @@
 # ChangeLog for media-video/ffmpeg
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/ffmpeg/ChangeLog,v 1.399 2011/04/01 23:16:20 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/ffmpeg/ChangeLog,v 1.410 2011/04/20 14:25:17 aballier Exp $
+
+  20 Apr 2011; Alexis Ballier <aballier@gentoo.org> ffmpeg-9999.ebuild,
+  metadata.xml:
+  simplify tests handling, add celt decoding support
+
+  13 Apr 2011; Alexis Ballier <aballier@gentoo.org> -ffmpeg-0.6.90_rc0.ebuild,
+  -ffmpeg-0.6.90_rc0-r1.ebuild:
+  remove old
+
+*ffmpeg-0.6.90_rc0-r2 (13 Apr 2011)
+
+  13 Apr 2011; Alexis Ballier <aballier@gentoo.org>
+  +ffmpeg-0.6.90_rc0-r2.ebuild, +files/avutil_aes_sha_h.patch:
+  New revision for installing avutil headers required by mplayer
+
+  13 Apr 2011; Alexis Ballier <aballier@gentoo.org> ffmpeg-9999.ebuild:
+  Enable (L)GPL-3 only when needed
+
+*ffmpeg-0.6.90_rc0-r1 (12 Apr 2011)
+
+  12 Apr 2011; Alexis Ballier <aballier@gentoo.org>
+  +ffmpeg-0.6.90_rc0-r1.ebuild, +files/avparser.patch:
+  av_parser_parse is to be removed with the next major bump, bug #362949
+
+  12 Apr 2011; Alexis Ballier <aballier@gentoo.org> ffmpeg-9999.ebuild:
+  no need to hack the LD_LIBRARY_PATH for libavcore since its no more
+
+  12 Apr 2011; Alexis Ballier <aballier@gentoo.org> ffmpeg-9999.ebuild:
+  Add support for amrwb and aac encodings via the libvo libraries. Bump libvpx
+  dep.
+
+  12 Apr 2011; Alexis Ballier <aballier@gentoo.org> -ffmpeg-0.5_p20373.ebuild:
+  remove old
+
+  10 Apr 2011; Raúl Porcel <armin76@gentoo.org> ffmpeg-0.6_p25767.ebuild:
+  ia64 stable
+
+  05 Apr 2011; Alexis Ballier <aballier@gentoo.org> -ffmpeg-0.5_p22846.ebuild,
+  -ffmpeg-0.6_p25423.ebuild, -ffmpeg-0.6_p28715.ebuild:
+  remove old
+
+*ffmpeg-0.6.90_rc0 (05 Apr 2011)
+
+  05 Apr 2011; Alexis Ballier <aballier@gentoo.org> +ffmpeg-0.6.90_rc0.ebuild,
+  ffmpeg-9999.ebuild:
+  version bump and adjust variables to fit with the rc style releases
 
   01 Apr 2011; Alexis Ballier <aballier@gentoo.org> ffmpeg-9999.ebuild:
   disable-stripping option is back, we need to pass it

@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-base/xorg-drivers/xorg-drivers-1.10.ebuild,v 1.1 2011/03/30 20:07:11 chithanh Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-base/xorg-drivers/xorg-drivers-1.10.ebuild,v 1.3 2011/04/20 21:40:54 chithanh Exp $
 
 EAPI=4
 
@@ -134,7 +134,7 @@ PDEPEND="
 	video_cards_sisusb?        ( x11-drivers/xf86-video-sisusb )
 	video_cards_suncg14?       ( x11-drivers/xf86-video-suncg14 )
 	video_cards_suncg3?        ( x11-drivers/xf86-video-suncg3 )
-	video_cards_suncg6?        ( !x11-drivers/xf86-video-suncg6 )
+	video_cards_suncg6?        ( x11-drivers/xf86-video-suncg6 )
 	video_cards_sunffb?        ( x11-drivers/xf86-video-sunffb )
 	video_cards_sunleo?        ( x11-drivers/xf86-video-sunleo )
 	video_cards_suntcx?        ( x11-drivers/xf86-video-suntcx )

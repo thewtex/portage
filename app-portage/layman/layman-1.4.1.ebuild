@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-portage/layman/layman-1.4.1.ebuild,v 1.4 2011/01/04 01:24:26 xmw Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-portage/layman/layman-1.4.1.ebuild,v 1.9 2011/04/17 18:43:25 jer Exp $
 
 EAPI="2"
 PYTHON_DEPEND="2:2.5"
@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ~ppc64 sparc x86 ~x86-fbsd"
 IUSE="bazaar cvs darcs git mercurial subversion test"
 
 COMMON_DEPS="dev-lang/python[xml]"
@@ -33,18 +33,6 @@ RDEPEND="${COMMON_DEPS}
 		)
 	)"
 RESTRICT_PYTHON_ABIS="2.4 3.*"
-
-pkg_setup() {
-	if ! has_version dev-vcs/subversion; then
-		ewarn "You do not have dev-vcs/subversion installed!"
-		ewarn "While layman does not exactly depend on this"
-		ewarn "version control system you should note that"
-		ewarn "most available overlays are offered via"
-		ewarn "dev-vcs/subversion. If you do not install it"
-		ewarn "you will be unable to use these overlays."
-		ewarn
-	fi
-}
 
 src_test() {
 	testing() {

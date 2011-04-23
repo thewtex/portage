@@ -20,6 +20,7 @@ src_prepare() {
 		-e "/^ *ETC/s|=.*|= /etc|" \
 		-e "/^ *CFLAGS/s|=|+=|" \
 		-e "/^ *LDFLAGS/s|=|+=|" \
+		-e "/^ *LIBDIR/s|=.*|= \$(PREFIX)/$(get_libdir)|"\
 		"${S}"/config.mk || die "sed failed"
 }
 

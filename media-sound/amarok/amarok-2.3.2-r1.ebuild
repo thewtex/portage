@@ -1,8 +1,8 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/amarok/amarok-2.3.2-r1.ebuild,v 1.6 2011/02/02 04:11:39 tampakrap Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/amarok/amarok-2.3.2-r1.ebuild,v 1.8 2011/04/20 12:35:50 jmbsvicetto Exp $
 
-EAPI=3
+EAPI="3"
 
 # Translations are only in the tarballs, not the git repo
 if [[ ${PV} != *9999* ]]; then
@@ -152,7 +152,7 @@ pkg_postinst() {
 			elog "to configure the external db and migrate your data from the embedded database."
 			echo
 
-			if has_version "dev-db/mysql[minimal]"; then
+			if has_version "virtual/mysql[minimal]"; then
 				elog "You built mysql with the minimal use flag, so it doesn't include the server."
 				elog "You won't be able to use the local mysql installation to store your amarok collection."
 				echo

@@ -4,7 +4,11 @@
 
 ESVN_REPO_URI="svn://svn.gna.org/svn/veusz/trunk"
 
-EAPI=2
+EAPI="3"
+PYTHON_DEPEND="2"
+SUPPORT_PYTHON_ABIS="1"
+RESTRICT_PYTHON_ABIS="3.* *-jython"
+
 inherit eutils distutils fdo-mime subversion
 
 DESCRIPTION="Qt based scientific plotting package with good Postscript output"

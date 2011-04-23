@@ -1,33 +1,16 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License, v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/base/virtuals,v 1.140 2011/04/02 12:57:58 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/base/virtuals,v 1.156 2011/04/20 18:29:11 ulm Exp $
 
 # This file describes the packages that by default satisfy a certain virtual
 # That this file exists in the base profile implies that these packages will
 # work on any architecture that needs that virtual
 
-# KEEP THIS FILE SORTED ALPHABETICALLY OR RISK WRATH
+# NOTE: Old-style virtuals are considered deprecated, bug 350792 is tracking
+# their removal. Consider using new-style (GLEP 37) virtuals instead.
+# http://archives.gentoo.org/gentoo-dev/msg_9078a2f41ba2fa8120805dc96aab16a0.xml
 
-virtual/aspell-dict			app-dicts/aspell-en
-virtual/blackbox			x11-wm/blackbox
-virtual/cron				sys-process/vixie-cron
-virtual/dev-manager			sys-fs/udev
-virtual/dhcpc				net-misc/dhcpcd
-virtual/gzip				app-arch/gzip
-virtual/inetd				sys-apps/xinetd
-virtual/libc				sys-libs/glibc
+# PLEASE DON'T ADD ANY NEW ENTRIES!
+
 virtual/linux-sources			sys-kernel/gentoo-sources
-virtual/logger				app-admin/metalog
-virtual/m3				dev-lang/cm3-bin
-virtual/man				sys-apps/man
 virtual/modutils			sys-apps/module-init-tools
-# Only have this for >=pam-0.78, as we want to make use of the 'include'
-# directive to phase out pam_stack.
-virtual/pam				>=sys-libs/pam-0.78
-virtual/portage				sys-apps/portage
-virtual/python				dev-lang/python
-virtual/skkserv				app-i18n/skkserv
-virtual/squeak-image			dev-lang/squeak-basicimage
-virtual/ssh				net-misc/openssh
-virtual/utempter			sys-libs/libutempter
-virtual/w3m				www-client/w3m

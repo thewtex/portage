@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/ffmpeg/ffmpeg-9999.ebuild,v 1.37 2011/04/01 23:16:20 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/ffmpeg/ffmpeg-9999.ebuild,v 1.42 2011/04/20 14:25:17 aballier Exp $
 
 EAPI="2"
 
@@ -19,17 +19,17 @@ if [ "${PV#9999}" != "${PV}" ] ; then
 elif [ "${PV%_p*}" != "${PV}" ] ; then # Snapshot
 	SRC_URI="mirror://gentoo/${P}.tar.bz2"
 else # Release
-	SRC_URI="http://ffmpeg.org/releases/${P}.tar.bz2"
+	SRC_URI="http://ffmpeg.org/releases/${P/_/-}.tar.bz2"
 fi
 FFMPEG_REVISION="${PV#*_p}"
 
-LICENSE="GPL-3"
+LICENSE="GPL-2 amr? ( GPL-3 ) encode? ( aac? ( GPL-3 ) )"
 SLOT="0"
 if [ "${PV#9999}" = "${PV}" ] ; then
 	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 fi
 IUSE="
-	+3dnow +3dnowext alsa altivec amr avx bindist +bzip2 cpudetection
+	+3dnow +3dnowext aac alsa altivec amr avx bindist +bzip2 celt cpudetection
 	custom-cflags debug dirac doc +encode faac frei0r gsm +hardcoded-tables
 	ieee1394 jack jpeg2k +mmx +mmxext mp3 network oss pic qt-faststart rtmp
 	schroedinger sdl speex +ssse3 static-libs test theora threads truetype v4l
@@ -46,8 +46,11 @@ RDEPEND="
 	alsa? ( media-libs/alsa-lib )
 	amr? ( media-libs/opencore-amr )
 	bzip2? ( app-arch/bzip2 )
+	celt? ( >=media-libs/celt-0.11.1 )
 	dirac? ( media-video/dirac )
 	encode? (
+		aac? ( media-libs/vo-aacenc )
+		amr? ( media-libs/vo-amrwbenc )
 		faac? ( media-libs/faac )
 		mp3? ( >=media-sound/lame-3.98.3 )
 		theora? ( >=media-libs/libtheora-1.1.1[encode] media-libs/libogg )
@@ -67,7 +70,7 @@ RDEPEND="
 	truetype? ( media-libs/freetype:2 )
 	vaapi? ( >=x11-libs/libva-0.32 )
 	video_cards_nvidia? ( vdpau? ( x11-libs/libvdpau ) )
-	vpx? ( media-libs/libvpx )
+	vpx? ( >=media-libs/libvpx-0.9.6 )
 	X? ( x11-libs/libX11 x11-libs/libXext )
 	zlib? ( sys-libs/zlib )
 	!media-video/qt-faststart
@@ -85,6 +88,8 @@ DEPEND="${RDEPEND}
 	v4l2? ( sys-kernel/linux-headers )
 "
 
+S=${WORKDIR}/${P/_/-}
+
 src_prepare() {
 	if [ "${PV%_p*}" != "${PV}" ] ; then # Snapshot
 		export revision=git-N-${FFMPEG_REVISION}
@@ -93,6 +98,8 @@ src_prepare() {
 
 src_configure() {
 	local myconf="${EXTRA_FFMPEG_CONF}"
+	# Set to --enable-version3 if (L)GPL-3 is required
+	local version3=""
 
 	# enabled by default
 	for i in debug doc network vaapi zlib; do
@@ -114,6 +121,8 @@ src_configure() {
 	if use encode
 	then
 		use mp3 && myconf="${myconf} --enable-libmp3lame"
+		use aac && { myconf="${myconf} --enable-libvo-aacenc" ; version3=" --enable-version3" ; }
+		use amr && { myconf="${myconf} --enable-libvo-amrwbenc" ; version3=" --enable-version3" ; }
 		for i in theora vorbis x264 xvid; do
 			use ${i} && myconf="${myconf} --enable-lib${i}"
 		done
@@ -147,8 +156,8 @@ src_configure() {
 	use threads && myconf="${myconf} --enable-pthreads"
 
 	# Decoders
-	use amr && myconf="${myconf} --enable-libopencore-amrwb --enable-libopencore-amrnb"
-	for i in gsm dirac rtmp schroedinger speex vpx; do
+	use amr && { myconf="${myconf} --enable-libopencore-amrwb --enable-libopencore-amrnb" ; version3=" --enable-version3" ; }
+	for i in celt gsm dirac rtmp schroedinger speex vpx; do
 		use ${i} && myconf="${myconf} --enable-lib${i}"
 	done
 	use jpeg2k && myconf="${myconf} --enable-libopenjpeg"
@@ -184,7 +193,7 @@ src_configure() {
 	# Mandatory configuration
 	myconf="
 		--enable-gpl
-		--enable-version3
+		${version3}
 		--enable-postproc
 		--enable-avfilter
 		--disable-stripping
@@ -259,10 +268,8 @@ src_install() {
 
 src_test() {
 	if use encode ; then
-		for t in codectest lavftest seektest ; do
-			LD_LIBRARY_PATH="${S}/libavcore:${S}/libpostproc:${S}/libswscale:${S}/libavcodec:${S}/libavdevice:${S}/libavfilter:${S}/libavformat:${S}/libavutil" \
-				emake ${t} || die "Some tests in ${t} failed"
-		done
+		LD_LIBRARY_PATH="${S}/libpostproc:${S}/libswscale:${S}/libavcodec:${S}/libavdevice:${S}/libavfilter:${S}/libavformat:${S}/libavutil" \
+			emake test || die "Some tests failed"
 	else
 		ewarn "Tests fail without USE=encode, skipping"
 	fi

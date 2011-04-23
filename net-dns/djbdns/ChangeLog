@@ -1,6 +1,26 @@
 # ChangeLog for net-dns/djbdns
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-dns/djbdns/ChangeLog,v 1.120 2011/03/01 20:24:57 idl0r Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dns/djbdns/ChangeLog,v 1.124 2011/04/11 13:08:57 c1pher Exp $
+
+  11 Apr 2011; Dane Smith <c1pher@gentoo.org> djbdns-1.05-r24.ebuild,
+  +files/makefile-parallel.patch:
+  Add patch to fix parallel make issues when USE="ipv6" wrt bug 362771.
+  Thanks
+  Michael for spotting and fixing this.
+
+  04 Apr 2011; Dane Smith <c1pher@gentoo.org> djbdns-1.05-r24.ebuild:
+  Remove parallel compilation workaround. Seems to be fixed upstream.
+
+  04 Apr 2011; Dane Smith <c1pher@gentoo.org> djbdns-1.05-r24.ebuild:
+  Moved enewuser calls to pkg_preinstall wrt bug 361923. Thanks Michael.
+
+*djbdns-1.05-r24 (04 Apr 2011)
+
+  04 Apr 2011; Dane Smith <c1pher@gentoo.org>
+  +files/string_length_255.patch, +djbdns-1.05-r24.ebuild, metadata.xml:
+  Add Michael Orlitzky as proxy maintainer with me as proxy.
+  Revbump to -24 wrt bug 241158.
+  Ebuild cleanup.
 
   01 Mar 2011; Christian Ruppert <idl0r@gentoo.org> -files/fwdzone-fix.patch:
   Remove unused patch

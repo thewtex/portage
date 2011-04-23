@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-plugins/google-talkplugin/google-talkplugin-1.8.0.0.ebuild,v 1.3 2011/03/17 13:57:30 ottxor Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-plugins/google-talkplugin/google-talkplugin-1.8.0.0.ebuild,v 1.5 2011/04/09 21:17:30 angelos Exp $
 
 EAPI=3
 
@@ -24,7 +24,7 @@ HOMEPAGE="http://www.google.com/chat/video"
 IUSE="+system-libCg"
 SLOT="0"
 
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* amd64 ~x86"
 #GoogleTalkPlugin binary contains openssl
 LICENSE="google-talkplugin openssl"
 RESTRICT="strip mirror"
@@ -67,6 +67,10 @@ QA_EXECSTACK="${INSTALL_BASE#/}/GoogleTalkPlugin"
 
 QA_TEXTRELS="${INSTALL_BASE#/}/libnpgtpo3dautoplugin.so
 	${INSTALL_BASE#/}/libnpgoogletalk${SO_SUFFIX}.so"
+
+QA_DT_HASH="${INSTALL_BASE#/}/libnpgtpo3dautoplugin.so
+	${INSTALL_BASE#/}/libnpgoogletalk${SO_SUFFIX}.so
+	${INSTALL_BASE#/}/GoogleTalkPlugin"
 
 # nofetch means upstream bumped and thus needs version bump
 pkg_nofetch() {

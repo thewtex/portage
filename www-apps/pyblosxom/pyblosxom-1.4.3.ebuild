@@ -1,12 +1,17 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/pyblosxom/pyblosxom-1.4.3.ebuild,v 1.1 2009/03/01 16:12:41 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-apps/pyblosxom/pyblosxom-1.4.3.ebuild,v 1.3 2011/04/11 18:53:53 arfrever Exp $
 
-inherit eutils distutils webapp
+EAPI="3"
+PYTHON_DEPEND="2"
+SUPPORT_PYTHON_ABIS="1"
+RESTRICT_PYTHON_ABIS="3.* *-jython"
+
+inherit distutils eutils webapp
 
 DESCRIPTION="PyBlosxom is a lightweight weblog system."
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 HOMEPAGE="http://pyblosxom.sourceforge.net/"
+SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 KEYWORDS="~amd64 ~x86"
@@ -17,15 +22,19 @@ WEBAPP_MANUAL_SLOT=yes
 
 IUSE=""
 
-DEPEND="virtual/python"
-RDEPEND="${DEPEND}"
+DEPEND=""
+RDEPEND=""
 
-src_unpack() {
+PYTHON_MODNAME="Pyblosxom"
 
-	unpack ${A} && cd "${S}"
+pkg_setup() {
+	python_pkg_setup
+	webapp_pkg_setup
+}
 
-	epatch "${FILESDIR}"/${PN}-1.4.2-gentoo.patch || die "Patching failed!"
-
+src_prepare() {
+	distutils_src_prepare
+	epatch "${FILESDIR}/${PN}-1.4.2-gentoo.patch"
 }
 
 src_install() {
@@ -48,4 +57,9 @@ src_install() {
 	webapp_hook_script "${FILESDIR}"/config-hook.sh
 
 	webapp_src_install
+}
+
+pkg_postinst() {
+	distutils_pkg_postinst
+	webapp_pkg_postinst
 }

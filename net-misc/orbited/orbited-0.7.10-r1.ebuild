@@ -1,6 +1,9 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/orbited/orbited-0.7.10-r1.ebuild,v 1.1 2010/09/13 19:06:57 xmw Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/orbited/orbited-0.7.10-r1.ebuild,v 1.3 2011/04/07 19:44:13 arfrever Exp $
+
+EAPI="3"
+PYTHON_DEPEND="2"
 
 inherit distutils
 
@@ -10,16 +13,21 @@ SRC_URI="mirror://pypi/o/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
-RDEPEND="dev-python/twisted-web
-	dev-python/twisted
+RDEPEND="dev-python/demjson
 	>=dev-python/morbid-0.8.4
-	dev-python/demjson
-	dev-python/stomper"
+	dev-python/stomper
+	dev-python/twisted
+	dev-python/twisted-web"
 DEPEND="${RDEPEND}
 	dev-python/setuptools"
+
+pkg_setup() {
+	python_set_active_version 2
+	python_pkg_setup
+}
 
 src_install() {
 	distutils_src_install

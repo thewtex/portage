@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/vlc/vlc-9999.ebuild,v 1.135 2011/03/30 13:10:27 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/vlc/vlc-9999.ebuild,v 1.139 2011/04/20 15:57:28 aballier Exp $
 
 EAPI="4"
 
@@ -23,7 +23,7 @@ MY_PV="${PV/_/-}"
 MY_PV="${MY_PV/-beta/-test}"
 MY_P="${PN}-${MY_PV}"
 
-PATCHLEVEL="93"
+PATCHLEVEL="95"
 DESCRIPTION="VLC media player - Video player and streamer"
 HOMEPAGE="http://www.videolan.org/vlc/"
 if [ "${PV%9999}" != "${PV}" ] ; then # Live ebuild
@@ -66,8 +66,8 @@ RDEPEND="
 		aac? ( >=media-libs/faad2-2.6.1 )
 		alsa? ( >=media-libs/alsa-lib-1.0.23 )
 		avahi? ( >=net-dns/avahi-0.6[dbus] )
-		avcodec? ( >=media-video/ffmpeg-0.6 )
-		avformat? ( >=media-video/ffmpeg-0.6 )
+		avcodec? ( virtual/ffmpeg )
+		avformat? ( virtual/ffmpeg )
 		bidi? ( >=dev-libs/fribidi-0.10.4 )
 		bluray? ( media-libs/libbluray )
 		cddb? ( >=media-libs/libcddb-1.2.0 )
@@ -91,7 +91,7 @@ RDEPEND="
 		ios-vout? ( virtual/opengl )
 		jack? ( >=media-sound/jack-audio-connection-kit-0.99.0-r1 )
 		kate? ( >=media-libs/libkate-0.1.1 )
-		libass? ( >=media-libs/libass-0.9.6 media-libs/fontconfig )
+		libass? ( >=media-libs/libass-0.9.8 media-libs/fontconfig )
 		libcaca? ( >=media-libs/libcaca-0.99_beta14 )
 		libnotify? ( x11-libs/libnotify x11-libs/gtk+:2 )
 		libproxy? ( net-libs/libproxy )
@@ -113,7 +113,7 @@ RDEPEND="
 		opengl? ( virtual/opengl || ( >=x11-libs/libX11-1.3.99.901 <x11-libs/libX11-1.3.99.901[xcb] ) )
 		png? ( media-libs/libpng sys-libs/zlib )
 		portaudio? ( >=media-libs/portaudio-19_pre )
-		postproc? ( >=media-video/ffmpeg-0.6 )
+		postproc? ( virtual/ffmpeg )
 		projectm? ( media-libs/libprojectm )
 		pulseaudio? ( >=media-sound/pulseaudio-0.9.22 )
 		qt4? ( x11-libs/qt-gui:4 x11-libs/qt-core:4 )
@@ -127,7 +127,7 @@ RDEPEND="
 		speex? ( media-libs/speex )
 		sqlite? ( >=dev-db/sqlite-3.6.0:3 )
 		svg? ( >=gnome-base/librsvg-2.9.0 )
-		swscale? ( >=media-video/ffmpeg-0.6 )
+		swscale? ( virtual/ffmpeg )
 		taglib? ( >=media-libs/taglib-1.5 sys-libs/zlib )
 		theora? ( >=media-libs/libtheora-1.0_beta3 )
 		truetype? ( media-libs/freetype media-fonts/dejavu )
@@ -149,7 +149,6 @@ RDEPEND="
 
 DEPEND="${RDEPEND}
 	alsa? ( >=media-sound/alsa-headers-1.0.23 )
-	dvb? ( sys-kernel/linux-headers )
 	fbosd? ( sys-kernel/linux-headers )
 	kde? ( >=kde-base/kdelibs-4 )
 	v4l2? ( >=sys-kernel/linux-headers-2.6.25 )
@@ -228,7 +227,7 @@ src_configure() {
 		$(use_enable debug) \
 		$(use_enable dshow) \
 		$(use_enable dts dca) \
-		$(use_enable dvb) \
+		$(use_enable dvb dvbpsi) \
 		$(use_enable dvd dvdread) $(use_enable dvd dvdnav) \
 		$(use_enable dxva2) \
 		$(use_enable egl) \

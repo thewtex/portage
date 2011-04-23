@@ -1,8 +1,8 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-portage/layman/layman-1.2.3.ebuild,v 1.14 2010/07/06 18:12:40 arfrever Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-portage/layman/layman-1.2.3.ebuild,v 1.17 2011/04/14 20:13:00 darkside Exp $
 
-EAPI="2"
+EAPI="3"
 PYTHON_DEPEND="2:2.5"
 
 inherit eutils distutils
@@ -30,18 +30,6 @@ RDEPEND="${COMMON_DEPS}
 		)
 	)"
 
-pkg_setup() {
-	if ! has_version dev-vcs/subversion; then
-		ewarn "You do not have dev-vcs/subversion installed!"
-		ewarn "While layman does not exactly depend on this"
-		ewarn "version control system you should note that"
-		ewarn "most available overlays are offered via"
-		ewarn "dev-vcs/subversion. If you do not install it"
-		ewarn "you will be unable to use these overlays."
-		ewarn
-	fi
-}
-
 src_install() {
 
 	distutils_src_install
@@ -59,7 +47,7 @@ src_install() {
 src_test() {
 	einfo "Running layman doctests..."
 	echo
-	if ! PYTHONPATH="." ${python} layman/tests/dtest.py; then
+	if ! PYTHONPATH="." $(PYTHON) layman/tests/dtest.py; then
 		eerror "DocTests failed - please submit a bug report"
 		die "DocTesting failed!"
 	fi
@@ -89,5 +77,4 @@ pkg_postinst() {
 	einfo
 	ewarn "Please add the 'source' statement to make.conf only AFTER "
 	ewarn "you added your first overlay. Otherwise portage will fail."
-	epause 5
 }

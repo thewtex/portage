@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/lyx/lyx-1.6.9.ebuild,v 1.1 2011/02/14 13:45:10 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/lyx/lyx-1.6.9.ebuild,v 1.3 2011/04/16 10:59:16 ulm Exp $
 
 EAPI=2
 
@@ -42,7 +42,7 @@ COMMONDEPEND="x11-libs/qt-gui:4
 	x11-libs/libXdmcp
 	dev-libs/libxml2
 	app-text/aiksaurus
-	virtual/aspell-dict
+	app-text/aspell
 	media-libs/fontconfig
 	media-libs/freetype
 	>=dev-libs/boost-1.34"
@@ -124,7 +124,7 @@ src_install() {
 	fi
 
 	doicon ${PN} "$S/development/Win32/packaging/icons/lyx_32x32.png"
-	make_desktop_entry ${PN} "LyX" "/usr/share/pixmaps/lyx_32x32.png" "Office"
+	make_desktop_entry ${PN} "LyX" "/usr/share/pixmaps/lyx_32x32.png" "Office" "MimeType=application/x-lyx;"
 
 	# fix for bug 91108
 	if use latex ; then

@@ -1,4 +1,4 @@
-tls? ( dev-libs/openssl )
+tls? ( dev-libs/openssl ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b
 tls? ( dev-libs/openssl ) virtual/qmail
 0
 http://www.spamdyke.org/releases/spamdyke-4.2.0.tgz
@@ -7,7 +7,7 @@ http://www.spamdyke.org/
 GPL-2
 A drop-in connection-time spam filter for qmail
 ~amd64 ~x86
-
+autotools eutils libtool multilib portability toolchain-funcs
 +tls
 
 

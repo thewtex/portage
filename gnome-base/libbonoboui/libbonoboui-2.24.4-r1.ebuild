@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-base/libbonoboui/libbonoboui-2.24.4-r1.ebuild,v 1.7 2011/03/22 19:15:19 ranger Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-base/libbonoboui/libbonoboui-2.24.4-r1.ebuild,v 1.9 2011/04/10 12:44:09 ssuominen Exp $
 
 EAPI="3"
 GCONF_DEBUG="no"
@@ -35,7 +35,9 @@ DEPEND="${RDEPEND}
 
 pkg_setup() {
 	DOCS="AUTHORS ChangeLog NEWS README"
-	G2CONF="${G2CONF} --disable-maintainer-mode"
+	G2CONF="${G2CONF}
+		--disable-static
+		--disable-maintainer-mode"
 }
 
 src_prepare() {
@@ -60,4 +62,9 @@ src_configure() {
 src_test() {
 	addwrite "/root/.gnome2_private"
 	Xemake check || die "tests failed"
+}
+
+src_install() {
+	gnome2_src_install
+	find "${ED}" -name '*.la' -exec rm -f {} +
 }

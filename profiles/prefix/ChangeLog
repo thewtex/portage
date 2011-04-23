@@ -1,6 +1,54 @@
 # ChangeLog for profiles/prefix
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/ChangeLog,v 1.256 2011/03/30 08:33:21 grobian Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/ChangeLog,v 1.266 2011/04/21 09:47:06 grobian Exp $
+
+  21 Apr 2011; Fabian Groffen <grobian@gentoo.org> package.mask:
+  Mask LLVM/clang 2.9, it's broken for Prefix by design at the moment
+
+  20 Apr 2011; Ulrich Mueller <ulm@gentoo.org> -aix/virtuals,
+  -bsd/freebsd/virtuals, -bsd/netbsd/virtuals, -bsd/openbsd/virtuals,
+  -darwin/virtuals, -hpux/virtuals, -irix/virtuals, -linux/virtuals,
+  -mint/virtuals, -sunos/virtuals, -windows/cygwin/virtuals,
+  -windows/interix/virtuals, -windows/winnt/virtuals:
+  Remove old-style virtual/libc, bug 359001.
+
+  14 Apr 2011; Ulrich Mueller <ulm@gentoo.org> aix/virtuals,
+  bsd/freebsd/virtuals, bsd/netbsd/virtuals, bsd/openbsd/virtuals,
+  darwin/virtuals, hpux/virtuals, irix/virtuals, linux/virtuals, mint/virtuals,
+  sunos/virtuals, windows/cygwin/virtuals, windows/interix/virtuals,
+  windows/winnt/virtuals:
+  Remove old-style virtual/os-headers, bug 358999.
+
+  10 Apr 2011; Fabian Groffen <grobian@gentoo.org>
+  darwin/macos/10.6/package.use.mask:
+  Mask uuid for libSM on Snow Leopard
+
+  10 Apr 2011; Fabian Groffen <grobian@gentoo.org>
+  -darwin/macos/10.3/make.defaults, -darwin/macos/10.3/package.provided,
+  -darwin/macos/10.3/parent, -darwin/macos/10.3/profile.bashrc,
+  -darwin/macos/10.3/use.mask:
+  Drop Mac OS X Panther (10.3) support
+
+  09 Apr 2011; Ulrich Mueller <ulm@gentoo.org> windows/winnt/packages:
+  Old-style virtual/portage is replaced by new-style virtual/package-manager,
+  bug 358847.
+
+  07 Apr 2011; Jeremy Olexa <darkside@gentoo.org>
+  -darwin/macos/10.3/package.mask, darwin/macos/10.5/ppc/package.use.mask,
+  darwin/macos/10.5/x64/package.use.mask,
+  darwin/macos/10.5/x86/package.use.mask,
+  darwin/macos/10.6/x64/package.use.mask,
+  darwin/macos/10.6/x86/package.use.mask, darwin/package.mask,
+  darwin/package.use.mask, package.mask, package.use.mask,
+  -sunos/solaris/5.11/x64/package.mask, sunos/solaris/package.mask:
+  Cleanup invalid/obsolete package.mask entries
+
+  06 Apr 2011; Fabian Groffen <grobian@gentoo.org>
+  sunos/solaris/5.10/sparc/package.mask:
+  Update mask for GCC on Solaris/Sparc
+
+  03 Apr 2011; Ulrich Mueller <ulm@gentoo.org> windows/winnt/packages:
+  Remove old-style virtual/gzip, bug 358829.
 
   30 Mar 2011; Fabian Groffen <grobian@gentoo.org>
   +sunos/solaris/5.11/package.use.mask:

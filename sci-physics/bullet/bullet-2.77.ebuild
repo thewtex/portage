@@ -1,8 +1,9 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-physics/bullet/bullet-2.77.ebuild,v 1.5 2011/03/22 17:10:29 bicatali Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-physics/bullet/bullet-2.77.ebuild,v 1.6 2011/04/17 11:53:52 jlec Exp $
 
 EAPI=2
+
 inherit eutils cmake-utils
 
 DESCRIPTION="Continuous Collision Detection and Physics Library"
@@ -14,10 +15,15 @@ SLOT="0"
 KEYWORDS="amd64 x86 ~amd64-linux"
 IUSE="doc double-precision examples extras"
 
-RDEPEND="virtual/opengl
-	media-libs/freeglut"
+RDEPEND="
+	media-libs/freeglut
+	virtual/opengl"
 DEPEND="${RDEPEND}"
-PATCHES=( "${FILESDIR}/${P}"-{libdir,soversion}.patch )
+
+PATCHES=(
+	"${FILESDIR}/${P}"-{libdir,soversion}.patch
+	"${FILESDIR}"/${P}-gcc46.patch
+	)
 
 src_configure() {
 	mycmakeargs=(

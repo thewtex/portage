@@ -1,10 +1,10 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/sparse/sparse-9999.ebuild,v 1.5 2010/10/05 08:41:29 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/sparse/sparse-9999.ebuild,v 1.8 2011/04/08 01:31:23 flameeyes Exp $
 
 EAPI="2"
 
-inherit eutils multilib flag-o-matic toolchain-funcs
+inherit multilib toolchain-funcs
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="git://git.kernel.org/pub/scm/devel/sparse/sparse.git"
 	inherit git
@@ -23,15 +23,23 @@ fi
 
 LICENSE="OSL-1.1"
 SLOT="0"
-IUSE=""
+IUSE="gtk xml"
+
+RDEPEND="gtk? ( x11-libs/gtk+:2 )
+	xml? ( dev-libs/libxml2 )"
+DEPEND="${RDEPEND}
+	gtk? ( dev-util/pkgconfig )
+	xml? ( dev-util/pkgconfig )"
+
+usex() { use $1 && echo ${2:-yes} || echo ${3:-no} ; }
 
 src_prepare() {
 	sed -i \
 		-e '/^PREFIX=/s:=.*:=/usr:' \
 		-e "/^LIBDIR=/s:/lib:/$(get_libdir):" \
+		-e '/^CFLAGS =/{s:=:+=:;s:-O2 -finline-functions::}' \
 		Makefile || die
-	append-flags -fno-strict-aliasing
-	export MAKEOPTS+=" V=1 CC=$(tc-getCC)"
+	export MAKEOPTS+=" V=1 CC=$(tc-getCC) HAVE_GTK2=$(usex gtk) HAVE_LIBXML=$(usex xml)"
 }
 
 src_install() {

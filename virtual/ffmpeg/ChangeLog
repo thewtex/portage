@@ -1,0 +1,64 @@
+# ChangeLog for virtual/ffmpeg
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/virtual/ffmpeg/ChangeLog,v 1.11 2011/04/13 12:51:41 aballier Exp $
+
+  13 Apr 2011; Alexis Ballier <aballier@gentoo.org> ffmpeg-0.6.90.ebuild:
+  bump a little the ffmpeg revision required to get in the bugfixes/additions
+
+  10 Apr 2011; Raúl Porcel <armin76@gentoo.org> ffmpeg-0.6-r1.ebuild:
+  ia64 stable
+
+*ffmpeg-0.6.90 (05 Apr 2011)
+
+  05 Apr 2011; Alexis Ballier <aballier@gentoo.org> +ffmpeg-0.6.90.ebuild:
+  add a virtual for the upcoming 0.6.90 release so that packages needing more
+  recent features can depend on it
+
+*ffmpeg-0.6-r1 (03 Apr 2011)
+
+  03 Apr 2011; Tomáš Chvátal <scarabeus@gentoo.org> -ffmpeg-0.6.ebuild,
+  +ffmpeg-0.6-r1.ebuild:
+  Preffer ffmpeg over libav so user dont get confusing msg during unsattisfied
+  useflags. (they will when we switch to libav anyway but it does not matter.
+
+  31 Mar 2011; Tomáš Chvátal <scarabeus@gentoo.org> -ffmpeg-0.5.ebuild:
+  Just drop 0.5 ffmpeg, things are easier without it now. Only thing so far
+  requiring it is xine-lib which can be solved by ia64 stabling 0.6 ffmpeg.
+
+  31 Mar 2011; Tomáš Chvátal <scarabeus@gentoo.org> ffmpeg-0.5.ebuild,
+  ffmpeg-0.6.ebuild:
+  use same use defaluts as the package itself.
+
+*ffmpeg-0.5 (31 Mar 2011)
+
+  31 Mar 2011; Tomáš Chvátal <scarabeus@gentoo.org> -ffmpeg-0.ebuild,
+  +ffmpeg-0.5.ebuild, +ffmpeg-0.6.ebuild:
+  Move back to versioned virtuals as discussed on dev ml. So chop chop with
+  migration now :)
+
+  27 Mar 2011; Tomáš Chvátal <scarabeus@gentoo.org> ffmpeg-0.ebuild:
+  Do not set DEPEND. Per bug #360711.
+
+*ffmpeg-0 (26 Mar 2011)
+
+  26 Mar 2011; Tomáš Chvátal <scarabeus@gentoo.org> +ffmpeg-0.ebuild,
+  -ffmpeg-0.1.ebuild:
+  Use 0 as version to be 100% clear it is not versioned at all.
+
+*ffmpeg-0.1 (26 Mar 2011)
+
+  26 Mar 2011; Tomáš Chvátal <scarabeus@gentoo.org> +ffmpeg-0.1.ebuild,
+  -ffmpeg-0.6.ebuild, -ffmpeg-9999.ebuild:
+  Refactor to not include version in the virtual as per what Samuli told on
+  -dev. Drop versioned virtuals.
+
+*ffmpeg-9999 (23 Mar 2011)
+*ffmpeg-0.6 (23 Mar 2011)
+
+  23 Mar 2011; Tomáš Chvátal <scarabeus@gentoo.org> +ffmpeg-0.6.ebuild,
+  +ffmpeg-9999.ebuild, +metadata.xml:
+  Add initial ffmpeg virtuals as per discussion with lu_zero. They implement
+  all useflags that are in use over main tree now. Also they are separated by
+  version so each package can depend on =virtual-version if there is some api
+  incompatibility.
+

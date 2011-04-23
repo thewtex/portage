@@ -1,8 +1,8 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-geosciences/gpsd/gpsd-2.38.ebuild,v 1.9 2011/03/02 19:51:41 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-geosciences/gpsd/gpsd-2.38.ebuild,v 1.11 2011/04/12 18:16:46 arfrever Exp $
 
-EAPI="1"
+EAPI="3"
 
 inherit autotools eutils distutils flag-o-matic
 
@@ -46,9 +46,11 @@ DEPEND="${RDEPEND}
 		sys-libs/ncurses
 	)"
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
+pkg_setup() {
+	use python && python_pkg_setup
+}
+
+src_prepare() {
 	# add -lm to setup.py again (see bug #250757)
 	sed -i \
 	    -e "s:, gpspacket_sources:, gpspacket_sources, libraries=['m']:g" \
@@ -64,7 +66,7 @@ src_unpack() {
 	eautoreconf
 }
 
-src_compile() {
+src_configure() {
 
 	local my_conf="--enable-shared --with-pic --enable-static \
 		--disable-fast-install"
@@ -99,7 +101,9 @@ src_compile() {
 
 	# still needs an explicit linkage with the math lib (bug #250757)
 	append-ldflags -Wl,-z,-defs -Wl,--no-undefined
+}
 
+src_compile() {
 	emake -j1 || die "emake failed"
 }
 
@@ -152,6 +156,8 @@ src_install() {
 }
 
 pkg_postinst() {
+	use python && distutils_pkg_postinst
+
 	elog ""
 	elog "This version of gpsd has broken support for the SuperStarII"
 	elog "chipset which is currently disabled."
@@ -182,4 +188,8 @@ pkg_postinst() {
 	elog "and make sure udev has the right group permissions set on the"
 	elog "devices if using USB (it should Do The Right Thing (TM))..."
 	elog ""
+}
+
+pkg_postrm() {
+	use python && distutils_pkg_postrm
 }

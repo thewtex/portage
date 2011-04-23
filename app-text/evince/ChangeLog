@@ -1,6 +1,41 @@
 # ChangeLog for app-text/evince
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/evince/ChangeLog,v 1.212 2011/03/22 20:06:01 ranger Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/evince/ChangeLog,v 1.219 2011/04/21 12:11:58 pacho Exp $
+
+*evince-2.32.0-r3 (21 Apr 2011)
+
+  21 Apr 2011; Pacho Ramos <pacho@gentoo.org> +evince-2.32.0-r3.ebuild,
+  +files/evince-2.32.0-stop-spinner.patch,
+  +files/evince-2.32.0-use-popup.patch:
+  Revision bump to include upstream patches reported by Arthur Taylor fixing
+  random minimizing (bug #364311) and useless wakeups (bug #364313) problems.
+
+  16 Apr 2011; Pacho Ramos <pacho@gentoo.org> evince-2.32.0-r2.ebuild:
+  gconf-2.m4 is needed for autoconf, bug #363781 by Jimmy C. Chau.
+
+  15 Apr 2011; Christoph Mende <angelos@gentoo.org> evince-2.32.0-r2.ebuild:
+  Stable on amd64 wrt bug #363447
+
+  15 Apr 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  evince-2.32.0-r2.ebuild:
+  x86 stable wrt security bug #363447
+
+  13 Apr 2011; Brent Baude <ranger@gentoo.org> evince-2.32.0-r2.ebuild:
+  Marking evince-2.32.0-r2 ppc for bug 363447
+
+*evince-2.32.0-r2 (13 Apr 2011)
+
+  13 Apr 2011; Pacho Ramos <pacho@gentoo.org> +evince-2.32.0-r2.ebuild,
+  +files/evince-2.32.0-dvi-security.patch,
+  +files/evince-2.32.0-libview-crash.patch,
+  +files/evince-2.32.0-update-poppler.patch:
+  Fix libview crash, upstream bug #630999; fix another security issue in the
+  dvi-backend; update poppler api with Arch patch (bug #354709 by Justin
+  Lecher, Ian Abbott and Rafał Mużyło).
+
+  09 Apr 2011; Gilles Dartiguelongue <eva@gentoo.org> -evince-2.30.3.ebuild,
+  -evince-2.32.0.ebuild:
+  Clean up old revisions.
 
   22 Mar 2011; Brent Baude <ranger@gentoo.org> evince-2.32.0-r1.ebuild:
   Marking evince-2.32.0-r1 ppc stable for bug 353436

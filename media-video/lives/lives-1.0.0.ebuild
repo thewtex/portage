@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/lives/lives-1.0.0.ebuild,v 1.3 2011/03/23 08:41:07 radhermit Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/lives/lives-1.0.0.ebuild,v 1.4 2011/04/04 13:05:26 lu_zero Exp $
 
 EAPI=1
 
@@ -22,7 +22,7 @@ DEPEND=">=media-video/mplayer-0.90-r2
 		>=dev-lang/perl-5.8.0-r12
 		>=x11-libs/gtk+-2.2.1:2
 		media-libs/libsdl
-		>=media-video/ffmpeg-0.4.8
+		virtual/ffmpeg
 		virtual/jpeg
 		>=media-sound/sox-12.17.3-r3
 		virtual/cdrtools

@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-php5/pecl-yaz/pecl-yaz-1.0.14-r1.ebuild,v 1.11 2011/01/30 16:38:07 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-php5/pecl-yaz/pecl-yaz-1.0.14-r1.ebuild,v 1.13 2011/04/16 15:04:18 olemarkus Exp $
 
 EAPI=3
 

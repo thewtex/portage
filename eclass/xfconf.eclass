@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/xfconf.eclass,v 1.24 2011/02/14 19:52:14 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/xfconf.eclass,v 1.31 2011/04/20 21:04:10 angelos Exp $
 
 # @ECLASS: xfconf.eclass
 # @MAINTAINER:
@@ -11,39 +11,31 @@
 
 # @ECLASS-VARIABLE: EAUTORECONF
 # @DESCRIPTION:
-# Run eautoreconf instead of elibtoolize if set "yes"
+# Run eautoreconf instead of elibtoolize if the variable is set
 
 # @ECLASS-VARIABLE: EINTLTOOLIZE
 # @DESCRIPTION:
-# Run intltoolize --force --copy --automake if set "yes"
+# Run intltoolize --force --copy --automake if the variable is set
 
 # @ECLASS-VARIABLE: DOCS
 # @DESCRIPTION:
-# Define documentation to install
+# This should be a variable defining documentation to install
 
 # @ECLASS-VARIABLE: PATCHES
 # @DESCRIPTION:
-# Define patches to apply
+# This should be an array defining patches to apply
 
 # @ECLASS-VARIABLE: XFCONF
 # @DESCRIPTION:
-# Define options for econf
+# This should be an array defining arguments for econf
 
 inherit autotools base eutils fdo-mime gnome2-utils libtool
 
-if ! [[ ${MY_P} ]]; then
-	MY_P=${P}
-else
-	S=${WORKDIR}/${MY_P}
-fi
-
-SRC_URI="mirror://xfce/xfce/${PV}/src/${MY_P}.tar.bz2"
-
-if [[ "${EINTLTOOLIZE}" == "yes" ]]; then
+if [[ -n $EINTLTOOLIZE ]]; then
 	_xfce4_intltool="dev-util/intltool"
 fi
 
-if [[ "${EAUTORECONF}" == "yes" ]]; then
+if [[ -n $EAUTORECONF ]]; then
 	_xfce4_m4=">=dev-util/xfce4-dev-tools-4.8.0"
 fi
 
@@ -63,8 +55,9 @@ EXPORT_FUNCTIONS src_prepare src_configure src_install pkg_preinst pkg_postinst 
 
 # @FUNCTION: xfconf_use_debug
 # @DESCRIPTION:
-# Return --enable-debug, null, --enable-debug=full or --disable-debug based on
-# XFCONF_FULL_DEBUG variable and USE debug
+# If IUSE has debug, return --enable-debug=minimum.
+# If USE debug is enabled, return --enable-debug which is the same as --enable-debug=yes.
+# If USE debug is enabled and the XFCONF_FULL_DEBUG variable is set, return --enable-debug=full.
 xfconf_use_debug() {
 	if has debug ${IUSE}; then
 		if use debug; then
@@ -74,9 +67,7 @@ xfconf_use_debug() {
 				echo "--enable-debug"
 			fi
 		else
-			if [[ -n $XFCONF_FULL_DEBUG ]]; then
-				echo "--disable-debug"
-			fi
+			echo "--enable-debug=minimum"
 		fi
 	fi
 }
@@ -88,11 +79,11 @@ xfconf_src_prepare() {
 	debug-print-function ${FUNCNAME} "$@"
 	base_src_prepare
 
-	if [[ "${EINTLTOOLIZE}" == "yes" ]]; then
+	if [[ -n $EINTLTOOLIZE ]]; then
 		intltoolize --force --copy --automake || die
 	fi
 
-	if [[ "${EAUTORECONF}" == "yes" ]]; then
+	if [[ -n $EAUTORECONF ]]; then
 		AT_M4DIR="${EPREFIX}/usr/share/xfce4/dev-tools/m4macros" eautoreconf
 	else
 		elibtoolize
@@ -101,21 +92,15 @@ xfconf_src_prepare() {
 
 # @FUNCTION: xfconf_src_configure
 # @DESCRIPTION:
-# Run econf with opts in XFCONF array
+# Run econf with opts from the XFCONF array
 xfconf_src_configure() {
 	debug-print-function ${FUNCNAME} "$@"
-
-	# Convert XFCONF to an array, see base.eclass for original code
-	if [[ "$(declare -p XFCONF 2>/dev/null 2>&1)" != "declare -a"* ]]; then
-		XFCONF=( ${XFCONF} )
-	fi
-
 	econf ${XFCONF[@]}
 }
 
 # @FUNCTION: xfconf_src_install
 # @DESCRIPTION:
-# Run emake install and install documentation in DOCS variable
+# Run emake install and install documentation in the DOCS variable
 xfconf_src_install() {
 	debug-print-function ${FUNCNAME} "$@"
 	emake DESTDIR="${D}" "$@" install || die

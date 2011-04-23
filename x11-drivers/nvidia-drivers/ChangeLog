@@ -1,6 +1,35 @@
 # ChangeLog for x11-drivers/nvidia-drivers
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-drivers/nvidia-drivers/ChangeLog,v 1.270 2011/03/21 15:29:29 tomka Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-drivers/nvidia-drivers/ChangeLog,v 1.276 2011/04/14 15:40:43 jer Exp $
+
+  14 Apr 2011; Jeroen Roovers <jer@gentoo.org> -nvidia-drivers-96.43.16.ebuild,
+  -nvidia-drivers-96.43.18.ebuild, -nvidia-drivers-173.14.25.ebuild,
+  -nvidia-drivers-173.14.27.ebuild, -nvidia-drivers-190.53-r1.ebuild,
+  -nvidia-drivers-195.36.24.ebuild, -nvidia-drivers-195.36.31.ebuild,
+  -nvidia-drivers-256.44.ebuild:
+  Remove versions that need <xorg-server-1.7.99 (bug #344827).
+
+  13 Apr 2011; Michael Sterrett <mr_bones_@gentoo.org>
+  nvidia-drivers-270.41.03.ebuild:
+  add a couple more libraries to the TEXTRELS variable for x86
+
+*nvidia-drivers-270.41.03 (12 Apr 2011)
+
+  12 Apr 2011; Justin Lecher <jlec@gentoo.org>
+  +nvidia-drivers-270.41.03.ebuild:
+  Non-Maintainer Version Bump, #357113
+
+  09 Apr 2011; Jeroen Roovers <jer@gentoo.org> nvidia-drivers-96.43.19.ebuild:
+  Install nvidia-settings appropriate for this version (bug #304255).
+
+*nvidia-drivers-260.19.44 (07 Apr 2011)
+
+  07 Apr 2011; Justin Lecher <jlec@gentoo.org>
+  +nvidia-drivers-260.19.44.ebuild:
+  Non-Maintainer Version Bump
+
+  04 Apr 2011; Justin Lecher <jlec@gentoo.org> nvidia-drivers-270.18.ebuild:
+  Depend on correct Xorg Server ABI, #359841
 
   21 Mar 2011; Thomas Kahle <tomka@gentoo.org> nvidia-drivers-260.19.36.ebuild:
   x86 stable per bug 357409

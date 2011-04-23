@@ -1,6 +1,26 @@
 # ChangeLog for dev-python/docutils
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/docutils/ChangeLog,v 1.126 2010/12/27 21:59:46 arfrever Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/docutils/ChangeLog,v 1.130 2011/04/22 00:56:21 arfrever Exp $
+
+*docutils-0.8_pre7013 (22 Apr 2011)
+
+  22 Apr 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +docutils-0.8_pre7013.ebuild:
+  Version bump.
+
+  20 Apr 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  docutils-0.7.ebuild, +files/docutils-0.7-encoding.patch:
+  Fix installation with some locales (bug #349101).
+
+  20 Apr 2011; Tomáš Chvátal <scarabeus@gentoo.org> docutils-0.7.ebuild:
+  Workaround bug in docutils that didn't permit installation under various
+  locales (namely cs_CZ.utf8). This is just environment override so it installs
+  every time.
+
+  09 Apr 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  docutils-0.7.ebuild, +files/docutils-0.7-python-3.2-configparser.patch,
+  +files/docutils-0.7-python-3.2-xml.etree.ElementTree.patch:
+  Fix compatibility with Python 3.2 (bug #351063).
 
   27 Dec 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
   -docutils-0.6.ebuild:

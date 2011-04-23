@@ -1,5 +1,5 @@
->=sys-apps/sed-4 >=app-admin/eselect-python-20091230 dev-lang/python
->=sys-apps/dbus-1.0 >=dev-python/dbus-python-0.82.3 dev-python/pygtk >=dev-lang/python-2.5 gnome? ( dev-python/libwnck-python ) >=app-admin/eselect-python-20091230 dev-lang/python
+>=sys-apps/sed-4 >=app-admin/eselect-python-20091230 || ( =dev-lang/python-2.7* =dev-lang/python-2.6* )
+>=sys-apps/dbus-1.0 >=dev-python/dbus-python-0.82.3 dev-python/pygtk gnome? ( dev-python/libwnck-python ) >=app-admin/eselect-python-20091230 || ( =dev-lang/python-2.7* =dev-lang/python-2.6* )
 0
 mirror://gnome/sources/d-feet/0.1/d-feet-0.1.12.tar.bz2
 
@@ -12,9 +12,9 @@ gnome
 
 
 
+3
 
-
-compile install postinst postrm preinst setup unpack
+compile configure install postinst postrm preinst prepare setup unpack
 
 
 

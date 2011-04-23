@@ -1,7 +1,8 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/file/file-5.05.ebuild,v 1.8 2011/03/01 14:53:26 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/file/file-5.05.ebuild,v 1.10 2011/04/07 20:41:09 arfrever Exp $
 
+EAPI="2"
 PYTHON_DEPEND="python? *"
 SUPPORT_PYTHON_ABIS="1"
 RESTRICT_PYTHON_ABIS="*-jython"
@@ -16,14 +17,11 @@ SRC_URI="ftp://ftp.astron.com/pub/file/${P}.tar.gz
 LICENSE="as-is"
 SLOT="0"
 KEYWORDS="alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~sparc-fbsd ~x86-fbsd"
-IUSE="python"
+IUSE="python static-libs"
 
 PYTHON_MODNAME="magic.py"
 
-src_unpack() {
-	unpack ${P}.tar.gz
-	cd "${S}"
-
+src_prepare() {
 	elibtoolize
 	epunt_cxx
 
@@ -31,11 +29,14 @@ src_unpack() {
 	mv python/README{,.python}
 }
 
-src_compile() {
+src_configure() {
 	# file uses things like strndup() and wcwidth()
 	append-flags -D_GNU_SOURCE
 
-	econf || die
+	econf $(use_enable static-libs static)
+}
+
+src_compile() {
 	emake || die
 
 	use python && cd python && distutils_src_compile
@@ -46,6 +47,7 @@ src_install() {
 	dodoc ChangeLog MAINT README
 
 	use python && cd python && distutils_src_install
+	use static-libs || rm -f "${D}"/usr/lib*/libmagic.la
 }
 
 pkg_postinst() {

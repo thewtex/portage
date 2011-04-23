@@ -1,6 +1,49 @@
 # ChangeLog for media-libs/mesa
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/mesa/ChangeLog,v 1.323 2011/03/26 10:28:28 fauli Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/mesa/ChangeLog,v 1.333 2011/04/17 22:53:15 chithanh Exp $
+
+*mesa-7.10.2-r1 (17 Apr 2011)
+
+  17 Apr 2011; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  mesa-7.9.1.ebuild, mesa-7.9.2.ebuild, mesa-7.10.1.ebuild,
+  mesa-7.10.2.ebuild, +mesa-7.10.2-r1.ebuild:
+  Address llvm-2.9 problems, bug #351338.
+
+  17 Apr 2011; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  mesa-7.10.2.ebuild:
+  Add glproto and dri2proto to RDEPEND, bug #342393.
+
+  16 Apr 2011; Raúl Porcel <armin76@gentoo.org> mesa-7.9.2.ebuild,
+  mesa-7.10.1.ebuild:
+  alpha/ia64/sh/sparc stable wrt #359059
+
+  11 Apr 2011; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  mesa-7.10.2.ebuild:
+  Ensure that /usr/$(get_libdir)/dri gets always created.
+
+  08 Apr 2011; Markus Meier <maekke@gentoo.org> mesa-7.9.2.ebuild:
+  arm stable, bug #359059
+
+  08 Apr 2011; Markus Meier <maekke@gentoo.org> mesa-7.10.1.ebuild:
+  arm stable, bug #359059
+
+*mesa-7.10.2 (06 Apr 2011)
+
+  06 Apr 2011; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  -mesa-7.10.1-r1.ebuild, +mesa-7.10.2.ebuild:
+  Version bump.
+
+*mesa-7.10.1-r1 (05 Apr 2011)
+
+  05 Apr 2011; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +mesa-7.10.1-r1.ebuild:
+  Revision bump for gnome-shell and libdrm-2.4.24 patch, bug #359327.
+
+  04 Apr 2011; Jeroen Roovers <jer@gentoo.org> mesa-7.9.2.ebuild:
+  Stable for HPPA (bug #359059).
+
+  04 Apr 2011; Jeroen Roovers <jer@gentoo.org> mesa-7.10.1.ebuild:
+  Stable for HPPA (bug #359059).
 
   26 Mar 2011; Christian Faulhammer <fauli@gentoo.org> mesa-7.9.2.ebuild,
   mesa-7.10.1.ebuild:

@@ -1,13 +1,14 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/protobuf/protobuf-2.4.0a.ebuild,v 1.1 2011/02/12 22:19:02 nelchael Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/protobuf/protobuf-2.4.0a.ebuild,v 1.5 2011/04/21 13:26:10 tomka Exp $
 
 EAPI="3"
 
 JAVA_PKG_IUSE="source"
 PYTHON_DEPEND="python? 2"
+DISTUTILS_SRC_TEST="setup.py"
 
-inherit autotools eutils distutils python java-pkg-opt-2 elisp-common
+inherit autotools eutils distutils java-pkg-opt-2 elisp-common
 
 DESCRIPTION="Google's Protocol Buffers -- an efficient method of encoding structured data"
 HOMEPAGE="http://code.google.com/p/protobuf/"
@@ -15,7 +16,7 @@ SRC_URI="http://protobuf.googlecode.com/files/${P}.tar.bz2"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~x64-macos"
+KEYWORDS="~amd64 ~ppc ~ppc64 x86 ~x64-macos"
 IUSE="emacs examples java python static-libs vim-syntax"
 
 DEPEND="${DEPEND} java? ( >=virtual/jdk-1.5 )
@@ -24,8 +25,8 @@ DEPEND="${DEPEND} java? ( >=virtual/jdk-1.5 )
 RDEPEND="${RDEPEND} java? ( >=virtual/jre-1.5 )
 	emacs? ( virtual/emacs )"
 
+DISTUTILS_SETUP_FILES=("python|setup.py")
 PYTHON_MODNAME="google/protobuf"
-DISTUTILS_SRC_TEST="setup.py"
 
 pkg_setup() {
 	if use python; then
@@ -54,9 +55,7 @@ src_compile() {
 
 	if use python; then
 		einfo "Compiling Python library ..."
-		pushd python
 		distutils_src_compile
-		popd
 	fi
 
 	if use java; then
@@ -78,9 +77,7 @@ src_test() {
 	emake check || die "emake check failed"
 
 	if use python; then
-		 pushd python
 		 distutils_src_test
-		 popd
 	fi
 }
 
@@ -91,9 +88,7 @@ src_install() {
 	use static-libs || rm -rf "${D}"/usr/lib*/*.la
 
 	if use python; then
-		pushd python
 		distutils_src_install
-		popd
 	fi
 
 	if use java; then

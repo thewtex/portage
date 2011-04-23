@@ -1,6 +1,49 @@
 # ChangeLog for media-video/vlc
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/vlc/ChangeLog,v 1.700 2011/04/02 07:59:18 xarthisius Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/vlc/ChangeLog,v 1.712 2011/04/20 15:57:28 aballier Exp $
+
+  20 Apr 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  libass 0.9.8 is required now
+
+  20 Apr 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  dvb useflag now contros ts muxer/demuxer via dvbpsi
+
+  20 Apr 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  update freetype font patch, bug #360841 again
+
+  20 Apr 2011; Alexis Ballier <aballier@gentoo.org> vlc-1.1.9.ebuild,
+  vlc-1.1.9999.ebuild:
+  fix build after the big libav* version bump, backported by Luca Barbato, bug
+  #364177
+
+  16 Apr 2011; Raúl Porcel <armin76@gentoo.org> vlc-1.1.9.ebuild:
+  alpha/sparc stable wrt #363359
+
+  15 Apr 2011; Christoph Mende <angelos@gentoo.org> vlc-1.1.9.ebuild:
+  Stable on amd64 wrt bug #363359
+
+  15 Apr 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> vlc-1.1.9.ebuild:
+  x86 stable wrt security bug #363359
+
+*vlc-1.1.9 (14 Apr 2011)
+
+  14 Apr 2011; Alexis Ballier <aballier@gentoo.org> +vlc-1.1.9.ebuild:
+  version bump
+
+  10 Apr 2011; Alexis Ballier <aballier@gentoo.org> -vlc-1.1.7.ebuild:
+  remove old
+
+  09 Apr 2011; Raúl Porcel <armin76@gentoo.org> vlc-1.1.8.ebuild:
+  alpha/sparc stable wrt #360189
+
+  03 Apr 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> vlc-1.1.8.ebuild:
+  x86 stable wrt security bug #360189
+
+  03 Apr 2011; Tomáš Chvátal <scarabeus@gentoo.org> vlc-1.1.7.ebuild,
+  vlc-1.1.8.ebuild, vlc-1.1.9999.ebuild, vlc-9999.ebuild:
+  Compilation passes with libav and it plays movies. Moving from
+  media-video/ffmpeg to virtual/ffmpeg (unversioned because oldest sattisfy the
+  dependency requirements). Fixes bug #361123.
 
   02 Apr 2011; Kacper Kowalik <xarthisius@gentoo.org> vlc-1.1.8.ebuild:
   ppc64 stable wrt #360189

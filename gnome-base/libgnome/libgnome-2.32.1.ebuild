@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-base/libgnome/libgnome-2.32.1.ebuild,v 1.6 2011/03/22 19:16:21 ranger Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-base/libgnome/libgnome-2.32.1.ebuild,v 1.8 2011/04/10 12:41:37 ssuominen Exp $
 
 EAPI="3"
 GCONF_DEBUG="yes"
@@ -38,6 +38,7 @@ PDEPEND="gnome-base/gvfs"
 
 pkg_setup() {
 	G2CONF="${G2CONF}
+		--disable-static
 		--disable-schemas-install
 		--enable-canberra
 		$(use_enable esd)"
@@ -63,4 +64,6 @@ src_install() {
 		doins "${WORKDIR}"/gentoo-emergence/gentoo-emergence.png || die "doins 1 failed"
 		doins "${WORKDIR}"/gentoo-cow/gentoo-cow-alpha.png || die "doins 2 failed"
 	fi
+
+	find "${ED}" -name '*.la' -exec rm -f {} +
 }

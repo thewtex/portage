@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/sparse/sparse-0.4.3.ebuild,v 1.1 2010/12/09 16:34:54 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/sparse/sparse-0.4.3.ebuild,v 1.5 2011/04/08 01:32:23 flameeyes Exp $
 
 EAPI="2"
 
@@ -23,18 +23,43 @@ fi
 
 LICENSE="OSL-1.1"
 SLOT="0"
-IUSE=""
+IUSE="gtk xml test"
+
+RDEPEND="gtk? ( x11-libs/gtk+:2 )
+	xml? ( dev-libs/libxml2 )"
+DEPEND="${RDEPEND}
+	gtk? ( dev-util/pkgconfig )
+	xml? ( dev-util/pkgconfig )"
 
 src_prepare() {
-	sed -i \
-		-e '/^PREFIX=/s:=.*:=/usr:' \
-		-e "/^LIBDIR=/s:/lib:/$(get_libdir):" \
-		Makefile || die
+	# http://git.overlays.gentoo.org/gitweb/?p=proj/sparse.git;a=summary
+	epatch "${FILESDIR}"/${P}-gentoo.patch
+}
+
+mymake() {
+	usex() { use $1 && echo ${2:-yes} || echo ${3:-no} ; }
+
+	emake \
+		V=1 \
+		CC="$(tc-getCC)" \
+		GCC_BASE="$(gcc-config -L | cut -d : -f1)" \
+		HAVE_LIBXML=$(usex xml) \
+		HAVE_GTK2=$(usex gtk) \
+		PREFIX=/usr \
+		LIBDIR="/usr/$(get_libdir)" \
+		DESTDIR="${D}" \
+		"$@" \
+		|| die
+}
+
+src_compile() {
 	append-flags -fno-strict-aliasing
-	export MAKEOPTS+=" V=1 CC=$(tc-getCC)"
+
+	mymake \
+		$(use test && echo all) all-installable
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die
+	mymake install
 	dodoc FAQ README
 }

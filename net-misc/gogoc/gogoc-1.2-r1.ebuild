@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/gogoc/gogoc-1.2-r1.ebuild,v 1.6 2011/01/04 21:28:03 xmw Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/gogoc/gogoc-1.2-r1.ebuild,v 1.8 2011/04/09 21:59:24 angelos Exp $
 
 EAPI=2
 
@@ -19,7 +19,7 @@ SRC_URI="http://gogo6.com/downloads/${MY_P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~sparc ~x86"
+KEYWORDS="amd64 ~hppa ~sparc ~x86"
 IUSE="debug"
 
 DEPEND="dev-libs/openssl"
@@ -30,6 +30,7 @@ S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-overflow.patch
+	epatch "${FILESDIR}"/${P}+gcc-4.6.patch
 
 	# Make the makefile handle linking correctly
 	find . -name Makefile -exec sed -i \

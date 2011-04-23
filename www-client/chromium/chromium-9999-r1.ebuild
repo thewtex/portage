@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/chromium-9999-r1.ebuild,v 1.12 2011/03/30 11:36:30 wired Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/chromium-9999-r1.ebuild,v 1.20 2011/04/21 13:31:43 phajdan.jr Exp $
 
 EAPI="3"
 PYTHON_DEPEND="2:2.6"
@@ -17,7 +17,7 @@ EGCLIENT_REPO_URI="http://src.chromium.org/svn/trunk/src/"
 LICENSE="BSD"
 SLOT="live"
 KEYWORDS=""
-IUSE="cups gnome gnome-keyring"
+IUSE="cups gnome gnome-keyring kerberos xinerama"
 
 RDEPEND="app-arch/bzip2
 	dev-libs/dbus-glib
@@ -34,10 +34,10 @@ RDEPEND="app-arch/bzip2
 	media-libs/libpng
 	>=media-libs/libvpx-0.9.5
 	media-libs/speex
-	>=media-video/ffmpeg-0.6_p25767[threads]
 	cups? ( >=net-print/cups-1.3.11 )
 	sys-libs/pam
 	sys-libs/zlib
+	>=virtual/ffmpeg-0.6.90[threads]
 	x11-libs/gtk+:2
 	x11-libs/libXScrnSaver
 	x11-libs/libXtst"
@@ -46,9 +46,13 @@ DEPEND="${RDEPEND}
 	>=dev-util/gperf-3.0.3
 	>=dev-util/pkgconfig-0.23
 	sys-devel/flex
-	>=sys-devel/make-3.81-r2"
+	>=sys-devel/make-3.81-r2
+	x11-libs/libXinerama
+	test? ( dev-python/simplejson virtual/krb5 )"
 RDEPEND+="
 	!=www-client/chromium-9999
+	kerberos? ( virtual/krb5 )
+	xinerama? ( x11-libs/libXinerama )
 	x11-misc/xdg-utils
 	virtual/ttf-fonts"
 
@@ -172,10 +176,12 @@ src_prepare() {
 		\! -path 'third_party/openmax/*' \
 		\! -path 'third_party/ots/*' \
 		\! -path 'third_party/protobuf/*' \
+		\! -path 'third_party/pyftpdlib/*' \
 		\! -path 'third_party/skia/*' \
 		\! -path 'third_party/speex/speex.h' \
 		\! -path 'third_party/sqlite/*' \
 		\! -path 'third_party/tcmalloc/*' \
+		\! -path 'third_party/tlslite/*' \
 		\! -path 'third_party/undoview/*' \
 		\! -path 'third_party/zlib/contrib/minizip/*' \
 		-delete || die
@@ -274,8 +280,8 @@ src_compile() {
 	emake chrome chrome_sandbox BUILDTYPE=Release V=1 || die
 	pax-mark m out/Release/chrome
 	if use test; then
-		emake base_unittests BUILDTYPE=Release V=1 || die
-		pax-mark m out/Release/base_unittests
+		emake {base,crypto,googleurl,net}_unittests BUILDTYPE=Release V=1 || die
+		pax-mark m out/Release/{base,crypto,googleurl,net}_unittests
 	fi
 }
 
@@ -293,6 +299,14 @@ src_test() {
 	# For more info see bug #350347.
 	LC_ALL="${mylocale}" VIRTUALX_COMMAND=out/Release/base_unittests virtualmake \
 		'--gtest_filter=-ICUStringConversionsTest.*'
+
+	LC_ALL="${mylocale}" VIRTUALX_COMMAND=out/Release/crypto_unittests virtualmake
+	LC_ALL="${mylocale}" VIRTUALX_COMMAND=out/Release/googleurl_unittests virtualmake
+
+	# NetUtilTest: bug #361885.
+	# UDP: unstable, active development. We should revisit this later.
+	LC_ALL="${mylocale}" VIRTUALX_COMMAND=out/Release/net_unittests virtualmake \
+		'--gtest_filter=-NetUtilTest.IDNToUnicode*:NetUtilTest.FormatUrl*:*UDP*'
 }
 
 src_install() {
@@ -360,7 +374,8 @@ pkg_postinst() {
 	fdo-mime_desktop_database_update
 	gnome2_icon_cache_update
 
-	# For more info see bugs #292201 and bug #352263.
+	# For more info see bug #292201, bug #352263, bug #361859.
+	elog
 	elog "Depending on your desktop environment, you may need"
 	elog "to install additional packages to get icons on the Downloads page."
 	elog
@@ -368,7 +383,21 @@ pkg_postinst() {
 	elog
 	elog "For other desktop environments, try one of the following:"
 	elog " - x11-themes/gnome-icon-theme"
-	elog " - x11-themes/xfce4-icon-theme"
+	elog " - x11-themes/tango-icon-theme"
+
+	# For more info see bug #359153.
+	elog
+	elog "Some web pages may require additional fonts to display properly."
+	elog "Try installing some of the following packages if some characters"
+	elog "are not displayed properly:"
+	elog " - media-fonts/arphicfonts"
+	elog " - media-fonts/bitstream-cyberbit"
+	elog " - media-fonts/droid"
+	elog " - media-fonts/ipamonafont"
+	elog " - media-fonts/ja-ipafonts"
+	elog " - media-fonts/takao-fonts"
+	elog " - media-fonts/wqy-microhei"
+	elog " - media-fonts/wqy-zenhei"
 
 	elog
 	elog "The live ebuild of chromium is now in its own slot."
@@ -379,7 +408,6 @@ pkg_postinst() {
 	elog "rename the old config directory *before* launching chromium-live:"
 	elog "	mv \${HOME}/.config/chromium \${HOME}/.config/chromium-live"
 	elog "To run, execute chromium-live or chromium-browser-live."
-	elog
 }
 
 pkg_postrm() {

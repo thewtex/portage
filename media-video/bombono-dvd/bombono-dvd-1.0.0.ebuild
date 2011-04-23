@@ -1,10 +1,10 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/bombono-dvd/bombono-dvd-1.0.0.ebuild,v 1.3 2011/03/06 15:43:58 dilfridge Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/bombono-dvd/bombono-dvd-1.0.0.ebuild,v 1.6 2011/04/16 15:12:27 angelos Exp $
 
 EAPI=2
 
-inherit base toolchain-funcs
+inherit base toolchain-funcs flag-o-matic
 
 DESCRIPTION="GUI DVD authoring program"
 HOMEPAGE="http://www.bombono.org/"
@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/bombono/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 IUSE=""
 
@@ -26,7 +26,7 @@ RDEPEND="
 	media-libs/libdvdread
 	media-sound/twolame
 	media-video/dvdauthor
-	media-video/ffmpeg
+	virtual/ffmpeg
 	>=media-video/mjpegtools-1.8.0
 	x11-libs/gtk+:2
 "
@@ -35,6 +35,8 @@ DEPEND=">=dev-util/scons-0.96.1
 	${RDEPEND}"
 
 src_compile() {
+	append-flags -DBOOST_FILESYSTEM_VERSION=2
+
 	# scons options differ from make options -> remove everything except "-jX" and "-j X"
 	local sconsopts=$(echo "${MAKEOPTS}" | sed -ne "/-j/ { s/.*\(-j[[:space:]]*[0-9]\+\).*/\1/; p }")
 

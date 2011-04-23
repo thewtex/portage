@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/bzr.eclass,v 1.12 2011/02/19 14:43:57 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/bzr.eclass,v 1.14 2011/04/20 17:16:34 ulm Exp $
 #
 # @ECLASS: bzr.eclass
 # @MAINTAINER:
@@ -50,7 +50,7 @@ esac
 # @ECLASS-VARIABLE: EBZR_FETCH_CMD
 # @DESCRIPTION:
 # The Bazaar command to fetch the sources.
-: ${EBZR_FETCH_CMD="bzr branch --no-tree"}
+: ${EBZR_FETCH_CMD:="bzr branch --no-tree"}
 
 # @ECLASS-VARIABLE: EBZR_UPDATE_CMD
 # @DESCRIPTION:
@@ -144,7 +144,7 @@ esac
 # Set this variable to a non-empty value to disable automatic updating
 # of a bzr source tree.  This is intended to be set outside the ebuild
 # by users.
-: ${EBZR_OFFLINE:=${ESCM_OFFLINE}}
+: ${EBZR_OFFLINE=${EVCS_OFFLINE}}
 
 # @FUNCTION: bzr_initial_fetch
 # @USAGE: <repository URI> <branch directory>

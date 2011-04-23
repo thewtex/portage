@@ -1,11 +1,11 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/libav/libav-9999.ebuild,v 1.6 2011/03/30 09:25:55 lu_zero Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/libav/libav-9999.ebuild,v 1.10 2011/04/20 11:01:08 scarabeus Exp $
 
 EAPI=4
 
 if [[ ${PV} == *9999 ]] ; then
-	SCM="git"
+	SCM="git-2"
 	EGIT_REPO_URI="git://git.libav.org/libav.git"
 	[[ ${PV%9999} != "" ]] && EGIT_BRANCH="release/${PV%.9999}"
 fi
@@ -22,12 +22,12 @@ else # Official release
 	SRC_URI="http://${PN}.org/releases/${P}.tar.bz2"
 fi
 
-LICENSE="GPL-3"
+LICENSE="LGPL-2 gpl? ( GPL-3 )"
 SLOT="0"
 [[ ${PV} == *9999 ]] || KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64
 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos
 ~x64-solaris ~x86-solaris"
-IUSE="+3dnow +3dnowext alsa altivec amr bindist +bzip2 cpudetection custom-cflags debug dirac doc +encode faac frei0r gsm +hardcoded-tables ieee1394 jack jpeg2k +mmx +mmxext mp3 network oss pic qt-faststart rtmp schroedinger sdl speex +ssse3 static-libs test theora threads v4l v4l2 vaapi vdpau vorbis vpx X x264 xvid +zlib"
+IUSE="+3dnow +3dnowext aac alsa altivec amr bindist +bzip2 cpudetection custom-cflags debug dirac doc +encode faac frei0r +gpl gsm +hardcoded-tables ieee1394 jack jpeg2k +mmx +mmxext mp3 network oss pic qt-faststart rtmp schroedinger sdl speex +ssse3 static-libs test theora threads v4l v4l2 vaapi vdpau vorbis vpx X x264 xvid +zlib"
 
 VIDEO_CARDS="nvidia"
 for x in ${VIDEO_CARDS}; do
@@ -41,6 +41,8 @@ RDEPEND="
 	bzip2? ( app-arch/bzip2 )
 	dirac? ( media-video/dirac )
 	encode? (
+		aac? ( media-libs/vo-aacenc )
+		amr? ( media-libs/vo-amrwbenc )
 		faac? ( media-libs/faac )
 		mp3? ( >=media-sound/lame-3.98.3 )
 		theora? ( >=media-libs/libtheora-1.1.1[encode] media-libs/libogg )
@@ -59,7 +61,7 @@ RDEPEND="
 	speex? ( >=media-libs/speex-1.2_beta3 )
 	vaapi? ( x11-libs/libva )
 	video_cards_nvidia? ( vdpau? ( x11-libs/libvdpau ) )
-	vpx? ( media-libs/libvpx )
+	vpx? ( >=media-libs/libvpx-0.9.6 )
 	X? ( x11-libs/libX11 x11-libs/libXext )
 	zlib? ( sys-libs/zlib )
 "
@@ -77,7 +79,11 @@ DEPEND="${RDEPEND}
 "
 
 # faac can't be binary distributed
-REQUIRED_USE="bindist? ( !faac )"
+# faac and aac are concurent implementations
+# amr and aac require gpl
+REQUIRED_USE="bindist? ( !faac )
+	faac? ( !aac ) aac? ( !faac )
+	amr? ( gpl ) aac? ( gpl )"
 
 src_prepare() {
 	# if we have snapshot then we need to hardcode the version
@@ -89,6 +95,13 @@ src_prepare() {
 src_configure() {
 	local myconf="${EXTRA_FFMPEG_CONF}"
 	local uses i
+
+	myconf="
+		$(use_enable gpl)
+		$(use_enable gpl version3)
+		--enable-postproc
+		--enable-avfilter
+	"
 
 	# enabled by default
 	uses="debug doc network vaapi zlib"
@@ -110,7 +123,9 @@ src_configure() {
 	# Encoders
 	if use encode; then
 		use mp3 && myconf+=" --enable-libmp3lame"
+		use amr && myconf+=" --enable-libvo-amrwbenc"
 		use faac && myconf+=" --enable-libfaac --enable-nonfree"
+		use aac && myconf+=" --enable-libvo-aacenc"
 		uses="theora vorbis x264 xvid"
 		for i in ${uses}; do
 			use ${i} && myconf+=" --enable-lib${i}"
@@ -172,14 +187,6 @@ src_configure() {
 		myconf+=" --cpu=${i}"
 		break
 	done
-
-	# Mandatory configuration
-	myconf="
-		--enable-gpl
-		--enable-version3
-		--enable-postproc
-		--enable-avfilter
-		${myconf}"
 
 	# cross compile support
 	if tc-is-cross-compiler ; then

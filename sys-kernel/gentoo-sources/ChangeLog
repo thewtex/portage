@@ -1,6 +1,36 @@
 # ChangeLog for sys-kernel/gentoo-sources
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-kernel/gentoo-sources/ChangeLog,v 1.834 2011/04/01 14:02:27 xarthisius Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-kernel/gentoo-sources/ChangeLog,v 1.839 2011/04/21 13:09:20 mpagano Exp $
+
+  21 Apr 2011; Mike Pagano <mpagano@gentoo.org>
+  -gentoo-sources-2.6.32-r20.ebuild, -gentoo-sources-2.6.32-r25.ebuild,
+  -gentoo-sources-2.6.32-r26.ebuild, -gentoo-sources-2.6.32-r27.ebuild,
+  -gentoo-sources-2.6.32-r28.ebuild, gentoo-sources-2.6.32-r29.ebuild,
+  -gentoo-sources-2.6.36-r5.ebuild, -gentoo-sources-2.6.36-r7.ebuild,
+  -gentoo-sources-2.6.37.ebuild, -gentoo-sources-2.6.37-r1.ebuild,
+  -gentoo-sources-2.6.37-r2.ebuild:
+  Stablizing 2.6.32-r29 archs which have previously stabled kernel version as
+  per bug #338739. If arch teams have issues revert change and bring discussion
+  to bug #338739. Old version cleanup, rebuild manifest for deblob script
+
+*gentoo-sources-2.6.38-r2 (15 Apr 2011)
+
+  15 Apr 2011; Michael Pagano <mpagano@gentoo.org>
+  +gentoo-sources-2.6.38-r2.ebuild:
+  Linux patch 2.6.38.3. CIFS patch to prevent exclusive page size reads and a
+  XEN compilation issue fix.
+
+  13 Apr 2011; Raúl Porcel <armin76@gentoo.org> gentoo-sources-2.6.37.ebuild,
+  gentoo-sources-2.6.37-r1.ebuild, gentoo-sources-2.6.37-r2.ebuild,
+  gentoo-sources-2.6.37-r3.ebuild, gentoo-sources-2.6.37-r4.ebuild:
+  All .37 kernels fail to build on alpha
+
+  11 Apr 2011; Jeroen Roovers <jer@gentoo.org> gentoo-sources-2.6.37-r4.ebuild:
+  Stable for HPPA (bug #362319).
+
+  10 Apr 2011; Markos Chandras <hwoarang@gentoo.org>
+  gentoo-sources-2.6.37-r4.ebuild:
+  Stable on amd64 wrt bug #362319
 
   01 Apr 2011; Kacper Kowalik <xarthisius@gentoo.org>
   gentoo-sources-2.6.35-r15.ebuild:

@@ -1,17 +1,18 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/vtk/vtk-5.6.0-r2.ebuild,v 1.5 2010/07/24 18:25:18 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/vtk/vtk-5.6.1.ebuild,v 1.2 2011/04/17 13:50:21 jlec Exp $
 
 EAPI="3"
+
 PYTHON_DEPEND="python? 2"
 
-inherit eutils flag-o-matic java-pkg-opt-2 python qt4 versionator toolchain-funcs cmake-utils
+inherit eutils flag-o-matic java-pkg-opt-2 python qt4-r2 versionator toolchain-funcs cmake-utils
 
 # Short package version
 SPV="$(get_version_component_range 1-2)"
 
 DESCRIPTION="The Visualization Toolkit"
-HOMEPAGE="http://www.vtk.org"
+HOMEPAGE="http://www.vtk.org/"
 SRC_URI="http://www.${PN}.org/files/release/${SPV}/${P}.tar.gz
 		examples? ( http://www.${PN}.org/files/release/${SPV}/${PN}data-${PV}.tar.gz )
 		doc? ( http://www.${PN}.org/doc/release/${SPV}/${PN}DocHtml-${PV}.tar.gz )"
@@ -25,7 +26,7 @@ RDEPEND="
 	examples? (
 			x11-libs/qt-core:4[qt3support]
 			x11-libs/qt-gui:4[qt3support] )
-	ffmpeg? ( media-video/ffmpeg )
+	ffmpeg? ( virtual/ffmpeg )
 	java? ( >=virtual/jre-1.5 )
 	mpi? ( virtual/mpi[cxx,romio] )
 	mysql? ( virtual/mysql )
@@ -37,14 +38,14 @@ RDEPEND="
 			x11-libs/qt-opengl:4
 			x11-libs/qt-sql:4
 			x11-libs/qt-webkit:4 )
-	tcl? ( >=dev-lang/tcl-8.2.3 )
+	tcl? ( dev-lang/tcl )
 	theora? ( media-libs/libtheora )
-	tk? ( >=dev-lang/tk-8.2.3 )
+	tk? ( dev-lang/tk )
 	R? ( dev-lang/R )
 	dev-libs/expat
-	dev-libs/libxml2
+	dev-libs/libxml2:2
 	media-libs/freetype
-	media-libs/jpeg
+	virtual/jpeg
 	media-libs/libpng
 	media-libs/mesa
 	media-libs/tiff
@@ -57,8 +58,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 		java? ( >=virtual/jdk-1.5 )
 		boost? ( >=dev-libs/boost-1.40.0[mpi?] )
-		mpi? ( >=dev-util/cmake-2.8.1-r2 )
-		>=dev-util/cmake-2.6"
+		dev-util/cmake"
 
 S="${WORKDIR}"/VTK
 VTKLIBDIR="$(get_libdir)/${PN}-${SPV}"
@@ -74,20 +74,29 @@ pkg_setup() {
 	java-pkg-opt-2_pkg_setup
 
 	use python && python_set_active_version 2
-	use qt4 && qt4_pkg_setup
 	append-cppflags -D__STDC_CONSTANT_MACROS
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-5.6.0-cg-path.patch
-	epatch "${FILESDIR}"/${PN}-5.2.0-tcl-install.patch
-	epatch "${FILESDIR}"/${PN}-5.6.0-boost-property_map.patch
-	epatch "${FILESDIR}"/${PN}-5.6.0-libpng14.patch
-	epatch "${FILESDIR}"/${PN}-5.6.0-R.patch
-	epatch "${FILESDIR}"/${PN}-5.6.0-odbc.patch
+	epatch \
+		"${FILESDIR}"/${PN}-5.6.0-cg-path.patch \
+		"${FILESDIR}"/${PN}-5.2.0-tcl-install.patch \
+		"${FILESDIR}"/${PN}-5.6.0-boost-property_map.patch \
+		"${FILESDIR}"/${PN}-5.6.0-libpng14.patch \
+		"${FILESDIR}"/${PN}-5.6.0-R.patch \
+		"${FILESDIR}"/${PN}-5.6.0-odbc.patch \
+		"${FILESDIR}"/${P}-ffmpeg.patch
+
+	# Fix sure buffer overflow on some processors as reported by Flameyes in #338819
+	sed -e "s:CHIPNAME_STRING_LENGTH    (48 + 1):CHIPNAME_STRING_LENGTH    (79 + 1):" \
+		-i Utilities/kwsys/SystemInformation.cxx \
+		|| die "Failed to fix SystemInformation.cxx buffer overflow"
 	sed -e "s:@VTK_TCL_LIBRARY_DIR@:/usr/$(get_libdir):" \
 		-i Wrapping/Tcl/pkgIndex.tcl.in \
 		|| die "Failed to fix tcl pkgIndex file"
+	# Patch FindPythonLibs.cmake for python-2.7, removing it does more harm than good.
+	sed -e "s:2.6 2.5 2.4 2.3 2.2 2.1 2.0:2.7 2.6 2.5 2.4 2.3 2.2 2.1 2.0:" \
+		-i CMake/FindPythonLibs.cmake || die "failed to patch for python 2.7"
 }
 
 src_configure() {
@@ -195,30 +204,11 @@ src_install() {
 
 	# install examples
 	if use examples; then
-		dodir /usr/share/${PN}-${SPV} || \
-			die "Failed to create data/examples directory"
-
-		cp -pPR "${S}"/Examples "${D}"/usr/share/${PN}-${SPV}/examples || \
-			die "Failed to copy example files"
-
-		# fix example's permissions
-		find "${D}"/usr/share/${PN}-${SPV}/examples -type d -exec \
-			chmod 0755 {} \; || \
-			die "Failed to fix example directories permissions"
-		find "${D}"/usr/share/${PN}-${SPV}/examples -type f -exec \
-			chmod 0644 {} \; || \
-			die "Failed to fix example files permissions"
-
-		cp -pPR "${WORKDIR}"/VTKData "${D}"/usr/share/${PN}-${SPV}/data || \
-			die "Failed to copy data files"
-
-		# fix data's permissions
-		find "${D}"/usr/share/${PN}-${SPV}/data -type d -exec \
-			chmod 0755 {} \; || \
-			die "Failed to fix data directories permissions"
-		find "${D}"/usr/share/${PN}-${SPV}/data -type f -exec \
-			chmod 0644 {} \; || \
-			die "Failed to fix data files permissions"
+		insinto /usr/share/${PN}
+		mv -v Examples examples
+		doins -r examples || die
+		mv -v "${WORKDIR}"/{VTKData,data} || die
+		doins -r "${WORKDIR}"/data || die
 	fi
 
 	#install big docs

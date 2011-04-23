@@ -1,6 +1,43 @@
 # ChangeLog for media-libs/mediastreamer
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/mediastreamer/ChangeLog,v 1.33 2011/01/01 20:36:35 hwoarang Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/mediastreamer/ChangeLog,v 1.40 2011/04/20 18:39:18 pva Exp $
+
+*mediastreamer-2.7.3-r3 (20 Apr 2011)
+
+  20 Apr 2011; Peter Volkov <pva@gentoo.org> +mediastreamer-2.7.3-r3.ebuild:
+  Fixed undefined reference on v4l_desc, bug #363603 thank Fred Röhner for
+  report and tests.
+
+*mediastreamer-2.7.3-r2 (14 Apr 2011)
+
+  14 Apr 2011; Peter Volkov <pva@gentoo.org> -mediastreamer-2.7.3-r1.ebuild,
+  +mediastreamer-2.7.3-r2.ebuild:
+  Revision bump for bug #362883 wrt Andrei Slavoiu
+
+  12 Apr 2011; Peter Volkov <pva@gentoo.org> mediastreamer-2.7.3-r1.ebuild,
+  +files/mediastreamer-2.7.3-sdl-build.patch:
+  Added patch to fix build issue with USE=sdl, bug #362883 thank Luigi 'Comio'
+  Mantellini for report and for help.
+
+*mediastreamer-2.7.3-r1 (09 Apr 2011)
+
+  09 Apr 2011; Peter Volkov <pva@gentoo.org> +mediastreamer-2.7.3-r1.ebuild,
+  metadata.xml:
+  Added amr plugin dependency, bug 356977 wrt Andrew Savchenko.
+
+  09 Apr 2011; Peter Volkov <pva@gentoo.org> mediastreamer-2.7.3.ebuild,
+  +files/mediastreamer-2.7.3-v4l-automagic.patch:
+  Finally fix v4l1 automagic and inability to be built with
+  linux-headers-2.6.38, bug 361107 thank Guillaume BINET for report and Ted
+  Rodgers, hirakendu and for help.
+
+*mediastreamer-2.7.3 (09 Apr 2011)
+
+  09 Apr 2011; Peter Volkov <pva@gentoo.org> +mediastreamer-2.7.3.ebuild:
+  Version bump, bug #356977 wrt Andrew Savchenko. Use virtual/ffmpeg, bug
+  #356977 by Tomáš Chvátal. Always depend on v4l2 as ./configure.ac
+  suggests, fixes automagic dep on v4l, bug 352713 thank Markus Oehme for
+  report.
 
   01 Jan 2011; Markos Chandras <hwoarang@gentoo.org>
   mediastreamer-2.6.0.ebuild:

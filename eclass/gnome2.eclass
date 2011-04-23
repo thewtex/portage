@@ -1,16 +1,14 @@
-# Copyright 1999-2006 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/gnome2.eclass,v 1.90 2010/12/07 06:20:40 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/gnome2.eclass,v 1.96 2011/04/22 11:04:13 nirbheek Exp $
 
-#
-# gnome2.eclass
-#
+# @ECLASS: gnome2.eclass
+# @MAINTAINER:
+# gnome@gentoo.org
+# @BLURB: 
+# @DESCRIPTION:
 # Exports portage base functions used by ebuilds written for packages using the
 # GNOME framework. For additional functions, see gnome2-utils.eclass.
-#
-# Maintained by Gentoo's GNOME herd <gnome@gentoo.org>
-#
-
 
 inherit fdo-mime libtool gnome.org gnome2-utils
 
@@ -18,24 +16,57 @@ case "${EAPI:-0}" in
 	0|1)
 		EXPORT_FUNCTIONS src_unpack src_compile src_install pkg_preinst pkg_postinst pkg_postrm
 		;;
-	2|3)
+	2|3|4)
 		EXPORT_FUNCTIONS src_unpack src_prepare src_configure src_compile src_install pkg_preinst pkg_postinst pkg_postrm
 		;;
 	*) die "EAPI=${EAPI} is not supported" ;;
 esac
 
+# @ECLASS-VARIABLE: G2CONF
+# @DEFAULT-UNSET
+# @DESCRIPTION:
 # Extra configure opts passed to econf
 G2CONF=${G2CONF:-""}
 
+# @ECLASS-VARIABLE: GNOME2_LA_PUNT
+# @DESCRIPTION:
+# Should we delete all the .la files?
+# NOT to be used without due consideration.
+GNOME2_LA_PUNT=${GNOME2_LA_PUNT:-"no"}
+
+# @ECLASS-VARIABLE: ELTCONF
+# @DEFAULT-UNSET
+# @DESCRIPTION:
 # Extra options passed to elibtoolize
 ELTCONF=${ELTCONF:-""}
 
+# @ECLASS-VARIABLE: USE_EINSTALL
+# @DEFAULT-UNSET
+# @DEPRECATED
+# @DESCRIPTION:
 # Should we use EINSTALL instead of DESTDIR
 USE_EINSTALL=${USE_EINSTALL:-""}
 
-# Run scrollkeeper for this package?
+# @ECLASS-VARIABLE: SCROLLKEEPER_UPDATE
+# @DEPRECATED
+# @DESCRIPTION:
+# Whether to run scrollkeeper for this package or not.
 SCROLLKEEPER_UPDATE=${SCROLLKEEPER_UPDATE:-"1"}
 
+# @ECLASS-VARIABLE: DOCS
+# @DEFAULT-UNSET
+# @DESCRIPTION:
+# String containing documents passed to dodoc command.
+
+# @ECLASS-VARIABLE: GCONF_DEBUG
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Whether to handle debug or not.
+# Some gnome applications support various levels of debugging (yes, no, minimum,
+# etc), but using --disable-debug also removes g_assert which makes debugging
+# harder. This variable should be set to yes for such packages for the eclass
+# to handle it properly. It will enable minimal debug with USE=-debug.
+# Note that this is most commonly found in configure.ac as GNOME_DEBUG_CHECK.
 
 
 if [[ ${GCONF_DEBUG} != "no" ]]; then
@@ -43,21 +74,35 @@ if [[ ${GCONF_DEBUG} != "no" ]]; then
 fi
 
 
-
+# @FUNCTION: gnome2_src_unpack
+# @DESCRIPTION:
+# Stub function for old EAPI.
 gnome2_src_unpack() {
 	unpack ${A}
 	cd "${S}"
 	has ${EAPI:-0} 0 1 && gnome2_src_prepare
 }
 
+# @FUNCTION: gnome2_src_prepare
+# @DESCRIPTION:
+# Fix build of scrollkeeper documentation and run elibtoolize.
 gnome2_src_prepare() {
 	# Prevent scrollkeeper access violations
 	gnome2_omf_fix
 
 	# Run libtoolize
-	elibtoolize ${ELTCONF}
+	if has ${EAPI:-0} 0 1 2 3; then
+		elibtoolize ${ELTCONF}
+	else
+		# Everything is fatal EAPI 4 onwards
+		nonfatal elibtoolize ${ELTCONF}
+	fi
+
 }
 
+# @FUNCTION: gnome2_src_configure
+# @DESCRIPTION:
+# Gnome specific configure handling
 gnome2_src_configure() {
 	# Update the GNOME configuration options
 	if [[ ${GCONF_DEBUG} != 'no' ]] ; then
@@ -75,14 +120,21 @@ gnome2_src_configure() {
 	addwrite "/root/.gnome2"
 
 	# GST_REGISTRY is to work around gst-inspect trying to read/write /root
-	GST_REGISTRY="${S}/registry.xml" econf "$@" ${G2CONF} || die "configure failed"
+	GST_REGISTRY="${S}/registry.xml" econf "$@" ${G2CONF}
 }
 
+# @FUNCTION: gnome2_src_compile
+# @DESCRIPTION:
+# Stub function for old EAPI.
 gnome2_src_compile() {
 	has ${EAPI:-0} 0 1 && gnome2_src_configure "$@"
 	emake || die "compile failure"
 }
 
+# @FUNCTION: gnome2_src_install
+# @DESCRIPTION:
+# Gnome specific install. Handles typical GConf and scrollkeeper setup
+# in packages and removal of .la files if requested
 gnome2_src_install() {
 	has ${EAPI:-0} 0 1 2 && ! use prefix && ED="${D}"
 	# if this is not present, scrollkeeper-update may segfault and
@@ -119,14 +171,28 @@ gnome2_src_install() {
 
 	# Make sure this one doesn't get in the portage db
 	rm -fr "${ED}/usr/share/applications/mimeinfo.cache"
+
+	# Delete all .la files
+	if [[ "${GNOME2_LA_PUNT}" != "no" ]]; then
+		ebegin "Removing .la files"
+		find "${D}" -name '*.la' -exec rm -f {} + || die "la file removal failed"
+		eend
+	fi
 }
 
+# @FUNCTION: gnome2_pkg_preinst
+# @DESCRIPTION:
+# Finds Icons, GConf and GSettings schemas for later handling in pkg_postinst
 gnome2_pkg_preinst() {
 	gnome2_gconf_savelist
 	gnome2_icon_savelist
 	gnome2_schemas_savelist
 }
 
+# @FUNCTION: gnome2_pkg_postinst
+# @DESCRIPTION:
+# Handle scrollkeeper, GConf, GSettings, Icons, desktop and mime
+# database updates.
 gnome2_pkg_postinst() {
 	gnome2_gconf_install
 	fdo-mime_desktop_database_update
@@ -139,10 +205,16 @@ gnome2_pkg_postinst() {
 	fi
 }
 
+# @#FUNCTION: gnome2_pkg_prerm
+# @#DESCRIPTION:
+# # FIXME Handle GConf schemas removal
 #gnome2_pkg_prerm() {
 #	gnome2_gconf_uninstall
 #}
 
+# @FUNCTION: gnome2_pkg_postrm
+# @DESCRIPTION:
+# Handle scrollkeeper, GSettings, Icons, desktop and mime database updates.
 gnome2_pkg_postrm() {
 	fdo-mime_desktop_database_update
 	fdo-mime_mime_database_update
@@ -153,5 +225,3 @@ gnome2_pkg_postrm() {
 		gnome2_scrollkeeper_update
 	fi
 }
-
-# pkg_prerm

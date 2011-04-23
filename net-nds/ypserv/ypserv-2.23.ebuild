@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-nds/ypserv/ypserv-2.23.ebuild,v 1.1 2010/08/28 00:38:12 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-nds/ypserv/ypserv-2.23.ebuild,v 1.2 2011/04/21 14:18:40 jer Exp $
 
 EAPI="2"
 
@@ -44,7 +44,7 @@ src_install() {
 
 	newinitd "${FILESDIR}/ypserv" ypserv
 	newinitd "${FILESDIR}/rpc.yppasswdd-r1" rpc.yppasswdd
-	newinitd "${FILESDIR}/rpc.ypxfrd" rpc.ypxfrd
+	newinitd "${FILESDIR}/rpc.ypxfrd-2.23" rpc.ypxfrd
 
 	echo "CONFIG_PROTECT=\"/var/yp/Makefile\"" > "${T}"/10ypserv
 	doenvd "${T}"/10ypserv

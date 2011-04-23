@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-base/gnome-keyring/gnome-keyring-2.32.1.ebuild,v 1.12 2011/03/27 14:35:11 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-base/gnome-keyring/gnome-keyring-2.32.1.ebuild,v 1.14 2011/04/11 04:39:23 leio Exp $
 
 EAPI="3"
 GCONF_DEBUG="yes"
@@ -12,7 +12,7 @@ HOMEPAGE="http://www.gnome.org/"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ia64 ppc ppc64 sh sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~sparc-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 arm ia64 ~mips ppc ppc64 sh sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~sparc-solaris ~x86-solaris"
 IUSE="debug doc pam test"
 # USE=valgrind is probably not a good idea for the tree
 
@@ -67,10 +67,7 @@ src_prepare() {
 
 src_install() {
 	gnome2_src_install
-	if use pam; then
-		find "${ED}"/$(get_libdir)/security -name "*.la" -delete \
-			|| die "la file removal failed"
-	fi
+	find "${ED}" -name '*.la' -exec rm -f {} +
 }
 
 src_test() {

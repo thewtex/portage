@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-backup/duplicity/duplicity-0.6.11.ebuild,v 1.2 2011/01/04 22:01:07 xmw Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-backup/duplicity/duplicity-0.6.11.ebuild,v 1.4 2011/04/09 17:00:40 jer Exp $
 
 EAPI="3"
 
@@ -17,7 +17,6 @@ IUSE="s3"
 
 DEPEND=">=dev-lang/python-2.4
 	>=net-libs/librsync-0.9.6
-	>=net-ftp/ncftp-3.1.9
 	app-crypt/gnupg"
 RDEPEND="${DEPEND}
 	>=dev-python/py-gnupg-0.3.2

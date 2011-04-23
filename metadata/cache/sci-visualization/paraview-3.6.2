@@ -1,5 +1,5 @@
-sci-libs/hdf5[mpi=] mpi? ( || ( sys-cluster/openmpi sys-cluster/mpich2[cxx] ) ) gui? ( x11-libs/qt-gui:4 x11-libs/qt-qt3support:4 x11-libs/qt-opengl:4 x11-libs/qt-assistant:4 ) mysql? ( virtual/mysql ) postgres? ( dev-db/postgresql-base ) odbc? ( dev-db/unixODBC ) dev-libs/libxml2:2 media-libs/libpng virtual/jpeg media-libs/tiff virtual/ffmpeg dev-libs/expat sys-libs/zlib media-libs/freetype >=app-admin/eselect-opengl-1.0.6-r1 virtual/opengl sci-libs/netcdf x11-libs/libXmu boost? ( >=dev-libs/boost-1.40.0 ) doc? ( app-doc/doxygen ) >=dev-util/cmake-2.6.4 >=app-admin/eselect-python-20091230 python? ( || ( =dev-lang/python-2.7* =dev-lang/python-2.6* ) ) >=app-admin/eselect-python-20091230 python? ( || ( =dev-lang/python-2.7* =dev-lang/python-2.6* ) ) >=dev-util/cmake-2.8.1 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
-sci-libs/hdf5[mpi=] mpi? ( || ( sys-cluster/openmpi sys-cluster/mpich2[cxx] ) ) gui? ( x11-libs/qt-gui:4 x11-libs/qt-qt3support:4 x11-libs/qt-opengl:4 x11-libs/qt-assistant:4 ) mysql? ( virtual/mysql ) postgres? ( dev-db/postgresql-base ) odbc? ( dev-db/unixODBC ) dev-libs/libxml2:2 media-libs/libpng virtual/jpeg media-libs/tiff virtual/ffmpeg dev-libs/expat sys-libs/zlib media-libs/freetype >=app-admin/eselect-opengl-1.0.6-r1 virtual/opengl sci-libs/netcdf x11-libs/libXmu >=app-admin/eselect-python-20091230 python? ( || ( =dev-lang/python-2.7* =dev-lang/python-2.6* ) ) >=app-admin/eselect-python-20091230 python? ( || ( =dev-lang/python-2.7* =dev-lang/python-2.6* ) )
+sci-libs/hdf5[mpi=] mpi? ( || ( sys-cluster/openmpi sys-cluster/mpich2[cxx] ) ) gui? ( x11-libs/qt-gui:4 x11-libs/qt-qt3support:4 x11-libs/qt-opengl:4 x11-libs/qt-assistant:4 ) mysql? ( virtual/mysql ) postgres? ( dev-db/postgresql-base ) odbc? ( dev-db/unixODBC ) dev-libs/libxml2:2 media-libs/libpng virtual/jpeg media-libs/tiff virtual/ffmpeg dev-libs/expat sys-libs/zlib media-libs/freetype >=app-admin/eselect-opengl-1.0.6-r1 virtual/opengl sci-libs/netcdf x11-libs/libXmu boost? ( >=dev-libs/boost-1.40.0 ) doc? ( app-doc/doxygen ) >=dev-util/cmake-2.6.4 >=app-admin/eselect-python-20091230 python? ( || ( =dev-lang/python-2.7* =dev-lang/python-2.6* ) ) >=dev-util/cmake-2.8.1 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+sci-libs/hdf5[mpi=] mpi? ( || ( sys-cluster/openmpi sys-cluster/mpich2[cxx] ) ) gui? ( x11-libs/qt-gui:4 x11-libs/qt-qt3support:4 x11-libs/qt-opengl:4 x11-libs/qt-assistant:4 ) mysql? ( virtual/mysql ) postgres? ( dev-db/postgresql-base ) odbc? ( dev-db/unixODBC ) dev-libs/libxml2:2 media-libs/libpng virtual/jpeg media-libs/tiff virtual/ffmpeg dev-libs/expat sys-libs/zlib media-libs/freetype >=app-admin/eselect-opengl-1.0.6-r1 virtual/opengl sci-libs/netcdf x11-libs/libXmu >=app-admin/eselect-python-20091230 python? ( || ( =dev-lang/python-2.7* =dev-lang/python-2.6* ) )
 0
 mirror://gentoo/paraview-3.6.2.tar.gz mirror://gentoo/paraview-3.6.2-openfoam-gpl-r173.patch.bz2 mirror://gentoo/paraview-3.6.2-openfoam-r173.patch.bz2
 
@@ -7,14 +7,14 @@ http://www.paraview.org
 paraview GPL-2
 ParaView is a powerful scientific data visualization application
 ~amd64 ~ppc ~x86
-base cmake-utils distutils eutils flag-o-matic multilib portability python qt4 toolchain-funcs versionator
+base cmake-utils eutils flag-o-matic multilib portability python qt4 toolchain-funcs versionator
 boost cg doc examples +gui mpi mysql plugins +python postgres streaming odbc overview
 
 
 
-2
+3
 
-compile configure install postinst postrm prepare setup test unpack
+compile configure install postinst prepare setup test unpack
 
 
 

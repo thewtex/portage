@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/imagemagick/imagemagick-6.6.8.5.ebuild,v 1.2 2011/03/27 14:42:19 ranger Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/imagemagick/imagemagick-6.6.8.5.ebuild,v 1.5 2011/04/10 10:42:02 ssuominen Exp $
 
 EAPI=3
 inherit multilib toolchain-funcs versionator
@@ -13,10 +13,11 @@ SRC_URI="mirror://${PN}/${MY_P}.tar.xz"
 
 LICENSE="imagemagick"
 SLOT="0"
-KEYWORDS="~amd64 ~mips ~ppc ~x86 ~ppc-aix ~x86-fbsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~amd64 ~arm ~mips ~ppc ~x86 ~ppc-aix ~x86-fbsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE="autotrace bzip2 +corefonts cxx djvu fftw fontconfig fpx graphviz gs hdri jbig jpeg jpeg2k lcms lqr lzma openexr openmp perl png q32 q8 raw static-libs svg tiff truetype webp wmf X xml zlib"
 IUSE="${IUSE} video_cards_nvidia" # opencl support
 
+# libtool is required for loading plugins
 RDEPEND=">=sys-devel/libtool-2.2.6b
 	autotrace? ( >=media-gfx/autotrace-0.31.1 )
 	bzip2? ( app-arch/bzip2 )
@@ -147,4 +148,6 @@ src_install() {
 		find "${ED}" -type f -name perllocal.pod -delete
 		find "${ED}" -depth -mindepth 1 -type d -empty -delete
 	fi
+
+	find "${ED}" -name '*.la' -exec sed -i -e "/^dependency_libs/s:=.*:='':" {} +
 }

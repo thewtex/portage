@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/gst-plugins-bad.eclass,v 1.35 2011/03/20 09:49:50 leio Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/gst-plugins-bad.eclass,v 1.37 2011/04/13 08:50:24 leio Exp $
 
 #
 # Original Author: Saleem Abdulrasool <compnerd@gentoo.org>
@@ -11,10 +11,10 @@
 
 inherit eutils versionator gst-plugins10
 
-# This list is current for gst-plugins-bad-0.10.18.
+# This list is current for gst-plugins-bad-0.10.21.
 my_gst_plugins_bad="directsound directdraw osx_video quicktime vcd
-alsa assrender amrwb apexsink bz2 cdaudio celt cog dc1394 directfb dirac dts divx
-metadata faac faad fbdev flite gsm jp2k kate ladspa lv2 libmms
+assrender amrwb apexsink bz2 cdaudio celt cog dc1394 directfb dirac dts divx
+faac faad fbdev flite gsm jp2k kate ladspa lv2 libmms
 modplug mimic mpeg2enc mplex musepack musicbrainz mythtv nas neon ofa rsvg
 timidity wildmidi sdl sdltest sndfile soundtouch spc gme swfdec theoradec xvid
 dvb wininet acm vdpau schro zbar"
@@ -22,13 +22,27 @@ dvb wininet acm vdpau schro zbar"
 # When adding conditionals like below, be careful about having leading spaces
 
 # Changes in 0.10.21:
-# jack moved to -good
+# New opencv and apple_media plugins
+# exif for a specific jifmux tests purpose only
+if version_is_at_least "0.10.21"; then
+	my_gst_plugins_bad+=" opencv apple_media exif"
+fi
+
+# jack moved to -good, metadata removed (functionality in base classes)
+# alsaspdif gone (gst-plugins-alsa from -base can do spdif on its own long ago)
 if ! version_is_at_least "0.10.21"; then
-	my_gst_plugins_bad+=" jack"
+	my_gst_plugins_bad+=" jack metadata alsa"
+fi
+
+# Changes in 0.10.20:
+# New split plugins rtmp, gsettings and shm
+if version_is_at_least "0.10.20"; then
+	my_gst_plugins_bad+=" rtmp gsettings shm"
 fi
 
 # Changes in 0.10.19:
 # dvdnav configure option changed from --enable-dvdnav to --enable-resindvd
+# New vp8 plugin
 if version_is_at_least "0.10.19"; then
 	my_gst_plugins_bad+=" resindvd vp8"
 fi
@@ -58,12 +72,20 @@ fi
 if [ "${PN}" != "${MY_PN}" ]; then
 RDEPEND="=media-libs/gstreamer-0.10*
 		=media-libs/gst-plugins-base-0.10*
-		>=dev-libs/glib-2.6
-		>=dev-libs/liboil-0.3.8"
+		>=dev-libs/glib-2.6"
 DEPEND="${RDEPEND}
 		sys-apps/sed
 		dev-util/pkgconfig
 		sys-devel/gettext"
+
+# -bad-0.10.20 uses orc optionally instead of liboil unconditionally.
+# While <0.10.20 configure always check for liboil, it is used only by non-split
+# plugins in gst/ (legacyresample and mpegdemux), so we only builddep for all
+# old packages, and have a RDEPEND in old versions of media-libs/gst-plugins-bad
+if ! version_is_at_least "0.10.20"; then
+DEPEND="${DEPEND} >=dev-libs/liboil-0.3.8"
+fi
+
 RESTRICT=test
 fi
 S=${WORKDIR}/${MY_P}
@@ -78,6 +100,7 @@ gst-plugins-bad_src_unpack() {
 	sed -e "s:\$(top_builddir)/gst-libs/gst/interfaces/libgstphotography:${ROOT}/usr/$(get_libdir)/libgstphotography:" \
 		-e "s:\$(top_builddir)/gst-libs/gst/signalprocessor/libgstsignalprocessor:${ROOT}/usr/$(get_libdir)/libgstsignalprocessor:" \
 		-e "s:\$(top_builddir)/gst-libs/gst/video/libgstbasevideo:${ROOT}/usr/$(get_libdir)/libgstbasevideo:" \
+		-e "s:\$(top_builddir)/gst-libs/gst/basecamerabinsrc/libgstbasecamerabinsrc:${ROOT}/usr/$(get_libdir)/libgstbasecamerabinsrc:" \
 		-i Makefile.in
 
 	# 0.10.14 configure errors when --disable-kate is passed:

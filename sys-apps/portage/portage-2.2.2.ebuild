@@ -5,13 +5,12 @@
 # Require EAPI 2 since we now require at least python-2.6 (for python 3
 # syntax support) which also requires EAPI 2.
 EAPI=2
-inherit eutils multilib python
+inherit eutils multilib python 
 
 DESCRIPTION="Portage is the package management and distribution system for Gentoo"
 HOMEPAGE="http://www.gentoo.org/proj/en/portage/index.xml"
 LICENSE="GPL-2"
 KEYWORDS="alpha amd64 arm hppa ia64 m68k mips ppc ppc64 s390 sh sparc sparc-fbsd x86 x86-fbsd"
-PROVIDE="virtual/portage"
 SLOT="0"
 IUSE="build doc epydoc +ipc linguas_pl python3 selinux"
 GITHUB_REPO="portage-funtoo"
@@ -96,12 +95,10 @@ pkg_setup() {
 		python_set_active_version 3
 	fi
 }
-
 src_unpack() {
-	unpack ${A}
-	mv "${WORKDIR}/${GITHUB_USER}-${PN}-funtoo"-??????? "${S}" || die
+		unpack ${A}
+	    mv "${WORKDIR}/${GITHUB_USER}-${PN}-funtoo"-??????? "${S}" || die
 }
-
 src_prepare() {
 	cd ${S}
 	if [ -n "${PATCHVER}" ] ; then

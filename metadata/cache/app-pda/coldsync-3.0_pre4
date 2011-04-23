@@ -1,20 +1,20 @@
-usb? ( virtual/libusb:0 ) perl? ( dev-lang/perl ) caps? ( sys-libs/libcap )
-usb? ( virtual/libusb:0 ) perl? ( dev-lang/perl ) caps? ( sys-libs/libcap )
+caps? ( sys-libs/libcap ) perl? ( dev-lang/perl ) usb? ( virtual/libusb:0 ) nls? ( sys-devel/gettext ) dev-lang/perl[-build]
+caps? ( sys-libs/libcap ) perl? ( dev-lang/perl ) usb? ( virtual/libusb:0 ) dev-lang/perl[-build]
 0
 http://www.coldsync.org/download/coldsync-3.0-pre4.tar.gz
 
 http://www.coldsync.org/
 Artistic
 A command-line tool to synchronize PalmOS PDAs with Unix workstations
-
-
-nls perl usb caps
+~amd64 ~ppc ~sparc ~x86
+base eutils flag-o-matic multilib perl-module portability toolchain-funcs
+caps nls perl usb
 
 
 
 2
 
-compile configure install
+compile configure install prepare test unpack
 
 
 

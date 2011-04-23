@@ -1,6 +1,23 @@
 # ChangeLog for sys-devel/sparse
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/sparse/ChangeLog,v 1.39 2010/12/09 16:34:54 vapier Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/sparse/ChangeLog,v 1.43 2011/04/08 01:32:23 flameeyes Exp $
+
+  08 Apr 2011; Diego E. Pettenò <flameeyes@gentoo.org> sparse-0.4.3.ebuild:
+  Add a comment on where to find the patches.
+
+  08 Apr 2011; Diego E. Pettenò <flameeyes@gentoo.org> sparse-0.4.3.ebuild,
+  +files/sparse-0.4.3-gentoo.patch, sparse-9999.ebuild, metadata.xml:
+  Patch sparse 0.4.3 to be build-friendlier; fix possible build issue when icc
+  is installed (no revision bump though); fix build with gcc-4.6 (bug #362499);
+  fix dependencies (in particular gtk+:2).
+
+  07 Apr 2011; Mike Frysinger <vapier@gentoo.org> sparse-0.4.3.ebuild,
+  sparse-9999.ebuild:
+  Control gtk/xml via USE flags #361851 by Nathan Phillip Brink.
+
+  07 Apr 2011; Mike Frysinger <vapier@gentoo.org> sparse-0.4.3.ebuild,
+  sparse-9999.ebuild:
+  Respect user CFLAGS #361853 by Nathan Phillip Brink.
 
 *sparse-0.4.3 (09 Dec 2010)
 

@@ -1,6 +1,63 @@
 # ChangeLog for kde-base/kdelibs
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/kdelibs/ChangeLog,v 1.734 2011/03/29 13:20:25 angelos Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/kdelibs/ChangeLog,v 1.746 2011/04/18 20:27:15 dilfridge Exp $
+
+  18 Apr 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  kdelibs-4.6.2-r2.ebuild:
+  Now properly concatenate QT_PLUGIN_PATH
+
+  18 Apr 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  kdelibs-4.6.2-r2.ebuild:
+  Just overwrite the previous value of QT_PLUGIN_PATH, qt-4.7.2 does not
+  even set it anymore anyway
+
+  18 Apr 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  -kdelibs-4.4.5-r3.ebuild, -kdelibs-4.6.2-r1.ebuild:
+  old
+
+  11 Apr 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  kdelibs-4.6.2-r2.ebuild, +files/kdelibs-4.6.2-armlinking.patch:
+  Disable fatal linker warnings for all kde apps on arm only to make things
+  build, bug 336209
+
+  11 Apr 2011; Joseph Jezak <josejx@gentoo.org> kdelibs-4.4.5-r4.ebuild:
+  Marked ppc stable for bug #361015.
+
+*kdelibs-4.6.2-r2 (10 Apr 2011)
+
+  10 Apr 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  +kdelibs-4.6.2-r2.ebuild:
+  Set QT_PLUGIN_PATH, fixes bug 358299
+
+  08 Apr 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  -kdelibs-4.4.5.ebuild, -kdelibs-4.4.5-r1.ebuild, -kdelibs-4.4.5-r2.ebuild:
+  Cleanup
+
+  07 Apr 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  kdelibs-4.6.2-r1.ebuild:
+  Added missing dependency on x11-libs/libXScrnSaver, bug 362521
+
+*kdelibs-4.6.2-r1 (07 Apr 2011)
+
+  07 Apr 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  -kdelibs-4.6.2.ebuild, +kdelibs-4.6.2-r1.ebuild,
+  -files/kdelibs-4.6.2-safestrigi.patch:
+  Remove safestrigi patch, since it breaks tags in dolphin, bug 362513
+
+  07 Apr 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  kdelibs-4.6.2.ebuild, +files/kdelibs-4.6.2-nonepomuk.patch:
+  Fix build without semantik-desktop, bug 361637
+
+*kdelibs-4.6.2 (06 Apr 2011)
+
+  06 Apr 2011; Tomáš Chvátal <scarabeus@gentoo.org> -kdelibs-4.5.5.ebuild,
+  -kdelibs-4.6.0-r1.ebuild, -kdelibs-4.6.1.ebuild, -kdelibs-4.6.1-r1.ebuild,
+  -kdelibs-4.6.1-r2.ebuild, +kdelibs-4.6.2.ebuild,
+  +files/kdelibs-4.6.2-safestrigi.patch:
+  Version bump KDE SC 4.6.2
+
+  04 Apr 2011; Thomas Kahle <tomka@gentoo.org> kdelibs-4.4.5-r4.ebuild:
+  x86 stable per bug 361015
 
   29 Mar 2011; Christoph Mende <angelos@gentoo.org> kdelibs-4.4.5-r4.ebuild:
   Stable on amd64 wrt bug #361015

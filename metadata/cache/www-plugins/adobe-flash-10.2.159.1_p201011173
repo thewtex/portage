@@ -1,0 +1,22 @@
+amd64? ( multilib? ( !64bit? ( www-plugins/nspluginwrapper ) ) ) >=app-arch/rpm2targz-9.0.0.3g
+x86? ( x11-libs/gtk+:2 media-libs/fontconfig dev-libs/nss net-misc/curl 32bit? ( vdpau? ( x11-libs/libvdpau ) ) >=sys-libs/glibc-2.4 ) amd64? ( multilib? ( 64bit? ( x11-libs/gtk+:2 media-libs/fontconfig dev-libs/nss net-misc/curl 32bit? ( vdpau? ( x11-libs/libvdpau ) ) >=sys-libs/glibc-2.4 ) 32bit? ( vdpau? ( >=app-emulation/emul-linux-x86-xlibs-20110129 ) >=app-emulation/emul-linux-x86-gtklibs-20100409-r1 app-emulation/emul-linux-x86-soundlibs ) ) !multilib? ( x11-libs/gtk+:2 media-libs/fontconfig dev-libs/nss net-misc/curl 32bit? ( vdpau? ( x11-libs/libvdpau ) ) >=sys-libs/glibc-2.4 ) ) || ( media-fonts/liberation-fonts media-fonts/corefonts ) amd64? ( multilib? ( !64bit? ( www-plugins/nspluginwrapper ) ) )
+0
+x86? ( http://fpdownload.macromedia.com/get/flashplayer/current/flash-plugin-10.2.159.1-release.i386.rpm ) amd64? ( multilib? ( 32bit? ( http://fpdownload.macromedia.com/get/flashplayer/current/flash-plugin-10.2.159.1-release.i386.rpm ) 64bit? ( http://download.macromedia.com/pub/labs/flashplayer10/flashplayer10_2_p3_64bit_linux_111710.tar.gz ) ) !multilib? ( http://download.macromedia.com/pub/labs/flashplayer10/flashplayer10_2_p3_64bit_linux_111710.tar.gz ) )
+strip mirror
+http://labs.adobe.com/technologies/flashplayer10/
+AdobeFlash-10.1
+Adobe Flash Player
+-* ~amd64 ~x86
+eutils multilib nsplugins portability rpm toolchain-funcs versionator
+multilib +32bit +64bit vdpau bindist
+
+
+
+3
+
+compile install postinst setup unpack
+
+
+
+
+

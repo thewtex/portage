@@ -1,6 +1,30 @@
 # ChangeLog for app-crypt/mit-krb5
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/mit-krb5/ChangeLog,v 1.271 2011/03/22 07:18:34 eras Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/mit-krb5/ChangeLog,v 1.276 2011/04/22 14:03:18 eras Exp $
+
+*mit-krb5-1.9-r4 (22 Apr 2011)
+
+  22 Apr 2011; Eray Aslan <eras@gentoo.org> +files/mit-krb5kpropd.initd,
+  -mit-krb5-1.9-r2.ebuild, +mit-krb5-1.9-r4.ebuild:
+  Add init script for kpropd - bug #364073. Drop old.
+
+  15 Apr 2011; Christoph Mende <angelos@gentoo.org> mit-krb5-1.8.3-r5.ebuild:
+  Stable on amd64 wrt bug #363507
+
+  15 Apr 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  mit-krb5-1.8.3-r5.ebuild:
+  x86 stable wrt security bug #363507
+
+  14 Apr 2011; Jeroen Roovers <jer@gentoo.org> mit-krb5-1.8.3-r5.ebuild:
+  Stable for HPPA (bug #363507).
+
+*mit-krb5-1.9-r3 (14 Apr 2011)
+*mit-krb5-1.8.3-r5 (14 Apr 2011)
+
+  14 Apr 2011; Eray Aslan <eras@gentoo.org> +mit-krb5-1.8.3-r5.ebuild,
+  +files/mit-krb5-1.8.3-CVE-2011-0285.patch, +mit-krb5-1.9-r3.ebuild,
+  +files/CVE-2011-0285.patch:
+  security bump - bug 363507
 
   22 Mar 2011; Eray Aslan <eras@gentoo.org> -mit-krb5-1.8.3-r3.ebuild:
   remove vulnerable version
