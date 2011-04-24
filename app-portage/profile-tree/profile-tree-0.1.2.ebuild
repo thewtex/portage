@@ -3,7 +3,7 @@
 
 EAPI="3"
 
-DESCRIPTION="List portage profiles and portage config files"
+DESCRIPTION="List portage profiles and other portage directories"
 GITHUB_USER="tarsius"
 GITHUB_REPO="${PN}"
 GITHUB_TAG="${PV}"
@@ -16,8 +16,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND=""
-RDEPEND=">=app-portage/gentoolkit-0.3.0_rc10-r1
-	>=sys-apps/portage-2.2.2"
+RDEPEND="=sys-apps/portage-9999"
 
 src_prepare() {
 	mv tarsius-${PN}-* ${PF}

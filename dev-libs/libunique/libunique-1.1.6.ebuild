@@ -1,8 +1,9 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libunique/libunique-1.1.6.ebuild,v 1.16 2011/04/10 10:52:28 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libunique/libunique-1.1.6.ebuild,v 1.17 2011/04/24 17:05:44 nirbheek Exp $
 
 EAPI="2"
+GNOME2_LA_PUNT="yes"
 
 inherit gnome2 virtualx
 
@@ -49,9 +50,4 @@ src_test() {
 
 	cp "${FILESDIR}/run-tests" . || die "Unable to cp \${FILESDIR}/run-tests"
 	Xemake -f run-tests || die "Tests failed"
-}
-
-src_install() {
-	gnome2_src_install
-	find "${D}" -name '*.la' -exec rm -f {} +
 }

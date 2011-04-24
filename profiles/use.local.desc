@@ -620,7 +620,6 @@ app-office/krita:gmm - Enable library for sparse, dense and skyline matrices.
 app-office/krita:kdcraw - Enable KDE image manipulating interface.
 app-office/kspread:solver - Use solver extension for solving lingebra and others.
 app-office/kword:wpd - Build wordperfect document support.
-app-office/kword:wv2 - Build MS-Word .doc support.
 app-office/libreoffice:binfilter - Enable support for legacy StarOffice 5.x and earlier file formats
 app-office/libreoffice:odk - Build the Office Development Kit
 app-office/libreoffice:templates - Enable installation of Sun templates
@@ -702,6 +701,7 @@ app-text/gonzui:zip - Enable ZIP archive support
 app-text/gtranslator:http - Enable support for open translation plugin using net-libs/libsoup
 app-text/hyperestraier:mecab - Enable app-text/mecab support for Estraier
 app-text/lcdf-typetools:kpathsea - Enable integration with kpathsea search library (TeX related)
+app-text/libwpd:tools - Build miscellaneous tools
 app-text/lodgeit:vim - Install a vim plugin allowing to paste and download from within vim
 app-text/namazu:kakasi - Enable kakasi support (dev-perl/Text-Kakasi)
 app-text/pdf2djvu:graphicsmagick - Enable media-gfx/graphicsmagick support
@@ -1054,6 +1054,7 @@ dev-libs/eina:mempool-pass-through - Compile "pass-through" (system's malloc) me
 dev-libs/elfutils:lzma - Support automatic decompression of LZMA-compressed files and kernel images.
 dev-libs/fcgi:html - Install HTML documentation
 dev-libs/ferrisloki:stlport - Include support for dev-libs/STLport
+dev-libs/gdl:introspection - Use dev-libs/gobject-introspection for introspection
 dev-libs/geoip:perl-geoipupdate - Install pure perl version of geoipupdate, with Proxy Server support via via the "http_proxy" environment variable and easy to customize.
 dev-libs/glib:introspection - Use dev-libs/gobject-introspection for introspection
 dev-libs/jemalloc:stats - Enable statistics calculation/reporting
@@ -2017,6 +2018,7 @@ media-libs/libsdl:video - Control video support (disable at your own risk)
 media-libs/libvpx:postproc - Enable additional post processing filters
 media-libs/libvpx:sse3 - Enable optimization for SSE3 capable chips
 media-libs/libvpx:ssse3 - faster floating point optimization for SSSE3 capable chips (Intel Core 2 and later chips)
+media-libs/libwpg:tools - Build miscellaneous tools
 media-libs/mediastreamer:amr - Use of AMR Narrow Band codec plugin
 media-libs/mediastreamer:ilbc - Use of iLBC (RFC3951) codec plugin
 media-libs/mediastreamer:video - Enable video support
@@ -3050,6 +3052,8 @@ net-libs/daq:afpacket - Build the AFPacket data acquisition module
 net-libs/daq:dump - Build the Dump data acquisition module
 net-libs/daq:pcap - Build the PCAP data acquisition module
 net-libs/farsight2:upnp - Enable UPnP IGD support
+net-libs/glib-networking:gnome - Extract HTTP/HTTPS/SOCKS proxy configuration stored using GSettings
+net-libs/glib-networking:libproxy - Use net-libs/libproxy for getting the HTTP/HTTPS/SOCKS proxy configuration
 net-libs/gnutls:nettle - Use dev-libs/nettle as crypto backend
 net-libs/gssdp:introspection - Use dev-libs/gobject-introspection for introspection
 net-libs/gtk-vnc:introspection - Use dev-libs/gobject-introspection for introspection
@@ -3077,6 +3081,10 @@ net-libs/libproxy:kde - Enable support for reading proxy settings from KDE
 net-libs/libproxy:vala - Enable support for the Vala programming language
 net-libs/libproxy:webkit - Enable support for reading proxy settings from net-libs/webkit-gtk
 net-libs/libproxy:xulrunner - Enable support for reading proxy settings from net-libs/xulrunner
+net-libs/libsocialweb:connman - Use net-misc/connman for getting network connection status information
+net-libs/libsocialweb:gnome - Extract proxy information using net-libs/libsoup-gnome
+net-libs/libsocialweb:introspection - Use dev-libs/gobject-introspection for introspection
+net-libs/libsocialweb:vala - Build bindings for dev-lang/vala
 net-libs/libsoup:introspection - Use dev-libs/gobject-introspection for introspection
 net-libs/libsoup-gnome:introspection - Use dev-libs/gobject-introspection for introspection
 net-libs/libsrtp:aesicm - Use AES ICM cryptographic algorithm
@@ -3145,6 +3153,8 @@ net-libs/ptlib:tts - Enable Text-To-Speech server support
 net-libs/ptlib:video - Enable video support
 net-libs/ptlib:vxml - Enable VoiceXML support
 net-libs/ptlib:wav - Enable WAVFILE support
+net-libs/rest:gnome - Extract proxy information using net-libs/libsoup-gnome
+net-libs/rest:introspection - Use dev-libs/gobject-introspection for introspection
 net-libs/telepathy-glib:introspection - Use dev-libs/gobject-introspection for introspection
 net-libs/telepathy-glib:vala - Enable bindings for dev-lang/vala
 net-libs/telepathy-qt4:farsight - Enable support for farsight connection manager

@@ -1,20 +1,20 @@
-dev-libs/glib:2 dev-util/pkgconfig doc? ( app-doc/doxygen ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b
-dev-libs/glib:2
-0
+dev-libs/glib:2 dev-util/pkgconfig doc? ( app-doc/doxygen ) test? ( dev-util/cppunit ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b
+dev-libs/glib:2 !<app-text/libwpd-0.8.14-r1
+0.9
 mirror://sourceforge/libwpd/libwpd-0.9.1.tar.bz2
 
 http://libwpd.sf.net
 LGPL-2.1
 WordPerfect Document import/export library
 ~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x64-solaris ~x86-solaris
-autotools eutils libtool multilib portability toolchain-funcs
-doc
+alternatives autotools eutils libtool multilib portability toolchain-funcs
+doc test tools
 
 
 
 4
 
-configure install prepare
+configure install postinst postrm prepare
 
 
 
