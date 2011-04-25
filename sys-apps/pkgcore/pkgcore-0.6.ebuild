@@ -1,7 +1,8 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/pkgcore/pkgcore-0.6.ebuild,v 1.1 2011/04/25 03:10:26 ferringb Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/pkgcore/pkgcore-0.6.ebuild,v 1.4 2011/04/25 15:24:12 arfrever Exp $
 
+EAPI="3"
 DISTUTILS_SRC_TEST="setup.py"
 
 inherit distutils
@@ -16,8 +17,8 @@ KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE="doc"
 
 RDEPEND=">=dev-lang/python-2.4
-	>=dev-python/snakeoil-0.3.6.3
-	>=app-shells/bash-3.0
+	>=dev-python/snakeoil-0.4
+	dev-python/pyparsing
 	|| ( >=dev-lang/python-2.5 dev-python/pycrypto )"
 DEPEND="${RDEPEND}
 	doc? ( >=dev-python/docutils-0.4 )"
