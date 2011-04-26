@@ -2260,7 +2260,6 @@ media-sound/pulseaudio:doc - Build the doxygen-described API documentation.
 media-sound/pulseaudio:equalizer - Enable the equalizer module (requires sci-libs/fftw).
 media-sound/pulseaudio:glib - Add support to dev-libs/glib-based mainloop for the libpulse client library, to allow using libpulse on glib-based programs.
 media-sound/pulseaudio:gnome - Use GConf to store user preferences on streams and so on. Don't enable this flag if you want to use a system wide instance. If unsure, enable this flag.
-media-sound/pulseaudio:hal - Enable obsolete sys-apps/hal support
 media-sound/pulseaudio:orc - Use dev-lang/orc for runtime optimisations.
 media-sound/pulseaudio:oss - Enable OSS sink/source (output/input). Deprecated, upstream does not support this on systems where other sink/source systems are available (i.e.: Linux). The padsp wrapper is now always build if the system supports OSS at all.
 media-sound/pulseaudio:realtime - Makes PulseAudio use RealtimeKit (sys-auth/rtkit) to get real-time priority while running.
@@ -3029,7 +3028,6 @@ net-irc/unrealircd:usermod - Enable /set* and /chg* commands
 net-irc/weechat:alias - Enable plugin for alias control.
 net-irc/weechat:charset - Enable encoding conversions.
 net-irc/weechat:fifo - Enable FIFO support (sh pipes).
-net-irc/weechat:gtk - Enable (experimental) gtk interface.
 net-irc/weechat:irc - Enable IRC protocol support.
 net-irc/weechat:logger - Enable support for logging.
 net-irc/weechat:relay - Enable relay plugin (experimental)
@@ -3356,7 +3354,6 @@ net-misc/quagga:readline - Enable support for sys-libs/readline to provide the Q
 net-misc/quagga:realms - Apply unofficial patch to enable realms support. Patch and information to be found at http://vcalinus.gemenii.ro/quaggarealms.html and http://linux.mantech.ro/quagga+realm_en.php
 net-misc/quagga:tcp-zebra - Enable TCP zserv interface on port 2600 for Zebra/protocol-daemon communication. Unix domain sockets are chosen otherwise.
 net-misc/rdesktop:pcsc-lite - Enable smartcard support with sys-apps/pcsc-lite driver
-net-misc/rdesktop:rdpusb - Enable USB redirection support for app-emulation/virtualbox-bin
 net-misc/remmina:ssh - Enable support for SSH/SFTP using net-libs/libssh
 net-misc/remmina:unique - Enable single instance support using dev-libs/libunique
 net-misc/remmina:vte - Enable Terminal support using x11-libs/vte
@@ -3454,6 +3451,7 @@ net-p2p/deluge:webinterface - Install dependencies needed for the web interface
 net-p2p/eiskaltdcpp:cli - Enable eiskaltdcpp-daemon with sample cli based on readline
 net-p2p/eiskaltdcpp:daemon - Enable eiskaltdcpp-daemon without any UI
 net-p2p/eiskaltdcpp:emoticons - Install emoticon packs
+net-p2p/eiskaltdcpp:minimal - Don't install headers
 net-p2p/eiskaltdcpp:sounds - Install sound files
 net-p2p/eiskaltdcpp:upnp - Forward ports using UPnP
 net-p2p/fms:frost - Add support for frost boards
