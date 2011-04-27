@@ -6,7 +6,7 @@ mirror://sourceforge/musicpd/mpd-0.16.2.tar.bz2
 http://www.musicpd.org
 GPL-2
 The Music Player Daemon (mpd)
-~amd64 ~arm ~hppa ~ppc ~ppc64 ~sh ~sparc ~x86 ~x86-fbsd
+amd64 ~arm ~hppa ~ppc ~ppc64 ~sh ~sparc ~x86 ~x86-fbsd
 eutils flag-o-matic linux-info multilib portability toolchain-funcs versionator
 aac +alsa ao audiofile bzip2 cdio cue +curl debug +fifo +ffmpeg flac fluidsynth profile +id3 inotify ipv6 jack lame lastfmradio libmms libsamplerate +mad mikmod modplug mpg123 musepack +network ogg openal oss pipe pulseaudio sid sndfile sqlite tcpd twolame unicode vorbis wavpack wildmidi zeroconf zip
 || ( alsa ao fifo jack network openal oss pipe pulseaudio ) || ( aac audiofile ffmpeg flac fluidsynth mad mikmod modplug mpg123 musepack ogg flac sid vorbis wavpack wildmidi ) network? ( || ( audiofile flac lame twolame vorbis ) ) lastfmradio? ( curl )

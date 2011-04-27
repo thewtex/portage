@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/xxdiff/xxdiff-4.0_beta1_p20110426.ebuild,v 1.1 2011/04/26 14:18:32 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/xxdiff/xxdiff-4.0_beta1_p20110426.ebuild,v 1.4 2011/04/27 14:19:28 ssuominen Exp $
 
 EAPI=3
 
@@ -12,7 +12,7 @@ inherit distutils qt4-r2
 
 DESCRIPTION="A graphical file and directories comparator and merge tool"
 HOMEPAGE="http://furius.ca/xxdiff/"
-SRC_URI="http://dev.gentoo.org/~ssuominen/${P}.tar.bz2"
+SRC_URI="mirror://gentoo/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -24,6 +24,7 @@ DEPEND="${RDEPEND}"
 
 src_prepare() {
 	pushd src >/dev/null
+	sed -i -e '/qPixmapFromMimeSource/d' *.ui || die #365019
 	qt4-r2_src_prepare
 	popd
 
@@ -50,9 +51,9 @@ src_install() {
 
 	distutils_src_install
 
-	dodoc CHANGES README* TODO doc/*.txt
+	dodoc CHANGES README* TODO doc/*.txt src/doc.txt
 
-	dohtml doc/*.{png,html}
+	dohtml doc/*.{png,html} src/doc.html
 
 	# example tools, use these to build your own ones
 	insinto /usr/share/doc/${PF}
