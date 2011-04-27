@@ -1,0 +1,22 @@
+test? ( ruby_targets_ruby18? ( ~dev-ruby/activesupport-3.0.7[ruby_targets_ruby18] ~dev-ruby/activemodel-3.0.7[ruby_targets_ruby18] >=dev-ruby/arel-2.0.2[ruby_targets_ruby18] >=dev-ruby/tzinfo-0.3.23[ruby_targets_ruby18] sqlite3? ( dev-ruby/sqlite3-ruby[ruby_targets_ruby18] ) mysql? ( dev-ruby/mysql2[ruby_targets_ruby18] ) postgres? ( dev-ruby/pg[ruby_targets_ruby18] ) ) ruby_targets_ree18? ( ~dev-ruby/activesupport-3.0.7[ruby_targets_ree18] ~dev-ruby/activemodel-3.0.7[ruby_targets_ree18] >=dev-ruby/arel-2.0.2[ruby_targets_ree18] >=dev-ruby/tzinfo-0.3.23[ruby_targets_ree18] sqlite3? ( dev-ruby/sqlite3-ruby[ruby_targets_ree18] ) mysql? ( dev-ruby/mysql2[ruby_targets_ree18] ) postgres? ( dev-ruby/pg[ruby_targets_ree18] ) ) ) ruby_targets_ruby18? ( test? ( ~dev-ruby/actionpack-3.0.7[ruby_targets_ruby18] dev-ruby/sqlite3-ruby[ruby_targets_ruby18] >=dev-ruby/mocha-0.9.5[ruby_targets_ruby18] virtual/ruby-test-unit[ruby_targets_ruby18] ) ) ruby_targets_ree18? ( test? ( ~dev-ruby/actionpack-3.0.7[ruby_targets_ree18] dev-ruby/sqlite3-ruby[ruby_targets_ree18] >=dev-ruby/mocha-0.9.5[ruby_targets_ree18] virtual/ruby-test-unit[ruby_targets_ree18] ) ) ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ree18? ( dev-lang/ruby-enterprise:1.8 ) ruby_targets_ruby18? ( test? ( dev-ruby/rake[ruby_targets_ruby18] ) ) ruby_targets_ree18? ( test? ( dev-ruby/rake[ruby_targets_ree18] ) ) ruby_targets_ruby18? ( dev-ruby/rubygems[ruby_targets_ruby18] ) ruby_targets_ree18? ( dev-ruby/rubygems[ruby_targets_ree18] ) test? ( ruby_targets_ruby18? ( dev-ruby/rubygems[ruby_targets_ruby18] ) ruby_targets_ree18? ( dev-ruby/rubygems[ruby_targets_ree18] ) )
+ruby_targets_ruby18? ( ~dev-ruby/activesupport-3.0.7[ruby_targets_ruby18] ~dev-ruby/activemodel-3.0.7[ruby_targets_ruby18] >=dev-ruby/arel-2.0.2[ruby_targets_ruby18] >=dev-ruby/tzinfo-0.3.23[ruby_targets_ruby18] sqlite3? ( dev-ruby/sqlite3-ruby[ruby_targets_ruby18] ) mysql? ( dev-ruby/mysql2[ruby_targets_ruby18] ) postgres? ( dev-ruby/pg[ruby_targets_ruby18] ) ) ruby_targets_ree18? ( ~dev-ruby/activesupport-3.0.7[ruby_targets_ree18] ~dev-ruby/activemodel-3.0.7[ruby_targets_ree18] >=dev-ruby/arel-2.0.2[ruby_targets_ree18] >=dev-ruby/tzinfo-0.3.23[ruby_targets_ree18] sqlite3? ( dev-ruby/sqlite3-ruby[ruby_targets_ree18] ) mysql? ( dev-ruby/mysql2[ruby_targets_ree18] ) postgres? ( dev-ruby/pg[ruby_targets_ree18] ) ) ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ree18? ( dev-lang/ruby-enterprise:1.8 ) ruby_targets_ruby18? ( dev-ruby/rubygems[ruby_targets_ruby18] ) ruby_targets_ree18? ( dev-ruby/rubygems[ruby_targets_ree18] )
+3.0
+http://github.com/rails/rails/tarball/v3.0.7 -> rails-3.0.7.tgz
+
+http://rubyforge.org/projects/activerecord/
+MIT
+Implements the ActiveRecord pattern (Fowler, PoEAA) for ORM
+~amd64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x64-solaris ~x86-solaris
+eutils multilib portability ruby-fakegem ruby-ng toolchain-funcs
+mysql postgres sqlite3 test ruby_targets_ruby18 ruby_targets_ree18 test
+
+
+
+2
+
+compile configure install prepare setup test unpack
+
+
+
+
+
