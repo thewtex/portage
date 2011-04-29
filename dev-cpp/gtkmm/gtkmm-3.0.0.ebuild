@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-cpp/gtkmm/gtkmm-3.0.0.ebuild,v 1.2 2011/04/09 07:02:32 nirbheek Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-cpp/gtkmm/gtkmm-3.0.0.ebuild,v 1.4 2011/04/29 00:57:19 jer Exp $
 
 EAPI="3"
 GCONF_DEBUG="no"
