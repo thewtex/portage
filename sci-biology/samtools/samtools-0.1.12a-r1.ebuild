@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/samtools/samtools-0.1.12a-r1.ebuild,v 1.1 2011/03/14 09:37:27 xarthisius Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/samtools/samtools-0.1.12a-r1.ebuild,v 1.2 2011/04/30 11:12:49 jlec Exp $
 
 EAPI="2"
 
@@ -33,7 +33,7 @@ src_install() {
 	dobin $(find misc -type f -executable) || die
 	dolib.so libbam.so.1 || die
 	insinto /usr/include/bam
-	doins bam.h bgzf.h faidx.h kaln.h khash.h kprobaln.h kseq.h ksort.h sam.h|| die
+	doins bam.h bgzf.h faidx.h kaln.h khash.h kprobaln.h kseq.h ksort.h sam.h || die
 	insinto /usr/share/${PN}
 	doins -r examples || die
 	doman ${PN}.1 || die

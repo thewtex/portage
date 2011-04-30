@@ -1,0 +1,22 @@
+ruby_targets_jruby? ( doc? ( dev-ruby/hoe[ruby_targets_jruby] ) ) ruby_targets_jruby? ( test? ( dev-ruby/hoe[ruby_targets_jruby] dev-ruby/mocha[ruby_targets_jruby] ) ) test? ( ruby_targets_jruby? ( >=dev-ruby/bouncy-castle-java-1.5.0146.1[ruby_targets_jruby] ) ) ruby_targets_jruby? ( dev-java/jruby ) ruby_targets_jruby? ( doc? ( dev-ruby/rake[ruby_targets_jruby] ) ) ruby_targets_jruby? ( test? ( dev-ruby/rake[ruby_targets_jruby] ) ) ruby_targets_jruby? ( dev-ruby/rubygems[ruby_targets_jruby] ) test? ( ruby_targets_jruby? ( dev-ruby/rubygems[ruby_targets_jruby] ) )
+ruby_targets_jruby? ( >=dev-ruby/bouncy-castle-java-1.5.0146.1[ruby_targets_jruby] ) ruby_targets_jruby? ( dev-java/jruby ) ruby_targets_jruby? ( dev-ruby/rubygems[ruby_targets_jruby] )
+0
+mirror://rubygems/jruby-openssl-0.7.4.gem
+
+http://rubyforge.org/projects/jruby-extras
+MIT || ( CPL-1.0 GPL-2 LGPL-2.1 )
+A Ruby SSL library that works with JRuby
+~amd64 ~ppc
+eutils multilib portability ruby-fakegem ruby-ng toolchain-funcs
+test ruby_targets_jruby doc doc test
+
+
+
+2
+
+compile configure install prepare setup test unpack
+
+
+
+
+
