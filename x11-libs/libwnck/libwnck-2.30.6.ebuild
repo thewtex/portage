@@ -1,8 +1,9 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/libwnck/libwnck-2.30.6.ebuild,v 1.10 2011/04/10 08:39:46 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/libwnck/libwnck-2.30.6.ebuild,v 1.11 2011/05/01 15:55:03 nirbheek Exp $
 
 EAPI="3"
+GNOME2_LA_PUNT="yes"
 GCONF_DEBUG="no"
 
 inherit gnome2
@@ -49,10 +50,4 @@ src_prepare() {
 		append-flags "-I${EPREFIX}/usr/include/bind"
 		append-ldflags "-L${EPREFIX}/usr/lib/bind"
 	fi
-}
-
-src_install() {
-	gnome2_src_install
-
-	find "${ED}" -name '*.la' -exec rm -f {} +
 }

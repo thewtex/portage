@@ -12,9 +12,9 @@ base cmake-utils eutils fdo-mime flag-o-matic gnome2-utils kde4-base kde4-functi
 
 || ( ( !kdeprefix? ( >=kde-base/kfmclient-4.6.2[aqua=,-kdeprefix] ) kdeprefix? ( >=kde-base/kfmclient-4.6.2:4.6[aqua=,kdeprefix] ) ) x11-misc/xdg-utils ) handbook? ( !kdeprefix? ( >=kde-base/khelpcenter-4.6.2[aqua=,-kdeprefix] ) kdeprefix? ( >=kde-base/khelpcenter-4.6.2:4.6[aqua=,kdeprefix] ) ) policykit? ( >=kde-misc/polkit-kde-kcmodules-0.98_pre20101127 >=sys-auth/polkit-kde-agent-0.99 ) semantic-desktop? ( !kdeprefix? ( >=kde-base/nepomuk-4.6.2[aqua=,-kdeprefix] ) kdeprefix? ( >=kde-base/nepomuk-4.6.2:4.6[aqua=,kdeprefix] ) )
 
-3
+4
 
-compile configure install postinst postrm preinst prepare prerm setup test unpack
+compile configure install postinst postrm preinst prepare prerm pretend setup test unpack
 
 
 
