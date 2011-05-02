@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/libnotify/libnotify-0.7.2.ebuild,v 1.7 2011/04/29 17:40:18 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/libnotify/libnotify-0.7.2.ebuild,v 1.9 2011/05/01 17:58:57 ssuominen Exp $
 
 EAPI=3
 inherit autotools eutils gnome.org
@@ -23,13 +23,7 @@ DEPEND="${RDEPEND}
 	dev-util/gtk-doc-am
 	doc? ( >=dev-util/gtk-doc-1.14 )
 	test? ( >=x11-libs/gtk+-2.90:3 )"
-PDEPEND="|| (
-	x11-misc/notification-daemon
-	xfce-extra/xfce4-notifyd
-	x11-misc/notify-osd
-	>=x11-wm/awesome-3.4.4
-	kde-base/knotify
-)"
+PDEPEND="virtual/notification-daemon"
 
 src_unpack() {
 	# If gobject-introspection is installed, we don't need the extra .m4
