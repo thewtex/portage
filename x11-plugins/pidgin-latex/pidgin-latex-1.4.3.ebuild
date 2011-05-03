@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/pidgin-latex/pidgin-latex-1.4.3.ebuild,v 1.1 2010/12/05 11:14:49 pva Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/pidgin-latex/pidgin-latex-1.4.3.ebuild,v 1.2 2011/05/03 07:25:13 jlec Exp $
 
 EAPI="2"
 inherit multilib toolchain-funcs
@@ -8,7 +8,7 @@ inherit multilib toolchain-funcs
 MY_P=${PN}_${PV}
 
 DESCRIPTION="Pidgin plugin that renders latex formulae"
-HOMEPAGE="http://sourceforge.net/projects/pidgin-latex"
+HOMEPAGE="http://sourceforge.net/projects/pidgin-latex/"
 SRC_URI="mirror://sourceforge/pidgin-latex/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
@@ -16,7 +16,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE=""
 
-COMMON_DEPEND="net-im/pidgin[gtk]
+COMMON_DEPEND="
+	net-im/pidgin[gtk]
 	x11-libs/gtk+:2"
 DEPEND="${COMMON_DEPEND}
 	sys-devel/libtool
@@ -34,7 +35,7 @@ src_prepare() {
 }
 
 src_install() {
-	make PREFIX="${D}/usr" install || die "make install failed"
+	emake PREFIX="${D}/usr" install || die "make install failed"
 	dodoc README CHANGELOG TODO || die
 }
 
