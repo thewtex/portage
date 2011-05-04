@@ -1,8 +1,8 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tcltk/tktreectrl/tktreectrl-2.2.9.ebuild,v 1.5 2011/01/23 12:52:06 tomka Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-tcltk/tktreectrl/tktreectrl-2.2.9.ebuild,v 1.6 2011/05/03 20:06:12 jlec Exp $
 
-EAPI="3"
+EAPI=3
 
 inherit eutils
 
@@ -12,8 +12,8 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="tktreectrl"
 SLOT="0"
-IUSE="X debug shellicon threads"
 KEYWORDS="amd64 ~ppc x86 ~amd64-linux ~x86-linux"
+IUSE="X debug shellicon threads"
 
 RDEPEND=">=dev-lang/tcl-8.4"
 DEPEND="${REDEPEND}"
