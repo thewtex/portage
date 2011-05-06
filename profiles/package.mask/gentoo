@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12752 2011/05/05 20:12:30 blueness Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12754 2011/05/06 14:36:19 hwoarang Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,16 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (06 May 2011)
+#  on behalf of QA team
+#
+# Fails to build with opensc-0.12.0 as it doesn't use
+# PKCS#11 (bug #363019). Code looks stale, and the project
+# implemented separate packages for other functions.
+#
+# Removal on 2011-07-05
+app-crypt/scsign
 
 # Luca Barbato <lu_zero@gentoo.org> (4 May 2011)
 # depends on python-3.2
@@ -293,11 +303,6 @@ sys-apps/ren
 # Markos Chandras <hwoarang@gentoo.org> (17 Mar 2011)
 # Masking openocd prelease snapshot
 =dev-embedded/openocd-0.5.0_pre*
-
-# Markos Chandras <hwoarang@gentoo.org> (13 Mar 2011)
-# Masked for testing
->=dev-util/boost-build-1.45
->=dev-libs/boost-1.45
 
 # Sergei Trofimovich <slyfox@gentoo.org> (13 Mar 2011)
 # Removal of pre ghc-6.10 haskell package versions.
