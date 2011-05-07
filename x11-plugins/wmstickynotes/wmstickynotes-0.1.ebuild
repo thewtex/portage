@@ -1,10 +1,10 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmstickynotes/wmstickynotes-0.1.ebuild,v 1.2 2011/03/28 17:23:51 angelos Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmstickynotes/wmstickynotes-0.1.ebuild,v 1.3 2011/05/07 13:05:13 jlec Exp $
 
-EAPI=3
+EAPI=4
 
-DESCRIPTION="A dockapp for keeping small notes around on the desktop."
+DESCRIPTION="A dockapp for keeping small notes around on the desktop"
 HOMEPAGE="http://wmstickynotes.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
@@ -15,8 +15,3 @@ IUSE=""
 
 DEPEND="x11-libs/gtk+:2"
 RDEPEND="${DEPEND}"
-
-src_install() {
-	emake DESTDIR="${D}" install || die "Install failed"
-	dodoc README
-}
