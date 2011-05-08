@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-mta/exim/exim-4.75-r1.ebuild,v 1.1 2011/05/07 19:12:59 grobian Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-mta/exim/exim-4.75-r1.ebuild,v 1.3 2011/05/08 12:02:50 fauli Exp $
 
 EAPI="3"
 
@@ -19,7 +19,7 @@ HOMEPAGE="http://www.exim.org/"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc x86"
 
 DEPEND=">=sys-apps/sed-4.0.5
 	>=sys-libs/db-3.2
@@ -72,6 +72,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/exim-4.69-r1.27021.patch
 	epatch "${FILESDIR}"/exim-4.74-radius-db-ENV-clash.patch # 287426
 	epatch "${FILESDIR}"/exim-4.75-CVE-2011-1764.patch
+	epatch "${FILESDIR}"/exim-4.75-makefile-freebsd.patch
 
 	use maildir && epatch "${FILESDIR}"/exim-4.20-maildir.patch
 	use dsn && epatch "${DISTDIR}"/exim_${DSN_EXIM_V}_dsn_${DSN_V}.patch

@@ -1,6 +1,17 @@
 # ChangeLog for mail-mta/exim
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/mail-mta/exim/ChangeLog,v 1.188 2011/05/07 19:12:59 grobian Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-mta/exim/ChangeLog,v 1.191 2011/05/08 12:02:50 fauli Exp $
+
+  08 May 2011; Christian Faulhammer <fauli@gentoo.org> exim-4.75-r1.ebuild:
+  stable x86, security bug 366369
+
+  08 May 2011; Fabian Groffen <grobian@gentoo.org> -exim-4.71.ebuild,
+  -exim-4.72.ebuild, -exim-4.72-r1.ebuild:
+  Drop vulnerable versions (CVE-2011-0017)
+
+  08 May 2011; Fabian Groffen <grobian@gentoo.org> exim-4.75-r1.ebuild,
+  +files/exim-4.75-makefile-freebsd.patch:
+  Fix compilation of Exim on FreeBSD, bug #235785
 
 *exim-4.75-r1 (07 May 2011)
 
