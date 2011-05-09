@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12754 2011/05/06 14:36:19 hwoarang Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12759 2011/05/09 16:36:36 phajdan.jr Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -121,10 +121,6 @@ app-text/gnochm
 # Masked for removal in 30 days, bug #328559
 gnustep-libs/camaelon
 x11-themes/camaelon-themes
-
-# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (20 Apr 2011)
-# Mask prerelease versions
-=x11-libs/pixman-0.21*
 
 # Peter Volkov <pva@gentoo.org> (20 Apr 2011)
 # Mask beta version
@@ -279,11 +275,6 @@ sys-apps/ren
 # Currently v8-3.2 versions are used for chromium-12.x versions.
 >=dev-lang/v8-3.2
 
-# Pawel Hajdan jr <phajdan.jr@gentoo.org> (25 Mar 2011)
-# Dev channel releases are only for people who are developers or want more
-# experimental features and accept a more unstable release.
->=www-client/chromium-12
-
 # Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (25 Mar 2011)
 # Some packages fail to build or work with GnuTLS built with Nettle crypto backend.
 =net-libs/gnutls-2.12*
@@ -373,10 +364,6 @@ dev-util/perf
 #    often we have source compatibility, but not binary compatibility
 www-client/chromium-bin
 
-# Markos Chandras <hwoarang@gentoo.org> (03 Mar 2011)
-# Masking zen-kernel snapshot release
-=sys-kernel/zen-sources-2.6.37_p20110303
-
 # Ulrich Mueller <ulm@gentoo.org> (01 Mar 2011)
 # Christian Faulhammer <fauli@gentoo.org>
 # Emacs live ebuilds. Use at your own risk.
@@ -412,7 +399,6 @@ www-client/chromium-bin
 >=app-pda/libopensync-plugin-irmc-0.30
 >=app-pda/libopensync-plugin-palm-0.30
 >=app-pda/libopensync-plugin-python-0.30
->=app-pda/libopensync-plugin-sunbird-0.30
 app-pda/libopensync-plugin-syncml
 app-pda/libopensync-plugin-vformat
 app-pda/osynctool
@@ -469,12 +455,6 @@ www-plugins/moonlight
 # testing mask for upcoming exult release
 >=games-engines/exult-1.3
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (12 Jan 2011)
-# Starting with KOffice version 2.2.0, the functionality of app-office/kchart
-# is provided by the app-office/koffice-libs ebuild. If you still have
-# >=app-office/kchart-2.2.0 installed, please just unmerge it (it is only a dummy).
->=app-office/kchart-2.2.0
-
 # Torsten Veller <tove@gentoo.org> (06 Jan 2011)
 # Next step to remove old perl and libperl versions.
 # Versions prior 5.12 are masked and will be removed when 5.14 is available.
@@ -515,18 +495,6 @@ www-apps/horde-groupware
 # Test suite gives one error, previous version did not.
 # Upcoming bump seems too risky for ~arch right now.
 ~app-text/xmlstarlet-1.0.3
-
-# Mike Pagano <mpagano@gentoo.org> (20 Nov 2010)
-# Mask this version of gentoo-sources while we test
-# the effectiveness of the TTY-based group scheduling
-# patch.
-=sys-kernel/gentoo-sources-2.6.36-r2
-
-# Alex Alexander <wired@gentoo.org> (14 Nov 2010)
-# the qt-gui/qgtkstyle split keeps backfiring at me
-# masking the stable bits for now, we'll revisit this later
-=x11-libs/qt-gui-4.6.3-r1
-~x11-themes/qgtkstyle-4.6.3
 
 # Alexis Ballier <aballier@gentoo.org> (13 Nov 2010)
 # Last rites: app-text/ptex
@@ -677,15 +645,6 @@ app-crypt/hmaccalc
 # Fails to build/work, bug #319085
 net-analyzer/ipac-ng
 
-# Stanislav Ochotnicky <sochotnicky@gentoo.org> (05 May 2010)
-# Masked for testing.
-=app-arch/rpm-4.8.0
-
-# Tony Vroon <chainsaw@gentoo.org> (02 May 2010)
-# Fails to build, 1.6.1/1.6.2 patched to provide equivalent functionality.
-# Removal at end of May.
-net-misc/asterisk-app_nv_faxdetect
-
 # Tomáš Chvátal <scarabeus@gentoo.org> (27 Apr 2010)
 # Replaced by >sci-libs/netcdf-4.0
 sci-libs/libnc-dap
@@ -756,8 +715,6 @@ net-fs/samba-client
 # Very old packages that people should have upgraded away from
 # long ago.  Courtesy mask ... time to upgrade.
 # Added <sys-fs/e2fsprogs as well (halcy0n)
-sys-libs/com_err
-sys-libs/ss
 <sys-libs/e2fsprogs-libs-1.41.8
 <sys-fs/e2fsprogs-1.41.9
 
@@ -827,27 +784,17 @@ sys-auth/pam_keystore
 # conflicts (#259700).
 dev-lang/nemerle
 
-# Diego E. Pettenò <flameeyes@gentoo.org> (8 Aug 2009)
+# Diego E. Pettenò <flameeyes@gentoo.org> (08 Aug 2009)
 #  on behalf of QA Team
 #
 # Mass-masking of live ebuilds; we cannot guarantee working state of
 # live ebuilds, nor the availability of the server hosting them. As
 # per QA team policy, all these need to be kept masked by default, if
 # available in the tree.
-dev-lisp/cl-arnesi-darcs
-dev-lisp/cl-fiveam-darcs
-dev-lisp/cl-parenscript-darcs
-dev-lisp/cl-rfc2109-darcs
-dev-lisp/cl-rfc2388-darcs
-dev-lisp/cl-yaclml-darcs
 media-tv/v4l-dvb-hg
-dev-embedded/sdcc-svn
 net-irc/irssi-svn
-~app-doc/repodoc-9999
 ~app-i18n/skk-jisyo-9999
-~net-wireless/wpa_supplicant-9999
 net-misc/netcomics-cvs
-dev-lisp/cl-ansi-tests-cvs
 app-portage/layman-dbtools
 
 # Federico Ferri <mescalinum@gentoo.org> (08 Aug 2009)

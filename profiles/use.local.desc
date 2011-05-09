@@ -1037,10 +1037,11 @@ dev-libs/boost:eselect - Run "eselect boost update" even if version is already s
 dev-libs/boost:tools - Build and install the boost tools (bcp, quickbook, inspect, wave)
 dev-libs/cyberjack:fox - Enable installation of x11-libs/fox based fxcyberjack program
 dev-libs/cyberjack:pcsc-lite - Enable installation of sys-apps/pcsc-lite driver
-dev-libs/cyrus-sasl:authdaemond - Enable Courier-IMAP authdaemond's unix socket support (net-mail/courier-imap, mail-mta/courier)
-dev-libs/cyrus-sasl:ntlm_unsupported_patch - Add NTLM net-fs/samba NOT supported patch
-dev-libs/cyrus-sasl:sample - Build sample client and server
-dev-libs/cyrus-sasl:srp - Enable SRP
+dev-libs/cyrus-sasl:authdaemond - Adds Courier-IMAP authdaemond's unix socket support (net-mail/courier-imap, mail-mta/courier)
+dev-libs/cyrus-sasl:ntlm_unsupported_patch - Adds NTLM net-fs/samba NOT supported patch
+dev-libs/cyrus-sasl:openldap - Adds ldap support for saslauthd and enable ldapdb plugin
+dev-libs/cyrus-sasl:sample - Adds sample client and server
+dev-libs/cyrus-sasl:srp - Enable SRP authentication
 dev-libs/cyrus-sasl:urandom - Use /dev/urandom instead of /dev/random
 dev-libs/e_dbus:bluetooth - Enable interfacing with net-wireless/bluez DBus API.
 dev-libs/e_dbus:connman - Enable interfacing with net-misc/connman DBus API.
@@ -1854,6 +1855,7 @@ mail-mta/netqmail:gencertdaily - Generate SSL certificates daily instead of hour
 mail-mta/netqmail:highvolume - Prepare netqmail for high volume servers
 mail-mta/netqmail:noauthcram - If you do NOT want AUTHCRAM to be available
 mail-mta/postfix:dovecot-sasl - Enable net-mail/dovecot protocol version 1 (server only) SASL implementation
+mail-mta/postfix:ldap-bind - Adds support for binding to LDAP backend using dev-libs/cyrus-sasl
 mail-mta/postfix:vda - Adds support for virtual delivery agent quota enforcing
 mail-mta/qmail-ldap:cluster - Enable this if you want to have cluster support in qmail-ldap
 mail-mta/qmail-ldap:gencertdaily - Generate SSL certificates daily instead of hourly
@@ -2716,6 +2718,9 @@ net-analyzer/echoping:smtp - enable support for SMTP protocol.
 net-analyzer/echoping:tos - enable support for TOS (TYpe Of Service).
 net-analyzer/fprobe:messages - enable console messages
 net-analyzer/lilac:nmap - Installs nmap which can be used to automatically discover devices to monitor.
+net-analyzer/linkchecker:bookmarks - Mozilla Bookmark parsing
+net-analyzer/linkchecker:login - login form submission
+net-analyzer/linkchecker:syntax-check - HTML/CSS syntax checks
 net-analyzer/munin:irc - installs deps for monitoring IRC
 net-analyzer/munin:memcached - installs deps for monitoring memcached
 net-analyzer/nagios-core:lighttpd - install www-servers/lighttpd config
@@ -4152,7 +4157,9 @@ sys-fs/lvm2:clvm - Allow users to build clustered lvm2
 sys-fs/lvm2:cman - Cman support for clustered lvm
 sys-fs/lvm2:lvm1 - Allow users to build lvm2 with lvm1 support
 sys-fs/lvm2:nolvmstatic - Allow users to build lvm2 dynamically
+sys-fs/ntfs3g:crypt - Add support for encrypted NTFS drives/partitions.
 sys-fs/ntfs3g:external-fuse - Use external FUSE library instead of internal one. Must be disabled for unprivileged mounting to work.
+sys-fs/ntfs3g:ntfsprogs - Include internal version of ntfsprogs. This will block sys-fs/ntfsprogs.
 sys-fs/ntfs3g:udev - Install udev rule to make udisks use ntfs-3g instead of the kernel NTFS driver.
 sys-fs/ntfsprogs:fuse - Build a FUSE module
 sys-fs/owfs:ftpd - Enable building the OWFS FTP server (owftpd)
