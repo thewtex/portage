@@ -1,5 +1,5 @@
-!net-fs/mount-cifs !<net-fs/samba-3.6 ads? ( sys-libs/talloc virtual/krb5 sys-apps/keyutils ) caps? ( sys-libs/libcap ) caps-ng? ( sys-libs/libcap-ng ) creds? ( sys-apps/keyutils ) kernel_linux? ( sys-apps/module-init-tools ) sys-apps/sed kernel_linux? ( virtual/linux-sources )
-!net-fs/mount-cifs !<net-fs/samba-3.6 ads? ( sys-libs/talloc virtual/krb5 sys-apps/keyutils ) caps? ( sys-libs/libcap ) caps-ng? ( sys-libs/libcap-ng ) creds? ( sys-apps/keyutils ) kernel_linux? ( sys-apps/module-init-tools )
+!net-fs/mount-cifs !<net-fs/samba-3.6 ads? ( sys-libs/talloc virtual/krb5 sys-apps/keyutils ) caps? ( sys-libs/libcap ) caps-ng? ( sys-libs/libcap-ng ) creds? ( sys-apps/keyutils )
+!net-fs/mount-cifs !<net-fs/samba-3.6 ads? ( sys-libs/talloc virtual/krb5 sys-apps/keyutils ) caps? ( sys-libs/libcap ) caps-ng? ( sys-libs/libcap-ng ) creds? ( sys-apps/keyutils )
 0
 ftp://ftp.samba.org/pub/linux-cifs/cifs-utils/cifs-utils-4.8.1.tar.bz2
 
@@ -7,14 +7,14 @@ http://www.samba.org/linux-cifs/cifs-utils/
 GPL-3
 Tools for Managing Linux CIFS Client Filesystems
 ~alpha ~amd64 ~hppa ~ppc ~x86
-confutils eutils linux-info linux-mod multilib portability toolchain-funcs versionator
-ads +caps caps-ng creds setuid kernel_linux
+confutils eutils linux-info multilib portability toolchain-funcs versionator
+ads +caps caps-ng creds setuid
 
 
 
 2
 
-compile configure install postinst postrm preinst setup
+configure install postinst setup
 
 
 
