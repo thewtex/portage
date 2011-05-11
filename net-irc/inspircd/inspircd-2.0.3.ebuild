@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/inspircd/inspircd-2.0.3.ebuild,v 1.4 2011/05/08 19:08:56 c1pher Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-irc/inspircd/inspircd-2.0.3.ebuild,v 1.6 2011/05/11 11:51:29 c1pher Exp $
 
 EAPI=2
 inherit eutils multilib flag-o-matic
@@ -11,7 +11,7 @@ SRC_URI="http://www.inspircd.org/downloads/InspIRCd-${PV}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="openssl gnutls ipv6 mysql postgres sqlite ldap"
 
 RDEPEND="
@@ -61,9 +61,10 @@ src_configure() {
 	# allow inspircd to be built by root
 	touch .force-root-ok || die
 
-	[ ${extras} ] && ( ./configure --disable-interactive \
-	                             --enable-extras=${extras} \
-	              || die "configure failed" )
+	if [ -n "${extras}" ]; then
+		./configure --disable-interactive \
+			--enable-extras=${extras} || die "configure failed"
+	fi
 
 	./configure \
 		$(use_enable openssl) \
