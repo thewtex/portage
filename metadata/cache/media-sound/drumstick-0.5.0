@@ -1,5 +1,5 @@
-media-libs/alsa-lib x11-libs/qt-gui:4 x11-libs/qt-svg:4 dbus? ( x11-libs/qt-dbus:4 ) dev-util/pkgconfig >=dev-util/cmake-2.8.1 userland_GNU? ( >=sys-apps/findutils-4.4.0 ) >=sys-apps/sed-4
-media-libs/alsa-lib x11-libs/qt-gui:4 x11-libs/qt-svg:4 dbus? ( x11-libs/qt-dbus:4 )
+media-libs/alsa-lib x11-libs/qt-gui:4 x11-libs/qt-svg:4 x11-misc/shared-mime-info dbus? ( x11-libs/qt-dbus:4 ) dev-util/pkgconfig doc? ( app-doc/doxygen app-text/docbook-xsl-stylesheets dev-libs/libxslt ) >=dev-util/cmake-2.8.1 userland_GNU? ( >=sys-apps/findutils-4.4.0 ) >=sys-apps/sed-4
+media-libs/alsa-lib x11-libs/qt-gui:4 x11-libs/qt-svg:4 x11-misc/shared-mime-info dbus? ( x11-libs/qt-dbus:4 )
 0
 mirror://sourceforge/drumstick/drumstick-0.5.0.tar.bz2
 
@@ -8,11 +8,11 @@ GPL-2
 Qt4/C++ wrapper for ALSA sequencer
 amd64 x86
 base cmake-utils eutils fdo-mime flag-o-matic gnome2-utils multilib portability toolchain-funcs
-dbus
+dbus doc
 
 
 
-2
+4
 
 compile configure install postinst postrm preinst prepare test unpack
 

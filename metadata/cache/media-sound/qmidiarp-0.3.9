@@ -1,4 +1,4 @@
-media-libs/alsa-lib media-sound/jack-audio-connection-kit x11-libs/qt-gui:4 dev-util/pkgconfig
+media-libs/alsa-lib media-sound/jack-audio-connection-kit x11-libs/qt-gui:4 dev-util/pkgconfig || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b
 media-libs/alsa-lib media-sound/jack-audio-connection-kit x11-libs/qt-gui:4
 0
 mirror://sourceforge/qmidiarp/qmidiarp-0.3.9.tar.bz2
@@ -7,14 +7,14 @@ http://qmidiarp.sourceforge.net/
 GPL-2
 An arpeggiator, sequencer and MIDI LFO for ALSA
 ~amd64 ~x86
-
+autotools eutils libtool multilib portability toolchain-funcs
 
 
 
 
 4
 
--
+prepare
 
 
 

@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12763 2011/05/11 13:53:27 eras Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12767 2011/05/13 10:35:27 phajdan.jr Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -31,10 +31,15 @@
 
 #--- END OF EXAMPLES ---
 
-# Eray Aslan <eras@gentoo.org> (10 May 2011)
-# Needs testing
-=net-mail/cyrus-imapd-2.4.8*
-=net-mail/cyrus-imap-admin-2.4.8*
+# Pawel Hajdan jr <phajdan.jr@gentoo.org> (13 May 2011)
+# Mask v8 versions used for www-client/chromium dev channel releases.
+# Currently v8-3.3 versions are used for chromium-13.x versions.
+>=dev-lang/v8-3.3
+
+# Pawel Hajdan jr <phajdan.jr@gentoo.org> (13 May 2011)
+# Dev channel releases are only for people who are developers or want more
+# experimental features and accept a more unstable release.
+>=www-client/chromium-13
 
 # Justin Bronder <jsbronder@gentoo.org> (09 May 2011)
 #
@@ -148,8 +153,8 @@ x11-themes/camaelon-themes
 =net-analyzer/argus-clients-3.0.5*
 
 # Luca Barbato <lu_zero@gentoo.org> (19 Apr 2011)
-# Masked for testing, deprecated api removed since this version
-=media-video/libav-0.7_beta1
+# Masked for testing, breaks reverse dependencies 
+=media-video/libav-0.7_beta2
 
 # Diego E. Pettenò <flameeyes@gentoo.org> (19 Apr 2011)
 # Starting from version 2.6.0-rc1 it now uses "proper" autotools, but
@@ -282,9 +287,8 @@ sys-apps/ren
 =sys-apps/pciutils-3.1.7-r1
 
 # Pawel Hajdan jr <phajdan.jr@gentoo.org> (26 Mar 2011)
-# Mask v8 versions used for www-client/chromium dev channel releases.
-# Currently v8-3.2 versions are used for chromium-12.x versions.
->=dev-lang/v8-3.2
+# Old dev channel releases, failing tests.
+=dev-lang/v8-3.2*
 
 # Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (25 Mar 2011)
 # Some packages fail to build or work with GnuTLS built with Nettle crypto backend.
