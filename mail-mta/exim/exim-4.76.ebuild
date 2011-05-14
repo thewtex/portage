@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-mta/exim/exim-4.76.ebuild,v 1.3 2011/05/12 18:15:50 grobian Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-mta/exim/exim-4.76.ebuild,v 1.5 2011/05/13 23:01:01 hwoarang Exp $
 
 EAPI="3"
 
@@ -19,7 +19,7 @@ HOMEPAGE="http://www.exim.org/"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 
 DEPEND=">=sys-apps/sed-4.0.5
 	>=sys-libs/db-3.2
@@ -76,9 +76,11 @@ src_prepare() {
 
 	use maildir && epatch "${FILESDIR}"/exim-4.20-maildir.patch
 
-	cp "${DISTDIR}"/exim_${DSN_EXIM_V}_dsn_${DSN_V}.patch . || die
-	epatch "${FILESDIR}"/${P}-dsn.patch
-	use dsn && epatch exim_${DSN_EXIM_V}_dsn_${DSN_V}.patch
+	if use dsn ; then
+		cp "${DISTDIR}"/exim_${DSN_EXIM_V}_dsn_${DSN_V}.patch . || die
+		epatch "${FILESDIR}"/${P}-dsn.patch
+		epatch exim_${DSN_EXIM_V}_dsn_${DSN_V}.patch
+	fi
 }
 
 src_configure() {

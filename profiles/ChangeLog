@@ -1,10 +1,25 @@
 # ChangeLog for profile directory
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.5364 2011/05/13 10:35:27 phajdan.jr Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.5368 2011/05/14 01:14:44 lack Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  14 May 2011; Jim Ramsay <lack@gentoo.org> arch/amd64/package.use.mask:
+  Masking USE=kde for www-plugins/adobe-flash under amd64 since the config
+  plugin is 32-bit only.
+
+  14 May 2011; Jim Ramsay <lack@gentoo.org> package.mask:
+  Removed old adobe-flash versions as foretold in package.mask
+
+  13 May 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  package.mask:
+  Unmask Python 3.2.
+
+  13 May 2011; Nathan Phillip Brink <binki@gentoo.org> package.mask:
+  Mask net-irc/oer and net-irc/oer-mysql for removal due to no more support
+  from upstream and QA issues.
 
   13 May 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> package.mask:
   Mask dev-lang/v8-3.3, update reason for masking v8-3.2 (failing tests).

@@ -25,10 +25,10 @@ RDEPEND="dev-libs/libxml2
 	sys-apps/util-linux"
 DEPEND="${RDEPEND}
 	test? (
-		app-text/xmldiff
 		>=dev-libs/check-0.9.4
 		net-libs/libgsasl
 		dev-python/twisted-words )
+	app-text/xmldiff
 	dev-libs/libxslt
 	dev-util/pkgconfig"
 # FIXME: needs xmppstream python module
