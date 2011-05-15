@@ -1,5 +1,5 @@
->=sys-libs/pam-0.99 dev-libs/openssl >=sys-libs/libhx-3.10.1 dev-libs/libxml2 >=sys-fs/cryptsetup-1.1.0 dev-util/pkgconfig app-arch/xz-utils
->=sys-libs/pam-0.99 dev-libs/openssl >=sys-libs/libhx-3.10.1 dev-libs/libxml2 >=sys-fs/cryptsetup-1.1.0 sys-process/lsof
+>=sys-libs/pam-0.99 >=sys-libs/libhx-3.10.1 dev-libs/libxml2 crypt? ( >=sys-fs/cryptsetup-1.1.0 ) ssl? ( dev-libs/openssl ) selinux? ( sys-libs/libselinux ) dev-util/pkgconfig app-arch/xz-utils
+>=sys-libs/pam-0.99 >=sys-libs/libhx-3.10.1 dev-libs/libxml2 crypt? ( >=sys-fs/cryptsetup-1.1.0 ) ssl? ( dev-libs/openssl ) selinux? ( sys-libs/libselinux ) sys-process/lsof
 0
 mirror://sourceforge/pam-mount/pam_mount-2.10.tar.xz
 
@@ -8,11 +8,11 @@ GPL-3
 A PAM module that can mount volumes for a user session
 ~amd64 ~ppc ~x86
 multilib toolchain-funcs
-crypt
+crypt ssl selinux
 
 
 
-3
+4
 
 configure install
 
