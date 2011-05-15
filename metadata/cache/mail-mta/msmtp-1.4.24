@@ -1,5 +1,5 @@
-idn? ( net-dns/libidn ) nls? ( virtual/libintl ) gnome-keyring? ( gnome-base/gnome-keyring dev-python/gnome-keyring-python ) gnutls? ( >=net-libs/gnutls-1.2.0 ) !gnutls? ( ssl? ( >=dev-libs/openssl-0.9.6 ) ) sasl? ( >=virtual/gsasl-0.2.4 ) nls? ( sys-devel/gettext ) dev-util/pkgconfig
-idn? ( net-dns/libidn ) nls? ( virtual/libintl ) gnome-keyring? ( gnome-base/gnome-keyring dev-python/gnome-keyring-python ) gnutls? ( >=net-libs/gnutls-1.2.0 ) !gnutls? ( ssl? ( >=dev-libs/openssl-0.9.6 ) ) sasl? ( >=virtual/gsasl-0.2.4 ) !net-mail/mailwrapper mta? ( !mail-mta/courier !mail-mta/esmtp !mail-mta/exim !mail-mta/mini-qmail !mail-mta/nbsmtp !mail-mta/netqmail !mail-mta/nullmailer !mail-mta/postfix !mail-mta/qmail-ldap !mail-mta/sendmail !<mail-mta/ssmtp-2.64-r2 !>=mail-mta/ssmtp-2.64-r2[mta] )
+idn? ( net-dns/libidn ) nls? ( virtual/libintl ) gnome-keyring? ( gnome-base/gnome-keyring dev-python/gnome-keyring-python ) gnutls? ( >=net-libs/gnutls-1.2.0 ) !gnutls? ( ssl? ( >=dev-libs/openssl-0.9.6 ) ) sasl? ( >=virtual/gsasl-0.2.4 ) doc? ( virtual/texi2dvi ) nls? ( sys-devel/gettext ) dev-util/pkgconfig
+idn? ( net-dns/libidn ) nls? ( virtual/libintl ) gnome-keyring? ( gnome-base/gnome-keyring dev-python/gnome-keyring-python ) gnutls? ( >=net-libs/gnutls-1.2.0 ) !gnutls? ( ssl? ( >=dev-libs/openssl-0.9.6 ) ) sasl? ( >=virtual/gsasl-0.2.4 ) mta? ( !mail-mta/courier !mail-mta/esmtp !mail-mta/exim !mail-mta/mini-qmail !mail-mta/nbsmtp !mail-mta/netqmail !mail-mta/nullmailer !mail-mta/postfix !mail-mta/qmail-ldap !mail-mta/sendmail !<mail-mta/ssmtp-2.64-r2 !>=mail-mta/ssmtp-2.64-r2[mta] )
 0
 mirror://sourceforge/msmtp/msmtp-1.4.24.tar.bz2
 
@@ -14,7 +14,7 @@ doc gnome-keyring gnutls idn +mta nls sasl ssl vim-syntax
 
 4
 
-configure install prepare
+compile configure install prepare
 
 
 

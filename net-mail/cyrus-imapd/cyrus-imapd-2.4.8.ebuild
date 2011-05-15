@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/cyrus-imapd/cyrus-imapd-2.4.8.ebuild,v 1.3 2011/05/11 17:58:20 eras Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-mail/cyrus-imapd/cyrus-imapd-2.4.8.ebuild,v 1.5 2011/05/15 14:45:13 xarthisius Exp $
 
 EAPI=4
 
@@ -15,7 +15,7 @@ LIBWRAP_PATCH_VER="2.2"
 
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~hppa ~ia64 ppc ppc64 ~sparc ~x86"
 IUSE="afs kerberos mysql nntp pam postgres replication +sieve snmp sqlite ssl
 tcpd zlib"
 
@@ -70,6 +70,11 @@ src_prepare() {
 
 	# do not strip
 	sed -i -e '/(INSTALL/s/-s //' "${S}"/imtest/Makefile.in
+
+	# correct afs include and liblwp.a directory
+	sed -i -e '/I${with_afs_incdir/s/\/include//' \
+		-e '/liblwp/s/liblwp/afs\/liblwp/' \
+		"${S}"/configure{,.in}
 }
 
 src_configure() {
@@ -77,6 +82,10 @@ src_configure() {
 	if use mysql ; then
 		myconf=$(mysql_config --include)
 		myconf="--with-mysql-incdir=${myconf#-I}"
+	fi
+	if use afs ; then
+		myconf+=" --with-afs-libdir=/usr/$(get_libdir)"
+		myconf+=" --with-afs-incdir=/usr/include/afs"
 	fi
 	econf \
 		--enable-murder \
