@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/rgmanager/rgmanager-2.03.09-r1.ebuild,v 1.2 2011/03/24 13:36:20 angelos Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/rgmanager/rgmanager-2.03.09-r1.ebuild,v 1.4 2011/05/15 18:50:12 xarthisius Exp $
 
 EAPI=2
 
@@ -26,13 +26,14 @@ RDEPEND="=sys-cluster/ccs-${CLUSTER_RELEASE}*
 	=sys-cluster/cman-lib-${CLUSTER_RELEASE}*"
 
 DEPEND="${RDEPEND}
-	dev-libs/libxml2
+	dev-libs/libxml2[-icu]
 	=sys-libs/slang-2*"
 
 S=${WORKDIR}/${MY_P}/${PN}
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-CVE-2010-3389.patch
+	sed -i -e 's/-Werror//g' src/{clulib,utils,daemons}/Makefile || die
 }
 
 src_configure() {
