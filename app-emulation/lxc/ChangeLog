@@ -1,6 +1,17 @@
 # ChangeLog for app-emulation/lxc
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/lxc/ChangeLog,v 1.21 2011/03/30 12:09:06 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/lxc/ChangeLog,v 1.23 2011/05/06 11:03:46 flameeyes Exp $
+
+  06 May 2011; Diego E. Pettenò <flameeyes@gentoo.org> files/lxc.initd:
+  Reset the environment when starting the container so that its environment is
+  picked up entirely.
+
+*lxc-0.7.4.1-r1 (24 Apr 2011)
+
+  24 Apr 2011; Diego E. Pettenò <flameeyes@gentoo.org> -lxc-0.7.4.1.ebuild,
+  +lxc-0.7.4.1-r1.ebuild, files/lxc.initd:
+  Revision bump to improve the init script so that it searches the new location
+  of configuration files created by lxc-create (closes bug #364611).
 
 *lxc-0.7.4.1 (30 Mar 2011)
 

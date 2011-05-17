@@ -1,4 +1,4 @@
-app-crypt/gpgme dev-libs/expat dev-libs/libgcrypt dev-libs/libxml2 curl? ( net-misc/curl[ssl] ) dev-util/pkgconfig nls? ( sys-devel/gettext ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b >=dev-vcs/git-1.6 || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b
+app-crypt/gpgme dev-libs/expat dev-libs/libgcrypt dev-libs/libxml2 curl? ( net-misc/curl[ssl] ) dev-util/pkgconfig nls? ( sys-devel/gettext ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b dev-vcs/git || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b
 app-crypt/gpgme dev-libs/expat dev-libs/libgcrypt dev-libs/libxml2 curl? ( net-misc/curl[ssl] ) >=app-crypt/gnupg-2
 0
 
@@ -7,12 +7,12 @@ http://xpisar.wz.cz/libisds/
 LGPL-3
 Client library for accessing ISDS Soap services
 
-autotools autotools-utils base eutils git libtool multilib portability toolchain-funcs
+autotools autotools-utils base eutils git-2 libtool multilib portability toolchain-funcs
 +curl debug nls static-libs test
 
 
 
-3
+4
 
 compile configure install prepare test unpack
 

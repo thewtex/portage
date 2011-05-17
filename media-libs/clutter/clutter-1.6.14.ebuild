@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/clutter/clutter-1.6.14.ebuild,v 1.1 2011/04/05 18:18:09 nirbheek Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/clutter/clutter-1.6.14.ebuild,v 1.3 2011/04/29 12:23:52 nirbheek Exp $
 
 EAPI="3"
 WANT_AUTOMAKE="1.11"
@@ -17,10 +17,10 @@ KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 # We always use the gdk-pixbuf backend now since it's been split out
 RDEPEND="${RDEPEND}
 	>=dev-libs/glib-2.26:2
-	>=x11-libs/cairo-1.10
+	>=x11-libs/cairo-1.10[glib]
 	>=x11-libs/pango-1.20[introspection?]
 	>=dev-libs/json-glib-0.12[introspection?]
-	>=dev-libs/atk-1.17
+	>=dev-libs/atk-1.17[introspection?]
 
 	virtual/opengl
 	x11-libs/libdrm

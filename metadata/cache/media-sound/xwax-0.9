@@ -1,0 +1,22 @@
+media-libs/libsdl media-libs/sdl-ttf media-fonts/dejavu alsa? ( media-libs/alsa-lib ) jack? ( media-sound/jack-audio-connection-kit ) cdda? ( media-sound/cdparanoia ) mp3? ( || ( media-sound/mpg123 media-sound/mpg321 ) ) fallback? ( virtual/ffmpeg )
+media-libs/libsdl media-libs/sdl-ttf media-fonts/dejavu alsa? ( media-libs/alsa-lib ) jack? ( media-sound/jack-audio-connection-kit ) cdda? ( media-sound/cdparanoia ) mp3? ( || ( media-sound/mpg123 media-sound/mpg321 ) ) fallback? ( virtual/ffmpeg )
+0
+http://www.xwax.co.uk/releases/xwax-0.9.tar.gz
+
+http://www.xwax.co.uk/
+GPL-2
+Digital vinyl emulation software
+~amd64 ~ppc ~ppc64 ~x86
+multilib toolchain-funcs
+alsa jack oss cdda mp3 +fallback
+|| ( cdda mp3 fallback ) || ( alsa jack oss )
+
+
+4
+
+compile configure install prepare setup
+
+
+
+
+

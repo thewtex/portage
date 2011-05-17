@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/virtual/os-headers/os-headers-0.ebuild,v 1.2 2011/04/14 06:01:20 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/virtual/os-headers/os-headers-0.ebuild,v 1.4 2011/05/09 20:11:43 ulm Exp $
 
 EAPI=1
 

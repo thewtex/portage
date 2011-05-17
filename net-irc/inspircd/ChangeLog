@@ -1,6 +1,31 @@
 # ChangeLog for net-irc/inspircd
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/inspircd/ChangeLog,v 1.31 2010/11/05 11:37:38 fauli Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-irc/inspircd/ChangeLog,v 1.37 2011/05/11 11:51:29 c1pher Exp $
+
+  11 May 2011; Dane Smith <c1pher@gentoo.org> inspircd-2.0.3.ebuild:
+  Fix use of || die in subshell in ebuild. No revbump.
+
+  11 May 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> inspircd-2.0.3.ebuild:
+  x86 stable wrt bug #364905
+
+  08 May 2011; Dane Smith <c1pher@gentoo.org> inspircd-2.0.3.ebuild:
+  Apply patch from Chema wrt bug 366233. Fix typo. No revbump.
+
+  03 May 2011; Markos Chandras <hwoarang@gentoo.org> inspircd-2.0.3.ebuild:
+  Stable on amd64 wrt bug #364905
+
+  26 Apr 2011; Kacper Kowalik <xarthisius@gentoo.org> inspircd-1.1.19.ebuild,
+  inspircd-1.1.23.ebuild, inspircd-1.2.8.ebuild, inspircd-2.0.3.ebuild:
+  Dropped ppc keywords wrt #364905
+
+*inspircd-2.0.3 (26 Apr 2011)
+
+  26 Apr 2011; Dane Smith <c1pher@gentoo.org> +inspircd-2.0.3.ebuild,
+  +files/inspircd-2.0.3-fix-config.patch, +files/inspircd-2.0.3-init.d,
+  metadata.xml:
+  Version bump to 2.0.3 wrt bug 327887. Updated maintainer info to reflect
+  new maintainers / proxies. New patches for 2.0.3. Thanks Chema Alonso
+  for the work on the ebuild.
 
 *inspircd-1.2.8 (05 Nov 2010)
 

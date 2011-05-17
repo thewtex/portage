@@ -1,10 +1,12 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/linkchecker/linkchecker-5.2.ebuild,v 1.4 2011/03/12 13:32:26 xarthisius Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/linkchecker/linkchecker-5.2.ebuild,v 1.7 2011/05/06 06:49:56 jlec Exp $
 
 EAPI="3"
 
 PYTHON_DEPEND="2"
+SUPPORT_PYTHON_ABIS="1"
+RESTRICT_PYTHON_ABIS="3.*"
 PYTHON_MODNAME="linkcheck"
 
 inherit distutils eutils
@@ -27,19 +29,19 @@ RESTRICT="test"
 
 S="${WORKDIR}/${MY_P}"
 
-pkg_setup() {
-	python_set_active_version 2
-}
-
 src_prepare() {
 	epatch "${FILESDIR}"/${PV}-missing-files.patch
+	distutils_src_prepare
 }
 
 src_install() {
 	distutils_src_install
-	if ! use X; then
-		rm -rf \
-			"${ED}"/usr/bin/linkchecker-gui \
-			"${ED}"/$(python_get_sitedir)/linkcheck/gui || die
-	fi
+	installation() {
+		if ! use X; then
+			rm -rf \
+				"${ED}"/usr/bin/linkchecker-gui* \
+				"${ED}"/$(python_get_sitedir)/linkcheck/gui* || die
+		fi
+	}
+	python_execute_function installation
 }

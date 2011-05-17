@@ -1,19 +1,22 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/xpa/xpa-2.1.12.ebuild,v 1.1 2010/01/31 21:33:45 bicatali Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/xpa/xpa-2.1.12.ebuild,v 1.2 2011/05/03 17:25:13 jlec Exp $
 
 EAPI=2
+
 inherit eutils autotools
 
 DESCRIPTION="Messaging system providing communication between programs"
-HOMEPAGE="http://hea-www.harvard.edu/RD/xpa"
+HOMEPAGE="http://hea-www.harvard.edu/RD/xpa/"
 SRC_URI="http://hea-www.harvard.edu/saord/download/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="doc"
-RDEPEND="dev-lang/tcl
+
+RDEPEND="
+	dev-lang/tcl
 	x11-libs/libXt
 	!<sci-astronomy/ds9-5.3"
 DEPEND="${RDEPEND}"

@@ -1,10 +1,10 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/pulseaudio/pulseaudio-9999.ebuild,v 1.2 2011/03/27 17:00:04 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/pulseaudio/pulseaudio-9999.ebuild,v 1.4 2011/05/16 12:14:49 ford_prefect Exp $
 
 EAPI=3
 
-inherit autotools eutils libtool flag-o-matic versionator git
+inherit autotools eutils libtool flag-o-matic versionator git-2
 
 DESCRIPTION="A networked sound server with an advanced plugin system"
 HOMEPAGE="http://www.pulseaudio.org/"
@@ -18,7 +18,8 @@ IUSE="+alsa avahi +caps equalizer jack lirc oss tcpd +X dbus libsamplerate gnome
 
 RDEPEND="app-admin/eselect-esd
 	X? (
-		|| ( >=x11-libs/libX11-1.4.0 <x11-libs/libX11-1.4.0[xcb] )
+		>=x11-libs/libX11-1.4.0
+		>=x11-libs/libxcb-1.6
 		x11-libs/xcb-util
 		x11-libs/libSM
 		x11-libs/libICE
@@ -47,13 +48,14 @@ RDEPEND="app-admin/eselect-esd
 	>=media-libs/speex-1.2_beta
 	>=media-libs/libsndfile-1.0.20
 	sys-libs/gdbm
+	dev-libs/json-c
 	>=sys-devel/libtool-2.2.4" # it's a valid RDEPEND, libltdl.so is used
 
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )
 	X? (
 		x11-proto/xproto
-		|| ( >=x11-libs/libXtst-1.0.99.2 <x11-proto/xextproto-7.0.99 )
+		>=x11-libs/libXtst-1.0.99.2
 	)
 	dev-libs/libatomic_ops
 	dev-util/pkgconfig

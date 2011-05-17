@@ -1,13 +1,13 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/bibutils/bibutils-4.11.ebuild,v 1.1 2010/09/15 18:26:11 xarthisius Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/bibutils/bibutils-4.11.ebuild,v 1.2 2011/05/03 17:11:01 jlec Exp $
 
 EAPI=2
 inherit toolchain-funcs
 
 MY_P="${PN}_${PV}"
 DESCRIPTION="Interconverts between various bibliography formats using a common XML intermediate"
-HOMEPAGE="http://www.scripps.edu/~cdputnam/software/bibutils"
+HOMEPAGE="http://www.scripps.edu/~cdputnam/software/bibutils/"
 SRC_URI="http://www.scripps.edu/~cdputnam/software/bibutils/${MY_P}_src.tgz"
 
 LICENSE="GPL-2"

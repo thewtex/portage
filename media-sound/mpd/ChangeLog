@@ -1,6 +1,34 @@
 # ChangeLog for media-sound/mpd
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/mpd/ChangeLog,v 1.245 2011/04/04 12:31:27 scarabeus Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/mpd/ChangeLog,v 1.254 2011/05/15 21:13:16 maekke Exp $
+
+  15 May 2011; Markus Meier <maekke@gentoo.org> mpd-0.16.2.ebuild:
+  arm stable, bug #364469
+
+  13 May 2011; Jeroen Roovers <jer@gentoo.org> mpd-0.16.2.ebuild:
+  Stable for HPPA (bug #364469).
+
+  04 May 2011; Christoph Mende <angelos@gentoo.org> mpd-0.15.8.ebuild,
+  mpd-0.15.15.ebuild, mpd-0.15.16.ebuild, mpd-0.16.2.ebuild:
+  Change mpich2 block to <1.4-rc2 (bug #145367)
+
+  04 May 2011; Christoph Mende <angelos@gentoo.org> mpd-0.16.2.ebuild,
+  files/mpd-0.16.conf.patch:
+  Patch mpdconf.dist instead of mpdconf.example so we install upstream's
+  example with the docs
+
+  03 May 2011; Thomas Kahle <tomka@gentoo.org> mpd-0.16.2.ebuild:
+  x86 stable per bug 364469
+
+  30 Apr 2011; Christoph Mende <angelos@gentoo.org> mpd-0.16.2.ebuild:
+  Bump mpg123 dep to 0.12.2 (bug 365111)
+
+  27 Apr 2011; Christoph Mende <angelos@gentoo.org> mpd-0.16.2.ebuild:
+  Stable on amd64 wrt bug #364469
+
+  23 Apr 2011; Christoph Mende <angelos@gentoo.org> -mpd-0.16.1-r1.ebuild,
+  -mpd-0.16.1-r2.ebuild:
+  Removed old
 
   04 Apr 2011; Tomáš Chvátal <scarabeus@gentoo.org> mpd-0.15.8.ebuild,
   mpd-0.15.15.ebuild, mpd-0.15.16.ebuild, mpd-0.16.1-r1.ebuild,

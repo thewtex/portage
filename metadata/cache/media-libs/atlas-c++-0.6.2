@@ -1,4 +1,4 @@
-doc? ( app-doc/doxygen )
+doc? ( app-doc/doxygen ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b
 
 0
 mirror://sourceforge/worldforge/Atlas-C++-0.6.2.tar.bz2
@@ -7,14 +7,14 @@ http://www.worldforge.org/dev/eng/libraries/atlas_cpp
 LGPL-2.1
 Atlas protocol, used in role playing games at worldforge.
 amd64 ~ppc x86
-
+autotools eutils libtool multilib portability toolchain-funcs
 doc
 
 
 
 2
 
-compile install
+compile install prepare
 
 
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/kdevelop/kdevelop-4.2.2.ebuild,v 1.2 2011/04/12 22:18:21 dilfridge Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/kdevelop/kdevelop-4.2.2.ebuild,v 1.5 2011/05/09 23:14:13 hwoarang Exp $
 
 EAPI=4
 
@@ -10,7 +10,7 @@ inherit kde4-base
 
 DESCRIPTION="Integrated Development Environment for Unix, supporting KDE/Qt, C/C++ and many other languages."
 
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc ~ppc64 x86"
 LICENSE="GPL-2 LGPL-2"
 IUSE="+cmake +cxx debug okteta +qmake qthelp"
 
@@ -26,6 +26,9 @@ RDEPEND="${DEPEND}
 	cxx? ( >=sys-devel/gdb-7.0[python] )
 "
 # see bug 347547 about the kdevplatform[subversion] dependency
+
+RESTRICT="test"
+# see bug 366471
 
 src_prepare() {
 	kde4-base_src_prepare

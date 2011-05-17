@@ -1,6 +1,49 @@
 # ChangeLog for net-misc/asterisk
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/asterisk/ChangeLog,v 1.304 2011/04/07 21:59:16 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/asterisk/ChangeLog,v 1.312 2011/05/13 11:59:33 chainsaw Exp $
+
+*asterisk-1.6.2.18 (13 May 2011)
+
+  13 May 2011; Tony Vroon <chainsaw@gentoo.org> +asterisk-1.6.2.18.ebuild:
+  Bugfix release, with directmedia codecs that only 1 side supports are no
+  longer offered. Several DTMF transfer fixes and SIP deadlock fixes. Channel
+  soft hangup fixes relevant to redirects out of MeetMe. Distro patchset
+  unchanged.
+
+*asterisk-1.8.4 (13 May 2011)
+
+  13 May 2011; Tony Vroon <chainsaw@gentoo.org> +asterisk-1.8.4.ebuild:
+  Build additional utilities like smsq as suggested by Nico Baggus in bug
+  #358001. Fix up dodoc call and drop broken misdn support, bugs #360141 &
+  #360143 by Agostino "ago" Sarubbo. Apply patch for upstream bug #19192, as
+  diagnosed by Stefan "stkn" Knoblich.
+
+  28 Apr 2011; Tony Vroon <chainsaw@gentoo.org> -asterisk-1.6.2.17.2.ebuild:
+  Removed vulnerable ebuild for CVE-2011-{1507,1599}, security bug #364887.
+
+  28 Apr 2011; Thomas Kahle <tomka@gentoo.org> asterisk-1.6.2.17.3.ebuild:
+  x86 stable per bug 364887
+
+  26 Apr 2011; Tony Vroon <chainsaw@gentoo.org> asterisk-1.6.2.17.3.ebuild:
+  Mark stable on AMD64 for security bug #364887. Arch testing by Agostino "ago"
+  Sarubbo.
+
+  26 Apr 2011; Tony Vroon <chainsaw@gentoo.org> asterisk-1.6.2.17.3.ebuild:
+  Make dependency on newer DAHDI explicit to avoid surprises for the X86 team.
+
+*asterisk-1.6.2.17.3 (26 Apr 2011)
+
+  26 Apr 2011; Tony Vroon <chainsaw@gentoo.org> +asterisk-1.6.2.17.3.ebuild:
+  Update in 1.6.2 branch for security bug #364887 by Tim Sammut. Addresses
+  CVE-2011-1507 (AST-2011-005/AST-2011-006) and is planned for fast-track
+  stabilisation.
+
+*asterisk-1.8.3.3 (26 Apr 2011)
+
+  26 Apr 2011; Tony Vroon <chainsaw@gentoo.org> -asterisk-1.8.3.2.ebuild,
+  +asterisk-1.8.3.3.ebuild:
+  Update in 1.8 branch for AST-2011-005 & AST-2011-006 (resource exhaustion &
+  unauthenticated shell access, respectively). Remove vulnerable ebuild.
 
   07 Apr 2011; Diego E. Pettenò <flameeyes@gentoo.org>
   asterisk-1.8.3.2.ebuild:

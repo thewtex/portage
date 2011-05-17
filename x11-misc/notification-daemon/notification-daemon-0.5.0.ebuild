@@ -1,17 +1,19 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/notification-daemon/notification-daemon-0.5.0.ebuild,v 1.7 2011/04/23 17:24:26 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/notification-daemon/notification-daemon-0.5.0.ebuild,v 1.11 2011/05/01 09:34:42 ssuominen Exp $
 
 EAPI=3
 GCONF_DEBUG=no
+GNOME2_LA_PUNT=yes
+
 inherit eutils gnome2
 
 DESCRIPTION="Notification daemon"
-HOMEPAGE="http://www.galago-project.org/"
+HOMEPAGE="http://git.gnome.org/browse/notification-daemon/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ia64 ~ppc ~ppc64 sh sparc x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
+KEYWORDS="alpha amd64 arm ia64 ppc ppc64 sh sparc x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
 IUSE=""
 
 RDEPEND=">=dev-libs/glib-2.4:2
@@ -23,12 +25,11 @@ RDEPEND=">=dev-libs/glib-2.4:2
 	x11-libs/libnotify
 	x11-libs/libwnck:1
 	x11-libs/libX11
-"
+	!<xfce-extra/xfce4-notifyd-0.2.1_p20110101
+	!x11-misc/notify-osd"
 DEPEND="${RDEPEND}
 	>=dev-util/intltool-0.40
-	>=sys-devel/gettext-0.14
-	!xfce-extra/xfce4-notifyd
-	!x11-misc/notify-osd"
+	>=sys-devel/gettext-0.14"
 
 pkg_setup() {
 	DOCS="AUTHORS ChangeLog NEWS"
@@ -38,9 +39,4 @@ pkg_setup() {
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-libnotify-0.7.patch
 	gnome2_src_prepare
-}
-
-src_install() {
-	gnome2_src_install
-	find "${ED}" -name "*.la" -delete
 }

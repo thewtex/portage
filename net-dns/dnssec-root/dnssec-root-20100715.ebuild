@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dns/dnssec-root/dnssec-root-20100715.ebuild,v 1.2 2010/11/30 15:27:35 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dns/dnssec-root/dnssec-root-20100715.ebuild,v 1.4 2011/05/02 15:53:42 darkside Exp $
 
 DESCRIPTION="The DNSSEC root key(s)"
 HOMEPAGE="https://www.iana.org/dnssec/"
@@ -15,7 +15,7 @@ SRC_URI="http://data.iana.org/root-anchors/root-anchors.xml
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="amd64 x86"
 
 IUSE="test"
 
@@ -28,9 +28,7 @@ S="${WORKDIR}"
 # xsl and checking as per:
 # http://permalink.gmane.org/gmane.network.dns.unbound.user/1039
 
-src_unpack() {
-	einfo 'unpack not needed'
-}
+src_unpack() { :; }
 
 src_compile() {
 	xsltproc -o "${S}"/root-anchors.txt "${FILESDIR}"/anchors2ds.xsl "${DISTDIR}"/root-anchors.xml || die 'xsl translation failed'
@@ -49,5 +47,5 @@ src_test()
 
 src_install() {
 	insinto /etc/dnssec
-	doins root-anchors.txt "${DISTDIR}"/root-anchors.xml "${DISTDIR}"/Kjqmt7v.csr
+	doins root-anchors.txt "${DISTDIR}"/root-anchors.xml "${DISTDIR}"/Kjqmt7v.csr || die
 }

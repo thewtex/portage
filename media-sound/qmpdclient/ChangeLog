@@ -1,6 +1,19 @@
 # ChangeLog for media-sound/qmpdclient
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/qmpdclient/ChangeLog,v 1.81 2011/04/13 18:06:10 tomka Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/qmpdclient/ChangeLog,v 1.85 2011/05/15 14:36:21 angelos Exp $
+
+  15 May 2011; Christoph Mende <angelos@gentoo.org> qmpdclient-1.2.1.ebuild,
+  +files/qmpdclient-1.2.1-explicit-link.patch:
+  Explicitely link against libX11 (bug #367365)
+
+  12 May 2011; Tomáš Chvátal <scarabeus@gentoo.org> qmpdclient-9999.ebuild:
+  move global variable to global scope. Declare mycmakeargs local.
+
+  30 Apr 2011; Christoph Mende <angelos@gentoo.org> qmpdclient-9999.ebuild:
+  Switch to git-2
+
+  25 Apr 2011; Raúl Porcel <armin76@gentoo.org> qmpdclient-1.1.3.ebuild:
+  Drop sparc keywords
 
   13 Apr 2011; Thomas Kahle <tomka@gentoo.org> qmpdclient-1.2.1.ebuild:
   x86 stable per bug 359477

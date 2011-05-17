@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/mplayer2/mplayer2-2.0.ebuild,v 1.10 2011/04/04 12:44:34 scarabeus Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/mplayer2/mplayer2-2.0.ebuild,v 1.12 2011/05/03 14:57:25 darkside Exp $
 
 EAPI=4
 
@@ -156,7 +156,7 @@ DEPEND="${RDEPEND}
 SLOT="0"
 LICENSE="GPL-3"
 if [[ ${PV} != *9999* ]]; then
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~x86 ~amd64-linux"
 else
 	KEYWORDS=""
 fi
@@ -165,6 +165,7 @@ fi
 REQUIRED_USE="bindist? ( !win32codecs )"
 
 PATCHES=(
+	"${FILESDIR}/${PV}-ffmpeg.patch"
 )
 
 pkg_setup() {

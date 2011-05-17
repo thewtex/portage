@@ -1,6 +1,56 @@
 # ChangeLog for sci-geosciences/mapserver
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-geosciences/mapserver/ChangeLog,v 1.27 2011/03/02 20:36:03 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-geosciences/mapserver/ChangeLog,v 1.38 2011/05/02 21:51:22 scarabeus Exp $
+
+  02 May 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  +files/6.0.0_rc1-php_ldflags.patch, mapserver-6.0.0_rc1.ebuild:
+  Make php extension really work.
+
+  02 May 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  mapserver-6.0.0_rc1.ebuild:
+  Fix slot to be actualy 0
+
+  02 May 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  +files/6.0.0_rc1-bool.patch, mapserver-6.0.0_rc1.ebuild:
+  Fix undefined errors in php code.
+
+  02 May 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  mapserver-6.0.0_rc1.ebuild:
+  Fix dependencies.
+
+  02 May 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  mapserver-6.0.0_rc1.ebuild:
+  Restrict 3.* and Jython ABIs.
+
+  02 May 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  mapserver-6.0.0_rc1.ebuild:
+  Define variables more sanely.
+
+  02 May 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  mapserver-6.0.0_rc1.ebuild:
+  Try to support php too. Sadly it fails with gcc-4.6
+
+  02 May 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  mapserver-6.0.0_rc1.ebuild:
+  Depend correctly on swig
+
+  02 May 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  files/6.0.0_rc1-ldflags.patch, mapserver-6.0.0_rc1.ebuild, metadata.xml:
+  Update the mapserver 6.0.1 php, ruby, tcl not ported as i didn't figure it
+  out, open bugs with working patches only.
+
+  02 May 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  mapserver-6.0.0_rc1.ebuild:
+  Migrate 6.0.0 to ruby-ng eclass.
+
+*mapserver-6.0.0_rc1 (02 May 2011)
+*mapserver-5.6.6 (02 May 2011)
+
+  02 May 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  +files/6.0.0_rc1-ldflags.patch, -mapserver-5.4.2-r1.ebuild,
+  +mapserver-5.6.6.ebuild, +mapserver-6.0.0_rc1.ebuild:
+  Version bump to 5.6.6 and 6.0.0_rc1 releases. (did not test all options so
+  some might fail)
 
   02 Mar 2011; Justin Lecher <jlec@gentoo.org> mapserver-5.4.2.ebuild,
   mapserver-5.4.2-r1.ebuild:

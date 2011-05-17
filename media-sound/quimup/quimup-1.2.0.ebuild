@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/quimup/quimup-1.2.0.ebuild,v 1.3 2011/03/19 21:11:05 angelos Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/quimup/quimup-1.2.0.ebuild,v 1.6 2011/05/08 11:23:00 angelos Exp $
 
 EAPI=3
 inherit eutils qt4-r2
@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/musicpd/${MY_P}_source.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="x11-libs/qt-gui
@@ -30,8 +30,7 @@ src_install() {
 	dobin ${PN} || die "dobin failed"
 	dodoc changelog FAQ.txt README || die "dodoc failed"
 
-	insinto /usr/share/pixmaps/
-	newins Icons/${PN}64.png ${PN}.png || die "newins failed"
+	newicon Icons/${PN}64.png ${PN}.png || die "newins failed"
 
 	make_desktop_entry ${PN} Quimup
 }

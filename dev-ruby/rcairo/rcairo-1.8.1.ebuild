@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/rcairo/rcairo-1.8.1.ebuild,v 1.7 2011/01/07 15:03:59 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/rcairo/rcairo-1.8.1.ebuild,v 1.9 2011/05/02 20:05:29 graaff Exp $
 
 EAPI=2
 USE_RUBY="ruby18"

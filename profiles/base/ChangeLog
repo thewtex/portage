@@ -1,6 +1,49 @@
 # ChangeLog for Gentoo base-profile
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/base/ChangeLog,v 1.257 2011/04/20 18:29:11 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/base/ChangeLog,v 1.270 2011/05/15 17:09:38 ssuominen Exp $
+
+  15 May 2011; Samuli Suominen <ssuominen@gentoo.org> package.use.mask:
+  Drop unmask of USE="hal" for kde-base/solid because KDE 4.6 is now stable and
+  has udev support.
+
+  09 May 2011; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  package.use.mask, use.mask:
+  Unmask video_cards_nouveau, bug #364027.
+
+  02 May 2011; Nirbheek Chauhan <nirbheek@gentoo.org> package.use.mask:
+  Add telepathy-glib to the introspection list, remove libwnck from glade
+  list
+
+  01 May 2011; Nirbheek Chauhan <nirbheek@gentoo.org> package.use.mask:
+  Add libwnck to the glade/introspection lists
+
+  30 Apr 2011; Ulrich Mueller <ulm@gentoo.org> -virtuals:
+  Remove old-style virtual/linux-sources, bug 118442.
+
+  30 Apr 2011; Nirbheek Chauhan <nirbheek@gentoo.org> package.use.mask:
+  Unmask introspection on vte, gtk+-2.24, and mask glade on vte
+
+  30 Apr 2011; Nirbheek Chauhan <nirbheek@gentoo.org> package.use.mask:
+  Mask USE=glade on gtksourceview:3.0
+
+  29 Apr 2011; Nirbheek Chauhan <nirbheek@gentoo.org> package.use.mask:
+  Unmask introspection for libsoup-2.34, libsoup-gnome-2.34
+
+  28 Apr 2011; Alexis Ballier <aballier@gentoo.org> package.use.mask:
+  mask celt useflag for non live ffmpeg ebuilds as libcelt is masked
+
+  24 Apr 2011; Ulrich Mueller <ulm@gentoo.org> packages, virtuals:
+  Remove old-style virtual/modutils, bug 358891.
+
+  24 Apr 2011; Nirbheek Chauhan <nirbheek@gentoo.org> package.use.mask:
+  Unmask USE=introspection for gtk+:3 deps as well (oops)
+
+  24 Apr 2011; Nirbheek Chauhan <nirbheek@gentoo.org> package.use.mask:
+  Unmask USE=introspection for gtk+:3
+
+  24 Apr 2011; Nirbheek Chauhan <nirbheek@gentoo.org> package.use.mask:
+  Unmask USE=introspection on a few packages. This list will grow till the
+  use.mask can be removed completely.
 
   20 Apr 2011; Ulrich Mueller <ulm@gentoo.org> virtuals:
   Remove cron and libc old-style virtuals, bugs 360109 and 359001.

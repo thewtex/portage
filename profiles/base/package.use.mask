@@ -1,13 +1,36 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/base/package.use.mask,v 1.225 2011/04/18 13:37:09 chithanh Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/base/package.use.mask,v 1.239 2011/05/15 17:09:38 ssuominen Exp $
 
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
-# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (18 Apr 2011)
-# Explicitly allow video_cards_nouveau for libdrm until bug #364027 is fixed.
->=x11-libs/libdrm-2.4.25 -video_cards_nouveau
+# Nirbheek Chauhan <nirbheek@gentoo.org> (30 Apr 2011)
+# glade-catalog creation needs >glade-3.9.0, which is broken and
+# needs to be slotted. See bug 364831 for details
+>=x11-libs/gtksourceview-3 glade
+>=x11-libs/vte-0.28 glade
+
+# Nirbheek Chauhan <nirbheek@gentoo.org> (24 Apr 2011)
+# Unmask introspection for specific packages. The migration to unmasking of
+# USE=introspection will be done this way
+>=x11-libs/gdk-pixbuf-2.22.1-r1 -introspection
+>=x11-libs/pango-1.28.4 -introspection
+>=dev-libs/atk-1.32.0-r1 -introspection
+>=x11-libs/gtk+-3 -introspection
+>=x11-libs/gtk+-2.24 -introspection
+>=dev-libs/libunique-3 -introspection
+>=dev-libs/gdl-3 -introspection
+>=dev-libs/json-glib-0.12 -introspection
+>=media-libs/clutter-1.6 -introspection
+>=media-libs/clutter-gtk-1 -introspection
+>=net-libs/libsoup-2.34 -introspection
+>=net-libs/libsoup-gnome-2.34 -introspection
+>=net-libs/telepathy-glib-0.14 -introspection
+>=x11-libs/vte-0.28 -introspection
+>=x11-libs/libwnck-3 -introspection
+net-libs/rest -introspection
+net-libs/libsocialweb -introspection
 
 # Andrey Grozin <grozin@gentoo.org> (29 Mar 2011)
 # dev-lang/swig-2.0.2 with -octave generated .cpp files
@@ -26,10 +49,6 @@ media-video/mplayer2 vdpau bluray
 #
 # Mask pdnsd's Linux-specific USE flags.
 net-dns/pdnsd isdn urandom
-
-# Samuli Suominen <ssuominen@gentoo.org> (27 Mar 2011)
-# Remove this when KDE 4.6 is stable.
-kde-base/solid -hal
 
 # Gilles Dartiguelongue <eva@gentoo.org> (26 Mar 2011)
 # Mask due to unsatisfied dependencies
@@ -165,7 +184,6 @@ media-gfx/k3d cuda
 # Broken on so many setups it is just insane.
 # 0.7 is API/ABI incompatible but is the way to go.
 # Masking to lower maintainance headache, bug #291501.
-<gnome-base/nautilus-2.28 tracker
 media-video/totem tracker
 
 # Tomáš Chvátal <scarabeus@gentoo.org> (27 Oct 2009)
@@ -270,3 +288,9 @@ media-video/mplayer cpudetection custom-cpuopts bindist vdpau
 media-video/vlc direct2d directx dshow dxva2 waveout wingdi
 # Mac OSX / iPhone OS specific useflags
 media-video/vlc audioqueue ios-vout macosx macosx-audio macosx-dialog-provider macosx-eyetv macosx-quartztext macosx-qtcapture macosx-vout
+
+# Alexis Ballier <aballier@gentoo.org> <28 Apr 2011>
+# Requires masked libcelt
+# Leave it unmasked for live ebuild, people should know what they do if they use
+# it anyway
+<media-video/ffmpeg-9999 celt

@@ -1,14 +1,13 @@
 # PLEASE KEEP MOST RECENT MASKS ON TOP, REVERSE CHRONO ORDER
 
-# Oleg Vinichenko <oleg@funtoo.org> (15 April 2011)
-# Cleaning experimental in portage-2.2.2 and creating portage-9999.ebuild 
-# for funtoo-path git portage. Test mask
-=sys-apps/portage-9999
+# Martin Scholz <golodhrim@funtoo.org> (12 May 2011)
+# wine 1.3.19 has buildfailures with win64 useflag enabled, will be masked until
+# there is resolved message.
+=app-emulation/wine-1.3.19
 
-# Ryan Harris <rh1@programmer.net> (10 April 2011)
-# Added new libsdl revision with fix for sound in virtualbox-bin
-# See Gentoo bug #310793
->=media-libs/libsdl-1.2.14-r7
+# Adrien Dessemond <adessemond@funtoo.org> (02 May 2011)
+# tcp-wrappers-7.6 with some patches coming from Debian (most notably additional manual pages and CIDR Support)
+>=sys-apps/tcp-wrappers-7.6-r9
 
 # Martin Scholz <golodhrim@funtoo.org> (16 March 2011)
 # Patched version of eix so that eix-sync uses emerge --sync
@@ -24,9 +23,3 @@
 # Daniel Robbins <drobbins@funtoo.org> (9 March 2011)
 # Needs some testing -
 sys-kernel/sysrescue-std-binaries
-
-# Daniel Robbins <drobbins@funtoo.org> (9 March 2011)
-# -r3 - Has new firmware options - needs testing:
-# -r4 has new --build-src and --build-dst options:
->=sys-kernel/genkernel-3.4.12.6-r3
-

@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/qt-creator/qt-creator-2.1.0.ebuild,v 1.1 2011/03/01 20:41:00 hwoarang Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/qt-creator/qt-creator-2.1.0.ebuild,v 1.4 2011/05/13 10:39:50 hwoarang Exp $
 
 EAPI="2"
 LANGS="de es fr it ja pl ru sl"
@@ -16,13 +16,14 @@ SRC_URI="http://get.qt.nokia.com/${MY_PN}/${MY_P}-src.zip"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc ~ppc64 x86"
 IUSE="bineditor bookmarks +cmake cvs debug +designer doc examples fakevim git
 	mercurial perforce +qml qtscript rss subversion"
 QTVER="4.7.1:4"
 DEPEND=">=x11-libs/qt-assistant-${QTVER}[doc?]
 	>=x11-libs/qt-sql-${QTVER}
 	>=x11-libs/qt-svg-${QTVER}
+	debug? ( >=x11-libs/qt-test-${QTVER} )
 	!qml? ( >=x11-libs/qt-gui-${QTVER} )
 	qml? (
 		>=x11-libs/qt-declarative-${QTVER}[private-headers]

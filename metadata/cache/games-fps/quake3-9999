@@ -1,5 +1,5 @@
-!dedicated? ( virtual/opengl media-libs/openal media-libs/libsdl[joystick,opengl] ) dev-vcs/subversion net-misc/rsync
-!dedicated? ( virtual/opengl media-libs/openal media-libs/libsdl[joystick,opengl] ) games-fps/quake3-data teamarena? ( games-fps/quake3-teamarena )
+opengl? ( virtual/opengl media-libs/libsdl[audio,video,joystick,X,opengl] virtual/jpeg openal? ( media-libs/openal ) vorbis? ( media-libs/libogg media-libs/libvorbis ) voice? ( media-libs/speex ) curl? ( net-misc/curl ) ) !dedicated? ( virtual/opengl media-libs/libsdl[audio,video,joystick,X,opengl] virtual/jpeg openal? ( media-libs/openal ) vorbis? ( media-libs/libogg media-libs/libvorbis ) voice? ( media-libs/speex ) curl? ( net-misc/curl ) ) dev-vcs/subversion net-misc/rsync
+opengl? ( virtual/opengl media-libs/libsdl[audio,video,joystick,X,opengl] virtual/jpeg openal? ( media-libs/openal ) vorbis? ( media-libs/libogg media-libs/libvorbis ) voice? ( media-libs/speex ) curl? ( net-misc/curl ) ) !dedicated? ( virtual/opengl media-libs/libsdl[audio,video,joystick,X,opengl] virtual/jpeg openal? ( media-libs/openal ) vorbis? ( media-libs/libogg media-libs/libvorbis ) voice? ( media-libs/speex ) curl? ( net-misc/curl ) ) opengl? ( voice? ( mumble? ( media-sound/mumble ) ) ) !dedicated? ( voice? ( mumble? ( media-sound/mumble ) ) ) games-fps/quake3-data teamarena? ( games-fps/quake3-teamarena )
 0
 
 
@@ -8,7 +8,7 @@ GPL-2
 Quake III Arena - 3rd installment of the classic id 3D first-person shooter
 
 base eutils flag-o-matic games multilib portability subversion toolchain-funcs
-dedicated teamarena
+dedicated opengl teamarena +openal curl vorbis voice mumble
 
 
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/virtual/libc/libc-0.ebuild,v 1.1 2011/04/20 18:04:52 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/virtual/libc/libc-0.ebuild,v 1.3 2011/05/09 20:13:07 ulm Exp $
 
 EAPI=1
 

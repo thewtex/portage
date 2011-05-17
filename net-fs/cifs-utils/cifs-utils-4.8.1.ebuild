@@ -1,10 +1,10 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-fs/cifs-utils/cifs-utils-4.8.1.ebuild,v 1.6 2011/03/31 17:31:15 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-fs/cifs-utils/cifs-utils-4.8.1.ebuild,v 1.8 2011/05/09 18:12:23 vostorga Exp $
 
 EAPI=2
 
-inherit eutils confutils linux-mod
+inherit eutils confutils linux-info
 
 DESCRIPTION="Tools for Managing Linux CIFS Client Filesystems"
 HOMEPAGE="http://www.samba.org/linux-cifs/cifs-utils/"
@@ -23,29 +23,17 @@ DEPEND="!net-fs/mount-cifs
 	creds? ( sys-apps/keyutils )"
 RDEPEND="${DEPEND}"
 
-cifs_check() {
-	ebegin "Checking for CIFS support"
-	linux_chkconfig_present CIFS
-	eend $?
-
-	if [[ $? -ne 0 ]] ; then
-		eerror "Please enable CIFS support in your kernel config, found at:"
-		eerror
-		eerror "  File systems"
-		eerror "	Network File Systems"
-		eerror "			CIFS support"
-		eerror
-		eerror "and recompile your kernel ..."
-		die "CIFS support not detected!"
-	fi
-}
-
 pkg_setup() {
 	confutils_use_conflict caps caps-ng
-
-	if use kernel_linux; then
-		linux-mod_pkg_setup
-		cifs_check
+	if ! linux_config_exists || ! linux_chkconfig_present CIFS; then
+		ewarn "You must enable CIFS support in your kernel config, "
+		ewarn "to be able to mount samba shares. You can find it at"
+		ewarn
+		ewarn "  File systems"
+		ewarn "	Network File Systems"
+		ewarn "			CIFS support"
+		ewarn
+		ewarn "and recompile your kernel ..."
 	fi
 }
 

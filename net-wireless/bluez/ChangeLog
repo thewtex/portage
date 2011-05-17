@@ -1,6 +1,27 @@
 # ChangeLog for net-wireless/bluez
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/bluez/ChangeLog,v 1.82 2011/03/30 09:49:26 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/bluez/ChangeLog,v 1.87 2011/05/13 14:14:43 jer Exp $
+
+  13 May 2011; Jeroen Roovers <jer@gentoo.org> bluez-4.91.ebuild:
+  Stable for HPPA (bug #365527).
+
+*bluez-4.93 (05 May 2011)
+
+  05 May 2011; Pacho Ramos <pacho@gentoo.org> -bluez-4.89.ebuild,
+  -bluez-4.90.ebuild, +bluez-4.93.ebuild:
+  Version bump, remove old.
+
+  05 May 2011; Christoph Mende <angelos@gentoo.org> bluez-4.91.ebuild:
+  Stable on amd64 wrt bug #365527
+
+  01 May 2011; Samuli Suominen <ssuominen@gentoo.org> bluez-4.91.ebuild:
+  Stop using get_libdir for setting udev directory.
+
+  28 Apr 2011; Tomáš Chvátal <scarabeus@gentoo.org> bluez-4.91.ebuild:
+  Order the dependencies alphabetically. Sort old-daemons elog informations.
+  Drop info about them being disabled (no bluez3 around for long time already).
+  Drop elog check for gnome/kde gui as both desktop environments handle
+  bluetooth properly themselves.
 
 *bluez-4.91 (30 Mar 2011)
 

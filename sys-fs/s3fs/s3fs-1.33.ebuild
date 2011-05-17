@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/s3fs/s3fs-1.33.ebuild,v 1.1 2011/01/05 01:33:24 xmw Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/s3fs/s3fs-1.33.ebuild,v 1.2 2011/05/10 08:23:41 xmw Exp $
 
 EAPI=2
 
@@ -22,6 +22,8 @@ DEPEND=">=dev-libs/libxml2-2.6
 
 RDEPEND="${DEPEND}
 	app-misc/mime-types"
+
+RESTRICT=test
 
 src_install() {
 	emake DESTDIR="${D}" install || die

@@ -1,10 +1,10 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/icu/icu-4.6.1.ebuild,v 1.1 2011/03/23 21:20:47 arfrever Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/icu/icu-4.6.1.ebuild,v 1.6 2011/05/07 16:54:28 armin76 Exp $
 
 EAPI="3"
 
-inherit versionator
+inherit eutils versionator
 
 MAJOR_MINOR_VERSION="$(get_version_component_range 1-2)"
 MICRO_VERSION="$(get_version_component_range 3)"
@@ -22,7 +22,7 @@ SRC_URI="${BASE_URI}/${SRC_ARCHIVE}
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 arm hppa ia64 ~mips ~ppc ~ppc64 s390 sh sparc x86 ~x86-fbsd"
 IUSE="debug doc examples static-libs"
 
 DEPEND="doc? ( app-arch/unzip )"
@@ -49,6 +49,8 @@ src_prepare() {
 	for variable in ARFLAGS CFLAGS CPPFLAGS CXXFLAGS FFLAGS LDFLAGS; do
 		sed -i -e "/^${variable} =.*/s:@${variable}@::" config/Makefile.inc.in || die "sed failed"
 	done
+
+	epatch "${FILESDIR}/${P}-parallel_installation.patch"
 }
 
 src_configure() {

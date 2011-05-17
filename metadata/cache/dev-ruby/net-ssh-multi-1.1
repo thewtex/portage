@@ -1,0 +1,22 @@
+ruby_targets_ruby18? ( test? ( virtual/ruby-test-unit[ruby_targets_ruby18] ) ) ruby_targets_ree18? ( test? ( virtual/ruby-test-unit[ruby_targets_ree18] ) ) test? ( ruby_targets_ruby18? ( >=dev-ruby/net-ssh-2.1.4[ruby_targets_ruby18] >=dev-ruby/net-ssh-gateway-0.99.0[ruby_targets_ruby18] ) ruby_targets_ree18? ( >=dev-ruby/net-ssh-2.1.4[ruby_targets_ree18] >=dev-ruby/net-ssh-gateway-0.99.0[ruby_targets_ree18] ) ) ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ree18? ( dev-lang/ruby-enterprise:1.8 ) ruby_targets_ruby18? ( doc? ( dev-ruby/rake[ruby_targets_ruby18] ) ) ruby_targets_ree18? ( doc? ( dev-ruby/rake[ruby_targets_ree18] ) ) ruby_targets_ruby18? ( test? ( dev-ruby/rake[ruby_targets_ruby18] ) ) ruby_targets_ree18? ( test? ( dev-ruby/rake[ruby_targets_ree18] ) ) ruby_targets_ruby18? ( dev-ruby/rubygems[ruby_targets_ruby18] ) ruby_targets_ree18? ( dev-ruby/rubygems[ruby_targets_ree18] ) test? ( ruby_targets_ruby18? ( dev-ruby/rubygems[ruby_targets_ruby18] ) ruby_targets_ree18? ( dev-ruby/rubygems[ruby_targets_ree18] ) )
+ruby_targets_ruby18? ( >=dev-ruby/net-ssh-2.1.4[ruby_targets_ruby18] >=dev-ruby/net-ssh-gateway-0.99.0[ruby_targets_ruby18] ) ruby_targets_ree18? ( >=dev-ruby/net-ssh-2.1.4[ruby_targets_ree18] >=dev-ruby/net-ssh-gateway-0.99.0[ruby_targets_ree18] ) ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ree18? ( dev-lang/ruby-enterprise:1.8 ) ruby_targets_ruby18? ( dev-ruby/rubygems[ruby_targets_ruby18] ) ruby_targets_ree18? ( dev-ruby/rubygems[ruby_targets_ree18] )
+2
+https://github.com/net-ssh/net-ssh-multi/tarball/v1.1 -> net-ssh-multi-1.1.tgz
+
+http://net-ssh.rubyforge.org/multi
+GPL-2
+Net::SSH::Multi is a library for controlling multiple Net::SSH connections via a single interface.
+~amd64 ~ia64 ~ppc ~ppc64 ~x86
+eutils multilib portability ruby-fakegem ruby-ng toolchain-funcs
+test ruby_targets_ruby18 ruby_targets_ree18 doc doc test
+
+
+
+4
+
+compile configure install prepare setup test unpack
+
+
+
+
+

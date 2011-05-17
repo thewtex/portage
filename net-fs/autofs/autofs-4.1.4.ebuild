@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-fs/autofs/autofs-4.1.4.ebuild,v 1.2 2011/04/11 14:54:51 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-fs/autofs/autofs-4.1.4.ebuild,v 1.4 2011/05/15 10:58:21 pva Exp $
 
 EAPI="4"
 

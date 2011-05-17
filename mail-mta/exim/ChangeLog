@@ -1,6 +1,61 @@
 # ChangeLog for mail-mta/exim
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/mail-mta/exim/ChangeLog,v 1.187 2011/04/22 16:07:44 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-mta/exim/ChangeLog,v 1.202 2011/05/16 18:39:04 jer Exp $
+
+  16 May 2011; Jeroen Roovers <jer@gentoo.org> exim-4.76.ebuild:
+  Stable for HPPA (bug #366369).
+
+  14 May 2011; Raúl Porcel <armin76@gentoo.org> exim-4.76.ebuild:
+  alpha/ia64/sparc stable wrt #366369
+
+  14 May 2011; Kacper Kowalik <xarthisius@gentoo.org> exim-4.76.ebuild:
+  ppc/ppc64 stable wrt #366369
+
+  14 May 2011; Thomas Kahle <tomka@gentoo.org> exim-4.76.ebuild:
+  x86 stable per bug 366369
+
+  13 May 2011; Markos Chandras <hwoarang@gentoo.org> exim-4.76.ebuild:
+  Stable on amd64 wrt bug #366369
+
+  13 May 2011; Fabian Groffen <grobian@gentoo.org> exim-4.76.ebuild:
+  Fix patching when USE=-dsn
+
+  12 May 2011; Fabian Groffen <grobian@gentoo.org> exim-4.76.ebuild,
+  +files/exim-4.76-dsn.patch:
+  Fix dsn patch to apply, bug #366835
+
+  12 May 2011; Fabian Groffen <grobian@gentoo.org> exim-4.76.ebuild:
+  Allow for msmtp with optional mta support, by Christian Aistleitner, bug
+  #366899
+
+*exim-4.76 (10 May 2011)
+
+  10 May 2011; Fabian Groffen <grobian@gentoo.org> +exim-4.76.ebuild:
+  Version bump, many bugfixes,
+  ftp://ftp.exim.org/pub/exim/ChangeLogs/ChangeLog-4.76
+
+  09 May 2011; Jeroen Roovers <jer@gentoo.org> exim-4.75-r1.ebuild:
+  Stable for HPPA (bug #366369).
+
+  08 May 2011; Markos Chandras <hwoarang@gentoo.org> exim-4.75-r1.ebuild:
+  Stable on amd64 wrt bug #366396
+
+  08 May 2011; Christian Faulhammer <fauli@gentoo.org> exim-4.75-r1.ebuild:
+  stable x86, security bug 366369
+
+  08 May 2011; Fabian Groffen <grobian@gentoo.org> -exim-4.71.ebuild,
+  -exim-4.72.ebuild, -exim-4.72-r1.ebuild:
+  Drop vulnerable versions (CVE-2011-0017)
+
+  08 May 2011; Fabian Groffen <grobian@gentoo.org> exim-4.75-r1.ebuild,
+  +files/exim-4.75-makefile-freebsd.patch:
+  Fix compilation of Exim on FreeBSD, bug #235785
+
+*exim-4.75-r1 (07 May 2011)
+
+  07 May 2011; Fabian Groffen <grobian@gentoo.org> +exim-4.75-r1.ebuild,
+  +files/exim-4.75-CVE-2011-1764.patch:
+  Revbump for backport of fix for CVE-2011-1764, bug #366369
 
   22 Apr 2011; Diego E. Pettenò <flameeyes@gentoo.org> exim-4.72.ebuild,
   exim-4.72-r1.ebuild, exim-4.74-r1.ebuild, exim-4.74-r2.ebuild,

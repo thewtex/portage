@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/unrealircd/unrealircd-3.2.8.1-r1.ebuild,v 1.4 2010/06/12 22:42:17 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-irc/unrealircd/unrealircd-3.2.8.1-r1.ebuild,v 1.7 2011/05/07 21:42:55 mr_bones_ Exp $
 
 EAPI="2"
 
@@ -21,11 +21,12 @@ showlistmodes shunnotices ssl topicisnuhost +usermod zlib"
 
 RDEPEND="ssl? ( dev-libs/openssl )
 	zlib? ( sys-libs/zlib )
-	curl? ( net-misc/curl )
+	curl? ( net-misc/curl[ares] )
 	dev-libs/tre
 	>=net-dns/c-ares-1.5.3"
 DEPEND="${RDEPEND}
-	>=sys-apps/sed-4"
+	>=sys-apps/sed-4
+	>=dev-util/pkgconfig-0.25"
 
 S="${WORKDIR}/Unreal$(get_version_component_range 1-2)"
 

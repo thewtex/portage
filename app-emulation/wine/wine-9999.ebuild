@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/wine/wine-9999.ebuild,v 1.75 2011/04/05 00:46:55 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/wine/wine-9999.ebuild,v 1.78 2011/05/11 12:50:37 scarabeus Exp $
 
 EAPI="2"
 
@@ -20,7 +20,7 @@ else
 	S=${WORKDIR}/${MY_P}
 fi
 
-pulse_patches() { echo "$1"/winepulse-{0.39,configure.ac-1.3.10,winecfg-1.3.11}.patch ; }
+pulse_patches() { echo "$1"/winepulse-{0.39,configure.ac-1.3.19,winecfg-1.3.11}.patch ; }
 GV="1.2.0"
 DESCRIPTION="free implementation of Windows(tm) on Unix"
 HOMEPAGE="http://www.winehq.org/"
@@ -33,7 +33,7 @@ SRC_URI="${SRC_URI}
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-IUSE="alsa capi cups custom-cflags dbus esd fontconfig +gecko gnutls gphoto2 gsm gstreamer hal jack jpeg lcms ldap mousewarp mp3 nas ncurses nls openal +opengl +oss +perl png pulseaudio samba scanner ssl test +threads +truetype +win32 +win64 +X xcomposite xinerama xml"
+IUSE="alsa capi cups custom-cflags dbus esd fontconfig +gecko gnutls gphoto2 gsm gstreamer hal jack jpeg lcms ldap mp3 nas ncurses nls openal +opengl +oss +perl png pulseaudio samba scanner ssl test +threads +truetype v4l +win32 +win64 +X xcomposite xinerama xml"
 RESTRICT="test" #72375
 
 MLIB_DEPS="amd64? (
@@ -85,6 +85,7 @@ RDEPEND="truetype? ( >=media-libs/freetype-2.0.0 media-fonts/corefonts )
 	scanner? ( media-gfx/sane-backends )
 	ssl? ( dev-libs/openssl )
 	png? ( media-libs/libpng )
+	v4l? ( media-libs/libv4l )
 	!win64? ( ${MLIB_DEPS} )
 	win32? ( ${MLIB_DEPS} )
 	xcomposite? ( x11-libs/libXcomposite ) "
@@ -113,7 +114,6 @@ src_unpack() {
 }
 
 src_prepare() {
-	use mousewarp && epatch "${FILESDIR}"/${PN}-1.3.16-mouse-warp.patch
 	if use pulseaudio ; then
 		EPATCH_OPTS=-p1 epatch `pulse_patches "${DISTDIR}"`
 		eautoreconf
@@ -160,6 +160,7 @@ do_configure() {
 		$(use_with scanner sane) \
 		$(use_enable test tests) \
 		$(use_with truetype freetype) \
+		$(use_with v4l) \
 		$(use_with X x) \
 		$(use_with xcomposite) \
 		$(use_with xinerama) \

@@ -1,10 +1,10 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/mysql/mysql-5.1.56.ebuild,v 1.1 2011/04/21 18:52:41 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/mysql/mysql-5.1.56.ebuild,v 1.8 2011/05/14 19:21:51 armin76 Exp $
 
 EAPI="2"
 
-MY_EXTRAS_VER="20110421-1217Z"
+MY_EXTRAS_VER="20110426-1046Z"
 # PBXT
 PBXT_VERSION='1.0.11-6-pre-ga'
 # XtraDB
@@ -19,7 +19,7 @@ inherit toolchain-funcs mysql
 IUSE="$IUSE"
 
 # REMEMBER: also update eclass/mysql*.eclass before committing!
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd ~ppc-macos ~x64-macos ~x86-solaris"
+KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~sparc-fbsd ~x86-fbsd ~ppc-macos ~x64-macos ~x86-solaris"
 
 # When MY_EXTRAS is bumped, the index should be revised to exclude these.
 # This is often broken still

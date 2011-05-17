@@ -1,10 +1,10 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-power/nvclock/nvclock-0.8_p20110102-r1.ebuild,v 1.2 2011/03/01 15:49:39 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-power/nvclock/nvclock-0.8_p20110102-r1.ebuild,v 1.6 2011/04/25 04:26:56 jer Exp $
 
 EAPI="2"
 
-inherit eutils autotools
+inherit autotools eutils flag-o-matic
 
 DESCRIPTION="NVIDIA Overclocking Utility"
 HOMEPAGE="http://www.linuxhardware.org/nvclock/"
@@ -13,9 +13,12 @@ SRC_URI="mirror://gentoo/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
-IUSE="gtk"
+IUSE="gtk nvcontrol"
 
-RDEPEND="gtk? ( x11-libs/gtk+:2 )"
+RDEPEND="
+	gtk? ( x11-libs/gtk+:2 )
+	nvcontrol? ( x11-libs/libX11 x11-libs/libXext )
+"
 DEPEND="${RDEPEND}"
 
 src_prepare() {
@@ -24,8 +27,19 @@ src_prepare() {
 }
 
 src_configure() {
+	# libc_wrapper.c:54: warning: implicit declaration of function usleep
+	append-flags -D_BSD_SOURCE
+
+	# Qt support would mean Qt 3.
 	econf --bindir=/usr/bin --disable-qt --docdir=/usr/share/doc/${PF} \
-		$(use_enable gtk) $(use_enable gtk nvcontrol)
+		$(use_enable gtk) $(use_enable nvcontrol)
+}
+
+src_compile() {
+	emake -C src/ nvclock smartdimmer || die
+	if use gtk; then
+		emake -C src/gtk/ || die
+	fi
 }
 
 src_install() {

@@ -1,10 +1,175 @@
 # ChangeLog for profile directory
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.5326 2011/04/23 16:04:53 tampakrap Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.5377 2011/05/16 23:25:29 arfrever Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  16 May 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  package.mask:
+  Mask Python 2.7.1-r2.
+
+  16 May 2011; Andreas K. Huettel <dilfridge@gentoo.org> package.mask:
+  Removed pmask of sys-apps/linux-gpib, seems to work fine
+
+  16 May 2011; Tomáš Chvátal <scarabeus@gentoo.org> base/make.defaults,
+  desc/calligra_features.desc:
+  Add more calligra features.
+
+  15 May 2011; Hans de Graaff <graaff@gentoo.org> package.mask:
+  Mask forthcoming dev-lang/ruby-enterprise version for testing.
+
+  15 May 2011; Hans de Graaff <graaff@gentoo.org> updates/2Q-2011:
+  Slotmove latest cucumber-rails into a new slot.
+
+  15 May 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  +desc/calligra_features.desc, base/make.defaults:
+  Add calligra options to the USE_EXPAND and enable all of them by default.
+
+  15 May 2011; Markos Chandras <hwoarang@gentoo.org> package.mask:
+  Mask kde-misc/quickaccess for removal
+
+  14 May 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  package.mask:
+  Unmask NumPy 1.6.
+
+  14 May 2011; Andreas K. Huettel <dilfridge@gentoo.org> updates/2Q-2011:
+  Filelight is now part of kde-base, bug 361199
+
+  14 May 2011; Jim Ramsay <lack@gentoo.org> arch/amd64/package.use.mask:
+  Masking USE=kde for www-plugins/adobe-flash under amd64 since the config
+  plugin is 32-bit only.
+
+  14 May 2011; Jim Ramsay <lack@gentoo.org> package.mask:
+  Removed old adobe-flash versions as foretold in package.mask
+
+  13 May 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  package.mask:
+  Unmask Python 3.2.
+
+  13 May 2011; Nathan Phillip Brink <binki@gentoo.org> package.mask:
+  Mask net-irc/oer and net-irc/oer-mysql for removal due to no more support
+  from upstream and QA issues.
+
+  13 May 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> package.mask:
+  Mask dev-lang/v8-3.3, update reason for masking v8-3.2 (failing tests).
+
+  13 May 2011; Eray Aslan <eras@gentoo.org> package.mask:
+  Unmask cyrus-imapd-2.4.8 and cyrus-imap-admin-2.4.8
+
+  13 May 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> package.mask:
+  Mask www-client/chromium-13.x
+
+  11 May 2011; Eray Aslan <eras@gentoo.org> package.mask:
+  Mask cyrus-imap-admin-2.4.8. Needs testing first
+
+  10 May 2011; Markos Chandras <hwoarang@gentoo.org> package.mask:
+  Remove entry for qt-creator 2.2.0 RC release
+
+  10 May 2011; Andreas K. Huettel <dilfridge@gentoo.org> updates/2Q-2011:
+  Move keyjnote to new name impressive, bug 364161
+
+  10 May 2011; Eray Aslan <eras@gentoo.org> package.mask:
+  Needs some testing first net-mail/cyrus-imapd-2.4.8
+
+  10 May 2011; Justin Bronder <jsbronder@gentoo.org> package.mask:
+  Masking sys-cluster/pvfs2 for removal (#337374)
+
+  09 May 2011; Ulrich Mueller <ulm@gentoo.org> use.desc:
+  Restore prefix USE flag, it is used.
+
+  09 May 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> package.mask:
+  Unmask www-client/chromium-12.x, now in the beta channel.
+
+  08 May 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  desc/sane_backends.desc:
+  Describe new sane-backends.
+
+  06 May 2011; Markos Chandras <hwoarang@gentoo.org> package.mask:
+  Unmasking boost
+
+  06 May 2011; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Masking app-crypt/scsign for QA removal.
+
+  05 May 2011; Anthony G. Basile <blueness@gentoo.org>
+  hardened/linux/package.mask:
+  sys-devel/prelink: Masked on hardened, use sys-apps/elfix instead to fix
+  gnustack
+
+  05 May 2011; Anthony G. Basile <blueness@gentoo.org> package.mask:
+  sys-apps/chpax: Unmasked after discussion, see Bug #365825
+
+  05 May 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> package.mask:
+  Unmask >=sci-mathematics/nusmv-2.5.0. Was hard masked for many months,
+  should generally work.
+
+  03 May 2011; Luca Barbato <lu_zero@gentoo.org> package.mask:
+  Mask blender-2.57, depends on python-3.2
+
+  03 May 2011; Anthony G. Basile <blueness@gentoo.org> package.mask:
+  sys-apps/chpax: Masked for removal in 30 days. Bug #365825
+
+  02 May 2011; Mark Loeser <halcy0n@gentoo.org> package.mask:
+  Mask reverse deps of dev-php/PEAR-Image_Graph
+
+  02 May 2011; Jeroen Roovers <jer@gentoo.org> thirdpartymirrors:
+  Remove patan.com.ar mirrors.
+
+  01 May 2011; <olemarkus@gentoo.org> package.mask:
+  Masking SVN snapshot versions of PHP
+
+  01 May 2011; Fabian Groffen <grobian@gentoo.org> profiles.desc:
+  Add Prefix FreeBSD 8.2 x64 profile
+
+  30 Apr 2011; Ulrich Mueller <ulm@gentoo.org> -hardened/linux/virtuals,
+  -hardened/virtuals, -uclibc/mips/virtuals, -uclibc/ppc/hardened/virtuals,
+  -uclibc/virtuals, -uclibc/x86/hardened/virtuals:
+  Remove old-style virtual/linux-sources, bug 118442.
+
+  29 Apr 2011; Nirbheek Chauhan <nirbheek@gentoo.org> package.mask:
+  Mask notification-daemon-0.7, GTK3 version
+
+  29 Apr 2011; Kacper Kowalik <xarthisius@gentoo.org> package.mask:
+  Mask dev-python/cgal-python for removal in 30 days
+
+  29 Apr 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  targets/desktop/make.defaults:
+  Do not profile enable mikmod by default.
+
+  29 Apr 2011; Bernard Cafarelli <voyageur@gentoo.org> package.mask:
+  Unmask gnustep base packages with new layout, news item is out
+
+  29 Apr 2011; Ulrich Mueller <ulm@gentoo.org> info_pkgs:
+  Add glibc and uclibc wrt bug 364673.
+
+  27 Apr 2011; Christoph Mende <angelos@gentoo.org> package.mask:
+  Remove masks for gmpc-{q,osd} and -coveramazon
+
+  26 Apr 2011; Markos Chandras <hwoarang@gentoo.org> package.mask:
+  Masking qt-creator-2.2.0_rc1 release. Remove entry for beta release
+
+  26 Apr 2011; Hans de Graaff <graaff@gentoo.org> updates/2Q-2011:
+  Slot move builder 3.0.0 into slot 3.
+
+  25 Apr 2011; Christian Faulhammer <fauli@gentoo.org> package.mask:
+  mask app-emacs/psql for removal, bug 364775
+
+  25 Apr 2011; Gilles Dartiguelongue <eva@gentoo.org> package.mask:
+  Add gnome-extra/nautilus-open-terminal to Gnome 3 mask.
+
+  24 Apr 2011; <olemarkus@gentoo.org> package.mask:
+  Masking dev-php/PEAR-Image_Graph for removal
+
+  24 Apr 2011; Hans de Graaff <graaff@gentoo.org> package.mask:
+  Mask dev-ruby/cgi_multipart_eof_fix for removal.
+
+  24 Apr 2011; Gilles Dartiguelongue <eva@gentoo.org> updates/2Q-2011,
+  package.mask:
+  Add slotmoves for media-libs/libwpg and unmask it with libwpd.
+
+  24 Apr 2011; Gilles Dartiguelongue <eva@gentoo.org> updates/2Q-2011:
+  Slotmove libwpd 0.8 and 0.9.
 
   23 Apr 2011; Theo Chatzimichos <tampakrap@gentoo.org> package.mask:
   Mask KDEPIM 4.6 beta ebuilds

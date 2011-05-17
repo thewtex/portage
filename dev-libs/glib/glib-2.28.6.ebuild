@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/glib/glib-2.28.6.ebuild,v 1.1 2011/04/14 07:50:19 nirbheek Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/glib/glib-2.28.6.ebuild,v 1.7 2011/04/30 17:35:57 armin76 Exp $
 
 EAPI="3"
 PYTHON_DEPEND="2"
@@ -12,7 +12,7 @@ HOMEPAGE="http://www.gtk.org/"
 
 LICENSE="LGPL-2"
 SLOT="2"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd"
+KEYWORDS="alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~sparc-fbsd ~x86-fbsd"
 IUSE="debug doc fam +introspection selinux +static-libs test xattr"
 
 RDEPEND="virtual/libiconv
@@ -91,8 +91,7 @@ src_configure() {
 	# an unusable form as it disables some commonly used API.  Please do not
 	# convert this to the use_enable form, as it results in a broken build.
 	# -- compnerd (3/27/06)
-	# disable-visibility needed for reference debug, bug #274647
-	use debug && myconf="--enable-debug --disable-visibility"
+	use debug && myconf="--enable-debug"
 
 	# Always use internal libpcre, bug #254659
 	econf ${myconf} \

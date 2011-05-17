@@ -1,14 +1,17 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/weechat/weechat-9999.ebuild,v 1.5 2011/02/09 04:56:50 darkside Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-irc/weechat/weechat-9999.ebuild,v 1.8 2011/05/03 11:22:01 scarabeus Exp $
 
 EAPI=3
+
+USE_RUBY="ruby18 ruby19"
+RUBY_OPTIONAL="yes"
 
 PYTHON_DEPEND="python? 2"
 
 EGIT_REPO_URI="git://git.sv.gnu.org/weechat.git"
-[[ ${PV} == "9999" ]] && GIT_ECLASS="git"
-inherit python multilib cmake-utils ${GIT_ECLASS}
+[[ ${PV} == "9999" ]] && GIT_ECLASS="git-2"
+inherit python multilib ruby-ng cmake-utils ${GIT_ECLASS}
 
 DESCRIPTION="Portable and multi-interface IRC client."
 HOMEPAGE="http://weechat.org/"
@@ -24,29 +27,32 @@ fi
 
 NETWORKS="+irc"
 PLUGINS="+alias +charset +fifo +logger +relay +rmodifier +scripts +spell +xfer"
-INTERFACES="+ncurses gtk"
+INTERFACES="+ncurses" # gtk"
 SCRIPT_LANGS="lua +perl +python ruby tcl"
 IUSE="${SCRIPT_LANGS} ${PLUGINS} ${INTERFACES} ${NETWORKS} +crypt doc nls +ssl"
 
 RDEPEND="
 	charset? ( virtual/libiconv )
-	gtk? ( x11-libs/gtk+:2 )
 	lua? ( dev-lang/lua[deprecated] )
 	ncurses? ( sys-libs/ncurses )
 	perl? ( dev-lang/perl )
-	ruby? ( dev-lang/ruby )
 	ssl? ( net-libs/gnutls )
 	spell? ( app-text/aspell )
 	tcl? ( >=dev-lang/tcl-8.4.15 )
 "
+#	gtk? ( x11-libs/gtk+:2 )
 DEPEND="${RDEPEND}
 	nls? ( >=sys-devel/gettext-0.15 )
 "
 
 DOCS="AUTHORS ChangeLog NEWS README"
 
+#REQUIRED_USE=" || ( ncurses )" # || ( ncurses gtk )
+
 pkg_setup() {
 	python_set_active_version 2
+
+	ruby-ng_pkg_setup
 }
 
 src_prepare() {
@@ -62,8 +68,8 @@ src_configure() {
 	mycmakeargs=(
 		"-DENABLE_LARGEFILE=ON"
 		"-DENABLE_DEMO=OFF"
+		"-DENABLE_GTK=OFF"
 		$(cmake-utils_use_enable ncurses)
-		$(cmake-utils_use_enable gtk)
 		$(cmake-utils_use_enable nls)
 		$(cmake-utils_use_enable crypt GCRYPT)
 		$(cmake-utils_use_enable spell ASPELL)

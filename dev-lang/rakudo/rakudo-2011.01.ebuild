@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/rakudo/rakudo-2011.01.ebuild,v 1.1 2011/02/09 10:03:02 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/rakudo/rakudo-2011.01.ebuild,v 1.2 2011/05/05 12:57:25 patrick Exp $
 
 EAPI=3
 
@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc"
 
-RDEPEND="~dev-lang/parrot-${PARROT_VERSION}[unicode]"
+RDEPEND=">=dev-lang/parrot-${PARROT_VERSION}[unicode]"
 DEPEND="${RDEPEND}
 	dev-lang/perl"
 #	>=dev-lang/perl-5.10"

@@ -1,6 +1,52 @@
 # ChangeLog for profiles/prefix
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/ChangeLog,v 1.266 2011/04/21 09:47:06 grobian Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/ChangeLog,v 1.277 2011/05/11 18:34:51 grobian Exp $
+
+  11 May 2011; Fabian Groffen <grobian@gentoo.org> darwin/package.mask:
+  Mask pycairo-1.10, it uses waf, a broken by design build-system
+
+  02 May 2011; Fabian Groffen <grobian@gentoo.org> bsd/package.mask,
+  sunos/solaris/package.mask:
+  Drop qt-7 masks (darwin bit was accidentially removed before)
+
+  01 May 2011; Fabian Groffen <grobian@gentoo.org> bsd/freebsd/package.mask:
+  Mask binutils-2.21.51 on FreeBSD, as long as #347931 isn't fully fixed
+
+  01 May 2011; Fabian Groffen <grobian@gentoo.org>
+  +bsd/freebsd/8.2/package.provided, +bsd/freebsd/8.2/parent,
+  +bsd/freebsd/8.2/x64/make.defaults, +bsd/freebsd/8.2/x64/parent:
+  Add profile for x64 FreeBSD 8.2
+
+  01 May 2011; Fabian Groffen <grobian@gentoo.org>
+  +darwin/macos/10.4/ppc/package.use.mask,
+  +darwin/macos/10.4/ppc64/package.use.mask,
+  +darwin/macos/10.5/ppc64/package.use.mask,
+  darwin/macos/10.5/ppc/package.use.mask:
+  Mask USE=jit for qt-script and qt-webkit on OSX PowerPC profiles, since it
+  isn't implemented
+
+  30 Apr 2011; Fabian Groffen <grobian@gentoo.org>
+  darwin/macos/10.4/package.mask:
+  Mask media-libs/mediastreamer-2.7.3 and beyond due to incompatibility with OS
+  X 10.4 (Tiger)
+
+  27 Apr 2011; Fabian Groffen <grobian@gentoo.org> +mint/package.use.force,
+  darwin/package.mask:
+  Force USE=static on libarchive for FreeMiNT, bug #364789
+
+  27 Apr 2011; Markus Duft <mduft@gentoo.org> windows/interix/package.mask:
+  removed mask for perl on interix
+
+  25 Apr 2011; Fabian Groffen <grobian@gentoo.org> package.mask:
+  Also mask sys-devel/llvm-gcc-2.9, such that it doesn't try to pull in masked
+  deps
+
+  24 Apr 2011; Ulrich Mueller <ulm@gentoo.org> packages:
+  Replace dependency on virtual/modutils, bug 358891.
+
+  24 Apr 2011; Fabian Groffen <grobian@gentoo.org>
+  sunos/solaris/package.use.mask:
+  USE-mask libkms on Solaris as it breaks, bug #319285
 
   21 Apr 2011; Fabian Groffen <grobian@gentoo.org> package.mask:
   Mask LLVM/clang 2.9, it's broken for Prefix by design at the moment

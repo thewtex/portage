@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/pulseaudio/pulseaudio-0.9.22.ebuild,v 1.15 2011/04/20 15:35:45 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/pulseaudio/pulseaudio-0.9.22.ebuild,v 1.18 2011/04/27 07:56:07 angelos Exp $
 
 EAPI=3
 
@@ -13,13 +13,13 @@ SRC_URI="http://0pointer.de/lennart/projects/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2 GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm hppa ~ia64 ppc ~ppc64 ~sh ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 sh sparc x86 ~amd64-linux ~x86-linux"
 IUSE="+alsa avahi +caps jack lirc oss tcpd +X dbus libsamplerate gnome bluetooth +asyncns +glib test doc +udev ipv6 system-wide realtime"
 
 RDEPEND="app-admin/eselect-esd
 	X? (
 		|| ( >=x11-libs/libX11-1.4.0 <x11-libs/libX11-1.4.0[xcb] )
-		>=x11-libs/xcb-util-0.3.1
+		<x11-libs/xcb-util-0.3.8
 		x11-libs/libSM
 		x11-libs/libICE
 		x11-libs/libXtst

@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/udpcast/udpcast-20090920.ebuild,v 1.4 2009/11/21 19:40:48 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/udpcast/udpcast-20090920.ebuild,v 1.5 2011/05/08 20:26:51 jer Exp $
 
 EAPI=2
 
@@ -14,6 +14,7 @@ KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="dev-lang/perl"
+RDEPEND=""
 
 src_prepare() {
 	sed -i \

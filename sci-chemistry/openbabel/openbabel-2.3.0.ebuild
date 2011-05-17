@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/openbabel/openbabel-2.3.0.ebuild,v 1.3 2011/03/28 19:30:52 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/openbabel/openbabel-2.3.0.ebuild,v 1.5 2011/05/07 09:18:00 jlec Exp $
 
 EAPI="3"
 
@@ -23,11 +23,12 @@ RDEPEND="
 	!sci-chemistry/babel
 	sci-libs/inchi
 	sys-libs/zlib
-	perl? ( sci-chemistry/openbabel-perl )
-	python? ( sci-chemistry/openbabel-python )
 	wxwidgets? ( x11-libs/wxGTK:2.8[X] )"
 DEPEND="${RDEPEND}
 	>=dev-util/cmake-2.4.8"
+PDEPEND="
+	perl? ( sci-chemistry/openbabel-perl )
+	python? ( sci-chemistry/openbabel-python )"
 
 DOCS="AUTHORS ChangeLog NEWS README THANKS doc/*.inc doc/README* doc/*.mol2"
 
@@ -59,6 +60,7 @@ src_test() {
 	local mycmakeargs=""
 	mycmakeargs="${mycmakeargs}
 		-DOPENBABEL_USE_SYSTEM_INCHI=ON
+		-DPYTHON_EXECUTABLE=false
 		$(cmake-utils_use wxwidgets BUILD_GUI)
 		$(cmake-utils_use_enable test TESTS)"
 

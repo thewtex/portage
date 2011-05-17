@@ -1,9 +1,9 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/qmpdclient/qmpdclient-9999.ebuild,v 1.4 2011/03/19 09:55:23 angelos Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/qmpdclient/qmpdclient-9999.ebuild,v 1.6 2011/05/12 12:57:51 scarabeus Exp $
 
-EAPI=3
-inherit fdo-mime cmake-utils git
+EAPI=4
+inherit fdo-mime cmake-utils git-2
 
 DESCRIPTION="QMPDClient with NBL additions, such as lyrics' display"
 HOMEPAGE="http://bitcheese.net/wiki/QMPDClient"
@@ -22,12 +22,10 @@ RDEPEND="${DEPEND}"
 
 S=${WORKDIR}/${PN}
 
-pkg_setup() {
-	DOCS="AUTHORS README THANKSTO Changelog"
-}
+DOCS=( AUTHORS README THANKSTO Changelog )
 
 src_configure() {
-	mycmakeargs=( "-DVERSION=${PV}" )
+	local mycmakeargs=( "-DVERSION=${PV}" )
 	cmake-utils_src_configure
 }
 

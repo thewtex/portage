@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/ncbi-tools++/ncbi-tools++-2010.06.15.ebuild,v 1.1 2010/09/26 07:39:29 weaver Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/ncbi-tools++/ncbi-tools++-2010.06.15.ebuild,v 1.3 2011/05/04 19:06:17 jlec Exp $
 
 EAPI="3"
 
@@ -19,7 +19,8 @@ SLOT="0"
 IUSE="sqlite mysql"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 
-DEPEND="sqlite? ( dev-db/sqlite:3 )
+DEPEND="
+	sqlite? ( dev-db/sqlite:3 )
 	mysql? ( virtual/mysql )"
 RDEPEND="${DEPEND}"
 
@@ -30,6 +31,7 @@ src_prepare() {
 	sed -i -e 's/-print-file-name=libstdc++.a//' \
 		-e '/sed/ s/\([gO]\[0-9\]\)\*/\1\\+/' \
 		src/build-system/configure || die
+	epatch "${FILESDIR}"/${P}-gcc46.patch
 }
 
 src_configure() {

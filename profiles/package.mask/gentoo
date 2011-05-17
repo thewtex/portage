@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12726 2011/04/23 16:09:53 tampakrap Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12778 2011/05/16 23:25:29 arfrever Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,103 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (16 May 2011)
+# Masked until reverse dependencies of dev-python/pyxml are updated.
+=dev-lang/python-2.7.1-r2
+
+# Dirkjan Ochtman <djc@gentoo.org> (16 May 2011)
+# Mask new version for testing.
+>=dev-lang/spidermonkey-2.0
+
+# Hans de Graaff <graaff@gentoo.org> (15 May 2011)
+# Mask new versions until thread-related crashes have been fixed.
+# See bug 367423.
+=dev-lang/ruby-enterprise-1.8.7.2011.03
+
+# Markos Chandras <hwoarang@gentoo.org> (15 May 2011)
+# Dead upstream. Does not work with KDE 4.6.
+# Bug #366921. Removal in 2011-07-15
+kde-misc/quickaccess
+
+# Nathan Phillip Brink <binki@gentoo.org> (13 May 2011)
+#
+# Abandoned by upstream. QA issues, such as failing _FORTIFY_SOURCE
+# checks. Bugs 240918, 252000, 332111, 339545, 354493.
+#
+# Removal on 2011-07-12.
+net-irc/oer
+net-irc/oer-mysql
+
+# Pawel Hajdan jr <phajdan.jr@gentoo.org> (13 May 2011)
+# Mask v8 versions used for www-client/chromium dev channel releases.
+# Currently v8-3.3 versions are used for chromium-13.x versions.
+>=dev-lang/v8-3.3
+
+# Pawel Hajdan jr <phajdan.jr@gentoo.org> (13 May 2011)
+# Dev channel releases are only for people who are developers or want more
+# experimental features and accept a more unstable release.
+>=www-client/chromium-13
+
+# Justin Bronder <jsbronder@gentoo.org> (09 May 2011)
+#
+# Out of tree kernel module and upstream does not closely
+# track kernel release (current 2.8.2 only supports up to
+# 2.6.32).  There are alternatives already accepted in
+# the kernel such as Ceph or OCFS2. (#337374)
+#
+# Removal on 2011-07-09
+sys-cluster/pvfs2
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (06 May 2011)
+#  on behalf of QA team
+#
+# Fails to build with opensc-0.12.0 as it doesn't use
+# PKCS#11 (bug #363019). Code looks stale, and the project
+# implemented separate packages for other functions.
+#
+# Removal on 2011-07-05
+app-crypt/scsign
+
+# Luca Barbato <lu_zero@gentoo.org> (4 May 2011)
+# depends on python-3.2
+>=media-gfx/blender-2.57
+
+# Ole Markus With <olemarkus@gentoo.org> (1 May 2011)
+# Masking SVN snaphots.
+>=dev-lang/php-5.4.0_pre1
+
+# Nirbheek Chauhan <nirbheek@gentoo.org> (30 Apr 2011)
+# GTK3 version of notification-daemon, added for testing
+# Will be unmasked once we're sure it works well with everything
+>=x11-misc/notification-daemon-0.7
+
+# Kacper Kowalik <xarthisius@gentoo.org> (29 Apr 2011)
+# Fails to build with gcc 4.5. It doesn't work with latest cgal
+# Bugs 320543, 344723
+# Removal in 30 days
+dev-python/cgal-python
+
+# Christian Faulhammer <fauli@gentoo.org> (25 Apr 2011)
+# Abandoned by upstream, bug 364775
+# Use sql.el shipped with GNU Emacs 21 onwards, which is superior
+# Removal in 30 days
+app-emacs/psql
+
+# Ole Markus With <olemarkus@gentoo.org> (19 Apr 2011)
+# Mask for removal on the 19th of May. Dead upstream, does not work
+# with PHP 5.3. Also masked its reverse dependnencies Bug 362063
+dev-php/PEAR-Image_Graph
+net-analyzer/base
+net-analyzer/centreon
+
+# Hans de Graaff <graaff@gentoo.org> (24 Apr 2011)
+# Masked for removal on 20110524
+# Legacy bugfix code for very old versions of dev-lang/ruby,
+# still required up to now by www-servers/mongrel.
+# No longer needed and not applicable to dev-lang/ruby versions
+# that are still in the tree.
+dev-ruby/cgi_multipart_eof_fix
 
 # Theo Chatzimichos <tampakrap@gentoo.org> (23 Apr 2011)
 # Mask KDEPIM 4.6 beta ebuilds
@@ -68,22 +165,6 @@ app-text/gnochm
 gnustep-libs/camaelon
 x11-themes/camaelon-themes
 
-# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (20 Apr 2011)
-# Mask prerelease versions
-=x11-libs/pixman-0.21*
-
-# Bernard Cafarelli <voyageur@gentoo.org> (20 Apr 2011)
-# New gnustep release, switching to FHS layout
-# Currently testing transition from old layout
->=gnustep-base/gnustep-make-2.6.0
->=gnustep-base/gnustep-base-1.22.0
->=gnustep-base/gnustep-gui-0.20.0
->=gnustep-base/gnustep-back-art-0.20.0
->=gnustep-base/gnustep-back-cairo-0.20.0
->=gnustep-base/gnustep-back-xlib-0.20.0
->=virtual/gnustep-back-0.20.0
-gnustep-base/gnustep-updater
-
 # Peter Volkov <pva@gentoo.org> (20 Apr 2011)
 # Mask beta version
 =net-analyzer/httping-1.5.1*
@@ -93,19 +174,14 @@ gnustep-base/gnustep-updater
 # media-video/ffmpeg
 >=media-libs/celt-0.10
 
-# Pacho Ramos <pacho@gentoo.org> (20 Apr 2011)
-# Masked until tree is ready for them, bug #361565 and #363699
->=app-text/libwpd-0.9
->=media-libs/libwpg-0.2
-
 # Jeroen Roovers <jer@gentoo.org> (19 Apr 2011)
 # development branch of argus/-clients
 =net-analyzer/argus-3.0.5*
 =net-analyzer/argus-clients-3.0.5*
 
 # Luca Barbato <lu_zero@gentoo.org> (19 Apr 2011)
-# Masked for testing, deprecated api removed since this version
-=media-video/libav-0.7_beta1
+# Masked for testing, breaks reverse dependencies 
+=media-video/libav-0.7_beta2
 
 # Diego E. Pettenò <flameeyes@gentoo.org> (19 Apr 2011)
 # Starting from version 2.6.0-rc1 it now uses "proper" autotools, but
@@ -125,19 +201,9 @@ app-portage/gatt
 # 30 days to live
 mail-client/claws-mail-cachesaver
 
-# Anthony G. Basile <blueness@gentoo.org> (16 Apr 2011)
-# Masked for removal in 30 days.  Bug #362847
-sec-policy/selinux-hal
-
 # Alexis Ballier <aballier@gentoo.org> (14 Apr 2011)
 # Beta/test version -> masked
 >=dev-ml/ocamlnet-3.3.0_beta
-
-# Jim Ramsay <lack@gentoo.org> (14 Apr 2011)
-# Mask old unfetchable (Bug #360529) and security-vulnerable (Bug
-# #354207,#359019) versions of Adobe flash player.
-# Will be removed in a week or so.
-<www-plugins/adobe-flash-10.2.153.1
 
 # Daniel Gryniewicz <dang@gentoo.org> (13 Apr 2011)
 # Masked for removal in 30 days. Functionality is merged into and maintained in
@@ -158,13 +224,7 @@ dev-php5/php-libvirt
 # GNOME 3 mask, things will be added here slowly
 >=x11-wm/metacity-2.34
 >=media-gfx/gthumb-2.13
-
-# Constanze Hausner <constanze@gentoo.org> (10 Apr 2011)
-# Masked for removal in 30 days. Not used by any
-# shorewall* version in the tree anymore.
-net-firewall/shorewall-common
-net-firewall/shorewall-perl
-net-firewall/shorewall-shell
+>=gnome-extra/nautilus-open-terminal-0.19
 
 # Markos Chandras <hwoarang@gentoo.org> (10 Apr 2011)
 # Mask new beta release series
@@ -202,62 +262,6 @@ app-crypt/ekey-egd-linux
 # Masked for testing
 >=sys-devel/gcc-4.6.0
 
-# Samuli Suominen <ssuominen@gentoo.org> (31 Mar 2011)
-# Missing V4L2 support wrt #359773 and fails to build with
-# linux-headers-2.6.38. Still uses imlib1 which will go away
-# soon. Removal in 30 days.
-media-video/motioneye
-
-# Samuli Suominen <ssuominen@gentoo.org> (31 Mar 2011)
-# In kernel since 2.6.26. Fails to compile wrt bugs
-# 252553 and 359811. Masked for removal in 30 days.
-media-video/linux-uvc
-
-# Samuli Suominen <ssuominen@gentoo.org> (31 Mar 2011)
-# Fails to compile with linux-headers-2.6.38. 5 years old package and upstream status
-# unclear.  After conversion to libv4l1, fails to run:
-# http://bugs.gentoo.org/show_bug.cgi?id=359793#c2
-# Removal in 30 days.
-media-video/mvc
-
-# Pacho Ramos <pacho@gentoo.org> (31 Mar 2011)
-# Upstream dead for a long time, packages still needing it
-# will be dropped also. Removal in 30 days (bug #355309)
-=gnome-extra/libgda-1.2.4
-
-# Pacho Ramos <pacho@gentoo.org> (31 Mar 2011)
-# Upstream dead for a long time, many unresolved bugs.
-# Removal in 30 days (see bug #354243)
-gnome-extra/libgnomedb
-dev-db/mergeant
-
-# Samuli Suominen <ssuominen@gentoo.org> (31 Mar 2011)
-# Deprecated and doesn't build since linux-headers-2.6.38. Use gst-plugins-v4l2
-# instead. Masked for removal in 30 days. See bug 359647.
-media-plugins/gst-plugins-v4l
-
-# Eray Aslan <eras@gentoo.org> (29 Mar 2011)
-# Abandoned project.  Last release in 2005.  Bugs #158003, #97589,
-# #359411.
-# Removal in 90 days
-net-mail/mailwrapper
-net-mail/mailer-config
-
-# Samuli Suominen <ssuominen@gentoo.org> (29 Mar 2011)
-# Use more freedesktop.org compatible icon theme instead, such as
-# tango-icon-theme or gnome-icon-theme.   This one is outdated one
-# from Xfce 4.4.0 and doesn't provide useful icon links to Xfce 4.8.0
-# anymore.
-#
-# http://standards.freedesktop.org/icon-naming-spec/icon-naming-spec-latest.html
-# http://standards.freedesktop.org/icon-theme-spec/icon-theme-spec-latest.html
-#
-x11-themes/xfce4-icon-theme
-
-# Sebastien Fabbro <bicatali@gentoo.org> (28 Mar 2011)
-# Still beta
-=dev-python/numpy-1.6*
-
 # Diego E. Pettenò <flameeyes@gentoo.org> (28 Mar 2011)
 #  on behalf of QA team
 #
@@ -284,114 +288,23 @@ x11-plugins/wmnetmon
 sys-apps/ren
 
 # Samuli Suominen <ssuominen@gentoo.org> (28 Mar 2011)
-# Masked for QA.
-# Not installable for almost an year now wrt bugs #326613,
-# #284921, #316515, #315411.    Other minor bugs, #336126.
-# Removal in 30 days.
-sci-libs/openfoam-kernel
-sci-libs/openfoam-meta
-sci-libs/openfoam-solvers
-sci-libs/openfoam-utilities
-sci-libs/openfoam-src
-sci-libs/openfoam-wmake
-<sci-libs/openfoam-1.7
-
-# Samuli Suominen <ssuominen@gentoo.org> (28 Mar 2011)
 # Masked temporarily until bug 360849 is solved so people
 # can emerge udev.
 =sys-apps/pciutils-3.1.7-r1
 
-# Diego E. Pettenò <flameeyes@gentoo.org> (27 Mar 2011)
-# Last release in 2006, nobody looking after it.
-# Pending removal on 2011-04-27
-app-text/ssddiff
-
-# Diego E. Pettenò <flameeyes@gentoo.org> (27 Mar 2011)
-# Abandoned project of mine. Nothing really use it.
-# Pending removal on 2011-04-27
-app-text/mxml2man
-
-# Diego E. Pettenò <flameeyes@gentoo.org> (27 Mar 2011)
-# Abandoned project of mine; doesn't work as intended on Linux
-# nowadays.
-# Pending removal on 2011-04-27
-sys-block/unieject
-
-# Jeroen Roovers <jer@gentoo.org> (27 Mar 2011)
-# Unmaintained, does not work with IPv6 (bug #257353), forked to iptraf-ng (bug
-# #305781) - please use net-analyzer/iptraf-ng instead.
-# To be removed in 30 days.
-net-analyzer/iptraf
-
-# Samuli Suominen <ssuominen@gentoo.org> (27 Mar 2011)
-# Orphaned libraries. No longer required.
-# emerge -C eggdbus glitz
-# If you have problems, use revdep-rebuild and lafilefixer
-# to correct your system. Don't symlink anything and don't
-# try to restore these.
-# Remove this mask message in 60 days.
-media-libs/glitz
-dev-libs/eggdbus
-
 # Pawel Hajdan jr <phajdan.jr@gentoo.org> (26 Mar 2011)
-# Mask v8 versions used for www-client/chromium dev channel releases.
-# Currently v8-3.2 versions are used for chromium-12.x versions.
->=dev-lang/v8-3.2
-
-# Christoph Mende <angelos@gentoo.org> (26 Mar 2011)
-# Unmaintained upstream and replaced by media-plugins/gmpc-libnotify
-# and gmpc's built in notifications.
-# Will be removed in 30 days.
-media-plugins/gmpc-osd
-media-plugins/gmpc-qosd
-
-# Thomas Beierlein <tomjbe@gentoo.org> (25 Mar 2011)
-# Masked for removal.
-# No longer required by sci-electronics/geda.
-# Removal in 30 days.
-sci-libs/libgeda
-
-# Markos Chandras <hwoarang@gentoo.org> (25 Mar 2011)
-# Masking qt-creator beta releases
-~dev-util/qt-creator-2.2.0_beta
-
-# Pawel Hajdan jr <phajdan.jr@gentoo.org> (25 Mar 2011)
-# Dev channel releases are only for people who are developers or want more
-# experimental features and accept a more unstable release.
->=www-client/chromium-12
+# Old dev channel releases, failing tests.
+=dev-lang/v8-3.2*
 
 # Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (25 Mar 2011)
 # Some packages fail to build or work with GnuTLS built with Nettle crypto backend.
 =net-libs/gnutls-2.12*
-
-# Samuli Suominen <ssuominen@gentoo.org> (23 Mar 2011)
-# Fails to compile wrt bug #322219.
-# Runtime error wrt bug #318763.
-# Installs docs into wrong directory wrt bug #297639.
-# Needs a version bump and switch from autotools to scons wrt
-# bug 290671.   Masked for removal in 30 days.
-dev-util/bugle
-
-# Torsten Veller <tove@gentoo.org> (23 Mar 2011)
-# Mask app-misc/filer for removal (#360093)
-# - HOMEPAGE dead
-# - list archives
-#   - full of spam
-#   - last on-topic mails from Jan/Jun/Jul 2006, one topic was "still alive?"
-app-misc/filer
 
 # Aaron W. Swenson <titanofold@gentoo.org> (20 Mar 2011)
 # Masking 9.1 pre-release versions
 >=dev-db/postgresql-docs-9.1_alpha4
 >=dev-db/postgresql-base-9.1_alpha4
 >=dev-db/postgresql-server-9.1_alpha4
-
-# Samuli Suominen <ssuominen@gentoo.org> (20 Mar 2011)
-# Masked for QA
-# Fails to build in various ways, see tracker bug 359605.
-# Removal in 30 days
-www-misc/zoneminder
-media-plugins/mythzoneminder
 
 # Stefaan De Roeck <stefaan@gentoo.org> (19 Mar 2011)
 # New major upstream release.
@@ -402,11 +315,6 @@ media-plugins/mythzoneminder
 # Markos Chandras <hwoarang@gentoo.org> (17 Mar 2011)
 # Masking openocd prelease snapshot
 =dev-embedded/openocd-0.5.0_pre*
-
-# Markos Chandras <hwoarang@gentoo.org> (13 Mar 2011)
-# Masked for testing
->=dev-util/boost-build-1.45
->=dev-libs/boost-1.45
 
 # Sergei Trofimovich <slyfox@gentoo.org> (13 Mar 2011)
 # Removal of pre ghc-6.10 haskell package versions.
@@ -432,17 +340,6 @@ media-plugins/mythzoneminder
 <dev-haskell/http-4000
 =dev-lang/helium-1.2-r1
 
-# Christoph Mende <angelos@gentoo.org> (13 Mar 2011)
-# Unmaintained upstream and doesn't work with current gmpc.
-# Will be removed in 30 days.
-media-plugins/gmpc-coveramazon
-
-# Joerg Bornkessel <hd_brummy@gentoo.org> (12 Mar 2011)
-# no maintainer, dead on upstream, dead Homepage
-# bug 358591
-# Removal April 10 2011
-media-plugins/vdr-vdricq
-
 # Ulrich Mueller <ulm@gentoo.org> (12 Mar 2011)
 # Part of app-editors/emacs since version 23.2.
 # Cannot be compiled with Emacs 23. Last release in 2003.
@@ -452,19 +349,6 @@ app-emacs/htmlfontify
 # Christian Faulhammer <fauli@gentoo.org> (12 Mar 2011)
 # Mask for testing
 >=www-apps/joomla-1.6.0
-
-# Hans de Graaff <graaff@gentoo.org> (12 Mar 2011)
-# Mask for removal on 20110412 (#358431)
-# Needs libgnomeprint that is deprecated and unsupported for
-# a long time. Nothing in the tree needs this.
-dev-ruby/ruby-gnomeprint
-dev-ruby/ruby-gnomeprintui
-
-# Andreas K. Huettel <dilfridge@gentoo.org> (11 Mar 2011)
-# Already in TeXlive since 2008, so the separate packages
-# are obsolete. Masked for removal in 30 days.
-dev-tex/memoir
-dev-tex/listings
 
 # Ulrich Mueller <ulm@gentoo.org> (11 Mar 2011)
 # Part of app-editors/emacs since version 22.1 or 23.1.
@@ -484,11 +368,6 @@ x11-themes/qgtkstyle
 # Messed up build system, automagic dependencies.
 dev-util/perf
 
-# Tomáš Chvátal <scarabeus@gentoo.org> (08 Mar 2011)
-# Broken ldflags, should not work
-# Masked for removal in 30 days per bug #335586
-media-libs/glide-v3
-
 # Justin Lecher <jlec@gentoo.org> (04 Mar 2011)
 # Probably API change, packages fail to compile
 ~sci-libs/mmdb-1.23.2
@@ -506,61 +385,17 @@ media-libs/glide-v3
 #    often we have source compatibility, but not binary compatibility
 www-client/chromium-bin
 
-# Markos Chandras <hwoarang@gentoo.org> (03 Mar 2011)
-# Masking zen-kernel snapshot release
-=sys-kernel/zen-sources-2.6.37_p20110303
-
-# Sebastien Fabbro <bicatali@gentoo.org> (02 Mar 2011)
-# Mask 30 days for removal (bug #316061)
-# unmaintained, multiple bugs, and tar ball absent upstream (no mirror allowed)
-# will be replaced with goto2 or openblas
-sci-libs/blas-goto
-
-# Jeremy Olexa <darkside@gentoo.org> (01 Mar 2011)
-# # Masked for removal in 60 days by treecleaners
-# - Multiple bugs tracked in bug 355971
-# - One security bug!
-# - No Gentoo maintainer
-# - Upstream moved to a commercial license, no future upgrades to the free
-# version
-media-libs/pdflib
-# pecl-pdflib will be removed with pdflib's removal
-dev-php5/pecl-pdflib
-
 # Ulrich Mueller <ulm@gentoo.org> (01 Mar 2011)
 # Christian Faulhammer <fauli@gentoo.org>
 # Emacs live ebuilds. Use at your own risk.
 ~app-editors/emacs-vcs-23.3.9999
 ~app-editors/emacs-vcs-24.0.9999
 
-# Hans de Graaff <graaff@gentoo.org> (27 Feb 2011)
-# Deprecated by upstream. Latest version already installs stubs only.
-# Nothing in the tree still depends on it.
-# Masked for removal in 30 days.
-dev-ruby/bones-extras
-
 # Gilles Dartiguelongue <eva@gentoo.org> (23 Feb 2011)
 # Masked for removal due to libgnome ABI breakage
 # See bug #348644.
 =games-arcade/monster-masher-1.8.1
 =games-puzzle/gtetrinet-0.7.11
-
-# Jeremy Olexa <darkside@gentoo.org> (22 Feb 2011)
-# Masked for removal in 60 days by treecleaners
-# - Open bugs, tracked in bug 355961
-# - Fixes submitted but no gentoo dev is interested
-# - Last release in 2005
-# - Multiple alternatives
-net-ftp/yafc
-
-# Jeremy Olexa <darkside@gentoo.org> (22 Feb 2011)
-# Masked for removal in 60 days by treecleaners
-# Doesn't build, gentoo maintainer is not interested. bug 316501 & bug 247043
-dev-lang/gwydion-dylan
-
-# Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (21 Feb 2011)
-# Python 3.2 masked until sufficient number of reverse dependencies is fixed.
-=dev-lang/python-3.2*
 
 # Christian Faulhammer <fauli@gentoo.org> (12 Feb 2011)
 # dev-vcs/bzr-gtk, dev-vcs/bzr-rewrite and dev-vcs/bzr-svn are not
@@ -581,7 +416,6 @@ dev-lang/gwydion-dylan
 >=app-pda/libopensync-plugin-irmc-0.30
 >=app-pda/libopensync-plugin-palm-0.30
 >=app-pda/libopensync-plugin-python-0.30
->=app-pda/libopensync-plugin-sunbird-0.30
 app-pda/libopensync-plugin-syncml
 app-pda/libopensync-plugin-vformat
 app-pda/osynctool
@@ -603,17 +437,6 @@ app-pda/multisync-gui
 =dev-ruby/activesupport-2.2*
 =dev-ruby/actionmailer-2.2*
 =dev-ruby/actionpack-2.2*
-
-# Samuli Suominen <ssuominen@gentoo.org> (07 Feb 2011)
-# Using old :0 slot of vala which includes broken bindings for libnotify-0.7.
-# Doesn't work with latest twitter API.
-# Either this will be removed, or unmasked when new 0.3 version is out.
-net-misc/pino
-
-# Andreas K. Huettel <dilfridge@gentoo.org> (31 Jan 2011)
-# New package, masked for an initial testing period. Needs exotic
-# hardware. Please post feedback on bug 165399.
->=sci-libs/linux-gpib-3.2.15
 
 # MATSUU Takuto <matsuu@gentoo.org> (30 Jan 2011)
 # mask for security bug #352569
@@ -643,19 +466,6 @@ www-plugins/moonlight
 # Michael Sterrett <mr_bones_@gentoo.org> (20 Jan 2010)
 # testing mask for upcoming exult release
 >=games-engines/exult-1.3
-
-# Joerg Bornkessel <hd_brummy@gentoo.org> (18 Jan 2011)
-# Masked for removel on 18 Feb 2011
-# dead on upstream
-# no maintainer
-# bug #352037
-media-plugins/vdr-avolctl
-
-# Andreas K. Hüttel <dilfridge@gentoo.org> (12 Jan 2011)
-# Starting with KOffice version 2.2.0, the functionality of app-office/kchart
-# is provided by the app-office/koffice-libs ebuild. If you still have
-# >=app-office/kchart-2.2.0 installed, please just unmerge it (it is only a dummy).
->=app-office/kchart-2.2.0
 
 # Torsten Veller <tove@gentoo.org> (06 Jan 2011)
 # Next step to remove old perl and libperl versions.
@@ -697,18 +507,6 @@ www-apps/horde-groupware
 # Test suite gives one error, previous version did not.
 # Upcoming bump seems too risky for ~arch right now.
 ~app-text/xmlstarlet-1.0.3
-
-# Mike Pagano <mpagano@gentoo.org> (20 Nov 2010)
-# Mask this version of gentoo-sources while we test
-# the effectiveness of the TTY-based group scheduling
-# patch.
-=sys-kernel/gentoo-sources-2.6.36-r2
-
-# Alex Alexander <wired@gentoo.org> (14 Nov 2010)
-# the qt-gui/qgtkstyle split keeps backfiring at me
-# masking the stable bits for now, we'll revisit this later
-=x11-libs/qt-gui-4.6.3-r1
-~x11-themes/qgtkstyle-4.6.3
 
 # Alexis Ballier <aballier@gentoo.org> (13 Nov 2010)
 # Last rites: app-text/ptex
@@ -782,10 +580,6 @@ gnustep-base/libobjc2
 # masked live version
 =x11-libs/cairo-9999*
 
-# Kacper Kowalik <xarthisius@gentoo.org> (7 Sep 2010)
-# Mask until fully tested
-x11-misc/lightdm
-
 # Sebastian Pipping <sping@gentoo.org> (1 Sep 2010)
 # Mask upcoming bumps, potentially too hot to push to everyone
 =media-libs/libdvdread-4.1.3_p1217
@@ -817,26 +611,6 @@ media-libs/shivavg
 # not needed anymore for Asterisk 1.6.
 net-misc/asterisk-spandsp_codec_g726
 
-# Stefan Briesenick <sbriesen@gentoo.org> (21 Jul 2010)
-# Abandoned upstream. Won't work with current kernels.
-net-dialup/e2220pc
-net-dialup/e5520pc
-net-dialup/fcclassic
-net-dialup/fcdsl
-net-dialup/fcdsl2
-net-dialup/fcdslsl
-net-dialup/fcdslslusb
-net-dialup/fcdslusb
-net-dialup/fcdslusba
-net-dialup/fcpcmcia
-net-dialup/fcpnp
-net-dialup/fcusb
-net-dialup/fcusb2
-net-dialup/fritzcapi
-net-dialup/fxusb
-net-dialup/fxusb_CZ
-net-wireless/fwlanusb
-
 # Jeroen Roovers <jer@gentoo.org> (13 Jul 2010)
 # The ebuild still needs work, but if you can help testing
 # it, then please unmask (bug #317325)
@@ -855,10 +629,6 @@ net-misc/netcf
 # Mask dev-libs/seed; several ebuild issues, and missing pure-runtime deps
 # Also needs USE=introspection to be unmasked
 dev-libs/seed
-
-# Pawel Hajdan jr <phajdan.jr@gentoo.org> (22 Jun 2010)
-# Masked for testing. It's quite "challenging" to package.
->=sci-mathematics/nusmv-2.5.0
 
 # Justin Lecher <jlec@gentoo.org> (16 Jun 10)
 # Just working with the masked experimental version of refmac
@@ -886,15 +656,6 @@ app-crypt/hmaccalc
 # Peter Volkov <pva@gentoo.org> (09 May 2010)
 # Fails to build/work, bug #319085
 net-analyzer/ipac-ng
-
-# Stanislav Ochotnicky <sochotnicky@gentoo.org> (05 May 2010)
-# Masked for testing.
-=app-arch/rpm-4.8.0
-
-# Tony Vroon <chainsaw@gentoo.org> (02 May 2010)
-# Fails to build, 1.6.1/1.6.2 patched to provide equivalent functionality.
-# Removal at end of May.
-net-misc/asterisk-app_nv_faxdetect
 
 # Tomáš Chvátal <scarabeus@gentoo.org> (27 Apr 2010)
 # Replaced by >sci-libs/netcdf-4.0
@@ -966,8 +727,6 @@ net-fs/samba-client
 # Very old packages that people should have upgraded away from
 # long ago.  Courtesy mask ... time to upgrade.
 # Added <sys-fs/e2fsprogs as well (halcy0n)
-sys-libs/com_err
-sys-libs/ss
 <sys-libs/e2fsprogs-libs-1.41.8
 <sys-fs/e2fsprogs-1.41.9
 
@@ -1037,27 +796,17 @@ sys-auth/pam_keystore
 # conflicts (#259700).
 dev-lang/nemerle
 
-# Diego E. Pettenò <flameeyes@gentoo.org> (8 Aug 2009)
+# Diego E. Pettenò <flameeyes@gentoo.org> (08 Aug 2009)
 #  on behalf of QA Team
 #
 # Mass-masking of live ebuilds; we cannot guarantee working state of
 # live ebuilds, nor the availability of the server hosting them. As
 # per QA team policy, all these need to be kept masked by default, if
 # available in the tree.
-dev-lisp/cl-arnesi-darcs
-dev-lisp/cl-fiveam-darcs
-dev-lisp/cl-parenscript-darcs
-dev-lisp/cl-rfc2109-darcs
-dev-lisp/cl-rfc2388-darcs
-dev-lisp/cl-yaclml-darcs
 media-tv/v4l-dvb-hg
-dev-embedded/sdcc-svn
 net-irc/irssi-svn
-~app-doc/repodoc-9999
 ~app-i18n/skk-jisyo-9999
-~net-wireless/wpa_supplicant-9999
 net-misc/netcomics-cvs
-dev-lisp/cl-ansi-tests-cvs
 app-portage/layman-dbtools
 
 # Federico Ferri <mescalinum@gentoo.org> (08 Aug 2009)
@@ -1256,12 +1005,6 @@ app-benchmarks/ltp
 # Robin H. Johnson <robbat2@gentoo.org> (11 Feb 2006)
 # zlib interaction is badly broken. See bug #124733.
 =dev-vcs/cvs-1.12.13*
-
-# Fernando J. Pereda <ferdy@gentoo.org> (25 April 2005)
-# mask these until the new mailwrapper/mailer-config scheme is ready
-# it is secure to unmask them to test
-net-mail/mailer-config
-=net-mail/mailwrapper-0.2.1-r1
 
 # <klieber@gentoo.org> (01 Apr 2004)
 # The following packages contain a remotely-exploitable

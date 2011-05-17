@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/mk-livestatus/mk-livestatus-1.1.8.ebuild,v 1.2 2011/03/11 08:49:47 tove Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/mk-livestatus/mk-livestatus-1.1.8.ebuild,v 1.3 2011/04/27 13:50:15 idl0r Exp $
 
 EAPI=3
 
@@ -42,7 +42,7 @@ DEPEND="${RDEPEND}
 SRC_TEST="parallel"
 
 src_prepare() {
-	# Use system Module::Install instead, it will be copied to $WORKDIR by
+	# Use system Module::Install instead, it will be copied to $S by
 	# Module::install itself.
 	rm -rf api/perl/inc
 

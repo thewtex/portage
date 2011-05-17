@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/formencode/formencode-1.2.4.ebuild,v 1.1 2011/04/03 21:15:58 arfrever Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/formencode/formencode-1.2.4.ebuild,v 1.3 2011/05/09 08:57:03 hwoarang Exp $
 
 EAPI="3"
 PYTHON_DEPEND="2"
@@ -18,7 +18,7 @@ SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="PSF-2.4"
 SLOT="0"
-KEYWORDS="~amd64 ~ia64 ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-macos"
+KEYWORDS="amd64 ~ia64 ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-macos"
 IUSE=""
 
 DEPEND="dev-python/setuptools"
@@ -27,10 +27,3 @@ RDEPEND=""
 S="${WORKDIR}/${MY_P}"
 
 DOCS="docs/*.txt"
-
-src_prepare() {
-	distutils_src_prepare
-
-	# Avoid test failure when dev-python/formencode isn't already installed.
-	sed -e "/pkg_resources/d" -i tests/__init__.py
-}
