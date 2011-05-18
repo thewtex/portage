@@ -1,5 +1,5 @@
 >=virtual/emacs-21
-media-gfx/imagemagick >=virtual/emacs-21
+|| ( media-gfx/imagemagick media-gfx/graphicsmagick[imagemagick] ) >=virtual/emacs-21
 0
 mirror://gentoo/thumbs-2.0.el.bz2
 
@@ -12,9 +12,9 @@ elisp elisp-common eutils multilib portability toolchain-funcs
 
 
 
+4
 
-
-compile install postinst postrm setup unpack
+compile configure install postinst postrm prepare setup unpack
 
 
 
