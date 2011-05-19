@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/kadu/kadu-0.9.1-r1.ebuild,v 1.2 2011/04/18 17:26:57 reavertm Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-im/kadu/kadu-0.9.1-r1.ebuild,v 1.3 2011/05/19 16:08:13 reavertm Exp $
 
 EAPI="4"
 
@@ -103,7 +103,6 @@ src_prepare() {
 	config_enable module_qt4_docking m
 	config_enable module_qt4_docking_notify m
 	config_enable module_screenshot m
-	config_enable module_server_monitor m
 	config_enable module_simpleview m
 	config_enable module_single_window m
 	config_enable module_sms m
