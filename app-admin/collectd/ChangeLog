@@ -1,15 +1,59 @@
 # ChangeLog for app-admin/collectd
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/collectd/ChangeLog,v 1.12 2010/12/24 13:49:22 a3li Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/collectd/ChangeLog,v 1.21 2011/04/24 21:16:04 dilfridge Exp $
 
-*collectd-4.10.2-r3 (09 Jan 2011)
+  24 Apr 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  collectd-4.10.3-r1.ebuild, +files/collectd-4.10.3-werror.patch,
+  collectd-5.0.0-r1.ebuild:
+  Don't use -Werror else gcc-4.6 will drive us mad; move 4.10.3 to EAPI=4;
+  use wrappers for chown and chmod
 
-  09 Jan 2011; Daniel Robbins <drobbins@funtoo.org> +collected-4.10.2-r3.ebuild:
-  New version to address perl module loading issue documented in this URL:
-  http://mailman.verplant.org/pipermail/collectd/2008-March/001616.html - fix
-  #4 was tried first, but it didn't work, but this fix did. This allows perl
-  modules to import other modules and work correctly. This allows the included
-  OpenVZ module to work correctly.
+*collectd-5.0.0-r1 (24 Apr 2011)
+*collectd-4.10.3-r1 (24 Apr 2011)
+
+  24 Apr 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  -collectd-4.10.2-r3.ebuild, -collectd-4.10.3.ebuild,
+  +collectd-4.10.3-r1.ebuild, -collectd-5.0.0.ebuild,
+  +collectd-5.0.0-r1.ebuild, files/collectd.confd, files/collectd.initd:
+  Add useflag for perl bindings and static libs, run as unprivileged user;
+  bug 361723. Thanks to Bruno 'bonbons' on #collectd.
+
+  24 Apr 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  collectd-4.10.3.ebuild, +files/collectd-4.10.3-lt.patch,
+  collectd-5.0.0.ebuild:
+  Properly address the libtool / eautoreconf problem
+
+*collectd-5.0.0 (24 Apr 2011)
+
+  24 Apr 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  +collectd-5.0.0.ebuild:
+  Version bump
+
+  30 Mar 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  collectd-4.10.3.ebuild, metadata.xml:
+  Added support for sys-power/nut
+
+*collectd-4.10.3 (30 Mar 2011)
+
+  30 Mar 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  +collectd-4.10.3.ebuild:
+  Version bump, thanks to octo and bonbons on #collectd for the help!
+
+*collectd-4.10.2-r3 (07 Feb 2011)
+
+  07 Feb 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  +collectd-4.10.2-r3.ebuild, +files/collectd-4.10.2-nohal.patch:
+  Remove hal dependency (bug 353839) and useless static archives and libtool
+  files (bug 353837)
+
+  06 Feb 2011; Samuli Suominen <ssuominen@gentoo.org>
+  collectd-4.10.2-r2.ebuild, +files/collectd-4.10.2-libnotify-0.7.patch:
+  Fix building with x11-libs/libnotify >= 0.7.
+
+  28 Jan 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  collectd-4.10.2-r2.ebuild:
+  Add hints about the changed configuration of the perl and python plugins
+  to config file (bug 351265, thanks drobbins!)
 
   24 Dec 2010; Alex Legler <a3li@gentoo.org> -collectd-4.10.1-r4.ebuild:
   Removing vulnerable ebuilds, bug 347622.

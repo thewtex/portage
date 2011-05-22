@@ -1,6 +1,6 @@
-# Copyright 1999-2006 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/haskell-cabal.eclass,v 1.20 2010/03/30 22:18:37 kolmodin Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/haskell-cabal.eclass,v 1.24 2011/05/08 15:13:10 slyfox Exp $
 #
 # Original authors: Andres Loeh <kosmikus@gentoo.org>
 #                   Duncan Coutts <dcoutts@gentoo.org>
@@ -28,8 +28,8 @@
 #   bin        --  the package installs binaries
 #   lib        --  the package installs libraries
 #   nocabaldep --  don't add dependency on cabal.
-#					only used for packages that _must_ not pull the dependency
-#					on cabal, but still use this eclass (e.g. haskell-updater).
+#                  only used for packages that _must_ not pull the dependency
+#                  on cabal, but still use this eclass (e.g. haskell-updater).
 #
 # Dependencies on other cabal packages have to be specified
 # correctly.
@@ -45,6 +45,20 @@
 # CABAL_CONFIGURE_FLAGS
 
 inherit ghc-package multilib
+
+# @ECLASS-VARIABLE: CABAL_EXTRA_CONFIGURE_FLAGS
+# @DESCRIPTION:
+# User-specified additional parameters passed to 'setup configure'.
+# example: /etc/make.conf: CABAL_EXTRA_CONFIGURE_FLAGS=--enable-shared
+: ${CABAL_EXTRA_CONFIGURE_FLAGS:=}
+
+# @ECLASS-VARIABLE: GHC_BOOTSTRAP_FLAGS
+# @DESCRIPTION:
+# User-specified additional parameters for ghc when building
+# _only_ 'setup' binary bootstrap.
+# example: /etc/make.conf: GHC_BOOTSTRAP_FLAGS=-dynamic to make
+# linking 'setup' faster.
+: ${GHC_BOOTSTRAP_FLAGS:=}
 
 HASKELL_CABAL_EXPF="pkg_setup src_compile src_test src_install"
 
@@ -84,22 +98,18 @@ fi
 
 if [[ -n "${CABAL_USE_ALEX}" ]]; then
 	DEPEND="${DEPEND} dev-haskell/alex"
-	cabalconf="${cabalconf} --with-alex=/usr/bin/alex"
 fi
 
 if [[ -n "${CABAL_USE_HAPPY}" ]]; then
 	DEPEND="${DEPEND} dev-haskell/happy"
-	cabalconf="${cabalconf} --with-happy=/usr/bin/happy"
 fi
 
 if [[ -n "${CABAL_USE_C2HS}" ]]; then
 	DEPEND="${DEPEND} dev-haskell/c2hs"
-	cabalconf="${cabalconf} --with-c2hs=/usr/bin/c2hs"
 fi
 
 if [[ -n "${CABAL_USE_CPPHS}" ]]; then
 	DEPEND="${DEPEND} dev-haskell/cpphs"
-	cabalconf="${cabalconf} --with-cpphs=/usr/bin/cpphs"
 fi
 
 if [[ -n "${CABAL_USE_PROFILE}" ]]; then
@@ -129,21 +139,9 @@ cabal-version() {
 			# of this package itself.
 			_CABAL_VERSION_CACHE="${PV}"
 		elif [[ "${CABAL_FROM_GHC}" ]]; then
-			# We can't assume there's a version of Cabal installed by ebuild as
-			# this might be a first time install of GHC (for packages that
-			# use the shipped Cabal like haskell-updater).
-
-			# The user is likely to only have one version of Cabal, provided
-			# by GHC. Note that dev-haskell/cabal can be a dummy package, only
-			# using the version provided by GHC. If the user has another version
-			# of Cabal too (more recent than the one GHC provides through
-			# dev-haskell/cabal, or possibly older if he used an old
-			# Cabal package) the most recent is used (expected to be the last
-			# one in the ghc-pkg output).
-			_CABAL_VERSION_CACHE="$(ghc-pkg field Cabal version | tail -n 1)"
-
-			# Strip out the "version: " prefix
-			_CABAL_VERSION_CACHE="${_CABAL_VERSION_CACHE#"version: "}"
+			local cabal_package=$(echo "$(ghc-libdir)"/Cabal-*)
+			# /path/to/ghc/Cabal-${VER} -> ${VER}
+			_CABAL_VERSION_CACHE="${cabal_package/*Cabal-/}"
 		else
 			# We ask portage, not ghc, so that we only pick up
 			# portage-installed cabal versions.
@@ -175,8 +173,20 @@ cabal-bootstrap() {
 		cabalpackage=Cabal
 	fi
 	einfo "Using cabal-$(cabal-version)."
-	$(ghc-getghc) -package "${cabalpackage}" --make "${setupmodule}" -o setup \
-		|| die "compiling ${setupmodule} failed"
+
+	make_setup() {
+		$(ghc-getghc) -package "${cabalpackage}" --make "${setupmodule}" \
+			${GHC_BOOTSTRAP_FLAGS} \
+			"$@" \
+			-o setup
+	}
+	if $(ghc-supports-shared-libraries); then
+		# some custom build systems might use external libraries,
+		# for which we don't have shared libs, so keep static fallback
+		make_setup -dynamic "$@" || make_setup "$@" || die "compiling ${setupmodule} failed"
+	else
+		make_setup "$@" || die "compiling ${setupmodule} failed"
+	fi
 }
 
 cabal-mksetup() {
@@ -208,16 +218,38 @@ cabal-hscolour-haddock() {
 }
 
 cabal-configure() {
+	has "${EAPI:-0}" 0 1 2 && ! use prefix && EPREFIX=
+
 	if [[ -n "${CABAL_USE_HADDOCK}" ]] && use doc; then
-		cabalconf="${cabalconf} --with-haddock=/usr/bin/haddock"
+		cabalconf="${cabalconf} --with-haddock=${EPREFIX}/usr/bin/haddock"
 	fi
 	if [[ -n "${CABAL_USE_PROFILE}" ]] && use profile; then
 		cabalconf="${cabalconf} --enable-library-profiling"
 	fi
+	if [[ -n "${CABAL_USE_ALEX}" ]]; then
+		cabalconf="${cabalconf} --with-alex=${EPREFIX}/usr/bin/alex"
+	fi
+
+	if [[ -n "${CABAL_USE_HAPPY}" ]]; then
+		cabalconf="${cabalconf} --with-happy=${EPREFIX}/usr/bin/happy"
+	fi
+
+	if [[ -n "${CABAL_USE_C2HS}" ]]; then
+		cabalconf="${cabalconf} --with-c2hs=${EPREFIX}/usr/bin/c2hs"
+	fi
+	if [[ -n "${CABAL_USE_CPPHS}" ]]; then
+		cabalconf="${cabalconf} --with-cpphs=${EPREFIX}/usr/bin/cpphs"
+	fi
+
 	# Building GHCi libs on ppc64 causes "TOC overflow".
 	if use ppc64; then
 		cabalconf="${cabalconf} --disable-library-for-ghci"
 	fi
+
+	# currently cabal does not respect CFLAGS and LDFLAGS on it's own (bug #333217)
+	# so translate LDFLAGS to ghc parameters (without filtering)
+	local flag
+	for flag in $LDFLAGS; do cabalconf="${cabalconf} --ghc-option=-optl$flag"; done
 
 	if version_is_at_least "1.4" "$(cabal-version)"; then
 		# disable executable stripping for the executables, as portage will
@@ -230,7 +262,7 @@ cabal-configure() {
 	fi
 
 	if version_is_at_least "1.2.0" "$(cabal-version)"; then
-		cabalconf="${cabalconf} --docdir=/usr/share/doc/${PF}"
+		cabalconf="${cabalconf} --docdir=${EPREFIX}/usr/share/doc/${PF}"
 		# As of Cabal 1.2, configure is quite quiet. For diagnostic purposes
 		# it's better if the configure chatter is in the build logs:
 		cabalconf="${cabalconf} --verbose"
@@ -241,17 +273,24 @@ cabal-configure() {
 	# rather than	/usr/share/doc/${PF}/
 	# Because we can only set the datadir, not the docdir.
 
+	# We build shared version of our Cabal where ghc ships it's shared
+	# version of it. We will link ./setup as dynamic binary againt Cabal later.
+	[[ ${CATEGORY}/${PN} == "dev-haskell/cabal" ]] && \
+		$(ghc-supports-shared-libraries) && \
+			cabalconf="${cabalconf} --enable-shared"
+
 	./setup configure \
-		--ghc --prefix=/usr \
+		--ghc --prefix="${EPREFIX}"/usr \
 		--with-compiler="$(ghc-getghc)" \
 		--with-hc-pkg="$(ghc-getghcpkg)" \
-		--prefix=/usr \
-		--libdir=/usr/$(get_libdir) \
+		--prefix="${EPREFIX}"/usr \
+		--libdir="${EPREFIX}"/usr/$(get_libdir) \
 		--libsubdir=${P}/ghc-$(ghc-version) \
-		--datadir=/usr/share/ \
+		--datadir="${EPREFIX}"/usr/share/ \
 		--datasubdir=${P}/ghc-$(ghc-version) \
 		${cabalconf} \
 		${CABAL_CONFIGURE_FLAGS} \
+		${CABAL_EXTRA_CONFIGURE_FLAGS} \
 		"$@" || die "setup configure failed"
 }
 
@@ -262,19 +301,21 @@ cabal-build() {
 }
 
 cabal-copy() {
+	has "${EAPI:-0}" 0 1 2 && ! use prefix && ED=${D}
+
 	./setup copy \
 		--destdir="${D}" \
 		|| die "setup copy failed"
 
 	# cabal is a bit eager about creating dirs,
 	# so remove them if they are empty
-	rmdir "${D}/usr/bin" 2> /dev/null
+	rmdir "${ED}/usr/bin" 2> /dev/null
 
 	# GHC 6.4 has a bug in get/setPermission and Cabal 1.1.1 has
 	# no workaround.
 	# set the +x permission on executables
-	if [[ -d "${D}/usr/bin" ]] ; then
-		chmod +x "${D}/usr/bin/"*
+	if [[ -d "${ED}/usr/bin" ]] ; then
+		chmod +x "${ED}/usr/bin/"*
 	fi
 	# TODO: do we still need this?
 }
@@ -345,18 +386,15 @@ haskell-cabal_pkg_setup() {
 }
 
 haskell-cabal_src_configure() {
-	pushd "${S}" > /dev/null
+	if ! cabal-is-dummy-lib; then
+		pushd "${S}" > /dev/null
 
-	cabal-bootstrap
+		cabal-bootstrap
 
-	ghc_flags=""
-	# currently cabal does not respect CFLAGS and LDFLAGS on it's own (bug #333217)
-	# so translate LDFLAGS to ghc parameters (without filtering)
-	for flag in $LDFLAGS; do ghc_flags="${ghc_flags} --ghc-option=-optl$flag"; done
+		cabal-configure $ghc_flags "$@"
 
-	cabal-configure $ghc_flags "$@"
-
-	popd > /dev/null
+		popd > /dev/null
+	fi
 }
 
 # exported function: nice alias
@@ -366,6 +404,17 @@ cabal_src_configure() {
 
 # exported function: cabal-style bootstrap configure and compile
 cabal_src_compile() {
+	# it's a common mistake when one bumps ebuild to EAPI="2" (and upper)
+	# and forgets to separate src_compile() to src_configure()/src_compile().
+	# Such error leads to default src_configure and we lose all passed flags.
+	if ! has "${EAPI:-0}" 0 1; then
+		local passed_flag
+		for passed_flag in "$@"; do
+			[[ ${passed_flag} == --flags=* ]] && \
+				eqawarn "Cabal option '${passed_flag}' has effect only in src_configure()"
+		done
+	fi
+
 	if ! cabal-is-dummy-lib; then
 		has src_configure ${HASKELL_CABAL_EXPF} || haskell-cabal_src_configure "$@"
 		cabal-build
@@ -410,9 +459,13 @@ haskell-cabal_src_test() {
 
 # exported function: cabal-style copy and register
 cabal_src_install() {
+	has "${EAPI:-0}" 0 1 2 && ! use prefix && EPREFIX=
+
 	if cabal-is-dummy-lib; then
 		# create a dummy local package conf file for the sake of ghc-updater
-		dodir "$(ghc-confdir)"
+		local ghc_confdir_with_prefix="$(ghc-confdir)"
+		# remove EPREFIX
+		dodir ${ghc_confdir_with_prefix#${EPREFIX}}
 		echo '[]' > "${D}/$(ghc-confdir)/$(ghc-localpkgconf)"
 	else
 		cabal-copy
