@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/qt-dbus/qt-dbus-4.7.3.ebuild,v 1.1 2011/05/10 20:05:16 tampakrap Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/qt-dbus/qt-dbus-4.7.3.ebuild,v 1.3 2011/05/17 20:51:23 jer Exp $
 
 EAPI="3"
 inherit qt4-build

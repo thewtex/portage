@@ -1,8 +1,8 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/emelfm2/emelfm2-0.7.5.ebuild,v 1.1 2011/02/13 13:12:42 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/emelfm2/emelfm2-0.7.5.ebuild,v 1.3 2011/05/23 13:18:07 hwoarang Exp $
 
-EAPI=2
+EAPI=4
 inherit eutils multilib toolchain-funcs
 
 DESCRIPTION="A file manager that implements the popular two-pane design"
@@ -11,7 +11,7 @@ SRC_URI="http://emelfm2.net/rel/${P}.tar.bz2"
 
 LICENSE="GPL-3 LGPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="acl fam gimp kernel_linux nls policykit spell udev"
 
 COMMON_DEPEND=">=dev-libs/glib-2.26:2
@@ -33,7 +33,9 @@ pkg_setup() {
 		use ${1} && echo "${2}=1" || echo "${2}=0"
 	}
 
+	#363813
 	myemelconf=(
+		GTK3=0
 		DOCS_VERSION=1
 		$(emel_use nls I18N)
 		WITH_TRANSPARENCY=1
@@ -54,12 +56,11 @@ src_prepare() {
 src_compile() {
 	tc-export CC
 	emake LIB_DIR="/usr/$(get_libdir)" PREFIX="/usr" \
-		${myemelconf[@]} || die
+		${myemelconf[@]}
 }
 
 src_install() {
 	emake LIB_DIR="${D}/usr/$(get_libdir)" PREFIX="${D}/usr" \
-		${myemelconf[@]} install || die
+		${myemelconf[@]} install
 	newicon icons/${PN}_48.png ${PN}.png
-	prepalldocs
 }

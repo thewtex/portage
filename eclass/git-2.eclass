@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/git-2.eclass,v 1.5 2011/05/02 21:15:30 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/git-2.eclass,v 1.9 2011/05/20 15:53:43 scarabeus Exp $
 
 # @ECLASS: git-2.eclass
 # @MAINTAINER:
@@ -46,12 +46,20 @@ DEPEND="dev-vcs/git"
 #
 # EGIT_MASTER="master"
 
+# @ECLASS-VARIABLE: EGIT_PROJECT
+# @DESCRIPTION:
+# Variable specifying name for the folder where we check out the git
+# repository. Value of this variable should be unique in the
+# EGIT_STORE_DIR as otherwise you would override another repository.
+#
+# EGIT_PROJECT="${EGIT_REPO_URI##*/}"
+
 # @ECLASS-VARIABLE: EGIT_DIR
 # @DESCRIPTION:
 # Directory where we want to store the git data.
 # This should not be overriden unless really required.
 #
-# EGIT_DIR="${EGIT_STORE_DIR}/${EGIT_REPO_URI##*/}"
+# EGIT_DIR="${EGIT_STORE_DIR}/${EGIT_PROJECT}"
 
 # @ECLASS-VARIABLE: EGIT_REPO_URI
 # @REQUIRED
@@ -230,14 +238,18 @@ git-2_prepare_storedir() {
 			|| die "${FUNCNAME}: can't mkdir \"${EGIT_STORE_DIR}\""
 	fi
 
-	cd -P "${EGIT_STORE_DIR}" \
-		|| die "${FUNCNAME}:  can't chdir to \"${EGIT_STORE_DIR}\""
 	# allow writing into EGIT_STORE_DIR
 	addwrite "${EGIT_STORE_DIR}"
 	# calculate the proper store dir for data
+	# If user didn't specify the EGIT_DIR, we check if he did specify
+	# the EGIT_PROJECT or get the folder name from EGIT_REPO_URI.
 	[[ -z ${EGIT_REPO_URI##*/} ]] && EGIT_REPO_URI="${EGIT_REPO_URI%/}"
 	if [[ -z ${EGIT_DIR} ]]; then
-		clone_dir=${EGIT_REPO_URI##*/}
+		if [[ -n ${EGIT_PROJECT} ]]; then
+			clone_dir=${EGIT_PROJECT}
+		else
+			clone_dir=${EGIT_REPO_URI##*/}
+		fi
 		EGIT_DIR=${EGIT_STORE_DIR}/${clone_dir}
 	fi
 	export EGIT_DIR=${EGIT_DIR}
@@ -492,7 +504,7 @@ git-2_migrate_repository() {
 
 # @FUNCTION: git-2_src_unpack
 # @DESCRIPTION:
-# Default git src_upack function.
+# Default git src_unpack function.
 git-2_src_unpack() {
 	debug-print-function ${FUNCNAME} "$@"
 
@@ -506,4 +518,8 @@ git-2_src_unpack() {
 	git-2_branch
 	git-2_bootstrap
 	echo ">>> Unpacked to ${EGIT_SOURCEDIR}"
+
+	# Users can specify some SRC_URI and we should
+	# unpack the files too.
+	default_src_unpack
 }

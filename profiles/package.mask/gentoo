@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12778 2011/05/16 23:25:29 arfrever Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12792 2011/05/22 20:23:59 eras Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,52 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Eray Aslan <eras@gentoo.org> (22 May 2011)
+# Mask release candidates
+=mail-filter/amavisd-new-2.7.0_rc*
+
+# Markos Chandras <hwoarang@gentoo.org> (22 May 2011)
+# Does not build against gcc-4.5. Bug #322361
+# Removal in 30 days
+net-p2p/ghostwhitecrab
+
+# Markos Chandras <hwoarang@gentoo.org> (21 May 2011)
+# No upstream, no in-tree dependencies. Does not build.
+# Bug #334779. Pending removal in 30 days
+media-libs/sdl-gui
+
+# Markos Chandras <hwoarang@gentoo.org> (21 May 2011)
+# Does not build ( #363163 ) and no active upstream.
+# Masked for removal in 30 days
+net-misc/guidedog
+
+# Samuli Suominen <ssuominen@gentoo.org> (20 May 2011)
+# Some abandonware that fails to build with linux-headers-2.6.38,
+# and other issues
+#
+# spcaview, bugs 329065, 336599, 364843
+# aatv, bug 364845
+# camsource, bug 365683
+# effectv, bug 365255
+# setpwc, bug 363469 (if saved, reopen bug 121073)
+# fmio, bugs 361581, 350024
+# fame, bug 362993
+# came, bug 361585
+#
+# Removal in 30 days (or feel free to pick up these and port to v4l2)
+media-video/spcaview
+media-tv/aatv
+media-video/camsource
+media-video/effectv
+media-video/setpwc
+media-video/fame
+media-radio/fmio
+media-video/came
+
+# Tim Harder <radhermit@gentoo.org> (18 May 2011)
+# Mask release candidates
+=media-gfx/hugin-2011.0.0_rc*
 
 # Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (16 May 2011)
 # Masked until reverse dependencies of dev-python/pyxml are updated.
@@ -88,10 +134,6 @@ sys-cluster/pvfs2
 # Removal on 2011-07-05
 app-crypt/scsign
 
-# Luca Barbato <lu_zero@gentoo.org> (4 May 2011)
-# depends on python-3.2
->=media-gfx/blender-2.57
-
 # Ole Markus With <olemarkus@gentoo.org> (1 May 2011)
 # Masking SVN snaphots.
 >=dev-lang/php-5.4.0_pre1
@@ -112,13 +154,6 @@ dev-python/cgal-python
 # Use sql.el shipped with GNU Emacs 21 onwards, which is superior
 # Removal in 30 days
 app-emacs/psql
-
-# Ole Markus With <olemarkus@gentoo.org> (19 Apr 2011)
-# Mask for removal on the 19th of May. Dead upstream, does not work
-# with PHP 5.3. Also masked its reverse dependnencies Bug 362063
-dev-php/PEAR-Image_Graph
-net-analyzer/base
-net-analyzer/centreon
 
 # Hans de Graaff <graaff@gentoo.org> (24 Apr 2011)
 # Masked for removal on 20110524
@@ -157,14 +192,6 @@ dev-ruby/cgi_multipart_eof_fix
 # Masked for removal on 20110523.
 app-text/gnochm
 
-# Bernard Cafarelli <voyageur@gentoo.org> (21 Apr 2011)
-# camaelon does not compile with current gnustep versions in tree,
-# deprecated by upstream, use gnustep built-in theming suppport instead
-# Also remove associated themes, they do not work with built-in engine
-# Masked for removal in 30 days, bug #328559
-gnustep-libs/camaelon
-x11-themes/camaelon-themes
-
 # Peter Volkov <pva@gentoo.org> (20 Apr 2011)
 # Mask beta version
 =net-analyzer/httping-1.5.1*
@@ -182,12 +209,6 @@ x11-themes/camaelon-themes
 # Luca Barbato <lu_zero@gentoo.org> (19 Apr 2011)
 # Masked for testing, breaks reverse dependencies 
 =media-video/libav-0.7_beta2
-
-# Diego E. Pettenò <flameeyes@gentoo.org> (19 Apr 2011)
-# Starting from version 2.6.0-rc1 it now uses "proper" autotools, but
-# it requires a bit of changes to avoid automagic dependencies, or
-# forcing of all dependencies.
-=www-apache/mod_security-2.6*
 
 # Christian Faulhammer <fauli@gentoo.org> (17 Apr 2011)
 # Mask for removal, abandoned by upstream with severe bugs, bug 363927
@@ -249,10 +270,6 @@ app-crypt/ekey-egd-linux
 # - doesn't build when boehm-gc is built without threads
 # - no SLOTting yet!
 =dev-scheme/guile-2.0.0
-
-# Peter Volkov <pva@gentoo.org> (05 Apr 2011)
-# Masked beta versions
-=net-p2p/transmission-2.30*
 
 # Jory A. Pratt <anarchy@gentoo.org> (04 Apr 2011)
 # Masked for testing.
@@ -340,24 +357,9 @@ sys-apps/ren
 <dev-haskell/http-4000
 =dev-lang/helium-1.2-r1
 
-# Ulrich Mueller <ulm@gentoo.org> (12 Mar 2011)
-# Part of app-editors/emacs since version 23.2.
-# Cannot be compiled with Emacs 23. Last release in 2003.
-# Masked for removal in 60 days, bug 358351.
-app-emacs/htmlfontify
-
 # Christian Faulhammer <fauli@gentoo.org> (12 Mar 2011)
 # Mask for testing
 >=www-apps/joomla-1.6.0
-
-# Ulrich Mueller <ulm@gentoo.org> (11 Mar 2011)
-# Part of app-editors/emacs since version 22.1 or 23.1.
-# Masked for removal in 60 days, bug 358351.
-app-emacs/calc
-app-emacs/easypg
-app-emacs/ibuffer
-app-emacs/table
-app-emacs/tramp
 
 # Alex Alexander <wired@gentoo.org> (11 Mar 2011)
 # not needed anymore. the cairo[qt4] blocker issue was fixed and
@@ -452,11 +454,6 @@ www-plugins/moonlight
 # Masked beta versions
 =x11-drivers/nvidia-drivers-270.18
 
-# Markos Chandras <hwoarang@gentoo.org> (22 Jan 2011)
-# Mask for testing. Bug #329377
-=net-misc/remmina-0.9.3
-=net-misc/remmina-plugins-0.9.2
-
 # Ryan Hill <dirtyepic@gentoo.org> (22 Jan 2011)
 # Mask development versions due to unstable API
 # as requested by leio
@@ -516,10 +513,6 @@ www-apps/horde-groupware
 # Will be removed on max{13 Dec 2010, TeX Live 2010 stabilized}.
 # Bugs: 303965, 323559 and 344585
 app-text/ptex
-
-# Eray Aslan <eras@gentoo.org> (10 Nov 2010)
-# masking prerelease versions
-=mail-filter/amavisd-new-2.7.0_pre*
 
 # MATSUU Takuto <matsuu@gentoo.org> (08 Oct 2010)
 # testing mask for development series

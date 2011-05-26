@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/nut/nut-16.5.ebuild,v 1.4 2011/04/05 15:50:39 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/nut/nut-16.5.ebuild,v 1.7 2011/05/23 00:55:03 xmw Exp $
 
 EAPI=2
 
@@ -12,10 +12,10 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~arm ~alpha ~amd64 ~ppc ~x86 ~amd64"
+KEYWORDS="~alpha ~amd64 ~arm ppc ~x86"
 IUSE="X"
 
-RDEPEND="X? ( >=x11-libs/fltk-1.3:1 )"
+RDEPEND="X? ( x11-libs/fltk:1 )"
 DEPEND="${RDEPEND}"
 
 src_prepare() {

@@ -1,5 +1,5 @@
-dev-libs/keybinder media-libs/gstreamer:0.10 media-libs/gst-plugins-base:0.10 xfce-base/xfconf libnotify? ( x11-libs/libnotify ) dev-util/pkgconfig || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b >=sys-apps/sed-4
-dev-libs/keybinder media-libs/gstreamer:0.10 media-libs/gst-plugins-base:0.10 xfce-base/xfconf libnotify? ( x11-libs/libnotify ) media-plugins/gst-plugins-meta:0.10
+dev-libs/keybinder media-libs/gstreamer:0.10 media-libs/gst-plugins-base:0.10 >=xfce-base/xfconf-4.8 libnotify? ( x11-libs/libnotify ) dev-util/pkgconfig || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b >=sys-apps/sed-4
+dev-libs/keybinder media-libs/gstreamer:0.10 media-libs/gst-plugins-base:0.10 >=xfce-base/xfconf-4.8 libnotify? ( x11-libs/libnotify ) alsa? ( media-plugins/gst-plugins-alsa:0.10 ) oss? ( media-plugins/gst-plugins-oss:0.10 ) !alsa? ( !oss? ( media-plugins/gst-plugins-meta:0.10 ) )
 0
 mirror://xfce/src/apps/xfce4-volumed/0.1/xfce4-volumed-0.1.13.tar.bz2
 
@@ -8,11 +8,11 @@ GPL-3
 Daemon to control volume up/down and mute keys
 amd64 x86
 autotools base eutils fdo-mime gnome2-utils libtool multilib portability toolchain-funcs xfconf
-debug libnotify
+alsa debug libnotify oss
 
 
 
-3
+4
 
 compile configure install postinst postrm preinst prepare setup unpack
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/lyx/lyx-1.6.10.ebuild,v 1.1 2011/05/14 16:15:45 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/lyx/lyx-1.6.10.ebuild,v 1.3 2011/05/23 03:00:03 aballier Exp $
 
 EAPI=2
 
@@ -50,7 +50,7 @@ COMMONDEPEND="x11-libs/qt-gui:4
 RDEPEND="${COMMONDEPEND}
 	|| ( dev-texlive/texlive-fontsextra app-text/ptex )
 	|| ( media-gfx/imagemagick media-gfx/graphicsmagick )
-	cups? ( virtual/lpr )
+	cups? ( net-print/cups )
 	latex? (
 		virtual/latex-base
 		app-text/ghostscript-gpl
@@ -94,6 +94,7 @@ pkg_setup() {
 
 src_prepare() {
 	epatch "${FILESDIR}"/1.6.7-python.patch
+	epatch "${FILESDIR}"/1.6.10-gcc.patch
 	echo "#!/bin/sh" > config/py-compile
 	sed "s:python -tt:$(PYTHON) -tt:g" -i lib/configure.py || die
 }
