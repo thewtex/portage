@@ -1,14 +1,13 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-action/chromium/chromium-0.9.15.ebuild,v 1.3 2011/03/28 13:20:39 phajdan.jr Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-action/chromium-bsu/chromium-bsu-0.9.15.ebuild,v 1.1 2011/05/26 03:30:22 mr_bones_ Exp $
 
 EAPI=2
 inherit eutils games
 
-MY_P="${PN}-bsu-${PV}"
 DESCRIPTION="Chromium B.S.U. - an arcade game"
 HOMEPAGE="http://chromium-bsu.sourceforge.net/"
-SRC_URI="mirror://sourceforge/chromium-bsu/${MY_P}.tar.gz"
+SRC_URI="mirror://sourceforge/chromium-bsu/${P}.tar.gz"
 
 LICENSE="Clarified-Artistic"
 SLOT="0"
@@ -35,8 +34,6 @@ RDEPEND="media-fonts/dejavu
 DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )"
 
-S=${WORKDIR}/${MY_P}
-
 src_configure() {
 	egamesconf \
 		--disable-dependency-tracking \
@@ -55,8 +52,8 @@ src_install() {
 
 	# remove installed /usr/games/share stuff
 	rm -rf "${D}"/"${GAMES_PREFIX}"/share/
-	newicon misc/${PN}-bsu.png  ${PN}.png || die "doicon failed"
-	make_desktop_entry ${PN}-bsu "Chromium B.S.U"
+	newicon misc/${PN}.png ${PN}.png || die "doicon failed"
+	make_desktop_entry ${PN} "Chromium B.S.U"
 
 	# install documentation
 	dodoc AUTHORS README NEWS || die "dodoc failed"
