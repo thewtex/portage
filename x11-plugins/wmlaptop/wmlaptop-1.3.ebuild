@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmlaptop/wmlaptop-1.3.ebuild,v 1.8 2010/09/09 09:54:32 s4t4n Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmlaptop/wmlaptop-1.3.ebuild,v 1.9 2011/05/26 14:52:47 s4t4n Exp $
 
 inherit eutils
 
@@ -28,7 +28,8 @@ src_unpack() {
 	unpack ${A}
 	cd "${S}"
 
-	epatch "${FILESDIR}"/${P}-Makefile.patch
+	epatch "${FILESDIR}"/${PN}-Makefile.patch
+	epatch "${FILESDIR}"/${PN}-ACPI-detection.patch
 }
 
 src_compile() {
