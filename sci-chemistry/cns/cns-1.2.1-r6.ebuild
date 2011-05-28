@@ -1,8 +1,8 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/cns/cns-1.2.1-r6.ebuild,v 1.2 2011/05/11 07:27:13 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/cns/cns-1.2.1-r6.ebuild,v 1.5 2011/05/28 12:20:57 jlec Exp $
 
-EAPI="3"
+EAPI=3
 
 inherit eutils toolchain-funcs versionator flag-o-matic
 
@@ -52,9 +52,22 @@ pkg_setup() {
 	get_fcomp
 }
 
+get_bitness() {
+	echo > "${T}"/test.c
+	$(tc-getCC) ${CFLAGS} -c "${T}"/test.c -o "${T}"/test.o
+	case $(file "${T}"/test.o) in
+		*64-bit*|*ppc64*|*x86_64*) export _bitness="64";;
+		*32-bit*|*ppc*|*i386*) export _bitness="32";;
+		*) die "Failed to detect whether your arch is 64bits or 32bits, disable distcc if you're using it, please";;
+	esac
+}
+
 src_prepare() {
-	epatch "${FILESDIR}"/${PV}-gentoo.patch
-	epatch "${FILESDIR}"/${PV}-parallel.patch
+	epatch \
+		"${FILESDIR}"/${PV}-gentoo.patch \
+		"${FILESDIR}"/${PV}-parallel.patch
+
+	get_bitness
 
 	if use aria; then
 	pushd "${WORKDIR}"/aria* >& /dev/null
@@ -72,17 +85,17 @@ src_prepare() {
 		use openmp && \
 			append-flags -fopenmp && append-ldflags -fopenmp
 		COMP="gfortran"
-		use amd64 && \
+		[[ ${_bitness} == 64 ]] && \
 			append-fflags -fdefault-integer-8
 	elif [[ $(tc-getFC) == if* ]]; then
 		epatch "${FILESDIR}"/${PV}-ifort.patch
 		use openmp && \
 			append-flags -openmp && append-ldflags -openmp
 		COMP="ifort"
-		use amd64 && append-fflags -i8
+		[[ ${_bitness} == 64 ]] && append-fflags -i8
 	fi
 
-	use amd64 && \
+	[[ ${_bitness} == 64 ]] && \
 		append-cflags "-DINTEGER='long long int'"
 
 	# Set up location for the build directory
@@ -167,6 +180,7 @@ src_install() {
 		-e "s:CNS_HELPLIB=\$CNS_SOLVE/helplib:CNS_HELPLIB=\$CNS_DATA/helplib:g" \
 		-e "s:\$CNS_SOLVE/bin/cns_info:\$CNS_DATA/cns_info:g" \
 		-e "/^g77on/d" \
+		-e "/^g77off/d" \
 		"${T}"/cns_solve_env_sh
 
 	# Get rid of setup stuff we don't need in the installed script
