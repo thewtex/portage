@@ -1,0 +1,22 @@
+!dev-util/nvidia-cuda-profiler
+!dev-util/nvidia-cuda-profiler >=sys-devel/binutils-2.20 sys-devel/gcc:4.4 profiler? ( x86? ( x11-libs/qt-gui x11-libs/qt-core x11-libs/qt-assistant x11-libs/qt-sql[sqlite] ) media-libs/libpng:1.2 ) debugger? ( >=sys-libs/libtermcap-compat-2.0.8-r2 ) !<=x11-drivers/nvidia-drivers-256.53
+0
+amd64? ( http://developer.download.nvidia.com/compute/cuda/4_0/toolkit/cudatoolkit_4.0.17_linux_64_ubuntu10.10.run ) x86? ( http://developer.download.nvidia.com/compute/cuda/4_0/toolkit/cudatoolkit_4.0.17_linux_32_ubuntu10.10.run )
+binchecks
+http://developer.nvidia.com/cuda
+NVIDIA
+NVIDIA CUDA Toolkit
+~amd64 ~x86
+eutils multilib portability toolchain-funcs
+debugger doc profiler
+
+
+
+2
+
+install postinst unpack
+
+
+
+
+
