@@ -1,6 +1,52 @@
 # ChangeLog for www-client/chromium
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/ChangeLog,v 1.365 2011/05/19 09:25:25 phajdan.jr Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/ChangeLog,v 1.373 2011/05/29 15:08:06 phajdan.jr Exp $
+
+  29 May 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-13.0.772.0-r1.ebuild, chromium-9999-r1.ebuild:
+  Support LINGUAS, bug #332751 by Nikoli <nikoli@lavabit.com>.
+
+  27 May 2011; Markos Chandras <hwoarang@gentoo.org>
+  chromium-11.0.696.71.ebuild:
+  Stable on amd64 wrt bug #
+
+*chromium-13.0.772.0-r1 (26 May 2011)
+
+  26 May 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-13.0.772.0.ebuild, +files/chromium-launcher-r2.sh,
+  +chromium-13.0.772.0-r1.ebuild, chromium-9999-r1.ebuild,
+  +files/chromium.default:
+  Make it easier to override command-line flags, based on Debian's launcher
+  script; bug #357629 by Jonas Bernoulli <jonas@bernoul.li>.
+
+*chromium-12.0.742.68 (26 May 2011)
+
+  26 May 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-12.0.742.53.ebuild, +chromium-12.0.742.68.ebuild:
+  Version bump for beta channel release. Remove old.
+
+  25 May 2011; Thomas Kahle <tomka@gentoo.org> chromium-11.0.696.71.ebuild:
+  x86 stable per bug 368649
+
+*chromium-11.0.696.71 (25 May 2011)
+
+  25 May 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +chromium-11.0.696.71.ebuild:
+  Version bump for stable channel release.
+
+  25 May 2011; Markus Meier <maekke@gentoo.org> chromium-12.0.742.53.ebuild,
+  chromium-12.0.742.60.ebuild, chromium-13.0.767.1.ebuild,
+  chromium-13.0.772.0.ebuild:
+  restore ~arm, bug #366619
+
+*chromium-13.0.772.0 (24 May 2011)
+
+  24 May 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-13.0.761.0.ebuild, +chromium-13.0.772.0.ebuild,
+  chromium-9999-r1.ebuild:
+  Version bump for dev channel release, remove pam dependency (the browser no
+  longer links with PAM), bug #368289 by Matt Whitlock
+  <gentoo@mattwhitlock.name>. Remove old.
 
 *chromium-12.0.742.60 (19 May 2011)
 

@@ -1,6 +1,36 @@
 # ChangeLog for www-plugins/nspluginwrapper
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-plugins/nspluginwrapper/ChangeLog,v 1.9 2011/03/27 10:16:23 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-plugins/nspluginwrapper/ChangeLog,v 1.15 2011/05/30 14:24:04 chutzpah Exp $
+
+  30 May 2011; Patrick McLean <chutzpah@gentoo.org>
+  nspluginwrapper-1.4.0-r1.ebuild:
+  Create lib64 nsplugins dir on src_install (bug #369221).
+
+  26 May 2011; Patrick McLean <chutzpah@gentoo.org>
+  nspluginwrapper-1.4.0-r1.ebuild,
+  files/nspluginwrapper-1.4.0-parallel-make.patch:
+  A new approach to the parallel make patch, it should be more reliable now.
+  Thanks to Cardoe for the suggestion.
+
+  26 May 2011; Patrick McLean <chutzpah@gentoo.org>
+  files/nspluginwrapper-1.4.0-parallel-make.patch:
+  Update parallel make patch, it appears that the earlier one failed on some
+  systems (bug #368665).
+
+*nspluginwrapper-1.4.0-r1 (25 May 2011)
+
+  25 May 2011; Patrick McLean <chutzpah@gentoo.org>
+  -nspluginwrapper-1.4.0.ebuild, +nspluginwrapper-1.4.0-r1.ebuild:
+  Revision bump: Don't install npwrapper.so as a plugin, as it is just a
+  placeholder (see comment #4 on bug #365987).
+
+*nspluginwrapper-1.4.0 (24 May 2011)
+
+  24 May 2011; Patrick McLean <chutzpah@gentoo.org>
+  +nspluginwrapper-1.4.0.ebuild,
+  +files/nspluginwrapper-1.4.0-parallel-make.patch:
+  Version bump, bug #365987. Clean dependency on setarch as it is no longer in
+  the tree. Add patch to make installation work with parallel make.
 
   27 Mar 2011; Pacho Ramos <pacho@gentoo.org> nspluginwrapper-1.2.2-r2.ebuild,
   nspluginwrapper-1.3.0.ebuild:

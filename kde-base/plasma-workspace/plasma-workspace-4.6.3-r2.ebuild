@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/plasma-workspace/plasma-workspace-4.6.3-r2.ebuild,v 1.1 2011/05/22 18:20:36 dilfridge Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/plasma-workspace/plasma-workspace-4.6.3-r2.ebuild,v 1.4 2011/05/28 22:06:43 dilfridge Exp $
 
 EAPI=3
 
@@ -15,7 +15,6 @@ KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="debug google-gadgets gps python qalculate +rss semantic-desktop xinerama"
 
 COMMONDEPEND="
-	dev-libs/boost
 	$(add_kdebase_dep kdelibs 'semantic-desktop=')
 	$(add_kdebase_dep kephal)
 	$(add_kdebase_dep ksysguard)
@@ -43,6 +42,7 @@ COMMONDEPEND="
 	xinerama? ( x11-libs/libXinerama )
 "
 DEPEND="${COMMONDEPEND}
+	dev-libs/boost
 	x11-proto/compositeproto
 	x11-proto/damageproto
 	x11-proto/fixesproto
@@ -74,8 +74,8 @@ KMLOADLIBS="libkworkspace libplasmaclock libplasmagenericshell libtaskmanager"
 PATCHES=(
 	"${FILESDIR}/${PN}-4.4.2-xinerama_cmake_automagic.patch"
 	"${FILESDIR}/${PN}-4.6.2-optional_akonadi-server.patch"
-	"${FILESDIR}/${PN}-4.6.2-panelplacement.patch"
 	"${FILESDIR}/${PN}-4.6.3-dduplicate.patch"
+	"${FILESDIR}/${PN}-4.6.3-gpsdapi.patch"
 )
 
 pkg_setup() {

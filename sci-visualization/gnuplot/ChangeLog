@@ -1,6 +1,19 @@
 # ChangeLog for sci-visualization/gnuplot
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-visualization/gnuplot/ChangeLog,v 1.154 2011/05/07 10:16:23 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-visualization/gnuplot/ChangeLog,v 1.158 2011/05/29 19:30:39 ottxor Exp $
+
+  29 May 2011; Christoph Junghans <ottxor@gentoo.org> gnuplot-4.4.3-r1.ebuild:
+  Avoid emacs automagic (xemacs without texinfo - bug #366129#c10)
+
+  29 May 2011; Ulrich Mueller <ulm@gentoo.org> gnuplot-4.4.3-r1.ebuild:
+  Don't depend on Emacs with USE="-emacs -xemacs", bug 369097. Update outdated
+  texinfo file, bug 366129.
+
+*gnuplot-4.4.3-r1 (28 May 2011)
+
+  28 May 2011; Christoph Junghans <ottxor@gentoo.org> +gnuplot-4.4.3-r1.ebuild,
+  metadata.xml:
+  avoid outdated documentation from the gnuplot.texi (bug #366129#c15)
 
   07 May 2011; Ulrich Mueller <ulm@gentoo.org> gnuplot-4.2.6-r2.ebuild,
   gnuplot-4.4.2-r1.ebuild, gnuplot-4.4.3.ebuild:

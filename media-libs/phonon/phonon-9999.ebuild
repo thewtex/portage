@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/phonon/phonon-9999.ebuild,v 1.7 2011/04/25 17:46:05 dilfridge Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/phonon/phonon-9999.ebuild,v 1.9 2011/05/24 11:21:05 scarabeus Exp $
 
 EAPI=4
 
@@ -13,7 +13,7 @@ EGIT_REPO_URI="git://anongit.kde.org/${PN}"
 LICENSE="LGPL-2.1"
 KEYWORDS=""
 SLOT="0"
-IUSE="aqua debug gstreamer pulseaudio +vlc xine"
+IUSE="aqua debug +gstreamer pulseaudio vlc xine"
 
 COMMON_DEPEND="
 	>=x11-libs/qt-core-4.6.0:4
@@ -44,7 +44,7 @@ DEPEND="${COMMON_DEPEND}
 	dev-util/pkgconfig
 "
 
-REQURIED_USE="|| ( gstreamer vlc xine )"
+REQUIRED_USE="|| ( aqua gstreamer vlc xine )"
 
 src_configure() {
 	local mycmakeargs=(

@@ -1,0 +1,22 @@
+>=sys-libs/ncurses-5.2-r5 dev-libs/lzo mkfont? ( >=media-libs/freetype-2 media-fonts/unifont ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b app-arch/xz-utils
+
+0
+ftp://ftp.gnu.org/gnu/grub/grub-1.99.tar.xz binfont? ( http://www.funtoo.org/archive/grub/unifont-1.0.pf2.xz )
+
+http://www.gnu.org/software/grub/
+GPL-3
+GNU GRUB 2 boot loader
+~amd64 ~x86
+autotools eutils flag-o-matic libtool multilib portability toolchain-funcs
+custom-cflags debug static mkfont +binfont
+
+sys-boot/boot-update
+virtual/bootloader
+3
+
+compile configure install prepare unpack
+
+
+
+
+

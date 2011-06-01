@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12792 2011/05/22 20:23:59 eras Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12807 2011/05/30 15:52:53 hwoarang Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,51 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Markos Chandras <hwoarang@gentoo.org> (30 May 2011)
+# Broken ebuild. Bug #351697
+# - uses symlinked automake files;
+# - doesn't provide autotools files to regen;
+# - does not respect jobserver
+# Masked for removal in 30 days
+media-sound/spiralmodular
+
+# Markos Chandras <hwoarang@gentoo.org> (30 May 2011)
+# Does not build against gcc-4.5.2. Requires obsolete
+# net-libs/rb_libtorrent-0.14.* which does not build
+# against python-2.7. Alternatives: net-p2p/rtorrent
+# Masked for removal in 30 days
+net-p2p/hrktorrent
+
+# Markos Chandras <hwoarang@gentoo.org> (28 May 2011)
+# emesene-2 is on early stage of development and very 
+# unstable
+=net-im/emesene-2*
+
+# Markos Chandras <hwoarang@gentoo.org> (26 May 2011)
+# Masked for testng . Bug #347393
+=net-analyzer/ntop-4.0.3
+
+# Markos Chandras <hwoarang@gentoo.org> (26 May 2011)
+# Masked for testing. Bug #308449
+=net-dialup/freeradius-2.1.10
+
+# Markos Chandras <hwoarang@gentoo.org> (26 May 2011)
+# Mask new beta release series
+=net-p2p/qbittorrent-2.8.0_rc*
+
+# Michael Sterrett <mr_bones_@gentoo.org> (25 May 2011)
+# Needs an old version of bison that isn't in the tree anymore.
+dev-lang/open64
+
+# Jeroen Roovers <jer@gentoo.org> (24 May 2011)
+# Opera Next is forever unstable and unsupported.
+# <http://my.opera.com/desktopteam/blog>
+www-client/opera-next
+
+# Peter Volkov <pva@gentoo.org> (24 May 2011)
+# Mask release candidates
+=net-analyzer/wireshark-1.6.0_rc*
 
 # Eray Aslan <eras@gentoo.org> (22 May 2011)
 # Mask release candidates
@@ -72,10 +117,6 @@ media-video/setpwc
 media-video/fame
 media-radio/fmio
 media-video/came
-
-# Tim Harder <radhermit@gentoo.org> (18 May 2011)
-# Mask release candidates
-=media-gfx/hugin-2011.0.0_rc*
 
 # Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (16 May 2011)
 # Masked until reverse dependencies of dev-python/pyxml are updated.
@@ -148,20 +189,6 @@ app-crypt/scsign
 # Bugs 320543, 344723
 # Removal in 30 days
 dev-python/cgal-python
-
-# Christian Faulhammer <fauli@gentoo.org> (25 Apr 2011)
-# Abandoned by upstream, bug 364775
-# Use sql.el shipped with GNU Emacs 21 onwards, which is superior
-# Removal in 30 days
-app-emacs/psql
-
-# Hans de Graaff <graaff@gentoo.org> (24 Apr 2011)
-# Masked for removal on 20110524
-# Legacy bugfix code for very old versions of dev-lang/ruby,
-# still required up to now by www-servers/mongrel.
-# No longer needed and not applicable to dev-lang/ruby versions
-# that are still in the tree.
-dev-ruby/cgi_multipart_eof_fix
 
 # Theo Chatzimichos <tampakrap@gentoo.org> (23 Apr 2011)
 # Mask KDEPIM 4.6 beta ebuilds
@@ -246,10 +273,6 @@ dev-php5/php-libvirt
 >=x11-wm/metacity-2.34
 >=media-gfx/gthumb-2.13
 >=gnome-extra/nautilus-open-terminal-0.19
-
-# Markos Chandras <hwoarang@gentoo.org> (10 Apr 2011)
-# Mask new beta release series
-=net-p2p/qbittorrent-2.8.0_beta*
 
 # Diego E. Pettenò <flameeyes@gentoo.org> (8 Apr 2011)
 
@@ -514,11 +537,6 @@ www-apps/horde-groupware
 # Bugs: 303965, 323559 and 344585
 app-text/ptex
 
-# MATSUU Takuto <matsuu@gentoo.org> (08 Oct 2010)
-# testing mask for development series
->=app-i18n/ibus-1.3.99
->=app-i18n/ibus-pinyin-1.3.99
-
 # Markos Chandras <hwoarang@gentoo.org> (01 Nov 2010)
 # Masking alpha releases
 net-analyzer/ncrack
@@ -530,11 +548,6 @@ net-analyzer/ncrack
 # Michael Sterrett <mr_bones_@gentoo.org> (28 Oct 2010)
 # testing mask for upcoming nasm releases
 >=dev-lang/nasm-2.09.999
-
-# Tony Vroon <chainsaw@gentoo.org> (27 Oct 2010)
-# This is very new, very exciting and quite probably not ready for your
-# production kit yet. Bug reports? Sure, if they have patches!
->=net-misc/asterisk-1.8.0
 
 # Markos Chandras <hwoarang@gentoo.org> (26 Oct 2010)
 # master branch is heavily broken at the moment. Use
@@ -645,10 +658,6 @@ app-crypt/hmaccalc
 # Masked for testing, and some testsuite failures.
 # Bug 313769
 =sys-libs/db-5.0*
-
-# Peter Volkov <pva@gentoo.org> (09 May 2010)
-# Fails to build/work, bug #319085
-net-analyzer/ipac-ng
 
 # Tomáš Chvátal <scarabeus@gentoo.org> (27 Apr 2010)
 # Replaced by >sci-libs/netcdf-4.0

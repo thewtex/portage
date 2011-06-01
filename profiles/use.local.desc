@@ -488,6 +488,7 @@ app-i18n/tomoe:hyperestraier - Enable support for app-text/hyperestraier
 app-i18n/uim:anthy - Enable support for app-i18n/anthy input method
 app-i18n/uim:eb - Enable support for dev-libs/eb
 app-i18n/uim:ffi - Enable support for virtual/libffi
+app-i18n/uim:gtk3 - Enable support for x11-libs/gtk+:3
 app-i18n/uim:prime - Enable support for app-i18n/prime
 app-i18n/uim:skk - Enable support for app-i18n/skk-jisyo
 app-laptop/ibam:gkrellm - Enable building of app-admin/gkrellm module
@@ -713,6 +714,7 @@ app-text/hyperestraier:mecab - Enable app-text/mecab support for Estraier
 app-text/lcdf-typetools:kpathsea - Enable integration with kpathsea search library (TeX related)
 app-text/libwpd:tools - Build miscellaneous tools
 app-text/lodgeit:vim - Install a vim plugin allowing to paste and download from within vim
+app-text/mathtex:png - Generate png images by default instead of gif
 app-text/namazu:kakasi - Enable kakasi support (dev-perl/Text-Kakasi)
 app-text/pandoc:highlight - Add support for syntax highlighting with dev-haskell/highlighting-kate
 app-text/pdf2djvu:graphicsmagick - Enable media-gfx/graphicsmagick support
@@ -1457,7 +1459,7 @@ dev-vcs/svk:patch - Enable patch creation, import support
 games-action/abuse:demo - Use the demo data instead of the full game
 games-action/abuse:levels - Install user-created levels (fRaBs)
 games-action/abuse:sound - Install optional sound data
-games-action/chromium:mixer - Enables media-libs/sdl-mixer sound backend instead of media-libs/openal one.
+games-action/chromium-bsu:mixer - Enables media-libs/sdl-mixer sound backend instead of media-libs/openal one.
 games-action/d1x-rebirth:awe32 - Enable AWE32 support
 games-action/d1x-rebirth:demo - Use the demo data instead of the full game
 games-action/d1x-rebirth:mixer - Enable mixer support
@@ -1756,6 +1758,7 @@ kde-base/solid:wicd - Enable Wicd wired and wireless network manager.
 kde-base/step:qalculate - Enable the libqalculate library for unit conversion
 kde-misc/kdiff3:konqueror - Enable integration with konqueror
 kde-misc/knetworkmanager:consolekit - Enable support for sys-auth/consolekit
+kde-misc/synaptiks:upower - Handle mouse devices correctly across suspend and resume with upower
 kde-misc/tellico:addressbook - Add support for kdepim addressbook (kabc)
 lxde-base/lxdm:consolekit - Enables support for authorization using consolekit
 mail-client/alpine:chappa - enhance alpine by applying Eduardo Chappa's patches
@@ -2715,6 +2718,7 @@ media-video/vlc:wingdi - Enable Win32 GDI module.
 media-video/vlc:wma-fixed - Enables fixed point WMA decoder.
 media-video/vlc:zvbi - Enables support for teletext subtitles via the zvbi library.
 media-video/winki:mjpeg - Enables mjpegtools support
+media-video/x264-encoder:system-libx264 - Use the system x264 library
 media-video/xine-ui:vdr - Enables Video Disk Recorder support
 net-analyzer/aimsniff:http - Install the WAS (Web AIM Sniff) frontend
 net-analyzer/barnyard:sguil - Enable sguil (The Analyst Console for Network Security Monitoring) support
@@ -2858,7 +2862,6 @@ net-dns/pdns:opendbx - Enable the OpenDBX backend
 net-dns/pdnsd:isdn - Linux-only: check status of ippp interfaces with ISDN-specific system calls.
 net-dns/pdnsd:urandom - Linux-only: use /dev/urandom (pseudo-random number generation) instead of the default use of random() PRNG.
 net-dns/unbound:gost - Enable GOST support
-net-dns/unbound:libevent - Use dev-libs/libevent instead of internal select based events
 net-firewall/arno-iptables-firewall:plugins - Install optional plugins
 net-firewall/ipsec-tools:hybrid - Makes available both mode-cfg and xauth support
 net-firewall/ipsec-tools:idea - Enable support for the patented IDEA algorithm
@@ -2971,6 +2974,7 @@ net-im/ekg2:oracle - Support logging messages into Oracle database.
 net-im/ekg2:sqlite - Support logging messages into SQLite2 database. If 'sqlite3' is set too, it will be used instead.
 net-im/ekg2:sqlite3 - Support logging messages into SQLite3 database. If 'sqlite' is set too, SQLite3 will be used.
 net-im/ekg2:ssl - Enable the complete SSL/TLS support through OpenSSL. This also enables the 'sim' plugin which relies on OpenSSL.
+net-im/emesene:webcam - Enable support for webcam
 net-im/empathy:map - Enable world map support through media-libs/libchamplain.
 net-im/empathy:nautilus - Enable nautilus-sendto support
 net-im/empathy:webkit - Build support for Adium-style HTML-based conversation window themes using net-libs/webkit-gtk
@@ -3063,6 +3067,8 @@ net-irc/atheme:largenet - Enable support/tweaks for large networks
 net-irc/bip:freenode - Enables freenode-specific functionality. Currently that is only support for mute lists (MODE #channel +q).
 net-irc/bip:noctcp - Disable the automatic CTCP VERSION reply which is often exploited by malicious people to cause a DoS (reconnect due to flooding).
 net-irc/bip:oidentd - Enable oidentd support
+net-irc/epic5:archive - Use app-arch/libarchive to use zip and tar archives from scripts.
+net-irc/epic5:valgrind - Compile against dev-util/valgrind headers to improve memory-leak checking when running epic5 under valgrind.
 net-irc/ezbounce:boost - Compile against dev-libs/boost libraries
 net-irc/inspircd:openssl - Build dev-libs/openssl module
 net-irc/kvirc:dcc_video - Support video connections over DCC protocol
@@ -3295,6 +3301,7 @@ net-mail/vpopmail:clearpasswd - Enables cleartext password storage in the vpassw
 net-mail/vpopmail:ipalias - Enables enable-ip-alias-domains
 net-mail/vpopmail:maildrop - Enables mail-filter/maildrop support in vdelivermail
 net-mail/vpopmail:spamassassin - Enables mail-filter/spamassassin support
+net-misc/apt-cacher-ng:fuse - Install the sys-fs/fuse based acngfs, to use a userspace filesystem for the apt cache.
 net-misc/aria2:ares - Enables support for asynchronous DNS using the c-ares library
 net-misc/aria2:bittorrent - Enables support for the bittorrent protocol
 net-misc/aria2:metalink - Enables support for metalink
@@ -3304,7 +3311,6 @@ net-misc/asterisk:dahdi - Support Digium compatible hardware (formerly known as 
 net-misc/asterisk:gtalk - Enable support for Google Talk services
 net-misc/asterisk:h323 - Enable support for the H323 telephony protocol
 net-misc/asterisk:http - Enable embedded web server
-net-misc/asterisk:misdn - Build with mISDN (chan_misdn) support for BRI ISDN cards
 net-misc/asterisk:newt - Include additional tools that require redhats windowing toolkit
 net-misc/asterisk:osplookup - Support secure peering using the Open Settlement Protocol
 net-misc/asterisk:samples - Install sample sound and configuration files (default: on)
@@ -4208,7 +4214,6 @@ sys-kernel/dracut:nfs - Add support for NFS
 sys-kernel/dracut:uswsusp - Add support for uswsusp (sys-power/suspend)
 sys-kernel/dracut:xen - Add support for Xen
 sys-kernel/gentoo-sources:deblob - Remove binary blobs from kernel sources to provide libre license compliance.
-sys-kernel/gentoo-sources:ultra1 - Enable if you have a SUN Ultra 1 with a HME interface
 sys-kernel/hardened-sources:deblob - Remove binary blobs from kernel sources to provide libre license compliance.
 sys-kernel/linux-docs:html - Install HTML documentation
 sys-kernel/mips-sources:cobalt - Enables support for Cobalt Microserver hardware (Qube2/RaQ2)
@@ -4366,6 +4371,7 @@ www-misc/vdradmin-am:vdr - Support for media-video/vdr. Disable this if the VDR 
 www-misc/xxv:themes - Enable more themes via x11-themes/xxv-skins
 www-plugins/adobe-flash:32bit - For amd64-multilib, installs the 32-bit plugin
 www-plugins/adobe-flash:64bit - For amd64-multilib, installs the native 64-bit plugin
+www-plugins/adobe-flash:bindist - With USE="-bindist", applies a binary patch to the native 64-bit plugin for compatibility with glibc-2.13 (Bug #354073). Required due to the non-modification clause in Adobe's license.
 www-plugins/adobe-flash:kde - Enables a KCM plugin for configuring flash player preferences (32-bit KDE4 only)
 www-plugins/adobe-flash:vdpau - Enables VDPAU support to offload video processing (32-bit flash player only)
 www-plugins/gnash:agg - Rendering based on the Anti-Grain Geometry Rendering Engine library
