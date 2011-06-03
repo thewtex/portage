@@ -11,6 +11,7 @@ HOMEPAGE="http://iscsitarget.sourceforge.net/"
 
 if [[ ${PV} == "9999" ]] ; then
 	inherit subversion autotools
+	KEYWORDS=""
 else
 	inherit autotools
 	SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
@@ -32,7 +33,6 @@ ERROR_CFG="iscsitarget needs support for CRC32C in your kernel."
 
 src_unpack() {
 	if [[ ${PV} == "9999" ]] ; then
-		KEYWORDS=""
 		subversion_src_unpack
 	else
 		unpack ${A}
