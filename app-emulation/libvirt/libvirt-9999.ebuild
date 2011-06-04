@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/libvirt/libvirt-9999.ebuild,v 1.2 2011/03/28 07:57:02 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/libvirt/libvirt-9999.ebuild,v 1.5 2011/06/03 22:21:55 cardoe Exp $
 
 #BACKPORTS=1
 
@@ -16,7 +16,7 @@ PYTHON_DEPEND="python? 2:2.4"
 #RESTRICT_PYTHON_ABIS="3.*"
 #SUPPORT_PYTHON_ABIS="1"
 
-inherit eutils python ${AUTOTOOLIZE+autotools}
+inherit eutils python ${AUTOTOOLIZE+autotools} ${GIT_ECLASS}
 
 if [[ ${PV} = *9999* ]]; then
 	SRC_URI=""
@@ -33,7 +33,7 @@ DESCRIPTION="C toolkit to manipulate virtual machines"
 HOMEPAGE="http://www.libvirt.org/"
 LICENSE="LGPL-2.1"
 SLOT="0"
-IUSE="avahi caps debug iscsi +json +libvirtd lvm +lxc macvtap +network nfs \
+IUSE="avahi caps debug iscsi +json +libvirtd lvm +lxc macvtap nfs \
 	nls numa openvz parted pcap phyp policykit python qemu sasl selinux udev \
 	uml virtualbox virt-network xen"
 # IUSE=one : bug #293416 & bug #299011
@@ -134,7 +134,7 @@ src_configure() {
 	myconf="${myconf} --with-esx"
 
 	## additional host drivers
-	myconf="${myconf} $(use_with network)"
+	myconf="${myconf} $(use_with virt-network network)"
 	myconf="${myconf} --with-storage-fs"
 	myconf="${myconf} $(use_with lvm storage-lvm)"
 	myconf="${myconf} $(use_with iscsi storage-iscsi)"
@@ -209,7 +209,7 @@ src_install() {
 	use libvirtd || return 0
 	# From here, only libvirtd-related instructions, be warned!
 
-	newinitd "${FILESDIR}/libvirtd.init-r2" libvirtd || die
+	newinitd "${FILESDIR}/libvirtd.init-r4" libvirtd || die
 	newconfd "${FILESDIR}/libvirtd.confd-r2" libvirtd || die
 
 	keepdir /var/lib/libvirt/images
