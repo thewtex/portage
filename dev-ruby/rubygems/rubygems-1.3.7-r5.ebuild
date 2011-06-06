@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/rubygems/rubygems-1.3.7-r3.ebuild,v 1.3 2010/08/18 10:29:35 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/rubygems/rubygems-1.3.7-r5.ebuild,v 1.1 2011/05/13 17:49:31 graaff Exp $
 
 EAPI="3"
 
@@ -14,13 +14,13 @@ LICENSE="|| ( Ruby GPL-2 )"
 
 SRC_URI="mirror://rubyforge/${PN}/${P}.tgz"
 
-KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~mips ~ppc64 ~s390 ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~x64-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 SLOT="0"
 IUSE="server test"
 
 RDEPEND="
 	ruby_targets_jruby? ( >=dev-java/jruby-1.4.0-r5 )
-	ruby_targets_ruby19? ( >=dev-lang/ruby-1.9.2_rc2 )"
+	ruby_targets_ruby19? ( >=dev-lang/ruby-1.9.2 )"
 
 # index_gem_repository.rb
 PDEPEND="server? ( dev-ruby/builder[ruby_targets_ruby18] )"
@@ -54,6 +54,14 @@ all_ruby_prepare() {
 		test/test_gem.rb || die
 }
 
+each_ruby_prepare() {
+	case "${RUBY}" in
+		*ruby19)
+			epatch "${FILESDIR}/${P}-ruby19.patch" || die
+			;;
+	esac
+}
+
 each_ruby_compile() {
 	# Not really a build but...
 	sed -i -e 's:#!.*:#!'"${RUBY}"':' bin/gem
@@ -77,7 +85,8 @@ each_ruby_install() {
 
 	case "${RUBY}" in
 		*ruby19)
-			insinto $(ruby_rbconfig_value 'sitelibdir')
+			local sld=$(ruby_rbconfig_value 'sitelibdir')
+			insinto ${sld#${EPREFIX}}  # bug #320813
 			newins "${FILESDIR}/auto_gem.rb.ruby19" auto_gem.rb || die
 			;;
 		*)

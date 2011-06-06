@@ -1,10 +1,10 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/ruby/ruby-1.9.2_rc2.ebuild,v 1.3 2010/07/21 12:18:43 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/ruby/ruby-1.9.2_rc2-r1.ebuild,v 1.3 2011/01/06 10:10:38 ssuominen Exp $
 
 EAPI=2
 
-PATCHSET=2
+#PATCHSET=
 
 inherit autotools eutils flag-o-matic multilib versionator
 
@@ -12,10 +12,9 @@ MY_P="${PN}-$(replace_version_separator 3 '-')"
 S=${WORKDIR}/${MY_P}
 
 SLOT=$(get_version_component_range 1-2)
-MY_SUFFIX=$SLOT
-#MY_SUFFIX=$(delete_version_separator 1 ${SLOT})
-# 1.8 and 1.9 series disagree on this
-RUBYVERSION=$(get_version_component_range 1-3)
+MY_SUFFIX=$(delete_version_separator 1 ${SLOT})
+# 1.9.2 still uses 1.9.1
+RUBYVERSION=1.9.1
 
 if [[ -n ${PATCHSET} ]]; then
 	if [[ ${PVR} == ${PV} ]]; then
@@ -33,8 +32,11 @@ SRC_URI="mirror://ruby/${MY_P}.tar.bz2
 		 http://dev.gentoo.org/~flameeyes/ruby-team/${PN}-patches-${PATCHSET}.tar.bz2"
 
 LICENSE="|| ( Ruby GPL-2 )"
-KEYWORDS="~amd64 ~hppa ~x86 ~x86-fbsd"
-IUSE="berkdb debug doc examples gdbm ipv6 rubytests socks5 ssl tk xemacs ncurses +readline libedit"
+KEYWORDS="~amd64 ~hppa ~ppc ~x86 ~x86-fbsd"
+IUSE="berkdb debug doc examples gdbm ipv6 rubytests socks5 ssl tk xemacs ncurses +readline yaml" #libedit
+
+# libedit support is removed everywhere because of this upstream bug:
+# http://redmine.ruby-lang.org/issues/show/3698
 
 RDEPEND="
 	berkdb? ( sys-libs/db )
@@ -43,27 +45,31 @@ RDEPEND="
 	socks5? ( >=net-proxy/dante-1.1.13 )
 	tk? ( dev-lang/tk[threads] )
 	ncurses? ( sys-libs/ncurses )
-	libedit? ( dev-libs/libedit )
-	!libedit? ( readline? ( sys-libs/readline ) )
-	dev-libs/libffi
+	readline?  ( sys-libs/readline )
+	yaml? ( dev-libs/libyaml )
+	virtual/libffi
 	sys-libs/zlib
 	>=app-admin/eselect-ruby-20100402
 	!=dev-lang/ruby-cvs-${SLOT}*
 	!<dev-ruby/rdoc-2
 	!dev-ruby/rexml"
+#	libedit? ( dev-libs/libedit )
+#	!libedit? ( readline? ( sys-libs/readline ) )
+
 DEPEND="${RDEPEND}"
 PDEPEND="xemacs? ( app-xemacs/ruby-modes )"
-
-PROVIDE="virtual/ruby"
 
 src_prepare() {
 	EPATCH_FORCE="yes" EPATCH_SUFFIX="patch" \
 		epatch "${WORKDIR}/patches"
 
-	einfo "Removing rake and rubygems..."
-	# Strip rake and rubygems
-	rm -rf bin/rake lib/rake.rb lib/rake || die "rm rake failed"
-	rm -rf bin/gem || die "rm gem failed"
+	einfo "Unbundling gems..."
+	rm -r \
+		{bin,lib}/{rake,rdoc}* \
+		{lib,ext}/racc* \
+		ext/json \
+		bin/gem \
+		|| die "removal failed"
 
 	# Fix a hardcoded lib path in configure script
 	sed -i -e "s:\(RUBY_LIB_PREFIX=\"\${prefix}/\)lib:\1$(get_libdir):" \
@@ -97,15 +103,16 @@ src_configure() {
 	# ipv6 hack, bug 168939. Needs --enable-ipv6.
 	use ipv6 || myconf="${myconf} --with-lookup-order-hack=INET"
 
-	if use libedit; then
-		einfo "Using libedit to provide readline extension"
-		myconf="${myconf} --enable-libedit --with-readline"
-	elif use readline; then
-		einfo "Using readline to provide readline extension"
-		myconf="${myconf} --with-readline"
-	else
-		myconf="${myconf} --without-readline"
-	fi
+#	if use libedit; then
+#		einfo "Using libedit to provide readline extension"
+#		myconf="${myconf} --enable-libedit --with-readline"
+#	elif use readline; then
+#		einfo "Using readline to provide readline extension"
+#		myconf="${myconf} --with-readline"
+#	else
+#		myconf="${myconf} --without-readline"
+#	fi
+	myconf="${myconf} $(use_with readline)"
 
 	econf \
 		--program-suffix=${MY_SUFFIX} \
@@ -121,6 +128,7 @@ src_configure() {
 		$(use_with ssl openssl) \
 		$(use_with tk) \
 		$(use_with ncurses curses) \
+		$(use_with yaml psych) \
 		${myconf} \
 		--enable-option-checking=no \
 		|| die "econf failed"
@@ -155,7 +163,7 @@ src_install() {
 	local MINIRUBY=$(echo -e 'include Makefile\ngetminiruby:\n\t@echo $(MINIRUBY)'|make -f - getminiruby)
 
 	LD_LIBRARY_PATH="${D}/usr/$(get_libdir)${LD_LIBRARY_PATH+:}${LD_LIBRARY_PATH}"
-	RUBYLIB="${S}:${D}/usr/$(get_libdir)/ruby19/${RUBYVERSION}"
+	RUBYLIB="${S}:${D}/usr/$(get_libdir)/ruby/${RUBYVERSION}"
 	for d in $(find "${S}/ext" -type d) ; do
 		RUBYLIB="${RUBYLIB}:$d"
 	done
@@ -163,8 +171,8 @@ src_install() {
 
 	emake DESTDIR="${D}" install || die "make install failed"
 
-	keepdir $(${MINIRUBY} -rrbconfig -e "print Config::CONFIG['sitelibdir']")
-	keepdir $(${MINIRUBY} -rrbconfig -e "print Config::CONFIG['sitearchdir']")
+	# Remove installed rubygems copy
+	rm -r "${D}/usr/$(get_libdir)/ruby/${RUBYVERSION}/rubygems" || die "rm rubygems failed"
 
 	if use doc; then
 		make DESTDIR="${D}" install-doc || die "make install-doc failed"

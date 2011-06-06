@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/ruby/ruby-1.8.7_p299.ebuild,v 1.2 2010/07/20 23:07:03 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/ruby/ruby-1.8.7_p334-r1.ebuild,v 1.7 2011/06/03 17:21:58 armin76 Exp $
 
 EAPI=2
 
@@ -30,7 +30,7 @@ SRC_URI="mirror://ruby/${SLOT}/${MY_P}.tar.bz2
 		 http://dev.gentoo.org/~flameeyes/ruby-team/${PN}-patches-${PATCHSET}.tar.bz2"
 
 LICENSE="|| ( Ruby GPL-2 )"
-KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 s390 sh sparc x86 sparc-fbsd x86-fbsd"
+KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ~ppc64 s390 sh sparc x86 ~sparc-fbsd ~x86-fbsd"
 IUSE="+berkdb debug doc examples +gdbm ipv6 rubytests socks5 ssl threads tk xemacs ncurses +readline libedit"
 
 RDEPEND="
@@ -43,14 +43,12 @@ RDEPEND="
 	libedit? ( dev-libs/libedit )
 	!libedit? ( readline? ( sys-libs/readline ) )
 	sys-libs/zlib
-	>=app-admin/eselect-ruby-20091225
+	>=app-admin/eselect-ruby-20100603
 	!=dev-lang/ruby-cvs-${SLOT}*
 	!<dev-ruby/rdoc-2
 	!dev-ruby/rexml"
 DEPEND="${RDEPEND}"
 PDEPEND="xemacs? ( app-xemacs/ruby-modes )"
-
-PROVIDE="virtual/ruby"
 
 src_prepare() {
 	EPATCH_FORCE="yes" EPATCH_SUFFIX="patch" \
@@ -175,7 +173,7 @@ src_install() {
 
 	if use rubytests; then
 		pushd test
-		insinto /usr/share/${PN}-${SLOT}
+		insinto /usr/share/${PN}-${SLOT}/test
 		doins -r .
 		popd
 	fi
