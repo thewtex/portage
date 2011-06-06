@@ -1,0 +1,22 @@
+>=media-libs/libpng-1.2.16 >=x11-libs/gtk+-2.12:2 >=sys-apps/openrc-0.8.2-r1 pango? ( >=x11-libs/pango-1.21 ) video_cards_intel? ( x11-libs/libdrm[video_cards_intel] ) video_cards_nouveau? ( x11-libs/libdrm[video_cards_nouveau] ) video_cards_radeon? ( x11-libs/libdrm[video_cards_radeon] ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b
+>=media-libs/libpng-1.2.16 >=x11-libs/gtk+-2.12:2 >=sys-apps/openrc-0.8.2-r1 pango? ( >=x11-libs/pango-1.21 ) video_cards_intel? ( x11-libs/libdrm[video_cards_intel] ) video_cards_nouveau? ( x11-libs/libdrm[video_cards_nouveau] ) video_cards_radeon? ( x11-libs/libdrm[video_cards_radeon] ) >=sys-kernel/dracut-008-r1[dracut_modules_plymouth]
+0
+http://cgit.freedesktop.org/plymouth/snapshot/plymouth-0.8.3.tar.bz2 http://dev.gentoo.org/~aidecoe/distfiles/sys-boot/plymouth/gentoo-logo.png http://dev.gentoo.org/~aidecoe/distfiles/sys-boot/plymouth/plymouth-openrc-plugin-0.1.1.tar.bz2
+
+http://cgit.freedesktop.org/plymouth/
+GPL-2
+Graphical boot animation (splash) and logger
+~amd64 ~x86
+autotools autotools-utils base eutils libtool multilib portability toolchain-funcs
+video_cards_intel video_cards_nouveau video_cards_radeon +branding gdm +pango static-libs
+
+
+
+3
+
+compile configure install postinst prepare test unpack
+
+
+
+
+

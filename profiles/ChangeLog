@@ -1,10 +1,37 @@
 # ChangeLog for profile directory
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.5414 2011/06/03 22:43:09 radhermit Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.5422 2011/06/06 08:05:43 mgorny Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  06 Jun 2011; Michał Górny <mgorny@gentoo.org> package.mask:
+  Mask sys-apps/systemd before adding.
+
+  05 Jun 2011; Markos Chandras <hwoarang@gentoo.org> package.mask:
+  net-misc/guidedog will stay
+
+  05 Jun 2011; Jeroen Roovers <jer@gentoo.org> package.mask:
+  Mask sys-block/parted-3 (bug #370163). Fix two date entries.
+
+  05 Jun 2011; Sergei Trofimovich <slyfox@gentoo.org> package.mask:
+  Packages, depending on <ghc-6.10 were removed from the tree. Removed masks.
+
+  05 Jun 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  +desc/grub_platforms.desc:
+  Add grub_platforms.desc to describe USE_EXPAND for grub2 (for now used just
+  in my dev overlay).
+
+  05 Jun 2011; Hans de Graaff <graaff@gentoo.org> package.mask:
+  Add virtual/ruby-threads to the ruby 1.9 mask.
+
+  04 Jun 2011; Eray Aslan <eras@gentoo.org> package.mask:
+  Mask net-mail/gml for removal
+
+  04 Jun 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> package.mask:
+  Remove www-client/chromium-bin mask, the package has been removed from the
+  tree.
 
   03 Jun 2011; Tim Harder <radhermit@gentoo.org> package.mask:
   Mask scribus release candidates.

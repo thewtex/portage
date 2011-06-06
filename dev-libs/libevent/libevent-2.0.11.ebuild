@@ -1,10 +1,10 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libevent/libevent-2.0.11.ebuild,v 1.1 2011/04/28 11:39:23 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libevent/libevent-2.0.11.ebuild,v 1.2 2011/06/05 16:58:47 jer Exp $
 
 EAPI="2"
 
-inherit libtool
+inherit autotools-utils libtool
 
 MY_P="${P}-stable"
 
@@ -42,4 +42,5 @@ src_test() {
 src_install() {
 	emake DESTDIR="${D}" install || die "make install failed"
 	dodoc README ChangeLog
+	use static-libs || remove_libtool_files
 }

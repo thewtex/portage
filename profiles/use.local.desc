@@ -873,6 +873,7 @@ dev-games/physfs:mvl - Enable Descent I/II MVL archive support
 dev-games/physfs:qpak - Enable Quake I/II QPAK archive support
 dev-games/physfs:wad - Enable Doom WAD archive support
 dev-games/physfs:zip - Enable ZIP archive support
+dev-haskell/cabal-install:noprefs - Ignore 'preferred-versions' file from hackage's tarball.
 dev-haskell/citeproc-hs:bibutils - Use Chris Putnam's app-text/bibutils
 dev-haskell/citeproc-hs:network - Use dev-haskell/network and dev-haskell/http to retrieve CSL file from URIs.
 dev-haskell/gtk:gio - Add glib's GIO bindings.
@@ -1252,6 +1253,9 @@ dev-python/pygobject:introspection - Use dev-libs/gobject-introspection for intr
 dev-python/pygobject:libffi - Enable support to connect to signals on python objects from C.
 dev-python/pylons:genshi - Add optional genshi support
 dev-python/pylons:jinja - Add optional jinja support
+dev-python/pypy:jit - Enable the JIT compiler
+dev-python/pypy:sandbox - Enable sandboxing functionality
+dev-python/pypy:stackless - Run in stackless mode
 dev-python/pyudev:pygobject - Install PyGobject binding
 dev-python/pyudev:pyqt4 - Install PyQt4 binding
 dev-python/pyudev:pyside - Install PySide binding
@@ -3523,6 +3527,7 @@ net-nds/openldap:odbc - Enable ODBC and SQL backend options
 net-nds/openldap:overlays - Enable contributed OpenLDAP overlays
 net-nds/openldap:smbkrb5passwd - Enable overlay for syncing ldap, unix and lanman passwords
 net-nds/tac_plus:finger - Adds support for checking user counts via fingering the NAS
+net-nds/tac_plus:maxsess - Enforce a limit on maximum sessions per user
 net-news/liferea:dbus - Enables the DBUS connector for liferea, so feeds can be managed from external programs
 net-news/liferea:libnotify - Enable popup notifications
 net-news/liferea:lua - Enable lua scripting
@@ -4006,6 +4011,7 @@ sys-apps/shadow:audit - Enable support for sys-process/audit
 sys-apps/shadow:nousuid - When nousuid is enabled only su from the shadow package will be installed with the setuid bit (mainly for single user systems)
 sys-apps/smartmontools:minimal - Do not install the monitoring daemon and associated scripts.
 sys-apps/superiotool:pci - Support for PCI-attached "Super I/Os" (e.g. in VIA VT82686A/B).
+sys-apps/systemd:audit - Enable support for sys-process/audit
 sys-apps/timer_entropyd:debug - Enable printf debugging and logging to the syslog at DEBUG level
 sys-apps/tuxonice-userui:fbsplash - Add support for framebuffer splash
 sys-apps/ucspi-ssl:tls - Add TLS support (see also http://www.suspectclass.com/~sgifford/ucspi-tls/)
@@ -4202,9 +4208,18 @@ sys-fs/owfs:parport - Enable support for the DS1410E parallel port adapter
 sys-fs/owfs:server - Enable building the OWFS server (owserver)
 sys-fs/pysize:psyco - Adds psyco support
 sys-fs/quota:rpc - Enable quota interaction via RPC
+sys-fs/udev:action_modeswitch - switch Mobile Action cables into serial mode
 sys-fs/udev:devfs-compat - Install rules for devfs compatible device names
+sys-fs/udev:edd - create /dev/disk/by-id/edd-* links for BIOS EDD data
 sys-fs/udev:extras - Compile udev-extras requiring external dependencies
+sys-fs/udev:floppy - create historical floppy kernel device nodes (/dev/fd0h1440, ...)
+sys-fs/udev:gudev - enable libudev gobject interface
+sys-fs/udev:hwdb - read vendor/device string database and add it to udev database
+sys-fs/udev:introspection - Use dev-libs/gobject-introspection for introspection
+sys-fs/udev:keymap - map custom hardware's multimedia keys
 sys-fs/udev:old-hd-rules - Install rules for /dev/hd* devices, removed upstream at udev-148
+sys-fs/udev:rule_generator - enable persistent network and optical device rule generator
+sys-fs/udev:udev_acl - apply ACLs for users with local forground sessions
 sys-fs/udisks:remote-access - Control whether connections from other clients over LAN are allowed
 sys-fs/unionfs:nfs - Adds support for NFS file system
 sys-kernel/ck-sources:deblob - Remove binary blobs from kernel sources to provide libre license compliance.
