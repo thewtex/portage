@@ -1,16 +1,14 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/chrony/chrony-1.25.ebuild,v 1.1 2011/05/04 14:36:38 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/chrony/chrony-1.25.ebuild,v 1.2 2011/06/07 16:44:33 jer Exp $
 
 EAPI=2
 
 inherit eutils toolchain-funcs
 
-MY_P="${P/_pre/-pre}"
-
 DESCRIPTION="NTP client and server programs"
 HOMEPAGE="http://chrony.tuxfamily.org/"
-SRC_URI="http://download.tuxfamily.org/${PN}/${MY_P}.tar.gz"
+SRC_URI="http://download.tuxfamily.org/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -22,8 +20,6 @@ RDEPEND="
 	caps? ( sys-libs/libcap )
 "
 DEPEND="${RDEPEND}"
-
-S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 	sed -i "s:/etc/chrony\.:/etc/chrony/chrony.:g" \

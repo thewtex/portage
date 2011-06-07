@@ -1,5 +1,5 @@
->=sys-apps/dbus-1.4.8-r1 >=sys-fs/udev-171 >=sys-apps/util-linux-2.19 sys-libs/libcap audit? ( >=sys-process/audit-2 ) gtk? ( dev-libs/dbus-glib >=dev-libs/glib-2.26 x11-libs/gtk+:2 >=x11-libs/libnotify-0.7 ) pam? ( virtual/pam ) selinux? ( sys-libs/libselinux ) tcpd? ( sys-apps/tcp-wrappers ) gtk? ( dev-lang/vala:0.12 ) >=sys-kernel/linux-headers-2.6.38 || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b
->=sys-apps/dbus-1.4.8-r1 >=sys-fs/udev-171 >=sys-apps/util-linux-2.19 sys-libs/libcap audit? ( >=sys-process/audit-2 ) gtk? ( dev-libs/dbus-glib >=dev-libs/glib-2.26 x11-libs/gtk+:2 >=x11-libs/libnotify-0.7 ) pam? ( virtual/pam ) selinux? ( sys-libs/libselinux ) tcpd? ( sys-apps/tcp-wrappers ) !!sys-apps/systemd-dbus !!sys-apps/systemd-udev !<sys-apps/openrc-0.8.3
+>=sys-apps/dbus-1.4.8-r1 >=sys-fs/udev-171 >=sys-apps/util-linux-2.19 sys-libs/libcap audit? ( >=sys-process/audit-2 ) cryptsetup? ( sys-fs/cryptsetup ) gtk? ( dev-libs/dbus-glib >=dev-libs/glib-2.26 x11-libs/gtk+:2 >=x11-libs/libnotify-0.7 ) pam? ( virtual/pam ) selinux? ( sys-libs/libselinux ) tcpd? ( sys-apps/tcp-wrappers ) gtk? ( dev-lang/vala:0.12 ) >=sys-kernel/linux-headers-2.6.38 || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b
+>=sys-apps/dbus-1.4.8-r1 >=sys-fs/udev-171 >=sys-apps/util-linux-2.19 sys-libs/libcap audit? ( >=sys-process/audit-2 ) cryptsetup? ( sys-fs/cryptsetup ) gtk? ( dev-libs/dbus-glib >=dev-libs/glib-2.26 x11-libs/gtk+:2 >=x11-libs/libnotify-0.7 ) pam? ( virtual/pam ) selinux? ( sys-libs/libselinux ) tcpd? ( sys-apps/tcp-wrappers ) !!sys-apps/systemd-dbus !!sys-apps/systemd-udev !<sys-apps/openrc-0.8.3
 0
 http://www.freedesktop.org/software/systemd/systemd-28.tar.bz2
 
@@ -8,7 +8,7 @@ GPL-2
 systemd is a system and service manager for Linux
 ~amd64 ~x86
 autotools autotools-utils base eutils flag-o-matic libtool linux-info multilib pam portability toolchain-funcs versionator
-audit gtk pam selinux tcpd
+audit cryptsetup gtk pam selinux tcpd
 
 
 
