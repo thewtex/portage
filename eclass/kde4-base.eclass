@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/kde4-base.eclass,v 1.93 2011/05/23 22:56:36 abcd Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/kde4-base.eclass,v 1.96 2011/06/06 21:38:18 abcd Exp $
 
 # @ECLASS: kde4-base.eclass
 # @MAINTAINER:
@@ -133,12 +133,6 @@ OPENGL_REQUIRED="${OPENGL_REQUIRED:-never}"
 # This variable must be set before inheriting any eclasses. Defaults to 'never'.
 MULTIMEDIA_REQUIRED="${MULTIMEDIA_REQUIRED:-never}"
 
-# @ECLASS-VARIABLE: WEBKIT_REQUIRED
-# @DESCRIPTION:
-# Is qt-webkit requred? Possible values are 'always', 'optional' and 'never'.
-# This variable must be set before inheriting any eclasses. Defaults to 'never'.
-WEBKIT_REQUIRED="${WEBKIT_REQUIRED:-never}"
-
 # @ECLASS-VARIABLE: CPPUNIT_REQUIRED
 # @DESCRIPTION:
 # Is cppunit required for tests? Possible values are 'always', 'optional' and 'never'.
@@ -181,12 +175,14 @@ case ${KDEBASE} in
 		if [[ $BUILD_TYPE = live ]]; then
 			# Disable tests for live ebuilds
 			RESTRICT+=" test"
-			# Live ebuilds in kde-base default to kdeprefix by default
-			IUSE+=" +kdeprefix"
-		else
-			# All other ebuild types default to -kdeprefix as before
+		fi
+
+		# Only add the kdeprefix USE flag for older versions, to help
+		# non-portage package managers handle the upgrade
+		if [[ ${PV} < 4.6.4 ]]; then
 			IUSE+=" kdeprefix"
 		fi
+
 		# This code is to prevent portage from searching GENTOO_MIRRORS for
 		# packages that will never be mirrored. (As they only will ever be in
 		# the overlay).
@@ -280,32 +276,6 @@ case ${MULTIMEDIA_REQUIRED} in
 esac
 unset qtmultimediadepend
 
-# WebKit dependencies
-case ${KDE_REQUIRED} in
-	always)
-		qtwebkitusedeps="[kde]"
-		;;
-	optional)
-		qtwebkitusedeps="[kde?]"
-		;;
-	*) ;;
-esac
-qtwebkitdepend="
-	>=x11-libs/qt-webkit-${QT_MINIMAL}:4${qtwebkitusedeps}
-"
-unset qtwebkitusedeps
-case ${WEBKIT_REQUIRED} in
-	always)
-		COMMONDEPEND+=" ${qtwebkitdepend}"
-		;;
-	optional)
-		IUSE+=" webkit"
-		COMMONDEPEND+=" webkit? ( ${qtwebkitdepend} )"
-		;;
-	*) ;;
-esac
-unset qtwebkitdepend
-
 # CppUnit dependencies
 cppuintdepend="
 	dev-util/cppunit
@@ -322,6 +292,17 @@ case ${CPPUNIT_REQUIRED} in
 esac
 unset cppuintdepend
 
+
+# WebKit use dependencies
+case ${KDE_REQUIRED} in
+	always)
+		qtwebkitusedeps="[kde]"
+		;;
+	optional)
+		qtwebkitusedeps="[kde?]"
+		;;
+	*) ;;
+esac
 # KDE dependencies
 # Qt accessibility classes are needed in various places, bug 325461
 kdecommondepend="
@@ -333,6 +314,7 @@ kdecommondepend="
 	>=x11-libs/qt-sql-${QT_MINIMAL}:4[qt3support]
 	>=x11-libs/qt-svg-${QT_MINIMAL}:4
 	>=x11-libs/qt-test-${QT_MINIMAL}:4
+	>=x11-libs/qt-webkit-${QT_MINIMAL}:4${qtwebkitusedeps}
 	!aqua? (
 		x11-libs/libXext
 		x11-libs/libXt
@@ -601,8 +583,11 @@ _calculate_live_repo() {
 				*)
 					# set EGIT_BRANCH and EGIT_COMMIT to ${SLOT}
 					case ${_kmname} in
-						kdeplasma-addons | kdepim | kdepim-runtime | kdepimlibs)
+						kdeplasma-addons | kdepim | kdepim-runtime | kdepimlibs | okular)
 							EGIT_BRANCH="${SLOT}"
+							;;
+						marble)
+							EGIT_BRANCH="kde-${SLOT}"
 							;;
 						*) EGIT_BRANCH="KDE/${SLOT}" ;;
 					esac
@@ -632,10 +617,24 @@ debug-print "${LINENO} ${ECLASS} ${FUNCNAME}: SRC_URI is ${SRC_URI}"
 
 # @FUNCTION: kde4-base_pkg_setup
 # @DESCRIPTION:
-# Do the basic kdeprefix KDEDIR settings and determine with which kde should
+# Do the basic KDEDIR settings and determine with which kde should
 # optional applications link
 kde4-base_pkg_setup() {
 	debug-print-function ${FUNCNAME} "$@"
+
+	if has kdeprefix ${IUSE//+} && use kdeprefix; then
+		eerror "Sorry, kdeprefix support has been removed."
+		eerror "Please remove kdeprefix from your USE variable."
+		die "kdeprefix support has been removed"
+	fi
+
+	if [[ ${CATEGORY}/${PN} != kde-base/kdelibs && ${CATEGORY}/${PN} != kde-base/kde-env ]] && \
+			{ [[ ${KDE_REQUIRED} == always ]] || { [[ ${KDE_REQUIRED} == optional ]] && use kde; }; } && \
+			has_version kde-base/kdelibs[kdeprefix]; then
+		eerror "Sorry, kdeprefix support has been removed."
+		eerror "Please rebuild kdelibs without kdeprefix support."
+		die "kdeprefix support has been removed"
+	fi
 
 	# QA ebuilds
 	[[ -z ${KDE_MINIMAL_VALID} ]] && ewarn "QA Notice: ignoring invalid KDE_MINIMAL (defaulting to ${KDE_MINIMAL})."
@@ -651,40 +650,9 @@ kde4-base_pkg_setup() {
 			( [[ $(gcc-major-version) -eq 4 && $(gcc-minor-version) -le 3 ]] ) \
 		&& die "Sorry, but gcc-4.3 and earlier wont work for KDE (see bug 354837)."
 
-	if [[ ${KDEBASE} = kde-base ]]; then
-		if use kdeprefix; then
-			KDEDIR=/usr/kde/${SLOT}
-		else
-			KDEDIR=/usr
-		fi
-		: ${PREFIX:=${KDEDIR}}
-	else
-		# Determine KDEDIR by loooking for the closest match with KDE_MINIMAL
-		KDEDIR=
-		local kde_minimal_met
-		for slot in ${KDE_SLOTS[@]} ${KDE_LIVE_SLOTS[@]}; do
-			[[ -z ${kde_minimal_met} ]] && [[ ${slot} = ${KDE_MINIMAL} ]] && kde_minimal_met=1
-			if [[ -n ${kde_minimal_met} ]] && has_version "kde-base/kdelibs:${slot}"; then
-				if has_version "kde-base/kdelibs:${slot}[kdeprefix]"; then
-					KDEDIR=/usr/kde/${slot}
-				else
-					KDEDIR=/usr
-				fi
-				break;
-			fi
-		done
-		unset slot
-
-		# Bail out if kdelibs required but not found
-		if [[ ${KDE_REQUIRED} = always ]] || { [[ ${KDE_REQUIRED} = optional ]] && use kde; }; then
-			[[ -z ${KDEDIR} ]] && die "Failed to determine KDEDIR!"
-		else
-			[[ -z ${KDEDIR} ]] && KDEDIR=/usr
-		fi
-
-		: ${PREFIX:=/usr}
-	fi
-	EKDEDIR=${EPREFIX}${KDEDIR}
+	KDEDIR=/usr
+	: ${PREFIX:=/usr}
+	EKDEDIR=${EPREFIX}/usr
 
 	# Point pkg-config path to KDE *.pc files
 	export PKG_CONFIG_PATH="${EKDEDIR}/$(get_libdir)/pkgconfig${PKG_CONFIG_PATH:+:${PKG_CONFIG_PATH}}"
@@ -835,33 +803,13 @@ kde4-base_src_configure() {
 	# Shadow existing /usr installations
 	unset KDEDIRS
 
-	# Handle kdeprefix-ed KDE
-	if [[ ${KDEDIR} != /usr ]]; then
-		# Override some environment variables - only when kdeprefix is different,
-		# to not break ccache/distcc
-		PATH="${EKDEDIR}/bin:${PATH}"
-
-		# Append library search path
-		append-ldflags -L"${EKDEDIR}/$(get_libdir)"
-
-		# Append full RPATH
-		cmakeargs+=(-DCMAKE_SKIP_RPATH=OFF)
-
-		# Set cmake prefixes to allow buildsystem to locate valid KDE installation
-		# when more are present
-		cmakeargs+=(-DCMAKE_SYSTEM_PREFIX_PATH="${EKDEDIR}")
-	fi
-
 	#qmake -query QT_INSTALL_LIBS unavailable when cross-compiling
-	tc-is-cross-compiler && cmakeargs+=(-DQT_LIBRARY_DIR=${ROOT}/usr/lib/qt4)
+	tc-is-cross-compiler && cmakeargs+=(-DQT_LIBRARY_DIR=${ROOT}/usr/$(get_libdir)/qt4)
 	#kde-config -path data unavailable when cross-compiling
 	tc-is-cross-compiler && cmakeargs+=(-DKDE4_DATA_DIR=${ROOT}/usr/share/apps/)
 
-	# Handle kdeprefix in application itself
-	if ! has kdeprefix ${IUSE//+} || ! use kdeprefix; then
-		# If prefix is /usr, sysconf needs to be /etc, not /usr/etc
-		cmakeargs+=(-DSYSCONF_INSTALL_DIR="${EPREFIX}"/etc)
-	fi
+	# sysconf needs to be /etc, not /usr/etc
+	cmakeargs+=(-DSYSCONF_INSTALL_DIR="${EPREFIX}"/etc)
 
 	if [[ $(declare -p mycmakeargs 2>&-) != "declare -a mycmakeargs="* ]]; then
 		mycmakeargs=(${mycmakeargs})
@@ -993,15 +941,6 @@ kde4-base_pkg_postinst() {
 				ewarn "All missing features you report for misc packages will be probably ignored or closed as INVALID."
 			fi
 		fi
-	fi
-	if has kdeprefix ${IUSE//+} && use kdeprefix; then
-		# warning about kdeprefix
-		echo
-		ewarn "WARNING! You have the kdeprefix useflag enabled."
-		eerror "This setting will be removed on or about 2011-06-06."
-		ewarn "You are using this setup at your own risk and the kde team does not"
-		ewarn "take responsibilities for dead kittens."
-		echo
 	fi
 }
 

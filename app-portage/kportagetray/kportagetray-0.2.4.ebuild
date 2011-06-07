@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-portage/kportagetray/kportagetray-0.2.4.ebuild,v 1.1 2010/10/01 22:04:42 dilfridge Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-portage/kportagetray/kportagetray-0.2.4.ebuild,v 1.3 2011/06/07 03:05:21 abcd Exp $
 
 EAPI="3"
 
@@ -31,14 +31,14 @@ IUSE=""
 
 DEPEND="
 	dev-python/PyQt4[svg,dbus]
-	>=kde-base/pykde4-${KDE_MINIMAL}
+	$(add_kdebase_dep pykde4)
 "
 RDEPEND="${DEPEND}
 	app-portage/eix
 	app-portage/genlop
-	>=kde-base/kdesu-${KDE_MINIMAL}
-	>=kde-base/knotify-${KDE_MINIMAL}
-	>=kde-base/konsole-${KDE_MINIMAL}
+	$(add_kdebase_dep kdesu)
+	$(add_kdebase_dep knotify)
+	$(add_kdebase_dep konsole)
 "
 
 pkg_setup() {

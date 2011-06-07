@@ -151,6 +151,9 @@ src_install() {
 	rm -f ${D}/lib/modules/*/source || die
 	rm -f ${D}/lib/modules/*/build || die
 	cd ${D}/lib/modules
+	# module strip:
+	find -iname *.ko -exec strip --strip-debug {} \;
+	# back to the symlink fixup:
 	local moddir="$(ls -d 2*)"
 	ln -s /usr/src/linux-${P} ${D}/lib/modules/${moddir}/source || die
 	ln -s /usr/src/linux-${P} ${D}/lib/modules/${moddir}/build || die
