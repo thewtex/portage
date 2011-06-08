@@ -1,0 +1,22 @@
+X? ( x11-libs/libX11 x11-libs/libSM x11-libs/libICE ) blas? ( virtual/blas ) fftw? ( sci-libs/fftw:3.0 ) gsl? ( sci-libs/gsl ) lapack? ( virtual/lapack ) mpi? ( virtual/mpi ) xml? ( dev-libs/libxml2:2 ) dev-util/pkgconfig >=dev-util/cmake-2.8.1 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+X? ( x11-libs/libX11 x11-libs/libSM x11-libs/libICE ) blas? ( virtual/blas ) fftw? ( sci-libs/fftw:3.0 ) gsl? ( sci-libs/gsl ) lapack? ( virtual/lapack ) mpi? ( virtual/mpi ) xml? ( dev-libs/libxml2:2 ) app-shells/tcsh bash-completion? ( app-admin/eselect )
+0
+test? ( ftp://ftp.gromacs.org/pub/tests/gmxtest-4.0.4.tgz ) doc? ( ftp://ftp.gromacs.org/pub/manual/manual-4.5.4.pdf -> gromacs-manual-4.5.4.pdf ) ftp://ftp.gromacs.org/pub/gromacs/gromacs-4.5.4.tar.gz http://dev.gentoo.org/~alexxy/gromacs/0001-Make-stack-non-executable-for-GAS-assembly.patch.gz http://dev.gentoo.org/~alexxy/gromacs/0002-Make-stack-non-executable-for-ATT-assembly.patch.gz
+test
+http://www.gromacs.org/
+GPL-2
+The ultimate molecular dynamics simulation package
+~alpha ~amd64 ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux
+base bash-completion cmake-utils eutils flag-o-matic multilib portability toolchain-funcs
+X altivec blas doc -double-precision +fftw fkernels gsl lapack mpi +single-precision sse2 test +threads xml zsh-completion bash-completion
+fkernels? ( !threads )
+bash-completion? ( app-shells/bash-completion )
+
+4
+
+compile configure install postinst prepare test unpack
+
+
+
+
+
