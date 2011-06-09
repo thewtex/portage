@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12825 2011/06/08 16:29:06 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12828 2011/06/09 15:25:18 graaff Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,16 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (09 Jun 2011)
+#  on behalf of QA team
+#
+# Fails to build with GCC 4.6; replaced by net-misc/gogo6
+# (same codebase, renamed and reversioned) which is somewhat
+# maintained.
+#
+# Removal on 2011-07-09
+net-misc/gateway6
 
 # Diego E. Pettenò <flameeyes@gentoo.org> (8 Jun 2011)
 # Broken upstream
@@ -148,7 +158,6 @@ media-libs/sdl-gui
 # aatv, bug 364845
 # camsource, bug 365683
 # effectv, bug 365255
-# setpwc, bug 363469 (if saved, reopen bug 121073)
 # fmio, bugs 361581, 350024
 # fame, bug 362993
 # came, bug 361585
@@ -158,7 +167,6 @@ media-video/spcaview
 media-tv/aatv
 media-video/camsource
 media-video/effectv
-media-video/setpwc
 media-video/fame
 media-radio/fmio
 media-video/came
@@ -451,16 +459,6 @@ app-pda/libopensync-plugin-evolution2
 app-pda/libopensync-plugin-gnokii
 app-pda/libopensync-plugin-gpe
 app-pda/multisync-gui
-
-# Hans de Graaff <graaff@gentoo.org> (09 Feb 2011)
-# No longer supported by upstream, and has open security bug.
-# Bug 354249. Masked for removal in 60 days.
-=dev-ruby/rails-2.2*
-=dev-ruby/activerecord-2.2*
-=dev-ruby/activeresource-2.2*
-=dev-ruby/activesupport-2.2*
-=dev-ruby/actionmailer-2.2*
-=dev-ruby/actionpack-2.2*
 
 # MATSUU Takuto <matsuu@gentoo.org> (30 Jan 2011)
 # mask for security bug #352569
