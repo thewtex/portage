@@ -1,5 +1,5 @@
-test? ( ruby_targets_ruby18? ( virtual/ruby-ffi[ruby_targets_ruby18] ) ruby_targets_ree18? ( virtual/ruby-ffi[ruby_targets_ree18] ) ) ruby_targets_ruby18? ( doc? ( dev-ruby/yard[ruby_targets_ruby18] ) ) ruby_targets_ree18? ( doc? ( dev-ruby/yard[ruby_targets_ree18] ) ) ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ree18? ( dev-lang/ruby-enterprise:1.8 ) ruby_targets_ruby18? ( doc? ( dev-ruby/rake[ruby_targets_ruby18] ) ) ruby_targets_ree18? ( doc? ( dev-ruby/rake[ruby_targets_ree18] ) ) ruby_targets_ruby18? ( dev-ruby/rubygems[ruby_targets_ruby18] ) ruby_targets_ree18? ( dev-ruby/rubygems[ruby_targets_ree18] ) test? ( ruby_targets_ruby18? ( dev-ruby/rubygems[ruby_targets_ruby18] ) ruby_targets_ree18? ( dev-ruby/rubygems[ruby_targets_ree18] ) )
-ruby_targets_ruby18? ( virtual/ruby-ffi[ruby_targets_ruby18] ) ruby_targets_ree18? ( virtual/ruby-ffi[ruby_targets_ree18] ) ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ree18? ( dev-lang/ruby-enterprise:1.8 ) ruby_targets_ruby18? ( dev-ruby/rubygems[ruby_targets_ruby18] ) ruby_targets_ree18? ( dev-ruby/rubygems[ruby_targets_ree18] )
+test? ( ruby_targets_ruby18? ( virtual/ruby-ffi[ruby_targets_ruby18] ) ruby_targets_ree18? ( virtual/ruby-ffi[ruby_targets_ree18] ) ruby_targets_jruby? ( virtual/ruby-ffi[ruby_targets_jruby] ) ) ruby_targets_ruby18? ( doc? ( dev-ruby/yard[ruby_targets_ruby18] ) ) ruby_targets_ree18? ( doc? ( dev-ruby/yard[ruby_targets_ree18] ) ) ruby_targets_jruby? ( doc? ( dev-ruby/yard[ruby_targets_jruby] ) ) ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ree18? ( dev-lang/ruby-enterprise:1.8 ) ruby_targets_jruby? ( dev-java/jruby ) ruby_targets_ruby18? ( doc? ( dev-ruby/rake[ruby_targets_ruby18] ) ) ruby_targets_ree18? ( doc? ( dev-ruby/rake[ruby_targets_ree18] ) ) ruby_targets_jruby? ( doc? ( dev-ruby/rake[ruby_targets_jruby] ) ) ruby_targets_ruby18? ( dev-ruby/rubygems[ruby_targets_ruby18] ) ruby_targets_ree18? ( dev-ruby/rubygems[ruby_targets_ree18] ) ruby_targets_jruby? ( dev-ruby/rubygems[ruby_targets_jruby] ) test? ( ruby_targets_ruby18? ( dev-ruby/rubygems[ruby_targets_ruby18] ) ruby_targets_ree18? ( dev-ruby/rubygems[ruby_targets_ree18] ) ruby_targets_jruby? ( dev-ruby/rubygems[ruby_targets_jruby] ) )
+ruby_targets_ruby18? ( virtual/ruby-ffi[ruby_targets_ruby18] ) ruby_targets_ree18? ( virtual/ruby-ffi[ruby_targets_ree18] ) ruby_targets_jruby? ( virtual/ruby-ffi[ruby_targets_jruby] ) ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ree18? ( dev-lang/ruby-enterprise:1.8 ) ruby_targets_jruby? ( dev-java/jruby ) ruby_targets_ruby18? ( dev-ruby/rubygems[ruby_targets_ruby18] ) ruby_targets_ree18? ( dev-ruby/rubygems[ruby_targets_ree18] ) ruby_targets_jruby? ( dev-ruby/rubygems[ruby_targets_jruby] )
 0
 mirror://rubygems/rb-inotify-0.8.5.gem
 
@@ -8,7 +8,7 @@ MIT
 A thorough inotify wrapper for Ruby using FFI.
 ~amd64
 eutils multilib portability ruby-fakegem ruby-ng toolchain-funcs
-test ruby_targets_ruby18 ruby_targets_ree18 doc doc test
+test ruby_targets_ruby18 ruby_targets_ree18 ruby_targets_jruby doc doc test
 
 
 

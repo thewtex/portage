@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-embedded/bitbake/bitbake-1.10.2.ebuild,v 1.5 2011/05/07 18:09:40 tomka Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-embedded/bitbake/bitbake-1.10.2.ebuild,v 1.6 2011/06/09 01:17:27 radhermit Exp $
 
 EAPI="3"
 PYTHON_DEPEND="2:2.5"
@@ -9,7 +9,7 @@ inherit distutils
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="git://git.openembedded.org/bitbake.git"
-	inherit git
+	inherit git-2
 	SRC_URI=""
 	KEYWORDS=""
 else
