@@ -1,20 +1,20 @@
-dev-libs/expat usb? ( dev-libs/libusb )
-dev-libs/expat usb? ( dev-libs/libusb )
+dev-libs/expat sci-libs/shapelib virtual/libusb qt4? ( x11-libs/qt-gui:4 x11-libs/qt-webkit:4 ) doc? ( dev-lang/perl dev-libs/libxslt app-text/docbook-xml-dtd:4.1.2 ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b
+dev-libs/expat sci-libs/shapelib virtual/libusb qt4? ( x11-libs/qt-gui:4 x11-libs/qt-webkit:4 )
 0
-mirror://gentoo/gpsbabel-1.4.2.tar.gz
+mirror://gentoo/gpsbabel-1.4.2.tar.gz doc? ( http://www.gpsbabel.org/style3.css -> gpsbabel.org-style3.css )
 
 http://www.gpsbabel.org/
 GPL-2
 GPS waypoints, tracks and routes converter
-~amd64 ~ppc ~sparc ~x86
+amd64 ~ppc x86
+autotools base eutils libtool multilib portability qt4-r2 toolchain-funcs
+doc qt4
 
-usb
 
 
+4
 
-2
-
-compile configure install
+compile configure install prepare unpack
 
 
 
