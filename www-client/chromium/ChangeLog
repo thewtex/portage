@@ -1,6 +1,51 @@
 # ChangeLog for www-client/chromium
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/ChangeLog,v 1.373 2011/05/29 15:08:06 phajdan.jr Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/ChangeLog,v 1.380 2011/06/10 16:44:10 phajdan.jr Exp $
+
+  10 Jun 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-12.0.742.91.ebuild, chromium-13.0.782.15.ebuild,
+  chromium-9999-r1.ebuild:
+  Die if src_test is run as root, the tests fail in that case; bug #370957 by
+  tampakrap.
+
+*chromium-13.0.782.15 (10 Jun 2011)
+
+  10 Jun 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-13.0.782.1.ebuild, +chromium-13.0.782.15.ebuild:
+  Version bump for dev channel release. Remove old.
+
+*chromium-13.0.782.13 (09 Jun 2011)
+
+  09 Jun 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-13.0.772.0-r1.ebuild, +chromium-13.0.782.13.ebuild:
+  Version bump for dev channel release. Remove old.
+
+*chromium-12.0.742.91 (07 Jun 2011)
+
+  07 Jun 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-12.0.742.68.ebuild, +chromium-12.0.742.91.ebuild:
+  Version bump for beta channel release. Remove old.
+
+*chromium-12.0.742.77 (03 Jun 2011)
+
+  03 Jun 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-12.0.742.60.ebuild, +chromium-12.0.742.77.ebuild:
+  Version bump for beta channel release. Remove old.
+
+  02 Jun 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-13.0.782.1.ebuild, chromium-9999-r1.ebuild:
+  Clean up: remove /dev/shm checks (hopefully obsolete thanks to openrc),
+  remove unused _WARNING variables, remove libsrtp from bundled libs exclusion
+  list, switch to tc-arch for arch detection (for simplicity - we shouldn't
+  have custom code for that).
+
+*chromium-13.0.782.1 (02 Jun 2011)
+
+  02 Jun 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-11.0.696.68.ebuild, -chromium-13.0.767.1.ebuild,
+  +chromium-13.0.782.1.ebuild, chromium-9999-r1.ebuild:
+  Version bump for dev channel release. Re-enable NaCl (bug #366413). Remove
+  old.
 
   29 May 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
   chromium-13.0.772.0-r1.ebuild, chromium-9999-r1.ebuild:

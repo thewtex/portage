@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/kde4-functions.eclass,v 1.48 2011/05/24 20:54:58 abcd Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/kde4-functions.eclass,v 1.51 2011/06/07 20:11:04 abcd Exp $
 
 inherit versionator
 
@@ -56,7 +56,7 @@ KDE_SLOTS=( "4.1" "4.2" "4.3" "4.4" "4.5" "4.6" "4.7" )
 KDE_LIVE_SLOTS=( "live" )
 
 # determine the build type
-if [[ ${SLOT} = live || ${PV} = *9999* ]]; then
+if [[ ${PV} = *9999* ]]; then
 	BUILD_TYPE="live"
 else
 	BUILD_TYPE="release"
@@ -78,6 +78,9 @@ if [[ ${BUILD_TYPE} == live ]]; then
 		kdebase-apps)
 			KDE_SCM="git"
 			EGIT_REPONAME=${EGIT_REPONAME:=kde-baseapps}
+		;;
+		kde-workspace|kde-runtime|kde-baseapps)
+			KDE_SCM="git"
 		;;
 	esac
 fi
@@ -106,16 +109,6 @@ if [[ ${BUILD_TYPE} != live || -n ${KDE_LINGUAS_LIVE_OVERRIDE} ]]; then
 		IUSE="${IUSE} linguas_${_lingua}"
 	done
 fi
-
-# @FUNCTION: slot_is_at_least
-# @USAGE: <want> <have>
-# @DESCRIPTION:
-# Version aware slot comparator.
-# Current implementation relies on the fact, that slots can be compared like
-# string literals (and let's keep it this way).
-slot_is_at_least() {
-	[[ "${2}" > "${1}" || "${2}" = "${1}" ]]
-}
 
 # @FUNCTION: buildsycoca
 # @DESCRIPTION:
@@ -307,7 +300,7 @@ migrate_store_dir() {
 # @DESCRIPTION:
 # Add exporting CMake dependencies for current package
 save_library_dependencies() {
-	local depsfile="${T}/${PN}:${SLOT}"
+	local depsfile="${T}/${PN}"
 
 	ebegin "Saving library dependencies in ${depsfile##*/}"
 	echo "EXPORT_LIBRARY_DEPENDENCIES(\"${depsfile}\")" >> "${S}/CMakeLists.txt" || \
@@ -319,7 +312,7 @@ save_library_dependencies() {
 # @DESCRIPTION:
 # Install generated CMake library dependencies to /var/lib/kde
 install_library_dependencies() {
-	local depsfile="${T}/${PN}:${SLOT}"
+	local depsfile="${T}/${PN}"
 
 	ebegin "Installing library dependencies as ${depsfile##*/}"
 	insinto /var/lib/kde
@@ -337,7 +330,8 @@ load_library_dependencies() {
 	i=0
 	for pn in ${KMLOADLIBS} ; do
 		((i++))
-		depsfile="${EPREFIX}/var/lib/kde/${pn}:${SLOT}"
+		depsfile="${EPREFIX}/var/lib/kde/${pn}"
+		[[ -r ${depsfile} ]] || depsfile="${EPREFIX}/var/lib/kde/${pn}:$(get_kde_version)"
 		[[ -r ${depsfile} ]] || die "Depsfile '${depsfile}' not accessible. You probably need to reinstall ${pn}."
 		sed -i -e "${i}iINCLUDE(\"${depsfile}\")" "${S}/CMakeLists.txt" || \
 			die "Failed to include library dependencies for ${pn}"
@@ -347,8 +341,7 @@ load_library_dependencies() {
 
 # @FUNCTION: block_other_slots
 # @DESCRIPTION:
-# Create blocks for the current package in other slots when
-# installed with USE=-kdeprefix
+# Create blocks for the current package in other slots
 block_other_slots() {
 	debug-print-function ${FUNCNAME} "$@"
 
@@ -378,8 +371,8 @@ block_other_slots() {
 # As an example, if SLOT=live, then
 #    add_blocker kdelibs 0 :4.3 '<4.3.96:4.4' 9999:live
 # will add the following to RDEPEND:
-#    !kdeprefix? ( !kde-base/kdelibs:4.3[-kdeprefix] )
-#    !kdeprefix? ( !<kde-base/kdelibs-4.3.96:4.4[-kdeprefix] )
+#    !kde-base/kdelibs:4.3
+#    !<kde-base/kdelibs-4.3.96:4.4
 #    !<=kde-base/kdelibs-9999:live
 add_blocker() {
 	debug-print-function ${FUNCNAME} "$@"
@@ -409,7 +402,7 @@ add_kdebase_dep() {
 	elif [[ ${KDEBASE} != kde-base ]]; then
 		ver=${KDE_MINIMAL}
 	# FIXME remove hack when kdepim-4.4.* is gone
-	elif [[ ( ${KMNAME} == kdepim || ${PN} == kdepim-runtime ) && ${SLOT} == 4.4 && ${1} =~ ^(kde(pim)?libs|oxygen-icons)$ ]]; then
+	elif [[ ( ${KMNAME} == kdepim || ${PN} == kdepim-runtime ) && $(get_kde_version) == 4.4 && ${1} =~ ^(kde(pim)?libs|oxygen-icons)$ ]]; then
 		ver=4.4.5
 	# FIXME remove hack when kdepim-4.6beta is gone
 	elif [[ ( ${KMNAME} == kdepim || ${PN} == kdepim-runtime ) && ${PV} == 4.5.98 && ${1} =~ ^(kde(pim)?libs|oxygen-icons)$ ]]; then
@@ -417,7 +410,7 @@ add_kdebase_dep() {
 	# if building stable-live version depend just on slot
 	# to allow merging packages against more stable basic stuff
 	elif [[ ${PV} == *.9999 ]]; then
-		ver=${SLOT}
+		ver=$(get_kde_version)
 	else
 		ver=${PV}
 	fi
@@ -426,12 +419,7 @@ add_kdebase_dep() {
 
 	local use=${2:+,${2}}
 
-	if [[ ${KDEBASE} = kde-base ]]; then
-		echo " !kdeprefix? ( >=kde-base/${1}-${ver}[aqua=,-kdeprefix${use}] )"
-		# kdeprefix is no-go for kdepim 4.4
-		[[ ( ${KMNAME} == kdepim || ${PN} == kdepim-runtime ) && ${SLOT} == 4.4 ]] || \
-			echo " kdeprefix? ( >=kde-base/${1}-${ver}:${SLOT}[aqua=,kdeprefix${use}] )"
-	elif [[ ${ver} == live ]]; then
+	if [[ ${ver} == live ]]; then
 		echo " kde-base/${1}:live[aqua=${use}]"
 	else
 		echo " >=kde-base/${1}-${ver}[aqua=${use}]"
@@ -532,13 +520,7 @@ _do_blocker() {
 		else
 			atom="<=${pkg}-${!var}"
 		fi
-		# we always block our own slot, ignoring kdeprefix
-		if [[ ${SLOT} == ${slot} ]]; then
-			echo " !${atom}:${slot}${use:+[${use}]}"
-		else
-			# we only block other slots on -kdeprefix
-			echo " !kdeprefix? ( !${atom}:${slot}[-kdeprefix${use:+,${use}}] )"
-		fi
+		echo " !${atom}:${slot}${use:+[${use}]}"
 	done
 
 	# This is a special case block for :3.5; it does not use the
@@ -607,7 +589,10 @@ _enable_selected_linguas_dir() {
 	popd > /dev/null
 }
 
-_calculate_kde_slot() {
+# @FUNCTION: get_kde_version
+# Translates an ebuild version into a major.minor KDE SC
+# release version. If no version is specified, ${PV} is used.
+get_kde_version() {
 	local ver=${1:-${PV}}
 	local major=$(get_major_version ${ver})
 	local minor=$(get_version_component_range 2 ${ver})

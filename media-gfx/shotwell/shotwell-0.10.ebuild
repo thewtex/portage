@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/shotwell/shotwell-0.10.ebuild,v 1.1 2011/06/01 15:31:25 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/shotwell/shotwell-0.10.ebuild,v 1.3 2011/06/10 09:09:20 angelos Exp $
 
 EAPI="2"
 GCONF_DEBUG="no"
@@ -24,7 +24,6 @@ RDEPEND=">=dev-db/sqlite-3.5.9:3
 	>=dev-libs/libunique-1:1
 	>=dev-libs/libxml2-2.6.32:2
 	>=gnome-base/gconf-2.22.0:2
-	gnome-base/gnome-vfs:2
 	>=media-libs/gexiv2-0.2.0
 	media-libs/gstreamer:0.10
 	media-libs/lcms:2
@@ -33,7 +32,7 @@ RDEPEND=">=dev-db/sqlite-3.5.9:3
 	>=media-libs/libraw-0.9.0
 	>=net-libs/libsoup-2.26.0:2.4
 	>=net-libs/webkit-gtk-1.1.5:2
-	>=sys-fs/udev-145[extras]
+	|| ( >=sys-fs/udev-171[gudev] >=sys-fs/udev-145[extras] )
 	>=x11-libs/gtk+-2.18.0:2"
 DEPEND="${RDEPEND}
 	>=dev-lang/vala-0.11.7:0.12"

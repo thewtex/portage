@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12807 2011/05/30 15:52:53 hwoarang Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12829 2011/06/09 22:50:17 tampakrap Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -31,6 +31,70 @@
 
 #--- END OF EXAMPLES ---
 
+# Diego E. Pettenò <flameeyes@gentoo.org> (09 Jun 2011)
+#  on behalf of QA team
+#
+# Fails to build with GCC 4.6; replaced by net-misc/gogo6
+# (same codebase, renamed and reversioned) which is somewhat
+# maintained.
+#
+# Removal on 2011-07-09
+net-misc/gateway6
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (8 Jun 2011)
+# Broken upstream
+=net-libs/libtirpc-0.2.2
+
+# Sebastian Pipping <sping@gentoo.org> (7 Jun 2011)
+# Experimental bump (bug #340425)
+~sys-block/open-iscsi-2.0.872
+
+# Bernard Cafarelli <voyageur@gentoo.org> (6 Jun 2011)
+# Support for libobjc2, for adventurous people only for now
+=gnustep-base/gnustep-make-2.6.1-r10
+
+# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (6 Jun 2011)
+# Mask prerelease of xorg-server 1.11
+>=x11-base/xorg-server-1.10.99
+>=x11-base/xorg-drivers-1.11
+
+# Michał Górny <mgorny@gentoo.org> (6 Jun 2011)
+# Masked for testing; at least until:
+# - openrc-0.8.3 is released,
+# - most of udev[extras] deps are fixed.
+# Test on your own responsibility. Bug #318365.
+sys-apps/systemd
+
+# Jeroen Roovers <jer@gentoo.org> (5 Jun 2011)
+# Masked until bug #370163 is resolved.
+>=sys-block/parted-3.0
+
+# Eray Aslan <eras@gentoo.org> (4 Jun 2011)
+# Dead upstream. Not needed as Google supports
+# IMAP access to mailboxes now. Bug #151470
+# Removal in 30 days
+net-mail/gml
+
+# Tim Harder <radhermit@gentoo.org> (3 Jun 2011)
+# Mask release candidates
+=app-office/scribus-1.4.0_rc*
+
+# Markos Chandras <hwoarang@gentoo.org> (3 Jun 2011)
+# Dead upstrea, many open bugs, partially working with 
+# kernel-2.6
+# Bugs #159741, #159838, #165120, #165200, #231459,
+# #273902, #278949, #305155, #330523, #369293
+# Masked for removal in 30 days
+# Alternative: sys-fs/lvm2
+sys-fs/evms
+
+# Andreas K. Huettel <dilfridge@gentoo.org> (3 Jun 2011)
+# Requires KDE 4.4, which is not in the portage tree anymore.
+# Please unmerge before upgrading KDE, and emerge afterwards
+# net-wireless/bluedevil for bluetooth support in KDE 4.6.
+# Masked for removal in 15 days
+net-wireless/kbluetooth
+
 # Markos Chandras <hwoarang@gentoo.org> (30 May 2011)
 # Broken ebuild. Bug #351697
 # - uses symlinked automake files;
@@ -59,10 +123,6 @@ net-p2p/hrktorrent
 # Masked for testing. Bug #308449
 =net-dialup/freeradius-2.1.10
 
-# Markos Chandras <hwoarang@gentoo.org> (26 May 2011)
-# Mask new beta release series
-=net-p2p/qbittorrent-2.8.0_rc*
-
 # Michael Sterrett <mr_bones_@gentoo.org> (25 May 2011)
 # Needs an old version of bison that isn't in the tree anymore.
 dev-lang/open64
@@ -90,11 +150,6 @@ net-p2p/ghostwhitecrab
 # Bug #334779. Pending removal in 30 days
 media-libs/sdl-gui
 
-# Markos Chandras <hwoarang@gentoo.org> (21 May 2011)
-# Does not build ( #363163 ) and no active upstream.
-# Masked for removal in 30 days
-net-misc/guidedog
-
 # Samuli Suominen <ssuominen@gentoo.org> (20 May 2011)
 # Some abandonware that fails to build with linux-headers-2.6.38,
 # and other issues
@@ -103,7 +158,6 @@ net-misc/guidedog
 # aatv, bug 364845
 # camsource, bug 365683
 # effectv, bug 365255
-# setpwc, bug 363469 (if saved, reopen bug 121073)
 # fmio, bugs 361581, 350024
 # fame, bug 362993
 # came, bug 361585
@@ -113,7 +167,6 @@ media-video/spcaview
 media-tv/aatv
 media-video/camsource
 media-video/effectv
-media-video/setpwc
 media-video/fame
 media-radio/fmio
 media-video/came
@@ -130,11 +183,6 @@ media-video/came
 # Mask new versions until thread-related crashes have been fixed.
 # See bug 367423.
 =dev-lang/ruby-enterprise-1.8.7.2011.03
-
-# Markos Chandras <hwoarang@gentoo.org> (15 May 2011)
-# Dead upstream. Does not work with KDE 4.6.
-# Bug #366921. Removal in 2011-07-15
-kde-misc/quickaccess
 
 # Nathan Phillip Brink <binki@gentoo.org> (13 May 2011)
 #
@@ -189,31 +237,6 @@ app-crypt/scsign
 # Bugs 320543, 344723
 # Removal in 30 days
 dev-python/cgal-python
-
-# Theo Chatzimichos <tampakrap@gentoo.org> (23 Apr 2011)
-# Mask KDEPIM 4.6 beta ebuilds
-~kde-base/akonadiconsole-4.5.95
-~kde-base/akregator-4.5.95
-~kde-base/blogilo-4.5.95
-~kde-base/kabcclient-4.5.95
-~kde-base/kaddressbook-4.5.95
-~kde-base/kalarm-4.5.95
-~kde-base/kdepim-common-libs-4.5.95
-~kde-base/kdepim-icons-4.5.95
-~kde-base/kdepim-kresources-4.5.95
-~kde-base/kdepim-meta-4.5.95
-~kde-base/kdepim-strigi-analyzer-4.5.95
-~kde-base/kdepim-wizards-4.5.95
-~kde-base/kdepim-runtime-4.5.95
-~kde-base/kjots-4.5.95
-~kde-base/kleopatra-4.5.95
-~kde-base/kmail-4.5.95
-~kde-base/knode-4.5.95
-~kde-base/knotes-4.5.95
-~kde-base/konsolekalendar-4.5.95
-~kde-base/kontact-4.5.95
-~kde-base/korganizer-4.5.95
-~kde-base/ktimetracker-4.5.95
 
 # Ryan Hill <dirtyepic@gentoo.org> (23 Apr 2011)
 # Masked for removal on 20110523.
@@ -332,10 +355,6 @@ sys-apps/ren
 # can emerge udev.
 =sys-apps/pciutils-3.1.7-r1
 
-# Pawel Hajdan jr <phajdan.jr@gentoo.org> (26 Mar 2011)
-# Old dev channel releases, failing tests.
-=dev-lang/v8-3.2*
-
 # Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (25 Mar 2011)
 # Some packages fail to build or work with GnuTLS built with Nettle crypto backend.
 =net-libs/gnutls-2.12*
@@ -356,30 +375,6 @@ sys-apps/ren
 # Masking openocd prelease snapshot
 =dev-embedded/openocd-0.5.0_pre*
 
-# Sergei Trofimovich <slyfox@gentoo.org> (13 Mar 2011)
-# Removal of pre ghc-6.10 haskell package versions.
-# Will be removed in 60 days.
-<dev-lang/ghc-6.10
-<dev-haskell/cabal-1.8.0.6-r1
-=dev-haskell/quickcheck-1.0
-=dev-haskell/parsec-2.0
-=dev-haskell/network-1.0
-=dev-haskell/mtl-1.0
-=dev-haskell/hunit-1.1
-=dev-haskell/http-2006.7.7
-=dev-haskell/html-1.0
-=dev-haskell/haxml-1.13-r1
-=dev-haskell/fgl-5.2
-=dev-haskell/cabal-install-0.6.2
-=dev-haskell/cabal-install-0.6.4
-=dev-haskell/lhs2tex-1.11
-=dev-haskell/haddock-0.8
-=dev-haskell/haddock-0.9
-=dev-haskell/haddock-2.4.1
-=dev-vcs/darcs-1.0.9
-<dev-haskell/http-4000
-=dev-lang/helium-1.2-r1
-
 # Christian Faulhammer <fauli@gentoo.org> (12 Mar 2011)
 # Mask for testing
 >=www-apps/joomla-1.6.0
@@ -396,19 +391,6 @@ dev-util/perf
 # Justin Lecher <jlec@gentoo.org> (04 Mar 2011)
 # Probably API change, packages fail to compile
 ~sci-libs/mmdb-1.23.2
-
-# Pawel Hajdan jr <phajdan.jr@gentoo.org> (04 Mar 2011)
-# Masked for removal in 90 days.
-# Multiple hard to fix and time consuming maintenance problems:
-#  - history of bugs (bug #304527, bug #335101, bug #347175,
-#    bug #349249, bug #356609)
-#  - upstream's binary builds cannot be used on Gentoo
-#    as easily as other -bin packages (ubuntu-specific
-#    library names that require compatibility symlinks,
-#    bundling libraries, mirror/redistribution policy, and so on)
-#  - dependencies for the -bin package are harder to manage;
-#    often we have source compatibility, but not binary compatibility
-www-client/chromium-bin
 
 # Ulrich Mueller <ulm@gentoo.org> (01 Mar 2011)
 # Christian Faulhammer <fauli@gentoo.org>
@@ -452,16 +434,6 @@ app-pda/libopensync-plugin-evolution2
 app-pda/libopensync-plugin-gnokii
 app-pda/libopensync-plugin-gpe
 app-pda/multisync-gui
-
-# Hans de Graaff <graaff@gentoo.org> (09 Feb 2011)
-# No longer supported by upstream, and has open security bug.
-# Bug 354249. Masked for removal in 60 days.
-=dev-ruby/rails-2.2*
-=dev-ruby/activerecord-2.2*
-=dev-ruby/activeresource-2.2*
-=dev-ruby/activesupport-2.2*
-=dev-ruby/actionmailer-2.2*
-=dev-ruby/actionpack-2.2*
 
 # MATSUU Takuto <matsuu@gentoo.org> (30 Jan 2011)
 # mask for security bug #352569
@@ -564,11 +536,6 @@ net-analyzer/ncrack
 # see bug 341237
 >=dev-libs/rasqal-0.9.20
 >=dev-libs/redland-1.0.12
-
-# Bernard Cafarelli <voyageur@gentoo.org> (13 Oct 2010)
-# New Objective-C Runtime for GNUstep
-# Masked until I add proper support for it in gnustep-base
-gnustep-base/libobjc2
 
 # Robin H. Johnson <robbat2@gentoo.org> (08 Oct 2010)
 # Masked for testing, and some testsuite failures.
@@ -874,6 +841,7 @@ app-portage/udept
 >=dev-lang/ruby-1.9.1
 ~virtual/ruby-ssl-1
 ~virtual/ruby-rdoc-1
+~virtual/ruby-threads-1
 
 # Matti Bickel <mabi@gentoo.org> (1 Mar 2009)
 # Mask testing branch

@@ -1,24 +1,25 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-arch/lbzip2/lbzip2-0.23-r1.ebuild,v 1.1 2010/03/27 09:48:27 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-arch/lbzip2/lbzip2-0.23-r1.ebuild,v 1.6 2011/06/10 07:19:46 jlec Exp $
 
 EAPI="3"
 
 inherit eutils flag-o-matic toolchain-funcs
 
-DESCRIPTION="Pthreads-based parallel bzip2/bunzip2 filter, passable to GNU tar"
+DESCRIPTION="Parallel bzip2 utility"
 HOMEPAGE="http://lacos.hu/"
 SRC_URI="http://lacos.web.elte.hu/pub/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~alpha ~amd64 ~hppa ~mips ~ppc ~ppc64 ~x86"
 IUSE="symlink test"
 
 RDEPEND="app-arch/bzip2"
 DEPEND="${REDEPEND}
 	test? (
 		app-shells/dash
+		sys-devel/bc
 		sys-process/time
 	)"
 

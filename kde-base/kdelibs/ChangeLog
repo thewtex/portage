@@ -1,6 +1,36 @@
 # ChangeLog for kde-base/kdelibs
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/kdelibs/ChangeLog,v 1.758 2011/05/10 19:48:48 dilfridge Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/kdelibs/ChangeLog,v 1.765 2011/06/10 11:50:40 hwoarang Exp $
+
+  10 Jun 2011; Markos Chandras <hwoarang@gentoo.org> kdelibs-4.6.3-r2.ebuild:
+  Stable on amd64 wrt bug #369979
+
+  08 Jun 2011; Thomas Kahle <tomka@gentoo.org> kdelibs-4.6.3-r2.ebuild:
+  x86 stable per bug 369979
+
+  06 Jun 2011; Jonathan Callen <abcd@gentoo.org> kdelibs-4.6.2-r3.ebuild,
+  kdelibs-4.6.3-r2.ebuild:
+  WEBKIT_REQUIRED doesn't do anything anymore, drop it
+
+  06 Jun 2011; Jonathan Callen <abcd@gentoo.org> kdelibs-4.6.2-r3.ebuild,
+  kdelibs-4.6.3-r2.ebuild:
+  Remove mentions of kdeprefix
+
+*kdelibs-4.6.3-r2 (04 Jun 2011)
+
+  04 Jun 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  -kdelibs-4.6.3-r1.ebuild, +kdelibs-4.6.3-r2.ebuild,
+  +files/kdelibs-4.6.3-doublepost.patch:
+  Add upstream fix for super-annoying bug 370039 (double form post)
+
+  02 Jun 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  -kdelibs-4.4.5-r4.ebuild, -files/kdelibs-4.4.5-cve20111168.patch,
+  -files/kdelibs-4.4.5-formpainter.patch, -files/kdelibs-4.4.5-hostname.patch,
+  -files/kdelibs-4.4.5-qt471.patch:
+  Drop KDE-4.4
+
+  01 Jun 2011; Brent Baude <ranger@gentoo.org> kdelibs-4.6.2-r3.ebuild:
+  Marking kdelibs-4.6.2-r3 ppc stable for bug 354033
 
   10 May 2011; Andreas K. Huettel <dilfridge@gentoo.org>
   kdelibs-4.6.2-r3.ebuild, kdelibs-4.6.3-r1.ebuild:

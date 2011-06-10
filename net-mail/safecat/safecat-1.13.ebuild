@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/safecat/safecat-1.13.ebuild,v 1.1 2010/11/07 22:49:13 radhermit Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-mail/safecat/safecat-1.13.ebuild,v 1.3 2011/06/07 17:36:51 hwoarang Exp $
 
 EAPI="3"
 
@@ -12,8 +12,9 @@ SRC_URI="http://www.jeenyus.net/linux/software/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~hppa ~ia64 ~mips ~ppc ~sparc ~x86"
 IUSE=""
+RESTRICT="test"
 
 DEPEND="sys-apps/groff"
 RDEPEND=""
@@ -28,6 +29,10 @@ src_prepare() {
 	ht_fix_file Makefile make-compile.sh
 
 	sed -ni '/man\|doc/!p' hier.c
+
+	# Fix implicit decleration
+	sed -i -e '/include <signal.h>/ a #include <stdlib.h>' \
+		safecat.c
 }
 
 src_configure() {
@@ -36,14 +41,12 @@ src_configure() {
 		replace-flags -Os -O2
 	fi
 
-	echo "/usr" > conf-root
+	echo "${D}/usr" > conf-root
 	echo "$(tc-getCC) ${CFLAGS}" > conf-cc
 	echo "$(tc-getCC) ${LDFLAGS}" > conf-ld
 }
 
 src_install() {
-	dodir /usr
-	echo "${D}/usr" > conf-root
 	emake setup check || die
 	dodoc CHANGES README
 	doman maildir.1 safecat.1

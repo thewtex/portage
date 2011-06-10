@@ -1,10 +1,9 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/kdeplasma-addons/kdeplasma-addons-4.6.2.ebuild,v 1.6 2011/05/09 22:48:08 hwoarang Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/kdeplasma-addons/kdeplasma-addons-4.6.2.ebuild,v 1.9 2011/06/06 21:09:43 abcd Exp $
 
 EAPI=3
 
-WEBKIT_REQUIRED="always"
 KDE_SCM="git"
 inherit kde4-base
 
@@ -12,7 +11,7 @@ DESCRIPTION="Extra Plasma applets and engines."
 HOMEPAGE="http://www.kde.org/"
 LICENSE="GPL-2 LGPL-2"
 
-KEYWORDS="amd64 ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="attica debug desktopglobe exif qalculate qwt scim semantic-desktop"
 
 # krunner is only needed to generate dbus interface for lancelot
@@ -40,10 +39,8 @@ DEPEND="${COMMON_DEPEND}
 # kde-misc/plasmaboard: moved here in 4.3.65
 # kde-misc/qalculate-applet: since 4.4.0
 RDEPEND="${COMMON_DEPEND}
-	!kdeprefix? (
-		!kde-misc/plasmaboard
-		!kde-misc/qalculate-applet
-	)
+	!kde-misc/plasmaboard
+	!kde-misc/qalculate-applet
 "
 
 # kdebase-data: some svg icons moved from data directly here.

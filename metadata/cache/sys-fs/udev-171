@@ -1,0 +1,22 @@
+selinux? ( sys-libs/libselinux ) sys-apps/acl virtual/libusb:0 dev-libs/glib:2 >=dev-libs/gobject-introspection-0.6.9 dev-util/gperf >=sys-kernel/linux-headers-2.6.34
+selinux? ( sys-libs/libselinux ) sys-apps/acl virtual/libusb:0 dev-libs/glib:2 >=dev-libs/gobject-introspection-0.6.9 hwdb? ( >=sys-apps/usbutils-0.82 sys-apps/pciutils ) !sys-apps/coldplug !<sys-fs/lvm2-2.02.45 !sys-fs/device-mapper >=sys-apps/baselayout-2.1.6
+0
+mirror://kernel/linux/utils/kernel/hotplug/udev-171.tar.bz2
+
+http://www.kernel.org/pub/linux/utils/kernel/hotplug/udev.html
+GPL-2
+Linux dynamic and persistent device naming support (aka userspace devfs)
+~x86 ~amd64
+eutils flag-o-matic linux-info multilib portability toolchain-funcs versionator
+selinux extras +hwdb
+
+
+virtual/dev-manager
+1
+
+compile install postinst preinst setup unpack
+
+
+
+
+

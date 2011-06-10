@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/qemu-kvm/qemu-kvm-0.14.1-r1.ebuild,v 1.1 2011/05/31 15:53:45 cardoe Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/qemu-kvm/qemu-kvm-0.14.1-r1.ebuild,v 1.3 2011/06/09 00:09:15 cardoe Exp $
 
 BACKPORTS=1
 
@@ -29,8 +29,10 @@ LICENSE="GPL-2"
 SLOT="0"
 # xen is disabled until the deps are fixed
 IUSE="+aio alsa bluetooth brltty curl debug esd fdt hardened jpeg ncurses \
-png pulseaudio qemu-ifup rbd sasl sdl spice ssl static threads vde \
+png pulseaudio qemu-ifup rbd sasl sdl spice ssl threads vde \
 vhost-net xen"
+# static, depends on libsdl being built with USE=static-libs, which can not
+# be expressed in current EAPI's
 
 COMMON_TARGETS="i386 x86_64 arm cris m68k microblaze mips mipsel ppc ppc64 sh4 sh4eb sparc sparc64"
 IUSE_SOFTMMU_TARGETS="${COMMON_TARGETS} mips64 mips64el ppcemb"
@@ -163,10 +165,10 @@ src_configure() {
 	conf_opts="${conf_opts} --extra-ldflags=-Wl,-z,execheap"
 
 	# Add support for static builds
-	use static && conf_opts="${conf_opts} --static"
+	#use static && conf_opts="${conf_opts} --static"
 
 	# Support debug USE flag
-	use debug && conf_opts="${conf_opts} --enable-debug"
+	use debug && conf_opts="${conf_opts} --enable-debug --disable-strip"
 
 	# Fix the $(prefix)/etc issue
 	conf_opts="${conf_opts} --sysconfdir=/etc"
@@ -176,8 +178,6 @@ src_configure() {
 	conf_opts="${conf_opts} $(use_enable bluetooth bluez)"
 	conf_opts="${conf_opts} $(use_enable brltty brlapi)"
 	conf_opts="${conf_opts} $(use_enable curl)"
-	conf_opts="${conf_opts} $(use_enable debug strip)"
-	conf_opts="${conf_opts} $(use_enable debug debug-tcg)"
 	conf_opts="${conf_opts} $(use_enable fdt)"
 	conf_opts="${conf_opts} $(use_enable hardened user-pie)"
 	conf_opts="${conf_opts} $(use_enable jpeg vnc-jpeg)"

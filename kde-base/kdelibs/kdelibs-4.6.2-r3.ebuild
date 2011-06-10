@@ -1,20 +1,19 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/kdelibs/kdelibs-4.6.2-r3.ebuild,v 1.7 2011/05/10 19:48:48 dilfridge Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/kdelibs/kdelibs-4.6.2-r3.ebuild,v 1.10 2011/06/06 21:09:12 abcd Exp $
 
 EAPI=4
 
 CPPUNIT_REQUIRED="optional"
 DECLARATIVE_REQUIRED="always"
 OPENGL_REQUIRED="optional"
-WEBKIT_REQUIRED="always"
 KDE_SCM="git"
 inherit kde4-base fdo-mime toolchain-funcs
 
 DESCRIPTION="KDE libraries needed by all KDE programs."
 HOMEPAGE="http://www.kde.org/"
 
-KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ppc ~ppc64 x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 LICENSE="LGPL-2.1"
 IUSE="3dnow acl alsa altivec bindist +bzip2 debug doc fam +handbook jpeg2k kerberos
 lzma mmx nls openexr +policykit semantic-desktop spell sse sse2 ssl +udev zeroconf"
@@ -209,15 +208,10 @@ src_configure() {
 	else
 		mycmakeargs=(-DWITH_Avahi=OFF -DWITH_DNSSD=OFF)
 	fi
-	if use kdeprefix; then
-		HME=".kde${SLOT}"
-	else
-		HME=".kde4"
-	fi
 	mycmakeargs+=(
 		-DWITH_HSPELL=OFF
 		-DWITH_ASPELL=OFF
-		-DKDE_DEFAULT_HOME=${HME}
+		-DKDE_DEFAULT_HOME=.kde4
 		-DKAUTH_BACKEND=POLKITQT-1
 		$(cmake-utils_use_build handbook doc)
 		$(cmake-utils_use_has 3dnow X86_3DNOW)
@@ -321,7 +315,7 @@ pkg_postinst() {
 		ewarn "https://bugs.gentoo.org/show_bug.cgi?id=365479"
 	fi
 
-	elog "Your homedir is set to \${HOME}/${HME}"
+	elog "Your homedir is set to \${HOME}/.kde4"
 	echo
 
 	ewarn "In case you just upgraded from KDE 4.4.5 to KDE 4.6.2 (e.g. as stable tree user),"

@@ -11,6 +11,7 @@ HOMEPAGE="http://iscsitarget.sourceforge.net/"
 
 if [[ ${PV} == "9999" ]] ; then
 	inherit subversion autotools
+	KEYWORDS=""
 else
 	inherit autotools
 	SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
@@ -33,12 +34,6 @@ ERROR_CFG="iscsitarget needs support for CRC32C in your kernel."
 src_unpack() {
 	if [[ ${PV} == "9999" ]] ; then
 		subversion_src_unpack
-
-		if kernel_is -ge 2 6 39; then
-			# Those two have been submitted at the upstream level, waiting for inclusion....
-			epatch "${FILESDIR}"/${PN}-9999-blockio.c-new-plugging-method+linux-2.6.39.patch
-			epatch "${FILESDIR}"/${PN}-9999-iotype.c-rwlock+linux-2.6.39.patch
-		fi
 	else
 		unpack ${A}
 		cd "${S}"

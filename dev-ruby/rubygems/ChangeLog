@@ -1,6 +1,56 @@
 # ChangeLog for dev-ruby/rubygems
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/rubygems/ChangeLog,v 1.156 2010/09/08 08:44:49 grobian Exp $
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/rubygems/ChangeLog,v 1.170 2011/05/13 17:49:31 graaff Exp $
+
+*rubygems-1.3.7-r5 (13 May 2011)
+
+  13 May 2011; Hans de Graaff <graaff@gentoo.org> -rubygems-1.3.7-r4.ebuild,
+  +rubygems-1.3.7-r5.ebuild, files/gentoo-defaults.rb:
+  Update gentoo-defaults to install in /usr/local as root and in /home/graaff
+  otherwise. Thanks to James Le Cuirot for the patch in bug 366153.
+
+  13 May 2011; Hans de Graaff <graaff@gentoo.org> -rubygems-1.3.5.ebuild,
+  -rubygems-1.3.6-r2.ebuild:
+  Remove old versions.
+
+  03 May 2011; Fabian Groffen <grobian@gentoo.org> rubygems-1.3.7-r4.ebuild:
+  Marked ~x64-freebsd
+
+  07 Mar 2011; Raúl Porcel <armin76@gentoo.org> rubygems-1.3.5.ebuild,
+  rubygems-1.3.6-r2.ebuild, rubygems-1.3.7.ebuild, rubygems-1.3.7-r1.ebuild,
+  rubygems-1.3.7-r4.ebuild:
+  Add ~sh
+
+  27 Dec 2010; Brent Baude <ranger@gentoo.org> rubygems-1.3.7.ebuild:
+  marking rubygems-1.3.7 straight to ppc for bug 349344
+
+  24 Oct 2010; Markos Chandras <hwoarang@gentoo.org>
+  rubygems-1.3.7-r1.ebuild:
+  Stable on amd64 wrt bug #342455
+
+  24 Oct 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  rubygems-1.3.7-r1.ebuild:
+  x86 stable wrt bug #342455
+
+  12 Oct 2010; Raúl Porcel <armin76@gentoo.org> rubygems-1.3.7.ebuild:
+  ia64/s390/sparc stable wrt #331059
+
+  09 Oct 2010; Hans de Graaff <graaff@gentoo.org> +rubygems-1.3.7-r1.ebuild:
+  Add a new 1.3.7-r1 based on 1.3.7 to have a stable candidate for ree18
+  that is still compatible with the gems eclass.
+
+  09 Oct 2010; Hans de Graaff <graaff@gentoo.org> -rubygems-1.3.5-r1.ebuild,
+  -rubygems-1.3.7-r3.ebuild:
+  Remove old versions.
+
+  03 Oct 2010; Tobias Klausmann <klausman@gentoo.org> rubygems-1.3.7.ebuild:
+  Stable on alpha, bug #331059
+
+  30 Sep 2010; Brent Baude <ranger@gentoo.org> rubygems-1.3.7.ebuild:
+  Marking rubygems-1.3.7 ppc64 for bug 331059
+
+  28 Sep 2010; Brent Baude <ranger@gentoo.org> rubygems-1.3.7-r4.ebuild:
+  Marking rubygems-1.3.7-r4 ~ppc for bug 297832
 
   08 Sep 2010; Fabian Groffen <grobian@gentoo.org> rubygems-1.3.7-r4.ebuild:
   Ebuild is EAPI=3, so fix usage for Prefix.

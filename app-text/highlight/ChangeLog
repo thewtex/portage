@@ -1,6 +1,33 @@
 # ChangeLog for app-text/highlight
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/highlight/ChangeLog,v 1.35 2011/02/09 11:48:50 radhermit Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/highlight/ChangeLog,v 1.41 2011/06/08 18:37:50 maekke Exp $
+
+  08 Jun 2011; Markus Meier <maekke@gentoo.org> highlight-3.3.ebuild:
+  x86 stable, bug #369715
+
+  05 Jun 2011; Markos Chandras <hwoarang@gentoo.org> highlight-3.3.ebuild:
+  Stable on amd64 wrt bug #369715
+
+*highlight-3.5 (04 Jun 2011)
+
+  04 Jun 2011; Tim Harder <radhermit@gentoo.org> -highlight-3.4.ebuild,
+  +highlight-3.5.ebuild:
+  Version bump and remove old.
+
+  02 Jun 2011; Tim Harder <radhermit@gentoo.org> highlight-3.3.ebuild,
+  highlight-3.4.ebuild:
+  Use eqmake4 and remove redundant flags.
+
+  02 Jun 2011; Tim Harder <radhermit@gentoo.org> highlight-3.3.ebuild,
+  highlight-3.4.ebuild:
+  Respect C(XX)FLAGS (bug #217964), respect LDFLAGS (bug #369793), and add
+  dependency on qt-core.
+
+*highlight-3.4 (01 Jun 2011)
+
+  01 Jun 2011; Tim Harder <radhermit@gentoo.org> -highlight-3.0_beta.ebuild,
+  +highlight-3.4.ebuild:
+  Version bump and remove old.
 
   09 Feb 2011; Tim Harder <radhermit@gentoo.org> highlight-3.3.ebuild:
   Add dev-libs/boost to DEPEND.

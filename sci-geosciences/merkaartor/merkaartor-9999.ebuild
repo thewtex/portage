@@ -1,49 +1,63 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-geosciences/merkaartor/merkaartor-9999.ebuild,v 1.7 2009/05/04 22:04:23 hanno Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-geosciences/merkaartor/merkaartor-9999.ebuild,v 1.9 2011/06/09 20:30:38 scarabeus Exp $
 
-EAPI="1"
+EAPI=4
 
-inherit eutils qt4 subversion
-
-ESVN_REPO_URI="http://svn.openstreetmap.org/applications/editors/merkaartor/"
+REDMINE_HASH="253"
+[[ ${PV} == 9999 ]] && SCM_ECLASS=git-2
+EGIT_REPO_URI="git://gitorious.org/merkaartor/main.git"
+EGIT_PROJECT=${PN}
+inherit multilib qt4-r2 ${SCM_ECLASS}
 
 DESCRIPTION="A Qt4 based map editor for the openstreetmap.org project"
-HOMEPAGE="http://www.merkaartor.org"
-SRC_URI=""
+HOMEPAGE="http://www.merkaartor.be"
+[[ ${PV} == 9999 ]] || SRC_URI="http://merkaartor.be/attachments/download/${REDMINE_HASH}/merkaartor-${PV}.tar.bz2"
+
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
-IUSE="nls webkit exif proj gdal"
-DEPEND="x11-libs/qt-gui:4
-	x11-libs/qt-svg:4
-	webkit? ( >=x11-libs/qt-webkit-4.3.3 )
+[[ ${PV} == 9999 ]] || KEYWORDS="~amd64 ~x86"
+IUSE="debug exif gps nls libproxy webkit"
+
+QT_MINIMAL="4.7.2"
+DEPEND="
+	>=sci-libs/gdal-1.6.0
+	>=sci-libs/proj-4.6
+	>=x11-libs/qt-gui-${QT_MINIMAL}:4
+	>=x11-libs/qt-svg-${QT_MINIMAL}:4
 	exif? ( media-gfx/exiv2 )
-	proj? ( sci-libs/proj )
-	gdal? ( sci-libs/gdal )"
+	gps? ( >=sci-geosciences/gpsd-2.92 )
+	libproxy? ( net-libs/libproxy )
+	webkit? ( >=x11-libs/qt-webkit-${QT_MINIMAL}:4 )
+"
 RDEPEND="${DEPEND}"
 
-S="${WORKDIR}/${PN}"
+DOCS="AUTHORS CHANGELOG HACKING"
 
-src_compile() {
-	local myconf
-	use webkit || myconf="${myconf} NOUSEWEBKIT=1"
-	use exif && myconf="${myconf} GEOIMAGE=1" || myconf="${myconf} GEOIMAGE=0"
-	use proj && myconf="${myconf} PROJ=1" || myconf="${myconf} PROJ=0"
-	use gdal && myconf="${myconf} GDAL=1" || myconf="${myconf} GDAL=0"
+MAKEOPTS+=" -j1"
 
-	if use nls; then
-		lrelease Merkaartor.pro || die "lrelease failed"
+merkaartor_use() {
+	local useflag=${1}
+	[[ -z ${useflag} ]] && die "No useflag specified"
+	if use ${useflag}; then
+		echo "1"
+	else
+		echo "0"
 	fi
-
-	eqmake4 Merkaartor.pro PREFIX=/usr ${myconf} || die "eqmake4 failed"
-	emake || die "make failed"
 }
 
-src_install() {
-	emake INSTALL_ROOT="${D}" install || die "install failed"
-	dodoc AUTHORS CHANGELOG HACKING || die "dodoc failed"
+src_configure() {
+	local myconf
+	myconf+=" RELEASE=1 ZBAR=0" # deps not in main tree so hard-disable
+	myconf+=" GEOIMAGE=$(${PN}_use exif)"
+	myconf+=" GPSDLIB=$(${PN}_use gps)"
+	myconf+=" LIBPROXY=$(${PN}_use libproxy)"
+	myconf+=" NODEBUG=$(use debug && echo "0" || echo "1")" # inverse logic
+	myconf+=" NOUSEWEBKIT=$(use webkit && echo "0" || echo "1")" # inverse logic
 
-	newicon Icons/Mercator_100x100.png "${PN}".png || die "newicon failed"
-	make_desktop_entry "${PN}" "Merkaartor" "${PN}" "Science;Geoscience"
+	if use nls; then
+		lrelease src/src.pro || die "lrelease failed"
+	fi
+
+	eqmake4 Merkaartor.pro LIBDIR=/usr/$(get_libdir) PREFIX=/usr/ ${myconf}
 }

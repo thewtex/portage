@@ -157,9 +157,6 @@ ruby_implementation_command() {
 		ree18)
 			_ruby_name=rubyee18
 			;;
-		ruby19)
-			_ruby_name=ruby1.9
-			;;
 	esac
 
 	echo $(type -p ${_ruby_name} 2>/dev/null)

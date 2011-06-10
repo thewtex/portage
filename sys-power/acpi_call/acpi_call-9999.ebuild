@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Header: /var/cvsroot/gentoo-x86/sys-power/acpi_call/acpi_call-9999.ebuild,v 1.1 2011/06/10 05:46:52 maksbotan Exp $
 
 EAPI=3
 
@@ -14,7 +14,7 @@ SRC_URI=""
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 IUSE=""
 
 CONFIG_CHECK="ACPI"

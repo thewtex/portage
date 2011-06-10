@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-backup/dar/dar-2.3.11.ebuild,v 1.1 2011/05/11 16:26:43 matsuu Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-backup/dar/dar-2.3.11.ebuild,v 1.2 2011/06/07 23:34:19 matsuu Exp $
 
 EAPI="3"
 inherit confutils flag-o-matic
@@ -56,7 +56,9 @@ src_configure() {
 src_install() {
 	emake DESTDIR="${D}" pkgdatadir=/usr/share/doc/${PF}/html install || die
 
-	use static-libs || find "${ED}" -name '*.la' -o -name '*.a' -exec rm {} +
+	if ! use static-libs ; then
+		find "${ED}" "(" -name '*.la' -o -name '*.a' ")" -delete || die
+	fi
 
 	dodoc AUTHORS ChangeLog NEWS README THANKS TODO || die
 }

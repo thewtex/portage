@@ -248,11 +248,7 @@ ruby_fakegem_binwrapper() {
 			use ruby_targets_${implementation} || continue
 			if [ -z $rubycmd ]; then
 				# if no other implementation was set before, set it.
-				if [[ "${implementation}" == "ruby19" ]]; then
-					rubycmd="/usr/bin/ruby1.9"
-				else
-					rubycmd="$(ruby_implementation_command ${implementation})"
-				fi
+				rubycmd="$(ruby_implementation_command ${implementation})"
 			else
 				# if another implementation already arrived, then make
 				# it generic and break out of the loop. This ensures
