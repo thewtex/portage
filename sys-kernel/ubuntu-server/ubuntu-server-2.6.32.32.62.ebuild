@@ -60,7 +60,7 @@ pkg_setup() {
 			die "unsupported ARCH: $ARCH"
 			;;
 	esac
-	defconfig_src="${TEMP}/${defconfig_src}"
+	defconfig_src="${S}/configs/${defconfig_src}"
 	unset ARCH; unset LDFLAGS #will interfere with Makefile if set
 }
 
@@ -76,12 +76,15 @@ src_prepare() {
 	chmod +x debian/scripts/config-check || die
 	chmod +x debian/scripts/misc/splitconfig.pl || die
 	chmod +x debian/scripts/misc/kernelconfig || die
-	sed -i -e 's:^tmpdir=.*$:tmpdir=$TEMP:' debian/scripts/misc/kernelconfig || die
+	install -d ${TEMP}/configs || die
+	sed -i -e 's:^tmpdir=.*$:tmpdir=$TEMP/configs:' debian/scripts/misc/kernelconfig || die
 
 	DROOT="debian" debian/scripts/misc/kernelconfig defaultconfig || die
 
 	make -s mrproper || die "make mrproper failed"
 	make -s include/linux/version.h || die "make include/linux/version.h failed"
+
+	mv "${TEMP}/configs" "${S}" || die
 }
 
 src_compile() {
