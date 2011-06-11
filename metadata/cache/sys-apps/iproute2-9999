@@ -1,4 +1,4 @@
-!net-misc/arpd !minimal? ( berkdb? ( sys-libs/db ) ) atm? ( net-dialup/linux-atm ) elibc_glibc? ( >=sys-libs/glibc-2.7 ) sys-devel/flex >=sys-kernel/linux-headers-2.6.27 >=dev-vcs/git-1.6
+!net-misc/arpd !minimal? ( berkdb? ( sys-libs/db ) ) atm? ( net-dialup/linux-atm ) sys-devel/flex >=sys-kernel/linux-headers-2.6.27 elibc_glibc? ( >=sys-libs/glibc-2.7 ) dev-vcs/git
 !net-misc/arpd !minimal? ( berkdb? ( sys-libs/db ) ) atm? ( net-dialup/linux-atm )
 0
 
@@ -7,12 +7,12 @@ http://www.linuxfoundation.org/collaborate/workgroups/networking/iproute2
 GPL-2
 kernel routing and traffic control utilities
 
-eutils flag-o-matic git multilib portability toolchain-funcs
+base eutils flag-o-matic git-2 multilib portability toolchain-funcs
 atm berkdb minimal
 
 
 
-2
+4
 
 compile configure install prepare unpack
 
