@@ -826,6 +826,8 @@ dev-db/postgresql-base:pg_legacytimestamp - Use double precision floating-point 
 dev-db/postgresql-server:pg_legacytimestamp - Use double precision floating-point numbers instead of 64-bit integers for timestamp storage.
 dev-db/postgresql-server:uuid - Enable server side UUID generation (via dev-libs/ossp-uuid)
 dev-db/redis:tcmalloc - Use the dev-util/google-perftools libraries to replace the malloc() implementation with a possibly faster one.
+dev-db/spatialite:geos - Add the sci-libs/geos library for exact topological tests
+dev-db/spatialite:proj - Add the sci-libs/proj library for reprojection features
 dev-db/sqlite:extensions - Enable support for dynamic loading of extensions
 dev-db/sqlite:fts3 - Full text search using the fts3 module
 dev-db/sqlite:secure-delete - Overwrite deleted information with zeros in addition to marking the space as available for reuse. This causes a performance penalty.
@@ -1083,7 +1085,6 @@ dev-libs/glib:introspection - Use dev-libs/gobject-introspection for introspecti
 dev-libs/jemalloc:stats - Enable statistics calculation/reporting
 dev-libs/json-glib:coverage - Enable coverage analysis
 dev-libs/json-glib:introspection - Use dev-libs/gobject-introspection for introspection
-dev-libs/klibc:n32 - Force klibc to 32bit if on mips64 if not n32 userland
 dev-libs/libburn:track-src-odirect - Read track input with O_DIRECT (see man 2 open), this may deliver a better write performance in some situations
 dev-libs/libcdio:minimal - Only build the libcdio library and little more, just to be used to link against from multimedia players. With this USE flag enabled, none of the command-line utilities are built, nor is the CDDA library.
 dev-libs/libcgroup:daemon - Install the configuration tools and init/config files.
@@ -3804,6 +3805,7 @@ sci-geosciences/mapserver:xslt - Enable xslt and exslt support xml-mapfile suppo
 sci-geosciences/merkaartor:libproxy - Use net-libs/libproxy for getting the HTTP/HTTPS/SOCKS proxy configuration
 sci-geosciences/merkaartor:webkit - Enable Webkit browser plugin using x11-libs/qt-webkit
 sci-geosciences/qgis:grass - Add support for sci-geosciences/grass
+sci-geosciences/qgis:spatialite - Enable Spatial DBMS over sqlite dev-db/spatialite
 sci-libs/acml:gfortran - Fetch and install acml compiled with GNU gfortran
 sci-libs/acml:ifc - Fetch and install acml compiled with Intel Fortran Compiler (dev-lang/ifc)
 sci-libs/acml:int64 - Install the 64 bits integer library
