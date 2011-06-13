@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12831 2011/06/12 14:09:24 spock Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12833 2011/06/13 11:49:45 fauli Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,11 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Christian Faulhammer <fauli@gentoo.org> (13 Jun 2011)
+# Will update the database, give it one or two minor versions to
+# settle the migration code
+>=app-misc/gramps-3.3.0
 
 # Michal Januszewski <spock@gentoo.org> (12 Jun 2011)
 # Masked for removal in 30 days. The profiler is now provided by
@@ -279,18 +284,6 @@ app-text/gnochm
 # Luca Barbato <lu_zero@gentoo.org> (19 Apr 2011)
 # Masked for testing, breaks reverse dependencies 
 =media-video/libav-0.7_beta2
-
-# Christian Faulhammer <fauli@gentoo.org> (17 Apr 2011)
-# Mask for removal, abandoned by upstream with severe bugs, bug 363927
-# Use dev-portage/tatt
-# 30 days to live
-dev-cpp/libthrowable
-app-portage/gatt
-
-# Christian Faulhammer <fauli@gentoo.org> (17 Apr 2011)
-# Mask for removal, abandoned by upstream, bug 363925
-# 30 days to live
-mail-client/claws-mail-cachesaver
 
 # Alexis Ballier <aballier@gentoo.org> (14 Apr 2011)
 # Beta/test version -> masked
