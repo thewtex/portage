@@ -1,4 +1,4 @@
-dev-libs/libpcre media-gfx/graphicsmagick[cxx] media-libs/ftgl media-libs/qhull sci-libs/qrupdate sci-mathematics/glpk sci-visualization/gnuplot sys-libs/ncurses virtual/lapack virtual/opengl x11-libs/libX11 >=x11-libs/fltk-1.3:1[opengl] curl? ( net-misc/curl ) fftw? ( sci-libs/fftw:3.0 ) sparse? ( sci-libs/camd sci-libs/ccolamd sci-libs/cholmod sci-libs/colamd sci-libs/cxsparse sci-libs/umfpack ) zlib? ( sys-libs/zlib ) !sci-mathematics/octave-forge virtual/latex-base sys-apps/texinfo || ( dev-texlive/texlive-genericrecommended app-text/ptex ) dev-util/gperf dev-util/pkgconfig
+dev-libs/libpcre media-gfx/graphicsmagick[cxx] media-libs/ftgl media-libs/qhull sci-libs/qrupdate sci-mathematics/glpk sci-visualization/gnuplot sys-libs/ncurses virtual/lapack virtual/opengl x11-libs/libX11 >=x11-libs/fltk-1.3:1[opengl] curl? ( net-misc/curl ) fftw? ( sci-libs/fftw:3.0 ) sparse? ( sci-libs/camd sci-libs/ccolamd sci-libs/cholmod sci-libs/colamd sci-libs/cxsparse sci-libs/umfpack ) zlib? ( sys-libs/zlib ) !sci-mathematics/octave-forge virtual/latex-base sys-apps/texinfo || ( dev-texlive/texlive-genericrecommended app-text/ptex ) dev-util/gperf dev-util/pkgconfig || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b
 dev-libs/libpcre media-gfx/graphicsmagick[cxx] media-libs/ftgl media-libs/qhull sci-libs/qrupdate sci-mathematics/glpk sci-visualization/gnuplot sys-libs/ncurses virtual/lapack virtual/opengl x11-libs/libX11 >=x11-libs/fltk-1.3:1[opengl] curl? ( net-misc/curl ) fftw? ( sci-libs/fftw:3.0 ) sparse? ( sci-libs/camd sci-libs/ccolamd sci-libs/cholmod sci-libs/colamd sci-libs/cxsparse sci-libs/umfpack ) zlib? ( sys-libs/zlib ) !sci-mathematics/octave-forge
 0
 ftp://ftp.gnu.org/pub/gnu/octave/octave-3.4.0.tar.bz2
@@ -7,7 +7,7 @@ http://www.octave.org/
 GPL-3
 High-level interactive language for numerical computations
 ~alpha ~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86
-base eutils multilib portability toolchain-funcs
+autotools base eutils libtool multilib portability toolchain-funcs
 curl doc fftw readline sparse test zlib
 
 
