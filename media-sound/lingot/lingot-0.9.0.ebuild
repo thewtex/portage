@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/lingot/lingot-0.9.0.ebuild,v 1.1 2011/06/09 08:43:05 radhermit Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/lingot/lingot-0.9.0.ebuild,v 1.3 2011/06/12 08:48:42 radhermit Exp $
 
 EAPI=4
 inherit autotools eutils
@@ -15,7 +15,10 @@ KEYWORDS="~amd64 ~x86"
 IUSE="alsa jack"
 
 RDEPEND="x11-libs/gtk+:2
-	>=gnome-base/libglade-2
+	x11-libs/gdk-pixbuf:2
+	x11-libs/pango
+	dev-libs/glib:2
+	gnome-base/libglade:2.0
 	alsa? ( media-libs/alsa-lib )
 	jack? ( >=media-sound/jack-audio-connection-kit-0.102 )"
 DEPEND="${RDEPEND}
@@ -24,7 +27,9 @@ DEPEND="${RDEPEND}
 	sys-devel/gettext"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-0.7.6-clean-install.patch
+	epatch "${FILESDIR}"/${PN}-0.7.6-clean-install.patch \
+		"${FILESDIR}"/${P}-jack.patch
+
 	eautoreconf
 }
 

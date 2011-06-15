@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12829 2011/06/09 22:50:17 tampakrap Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12834 2011/06/14 13:19:20 nirbheek Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,37 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Nirbheek Chauhan <nirbheek@gentoo.org> (14 Jun 2011)
+# GNOME 3.1.x pre-releases for libraries in the tree
+>=dev-libs/gobject-introspection-1.29
+>=dev-libs/gjs-1.29
+=media-libs/clutter-1.7*
+
+# Christian Faulhammer <fauli@gentoo.org> (13 Jun 2011)
+# Will update the database, give it one or two minor versions to
+# settle the migration code
+>=app-misc/gramps-3.3.0
+
+# Michal Januszewski <spock@gentoo.org> (12 Jun 2011)
+# Masked for removal in 30 days. The profiler is now provided by
+# nvidia-cuda-toolkit.
+dev-util/nvidia-cuda-profiler
+
+# Sergei Trofimovich <slyfox@gentoo.org> (11 Jun 2011)
+# Masked for removal in 30 days. 'Abandoned' by upstream.
+# Fails to build on modern toolchain:
+#    #284216, #367191, #267974
+#
+# Upstream now provides splitted packages for various gtk
+# subsystems:
+#     dev-haskell/pango
+#     dev-haskell/cairo
+#     dev-haskell/glib
+#     dev-haskell/cairo
+#     dev-haskell/glade
+#     dev-haskell/gtk
+dev-haskell/gtk2hs
 
 # Diego E. Pettenò <flameeyes@gentoo.org> (09 Jun 2011)
 #  on behalf of QA team
@@ -259,18 +290,6 @@ app-text/gnochm
 # Luca Barbato <lu_zero@gentoo.org> (19 Apr 2011)
 # Masked for testing, breaks reverse dependencies 
 =media-video/libav-0.7_beta2
-
-# Christian Faulhammer <fauli@gentoo.org> (17 Apr 2011)
-# Mask for removal, abandoned by upstream with severe bugs, bug 363927
-# Use dev-portage/tatt
-# 30 days to live
-dev-cpp/libthrowable
-app-portage/gatt
-
-# Christian Faulhammer <fauli@gentoo.org> (17 Apr 2011)
-# Mask for removal, abandoned by upstream, bug 363925
-# 30 days to live
-mail-client/claws-mail-cachesaver
 
 # Alexis Ballier <aballier@gentoo.org> (14 Apr 2011)
 # Beta/test version -> masked

@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/libetpan/libetpan-1.0.ebuild,v 1.1 2010/04/20 18:41:57 fauli Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/libetpan/libetpan-1.0.ebuild,v 1.3 2011/06/14 14:04:45 eras Exp $
 
 EAPI="2"
 
@@ -20,9 +20,11 @@ DEPEND="berkdb? ( sys-libs/db )
 	!gnutls? ( ssl? ( dev-libs/openssl ) )
 	sasl? ( dev-libs/cyrus-sasl )
 	liblockfile? ( net-libs/liblockfile )"
+RDEPEND="${DEPEND}"
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-ldflags.patch
+	epatch "${FILESDIR}"/${P}-nonnull.patch
 	eautoreconf
 }
 

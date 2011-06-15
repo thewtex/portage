@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/atheme-services/atheme-services-6.0.8.ebuild,v 1.1 2011/06/09 04:38:06 binki Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-irc/atheme-services/atheme-services-6.0.8.ebuild,v 1.3 2011/06/14 03:07:58 binki Exp $
 
 EAPI=4
 
@@ -28,11 +28,20 @@ pkg_setup() {
 	# overwhelms cc1 with this flag :-(
 	filter-flags -combine
 
+	if use profile; then
+		# bug #371119
+		ewarn "USE=\"profile\" is incompatible with the hardened profile's -pie flag."
+		ewarn "Disabling PIE. Please ignore any warning messages about -nopie being invalid."
+		append-flags -nopie
+	fi
+
 	enewgroup ${PN}
 	enewuser ${PN} -1 -1 /var/lib/${PN} ${PN}
 }
 
 src_prepare() {
+	epatch "${FILESDIR}"/${P}-configure-disable.patch
+
 	# fix docdir
 	sed -i -e 's/\(^DOCDIR.*=.\)@DOCDIR@/\1@docdir@/' extra.mk.in || die
 
