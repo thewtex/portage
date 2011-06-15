@@ -1,4 +1,4 @@
-dev-util/pkgconfig doc? ( >=app-doc/doxygen-1.5.8 x11-libs/qt-assistant ) test? ( dev-util/cpptest )
+dev-util/pkgconfig doc? ( >=app-doc/doxygen-1.5.8 qt4? ( x11-libs/qt-assistant ) ) test? ( dev-util/cpptest ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b
 
 0
 mirror://sourceforge/uriparser/uriparser-0.7.5.tar.bz2
@@ -7,14 +7,14 @@ http://uriparser.sourceforge.net/
 BSD
 Uriparser is a strictly RFC 3986 compliant URI parsing library in C
 amd64 ppc ~ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris
-
-doc test
+autotools eutils libtool multilib portability toolchain-funcs
+doc qt4 test
 
 
 
 2
 
-configure install
+configure install prepare
 
 
 
