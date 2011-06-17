@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12841 2011/06/16 00:20:59 blueness Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12846 2011/06/17 15:43:04 phajdan.jr Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,28 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Stuart Longland <redhatter@gentoo.org> (17 Jun 2011)
+# Masked for removal within 30 days.  Will be replacing it with updated
+# ebuilds to address numerous issues.  See bugs #336993, #336199, #369881
+# and #335307.
+=media-radio/svxlink-090426
+
+# Stuart Longland <redhatter@gentoo.org> (17 Jun 2011)
+# Masked for removal within 30 days.  There is a newer version upstream but it
+# doesn't compile for me, and upstream is now dead.  As an alternative, have a
+# look at media-radio/fldigi instead. (See bug #259451)
+media-radio/gmfsk
+
+# Pawel Hajdan jr <phajdan.jr@gentoo.org> (17 Jun 2011)
+# Mask v8 versions used for www-client/chromium dev channel releases.
+# Currently v8-3.4 versions are used for chromium-14.x versions.
+>=dev-lang/v8-3.4
+
+# Pawel Hajdan jr <phajdan.jr@gentoo.org> (17 Jun 2011)
+# Dev channel releases are only for people who are developers or want more
+# experimental features and accept a more unstable release.
+>=www-client/chromium-14
 
 # Anthony G. Basile <blueness@gentoo.org> (15 Jun 2011)
 # Masked for removal in 30 days.
@@ -250,16 +272,6 @@ media-video/came
 net-irc/oer
 net-irc/oer-mysql
 
-# Pawel Hajdan jr <phajdan.jr@gentoo.org> (13 May 2011)
-# Mask v8 versions used for www-client/chromium dev channel releases.
-# Currently v8-3.3 versions are used for chromium-13.x versions.
->=dev-lang/v8-3.3
-
-# Pawel Hajdan jr <phajdan.jr@gentoo.org> (13 May 2011)
-# Dev channel releases are only for people who are developers or want more
-# experimental features and accept a more unstable release.
->=www-client/chromium-13
-
 # Justin Bronder <jsbronder@gentoo.org> (09 May 2011)
 #
 # Out of tree kernel module and upstream does not closely
@@ -281,7 +293,10 @@ sys-cluster/pvfs2
 app-crypt/scsign
 
 # Ole Markus With <olemarkus@gentoo.org> (1 May 2011)
-# Masking SVN snaphots.
+# Masking SVN snaphots and release candidates.
+=dev-lang/php-5.3.7_rc1
+=dev-lang/php-5.3.7_rc2
+=dev-lang/php-5.3.7_rc3
 >=dev-lang/php-5.4.0_pre1
 
 # Nirbheek Chauhan <nirbheek@gentoo.org> (30 Apr 2011)
