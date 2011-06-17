@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/kde4-base.eclass,v 1.98 2011/06/09 21:05:45 tampakrap Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/kde4-base.eclass,v 1.100 2011/06/15 22:03:13 abcd Exp $
 
 # @ECLASS: kde4-base.eclass
 # @MAINTAINER:
@@ -52,8 +52,7 @@ KDE_MINIMAL="${KDE_MINIMAL:-4.4}"
 # Set slot for KDEBASE known packages
 case ${KDEBASE} in
 	kde-base)
-		SLOT=$(get_kde_version)
-		[[ -z ${SLOT} ]] && die "Unsupported PV ${PV}"
+		SLOT=4
 		KDE_MINIMAL="${PV}"
 		;;
 	koffice)
@@ -179,8 +178,6 @@ case ${KDEBASE} in
 				RESTRICT+=" mirror"
 				;;
 		esac
-		# Block installation of other SLOTS unless kdeprefix
-		RDEPEND+=" $(block_other_slots)"
 		;;
 	koffice)
 		HOMEPAGE="http://www.koffice.org/"
@@ -572,6 +569,9 @@ _calculate_live_repo() {
 						kdeplasma-addons | kdepim | kdepim-runtime | kdepimlibs | okular)
 							EGIT_BRANCH="$(get_kde_version)"
 							;;
+						kdeedu)
+							EGIT_BRANCH="$(get_kde_version)"
+							;;
 						marble)
 							EGIT_BRANCH="kde-$(get_kde_version)"
 							;;
@@ -580,7 +580,14 @@ _calculate_live_repo() {
 					;;
 			esac
 
-			EGIT_REPO_URI="${EGIT_MIRROR}/${_kmname}"
+			# default repo uri
+			case ${_kmname} in
+				kdeedu)
+					EGIT_REPO_URI="${EGIT_MIRROR}/${PN}"
+					;;
+				*)
+					EGIT_REPO_URI="${EGIT_MIRROR}/${_kmname}"
+			esac
 
 			debug-print "${FUNCNAME}: Repository: ${EGIT_REPO_URI}"
 			debug-print "${FUNCNAME}: Branch: ${EGIT_BRANCH}"
@@ -598,13 +605,12 @@ debug-print "${LINENO} ${ECLASS} ${FUNCNAME}: SRC_URI is ${SRC_URI}"
 # @ECLASS-VARIABLE: PREFIX
 # @DESCRIPTION:
 # Set the installation PREFIX for non kde-base applications. It defaults to /usr.
-# kde-base packages go into KDE4 installation directory (KDEDIR) by default.
-# No matter the PREFIX, package will be built against KDE installed in KDEDIR.
+# kde-base packages go into KDE4 installation directory (/usr).
+# No matter the PREFIX, package will be built against KDE installed in /usr.
 
 # @FUNCTION: kde4-base_pkg_setup
 # @DESCRIPTION:
-# Do the basic KDEDIR settings and determine with which kde should
-# optional applications link
+# Do some basic settings
 kde4-base_pkg_setup() {
 	debug-print-function ${FUNCNAME} "$@"
 
@@ -637,10 +643,8 @@ kde4-base_pkg_setup() {
 	: ${PREFIX:=/usr}
 	EKDEDIR=${EPREFIX}/usr
 
-	# Point pkg-config path to KDE *.pc files
-	export PKG_CONFIG_PATH="${EKDEDIR}/$(get_libdir)/pkgconfig${PKG_CONFIG_PATH:+:${PKG_CONFIG_PATH}}"
 	# Point to correct QT plugins path
-	QT_PLUGIN_PATH="${EKDEDIR}/$(get_libdir)/kde4/plugins/"
+	QT_PLUGIN_PATH="${EPREFIX}/usr/$(get_libdir)/kde4/plugins/"
 
 	# Fix XDG collision with sandbox
 	export XDG_CONFIG_HOME="${T}"
@@ -783,7 +787,7 @@ kde4-base_src_configure() {
 	# Use colors
 	QTEST_COLORED=1
 
-	# Shadow existing /usr installations
+	# Shadow existing installations
 	unset KDEDIRS
 
 	#qmake -query QT_INSTALL_LIBS unavailable when cross-compiling
