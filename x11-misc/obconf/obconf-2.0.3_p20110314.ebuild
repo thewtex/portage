@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/obconf/obconf-2.0.3_p20110314.ebuild,v 1.7 2011/06/17 17:37:18 hwoarang Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/obconf/obconf-2.0.3_p20110314.ebuild,v 1.8 2011/06/18 10:51:19 hwoarang Exp $
 
 EAPI=2
 inherit autotools fdo-mime
@@ -42,7 +42,7 @@ src_install() {
 	emake DESTDIR="${D}" install || die
 	# add wrapper for lxde environment. Bug #369555
 	if use lxde; then
-		dobin ${FILESDIR}/${PN}-lxde || die
+		dobin "${FILESDIR}"/${PN}-lxde || die
 	fi
 	dodoc AUTHORS CHANGELOG README || die "dodoc failed"
 }
