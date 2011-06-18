@@ -1,8 +1,8 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/daemons/daemons-1.1.2.ebuild,v 1.1 2011/04/09 08:32:34 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/daemons/daemons-1.1.4.ebuild,v 1.1 2011/06/18 04:49:24 graaff Exp $
 
-EAPI="2"
+EAPI=4
 USE_RUBY="ruby18 ree18 ruby19 jruby"
 
 RUBY_FAKEGEM_EXTRADOC="Releases README TODO"
@@ -26,5 +26,5 @@ all_ruby_install() {
 	use examples || return
 
 	insinto /usr/share/doc/${PF}/
-	doins -r examples || die "Failed to install examples"
+	doins -r examples
 }
