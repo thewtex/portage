@@ -1,6 +1,6 @@
-EAPI="2"
+EAPI="3"
 
-inherit eutils distutils
+inherit distutils
 
 DESCRIPTION="Pyclewn allows using vim as a front end to a debugger."
 HOMEPAGE="http://pyclewn.sourceforge.net/"
@@ -11,11 +11,7 @@ IUSE=""
 SLOT="0"
 
 RDEPEND="dev-lang/python
-  =app-editors/gvim-7.2.442
+  >=app-editors/gvim-7.3
   sys-devel/gdb"
 DEPEND="${DEPEND}"
 
-src_prepare() {
-	epatch ${FILESDIR}/pyclewn-python2.7-test.regrtest.patch
-	epatch ${FILESDIR}/pyclewn-${PV}-gdb-async-record.patch
-}
