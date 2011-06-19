@@ -1,6 +1,23 @@
 # ChangeLog for sci-geosciences/gpsd
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-geosciences/gpsd/ChangeLog,v 1.68 2011/06/04 08:03:01 scarabeus Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-geosciences/gpsd/ChangeLog,v 1.72 2011/06/17 11:12:23 scarabeus Exp $
+
+  17 Jun 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  -files/40-usb-serial.rules, -files/99-gpsd-usb.rules, -gpsd-2.32.ebuild,
+  -files/gpsd.conf, -files/gpsd.init:
+  Remove old finaly overshadowed gpsd.
+
+  17 Jun 2011; Kacper Kowalik <xarthisius@gentoo.org> gpsd-2.95-r1.ebuild:
+  ppc64 stable wrt #362981
+
+  17 Jun 2011; Tomáš Chvátal <scarabeus@gentoo.org> metadata.xml:
+  Remove unused local usedescs to make repoman happy.
+
+*gpsd-2.96-r1 (17 Jun 2011)
+
+  17 Jun 2011; Tomáš Chvátal <scarabeus@gentoo.org> -gpsd-2.96.ebuild,
+  +gpsd-2.96-r1.ebuild:
+  Install udev rules. Fixes bug #369125.
 
   04 Jun 2011; Tomáš Chvátal <scarabeus@gentoo.org> gpsd-2.96.ebuild:
   Drop unused variable and double definition.
