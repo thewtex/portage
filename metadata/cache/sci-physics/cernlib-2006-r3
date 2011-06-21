@@ -1,5 +1,5 @@
->=x11-libs/openmotif-2.3:0 virtual/lapack dev-lang/cfortran x11-misc/imake x11-misc/makedepend dev-util/pkgconfig
->=x11-libs/openmotif-2.3:0 virtual/lapack dev-lang/cfortran
+virtual/fortran >=x11-libs/openmotif-2.3:0 virtual/lapack dev-lang/cfortran x11-misc/imake x11-misc/makedepend dev-util/pkgconfig
+virtual/fortran >=x11-libs/openmotif-2.3:0 virtual/lapack dev-lang/cfortran
 0
 mirror://debian/pool/main/c/cernlib/cernlib_2006.dfsg.2.orig.tar.gz mirror://debian/pool/main/c/cernlib/cernlib_2006.dfsg.2-14.diff.gz
 
@@ -7,14 +7,14 @@ http://wwwasd.web.cern.ch/wwwasd/cernlib
 GPL-2 LGPL-2 BSD
 CERN program library for High Energy Physics
 amd64 hppa sparc x86
-eutils multilib portability toolchain-funcs
+eutils fortran-2 multilib portability toolchain-funcs
 
 
 
 
 3
 
-compile install postinst prepare test
+compile install postinst prepare setup test
 
 
 

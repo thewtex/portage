@@ -1,10 +1,10 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/cbflib/cbflib-0.8.1-r7.ebuild,v 1.1 2010/03/31 20:25:10 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/cbflib/cbflib-0.8.1-r7.ebuild,v 1.3 2011/06/21 15:41:23 jlec Exp $
 
 EAPI="3"
 
-inherit eutils flag-o-matic toolchain-funcs
+inherit eutils fortran-2 flag-o-matic toolchain-funcs
 
 MY_P1="CBFlib-${PV}"
 MY_P2="CBFlib_${PV}"
@@ -23,8 +23,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
-#RDEPEND=""
-#DEPEND="test? ( sys-process/time )"
+DEPEND="virtual/fortran	"
+RDEPEND="${DEPEND}"
+#test? ( sys-process/time )"
 
 S="${WORKDIR}/${MY_P1}"
 

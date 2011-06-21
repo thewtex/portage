@@ -1,9 +1,9 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-physics/cernlib/cernlib-2006-r3.ebuild,v 1.9 2011/01/30 21:52:38 bicatali Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-physics/cernlib/cernlib-2006-r3.ebuild,v 1.11 2011/06/21 14:40:05 jlec Exp $
 
 EAPI=3
-inherit eutils toolchain-funcs
+inherit eutils fortran-2 toolchain-funcs
 
 DEB_PN=cernlib
 DEB_PV=${PV}.dfsg.2
@@ -20,7 +20,9 @@ LICENSE="GPL-2 LGPL-2 BSD"
 
 SLOT="0"
 
-RDEPEND=">=x11-libs/openmotif-2.3:0
+RDEPEND="
+	virtual/fortran
+>=x11-libs/openmotif-2.3:0
 	virtual/lapack
 	dev-lang/cfortran"
 

@@ -1,8 +1,8 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/proj/proj-4.6.0.ebuild,v 1.1 2008/01/04 16:42:11 bicatali Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/proj/proj-4.6.0.ebuild,v 1.3 2011/06/21 15:06:42 jlec Exp $
 
-inherit eutils
+inherit eutils fortran-2
 
 DESCRIPTION="Proj.4 cartographic projection software with updated NAD27 grids"
 HOMEPAGE="http://proj.maptools.org/"
@@ -14,7 +14,9 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~hppa ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
 IUSE=""
 
-RDEPEND=""
+RDEPEND="
+	virtual/fortran
+	"
 DEPEND="app-arch/unzip"
 
 src_unpack() {

@@ -1,5 +1,5 @@
-!sci-visualization/extrema virtual/blas virtual/lapack sci-libs/libint || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b
-!sci-visualization/extrema virtual/blas virtual/lapack sci-libs/libint
+virtual/fortran !sci-visualization/extrema virtual/blas virtual/lapack sci-libs/libint || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b
+virtual/fortran !sci-visualization/extrema virtual/blas virtual/lapack sci-libs/libint
 0
 mirror://sourceforge/psicode/psi-3.2.3.tar.gz
 
@@ -7,14 +7,14 @@ http://www.psicode.org/
 GPL-2
 Suite of ab initio quantum chemistry programs to compute various molecular properties
 x86
-autotools eutils libtool multilib portability toolchain-funcs
+autotools eutils fortran-2 libtool multilib portability toolchain-funcs
 
 
 
 
 
 
-compile install unpack
+compile install setup unpack
 
 
 

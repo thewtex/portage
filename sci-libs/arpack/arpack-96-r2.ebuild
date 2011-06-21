@@ -1,16 +1,19 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/arpack/arpack-96-r2.ebuild,v 1.23 2011/03/13 12:00:54 grobian Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/arpack/arpack-96-r2.ebuild,v 1.25 2011/06/21 15:42:33 jlec Exp $
 
 EAPI=2
-inherit eutils autotools toolchain-funcs
+
+inherit autotools eutils fortran-2 toolchain-funcs
 
 DESCRIPTION="Arnoldi package library to solve large scale eigenvalue problems."
 HOMEPAGE="http://www.caam.rice.edu/software/ARPACK/"
-SRC_URI="http://www.caam.rice.edu/software/ARPACK/SRC/${PN}${PV}.tar.gz
+SRC_URI="
+	http://www.caam.rice.edu/software/ARPACK/SRC/${PN}${PV}.tar.gz
 	http://www.caam.rice.edu/software/ARPACK/SRC/p${PN}${PV}.tar.gz
 	http://dev.gentoo.org/~bicatali/${P}-patches.tar.bz2
-	doc? ( http://www.caam.rice.edu/software/ARPACK/SRC/ug.ps.gz
+	doc? (
+		http://www.caam.rice.edu/software/ARPACK/SRC/ug.ps.gz
 		http://www.caam.rice.edu/software/ARPACK/DOCS/tutorial.ps.gz )"
 
 LICENSE="BSD"
@@ -18,7 +21,9 @@ SLOT="0"
 KEYWORDS="alpha amd64 hppa ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="doc examples mpi static-libs"
 
-RDEPEND="virtual/blas
+RDEPEND="
+	virtual/fortran
+	virtual/blas
 	virtual/lapack
 	mpi? ( virtual/mpi[fortran] )"
 DEPEND="${RDEPEND}

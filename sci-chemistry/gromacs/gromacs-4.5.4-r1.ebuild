@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/gromacs/gromacs-4.5.4-r1.ebuild,v 1.5 2011/05/01 16:49:59 xarthisius Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/gromacs/gromacs-4.5.4-r1.ebuild,v 1.8 2011/06/21 16:03:14 jlec Exp $
 
 EAPI="4"
 
@@ -8,7 +8,7 @@ LIBTOOLIZE="true"
 TEST_PV="4.0.4"
 MANUAL_PV="4.5.4"
 
-inherit autotools-utils bash-completion flag-o-matic multilib toolchain-funcs
+inherit autotools-utils bash-completion flag-o-matic fortran-2 multilib toolchain-funcs
 
 SRC_URI="test? ( ftp://ftp.gromacs.org/pub/tests/gmxtest-${TEST_PV}.tgz )
 		doc? ( ftp://ftp.gromacs.org/pub/manual/manual-${MANUAL_PV}.pdf -> gromacs-manual-${MANUAL_PV}.pdf )"
@@ -37,6 +37,8 @@ mpi +single-precision sse2 static-libs test +threads +xml zsh-completion"
 REQUIRED_USE="fkernels? ( !threads )"
 
 CDEPEND="
+	virtual/fortran
+
 	X? ( x11-libs/libX11
 		x11-libs/libSM
 		x11-libs/libICE )
@@ -128,8 +130,8 @@ src_configure() {
 	fi
 
 	# if we need external blas or lapack
-	use blas && export LIBS+=" $(pkg-config blas --libs)"
-	use lapack && export LIBS+=" $(pkg-config lapack --libs)"
+	use blas && append-libs $(pkg-config blas --libs)
+	use lapack && append-libs $(pkg-config lapack --libs)
 	local sseflag="x86-64-sse"
 	use x86 && sseflag="ia32-sse"
 

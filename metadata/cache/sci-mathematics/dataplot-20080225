@@ -1,5 +1,5 @@
 opengl? ( virtual/opengl ) gd? ( media-libs/gd[png,jpeg] ) gs? ( app-text/ghostscript-gpl media-libs/gd[png,jpeg] ) dev-util/pkgconfig || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b
-opengl? ( virtual/opengl ) gd? ( media-libs/gd[png,jpeg] ) gs? ( app-text/ghostscript-gpl media-libs/gd[png,jpeg] ) X? ( x11-misc/xdg-utils )
+virtual/fortran opengl? ( virtual/opengl ) gd? ( media-libs/gd[png,jpeg] ) gs? ( app-text/ghostscript-gpl media-libs/gd[png,jpeg] ) X? ( x11-misc/xdg-utils )
 0
 ftp://ftp.nist.gov/pub/dataplot/unix/dpsrc.02_25_2008.tar.gz ftp://ftp.nist.gov/pub/dataplot/unix/dplib.02_25_2008.tar.gz
 
@@ -7,14 +7,14 @@ http://www.itl.nist.gov/div898/software/dataplot/
 public-domain
 A program for scientific visualization and statistical analyis
 ~amd64 ~x86
-autotools eutils libtool multilib portability toolchain-funcs
+autotools eutils fortran-2 libtool multilib portability toolchain-funcs
 examples gd gs opengl X
 
 
 
 2
 
-configure install postinst prepare unpack
+configure install postinst prepare setup unpack
 
 
 

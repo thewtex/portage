@@ -1,8 +1,8 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/amd/amd-2.2.0.ebuild,v 1.20 2010/12/22 18:18:12 bicatali Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/amd/amd-2.2.0.ebuild,v 1.22 2011/06/21 15:43:02 jlec Exp $
 
-inherit autotools eutils toolchain-funcs
+inherit autotools eutils fortran-2 toolchain-funcs
 
 MY_PN=AMD
 DESCRIPTION="Library to order a sparse matrix prior to Cholesky factorization"
@@ -14,7 +14,9 @@ SLOT="0"
 KEYWORDS="alpha amd64 hppa ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~x86-macos"
 IUSE="doc"
 
-DEPEND="sci-libs/ufconfig"
+DEPEND="
+	virtual/fortran
+	sci-libs/ufconfig"
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${MY_PN}"

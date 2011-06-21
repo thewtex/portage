@@ -1,9 +1,9 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/mpe2/mpe2-1.0.6_p1-r1.ebuild,v 1.3 2010/12/16 15:54:28 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/mpe2/mpe2-1.0.6_p1-r1.ebuild,v 1.5 2011/06/21 14:24:37 jlec Exp $
 
 EAPI=2
-inherit eutils java-utils-2 toolchain-funcs
+inherit eutils fortran-2 java-utils-2 toolchain-funcs
 
 MY_P=${P/_/}
 DESCRIPTION="MPI development tools"
@@ -23,7 +23,9 @@ COMMON_DEPEND="!minimal? ( x11-libs/libXtst
 DEPEND="!minimal? ( >=virtual/jdk-1.4 )
 	${COMMON_DEPEND}"
 
-RDEPEND="!minimal? ( >=virtual/jre-1.4 )
+RDEPEND="
+	fortran? ( virtual/fortran )
+!minimal? ( >=virtual/jre-1.4 )
 	${COMMON_DEPEND}"
 
 S="${WORKDIR}"/${MY_P}
@@ -37,6 +39,7 @@ MPE_IMP=""
 # correctly in preperation.
 
 pkg_setup() {
+	fortran-2_pkg_setup
 	local i
 
 	if has_version sys-cluster/openmpi; then

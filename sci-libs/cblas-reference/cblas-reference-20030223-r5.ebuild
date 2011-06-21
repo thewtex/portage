@@ -1,10 +1,10 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/cblas-reference/cblas-reference-20030223-r5.ebuild,v 1.2 2010/12/16 14:27:10 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/cblas-reference/cblas-reference-20030223-r5.ebuild,v 1.4 2011/06/21 15:40:40 jlec Exp $
 
 EAPI="3"
 
-inherit autotools eutils multilib toolchain-funcs
+inherit autotools eutils fortran-2 multilib toolchain-funcs
 
 MyPN="${PN/-reference/}"
 
@@ -17,7 +17,9 @@ SLOT="0"
 IUSE=""
 KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~ppc64 ~s390 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 
-RDEPEND="virtual/blas
+RDEPEND="
+	virtual/fortran
+	virtual/blas
 	app-admin/eselect-cblas"
 DEPEND="${RDEPEND}
 	dev-util/pkgconfig"

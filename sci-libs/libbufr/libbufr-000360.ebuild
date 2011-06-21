@@ -1,14 +1,14 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/libbufr/libbufr-000360.ebuild,v 1.6 2011/03/17 15:02:27 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/libbufr/libbufr-000360.ebuild,v 1.8 2011/06/21 15:15:13 jlec Exp $
 
-EAPI="2"
+EAPI=2
 
-inherit eutils flag-o-matic toolchain-funcs
+inherit eutils fortran-2 flag-o-matic toolchain-funcs
 
 MY_P="${PN/lib/}_${PV}"
 
-DESCRIPTION="ECMWF BUFR library - includes both C and Fortran example utilities."
+DESCRIPTION="ECMWF BUFR library - includes both C and Fortran example utilities"
 HOMEPAGE="http://www.ecmwf.int/products/data/software/bufr.html"
 SRC_URI="http://www.ecmwf.int/products/data/software/download/software_files/${MY_P}.tar.gz"
 
@@ -19,13 +19,16 @@ KEYWORDS="~amd64 ~x86"
 
 IUSE="debug doc examples"
 
-RDEPEND=""
+RDEPEND="
+	virtual/fortran
+	"
 
 DEPEND="sys-apps/findutils"
 
 S=${WORKDIR}/${MY_P}
 
 pkg_setup() {
+	fortran-2_pkg_setup
 	case "$(tc-getFC)" in
 		*gfortran)
 			export CNAME="_gfortran"

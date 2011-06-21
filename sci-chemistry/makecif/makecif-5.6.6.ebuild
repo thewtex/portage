@@ -1,10 +1,10 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/makecif/makecif-5.6.6.ebuild,v 1.7 2011/01/16 11:17:56 xarthisius Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/makecif/makecif-5.6.6.ebuild,v 1.9 2011/06/21 16:03:09 jlec Exp $
 
 EAPI="3"
 
-inherit eutils toolchain-funcs
+inherit eutils fortran-2 toolchain-funcs
 
 DESCRIPTION="PDB --> CIF convertor"
 HOMEPAGE="http://www.ysbl.york.ac.uk/~alexei/makecif.html"
@@ -17,7 +17,9 @@ IUSE=""
 
 S="${WORKDIR}"/${PN}
 
-DEPEND=""
+DEPEND="
+	virtual/fortran
+	"
 RDEPEND="
 	sci-libs/monomer-db
 	!<sci-chemistry/refmac-5.5.0110-r1"

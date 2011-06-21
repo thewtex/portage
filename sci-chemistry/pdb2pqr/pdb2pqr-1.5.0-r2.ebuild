@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/pdb2pqr/pdb2pqr-1.5.0-r2.ebuild,v 1.8 2011/04/12 17:37:53 arfrever Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/pdb2pqr/pdb2pqr-1.5.0-r2.ebuild,v 1.10 2011/06/21 16:02:05 jlec Exp $
 
 EAPI="3"
 
@@ -9,7 +9,7 @@ SUPPORT_PYTHON_ABIS="1"
 PYTHON_EXPORT_PHASE_FUNCTIONS="1"
 RESTRICT_PYTHON_ABIS="2.4 3.*"
 
-inherit autotools eutils flag-o-matic python toolchain-funcs versionator
+inherit autotools eutils fortran-2 flag-o-matic python toolchain-funcs versionator
 
 MY_PV=$(get_version_component_range 1-2)
 MY_P="${PN}-${MY_PV}"
@@ -24,6 +24,7 @@ IUSE="doc examples opal"
 KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="
+	virtual/fortran
 	dev-python/numpy
 	sci-chemistry/openbabel
 	opal? ( dev-python/zsi )"

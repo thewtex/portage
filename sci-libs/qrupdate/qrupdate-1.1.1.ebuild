@@ -1,10 +1,10 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/qrupdate/qrupdate-1.1.1.ebuild,v 1.1 2010/05/13 15:53:20 bicatali Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/qrupdate/qrupdate-1.1.1.ebuild,v 1.3 2011/06/21 14:46:14 jlec Exp $
 
 EAPI="2"
 
-inherit eutils multilib toolchain-funcs
+inherit eutils fortran-2 multilib toolchain-funcs
 
 DESCRIPTION="A library for fast updating of QR and Cholesky decompositions"
 HOMEPAGE="http://sourceforge.net/projects/qrupdate"
@@ -15,7 +15,9 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~ppc-macos"
 IUSE="static-libs"
 
-RDEPEND="virtual/lapack"
+RDEPEND="
+	virtual/fortran
+	virtual/lapack"
 DEPEND="${RDEPEND}
 	dev-util/pkgconfig"
 

@@ -1,9 +1,10 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/dataplot/dataplot-20090821.ebuild,v 1.1 2010/07/23 18:28:47 bicatali Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/dataplot/dataplot-20090821.ebuild,v 1.3 2011/06/21 14:44:22 jlec Exp $
 
 EAPI=3
-inherit eutils toolchain-funcs autotools
+
+inherit eutils fortran-2 toolchain-funcs autotools
 
 #     YEAR         MONTH    DAY
 MY_PV=${PV:0:4}_${PV:4:2}_${PV:6:2}
@@ -14,20 +15,24 @@ MY_P_AUX=dplib.${MY_PV_AUX}
 
 DESCRIPTION="A program for scientific visualization and statistical analyis"
 HOMEPAGE="http://www.itl.nist.gov/div898/software/dataplot/"
-SRC_URI="ftp://ftp.nist.gov/pub/dataplot/unix/${MY_P}.tar.gz
+SRC_URI="
+	ftp://ftp.nist.gov/pub/dataplot/unix/${MY_P}.tar.gz
 	ftp://ftp.nist.gov/pub/dataplot/unix/${MY_P_AUX}.tar.gz"
 
-LICENSE="public-domain"
 SLOT="0"
+LICENSE="public-domain"
 KEYWORDS="~amd64 ~x86"
 IUSE="examples gd opengl X"
 
-COMMON_DEPEND="media-libs/plotutils
+COMMON_DEPEND="
+	media-libs/plotutils
 	opengl? ( virtual/opengl )
 	gd? ( media-libs/gd[png,jpeg] )"
 DEPEND="${COMMON_DEPEND}
 	dev-util/pkgconfig"
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="
+	virtual/fortran
+	${COMMON_DEPEND}
 	X? ( x11-misc/xdg-utils )"
 
 S="${WORKDIR}/${MY_P}"
@@ -37,9 +42,9 @@ src_unpack() {
 	# unpacking and renaming because
 	# upstream does not use directories
 	mkdir "${S_AUX}"
-	pushd "${S_AUX}"
+	pushd "${S_AUX}" > /dev/null
 	unpack ${MY_P_AUX}.tar.gz
-	popd
+	popd > /dev/null
 	mkdir ${MY_P}
 	cd "${S}"
 	unpack ${MY_P}.tar.gz

@@ -1,12 +1,12 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-radio/wspr/wspr-2.00.ebuild,v 1.2 2011/04/10 21:39:35 arfrever Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-radio/wspr/wspr-2.00.ebuild,v 1.4 2011/06/21 16:09:19 jlec Exp $
 
 EAPI="3"
 PYTHON_DEPEND="2"
 PYTHON_USE_WITH="tk"
 
-inherit autotools distutils flag-o-matic multilib toolchain-funcs
+inherit autotools fortran-2 distutils flag-o-matic multilib toolchain-funcs
 
 MY_P=${P}.r1714
 
@@ -19,13 +19,15 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND="dev-python/imaging[tk]
+RDEPEND="
+	dev-python/imaging[tk]
 	dev-python/numpy
 	dev-python/pmw
 	sci-libs/fftw:3.0
 	media-libs/hamlib
 	media-libs/portaudio
-	media-libs/libsamplerate"
+	media-libs/libsamplerate
+	virtual/fortran"
 DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${MY_P}"
@@ -40,6 +42,7 @@ get_fcomp() {
 }
 
 pkg_setup() {
+	fortran-2_pkg_setup
 	python_set_active_version 2
 	python_pkg_setup
 }

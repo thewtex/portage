@@ -1,10 +1,10 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/scilab/scilab-4.1.2-r1.ebuild,v 1.10 2011/03/07 10:42:36 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/scilab/scilab-4.1.2-r1.ebuild,v 1.12 2011/06/21 14:43:15 jlec Exp $
 
 EAPI="1"
 
-inherit eutils toolchain-funcs multilib autotools java-pkg-opt-2
+inherit eutils fortran-2 toolchain-funcs multilib autotools java-pkg-opt-2
 
 DESCRIPTION="Scientific software package for numerical computations (Matlab lookalike)"
 LICENSE="scilab"
@@ -15,7 +15,9 @@ SLOT="0"
 IUSE="ocaml gtk Xaw3d java"
 KEYWORDS="amd64 ppc x86"
 
-RDEPEND="virtual/blas
+RDEPEND="
+	virtual/fortran
+	virtual/blas
 	virtual/lapack
 	virtual/cblas
 	sys-libs/ncurses
@@ -37,6 +39,7 @@ DEPEND="${RDEPEND}
 	app-text/sablotron"
 
 pkg_setup() {
+	fortran-2_pkg_setup
 	java-pkg-opt-2_pkg_setup
 }
 
