@@ -1,5 +1,5 @@
-app-admin/eselect-lapack virtual/blas virtual/fortran dev-util/pkgconfig doc? ( app-doc/lapack-docs ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b
-app-admin/eselect-lapack virtual/blas virtual/fortran
+virtual/fortran app-admin/eselect-lapack virtual/blas dev-util/pkgconfig doc? ( app-doc/lapack-docs ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b
+virtual/fortran app-admin/eselect-lapack virtual/blas
 0
 mirror://gentoo/lapack-3.2.1.tgz mirror://gentoo/lapack-reference-3.2.1-autotools.patch.bz2
 
@@ -7,7 +7,7 @@ http://www.netlib.org/lapack/index.html
 BSD
 FORTRAN reference implementation of LAPACK Linear Algebra PACKage
 ~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~x86-fbsd
-autotools eutils flag-o-matic libtool multilib portability toolchain-funcs
+autotools eutils flag-o-matic fortran-2 libtool multilib portability toolchain-funcs
 doc
 
 

@@ -1,13 +1,14 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/numpy/numpy-1.5.1.ebuild,v 1.15 2011/04/03 11:46:01 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/numpy/numpy-1.5.1.ebuild,v 1.18 2011/06/21 18:05:21 jlec Exp $
 
-EAPI="3"
+EAPI=3
+
 PYTHON_DEPEND="*"
 SUPPORT_PYTHON_ABIS="1"
 RESTRICT_PYTHON_ABIS="*-jython"
 
-inherit distutils eutils flag-o-matic toolchain-funcs versionator
+inherit distutils eutils fortran-2 flag-o-matic toolchain-funcs versionator
 
 NP="${PN}-1.5"
 
@@ -25,8 +26,9 @@ SLOT="0"
 KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
 IUSE="doc lapack test"
 
-RDEPEND="dev-python/setuptools
-	lapack? ( virtual/cblas virtual/lapack )"
+RDEPEND="
+	dev-python/setuptools
+	lapack? ( virtual/cblas virtual/lapack virtual/fortran )"
 DEPEND="${RDEPEND}
 	doc? ( app-arch/unzip )
 	lapack? ( dev-util/pkgconfig )
@@ -37,6 +39,7 @@ PYTHON_CFLAGS=("* + -fno-strict-aliasing")
 DOCS="COMPATIBILITY DEV_README.txt THANKS.txt"
 
 pkg_setup() {
+	use lapack && fortran-2_pkg_setup
 	python_pkg_setup
 
 	# See progress in http://projects.scipy.org/scipy/numpy/ticket/573
@@ -50,9 +53,7 @@ pkg_setup() {
 	# linking with cblas and lapack library will force
 	# autodetecting and linking to all available fortran compilers
 	use lapack || return
-	[[ -z ${FC} ]] && FC=$(tc-getFC)
-	# when fortran flags are set, pic is removed.
-	FFLAGS="${FFLAGS} -fPIC"
+	append-fflags -fPIC
 	NUMPY_FCONFIG="config_fc --noopt --noarch"
 	# workaround bug 335908
 	[[ ${FC} == *gfortran* ]] && NUMPY_FCONFIG="${NUMPY_FCONFIG} --fcompiler=gnu95"

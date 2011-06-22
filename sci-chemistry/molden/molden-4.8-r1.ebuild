@@ -1,10 +1,10 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/molden/molden-4.8-r1.ebuild,v 1.4 2010/12/16 15:09:26 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/molden/molden-4.8-r1.ebuild,v 1.6 2011/06/21 16:03:06 jlec Exp $
 
 EAPI="3"
 
-inherit eutils flag-o-matic toolchain-funcs
+inherit eutils fortran-2 flag-o-matic toolchain-funcs
 
 MY_P="${PN}${PV}"
 
@@ -18,6 +18,8 @@ KEYWORDS="~alpha ~amd64 ~ia64 ~x86"
 IUSE="opengl"
 
 RDEPEND="
+	virtual/fortran
+
 	x11-libs/libXmu
 	opengl? (
 		media-libs/freeglut

@@ -1,12 +1,12 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/pointless/pointless-1.5.12.ebuild,v 1.2 2011/01/16 12:22:09 xarthisius Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/pointless/pointless-1.5.12.ebuild,v 1.4 2011/06/21 15:59:58 jlec Exp $
 
 EAPI="3"
 
 PYTHON_DEPEND="2"
 
-inherit eutils multilib python toolchain-funcs
+inherit eutils fortran-2 multilib python toolchain-funcs
 
 DESCRIPTION="Scores crystallographic Laue and space groups"
 HOMEPAGE="ftp://ftp.mrc-lmb.cam.ac.uk/pub/pre/pointless.html"
@@ -17,15 +17,17 @@ LICENSE="ccp4"
 KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
 IUSE="test"
 
-RDEPEND="
+DEPEND="
 	sci-chemistry/ccp4-apps
 	>=sci-libs/ccp4-libs-6.1.3
-	>=sci-libs/cctbx-2010.03.29.2334-r3"
-DEPEND="${RDEPEND}"
+	>=sci-libs/cctbx-2010.03.29.2334-r3
+	virtual/fortran"
+RDEPEND="${DEPEND}"
 
 S="${WORKDIR}"
 
 pkg_setup() {
+	fortran-2_pkg_setup
 	python_set_active_version 2
 }
 

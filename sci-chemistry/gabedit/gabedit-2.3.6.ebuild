@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/gabedit/gabedit-2.3.6.ebuild,v 1.3 2011/05/31 20:14:37 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/gabedit/gabedit-2.3.6.ebuild,v 1.5 2011/06/21 06:04:55 jlec Exp $
 
 EAPI=2
 
@@ -14,15 +14,19 @@ DESCRIPTION="GUI for computational chemistry packages"
 HOMEPAGE="http://gabedit.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/GabeditDevloppment/${MY_PN}${MY_PV}/${MY_P}.tar.gz"
 
-LICENSE="as-is"
 SLOT="0"
+LICENSE="as-is"
 KEYWORDS="amd64 x86"
 IUSE="openmp"
 
 RDEPEND="
+	dev-libs/glib:2
+	x11-libs/cairo
+	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:2
 	x11-libs/gtkglext
 	x11-libs/gl2ps
+	x11-libs/pango
 	virtual/opengl
 	virtual/glu"
 DEPEND="${RDEPEND}
@@ -38,6 +42,7 @@ src_prepare() {
 	sed -i "/rmdir tmp/d" "${S}"/Makefile
 	sed -e "/GTK_DISABLE_DEPRECATED/s:define:undef:g" \
 		-i "${S}/Config.h" || die
+	sed -e 's:-g::g' -i Makefile || die
 	cp "${FILESDIR}"/CONFIG.Gentoo "${S}"/CONFIG
 
 	if use openmp && tc-has-openmp; then

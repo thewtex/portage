@@ -1,9 +1,10 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/dataplot/dataplot-20080225.ebuild,v 1.8 2010/12/16 15:26:57 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/dataplot/dataplot-20080225.ebuild,v 1.10 2011/06/21 14:44:22 jlec Exp $
 
-EAPI="2"
-inherit eutils toolchain-funcs autotools
+EAPI=2
+
+inherit eutils fortran-2 toolchain-funcs autotools
 
 #     DAY         MONTH    YEAR
 MY_PV=${PV:4:2}_${PV:6:2}_${PV:0:4}
@@ -12,20 +13,24 @@ MY_P_AUX=dplib.${MY_PV}
 
 DESCRIPTION="A program for scientific visualization and statistical analyis"
 HOMEPAGE="http://www.itl.nist.gov/div898/software/dataplot/"
-SRC_URI="ftp://ftp.nist.gov/pub/dataplot/unix/dpsrc.${MY_PV}.tar.gz
+SRC_URI="
+	ftp://ftp.nist.gov/pub/dataplot/unix/dpsrc.${MY_PV}.tar.gz
 	ftp://ftp.nist.gov/pub/dataplot/unix/dplib.${MY_PV}.tar.gz"
 
-LICENSE="public-domain"
 SLOT="0"
+LICENSE="public-domain"
 KEYWORDS="~amd64 ~x86"
 IUSE="examples gd gs opengl X"
 
-COMMON_DEPEND="opengl? ( virtual/opengl )
+COMMON_DEPEND="
+	opengl? ( virtual/opengl )
 	gd? ( media-libs/gd[png,jpeg] )
 	gs? ( app-text/ghostscript-gpl media-libs/gd[png,jpeg] )"
 DEPEND="${COMMON_DEPEND}
 	dev-util/pkgconfig"
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="
+	virtual/fortran
+	${COMMON_DEPEND}
 	X? ( x11-misc/xdg-utils )"
 
 S="${WORKDIR}/${MY_P}"
@@ -35,9 +40,9 @@ src_unpack() {
 	# unpacking and renaming because
 	# upstream does not use directories
 	mkdir "${S_AUX}"
-	pushd "${S_AUX}"
+	pushd "${S_AUX}" > /dev/null
 	unpack ${MY_P_AUX}.tar.gz
-	popd
+	popd > /dev/null
 	mkdir ${MY_P}
 	cd "${S}"
 	unpack ${MY_P}.tar.gz

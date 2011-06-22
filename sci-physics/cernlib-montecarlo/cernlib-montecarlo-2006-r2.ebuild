@@ -1,9 +1,9 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-physics/cernlib-montecarlo/cernlib-montecarlo-2006-r2.ebuild,v 1.6 2010/10/10 21:52:59 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-physics/cernlib-montecarlo/cernlib-montecarlo-2006-r2.ebuild,v 1.8 2011/06/21 14:40:57 jlec Exp $
 
 EAPI=2
-inherit eutils toolchain-funcs
+inherit eutils fortran-2 toolchain-funcs
 
 DEB_PN=mclibs
 DEB_PV=${PV}.dfsg.2
@@ -20,7 +20,9 @@ KEYWORDS="amd64 x86"
 SLOT="0"
 IUSE="+herwig"
 
-RDEPEND=">=x11-libs/openmotif-2.3:0
+RDEPEND="
+	virtual/fortran
+>=x11-libs/openmotif-2.3:0
 	dev-lang/cfortran
 	sci-physics/cernlib
 	herwig? ( !sci-physics/herwig )"

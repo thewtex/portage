@@ -1,27 +1,28 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/acml/acml-4.0.1.ebuild,v 1.7 2010/12/17 08:08:00 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/acml/acml-4.0.1.ebuild,v 1.9 2011/06/21 15:55:47 jlec Exp $
 
-inherit eutils toolchain-funcs
+inherit eutils fortran-2 toolchain-funcs
 
 MY_PV=${PV//\./\-}
 
 DESCRIPTION="AMD Core Math Library (ACML) for x86_64 CPUs"
 HOMEPAGE="http://developer.amd.com/acml.jsp"
-SRC_URI="ifc? ( acml-${MY_PV}-ifort-64bit.tgz )
-	!ifc? ( int64? ( acml-${MY_PV}-gfortran-64bit-int64.tgz )
-		   !int64? ( acml-${MY_PV}-gfortran-64bit.tgz ) )"
+SRC_URI="
+	ifc?	 	( acml-${MY_PV}-ifort-64bit.tgz )
+	!ifc? (
+		int64?	( acml-${MY_PV}-gfortran-64bit-int64.tgz )
+		!int64?	( acml-${MY_PV}-gfortran-64bit.tgz ) )"
 
-IUSE="openmp ifc int64 doc examples"
-KEYWORDS="~amd64"
-
-RESTRICT="strip fetch"
-LICENSE="ACML"
 SLOT="0"
+LICENSE="ACML"
+KEYWORDS="~amd64"
+IUSE="openmp ifc int64 doc examples"
+RESTRICT="strip fetch"
 
-DEPEND="ifc? ( dev-lang/ifc )
-	openmp? ( !ifc? ( >=sys-devel/gcc-4.2 ) )
-	!openmp? ( !ifc? ( =sys-devel/gcc-4.1* ) )
+DEPEND="
+	virtual/fortran
+	ifc? ( dev-lang/ifc )
 	app-admin/eselect-blas
 	app-admin/eselect-lapack"
 RDEPEND="${DEPEND}
@@ -56,15 +57,13 @@ pkg_setup() {
 			eerror "You need gcc-4.1.x to test acml."
 			eerror "Please use gcc-config to swicth gcc version 4.1.x"
 			die "setup gcc failed"
-		elif use openmp && ! tc-has-openmp; then
-			eerror "You need gfortran >= 4.2 to use openmp features."
-			eerror "Please use gcc-config to switch gcc version >= 4.2"
-			die "setup gcc failed"
 		fi
 	fi
 	if use openmp; then
 		tc-has-openmp || die "Please ensure your compiler has openmp support"
+		FORTRAN_NEED_OPENMP=1
 	fi
+	fortran-2_pkg_setup
 	get_fcomp
 }
 

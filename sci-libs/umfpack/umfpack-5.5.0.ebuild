@@ -1,9 +1,9 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/umfpack/umfpack-5.5.0.ebuild,v 1.2 2010/12/22 18:21:44 bicatali Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/umfpack/umfpack-5.5.0.ebuild,v 1.4 2011/06/21 14:45:09 jlec Exp $
 
 EAPI=2
-inherit autotools eutils
+inherit autotools eutils fortran-2
 
 MY_PN=UMFPACK
 
@@ -15,7 +15,9 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-macos"
 IUSE="doc metis static-libs"
-RDEPEND="virtual/blas
+RDEPEND="
+	virtual/fortran
+	virtual/blas
 	sci-libs/amd
 	metis? ( sci-libs/cholmod[metis] )"
 DEPEND="${RDEPEND}

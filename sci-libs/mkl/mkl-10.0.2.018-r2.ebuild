@@ -1,8 +1,8 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/mkl/mkl-10.0.2.018-r2.ebuild,v 1.8 2010/12/19 18:38:31 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/mkl/mkl-10.0.2.018-r2.ebuild,v 1.10 2011/06/21 15:12:15 jlec Exp $
 
-inherit eutils toolchain-funcs check-reqs
+inherit eutils fortran-2 toolchain-funcs check-reqs
 
 PID=967
 PB=${PN}
@@ -18,9 +18,11 @@ LICENSE="Intel-SDP"
 IUSE="doc fftw fortran95 int64 mpi"
 RESTRICT="strip mirror"
 
-DEPEND="app-admin/eselect-blas
+DEPEND="
+	app-admin/eselect-blas
 	app-admin/eselect-cblas
-	app-admin/eselect-lapack"
+	app-admin/eselect-lapack
+	virtual/fortran"
 
 RDEPEND="${DEPEND}
 	doc? ( app-doc/blas-docs app-doc/lapack-docs )
@@ -41,6 +43,7 @@ get_fcomp() {
 }
 
 pkg_setup() {
+	fortran-2_pkg_setup
 	# Check the license
 	if [[ -z ${MKL_LICENSE} ]]; then
 		MKL_LICENSE="$(grep -ls MKern ${ROOT}${INTEL_LIC_DIR}/* | tail -n 1)"

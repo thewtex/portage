@@ -1,5 +1,5 @@
-virtual/blas virtual/lapack || ( sci-libs/metis sci-libs/parmetis ) cilk? ( dev-lang/cilk ) dev-util/pkgconfig
-virtual/blas virtual/lapack || ( sci-libs/metis sci-libs/parmetis ) cilk? ( dev-lang/cilk )
+virtual/fortran virtual/blas virtual/lapack || ( sci-libs/metis sci-libs/parmetis ) cilk? ( dev-lang/cilk ) dev-util/pkgconfig
+virtual/fortran virtual/blas virtual/lapack || ( sci-libs/metis sci-libs/parmetis ) cilk? ( dev-lang/cilk )
 0
 http://www.tau.ac.il/~stoledo/taucs/2.2/taucs.tgz -> taucs-2.2.tgz
 
@@ -7,14 +7,14 @@ http://www.tau.ac.il/~stoledo/taucs/
 LGPL-2.1
 C library of sparse linear solvers
 ~amd64 ~x86
-eutils flag-o-matic multilib portability toolchain-funcs
+eutils flag-o-matic fortran-2 multilib portability toolchain-funcs
 cilk doc static-libs
 
 
 
 2
 
-compile configure install test
+compile configure install setup test
 
 
 

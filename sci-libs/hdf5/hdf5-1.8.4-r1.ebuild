@@ -1,9 +1,9 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/hdf5/hdf5-1.8.4-r1.ebuild,v 1.13 2011/06/08 15:12:47 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/hdf5/hdf5-1.8.4-r1.ebuild,v 1.15 2011/06/21 15:18:04 jlec Exp $
 
 EAPI=2
-inherit eutils autotools
+inherit eutils fortran-2 autotools
 
 DESCRIPTION="General purpose library and file format for storing scientific data"
 HOMEPAGE="http://www.hdfgroup.org/HDF5/"
@@ -15,7 +15,9 @@ KEYWORDS="alpha amd64 ia64 ppc ppc64 sparc x86"
 
 IUSE="cxx examples fortran mpi szip threads zlib"
 
-RDEPEND="mpi? ( || (
+RDEPEND="
+	fortran? ( virtual/fortran )
+	mpi? ( || (
 			sys-cluster/openmpi[romio]
 			sys-cluster/mpich2[romio] ) )
 	szip? ( >=sci-libs/szip-2.1 )
@@ -26,6 +28,7 @@ DEPEND="${RDEPEND}
 	sys-process/time"
 
 pkg_setup() {
+	fortran-2_pkg_setup
 	if use mpi; then
 		if has_version 'sci-libs/hdf5[-mpi]'; then
 			ewarn "Installing hdf5 with mpi enabled with a previous hdf5 with mpi disabled may fail."

@@ -1,10 +1,10 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/oasis/oasis-4.0-r2.ebuild,v 1.4 2011/01/16 12:15:28 xarthisius Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/oasis/oasis-4.0-r2.ebuild,v 1.6 2011/06/21 16:02:11 jlec Exp $
 
 EAPI="3"
 
-inherit eutils multilib toolchain-funcs
+inherit eutils fortran-2 multilib toolchain-funcs
 
 MY_P="${PN}${PV}_Linux"
 
@@ -18,6 +18,8 @@ LICENSE="ccp4 oasis"
 IUSE="examples +minimal"
 
 RDEPEND="
+	virtual/fortran
+
 	${RDEPEND}
 	sci-chemistry/ccp4-apps
 	sci-chemistry/pymol

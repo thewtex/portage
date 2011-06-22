@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/inspircd/inspircd-2.0.3.ebuild,v 1.6 2011/05/11 11:51:29 c1pher Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-irc/inspircd/inspircd-2.0.3.ebuild,v 1.7 2011/06/20 16:55:57 c1pher Exp $
 
 EAPI=2
 inherit eutils multilib flag-o-matic
@@ -42,7 +42,7 @@ src_prepare() {
 	sed -i 's/\$(D)/\$(DEBUGLEVEL)/' ${makefiletpl} || die "sed failed"
 	sed -i 's/\$(T)/\$(TGT)/' ${makefiletpl} || die "sed failed"
 
-	epatch "${FILESDIR}"/${P}-fix-config.patch
+	epatch "${FILESDIR}"/${PN}-fix-config.patch
 }
 
 src_configure() {
@@ -101,7 +101,7 @@ src_install() {
 	diropts -oinspircd -ginspircd
 	dodir "/var/run/inspircd" || die "Creating run directory failed"
 
-	newinitd "${FILESDIR}"/${P}-init.d inspircd \
+	newinitd "${FILESDIR}"/${PN}-init.d inspircd \
 	         || die "Installing inspircd init script failed"
 	keepdir "/var/log/inspircd/"
 }

@@ -1,9 +1,9 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/gts/gts-20090909.ebuild,v 1.2 2011/03/02 20:04:16 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/gts/gts-20090909.ebuild,v 1.4 2011/06/21 15:18:09 jlec Exp $
 
 EAPI=2
-inherit eutils autotools
+inherit eutils fortran-2 autotools
 
 DESCRIPTION="GNU Triangulated Surface Library"
 LICENSE="LGPL-2"
@@ -14,7 +14,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="doc examples test"
 
-RDEPEND="dev-libs/glib:2"
+RDEPEND="
+	virtual/fortran
+	dev-libs/glib:2"
 DEPEND="${RDEPEND}
 	dev-util/pkgconfig
 	test? ( media-libs/netpbm )"

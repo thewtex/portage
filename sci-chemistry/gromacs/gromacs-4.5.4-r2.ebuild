@@ -1,13 +1,13 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/gromacs/gromacs-4.5.4-r2.ebuild,v 1.1 2011/06/08 16:21:41 ottxor Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/gromacs/gromacs-4.5.4-r2.ebuild,v 1.3 2011/06/21 16:03:14 jlec Exp $
 
 EAPI="4"
 
 TEST_PV="4.0.4"
 MANUAL_PV="4.5.4"
 
-inherit bash-completion cmake-utils eutils multilib toolchain-funcs
+inherit bash-completion cmake-utils eutils fortran-2 multilib toolchain-funcs
 
 SRC_URI="test? ( ftp://ftp.gromacs.org/pub/tests/gmxtest-${TEST_PV}.tgz )
 		doc? ( ftp://ftp.gromacs.org/pub/manual/manual-${MANUAL_PV}.pdf -> gromacs-manual-${MANUAL_PV}.pdf )"
@@ -36,6 +36,8 @@ mpi +single-precision sse2 test +threads xml zsh-completion"
 REQUIRED_USE="fkernels? ( !threads )"
 
 CDEPEND="
+	virtual/fortran
+
 	X? (
 		x11-libs/libX11
 		x11-libs/libSM

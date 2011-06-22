@@ -1,10 +1,10 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/procheck/procheck-3.5.4-r1.ebuild,v 1.2 2010/12/16 13:51:46 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/procheck/procheck-3.5.4-r1.ebuild,v 1.4 2011/06/21 15:58:06 jlec Exp $
 
 EAPI="3"
 
-inherit eutils toolchain-funcs versionator
+inherit eutils fortran-2 toolchain-funcs versionator
 
 DESCRIPTION="Checks the stereochemical quality of a protein structure"
 HOMEPAGE="http://www.biochem.ucl.ac.uk/~roman/procheck/procheck.html"
@@ -17,7 +17,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc"
 
-RDEPEND="app-shells/tcsh"
+RDEPEND="
+	virtual/fortran
+	app-shells/tcsh"
 DEPEND="${RDEPEND}"
 
 RESTRICT="fetch"

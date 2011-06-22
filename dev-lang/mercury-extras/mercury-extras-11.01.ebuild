@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/mercury-extras/mercury-extras-11.01.ebuild,v 1.3 2011/06/11 20:30:55 keri Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/mercury-extras/mercury-extras-11.01.ebuild,v 1.5 2011/06/20 11:23:29 hwoarang Exp $
 
 EAPI=2
 
@@ -15,7 +15,7 @@ SRC_URI="http://www.mercury.cs.mu.oz.au/download/files/${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc ~x86"
 
 IUSE="X cairo examples glut iodbc ncurses odbc opengl ssl tcl tk xml"
 
@@ -185,9 +185,9 @@ src_install() {
 			insinto /usr/share/doc/${PF}/samples/mopenssl
 			doins mopenssl/*.m || die
 		fi
-	fi
 
-	rm -rf $(find "${D}"/usr/share/doc/${PF}/samples -name CVS)
+		rm -rf $(find "${D}"/usr/share/doc/${PF}/samples -name CVS)
+	fi
 
 	dodoc README || die
 }

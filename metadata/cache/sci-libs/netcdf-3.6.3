@@ -1,5 +1,5 @@
->=sys-devel/libtool-2.2 doc? ( virtual/latex-base ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b
-
+fortran? ( virtual/fortran ) >=sys-devel/libtool-2.2 doc? ( virtual/latex-base ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b
+fortran? ( virtual/fortran )
 0
 ftp://ftp.unidata.ucar.edu/pub/netcdf/netcdf-3.6.3.tar.gz
 
@@ -7,14 +7,14 @@ http://www.unidata.ucar.edu/software/netcdf/
 UCAR-Unidata
 Scientific library and interface for array oriented data access
 alpha amd64 ia64 ~mips ppc ppc64 sparc x86
-autotools eutils flag-o-matic libtool multilib portability toolchain-funcs
+autotools eutils flag-o-matic fortran-2 libtool multilib portability toolchain-funcs
 fortran debug doc
 
 
 
 2
 
-compile configure install prepare
+compile configure install prepare setup
 
 
 

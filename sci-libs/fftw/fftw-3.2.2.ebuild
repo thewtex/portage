@@ -1,9 +1,9 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/fftw/fftw-3.2.2.ebuild,v 1.12 2010/04/09 18:41:27 bicatali Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/fftw/fftw-3.2.2.ebuild,v 1.15 2011/06/21 15:37:40 jlec Exp $
 
 EAPI=2
-inherit flag-o-matic eutils toolchain-funcs autotools
+inherit flag-o-matic eutils fortran-2 toolchain-funcs autotools
 
 DESCRIPTION="Fast C library for the Discrete Fourier Transform"
 HOMEPAGE="http://www.fftw.org/"
@@ -14,19 +14,19 @@ SLOT="3.0"
 KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 IUSE="altivec doc fortran openmp sse sse2 threads"
 
+DEPEND="fortran? ( virtual/fortran )"
+RDEPEND="${DEPEND}"
+
 pkg_setup() {
+	use openmp && FORTRAN_NEED_OPENMP="1"
+	use fortran && fortran-2_pkg_setup
 	FFTW_THREADS="--disable-threads --disable-openmp"
 	if use openmp; then
 		FFTW_THREADS="--disable-threads --enable-openmp"
 	elif use threads; then
 		FFTW_THREADS="--enable-threads --disable-openmp"
 	fi
-	if use openmp &&
-		[[ $(tc-getCC)$ == *gcc* ]] &&
-		[[ $(tc-getCC)$ != *apple* ]] &&
-		( [[ $(gcc-major-version)$(gcc-minor-version) -lt 42 ]] ||
-			! has_version sys-devel/gcc[openmp] )
-	then
+	if use openmp && ! tc-has-openmp; then
 		ewarn "You are using gcc and OpenMP is only available with gcc >= 4.2 "
 		ewarn "If you want to build fftw with OpenMP, abort now,"
 		ewarn "and switch CC to an OpenMP capable compiler"

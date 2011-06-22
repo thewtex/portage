@@ -1,6 +1,24 @@
 # ChangeLog for dev-python/numpy
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/numpy/ChangeLog,v 1.142 2011/06/18 11:34:35 hwoarang Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/numpy/ChangeLog,v 1.147 2011/06/21 18:05:21 jlec Exp $
+
+  21 Jun 2011; Justin Lecher <jlec@gentoo.org> numpy-1.5.1.ebuild,
+  numpy-1.6.0.ebuild:
+  Use USE=lapack to depend conditionally on fortran support
+
+  21 Jun 2011; Justin Lecher <jlec@gentoo.org> numpy-1.5.1.ebuild,
+  numpy-1.6.0.ebuild:
+  Add dependency on virtual/fortran
+
+  21 Jun 2011; Justin Lecher <jlec@gentoo.org> numpy-1.5.1.ebuild,
+  numpy-1.6.0.ebuild:
+  Added fortran-2.eclass support
+
+  19 Jun 2011; Markus Meier <maekke@gentoo.org> numpy-1.6.0.ebuild:
+  x86 stable, bug #371673
+
+  19 Jun 2011; Markus Meier <maekke@gentoo.org> numpy-1.6.0.ebuild:
+  arm stable, bug #371673
 
   18 Jun 2011; Markos Chandras <hwoarang@gentoo.org> numpy-1.6.0.ebuild:
   Stable on amd64 wrt bug #371673

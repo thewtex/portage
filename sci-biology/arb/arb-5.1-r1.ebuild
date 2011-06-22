@@ -1,8 +1,8 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/arb/arb-5.1-r1.ebuild,v 1.3 2010/10/10 21:16:13 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/arb/arb-5.1-r1.ebuild,v 1.4 2011/06/20 07:34:40 jlec Exp $
 
-EAPI="2"
+EAPI=2
 
 inherit eutils toolchain-funcs
 
@@ -11,8 +11,7 @@ HOMEPAGE="http://www.arb-home.de/"
 SRC_URI="
 	http://download.arb-home.de/release/arb_${PV}/arbsrc.tgz -> ${P}.tgz
 	mirror://gentoo/${P}-glibc2.10.patch.bz2
-	mirror://gentoo/${P}-linker.patch.bz2"
-MY_TAG=6213
+	http://dev.gentoo.org/~jlec/${P}-linker.patch.bz2"
 
 LICENSE="arb"
 SLOT="0"
@@ -21,37 +20,42 @@ KEYWORDS="~amd64 ~x86"
 
 DEPEND="
 	app-text/sablotron
-	www-client/lynx
-	>=x11-libs/openmotif-2.3:0
-	x11-libs/libXpm
-	x11-libs/libXaw
-	media-libs/tiff
 	media-libs/libpng
-	opengl? ( media-libs/glew
+	media-libs/tiff
+	www-client/lynx
+	x11-libs/libXaw
+	x11-libs/libXpm
+	x11-libs/openmotif:0
+	opengl? (
+		media-libs/glew
 		media-libs/freeglut
 		media-libs/mesa[motif] )"
 RDEPEND="${DEPEND}
 	sci-visualization/gnuplot"
 # Recommended: libmotif3 gv xfig xterm treetool java
 
-S="${WORKDIR}/arbsrc_${MY_TAG}"
+src_unpack() {
+	unpack ${A}
+	mv arbsrc* ${P}
+}
 
 src_prepare() {
-	epatch "${WORKDIR}"/${P}-glibc2.10.patch
-	epatch "${WORKDIR}"/${P}-linker.patch
-	epatch "${FILESDIR}"/${PV}-libs.patch
+	epatch \
+		"${WORKDIR}"/${P}-glibc2.10.patch\
+		"${WORKDIR}"/${P}-linker.patch \
+		"${FILESDIR}"/${PV}-libs.patch \
+		"${FILESDIR}"/${PV}-bfr-overflow.patch
 	sed -i \
 		-e 's/all: checks/all:/' \
 		-e "s/GCC:=.*/GCC=$(tc-getCC) ${CFLAGS}/" \
-		-e "s/GPP:=.*/GPP=$(tc-getCXX) ${CFLAGS}/" \
+		-e "s/GPP:=.*/GPP=$(tc-getCXX) ${CXXFLAGS}/" \
+		-e 's/--export-dynamic/-Wl,--export-dynamic/g' \
 		"${S}/Makefile" || die
 	cp config.makefile.template config.makefile
 	sed -i -e '/^[ \t]*read/ d' -e 's/SHELL_ANS=0/SHELL_ANS=1/' "${S}/arb_install.sh" || die
 	use amd64 && sed -i -e 's/ARB_64 := 0/ARB_64 := 1/' config.makefile
 	use opengl || sed -i -e 's/OPENGL := 1/OPENGL := 0/' config.makefile
 	emake ARBHOME="${S}" links || die
-	# In 5.0; fixed in 5.1
-	# (cd INCLUDE/GL; for i in ../../GL/glAW/*.h; do ln -s $i; done) || die
 }
 
 src_compile() {

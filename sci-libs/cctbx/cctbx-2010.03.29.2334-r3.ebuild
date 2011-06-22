@@ -1,12 +1,12 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/cctbx/cctbx-2010.03.29.2334-r3.ebuild,v 1.6 2011/01/23 12:45:41 tomka Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/cctbx/cctbx-2010.03.29.2334-r3.ebuild,v 1.8 2011/06/21 15:36:26 jlec Exp $
 
 EAPI="3"
 
 PYTHON_DEPEND="2"
 
-inherit eutils prefix python toolchain-funcs
+inherit eutils fortran-2 prefix python toolchain-funcs
 
 MY_PV="${PV//./_}"
 
@@ -20,6 +20,7 @@ KEYWORDS="amd64 ~ppc x86 ~amd64-linux ~x86-linux"
 IUSE="+minimal openmp threads"
 
 RDEPEND="
+	virtual/fortran
 	>dev-libs/boost-1.39
 	sci-libs/clipper
 	sci-libs/fftw
@@ -34,6 +35,8 @@ MY_S="${WORKDIR}"/cctbx_sources
 MY_B="${WORKDIR}"/cctbx_build
 
 pkg_setup() {
+	use openmp && FORTRAN_NEED_OPENMP="1"
+	fortran-2_pkg_setup
 	if use openmp && ! tc-has-openmp; then
 		ewarn "You are using gcc and OpenMP is only available with gcc >= 4.2 and icc"
 		ewarn "If you want to build ${PN} with OpenMP, abort now,"

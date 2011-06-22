@@ -1,10 +1,10 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/lapack-reference/lapack-reference-3.2.1-r1.ebuild,v 1.7 2011/05/28 11:14:37 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/lapack-reference/lapack-reference-3.2.1-r1.ebuild,v 1.10 2011/06/21 15:15:28 jlec Exp $
 
 EAPI=3
 
-inherit autotools eutils flag-o-matic multilib toolchain-funcs
+inherit autotools eutils fortran-2 flag-o-matic multilib toolchain-funcs
 
 MyPN="${PN/-reference/}"
 PATCH_V="3.2.1"
@@ -21,9 +21,10 @@ KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~x86-fbsd ~x86
 IUSE="doc"
 
 RDEPEND="
+	virtual/fortran
+
 	app-admin/eselect-lapack
-	virtual/blas
-	virtual/fortran"
+	virtual/blas"
 DEPEND="
 	${RDEPEND}
 	dev-util/pkgconfig
@@ -32,6 +33,7 @@ DEPEND="
 S="${WORKDIR}/${MyPN}-${PV}"
 
 pkg_setup() {
+	fortran-2_pkg_setup
 	if  [[ $(tc-getFC) =~ if ]]; then
 		ewarn "Using Intel Fortran at your own risk"
 		export LDFLAGS="$(raw-ldflags)"

@@ -1,11 +1,11 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/mpich2/mpich2-1.2.1_p1-r1.ebuild,v 1.11 2010/12/19 19:12:06 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/mpich2/mpich2-1.2.1_p1-r1.ebuild,v 1.13 2011/06/21 14:24:00 jlec Exp $
 
 EAPI=2
 PYTHON_DEPEND="2"
 
-inherit eutils python toolchain-funcs
+inherit eutils fortran-2 python toolchain-funcs
 
 MY_PV=${PV/_/}
 DESCRIPTION="MPICH2 - A portable MPI implementation"
@@ -24,7 +24,9 @@ DEPEND="${COMMON_DEPEND}
 	dev-lang/perl
 	sys-devel/libtool"
 
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="
+	fortran? ( virtual/fortran )
+${COMMON_DEPEND}
 	!media-sound/mpd
 	!sys-cluster/openmpi
 	!sys-cluster/lam-mpi"
@@ -32,6 +34,7 @@ RDEPEND="${COMMON_DEPEND}
 S="${WORKDIR}"/${PN}-${MY_PV}
 
 pkg_setup() {
+	fortran-2_pkg_setup
 	python_set_active_version 2
 	python_pkg_setup
 

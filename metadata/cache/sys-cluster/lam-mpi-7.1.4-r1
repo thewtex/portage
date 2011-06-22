@@ -1,5 +1,5 @@
 pbs? ( sys-cluster/torque ) !sys-cluster/mpich !sys-cluster/openmpi !sys-cluster/mpich2 !app-misc/wipe || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b
-pbs? ( sys-cluster/torque ) !sys-cluster/mpich !sys-cluster/openmpi !sys-cluster/mpich2 !app-misc/wipe crypt? ( net-misc/openssh ) !crypt? ( net-misc/netkit-rsh )
+fortran? ( virtual/fortran ) pbs? ( sys-cluster/torque ) !sys-cluster/mpich !sys-cluster/openmpi !sys-cluster/mpich2 !app-misc/wipe crypt? ( net-misc/openssh ) !crypt? ( net-misc/netkit-rsh )
 6
 http://www.lam-mpi.org/download/files/lam-7.1.4.tar.bz2
 
@@ -7,7 +7,7 @@ http://www.lam-mpi.org
 lam-mpi
 the LAM MPI parallel computing environment
 amd64 hppa ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~x86-macos
-autotools eutils flag-o-matic libtool multilib portability toolchain-funcs
+autotools eutils flag-o-matic fortran-2 libtool multilib portability toolchain-funcs
 crypt pbs fortran xmpi romio examples
 
 

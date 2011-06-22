@@ -1,10 +1,10 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/amd/amd-2.2.2.ebuild,v 1.1 2011/02/23 19:43:00 bicatali Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/amd/amd-2.2.2.ebuild,v 1.3 2011/06/21 15:43:02 jlec Exp $
 
 EAPI="3"
 
-inherit autotools eutils toolchain-funcs
+inherit autotools eutils fortran-2 toolchain-funcs
 
 MY_PN=AMD
 
@@ -17,7 +17,9 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-macos"
 IUSE="doc static-libs"
 
-RDEPEND="sci-libs/ufconfig"
+RDEPEND="
+	virtual/fortran
+	sci-libs/ufconfig"
 DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${MY_PN}"

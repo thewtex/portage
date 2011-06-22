@@ -1,10 +1,10 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/ccp4-libs/ccp4-libs-6.1.3-r8.ebuild,v 1.1 2011/02/19 15:10:35 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/ccp4-libs/ccp4-libs-6.1.3-r8.ebuild,v 1.3 2011/06/21 15:37:52 jlec Exp $
 
 EAPI="3"
 
-inherit eutils gnuconfig multilib toolchain-funcs
+inherit eutils fortran-2 gnuconfig multilib toolchain-funcs
 
 SRC="ftp://ftp.ccp4.ac.uk/ccp4"
 
@@ -45,7 +45,8 @@ KEYWORDS="amd64 ~ppc x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 RDEPEND="
-	virtual/jpeg
+	virtual/fortran
+	dev-lang/tcl
 	app-shells/tcsh
 	!<sci-chemistry/ccp4-6.1.3
 	!<sci-chemistry/ccp4-apps-${PVR}
@@ -53,6 +54,7 @@ RDEPEND="
 	sci-libs/fftw:2.1
 	sci-libs/mmdb
 	sci-libs/monomer-db
+	virtual/jpeg
 	virtual/lapack
 	virtual/blas"
 DEPEND="${RDEPEND}"
