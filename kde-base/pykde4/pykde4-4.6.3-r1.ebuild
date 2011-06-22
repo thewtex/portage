@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/pykde4/pykde4-4.6.4.ebuild,v 1.1 2011/06/10 18:00:05 dilfridge Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/pykde4/pykde4-4.6.3-r1.ebuild,v 1.3 2011/06/21 21:50:15 dilfridge Exp $
 
 EAPI=3
 
@@ -32,6 +32,8 @@ DEPEND="
 	!aqua? ( >=dev-python/PyQt4-4.8.2[dbus,declarative,sql,svg,webkit,X] )
 "
 RDEPEND="${DEPEND}"
+
+PATCHES=( "${FILESDIR}/${PN}-4.6.3-pyqt475.patch" )
 
 pkg_setup() {
 	python_pkg_setup
@@ -71,18 +73,17 @@ src_install() {
 	kde4-meta_src_install
 
 	python_convert_shebangs -q -r $(python_get_version) "${ED}"
-	python_clean_installation_image -q
 }
 
 pkg_postinst() {
 	kde4-meta_pkg_postinst
 
-	python_mod_optimize PyKDE4 PyQt4
+	python_mod_optimize PyKDE4 PyQt4/uic/pykdeuic4.py PyQt4/uic/widget-plugins/kde4.py
 
 	if use examples; then
 		echo
 		elog "PyKDE4 examples have been installed to"
-		elog "${EPREFIX}/usr/share/apps/${PN}/examples"
+		elog "${EKDEDIR}/share/apps/${PN}/examples"
 		echo
 	fi
 }
@@ -90,5 +91,5 @@ pkg_postinst() {
 pkg_postrm() {
 	kde4-meta_pkg_postrm
 
-	python_mod_cleanup PyKDE4 PyQt4
+	python_mod_cleanup PyKDE4 PyQt4/uic/pykdeuic4.py PyQt4/uic/widget-plugins/kde4.py
 }
