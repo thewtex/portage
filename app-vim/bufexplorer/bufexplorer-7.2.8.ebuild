@@ -14,7 +14,7 @@ IUSE=""
 
 VIM_PLUGIN_HELPFILES="${PN}.txt"
 
-SRC_URI="http://www.vim.org/scripts/download_script.php?src_id=9524"
+SRC_URI="http://www.vim.org/scripts/download_script.php?src_id=14208"
 DEPEND="${DEPEND} app-arch/unzip"
 RESTRICT="mirror"
 S="${WORKDIR}"
