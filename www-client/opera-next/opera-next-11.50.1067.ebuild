@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/opera-next/opera-next-11.50.1016.ebuild,v 1.1 2011/05/25 14:33:44 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/opera-next/opera-next-11.50.1067.ebuild,v 1.1 2011/06/23 18:39:24 jer Exp $
 
 EAPI="3"
 
@@ -17,7 +17,7 @@ IUSE="elibc_FreeBSD gtk kde +gstreamer"
 O_V="$(get_version_component_range 1-2)" # Major version, i.e. 11.00
 O_B="$(get_version_component_range 3)"   # Build version, i.e. 1156
 
-O_D="24084_${O_V}-${O_B}"
+O_D="rc1_${O_V}-${O_B}"
 O_P="${PN}-${O_V}-${O_B}"
 O_U="http://snapshot.opera.com/unix/"
 
@@ -32,11 +32,9 @@ OPREFIX="/usr/$(get_libdir)"
 QA_DT_HASH="${OPREFIX}/${PN}/.*"
 QA_PRESTRIPPED="${OPREFIX}/${PN}/.*"
 
-O_LINGUAS="
-	af az be bg cs da de el en-GB es-ES es-LA et fi fr fr-CA fy gd hi hr hu id
-	it ja ka ko lt me mk ms nb nl nn pl pt pt-BR ro ru sk sr sv ta te th tl tr
-	uk uz vi zh-CN zh-TW
-"
+O_LINGUAS="af az be bg bn cs da de el en-GB es-ES es-LA et fi fr fr-CA fy gd hi
+hr hu id it ja ka ko lt me mk ms nb nl nn pa pl pt pt-BR ro ru sk sr sv sw ta te
+th tl tr uk uz vi zh-CN zh-TW zu"
 
 for O_LINGUA in ${O_LINGUAS}; do
 	IUSE="${IUSE} linguas_${O_LINGUA/-/_}"
@@ -99,8 +97,17 @@ src_unpack() {
 }
 
 src_prepare() {
+	local LNGDIR="share/${PN}/locale"
+
+	# Count linguas
+	count() { echo ${#}; }
+	local lingua_count=$(count ${O_LINGUAS} en)
+	local locale_count=$(count ${LNGDIR}/*)
+	[[ ${lingua_count} = ${locale_count} ]] \
+		|| die "Number of LINGUAS does not match number of locales"
+	unset count
+
 	# Remove unwanted linguas
-	LNGDIR="share/${PN}/locale"
 	einfo "Keeping these locales (linguas): ${LINGUAS}."
 	for LINGUA in ${O_LINGUAS}; do
 		if ! use linguas_${LINGUA/-/_}; then
@@ -132,7 +139,7 @@ src_prepare() {
 	# Unzip the man pages before sedding
 	gunzip share/man/man1/* || die "gunzip failed"
 
-	# Replace PREFIX, SUFFIX and "opera" in various files
+	# Replace PREFIX, SUFFIX and PN in various files
 	sed -i \
 		-e "s:@@{PREFIX}:/usr:g" \
 		-e "s:@@{SUFFIX}::g" \
@@ -178,7 +185,7 @@ src_prepare() {
 src_install() {
 	# We install into usr instead of opt as Opera does not support the latter
 	dodir /usr
-	mv lib/  "${D}/${OPREFIX}" || die "mv lib/ failed"
+	mv lib/ "${D}/${OPREFIX}" || die "mv lib/ failed"
 	mv share/ "${D}/usr/" || die "mv share/ failed"
 
 	# Install startup scripts
