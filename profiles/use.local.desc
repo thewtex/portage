@@ -277,6 +277,7 @@ app-editors/gedit-plugins:drawspaces - Draw spaces and tabs
 app-editors/gedit-plugins:joinlines - Join several lines or split long ones
 app-editors/gedit-plugins:showtabbar - Add a menu entry to show/hide the tabbar
 app-editors/gedit-plugins:smartspaces - Forget you're not using tabulations
+app-editors/gedit-plugins:synctex - Synchronize between LaTeX and PDF with gedit and evince
 app-editors/gedit-plugins:terminal - Embed a terminal in the bottom pane
 app-editors/gvim:netbeans - Include netbeans externaleditor integration support
 app-editors/jasspa-microemacs:nanoemacs - Build NanoEmacs instead of MicroEmacs
@@ -313,6 +314,7 @@ app-emacs/slime:xref - Install xref.lisp cross-referencing tool
 app-emacs/vm:bbdb - Include support for app-emacs/bbdb
 app-emacs/wanderlust:bbdb - Include support for app-emacs/bbdb
 app-emacs/wikipedia-mode:outline-magic - Enable support for outline-mode extensions (app-emacs/outline-magic)
+app-emulation/aqemu:kvm - Add kernel virtual machine support
 app-emulation/bochs:debugger - Enable the bochs debugger
 app-emulation/e-uae:capslib - Add CAPS library support
 app-emulation/e-uae:sdl-sound - Use media-libs/sdl-sound for audio output
@@ -4381,10 +4383,12 @@ www-client/elinks:gopher - Enable support for the gopher protocol
 www-client/elinks:mouse - Make elinks to grab all mouse events
 www-client/epiphany:introspection - Use dev-libs/gobject-introspection for introspection
 www-client/epiphany:nss - Import passwords from older gecko based www-client/epiphany keyring.
-www-client/firefox:custom-optimization - Fine-tune custom compiler optimizations
+www-client/firefox:custom-optimization - Fine-tune custom compiler optimizations, setting this is not recommended.
+www-client/firefox:gconf - Add support for setting of default browser using gnome-base/gconf. Useful only for GNOME 2 users.
 www-client/firefox:ipc - Use inter-process communication between tabs and plugins. Allows for greater stability in case of plugin crashes
+www-client/firefox:pgo - Add support for profile-guided optimization using gcc-4.5, for faster binaries. This option will double the compile time.
 www-client/firefox:system-sqlite - Use the system-wide dev-db/sqlite installation with secure-delete enabled
-www-client/firefox:webm - Use system libvpx media-libs/libvpx
+www-client/firefox:webm - Use system media-libs/libvpx for HTML5 WebM video support.
 www-client/icecat:custom-optimization - Fine-tune custom compiler optimizations
 www-client/icecat:ipc - Use inter-process communication between tabs and plugins. Allows for greater stability in case of plugin crashes
 www-client/icecat:system-sqlite - Use the system-wide dev-db/sqlite installation with secure-delete enabled
