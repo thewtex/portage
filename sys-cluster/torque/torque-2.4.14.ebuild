@@ -1,9 +1,9 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/torque/torque-2.5.2.ebuild,v 1.1 2010/09/14 15:32:19 jsbronder Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/torque/torque-2.4.14.ebuild,v 1.1 2011/06/26 01:56:27 jsbronder Exp $
 
 EAPI=2
-inherit flag-o-matic eutils linux-info
+inherit flag-o-matic eutils linux-info autotools
 
 DESCRIPTION="Resource manager and queuing system based on OpenPBS"
 HOMEPAGE="http://www.clusterresources.com/products/torque/"
@@ -13,7 +13,7 @@ LICENSE="openpbs"
 
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
-IUSE="tk +crypt drmaa server +syslog doc cpusets threads kernel_linux"
+IUSE="tk +crypt drmaa server +syslog doc cpusets kernel_linux"
 
 # ed is used by makedepend-sh
 DEPEND_COMMON="sys-libs/ncurses
@@ -23,6 +23,7 @@ DEPEND_COMMON="sys-libs/ncurses
 	!games-util/qstat"
 
 DEPEND="${DEPEND_COMMON}
+	doc? ( drmaa? ( app-doc/doxygen[latex,-nodot] ) )
 	sys-apps/ed"
 
 RDEPEND="${DEPEND_COMMON}
@@ -42,7 +43,7 @@ pkg_setup() {
 		fi
 	fi
 
-	USE_CPUSETS="--disable-cpusets"
+	USE_CPUSETS="--disable-cpuset"
 	if use cpusets; then
 		if ! use kernel_linux; then
 			einfo
@@ -61,9 +62,23 @@ pkg_setup() {
 				elog "your kernel with CONFIG_CPUSETS enabled."
 				einfo
 			fi
-			USE_CPUSETS="--enable-cpusets"
+			USE_CPUSETS="--enable-cpuset"
 		fi
 	fi
+}
+
+src_prepare() {
+	epatch "${FILESDIR}"/0002-fix-implicit-declaration-warnings.patch
+	epatch "${FILESDIR}"/disable-automagic-doc-building-2.4.14.patch
+
+	sed -i \
+		-e 's,\(COMPACT_LATEX *=\).*,\1 NO,' \
+		-e 's,\(GENERATE_MAN *=\).*,\1 NO,' \
+		src/drmaa/Doxyfile.in || die
+	sed -i \
+		-e '/INSTALL_DATA/d' \
+		src/drmaa/Makefile.am || die
+	eautoreconf
 }
 
 src_configure() {
@@ -71,12 +86,17 @@ src_configure() {
 
 	use crypt && myconf="--with-rcp=scp"
 
+	if use drmaa && use doc; then
+		myconf="${myconf} --enable-apidocs"
+	else
+		myconf="${myconf} --disable-apidocs"
+	fi
+
 	econf \
 		$(use_enable tk gui) \
 		$(use_enable syslog) \
 		$(use_enable server) \
 		$(use_enable drmaa) \
-		$(use_enable threads high-availability) \
 		--with-server-home=${PBS_SERVER_HOME} \
 		--with-environ=/etc/pbs_environment \
 		--with-default-server=${PBS_SERVER_NAME} \
@@ -130,18 +150,22 @@ src_install() {
 	# Make directories first
 	pbs_createspool "${D}"
 
-	make DESTDIR="${D}" install || die "make install failed"
+	emake DESTDIR="${D}" install || die "make install failed"
 
 	dodoc CHANGELOG README.* Release_Notes || die "dodoc failed"
 	if use doc; then
 		dodoc doc/admin_guide.ps doc/*.pdf || die "dodoc failed"
+		if use drmaa; then
+			dohtml -r src/drmaa/doc/html/* || die
+			dodoc src/drmaa/drmaa.pdf || die
+		fi
 	fi
 
 	# The build script isn't alternative install location friendly,
 	# So we have to fix some hard-coded paths in tclIndex for xpbs* to work
 	for file in `find "${D}" -iname tclIndex`; do
-		sed -e "s/${D//\// }/ /" "${file}" > "${file}.new"
-		mv "${file}.new" "${file}"
+		sed -e "s/${D//\// }/ /" "${file}" > "${file}.new" || die
+		mv "${file}.new" "${file}" || die
 	done
 
 	if use server; then
@@ -151,6 +175,9 @@ src_install() {
 	newinitd "${FILESDIR}"/pbs_mom-init.d pbs_mom
 	newconfd "${FILESDIR}"/torque-conf.d torque
 	newenvd "${FILESDIR}"/torque-env.d 25torque
+
+	[ -d "${D}"/usr/share/doc/torque-drmaa ] && \
+		rm -rf "${D}"/usr/share/doc/torque-drmaa
 }
 
 pkg_preinst() {
@@ -161,7 +188,8 @@ pkg_preinst() {
 	echo "${PBS_SERVER_NAME}" > "${D}${PBS_SERVER_HOME}/server_name"
 
 	# Fix up the env.d file to use our set server home.
-	sed -i "s:/var/spool/torque:${PBS_SERVER_HOME}:g" "${D}"/etc/env.d/25torque
+	sed -i "s:/var/spool/torque:${PBS_SERVER_HOME}:g" \
+		"${D}"/etc/env.d/25torque || die
 }
 
 pkg_postinst() {

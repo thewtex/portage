@@ -1,29 +1,29 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/torque/torque-2.4.12.ebuild,v 1.1 2011/03/14 20:30:21 jsbronder Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/torque/torque-2.5.6.ebuild,v 1.1 2011/06/26 00:47:16 jsbronder Exp $
 
 EAPI=2
-inherit flag-o-matic eutils linux-info autotools
+inherit flag-o-matic eutils linux-info
 
 DESCRIPTION="Resource manager and queuing system based on OpenPBS"
 HOMEPAGE="http://www.clusterresources.com/products/torque/"
 SRC_URI="http://www.clusterresources.com/downloads/${PN}/${P}.tar.gz"
 
-LICENSE="openpbs"
+LICENSE="torque-2.5"
 
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
-IUSE="tk +crypt drmaa server +syslog doc cpusets kernel_linux"
+IUSE="cpusets +crypt doc drmaa kernel_linux munge server +syslog threads tk xml"
 
 # ed is used by makedepend-sh
 DEPEND_COMMON="sys-libs/ncurses
 	sys-libs/readline
+	munge? ( sys-auth/munge )
 	tk? ( dev-lang/tk )
 	syslog? ( virtual/logger )
 	!games-util/qstat"
 
 DEPEND="${DEPEND_COMMON}
-	doc? ( drmaa? ( app-doc/doxygen[latex,-nodot] ) )
 	sys-apps/ed"
 
 RDEPEND="${DEPEND_COMMON}
@@ -43,7 +43,7 @@ pkg_setup() {
 		fi
 	fi
 
-	USE_CPUSETS="--disable-cpuset"
+	USE_CPUSETS="--disable-cpusets"
 	if use cpusets; then
 		if ! use kernel_linux; then
 			einfo
@@ -62,23 +62,9 @@ pkg_setup() {
 				elog "your kernel with CONFIG_CPUSETS enabled."
 				einfo
 			fi
-			USE_CPUSETS="--enable-cpuset"
+			USE_CPUSETS="--enable-cpusets"
 		fi
 	fi
-}
-
-src_prepare() {
-	epatch "${FILESDIR}"/0002-fix-implicit-declaration-warnings.patch
-	epatch "${FILESDIR}"/0003-disable-automagic-doc-building-2.4.12.patch
-
-	sed -i \
-		-e 's,\(COMPACT_LATEX *=\).*,\1 NO,' \
-		-e 's,\(GENERATE_MAN *=\).*,\1 NO,' \
-		src/drmaa/Doxyfile.in || die
-	sed -i \
-		-e '/INSTALL_DATA/d' \
-		src/drmaa/Makefile.am || die
-	eautoreconf
 }
 
 src_configure() {
@@ -86,21 +72,19 @@ src_configure() {
 
 	use crypt && myconf="--with-rcp=scp"
 
-	if use drmaa && use doc; then
-		myconf="${myconf} --enable-apidocs"
-	else
-		myconf="${myconf} --disable-apidocs"
-	fi
-
 	econf \
 		$(use_enable tk gui) \
 		$(use_enable syslog) \
 		$(use_enable server) \
 		$(use_enable drmaa) \
+		$(use_enable threads high-availability) \
+		$(use_enable xml server-xml) \
+		$(use_enable munge munge-auth) \
 		--with-server-home=${PBS_SERVER_HOME} \
 		--with-environ=/etc/pbs_environment \
 		--with-default-server=${PBS_SERVER_NAME} \
 		--disable-gcc-warnings \
+		--with-tcp-retry-limit=2 \
 		${USE_CPUSETS} \
 		${myconf} \
 		|| die "econf failed"
@@ -150,34 +134,27 @@ src_install() {
 	# Make directories first
 	pbs_createspool "${D}"
 
-	emake DESTDIR="${D}" install || die "make install failed"
+	make DESTDIR="${D}" install || die "make install failed"
 
 	dodoc CHANGELOG README.* Release_Notes || die "dodoc failed"
 	if use doc; then
 		dodoc doc/admin_guide.ps doc/*.pdf || die "dodoc failed"
-		if use drmaa; then
-			dohtml -r src/drmaa/doc/html/* || die
-			dodoc src/drmaa/drmaa.pdf || die
-		fi
 	fi
 
 	# The build script isn't alternative install location friendly,
 	# So we have to fix some hard-coded paths in tclIndex for xpbs* to work
 	for file in `find "${D}" -iname tclIndex`; do
-		sed -e "s/${D//\// }/ /" "${file}" > "${file}.new" || die
-		mv "${file}.new" "${file}" || die
+		sed -e "s/${D//\// }/ /" "${file}" > "${file}.new"
+		mv "${file}.new" "${file}"
 	done
 
 	if use server; then
-		newinitd "${FILESDIR}"/pbs_server-init.d pbs_server
+		newinitd "${FILESDIR}"/pbs_server-init.d-munge pbs_server
 		newinitd "${FILESDIR}"/pbs_sched-init.d pbs_sched
 	fi
-	newinitd "${FILESDIR}"/pbs_mom-init.d pbs_mom
-	newconfd "${FILESDIR}"/torque-conf.d torque
+	newinitd "${FILESDIR}"/pbs_mom-init.d-munge pbs_mom
+	newconfd "${FILESDIR}"/torque-conf.d-munge torque
 	newenvd "${FILESDIR}"/torque-env.d 25torque
-
-	[ -d "${D}"/usr/share/doc/torque-drmaa ] && \
-		rm -rf "${D}"/usr/share/doc/torque-drmaa
 }
 
 pkg_preinst() {
@@ -188,8 +165,11 @@ pkg_preinst() {
 	echo "${PBS_SERVER_NAME}" > "${D}${PBS_SERVER_HOME}/server_name"
 
 	# Fix up the env.d file to use our set server home.
-	sed -i "s:/var/spool/torque:${PBS_SERVER_HOME}:g" \
-		"${D}"/etc/env.d/25torque || die
+	sed -i "s:/var/spool/torque:${PBS_SERVER_HOME}:g" "${D}"/etc/env.d/25torque
+
+	if use munge; then
+		sed -i 's,\(PBS_USE_MUNGE=\).*,\11,' "${D}"etc/conf.d/torque || die
+	fi
 }
 
 pkg_postinst() {
@@ -199,6 +179,7 @@ pkg_postinst() {
 	elog "http://www.clusterresources.com/wiki/doku.php?id=torque:torque_wiki"
 
 	elog "    For a basic setup, you may use emerge --config ${PN}"
+
 }
 
 # root will be setup as the primary operator/manager, the local machine
