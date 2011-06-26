@@ -1,6 +1,30 @@
 # ChangeLog for media-video/ffmpeg
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/ffmpeg/ChangeLog,v 1.416 2011/06/21 13:59:29 klausman Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/ffmpeg/ChangeLog,v 1.422 2011/06/24 13:32:54 aballier Exp $
+
+  24 Jun 2011; Alexis Ballier <aballier@gentoo.org> ffmpeg-0.7.1.ebuild,
+  ffmpeg-0.8.ebuild, ffmpeg-9999.ebuild:
+  bump x264 dep, bug #372685
+
+  23 Jun 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> ffmpeg-0.7_rc1.ebuild:
+  x86 stable wrt security bug #365273
+
+*ffmpeg-0.8 (23 Jun 2011)
+
+  23 Jun 2011; Alexis Ballier <aballier@gentoo.org> +ffmpeg-0.8.ebuild:
+  version bump: same as 0.7.1 but with only the new api/abi
+
+*ffmpeg-0.7.1 (23 Jun 2011)
+
+  23 Jun 2011; Alexis Ballier <aballier@gentoo.org> +ffmpeg-0.7.1.ebuild:
+  version bump
+
+  23 Jun 2011; Alexis Ballier <aballier@gentoo.org> ffmpeg-9999.ebuild:
+  no need to strip the -sse3 suffix for gcc march flag, its now handled in
+  configure
+
+  22 Jun 2011; Alexis Ballier <aballier@gentoo.org> ffmpeg-9999.ebuild:
+  use git-2.eclass
 
   21 Jun 2011; Tobias Klausmann <klausman@gentoo.org> ffmpeg-0.7_rc1.ebuild:
   Stable on alpha, bug #365273

@@ -1,12 +1,12 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/ffmpeg/ffmpeg-9999.ebuild,v 1.42 2011/04/20 14:25:17 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/ffmpeg/ffmpeg-9999.ebuild,v 1.45 2011/06/24 13:32:54 aballier Exp $
 
 EAPI="2"
 
 SCM=""
 if [ "${PV#9999}" != "${PV}" ] ; then
-	SCM="git"
+	SCM="git-2"
 	EGIT_REPO_URI="git://git.videolan.org/ffmpeg.git"
 fi
 
@@ -55,7 +55,7 @@ RDEPEND="
 		mp3? ( >=media-sound/lame-3.98.3 )
 		theora? ( >=media-libs/libtheora-1.1.1[encode] media-libs/libogg )
 		vorbis? ( media-libs/libvorbis media-libs/libogg )
-		x264? ( >=media-libs/x264-0.0.20101029 )
+		x264? ( >=media-libs/x264-0.0.20110426 )
 		xvid? ( >=media-libs/xvid-1.1.0 )
 	)
 	frei0r? ( media-plugins/frei0r-plugins )
@@ -185,7 +185,6 @@ src_configure() {
 	# will just ignore it.
 	for i in $(get-flag march) $(get-flag mcpu) $(get-flag mtune) ; do
 		[ "${i}" = "native" ] && i="host" # bug #273421
-		[[ ${i} = *-sse3 ]] && i="${i%-sse3}" # bug 283968
 		myconf="${myconf} --cpu=${i}"
 		break
 	done

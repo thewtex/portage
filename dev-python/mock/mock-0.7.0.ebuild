@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/mock/mock-0.7.0.ebuild,v 1.10 2011/04/29 19:51:57 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/mock/mock-0.7.0.ebuild,v 1.12 2011/06/23 19:34:08 halcy0n Exp $
 
 EAPI="3"
 SUPPORT_PYTHON_ABIS="1"

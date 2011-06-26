@@ -1,6 +1,30 @@
 # ChangeLog for net-misc/asterisk
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/asterisk/ChangeLog,v 1.317 2011/06/06 13:04:08 chainsaw Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/asterisk/ChangeLog,v 1.320 2011/06/24 10:37:00 chainsaw Exp $
+
+  24 Jun 2011; Tony Vroon <chainsaw@gentoo.org> asterisk-1.6.2.18.1.ebuild:
+  Mark stable on AMD64 based on arch testing by Agostino "ago" Sarubbo; for
+  security bug #372793.
+
+*asterisk-1.6.2.18.1 (24 Jun 2011)
+
+  24 Jun 2011; Tony Vroon <chainsaw@gentoo.org> -asterisk-1.6.2.18.ebuild,
+  +asterisk-1.6.2.18.1.ebuild:
+  Security update 1.6.2.18.1 resolves AST-2011-008 (buffer overflow due to NULL
+  in SIP packet), AST-2011-009 (null pointer dereference due to missing left
+  angle bracket in Contact header) & AST-2011-010 (unresolved pointer in IAX2
+  option control frame dereferenced by remote party). Remove one vulnerable
+  non-stable ebuild.
+
+*asterisk-1.8.4.3 (24 Jun 2011)
+
+  24 Jun 2011; Tony Vroon <chainsaw@gentoo.org> -asterisk-1.8.4.2.ebuild,
+  +asterisk-1.8.4.3.ebuild:
+  Trim down 1.8 branch by removing vulnerable ebuild. Security update 1.8.4.3
+  resolves AST-2011-008 (buffer overflow due to NULL in SIP packet),
+  AST-2011-009 (null pointer dereference due to missing left angle bracket in
+  Contact header) & AST-2011-010 (unresolved pointer in IAX2 option control
+  frame dereferenced by remote party).
 
 *asterisk-1.8.4.2 (06 Jun 2011)
 

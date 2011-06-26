@@ -1,0 +1,22 @@
+ruby_targets_ruby18? ( test? ( dev-ruby/minitest[ruby_targets_ruby18] virtual/ruby-rdoc[ruby_targets_ruby18] !!dev-ruby/yard[ruby_targets_ruby18] ) ) ruby_targets_ree18? ( test? ( dev-ruby/minitest[ruby_targets_ree18] virtual/ruby-rdoc[ruby_targets_ree18] !!dev-ruby/yard[ruby_targets_ree18] ) ) ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ree18? ( dev-lang/ruby-enterprise:1.8 )
+ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ree18? ( dev-lang/ruby-enterprise:1.8 )
+0
+mirror://rubyforge/rubygems/rubygems-1.8.5.tgz
+
+http://rubyforge.org/projects/rubygems/
+|| ( Ruby MIT )
+Centralized Ruby extension management system
+~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~x64-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+eutils multilib portability prefix ruby-ng toolchain-funcs
+server test ruby_targets_ruby18 ruby_targets_ree18
+
+server? ( dev-ruby/builder[ruby_targets_ruby18] )
+
+4
+
+compile configure install postinst postrm prepare setup test unpack
+
+
+
+
+
