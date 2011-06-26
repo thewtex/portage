@@ -1,14 +1,14 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/clipper/clipper-20100511.ebuild,v 1.4 2011/01/16 10:55:35 xarthisius Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/clipper/clipper-20100511.ebuild,v 1.5 2011/06/26 10:13:03 jlec Exp $
 
-EAPI="3"
+EAPI=3
 
 WANT_AUTOMAKE="1.11"
 
 inherit autotools eutils flag-o-matic
 
-DESCRIPTION="Object-oriented libraries for the organisation of crystallographic data and the performance of crystallographic computation"
+DESCRIPTION="Object-oriented libraries for crystallographic data and crystallographic computation"
 HOMEPAGE="http://www.ysbl.york.ac.uk/~cowtan/clipper/clipper.html"
 # Transform 4-digit year to 2 digits
 SRC_URI="http://www.ysbl.york.ac.uk/~cowtan/clipper/clipper-2.1-${PV:2:${#PV}}-ac.tar.gz"

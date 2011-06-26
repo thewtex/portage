@@ -6,11 +6,11 @@ https://www.github.com/funtoo/portage-funtoo/tarball/funtoo-merged-2011-06-26 ->
 http://www.gentoo.org/proj/en/portage/index.xml
 GPL-2
 Portage is the package management and distribution system for Gentoo
-~sparc-fbsd ~x86-fbsd
+~amd64 ~x86 ~sparc ~sparc-fbsd ~x86-fbsd
 eutils multilib portability python toolchain-funcs
-build doc epydoc +ipc +less linguas_pl python2 python3 selinux
+build doc epydoc +ipc linguas_pl python2 python3 selinux
 
-!build? ( less? ( sys-apps/less ) >=net-misc/rsync-2.6.4 userland_GNU? ( >=sys-apps/coreutils-6.4 ) )
+!build? ( >=net-misc/rsync-2.6.4 userland_GNU? ( >=sys-apps/coreutils-6.4 ) )
 
 2
 

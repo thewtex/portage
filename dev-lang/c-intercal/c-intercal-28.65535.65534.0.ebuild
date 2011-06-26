@@ -1,8 +1,8 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/c-intercal/c-intercal-28.65535.65534.0.ebuild,v 1.1 2010/09/11 09:57:37 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/c-intercal/c-intercal-28.65535.65534.0.ebuild,v 1.2 2011/06/26 11:17:12 ulm Exp $
 
-inherit elisp-common eutils multilib versionator
+inherit elisp-common eutils multilib
 
 # C-INTERCAL uses minor-major ordering of version components and
 # negative version numbers. We map version components -1, -2, ...

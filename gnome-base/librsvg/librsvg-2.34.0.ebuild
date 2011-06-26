@@ -1,11 +1,13 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-base/librsvg/librsvg-2.34.0.ebuild,v 1.2 2011/04/10 09:34:10 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-base/librsvg/librsvg-2.34.0.ebuild,v 1.3 2011/06/26 16:44:18 pacho Exp $
 
-EAPI="3"
+EAPI="4"
+GNOME2_LA_PUNT="yes"
+GNOME_TARBALL_SUFFIX="bz2"
 GCONF_DEBUG="no"
 
-inherit gnome2 multilib
+inherit gnome2 multilib eutils autotools
 
 DESCRIPTION="Scalable Vector Graphics (SVG) rendering library"
 HOMEPAGE="http://librsvg.sourceforge.net/"
@@ -37,13 +39,17 @@ pkg_setup() {
 		$(use_enable tools)
 		$(use_enable gtk gtk-theme)
 		--with-croco
-		--enable-pixbuf-loader"
+		--enable-pixbuf-loader
+		--with-gtk=2.0"
 	DOCS="AUTHORS ChangeLog README NEWS TODO"
 }
 
-src_install() {
-	gnome2_src_install
-	find "${ED}" -name '*.la' -exec rm -f {} +
+src_prepare() {
+	gnome2_src_prepare
+
+	# Fix automagic gtk+ dependency, bug #371290
+	epatch "${FILESDIR}/${PN}-2.34.0-automagic-gtk.patch"
+	eautoreconf
 }
 
 pkg_postinst() {
