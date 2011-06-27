@@ -1,12 +1,12 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/cgit/cgit-9999.ebuild,v 1.1 2011/04/29 19:02:19 pva Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-apps/cgit/cgit-9999.ebuild,v 1.2 2011/06/27 08:58:08 pva Exp $
 
-EAPI="2"
+EAPI="4"
 
 WEBAPP_MANUAL_SLOT="yes"
 
-inherit webapp eutils multilib git
+inherit webapp eutils multilib git-2
 
 [[ -z "${CGIT_CACHEDIR}" ]] && CGIT_CACHEDIR="/var/cache/${PN}/"
 
@@ -41,12 +41,6 @@ pkg_setup() {
 	enewuser "${PN}"
 }
 
-src_unpack() {
-	git_src_unpack
-
-	cd "${WORKDIR}" && unpack ${A}
-}
-
 src_prepare() {
 	rmdir git || die
 	mv "${WORKDIR}"/git-"${GIT_V}" git || die
@@ -57,21 +51,19 @@ src_prepare() {
 }
 
 src_compile() {
-	emake || die
-	if use doc ; then
-		emake doc-man || die
-	fi
+	emake
+	use doc && emake doc-man
 }
 
 src_install() {
 	webapp_src_preinst
 
 	emake \
-		prefix=/usr \
-		libdir=/usr/$(get_libdir) \
+		prefix="${EPREFIX}"/usr \
+		libdir="${EPREFIX}"/usr/$(get_libdir) \
 		CGIT_SCRIPT_PATH="${MY_CGIBINDIR}" \
 		CGIT_DATA_PATH="${MY_HTDOCSDIR}" \
-		DESTDIR="${D}" install || die
+		DESTDIR="${D}" install
 
 	insinto /etc
 	doins "${FILESDIR}"/cgitrc
@@ -89,5 +81,5 @@ src_install() {
 
 pkg_postinst() {
 	ewarn "If you intend to run cgit using web server's user"
-	ewarn "you should change /var/cache/cgit/ permissions."
+	ewarn "you should change ${CGIT_CACHEDIR} permissions."
 }

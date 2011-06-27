@@ -1,10 +1,10 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/eiskaltdcpp/eiskaltdcpp-9999.ebuild,v 1.21 2011/04/29 19:58:45 pva Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/eiskaltdcpp/eiskaltdcpp-9999.ebuild,v 1.22 2011/06/27 09:20:19 pva Exp $
 
 EAPI="4"
 
-LANGS="be bg cs en es fr hu pl ru sk sr uk"
+LANGS="be bg cs de en es fr hu pl ru sk sr uk"
 
 [[ ${PV} = *9999* ]] && VCS_ECLASS="git" || VCS_ECLASS=""
 inherit cmake-utils ${VCS_ECLASS}
@@ -14,7 +14,7 @@ HOMEPAGE="http://eiskaltdc.googlecode.com/"
 
 LICENSE="GPL-2 GPL-3"
 SLOT="0"
-IUSE="cli daemon dbus +emoticons examples -gnome -gtk idn -javascript libnotify lua +minimal pcre +qt4 sound spell sqlite upnp"
+IUSE="daemon dbus +emoticons examples -gnome -gtk idn -javascript libnotify lua +minimal pcre +qt4 sound spell sqlite upnp"
 for x in ${LANGS}; do
 	IUSE="${IUSE} linguas_${x}"
 done
@@ -44,7 +44,6 @@ RDEPEND="
 	sys-devel/gettext
 	sys-libs/zlib
 	virtual/libiconv
-	cli? ( sys-libs/readline )
 	idn? ( net-dns/libidn )
 	lua? ( >=dev-lang/lua-5.1 )
 	pcre? ( >=dev-libs/libpcre-4.2 )
@@ -85,7 +84,6 @@ src_configure() {
 		-DLIB_INSTALL_DIR="$(get_libdir)"
 		-Dlinguas="${langs}"
 		-DLOCAL_MINIUPNP=OFF
-		"$(cmake-utils_use cli CLI_DAEMON)"
 		"$(cmake-utils_use daemon NO_UI_DAEMON)"
 		"$(cmake-utils_use dbus DBUS_NOTIFY)"
 		"$(cmake-utils_use emoticons WITH_EMOTICONS)"
