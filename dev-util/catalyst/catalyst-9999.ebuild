@@ -1,13 +1,15 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/catalyst/catalyst-9999.ebuild,v 1.11 2011/06/22 19:36:33 sping Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/catalyst/catalyst-9999.ebuild,v 1.13 2011/06/26 16:46:48 sping Exp $
 
 # catalyst-9999         -> latest Git
 # catalyst-VER          -> normal catalyst release
 
+EAPI=2
+
 if [[ ${PV} == 9999* ]]; then
 	EGIT_REPO_URI="git://git.overlays.gentoo.org/proj/catalyst.git"
-	inherit git
+	inherit git-2
 	SRC_URI=""
 	S="${WORKDIR}/${PN}"
 	KEYWORDS=""
@@ -33,6 +35,10 @@ RDEPEND="dev-lang/python
 	ccache? ( dev-util/ccache )
 	ia64? ( sys-fs/dosfstools )
 	kernel_linux? ( app-misc/zisofs-tools >=sys-fs/squashfs-tools-2.1 )"
+
+if [[ ${PV} == 9999* ]]; then
+	DEPEND="${DEPEND} app-text/asciidoc"
+fi
 
 pkg_setup() {
 	if use ccache ; then
