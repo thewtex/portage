@@ -1,8 +1,8 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/coot/coot-0.6.1.ebuild,v 1.12 2011/03/02 09:57:12 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/coot/coot-0.6.1.ebuild,v 1.13 2011/06/28 17:01:28 jlec Exp $
 
-EAPI="3"
+EAPI=3
 
 PYTHON_DEPEND="2"
 
@@ -89,13 +89,13 @@ src_configure() {
 	# Yes, this is broken behavior.
 	econf \
 		--includedir='${prefix}/include/coot' \
-		--with-gtkcanvas-prefix="${EPREFIX}"/usr \
-		--with-clipper-prefix="${EPREFIX}"/usr \
-		--with-mmdb-prefix="${EPREFIX}"/usr \
-		--with-ssmlib-prefix="${EPREFIX}"/usr \
-		--with-gtkgl-prefix="${EPREFIX}"/usr \
+		--with-gtkcanvas-prefix="${EPREFIX}/usr" \
+		--with-clipper-prefix="${EPREFIX}/usr" \
+		--with-mmdb-prefix="${EPREFIX}/usr" \
+		--with-ssmlib-prefix="${EPREFIX}/usr" \
+		--with-gtkgl-prefix="${EPREFIX}/usr" \
 		--with-guile \
-		--with-python="${EPREFIX}"/usr \
+		--with-python="${EPREFIX}/usr" \
 		--with-guile-gtk \
 		--with-gtk2 \
 		--with-pygtk
@@ -149,5 +149,6 @@ src_test() {
 	einfo "CLIBD_MON ${CLIBD_MON}"
 	einfo "SYMINFO ${SYMINFO}"
 
+	"${S}"/src/coot-real --no-graphics --script python-tests/coot_unittest.py || die
 	"${S}"/src/coot-real --no-graphics --script command-line-greg.scm || die
 }
