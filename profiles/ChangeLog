@@ -1,10 +1,28 @@
 # ChangeLog for profile directory
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.5485 2011/06/28 20:21:15 mattst88 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.5490 2011/06/29 17:29:22 pacho Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  29 Jun 2011; Pacho Ramos <pacho@gentoo.org> targets/desktop/make.defaults:
+  Enable 'cdda' by default as most desktop users will want it like 'cdr' and
+  prevents people from having to manually enable it for sound-juicer.
+
+  29 Jun 2011; Pacho Ramos <pacho@gentoo.org> ChangeLog:
+  Mask for removal in 30 days x11-libs/gtksourceview:1.0 and reverse
+  dependencies, bug #354241
+
+  29 Jun 2011; Justin Lecher <jlec@gentoo.org> package.mask:
+  Mask mmdb and coot due to ABI/API breakage
+
+  29 Jun 2011; Justin Lecher <jlec@gentoo.org> package.mask:
+  Unmask sci-libs/mmdb, seems fine now
+
+  29 Jun 2011; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  package.mask:
+  Unmask xorg-drivers-1.11
 
   28 Jun 2011; Matt Turner <mattst88@gentoo.org> profiles.desc:
   Remove mips sys/ profiles and add multilib profiles to profiles.desc

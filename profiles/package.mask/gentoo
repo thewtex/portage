@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12869 2011/06/28 18:54:25 olemarkus Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12874 2011/06/29 15:21:10 jlec Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -31,7 +31,25 @@
 
 #--- END OF EXAMPLES ---
 
-# Justin Lecher <jlec@gentoo.org> (27. Jun 2011)
+# Justin Lecher <jlec@gentoo.org> (29 Jun 2011)
+# ABI/API break
+# Still don't know how to fix that.
+>=sci-libs/mmdb-1.23
+>=sci-chemistry/coot-0.6.2
+
+# Pacho Ramos <pacho@gentoo.org> (29 Jun 2011)
+# Mask for removal in 30 days x11-libs/gtksourceview:1.0
+# and reverse dependencies, bug #354241
+=x11-libs/gtksourceview-1.8.5-r1
+app-editors/conglomerate
+app-editors/mlview
+app-editors/screem
+dev-python/gtksourceview-python
+app-editors/scribes
+=dev-ruby/ruby-gtksourceview-0.19.4
+=sci-electronics/oregano-0.69.0*
+
+# Justin Lecher <jlec@gentoo.org> (27 Jun 2011)
 # Only avalable version isn't in the tree.
 # Mask until it is bumped
 sci-chemistry/webmo
@@ -194,7 +212,6 @@ net-misc/gateway6
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (6 Jun 2011)
 # Mask prerelease of xorg-server 1.11
 >=x11-base/xorg-server-1.10.99
->=x11-base/xorg-drivers-1.11
 
 # Jeroen Roovers <jer@gentoo.org> (5 Jun 2011)
 # Masked until bug #370163 is resolved.
@@ -464,10 +481,6 @@ x11-themes/qgtkstyle
 # Diego E. Pettenò <flameeyes@gentoo.org> (01 Mar 2011)
 # Messed up build system, automagic dependencies.
 dev-util/perf
-
-# Justin Lecher <jlec@gentoo.org> (04 Mar 2011)
-# Probably API change, packages fail to compile
-~sci-libs/mmdb-1.23.2
 
 # Ulrich Mueller <ulm@gentoo.org> (01 Mar 2011)
 # Christian Faulhammer <fauli@gentoo.org>

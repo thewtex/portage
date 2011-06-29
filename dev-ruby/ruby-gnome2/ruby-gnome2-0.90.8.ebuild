@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-gnome2/ruby-gnome2-0.90.8.ebuild,v 1.1 2011/05/29 15:18:43 naota Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-gnome2/ruby-gnome2-0.90.8.ebuild,v 1.3 2011/06/29 13:33:30 pacho Exp $
 
 EAPI="2"
 USE_RUBY="ruby18 ruby19"
