@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/kdevelop-php/kdevelop-php-1.2.0.ebuild,v 1.7 2011/04/25 20:29:47 dilfridge Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/kdevelop-php/kdevelop-php-1.2.0.ebuild,v 1.8 2011/06/30 00:29:13 reavertm Exp $
 
 EAPI=3
 
@@ -23,9 +23,9 @@ IUSE="debug doc"
 
 DEPEND="
 	>=dev-util/kdevelop-pg-qt-0.9.0
-	dev-util/kdevelop
 "
 RDEPEND="
+	dev-util/kdevelop
 	doc? ( >=dev-util/kdevelop-php-docs-${PV}:${SLOT} )
 "
 
