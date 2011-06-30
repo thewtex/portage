@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12863 2011/06/26 17:13:43 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12874 2011/06/29 15:21:10 jlec Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,34 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Justin Lecher <jlec@gentoo.org> (29 Jun 2011)
+# ABI/API break
+# Still don't know how to fix that.
+>=sci-libs/mmdb-1.23
+>=sci-chemistry/coot-0.6.2
+
+# Pacho Ramos <pacho@gentoo.org> (29 Jun 2011)
+# Mask for removal in 30 days x11-libs/gtksourceview:1.0
+# and reverse dependencies, bug #354241
+=x11-libs/gtksourceview-1.8.5-r1
+app-editors/conglomerate
+app-editors/mlview
+app-editors/screem
+dev-python/gtksourceview-python
+app-editors/scribes
+=dev-ruby/ruby-gtksourceview-0.19.4
+=sci-electronics/oregano-0.69.0*
+
+# Justin Lecher <jlec@gentoo.org> (27 Jun 2011)
+# Only avalable version isn't in the tree.
+# Mask until it is bumped
+sci-chemistry/webmo
+
+# Alexis Ballier <aballier@gentoo.org> (26 Jun 2011)
+# Mask release candidate of ocaml
+>=dev-lang/ocaml-3.12.1_rc
+>=dev-ml/ocamlduce-3.12.0.0-r10
 
 # Hans de Graaff <graaff@gentoo.org> (25 Jun 2011)
 # Mask for testing, still incomplete and too central to
@@ -162,7 +190,7 @@ dev-haskell/gtk2hs
 # Diego E. Pettenò <flameeyes@gentoo.org> (09 Jun 2011)
 #  on behalf of QA team
 #
-# Fails to build with GCC 4.6; replaced by net-misc/gogo6
+# Fails to build with GCC 4.6; replaced by net-misc/gogoc
 # (same codebase, renamed and reversioned) which is somewhat
 # maintained.
 #
@@ -184,7 +212,6 @@ net-misc/gateway6
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (6 Jun 2011)
 # Mask prerelease of xorg-server 1.11
 >=x11-base/xorg-server-1.10.99
->=x11-base/xorg-drivers-1.11
 
 # Jeroen Roovers <jer@gentoo.org> (5 Jun 2011)
 # Masked until bug #370163 is resolved.
@@ -261,27 +288,6 @@ www-client/opera-next
 # Mask release candidates
 =mail-filter/amavisd-new-2.7.0_rc*
 
-# Samuli Suominen <ssuominen@gentoo.org> (20 May 2011)
-# Some abandonware that fails to build with linux-headers-2.6.38,
-# and other issues
-#
-# spcaview, bugs 329065, 336599, 364843
-# aatv, bug 364845
-# camsource, bug 365683
-# effectv, bug 365255
-# fmio, bugs 361581, 350024
-# fame, bug 362993
-# came, bug 361585
-#
-# Removal in 30 days (or feel free to pick up these and port to v4l2)
-media-video/spcaview
-media-tv/aatv
-media-video/camsource
-media-video/effectv
-media-video/fame
-media-radio/fmio
-media-video/came
-
 # Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (16 May 2011)
 # Masked until reverse dependencies of dev-python/pyxml are updated.
 =dev-lang/python-2.7.1-r2
@@ -329,7 +335,7 @@ app-crypt/scsign
 =dev-lang/php-5.3.7_rc1
 =dev-lang/php-5.3.7_rc2
 =dev-lang/php-5.3.7_rc3
->=dev-lang/php-5.4.0_pre1
+>=dev-lang/php-5.4.0_alpha1
 
 # Nirbheek Chauhan <nirbheek@gentoo.org> (30 Apr 2011)
 # GTK3 version of notification-daemon, added for testing
@@ -475,10 +481,6 @@ x11-themes/qgtkstyle
 # Diego E. Pettenò <flameeyes@gentoo.org> (01 Mar 2011)
 # Messed up build system, automagic dependencies.
 dev-util/perf
-
-# Justin Lecher <jlec@gentoo.org> (04 Mar 2011)
-# Probably API change, packages fail to compile
-~sci-libs/mmdb-1.23.2
 
 # Ulrich Mueller <ulm@gentoo.org> (01 Mar 2011)
 # Christian Faulhammer <fauli@gentoo.org>

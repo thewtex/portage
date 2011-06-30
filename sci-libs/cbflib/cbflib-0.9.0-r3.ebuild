@@ -1,20 +1,20 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/cbflib/cbflib-0.9.0-r3.ebuild,v 1.5 2011/06/21 15:41:23 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/cbflib/cbflib-0.9.0-r3.ebuild,v 1.7 2011/06/28 19:30:30 jlec Exp $
 
-EAPI="3"
+EAPI=3
 
 PYTHON_DEPEND="python? 2"
 SUPPORT_PYTHON_ABIS="1"
 RESTRICT_PYTHON_ABIS="3.*"
 
-inherit distutils eutils fortran-2 flag-o-matic toolchain-funcs
+inherit distutils eutils flag-o-matic fortran-2 toolchain-funcs
 
 PYTHON_MODNAME="pycbf.py"
 MY_P1="CBFlib-${PV}"
 MY_P2="CBFlib_${PV}"
 
-DESCRIPTION="Library providing a simple mechanism for accessing CBF files and imgCIF files."
+DESCRIPTION="Library providing a simple mechanism for accessing CBF files and imgCIF files"
 HOMEPAGE="http://www.bernstein-plus-sons.com/software/CBF/"
 #BASE_TEST_URI="http://arcib.dowling.edu/software/CBFlib/downloads/version_${PV}/"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P1}_14Feb10.tar.gz"
@@ -25,7 +25,7 @@ SRC_URI="mirror://sourceforge/${PN}/${MY_P1}_14Feb10.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux"
 IUSE="doc python"
 
 DEPEND="virtual/fortran	"
@@ -45,15 +45,15 @@ src_prepare(){
 	append-cflags -D_USE_XOPEN_EXTENDED
 
 	sed \
-		-e "s:^CC.*$:CC = $(tc-getCC):" \
-		-e "s:^C++.*$:C++ = $(tc-getCXX):" \
-		-e "s:C++:CXX:g" \
-		-e "s:^CFLAGS.*$:CFLAGS = ${CFLAGS}:" \
-		-e "s:^F90C.*$:F90C = $(tc-getFC):" \
-		-e "s:^F90FLAGS.*$:F90FLAGS = ${FFLAGS}:" \
-		-e "s:^SOLDFLAGS.*$:SOLDFLAGS = -shared ${LDFLAGS}:g" \
-		-e "s: /bin: ${EPREFIX}/bin:g" \
-		-e "s:/usr:${EPREFIX}/usr:g" \
+		-e "s|^CC.*$|CC = $(tc-getCC)|" \
+		-e "s|^C++.*$|C++ = $(tc-getCXX)|" \
+		-e "s|C++|CXX|g" \
+		-e "s|^CFLAGS.*$|CFLAGS = ${CFLAGS}|" \
+		-e "s|^F90C.*$|F90C = $(tc-getFC)|" \
+		-e "s|^F90FLAGS.*$|F90FLAGS = ${FFLAGS}|" \
+		-e "s|^SOLDFLAGS.*$|SOLDFLAGS = -shared ${LDFLAGS}|g" \
+		-e "s| /bin| ${EPREFIX}/bin|g" \
+		-e "s|/usr|${EPREFIX}/usr|g" \
 		-i Makefile || die
 }
 

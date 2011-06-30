@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-vcs/git/git-9999.ebuild,v 1.21 2011/05/31 06:27:02 mduft Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-vcs/git/git-9999.ebuild,v 1.22 2011/06/27 19:56:45 robbat2 Exp $
 
 EAPI=3
 
@@ -244,8 +244,8 @@ src_prepare() {
 	# Merged upstream
 	#epatch "${FILESDIR}"/git-1.7.3.2-interix.patch
 
-	# reported upstream. should be in the next release.
-	epatch "${FILESDIR}"/git-1.7.5-interix.patch
+	# merged upstream
+	#epatch "${FILESDIR}"/git-1.7.5-interix.patch
 }
 
 git_emake() {
@@ -263,10 +263,12 @@ git_emake() {
 		htmldir="${EPREFIX}"/usr/share/doc/${PF}/html \
 		sysconfdir="${EPREFIX}"/etc \
 		PYTHON_PATH="${PYTHON_PATH}" \
-		PERL_PATH="${EPREFIX}/usr/bin/env perl" \
 		PERL_MM_OPT="" \
 		GIT_TEST_OPTS="--no-color" \
 		"$@"
+	# This is the fix for bug #326625, but it also causes breakage, see bug
+	# #352693.
+	# PERL_PATH="${EPREFIX}/usr/bin/env perl" \
 }
 
 src_configure() {
@@ -420,6 +422,7 @@ src_test() {
 	# t0001-init.sh - check for init notices EPERM*  fails
 	local tests_nonroot="t0001-init.sh \
 		t0004-unwritable.sh \
+		t0070-fundamental.sh \
 		t1004-read-tree-m-u-wf.sh \
 		t3700-add.sh \
 		t7300-clean.sh"
@@ -499,6 +502,8 @@ showpkgdeps() {
 pkg_postinst() {
 	use emacs && elisp-site-regen
 	use python && python_mod_optimize git_remote_helpers
+	use bash-completion && \
+		einfo "Please read /usr/share/bash-completion/git for Git bash completion"
 	if use subversion && has_version dev-vcs/subversion && ! built_with_use --missing false dev-vcs/subversion perl ; then
 		ewarn "You must build dev-vcs/subversion with USE=perl"
 		ewarn "to get the full functionality of git-svn!"

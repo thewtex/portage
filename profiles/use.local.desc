@@ -1845,6 +1845,7 @@ mail-filter/opendkim:db - Include features like stats, querycache, popauth, repo
 mail-filter/opendkim:ldap - Enable openldap as a dataset facilitator or keys, determining domains to sign for, and any other dataset that opendkim supports.
 mail-filter/opendkim:lua - Enables control over signature verification, filtering and policy to be controlled by user defined lua scripts.
 mail-filter/opendkim:opendbx - Use opendbx backend to facilitate dataset driven OpenDKIM configuration options like stats, bodylengthdb, etc. against a wide variety of database types
+mail-filter/opendkim:poll - Use poll() instead of select() for the provided asynchronous resolver library.
 mail-filter/opendkim:sasl - Used to authenticate to a LDAP server in various ways if required.
 mail-filter/opendkim:unbound - Use the unbound dnssec library to perform DKIM DNS queries.
 mail-filter/postgrey:targrey - Enables the targrey patch
@@ -2243,6 +2244,7 @@ media-sound/decibel-audio-player:gnome-keyring - Adds support for storing your L
 media-sound/denemo:fluidsynth - Enable Fluidsynth MIDI software synthesis
 media-sound/dir2ogg:mac - Add support for decoding Monkey's Audio files
 media-sound/dir2ogg:wma - Add support for wma files through mplayer
+media-sound/ecasound:oil - Use dev-libs/liboil for inner loop optimizations
 media-sound/fapg:xspf - Enable support for saving XSPF playlists.
 media-sound/freewheeling:fluidsynth - compile with support for fluidsynth
 media-sound/gejengel:audioscrobbler - Enable track submission on last.fm
@@ -3421,6 +3423,7 @@ net-misc/mediatomb:mysql - Use dev-db/mysql as backend rather than SQLite3. If t
 net-misc/mediatomb:taglib - Use media-libs/taglib for reading files' metadata rather than id3lib. If this USE flag is disabled media-libs/id3lib is used instead.
 net-misc/mediatomb:thumbnail - Enables video thumbnails generation through media-video/ffmpegthumbnailer
 net-misc/memcached:slabs-reassign - Allow manual reassignment of memory slabs at the cost of slab optimizations.
+net-misc/mico:findbug - Adds patch to help finding bug#343827
 net-misc/networkmanager:connection-sharing - Use net-dns/dnsmasq and net-firewall/iptables for connection sharing
 net-misc/networkmanager:dhclient - Use dhclient from net-misc/dhcp for getting ip.
 net-misc/networkmanager:dhcpcd - Use net-misc/dhcpcd for getting ip.
@@ -3564,7 +3567,6 @@ net-p2p/eiskaltdcpp:cli - Enable eiskaltdcpp-daemon with sample cli based on rea
 net-p2p/eiskaltdcpp:daemon - Enable eiskaltdcpp-daemon without any UI
 net-p2p/eiskaltdcpp:emoticons - Install emoticon packs
 net-p2p/eiskaltdcpp:minimal - Don't install headers
-net-p2p/eiskaltdcpp:sounds - Install sound files
 net-p2p/eiskaltdcpp:upnp - Forward ports using UPnP
 net-p2p/fms:frost - Add support for frost boards
 net-p2p/freenet:freemail - Add Freemail support
@@ -4392,7 +4394,9 @@ www-client/firefox:pgo - Add support for profile-guided optimization using gcc-4
 www-client/firefox:system-sqlite - Use the system-wide dev-db/sqlite installation with secure-delete enabled
 www-client/firefox:webm - Use system media-libs/libvpx for HTML5 WebM video support.
 www-client/icecat:custom-optimization - Fine-tune custom compiler optimizations
+www-client/icecat:gconf - Add support for setting of default browser using gnome-base/gconf. Useful only for GNOME 2 users.
 www-client/icecat:ipc - Use inter-process communication between tabs and plugins. Allows for greater stability in case of plugin crashes
+www-client/icecat:pgo - Add support for profile-guided optimization using gcc-4.5, for faster binaries. This option will double the compile time.
 www-client/icecat:system-sqlite - Use the system-wide dev-db/sqlite installation with secure-delete enabled
 www-client/icecat:webm - Use system libvpx media-libs/libvpx
 www-client/luakit:helpers - Optional tools used by luakit

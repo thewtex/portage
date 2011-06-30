@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/asciidoc/asciidoc-8.6.3.ebuild,v 1.1 2010/11/14 19:28:43 sping Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/asciidoc/asciidoc-8.6.3.ebuild,v 1.3 2011/06/30 00:30:38 sping Exp $
 
 EAPI="3"
 
@@ -24,11 +24,11 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="examples vim-syntax"
+IUSE="examples graphviz vim-syntax"
 
 RDEPEND=">=app-text/docbook-xsl-stylesheets-1.75
 		dev-libs/libxslt
-		media-gfx/graphviz
+		graphviz? ( media-gfx/graphviz )
 		app-text/docbook-xml-dtd:4.5
 "
 DEPEND=""

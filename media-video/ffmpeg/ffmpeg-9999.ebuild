@@ -1,8 +1,8 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/ffmpeg/ffmpeg-9999.ebuild,v 1.45 2011/06/24 13:32:54 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/ffmpeg/ffmpeg-9999.ebuild,v 1.49 2011/06/29 15:07:07 aballier Exp $
 
-EAPI="2"
+EAPI="4"
 
 SCM=""
 if [ "${PV#9999}" != "${PV}" ] ; then
@@ -30,17 +30,11 @@ if [ "${PV#9999}" = "${PV}" ] ; then
 fi
 IUSE="
 	+3dnow +3dnowext aac alsa altivec amr avx bindist +bzip2 celt cpudetection
-	custom-cflags debug dirac doc +encode faac frei0r gsm +hardcoded-tables
-	ieee1394 jack jpeg2k +mmx +mmxext mp3 network oss pic qt-faststart rtmp
-	schroedinger sdl speex +ssse3 static-libs test theora threads truetype v4l
-	v4l2 vaapi vdpau vorbis vpx X x264 xvid +zlib
+	debug dirac doc +encode faac frei0r gsm +hardcoded-tables ieee1394 jack
+	jpeg2k +mmx +mmxext mp3 network openal oss pic qt-faststart rtmp
+	schroedinger sdl speex +ssse3 static-libs test theora threads truetype
+	v4l v4l2 vaapi vdpau vorbis vpx X x264 xvid +zlib
 	"
-
-VIDEO_CARDS="nvidia"
-
-for x in ${VIDEO_CARDS}; do
-	IUSE="${IUSE} video_cards_${x}"
-done
 
 RDEPEND="
 	alsa? ( media-libs/alsa-lib )
@@ -63,13 +57,14 @@ RDEPEND="
 	ieee1394? ( media-libs/libdc1394 sys-libs/libraw1394 )
 	jack? ( media-sound/jack-audio-connection-kit )
 	jpeg2k? ( >=media-libs/openjpeg-1.3-r2 )
+	openal? ( >=media-libs/openal-1.1 )
 	rtmp? ( >=media-video/rtmpdump-2.2f )
 	sdl? ( >=media-libs/libsdl-1.2.13-r1[audio,video] )
 	schroedinger? ( media-libs/schroedinger )
 	speex? ( >=media-libs/speex-1.2_beta3 )
 	truetype? ( media-libs/freetype:2 )
 	vaapi? ( >=x11-libs/libva-0.32 )
-	video_cards_nvidia? ( vdpau? ( x11-libs/libvdpau ) )
+	vdpau? ( x11-libs/libvdpau )
 	vpx? ( >=media-libs/libvpx-0.9.6 )
 	X? ( x11-libs/libX11 x11-libs/libXext )
 	zlib? ( sys-libs/zlib )
@@ -87,6 +82,8 @@ DEPEND="${RDEPEND}
 	v4l? ( sys-kernel/linux-headers )
 	v4l2? ( sys-kernel/linux-headers )
 "
+# faac is license-incompatible with ffmpeg
+REQUIRED_USE="bindist? ( encode? ( !faac ) )"
 
 S=${WORKDIR}/${P/_/-}
 
@@ -102,20 +99,13 @@ src_configure() {
 	local version3=""
 
 	# enabled by default
-	for i in debug doc network vaapi zlib; do
+	for i in debug doc network vaapi vdpau zlib; do
 		use ${i} || myconf="${myconf} --disable-${i}"
 	done
 	use bzip2 || myconf="${myconf} --disable-bzlib"
 	use sdl || myconf="${myconf} --disable-ffplay"
 
-	use custom-cflags && myconf="${myconf} --disable-optimizations"
 	use cpudetection && myconf="${myconf} --enable-runtime-cpudetect"
-
-	#for i in h264_vdpau mpeg1_vdpau mpeg_vdpau vc1_vdpau wmv3_vdpau; do
-	#	use video_cards_nvidia || myconf="${myconf} --disable-decoder=${i}"
-	#	use vdpau || myconf="${myconf} --disable-decoder=${i}"
-	#done
-	use video_cards_nvidia && use vdpau || myconf="${myconf} --disable-vdpau"
 
 	# Encoders
 	if use encode
@@ -126,19 +116,14 @@ src_configure() {
 		for i in theora vorbis x264 xvid; do
 			use ${i} && myconf="${myconf} --enable-lib${i}"
 		done
-		if use bindist
-		then
-			use faac && ewarn "faac is nonfree and cannot be distributed;
-			disabling faac support."
-		else
-			use faac && myconf="${myconf} --enable-libfaac --enable-nonfree"
-		fi
+		use faac && myconf="${myconf} --enable-libfaac --enable-nonfree"
 	else
 		myconf="${myconf} --disable-encoders"
 	fi
 
 	# libavdevice options
 	use ieee1394 && myconf="${myconf} --enable-libdc1394"
+	use openal && myconf="${myconf} --enable-openal"
 	# Indevs
 	for i in v4l v4l2 alsa oss jack ; do
 		use ${i} || myconf="${myconf} --disable-indev=${i}"
@@ -234,41 +219,43 @@ src_configure() {
 
 	cd "${S}"
 	./configure \
-		--prefix=/usr \
-		--libdir=/usr/$(get_libdir) \
-		--shlibdir=/usr/$(get_libdir) \
-		--mandir=/usr/share/man \
+		--prefix="${EPREFIX}/usr" \
+		--libdir="${EPREFIX}/usr/$(get_libdir)" \
+		--shlibdir="${EPREFIX}/usr/$(get_libdir)" \
+		--mandir="${EPREFIX}/usr/share/man" \
 		--enable-shared \
 		--cc="$(tc-getCC)" \
+		--disable-optimizations \
 		$(use_enable static-libs static) \
 		${myconf} || die
 }
 
 src_compile() {
-	emake version.h || die #252269
-	emake || die
+	#252269
+	emake version.h
+	emake
 
 	if use qt-faststart; then
 		tc-export CC
-		emake -C tools qt-faststart || die
+		emake -C tools qt-faststart
 	fi
 }
 
 src_install() {
-	emake DESTDIR="${D}" install install-man || die
+	emake DESTDIR="${D}" install install-man
 
 	dodoc Changelog README INSTALL
-	dodoc doc/*
+	dodoc -r doc/*
 
 	if use qt-faststart; then
-		dobin tools/qt-faststart || die
+		dobin tools/qt-faststart
 	fi
 }
 
 src_test() {
 	if use encode ; then
 		LD_LIBRARY_PATH="${S}/libpostproc:${S}/libswscale:${S}/libavcodec:${S}/libavdevice:${S}/libavfilter:${S}/libavformat:${S}/libavutil" \
-			emake test || die "Some tests failed"
+			emake test
 	else
 		ewarn "Tests fail without USE=encode, skipping"
 	fi
