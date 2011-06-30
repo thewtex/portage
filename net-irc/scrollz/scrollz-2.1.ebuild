@@ -1,8 +1,8 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/scrollz/scrollz-2.1.ebuild,v 1.5 2010/06/25 17:49:28 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-irc/scrollz/scrollz-2.1.ebuild,v 1.6 2011/06/30 17:12:32 binki Exp $
 
-EAPI=2
+EAPI=4
 
 DESCRIPTION="Advanced IRC client based on ircII"
 HOMEPAGE="http://packages.qa.debian.org/s/scrollz.html"
@@ -12,6 +12,8 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 ia64 ~ppc x86"
 IUSE="gmp gnutls ipv6 socks5 ssl"
+
+REQUIRED_USE="gnutls? ( ssl )"
 
 RDEPEND="sys-libs/ncurses
 	gmp? ( dev-libs/gmp )
@@ -46,8 +48,8 @@ src_configure() {
 
 src_install() {
 	einstall \
-		sharedir="${D}/usr/share" \
-		mandir="${D}/usr/share/man/man1" || die
+		sharedir="${ED}/usr/share" \
+		mandir="${ED}/usr/share/man/man1"
 
-	dodoc ChangeLog* NEWS README* todo || die
+	dodoc ChangeLog* NEWS README* todo
 }
