@@ -1,9 +1,10 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/livecd-tools/livecd-tools-9999.ebuild,v 1.3 2011/06/28 04:22:44 williamh Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/livecd-tools/livecd-tools-9999.ebuild,v 1.6 2011/06/30 20:34:53 williamh Exp $
+EAPI="4"
 
 EGIT_REPO_URI="git://git.overlays.gentoo.org/proj/livecd-tools.git"
-inherit eutils git
+inherit eutils git-2
 
 DESCRIPTION="Gentoo LiveCD tools for autoconfiguration of hardware"
 HOMEPAGE="http://wolf31o2.org/projects/livecd-tools"
@@ -32,6 +33,6 @@ src_install() {
 	doinitd init.d/*
 	dosbin net-setup spind
 	into /
-	dobin bashlogin
+	dosbin bashlogin
 	dosbin livecd-functions.sh
 }
