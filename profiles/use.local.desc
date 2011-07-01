@@ -2161,6 +2161,7 @@ media-plugins/grilo-plugins:youtube - Build support for YouTube content discover
 media-plugins/gst-plugins-a52dec:orc - Use dev-lang/orc for runtime detection of CPU MMX/MMXEXT/3dNow! capabilities to pass down to a52dec library.
 media-plugins/gst-plugins-ffmpeg:orc - Use dev-lang/orc for runtime optimisations
 media-plugins/gst-plugins-meta:mythtv - Support for retrieval from media-tv/mythtv backend
+media-plugins/gst-plugins-meta:vpx - Enables vp8 codec support using libvpx, required to play some HTML5 videos
 media-plugins/kipi-plugins:expoblending - Build the expoblending plugin, which requires media-gfx/hugin
 media-plugins/kipi-plugins:mjpeg - Add mjpeg suppport
 media-plugins/kipi-plugins:redeyes - Add redeyes removal suppport
@@ -4079,7 +4080,6 @@ sys-block/partimage:nologin - Do not include login support when connecting parti
 sys-block/tgt:fcoe - Add support for FCoE protocol
 sys-block/tgt:fcp - Add support for new FC protocol
 sys-block/tgt:ibmvio - Add support for IBM Virtual I/O
-sys-block/tgt:infiniband - Add support for iSCSI over RDMA (iser). All needed libs can be found in science overlay
 sys-boot/arcboot:cobalt - Disable support for Cobalt Microserver hardware (Qube2/RaQ2)
 sys-boot/arcboot:ip27 - Disable support for SGI Origin (IP27)
 sys-boot/arcboot:ip28 - Disable support for SGI Indigo2 Impact R10000 (IP28)
@@ -4117,6 +4117,9 @@ sys-cluster/mpi-dotnet:doc - Install tutorials for C# and IronPython (requires a
 sys-cluster/mpi-dotnet:examples - Install small, illustrative projects using MPI.Net
 sys-cluster/mpich2:mpi-threads - Enable MPI_THREAD_MULTIPLE
 sys-cluster/mpich2:romio - Enable romio, a high-performance portable MPI-IO implementation
+sys-cluster/mvapich2:large-cluster - Automatically generated description for large-cluster
+sys-cluster/mvapich2:medium-cluster - Automatically generated description for medium-cluster
+sys-cluster/mvapich2:romio - Automatically generated description for romio
 sys-cluster/ocfs:aio - Add aio support
 sys-cluster/openmpi:heterogeneous - Enable features required for heterogeneous platform support
 sys-cluster/openmpi:mpi-threads - Enable MPI_THREAD_MULTIPLE
@@ -4248,6 +4251,22 @@ sys-fs/udev:old-hd-rules - Install rules for /dev/hd* devices, removed upstream 
 sys-fs/udev:rule_generator - enable persistent network and optical device rule generator
 sys-fs/udisks:remote-access - Control whether connections from other clients over LAN are allowed
 sys-fs/unionfs:nfs - Adds support for NFS file system
+sys-infiniband/openib:dapl - Automatically generated description for dapl
+sys-infiniband/openib:diags - Automatically generated description for diags
+sys-infiniband/openib:ehca - Automatically generated description for ehca
+sys-infiniband/openib:ipath - Automatically generated description for ipath
+sys-infiniband/openib:mlx4 - Automatically generated description for mlx4
+sys-infiniband/openib:mthca - Automatically generated description for mthca
+sys-infiniband/openib:nes - Automatically generated description for nes
+sys-infiniband/openib:opensm - Automatically generated description for opensm
+sys-infiniband/openib:srp - Add support for srp targets
+sys-infiniband/openib-files:ehca - Automatically generated description for ehca
+sys-infiniband/openib-files:ipath - Automatically generated description for ipath
+sys-infiniband/openib-files:iser - Automatically generated description for iser
+sys-infiniband/openib-files:mlx4 - Automatically generated description for mlx4
+sys-infiniband/openib-files:rds - Automatically generated description for rds
+sys-infiniband/openib-files:srp - Automatically generated description for srp
+sys-infiniband/openib-files:vnic - Automatically generated description for vnic
 sys-kernel/ck-sources:deblob - Remove binary blobs from kernel sources to provide libre license compliance.
 sys-kernel/dracut:bootchart - Add support for bootchart (app-benchmarks/bootchart)
 sys-kernel/dracut:btrfs - Add support for root on Btrfs
@@ -4330,6 +4349,7 @@ sys-process/htop:openvz - Enable openvz support
 sys-process/htop:vserver - Enable vserver support
 virtual/ffmpeg:vaapi - Enables VAAPI (Video Acceleration API) for hardware decoding
 virtual/ffmpeg:vdpau - Enables VDPAU decoders (requires nVidia video cards to offload CPU processing to video card
+virtual/linux-sources:xrc - Add support for infiniband xrc
 virtual/mpi:romio - Enable romio, a high-performance portable MPI-IO
 virtual/mysql:embedded - Build embedded server (libmysqld)
 www-apache/mod_extract_forwarded:mod_proxy - Enable support for Apache's internal proxy
