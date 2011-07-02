@@ -1,4 +1,4 @@
-app-text/texi2html !<=app-emulation/qemu-0.7.0
+app-text/texi2html !<=app-emulation/qemu-0.7.0 hardened? ( app-misc/pax-utils sys-apps/paxctl )
 
 0
 http://savannah.nongnu.org/download/qemu/qemu-0.12.2.tar.gz
@@ -8,7 +8,7 @@ GPL-2 LGPL-2.1
 Open source dynamic translator
 ~amd64 ~ppc ~x86 ~ppc64
 eutils flag-o-matic multilib pax-utils portability toolchain-funcs
-static
+static hardened
 
 
 
