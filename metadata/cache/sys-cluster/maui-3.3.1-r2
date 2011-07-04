@@ -1,5 +1,5 @@
-sys-cluster/torque || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b
-sys-cluster/torque
+pbs? ( sys-cluster/torque ) slurm? ( sys-cluster/slurm ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b
+pbs? ( sys-cluster/torque ) slurm? ( sys-cluster/slurm )
 0
 http://www.adaptivecomputing.com/download/maui/maui-3.3.1.tar.gz
 fetch mirror
@@ -8,11 +8,11 @@ maui
 Maui Cluster Scheduler
 ~amd64 ~x86 ~amd64-linux
 autotools eutils libtool multilib portability toolchain-funcs
+pbs slurm
+^^ ( pbs slurm )
 
 
-
-
-3
+4
 
 configure install nofetch prepare
 

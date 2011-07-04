@@ -4116,6 +4116,8 @@ sys-cluster/heartbeat:management - Adds support for management GUI
 sys-cluster/lam-mpi:pbs - Add support for the Portable Batch System (PBS)
 sys-cluster/lam-mpi:romio - Enable romio, a high-performance portable MPI-IO implementation
 sys-cluster/lam-mpi:xmpi - Build support for the external XMPI debugging GUI
+sys-cluster/maui:pbs - Enable pbs integration
+sys-cluster/maui:slurm - Enable slurm integration
 sys-cluster/mpi-dotnet:doc - Install tutorials for C# and IronPython (requires a Word document reader)
 sys-cluster/mpi-dotnet:examples - Install small, illustrative projects using MPI.Net
 sys-cluster/mpich2:mpi-threads - Enable MPI_THREAD_MULTIPLE
@@ -4129,6 +4131,7 @@ sys-cluster/openmpi:mpi-threads - Enable MPI_THREAD_MULTIPLE
 sys-cluster/openmpi:pbs - Add support for the Portable Batch System (PBS)
 sys-cluster/openmpi:romio - Build the ROMIO MPI-IO component
 sys-cluster/openmpi:sctp - Enable SCTP support
+sys-cluster/openmpi:slurm - Add support for SLURM
 sys-cluster/openmpi:vt - Enable bundled VampirTrace support
 sys-cluster/pacemaker:ais - Enable sys-cluster/openais support.
 sys-cluster/pacemaker:heartbeat - Enable sys-cluster/heartbeat support.
@@ -4137,10 +4140,13 @@ sys-cluster/pacemaker-gui:heartbeat - Enable support for heartbeat based sys-clu
 sys-cluster/pvfs2:apidocs - Build API documentation directly from the code using doxygen
 sys-cluster/pvfs2:server - Enable compilation of server code
 sys-cluster/resource-agents:libnet - Force use of net-libs/libnet
-sys-cluster/torque:cpusets - Enable pbs_mom to utilize linux cpusets if available.
-sys-cluster/torque:drmaa - Enable the Distributed Resource Management Application API.
-sys-cluster/torque:munge - Enable authentication via munge.
-sys-cluster/torque:server - Enable compilation of pbs_server and pbs_sched.
+sys-cluster/slurm:maui - Enable maui scheduler support
+sys-cluster/slurm:munge - Enable authentication via munge
+sys-cluster/torque:cpusets - Enable pbs_mom to utilize linux cpusets if available
+sys-cluster/torque:drmaa - Enable the Distributed Resource Management Application API
+sys-cluster/torque:maui - Enable maui scheduler support
+sys-cluster/torque:munge - Enable authentication via munge
+sys-cluster/torque:server - Enable compilation of pbs_server and pbs_sched
 sys-devel/binutils:multislot - Allow for multiple versions of binutils to be emerged at once for same CTARGET
 sys-devel/binutils:multitarget - Adds support to binutils for cross compiling (does not work with gas)
 sys-devel/binutils-apple:lto - Add support for Link-Time Optimization with LLVM
@@ -4217,6 +4223,8 @@ sys-fs/ecryptfs-utils:gpg - Enable app-crypt/gnupg key module
 sys-fs/ecryptfs-utils:openssl - Enable dev-libs/openssl key module
 sys-fs/ecryptfs-utils:pkcs11 - Enable PKCS#11 (Smartcards) key module
 sys-fs/ecryptfs-utils:tpm - Enable support for Trusted Platform Module (TPM) using app-crypt/trousers
+sys-fs/evms:hb - Enable support for heartbeat-1
+sys-fs/evms:hb2 - Enable support for heartbeat-2
 sys-fs/lessfs:filelog - Enable the ability to log to a file instead of syslog
 sys-fs/lessfs:memtrace - Enable leefs to create a report regarding the memory allocation. This feature should be used for debugging purposes to avoid performance degradation
 sys-fs/loop-aes:aes-ni - Enable support for Intel's AES instruction set
@@ -4434,9 +4442,11 @@ www-client/opera-next:kde - Set runtime dependencies to support KDE desktop inte
 www-client/seamonkey:chatzilla - Build Mozilla's IRC client (default on)
 www-client/seamonkey:composer - Build Mozilla's HTML editor component (default on)
 www-client/seamonkey:custom-optimization - Fine-tune custom compiler optimizations
+www-client/seamonkey:gconf - Add support for setting of default browser using gnome-base/gconf. Useful only for GNOME 2 users.
 www-client/seamonkey:mailclient - Build Mozilla's Mail client (default on)
 www-client/seamonkey:roaming - Build roaming extension support (default on)
 www-client/seamonkey:system-sqlite - Use the system-wide dev-db/sqlite installation with secure-delete enabled
+www-client/seamonkey:webm - Use system media-libs/libvpx for HTML5 WebM video support.
 www-client/uget:aria2 - Enable support for net-misc/aria2 through xmlrpc. You'll find the plugin in the app's settings.
 www-client/uget:hide-temp-files - Make temporary files that are used while downloading hidden.
 www-client/uzbl:browser - Install the uzbl-browser script
