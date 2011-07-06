@@ -1,6 +1,15 @@
 # ChangeLog for profile directory
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/default/bsd/ChangeLog,v 1.54 2011/06/07 12:52:29 naota Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/default/bsd/ChangeLog,v 1.57 2011/07/05 21:15:41 aballier Exp $
+
+  05 Jul 2011; Alexis Ballier <aballier@gentoo.org> fbsd/profile.bashrc:
+  use GNU find and xargs in ebuild env, bug #374099
+
+  05 Jul 2011; Alexis Ballier <aballier@gentoo.org> packages:
+  let findutils be part of @system
+
+  05 Jul 2011; Alexis Ballier <aballier@gentoo.org> package.use.force:
+  force lzma on libarchive as its quite common these days
 
   07 Jun 2011; Naohiro Aota <naota@gentoo.org> packages:
   Add -*>=sys-apps/shadow-4.1
