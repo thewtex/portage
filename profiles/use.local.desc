@@ -1261,6 +1261,7 @@ dev-python/pygobject:introspection - Use dev-libs/gobject-introspection for intr
 dev-python/pygobject:libffi - Enable support to connect to signals on python objects from C.
 dev-python/pylons:genshi - Add optional genshi support
 dev-python/pylons:jinja - Add optional jinja support
+dev-python/pymongo:mod_wsgi - Disable the C extension to work with mod_wsgi.
 dev-python/pypy:jit - Enable the JIT compiler
 dev-python/pypy:sandbox - Enable sandboxing functionality
 dev-python/pypy:stackless - Run in stackless mode
@@ -4192,6 +4193,7 @@ sys-freebsd/boot0:tftp - Enable PXE/TFTP boot support.
 sys-freebsd/boot0:zfs - Enable booting on ZFS filesystems.
 sys-freebsd/freebsd-lib:hesiod - Enable support for net-dns/hesiod
 sys-freebsd/freebsd-lib:netware - Build libraries and tools to work with NetWare protocols (IPX and NCP).
+sys-freebsd/freebsd-rescue:netware - Build tools to work with NetWare protocols (IPX and NCP).
 sys-freebsd/freebsd-rescue:zfs - Enable ZFS support.
 sys-freebsd/freebsd-sbin:ipfilter - Build tools to administer the ipfilter firewall.
 sys-freebsd/freebsd-sbin:netware - Build libraries and tools to work with NetWare protocols (IPX and NCP).
@@ -4418,8 +4420,8 @@ www-client/elinks:mouse - Make elinks to grab all mouse events
 www-client/epiphany:introspection - Use dev-libs/gobject-introspection for introspection
 www-client/epiphany:nss - Import passwords from older gecko based www-client/epiphany keyring.
 www-client/firefox:custom-optimization - Fine-tune custom compiler optimizations, setting this is not recommended.
-www-client/firefox:gconf - Add support for setting of default browser using gnome-base/gconf. Useful only for GNOME 2 users.
 www-client/firefox:ipc - Use inter-process communication between tabs and plugins. Allows for greater stability in case of plugin crashes
+www-client/firefox:methodjit - Enable JIT for JavaScript using MethodJIT for faster JS performance. Hardened users can disable this USE-flag to use MPROTECT on grsecurity kernels.
 www-client/firefox:pgo - Add support for profile-guided optimization using gcc-4.5, for faster binaries. This option will double the compile time.
 www-client/firefox:system-sqlite - Use the system-wide dev-db/sqlite installation with secure-delete enabled
 www-client/firefox:webm - Use system media-libs/libvpx for HTML5 WebM video support.

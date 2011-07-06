@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12890 2011/07/05 16:03:43 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12894 2011/07/06 17:12:06 ssuominen Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -31,28 +31,40 @@
 
 #--- END OF EXAMPLES ---
 
-# Nirbheek Chauhan <nirbheek@gentoo.org> (3 Jul 2011)
+# Samuli Suominen <ssuominen@gentoo.org> (06 Jul 2011)
+# Fails to build with current mono wrt #340375
+# Needs a maintainer and a bump wrt #370049
+# The package was masked with different message for 6+ months
+# prior to this, so removal in about 7 days.
+www-plugins/moonlight
+
+# Andreas Proschofsky <suka@gentoo.org> (06 Jul 2011)
+# Mask Libreoffice 3.4.1 for some additional testing
+# as this changes the build system
+>=app-office/libreoffice-3.4.1
+
+# Nirbheek Chauhan <nirbheek@gentoo.org> (03 Jul 2011)
 # Mask js185 release, changes pkgconfig file, soname, etc
 >=dev-lang/spidermonkey-1.8.5
 
-# Markos Chandras <hwoarang@gentoo.org> (1 Jul 2011)
+# Markos Chandras <hwoarang@gentoo.org> (01 Jul 2011)
 # Does not build against gcc-4.5. Bug #319679
 # Masked for removal in 30 days
 app-crypt/steghide
 
-# Markos Chandras <hwoarang@gentoo.org> (1 Jul 2011)
+# Markos Chandras <hwoarang@gentoo.org> (01 Jul 2011)
 # Does not build against gcc-4.5. Bug #320337.
 # Masked for removal in 30 days
 app-emulation/pearpc
 
-# Markos Chandras <hwoarang@gentoo.org> (1 Jul 2011)
+# Markos Chandras <hwoarang@gentoo.org> (01 Jul 2011)
 # Does not respect LDFLAGS (bug #333505). 
 # The core functionality has been replaced by 
 # app-emulation/qemu
 # Masked for removal in 30 days
 app-emulation/gdb-armulator
 
-# Markos Chandras <hwoarang@gentoo.org> (1 Jul 2011)
+# Markos Chandras <hwoarang@gentoo.org> (01 Jul 2011)
 # The whole suite seems abandoned. 
 # QA and compilation problems ( bug #236286 ).
 # Has been replaced by sys-apps/pcmciautils
@@ -64,12 +76,12 @@ sys-apps/pcmcia-cs-pnptools
 =virtual/pcmcia-2.4
 =virtual/pcmcia-2.6
 
-# Markos Chandras <hwoarang@gentoo.org> (1 Jul 2011)
+# Markos Chandras <hwoarang@gentoo.org> (01 Jul 2011)
 # Does not build against gcc-4.5. Bug #323061
 # Masked for removal in 30 days
 net-libs/clinkcc
 
-# Markos Chandras <hwoarang@gentoo.org> (1 Jul 2011)
+# Markos Chandras <hwoarang@gentoo.org> (01 Jul 2011)
 # Dead upstream, no updates since 2002. Does not build
 # against glibc-2.14 ( bug #371157 ). Masked for removal
 # in 30 days
@@ -101,11 +113,6 @@ app-editors/scribes
 # Only avalable version isn't in the tree.
 # Mask until it is bumped
 sci-chemistry/webmo
-
-# Alexis Ballier <aballier@gentoo.org> (26 Jun 2011)
-# Mask release candidate of ocaml
->=dev-lang/ocaml-3.12.1_rc
->=dev-ml/ocamlduce-3.12.0.0-r10
 
 # Hans de Graaff <graaff@gentoo.org> (25 Jun 2011)
 # Mask for testing, still incomplete and too central to
@@ -359,12 +366,6 @@ app-crypt/scsign
 # Will be unmasked once we're sure it works well with everything
 >=x11-misc/notification-daemon-0.7
 
-# Kacper Kowalik <xarthisius@gentoo.org> (29 Apr 2011)
-# Fails to build with gcc 4.5. It doesn't work with latest cgal
-# Bugs 320543, 344723
-# Removal in 30 days
-dev-python/cgal-python
-
 # Ryan Hill <dirtyepic@gentoo.org> (23 Apr 2011)
 # Masked for removal on 20110523.
 app-text/gnochm
@@ -541,12 +542,6 @@ app-pda/multisync-gui
 # MATSUU Takuto <matsuu@gentoo.org> (30 Jan 2011)
 # mask for security bug #352569
 >=net-dns/maradns-2
-
-# Pacho Ramos <pacho@gentoo.org> (26 Jan 2011)
-# Doesn't work with mono-2.8, upstream tarballs for 2.99.x
-# are incomplete, if you want to help on bumping, please
-# refer to bug #340375
-www-plugins/moonlight
 
 # Doug Goldstein <cardoe@gentoo.org> (24 Jan 2011)
 # Masked beta versions
