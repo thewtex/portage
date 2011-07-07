@@ -636,6 +636,7 @@ app-office/kspread:solver - Use solver extension for solving lingebra and others
 app-office/kword:wpd - Build wordperfect document support.
 app-office/libreoffice:binfilter - Enable support for legacy StarOffice 5.x and earlier file formats
 app-office/libreoffice:odk - Build the Office Development Kit
+app-office/libreoffice:offlinehelp - Install help files locally instead of using the LibreOffice Wiki
 app-office/libreoffice:templates - Enable installation of Sun templates
 app-office/libreoffice-bin:offlinehelp - Download and install help files locally instead of using the LibreOffice Wiki
 app-office/lyx:aspell - Add support for aspell spellchecking
@@ -1234,6 +1235,7 @@ dev-python/PyQt4:sql - Build the QtSql module
 dev-python/PyQt4:svg - Build the QtSvg module
 dev-python/PyQt4:webkit - Build the QtWebKit module
 dev-python/PyQt4:xmlpatterns - Build the QtXmlPatterns module
+dev-python/amqplib:extras - Install extra tools to generate initial Python mod from an AMQP XML file
 dev-python/anyvc:bazaar - Add support for Bazaar
 dev-python/anyvc:git - Add support for Git
 dev-python/anyvc:mercurial - Add support for Mercurial
@@ -3865,8 +3867,6 @@ sci-libs/vtk:boost - Add support for boost
 sci-libs/vtk:cg - Use nvidia's cg shaders
 sci-libs/vtk:patented - Build patented classes
 sci-mathematics/Macaulay2:optimization - Accept upstream's choices for -O option, i.e. -O3 almost everywhere.
-sci-mathematics/coq:norealanalysis - Do not build real analysis modules (faster compilation)
-sci-mathematics/coq:realanalysis - Build real analysis modules (slower compilation)
 sci-mathematics/dataplot:gs - Add Ghostscript support (app-text/ghostscript-gpl)
 sci-mathematics/freemat:arpack - Add sparse eigen value support via sci-libs/arpack
 sci-mathematics/freemat:ffcall - Enable use of dev-libs/ffcall
@@ -4426,8 +4426,8 @@ www-client/firefox:pgo - Add support for profile-guided optimization using gcc-4
 www-client/firefox:system-sqlite - Use the system-wide dev-db/sqlite installation with secure-delete enabled
 www-client/firefox:webm - Use system media-libs/libvpx for HTML5 WebM video support.
 www-client/icecat:custom-optimization - Fine-tune custom compiler optimizations
-www-client/icecat:gconf - Add support for setting of default browser using gnome-base/gconf. Useful only for GNOME 2 users.
 www-client/icecat:ipc - Use inter-process communication between tabs and plugins. Allows for greater stability in case of plugin crashes
+www-client/icecat:methodjit - Enable JIT for JavaScript using MethodJIT for faster JS performance. Hardened users can disable this USE-flag to use MPROTECT on grsecurity kernels.
 www-client/icecat:pgo - Add support for profile-guided optimization using gcc-4.5, for faster binaries. This option will double the compile time.
 www-client/icecat:system-sqlite - Use the system-wide dev-db/sqlite installation with secure-delete enabled
 www-client/icecat:webm - Use system libvpx media-libs/libvpx
