@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ml/ocamlduce/ocamlduce-3.12.0.0-r20.ebuild,v 1.1 2011/07/06 16:32:39 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ml/ocamlduce/ocamlduce-3.12.1.0.ebuild,v 1.1 2011/07/07 20:34:43 aballier Exp $
 
 EAPI="2"
 
@@ -13,7 +13,7 @@ OCAML_GENTOO_PATCHES=ocaml-patches-${OCAML_PATCHLEVEL}.tar.bz2
 
 DESCRIPTION="OCamlDuce is a merger between OCaml and CDuce"
 HOMEPAGE="http://ocamlduce.forge.ocamlcore.org/"
-SRC_URI="https://forge.ocamlcore.org/frs/download.php/441/${P}.tar.gz
+SRC_URI="https://forge.ocamlcore.org/frs/download.php/644/${P}.tar.gz
 	ftp://ftp.inria.fr/INRIA/cristal/ocaml/ocaml-$(get_version_component_range 1-2 ${OCAML_VERSION})/${OCAML_TARBALL}
 	mirror://gentoo/${OCAML_GENTOO_PATCHES}"
 
@@ -36,7 +36,6 @@ src_unpack() {
 
 src_prepare() {
 	cd "${WORKDIR}/${P}"
-	epatch "${FILESDIR}/ocaml-${OCAML_VERSION}.patch"
 	emake OCAML_SOURCE="${DISTDIR}/${OCAML_TARBALL}" prepare || die "failed to prepare"
 	cd "${S}"
 	EPATCH_SUFFIX="patch" epatch "${WORKDIR}/patches"
