@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/seamonkey/seamonkey-2.1.ebuild,v 1.3 2011/07/05 19:29:56 polynomial-c Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/seamonkey/seamonkey-2.1.ebuild,v 1.4 2011/07/08 16:37:14 polynomial-c Exp $
 
 EAPI="3"
 WANT_AUTOCONF="2.1"
@@ -26,7 +26,7 @@ if [[ ${PV} == *_pre* ]] ; then
 
 	REL_URI="ftp://ftp.mozilla.org/pub/mozilla.org/${PN}/nightly/${MY_PV}-candidates/build${PV##*_pre}"
 	#KEYWORDS=""
-	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86"
 	#HAS_LANGS="false"
 else
 	# This is where arch teams should change the KEYWORDS.
@@ -81,7 +81,7 @@ RDEPEND=">=sys-devel/binutils-2.16.1
 DEPEND="${RDEPEND}
 	dev-util/pkgconfig
 	webm? ( amd64? ( ${ASM_DEPEND} )
-		x86?  ( ${ASM_DEPEND} ) )"
+		x86? ( ${ASM_DEPEND} ) )"
 
 S="${WORKDIR}/comm-2.0"
 
@@ -224,7 +224,6 @@ src_configure() {
 }
 
 src_compile() {
-	# Should the build use multiprocessing? Not enabled by default, as it tends to break.
 	emake || die
 
 	# Only build enigmail extension if conditions are met.

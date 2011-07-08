@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/libwpd/libwpd-0.9.1.ebuild,v 1.6 2011/07/02 11:24:14 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/libwpd/libwpd-0.9.1.ebuild,v 1.7 2011/07/08 11:16:52 pacho Exp $
 
 EAPI="4"
 
@@ -44,6 +44,7 @@ src_configure() {
 	econf \
 		$(use_with doc docs) \
 		$(use_with tools stream) \
+		--docdir=/usr/share/doc/${PF} \
 		--program-suffix=-${SLOT}
 }
 
