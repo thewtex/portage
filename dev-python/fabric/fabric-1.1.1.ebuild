@@ -1,12 +1,12 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/fabric/fabric-0.9.6.ebuild,v 1.1 2011/05/06 22:19:04 arfrever Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/fabric/fabric-1.1.1.ebuild,v 1.1 2011/07/08 21:37:47 neurogeek Exp $
 
 EAPI="3"
 PYTHON_DEPEND="2:2.5"
 SUPPORT_PYTHON_ABIS="1"
 RESTRICT_PYTHON_ABIS="2.4 3.* *-jython"
-DISTUTILS_SRC_TEST="nosetests"
+DISTUTILS_SRC_TEST="setup.py"
 
 inherit distutils
 
@@ -24,18 +24,9 @@ IUSE=""
 
 RDEPEND=">=dev-python/paramiko-1.7.6"
 DEPEND="${RDEPEND}
-	dev-python/setuptools
-	test? ( dev-python/fudge )"
+	dev-python/setuptools"
+
+# Tests broken.
+RESTRICT="test"
 
 S="${WORKDIR}/${MY_P}"
-
-src_prepare() {
-	distutils_src_prepare
-
-	# PyCrypto is a dependency of paramiko, not Fabric.
-	sed -e "/install_requires=/s/'pycrypto >= 1.9', //" -i setup.py
-}
-
-src_test() {
-	distutils_src_test --with-doctest
-}
