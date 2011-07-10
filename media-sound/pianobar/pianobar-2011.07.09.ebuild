@@ -1,14 +1,14 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/pianobar/pianobar-2011.04.27.ebuild,v 1.2 2011/05/07 01:12:19 radhermit Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/pianobar/pianobar-2011.07.09.ebuild,v 1.3 2011/07/10 09:16:29 radhermit Exp $
 
 EAPI=4
 
 inherit toolchain-funcs flag-o-matic eutils
 
 DESCRIPTION="A console-based replacement for Pandora's flash player"
-HOMEPAGE="http://6xq.net/html/00/17.html"
-SRC_URI="http://6xq.net/media/00/16/${P}.tar.bz2"
+HOMEPAGE="http://6xq.net/projects/pianobar/"
+SRC_URI="http://6xq.net/static/projects/${PN}/${P}.tar.bz2"
 
 LICENSE="as-is"
 SLOT="0"
@@ -23,7 +23,7 @@ RDEPEND="${DEPEND}"
 REQUIRED_USE="|| ( mp3 aac )"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-linking.patch
+	epatch "${FILESDIR}"/${P}-tests.patch
 }
 
 src_compile() {
@@ -32,7 +32,13 @@ src_compile() {
 	! use mp3 && myconf+=" DISABLE_MAD=1"
 
 	append-cflags -std=c99
-	emake CC=$(tc-getCC) CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" ${myconf}
+	tc-export CC
+	emake ${myconf}
+}
+
+src_test() {
+	cp src/libwaitress/waitress.c src/libwaitress/waitress-test.c
+	emake test
 }
 
 src_install() {
