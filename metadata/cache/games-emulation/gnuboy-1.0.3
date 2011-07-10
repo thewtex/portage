@@ -1,9 +1,9 @@
 sdl? ( media-libs/libsdl ) !X? ( !svga? ( !fbcon? ( media-libs/libsdl ) ) ) X? ( x11-libs/libXext ) fbcon? ( sys-apps/fbset ) svga? ( media-libs/svgalib ) X? ( x11-proto/xextproto x11-proto/xproto ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b
 sdl? ( media-libs/libsdl ) !X? ( !svga? ( !fbcon? ( media-libs/libsdl ) ) ) X? ( x11-libs/libXext ) fbcon? ( sys-apps/fbset )
 0
-http://gnuboy.unix-fu.org/src/gnuboy-1.0.3.tar.gz
+mirror://gentoo/gnuboy-1.0.3.tar.gz
 
-http://gnuboy.unix-fu.org/
+http://code.google.com/p/gnuboy/
 GPL-2
 Gameboy emulator with multiple renderers
 amd64 ppc x86
@@ -12,9 +12,9 @@ X fbcon sdl svga
 
 
 
+2
 
-
-compile install postinst preinst setup unpack
+compile configure install postinst preinst prepare setup unpack
 
 
 

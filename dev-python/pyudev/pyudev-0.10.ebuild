@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pyudev/pyudev-0.10.ebuild,v 1.1 2011/04/20 16:08:08 arfrever Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pyudev/pyudev-0.10.ebuild,v 1.2 2011/07/10 01:51:58 sbriesen Exp $
 
 EAPI="3"
 PYTHON_DEPEND="*:2.6"
@@ -32,16 +32,25 @@ DOCS="CHANGES.rst README.rst"
 src_prepare() {
 	distutils_src_prepare
 
+	# fix run_path
+	sed -i -e "s|/run/udev|/dev/.udev|g" tests/test_core.py
+
 	if ! use pygobject; then
 		rm -f pyudev/glib.py
+		sed -i -e "s|[, ]*GlibBinding()||g" tests/test_observer.py
 	fi
 	if ! use pyqt4; then
 		rm -f pyudev/pyqt4.py
+		sed -i -e "s|Qt4Binding('PyQt4')[, ]*||g" tests/test_observer.py
 	fi
 	if ! use pyside; then
 		rm -f pyudev/pyside.py
+		sed -i -e "s|Qt4Binding('PySide')[, ]*||g" tests/test_observer.py
 	fi
 	if ! use pyqt4 && ! use pyside; then
 		rm -f pyudev/_qt_base.py
+	fi
+	if ! use pyqt4 && ! use pyside && ! use pygobject; then
+		rm -f tests/test_observer.py
 	fi
 }

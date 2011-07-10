@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/google2srt/google2srt-0.5.2.ebuild,v 1.1 2010/08/02 23:43:59 sbriesen Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/google2srt/google2srt-0.5.2.ebuild,v 1.2 2011/07/10 02:18:34 sbriesen Exp $
 
 EAPI="2"
 
@@ -14,7 +14,8 @@ MAINCLASS="GUI"
 
 DESCRIPTION="Convert subtitles from Google Video and YouTube to SubRip (.srt) format"
 HOMEPAGE="http://google2srt.sourceforge.net/en/"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.zip"
+SRC_URI="mirror://sourceforge/${PN}/${MY_P}.zip
+	http://sbriesen.de/gentoo/distfiles/google2srt-icon.png"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -53,7 +54,7 @@ src_compile() {
 src_install() {
 	java-pkg_dojar dist/${MY_PN}.jar
 	java-pkg_dolauncher ${MY_PN} --main ${MAINCLASS} --java_args -Xmx256m
-	newicon "${FILESDIR}/icon.png" "${MY_PN}.png"
+	newicon "${DISTDIR}/${PN}-icon.png" "${MY_PN}.png"
 	make_desktop_entry ${MY_PN} ${MY_PN} ${MY_PN}
 	use doc && java-pkg_dojavadoc apidocs
 	use source && java-pkg_dosrc src
