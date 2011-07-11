@@ -22,7 +22,6 @@ DEPEND="
 RDEPEND="${DEPEND}
 	!!<dev-lang/perl-5.8.8-r7"
 PDEPEND="
-	>=virtual/perl-CPAN-Meta-2.110.930
 	>=virtual/perl-Parse-CPAN-Meta-1.440.100
 "
 
