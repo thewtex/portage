@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-process/cronie/cronie-1.4.6.ebuild,v 1.1 2010/11/08 13:21:51 bangert Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-process/cronie/cronie-1.4.6.ebuild,v 1.3 2011/07/10 19:53:23 polynomial-c Exp $
 
 EAPI="3"
 
@@ -20,6 +20,10 @@ RDEPEND="${DEPEND}"
 #cronie supports /etc/crontab
 CRON_SYSTEM_CRONTAB="yes"
 
+pkg_setup() {
+	enewgroup crontab
+}
+
 src_configure() {
 	SPOOL_DIR="/var/spool/cron/crontabs" econf \
 		$(use_with inotify ) \
@@ -32,9 +36,9 @@ src_configure() {
 src_install() {
 	emake install DESTDIR="${D}" || die "install failed"
 
-	docrondir
-	fowners root:cron /usr/bin/crontab
-	fperms 2750 /usr/bin/crontab
+	docrondir -m 1730 -o root -g crontab
+	fowners root:crontab /usr/bin/crontab
+	fperms 2751 /usr/bin/crontab
 
 	insinto /etc
 	newins "${FILESDIR}/${PN}-1.2-crontab" crontab

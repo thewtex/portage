@@ -1,4 +1,4 @@
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/mips/use.mask,v 1.39 2011/06/28 19:23:05 mattst88 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/mips/use.mask,v 1.42 2011/07/11 04:33:15 mattst88 Exp $
 
 # Unmask the flag which corresponds to ARCH.
 -mips
@@ -362,13 +362,17 @@ ocaml
 # We don't have sys-devel/llvm
 llvm
 
-# Mart Raudsepp <leio@gentoo.org> (7 Apr 2011)
-# Mask policykit for now, to get other keywording going first
-policykit
-
 # Matt Turner <mattst88@gentoo.org (14 Jun 2011)
 # pdfannotextractor needs java
 pdfannotextractor
+
+# Matt Turner <mattst88@gentoo.org) (11 Jul 2011)
+# xemacs dependencies not keyworded
+xemacs
+
+# Matt Turner <mattst88@gentoo.org) (11 Jul 2011)
+# no native mips/linux code generation, see bug 319649
+ocamlopt
 
 # Mips USE flags
 -n32
