@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/bitescript/bitescript-0.0.7.ebuild,v 1.1 2010/12/28 09:44:20 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/bitescript/bitescript-0.0.9.ebuild,v 1.1 2011/07/11 18:08:53 graaff Exp $
 
 EAPI=2
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-freebsd/freebsd-lib/freebsd-lib-8.2-r1.ebuild,v 1.2 2011/07/10 17:49:25 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-freebsd/freebsd-lib/freebsd-lib-8.2-r1.ebuild,v 1.4 2011/07/11 21:27:30 aballier Exp $
 
 EAPI=2
 
@@ -223,7 +223,7 @@ src_compile() {
 		append-ldflags "-B ${csudir}"
 
 		# First compile libssp_nonshared.a and add it's path to LDFLAGS.
-		cd "${WORKDIR}/gnu/lib/libssp/" || die "missing libssp."
+		cd "${WORKDIR}/gnu/lib/libssp/libssp_nonshared/" || die "missing libssp."
 		$(freebsd_get_bmake) ${mymakeopts} || die "make libssp failed"
 		append-ldflags "-L${WORKDIR}/gnu/lib/libssp/libssp_nonshared/"
 
@@ -231,7 +231,13 @@ src_compile() {
 		cd "${S}/libc"
 		$(freebsd_get_bmake) ${mymakeopts} || die "make libc failed"
 		cd "${S}/msun"
+		append-ldflags "-L${WORKDIR}/lib/libc"
+		export RAW_LDFLAGS=$(raw-ldflags)
 		LDADD="-lssp_nonshared" $(freebsd_get_bmake) ${mymakeopts} || die "make libc failed"
+		cd "${WORKDIR}/gnu/lib/libssp/" || die "missing libssp."
+		$(freebsd_get_bmake) ${mymakeopts} || die "make libssp failed"
+		cd "${WORKDIR}/lib/libthr/" || die "missing libthr"
+		$(freebsd_get_bmake) ${mymakeopts} || die "make libthr failed"
 	else
 		# Forces to use the local copy of headers as they might be outdated in
 		# the system
@@ -293,6 +299,11 @@ src_install() {
 			INCLUDEDIR="/usr/${CTARGET}/usr/include" \
 			SHLIBDIR="/usr/${CTARGET}/lib" LIBDIR="/usr/${CTARGET}/usr/lib" || die "Install ssp failed"
 
+		cd "${WORKDIR}/lib/libthr/"
+		$(freebsd_get_bmake) ${mymakeopts} DESTDIR="${D}" install NO_MAN= \
+			INCLUDEDIR="/usr/${CTARGET}/usr/include" \
+			SHLIBDIR="/usr/${CTARGET}/lib" LIBDIR="/usr/${CTARGET}/usr/lib" || die "Install libthr failed"
+
 		dosym "usr/include" "/usr/${CTARGET}/sys-include"
 	else
 		# Set SHLIBDIR and LIBDIR for multilib
@@ -310,13 +321,8 @@ src_install() {
 		return 0
 	fi
 
-	# Add symlinks (-> libthr) for legacy threading libraries, since these are
-	# not built by us (they are disabled in FreeBSD-7 anyway).
-	dosym libthr.a /usr/${mylibdir}/libpthread.a
-	dosym libthr.so /usr/${mylibdir}/libpthread.so
-	dosym libthr.a /usr/${mylibdir}/libc_r.a
-	dosym libthr.so /usr/${mylibdir}/libc_r.so
-	# Symlink libbsdxml to libexpat
+	# Symlink libbsdxml to libexpat as we use expat in favor of the renaming done
+	# on FreeBSD.
 	dosym libexpat.so /usr/${mylibdir}/libbsdxml.so
 
 	# install libstand files
