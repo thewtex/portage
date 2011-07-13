@@ -1,0 +1,22 @@
+!sci-chemistry/icm-browser app-arch/unzip amd64? ( 64bit? ( media-libs/tiff-compat:3 media-libs/libmng app-crypt/mit-krb5 app-arch/bzip2 media-libs/libpng:1.2 media-libs/jpeg:62 x11-libs/libdrm x11-libs/libX11 sys-apps/keyutils ) 32bit? ( app-emulation/emul-linux-x86-compat app-emulation/emul-linux-x86-xlibs ) ) x86? ( media-libs/tiff-compat:3 media-libs/libpng:1.2 media-libs/libmng app-crypt/mit-krb5 app-arch/bzip2 x11-libs/libdrm x11-libs/libX11 sys-apps/keyutils )
+!sci-chemistry/icm-browser app-arch/unzip amd64? ( 64bit? ( media-libs/tiff-compat:3 media-libs/libmng app-crypt/mit-krb5 app-arch/bzip2 media-libs/libpng:1.2 media-libs/jpeg:62 x11-libs/libdrm x11-libs/libX11 sys-apps/keyutils ) 32bit? ( app-emulation/emul-linux-x86-compat app-emulation/emul-linux-x86-xlibs ) ) x86? ( media-libs/tiff-compat:3 media-libs/libpng:1.2 media-libs/libmng app-crypt/mit-krb5 app-arch/bzip2 x11-libs/libdrm x11-libs/libX11 sys-apps/keyutils )
+0
+icm-3.7-2b-linux.sh
+fetch
+http://www.molsoft.com/icm_pro.html
+MolSoft
+MolSoft LCC ICM Pro
+~amd64 ~x86
+eutils multilib portability toolchain-funcs versionator
+32bit 64bit
+^^ ( ( !32bit 64bit ) ( 32bit !64bit ) ( 32bit 64bit ) )
+
+
+4
+
+install nofetch postinst unpack
+
+
+
+
+

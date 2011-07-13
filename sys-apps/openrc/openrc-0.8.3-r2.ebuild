@@ -30,7 +30,7 @@ GITHUB_REPO="${PN}"
 GITHUB_USER="funtoo"
 GITHUB_TAG="funtoo-openrc-0.8.3"
 
-NETV="1.1"
+NETV="1.1-r1"
 GITHUB_REPO_CN="corenetwork"
 GITHUB_TAG_CN="$NETV"
 

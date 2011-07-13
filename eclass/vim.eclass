@@ -1,9 +1,9 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/vim.eclass,v 1.196 2011/03/28 06:47:45 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/vim.eclass,v 1.198 2011/07/13 04:22:33 lack Exp $
 
 # Authors:
-# 	Jim Ramsay <i.am@gentoo.org>
+# 	Jim Ramsay <lack@gentoo.org>
 # 	Ryan Phillips <rphillips@gentoo.org>
 # 	Seemant Kulleen <seemant@gentoo.org>
 # 	Aron Griffis <agriffis@gentoo.org>
@@ -262,7 +262,12 @@ vim_src_prepare() {
 		cvs_src_unpack
 	else
 		# Apply any patches available from vim.org for this version
-		[[ -n "$VIM_ORG_PATCHES" ]] && apply_vim_patches
+		if [[ $VIM_ORG_PATCHES == *.patch.bz2 ]]; then
+			einfo "Applying monolithic patch ${VIM_ORG_PATCHES}"
+			epatch "${WORKDIR}/${VIM_ORG_PATCHES%.bz2}"
+		else
+			apply_vim_patches
+		fi
 
 		# Unpack the runtime snapshot if available (only for vim-core)
 		if [[ -n "$VIM_RUNTIME_SNAP" ]] ; then
@@ -273,8 +278,7 @@ vim_src_prepare() {
 			# some reason on freebsd.
 			#  --spb, 2004/12/18
 			tar xjf "${DISTDIR}"/${VIM_RUNTIME_SNAP}
-			assert  # this will check both parts of the pipeline; eend would not
-			eend 0
+			eend $?
 		fi
 	fi
 
@@ -574,7 +578,7 @@ vim_src_install() {
 		# These files might have slight security issues, so we won't
 		# install them. See bug #77841. We don't mind if these don't
 		# exist.
-		rm "${ED}${vimfiles}"/tools/{vimspell.sh,tcltags}
+		rm "${ED}${vimfiles}"/tools/{vimspell.sh,tcltags} 2>/dev/null
 
 	elif [[ ${MY_PN} == gvim ]] ; then
 		dobin src/gvim
