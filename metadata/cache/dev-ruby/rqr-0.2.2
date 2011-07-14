@@ -1,0 +1,22 @@
+ruby_targets_ruby18? ( doc? ( virtual/ruby-rdoc[ruby_targets_ruby18] ) test? ( virtual/ruby-test-unit[ruby_targets_ruby18] ) ) ruby_targets_ree18? ( doc? ( virtual/ruby-rdoc[ruby_targets_ree18] ) test? ( virtual/ruby-test-unit[ruby_targets_ree18] ) ) jpeg? ( virtual/jpeg ) png? ( media-libs/libpng ) tiff? ( media-libs/tiff ) ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ree18? ( dev-lang/ruby-enterprise:1.8 ) ruby_targets_ruby18? ( dev-ruby/rubygems[ruby_targets_ruby18] ) ruby_targets_ree18? ( dev-ruby/rubygems[ruby_targets_ree18] ) test? ( ruby_targets_ruby18? ( dev-ruby/rubygems[ruby_targets_ruby18] ) ruby_targets_ree18? ( dev-ruby/rubygems[ruby_targets_ree18] ) )
+jpeg? ( virtual/jpeg ) png? ( media-libs/libpng ) tiff? ( media-libs/tiff ) ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ree18? ( dev-lang/ruby-enterprise:1.8 ) ruby_targets_ruby18? ( dev-ruby/rubygems[ruby_targets_ruby18] ) ruby_targets_ree18? ( dev-ruby/rubygems[ruby_targets_ree18] )
+0
+mirror://rubygems/rqr-0.2.2.gem
+
+http://rqr.rubyforge.org/
+MIT
+A ruby library to create qrcode
+~amd64
+eutils flag-o-matic multilib portability ruby-fakegem ruby-ng toolchain-funcs
+doc test +jpeg +png +tiff ruby_targets_ruby18 ruby_targets_ree18 doc test
+test? ( jpeg png tiff )
+
+
+4
+
+compile configure install prepare setup test unpack
+
+
+
+
+
