@@ -1,21 +1,18 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-plugins/adobe-flash/adobe-flash-10.2.159.1_p201011173.ebuild,v 1.1 2011/04/17 04:44:49 lack Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-plugins/adobe-flash/adobe-flash-11.0.1.60_beta201107131.ebuild,v 1.1 2011/07/14 23:54:56 lack Exp $
 
-EAPI=3
-inherit rpm nsplugins multilib toolchain-funcs versionator
-
-# Note: There is no "square" for 32-bit!  Just use the current 32-bit release:
-PV_REL=$(get_version_component_range 1-4)
-MY_32B_URI="http://fpdownload.macromedia.com/get/flashplayer/current/flash-plugin-${PV_REL}-release.i386.rpm"
+EAPI=4
+inherit nsplugins multilib toolchain-funcs versionator
 
 # Specal version parsing for date-based 'square' releases
 # For proper date ordering in the ebuild we are using CCYYMMDD,  whereas Adobe
 # uses MMDDYY in their filename.  Plus we tack on the release number, too.
 EBUILD_DATE=$(get_version_component_range $(get_version_component_count))
-DATE_SUFFIX=${EBUILD_DATE: -5:4}${EBUILD_DATE:3:2}
+DATE_SUFFIX=${EBUILD_DATE: -5:4}${EBUILD_DATE:6:2}
 REL_SUFFIX=${EBUILD_DATE: -1}
-MY_64B_URI="http://download.macromedia.com/pub/labs/flashplayer10/flashplayer10_2_p${REL_SUFFIX}_64bit_linux_${DATE_SUFFIX}.tar.gz"
+MY_64B_URI="http://download.macromedia.com/pub/labs/flashplatformruntimes/flashplayer11/flashplayer11_b${REL_SUFFIX}_install_lin_64_${DATE_SUFFIX}.tar.gz"
+MY_32B_URI="http://download.macromedia.com/pub/labs/flashplatformruntimes/flashplayer11/flashplayer11_b${REL_SUFFIX}_install_lin_32_${DATE_SUFFIX}.tar.gz"
 
 DESCRIPTION="Adobe Flash Player"
 SRC_URI="x86? ( ${MY_32B_URI} )
@@ -27,8 +24,8 @@ amd64? (
 	!multilib? ( ${MY_64B_URI} )
 )"
 #HOMEPAGE="http://www.adobe.com/"
-HOMEPAGE="http://labs.adobe.com/technologies/flashplayer10/"
-IUSE="multilib +32bit +64bit vdpau bindist"
+HOMEPAGE="http://labs.adobe.com/downloads/flashplayer11.html"
+IUSE="multilib +32bit +64bit vdpau bindist kde"
 SLOT="0"
 
 KEYWORDS="-* ~amd64 ~x86"
@@ -41,7 +38,8 @@ NATIVE_DEPS="x11-libs/gtk+:2
 	media-libs/fontconfig
 	dev-libs/nss
 	net-misc/curl
-	32bit? ( vdpau? ( x11-libs/libvdpau ) )
+	vdpau? ( x11-libs/libvdpau )
+	kde? ( kde-base/kcmshell )
 	>=sys-libs/glibc-2.4"
 
 EMUL_DEPS="vdpau? ( >=app-emulation/emul-linux-x86-xlibs-20110129 )
@@ -65,11 +63,8 @@ INSTALL_BASE="opt/Adobe/flash-player"
 
 # Ignore QA warnings in these binary closed-source libraries, since we can't fix
 # them:
-QA_EXECSTACK="${INSTALL_BASE}32/libflashplayer.so
-	${INSTALL_BASE}/libflashplayer.so"
-
-QA_DT_HASH="${INSTALL_BASE}32/libflashplayer.so
-	${INSTALL_BASE}/libflashplayer.so"
+QA_TEXTRELS="${INSTALL_BASE}/plugin/libflashplayer.so
+	${INSTALL_BASE}32/libflashplayer.so"
 
 pkg_setup() {
 	einfo "Date is $EBUILD_DATE suffix is $DATE_SUFFIX"
@@ -101,16 +96,23 @@ pkg_setup() {
 			if grep '^flags' /proc/cpuinfo | grep -qv 'lahf_lm'; then
 				export need_lahf_wrapper=1
 			fi
-
-			if use vdpau; then
-				ewarn "You have tried to enable VDPAU acceleration, but this is only"
-				ewarn "available for the 32-bit flash plugin at this time."
-				ewarn "Continuing with an unaccelerated 64-bit plugin."
-				if [[ $amd64_32bit ]]; then
-					ewarn "The 32-bit plugin will be accelerated."
-				fi
-			fi
 		fi
+	fi
+}
+
+src_unpack() {
+	if [[ $amd64_32bit ]]; then
+		# Since the 32-bit and 64-bit tarballs collide, put the 32-bit one
+		# elsewhere:
+		local my_32b_src=${MY_32B_URI##*/}
+		local my_64b_src=${MY_64B_URI##*/}
+		unpack $my_64b_src
+		mkdir 32bit
+		pushd 32bit >/dev/null
+		unpack $my_32b_src
+		popd >/dev/null
+	else
+		default_src_unpack
 	fi
 }
 
@@ -122,29 +124,39 @@ src_compile() {
 			"${FILESDIR}/flashplugin-lahf-fix.c" \
 			|| die "Compile of flashplugin-lahf-fix.so failed"
 	fi
-	if use amd64 && ! use bindist && [[ $native_install ]]; then
-		# Bug #354073: Patch binary to use memmove instead of memcpy from
-		# Redhat's bug https://bugzilla.redhat.com/show_bug.cgi?id=638477#c94
-		cp libflashplayer.so libflashplayer.so.orig
-		bash "${FILESDIR}/memcpy-to-memmove.sh" libflashplayer.so \
-			|| die "memcpy-to-memmove.sh failed"
-	fi
-	# TODO: Apparently changing memcpy to memmove helps the 32-bit plugin too...
 }
 
 src_install() {
 	if [[ $native_install ]]; then
-		# 32b RPM has things hidden in funny places
-		use x86 && pushd "${S}/usr/lib/flash-plugin"
+		BASE=${INSTALL_BASE}
 
-		exeinto /${INSTALL_BASE}
+		# The plugin itself
+		exeinto /${BASE}/plugin
 		doexe libflashplayer.so
-		inst_plugin /${INSTALL_BASE}/libflashplayer.so
+		inst_plugin /${BASE}/plugin/libflashplayer.so
 
-		use x86 && popd
+		# The optional KDE4 KCM plugin
+		if use kde; then
+			exeinto /usr/$(get_libdir)/kde4/
+			doexe usr/$(get_libdir)/kde4/kcm_adobe_flash_player.so
+			insinto /usr/share/kde4/services
+			doins usr/share/kde4/services/kcm_adobe_flash_player.desktop
+		else
+			# No KDE applet, so allow the GTK utility to show up in KDE:
+			sed -i usr/share/applications/flash-player-properties.desktop \
+				-e "/^NotShowIn=KDE;/d" || die "sed of .desktop file failed"
+		fi
 
-		# 64b tarball has no readme file.
-		use x86 && dodoc "${S}/usr/share/doc/flash-plugin-${PV_REL}/readme.txt"
+		# The userland 'properties' standalone app:
+		exeinto /${BASE}/bin
+		doexe usr/bin/flash-player-properties
+		for icon in $(find usr/share/icons/ -name '*.png'); do
+			insinto /$(dirname $icon)
+			doins $icon
+		done
+		insinto usr/share/applications
+		sed -i usr/share/applications/flash-player-properties.desktop \
+			-e "s:^Exec=:Exec=/${BASE}/bin/:" || die "sed of .desktop file failed"
 	fi
 
 	if [[ $need_lahf_wrapper ]]; then
@@ -156,11 +168,12 @@ src_install() {
 	fi
 
 	if [[ $amd64_32bit ]]; then
+		# Only install the plugin, nothing else for 32-bit.
 		local oldabi="${ABI}"
 		ABI="x86"
 
 		# 32b plugin
-		pushd "${S}/usr/lib/flash-plugin"
+		pushd "${S}/32bit"
 			exeinto /${INSTALL_BASE}32
 			doexe libflashplayer.so
 			inst_plugin /${INSTALL_BASE}32/libflashplayer.so

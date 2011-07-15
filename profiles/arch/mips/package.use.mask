@@ -1,14 +1,10 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/mips/package.use.mask,v 1.37 2011/07/08 20:55:31 mattst88 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/mips/package.use.mask,v 1.40 2011/07/14 18:04:51 mattst88 Exp $
 
 # Kacper Kowalik <xarthisius@gentoo.org> (20 May 2011)
 # depends on dev-libs/dmalloc which is not keyworded
 net-nds/ypbind debug
-
-# Jim Ramsay <lack@gentoo.org> (5 Nov 2008)
-# app-admin/gkrellm may pull in net-libs/libntlm, which is not keyworded
-app-admin/gkrellm ntlm
 
 # Peter Alfredsen <loki_val@gentoo.org> (20 Jun 2008)
 # cppunit is not keyworded, needed by test. Bug 228559.
@@ -21,12 +17,6 @@ dev-ruby/rubygems server
 # Wolfram Schlich <wschlich@gentoo.org> (20 Nov 2007)
 # dependency can't be fulfilled at the moment
 net-im/mcabber otr
-
-# Chris Gianelloni <cgianelloni@gentoo.org> (22 Sep 2007)
-# dependency can't be fulfilled at the moment
-kde-base/kdelibs kerberos
-dev-vcs/cvs kerberos
-net-mail/fetchmail kerberos
 
 # Jim Ramsay <lack@gentoo.org> (7 Sep 2007)
 # app-admin/gkrellm may pull in hddtemp, which is not yet available here
@@ -49,10 +39,6 @@ media-video/mplayer bidi bl cddb cdio cdparanoia cpudetection dga dv dvb enca es
 # needs media-libs/ladspa-sdk keyworded
 media-video/mplayer ladspa
 
-# Stuart Longland <redhatter@gentoo.org> (23 Dec 2007)
-# Don't know if ATM works, can't test.
-net-dialup/ppp atm
-
 # Richard Brown <rbrown@gentoo.org> (23 Dec 2007)
 # app-xemacs/ruby-modes is not keyworded on this arch
 dev-lang/ruby xemacs
@@ -60,7 +46,6 @@ dev-lang/ruby xemacs
 # Sebastian Pipping <sping@gentoo.org> (27 Jan 2010)
 # dev-vcs/bzr is not keyworded on this arch
 # dev-vcs/darcs is not keyworded on this arch
-# dev-vcs/mercurial is not keyworded on this arch
 app-portage/layman bazaar
 app-portage/layman darcs
 

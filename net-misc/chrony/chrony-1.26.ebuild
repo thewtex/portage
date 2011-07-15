@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/chrony/chrony-1.24-r2.ebuild,v 1.7 2010/10/14 16:35:47 ranger Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/chrony/chrony-1.26.ebuild,v 1.1 2011/07/15 04:05:23 jer Exp $
 
 EAPI=2
 
@@ -12,7 +12,7 @@ SRC_URI="http://download.tuxfamily.org/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 hppa ~mips ppc sparc x86"
+KEYWORDS="~amd64 ~hppa ~mips ~ppc ~sparc ~x86"
 IUSE="caps readline"
 
 RDEPEND="
@@ -22,7 +22,6 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-1.21-hppa.patch
 	sed -i "s:/etc/chrony\.:/etc/chrony/chrony.:g" \
 		examples/* chrony*.{1,5,8} faq.txt chrony.texi || die "sed failed"
 }
@@ -55,8 +54,6 @@ src_install() {
 	doinfo chrony.info* || die
 
 	newinitd "${FILESDIR}"/chronyd.rc chronyd || die
-	dosed "s:the documentation directory:/usr/share/doc/${PF}/:" \
-		/etc/init.d/chronyd || die "doc sed failed"
 	newconfd "${FILESDIR}"/chronyd.conf chronyd || die
 
 	keepdir /var/{lib,log}/chrony /etc/chrony
