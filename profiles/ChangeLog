@@ -1,10 +1,33 @@
 # ChangeLog for profile directory
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.5533 2011/07/16 19:06:47 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.5541 2011/07/17 16:22:25 pacho Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  17 Jul 2011; Pacho Ramos <pacho@gentoo.org> arch/ia64/package.use.mask:
+  Mask mms USE flag for gst-plugins-meta on ia64
+
+  17 Jul 2011; Pacho Ramos <pacho@gentoo.org> arch/arm/package.use.mask,
+  arch/arm/use.mask, arch/sh/use.mask:
+  Move to global mms USE flag.
+
+  17 Jul 2011; Christoph Mende <angelos@gentoo.org> arch/arm/package.use.mask:
+  Mask mpd[mms] on arm
+
+  17 Jul 2011; Pacho Ramos <pacho@gentoo.org> use.desc:
+  Add mms USE flag description.
+
+  17 Jul 2011; Christian Faulhammer <fauli@gentoo.org> package.mask:
+  Add bzr-git to incompatible Bazaar tools...we still wait for bzr-svn to get
+  updated
+
+  17 Jul 2011; Christian Faulhammer <fauli@gentoo.org> package.mask:
+  Raise version match for Bazaar programs for 2.3 compatability
+
+  17 Jul 2011; Markos Chandras <hwoarang@gentoo.org> package.mask:
+  Masking new version of www-apps/tt-rss for testing
 
   16 Jul 2011; Robin H. Johnson <robbat2@gentoo.org> package.mask:
   Mask sys-libs/db-5.2 for testing. Update db-5.1 mask.
