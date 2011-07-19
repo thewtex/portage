@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/munin/munin-1.4.5.ebuild,v 1.6 2010/10/12 15:48:43 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/munin/munin-1.4.6.ebuild,v 1.1 2011/07/18 21:42:23 darkside Exp $
 
 EAPI=2
 
@@ -12,8 +12,8 @@ SRC_URI="mirror://sourceforge/munin/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~mips ppc sparc x86"
-IUSE="doc irc java minimal mysql postgres ssl"
+KEYWORDS="~amd64 ~mips ~ppc ~sparc ~x86"
+IUSE="doc irc java memcached minimal mysql postgres ssl"
 
 # Upstream's listing of required modules is NOT correct!
 # Some of the postgres plugins use DBD::Pg, while others call psql directly.
@@ -25,8 +25,8 @@ DEPEND_COM="dev-lang/perl
 			mysql? ( virtual/mysql dev-perl/Cache-Cache )
 			ssl? ( dev-perl/Net-SSLeay )
 			postgres? ( dev-perl/DBD-Pg dev-db/postgresql-base )
+			memcached? ( dev-perl/Cache-Memcached )
 			dev-perl/DateManip
-			dev-perl/Log-Log4perl
 			dev-perl/Net-CIDR
 			dev-perl/Net-Netmask
 			dev-perl/Net-SNMP
@@ -40,7 +40,8 @@ DEPEND_COM="dev-lang/perl
 			virtual/perl-Text-Balanced
 			virtual/perl-Time-HiRes
 			!minimal? ( dev-perl/HTML-Template
-						net-analyzer/rrdtool[perl] )"
+						net-analyzer/rrdtool[perl]
+						dev-perl/Log-Log4perl )"
 			# Sybase isn't supported in Gentoo
 			#munin-sybase? (	 dev-perl/DBD-Sybase )
 
@@ -66,6 +67,10 @@ src_prepare() {
 		sed -i -e 's: build-plugins-java : :' \
 			-e 's: install-plugins-java : :' Makefile || die
 	fi
+
+	# Bug 304447, fix for gentoo PS location
+	sed -i -e 's,/usr/bin/ps,/bin/ps,g' \
+		"${S}"/plugins/node.d/ifx_concurrent_sessions_.in || die
 }
 
 src_compile() {
@@ -95,7 +100,12 @@ src_install() {
 	dirs="${dirs} /etc/munin/plugins/"
 	keepdir ${dirs}
 
-	emake -j 1 DESTDIR="${D}" install || die "install failed"
+	if use minimal; then
+		emake -j 1 DESTDIR="${D}" install-common-prime install-node-prime \
+			install-plugins-prime || die "install failed"
+	else
+		emake -j 1 DESTDIR="${D}" install || die "install failed"
+	fi
 	fowners munin:munin ${dirs} || die
 
 	insinto /etc/munin/plugin-conf.d/
@@ -104,8 +114,8 @@ src_install() {
 	# make sure we've got everything in the correct directory
 	insinto /var/lib/munin
 	newins "${FILESDIR}"/${PN}-1.3.3-crontab crontab || die
-	newinitd "${FILESDIR}"/munin-node_init.d_1.3.3-r1 munin-node || die
-	newconfd "${FILESDIR}"/munin-node_conf.d_1.3.3-r1 munin-node || die
+	newinitd "${FILESDIR}"/munin-node_init.d_1.4.5-r3 munin-node || die
+	newconfd "${FILESDIR}"/munin-node_conf.d_1.4.5-r3 munin-node || die
 	dodoc README ChangeLog INSTALL logo.eps logo.svg build/resources/apache* \
 		|| die
 
