@@ -1,0 +1,22 @@
+ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ree18? ( dev-lang/ruby-enterprise:1.8 ) ruby_targets_jruby? ( dev-java/jruby ) ruby_targets_ruby18? ( test? ( dev-ruby/rake[ruby_targets_ruby18] ) ) ruby_targets_ree18? ( test? ( dev-ruby/rake[ruby_targets_ree18] ) ) ruby_targets_jruby? ( test? ( dev-ruby/rake[ruby_targets_jruby] ) ) ruby_targets_ruby18? ( dev-ruby/rubygems[ruby_targets_ruby18] ) ruby_targets_ree18? ( dev-ruby/rubygems[ruby_targets_ree18] ) ruby_targets_jruby? ( dev-ruby/rubygems[ruby_targets_jruby] ) test? ( ruby_targets_ruby18? ( dev-ruby/rubygems[ruby_targets_ruby18] ) ruby_targets_ree18? ( dev-ruby/rubygems[ruby_targets_ree18] ) ruby_targets_jruby? ( dev-ruby/rubygems[ruby_targets_jruby] ) )
+ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ree18? ( dev-lang/ruby-enterprise:1.8 ) ruby_targets_jruby? ( dev-java/jruby ) ruby_targets_ruby18? ( dev-ruby/rubygems[ruby_targets_ruby18] ) ruby_targets_ree18? ( dev-ruby/rubygems[ruby_targets_ree18] ) ruby_targets_jruby? ( dev-ruby/rubygems[ruby_targets_jruby] )
+0
+mirror://rubygems/require_relative-1.0.2.gem
+
+http://steveklabnik.github.com/require_relative
+|| ( Ruby BSD WTFPL-2 )
+Backport require_relative from ruby 1.9.2.
+~amd64
+eutils multilib portability ruby-fakegem ruby-ng toolchain-funcs
+ruby_targets_ruby18 ruby_targets_ree18 ruby_targets_jruby test
+
+
+
+4
+
+compile configure install prepare setup test unpack
+
+
+
+
+
