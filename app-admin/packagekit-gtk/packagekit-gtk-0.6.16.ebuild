@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/packagekit-gtk/packagekit-gtk-0.6.16.ebuild,v 1.1 2011/07/19 19:13:22 lxnay Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/packagekit-gtk/packagekit-gtk-0.6.16.ebuild,v 1.3 2011/07/20 10:34:48 lxnay Exp $
 
 EAPI="3"
 
@@ -21,6 +21,7 @@ IUSE=""
 RDEPEND="dev-libs/dbus-glib
 	media-libs/fontconfig
 	>=x11-libs/gtk+-2.14.0:2
+	>=x11-libs/gtk+-2.91.0:3
 	x11-libs/pango
 	~app-admin/packagekit-base-${PV}"
 DEPEND="${RDEPEND} dev-util/pkgconfig"
@@ -41,7 +42,6 @@ src_configure() {
 		--disable-debuginfo-install \
 		--disable-gstreamer-plugin \
 		--disable-service-packs \
-		--disable-managed \
 		--disable-man-pages \
 		--disable-cron \
 		--enable-gtk-module \
