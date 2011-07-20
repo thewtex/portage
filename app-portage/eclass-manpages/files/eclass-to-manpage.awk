@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-portage/eclass-manpages/files/eclass-to-manpage.awk,v 1.19 2011/02/10 07:26:07 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-portage/eclass-manpages/files/eclass-to-manpage.awk,v 1.22 2011/07/20 03:11:05 vapier Exp $
 
 # This awk converts the comment documentation found in eclasses
 # into man pages for easier/nicer reading.
@@ -25,6 +25,7 @@
 # @RETURN: <whatever foo returns>
 # @MAINTAINER:
 # <optional; list of contacts, one per line>
+# [@INTERNAL]
 # @DESCRIPTION:
 # <required if no @RETURN; blurb about this function>
 
@@ -169,9 +170,8 @@ function handle_function() {
 	usage = ""
 	funcret = ""
 	maintainer = ""
+	internal = 0
 	desc = ""
-
-	show_function_header()
 
 	# grab the docs
 	getline
@@ -181,8 +181,17 @@ function handle_function() {
 		funcret = eat_line()
 	if ($2 == "@MAINTAINER:")
 		maintainer = eat_paragraph()
+	if ($2 == "@INTERNAL") {
+		internal = 1
+		getline
+	}
 	if ($2 == "@DESCRIPTION:")
 		desc = eat_paragraph()
+
+	if (internal == 1)
+		return
+
+	show_function_header()
 
 	# now print out the stuff
 	print ".TP"
@@ -300,7 +309,7 @@ function handle_footer() {
 	print ".SH \"REPORTING BUGS\""
 	print "Please report bugs via http://bugs.gentoo.org/"
 	print ".SH \"FILES\""
-	print ".BR /usr/portage/eclass/" eclass
+	print ".BR " eclassdir "/" eclass
 	print ".SH \"SEE ALSO\""
 	print ".BR ebuild (5)"
 }
@@ -310,6 +319,9 @@ function handle_footer() {
 #
 BEGIN {
 	state = "header"
+	if (PORTDIR == "")
+		PORTDIR = "/usr/portage"
+	eclassdir = PORTDIR "/eclass"
 }
 
 #
@@ -323,6 +335,8 @@ BEGIN {
 		} else if ($0 == "# @DEAD") {
 			eclass = "dead"
 			exit(10)
+		} else if ($0 == "# @eclass-begin") {
+			fail("java documentation not supported")
 		} else if ($0 ~ /^# @/)
 			warn("Unexpected tag in \"" state "\" state: " $0)
 	} else if (state == "funcvar") {
@@ -342,7 +356,7 @@ BEGIN {
 #
 END {
 	if (eclass == "")
-		fail("eclass not documented yet (no @ECLASS found)");
+		fail("eclass not documented yet (no @ECLASS found)")
 	else if (eclass != "dead")
 		handle_footer()
 }
