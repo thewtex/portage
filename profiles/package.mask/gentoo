@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12919 2011/07/20 23:06:27 neurogeek Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12925 2011/07/21 17:24:17 pacho Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -226,18 +226,6 @@ sci-chemistry/webmo
 =dev-db/mariadb-5.2*
 =virtual/mysql-5.2*
 
-# Eray Aslan <eras@gentoo.org> (18 Jun 2011)
-# Dead upstream.  Lots of alternatives including mailx,
-# nail, ssmtp, postfix...
-# Removal in 30 days
-mail-client/smtpclient
-
-# Eray Aslan <eras@gentoo.org> (18 Jun 2011)
-# No upstream. Does not work correctly. Bugs #275764 #370171.
-# Several working alternatives, including dovecot, cyrus, mailutils.
-# Removal in 30 days
-net-mail/teapop
-
 # Torsten Veller <tove@gentoo.org> (18 Jun 2011)
 # Mask perl-5.14. See tracker bug #356171
 =dev-lang/perl-5.14*
@@ -247,12 +235,6 @@ net-mail/teapop
 # ebuilds to address numerous issues.  See bugs #336993, #336199, #369881
 # and #335307.
 =media-radio/svxlink-090426
-
-# Stuart Longland <redhatter@gentoo.org> (17 Jun 2011)
-# Masked for removal within 30 days.  There is a newer version upstream but it
-# doesn't compile for me, and upstream is now dead.  As an alternative, have a
-# look at media-radio/fldigi instead. (See bug #259451)
-media-radio/gmfsk
 
 # Pawel Hajdan jr <phajdan.jr@gentoo.org> (17 Jun 2011)
 # Mask v8 versions used for www-client/chromium dev channel releases.
@@ -271,19 +253,6 @@ app-pda/gpixpod
 # Eray Aslan <eras@gentoo.org> (15 Jun 2011)
 # Mask experimental software
 =mail-mta/postfix-2.9*
-
-# Eray Aslan <eras@gentoo.org> (14 Jun 2011)
-# Last release in 2000. Possible buffer overflow - bug #349786.
-# Alternative net-mail/signify but better still most mail
-# clients provide this service now.
-# Removal in 30 days
-net-mail/signature
-
-# Eray Aslan <eras@gentoo.org> (14 Jun 2011)
-# Dead upstream. Does not work properly - bug #179497 #370145.
-# Several good alternatives, including dovecot, cyrus, mailutils.
-# Removal in 30 days
-net-mail/vm-pop3d
 
 # Nirbheek Chauhan <nirbheek@gentoo.org> (14 Jun 2011)
 # GNOME 3.1.x pre-releases for libraries in the tree
@@ -460,6 +429,7 @@ sys-kernel/usermode-sources
 >=x11-wm/metacity-2.34
 >=media-gfx/gthumb-2.13
 >=gnome-extra/nautilus-open-terminal-0.19
+=media-libs/libcanberra-0.28-r4
 
 # Diego E. Pettenò <flameeyes@gentoo.org> (8 Apr 2011)
 

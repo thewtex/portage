@@ -1,18 +1,18 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/set_opacity/set_opacity-1.0.ebuild,v 1.1 2011/07/18 10:10:10 maksbotan Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/set_opacity/set_opacity-1.0.ebuild,v 1.2 2011/07/21 11:12:03 maksbotan Exp $
 
-EAPI="3"
+EAPI="4"
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Tool for set real compositing for windows through window's id, process' pid etc."
-HOMEPAGE="http://www.xvilka.narod.ru/downloads.xhtml"
-SRC_URI="http://www.xvilka.narod.ru/files/${P}.tar.bz2"
+HOMEPAGE="https://gitorious.org/x11-tools/set_opacity"
+SRC_URI="https://gitorious.org/x11-tools/set_opacity/archive-tarball/${PV} -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="x11-libs/libXdamage
@@ -21,14 +21,12 @@ DEPEND="x11-libs/libXdamage
 	x11-libs/libXrender"
 RDEPEND=${DEPEND}
 
-src_prepare(){
-	epatch "${FILESDIR}"/makefile.patch
-}
+S="${WORKDIR}/x11-tools-set_opacity"
 
 src_compile() {
-	emake CC="$(tc-getCC)" || die "emake failed"
+	emake CC="$(tc-getCC)"
 }
 
 src_install() {
-	dobin set_opacity || die "dobin failed"
+	dobin set_opacity
 }

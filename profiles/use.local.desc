@@ -1933,7 +1933,9 @@ media-gfx/blender:tweak-mode - This flag allows you to model without confirming 
 media-gfx/blender:verse - Adds verse clustering features to Blender.
 media-gfx/brlcad:benchmarks - Run benchmarks during test phase (need test option enabled)
 media-gfx/comix:rar - Pulls app-arch/unrar for rar file support
+media-gfx/darktable:flickr - Add support for uploading photos to flickr
 media-gfx/darktable:gconf - Add support for the gconf backend
+media-gfx/darktable:slideshow - Build the opengl slideshow viewer
 media-gfx/digikam:addressbook - Add support for kdepim
 media-gfx/digikam:geolocation - Add support for marble
 media-gfx/digikam:lensfun - Enable support for lens-correnction library
@@ -2022,6 +2024,7 @@ media-libs/evas:cache - Enable experimental caching to speed up rendering
 media-libs/evas:eet - Support dev-libs/eet
 media-libs/evas:gles - Enable gles falvor of gl instead of standard
 media-libs/faad2:digitalradio - Digital Radio Mondiale (warning: disables other decoders)
+media-libs/flickcurl:raptor - Use media-libs/raptor for proper RDF serializing
 media-libs/freeglut:mpx - Enable support for multi-pointer-X. One pointer for each pointer device.
 media-libs/freetype:auto-hinter - Use the unpatented auto-hinter instead of the (recommended) TrueType bytecode interpreter
 media-libs/freetype:fontforge - Install internal headers required for TrueType debugger in media-gfx/fontforge (built with USE=truetype-debugger)
@@ -3317,7 +3320,6 @@ net-mail/qmailadmin:maildrop - Filter spam using maildrop
 net-mail/qpopper:apop - Enables the pop.auth file in /etc/pop.auth
 net-mail/qpopper:drac - Enables DRAC support
 net-mail/qpopper:mailbox - Enables mail spool file is in home directory ~/Mailbox
-net-mail/teapop:virtual - Enable teapop's virtual domain support.
 net-mail/tpop3d:authexternal - Enable authentication by an external program
 net-mail/tpop3d:drac - Enable dynamic relay support in the tpop3d pop3 server
 net-mail/tpop3d:flatfile - Enable authentication against /etc/passwd-style flat files
@@ -3432,6 +3434,7 @@ net-misc/networkmanager:connection-sharing - Use net-dns/dnsmasq and net-firewal
 net-misc/networkmanager:dhclient - Use dhclient from net-misc/dhcp for getting ip.
 net-misc/networkmanager:dhcpcd - Use net-misc/dhcpcd for getting ip.
 net-misc/networkmanager:nss - Use dev-libs/nss for cryptography.
+net-misc/networkmanager:ppp - Enable support for mobile broadband and PPPoE connections using net-dialup/ppp.
 net-misc/networkmanager:resolvconf - Use net-dns/openresolv for managing DNS information
 net-misc/ntp:openntpd - Allow ntp to be installed alongside openntpd
 net-misc/ntp:parse-clocks - Add support for PARSE clocks
@@ -3516,6 +3519,11 @@ net-misc/termpkg:uucp - Adds support for uucp style device locking
 net-misc/tigervnc:server - Build TigerVNC server
 net-misc/tigervnc:xorgmodule - Build the Xorg module
 net-misc/tightvnc:server - Build vncserver. Allows us to only build server on one machine if set, build only viewer otherwise.
+net-misc/tor:bufferevents - Use Libevent's buffered IO
+net-misc/tor:nat-pmp - Enable NAT Port Mapping Protocol
+net-misc/tor:tor-hardening - Compile tor with hardening on vanilla compilers/linkers
+net-misc/tor:transparent-proxy - Enable transparent proxying
+net-misc/tor:upnp - Enable Universal Plug and Play
 net-misc/vde:pcap - Enable the pcap-based plugin that allows creating a switch against a real interface.
 net-misc/vde:ssl - Enable the cryptcab plugin that allows creating an encrypted virtual cable.
 net-misc/vidalia:tor - Allow to use a local tor setup
@@ -4472,7 +4480,6 @@ www-plugins/gnash:ssh - Enable using SSH for network authentication in libnet
 www-plugins/gnash:ssl - Enable directly using OpenSSL in libnet (not needed for nsplugin ssl support)
 www-plugins/gnash:vaapi - Enables VAAPI (Video Acceleration API) for hardware decoding
 www-plugins/google-talkplugin:system-libCg - Use system libCg instead of bundled one
-www-plugins/moonlight:sdk - Enable building of monodevelop SDK
 www-servers/apache:suexec - Install suexec with apache
 www-servers/cherokee:admin - Install web based cherokee conf tool
 www-servers/cherokee:coverpage - Installs the default cherokee coverpage
