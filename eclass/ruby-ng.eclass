@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/ruby-ng.eclass,v 1.35 2011/07/19 05:48:09 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/ruby-ng.eclass,v 1.38 2011/07/22 09:41:17 graaff Exp $
 #
 # @ECLASS: ruby-ng.eclass
 # @MAINTAINER:
@@ -46,7 +46,9 @@
 
 # @ECLASS-VARIABLE: RUBY_OPTIONAL
 # @DESCRIPTION:
-# Set the value to "yes" to make the dependency on a Ruby interpreter optional.
+# Set the value to "yes" to make the dependency on a Ruby interpreter
+# optional and then ruby_implementations_depend() to help populate
+# DEPEND and RDEPEND.
 
 # @ECLASS-VARIABLE: RUBY_S
 # @DEFAULT_UNSET
@@ -257,16 +259,65 @@ ruby_add_bdepend() {
 	RDEPEND="${RDEPEND}"
 }
 
-for _ruby_implementation in $USE_RUBY; do
-	IUSE="${IUSE} ruby_targets_${_ruby_implementation}"
+# @FUNCTION: ruby_get_use_implementations
+# @DESCRIPTION:
+# Gets an array of ruby use targets enabled by the user
+ruby_get_use_implementations() {
+	local i implementation
+	for implementation in ${USE_RUBY}; do
+		use ruby_targets_${implementation} && i+=" ${implementation}"
+	done
+	echo $i
+}
 
-	# If you specify RUBY_OPTIONAL you also need to take care of
-	# ruby useflag and dependency.
-	if [[ ${RUBY_OPTIONAL} != "yes" ]]; then
-		DEPEND="${DEPEND} ruby_targets_${_ruby_implementation}? ( $(ruby_implementation_depend $_ruby_implementation) )"
-		RDEPEND="${RDEPEND} ruby_targets_${_ruby_implementation}? ( $(ruby_implementation_depend $_ruby_implementation) )"
-	fi
+# @FUNCTION: ruby_get_use_targets
+# @DESCRIPTION:
+# Gets an array of ruby use targets that the ebuild sets
+ruby_get_use_targets() {
+	local t implementation
+	for implementation in ${USE_RUBY}; do
+		t+=" ruby_targets_${implementation}"
+	done
+	echo $t
+}
+
+if [[ ${EAPI:-0} -ge 4 && ${RUBY_OPTIONAL} != "yes" ]]; then
+	REQUIRED_USE=" || ( $(ruby_get_use_targets) )"
+fi
+
+# @FUNCTION: ruby_implementations_depend
+# @RETURN: Dependencies suitable for injection into DEPEND and RDEPEND.
+# @DESCRIPTION:
+# Produces the dependency string for the various implementations of ruby
+# which the package is being built against. This should not be used when
+# RUBY_OPTIONAL is unset but must be used if RUBY_OPTIONAL=yes. Do not
+# confuse this function with ruby_implementation_depend().
+#
+# @EXAMPLE:
+# EAPI=4
+# RUBY_OPTIONAL=yes
+#
+# inherit ruby-ng
+# ...
+# DEPEND="ruby? ( $(ruby_implementations_depend) )"
+# RDEPEND="${DEPEND}"
+ruby_implementations_depend() {
+	local depend
+	for _ruby_implementation in ${USE_RUBY}; do
+		depend="${depend}${depend+ }ruby_targets_${_ruby_implementation}? ( $(ruby_implementation_depend $_ruby_implementation) )"
+	done
+	echo "${depend}"
+}
+
+for _ruby_implementation in ${USE_RUBY}; do
+	IUSE="${IUSE} ruby_targets_${_ruby_implementation}"
 done
+# If you specify RUBY_OPTIONAL you also need to take care of
+# ruby useflag and dependency.
+if [[ ${RUBY_OPTIONAL} != yes ]]; then
+	DEPEND="${DEPEND} $(ruby_implementations_depend)"
+	RDEPEND="${RDEPEND} $(ruby_implementations_depend)"
+fi
 
 _ruby_invoke_environment() {
 	old_S=${S}
