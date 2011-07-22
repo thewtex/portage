@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12925 2011/07/21 17:24:17 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12930 2011/07/22 04:45:02 binki Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,13 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Vadim Kuznetsov <vadimk@gentoo.org> (21 Jul 2001)
+# multiple vulnerabilities. Bug 374599
+# Out of upstream support
+app-emulation/vmware-server
+=app-emulation/vmware-modules-208.2
+app-emulation/vmware-server-console
 
 # Jesus Rivero <neurogeek@gentoo.org> (20 Jul 2011)
 # Really old and unmaintained package. Bug #360067.
@@ -114,13 +121,6 @@ app-laptop/batterymon
 # upstream.
 =sys-apps/pcsc-lite-1.7.4
 =app-crypt/ccid-1.4.4
-
-# Samuli Suominen <ssuominen@gentoo.org> (06 Jul 2011)
-# Fails to build with current mono wrt #340375
-# Needs a maintainer and a bump wrt #370049
-# The package was masked with different message for 6+ months
-# prior to this, so removal in about 7 days.
-www-plugins/moonlight
 
 # Andreas Proschofsky <suka@gentoo.org> (06 Jul 2011)
 # Mask Libreoffice 3.4.1 for some additional testing
@@ -361,15 +361,6 @@ www-client/opera-next
 # Mask new versions until thread-related crashes have been fixed.
 # See bug 367423.
 =dev-lang/ruby-enterprise-1.8.7.2011.03
-
-# Nathan Phillip Brink <binki@gentoo.org> (13 May 2011)
-#
-# Abandoned by upstream. QA issues, such as failing _FORTIFY_SOURCE
-# checks. Bugs 240918, 252000, 332111, 339545, 354493.
-#
-# Removal on 2011-07-12.
-net-irc/oer
-net-irc/oer-mysql
 
 # Diego E. Pettenò <flameeyes@gentoo.org> (06 May 2011)
 #  on behalf of QA team
@@ -878,7 +869,6 @@ dev-lang/nemerle
 # per QA team policy, all these need to be kept masked by default, if
 # available in the tree.
 media-tv/v4l-dvb-hg
-net-irc/irssi-svn
 ~app-i18n/skk-jisyo-9999
 net-misc/netcomics-cvs
 app-portage/layman-dbtools
