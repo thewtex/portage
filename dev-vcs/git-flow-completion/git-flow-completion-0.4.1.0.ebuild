@@ -14,10 +14,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+bash zsh"
 
-DEPEND="app-shells/bash
-	zsh? ( app-shells/zsh )"
-
-RDEPEND="dev-vcs/gitflow
+RDEPEND="app-shells/bash
+	zsh? ( app-shells/zsh )
+	dev-vcs/gitflow
 	${DEPEND}"
 
 S="${WORKDIR}/${GITHUB_USER}-${PN}-${SRC_HASH}"
