@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/json-glib/json-glib-0.12.6.ebuild,v 1.1 2011/06/16 07:44:43 nirbheek Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/json-glib/json-glib-0.12.6.ebuild,v 1.2 2011/07/24 11:19:34 eva Exp $
 
 EAPI="4"
 GCONF_DEBUG="yes"
@@ -25,6 +25,6 @@ pkg_setup() {
 	DOCS="AUTHORS ChangeLog NEWS README"
 	# Coverage support is useless, and causes runtime problems
 	G2CONF="${G2CONF}
-		--disable-coverage
+		--disable-gcov
 		$(use_enable introspection)"
 }
