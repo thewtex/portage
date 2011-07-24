@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-print/foo2zjs/foo2zjs-99999999.ebuild,v 1.3 2011/06/02 15:15:55 phajdan.jr Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-print/foo2zjs/foo2zjs-99999999.ebuild,v 1.6 2011/07/24 03:24:05 phajdan.jr Exp $
 
 EAPI="4"
 
@@ -12,7 +12,7 @@ HOMEPAGE="http://foo2zjs.rkkda.com/"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE=""
+IUSE="test"
 
 RESTRICT="bindist"
 
@@ -22,8 +22,11 @@ RDEPEND="net-print/cups
 	sys-fs/udev"
 DEPEND="${RDEPEND}
 	app-arch/unzip
+	app-editors/vim
 	net-misc/wget
-	sys-devel/bc"
+	sys-apps/ed
+	sys-devel/bc
+	test? ( sys-process/time )"
 
 S="${WORKDIR}/${PN}"
 
@@ -44,6 +47,10 @@ src_unpack() {
 }
 
 src_prepare() {
+	# Prevent an access violation.
+	sed -e "s~/etc~${D}/etc~g" -i Makefile
+	sed -e "s~/etc~${D}/etc~g" -i hplj1000
+
 	# Prevent an access violation, do not create symlinks on live file system
 	# during installation.
 	sed -e 's/ install-filter / /g' -i Makefile
@@ -54,5 +61,5 @@ src_install() {
 	# for them.
 	mkdir -p "${D}/usr/share/ppd"
 
-	emake DESTDIR="${D}" install
+	emake DESTDIR="${D}" -j1 install install-hotplug
 }
