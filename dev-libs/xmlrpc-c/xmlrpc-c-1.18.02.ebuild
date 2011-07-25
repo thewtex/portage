@@ -48,6 +48,11 @@ src_prepare() {
 		-e "/CFLAGS_COMMON/s|-g -O3$|${CFLAGS}|" \
 		-e "/CXXFLAGS_COMMON/s|-g$|${CXXFLAGS}|" \
 		"${S}"/common.mk || die "404. File not found while sedding"
+	# bug #376101
+	sed -e '/#include <curl\/types.h>/d' \
+	    -i "${S}/lib/curl_transport/curltransaction.c" \
+	    -i "${S}/lib/curl_transport/curlmulti.c" \
+	    -i "${S}/lib/curl_transport/xmlrpc_curl_transport.c" || die "sed failed"
 }
 
 src_configure() {
