@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/libreoffice/libreoffice-3.4.2.2.ebuild,v 1.5 2011/07/24 21:32:42 scarabeus Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/libreoffice/libreoffice-3.4.2.2.ebuild,v 1.11 2011/07/25 17:21:29 scarabeus Exp $
 
 EAPI=3
 
@@ -97,7 +97,7 @@ unset EXT_URI
 unset ADDONS_SRC
 
 IUSE="binfilter cups custom-cflags dbus debug eds gnome gstreamer
-gtk kde ldap mysql nsplugin odk offlinehelp opengl pch python templates webdav"
+gtk kde ldap mysql nsplugin odk offlinehelp opengl pch python templates test webdav"
 LICENSE="LGPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
@@ -215,6 +215,8 @@ PATCHES=(
 	"${FILESDIR}/${PN}-3.4.1-salfix.diff"
 	"${FILESDIR}/sdext-presenter.diff"
 	"${FILESDIR}/${PN}-svx.patch"
+	"${FILESDIR}/${PN}-vbaobj-visibility-fix.patch"
+	"${FILESDIR}/${PN}-solenv-build-crash.patch"
 )
 
 # Uncoment me when updating to eapi4
@@ -269,8 +271,8 @@ pkg_setup() {
 	ewarn "If you encounter errors try yourself to disable parallel build."
 
 	# Check if we have enough RAM and free diskspace to build this beast
-	CHECKREQS_MEMORY="512"
-	use debug && CHECKREQS_DISK_BUILD="12288" || CHECKREQS_DISK_BUILD="7144"
+	CHECKREQS_MEMORY="1024"
+	use debug && CHECKREQS_DISK_BUILD="15360" || CHECKREQS_DISK_BUILD="9216"
 	check_reqs
 }
 
@@ -335,7 +337,7 @@ src_configure() {
 	local internal_libs
 	local extensions
 	local themes="default"
-	local jobs=$(echo "${MAKEOPTS}" | sed -e "s/.*-j\([0-9]\+\).*/\1/")
+	local jobs=$(sed -ne 's/.*\(-j[[:space:]]*\|--jobs=\)\([[:digit:]]\+\).*/\2/;T;p' <<< "${MAKEOPTS}")
 
 	# expand themes we are going to build based on DE useflags
 	use gnome && themes+=" tango"
@@ -374,8 +376,12 @@ src_configure() {
 			--with-lucene-core-jar=$(java-pkg_getjar lucene-2.9 lucene-core.jar)
 			--with-lucene-analyzers-jar=$(java-pkg_getjar lucene-analyzers-2.3 lucene-analyzers.jar)
 			--with-saxon-jar=$(java-pkg_getjar saxon saxon8.jar)
-			$(use_with test junit $(java-pkg_getjar junit-4 junit.jar))
 		"
+		if use test; then
+			java_opts+=" --with-junit=$(java-pkg_getjar junit-4 junit.jar)"
+		else
+			java_opts+=" --without-junit"
+		fi
 	fi
 
 	# TODO: create gentoo branding on the about/intro screens
@@ -394,6 +400,7 @@ src_configure() {
 	# --disable-gnome-vfs: old gnome virtual fs support
 	# --disable-kdeab: kde3 adressbook
 	# --disable-kde: kde3 support
+	# --disable-pch: precompiled headers cause build crashes
 	# --disable-rpath: relative runtime path is not desired
 	# --disable-static-gtk: ensure that gtk is linked dynamically
 	# --disable-zenity: disable build icon
@@ -425,6 +432,7 @@ src_configure() {
 		--disable-kdeab \
 		--disable-kde \
 		--disable-online-update \
+		--disable-pch \
 		--disable-rpath \
 		--disable-static-gtk \
 		--disable-zenity \
@@ -451,7 +459,6 @@ src_configure() {
 		$(use_enable cups) \
 		$(use_enable dbus) \
 		$(use_enable debug crashdump) \
-		$(use_enable !debug strip-solver) \
 		$(use_enable eds evolution2) \
 		$(use_enable gnome gconf) \
 		$(use_enable gnome gio) \
@@ -466,7 +473,6 @@ src_configure() {
 		$(use_enable nsplugin mozilla) \
 		$(use_enable odk) \
 		$(use_enable opengl) \
-		$(use_enable pch) \
 		$(use_enable python) \
 		$(use_enable python ext-scripting-python) \
 		$(use_enable webdav neon) \
@@ -485,52 +491,8 @@ src_compile() {
 }
 
 src_install() {
-	local SIZE desk app
-
-	export PYTHONPATH=""
-
-	emake DESTDIR="${D}" install || die
-
-	# Fix the permissions for security reasons
-	use prefix || chown -RP root:0 "${ED}"
-
-	# Desktop files
-	pushd "${ED}"/usr/$(get_libdir)/${PN}/share/xdg/ > /dev/null
-	for i in *; do
-		mv ${i}.desktop ${PN}-${i}.desktop
-	done
-	popd > /dev/null
-	sed -i \
-		-e s/libreoffice3.4/${PN}/g \
-		-e s/libreoffice34/${PN}/g \
-		"${ED}"/usr/$(get_libdir)/${PN}/share/xdg/*.desktop || die111
-	use java || rm "${ED}"/usr/$(get_libdir)/${PN}/share/xdg/javafilter.desktop
-	domenu "${ED}"/usr/$(get_libdir)/${PN}/share/xdg/*.desktop
-
-	# install icons
-	insinto /usr/share/icons/
-	doins -r "${S}"/sysui/desktop/icons/hicolor
-
-	# app icon names are too generic, have to make them unique
-	for SIZE in 16 32 48 128 ; do
-		cd "${ED}"/usr/share/icons/hicolor/${SIZE}x${SIZE}/apps
-		for app in base calc draw impress main math startcenter writer ; do
-			mv ${app}.png ${PN}-${app}.png || die
-		done
-	done
-
-	# install mime package
-	dodir /usr/share/mime/packages
-	cp sysui/*.pro/misc/${PN}/openoffice.org.xml \
-		"${ED}"/usr/share/mime/packages/${PN}.xml
-
-	# Install wrapper script
-	sed -i -e s/LIBDIR/$(get_libdir)/g "${T}/wrapper.in" || die
-	newbin "${T}/wrapper.in" ${PN} || die
-
-	# Cleanup after playing
-	rm "${ED}"/gid_Module_*
-
+	# This is not Makefile so no buildserver
+	make DESTDIR="${D}" distro-pack-install || die
 }
 
 pkg_preinst() {
