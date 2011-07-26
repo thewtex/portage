@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/culmus/culmus-0.120-r1.ebuild,v 1.1 2011/04/19 16:01:26 pva Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/culmus/culmus-0.120-r1.ebuild,v 1.3 2011/07/26 17:06:40 xarthisius Exp $
 
 EAPI="2"
 
@@ -37,7 +37,7 @@ SRC_URI+=" taamey? ( $(printf "http://culmus.sourceforge.net/taamim/%s.zip " ${T
 
 LICENSE="|| ( GPL-2 LICENSE-BITSTREAM ) ancient? ( MIT ) fancy? ( GPL-2 )"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ppc ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd"
 IUSE="ancient fancy fontforge taamey"
 
 FONT_CONF=( "${FILESDIR}/65-culmus.conf" )
@@ -82,7 +82,7 @@ src_compile() {
 		popd >/dev/null
 
 		pushd ${PN}-type1-${TYPE1_PV}
-		mv *.afm *.pfa *.ttf "${FONT_S}"
+		mv *.afm *.pfa "${FONT_S}"
 		popd >/dev/null
 
 		pushd ${PN}-src-${PV}
@@ -116,7 +116,7 @@ src_compile() {
 		popd >/dev/null
 
 		pushd ${PN}-type1-${TYPE1_PV}
-		mv *.afm *.pfa *.ttf "${FONT_S}"
+		mv *.afm *.pfa "${FONT_S}"
 		popd >/dev/null
 
 		if use ancient; then

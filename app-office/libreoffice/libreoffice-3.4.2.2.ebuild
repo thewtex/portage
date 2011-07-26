@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/libreoffice/libreoffice-3.4.2.2.ebuild,v 1.12 2011/07/25 18:15:43 scarabeus Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/libreoffice/libreoffice-3.4.2.2.ebuild,v 1.15 2011/07/26 16:20:59 scarabeus Exp $
 
 EAPI=3
 
@@ -217,6 +217,8 @@ PATCHES=(
 	"${FILESDIR}/${PN}-svx.patch"
 	"${FILESDIR}/${PN}-vbaobj-visibility-fix.patch"
 	"${FILESDIR}/${PN}-solenv-build-crash.patch"
+	"${FILESDIR}/${PN}-as-needed-gtk.patch"
+	"${FILESDIR}/${PN}-fix-sandbox-install.patch"
 )
 
 # Uncoment me when updating to eapi4
@@ -336,8 +338,11 @@ src_configure() {
 	local java_opts
 	local internal_libs
 	local extensions
-	local themes="default"
-	local jobs=$(sed -ne 's/.*\(-j[[:space:]]*\|--jobs=\)\([[:digit:]]\+\).*/\2/;T;p' <<< "${MAKEOPTS}")
+	local themes="crystal"
+	local jbs=$(sed -ne 's/.*\(-j[[:space:]]*\|--jobs=\)\([[:digit:]]\+\).*/\2/;T;p' <<< "${MAKEOPTS}")
+
+	# recheck that there is some value in jobs
+	[[ -z ${jbs} ]] && jbs="1"
 
 	# expand themes we are going to build based on DE useflags
 	use gnome && themes+=" tango"
@@ -435,6 +440,7 @@ src_configure() {
 		--disable-pch \
 		--disable-rpath \
 		--disable-static-gtk \
+		--disable-strip-solver \
 		--disable-zenity \
 		--with-alloc=system \
 		--with-build-version="Gentoo official package" \
@@ -444,8 +450,8 @@ src_configure() {
 		--with-external-thes-dir="${EPREFIX}/usr/share/myspell" \
 		--with-external-tar="${DISTDIR}" \
 		--with-lang="${LINGUAS_OOO}" \
-		--with-max-jobs=${jobs} \
-		--with-num-cpus=${jobs} \
+		--with-max-jobs=${jbs} \
+		--with-num-cpus=${jbs} \
 		--with-theme="${themes}" \
 		--with-unix-wrapper=libreoffice \
 		--with-vendor="Gentoo Foundation" \
