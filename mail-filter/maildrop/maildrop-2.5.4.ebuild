@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-filter/maildrop/maildrop-2.5.4.ebuild,v 1.1 2011/05/27 13:50:51 eras Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-filter/maildrop/maildrop-2.5.4.ebuild,v 1.4 2011/07/27 15:35:26 eras Exp $
 
 EAPI=4
 
@@ -15,7 +15,7 @@ HOMEPAGE="http://www.courier-mta.org/maildrop/"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
-IUSE="berkdb debug fam gdbm ldap mysql postgres authlib"
+IUSE="berkdb debug fam gdbm ldap mysql postgres authlib +tools"
 
 CDEPEND="!mail-mta/courier
 	net-mail/mailbase
@@ -28,9 +28,12 @@ CDEPEND="!mail-mta/courier
 	authlib?  ( net-libs/courier-authlib )
 	fam?      ( virtual/fam )
 	!gdbm? (
-		berkdb? (
-			>=sys-libs/db-3
-		)
+		berkdb? ( >=sys-libs/db-3 )
+	)
+	tools? (
+		!mail-mta/netqmail
+		!net-mail/courier-imap
+		!mail-mta/mini-qmail
 	)"
 DEPEND="${CDEPEND}
 	dev-util/pkgconfig"
@@ -54,13 +57,18 @@ src_prepare() {
 		epatch "${FILESDIR}"/${PN}-1.8.1-disable-fam.patch
 	fi
 
+	# no need to error out if no default - it will be given to configure anyway
+	sed -i -e \
+		's~AC_MSG_ERROR(Cannot determine default mailbox)~SPOOLDIR="./.maildir"~' \
+		"${S}"/maildrop/configure.in
+
 	eautoreconf
 }
 
 src_configure() {
 	local myconf
-	local mytrustedusers="apache dspam root mail fetchmail \
-		daemon postmaster qmaild mmdf vmail alias"
+	local mytrustedusers="apache dspam root mail fetchmail"
+	mytrustedusers+=" daemon postmaster qmaild mmdf vmail alias"
 
 	# These flags make maildrop cry
 	replace-flags -Os -O2
@@ -78,7 +86,8 @@ src_configure() {
 		myconf="${myconf} --disable-authlib"
 	fi
 
-	econf \
+	# Default mailbox is $HOME/.maildir for Gentoo
+	maildrop_cv_SYS_INSTALL_MBOXDIR="./.maildir" econf \
 		$(use_enable fam) \
 		--disable-dependency-tracker \
 		--with-devel \
@@ -90,7 +99,6 @@ src_configure() {
 		--enable-trusted-users="${mytrustedusers}" \
 		--enable-maildrop-uid=root \
 		--enable-maildrop-gid=mail \
-		--with-default-maildrop=./.maildir/ \
 		--enable-sendmail=/usr/sbin/sendmail \
 		--cache-file="${S}"/configuring.cache \
 		${myconf}
@@ -107,6 +115,16 @@ src_install() {
 	dodoc unicode/README
 	docinto maildir
 	dodoc maildir/AUTHORS maildir/INSTALL maildir/README*.txt
+
+	# bugs #61116 #374009
+	if ! use tools ; then
+		for tool in "maildirmake" "deliverquota"; do
+			rm "${D}/usr/bin/${tool}"
+			rm "${D}/usr/share/man/man"[0-9]"/${tool}."[0-9]
+			rm "${D}/usr/share/maildrop/html/${tool}.html"
+		done
+		rm "${D}/usr/share/man/man5/maildir.5"
+	fi
 
 	dodir "/usr/share/doc/${PF}"
 	mv "${D}/usr/share/maildrop/html" "${D}/usr/share/doc/${PF}/"
