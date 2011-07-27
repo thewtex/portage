@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/libreoffice/libreoffice-3.4.2.2.ebuild,v 1.15 2011/07/26 16:20:59 scarabeus Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/libreoffice/libreoffice-3.4.2.2.ebuild,v 1.21 2011/07/26 22:36:46 scarabeus Exp $
 
 EAPI=3
 
@@ -10,14 +10,15 @@ CMAKE_REQUIRED="never"
 PYTHON_DEPEND="2"
 PYTHON_USE_WITH="threads,xml"
 
+DEV_URI="http://download.documentfoundation.org/libreoffice/src"
+EXT_URI="http://ooo.itc.hu/oxygenoffice/download/libreoffice"
+ADDONS_URI="http://dev-www.libreoffice.org/src/"
+
 inherit base autotools check-reqs eutils java-pkg-opt-2 kde4-base pax-utils prefix python multilib toolchain-funcs flag-o-matic
 
 DESCRIPTION="LibreOffice, a full office productivity suite."
 HOMEPAGE="http://www.libreoffice.org"
-DEV_URI="http://download.documentfoundation.org/libreoffice/src"
-EXT_URI="http://ooo.itc.hu/oxygenoffice/download/libreoffice"
-ADDONS_URI="http://dev-www.libreoffice.org/src/"
-SRC_URI="odk? ( java? ( http://tools.openoffice.org/unowinreg_prebuild/680/unowinreg.dll ) )"
+SRC_URI="branding? ( http://dev.gentooexperimental.org/~scarabeus/${PN}-branding-gentoo-0.1.tar.xz )"
 
 # Shiny split sources with so many packages...
 MODULES="artwork base calc components extensions extras filters help
@@ -68,7 +69,6 @@ ADDONS_SRC+=" ${ADDONS_URI}/47e1edaa44269bc537ae8cabebb0f638-JLanguageTool-1.0.0
 ADDONS_SRC+=" ${ADDONS_URI}/90401bca927835b6fbae4a707ed187c8-nlpsolver-0.9.tar.bz2"
 ADDONS_SRC+=" ${ADDONS_URI}/0f63ee487fda8f21fafa767b3c447ac9-ixion-0.2.0.tar.gz"
 ADDONS_SRC+=" ${ADDONS_URI}/71474203939fafbe271e1263e61d083e-nss-3.12.8-with-nspr-4.8.6.tar.gz"
-ADDONS_SRC+=" ${ADDONS_URI}/0625a7d661f899a8ce263fc8a9879108-graphite2-0.9.2.tgz"
 ADDONS_SRC+=" http://download.go-oo.org/extern/185d60944ea767075d27247c3162b3bc-unowinreg.dll"
 ADDONS_SRC+=" http://download.go-oo.org/extern/b4cae0700aa1c2aef7eb7f345365e6f1-translate-toolkit-1.8.1.tar.bz2"
 ADDONS_SRC+=" http://www.numbertext.org/linux/881af2b7dca9b8259abbca00bbbc004d-LinLibertineG-20110101.zip"
@@ -96,8 +96,9 @@ unset ADDONS_URI
 unset EXT_URI
 unset ADDONS_SRC
 
-IUSE="binfilter cups custom-cflags dbus debug eds gnome gstreamer gtk kde ldap
-mysql nsplugin odk offlinehelp opengl python templates test +vba webdav"
+IUSE="binfilter +branding cups custom-cflags dbus debug eds gnome graphite
+gstreamer gtk kde ldap mysql nsplugin odk offlinehelp opengl python templates
+test +vba webdav"
 LICENSE="LGPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
@@ -150,6 +151,7 @@ COMMON_DEPEND="
 		gnome-base/gconf:2
 	)
 	gtk? ( >=x11-libs/gtk+-2.10:2 )
+	graphite? ( media-gfx/graphite2 )
 	gstreamer? (
 		>=media-libs/gstreamer-0.10
 		>=media-libs/gst-plugins-base-0.10
@@ -197,7 +199,6 @@ DEPEND="${COMMON_DEPEND}
 	sys-devel/flex
 	sys-libs/zlib
 	x11-libs/libXtst
-	x11-proto/printproto
 	x11-proto/randrproto
 	x11-proto/xextproto
 	x11-proto/xineramaproto
@@ -219,12 +220,15 @@ PATCHES=(
 	"${FILESDIR}/${PN}-solenv-build-crash.patch"
 	"${FILESDIR}/${PN}-as-needed-gtk.patch"
 	"${FILESDIR}/${PN}-fix-sandbox-install.patch"
+	"${FILESDIR}/${PN}-translate-toolkit-parallel-solenv.patch"
+	"${FILESDIR}/${PN}-gbuild-use-cxxflags.patch"
 )
 
 # Uncoment me when updating to eapi4
 # REQUIRED_USE="
 #	|| ( gtk gnome kde )
 #	gnome? ( gtk )
+#	nsplugin? ( gtk )
 #"
 
 S="${WORKDIR}/${PN}-bootstrap-${PV}"
@@ -280,6 +284,10 @@ pkg_setup() {
 
 src_unpack() {
 	local mod dest tmplfile tmplname
+
+	if use branding; then
+		unpack "${PN}-branding-gentoo-0.1.tar.xz"
+	fi
 
 	#first the bootstrap files
 	unpack "${PN}-bootstrap-${PV}.tar.bz2"
@@ -355,9 +363,8 @@ src_configure() {
 		--enable-ext-presenter-minimizer
 	"
 
-	# Things that do not have gentoo packages
 	# hsqldb: requires just 1.8.0 not 1.8.1 which we don't ship at all
-	# we should use in-system dmake: so far fails
+	# dmake: not worth of splitting out
 	internal_libs+="
 		--without-system-hsqldb
 	"
@@ -389,9 +396,12 @@ src_configure() {
 		fi
 	fi
 
-	# TODO: create gentoo branding on the about/intro screens
-	# --with-about-bitmap="${FILESDIR}/gentoo-about.png"
-	# --with-intro-bitmap="${FILESDIR}/gentoo-intro.png"
+	if use branding; then
+		extensions+="
+			--with-about-bitmap="${WORKDIR}/branding-about.png"
+			--with-intro-bitmap="${WORKDIR}/branding-intro.png"
+		"
+	fi
 
 	# system headers/libs/...: enforce using system packages
 	#   only expections are mozilla and odbc/sane/xrender-header(s).
@@ -433,7 +443,6 @@ src_configure() {
 		--disable-epm \
 		--disable-fetch-external \
 		--disable-gnome-vfs \
-		--disable-graphite \
 		--disable-kdeab \
 		--disable-kde \
 		--disable-online-update \
@@ -469,6 +478,7 @@ src_configure() {
 		$(use_enable gnome gconf) \
 		$(use_enable gnome gio) \
 		$(use_enable gnome lockdown) \
+		$(use_enable graphite) \
 		$(use_enable gstreamer) \
 		$(use_enable gtk) \
 		$(use_enable gtk systray) \
@@ -491,7 +501,8 @@ src_configure() {
 		$(use_with offlinehelp helppack-integration) \
 		$(use_with templates sun-templates) \
 		${internal_libs} \
-		${java_opts}
+		${java_opts} \
+		${extensions}
 }
 
 src_compile() {
@@ -501,6 +512,11 @@ src_compile() {
 src_install() {
 	# This is not Makefile so no buildserver
 	make DESTDIR="${D}" distro-pack-install || die
+
+	if use branding; then
+		insinto /usr/$(get_libdir)/${PN}/program
+		newins "${WORKDIR}/branding-sofficerc" sofficerc || die
+	fi
 }
 
 pkg_preinst() {
