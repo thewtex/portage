@@ -1,0 +1,22 @@
+ruby_targets_ruby18? ( test? ( >=dev-ruby/rr-0.10.2[ruby_targets_ruby18] dev-ruby/rspec:2[ruby_targets_ruby18] dev-ruby/activesupport[ruby_targets_ruby18] ) ) ruby_targets_ree18? ( test? ( >=dev-ruby/rr-0.10.2[ruby_targets_ree18] dev-ruby/rspec:2[ruby_targets_ree18] dev-ruby/activesupport[ruby_targets_ree18] ) ) test? ( ruby_targets_ruby18? ( >=dev-ruby/polyglot-0.3.1[ruby_targets_ruby18] ) ruby_targets_ree18? ( >=dev-ruby/polyglot-0.3.1[ruby_targets_ree18] ) ) ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ree18? ( dev-lang/ruby-enterprise:1.8 ) ruby_targets_ruby18? ( test? ( dev-ruby/rake[ruby_targets_ruby18] ) ) ruby_targets_ree18? ( test? ( dev-ruby/rake[ruby_targets_ree18] ) ) ruby_targets_ruby18? ( dev-ruby/rubygems[ruby_targets_ruby18] ) ruby_targets_ree18? ( dev-ruby/rubygems[ruby_targets_ree18] ) test? ( ruby_targets_ruby18? ( dev-ruby/rubygems[ruby_targets_ruby18] ) ruby_targets_ree18? ( dev-ruby/rubygems[ruby_targets_ree18] ) )
+ruby_targets_ruby18? ( >=dev-ruby/polyglot-0.3.1[ruby_targets_ruby18] ) ruby_targets_ree18? ( >=dev-ruby/polyglot-0.3.1[ruby_targets_ree18] ) ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ree18? ( dev-lang/ruby-enterprise:1.8 ) ruby_targets_ruby18? ( dev-ruby/rubygems[ruby_targets_ruby18] ) ruby_targets_ree18? ( dev-ruby/rubygems[ruby_targets_ree18] )
+0
+mirror://rubygems/treetop-1.4.10.gem
+
+http://treetop.rubyforge.org/
+Ruby
+Treetop is a language for describing languages.
+~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~x86-solaris
+eutils multilib portability ruby-fakegem ruby-ng toolchain-funcs
+test ruby_targets_ruby18 ruby_targets_ree18 doc test
+|| ( ruby_targets_ruby18 ruby_targets_ree18 )
+
+
+4
+
+compile configure install prepare setup test unpack
+
+
+
+
+

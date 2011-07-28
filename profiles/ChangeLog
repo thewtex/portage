@@ -1,10 +1,30 @@
 # ChangeLog for profile directory
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.5580 2011/07/27 19:28:52 dilfridge Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.5585 2011/07/28 13:42:28 aballier Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  28 Jul 2011; Alexis Ballier <aballier@gentoo.org> package.mask:
+  unleash TeX Live 2011 to ~arch
+
+  28 Jul 2011; Hanno Boeck <hanno@gentoo.org> license_groups:
+  Add NCSA-HDF to MISC-FREE license group.
+
+  28 Jul 2011; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  package.mask:
+  [package.mask] Update the mysql/mariadb mask.
+  Dropped 5.4 from the mask as it's no longer in the tree.
+  Added virtual/mysql-5.3 now that mariadb did it's first beta release of
+  5.3.0.
+
+  28 Jul 2011; Peter Volkov <pva@gentoo.org> package.mask:
+  Unmask =net-analyzer/httping-1.5.1* - it is released and 1.5.1_beta1 dropped
+  from the tree.
+
+  28 Jul 2011; Alexis Ballier <aballier@gentoo.org> package.mask:
+  mask TeX Live 2011 for testing
 
   27 Jul 2011; Andreas K. Huettel <dilfridge@gentoo.org> package.mask:
   Remove kde-4.7 mask as it has been released
