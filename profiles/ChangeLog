@@ -1,10 +1,22 @@
 # ChangeLog for profile directory
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.5585 2011/07/28 13:42:28 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.5589 2011/07/29 15:50:29 nirbheek Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  29 Jul 2011; Nirbheek Chauhan <nirbheek@gentoo.org> package.mask:
+  Add preliminary GNOME 3 package mask, will be removed after everything is in
+  the tree
+
+  29 Jul 2011; Nirbheek Chauhan <nirbheek@gentoo.org>
+  features/64bit-native/package.mask:
+  Unmask tb/fx/sm-bin on 64bit-native since they now install 64-bit binary
+  tarballs on amd64, bug 374757
+
+  29 Jul 2011; Samuli Suominen <ssuominen@gentoo.org> package.mask:
+  Mask -r20 of ardour and liblrdf for testing; uses raptor2 instead of raptor
 
   28 Jul 2011; Alexis Ballier <aballier@gentoo.org> package.mask:
   unleash TeX Live 2011 to ~arch
