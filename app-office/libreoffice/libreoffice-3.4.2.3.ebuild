@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/libreoffice/libreoffice-3.4.2.3.ebuild,v 1.11 2011/07/29 18:56:50 scarabeus Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/libreoffice/libreoffice-3.4.2.3.ebuild,v 1.13 2011/07/30 17:03:07 scarabeus Exp $
 
 EAPI=3
 
@@ -23,25 +23,29 @@ ADDONS_URI="http://dev-www.libreoffice.org/src/"
 
 BRANDING="${PN}-branding-gentoo-0.2.tar.xz"
 
-inherit base autotools check-reqs eutils java-pkg-opt-2 kde4-base pax-utils prefix python multilib toolchain-funcs flag-o-matic nsplugins
+[[ ${PV} == *9999* ]] && SCM_ECLASS="git-2"
+inherit base autotools check-reqs eutils java-pkg-opt-2 kde4-base pax-utils prefix python multilib toolchain-funcs flag-o-matic nsplugins ${SCM_ECLASS}
+unset SCM_ECLASS
 
 DESCRIPTION="LibreOffice, a full office productivity suite."
 HOMEPAGE="http://www.libreoffice.org"
 SRC_URI="branding? ( http://dev.gentooexperimental.org/~scarabeus/${BRANDING} )"
 
 # Shiny split sources with so many packages...
-MODULES="artwork base calc components extensions extras filters help
+# Bootstrap MUST be first!
+MODULES="bootstrap artwork base calc components extensions extras filters help
 impress libs-core libs-extern libs-extern-sys libs-gui postprocess sdk testing
 ure writer translations"
-for i in ${DEV_URI}; do
-	# split out as bootstrap is required to be done first
-	SRC_URI+=" ${i}/${PN}-bootstrap-${PV}.tar.bz2"
-	for mod in ${MODULES}; do
-		SRC_URI+=" ${i}/${PN}-${mod}-${PV}.tar.bz2"
+# Only release has the tarballs
+if [[ ${PV} != *9999* ]]; then
+	for i in ${DEV_URI}; do
+		for mod in ${MODULES}; do
+			SRC_URI+=" ${i}/${PN}-${mod}-${PV}.tar.bz2"
+		done
+		unset mod
 	done
-	unset mod
-done
-unset i
+	unset i
+fi
 unset DEV_URI
 
 # addons
@@ -112,7 +116,7 @@ gstreamer gtk kde ldap mysql nsplugin odk offlinehelp opengl python templates
 test +vba webdav"
 LICENSE="LGPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
+[[ ${PV} == *9999* ]] || KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
 
 # translations
 LANGUAGES="af ar as ast be bg bn bo br brx bs ca ca_XV cs cy da de dgo dz el
@@ -295,25 +299,36 @@ pkg_setup() {
 }
 
 src_unpack() {
-	local mod dest tmplfile tmplname
+	local mod dest tmplfile tmplname mypv
 
 	if use branding; then
 		unpack "${BRANDING}"
 	fi
 
-	#first the bootstrap files
-	unpack "${PN}-bootstrap-${PV}.tar.bz2"
-
-	# and then all the separate modules
-	for mod in ${MODULES}; do
-		unpack "${PN}-${mod}-${PV}.tar.bz2"
-		mv -n "${WORKDIR}/${PN}-${mod}-${PV}"/* "${S}"
-		# punt the empty dirs; it is annoying during debuging :)
-		rm -rf "${WORKDIR}/${PN}-${mod}-${PV}"
-	done
-
-	# don't forget the wrapper...
-	cp "${FILESDIR}"/wrapper.in "${T}"
+	if [[ ${PV} != *9999* ]]; then
+		for mod in ${MODULES}; do
+			unpack "${PN}-${mod}-${PV}.tar.bz2"
+			if [[ ${mod} != bootstrap ]]; then
+				mv -n "${WORKDIR}/${PN}-${mod}-${PV}"/* "${S}"
+				rm -rf "${WORKDIR}/${PN}-${mod}-${PV}"
+			fi
+		done
+	else
+		for mod in ${MODULES}; do
+			mypv=${PV/.9999}
+			[[ ${mypv} != ${PV} ]] && EGIT_BRANCH="${PN}-${mypv/./-}"
+			EGIT_PROJECT="${PN}/${mod}"
+			EGIT_SOURCEDIR="${WORKDIR}/${PN}-${mod}-${PV}"
+			EGIT_REPO_URI="git://anongit.freedesktop.org/${PN}/${mod}"
+			EGIT_NOUNPACK="true"
+			git-2_src_unpack
+			if [[ ${mod} != bootstrap ]]; then
+				mv -n "${WORKDIR}/${PN}-${mod}-${PV}"/* "${S}"
+				rm -rf "${WORKDIR}/${PN}-${mod}-${PV}"
+			fi
+		done
+		unset EGIT_PROJECT EGIT_SOURCEDIR EGIT_REPO_URI EGIT_BRANCH
+	fi
 
 	# copy extension templates; o what fun ...
 	if use templates; then
@@ -335,8 +350,6 @@ src_unpack() {
 }
 
 src_prepare() {
-	eprefixify "${T}"/wrapper.in
-
 	strip-linguas ${LANGUAGES}
 	LINGUAS_OOO=$(echo ${LINGUAS} | sed -e 's/\ben\b/en_US/;s/_/-/g')
 
