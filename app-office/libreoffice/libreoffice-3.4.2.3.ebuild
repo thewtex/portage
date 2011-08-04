@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/libreoffice/libreoffice-3.4.2.3.ebuild,v 1.16 2011/08/03 17:23:04 scarabeus Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/libreoffice/libreoffice-3.4.2.3.ebuild,v 1.18 2011/08/04 16:31:40 scarabeus Exp $
 
 EAPI=3
 
@@ -147,7 +147,7 @@ COMMON_DEPEND="
 	>=media-libs/fontconfig-2.3.0
 	>=media-libs/vigra-1.4
 	media-libs/libpng
-	media-libs/libwpg:0.2
+	app-text/libwpg:0.2
 	sci-mathematics/lpsolve
 	>=sys-libs/db-4.8
 	virtual/jpeg
@@ -236,6 +236,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-translate-toolkit-parallel-solenv.patch"
 	"${FILESDIR}/${PN}-gbuild-use-cxxflags.patch"
 	"${FILESDIR}/${PN}-installed-files-permissions.patch"
+	"${FILESDIR}/${PN}-check-for-avx.patch"
 	"${FILESDIR}/${PN}-append-no-avx.patch"
 	"${FILESDIR}/${PN}-32b-qt4-libdir.patch"
 )
@@ -351,7 +352,19 @@ src_unpack() {
 
 src_prepare() {
 	strip-linguas ${LANGUAGES}
-	LINGUAS_OOO=$(echo ${LINGUAS} | sed -e 's/\ben\b/en_US/;s/_/-/g')
+
+	# HACK: linguas needs special parsing until fixed upstream
+	if [[ -z ${LINGUAS} || ${LINGUAS} == en ]]; then
+		# if empty or just english we want empty
+		LO_LANGUAGES=
+	elif [[ ${LINGUAS} =~ en( |$) ]]; then
+		# otherwise if more then one language and english we
+		# replace en to en-US
+		LO_LANGUAGES="$(sed -e 's/\ben\b/en_US/;s/_/-/g' <<< ${LINGUAS})"
+	else
+		# and finally if no en is set we add en-US
+		LO_LANGUAGES="en-US ${LINGUAS//_/-}"
+	fi
 
 	# Now for our optimization flags ...
 	export ARCH_FLAGS="${CXXFLAGS}"
