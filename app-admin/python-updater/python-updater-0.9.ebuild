@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/python-updater/python-updater-0.9.ebuild,v 1.8 2011/07/20 23:03:49 halcy0n Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/python-updater/python-updater-0.9.ebuild,v 1.10 2011/08/06 16:59:42 hwoarang Exp $
 
 DESCRIPTION="Script used to reinstall Python packages after changing of active Python versions"
 HOMEPAGE="http://www.gentoo.org/proj/en/Python"

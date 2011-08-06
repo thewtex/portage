@@ -1,0 +1,22 @@
+ldap? ( net-nds/openldap ) mysql? ( >=virtual/mysql-5.0 ) postgres? ( dev-db/postgresql-base ) sqlite? ( dev-db/sqlite:3 )
+ldap? ( net-nds/openldap ) mysql? ( >=virtual/mysql-5.0 ) postgres? ( dev-db/postgresql-base ) sqlite? ( dev-db/sqlite:3 ) clamav? ( app-antivirus/clamav ) syslog? ( virtual/logger )
+0
+mirror://sourceforge/dspam/dspam-3.10.0.tar.gz
+
+http://dspam.sourceforge.net/
+AGPL-3
+A statistical-algorithmic hybrid anti-spam filter
+~alpha ~amd64 ~ppc ~sparc ~x86
+eutils multilib portability toolchain-funcs
+clamav daemon debug ldap static-libs syslog virtual-users user-homedirs +hash mysql postgres sqlite +small-scale domain-scale large-scale
+|| ( hash mysql postgres sqlite ) static-libs? ( ^^ ( hash mysql postgres sqlite ) ) ^^ ( small-scale domain-scale large-scale ) virtual-users? ( !user-homedirs ) hash? ( !virtual-users ) sqlite? ( !virtual-users )
+
+
+4
+
+configure install preinst setup
+
+
+
+
+

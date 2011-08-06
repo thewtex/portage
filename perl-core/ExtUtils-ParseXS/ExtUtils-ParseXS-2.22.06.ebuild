@@ -1,11 +1,12 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/perl-core/ExtUtils-ParseXS/ExtUtils-ParseXS-2.22.06.ebuild,v 1.3 2011/07/30 12:14:38 tove Exp $
+# $Header: /var/cvsroot/gentoo-x86/perl-core/ExtUtils-ParseXS/ExtUtils-ParseXS-2.22.06.ebuild,v 1.4 2011/08/06 07:51:24 tove Exp $
 
 EAPI=3
 
 inherit versionator
 MY_P=${PN}-$(delete_version_separator 2 )
+MODULE_VERSION=2.2206
 S=${WORKDIR}/${MY_P}
 MODULE_AUTHOR=DAGOLDEN
 inherit perl-module
