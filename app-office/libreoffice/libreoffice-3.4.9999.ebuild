@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/libreoffice/libreoffice-3.4.9999.ebuild,v 1.7 2011/08/06 16:48:01 mattst88 Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/libreoffice/libreoffice-3.4.9999.ebuild,v 1.10 2011/08/07 14:39:42 scarabeus Exp $
 
 EAPI=3
 
@@ -31,11 +31,9 @@ DESCRIPTION="LibreOffice, a full office productivity suite."
 HOMEPAGE="http://www.libreoffice.org"
 SRC_URI="branding? ( http://dev.gentooexperimental.org/~scarabeus/${BRANDING} )"
 
-# Shiny split sources with so many packages...
-# Bootstrap MUST be first!
-MODULES="bootstrap artwork base calc components extensions extras filters help
-impress libs-core libs-extern libs-extern-sys libs-gui postprocess sdk testing
-ure writer translations"
+# Split modules following git/tarballs
+# Core MUST be first!
+MODULES="core binfilter dictionaries help translations"
 # Only release has the tarballs
 if [[ ${PV} != *9999* ]]; then
 	for i in ${DEV_URI}; do
@@ -210,6 +208,7 @@ DEPEND="${COMMON_DEPEND}
 	sys-devel/bison
 	sys-apps/coreutils
 	sys-devel/flex
+	>=sys-devel/make-3.82
 	sys-libs/zlib
 	x11-libs/libXtst
 	x11-proto/randrproto
@@ -248,7 +247,7 @@ PATCHES=(
 #	nsplugin? ( gtk )
 #"
 
-S="${WORKDIR}/${PN}-bootstrap-${PV}"
+S="${WORKDIR}/${PN}-core-${PV}"
 
 pkg_setup() {
 	java-pkg-opt-2_pkg_setup
@@ -309,7 +308,7 @@ src_unpack() {
 	if [[ ${PV} != *9999* ]]; then
 		for mod in ${MODULES}; do
 			unpack "${PN}-${mod}-${PV}.tar.bz2"
-			if [[ ${mod} != bootstrap ]]; then
+			if [[ ${mod} != core ]]; then
 				mv -n "${WORKDIR}/${PN}-${mod}-${PV}"/* "${S}"
 				rm -rf "${WORKDIR}/${PN}-${mod}-${PV}"
 			fi
@@ -323,7 +322,7 @@ src_unpack() {
 			EGIT_REPO_URI="git://anongit.freedesktop.org/${PN}/${mod}"
 			EGIT_NOUNPACK="true"
 			git-2_src_unpack
-			if [[ ${mod} != bootstrap ]]; then
+			if [[ ${mod} != core ]]; then
 				mv -n "${WORKDIR}/${PN}-${mod}-${PV}"/* "${S}"
 				rm -rf "${WORKDIR}/${PN}-${mod}-${PV}"
 			fi

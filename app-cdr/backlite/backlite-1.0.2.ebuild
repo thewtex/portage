@@ -1,10 +1,10 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-cdr/backlite/backlite-1.0.2.ebuild,v 1.3 2011/06/19 13:44:31 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-cdr/backlite/backlite-1.0.2.ebuild,v 1.5 2011/08/07 15:12:34 billie Exp $
 
-EAPI=2
+EAPI=4
 
-inherit qt4-r2
+inherit eutils qt4-r2
 
 DESCRIPTION="backlite is a pure QT4 version of k9copy"
 HOMEPAGE="http://k9copy.sourceforge.net/"
@@ -29,10 +29,15 @@ RDEPEND="${DEPEND}
 	media-video/dvdauthor
 	mplayer? ( media-video/mplayer )"
 
+src_prepare() {
+	epatch "${FILESDIR}/${PN}-1.0.2-ffmpeg.patch"
+}
+
 src_configure() {
 	eqmake4 backlite.pro PREFIX="${D}"/usr
 }
 
 src_install() {
-	emake install || die "emake install failed"
+	unset INSTALL_ROOT
+	default
 }
