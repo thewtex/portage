@@ -1,6 +1,18 @@
 # ChangeLog for app-arch/lbzip2
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-arch/lbzip2/ChangeLog,v 1.14 2011/07/10 17:34:39 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-arch/lbzip2/ChangeLog,v 1.16 2011/08/06 19:19:45 mattst88 Exp $
+
+*lbzip2-0.23-r2 (06 Aug 2011)
+
+  06 Aug 2011; Matt Turner <mattst88@gentoo.org> +files/0.23-Makefile.patch,
+  +lbzip2-0.23-r2.ebuild:
+  BSD fixes: Replaced dependency on app-shells/dash with app-shells/bash; Added
+  option to use freebsd-ubin instead of sys-process/time. Removed
+  _X_OPEN_SOURCE from Makefile. Thanks to Alexis Ballier, Laszlo Ersek, and
+  Naohiro Aota for their suggestions in bug 370685.
+
+  06 Aug 2011; Matt Turner <mattst88@gentoo.org> metadata.xml:
+  Add myself as a maintainer.
 
   10 Jul 2011; Raúl Porcel <armin76@gentoo.org> lbzip2-0.23-r1.ebuild:
   Add ~ia64/~m68k/~s390/~sh/~sparc wrt #370685
