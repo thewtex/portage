@@ -1,11 +1,14 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/gromacs/gromacs-4.5.4-r2.ebuild,v 1.5 2011/06/26 08:32:55 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/gromacs/gromacs-4.5.4-r2.ebuild,v 1.7 2011/07/18 18:20:14 ottxor Exp $
 
 EAPI="4"
 
 TEST_PV="4.0.4"
 MANUAL_PV="4.5.4"
+
+#to find external blas/lapack
+CMAKE_MIN_VERSION="2.8.5-r2"
 
 inherit bash-completion cmake-utils eutils fortran-2 multilib toolchain-funcs
 
@@ -147,6 +150,7 @@ src_configure() {
 		$(cmake-utils_use xml GMX_XML)
 		-DGMX_DEFAULT_SUFFIX=off
 		-DGMX_ACCELERATION="$acce"
+		-DLIB="$(get_libdir)"
 	)
 
 	for x in ${GMX_DIRS}; do

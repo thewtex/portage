@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/kde4-base.eclass,v 1.100 2011/06/15 22:03:13 abcd Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/kde4-base.eclass,v 1.105 2011/07/27 09:30:46 alexxy Exp $
 
 # @ECLASS: kde4-base.eclass
 # @MAINTAINER:
@@ -439,15 +439,22 @@ _calculate_src_uri() {
 				4.[456].8[05] | 4.[456].9[023568])
 					# Unstable KDE SC releases
 					SRC_URI="mirror://kde/unstable/${PV}/src/${_kmname_pv}.tar.bz2"
-					# KDEPIM IS SPECIAL
-					[[ ${KMNAME} == "kdepim" || ${KMNAME} == "kdepim-runtime" ]] && SRC_URI="mirror://kde/unstable/kdepim/${PV}/${_kmname_pv}.tar.bz2"
+					if ! version_is_at_least 4.6.80 ${PV}
+					then
+						# KDEPIM IS SPECIAL
+						[[ ${KMNAME} == "kdepim" || ${KMNAME} == "kdepim-runtime" ]] && SRC_URI="mirror://kde/unstable/kdepim/${PV}/${_kmname_pv}.tar.bz2"
+					fi
 					;;
 				*)
 					# Stable KDE SC releases
 					SRC_URI="mirror://kde/stable/${PV}/src/${_kmname_pv}.tar.bz2"
-					# KDEPIM IS SPECIAL
-					[[ ${KMNAME} == "kdepim" || ${KMNAME} == "kdepim-runtime" ]] && SRC_URI="mirror://kde/stable/kdepim-${PV}/src/${_kmname_pv}.tar.bz2"
-					;;
+					if ! version_is_at_least 4.6.80 ${PV}
+					then
+						# KDEPIM IS SPECIAL
+						# TODO: It might not be with KDE 4.7 (see above)
+						[[ ${KMNAME} == "kdepim" || ${KMNAME} == "kdepim-runtime" ]] && SRC_URI="mirror://kde/stable/kdepim-${PV}/src/${_kmname_pv}.tar.bz2"
+					fi
+						;;
 			esac
 			;;
 		koffice)
@@ -565,29 +572,37 @@ _calculate_live_repo() {
 				9999*) ;;
 				*)
 					# set EGIT_BRANCH and EGIT_COMMIT to $(get_kde_version)
+					# every package is listed explicitly now, as upstream
+					# seems to love being different :(
 					case ${_kmname} in
-						kdeplasma-addons | kdepim | kdepim-runtime | kdepimlibs | okular)
-							EGIT_BRANCH="$(get_kde_version)"
-							;;
-						kdeedu)
+						blinken|cantor|kalgebra|kalzium|kanagram|kbruch| \
+						kdeplasma-addons|kdepim|kdepim-runtime|kdepimlibs| \
+						kgeography|khangman|kig|kiten|klettres|kmplot|kstars| \
+						ktouch|kturtle|kwordquiz|libkdeedu|mobipocket|okular| \
+						parley|rocs|step)
 							EGIT_BRANCH="$(get_kde_version)"
 							;;
 						marble)
 							EGIT_BRANCH="kde-$(get_kde_version)"
 							;;
-						*) EGIT_BRANCH="KDE/$(get_kde_version)" ;;
+						gwenview|kamera|kate|kcolorchooser|kde-baseapps| \
+						kde-runtime|kde-workspace|kgamma| \
+						kdegraphics-strigi-analyzer|kdegraphics-thumbnailers| \
+						kdelibs|kimono|kolourpaint|konsole|korundum| \
+						kross-interpreters|kruler|ksaneplugin|ksnapshot| \
+						libkdcraw|libkexiv2|libkipi|libksane|perlqt|perlkde| \
+						pykde4|qtruby|qyoto|smokegen|smokekde|smokeqt|svgpart)
+							EGIT_BRANCH="KDE/$(get_kde_version)"
+							;;
+						*)
+							ewarn "Unknown KMNAME ${_kmname}: Guessing branch name 'KDE/$(get_kde_version)'"
+							EGIT_BRANCH="KDE/$(get_kde_version)" ;;
 					esac
 					;;
 			esac
 
 			# default repo uri
-			case ${_kmname} in
-				kdeedu)
-					EGIT_REPO_URI="${EGIT_MIRROR}/${PN}"
-					;;
-				*)
-					EGIT_REPO_URI="${EGIT_MIRROR}/${_kmname}"
-			esac
+			EGIT_REPO_URI="${EGIT_MIRROR}/${_kmname}"
 
 			debug-print "${FUNCNAME}: Repository: ${EGIT_REPO_URI}"
 			debug-print "${FUNCNAME}: Branch: ${EGIT_BRANCH}"
@@ -635,9 +650,11 @@ kde4-base_pkg_setup() {
 	# In theory should be in pkg_pretend but we check it only for kdelibs there
 	# and for others we do just quick scan in pkg_setup because pkg_pretend
 	# executions consume quite some time.
-	[[ $(gcc-major-version) -lt 4 ]] || \
-			( [[ $(gcc-major-version) -eq 4 && $(gcc-minor-version) -le 3 ]] ) \
-		&& die "Sorry, but gcc-4.3 and earlier wont work for KDE (see bug 354837)."
+	if [[ ${MERGE_TYPE} != binary ]]; then
+		[[ $(gcc-major-version) -lt 4 ]] || \
+				( [[ $(gcc-major-version) -eq 4 && $(gcc-minor-version) -le 3 ]] ) \
+			&& die "Sorry, but gcc-4.3 and earlier wont work for KDE (see bug 354837)."
+	fi
 
 	KDEDIR=/usr
 	: ${PREFIX:=/usr}

@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/mpqc/mpqc-2.3.1-r1.ebuild,v 1.8 2010/12/16 15:19:28 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/mpqc/mpqc-2.3.1-r1.ebuild,v 1.9 2011/07/17 12:50:56 jlec Exp $
 
 DESCRIPTION="The Massively Parallel Quantum Chemistry Program"
 HOMEPAGE="http://www.mpqc.org/"
@@ -8,18 +8,19 @@ SRC_URI="mirror://sourceforge/mpqc/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-# Should work on x86, amd64 and ppc, at least
 KEYWORDS="amd64 ppc ppc64 x86"
 IUSE="doc threads tk"
 
-RDEPEND="virtual/blas
+RDEPEND="
+	virtual/blas
 	virtual/lapack
 	tk? ( dev-lang/tk )"
 DEPEND="${RDEPEND}
 	sys-devel/flex
 	dev-lang/perl
-	>=sys-apps/sed-4
-	doc? ( app-doc/doxygen
+	sys-apps/sed
+	doc? (
+		app-doc/doxygen
 		media-gfx/graphviz )"
 
 src_unpack() {
@@ -28,7 +29,8 @@ src_unpack() {
 
 	# do not install tkmolrender if not requested
 	if ! use tk; then
-		sed -e "s:.*/bin/molrender/tkmolrender.*::" \
+		sed \
+			-e "s:.*/bin/molrender/tkmolrender.*::" \
 			-e "s:.*\$(INSTALLBINOPT) tkmolrender.*::" \
 			-e "s:/bin/rm -f tkmolrender::" \
 			-i "./src/bin/molrender/Makefile" \
@@ -42,9 +44,10 @@ src_compile() {
 	econf \
 		$(use_enable threads) \
 		--enable-shared \
-		${myconf} || die "configure failed"
+		${myconf}
 
-	sed -i -e "s:^CFLAGS =.*$:CFLAGS=${CFLAGS}:" \
+	sed \
+		-e "s:^CFLAGS =.*$:CFLAGS=${CFLAGS}:" \
 		-e "s:^FFLAGS =.*$:FFLAGS=${FFLAGS:- -O2}:" \
 		-e "s:^CXXFLAGS =.*$:CXXFLAGS=${CXXFLAGS}:" \
 		lib/LocalMakefile
@@ -57,11 +60,11 @@ src_test() {
 	# we'll only run the small test set, since the
 	# medium and large ones take >10h and >24h on my
 	# 1.8Ghz P4M
-	make check0 || die "failed in test routines"
+	emake -j1 check0 || die "failed in test routines"
 }
 
 src_install() {
-	make installroot="${D}" install install_devel install_inc \
+	emake -j1 installroot="${D}" install install_devel install_inc \
 		|| die "install failed"
 
 	dodoc CHANGES CITATION README || die "failed to install docs"
@@ -69,8 +72,8 @@ src_install() {
 	# make extended docs
 	if use doc; then
 		cd "${S}"/doc
-		make all || die "failed to generate documentation"
-		doman man/man1/* && doman man/man3/* || \
+		emake -j1 all || die "failed to generate documentation"
+		doman man/man1/* man/man3/* || \
 			die "failed to install man pages"
 		dohtml -r html/
 	fi

@@ -1,0 +1,41 @@
+# ChangeLog for media-gfx/graphite2
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/graphite2/ChangeLog,v 1.8 2011/07/29 11:11:10 scarabeus Exp $
+
+  29 Jul 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  +files/graphite2-fix_wrong_linker_opts.patch, graphite2-0.9.4-r1.ebuild:
+  Fix compilation under gcc-4.6. Fixes bug #376799.
+
+  29 Jul 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  +files/graphite2-fix-nostdlib.patch, graphite2-0.9.4-r1.ebuild:
+  Fix nostdlibs typo correctly everywhere, fixes part of the bug #376799.
+
+  28 Jul 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  graphite2-0.9.4-r1.ebuild:
+  Disable docs generating. As it is really broken. Fixes bug #376649.
+
+  28 Jul 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  graphite2-0.9.4-r1.ebuild:
+  Fix typo in docs install.
+
+*graphite2-0.9.4-r1 (27 Jul 2011)
+
+  27 Jul 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  +files/graphite2-multilib-strict.patch, -graphite2-0.9.4.ebuild,
+  +graphite2-0.9.4-r1.ebuild:
+  Revision bump to fix multilib strictness. Fixes bug #376627.
+
+  27 Jul 2011; Tomáš Chvátal <scarabeus@gentoo.org> graphite2-0.9.4.ebuild:
+  Fix CFLAGS parameters. Should fix build on gcc-4.6. Fixes bug #376567.
+
+  27 Jul 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  +files/graphite2-disablefonttest.patch,
+  +files/graphite2-includes-libs-perl.patch, graphite2-0.9.4.ebuild:
+  Disable some tests and build perl bindings.
+
+*graphite2-0.9.4 (26 Jul 2011)
+
+  26 Jul 2011; Tomáš Chvátal <scarabeus@gentoo.org> +graphite2-0.9.4.ebuild,
+  +metadata.xml:
+  Add graphite which is optional dependency for libreoffice.
+

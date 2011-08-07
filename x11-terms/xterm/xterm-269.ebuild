@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-terms/xterm/xterm-269.ebuild,v 1.7 2011/06/28 20:09:31 ranger Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-terms/xterm/xterm-269.ebuild,v 1.9 2011/08/02 05:52:28 mattst88 Exp $
 
 EAPI=2
 inherit multilib
@@ -11,7 +11,7 @@ SRC_URI="ftp://invisible-island.net/${PN}/${P}.tgz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ~ppc64 s390 sh sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~x86-fbsd"
 IUSE="toolbar truetype unicode Xaw3d"
 
 COMMON_DEPEND="sys-libs/libutempter
@@ -24,7 +24,7 @@ COMMON_DEPEND="sys-libs/libutempter
 	x11-libs/libXrender
 	x11-libs/libXt
 	unicode? ( x11-apps/luit )
-	Xaw3d? ( x11-libs/Xaw3d )"
+	Xaw3d? ( x11-libs/libXaw3d )"
 RDEPEND="${COMMON_DEPEND}
 	media-fonts/font-misc-misc"
 DEPEND="${COMMON_DEPEND}

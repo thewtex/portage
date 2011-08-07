@@ -1,5 +1,5 @@
-sys-apps/sed >=app-admin/eselect-python-20091230
-media-video/mplayer dev-python/pygtk >=dev-lang/python-2.5 >=app-admin/eselect-python-20091230
+sys-apps/sed >=app-admin/eselect-python-20091230 || ( =dev-lang/python-2.7* =dev-lang/python-2.6* =dev-lang/python-2.5* )
+media-video/mplayer dev-python/pygtk >=app-admin/eselect-python-20091230 || ( =dev-lang/python-2.7* =dev-lang/python-2.6* =dev-lang/python-2.5* )
 0
 http://jdolan.dyndns.org/jaydolan/files/pymp-1.1.tar.bz2
 
@@ -12,9 +12,9 @@ eutils multilib portability python toolchain-funcs
 
 
 
-2
+3
 
-compile install postinst postrm prepare
+compile install postinst postrm prepare setup
 
 
 

@@ -1,6 +1,30 @@
 # ChangeLog for mail-client/claws-mail
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/claws-mail/ChangeLog,v 1.177 2011/06/29 19:52:02 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-client/claws-mail/ChangeLog,v 1.183 2011/07/31 10:33:50 fauli Exp $
+
+  31 Jul 2011; Christian Faulhammer <fauli@gentoo.org>
+  -claws-mail-3.7.8.ebuild, -claws-mail-3.7.9.ebuild:
+  clean up
+
+  30 Jul 2011; Raúl Porcel <armin76@gentoo.org> claws-mail-3.7.9-r1.ebuild:
+  alpha/sparc stable wrt #372957
+
+  23 Jul 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  claws-mail-3.7.9-r1.ebuild:
+  ppc64 stable wrt #372957
+
+  16 Jul 2011; Markos Chandras <hwoarang@gentoo.org>
+  claws-mail-3.7.9-r1.ebuild:
+  Stable on amd64 wrt bug #372957
+
+  10 Jul 2011; Christian Faulhammer <fauli@gentoo.org>
+  claws-mail-3.7.9-r1.ebuild, +files/claws-mail-3.7.9-fix-nossl.patch,
+  files/claws-mail-3.7.9_notify_crash.patch:
+  Fix building with USE="-ssl -gnutls" as reported by orlFaustus <ovm AT cs DOT
+  bg DOT ac DOT il> in bug 373611; update patch comments
+
+  05 Jul 2011; Jeroen Roovers <jer@gentoo.org> claws-mail-3.7.9-r1.ebuild:
+  Stable for HPPA (bug #372957).
 
   29 Jun 2011; Markus Meier <maekke@gentoo.org> claws-mail-3.7.9-r1.ebuild:
   x86 stable, bug #372957

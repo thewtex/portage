@@ -1,6 +1,28 @@
 # ChangeLog for sys-process/htop
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-process/htop/ChangeLog,v 1.92 2011/06/29 18:50:24 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-process/htop/ChangeLog,v 1.98 2011/07/22 13:48:01 jer Exp $
+
+  22 Jul 2011; Jeroen Roovers <jer@gentoo.org> htop-0.9.ebuild:
+  Stable for HPPA (bug #372889).
+
+  20 Jul 2011; Mark Loeser <halcy0n@gentoo.org> htop-0.9.ebuild:
+  Stable for ppc64; bug #372889
+
+*htop-0.9-r1 (09 Jul 2011)
+
+  09 Jul 2011; Samuli Suominen <ssuominen@gentoo.org> +htop-0.9-r1.ebuild,
+  +files/htop-0.9-uclibc.patch:
+  Fix building with uClibc wrt #374595 by Pinkbyte. Revision bump to avoid
+  problems in stable and newly introduced eautoreconf.
+
+  08 Jul 2011; Samuli Suominen <ssuominen@gentoo.org> htop-0.8.3.ebuild:
+  Convert from "useq" to "use".
+
+  02 Jul 2011; nixnut <nixnut@gentoo.org> htop-0.9.ebuild:
+  ppc stable #372889
+
+  02 Jul 2011; Raúl Porcel <armin76@gentoo.org> htop-0.9.ebuild:
+  alpha/arm/ia64/sh/sparc stable wrt #372889
 
   29 Jun 2011; Markus Meier <maekke@gentoo.org> htop-0.9.ebuild:
   x86 stable, bug #372889

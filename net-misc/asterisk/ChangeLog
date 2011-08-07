@@ -1,6 +1,59 @@
 # ChangeLog for net-misc/asterisk
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/asterisk/ChangeLog,v 1.329 2011/06/29 20:23:17 chainsaw Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/asterisk/ChangeLog,v 1.337 2011/07/26 13:53:33 chainsaw Exp $
+
+*asterisk-1.8.5.0-r3 (26 Jul 2011)
+
+  26 Jul 2011; Tony Vroon <chainsaw@gentoo.org> +asterisk-1.8.5.0-r3.ebuild:
+  Patch from Jaco Kroon allows setvar from users.conf to work for chan_dahdi
+  again, closes bug #374195. Patch from upstream bug #ASTERISK-18082 resolves a
+  segmentation fault or deadlock that can occur for multiple simultaneous
+  attended transfers. The pri-missing-keyword.patch was already applied upstream 
+  but in a different location; dropped as per Erik Wallin in bug #375291.
+
+*asterisk-1.8.5.0-r2 (14 Jul 2011)
+
+  14 Jul 2011; Tony Vroon <chainsaw@gentoo.org> -asterisk-1.8.5.0-r1.ebuild,
+  +asterisk-1.8.5.0-r2.ebuild:
+  An intermittent explosion due to memory corruption was identified and patched
+  by Jaco Kroon, closes bug #375141. Old ebuild killed.
+
+*asterisk-1.8.5.0-r1 (13 Jul 2011)
+
+  13 Jul 2011; Tony Vroon <chainsaw@gentoo.org> -asterisk-1.8.5.0.ebuild,
+  +asterisk-1.8.5.0-r1.ebuild:
+  Rediffed & revived backward compatibility patch by Erik Wallin closes bug
+  #374947. Double-free and resulting segmentation fault reported by Jaco Kroon
+  and fixed upstream by kpfleming, closes bug #375009. Old ebuild killed as it
+  is unusable if HTTP is enabled on the management interface.
+
+  12 Jul 2011; Eray Aslan <eras@gentoo.org> asterisk-1.8.5.0.ebuild:
+  Support gmime-2.4 - bug #373505
+
+*asterisk-1.8.5.0 (12 Jul 2011)
+
+  12 Jul 2011; Tony Vroon <chainsaw@gentoo.org> +asterisk-1.8.5.0.ebuild:
+  Version bump; PUBLISH fixes now upstream. The channel variable backward
+  compatibility patch no longer applies and has been dropped. Fixes a deadlock
+  on attended transfer, thread blocking issue in SIP TCP/TLS, chanspy channel
+  leak, MeetMe PIN prompts, stuck AGI scripts, lost MWI notifications & a
+  conference crosstalk issue during the leader wait.
+
+*asterisk-1.6.2.19-r2 (06 Jul 2011)
+
+  06 Jul 2011; Tony Vroon <chainsaw@gentoo.org> +asterisk-1.6.2.19-r2.ebuild:
+  Regression fix by Jaco Kroon closes bug #374195. If you set DAHDI channel
+  variables from your dial plan and this stopped working in 1.6.2.19; this is
+  for you.
+
+*asterisk-1.8.4.4-r1 (04 Jul 2011)
+*asterisk-1.6.2.19-r1 (04 Jul 2011)
+
+  04 Jul 2011; Tony Vroon <chainsaw@gentoo.org> -asterisk-1.6.2.19.ebuild,
+  +asterisk-1.6.2.19-r1.ebuild, -asterisk-1.8.4.4.ebuild,
+  +asterisk-1.8.4.4-r1.ebuild:
+  Actually install the newest init script with Jaco Kroon's restart fixes; as
+  pointed out by Erik Wallin (reopened) bug #345307.
 
 *asterisk-1.6.2.19 (29 Jun 2011)
 

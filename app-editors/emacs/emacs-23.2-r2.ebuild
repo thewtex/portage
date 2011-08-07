@@ -1,31 +1,17 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/emacs/emacs-23.2-r2.ebuild,v 1.12 2010/12/29 13:09:01 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-editors/emacs/emacs-23.2-r2.ebuild,v 1.15 2011/08/02 17:44:03 ulm Exp $
 
 EAPI=2
 
 inherit autotools elisp-common eutils flag-o-matic multilib
 
-if [ "${PV##*.}" = "9999" ]; then
-	inherit bzr
-	EMACS_BRANCH="emacs-23"
-	EBZR_REPO_URI="bzr://bzr.savannah.gnu.org/emacs/${EMACS_BRANCH}/"
-	EBZR_CACHE_DIR="emacs-${EMACS_BRANCH#emacs-}"
-	SRC_URI=""
-else
-	SRC_URI="mirror://gnu/emacs/${P}.tar.bz2
-		mirror://gentoo/${P}-patches-2.tar.bz2"
-	# FULL_VERSION keeps the full version number, which is needed in
-	# order to determine some path information correctly for copy/move
-	# operations later on
-	FULL_VERSION="${PV%%_*}"
-	S="${WORKDIR}/emacs-${FULL_VERSION}"
-fi
-
 DESCRIPTION="The extensible, customizable, self-documenting real-time display editor"
 HOMEPAGE="http://www.gnu.org/software/emacs/"
+SRC_URI="mirror://gnu/emacs/${P}a.tar.bz2
+	mirror://gentoo/${P}-patches-2.tar.bz2"
 
-LICENSE="GPL-3 FDL-1.3 BSD as-is MIT W3C unicode"
+LICENSE="GPL-3 FDL-1.3 BSD as-is MIT W3C unicode PSF-2"
 SLOT="23"
 KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 s390 sh sparc x86 ~sparc-fbsd ~x86-fbsd"
 IUSE="alsa dbus gconf gif gpm gtk gzip-el hesiod jpeg kerberos m17n-lib motif png sound source svg tiff toolkit-scroll-bars X Xaw3d xft +xpm"
@@ -61,7 +47,7 @@ RDEPEND="sys-libs/ncurses
 		)
 		gtk? ( x11-libs/gtk+:2 )
 		!gtk? (
-			Xaw3d? ( x11-libs/Xaw3d )
+			Xaw3d? ( x11-libs/libXaw3d )
 			!Xaw3d? ( motif? ( >=x11-libs/openmotif-2.3:0 ) )
 		)
 	)"
@@ -76,21 +62,14 @@ RDEPEND="${RDEPEND}
 
 EMACS_SUFFIX="emacs-${SLOT}"
 SITEFILE="20${PN}-${SLOT}-gentoo.el"
+# FULL_VERSION keeps the full version number, which is needed in
+# order to determine some path information correctly for copy/move
+# operations later on
+FULL_VERSION="${PV%%_*}"
+S="${WORKDIR}/emacs-${FULL_VERSION}"
 
 src_prepare() {
-	if [ "${PV##*.}" = "9999" ]; then
-		FULL_VERSION=$(grep 'defconst[	 ]*emacs-version' lisp/version.el \
-			| sed -e 's/^[^"]*"\([^"]*\)".*$/\1/')
-		[ "${FULL_VERSION}" ] || die "Cannot determine current Emacs version"
-		echo
-		einfo "Emacs branch: ${EMACS_BRANCH}"
-		einfo "Emacs version number: ${FULL_VERSION}"
-		[ "${FULL_VERSION%.*}" = ${PV%.*} ] \
-			|| die "Upstream version number changed to ${FULL_VERSION}"
-		echo
-	else
-		EPATCH_SUFFIX=patch epatch
-	fi
+	EPATCH_SUFFIX=patch epatch
 
 	sed -i \
 		-e "s:/usr/lib/crtbegin.o:$(`tc-getCC` -print-file-name=crtbegin.o):g" \
@@ -199,11 +178,6 @@ src_configure() {
 
 src_compile() {
 	export SANDBOX_ON=0			# for the unbelievers, see Bug #131505
-	if [ "${PV##*.}" = "9999" ]; then
-		emake CC="$(tc-getCC)" bootstrap || die "make bootstrap failed"
-		# cleanup, otherwise emacs will be dumped again in src_install
-		(cd src; emake versionclean)
-	fi
 	emake CC="$(tc-getCC)" || die "emake failed"
 }
 

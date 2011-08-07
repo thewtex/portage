@@ -1,6 +1,53 @@
 # ChangeLog for media-libs/libpng
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libpng/ChangeLog,v 1.285 2011/05/03 13:20:04 scarabeus Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libpng/ChangeLog,v 1.297 2011/07/16 15:56:29 armin76 Exp $
+
+  16 Jul 2011; Raúl Porcel <armin76@gentoo.org> libpng-1.4.8.ebuild:
+  alpha/ia64/m68k/s390/sh/sparc stable wrt #373967
+
+  13 Jul 2011; Markus Meier <maekke@gentoo.org> libpng-1.4.8.ebuild:
+  arm stable, bug #373967
+
+  12 Jul 2011; Jeroen Roovers <jer@gentoo.org> libpng-1.2.44.ebuild,
+  libpng-1.4.8.ebuild:
+  Stable for HPPA (bug #373967). Mark 1.2 ~hppa.
+
+  12 Jul 2011; Thomas Kahle <tomka@gentoo.org> libpng-1.4.8.ebuild:
+  x86 stable per bug 373967
+
+  12 Jul 2011; Thomas Kahle <tomka@gentoo.org> libpng-1.2.45.ebuild:
+  x86 stable per bug 373967
+
+  11 Jul 2011; Fabian Groffen <grobian@gentoo.org> libpng-1.4.8-r1.ebuild:
+  Marked ~m68k-mint, bug #374155
+
+  11 Jul 2011; Tony Vroon <chainsaw@gentoo.org> libpng-1.2.45.ebuild,
+  libpng-1.4.8.ebuild:
+  Marked stable on AMD64 based on arch testing by Ian Delaney, for security bug
+  #373697 by Tim Sammut.
+
+*libpng-1.5.4 (09 Jul 2011)
+*libpng-1.4.8-r1 (09 Jul 2011)
+
+  09 Jul 2011; Samuli Suominen <ssuominen@gentoo.org> +libpng-1.4.8-r1.ebuild,
+  +libpng-1.5.4.ebuild:
+  Version bump and use released apng patchset.
+
+  09 Jul 2011; Kacper Kowalik <xarthisius@gentoo.org> libpng-1.2.44.ebuild,
+  libpng-1.2.45.ebuild, libpng-1.4.8.ebuild:
+  ppc/ppc64 stable wrt #373967, ppc/ppc64 keywords dropped (:1.2)
+
+  08 Jul 2011; Samuli Suominen <ssuominen@gentoo.org> libpng-1.4.8.ebuild,
+  +files/libpng-1.4.8-build.patch:
+  Restore pngpriv.h in pngtest.c because we are using apng patch from 1.4.7 wrt
+  #374449 by Markus Oehme
+
+*libpng-1.4.8 (08 Jul 2011)
+*libpng-1.2.45 (08 Jul 2011)
+
+  08 Jul 2011; Samuli Suominen <ssuominen@gentoo.org> +libpng-1.2.45.ebuild,
+  +files/libpng-1.2.45-build.patch, +libpng-1.4.8.ebuild:
+  Version bump.
 
   03 May 2011; Tomáš Chvátal <scarabeus@gentoo.org> libpng-1.5.2.ebuild:
   Use eapi4 to make the ebuild smaller a bit.

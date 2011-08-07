@@ -1,12 +1,12 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/apbs/apbs-1.3-r1.ebuild,v 1.5 2011/06/21 16:07:35 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/apbs/apbs-1.3-r1.ebuild,v 1.8 2011/07/07 09:29:52 jlec Exp $
 
 EAPI="3"
 
 PYTHON_DEPEND="python? 2"
 
-inherit autotools eutils fortran-2 flag-o-matic python toolchain-funcs versionator
+inherit autotools eutils flag-o-matic fortran-2 python toolchain-funcs versionator
 
 MY_PV=$(get_version_component_range 1-3)
 MY_P="${PN}-${MY_PV}"
@@ -65,12 +65,16 @@ src_prepare() {
 		"${FILESDIR}"/${PN}-1.2.1b-parallelbuild.patch \
 		"${FILESDIR}"/${P}-mainroutines.patch \
 		"${FILESDIR}"/${P}-zlib.patch \
-		"${FILESDIR}"/${P}-python.patch
+		"${FILESDIR}"/${P}-python.patch \
+		"${FILESDIR}"/${P}-blas.patch
 	sed "s:GENTOO_PKG_NAME:${PN}:g" \
 		-i Makefile.am || die "Cannot correct package name"
 	# this test is broken
 	sed '/ion-pmf/d' -i examples/Makefile.am || die
-	sed 's:libmaloc.a:libmaloc.so:g' -i configure.ac || die
+	sed \
+		-e 's:libmaloc.a:libmaloc.so:g' \
+		-e 's:-lblas::g' \
+		-i configure.ac || die
 	eautoreconf
 }
 
@@ -108,7 +112,7 @@ src_configure() {
 	econf \
 		--disable-maloc-rebuild \
 		--enable-shared \
-		--with-blas=-lblas \
+		--with-blas="$(pkg-config --libs blas)" \
 		$(use_enable openmp) \
 		$(use_enable python) \
 		$(use_enable tools) \

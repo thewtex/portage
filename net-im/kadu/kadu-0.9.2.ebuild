@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/kadu/kadu-0.9.2.ebuild,v 1.2 2011/06/22 17:58:39 hwoarang Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-im/kadu/kadu-0.9.2.ebuild,v 1.4 2011/07/17 17:39:15 reavertm Exp $
 
 EAPI="4"
 
@@ -13,7 +13,7 @@ HOMEPAGE="http://www.kadu.net"
 SRC_URI="http://www.kadu.net/download/stable/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
-KEYWORDS="amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 SLOT="0"
 #dbus tlen
 IUSE="alsa ao +gadu kde phonon speech spell +ssl xmpp"
@@ -34,6 +34,7 @@ COMMON_DEPEND="
 	>=x11-libs/qt-dbus-4.4:4
 	>=x11-libs/qt-gui-4.4:4[qt3support]
 	>=x11-libs/qt-sql-4.4:4[sqlite]
+	>=x11-libs/qt-svg-4.4:4
 	>=x11-libs/qt-webkit-4.4:4
 	alsa? ( media-libs/alsa-lib )
 	ao? ( media-libs/libao )

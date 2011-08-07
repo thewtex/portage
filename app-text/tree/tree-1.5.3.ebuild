@@ -1,9 +1,8 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/tree/tree-1.5.3.ebuild,v 1.9 2011/01/06 16:37:51 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/tree/tree-1.5.3.ebuild,v 1.10 2011/07/21 16:32:32 mr_bones_ Exp $
 
 EAPI=2
-
 inherit toolchain-funcs flag-o-matic bash-completion
 
 DESCRIPTION="Lists directories recursively, and produces an indented listing of files."

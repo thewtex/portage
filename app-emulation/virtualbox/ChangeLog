@@ -1,6 +1,30 @@
 # ChangeLog for app-emulation/virtualbox
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/virtualbox/ChangeLog,v 1.74 2011/06/28 20:46:39 polynomial-c Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/virtualbox/ChangeLog,v 1.80 2011/07/25 08:34:19 polynomial-c Exp $
+
+  25 Jul 2011; Lars Wendler <polynomial-c@gentoo.org> virtualbox-4.0.10.ebuild,
+  virtualbox-4.0.12.ebuild, virtualbox-4.1.0.ebuild:
+  Removed pam USE flag again (bug #376307).
+
+  24 Jul 2011; Lars Wendler <polynomial-c@gentoo.org> virtualbox-4.0.10.ebuild,
+  virtualbox-4.0.12.ebuild, virtualbox-4.1.0.ebuild:
+  Made pam support optional (bug #351404). Marked 4.0.12 version as stable on
+  amd64 (was forgotten by the arch team) for bug #371935.
+
+  22 Jul 2011; Thomas Kahle <tomka@gentoo.org> virtualbox-4.0.12.ebuild:
+  x86 stable per bug 371935
+
+*virtualbox-4.1.0 (19 Jul 2011)
+
+  19 Jul 2011; Lars Wendler <polynomial-c@gentoo.org> +virtualbox-4.1.0.ebuild,
+  +files/virtualbox-4.1.0-vboxpci-build.patch:
+  Added 4.1 version branch
+
+*virtualbox-4.0.12 (17 Jul 2011)
+
+  17 Jul 2011; Lars Wendler <polynomial-c@gentoo.org> -virtualbox-4.0.8.ebuild,
+  +virtualbox-4.0.12.ebuild:
+  Version bump. Removed old.
 
 *virtualbox-4.0.10 (28 Jun 2011)
 

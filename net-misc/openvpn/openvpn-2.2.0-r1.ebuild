@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/openvpn/openvpn-2.2.0-r1.ebuild,v 1.1 2011/05/01 10:40:19 djc Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/openvpn/openvpn-2.2.0-r1.ebuild,v 1.3 2011/07/29 08:45:05 zmedico Exp $
 
 EAPI=4
 
@@ -16,7 +16,7 @@ HOMEPAGE="http://openvpn.net/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd ~x86-linux"
 IUSE="examples iproute2 ipv6 minimal pam passwordsave selinux ssl static pkcs11 userland_BSD"
 
 DEPEND=">=dev-libs/lzo-1.07
@@ -63,7 +63,7 @@ src_configure() {
 		$(use_enable ssl) \
 		$(use_enable ssl crypto) \
 		$(use_enable iproute2) \
-		--docdir="${DESTDIR}/usr/share/doc/${PF}"
+		--docdir="${EPREFIX}/usr/share/doc/${PF}"
 }
 
 src_compile() {
@@ -113,7 +113,7 @@ src_install() {
 	doenvd "${FILESDIR}/65openvpn" # config-protect easy-rsa
 	if ! use minimal ; then
 		cd easy-rsa/2.0
-		make install "DESTDIR=${D}/usr/share/${PN}/easy-rsa"
+		make install "DESTDIR=${D}" "PREFIX=${EPREFIX}/usr/share/${PN}/easy-rsa"
 		cd ../..
 
 		exeinto "/usr/$(get_libdir)/${PN}"

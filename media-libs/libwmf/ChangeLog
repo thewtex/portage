@@ -1,6 +1,35 @@
 # ChangeLog for media-libs/libwmf
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libwmf/ChangeLog,v 1.70 2011/05/23 17:18:32 scarabeus Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libwmf/ChangeLog,v 1.77 2011/07/25 14:43:54 xarthisius Exp $
+
+  25 Jul 2011; Kacper Kowalik <xarthisius@gentoo.org> libwmf-0.2.8.4-r4.ebuild:
+  ppc/ppc64 stable wrt #373889
+
+  23 Jul 2011; Raúl Porcel <armin76@gentoo.org> libwmf-0.2.8.4-r4.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #373889
+
+  17 Jul 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  libwmf-0.2.8.4-r4.ebuild:
+  Reorder xml and expat useflags in order to fix bug #373919. This cause no
+  factical change, just reorders the use deps bit so it is more reasonable wrt
+  xml useflag.
+
+  17 Jul 2011; Markus Meier <maekke@gentoo.org> libwmf-0.2.8.4-r4.ebuild:
+  x86 stable, bug #373889
+
+  12 Jul 2011; Markus Meier <maekke@gentoo.org> libwmf-0.2.8.4-r4.ebuild:
+  arm stable, bug #373889
+
+  10 Jul 2011; Markos Chandras <hwoarang@gentoo.org> libwmf-0.2.8.4-r4.ebuild:
+  Stable on amd64 wrt bug #373889
+
+*libwmf-0.2.8.4-r4 (01 Jul 2011)
+
+  01 Jul 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  +libwmf-0.2.8.4-r4.ebuild, +files/libwmf-0.2.8.4-gdk-pixbuf.patch,
+  +files/libwmf-0.2.8.4-use-system-fonts.patch:
+  Revision bump in order to fix gdk-pixbuf split and use system fonts. Fixes
+  bugs #256087 and #368485.
 
   23 May 2011; Tomáš Chvátal <scarabeus@gentoo.org>
   libwmf-0.2.8.4-r3.ebuild, +files/libwmf-0.2.8.4-libpng-1.5.patch:

@@ -1,6 +1,14 @@
 # ChangeLog for media-libs/opencv
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/opencv/ChangeLog,v 1.40 2011/06/26 14:56:25 ranger Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/opencv/ChangeLog,v 1.42 2011/07/18 09:31:50 dilfridge Exp $
+
+  18 Jul 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  opencv-2.2.0-r10.ebuild:
+  Require new enough cmake for the FindBLAS and FindLAPACK fixes, bug 373557
+
+  13 Jul 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  opencv-2.2.0-r10.ebuild, +files/opencv-2.2.0-findblas.patch:
+  Find BLAS using pkgconfig, bug 373557
 
   26 Jun 2011; Brent Baude <ranger@gentoo.org> opencv-2.1.0.ebuild:
   Marking opencv-2.1.0 ppc for bug 365273

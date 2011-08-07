@@ -1,6 +1,19 @@
 # ChangeLog for sci-electronics/oregano
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-electronics/oregano/ChangeLog,v 1.47 2011/06/28 20:09:50 ranger Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-electronics/oregano/ChangeLog,v 1.51 2011/08/02 16:23:27 tomjbe Exp $
+
+  02 Aug 2011; Thomas Beierlein <tomjbe@gentoo.org>
+  -files/oregano-0.60.0-dont-run-update-mime-database.patch,
+  -oregano-0.69.0.ebuild, -oregano-0.69.0-r1.ebuild,
+  -files/oregano-0.69.0-ldflags.diff:
+  remove oregano-0.69.0 (pending 22 Jul 2011), see #354241 for reference
+
+  15 Jul 2011; Denis Dupeyron <calchan@gentoo.org> oregano-0.69.0.ebuild,
+  oregano-0.69.0-r1.ebuild, oregano-0.69.1.ebuild, oregano-0.69.1-r1.ebuild:
+  Change comment about ng-spice-rework to ngspice due to move.
+
+  05 Jul 2011; Thomas Beierlein <tomjbe@gentoo.org> oregano-0.69.1-r1.ebuild:
+  strip unsupported flags (bug 369875). Thanks for reporting to R. Cernansky
 
   28 Jun 2011; Brent Baude <ranger@gentoo.org> oregano-0.69.1.ebuild:
   Marking oregano-0.69.1 ppc for bug 361889

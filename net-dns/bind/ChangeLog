@@ -1,6 +1,34 @@
 # ChangeLog for net-dns/bind
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-dns/bind/ChangeLog,v 1.341 2011/06/16 18:56:09 idl0r Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dns/bind/ChangeLog,v 1.348 2011/07/09 16:31:30 armin76 Exp $
+
+  09 Jul 2011; Raúl Porcel <armin76@gentoo.org> bind-9.7.3_p3.ebuild:
+  alpha/arm/ia64/s390/sh/sparc stable wrt #374201
+
+  09 Jul 2011; Jeroen Roovers <jer@gentoo.org> bind-9.8.0_p4.ebuild:
+  Back to ~hppa.
+
+  09 Jul 2011; Jeroen Roovers <jer@gentoo.org> bind-9.7.3_p3.ebuild,
+  bind-9.8.0_p4.ebuild:
+  Stable for HPPA (bug #374201).
+
+  09 Jul 2011; Kacper Kowalik <xarthisius@gentoo.org> bind-9.7.3_p3.ebuild:
+  ppc/ppc64 stable wrt #374201
+
+  08 Jul 2011; Thomas Kahle <tomka@gentoo.org> bind-9.7.3_p3.ebuild:
+  x86 stable per bug 374201
+
+  06 Jul 2011; Markos Chandras <hwoarang@gentoo.org> bind-9.7.3_p3.ebuild:
+  Stable on amd64 wrt bug #374201
+
+*bind-9.8.0_p4 (05 Jul 2011)
+*bind-9.7.3_p3 (05 Jul 2011)
+
+  05 Jul 2011; Christian Ruppert <idl0r@gentoo.org> -bind-9.7.3.ebuild,
+  -bind-9.7.3-r1.ebuild, +bind-9.7.3_p3.ebuild, -bind-9.8.0_p2-r1.ebuild,
+  +bind-9.8.0_p4.ebuild, -files/named.confd-r5, -files/named.init-r9:
+  Version bumps. 9.7.3_p4 fixes CVE-2011-2464. 9.8.0_p4 fixes CVE-2011-1907 and
+  CVE-2011-2464. Remove old version.
 
   16 Jun 2011; Christian Ruppert <idl0r@gentoo.org> files/named.init-r11:
   Make the init script POSIX conform again, bug 366431.

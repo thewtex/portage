@@ -1,8 +1,8 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/xchat/xchat-2.8.8-r2.ebuild,v 1.3 2011/03/22 09:54:15 nirbheek Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-irc/xchat/xchat-2.8.8-r2.ebuild,v 1.7 2011/07/12 07:39:59 polynomial-c Exp $
 
-EAPI=2
+EAPI=3
 
 inherit eutils versionator gnome2 autotools
 
@@ -16,7 +16,7 @@ HOMEPAGE="http://www.xchat.org/"
 
 LICENSE="GPL-2 hires-icons? ( GPL-3 )"
 SLOT="2"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-freebsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 IUSE="dbus fastscroll +gtk hires-icons ipv6 libnotify mmx nls ntlm perl python spell ssl tcl xchatdccserver"
 
 RDEPEND=">=dev-libs/glib-2.6.0:2
@@ -44,8 +44,10 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-input-box4.patch
-	epatch "${FILESDIR}"/${P}-libnotify07.patch
+	epatch "${FILESDIR}"/${PN}-input-box4.patch \
+		"${FILESDIR}"/${PN}-2.8.4-interix.patch \
+		"${FILESDIR}"/${P}-libnotify07.patch \
+		"${FILESDIR}"/${P}-dbus.patch
 
 	use xchatdccserver && epatch "${DISTDIR}"/xchat-dccserver-0.6.patch.bz2
 
@@ -57,7 +59,7 @@ src_prepare() {
 
 	# xchat sourcecode ships with po/Makefile.in.in from gettext-0.17
 	# which fails with >=gettext-0.18
-	cp /usr/share/gettext/po/Makefile.in.in "${S}"/po/ || die
+	cp "${EPREFIX}"/usr/share/gettext/po/Makefile.in.in "${S}"/po/ || die
 
 	eautoreconf
 }
@@ -66,6 +68,13 @@ src_configure() {
 	# xchat's configure script uses sys.path to find library path
 	# instead of python-config (#25943)
 	unset PYTHONPATH
+
+	if [[ ${CHOST} == *-interix* ]]; then
+		# this -Wl,-E option for the interix ld makes some checks
+		# false positives, so set those here.
+		export ac_cv_func_strtoull=no
+		export ac_cv_func_memrchr=no
+	fi
 
 	econf \
 		--enable-shm \
@@ -102,17 +111,28 @@ src_install() {
 		# Replace default pixmap icon
 		cp "48x48/xchat.png" "${D}/usr/share/pixmaps" || die
 	fi
+
+	# remove useless desktop entry when gtk USE flag is unset
+	if ! use gtk ; then
+		rm "${ED}"/usr/share/applications -rf
+	fi
 }
 
 pkg_postinst() {
-	elog
-	elog "XChat binary has been renamed from xchat-2 to xchat."
-	elog
-
-	if has_version net-irc/xchat-systray
-	then
-		elog "XChat now includes it's own systray icon, you may want to remove net-irc/xchat-systray."
+	if use gtk ; then
 		elog
+		elog "XChat binary has been renamed from xchat-2 to xchat."
+		elog
+
+		if has_version net-irc/xchat-systray
+		then
+			elog "XChat now includes it's own systray icon, you may want to remove net-irc/xchat-systray."
+			elog
+		fi
+	else
+		elog "You have disabled the gtk USE flag. This means you don't have"
+		elog "the GTK-GUI for xchat but only a text interface called \"xchat-text\"."
 	fi
+
 	gnome2_icon_cache_update
 }

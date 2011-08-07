@@ -1,8 +1,8 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/pdb-extract/pdb-extract-3.004-r2.ebuild,v 1.1 2010/06/15 14:45:45 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/pdb-extract/pdb-extract-3.004-r2.ebuild,v 1.3 2011/08/01 19:27:59 maekke Exp $
 
-EAPI="3"
+EAPI=3
 
 inherit eutils toolchain-funcs multilib prefix
 
@@ -14,7 +14,7 @@ SRC_URI="http://sw-tools.pdb.org/apps/PDB_EXTRACT/${MY_P}.tar.gz"
 
 LICENSE="PDB"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~ppc x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 RDEPEND="!<app-text/html-xml-utils-5.3"
@@ -24,10 +24,11 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-cflags-install.patch
-	epatch "${FILESDIR}"/${P}-gcc-4.3.patch
-	epatch "${FILESDIR}"/${P}-Makefile.patch
-	epatch "${FILESDIR}"/${P}-env.patch
+	epatch \
+		"${FILESDIR}"/${P}-cflags-install.patch \
+		"${FILESDIR}"/${P}-gcc-4.3.patch \
+		"${FILESDIR}"/${P}-Makefile.patch \
+		"${FILESDIR}"/${P}-env.patch
 
 	sed -i "s:GENTOOLIBDIR:$(get_libdir):g" \
 		pdb-extract-v3.0/Makefile \

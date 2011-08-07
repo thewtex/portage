@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libzen/libzen-0.4.20.ebuild,v 1.1 2011/06/17 19:53:45 radhermit Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libzen/libzen-0.4.20.ebuild,v 1.3 2011/07/21 10:38:43 maekke Exp $
 
 EAPI="4"
 
@@ -13,8 +13,8 @@ SRC_URI="mirror://sourceforge/zenlib/${MY_PN}%20-%20Sources/${PV}/${PN}_${PV}.ta
 
 LICENSE="as-is ZLIB"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
-IUSE="debug doc static-libs"
+KEYWORDS="amd64 x86"
+IUSE="doc static-libs"
 
 RDEPEND="sys-libs/zlib"
 DEPEND="${RDEPEND}
@@ -35,7 +35,6 @@ src_configure() {
 	econf \
 		--enable-unicode \
 		--enable-shared \
-		$(use_enable debug) \
 		$(use_enable static-libs static)
 }
 

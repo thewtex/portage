@@ -1,6 +1,39 @@
 # ChangeLog for net-wireless/bluez
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/bluez/ChangeLog,v 1.96 2011/06/19 13:57:59 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/bluez/ChangeLog,v 1.100 2011/08/01 09:49:02 pacho Exp $
+
+*bluez-4.96-r1 (01 Aug 2011)
+*bluez-4.96 (01 Aug 2011)
+
+  01 Aug 2011; Pacho Ramos <pacho@gentoo.org> -bluez-4.94.ebuild,
+  -files/4.18/bluetooth-conf.d, -files/4.18/conf.d-hidd, -bluez-4.95.ebuild,
+  -files/4.18/bluetooth-init.d, -files/4.18/cups-location.patch,
+  -bluez-4.95-r1.ebuild, -files/4.18/init.d-hidd, -bluez-4.95-r2.ebuild,
+  -files/4.60/bluetooth-conf.d, -bluez-4.95-r3.ebuild,
+  -files/4.60/bluetooth-init.d, -bluez-4.87.ebuild,
+  -files/bluez-4.95-high-cpu-usage.patch, +bluez-4.96.ebuild,
+  -files/4.60/cups-location.patch, +bluez-4.96-r1.ebuild:
+  Version bump and remove old (4.96 will be the next stable candidate if
+  possible).
+
+*bluez-4.95-r3 (28 Jul 2011)
+*bluez-4.95-r2 (28 Jul 2011)
+
+  28 Jul 2011; Peter Volkov <pva@gentoo.org> +bluez-4.95-r2.ebuild,
+  +bluez-4.95-r3.ebuild, +files/bluez-4.95-high-cpu-usage.patch:
+  Fix high CPU usage, bug #376677.
+
+  17 Jul 2011; Mark Loeser <halcy0n@gentoo.org> bluez-4.93.ebuild:
+  Stable on ppc/ppc64; bug #370707
+
+*bluez-4.95-r1 (08 Jul 2011)
+*bluez-4.95 (08 Jul 2011)
+
+  08 Jul 2011; Pacho Ramos <pacho@gentoo.org> -bluez-4.91.ebuild,
+  -bluez-4.94-r1.ebuild, +bluez-4.95.ebuild, +bluez-4.95-r1.ebuild:
+  Version bump, install systemd files (bug #371873 by Christoph Brill, Michał
+  Górny and Henry Gebhardt), RDEPEND on media-libs/libsndfile only with USE
+  'alsa' (bug #373117 by XhE), remove old.
 
   19 Jun 2011; Markus Meier <maekke@gentoo.org> bluez-4.93.ebuild:
   x86 stable, bug #370707

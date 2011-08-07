@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/wine/wine-1.2.3.ebuild,v 1.3 2011/06/29 04:56:23 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/wine/wine-1.2.3.ebuild,v 1.5 2011/07/11 03:34:37 vapier Exp $
 
 EAPI="2"
 
@@ -8,7 +8,7 @@ inherit eutils flag-o-matic multilib
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="git://source.winehq.org/git/wine.git"
-	inherit git autotools
+	inherit git-2 autotools
 	SRC_URI=""
 	#KEYWORDS=""
 else
@@ -41,6 +41,7 @@ MLIB_DEPS="amd64? (
 	)
 	openal? ( app-emulation/emul-linux-x86-sdl )
 	opengl? ( app-emulation/emul-linux-x86-opengl )
+	v4l? ( app-emulation/emul-linux-x86-medialibs )
 	app-emulation/emul-linux-x86-baselibs
 	>=sys-kernel/linux-headers-2.6
 	)"
@@ -102,7 +103,7 @@ src_unpack() {
 	fi
 
 	if [[ ${PV} == "9999" ]] ; then
-		git_src_unpack
+		git-2_src_unpack
 	else
 		unpack ${MY_P}.tar.bz2
 	fi

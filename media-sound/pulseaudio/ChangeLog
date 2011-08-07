@@ -1,6 +1,38 @@
 # ChangeLog for media-sound/pulseaudio
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/pulseaudio/ChangeLog,v 1.234 2011/06/28 21:20:37 ford_prefect Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/pulseaudio/ChangeLog,v 1.240 2011/08/03 04:10:40 ford_prefect Exp $
+
+*pulseaudio-0.99.1 (03 Aug 2011)
+
+  03 Aug 2011; Arun Raghavan <ford_prefect@gentoo.org>
+  +pulseaudio-0.99.1.ebuild:
+  Add new prerelease, p.masked. Lots of new features. Dropping everything but
+  amd64/x86 till we get keywords on dev-libs/json-c.
+
+  22 Jul 2011; Mark Loeser <halcy0n@gentoo.org> pulseaudio-0.9.22-r2.ebuild:
+  Stable for ppc64; bug #372355
+
+*pulseaudio-0.9.23-r1 (09 Jul 2011)
+
+  09 Jul 2011; Arun Raghavan <ford_prefect@gentoo.org>
+  -pulseaudio-0.9.23.ebuild, +pulseaudio-0.9.23-r1.ebuild,
+  pulseaudio-9999.ebuild:
+  Fix udev rules to go to /lib not /$(get_libdir) (thanks to Samuli for
+  pointing this out)
+
+  09 Jul 2011; Arun Raghavan <ford_prefect@gentoo.org>
+  pulseaudio-0.9.23.ebuild:
+  Remove redundant trailing backslash
+
+*pulseaudio-0.9.23 (09 Jul 2011)
+
+  09 Jul 2011; Arun Raghavan <ford_prefect@gentoo.org>
+  +pulseaudio-0.9.23.ebuild:
+  Bump to 0.9.23. Primarily bug fix release. Also includes an echo cancellation
+  module for early testing.
+
+  09 Jul 2011; Raúl Porcel <armin76@gentoo.org> pulseaudio-0.9.22-r2.ebuild:
+  alpha/ia64/sh/sparc/x86 stable wrt #372355
 
   28 Jun 2011; Arun Raghavan <ford_prefect@gentoo.org> pulseaudio-9999.ebuild:
   Fix live ebuild deps

@@ -1,6 +1,35 @@
 # ChangeLog for x11-libs/gdk-pixbuf
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/gdk-pixbuf/ChangeLog,v 1.20 2011/06/29 14:59:58 angelos Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/gdk-pixbuf/ChangeLog,v 1.28 2011/07/11 00:06:54 mattst88 Exp $
+
+  11 Jul 2011; Matt Turner <mattst88@gentoo.org> gdk-pixbuf-2.22.1-r2.ebuild:
+  Added ~mips, bug 364693
+
+  09 Jul 2011; Raúl Porcel <armin76@gentoo.org> gdk-pixbuf-2.22.1-r2.ebuild:
+  alpha/arm/ia64/sh/sparc stable wrt #371320
+
+  09 Jul 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  gdk-pixbuf-2.22.1-r2.ebuild:
+  ppc/ppc64 stable wrt #373999
+
+  06 Jul 2011; Mark Loeser <halcy0n@gentoo.org> gdk-pixbuf-2.22.1-r1.ebuild:
+  Stable for ppc64; bug #371320
+
+  05 Jul 2011; Thomas Kahle <tomka@gentoo.org> gdk-pixbuf-2.22.1-r2.ebuild:
+  x86 stable per bug 373999
+
+  05 Jul 2011; Jeroen Roovers <jer@gentoo.org> gdk-pixbuf-2.22.1-r2.ebuild:
+  Stable for HPPA (bug #373999).
+
+  04 Jul 2011; Pacho Ramos <pacho@gentoo.org> gdk-pixbuf-2.22.1-r2.ebuild:
+  amd64 stable, security bug #373999
+
+*gdk-pixbuf-2.22.1-r2 (04 Jul 2011)
+
+  04 Jul 2011; Pacho Ramos <pacho@gentoo.org> +gdk-pixbuf-2.22.1-r2.ebuild,
+  +files/gdk-pixbuf-2.22.1-CVE-2011-2485.patch:
+  GIF: Don't return a partially initialized pixbuf structure, fix security bug
+  #373999 by Tim Sammut.
 
   29 Jun 2011; Christoph Mende <angelos@gentoo.org>
   gdk-pixbuf-2.22.1-r1.ebuild:

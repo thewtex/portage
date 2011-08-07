@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/chromium-9999-r1.ebuild,v 1.33 2011/06/17 15:10:48 phajdan.jr Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/chromium-9999-r1.ebuild,v 1.41 2011/08/05 21:10:59 phajdan.jr Exp $
 
 EAPI="3"
 PYTHON_DEPEND="2:2.6"
@@ -16,7 +16,7 @@ ESVN_REPO_URI="http://src.chromium.org/svn/trunk/tools/depot_tools"
 LICENSE="BSD"
 SLOT="live"
 KEYWORDS=""
-IUSE="cups gnome gnome-keyring kerberos xinerama"
+IUSE="cups gnome gnome-keyring kerberos"
 
 # en_US is ommitted on purpose from the list below. It must always be available.
 LANGS="am ar bg bn ca cs da de el en_GB es es_LA et fa fi fil fr gu he hi hr
@@ -39,22 +39,22 @@ RDEPEND="app-arch/bzip2
 	media-libs/flac
 	virtual/jpeg
 	media-libs/libpng
-	>=media-libs/libvpx-0.9.5
 	>=media-libs/libwebp-0.1.2
 	media-libs/speex
+	media-sound/pulseaudio
 	cups? ( >=net-print/cups-1.3.11 )
 	sys-libs/zlib
 	x11-libs/gtk+:2
+	x11-libs/libXinerama
 	x11-libs/libXScrnSaver
 	x11-libs/libXtst"
 DEPEND="${RDEPEND}
 	dev-lang/perl
-	dev-lang/yasm
 	>=dev-util/gperf-3.0.3
 	>=dev-util/pkgconfig-0.23
+	>=sys-devel/bison-2.4.3
 	sys-devel/flex
 	>=sys-devel/make-3.81-r2
-	x11-libs/libXinerama
 	test? (
 		dev-python/pyftpdlib
 		dev-python/simplejson
@@ -63,7 +63,6 @@ DEPEND="${RDEPEND}
 RDEPEND+="
 	!=www-client/chromium-9999
 	kerberos? ( virtual/krb5 )
-	xinerama? ( x11-libs/libXinerama )
 	x11-misc/xdg-utils
 	virtual/ttf-fonts"
 
@@ -144,9 +143,6 @@ pkg_setup() {
 }
 
 src_prepare() {
-	# Make sure we don't use bundled libvpx headers.
-	epatch "${FILESDIR}/${PN}-system-vpx-r4.patch"
-
 	# Remove most bundled libraries. Some are still needed.
 	find third_party -type f \! -iname '*.gyp*' \
 		\! -path 'third_party/WebKit/*' \
@@ -164,19 +160,23 @@ src_prepare() {
 		\! -path 'third_party/leveldb/*' \
 		\! -path 'third_party/libjingle/*' \
 		\! -path 'third_party/libphonenumber/*' \
-		\! -path 'third_party/libvpx/libvpx.h' \
+		\! -path 'third_party/libvpx/*' \
 		\! -path 'third_party/mesa/*' \
 		\! -path 'third_party/modp_b64/*' \
 		\! -path 'third_party/npapi/*' \
 		\! -path 'third_party/openmax/*' \
 		\! -path 'third_party/ots/*' \
 		\! -path 'third_party/protobuf/*' \
+		\! -path 'third_party/sfntly/*' \
 		\! -path 'third_party/skia/*' \
 		\! -path 'third_party/speex/speex.h' \
 		\! -path 'third_party/sqlite/*' \
 		\! -path 'third_party/tcmalloc/*' \
 		\! -path 'third_party/tlslite/*' \
 		\! -path 'third_party/undoview/*' \
+		\! -path 'third_party/webgl_conformance/*' \
+		\! -path 'third_party/webrtc/*' \
+		\! -path 'third_party/yasm/*' \
 		\! -path 'third_party/zlib/contrib/minizip/*' \
 		-delete || die
 
@@ -192,11 +192,15 @@ src_configure() {
 	# additions, bug #336871.
 	myconf+=" -Ddisable_sse2=1"
 
+	# Disable NaCl temporarily, this tarball doesn't have IRT.
+	myconf+=" -Ddisable_nacl=1"
+
 	# Use system-provided libraries.
-	# TODO: use_system_ffmpeg (bug #71931). That makes yasm unneeded.
+	# TODO: use_system_ffmpeg
 	# TODO: use_system_hunspell (upstream changes needed).
 	# TODO: use_system_ssl (http://crbug.com/58087).
 	# TODO: use_system_sqlite (http://crbug.com/22208).
+	# TODO: use_system_vpx
 	myconf+="
 		-Duse_system_bzip2=1
 		-Duse_system_flac=1
@@ -207,9 +211,7 @@ src_configure() {
 		-Duse_system_libwebp=1
 		-Duse_system_libxml=1
 		-Duse_system_speex=1
-		-Duse_system_vpx=1
 		-Duse_system_xdg_utils=1
-		-Duse_system_yasm=1
 		-Duse_system_zlib=1"
 
 	# Optional dependencies.
@@ -232,7 +234,6 @@ src_configure() {
 
 	# Our system ffmpeg should support more codecs than the bundled one
 	# for Chromium.
-	# TODO: uncomment when bug #371931 is fixed.
 	# myconf+=" -Dproprietary_codecs=1"
 
 	local myarch="$(tc-arch)"
@@ -305,16 +306,26 @@ src_install() {
 	doexe out/Release/chrome_sandbox || die
 	fperms 4755 "${CHROMIUM_HOME}/chrome_sandbox"
 
-	insinto "${CHROMIUM_HOME}"
-	doins out/Release/libppGoogleNaClPluginChrome.so || die
+	# Install Native Client files on platforms that support it.
+	# insinto "${CHROMIUM_HOME}"
+	# case "$(tc-arch)" in
+	# 	amd64)
+	# 		doins native_client/irt_binaries/nacl_irt_x86_64.nexe || die
+	# 		doins out/Release/libppGoogleNaClPluginChrome.so || die
+	# 	;;
+	# 	x86)
+	# 		doins native_client/irt_binaries/nacl_irt_x86_32.nexe || die
+	# 		doins out/Release/libppGoogleNaClPluginChrome.so || die
+	# 	;;
+	# esac
 
 	newexe "${FILESDIR}"/chromium-launcher-r2.sh chromium-launcher.sh || die
 	sed "s:chromium-browser:chromium-browser${SUFFIX}:g" \
-		-i "${D}"/"${CHROMIUM_HOME}"/chromium-launcher.sh || die
+		-i "${ED}"/"${CHROMIUM_HOME}"/chromium-launcher.sh || die
 	sed "s:chromium.desktop:chromium${SUFFIX}.desktop:g" \
-		-i "${D}"/"${CHROMIUM_HOME}"/chromium-launcher.sh || die
+		-i "${ED}"/"${CHROMIUM_HOME}"/chromium-launcher.sh || die
 	sed "s:plugins:plugins --user-data-dir=\${HOME}/.config/chromium${SUFFIX}:" \
-		-i "${D}"/"${CHROMIUM_HOME}"/chromium-launcher.sh || die
+		-i "${ED}"/"${CHROMIUM_HOME}"/chromium-launcher.sh || die
 
 	# It is important that we name the target "chromium-browser",
 	# xdg-utils expect it; bug #355517.
@@ -377,10 +388,9 @@ src_install() {
 
 	# Chromium looks for these in its folder
 	# See media_posix.cc and base_paths_linux.cc
-	# TODO: uncomment when bug #371931 is fixed.
-	#dosym /usr/$(get_libdir)/libavcodec.so.52 "${CHROMIUM_HOME}" || die
-	#dosym /usr/$(get_libdir)/libavformat.so.52 "${CHROMIUM_HOME}" || die
-	#dosym /usr/$(get_libdir)/libavutil.so.50 "${CHROMIUM_HOME}" || die
+	# dosym /usr/$(get_libdir)/libavcodec.so.52 "${CHROMIUM_HOME}" || die
+	# dosym /usr/$(get_libdir)/libavformat.so.52 "${CHROMIUM_HOME}" || die
+	# dosym /usr/$(get_libdir)/libavutil.so.50 "${CHROMIUM_HOME}" || die
 	doexe out/Release/ffmpegsumo_nolink || die
 	doexe out/Release/libffmpegsumo.so || die
 
@@ -393,8 +403,9 @@ src_install() {
 	local mime_types="text/html;text/xml;application/xhtml+xml;"
 	mime_types+="x-scheme-handler/http;x-scheme-handler/https;" # bug #360797
 	make_desktop_entry chromium-browser${SUFFIX} "Chromium ${SLOT}" chromium-browser${SUFFIX} \
-		"Network;WebBrowser" "MimeType=${mime_types}"
-	sed -e "/^Exec/s/$/ %U/" -i "${D}"/usr/share/applications/*.desktop || die
+		"Network;WebBrowser" \
+		"MimeType=${mime_types}\nStartupWMClass=chromium-browser"
+	sed -e "/^Exec/s/$/ %U/" -i "${ED}"/usr/share/applications/*.desktop || die
 
 	# Install GNOME default application entry (bug #303100).
 	if use gnome; then
@@ -402,7 +413,7 @@ src_install() {
 		insinto /usr/share/gnome-control-center/default-apps
 		newins "${FILESDIR}"/chromium-browser.xml chromium-browser${SUFFIX}.xml || die
 		sed "s:chromium-browser:chromium-browser${SUFFIX}:g" -i \
-			"${D}"/usr/share/gnome-control-center/default-apps/chromium-browser${SUFFIX}.xml
+			"${ED}"/usr/share/gnome-control-center/default-apps/chromium-browser${SUFFIX}.xml
 	fi
 }
 

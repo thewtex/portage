@@ -1,6 +1,96 @@
 # ChangeLog for www-client/chromium
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/ChangeLog,v 1.396 2011/06/30 11:57:36 tomka Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/ChangeLog,v 1.410 2011/08/05 23:33:53 phajdan.jr Exp $
+
+*chromium-14.0.835.18 (05 Aug 2011)
+
+  05 Aug 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-14.0.825.0-r1.ebuild, +chromium-14.0.835.18.ebuild:
+  Version bump for dev channel release. Remove old.
+
+*chromium-13.0.782.109 (05 Aug 2011)
+*chromium-13.0.782.107-r1 (05 Aug 2011)
+
+  05 Aug 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-13.0.782.99.ebuild, +chromium-13.0.782.107-r1.ebuild,
+  +chromium-13.0.782.109.ebuild, -chromium-14.0.825.0.ebuild,
+  chromium-14.0.835.15.ebuild, chromium-9999-r1.ebuild:
+  Version bump for beta channel release. Fix a misgenerated desktop entry.
+  Remove old.
+
+*chromium-14.0.835.15 (04 Aug 2011)
+
+  04 Aug 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +files/chromium-system-libevent-r0.patch, +chromium-14.0.835.15.ebuild,
+  chromium-9999-r1.ebuild:
+  Version bump for dev channel release. Fixes bug #375759 by Mathieu Zhang, bug
+  #375827 by fkhp, bug #376301 by Julien Sanchez, bug #376499 by Mike Gilbert,
+  bug #376501 by Mike Gilbert. We're using bundled ffmpeg and libvpx again, and
+  NaCl is disabled temporarily.
+
+  04 Aug 2011; Markos Chandras <hwoarang@gentoo.org>
+  chromium-13.0.782.107.ebuild:
+  Stable on amd64 wrt bug #377475
+
+*chromium-13.0.782.107 (02 Aug 2011)
+
+  02 Aug 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-13.0.782.41-r1.ebuild, +chromium-13.0.782.107.ebuild:
+  Version bump for stable channel release. Remove old.
+
+*chromium-13.0.782.99 (21 Jul 2011)
+
+  21 Jul 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-13.0.782.41.ebuild, +chromium-13.0.782.99.ebuild:
+  Version bump for beta channel release. Remove old.
+
+*chromium-14.0.825.0-r1 (20 Jul 2011)
+
+  20 Jul 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-14.0.814.0.ebuild, +chromium-14.0.825.0-r1.ebuild,
+  chromium-9999-r1.ebuild:
+  Back to system ffmpeg, bug #371931 by Ambroz Bizjak.
+
+  20 Jul 2011; Fabian Groffen <grobian@gentoo.org>
+  chromium-13.0.782.41-r1.ebuild, chromium-14.0.825.0.ebuild,
+  chromium-9999-r1.ebuild:
+  Fix for Prefix, bug #367651
+
+  20 Jul 2011; Alex Alexander <wired@gentoo.org>
+  +files/chromium-icu-compatibility-r0.patch, chromium-14.0.825.0.ebuild:
+  icu fix, bug #374903
+
+  19 Jul 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-14.0.825.0.ebuild, chromium-9999-r1.ebuild:
+  The dependency on libXinerama is now mandatory.
+
+*chromium-14.0.825.0 (19 Jul 2011)
+
+  19 Jul 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-14.0.803.0.ebuild, +chromium-14.0.825.0.ebuild,
+  chromium-9999-r1.ebuild:
+  Version bump for dev channel release. Fixes bug #375425 by Mike Gilbert.
+  Remove old.
+
+  18 Jul 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-12.0.742.112.ebuild, chromium-13.0.782.41.ebuild,
+  chromium-13.0.782.41-r1.ebuild, chromium-14.0.803.0.ebuild,
+  chromium-14.0.814.0.ebuild, chromium-9999-r1.ebuild:
+  Add sys-devel/bison to DEPEND, bug #375451 by Albert W. Hopkins.
+
+*chromium-13.0.782.41-r1 (17 Jul 2011)
+
+  17 Jul 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-13.0.782.32.ebuild, +chromium-13.0.782.41-r1.ebuild:
+  Backport fixes for bug #372561 and bug #366413. Remove old.
+
+*chromium-14.0.814.0 (17 Jul 2011)
+
+  17 Jul 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-12.0.742.91-r1.ebuild, -chromium-14.0.797.0.ebuild,
+  +chromium-14.0.814.0.ebuild, chromium-9999-r1.ebuild:
+  Version bump for dev channel release. Fixes bug #372561 by Florian Scandella
+  and an issue reported by zmedico in bug #366413. Remove old.
 
   30 Jun 2011; Thomas Kahle <tomka@gentoo.org> chromium-12.0.742.112.ebuild:
   x86 stable per bug 373451

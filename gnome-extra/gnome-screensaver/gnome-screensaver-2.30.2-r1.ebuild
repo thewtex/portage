@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-extra/gnome-screensaver/gnome-screensaver-2.30.2-r1.ebuild,v 1.2 2011/03/20 04:08:00 nirbheek Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/gnome-screensaver/gnome-screensaver-2.30.2-r1.ebuild,v 1.5 2011/07/14 10:34:27 tomka Exp $
 
 EAPI="2"
 
@@ -13,7 +13,7 @@ SRC_URI="${SRC_URI}
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="~alpha amd64 ~ia64 ~ppc ~ppc64 ~sparc x86 ~x86-fbsd"
 KERNEL_IUSE="kernel_linux"
 IUSE="branding debug doc libnotify opengl pam $KERNEL_IUSE"
 
@@ -44,7 +44,8 @@ DEPEND="${RDEPEND}
 	x11-proto/xextproto
 	x11-proto/randrproto
 	x11-proto/scrnsaverproto
-	x11-proto/xf86miscproto"
+	x11-proto/xf86miscproto
+	gnome-base/gnome-common"
 
 DOCS="AUTHORS ChangeLog HACKING NEWS README TODO"
 

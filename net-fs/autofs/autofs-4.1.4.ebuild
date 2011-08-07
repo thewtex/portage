@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-fs/autofs/autofs-4.1.4.ebuild,v 1.4 2011/05/15 10:58:21 pva Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-fs/autofs/autofs-4.1.4.ebuild,v 1.6 2011/08/02 18:29:39 hwoarang Exp $
 
 EAPI="4"
 
@@ -14,7 +14,7 @@ SRC_URI="mirror://kernel/linux/daemons/${PN}/v4/${P}.tar.bz2
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="hesiod ldap"
 
 DEPEND="hesiod? ( net-dns/hesiod )
@@ -61,6 +61,10 @@ src_prepare() {
 }
 
 src_configure() {
+	# work around bug #355975 (mount modifies timestamp of /etc/mtab)
+	# with >=sys-apps/util-linux-2.19,
+	addpredict "/etc/mtab"
+
 	econf \
 		$(use_with ldap openldap) \
 		$(use_with hesiod)

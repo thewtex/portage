@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/zabbix/zabbix-1.8.5.ebuild,v 1.1 2011/04/27 17:29:23 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/zabbix/zabbix-1.8.5.ebuild,v 1.5 2011/07/29 22:39:39 patrick Exp $
 
 EAPI="2"
 
@@ -14,7 +14,7 @@ SRC_URI="http://prdownloads.sourceforge.net/zabbix/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 WEBAPP_MANUAL_SLOT="yes"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE="agent curl frontend ipv6 jabber ldap mysql openipmi oracle postgres proxy server -ssh snmp +sqlite3"
 
 COMMON_DEPEND="snmp? ( net-analyzer/net-snmp )
@@ -39,9 +39,9 @@ RDEPEND="${COMMON_DEPEND}
 		media-libs/gd[png]
 		app-admin/webapp-config )"
 DEPEND="${COMMON_DEPEND}
-	jabber? ( dev-util/pkgconfig )"
+	dev-util/pkgconfig"
 
-useq frontend && need_php_httpd
+use frontend && need_php_httpd
 
 src_prepare() {
 	epatch "${FILESDIR}/${PN}-1.8.3-as-needed.patch"
@@ -49,11 +49,11 @@ src_prepare() {
 }
 
 pkg_setup() {
-	if useq server || useq proxy ; then
+	if use server || use proxy ; then
 		local dbnum dbtypes="mysql oracle postgres sqlite3" dbtype
 		declare -i dbnum=0
 		for dbtype in ${dbtypes}; do
-			useq ${dbtype} && let dbnum++
+			use ${dbtype} && let dbnum++
 		done
 		if [ ${dbnum} -gt 1 ]; then
 			eerror
@@ -67,7 +67,7 @@ pkg_setup() {
 			eerror
 			die "No database type selected."
 		fi
-		if useq oracle; then
+		if use oracle; then
 			if [ -z "${ORACLE_HOME}" ]; then
 				eerror
 				eerror "The environment variable ORACLE_HOME must be set"
@@ -85,7 +85,7 @@ pkg_setup() {
 		fi
 	fi
 
-	if useq frontend; then
+	if use frontend; then
 		webapp_pkg_setup
 	fi
 
@@ -94,7 +94,7 @@ pkg_setup() {
 }
 
 pkg_postinst() {
-	if useq server || useq proxy ; then
+	if use server || use proxy ; then
 		elog
 		elog "You need to configure your database for Zabbix."
 		elog
@@ -123,7 +123,7 @@ pkg_postinst() {
 		fi
 	fi
 
-	if useq server; then
+	if use server; then
 		elog
 		elog "For distributed monitoring you have to run:"
 		elog
@@ -165,7 +165,7 @@ pkg_postinst() {
 	chmod 0640 \
 		"${ROOT}"/etc/zabbix/zabbix_*
 
-	if useq server || useq proxy ; then
+	if use server || use proxy ; then
 		# check for fping
 		fping_perms=$(stat -c %a /usr/sbin/fping 2>/dev/null)
 		case "${fping_perms}" in
@@ -225,7 +225,7 @@ src_install() {
 		/var/log/zabbix \
 		/var/run/zabbix
 
-	if useq server; then
+	if use server; then
 		insinto /etc/zabbix
 		doins \
 			"${FILESDIR}/1.6.6"/zabbix_server.conf \
@@ -248,7 +248,7 @@ src_install() {
 			/etc/zabbix/zabbix_trapper.conf
 	fi
 
-	if useq proxy; then
+	if use proxy; then
 		doinitd \
 			"${FILESDIR}/1.6.6"/init.d/zabbix-proxy
 		dosbin \
@@ -264,7 +264,7 @@ src_install() {
 			create
 	fi
 
-	if useq agent; then
+	if use agent; then
 		insinto /etc/zabbix
 		doins \
 			"${FILESDIR}/1.6.6"/zabbix_agent.conf \
@@ -302,7 +302,7 @@ src_install() {
 
 	dodoc README INSTALL NEWS ChangeLog
 
-	if useq frontend; then
+	if use frontend; then
 		webapp_src_preinst
 		cp -R frontends/php/* "${D}/${MY_HTDOCSDIR}"
 		webapp_postinst_txt en "${FILESDIR}/"1.6.6/postinstall-en.txt

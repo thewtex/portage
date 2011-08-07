@@ -1,6 +1,21 @@
 # ChangeLog for www-client/icecat
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/icecat/ChangeLog,v 1.91 2011/06/28 22:07:57 polynomial-c Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/icecat/ChangeLog,v 1.94 2011/07/31 14:48:36 polynomial-c Exp $
+
+  31 Jul 2011; Lars Wendler <polynomial-c@gentoo.org> icecat-5.0-r1.ebuild:
+  Removed hardened condition from pgo build as pgo is now masked on hardened.
+
+  26 Jul 2011; Lars Wendler <polynomial-c@gentoo.org> icecat-3.6.16-r1.ebuild,
+  icecat-3.6.16-r2.ebuild, +files/icecat-3.6.16-curl7217-includes-fix.patch,
+  icecat-4.0.1-r1.ebuild, icecat-5.0-r1.ebuild,
+  +files/icecat-5.0-curl7217-includes-fix.patch:
+  Fixed compilation with >=curl-7.21.7 (bug #375899).
+
+*icecat-5.0-r1 (06 Jul 2011)
+
+  06 Jul 2011; Lars Wendler <polynomial-c@gentoo.org> -icecat-5.0.ebuild,
+  +icecat-5.0-r1.ebuild:
+  Sync with firefox-5.0-r2
 
 *icecat-5.0 (28 Jun 2011)
 

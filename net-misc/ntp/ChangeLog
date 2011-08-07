@@ -1,6 +1,16 @@
 # ChangeLog for net-misc/ntp
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/ntp/ChangeLog,v 1.170 2011/06/03 17:51:38 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/ntp/ChangeLog,v 1.172 2011/07/20 03:52:34 vapier Exp $
+
+  20 Jul 2011; Mike Frysinger <vapier@gentoo.org> ntp-4.2.6_p3-r1.ebuild,
+  metadata.xml:
+  Add USE=samba to control building of ntp signing daemon #375159.
+
+*ntp-4.2.6_p3-r1 (11 Jul 2011)
+
+  11 Jul 2011; Robin H. Johnson <robbat2@gentoo.org> +ntp-4.2.6_p3-r1.ebuild:
+  Bug #374613: to get proper parse-clocks support, the pps-tools package is
+  needed.
 
   03 Jun 2011; Raúl Porcel <armin76@gentoo.org> ntp-4.2.6_p3.ebuild:
   alpha/ia64/s390/sh/sparc stable wrt #365097

@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/cairo/cairo-1.10.2-r1.ebuild,v 1.11 2011/04/29 12:05:19 scarabeus Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/cairo/cairo-1.10.2-r1.ebuild,v 1.13 2011/07/13 09:05:48 mduft Exp $
 
 EAPI=3
 
@@ -64,6 +64,7 @@ DEPEND="${RDEPEND}
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-1.8.8-interix.patch
 	epatch "${FILESDIR}"/${PN}-1.10.0-buggy_gradients.patch
+	epatch "${FILESDIR}"/${P}-interix.patch
 
 	# Slightly messed build system YAY
 	if [[ ${PV} == *9999* ]]; then
@@ -79,6 +80,9 @@ src_prepare() {
 
 src_configure() {
 	local myopts
+
+	# SuperH doesn't have native atomics yet
+	use sh && myopts+=" --disable-atomic"
 
 	[[ ${CHOST} == *-interix* ]] && append-flags -D_REENTRANT
 

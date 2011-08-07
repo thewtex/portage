@@ -1,6 +1,74 @@
 # ChangeLog for app-emulation/libvirt
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/libvirt/ChangeLog,v 1.116 2011/06/29 19:18:51 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/libvirt/ChangeLog,v 1.130 2011/08/04 23:32:52 cardoe Exp $
+
+  04 Aug 2011; Doug Goldstein <cardoe@gentoo.org> -libvirt-0.9.4-r1.ebuild,
+  metadata.xml:
+  Ignore this last change. The types of bridges it removes are 'virtual'
+  bridges, which are the same as normal bridges but they're managed by libvirt
+  so this can actually stay disabled. USE=virt-network will now always been in
+  libvirt can manage any part of your network or if you must pre-configure your
+  network prior to using libvirt.
+
+*libvirt-0.9.4-r1 (04 Aug 2011)
+
+  04 Aug 2011; Doug Goldstein <cardoe@gentoo.org> +libvirt-0.9.4-r1.ebuild:
+  And apparently now it turns out --without-network doesn't just disable the
+  virtual network bits but also disables reporting bridges as well
+
+  04 Aug 2011; Doug Goldstein <cardoe@gentoo.org> -libvirt-0.9.3.ebuild,
+  libvirt-0.9.3-r1.ebuild, libvirt-0.9.4.ebuild:
+  Clean up qemu-kvm-spice depends since that package is finally gone.
+
+  04 Aug 2011; Doug Goldstein <cardoe@gentoo.org> libvirt-0.9.4.ebuild:
+  Remove depend on sys-fs/sysfsutils since its no longer needed
+
+*libvirt-0.9.4 (03 Aug 2011)
+
+  03 Aug 2011; Doug Goldstein <cardoe@gentoo.org> +libvirt-0.9.4.ebuild:
+  Version bump
+
+  02 Aug 2011; Doug Goldstein <cardoe@gentoo.org> -libvirt-0.9.2.ebuild:
+  Remove older version
+
+  02 Aug 2011; Doug Goldstein <cardoe@gentoo.org> libvirt-0.9.3.ebuild,
+  libvirt-0.9.3-r1.ebuild:
+  libvirt 0.9.3 switched to using the libnuma v1 compat API because RHEL5 ships
+  with libnuma 0.9.8. However, libnuma 2.0.0, 2.0.1, and 2.0.1 ship with broken
+  v1 compat API components.
+
+  25 Jul 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  libvirt-0.9.3-r1.ebuild:
+  Fix tests when building with USE=-virt-network.
+
+  25 Jul 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  libvirt-0.9.3-r1.ebuild:
+  Allow building against yajl-2 since the new release supports the new API.
+
+*libvirt-0.9.3-r1 (21 Jul 2011)
+
+  21 Jul 2011; Doug Goldstein <cardoe@gentoo.org> +libvirt-0.9.3-r1.ebuild:
+  Fix issues when building with USE=-sasl and issues with ssh-askpass. fix
+  #375707
+
+  20 Jul 2011; Doug Goldstein <cardoe@gentoo.org> libvirt-9999.ebuild:
+  Upgrade to git-2 eclass
+
+  20 Jul 2011; Doug Goldstein <cardoe@gentoo.org> -libvirt-0.8.5-r2.ebuild:
+  Remove older version
+
+  20 Jul 2011; Doug Goldstein <cardoe@gentoo.org> -libvirt-0.8.8-r1.ebuild,
+  -libvirt-0.9.0-r1.ebuild, libvirt-0.9.3.ebuild:
+  Fix for python.eclass API changes. fixes #375743
+
+  19 Jul 2011; Doug Goldstein <cardoe@gentoo.org> -libvirt-0.8.8-r1.ebuild,
+  -libvirt-0.9.0-r1.ebuild:
+  Remove older versions
+
+*libvirt-0.9.3 (19 Jul 2011)
+
+  19 Jul 2011; Doug Goldstein <cardoe@gentoo.org> +libvirt-0.9.3.ebuild:
+  Version bump
 
   29 Jun 2011; Markus Meier <maekke@gentoo.org> libvirt-0.9.1.ebuild:
   x86 stable, bug #370493

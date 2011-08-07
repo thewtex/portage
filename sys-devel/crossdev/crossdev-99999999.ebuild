@@ -1,12 +1,12 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/crossdev/crossdev-99999999.ebuild,v 1.3 2010/08/10 08:42:56 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/crossdev/crossdev-99999999.ebuild,v 1.5 2011/07/14 04:13:36 vapier Exp $
 
 EAPI="3"
 
 if [[ ${PV} == "99999999" ]] ; then
 	EGIT_REPO_URI="git://git.overlays.gentoo.org/proj/crossdev.git"
-	inherit git
+	inherit git-2
 	SRC_URI=""
 	#KEYWORDS=""
 else
@@ -29,4 +29,7 @@ DEPEND="app-arch/xz-utils"
 
 src_install() {
 	emake install DESTDIR="${D}" || die
+	if [[ "${PV}" == "99999999" ]] ; then
+		dosed "s:@CDEVPV@:${EGIT_VERSION}:" /usr/bin/crossdev || die
+	fi
 }

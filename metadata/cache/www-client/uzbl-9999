@@ -1,5 +1,5 @@
->=dev-util/pkgconfig-0.19 dev-libs/glib:2 >=dev-libs/icu-4.0.1 >=net-libs/libsoup-2.24:2.4 >=net-libs/webkit-gtk-1.1.15:2 >=x11-libs/gtk+-2.14:2 >=dev-vcs/git-1.6
-dev-libs/glib:2 >=dev-libs/icu-4.0.1 >=net-libs/libsoup-2.24:2.4 >=net-libs/webkit-gtk-1.1.15:2 >=x11-libs/gtk+-2.14:2 x11-misc/xdg-utils browser? ( x11-misc/xclip ) helpers? ( dev-python/pygtk dev-python/pygobject gnome-extra/zenity net-misc/socat x11-libs/pango x11-misc/dmenu x11-misc/xclip ) tabbed? ( dev-python/pygtk ) vim-syntax? ( || ( app-editors/vim app-editors/gvim ) )
+>=dev-util/pkgconfig-0.19 dev-libs/glib:2 >=dev-libs/icu-4.0.1 >=net-libs/libsoup-2.24:2.4 !gtk3? ( >=net-libs/webkit-gtk-1.1.15:2 >=x11-libs/gtk+-2.14:2 ) gtk3? ( net-libs/webkit-gtk:3 x11-libs/gtk+:3 ) dev-vcs/git
+dev-libs/glib:2 >=dev-libs/icu-4.0.1 >=net-libs/libsoup-2.24:2.4 !gtk3? ( >=net-libs/webkit-gtk-1.1.15:2 >=x11-libs/gtk+-2.14:2 ) gtk3? ( net-libs/webkit-gtk:3 x11-libs/gtk+:3 ) x11-misc/xdg-utils browser? ( x11-misc/xclip ) helpers? ( dev-python/pygtk dev-python/pygobject gnome-extra/zenity net-misc/socat x11-libs/pango x11-misc/dmenu x11-misc/xclip ) tabbed? ( dev-python/pygtk ) vim-syntax? ( || ( app-editors/vim app-editors/gvim ) )
 0
 
 
@@ -7,14 +7,14 @@ http://www.uzbl.org
 LGPL-2.1 MPL-1.1
 Web interface tools which adhere to the unix philosophy.
 
-base eutils git multilib portability toolchain-funcs
-experimental +browser helpers +tabbed vim-syntax
+git-2
+gtk3 experimental +browser helpers +tabbed vim-syntax
 tabbed? ( browser )
 
 
 4
 
-compile configure install prepare setup unpack
+compile install prepare setup unpack
 
 
 

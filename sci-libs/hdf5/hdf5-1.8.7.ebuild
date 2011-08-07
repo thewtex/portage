@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/hdf5/hdf5-1.8.7.ebuild,v 1.6 2011/06/26 09:30:00 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/hdf5/hdf5-1.8.7.ebuild,v 1.9 2011/07/13 15:49:01 xarthisius Exp $
 
 EAPI=4
 
@@ -12,7 +12,7 @@ SRC_URI="http://www.hdfgroup.org/ftp/HDF5/current/src/${P}.tar.bz2"
 
 LICENSE="NCSA-HDF"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="cxx debug examples fortran mpi szip threads zlib"
 
 RDEPEND="
@@ -26,7 +26,7 @@ DEPEND="${RDEPEND}
 	sys-process/time"
 
 pkg_setup() {
-	fortran && fortran-2_pkg_setup
+	use fortran && fortran-2_pkg_setup
 	if use mpi; then
 		if has_version 'sci-libs/hdf5[-mpi]'; then
 			ewarn "Installing hdf5 with mpi enabled with a previous hdf5 with mpi disabled may fail."
@@ -36,6 +36,8 @@ pkg_setup() {
 			ewarn "Simultaneous mpi and cxx is not supported by ${PN}"
 			ewarn "Will disable cxx interface"
 		fi
+		export CC=mpicc
+		use fortran && export FC=mpif90
 	elif has_version 'sci-libs/hdf5[mpi]'; then
 		ewarn "Installing hdf5 with mpi disabled while having hdf5 installed with mpi enabled may fail."
 		ewarn "Try to uninstall the current hdf5 prior to disabling mpi support."
@@ -84,7 +86,7 @@ src_configure() {
 	econf \
 		--disable-sharedlib-rpath \
 		--enable-production \
-		--docdir=/usr/share/doc/${PF} \
+		--docdir="${EPREFIX}"/usr/share/doc/${PF} \
 		--enable-deprecated-symbols \
 		--enable-shared \
 		--disable-silent-rules \

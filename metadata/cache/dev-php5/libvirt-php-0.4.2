@@ -1,0 +1,22 @@
+doc? ( app-text/xhtml1 dev-libs/libxslt ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b >=sys-devel/m4-1.4.3 >=sys-devel/libtool-1.5.18
+app-emulation/libvirt dev-libs/libxml2 || ( =dev-php5/libvirt-php-0.4.2[php_targets_php5-3] =dev-php5/libvirt-php-0.4.2[php_targets_php5-2] ) php_targets_php5-3? ( dev-lang/php:5.3 ) php_targets_php5-2? ( dev-lang/php:5.2 )
+0
+http://libvirt.org/sources/php/libvirt-php-0.4.2.tar.gz
+
+http://libvirt.org/php/
+PHP-3.01
+PHP 5 bindings for libvirt.
+~amd64
+autotools eutils flag-o-matic libtool multilib php-ext-source-r2 portability toolchain-funcs
+doc php_targets_php5-3 php_targets_php5-2
+
+
+
+3
+
+compile configure install prepare unpack
+
+
+
+
+

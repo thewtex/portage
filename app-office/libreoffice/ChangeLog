@@ -1,6 +1,271 @@
 # ChangeLog for app-office/libreoffice
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/libreoffice/ChangeLog,v 1.32 2011/06/20 17:51:07 abcd Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/libreoffice/ChangeLog,v 1.88 2011/08/06 16:48:01 mattst88 Exp $
+
+  06 Aug 2011; Matt Turner <mattst88@gentoo.org> libreoffice-3.4.2.3.ebuild,
+  libreoffice-3.4.9999.ebuild:
+  Replace LINGUAS_OOO with LO_LANGUAGES, bug 378007.
+
+  06 Aug 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  libreoffice-3.4.2.3.ebuild, libreoffice-3.4.9999.ebuild:
+  Update branding to version 0.3. Fixes bug #377899. Sync the live and release
+  ebuilds.
+
+  05 Aug 2011; Michał Górny <mgorny@gentoo.org>
+  files/libreoffice-check-for-avx.patch:
+  Fix avx patch wrt bug #377845. Proxied for scarabeus.
+
+  04 Aug 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  libreoffice-3.4.2.3.ebuild, +files/libreoffice-binfilter-as-needed.patch:
+  Add as-needed patch, on request from scarabeus; fixes bug 376985
+
+  04 Aug 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  libreoffice-3.4.2.3.ebuild, libreoffice-3.4.9999.ebuild:
+  media-libs/libwpg to app-text/libwpg
+
+  04 Aug 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  libreoffice-3.4.2.3.ebuild, +files/libreoffice-check-for-avx.patch,
+  files/libreoffice-append-no-avx.patch:
+  Update avx patchset and fix the linguas detection.
+
+  03 Aug 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  files/libreoffice-32b-qt4-libdir.patch:
+  Update the qt patch as the 3.4 branch lacks quite few commits.
+
+  03 Aug 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  libreoffice-3.4.2.3.ebuild, libreoffice-3.4.9999.ebuild,
+  +files/libreoffice-32b-qt4-libdir.patch:
+  Fix finding qt libraries on 32b platform. Fixes bug #377377.
+
+  01 Aug 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  libreoffice-3.4.2.3.ebuild, +files/libreoffice-append-no-avx.patch:
+  Append no-avx to fix segmentation fault.
+
+  31 Jul 2011; Matt Turner <mattst88@gentoo.org> libreoffice-3.4.9999.ebuild:
+  Remove seemingly unnecessary fonts from -3.4.9999 also.
+
+  31 Jul 2011; Matt Turner <mattst88@gentoo.org> libreoffice-3.4.2.3.ebuild:
+  Remove seemingly unnecessary fonts.
+
+  30 Jul 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  libreoffice-3.4.2.3.ebuild, libreoffice-3.4.9999.ebuild:
+  Drop one more place where wrapper.in was used.
+
+*libreoffice-3.4.9999 (30 Jul 2011)
+
+  30 Jul 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  libreoffice-3.4.2.3.ebuild, +libreoffice-3.4.9999.ebuild:
+  Add support for live ebuilds. Add live ebuild from 3.4 branch. Master branch
+  needs A LOT more work so it won't appear soon.
+
+  29 Jul 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  libreoffice-3.4.2.3.ebuild,
+  +files/libreoffice-installed-files-permissions.patch:
+  Fix permissions of installed files to be more sane.
+
+  28 Jul 2011; Mark Loeser <halcy0n@gentoo.org> libreoffice-3.4.2.3.ebuild:
+  Set num_cpus to 1, and max_jobs to the jobs from MAKEOPTS, otherwise you end
+  up with way more jobs running than intended
+
+  28 Jul 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  files/libreoffice-as-needed-gtk.patch:
+  Fix building with gtk by appending no-as-needed on quickstarter. Fixes bug
+  #376609.
+
+  28 Jul 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  libreoffice-3.4.2.3.ebuild:
+  Respect the jobs more by not running emake in compile phase
+
+  28 Jul 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  libreoffice-3.4.2.3.ebuild:
+  Alter uri calculations to sattisfy even old tarballs. Fixes bug #376683 for
+  future.
+
+  28 Jul 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  libreoffice-3.4.2.3.ebuild:
+  STLPort should not be used anywhere thus we don't need to fetch it sources.
+
+  28 Jul 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  files/libreoffice-fix-sandbox-install.patch:
+  Update sandbox violation patch to shut another one.
+
+  27 Jul 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  libreoffice-3.4.2.3.ebuild:
+  When building nsplugin symlink it to system location. Fixes bug #375299. Also
+  put branding only into one location.
+
+  27 Jul 2011; Matt Turner <mattst88@gentoo.org> libreoffice-3.4.2.3.ebuild:
+  Update branding version.
+
+  27 Jul 2011; Matt Turner <mattst88@gentoo.org> libreoffice-3.4.2.3.ebuild:
+  Remove old comment about no graphite package in gentoo.
+
+  27 Jul 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  libreoffice-3.4.2.3.ebuild:
+  Bump branding as there was borked sofficerc in the 0.1.
+
+  27 Jul 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  files/libreoffice-as-needed-gtk.patch:
+  Use proper gb call to add GTK_LIBS, this should fix bug #376609.
+
+*libreoffice-3.4.2.3 (27 Jul 2011)
+
+  27 Jul 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  -libreoffice-3.3.2.ebuild, -libreoffice-3.4.1.ebuild,
+  -libreoffice-3.4.2.2.ebuild, +libreoffice-3.4.2.3.ebuild:
+  Version bump to 3.4.2.3. Punt older versions that are overshadowed.
+
+  26 Jul 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  libreoffice-3.4.2.2.ebuild:
+  Enhance REQUIRED_USE comment as nsplugins needs gtk too, so we are ready in
+  eapi4 future.
+
+  26 Jul 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  libreoffice-3.4.2.2.ebuild:
+  Printproto seriously should not be dependency. Fixes bug #321119.
+
+  26 Jul 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  libreoffice-3.4.2.2.ebuild, +files/libreoffice-gbuild-use-cxxflags.patch:
+  Force proper variable usage. Just saw this in gekis overlay so adding to main
+  tree too.
+
+  26 Jul 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  libreoffice-3.4.2.2.ebuild,
+  +files/libreoffice-translate-toolkit-parallel-solenv.patch:
+  Aparently it looks like translate-toolkit require solenv to not fail in
+  parallel build. Fixes bug #376387.
+
+  26 Jul 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  libreoffice-3.4.2.2.ebuild, metadata.xml:
+  Enable optional support for graphite via graphite2 package.
+
+  26 Jul 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  libreoffice-3.4.2.2.ebuild:
+  Introduce branding useflag, yay gentoo screen and about, Thanx to Ian Whyman
+  for this.
+
+  26 Jul 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  files/libreoffice-fix-sandbox-install.patch:
+  Update sandbox fix to honour TMPDIR variable instead of placing it to
+  distdir.
+
+  26 Jul 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  -files/libreoffice-as-needed-gtk-2.patch, libreoffice-3.4.2.2.ebuild,
+  +files/libreoffice-fix-sandbox-install.patch,
+  files/libreoffice-as-needed-gtk.patch:
+  Fix the gtk patch, add patch for sandbox violation during install, enforce
+  not-stripping of solver, portage handle it himself.
+
+  26 Jul 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  libreoffice-3.4.2.2.ebuild:
+  Set default theme to crystal, set jobs to 1 if the sed does not find any
+  value, and rename the variable to not collide with bash jobs command.
+
+  26 Jul 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  +files/libreoffice-as-needed-gtk-2.patch, libreoffice-3.4.2.2.ebuild,
+  +files/libreoffice-as-needed-gtk.patch:
+  Fix as-needed linking on the quickstarter. Patches backported from upstream
+  trunk. Fixes gentoo bug #376469.
+
+  25 Jul 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  libreoffice-3.4.2.2.ebuild, -files/libreoffice-unfigured-options.txt,
+  metadata.xml:
+  Make vba scripting optional. Punt undecided.txt file with unknown opts as we
+  set all those that we require.
+
+  25 Jul 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  libreoffice-3.4.2.2.ebuild:
+  Disable pch (precompiled headers) support as it creates just build crashes.
+
+  25 Jul 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  libreoffice-3.4.2.2.ebuild:
+  Do not pre-strip the binaries, check for proper reqs, update install phase to
+  use distro-pack-install (smaller yay).
+
+  25 Jul 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  files/libreoffice-solenv-build-crash.patch:
+  Fix solenv patch. Accidentally added html page instead of the patch.
+
+  25 Jul 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  libreoffice-3.4.2.2.ebuild:
+  Upgrade jobs parsing per bug 375761. Thx to Drake Wyrm for the sed.
+
+  25 Jul 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  libreoffice-3.4.2.2.ebuild, +files/libreoffice-solenv-build-crash.patch,
+  +files/libreoffice-vbaobj-visibility-fix.patch:
+  Add build fixes for crash in solenv and vbahelper fix for gcc-4.6.
+
+  25 Jul 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  libreoffice-3.4.2.2.ebuild:
+  Split out junit check so it does not die without test enabled. Fixes bug
+  #376293.
+
+  24 Jul 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  libreoffice-3.4.2.2.ebuild, +files/libreoffice-svx.patch:
+  Quick&Dirty hack to fix svx build crash i observed on my desktop (definitely
+  not a solution for upstream).
+
+  24 Jul 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  libreoffice-3.4.2.2.ebuild:
+  Add missing inherits.
+
+  24 Jul 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  libreoffice-3.4.2.2.ebuild:
+  Enable junit only when building with tests and java enabled.
+
+  24 Jul 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  libreoffice-3.4.2.2.ebuild:
+  Silence repoman warnings.
+
+*libreoffice-3.4.2.2 (24 Jul 2011)
+
+  24 Jul 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  +libreoffice-3.4.2.2.ebuild, +files/libreoffice-unfigured-options.txt,
+  metadata.xml:
+  Add 3.4.2_rc2 to the main tree (from my dev overlay). This still contains A
+  LOT rough edges.
+
+  19 Jul 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  libreoffice-3.4.1.ebuild:
+  Fix variable name in templates condition resulting it never being true.
+
+  18 Jul 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  libreoffice-3.4.1.ebuild:
+  Non-maintainer commit. Remove double environment calls, cleanup global
+  variables by unsetting them where possible, add missing dies during install,
+  run eautoreconf and econf instead of autogen.sh, sort the deps
+  alphabetically, add base eclass and PATCHES array support (and epatch_user),
+  run emake instead of make. Mostly fixed all issues i had during the time i
+  compiled it. Still good idea would be to migrate most parts of this ebuild to
+  elbits. PS: debuging something in package that builds for 3 hours is major
+  pita.
+
+  14 Jul 2011; Andreas Proschofsky <suka@gentoo.org> libreoffice-3.4.1.ebuild:
+  Extensions now build fine again without java
+
+  14 Jul 2011; Andreas Proschofsky <suka@gentoo.org> libreoffice-3.4.1.ebuild:
+  Bring back templates support. The credit for this really goes to geki!
+
+  14 Jul 2011; Andreas Proschofsky <suka@gentoo.org> libreoffice-3.4.1.ebuild:
+  Fix env problem that messed up some peoples builds, see bug #374243
+
+  06 Jul 2011; Andreas Proschofsky <suka@gentoo.org> libreoffice-3.4.1.ebuild,
+  metadata.xml:
+  Introduce "offlinehelp" use flag similar to libreoffice-bin. If not set the
+  LibreOffice Wiki will 
+  be used instead of the local help files. Also remove some useless downloads.
+
+  06 Jul 2011; Andreas Proschofsky <suka@gentoo.org> libreoffice-3.4.1.ebuild:
+  You should not listen to repoman in every case. Build fix.
+
+*libreoffice-3.4.1 (06 Jul 2011)
+
+  06 Jul 2011; Andreas Proschofsky <suka@gentoo.org> +libreoffice-3.4.1.ebuild,
+  +files/libreoffice-3.4.1-salfix.diff, +files/wrapper.in:
+  LibreOffice 3.4.1. New build system so took some time, but will (hopefully)
+  make everything quite 
+  a bit easier in the long run. Still masked for some further bugfixing and
+  testing.
 
   20 Jun 2011; Jonathan Callen <abcd@gentoo.org> -files/gentoo-3.3.3.diff:
   Remove unused file

@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/wmii/wmii-3.9.2-r1.ebuild,v 1.3 2010/08/29 10:58:46 xarthisius Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/wmii/wmii-3.9.2-r1.ebuild,v 1.5 2011/05/29 08:36:05 xarthisius Exp $
 
 EAPI=2
 inherit flag-o-matic multilib toolchain-funcs
@@ -13,7 +13,7 @@ SRC_URI="http://dl.suckless.org/wmii/${MY_P}.tbz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ppc64 ~x86"
+KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~x86"
 IUSE=""
 
 COMMON_DEPEND="x11-libs/libXft
@@ -49,6 +49,7 @@ pkg_setup() {
 
 src_prepare() {
 	sed -i -e "/BINSH \!=/d" mk/hdr.mk || die #335083
+	sed -i -e 's/-lXext/& -lXrender -lX11/' cmd/Makefile || die #369115
 }
 
 src_compile() {

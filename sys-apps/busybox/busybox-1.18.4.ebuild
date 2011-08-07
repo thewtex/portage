@@ -1,8 +1,8 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/busybox/busybox-1.18.4.ebuild,v 1.1 2011/06/11 19:54:56 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/busybox/busybox-1.18.4.ebuild,v 1.4 2011/07/29 07:52:36 zmedico Exp $
 
-EAPI="2"
+EAPI="3"
 inherit eutils flag-o-matic savedconfig toolchain-funcs
 
 ################################################################################
@@ -57,7 +57,7 @@ else
 fi
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-linux"
 IUSE="debug ipv6 make-symlinks +mdev nfs -pam selinux static elibc_glibc"
 RESTRICT="test"
 
@@ -160,8 +160,9 @@ src_configure() {
 		ADD_SHELL \
 		BEEP BOOTCHARTD \
 		CRONTAB \
-		DC DEVFS{,D} DNSD DPKG{,_DEB} \
+		DC DEVFSD DNSD DPKG{,_DEB} \
 		FAKEIDENTD FBSPLASH FOLD FSCK_MINIX FTP{GET,PUT} \
+		FEATURE_DEVFS \
 		HOSTID HUSH \
 		INETD INOTIFYD IPCALC \
 		LASH LOCALE_SUPPORT LOGNAME LPD \
@@ -210,7 +211,7 @@ src_install() {
 	if use mdev ; then
 		dodir /$(get_libdir)/mdev/
 		use make-symlinks || dosym /bin/bb /sbin/mdev
-		cp "${S}"/examples/mdev_fat.conf "${D}"/etc/mdev.conf
+		cp "${S}"/examples/mdev_fat.conf "${ED}"/etc/mdev.conf
 
 		exeinto /$(get_libdir)/mdev/
 		doexe "${FILESDIR}"/mdev/*
@@ -221,7 +222,7 @@ src_install() {
 	fi
 
 	# bundle up the symlink files for use later
-	emake install || die
+	emake DESTDIR="${ED}" install || die
 	rm _install/bin/busybox
 	tar cf busybox-links.tar -C _install . || : #;die
 	insinto /usr/share/${PN}
@@ -256,7 +257,7 @@ pkg_preinst() {
 	fi
 
 	if use make-symlinks ; then
-		mv "${D}"/usr/share/${PN}/busybox-links.tar "${T}"/ || die
+		mv "${ED}"/usr/share/${PN}/busybox-links.tar "${T}"/ || die
 	fi
 }
 

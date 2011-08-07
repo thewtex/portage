@@ -1,28 +1,34 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/uget/uget-9999.ebuild,v 1.4 2011/05/19 20:53:08 wired Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/uget/uget-9999.ebuild,v 1.5 2011/07/25 09:46:22 wired Exp $
 
-EAPI="2"
+EAPI="4"
 
-inherit autotools subversion
+inherit autotools git-2
 
 DESCRIPTION="Download manager using gtk+ and libcurl"
 HOMEPAGE="http://urlget.sourceforge.net/"
 SRC_URI=""
 
-ESVN_REPO_URI="https://urlget.svn.sourceforge.net/svnroot/urlget/trunk"
-ESVN_PROJECT="uget"
+EGIT_REPO_URI="git://urlget.git.sourceforge.net/gitroot/urlget/uget"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS=""
-IUSE="gstreamer libnotify nls"
+IUSE="aria2 +curl gstreamer gtk3 hide-temp-files libnotify nls"
+
+REQUIRED_USE="|| ( aria2 curl )"
 
 RDEPEND="
 	dev-libs/libpcre
 	>=dev-libs/glib-2:2
-	>=net-misc/curl-7.10
-	>=x11-libs/gtk+-2.4:2
+	!gtk3? (
+		>=x11-libs/gtk+-2.18:2
+	)
+	gtk3? (
+		x11-libs/gtk+:3
+	)
+	curl? ( >=net-misc/curl-7.10 )
 	gstreamer? ( media-libs/gstreamer )
 	libnotify? ( x11-libs/libnotify )
 	"
@@ -32,9 +38,9 @@ DEPEND="${RDEPEND}
 	sys-devel/gettext"
 
 src_prepare() {
-	for i in AUTHORS NEWS README ChangeLog;	do
-		[[ ! -f ${i} ]] && touch ${i}
-	done
+	# add missing file, fix tests, bug #376203
+	echo "uglib/UgPlugin-aria2.c" >> po/POTFILES.in ||
+		die "echo in po/POTFILES.in failed"
 
 	eautoreconf
 	intltoolize || die "intltoolize failed"
@@ -43,7 +49,11 @@ src_prepare() {
 
 src_configure() {
 	econf $(use_enable nls) \
+		  $(use_with gtk3) \
+		  $(use_enable curl plugin-curl) \
+		  $(use_enable aria2 plugin-aria2) \
 		  $(use_enable gstreamer) \
+		  $(use_enable hide-temp-files hidden) \
 		  $(use_enable libnotify notify) || die "econf failed"
 }
 
@@ -52,6 +62,21 @@ src_compile() {
 }
 
 src_install() {
-	make DESTDIR="${D}" install || die "make install failed"
-	dodoc AUTHORS ChangeLog NEWS README || die "dodoc failed"
+	emake DESTDIR="${D}" install || die "emake install failed"
+
+	# the build system forgets this :p
+	dobin uget-cmd/uget-cmd || die "uget-cmd install failed"
+
+	dodoc AUTHORS ChangeLog README || die "dodoc failed"
+}
+
+pkg_postinst() {
+	if use aria2; then
+		echo
+		elog "You've enabled the aria2 USE flag, so the aria2 plug-in has been"
+		elog "built. This allows you to control a local or remote instance of aria2"
+		elog "through xmlrpc. To use aria2 locally you have to emerge"
+		elog "net-misc/aria2 with the xmlrpc USE enabled manually."
+		echo
+	fi
 }

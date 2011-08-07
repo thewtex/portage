@@ -1,6 +1,73 @@
 # ChangeLog for media-libs/mesa
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/mesa/ChangeLog,v 1.343 2011/06/28 21:19:21 ranger Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/mesa/ChangeLog,v 1.358 2011/08/02 14:58:44 zorry Exp $
+
+  02 Aug 2011; Magnus Granberg <zorry@gentoo.org> mesa-7.11.ebuild,
+  metadata.xml:
+  Added pax_kernel as local use flag
+
+  01 Aug 2011; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  mesa-7.11.ebuild:
+  Disambiguate hardened related USE flag, bug #375561 and bug #377301.
+
+*mesa-7.11 (01 Aug 2011)
+
+  01 Aug 2011; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  -mesa-7.11_rc2.ebuild, -mesa-7.11_rc4.ebuild, +mesa-7.11.ebuild,
+  metadata.xml:
+  Version bump. Make gbm optional, bug #376679.
+
+  31 Jul 2011; Matt Turner <mattst88@gentoo.org> mesa-7.11_rc2.ebuild,
+  mesa-7.11_rc4.ebuild:
+  Move libxml2 from RDEPEND to DEPEND, Bug 376015.
+
+  30 Jul 2011; Raúl Porcel <armin76@gentoo.org> mesa-7.10.3.ebuild:
+  alpha/ia64/sh/sparc stable wrt #371857
+
+  29 Jul 2011; Matt Turner <mattst88@gentoo.org> mesa-7.11_rc2.ebuild,
+  mesa-7.11_rc4.ebuild:
+  Specify x11 before drm for egl-platforms. Bug 376981
+
+*mesa-7.11_rc4 (29 Jul 2011)
+
+  29 Jul 2011; Rémi Cardona <remi@gentoo.org> +mesa-7.11_rc4.ebuild:
+  Bump to 7.11_rc4, remove hacks needed for rc2
+
+  29 Jul 2011; Kacper Kowalik <xarthisius@gentoo.org> mesa-7.10.3.ebuild:
+  ppc64 stable wrt #371857
+
+  23 Jul 2011; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  -mesa-7.9.1.ebuild, mesa-7.9.2.ebuild, -mesa-7.10.1.ebuild,
+  mesa-7.10.2.ebuild, mesa-7.10.3.ebuild:
+  Add missing bison/flex dependency to more ebuilds, bug #376103. Remove
+  obsolete versions.
+
+  21 Jul 2011; Matt Turner <mattst88@gentoo.org> mesa-7.11_rc2.ebuild:
+  Add sys-devel/{bison,flex} to DEPEND, for new glsl_compiler, bug 375793.
+
+*mesa-7.11_rc2 (20 Jul 2011)
+
+  20 Jul 2011; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  -mesa-7.11_rc1-r1.ebuild, +mesa-7.11_rc2.ebuild:
+  Bump to new prerelease. Apply fix for bug #374671, upstream #39375.
+
+  15 Jul 2011; Kacper Kowalik <xarthisius@gentoo.org> mesa-7.10.2.ebuild:
+  ppc64 stable wrt #363965
+
+  13 Jul 2011; Markus Meier <maekke@gentoo.org> mesa-7.10.3.ebuild:
+  x86 stable, bug #371857
+
+*mesa-7.11_rc1-r1 (10 Jul 2011)
+
+  10 Jul 2011; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  -mesa-7.11_rc1.ebuild, +mesa-7.11_rc1-r1.ebuild:
+  Don't move libEGL/libOpenVG as this broke proprietary drivers, bug #374647.
+
+*mesa-7.11_rc1 (09 Jul 2011)
+
+  09 Jul 2011; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +mesa-7.11_rc1.ebuild, +files/eselect-mesa.conf.7.11:
+  Bump to release candidate.
 
   28 Jun 2011; Brent Baude <ranger@gentoo.org> mesa-7.10.3.ebuild:
   Marking mesa-7.10.3 ppc stable for bug 371857

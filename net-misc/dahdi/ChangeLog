@@ -1,6 +1,27 @@
 # ChangeLog for net-misc/dahdi
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/dahdi/ChangeLog,v 1.17 2011/04/28 21:37:53 tomka Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/dahdi/ChangeLog,v 1.21 2011/07/28 10:38:31 chainsaw Exp $
+
+  28 Jul 2011; Tony Vroon <chainsaw@gentoo.org> dahdi-2.4.1-r1.ebuild:
+  Mark stable on AMD64 based on arch testing by Agostino "ago" Sarubbo & Ian
+  "idella4" Delaney in bug #376423. This will work with 2.6.39 kernels.
+
+  06 Jul 2011; Tony Vroon <chainsaw@gentoo.org> dahdi-2.4.1-r1.ebuild:
+  CONFIG_MODULES check was faulty, as pointed out by Stefan "stkn" Knoblich on
+  #gentoo-voip.
+
+*dahdi-2.4.1-r1 (06 Jul 2011)
+
+  06 Jul 2011; Tony Vroon <chainsaw@gentoo.org> +dahdi-2.4.1-r1.ebuild:
+  Patch from Stefan Knoblich fixes compilation against 2.6.39 kernels; closes
+  bug #372819 by Philipp Kugle. As requested by Diego "Flameeyes" Petteno, udev
+  rules are now installed in /lib as they are not intended for user
+  modification/customisation. CONFIG_MODULES is now also checked as the eclass
+  does not do it for us.
+
+  05 Jul 2011; Diego E. Pettenò <flameeyes@gentoo.org> dahdi-2.4.1.ebuild:
+  Check whether CRC_CCITT is enabled in kernel configuration; if it is not, it
+  would result in an unusable dahdi module. Bug #374109.
 
   28 Apr 2011; Thomas Kahle <tomka@gentoo.org> dahdi-2.4.1.ebuild:
   x86 stable per bug 364887

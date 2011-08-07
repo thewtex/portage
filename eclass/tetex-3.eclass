@@ -1,6 +1,6 @@
 # Copyright 1999-2006 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/tetex-3.eclass,v 1.21 2010/10/10 17:23:14 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/tetex-3.eclass,v 1.23 2011/08/02 05:52:04 mattst88 Exp $
 #
 # Author: Jaromir Malenko <malenko@email.cz>
 # Author: Mamoru KOMACHI <usata@gentoo.org>
@@ -19,7 +19,7 @@ IUSE="X Xaw3d motif neXt"
 
 DEPEND="X? ( motif? ( >=x11-libs/openmotif-2.3 )
 		!motif? ( neXt? ( x11-libs/neXtaw )
-			!neXt? ( Xaw3d? ( x11-libs/Xaw3d ) ) )
+			!neXt? ( Xaw3d? ( x11-libs/libXaw3d ) ) )
 		!app-text/xdvik
 	)
 	!dev-tex/memoir
@@ -174,7 +174,7 @@ tetex-3_src_install() {
 	mv ${D}/etc/texmf/web2c/texmf.cnf ${D}/etc/texmf/texmf.d/00texmf.cnf
 
 	# xdvi
-	if useq X ; then
+	if use X ; then
 		dodir /etc/X11/app-defaults /etc/texmf/xdvi
 		mv ${D}${TEXMF_PATH}/xdvi/XDvi ${D}/etc/X11/app-defaults || die "mv XDvi failed"
 		dosym /etc/X11/app-defaults/XDvi ${TEXMF_PATH}/xdvi/XDvi

@@ -1,18 +1,16 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/uzbl/uzbl-9999.ebuild,v 1.21 2011/03/25 13:36:58 wired Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/uzbl/uzbl-9999.ebuild,v 1.22 2011/07/25 10:05:58 wired Exp $
 
 EAPI="4"
 
-inherit base
-
-IUSE=""
+IUSE="gtk3"
 if [[ ${PV} == *9999* ]]; then
-	inherit git
+	inherit git-2
 	EGIT_REPO_URI=${EGIT_REPO_URI:-"git://github.com/Dieterbe/uzbl.git"}
 	KEYWORDS=""
 	SRC_URI=""
-	IUSE="experimental"
+	IUSE+=" experimental"
 	use experimental &&
 		EGIT_BRANCH="experimental" &&
 		EGIT_COMMIT="experimental"
@@ -34,8 +32,15 @@ COMMON_DEPEND="
 	dev-libs/glib:2
 	>=dev-libs/icu-4.0.1
 	>=net-libs/libsoup-2.24:2.4
-	>=net-libs/webkit-gtk-1.1.15:2
-	>=x11-libs/gtk+-2.14:2
+	!gtk3? (
+		>=net-libs/webkit-gtk-1.1.15:2
+		>=x11-libs/gtk+-2.14:2
+	)
+	gtk3? (
+		net-libs/webkit-gtk:3
+		x11-libs/gtk+:3
+	)
+
 "
 
 DEPEND="
@@ -88,7 +93,7 @@ pkg_setup() {
 
 src_unpack() {
 	if [[ ${PV} == *9999* ]]; then
-		git_src_unpack
+		git-2_src_unpack
 	else
 		unpack ${A}
 		mv Dieterbe-uzbl-* "${S}"
@@ -96,13 +101,17 @@ src_unpack() {
 }
 
 src_prepare() {
-	if [[ ${PV} == *9999* ]]; then
-		git_src_prepare
-	fi
-
 	# remove -ggdb
 	sed -i "s/-ggdb //g" Makefile ||
 		die "-ggdb removal sed failed"
+
+	# make gtk3 configurable
+	sed -r "s:^(USE_GTK3) = (.*):\1?=\2:" -i Makefile ||
+		die "Makefile sed for gtk3 failed"
+}
+
+src_compile() {
+	emake USE_GTK3=$(use gtk3 && echo 1 || echo 0)
 }
 
 src_install() {
@@ -110,15 +119,14 @@ src_install() {
 	use browser && targets="${targets} install-uzbl-browser"
 	use browser && use tabbed && targets="${targets} install-uzbl-tabbed"
 
-	emake DESTDIR="${D}" PREFIX="/usr" DOCDIR="${D}/usr/share/doc/${PF}" ${targets} ||
-		die "Installation failed"
+	emake DESTDIR="${D}" PREFIX="/usr" DOCDIR="${D}/usr/share/doc/${PF}" ${targets}
 
 	if use vim-syntax; then
 		insinto /usr/share/vim/vimfiles/ftdetect
-		doins "${S}"/extras/vim/ftdetect/uzbl.vim || die "vim-syntax doins failed"
+		doins "${S}"/extras/vim/ftdetect/uzbl.vim
 
 		insinto /usr/share/vim/vimfiles/syntax
-		doins "${S}"/extras/vim/syntax/uzbl.vim || die "vim-syntax doins failed"
+		doins "${S}"/extras/vim/syntax/uzbl.vim
 	fi
 
 }

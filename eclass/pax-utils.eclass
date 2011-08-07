@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/pax-utils.eclass,v 1.11 2011/05/22 01:01:40 blueness Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/pax-utils.eclass,v 1.14 2011/07/08 11:35:01 ssuominen Exp $
 
 # @ECLASS: pax-utils.eclass
 # @MAINTAINER:
@@ -57,7 +57,7 @@ pax-mark() {
 	flags=${1//-}
 	shift
 	# Try paxctl, then scanelf.  paxctl is preferred.
-	if type -p paxctl > /dev/null && hasq PT ${PAX_MARKINGS}; then
+	if type -p paxctl > /dev/null && has PT ${PAX_MARKINGS}; then
 		# Try paxctl, the upstream supported tool.
 		elog "PT PaX marking -${flags}"
 		_pax_list_files elog "$@"
@@ -69,18 +69,23 @@ pax-mark() {
 			# Third, try pulling the base down a page, to create space and
 			# insert a PT_GNU_STACK header (works on ET_EXEC)
 			paxctl -qC${flags} "${f}" && continue
+			#
+			# prelink is masked on hardened so we wont use this method.
+			# We're working on a new utiity to try to do the same safely. See
+			# http://git.overlays.gentoo.org/gitweb/?p=proj/elfix.git;a=summary
+			#
 			# Fourth - check if it loads to 0 (probably an ET_DYN) and if so,
 			# try rebasing with prelink first to give paxctl some space to
 			# grow downwards into.
-			if type -p objdump > /dev/null && type -p prelink > /dev/null; then
-				zero_load_alignment=$(objdump -p "${f}" | \
-					grep -E '^[[:space:]]*LOAD[[:space:]]*off[[:space:]]*0x0+[[:space:]]' | \
-					sed -e 's/.*align\(.*\)/\1/')
-				if [[ ${zero_load_alignment} != "" ]]; then
-					prelink -r $(( 2*(${zero_load_alignment}) )) &&
-					paxctl -qC${flags} "${f}" && continue
-				fi
-			fi
+			#if type -p objdump > /dev/null && type -p prelink > /dev/null; then
+			#	zero_load_alignment=$(objdump -p "${f}" | \
+			#		grep -E '^[[:space:]]*LOAD[[:space:]]*off[[:space:]]*0x0+[[:space:]]' | \
+			#		sed -e 's/.*align\(.*\)/\1/')
+			#	if [[ ${zero_load_alignment} != "" ]]; then
+			#		prelink -r $(( 2*(${zero_load_alignment}) )) &&
+			#		paxctl -qC${flags} "${f}" && continue
+			#	fi
+			#fi
 			fail=1
 			failures="${failures} ${f}"
 		done

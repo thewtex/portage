@@ -1,8 +1,9 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/scribus/scribus-1.3.9.ebuild,v 1.3 2011/05/07 18:00:52 tomka Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/scribus/scribus-1.3.9.ebuild,v 1.5 2011/07/15 15:07:37 xarthisius Exp $
 
 EAPI=2
+
 PYTHON_DEPEND="2:2.6"
 
 inherit cmake-utils fdo-mime multilib python
@@ -13,21 +14,22 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~hppa ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="amd64 ~hppa ppc ppc64 ~sparc x86"
 IUSE="cairo debug +minimal +pdf spell"
 
 COMMON_DEPEND="
 	dev-libs/hyphen
 	dev-libs/libxml2
 	media-libs/fontconfig
-	>=media-libs/freetype-2
-	virtual/jpeg
-	=media-libs/lcms-1*
+	media-libs/freetype:2
+	media-libs/lcms:0
 	media-libs/libpng
 	media-libs/tiff
 	net-print/cups
 	sys-libs/zlib
+	x11-libs/qt-core:4
 	x11-libs/qt-gui:4
+	virtual/jpeg
 	spell? ( app-text/aspell )
 	pdf? ( app-text/podofo )
 	cairo? ( x11-libs/cairo[X,svg] )"

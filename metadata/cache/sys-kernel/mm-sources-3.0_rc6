@@ -1,0 +1,22 @@
+dev-util/quilt !build? ( sys-apps/sed >=sys-devel/binutils-2.11.90.0.31 )
+dev-util/quilt !build? ( >=sys-libs/ncurses-5.2 sys-devel/make )
+0
+mirror://kernel/linux/kernel/v3.0/testing/patch-3.0-rc6.bz2 mirror://kernel/linux/kernel/v3.0/testing/linux-2.6.39.tar.bz2 http://userweb.kernel.org/~akpm/mmotm/broken-out.tar.gz
+binchecks strip
+http://userweb.kernel.org/~akpm/mmotm/
+GPL-2
+Andrew Morton's -mmotm quilt patchset
+~amd64 ~x86
+eutils kernel-2 multilib portability toolchain-funcs versionator
+symlink build
+
+!build? ( virtual/dev-manager )
+
+4
+
+compile install postinst preinst prepare setup test unpack
+
+
+
+
+

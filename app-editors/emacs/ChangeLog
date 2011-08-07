@@ -1,6 +1,34 @@
 # ChangeLog for app-editors/emacs
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/emacs/ChangeLog,v 1.420 2011/06/14 04:33:36 mattst88 Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-editors/emacs/ChangeLog,v 1.426 2011/08/04 17:00:32 ulm Exp $
+
+*emacs-23.3-r1 (04 Aug 2011)
+
+  04 Aug 2011; Ulrich Mueller <ulm@gentoo.org> -emacs-23.3.ebuild,
+  +emacs-23.3-r1.ebuild:
+  Revision bump to ensure that users update to the new tarballs, which install
+  (but not use) the CEDET grammars in the etc/grammars subdirectory.
+
+  02 Aug 2011; Ulrich Mueller <ulm@gentoo.org> emacs-23.2-r2.ebuild,
+  emacs-23.3.ebuild:
+  Update SRC_URI for new upstream tarballs; installed files should be
+  unchanged, however. Remove unused code from 23.2 ebuild.
+
+  02 Aug 2011; Matt Turner <mattst88@gentoo.org> emacs-21.4-r23.ebuild,
+  emacs-22.3-r7.ebuild, emacs-23.2-r2.ebuild, emacs-23.3.ebuild:
+  Renamed x11-libs/Xaw3d to x11-libs/libXaw3d.
+
+  01 Aug 2011; Ulrich Mueller <ulm@gentoo.org> emacs-23.2-r2.ebuild,
+  emacs-23.3.ebuild:
+  Update Manifest file; upstream tarballs have been replaced without version
+  bump. Add PSF-2 to LICENSE for CEDET grammars.
+
+  15 Jul 2011; Kacper Kowalik <xarthisius@gentoo.org> emacs-23.3.ebuild:
+  ppc64 stable wrt #363633
+
+  02 Jul 2011; Ulrich Mueller <ulm@gentoo.org> -emacs-21.4-r22.ebuild,
+  -emacs-22.3-r6.ebuild, -emacs-23.2-r3.ebuild:
+  Remove old. Drop Emacs 21 and 22 keywords to unstable.
 
   14 Jun 2011; Matt Turner <mattst88@gentoo.org> emacs-23.3.ebuild:
   Added ~mips, bug 234095

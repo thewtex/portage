@@ -1,0 +1,11 @@
+--- Makefile.ref.orig	2011-02-16 05:16:15.020000001 +0100
++++ Makefile.ref	2011-02-16 05:16:22.440000001 +0100
+@@ -127,7 +127,7 @@
+ ifdef JS_READLINE
+ # For those platforms with the readline library installed.
+ DEFINES += -DEDITLINE
+-PROG_LIBS += -lreadline -ltermcap
++PROG_LIBS += -lreadline 
+ else
+ ifdef JS_EDITLINE
+ # Use the editline library, built locally.

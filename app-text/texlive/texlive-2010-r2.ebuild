@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/texlive/texlive-2010-r2.ebuild,v 1.7 2011/06/14 05:46:50 mattst88 Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/texlive/texlive-2010-r2.ebuild,v 1.9 2011/07/12 19:24:14 aballier Exp $
 
 EAPI="2"
 
@@ -34,7 +34,6 @@ RDEPEND="${DEPEND}
 	sys-apps/texinfo
 	>=${TEXLIVE_CAT}/texlive-texinfo-${PV}
 	app-text/t1utils
-	dev-util/dialog
 	>=app-text/lcdf-typetools-2.69[kpathsea]
 	truetype? ( media-libs/freetype:1[kpathsea] )
 	detex? ( dev-tex/detex )
@@ -49,7 +48,7 @@ RDEPEND="${DEPEND}
 	latex3? ( >=${TEXLIVE_CAT}/texlive-latex3-${PV} )
 	luatex? (
 		>=${TEXLIVE_CAT}/texlive-luatex-${PV}
-		>=dev-tex/luatex-0.45
+		>=dev-tex/luatex-0.70
 	)
 	>=${TEXLIVE_CAT}/texlive-latexrecommended-${PV}
 	>=dev-tex/xcolor-2.11

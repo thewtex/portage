@@ -1,6 +1,12 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/base/use.mask,v 1.119 2011/05/21 16:42:43 olemarkus Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/base/use.mask,v 1.121 2011/07/11 15:10:37 ssuominen Exp $
+
+# nvidia-cuda-toolkit is amd64/x86 only
+opencl
+
+# Infiniband stuff should generaly work on all arches but keyworded only on amd64/x86
+infiniband
 
 # These ABIs are in constant change and currently only available for SVN snapshots
 php_targets_php5-4

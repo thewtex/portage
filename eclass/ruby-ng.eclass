@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/ruby-ng.eclass,v 1.32 2011/04/25 08:37:26 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/ruby-ng.eclass,v 1.38 2011/07/22 09:41:17 graaff Exp $
 #
 # @ECLASS: ruby-ng.eclass
 # @MAINTAINER:
@@ -46,7 +46,9 @@
 
 # @ECLASS-VARIABLE: RUBY_OPTIONAL
 # @DESCRIPTION:
-# Set the value to "yes" to make the dependency on a Ruby interpreter optional.
+# Set the value to "yes" to make the dependency on a Ruby interpreter
+# optional and then ruby_implementations_depend() to help populate
+# DEPEND and RDEPEND.
 
 # @ECLASS-VARIABLE: RUBY_S
 # @DEFAULT_UNSET
@@ -55,6 +57,19 @@
 # unpacking. This defaults to the name of the package. Note that this
 # variable supports a wildcard mechanism to help with github tarballs
 # that contain the commit hash as part of the directory name.
+
+# @ECLASS-VARIABLE: RUBY_QA_ALLOWED_LIBS
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# If defined this variable contains a whitelist of shared objects that
+# are allowed to exist even if they don't link to libruby. This avoids
+# the QA check that makes this mandatory. This is most likely not what
+# you are looking for if you get the related "Missing links" QA warning,
+# since the proper fix is almost always to make sure the shared object
+# is linked against libruby. There are cases were this is not the case
+# and the shared object is generic code to be used in some other way
+# (e.g. selenium's firefox driver extension). When set this argument is
+# passed to "grep -E" to remove reporting of these shared objects.
 
 inherit eutils toolchain-funcs
 
@@ -213,7 +228,7 @@ ruby_add_rdepend() {
 	# Add the dependency as a test-dependency since we're going to
 	# execute the code during test phase.
 	DEPEND="${DEPEND} test? ( ${dependency} )"
-	hasq test "$IUSE" || IUSE="${IUSE} test"
+	has test "$IUSE" || IUSE="${IUSE} test"
 }
 
 # @FUNCTION: ruby_add_bdepend
@@ -244,16 +259,65 @@ ruby_add_bdepend() {
 	RDEPEND="${RDEPEND}"
 }
 
-for _ruby_implementation in $USE_RUBY; do
-	IUSE="${IUSE} ruby_targets_${_ruby_implementation}"
+# @FUNCTION: ruby_get_use_implementations
+# @DESCRIPTION:
+# Gets an array of ruby use targets enabled by the user
+ruby_get_use_implementations() {
+	local i implementation
+	for implementation in ${USE_RUBY}; do
+		use ruby_targets_${implementation} && i+=" ${implementation}"
+	done
+	echo $i
+}
 
-	# If you specify RUBY_OPTIONAL you also need to take care of
-	# ruby useflag and dependency.
-	if [[ ${RUBY_OPTIONAL} != "yes" ]]; then
-		DEPEND="${DEPEND} ruby_targets_${_ruby_implementation}? ( $(ruby_implementation_depend $_ruby_implementation) )"
-		RDEPEND="${RDEPEND} ruby_targets_${_ruby_implementation}? ( $(ruby_implementation_depend $_ruby_implementation) )"
-	fi
+# @FUNCTION: ruby_get_use_targets
+# @DESCRIPTION:
+# Gets an array of ruby use targets that the ebuild sets
+ruby_get_use_targets() {
+	local t implementation
+	for implementation in ${USE_RUBY}; do
+		t+=" ruby_targets_${implementation}"
+	done
+	echo $t
+}
+
+if [[ ${EAPI:-0} -ge 4 && ${RUBY_OPTIONAL} != "yes" ]]; then
+	REQUIRED_USE=" || ( $(ruby_get_use_targets) )"
+fi
+
+# @FUNCTION: ruby_implementations_depend
+# @RETURN: Dependencies suitable for injection into DEPEND and RDEPEND.
+# @DESCRIPTION:
+# Produces the dependency string for the various implementations of ruby
+# which the package is being built against. This should not be used when
+# RUBY_OPTIONAL is unset but must be used if RUBY_OPTIONAL=yes. Do not
+# confuse this function with ruby_implementation_depend().
+#
+# @EXAMPLE:
+# EAPI=4
+# RUBY_OPTIONAL=yes
+#
+# inherit ruby-ng
+# ...
+# DEPEND="ruby? ( $(ruby_implementations_depend) )"
+# RDEPEND="${DEPEND}"
+ruby_implementations_depend() {
+	local depend
+	for _ruby_implementation in ${USE_RUBY}; do
+		depend="${depend}${depend+ }ruby_targets_${_ruby_implementation}? ( $(ruby_implementation_depend $_ruby_implementation) )"
+	done
+	echo "${depend}"
+}
+
+for _ruby_implementation in ${USE_RUBY}; do
+	IUSE="${IUSE} ruby_targets_${_ruby_implementation}"
 done
+# If you specify RUBY_OPTIONAL you also need to take care of
+# ruby useflag and dependency.
+if [[ ${RUBY_OPTIONAL} != yes ]]; then
+	DEPEND="${DEPEND} $(ruby_implementations_depend)"
+	RDEPEND="${RDEPEND} $(ruby_implementations_depend)"
+fi
 
 _ruby_invoke_environment() {
 	old_S=${S}
@@ -274,6 +338,13 @@ _ruby_invoke_environment() {
 	# we allow the star glob to just expand to whatever directory it's
 	# called.
 	if [[ ${sub_S} = *"*"* ]]; then
+		case ${EAPI} in
+			2|3)
+				#The old method of setting S depends on undefined package
+				# manager behaviour, so encourage upgrading to EAPI=4.
+				eqawarn "Using * expansion of S is deprecated. Use EAPI and RUBY_S instead."
+				;;
+		esac
 		pushd "${WORKDIR}"/all &>/dev/null
 		sub_S=$(eval ls -d ${sub_S} 2>/dev/null)
 		popd &>/dev/null
@@ -456,6 +527,7 @@ _each_ruby_check_install() {
 	# positives now that Ruby 1.9.2 installs with the same sitedir as 1.8)
 	${scancmd} -qnR "${D}${sitelibdir}" "${D}${sitelibdir/site_ruby/gems}" \
 		| fgrep -v "${libruby_soname}" \
+		| grep -E -v "${RUBY_QA_ALLOWED_LIBS}" \
 		> "${T}"/ruby-ng-${_ruby_implementation}-mislink.log
 
 	if [[ -s "${T}"/ruby-ng-${_ruby_implementation}-mislink.log ]]; then

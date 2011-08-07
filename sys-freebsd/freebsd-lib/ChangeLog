@@ -1,6 +1,40 @@
 # ChangeLog for sys-freebsd/freebsd-lib
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-freebsd/freebsd-lib/ChangeLog,v 1.90 2011/04/20 18:13:46 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-freebsd/freebsd-lib/ChangeLog,v 1.98 2011/07/12 14:32:29 aballier Exp $
+
+  12 Jul 2011; Alexis Ballier <aballier@gentoo.org> freebsd-lib-8.2-r1.ebuild:
+  remove amd64 hacks now that tc-arch-kernel returns the right value for
+  x86_64-fbsd
+
+  11 Jul 2011; Alexis Ballier <aballier@gentoo.org> freebsd-lib-8.2-r1.ebuild:
+  remove legacy symlinks: libc_r -> libthr, libpthread -> libthr, the build
+  system takes care of libpthread and libc_r shouldnt be needed; also improve a
+  comment
+
+  11 Jul 2011; Alexis Ballier <aballier@gentoo.org> -freebsd-lib-8.2.ebuild:
+  remove old
+
+  11 Jul 2011; Alexis Ballier <aballier@gentoo.org> freebsd-lib-8.2-r1.ebuild:
+  fix cross compilation, build and install libthr/libpthread when cross
+  compiling too
+
+*freebsd-lib-8.2-r1 (10 Jul 2011)
+
+  10 Jul 2011; Alexis Ballier <aballier@gentoo.org>
+  +files/freebsd-lib-bsdxml2expat.patch, +freebsd-lib-8.2-r1.ebuild:
+  do not build nor install libbsdxml which is a pale copy of libexpat; symlink
+  the .so so that -lbsdxml still works
+
+*freebsd-lib-8.2 (06 Jul 2011)
+
+  06 Jul 2011; Alexis Ballier <aballier@gentoo.org> +freebsd-lib-8.2.ebuild,
+  +files/freebsd-lib-8.2-liblink.patch:
+  bump to 8.2
+
+  05 Jul 2011; Alexis Ballier <aballier@gentoo.org> freebsd-lib-8.0.ebuild,
+  +files/freebsd-lib-8.0-gcc45.patch:
+  fix build with gcc 4.5, bug #362449 by Denis I. Polukarov and fix by Yuta
+  SATOH
 
   20 Apr 2011; Ulrich Mueller <ulm@gentoo.org> freebsd-lib-7.2-r1.ebuild,
   freebsd-lib-8.0.ebuild:

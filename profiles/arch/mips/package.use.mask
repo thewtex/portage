@@ -1,14 +1,10 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/mips/package.use.mask,v 1.35 2011/06/13 22:57:16 mattst88 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/mips/package.use.mask,v 1.41 2011/07/31 06:09:00 mattst88 Exp $
 
 # Kacper Kowalik <xarthisius@gentoo.org> (20 May 2011)
 # depends on dev-libs/dmalloc which is not keyworded
 net-nds/ypbind debug
-
-# Jim Ramsay <lack@gentoo.org> (5 Nov 2008)
-# app-admin/gkrellm may pull in net-libs/libntlm, which is not keyworded
-app-admin/gkrellm ntlm
 
 # Peter Alfredsen <loki_val@gentoo.org> (20 Jun 2008)
 # cppunit is not keyworded, needed by test. Bug 228559.
@@ -22,20 +18,6 @@ dev-ruby/rubygems server
 # dependency can't be fulfilled at the moment
 net-im/mcabber otr
 
-# Piotr Jaroszyński <peper@gentoo.org> (19 Nov 2007)
-# Mask python flag until mips keyword is added to dev-python/pygments, bug #198989.
-sys-apps/paludis python
-
-# Piotr Jaroszyński <peper@gentoo.org> (19 Nov 2007)
-# Mask ruby flag until mips keyword is added to dev-ruby/syntax - #198864 and dev-ruby/allison - #206031.
-sys-apps/paludis ruby
-
-# Chris Gianelloni <cgianelloni@gentoo.org> (22 Sep 2007)
-# dependency can't be fulfilled at the moment
-kde-base/kdelibs kerberos
-dev-vcs/cvs kerberos
-net-mail/fetchmail kerberos
-
 # Jim Ramsay <lack@gentoo.org> (7 Sep 2007)
 # app-admin/gkrellm may pull in hddtemp, which is not yet available here
 app-admin/gkrellm hddtemp
@@ -47,7 +29,7 @@ dev-libs/apr-util mysql
 # Stuart Longland <redhatter@gentoo.org> (07 Sep 2007)
 # mplayer not tested with these flags yet.  I may remove these slowly as I test
 # more functions of mplayer.
-media-video/mplayer bidi bl cddb cdio cdparanoia cpudetection dga dv dvb enca esd joystick live mad openal pnm pvr radio rar rtc svga teletext tga v4l2 xanim xinerama zoran
+media-video/mplayer bidi bl cddb cdio cdparanoia cpudetection dga dv dvb enca esd joystick live mad openal pnm pvr radio rar rtc svga tga v4l2 xanim xinerama zoran
 
 # Gilles Dartiguelongue <eva@gentoo.org> (19 Oct 2007)
 # gdm depends on zenity which is not keyworded
@@ -57,10 +39,6 @@ media-video/mplayer bidi bl cddb cdio cdparanoia cpudetection dga dv dvb enca es
 # needs media-libs/ladspa-sdk keyworded
 media-video/mplayer ladspa
 
-# Stuart Longland <redhatter@gentoo.org> (23 Dec 2007)
-# Don't know if ATM works, can't test.
-net-dialup/ppp atm
-
 # Richard Brown <rbrown@gentoo.org> (23 Dec 2007)
 # app-xemacs/ruby-modes is not keyworded on this arch
 dev-lang/ruby xemacs
@@ -68,7 +46,6 @@ dev-lang/ruby xemacs
 # Sebastian Pipping <sping@gentoo.org> (27 Jan 2010)
 # dev-vcs/bzr is not keyworded on this arch
 # dev-vcs/darcs is not keyworded on this arch
-# dev-vcs/mercurial is not keyworded on this arch
 app-portage/layman bazaar
 app-portage/layman darcs
 
@@ -88,10 +65,6 @@ x11-libs/vte glade
 # Matt Turner <mattst88@gentoo.org> (06 Dec 2010)
 # dev-db/tokyocabinet not keyworded
 mail-client/mutt tokyocabinet
-
-# Matt Turner <mattst88@gentoo.org> (06 Dec 2010)
-# dev-perl/GSSAPI not keyworded
-dev-perl/Authen-SASL kerberos
 
 # Matt Turner <mattst88@gentoo.org> (26 Dec 2010)
 # dev-lang/spidermonkey not keyworded

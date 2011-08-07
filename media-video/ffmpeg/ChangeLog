@@ -1,6 +1,39 @@
 # ChangeLog for media-video/ffmpeg
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/ffmpeg/ChangeLog,v 1.428 2011/06/29 15:07:07 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/ffmpeg/ChangeLog,v 1.436 2011/07/30 19:05:32 aballier Exp $
+
+*ffmpeg-0.8.1 (30 Jul 2011)
+
+  30 Jul 2011; Alexis Ballier <aballier@gentoo.org> +ffmpeg-0.8.1.ebuild:
+  version bump
+
+  30 Jul 2011; Alexis Ballier <aballier@gentoo.org> ffmpeg-0.7.1.ebuild,
+  ffmpeg-0.7.2.ebuild, ffmpeg-0.8.ebuild:
+  bring back ~ppc/~ppc64 keywords as the deps are now keyworded...
+
+*ffmpeg-0.7.2 (30 Jul 2011)
+
+  30 Jul 2011; Alexis Ballier <aballier@gentoo.org> +ffmpeg-0.7.2.ebuild:
+  version bump
+
+  10 Jul 2011; Alexis Ballier <aballier@gentoo.org> -ffmpeg-0.6.ebuild,
+  -ffmpeg-0.6_p25767.ebuild, -ffmpeg-0.6.90_rc0-r2.ebuild,
+  -files/avparser.patch, -files/avutil_aes_sha_h.patch:
+  remove old
+
+  10 Jul 2011; Raúl Porcel <armin76@gentoo.org> ffmpeg-0.7_rc1.ebuild:
+  ia64/sparc stable wrt #365273
+
+  10 Jul 2011; Markus Meier <maekke@gentoo.org> ffmpeg-0.7_rc1.ebuild:
+  arm stable, bug #365273
+
+  06 Jul 2011; Alexis Ballier <aballier@gentoo.org> ffmpeg-9999.ebuild:
+  Factorise a bit the cpu features handling code and keep the declarations in
+  one place, a string that will be used to fill IUSE and convert them to
+  ./configure arguments. Do not default-enable them anymore.
+
+  06 Jul 2011; Mark Loeser <halcy0n@gentoo.org> ffmpeg-0.7_rc1.ebuild:
+  Mark stable for ppc64; bug 365273
 
   29 Jun 2011; Alexis Ballier <aballier@gentoo.org> ffmpeg-9999.ebuild:
   drop the video_cards_nvidia guard for vdpau

@@ -1,6 +1,39 @@
 # ChangeLog for net-misc/tor
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/tor/ChangeLog,v 1.259 2011/06/21 09:59:05 blueness Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/tor/ChangeLog,v 1.265 2011/08/05 11:29:39 blueness Exp $
+
+  05 Aug 2011; Anthony G. Basile <blueness@gentoo.org> files/tor.initd-r4:
+  Removed deprecated -oknodo, bug #377773
+
+  30 Jul 2011; Anthony G. Basile <blueness@gentoo.org>
+  tor-0.2.3.2_alpha-r2.ebuild:
+  DEPEND only on <net-libs/miniupnpc-1.6, bug #376621
+
+*tor-0.2.3.2_alpha-r2 (22 Jul 2011)
+
+  22 Jul 2011; Anthony G. Basile <blueness@gentoo.org>
+  -tor-0.2.3.2_alpha-r1.ebuild, +tor-0.2.3.2_alpha-r2.ebuild,
+  +files/tor-0.2.3.2_alpha-fix-asneeded.patch:
+  Address bug #375955
+
+*tor-0.2.3.2_alpha-r1 (21 Jul 2011)
+*tor-0.2.2.30_rc-r1 (21 Jul 2011)
+
+  21 Jul 2011; Anthony G. Basile <blueness@gentoo.org> metadata.xml,
+  +tor-0.2.2.30_rc-r1.ebuild, +tor-0.2.3.2_alpha-r1.ebuild:
+  Removed automatic configuration of features
+
+*tor-0.2.2.30_rc (19 Jul 2011)
+
+  19 Jul 2011; Anthony G. Basile <blueness@gentoo.org>
+  -tor-0.2.2.29_beta.ebuild, +tor-0.2.2.30_rc.ebuild:
+  Beta bumped to first rc and removed deprecated
+
+*tor-0.2.3.2_alpha (19 Jul 2011)
+
+  19 Jul 2011; Anthony G. Basile <blueness@gentoo.org>
+  -tor-0.2.3.1_alpha-r1.ebuild, +tor-0.2.3.2_alpha.ebuild:
+  Bumped alpha and removed deprecated
 
 *tor-0.2.2.29_beta (21 Jun 2011)
 

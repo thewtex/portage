@@ -1,7 +1,8 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/dev-vcs/cvsps/cvsps-2.1.ebuild,v 1.4 2011/04/20 12:46:35 jlec Exp $
 
-inherit eutils
+inherit eutils toolchain-funcs
 
 MY_P="${P/_/}"
 DESCRIPTION="Generates patchset information from a CVS repository"
@@ -22,6 +23,7 @@ src_unpack() {
 	unpack ${A}
 	cd "${S}"
 	epatch "${FILESDIR}"/${P}-build.patch
+	tc-export CC
 }
 
 src_install() {

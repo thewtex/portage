@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/eutils.eclass,v 1.357 2011/06/14 20:16:51 betelgeuse Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/eutils.eclass,v 1.359 2011/07/20 05:46:46 vapier Exp $
 
 # @ECLASS: eutils.eclass
 # @MAINTAINER:
@@ -251,6 +251,11 @@ epatch() {
 	elif [[ -d $1 ]] ; then
 		# Some people like to make dirs of patches w/out suffixes (vim)
 		set -- "$1"/*${EPATCH_SUFFIX:+."${EPATCH_SUFFIX}"}
+
+	elif [[ -f ${EPATCH_SOURCE}/$1 ]] ; then
+		# Re-use EPATCH_SOURCE as a search dir
+		epatch "${EPATCH_SOURCE}/$1"
+		return $?
 
 	else
 		# sanity check ... if it isn't a dir or file, wtf man ?
@@ -1715,9 +1720,9 @@ strip-linguas() {
 			fi
 			for f in $(find "$d" -name '*.po' -exec basename {} .po ';') ; do
 				if [[ ${op} == "-i" ]] ; then
-					hasq ${f} ${ls} && newls="${newls} ${f}"
+					has ${f} ${ls} && newls="${newls} ${f}"
 				else
-					hasq ${f} ${ls} || newls="${newls} ${f}"
+					has ${f} ${ls} || newls="${newls} ${f}"
 				fi
 			done
 			ls=${newls}
@@ -1729,7 +1734,7 @@ strip-linguas() {
 	nols=""
 	newls=""
 	for f in ${LINGUAS} ; do
-		if hasq ${f} ${ls} ; then
+		if has ${f} ${ls} ; then
 			newls="${newls} ${f}"
 		else
 			nols="${nols} ${f}"

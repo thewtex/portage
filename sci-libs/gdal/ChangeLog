@@ -1,6 +1,35 @@
 # ChangeLog for sci-libs/gdal
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/gdal/ChangeLog,v 1.111 2011/06/11 14:06:16 scarabeus Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/gdal/ChangeLog,v 1.118 2011/07/26 16:21:29 neurogeek Exp $
+
+  26 Jul 2011; Jesus Rivero <neurogeek@gentoo.org> gdal-1.8.1.ebuild:
+  Added python_mod_cleanup in pkg_postrm
+
+  25 Jul 2011; Tomáš Chvátal <scarabeus@gentoo.org> gdal-1.8.1.ebuild:
+  Shutup python warning. Fixes bug #376295.
+
+*gdal-1.8.1 (22 Jul 2011)
+
+  22 Jul 2011; Tomáš Chvátal <scarabeus@gentoo.org> -gdal-1.8.0-r1.ebuild,
+  +gdal-1.8.1.ebuild:
+  Version bump to the latest. Drop older.
+
+  18 Jul 2011; Tomáš Chvátal <scarabeus@gentoo.org> gdal-1.8.0-r1.ebuild:
+  Silence the pkgcore warning.
+
+  16 Jul 2011; Justin Lecher <jlec@gentoo.org> gdal-1.6.3-r1.ebuild,
+  gdal-1.8.0-r1.ebuild, metadata.xml:
+  Rearrange the ebuild, no external changes
+
+  08 Jul 2011; Samuli Suominen <ssuominen@gentoo.org> gdal-1.6.3-r1.ebuild:
+  Convert from "useq" to "use".
+
+  05 Jul 2011; Steve Arnold <nerdboy@gentoo.org> gdal-1.8.0-r1.ebuild:
+  This should fix the seemingly random (and unreproducible by me) install 
+  bug reported again here.  I still can't reproduce it on any of my test 
+  boxes but the build log attached to this bug shows an extra DESTDIR that 
+  shouldn't be there (and now it isn't).  Also removed a failing autoheader
+  and added some additional python eclass helper functions.
 
   11 Jun 2011; Tomáš Chvátal <scarabeus@gentoo.org> gdal-1.8.0-r1.ebuild:
   Build with any tiff version, but make sure it is always the external one.

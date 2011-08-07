@@ -1,6 +1,29 @@
 # ChangeLog for media-plugins/audacious-plugins
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/audacious-plugins/ChangeLog,v 1.211 2011/06/29 22:49:13 chainsaw Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/audacious-plugins/ChangeLog,v 1.215 2011/07/26 09:27:55 chainsaw Exp $
+
+  26 Jul 2011; Tony Vroon <chainsaw@gentoo.org>
+  -audacious-plugins-2.5.3.ebuild:
+  Clean up old ebuild; 2.5.4 is the new stable target.
+
+*audacious-plugins-3.0 (25 Jul 2011)
+
+  25 Jul 2011; Tony Vroon <chainsaw@gentoo.org> +audacious-plugins-3.0.ebuild:
+  First ebuild on the 3.x branch. The DEPEND change is not a mistake; the
+  current code is not compatible with libav. If you disagree, please write the
+  necessary code to support it for the ffaudio plugin and attach it to a bug
+  report at jira.atheme.org for the audacious-plugins component.
+
+  17 Jul 2011; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  mms USE flag is now global.
+
+*audacious-plugins-2.5.4 (15 Jul 2011)
+
+  15 Jul 2011; Tony Vroon <chainsaw@gentoo.org>
+  -audacious-plugins-2.5.0.ebuild, -audacious-plugins-2.5.1.ebuild,
+  -audacious-plugins-2.5.2.ebuild, +audacious-plugins-2.5.4.ebuild:
+  More minor bugfixes trickling down from 3.0 development. Clean up older
+  ebuilds as they are not stabilisation targets.
 
 *audacious-plugins-2.5.3 (29 Jun 2011)
 

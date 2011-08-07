@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/amd64/no-multilib/package.mask,v 1.102 2011/05/24 03:24:26 calchan Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/amd64/no-multilib/package.mask,v 1.106 2011/07/23 13:36:29 reavertm Exp $
 
 # AMD64 Team <amd64@gentoo.org>
 # Mask packages that rely on amd64 multilib
@@ -36,6 +36,7 @@ app-emulation/emul-linux-x86-soundlibs
 app-emulation/emul-linux-x86-xlibs
 app-emulation/emul-linux-x86-java
 app-emulation/wine
+app-emulation/winetricks
 app-emulation/wine-doors
 app-text/acroread
 app-text/bibus
@@ -146,7 +147,7 @@ games-strategy/savage-bin
 games-strategy/smac
 games-strategy/x2
 games-strategy/x2-demo
-mail-client/thunderbird-bin
+<mail-client/thunderbird-bin-5.0
 media-fonts/acroread-asianfonts
 media-gfx/picasa
 media-libs/realcodecs
@@ -154,6 +155,7 @@ media-libs/win32codecs
 media-plugins/mythnetvision
 media-sound/shoutcast-server-bin
 media-sound/shoutcast-trans-bin
+media-sound/skype-call-recorder
 media-sound/ventrilo-server-bin
 media-tv/huludesktop
 media-tv/livestation
@@ -177,18 +179,12 @@ sys-apps/memtest86
 sys-apps/memtest86+
 sys-block/hpacucli
 sys-libs/lib-compat-loki
-www-client/firefox-bin
-www-client/seamonkey-bin
-<www-plugins/adobe-flash-10.0.20.7_alpha
-=www-plugins/adobe-flash-10.1*
-=www-plugins/adobe-flash-10.2.152.27
-=www-plugins/adobe-flash-10.2.153.1
-=www-plugins/adobe-flash-10.2.159.1
-~www-plugins/adobe-flash-10.3.181.14
+<www-client/firefox-bin-5.0
+<www-client/seamonkey-bin-2.2
+<www-plugins/adobe-flash-11.0.1.60_beta201107131
 www-plugins/nspluginwrapper
 www-plugins/google-talkplugin
 
 # AMD64 Team; <amd64@gentoo.org>
 # grub is not available on no-multilib-profiles; use sys-boot/grub-static
 sys-boot/grub
-

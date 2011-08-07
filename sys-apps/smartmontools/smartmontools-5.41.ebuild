@@ -1,8 +1,8 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/smartmontools/smartmontools-5.41.ebuild,v 1.1 2011/06/13 22:30:39 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/smartmontools/smartmontools-5.41.ebuild,v 1.3 2011/07/29 08:27:43 zmedico Exp $
 
-EAPI="2"
+EAPI="3"
 
 inherit flag-o-matic
 if [[ ${PV} == "9999" ]] ; then
@@ -12,7 +12,7 @@ if [[ ${PV} == "9999" ]] ; then
 	SRC_URI=""
 else
 	SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
+	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~x86-linux"
 fi
 
 DESCRIPTION="Self-Monitoring, Analysis and Reporting Technology System (S.M.A.R.T.) monitoring tools"
@@ -56,7 +56,7 @@ src_configure() {
 	fi
 
 	econf \
-		--with-docdir="/usr/share/doc/${PF}" \
+		--with-docdir="${EPREFIX}/usr/share/doc/${PF}" \
 		--with-initscriptdir="/toss-it-away" \
 		${myconf} \
 		|| die

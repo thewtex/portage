@@ -1,13 +1,13 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-tv/mythtv/mythtv-0.23.1_p27077.ebuild,v 1.1 2010/11/04 16:46:12 cardoe Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-tv/mythtv/mythtv-0.23.1_p27077.ebuild,v 1.4 2011/07/28 21:10:59 neurogeek Exp $
 
-EAPI=2
+EAPI=3
 inherit flag-o-matic multilib eutils qt4 mythtv toolchain-funcs python
 
 DESCRIPTION="Homebrew PVR project"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 
 IUSE_VIDEO_CARDS="video_cards_nvidia video_cards_via"
 IUSE="alsa altivec autostart +css dbus debug directv dvb faad \
@@ -168,8 +168,8 @@ src_configure() {
 	fi
 
 #	myconf="${myconf} --extra-cxxflags=\"${CXXFLAGS}\" --extra-cflags=\"${CFLAGS}\""
-	hasq distcc ${FEATURES} || myconf="${myconf} --disable-distcc"
-	hasq ccache ${FEATURES} || myconf="${myconf} --disable-ccache"
+	has distcc ${FEATURES} || myconf="${myconf} --disable-distcc"
+	has ccache ${FEATURES} || myconf="${myconf} --disable-ccache"
 
 	# let MythTV come up with our CFLAGS. Upstream will support this
 	unset CFLAGS
@@ -288,7 +288,7 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	use python && python_mod_optimize $(python_get_sitedir)/MythTV
+	use python && python_mod_optimize MythTV
 
 	elog
 	elog "To always have MythBackend running and available run the following:"
@@ -328,7 +328,7 @@ pkg_postinst() {
 
 pkg_postrm()
 {
-	use python && python_mod_cleanup $(python_get_sitedir)/MythTV
+	use python && python_mod_cleanup MythTV
 }
 
 pkg_info() {

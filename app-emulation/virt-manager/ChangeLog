@@ -1,12 +1,48 @@
 # ChangeLog for app-emulation/virt-manager
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/virt-manager/ChangeLog,v 1.47 2011/06/29 19:20:13 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/virt-manager/ChangeLog,v 1.56 2011/07/28 22:04:11 cardoe Exp $
+
+  28 Jul 2011; Doug Goldstein <cardoe@gentoo.org> virt-manager-0.9.0.ebuild:
+  Remove bad patch reference
+
+*virt-manager-0.9.0 (28 Jul 2011)
+
+  28 Jul 2011; Doug Goldstein <cardoe@gentoo.org> +virt-manager-0.9.0.ebuild:
+  Version bump
+
+  27 Jul 2011; Doug Goldstein <cardoe@gentoo.org>
+  -virt-manager-0.8.7-r2.ebuild:
+  Remove older version
+
+  27 Jul 2011; Doug Goldstein <cardoe@gentoo.org> virt-manager-0.8.7-r3.ebuild,
+  virt-manager-9999.ebuild:
+  sync up the 9999 ebuild to the features of the 0.8.7-r3
+
+  26 Jul 2011; Doug Goldstein <cardoe@gentoo.org> virt-manager-0.8.7-r3.ebuild:
+  Add back ~x86 keyword since net-misc/spice-gtk is now ~arch keyworded on x86.
+
+  21 Jul 2011; Doug Goldstein <cardoe@gentoo.org> -virt-manager-0.8.6.ebuild:
+  Remove old version
+
+*virt-manager-0.8.7-r3 (21 Jul 2011)
+
+  21 Jul 2011; Doug Goldstein <cardoe@gentoo.org>
+  +virt-manager-0.8.7-r3.ebuild, metadata.xml:
+  Removed installation of the TUI version of virt-manager. Support SPICE
+  virtual machines. Patch from Malte Starostik <m-starostik@versanet.de>.
+  bug #356825
+
+  21 Jul 2011; Doug Goldstein <cardoe@gentoo.org> virt-manager-9999.ebuild:
+  Switch to git-2 eclass from git eclass.
 
   29 Jun 2011; Markus Meier <maekke@gentoo.org> virt-manager-0.8.7.ebuild:
   x86 stable, bug #370497
 
   19 Jun 2011; Markos Chandras <hwoarang@gentoo.org> virt-manager-0.8.7.ebuild:
   Stable on amd64 wrt bug #370497
+
+  07 Jun 2011; Doug Goldstein <cardoe@gentoo.org> virt-manager-9999.ebuild:
+  Fix typo with Makefile.in.in. bug #361193
 
 *virt-manager-0.8.7-r2 (07 Jun 2011)
 

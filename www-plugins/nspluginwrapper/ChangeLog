@@ -1,6 +1,49 @@
 # ChangeLog for www-plugins/nspluginwrapper
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-plugins/nspluginwrapper/ChangeLog,v 1.16 2011/06/17 02:25:58 chutzpah Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-plugins/nspluginwrapper/ChangeLog,v 1.23 2011/07/14 16:09:41 chutzpah Exp $
+
+  14 Jul 2011; Patrick McLean <chutzpah@gentoo.org>
+  -files/nspluginwrapper-1.4.2-parallel-make.patch,
+  nspluginwrapper-1.4.4.ebuild, nspluginwrapper-1.4.4-r1.ebuild,
+  files/nspluginwrapper-1.4.4-compile-on-hardened.patch,
+  +files/nspluginwrapper-1.4.4-parallel-make.patch:
+  Another parallel build fix (bug #375121).
+
+*nspluginwrapper-1.4.4-r1 (11 Jul 2011)
+
+  11 Jul 2011; Patrick McLean <chutzpah@gentoo.org>
+  -nspluginwrapper-1.3.0.ebuild, -files/nspluginwrapper-1.3.0-asneeded.patch,
+  -files/nspluginwrapper-1.3.0-fix-npident-array-sending.patch,
+  -files/nspluginwrapper-1.3.0-fortify.patch,
+  -files/nspluginwrapper-1.3.0-inst-crash.patch,
+  -files/nspluginwrapper-1.3.0-offsetof.patch,
+  +nspluginwrapper-1.4.4-r1.ebuild:
+  Revision bump, workaround to fix bug #374169. Drop version 1.3 as 1.4.4 is
+  stable and has a security fix.
+
+  05 Jul 2011; Markos Chandras <hwoarang@gentoo.org>
+  nspluginwrapper-1.4.4.ebuild:
+  Stable on amd64 wrt bug #373971
+
+  04 Jul 2011; Patrick McLean <chutzpah@gentoo.org>
+  nspluginwrapper-1.4.4.ebuild:
+  Update homepage.
+
+  04 Jul 2011; Patrick McLean <chutzpah@gentoo.org>
+  -nspluginwrapper-1.2.2-r2.ebuild, -files/nspluginwrapper-1.2.2-gcc44.patch,
+  -files/nspluginwrapper-1.2.2-npidentifiers.patch,
+  -files/nspluginwrapper-1.2.2-respect-ldflags.patch,
+  -files/nspluginwrapper-1.4.0-parallel-make.patch:
+  Really remove older versions.
+
+*nspluginwrapper-1.4.4 (04 Jul 2011)
+
+  04 Jul 2011; Patrick McLean <chutzpah@gentoo.org>
+  -nspluginwrapper-1.4.0-r1.ebuild, -nspluginwrapper-1.4.2.ebuild,
+  +nspluginwrapper-1.4.4.ebuild,
+  +files/nspluginwrapper-1.4.4-compile-on-hardened.patch:
+  Version bump, includes fix for bug #373971. Also add patch to compile on
+  hardened (Bug #368777). Clean out some older versions.
 
 *nspluginwrapper-1.4.2 (17 Jun 2011)
 

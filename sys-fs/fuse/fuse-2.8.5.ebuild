@@ -1,8 +1,8 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/fuse/fuse-2.8.5.ebuild,v 1.10 2011/03/30 20:42:33 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/fuse/fuse-2.8.5.ebuild,v 1.12 2011/07/29 04:34:49 zmedico Exp $
 
-EAPI=2
+EAPI=3
 inherit eutils libtool linux-info
 
 MY_P=${P/_/-}
@@ -11,7 +11,7 @@ HOMEPAGE="http://fuse.sourceforge.net"
 SRC_URI="mirror://sourceforge/fuse/${MY_P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 ~arm hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd ~x86-linux"
 IUSE="kernel_linux kernel_FreeBSD"
 S=${WORKDIR}/${MY_P}
 PDEPEND="kernel_FreeBSD? ( sys-fs/fuse4bsd )"
@@ -35,7 +35,9 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		UDEV_RULES_PATH=/lib/udev/rules.d \
+		INIT_D_PATH="${EPREFIX}/etc/init.d" \
+		MOUNT_FUSE_PATH="${EPREFIX}/sbin" \
+		UDEV_RULES_PATH="${EPREFIX}/lib/udev/rules.d" \
 		--disable-example
 }
 
@@ -61,7 +63,7 @@ src_install() {
 	rm -rf "${D}/dev"
 
 	dodir /etc
-	cat >"${D}"/etc/fuse.conf <<-EOF
+	cat >"${ED}"/etc/fuse.conf <<-EOF
 		# Set the maximum number of FUSE mounts allowed to non-root users.
 		# The default is 1000.
 		#

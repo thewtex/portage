@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apache/mod_perl/mod_perl-2.0.5.ebuild,v 1.2 2011/05/15 17:26:26 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-apache/mod_perl/mod_perl-2.0.5.ebuild,v 1.6 2011/07/22 13:46:52 jer Exp $
 
 EAPI="3"
 
@@ -11,15 +11,19 @@ SRC_URI="mirror://apache/perl/${P}.tar.gz"
 HOMEPAGE="http://perl.apache.org/"
 
 LICENSE="GPL-2"
-KEYWORDS="~alpha ~amd64 ~ia64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~sparc ~x86"
 IUSE=""
 SLOT="1"
 
 # Make sure we always use the latest Apache-Test version or even check the
 # version of the bundled Apache-Test!
+#
+# We need both, apache and perl but either apache without threads or perl with
+# ithreads, bug 373943
 DEPEND=">=dev-perl/Apache-Test-1.360
 	>=virtual/perl-CGI-3.08
 	dev-lang/perl
+	www-servers/apache
 	|| ( www-servers/apache[-threads] dev-lang/perl[ithreads] )"
 RDEPEND="${DEPEND}"
 PDEPEND=">=dev-perl/Apache-Reload-0.11
@@ -64,9 +68,9 @@ src_prepare() {
 	# test" below should allow the software to build properly.
 
 	# Robert Coie <rac@gentoo.org> 2003.05.06
-	sed -i -e "s/sleep \$_/sleep \$_ << 2/" \
-		"${S}"/Apache-Test/lib/Apache/TestServer.pm \
-		|| die "problem editing TestServer.pm"
+#	sed -i -e "s/sleep \$_/sleep \$_ << 2/" \
+#		"${S}"/Apache-Test/lib/Apache/TestServer.pm \
+#		|| die "problem editing TestServer.pm"
 
 	# rendhalver - this got redone for 2.0.1 and seems to fix the make test problems
 	epatch "${FILESDIR}"/mod_perl-2.0.1-sneak-tmpdir.patch

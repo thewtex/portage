@@ -1,12 +1,12 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ffi/ffi-1.0.9.ebuild,v 1.2 2011/06/08 05:46:28 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ffi/ffi-1.0.9.ebuild,v 1.6 2011/08/02 16:30:48 hwoarang Exp $
 
 EAPI=4
 
 # jruby → unneeded, this is part of the standard JRuby distribution, and
 # would just install a dummy.
-USE_RUBY="ruby18 ruby19 ree18"
+USE_RUBY="ruby18 ree18"
 
 RUBY_FAKEGEM_TASK_TEST="spec"
 
@@ -25,7 +25,7 @@ RUBY_S="${PN}-${PN}-*"
 IUSE=""
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris"
+KEYWORDS="amd64 ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris"
 
 RDEPEND="${RDEPEND} dev-libs/libffi"
 DEPEND="${DEPEND} dev-libs/libffi"
