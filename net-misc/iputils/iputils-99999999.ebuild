@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/iputils/iputils-99999999.ebuild,v 1.3 2011/02/19 18:09:49 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/iputils/iputils-99999999.ebuild,v 1.4 2011/08/07 20:09:31 ssuominen Exp $
 
 # For released versions, we precompile the man/html pages and store
 # them in a tarball on our mirrors.  This avoids ugly issues while
@@ -26,11 +26,9 @@ LICENSE="BSD"
 SLOT="0"
 IUSE="doc idn ipv6 SECURITY_HAZARD ssl static"
 
-# sysfsutils is needed for libsysfs which is used by arping only
 RDEPEND="!net-misc/rarpd
 	ssl? ( dev-libs/openssl )
-	idn? ( net-dns/libidn )
-	sys-fs/sysfsutils"
+	idn? ( net-dns/libidn )"
 DEPEND="${RDEPEND}
 	virtual/os-headers"
 if [[ ${PV} == "99999999" ]] ; then
@@ -54,6 +52,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/${PN}-20100418-aliasing.patch
 	epatch "${FILESDIR}"/${PN}-20071127-kernel-ifaddr.patch
 	epatch "${FILESDIR}"/${PN}-20070202-idn.patch #218638
+	epatch "${FILESDIR}"/${PN}-20071127-infiniband.patch #377687
 	use SECURITY_HAZARD && epatch "${FILESDIR}"/${PN}-20071127-nonroot-floodping.patch
 	use static && append-ldflags -static
 	use ssl && append-cppflags -DHAVE_OPENSSL
