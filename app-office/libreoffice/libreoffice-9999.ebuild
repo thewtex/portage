@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/libreoffice/libreoffice-9999.ebuild,v 1.3 2011/08/08 09:27:15 scarabeus Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/libreoffice/libreoffice-9999.ebuild,v 1.6 2011/08/09 14:34:42 scarabeus Exp $
 
 EAPI=3
 
@@ -49,7 +49,6 @@ unset DEV_URI
 
 # addons
 # FIXME: actually review which one of these are used
-ADDONS_SRC+=" ${ADDONS_URI}/128cfc86ed5953e57fe0f5ae98b62c2e-libtextcat-2.2.tar.gz"
 ADDONS_SRC+=" ${ADDONS_URI}/17410483b5b5f267aa18b7e00b65e6e0-hsqldb_1_8_0.zip"
 ADDONS_SRC+=" ${ADDONS_URI}/1756c4fa6c616ae15973c104cd8cb256-Adobe-Core35_AFMs-314.tar.gz"
 ADDONS_SRC+=" ${ADDONS_URI}/1f24ab1d39f4a51faf22244c94a6203f-xmlsec1-1.2.14.tar.gz"
@@ -82,7 +81,6 @@ ADDONS_SRC+=" ${ADDONS_URI}/90401bca927835b6fbae4a707ed187c8-nlpsolver-0.9.tar.b
 ADDONS_SRC+=" ${ADDONS_URI}/0f63ee487fda8f21fafa767b3c447ac9-ixion-0.2.0.tar.gz"
 ADDONS_SRC+=" ${ADDONS_URI}/71474203939fafbe271e1263e61d083e-nss-3.12.8-with-nspr-4.8.6.tar.gz"
 ADDONS_SRC+=" http://download.go-oo.org/extern/185d60944ea767075d27247c3162b3bc-unowinreg.dll"
-ADDONS_SRC+=" http://download.go-oo.org/extern/b4cae0700aa1c2aef7eb7f345365e6f1-translate-toolkit-1.8.1.tar.bz2"
 ADDONS_SRC+=" http://www.numbertext.org/linux/881af2b7dca9b8259abbca00bbbc004d-LinLibertineG-20110101.zip"
 SRC_URI+=" ${ADDONS_SRC}"
 
@@ -131,7 +129,9 @@ COMMON_DEPEND="
 	app-arch/unzip
 	>=app-text/hunspell-1.1.4-r1
 	app-text/mythes
+	app-text/libtextcat
 	app-text/libwpd:0.9[tools]
+	app-text/libwpg:0.2
 	>=app-text/libwps-0.2.2
 	>=app-text/poppler-0.12.3-r3[xpdf-headers]
 	dev-db/unixODBC
@@ -146,7 +146,6 @@ COMMON_DEPEND="
 	>=media-libs/fontconfig-2.3.0
 	>=media-libs/vigra-1.4
 	media-libs/libpng
-	app-text/libwpg:0.2
 	sci-mathematics/lpsolve
 	>=sys-libs/db-4.8
 	virtual/jpeg
@@ -463,6 +462,7 @@ src_configure() {
 		--with-system-dicts \
 		--enable-cairo-canvas \
 		--enable-largefile \
+		--enable-python=system \
 		--enable-randr \
 		--enable-randr-link \
 		--enable-release-build \
@@ -521,7 +521,6 @@ src_configure() {
 		$(use_enable nsplugin mozilla) \
 		$(use_enable odk) \
 		$(use_enable opengl) \
-		$(use_enable python python system) \
 		$(use_enable svg librsvg system) \
 		$(use_enable vba) \
 		$(use_enable vba activex-component) \

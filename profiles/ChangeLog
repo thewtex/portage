@@ -1,10 +1,129 @@
 # ChangeLog for profile directory
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.5607 2011/08/09 04:43:34 zmedico Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.5612 2011/08/09 13:29:00 ssuominen Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  09 Aug 2011; Samuli Suominen <ssuominen@gentoo.org>
+  -features/no-nptl/package.mask, -features/no-nptl/packages,
+  -features/no-nptl/use.mask, -hardened/linux/x86/10.0/no-nptl/deprecated,
+  -hardened/linux/x86/10.0/no-nptl/parent, -hardened/linux/x86/no-nptl/parent:
+  Remove no-nptl profiles because there is no sys-libs/glibc < 2.6 available.
+
+  09 Aug 2011; Robert Piasek <dagger@gentoo.org> package.mask:
+  Updated package mask from RC to final for samba 3.6.0
+
+  09 Aug 2011; Samuli Suominen <ssuominen@gentoo.org>
+  -default/linux/arm/2008.0/deprecated,
+  -default/linux/arm/2008.0/desktop/deprecated,
+  -default/linux/arm/2008.0/desktop/make.defaults,
+  -default/linux/arm/2008.0/desktop/parent,
+  -default/linux/arm/2008.0/developer/deprecated,
+  -default/linux/arm/2008.0/developer/parent, -default/linux/arm/2008.0/parent,
+  -default/linux/arm/2008.0/server/deprecated,
+  -default/linux/arm/2008.0/server/parent,
+  -default/linux/ia64/2008.0/deprecated,
+  -default/linux/ia64/2008.0/desktop/deprecated,
+  -default/linux/ia64/2008.0/desktop/make.defaults,
+  -default/linux/ia64/2008.0/desktop/parent,
+  -default/linux/ia64/2008.0/developer/deprecated,
+  -default/linux/ia64/2008.0/developer/parent,
+  -default/linux/ia64/2008.0/parent,
+  -default/linux/ia64/2008.0/server/deprecated,
+  -default/linux/ia64/2008.0/server/parent,
+  -default/linux/m68k/2008.0/deprecated,
+  -default/linux/m68k/2008.0/desktop/deprecated,
+  -default/linux/m68k/2008.0/desktop/make.defaults,
+  -default/linux/m68k/2008.0/desktop/parent,
+  -default/linux/m68k/2008.0/developer/deprecated,
+  -default/linux/m68k/2008.0/developer/parent,
+  -default/linux/m68k/2008.0/package.mask, -default/linux/m68k/2008.0/parent,
+  -default/linux/m68k/2008.0/server/deprecated,
+  -default/linux/m68k/2008.0/server/parent,
+  -default/linux/mips/2008.0/deprecated,
+  -default/linux/mips/2008.0/desktop/deprecated,
+  -default/linux/mips/2008.0/desktop/make.defaults,
+  -default/linux/mips/2008.0/desktop/parent,
+  -default/linux/mips/2008.0/developer/deprecated,
+  -default/linux/mips/2008.0/developer/parent,
+  -default/linux/mips/2008.0/parent,
+  -default/linux/mips/2008.0/server/deprecated,
+  -default/linux/mips/2008.0/server/parent,
+  -default/linux/powerpc/ppc32/2008.0/deprecated,
+  -default/linux/powerpc/ppc32/2008.0/desktop/deprecated,
+  -default/linux/powerpc/ppc32/2008.0/desktop/make.defaults,
+  -default/linux/powerpc/ppc32/2008.0/desktop/parent,
+  -default/linux/powerpc/ppc32/2008.0/developer/deprecated,
+  -default/linux/powerpc/ppc32/2008.0/developer/parent,
+  -default/linux/powerpc/ppc32/2008.0/parent,
+  -default/linux/powerpc/ppc32/2008.0/server/deprecated,
+  -default/linux/powerpc/ppc32/2008.0/server/parent,
+  -default/linux/powerpc/ppc32/2008.0/server/profile.bashrc,
+  -default/linux/powerpc/ppc64/2008.0/32bit-userland/deprecated,
+  -default/linux/powerpc/ppc64/2008.0/32bit-userland/desktop/deprecated,
+  -default/linux/powerpc/ppc64/2008.0/32bit-userland/desktop/make.defaults,
+  -default/linux/powerpc/ppc64/2008.0/32bit-userland/desktop/parent,
+  -default/linux/powerpc/ppc64/2008.0/32bit-userland/developer/deprecated,
+  -default/linux/powerpc/ppc64/2008.0/32bit-userland/developer/parent,
+  -default/linux/powerpc/ppc64/2008.0/32bit-userland/parent,
+  -default/linux/powerpc/ppc64/2008.0/32bit-userland/server/deprecated,
+  -default/linux/powerpc/ppc64/2008.0/32bit-userland/server/parent,
+  -default/linux/powerpc/ppc64/2008.0/32bit-userland/server/profile.bashrc,
+  -default/linux/powerpc/ppc64/2008.0/64bit-userland/deprecated,
+  -default/linux/powerpc/ppc64/2008.0/64bit-userland/desktop/deprecated,
+  -default/linux/powerpc/ppc64/2008.0/64bit-userland/desktop/make.defaults,
+  -default/linux/powerpc/ppc64/2008.0/64bit-userland/desktop/parent,
+  -default/linux/powerpc/ppc64/2008.0/64bit-userland/developer/deprecated,
+  -default/linux/powerpc/ppc64/2008.0/64bit-userland/developer/parent,
+  -default/linux/powerpc/ppc64/2008.0/64bit-userland/parent,
+  -default/linux/powerpc/ppc64/2008.0/64bit-userland/server/deprecated,
+  -default/linux/powerpc/ppc64/2008.0/64bit-userland/server/parent,
+  -default/linux/powerpc/ppc64/2008.0/64bit-userland/server/profile.bashrc,
+  -default/linux/powerpc/ppc64/2008.0/deprecated,
+  -default/linux/powerpc/ppc64/2008.0/desktop/deprecated,
+  -default/linux/powerpc/ppc64/2008.0/desktop/make.defaults,
+  -default/linux/powerpc/ppc64/2008.0/desktop/parent,
+  -default/linux/powerpc/ppc64/2008.0/developer/deprecated,
+  -default/linux/powerpc/ppc64/2008.0/developer/parent,
+  -default/linux/powerpc/ppc64/2008.0/parent,
+  -default/linux/powerpc/ppc64/2008.0/server/deprecated,
+  -default/linux/powerpc/ppc64/2008.0/server/parent,
+  -default/linux/s390/2008.0/deprecated, -default/linux/s390/2008.0/parent,
+  -default/linux/s390/2008.0/server/deprecated,
+  -default/linux/s390/2008.0/server/parent,
+  -default/linux/sh/2008.0/deprecated,
+  -default/linux/sh/2008.0/desktop/deprecated,
+  -default/linux/sh/2008.0/desktop/make.defaults,
+  -default/linux/sh/2008.0/desktop/parent,
+  -default/linux/sh/2008.0/developer/deprecated,
+  -default/linux/sh/2008.0/developer/parent, -default/linux/sh/2008.0/parent,
+  -default/linux/sh/2008.0/server/deprecated,
+  -default/linux/sh/2008.0/server/parent,
+  -default/linux/sparc/2008.0/deprecated,
+  -default/linux/sparc/2008.0/desktop/deprecated,
+  -default/linux/sparc/2008.0/desktop/make.defaults,
+  -default/linux/sparc/2008.0/desktop/parent,
+  -default/linux/sparc/2008.0/developer/deprecated,
+  -default/linux/sparc/2008.0/developer/parent,
+  -default/linux/sparc/2008.0/packages, -default/linux/sparc/2008.0/parent,
+  -default/linux/sparc/2008.0/server/deprecated,
+  -default/linux/sparc/2008.0/server/parent,
+  -default/linux/sparc/2008.0/use.mask:
+  Remove 2008.0 profiles from every arch except amd64 and x86.
+
+  09 Aug 2011; Samuli Suominen <ssuominen@gentoo.org>
+  -targets/vserver/packages, -targets/vserver/packages.build:
+  Remove unused vserver parent wrt #361133
+
+  09 Aug 2011; Ulrich Mueller <ulm@gentoo.org> uclibc/arm/2.4/package.mask,
+  uclibc/arm/armeb/2.4/package.mask, uclibc/ppc/2.4/package.mask,
+  uclibc/ppc/hardened/2.4/package.mask, uclibc/sh/2.4/package.mask,
+  uclibc/x86/2.4/package.mask, uclibc/x86/2005.1/2.4/package.mask,
+  uclibc/x86/hardened/2.4/package.mask:
+  Remove mask for >=virtual/linux-sources-2.5 because versioning of the virtual
+  will be dropped.
 
   09 Aug 2011; Zac Medico <zmedico@gentoo.org> -arch/arm/packages,
   arch/arm/package.mask, +arch/ia64/package.mask, -arch/ia64/packages,
@@ -19,7 +138,7 @@
   releases/2008.0/package.mask, -releases/2008.0/packages,
   selinux/package.mask, selinux/packages:
   Bug #377907 - Use package.mask for compatibility with PMS section 5.2.7, and
-  future versions of sys-apps/portage. 
+  future versions of sys-apps/portage.
 
   09 Aug 2011; Zac Medico <zmedico@gentoo.org> +arch/s390/package.mask,
   +default/linux/m68k/10.0/package.mask,
