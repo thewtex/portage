@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-fs/samba/samba-3.6.0_rc3-r1.ebuild,v 1.1 2011/08/04 18:52:26 maksbotan Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-fs/samba/samba-3.6.0_rc3-r1.ebuild,v 1.2 2011/08/07 20:12:39 polynomial-c Exp $
 
 EAPI=4
 
@@ -267,6 +267,9 @@ src_install() {
 		if use winbind ; then
 			newpamd "${CONFDIR}/system-auth-winbind.pam" system-auth-winbind
 			doman ../docs/manpages/pam_winbind.8
+			# bug #376853
+			insinto /etc/security
+			doins ../examples/pam_winbind/pam_winbind.conf || die
 		fi
 
 		newpamd "${CONFDIR}/samba.pam" samba

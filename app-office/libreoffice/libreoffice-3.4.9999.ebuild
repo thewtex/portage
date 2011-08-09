@@ -1,10 +1,11 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/libreoffice/libreoffice-3.4.9999.ebuild,v 1.7 2011/08/06 16:48:01 mattst88 Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/libreoffice/libreoffice-3.4.9999.ebuild,v 1.13 2011/08/08 09:27:15 scarabeus Exp $
 
 EAPI=3
 
 KDE_REQUIRED="optional"
+KDE_SCM="git"
 CMAKE_REQUIRED="never"
 
 PYTHON_DEPEND="2"
@@ -31,7 +32,6 @@ DESCRIPTION="LibreOffice, a full office productivity suite."
 HOMEPAGE="http://www.libreoffice.org"
 SRC_URI="branding? ( http://dev.gentooexperimental.org/~scarabeus/${BRANDING} )"
 
-# Shiny split sources with so many packages...
 # Bootstrap MUST be first!
 MODULES="bootstrap artwork base calc components extensions extras filters help
 impress libs-core libs-extern libs-extern-sys libs-gui postprocess sdk testing
@@ -210,6 +210,7 @@ DEPEND="${COMMON_DEPEND}
 	sys-devel/bison
 	sys-apps/coreutils
 	sys-devel/flex
+	>=sys-devel/make-3.82
 	sys-libs/zlib
 	x11-libs/libXtst
 	x11-proto/randrproto
