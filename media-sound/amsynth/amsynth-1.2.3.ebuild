@@ -1,10 +1,10 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/amsynth/amsynth-1.2.3.ebuild,v 1.3 2011/08/07 17:29:57 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/amsynth/amsynth-1.2.3.ebuild,v 1.5 2011/08/10 17:07:59 hwoarang Exp $
 
 EAPI=2
-MY_P=${P/ams/amS}
 
+MY_P=${P/ams/amS}
 DESCRIPTION="Virtual analogue synthesizer."
 HOMEPAGE="http://amsynthe.sourceforge.net/"
 SRC_URI="mirror://sourceforge/amsynthe/${MY_P}.tar.gz"
