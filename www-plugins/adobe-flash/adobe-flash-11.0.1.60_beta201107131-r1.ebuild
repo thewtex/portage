@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-plugins/adobe-flash/adobe-flash-11.0.1.60_beta201107131-r1.ebuild,v 1.1 2011/07/18 18:00:00 lack Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-plugins/adobe-flash/adobe-flash-11.0.1.60_beta201107131-r1.ebuild,v 1.3 2011/08/11 14:40:29 lack Exp $
 
 EAPI=4
 inherit nsplugins multilib toolchain-funcs versionator
@@ -61,10 +61,8 @@ RDEPEND="x86? ( $NATIVE_DEPS )
 # Where should this all go? (Bug #328639)
 INSTALL_BASE="opt/Adobe/flash-player"
 
-# Ignore QA warnings in these binary closed-source libraries, since we can't fix
-# them:
-QA_TEXTRELS="${INSTALL_BASE}/plugin/libflashplayer.so
-	${INSTALL_BASE}32/libflashplayer.so"
+# Ignore QA warnings in these closed-source binaries, since we can't fix them:
+QA_PREBUILT="opt/* usr/lib*/kde4/*"
 
 pkg_setup() {
 	einfo "Date is $EBUILD_DATE suffix is $DATE_SUFFIX"
@@ -106,7 +104,9 @@ src_unpack() {
 		# elsewhere:
 		local my_32b_src=${MY_32B_URI##*/}
 		local my_64b_src=${MY_64B_URI##*/}
-		unpack $my_64b_src
+		if [[ $native_install ]]; then
+			unpack $my_64b_src
+		fi
 		mkdir 32bit
 		pushd 32bit >/dev/null
 		unpack $my_32b_src

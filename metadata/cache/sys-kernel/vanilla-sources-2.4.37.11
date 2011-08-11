@@ -1,7 +1,7 @@
 !build? ( sys-apps/sed >=sys-devel/binutils-2.11.90.0.31 )
 !build? ( >=sys-libs/ncurses-5.2 sys-devel/make )
 2.4.37.11
-mirror://kernel/linux/kernel/v2.4/patch-2.4.37.11.bz2 mirror://kernel/linux/kernel/v2.4/linux-2.4.37.tar.bz2
+mirror://kernel/linux/kernel/v2.0/patch-2.4.37.11.bz2 mirror://kernel/linux/kernel/v2.0/linux-2.4.37.tar.bz2
 binchecks strip
 http://www.kernel.org
 GPL-2 freedist
@@ -14,7 +14,7 @@ deblob symlink build
 
 2
 
-compile install postinst preinst setup test unpack
+compile install postinst postrm preinst setup test unpack
 
 
 
