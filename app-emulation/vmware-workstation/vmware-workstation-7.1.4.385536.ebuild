@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/vmware-workstation/vmware-workstation-7.1.4.385536.ebuild,v 1.1 2011/04/15 12:34:21 vadimk Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/vmware-workstation/vmware-workstation-7.1.4.385536.ebuild,v 1.3 2011/08/10 19:04:00 vadimk Exp $
 
 EAPI="2"
 
@@ -148,15 +148,6 @@ src_install() {
 	#	fi
 	#done
 
-	# install the ancillaries
-	insinto /usr
-	doins -r share
-
-	# install documentation
-	if use doc; then
-		dodoc doc/*
-	fi
-
 	# install vmware-config
 	cd "${S}"/vmware-player-setup
 	insinto "${VM_INSTALL_DIR}"/lib/vmware/setup
@@ -181,7 +172,7 @@ src_install() {
 	doman man/man1/vmware.1.gz
 
 	if use doc; then
-		dodoc -r doc/*
+		dodoc doc/*
 	fi
 
 	# install vmware-vix
