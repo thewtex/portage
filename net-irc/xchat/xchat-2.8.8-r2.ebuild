@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/xchat/xchat-2.8.8-r2.ebuild,v 1.7 2011/07/12 07:39:59 polynomial-c Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-irc/xchat/xchat-2.8.8-r2.ebuild,v 1.9 2011/08/10 14:06:39 polynomial-c Exp $
 
 EAPI=3
 
@@ -47,7 +47,8 @@ src_prepare() {
 	epatch "${FILESDIR}"/${PN}-input-box4.patch \
 		"${FILESDIR}"/${PN}-2.8.4-interix.patch \
 		"${FILESDIR}"/${P}-libnotify07.patch \
-		"${FILESDIR}"/${P}-dbus.patch
+		"${FILESDIR}"/${P}-dbus.patch \
+		"${FILESDIR}"/${PN}-2.8.8-cflags.patch
 
 	use xchatdccserver && epatch "${DISTDIR}"/xchat-dccserver-0.6.patch.bz2
 
@@ -116,6 +117,9 @@ src_install() {
 	if ! use gtk ; then
 		rm "${ED}"/usr/share/applications -rf
 	fi
+
+	# Don't install .la files
+	find "${ED}" -name '*.la' -delete
 }
 
 pkg_postinst() {

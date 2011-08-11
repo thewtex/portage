@@ -1,12 +1,20 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/powerpc/package.use.mask,v 1.89 2011/07/19 13:14:08 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/powerpc/package.use.mask,v 1.91 2011/08/10 15:36:38 xarthisius Exp $
+
+# Kacper Kowalik <xarthisius@gentoo.org> (10 Aug 2011)
+# mask cuda dep for opencv bug 365451
+media-libs/opencv cuda
+
+# Kacper Kowalik <xarthisius@gentoo.org> (09 Aug 2011)
+# pass on media-sound/amarok[upnp] bug 365003
+media-sound/amarok upnp
 
 # Pacho Ramos <pacho@gentoo.org> (19 Jul 2011)
 # Missing keywords on dependencies
 app-cdr/brasero vcd
 
-# Brent Baude <ranger@gentoo.org> (25 June  2011)
+# Brent Baude <ranger@gentoo.org> (25 June 2011)
 # kde-base/krossjava fails to build on ppc
 kde-base/kdebindings-meta java
 
