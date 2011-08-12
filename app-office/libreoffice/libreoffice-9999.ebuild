@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/libreoffice/libreoffice-9999.ebuild,v 1.9 2011/08/10 15:15:08 scarabeus Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/libreoffice/libreoffice-9999.ebuild,v 1.12 2011/08/11 10:21:56 scarabeus Exp $
 
 EAPI=3
 
@@ -50,6 +50,7 @@ unset DEV_URI
 # addons
 # FIXME: actually review which one of these are used
 ADDONS_SRC+=" ${ADDONS_URI}/17410483b5b5f267aa18b7e00b65e6e0-hsqldb_1_8_0.zip"
+ADDONS_SRC+=" ${ADDONS_URI}/bd30e9cf5523cdfc019b94f5e1d7fd19-cppunit-1.12.1.tar.gz"
 ADDONS_SRC+=" ${ADDONS_URI}/1756c4fa6c616ae15973c104cd8cb256-Adobe-Core35_AFMs-314.tar.gz"
 ADDONS_SRC+=" ${ADDONS_URI}/1f24ab1d39f4a51faf22244c94a6203f-xmlsec1-1.2.14.tar.gz"
 ADDONS_SRC+=" ${ADDONS_URI}/24be19595acad0a2cae931af77a0148a-LICENSE_source-9.0.0.7-bj.html"
@@ -71,7 +72,6 @@ ADDONS_SRC+=" ${ADDONS_URI}/3bdf40c0d199af31923e900d082ca2dd-libfonts-1.1.6.zip"
 ADDONS_SRC+=" ${ADDONS_URI}/8ce2fcd72becf06c41f7201d15373ed9-librepository-1.1.6.zip"
 ADDONS_SRC+=" ${ADDONS_URI}/97b2d4dba862397f446b217e2b623e71-libloader-1.1.6.zip"
 ADDONS_SRC+=" ${ADDONS_URI}/d8bd5eed178db6e2b18eeed243f85aa8-flute-1.1.6.zip"
-ADDONS_SRC+=" ${ADDONS_URI}/db60e4fde8dd6d6807523deb71ee34dc-liblayout-0.2.10.zip"
 ADDONS_SRC+=" ${ADDONS_URI}/eeb2c7ddf0d302fba4bfc6e97eac9624-libbase-1.1.6.zip"
 ADDONS_SRC+=" ${ADDONS_URI}/f94d9870737518e3b597f9265f4e9803-libserializer-1.1.6.zip"
 ADDONS_SRC+=" ${ADDONS_URI}/ba2930200c9f019c2d93a8c88c651a0f-flow-engine-0.9.4.zip"
@@ -234,6 +234,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-svx.patch"
 	"${FILESDIR}/${PN}-installed-files-permissions.patch"
 	"${FILESDIR}/${PN}-binfilter-as-needed.patch"
+	"${FILESDIR}/${PN}-kill-cppunit.patch"
 )
 
 # Uncoment me when updating to eapi4
@@ -242,6 +243,9 @@ PATCHES=(
 #	gnome? ( gtk )
 #	nsplugin? ( gtk )
 #"
+
+# Needs lots and lots of work and compiling
+RESTRICT="test"
 
 S="${WORKDIR}/${PN}-core-${PV}"
 
@@ -398,8 +402,11 @@ src_configure() {
 
 	# hsqldb: requires just 1.8.0 not 1.8.1 which we don't ship at all
 	# dmake: not worth of splitting out
+	# cppunit: patched not to run anything, just main() { return 0; }
+	#          workaround to upstream running the tests during build
 	internal_libs+="
 		--without-system-hsqldb
+		--without-system-cppunit
 	"
 
 	# When building without java some things needs to be done
