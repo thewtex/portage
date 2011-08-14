@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/gdb/gdb-7.3.ebuild,v 1.1 2011/08/07 13:09:19 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/gdb/gdb-7.3.ebuild,v 1.3 2011/08/13 18:02:18 vapier Exp $
 
 EAPI="3"
 
@@ -14,33 +14,46 @@ if [[ ${CTARGET} == ${CHOST} ]] ; then
 fi
 is_cross() { [[ ${CHOST} != ${CTARGET} ]] ; }
 
-if [[ ${PV} == *.*.*.*.*.* ]] ; then
-	inherit versionator rpm
+RPM=
+MY_PV=${PV}
+case ${PV} in
+*.*.*.*.*.*)
 	# fedora version: gdb-6.8.50.20090302-8.fc11.src.rpm
+	inherit versionator rpm
 	gvcr() { get_version_component_range "$@"; }
 	MY_PV=$(gvcr 1-4)
 	RPM="${PN}-${MY_PV}-$(gvcr 5).fc$(gvcr 6).src.rpm"
-else
-	MY_PV=${PV}
-	RPM=
-fi
+	SRC_URI="mirror://fedora/development/source/SRPMS/${RPM}"
+	;;
+*.*.50.*)
+	# weekly snapshots
+	SRC_URI="ftp://sources.redhat.com/pub/gdb/snapshots/current/gdb-weekly-${PV}.tar.bz2"
+	;;
+9999*)
+	# live git tree
+	inherit git-2
+	EGIT_REPO_URI="git://sourceware.org/git/gdb.git"
+	SRC_URI=""
+	;;
+*)
+	# Normal upstream release
+	SRC_URI="http://ftp.gnu.org/gnu/gdb/${P}.tar.bz2
+		ftp://sources.redhat.com/pub/gdb/releases/${P}.tar.bz2"
+	;;
+esac
 
 PATCH_VER="1"
 DESCRIPTION="GNU debugger"
-HOMEPAGE="http://sources.redhat.com/gdb/"
-if [[ -n ${RPM} ]] ; then
-	SRC_URI="http://mirrors.kernel.org/fedora/development/source/SRPMS/${RPM}"
-else
-	SRC_URI="http://ftp.gnu.org/gnu/gdb/${P}.tar.bz2
-		ftp://sources.redhat.com/pub/gdb/releases/${P}.tar.bz2"
-fi
+HOMEPAGE="http://sourceware.org/gdb/"
 SRC_URI="${SRC_URI} ${PATCH_VER:+mirror://gentoo/${P}-patches-${PATCH_VER}.tar.xz}"
 
 LICENSE="GPL-2 LGPL-2"
 is_cross \
 	&& SLOT="${CTARGET}" \
 	|| SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~x86-fbsd"
+if [[ ${PV} != 9999* ]] ; then
+	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~x86-fbsd"
+fi
 IUSE="expat multitarget nls python test vanilla"
 
 RDEPEND=">=sys-libs/ncurses-5.2-r2
@@ -49,6 +62,7 @@ RDEPEND=">=sys-libs/ncurses-5.2-r2
 	python? ( =dev-lang/python-2* )"
 DEPEND="${RDEPEND}
 	app-arch/xz-utils
+	virtual/yacc
 	test? ( dev-util/dejagnu )
 	nls? ( sys-devel/gettext )"
 
@@ -91,7 +105,7 @@ src_test() {
 src_install() {
 	emake \
 		DESTDIR="${D}" \
-		libdir=/nukeme/pretty/pretty/please includedir=/nukeme/pretty/pretty/please \
+		{include,lib}dir=/nukeme/pretty/pretty/please \
 		install || die
 	rm -r "${D}"/nukeme || die
 
@@ -108,7 +122,9 @@ src_install() {
 	docinto sim
 	dodoc sim/ChangeLog sim/MAINTAINERS sim/README-HACKING
 
-	dodoc "${WORKDIR}"/extra/gdbinit.sample
+	if [[ -n ${PATCH_VER} ]] ; then
+		dodoc "${WORKDIR}"/extra/gdbinit.sample
+	fi
 
 	# Remove shared info pages
 	rm -f "${D}"/usr/share/info/{annotate,bfd,configure,standards}.info*
