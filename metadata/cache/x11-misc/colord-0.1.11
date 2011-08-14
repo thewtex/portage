@@ -1,0 +1,22 @@
+dev-db/sqlite:3 >=dev-libs/glib-2.28.0:2 >=dev-libs/libusb-1.0.8:1 >=media-libs/lcms-2.2:2 >=sys-auth/polkit-0.97 introspection? ( >=dev-libs/gobject-introspection-0.9.8 ) scanner? ( media-gfx/sane-backends ) udev? ( || ( sys-fs/udev[gudev] sys-fs/udev[extras] ) ) app-text/docbook-sgml-utils dev-libs/libxslt >=dev-util/intltool-0.35 dev-util/pkgconfig >=sys-devel/gettext-0.17 doc? ( app-text/docbook-xml-dtd:4.1.2 >=dev-util/gtk-doc-1.9 ) vala? ( dev-lang/vala:0.12 ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b
+dev-db/sqlite:3 >=dev-libs/glib-2.28.0:2 >=dev-libs/libusb-1.0.8:1 >=media-libs/lcms-2.2:2 >=sys-auth/polkit-0.97 introspection? ( >=dev-libs/gobject-introspection-0.9.8 ) scanner? ( media-gfx/sane-backends ) udev? ( || ( sys-fs/udev[gudev] sys-fs/udev[extras] ) ) media-gfx/shared-color-profiles
+0
+http://www.freedesktop.org/software/colord/releases/colord-0.1.11.tar.xz
+test
+http://www.freedesktop.org/software/colord/
+GPL-2
+System service to accurately color manage input and output devices
+~amd64 ~x86
+autotools eutils libtool multilib portability toolchain-funcs
+doc examples +introspection scanner +udev vala
+vala? ( introspection )
+
+
+4
+
+configure install prepare
+
+
+
+
+

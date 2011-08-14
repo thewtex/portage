@@ -1,8 +1,8 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/qemu-kvm/qemu-kvm-0.15.0.ebuild,v 1.2 2011/08/12 15:41:01 cardoe Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/qemu-kvm/qemu-kvm-0.15.0.ebuild,v 1.5 2011/08/14 13:40:51 flameeyes Exp $
 
-#BACKPORTS=2
+BACKPORTS=1
 
 EAPI="3"
 
@@ -18,7 +18,9 @@ if [[ ${PV} = *9999* ]]; then
 	KEYWORDS=""
 else
 	SRC_URI="mirror://sourceforge/kvm/${PN}/${P}.tar.gz
-	${BACKPORTS:+http://dev.gentoo.org/~cardoe/distfiles/${P}-backports-${BACKPORTS}.tar.bz2}"
+	${BACKPORTS:+
+		http://dev.gentoo.org/~flameeyes/${PN}/${P}-backports-${BACKPORTS}.tar.bz2
+		http://dev.gentoo.org/~cardoe/distfiles/${P}-backports-${BACKPORTS}.tar.bz2}"
 	KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 fi
 
@@ -28,9 +30,9 @@ HOMEPAGE="http://www.linux-kvm.org"
 LICENSE="GPL-2"
 SLOT="0"
 # xen is disabled until the deps are fixed
-IUSE="+aio alsa bluetooth brltty curl debug esd fdt hardened jpeg ncurses \
+IUSE="+aio alsa bluetooth brltty curl debug esd fdt hardened jpeg ncurses nss \
 png pulseaudio qemu-ifup rbd sasl sdl spice ssl threads vde \
-+vhost-net xen"
++vhost-net xattr xen"
 # static, depends on libsdl being built with USE=static-libs, which can not
 # be expressed in current EAPI's
 
@@ -75,6 +77,7 @@ RDEPEND="
 	fdt? ( >=sys-apps/dtc-1.2.0 )
 	jpeg? ( virtual/jpeg )
 	ncurses? ( sys-libs/ncurses )
+	nss? ( dev-libs/nss )
 	png? ( media-libs/libpng )
 	pulseaudio? ( media-sound/pulseaudio )
 	qemu-ifup? ( sys-apps/iproute2 net-misc/bridge-utils )
@@ -84,6 +87,7 @@ RDEPEND="
 	spice? ( >=app-emulation/spice-0.6.0 )
 	ssl? ( net-libs/gnutls )
 	vde? ( net-misc/vde )
+	xattr? ( sys-apps/attr )
 	xen? ( app-emulation/xen )
 "
 
@@ -198,6 +202,7 @@ src_configure() {
 	conf_opts="${conf_opts} $(use_enable hardened user-pie)"
 	conf_opts="${conf_opts} $(use_enable jpeg vnc-jpeg)"
 	conf_opts="${conf_opts} $(use_enable ncurses curses)"
+	conf_opts="${conf_opts} $(use_enable nss smartcard-nss)"
 	conf_opts="${conf_opts} $(use_enable png vnc-png)"
 	conf_opts="${conf_opts} $(use_enable rbd)"
 	conf_opts="${conf_opts} $(use_enable sasl vnc-sasl)"
@@ -208,6 +213,7 @@ src_configure() {
 	conf_opts="${conf_opts} $(use_enable vde)"
 	conf_opts="${conf_opts} $(use_enable vhost-net)"
 	conf_opts="${conf_opts} $(use_enable xen)"
+	conf_opts="${conf_opts} $(use_enable xattr attr)"
 	conf_opts="${conf_opts} --disable-darwin-user --disable-bsd-user"
 
 	# audio options
