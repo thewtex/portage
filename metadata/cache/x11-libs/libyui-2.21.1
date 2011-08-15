@@ -1,0 +1,22 @@
+|| ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b
+
+0
+mirror://sourceforge/libyui/libyui-2.21.1.tar.gz
+
+http://sourceforge.net/projects/libyui/
+GPL-3
+UI abstraction library
+~amd64
+autotools eutils libtool multilib portability toolchain-funcs
+qt4 ncurses gtk
+|| ( qt4 ncurses gtk )
+qt4? ( x11-libs/libyui-qt ) ncurses? ( x11-libs/libyui-ncurses ) gtk? ( x11-libs/libyui-gtk )
+
+4
+
+configure install prepare
+
+
+
+
+
