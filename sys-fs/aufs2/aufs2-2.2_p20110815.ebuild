@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/aufs2/aufs2-2.2_p20110815.ebuild,v 1.2 2011/08/15 19:11:33 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/aufs2/aufs2-2.2_p20110815.ebuild,v 1.3 2011/08/17 07:38:36 jlec Exp $
 
 EAPI=4
 
@@ -38,7 +38,7 @@ pkg_setup() {
 
 	get_version
 	kernel_is lt 2 6 35 && die "kernel too old"
-	kernel_is gt 2 6 39 && die "kernel too new"
+	kernel_is gt 2 6 39 && die "kernel too new, please use sys-fs/aufs3"
 
 	linux-mod_pkg_setup
 	if ! ( patch -p1 --dry-run --force -R -d ${KV_DIR} < "${FILESDIR}"/${AUFS_VERSION}/${PN}-standalone-${KV_PATCH}.patch >/dev/null && \
