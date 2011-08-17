@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/unison/unison-2.32.52.ebuild,v 1.4 2010/08/05 06:16:50 aballier Exp $
+# $Header: $
 
 EAPI="2"
 
@@ -30,11 +30,6 @@ SRC_URI="http://www.cis.upenn.edu/~bcpierce/unison/download/releases/${P}/${P}.t
 	doc? ( http://www.cis.upenn.edu/~bcpierce/unison/download/releases/${P}/${P}-manual.pdf
 		http://www.cis.upenn.edu/~bcpierce/unison/download/releases/${P}/${P}-manual.html )"
 
-src_prepare() {
-	epatch "${FILESDIR}/${PN}-2.27.57-as-needed.patch"
-	epatch "${FILESDIR}/${PN}-mymap.patch"
-}
-
 src_compile() {
 	local myconf
 
@@ -57,6 +52,9 @@ src_compile() {
 	fi
 
 	use ocamlopt || myconf="$myconf NATIVE=false"
+
+	emake clean || die "error cleaning"
+	emake mkProjectInfo || die "error preparing"
 
 	# Discard cflags as it will try to pass them to ocamlc...
 	emake $myconf CFLAGS="" buildexecutable || die "error making unsion"
