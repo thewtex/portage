@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/gobject-introspection/gobject-introspection-0.10.8.ebuild,v 1.12 2011/07/09 19:03:28 mattst88 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/gobject-introspection/gobject-introspection-0.10.8.ebuild,v 1.14 2011/08/16 18:05:40 nirbheek Exp $
 
 EAPI="3"
 GCONF_DEBUG="no"
@@ -8,7 +8,7 @@ PYTHON_DEPEND="2:2.5"
 
 inherit gnome2 python libtool
 
-DESCRIPTION="Introspection infrastructure for gobject library bindings"
+DESCRIPTION="Introspection infrastructure for generating gobject library bindings for various languages"
 HOMEPAGE="http://live.gnome.org/GObjectIntrospection/"
 
 LICENSE="LGPL-2 GPL-2"
@@ -21,6 +21,7 @@ RDEPEND=">=dev-libs/glib-2.24:2
 DEPEND="${RDEPEND}
 	dev-util/pkgconfig
 	sys-devel/flex
+	virtual/yacc
 	doc? ( >=dev-util/gtk-doc-1.12 )
 	test? ( x11-libs/cairo )"
 

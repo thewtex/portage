@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-mta/postfix/postfix-2.8.4.ebuild,v 1.1 2011/07/07 12:46:09 eras Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-mta/postfix/postfix-2.8.4.ebuild,v 1.3 2011/08/14 15:00:28 hwoarang Exp $
 
 EAPI=4
 
@@ -20,11 +20,12 @@ SRC_URI="${MY_URI}/${MY_SRC}.tar.gz
 
 LICENSE="IBM"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 IUSE="cdb doc dovecot-sasl hardened ipv6 ldap ldap-bind mbox mysql nis pam postgres sasl selinux sqlite ssl vda"
 
 DEPEND=">=sys-libs/db-3.2
 	>=dev-libs/libpcre-3.4
+	dev-lang/perl
 	cdb? ( || ( >=dev-db/tinycdb-0.76 >=dev-db/cdb-0.75-r1 ) )
 	ldap? ( net-nds/openldap )
 	ldap-bind? ( net-nds/openldap[sasl] )

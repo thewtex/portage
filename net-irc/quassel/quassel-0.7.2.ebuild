@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/quassel/quassel-0.7.2.ebuild,v 1.4 2011/04/20 11:12:35 scarabeus Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-irc/quassel/quassel-0.7.2.ebuild,v 1.6 2011/08/17 16:49:17 chithanh Exp $
 
 EAPI=4
 
@@ -18,7 +18,7 @@ HOMEPAGE="http://quassel-irc.org/"
 [[ "${PV}" == "9999" ]] || SRC_URI="http://quassel-irc.org/pub/${P/_/-}.tar.bz2"
 
 LICENSE="GPL-3"
-KEYWORDS="amd64 x86 ~amd64-linux"
+KEYWORDS="amd64 x86 ~amd64-linux ~sparc-solaris"
 SLOT="0"
 IUSE="ayatana crypt dbus debug kde monolithic phonon postgres +server +ssl webkit X"
 
@@ -135,7 +135,7 @@ pkg_postinst() {
 	fi
 
 	# temporary info mesage
-	if use server && [[ $(get_minor_version ${REPLACING_VERSIONS}) -lt 7 ]]; then
+	if use server && [[ $(get_version_component_range 2 ${REPLACING_VERSIONS}) -lt 7 ]]; then
 		echo
 		ewarn "Please note that all configuration moved from"
 		ewarn "/home/\${QUASSEL_USER}/.config/quassel-irc.org/"

@@ -1,0 +1,18 @@
+--- vboxpci/linux/VBoxPci-linux.c.orig	2011-08-14 13:07:51.996419861 -0400
++++ vboxpci/linux/VBoxPci-linux.c	2011-08-14 13:10:55.889149693 -0400
+@@ -35,9 +35,13 @@
+ #ifdef VBOX_WITH_IOMMU
+ #include <linux/dmar.h>
+ #include <linux/intel-iommu.h>
+-#include <asm/amd_iommu.h>
+-#endif
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 1, 0)
++   #include <asm/amd_iommu.h>
++#else
++   #include <linux/amd-iommu.h>
++#endif
++#endif
+ 
+ /*******************************************************************************
+  *   Internal Functions                                                         *

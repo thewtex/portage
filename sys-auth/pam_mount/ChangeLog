@@ -1,6 +1,15 @@
 # ChangeLog for sys-auth/pam_mount
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-auth/pam_mount/ChangeLog,v 1.54 2011/05/22 16:16:38 mattst88 Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-auth/pam_mount/ChangeLog,v 1.56 2011/08/18 00:03:00 mattst88 Exp $
+
+  18 Aug 2011; Matt Turner <mattst88@gentoo.org> pam_mount-2.11.ebuild,
+  +files/pam_mount-2.11-fix-build-without-cryptsetup.patch:
+  Fix build with USE=-crypt, bug 379267
+
+*pam_mount-2.11 (14 Aug 2011)
+
+  14 Aug 2011; Hanno Boeck <hanno@gentoo.org> +pam_mount-2.11.ebuild:
+  Version bump.
 
   22 May 2011; Matt Turner <mattst88@gentoo.org> pam_mount-2.10.ebuild:
   Change libhx dependency to 3.6 from 3.10.1

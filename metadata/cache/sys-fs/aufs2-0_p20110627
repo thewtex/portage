@@ -1,5 +1,5 @@
 dev-vcs/git kernel_linux? ( sys-apps/module-init-tools ) sys-apps/sed kernel_linux? ( virtual/linux-sources )
-!sys-fs/aufs kernel_linux? ( sys-apps/module-init-tools )
+!sys-fs/aufs !sys-fs/aufs3 kernel_linux? ( sys-apps/module-init-tools )
 0
 http://dev.gentoo.org/~jlec/distfiles/aufs2-0_p20110627.tar.xz
 
@@ -8,7 +8,7 @@ GPL-2
 An entirely re-designed and re-implemented Unionfs
 ~amd64 ~x86
 eutils linux-info linux-mod multilib portability toolchain-funcs versionator
-debug fuse hardened hfs inotify kernel-patch nfs ramfs kernel_linux
+debug fuse pax_kernel hfs inotify kernel-patch nfs ramfs kernel_linux
 
 
 

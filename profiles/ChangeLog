@@ -1,10 +1,139 @@
 # ChangeLog for profile directory
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.5615 2011/08/11 11:14:32 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.5635 2011/08/17 07:32:36 jlec Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  17 Aug 2011; Justin Lecher <jlec@gentoo.org> package.mask:
+  Correct: Invalid atom in profiles/package.mask:
+  >=app-office/libreoffice-3.4.3*
+
+  17 Aug 2011; Tomáš Chvátal <scarabeus@gentoo.org> package.mask:
+  Mask RCs for 3.4.3 libreoffice release
+
+  16 Aug 2011; Jeroen Roovers <jer@gentoo.org> package.mask:
+  Mask >=net-libs/libecap-0.2.0 (bug #379343).
+
+  16 Aug 2011; Sebastian Pipping <sping@gentoo.org> package.mask:
+  app-text/xmlstarlet-1.0.3 now gone from the tree - remove mask
+
+  16 Aug 2011; Sebastian Pipping <sping@gentoo.org> package.mask:
+  Unmask sys-block/open-iscsi-2.0.872 as requested (bug #340425)
+
+  16 Aug 2011; Nirbheek Chauhan <nirbheek@gentoo.org> package.mask:
+  Unmask some GNOME 3 libraries that are either slotted, or safe
+
+  16 Aug 2011; Christian Faulhammer <fauli@gentoo.org> package.mask:
+  Add bzr-explorer to >=2.3 Bazaar mask
+
+  15 Aug 2011; Mike Frysinger <vapier@gentoo.org> package.mask:
+  Distfile posted -> package unmasked.
+
+  15 Aug 2011; Diego E. Pettenò <flameeyes@gentoo.org> package.mask:
+  Mask gnuconfig that has missing distfile.
+
+  15 Aug 2011; Jeremy Olexa <darkside@gentoo.org> thirdpartymirrors:
+  fix ftp.halifax.rwth-aachen.de entry
+
+  15 Aug 2011; Andreas K. Huettel <dilfridge@gentoo.org> package.mask:
+  Add package.mask for knetworkmanager versions requiring ~networkmanager-0.9
+
+  15 Aug 2011; Nirbheek Chauhan <nirbheek@gentoo.org> package.mask:
+  Remove modemmanager from mask, it works with the 0.8 series too
+
+  14 Aug 2011; Markus Meier <maekke@gentoo.org>
+  default/linux/arm/10.0/armv4/desktop/gnome/parent,
+  default/linux/arm/10.0/armv4/desktop/kde/parent,
+  default/linux/arm/10.0/armv4t/desktop/gnome/parent,
+  default/linux/arm/10.0/armv4t/desktop/kde/parent,
+  default/linux/arm/10.0/armv5te/desktop/gnome/parent,
+  default/linux/arm/10.0/armv5te/desktop/kde/parent,
+  default/linux/arm/10.0/armv6j/desktop/gnome/parent,
+  default/linux/arm/10.0/armv6j/desktop/kde/parent,
+  default/linux/arm/10.0/armv7a/desktop/gnome/parent,
+  default/linux/arm/10.0/armv7a/desktop/kde/parent:
+  fix gnome/kde parents in arm subprofiles, spotted by mr_bones_
+
+  14 Aug 2011; Markus Meier <maekke@gentoo.org>
+  +default/linux/arm/10.0/armv4/desktop/eapi,
+  +default/linux/arm/10.0/armv4/desktop/gnome/eapi,
+  +default/linux/arm/10.0/armv4/desktop/gnome/parent,
+  +default/linux/arm/10.0/armv4/desktop/kde/eapi,
+  +default/linux/arm/10.0/armv4/desktop/kde/parent,
+  +default/linux/arm/10.0/armv4/desktop/parent,
+  +default/linux/arm/10.0/armv4/developer/eapi,
+  +default/linux/arm/10.0/armv4/developer/parent,
+  +default/linux/arm/10.0/armv4/eapi, +default/linux/arm/10.0/armv4/parent,
+  +default/linux/arm/10.0/armv4/server/eapi,
+  +default/linux/arm/10.0/armv4/server/parent,
+  +default/linux/arm/10.0/armv4t/desktop/eapi,
+  +default/linux/arm/10.0/armv4t/desktop/gnome/eapi,
+  +default/linux/arm/10.0/armv4t/desktop/gnome/parent,
+  +default/linux/arm/10.0/armv4t/desktop/kde/eapi,
+  +default/linux/arm/10.0/armv4t/desktop/kde/parent,
+  +default/linux/arm/10.0/armv4t/desktop/parent,
+  +default/linux/arm/10.0/armv4t/developer/eapi,
+  +default/linux/arm/10.0/armv4t/developer/parent,
+  +default/linux/arm/10.0/armv4t/eapi, +default/linux/arm/10.0/armv4t/parent,
+  +default/linux/arm/10.0/armv4t/server/eapi,
+  +default/linux/arm/10.0/armv4t/server/parent,
+  +default/linux/arm/10.0/armv5te/desktop/eapi,
+  +default/linux/arm/10.0/armv5te/desktop/gnome/eapi,
+  +default/linux/arm/10.0/armv5te/desktop/gnome/parent,
+  +default/linux/arm/10.0/armv5te/desktop/kde/eapi,
+  +default/linux/arm/10.0/armv5te/desktop/kde/parent,
+  +default/linux/arm/10.0/armv5te/desktop/parent,
+  +default/linux/arm/10.0/armv5te/developer/eapi,
+  +default/linux/arm/10.0/armv5te/developer/parent,
+  +default/linux/arm/10.0/armv5te/eapi, +default/linux/arm/10.0/armv5te/parent,
+  +default/linux/arm/10.0/armv5te/server/eapi,
+  +default/linux/arm/10.0/armv5te/server/parent,
+  +default/linux/arm/10.0/armv6j/desktop/eapi,
+  +default/linux/arm/10.0/armv6j/desktop/gnome/eapi,
+  +default/linux/arm/10.0/armv6j/desktop/gnome/parent,
+  +default/linux/arm/10.0/armv6j/desktop/kde/eapi,
+  +default/linux/arm/10.0/armv6j/desktop/kde/parent,
+  +default/linux/arm/10.0/armv6j/desktop/parent,
+  +default/linux/arm/10.0/armv6j/developer/eapi,
+  +default/linux/arm/10.0/armv6j/developer/parent,
+  +default/linux/arm/10.0/armv6j/eapi, +default/linux/arm/10.0/armv6j/parent,
+  +default/linux/arm/10.0/armv6j/server/eapi,
+  +default/linux/arm/10.0/armv6j/server/parent,
+  +default/linux/arm/10.0/armv7a/desktop/eapi,
+  +default/linux/arm/10.0/armv7a/desktop/gnome/eapi,
+  +default/linux/arm/10.0/armv7a/desktop/gnome/parent,
+  +default/linux/arm/10.0/armv7a/desktop/kde/eapi,
+  +default/linux/arm/10.0/armv7a/desktop/kde/parent,
+  +default/linux/arm/10.0/armv7a/desktop/parent,
+  +default/linux/arm/10.0/armv7a/developer/eapi,
+  +default/linux/arm/10.0/armv7a/developer/parent,
+  +default/linux/arm/10.0/armv7a/eapi, +default/linux/arm/10.0/armv7a/parent,
+  +default/linux/arm/10.0/armv7a/server/eapi,
+  +default/linux/arm/10.0/armv7a/server/parent, profiles.desc:
+  add armv4, armv4t, armv5re, armv6j and armv7a subprofiles
+
+  14 Aug 2011; Nirbheek Chauhan <nirbheek@gentoo.org> package.mask:
+  Add libgweather to GNOME 3 mask
+
+  13 Aug 2011; Anthony G. Basile <blueness@gentoo.org> base/package.mask,
+  features/selinux/package.mask, selinux/package.mask:
+  Added maskings and unmaskings for sys-libs/libsepol
+
+  12 Aug 2011; Tomáš Chvátal <scarabeus@gentoo.org> base/make.defaults:
+  Add grub_platforms by default empty to the make_defaults, this is preparation
+  for my grub2 ebuilds.
+
+  12 Aug 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  desc/grub_platforms.desc:
+  Add loongson to the list of grub platforms.
+
+  12 Aug 2011; Ole Markus With <olemarkus@gentoo.org> package.mask:
+  Added another RC to PHP 5.3.7
+
+  11 Aug 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> package.mask:
+  Unmask www-client/chromium-14.x, mask www-client/chromium-15.x
 
   11 Aug 2011; Ulrich Mueller <ulm@gentoo.org> updates/3Q-2011:
   Package move app-editors/gentoo-editor to app-misc/editor-wrapper.

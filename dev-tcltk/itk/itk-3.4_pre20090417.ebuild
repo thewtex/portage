@@ -1,12 +1,14 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tcltk/itk/itk-3.4_pre20090417.ebuild,v 1.10 2011/06/04 18:58:19 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-tcltk/itk/itk-3.4_pre20090417.ebuild,v 1.11 2011/08/15 17:32:55 jlec Exp $
 
-EAPI="3"
+EAPI=3
+
 inherit multilib versionator
 
 MY_PN="incrTcl"
 MY_P="${MY_PN}-${PV}"
+
 DESCRIPTION="Object Oriented Enhancements for Tcl/Tk"
 HOMEPAGE="http://incrtcl.sourceforge.net/"
 SRC_URI="mirror://gentoo/${MY_P}.tar.gz"

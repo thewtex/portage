@@ -1,6 +1,49 @@
 # ChangeLog for app-office/libreoffice
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/libreoffice/ChangeLog,v 1.103 2011/08/11 14:16:30 halcy0n Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/libreoffice/ChangeLog,v 1.112 2011/08/17 18:15:06 scarabeus Exp $
+
+*libreoffice-3.3.4 (17 Aug 2011)
+
+  17 Aug 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  -libreoffice-3.3.1.ebuild, libreoffice-3.3.3.ebuild,
+  +libreoffice-3.3.4.ebuild:
+  Stable 3.3.3 on x86. Add testing 3.3.4. Remove 3.3.1.
+
+*libreoffice-3.4.3.1 (17 Aug 2011)
+
+  17 Aug 2011; Justin Lecher <jlec@gentoo.org> +libreoffice-3.4.3.1.ebuild,
+  metadata.xml:
+  Non-maintainer bump as proxy for scarabeus
+
+  15 Aug 2011; Tomáš Chvátal <scarabeus@gentoo.org> libreoffice-9999.ebuild:
+  3.5 branch uses just system-sane without the header stuff
+
+  14 Aug 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  libreoffice-3.4.2.3.ebuild, libreoffice-3.4.9999.ebuild,
+  libreoffice-9999.ebuild:
+  Update the versions to have something recent that the build tests are done
+  against.
+
+  14 Aug 2011; Markos Chandras <hwoarang@gentoo.org> libreoffice-3.3.3.ebuild:
+  Stable on amd64 wrt bug #379067
+
+  14 Aug 2011; Jonathan Callen <abcd@gentoo.org> libreoffice-3.4.2.3.ebuild,
+  libreoffice-3.4.9999.ebuild, libreoffice-9999.ebuild:
+  "--without-system-sane" is now "--without-system-sane-header" for 3.4+
+
+  13 Aug 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  files/libreoffice-append-no-avx.patch:
+  Fix bool check on AVX patch.
+
+  12 Aug 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  libreoffice-3.4.2.3.ebuild, libreoffice-3.4.9999.ebuild,
+  libreoffice-9999.ebuild:
+  Really drop the cppunit dep and also get rid of sane-backends dependency to
+  make people happy.
+
+  11 Aug 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  files/libreoffice-kill-cppunit.patch:
+  Bump the cppunit patch to actualy work. Smaller and smarter :)
 
   11 Aug 2011; Mark Loeser <halcy0n@gentoo.org> libreoffice-3.3.3.ebuild:
   Stable for ppc

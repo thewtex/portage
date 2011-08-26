@@ -1,0 +1,22 @@
+xen? ( >=app-emulation/xen-3.0 ) kvm? ( app-emulation/qemu-kvm ) lxc? ( app-emulation/lxc ) drbd? ( >=sys-cluster/drbd-8.3 ) ipv6? ( net-misc/ndisc6 ) htools? ( >=dev-lang/ghc-6.10 dev-haskell/json dev-haskell/curl dev-haskell/network || ( dev-haskell/parallel:1 dev-haskell/parallel:2 ) dev-haskell/parallel ) dev-libs/openssl dev-python/paramiko dev-python/pyopenssl >=dev-python/pyparsing-1.4.6 dev-python/pycurl dev-python/pyinotify dev-python/simplejson net-analyzer/arping net-misc/bridge-utils net-misc/curl[ssl] net-misc/openssh net-misc/socat sys-apps/iproute2 sys-fs/lvm2 >=sys-apps/baselayout-2.0
+xen? ( >=app-emulation/xen-3.0 ) kvm? ( app-emulation/qemu-kvm ) lxc? ( app-emulation/lxc ) drbd? ( >=sys-cluster/drbd-8.3 ) ipv6? ( net-misc/ndisc6 ) htools? ( >=dev-lang/ghc-6.10 dev-haskell/json dev-haskell/curl dev-haskell/network || ( dev-haskell/parallel:1 dev-haskell/parallel:2 ) dev-haskell/parallel ) dev-libs/openssl dev-python/paramiko dev-python/pyopenssl >=dev-python/pyparsing-1.4.6 dev-python/pycurl dev-python/pyinotify dev-python/simplejson net-analyzer/arping net-misc/bridge-utils net-misc/curl[ssl] net-misc/openssh net-misc/socat sys-apps/iproute2 sys-fs/lvm2 >=sys-apps/baselayout-2.0 !app-emulation/ganeti-htools bash-completion? ( app-admin/eselect )
+0
+http://ganeti.googlecode.com/files/ganeti-2.5.0~beta1.tar.gz
+
+http://code.google.com/p/ganeti/
+GPL-2
+Ganeti is a virtual server management software tool
+~amd64 ~x86
+bash-completion confutils eutils multilib portability toolchain-funcs
+kvm xen lxc drbd +filestorage sharedstorage htools syslog ipv6 bash-completion
+
+bash-completion? ( app-shells/bash-completion )
+
+4
+
+configure install postinst prepare setup
+
+
+
+
+

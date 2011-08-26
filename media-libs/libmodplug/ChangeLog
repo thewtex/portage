@@ -1,6 +1,23 @@
 # ChangeLog for media-libs/libmodplug
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libmodplug/ChangeLog,v 1.65 2011/05/10 16:16:18 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libmodplug/ChangeLog,v 1.68 2011/08/17 17:01:02 chithanh Exp $
+
+  17 Aug 2011; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  libmodplug-0.8.8.4.ebuild:
+  keyword ~sparc-solaris
+
+  17 Aug 2011; Tony Vroon <chainsaw@gentoo.org> libmodplug-0.8.8.4.ebuild:
+  Mark stable on AMD64 and remove stray die statement as per arch testing by
+  Agostino "ago" Sarubbo in bug #379557.
+
+*libmodplug-0.8.8.4 (17 Aug 2011)
+
+  17 Aug 2011; Tony Vroon <chainsaw@gentoo.org> -libmodplug-0.8.8.1.ebuild,
+  -libmodplug-0.8.8.3.ebuild, +libmodplug-0.8.8.4.ebuild,
+  +files/libmodplug-0.8.8.4-no-fast-math.patch:
+  Version bump for security bug #379557 by Agostino "ago" Sarubbo. Port to
+  EAPI=4 and use a patch instead of relying on sed. Remove all ebuilds but this
+  and current stable.
 
 *libmodplug-0.8.8.3 (10 May 2011)
 
