@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/gdb/gdb-9999.ebuild,v 1.1 2011/08/13 18:02:18 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/gdb/gdb-9999.ebuild,v 1.3 2011/08/23 16:21:56 vapier Exp $
 
 EAPI="3"
 
@@ -31,8 +31,8 @@ case ${PV} in
 	;;
 9999*)
 	# live git tree
-	inherit git-2
 	EGIT_REPO_URI="git://sourceware.org/git/gdb.git"
+	inherit git-2
 	SRC_URI=""
 	;;
 *)
@@ -91,6 +91,7 @@ src_configure() {
 		--disable-werror \
 		--enable-64-bit-bfd \
 		--with-system-readline \
+		--with-separate-debug-dir=/usr/lib/debug \
 		$(is_cross && echo --with-sysroot=/usr/${CTARGET}) \
 		$(use_with expat) \
 		$(use_enable nls) \

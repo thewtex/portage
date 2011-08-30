@@ -1,14 +1,14 @@
-# Copyright 1999-2007 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/php-ext-pecl-r2.eclass,v 1.4 2011/01/28 13:33:53 mabi Exp $
-#
-# Author: Tal Peer <coredumb@gentoo.org>
-# Author: Luca Longinotti <chtekk@gentoo.org>
-# Author: Jakub Moc <jakub@gentoo.org>
+# $Header: /var/cvsroot/gentoo-x86/eclass/php-ext-pecl-r2.eclass,v 1.6 2011/08/22 04:46:32 vapier Exp $
 
 # @ECLASS: php-ext-pecl-r1.eclass
 # @MAINTAINER:
 # Gentoo PHP team <php-bugs@gentoo.org>
+# @AUTHOR:
+# Author: Tal Peer <coredumb@gentoo.org>
+# Author: Luca Longinotti <chtekk@gentoo.org>
+# Author: Jakub Moc <jakub@gentoo.org>
 # @BLURB: A uniform way of installing PECL extensions
 # @DESCRIPTION:
 # This eclass should be used by all dev-php[45]/pecl-* ebuilds
@@ -37,8 +37,11 @@
 
 [[ -z "${PHP_EXT_PECL_PKG}" ]] && PHP_EXT_PECL_PKG="${PN/pecl-/}"
 
+
+[[ -z ${MY_PV} ]] && MY_PV=${PV}
+
 PECL_PKG="${PHP_EXT_PECL_PKG}"
-MY_PV="${PV/_/}"
+MY_PV="${MY_PV/_/}"
 PECL_PKG_V="${PECL_PKG}-${MY_PV}"
 
 [[ -z "${PHP_EXT_NAME}" ]] && PHP_EXT_NAME="${PECL_PKG}"

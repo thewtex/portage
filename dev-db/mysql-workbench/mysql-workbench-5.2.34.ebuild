@@ -1,11 +1,12 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/mysql-workbench/mysql-workbench-5.2.34.ebuild,v 1.1 2011/05/30 19:15:29 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/mysql-workbench/mysql-workbench-5.2.34.ebuild,v 1.3 2011/08/20 19:10:17 graaff Exp $
 
 EAPI="3"
 GCONF_DEBUG="no"
+PYTHON_DEPEND=2
 
-inherit gnome2 eutils flag-o-matic autotools
+inherit gnome2 eutils flag-o-matic python autotools
 
 MY_P="${PN}-gpl-${PV}-src"
 
@@ -50,6 +51,12 @@ DEPEND="${CDEPEND}
 	dev-util/pkgconfig"
 
 S="${WORKDIR}"/"${MY_P}"
+
+pkg_setup() {
+	# Make sure we use Python 2 since the code is not compatible with 3.
+	python_set_active_version 2
+	python_pkg_setup
+}
 
 src_prepare() {
 	# ifconfig isn't in the normal path

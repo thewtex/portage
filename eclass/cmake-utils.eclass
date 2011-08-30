@@ -1,17 +1,15 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/cmake-utils.eclass,v 1.70 2011/07/18 09:08:21 dilfridge Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/cmake-utils.eclass,v 1.74 2011/08/27 20:30:39 dilfridge Exp $
 
 # @ECLASS: cmake-utils.eclass
 # @MAINTAINER:
 # kde@gentoo.org
-#
-# @CODE
+# @AUTHOR:
 # Tomáš Chvátal <scarabeus@gentoo.org>
 # Maciej Mrozowski <reavertm@gentoo.org>
 # (undisclosed contributors)
 # Original author: Zephyrus (zephyrus@mirach.it)
-# @CODE
 # @BLURB: common ebuild functions for cmake-based packages
 # @DESCRIPTION:
 # The cmake-utils eclass is base.eclass(5) wrapper that makes creating ebuilds for
@@ -30,8 +28,8 @@ WANT_CMAKE="${WANT_CMAKE:-always}"
 
 # @ECLASS-VARIABLE: CMAKE_MIN_VERSION
 # @DESCRIPTION:
-# Specify the minimum required CMake version.  Default is 2.8.1
-CMAKE_MIN_VERSION="${CMAKE_MIN_VERSION:-2.8.1}"
+# Specify the minimum required CMake version.  Default is 2.8.4
+CMAKE_MIN_VERSION="${CMAKE_MIN_VERSION:-2.8.4}"
 
 # @ECLASS-VARIABLE: CMAKE_REMOVE_MODULES_LIST
 # @DESCRIPTION:
@@ -439,7 +437,21 @@ enable_cmake-utils_src_test() {
 	[[ -e CTestTestfile.cmake ]] || { echo "No tests found. Skipping."; return 0 ; }
 
 	[[ -n ${TEST_VERBOSE} ]] && ctestargs="--extra-verbose --output-on-failure"
-	ctest ${ctestargs} "$@" || die "Tests failed."
+
+	if ctest ${ctestargs} "$@" ; then
+		einfo "Tests succeeded."
+	else
+		if [[ -n "${CMAKE_YES_I_WANT_TO_SEE_THE_TEST_LOG}" ]] ; then
+			# on request from Diego
+			eerror "Tests failed. Test log ${CMAKE_BUILD_DIR}/Testing/Temporary/LastTest.log follows:"
+			eerror "--START TEST LOG--------------------------------------------------------------"
+			cat "${CMAKE_BUILD_DIR}/Testing/Temporary/LastTest.log"
+			eerror "--END TEST LOG----------------------------------------------------------------"
+			die "Tests failed."
+		else
+			die "Tests failed. When you file a bug, please attach the following file: \n\t${CMAKE_BUILD_DIR}/Testing/Temporary/LastTest.log"
+		fi
+	fi
 	popd > /dev/null
 }
 

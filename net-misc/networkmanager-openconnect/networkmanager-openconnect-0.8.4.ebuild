@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/networkmanager-openconnect/networkmanager-openconnect-0.8.4.ebuild,v 1.1 2011/08/17 10:51:54 dagger Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/networkmanager-openconnect/networkmanager-openconnect-0.8.4.ebuild,v 1.2 2011/08/26 20:00:04 nirbheek Exp $
 
 EAPI="2"
 
@@ -48,5 +48,5 @@ src_configure() {
 src_install() {
 	emake DESTDIR="${D}" install || die "emake install failed"
 
-	dodoc AUTHORS ChangeLog NEWS README || die "dodoc failed"
+	dodoc AUTHORS ChangeLog NEWS || die "dodoc failed"
 }

@@ -1,4 +1,4 @@
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/mips/use.mask,v 1.44 2011/07/14 18:02:35 mattst88 Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/mips/use.mask,v 1.48 2011/08/21 02:49:37 mattst88 Exp $
 
 # Unmask the flag which corresponds to ARCH.
 -mips
@@ -152,21 +152,15 @@ video_cards_intel
 video_cards_neomagic
 video_cards_nsc
 video_cards_rendition
-video_cards_siliconmotion
 video_cards_tga
 video_cards_tseng
 video_cards_vesa
 video_cards_vga
-video_cards_radeonhd
 video_cards_ast
 
 # Diego Pettenò <flameeyes@gentoo.org>
 # Until xine-lib's keywording can be maintained, please leave it masked.
 xine
-
-# Stephen P. Becker <geoman@gentoo.org>
-# remasking hal because of numerous dependency issues
-hal
 
 # Stephen P. Becker <geoman@gentoo.org>
 # masking mono because it doesn't work on mips
@@ -190,10 +184,6 @@ pcmcia
 # John N. Laliberte <allanonjl@gentoo.org>
 # mask scanner support
 scanner
-
-# Stephen P. Becker <geoman@gentoo.org>
-# mad just spits out static on mips (ip22)
-mad
 
 # Armando Di Cianno <fafhrd@gentoo.org>
 # gnustep is currently unbuildable on mips - masking this to repair windowmaker

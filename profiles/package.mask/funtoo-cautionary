@@ -1,3 +1,8 @@
+# Adrien Dessemond <adessemond@funtoo.org> (23 Aug 2011)
+# Google Earth requires >=sys-lib/glibc-2.12 (dependency added in the Funtoo fork of sci-geosciences/googleearth-6.0.3.2197)
+# As of August 23rd 2011 Funtoo does only provide sys-lib/glibc 2.11, thus not satisfying a required dependency => mask!
+>=sci-geosciences/googleearth-6.0.3.2197
+
 # Adrien Dessemond <adessemond@funtoo.org> (03 Jun 2011)
 # updated to -r1 which includes an explicit dependency on parted < 3.0 (see bug #369423)
 =sys-block/partitionmanager-1.0.3
@@ -32,10 +37,9 @@ app-arch/pxz
 >sys-devel/gcc-4.4.5
 >sys-devel/binutils-2.20.1
 
-# Daniel Robbins <drobbins@funtoo.org> (20 Apr 2010)
-
-#udev-160 is now in unstable...
->=sys-fs/udev-161
+# Oleg Vinichenko <oleg@funtoo.org> (26 Aug 2011)
+#udev-171 is now in unstable
+>=sys-fs/udev-172
 
 # Daniel Robbins <drobbins@funtoo.org> (02 Aug 2009)
 # let's watch upstream bugs for a bit:

@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-forensics/openscap/openscap-0.7.3.ebuild,v 1.1 2011/07/05 08:00:51 hwoarang Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-forensics/openscap/openscap-0.7.3.ebuild,v 1.4 2011/08/21 03:40:45 phajdan.jr Exp $
 
 EAPI=3
 
@@ -14,8 +14,9 @@ SRC_URI="http://www.open-scap.org/download/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="bash-completion doc nss perl python sql"
+RESTRICT="test"
 
 RDEPEND="!nss? ( dev-libs/libgcrypt )
 	nss? ( dev-libs/nss )
@@ -50,7 +51,8 @@ src_configure() {
 
 src_install() {
 	emake install DESTDIR="${D}" || die
-	sed -i 's/^Description/&:/'	"${D}"/usr/$(get_libdir)/pkgconfig/libopenscap.pc || die
+	find "${D}" -name '*.la' -delete || die
+	sed -i 's/^Description/&:/' ${D}/usr/$(get_libdir)/pkgconfig/libopenscap.pc || die
 	#--enable-bindings enable all bindings, clean unwanted bindings
 	if use python && ! use perl ; then
 		rm -rf "${D}"/usr/$(get_libdir)/perl5 || die

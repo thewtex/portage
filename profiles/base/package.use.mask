@@ -1,9 +1,18 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/base/package.use.mask,v 1.258 2011/08/16 18:55:55 nirbheek Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/base/package.use.mask,v 1.264 2011/08/23 15:57:13 nirbheek Exp $
 
 # This file requires >=portage-2.1.1
 # New entries go on top.
+
+# Markos Chandras <hwoarang@gentoo.org> (19 Aug 2011)
+# Masking xen useflag from app-emulation/libvirt per
+# bug #379815
+app-emulation/libvirt xen
+
+# Markos Chandras <hwoarang@gentoo.org> (19 Aug 2011)
+# Masking rbd spice from qemu-kvm per bug #364889
+app-emulation/qemu-kvm rbd spice
 
 # Nirbheek Chauhan <nirbheek@gentoo.org> (16 Aug 2011)
 # dev-libs/seed is a messy and unstable package.
@@ -14,6 +23,7 @@ gnome-extra/gnome-games seed
 # Nirbheek Chauhan <nirbheek@gentoo.org> (16 Aug 2011)
 # Mask introspection on ebuilds that went stable before it was unmasked.
 # As these ebuilds are cleaned from the tree, the masks can be removed.
+dev-libs/glib introspection
 <dev-libs/atk-1.32.0-r1 introspection
 <app-cdr/brasero-2.32.1-r1 introspection
 <app-crypt/seahorse-2.32.0-r1 introspection
@@ -32,6 +42,7 @@ gnome-extra/gnome-games seed
 <gnome-base/nautilus-2.32.2.1-r2 introspection
 <gnome-extra/gucharmap-2.32.1-r1 introspection
 <gnome-extra/libgda-4.2.7-r1 introspection
+<media-libs/babl-0.1.4-r1 introspection
 <media-libs/clutter-1.6 introspection
 <media-libs/clutter-gtk-1 introspection
 <media-libs/gstreamer-0.10.33 introspection
@@ -62,10 +73,6 @@ gnome-extra/gnome-games seed
 # Robin H. Johnson <robbat2@gentoo.org> (10 Jul 2011)
 # PPS should work on all arches, but only keyworded on amd64/x86
 >=net-misc/ntp-4.2.6_p3-r1 parse-clocks
-
-# Alexey Shvetsov <alexxy@gentoo.org> (4 Jul 2011)
-# Mask maui use flag for torque
-sys-cluster/torque maui
 
 # Michał Górny <mgorny@gentoo.org) (23 Jun 2011)
 # Requires masked >=sys-process/audit-2.
@@ -133,11 +140,6 @@ mail-client/evolution clutter
 # Justin Lecher <jlec@gentoo.org> (17 Nov 2010)
 # Upstream didn't release patches for aria yet
 >=sci-chemistry/cns-1.3 aria
-
-# Dane Smith <c1pher@gentoo.org> (10 Nov 2010)
-# Mask valgrind use flag for net-libs/gnutls as valgrind isn't usable
-# on several of the archs gnutls is stable for.
-net-libs/gnutls valgrind
 
 # Patrick Lauer <patrick@gentoo.org> (15 Sep 2010)
 # Feature broken in dovecot-1, see #337014

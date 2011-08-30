@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-arch/zpaq/zpaq-2.05.ebuild,v 1.1 2011/01/06 16:20:19 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-arch/zpaq/zpaq-2.05.ebuild,v 1.2 2011/08/25 11:34:16 mgorny Exp $
 
 EAPI=3
 inherit autotools autotools-utils
@@ -13,16 +13,16 @@ SRC_URI="http://mattmahoney.net/dc/${MY_P}.zip"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="debug"
 
-RDEPEND="app-arch/libzpaq"
+RDEPEND="=app-arch/libzpaq-2*"
 DEPEND="${RDEPEND}
 	app-arch/unzip"
 
 S=${WORKDIR}
 
 src_prepare() {
-	EPATCH_OPTS+=-p1 epatch "${FILESDIR}"/0001-Add-autotools-files.patch
+	EPATCH_OPTS+=-p1 epatch "${FILESDIR}"/${PN}-${PV%.*}-autotools.patch
 	autotools-utils_src_prepare
 	eautoreconf
 }

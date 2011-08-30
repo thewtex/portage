@@ -1,0 +1,11 @@
+--- client/gtk.c	2011-08-16 15:59:14.585039612 +0200
++++ client/gtk.n.c	2011-08-16 16:09:24.292213128 +0200
+@@ -134,6 +134,8 @@
+ 
+ static GtkDialog *activeDialog;
+ 
++GdkWindow *         gdk_window_foreign_new              (GdkNativeWindow anid);
++
+ /**
+  * Makes a dialog window stay above it's parent window.
+  */

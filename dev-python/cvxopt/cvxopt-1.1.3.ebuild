@@ -35,14 +35,14 @@ src_prepare(){
 	epatch "${FILESDIR}/${PN}"-1.1.3-blas.patch
 
 	BLAS=\'$(pkg-config --libs-only-l blas | sed \
+		-e 's/-lpthread//g' \
 		-e 's/^-l//' \
 		-e "s/ -l/\',\'/g" \
-		-e 's/,.pthread//g' \
 		-e "s:  ::")\'
 	LAPACK=\'$(pkg-config --libs-only-l lapack | sed \
+		-e 's/-lpthread//g' \
 		-e 's/^-l//' \
 		-e "s/ -l/\',\'/g" \
-		-e 's/,.pthread//g' \
 		-e "s:  ::")\'
 
 	sed -i \

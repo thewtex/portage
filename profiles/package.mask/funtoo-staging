@@ -1,21 +1,34 @@
 # PLEASE KEEP MOST RECENT MASKS ON TOP, REVERSE CHRONO ORDER
 
-# Daniel Robbins (16 Aug 2011)
-# these should be tested as a pair,but genkernel needs testing with other kernels too. Some minor firmware fixes.
-=sys-kernel/genkernel-3.4.15-r2
-=sys-kernel/openvz-rhel5-stable-2.6.18.028.093.1
+# Martin Scholz <golodhrim@funtoo.org> (24 Aug 2011)
+# Testing Mask for linode sources
+=sys-kernel/linode-sources-3.0.1
+
+# Martin Scholz <golodhrim@funtoo.org> (22 Aug 2011)
+# Masked as portage 2.3 and early are broken with it
+# portage 9999 runs it :)
+=app-vim/gentoo-syntax-20110821
+
+# Adrien Dessemond <adessemond@funtoo.org> (21 Aug 2011)
+# Masked for testing!
+
+=app-emulation/virtualbox-4.1.2
+=app-emulation/virtualbox-bin-4.1.2
+=app-emulation/virtualbox-additions-4.1.2
+=app-emulation/virtualbox-extpack-oracle-4.1.2
+=app-emulation/virtualbox-modules-4.1.2
+
+# Adrien Dessemond <adessemond@funtoo.org> (21 Aug 2011)
+# Masked for testing
+=sys-block/iscsitarget-1.4.20.2_p20110821
+
+# Adrien Dessemond <adessemond@funtoo.org> (19 Aug 2011)
+# Fixes an issue with Python 2.7.x that appear only under Linux 3.x series (DLFCN module not being found, see Gentoo bug #374579)
+=dev-lang/python-2.7.1-r3
 
 # Daniel Robbins (14 Aug 2011)
 # it's broken - masking until we have a good fix.
 =sys-boot/boot-update-1.5.3
-
-# Oleg Vinichenko (13 August 2011)
-# eix bump, masked for testing)
-=app-portage/eix-0.22.11
-
-# Oleg Vinichenko (1 August)
-# new debian-sources to test
-=sys-kernel/debian-sources-2.6.32.35
 
 # Veronica <nCdy@funtoo.org> (02 Aug 2011)
 # 3.0 Debian sources Masked for testing:

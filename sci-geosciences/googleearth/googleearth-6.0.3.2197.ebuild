@@ -53,7 +53,9 @@ RDEPEND=">=sys-devel/gcc-${GCC_NEEDED}[-nocxx]
 			>=app-emulation/emul-linux-x86-qtlibs-20091231-r1
 		)
 	)
-	virtual/ttf-fonts"
+	virtual/ttf-fonts
+	>=sys-libs/glibc-2.12
+	"
 
 DEPEND="dev-util/patchelf"
 

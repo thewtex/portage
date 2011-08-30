@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.12992 2011/08/17 10:49:13 dagger Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.13013 2011/08/28 18:09:48 scarabeus Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -31,6 +31,66 @@
 
 #--- END OF EXAMPLES ---
 
+# Tomáš Chvátal <scarabeus@gentoo.org> (28 Aug 2011)
+# Breaks lots of rdeps.
+# Masked until bug #378783 is sorted out.
+>=perl-core/ExtUtils-ParseXS-3.0
+>=virtual/perl-ExtUtils-ParseXS-3.0
+
+# Mike Gilbert <floppym@gentoo.org> (28 Aug 2011)
+# Dev channel release
+>=www-client/google-chrome-15
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (27 Aug 2011)
+# Masked for removal. Dead project since 2009, does not work well with 
+# kde-4.6. Use kde-misc/kcm-gtk-config instead.
+kde-misc/kcm_gtk
+
+# Tomáš Chvátal <scarabeus@gentoo.org> (28 Aug 2011)
+# Masked until documentation guys consolidate the guide and approve
+# it for usage.
+~sys-boot/grub-1.99
+
+# Matt Turner <mattst88@gentoo.org> (25 Aug 2011)
+# Masked for removal in 30 days. Use arcload instead.
+sys-boot/arcboot
+
+# Ole Markus With <olemarkus@gentoo.org> (21 Aug 2011)
+# Masking php:5.2. No longer maintained by upstream
+# Will be removed in a few months, depending on how much noise this will create
+=dev-lang/php-5.2.17
+=virtual/httpd-php-5.2
+=dev-php5/pecl-bbcode-1.0.2-r1
+=dev-php5/pecl-dbx-1.1.0-r1
+=dev-php5/pecl-fileinfo-1.0.4-r2
+=dev-php5/pecl-htscanner-0.9.0-r1
+=dev-php5/php-gtk-2.0.1-r4
+=dev-php5/phpdbg-2.15.5-r1
+
+# Ole Markus With <olemarkus@gentoo.org> (21 Aug 2011)
+# Masking beta version
+=dev-php5/pecl-memcached-2.0.0_beta2
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (21 Aug 2011)
+# Starting with version 4.2, net-libs/libfwbuilder is integrated
+# into net-firewall/fwbuilder (its only reverse dep). Mask
+# libfwbuilder and the old fwbuilder version for removal.
+net-libs/libfwbuilder
+=net-firewall/fwbuilder-3.0.7
+
+# Alexis Ballier <aballier@gentoo.org> (20 Aug 2011)
+# dev-tex/pdftex-1.40.11 is 100% identical to the one in TeX Live 2010;
+# TeX Live 2011 has a newer version, which makes the standalone package useless;
+# mask it for now, we'll see about removing it later.
+dev-tex/pdftex
+
+# Kacper Kowalik <xarthisius@gentoo.org> (19 Aug 2011)
+# Ancient, obsolete, last release 2006
+# and practically unmaintained
+# Bugs: 198621
+# Pending removal in 30 days
+sys-block/iscsi-initiator-core-tools
+
 # Tomáš Chvátal <scarabeus@gentoo.org> (17 Aug 2011)
 # RCs for new release
 >=app-office/libreoffice-3.4.3
@@ -43,10 +103,6 @@
 # Mask for testing, depends on masked networkmanager
 # (the "3011" is not a typo!)
 >=kde-misc/knetworkmanager-4.4.0_p30110815
-
-# Maxim Koltsov <maksbotan@gentoo.org> (15 Aug 2011)
-# Mask until completely tested and accepted by proper herd/project
-sys-auth/sssd
 
 # Pawel Hajdan jr <phajdan.jr@gentoo.org> (11 Aug 2011)
 # Dev channel releases are only for people who are developers or want more
@@ -142,6 +198,7 @@ net-misc/dhcdbd
 >=gnome-base/gnome-panel-3.0
 >=gnome-base/gnome-session-3.0
 >=gnome-base/gnome-settings-daemon-3.0
+>=gnome-base/gnome-control-center-3.0
 >=gnome-base/gnome-shell-3.0
 >=gnome-base/gvfs-1.8
 >=gnome-base/libgnome-keyring-3.0
@@ -225,15 +282,6 @@ net-misc/dhcdbd
 =dev-db/mariadb-5.3*
 =virtual/mysql-5.3*
 
-# Tomáš Chvátal <scarabeus@gentoo.org> (27 Jul 2011)
-# Old replaced packages. Will be removed in 30 days.
-# app-office/openoffice -> app-office/libreoffice
-# app-office/openoffice-bin -> app-office/libreoffice-bin
-# app-text/wpd2sxw -> app-text/wpd2odt
-app-office/openoffice
-app-office/openoffice-bin
-app-text/wpd2sxw
-
 # Pacho Ramos <pacho@gentoo.org> (25 Jul 2011)
 # Old and unmaintained for a long time, bug #358587.
 # Removal in 30 days
@@ -243,14 +291,6 @@ app-text/wpd2sxw
 # No new release since 2002, doesn't respect LDFLAGS and
 # still needing old libsigc++:1.0. Removal in 30 days. (#358589)
 net-libs/libicq2000
-
-# Tomáš Chvátal <scarabeus@gentoo.org> (24 Jul 2011)
-# Mask for removal packages that are obsoleted.
-# To be removed in 30 days.
-# tangogps -> foxtrotgps
-# qlandkare -> qlandkartegt
-sci-geosciences/tangogps
-sci-geosciences/qlandkarte
 
 # Gilles Dartiguelongue <eva@gentoo.org> (24 Jul 2011)
 # Mask development release
@@ -273,11 +313,6 @@ app-emulation/vmware-server-console
 # Really old and unmaintained package. Bug #360067.
 # Removal in 30 days.
 app-accessibility/speechd
-
-# Eray Aslan <eras@gentoo.org> (20 Jul 2011)
-# Dead upstream.  Does not compile.  Bugs 205442, 354865, 370459.
-# Removal in 30 days.
-net-mail/freepops
 
 # Pacho Ramos <pacho@gentoo.org> (20 Jul 2011)
 # Dead project and not maintained for ages, removal in 30 days.
@@ -363,10 +398,6 @@ sci-chemistry/webmo
 # Breaks API/ABI and has the same features as 0.7.1
 >=media-video/ffmpeg-0.8
 
-# Eray Aslan <eras@gentoo.org> (21 Jun 2011)
-# Mask prerelease software
-=app-crypt/heimdal-1.5_pre*
-
 # Andreas K. Huettel <dilfridge@gentoo.org> (18 Jun 2011)
 # Mask cups-1.5, too new and still needs a lot of testing
 >=net-print/cups-1.4.9999
@@ -438,10 +469,6 @@ net-misc/gateway6
 # Support for libobjc2, for adventurous people only for now
 =gnustep-base/gnustep-make-2.6.1-r10
 
-# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (6 Jun 2011)
-# Mask prerelease of xorg-server 1.11
->=x11-base/xorg-server-1.10.99
-
 # Jeroen Roovers <jer@gentoo.org> (5 Jun 2011)
 # Masked until bug #370163 is resolved.
 >=sys-block/parted-3.0
@@ -506,10 +533,6 @@ app-crypt/scsign
 =dev-lang/php-5.3.7_rc3
 =dev-lang/php-5.3.7_rc5
 >=dev-lang/php-5.4.0_alpha1
-
-# Ryan Hill <dirtyepic@gentoo.org> (23 Apr 2011)
-# Masked for removal on 20110523.
-app-text/gnochm
 
 # Alexis Ballier <aballier@gentoo.org> (20 Apr 2011)
 # Breaks net-voip/sflphone, non maintainer update, but is needed by

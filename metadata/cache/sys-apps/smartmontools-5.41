@@ -1,5 +1,5 @@
-
-!minimal? ( virtual/mailx caps? ( sys-libs/libcap-ng ) )
+!minimal? ( caps? ( sys-libs/libcap-ng ) )
+!minimal? ( caps? ( sys-libs/libcap-ng ) ) !minimal? ( virtual/mailx )
 0
 mirror://sourceforge/smartmontools/smartmontools-5.41.tar.gz
 
@@ -14,7 +14,7 @@ static minimal caps
 
 3
 
-configure install prepare unpack
+configure install prepare
 
 
 

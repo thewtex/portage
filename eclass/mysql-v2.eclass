@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/mysql-v2.eclass,v 1.4 2011/07/21 05:57:22 jmbsvicetto Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/mysql-v2.eclass,v 1.7 2011/08/22 04:46:32 vapier Exp $
 
 # @ECLASS: mysql-v2.eclass
 # @MAINTAINER:
@@ -19,8 +19,8 @@
 # phase hooks.
 
 # @ECLASS-VARIABLE: BUILD
-# @DESCRIPTION: Build type of the mysql version
-# The default value is autotools
+# @DESCRIPTION:
+# Build type of the mysql version
 : ${BUILD:=autotools}
 
 case ${BUILD} in
@@ -41,7 +41,8 @@ esac
 MYSQL_EXTRAS=""
 
 # @ECLASS-VARIABLE: MYSQL_EXTRAS_VER
-# @DESCRIPTION: The version of the MYSQL_EXTRAS repo to use to build mysql
+# @DESCRIPTION:
+# The version of the MYSQL_EXTRAS repo to use to build mysql
 [[ "${MY_EXTRAS_VER}" == "live" ]] && MYSQL_EXTRAS="git-2"
 
 inherit eutils flag-o-matic gnuconfig ${MYSQL_EXTRAS} ${BUILD_INHERIT} mysql_fx versionator toolchain-funcs
@@ -253,6 +254,10 @@ done
 RDEPEND="${DEPEND}
 	!minimal? ( dev-db/mysql-init-scripts )
 	selinux? ( sec-policy/selinux-mysql )
+"
+
+DEPEND="${DEPEND}
+	virtual/yacc
 "
 
 DEPEND="${DEPEND} static? ( || ( sys-libs/ncurses[static-libs] <=sys-libs/ncurses-5.7-r3 ) )"
