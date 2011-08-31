@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-arch/zpaq-extras/zpaq-extras-0_p20110106.ebuild,v 1.1 2011/01/06 16:10:21 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-arch/zpaq-extras/zpaq-extras-0_p20110106.ebuild,v 1.2 2011/08/25 12:14:38 mgorny Exp $
 
 EAPI=3
 inherit base toolchain-funcs
@@ -23,7 +23,8 @@ KEYWORDS="~amd64"
 IUSE=""
 
 DEPEND="app-arch/unzip"
-RDEPEND="!<app-arch/zpaq-2.03"
+RDEPEND="!<app-arch/zpaq-2.03
+	<app-arch/zpaq-3"
 
 S=${WORKDIR}
 

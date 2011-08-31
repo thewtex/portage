@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/nvidia-cuda-toolkit/nvidia-cuda-toolkit-4.0.ebuild,v 1.3 2011/07/23 20:41:24 spock Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/nvidia-cuda-toolkit/nvidia-cuda-toolkit-4.0.ebuild,v 1.6 2011/08/27 20:30:51 chainsaw Exp $
 
 EAPI=2
 
@@ -20,7 +20,7 @@ SRC_URI="amd64? ( ${BASE_URI}/cudatoolkit_${CUDA_V}.17_linux_64_ubuntu10.10.run 
 
 LICENSE="NVIDIA"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="debugger doc profiler"
 
 RDEPEND="${DEPEND}
@@ -29,7 +29,7 @@ RDEPEND="${DEPEND}
 	profiler? ( x86? (
 		x11-libs/qt-gui
 		x11-libs/qt-core
-		x11-libs/qt-assistant
+		x11-libs/qt-assistant[compat]
 		x11-libs/qt-sql[sqlite] )
 		media-libs/libpng:1.2
 	)
@@ -104,11 +104,14 @@ EOF
 			dosym /usr/bin/assistant ${DEST}/${target}/bin
 
 			insinto ${DEST}/${target}/bin
-			doins ${target}/bin/cudaapitrace.so
+			doins ${target}/bin/cudaapitrace32.so
 		else
 			dobin ${target}/bin/assistant
 			insinto ${DEST}/${target}/bin
-			doins ${target}/bin/*.so*
+			doins ${target}/bin/*.so.?.?.?
+			for f in ${target}/bin/*.so.?; do
+				dosym $(readlink ${f}) ${DEST}/${f}
+			done
 			insinto ${DEST}/${target}/bin/sqldrivers
 			doins ${target}/bin/sqldrivers/*
 

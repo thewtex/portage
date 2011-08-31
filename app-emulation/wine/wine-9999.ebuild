@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/wine/wine-9999.ebuild,v 1.88 2011/08/14 19:57:19 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/wine/wine-9999.ebuild,v 1.92 2011/08/28 02:57:01 vapier Exp $
 
 EAPI="2"
 
@@ -20,7 +20,7 @@ else
 	S=${WORKDIR}/${MY_P}
 fi
 
-GV="1.2.0"
+GV="1.3"
 DESCRIPTION="free implementation of Windows(tm) on Unix"
 HOMEPAGE="http://www.winehq.org/"
 SRC_URI="${SRC_URI}
@@ -31,7 +31,7 @@ SRC_URI="${SRC_URI}
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-IUSE="alsa capi cups custom-cflags dbus fontconfig +gecko gnutls gphoto2 gsm gstreamer hal jpeg lcms ldap mp3 ncurses nls openal opencl +opengl +oss +perl png samba scanner ssl test +threads +truetype v4l +win32 +win64 +X xcomposite xinerama xml"
+IUSE="alsa capi cups custom-cflags dbus fontconfig +gecko gnutls gphoto2 gsm gstreamer hal hardened jpeg lcms ldap mp3 ncurses nls openal opencl +opengl +oss +perl png samba scanner ssl test +threads +truetype v4l +win32 +win64 +X xcomposite xinerama xml"
 RESTRICT="test" #72375
 
 MLIB_DEPS="amd64? (
@@ -84,7 +84,7 @@ RDEPEND="truetype? ( >=media-libs/freetype-2.0.0 media-fonts/corefonts )
 	v4l? ( media-libs/libv4l )
 	!win64? ( ${MLIB_DEPS} )
 	win32? ( ${MLIB_DEPS} )
-	xcomposite? ( x11-libs/libXcomposite ) "
+	xcomposite? ( x11-libs/libXcomposite )"
 DEPEND="${RDEPEND}
 	X? (
 		x11-proto/inputproto
@@ -92,7 +92,8 @@ DEPEND="${RDEPEND}
 		x11-proto/xf86vidmodeproto
 	)
 	xinerama? ( x11-proto/xineramaproto )
-	sys-devel/bison
+	!hardened? ( sys-devel/prelink )
+	virtual/yacc
 	sys-devel/flex"
 
 src_unpack() {

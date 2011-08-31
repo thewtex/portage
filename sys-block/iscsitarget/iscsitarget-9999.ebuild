@@ -1,27 +1,19 @@
 # Copyright 1999-2011 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-block/iscsitarget/iscsitarget-1.4.20.2.ebuild,v 1.4 2011/02/16 22:16:27 hwoarang Exp $
+# Copyright 2011 Funtoo Technologies
 
-inherit linux-mod eutils flag-o-matic
+# Same as Gentoo -9999 but with removed conditional blocks as this ebuild is -9999 (code cleanup)
+
+inherit linux-mod eutils flag-o-matic subversion autotools
 
 ESVN_REPO_URI="http://iscsitarget.svn.sourceforge.net/svnroot/iscsitarget/trunk"
 
 DESCRIPTION="Open Source iSCSI target with professional features"
 HOMEPAGE="http://iscsitarget.sourceforge.net/"
-
-if [[ ${PV} == "9999" ]] ; then
-	inherit subversion autotools
-	KEYWORDS=""
-else
-	inherit autotools
-	SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
-fi
-
+KEYWORDS=""
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86"
+KEYWORDS="~amd64 ~ppc ~x86 ~sparc"
 IUSE=""
 
 DEPEND="dev-libs/openssl"
@@ -32,21 +24,7 @@ CONFIG_CHECK="CRYPTO_CRC32C"
 ERROR_CFG="iscsitarget needs support for CRC32C in your kernel."
 
 src_unpack() {
-	if [[ ${PV} == "9999" ]] ; then
-		subversion_src_unpack
-	else
-		unpack ${A}
-		cd "${S}"
-		epatch "${FILESDIR}"/${PN}-0.4.15-isns-set-scn-flag.patch #180619
-		# NIPQUAD removed in 2.6.36, #340449
-		if kernel_is ge 2 6 36; then
-			epatch "${FILESDIR}"/iscsitarget-1.4.20.2_kernel-2.6.36.patch
-		fi
-		epatch_user
-		convert_to_m "${S}"/Makefile
-		# Respect LDFLAGS. Bug #350742
-		epatch "${FILESDIR}"/${PN}-1.4.20.2-respect-flags.patch
-	fi
+	subversion_src_unpack
 }
 
 src_compile() {

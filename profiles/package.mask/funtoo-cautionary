@@ -1,0 +1,42 @@
+# Adrien Dessemond <adessemond@funtoo.org> (23 Aug 2011)
+# Google Earth requires >=sys-lib/glibc-2.12 (dependency added in the Funtoo fork of sci-geosciences/googleearth-6.0.3.2197)
+# As of August 23rd 2011 Funtoo does only provide sys-lib/glibc 2.11, thus not satisfying a required dependency => mask!
+>=sci-geosciences/googleearth-6.0.3.2197
+
+# Adrien Dessemond <adessemond@funtoo.org> (03 Jun 2011)
+# updated to -r1 which includes an explicit dependency on parted < 3.0 (see bug #369423)
+=sys-block/partitionmanager-1.0.3
+
+# Adrien Dessemond <adessemond@funtoo.org> (03 Jun 2011)
+# updated to -r1 which includes an explicit dependency on parted < 3.0 (see bug #369417)
+=sys-block/gparted-0.8.0
+
+# Adrien Dessemond <adessemond@funtoo.org> (22 Apr 2011)
+# Random data corruption observed, investigations in progress
+app-arch/pxz
+
+# Adrien Dessemond <adessemond@funtoo.org> (13 Apr 2011)
+# DO NOT USE this one the ebuild does not include kernel revision dependencies (>= 2.6.38 REQUIRED) and it can affect many of our users
+# See bug #359445
+=net-wireless/iwl5000-ucode-8.83.5.1
+
+# Adrien Dessemond <adessemond@funtoo.org> (13 Apr 2011)
+# Prevent the next easy-to-predict major disaster
+>=media-libs/libpng-1.5
+
+# Daniel Robbins <drobbins@funtoo.org> (6 Aug 2009)
+# Mask new versions for caution, and these should all
+# be tested and upgraded together. This helps ensure that
+# any new glibc upgrade will be built against any upgraded
+# linux-headers.
+
+# For toolchain upgrade ll-2010.2:
+# glibc updated 30 Jun 2011:
+>sys-libs/glibc-2.11.3
+>sys-kernel/linux-headers-2.6.32
+>sys-devel/gcc-4.4.5
+>sys-devel/binutils-2.20.1
+
+# Oleg Vinichenko <oleg@funtoo.org> (26 Aug 2011)
+#udev-171 is now in unstable
+>=sys-fs/udev-172

@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-portage/esearch/esearch-0.7.2-r1.ebuild,v 1.1 2011/08/09 23:53:59 fuzzyray Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-portage/esearch/esearch-0.7.2-r1.ebuild,v 1.3 2011/08/25 00:28:11 darkside Exp $
 
 EAPI=3
 PYTHON_DEPEND=2:2.4

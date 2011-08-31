@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/putty/putty-0.61.ebuild,v 1.1 2011/07/13 14:35:51 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/putty/putty-0.61.ebuild,v 1.3 2011/08/28 17:28:41 jer Exp $
 
 EAPI="4"
 
@@ -12,7 +12,7 @@ SRC_URI="http://the.earth.li/~sgtatham/${PN}/latest/${P}.tar.gz"
 LICENSE="MIT"
 
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~ppc ~sparc ~x86"
 IUSE="doc ipv6 kerberos"
 
 RDEPEND="
@@ -24,7 +24,11 @@ RDEPEND="
 	x11-libs/libX11
 	x11-libs/pango
 "
-DEPEND="${RDEPEND} dev-lang/perl"
+DEPEND="
+	${RDEPEND}
+	dev-lang/perl
+	dev-util/pkgconfig
+"
 
 src_prepare() {
 	cd "${S}"/unix || die "cd unix failed"

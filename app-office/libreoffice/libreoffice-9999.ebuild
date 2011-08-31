@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/libreoffice/libreoffice-9999.ebuild,v 1.16 2011/08/15 17:52:07 scarabeus Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/libreoffice/libreoffice-9999.ebuild,v 1.18 2011/08/23 11:07:51 scarabeus Exp $
 
 EAPI=3
 
@@ -106,7 +106,7 @@ unset ADDONS_URI
 unset EXT_URI
 unset ADDONS_SRC
 
-IUSE="binfilter +branding cups custom-cflags dbus debug eds gnome graphite
+IUSE="binfilter +branding custom-cflags dbus debug eds gnome graphite
 gstreamer gtk kde ldap mysql nsplugin odk offlinehelp opengl svg templates
 test +vba webdav"
 LICENSE="LGPL-3"
@@ -147,6 +147,7 @@ COMMON_DEPEND="
 	>=media-libs/fontconfig-2.3.0
 	>=media-libs/vigra-1.7
 	>=media-libs/libpng-1.4
+	net-print/cups
 	sci-mathematics/lpsolve
 	>=sys-libs/db-4.8
 	virtual/jpeg
@@ -154,7 +155,6 @@ COMMON_DEPEND="
 	x11-libs/libXinerama
 	x11-libs/libXrandr
 	x11-libs/libXrender
-	cups? ( net-print/cups )
 	dbus? ( >=dev-libs/dbus-glib-0.94 )
 	eds? ( gnome-extra/evolution-data-server )
 	gnome? ( gnome-base/gconf:2 )
@@ -458,6 +458,7 @@ src_configure() {
 	# --without-{afms,fonts,myspell-dicts,ppsd}: prevent install of sys pkgs
 	# --without-stlport: disable deprecated extensions framework
 	econf \
+		--docdir="${EPREFIX}/usr/share/doc/${PF}/" \
 		--with-system-headers \
 		--with-system-libs \
 		--with-system-jars \
@@ -505,7 +506,6 @@ src_configure() {
 		--without-ppds \
 		--without-stlport \
 		$(use_enable binfilter) \
-		$(use_enable cups) \
 		$(use_enable dbus) \
 		$(use_enable debug crashdump) \
 		$(use_enable eds evolution2) \

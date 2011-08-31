@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-accessibility/speech-tools/speech-tools-2.1-r1.ebuild,v 1.1 2011/03/22 03:48:43 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-accessibility/speech-tools/speech-tools-2.1-r1.ebuild,v 1.3 2011/08/27 09:59:40 hwoarang Exp $
 
 EAPI="2"
 
@@ -15,7 +15,7 @@ SRC_URI="http://www.festvox.org/packed/festival/${PV}/${MY_P}-release.tar.gz
 
 LICENSE="FESTIVAL BSD as-is"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="~alpha amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 IUSE="esd nas X"
 
 DEPEND="esd? ( media-sound/esound )
@@ -24,7 +24,8 @@ DEPEND="esd? ( media-sound/esound )
 		x11-libs/libXt )
 	>=media-libs/alsa-lib-1.0.20-r1
 	!<app-accessibility/festival-1.96_beta
-	!sys-power/powerman"
+	!sys-power/powerman
+	>=sys-libs/ncurses-5.6-r2"
 
 RDEPEND=${DEPEND}
 
@@ -34,6 +35,9 @@ src_prepare() {
 	EPATCH_SUFFIX="patch"
 	epatch
 	sed -i -e 's,{{HORRIBLELIBARCHKLUDGE}},"/usr/$(get_libdir)",' main/siod_main.cc
+
+	#WRT bug #309983
+	sed -i -e "s:\(GCC_SYSTEM_OPTIONS =\).*:\1:" "${S}"/config/systems/sparc_SunOS5.mak
 }
 
 src_configure() {

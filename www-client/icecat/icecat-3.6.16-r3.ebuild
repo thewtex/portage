@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/icecat/icecat-3.6.16-r3.ebuild,v 1.1 2011/08/17 20:51:08 polynomial-c Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/icecat/icecat-3.6.16-r3.ebuild,v 1.3 2011/08/23 19:32:15 polynomial-c Exp $
 EAPI="3"
 WANT_AUTOCONF="2.1"
 
@@ -60,7 +60,7 @@ RDEPEND="
 	>=dev-libs/nss-3.12.8
 	>=dev-libs/nspr-4.8.6
 	>=app-text/hunspell-1.2
-	system-sqlite? ( >=dev-db/sqlite-3.7.1[fts3,secure-delete] )
+	system-sqlite? ( >=dev-db/sqlite-3.7.4[fts3,secure-delete] )
 	alsa? ( media-libs/alsa-lib )
 	>=x11-libs/cairo-1.8.8[X]
 	gnome? ( >=gnome-base/gnome-vfs-2.16.3
@@ -128,7 +128,7 @@ src_unpack() {
 }
 
 src_prepare() {
-	# Make this a 3.6.17 version
+	# Make this a 3.6.20 version
 	epatch "${DISTDIR}"/ff3617.diff.xz \
 		"${DISTDIR}"/ff3618.diff.xz \
 		"${DISTDIR}"/ff3620.diff.xz

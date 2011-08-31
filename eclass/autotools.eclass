@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/autotools.eclass,v 1.104 2011/08/07 22:53:28 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/autotools.eclass,v 1.106 2011/08/22 19:39:52 vapier Exp $
 
 # @ECLASS: autotools.eclass
 # @MAINTAINER:
@@ -23,6 +23,11 @@ inherit eutils libtool
 # @DESCRIPTION:
 # The major version of automake your package needs
 : ${WANT_AUTOMAKE:=latest}
+
+# @ECLASS-VARIABLE: WANT_LIBTOOL
+# @DESCRIPTION:
+# Do you want libtool?  Valid values here are "latest" and "none".
+: ${WANT_LIBTOOL:=latest}
 
 # @ECLASS-VARIABLE: _LATEST_AUTOMAKE
 # @INTERNAL
@@ -53,13 +58,22 @@ if [[ -n ${WANT_AUTOCONF} ]] ; then
 		2.1)        _autoconf_atom="=sys-devel/autoconf-${WANT_AUTOCONF}*" ;;
 		# if you change the “latest” version here, change also autotools_run_tool
 		latest|2.5) _autoconf_atom=">=sys-devel/autoconf-2.61" ;;
-		*)          _autoconf_atom="INCORRECT-WANT_AUTOCONF-SETTING-IN-EBUILD" ;;
+		*)          die "Invalid WANT_AUTOCONF value '${WANT_AUTOCONF}'" ;;
 	esac
 	export WANT_AUTOCONF
 fi
 
-AUTOTOOLS_DEPEND="${_automake_atom} ${_autoconf_atom}"
-[[ ${CATEGORY}/${PN} != "sys-devel/libtool" ]] && AUTOTOOLS_DEPEND="${AUTOTOOLS_DEPEND} >=sys-devel/libtool-2.2.6b"
+_libtool_atom="sys-devel/libtool"
+if [[ -n ${WANT_LIBTOOL} ]] ; then
+	case ${WANT_LIBTOOL} in
+		none)   _libtool_atom="" ;;
+		latest) ;;
+		*)      die "Invalid WANT_LIBTOOL value '${WANT_LIBTOOL}'" ;;
+	esac
+	export WANT_LIBTOOL
+fi
+
+AUTOTOOLS_DEPEND="${_automake_atom} ${_autoconf_atom} ${_libtool_atom}"
 RDEPEND=""
 
 # @ECLASS-VARIABLE: AUTOTOOLS_AUTO_DEPEND
