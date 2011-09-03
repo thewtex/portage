@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/cfengine/cfengine-3.1.5.ebuild,v 1.1 2011/05/03 23:16:33 idl0r Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/cfengine/cfengine-3.1.5.ebuild,v 1.2 2011/08/30 17:11:03 idl0r Exp $
 
 EAPI="3"
 
@@ -11,7 +11,7 @@ MY_P="${PN}-${MY_PV}"
 DESCRIPTION="An automated suite of programs for configuring and maintaining
 Unix-like computers"
 HOMEPAGE="http://www.cfengine.org/"
-SRC_URI="http://www.cfengine.org/tarballs/${MY_P}.tar.gz"
+SRC_URI="http://cfengine.com/source_code/download?file=${MY_P}.tar.gz -> ${MY_P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="3"

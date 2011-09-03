@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/libreoffice/libreoffice-3.4.9999.ebuild,v 1.21 2011/08/19 09:56:20 scarabeus Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/libreoffice/libreoffice-3.4.9999.ebuild,v 1.24 2011/09/03 11:51:49 scarabeus Exp $
 
 EAPI=3
 
@@ -25,7 +25,7 @@ ADDONS_URI="http://dev-www.libreoffice.org/src/"
 BRANDING="${PN}-branding-gentoo-0.3.tar.xz"
 
 [[ ${PV} == *9999* ]] && SCM_ECLASS="git-2"
-inherit base autotools check-reqs eutils java-pkg-opt-2 kde4-base pax-utils prefix python multilib toolchain-funcs flag-o-matic nsplugins ${SCM_ECLASS}
+inherit base autotools bash-completion check-reqs eutils java-pkg-opt-2 kde4-base pax-utils prefix python multilib toolchain-funcs flag-o-matic nsplugins versionator ${SCM_ECLASS}
 unset SCM_ECLASS
 
 DESCRIPTION="LibreOffice, a full office productivity suite."
@@ -35,7 +35,7 @@ SRC_URI="branding? ( http://dev.gentooexperimental.org/~scarabeus/${BRANDING} )"
 # Bootstrap MUST be first!
 MODULES="bootstrap artwork base calc components extensions extras filters help
 impress libs-core libs-extern libs-extern-sys libs-gui postprocess sdk testing
-ure writer translations"
+ure writer"
 # Only release has the tarballs
 if [[ ${PV} != *9999* ]]; then
 	for i in ${DEV_URI}; do
@@ -62,7 +62,6 @@ ADDONS_SRC+=" ${ADDONS_URI}/35efabc239af896dfb79be7ebdd6e6b9-gentiumbasic-fonts-
 ADDONS_SRC+=" ${ADDONS_URI}/39bb3fcea1514f1369fcfc87542390fd-sacjava-1.3.zip"
 ADDONS_SRC+=" ${ADDONS_URI}/48470d662650c3c074e1c3fabbc67bbd-README_source-9.0.0.7-bj.txt"
 ADDONS_SRC+=" ${ADDONS_URI}/4a660ce8466c9df01f19036435425c3a-glibc-2.1.3-stub.tar.gz"
-ADDONS_SRC+=" ${ADDONS_URI}/599dc4cc65a07ee868cf92a667a913d2-xpdf-3.02.tar.gz"
 ADDONS_SRC+=" ${ADDONS_URI}/798b2ffdc8bcfe7bca2cf92b62caf685-rhino1_5R5.zip"
 ADDONS_SRC+=" ${ADDONS_URI}/8294d6c42e3553229af9934c5c0ed997-stax-api-1.0-2-sources.jar"
 ADDONS_SRC+=" ${ADDONS_URI}/a7983f859eafb2677d7ff386a023bc40-xsltml_2.1.2.zip"
@@ -87,14 +86,6 @@ ADDONS_SRC+=" http://download.go-oo.org/extern/b4cae0700aa1c2aef7eb7f345365e6f1-
 ADDONS_SRC+=" http://www.numbertext.org/linux/881af2b7dca9b8259abbca00bbbc004d-LinLibertineG-20110101.zip"
 SRC_URI+=" ${ADDONS_SRC}"
 
-# intersection of available linguas and app-dicts/myspell-* dictionaries
-SPELL_DIRS="af bg ca cs cy da de el en eo es et fr ga gl he hr hu it ku lt mk nb
-nl nn pl pt ru sk sl sv tn zu"
-for X in ${SPELL_DIRS} ; do
-	SPELL_DIRS_DEPEND+=" linguas_${X}? ( app-dicts/myspell-${X} )"
-done
-unset X
-
 TDEPEND="${EXT_URI}/472ffb92d82cf502be039203c606643d-Sun-ODF-Template-Pack-en-US_1.0.0.oxt"
 TDEPEND+=" linguas_de? ( ${EXT_URI}/53ca5e56ccd4cab3693ad32c6bd13343-Sun-ODF-Template-Pack-de_1.0.0.oxt )"
 TDEPEND+=" linguas_en_GB? ( ${EXT_URI}/472ffb92d82cf502be039203c606643d-Sun-ODF-Template-Pack-en-US_1.0.0.oxt )"
@@ -110,18 +101,14 @@ unset EXT_URI
 unset ADDONS_SRC
 
 IUSE="binfilter +branding cups custom-cflags dbus debug eds gnome graphite
-gstreamer gtk kde ldap mysql nsplugin odk offlinehelp opengl python templates
-test +vba webdav"
+gstreamer gtk kde ldap mysql nsplugin odk opengl python templates test +vba
+webdav"
 LICENSE="LGPL-3"
 SLOT="0"
 [[ ${PV} == *9999* ]] || KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
 
-# translations
-LANGUAGES="af ar as ast be bg bn bo br brx bs ca ca_XV cs cy da de dgo dz el
-en en_GB en_ZA eo es et eu fa fi fr ga gl gu he hi hr hu id is it ja ka kk km
-kn kok ko ks ku lo lt lv mai mk ml mn mni mr my nb ne nl nn nr nso oc or
-pa_IN pl pt pt_BR ro ru rw sat sd sh sk sl sq sr ss st sv sw_TZ ta te tg
-th tn tr ts ug uk uz ve vi xh zh_CN zh_TW zu"
+# lingua for templates 
+LANGUAGES="de en_GB en_ZA es fr hu it"
 for X in ${LANGUAGES} ; do
 	IUSE+=" linguas_${X}"
 done
@@ -187,8 +174,8 @@ RDEPEND="${COMMON_DEPEND}
 	!app-office/libreoffice-bin
 	!app-office/openoffice-bin
 	!app-office/openoffice
+	>=app-office/libreoffice-l10n-$(get_version_component_range 1-2)
 	java? ( >=virtual/jre-1.6 )
-	${SPELL_DIRS_DEPEND}
 "
 
 DEPEND="${COMMON_DEPEND}
@@ -351,22 +338,7 @@ src_unpack() {
 }
 
 src_prepare() {
-	strip-linguas ${LANGUAGES}
-
-	# HACK: linguas needs special parsing until fixed upstream
-	if [[ -z ${LINGUAS} || ${LINGUAS} == en ]]; then
-		# if empty or just english we want empty
-		LO_LANGUAGES=
-	elif [[ ${LINGUAS} =~ en( |$) ]]; then
-		# otherwise if more then one language and english we
-		# replace en to en-US
-		LO_LANGUAGES="$(sed -e 's/\ben\b/en_US/;s/_/-/g' <<< ${LINGUAS})"
-	else
-		# and finally if no en is set we add en-US
-		LO_LANGUAGES="en-US ${LINGUAS//_/-}"
-	fi
-
-	# Now for our optimization flags ...
+	# optimization flags
 	export ARCH_FLAGS="${CXXFLAGS}"
 	use debug || export LINKFLAGSOPTIMIZE="${LDFLAGS}"
 
@@ -502,7 +474,7 @@ src_configure() {
 		--with-external-hyph-dir="${EPREFIX}/usr/share/myspell" \
 		--with-external-thes-dir="${EPREFIX}/usr/share/myspell" \
 		--with-external-tar="${DISTDIR}" \
-		--with-lang="${LO_LANGUAGES}" \
+		--with-lang="" \
 		--with-max-jobs=${jbs} \
 		--with-num-cpus=1 \
 		--with-theme="${themes}" \
@@ -542,7 +514,6 @@ src_configure() {
 		$(use_with ldap openldap) \
 		$(use_with mysql system-mysql-cppconn) \
 		$(use_with nsplugin system-mozilla libxul) \
-		$(use_with offlinehelp helppack-integration) \
 		$(use_with templates sun-templates) \
 		${internal_libs} \
 		${java_opts} \
@@ -557,6 +528,10 @@ src_compile() {
 src_install() {
 	# This is not Makefile so no buildserver
 	make DESTDIR="${D}" distro-pack-install || die
+
+	# Fix bash completion placement
+	dobashcompletion "${ED}"/etc/bash_completion.d/libreoffice.sh ${PN}
+	rm -rf "${ED}"/etc/
 
 	# symlink the plugin to system location
 	if use nsplugin; then

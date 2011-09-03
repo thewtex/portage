@@ -1,7 +1,10 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-nds/rpcbind/rpcbind-0.2.0.ebuild,v 1.8 2011/04/24 17:50:22 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-nds/rpcbind/rpcbind-0.2.0.ebuild,v 1.11 2011/09/02 20:10:55 vapier Exp $
 
+EAPI="2"
+
+inherit autotools
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="git://git.infradead.org/~steved/rpcbind.git"
 	inherit autotools git
@@ -19,24 +22,21 @@ LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
-DEPEND="net-libs/libtirpc"
-RDEPEND=${DEPEND}
+RDEPEND="net-libs/libtirpc"
+DEPEND="${RDEPEND}
+	dev-util/pkgconfig"
 
-src_unpack() {
+src_prepare() {
 	if [[ ${PV} == "9999" ]] ; then
-		git_src_unpack
 		eautoreconf
 	else
-		unpack ${A}
-		cd "${S}"
-		# fix busted timestamps
-		find . -type f -print0 | xargs -0 touch -r .
+		epatch "${FILESDIR}"/${P}-pkgconfig.patch
+		eautoreconf
 	fi
 }
 
-src_compile() {
-	econf --bindir=/sbin || die
-	emake || die
+src_configure() {
+	econf --bindir=/sbin
 }
 
 src_install() {

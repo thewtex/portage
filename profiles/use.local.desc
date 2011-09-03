@@ -10,7 +10,6 @@ app-accessibility/brltty:fm - support for the sound card synthesizer
 app-accessibility/brltty:learn-mode - support for interactive command learn mode
 app-accessibility/brltty:midi - support the musical instrument digital interface
 app-accessibility/brltty:pcm - support for sound card digital audio
-app-accessibility/brltty:pm - user customization of Papenmeier driver
 app-accessibility/brltty:speech - speech support
 app-accessibility/eflite:16k_voice - Use a higher-quality voice.
 app-accessibility/emacspeak:espeak - Adds support for the espeak tts engine
@@ -158,6 +157,10 @@ app-admin/puppet:rrdtool - Enable rrdtool support
 app-admin/puppet:shadow - Enable shadow support
 app-admin/rsyslog:extras - Add support for the UDP spoofing module (omudpspoof) using net-libs/libnet
 app-admin/rsyslog:relp - Add support for the Reliable Event Logging Protocol using dev-libs/librelp
+app-admin/sagan:libdnet - Add support for dev-libs/libdnet
+app-admin/sagan:lognorm - Add support for log/rules normalizations via dev-libs/liblognorm
+app-admin/sagan:pcap - Add support for network packet capture via net-libs/libpcap
+app-admin/sagan:smtp - Build witch SMTP (E-Mail) support
 app-admin/sshguard:ipfilter - Enable ipfilter firewall support (only for *bsd)
 app-admin/sudo:offensive - Let sudo print insults when the user types the wrong password.
 app-admin/syslog-ng:spoof-source - Enable support for spoofed source addresses
@@ -259,6 +262,7 @@ app-crypt/seahorse-plugins:gedit - Enable text encryption plugin to integrate in
 app-crypt/seahorse-plugins:nautilus - Enable file encryption plugin to integrate into the gnome-base/nautilus context menu
 app-crypt/tpm-tools:pkcs11 - Build Token data management utilities based on OpenCryptoki's (dev-libs/opencryptoki) PKCS#11 implementation.
 app-dicts/aspell-be:classic - Support classic spelling by default
+app-dicts/gwaei:unique - Enable single instance support using dev-libs/libunique.
 app-doc/doxygen:nodot - removes graphviz dependency, along with dot graphs
 app-doc/doxygen:tcl - adds experimental support for parsing/documenting Tcl source code
 app-doc/linuxfromscratch:htmlsingle - Also install single-page HTML version
@@ -364,7 +368,6 @@ app-emulation/libvirt:libvirtd - Builds the libvirtd daemon as well as the clien
 app-emulation/libvirt:lvm - Allow using the Logical Volume Manager (sys-apps/lvm2) as pool for disk image storage
 app-emulation/libvirt:lxc - Support management of Linux Containers virtualisation (app-emulation/lxc)
 app-emulation/libvirt:macvtap - Support for MAC-based TAP (macvlan/macvtap). For networking instead of the normal TUN/TAP. It has its advantages and disadvantages. macvtap support requires very new kernels and is currently evolving. Support for this is experimental at best.
-app-emulation/libvirt:network - Enable virtual networking (NAT) support for guests
 app-emulation/libvirt:nfs - Allow using Network File System mounts as pool for disk image storage
 app-emulation/libvirt:numa - Use NUMA for memory segmenting via sys-process/numactl
 app-emulation/libvirt:openvz - Support management of OpenVZ virtualisation (see sys-kernel/openvz-sources)
@@ -536,7 +539,6 @@ app-misc/beagle:xscreensaver - Allow Beagle to detect when the screensaver is sw
 app-misc/digitemp:ds2490 - Build support for the ds2490 sensor
 app-misc/digitemp:ds9097 - Build support for the ds9097 sensor
 app-misc/digitemp:ds9097u - Build support for the ds9097u sensor
-app-misc/fdupes:md5sum-external - Use external md5sum program instead of bundled md5sum routines
 app-misc/freemind:groovy - Build plugin for scripting via Groovy
 app-misc/freemind:latex - Build plugin for inserting mathematical formulas in LaTeX syntax
 app-misc/freemind:pdf - Build plugin for exporting mindmaps to SVG and PDF
@@ -659,11 +661,11 @@ app-office/kword:wpd - Build wordperfect document support.
 app-office/libreoffice:binfilter - Enable support for legacy StarOffice 5.x and earlier file formats
 app-office/libreoffice:graphite - Enable support for non-Roman fonts via media-gfx/graphite2
 app-office/libreoffice:odk - Build the Office Development Kit
-app-office/libreoffice:offlinehelp - Install help files locally instead of using the LibreOffice Wiki
 app-office/libreoffice:templates - Enable installation of Sun templates
 app-office/libreoffice:vba - Enable support for VBA compatibility and ActiveX embedding
 app-office/libreoffice:webdav - Adds support for HTTP repositories via net-libs/neon
 app-office/libreoffice-bin:offlinehelp - Download and install help files locally instead of using the LibreOffice Wiki
+app-office/libreoffice-l10n:offlinehelp - Install help files locally instead of using the LibreOffice Wiki
 app-office/lyx:aspell - Add support for aspell spellchecking
 app-office/lyx:dia - Add support for diagrams (app-office/dia)
 app-office/lyx:docbook - Add support for docbook export
@@ -1285,6 +1287,7 @@ dev-python/django-extensions:graphviz - Create a diagram of your database entity
 dev-python/django-extensions:s3 - Upload your media files to S3.
 dev-python/django-extensions:vcard - Export your users email addresses to the vcard format.
 dev-python/docutils:glep - Install support for GLEPs
+dev-python/icalendar:doc - Generate examples and other extra documentation
 dev-python/jinja:i18n - Enables support for i18n with dev-python/Babel
 dev-python/kaa-base:tls - SSL/TLS support via dev-python/tlslite
 dev-python/ldaptor:web - enable the web front end for ldaptor (uses dev-python/nevow)
@@ -2054,7 +2057,6 @@ media-gfx/blender:verse - Adds verse clustering features to Blender.
 media-gfx/brlcad:benchmarks - Run benchmarks during test phase (need test option enabled)
 media-gfx/comix:rar - Pulls app-arch/unrar for rar file support
 media-gfx/darktable:flickr - Add support for uploading photos to flickr
-media-gfx/darktable:gconf - Add support for the gconf backend
 media-gfx/darktable:rawspeed - Enable the rawspeed backend
 media-gfx/darktable:slideshow - Build the opengl slideshow viewer
 media-gfx/digikam:addressbook - Add support for kdepim
@@ -2504,6 +2506,7 @@ media-sound/rubyripper:normalize - Add support for normalizing audio file volume
 media-sound/rubyripper:wav - Add support for wavegain
 media-sound/shntool:alac - Add support for Apple Lossless Audio Codec files
 media-sound/shntool:mac - Add support for Monkey's Audio files
+media-sound/snd:s7 - Enable the s7 extension language (a version of Scheme)
 media-sound/sonata:lyrics - Support for lyrics fetching
 media-sound/sonata:trayicon - Enable support for trayicon
 media-sound/sonic-visualiser:id3tag - Enables ID3 tagging with id3tag library
@@ -3021,10 +3024,14 @@ net-dns/avahi:introspection - Use dev-libs/gobject-introspection for introspecti
 net-dns/avahi:mdnsresponder-compat - Enable compat libraries for mDNSResponder
 net-dns/avahi:utils - Install the avahi gtk+ utils avahi-discover, bssh, and bvnc
 net-dns/bind:dlz - Enables dynamic loaded zones, 3rd party extension
+net-dns/bind:gost - Enables gost OpenSSL engine support
 net-dns/bind:gssapi - Enable gssapi support
+net-dns/bind:pkcs11 - Enable PKCS#11 key support/tools for DNSSEC
 net-dns/bind:resolvconf - Enable support for net-dns/openresolv
+net-dns/bind:rpz - Enable response policy rewriting (rpz)
 net-dns/bind:sdb-ldap - Enables ldap-sdb backend
 net-dns/bind:urandom - Use /dev/urandom instead of /dev/random
+net-dns/bind-tools:pkcs11 - Enable PKCS#11 key support/tools for DNSSEC
 net-dns/bind-tools:urandom - Use /dev/urandom instead of /dev/random
 net-dns/ddclient:hardened - Use iproute2 instead of ifconfig to grab an IP address
 net-dns/ddclient:ssl - Connect to the server utilizing SSL
@@ -3068,8 +3075,10 @@ net-fs/coda:coda_layout - Use legacy filesystem layout instead of FHS compliant 
 net-fs/coda:coda_symlinks - Install legacy symlinks when FHS layout has been selected (-coda_layout). You should only need this if you use local scripts or 3rd party apps relying on precise layout. Note: /coda symlink is installed unconditionally, so the namespace is preserved in any case.
 net-fs/coda:server - Build and install the server components of coda filesystem. Note: at least one of client/server flags must be enabled.
 net-fs/netatalk:xfs - Enable support for XFS Quota
+net-fs/nfs-utils:nfsidmap - Enable support for newer nfsidmap helper
 net-fs/nfs-utils:nfsv3 - Enable support for NFSv3
 net-fs/nfs-utils:nfsv4 - Enable support for NFSv4
+net-fs/nfs-utils:nfsv41 - Enable support for NFSv4.1
 net-fs/nfs-utils:nonfsv4 - Disable support for NFSv4
 net-fs/samba:addns - Enable AD DNS integration
 net-fs/samba:ads - Enable Active Directory support
@@ -3165,7 +3174,6 @@ net-im/empathy:webkit - Build support for Adium-style HTML-based conversation wi
 net-im/gajim:gmail - Depend on net-dns/bind-tools to get gmail chats working
 net-im/gajim:idle - Enable idle module
 net-im/gajim:srv - SRV capabilities
-net-im/gajim:trayicon - Enable support for trayicon
 net-im/gajim:xhtml - Enable XHTML support
 net-im/gnugadu:tlen - Enable Tlen.pl protocol support
 net-im/jabberd2:memdebug - Enable nad and pool debug. Requires USE="debug" to be set.
@@ -3235,6 +3243,7 @@ net-im/vacuum:adiummessagestyle - Use UI styles created for Adium
 net-im/vacuum:annotations - Enable adding comments to the contacts in the roster
 net-im/vacuum:autostatus - Change the status in accordance with the time of inactivity
 net-im/vacuum:avatars - Enable assigning and displaying avatars
+net-im/vacuum:birthdayreminder - Reminds about birthdays of your friends
 net-im/vacuum:bitsofbinary - Allow other modules to receive or send a small amount of binary data in XMPP stanza
 net-im/vacuum:bookmarks - Enable creating bookmarks of the Jabber conferences and Web pages
 net-im/vacuum:captchaforms - Perform tests for humanity outside of Web browser
@@ -3521,7 +3530,6 @@ net-misc/asterisk:osplookup - Support secure peering using the Open Settlement P
 net-misc/asterisk:samples - Install sample sound and configuration files (default: on)
 net-misc/asterisk:span - Enable support for the spandsp codec
 net-misc/asterisk:srtp - Enable support for encrypted voice transmission (secure RTP)
-net-misc/asterisk-addons:h323 - Build the chan_ooh323c H.323 channel driver
 net-misc/asterisk-core-sounds:alaw - Install the sounds files for the alaw codec.
 net-misc/asterisk-core-sounds:g722 - Install the sounds files for the g722 codec.
 net-misc/asterisk-core-sounds:g729 - Install the sounds files for the g729 codec.
@@ -3582,7 +3590,6 @@ net-misc/freerdp:alsa - Enable sound support (using alsa)
 net-misc/freerdp:cups - Enable printing support (using cups)
 net-misc/freerdp:debug - Enable all debugging options
 net-misc/freerdp:gnutls - Use GnuTLS as crypto backend
-net-misc/freerdp:largefile - Support for large files
 net-misc/freerdp:nss - Use NSS as crypto backend
 net-misc/freerdp:polarssl - Use PolarSSL as crypto backend
 net-misc/freerdp:ssl - Use OpenSSL as crypto backend
@@ -3832,7 +3839,6 @@ net-proxy/squid:tproxy - Enables real Transparent Proxy support for Linux Netfil
 net-proxy/squid:zero-penalty-hit - Add Zero Penalty Hit patch (http://zph.bratcheda.org)
 net-proxy/sshproxy:client-only - Install only the client wrappers
 net-proxy/tinyproxy:filter-proxy - Enable filtering of domains/URLS
-net-proxy/tinyproxy:http-via-header - Add Via field to HTTP headers
 net-proxy/tinyproxy:reverse-proxy - Enable reverse proxying
 net-proxy/tinyproxy:transparent-proxy - Enable transparent proxying
 net-proxy/tinyproxy:upstream-proxy - Enable upstream proxying
@@ -3993,8 +3999,6 @@ sci-geosciences/googleearth:qt-bundled - Use bundled Qt4 libraries instead of sy
 sci-geosciences/gpsd:ntp - Enable net-misc/ntp shared memory interface and PPS kernel support for GPS time
 sci-geosciences/grass:gmath - Enable gmath wrapper for BLAS/Lapack (virtual/blas, virtual/lapack)
 sci-geosciences/mapnik:gdal - Enable sci-libs/gdal library support
-sci-geosciences/mapserver:agg - Enable x11-libs/agg library support
-sci-geosciences/mapserver:flash - Add support for creating SWF files using media-libs/ming
 sci-geosciences/mapserver:gdal - Enable sci-libs/gdal library support
 sci-geosciences/mapserver:geos - Enable sci-libs/geos library support
 sci-geosciences/mapserver:postgis - Enable dev-db/postgis support
@@ -4074,10 +4078,8 @@ sci-mathematics/gretl:sourceview - Enable support for x11-libs/gtksourceview
 sci-mathematics/maxima:clisp - Compile maxima with GNU CLISP (dev-lisp/clisp)
 sci-mathematics/maxima:clozurecl - Compile maxima with Clozure Common Lisp (dev-lisp/clozurecl)
 sci-mathematics/maxima:cmucl - Compile maxima with CMU Common Lisp (dev-lisp/cmucl)
-sci-mathematics/maxima:ecl - Compile maxima with Embeddable Common Lisp (dev-lisp/ecls)
 sci-mathematics/maxima:ecls - Compile maxima with Embeddable Common Lisp (dev-lisp/ecls)
 sci-mathematics/maxima:gcl - Compile maxima with GNU Common Lisp (dev-lisp/gcl)
-sci-mathematics/maxima:openmcl - Compile maxima with Clozure Common Lisp (former OpenMCL, dev-lisp/closurecl)
 sci-mathematics/maxima:sbcl - Compile maxima with Steel Bank Common Lisp (dev-lisp/sbcl)
 sci-mathematics/minisat:extended-solver - Build extended version of SAT solver with additional features.
 sci-mathematics/normaliz:extras - Install sci-mathematics/Macaulay2 and sci-mathematics/singular packages as shipped by upstream
@@ -4189,6 +4191,7 @@ sys-apps/hal:doc - Generates documentation that describes HAL's fdi format.
 sys-apps/hal:laptop - Adds support for power management scripts (sys-power/pm-utils)
 sys-apps/hal:selinux - Installs SELinux policies and links HAL to the SELinux libraries.
 sys-apps/hwdata-gentoo:binary-drivers - Adds support for ATI/NVIDIA binary drivers
+sys-apps/hwloc:numa - Add support for numa memory allocation
 sys-apps/ipmitool:openipmi - Use the system OpenIPMI implementation.
 sys-apps/iproute2:iptables - include support for iptables filtering
 sys-apps/kexec-tools:lzma - Enables support for LZMA compressed kernel images
@@ -4220,7 +4223,6 @@ sys-apps/qingy:opensslcrypt - Encrypt communications between qingy and its GUI u
 sys-apps/s390-tools:fuse - build cmsfs-fuse to read files stored on a z/VM CMS disk
 sys-apps/s390-tools:zfcpdump - build the kernel disk dumping utility
 sys-apps/shadow:audit - Enable support for sys-process/audit
-sys-apps/shadow:nousuid - When nousuid is enabled only su from the shadow package will be installed with the setuid bit (mainly for single user systems)
 sys-apps/smartmontools:minimal - Do not install the monitoring daemon and associated scripts.
 sys-apps/superiotool:pci - Support for PCI-attached "Super I/Os" (e.g. in VIA VT82686A/B).
 sys-apps/systemd:audit - Enable support for sys-process/audit
@@ -4255,7 +4257,6 @@ sys-auth/pambase:sha512 - Switch Linux-PAM's pam_unix module to use sha512 for p
 sys-auth/polkit:introspection - Use dev-libs/gobject-introspection for introspection
 sys-auth/sssd:locator - Install sssd's Kerberos plugin
 sys-auth/sssd:logrotate - Install logrotate.d file
-sys-auth/sssd:openssl - Enable dev-libs/openssl support instead of dev-libs/nss
 sys-block/gparted:btrfs - Include Btrfs support (sys-fs/btrfs-progs)
 sys-block/gparted:dmraid - Support for dmraid devices, also known as ATA-RAID, or Fake RAID.
 sys-block/gparted:fat - Include FAT16/FAT32 support (sys-fs/dosfstools)
@@ -4441,6 +4442,7 @@ sys-fs/ntfs3g:external-fuse - Use external FUSE library instead of internal one.
 sys-fs/ntfs3g:ntfsprogs - Include internal version of ntfsprogs. This will block sys-fs/ntfsprogs.
 sys-fs/ntfs3g:udev - Install udev rule to make udisks use ntfs-3g instead of the kernel NTFS driver.
 sys-fs/ntfsprogs:fuse - Build a FUSE module
+sys-fs/ocfs2-tools:external - Enable external locking
 sys-fs/owfs:ftpd - Enable building the OWFS FTP server (owftpd)
 sys-fs/owfs:fuse - Enable building the FUSE-based OWFS client (owfs)
 sys-fs/owfs:httpd - Enable building the OWFS web server (owhttpd)
@@ -4479,21 +4481,7 @@ sys-infiniband/openib-files:rds - Automatically generated description for rds
 sys-infiniband/openib-files:srp - Automatically generated description for srp
 sys-infiniband/openib-files:vnic - Automatically generated description for vnic
 sys-kernel/ck-sources:deblob - Remove binary blobs from kernel sources to provide libre license compliance.
-sys-kernel/dracut:bootchart - Add support for bootchart (app-benchmarks/bootchart)
-sys-kernel/dracut:btrfs - Add support for root on Btrfs
-sys-kernel/dracut:crypt - Add support for encrypted partitions with cryptsetup/LUKS
 sys-kernel/dracut:debug - Module installing additional tools like strace, file editor, ssh and more
-sys-kernel/dracut:dmraid - Add support for dmraid devices, also known as ATA-RAID, or Fake RAID.
-sys-kernel/dracut:dmsquash-live - Module which might be used for Live CDs
-sys-kernel/dracut:gensplash - Add support for framebuffer splash at boot-time
-sys-kernel/dracut:iscsi - Add support for iSCSI
-sys-kernel/dracut:lvm - Add support for the Logical Volume Manager (sys-apps/lvm2)
-sys-kernel/dracut:mdraid - Add support for MD devices, also known as software RAID devices
-sys-kernel/dracut:multipath - Add support for Device Mapper multipathing
-sys-kernel/dracut:nbd - Add support for network block devices
-sys-kernel/dracut:nfs - Add support for NFS
-sys-kernel/dracut:uswsusp - Add support for uswsusp (sys-power/suspend)
-sys-kernel/dracut:xen - Add support for Xen
 sys-kernel/gentoo-sources:deblob - Remove binary blobs from kernel sources to provide libre license compliance.
 sys-kernel/hardened-sources:deblob - Remove binary blobs from kernel sources to provide libre license compliance.
 sys-kernel/linux-docs:html - Install HTML documentation
@@ -4508,6 +4496,7 @@ sys-kernel/mips-sources:ip32r10k - Enables experimental support for IP32 R10K ke
 sys-kernel/openvz-sources:deblob - Remove binary blobs from kernel sources to provide libre license compliance.
 sys-kernel/pf-sources:deblob - Remove binary blobs from kernel sources to provide libre license compliance.
 sys-kernel/pf-sources:experimental - Apply patches that are considered experimental. For more information, check out the ChangeLog or the ebuild that interests you.
+sys-kernel/rt-sources:deblob - Remove binary blobs from kernel sources to provide libre license compliance.
 sys-kernel/sparc-sources:ultra1 - If you have a SUN Ultra 1 with a HME interface
 sys-kernel/tuxonice-sources:deblob - Remove binary blobs from kernel sources to provide libre license compliance.
 sys-kernel/vanilla-sources:deblob - Remove binary blobs from kernel sources to provide libre license compliance.
@@ -4517,11 +4506,8 @@ sys-kernel/zen-sources:bfq - Make the BFQ IO Scheduler available by applying ups
 sys-kernel/zen-sources:deblob - Remove binary blobs from kernel sources to provide libre license compliance.
 sys-kernel/zen-sources:stable - Clone stable git tree
 sys-kernel/zen-sources:tuxonice - Apply TuxOnIce kernel patches advanced hibernation support
-sys-libs/glibc:glibc-compat20 - Enable the glibc-compat addon
 sys-libs/glibc:glibc-omitfp - Configure glibc with --enable-omitfp which lets the build system determine when it is safe to use -fomit-frame-pointer
-sys-libs/glibc:nptlonly - Disables building the linuxthreads fallback in glibc ebuilds that support building both linuxthread and nptl
 sys-libs/gwenhywfar:fox - Use x11-libs/fox graphical toolkit
-sys-libs/libraw1394:juju - Use the new juju firewire stack in the Linux kernel
 sys-libs/ncurses:ada - Add bindings for the ADA programming language
 sys-libs/ncurses:trace - Enable test trace() support in ncurses calls
 sys-libs/pam:audit - Enable support for sys-process/audit
@@ -4572,7 +4558,6 @@ www-apache/mod_suphp:mode-force - Run scripts with UID/GID specified in Apache c
 www-apache/mod_suphp:mode-owner - Run scripts with owner UID/GID
 www-apache/mod_suphp:mode-paranoid - Run scripts with owner UID/GID but also check if they match the UID/GID specified in the Apache configuration
 www-apache/mod_vhs:suphp - Enable www-apache/mod_suphp support
-www-apache/modsecurity-crs:vanilla - Provide the original ModSecurity Core Rule Set without Gentoo-specific relaxation. When this flag is enabled, we install the unadulterated Core Rule Set. Warning! The original Core Rule Set is draconic and most likely will break your web applications, including Rails-based web applications and Bugzilla.
 www-apache/pwauth:domain-aware - Ignore leading domain names in username (Windows compat)
 www-apache/pwauth:faillog - Log failed login attempts
 www-apache/pwauth:ignore-case - Ignore string case in username (mostly Windows compat)
@@ -4653,6 +4638,7 @@ www-client/opera-next:kde - Set runtime dependencies to support KDE desktop inte
 www-client/seamonkey:chatzilla - Build Mozilla's IRC client (default on)
 www-client/seamonkey:composer - Build Mozilla's HTML editor component (default on)
 www-client/seamonkey:custom-optimization - Fine-tune custom compiler optimizations
+www-client/seamonkey:ipc - Use inter-process communication between tabs and plugins. Allows for greater stability in case of plugin crashes
 www-client/seamonkey:mailclient - Build Mozilla's Mail client (default on)
 www-client/seamonkey:methodjit - Enable JIT for JavaScript using MethodJIT for faster JS performance. Hardened users can disable this USE-flag to use MPROTECT on grsecurity kernels.
 www-client/seamonkey:roaming - Build roaming extension support (default on)

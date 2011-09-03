@@ -1,0 +1,22 @@
+ssl? ( dev-lang/php[ssl] ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool >=sys-devel/m4-1.4.3 >=sys-devel/libtool-1.5.18
+ssl? ( dev-lang/php[ssl] ) || ( =dev-php/pecl-stomp-1.0.3[php_targets_php5-3] =dev-php/pecl-stomp-1.0.3[php_targets_php5-2] ) php_targets_php5-3? ( dev-lang/php:5.3 ) php_targets_php5-2? ( dev-lang/php:5.2 )
+0
+http://pecl.php.net/get/stomp-1.0.3.tgz
+
+http://pecl.php.net/stomp
+PHP-3
+PHP extension to communicate with any Stomp compliant Message Brokers
+~amd64 ~x86
+autotools eutils flag-o-matic libtool multilib php-ext-pecl-r2 php-ext-source-r2 portability toolchain-funcs
++ssl php_targets_php5-3 php_targets_php5-2
+
+
+
+2
+
+compile configure install prepare test unpack
+
+
+
+
+

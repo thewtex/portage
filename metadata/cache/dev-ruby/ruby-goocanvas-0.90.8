@@ -1,5 +1,5 @@
-x11-libs/goocanvas:0 ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ruby19? ( dev-lang/ruby:1.9 )
-x11-libs/goocanvas:0 ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ruby19? ( dev-lang/ruby:1.9 )
+x11-libs/goocanvas:0 ruby_targets_ruby18? ( dev-ruby/pkg-config[ruby_targets_ruby18] ) ruby_targets_ruby19? ( dev-ruby/pkg-config[ruby_targets_ruby19] ) test? ( ruby_targets_ruby18? ( dev-ruby/rcairo[ruby_targets_ruby18] ) ruby_targets_ruby19? ( dev-ruby/rcairo[ruby_targets_ruby19] ) ) ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ruby19? ( dev-lang/ruby:1.9 )
+x11-libs/goocanvas:0 ruby_targets_ruby18? ( dev-ruby/rcairo[ruby_targets_ruby18] ) ruby_targets_ruby19? ( dev-ruby/rcairo[ruby_targets_ruby19] ) ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ruby19? ( dev-lang/ruby:1.9 )
 0
 mirror://sourceforge/ruby-gnome2/ruby-gnome2-all-0.90.8.tar.gz
 
@@ -8,7 +8,7 @@ Ruby
 Ruby binding of GooCanvas
 ~amd64 ~x86
 eutils multilib portability ruby-ng ruby-ng-gnome2 toolchain-funcs versionator
-ruby_targets_ruby18 ruby_targets_ruby19
+test ruby_targets_ruby18 ruby_targets_ruby19
 
 
 

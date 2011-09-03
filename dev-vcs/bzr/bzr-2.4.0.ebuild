@@ -1,11 +1,11 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-vcs/bzr/bzr-2.4.0.ebuild,v 1.2 2011/08/19 19:17:32 hwoarang Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-vcs/bzr/bzr-2.4.0.ebuild,v 1.4 2011/09/01 08:31:25 fauli Exp $
 
 EAPI="3"
-PYTHON_DEPEND="2"
+PYTHON_DEPEND="2:2.6"
 SUPPORT_PYTHON_ABIS="1"
-RESTRICT_PYTHON_ABIS="3.*"
+RESTRICT_PYTHON_ABIS="2.[45] 3.*"
 
 inherit bash-completion distutils elisp-common eutils versionator
 
@@ -22,16 +22,16 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris"
 IUSE="curl doc emacs +sftp test"
 
-RDEPEND="|| ( dev-lang/python:2.7[xml] dev-lang/python:2.6[xml] dev-lang/python:2.5[xml] dev-python/celementtree )
+RDEPEND="|| ( dev-lang/python:2.7[xml] dev-lang/python:2.6[xml] dev-python/celementtree )
 	curl? ( dev-python/pycurl )
 	sftp? ( dev-python/paramiko )"
 
 DEPEND="emacs? ( virtual/emacs )
 	test? (
 		${RDEPEND}
-		dev-python/medusa
+		|| ( dev-python/pyftpdlib dev-python/medusa )
 		dev-python/subunit
-		dev-python/testtools
+		>=dev-python/testtools-0.9.5
 	)"
 
 S="${WORKDIR}/${MY_P}"
@@ -47,8 +47,6 @@ src_prepare() {
 
 	# Don't regenerate .c files from .pyx when pyrex is found.
 	epatch "${FILESDIR}/${PN}-2.4.0-no-pyrex-citon.patch"
-	# Fix permission errors when run under directories with setgid set.
-	epatch "${FILESDIR}/${PN}-0.90-tests-sgid.patch"
 }
 
 src_compile() {

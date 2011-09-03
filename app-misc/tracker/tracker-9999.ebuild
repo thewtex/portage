@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/tracker/tracker-9999.ebuild,v 1.42 2011/07/24 10:31:22 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/tracker/tracker-9999.ebuild,v 1.43 2011/08/29 23:11:12 eva Exp $
 
 EAPI="3"
 GCONF_DEBUG="no"
@@ -123,7 +123,6 @@ pkg_setup() {
 		G2CONF="${G2CONF}
 			--enable-video-extractor=gstreamer
 			--enable-gstreamer-tagreadbin"
-		# --enable-gstreamer-helix (real media)
 	elif use xine ; then
 		G2CONF="${G2CONF} --enable-video-extractor=xine"
 	else
