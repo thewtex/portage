@@ -12,7 +12,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="virtual/python"
+DEPEND="dev-lang/python"
 RDEPEND="${DEPEND}
   app-accessibility/speech-tools
   app-text/texlive
