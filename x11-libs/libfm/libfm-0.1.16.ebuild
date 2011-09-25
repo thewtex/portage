@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/libfm/libfm-0.1.16.ebuild,v 1.2 2011/08/10 11:42:06 hwoarang Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/libfm/libfm-0.1.16.ebuild,v 1.6 2011/09/18 16:47:49 maekke Exp $
 
 EAPI=4
 
@@ -10,7 +10,7 @@ DESCRIPTION="A library for file management"
 HOMEPAGE="http://pcmanfm.sourceforge.net/"
 SRC_URI="http://dev.gentoo.org/~hwoarang/distfiles/${P}.tar.gz"
 
-KEYWORDS="~alpha ~amd64 ~arm ~ppc ~x86 ~x86-linux"
+KEYWORDS="~alpha amd64 arm ~ppc x86 ~x86-linux"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="debug examples udev"
@@ -30,7 +30,8 @@ DEPEND="${COMMON_DEPEND}
 
 src_prepare() {
 	sed -ie '/SUBDIRS=/s#docs##' "${S}"/Makefile.am || die "sed failed"
-	sed -ie '/^[[:space:]]*docs/d' configure.ac || die "sed failed"
+	sed -i -e '/^[[:space:]]*docs/d' -e "s:-O0::" \
+		configure.ac || die "sed failed"
 	eautoreconf
 }
 

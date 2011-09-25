@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-doc/doxygen/doxygen-1.7.4.ebuild,v 1.1 2011/04/09 18:09:46 nerdboy Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-doc/doxygen/doxygen-1.7.4.ebuild,v 1.3 2011/09/03 02:02:28 nerdboy Exp $
 
 EAPI=3
 
@@ -49,7 +49,7 @@ src_prepare() {
 	fi
 
 	# Call dot with -Teps instead of -Tps for EPS generation - bug #282150
-	epatch "${FILESDIR}/${PN}-1.7.1-dot-eps.patch"
+	epatch "${FILESDIR}"/${PN}-1.7.1-dot-eps.patch
 
 	# prefix search tools patch, plus OSX fixes
 	epatch "${FILESDIR}"/${PN}-1.5.6-prefix-misc-alt.patch
@@ -79,40 +79,35 @@ src_prepare() {
 src_configure() {
 	# set ./configure options (prefix, Qt based wizard, docdir)
 
-	local my_conf=""
-	use debug && my_conf="--debug"
+	local my_conf="--shared"
+
+	if use debug ; then
+		my_conf="${my_conf} --debug"
+	else
+		my_conf="${my_conf} --release "
+	fi
+
 	use ppc64 && my_conf="${my_conf} --english-only" #263641
+
+	use qt4 && my_conf="${my_conf} --with-doxywizard"
 
 	export CC="${QMAKE_CC}"
 	export CXX="${QMAKE_CXX}"
 	export LINK="${QMAKE_LINK}"
 	export LINK_SHLIB="${QMAKE_CXX}"
 
-	if use qt4; then
-		export QTDIR="${EPREFIX}/usr"
-		einfo "using QTDIR: '$QTDIR'."
-		export LIBRARY_PATH="${QTDIR}/$(get_libdir)${LIBRARY_PATH:+:}${LIBRARY_PATH}"
-		export LD_LIBRARY_PATH="${QTDIR}/$(get_libdir)${LD_LIBRARY_PATH:+:}${LD_LIBRARY_PATH}"
-		einfo "using QT LIBRARY_PATH: '$LIBRARY_PATH'."
-		einfo "using QT LD_LIBRARY_PATH: '$LD_LIBRARY_PATH'."
-
-		./configure --prefix "${EPREFIX}/usr" ${my_conf} $(use_with qt4 doxywizard) \
-		|| die 'configure with qt4 failed'
-	else
-		./configure --prefix "${EPREFIX}/usr" ${my_conf} || die 'configure failed'
-	fi
+	./configure --prefix "${EPREFIX}/usr" ${my_conf} \
+			|| die 'configure failed'
 }
 
 src_compile() {
-	CFLAGS+="${ECFLAGS}" CXXFLAGS+="${ECXXFLAGS}" LFLAGS+="${ELDFLAGS}" \
-		emake all || die 'emake failed'
 
-	# force stupid qmake to use LDFLAGS - yes, it's a big kluge...
+	# force stupid qmake to behave - if it works...
 	if use qt4 ; then
-		rm -f bin/doxywizard
-		sed -i -e "s|\-Wl,\-O1 |\-Wl,\-O1 ${ELDFLAGS} |" \
-			addon/doxywizard/Makefile.doxywizard
-		make -C addon/doxywizard
+		qt4-r2_src_compile
+	else
+		CFLAGS+="${ECFLAGS}" CXXFLAGS+="${ECXXFLAGS}" LFLAGS+="${ELDFLAGS}" \
+			emake all || die 'emake failed'
 	fi
 
 	# generate html and pdf (if tetex in use) documents.

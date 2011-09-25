@@ -1,0 +1,53 @@
+-----------------------------------------------------------------
+INSTALLATION
+
+You will need to create a database for your TYPO3 installation.
+You can use TYPO3's builtin 1-2-3 wizard to do so:
+
+http://${VHOST_HOSTNAME}/typo3/install/index.php?mode=123&step1
+
+TYPO3 does require a database to work. With the TYPO3 DBAL
+extension (database abstraction layer) it is compatible with a
+lot of others (e.g. Oracle, Postgres), but the 1-2-3 tool
+supports only MySQL.
+However it is possible to use a different database system with
+DBAL, it is *highly* recommended to only use a different database
+system when you are very familiar with TYPO3, since experience
+shows you will be very much on your own by doing so.
+Even if the DBAL is doing quite a good job within the core of
+TYPO3, the software is heavily extensible with thousands of
+extensions, developed by independent developers. Chances are good
+that these haven't tested their extensions with other database
+systems besides MySQL and break the whole site.
+So only use TYPO3 with a different database system if you exactly
+know what you are doing and how to investigate errors on your
+own! 
+
+-----------------------------------------------------------------
+!!!!!!!!!              SECURITY WARNING               !!!!!!!!!!!
+
+TYPO3 has had a history of serious security flaws. Additionally,
+the more extensions you add to the application, the higher is the
+risk to add further ones.
+
+This might read some kind of startling, but this is the case with
+every application out there. The good news is that TYPO3 has a
+very vital and highly skilled security task force, which
+continuously investigates the core and extensions of TYPO3. They
+publish security warnings along with recommended workarounds on
+their mailing list, RSS feed, and so on.
+
+TYPO3 is a continuous work in progress (like nearly all current
+open source projects) and has to become maintained regularly.
+Please only use such kind of software if you are prepared to
+maintain it!
+
+Also, be sure to introduce yourself to the security handling in
+TYPO3 and subscribe to the typo3-announce mailing list [1] or the
+security RSS feed [2][3][4][5] at least!
+
+[1] http://lists.typo3.org/cgi-bin/mailman/listinfo/typo3-announce
+[2] http://news.typo3.org/news/rss.xml
+[3] http://news.typo3.org/news/rss091.xml
+[4] http://news.typo3.org/news/rdf.xml
+[5] http://news.typo3.org/news/atom.xml

@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/openbabel-python/openbabel-python-2.3.0.ebuild,v 1.5 2011/05/09 15:53:32 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/openbabel-python/openbabel-python-2.3.0.ebuild,v 1.7 2011/09/14 05:06:41 jlec Exp $
 
 EAPI="3"
 
@@ -31,7 +31,7 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}"/openbabel-${PV}
 
-DISTUTILS_SETUP_FILES="scripts|python/setup.py"
+DISTUTILS_SETUP_FILES=("scripts|python/setup.py")
 
 src_prepare() {
 	epatch \

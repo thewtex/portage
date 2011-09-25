@@ -1,11 +1,11 @@
 #!/sbin/runscript
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-proxy/ufdbguard/files/ufdb.initd,v 1.2 2011/05/01 16:05:50 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-proxy/ufdbguard/files/ufdb.initd,v 1.4 2011/09/14 11:37:04 flameeyes Exp $
 
 # reconfig is what the upstream documentation suggests, so let's
 # provide it for compatibility.
-opts="${opts} reload reconfig"
+extra_started_commands="reload reconfig"
 
 depend() {
 	need net
@@ -49,7 +49,7 @@ start() {
 
 	ebegin "Starting ufdbGuard"
 	start-stop-daemon --start \
-		--chuid ${UFDB_USER} \
+		--user ${UFDB_USER} \
 		--wait 1500 \
 		--exec /usr/libexec/ufdbguard/ufdbguardd \
 		--pidfile /var/run/ufdbguard/ufdbguardd.pid -- \
@@ -74,7 +74,7 @@ reload() {
 	gentables
 
 	ebegin "Reloading ufdbGuard"
-	kill -HUP $(</var/run/ufdbguard/ufdbguardd.pid)
+	kill -HUP "$(cat /var/run/ufdbguard/ufdbguardd.pid)"
 	eend $? "Failed to reload ufdbGuard"
 }
 

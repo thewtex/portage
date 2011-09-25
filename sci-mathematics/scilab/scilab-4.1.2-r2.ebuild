@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/scilab/scilab-4.1.2-r2.ebuild,v 1.12 2011/08/02 05:49:16 mattst88 Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/scilab/scilab-4.1.2-r2.ebuild,v 1.14 2011/09/19 15:39:11 jlec Exp $
 
 EAPI=4
 

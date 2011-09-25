@@ -1,6 +1,8 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/hddtemp/hddtemp-0.3_beta15-r4.ebuild,v 1.4 2011/07/05 14:33:29 aidecoe Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/hddtemp/hddtemp-0.3_beta15-r4.ebuild,v 1.6 2011/09/09 13:56:50 aidecoe Exp $
+
+EAPI=4
 
 inherit eutils autotools
 
@@ -21,9 +23,9 @@ RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${MY_P}"
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
+DOCS=(README TODO ChangeLog)
+
+src_prepare() {
 	epatch "${FILESDIR}"/${P}-satacmds.patch
 	epatch "${FILESDIR}"/${P}-byteswap.patch
 	epatch "${FILESDIR}"/${P}-execinfo.patch
@@ -32,19 +34,17 @@ src_unpack() {
 	AT_M4DIR="m4" eautoreconf
 }
 
-src_compile() {
+src_configure() {
 	local myconf
 
 	myconf="--with-db-path=/usr/share/hddtemp/hddtemp.db"
 	# disabling nls breaks compiling
 	use nls || myconf="--disable-nls ${myconf}"
-	econf ${myconf} || die
-	emake || die
+	econf ${myconf}
 }
 
 src_install() {
-	make DESTDIR="${D}" install || die
-	dodoc README TODO ChangeLog
+	default
 
 	insinto /usr/share/hddtemp
 	newins "${WORKDIR}/hddtemp-${DBV}.db" hddtemp.db
@@ -59,8 +59,7 @@ src_install() {
 	if use network-cron ; then
 		exeinto /etc/cron.monthly
 		echo -e "#!/bin/sh\n/usr/sbin/update-hddtemp.db" > "${T}"/hddtemp.cron
-		newexe "${T}"/hddtemp.cron update-hddtemp.db \
-			|| die "Failed to install update cronjob"
+		newexe "${T}"/hddtemp.cron update-hddtemp.db
 	fi
 }
 

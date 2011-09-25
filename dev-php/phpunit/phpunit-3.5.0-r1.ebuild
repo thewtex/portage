@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-php/phpunit/phpunit-3.5.0-r1.ebuild,v 1.2 2011/07/21 11:34:09 olemarkus Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-php/phpunit/phpunit-3.5.0-r1.ebuild,v 1.4 2011/09/18 11:06:21 olemarkus Exp $
 
 EAPI="2"
 inherit php-pear-lib-r1
@@ -24,8 +24,8 @@ RDEPEND="${DEPEND}
 	dev-php/dbunit
 	dev-php/php-codecoverage
 	dev-php/php-timer
-	dev-php5/phpunit-mockobject
-	dev-php5/phpunit-selenium"
+	dev-php/phpunit-mockobject
+	dev-php/phpunit-selenium"
 
 need_php_by_category
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/opera/opera-11.51.1087.ebuild,v 1.1 2011/08/26 16:06:17 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/opera/opera-11.51.1087.ebuild,v 1.4 2011/09/04 00:49:58 phajdan.jr Exp $
 
 EAPI="4"
 
@@ -11,20 +11,20 @@ HOMEPAGE="http://www.opera.com/"
 
 SLOT="0"
 LICENSE="OPERA-11 LGPL-2 LGPL-3"
-KEYWORDS="~amd64 ~x86 ~x86-fbsd"
+KEYWORDS="amd64 x86 ~x86-fbsd"
 IUSE="elibc_FreeBSD gtk kde +gstreamer"
 
 O_V="$(get_version_component_range 1-2)" # Major version, i.e. 11.00
 O_B="$(get_version_component_range 3)"   # Build version, i.e. 1156
 
-O_D="rc2_${O_V}-${O_B}"
+O_D="${O_V/./}"
 O_P="${PN}-${O_V}-${O_B}"
-O_U="http://snapshot.opera.com/unix/"
+O_U="mirror://opera/"
 
 SRC_URI="
-	amd64? ( ${O_U}${O_D}/${O_P}.x86_64.linux.tar.xz )
-	x86? ( ${O_U}${O_D}/${O_P}.i386.linux.tar.xz )
-	x86-fbsd? ( ${O_U}${O_D}/${O_P}.i386.freebsd.tar.xz )
+	amd64? ( ${O_U}linux/${O_D}/${O_P}.x86_64.linux.tar.xz )
+	x86? ( ${O_U}linux/${O_D}/${O_P}.i386.linux.tar.xz )
+	x86-fbsd? ( ${O_U}unix/${O_D}/${O_P}.i386.freebsd.tar.xz )
 "
 
 OPREFIX="/usr/$(get_libdir)"

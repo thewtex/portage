@@ -1,0 +1,22 @@
+>=x11-libs/qt-gui-4.7 app-text/aspell >=dev-util/cmake-2.8.4 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+>=x11-libs/qt-gui-4.7 app-text/aspell cuneiform? ( app-text/cuneiform ) tesseract? ( app-text/tesseract ) scanner? ( media-gfx/xsane ) pdf? ( || ( app-text/poppler[utils] app-text/ghostscript-gpl ) )
+0
+http://symmetrica.net/cuneiform-linux/yagf-0.8.7.tar.gz
+
+http://symmetrica.net/cuneiform-linux/yagf-en.html
+GPL-3
+Graphical front-end for cuneiform OCR tool
+~amd64 ~x86
+base cmake-utils eutils flag-o-matic multilib portability toolchain-funcs
+scanner +cuneiform tesseract pdf
+|| ( cuneiform tesseract )
+
+
+4
+
+compile configure install prepare test unpack
+
+
+
+
+

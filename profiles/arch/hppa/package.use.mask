@@ -1,8 +1,12 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/hppa/package.use.mask,v 1.84 2011/07/31 16:29:32 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/hppa/package.use.mask,v 1.86 2011/09/05 09:25:24 ultrabug Exp $
 
 # DON'T TOUCH THIS FILE. Instead, file a bug and assign it to <hppa@gentoo.org>.
+
+# Robin H. Johnson <robbat2@gentoo.org> (03 Sep 2011)
+# Remove this for your arch after you keyword dev-utils/google-perftools and virtual/gsasl (bug #381737
+dev-libs/libmemcached tcmalloc sasl
 
 # Jeroen Roovers <jer@gentoo.org> (5 Jun 2011)
 # app-office/gnumeric is not keyworded (bug #367513)
@@ -107,3 +111,7 @@ media-plugins/gst-plugins-meta dvb mythtv
 # Jeroen Roovers <jer@gentoo.org> (12 Apr 2007)
 # Mask until fixed.
 net-misc/tightvnc server
+
+# Ultrabug <ultrabug@gentoo.org) (05 Sept 2011)
+# missing keyword for net-libs/zeromq
+app-admin/rsyslog zeromq

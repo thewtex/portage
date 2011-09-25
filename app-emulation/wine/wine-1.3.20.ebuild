@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/wine/wine-1.3.20.ebuild,v 1.10 2011/08/20 19:23:56 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/wine/wine-1.3.20.ebuild,v 1.12 2011/09/18 09:08:12 ssuominen Exp $
 
 EAPI="2"
 
@@ -33,7 +33,7 @@ SRC_URI="${SRC_URI}
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-IUSE="alsa capi cups custom-cflags dbus esd fontconfig +gecko gnutls gphoto2 gsm gstreamer hal hardened jack jpeg lcms ldap mp3 nas ncurses nls openal opencl +opengl +oss +perl png pulseaudio samba scanner ssl test +threads +truetype v4l +win32 +win64 +X xcomposite xinerama xml"
+IUSE="alsa capi cups custom-cflags dbus esd fontconfig +gecko gnutls gphoto2 gsm gstreamer hardened jack jpeg lcms ldap mp3 nas ncurses nls openal opencl +opengl +oss +perl png pulseaudio samba scanner ssl test +threads +truetype v4l +win32 +win64 +X xcomposite xinerama xml"
 RESTRICT="test" #72375
 
 MLIB_DEPS="amd64? (
@@ -42,8 +42,10 @@ MLIB_DEPS="amd64? (
 		>=app-emulation/emul-linux-x86-xlibs-2.1
 		>=app-emulation/emul-linux-x86-soundlibs-2.1[pulseaudio?]
 	)
+	mp3? ( app-emulation/emul-linux-x86-soundlibs )
 	openal? ( app-emulation/emul-linux-x86-sdl )
 	opengl? ( app-emulation/emul-linux-x86-opengl )
+	scanner? ( app-emulation/emul-linux-x86-medialibs )
 	v4l? ( app-emulation/emul-linux-x86-medialibs )
 	app-emulation/emul-linux-x86-baselibs
 	>=sys-kernel/linux-headers-2.6
@@ -59,7 +61,6 @@ RDEPEND="truetype? ( >=media-libs/freetype-2.0.0 media-fonts/corefonts )
 	dbus? ( sys-apps/dbus )
 	gnutls? ( net-libs/gnutls )
 	gstreamer? ( media-libs/gstreamer media-libs/gst-plugins-base )
-	hal? ( sys-apps/hal )
 	X? (
 		x11-libs/libXcursor
 		x11-libs/libXrandr
@@ -146,7 +147,7 @@ do_configure() {
 		$(use_with gphoto2 gphoto) \
 		$(use_with gsm) \
 		$(use_with gstreamer) \
-		$(! use dbus && echo --without-hal || use_with hal) \
+		--without-hal \
 		$(use_with jack) \
 		$(use_with jpeg) \
 		$(use_with ldap) \

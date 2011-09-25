@@ -1,16 +1,17 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/aria/aria-2.3.1.ebuild,v 1.4 2010/07/22 07:08:44 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/aria/aria-2.3.1.ebuild,v 1.5 2011/08/29 15:28:43 jlec Exp $
 
-EAPI="3"
+EAPI=3
+
 PYTHON_DEPEND="2"
 PYTHON_USE_WITH="tk"
 
-inherit base python eutils versionator
+inherit base eutils python versionator
 
 MY_P="${PN}$(get_version_component_range 1-2 ${PV})"
 
-DESCRIPTION="Software for automated NOE assignment and NMR structure calculation."
+DESCRIPTION="Automated NOE assignment and NMR structure calculation"
 HOMEPAGE="http://aria.pasteur.fr/"
 SRC_URI="http://aria.pasteur.fr/archives/${MY_P}.1.tar.gz"
 

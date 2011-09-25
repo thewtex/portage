@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/nss/nss-3.12.11.ebuild,v 1.1 2011/08/27 23:40:25 anarchy Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/nss/nss-3.12.11.ebuild,v 1.5 2011/09/24 18:50:12 grobian Exp $
 
 EAPI=3
 inherit eutils flag-o-matic multilib toolchain-funcs
@@ -13,7 +13,7 @@ SRC_URI="ftp://ftp.mozilla.org/pub/mozilla.org/security/nss/releases/${RTM_NAME}
 
 LICENSE="|| ( MPL-1.1 GPL-2 LGPL-2.1 )"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE="utils"
 
 DEPEND="dev-util/pkgconfig"
@@ -42,7 +42,18 @@ src_prepare() {
 
 	# Fix pkgconfig file for Prefix
 	sed -i -e "/^PREFIX =/s:= /usr:= ${EPREFIX}/usr:" \
-		"${S}"/mozilla/security/nss/config/Makefile
+		"${S}"/mozilla/security/nss/config/Makefile || die
+	if [[ ${CHOST} == *-darwin* ]] ; then
+		# Fix pkgconfig for Darwin (no RPATH stuff)
+		sed -i -e 's/-Wl,-R${\?libdir}\?//' \
+			"${S}"/mozilla/security/nss/config/nss-config.in \
+			"${S}"/mozilla/security/nss/config/nss.pc.in || die
+	fi
+
+	# Avoid install_name_tooling post install
+	sed -i -e "s:@executable_path:${EPREFIX}/usr/$(get_libdir):" \
+		"${S}"/mozilla/security/coreconf/Darwin.mk \
+		"${S}"/mozilla/security/nss/lib/freebl/config.mk || die
 
 	epatch "${FILESDIR}"/${PN}-3.12.4-solaris-gcc.patch  # breaks non-gnu tools
 	# dirty hack
@@ -103,7 +114,7 @@ generate_chk() {
 	einfo "Resigning core NSS libraries for FIPS validation"
 	shift 2
 	for i in ${NSS_CHK_SIGN_LIBS} ; do
-		local libname=lib${i}.so
+		local libname=lib${i}$(get_libname)
 		local chkname=lib${i}.chk
 		"${shlibsign}" \
 			-i "${libdir}"/${libname} \
@@ -119,7 +130,7 @@ cleanup_chk() {
 	local libdir="$1"
 	shift 1
 	for i in ${NSS_CHK_SIGN_LIBS} ; do
-		local libfname="${libdir}/lib${i}.so"
+		local libfname="${libdir}/lib${i}$(get_libname)"
 		# If the major version has changed, then we have old chk files.
 		[ ! -f "${libfname}" -a -f "${libfname}.chk" ] \
 			&& rm -f "${libfname}.chk"
@@ -151,9 +162,6 @@ src_install () {
 		n=${file%$(get_libname)}$(get_libname ${MINOR_VERSION})
 		mv ${file} ${n}
 		ln -s ${n} ${file}
-		if [[ ${CHOST} == *-darwin* ]]; then
-			install_name_tool -id "${EPREFIX}/usr/$(get_libdir)/${n}" ${n} || die
-		fi
 	done
 
 	local nssutils
@@ -178,7 +186,7 @@ src_install () {
 	# shlibsign after prelink.
 	declare -a libs
 	for l in ${NSS_CHK_SIGN_LIBS} ; do
-		libs+=("${EPREFIX}/usr/$(get_libdir)/lib${l}.so")
+		libs+=("${EPREFIX}/usr/$(get_libdir)/lib${l}$(get_libname)")
 	done
 	OLD_IFS="${IFS}" IFS=":" ; liblist="${libs[*]}" ; IFS="${OLD_IFS}"
 	echo -e "PRELINK_PATH_MASK=${liblist}" >"${T}/90nss"
@@ -188,13 +196,14 @@ src_install () {
 
 pkg_postinst() {
 	elog "We have reverted back to using upstreams soname."
-	elog "Please run revdep-rebuild --library libnss3.so.12 , this"
+	elog "Please run revdep-rebuild --library libnss3$(get_libname 12) , this"
 	elog "will correct most issues. If you find a binary that does"
 	elog "not run please re-emerge package to ensure it properly"
-	elog " links after upgrade."
+	elog "links after upgrade."
 	elog
-	# We must re-sign the libraries AFTER they are stripped.
-	generate_chk "${EROOT}"/usr/bin/shlibsign "${EROOT}"/usr/$(get_libdir)
+	# We must re-sign the ELF libraries AFTER they are stripped.
+	[[ ${CHOST} != *-darwin* ]] && \
+		generate_chk "${EROOT}"/usr/bin/shlibsign "${EROOT}"/usr/$(get_libdir)
 }
 
 pkg_postrm() {

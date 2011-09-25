@@ -1,4 +1,4 @@
-net-libs/libtirpc
+net-libs/libtirpc dev-util/pkgconfig || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool
 net-libs/libtirpc
 0
 mirror://sourceforge/rpcbind/rpcbind-0.2.0.tar.bz2
@@ -7,14 +7,14 @@ http://sourceforge.net/projects/rpcbind/
 BSD
 portmap replacement which supports RPC over various protocols
 alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc x86
+autotools eutils libtool multilib portability toolchain-funcs
 
 
 
 
+2
 
-
-
-compile install unpack
+configure install prepare
 
 
 

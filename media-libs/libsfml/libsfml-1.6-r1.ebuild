@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libsfml/libsfml-1.6-r1.ebuild,v 1.2 2011/02/07 18:37:21 radhermit Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libsfml/libsfml-1.6-r1.ebuild,v 1.4 2011/09/14 09:14:02 ssuominen Exp $
 
 EAPI=4
 
@@ -18,7 +18,7 @@ IUSE="debug doc examples static-libs"
 
 DEPEND="media-libs/freetype:2
 	media-libs/glew
-	media-libs/libpng
+	>=media-libs/libpng-1.4
 	media-libs/libsndfile
 	media-libs/mesa
 	media-libs/openal
@@ -31,8 +31,11 @@ RDEPEND="${DEPEND}"
 S=${WORKDIR}/${MY_P}
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-destdir.patch \
-		"${FILESDIR}"/${P}-deps-and-flags.patch
+	epatch \
+		"${FILESDIR}"/${P}-destdir.patch \
+		"${FILESDIR}"/${P}-deps-and-flags.patch \
+		"${FILESDIR}"/${P}-gcc46.patch \
+		"${FILESDIR}"/${P}-libpng15.patch
 }
 
 src_compile() {

@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/php/php-5.3.8.ebuild,v 1.6 2011/08/28 13:38:58 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/php/php-5.3.8.ebuild,v 1.9 2011/09/22 17:35:18 olemarkus Exp $
 
 EAPI=4
 
@@ -12,7 +12,7 @@ SUHOSIN_VERSION="5.3.7-0.9.10"
 FPM_VERSION="builtin"
 EXPECTED_TEST_FAILURES=""
 
-KEYWORDS="~alpha amd64 arm hppa ~ia64 ppc ppc64 ~s390 ~sh ~sparc x86"
+KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 s390 sh sparc x86"
 
 function php_get_uri ()
 {
@@ -107,7 +107,7 @@ IUSE="${IUSE} adabas bcmath berkdb birdstep bzip2 calendar cdb cjk
 	readline recode sapdb +session sharedext sharedmem
 	+simplexml snmp soap sockets solid spell sqlite sqlite3 ssl
 	sybase-ct sysvipc tidy +tokenizer truetype unicode wddx
-	xml xmlreader xmlwriter xmlrpc xpm xsl zip zlib"
+	+xml xmlreader xmlwriter xmlrpc xpm xsl zip zlib"
 
 # Enable suhosin if available
 [[ -n $SUHOSIN_VERSION ]] && IUSE="${IUSE} suhosin"
@@ -256,6 +256,8 @@ DEPEND="${DEPEND}
 
 [[ -n $SUHOSIN_VERSION ]] && RDEPEND="${RDEPEND} suhosin? (
 =${CATEGORY}/${PN}-${SLOT}*[unicode] )"
+
+RDEPEND="${DEPEND}"
 
 DEPEND="${DEPEND}
 	sys-devel/flex

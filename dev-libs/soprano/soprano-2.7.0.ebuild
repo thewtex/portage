@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/soprano/soprano-2.7.0.ebuild,v 1.1 2011/08/07 00:37:50 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/soprano/soprano-2.7.0.ebuild,v 1.3 2011/09/20 13:19:18 chainsaw Exp $
 
 EAPI=4
 
@@ -10,7 +10,7 @@ if [[ ${PV} == *9999* ]]; then
 	KEYWORDS=""
 else
 	SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
-	KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+	KEYWORDS="amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 fi
 
 inherit base cmake-utils flag-o-matic ${git_eclass}
@@ -21,6 +21,9 @@ HOMEPAGE="http://sourceforge.net/projects/soprano"
 LICENSE="LGPL-2"
 SLOT="0"
 IUSE="clucene +dbus debug doc elibc_FreeBSD +raptor +redland test +virtuoso"
+
+RESTRICT=test
+# bug 281712
 
 COMMON_DEPEND="
 	>=x11-libs/qt-core-4.5.0:4

@@ -1,5 +1,5 @@
-ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ruby18? ( dev-ruby/rubygems[ruby_targets_ruby18] ) test? ( ruby_targets_ruby18? ( dev-ruby/rubygems[ruby_targets_ruby18] ) )
-ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ruby18? ( dev-ruby/rubygems[ruby_targets_ruby18] )
+ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ree18? ( dev-lang/ruby-enterprise:1.8 ) ruby_targets_ruby18? ( dev-ruby/rubygems[ruby_targets_ruby18] ) ruby_targets_ree18? ( dev-ruby/rubygems[ruby_targets_ree18] ) test? ( ruby_targets_ruby18? ( dev-ruby/rubygems[ruby_targets_ruby18] ) ruby_targets_ree18? ( dev-ruby/rubygems[ruby_targets_ree18] ) )
+ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ree18? ( dev-lang/ruby-enterprise:1.8 ) ruby_targets_ruby18? ( dev-ruby/rubygems[ruby_targets_ruby18] ) ruby_targets_ree18? ( dev-ruby/rubygems[ruby_targets_ree18] )
 0
 mirror://rubygems/open4-1.1.0.gem
 
@@ -8,8 +8,8 @@ MIT
 Open3::popen3 with exit status
 ~amd64 ~x86
 eutils multilib portability ruby-fakegem ruby-ng toolchain-funcs
-ruby_targets_ruby18 test
-|| ( ruby_targets_ruby18 )
+ruby_targets_ruby18 ruby_targets_ree18 test
+|| ( ruby_targets_ruby18 ruby_targets_ree18 )
 
 
 4

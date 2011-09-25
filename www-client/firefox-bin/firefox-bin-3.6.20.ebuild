@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/firefox-bin/firefox-bin-3.6.20.ebuild,v 1.1 2011/08/17 20:38:34 polynomial-c Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/firefox-bin/firefox-bin-3.6.20.ebuild,v 1.4 2011/09/04 00:22:24 phajdan.jr Exp $
 
 EAPI="2"
 
@@ -19,13 +19,13 @@ MY_PN="${PN/-bin}"
 MY_P="${MY_PN}-${MY_PV}"
 
 DESCRIPTION="Firefox Web Browser"
-REL_URI="http://releases.mozilla.org/pub/mozilla.org/${MY_PN}/releases/"
+REL_URI="ftp://ftp.mozilla.org/pub/mozilla.org/${MY_PN}/releases/"
 SRC_URI="${REL_URI}/${MY_PV}/linux-i686/en-US/${MY_P}.tar.bz2
 	mirror://gentoo/libnotify.so.1.bz2"
 HOMEPAGE="http://www.mozilla.com/firefox"
 RESTRICT="strip mirror"
 
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* amd64 x86"
 SLOT="0"
 LICENSE="|| ( MPL-1.1 GPL-2 LGPL-2.1 )"
 IUSE="startup-notification"

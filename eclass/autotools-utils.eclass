@@ -1,10 +1,11 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/autotools-utils.eclass,v 1.9 2011/02/01 00:08:19 reavertm Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/autotools-utils.eclass,v 1.24 2011/09/23 07:56:41 mgorny Exp $
 
 # @ECLASS: autotools-utils.eclass
 # @MAINTAINER:
 # Maciej Mrozowski <reavertm@gentoo.org>
+# Michał Górny <mgorny@gentoo.org>
 # @BLURB: common ebuild functions for autotools-based packages
 # @DESCRIPTION:
 # autotools-utils.eclass is autotools.eclass(5) and base.eclass(5) wrapper
@@ -57,6 +58,7 @@
 #
 # src_configure() {
 # 	local myeconfargs=(
+# 		$(use_enable debug)
 # 		$(use_with qt4)
 # 		$(use_enable threads multithreading)
 # 		$(use_with tiff)
@@ -87,7 +89,7 @@ case ${EAPI:-0} in
 	*) die "EAPI=${EAPI} is not supported" ;;
 esac
 
-inherit autotools base
+inherit autotools base eutils
 
 EXPORT_FUNCTIONS src_prepare src_configure src_compile src_install src_test
 
@@ -131,35 +133,72 @@ _check_build_dir() {
 }
 
 # @FUNCTION: remove_libtool_files
-# @USAGE: [all|none]
+# @USAGE: [all]
 # @DESCRIPTION:
 # Determines unnecessary libtool files (.la) and libtool static archives (.a)
 # and removes them from installation image.
+#
 # To unconditionally remove all libtool files, pass 'all' as argument.
-# To leave all libtool files alone, pass 'none' as argument.
-# Unnecessary static archives are removed in any case.
+# Otherwise, libtool archives required for static linking will be preserved.
 #
 # In most cases it's not necessary to manually invoke this function.
 # See autotools-utils_src_install for reference.
 remove_libtool_files() {
 	debug-print-function ${FUNCNAME} "$@"
+	local removing_all
+	[[ ${#} -le 1 ]] || die "Invalid number of args to ${FUNCNAME}()"
+	if [[ ${#} -eq 1 ]]; then
+		case "${1}" in
+			all)
+				removing_all=1
+				;;
+			*)
+				die "Invalid argument to ${FUNCNAME}(): ${1}"
+		esac
+	fi
+
+	local pc_libs=()
+	if [[ ! ${removing_all} ]]; then
+		local arg
+		for arg in $(find "${D}" -name '*.pc' -exec \
+					sed -n -e 's;^Libs:;;p' {} +); do
+			[[ ${arg} == -l* ]] && pc_libs+=(lib${arg#-l}.la)
+		done
+	fi
 
 	local f
-	for f in $(find "${D}" -type f -name '*.la'); do
-		# Keep only .la files with shouldnotlink=yes - likely plugins
+	find "${D}" -type f -name '*.la' -print0 | while read -r -d '' f; do
 		local shouldnotlink=$(sed -ne '/^shouldnotlink=yes$/p' "${f}")
-		if [[  "$1" == 'all' || -z ${shouldnotlink} ]]; then
-			if [[ "$1" != 'none' ]]; then
-				echo "Removing unnecessary ${f}"
-				rm -f "${f}"
-			fi
+		local archivefile=${f/%.la/.a}
+		[[ "${f}" != "${archivefile}" ]] || die 'regex sanity check failed'
+
+		# Remove static libs we're not supposed to link against.
+		if [[ ${shouldnotlink} ]]; then
+			einfo "Removing unnecessary ${archivefile#${D%/}}"
+			rm -f "${archivefile}" || die
+			# The .la file may be used by a module loader, so avoid removing it
+			# unless explicitly requested.
+			[[ ${removing_all} ]] || continue
 		fi
-		# Remove static libs we're not supposed to link against
-		if [[ -n ${shouldnotlink} ]]; then
-			local remove=${f/%.la/.a}
-			[[ "${f}" != "${remove}" ]] || die 'regex sanity check failed'
-			echo "Removing unnecessary ${remove}"
-			rm -f "${remove}"
+
+		# Remove .la files when:
+		# - user explicitly wants us to remove all .la files,
+		# - respective static archive doesn't exist,
+		# - they are covered by a .pc file already,
+		# - they don't provide any new information (no libs & no flags).
+		local removing
+		if [[ ${removing_all} ]]; then removing='forced'
+		elif [[ ! -f ${archivefile} ]]; then removing='no static archive'
+		elif has "$(basename "${f}")" "${pc_libs[@]}"; then
+			removing='covered by .pc'
+		elif [[ ! $(sed -n -e \
+			"s/^\(dependency_libs\|inherited_linker_flags\)='\(.*\)'$/\2/p" \
+			"${f}") ]]; then removing='no libs & flags'
+		fi
+
+		if [[ ${removing} ]]; then
+			einfo "Removing unnecessary ${f#${D%/}} (${removing})"
+			rm -f "${f}" || die
 		fi
 	done
 }
@@ -182,23 +221,29 @@ autotools-utils_src_prepare() {
 # in myeconfargs are passed here to econf. Additionally following USE
 # flags are known:
 #
-# IUSE="debug" passes --disable-debug/--enable-debug to econf respectively.
-#
 # IUSE="static-libs" passes --enable-shared and either --disable-static/--enable-static
 # to econf respectively.
 autotools-utils_src_configure() {
 	debug-print-function ${FUNCNAME} "$@"
 
+	[[ -z ${myeconfargs+1} || $(declare -p myeconfargs) == 'declare -a'* ]] \
+		|| die 'autotools-utils.eclass: myeconfargs has to be an array.'
+
 	# Common args
 	local econfargs=()
 
 	# Handle debug found in IUSE
-	if has debug ${IUSE//+}; then
-		econfargs+=($(use_enable debug))
+	if in_iuse debug; then
+		local debugarg=$(use_enable debug)
+		if ! has "${debugarg}" "${myeconfargs[@]}"; then
+			eqawarn 'Implicit $(use_enable debug) for IUSE="debug" is no longer supported.'
+			eqawarn 'Please add the necessary arg to myeconfargs if requested.'
+			eqawarn 'The autotools-utils eclass will stop warning about it on Oct 15th.'
+		fi
 	fi
 
 	# Handle static-libs found in IUSE, disable them by default
-	if has static-libs ${IUSE//+}; then
+	if in_iuse static-libs; then
 		econfargs+=(
 			--enable-shared
 			$(use_enable static-libs static)
@@ -244,9 +289,7 @@ autotools-utils_src_install() {
 	popd > /dev/null
 
 	# Remove libtool files and unnecessary static libs
-	local args
-	has static-libs ${IUSE//+} && ! use static-libs || args='none'
-	remove_libtool_files ${args}
+	remove_libtool_files
 }
 
 # @FUNCTION: autotools-utils_src_test

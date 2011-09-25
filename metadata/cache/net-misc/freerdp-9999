@@ -1,5 +1,5 @@
-x11-libs/libX11 ssl? ( >=dev-libs/openssl-0.9.8a ) nss? ( dev-libs/nss ) gnutls? ( >=net-libs/gnutls-2.10.1 ) polarssl? ( >=net-libs/polarssl-0.14.0 ) alsa? ( media-libs/alsa-lib ) libsamplerate? ( media-libs/libsamplerate ) cups? ( net-print/cups ) iconv? ( virtual/libiconv ) =sys-devel/automake-1.11* >=sys-devel/autoconf-2.61 sys-devel/libtool >=dev-vcs/git-1.6
-x11-libs/libX11 ssl? ( >=dev-libs/openssl-0.9.8a ) nss? ( dev-libs/nss ) gnutls? ( >=net-libs/gnutls-2.10.1 ) polarssl? ( >=net-libs/polarssl-0.14.0 ) alsa? ( media-libs/alsa-lib ) libsamplerate? ( media-libs/libsamplerate ) cups? ( net-print/cups ) iconv? ( virtual/libiconv ) x11-apps/setxkbmap
+alsa? ( media-libs/alsa-lib ) cups? ( net-print/cups ) directfb? ( dev-libs/DirectFB ) ffmpeg? ( virtual/ffmpeg ) iconv? ( virtual/libiconv ) pulseaudio? ( media-sound/pulseaudio ) smartcard? ( sys-apps/pcsc-lite ) gnutls? ( >=net-libs/gnutls-2.10.1 ) !gnutls? ( nss? ( dev-libs/nss ) !nss? ( polarssl? ( >=net-libs/polarssl-0.14.0 ) !polarssl? ( >=dev-libs/openssl-0.9.8a ) ) ) X? ( x11-libs/libX11 x11-libs/libXcursor x11-libs/libxkbfile ) xv? ( x11-libs/libXext x11-libs/libXv ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool dev-vcs/git
+alsa? ( media-libs/alsa-lib ) cups? ( net-print/cups ) directfb? ( dev-libs/DirectFB ) ffmpeg? ( virtual/ffmpeg ) iconv? ( virtual/libiconv ) pulseaudio? ( media-sound/pulseaudio ) smartcard? ( sys-apps/pcsc-lite ) gnutls? ( >=net-libs/gnutls-2.10.1 ) !gnutls? ( nss? ( dev-libs/nss ) !nss? ( polarssl? ( >=net-libs/polarssl-0.14.0 ) !polarssl? ( >=dev-libs/openssl-0.9.8a ) ) ) X? ( x11-libs/libX11 x11-libs/libXcursor x11-libs/libxkbfile ) xv? ( x11-libs/libXext x11-libs/libXv )
 0
 
 
@@ -7,14 +7,14 @@ http://www.freerdp.com/
 GPL-2
 A Remote Desktop Protocol Client, forked from rdesktop
 
-autotools base eutils git libtool multilib portability toolchain-funcs
-alsa cups debug gnutls iconv ipv6 libsamplerate nss polarssl ssl X
+autotools autotools-utils base eutils git-2 libtool multilib portability toolchain-funcs
+alsa cups debug-assert debug-gdi debug-kbd debug-nla debug-proto debug-serial debug-smartcard debug-sound debug-stream-assert directfb ffmpeg gnutls iconv ipv6 nss polarssl pulseaudio smartcard static-libs X xv
 
 
 
-2
+4
 
-compile configure install prepare setup unpack
+compile configure install prepare setup test unpack
 
 
 
