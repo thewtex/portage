@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/util-linux/util-linux-2.20.ebuild,v 1.1 2011/08/29 21:25:15 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/util-linux/util-linux-2.20.ebuild,v 1.4 2011/09/23 12:32:23 polynomial-c Exp $
 
 EAPI="3"
 
@@ -19,13 +19,13 @@ if [[ ${PV} == "9999" ]] ; then
 	#KEYWORDS=""
 else
 	SRC_URI="mirror://kernel/linux/utils/util-linux/v${PV:0:4}/${MY_P}.tar.bz2
-		loop-aes? ( http://loop-aes.sourceforge.net/updates/util-linux-2.19.1-20110510.diff.bz2 )"
+		loop-aes? ( http://loop-aes.sourceforge.net/updates/util-linux-2.20-20110905.diff.bz2 )"
 	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-linux"
 fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+cramfs crypt loop-aes ncurses nls old-linux perl selinux slang static-libs uclibc unicode"
+IUSE="+cramfs crypt ddate loop-aes ncurses nls old-linux perl selinux slang static-libs uclibc unicode"
 
 RDEPEND="!sys-process/schedutils
 	!sys-apps/setarch
@@ -74,6 +74,7 @@ src_configure() {
 		$(use_enable nls) \
 		--enable-agetty \
 		$(use_enable cramfs) \
+		$(use_enable ddate) \
 		$(use_enable old-linux elvtune) \
 		--with-ncurses=$(usex ncurses $(usex unicode auto yes) no) \
 		--disable-kill \
@@ -97,6 +98,7 @@ src_configure() {
 src_install() {
 	emake install DESTDIR="${D}" || die "install failed"
 	dodoc AUTHORS NEWS README* TODO docs/*
+	use ddate || find "${ED}"/usr/share/man -name 'ddate.1*' -delete
 
 	if ! use perl ; then #284093
 		rm "${ED}"/usr/bin/chkdupexe || die

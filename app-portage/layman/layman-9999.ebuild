@@ -1,11 +1,12 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-portage/layman/layman-9999.ebuild,v 1.21 2011/08/12 01:46:26 fuzzyray Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-portage/layman/layman-9999.ebuild,v 1.23 2011/09/18 23:21:11 idl0r Exp $
 
 EAPI="3"
 SUPPORT_PYTHON_ABIS="1"
 PYTHON_DEPEND="2:2.6"
 RESTRICT_PYTHON_ABIS="2.4 3.*"
+PYTHON_USE_WITH="xml"
 
 inherit eutils distutils git-2 prefix
 
@@ -19,7 +20,7 @@ SLOT="0"
 KEYWORDS=""
 IUSE="bazaar cvs darcs git mercurial subversion test"
 
-COMMON_DEPS="dev-lang/python[xml]"
+COMMON_DEPS="dev-lang/python"
 DEPEND="${COMMON_DEPS}
 	test? ( dev-vcs/subversion )
 	app-text/asciidoc"
@@ -70,6 +71,14 @@ src_install() {
 
 pkg_postinst() {
 	distutils_pkg_postinst
+
+	ewarn "The installed db file '%(storage)/overlays.xml'"
+	ewarn "has been renamed to '%(storage)/installed.xml'"
+
+	if [ -f "${EROOT}/var/lib/layman/overlays.xml" ]; then
+		mv "${EROOT}/var/lib/layman/overlays.xml" "${EROOT}/var/lib/layman/installed.xml"
+		einfo "${EROOT}/var/lib/layman/overlays.xml has been moved to ${EROOT}/var/lib/layman/installed.xml"
+	fi
 
 	einfo "You are now ready to add overlays into your system."
 	einfo

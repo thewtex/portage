@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/chromium-9999-r1.ebuild,v 1.48 2011/08/30 23:41:44 floppym Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/chromium-9999-r1.ebuild,v 1.55 2011/09/18 03:08:19 floppym Exp $
 
 EAPI="3"
 PYTHON_DEPEND="2:2.6"
@@ -10,13 +10,12 @@ inherit eutils fdo-mime flag-o-matic gnome2-utils linux-info multilib \
 
 DESCRIPTION="Open-source version of Google Chrome web browser"
 HOMEPAGE="http://chromium.org/"
-# subversion eclass fetches gclient, which will then fetch chromium itself
-ESVN_REPO_URI="http://src.chromium.org/svn/trunk/tools/depot_tools"
+ESVN_REPO_URI="http://src.chromium.org/svn/trunk/src"
 
 LICENSE="BSD"
 SLOT="live"
 KEYWORDS=""
-IUSE="chromedriver cups gnome gnome-keyring kerberos pulseaudio"
+IUSE="bindist chromedriver cups gnome gnome-keyring kerberos pulseaudio"
 
 # en_US is ommitted on purpose from the list below. It must always be available.
 LANGS="am ar bg bn ca cs da de el en_GB es es_LA et fa fi fil fr gu he hi hr
@@ -54,23 +53,39 @@ RDEPEND="app-arch/bzip2
 	kerberos? ( virtual/krb5 )"
 DEPEND="${RDEPEND}
 	dev-lang/perl
+	dev-python/simplejson
 	>=dev-util/gperf-3.0.3
 	>=dev-util/pkgconfig-0.23
+	dev-util/scons
 	>=sys-devel/bison-2.4.3
 	sys-devel/flex
 	>=sys-devel/make-3.81-r2
 	test? (
 		dev-python/pyftpdlib
-		dev-python/simplejson
 	)"
 RDEPEND+="
 	!=www-client/chromium-9999
 	x11-misc/xdg-utils
 	virtual/ttf-fonts"
 
+gclient_config() {
+	einfo "gclient config -->"
+	# Allow the user to keep their config if they know what they are doing.
+	if ! grep -q KEEP .gclient; then
+		cp -f "${FILESDIR}/dot-gclient" .gclient || die
+	fi
+	cat .gclient || die
+}
+
+gclient_sync() {
+	einfo "gclient sync -->"
+	"${WORKDIR}/depot_tools/gclient" sync --nohooks --jobs=16 \
+		--delete_unversioned_trees || die
+}
+
 gclient_runhooks() {
-	# Run all hooks except gyp_chromium
-	# Moved from src_unpack to avoid repoman warning about sed
+	# Run all hooks except gyp_chromium.
+	einfo "gclient runhooks -->"
 	cp src/DEPS src/DEPS.orig || die
 	sed -e 's:"python", "src/build/gyp_chromium":"true":' -i src/DEPS || die
 	"${WORKDIR}/depot_tools/gclient" runhooks
@@ -80,29 +95,26 @@ gclient_runhooks() {
 }
 
 src_unpack() {
-	subversion_src_unpack
+	# First grab depot_tools.
+	ESVN_REVISION= subversion_fetch "http://src.chromium.org/svn/trunk/tools/depot_tools"
 	mv "${S}" "${WORKDIR}"/depot_tools || die
 
-	mkdir -p "${ESVN_STORE_DIR}/${PN}" || die
 	cd "${ESVN_STORE_DIR}/${PN}" || die
 
-	einfo "gclient config -->"
-	cp -f "${FILESDIR}/dot-gclient" .gclient || die
-	cat .gclient || die
-
-	einfo "gclient sync start -->"
-	"${WORKDIR}/depot_tools/gclient" sync --force --nohooks || die
+	gclient_config
+	gclient_sync
 	gclient_runhooks
-	einfo "   working copy: ${ESVN_STORE_DIR}/${PN}"
+
+	subversion_wc_info
 
 	mkdir -p "${S}" || die
+	einfo "Copying source to ${S}"
 	rsync -rlpgo --exclude=".svn/" src/ "${S}" || die
 
 	# Display correct svn revision in about box, and log new version.
-	CREV=$(subversion__svn_info "src" "Revision")
-	echo ${CREV} > "${S}"/build/LASTCHANGE.in || die
+	echo "${ESVN_WC_REVISION}" > "${S}"/build/LASTCHANGE.in || die
 	. src/chrome/VERSION
-	elog "Installing/updating to version ${MAJOR}.${MINOR}.${BUILD}.${PATCH} (Developer Build ${CREV})"
+	elog "Installing/updating to version ${MAJOR}.${MINOR}.${BUILD}.${PATCH} (Developer Build ${ESVN_WC_REVISION})"
 }
 
 gyp_use() {
@@ -153,9 +165,22 @@ pkg_setup() {
 	# bug #363907.
 	CONFIG_CHECK="~PID_NS ~NET_NS"
 	check_extra_config
+
+	if use bindist; then
+		elog "bindist enabled: H.264 video support will be disabled."
+	else
+		elog "bindist disabled: Resulting binaries may not be legal to re-distribute."
+	fi
 }
 
 src_prepare() {
+	# zlib-1.2.5.1-r1 renames the OF macro in zconf.h, bug 383371.
+	sed -i '1i#define OF(x) x' \
+		third_party/zlib/contrib/minizip/{ioapi,{,un}zip}.c \
+		chrome/common/zip.cc || die
+
+	epatch_user
+
 	# Remove most bundled libraries. Some are still needed.
 	find third_party -type f \! -iname '*.gyp*' \
 		\! -path 'third_party/WebKit/*' \
@@ -184,6 +209,7 @@ src_prepare() {
 		\! -path 'third_party/protobuf/*' \
 		\! -path 'third_party/sfntly/*' \
 		\! -path 'third_party/skia/*' \
+		\! -path 'third_party/smhasher/*' \
 		\! -path 'third_party/speex/speex.h' \
 		\! -path 'third_party/sqlite/*' \
 		\! -path 'third_party/tcmalloc/*' \
@@ -236,13 +262,13 @@ src_configure() {
 		-Duse_system_zlib=1"
 
 	# Optional dependencies.
+	# TODO: linux_link_kerberos, bug #381289.
 	myconf+="
 		$(gyp_use cups use_cups)
 		$(gyp_use gnome use_gconf)
 		$(gyp_use gnome-keyring use_gnome_keyring)
 		$(gyp_use gnome-keyring linux_link_gnome_keyring)
 		$(gyp_use kerberos use_kerberos)
-		$(gyp_use kerberos linux_link_kerberos)
 		$(gyp_use pulseaudio use_pulseaudio)"
 
 	# Enable sandbox.
@@ -259,6 +285,11 @@ src_configure() {
 	# Our system ffmpeg should support more codecs than the bundled one
 	# for Chromium.
 	# myconf+=" -Dproprietary_codecs=1"
+
+	if ! use bindist; then
+		# Enable H.624 support in bundled ffmpeg.
+		myconf+=" -Dproprietary_codecs=1 -Dffmpeg_branding=Chrome"
+	fi
 
 	local myarch="$(tc-arch)"
 	if [[ $myarch = amd64 ]] ; then

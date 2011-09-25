@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/virtuoso-server/virtuoso-server-6.1.3.ebuild,v 1.3 2011/04/20 19:36:41 reavertm Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/virtuoso-server/virtuoso-server-6.1.3.ebuild,v 1.5 2011/09/21 19:39:12 reavertm Exp $
 
 EAPI=4
 
@@ -8,11 +8,13 @@ inherit virtuoso
 
 DESCRIPTION="Server binaries for Virtuoso, high-performance object-relational SQL database"
 
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 IUSE="kerberos ldap readline"
 
 # Bug 305077
 #RESTRICT="test"
+
+# Version restriction on sys-libs/zlib, bug #383349
 
 # zeroconf support looks like broken - disabling - last checked around 5.0.12
 # mono support fetches mono source and compiles it manually - disabling for now
@@ -20,7 +22,7 @@ IUSE="kerberos ldap readline"
 COMMON_DEPEND="
 	dev-libs/libxml2:2
 	>=dev-libs/openssl-0.9.7i:0
-	sys-libs/zlib:0
+	<sys-libs/zlib-1.2.5.1-r1:0
 	kerberos? ( app-crypt/mit-krb5 )
 	ldap? ( net-nds/openldap )
 	readline? ( sys-libs/readline:0 )

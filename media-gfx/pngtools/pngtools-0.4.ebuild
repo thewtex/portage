@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/pngtools/pngtools-0.4.ebuild,v 1.6 2010/03/08 22:43:31 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/pngtools/pngtools-0.4.ebuild,v 1.7 2011/09/15 18:22:38 robbat2 Exp $
 
 EAPI=2
 inherit autotools eutils
@@ -16,7 +16,8 @@ SLOT="0"
 KEYWORDS="amd64 ppc x86"
 IUSE=""
 
-DEPEND=">=media-libs/libpng-1.2.40"
+RDEPEND=">=media-libs/libpng-1.2.40"
+DEPEND="${RDEPEND}"
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-0.3-implicit-declarations.patch \
@@ -26,7 +27,7 @@ src_prepare() {
 }
 
 src_install() {
-	emake -j1 install DESTDIR="${D}" || die
+	emake install DESTDIR="${D}" || die
 	dodoc ABOUT AUTHORS ChangeLog NEWS README chunks.txt
 	insinto /usr/share/doc/${PF}/examples
 	doins *.png

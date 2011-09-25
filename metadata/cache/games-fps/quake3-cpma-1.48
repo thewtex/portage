@@ -1,0 +1,22 @@
+app-arch/unzip
+dedicated? ( || ( games-fps/quake3[dedicated] games-fps/quake3-bin[dedicated] ) ) opengl? ( || ( || ( games-fps/quake3[opengl] games-fps/quake3[-dedicated] ) || ( games-fps/quake3-bin[opengl] games-fps/quake3-bin[-dedicated] ) ) ) !dedicated? ( !opengl? ( || ( || ( games-fps/quake3[opengl] games-fps/quake3[-dedicated] ) || ( games-fps/quake3-bin[opengl] games-fps/quake3-bin[-dedicated] ) ) ) )
+0
+http://promode.ru/files/cpma148-nomaps.zip http://www.promode.org/files/cpma-mappack-full.zip
+mirror strip
+http://www.promode.org/
+as-is
+Quake III Challenge Pro Mode Arena - advanced FPS competition mod
+~amd64 ~ppc ~x86
+base eutils games games-mods multilib portability toolchain-funcs
+dedicated opengl dedicated opengl
+
+
+
+2
+
+compile configure install postinst preinst prepare setup unpack
+
+
+
+
+

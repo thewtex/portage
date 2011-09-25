@@ -1,12 +1,13 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/gobject-introspection/gobject-introspection-0.10.8.ebuild,v 1.14 2011/08/16 18:05:40 nirbheek Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/gobject-introspection/gobject-introspection-0.10.8.ebuild,v 1.16 2011/09/20 19:53:20 mattst88 Exp $
 
 EAPI="3"
 GCONF_DEBUG="no"
+GNOME2_LA_PUNT="yes"
 PYTHON_DEPEND="2:2.5"
 
-inherit gnome2 python libtool
+inherit gnome2 python libtool eutils autotools
 
 DESCRIPTION="Introspection infrastructure for generating gobject library bindings for various languages"
 HOMEPAGE="http://live.gnome.org/GObjectIntrospection/"
@@ -20,6 +21,7 @@ RDEPEND=">=dev-libs/glib-2.24:2
 	virtual/libffi"
 DEPEND="${RDEPEND}
 	dev-util/pkgconfig
+	sys-devel/bison
 	sys-devel/flex
 	virtual/yacc
 	doc? ( >=dev-util/gtk-doc-1.12 )
@@ -41,15 +43,19 @@ src_prepare() {
 	# Don't pre-compile .py
 	ln -sf $(type -P true) py-compile
 
+	# tests: build tests only on make check
+	epatch "${FILESDIR}/${P}-build-tests.patch"
+	eautoreconf
+
+	# Uncomment the following once we don't need full eautoreconf
 	# Fix Darwin bundles
-	elibtoolize
+#	elibtoolize
 }
 
 src_install() {
 	gnome2_src_install
 	python_convert_shebangs 2 "${ED}"usr/bin/g-ir-scanner
 	python_convert_shebangs 2 "${ED}"usr/bin/g-ir-annotation-tool
-	find "${ED}" -name "*.la" -delete || die "la files removal failed"
 }
 
 pkg_postinst() {

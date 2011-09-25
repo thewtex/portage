@@ -1,15 +1,13 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/vlc/vlc-9999.ebuild,v 1.144 2011/06/22 12:27:52 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/vlc/vlc-9999.ebuild,v 1.149 2011/09/22 15:29:42 aballier Exp $
 
 EAPI="4"
 
 SCM=""
 if [ "${PV%9999}" != "${PV}" ] ; then
-	SCM=git
+	SCM=git-2
 	EGIT_BOOTSTRAP="bootstrap"
-	EGIT_BRANCH=master
-	EGIT_PROJECT=${P}
 	if [ "${PV%.9999}" != "${PV}" ] ; then
 		EGIT_REPO_URI="git://git.videolan.org/vlc/vlc-${PV%.9999}.git"
 	else
@@ -23,7 +21,7 @@ MY_PV="${PV/_/-}"
 MY_PV="${MY_PV/-beta/-test}"
 MY_P="${PN}-${MY_PV}"
 
-PATCHLEVEL="100"
+PATCHLEVEL="101"
 DESCRIPTION="VLC media player - Video player and streamer"
 HOMEPAGE="http://www.videolan.org/vlc/"
 if [ "${PV%9999}" != "${PV}" ] ; then # Live ebuild
@@ -50,17 +48,17 @@ IUSE="a52 aac aalib alsa altivec atmo +audioqueue avahi +avcodec
 	directfb directx dshow dts dvb dvd dxva2 elibc_glibc egl +encode
 	fbosd fluidsynth +ffmpeg flac fontconfig +gcrypt gme gnome gnutls
 	growl httpd ieee1394 ios-vout jack kate kde libass libcaca libnotify
-	libproxy libtiger libv4l2 linsys libtar lirc live lua +macosx +macosx-audio
-	+macosx-dialog-provider +macosx-eyetv +macosx-quartztext +macosx-qtcapture
-	+macosx-vout matroska media-library mmx modplug mp3 mpeg mtp musepack
-	ncurses neon ogg omxil opengl optimisememory oss png portaudio +postproc
-	projectm pulseaudio pvr +qt4 rtsp run-as-root samba schroedinger sdl
-	sdl-image shine shout sid skins speex sqlite sse svg +swscale
-	switcher taglib theora truetype twolame udev upnp v4l2 vaapi vcdx vlm vorbis
-	waveout win32codecs wingdi wma-fixed +X x264 +xcb xml xosd xv zvbi"
+	libproxy libsamplerate libtiger libv4l2 linsys libtar lirc live lua +macosx
+	+macosx-audio +macosx-dialog-provider +macosx-eyetv +macosx-quartztext
+	+macosx-qtcapture +macosx-vout matroska media-library mmx modplug mp3 mpeg
+	mtp musepack ncurses neon ogg omxil opengl optimisememory oss png portaudio
+	+postproc projectm pulseaudio pvr +qt4 rtsp run-as-root samba schroedinger
+	sdl sdl-image shine shout sid skins speex sqlite sse svg +swscale switcher
+	taglib theora truetype twolame udev upnp vaapi vcdx vlm vorbis waveout
+	win32codecs wingdi wma-fixed +X x264 +xcb xml xosd xv zvbi"
 
 RDEPEND="
-		sys-libs/zlib
+		>=sys-libs/zlib-1.2.5.1-r2[minizip]
 		a52? ( >=media-libs/a52dec-0.7.4-r3 )
 		aalib? ( media-libs/aalib )
 		aac? ( >=media-libs/faad2-2.6.1 )
@@ -95,6 +93,7 @@ RDEPEND="
 		libcaca? ( >=media-libs/libcaca-0.99_beta14 )
 		libnotify? ( x11-libs/libnotify x11-libs/gtk+:2 )
 		libproxy? ( net-libs/libproxy )
+		libsamplerate? ( media-libs/libsamplerate )
 		libtar? ( >=dev-libs/libtar-1.2.11-r3 )
 		libtiger? ( media-libs/libtiger )
 		linsys? ( >=media-libs/zvbi-0.2.28 )
@@ -151,7 +150,6 @@ DEPEND="${RDEPEND}
 	alsa? ( >=media-sound/alsa-headers-1.0.23 )
 	fbosd? ( sys-kernel/linux-headers )
 	kde? ( >=kde-base/kdelibs-4 )
-	v4l2? ( >=sys-kernel/linux-headers-2.6.25 )
 	xcb? ( x11-proto/xproto )
 	dev-util/pkgconfig"
 
@@ -166,7 +164,6 @@ REQUIRED_USE="
 	gnutls? ( gcrypt )
 	libtar? ( skins )
 	libtiger? ( kate )
-	libv4l2? ( v4l2 )
 	media-library? ( sqlite )
 	qt4? ( X )
 	sdl? ( X )
@@ -182,14 +179,11 @@ S="${WORKDIR}/${MY_P}"
 src_unpack() {
 	unpack ${A}
 	if [ "${PV%9999}" != "${PV}" ] ; then
-		git_src_unpack
+		git-2_src_unpack
 	fi
 }
 
 src_prepare() {
-	if [ "${PV%9999}" != "${PV}" ] ; then
-		git_src_prepare
-	fi
 	# Make it build with libtool 1.5
 	rm -f m4/lt* m4/libtool.m4
 
@@ -236,6 +230,7 @@ src_configure() {
 		$(use_enable flac) \
 		$(use_enable fluidsynth) \
 		$(use_enable fontconfig) \
+		$(use_enable gcrypt libgcrypt) \
 		$(use_enable gme) \
 		$(use_enable gnome gnomevfs) \
 		$(use_enable gnutls) \
@@ -248,9 +243,9 @@ src_configure() {
 		$(use_with kde kde-solid) \
 		$(use_enable libass) \
 		$(use_enable libcaca caca) \
-		$(use_enable gcrypt libgcrypt) \
 		$(use_enable libnotify notify) \
 		$(use_enable libproxy) \
+		$(use_enable libsamplerate samplerate) \
 		$(use_enable libtar) \
 		$(use_enable libtiger tiger) \
 		$(use_enable libv4l2) \
@@ -308,7 +303,6 @@ src_configure() {
 		$(use_enable twolame) \
 		$(use_enable udev) \
 		$(use_enable upnp) \
-		$(use_enable v4l2) \
 		$(use_enable vcdx) \
 		$(use_enable vaapi libva) \
 		$(use_enable vlm) \
@@ -331,7 +325,7 @@ src_configure() {
 src_install() {
 	emake DESTDIR="${D}" install || die "make install failed"
 
-	dodoc AUTHORS HACKING THANKS NEWS README \
+	dodoc AUTHORS THANKS NEWS README \
 		doc/fortunes.txt doc/intf-vcd.txt
 
 	# Punt useless libtool's .la files

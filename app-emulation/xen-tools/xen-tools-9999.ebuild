@@ -1,28 +1,37 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/xen-tools/xen-tools-9999.ebuild,v 1.3 2011/08/09 18:54:32 alexxy Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/xen-tools/xen-tools-9999.ebuild,v 1.6 2011/09/12 18:59:01 alexxy Exp $
 
 EAPI="3"
 
-inherit flag-o-matic eutils multilib python mercurial
+if [[ $PV == *9999 ]]; then
+	KEYWORDS=""
+	REPO="xen-unstable.hg"
+	EHG_REPO_URI="http://xenbits.xensource.com/${REPO}"
+	S="${WORKDIR}/${REPO}"
+	live_eclass="mercurial"
+else
+	KEYWORDS="~amd64 ~x86"
+	XEN_EXTFILES_URL="http://xenbits.xensource.com/xen-extfiles"
+	SRC_URI="http://bits.xensource.com/oss-xen/release/${PV}/xen-${PV}.tar.gz \
+	$XEN_EXTFILES_URL/ipxe-git-v1.0.0.tar.gz"
+	S="${WORKDIR}/xen-${PV}"
+fi
+
+inherit flag-o-matic eutils multilib python ${live_eclass}
 
 DESCRIPTION="Xend daemon and tools"
 HOMEPAGE="http://xen.org/"
-REPO="xen-unstable.hg"
-EHG_REPO_URI="http://xenbits.xensource.com/${REPO}"
-S="${WORKDIR}/${REPO}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
-IUSE="doc debug screen custom-cflags pygrub hvm api acm flask ioemu"
+IUSE="api custom-cflags debug doc flask hvm ioemu pygrub screen xend"
 
 CDEPEND="dev-lang/python
 	dev-python/lxml
 	sys-libs/zlib
 	hvm? ( media-libs/libsdl
 		sys-power/iasl )
-	acm? ( dev-libs/libxml2 )
 	api? ( dev-libs/libxml2 net-misc/curl )"
 
 DEPEND="${CDEPEND}
@@ -35,6 +44,13 @@ DEPEND="${CDEPEND}
 		dev-tex/latex2html
 		media-gfx/transfig
 		media-gfx/graphviz
+		dev-tex/xcolor
+		dev-texlive/texlive-latexextra
+		virtual/latex-base
+		dev-tex/latexmk
+		dev-texlive/texlive-latex
+		dev-texlive/texlive-pictures
+		dev-texlive/texlive-latexrecommended
 	)
 	hvm? (
 		x11-proto/xproto
@@ -45,6 +61,7 @@ RDEPEND="${CDEPEND}
 	sys-apps/iproute2
 	net-misc/bridge-utils
 	dev-python/pyxml
+	>=dev-lang/ocaml-3.12.0
 	screen? (
 		app-misc/screen
 		app-admin/logrotate
@@ -105,14 +122,21 @@ pkg_setup() {
 	fi
 
 	use api     && export "LIBXENAPI_BINDINGS=y"
-	use acm     && export "ACM_SECURITY=y"
 	use flask   && export "FLASK_ENABLE=y"
 }
 
 src_prepare() {
+	cp "$DISTDIR/ipxe-git-v1.0.0.tar.gz" tools/firmware/etherboot/ipxe.tar.gz
 	sed -e 's/-Wall//' -i Config.mk || die "Couldn't sanitize CFLAGS"
 	# Drop .config
 	sed -e '/-include $(XEN_ROOT)\/.config/d' -i Config.mk || die "Couldn't drop"
+	# Xend
+	if ! use xend; then
+		sed -e 's:xm xen-bugtool xen-python-path xend:xen-bugtool xen-python-path:' \
+			-i tools/misc/Makefile || die "Disabling xend failed"
+		sed -e 's:^XEND_INITD:#XEND_INITD:' \
+			-i tools/examples/Makefile || "Disabling xend failed"
+	fi
 	# if the user *really* wants to use their own custom-cflags, let them
 	if use custom-cflags; then
 		einfo "User wants their own CFLAGS - removing defaults"
@@ -147,6 +171,15 @@ src_prepare() {
 	sed -e "s:-Werror::g" -i  tools/xenstat/xentop/Makefile
 	# Fix network broadcast on bridged networks
 	epatch "${FILESDIR}/${PN}-3.4.0-network-bridge-broadcast.patch"
+
+	# Do not strip binaries
+	epatch "${FILESDIR}/${PN}-3.3.0-nostrip.patch"
+
+	# Prevent the downloading of ipxe
+	sed -e 's:^\tif ! wget -O _$T:#\tif ! wget -O _$T:' \
+		-e 's:^\tfi:#\tfi:' -i \
+		-e 's:^\tmv _$T $T:#\tmv _$T $T:' \
+		-i tools/firmware/etherboot/Makefile || die
 }
 
 src_compile() {
@@ -176,7 +209,13 @@ src_install() {
 		|| die "install failed"
 
 	# Remove RedHat-specific stuff
-	rm -r "${D}"/etc/default "${D}"/etc/init.d/xen* || die
+	rm -r "${D}"/etc/init.d/xen* || die
+
+	# uncomment lines in xl.conf
+	sed -e 's:^#autoballoon=1:autoballoon=1:' \
+		-e 's:^#lockfile="/var/lock/xl":lockfile="/var/lock/xl":' \
+		-e 's:^#vifscript="vif-bridge":vifscript="vif-bridge":' \
+		-i tools/examples/xl.conf  || die
 
 	dodoc README docs/README.xen-bugtool docs/ChangeLog
 	if use doc; then
@@ -193,8 +232,9 @@ src_install() {
 
 	doman docs/man?/*
 
-	newinitd "${FILESDIR}"/xend.initd-r2 xend \
-		|| die "Couldn't install xen.initd"
+	if use xend; then
+		newinitd "${FILESDIR}"/xend.initd-r2 xend || die "Couldn't install xen.initd"
+	fi
 	newconfd "${FILESDIR}"/xendomains.confd xendomains \
 		|| die "Couldn't install xendomains.confd"
 	newinitd "${FILESDIR}"/xendomains.initd-r2 xendomains \
@@ -253,7 +293,10 @@ pkg_postinst() {
 		echo
 		elog "The ioemu use flag has been removed and replaced with hvm."
 	fi
-
+	if use xend; then
+		echo
+		elog "xend capability has been enabled and installed"
+	fi
 	if grep -qsF XENSV= "${ROOT}/etc/conf.d/xend"; then
 		echo
 		elog "xensv is broken upstream (Gentoo bug #142011)."

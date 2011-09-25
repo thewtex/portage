@@ -1,0 +1,22 @@
+app-arch/unzip
+dedicated? ( || ( games-fps/quake3[dedicated] games-fps/quake3-bin[dedicated] ) ) opengl? ( || ( || ( games-fps/quake3[opengl] games-fps/quake3[-dedicated] ) || ( games-fps/quake3-bin[opengl] games-fps/quake3-bin[-dedicated] ) ) ) !dedicated? ( !opengl? ( || ( || ( games-fps/quake3[opengl] games-fps/quake3[-dedicated] ) || ( games-fps/quake3-bin[opengl] games-fps/quake3-bin[-dedicated] ) ) ) )
+0
+http://www.excessiveplus.net/files/release/xp-2.2b.zip
+mirror strip
+http://www.excessiveplus.net/
+as-is
+Quake III Excessive Plus - modification making the weapons much faster and stronger
+~amd64 ~ppc ~x86
+base eutils games games-mods multilib portability toolchain-funcs
+dedicated opengl dedicated opengl
+
+
+
+2
+
+compile configure install postinst preinst prepare setup unpack
+
+
+
+
+

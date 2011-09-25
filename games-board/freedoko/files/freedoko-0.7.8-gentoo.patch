@@ -1,6 +1,5 @@
-diff -ru FreeDoko_0.7.8.orig/src/Makefile FreeDoko_0.7.8/src/Makefile
---- FreeDoko_0.7.8.orig/src/Makefile	2010-03-13 14:22:58.000000000 -0500
-+++ FreeDoko_0.7.8/src/Makefile	2010-04-20 12:52:29.294499776 -0400
+--- FreeDoko_0.7.8.orig/src/Makefile
++++ FreeDoko_0.7.8/src/Makefile
 @@ -211,15 +211,7 @@
  # compile FreeDoko
  $(PROGNAME) : show_settings objects $(DIRECTORIES)
@@ -18,9 +17,8 @@ diff -ru FreeDoko_0.7.8.orig/src/Makefile FreeDoko_0.7.8/src/Makefile
  	  $(OBJECTS_ALL:%.o=$(FREEDOKO_WORKING_DIRECTORY)/%.o) \
  	  $(INCLUDE_ALL) \
  	  $(LIBS_ALL) \
-diff -ru FreeDoko_0.7.8.orig/src/Makefile.os FreeDoko_0.7.8/src/Makefile.os
---- FreeDoko_0.7.8.orig/src/Makefile.os	2010-03-13 14:22:58.000000000 -0500
-+++ FreeDoko_0.7.8/src/Makefile.os	2010-04-20 12:52:29.294499776 -0400
+--- FreeDoko_0.7.8.orig/src/Makefile.os
++++ FreeDoko_0.7.8/src/Makefile.os
 @@ -1,6 +1,5 @@
  include $(DEPTH)/../Makefile.os
  
@@ -28,9 +26,8 @@ diff -ru FreeDoko_0.7.8.orig/src/Makefile.os FreeDoko_0.7.8/src/Makefile.os
  include $(DEPTH)/Makefile.modules
  
  ifeq ($(OPERATING_SYSTEM), Linux)
-diff -ru FreeDoko_0.7.8.orig/src/Makefile.rules FreeDoko_0.7.8/src/Makefile.rules
---- FreeDoko_0.7.8.orig/src/Makefile.rules	2010-03-13 14:22:59.000000000 -0500
-+++ FreeDoko_0.7.8/src/Makefile.rules	2010-04-20 12:52:29.295507223 -0400
+--- FreeDoko_0.7.8.orig/src/Makefile.rules
++++ FreeDoko_0.7.8/src/Makefile.rules
 @@ -81,9 +81,7 @@
  		  $(DEPTH)/Makefile.local \
  		  $(DEPTH)/Makefile.os
@@ -42,9 +39,8 @@ diff -ru FreeDoko_0.7.8.orig/src/Makefile.rules FreeDoko_0.7.8/src/Makefile.rule
  
  
  -include $(OBJECTS:%.o=$(TARGET_DIR_LOCAL)%.d)
-diff -ru FreeDoko_0.7.8.orig/src/ui/help.cpp FreeDoko_0.7.8/src/ui/help.cpp
---- FreeDoko_0.7.8.orig/src/ui/help.cpp	2010-03-13 14:23:02.000000000 -0500
-+++ FreeDoko_0.7.8/src/ui/help.cpp	2010-04-20 13:00:28.862375812 -0400
+--- FreeDoko_0.7.8.orig/src/ui/help.cpp
++++ FreeDoko_0.7.8/src/ui/help.cpp
 @@ -142,14 +142,14 @@
      for (list<string>::const_iterator d = datadir.begin();
           d != datadir.end();

@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/ibus-m17n/ibus-m17n-1.3.3.ebuild,v 1.1 2011/08/31 14:13:49 matsuu Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/ibus-m17n/ibus-m17n-1.3.3.ebuild,v 1.3 2011/09/11 17:07:02 naota Exp $
 
 EAPI="3"
 
@@ -13,7 +13,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="gtk nls"
 
-RDEPEND=">=app-i18n/ibus-1.3
+RDEPEND=">=app-i18n/ibus-1.3.99.20110817
+	dev-libs/libxml2
 	gtk? ( >=x11-libs/gtk+-2.12.12:2 )
 	dev-libs/m17n-lib
 	nls? ( virtual/libintl )"

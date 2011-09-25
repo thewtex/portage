@@ -1,0 +1,22 @@
+=net-misc/leechcraft-core-0.4.90[postgres?,sqlite?] >=dev-util/cmake-2.8.4 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+=net-misc/leechcraft-core-0.4.90[postgres?,sqlite?] virtual/leechcraft-downloader-http
+0
+mirror://sourceforge/leechcraft/leechcraft-0.4.90.tar.bz2
+
+http://leechcraft.org/
+GPL-3
+Full-featured RSS/Atom feed reader for LeechCraft
+~amd64 ~x86
+base cmake-utils eutils flag-o-matic leechcraft multilib portability toolchain-funcs
+debug mysql +sqlite postgres
+|| ( mysql sqlite postgres )
+
+
+4
+
+compile configure install prepare setup test unpack
+
+
+
+
+

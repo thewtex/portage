@@ -1,0 +1,22 @@
+>=net-libs/libpcap-1.0.0 >=net-libs/daq-0.5 >=dev-libs/libpcre-6.0 dev-libs/libdnet postgres? ( dev-db/postgresql-base ) mysql? ( virtual/mysql ) odbc? ( dev-db/unixODBC ) zlib? ( sys-libs/zlib ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool
+>=net-libs/libpcap-1.0.0 >=net-libs/daq-0.5 >=dev-libs/libpcre-6.0 dev-libs/libdnet postgres? ( dev-db/postgresql-base ) mysql? ( virtual/mysql ) odbc? ( dev-db/unixODBC ) zlib? ( sys-libs/zlib ) selinux? ( sec-policy/selinux-snort )
+0
+http://www.snort.org/downloads/1107 -> snort-2.9.1.tar.gz
+
+http://www.snort.org/
+GPL-2
+The de facto standard for intrusion detection/prevention
+~amd64 ~x86
+autotools eutils libtool multilib portability toolchain-funcs
+static +dynamicplugin +zlib +gre +mpls +targetbased +decoder-preprocessor-rules +ppm +perfprofiling linux-smp-stats inline-init-failopen +threads debug +active-response +normalizer reload-error-restart +react +flexresp3 +paf large-pcap-64bit aruba mysql odbc postgres selinux
+
+
+
+2
+
+configure install postinst prepare setup
+
+
+
+
+

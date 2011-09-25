@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.13026 2011/09/02 07:11:19 nirbheek Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.13072 2011/09/23 10:19:27 ford_prefect Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,328 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Michael Sterrett <mr_bones_@gentoo.org> (22 Sep 2011)
+# Doesn't work and upstream has gone away.
+# Masked for removal on 20111022
+# See bug #382831
+games-action/dungeon
+
+# Markos Chandras <hwoarang@gentoo.org> (21 Sep 2011)
+# Masking beta releases
+=net-p2p/qbittorrent-2.9.0_beta*
+
+# Olivier Crete <tester@gentoo.org> (20 Sep 2011)
+# Masked because the API was broken and it will  causes crashes in 
+# Empathy, Pidgin and aMSN
+>=net-libs/gupnp-0.17
+>=net-libs/gssdp-0.11
+>=net-libs/gupnp-av-0.10.1
+>=net-misc/rygel-0.12.0
+
+# Markos Chandras <hwoarang@gentoo.org> (19 Sep 2011)
+# Masked for testing. Gentoo specific configuration and paths
+# need verification before releasing prey to testing tree
+app-laptop/prey
+
+# Tim Harder <radhermit@gentoo.org> (19 Sep 2011)
+# Mask development releases
+=app-misc/task-2*
+
+# Anthony G. Basile <blueness@gentoo.org> (18 Sep 2011)
+# Masked while testing potentially dangerous utility
+sys-apps/elfix
+
+# Mounir Lamouri <volkmar@gentoo.org> (18 Sep 2011)
+# Masked for removal in 30 days. Use Firefox 4 or higher instead.
+www-plugins/weave
+
+# Joerg Bornkessel <hd_brummy@gentoo.org> (17 Sep 2011)
+# media-video/vdr-xvdr-9999, masked git live ebuild
+=media-plugins/vdr-xvdr-9999
+=media-plugins/xbmc-addon-vdr-9999
+
+# Markos Chandras <hwoarang@gentoo.org> (17 Sep 2011)
+# Masked for testing. Also, there is an upstream bug
+# for gtk greeter. https://bugs.launchpad.net/lightdm/+bug/818852
+# Until this one is resolved, lightdm
+# will remain masked
+x11-misc/lightdm
+
+# Markos Chandras <hwoarang@gentoo.org> (17 Sep 2011)
+# Masked for testing for as long as it takes. Old QA problems
+# reported in bug #348432 and 
+# http://blog.flameeyes.eu/2010/08/20/there-s-something-about-webmin
+# must go away (if they haven't already) before unmasking webmin
+app-admin/webmin
+
+# Samuli Suominen <ssuominen@gentoo.org> (15 Sep 2011)
+# Uncompatible with wxpython 2.8, bugs 201314 and 330683
+# Removal in 30 days
+net-ftp/ftpcube
+
+# Mike Gilbert <floppym@gentoo.org> (15 Sep 2011)
+# Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (15 Sep 2011)
+# ******************************************************************************************
+# Zope Toolkit, Zope and other Zope-related packages are now maintained in Progress Overlay,
+# which provides more Python-related features than the main tree.
+# You should switch to Progress Overlay.
+# You can use 'layman -a progress' to install Progress Overlay.
+# See http://www.gentoo.org/proj/en/overlays/userguide.xml for more information.
+# These packages will be removed from the main tree on 2012-03-01.
+# ******************************************************************************************
+app-admin/zope-config
+app-admin/zprod-manager
+dev-python/manuel
+dev-python/martian
+dev-python/restrictedpython
+net-zope/abracadabraobject
+net-zope/accesscontrol
+net-zope/acquisition
+net-zope/annotations
+net-zope/archetypes
+net-zope/atcontenttypes
+net-zope/btreefolder2
+net-zope/cmf
+net-zope/cmfactionicons
+net-zope/cmfboard
+net-zope/cmfcollectorng
+net-zope/cmfformcontroller
+net-zope/cmfforum
+net-zope/cmfmember
+net-zope/cmfoodocument
+net-zope/cmfopenflow
+net-zope/cmfphoto
+net-zope/cmfphotoalbum
+net-zope/cmfquickinstallertool
+net-zope/coreblog
+net-zope/coreblog2
+net-zope/cvsfile
+net-zope/datetime
+net-zope/documenttemplate
+net-zope/epoz
+net-zope/extensionclass
+net-zope/externaleditor
+net-zope/externalfile
+net-zope/externalmethod
+net-zope/externalstorage
+net-zope/extfile
+net-zope/exuserfolder
+net-zope/filesystemsite
+net-zope/five-formlib
+net-zope/five-grok
+net-zope/five-intid
+net-zope/five-localsitemanager
+net-zope/fle3
+net-zope/formulator
+net-zope/generator
+net-zope/genericuserfolder
+net-zope/grokcore-annotation
+net-zope/grokcore-component
+net-zope/grokcore-formlib
+net-zope/grokcore-security
+net-zope/grokcore-site
+net-zope/grokcore-view
+net-zope/grokcore-viewlet
+net-zope/groups
+net-zope/groupuserfolder
+net-zope/i18ndude
+net-zope/indexedcatalog
+net-zope/infrae-rest
+net-zope/initgroups
+net-zope/issuetrackerproduct
+net-zope/kupu
+net-zope/ldapuserfolder
+net-zope/localfs
+net-zope/localizer
+net-zope/mailhost
+net-zope/mimetools
+net-zope/mimetypesregistry
+net-zope/missing
+net-zope/mpoll
+net-zope/multimapping
+net-zope/mymediamanager
+net-zope/namespaces
+net-zope/neoboard
+net-zope/neoportallibrary
+net-zope/ofsp
+net-zope/parsedxml
+net-zope/passwordresettool
+net-zope/persistence
+net-zope/photo
+net-zope/placelesstranslationservice
+net-zope/placelesstranslationservice-fork
+net-zope/plone
+net-zope/plone4artistssite
+net-zope/plonecollectorng
+net-zope/ploneerrorreporting
+net-zope/plonepopoll
+net-zope/plonetranslations
+net-zope/portaltransforms
+net-zope/propertyfolder
+net-zope/propertyobject
+net-zope/proxyindex
+net-zope/pythonscripts
+net-zope/record
+net-zope/silva
+net-zope/silvadocument
+net-zope/silvametadata
+net-zope/silvaviews
+net-zope/simpleuserfolder
+net-zope/speedpack
+net-zope/sprout
+net-zope/squishdot
+net-zope/standardcachemanagers
+net-zope/tempstorage
+net-zope/threadlock
+net-zope/tinytableplus
+net-zope/transaction
+net-zope/translationservice
+net-zope/ttwtype
+net-zope/validation
+net-zope/xmlwidgets
+net-zope/xron
+net-zope/z3c-recipe-scripts
+net-zope/zaaplugins
+net-zope/zattachmentattribute
+net-zope/zc-lockfile
+net-zope/zc-recipe-egg
+net-zope/zc-recipe-testrunner
+net-zope/zcatalog
+net-zope/zconfig
+net-zope/zctextindex
+net-zope/zdaemon
+net-zope/zexceptions
+net-zope/zfspath
+net-zope/zlog
+net-zope/zmysqlda
+net-zope/zodb
+<net-zope/zope-2.12.19
+=net-zope/zope-2.13.6*
+=net-zope/zope-2.13.7*
+=net-zope/zope-3*
+net-zope/zope-annotation
+net-zope/zope-app-applicationcontrol
+net-zope/zope-app-appsetup
+net-zope/zope-app-basicskin
+net-zope/zope-app-container
+net-zope/zope-app-debug
+net-zope/zope-app-dependable
+net-zope/zope-app-form
+net-zope/zope-app-intid
+net-zope/zope-app-locales
+net-zope/zope-app-pagetemplate
+net-zope/zope-app-publication
+net-zope/zope-app-publisher
+net-zope/zope-app-schema
+net-zope/zope-app-testing
+net-zope/zope-applicationcontrol
+net-zope/zope-authentication
+net-zope/zope-broken
+net-zope/zope-browser
+net-zope/zope-browsermenu
+net-zope/zope-browserpage
+net-zope/zope-browserresource
+net-zope/zope-cachedescriptors
+net-zope/zope-component
+net-zope/zope-componentvocabulary
+net-zope/zope-configuration
+net-zope/zope-container
+net-zope/zope-contentprovider
+net-zope/zope-contenttype
+net-zope/zope-copy
+net-zope/zope-copypastemove
+net-zope/zope-datetime
+net-zope/zope-deferredimport
+net-zope/zope-deprecation
+net-zope/zope-dottedname
+net-zope/zope-dublincore
+net-zope/zope-error
+net-zope/zope-event
+net-zope/zope-exceptions
+net-zope/zope-filerepresentation
+net-zope/zope-formlib
+net-zope/zope-hookable
+net-zope/zope-i18n
+net-zope/zope-i18nmessageid
+net-zope/zope-intid
+net-zope/zope-keyreference
+net-zope/zope-lifecycleevent
+net-zope/zope-location
+net-zope/zope-login
+net-zope/zope-minmax
+net-zope/zope-mkzeoinstance
+net-zope/zope-pagetemplate
+net-zope/zope-password
+net-zope/zope-processlifetime
+net-zope/zope-proxy
+net-zope/zope-ptresource
+net-zope/zope-publisher
+net-zope/zope-schema
+net-zope/zope-security
+net-zope/zope-sendmail
+net-zope/zope-sequencesort
+net-zope/zope-server
+net-zope/zope-session
+net-zope/zope-site
+net-zope/zope-size
+net-zope/zope-sqlalchemy
+net-zope/zope-structuredtext
+net-zope/zope-tal
+net-zope/zope-tales
+net-zope/zope-testbrowser
+net-zope/zope-testing
+net-zope/zope-testrunner
+net-zope/zope-traversing
+net-zope/zope-viewlet
+net-zope/zopeedit
+net-zope/zopeskel
+net-zope/zopeundo
+net-zope/zphotoslides
+net-zope/zpsycopgda
+net-zope/zsqlmethods
+net-zope/zsyncer
+net-zope/zwiki
+
+# Samuli Suominen <ssuominen@gentoo.org> (13 Sep 2011)
+# Fails to build with linux-headers-2.6.38 and above, plus other issues
+#
+# xdtv, bugs 359791, 268800, 250879
+# video-entropyd, bugs 360871, 334895
+# qutecom, bugs 361181, 354803, 324627, 315051, 315045
+# gnomeradio, bug 376443
+# vdr-atmo, bug 370417
+# vdr-avards, bug 368921 // fixed on bump
+# SDLcam, bug 364821
+# vdr-pvr350, bug 364669 // fixed on bump
+# vdr-pvrinput, bug 369701 // fixed on bump
+#
+# Removal in 30 days
+media-tv/xdtv
+media-video/video-entropyd
+net-im/qutecom
+# media-plugins/vdr-pvr350 // fixed on bump
+media-video/SDLcam
+=media-plugins/vdr-avards-0.2.2
+media-plugins/vdr-atmo
+media-sound/gnomeradio
+#media-plugins/vdr-pvrinput // fixed on bump
+
+# Vlastimil Babka <caster@gentoo.org> (11 Sep 2011)
+# Masked until Icedtea7 final is released, to prevent pulling oracle-jdk-bin for everyone.
+# If you want oracle-jdk-bin as the only installed JDK, unmask this locally.
+# Bug #382485.
+=virtual/jdk-1.7*
+=virtual/jre-1.7*
+
+# Alexis Ballier <aballier@gentoo.org> (07 Sep 2011)
+# New releases from Jane Street, breaks their rev. deps for now
+>=dev-ml/sexplib-7
+
+# Ole Markus With <olemarkus@gentoo.org> (07 Sep 2011)
+# Masked for removal 7 Oct 2011.
+# Multiple bugs (315721,341685) and dead upstream
+dev-php/roadsend-php
 
 # Jesus Rivero <neurogeek@gentoo.org> (01 Sep 2011)
 # Masked for removal in 30 days. This package does not
@@ -111,13 +433,6 @@ net-libs/libfwbuilder
 # mask it for now, we'll see about removing it later.
 dev-tex/pdftex
 
-# Kacper Kowalik <xarthisius@gentoo.org> (19 Aug 2011)
-# Ancient, obsolete, last release 2006
-# and practically unmaintained
-# Bugs: 198621
-# Pending removal in 30 days
-sys-block/iscsi-initiator-core-tools
-
 # Jeroen Roovers <jer@gentoo.org> (17 Aug 2011)
 # Incompatible API changes with no SONAME bump (bug #379343).
 >=net-libs/libecap-0.2.0
@@ -136,64 +451,16 @@ sys-block/iscsi-initiator-core-tools
 # Masking for testing
 =net-fs/samba-3.6.0
 
-# Kacper Kowalik <xarthisius@gentoo.org> (08 Aug 2011)
-# Ancient, doesn't work with modern kernels, never stable
-# and practically unmaintained
-# Bugs: 165559, 165749, 171967
-# Pending removal in 30 days
-sys-fs/unionfs
-
-# Samuli Suominen <ssuominen@gentoo.org> (06 Aug 2011)
-# Replaced by sys-fs/udev and "helpers" like udisks and upower
-#
-# You can stop and remove the hald service from boot and emerge -C
-# hal hal-info
-#
-# Be careful with overlays, and copy hal with hal-info in your
-# local overlay as needed
-#
-# Removal in 90 days (or later if required)
-sys-apps/hal
-app-misc/hal-info
-
-# Peter Volkov <pva@gentoo.org> (06 Aug 2011)
-# No maintainer. Runtimve problems. Dead upstream.
-# Removal in 30 days. Bug #377979
-gnome-extra/gget
-
-# Markos Chandras <hwoarang@gentoo.org> (04 Aug 2011)
-# No maintainer. Security problems
-# Removal in 30 days. Bug #340357
-app-emulation/frodo
-
-# Markos Chandras <hwoarang@gentoo.org> (04 Aug 2011)
-# Does not work with veoh.com and upstream is dead.
-# Removal in 30 days. Bug #376217
-net-misc/vget
-
-# Matt Turner <mattst88@gentoo.org) (04 Aug 2011)
-# libots is only used by Compaq's C compiler, which was tree
-# cleaned years ago. Masked for removal in 30 days.
-dev-libs/libots
-
-# Hans de Graaff <graaff@gentoo.org> (03 Aug 2011)
-# No longer needed now that we have a single slot again for
-# capistrano. Masked for removal in 30 days.
-dev-ruby/capistrano-launcher
-
 # Arun Raghavan <ford_prefect@gentoo.org> (03 Aug 2011)
 # Masking prereleases
 =media-sound/pulseaudio-0.99*
+=media-sound/pavucontrol-0.99*
 
 # Doug Goldste <cardoe@gentoo.org> (1 Aug 2011)
 # Breaks lots of GNOME related apps (bug #375615)
+=x11-drivers/nvidia-drivers-285.03
 =x11-drivers/nvidia-drivers-280.13
-=x11-drivers/nvidia-drivers-275.21
-=x11-drivers/nvidia-drivers-275.19
-
-# Steev Klimaszewski <steev@gentoo.org> (31 Jul 2011)
-# This package is old and obsolete.  Mask for removal.
-net-misc/dhcdbd
+=x11-drivers/nvidia-drivers-275.28
 
 # Jesus Rivero <neurogeek@gentoo.org> (29 Jul 2011)
 # This package had wrong versioning. Masked to enforce upgrade on the
@@ -237,6 +504,7 @@ net-misc/dhcdbd
 >=app-text/gtranslator-2.90
 >=app-text/evince-3.0
 >=dev-util/anjuta-3.0
+>=app-pda/gtkpod-2.1.0
 >=dev-util/devhelp-3.0
 >=gnome-extra/drwright-3.0
 >=gnome-extra/evolution-data-server-3.0
@@ -255,6 +523,7 @@ net-misc/dhcdbd
 >=gnome-extra/gnome-utils-3.0
 >=gnome-extra/gucharmap-3.0
 >=gnome-extra/mousetweaks-3.0
+>=gnome-extra/nautilus-sendto-3.0
 >=gnome-extra/zenity-3.0
 >=mail-client/evolution-3.0
 >=media-gfx/eog-3.0
@@ -306,16 +575,6 @@ net-misc/dhcdbd
 =dev-db/mariadb-5.3*
 =virtual/mysql-5.3*
 
-# Pacho Ramos <pacho@gentoo.org> (25 Jul 2011)
-# Old and unmaintained for a long time, bug #358587.
-# Removal in 30 days
-=dev-libs/libsigc++-1.0*
-
-# Pacho Ramos <pacho@gentoo.org> (25 Jul 2011)
-# No new release since 2002, doesn't respect LDFLAGS and
-# still needing old libsigc++:1.0. Removal in 30 days. (#358589)
-net-libs/libicq2000
-
 # Gilles Dartiguelongue <eva@gentoo.org> (24 Jul 2011)
 # Mask development release
 =dev-libs/json-glib-0.13*
@@ -333,10 +592,6 @@ app-emulation/vmware-server
 =app-emulation/vmware-modules-208.2
 app-emulation/vmware-server-console
 
-# Pacho Ramos <pacho@gentoo.org> (20 Jul 2011)
-# Dead project and not maintained for ages, removal in 30 days.
-app-portage/meatoo
-
 # Nathan Phillip Brink <binki@gentoo.org> (20 Jul 2011)
 # Masked indefinitely. The atheme upstream requests:
 # "By unmasking these, you agree to not bother the Atheme developers
@@ -344,10 +599,6 @@ app-portage/meatoo
 # Gentoo's bugzilla and then will be sent upstream by the maintainer
 # if appropriate."
 net-irc/atheme-services
-
-# Markos Chandras <hwoarang@gentoo.org> (18 Jul 2011)
-# Masked beta release
-=dev-util/qt-creator-2.3.0_beta
 
 # Markos Chandras <hwoarang@gentoo.org> (17 Jul 2011)
 # Masked for testing due to init script inclusion
@@ -362,12 +613,6 @@ net-irc/atheme-services
 # as they build for me but fail for Robin
 ~dev-db/mariadb-5.1.55
 
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2011)
-# Upstream doesn't maintain it for a long time, nothing uses it
-# anymore and bundles a copy of sqlite3, bug #252540
-# Removal in 30 days
-=gnome-extra/libgda-3*
-
 # Justin Lecher <jlec@gentoo.org> (13 Jul 2011)
 # fails with libjpeg-turbo on tests
 >=dev-tcltk/tkimg-1.5_pre324
@@ -375,12 +620,6 @@ net-irc/atheme-services
 # Aaron W. Swenson <titanofold@gentoo.org> (10 Jul 2011)
 # Beta Release
 >=dev-db/pgadmin3-1.14.0_beta1
-
-# Christian Ruppert <idl0r@gentoo.org> (10 Jul 2011)
-# Masked for removal in 30 days.
-# Upstream seems dead, more recent versions depend on HAL. Please use
-# app-laptop/batti instead.
-app-laptop/batterymon
 
 # Diego Elio Pettenò <flameeyes@gentoo.org> (08 Jul 2011)
 # Seems to work unreliably between reboots, waiting to hear from
@@ -391,17 +630,6 @@ app-laptop/batterymon
 # Nirbheek Chauhan <nirbheek@gentoo.org> (03 Jul 2011)
 # Mask js185 release, changes pkgconfig file, soname, etc
 >=dev-lang/spidermonkey-1.8.5
-
-# Pacho Ramos <pacho@gentoo.org> (29 Jun 2011)
-# Mask for removal in 30 days x11-libs/gtksourceview:1.0
-# and reverse dependencies, bug #354241
-=x11-libs/gtksourceview-1.8.5-r1
-app-editors/conglomerate
-=app-editors/mlview-0.9.0
-app-editors/screem
-dev-python/gtksourceview-python
-app-editors/scribes
-=dev-ruby/ruby-gtksourceview-0.19.4
 
 # Justin Lecher <jlec@gentoo.org> (27 Jun 2011)
 # Only avalable version isn't in the tree.
@@ -431,10 +659,6 @@ sci-chemistry/webmo
 # and #335307.
 =media-radio/svxlink-090426
 
-# Samuli Suominen <ssuominen@gentoo.org> (15 Jun 2011)
-# Retire gpixpod for bugs 221277 and 351307.   Removal in 30 days.
-app-pda/gpixpod
-
 # Eray Aslan <eras@gentoo.org> (15 Jun 2011)
 # Mask experimental software
 =mail-mta/postfix-2.9*
@@ -450,31 +674,6 @@ app-pda/gpixpod
 # settle the migration code
 >=app-misc/gramps-3.3.0
 
-# Sergei Trofimovich <slyfox@gentoo.org> (11 Jun 2011)
-# Masked for removal in 30 days. 'Abandoned' by upstream.
-# Fails to build on modern toolchain:
-#    #284216, #367191, #267974
-#
-# Upstream now provides splitted packages for various gtk
-# subsystems:
-#     dev-haskell/pango
-#     dev-haskell/cairo
-#     dev-haskell/glib
-#     dev-haskell/cairo
-#     dev-haskell/glade
-#     dev-haskell/gtk
-dev-haskell/gtk2hs
-
-# Diego E. Pettenò <flameeyes@gentoo.org> (09 Jun 2011)
-#  on behalf of QA team
-#
-# Fails to build with GCC 4.6; replaced by net-misc/gogoc
-# (same codebase, renamed and reversioned) which is somewhat
-# maintained.
-#
-# Removal on 2011-07-09
-net-misc/gateway6
-
 # Diego E. Pettenò <flameeyes@gentoo.org> (8 Jun 2011)
 # Broken upstream
 =net-libs/libtirpc-0.2.2
@@ -487,21 +686,10 @@ net-misc/gateway6
 # Mask release candidates
 =app-office/scribus-1.4.0_rc*
 
-# Andreas K. Huettel <dilfridge@gentoo.org> (3 Jun 2011)
-# Requires KDE 4.4, which is not in the portage tree anymore.
-# Please unmerge before upgrading KDE, and emerge afterwards
-# net-wireless/bluedevil for bluetooth support in KDE 4.6.
-# Masked for removal in 15 days
-net-wireless/kbluetooth
-
 # Markos Chandras <hwoarang@gentoo.org> (28 May 2011)
 # emesene-2 is on early stage of development and very 
 # unstable
 =net-im/emesene-2*
-
-# Markos Chandras <hwoarang@gentoo.org> (26 May 2011)
-# Masked for testing. Bug #308449
-=net-dialup/freeradius-2.1.10
 
 # Michael Sterrett <mr_bones_@gentoo.org> (25 May 2011)
 # Needs an old version of bison that isn't in the tree anymore.
@@ -512,28 +700,10 @@ dev-lang/open64
 # <http://my.opera.com/desktopteam/blog>
 www-client/opera-next
 
-# Peter Volkov <pva@gentoo.org> (24 May 2011)
-# Mask release candidates
-=net-analyzer/wireshark-1.6.0_rc*
-
-# Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (16 May 2011)
-# Masked until reverse dependencies of dev-python/pyxml are updated.
-=dev-lang/python-2.7.1-r2
-
 # Hans de Graaff <graaff@gentoo.org> (15 May 2011)
 # Mask new versions until thread-related crashes have been fixed.
 # See bug 367423.
 =dev-lang/ruby-enterprise-1.8.7.2011.03
-
-# Diego E. Pettenò <flameeyes@gentoo.org> (06 May 2011)
-#  on behalf of QA team
-#
-# Fails to build with opensc-0.12.0 as it doesn't use
-# PKCS#11 (bug #363019). Code looks stale, and the project
-# implemented separate packages for other functions.
-#
-# Removal on 2011-07-05
-app-crypt/scsign
 
 # Ole Markus With <olemarkus@gentoo.org> (1 May 2011)
 # Masking SVN snaphots and release candidates.
@@ -553,10 +723,6 @@ app-crypt/scsign
 =net-analyzer/argus-3.0.5*
 =net-analyzer/argus-clients-3.0.5*
 
-# Luca Barbato <lu_zero@gentoo.org> (19 Apr 2011)
-# Masked for testing, breaks reverse dependencies 
-=media-video/libav-0.7
-
 # Daniel Gryniewicz <dang@gentoo.org> (13 Apr 2011)
 # Masked for removal in 30 days. Functionality is merged into and maintained in
 # the upstream kernel.  Use any kernel (e.g. gentoo-sources) instead.
@@ -565,17 +731,6 @@ sys-kernel/usermode-sources
 # Patrick Lauer <patrick@gentoo.org> (12 Apr 2011)
 # lacks most features and sanity, waiting for upstream to improve it
 >=sys-power/powertop-1.90
-
-# Diego E. Pettenò <flameeyes@gentoo.org> (8 Apr 2011)
-
-# Merged back into the main ekeyd package as it's suggested to be used
-# for heavy-loaded systems.
-#
-# If you wish to have only the ekey-egd-linux service, build
-# app-crypt/ekeyd with USE=minimal.
-#
-# Removal on 2011-05-08
-app-crypt/ekey-egd-linux
 
 # Marijn Schouten <hkBst@gentoo.org> (07 April 2011)
 # Masked for number of issues, but can be used to
@@ -590,51 +745,15 @@ app-crypt/ekey-egd-linux
 # Masked for testing
 >=sys-devel/gcc-4.6.0
 
-# Diego E. Pettenò <flameeyes@gentoo.org> (28 Mar 2011)
-#  on behalf of QA team
-#
-# Fails to build with recent libX11 (bug #351001); homepage
-# and src_uri are gone.
-#
-# Removal on 2011-05-27
-x11-plugins/wmnetmon
-
-# Diego E. Pettenò <flameeyes@gentoo.org> (28 Mar 2011)
-#  on behalf of QA team
-#
-# Doesn't respect LDFLAGS (bug #336954). Build log can easily
-# show a number of other issues: doesn't respect cc, doesn't
-# respect _FORTIFY_SOURCE (since headers are not properly
-# included), and trying to fix it shows that the "as-is"
-# license is not properly applied. The software was first
-# published in 1997, then released in 2001 as a package,
-# but has seen no development since.
-#
-# As a replacement, rather use zsh's zmv module.
-#
-# Removal on 2011-05-27
-sys-apps/ren
-
 # Samuli Suominen <ssuominen@gentoo.org> (28 Mar 2011)
 # Masked temporarily until bug 360849 is solved so people
 # can emerge udev.
 =sys-apps/pciutils-3.1.7-r1
 
-# Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (25 Mar 2011)
-# Some packages fail to build or work with GnuTLS built with Nettle crypto backend.
-=net-libs/gnutls-2.12*
-
-# Aaron W. Swenson <titanofold@gentoo.org> (20 Mar 2011)
-# Masking 9.1 pre-release versions
->=dev-db/postgresql-docs-9.1_alpha4
->=dev-db/postgresql-base-9.1_alpha4
->=dev-db/postgresql-server-9.1_alpha4
-
-# Stefaan De Roeck <stefaan@gentoo.org> (19 Mar 2011)
-# New major upstream release.
-# Needs testing before going to ~arch.
->=net-fs/openafs-1.6
->=net-fs/openafs-kernel-1.6
+# Tomáš Chvátal <scarabeus@gentoo.org> (18 Sep 2011)
+# Mask latest revisions using dev-libs/nettle and app-crypt/p11-kit
+# Needs tinderbox testing.
+>=net-libs/gnutls-2.12
 
 # Markos Chandras <hwoarang@gentoo.org> (17 Mar 2011)
 # Masking openocd prelease snapshot
@@ -779,10 +898,6 @@ net-analyzer/ncrack
 # beta version, has known issues
 =x11-drivers/ati-drivers-8.780*
 
-# Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (13 Sep 2010)
-# Unmaintained. Masked so that Zope 2.12/2.13 is preferred.
-=net-zope/zope-3*
-
 # Doug Goldstein <cardoe@gentoo.org> (8 Sep 2010)
 # masked live version
 =x11-libs/cairo-9999*
@@ -898,7 +1013,6 @@ games-strategy/xscorch
 # Please don't ask for including testing packages in other emul
 # packages, this is an exception to current policy because some people
 # from X11 team needed 3D support even with bleeding edge Xorg.
-=app-emulation/emul-linux-x86-opengl-20110129-r99
 =app-emulation/emul-linux-x86-opengl-20110722-r99
 =app-emulation/emul-linux-x86-baselibs-20110722-r99
 
@@ -1051,12 +1165,6 @@ sys-libs/newlib
 # Masked waiting on >=portage-2.2* to be unmasked
 >=app-portage/portpeek-2
 
-# Robin H. Johnson <robbat2@gentoo.org> (06 Dec 2008)
-# The init.d scripts and default rules need updating and serious testing.
-# Do not use the old ones with the new versions of audit, you will get weird
-# crashes.
->sys-process/audit-1.7.4
-
 # Peter Volkov <pva@gentoo.org> (16 Nov 2008)
 # The development branch, to be unmasked when out of beta by upstream.
 =net-misc/socat-2.0.0*
@@ -1133,11 +1241,6 @@ sys-fs/redirfs
 # MATSUU Takuto <matsuu@gentoo.org> (5 Apr 2007)
 # to be tested, seems unstable
 >=app-i18n/scim-anthy-1.3.0
-
-# Stefaan De Roeck <stefaan@gentoo.org> (09 Sep 2006)
-# 1.5.x is a development branch, people should test 1.4.x by default
-=net-fs/openafs-1.5*
-=net-fs/openafs-kernel-1.5*
 
 # Tavis Ormandy <taviso@gentoo.org> (21 Mar 2006)
 # masked pending unresolved security issues #127319

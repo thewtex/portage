@@ -1,0 +1,22 @@
+test? ( ruby_targets_ruby18? ( datamatrix? ( dev-ruby/semacode[ruby_targets_ruby18] ) pdf-writer? ( dev-ruby/pdf-writer[ruby_targets_ruby18] ) ) ruby_targets_ree18? ( datamatrix? ( dev-ruby/semacode[ruby_targets_ree18] ) pdf-writer? ( dev-ruby/pdf-writer[ruby_targets_ree18] ) ) ) test? ( ruby_targets_ruby18? ( rmagick? ( dev-ruby/rmagick[ruby_targets_ruby18] ) cairo? ( dev-ruby/rcairo[ruby_targets_ruby18] ) ) ruby_targets_ree18? ( rmagick? ( dev-ruby/rmagick[ruby_targets_ree18] ) cairo? ( dev-ruby/rcairo[ruby_targets_ree18] ) ) ) test? ( ruby_targets_ruby18? ( prawn? ( dev-ruby/prawn[ruby_targets_ruby18] ) ) ruby_targets_ree18? ( prawn? ( dev-ruby/prawn[ruby_targets_ree18] ) ) ruby_targets_jruby? ( prawn? ( dev-ruby/prawn[ruby_targets_jruby] ) ) ) test? ( ruby_targets_ruby18? ( qrcode? ( dev-ruby/rqrcode[ruby_targets_ruby18] ) png? ( dev-ruby/chunky_png[ruby_targets_ruby18] ) ) ruby_targets_ree18? ( qrcode? ( dev-ruby/rqrcode[ruby_targets_ree18] ) png? ( dev-ruby/chunky_png[ruby_targets_ree18] ) ) ruby_targets_jruby? ( qrcode? ( dev-ruby/rqrcode[ruby_targets_jruby] ) png? ( dev-ruby/chunky_png[ruby_targets_jruby] ) ) ) ruby_targets_ruby18? ( test? ( dev-ruby/minitest[ruby_targets_ruby18] ) ) ruby_targets_ree18? ( test? ( dev-ruby/minitest[ruby_targets_ree18] ) ) ruby_targets_jruby? ( test? ( dev-ruby/minitest[ruby_targets_jruby] ) ) ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ree18? ( dev-lang/ruby-enterprise:1.8 ) ruby_targets_jruby? ( dev-java/jruby ) ruby_targets_ruby18? ( doc? ( dev-ruby/rake[ruby_targets_ruby18] ) ) ruby_targets_ree18? ( doc? ( dev-ruby/rake[ruby_targets_ree18] ) ) ruby_targets_jruby? ( doc? ( dev-ruby/rake[ruby_targets_jruby] ) ) ruby_targets_ruby18? ( test? ( dev-ruby/rake[ruby_targets_ruby18] ) ) ruby_targets_ree18? ( test? ( dev-ruby/rake[ruby_targets_ree18] ) ) ruby_targets_jruby? ( test? ( dev-ruby/rake[ruby_targets_jruby] ) ) ruby_targets_ruby18? ( dev-ruby/rubygems[ruby_targets_ruby18] ) ruby_targets_ree18? ( dev-ruby/rubygems[ruby_targets_ree18] ) ruby_targets_jruby? ( dev-ruby/rubygems[ruby_targets_jruby] ) test? ( ruby_targets_ruby18? ( dev-ruby/rubygems[ruby_targets_ruby18] ) ruby_targets_ree18? ( dev-ruby/rubygems[ruby_targets_ree18] ) ruby_targets_jruby? ( dev-ruby/rubygems[ruby_targets_jruby] ) )
+ruby_targets_ruby18? ( datamatrix? ( dev-ruby/semacode[ruby_targets_ruby18] ) pdf-writer? ( dev-ruby/pdf-writer[ruby_targets_ruby18] ) ) ruby_targets_ree18? ( datamatrix? ( dev-ruby/semacode[ruby_targets_ree18] ) pdf-writer? ( dev-ruby/pdf-writer[ruby_targets_ree18] ) ) ruby_targets_ruby18? ( rmagick? ( dev-ruby/rmagick[ruby_targets_ruby18] ) cairo? ( dev-ruby/rcairo[ruby_targets_ruby18] ) ) ruby_targets_ree18? ( rmagick? ( dev-ruby/rmagick[ruby_targets_ree18] ) cairo? ( dev-ruby/rcairo[ruby_targets_ree18] ) ) ruby_targets_ruby18? ( prawn? ( dev-ruby/prawn[ruby_targets_ruby18] ) ) ruby_targets_ree18? ( prawn? ( dev-ruby/prawn[ruby_targets_ree18] ) ) ruby_targets_jruby? ( prawn? ( dev-ruby/prawn[ruby_targets_jruby] ) ) ruby_targets_ruby18? ( qrcode? ( dev-ruby/rqrcode[ruby_targets_ruby18] ) png? ( dev-ruby/chunky_png[ruby_targets_ruby18] ) ) ruby_targets_ree18? ( qrcode? ( dev-ruby/rqrcode[ruby_targets_ree18] ) png? ( dev-ruby/chunky_png[ruby_targets_ree18] ) ) ruby_targets_jruby? ( qrcode? ( dev-ruby/rqrcode[ruby_targets_jruby] ) png? ( dev-ruby/chunky_png[ruby_targets_jruby] ) ) ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ree18? ( dev-lang/ruby-enterprise:1.8 ) ruby_targets_jruby? ( dev-java/jruby ) ruby_targets_ruby18? ( dev-ruby/rubygems[ruby_targets_ruby18] ) ruby_targets_ree18? ( dev-ruby/rubygems[ruby_targets_ree18] ) ruby_targets_jruby? ( dev-ruby/rubygems[ruby_targets_jruby] )
+0
+https://github.com/toretore/barby/tarball/v0.5.0 -> barby-0.5.0.tgz
+prawn? ( test )
+http://toretore.eu/barby/
+MIT
+Ruby barcode generator that doesn't rely on 3rd party libraries.
+~amd64
+eutils multilib portability ruby-fakegem ruby-ng toolchain-funcs
+test datamatrix pdf-writer qrcode rmagick prawn png cairo ruby_targets_ruby18 ruby_targets_ree18 ruby_targets_jruby doc doc test
+|| ( ruby_targets_ruby18 ruby_targets_ree18 ruby_targets_jruby )
+
+
+4
+
+compile configure install prepare setup test unpack
+
+
+
+
+

@@ -1,12 +1,12 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/util-linux/util-linux-9999.ebuild,v 1.22 2011/08/29 21:25:15 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/util-linux/util-linux-9999.ebuild,v 1.24 2011/09/21 08:32:22 mgorny Exp $
 
 EAPI="3"
 
 EGIT_REPO_URI="git://git.kernel.org/pub/scm/utils/util-linux/util-linux.git"
 inherit eutils toolchain-funcs libtool flag-o-matic
-[[ ${PV} == "9999" ]] && inherit git autotools
+[[ ${PV} == "9999" ]] && inherit git-2 autotools
 
 MY_PV=${PV/_/-}
 MY_P=${PN}-${MY_PV}
@@ -25,7 +25,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+cramfs crypt loop-aes ncurses nls old-linux perl selinux slang static-libs uclibc unicode"
+IUSE="+cramfs crypt ddate loop-aes ncurses nls old-linux perl selinux slang static-libs uclibc unicode"
 
 RDEPEND="!sys-process/schedutils
 	!sys-apps/setarch
@@ -74,6 +74,7 @@ src_configure() {
 		$(use_enable nls) \
 		--enable-agetty \
 		$(use_enable cramfs) \
+		$(use_enable ddate) \
 		$(use_enable old-linux elvtune) \
 		--with-ncurses=$(usex ncurses $(usex unicode auto yes) no) \
 		--disable-kill \
