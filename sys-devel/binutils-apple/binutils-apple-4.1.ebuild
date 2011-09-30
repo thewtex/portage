@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/binutils-apple/binutils-apple-4.1.ebuild,v 1.2 2011/09/21 20:41:49 grobian Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/binutils-apple/binutils-apple-4.1.ebuild,v 1.4 2011/09/25 09:32:15 grobian Exp $
 
 EAPI="3"
 
@@ -73,10 +73,15 @@ src_prepare() {
 	mkdir -p include/llvm-c || die
 	cp "${WORKDIR}"/ld64-unwind/ld64-97.14-llvm-lto.h include/llvm-c/lto.h || die
 	# make libunwind sources known
-	#pushd "${WORKDIR}"/libunwind/include > /dev/null
 	ln -s ../../${LIBUNWIND}/src libunwind || die
 	cp ../../${LIBUNWIND}/include/*.h include/ || die
-	#popd > /dev/null
+	# mimic OS X Lion-style Availability.h macros
+	if [[ ${CHOST#*-darwin} -le 10 ]] ; then
+		{
+			echo "#define __OSX_AVAILABLE_STARTING(x,y)  "
+			echo "#define __OSX_AVAILABLE_BUT_DEPRECATED(a,b,c,d)  "
+		} > include/Availability.h
+	fi
 
 	echo '' > configure.h
 	echo '' > linker_opts
@@ -84,8 +89,11 @@ src_prepare() {
 	echo "char ldVersionString[] = ${VER_STR};" > version.cpp
 
 	epatch "${FILESDIR}"/${LD64%.1}-debug-backtrace.patch
-	[[ ${CHOST} == powerpc*-darwin* ]] && \
+	if [[ ${CHOST} == powerpc*-darwin* ]] ; then
 		epatch "${FILESDIR}"/${LD64%.1}-darwin8-no-mlong-branch-warning.patch
+		sed -i -e '/#include <mach-o\/loader.h>/a\#include <mach/i386/thread_status.h>' \
+			ld/HeaderAndLoadCommands.hpp || die
+	fi
 	if use !lto ; then
 		sed -i -e '/#define LTO_SUPPORT 1/d' other/ObjectDump.cpp || die
 	fi
@@ -157,6 +165,7 @@ src_configure() {
 }
 
 compile_libunwind() {
+	# not used, just for testing, and possible use in the future
 	einfo "building ${LIBUNWIND}"
 	cd "${S}"/${LIBUNWIND}/src
 	emake DYLDINCS=-I../../${DYLD}/include || die
@@ -197,7 +206,6 @@ compile_cctools() {
 }
 
 src_compile() {
-	compile_libunwind
 	compile_ld64
 	compile_cctools
 }

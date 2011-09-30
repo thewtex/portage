@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/scribus/scribus-1.4.0_rc5.ebuild,v 1.3 2011/07/12 09:59:33 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/scribus/scribus-1.4.0_rc5.ebuild,v 1.4 2011/09/27 21:28:14 jlec Exp $
 
 EAPI=3
 
@@ -55,6 +55,11 @@ src_prepare() {
 		sed '/ADD_SUBDIRECTORY(resources\/templates)/d' -i CMakeLists.txt
 	use examples || \
 		sed '/ADD_SUBDIRECTORY(samples)/d' -i scribus/plugins/scriptplugin/CMakeLists.txt
+
+sed \
+	-e '1i#define OF(x) x' \
+	-i scribus/fileunzip.cpp scribus/unzip.h scribus/ioapi.h || die
+
 	base_src_prepare
 }
 

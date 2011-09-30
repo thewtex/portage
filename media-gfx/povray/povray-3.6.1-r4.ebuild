@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/povray/povray-3.6.1-r4.ebuild,v 1.14 2011/04/15 17:34:19 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/povray/povray-3.6.1-r4.ebuild,v 1.16 2011/09/28 19:33:31 lavajoe Exp $
 
 inherit flag-o-matic eutils autotools
 
@@ -77,12 +77,12 @@ pkg_preinst() {
 	# Copy the old config files if they are in the old location
 	# but do not yet exist in the new location.
 	# This way, they can be treated by CONFIG_PROTECT as normal.
-	for conf_file in $(ls "${ED}/etc/${PN}"); do
-		if [ ! -e "${EROOT}etc/${PN}/${conf_file}" ]; then
-			for version_dir in $(ls "${EROOT}etc/${PN}" | grep "^[0-9]" | sort -rn); do
-				if [ -e "${EROOT}etc/${PN}/${version_dir}/${conf_file}" ]; then
-					mv "${EROOT}etc/${PN}/${version_dir}/${conf_file}" "${EROOT}etc/${PN}"
-					elog "Note: ${conf_file} moved from ${EROOT}etc/povray/${version_dir}/ to ${EROOT}etc/povray/"
+	for conf_file in $(ls "${D}/etc/${PN}"); do
+		if [ ! -e "${ROOT}etc/${PN}/${conf_file}" ]; then
+			for version_dir in $(ls "${ROOT}etc/${PN}" | grep "^[0-9]" | sort -rn); do
+				if [ -e "${ROOT}etc/${PN}/${version_dir}/${conf_file}" ]; then
+					mv "${ROOT}etc/${PN}/${version_dir}/${conf_file}" "${ROOT}etc/${PN}"
+					elog "Note: ${conf_file} moved from ${ROOT}etc/povray/${version_dir}/ to ${ROOT}etc/povray/"
 					break
 				fi
 			done

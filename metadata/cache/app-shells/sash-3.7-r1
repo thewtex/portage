@@ -1,4 +1,4 @@
->=sys-libs/zlib-1.2.3 readline? ( >=sys-libs/readline-4.1 >=sys-libs/ncurses-5.2 )
+|| ( <sys-libs/zlib-1.2.5.1-r2 sys-libs/zlib[static-libs] ) readline? ( >=sys-libs/readline-4.1 sys-libs/ncurses[static-libs] )
 
 0
 http://www.canb.auug.org.au/~dbell/programs/sash-3.7.tar.gz
@@ -12,9 +12,9 @@ readline
 
 
 
+3
 
-
-compile install unpack
+compile install prepare
 
 
 

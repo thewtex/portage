@@ -1,5 +1,5 @@
->=sys-libs/zlib-1.2.3
-
+static? ( sys-libs/zlib[static-libs] ) !static? ( >=sys-libs/zlib-1.2.3 )
+!static? ( static? ( sys-libs/zlib[static-libs] ) !static? ( >=sys-libs/zlib-1.2.3 ) )
 0
 http://www.canb.auug.org.au/~dbell/programs/sash-3.7.tar.gz
 

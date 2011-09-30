@@ -1,0 +1,24 @@
+From 91313fc05abbfe35ee1e0c2464a28dd580780f07 Mon Sep 17 00:00:00 2001
+From: Caolán McNamara <caolanm@redhat.com>
+Date: Fri, 02 Sep 2011 12:15:49 +0000
+Subject: Resolves: rhbz#735182 libreoffice doesn't build with poppler-0.17.3
+
+---
+diff --git a/sdext/source/pdfimport/xpdfwrapper/pdfioutdev_gpl.cxx b/sdext/source/pdfimport/xpdfwrapper/pdfioutdev_gpl.cxx
+index cf28922..3f1261c 100644
+--- a/sdext/source/pdfimport/xpdfwrapper/pdfioutdev_gpl.cxx
++++ b/sdext/source/pdfimport/xpdfwrapper/pdfioutdev_gpl.cxx
+@@ -150,7 +150,11 @@ void writeBinaryBuffer( const OutputBuffer& rBuffer )
+ void writeJpeg_( OutputBuffer& o_rOutputBuf, Stream* str, bool bWithLinefeed )
+ {
+     // dump JPEG file as-is
++#if POPPLER_CHECK_VERSION(0, 17, 3)
++    str = str->getBaseStream();
++#else
+     str = ((DCTStream *)str)->getRawStream();
++#endif
+     str->reset();
+ 
+     int c;
+--
+cgit v0.9.0.2-2-gbebe

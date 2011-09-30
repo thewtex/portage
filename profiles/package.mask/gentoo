@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.13072 2011/09/23 10:19:27 ford_prefect Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.13088 2011/09/29 14:21:28 ssuominen Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -31,6 +31,70 @@
 
 #--- END OF EXAMPLES ---
 
+# Samuli Suominen <ssuominen@gentoo.org> (29 Sep 2011)
+# Incompatible with >= gnome-panel-3 and has issues wrt bug 358171
+# http://mail.xfce.org/pipermail/xfce4-dev/2011-May/028870.html
+# Removal in 30 days
+xfce-extra/xfce4-xfapplet-plugin
+
+# Michael Sterrett <mr_bones_@gentoo.org> (27 Sep 2011)
+# maintainer-needed, gtk+:1 using packages.
+# Masked for removal on 20111027
+app-arch/guitar
+app-misc/endeavour
+app-misc/ithought
+app-misc/mtoolsfm
+media-radio/xconvers
+sci-calculators/grpn
+
+# Justin Bronder <jsbronder@gentoo.org> (27 Sep 2011)
+# Masking the torque 2.3 series due to bug #372959.  This allows
+# sites that are ok with the vulnerability but prefer the stability
+# of 2.3.x to continue to get updates (if any).
+<sys-cluster/torque-2.4
+dev-perl/perl-PBS
+
+# Andreas K. Huettel <dilfridge@gentoo.org> (27 Sep 2011)
+# Preepmtive package mask, should anyone bump it. KDE advises not to use
+# soprano-2.[67].1 as it introduces major breakage.
+~dev-libs/soprano-2.6.1
+~dev-libs/soprano-2.7.1
+
+# Michael Sterrett <mr_bones_@gentoo.org> (27 Sep 2011)
+# Upstream has gone away and the files aren't mirrored on liflg.org anymore.
+# Masked for removal on 20111027
+# bug #335562
+games-fps/ut2004-redorchestra
+
+# Mike Gilbert <floppym@gentoo.org> (27 Sep 2011)
+# Dev channel releases are only for people who are developers or want more
+# experimental features and accept a more unstable release.
+>=www-client/google-chrome-16
+
+# Ulrich Mueller <ulm@gentoo.org> (26 Sep 2011)
+# Included in app-editors/emacs-23 and later.
+# Masked for removal in 30 days, bug 384561.
+app-emacs/rst
+
+# Markos Chandras <hwoarang@gentoo.org> (16 Sep 2011)
+# Masking app-misc/recoll for testing
+app-misc/recoll
+
+# Markos Chandras <hwoarang@gentoo.org> (26 Sep 2011)
+# 10 days masking for broader testing
+=dev-libs/boost-1.47.0
+=dev-util/boost-build-1.47.0
+
+# Thomas Kahle <tomka@gentoo.org> (25 Sep 2011)
+# Masked for removal in 30 days.  Unfixed security
+# issues (Bug 381115), dead upstream. 
+x11-misc/ktsuss
+
+# Pawel Hajdan jr <phajdan.jr@gentoo.org> (24 Sep 2011)
+# Dev channel releases are only for people who are developers or want more
+# experimental features and accept a more unstable release.
+>=www-client/chromium-16
+
 # Michael Sterrett <mr_bones_@gentoo.org> (22 Sep 2011)
 # Doesn't work and upstream has gone away.
 # Masked for removal on 20111022
@@ -39,7 +103,7 @@ games-action/dungeon
 
 # Markos Chandras <hwoarang@gentoo.org> (21 Sep 2011)
 # Masking beta releases
-=net-p2p/qbittorrent-2.9.0_beta*
+=net-p2p/qbittorrent-2.9.0_rc*
 
 # Olivier Crete <tester@gentoo.org> (20 Sep 2011)
 # Masked because the API was broken and it will  causes crashes in 
@@ -386,10 +450,6 @@ sys-apps/seabios
 >=perl-core/ExtUtils-ParseXS-3.0
 >=virtual/perl-ExtUtils-ParseXS-3.0
 
-# Mike Gilbert <floppym@gentoo.org> (28 Aug 2011)
-# Dev channel release
->=www-client/google-chrome-15
-
 # Andreas K. Hüttel <dilfridge@gentoo.org> (27 Aug 2011)
 # Masked for removal. Dead project since 2009, does not work well with 
 # kde-4.6. Use kde-misc/kcm-gtk-config instead.
@@ -442,19 +502,9 @@ dev-tex/pdftex
 # (the "3011" is not a typo!)
 >=kde-misc/knetworkmanager-4.4.0_p30110815
 
-# Pawel Hajdan jr <phajdan.jr@gentoo.org> (11 Aug 2011)
-# Dev channel releases are only for people who are developers or want more
-# experimental features and accept a more unstable release.
->=www-client/chromium-15
-
 # Robert Piasek <dagger@gentoo.org> (09 Aug 2011)
 # Masking for testing
 =net-fs/samba-3.6.0
-
-# Arun Raghavan <ford_prefect@gentoo.org> (03 Aug 2011)
-# Masking prereleases
-=media-sound/pulseaudio-0.99*
-=media-sound/pavucontrol-0.99*
 
 # Doug Goldste <cardoe@gentoo.org> (1 Aug 2011)
 # Breaks lots of GNOME related apps (bug #375615)

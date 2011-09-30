@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/tinc/tinc-1.0.16.ebuild,v 1.1 2011/09/23 18:51:26 blueness Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/tinc/tinc-1.0.16.ebuild,v 1.2 2011/09/26 03:23:06 blueness Exp $
 
 EAPI=4
 
@@ -16,6 +16,7 @@ IUSE="+lzo +zlib"
 DEPEND=">=dev-libs/openssl-0.9.7c
 	lzo? ( dev-libs/lzo:2 )
 	zlib? ( >=sys-libs/zlib-1.1.4-r2 )"
+RDEPEND="${DEPEND}"
 
 src_configure() {
 	econf  --enable-jumbograms $(use_enable lzo) $(use_enable zlib)  || die

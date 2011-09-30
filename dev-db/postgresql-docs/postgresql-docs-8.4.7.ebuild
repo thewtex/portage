@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/postgresql-docs/postgresql-docs-8.4.7.ebuild,v 1.7 2011/03/06 17:47:01 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/postgresql-docs/postgresql-docs-8.4.7.ebuild,v 1.9 2011/09/26 19:33:56 halcy0n Exp $
 
 inherit versionator
 

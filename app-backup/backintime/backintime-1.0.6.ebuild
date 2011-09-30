@@ -1,10 +1,12 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-backup/backintime/backintime-1.0.6.ebuild,v 1.1 2011/02/01 11:03:35 bangert Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-backup/backintime/backintime-1.0.6.ebuild,v 1.2 2011/09/25 01:38:09 xmw Exp $
 
 EAPI="3"
 
-inherit eutils
+PYTHON_DEPEND="2"
+
+inherit eutils python
 
 DESCRIPTION="A simple backup system inspired by TimeVault and FlyBack, with a GUI for GNOME and KDE4"
 HOMEPAGE="http://backintime.le-web.org/"
@@ -15,7 +17,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="kde gnome"
 
-DEPEND="dev-lang/python
+DEPEND="
 	net-misc/rsync[xattr,acl]
 	kde? (
 		>=kde-base/kdelibs-4
@@ -32,8 +34,7 @@ DEPEND="dev-lang/python
 		dev-python/pygobject
 		dev-python/pygtk
 		)
-	dev-python/notify-python
-	"
+	dev-python/notify-python"
 
 RDEPEND="${DEPEND}"
 
@@ -41,54 +42,57 @@ src_prepare() {
 	epatch "${FILESDIR}"/${PN}-1.0.4-dont-install-license.diff
 	epatch "${FILESDIR}"/${PN}-1.0.4-fix-configure-warning.diff
 	#fix doc install location
-	sed -i "s:/doc/kde4/HTML/:/doc/HTML/:g" kde4/Makefile.template
-	sed -i "s:/doc/backintime:/doc/${PF}:g" common/Makefile.template
+	sed -i "s:/doc/kde4/HTML/:/doc/HTML/:g" kde4/Makefile.template || die
+	sed -i "s:/doc/backintime:/doc/${PF}:g" common/Makefile.template || die
 
 	cp "${FILESDIR}"/backintime-1.0.4-kde4-root.desktop \
-		"${S}"/kde4/backintime-kde4-root.desktop
+		kde4/backintime-kde4-root.desktop || die
+
+	epatch "${FILESDIR}"/${P}-wrapper.patch
+	sed -e "/^python /s:^python:$(PYTHON -a):" \
+		-e "/^APP_PATH=/s:/usr:${EPREFIX}/usr:" \
+		-i common/backintime \
+		-i gnome/backintime-gnome \
+		-i kde4/backintime-kde4 || die
 }
 
 src_configure() {
-	cd "${S}"/common
+	cd "${S}"/common || die
 	econf
 
 	if use kde ; then
-		cd "${S}"/kde4
+		cd "${S}"/kde4 || die
 		econf
 	fi
 
 	if use gnome ; then
-		cd "${S}"/gnome
+		cd "${S}"/gnome || die
 		econf
 	fi
 }
 
 src_compile() {
-	cd "${S}"/common
-	emake
+	emake -C common || die
 
 	if use kde ; then
-		cd "${S}"/kde4
-		emake
+		emake -C kd4 || die
 	fi
 
 	if use gnome ; then
-		cd "${S}"/gnome
-		emake
+		emake -C gnome || die
 	fi
 }
 
 src_install() {
-	cd "${S}"/common
-	emake DESTDIR="${D}" install || die
+	emake DESTDIR="${D}" -C common install || die
 
 	if use kde ; then
-		cd "${S}"/kde4
-		emake DESTDIR="${D}" install || die
+		emake DESTDIR="${D}" -C kde4 install || die
 	fi
 
 	if use gnome ; then
-		cd "${S}"/gnome
-		emake DESTDIR="${D}" install || die
+		emake DESTDIR="${D}" -C gnome install || die
 	fi
+
+	rm "${ED}"/usr/share/doc/${PF}/LICENSE || die
 }
