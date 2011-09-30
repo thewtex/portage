@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/emacs/emacs-21.4-r23.ebuild,v 1.2 2011/08/02 05:41:31 mattst88 Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-editors/emacs/emacs-21.4-r23.ebuild,v 1.4 2011/09/28 05:35:45 ulm Exp $
 
 EAPI=4
 WANT_AUTOMAKE="none"
@@ -10,7 +10,7 @@ inherit flag-o-matic eutils toolchain-funcs autotools
 DESCRIPTION="The extensible, customizable, self-documenting real-time display editor"
 HOMEPAGE="http://www.gnu.org/software/emacs/"
 SRC_URI="mirror://gnu/emacs/${P}a.tar.gz
-	mirror://gentoo/${P}-patches-11.tar.bz2
+	mirror://gentoo/${P}-patches-12.tar.bz2
 	leim? ( mirror://gnu/emacs/leim-${PV}.tar.gz )"
 
 LICENSE="GPL-2 FDL-1.1 BSD as-is MIT"
@@ -30,7 +30,7 @@ DEPEND="sys-libs/ncurses
 		>=media-libs/giflib-4.1.0.1b
 		virtual/jpeg
 		>=media-libs/tiff-3.5.5-r3
-		>=media-libs/libpng-1.2.1
+		>=media-libs/libpng-1.4:0
 		Xaw3d? ( x11-libs/libXaw3d )
 		!Xaw3d? ( motif? ( >=x11-libs/openmotif-2.3:0 ) )
 	)"

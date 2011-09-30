@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tex/luatex/luatex-0.65.0.ebuild,v 1.6 2011/06/15 06:03:47 naota Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-tex/luatex/luatex-0.65.0.ebuild,v 1.8 2011/09/28 23:40:08 reavertm Exp $
 
 EAPI="2"
 

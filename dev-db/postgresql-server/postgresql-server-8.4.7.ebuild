@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/postgresql-server/postgresql-server-8.4.7.ebuild,v 1.7 2011/05/19 16:05:01 scarabeus Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/postgresql-server/postgresql-server-8.4.7.ebuild,v 1.9 2011/09/26 19:34:24 halcy0n Exp $
 
 EAPI="2"
 PYTHON_DEPEND="python? 2"
