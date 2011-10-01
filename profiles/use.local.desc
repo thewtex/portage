@@ -165,6 +165,8 @@ app-admin/sagan:pcap - Add support for network packet capture via net-libs/libpc
 app-admin/sagan:smtp - Build witch SMTP (E-Mail) support
 app-admin/sshguard:ipfilter - Enable ipfilter firewall support (only for *bsd)
 app-admin/sudo:offensive - Let sudo print insults when the user types the wrong password.
+app-admin/syslog-ng:json - Enable support for JSON template formatting via dev-libs/json-glib
+app-admin/syslog-ng:mongodb - Enable support for mongodb destinations
 app-admin/syslog-ng:spoof-source - Enable support for spoofed source addresses
 app-admin/syslog-ng:sql - Enable support for SQL destinations
 app-admin/sysstat:cron - Install /etc/cron.d script to periodically run sar
@@ -1721,6 +1723,7 @@ gnome-base/gnome-panel:bonobo - Enable Bonobo compatibility modules for applets 
 gnome-base/gnome-panel:introspection - Use dev-libs/gobject-introspection for introspection
 gnome-base/gnome-settings-daemon:packagekit - Enable support for the distro-neutral package manager GUI app-admin/packagekit
 gnome-base/gnome-settings-daemon:short-touchpad-timeout - Change the touchpad timeout so that it's effective for fast typists
+gnome-base/gnome-shell:nm-applet - Pull in an automagic dependency on gnome-extra/nm-applet and net-misc/networkmanager, should be removed soon
 gnome-base/gvfs:archive - Enables support for accessing files in archives transparently via app-arch/libarchive
 gnome-base/gvfs:fuse - Enables fuse mount points in $HOME/.gvfs for legacy application access
 gnome-base/gvfs:gdu - Enable sys-apps/gnome-disk-utility integration
@@ -1759,6 +1762,7 @@ gnome-extra/libgda:canvas - Enables support for x11-libs/goocanvas
 gnome-extra/libgda:http - Enable embedded net-libs/libsoup based server
 gnome-extra/libgda:introspection - Use dev-libs/gobject-introspection for introspection
 gnome-extra/libgda:json - Enable support for JSON format
+gnome-extra/libgda:mdb - Enable support for Microsoft Access Database using app-office/mdbtools
 gnome-extra/libgda:sourceview - Enable support for x11-libs/gtksourceview
 gnome-extra/libgsf:gtk - Enable use of gdk in thumbnailer
 gnome-extra/libgsf:thumbnail - Enable libgsf supported formats thumbnailer
@@ -1962,6 +1966,7 @@ mail-client/evolution:clutter - Build with clutter support for animation effects
 mail-client/evolution:connman - Enable net-misc/connman support (requires 'networkmanager' USE flag to be disabled).
 mail-client/evolution:crypt - Enable GPG encryption support using app-crypt/gnupg and app-crypt/pinentry
 mail-client/evolution:ldap - Enable support for fetching contacts from an LDAP or Active Directory server using net-nds/openldap
+mail-client/evolution:map - Enable support for displaying contacts on a map inside evolution using media-libs/libchamplain
 mail-client/evolution:networkmanager - Allows Evolution to automagically toggle online/offline mode by talking to net-misc/networkmanager and getting the current network state
 mail-client/mail-notification:gmail - Enable Gmail mailbox checking
 mail-client/mail-notification:mh - Enable MH mailbox checking
@@ -2646,10 +2651,6 @@ media-tv/xbmc:vaapi - Enables VAAPI (Video Acceleration API) for hardware decodi
 media-tv/xbmc:vdpau - enable support for Video Decode and Presentation API for Unix
 media-tv/xbmc:webserver - Enable internal webserver
 media-tv/xbmc:xrandr - Support X randr extension
-media-tv/xdtv:aqua_theme - Enable graphic theme Aqua-style
-media-tv/xdtv:carbone_theme - Adds the Carbone pixmaps theme for the GUI
-media-tv/xdtv:schedule - Adds the possibility to schedule tv recording via xdtv_record.sh
-media-tv/xdtv:zvbi - Enable VBI Decoding Library for Zapping
 media-tv/xmltv:ar - Argentina tv listing grabber
 media-tv/xmltv:be - Belgium and Luxemburg tv listing grabber
 media-tv/xmltv:brnet - Brazil cable tv listing grabber
@@ -3156,6 +3157,10 @@ net-fs/coda:client - Build and install the client components of coda filesystem.
 net-fs/coda:coda_layout - Use legacy filesystem layout instead of FHS compliant one. Note: /coda symlink is installed unconditionally when FHS layout is used. Therefore the /coda namespace is preserved with either layout.
 net-fs/coda:coda_symlinks - Install legacy symlinks when FHS layout has been selected (-coda_layout). You should only need this if you use local scripts or 3rd party apps relying on precise layout. Note: /coda symlink is installed unconditionally, so the namespace is preserved in any case.
 net-fs/coda:server - Build and install the server components of coda filesystem. Note: at least one of client/server flags must be enabled.
+net-fs/netatalk:appletalk - Build support for Apple's AppleTalk (DDP) protocol and its utilities (atalkd, timelord, papd).
+net-fs/netatalk:cups - Add support for net-print/cups printers in papd. This flag is only considered if appletalk USE flag is enabled, and is otherwise ignored.
+net-fs/netatalk:quota - Add support for user quota on various filesystems.
+net-fs/netatalk:ssl - Use dev-libs/openssl to provide DHX User Access Modules. These are not used with most recent versions of OS X and can be kept disabled without risks.
 net-fs/netatalk:xfs - Enable support for XFS Quota
 net-fs/nfs-utils:nfsidmap - Enable support for newer nfsidmap helper
 net-fs/nfs-utils:nfsv3 - Enable support for NFSv3
@@ -3261,6 +3266,7 @@ net-im/gnugadu:tlen - Enable Tlen.pl protocol support
 net-im/jabberd2:memdebug - Enable nad and pool debug. Requires USE="debug" to be set.
 net-im/kadu:gadu - Enables Gadu communication protocol
 net-im/kadu:phonon - Enables phonon audio plugin
+net-im/kadu:sdk - Install Kadu SDK (cmake module, API headers)
 net-im/kadu:speech - Enables speech module
 net-im/kmess:konqueror - Enable integration with konqueror
 net-im/kmess:libnotify - Enable desktop notifications using the knotify library
@@ -3551,6 +3557,7 @@ net-libs/telepathy-qt4:glib - Enable support for various telepathy/glib related 
 net-libs/webkit-gtk:coverage - Enable code coverage support
 net-libs/webkit-gtk:introspection - Use dev-libs/gobject-introspection for introspection
 net-libs/webkit-gtk:jit - Enable JIT javascript compiler (disabling it will cause performance penalty)
+net-libs/webkit-gtk:webgl - Build support for the WebGL HTML API using virtual/opengl
 net-libs/wt:extjs - Build Wt Ext library with JavaScript-only widgets (http://extjs.com/)
 net-libs/wt:fcgi - Compile in FCGI connector
 net-libs/wt:graphicsmagick - Enable GraphicsMagick, for supporting painting to raster images (PNG, GIF, ...) (WRasterImage)
@@ -3844,6 +3851,7 @@ net-news/liferea:lua - Enable lua scripting
 net-nntp/inn:innkeywords - Enable automatic keyword generation support
 net-nntp/inn:inntaggedhash - Use tagged hash table for history (disables large file support)
 net-nntp/nzbget:parcheck - Enable support for checking PAR archives
+net-nntp/slrn:canlock - Add support for cancel locks via net-libs/canlock
 net-nntp/slrn:uudeview - Add support for yEnc coding and more using dev-libs/uulib
 net-nntp/tin:cancel-locks - Enable Cancel-Lock header functionality (also enables USE=evil)
 net-nntp/tin:etiquette - Enable the display off posting etiquettes
@@ -4706,7 +4714,6 @@ www-client/epiphany:nss - Import passwords from older gecko based www-client/epi
 www-client/firefox:crashreporter - Enable crashreporter for mozilla upstream, debugging symbols are not required for reporting crashes.
 www-client/firefox:custom-optimization - Fine-tune custom compiler optimizations, setting this is not recommended.
 www-client/firefox:ipc - Use inter-process communication between tabs and plugins. Allows for greater stability in case of plugin crashes
-www-client/firefox:methodjit - Enable JIT for JavaScript using MethodJIT for faster JS performance. Hardened users can disable this USE-flag to use MPROTECT on grsecurity kernels.
 www-client/firefox:pgo - Add support for profile-guided optimization using gcc-4.5, for faster binaries. This option will double the compile time.
 www-client/firefox:system-sqlite - Use the system-wide dev-db/sqlite installation with secure-delete enabled
 www-client/firefox:webm - Use system media-libs/libvpx for HTML5 WebM video support.
@@ -4789,6 +4796,7 @@ www-servers/nginx:nginx_modules_http_dav - This module adds the HTTP and WebDAV 
 www-servers/nginx:nginx_modules_http_ey_balancer - This module adds an upstream connection queue to nginx
 www-servers/nginx:nginx_modules_http_flv - This module provides the ability to seek within FLV (Flash) files using time-based offsets.
 www-servers/nginx:nginx_modules_http_gzip_static - Enables support for gzipping static content on disk
+www-servers/nginx:nginx_modules_http_mp4 - This module adds pseudo-streaming support for H.264/AAC in MP4 containers.
 www-servers/nginx:nginx_modules_http_random_index - Pick a random directory index from a directory.
 www-servers/nginx:nginx_modules_http_realip - This module allows to change the client's IP address to value from request header (e. g. X-Real-IP or X-Forwarded-For).
 www-servers/nginx:nginx_modules_http_slowfs_cache - This module adds the ability to cache static files
@@ -5012,6 +5020,7 @@ x11-wm/matchbox-panel:dnotify - Use the linux kernel directory notification feat
 x11-wm/matchbox-panel:lowres - Optimize for low resolution screens.
 x11-wm/musca:apis - Optionally install the experimental `apis' window manager
 x11-wm/musca:xlisten - Optionally install the xlisten utility
+x11-wm/mutter:introspection - Use dev-libs/gobject-introspection for introspection
 x11-wm/openbox:session - Enables support for session managers
 x11-wm/ratpoison:history - Use sys-libs/readline for history handling
 x11-wm/sawfish:pango - Enable pango support

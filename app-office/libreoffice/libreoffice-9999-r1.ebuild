@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/libreoffice/libreoffice-9999-r1.ebuild,v 1.27 2011/09/29 14:27:25 scarabeus Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/libreoffice/libreoffice-9999-r1.ebuild,v 1.31 2011/09/30 11:47:52 scarabeus Exp $
 
 EAPI=3
 
@@ -87,7 +87,7 @@ COMMON_DEPEND="
 	app-arch/unzip
 	>=app-text/hunspell-1.3.2
 	app-text/mythes
-	>=app-text/libtextcat-3.0
+	>=app-text/libtextcat-3.1
 	app-text/libwpd:0.9[tools]
 	app-text/libwpg:0.2
 	>=app-text/libwps-0.2.2
@@ -150,9 +150,8 @@ RDEPEND="${COMMON_DEPEND}
 	java? ( >=virtual/jre-1.6 )
 "
 
-# FIXME: l10n after release/branching
 PDEPEND="
-	>=app-office/libreoffice-l10n-3.4
+	>=app-office/libreoffice-l10n-$(get_version_component_range 1-2)
 "
 
 # FIXME: cppunit should be moved to test conditional
@@ -190,7 +189,6 @@ DEPEND="${COMMON_DEPEND}
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-3.3.1-neon_remove_SSPI_support.diff"
 )
 
 # Uncoment me when updating to eapi4
@@ -395,7 +393,7 @@ src_configure() {
 		--with-external-thes-dir="${EPREFIX}/usr/share/myspell" \
 		--with-external-tar="${DISTDIR}" \
 		--with-lang="" \
-		--with-max-jobs=1 \
+		--with-max-jobs=${jbs} \
 		--with-num-cpus=${jbs} \
 		--with-theme="${themes}" \
 		--with-unix-wrapper=libreoffice \

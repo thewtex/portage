@@ -1,5 +1,5 @@
-app-admin/eselect-blas || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool
-app-admin/eselect-blas doc? ( app-doc/blas-docs )
+virtual/fortran app-admin/eselect-blas || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool
+virtual/fortran app-admin/eselect-blas doc? ( app-doc/blas-docs )
 0
 http://www.netlib.org/lapack/lapack-lite-3.1.1.tgz
 
@@ -7,14 +7,14 @@ http://www.netlib.org/blas/
 BSD
 Basic Linear Algebra Subprograms F77 reference implementations
 ~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x64-macos
-autotools eutils flag-o-matic libtool multilib portability toolchain-funcs
+autotools eutils flag-o-matic fortran-2 libtool multilib portability toolchain-funcs
 doc
 
 
 
 3
 
-compile configure install postinst prepare
+compile configure install postinst prepare setup
 
 
 
