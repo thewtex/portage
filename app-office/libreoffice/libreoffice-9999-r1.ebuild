@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/libreoffice/libreoffice-9999-r1.ebuild,v 1.31 2011/09/30 11:47:52 scarabeus Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/libreoffice/libreoffice-9999-r1.ebuild,v 1.38 2011/10/05 14:25:41 scarabeus Exp $
 
 EAPI=3
 
@@ -39,7 +39,11 @@ MODULES="core binfilter dictionaries help"
 if [[ ${PV} != *9999* ]]; then
 	for i in ${DEV_URI}; do
 		for mod in ${MODULES}; do
-			SRC_URI+=" ${i}/${PN}-${mod}-${PV}.tar.bz2"
+			if [[ ${mod} == binfilter ]]; then
+				SRC_URI+=" binfilter? ( ${i}/${PN}-${mod}-${PV}.tar.bz2 )"
+			else
+				SRC_URI+=" ${i}/${PN}-${mod}-${PV}.tar.bz2"
+			fi
 		done
 		unset mod
 	done
@@ -53,6 +57,8 @@ unset DEV_URI
 ADDONS_SRC+=" ${ADDONS_URI}/fdb27bfe2dbe2e7b57ae194d9bf36bab-SampleICC-1.3.2.tar.gz"
 ADDONS_SRC+=" nsplugin? ( ${ADDONS_URI}/1f24ab1d39f4a51faf22244c94a6203f-xmlsec1-1.2.14.tar.gz )"
 ADDONS_SRC+=" java? ( ${ADDONS_URI}/17410483b5b5f267aa18b7e00b65e6e0-hsqldb_1_8_0.zip )"
+ADDONS_SRC+=" java? ( ${ADDONS_URI}/798b2ffdc8bcfe7bca2cf92b62caf685-rhino1_5R5.zip )"
+ADDONS_SRC+=" java? ( ${ADDONS_URI}/35c94d2df8893241173de1d16b6034c0-swingExSrc.zip )"
 SRC_URI+=" ${ADDONS_SRC}"
 
 TDEPEND="${EXT_URI}/472ffb92d82cf502be039203c606643d-Sun-ODF-Template-Pack-en-US_1.0.0.oxt"
@@ -69,8 +75,9 @@ unset ADDONS_URI
 unset EXT_URI
 unset ADDONS_SRC
 
-IUSE="binfilter +branding dbus debug eds gnome +graphite gstreamer gtk +jemalloc
-kde ldap mysql nsplugin odk opengl pdfimport svg templates test +vba webdav"
+IUSE="binfilter +branding +cmis dbus debug eds gnome +graphite gstreamer gtk
++jemalloc kde ldap mysql nsplugin odk opengl pdfimport svg templates test +vba
++webdav"
 LICENSE="LGPL-3"
 SLOT="0"
 [[ ${PV} == *9999* ]] || KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
@@ -87,7 +94,7 @@ COMMON_DEPEND="
 	app-arch/unzip
 	>=app-text/hunspell-1.3.2
 	app-text/mythes
-	>=app-text/libtextcat-3.1
+	>=app-text/libexttextcat-3.1
 	app-text/libwpd:0.9[tools]
 	app-text/libwpg:0.2
 	>=app-text/libwps-0.2.2
@@ -112,6 +119,7 @@ COMMON_DEPEND="
 	x11-libs/libXinerama
 	x11-libs/libXrandr
 	x11-libs/libXrender
+	cmis? ( dev-cpp/libcmis )
 	dbus? ( >=dev-libs/dbus-glib-0.94 )
 	eds? ( gnome-extra/evolution-data-server )
 	gnome? ( gnome-base/gconf:2 )
@@ -241,6 +249,9 @@ src_unpack() {
 		done
 	else
 		for mod in ${MODULES}; do
+			if [[ ${mod} == binfilter ]] && ! use binfilter; then
+				continue
+			fi
 			mypv=${PV/.9999}
 			[[ ${mypv} != ${PV} ]] && EGIT_BRANCH="${PN}-${mypv/./-}"
 			EGIT_PROJECT="${PN}/${mod}"
@@ -357,10 +368,7 @@ src_configure() {
 		--with-system-headers \
 		--with-system-libs \
 		--with-system-jars \
-		--with-system-db \
 		--with-system-dicts \
-		--with-system-libvisio \
-		--with-system-libexttextcat \
 		--with-system-translate-toolkit \
 		--enable-cairo-canvas \
 		--enable-largefile \
@@ -429,6 +437,7 @@ src_configure() {
 		$(use_enable vba) \
 		$(use_enable vba activex-component) \
 		$(use_enable webdav neon) \
+		$(use_with cmis) \
 		$(use_with java) \
 		$(use_with ldap openldap) \
 		$(use_with mysql system-mysql-cppconn) \

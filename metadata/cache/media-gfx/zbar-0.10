@@ -1,5 +1,5 @@
-gtk? ( =dev-libs/glib-2* =x11-libs/gtk+-2* ) imagemagick? ( >=media-gfx/imagemagick-6.2.6 ) jpeg? ( virtual/jpeg ) python? ( >=dev-lang/python-2.3 gtk? ( dev-python/pygtk ) ) qt4? ( x11-libs/qt-core x11-libs/qt-gui ) v4l2? ( media-libs/libv4l ) X? ( x11-libs/libXext xv? ( x11-libs/libXv ) ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool
-gtk? ( =dev-libs/glib-2* =x11-libs/gtk+-2* ) imagemagick? ( >=media-gfx/imagemagick-6.2.6 ) jpeg? ( virtual/jpeg ) python? ( >=dev-lang/python-2.3 gtk? ( dev-python/pygtk ) ) qt4? ( x11-libs/qt-core x11-libs/qt-gui ) v4l2? ( media-libs/libv4l ) X? ( x11-libs/libXext xv? ( x11-libs/libXv ) )
+gtk? ( =dev-libs/glib-2* =x11-libs/gtk+-2* ) imagemagick? ( >=media-gfx/imagemagick-6.2.6 ) jpeg? ( virtual/jpeg ) python? ( gtk? ( dev-python/pygtk ) ) qt4? ( x11-libs/qt-core x11-libs/qt-gui ) X? ( x11-libs/libXext xv? ( x11-libs/libXv ) ) >=app-admin/eselect-python-20091230 =dev-lang/python-2*
+gtk? ( =dev-libs/glib-2* =x11-libs/gtk+-2* ) imagemagick? ( >=media-gfx/imagemagick-6.2.6 ) jpeg? ( virtual/jpeg ) python? ( gtk? ( dev-python/pygtk ) ) qt4? ( x11-libs/qt-core x11-libs/qt-gui ) X? ( x11-libs/libXext xv? ( x11-libs/libXv ) ) >=app-admin/eselect-python-20091230 =dev-lang/python-2*
 0
 mirror://sourceforge/zbar/zbar-0.10.tar.bz2
 
@@ -7,14 +7,14 @@ http://zbar.sourceforge.net/
 LGPL-2.1
 Library and tools for reading barcodes from images or video
 ~amd64 ~x86
-autotools eutils libtool multilib portability toolchain-funcs
-gtk +imagemagick +jpeg python qt4 +threads +v4l2 X +xv
+multilib python toolchain-funcs
+gtk imagemagick jpeg python qt4 static-libs +threads v4l v4l2 X xv
 
 
 
-3
+2
 
-configure install prepare
+configure install
 
 
 
