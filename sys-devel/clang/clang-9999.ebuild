@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/clang/clang-9999.ebuild,v 1.15 2011/07/08 10:10:59 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/clang/clang-9999.ebuild,v 1.17 2011/10/04 11:52:07 voyageur Exp $
 
 EAPI=3
 
@@ -17,11 +17,11 @@ ESVN_REPO_URI="http://llvm.org/svn/llvm-project/cfe/trunk"
 LICENSE="UoI-NCSA"
 SLOT="0"
 KEYWORDS=""
-IUSE="alltargets debug +static-analyzer +system-cxx-headers test"
+IUSE="debug multitarget +static-analyzer +system-cxx-headers test"
 
 # Note: for LTO support, clang will depend on binutils with gold plugins, and LLVM built after that - http://llvm.org/docs/GoldPlugin.html
 DEPEND="static-analyzer? ( dev-lang/perl )"
-RDEPEND="~sys-devel/llvm-${PV}[alltargets=]"
+RDEPEND="~sys-devel/llvm-${PV}[multitarget=]"
 
 S="${WORKDIR}/llvm"
 
@@ -56,24 +56,18 @@ src_prepare() {
 		-e 's,^PROJ_libdir.*,PROJ_libdir := $(PROJ_prefix)/'$(get_libdir)/llvm, \
 		-i Makefile.config.in || die "Makefile.config sed failed"
 
-	einfo "Fixing rpath"
+	einfo "Fixing rpath and CFLAGS"
 	sed -e 's,\$(RPATH) -Wl\,\$(\(ToolDir\|LibDir\)),$(RPATH) -Wl\,'"${EPREFIX}"/usr/$(get_libdir)/llvm, \
+		-e '/OmitFramePointer/s/-fomit-frame-pointer//' \
 		-i Makefile.rules || die "rpath sed failed"
 }
 
 src_configure() {
-	local CONF_FLAGS="--enable-shared"
-
-	if use debug; then
-		CONF_FLAGS="${CONF_FLAGS} --disable-optimized"
-		einfo "Note: Compiling LLVM in debug mode will create huge and slow binaries"
-		# ...and you probably shouldn't use tmpfs, unless it can hold 900MB
-	else
-		CONF_FLAGS="${CONF_FLAGS} \
-			--enable-optimized \
-			--disable-assertions \
-			--disable-expensive-checks"
-	fi
+	local CONF_FLAGS="--enable-shared
+		--with-optimize-option=
+		$(use_enable !debug optimized)
+		$(use_enable debug assertions)
+		$(use_enable debug expensive-checks)"
 
 	# Setup the search path to include the Prefix includes
 	if use prefix ; then
@@ -81,7 +75,7 @@ src_configure() {
 			--with-c-include-dirs=${EPREFIX}/usr/include:/usr/include"
 	fi
 
-	if use alltargets; then
+	if use multitarget; then
 		CONF_FLAGS="${CONF_FLAGS} --enable-targets=all"
 	else
 		CONF_FLAGS="${CONF_FLAGS} --enable-targets=host-only"

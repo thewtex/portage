@@ -1,9 +1,9 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/lensfun/lensfun-0.2.5-r2.ebuild,v 1.2 2011/08/23 23:00:46 radhermit Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/lensfun/lensfun-0.2.5-r2.ebuild,v 1.5 2011/10/04 21:36:12 phajdan.jr Exp $
 
 EAPI=2
-inherit eutils python
+inherit eutils python toolchain-funcs
 
 DESCRIPTION="lensfun: A library for rectifying and simulating photographic lens distortions"
 HOMEPAGE="http://lensfun.berlios.de/"
@@ -11,13 +11,13 @@ SRC_URI="mirror://berlios/lensfun/${P}.tar.bz2"
 
 LICENSE="LGPL-3"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sh ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sh ~sparc x86"
 IUSE="debug doc"
 
 RDEPEND=">=dev-libs/glib-2
 	>=media-libs/libpng-1.2"
 DEPEND="${RDEPEND}
-	=dev-lang/python-2*
+	|| ( dev-lang/python:2.7 dev-lang/python:2.6 )
 	dev-util/pkgconfig
 	doc? ( >=app-doc/doxygen-1.5.0 )"
 
@@ -37,6 +37,9 @@ src_prepare() {
 }
 
 src_configure() {
+	tc-export CXX
+	export LD="${CXX}"
+
 	local myconf=""
 	use debug && myconf="--mode=debug"
 	# econf does NOT work
