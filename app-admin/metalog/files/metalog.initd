@@ -1,9 +1,9 @@
 #!/sbin/runscript
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/metalog/files/metalog.initd,v 1.5 2011/09/23 03:15:23 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/metalog/files/metalog.initd,v 1.4 2009/01/02 07:56:34 vapier Exp $
 
-extra_started_commands="buffer unbuffer"
+opts="buffer unbuffer"
 
 PIDFILE=/var/run/metalog.pid
 
@@ -14,29 +14,31 @@ depend() {
 	provide logger
 }
 
-ssd() { start-stop-daemon --exec /usr/sbin/metalog --pidfile "${PIDFILE}" "$@" ; }
-
 start() {
 	ebegin "Starting metalog"
-	ssd --start -- \
-	    --daemonize --pidfile="${PIDFILE}" ${METALOG_OPTS}
+	start-stop-daemon --start --exec /usr/sbin/metalog \
+	    --pidfile "${PIDFILE}" \
+	    -- --daemonize --pidfile="${PIDFILE}" ${METALOG_OPTS}
 	eend $?
 }
 
 stop() {
 	ebegin "Stopping metalog"
-	ssd --stop
+	start-stop-daemon --stop --exec /usr/sbin/metalog \
+	    --pidfile "${PIDFILE}"
 	eend $?
 }
 
 buffer() {
 	ebegin "Enabling log buffering"
-	ssd --signal USR2
+	start-stop-daemon --stop --oknodo --signal USR2 \
+	    --exec /usr/sbin/metalog --pidfile "${PIDFILE}"
 	eend $?
 }
 
 unbuffer() {
 	ebegin "Disabling log buffering"
-	ssd --signal USR1
+	start-stop-daemon --stop --oknodo --signal USR1 \
+	    --exec /usr/sbin/metalog --pidfile "${PIDFILE}"
 	eend $?
 }
