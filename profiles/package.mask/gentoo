@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.13105 2011/10/05 14:27:29 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.13115 2011/10/06 20:46:41 aballier Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -31,11 +31,35 @@
 
 #--- END OF EXAMPLES ---
 
+# Samuli Suominen <ssuominen@gentoo.org> (06 Oct 2011)
+# Part of wxGTK-2.6 removal wrt bug #330683
+# Removal in 30 days
+games-action/xpilot-ng
+games-puzzle/londonlaw
+
+# Samuli Suominen <ssuominen@gentoo.org> (06 Oct 2011)
+# Part of wxGTK-2.6 removal wrt bug #330683
+# Removal in 14 days
+=dev-games/crystalspace-1.2*
+=dev-games/cel-1.2*
+
+# Pawel Hajdan jr <phajdan.jr@gentoo.org> (06 Oct 2011)
+# Extremely experimental. Masked while it's being tested.
+# Note: it is only useful for building NaCl IRT, if you're not
+# compiling IRT this is _not_ what you want.
+dev-lang/nacl-toolchain-newlib
+
 # Alexis Ballier <aballier@gentoo.org> (05 Oct 2011)
 # Packages used only in TeX Live prior to 2010
 # Removal on 05 Nov 2011
 # Merged in dev-texlive/texlive-fontutils after TeX Live 2009
 dev-texlive/texlive-psutils
+# Moved to dev-texlive/texlive-langenglish after TeX Live 2010
+dev-texlive/texlive-langukenglish
+# Moved to dev-texlive/texlive-langarabic after TeX Live 2009
+dev-texlive/texlive-langarab
+# Removed after TeX Live 2009
+dev-texlive/texlive-documentation-greek
 
 # Hans de Graaff <graaff@gentoo.org> (04 Oct 2011)
 # Mask stable version of ruby-activeldap since the sole version
@@ -414,10 +438,6 @@ net-zope/zwiki
 # Bug #382485.
 =virtual/jdk-1.7*
 =virtual/jre-1.7*
-
-# Alexis Ballier <aballier@gentoo.org> (07 Sep 2011)
-# New releases from Jane Street, breaks their rev. deps for now
->=dev-ml/sexplib-7
 
 # Ole Markus With <olemarkus@gentoo.org> (07 Sep 2011)
 # Masked for removal 7 Oct 2011.
@@ -909,15 +929,6 @@ dev-haskell/hsshellscript
 # Use the split horde ebuilds instaed.
 www-apps/horde-webmail
 www-apps/horde-groupware
-
-# Alexis Ballier <aballier@gentoo.org> (13 Nov 2010)
-# Last rites: app-text/ptex
-# Ebuilds have been unmaintained for years. ptex is now merged in TeX Live with
-# the 2010 version: enable the cjk useflag. If you have any feature ptex had
-# that is not available with TeX Live, please file a bug.
-# Will be removed on max{13 Dec 2010, TeX Live 2010 stabilized}.
-# Bugs: 303965, 323559 and 344585
-app-text/ptex
 
 # Markos Chandras <hwoarang@gentoo.org> (01 Nov 2010)
 # Masking alpha releases

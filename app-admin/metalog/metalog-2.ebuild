@@ -19,10 +19,6 @@ RDEPEND=">=dev-libs/libpcre-3.4"
 DEPEND="${RDEPEND}
 	app-arch/xz-utils"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${PN}-0.9-metalog-conf.patch
-}
-
 src_configure() {
 	econf $(use_with unicode)
 }
@@ -31,8 +27,13 @@ src_install() {
 	emake DESTDIR="${D}" install || die "make install failed"
 	dodoc AUTHORS ChangeLog README NEWS metalog.conf
 
+	# Replace stock metalog.conf with new one.
+	rm -f "${D}/etc/metalog.conf"
+	install "${FILESDIR}/metalog.conf" "${D}/etc/metalog.conf" -m 0600 -o root -g root
+
 	into /
 	dosbin "${FILESDIR}"/consolelog.sh || die
+	dosbin "${FILESDIR}/metalog-postrotate-compress.sh" || die
 
 	newinitd "${FILESDIR}"/metalog.initd metalog
 	newconfd "${FILESDIR}"/metalog.confd metalog
