@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-cdr/dvdisaster/dvdisaster-0.72.2.ebuild,v 1.2 2011/09/23 08:46:42 polynomial-c Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-cdr/dvdisaster/dvdisaster-0.72.2.ebuild,v 1.5 2011/10/08 16:24:41 phajdan.jr Exp $
 
 EAPI=4
 inherit eutils gnome2-utils versionator
@@ -12,7 +12,7 @@ HOMEPAGE="http://dvdisaster.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 SLOT="0"
 IUSE="debug linguas_cs linguas_de linguas_it linguas_ru sse2"
 
@@ -40,7 +40,7 @@ src_configure() {
 		myconf+=" --with-sse2=no"
 	fi
 
-	use debug && myconf+=" --debug --with-memdebug=yes"
+	use debug && myconf+=" --with-memdebug=yes"
 
 	./configure \
 		--prefix=/usr \

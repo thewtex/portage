@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Inline/Inline-0.480.0.ebuild,v 1.1 2011/09/27 16:31:26 tove Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Inline/Inline-0.480.0.ebuild,v 1.3 2011/10/10 10:42:35 jer Exp $
 
 EAPI=4
 
@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Write Perl subroutines in other languages"
 
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~s390 ~sh ~sparc ~x86"
 IUSE="test"
 
 RDEPEND="virtual/perl-Digest-MD5

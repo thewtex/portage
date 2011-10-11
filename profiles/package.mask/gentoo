@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.13115 2011/10/06 20:46:41 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.13123 2011/10/10 07:01:29 grobian Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,17 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Anthony G. Basile <blueness@gentoo.org> (08 Oct 2011)
+# Masked while testing potentially dangerous utility
+dev-python/pypax
+
+# Markos Chandras <hwoarang@gentoo.org> (08 Oct 2011)
+# Masking due to insecure usage of bundled libpng14 and zlib
+# See bug 356127. Waiting for upstream to release a new version
+# that will work with libpng15. Before unmasking contact
+# qa@gentoo.org
+media-gfx/pngcrush
 
 # Samuli Suominen <ssuominen@gentoo.org> (06 Oct 2011)
 # Part of wxGTK-2.6 removal wrt bug #330683
@@ -157,10 +168,6 @@ x11-misc/ktsuss
 # Masked for removal on 20111022
 # See bug #382831
 games-action/dungeon
-
-# Markos Chandras <hwoarang@gentoo.org> (21 Sep 2011)
-# Masking beta releases
-=net-p2p/qbittorrent-2.9.0_rc*
 
 # Olivier Crete <tester@gentoo.org> (20 Sep 2011)
 # Masked because the API was broken and it will  causes crashes in 
@@ -691,12 +698,6 @@ net-irc/atheme-services
 # Aaron W. Swenson <titanofold@gentoo.org> (10 Jul 2011)
 # Beta Release
 >=dev-db/pgadmin3-1.14.0_beta1
-
-# Diego Elio Pettenò <flameeyes@gentoo.org> (08 Jul 2011)
-# Seems to work unreliably between reboots, waiting to hear from
-# upstream.
-=sys-apps/pcsc-lite-1.7.4
-=app-crypt/ccid-1.4.4
 
 # Nirbheek Chauhan <nirbheek@gentoo.org> (03 Jul 2011)
 # Mask js185 release, changes pkgconfig file, soname, etc
