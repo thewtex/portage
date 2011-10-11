@@ -1,19 +1,22 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/unpaper/unpaper-9999.ebuild,v 1.2 2011/09/06 14:25:31 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/unpaper/unpaper-9999.ebuild,v 1.4 2011/10/10 12:05:07 scarabeus Exp $
 
 EAPI=4
-EGIT_REPO_URI="git://github.com/Flameeyes/unpaper.git"
 
-inherit git-2 autotools
+if [[ ${PV} == 9999 ]]; then
+	EGIT_REPO_URI="git://github.com/Flameeyes/unpaper.git"
+	inherit git-2 autotools
+else
+	SRC_URI="http://www.flameeyes.eu/files/${P}.tar.xz"
+	KEYWORDS="~amd64 ~x86"
+fi
 
 DESCRIPTION="Post-processor for scanned and photocopied book pages"
-HOMEPAGE="http://unpaper.berlios.de/
-	https://github.com/flameeyes/unpaper"
+HOMEPAGE="http://www.flameeyes.eu/projects/unpaper"
 
 LICENSE="GPL-2"
 
-KEYWORDS=""
 SLOT="0"
 IUSE="test"
 
@@ -22,9 +25,11 @@ DEPEND="test? ( media-libs/netpbm[png] )
 	app-text/docbook-xsl-ns-stylesheets"
 RDEPEND=""
 
-src_prepare() {
-	eautoreconf
-}
+if [[ ${PV} == 9999 ]]; then
+	src_prepare() {
+		eautoreconf
+	}
+fi
 
 src_configure() {
 	econf \

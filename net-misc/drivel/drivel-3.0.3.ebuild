@@ -1,10 +1,12 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/drivel/drivel-3.0.3.ebuild,v 1.1 2011/05/15 10:46:34 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/drivel/drivel-3.0.3.ebuild,v 1.4 2011/10/09 12:29:29 hwoarang Exp $
 
 EAPI="2"
 
-inherit eutils gnome2
+GCONF_DEBUG="no"
+
+inherit autotools eutils gnome2
 
 DESCRIPTION="Drivel is a desktop blogger with support for LiveJournal, Blogger,
 MoveableType, Wordpress and more."
@@ -14,7 +16,7 @@ LICENSE="GPL-2"
 
 IUSE="dbus spell"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="amd64 ~ppc ~sparc ~x86"
 
 RDEPEND=">=dev-libs/glib-2.16.6:2
 	>=x11-libs/gtk+-2.16.5:2
@@ -41,4 +43,9 @@ pkg_setup() {
 		--disable-desktop-update
 		--enable-error-on-warning=no
 		--localstatedir=${D}/var"
+}
+
+src_prepare() {
+	sed -i -e 's/make -C/$(MAKE) -C/' Makefile.am || die
+	eautomake
 }

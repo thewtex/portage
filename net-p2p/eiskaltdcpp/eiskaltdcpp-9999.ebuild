@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/eiskaltdcpp/eiskaltdcpp-9999.ebuild,v 1.23 2011/09/21 08:24:00 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/eiskaltdcpp/eiskaltdcpp-9999.ebuild,v 1.24 2011/10/08 15:49:45 pva Exp $
 
 EAPI="4"
 
@@ -14,7 +14,7 @@ HOMEPAGE="http://eiskaltdc.googlecode.com/"
 
 LICENSE="GPL-2 GPL-3"
 SLOT="0"
-IUSE="daemon dbus +emoticons examples -gnome -gtk idn -javascript libnotify lua +minimal pcre +qt4 sound spell sqlite upnp"
+IUSE="daemon dbus +dht +emoticons examples -gnome -gtk idn -javascript libnotify lua +minimal pcre +qt4 sound spell sqlite upnp xmlrpc"
 for x in ${LANGS}; do
 	IUSE="${IUSE} linguas_${x}"
 done
@@ -28,14 +28,14 @@ REQUIRED_USE="
 	spell? ( qt4 )
 	sound? ( || ( gtk qt4 ) )
 	sqlite? ( qt4 )
+	xmlrpc? ( daemon )
 "
 
 if [[ ${PV} != *9999* ]]; then
 	SRC_URI="http://${PN/pp/}.googlecode.com/files/${P}.tar.xz"
 	KEYWORDS="~amd64 ~x86"
 else
-	EGIT_REPO_URI="git://github.com/negativ/${PN}.git
-		https://github.com/negativ/${PN}.git"
+	EGIT_REPO_URI="git://github.com/negativ/${PN}.git"
 	KEYWORDS=""
 fi
 
@@ -49,11 +49,11 @@ RDEPEND="
 	lua? ( >=dev-lang/lua-5.1 )
 	pcre? ( >=dev-libs/libpcre-4.2 )
 	upnp? ( net-libs/miniupnpc )
+	daemon? ( xmlrpc? ( >=dev-libs/xmlrpc-c-1.19.0[abyss,cxx] ) )
 	gtk? (
 		x11-libs/pango
-		>=x11-libs/gtk+-2.10:2
-		>=dev-libs/glib-2.10:2
-		>=gnome-base/libglade-2.4:2.0
+		>=x11-libs/gtk+-2.18:2
+		>=dev-libs/glib-2.18:2
 		x11-themes/hicolor-icon-theme
 		gnome? ( gnome-base/libgnome )
 		libnotify? ( >=x11-libs/libnotify-0.4.1 )
@@ -74,6 +74,14 @@ DEPEND="${RDEPEND}
 "
 DOCS="AUTHORS ChangeLog.txt"
 
+pkg_pretend() {
+	if [[ ${MERGE_TYPE} != binary ]]; then
+		[[ $(gcc-major-version) -lt 4 ]] || \
+				( [[ $(gcc-major-version) -eq 4 && $(gcc-minor-version) -le 3 ]] ) \
+			&& die "Sorry, but gcc-4.3 and earlier won't work."
+	fi
+}
+
 src_configure() {
 	# linguas
 	local langs x
@@ -87,6 +95,7 @@ src_configure() {
 		-DLOCAL_MINIUPNP=OFF
 		"$(cmake-utils_use daemon NO_UI_DAEMON)"
 		"$(cmake-utils_use dbus DBUS_NOTIFY)"
+		"$(cmake-utils_use dht WITH_DHT)"
 		"$(cmake-utils_use emoticons WITH_EMOTICONS)"
 		"$(cmake-utils_use examples WITH_EXAMPLES)"
 		"$(cmake-utils_use gnome USE_LIBGNOME2)"
@@ -103,7 +112,8 @@ src_configure() {
 		"$(cmake-utils_use spell USE_ASPELL)"
 		"$(cmake-utils_use sqlite USE_QT_SQLITE)"
 		"$(cmake-utils_use upnp USE_MINIUPNP)"
-		-DXMLRPC_DAEMON=OFF
+		"$(cmake-utils_use xmlrpc XMLRPC_DAEMON)"
+		-DUSE_CLI=OFF
 	)
 	cmake-utils_src_configure
 }
