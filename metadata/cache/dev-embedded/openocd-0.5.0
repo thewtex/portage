@@ -1,0 +1,22 @@
+dev-lang/jimtcl usb? ( dev-libs/libusb ) presto? ( dev-embedded/libftd2xx ) ftd2xx? ( dev-embedded/libftd2xx ) ftdi? ( dev-embedded/libftdi )
+dev-lang/jimtcl usb? ( dev-libs/libusb ) presto? ( dev-embedded/libftd2xx ) ftd2xx? ( dev-embedded/libftd2xx ) ftdi? ( dev-embedded/libftdi )
+0
+mirror://sourceforge/project/openocd/openocd/0.5.0/openocd-0.5.0.tar.bz2
+strip
+http://openocd.sourceforge.net
+GPL-2
+OpenOCD - Open On-Chip Debugger
+~amd64 ~x86
+eutils multilib portability toolchain-funcs
+blaster dummy ftd2xx ftdi minidriver parport presto segger versaloon usb
+blaster? ( || ( ftdi ftd2xx ) ) ^^ ( ftdi ftd2xx )
+
+
+4
+
+configure install
+
+
+
+
+

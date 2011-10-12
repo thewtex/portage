@@ -296,14 +296,7 @@ app-editors/emacs-vcs:toolkit-scroll-bars - Use the selected toolkit's scrollbar
 app-editors/emacs-vcs:wide-int - Prefer wide Emacs integers (typically 62-bit). This option has an effect only on architectures where "long" and "long long" types have different size.
 app-editors/fe:sendmail - Send mail after editor abend
 app-editors/gedit:introspection - Use dev-libs/gobject-introspection for introspection
-app-editors/gedit-plugins:bookmarks - Advanced Bookmarking, it remembers all the bookmarks you ever toggled, highlights them in the text and allows you to navigate through a list with the navigation pane
-app-editors/gedit-plugins:bracketcompletion - Automatically adds closing brackets
 app-editors/gedit-plugins:charmap - Insert special characters just by clicking on them
-app-editors/gedit-plugins:colorpicker - Pick a color from a dialog and insert its hexadecimal representation
-app-editors/gedit-plugins:drawspaces - Draw spaces and tabs
-app-editors/gedit-plugins:joinlines - Join several lines or split long ones
-app-editors/gedit-plugins:showtabbar - Add a menu entry to show/hide the tabbar
-app-editors/gedit-plugins:smartspaces - Forget you're not using tabulations
 app-editors/gedit-plugins:synctex - Synchronize between LaTeX and PDF with gedit and evince
 app-editors/gedit-plugins:terminal - Embed a terminal in the bottom pane
 app-editors/gvim:netbeans - Include netbeans externaleditor integration support
@@ -913,8 +906,10 @@ dev-db/sqlite:unlock-notify - Adds API for notifications when a database is unlo
 dev-db/unixODBC:minimal - Disable bundled drivers and extra libraries (most users don't need these)
 dev-db/unixODBC:odbcmanual - Administrator, Internal Structure, Programmer and User documentation
 dev-embedded/openocd:blaster - Enable support for Altera USE-Blaster
+dev-embedded/openocd:dummy - Build the dummy port driver
 dev-embedded/openocd:ftd2xx - Enable support for USB FTDI chips via dev-embedded/libftd2xx
 dev-embedded/openocd:ftdi - Enable support for USB FTDI chips via dev-embedded/libftdi
+dev-embedded/openocd:minidriver - Build the dummy minidriver
 dev-embedded/openocd:parport - Enable support for parport JTAG devices
 dev-embedded/openocd:presto - Enable support for AXIS PRESTO devices
 dev-embedded/openocd:segger - Enable support for the Segger J-Link JTAG
@@ -1166,7 +1161,6 @@ dev-libs/geoip:perl-geoipupdate - Install pure perl version of geoipupdate, with
 dev-libs/glib:introspection - Use dev-libs/gobject-introspection for introspection
 dev-libs/glib:systemtap - Build support for profiling and tracing using dev-util/systemtap
 dev-libs/jemalloc:stats - Enable statistics calculation/reporting
-dev-libs/json-glib:coverage - Enable coverage analysis
 dev-libs/json-glib:introspection - Use dev-libs/gobject-introspection for introspection
 dev-libs/libburn:track-src-odirect - Read track input with O_DIRECT (see man 2 open), this may deliver a better write performance in some situations
 dev-libs/libcdio:minimal - Only build the libcdio library and little more, just to be used to link against from multimedia players. With this USE flag enabled, none of the command-line utilities are built, nor is the CDDA library.
@@ -3628,7 +3622,6 @@ net-misc/aria2:scripts - Install additional scripts which use aria2's xmlrpc fun
 net-misc/asterisk:ais - Support clustering using the Application Interface Specification framework
 net-misc/asterisk:dahdi - Support Digium compatible hardware (formerly known as Zaptel).
 net-misc/asterisk:gtalk - Enable support for Google Talk services
-net-misc/asterisk:h323 - Enable support for the H323 telephony protocol
 net-misc/asterisk:http - Enable embedded web server
 net-misc/asterisk:newt - Include additional tools that require redhats windowing toolkit
 net-misc/asterisk:osplookup - Support secure peering using the Open Settlement Protocol
@@ -4367,6 +4360,7 @@ sys-apps/util-linux:loop-aes - include support for Loop AES encryption
 sys-apps/util-linux:perl - install the chkdupexe helper script
 sys-apps/v86d:x86emu - Use x86emu for Video BIOS calls
 sys-apps/watchdog:nfs - enable support for checking nfs mounts
+sys-apps/xinetd:rpc - support RPC services
 sys-auth/consolekit:policykit - Use the PolicyKit framework (sys-auth/polkit) to get authorization for suspend/shutdown.
 sys-auth/munge:gcrypt - Use libgcrypt instead of openssl
 sys-auth/pam_mktemp:prevent-removal - If supported, set EXT2_APPEND_FL on /tmp/.private to prevent temporary directories from being removed

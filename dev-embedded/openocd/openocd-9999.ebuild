@@ -1,25 +1,25 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-embedded/openocd/openocd-9999.ebuild,v 1.15 2011/09/20 22:05:51 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-embedded/openocd/openocd-9999.ebuild,v 1.16 2011/10/10 20:23:06 hwoarang Exp $
 
-EAPI="2"
+EAPI="4"
 
-inherit autotools eutils
+inherit eutils
 if [[ ${PV} == "9999" ]] ; then
 	inherit git-2
 	KEYWORDS=""
-	EGIT_REPO_URI="git://openocd.git.sourceforge.net/gitroot/${PN}/${PN}"
+	EGIT_REPO_URI="git://${PN}.git.sourceforge.net/gitroot/${PN}/${PN}"
 else
 	KEYWORDS="~amd64 ~x86"
-	SRC_URI="http://dev.gentoo.org/~hwoarang/distfiles/${P}.tar.gz"
+	SRC_URI="mirror://sourceforge/project/${PN}/${PN}/${PV}/${P}.tar.bz2"
 fi
 
 DESCRIPTION="OpenOCD - Open On-Chip Debugger"
-HOMEPAGE="http://openocd.berlios.de/web/"
+HOMEPAGE="http://openocd.sourceforge.net"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="blaster ftd2xx ftdi parport presto segger versaloon usb"
+IUSE="blaster dummy ftd2xx ftdi minidriver parport presto segger versaloon usb"
 RESTRICT="strip" # includes non-native binaries
 
 # libftd2xx is the default because it is reported to work better.
@@ -30,36 +30,32 @@ DEPEND="dev-lang/jimtcl
 	ftdi? ( dev-embedded/libftdi )"
 RDEPEND="${DEPEND}"
 
-pkg_setup() {
-	if use ftdi && use ftd2xx ; then
-		ewarn "You can only use one FTDI library at a time, so picking"
-		ewarn "USE=ftdi (open source) over USE=ftd2xx (closed source)"
-	fi
-}
-
-src_prepare() {
-		sed -i -e "/@include version.texi/d" doc/${PN}.texi || die
-		AT_NO_RECURSIVE=yes eautoreconf
-}
+REQUIRED_USE="blaster? ( || ( ftdi ftd2xx ) ) ^^ ( ftdi ftd2xx )"
 
 src_configure() {
+	# Here are some defaults
+	myconf="--enable-buspirate --enable-ioutil --disable-werror
+	--disable-internal-jimtcl --enable-amtjtagaccel
+	--enable-ep93xx --enable-at91rm9200 --enable-gw16012
+	--enable-oocd_trace"
+
 	if use usb;then
 		myconf="${myconf} --enable-usbprog --enable-jlink --enable-rlink \
 			--enable-vsllink --enable-arm-jtag-ew"
 	fi
+
 	# add explicitely the path to libftd2xx
-	use ftd2xx && ! use ftdi && LDFLAGS="${LDFLAGS} -L/opt/$(get_libdir)"
+	use ftd2xx && LDFLAGS="${LDFLAGS} -L/opt/$(get_libdir)"
+
+	if use blaster; then
+		use ftdi && myconf="${myconf} --use_blaster_libftdi"
+		use ftd2xx && myconf="${myconf} --use_blaster_ftd2xx"
+	fi
 	econf \
-		--disable-werror \
-		--disable-internal-jimtcl \
-		--enable-amtjtagaccel \
-		--enable-ep93xx \
-		--enable-at91rm9200 \
-		--enable-gw16012 \
-		--enable-oocd_trace \
-		$(use_enable blaster usb_flaster_libftdi) \
+		$(use_enable dummy) \
 		$(use_enable ftdi ft2232_libftdi) \
-		$(use ftdi || use_enable ftd2xx ft2232_ftd2xx) \
+		$(use_enable ftd2xx ft2232_ftd2xx) \
+		$(use_enable minidriver minidriver-dummy) \
 		$(use_enable parport) \
 		$(use_enable presto presto_ftd2xx) \
 		$(use_enable segger jlink) \

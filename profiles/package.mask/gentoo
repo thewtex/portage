@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.13123 2011/10/10 07:01:29 grobian Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.13129 2011/10/11 06:05:00 radhermit Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -31,14 +31,22 @@
 
 #--- END OF EXAMPLES ---
 
+# Tim Harder <radhermit@gentoo.org> (11 Oct 2011)
+# Mask development releases
+=www-apps/wordpress-3.3*
+
+# Samuli Suominen <ssuominen@gentoo.org> (10 Oct 2011)
+# Use media-libs/tiff:3 instead.
+media-libs/tiff-compat
+
 # Anthony G. Basile <blueness@gentoo.org> (08 Oct 2011)
 # Masked while testing potentially dangerous utility
 dev-python/pypax
 
 # Markos Chandras <hwoarang@gentoo.org> (08 Oct 2011)
-# Masking due to insecure usage of bundled libpng14 and zlib
+# Masking due to insecure usage of bundled libpng
 # See bug 356127. Waiting for upstream to release a new version
-# that will work with libpng15. Before unmasking contact
+# that will work with system libpng. Before unmasking contact
 # qa@gentoo.org
 media-gfx/pngcrush
 
@@ -150,8 +158,8 @@ app-misc/recoll
 
 # Markos Chandras <hwoarang@gentoo.org> (26 Sep 2011)
 # 10 days masking for broader testing
-=dev-libs/boost-1.47.0
-=dev-util/boost-build-1.47.0
+~dev-libs/boost-1.47.0
+~dev-util/boost-build-1.47.0
 
 # Thomas Kahle <tomka@gentoo.org> (25 Sep 2011)
 # Masked for removal in 30 days.  Unfixed security
@@ -827,10 +835,6 @@ sys-kernel/usermode-sources
 # Needs tinderbox testing.
 >=net-libs/gnutls-2.12
 
-# Markos Chandras <hwoarang@gentoo.org> (17 Mar 2011)
-# Masking openocd prelease snapshot
-=dev-embedded/openocd-0.5.0_pre*
-
 # Christian Faulhammer <fauli@gentoo.org> (12 Mar 2011)
 # Mask for testing
 >=www-apps/joomla-1.6.0
@@ -964,11 +968,6 @@ net-analyzer/ncrack
 # Doug Goldstein <cardoe@gentoo.org> (8 Sep 2010)
 # masked live version
 =x11-libs/cairo-9999*
-
-# Sebastian Pipping <sping@gentoo.org> (1 Sep 2010)
-# Mask upcoming bumps, potentially too hot to push to everyone
-=media-libs/libdvdread-4.1.3_p1217
-=media-video/dvdbackup-0.4.1
 
 # Doug Goldstein <cardoe@gentoo.org> (28 Aug 2010)
 # Need to investigate build errors on some kernels

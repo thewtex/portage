@@ -1,20 +1,20 @@
-dev-lang/jimtcl usb? ( dev-libs/libusb ) presto? ( dev-embedded/libftd2xx ) ftd2xx? ( dev-embedded/libftd2xx ) ftdi? ( dev-embedded/libftdi ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool dev-vcs/git
+dev-lang/jimtcl usb? ( dev-libs/libusb ) presto? ( dev-embedded/libftd2xx ) ftd2xx? ( dev-embedded/libftd2xx ) ftdi? ( dev-embedded/libftdi ) dev-vcs/git
 dev-lang/jimtcl usb? ( dev-libs/libusb ) presto? ( dev-embedded/libftd2xx ) ftd2xx? ( dev-embedded/libftd2xx ) ftdi? ( dev-embedded/libftdi )
 0
 
 strip
-http://openocd.berlios.de/web/
+http://openocd.sourceforge.net
 GPL-2
 OpenOCD - Open On-Chip Debugger
 
-autotools eutils git-2 libtool multilib portability toolchain-funcs
-blaster ftd2xx ftdi parport presto segger versaloon usb
+eutils git-2 multilib portability toolchain-funcs
+blaster dummy ftd2xx ftdi minidriver parport presto segger versaloon usb
+blaster? ( || ( ftdi ftd2xx ) ) ^^ ( ftdi ftd2xx )
 
 
+4
 
-2
-
-configure install prepare setup unpack
+configure install unpack
 
 
 
