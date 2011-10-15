@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-strategy/savage-bin/savage-bin-2.00e.ebuild,v 1.12 2010/06/16 20:16:33 sping Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-strategy/savage-bin/savage-bin-2.00e.ebuild,v 1.14 2011/10/15 01:04:17 mr_bones_ Exp $
 
 EAPI=2
 inherit eutils games
@@ -25,7 +25,7 @@ RESTRICT="mirror strip"
 RDEPEND="virtual/opengl
 	x86? ( media-libs/libsdl
 		>=media-libs/freetype-2
-		<media-libs/jpeg-7 )
+		media-libs/jpeg:62 )
 	amd64? ( app-emulation/emul-linux-x86-sdl )"
 DEPEND="app-arch/unzip"
 
@@ -45,14 +45,13 @@ src_prepare() {
 	cp -f lin-client-auth-patch/libs/libpng12.so.0 libs/.
 	rm -rf lin-client-auth-patch/
 	rm -f graveyard/game.dll *.sh
-	sed \
-		-e "s:%GAMES_PREFIX_OPT%:${GAMES_PREFIX_OPT}:" \
-		"${FILESDIR}"/savage > "${T}"/savage \
-		|| die "sed failed"
+	sed -e "s:%GAMES_PREFIX_OPT%:${GAMES_PREFIX_OPT}:" \
+		-e 's/^exec /__GL_ExtensionStringVersion=17700 exec /' \
+		"${FILESDIR}"/savage > "${T}"/savage || die
 	# Here, we default to the best resolution
-	sed -i -e  \
-		's/setsave vid_mode -1/setsave vid_mode 1/' \
-		game/settings/default.cfg || die "sed failed"
+	sed -i \
+		-e 's/setsave vid_mode -1/setsave vid_mode 1/' \
+		game/settings/default.cfg || die
 }
 
 src_install() {
@@ -61,11 +60,14 @@ src_install() {
 	fperms g+x "${dir}"/silverback.bin || die "fperms failed"
 	dosym /dev/null "${dir}"/scripts.log || die "dosym failed"
 
-	dogamesbin "${T}"/savage
+	dogamesbin "${T}"/savage || die
 	make_desktop_entry savage "Savage: The Battle For Newerth"
 
 	games_make_wrapper savage-graveyard "./silverback.bin set mod graveyard" \
 		"${dir}" "${dir}"/libs
+	sed -i \
+		-e 's/^exec /__GL_ExtensionStringVersion=17700 exec /' \
+		"${D}/${GAMES_BINDIR}/savage-graveyard" || die
 	make_desktop_entry savage-graveyard "Savage: Graveyard"
 
 	prepgamesdirs

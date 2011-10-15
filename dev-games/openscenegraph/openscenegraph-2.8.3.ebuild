@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-games/openscenegraph/openscenegraph-2.8.3.ebuild,v 1.17 2011/09/24 22:06:09 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-games/openscenegraph/openscenegraph-2.8.3.ebuild,v 1.18 2011/10/14 09:50:30 tupone Exp $
 
 EAPI=2
 
@@ -14,8 +14,8 @@ HOMEPAGE="http://www.openscenegraph.org/projects/osg/"
 SRC_URI="http://www.openscenegraph.org/downloads/stable_releases/${MY_P}/source/${MY_P}.zip"
 
 LICENSE="wxWinLL-3 LGPL-2.1"
-KEYWORDS="amd64 ppc x86"
 SLOT="0"
+KEYWORDS="amd64 ppc x86"
 IUSE="curl debug doc examples ffmpeg fltk fox gdal gif glut gtk jpeg jpeg2k
 openexr openinventor osgapps pdf png qt4 sdl static-libs svg tiff truetype vnc
 wxwidgets xine xrandr zlib"

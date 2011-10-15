@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.13131 2011/10/12 07:38:33 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.13136 2011/10/15 04:04:43 mattst88 Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -49,13 +49,6 @@ media-libs/tiff-compat
 # Anthony G. Basile <blueness@gentoo.org> (08 Oct 2011)
 # Masked while testing potentially dangerous utility
 dev-python/pypax
-
-# Markos Chandras <hwoarang@gentoo.org> (08 Oct 2011)
-# Masking due to insecure usage of bundled libpng
-# See bug 356127. Waiting for upstream to release a new version
-# that will work with system libpng. Before unmasking contact
-# qa@gentoo.org
-media-gfx/pngcrush
 
 # Samuli Suominen <ssuominen@gentoo.org> (06 Oct 2011)
 # Part of wxGTK-2.6 removal wrt bug #330683
@@ -215,11 +208,6 @@ www-plugins/weave
 =media-plugins/xbmc-addon-vdr-9999
 
 # Markos Chandras <hwoarang@gentoo.org> (17 Sep 2011)
-# Very unstable at the moment. Not ready for ~testing
-# tree. Use with caution
-x11-misc/lightdm
-
-# Markos Chandras <hwoarang@gentoo.org> (17 Sep 2011)
 # Masked for testing for as long as it takes. Old QA problems
 # reported in bug #348432 and 
 # http://blog.flameeyes.eu/2010/08/20/there-s-something-about-webmin
@@ -233,14 +221,10 @@ net-ftp/ftpcube
 
 # Mike Gilbert <floppym@gentoo.org> (15 Sep 2011)
 # Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (15 Sep 2011)
-# ******************************************************************************************
-# Zope Toolkit, Zope and other Zope-related packages are now maintained in Progress Overlay,
-# which provides more Python-related features than the main tree.
-# You should switch to Progress Overlay.
-# You can use 'layman -a progress' to install Progress Overlay.
+# Zope Toolkit, Zope and other Zope-related packages are now maintained in
+# Progress Overlay. Use 'layman -a progress' to install Progress Overlay.
 # See http://www.gentoo.org/proj/en/overlays/userguide.xml for more information.
 # These packages will be removed from the main tree on 2012-03-01.
-# ******************************************************************************************
 app-admin/zope-config
 app-admin/zprod-manager
 dev-python/manuel
@@ -503,10 +487,6 @@ kde-misc/kcm_gtk
 # it for usage.
 ~sys-boot/grub-1.99
 
-# Matt Turner <mattst88@gentoo.org> (25 Aug 2011)
-# Masked for removal in 30 days. Use arcload instead.
-sys-boot/arcboot
-
 # Ole Markus With <olemarkus@gentoo.org> (21 Aug 2011)
 # Masking php:5.2. No longer maintained by upstream
 # Will be removed in a few months, depending on how much noise this will create
@@ -542,8 +522,7 @@ dev-tex/pdftex
 
 # Andreas K. Huettel <dilfridge@gentoo.org> (15 Aug 2011)
 # Mask for testing, depends on masked networkmanager
-# (the "3011" is not a typo!)
->=kde-misc/knetworkmanager-4.4.0_p30110815
+>=kde-misc/knetworkmanager-0.8.80
 
 # Robert Piasek <dagger@gentoo.org> (09 Aug 2011)
 # Masking for testing

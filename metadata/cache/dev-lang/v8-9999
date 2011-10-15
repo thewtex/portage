@@ -1,5 +1,5 @@
-readline? ( >=sys-libs/readline-6.1 ) dev-util/scons dev-vcs/subversion net-misc/rsync
-readline? ( >=sys-libs/readline-6.1 )
+readline? ( >=sys-libs/readline-6.1 ) >=app-admin/eselect-python-20091230 || ( =dev-lang/python-2.7* =dev-lang/python-2.6* ) dev-vcs/subversion net-misc/rsync
+readline? ( >=sys-libs/readline-6.1 ) >=app-admin/eselect-python-20091230 || ( =dev-lang/python-2.7* =dev-lang/python-2.6* )
 0
 
 
@@ -7,14 +7,14 @@ http://code.google.com/p/v8
 BSD
 Google's open source JavaScript engine
 
-eutils flag-o-matic multilib pax-utils portability scons-utils subversion toolchain-funcs
+eutils multilib pax-utils portability python subversion toolchain-funcs
 readline
 
 
 
-2
+3
 
-compile configure install postinst preinst prepare setup unpack
+compile install preinst prepare setup test unpack
 
 
 

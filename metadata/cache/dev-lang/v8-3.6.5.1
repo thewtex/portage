@@ -1,20 +1,20 @@
-|| ( dev-lang/python:2.6 dev-lang/python:2.7 )
-
+readline? ( >=sys-libs/readline-6.1 ) >=app-admin/eselect-python-20091230 || ( =dev-lang/python-2.7* =dev-lang/python-2.6* )
+readline? ( >=sys-libs/readline-6.1 ) >=app-admin/eselect-python-20091230 || ( =dev-lang/python-2.7* =dev-lang/python-2.6* )
 0
-http://dev.gentoo.org/~floppym/distfiles/v8-3.6.5.1.tar.xz http://dev.gentoo.org/~floppym/distfiles/gyp-1066.tar.xz
+mirror://gentoo/v8-3.6.5.1.tar.gz http://dev.gentoo.org/~floppym/distfiles/v8-3.6.5.1.tar.gz http://dev.gentoo.org/~floppym/distfiles/gyp-1066.tar.xz
 
 http://code.google.com/p/v8
 BSD
 Google's open source JavaScript engine
 ~amd64 ~arm ~x86 ~x64-macos ~x86-macos
-eutils multilib pax-utils portability toolchain-funcs
+eutils multilib pax-utils portability python toolchain-funcs
+readline
 
 
 
+3
 
-4
-
-compile install prepare test unpack
+compile install prepare setup test unpack
 
 
 
