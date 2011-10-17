@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/gd/gd-2.0.35-r3.ebuild,v 1.2 2011/04/15 08:51:24 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/gd/gd-2.0.35-r3.ebuild,v 1.4 2011/10/16 13:24:00 ssuominen Exp $
 
 EAPI="2"
 
@@ -12,12 +12,12 @@ SRC_URI="http://libgd.org/releases/${P}.tar.bz2"
 
 LICENSE="|| ( as-is BSD )"
 SLOT="2"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd"
 IUSE="fontconfig jpeg png static-libs truetype xpm zlib"
 
 RDEPEND="fontconfig? ( media-libs/fontconfig )
 	jpeg? ( virtual/jpeg )
-	png? ( >=media-libs/libpng-1.4 )
+	png? ( >=media-libs/libpng-1.5:0 )
 	truetype? ( >=media-libs/freetype-2.1.5 )
 	xpm? ( x11-libs/libXpm x11-libs/libXt )
 	zlib? ( sys-libs/zlib )"
@@ -28,8 +28,8 @@ src_prepare() {
 	epatch "${FILESDIR}"/${P}-maxcolors.patch #292130
 	epatch "${FILESDIR}"/${P}-fontconfig.patch #363367
 
-	# Try libpng14 first, then fallback to plain libpng
-	sed -i -e 's:png12:png14:' configure.ac || die
+	# Try libpng15 first, then fallback to plain libpng
+	sed -i -e 's:png12:png15:' configure.ac || die
 
 	# Avoid programs we never install
 	sed -i '/^noinst_PROGRAMS/s:=:=\n___fooooo =:' Makefile.in || die

@@ -1,8 +1,8 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-base/exo/exo-0.6.2.ebuild,v 1.1 2011/06/10 18:38:28 angelos Exp $
+# $Header: /var/cvsroot/gentoo-x86/xfce-base/exo/exo-0.6.2.ebuild,v 1.4 2011/10/16 05:22:06 ssuominen Exp $
 
-EAPI=3
+EAPI=4
 PYTHON_DEPEND="python? 2"
 inherit python xfconf
 
@@ -12,7 +12,7 @@ SRC_URI="mirror://xfce/src/xfce/exo/0.6/${P}.tar.bz2"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~x86-linux ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc x86 ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~x86-linux ~x64-solaris ~x86-solaris"
 IUSE="debug python"
 
 RDEPEND=">=dev-lang/perl-5.6
@@ -34,12 +34,12 @@ pkg_setup() {
 
 	XFCONF=(
 		--docdir="${EPREFIX}"/usr/share/doc/${PF}
-		--disable-dependency-tracking
 		--disable-static
 		$(use_enable python)
 		$(xfconf_use_debug)
 		--with-html-dir="${EPREFIX}"/usr/share/doc/${PF}/html
 		)
+
 	[[ ${CHOST} == *-darwin* ]] && XFCONF+=( --disable-visibility ) # 366857
 
 	DOCS=( AUTHORS ChangeLog HACKING NEWS README THANKS TODO )
@@ -48,7 +48,6 @@ pkg_setup() {
 src_prepare() {
 	rm -f py-compile
 	ln -s $(type -P true) py-compile
-
 	xfconf_src_prepare
 }
 
