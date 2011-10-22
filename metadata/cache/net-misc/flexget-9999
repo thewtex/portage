@@ -1,5 +1,5 @@
-dev-python/setuptools dev-python/feedparser >=dev-python/sqlalchemy-0.7 dev-python/pyyaml dev-python/beautifulsoup dev-python/html5lib dev-python/jinja dev-python/PyRSS2Gen dev-python/pynzb dev-python/progressbar dev-python/flask dev-python/cherrypy dev-python/paver test? ( dev-python/nose ) >=app-admin/eselect-python-20091230 || ( =dev-lang/python-2.7* =dev-lang/python-2.6* =dev-lang/python-2.5* ) dev-vcs/subversion net-misc/rsync
-dev-python/setuptools dev-python/feedparser >=dev-python/sqlalchemy-0.7 dev-python/pyyaml dev-python/beautifulsoup dev-python/html5lib dev-python/jinja dev-python/PyRSS2Gen dev-python/pynzb dev-python/progressbar dev-python/flask dev-python/cherrypy >=app-admin/eselect-python-20091230 || ( =dev-lang/python-2.7* =dev-lang/python-2.6* =dev-lang/python-2.5* )
+dev-python/setuptools dev-python/paver test? ( dev-python/feedparser >=dev-python/sqlalchemy-0.7 dev-python/pyyaml dev-python/beautifulsoup dev-python/html5lib dev-python/jinja dev-python/PyRSS2Gen dev-python/pynzb dev-python/progressbar dev-python/flask dev-python/cherrypy dev-python/nose ) >=app-admin/eselect-python-20091230 || ( =dev-lang/python-2.7* =dev-lang/python-2.6* =dev-lang/python-2.5* ) dev-vcs/subversion net-misc/rsync
+dev-python/feedparser >=dev-python/sqlalchemy-0.7 dev-python/pyyaml dev-python/beautifulsoup dev-python/html5lib dev-python/jinja dev-python/PyRSS2Gen dev-python/pynzb dev-python/progressbar dev-python/flask dev-python/cherrypy dev-python/setuptools deluge? ( net-p2p/deluge ) transmission? ( dev-python/transmissionrpc ) >=app-admin/eselect-python-20091230 || ( =dev-lang/python-2.7* =dev-lang/python-2.6* =dev-lang/python-2.5* )
 0
 
 
@@ -8,13 +8,13 @@ MIT
 Multipurpose automation tool for content like torrents, nzbs, podcasts, comics, etc
 
 distutils eutils multilib portability python subversion toolchain-funcs
-test
+deluge test transmission
 
 
 
-3
+4
 
-compile install postinst postrm preinst prepare test unpack
+compile install postinst postrm preinst prepare setup test unpack
 
 
 

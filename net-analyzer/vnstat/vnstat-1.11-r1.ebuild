@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/vnstat/vnstat-1.11-r1.ebuild,v 1.1 2011/09/04 17:41:24 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/vnstat/vnstat-1.11-r1.ebuild,v 1.3 2011/10/21 15:16:06 jer Exp $
 
 EAPI="4"
 
@@ -50,9 +50,7 @@ src_install() {
 	newinitd "${FILESDIR}/vnstatd.initd" vnstatd
 
 	keepdir /var/lib/vnstat
-	keepdir /var/run/vnstatd
 	fowners vnstat:vnstat /var/lib/vnstat
-	fowners vnstat:vnstat /var/run/vnstatd
 
 	use gd && doman man/vnstati.1
 	doman man/vnstat.1 man/vnstatd.1

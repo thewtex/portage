@@ -1,12 +1,12 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/nautilus-python/nautilus-python-1.0.ebuild,v 1.1 2011/10/14 00:40:24 pva Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/nautilus-python/nautilus-python-1.0.ebuild,v 1.2 2011/10/19 19:52:40 tetromino Exp $
 
 EAPI="3"
 
 PYTHON_DEPEND="2"
 GCONF_DEBUG="no"
-inherit eutils gnome2 python autotools
+inherit eutils gnome2 python
 
 DESCRIPTION="Python bindings for the Nautilus file manager"
 HOMEPAGE="http://www.gnome.org/"
@@ -16,8 +16,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc"
 
-RDEPEND=">=dev-python/pygobject-2.28.2
-	>=gnome-base/nautilus-2.32"
+RDEPEND=">=dev-python/pygobject-2.28.2:2[introspection]
+	>=gnome-base/nautilus-2.32[introspection]"
 DEPEND="${RDEPEND}
 	doc? ( >=dev-util/gtk-doc-1.9 )"
 

@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.13138 2011/10/16 11:25:29 hwoarang Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.13159 2011/10/20 18:19:57 hwoarang Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -31,6 +31,78 @@
 
 #--- END OF EXAMPLES ---
 
+# Stefan Briesenick <sbriesen@gentoo.org> (20 Oct 2011)
+# unmaintained upstream, obsolete in general. (bug #337657)
+# Masked for removal on 20 Nov 2011
+net-misc/x25_utils
+
+# Matt Turner <mattst88@gentoo.org> (19 Oct 2011)
+# pygobject:3 is masked. Remove this mask when pygobject:3 is unmasked.
+>=gnome-extras/gnome-dvb-daemon-0.2.3
+
+# Alexandre Rostovtsev <tetromino@gentoo.org> (19 Oct 2011)
+# Requires nautilus[introspection] to run
+>=dev-python/nautilus-python-1.0
+
+# Richard Freeman <rich0@gentoo.org> (19 Oct 2011)
+# Emulator in latest sdk does not yet work
+>=dev-util/android-sdk-update-manager-14
+
+# Miroslav Šulc <fordfrog@gentoo.org> (19 Oct 2011)
+# Masked for removal on 19 Nov 2011
+# Replaced by dev-java/jnlp-api
+dev-java/netx
+
+# Miroslav Šulc <fordfrog@gentoo.org> (19 Oct 2011)
+# Masked for removal on 19 Nov 2011
+# Bug https://bugs.gentoo.org/show_bug.cgi?id=377967
+# Replaced by dev-java/jnlp-api
+dev-java/jnlp-bin
+
+# Miroslav Šulc <fordfrog@gentoo.org> (19 Oct 2011)
+# Masked for removal on 19 Nov 2011
+# This package is obsolete and depends on dev-java/jnlp-bin
+# (bug https://bugs.gentoo.org/show_bug.cgi?id=377967)
+app-misc/openjnlp
+
+# Alexandre Rostovtsev <tetromino@gentoo.org> (18 Oct 2011)
+# Gtk+-3.2, friends, and dependencies; will be unmasked soon™
+# (before rest of GNOME-3.2)
+>=dev-cpp/gtkmm-3.2
+>=dev-libs/atk-2.2
+>=x11-libs/gtk+-3.2
+>=x11-libs/pango-1.29
+x11-themes/gtk-engines-unico
+>=x11-themes/gnome-themes-standard-3.2
+
+# Markos Chandras <hwoarang@gentoo.org> (18 Oct 2011)
+# Mask openbox and obconf snapshots for testing
+~x11-wm/openbox-3.5.0_p20111019
+~x11-misc/obconf-2.0.3_p20111019
+
+# Jeroen Roovers <jer@gentoo.org> (18 Oct 2011)
+# Masked for removal on 18 Nov 2011
+# https://bugs.gentoo.org/377695
+sys-apps/lsparisc
+
+# Michael Sterrett <mr_bones_@gentoo.org> (17 Oct 2011)
+# Masked for removal on 20111116
+# https://bugs.gentoo.org/show_bug.cgi?id=295776
+# https://bugs.gentoo.org/show_bug.cgi?id=308375
+# https://bugs.gentoo.org/show_bug.cgi?id=383101
+games-arcade/stepmania
+
+# Markos Chandras <hwoarang@gentoo.org> (16 Oct 2011)
+# Does not build with newer kernels. Open bug for version bump
+# but newer version does not seem to build as well.
+# No maintainer. Removal in 30 days.
+sys-fs/cowloop
+
+# Markos Chandras <hwoarang@gentoo.org> (16 Oct 2011)
+# No maintainer. Does not build. Open bugs 382375 and
+# 326975. Removal in 30 days
+app-misc/dnetc
+
 # Markos Chandras <hwoarang@gentoo.org> (16 Oct 2011)
 # Runtime problems which makes it pretty much useless
 # Bug #246264. No maintainer. Removal in 30 days
@@ -52,10 +124,6 @@ games-roguelike/fargoal
 # Mask development releases
 =www-apps/wordpress-3.3*
 
-# Samuli Suominen <ssuominen@gentoo.org> (10 Oct 2011)
-# Use media-libs/tiff:3 instead.
-media-libs/tiff-compat
-
 # Anthony G. Basile <blueness@gentoo.org> (08 Oct 2011)
 # Masked while testing potentially dangerous utility
 dev-python/pypax
@@ -65,12 +133,6 @@ dev-python/pypax
 # Removal in 30 days
 games-action/xpilot-ng
 games-puzzle/londonlaw
-
-# Samuli Suominen <ssuominen@gentoo.org> (06 Oct 2011)
-# Part of wxGTK-2.6 removal wrt bug #330683
-# Removal in 14 days
-=dev-games/crystalspace-1.2*
-=dev-games/cel-1.2*
 
 # Pawel Hajdan jr <phajdan.jr@gentoo.org> (06 Oct 2011)
 # Extremely experimental. Masked while it's being tested.
@@ -113,8 +175,11 @@ net-wireless/madwifi-old-tools
 
 # Michael Sterrett <mr_bones_@gentoo.org> (29 Sep 2011)
 # Don't use this on production boxes.  This version of
-# syslog-ng leaks memory with some configs.
+# syslog-ng leaks memory with some configs, etc.
 # This version is added for ebuild testing only.
+# Bug reports about anything other than the package
+# install should be directed upstream at:
+# https://bugzilla.balabit.com/
 >=app-admin/syslog-ng-3.2.9999
 
 # Samuli Suominen <ssuominen@gentoo.org> (29 Sep 2011)
@@ -162,15 +227,6 @@ games-fps/ut2004-redorchestra
 # Masked for removal in 30 days, bug 384561.
 app-emacs/rst
 
-# Markos Chandras <hwoarang@gentoo.org> (16 Sep 2011)
-# Masking app-misc/recoll for testing
-app-misc/recoll
-
-# Markos Chandras <hwoarang@gentoo.org> (26 Sep 2011)
-# 10 days masking for broader testing
-~dev-libs/boost-1.47.0
-~dev-util/boost-build-1.47.0
-
 # Thomas Kahle <tomka@gentoo.org> (25 Sep 2011)
 # Masked for removal in 30 days.  Unfixed security
 # issues (Bug 381115), dead upstream. 
@@ -195,11 +251,6 @@ games-action/dungeon
 >=net-libs/gupnp-av-0.10.1
 >=net-misc/rygel-0.12.0
 
-# Markos Chandras <hwoarang@gentoo.org> (19 Sep 2011)
-# Masked for testing. Gentoo specific configuration and paths
-# need verification before releasing prey to testing tree
-app-laptop/prey
-
 # Tim Harder <radhermit@gentoo.org> (19 Sep 2011)
 # Mask development releases
 =app-misc/task-2*
@@ -223,11 +274,6 @@ www-plugins/weave
 # http://blog.flameeyes.eu/2010/08/20/there-s-something-about-webmin
 # must go away (if they haven't already) before unmasking webmin
 app-admin/webmin
-
-# Samuli Suominen <ssuominen@gentoo.org> (15 Sep 2011)
-# Uncompatible with wxpython 2.8, bugs 201314 and 330683
-# Removal in 30 days
-net-ftp/ftpcube
 
 # Mike Gilbert <floppym@gentoo.org> (15 Sep 2011)
 # Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (15 Sep 2011)
@@ -487,11 +533,6 @@ sys-apps/seabios
 >=perl-core/ExtUtils-ParseXS-3.0
 >=virtual/perl-ExtUtils-ParseXS-3.0
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (27 Aug 2011)
-# Masked for removal. Dead project since 2009, does not work well with 
-# kde-4.6. Use kde-misc/kcm-gtk-config instead.
-kde-misc/kcm_gtk
-
 # Tomáš Chvátal <scarabeus@gentoo.org> (28 Aug 2011)
 # Masked until documentation guys consolidate the guide and approve
 # it for usage.
@@ -559,7 +600,6 @@ dev-tex/pdftex
 >=dev-libs/libgweather-3.0
 >=gnome-base/libgnomekbd-3.0
 =media-libs/libcanberra-0.28-r4
->=x11-misc/notification-daemon-0.7
 # Core Applications
 >=app-accessibility/orca-3.0
 >=gnome-base/gdm-3.0
@@ -667,13 +707,6 @@ dev-tex/pdftex
 =dev-libs/guiloader-c++-2.99.0
 =dev-util/crow-designer-2.99.0
 
-# Vadim Kuznetsov <vadimk@gentoo.org> (21 Jul 2001)
-# multiple vulnerabilities. Bug 374599
-# Out of upstream support
-app-emulation/vmware-server
-=app-emulation/vmware-modules-208.2
-app-emulation/vmware-server-console
-
 # Nathan Phillip Brink <binki@gentoo.org> (20 Jul 2011)
 # Masked indefinitely. The atheme upstream requests:
 # "By unmasking these, you agree to not bother the Atheme developers
@@ -681,10 +714,6 @@ app-emulation/vmware-server-console
 # Gentoo's bugzilla and then will be sent upstream by the maintainer
 # if appropriate."
 net-irc/atheme-services
-
-# Markos Chandras <hwoarang@gentoo.org> (17 Jul 2011)
-# Masked for testing due to init script inclusion
-~www-apps/tt-rss-1.5.5
 
 # Robin H. Johnson <robbat2@gentoo.org> (16 Jul 2011)
 # Masked for testing, no testsuite failures left!
@@ -740,9 +769,10 @@ sci-chemistry/webmo
 =mail-mta/postfix-2.9*
 
 # Nirbheek Chauhan <nirbheek@gentoo.org> (14 Jun 2011)
-# GNOME 3.1.x pre-releases for libraries in the tree
+# GNOME 3.2 mask
 >=dev-libs/gobject-introspection-1.29
 >=dev-libs/gjs-1.29
+>=dev-python/pygobject-2.28.6-r50
 =media-libs/clutter-1.7*
 
 # Christian Faulhammer <fauli@gentoo.org> (13 Jun 2011)
@@ -1029,7 +1059,7 @@ app-crypt/hmaccalc
 
 # Michael Sterrett <mr_bones_@gentoo.org> (14 Apr 2010)
 # gtk+-1 is old and nasty.
-# Start transitioning away from these packages.
+# Will be removed 20111116 
 # Read man 5 portage about package.unmask to unmask the package locally.
 games-arcade/cervi
 games-emulation/darcnes
@@ -1201,6 +1231,7 @@ app-portage/udept
 ~virtual/ruby-ssl-1
 ~virtual/ruby-rdoc-1
 ~virtual/ruby-threads-1
+~virtual/rubygems-4
 
 # Matti Bickel <mabi@gentoo.org> (1 Mar 2009)
 # Mask testing branch

@@ -1,8 +1,8 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/libreoffice/libreoffice-9999-r1.ebuild,v 1.42 2011/10/16 14:12:14 scarabeus Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/libreoffice/libreoffice-9999-r1.ebuild,v 1.46 2011/10/21 07:56:29 scarabeus Exp $
 
-EAPI=3
+EAPI=4
 
 KDE_REQUIRED="optional"
 KDE_SCM="git"
@@ -59,6 +59,7 @@ ADDONS_SRC+=" nsplugin? ( ${ADDONS_URI}/1f24ab1d39f4a51faf22244c94a6203f-xmlsec1
 ADDONS_SRC+=" java? ( ${ADDONS_URI}/17410483b5b5f267aa18b7e00b65e6e0-hsqldb_1_8_0.zip )"
 ADDONS_SRC+=" java? ( ${ADDONS_URI}/798b2ffdc8bcfe7bca2cf92b62caf685-rhino1_5R5.zip )"
 ADDONS_SRC+=" java? ( ${ADDONS_URI}/35c94d2df8893241173de1d16b6034c0-swingExSrc.zip )"
+ADDONS_SRC+=" odk? ( http://download.go-oo.org/extern/185d60944ea767075d27247c3162b3bc-unowinreg.dll )"
 SRC_URI+=" ${ADDONS_SRC}"
 
 TDEPEND="${EXT_URI}/472ffb92d82cf502be039203c606643d-Sun-ODF-Template-Pack-en-US_1.0.0.oxt"
@@ -199,14 +200,26 @@ DEPEND="${COMMON_DEPEND}
 PATCHES=(
 )
 
-# Uncoment me when updating to eapi4
-# REQUIRED_USE="
-#	|| ( gtk gnome kde )
-#	gnome? ( gtk )
-#	nsplugin? ( gtk )
-#"
+REQUIRED_USE="
+	|| ( gtk gnome kde )
+	gnome? ( gtk )
+	nsplugin? ( gtk )
+"
 
 S="${WORKDIR}/${PN}-core-${PV}"
+
+pkg_pretend() {
+	if [[ ${MERGE_TYPE} != binary ]]; then
+		CHECKREQS_MEMORY="1G"
+		use debug && CHECKREQS_DISK_BUILD="15G" || CHECKREQS_DISK_BUILD="9G"
+		check-reqs_pkg_pretend
+
+		if [[ $(gcc-major-version) -lt 4 ]]; then
+			eerror "Compilation with gcc older than 4.0 is not supported"
+			die "Too old gcc found."
+		fi
+	fi
+}
 
 pkg_setup() {
 	java-pkg-opt-2_pkg_setup
@@ -215,21 +228,11 @@ pkg_setup() {
 	python_set_active_version 2
 	python_pkg_setup
 
-	if [[ $(gcc-major-version) -lt 4 ]]; then
-		eerror "Compilation with gcc older than 4.0 is not supported"
-		die "Too old gcc found."
-	fi
-
 	if ! use gtk; then
 		ewarn "If you want the LibreOffice systray quickstarter to work"
 		ewarn "activate the 'gtk' use flag."
 		ewarn
 	fi
-
-	# Check if we have enough RAM and free diskspace to build this beast
-	CHECKREQS_MEMORY="1G"
-	use debug && CHECKREQS_DISK_BUILD="15G" || CHECKREQS_DISK_BUILD="9G"
-	check-reqs_pkg_setup
 }
 
 src_unpack() {
@@ -434,6 +437,7 @@ src_configure() {
 		$(use_enable opengl) \
 		$(use_enable pdfimport ext-pdfimport) \
 		$(use_enable svg librsvg system) \
+		$(use_enable test linkoo)
 		$(use_enable vba) \
 		$(use_enable vba activex-component) \
 		$(use_enable webdav neon) \
@@ -460,7 +464,7 @@ src_install() {
 	make DESTDIR="${D}" distro-pack-install -o build -o check || die
 
 	# Fix bash completion placement
-	newbashcomp "${ED}"/etc/bash_completion.d/libreoffice.sh ${PN} || die
+	newbashcomp "${ED}"/etc/bash_completion.d/libreoffice.sh ${PN}
 	rm -rf "${ED}"/etc/
 
 	# symlink the plugin to system location
@@ -470,7 +474,7 @@ src_install() {
 
 	if use branding; then
 		insinto /usr/$(get_libdir)/${PN}/program
-		newins "${WORKDIR}/branding-sofficerc" sofficerc || die
+		newins "${WORKDIR}/branding-sofficerc" sofficerc
 	fi
 }
 

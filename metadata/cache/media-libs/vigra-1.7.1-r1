@@ -1,5 +1,5 @@
-dev-libs/boost fftw? ( >=sci-libs/fftw-3 ) hdf5? ( sci-libs/hdf5 ) jpeg? ( virtual/jpeg ) png? ( media-libs/libpng ) python? ( || ( dev-lang/python:2.6 dev-lang/python:2.7 ) ) tiff? ( media-libs/tiff ) doc? ( app-doc/doxygen python? ( dev-python/sphinx ) ) test? ( python? ( dev-python/nose ) ) >=dev-util/cmake-2.8.4 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
-dev-libs/boost fftw? ( >=sci-libs/fftw-3 ) hdf5? ( sci-libs/hdf5 ) jpeg? ( virtual/jpeg ) png? ( media-libs/libpng ) python? ( || ( dev-lang/python:2.6 dev-lang/python:2.7 ) ) tiff? ( media-libs/tiff )
+dev-libs/boost fftw? ( >=sci-libs/fftw-3 ) hdf5? ( sci-libs/hdf5 ) jpeg? ( virtual/jpeg ) png? ( media-libs/libpng ) python? ( || ( dev-lang/python:2.6 dev-lang/python:2.7 ) ) tiff? ( media-libs/tiff ) doc? ( app-doc/doxygen python? ( dev-python/sphinx ) ) test? ( python? ( dev-python/nose ) ) >=dev-util/cmake-2.8.4 userland_GNU? ( >=sys-apps/findutils-4.4.0 ) >=app-admin/eselect-python-20091230 =dev-lang/python-2* =dev-lang/python-2*[threads,xml]
+dev-libs/boost fftw? ( >=sci-libs/fftw-3 ) hdf5? ( sci-libs/hdf5 ) jpeg? ( virtual/jpeg ) png? ( media-libs/libpng ) python? ( || ( dev-lang/python:2.6 dev-lang/python:2.7 ) ) tiff? ( media-libs/tiff ) >=app-admin/eselect-python-20091230 =dev-lang/python-2* =dev-lang/python-2*[threads,xml]
 0
 http://hci.iwr.uni-heidelberg.de/vigra/vigra-1.7.1-src.tar.gz
 
@@ -7,14 +7,14 @@ http://hci.iwr.uni-heidelberg.de/vigra/
 MIT
 C++ computer vision library with emphasize on customizable algorithms and data structures
 ~amd64 ~ppc ~ppc64 ~sparc ~x86
-base cmake-utils eutils flag-o-matic multilib portability toolchain-funcs
+base cmake-utils eutils flag-o-matic multilib portability python toolchain-funcs
 doc +fftw +hdf5 +jpeg +png +python test +tiff
 doc? ( hdf5 fftw ) python? ( hdf5 ) test? ( hdf5 python fftw )
 
 
 4
 
-compile configure install prepare test unpack
+compile configure install prepare setup test unpack
 
 
 

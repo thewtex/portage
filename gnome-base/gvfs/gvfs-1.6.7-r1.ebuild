@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-base/gvfs/gvfs-1.6.7-r1.ebuild,v 1.4 2011/10/14 19:27:36 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-base/gvfs/gvfs-1.6.7-r1.ebuild,v 1.7 2011/10/21 14:22:04 phajdan.jr Exp $
 
 EAPI="4"
 GNOME2_LA_PUNT="yes"
@@ -14,7 +14,7 @@ HOMEPAGE="http://www.gnome.org"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="~alpha amd64 ~arm ~ia64 ~mips ppc ppc64 ~sh ~sparc x86 ~x86-fbsd"
 IUSE="archive avahi bluetooth cdda doc fuse gdu gnome gnome-keyring gphoto2 +http ios prefix samba +udev"
 
 RDEPEND=">=dev-libs/glib-2.23.4:2
@@ -39,8 +39,7 @@ RDEPEND=">=dev-libs/glib-2.23.4:2
 		cdda? ( >=dev-libs/libcdio-0.78.2[-minimal] )
 		|| ( >=sys-fs/udev-171[gudev] >=sys-fs/udev-145[extras] ) )
 	http? ( >=net-libs/libsoup-gnome-2.26.0 )
-	samba? ( || ( >=net-fs/samba-3.4.6[smbclient]
-			<=net-fs/samba-3.3 ) )"
+	samba? ( >=net-fs/samba-3.4.6[smbclient] )"
 DEPEND="${RDEPEND}
 	>=dev-util/intltool-0.40
 	>=dev-util/pkgconfig-0.19

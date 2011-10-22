@@ -1,9 +1,9 @@
 # Copyright 1999-2011 Gentoo FoundationOU
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libsoundtouch/libsoundtouch-1.6.0.ebuild,v 1.1 2011/08/22 08:02:42 radhermit Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libsoundtouch/libsoundtouch-1.6.0.ebuild,v 1.3 2011/10/20 15:54:51 ssuominen Exp $
 
 EAPI=4
-inherit autotools eutils flag-o-matic
+inherit autotools-utils eutils flag-o-matic
 
 MY_PN=${PN/lib}
 
@@ -13,7 +13,7 @@ SRC_URI="http://www.surina.net/soundtouch/${P/lib}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
 IUSE="sse2 static-libs"
 
 S=${WORKDIR}/${MY_PN}
@@ -44,5 +44,5 @@ src_compile() {
 
 src_install() {
 	emake DESTDIR="${ED}" pkgdocdir="${EPREFIX}/usr/share/doc/${PF}/html" install
-	find "${ED}" -name '*.la' -exec rm -f '{}' +
+	remove_libtool_files all
 }

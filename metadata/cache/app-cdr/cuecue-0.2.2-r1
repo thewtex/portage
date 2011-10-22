@@ -1,5 +1,5 @@
 mp3? ( media-libs/libmad ) flac? ( media-libs/flac ) vorbis? ( media-libs/libvorbis media-libs/libogg )
-mp3? ( media-libs/libmad ) flac? ( media-libs/flac ) vorbis? ( media-libs/libvorbis media-libs/libogg )
+
 0
 mirror://berlios/cuecue/cuecue-0.2.2.tar.gz
 
@@ -7,14 +7,14 @@ http://cuecue.berlios.de/
 GPL-2
 Cuecue is a suite to convert .cue + [.ogg|.flac|.wav|.mp3] to .cue + .bin.
 ~amd64 ~x86
-eutils multilib portability toolchain-funcs
+base eutils flag-o-matic multilib portability toolchain-funcs
 flac mp3 +vorbis
+|| ( flac mp3 vorbis )
 
 
+4
 
-1
-
-compile install setup unpack
+compile configure install prepare unpack
 
 
 

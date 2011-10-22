@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/openbox/openbox-9999.ebuild,v 1.12 2011/09/20 22:49:27 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/openbox/openbox-9999.ebuild,v 1.13 2011/10/18 21:52:54 hwoarang Exp $
 
 EAPI="2"
 WANT_AUTOMAKE="1.9"
@@ -36,12 +36,9 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-gnome-session-3.4.9.patch
-	epatch "${FILESDIR}"/${PN}-as-needed.patch
 	# Lets try to replace docbook-to-man with docbook2man.pl since
 	# Gentoo does not provide (why?) a docbook-to-man package
 	sed -i -e "s:docbook-to-man:docbook2man.pl:" "${S}"/Makefile.am
-	# Use the patch from 3.5.0 package until it hits master branch
-	epatch "${FILESDIR}"/${PN}-3.5.0-configure-imlib2.patch
 	eautopoint
 	eautoreconf
 }

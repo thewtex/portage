@@ -14,7 +14,8 @@ SLOT="0"
 KEYWORDS="~x86 ~amd64"
 IUSE="mono lua java R ruby octave python"
 
-DEPEND="mono? ( dev-lang/mono ) 
+DEPEND="sci-libs/gsl
+mono? ( dev-lang/mono ) 
 lua? ( dev-lang/lua ) 
 R? ( dev-lang/R ) 
 ruby? ( dev-lang/ruby ) 
@@ -60,7 +61,7 @@ src_compile() {
 				--datadir=/usr/share \
 				--libdir=/usr/lib64 \
 				--interfaces=${interfaces}
-	emake || die "make failed. If the error is related to CBLAS, consider trying with sci-libs/gsl implementation of cblas."
+	emake || die "make failed. If the error is related to unfound CBLAS function, eselect sci-libs/gsl implementation of cblas."
 }
 
 src_install() {
