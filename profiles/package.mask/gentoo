@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.13159 2011/10/20 18:19:57 hwoarang Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.13168 2011/10/23 15:30:04 hd_brummy Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -31,6 +31,17 @@
 
 #--- END OF EXAMPLES ---
 
+# Joerg Bornkessel <hd_brummy@gentoo.org> (23 Oct 2011)
+# short mask for update
+=media-video/vdr-1.6.0_p2-r6
+=media-plugins/vdr-setup-0.3.1-r4
+=media-plugins/vdr-dxr3-0.2.13
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (21 Oct 2011)
+# Live ebuild (seabios) shouldn't have been keyworded ~arch
+=app-emulation/qemu-kvm-0.15.1
+sys-apps/seabios
+
 # Stefan Briesenick <sbriesen@gentoo.org> (20 Oct 2011)
 # unmaintained upstream, obsolete in general. (bug #337657)
 # Masked for removal on 20 Nov 2011
@@ -38,7 +49,7 @@ net-misc/x25_utils
 
 # Matt Turner <mattst88@gentoo.org> (19 Oct 2011)
 # pygobject:3 is masked. Remove this mask when pygobject:3 is unmasked.
->=gnome-extras/gnome-dvb-daemon-0.2.3
+>=gnome-extra/gnome-dvb-daemon-0.2.3
 
 # Alexandre Rostovtsev <tetromino@gentoo.org> (19 Oct 2011)
 # Requires nautilus[introspection] to run
@@ -72,8 +83,10 @@ app-misc/openjnlp
 >=dev-libs/atk-2.2
 >=x11-libs/gtk+-3.2
 >=x11-libs/pango-1.29
+>=x11-libs/vte-0.30
 x11-themes/gtk-engines-unico
 >=x11-themes/gnome-themes-standard-3.2
+>=x11-misc/notify-osd-0.9.32
 
 # Markos Chandras <hwoarang@gentoo.org> (18 Oct 2011)
 # Mask openbox and obconf snapshots for testing
@@ -97,11 +110,6 @@ games-arcade/stepmania
 # but newer version does not seem to build as well.
 # No maintainer. Removal in 30 days.
 sys-fs/cowloop
-
-# Markos Chandras <hwoarang@gentoo.org> (16 Oct 2011)
-# No maintainer. Does not build. Open bugs 382375 and
-# 326975. Removal in 30 days
-app-misc/dnetc
 
 # Markos Chandras <hwoarang@gentoo.org> (16 Oct 2011)
 # Runtime problems which makes it pretty much useless
@@ -521,12 +529,6 @@ net-irc/conspire
 # Currently v8-3.5 versions are used for chromium-15.x versions.
 >=dev-lang/v8-3.5
 
-# Doug Goldstein <cardoe@gentoo.org> (29 Aug 2011)
-# Not intended to be used yet. If you do, changes
-# may come to the ebuild without a bump. You have
-# been warned.
-sys-apps/seabios
-
 # Tomáš Chvátal <scarabeus@gentoo.org> (28 Aug 2011)
 # Breaks lots of rdeps.
 # Masked until bug #378783 is sorted out.
@@ -741,11 +743,6 @@ net-irc/atheme-services
 # Mask until it is bumped
 sci-chemistry/webmo
 
-# Hans de Graaff <graaff@gentoo.org> (25 Jun 2011)
-# Mask for testing, still incomplete and too central to
-# all things ruby to just throw out there.
-=dev-ruby/rubygems-1.8*
-
 # Alexis Ballier <aballier@gentoo.org> (23 Jun 2011)
 # Breaks API/ABI and has the same features as 0.7.1
 >=media-video/ffmpeg-0.8
@@ -853,8 +850,8 @@ sys-kernel/usermode-sources
 
 # Samuli Suominen <ssuominen@gentoo.org> (28 Mar 2011)
 # Masked temporarily until bug 360849 is solved so people
-# can emerge udev.
-=sys-apps/pciutils-3.1.7-r1
+# can emerge udev. Also duplicate bug 388027.
+>=sys-apps/pciutils-3.1.7-r1
 
 # Tomáš Chvátal <scarabeus@gentoo.org> (18 Sep 2011)
 # Mask latest revisions using dev-libs/nettle and app-crypt/p11-kit

@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/weechat/weechat-9999.ebuild,v 1.10 2011/09/19 02:05:51 binki Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-irc/weechat/weechat-9999.ebuild,v 1.11 2011/10/22 10:09:13 scarabeus Exp $
 
 EAPI=3
 
@@ -27,20 +27,21 @@ fi
 
 NETWORKS="+irc"
 PLUGINS="+alias +charset +fifo +logger +relay +rmodifier +scripts +spell +xfer"
-INTERFACES="+ncurses" # gtk"
+#INTERFACES="+ncurses gtk"
 SCRIPT_LANGS="lua +perl +python ruby tcl"
 IUSE="${SCRIPT_LANGS} ${PLUGINS} ${INTERFACES} ${NETWORKS} +crypt doc nls +ssl"
 
 RDEPEND="
+	sys-libs/ncurses
 	charset? ( virtual/libiconv )
 	lua? ( dev-lang/lua[deprecated] )
-	ncurses? ( sys-libs/ncurses )
 	perl? ( dev-lang/perl )
 	ruby? ( $(ruby_implementations_depend) )
 	ssl? ( net-libs/gnutls )
 	spell? ( app-text/aspell )
 	tcl? ( >=dev-lang/tcl-8.4.15 )
 "
+#	ncurses? ( sys-libs/ncurses )
 #	gtk? ( x11-libs/gtk+:2 )
 DEPEND="${RDEPEND}
 	nls? ( >=sys-devel/gettext-0.15 )
@@ -48,10 +49,11 @@ DEPEND="${RDEPEND}
 
 DOCS="AUTHORS ChangeLog NEWS README"
 
-#REQUIRED_USE=" || ( ncurses )" # || ( ncurses gtk )
+#REQUIRED_USE=" || ( ncurses gtk )"
 
 pkg_setup() {
 	python_set_active_version 2
+	python_pkg_setup
 
 	ruby-ng_pkg_setup
 }
@@ -66,11 +68,13 @@ src_prepare() {
 
 # alias, rmodifier, xfer
 src_configure() {
+	# $(cmake-utils_use_enable gtk)
+	# $(cmake-utils_use_enable ncurses)
 	mycmakeargs=(
+		"-DENABLE_NCURSES=ON"
 		"-DENABLE_LARGEFILE=ON"
 		"-DENABLE_DEMO=OFF"
 		"-DENABLE_GTK=OFF"
-		$(cmake-utils_use_enable ncurses)
 		$(cmake-utils_use_enable nls)
 		$(cmake-utils_use_enable crypt GCRYPT)
 		$(cmake-utils_use_enable spell ASPELL)

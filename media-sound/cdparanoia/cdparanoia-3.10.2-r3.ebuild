@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/cdparanoia/cdparanoia-3.10.2-r3.ebuild,v 1.10 2010/01/21 22:46:49 abcd Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/cdparanoia/cdparanoia-3.10.2-r3.ebuild,v 1.12 2011/10/23 12:54:22 ssuominen Exp $
 
 EAPI=2
 inherit autotools eutils flag-o-matic libtool toolchain-funcs versionator
@@ -24,7 +24,7 @@ src_prepare() {
 	mv configure.guess config.guess
 	mv configure.sub config.sub
 
-	sed -i -e '/configure.\(guess\|sub\)/d' configure.in || die "sed failed"
+	sed -i -e '/configure.\(guess\|sub\)/d' configure.in || die
 
 	eautoconf
 	elibtoolize
@@ -37,10 +37,10 @@ src_configure() {
 }
 
 src_compile() {
-	emake OPT="${CFLAGS}" || die "emake failed"
+	emake OPT="${CFLAGS}" || die
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die "emake install failed"
+	emake DESTDIR="${D}" install || die
 	dodoc README
 }

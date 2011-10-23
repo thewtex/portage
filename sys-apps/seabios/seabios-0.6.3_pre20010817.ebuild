@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/seabios/seabios-0.6.3_pre20010817.ebuild,v 1.3 2011/09/19 17:27:23 cardoe Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/seabios/seabios-0.6.3_pre20010817.ebuild,v 1.5 2011/10/21 16:55:50 cardoe Exp $
 
 EAPI=4
 
@@ -32,15 +32,17 @@ SLOT="0"
 IUSE=""
 
 DEPEND=""
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	!app-emulation/qemu
+	!<=app-emulation/qemu-kvm-0.15.0"
 
 src_prepare() {
 	if [[ -z "${EGIT_COMMIT}" ]]; then
 		sed -e "s/VERSION=.*/VERSION=${PV}/" \
-			-i ${S}/Makefile
+			-i "${S}/Makefile"
 	else
 		sed -e "s/VERSION=.*/VERSION=${PV}_pre${EGIT_COMMIT}/" \
-			-i ${S}/Makefile
+			-i "${S}/Makefile"
 	fi
 }
 
