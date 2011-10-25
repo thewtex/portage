@@ -1,0 +1,22 @@
+app-text/docbook-xsl-stylesheets dev-libs/libxslt sys-cluster/cluster-glue sys-cluster/resource-agents cman? ( sys-cluster/cman ) heartbeat? ( >=sys-cluster/heartbeat-3.0.0 ) !heartbeat? ( sys-cluster/corosync ) smtp? ( net-libs/libesmtp ) snmp? ( net-analyzer/net-snmp ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool >=app-admin/eselect-python-20091230
+app-text/docbook-xsl-stylesheets dev-libs/libxslt sys-cluster/cluster-glue sys-cluster/resource-agents cman? ( sys-cluster/cman ) heartbeat? ( >=sys-cluster/heartbeat-3.0.0 ) !heartbeat? ( sys-cluster/corosync ) smtp? ( net-libs/libesmtp ) snmp? ( net-analyzer/net-snmp ) >=app-admin/eselect-python-20091230
+0
+https://github.com/ClusterLabs/pacemaker/tarball/Pacemaker-1.1.6.1 -> pacemaker-1.1.6.1.tar.gz
+
+http://www.linux-ha.org/wiki/Pacemaker
+GPL-2
+Pacemaker CRM
+~amd64 ~hppa ~x86
+autotools base eutils libtool multilib portability python toolchain-funcs
+acl cman heartbeat smtp snmp static-libs
+cman? ( !heartbeat )
+
+
+4
+
+compile configure install postinst prepare setup unpack
+
+
+
+
+

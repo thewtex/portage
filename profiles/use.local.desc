@@ -781,6 +781,8 @@ app-text/libwpg:tools - Build miscellaneous tools
 app-text/lodgeit:vim - Install a vim plugin allowing to paste and download from within vim
 app-text/mathtex:png - Generate png images by default instead of gif
 app-text/namazu:kakasi - Enable kakasi support (dev-perl/Text-Kakasi)
+app-text/notmuch:emacs - Install Notmuch client for Emacs (main client)
+app-text/notmuch:vim - Install Notmuch client for Vim (experimental)
 app-text/pandoc:highlight - Add support for syntax highlighting with dev-haskell/highlighting-kate
 app-text/pdf2djvu:graphicsmagick - Enable media-gfx/graphicsmagick support
 app-text/pdftk:nodrm - Decrypt a document with the user_pw even if it has an owner_pw set
@@ -1188,7 +1190,11 @@ dev-libs/libmemcached:libevent - Use the libevent event loop interface.
 dev-libs/libmemcached:tcmalloc - Use the dev-util/google-perftools libraries to replace the malloc() implementation with a possibly faster one.
 dev-libs/libmix:no-net2 - Disable support for net-libs/libpcap and net-libs/libnet
 dev-libs/libp11:doc - Generate and install API documentation for the package.
+dev-libs/libpcre:bzip2 - Add support for pcregrep command to search within bzip2-compressed files, through sys-libs/zlib.
+dev-libs/libpcre:jit - Enable Just-In-Time compilation of regexp bytecode to machine code, through the SLJIT compiler. This feature might conflict wtih security mitigation strategies such as NX/PaX as enabled by Gentoo Hardened.
+dev-libs/libpcre:readline - Add support for command line editing to pcretest, through sys-libs/readline.
 dev-libs/libpcre:recursion-limit - Limit match recursion to 8192; if disabled, the default limit is used, which is the same as the match limit.
+dev-libs/libpcre:zlib - Add support for pcregrep command to search within gzip-compressed files, through app-arch/gzip.
 dev-libs/libpeas:glade - Install the glade catalog
 dev-libs/libpeas:python - Build support for loading dev-lang/python plugins
 dev-libs/libpeas:seed - Build support for loading JavaScript plugins using dev-libs/seed
@@ -2191,8 +2197,6 @@ media-gfx/scantailor:dewarping - Enable experimental dewarping support
 media-gfx/splashutils:fbcondecor - Support for the fbcondecor kernel patch.
 media-gfx/ufraw:contrast - enable contrast setting option
 media-gfx/ufraw:fits - Enable support for the FITS image format through sci-libs/cfitsio
-media-gfx/ufraw:hotpixels - enable hot pixel elimination
-media-gfx/ufraw:lensfun - enable the lensfun lens-correction library
 media-gfx/ufraw:timezone - enable DST correction for file timestamps
 media-gfx/xsane:ocr - Enable support for Optical Character Recognition reader
 media-gfx/yafaray:blender - install media-gfx/blender scripts
@@ -2308,7 +2312,6 @@ media-libs/opencv:eigen - Enable usage of dev-cpp/eigen for computations
 media-libs/opencv:ipp - Enable Intel Integrated Primitive support
 media-libs/opencv:sse3 - Enable optimization for SSE3 capable chips
 media-libs/opencv:ssse3 - faster floating point optimization for SSSE3 capable chips (Intel Core 2 and later chips)
-media-libs/openjpeg:tools - Installs tools (j2k_to_image and image_to_j2k)
 media-libs/phonon:vlc - Install VLC Phonon backend
 media-libs/phonon-xine:xcb - Enable video support in Xine backend, via x11-libs/libxcb
 media-libs/raptor:json - Enable support for JSON parsing
@@ -3300,6 +3303,7 @@ net-im/leechcraft-azoth:depester - Build Depester which enables to ignore MUC pa
 net-im/leechcraft-azoth:embedmedia - Build EmbedMedia for embedding flash videos and images directly into chat windows
 net-im/leechcraft-azoth:herbicide - Build Herbicide, a basic antispam plugin
 net-im/leechcraft-azoth:hili - Build HiLi which allows to customize highlight settings in MUCs
+net-im/leechcraft-azoth:isterique - Build Isterique plugin for neutralizing excessive caps lock usage
 net-im/leechcraft-azoth:juick - Build plugin for the Juick.com microblogging service
 net-im/leechcraft-azoth:lastseen - Build plugin for client-side recording of the last online/available time
 net-im/leechcraft-azoth:metacontacts - Build plugin for metacontacts support
@@ -4468,6 +4472,7 @@ sys-cluster/openmpi:sctp - Enable SCTP support
 sys-cluster/openmpi:slurm - Add support for SLURM
 sys-cluster/openmpi:vt - Enable bundled VampirTrace support
 sys-cluster/pacemaker:ais - Enable sys-cluster/openais support.
+sys-cluster/pacemaker:cman - Enable sys-cluster/cman support.
 sys-cluster/pacemaker:heartbeat - Enable sys-cluster/heartbeat support.
 sys-cluster/pacemaker:smtp - Enable SMTP support via net-libs/libsmtp
 sys-cluster/pacemaker-gui:heartbeat - Enable support for heartbeat based sys-cluster/pacemaker.

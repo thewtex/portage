@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libpcre/libpcre-8.13-r1.ebuild,v 1.1 2011/09/17 04:47:35 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libpcre/libpcre-8.13-r1.ebuild,v 1.2 2011/10/23 16:06:55 flameeyes Exp $
 
 EAPI="4"
 
@@ -9,7 +9,7 @@ inherit libtool eutils toolchain-funcs flag-o-matic
 DESCRIPTION="Perl-compatible regular expression library"
 HOMEPAGE="http://www.pcre.org/"
 MY_P="pcre-${PV/_rc/-RC}"
-if [[ ${PV} == *_rc* ]] ; then
+if [[ ${PV} != *_rc* ]] ; then
 	# Only the final releases are available here.
 	SRC_URI="mirror://sourceforge/pcre/${MY_P}.tar.bz2
 		ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/${MY_P}.tar.bz2"

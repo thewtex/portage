@@ -1,0 +1,22 @@
+dev-lang/php[mysqlnd] || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool >=sys-devel/m4-1.4.3 >=sys-devel/libtool-1.5.18
+dev-lang/php[mysqlnd] || ( =dev-php/pecl-mysqlnd_qc-1.0.1[php_targets_php5-3] =dev-php/pecl-mysqlnd_qc-1.0.1[php_targets_php5-2] ) php_targets_php5-3? ( dev-lang/php:5.3 ) php_targets_php5-2? ( dev-lang/php:5.2 )
+0
+http://pecl.php.net/get/mysqlnd_qc-1.0.1.tgz
+
+http://pecl.php.net/mysqlnd_qc
+PHP-3
+A query cache plugin for the mysqlnd library.
+~amd64
+autotools eutils flag-o-matic libtool multilib php-ext-pecl-r2 php-ext-source-r2 portability toolchain-funcs
+php_targets_php5-3 php_targets_php5-2
+
+
+
+4
+
+compile configure install prepare test unpack
+
+
+
+
+
