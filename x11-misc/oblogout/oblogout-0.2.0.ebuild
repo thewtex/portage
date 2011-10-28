@@ -5,6 +5,7 @@
 EAPI=3
 SUPPORT_PYTHON_ABIS=1
 RESTRICT_PYTHON_ABIS="3.*"
+PYTHON_MODNAME="oblogout"
 
 inherit versionator distutils
 
@@ -20,6 +21,23 @@ SLOT="0"
 KEYWORDS="~x86 ~amd64"
 IUSE=""
 
-DEPEND="dev-python/python-distutils-extra"
+DEPEND="dev-python/python-distutils-extra
+dev-python/imaging
+dev-python/dbus-python
+sys-power/upower
+x11-libs/cairo
+dev-python/pygtk
+sys-auth/consolekit"
+
 RDEPEND=""
+
+src_prepare(){
+	epatch "${FILESDIR}/${P}_archlinux.patch" || die
+}
+
+src_install(){
+	distutils_src_install
+	insinto /etc
+	doins ${FILESDIR}/oblogout.conf || die
+}
 

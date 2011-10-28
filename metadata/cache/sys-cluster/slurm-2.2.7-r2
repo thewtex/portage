@@ -1,0 +1,22 @@
+!net-analyzer/slurm mysql? ( dev-db/mysql ) munge? ( sys-auth/munge ) pam? ( virtual/pam ) perl? ( perl-core/Switch ) postgres? ( dev-db/postgresql-base ) ssl? ( dev-libs/openssl ) torque? ( !sys-cluster/torque ) >=sys-apps/hwloc-1.1.1-r1 dev-lang/perl[-build]
+!net-analyzer/slurm mysql? ( dev-db/mysql ) munge? ( sys-auth/munge ) pam? ( virtual/pam ) perl? ( perl-core/Switch ) postgres? ( dev-db/postgresql-base ) ssl? ( dev-libs/openssl ) torque? ( !sys-cluster/torque ) >=sys-apps/hwloc-1.1.1-r1 maui? ( sys-cluster/maui[slurm] ) dev-lang/perl[-build]
+0
+mirror://sourceforge/slurm/slurm-2.2.7.tar.bz2
+
+https://computing.llnl.gov/linux/slurm/
+GPL-2
+SLURM: A Highly Scalable Resource Manager
+~amd64 ~x86
+base eutils flag-o-matic multilib pam perl-module portability toolchain-funcs user
+maui +munge mysql pam +perl postgres ssl static-libs +torque
+torque? ( perl )
+
+
+4
+
+compile configure install postinst preinst prepare setup test unpack
+
+
+
+
+

@@ -448,6 +448,7 @@ app-emulation/virtualbox-bin:headless - Install without any graphic frontend
 app-emulation/virtualbox-bin:rdesktop-vrdp - Install the rdesktop client integration
 app-emulation/virtualbox-bin:sdk - Enable building of SDK
 app-emulation/virtualbox-bin:vboxwebsrv - Install the VirtualBox webservice
+app-emulation/virtualbox-modules:pax_kernel - Apply patch needed for pax enabled kernels
 app-emulation/vmware-player:vmware-tools - Install VMware Tools images
 app-emulation/vmware-workstation:vix - Install VIX. The VIX API allows you to write programs and scripts that automate virtual machine operations, and run programs or manipulate files within guest operating systems.
 app-emulation/vmware-workstation:vmware-tools - Install VMware Tools images
@@ -874,6 +875,7 @@ dev-db/mariadb:pbxt - Add experimental support for PBXT storage engine
 dev-db/mariadb:profiling - Add support for statement profiling (requires USE=community).
 dev-db/mariadb:sphinx - Add suport for the sphinx full-text search engine
 dev-db/mariadb:test - Install upstream testsuites for end use.
+dev-db/mongodb:mms-agent - Install the MongoDB Monitoring Service agent
 dev-db/mongodb:v8 - Use V8 JavaScript engine (dev-lang/v8) instead of SpiderMonkey (dev-lang/spidermonkey)
 dev-db/mysql:big-tables - Make tables contain up to 1.844E+19 rows
 dev-db/mysql:cluster - Add support for NDB clustering (deprecated)
@@ -1512,7 +1514,6 @@ dev-util/metro:threads - Enable support for pbzip2 tarball packing/unpacking
 dev-util/mono-tools:webkit - Use net-libs/webkit-gtk for rendering.
 dev-util/monodevelop:git - Enable Git version control support
 dev-util/nemiver:memoryview - Enable the optional hexadecimal memory inspection with app-editors/ghex.
-dev-util/netbeans:keychain - enables support for keychain in netbeans start script
 dev-util/nsis:config-log - Enable the logging facility (useful in debugging installers)
 dev-util/nvidia-cuda-sdk:cuda - Build CUDA binaries.
 dev-util/nvidia-cuda-sdk:emulation - Build binaries for device emulation mode. These binaries will not require a CUDA-capable GPU to run.
@@ -1644,6 +1645,9 @@ games-fps/doom3:roe - Adds support for the Resurrection of Evil expansion
 games-fps/duke3d:demo - Install the demo files
 games-fps/duke3d:pic - disable optimized assembly code that is not PIC friendly
 games-fps/ezquake-bin:security - install the security module needed for some servers
+games-fps/lsdldoom:freedoom - Install games-fps/freedoom wad file
+games-fps/lsdldoom:net - Enables network game support
+games-fps/lsdldoom:shareware - Install games-fps/doom-data for shareware wad file
 games-fps/nexuiz:maps - Install the community map pack
 games-fps/quake2-icculus:demo - Install the demo files (quake2-demodata) and configure for use
 games-fps/quake2-icculus:qmax - Build the pretty version (quake max)
@@ -2156,6 +2160,8 @@ media-gfx/freewrl:osc - Allows for OSC-based control and communication between m
 media-gfx/freewrl:xulrunner - Use libmozjs from xulrunner instead of using spidermonkey
 media-gfx/gimp:smp - Enable support for multiprocessors
 media-gfx/gimp:webkit - Enable the webkit rendering engine
+media-gfx/gmic:graphicsmagick - Enable support for many common image file formats using the GraphicsMagick++ library
+media-gfx/gmic:opencv - Enable support for webcams using the OpenCV library
 media-gfx/graphicsmagick:fpx - Enable FlashPix support with media-libs/libfpx
 media-gfx/graphicsmagick:modules - Compile graphicsmagick with dynamically loadable modules
 media-gfx/graphicsmagick:q16 - Set storage quantum size to 16 (~2*memory)
@@ -4479,6 +4485,7 @@ sys-cluster/pacemaker-gui:heartbeat - Enable support for heartbeat based sys-clu
 sys-cluster/resource-agents:libnet - Force use of net-libs/libnet
 sys-cluster/slurm:maui - Enable maui scheduler support
 sys-cluster/slurm:munge - Enable authentication via munge
+sys-cluster/slurm:torque - Enable perl scripts that emulates pbs (qstat, qsub etc.)
 sys-cluster/torque:cpusets - Enable pbs_mom to utilize linux cpusets if available
 sys-cluster/torque:drmaa - Enable the Distributed Resource Management Application API
 sys-cluster/torque:munge - Enable authentication via munge
@@ -5085,3 +5092,4 @@ xfce-extra/xfce4-mpc-plugin:libmpd - Build using media-libs/libmpd backend, inst
 xfce-extra/xfce4-playercontrol-plugin:audacious - Enable Audacious support
 xfce-extra/xfce4-playercontrol-plugin:mpd - Enable Music Player Daemon support
 xfce-extra/xfce4-sensors-plugin:nvidia - Use nvctrl to obtain Nvidia GPU temperature value
+xfce-extra/xfce4-soundmenu-plugin:lastfm - Enable last.fm support using media-libs/libclastfm

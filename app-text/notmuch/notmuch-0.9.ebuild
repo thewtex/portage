@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/notmuch/notmuch-0.9.ebuild,v 1.2 2011/10/24 12:17:18 aidecoe Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/notmuch/notmuch-0.9.ebuild,v 1.4 2011/10/24 22:04:52 aidecoe Exp $
 
 EAPI=4
 
@@ -12,7 +12,7 @@ SRC_URI="${HOMEPAGE}/releases/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64"
 IUSE="bash-completion debug emacs vim zsh-completion"
 
 DEPEND="
@@ -29,7 +29,11 @@ RDEPEND="${DEPEND}
 	"
 
 DOCS=( AUTHORS NEWS README TODO )
-PATCHES=( "${FILESDIR}/${PV}-fix-lib-makefile-local.patch" )
+PATCHES=(
+	"${FILESDIR}/${PV}-fix-lib-makefile-local.patch"
+	"${FILESDIR}/${PV}-emacsetcdir.patch"
+	)
+SITEFILE="50${PN}-gentoo.el"
 
 pkg_setup() {
 	if use emacs; then
@@ -40,7 +44,8 @@ pkg_setup() {
 src_configure() {
 	local myeconfargs=(
 		--bashcompletiondir="${ROOT}/usr/share/bash-completion"
-		--emacslispdir="${ROOT}/usr/share/emacs/site-lisp/${PN}"
+		--emacslispdir="${ROOT}/${SITELISP}/${PN}"
+		--emacsetcdir="${ROOT}/${SITEETC}/${PN}"
 		--zshcompletiondir="${ROOT}/usr/share/zsh/site-functions"
 		$(use_with bash-completion)
 		$(use_with emacs)
@@ -52,8 +57,20 @@ src_configure() {
 src_install() {
 	autotools-utils_src_install
 
+	if use emacs; then
+		elisp-site-file-install "${FILESDIR}/${SITEFILE}" || die
+	fi
+
 	if use vim; then
 		insinto /usr/share/vim/vimfiles
 		doins -r vim/plugin vim/syntax
 	fi
+}
+
+pkg_postinst() {
+	use emacs && elisp-site-regen
+}
+
+pkg_postrm() {
+	use emacs && elisp-site-regen
 }

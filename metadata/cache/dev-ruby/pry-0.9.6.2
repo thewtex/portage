@@ -1,0 +1,22 @@
+test? ( ruby_targets_ruby18? ( >=dev-ruby/ruby_parser-2.0.5[ruby_targets_ruby18] >=dev-ruby/coderay-0.9.8[ruby_targets_ruby18] >=dev-ruby/slop-2.1.0[ruby_targets_ruby18] >=dev-ruby/method_source-0.6.5[ruby_targets_ruby18] ) ruby_targets_ree18? ( >=dev-ruby/ruby_parser-2.0.5[ruby_targets_ree18] >=dev-ruby/coderay-0.9.8[ruby_targets_ree18] >=dev-ruby/slop-2.1.0[ruby_targets_ree18] >=dev-ruby/method_source-0.6.5[ruby_targets_ree18] ) ) ruby_targets_ruby18? ( test? ( >=dev-ruby/bacon-1.1.0[ruby_targets_ruby18] ) ) ruby_targets_ree18? ( test? ( >=dev-ruby/bacon-1.1.0[ruby_targets_ree18] ) ) ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ree18? ( dev-lang/ruby-enterprise:1.8 ) ruby_targets_ruby18? ( test? ( dev-ruby/rake[ruby_targets_ruby18] ) ) ruby_targets_ree18? ( test? ( dev-ruby/rake[ruby_targets_ree18] ) ) ruby_targets_ruby18? ( virtual/rubygems[ruby_targets_ruby18] ) ruby_targets_ree18? ( virtual/rubygems[ruby_targets_ree18] ) test? ( ruby_targets_ruby18? ( virtual/rubygems[ruby_targets_ruby18] ) ruby_targets_ree18? ( virtual/rubygems[ruby_targets_ree18] ) )
+ruby_targets_ruby18? ( >=dev-ruby/ruby_parser-2.0.5[ruby_targets_ruby18] >=dev-ruby/coderay-0.9.8[ruby_targets_ruby18] >=dev-ruby/slop-2.1.0[ruby_targets_ruby18] >=dev-ruby/method_source-0.6.5[ruby_targets_ruby18] ) ruby_targets_ree18? ( >=dev-ruby/ruby_parser-2.0.5[ruby_targets_ree18] >=dev-ruby/coderay-0.9.8[ruby_targets_ree18] >=dev-ruby/slop-2.1.0[ruby_targets_ree18] >=dev-ruby/method_source-0.6.5[ruby_targets_ree18] ) ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ree18? ( dev-lang/ruby-enterprise:1.8 ) ruby_targets_ruby18? ( virtual/rubygems[ruby_targets_ruby18] ) ruby_targets_ree18? ( virtual/rubygems[ruby_targets_ree18] )
+0
+mirror://rubygems/pry-0.9.6.2.gem
+
+https://github.com/pry/pry/wiki
+MIT
+Pry is a powerful alternative to the standard IRB shell for Ruby.
+~amd64
+eutils java-utils-2 multilib portability ruby-fakegem ruby-ng toolchain-funcs user versionator
+test elibc_FreeBSD ruby_targets_ruby18 ruby_targets_ree18 test test
+|| ( ruby_targets_ruby18 ruby_targets_ree18 )
+
+
+4
+
+compile configure install prepare setup test unpack
+
+
+
+
+
