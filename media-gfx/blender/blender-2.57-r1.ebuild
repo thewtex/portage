@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/blender/blender-2.57-r1.ebuild,v 1.3 2011/07/08 10:22:39 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/blender/blender-2.57-r1.ebuild,v 1.6 2011/10/30 12:59:41 sping Exp $
 
 PYTHON_DEPEND="3:3.2"
 
@@ -11,7 +11,7 @@ SCM="subversion"
 ESVN_REPO_URI="https://svn.blender.org/svnroot/bf-blender/trunk/blender"
 fi
 
-inherit eutils python versionator flag-o-matic toolchain-funcs ${SCM}
+inherit scons-utils eutils python versionator flag-o-matic toolchain-funcs ${SCM}
 
 IUSE="+game-engine player +elbeem +openexr ffmpeg jpeg2k openal openmp \
 	+dds debug fftw jack apidoc sndfile lcms tweak-mode sdl sse \
@@ -66,7 +66,7 @@ RDEPEND="virtual/jpeg
 	sndfile? ( media-libs/libsndfile )
 	lcms? ( media-libs/lcms )"
 
-DEPEND=">=dev-util/scons-0.98
+DEPEND=">=dev-util/scons-2
 	apidoc? (
 		dev-python/sphinx
 		>=app-doc/doxygen-1.5.7[-nodot]
@@ -152,6 +152,9 @@ src_prepare() {
 #	einfo "Removing bundled Bullet2 ..."
 #	rm -r extern/bullet2
 #	epatch "${FILESDIR}"/${PN}-${SLOT}-bullet.patch
+
+	# Linux 3.x (bug #381099)
+	epatch "${FILESDIR}"/${P}-linux-3.patch
 }
 
 src_configure() {
@@ -289,7 +292,7 @@ src_configure() {
 }
 
 src_compile() {
-	scons || die \
+	escons || die \
 		'!!! Please add "${S}/scons.config" when filing bugs reports \
 		to bugs.gentoo.org'
 

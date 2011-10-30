@@ -1241,6 +1241,12 @@ dev-libs/totem-pl-parser:archive - Enables support for accessing media files in 
 dev-libs/totem-pl-parser:introspection - Use dev-libs/gobject-introspection for introspection
 dev-libs/totem-pl-parser:quvi - Use media-libs/quvi for parsing video links
 dev-libs/udis86:pic - Force shared libraries to be built as PIC
+dev-libs/xapian:brass - Enabled brass backend db support
+dev-libs/xapian:chert - Enabled chert backend db support
+dev-libs/xapian:flint - Enabled flint backend db support
+dev-libs/xapian:inmemory - Enabled inmemory backend db support
+dev-libs/xapian:nosse - Disable all sse support
+dev-libs/xapian:remote - Enabled remot backend db support
 dev-libs/xerces-c:iconv - Use iconv (virtual/libiconv) as message loader and transcoder (in general it would be possible to use iconv only as message loader and something else like icu or the native method as transcoder and vice-versa, but this is a less common case and hard to handle)
 dev-libs/xerces-c:libwww - Use the net-libs/libwww library for fetching URLs, instead of the builtin method
 dev-libs/xerces-c:threads - Enable threading support through pthread (or other libraries on AIX, IRIX, HPUX, Solars). Highly recommended
@@ -1723,12 +1729,14 @@ gnome-base/gdm:dmx - Enables Distributed Multihead X (DMX) support
 gnome-base/gdm:remote - Enables support for secure remote connections
 gnome-base/gdm:xklavier - Use x11-libs/libxklavier for keyboard management
 gnome-base/gnome-control-center:cheese - Add support for taking pictures for the user accounts panel using media-video/cheese
+gnome-base/gnome-control-center:colord - Support color management using x11-misc/colord
 gnome-base/gnome-control-center:socialweb - Add support for configuring social web service settings using net-libs/libsocialweb
 gnome-base/gnome-desktop:introspection - Use dev-libs/gobject-introspection for introspection
 gnome-base/gnome-light:automount - Use gnome-base/gvfs[gdu] for automounting of drives in nautilus
 gnome-base/gnome-menus:introspection - Use dev-libs/gobject-introspection for introspection
 gnome-base/gnome-panel:bonobo - Enable Bonobo compatibility modules for applets still not ported to DBUS.
 gnome-base/gnome-panel:introspection - Use dev-libs/gobject-introspection for introspection
+gnome-base/gnome-settings-daemon:colord - Support color management using x11-misc/colord
 gnome-base/gnome-settings-daemon:packagekit - Enable support for the distro-neutral package manager GUI app-admin/packagekit
 gnome-base/gnome-settings-daemon:short-touchpad-timeout - Change the touchpad timeout so that it's effective for fast typists
 gnome-base/gnome-shell:nm-applet - Pull in an automagic dependency on gnome-extra/nm-applet and net-misc/networkmanager, should be removed soon
@@ -1753,6 +1761,7 @@ gnome-extra/evolution-data-server:introspection - Use dev-libs/gobject-introspec
 gnome-extra/evolution-data-server:weather - Enable optional weather calendar support
 gnome-extra/file-browser-applet:gtkhotkey - Enable hotkey support via x11-libs/gtkhotkey
 gnome-extra/gdesklets-core:dbus - Enable gDesklets Controls to use DBus
+gnome-extra/gnome-color-manager:clutter - Use media-libs/clutter to render color gamut representations
 gnome-extra/gnome-color-manager:introspection - Use dev-libs/gobject-introspection for introspection
 gnome-extra/gnome-color-manager:packagekit - Enable support for the distro-neutral package manager GUI app-admin/packagekit
 gnome-extra/gnome-do-plugins:banshee - Enables the Banshee (media-sound/banshee) plugin
@@ -1804,7 +1813,6 @@ kde-base/gwenview:kipi - Support for the KDE Image Plugin Interface.
 kde-base/kaccessible:speechd - Enable support for the speech-dispatcher speech synthesizer
 kde-base/kalzium:editor - Enable the embedded molecule editor/viewer
 kde-base/kalzium:solver - Enable the equation solver
-kde-base/kde-meta:oldpim - Allow the use of non-akonadi kdepim-4.4
 kde-base/kde-meta:sdk - Pull in developer-specific meta-packages
 kde-base/kdeartwork-kscreensaver:eigen - Enable various arithmetic screensavers which use Eigen2 for computations.
 kde-base/kdeartwork-kscreensaver:kexiv2 - Enable image rotation based on exif tags with libkexiv2.
@@ -1953,7 +1961,7 @@ kde-misc/kcm-grub2:hwinfo - Used to work out supported framebuffer resolutions
 kde-misc/kcm-grub2:imagemagick - Create splash images compatible with GRUB2
 kde-misc/kcm-grub2:packagekit - Add support for packagekit integration
 kde-misc/kdiff3:konqueror - Enable integration with konqueror
-kde-misc/knetworkmanager:consolekit - Enable support for sys-auth/consolekit
+kde-misc/networkmanagement:consolekit - Enable support for sys-auth/consolekit
 kde-misc/synaptiks:upower - Handle mouse devices correctly across suspend and resume with upower
 kde-misc/tellico:addressbook - Add support for kdepim addressbook (kabc)
 lxde-base/lxdm:consolekit - Enables support for authorization using consolekit
@@ -2219,6 +2227,8 @@ media-libs/clutter:gtk - Use gdk-pixbuf from x11-libs/gtk+ as image rendering ba
 media-libs/clutter:introspection - Use dev-libs/gobject-introspection for introspection
 media-libs/clutter-gst:introspection - Use dev-libs/gobject-introspection for introspection
 media-libs/clutter-gtk:introspection - Use dev-libs/gobject-introspection for introspection
+media-libs/cogl:introspection - Use dev-libs/gobject-introspection for introspection
+media-libs/cogl:pango - Build cogl-pango library for x11-libs/pango integration
 media-libs/coin:simage - Texture loading via media-libs/simage library
 media-libs/devil:allegro - Add support for Allegro
 media-libs/edje:cache - Enable caching
@@ -2289,6 +2299,7 @@ media-libs/libvpx:postproc - Enable additional post processing filters
 media-libs/libvpx:sse3 - Enable optimization for SSE3 capable chips
 media-libs/libvpx:sse4_1 - Enable optimization for SSE4_1 capable processors (Intel Core 2 Penryn and later chips)
 media-libs/libvpx:ssse3 - faster floating point optimization for SSSE3 capable chips (Intel Core 2 and later chips)
+media-libs/mash:introspection - Use dev-libs/gobject-introspection for introspection
 media-libs/mediastreamer:amr - Use of AMR Narrow Band codec plugin
 media-libs/mediastreamer:ilbc - Use of iLBC (RFC3951) codec plugin
 media-libs/mediastreamer:video - Enable video support
@@ -3475,6 +3486,7 @@ net-libs/daq:pcap - Build the PCAP data acquisition module.
 net-libs/farsight2:upnp - Enable UPnP IGD support
 net-libs/glib-networking:gnome - Extract HTTP/HTTPS/SOCKS proxy configuration stored using GSettings
 net-libs/glib-networking:libproxy - Use net-libs/libproxy for getting the HTTP/HTTPS/SOCKS proxy configuration
+net-libs/gnome-online-accounts:introspection - Use dev-libs/gobject-introspection for introspection
 net-libs/gnutls:nettle - Use dev-libs/nettle as crypto backend
 net-libs/gnutls:pkcs11 - Add support for PKCS#11 over app-crypt/p11-kit
 net-libs/gssdp:introspection - Use dev-libs/gobject-introspection for introspection
@@ -3507,6 +3519,7 @@ net-libs/libsocialweb:gnome - Extract proxy information using net-libs/libsoup-g
 net-libs/libsocialweb:introspection - Use dev-libs/gobject-introspection for introspection
 net-libs/libsocialweb:vala - Build bindings for dev-lang/vala
 net-libs/libsoup:introspection - Use dev-libs/gobject-introspection for introspection
+net-libs/libsoup:samba - Use net-fs/samba for NTLM Single Sign-On
 net-libs/libsoup-gnome:introspection - Use dev-libs/gobject-introspection for introspection
 net-libs/libsrtp:aesicm - Use AES ICM cryptographic algorithm
 net-libs/libsrtp:console - Use /dev/console instead of stdout for error messages
@@ -4498,6 +4511,8 @@ sys-devel/binutils-hppa64:multitarget - Adds support to binutils for cross compi
 sys-devel/clang:multitarget - Build all host targets (default: host only)
 sys-devel/clang:static-analyzer - Install the Clang static analyzer
 sys-devel/clang:system-cxx-headers - By default, clang++ searchs for C++ headers in a series of hardcoded paths. Enabling this flag will force it to use the active gcc profile ones
+sys-devel/distcc:crossdev - Enable support for sys-devel/crossdev
+sys-devel/distcc:gssapi - Enable support for net-libs/libgssglue
 sys-devel/gcc:d - Enable support for the D programming language
 sys-devel/gcc:fixed-point - Enable fixed-point arithmetic support for MIPS targets in gcc (Warning: significantly increases compile time!)
 sys-devel/gcc:go - Build the GCC Go language frontend.
@@ -4749,7 +4764,6 @@ www-apps/viewvc:cvsgraph - Add dev-vcs/cvsgraph support to show graphical views 
 www-apps/viewvc:mod_python - Add www-apache/mod_python support
 www-apps/viewvc:mod_wsgi - Add www-apache/mod_wsgi support
 www-apps/viewvc:pygments - Add dev-python/pygments support for syntax highlighting
-www-client/chromium:chromedriver - Also build and install ChromeDriver, a tool that can control the browser using automation proxy framework. This is mostly intended for automated testing of web applications.
 www-client/elinks:bittorrent - Enable support for the BitTorrent protocol
 www-client/elinks:finger - Enable support for the finger protocol
 www-client/elinks:gopher - Enable support for the gopher protocol
@@ -4780,8 +4794,7 @@ www-client/luakit:helpers - Optional tools used by luakit
 www-client/luakit:luajit - Use the lua just-in-time compiler dev-lang/luajit instead of dev-lang/lua, which should make luakit faster.
 www-client/lynx:gnutls - Use gnutls library for HTTPS support (openssl is the default library for HTTPS support).
 www-client/lynx:ssl - Enable HTTPS support.
-www-client/midori:unique - Optional libunique support
-www-client/midori:vala - Enable support for dev-lang/vala based extensions
+www-client/midori:unique - Enable single instance support using dev-libs/libunique
 www-client/opera:gtk - Set runtime dependencies to support GTK+/GNOME desktop integration
 www-client/opera:kde - Set runtime dependencies to support KDE desktop integration
 www-client/opera-next:gtk - Set runtime dependencies to support GTK+/GNOME desktop integration
@@ -4838,7 +4851,6 @@ www-servers/nginx:http-cache - Enable HTTP cache support
 www-servers/nginx:libatomic - Use libatomic instead of builtin atomic operations
 www-servers/nginx:nginx_modules_http_addition - This module adds contents of other locations before and after the current location's content.
 www-servers/nginx:nginx_modules_http_dav - This module adds the HTTP and WebDAV methods PUT, DELETE, MKCOL, COPY and MOVE.
-www-servers/nginx:nginx_modules_http_ey_balancer - This module adds an upstream connection queue to nginx
 www-servers/nginx:nginx_modules_http_flv - This module provides the ability to seek within FLV (Flash) files using time-based offsets.
 www-servers/nginx:nginx_modules_http_gzip_static - Enables support for gzipping static content on disk
 www-servers/nginx:nginx_modules_http_mp4 - This module adds pseudo-streaming support for H.264/AAC in MP4 containers.
@@ -4891,6 +4903,7 @@ x11-libs/gtksourceview:introspection - Use dev-libs/gobject-introspection for in
 x11-libs/libSM:uuid - Use UUID for session identification instead of IP address and system time.
 x11-libs/libaosd:pango - Enable the textual helpers (requires pangocairo).
 x11-libs/libaosd:tools - Install the aosd_cat tool (requires glib-2.0).
+x11-libs/libcryptui:introspection - Use dev-libs/gobject-introspection for introspection
 x11-libs/libdesktop-agnostic:gconf - Enable GConf as configuration backend
 x11-libs/libdesktop-agnostic:glade - Install the Glade catalog for the desktop-agnotstic GTK widgets.
 x11-libs/libdesktop-agnostic:introspection - Use dev-libs/gobject-introspection for introspection

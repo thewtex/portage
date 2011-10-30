@@ -1,6 +1,6 @@
---- Makefile.linux	2011-09-19 21:51:42.488985956 -0400
-+++ Makefile.linux.diff	2011-09-20 23:33:31.930275241 -0400
-@@ -3,28 +3,28 @@
+--- Makefile.linux	2011-10-29 16:04:04.661248247 -0400
++++ Makefile.linux.diff	2011-10-29 16:24:41.994632222 -0400
+@@ -3,7 +3,7 @@
  # install locations
  PREFIX?=/usr/local
  BINDIR=$(PREFIX)/bin
@@ -9,33 +9,25 @@
  
  # non-base dependency build info
  CDEPS=`taglib-config --cflags`
--LDEPS=`taglib-config --libs` -ltag_c
-+LDEPS=`taglib-config --libs` -ltag_c 
- 
+@@ -12,7 +12,7 @@
  # build info
  CC?=/usr/bin/cc
  CFLAGS+=-c -std=gnu99 -D_GNU_SOURCE -Wall -Wextra -Wno-unused-value $(CDEPS) $(CDEBUG)
 -LDFLAGS+=-lm -lncurses -lutil $(LDEPS)
-+LDLIBS+=-lm -lncursesw -lutil $(LDEPS)
++LDLIBS+=-lm -lncurses -lutil $(LDEPS)
  
  OBJS=commands.o compat.o e_commands.o \
  	  keybindings.o medialib.o meta_info.o \
- 	  paint.o player.o playlist.o \
--	  str2argv.o uinterface.o vitunes.o
-+	  socket.o str2argv.o uinterface.o vitunes.o
- 
- # main targets
- 
+@@ -27,7 +27,7 @@
  .PHONY: debug clean install uninstall publish-repos man-debug
  
--vitunes: $(OBJS)
+ vitunes: $(OBJS)
 -	$(CC) -o $@ $(LDFLAGS) $(OBJS)
-+vitunes: $(OBJS) players/mplayer.o players/player_utils.o
-+	$(CC) $(LDFLAGS) $(OBJS) mplayer.o player_utils.o $(LDLIBS) -o $@
++	$(CC) -o $@ $(LDLIBS) $(OBJS)
  
  .c.o:
  	$(CC) $(CFLAGS) $<
-@@ -37,8 +37,10 @@
+@@ -40,8 +40,10 @@
  	rm -f vitunes vitunes.core vitunes-debug.log
  
  install: vitunes

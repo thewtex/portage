@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/kdevelop-php-docs/kdevelop-php-docs-1.2.0.ebuild,v 1.2 2011/04/12 22:20:18 dilfridge Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/kdevelop-php-docs/kdevelop-php-docs-1.2.0.ebuild,v 1.4 2011/10/29 01:02:37 abcd Exp $
 
 EAPI=4
 
