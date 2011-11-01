@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/evolution/evolution-2.32.3.ebuild,v 1.5 2011/10/21 14:26:25 phajdan.jr Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-client/evolution/evolution-2.32.3.ebuild,v 1.7 2011/10/31 07:35:16 tetromino Exp $
 
 EAPI="3"
 GCONF_DEBUG="no"
@@ -18,7 +18,7 @@ SRC_URI="${SRC_URI} http://dev.gentoo.org/~pacho/gnome/${P}-patches.tar.xz"
 
 LICENSE="GPL-2 LGPL-2 OPENLDAP"
 SLOT="2.0"
-KEYWORDS="~alpha amd64 ~ia64 ppc ppc64 ~sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 ia64 ppc ppc64 sparc x86 ~x86-fbsd"
 IUSE="clutter crypt doc gstreamer kerberos ldap networkmanager python ssl"
 
 # We need a graphical pinentry frontend to be able to ask for the GPG
@@ -47,7 +47,10 @@ RDEPEND=">=dev-libs/glib-2.25.12:2
 	>=x11-themes/gnome-icon-theme-2.30.2.1
 	>=dev-libs/libgdata-0.4
 
-	clutter? ( media-libs/clutter:1.0[gtk] )
+	clutter? (
+		>=media-libs/clutter-1.0.0:1.0
+		>=media-libs/clutter-gtk-0.90:1.0
+		x11-libs/mx:1.0 )
 	crypt? ( || (
 				  ( >=app-crypt/gnupg-2.0.1-r2
 					${PINENTRY_DEPEND} )

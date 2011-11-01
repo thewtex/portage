@@ -1,0 +1,22 @@
+>=dev-libs/glib-2.28:2 >=x11-libs/gtk+-3.0:3 >=gnome-base/gconf-2 >=dev-db/sqlite-3.5 >=dev-libs/libgdata-0.9.1 >=gnome-base/gnome-keyring-2.20.1 >=dev-libs/libical-0.43 >=net-libs/libsoup-2.31.2:2.4 >=dev-libs/libxml2-2 >=sys-libs/db-4 sys-libs/zlib virtual/libiconv gnome-online-accounts? ( >=net-libs/gnome-online-accounts-3.1.1 >=net-libs/liboauth-0.9.4 ) introspection? ( >=dev-libs/gobject-introspection-0.9.12 ) kerberos? ( virtual/krb5 ) ldap? ( >=net-nds/openldap-2 ) ssl? ( >=dev-libs/nspr-4.4 >=dev-libs/nss-3.9 ) weather? ( >=dev-libs/libgweather-2.90.0:2 ) dev-lang/perl dev-util/gperf >=dev-util/pkgconfig-0.9 >=dev-util/intltool-0.35.5 sys-devel/bison >=gnome-base/gnome-common-2 >=dev-util/gtk-doc-am-1.9 >=sys-devel/gettext-0.17 doc? ( >=dev-util/gtk-doc-1.9 ) vala? ( >=dev-lang/vala-0.13.0:0.14[vapigen] ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool app-arch/xz-utils >=sys-apps/sed-4 test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
+>=dev-libs/glib-2.28:2 >=x11-libs/gtk+-3.0:3 >=gnome-base/gconf-2 >=dev-db/sqlite-3.5 >=dev-libs/libgdata-0.9.1 >=gnome-base/gnome-keyring-2.20.1 >=dev-libs/libical-0.43 >=net-libs/libsoup-2.31.2:2.4 >=dev-libs/libxml2-2 >=sys-libs/db-4 sys-libs/zlib virtual/libiconv gnome-online-accounts? ( >=net-libs/gnome-online-accounts-3.1.1 >=net-libs/liboauth-0.9.4 ) introspection? ( >=dev-libs/gobject-introspection-0.9.12 ) kerberos? ( virtual/krb5 ) ldap? ( >=net-nds/openldap-2 ) ssl? ( >=dev-libs/nspr-4.4 >=dev-libs/nss-3.9 ) weather? ( >=dev-libs/libgweather-2.90.0:2 )
+0
+mirror://gnome/sources/evolution-data-server/3.2/evolution-data-server-3.2.1.tar.xz
+test
+http://www.gnome.org/projects/evolution/
+LGPL-2 BSD DB
+Evolution groupware backend
+~amd64 ~x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~ia64-linux ~x86-linux ~x86-solaris
+autotools db-use eutils fdo-mime flag-o-matic gnome.org gnome2 gnome2-utils libtool multilib portability toolchain-funcs user versionator virtualx
+doc +gnome-online-accounts +introspection ipv6 ldap kerberos ssl vala +weather test
+vala? ( introspection )
+
+
+4
+
+compile configure install postinst postrm preinst prepare setup test unpack
+
+
+
+
+
