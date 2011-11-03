@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.13191 2011/10/30 22:27:55 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.13194 2011/11/02 08:00:03 polynomial-c Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,34 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Lars Wendler <polynomial-c@gentoo.org> (02 Nov 2011)
+# Masked until source tarball is available on Gentoo mirrors (bug #389291)
+=sys-libs/libcap-2.22
+
+# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (31 Oct 2011)
+# mask development release
+=x11-drivers/xf86-video-intel-2.16.901
+
+# Markos Chandras <hwoarang@gentoo.org> (31 Oct 2011)
+# Masking 4.8 rc release. The ebuilds are still work in
+# progress.
+~x11-libs/qt-assistant-4.8.0_rc1
+~x11-libs/qt-core-4.8.0_rc1
+~x11-libs/qt-declarative-4.8.0_rc1
+~x11-libs/qt-dbus-4.8.0_rc1
+~x11-libs/qt-demo-4.8.0_rc1
+~x11-libs/qt-gui-4.8.0_rc1
+~x11-libs/qt-multimedia-4.8.0_rc1
+~x11-libs/qt-opengl-4.8.0_rc1
+~x11-libs/qt-phonon-4.8.0_rc1
+~x11-libs/qt-qt3support-4.8.0_rc1
+~x11-libs/qt-script-4.8.0_rc1
+~x11-libs/qt-sql-4.8.0_rc1
+~x11-libs/qt-svg-4.8.0_rc1
+~x11-libs/qt-test-4.8.0_rc1
+~x11-libs/qt-webkit-4.8.0_rc1
+~x11-libs/qt-xmlpatterns-4.8.0_rc1
 
 # Samuli Suominen <ssuominen@gentoo.org> (31 Oct 2011)
 # Fails to compile with libpng15 and replaced by
@@ -184,10 +212,6 @@ dev-texlive/texlive-documentation-greek
 # Masked for removal on 20111102
 # bug #338754
 games-fps/quake3-rally
-
-# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (03 Oct 2011)
-# build-tested only, use at your own risk, bug #361181 for details
-=net-im/qutecom-2.2_p20110210
 
 # Peter Volkov <pva@gentoo.org> (02 Oct 2011)
 # Old package for very old kernel, unmaintained, fails to build, bug #362827

@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/fcitx/fcitx-4.0.1.ebuild,v 1.2 2010/12/19 02:48:24 qiaomuf Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/fcitx/fcitx-4.0.1.ebuild,v 1.3 2011/11/02 06:53:22 qiaomuf Exp $
 
 EAPI="3"
 
@@ -15,8 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="dbus pango"
 
-RDEPEND="!<=app-i18n/fcitx-configtool-0.1.4
-	x11-libs/libX11
+RDEPEND="x11-libs/libX11
 	x11-libs/libXrender
 	x11-libs/cairo[X]
 	media-libs/fontconfig

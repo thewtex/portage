@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/ffmpeg/ffmpeg-9999.ebuild,v 1.57 2011/10/21 12:52:01 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/ffmpeg/ffmpeg-9999.ebuild,v 1.59 2011/11/02 14:08:52 aballier Exp $
 
 EAPI="4"
 
@@ -31,9 +31,9 @@ fi
 IUSE="
 	aac aacplus alsa amr bindist +bzip2 cdio celt cpudetection debug dirac doc
 	+encode faac frei0r gsm +hardcoded-tables ieee1394 jack jpeg2k modplug mp3
-	network openal oss pic qt-faststart rtmp schroedinger sdl speex static-libs
-	test theora threads truetype v4l v4l2 vaapi vdpau vorbis vpx X x264 xvid
-	+zlib
+	network openal oss pic pulseaudio qt-faststart rtmp schroedinger sdl speex
+	static-libs test theora threads truetype v4l vaapi vdpau vorbis vpx X x264
+	xvid +zlib
 	"
 
 # String for CPU features in the useflag[:configure_option] form
@@ -69,6 +69,7 @@ RDEPEND="
 	jpeg2k? ( >=media-libs/openjpeg-1.3-r2 )
 	modplug? ( media-libs/libmodplug )
 	openal? ( >=media-libs/openal-1.1 )
+	pulseaudio? ( media-sound/pulseaudio )
 	rtmp? ( >=media-video/rtmpdump-2.2f )
 	sdl? ( >=media-libs/libsdl-1.2.13-r1[audio,video] )
 	schroedinger? ( media-libs/schroedinger )
@@ -93,7 +94,6 @@ DEPEND="${RDEPEND}
 	test? ( net-misc/wget )
 	truetype? ( dev-util/pkgconfig )
 	v4l? ( sys-kernel/linux-headers )
-	v4l2? ( sys-kernel/linux-headers )
 "
 # faac is license-incompatible with ffmpeg
 REQUIRED_USE="bindist? ( encode? ( !faac !aacplus ) )"
@@ -140,10 +140,14 @@ src_configure() {
 	use ieee1394 && myconf="${myconf} --enable-libdc1394"
 	use openal && myconf="${myconf} --enable-openal"
 	# Indevs
-	for i in v4l v4l2 alsa oss jack ; do
+	# v4l1 is gone since linux-headers-2.6.38
+	myconf="${myconf} --disable-indev=v4l"
+	use v4l || myconf="${myconf} --disable-indev=v4l2"
+	for i in alsa oss jack ; do
 		use ${i} || myconf="${myconf} --disable-indev=${i}"
 	done
 	use X && myconf="${myconf} --enable-x11grab"
+	use pulseaudio && myconf="${myconf} --enable-libpulse"
 	# Outdevs
 	for i in alsa oss ; do
 		use ${i} || myconf="${myconf} --disable-outdev=${i}"

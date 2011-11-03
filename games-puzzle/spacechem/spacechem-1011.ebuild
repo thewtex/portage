@@ -25,9 +25,12 @@ RDEPEND=">=dev-lang/mono-2
 	app-emulation/emul-linux-x86-sdl )"
 
 S=${WORKDIR}
+dir=/opt/zachtronicsindustries/spacechem
 
 pkg_nofetch() {
-	einfo "Fetch ${SRC_URI} and put it into ${DISTDIR}"
+	einfo "Fetch ${SRC_URI} and put it into ${DISTDIR}. If this is your"
+	einfo "first time installing SpaceChem, be sure to have your license"
+	einfo "key close by, as the game will ask for it when first started."
 	einfo "Purchase the game from http://spacechemthegame.com/"
 }
 
@@ -39,13 +42,20 @@ src_unpack() {
 }
 
 src_install() {
-	dodir "/${GAMES_PREFIX_OPT}/${PN}/"
-	cd "${S}/opt/zachtronicsindustries/spacechem/"
-	cp -R . "${D}/${GAMES_PREFIX_OPT}/${PN}"
-
-	newicon icon.png "${PN}.png"
-	games_make_wrapper "${PN}" "mono SpaceChem.exe" "${ROOT}/${GAMES_PREFIX_OPT}/${PN}/"
-	make_desktop_entry "${PN}" "SpaceChem" "${PN}" "Game;LogicGame;" "Comment=Solve design-based challenges in this game from Zachtronics Industries"
+	cd "${S}${dir}"
+	insinto "${dir}"
+	doins -r *.cer *.config *.exe *.dll template.* spacechem.* || die "doins failed"
+	insinto "${dir}"/fonts 	&& doins -r fonts/* 	|| die "doins for fonts/ failed"
+	insinto "${dir}"/images && doins -r images/* 	|| die "doins for images/ failed"
+	insinto "${dir}"/lang 	&& doins -r lang/* 	|| die "doins for lang/ failed"
+	insinto "${dir}"/music 	&& doins -r music/* 	|| die "doins for music/ failed"
+	insinto "${dir}"/sounds && doins -r sounds/* 	|| die "doins for sounds/ failed"
+	insinto "${dir}"/text 	&& doins -r text/* 	|| die "doins for text/ failed"
+	exeinto "${dir}"
+	doexe spacechem-launcher.sh || die "doexe failed"
+	dodoc readme/LICENSE.txt readme/PRIVACY.txt readme/SOUND-CREDITS.txt
+	domenu zachtronicsindustries-spacechem.desktop
+	newicon icon.png zachtronicsindustries-spacechem.png
 
 	prepgamesdirs
 }

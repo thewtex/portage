@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/chromium-9999-r1.ebuild,v 1.64 2011/10/26 09:26:44 phajdan.jr Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/chromium-9999-r1.ebuild,v 1.68 2011/11/02 04:32:47 floppym Exp $
 
 EAPI="4"
 PYTHON_DEPEND="2:2.6"
@@ -15,7 +15,7 @@ ESVN_REPO_URI="http://src.chromium.org/svn/trunk/src"
 LICENSE="BSD"
 SLOT="live"
 KEYWORDS=""
-IUSE="bindist cups gnome gnome-keyring kerberos pulseaudio"
+IUSE="bindist gnome gnome-keyring kerberos pulseaudio"
 
 # en_US is ommitted on purpose from the list below. It must always be available.
 LANGS="am ar bg bn ca cs da de el en_GB es es_LA et fa fi fil fr gu he hi hr
@@ -31,6 +31,7 @@ RDEPEND="app-arch/bzip2
 	dev-libs/elfutils
 	>=dev-libs/icu-4.4.1
 	>=dev-libs/libevent-1.4.13
+	dev-libs/libgcrypt
 	dev-libs/libxml2[icu]
 	dev-libs/libxslt
 	>=dev-libs/nss-3.12.3
@@ -42,11 +43,8 @@ RDEPEND="app-arch/bzip2
 	media-libs/libpng
 	>=media-libs/libwebp-0.1.2
 	media-libs/speex
+	>=net-print/cups-1.3.11
 	pulseaudio? ( media-sound/pulseaudio )
-	cups? (
-		dev-libs/libgcrypt
-		>=net-print/cups-1.3.11
-	)
 	sys-libs/zlib
 	x11-libs/gtk+:2
 	x11-libs/libXinerama
@@ -103,7 +101,7 @@ src_unpack() {
 
 	gclient_config
 	gclient_sync
-	gclient_runhooks
+	#gclient_runhooks
 
 	subversion_wc_info
 
@@ -242,6 +240,7 @@ src_prepare() {
 		\! -path 'third_party/harfbuzz/*' \
 		\! -path 'third_party/hunspell/*' \
 		\! -path 'third_party/iccjpeg/*' \
+		\! -path 'third_party/jsoncpp/*' \
 		\! -path 'third_party/launchpad_translations/*' \
 		\! -path 'third_party/leveldb/*' \
 		\! -path 'third_party/leveldatabase/*' \
@@ -322,7 +321,6 @@ src_configure() {
 	# Optional dependencies.
 	# TODO: linux_link_kerberos, bug #381289.
 	myconf+="
-		$(gyp_use cups use_cups)
 		$(gyp_use gnome use_gconf)
 		$(gyp_use gnome-keyring use_gnome_keyring)
 		$(gyp_use gnome-keyring linux_link_gnome_keyring)
@@ -426,10 +424,12 @@ src_install() {
 	insinto "${CHROMIUM_HOME}"
 	case "$(tc-arch)" in
 		amd64)
+			doexe out/Release/nacl_helper{,_bootstrap} || die
 			doins out/Release/nacl_irt_x86_64.nexe || die
 			doins out/Release/libppGoogleNaClPluginChrome.so || die
 		;;
 		x86)
+			doexe out/Release/nacl_helper{,_bootstrap} || die
 			doins out/Release/nacl_irt_x86_32.nexe || die
 			doins out/Release/libppGoogleNaClPluginChrome.so || die
 		;;

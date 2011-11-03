@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/libreoffice/libreoffice-9999-r1.ebuild,v 1.47 2011/10/27 17:23:09 scarabeus Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/libreoffice/libreoffice-9999-r1.ebuild,v 1.49 2011/11/02 12:28:22 scarabeus Exp $
 
 EAPI=4
 
@@ -106,8 +106,8 @@ COMMON_DEPEND="
 	>=dev-libs/hyphen-2.7.1
 	>=dev-libs/icu-4.8.1-r1
 	>=dev-lang/perl-5.0
-	>=dev-libs/openssl-0.9.8g
-	dev-libs/redland[ssl]
+	>=dev-libs/openssl-1.0.0d
+	>=dev-libs/redland-1.0.14[ssl]
 	>=media-libs/fontconfig-2.8.0
 	media-libs/freetype:2
 	>=media-libs/libpng-1.4
@@ -122,8 +122,14 @@ COMMON_DEPEND="
 	x11-libs/libXrender
 	dbus? ( >=dev-libs/dbus-glib-0.92 )
 	eds? ( gnome-extra/evolution-data-server )
-	gnome? ( gnome-base/gconf:2 )
-	gtk? ( >=x11-libs/gtk+-2.24:2 )
+	gnome? (
+		gnome-base/gconf:2
+		gnome-base/orbit
+	)
+	gtk? (
+		>=x11-libs/gtk+-2.24:2
+		>=x11-libs/gtk+-3.2:3
+	)
 	graphite? ( media-gfx/graphite2 )
 	gstreamer? (
 		>=media-libs/gstreamer-0.10
