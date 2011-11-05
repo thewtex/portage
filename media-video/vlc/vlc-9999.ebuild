@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/vlc/vlc-9999.ebuild,v 1.150 2011/10/06 20:51:39 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/vlc/vlc-9999.ebuild,v 1.151 2011/11/04 12:16:19 aballier Exp $
 
 EAPI="4"
 
@@ -27,9 +27,9 @@ HOMEPAGE="http://www.videolan.org/vlc/"
 if [ "${PV%9999}" != "${PV}" ] ; then # Live ebuild
 	SRC_URI=""
 elif [[ "${MY_P}" == "${P}" ]]; then
-	SRC_URI="http://download.videolan.org/pub/videolan/${PN}/${PV}/${P}.tar.bz2"
+	SRC_URI="http://download.videolan.org/pub/videolan/${PN}/${PV}/${P}.tar.xz"
 else
-	SRC_URI="http://download.videolan.org/pub/videolan/testing/${MY_P}/${MY_P}.tar.bz2"
+	SRC_URI="http://download.videolan.org/pub/videolan/testing/${MY_P}/${MY_P}.tar.xz"
 fi
 
 SRC_URI="${SRC_URI}
@@ -151,6 +151,7 @@ DEPEND="${RDEPEND}
 	fbosd? ( sys-kernel/linux-headers )
 	kde? ( >=kde-base/kdelibs-4 )
 	xcb? ( x11-proto/xproto )
+	app-arch/xz-utils
 	dev-util/pkgconfig"
 
 REQUIRED_USE="

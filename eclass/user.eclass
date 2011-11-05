@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/user.eclass,v 1.4 2011/10/31 17:39:52 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/user.eclass,v 1.10 2011/11/04 13:08:23 naota Exp $
 
 # @ECLASS: user.eclass
 # @MAINTAINER:
@@ -30,63 +30,77 @@ _assert_pkg_ebuild_phase() {
 # @DESCRIPTION:
 # Small wrapper for getent (Linux), nidump (< Mac OS X 10.5),
 # dscl (Mac OS X 10.5), and pw (FreeBSD) used in enewuser()/enewgroup().
+#
+# Supported databases: group passwd
 egetent() {
+	local db=$1 key=$2
+
+	[[ $# -ge 3 ]] && die "usage: egetent <database> <key>"
+
+	case ${db} in
+	passwd|group) ;;
+	*) die "sorry, database '${db}' not yet supported; file a bug" ;;
+	esac
+
 	case ${CHOST} in
 	*-darwin[678])
-		case "$2" in
+		case ${key} in
 		*[!0-9]*) # Non numeric
-			nidump $1 . | awk -F":" "{ if (\$1 ~ /^$2\$/) {print \$0;exit;} }"
+			nidump ${db} . | awk -F: "(\$1 ~ /^${key}\$/) {print;exit;}"
 			;;
 		*)	# Numeric
-			nidump $1 . | awk -F":" "{ if (\$3 == $2) {print \$0;exit;} }"
+			nidump ${db} . | awk -F: "(\$3 == ${key}) {print;exit;}"
 			;;
 		esac
 		;;
 	*-darwin*)
-		local mytype=$1
-		[[ "passwd" == $mytype ]] && mytype="Users"
-		[[ "group" == $mytype ]] && mytype="Groups"
-		case "$2" in
+		local mykey
+		case ${db} in
+		passwd) db="Users"  mykey="UniqueID" ;;
+		group)  db="Groups" mykey="PrimaryGroupID" ;;
+		esac
+
+		case ${key} in
 		*[!0-9]*) # Non numeric
-			dscl . -read /$mytype/$2 2>/dev/null |grep RecordName
+			dscl . -read /${db}/${key} 2>/dev/null |grep RecordName
 			;;
 		*)	# Numeric
-			local mykey="UniqueID"
-			[[ $mytype == "Groups" ]] && mykey="PrimaryGroupID"
-			dscl . -search /$mytype $mykey $2 2>/dev/null
+			dscl . -search /${db} ${mykey} ${key} 2>/dev/null
 			;;
 		esac
 		;;
 	*-freebsd*|*-dragonfly*)
-		local opts action="user"
-		[[ $1 == "passwd" ]] || action="group"
+		case ${db} in
+		passwd) db="user" ;;
+		*) ;;
+		esac
 
 		# lookup by uid/gid
-		if [[ $2 == [[:digit:]]* ]] ; then
-			[[ ${action} == "user" ]] && opts="-u" || opts="-g"
+		local opts
+		if [[ ${key} == [[:digit:]]* ]] ; then
+			[[ ${db} == "user" ]] && opts="-u" || opts="-g"
 		fi
 
-		pw show ${action} ${opts} "$2" -q
+		pw show ${db} ${opts} "${key}" -q
 		;;
 	*-netbsd*|*-openbsd*)
-		grep "$2:\*:" /etc/$1
+		grep "${key}:\*:" /etc/${db}
 		;;
 	*)
 		# ignore output if nscd doesn't exist, or we're not running as root
-		nscd -i "$1" 2>/dev/null
-		getent "$1" "$2"
+		nscd -i "${db}" 2>/dev/null
+		getent "${db}" "${key}"
 		;;
 	esac
 }
 
 # @FUNCTION: enewuser
-# @USAGE: <user> [uid] [shell] [homedir] [groups] [params]
+# @USAGE: <user> [uid] [shell] [homedir] [groups]
 # @DESCRIPTION:
 # Same as enewgroup, you are not required to understand how to properly add
 # a user to the system.  The only required parameter is the username.
 # Default uid is (pass -1 for this) next available, default shell is
-# /bin/false, default homedir is /dev/null, there are no default groups,
-# and default params sets the comment as 'added by portage for ${PN}'.
+# /bin/false, default homedir is /dev/null, and there are no default groups.
 enewuser() {
 	_assert_pkg_ebuild_phase enewuser
 
@@ -125,7 +139,7 @@ enewuser() {
 			[[ -z $(egetent passwd ${euid}) ]] && break
 		done
 	fi
-	opts="${opts} -u ${euid}"
+	opts+=" -u ${euid}"
 	einfo " - Userid: ${euid}"
 
 	# handle shell
@@ -157,7 +171,7 @@ enewuser() {
 		eshell=${shell}
 	fi
 	einfo " - Shell: ${eshell}"
-	opts="${opts} -s ${eshell}"
+	opts+=" -s ${eshell}"
 
 	# handle homedir
 	local ehome=$1; shift
@@ -165,7 +179,7 @@ enewuser() {
 		ehome="/dev/null"
 	fi
 	einfo " - Home: ${ehome}"
-	opts="${opts} -d ${ehome}"
+	opts+=" -d ${ehome}"
 
 	# handle groups
 	local egroups=$1; shift
@@ -189,86 +203,58 @@ enewuser() {
 		done
 		export IFS=${oldifs}
 
-		opts="${opts} -g ${defgroup}"
+		opts+=" -g ${defgroup}"
 		if [[ ! -z ${exgroups} ]] ; then
-			opts="${opts} -G ${exgroups:1}"
+			opts+=" -G ${exgroups:1}"
 		fi
 	else
 		egroups="(none)"
 	fi
 	einfo " - Groups: ${egroups}"
 
-	# handle extra and add the user
+	# handle extra args
+	if [[ $# -gt 0 ]] ; then
+		die "extra arguments no longer supported; please file a bug"
+	else
+		set -- -c "added by portage for ${PN}"
+		einfo " - Extra: $@"
+	fi
+
+	# add the user
 	local oldsandbox=${SANDBOX_ON}
 	export SANDBOX_ON="0"
 	case ${CHOST} in
 	*-darwin*)
 		### Make the user
-		if [[ -z $@ ]] ; then
-			dscl . create /users/${euser} uid ${euid}
-			dscl . create /users/${euser} shell ${eshell}
-			dscl . create /users/${euser} home ${ehome}
-			dscl . create /users/${euser} realname "added by portage for ${PN}"
-			### Add the user to the groups specified
-			local oldifs=${IFS}
-			export IFS=","
-			for g in ${egroups} ; do
-				dscl . merge /groups/${g} users ${euser}
-			done
-			export IFS=${oldifs}
-		else
-			einfo "Extra options are not supported on Darwin yet"
-			einfo "Please report the ebuild along with the info below"
-			einfo "eextra: $@"
-			die "Required function missing"
-		fi
+		dscl . create /users/${euser} uid ${euid}
+		dscl . create /users/${euser} shell ${eshell}
+		dscl . create /users/${euser} home ${ehome}
+		dscl . create /users/${euser} realname "added by portage for ${PN}"
+		### Add the user to the groups specified
+		local oldifs=${IFS}
+		export IFS=","
+		for g in ${egroups} ; do
+			dscl . merge /groups/${g} users ${euser}
+		done
+		export IFS=${oldifs}
 		;;
+
 	*-freebsd*|*-dragonfly*)
-		if [[ -z $@ ]] ; then
-			pw useradd ${euser} ${opts} \
-				-c "added by portage for ${PN}" \
-				die "enewuser failed"
-		else
-			einfo " - Extra: $@"
-			pw useradd ${euser} ${opts} \
-				"$@" || die "enewuser failed"
-		fi
+		pw useradd ${euser} ${opts} "$@" || die
 		;;
 
 	*-netbsd*)
-		if [[ -z $@ ]] ; then
-			useradd ${opts} ${euser} || die "enewuser failed"
-		else
-			einfo " - Extra: $@"
-			useradd ${opts} ${euser} "$@" || die "enewuser failed"
-		fi
+		useradd ${opts} ${euser} "$@" || die
 		;;
 
 	*-openbsd*)
-		if [[ -z $@ ]] ; then
-			useradd -u ${euid} -s ${eshell} \
-				-d ${ehome} -c "Added by portage for ${PN}" \
-				-g ${egroups} ${euser} || die "enewuser failed"
-		else
-			einfo " - Extra: $@"
-			useradd -u ${euid} -s ${eshell} \
-				-d ${ehome} -c "Added by portage for ${PN}" \
-				-g ${egroups} ${euser} "$@" || die "enewuser failed"
-		fi
+		# all ops the same, except the -g vs -g/-G ...
+		useradd -u ${euid} -s ${eshell} \
+			-d ${ehome} -g ${egroups} "$@" ${euser} || die
 		;;
 
 	*)
-		if [[ -z $@ ]] ; then
-			useradd -r ${opts} \
-				-c "added by portage for ${PN}" \
-				${euser} \
-				|| die "enewuser failed"
-		else
-			einfo " - Extra: $@"
-			useradd -r ${opts} "$@" \
-				${euser} \
-				|| die "enewuser failed"
-		fi
+		useradd -r ${opts} "$@" ${euser} || die
 		;;
 	esac
 
@@ -318,9 +304,9 @@ enewgroup() {
 			if [ -z "`egetent group ${egid}`" ]
 			then
 				if [[ "${CHOST}" == *-darwin* ]]; then
-					opts="${opts} ${egid}"
+					opts+=" ${egid}"
 				else
-					opts="${opts} -g ${egid}"
+					opts+=" -g ${egid}"
 				fi
 			else
 				egid="next available; requested gid taken"
@@ -335,22 +321,15 @@ enewgroup() {
 	einfo " - Groupid: ${egid}"
 
 	# handle extra
-	local eextra="$@"
-	opts="${opts} ${eextra}"
+	if [ $# -gt 0 ] ; then
+		die "extra arguments no longer supported; please file a bug"
+	fi
 
 	# add the group
 	local oldsandbox="${SANDBOX_ON}"
 	export SANDBOX_ON="0"
 	case ${CHOST} in
 	*-darwin*)
-		if [ ! -z "${eextra}" ];
-		then
-			einfo "Extra options are not supported on Darwin/OS X yet"
-			einfo "Please report the ebuild along with the info below"
-			einfo "eextra: ${eextra}"
-			die "Required function missing"
-		fi
-
 		# If we need the next available
 		case ${egid} in
 		*[!0-9]*) # Non numeric
@@ -369,7 +348,7 @@ enewgroup() {
 					[[ -z $(egetent group ${egid}) ]] && break
 				done
 		esac
-		pw groupadd ${egroup} -g ${egid} || die "enewgroup failed"
+		pw groupadd ${egroup} -g ${egid} || die
 		;;
 
 	*-netbsd*)
@@ -379,13 +358,55 @@ enewgroup() {
 				[[ -z $(egetent group ${egid}) ]] && break
 			done
 		esac
-		groupadd -g ${egid} ${egroup} || die "enewgroup failed"
+		groupadd -g ${egid} ${egroup} || die
 		;;
 
 	*)
 		# We specify -r so that we get a GID in the system range from login.defs
-		groupadd -r ${opts} ${egroup} || die "enewgroup failed"
+		groupadd -r ${opts} ${egroup} || die
 		;;
 	esac
 	export SANDBOX_ON="${oldsandbox}"
+}
+
+# @FUNCTION: egethome
+# @USAGE: <user>
+# @DESCRIPTION:
+# Gets the home directory for the specified user.
+egethome() {
+	local pos
+
+	[[ $# -eq 1 ]] || die "usage: egethome <user>"
+
+	case ${CHOST} in
+	*-darwin*|*-freebsd*|*-dragonfly*)
+		pos=9
+		;;
+	*)	# Linux, NetBSD, OpenBSD, etc...
+		pos=6
+		;;
+	esac
+
+	egetent passwd $1 | cut -d: -f${pos}
+}
+
+# @FUNCTION: egetshell
+# @USAGE: <user>
+# @DESCRIPTION:
+# Gets the shell for the specified user.
+egetshell() {
+	local pos
+
+	[[ $# -eq 1 ]] || die "usage: egetshell <user>"
+
+	case ${CHOST} in
+	*-darwin*|*-freebsd*|*-dragonfly*)
+		pos=10
+		;;
+	*)	# Linux, NetBSD, OpenBSD, etc...
+		pos=7
+		;;
+	esac
+
+	egetent passwd "$1" | cut -d: -f${pos}
 }

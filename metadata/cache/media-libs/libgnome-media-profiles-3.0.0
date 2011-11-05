@@ -1,5 +1,5 @@
 dev-libs/glib:2 >=x11-libs/gtk+-2.91.0:3 >=media-libs/gstreamer-0.10.23:0.10 >=media-libs/gst-plugins-base-0.10.23:0.10 gnome-base/gconf:2 app-text/gnome-doc-utils >=dev-util/intltool-0.35.0 >=dev-util/pkgconfig-0.19 sys-devel/gettext >=sys-apps/sed-4
-dev-libs/glib:2 >=x11-libs/gtk+-2.91.0:3 >=media-libs/gstreamer-0.10.23:0.10 >=media-libs/gst-plugins-base-0.10.23:0.10 gnome-base/gconf:2 !<gnome-extra/gnome-media-2.32.0-r300
+dev-libs/glib:2 >=x11-libs/gtk+-2.91.0:3 >=media-libs/gstreamer-0.10.23:0.10 >=media-libs/gst-plugins-base-0.10.23:0.10 gnome-base/gconf:2 media-plugins/gst-plugins-meta:0.10[flac?,vorbis?] aac? ( media-plugins/gst-plugins-faac:0.10 media-plugins/gst-plugins-ffmpeg:0.10 ) mp3? ( media-libs/gst-plugins-ugly:0.10 media-plugins/gst-plugins-taglib:0.10 media-plugins/gst-plugins-lame:0.10 ) speex? ( media-plugins/gst-plugins-ogg:0.10 media-plugins/gst-plugins-speex:0.10 ) twolame? ( media-plugins/gst-plugins-taglib:0.10 media-plugins/gst-plugins-twolame:0.10 ) !<gnome-extra/gnome-media-2.32.0-r300
 3
 mirror://gnome/sources/libgnome-media-profiles/3.0/libgnome-media-profiles-3.0.0.tar.bz2
 
@@ -8,7 +8,7 @@ LGPL-2
 GNOME Media Profiles library
 ~amd64 ~x86
 eutils fdo-mime gnome.org gnome2 gnome2-utils libtool multilib portability toolchain-funcs user versionator
-
+aac flac mp3 speex twolame vorbis
 
 
 
