@@ -1067,7 +1067,6 @@ dev-lang/idb:icc - Use dev-lang/icc to install idb (default)
 dev-lang/idb:ifc - Use dev-lang/ifc to install idb
 dev-lang/ifc:idb - Install the Intel Debugger
 dev-lang/ifc:mkl - Install the Intel Math Kernel Library
-dev-lang/lisaac:vim - install a syntax file for vim
 dev-lang/logtalk:fop - Support for generating pdf documentation using fop
 dev-lang/logtalk:gnupl - Support GNU Prolog back-end compiler
 dev-lang/logtalk:qupl - Support Qu-Prolog back-end compiler
@@ -1257,7 +1256,6 @@ dev-libs/xapian:brass - Enabled brass backend db support
 dev-libs/xapian:chert - Enabled chert backend db support
 dev-libs/xapian:flint - Enabled flint backend db support
 dev-libs/xapian:inmemory - Enabled inmemory backend db support
-dev-libs/xapian:nosse - Disable all sse support
 dev-libs/xapian:remote - Enabled remot backend db support
 dev-libs/xerces-c:iconv - Use iconv (virtual/libiconv) as message loader and transcoder (in general it would be possible to use iconv only as message loader and something else like icu or the native method as transcoder and vice-versa, but this is a less common case and hard to handle)
 dev-libs/xerces-c:libwww - Use the net-libs/libwww library for fetching URLs, instead of the builtin method
@@ -1739,15 +1737,26 @@ gnome-base/dconf:introspection - Use dev-libs/gobject-introspection for introspe
 gnome-base/dconf:vala - Add support for dev-lang/vala
 gnome-base/gconf:introspection - Use dev-libs/gobject-introspection for introspection
 gnome-base/gconf:ldap - Build backend which enables default mail accounts, addressbooks and calendars for Evolution to be configured using each user's LDAP entry."
+gnome-base/gconf:orbit - Use gnome-base/orbit for IPC, same as in gconf-2.x
 gnome-base/gdm:consolekit - Allow proper handling of removable media according to who is actually present on the machine.
 gnome-base/gdm:dmx - Enables Distributed Multihead X (DMX) support
+gnome-base/gdm:fprint - Enables experimental fingerprint authentication using sys-auth/fprintd
+gnome-base/gdm:gnome-shell - Enables a greeter based on GNOME Shell (uses OpenGL)
+gnome-base/gdm:introspection - Use dev-libs/gobject-introspection for introspection
 gnome-base/gdm:remote - Enables support for secure remote connections
+gnome-base/gdm:smartcard - Enables experimental smartcard authentication
 gnome-base/gdm:xklavier - Use x11-libs/libxklavier for keyboard management
+gnome-base/gnome:extras - Install additional GNOME applications
+gnome-base/gnome:fallback - Install gnome-base/gnome-panel and x11-wm/metacity for the GNOME 3 fallback mode
 gnome-base/gnome-control-center:cheese - Add support for taking pictures for the user accounts panel using media-video/cheese
 gnome-base/gnome-control-center:colord - Support color management using x11-misc/colord
 gnome-base/gnome-control-center:socialweb - Add support for configuring social web service settings using net-libs/libsocialweb
 gnome-base/gnome-desktop:introspection - Use dev-libs/gobject-introspection for introspection
+gnome-base/gnome-extra-apps:shotwell - Install the media-gfx/shotwell photo manager
+gnome-base/gnome-extra-apps:tracker - Install the app-misc/tracker indexer and the GNOME packages that require it
 gnome-base/gnome-light:automount - Use gnome-base/gvfs[gdu] for automounting of drives in nautilus
+gnome-base/gnome-light:fallback - Install gnome-base/gnome-panel and x11-wm/metacity for the GNOME 3 fallback mode
+gnome-base/gnome-light:gnome-shell - Install gnome-base/gnome-shell and x11-wm/mutter for the standard GNOME 3 desktop mode
 gnome-base/gnome-menus:introspection - Use dev-libs/gobject-introspection for introspection
 gnome-base/gnome-panel:bonobo - Enable Bonobo compatibility modules for applets still not ported to DBUS.
 gnome-base/gnome-panel:introspection - Use dev-libs/gobject-introspection for introspection
@@ -1772,9 +1781,10 @@ gnome-base/nautilus:packagekit - Use packagekit to search for programs to open u
 gnome-base/nautilus:previewer - Use gnome-extra/sushi to preview files from the file mananger
 gnome-base/nautilus:sendto - Enable the nautilus-sendto extension to send files to various locations/devices
 gnome-base/nautilus:tracker - Add support for app-misc/tracker search
-gnome-extra/avant-window-navigator:thunar - Enables support for the deprecated Thunar VFS layer
-gnome-extra/avant-window-navigator:vala - Enables support for applets written in dev-lang/vala.
-gnome-extra/avant-window-navigator-extras:webkit - Enables support for net-libs/webkit-gtk.
+gnome-extra/avant-window-navigator:gconf - Enable GConf as configuration backend
+gnome-extra/avant-window-navigator:vala - Enable installation of dev-lang/vala binding
+gnome-extra/avant-window-navigator-extras:gconf - Enable GConf as configuration backend
+gnome-extra/avant-window-navigator-extras:webkit - Enable support for net-libs/webkit-gtk
 gnome-extra/evolution-data-server:gnome-online-accounts - Enable using net-libs/gnome-online-accounts for authorization
 gnome-extra/evolution-data-server:introspection - Use dev-libs/gobject-introspection for introspection
 gnome-extra/evolution-data-server:vala - Build dev-lang/vala bindings
@@ -1816,6 +1826,7 @@ gnome-extra/panflute:mpd - Enable MPD support
 gnome-extra/polkit-gnome:introspection - Use dev-libs/gobject-introspection for introspection
 gnome-extra/zeitgeist:fts - Enable the full text search extension
 gnome-extra/zenity:compat - Installs gdialog for compatibility with older shell scripts which uses dev-lang/perl
+gnome-extra/zenity:webkit - Enable HTML rendering using net-libs/webkit-gtk
 gnustep-apps/cdplayer:preferences - Use gnustep-apps/preferences for preferences setting
 gnustep-apps/cdplayer:systempreferences - Use gnustep-apps/systempreferences for preferences setting
 gnustep-apps/gnumail:emoticon - Enable extra Emoticon Bundle to see smiley's in e-mail messages
@@ -2420,6 +2431,7 @@ media-plugins/banshee-community-extensions:telepathy - Enables the Telepathy plu
 media-plugins/frei0r-plugins:facedetect - Enables building of facedetect plugin, which depends on media-libs/opencv
 media-plugins/frei0r-plugins:scale0tilt - Enables building of scale0tilt and vectorscope plugins, which depend on media-libs/gavl
 media-plugins/gkrellmpc:threads - Use separate thread to init connection (unsafe)
+media-plugins/grilo-plugins:tracker - Build support for content discovery using the app-misc/tracker indexer
 media-plugins/grilo-plugins:upnp - Build support for UPnP devices using net-libs/gupnp and net-libs/gupnp-av
 media-plugins/grilo-plugins:vimeo - Build support for Vimeo content discovery using net-libs/libsoup and dev-libs/libgcrypt
 media-plugins/grilo-plugins:youtube - Build support for YouTube content discovery using dev-libs/libgdata
@@ -2607,6 +2619,7 @@ media-sound/qmmp:bs2b - Enable Bauer stereophonic-to-binaural headphone filter
 media-sound/qmmp:cover - Enable album cover support
 media-sound/qmmp:crossfade - Enable crossfade effect when switching tracks
 media-sound/qmmp:enca - Detects the character encoding automatically
+media-sound/qmmp:game - Enable Game music support
 media-sound/qmmp:kde - Use kde4 notifier system
 media-sound/qmmp:lyrics - Fetch track lyrics from the web
 media-sound/qmmp:midi - Enable midi support using wildmidi library
@@ -2775,9 +2788,11 @@ media-video/ffmpeg:dirac - Enable Dirac video support (an advanced royalty-free 
 media-video/ffmpeg:faac - Use external faac library for AAC encoding
 media-video/ffmpeg:frei0r - Enable frei0r wrapping in libavfilter
 media-video/ffmpeg:hardcoded-tables - Use pre-calculated tables rather than calculating them on the fly.
+media-video/ffmpeg:libv4l - Uses media-libs/libv4l for video4linux instead of direct calls. Adds support for more devices via the userspace library.
 media-video/ffmpeg:mmxext - Enables mmx2 support
 media-video/ffmpeg:neon - Enables NEON optimizations for arm processors.
 media-video/ffmpeg:network - Enables network streaming support
+media-video/ffmpeg:openssl - Enables dev-libs/openssl support. Adds support for encrypted network protocols (TLS/HTTPS).
 media-video/ffmpeg:pic - Force shared libraries to be built as PIC (this is slower)
 media-video/ffmpeg:qt-faststart - Build and install qt-faststart application
 media-video/ffmpeg:rtmp - Enable Real Time Messaging Protocol using librtmp
@@ -3901,7 +3916,6 @@ net-misc/vde:pcap - Enable the pcap-based plugin that allows creating a switch a
 net-misc/vde:ssl - Enable the cryptcab plugin that allows creating an encrypted virtual cable.
 net-misc/vidalia:tor - Allow to use a local tor setup
 net-misc/vinagre:applet - Enable vinagre applet for gnome-base/gnome-panel
-net-misc/vinagre:introspection - Use dev-libs/gobject-introspection for introspection
 net-misc/vinagre:ssh - Enable ssh plugin using x11-libs/vte
 net-misc/vinagre:telepathy - Enable access to remote desktop via a net-libs/telepathy-glib client
 net-misc/vino:telepathy - Enable desktop sharing through a telepathy client
@@ -4073,8 +4087,6 @@ net-wireless/kismet:client - Build the ncurses-based user interface
 net-wireless/kismet:pcap - Enable packet capturing support using net-libs/libpcap
 net-wireless/kismet:suid - Install a setuid root helper binary with limited functionality; this allows running kismet as a normal user, significantly reducing security risks
 net-wireless/madwifi-ng:injection - Adds support for net-wireless/aircrack-ng aireplay-ng packet injection
-net-wireless/madwifi-old:amrr - Use Adaptive Multi Rate Retry bit rate control algorithm
-net-wireless/madwifi-old:onoe - Use Atsushi Onoe's bit rate control algorithm
 net-wireless/wepattack:john - Build with app-crypt/johntheripper support
 net-wireless/wifiscanner:wireshark - Use the net-analyzer/wireshark wtap library
 net-wireless/wireless-tools:multicall - Build the most commonly used tools as one binary
@@ -4583,6 +4595,7 @@ sys-freebsd/boot0:tftp - Enable PXE/TFTP boot support.
 sys-freebsd/boot0:zfs - Enable booting on ZFS filesystems.
 sys-freebsd/freebsd-lib:hesiod - Enable support for net-dns/hesiod
 sys-freebsd/freebsd-lib:netware - Build libraries and tools to work with NetWare protocols (IPX and NCP).
+sys-freebsd/freebsd-lib:zfs - Enable ZFS support.
 sys-freebsd/freebsd-rescue:netware - Build tools to work with NetWare protocols (IPX and NCP).
 sys-freebsd/freebsd-rescue:zfs - Enable ZFS support.
 sys-freebsd/freebsd-sbin:ipfilter - Build tools to administer the ipfilter firewall.
@@ -4829,7 +4842,8 @@ www-client/luakit:luajit - Use the lua just-in-time compiler dev-lang/luajit ins
 www-client/lynx:gnutls - Use gnutls library for HTTPS support (openssl is the default library for HTTPS support).
 www-client/lynx:ssl - Enable HTTPS support.
 www-client/midori:unique - Enable single instance support using dev-libs/libunique
-www-client/opera:gtk - Set runtime dependencies to support GTK+/GNOME desktop integration
+www-client/opera:gtk - Set runtime dependencies to support GTK+/GNOME version 2 desktop integration
+www-client/opera:gtk3 - Set runtime dependencies to support GTK+/GNOME version 3 desktop integration
 www-client/opera:kde - Set runtime dependencies to support KDE desktop integration
 www-client/opera-next:gtk - Set runtime dependencies to support GTK+/GNOME desktop integration
 www-client/opera-next:kde - Set runtime dependencies to support KDE desktop integration
@@ -5098,6 +5112,7 @@ x11-wm/compiz:fuse - Enables support for the filesystem in userspace plugin thro
 x11-wm/compiz:gconf - Enable the GConf-based configuration backend; it is not required to work with GNOME, and might actually be faster if it's not used.
 x11-wm/compiz-fusion:emerald - Install the x11-wm/emerald package.
 x11-wm/compiz-fusion:unsupported - Install the x11-plugins/compiz-fusion-plugins-unsupported package.
+x11-wm/echinus:xrandr - Enable support for multihead configuration
 x11-wm/enlightenment:pango - Enable pango font rendering
 x11-wm/enlightenment:xrandr - Enable support for the X xrandr extension
 x11-wm/fluxbox:bidi - Enable bidirectional language support with dev-libs/fribidi

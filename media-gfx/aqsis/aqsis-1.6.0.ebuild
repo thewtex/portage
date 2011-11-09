@@ -1,8 +1,10 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/aqsis/aqsis-1.6.0.ebuild,v 1.3 2011/03/22 09:48:08 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/aqsis/aqsis-1.6.0.ebuild,v 1.5 2011/11/05 08:45:07 ssuominen Exp $
 
-EAPI="1"
+EAPI=2
+
+patch_level=8
 
 inherit versionator multilib eutils cmake-utils
 
@@ -17,7 +19,8 @@ if [[ "${P}" == *_p* ]] ; then
 	SRC_URI="http://download.aqsis.org/builds/testing/source/tar/${MY_P}.tar.gz"
 	S="${WORKDIR}/${PN}-$(get_version_component_range 1-3)"
 else
-	SRC_URI="mirror://sourceforge/aqsis/${P}.tar.gz"
+	SRC_URI="mirror://sourceforge/aqsis/${P}.tar.gz
+		mirror://debian/pool/main/a/${PN}/${PN}_${PV}-${patch_level}.debian.tar.gz"
 fi
 
 LICENSE="GPL-2"
@@ -38,6 +41,10 @@ DEPEND="
 	>=dev-util/cmake-2.6.3
 	>=sys-devel/bison-1.35
 	>=sys-devel/flex-2.5.4"
+
+src_prepare() {
+	epatch "${WORKDIR}"/debian/patches/*ftbfs*
+}
 
 src_compile() {
 	if use fltk ; then

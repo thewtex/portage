@@ -1,0 +1,22 @@
+>=dev-libs/dbus-glib-0.75 >=dev-libs/glib-2.25.7 >=dev-libs/libxml2-2.4.0 >=gnome-base/gconf-2.31.1 >=gnome-base/librsvg-2.32 >=x11-libs/cairo-1 >=x11-libs/gtk+-2.91.7:3[introspection?] media-libs/libcanberra[gtk3] x11-libs/libSM artworkextra? ( >=gnome-extra/gnome-games-extra-data-3.0.0 ) clutter? ( >=dev-libs/gobject-introspection-0.6.3 >=x11-libs/gtk+-2.90:3[introspection] >=gnome-base/gconf-2.31.1[introspection] >=media-libs/clutter-gtk-0.91.6:1.0[introspection] seed? ( >=dev-libs/seed-2.91.90 ) ) introspection? ( >=dev-libs/gobject-introspection-0.6.3 media-libs/clutter:1.0[introspection] ) glchess? ( dev-db/sqlite:3 >=gnome-base/librsvg-2.32 virtual/opengl x11-libs/libX11 ) glchess? ( >=dev-lang/vala-0.13.0:0.14 ) >=dev-util/pkgconfig-0.15 >=dev-util/intltool-0.40.4 >=sys-devel/gettext-0.10.40 >=gnome-base/gnome-common-2.12.0 >=app-text/scrollkeeper-0.3.8 >=app-text/gnome-doc-utils-0.10 test? ( >=dev-libs/check-0.9.4 ) =sys-devel/automake-1.11* >=sys-devel/autoconf-2.61 sys-devel/libtool app-arch/xz-utils >=sys-apps/sed-4 >=app-admin/eselect-python-20091230 || ( =dev-lang/python-2.7* =dev-lang/python-2.6* =dev-lang/python-2.5* =dev-lang/python-2.4* ) || ( =dev-lang/python-2.7*[xml] =dev-lang/python-2.6*[xml] =dev-lang/python-2.5*[xml] =dev-lang/python-2.4*[xml] ) test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
+>=dev-libs/dbus-glib-0.75 >=dev-libs/glib-2.25.7 >=dev-libs/libxml2-2.4.0 >=gnome-base/gconf-2.31.1 >=gnome-base/librsvg-2.32 >=x11-libs/cairo-1 >=x11-libs/gtk+-2.91.7:3[introspection?] media-libs/libcanberra[gtk3] x11-libs/libSM artworkextra? ( >=gnome-extra/gnome-games-extra-data-3.0.0 ) clutter? ( >=dev-libs/gobject-introspection-0.6.3 >=x11-libs/gtk+-2.90:3[introspection] >=gnome-base/gconf-2.31.1[introspection] >=media-libs/clutter-gtk-0.91.6:1.0[introspection] seed? ( >=dev-libs/seed-2.91.90 ) ) introspection? ( >=dev-libs/gobject-introspection-0.6.3 media-libs/clutter:1.0[introspection] ) glchess? ( dev-db/sqlite:3 >=gnome-base/librsvg-2.32 virtual/opengl x11-libs/libX11 ) sudoku? ( || ( dev-python/pygobject:3 >=dev-python/pygobject-2.28.3:2[introspection] ) x11-libs/gdk-pixbuf:2[introspection] x11-libs/pango[introspection] >=x11-libs/gtk+-3.0.0:3[introspection] ) !<gnome-extra/gnome-games-extra-data-3.0.0 >=app-admin/eselect-python-20091230 || ( =dev-lang/python-2.7* =dev-lang/python-2.6* =dev-lang/python-2.5* =dev-lang/python-2.4* ) || ( =dev-lang/python-2.7*[xml] =dev-lang/python-2.6*[xml] =dev-lang/python-2.5*[xml] =dev-lang/python-2.4*[xml] )
+0
+mirror://gnome/sources/gnome-games/3.2/gnome-games-3.2.1.tar.xz
+
+http://live.gnome.org/GnomeGames/
+GPL-2 GPL-3 FDL-1.1
+Collection of games for the GNOME desktop
+~amd64 ~x86
+autotools base eutils fdo-mime games gnome.org gnome2 gnome2-utils libtool multilib portability python toolchain-funcs user versionator virtualx
+artworkextra +aisleriot +clutter +introspection glchess seed +sudoku test test
+
+aisleriot? ( games-board/aisleriot )
+
+3
+
+compile configure install postinst postrm preinst prepare setup test unpack
+
+
+
+
+

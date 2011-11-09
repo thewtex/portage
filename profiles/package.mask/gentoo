@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.13200 2011/11/04 12:13:55 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.13216 2011/11/08 15:59:03 williamh Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,42 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Nathan Phillip Brink <binki@gentoo.org> (8 Nov 2011)
+# Masking alpha release series.
+>=net-irc/atheme-services-7.0.0_alpha1
+
+# William Hubbs <williamh@gentoo.org> (6 Nov 2011)
+# Masking this version of udev and its dependencies until we have a default
+# solution for the following issue:
+#
+# http://www.freedesktop.org/wiki/Software/systemd/separate-usr-is-broken
+~sys-fs/udev-175
+>=sys-apps/systemd-30
+
+# Vadim Kuznetsov <vadimk@gentoo.org> (05 Nov 2011)
+# Masked for removal in 30 days
+# due to end of support (upstream) and
+# security issue: bug 385727
+<app-emulation/vmware-modules-238.5
+<app-emulation/vmware-player-3.1.5
+<app-emulation/vmware-workstation-7.1.5
+
+# Samuli Suominen <ssuominen@gentoo.org> (04 Nov 2011)
+# Masked for removal in 30 days because the datafeed is no longer available:
+# http://mail.xfce.org/pipermail/goodies-dev/2011-October/003139.html
+<=xfce-extra/xfce4-weather-plugin-0.7.4
+
+# Michael Weber <xmw@gentoo.org> (04 Nov 2011)
+# Masked due security issue bug 385967
+=net-misc/radvd-1.7
+=net-misc/radvd-1.8
+=net-misc/radvd-1.8.1
+
+# Jeroen Roovers <jer@gentoo.org> (04 Nov 2011)
+# Masked www-client/opera snapshots
+# http://my.opera.com/desktopteam/blog/2011/11/04/opera-11-60
+>=www-client/opera-11.60
 
 # Alexis Ballier <aballier@gentoo.org> (04 Nov 2011)
 # Pre-releases of vlc 1.2. Mask it until final version is out
@@ -143,11 +179,6 @@ dev-java/jnlp-bin
 # (bug https://bugs.gentoo.org/show_bug.cgi?id=377967)
 app-misc/openjnlp
 
-# Markos Chandras <hwoarang@gentoo.org> (18 Oct 2011)
-# Mask openbox and obconf snapshots for testing
-~x11-wm/openbox-3.5.0_p20111019
-~x11-misc/obconf-2.0.3_p20111019
-
 # Jeroen Roovers <jer@gentoo.org> (18 Oct 2011)
 # Masked for removal on 18 Nov 2011
 # https://bugs.gentoo.org/377695
@@ -197,34 +228,11 @@ dev-python/pypax
 games-action/xpilot-ng
 games-puzzle/londonlaw
 
-# Alexis Ballier <aballier@gentoo.org> (05 Oct 2011)
-# Packages used only in TeX Live prior to 2010
-# Removal on 05 Nov 2011
-# Merged in dev-texlive/texlive-fontutils after TeX Live 2009
-dev-texlive/texlive-psutils
-# Moved to dev-texlive/texlive-langenglish after TeX Live 2010
-dev-texlive/texlive-langukenglish
-# Moved to dev-texlive/texlive-langarabic after TeX Live 2009
-dev-texlive/texlive-langarab
-# Removed after TeX Live 2009
-dev-texlive/texlive-documentation-greek
-
 # Hans de Graaff <graaff@gentoo.org> (04 Oct 2011)
 # Mask stable version of ruby-activeldap since the sole version
 # of rails that it works with no longer in the tree. A new
 # version of ruby-activeldap should be stable soon, bug 384827.
 =dev-ruby/ruby-activeldap-1.2.1
-
-# Michael Sterrett <mr_bones_@gentoo.org> (03 Oct 2011)
-# Looks like a rewrite which is only in alpha status from upstream.
-# Masked for removal on 20111102
-# bug #338754
-games-fps/quake3-rally
-
-# Peter Volkov <pva@gentoo.org> (02 Oct 2011)
-# Old package for very old kernel, unmaintained, fails to build, bug #362827
-net-wireless/madwifi-old
-net-wireless/madwifi-old-tools
 
 # Michael Sterrett <mr_bones_@gentoo.org> (29 Sep 2011)
 # Don't use this on production boxes.  This version of
@@ -234,22 +242,6 @@ net-wireless/madwifi-old-tools
 # install should be directed upstream at:
 # https://bugzilla.balabit.com/
 >=app-admin/syslog-ng-3.2.9999
-
-# Samuli Suominen <ssuominen@gentoo.org> (29 Sep 2011)
-# Incompatible with >= gnome-panel-3 and has issues wrt bug 358171
-# http://mail.xfce.org/pipermail/xfce4-dev/2011-May/028870.html
-# Removal in 30 days
-xfce-extra/xfce4-xfapplet-plugin
-
-# Michael Sterrett <mr_bones_@gentoo.org> (27 Sep 2011)
-# maintainer-needed, gtk+:1 using packages.
-# Masked for removal on 20111027
-app-arch/guitar
-app-misc/endeavour
-app-misc/ithought
-app-misc/mtoolsfm
-media-radio/xconvers
-sci-calculators/grpn
 
 # Justin Bronder <jsbronder@gentoo.org> (27 Sep 2011)
 # Masking the torque 2.3 series due to bug #372959.  This allows
@@ -264,22 +256,10 @@ dev-perl/perl-PBS
 ~dev-libs/soprano-2.6.1
 ~dev-libs/soprano-2.7.1
 
-# Michael Sterrett <mr_bones_@gentoo.org> (27 Sep 2011)
-# Upstream has gone away and the files aren't mirrored on liflg.org anymore.
-# Masked for removal on 20111027
-# bug #335562
-games-fps/ut2004-redorchestra
-
 # Ulrich Mueller <ulm@gentoo.org> (26 Sep 2011)
 # Included in app-editors/emacs-23 and later.
 # Masked for removal in 30 days, bug 384561.
 app-emacs/rst
-
-# Michael Sterrett <mr_bones_@gentoo.org> (22 Sep 2011)
-# Doesn't work and upstream has gone away.
-# Masked for removal on 20111022
-# See bug #382831
-games-action/dungeon
 
 # Olivier Crete <tester@gentoo.org> (20 Sep 2011)
 # Masked because the API was broken and it will  causes crashes in 
@@ -532,13 +512,6 @@ net-zope/zsqlmethods
 net-zope/zsyncer
 net-zope/zwiki
 
-# Vlastimil Babka <caster@gentoo.org> (11 Sep 2011)
-# Masked until Icedtea7 final is released, to prevent pulling oracle-jdk-bin for everyone.
-# If you want oracle-jdk-bin as the only installed JDK, unmask this locally.
-# Bug #382485.
-=virtual/jdk-1.7*
-=virtual/jre-1.7*
-
 # Ole Markus With <olemarkus@gentoo.org> (07 Sep 2011)
 # Masked for removal 7 Oct 2011.
 # Multiple bugs (315721,341685) and dead upstream
@@ -730,14 +703,6 @@ gnome-extra/office-runner
 =dev-libs/guiloader-2.99.0
 =dev-libs/guiloader-c++-2.99.0
 =dev-util/crow-designer-2.99.0
-
-# Nathan Phillip Brink <binki@gentoo.org> (20 Jul 2011)
-# Masked indefinitely. The atheme upstream requests:
-# "By unmasking these, you agree to not bother the Atheme developers
-# about any bugs in this software. All issues must be reported to
-# Gentoo's bugzilla and then will be sent upstream by the maintainer
-# if appropriate."
-net-irc/atheme-services
 
 # Robin H. Johnson <robbat2@gentoo.org> (16 Jul 2011)
 # Masked for testing, no testsuite failures left!

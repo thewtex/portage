@@ -6,7 +6,7 @@ EAPI="2"
 
 inherit games eutils
 
-DESCRIPTION="Design-based puzzle game about building machines by synthesizing chemicals"
+DESCRIPTION="A design-based puzzle game from Zachtronics Industries"
 HOMEPAGE="http://spacechemthegame.com/"
 SRC_URI="SpaceChem-1011.tar.gz"
 

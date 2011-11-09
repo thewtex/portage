@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/notmuch/notmuch-0.9-r2.ebuild,v 1.1 2011/11/04 14:49:13 aidecoe Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-mail/notmuch/notmuch-0.9-r2.ebuild,v 1.3 2011/11/07 15:25:25 aidecoe Exp $
 
 EAPI=4
 
@@ -68,7 +68,6 @@ pkg_setup() {
 }
 
 src_prepare() {
-	echo "S=${S}"
 	autotools-utils_src_prepare
 	bindings python distutils_src_prepare
 }
@@ -140,8 +139,8 @@ pkg_postinst() {
 
 	if use python; then
 		echo
-		einfo "Python API documentation is also online available at:"
-		einfo "  http://packages.python.org/notmuch/"
+		elog "Python API documentation is also online available at:"
+		elog "  http://packages.python.org/notmuch/"
 	fi
 }
 

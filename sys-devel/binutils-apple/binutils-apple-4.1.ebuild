@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/binutils-apple/binutils-apple-4.1.ebuild,v 1.4 2011/09/25 09:32:15 grobian Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/binutils-apple/binutils-apple-4.1.ebuild,v 1.6 2011/11/05 16:37:23 grobian Exp $
 
 EAPI="3"
 

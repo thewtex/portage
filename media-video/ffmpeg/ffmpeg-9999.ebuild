@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/ffmpeg/ffmpeg-9999.ebuild,v 1.59 2011/11/02 14:08:52 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/ffmpeg/ffmpeg-9999.ebuild,v 1.62 2011/11/07 13:30:57 aballier Exp $
 
 EAPI="4"
 
@@ -30,10 +30,10 @@ if [ "${PV#9999}" = "${PV}" ] ; then
 fi
 IUSE="
 	aac aacplus alsa amr bindist +bzip2 cdio celt cpudetection debug dirac doc
-	+encode faac frei0r gsm +hardcoded-tables ieee1394 jack jpeg2k modplug mp3
-	network openal oss pic pulseaudio qt-faststart rtmp schroedinger sdl speex
-	static-libs test theora threads truetype v4l vaapi vdpau vorbis vpx X x264
-	xvid +zlib
+	+encode faac frei0r gnutls gsm +hardcoded-tables ieee1394 jack jpeg2k libv4l
+	modplug mp3 network openal openssl oss pic pulseaudio qt-faststart rtmp
+	schroedinger sdl speex static-libs test theora threads truetype v4l vaapi
+	vdpau vorbis vpx X x264 xvid +zlib
 	"
 
 # String for CPU features in the useflag[:configure_option] form
@@ -63,10 +63,12 @@ RDEPEND="
 		xvid? ( >=media-libs/xvid-1.1.0 )
 	)
 	frei0r? ( media-plugins/frei0r-plugins )
+	gnutls? ( net-libs/gnutls )
 	gsm? ( >=media-sound/gsm-1.0.12-r1 )
 	ieee1394? ( media-libs/libdc1394 sys-libs/libraw1394 )
 	jack? ( media-sound/jack-audio-connection-kit )
 	jpeg2k? ( >=media-libs/openjpeg-1.3-r2 )
+	libv4l? ( media-libs/libv4l )
 	modplug? ( media-libs/libmodplug )
 	openal? ( >=media-libs/openal-1.1 )
 	pulseaudio? ( media-sound/pulseaudio )
@@ -87,7 +89,9 @@ DEPEND="${RDEPEND}
 	>=sys-devel/make-3.81
 	dirac? ( dev-util/pkgconfig )
 	doc? ( app-text/texi2html )
+	gnutls? ( dev-util/pkgconfig )
 	ieee1394? ( dev-util/pkgconfig )
+	libv4l? ( dev-util/pkgconfig )
 	mmx? ( dev-lang/yasm )
 	rtmp? ( dev-util/pkgconfig )
 	schroedinger? ( dev-util/pkgconfig )
@@ -96,7 +100,8 @@ DEPEND="${RDEPEND}
 	v4l? ( sys-kernel/linux-headers )
 "
 # faac is license-incompatible with ffmpeg
-REQUIRED_USE="bindist? ( encode? ( !faac !aacplus ) )"
+REQUIRED_USE="bindist? ( encode? ( !faac !aacplus ) !openssl )
+	libv4l? ( v4l )"
 
 S=${WORKDIR}/${P/_/-}
 
@@ -119,6 +124,8 @@ src_configure() {
 	use sdl || myconf="${myconf} --disable-ffplay"
 
 	use cpudetection && myconf="${myconf} --enable-runtime-cpudetect"
+	use openssl && myconf="${myconf} --enable-openssl --enable-nonfree"
+	use gnutls && myconf="${myconf} --enable-gnutls"
 
 	# Encoders
 	if use encode
@@ -148,6 +155,7 @@ src_configure() {
 	done
 	use X && myconf="${myconf} --enable-x11grab"
 	use pulseaudio && myconf="${myconf} --enable-libpulse"
+	use libv4l && myconf="${myconf} --enable-libv4l2"
 	# Outdevs
 	for i in alsa oss ; do
 		use ${i} || myconf="${myconf} --disable-outdev=${i}"

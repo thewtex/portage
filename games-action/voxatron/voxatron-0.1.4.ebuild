@@ -19,19 +19,8 @@ RESTRICT="fetch strip"
 RDEPEND=">=media-libs/libsdl-1.2
 	media-libs/alsa-lib
 	media-libs/mesa
-	media-libs/flac
-	media-libs/libogg
-	media-libs/libsndfile
-	media-libs/libvorbis
-	x11-libs/libICE
-	x11-libs/libSM
-	x11-libs/libX11
-	x11-libs/libXau
-	x11-libs/libXdmcp
-	x11-libs/libXi
-	x11-libs/libXxf86vm
-	x11-libs/libxcb
-	>=x11-libs/libdrm-2.4
+	media-libs/libsndfile[-minimal]
+	x11-base/xorg-server[-minimal]
 		amd64? (
 	app-emulation/emul-linux-x86-baselibs
 	app-emulation/emul-linux-x86-opengl

@@ -1,5 +1,5 @@
-|| ( >=dev-lang/python-2.7 dev-python/argparse ) >=dev-python/PyQt4-4.7 >=dev-python/pyudev-0.8[pyqt4] >=kde-base/pykde4-4.5 kde-base/kdesdk-scripts >=x11-drivers/xf86-input-synaptics-1.3 >=x11-libs/libXi-1.4 x11-libs/libXtst upower? ( dev-python/dbus-python sys-power/upower ) app-text/docbook-xsl-stylesheets sys-devel/gettext >=app-admin/eselect-python-20091230 || ( =dev-lang/python-2.7* =dev-lang/python-2.6* )
-|| ( >=dev-lang/python-2.7 dev-python/argparse ) >=dev-python/PyQt4-4.7 >=dev-python/pyudev-0.8[pyqt4] >=kde-base/pykde4-4.5 kde-base/kdesdk-scripts >=x11-drivers/xf86-input-synaptics-1.3 >=x11-libs/libXi-1.4 x11-libs/libXtst upower? ( dev-python/dbus-python sys-power/upower ) >=app-admin/eselect-python-20091230 || ( =dev-lang/python-2.7* =dev-lang/python-2.6* )
+|| ( >=dev-lang/python-2.7 dev-python/argparse ) >=dev-python/PyQt4-4.7 >=dev-python/pyudev-0.8[pyqt4] >=kde-base/pykde4-4.4:4[aqua=] >=kde-base/kdesdk-scripts-4.4:4[aqua=] >=x11-drivers/xf86-input-synaptics-1.3 >=x11-libs/libXi-1.4 x11-libs/libXtst upower? ( dev-python/dbus-python sys-power/upower ) app-text/docbook-xsl-stylesheets sys-devel/gettext >=sys-apps/sed-4 >=dev-util/cmake-2.8.4 userland_GNU? ( >=sys-apps/findutils-4.4.0 ) dev-util/automoc dev-util/pkgconfig !aqua? ( >=x11-libs/libXtst-1.1.0 x11-proto/xf86vidmodeproto ) handbook? ( app-text/docbook-xml-dtd:4.2 app-text/docbook-xsl-stylesheets ) dev-lang/perl >=x11-libs/qt-core-4.6.3:4[qt3support,ssl] >=x11-libs/qt-gui-4.6.3:4[accessibility,dbus] >=x11-libs/qt-qt3support-4.6.3:4[accessibility,kde] >=x11-libs/qt-script-4.6.3:4 >=x11-libs/qt-sql-4.6.3:4[qt3support] >=x11-libs/qt-svg-4.6.3:4 >=x11-libs/qt-test-4.6.3:4 >=x11-libs/qt-webkit-4.6.3:4[kde] !aqua? ( x11-libs/libXext x11-libs/libXt x11-libs/libXxf86vm x11-libs/libXcomposite x11-libs/libxkbfile ) >=kde-base/kdelibs-4.4:4[aqua=] >=app-admin/eselect-python-20091230 || ( =dev-lang/python-2.7* =dev-lang/python-2.6* )
+|| ( >=dev-lang/python-2.7 dev-python/argparse ) >=dev-python/PyQt4-4.7 >=dev-python/pyudev-0.8[pyqt4] >=kde-base/pykde4-4.4:4[aqua=] >=kde-base/kdesdk-scripts-4.4:4[aqua=] >=x11-drivers/xf86-input-synaptics-1.3 >=x11-libs/libXi-1.4 x11-libs/libXtst upower? ( dev-python/dbus-python sys-power/upower ) >=kde-base/oxygen-icons-4.4:4[aqua=] handbook? ( >=kde-base/kdelibs-4.4:4[aqua=,handbook] ) dev-lang/perl >=x11-libs/qt-core-4.6.3:4[qt3support,ssl] >=x11-libs/qt-gui-4.6.3:4[accessibility,dbus] >=x11-libs/qt-qt3support-4.6.3:4[accessibility,kde] >=x11-libs/qt-script-4.6.3:4 >=x11-libs/qt-sql-4.6.3:4[qt3support] >=x11-libs/qt-svg-4.6.3:4 >=x11-libs/qt-test-4.6.3:4 >=x11-libs/qt-webkit-4.6.3:4[kde] !aqua? ( x11-libs/libXext x11-libs/libXt x11-libs/libXxf86vm x11-libs/libXcomposite x11-libs/libxkbfile ) >=kde-base/kdelibs-4.4:4[aqua=] >=app-admin/eselect-python-20091230 || ( =dev-lang/python-2.7* =dev-lang/python-2.6* )
 4
 http://pypi.python.org/packages/source/s/synaptiks/synaptiks-0.8.0.tar.bz2
 
@@ -7,14 +7,14 @@ http://pypi.python.org/pypi/synaptiks
 BSD-2
 Touchpad configuration and management tool for KDE
 ~amd64 ~x86
-distutils multilib python toolchain-funcs
-debug +handbook +upower
+base cmake-utils distutils eutils fdo-mime flag-o-matic gnome2-utils kde4-base kde4-functions multilib portability python toolchain-funcs user versionator virtualx
+debug +upower +handbook aqua kdeenablefinal
 
 
 
 3
 
-compile install postinst postrm prepare
+compile configure install postinst postrm preinst prepare setup test unpack
 
 
 

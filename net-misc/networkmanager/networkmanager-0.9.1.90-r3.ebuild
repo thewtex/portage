@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/networkmanager/networkmanager-0.9.1.90-r3.ebuild,v 1.1 2011/10/29 06:30:47 tetromino Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/networkmanager/networkmanager-0.9.1.90-r3.ebuild,v 1.3 2011/11/07 18:27:29 tetromino Exp $
 
 EAPI="4"
 GNOME_ORG_MODULE="NetworkManager"
@@ -140,6 +140,7 @@ src_install() {
 
 	# Add keyfile plugin support
 	keepdir /etc/NetworkManager/system-connections
+	chmod 0600 "${ED}"/etc/NetworkManager/system-connections/.keep* # bug #383765
 	insinto /etc/NetworkManager
 	newins "${FILESDIR}/nm-system-settings.conf-ifnet" nm-system-settings.conf
 

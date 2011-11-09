@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/quassel/quassel-0.7.3.ebuild,v 1.2 2011/09/08 20:15:17 scarabeus Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-irc/quassel/quassel-0.7.3.ebuild,v 1.4 2011/11/04 15:56:06 dagger Exp $
 
 EAPI=4
 
@@ -11,7 +11,7 @@ EGIT_BRANCH="master"
 QT_MINIMAL="4.6.0"
 KDE_MINIMAL="4.4"
 
-inherit cmake-utils eutils versionator ${GIT_ECLASS}
+inherit cmake-utils eutils pax-utils versionator ${GIT_ECLASS}
 
 DESCRIPTION="Qt4/KDE4 IRC client suppporting a remote daemon for 24/7 connectivity."
 HOMEPAGE="http://quassel-irc.org/"
@@ -109,6 +109,9 @@ src_install() {
 	cmake-utils_src_install
 
 	if use server ; then
+		# bug 346255
+		pax-mark m "${ED}/usr/bin/quasselcore" || die
+
 		# prepare folders in /var/
 		keepdir "${QUASSEL_DIR}"
 		fowners "${QUASSEL_USER}":"${QUASSEL_USER}" "${QUASSEL_DIR}"
@@ -163,4 +166,5 @@ pkg_config() {
 			einfo "Remove it if you want to create new one."
 		fi
 	fi
+
 }

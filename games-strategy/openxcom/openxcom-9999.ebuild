@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-strategy/openxcom/openxcom-9999.ebuild,v 1.1 2011/10/19 13:27:24 scarabeus Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-strategy/openxcom/openxcom-9999.ebuild,v 1.7 2011/11/05 20:16:17 scarabeus Exp $
 
 EAPI=3
 
@@ -16,28 +16,38 @@ HOMEPAGE="http://openxcom.org/"
 LICENSE="GPL-3"
 SLOT="0"
 [[ ${PV} = 9999 ]] || KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE=""
+IUSE="debug doc"
 
-DEPEND="
+RDEPEND="
 	dev-cpp/yaml-cpp
 	media-libs/libsdl
 	media-libs/sdl-gfx
 	media-libs/sdl-mixer
 "
-RDEPEND="${DEPEND}"
+DEPEND="${DEPEND}
+	doc? ( app-doc/doxygen )
+"
 
 src_prepare() {
 	[[ ${PV} = 9999 ]] && eautoreconf
 }
 
 src_configure() {
-	egamesconf
+	egamesconf \
+		--docdir="${EPREFIX}/usr/share/${PF}/" \
+		--disable-werror \
+		$(use_enable debug) \
+		$(use_with doc docs)
 }
 
 src_install() {
 	emake DESTDIR="${ED}" install || die
 
+	if [[ -e "${S}"/ChangeLog ]]; then
+		dodoc "${S}"/ChangeLog || die "dodoc failed"
+	fi
+
 	elog "Remember to put X-Com data to proper location:"
-	elog "    ${ED}/usr/share/${PN}/"
+	elog "	${EROOT}${GAMES_DATADIR}/${PN}/"
 	prepgamesdirs
 }

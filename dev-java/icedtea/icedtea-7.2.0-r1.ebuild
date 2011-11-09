@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/icedtea/icedtea-7.2.0-r1.ebuild,v 1.2 2011/11/04 14:59:46 caster Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/icedtea/icedtea-7.2.0-r1.ebuild,v 1.6 2011/11/07 16:02:21 caster Exp $
 # Build written by Andrew John Hughes (gnu_andrew@member.fsf.org)
 
 # *********************************************************
@@ -57,7 +57,7 @@ RDEPEND=">=net-print/cups-1.2.12
 	 virtual/jpeg
 	 >=media-libs/libpng-1.2
 	 >=media-libs/giflib-4.1.6
-	 >=media-libs/lcms-2.2
+	 media-libs/lcms:2
 	 >=sys-libs/zlib-1.2.3
 	 x11-proto/inputproto
 	 x11-proto/xineramaproto
@@ -74,9 +74,7 @@ RDEPEND=">=net-print/cups-1.2.12
 # Additional dependencies for building:
 #   zip: extract OpenJDK tarball, and needed by configure
 #   ant, ecj, jdk: required to build Java code
-# Only ant-core-1.7.1-r2 and later contain a version of Ant that
-# properly respects environment variables, if the build
-# sets some environment variables.
+# Only ant-core-1.8.1 has fixed ant -diagnostics when xerces+xalan are not present.
 # ca-certificates, perl and openssl are used for the cacerts keystore generation
 # xext headers have two variants depending on version - bug #288855
 # autoconf - as long as we use eautoreconf, version restrictions for bug #294918
@@ -90,12 +88,13 @@ DEPEND="${RDEPEND}
 	)
 	app-arch/zip
 	>=dev-libs/libxslt-1.1.26
-	>=dev-java/ant-core-1.7.1-r2
+	>=dev-java/ant-core-1.8.1
 	dev-java/ant-nodeps
 	app-misc/ca-certificates
 	dev-lang/perl
 	dev-libs/openssl
-	sys-apps/lsb-release"
+	sys-apps/lsb-release
+	app-arch/cpio"
 #	 || ( >=sys-devel/autoconf-2.65:2.5 <sys-devel/autoconf-2.64:2.5 )"
 
 PDEPEND="webstart? ( dev-java/icedtea-web:7 )
@@ -140,8 +139,10 @@ pkg_setup() {
 		JAVA_PKG_FORCE_VM="icedtea6"
 	elif has_version ">dev-java/icedtea-6.1.10.4:6"; then
 		JAVA_PKG_FORCE_VM="icedtea-6"
-	elif has_version dev-java/icedtea-bin:6; then
+	elif has_version "<dev-java/icedtea-bin-6.1.10.4:6"; then
 		JAVA_PKG_FORCE_VM="icedtea6-bin"
+	elif has_version ">=dev-java/icedtea-bin-6.1.10.4:6"; then
+		JAVA_PKG_FORCE_VM="icedtea-bin-6"
 	elif has_version dev-java/gcj-jdk; then
 		JAVA_PKG_FORCE_VM="gcj-jdk"
 	elif has_version dev-java/cacao; then
@@ -230,9 +231,8 @@ src_compile() {
 	# an environment variable so it works properly...
 	export ANT_RESPECT_JAVA_HOME=TRUE
 
-	# ant -diagnostics in Ant 1.8.0 fails without xerces+xalan
-	# otherwise we try to load the least that's needed to avoid possible classpath collisions
-	export ANT_TASKS="xerces-2 xalan ant-nodeps"
+	# We try to load the least that's needed to avoid possible classpath collisions
+	export ANT_TASKS="ant-nodeps"
 
 	emake -j 1
 }

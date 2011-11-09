@@ -19,35 +19,19 @@ RESTRICT="fetch strip"
 RDEPEND=">=media-libs/libsdl-1.2
 	>=dev-db/sqlite-3
 	>=media-libs/libpng-1.5
-	>=x11-libs/gdk-pixbuf-2
-	>=x11-libs/libdrm-2.4
-	dev-libs/atk
+	>=x11-libs/gtk+-2[-aqua,introspection]
 	dev-libs/expat
 	media-libs/alsa-lib
 	media-libs/mesa
-	media-libs/flac
-	media-libs/fontconfig
-	media-libs/freetype
-	media-libs/libogg
-	media-libs/libsndfile
-	media-libs/libvorbis
+	media-libs/libsndfile[-minimal]
 	media-libs/mesa
 	www-plugins/adobe-flash
 	x11-libs/cairo
-	x11-libs/libICE
-	x11-libs/libSM
-	x11-libs/libX11
-	x11-libs/libXau
-	x11-libs/libXdmcp
-	x11-libs/libXi
 	x11-libs/libXinerama
-	x11-libs/libXt
-	x11-libs/libXxf86vm
-	x11-libs/libxcb
-	x11-libs/pango
-	x11-libs/pixman
+	x11-libs/pango[X]
 		amd64? (
 	app-emulation/emul-linux-x86-baselibs
+	app-emulation/emul-linux-x86-gtklibs
 	app-emulation/emul-linux-x86-opengl
 	app-emulation/emul-linux-x86-sdl
 	app-emulation/emul-linux-x86-soundlibs

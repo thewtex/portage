@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/sun-jre-bin/sun-jre-bin-1.6.0.29.ebuild,v 1.3 2011/10/30 12:36:21 phajdan.jr Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/sun-jre-bin/sun-jre-bin-1.6.0.29.ebuild,v 1.5 2011/11/05 23:37:42 caster Exp $
 
 EAPI="4"
 
@@ -21,7 +21,7 @@ SRC_URI="x86? ( ${X86_AT} )
 	amd64? ( ${AMD64_AT} )"
 
 LICENSE="Oracle-BCLA-JavaSE"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 SLOT="1.6"
 IUSE="X alsa jce nsplugin"
 
@@ -53,7 +53,7 @@ pkg_nofetch() {
 	fi
 
 	einfo "Due to Oracle no longer providing the distro-friendly DLJ bundles, the package has become fetch restricted again."
-	einfo "Alternatives are switching to dev-java/icedtea6-bin or the source-based dev-java/icedtea:6"
+	einfo "Alternatives are switching to dev-java/icedtea-bin or the source-based dev-java/icedtea:6"
 
 	einfo "Please download ${AT} from:"
 	einfo "${JRE_URI}"

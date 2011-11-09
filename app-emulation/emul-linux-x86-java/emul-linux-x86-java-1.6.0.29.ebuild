@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/emul-linux-x86-java/emul-linux-x86-java-1.6.0.29.ebuild,v 1.2 2011/10/24 03:17:06 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/emul-linux-x86-java/emul-linux-x86-java-1.6.0.29.ebuild,v 1.4 2011/11/05 21:34:26 caster Exp $
 
 EAPI="4"
 
@@ -19,7 +19,7 @@ HOMEPAGE="http://www.oracle.com/technetwork/java/javase/"
 SRC_URI="${X86_AT}"
 
 LICENSE="Oracle-BCLA-JavaSE"
-KEYWORDS="-* ~amd64"
+KEYWORDS="-* amd64"
 SLOT="1.6"
 IUSE="X alsa nsplugin"
 
@@ -39,7 +39,7 @@ S="${WORKDIR}/jre${S_PV}"
 pkg_nofetch() {
 	einfo "Due to Oracle no longer providing the distro-friendly DLJ bundles, the package has become fetch restricted again."
 
-	einfo "Please download ${AT} from:"
+	einfo "Please download ${X86_AT} from:"
 	einfo "${JRE_URI}"
 	einfo "and move it to ${DISTDIR}"
 }
