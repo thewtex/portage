@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/llvm/llvm-9999.ebuild,v 1.15 2011/10/04 11:43:37 voyageur Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/llvm/llvm-9999.ebuild,v 1.16 2011/11/09 15:11:05 voyageur Exp $
 
 EAPI="3"
 inherit subversion eutils flag-o-matic multilib toolchain-funcs
@@ -13,7 +13,7 @@ ESVN_REPO_URI="http://llvm.org/svn/llvm-project/llvm/trunk"
 LICENSE="UoI-NCSA"
 SLOT="0"
 KEYWORDS=""
-IUSE="debug +libffi llvm-gcc multitarget ocaml test udis86 vim-syntax"
+IUSE="debug +libffi multitarget ocaml test udis86 vim-syntax"
 
 DEPEND="dev-lang/perl
 	>=sys-devel/make-3.79
@@ -29,8 +29,6 @@ DEPEND="dev-lang/perl
 RDEPEND="dev-lang/perl
 	libffi? ( virtual/libffi )
 	vim-syntax? ( || ( app-editors/vim app-editors/gvim ) )"
-
-S=${WORKDIR}/${PN}-${PV/_pre*}
 
 pkg_setup() {
 	# need to check if the active compiler is ok
@@ -102,32 +100,6 @@ src_configure() {
 	if use amd64; then
 		CONF_FLAGS="${CONF_FLAGS} --enable-pic"
 	fi
-
-	# things would be built differently depending on whether llvm-gcc is
-	# used or not.
-	local LLVM_GCC_DIR=/dev/null
-	local LLVM_GCC_DRIVER=nope ; local LLVM_GPP_DRIVER=nope
-	if use llvm-gcc ; then
-		if has_version sys-devel/llvm-gcc; then
-			LLVM_GCC_DIR=$(ls -d ${EROOT}/usr/$(get_libdir)/llvm-gcc* 2> /dev/null)
-			LLVM_GCC_DRIVER=$(find ${LLVM_GCC_DIR} -name 'llvm*-gcc' 2> /dev/null)
-			if [[ -z ${LLVM_GCC_DRIVER} ]] ; then
-				die "failed to find installed llvm-gcc, LLVM_GCC_DIR=${LLVM_GCC_DIR}"
-			fi
-			einfo "Using $LLVM_GCC_DRIVER"
-			LLVM_GPP_DRIVER=${LLVM_GCC_DRIVER/%-gcc/-g++}
-		else
-			eerror "llvm-gcc USE flag enabled, but sys-devel/llvm-gcc was not found"
-			eerror "Building with standard gcc, re-merge this package after installing"
-			eerror "llvm-gcc to build with it"
-			eerror "This is normal behavior on first LLVM merge"
-		fi
-	fi
-
-	CONF_FLAGS="${CONF_FLAGS} \
-		--with-llvmgccdir=${LLVM_GCC_DIR} \
-		--with-llvmgcc=${LLVM_GCC_DRIVER} \
-		--with-llvmgxx=${LLVM_GPP_DRIVER}"
 
 	if use ocaml; then
 		CONF_FLAGS="${CONF_FLAGS} --enable-bindings=ocaml"

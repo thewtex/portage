@@ -1,4 +1,4 @@
->=app-admin/eselect-1.2.3 sys-devel/autoconf >=sys-devel/gcc-3.4 dev-vcs/subversion net-misc/rsync
+sys-devel/autoconf || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool dev-vcs/subversion net-misc/rsync
 >=app-admin/eselect-1.2.3
 0
 
@@ -7,14 +7,14 @@ http://www.gentoo.org
 GPL-2
 Eselect module for management of multiple Python versions
 
-eutils multilib portability subversion toolchain-funcs user
+autotools eutils libtool multilib portability subversion toolchain-funcs user
 
 
 
 
-2
 
-install postinst preinst prepare setup unpack
+
+install postinst preinst unpack
 
 
 

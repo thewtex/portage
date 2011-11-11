@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-vcs/svn2git/svn2git-9999.ebuild,v 1.7 2011/09/21 08:30:34 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-vcs/svn2git/svn2git-9999.ebuild,v 1.8 2011/11/10 11:28:22 sping Exp $
 
 EAPI="2"
 
@@ -34,7 +34,7 @@ src_prepare() {
 	# Note: patching order matters
 	epatch "${FILESDIR}"/${PN}-1.0.2.1-include-path.patch
 	if [[ "$PV" != "9999" ]]; then
-		epatch "${FILESDIR}"/${PN}-1.0.4-version.patch
+		epatch "${FILESDIR}"/${P}-version.patch
 	fi
 
 	qt4-r2_src_prepare

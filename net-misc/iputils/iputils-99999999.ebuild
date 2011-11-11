@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/iputils/iputils-99999999.ebuild,v 1.5 2011/09/21 09:01:28 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/iputils/iputils-99999999.ebuild,v 1.6 2011/11/09 22:34:11 vapier Exp $
 
 # For released versions, we precompile the man/html pages and store
 # them in a tarball on our mirrors.  This avoids ugly issues while
@@ -53,6 +53,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/${PN}-20071127-kernel-ifaddr.patch
 	epatch "${FILESDIR}"/${PN}-20070202-idn.patch #218638
 	epatch "${FILESDIR}"/${PN}-20071127-infiniband.patch #377687
+	epatch "${FILESDIR}"/${PN}-20101006-owl-pingsock.diff
 	use SECURITY_HAZARD && epatch "${FILESDIR}"/${PN}-20071127-nonroot-floodping.patch
 	use static && append-ldflags -static
 	use ssl && append-cppflags -DHAVE_OPENSSL

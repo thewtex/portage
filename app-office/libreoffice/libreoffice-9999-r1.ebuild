@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/libreoffice/libreoffice-9999-r1.ebuild,v 1.54 2011/11/08 11:03:49 scarabeus Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/libreoffice/libreoffice-9999-r1.ebuild,v 1.57 2011/11/10 12:28:02 scarabeus Exp $
 
 EAPI=4
 
@@ -23,6 +23,7 @@ EXT_URI="http://ooo.itc.hu/oxygenoffice/download/libreoffice"
 ADDONS_URI="http://dev-www.libreoffice.org/src/"
 
 BRANDING="${PN}-branding-gentoo-0.3.tar.xz"
+# PATCHSET="${P}-patchset-01.tar.xz"
 
 [[ ${PV} == *9999* ]] && SCM_ECLASS="git-2"
 inherit base autotools bash-completion-r1 check-reqs eutils java-pkg-opt-2 kde4-base pax-utils prefix python multilib toolchain-funcs flag-o-matic nsplugins ${SCM_ECLASS}
@@ -31,10 +32,11 @@ unset SCM_ECLASS
 DESCRIPTION="LibreOffice, a full office productivity suite."
 HOMEPAGE="http://www.libreoffice.org"
 SRC_URI="branding? ( http://dev.gentooexperimental.org/~scarabeus/${BRANDING} )"
+[[ -n ${PATCHSET} ]] && SRC_URI+=" http://dev.gentooexperimental.org/~scarabeus/${PATCHSET}"
 
 # Split modules following git/tarballs
 # Core MUST be first!
-MODULES="core binfilter dictionaries help"
+MODULES="core binfilter"
 # Only release has the tarballs
 if [[ ${PV} != *9999* ]]; then
 	for i in ${DEV_URI}; do
@@ -207,8 +209,8 @@ PATCHES=(
 )
 
 REQUIRED_USE="
-	|| ( gtk gnome kde )
 	gnome? ( gtk )
+	eds? ( gnome )
 "
 
 S="${WORKDIR}/${PN}-core-${PV}"
@@ -243,6 +245,7 @@ pkg_setup() {
 src_unpack() {
 	local mod dest tmplfile tmplname mypv
 
+	[[ -n ${PATCHSET} ]] && unpack ${PATCHSET}
 	if use branding; then
 		unpack "${BRANDING}"
 	fi
@@ -298,6 +301,14 @@ src_prepare() {
 	# optimization flags
 	export ARCH_FLAGS="${CXXFLAGS}"
 	export LINKFLAGSOPTIMIZE="${LDFLAGS}"
+
+	# patchset
+	if [[ -n ${PATCHSET} ]]; then
+		EPATCH_FORCE="yes" \
+		EPATCH_SOURCE="${WORKDIR}/${PATCHSET/.tar.xz/}" \
+		EPATCH_SUFFIX="patch" \
+		epatch
+	fi
 
 	base_src_prepare
 	eautoreconf
@@ -425,6 +436,7 @@ src_configure() {
 		--without-ppds \
 		--without-stlport \
 		--without-system-mozilla \
+		--without-help \
 		--without-helppack-integration \
 		$(use_enable binfilter) \
 		$(use_enable dbus) \

@@ -1,41 +1,44 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/eselect-python/eselect-python-99999999.ebuild,v 1.5 2009/12/31 01:10:48 arfrever Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/eselect-python/eselect-python-99999999.ebuild,v 1.6 2011/11/08 23:55:51 vapier Exp $
 
-EAPI="2"
-
-inherit subversion toolchain-funcs
-
-DESCRIPTION="Eselect module for management of multiple Python versions"
-HOMEPAGE="http://www.gentoo.org"
-SRC_URI=""
-
-LICENSE="GPL-2"
-SLOT="0"
-KEYWORDS=""
-IUSE=""
-
-RDEPEND=">=app-admin/eselect-1.2.3"
-DEPEND="${RDEPEND}
-	sys-devel/autoconf
-	>=sys-devel/gcc-3.4"
+# Keep the EAPI low here because everything else depends on it.
+# We want to make upgrading simpler.
 
 ESVN_PROJECT="eselect-python"
 ESVN_REPO_URI="https://overlays.gentoo.org/svn/proj/python/projects/eselect-python/trunk"
 
-pkg_setup() {
-	if [[ $(gcc-major-version) -lt 3 || ($(gcc-major-version) -eq 3 && $(gcc-minor-version) -lt 4) ]]; then
-		die "GCC >=3.4 is required"
-	fi
-}
+if [[ ${PV} == "99999999" ]] ; then
+	inherit autotools subversion
+else
+	SRC_URI="mirror://gentoo/${P}.tar.bz2"
+	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd"
+fi
 
-src_prepare() {
-	./autogen.sh || die "autogen.sh failed"
+DESCRIPTION="Eselect module for management of multiple Python versions"
+HOMEPAGE="http://www.gentoo.org"
+
+LICENSE="GPL-2"
+SLOT="0"
+IUSE=""
+
+RDEPEND=">=app-admin/eselect-1.2.3"
+# Avoid autotool deps for released versions for circ dep issues.
+if [[ ${PV} == "99999999" ]] ; then
+	DEPEND="sys-devel/autoconf"
+else
+	DEPEND=""
+fi
+
+src_unpack() {
+	unpack ${A}
+	cd "${S}"
+	[[ -x configure ]] || eautoreconf
 }
 
 src_install() {
 	keepdir /etc/env.d/python
-	emake DESTDIR="${D}" install || die "emake install failed"
+	emake DESTDIR="${D}" install || die
 }
 
 pkg_preinst() {
