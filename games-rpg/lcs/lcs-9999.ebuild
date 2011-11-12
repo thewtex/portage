@@ -3,7 +3,7 @@
 # $Header: $
 
 EAPI=2
-inherit eutils games subversion
+inherit autotools eutils games subversion
 
 DESCRIPTION="Satirical console-based political role-playing/strategy game"
 HOMEPAGE="http://sourceforge.net/projects/lcsgame/"
@@ -12,31 +12,33 @@ ESVN_PROJECT="lcsgame"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="doc"
 
 DEPEND="sys-libs/ncurses"
 
+src_prepare() {
+	# change the directory that's checked for art assets
+	sed -i -e "s:usr/games/share:usr/share/games:" src/lcsio.cpp || die "sed failed"
+	eautoreconf
+}
+
 src_configure() {
-	autoreconf -fvi
 	econf
 }
 
-src_prepare() {
-	# change the directory that's checked for art assets
-	sed -i -e "s/usr\/games\/share/usr\/share\/games/" src/lcsio.cpp || die "sed failed"
-}
-
 src_install() {
+	dogamesbin src/crimesquad || die
 	dodir "${GAMES_DATADIR}"/"${PN}"
 	dodir "${GAMES_BINDIR}"
 	insinto "${GAMES_DATADIR}"/"${PN}"/art
 	doins -r art/* || die
-	insinto "${GAMES_BINDIR}"
-	doins -r src/crimesquad || die
 	doman man/crimesquad.6
-	dodoc AUTHORS ChangeLog LINUX_README.txt NEWS
-	use doc && dodoc docs/CrimeSquadManual.txt
+	dodoc AUTHORS ChangeLog LINUX_README.txt NEWS TODO docs/CrimeSquadManual.txt
+	if use doc; then
+		dodoc docs/cpcimageformat.txt docs/conventions.txt
+	fi
+
 	prepgamesdirs
 }
 

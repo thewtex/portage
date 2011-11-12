@@ -1,0 +1,22 @@
+sys-libs/zlib dev-lang/php[session?] || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool >=sys-devel/m4-1.4.3 >=sys-devel/libtool-1.5.18
+sys-libs/zlib dev-lang/php[session?] || ( =dev-php/pecl-memcache-3.0.6-r1[php_targets_php5-3] =dev-php/pecl-memcache-3.0.6-r1[php_targets_php5-4] ) php_targets_php5-3? ( dev-lang/php:5.3 ) php_targets_php5-4? ( dev-lang/php:5.4 )
+0
+http://pecl.php.net/get/memcache-3.0.6.tgz
+test
+http://pecl.php.net/memcache
+PHP-3
+PHP extension for using memcached.
+~amd64 ~hppa ~ppc64 ~x86
+autotools eutils flag-o-matic libtool multilib php-ext-pecl-r2 php-ext-source-r2 portability toolchain-funcs user
++session php_targets_php5-3 php_targets_php5-4
+
+
+
+2
+
+compile configure install prepare test unpack
+
+
+
+
+

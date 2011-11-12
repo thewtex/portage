@@ -1,20 +1,20 @@
->=dev-lang/python-2.6[sqlite] >=dev-python/pygtk-2 >=dev-python/pygobject-2 dev-python/pycairo dev-libs/libxml2[python] media-libs/fontconfig >=media-libs/freetype-2 dev-db/sqlite:3
-
+nls? ( sys-devel/gettext ) >=dev-lang/python-2.6[sqlite] >=dev-python/pygtk-2 >=dev-python/pygobject-2 dev-python/pycairo dev-libs/libxml2[python] media-libs/fontconfig >=media-libs/freetype-2 dev-db/sqlite:3 x11-libs/gtk+:2
+nls? ( virtual/libintl )
 0
 http://font-manager.googlecode.com/files/font-manager-0.5.7.tar.bz2
-mirror
+mirror strip
 http://code.google.com/p/font-manager
 GPL-3
 A font management application for the GNOME desktop
 ~amd64 ~x86
 
+debug nls linguas_it linguas_ru linguas_sk
 
 
 
+3
 
-4
-
-install
+configure install prepare
 
 
 

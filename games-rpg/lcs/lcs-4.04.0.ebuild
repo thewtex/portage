@@ -2,8 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=2
-inherit eutils games
+EAPI="2"
+inherit autotools eutils games
 
 DESCRIPTION="Satirical console-based political role-playing/strategy game"
 HOMEPAGE="http://sourceforge.net/projects/lcsgame/"
@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/lcsgame/lcs_${PV}_src.zip"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="doc"
 
 DEPEND="sys-libs/ncurses"
@@ -26,23 +26,29 @@ src_unpack() {
 	einfo "Setting WORKDIR to ${S}"
 }
 
+src_prepare() {
+	eautoreconf
+}
+
 src_configure() {
-	autoreconf -fvi
 	econf
 }
 
 src_install() {
-	insinto "${dir}"/art
-	doins -r art/* || die "doins failed"
 	# The game has trouble loading data from other directories. This seems
 	# to be fixed in the live build, so the next stable release will likely
 	# not need this dirty workaround. Unmask lcs-9999 if you want to try it.
 	exeinto "${dir}"
-	doexe src/crimesquad || die "doexe failed"
+	doexe src/crimesquad || die
 	games_make_wrapper "crimesquad" "${dir}/crimesquad" "${dir}" || die
-	doman man/crimesquad.6
-	dodoc AUTHORS ChangeLog LINUX_README.txt NEWS
-	use doc && dodoc docs/CrimeSquadManual.txt
+	insinto "${dir}"/art
+	doins -r art/* || die
+	doman man/crimesquad.6 || die
+	dodoc AUTHORS ChangeLog LINUX_README.txt NEWS docs/CrimeSquadManual.txt || die
+	if use doc; then
+		 dodoc docs/cpcimageformat.txt docs/conventions.txt || die
+	fi
+
 	prepgamesdirs
 }
 

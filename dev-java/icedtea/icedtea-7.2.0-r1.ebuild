@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/icedtea/icedtea-7.2.0-r1.ebuild,v 1.7 2011/11/08 19:01:23 sera Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/icedtea/icedtea-7.2.0-r1.ebuild,v 1.10 2011/11/12 14:50:14 sera Exp $
 # Build written by Andrew John Hughes (gnu_andrew@member.fsf.org)
 
 # *********************************************************
@@ -82,8 +82,9 @@ DEPEND="${RDEPEND}
 	|| (
 		>=dev-java/gcj-jdk-4.3
 		>=dev-java/cacao-0.99.2
-		dev-java/icedtea:7
+		dev-java/icedtea-bin:7
 		dev-java/icedtea-bin:6
+		dev-java/icedtea:7
 		dev-java/icedtea:6
 	)
 	app-arch/zip
@@ -127,6 +128,9 @@ pkg_setup() {
 		return
 	fi
 
+	# icedtea doesn't like some locales. #330433 #389717
+	export LANG="C" LC_ALL="C"
+
 	# quite a hack since java-config does not provide a way for a package
 	# to limit supported VM's for building and their preferred order
 	if [[ -n "${JAVA_PKG_FORCE_VM}" ]]; then
@@ -135,6 +139,8 @@ pkg_setup() {
 		JAVA_PKG_FORCE_VM="icedtea7"
 	elif has_version ">dev-java/icedtea-7.2.0:7"; then
 		JAVA_PKG_FORCE_VM="icedtea-7"
+	elif has_version "dev-java/icedtea-bin:7"; then
+		JAVA_PKG_FORCE_VM="icedtea-bin-7"
 	elif has_version "<=dev-java/icedtea-6.1.10.4:6"; then
 		JAVA_PKG_FORCE_VM="icedtea6"
 	elif has_version ">dev-java/icedtea-6.1.10.4:6"; then
@@ -174,7 +180,7 @@ src_configure() {
 	if [[ "${vm}" == "icedtea6" || "${vm}" == "icedtea-6" || "${vm}" == "icedtea6-bin" || "${vm}" == "icedtea-bin-6" ]] ; then
 		# We can't currently bootstrap with a IcedTea6 JVM :(
 		config="${config} --disable-bootstrap"
-	elif [[ "${vm}" != "gcj-jdk" && "${vm}" != "cacao" && "${vm}" != "icedtea7" && "${vm}" != "icedtea-7" ]] ; then
+	elif [[ "${vm}" != "gcj-jdk" && "${vm}" != "cacao" && "${vm}" != "icedtea7" && "${vm}" != "icedtea-7" && "${vm}" != "icedtea-bin-7" ]] ; then
 		eerror "IcedTea must be built with either a JDK based on GNU Classpath or an existing build of IcedTea."
 		die "Install a GNU Classpath JDK (gcj-jdk, cacao)"
 	fi
@@ -293,9 +299,7 @@ src_install() {
 		< "${FILESDIR}/icedtea.env" > "${T}/icedtea.env"
 	set_java_env "${T}/icedtea.env"
 
-	# bug #388127
-	dodir /etc/sandbox.d
-	echo 'SANDBOX_PREDICT="/dev/random:/proc/self/coredump_filter"' > "${D}/etc/sandbox.d/20${VMHANDLE}"
+	java-vm_sandbox-predict /dev/random /proc/self/coredump_filter
 }
 
 use_zero() {

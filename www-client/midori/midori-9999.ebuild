@@ -1,8 +1,8 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/midori/midori-9999.ebuild,v 1.36 2011/10/28 20:08:10 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/midori/midori-9999.ebuild,v 1.37 2011/11/11 16:35:40 angelos Exp $
 
-EAPI=3
+EAPI=4
 inherit eutils fdo-mime gnome2-utils python waf-utils git-2
 
 DESCRIPTION="A lightweight web browser based on WebKitGTK+"
@@ -12,16 +12,15 @@ EGIT_REPO_URI="git://git.xfce.org/apps/${PN}"
 LICENSE="LGPL-2.1 MIT"
 SLOT="0"
 KEYWORDS=""
-IUSE="doc gnome idn libnotify nls +unique"
+IUSE="doc gnome libnotify nls +unique"
 
 RDEPEND="dev-libs/libxml2:2
-	>=dev-db/sqlite-3.0
-	>=net-libs/libsoup-2.25.2:2.4
+	dev-db/sqlite:3
+	net-libs/libsoup:2.4
 	net-libs/webkit-gtk:2
 	x11-libs/gtk+:2
 	x11-libs/libXScrnSaver
 	gnome? ( net-libs/libsoup-gnome:2.4 )
-	idn? ( net-dns/libidn )
 	libnotify? ( x11-libs/libnotify )
 	unique? ( dev-libs/libunique:1 )"
 DEPEND="${RDEPEND}
@@ -47,7 +46,6 @@ src_configure() {
 		--disable-docs \
 		--enable-addons \
 		$(use_enable doc apidocs) \
-		$(use_enable idn libidn) \
 		$(use_enable libnotify) \
 		$(use_enable nls) \
 		$(use_enable unique)
