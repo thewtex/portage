@@ -1,5 +1,5 @@
 
->=sys-apps/util-linux-2.16
+!<sys-apps/baselayout-2 >=sys-apps/util-linux-2.16
 0
 mirror://kernel/linux/utils/raid/mdadm/mdadm-3.2.1.tar.bz2
 test
@@ -12,9 +12,9 @@ static
 
 
 
+2
 
-
-compile install postinst test unpack
+compile install postinst prepare test
 
 
 

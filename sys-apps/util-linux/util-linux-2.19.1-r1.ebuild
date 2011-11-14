@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/util-linux/util-linux-2.19.1-r1.ebuild,v 1.7 2011/11/11 13:35:07 chainsaw Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/util-linux/util-linux-2.19.1-r1.ebuild,v 1.9 2011/11/12 22:16:56 polynomial-c Exp $
 
 EAPI="3"
 
@@ -48,7 +48,13 @@ src_prepare() {
 		use loop-aes && epatch "${WORKDIR}"/util-linux-*.diff
 	fi
 	epatch "${FILESDIR}"/${P}-mount-a-segv.patch #366213
-	epatch "${FILESDIR}"/${P}-umount-l-nfs.patch #370051
+	if ! use loop-aes ; then
+		epatch "${FILESDIR}"/${P}-umount-l-nfs.patch #370051
+	else
+		ewarn "loop-aes is incompatible with current solution of #370051 bug!"
+		ewarn "Therefore you're vulnerable to that bug now!"
+		ewarn "Look at https://bugs.gentoo.org/show_bug.cgi?id=370051."
+	fi
 	use uclibc && sed -i -e s/versionsort/alphasort/g -e s/strverscmp.h/dirent.h/g mount/lomount.c
 	elibtoolize
 }

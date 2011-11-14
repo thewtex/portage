@@ -1,21 +1,18 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/qt4-r2.eclass,v 1.12 2011/08/22 04:46:32 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/qt4-r2.eclass,v 1.14 2011/11/12 20:46:39 pesa Exp $
 
 # @ECLASS: qt4-r2.eclass
 # @MAINTAINER:
-# Ben de Groot <yngwin@gentoo.org>,
-# Markos Chandras <hwoarang@gentoo.org>,
-# Davide Pesavento <davidepesa@gmail.com>,
-# Dominik Kapusta <ayoy@gentoo.org>
-# @BLURB: Eclass for Qt4 packages, second edition
+# Qt herd <qt@gentoo.org>
+# @BLURB: Eclass for Qt4-based packages, second edition.
 # @DESCRIPTION:
 # This eclass contains various functions that may be useful when
-# dealing with packages using Qt4 libraries. Requires EAPI=2.
+# dealing with packages using Qt4 libraries. Requires EAPI=2 or later.
 
 case ${EAPI} in
 	2|3|4) : ;;
-	*) die "EAPI=${EAPI} is not supported" ;;
+	*) die "EAPI=${EAPI} is not supported by ${ECLASS} eclass." ;;
 esac
 
 inherit base eutils multilib toolchain-funcs
@@ -48,12 +45,19 @@ done
 # qt4-r2_src_unpack in it.
 qt4-r2_src_unpack() {
 	debug-print-function $FUNCNAME "$@"
+
 	base_src_unpack "$@"
 
 	# Fallback to ${WORKDIR}/${MY_P} when ${WORKDIR}/${P} doesn't exist.
-	# Feel free to re-implement this
-	if [[ "${S}" == "${WORKDIR}/${P}" && ! -d ${S} && -d ${WORKDIR}/${MY_P} ]]; then
-		ewarn "Falling back to '${WORKDIR}/${MY_P}'"
+	# This is a hack that was never meant to be used by ebuilds in tree.
+	if [[ ${S} == "${WORKDIR}/${P}" && ! -d ${S} && -d ${WORKDIR}/${MY_P} ]]; then
+		echo
+		eqawarn "*** DEPRECATION NOTICE ***"
+		eqawarn
+		eqawarn "\${S} fallback is deprecated and will be removed on 12/12/2011."
+		eqawarn "Please set the correct value for \${S} variable inside the ebuild."
+		echo
+		einfo "Falling back to '${WORKDIR}/${MY_P}'"
 		S="${WORKDIR}/${MY_P}"
 	fi
 }
@@ -125,7 +129,7 @@ qt4-r2_src_install() {
 	emake INSTALL_ROOT="${D}" DESTDIR="${D}" install || die "emake install failed"
 
 	# install documentation
-	if [[ -n "${DOCS}" ]]; then
+	if [[ -n ${DOCS} ]]; then
 		local dir=${DOCSDIR:-${S}}
 		for doc in ${DOCS}; do
 			dodoc "${dir}/${doc}" || die "dodoc failed"
@@ -153,8 +157,7 @@ _find_project_file() {
 		;;
 	*)
 		for pro_file in "${pro_files[@]}"; do
-			if [[ "${pro_file}" == "${dir_name}" ||
-				  "${pro_file}" == "${PN}.pro" ]]; then
+			if [[ ${pro_file} == "${dir_name}" || ${pro_file} == "${PN}.pro" ]]; then
 				echo "${pro_file}"
 				break
 			fi
@@ -185,9 +188,9 @@ eqmake4() {
 	# check if project file was passed as a first argument
 	# if not, then search for it
 	local regexp='.*\.pro'
-	if ! [[ "${1}" =~ ${regexp} ]]; then
+	if ! [[ ${1} =~ ${regexp} ]]; then
 		local project_file="$(_find_project_file)"
-		if [[ -z "${project_file}" ]]; then
+		if [[ -z ${project_file} ]]; then
 			echo
 			eerror "No project file found in ${S}!"
 			eerror "This shouldn't happen - please send a bug report to http://bugs.gentoo.org/"
@@ -197,7 +200,8 @@ eqmake4() {
 		qmake_args+=("${project_file}")
 	fi
 
-	# make sure CONFIG variable is correctly set for both release and debug builds
+	# make sure CONFIG variable is correctly set
+	# for both release and debug builds
 	local CONFIG_ADD="release"
 	local CONFIG_REMOVE="debug"
 	if has debug ${IUSE} && use debug; then

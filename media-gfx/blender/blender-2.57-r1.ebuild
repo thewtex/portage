@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/blender/blender-2.57-r1.ebuild,v 1.8 2011/11/07 21:51:39 lu_zero Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/blender/blender-2.57-r1.ebuild,v 1.9 2011/11/13 12:04:30 lu_zero Exp $
 
 PYTHON_DEPEND="3:3.2"
 
@@ -15,7 +15,7 @@ inherit scons-utils eutils python versionator flag-o-matic toolchain-funcs ${SCM
 
 IUSE="+game-engine player +elbeem +openexr ffmpeg jpeg2k openal openmp \
 	+dds debug fftw jack apidoc sndfile lcms tweak-mode sdl sse \
-	redcode +zlib iconv contrib collada verse"
+	redcode +zlib iconv contrib verse"
 
 # not complete/working features
 #IUSE="verse collada test"
@@ -279,7 +279,6 @@ src_configure() {
 		'ffmpeg' \
 		'ffmpeg ogg' \
 		'player' \
-		'collada' \
 		'sse rayoptimization' \
 		'redcode' \
 		'zlib' \
