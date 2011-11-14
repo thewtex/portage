@@ -6,5 +6,5 @@ PATCHVER="1.2"
 ELF2FLT_VER=""
 inherit toolchain-binutils
 
-KEYWORDS="~*"
+KEYWORDS="*"
 RESTRICT="mirror"
