@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/audacious-plugins/audacious-plugins-3.0.3.ebuild,v 1.3 2011/09/23 08:22:56 chainsaw Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/audacious-plugins/audacious-plugins-3.0.3.ebuild,v 1.6 2011/11/14 13:09:54 chainsaw Exp $
 
 EAPI=4
 
@@ -21,9 +21,10 @@ lame libnotify libsamplerate midi mms mp3 mtp nls oss pulseaudio scrobbler sid s
 RDEPEND="app-arch/unzip
 	>=dev-libs/dbus-glib-0.60
 	dev-libs/libxml2:2
+	media-libs/libmodplug
 	>=media-sound/audacious-3.0.2
 	>=net-libs/neon-0.26.4
-	>=x11-libs/gtk+-2.14:2
+	x11-libs/gtk+:3
 	aac? ( >=media-libs/faad2-2.7 )
 	adplug? ( >=dev-cpp/libbinio-1.4 )
 	alsa? ( >=media-libs/alsa-lib-1.0.16 )
@@ -69,7 +70,6 @@ src_configure() {
 		--enable-chardet \
 		--enable-modplug \
 		--enable-neon \
-		--disable-projectm-1.0 \
 		$(use_enable adplug) \
 		$(use_enable aac) \
 		$(use_enable alsa) \

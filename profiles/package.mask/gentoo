@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.13234 2011/11/13 16:15:17 chithanh Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.13244 2011/11/14 15:54:43 polynomial-c Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -31,6 +31,22 @@
 
 #--- END OF EXAMPLES ---
 
+# Lars Wendler <polynomial-c@gentoo.org> (14 Nov 2011)
+# Masked for removal in 30 days due to lack of active maintainer (bug #390541).
+www-client/seamonkey-bin
+
+# Alexandre Rostovtsev <tetromino@gentoo.org> (13 Nov 2011)
+# Fails to build or run with >=opencv-2.3. Incompatible with pyatspi-2.2 (and
+# therefore with gnome-3.2). No upstream activity since early 2010.
+# Masked for removal in 30 days. Bug #389979
+app-accessibility/gnome-mousetrap
+
+# Markos Chandras <hwoarang@gentoo.org> (13 Nov 2011)
+# Fails to link with gold linker. Uses tempnam instead
+# of mkstemp which is a fatal error in recent gcc versions
+# Masked for removal in 30 days. Bug #371454
+games-mud/kmuddy
+
 # Alin Năstac <mrness@gentoo.org> (13 Nov 2011)
 # Dead project, masked for removal in 30 days
 net-mail/vmailmgr
@@ -45,6 +61,7 @@ net-mail/vmailmgr-tools
 =dev-python/wxpython-2.6*
 =dev-python/wxpython-docs-2.6*
 =x11-libs/wxGTK-2.6*
+games-util/mattricks
 
 # Samuli Suominen <ssuominen@gentoo.org> (12 Nov 2011)
 # Masked for removal in 30 days since wxpython-2.6 is going away wrt bug 330683
@@ -239,13 +256,6 @@ app-admin/stow
 # No maintainer. Removal in 30 days
 app-admin/mon
 
-# Michael Sterrett <mr_bones_@gentoo.org> (12 Oct 2011)
-# Upstream has moved to commercial development and
-# the latest version doesn't work with newer allegro.
-# Masked for removal on 20111111
-# bug #369271
-games-roguelike/fargoal
-
 # Tim Harder <radhermit@gentoo.org> (11 Oct 2011)
 # Mask development releases
 =www-apps/wordpress-3.3*
@@ -293,6 +303,7 @@ app-emacs/rst
 >=net-libs/gupnp-0.17
 >=net-libs/gssdp-0.11
 >=net-libs/gupnp-av-0.10.1
+>=net-libs/gupnp-igd-0.2
 >=net-misc/rygel-0.12.0
 
 # Tim Harder <radhermit@gentoo.org> (19 Sep 2011)
@@ -302,10 +313,6 @@ app-emacs/rst
 # Anthony G. Basile <blueness@gentoo.org> (18 Sep 2011)
 # Masked while testing potentially dangerous utility
 sys-apps/elfix
-
-# Mounir Lamouri <volkmar@gentoo.org> (18 Sep 2011)
-# Masked for removal in 30 days. Use Firefox 4 or higher instead.
-www-plugins/weave
 
 # Joerg Bornkessel <hd_brummy@gentoo.org> (17 Sep 2011)
 # media-video/vdr-xvdr-9999, masked git live ebuild

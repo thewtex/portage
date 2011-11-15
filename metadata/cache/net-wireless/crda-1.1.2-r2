@@ -1,5 +1,5 @@
-dev-libs/libgcrypt dev-libs/libnl:1.1 net-wireless/wireless-regdb dev-python/m2crypto
-dev-libs/libgcrypt dev-libs/libnl:1.1 net-wireless/wireless-regdb >=sys-fs/udev-152
+dev-libs/libgcrypt dev-libs/libnl:1.1 net-wireless/wireless-regdb dev-python/m2crypto =dev-lang/python-2* >=app-admin/eselect-python-20091230
+dev-libs/libgcrypt dev-libs/libnl:1.1 net-wireless/wireless-regdb >=sys-fs/udev-152 >=app-admin/eselect-python-20091230
 0
 http://linuxwireless.org/download/crda/crda-1.1.2.tar.bz2
 
@@ -7,14 +7,14 @@ http://wireless.kernel.org/en/developers/Regulatory
 as-is
 Central Regulatory Domain Agent for wireless networks.
 ~amd64 ~mips ~ppc ~ppc64 ~x86
-eutils multilib portability toolchain-funcs user
+eutils multilib portability python toolchain-funcs user
 
 
 
 
 4
 
-compile install prepare test
+compile install prepare setup test
 
 
 

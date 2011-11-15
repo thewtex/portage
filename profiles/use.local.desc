@@ -427,6 +427,7 @@ app-emulation/qemu-kvm:vde - Enable VDE-based networking
 app-emulation/qemu-kvm:vhost-net - Enable accelerated networking using vhost-net, see http://www.linux-kvm.org/page/VhostNet
 app-emulation/qemu-kvm:xattr - Add support for getting and setting POSIX extended attributes, through sys-apps/attr. Requisite for the virtfs backend.
 app-emulation/qemu-kvm:xen - Enables support for Xen backends
+app-emulation/spice:client - Build the spicec client app (does not reduce dependencies at the moment).
 app-emulation/spice:gui - Build some GUI components (inside the guest window).
 app-emulation/spice-vdagent:consolekit - Use sys-auth/consolekit to determine the master vdagentd in case of multiple running vdagentds (highly recommended)
 app-emulation/uae:scsi - Enable the uaescsi.device
@@ -1179,6 +1180,11 @@ dev-libs/geoip:perl-geoipupdate - Install pure perl version of geoipupdate, with
 dev-libs/glib:introspection - Use dev-libs/gobject-introspection for introspection
 dev-libs/glib:systemtap - Build support for profiling and tracing using dev-util/systemtap
 dev-libs/glib:utils - Install gtester-report utility to generate test report files for your software.
+dev-libs/igraph:arpack - Use external sci-libs/arpack
+dev-libs/igraph:blas - Use external virtual/blas numerical library
+dev-libs/igraph:gmp - Enables dev-libs/gmp support
+dev-libs/igraph:gprof - Enables profiling support
+dev-libs/igraph:lapack - Use external lapack numerical library
 dev-libs/jemalloc:stats - Enable statistics calculation/reporting
 dev-libs/json-glib:introspection - Use dev-libs/gobject-introspection for introspection
 dev-libs/libburn:track-src-odirect - Read track input with O_DIRECT (see man 2 open), this may deliver a better write performance in some situations
@@ -2820,23 +2826,30 @@ media-video/kino:gpac - Enable GPAC support when exporting to 3GPP format
 media-video/kmplayer:npp - Compile the npp backend that plays xembed style browser plugins.
 media-video/libav:3dnowext - Enable manually-optimised routines using the AMD 3DNow!Ex SIMD instruction set, present in modern AMD CPUs. (Check for 3dnowext in /proc/cpuinfo to know whether your CPU supports it).
 media-video/libav:aac - Use external vo-aacenc library for AAC encoding
-media-video/libav:amr - Enables Adaptive Multi-Rate Audio support
-media-video/libav:cpudetection - Enables runtime CPU detection (useful for bindist, compatibility on other CPUs)
+media-video/libav:amr - Enable Adaptive Multi-Rate Audio support
+media-video/libav:avx - Adds support for Advanced Vector Extensions instructions (Intel Sandy Bridge, AMD Bulldozer and later chips)
+media-video/libav:cdio - Enable audio CD grabbing with dev-libs/libcdio.
+media-video/libav:cpudetection - Enables runtime CPU detection (useful for bindist, compatibility on other CPUs).
 media-video/libav:dirac - Enable Dirac video support (an advanced royalty-free video compression format) via the reference library: dirac.
-media-video/libav:faac - Use external faac library for AAC encoding (notice: the resulting binaries are unredistributable)
+media-video/libav:faac - Use external faac library for AAC encoding (notice: the resulting binaries are unredistributable).
 media-video/libav:frei0r - Enable frei0r wrapping in libavfilter
 media-video/libav:gpl - Build all GPL licensed code. Without this flag set the package is build under LGPL license.
 media-video/libav:hardcoded-tables - Use pre-calculated tables rather than calculating them on the fly.
-media-video/libav:mmxext - Enables mmx2 support
-media-video/libav:network - Enables network streaming support
-media-video/libav:pic - Force shared libraries to be built as PIC (this is slower)
-media-video/libav:qt-faststart - Build and install qt-faststart application
-media-video/libav:rtmp - Enable Real Time Messaging Protocol using librtmp
+media-video/libav:mmxext - Enable mmx2 support.
+media-video/libav:neon - Enable NEON optimizations for arm processors.
+media-video/libav:network - Enable network streaming support.
+media-video/libav:openssl - Prefer dev-libs/openssl over net-libs/gnutls to provide SSL/TLS support (notice: the resulting binaries are unredistributable).
+media-video/libav:pic - Force shared libraries to be built as PIC (this is slower).
+media-video/libav:pulseaudio - Enable pulseaudio input support.
+media-video/libav:qt-faststart - Build and install qt-faststart application.
+media-video/libav:rtmp - Enable Real Time Messaging Protocol using librtmp instead the native implementation.
 media-video/libav:schroedinger - Enable Dirac video support (an advanced royalty-free video compression format) via libschroedinger (high-speed implementation in C of the Dirac codec).
-media-video/libav:ssse3 - faster floating point optimization for SSSE3 capable chips (Intel Core 2 and later chips)
-media-video/libav:vaapi - Enables VAAPI (Video Acceleration API) for hardware decoding
-media-video/libav:vdpau - Enables VDPAU decoders (requires nVidia video cards to offload CPU processing to video card
-media-video/libav:vpx - Enables vp8 codec support using libvpx: Decoding vp8 does not require this to be enabled but libvpx can also be used for decoding; encoding vp8 requires this useflag to be enabled though.
+media-video/libav:ssl - Enable SSL/TLS support using dev-libs/openssl or dev-libs/gnutls.
+media-video/libav:ssse3 - faster floating point optimization for SSSE3 capable chips (Intel Core 2 and later chips).
+media-video/libav:vaapi - Enable VAAPI (Video Acceleration API) for hardware decoding.
+media-video/libav:vdpau - Enable VDPAU decoders (requires nVidia video cards to offload CPU processing to video card.
+media-video/libav:vis - Adds support for SIMD optimizations for UltraSPARC processors.
+media-video/libav:vpx - Enable vp8 encoding support using libvpx.
 media-video/lives:libvisual - Enable libvisual support
 media-video/mjpegtools:sdlgfx - Enables y4mhist to display a graphical histogram
 media-video/motiontrack:multiprocess - Enables multi-process support (SMP/cluster) for motiontrack programs
@@ -3546,6 +3559,7 @@ net-libs/gnutls:pkcs11 - Add support for PKCS#11 over app-crypt/p11-kit
 net-libs/gssdp:introspection - Use dev-libs/gobject-introspection for introspection
 net-libs/gtk-vnc:gtk3 - Build the gtk3 gtk-vnc library and other gtk3 assets
 net-libs/gtk-vnc:introspection - Use dev-libs/gobject-introspection for introspection
+net-libs/gtk-vnc:vala - Enable bindings for dev-lang/vala
 net-libs/gupnp:introspection - Use dev-libs/gobject-introspection for introspection
 net-libs/gupnp-av:introspection - Use dev-libs/gobject-introspection for introspection
 net-libs/gupnp-igd:introspection - Use dev-libs/gobject-introspection for introspection
@@ -3788,9 +3802,12 @@ net-misc/freerdp:debug-kbd - Enable keyboard related debug messages
 net-misc/freerdp:debug-license - Enable license debug messages
 net-misc/freerdp:debug-nego - Enable negotiation related debug messages
 net-misc/freerdp:debug-nla - Enable authentication related debug messages
+net-misc/freerdp:debug-orders - Print drawing orders debug messages
 net-misc/freerdp:debug-proto - Enable protocol debugging output
 net-misc/freerdp:debug-rail - Enable RemoteApp debug messages
+net-misc/freerdp:debug-redir - Print redirection debug messages
 net-misc/freerdp:debug-rfx - Enable RemoteFX debug messages
+net-misc/freerdp:debug-scard - Print smartcard debug messages
 net-misc/freerdp:debug-serial - Enable debugging of serial code
 net-misc/freerdp:debug-smartcard - Enable debugging of smard-card code
 net-misc/freerdp:debug-sound - Enable debugging of sound code
@@ -4264,6 +4281,7 @@ sci-libs/mkl:serial - Installs the serial (as non-threaded) libraries
 sci-libs/mpir:cpudetection - Enables runtime cpudetection (useful for bindist, compatability on other CPUs)
 sci-libs/netcdf:dap - Support for remote data access with the built-in OPeNDAP client
 sci-libs/nlopt:octave - Add plugin for sci-mathematics/octave
+sci-libs/opencascade:gl2ps - Use gl2ps PostScript printing library
 sci-libs/plplot:ada - Add bindings for the ADA programming language
 sci-libs/plplot:d - Add bindings for the D programming language
 sci-libs/plplot:dynamic - Build with dynamic drivers
@@ -5133,6 +5151,7 @@ x11-themes/gtk-engines-murrine:themes - Pull in themes via x11-themes/murrine-th
 x11-themes/gtk-engines-nodoka:animation-rtl - Progressbar animation from right to left
 x11-themes/gtk-engines-qtcurve:firefox3 - Install GUI theme tweaks for version 3 of www-client/firefox
 x11-themes/gtk-engines-qtcurve:mozilla - Install GUI theme tweaks for mozilla based browsers www-client/firefox
+x11-themes/light-themes:gtk3 - Support GTK 3.x, too
 x11-themes/qtcurve-qt4:kde - Enable KDE4 support. This adds a QtCurve configuration module to KDE's SystemSettings.
 x11-themes/qtcurve-qt4:windeco - Enable window decoration for KWin.
 x11-themes/redhat-artwork:audacious - Install media-sound/audacious theme

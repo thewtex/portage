@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/blender/blender-2.60a.ebuild,v 1.1 2011/11/13 12:04:30 lu_zero Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/blender/blender-2.60a.ebuild,v 1.4 2011/11/13 22:43:48 sping Exp $
 
 PYTHON_DEPEND="3:3.2"
 EAPI=4
@@ -116,7 +116,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-desktop.patch
+	epatch "${FILESDIR}"/${P}-desktop.patch
 	epatch "${FILESDIR}"/${PN}-${SLOT}-doxyfile.patch
 
 	# TODO: write a proper Makefile to replace the borked bmake script
@@ -275,6 +275,9 @@ src_configure() {
 		blend_with ${arg}
 	done
 
+	# libspnav not yet packaged (bug #390427)
+	echo 'WITH_BF_3DMOUSE=0' >> "${S}"/user-config.py
+
 	# enable debugging/testing support
 	use debug && echo "BF_DEBUG=1" >> "${S}"/user-config.py
 	use test && echo "BF_UNIT_TEST=1" >> "${S}"/user-config.py
@@ -330,9 +333,9 @@ src_install() {
 #	fi
 
 	# install plugins
-	exeinto /usr/lib/${PN}/${SLOT}/plugins/texture
+	exeinto /usr/$(get_libdir)/${PN}/${SLOT}/plugins/texture
 	doexe "${WORKDIR}"/${P}/release/plugins/texture/*.so
-	exeinto /usr/lib/${PN}/${SLOT}/plugins/sequences
+	exeinto /usr/$(get_libdir)/${PN}/${SLOT}/plugins/sequences
 	doexe "${WORKDIR}"/${P}/release/plugins/sequence/*.so
 	insinto /usr/include/${PN}/${SLOT}
 	doins "${WORKDIR}"/${P}/source/blender/blenpluginapi/*.h
