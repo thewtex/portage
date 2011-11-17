@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup test unpack
+DEPEND=!dedicated? ( media-libs/libsdl[audio,X,video] icu? ( dev-libs/icu ) truetype? ( media-libs/fontconfig media-libs/freetype:2 sys-libs/zlib ) ) lzo? ( dev-libs/lzo:2 ) iconv? ( virtual/libiconv ) png? ( media-libs/libpng ) zlib? ( sys-libs/zlib )
+DESCRIPTION=OpenTTD is a clone of Transport Tycoon Deluxe
+EAPI=2
+HOMEPAGE=http://www.openttd.org/
+IUSE=aplaymidi debug dedicated iconv icu lzo +openmedia +png +timidity +truetype zlib
+KEYWORDS=amd64 ~arm ~ppc ~ppc64 x86
+LICENSE=GPL-2
+PDEPEND=!dedicated? ( openmedia? ( games-misc/openmsx games-misc/opensfx ) aplaymidi? ( media-sound/alsa-utils ) !aplaymidi? ( timidity? ( media-sound/timidity++ ) ) ) openmedia? ( games-misc/opengfx )
+RDEPEND=!dedicated? ( media-libs/libsdl[audio,X,video] icu? ( dev-libs/icu ) truetype? ( media-libs/fontconfig media-libs/freetype:2 sys-libs/zlib ) ) lzo? ( dev-libs/lzo:2 ) iconv? ( virtual/libiconv ) png? ( media-libs/libpng ) zlib? ( sys-libs/zlib )
+SLOT=0
+SRC_URI=http://binaries.openttd.org/releases/1.1.1/openttd-1.1.1-source.tar.gz
+_eclasses_=base	dba02c674ce4dff67657c692954d7ef0	eutils	33ef77a15337022e05342d2c772a7a5a	games	c11e6cb73d545cdf3d36dc4bb7c753e4	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=32a59fb8350cc1b3fdb60e8e09a154cd

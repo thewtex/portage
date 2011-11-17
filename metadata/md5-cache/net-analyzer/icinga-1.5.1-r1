@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst prepare setup
+DEPEND=idoutils? ( dev-db/libdbi-drivers[mysql?,postgres?] ) perl? ( dev-lang/perl ) virtual/mailx web? ( media-libs/gd[jpeg,png] lighttpd? ( www-servers/lighttpd dev-lang/php[cgi] ) apache2? ( || ( dev-lang/php[apache2] dev-lang/php[cgi] ) ) ) !net-analyzer/nagios-core apache2? ( =www-servers/apache-2* )
+DESCRIPTION=Nagios Fork - Check daemon, CGIs, docs, IDOutils
+EAPI=2
+HOMEPAGE=http://www.icinga.org/
+IUSE=+apache2 api debug +idoutils lighttpd +mysql perl plugins postgres ssl +vim-syntax +web apache2
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=idoutils? ( dev-db/libdbi-drivers[mysql?,postgres?] ) perl? ( dev-lang/perl ) virtual/mailx web? ( media-libs/gd[jpeg,png] lighttpd? ( www-servers/lighttpd dev-lang/php[cgi] ) apache2? ( || ( dev-lang/php[apache2] dev-lang/php[cgi] ) ) ) !net-analyzer/nagios-core plugins? ( net-analyzer/nagios-plugins ) apache2? ( =www-servers/apache-2* )
+SLOT=0
+SRC_URI=mirror://sourceforge/icinga/icinga-1.5.1.tar.gz
+_eclasses_=depend.apache	a471783c63e68987a2b20eb46f9edf68	eutils	33ef77a15337022e05342d2c772a7a5a	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=08fd5b2215c49e99e5cdb3e06d5d7bf0

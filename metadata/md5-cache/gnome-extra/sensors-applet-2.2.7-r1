@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup unpack
+DEPEND=>=dev-libs/glib-2.14:2 >=x11-libs/gtk+-2.14:2 || ( gnome-base/gnome-panel[bonobo] <gnome-base/gnome-panel-2.32 ) >=gnome-base/libgnome-2.8 >=gnome-base/libgnomeui-2.8 >=x11-libs/cairo-1.0.4 hddtemp? ( dbus? ( >=dev-libs/dbus-glib-0.80 >=dev-libs/libatasmart-0.16 ) !dbus? ( >=app-admin/hddtemp-0.3_beta13 ) ) libnotify? ( x11-libs/libnotify ) lm_sensors? ( sys-apps/lm_sensors ) video_cards_fglrx? ( x11-drivers/ati-drivers ) video_cards_nvidia? ( || ( >=x11-drivers/nvidia-drivers-100.14.09 media-video/nvidia-settings ) ) >=dev-util/pkgconfig-0.12 >=app-text/scrollkeeper-0.3.14 >=app-text/gnome-doc-utils-0.3.2 dev-util/intltool >=sys-apps/sed-4
+DESCRIPTION=GNOME panel applet to display readings from hardware sensors
+EAPI=2
+HOMEPAGE=http://sensors-applet.sourceforge.net/
+IUSE=+dbus hddtemp libnotify lm_sensors video_cards_fglrx video_cards_nvidia
+KEYWORDS=alpha amd64 ppc x86
+LICENSE=GPL-2
+PDEPEND=hddtemp? ( dbus? ( sys-fs/udisks ) )
+RDEPEND=>=dev-libs/glib-2.14:2 >=x11-libs/gtk+-2.14:2 || ( gnome-base/gnome-panel[bonobo] <gnome-base/gnome-panel-2.32 ) >=gnome-base/libgnome-2.8 >=gnome-base/libgnomeui-2.8 >=x11-libs/cairo-1.0.4 hddtemp? ( dbus? ( >=dev-libs/dbus-glib-0.80 >=dev-libs/libatasmart-0.16 ) !dbus? ( >=app-admin/hddtemp-0.3_beta13 ) ) libnotify? ( x11-libs/libnotify ) lm_sensors? ( sys-apps/lm_sensors ) video_cards_fglrx? ( x11-drivers/ati-drivers ) video_cards_nvidia? ( || ( >=x11-drivers/nvidia-drivers-100.14.09 media-video/nvidia-settings ) )
+SLOT=0
+SRC_URI=mirror://sourceforge/sensors-applet/sensors-applet-2.2.7.tar.gz
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	gnome.org	8fef8f967214f56e08fa92d61163d891	gnome2	3aa9fb56280cbb64b3d42e0db59ed76e	gnome2-utils	dfcd797d126b46852d33936f4a0a1702	libtool	76720aa53cbace6123aac554983eadfa	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
+_md5_=cc45f127f84393a6d70ccf2b0f274091

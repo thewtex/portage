@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst prepare test
+DEPEND=virtual/blas virtual/lapack mpi? ( virtual/mpi[cxx] ) tk? ( dev-lang/tk ) dev-lang/perl sys-devel/flex sys-apps/sed doc? ( app-doc/doxygen media-gfx/graphviz ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=The Massively Parallel Quantum Chemistry Program
+EAPI=4
+HOMEPAGE=http://www.mpqc.org/
+IUSE=doc mpi threads tk
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
+LICENSE=GPL-2
+RDEPEND=virtual/blas virtual/lapack mpi? ( virtual/mpi[cxx] ) tk? ( dev-lang/tk )
+SLOT=0
+SRC_URI=mirror://sourceforge/mpqc/mpqc-2.3.1.tar.bz2
+_eclasses_=autotools	b81740a014934d6736a8795cdedb452e	eutils	33ef77a15337022e05342d2c772a7a5a	libtool	76720aa53cbace6123aac554983eadfa	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=f40604dfc5ff209cc198cdd8937d7714

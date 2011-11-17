@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare setup test unpack
+DEPEND=virtual/mysql[-static] ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ree18? ( dev-lang/ruby-enterprise:1.8 ) ruby_targets_ruby18? ( virtual/rubygems[ruby_targets_ruby18] ) ruby_targets_ree18? ( virtual/rubygems[ruby_targets_ree18] ) test? ( ruby_targets_ruby18? ( virtual/rubygems[ruby_targets_ruby18] ) ruby_targets_ree18? ( virtual/rubygems[ruby_targets_ree18] ) )
+DESCRIPTION=A modern, simple and very fast Mysql library for Ruby - binding to libmysql.
+EAPI=3
+HOMEPAGE=https://github.com/brianmario/mysql2
+IUSE=elibc_FreeBSD ruby_targets_ruby18 ruby_targets_ree18 test
+KEYWORDS=~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=MIT
+RDEPEND=virtual/mysql[-static] ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ree18? ( dev-lang/ruby-enterprise:1.8 ) ruby_targets_ruby18? ( virtual/rubygems[ruby_targets_ruby18] ) ruby_targets_ree18? ( virtual/rubygems[ruby_targets_ree18] )
+SLOT=0.2
+SRC_URI=mirror://rubygems/mysql2-0.2.7.gem
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	java-utils-2	03ab8cac2b9deec34f79c505eb42a99d	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	ruby-fakegem	7c47bb49102ac90cbf2f8e0fefbaed6d	ruby-ng	9306a3d60da89e858115fafece052b0d	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
+_md5_=b41a476a75a74d608623b771c39e8124

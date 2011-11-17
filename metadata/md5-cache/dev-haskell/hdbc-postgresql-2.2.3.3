@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst prerm setup test
+DEPEND=>=dev-lang/ghc-6.8.2 =dev-haskell/hdbc-2.2* dev-haskell/mtl dev-haskell/parsec dev-haskell/time dev-haskell/utf8-string >=dev-db/postgresql-base-8 >=dev-haskell/cabal-1.8 test? ( dev-haskell/convertible dev-haskell/hunit dev-haskell/quickcheck dev-haskell/testpack ) doc? ( dev-haskell/haddock ) hscolour? ( dev-haskell/hscolour ) >=dev-haskell/cabal-1.1.4
+DESCRIPTION=PostgreSQL driver for HDBC
+EAPI=2
+HOMEPAGE=http://software.complete.org/hdbc-postgresql
+IUSE=test doc hscolour profile
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2.1
+RDEPEND=>=dev-lang/ghc-6.8.2 =dev-haskell/hdbc-2.2* dev-haskell/mtl dev-haskell/parsec dev-haskell/time dev-haskell/utf8-string >=dev-db/postgresql-base-8 dev-lang/ghc
+RESTRICT=test
+SLOT=2
+SRC_URI=http://hackage.haskell.org/packages/archive/HDBC-postgresql/2.2.3.3/HDBC-postgresql-2.2.3.3.tar.gz
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	ghc-package	6abc9e234617abf2fab72c4f37f15c89	haskell-cabal	c640d33b3ca22d10d4fc775cb69a4e00	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
+_md5_=9e97b095a5baab7b9ed1ff7f40ca05b9

@@ -1,0 +1,13 @@
+DEFINED_PHASES=config install postinst postrm preinst prepare prerm
+DEPEND=virtual/perl-Sys-Syslog virtual/perl-Time-HiRes virtual/perl-Time-Local dev-perl/Authen-Libwrap dev-perl/IO-Tty dev-perl/MD5 dev-perl/Net-SSLeay dev-perl/Authen-PAM dev-perl/Sys-Hostname-Long !minimal? ( mysql? ( dev-perl/DBD-mysql ) postgres? ( dev-perl/DBD-Pg ) ldap? ( dev-perl/perl-ldap ) dev-perl/XML-Generator dev-perl/XML-Parser ) ssl? ( dev-libs/openssl )
+DESCRIPTION=A web-based Unix systems administration interface
+EAPI=3
+HOMEPAGE=http://www.webmin.com/
+IUSE=minimal +ssl mysql postgres ldap ssl
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=virtual/perl-Sys-Syslog virtual/perl-Time-HiRes virtual/perl-Time-Local dev-perl/Authen-Libwrap dev-perl/IO-Tty dev-perl/MD5 dev-perl/Net-SSLeay dev-perl/Authen-PAM dev-perl/Sys-Hostname-Long !minimal? ( mysql? ( dev-perl/DBD-mysql ) postgres? ( dev-perl/DBD-Pg ) ldap? ( dev-perl/perl-ldap ) dev-perl/XML-Generator dev-perl/XML-Parser )
+SLOT=0
+SRC_URI=minimal? ( mirror://sourceforge/webadmin/webmin-1.560-minimal.tar.gz ) !minimal? ( mirror://sourceforge/webadmin/webmin-1.560.tar.gz )
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	flag-o-matic	630c256d55702ba23515f64952987828	multilib	c4883399ddd3e1d2bd291607b30fded4	pam	71d772c7b2ecf139ec916c4584563109	portability	1d9665386ff87b70cba7f591ba27723f	ssl-cert	7f678cd359743d336ecf3a6cc4ce1521	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=540f14b5893f9864bd95f84010dd1137

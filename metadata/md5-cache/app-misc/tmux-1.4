@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install setup
+DEPEND=|| ( >=dev-libs/libevent-2.0.10 <dev-libs/libevent-2 ) sys-libs/ncurses
+DESCRIPTION=Terminal multiplexer
+EAPI=3
+HOMEPAGE=http://tmux.sourceforge.net
+IUSE=vim-syntax
+KEYWORDS=amd64 ppc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos
+LICENSE=ISC
+RDEPEND=|| ( >=dev-libs/libevent-2.0.10 <dev-libs/libevent-2 ) sys-libs/ncurses vim-syntax? ( || ( app-editors/vim app-editors/gvim ) )
+SLOT=0
+SRC_URI=mirror://sourceforge/tmux/tmux-1.4.tar.gz
+_eclasses_=multilib	c4883399ddd3e1d2bd291607b30fded4	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf
+_md5_=58f4537f41a91c678c5d765456435191

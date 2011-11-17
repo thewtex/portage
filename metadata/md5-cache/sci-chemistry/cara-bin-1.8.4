@@ -1,0 +1,12 @@
+DEFINED_PHASES=install unpack
+DESCRIPTION=An application for the analysis of NMR spectra and Computer Aided Resonance Assignment
+EAPI=3
+HOMEPAGE=http://www.nmr.ch
+IUSE=lua
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=CARA
+RDEPEND=amd64? ( app-emulation/emul-linux-x86-xlibs app-emulation/emul-linux-x86-compat ) x86? ( media-libs/fontconfig media-libs/freetype x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXcursor x11-libs/libXext x11-libs/libXi x11-libs/libXrandr x11-libs/libXrender virtual/libstdc++ ) lua? ( dev-lang/lua )
+RESTRICT=mirror
+SLOT=0
+SRC_URI=http://www.cara.nmr-software.org/downloads/cara_1.8.4_linux.gz ftp://ftp.mol.biol.ethz.ch/software/cara/Start1.2.cara
+_md5_=e84fda86eecb95974c227049297f7b53

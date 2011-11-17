@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install postinst prepare test
+DESCRIPTION=Command-line downloader and uploader for file-sharing websites
+EAPI=2
+HOMEPAGE=http://code.google.com/p/plowshare/
+IUSE=bash-completion +javascript +perl scripts view-captcha
+KEYWORDS=~amd64 ~arm ~ppc ~x86
+LICENSE=GPL-3
+RDEPEND=javascript? ( dev-lang/spidermonkey ) perl? ( dev-lang/perl media-gfx/imagemagick[perl] ) view-captcha? ( || ( media-gfx/aview media-libs/libcaca ) ) app-shells/bash || ( app-text/recode ( dev-lang/perl dev-perl/HTML-Parser ) ) app-text/tesseract[tiff] || ( media-gfx/imagemagick[tiff] media-gfx/graphicsmagick[imagemagick,tiff] ) net-misc/curl sys-apps/util-linux
+SLOT=0
+SRC_URI=http://plowshare.googlecode.com/files/plowshare-snapshot-git20110914.tar.gz
+_eclasses_=bash-completion-r1	3480f8385cb9e31797e7b659e366e2d2
+_md5_=8394e95b1c36c1f566a45e529b823c20

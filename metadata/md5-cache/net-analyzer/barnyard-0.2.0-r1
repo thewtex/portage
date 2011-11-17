@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install postinst
+DEPEND=net-libs/libpcap postgres? ( dev-db/postgresql-server ) mysql? ( virtual/mysql )
+DESCRIPTION=Fast output system for Snort
+HOMEPAGE=http://www.snort.org/dl/barnyard/
+IUSE=mysql postgres sguil
+KEYWORDS=~x86 -sparc
+LICENSE=QPL
+RDEPEND=net-libs/libpcap postgres? ( dev-db/postgresql-server ) mysql? ( virtual/mysql ) net-analyzer/snort
+SLOT=0
+SRC_URI=mirror://sourceforge/barnyard/barnyard-0.2.0.tar.gz
+_md5_=7b747b2199627bb613aa44b555d2dc1d

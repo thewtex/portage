@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst preinst setup unpack
+DESCRIPTION=Return to Castle Wolfenstein - Multi-player demo
+HOMEPAGE=http://games.activision.com/games/wolfenstein/
+IUSE=dedicated opengl
+KEYWORDS=-* amd64 x86
+LICENSE=RTCW
+PROPERTIES=interactive
+RDEPEND=sys-libs/glibc dedicated? ( app-misc/screen ) !dedicated? ( virtual/opengl x11-libs/libX11 x11-libs/libXext x11-libs/libXau x11-libs/libXdmcp ) opengl? ( virtual/opengl x11-libs/libX11 x11-libs/libXext x11-libs/libXau x11-libs/libXdmcp ) amd64? ( app-emulation/emul-linux-x86-xlibs )
+RESTRICT=strip mirror
+SLOT=0
+SRC_URI=mirror://idsoftware/wolf/linux/old/wolfmpdemo-linux-1.1-MP.x86.run mirror://3dgamers/returnwolfenstein/wolfmpdemo-linux-1.1-MP.x86.run
+_eclasses_=base	dba02c674ce4dff67657c692954d7ef0	eutils	33ef77a15337022e05342d2c772a7a5a	games	c11e6cb73d545cdf3d36dc4bb7c753e4	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=f9f9c54fd99ea907ccd218cdb14e01b7

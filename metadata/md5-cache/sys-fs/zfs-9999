@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup unpack
+DEPEND==sys-fs/spl-9999 selinux? ( sys-libs/libselinux ) blkid? ( sys-libs/e2fsprogs-libs ) >=dev-vcs/git-1.6 kernel_linux? ( sys-apps/module-init-tools ) sys-apps/sed kernel_linux? ( virtual/linux-sources )
+DESCRIPTION=Native ZFS for Linux
+EAPI=4
+HOMEPAGE=http://zfsonlinux.org/
+IUSE=selinux blkid kernel_linux
+KEYWORDS=-* ~amd64
+LICENSE=GPL-2
+RDEPEND==sys-fs/spl-9999 selinux? ( sys-libs/libselinux ) blkid? ( sys-libs/e2fsprogs-libs ) kernel_linux? ( sys-apps/module-init-tools )
+RESTRICT=strip
+SLOT=0
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	git	ad072b4acfe72b0c0e06021df67b2bc2	linux-info	0a300da62c346bbaee5bcf82727f23ac	linux-mod	a4e07f78bacb6b129ea7b18ad060dbfc	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
+_md5_=319d7d9fdb30b68b5db09d264b22c367

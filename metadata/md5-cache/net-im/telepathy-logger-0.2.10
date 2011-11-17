@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare setup test unpack
+DEPEND=>=dev-libs/glib-2.25.11:2 >=sys-apps/dbus-1.1 >=dev-libs/dbus-glib-0.82 >=net-libs/telepathy-glib-0.14.0[introspection?] dev-libs/libxml2 dev-libs/libxslt dev-db/sqlite:3 introspection? ( >=dev-libs/gobject-introspection-0.9.6 ) >=dev-util/intltool-0.35 doc? ( >=dev-util/gtk-doc-1.10 ) >=app-admin/eselect-python-20091230 || ( =dev-lang/python-2.7* =dev-lang/python-2.6* =dev-lang/python-2.5* ) test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
+DESCRIPTION=Telepathy Logger is a session daemon that should be activated whenever telepathy is being used.
+EAPI=3
+HOMEPAGE=http://telepathy.freedesktop.org/wiki/Logger
+IUSE=doc +introspection test
+KEYWORDS=alpha amd64 ia64 ppc sparc x86 ~x86-linux
+LICENSE=LGPL-2.1
+RDEPEND=>=dev-libs/glib-2.25.11:2 >=sys-apps/dbus-1.1 >=dev-libs/dbus-glib-0.82 >=net-libs/telepathy-glib-0.14.0[introspection?] dev-libs/libxml2 dev-libs/libxslt dev-db/sqlite:3 introspection? ( >=dev-libs/gobject-introspection-0.9.6 ) >=app-admin/eselect-python-20091230 || ( =dev-lang/python-2.7* =dev-lang/python-2.6* =dev-lang/python-2.5* )
+SLOT=0
+SRC_URI=http://telepathy.freedesktop.org/releases/telepathy-logger/telepathy-logger-0.2.10.tar.bz2
+_eclasses_=base	dba02c674ce4dff67657c692954d7ef0	eutils	33ef77a15337022e05342d2c772a7a5a	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	python	6bbd984910e27780e5d0ea543d83ef84	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	virtualx	0c41ff55e46b959d9457dde69e7a09d9
+_md5_=747ff5f2bd3924205f2f3aa51495e9f6

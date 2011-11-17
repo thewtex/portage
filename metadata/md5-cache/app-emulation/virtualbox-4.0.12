@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup unpack
+DEPEND=!app-emulation/virtualbox-bin ~app-emulation/virtualbox-modules-4.0.12 dev-libs/libIDL >=dev-libs/libxslt-1.1.19 net-misc/curl dev-libs/openssl dev-libs/libxml2 sys-libs/zlib !headless? ( qt4? ( x11-libs/qt-gui:4 x11-libs/qt-core:4 opengl? ( x11-libs/qt-opengl:4 ) x11-libs/libXinerama ) opengl? ( virtual/opengl media-libs/freeglut ) x11-libs/libX11 x11-libs/libXcursor x11-libs/libXext x11-libs/libXmu x11-libs/libXt media-libs/libsdl[X,video] ) vnc? ( >=net-libs/libvncserver-0.9.7 ) java? ( >=virtual/jre-1.5 ) =dev-util/kbuild-0.1.5* >=dev-lang/yasm-0.6.2 sys-devel/bin86 sys-devel/dev86 sys-power/iasl media-libs/libpng pam? ( sys-libs/pam ) sys-libs/libcap doc? ( dev-texlive/texlive-basic dev-texlive/texlive-latex dev-texlive/texlive-latexrecommended dev-texlive/texlive-latexextra dev-texlive/texlive-fontsrecommended dev-texlive/texlive-fontsextra ) java? ( >=virtual/jdk-1.5 ) dev-util/pkgconfig alsa? ( >=media-libs/alsa-lib-1.0.13 ) !headless? ( x11-libs/libXinerama ) pulseaudio? ( media-sound/pulseaudio ) vboxwebsrv? ( >=net-libs/gsoap-2.7.13 ) >=app-admin/eselect-python-20091230 java? ( >=dev-java/java-config-2.1.9-r1 )
+DESCRIPTION=Family of powerful x86 virtualization products for enterprise as well as home use
+EAPI=4
+HOMEPAGE=http://www.virtualbox.org/
+IUSE=+additions alsa doc extensions headless java pam pulseaudio +opengl python +qt4 +sdk vboxwebsrv vnc elibc_FreeBSD java
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+PDEPEND=additions? ( ~app-emulation/virtualbox-additions-4.0.12 ) extensions? ( ~app-emulation/virtualbox-extpack-oracle-4.0.12 )
+RDEPEND=!app-emulation/virtualbox-bin ~app-emulation/virtualbox-modules-4.0.12 dev-libs/libIDL >=dev-libs/libxslt-1.1.19 net-misc/curl dev-libs/openssl dev-libs/libxml2 sys-libs/zlib !headless? ( qt4? ( x11-libs/qt-gui:4 x11-libs/qt-core:4 opengl? ( x11-libs/qt-opengl:4 ) x11-libs/libXinerama ) opengl? ( virtual/opengl media-libs/freeglut ) x11-libs/libX11 x11-libs/libXcursor x11-libs/libXext x11-libs/libXmu x11-libs/libXt media-libs/libsdl[X,video] ) vnc? ( >=net-libs/libvncserver-0.9.7 ) java? ( >=virtual/jre-1.5 ) >=app-admin/eselect-python-20091230 java? ( >=dev-java/java-config-2.1.9-r1 )
+REQUIRED_USE=java? ( sdk ) python? ( sdk ) vboxwebsrv? ( java )
+SLOT=0
+SRC_URI=http://download.virtualbox.org/virtualbox/4.0.12/VirtualBox-4.0.12.tar.bz2
+_eclasses_=base	dba02c674ce4dff67657c692954d7ef0	eutils	33ef77a15337022e05342d2c772a7a5a	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	flag-o-matic	630c256d55702ba23515f64952987828	java-pkg-opt-2	31a1663247652448431dcc8c194e2752	java-utils-2	03ab8cac2b9deec34f79c505eb42a99d	linux-info	0a300da62c346bbaee5bcf82727f23ac	multilib	c4883399ddd3e1d2bd291607b30fded4	pax-utils	43c50115ec22f684df1dc43187a60fcc	portability	1d9665386ff87b70cba7f591ba27723f	python	6bbd984910e27780e5d0ea543d83ef84	qt4-r2	562a0a4214d92cf49cc3e97d1f39d891	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
+_md5_=574b1f5cf3aabee4c2a88e738ca2e05a

@@ -1,0 +1,13 @@
+DEFINED_PHASES=config configure install postinst preinst prepare setup
+DEPEND=sys-libs/ncurses sys-libs/readline munge? ( sys-auth/munge ) tk? ( dev-lang/tk ) syslog? ( virtual/logger ) !games-util/qstat sys-apps/ed !sys-cluster/slurm || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=Resource manager and queuing system based on OpenPBS
+EAPI=2
+HOMEPAGE=http://www.clusterresources.com/products/torque/
+IUSE=cpusets +crypt doc drmaa kernel_linux munge server +syslog threads tk
+KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86
+LICENSE=torque-2.5
+RDEPEND=sys-libs/ncurses sys-libs/readline munge? ( sys-auth/munge ) tk? ( dev-lang/tk ) syslog? ( virtual/logger ) !games-util/qstat crypt? ( net-misc/openssh ) !crypt? ( net-misc/netkit-rsh )
+SLOT=0
+SRC_URI=http://www.clusterresources.com/downloads/torque/torque-3.0.2.tar.gz
+_eclasses_=autotools	b81740a014934d6736a8795cdedb452e	eutils	33ef77a15337022e05342d2c772a7a5a	flag-o-matic	630c256d55702ba23515f64952987828	libtool	76720aa53cbace6123aac554983eadfa	linux-info	0a300da62c346bbaee5bcf82727f23ac	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
+_md5_=c6e48d79f1cb00830aff0d60420a0e52

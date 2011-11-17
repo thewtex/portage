@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=>=sys-libs/pam-0.99 dev-libs/openssl >=sys-libs/libhx-3.6 dev-libs/libxml2 >=sys-fs/cryptsetup-1.1.0 dev-util/pkgconfig app-arch/xz-utils || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=A PAM module that can mount volumes for a user session
+EAPI=3
+HOMEPAGE=http://pam-mount.sourceforge.net
+IUSE=crypt
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-3
+RDEPEND=>=sys-libs/pam-0.99 dev-libs/openssl >=sys-libs/libhx-3.6 dev-libs/libxml2 >=sys-fs/cryptsetup-1.1.0 sys-process/lsof
+SLOT=0
+SRC_URI=mirror://sourceforge/pam-mount/pam_mount-2.6.tar.xz
+_eclasses_=autotools	b81740a014934d6736a8795cdedb452e	eutils	33ef77a15337022e05342d2c772a7a5a	libtool	76720aa53cbace6123aac554983eadfa	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=f0bd7d197c038e58e33775c5b1bf73ac

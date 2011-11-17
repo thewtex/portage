@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup test unpack
+DEPEND=!net-analyzer/slurm mysql? ( dev-db/mysql ) munge? ( sys-auth/munge ) pam? ( virtual/pam ) perl? ( perl-core/Switch ) postgres? ( dev-db/postgresql-base ) ssl? ( dev-libs/openssl ) torque? ( !sys-cluster/torque ) >=sys-apps/hwloc-1.1.1-r1 dev-lang/perl[-build]
+DESCRIPTION=SLURM: A Highly Scalable Resource Manager
+EAPI=4
+HOMEPAGE=https://computing.llnl.gov/linux/slurm/
+IUSE=maui +munge mysql pam +perl postgres ssl static-libs +torque
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=!net-analyzer/slurm mysql? ( dev-db/mysql ) munge? ( sys-auth/munge ) pam? ( virtual/pam ) perl? ( perl-core/Switch ) postgres? ( dev-db/postgresql-base ) ssl? ( dev-libs/openssl ) torque? ( !sys-cluster/torque ) >=sys-apps/hwloc-1.1.1-r1 maui? ( sys-cluster/maui[slurm] ) dev-lang/perl[-build]
+REQUIRED_USE=torque? ( perl )
+SLOT=0
+SRC_URI=mirror://sourceforge/slurm/slurm-2.2.7.tar.bz2
+_eclasses_=base	dba02c674ce4dff67657c692954d7ef0	eutils	33ef77a15337022e05342d2c772a7a5a	flag-o-matic	630c256d55702ba23515f64952987828	multilib	c4883399ddd3e1d2bd291607b30fded4	pam	71d772c7b2ecf139ec916c4584563109	perl-module	01501a30505074cd0012cabbf5d99447	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=8723e30457415052080bf5b10a5b92df

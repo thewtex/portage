@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup test unpack
+DEPEND=>=dev-libs/glib-2.25.9 >=x11-libs/gtk+-2.91.7:3 >=gnome-base/gnome-keyring-0.6.0 >=x11-libs/libnotify-0.7.0 >=x11-libs/cairo-1.0.0 >=gnome-base/gconf-2.31.1:2 >=media-libs/libcanberra-0.26-r2[gtk3] >=sys-power/upower-0.9.1 >=x11-apps/xrandr-1.3 >=x11-proto/xproto-7.0.15 x11-libs/libX11 x11-libs/libXext x11-proto/randrproto sys-devel/gettext app-text/scrollkeeper app-text/docbook-xml-dtd:4.3 >=dev-util/pkgconfig-0.9 >=dev-util/intltool-0.35 >=app-text/gnome-doc-utils-0.3.2 doc? ( app-text/xmlto app-text/docbook-sgml-utils app-text/docbook-xml-dtd:4.4 app-text/docbook-sgml-dtd:4.1 app-text/docbook-xml-dtd:4.1.2 ) test? ( sys-apps/dbus ) >=sys-apps/sed-4 test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
+DESCRIPTION=Gnome Power Manager
+EAPI=4
+HOMEPAGE=http://www.gnome.org/projects/gnome-power-manager/
+IUSE=doc test test
+KEYWORDS=~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=>=dev-libs/glib-2.25.9 >=x11-libs/gtk+-2.91.7:3 >=gnome-base/gnome-keyring-0.6.0 >=x11-libs/libnotify-0.7.0 >=x11-libs/cairo-1.0.0 >=gnome-base/gconf-2.31.1:2 >=media-libs/libcanberra-0.26-r2[gtk3] >=sys-power/upower-0.9.1 >=x11-apps/xrandr-1.3 >=x11-proto/xproto-7.0.15 x11-libs/libX11 x11-libs/libXext >=sys-auth/consolekit-0.4[policykit] sys-auth/polkit gnome-extra/polkit-gnome
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://gnome/sources/gnome-power-manager/3.0/gnome-power-manager-3.0.2.tar.bz2
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	gnome.org	8fef8f967214f56e08fa92d61163d891	gnome2	3aa9fb56280cbb64b3d42e0db59ed76e	gnome2-utils	dfcd797d126b46852d33936f4a0a1702	libtool	76720aa53cbace6123aac554983eadfa	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc	virtualx	0c41ff55e46b959d9457dde69e7a09d9
+_md5_=f95b70b72108656fcd3ff52b9eb7db2c

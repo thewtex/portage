@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile config configure install postinst prepare setup unpack
+DEPEND=dev-libs/lzo sys-apps/tcp-wrappers virtual/jpeg sys-libs/zlib dev-libs/openssl x11-libs/qt-core x11-libs/qt-xmlpatterns system-libvncserver? ( net-libs/libvncserver ) xinerama? ( x11-libs/libXinerama ) X? ( x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXdamage x11-libs/libXext x11-libs/libXfixes x11-libs/libXrandr x11-libs/libXtst x11-apps/xinput x11-libs/qt-gui:4 ) X? ( x11-proto/inputproto ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=Intelligent Teaching And Learning with Computers (iTALC) supports working with computers in school
+EAPI=2
+HOMEPAGE=http://italc.sourceforge.net/
+IUSE=X v4l crypt xinerama threads fbcon system-libvncserver
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/lzo sys-apps/tcp-wrappers virtual/jpeg sys-libs/zlib dev-libs/openssl x11-libs/qt-core x11-libs/qt-xmlpatterns system-libvncserver? ( net-libs/libvncserver ) xinerama? ( x11-libs/libXinerama ) X? ( x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXdamage x11-libs/libXext x11-libs/libXfixes x11-libs/libXrandr x11-libs/libXtst x11-apps/xinput x11-libs/qt-gui:4 )
+SLOT=0
+SRC_URI=mirror://sourceforge/italc/italc-1.0.9.tar.bz2
+_eclasses_=autotools	b81740a014934d6736a8795cdedb452e	base	dba02c674ce4dff67657c692954d7ef0	eutils	33ef77a15337022e05342d2c772a7a5a	libtool	76720aa53cbace6123aac554983eadfa	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	qt4	017d97ec9e8be913a79efab521dc7dec	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
+_md5_=94e482aee5abe362a39cf91c717ed048

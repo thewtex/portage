@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst setup unpack
+DEPEND=virtual/fortran >=dev-lang/tcl-8.3 >=dev-lang/tk-8.3 >=dev-tcltk/blt-2.4 virtual/lapack virtual/blas =sci-libs/fftw-2* sci-chemistry/pdb-extract sci-chemistry/rasmol sci-libs/mccp4 app-shells/tcsh !app-office/sc X? ( x11-libs/libX11 x11-libs/libXt x11-libs/libXaw ) X? ( x11-misc/imake x11-proto/inputproto x11-proto/xextproto ) sys-devel/gnuconfig
+DESCRIPTION=Protein X-ray crystallography toolkit
+HOMEPAGE=http://www.ccp4.ac.uk/
+IUSE=X
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=ccp4
+RDEPEND=virtual/fortran >=dev-lang/tcl-8.3 >=dev-lang/tk-8.3 >=dev-tcltk/blt-2.4 virtual/lapack virtual/blas =sci-libs/fftw-2* sci-chemistry/pdb-extract sci-chemistry/rasmol sci-libs/mccp4 app-shells/tcsh !app-office/sc X? ( x11-libs/libX11 x11-libs/libXt x11-libs/libXaw )
+RESTRICT=mirror
+SLOT=0
+SRC_URI=ftp://ftp.ccp4.ac.uk/ccp4/6.0.2/source/ccp4-6.0.2-core-src.tar.gz ftp://ftp.ccp4.ac.uk/ccp4/6.0.2/patches/topp.f-r1.16.2.5-r1.16.2.6.diff ftp://ftp.ccp4.ac.uk/ccp4/6.0.2/patches/configure-r1.372.2.18-r1.372.2.19.diff ftp://ftp.ccp4.ac.uk/ccp4/6.0.2/patches/scala.f-r1.101.2.3-r1.101.2.4.diff ftp://ftp.ccp4.ac.uk/ccp4/6.0.2/patches/util_windows.tcl-r1.27-r1.27.2.1.diff ftp://ftp.ccp4.ac.uk/ccp4/6.0.2/patches/amore.f-r1.115-r1.116.diff ftp://ftp.ccp4.ac.uk/ccp4/6.0.2/patches/crystal.C-r1.5-r1.6.diff ftp://ftp.ccp4.ac.uk/ccp4/6.0.2/patches/mtz2various.f-r1.124.2.3-r1.124.2.4.diff ftp://ftp.ccp4.ac.uk/ccp4/6.0.2/patches/rstats.f-r1.39-r1.40.diff ftp://ftp.ccp4.ac.uk/ccp4/6.0.2/patches/rharvest.fh-r1.13-r1.14.diff ftp://ftp.ccp4.ac.uk/ccp4/6.0.2/patches/amore_utils.tcl-r1.14-r1.15.diff
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	fortran-2	368b82ae80c1184988a9d651e6efcbd0	gnuconfig	9200bfc8e0184357abfb86a08edd4fc3	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=196f3333a9b52240c0fb7379c28e13ff

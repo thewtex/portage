@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst preinst prepare setup
+DEPEND=dev-libs/libpipeline berkdb? ( sys-libs/db ) gdbm? ( sys-libs/gdbm ) !berkdb? ( !gdbm? ( sys-libs/gdbm ) ) || ( sys-apps/groff >=app-doc/heirloom-doctools-080407-r2 ) !sys-apps/man nls? ( sys-devel/gettext )
+DESCRIPTION=a man replacement that utilizes berkdb instead of flat files
+EAPI=2
+HOMEPAGE=http://www.nongnu.org/man-db/
+IUSE=berkdb +gdbm nls
+KEYWORDS=~amd64 ~x86 ~sparc
+LICENSE=GPL-3
+RDEPEND=dev-libs/libpipeline berkdb? ( sys-libs/db ) gdbm? ( sys-libs/gdbm ) !berkdb? ( !gdbm? ( sys-libs/gdbm ) ) || ( sys-apps/groff >=app-doc/heirloom-doctools-080407-r2 ) !sys-apps/man
+SLOT=0
+SRC_URI=http://download.savannah.nongnu.org/releases/man-db/man-db-2.6.0.2.tar.gz
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=fb5e736cf4ec8d84ac89ebbb595aba79

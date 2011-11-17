@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup unpack
+DEPEND=readline? ( sys-libs/readline ) sys-libs/zlib app-arch/bzip2 auth? ( virtual/mysql ) !dedicated? ( nls? ( virtual/libintl ) gtk? ( x11-libs/gtk+:2 ) sdl? ( media-libs/libsdl[video] media-libs/sdl-image[png] media-libs/freetype ) !gtk? ( !sdl? ( x11-libs/gtk+:2 ) ) sound? ( media-libs/libsdl[audio] media-libs/sdl-mixer ) ggz? ( games-board/ggz-gtk-client ) media-libs/libpng ) dev-util/pkgconfig !dedicated? ( nls? ( sys-devel/gettext ) x11-proto/xextproto ) >=sys-apps/sed-4
+DESCRIPTION=multiplayer strategy game (Civilization Clone)
+EAPI=2
+HOMEPAGE=http://www.freeciv.org/
+IUSE=auth dedicated ggz gtk ipv6 nls readline sdl +sound
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
+LICENSE=GPL-2
+RDEPEND=readline? ( sys-libs/readline ) sys-libs/zlib app-arch/bzip2 auth? ( virtual/mysql ) !dedicated? ( nls? ( virtual/libintl ) gtk? ( x11-libs/gtk+:2 ) sdl? ( media-libs/libsdl[video] media-libs/sdl-image[png] media-libs/freetype ) !gtk? ( !sdl? ( x11-libs/gtk+:2 ) ) sound? ( media-libs/libsdl[audio] media-libs/sdl-mixer ) ggz? ( games-board/ggz-gtk-client ) media-libs/libpng )
+SLOT=0
+SRC_URI=mirror://sourceforge/freeciv/freeciv-2.2.7.tar.bz2
+_eclasses_=base	dba02c674ce4dff67657c692954d7ef0	eutils	33ef77a15337022e05342d2c772a7a5a	games	c11e6cb73d545cdf3d36dc4bb7c753e4	games-ggz	aef0f24cdad5837829ce07d9c25bf1d2	gnome2-utils	dfcd797d126b46852d33936f4a0a1702	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=910a14a6eee46ad4565b581dd04ec6dd

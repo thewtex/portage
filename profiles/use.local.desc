@@ -597,17 +597,20 @@ app-misc/recoll:audio - Index audio files
 app-misc/recoll:camelcase - Enable indexing for camelCase sentences and words
 app-misc/recoll:chm - Index chm files
 app-misc/recoll:dvi - Index dvi files
-app-misc/recoll:gs - Index PostScript files
-app-misc/recoll:ics - Index icalendar files
+app-misc/recoll:ics - Index iCalendar files
 app-misc/recoll:info - Index GNU info files
-app-misc/recoll:inotify - Use the Linux Kenrel notification subsystem for monitoring file alterations
+app-misc/recoll:inotify - Use the Linux Kenrel notification subsystem for monitoring file alterations in realtime
 app-misc/recoll:lyx - Index Latex lyx files
 app-misc/recoll:msdoc - Index Microsoft Word documents
-app-misc/recoll:msppt - Index Microsoft Power Point documents
+app-misc/recoll:msppt - Index Microsoft PowerPoint documents
 app-misc/recoll:msxls - Index Microsoft Excel documents
+app-misc/recoll:pdf - Index PDF documents
+app-misc/recoll:ps - Index PostScript files
 app-misc/recoll:rtf - Index Microsoft RTF documents
-app-misc/recoll:tex - Index Tex files
-app-misc/recoll:wordperfect - Index wordperfect documents
+app-misc/recoll:session - Stop monitoring file alterations when X11 session terminates
+app-misc/recoll:tex - Index TeX files
+app-misc/recoll:wordperfect - Index WordPerfect documents
+app-misc/recoll:xml - Index several XML-based formats (Abiword, FictionBook, Kword, Office OpenXML, OpenDocument, SVG)
 app-misc/roadnav:festival - Enable support for app-accessibility/festival
 app-misc/roadnav:flite - Enable support for app-accessibility/flite (festival-lite)
 app-misc/roadnav:openstreetmap - Enable openstreetmap support
@@ -761,6 +764,7 @@ app-shells/scsh-install-lib:scsh - Use a non-FHS directory layout
 app-shells/shish:diet - Use dev-libs/dietlibc
 app-shells/tcsh:catalogs - Add support for NLS catalogs
 app-text/asciidoc:highlight - Enable source code highlighting
+app-text/calibre:udisks - Add run-time dependency on sys-fs/udisks in order to mount and unmount reading devices.
 app-text/cb2bib:poll - use clipboard polling
 app-text/crm114:mew - Add support for using the mewdecode mime decoder (app-emacs/mew)
 app-text/crm114:mimencode - Add support for using the mimencode mime (net-mail/metamail)
@@ -1505,6 +1509,7 @@ dev-tex/latex-beamer:lyx - Install with app-office/lyx layouts
 dev-util/anjuta:devhelp - Enable devhelp integration
 dev-util/anjuta:glade - Build glade plugin for anjuta
 dev-util/anjuta:introspection - Use dev-libs/gobject-introspection for introspection
+dev-util/anjuta:packagekit - Use packagekit to search for missing tools
 dev-util/anjuta:sourceview - Build sourceview editing plugin for anjuta
 dev-util/anjuta:vala - Enable support for the Vala programming language
 dev-util/astyle:libs - builds and installs both shared and static library interfaces
@@ -2054,6 +2059,7 @@ mail-client/thunderbird:lightning - Enable calendar support
 mail-client/thunderbird:mozdom - Enable Mozilla's DOM inspector
 mail-client/thunderbird:system-sqlite - Use the system-wide dev-db/sqlite installation with secure-delete enabled
 mail-client/thunderbird:webm - Use system media-libs/libvpx for HTML5 WebM video support.
+mail-client/thunderbird-bin:crashreporter - Enable crash reporter for bugs
 mail-filter/amavisd-new:courier - Add courier support
 mail-filter/amavisd-new:dkim - Add DomainKeys Identified Mail support
 mail-filter/amavisd-new:qmail - Add qmail support
@@ -3087,6 +3093,11 @@ net-analyzer/echoping:smtp - enable support for SMTP protocol.
 net-analyzer/echoping:tos - enable support for TOS (TYpe Of Service).
 net-analyzer/fprobe:messages - enable console messages
 net-analyzer/hydra:ncp - NCP protocol (NetWare) support through net-fs/ncpfs
+net-analyzer/icinga:api - Adds support for the icinga API
+net-analyzer/icinga:idoutils - Adds DB support
+net-analyzer/icinga:lighttpd - Adds Lighttpd support
+net-analyzer/icinga:plugins - Adds support for nagios plugins
+net-analyzer/icinga:web - Adds generic web interface support
 net-analyzer/lilac:nmap - Installs nmap which can be used to automatically discover devices to monitor.
 net-analyzer/linkchecker:bookmarks - Mozilla Bookmark parsing
 net-analyzer/linkchecker:login - login form submission
@@ -4748,8 +4759,11 @@ sys-kernel/zen-sources:minimal - Clone git tree with --depth 1 to reduce amount 
 sys-kernel/zen-sources:tuxonice - Apply TuxOnIce kernel patches advanced hibernation support
 sys-libs/gdbm:berkdb - enable compatibility layer for UNIX-like dbm and ndbm interfaces
 sys-libs/gdbm:exporter - enable gdbmexport binary for exporting data from gdbm-1.8 databases into gdbm-1.9
-sys-libs/glibc:glibc-omitfp - Configure glibc with --enable-omitfp which lets the build system determine when it is safe to use -fomit-frame-pointer
+sys-libs/glibc:glibc-omitfp - Configure with --enable-omitfp which lets the build system determine when it is safe to use -fomit-frame-pointer
+sys-libs/glibc:linuxthreads - Build linuxthreads support (only for kernels older than linux-2.6)
 sys-libs/gwenhywfar:fox - Use x11-libs/fox graphical toolkit
+sys-libs/libosinfo:introspection - Use dev-libs/gobject-introspection for introspection
+sys-libs/libosinfo:vala - Enable bindings for dev-lang/vala
 sys-libs/ncurses:ada - Add bindings for the ADA programming language
 sys-libs/ncurses:trace - Enable test trace() support in ncurses calls
 sys-libs/pam:audit - Enable support for sys-process/audit

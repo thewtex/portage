@@ -1,0 +1,14 @@
+DEFINED_PHASES=install nofetch postinst prepare setup unpack
+DEPEND=dev-util/patchelf
+DESCRIPTION=A 3D interface to the planet
+EAPI=2
+HOMEPAGE=http://earth.google.com/
+IUSE=mdns-bundled +qt-bundled
+KEYWORDS=~amd64 ~x86
+LICENSE=googleearth GPL-2
+RDEPEND=>=sys-devel/gcc-4.2[-nocxx] x86? ( media-libs/fontconfig media-libs/freetype virtual/opengl x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXi x11-libs/libXext x11-libs/libXrender x11-libs/libXau x11-libs/libXdmcp sys-libs/zlib dev-libs/glib:2 !qt-bundled? ( >=x11-libs/qt-core-4.5.3 >=x11-libs/qt-gui-4.5.3 >=x11-libs/qt-webkit-4.5.3 ) net-misc/curl sci-libs/gdal !mdns-bundled? ( sys-auth/nss-mdns ) ) amd64? ( >=app-emulation/emul-linux-x86-xlibs-20081109 >=app-emulation/emul-linux-x86-baselibs-20081109 app-emulation/emul-linux-x86-opengl !qt-bundled? ( >=app-emulation/emul-linux-x86-qtlibs-20091231-r1 ) ) virtual/ttf-fonts >=sys-libs/glibc-2.12
+RESTRICT=mirror strip
+SLOT=0
+SRC_URI=http://dl.google.com/earth/client/current/GoogleEarthLinux.bin -> GoogleEarthLinux-6.0.3.2197.bin
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
+_md5_=367dc32d4c5daeb9061255c7f65af800

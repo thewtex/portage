@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare unpack
+DEPEND=dev-lang/jimtcl usb? ( dev-libs/libusb ) presto? ( dev-embedded/libftd2xx ) ftd2xx? ( dev-embedded/libftd2xx ) ftdi? ( dev-embedded/libftdi ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool dev-vcs/git
+DESCRIPTION=OpenOCD - Open On-Chip Debugger
+EAPI=4
+HOMEPAGE=http://openocd.sourceforge.net
+IUSE=blaster dummy ftd2xx ftdi minidriver parport presto segger usb versaloon
+LICENSE=GPL-2
+RDEPEND=dev-lang/jimtcl usb? ( dev-libs/libusb ) presto? ( dev-embedded/libftd2xx ) ftd2xx? ( dev-embedded/libftd2xx ) ftdi? ( dev-embedded/libftdi )
+REQUIRED_USE=blaster? ( || ( ftdi ftd2xx ) ) ftdi? ( !ftd2xx )
+RESTRICT=strip
+SLOT=0
+_eclasses_=autotools	b81740a014934d6736a8795cdedb452e	eutils	33ef77a15337022e05342d2c772a7a5a	git-2	48dc75cccc109d7cda9f8dc3fff7a5b8	libtool	76720aa53cbace6123aac554983eadfa	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=3cd532c0f1b1e8d298eaadcd526698ec

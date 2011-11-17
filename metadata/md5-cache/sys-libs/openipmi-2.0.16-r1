@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst postrm unpack
+DEPEND=dev-libs/glib sys-libs/gdbm crypt? ( dev-libs/openssl ) snmp? ( net-analyzer/net-snmp ) perl? ( dev-lang/perl ) python? ( dev-lang/python ) tcl? ( dev-lang/tcl ) >=dev-lang/swig-1.3.21 dev-util/pkgconfig || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool >=app-admin/eselect-python-20091230
+DESCRIPTION=Library interface to IPMI
+HOMEPAGE=http://sourceforge.net/projects/openipmi/
+IUSE=crypt snmp perl tcl python
+KEYWORDS=~amd64 ~ia64 ~ppc ~x86
+LICENSE=LGPL-2.1 GPL-2
+RDEPEND=dev-libs/glib sys-libs/gdbm crypt? ( dev-libs/openssl ) snmp? ( net-analyzer/net-snmp ) perl? ( dev-lang/perl ) python? ( dev-lang/python ) tcl? ( dev-lang/tcl ) >=app-admin/eselect-python-20091230
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://sourceforge/openipmi/OpenIPMI-2.0.16.tar.gz
+_eclasses_=autotools	b81740a014934d6736a8795cdedb452e	eutils	33ef77a15337022e05342d2c772a7a5a	libtool	76720aa53cbace6123aac554983eadfa	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	python	6bbd984910e27780e5d0ea543d83ef84	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=45fee854fddd680284d66b9230e83519

@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst prepare test unpack
+DEPEND=>=net-libs/libtorrent-0.12.9 >=dev-libs/libsigc++-2.2.2:2 >=net-misc/curl-7.19.1 sys-libs/ncurses xmlrpc? ( dev-libs/xmlrpc-c ) test? ( dev-util/cppunit ) dev-util/pkgconfig || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=BitTorrent Client using libtorrent
+EAPI=4
+HOMEPAGE=http://libtorrent.rakshasa.no/
+IUSE=color daemon debug ipv6 test xmlrpc
+KEYWORDS=~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=>=net-libs/libtorrent-0.12.9 >=dev-libs/libsigc++-2.2.2:2 >=net-misc/curl-7.19.1 sys-libs/ncurses xmlrpc? ( dev-libs/xmlrpc-c ) daemon? ( app-misc/screen )
+RESTRICT=test
+SLOT=0
+SRC_URI=http://libtorrent.rakshasa.no/downloads/rtorrent-0.8.9.tar.gz
+_eclasses_=autotools	b81740a014934d6736a8795cdedb452e	autotools-utils	9799469ea552910620db9dca0bca94b0	base	dba02c674ce4dff67657c692954d7ef0	eutils	33ef77a15337022e05342d2c772a7a5a	libtool	76720aa53cbace6123aac554983eadfa	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=86886018aea96bde33f634504b3e8c69

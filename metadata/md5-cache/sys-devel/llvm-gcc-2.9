@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=sys-devel/llvm-2.9 >=sys-apps/texinfo-4.2-r4 || ( >=sys-devel/binutils-2.18 >=sys-devel/binutils-apple-3.2.3 ) >=sys-devel/bison-1.875 test? ( dev-util/dejagnu sys-devel/autogen ) sys-devel/gnuconfig
+DESCRIPTION=LLVM C front-end
+EAPI=3
+HOMEPAGE=http://llvm.org
+IUSE=bootstrap fortran multilib nls objc objc++ test
+KEYWORDS=~amd64 ~ppc ~x86 ~ppc-macos
+LICENSE=GPL-2
+RDEPEND=>=sys-devel/llvm-2.9
+SLOT=0
+SRC_URI=http://llvm.org/releases/2.9/llvm-gcc-4.2-2.9.source.tgz
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	flag-o-matic	630c256d55702ba23515f64952987828	gnuconfig	9200bfc8e0184357abfb86a08edd4fc3	libtool	76720aa53cbace6123aac554983eadfa	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=bd7bc5d224959704960440ce08cec6f0

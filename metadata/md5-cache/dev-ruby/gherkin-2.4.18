@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare setup test unpack
+DEPEND=dev-util/ragel ruby_targets_ruby18? ( dev-ruby/rake-compiler[ruby_targets_ruby18] test? ( >=dev-ruby/awesome_print-0.4.0[ruby_targets_ruby18] >=dev-ruby/builder-2.1.2[ruby_targets_ruby18] >=dev-util/cucumber-1.0.0[ruby_targets_ruby18] >=dev-ruby/rspec-2.6.0[ruby_targets_ruby18] >=dev-ruby/term-ansicolor-1.0.5[ruby_targets_ruby18] ) doc? ( >=dev-ruby/yard-0.7.2[ruby_targets_ruby18] ) ) ruby_targets_ree18? ( dev-ruby/rake-compiler[ruby_targets_ree18] test? ( >=dev-ruby/awesome_print-0.4.0[ruby_targets_ree18] >=dev-ruby/builder-2.1.2[ruby_targets_ree18] >=dev-util/cucumber-1.0.0[ruby_targets_ree18] >=dev-ruby/rspec-2.6.0[ruby_targets_ree18] >=dev-ruby/term-ansicolor-1.0.5[ruby_targets_ree18] ) doc? ( >=dev-ruby/yard-0.7.2[ruby_targets_ree18] ) ) test? ( ruby_targets_ruby18? ( >=dev-ruby/json-1.4.6[ruby_targets_ruby18] ) ruby_targets_ree18? ( >=dev-ruby/json-1.4.6[ruby_targets_ree18] ) ) ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ree18? ( dev-lang/ruby-enterprise:1.8 ) ruby_targets_ruby18? ( doc? ( dev-ruby/rake[ruby_targets_ruby18] ) ) ruby_targets_ree18? ( doc? ( dev-ruby/rake[ruby_targets_ree18] ) ) ruby_targets_ruby18? ( virtual/rubygems[ruby_targets_ruby18] ) ruby_targets_ree18? ( virtual/rubygems[ruby_targets_ree18] ) test? ( ruby_targets_ruby18? ( virtual/rubygems[ruby_targets_ruby18] ) ruby_targets_ree18? ( virtual/rubygems[ruby_targets_ree18] ) )
+DESCRIPTION=Fast Gherkin lexer and parser based on Ragel.
+EAPI=4
+HOMEPAGE=http://wiki.github.com/aslakhellesoy/cucumber/gherkin
+IUSE=doc test test elibc_FreeBSD ruby_targets_ruby18 ruby_targets_ree18 doc doc test
+KEYWORDS=~amd64
+LICENSE=MIT
+RDEPEND=ruby_targets_ruby18? ( >=dev-ruby/json-1.4.6[ruby_targets_ruby18] ) ruby_targets_ree18? ( >=dev-ruby/json-1.4.6[ruby_targets_ree18] ) ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ree18? ( dev-lang/ruby-enterprise:1.8 ) ruby_targets_ruby18? ( virtual/rubygems[ruby_targets_ruby18] ) ruby_targets_ree18? ( virtual/rubygems[ruby_targets_ree18] )
+REQUIRED_USE=|| ( ruby_targets_ruby18 ruby_targets_ree18 )
+SLOT=0
+SRC_URI=https://github.com/cucumber/gherkin/tarball/v2.4.18 -> gherkin-2.4.18.tgz
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	java-utils-2	03ab8cac2b9deec34f79c505eb42a99d	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	ruby-fakegem	7c47bb49102ac90cbf2f8e0fefbaed6d	ruby-ng	9306a3d60da89e858115fafece052b0d	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
+_md5_=bb1beccaee80c70e51a076476181ebac

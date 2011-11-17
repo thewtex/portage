@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst prepare test unpack
+DEPEND==sci-libs/votca-tools-1.2.1[system-boost=] gromacs? ( sci-chemistry/gromacs ) dev-lang/perl app-shells/bash doc? ( app-doc/doxygen[-nodot] ) >=app-text/txt2tags-2.5 dev-util/pkgconfig >=dev-util/cmake-2.8.4 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=Votca coarse-graining engine
+EAPI=4
+HOMEPAGE=http://www.votca.org
+IUSE=doc examples extras +gromacs +system-boost
+KEYWORDS=~x86 ~amd64
+LICENSE=Apache-2.0
+PDEPEND=extras? ( =sci-chemistry/votca-csgapps-1.2.1 )
+RDEPEND==sci-libs/votca-tools-1.2.1[system-boost=] gromacs? ( sci-chemistry/gromacs ) dev-lang/perl app-shells/bash
+RESTRICT=primaryuri
+SLOT=0
+SRC_URI=http://votca.googlecode.com/files/votca-csg-1.2.1.tar.gz doc? ( http://votca.googlecode.com/files/votca-manual-1.2.1.pdf ) examples? ( http://votca.googlecode.com/files/votca-tutorials-1.2.1.tar.gz )
+_eclasses_=base	dba02c674ce4dff67657c692954d7ef0	bash-completion-r1	3480f8385cb9e31797e7b659e366e2d2	cmake-utils	00f9fd5a80cf3605f6d9a2e808c48a92	eutils	33ef77a15337022e05342d2c772a7a5a	flag-o-matic	630c256d55702ba23515f64952987828	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=5e372d71026d16444a048a8a4d0e69c3

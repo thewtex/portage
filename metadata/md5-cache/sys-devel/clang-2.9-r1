@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare test
+DEPEND=static-analyzer? ( dev-lang/perl ) >=app-admin/eselect-python-20091230
+DESCRIPTION=C language family frontend for LLVM
+EAPI=3
+HOMEPAGE=http://clang.llvm.org/
+IUSE=debug multitarget +static-analyzer +system-cxx-headers test
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos
+LICENSE=UoI-NCSA
+RDEPEND=~sys-devel/llvm-2.9[multitarget=] >=app-admin/eselect-python-20091230
+SLOT=0
+SRC_URI=http://llvm.org/releases/2.9/llvm-2.9.tgz http://llvm.org/releases/2.9/clang-2.9.tgz
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	python	6bbd984910e27780e5d0ea543d83ef84	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=cc128124bb2f6c9a86585603a2876817

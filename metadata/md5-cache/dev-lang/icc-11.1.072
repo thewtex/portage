@@ -1,0 +1,14 @@
+DEFINED_PHASES=install postinst prepare setup unpack
+DEPEND=>=app-arch/rpm2targz-9.0.0.3g
+DESCRIPTION=Intel compiler suite for Linux
+EAPI=3
+HOMEPAGE=http://www.intel.com/software/products/compilers/clin/
+IUSE=eclipse +idb ipp mkl
+KEYWORDS=~amd64 ~ia64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=Intel-SDP
+RDEPEND=~virtual/libstdc++-3.3 amd64? ( app-emulation/emul-linux-x86-compat ) eclipse? ( >=dev-util/eclipse-sdk-3.4 )
+RESTRICT=mirror strip
+SLOT=0
+SRC_URI=amd64? ( http://registrationcenter-download.intel.com/irc_nas/1768/l_cproc_p_11.1.072_intel64.tgz ) ia64? ( http://registrationcenter-download.intel.com/irc_nas/1768/l_cproc_p_11.1.072_ia64.tgz ) x86? ( http://registrationcenter-download.intel.com/irc_nas/1768/l_cproc_p_11.1.072_ia32.tgz )
+_eclasses_=check-reqs	e25439e7f4ca914e41d6bb617caa564d	eutils	33ef77a15337022e05342d2c772a7a5a	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	rpm	cf613c863528cb4e8d2b6af469a6a71d	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
+_md5_=dc5ba1263483cfca348adcc9e2fb7210

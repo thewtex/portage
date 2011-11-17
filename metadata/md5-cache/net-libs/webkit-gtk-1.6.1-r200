@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-libs/libxml2:2 dev-libs/libxslt virtual/jpeg >=media-libs/libpng-1.4:0 >=x11-libs/cairo-1.10 >=dev-libs/glib-2.27.90:2 >=x11-libs/gtk+-2.13:2[aqua=,introspection?] >=dev-libs/icu-3.8.1-r1 >=net-libs/libsoup-2.33.6:2.4[introspection?] dev-db/sqlite:3 >=x11-libs/pango-1.12 x11-libs/libXrender gstreamer? ( media-libs/gstreamer:0.10 >=media-libs/gst-plugins-base-0.10.30:0.10 ) introspection? ( >=dev-libs/gobject-introspection-0.9.5 ) spell? ( >=app-text/enchant-0.22 ) webgl? ( virtual/opengl ) >=sys-devel/flex-2.5.33 sys-devel/gettext virtual/yacc dev-util/gperf dev-util/pkgconfig dev-util/gtk-doc-am test? ( x11-themes/hicolor-icon-theme ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
+DESCRIPTION=Open source web browser engine
+EAPI=4
+HOMEPAGE=http://www.webkitgtk.org/
+IUSE=aqua coverage debug +gstreamer +introspection +jit spell webgl test
+KEYWORDS=~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~ia64-linux ~x86-linux ~x86-macos
+LICENSE=LGPL-2 LGPL-2.1 BSD
+RDEPEND=dev-libs/libxml2:2 dev-libs/libxslt virtual/jpeg >=media-libs/libpng-1.4:0 >=x11-libs/cairo-1.10 >=dev-libs/glib-2.27.90:2 >=x11-libs/gtk+-2.13:2[aqua=,introspection?] >=dev-libs/icu-3.8.1-r1 >=net-libs/libsoup-2.33.6:2.4[introspection?] dev-db/sqlite:3 >=x11-libs/pango-1.12 x11-libs/libXrender gstreamer? ( media-libs/gstreamer:0.10 >=media-libs/gst-plugins-base-0.10.30:0.10 ) introspection? ( >=dev-libs/gobject-introspection-0.9.5 ) spell? ( >=app-text/enchant-0.22 ) webgl? ( virtual/opengl )
+REQUIRED_USE=introspection? ( gstreamer )
+SLOT=2
+SRC_URI=mirror://gentoo/webkit-gtk-1.6.1.tar.xz
+_eclasses_=autotools	b81740a014934d6736a8795cdedb452e	eutils	33ef77a15337022e05342d2c772a7a5a	flag-o-matic	630c256d55702ba23515f64952987828	libtool	76720aa53cbace6123aac554983eadfa	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	virtualx	0c41ff55e46b959d9457dde69e7a09d9
+_md5_=31491287080a18bdf7caf1bd1c775c80

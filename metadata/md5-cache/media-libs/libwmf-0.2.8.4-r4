@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=app-text/ghostscript-gpl media-fonts/urw-fonts >=media-libs/freetype-2.0.1 >=media-libs/libpng-1.4 sys-libs/zlib x11-libs/gdk-pixbuf:2[X?] virtual/jpeg xml? ( expat? ( dev-libs/expat ) !expat? ( dev-libs/libxml2 ) ) X? ( x11-libs/libICE x11-libs/libSM x11-libs/libX11 ) dev-util/pkgconfig X? ( x11-libs/libXt x11-libs/libXpm ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=library for converting WMF files
+EAPI=4
+HOMEPAGE=http://wvware.sourceforge.net/
+IUSE=X debug doc expat xml
+KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x64-solaris
+LICENSE=GPL-2
+RDEPEND=app-text/ghostscript-gpl media-fonts/urw-fonts >=media-libs/freetype-2.0.1 >=media-libs/libpng-1.4 sys-libs/zlib x11-libs/gdk-pixbuf:2[X?] virtual/jpeg xml? ( expat? ( dev-libs/expat ) !expat? ( dev-libs/libxml2 ) ) X? ( x11-libs/libICE x11-libs/libSM x11-libs/libX11 )
+REQUIRED_USE=expat? ( xml )
+SLOT=0
+SRC_URI=mirror://sourceforge/wvware/libwmf-0.2.8.4.tar.gz
+_eclasses_=autotools	b81740a014934d6736a8795cdedb452e	eutils	33ef77a15337022e05342d2c772a7a5a	libtool	76720aa53cbace6123aac554983eadfa	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=13ab2b4e0149b9cf32a92291785d093e

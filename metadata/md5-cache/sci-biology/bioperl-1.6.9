@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=virtual/perl-Module-Build dev-perl/libwww-perl !minimal? ( dev-perl/Algorithm-Munkres dev-perl/Array-Compare dev-perl/yaml dev-perl/Clone dev-perl/Convert-Binary-C dev-perl/GD dev-perl/Graph >=dev-perl/HTML-Parser-3.60 dev-perl/List-MoreUtils dev-perl/Math-Random dev-perl/PostScript dev-perl/set-scalar dev-perl/SOAP-Lite dev-perl/Sort-Naturally dev-perl/Spreadsheet-ParseExcel >=perl-core/Storable-2.05 >=dev-perl/SVG-2.26 >=dev-perl/SVG-Graph-0.01 dev-perl/URI >=dev-perl/XML-DOM-XPath-0.13 dev-perl/XML-Parser >=dev-perl/XML-SAX-0.15 dev-perl/XML-Simple dev-perl/XML-Twig >=dev-perl/XML-Writer-0.4 dev-perl/XML-DOM dev-perl/XML-XPath ) graphviz? ( dev-perl/GraphViz ) sqlite? ( dev-perl/DBD-SQLite ) dev-lang/perl[-build]
+DESCRIPTION=Perl tools for bioinformatics - Core modules
+EAPI=2
+HOMEPAGE=http://www.bioperl.org/
+IUSE=-minimal graphviz sqlite +db +network +run
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1 GPL-2 GPL-3 )
+PDEPEND=db? ( >=sci-biology/bioperl-db-1.6.9 ) network? ( >=sci-biology/bioperl-network-1.6.9 ) run? ( >=sci-biology/bioperl-run-1.6.9 )
+RDEPEND=dev-perl/libwww-perl !minimal? ( dev-perl/Algorithm-Munkres dev-perl/Array-Compare dev-perl/yaml dev-perl/Clone dev-perl/Convert-Binary-C dev-perl/GD dev-perl/Graph >=dev-perl/HTML-Parser-3.60 dev-perl/List-MoreUtils dev-perl/Math-Random dev-perl/PostScript dev-perl/set-scalar dev-perl/SOAP-Lite dev-perl/Sort-Naturally dev-perl/Spreadsheet-ParseExcel >=perl-core/Storable-2.05 >=dev-perl/SVG-2.26 >=dev-perl/SVG-Graph-0.01 dev-perl/URI >=dev-perl/XML-DOM-XPath-0.13 dev-perl/XML-Parser >=dev-perl/XML-SAX-0.15 dev-perl/XML-Simple dev-perl/XML-Twig >=dev-perl/XML-Writer-0.4 dev-perl/XML-DOM dev-perl/XML-XPath ) graphviz? ( dev-perl/GraphViz ) sqlite? ( dev-perl/DBD-SQLite ) dev-lang/perl[-build]
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/C/CJ/CJFIELDS/BioPerl-1.6.901.tar.gz
+_eclasses_=base	dba02c674ce4dff67657c692954d7ef0	eutils	33ef77a15337022e05342d2c772a7a5a	multilib	c4883399ddd3e1d2bd291607b30fded4	perl-module	01501a30505074cd0012cabbf5d99447	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=48635895dadcdf8356f056c955df453d

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst prepare setup test unpack
+DEPEND=dev-libs/expat media-libs/tiff sci-libs/libgeotiff sys-libs/zlib curl? ( net-misc/curl ) jpeg? ( virtual/jpeg ) gif? ( media-libs/giflib ) png? ( media-libs/libpng ) perl? ( dev-lang/perl ) python? ( dev-python/numpy ) ruby? ( >=dev-lang/ruby-1.8.4.20060226 ) fits? ( sci-libs/cfitsio ) ogdi? ( sci-libs/ogdi ) gml? ( >=dev-libs/xerces-c-3 ) hdf5? ( >=sci-libs/hdf5-1.6.4 ) postgres? ( dev-db/postgresql-base ) || ( netcdf? ( sci-libs/netcdf ) hdf? ( sci-libs/hdf ) ) || ( jpeg2k? ( media-libs/jasper ) ecwj2k? ( sci-libs/libecwj2 ) ) mysql? ( virtual/mysql ) odbc? ( dev-db/unixODBC ) geos? ( >=sci-libs/geos-2.2.1 ) sqlite? ( >=dev-db/sqlite-3 ) perl? ( >=dev-lang/swig-1.3.32 ) python? ( >=dev-lang/swig-1.3.32 ) ruby? ( >=dev-lang/swig-1.3.32 ) doc? ( app-doc/doxygen ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool dev-lang/perl[-build] >=app-admin/eselect-python-20091230 python? ( =dev-lang/python-2* )
+DESCRIPTION=Translator library for raster geospatial data formats (includes OGR support)
+EAPI=3
+HOMEPAGE=http://www.gdal.org/
+IUSE=curl debug doc ecwj2k fits geos gif gml hdf hdf5 jpeg jpeg2k mysql netcdf odbc png ogdi perl postgres python ruby sqlite threads
+KEYWORDS=amd64 ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
+LICENSE=MIT
+RDEPEND=dev-libs/expat media-libs/tiff sci-libs/libgeotiff sys-libs/zlib curl? ( net-misc/curl ) jpeg? ( virtual/jpeg ) gif? ( media-libs/giflib ) png? ( media-libs/libpng ) perl? ( dev-lang/perl ) python? ( dev-python/numpy ) ruby? ( >=dev-lang/ruby-1.8.4.20060226 ) fits? ( sci-libs/cfitsio ) ogdi? ( sci-libs/ogdi ) gml? ( >=dev-libs/xerces-c-3 ) hdf5? ( >=sci-libs/hdf5-1.6.4 ) postgres? ( dev-db/postgresql-base ) || ( netcdf? ( sci-libs/netcdf ) hdf? ( sci-libs/hdf ) ) || ( jpeg2k? ( media-libs/jasper ) ecwj2k? ( sci-libs/libecwj2 ) ) mysql? ( virtual/mysql ) odbc? ( dev-db/unixODBC ) geos? ( >=sci-libs/geos-2.2.1 ) sqlite? ( >=dev-db/sqlite-3 ) dev-lang/perl[-build] >=app-admin/eselect-python-20091230 python? ( =dev-lang/python-2* )
+SLOT=0
+SRC_URI=http://download.osgeo.org/gdal/gdal-1.6.3.tar.gz
+_eclasses_=autotools	b81740a014934d6736a8795cdedb452e	base	dba02c674ce4dff67657c692954d7ef0	eutils	33ef77a15337022e05342d2c772a7a5a	libtool	76720aa53cbace6123aac554983eadfa	multilib	c4883399ddd3e1d2bd291607b30fded4	perl-module	01501a30505074cd0012cabbf5d99447	portability	1d9665386ff87b70cba7f591ba27723f	python	6bbd984910e27780e5d0ea543d83ef84	ruby	d0d4dafe867eb79ce8953e27d88fc00f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=e423a94ae996602fd13bc26f5e5713e0

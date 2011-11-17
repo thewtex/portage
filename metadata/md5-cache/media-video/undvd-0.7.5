@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DESCRIPTION=Simple dvd ripping command line app
+EAPI=2
+HOMEPAGE=http://sourceforge.net/projects/undvd/
+IUSE=css ffmpeg matroska ogm xvid
+KEYWORDS=amd64 x86
+LICENSE=GPL-3
+RDEPEND=sys-apps/coreutils >=dev-lang/perl-5.8.8 media-video/lsdvd media-video/mplayer[encode,dvd,mp3,x264,xvid?] css? ( media-libs/libdvdcss media-video/vobcopy ) ffmpeg? ( virtual/ffmpeg ) matroska? ( media-video/mkvtoolnix ) ogm? ( media-sound/ogmtools )
+SLOT=0
+SRC_URI=http://downloads.sourceforge.net/undvd/undvd-0.7.5.tar.gz
+_md5_=bb10c55fbfbed3dd208ecd61c51b79e3

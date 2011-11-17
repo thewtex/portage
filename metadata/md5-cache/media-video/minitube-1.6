@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare unpack
+DEPEND=x11-libs/qt-gui:4[accessibility] x11-libs/qt-dbus:4 kde? ( || ( media-libs/phonon[gstreamer?] x11-libs/qt-phonon:4 ) ) !kde? ( || ( x11-libs/qt-phonon media-libs/phonon[gstreamer?] ) ) gstreamer? ( media-plugins/gst-plugins-soup media-plugins/gst-plugins-ffmpeg media-plugins/gst-plugins-faac media-plugins/gst-plugins-faad )
+DESCRIPTION=Qt4 YouTube Client
+EAPI=4
+HOMEPAGE=http://flavio.tordini.org/minitube
+IUSE=debug kde gstreamer linguas_ar linguas_ca linguas_da linguas_es linguas_es_AR linguas_es_ES linguas_el linguas_fr linguas_hr linguas_hu linguas_it linguas_nb linguas_nl linguas_pt linguas_pt_BR linguas_ro linguas_ru linguas_tr linguas_uk linguas_cs linguas_de linguas_el linguas_fi linguas_he linguas_pl
+KEYWORDS=amd64 x86
+LICENSE=GPL-3
+RDEPEND=x11-libs/qt-gui:4[accessibility] x11-libs/qt-dbus:4 kde? ( || ( media-libs/phonon[gstreamer?] x11-libs/qt-phonon:4 ) ) !kde? ( || ( x11-libs/qt-phonon media-libs/phonon[gstreamer?] ) ) gstreamer? ( media-plugins/gst-plugins-soup media-plugins/gst-plugins-ffmpeg media-plugins/gst-plugins-faac media-plugins/gst-plugins-faad )
+SLOT=0
+SRC_URI=http://flavio.tordini.org/files/minitube/minitube-1.6.tar.gz
+_eclasses_=base	dba02c674ce4dff67657c692954d7ef0	eutils	33ef77a15337022e05342d2c772a7a5a	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	qt4-r2	562a0a4214d92cf49cc3e97d1f39d891	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=d0d6cbe6eae2bfffcc5049a1c900b0ed

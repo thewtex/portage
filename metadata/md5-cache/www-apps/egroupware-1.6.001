@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst prerm setup unpack
+DEPEND=|| ( virtual/httpd-cgi virtual/httpd-fastcgi ) virtual/httpd-php >=app-admin/webapp-config-1.50.15
+DESCRIPTION=Web-based GroupWare suite
+HOMEPAGE=http://www.egroupware.org/
+IUSE=jpgraph ldap mssql mysql postgres mydms icalsrv gallery vhosts
+KEYWORDS=~alpha ~amd64 ~hppa ~ppc ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=jpgraph? ( dev-php/jpgraph ) dev-php/PEAR-PEAR virtual/cron virtual/httpd-php >=app-admin/webapp-config-1.50.15
+SLOT=1.6.001
+SRC_URI=mirror://sourceforge/egroupware/eGroupware-1.6.001.tar.bz2 mirror://sourceforge/egroupware/eGroupware-egw-pear-1.6.001.tar.bz2 mydms? ( mirror://sourceforge/egroupware/eGroupware-mydms-1.6.001.tar.bz2 ) icalsrv? ( mirror://sourceforge/egroupware/eGroupware-icalsrv-1.6.001.tar.bz2 ) gallery? ( mirror://sourceforge/egroupware/eGroupware-gallery-1.6.001.tar.bz2 )
+_eclasses_=depend.php	d9282c09e9ff12db4716eb2aa8c4c557	eutils	33ef77a15337022e05342d2c772a7a5a	multilib	c4883399ddd3e1d2bd291607b30fded4	phpconfutils	e108303831029e5b8a9d24b991b1d62a	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	webapp	b79de1dd84dd3022661b31ea1d6685e2
+_md5_=80b4668016533f5370eb29ea328141dd

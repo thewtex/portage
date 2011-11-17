@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst preinst prerm setup unpack
+DEPEND=!dev-lang/ghc-bin >=sys-devel/gcc-2.95.3 >=sys-devel/binutils-2.17 >=dev-lang/perl-5.6.1 >=dev-libs/gmp-4.1 !<dev-haskell/haddock-2.4.2 ghcbootstrap? ( doc? ( ~app-text/docbook-xml-dtd-4.2 app-text/docbook-xsl-stylesheets >=dev-libs/libxslt-1.1.2 ) ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=The Glasgow Haskell Compiler
+HOMEPAGE=http://www.haskell.org/ghc/
+IUSE=binary doc ghcbootstrap bash-completion
+KEYWORDS=alpha amd64 ia64 ppc ppc64 sparc x86 ~x86-fbsd
+LICENSE=BSD
+PDEPEND=!ghcbootstrap? ( =app-admin/haskell-updater-1.1* ) bash-completion? ( app-shells/bash-completion )
+RDEPEND=!dev-lang/ghc-bin >=sys-devel/gcc-2.95.3 >=sys-devel/binutils-2.17 >=dev-lang/perl-5.6.1 >=dev-libs/gmp-4.1 !<dev-haskell/haddock-2.4.2 bash-completion? ( app-admin/eselect )
+SLOT=0
+SRC_URI=!binary? ( http://darcs.haskell.org/download/dist/6.12.3/ghc-6.12.3-src.tar.bz2 ) !ghcbootstrap? ( alpha? ( http://code.haskell.org/~slyfox/ghc-alpha/ghc-bin-6.12.3-alpha-haddock.tbz2 ) x86? ( mirror://gentoo/ghc-bin-6.12.3-x86.tbz2 ) amd64? ( mirror://gentoo/ghc-bin-6.12.3-amd64.tbz2 ) ia64? ( http://code.haskell.org/~slyfox/ghc-ia64/ghc-bin-6.12.3-ia64-haddock.tbz2 ) sparc? ( http://code.haskell.org/~slyfox/ghc-sparc/ghc-bin-6.12.3-sparc.tbz2 ) ppc64? ( mirror://gentoo/ghc-bin-6.12.3-ppc64.tbz2 ) ppc? ( mirror://gentoo/ghc-bin-6.12.3-ppc.tbz2 ) x86-fbsd? ( http://code.haskell.org/~slyfox/ghc-x86-fbsd/ghc-bin-6.12.3-x86-fbsd.tbz2 ) )
+_eclasses_=autotools	b81740a014934d6736a8795cdedb452e	base	dba02c674ce4dff67657c692954d7ef0	bash-completion	003731da0df19d26955927bd534f3058	eutils	33ef77a15337022e05342d2c772a7a5a	flag-o-matic	630c256d55702ba23515f64952987828	ghc-package	6abc9e234617abf2fab72c4f37f15c89	libtool	76720aa53cbace6123aac554983eadfa	multilib	c4883399ddd3e1d2bd291607b30fded4	pax-utils	43c50115ec22f684df1dc43187a60fcc	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
+_md5_=c07897da8d75e78b1582519de00d7787

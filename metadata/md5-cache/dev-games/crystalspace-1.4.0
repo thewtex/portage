@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup
+DEPEND=virtual/opengl media-libs/openal x11-libs/libXt x11-libs/libXxf86vm cg? ( media-gfx/nvidia-cg-toolkit ) ode? ( dev-games/ode ) cal3d? ( >=media-libs/cal3d-0.11 ) jpeg? ( virtual/jpeg ) bullet? ( sci-physics/bullet ) sdl? ( media-libs/libsdl ) vorbis? ( media-libs/libvorbis ) speex? ( media-libs/libogg media-libs/speex ) truetype? ( >=media-libs/freetype-2.1 ) alsa? ( media-libs/alsa-lib ) mng? ( media-libs/libmng ) png? ( media-libs/libpng ) wxwidgets? ( x11-libs/wxGTK:2.8[X,opengl] ) cegui? ( >=dev-games/cegui-0.5.0 ) 3ds? ( media-libs/lib3ds ) java? ( >=virtual/jdk-1.5 dev-java/ant-core ) dev-util/ftjam dev-lang/swig dev-util/pkgconfig java? ( >=dev-java/java-config-2.1.9-r1 ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=Portable 3D Game Development Kit written in C++
+EAPI=2
+HOMEPAGE=http://crystal.sourceforge.net/
+IUSE=3ds alsa bullet cal3d cegui cg doc java jpeg mng ode png sdl speex truetype vorbis wxwidgets elibc_FreeBSD java
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2.1
+RDEPEND=virtual/opengl media-libs/openal x11-libs/libXt x11-libs/libXxf86vm cg? ( media-gfx/nvidia-cg-toolkit ) ode? ( dev-games/ode ) cal3d? ( >=media-libs/cal3d-0.11 ) jpeg? ( virtual/jpeg ) bullet? ( sci-physics/bullet ) sdl? ( media-libs/libsdl ) vorbis? ( media-libs/libvorbis ) speex? ( media-libs/libogg media-libs/speex ) truetype? ( >=media-libs/freetype-2.1 ) alsa? ( media-libs/alsa-lib ) mng? ( media-libs/libmng ) png? ( media-libs/libpng ) wxwidgets? ( x11-libs/wxGTK:2.8[X,opengl] ) cegui? ( >=dev-games/cegui-0.5.0 ) 3ds? ( media-libs/lib3ds ) java? ( >=virtual/jre-1.5 ) java? ( >=dev-java/java-config-2.1.9-r1 )
+SLOT=0
+SRC_URI=mirror://sourceforge/crystal/crystalspace-src-1.4.0.tar.bz2
+_eclasses_=autotools	b81740a014934d6736a8795cdedb452e	eutils	33ef77a15337022e05342d2c772a7a5a	flag-o-matic	630c256d55702ba23515f64952987828	java-pkg-opt-2	31a1663247652448431dcc8c194e2752	java-utils-2	03ab8cac2b9deec34f79c505eb42a99d	libtool	76720aa53cbace6123aac554983eadfa	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc	wxwidgets	9b355ad2394810db50553e45cd663578
+_md5_=fc138035b6d388a1c87a0cd37edb5454

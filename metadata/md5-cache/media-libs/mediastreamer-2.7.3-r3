@@ -1,0 +1,15 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=>=net-libs/ortp-0.16.2[ipv6?] alsa? ( media-libs/alsa-lib ) gsm? ( media-sound/gsm ) jack? ( >=media-libs/libsamplerate-0.0.13 media-sound/jack-audio-connection-kit ) portaudio? ( media-libs/portaudio ) pulseaudio? ( >=media-sound/pulseaudio-0.9.21 ) speex? ( >=media-libs/speex-1.2_beta3 ) video? ( virtual/ffmpeg v4l? ( media-libs/libv4l sys-kernel/linux-headers ) theora? ( media-libs/libtheora ) sdl? ( media-libs/libsdl[video,X] ) X? ( x11-libs/libX11 x11-libs/libXv ) ) dev-util/pkgconfig x11-proto/videoproto || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=Mediastreaming library for telephony application
+EAPI=4
+HOMEPAGE=http://www.linphone.org/
+IUSE=+alsa amr bindist coreaudio debug examples gsm ilbc ipv6 jack oss portaudio pulseaudio sdl +speex static-libs theora v4l video x264 X
+KEYWORDS=amd64 ~ppc ~ppc64 x86 ~x64-macos ~x86-macos
+LICENSE=GPL-2
+PDEPEND=amr? ( !bindist? ( media-plugins/mediastreamer-amr ) ) ilbc? ( media-plugins/mediastreamer-ilbc ) video? ( x264? ( media-plugins/mediastreamer-x264 ) )
+RDEPEND=>=net-libs/ortp-0.16.2[ipv6?] alsa? ( media-libs/alsa-lib ) gsm? ( media-sound/gsm ) jack? ( >=media-libs/libsamplerate-0.0.13 media-sound/jack-audio-connection-kit ) portaudio? ( media-libs/portaudio ) pulseaudio? ( >=media-sound/pulseaudio-0.9.21 ) speex? ( >=media-libs/speex-1.2_beta3 ) video? ( virtual/ffmpeg v4l? ( media-libs/libv4l sys-kernel/linux-headers ) theora? ( media-libs/libtheora ) sdl? ( media-libs/libsdl[video,X] ) X? ( x11-libs/libX11 x11-libs/libXv ) )
+REQUIRED_USE=|| ( oss alsa jack portaudio coreaudio pulseaudio ) video? ( || ( sdl X ) ) theora? ( video ) X? ( video ) v4l? ( video )
+SLOT=0
+SRC_URI=mirror://nongnu/linphone/mediastreamer/mediastreamer-2.7.3.tar.gz
+_eclasses_=autotools	b81740a014934d6736a8795cdedb452e	eutils	33ef77a15337022e05342d2c772a7a5a	libtool	76720aa53cbace6123aac554983eadfa	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=9c4cab14339de395be1261f4f107c85e

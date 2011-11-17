@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst setup
+DEPEND=crypt? ( >=app-crypt/gpgme-1.0.0 ) otr? ( >=net-libs/libotr-3.1.0 ) aspell? ( app-text/aspell ) vim-syntax? ( || ( app-editors/vim app-editors/gvim ) ) idn? ( net-dns/libidn ) spell? ( app-text/enchant ) dev-libs/glib:2 sys-libs/ncurses >=net-libs/loudmouth-1.4.3-r1[ssl?] dev-util/pkgconfig
+DESCRIPTION=A small Jabber console client with various features, like MUC, SSL, PGP
+EAPI=3
+HOMEPAGE=http://mcabber.com/
+IUSE=aspell crypt idn modules otr spell ssl vim-syntax linguas_cs linguas_de linguas_fr linguas_it linguas_nl linguas_pl linguas_ru linguas_uk
+KEYWORDS=~alpha ~amd64 ~mips ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=crypt? ( >=app-crypt/gpgme-1.0.0 ) otr? ( >=net-libs/libotr-3.1.0 ) aspell? ( app-text/aspell ) vim-syntax? ( || ( app-editors/vim app-editors/gvim ) ) idn? ( net-dns/libidn ) spell? ( app-text/enchant ) dev-libs/glib:2 sys-libs/ncurses >=net-libs/loudmouth-1.4.3-r1[ssl?]
+SLOT=0
+SRC_URI=http://mcabber.com/files/mcabber-0.10.1.tar.bz2
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	flag-o-matic	630c256d55702ba23515f64952987828	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=f1e2ddf4e12fe40a4c8af12f4b493d4d

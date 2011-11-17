@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst prepare setup test unpack
+DEPEND=dev-lang/perl dev-perl/Tie-Cache >=mail-filter/spamassassin-3.2.0 dev-lang/perl[-build]
+DESCRIPTION=SpamAssassin plugin for performing Optical Character Recognition (OCR) on attached images
+EAPI=2
+HOMEPAGE=http://fuzzyocr.own-hero.net/
+IUSE=dbm gocr ocrad tesseract mysql logrotate amavis
+KEYWORDS=~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=Apache-2.0
+RDEPEND=dev-lang/perl dev-perl/Tie-Cache >=mail-filter/spamassassin-3.2.0 gocr? ( >=app-text/gocr-0.43 ) ocrad? ( >=app-text/ocrad-0.14 ) tesseract? ( app-text/tesseract ) !gocr? ( !ocrad? ( !tesseract? ( >=app-text/ocrad-0.14 ) ) ) mysql? ( dev-perl/DBD-mysql dev-perl/DBI ) logrotate? ( app-admin/logrotate ) dbm? ( virtual/perl-DB_File dev-perl/MLDBM-Sync virtual/perl-Storable ) media-libs/netpbm[jpeg,png,tiff] media-libs/giflib dev-perl/String-Approx virtual/perl-Time-HiRes media-gfx/gifsicle dev-lang/perl[-build]
+SLOT=0
+SRC_URI=http://users.own-hero.net/~decoder/fuzzyocr/fuzzyocr-3.6.0.tar.gz
+_eclasses_=base	dba02c674ce4dff67657c692954d7ef0	eutils	33ef77a15337022e05342d2c772a7a5a	multilib	c4883399ddd3e1d2bd291607b30fded4	perl-module	01501a30505074cd0012cabbf5d99447	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=9ac5e619c7ecbd9243ee19b9ee2f9421

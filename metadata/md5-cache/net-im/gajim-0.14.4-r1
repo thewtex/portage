@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst postrm prepare setup
+DEPEND=dev-python/pygtk:2 x11-libs/gtk+:2 >=dev-util/intltool-0.40.1 dev-util/pkgconfig >=sys-devel/gettext-0.17-r1 >=app-admin/eselect-python-20091230 =dev-lang/python-2* =dev-lang/python-2*[sqlite,xml]
+DESCRIPTION=Jabber client written in PyGTK
+EAPI=3
+HOMEPAGE=http://www.gajim.org/
+IUSE=avahi crypt dbus gmail gnome idle jingle libnotify networkmanager nls spell srv X xhtml
+KEYWORDS=alpha amd64 hppa ia64 ~ppc ~ppc64 sparc x86 ~x86-fbsd
+LICENSE=GPL-3
+RDEPEND=dev-python/pygtk:2 x11-libs/gtk+:2 dev-python/pyopenssl crypt? ( app-crypt/gnupg dev-python/pycrypto ) dbus? ( dev-python/dbus-python dev-libs/dbus-glib libnotify? ( dev-python/notify-python ) avahi? ( net-dns/avahi[dbus,gtk,python] ) ) gmail? ( net-dns/bind-tools ) gnome? ( dev-python/libgnome-python dev-python/gnome-keyring-python dev-python/egg-python ) idle? ( x11-libs/libXScrnSaver ) jingle? ( net-libs/farsight2[python] ) networkmanager? ( dev-python/dbus-python net-misc/networkmanager ) srv? ( || ( dev-python/libasyncns-python net-dns/bind-tools ) ) spell? ( app-text/gtkspell:2 ) xhtml? ( dev-python/docutils ) >=app-admin/eselect-python-20091230 =dev-lang/python-2* =dev-lang/python-2*[sqlite,xml]
+SLOT=0
+SRC_URI=http://www.gajim.org/downloads/0.14/gajim-0.14.4.tar.bz2
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	python	6bbd984910e27780e5d0ea543d83ef84	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
+_md5_=55e3dc523112ddea1a6c672c29f0c894

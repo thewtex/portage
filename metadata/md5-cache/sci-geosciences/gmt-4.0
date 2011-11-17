@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install postinst unpack
+DEPEND=!sci-biology/probcons >=sci-libs/netcdf-3.5.0 gmtsuppl? ( >=sys-devel/autoconf-2.58 )
+DESCRIPTION=Powerful map generator
+HOMEPAGE=http://gmt.soest.hawaii.edu/
+IUSE=gmtsuppl gmtfull gmthigh gmttria doc
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=!sci-biology/probcons >=sci-libs/netcdf-3.5.0
+SLOT=0
+SRC_URI=mirror://gmt/4/GMT4.0_progs.tar.bz2 mirror://gmt/4/GMT_share.tar.bz2 mirror://gmt/4/GMT4.0_tut.tar.bz2 mirror://gmt/4/GMT4.0_scripts.tar.bz2 mirror://gmt/4/GMT4.0_man.tar.bz2 doc? ( mirror://gmt/4/GMT4.0_pdf.tar.bz2 ) gmtsuppl? ( mirror://gmt/4/GMT4.0_suppl.tar.bz2 ) gmtfull? ( mirror://gmt/4/GMT_full.tar.bz2 ) gmthigh? ( mirror://gmt/4/GMT_high.tar.bz2 ) gmttria? ( mirror://gmt/4/triangle.tar.bz2 )
+_eclasses_=multilib	c4883399ddd3e1d2bd291607b30fded4	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf
+_md5_=e58b7d031320125158fb641b6d2f7a1f

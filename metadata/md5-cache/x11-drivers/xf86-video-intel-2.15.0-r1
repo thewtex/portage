@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare setup test unpack
+DEPEND=x11-libs/libXext x11-libs/libXfixes x11-libs/libXvMC >=x11-libs/libdrm-2.4.23[video_cards_intel] >=x11-libs/libxcb-1.5 || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool x86-interix? ( >=sys-devel/libtool-2.2.6a sys-devel/m4 >=x11-misc/util-macros-1.15.0 >=media-fonts/font-util-1.2.0 ) ppc-aix? ( >=sys-devel/libtool-2.2.6a sys-devel/m4 >=x11-misc/util-macros-1.15.0 >=media-fonts/font-util-1.2.0 ) x86-winnt? ( >=sys-devel/libtool-2.2.6a sys-devel/m4 >=x11-misc/util-macros-1.15.0 >=media-fonts/font-util-1.2.0 ) >=dev-util/pkgconfig-0.23 dri? ( x11-proto/xf86driproto x11-proto/glproto x11-proto/dri2proto ) x11-proto/fontsproto x11-proto/randrproto x11-proto/renderproto x11-proto/videoproto x11-proto/xextproto x11-proto/xineramaproto x11-proto/xproto dri? ( x11-base/xorg-server[-minimal] x11-libs/libdrm ) x11-base/xorg-server[xorg] x11-libs/libpciaccess
+DESCRIPTION=X.Org driver for Intel cards
+EAPI=4
+HOMEPAGE=http://xorg.freedesktop.org/
+IUSE=dri
+KEYWORDS=amd64 ia64 x86 -x86-fbsd
+LICENSE=MIT
+RDEPEND=x11-libs/libXext x11-libs/libXfixes x11-libs/libXvMC >=x11-libs/libdrm-2.4.23[video_cards_intel] >=x11-libs/libxcb-1.5 dri? ( x11-base/xorg-server[-minimal] x11-libs/libdrm ) x11-base/xorg-server[xorg] x11-libs/libpciaccess
+SLOT=0
+SRC_URI=http://xorg.freedesktop.org/releases/individual/driver/xf86-video-intel-2.15.0.tar.bz2
+_eclasses_=autotools	b81740a014934d6736a8795cdedb452e	autotools-utils	9799469ea552910620db9dca0bca94b0	base	dba02c674ce4dff67657c692954d7ef0	eutils	33ef77a15337022e05342d2c772a7a5a	flag-o-matic	630c256d55702ba23515f64952987828	libtool	76720aa53cbace6123aac554983eadfa	linux-info	0a300da62c346bbaee5bcf82727f23ac	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc	xorg-2	093ea4dbb66911426bbf98ed86963ed2
+_md5_=177423bb3d444a3d3f72244a9348d29c

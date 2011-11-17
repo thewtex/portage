@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile install postinst postrm preinst setup test unpack
+DEPEND=!build? ( sys-apps/sed >=sys-devel/binutils-2.11.90.0.31 )
+DESCRIPTION=Debian Sources - with optional OpenVZ support
+EAPI=2
+HOMEPAGE=http://www.debian.org
+IUSE=openvz symlink build
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2 freedist
+PDEPEND=!build? ( virtual/dev-manager )
+RDEPEND=!build? ( >=sys-libs/ncurses-5.2 sys-devel/make )
+RESTRICT=binchecks strip
+SLOT=3.0.4
+SRC_URI=http://ftp.bg.debian.org/debian/pool/main/l/linux-2.6/linux-2.6_3.0.0.orig.tar.gz http://ftp.bg.debian.org/debian/pool/main/l/linux-2.6/linux-2.6_3.0.0-4.diff.gz
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	kernel-2	ad76e915289b8318d99f2ef40b07bad8	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
+_md5_=4aa7f758acd716b4dc81885579be5779

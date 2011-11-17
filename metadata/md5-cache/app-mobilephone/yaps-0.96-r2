@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install postinst unpack
+DEPEND=capi? ( net-dialup/capi4k-utils ) slang? ( >=sys-libs/slang-1.4 ) lua? ( dev-lang/lua ) lua? ( dev-util/pkgconfig )
+DESCRIPTION=Yet Another Pager Software (optional with CAPI support)
+HOMEPAGE=ftp://sunsite.unc.edu/pub/Linux/apps/serialcomm/machines/
+IUSE=capi lua slang unicode
+KEYWORDS=~amd64 ~ppc x86
+LICENSE=GPL-2
+RDEPEND=capi? ( net-dialup/capi4k-utils ) slang? ( >=sys-libs/slang-1.4 ) lua? ( dev-lang/lua )
+SLOT=0
+SRC_URI=capi? ( ftp://ftp.melware.net/capi4yaps/yaps-0.96.c3.tgz ) !capi? ( ftp://sunsite.unc.edu/pub/Linux/apps/serialcomm/machines/yaps-0.96.tar.gz )
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=ba51b97ee974ddaf61b67cf4266026da

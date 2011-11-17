@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DEPEND=>=net-misc/curl-7.15.0 sys-libs/ncurses net-dns/c-ares sdl? ( virtual/opengl virtual/glu media-libs/libsdl[audio,joystick,video] media-libs/glew x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXau x11-libs/libXdmcp x11-libs/libXext x11-libs/libXi x11-libs/libXmu x11-libs/libXt x11-libs/libXxf86vm ) !sdl? ( !dedicated? ( virtual/opengl virtual/glu media-libs/libsdl[audio,joystick,video] media-libs/glew x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXau x11-libs/libXdmcp x11-libs/libXext x11-libs/libXi x11-libs/libXmu x11-libs/libXt x11-libs/libXxf86vm ) )
+DESCRIPTION=3D tank combat simulator game
+EAPI=2
+HOMEPAGE=http://www.bzflag.org/
+IUSE=dedicated sdl
+KEYWORDS=amd64 ~ppc x86
+LICENSE=LGPL-2.1
+RDEPEND=>=net-misc/curl-7.15.0 sys-libs/ncurses net-dns/c-ares sdl? ( virtual/opengl virtual/glu media-libs/libsdl[audio,joystick,video] media-libs/glew x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXau x11-libs/libXdmcp x11-libs/libXext x11-libs/libXi x11-libs/libXmu x11-libs/libXt x11-libs/libXxf86vm ) !sdl? ( !dedicated? ( virtual/opengl virtual/glu media-libs/libsdl[audio,joystick,video] media-libs/glew x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXau x11-libs/libXdmcp x11-libs/libXext x11-libs/libXi x11-libs/libXmu x11-libs/libXt x11-libs/libXxf86vm ) )
+SLOT=0
+SRC_URI=mirror://sourceforge/bzflag/bzflag-2.4.0.tar.bz2
+_eclasses_=base	dba02c674ce4dff67657c692954d7ef0	eutils	33ef77a15337022e05342d2c772a7a5a	flag-o-matic	630c256d55702ba23515f64952987828	games	c11e6cb73d545cdf3d36dc4bb7c753e4	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=e71afa587d9b762838eb026e497097fd

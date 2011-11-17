@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst prepare setup test
+DEPEND=icu? ( >=dev-libs/icu-3.3 ) mpi? ( || ( sys-cluster/openmpi[cxx] sys-cluster/mpich2[cxx,threads] ) ) sys-libs/zlib python? ( dev-lang/python ) !!<=dev-libs/boost-1.35.0-r2 >=app-admin/eselect-boost-0.3 dev-util/boost-build:1.42 >=app-admin/eselect-python-20091230
+DESCRIPTION=Boost Libraries for C++
+EAPI=2
+HOMEPAGE=http://www.boost.org/
+IUSE=debug doc +eselect icu mpi python static-libs test tools
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd
+LICENSE=Boost-1.0
+RDEPEND=icu? ( >=dev-libs/icu-3.3 ) mpi? ( || ( sys-cluster/openmpi[cxx] sys-cluster/mpich2[cxx,threads] ) ) sys-libs/zlib python? ( dev-lang/python ) !!<=dev-libs/boost-1.35.0-r2 >=app-admin/eselect-boost-0.3 >=app-admin/eselect-python-20091230
+SLOT=1.42
+SRC_URI=mirror://sourceforge/boost/boost_1_42_0.tar.bz2
+_eclasses_=check-reqs	e25439e7f4ca914e41d6bb617caa564d	eutils	33ef77a15337022e05342d2c772a7a5a	flag-o-matic	630c256d55702ba23515f64952987828	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	python	6bbd984910e27780e5d0ea543d83ef84	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
+_md5_=8506154390181526c702bbe40a88bbb1

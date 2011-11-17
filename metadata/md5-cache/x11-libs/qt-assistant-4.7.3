@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare setup test unpack
+DEPEND=~x11-libs/qt-gui-4.7.3[aqua=,debug=,glib=,qt3support=,trace?] ~x11-libs/qt-sql-4.7.3[aqua=,debug=,qt3support=,sqlite] ~x11-libs/qt-webkit-4.7.3[aqua=,debug=] ~x11-libs/qt-declarative-4.7.3[debug=,qt3support=]
+DESCRIPTION=The assistant help module for the Qt toolkit
+EAPI=3
+HOMEPAGE=http://qt.nokia.com/
+IUSE=compat doc +glib qt3support trace +exceptions debug pch aqua
+KEYWORDS=~amd64 ~arm ~ia64 ~ppc ~ppc64 ~x86 ~ppc-macos
+LICENSE=|| ( LGPL-2.1 GPL-3 )
+RDEPEND=~x11-libs/qt-gui-4.7.3[aqua=,debug=,glib=,qt3support=,trace?] ~x11-libs/qt-sql-4.7.3[aqua=,debug=,qt3support=,sqlite] ~x11-libs/qt-webkit-4.7.3[aqua=,debug=] ~x11-libs/qt-declarative-4.7.3[debug=,qt3support=] !<x11-libs/qt-assistant-4.7.3 !>x11-libs/qt-assistant-4.7.3-r9999 !<x11-libs/qt-core-4.7.3 !>x11-libs/qt-core-4.7.3-r9999 !<x11-libs/qt-dbus-4.7.3 !>x11-libs/qt-dbus-4.7.3-r9999 !<x11-libs/qt-demo-4.7.3 !>x11-libs/qt-demo-4.7.3-r9999 !<x11-libs/qt-gui-4.7.3 !>x11-libs/qt-gui-4.7.3-r9999 !<x11-libs/qt-multimedia-4.7.3 !>x11-libs/qt-multimedia-4.7.3-r9999 !<x11-libs/qt-opengl-4.7.3 !>x11-libs/qt-opengl-4.7.3-r9999 !<x11-libs/qt-phonon-4.7.3 !>x11-libs/qt-phonon-4.7.3-r9999 !<x11-libs/qt-qt3support-4.7.3 !>x11-libs/qt-qt3support-4.7.3-r9999 !<x11-libs/qt-script-4.7.3 !>x11-libs/qt-script-4.7.3-r9999 !<x11-libs/qt-sql-4.7.3 !>x11-libs/qt-sql-4.7.3-r9999 !<x11-libs/qt-svg-4.7.3 !>x11-libs/qt-svg-4.7.3-r9999 !<x11-libs/qt-test-4.7.3 !>x11-libs/qt-test-4.7.3-r9999 !<x11-libs/qt-webkit-4.7.3 !>x11-libs/qt-webkit-4.7.3-r9999 !<x11-libs/qt-xmlpatterns-4.7.3 !>x11-libs/qt-xmlpatterns-4.7.3-r9999
+SLOT=4
+SRC_URI=http://get.qt.nokia.com/qt/source/qt-everywhere-opensource-src-4.7.3.tar.gz compat? ( ftp://ftp.qt.nokia.com/qt/source/qt-assistant-qassistantclient-library-compat-src-4.6.3.tar.gz )
+_eclasses_=base	dba02c674ce4dff67657c692954d7ef0	eutils	33ef77a15337022e05342d2c772a7a5a	flag-o-matic	630c256d55702ba23515f64952987828	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	qt4-build	91bb42cbd3b06cdcb4d516a0fb674e5e	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
+_md5_=04fad348142b3ea60f80388e28c271d3

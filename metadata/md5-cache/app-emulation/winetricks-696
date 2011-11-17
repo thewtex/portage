@@ -1,0 +1,11 @@
+DEFINED_PHASES=install unpack
+DESCRIPTION=easy way to install DLLs needed to work around problems in Wine
+EAPI=4
+HOMEPAGE=http://code.google.com/p/winetricks/ http://wiki.winehq.org/winetricks
+IUSE=gtk kde
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2.1
+RDEPEND=app-emulation/wine gtk? ( gnome-extra/zenity ) kde? ( kde-base/kdialog )
+SLOT=0
+SRC_URI=http://winetricks.googlecode.com/svn-history/r696/trunk/src/winetricks -> winetricks-696 http://winetricks.googlecode.com/svn-history/r696/trunk/src/winetricks.1 -> winetricks-696.1
+_md5_=88bc16c28d8c0bdfe33ce7d939a1d6a4

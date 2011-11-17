@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst prepare prerm setup
+DEPEND=>=app-admin/webapp-config-1.50.15
+DESCRIPTION=PhpWiki is a WikiWikiWeb clone in PHP
+EAPI=4
+HOMEPAGE=http://phpwiki.sourceforge.net/
+IUSE=mysql postgres vhosts
+KEYWORDS=~amd64 ~ppc ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=virtual/httpd-cgi dev-lang/php[mysql?,postgres?] || ( <dev-lang/php-5.3[pcre] >=dev-lang/php-5.3 ) || ( dev-lang/php[cgi] dev-lang/php[apache2] ) >=app-admin/webapp-config-1.50.15
+SLOT=1.4.0_rc1
+SRC_URI=mirror://sourceforge/phpwiki/phpwiki-1.4.0rc1.tar.bz2
+_eclasses_=webapp	b79de1dd84dd3022661b31ea1d6685e2
+_md5_=43502645dccd3cd0facea3fcafdabc19

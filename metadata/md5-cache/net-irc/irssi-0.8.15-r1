@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=sys-libs/ncurses >=dev-libs/glib-2.2.1 ssl? ( dev-libs/openssl ) perl? ( dev-lang/perl ) socks5? ( >=net-proxy/dante-1.1.18 ) >=dev-util/pkgconfig-0.9.0 dev-lang/perl[-build]
+DESCRIPTION=A modular textUI IRC client with IPv6 support
+EAPI=3
+HOMEPAGE=http://irssi.org/
+IUSE=ipv6 +perl ssl socks5
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+LICENSE=GPL-2
+RDEPEND=sys-libs/ncurses >=dev-libs/glib-2.2.1 ssl? ( dev-libs/openssl ) perl? ( dev-lang/perl ) socks5? ( >=net-proxy/dante-1.1.18 ) perl? ( !net-im/silc-client ) dev-lang/perl[-build]
+SLOT=0
+SRC_URI=http://irssi.org/files/irssi-0.8.15.tar.bz2
+_eclasses_=base	dba02c674ce4dff67657c692954d7ef0	eutils	33ef77a15337022e05342d2c772a7a5a	libtool	76720aa53cbace6123aac554983eadfa	multilib	c4883399ddd3e1d2bd291607b30fded4	perl-module	01501a30505074cd0012cabbf5d99447	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=ee1e105f80b6def426d224eac515c52d

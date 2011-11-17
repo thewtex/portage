@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure prepare
+DEPEND=gtk? ( x11-libs/gtk+:2 ) alsa? ( media-libs/alsa-lib ) vorbis? ( media-libs/libvorbis ) curl? ( net-misc/curl ) mp3? ( media-libs/libmad ) flac? ( media-libs/flac ) wavpack? ( media-sound/wavpack ) sndfile? ( media-libs/libsndfile ) cdda? ( dev-libs/libcdio media-libs/libcddb ) ffmpeg? ( media-video/ffmpeg ) hotkeys? ( x11-libs/libX11 ) libnotify? ( sys-apps/dbus ) pulseaudio? ( media-sound/pulseaudio ) aac? ( media-libs/faad2 ) midi? ( media-sound/timidity-freepats ) zip? ( sys-libs/zlib ) libsamplerate? ( media-libs/libsamplerate )
+DESCRIPTION=foobar2000-like music player.
+EAPI=4
+HOMEPAGE=http://deadbeef.sourceforge.net/
+IUSE=aac adplug alsa cdda cover curl dts encode ffmpeg flac gme +gtk hotkeys lastfm libnotify libsamplerate m3u mac midi mms mp3 musepack nls null oss pulseaudio shellexec sid sndfile supereq threads tta vorbis vtx wavpack zip
+KEYWORDS=~x86 ~amd64
+LICENSE=GPL-2 ZLIB
+RDEPEND=gtk? ( x11-libs/gtk+:2 ) alsa? ( media-libs/alsa-lib ) vorbis? ( media-libs/libvorbis ) curl? ( net-misc/curl ) mp3? ( media-libs/libmad ) flac? ( media-libs/flac ) wavpack? ( media-sound/wavpack ) sndfile? ( media-libs/libsndfile ) cdda? ( dev-libs/libcdio media-libs/libcddb ) ffmpeg? ( media-video/ffmpeg ) hotkeys? ( x11-libs/libX11 ) libnotify? ( sys-apps/dbus ) pulseaudio? ( media-sound/pulseaudio ) aac? ( media-libs/faad2 ) midi? ( media-sound/timidity-freepats ) zip? ( sys-libs/zlib ) libsamplerate? ( media-libs/libsamplerate )
+REQUIRED_USE=encode? ( gtk ) cover? ( curl ) lastfm? ( curl )
+SLOT=0
+SRC_URI=mirror://sourceforge/deadbeef/deadbeef-0.5.0.tar.bz2
+_eclasses_=fdo-mime	0acfe1a88fd8751a1d5dc671168219fa
+_md5_=48d0658333d922dbf8ff8a80945c2e7a

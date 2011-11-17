@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=dev-libs/glib:2 dev-libs/dbus-glib <dev-libs/libdbusmenu-0.3.50[introspection?] dev-libs/libxml2:2 x11-libs/gtk+:2 dev-python/pygtk:2 dev-dotnet/gtk-sharp dev-dotnet/gtk-sharp-gapi introspection? ( >=dev-libs/gobject-introspection-0.6.3 ) app-text/gnome-doc-utils doc? ( dev-util/gtk-doc ) dev-util/gtk-doc-am dev-util/pkgconfig introspection? ( dev-lang/vala:0.14[vapigen] ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=Library to raise flags on DBus for other components of the desktop to pick up and visualize
+EAPI=2
+HOMEPAGE=https://launchpad.net/libindicate/
+IUSE=doc +introspection
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-3
+RDEPEND=dev-libs/glib:2 dev-libs/dbus-glib <dev-libs/libdbusmenu-0.3.50[introspection?] dev-libs/libxml2:2 x11-libs/gtk+:2 dev-python/pygtk:2 dev-dotnet/gtk-sharp dev-dotnet/gtk-sharp-gapi introspection? ( >=dev-libs/gobject-introspection-0.6.3 )
+RESTRICT=test
+SLOT=0
+SRC_URI=http://launchpad.net/libindicate/0.4/0.4.4/+download/libindicate-0.4.4.tar.gz
+_eclasses_=autotools	b81740a014934d6736a8795cdedb452e	eutils	33ef77a15337022e05342d2c772a7a5a	libtool	76720aa53cbace6123aac554983eadfa	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
+_md5_=f83ba8e5149af67f8eb3b534b294707a

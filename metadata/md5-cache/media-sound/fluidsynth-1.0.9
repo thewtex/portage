@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare setup
+DEPEND=jack? ( media-sound/jack-audio-connection-kit ) ladspa? ( >=media-libs/ladspa-sdk-1.12 >=media-libs/ladspa-cmt-1.15 ) alsa? ( media-libs/alsa-lib lash? ( >=media-sound/lash-0.5 ) ) pulseaudio? ( >=media-sound/pulseaudio-0.9.8 ) portaudio? ( >=media-libs/portaudio-19_pre ) readline? ( sys-libs/readline ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=Fluidsynth is a software real-time synthesizer based on the Soundfont 2 specifications.
+EAPI=2
+HOMEPAGE=http://www.fluidsynth.org/
+IUSE=alsa debug jack ladspa lash oss portaudio pulseaudio readline
+KEYWORDS=alpha amd64 ppc ppc64 sparc x86 ~x86-fbsd
+LICENSE=LGPL-2
+RDEPEND=jack? ( media-sound/jack-audio-connection-kit ) ladspa? ( >=media-libs/ladspa-sdk-1.12 >=media-libs/ladspa-cmt-1.15 ) alsa? ( media-libs/alsa-lib lash? ( >=media-sound/lash-0.5 ) ) pulseaudio? ( >=media-sound/pulseaudio-0.9.8 ) portaudio? ( >=media-libs/portaudio-19_pre ) readline? ( sys-libs/readline )
+SLOT=0
+SRC_URI=http://savannah.nongnu.org/download/fluid/fluidsynth-1.0.9.tar.gz
+_eclasses_=autotools	b81740a014934d6736a8795cdedb452e	eutils	33ef77a15337022e05342d2c772a7a5a	flag-o-matic	630c256d55702ba23515f64952987828	libtool	76720aa53cbace6123aac554983eadfa	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=923ca43e23ed62b78661ee16c3bf32b7

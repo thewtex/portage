@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=alsa? ( media-libs/alsa-lib ) cdda? ( dev-libs/libcdio[-minimal] ) cddb? ( media-libs/libcddb ) flac? ( media-libs/flac ) ffmpeg? ( >=virtual/ffmpeg-0.6.90 ) ifp? ( media-libs/libifp ) jack? ( media-sound/jack-audio-connection-kit ) ladspa? ( media-libs/liblrdf ) lame? ( media-sound/lame ) libsamplerate? ( media-libs/libsamplerate ) lua? ( dev-lang/lua ) mac? ( media-sound/mac ) modplug? ( media-libs/libmodplug ) mp3? ( media-libs/libmad ) musepack? ( >=media-sound/musepack-tools-444 ) pulseaudio? ( media-sound/pulseaudio ) sndfile? ( media-libs/libsndfile ) speex? ( media-libs/speex media-libs/liboggz ) vorbis? ( media-libs/libvorbis ) wavpack? ( media-sound/wavpack ) x11-libs/gtk+:2 dev-libs/libxml2 dev-util/pkgconfig || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=A music player for a wide range of formats designed for gapless playback
+EAPI=4
+HOMEPAGE=http://aqualung.factorial.hu/
+IUSE=alsa cdda cddb debug flac ffmpeg ifp jack ladspa lame libsamplerate lua mac modplug mp3 musepack oss podcast pulseaudio sndfile speex systray vorbis wavpack
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=alsa? ( media-libs/alsa-lib ) cdda? ( dev-libs/libcdio[-minimal] ) cddb? ( media-libs/libcddb ) flac? ( media-libs/flac ) ffmpeg? ( >=virtual/ffmpeg-0.6.90 ) ifp? ( media-libs/libifp ) jack? ( media-sound/jack-audio-connection-kit ) ladspa? ( media-libs/liblrdf ) lame? ( media-sound/lame ) libsamplerate? ( media-libs/libsamplerate ) lua? ( dev-lang/lua ) mac? ( media-sound/mac ) modplug? ( media-libs/libmodplug ) mp3? ( media-libs/libmad ) musepack? ( >=media-sound/musepack-tools-444 ) pulseaudio? ( media-sound/pulseaudio ) sndfile? ( media-libs/libsndfile ) speex? ( media-libs/speex media-libs/liboggz ) vorbis? ( media-libs/libvorbis ) wavpack? ( media-sound/wavpack ) x11-libs/gtk+:2
+SLOT=0
+SRC_URI=mirror://sourceforge/aqualung/aqualung-0.9beta11.tar.gz
+_eclasses_=autotools	b81740a014934d6736a8795cdedb452e	eutils	33ef77a15337022e05342d2c772a7a5a	libtool	76720aa53cbace6123aac554983eadfa	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
+_md5_=faa4b86d71102f21b683097865ef8015

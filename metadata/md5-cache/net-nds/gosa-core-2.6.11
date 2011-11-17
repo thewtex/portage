@@ -1,0 +1,14 @@
+DEFINED_PHASES=install postinst prepare prerm
+DEPEND=dev-lang/php[iconv,imap,ldap,mysql,session,zip] sys-devel/gettext
+DESCRIPTION=LDAP administration frontend for user administration.
+EAPI=3
+HOMEPAGE=https://oss.gonicus.de/labs/gosa/wiki/WikiStart.
+IUSE=mail samba
+KEYWORDS=~amd64
+LICENSE=GPL-3
+PDEPEND=mail? ( ~net-nds/gosa-plugin-mail-2.6.11 ) samba? ( ~net-nds/gosa-plugin-samba-2.6.11 )
+RDEPEND=dev-lang/php[iconv,imap,ldap,mysql,session,zip] sys-devel/gettext virtual/httpd-php dev-perl/Crypt-SmbHash media-gfx/imagemagick
+SLOT=0
+SRC_URI=ftp://oss.gonicus.de/pub/gosa/gosa-core-2.6.11.tar.bz2 http://oss.gonicus.de/pub/gosa/gosa-core-2.6.11.tar.bz2 ftp://oss.gonicus.de/pub/gosa/archive/gosa-core-2.6.11.tar.bz2 http://oss.gonicus.de/pub/gosa/archive/gosa-core-2.6.11.tar.bz2
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=c64dd2431fec0caa6e91f6236f37be42

@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare setup
+DEPEND=xen? ( >=app-emulation/xen-3.0 ) kvm? ( app-emulation/qemu-kvm ) drbd? ( >=sys-cluster/drbd-8.3 ) ipv6? ( net-misc/ndisc6 ) dev-libs/openssl dev-python/paramiko dev-python/pyopenssl dev-python/pyparsing dev-python/pycurl dev-python/pyinotify dev-python/simplejson net-analyzer/arping net-misc/bridge-utils net-misc/curl[ssl] net-misc/openssh net-misc/socat sys-apps/iproute2 sys-fs/lvm2 >=sys-apps/baselayout-2.0
+DESCRIPTION=Ganeti is a virtual server management software tool
+EAPI=2
+HOMEPAGE=http://code.google.com/p/ganeti/
+IUSE=kvm xen drbd +filestorage syslog ipv6
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=xen? ( >=app-emulation/xen-3.0 ) kvm? ( app-emulation/qemu-kvm ) drbd? ( >=sys-cluster/drbd-8.3 ) ipv6? ( net-misc/ndisc6 ) dev-libs/openssl dev-python/paramiko dev-python/pyopenssl dev-python/pyparsing dev-python/pycurl dev-python/pyinotify dev-python/simplejson net-analyzer/arping net-misc/bridge-utils net-misc/curl[ssl] net-misc/openssh net-misc/socat sys-apps/iproute2 sys-fs/lvm2 >=sys-apps/baselayout-2.0 !<app-emulation/ganeti-htools-0.3
+SLOT=0
+SRC_URI=http://ganeti.googlecode.com/files/ganeti-2.4.5.tar.gz
+_eclasses_=bash-completion-r1	3480f8385cb9e31797e7b659e366e2d2	confutils	a80706bb5b9ddcf6bbd14365656d4985	eutils	33ef77a15337022e05342d2c772a7a5a	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=a3546ded93f38ecb07f8f6f6601d5b60

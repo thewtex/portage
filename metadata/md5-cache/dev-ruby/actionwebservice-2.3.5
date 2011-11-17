@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare setup test unpack
+DEPEND=test? ( ruby_targets_ruby18? ( =dev-ruby/actionpack-2.3*[ruby_targets_ruby18] =dev-ruby/activerecord-2.3*[ruby_targets_ruby18] ) ) ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ruby18? ( doc? ( dev-ruby/rake[ruby_targets_ruby18] ) ) ruby_targets_ruby18? ( test? ( dev-ruby/rake[ruby_targets_ruby18] ) ) ruby_targets_ruby18? ( virtual/rubygems[ruby_targets_ruby18] ) test? ( ruby_targets_ruby18? ( virtual/rubygems[ruby_targets_ruby18] ) )
+DESCRIPTION=Simple Support for Web Services APIs for Rails
+EAPI=2
+HOMEPAGE=http://github.com/panztel/actionwebservice
+IUSE=test elibc_FreeBSD ruby_targets_ruby18 doc doc test test
+KEYWORDS=~amd64 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris
+LICENSE=MIT
+RDEPEND=ruby_targets_ruby18? ( =dev-ruby/actionpack-2.3*[ruby_targets_ruby18] =dev-ruby/activerecord-2.3*[ruby_targets_ruby18] ) ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ruby18? ( virtual/rubygems[ruby_targets_ruby18] )
+RESTRICT=test
+SLOT=2.3
+SRC_URI=mirror://rubygems/panztel-actionwebservice-2.3.5.gem
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	java-utils-2	03ab8cac2b9deec34f79c505eb42a99d	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	ruby-fakegem	7c47bb49102ac90cbf2f8e0fefbaed6d	ruby-ng	9306a3d60da89e858115fafece052b0d	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
+_md5_=3b4eca2667626dbf62dd8f5af328ba30

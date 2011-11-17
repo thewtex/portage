@@ -1,0 +1,14 @@
+DEFINED_PHASES=install postinst postrm preinst prepare unpack
+DEPEND=>=sys-apps/sed-4
+DESCRIPTION=The web browser from Google
+EAPI=4
+HOMEPAGE=http://www.google.com/chrome
+IUSE=+plugins linguas_am linguas_ar linguas_bg linguas_bn linguas_ca linguas_cs linguas_da linguas_de linguas_el linguas_en_GB linguas_es linguas_es_LA linguas_et linguas_fa linguas_fi linguas_fil linguas_fr linguas_gu linguas_he linguas_hi linguas_hr linguas_hu linguas_id linguas_it linguas_ja linguas_kn linguas_ko linguas_lt linguas_lv linguas_ml linguas_mr linguas_nb linguas_nl linguas_pl linguas_pt_BR linguas_pt_PT linguas_ro linguas_ru linguas_sk linguas_sl linguas_sr linguas_sv linguas_sw linguas_ta linguas_te linguas_th linguas_tr linguas_uk linguas_vi linguas_zh_CN linguas_zh_TW
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=google-chrome
+RDEPEND=app-arch/bzip2 app-misc/ca-certificates media-libs/alsa-lib dev-libs/atk dev-libs/dbus-glib dev-libs/expat dev-libs/glib:2 dev-libs/libxslt dev-libs/nspr dev-libs/nss gnome-base/gconf:2 media-libs/fontconfig media-libs/freetype net-print/cups media-libs/libpng:1.2 sys-apps/dbus || ( >=sys-devel/gcc-4.4.0[-nocxx] >=sys-devel/gcc-4.4.0[cxx] ) sys-libs/zlib x11-libs/cairo x11-libs/gdk-pixbuf x11-libs/gtk+:2 x11-libs/libXScrnSaver x11-libs/libX11 x11-libs/libXrender x11-libs/libXext x11-libs/pango x11-misc/xdg-utils !www-client/google-chrome:0 !www-client/google-chrome:stable !www-client/google-chrome:unstable
+RESTRICT=mirror strip
+SLOT=beta
+SRC_URI=amd64? ( http://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-beta/google-chrome-beta_16.0.912.36-r109393_amd64.deb ) x86? ( http://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-beta/google-chrome-beta_16.0.912.36-r109393_i386.deb )
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	gnome2-utils	dfcd797d126b46852d33936f4a0a1702	multilib	c4883399ddd3e1d2bd291607b30fded4	pax-utils	43c50115ec22f684df1dc43187a60fcc	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=ddebe89885065457da07986de77c980d

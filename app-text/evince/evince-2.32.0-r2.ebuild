@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/evince/evince-2.32.0-r2.ebuild,v 1.7 2011/04/26 11:18:18 xarthisius Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/evince/evince-2.32.0-r2.ebuild,v 1.9 2011/11/16 10:56:15 jlec Exp $
 
 EAPI="3"
 GCONF_DEBUG="yes"
@@ -37,7 +37,7 @@ RDEPEND="
 	gnome-keyring? ( >=gnome-base/gnome-keyring-2.22.0 )
 	introspection? ( >=dev-libs/gobject-introspection-0.6 )
 	nautilus? ( >=gnome-base/nautilus-2.10[introspection?] )
-	tiff? ( >=media-libs/tiff-3.6 )
+	tiff? ( >=media-libs/tiff-3.6:0 )
 "
 DEPEND="${RDEPEND}
 	app-text/scrollkeeper
@@ -84,8 +84,6 @@ pkg_setup() {
 }
 
 src_prepare() {
-	gnome2_src_prepare
-
 	# Check for NULL in synctex_backward_search preventing segfault, upstream bug #630845
 	epatch "${FILESDIR}"/${P}-libdocument-segfault.patch
 
@@ -121,6 +119,7 @@ src_prepare() {
 
 	intltoolize --force --copy --automake || die "intltoolize failed"
 	eautoreconf
+	gnome2_src_prepare
 }
 
 src_install() {

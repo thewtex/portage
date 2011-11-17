@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.13244 2011/11/14 15:54:43 polynomial-c Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.13249 2011/11/16 13:34:08 chainsaw Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -31,9 +31,18 @@
 
 #--- END OF EXAMPLES ---
 
-# Lars Wendler <polynomial-c@gentoo.org> (14 Nov 2011)
-# Masked for removal in 30 days due to lack of active maintainer (bug #390541).
-www-client/seamonkey-bin
+# Tony Vroon <chainsaw@gentoo.org> (15 Nov 2011)
+# Fails to load any modules on hardened, needs more love
+=net-misc/asterisk-10.0.0*
+
+# Christoph Junghans <ottxor@gentoo.org> (15 Nov 2011)
+# current version of google-talkplugin never clear what you get
+=www-plugins/google-talkplugin-9999
+
+# Ian Stakenvicius <axs@gentoo.org> (15 Nov 2011)
+# Masking this version until spidermonkey-1.8.5 can be unmasked
+# (tracker bug 376987)
+=app-accessibility/edbrowse-3.4.8
 
 # Alexandre Rostovtsev <tetromino@gentoo.org> (13 Nov 2011)
 # Fails to build or run with >=opencv-2.3. Incompatible with pyatspi-2.2 (and
@@ -44,7 +53,7 @@ app-accessibility/gnome-mousetrap
 # Markos Chandras <hwoarang@gentoo.org> (13 Nov 2011)
 # Fails to link with gold linker. Uses tempnam instead
 # of mkstemp which is a fatal error in recent gcc versions
-# Masked for removal in 30 days. Bug #371454
+# Masked for removal in 30 days. Bug #371451
 games-mud/kmuddy
 
 # Alin Năstac <mrness@gentoo.org> (13 Nov 2011)

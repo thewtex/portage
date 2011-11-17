@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install postinst postrm preinst setup unpack
+DEPEND=kernel_linux? ( sys-apps/module-init-tools ) sys-apps/sed kernel_linux? ( virtual/linux-sources )
+DESCRIPTION=Driver for the XFI-series Creative sound cards
+HOMEPAGE=http://www.creative.com/
+IUSE=debug kernel_linux
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=kernel_linux? ( sys-apps/module-init-tools )
+SLOT=0
+SRC_URI=http://files.creative.com/manualdn/Drivers/AVP/10792/0x0343D29A/XFiDrv_Linux_Public_US_1.00.tar.gz
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	linux-info	0a300da62c346bbaee5bcf82727f23ac	linux-mod	a4e07f78bacb6b129ea7b18ad060dbfc	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
+_md5_=5d1f8ed26bd59df256148a3d10ab50b8

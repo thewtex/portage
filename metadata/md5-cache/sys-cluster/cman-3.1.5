@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install setup
+DEPEND=dev-libs/libxml2 dev-libs/libxslt dbus? ( sys-apps/dbus ) ldap? ( net-nds/openldap ) sys-cluster/corosync sys-cluster/openais ~sys-cluster/libccs-3.1.5 ~sys-cluster/libfence-3.1.5 ~sys-cluster/libcman-3.1.5 ~sys-cluster/libdlm-3.1.5 ~sys-cluster/liblogthread-3.1.5 !sys-cluster/dlm >=sys-kernel/linux-headers-2.6.24
+DESCRIPTION=Cluster Manager
+EAPI=4
+HOMEPAGE=https://fedorahosted.org/cluster/wiki/HomePage
+IUSE=dbus ldap
+KEYWORDS=~amd64 ~hppa ~x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/libxml2 dev-libs/libxslt dbus? ( sys-apps/dbus ) ldap? ( net-nds/openldap ) sys-cluster/corosync sys-cluster/openais ~sys-cluster/libccs-3.1.5 ~sys-cluster/libfence-3.1.5 ~sys-cluster/libcman-3.1.5 ~sys-cluster/libdlm-3.1.5 ~sys-cluster/liblogthread-3.1.5 !sys-cluster/dlm
+SLOT=0
+SRC_URI=https://fedorahosted.org/releases/c/l/cluster/cluster-3.1.5.tar.gz
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	linux-info	0a300da62c346bbaee5bcf82727f23ac	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
+_md5_=77574d397dbd7b4cfeaccd8ff8a89b71

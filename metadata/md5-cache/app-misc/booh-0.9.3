@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst prepare setup test unpack
+DEPEND=media-gfx/exiv2 gtk? ( >=x11-libs/gtk+-2.8:2 ) test? ( ruby_targets_ruby18? ( >=dev-ruby/ruby-gettext-0.8.0[ruby_targets_ruby18] dev-ruby/ruby-glib2[ruby_targets_ruby18] gtk? ( >=dev-ruby/ruby-gtk2-0.12[ruby_targets_ruby18] ) ) ) ruby_targets_ruby18? ( dev-lang/ruby:1.8 )
+DESCRIPTION=Static HTML photo album generator
+EAPI=2
+HOMEPAGE=http://booh.org/index.html
+IUSE=gtk encode exif test bash-completion elibc_FreeBSD ruby_targets_ruby18
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+PDEPEND=bash-completion? ( app-shells/bash-completion )
+RDEPEND=media-gfx/exiv2 gtk? ( >=x11-libs/gtk+-2.8:2 ) || ( media-gfx/imagemagick[jpeg,png] media-gfx/graphicsmagick[jpeg,png] ) exif? ( media-gfx/exif ) encode? ( media-video/mplayer ) ruby_targets_ruby18? ( >=dev-ruby/ruby-gettext-0.8.0[ruby_targets_ruby18] dev-ruby/ruby-glib2[ruby_targets_ruby18] gtk? ( >=dev-ruby/ruby-gtk2-0.12[ruby_targets_ruby18] ) ) bash-completion? ( app-admin/eselect ) ruby_targets_ruby18? ( dev-lang/ruby:1.8 )
+SLOT=0
+SRC_URI=http://booh.org/packages/booh-0.9.3.tar.bz2
+_eclasses_=bash-completion	003731da0df19d26955927bd534f3058	eutils	33ef77a15337022e05342d2c772a7a5a	java-utils-2	03ab8cac2b9deec34f79c505eb42a99d	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	ruby-ng	9306a3d60da89e858115fafece052b0d	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
+_md5_=8398f81dab7012756c2127e858a025b2

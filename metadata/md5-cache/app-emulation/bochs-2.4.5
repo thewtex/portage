@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install setup unpack
+DEPEND=X? ( x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXpm ) sdl? ( media-libs/libsdl ) svga? ( media-libs/svgalib ) wxwidgets? ( =x11-libs/wxGTK-2.8* ) readline? ( sys-libs/readline ) ncurses? ( sys-libs/ncurses ) X? ( x11-proto/xproto ) >=sys-apps/sed-4 >=app-text/opensp-1.5
+DESCRIPTION=a LGPL-ed pc emulator
+HOMEPAGE=http://bochs.sourceforge.net/
+IUSE=X debugger readline usb wxwidgets svga sdl ncurses vnc acpi
+KEYWORDS=~alpha ~amd64 ~ppc ~sparc ~x86
+LICENSE=LGPL-2.1
+RDEPEND=X? ( x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXpm ) sdl? ( media-libs/libsdl ) svga? ( media-libs/svgalib ) wxwidgets? ( =x11-libs/wxGTK-2.8* ) readline? ( sys-libs/readline ) ncurses? ( sys-libs/ncurses )
+SLOT=0
+SRC_URI=mirror://sourceforge/bochs/bochs-2.4.5.tar.gz http://bochs.sourceforge.net/guestos/dlxlinux4.tar.gz
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	wxwidgets	9b355ad2394810db50553e45cd663578
+_md5_=ec990a818cb1f365ffe61138bb0a4c73

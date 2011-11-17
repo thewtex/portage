@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst prepare prerm setup test
+DEPEND==dev-haskell/hashed-storage-0.5* =dev-haskell/haskeline-0.6* =dev-haskell/html-1.0* <dev-haskell/http-4000.2 =dev-haskell/mmap-0.5* <dev-haskell/mtl-2.1 >=dev-haskell/network-2.2 <dev-haskell/parsec-3.2 <dev-haskell/regex-compat-0.96 =dev-haskell/tar-0.3* =dev-haskell/terminfo-0.3* =dev-haskell/text-0.11* <dev-haskell/zlib-0.6.0.0 >=dev-lang/ghc-6.10.1 net-misc/curl virtual/mta >=dev-haskell/cabal-1.8 doc? ( virtual/latex-base || ( dev-tex/latex2html[png] dev-tex/latex2html[gif] ) ) test? ( dev-haskell/test-framework dev-haskell/test-framework-hunit dev-haskell/test-framework-quickcheck2 ) doc? ( dev-haskell/haddock ) hscolour? ( dev-haskell/hscolour ) >=dev-haskell/cabal-1.1.4
+DESCRIPTION=a distributed, interactive, smart revision control system
+EAPI=3
+HOMEPAGE=http://darcs.net/
+IUSE=doc test doc hscolour profile bash-completion
+KEYWORDS=~amd64 ~x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris
+LICENSE=GPL-2
+PDEPEND=bash-completion? ( app-shells/bash-completion )
+RDEPEND==dev-haskell/hashed-storage-0.5* =dev-haskell/haskeline-0.6* =dev-haskell/html-1.0* <dev-haskell/http-4000.2 =dev-haskell/mmap-0.5* <dev-haskell/mtl-2.1 >=dev-haskell/network-2.2 <dev-haskell/parsec-3.2 <dev-haskell/regex-compat-0.96 =dev-haskell/tar-0.3* =dev-haskell/terminfo-0.3* =dev-haskell/text-0.11* <dev-haskell/zlib-0.6.0.0 >=dev-lang/ghc-6.10.1 net-misc/curl virtual/mta dev-lang/ghc bash-completion? ( app-admin/eselect )
+SLOT=0
+SRC_URI=http://hackage.haskell.org/packages/archive/darcs/2.5.2/darcs-2.5.2.tar.gz
+_eclasses_=bash-completion	003731da0df19d26955927bd534f3058	eutils	33ef77a15337022e05342d2c772a7a5a	ghc-package	6abc9e234617abf2fab72c4f37f15c89	haskell-cabal	c640d33b3ca22d10d4fc775cb69a4e00	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
+_md5_=6d6dfc072333f9faf4308f4a748c9635

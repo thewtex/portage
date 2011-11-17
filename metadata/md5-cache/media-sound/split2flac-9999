@@ -1,0 +1,11 @@
+DEFINED_PHASES=install unpack
+DEPEND=dev-vcs/mercurial
+DESCRIPTION=sh script to split one big APE/FLAC/WV/WAV audio image with CUE sheet into tracks
+EAPI=4
+HOMEPAGE=https://code.google.com/p/split2flac/
+IUSE=enca flake imagemagick mac mp3 mp4 ogg replaygain wavpack
+LICENSE=MIT
+RDEPEND=app-cdr/cuetools media-sound/shntool[mac?] virtual/libiconv media-libs/flac enca? ( app-i18n/enca ) flake? ( media-sound/flake ) mp3? ( media-sound/lame || ( media-libs/mutagen media-libs/id3lib ) ) mp4? ( media-libs/faac media-libs/libmp4v2[utils] ) ogg? ( media-sound/vorbis-tools ) wavpack? ( media-sound/wavpack ) replaygain? ( mp3? ( media-sound/mp3gain ) mp4? ( media-sound/aacgain ) ogg? ( media-sound/vorbisgain ) ) imagemagick? ( media-gfx/imagemagick )
+SLOT=0
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	mercurial	7a71eccda34aa9e58f3f65a8883ac037	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=877e469d74bd02fa315adf574af3cf81

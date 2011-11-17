@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install prepare setup
+DEPEND=>=sys-libs/ncurses-5.2 bidi? ( dev-libs/fribidi ) ssl? ( >=dev-libs/openssl-0.9.6g ) jpeg? ( virtual/jpeg ) jabber? ( otr? ( net-libs/libotr ) crypt? ( >=app-crypt/gpgme-1.0.2 ) ) msn? ( || ( >=net-misc/curl-7.19.6[ssl] >=net-misc/curl-7.19.6[gnutls] >=net-misc/curl-7.19.6[nss] ) ) yahoo? ( || ( >=net-misc/curl-7.19.6[ssl] >=net-misc/curl-7.19.6[gnutls] >=net-misc/curl-7.19.6[nss] ) )
+DESCRIPTION=CenterIM is a fork of CenterICQ - a ncurses ICQ/Yahoo!/AIM/IRC/MSN/Jabber/GaduGadu/RSS/LiveJournal Client
+EAPI=2
+HOMEPAGE=http://www.centerim.org/
+IUSE=+aim gadu +icq +irc +jabber lj +msn rss +yahoo bidi nls ssl crypt jpeg otr
+KEYWORDS=amd64 x86 ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=>=sys-libs/ncurses-5.2 bidi? ( dev-libs/fribidi ) ssl? ( >=dev-libs/openssl-0.9.6g ) jpeg? ( virtual/jpeg ) jabber? ( otr? ( net-libs/libotr ) crypt? ( >=app-crypt/gpgme-1.0.2 ) ) msn? ( || ( >=net-misc/curl-7.19.6[ssl] >=net-misc/curl-7.19.6[gnutls] >=net-misc/curl-7.19.6[nss] ) ) yahoo? ( || ( >=net-misc/curl-7.19.6[ssl] >=net-misc/curl-7.19.6[gnutls] >=net-misc/curl-7.19.6[nss] ) ) nls? ( sys-devel/gettext )
+SLOT=0
+SRC_URI=http://www.centerim.org/download/releases/centerim-4.22.9.tar.gz
+_md5_=104f1fec9b27f2ca619ded84c954e7e8

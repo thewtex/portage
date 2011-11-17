@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup test unpack
+DEPEND==dev-libs/xapian-1.2.7* lua? ( >=dev-lang/lua-5.1 ) mono? ( >=dev-lang/mono-1.0.8 ) perl? ( dev-lang/perl ) ruby? ( dev-lang/ruby ) tcl? ( >=dev-lang/tcl-8.1 ) java? ( >=virtual/jdk-1.3 ) java? ( >=dev-java/java-config-2.1.9-r1 ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool >=sys-devel/m4-1.4.3 >=sys-devel/libtool-1.5.18 >=app-admin/eselect-python-20091230 python? ( =dev-lang/python-2* ) =dev-lang/python-2*[threads]
+DESCRIPTION=SWIG and JNI bindings for Xapian
+EAPI=3
+HOMEPAGE=http://www.xapian.org/
+IUSE=java lua mono perl php python ruby tcl elibc_FreeBSD java php_targets_php5-3 php_targets_php5-2
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND==dev-libs/xapian-1.2.7* lua? ( >=dev-lang/lua-5.1 ) mono? ( >=dev-lang/mono-1.0.8 ) perl? ( dev-lang/perl ) ruby? ( dev-lang/ruby ) tcl? ( >=dev-lang/tcl-8.1 ) java? ( >=virtual/jre-1.3 ) java? ( >=dev-java/java-config-2.1.9-r1 ) php? ( || ( =dev-libs/xapian-bindings-1.2.7-r2[php_targets_php5-3] =dev-libs/xapian-bindings-1.2.7-r2[php_targets_php5-2] ) php_targets_php5-3? ( dev-lang/php:5.3 ) php_targets_php5-2? ( dev-lang/php:5.2 ) ) >=app-admin/eselect-python-20091230 python? ( =dev-lang/python-2* ) =dev-lang/python-2*[threads]
+SLOT=0
+SRC_URI=http://oligarchy.co.uk/xapian/1.2.7/xapian-bindings-1.2.7.tar.gz
+_eclasses_=autotools	b81740a014934d6736a8795cdedb452e	eutils	33ef77a15337022e05342d2c772a7a5a	flag-o-matic	630c256d55702ba23515f64952987828	java-pkg-opt-2	31a1663247652448431dcc8c194e2752	java-utils-2	03ab8cac2b9deec34f79c505eb42a99d	libtool	76720aa53cbace6123aac554983eadfa	mono	203a4295c06155d318bdff9c6b2d5e1c	multilib	c4883399ddd3e1d2bd291607b30fded4	php-ext-source-r2	1dc638b3f0431c60171ed14c169655ce	portability	1d9665386ff87b70cba7f591ba27723f	python	6bbd984910e27780e5d0ea543d83ef84	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
+_md5_=32b2e0891bbd71b035eb0a97b1eed6e2

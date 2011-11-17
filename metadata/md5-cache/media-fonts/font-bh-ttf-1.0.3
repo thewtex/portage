@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare setup test unpack
+DEPEND=|| ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool X? ( x11-apps/mkfontdir media-fonts/encodings ) >=media-libs/fontconfig-2.4.0 x86-interix? ( >=sys-devel/libtool-2.2.6a sys-devel/m4 >=x11-misc/util-macros-1.15.0 >=media-fonts/font-util-1.2.0 ) ppc-aix? ( >=sys-devel/libtool-2.2.6a sys-devel/m4 >=x11-misc/util-macros-1.15.0 >=media-fonts/font-util-1.2.0 ) x86-winnt? ( >=sys-devel/libtool-2.2.6a sys-devel/m4 >=x11-misc/util-macros-1.15.0 >=media-fonts/font-util-1.2.0 ) >=media-fonts/font-util-1.2.0 >=dev-util/pkgconfig-0.23
+DESCRIPTION=X.Org Bigelow & Holmes TrueType fonts
+EAPI=3
+HOMEPAGE=http://xorg.freedesktop.org/
+IUSE=X
+KEYWORDS=alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~x86-fbsd
+LICENSE=MIT
+PDEPEND=media-fonts/font-alias
+RDEPEND=media-fonts/encodings x11-apps/mkfontscale x11-apps/mkfontdir
+SLOT=0
+SRC_URI=http://xorg.freedesktop.org/releases/individual/font/font-bh-ttf-1.0.3.tar.bz2
+_eclasses_=autotools	b81740a014934d6736a8795cdedb452e	autotools-utils	9799469ea552910620db9dca0bca94b0	base	dba02c674ce4dff67657c692954d7ef0	eutils	33ef77a15337022e05342d2c772a7a5a	flag-o-matic	630c256d55702ba23515f64952987828	font	9aa70ebc5cefbdd9056687b550a2fdc4	libtool	76720aa53cbace6123aac554983eadfa	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	xorg-2	093ea4dbb66911426bbf98ed86963ed2
+_md5_=c77f08340f797d343f619aa6cb636f5e

@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup
+DEPEND=java? ( >=virtual/jdk-1.4 ) bluetooth? ( net-wireless/bluez ) gpm? ( >=sys-libs/gpm-1.20 ) iconv? ( virtual/libiconv ) icu? ( dev-libs/icu ) nls? ( virtual/libintl ) python? ( >=dev-python/pyrex-0.9.4.1 ) tcl? ( >=dev-lang/tcl-8.4.15 ) usb? ( virtual/libusb:0 ) X? ( x11-libs/libXaw ) ocaml? ( >=dev-ml/findlib-1.0.4-r1 ) java? ( >=dev-java/java-config-2.1.9-r1 ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=Daemon that provides access to the Linux/Unix console for a blind person
+EAPI=4
+HOMEPAGE=http://mielke.cc/brltty/
+IUSE=+api +beeper bluetooth +contracted-braille doc +fm gpm iconv icu java +learn-mode +midi nls ocaml +pcm python usb +speech tcl X elibc_FreeBSD java
+KEYWORDS=alpha amd64 hppa ia64 ppc ppc64 x86
+LICENSE=GPL-2 LGPL-2.1
+RDEPEND=java? ( >=virtual/jre-1.4 ) bluetooth? ( net-wireless/bluez ) gpm? ( >=sys-libs/gpm-1.20 ) iconv? ( virtual/libiconv ) icu? ( dev-libs/icu ) nls? ( virtual/libintl ) python? ( >=dev-python/pyrex-0.9.4.1 ) tcl? ( >=dev-lang/tcl-8.4.15 ) usb? ( virtual/libusb:0 ) X? ( x11-libs/libXaw ) java? ( >=dev-java/java-config-2.1.9-r1 )
+REQUIRED_USE=doc? ( api ) java? ( api ) ocaml? ( api ) python? ( api ) tcl? ( api )
+SLOT=0
+SRC_URI=http://mielke.cc/brltty/releases/brltty-4.2.tar.gz
+_eclasses_=autotools	b81740a014934d6736a8795cdedb452e	eutils	33ef77a15337022e05342d2c772a7a5a	findlib	9cf6020ee5481f39f1aa566a323f9868	flag-o-matic	630c256d55702ba23515f64952987828	java-pkg-opt-2	31a1663247652448431dcc8c194e2752	java-utils-2	03ab8cac2b9deec34f79c505eb42a99d	libtool	76720aa53cbace6123aac554983eadfa	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
+_md5_=0d9e2dc70d8fab04719c7f8098951268

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install nofetch postinst postrm preinst setup unpack
+DEPEND=kernel_linux? ( sys-apps/module-init-tools ) sys-apps/sed kernel_linux? ( virtual/linux-sources )
+DESCRIPTION=Cisco VPN Client (3DES)
+HOMEPAGE=http://cco.cisco.com/en/US/products/sw/secursw/ps2308/index.html
+IUSE=kernel_linux
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=cisco-vpn-client
+RDEPEND=kernel_linux? ( sys-apps/module-init-tools )
+RESTRICT=fetch mirror strip
+SLOT=0
+SRC_URI=vpnclient-linux-x86_64-4.8.01.0640-k9.tar.gz
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	linux-info	0a300da62c346bbaee5bcf82727f23ac	linux-mod	a4e07f78bacb6b129ea7b18ad060dbfc	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
+_md5_=6c98770c3a3b73f7d0d1c8843e66710f

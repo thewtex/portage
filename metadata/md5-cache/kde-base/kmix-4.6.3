@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup test unpack
+DEPEND=alsa? ( >=media-libs/alsa-lib-1.0.14a ) pulseaudio? ( >=media-sound/pulseaudio-0.9.12 ) >=sys-apps/sed-4 >=dev-util/cmake-2.8.4 userland_GNU? ( >=sys-apps/findutils-4.4.0 ) dev-util/automoc dev-util/pkgconfig !aqua? ( >=x11-libs/libXtst-1.1.0 x11-proto/xf86vidmodeproto ) handbook? ( app-text/docbook-xml-dtd:4.2 app-text/docbook-xsl-stylesheets ) dev-lang/perl >=x11-libs/qt-core-4.7.0:4[qt3support,ssl] >=x11-libs/qt-gui-4.7.0:4[accessibility,dbus] >=x11-libs/qt-qt3support-4.7.0:4[accessibility,kde] >=x11-libs/qt-script-4.7.0:4 >=x11-libs/qt-sql-4.7.0:4[qt3support] >=x11-libs/qt-svg-4.7.0:4 >=x11-libs/qt-test-4.7.0:4 >=x11-libs/qt-webkit-4.7.0:4[kde] !aqua? ( x11-libs/libXext x11-libs/libXt x11-libs/libXxf86vm x11-libs/libXcomposite x11-libs/libxkbfile ) >=kde-base/kdelibs-4.6.3:4[aqua=]
+DESCRIPTION=KDE mixer gui
+EAPI=4
+HOMEPAGE=http://www.kde.org/
+IUSE=alsa debug pulseaudio kdeprefix +handbook aqua kdeenablefinal
+KEYWORDS=amd64 ppc ~ppc64 x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-2
+RDEPEND=alsa? ( >=media-libs/alsa-lib-1.0.14a ) pulseaudio? ( >=media-sound/pulseaudio-0.9.12 ) >=kde-base/oxygen-icons-4.6.3:4[aqua=] handbook? ( >=kde-base/kdelibs-4.6.3:4[aqua=,handbook] ) dev-lang/perl >=x11-libs/qt-core-4.7.0:4[qt3support,ssl] >=x11-libs/qt-gui-4.7.0:4[accessibility,dbus] >=x11-libs/qt-qt3support-4.7.0:4[accessibility,kde] >=x11-libs/qt-script-4.7.0:4 >=x11-libs/qt-sql-4.7.0:4[qt3support] >=x11-libs/qt-svg-4.7.0:4 >=x11-libs/qt-test-4.7.0:4 >=x11-libs/qt-webkit-4.7.0:4[kde] !aqua? ( x11-libs/libXext x11-libs/libXt x11-libs/libXxf86vm x11-libs/libXcomposite x11-libs/libxkbfile ) >=kde-base/kdelibs-4.6.3:4[aqua=]
+SLOT=4
+SRC_URI=mirror://kde/stable/4.6.3/src/kdemultimedia-4.6.3.tar.bz2
+_eclasses_=base	dba02c674ce4dff67657c692954d7ef0	cmake-utils	00f9fd5a80cf3605f6d9a2e808c48a92	eutils	33ef77a15337022e05342d2c772a7a5a	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	flag-o-matic	630c256d55702ba23515f64952987828	gnome2-utils	dfcd797d126b46852d33936f4a0a1702	kde4-base	8dc20f61201db46153501b6a67e22bc6	kde4-functions	a3de6bff1d2b077675783b6c7a38d701	kde4-meta	99619877a6e735116ddd0bf6f9e102d6	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc	virtualx	0c41ff55e46b959d9457dde69e7a09d9
+_md5_=1e73e05ee5e9dcf343421cc13cdfc480

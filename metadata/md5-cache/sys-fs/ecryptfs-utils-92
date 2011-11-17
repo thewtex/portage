@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare setup
+DEPEND=>=sys-apps/keyutils-1.0 >=dev-libs/libgcrypt-1.2.0 dev-libs/nss gpg? ( app-crypt/gpgme ) gtk? ( x11-libs/gtk+:2 ) openssl? ( >=dev-libs/openssl-0.9.7 ) pam? ( sys-libs/pam ) pkcs11? ( >=dev-libs/openssl-0.9.7 >=dev-libs/pkcs11-helper-1.04 ) tpm? ( app-crypt/trousers ) >=dev-util/pkgconfig-0.9.0 sys-devel/gettext >=dev-util/intltool-0.41.0 python? ( dev-lang/swig ) >=app-admin/eselect-python-20091230 python? ( || ( =dev-lang/python-2.7* =dev-lang/python-2.6* =dev-lang/python-2.5* ) ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=eCryptfs userspace utilities
+EAPI=3
+HOMEPAGE=http://launchpad.net/ecryptfs
+IUSE=doc gpg gtk openssl pam pkcs11 python suid tpm
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=sys-apps/keyutils-1.0 >=dev-libs/libgcrypt-1.2.0 dev-libs/nss gpg? ( app-crypt/gpgme ) gtk? ( x11-libs/gtk+:2 ) openssl? ( >=dev-libs/openssl-0.9.7 ) pam? ( sys-libs/pam ) pkcs11? ( >=dev-libs/openssl-0.9.7 >=dev-libs/pkcs11-helper-1.04 ) tpm? ( app-crypt/trousers ) >=app-admin/eselect-python-20091230 python? ( || ( =dev-lang/python-2.7* =dev-lang/python-2.6* =dev-lang/python-2.5* ) )
+SLOT=0
+SRC_URI=http://launchpad.net/ecryptfs/trunk/92/+download/ecryptfs-utils_92.orig.tar.gz
+_eclasses_=autotools	b81740a014934d6736a8795cdedb452e	eutils	33ef77a15337022e05342d2c772a7a5a	flag-o-matic	630c256d55702ba23515f64952987828	libtool	76720aa53cbace6123aac554983eadfa	linux-info	0a300da62c346bbaee5bcf82727f23ac	multilib	c4883399ddd3e1d2bd291607b30fded4	pam	71d772c7b2ecf139ec916c4584563109	portability	1d9665386ff87b70cba7f591ba27723f	python	6bbd984910e27780e5d0ea543d83ef84	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
+_md5_=c9507ec5c6c0fdef9650ef9e7a515b52

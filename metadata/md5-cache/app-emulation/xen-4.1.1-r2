@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup
+DESCRIPTION=The Xen virtual machine monitor
+EAPI=4
+HOMEPAGE=http://xen.org/
+IUSE=custom-cflags debug flask pae xsm
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+PDEPEND=~app-emulation/xen-tools-4.1.1
+RDEPEND=|| ( sys-boot/grub sys-boot/grub-static )
+REQUIRED_USE=flask? ( xsm )
+RESTRICT=test
+SLOT=0
+SRC_URI=http://bits.xensource.com/oss-xen/release/4.1.1/xen-4.1.1.tar.gz
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	flag-o-matic	630c256d55702ba23515f64952987828	mount-boot	410bdaef41d2c8674e24edfa9d521177	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=415bad931ba78c54a814cc81f71448a1

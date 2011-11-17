@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst postrm prerm setup unpack
+DEPEND=app-arch/unzip =dev-java/java-config-2*
+DESCRIPTION=BEA WebLogic's J2SE Development Kit
+HOMEPAGE=http://commerce.bea.com/products/weblogicjrockit/jrockit_prod_fam.jsp
+IUSE=X alsa doc examples odbc
+KEYWORDS=-* ia64
+LICENSE=jrockit
+RDEPEND=sys-libs/glibc alsa? ( media-libs/alsa-lib ) doc? ( =dev-java/java-sdk-docs-1.5.0* ) X? ( x11-libs/libXext x11-libs/libXi x11-libs/libXp x11-libs/libXtst x11-libs/libXt x11-libs/libX11 =dev-libs/glib-2* =x11-libs/gtk+-2* ) odbc? ( dev-db/unixODBC ) =dev-java/java-config-2*
+RESTRICT=strip mirror
+SLOT=1.5
+SRC_URI=ia64? ( ftp://anonymous:dev2dev%40bea%2Ecom@ftpna.bea.com/pub/releases/security/jrockit-R27.5.0-jdk1.5.0_14-linux-ipf.bin ) amd64? ( ftp://anonymous:dev2dev%40bea%2Ecom@ftpna.bea.com/pub/releases/security/jrockit-R27.5.0-jdk1.5.0_14-linux-x64.bin ) x86? ( ftp://anonymous:dev2dev%40bea%2Ecom@ftpna.bea.com/pub/releases/security/jrockit-R27.5.0-jdk1.5.0_14-linux-ia32.bin )
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	java-vm-2	9f5a5a178e03a3408222bf13647dffb9	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	prefix	21058c21ca48453d771df15500873ede	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
+_md5_=85d7bb361b749d0a1dbef3a26419f32d

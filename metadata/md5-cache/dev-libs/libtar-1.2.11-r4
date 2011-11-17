@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=zlib? ( sys-libs/zlib ) !zlib? ( app-arch/gzip ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=C library for manipulating tar archives
+EAPI=3
+HOMEPAGE=http://www.feep.net/libtar/ http://packages.qa.debian.org/libt/libtar.html
+IUSE=static-libs zlib
+KEYWORDS=~amd64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos
+LICENSE=GPL-2
+RDEPEND=zlib? ( sys-libs/zlib ) !zlib? ( app-arch/gzip )
+SLOT=0
+SRC_URI=ftp://ftp.feep.net/pub/software/libtar/libtar-1.2.11.tar.gz mirror://debian/pool/main/libt/libtar/libtar_1.2.11-6.diff.gz
+_eclasses_=autotools	b81740a014934d6736a8795cdedb452e	eutils	33ef77a15337022e05342d2c772a7a5a	libtool	76720aa53cbace6123aac554983eadfa	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=2aae1a83a61c321ffd7c5f3ca65d7866

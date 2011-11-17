@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst prepare setup
+DEPEND=>=sys-apps/dbus-1.2 >=dev-libs/dbus-glib-0.75 >=net-wireless/wireless-tools-28_pre9 || ( >=sys-fs/udev-171[gudev] >=sys-fs/udev-145[extras] ) >=dev-libs/glib-2.18 >=sys-auth/polkit-0.92 >=dev-libs/libnl-1.1:1.1 >=net-misc/modemmanager-0.2 >=net-wireless/wpa_supplicant-0.5.10[dbus] bluetooth? ( net-wireless/bluez ) || ( sys-libs/e2fsprogs-libs <sys-fs/e2fsprogs-1.41.0 ) avahi? ( net-dns/avahi[autoipd] ) gnutls? ( nss? ( >=dev-libs/nss-3.11 ) !nss? ( dev-libs/libgcrypt net-libs/gnutls ) ) !gnutls? ( >=dev-libs/nss-3.11 ) dhclient? ( dhcpcd? ( >=net-misc/dhcpcd-4.0.0_rc3 ) !dhcpcd? ( >=net-misc/dhcp-3.0.0 ) ) !dhclient? ( >=net-misc/dhcpcd-4.0.0_rc3 ) resolvconf? ( net-dns/openresolv ) connection-sharing? ( net-dns/dnsmasq net-firewall/iptables ) dev-util/pkgconfig dev-util/intltool net-dialup/ppp doc? ( >=dev-util/gtk-doc-1.8 )
+DESCRIPTION=Network configuration and management in an easy way. Desktop environment independent.
+EAPI=2
+HOMEPAGE=http://www.gnome.org/projects/NetworkManager/
+IUSE=avahi bluetooth doc nss gnutls dhclient dhcpcd resolvconf connection-sharing
+KEYWORDS=amd64 ~arm ppc ppc64 x86
+LICENSE=GPL-2
+RDEPEND=>=sys-apps/dbus-1.2 >=dev-libs/dbus-glib-0.75 >=net-wireless/wireless-tools-28_pre9 || ( >=sys-fs/udev-171[gudev] >=sys-fs/udev-145[extras] ) >=dev-libs/glib-2.18 >=sys-auth/polkit-0.92 >=dev-libs/libnl-1.1:1.1 >=net-misc/modemmanager-0.2 >=net-wireless/wpa_supplicant-0.5.10[dbus] bluetooth? ( net-wireless/bluez ) || ( sys-libs/e2fsprogs-libs <sys-fs/e2fsprogs-1.41.0 ) avahi? ( net-dns/avahi[autoipd] ) gnutls? ( nss? ( >=dev-libs/nss-3.11 ) !nss? ( dev-libs/libgcrypt net-libs/gnutls ) ) !gnutls? ( >=dev-libs/nss-3.11 ) dhclient? ( dhcpcd? ( >=net-misc/dhcpcd-4.0.0_rc3 ) !dhcpcd? ( >=net-misc/dhcp-3.0.0 ) ) !dhclient? ( >=net-misc/dhcpcd-4.0.0_rc3 ) resolvconf? ( net-dns/openresolv ) connection-sharing? ( net-dns/dnsmasq net-firewall/iptables )
+SLOT=0
+SRC_URI=mirror://gnome/sources/NetworkManager/0.8/NetworkManager-0.8.tar.bz2
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	gnome.org	8fef8f967214f56e08fa92d61163d891	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
+_md5_=b04fdc59caaa19ac7dbddbe92594ce1b

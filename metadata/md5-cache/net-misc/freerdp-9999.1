@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=dev-libs/openssl sys-libs/zlib alsa? ( media-libs/alsa-lib ) cups? ( net-print/cups ) directfb? ( dev-libs/DirectFB ) ffmpeg? ( virtual/ffmpeg ) pulseaudio? ( media-sound/pulseaudio ) smartcard? ( sys-apps/pcsc-lite ) X? ( x11-libs/libX11 xcursor? ( x11-libs/libXcursor ) xext? ( x11-libs/libXext ) xinerama? ( x11-libs/libXinerama ) xv? ( x11-libs/libXv ) ) xkbfile? ( x11-libs/libxkbfile ) app-text/xmlto test? ( dev-util/cunit ) >=dev-util/cmake-2.8.4 userland_GNU? ( >=sys-apps/findutils-4.4.0 ) dev-vcs/git
+DESCRIPTION=Client-side implementation of the Remote Desktop Protocol
+EAPI=4
+HOMEPAGE=http://www.freerdp.com/
+IUSE=+alsa +cups directfb ffmpeg pulseaudio smartcard sse2 test +X +xcursor +xext +xinerama +xkbfile +xv debug-transport debug-chanman debug-svc debug-dvc debug-kbd debug-nla debug-nego debug-certificate debug-license debug-gdi debug-rfx debug-x11 debug-rail debug-xv debug-scard debug-orders debug-redir
+LICENSE=Apache-2.0
+RDEPEND=dev-libs/openssl sys-libs/zlib alsa? ( media-libs/alsa-lib ) cups? ( net-print/cups ) directfb? ( dev-libs/DirectFB ) ffmpeg? ( virtual/ffmpeg ) pulseaudio? ( media-sound/pulseaudio ) smartcard? ( sys-apps/pcsc-lite ) X? ( x11-libs/libX11 xcursor? ( x11-libs/libXcursor ) xext? ( x11-libs/libXext ) xinerama? ( x11-libs/libXinerama ) xv? ( x11-libs/libXv ) ) xkbfile? ( x11-libs/libxkbfile )
+RESTRICT=test
+SLOT=0
+_eclasses_=base	dba02c674ce4dff67657c692954d7ef0	cmake-utils	00f9fd5a80cf3605f6d9a2e808c48a92	eutils	33ef77a15337022e05342d2c772a7a5a	flag-o-matic	630c256d55702ba23515f64952987828	git-2	48dc75cccc109d7cda9f8dc3fff7a5b8	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=6a893de1a8079a1f4d95f0bf88c236d2

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup test
+DEPEND=sys-libs/ncurses tcpd? ( sys-apps/tcp-wrappers ) ssl? ( dev-libs/openssl ) sasl? ( dev-libs/cyrus-sasl ) !minimal? ( odbc? ( dev-db/unixODBC ) slp? ( net-libs/openslp ) perl? ( dev-lang/perl[-build] ) samba? ( dev-libs/openssl ) kerberos? ( virtual/krb5 ) berkdb? ( || ( sys-libs/db:4.5 sys-libs/db:4.4 sys-libs/db:4.3 >=sys-libs/db-4.2.52_p2-r1:4.2 ) ) !berkdb? ( gdbm? ( sys-libs/gdbm ) !gdbm? ( || ( sys-libs/db:4.5 sys-libs/db:4.4 sys-libs/db:4.3 >=sys-libs/db-4.2.52_p2-r1:4.2 ) ) ) smbkrb5passwd? ( dev-libs/openssl app-crypt/heimdal ) ) selinux? ( sec-policy/selinux-openldap ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool ssl? ( dev-libs/openssl )
+DESCRIPTION=LDAP suite of application and development tools
+EAPI=2
+HOMEPAGE=http://www.OpenLDAP.org/
+IUSE=berkdb crypt debug gdbm ipv6 kerberos minimal odbc overlays perl samba sasl slp smbkrb5passwd ssl tcpd selinux ssl
+KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc ~sparc-fbsd x86 ~x86-fbsd
+LICENSE=OPENLDAP
+RDEPEND=sys-libs/ncurses tcpd? ( sys-apps/tcp-wrappers ) ssl? ( dev-libs/openssl ) sasl? ( dev-libs/cyrus-sasl ) !minimal? ( odbc? ( dev-db/unixODBC ) slp? ( net-libs/openslp ) perl? ( dev-lang/perl[-build] ) samba? ( dev-libs/openssl ) kerberos? ( virtual/krb5 ) berkdb? ( || ( sys-libs/db:4.5 sys-libs/db:4.4 sys-libs/db:4.3 >=sys-libs/db-4.2.52_p2-r1:4.2 ) ) !berkdb? ( gdbm? ( sys-libs/gdbm ) !gdbm? ( || ( sys-libs/db:4.5 sys-libs/db:4.4 sys-libs/db:4.3 >=sys-libs/db-4.2.52_p2-r1:4.2 ) ) ) smbkrb5passwd? ( dev-libs/openssl app-crypt/heimdal ) ) selinux? ( sec-policy/selinux-openldap )
+SLOT=0
+SRC_URI=mirror://openldap/openldap-release/openldap-2.3.43.tgz
+_eclasses_=autotools	b81740a014934d6736a8795cdedb452e	db-use	cfd87251a2930b12ee9e6a73364d2c45	eutils	33ef77a15337022e05342d2c772a7a5a	flag-o-matic	630c256d55702ba23515f64952987828	libtool	76720aa53cbace6123aac554983eadfa	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	ssl-cert	7f678cd359743d336ecf3a6cc4ce1521	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
+_md5_=787e0ff4cdbe245e1f97904c2fdfa7e8

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst postrm prepare setup
+DEPEND=>=dev-python/pygtk-2.14 !media-plugins/quodlibet-titlecase !media-plugins/quodlibet-html !media-plugins/quodlibet-cddb !media-plugins/quodlibet-clock !media-plugins/quodlibet-notify !media-plugins/quodlibet-resub !media-plugins/quodlibet-albumart !media-plugins/quodlibet-jep118 !media-plugins/quodlibet-reset !media-plugins/quodlibet-importexport !media-plugins/quodlibet-autorating !media-plugins/quodlibet-trayicon !media-plugins/quodlibet-wikipedia !media-plugins/quodlibet-browsefolders dev-util/intltool >=app-admin/eselect-python-20091230 || ( =dev-lang/python-2.7* =dev-lang/python-2.6* )
+DESCRIPTION=Quod Libet is a GTK+-based audio player written in Python.
+EAPI=3
+HOMEPAGE=http://code.google.com/p/quodlibet/
+IUSE=dbus gstreamer ipod
+KEYWORDS=~alpha amd64 ~ppc ~ppc64 ~sparc x86
+LICENSE=GPL-2
+RDEPEND=>=dev-python/pygtk-2.14 !media-plugins/quodlibet-titlecase !media-plugins/quodlibet-html !media-plugins/quodlibet-cddb !media-plugins/quodlibet-clock !media-plugins/quodlibet-notify !media-plugins/quodlibet-resub !media-plugins/quodlibet-albumart !media-plugins/quodlibet-jep118 !media-plugins/quodlibet-reset !media-plugins/quodlibet-importexport !media-plugins/quodlibet-autorating !media-plugins/quodlibet-trayicon !media-plugins/quodlibet-wikipedia !media-plugins/quodlibet-browsefolders >=media-libs/mutagen-1.19 gstreamer? ( dev-python/gst-python:0.10 media-libs/gst-plugins-good:0.10 media-plugins/gst-plugins-meta:0.10 ) !gstreamer? ( media-libs/xine-lib ) dbus? ( >=dev-python/dbus-python-0.71 ) ipod? ( >=media-libs/libgpod-0.5.2[python] ) >=app-admin/eselect-python-20091230 || ( =dev-lang/python-2.7* =dev-lang/python-2.6* )
+SLOT=0
+SRC_URI=http://quodlibet.googlecode.com/files/quodlibet-2.2.1.tar.gz
+_eclasses_=distutils	b4c334e216d998c4ce4b750cb091e42e	eutils	33ef77a15337022e05342d2c772a7a5a	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	python	6bbd984910e27780e5d0ea543d83ef84	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=f893c5182046c8f9453bab650e7e90c8

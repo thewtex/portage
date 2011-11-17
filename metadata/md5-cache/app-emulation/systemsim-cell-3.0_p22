@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install nofetch postinst unpack
+DEPEND==dev-lang/tcl-8.4* =dev-lang/tk-8.4* >=app-arch/rpm2targz-9.0.0.3g
+DESCRIPTION=Full-System Simulator for the Cell Broadband Engine Processor
+HOMEPAGE=http://www.alphaworks.ibm.com/tech/cellsystemsim
+KEYWORDS=~amd64 ~ppc64 ~x86
+LICENSE=IBM-ILAR
+RDEPEND==dev-lang/tcl-8.4* =dev-lang/tk-8.4*
+RESTRICT=fetch strip
+SLOT=0
+SRC_URI=x86? ( systemsim-cell-3.0-22.i386.rpm ) ppc64? ( systemsim-cell-3.0-22.ppc64.rpm ) amd64? ( systemsim-cell-3.0-22.x86_64.rpm )
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	rpm	cf613c863528cb4e8d2b6af469a6a71d	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=51f68304451494c0a1fb5f3e17db22bb

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=perl? ( dev-lang/perl virtual/perl-Digest-MD5 virtual/perl-Thread-Queue ) perl? ( dev-perl/Module-Install test? ( dev-perl/File-Copy-Recursive dev-perl/Test-Pod dev-perl/Test-Perl-Critic dev-perl/Test-Pod-Coverage dev-perl/Perl-Critic dev-perl/Perl-Critic-Policy-Dynamic-NoIndirect dev-perl/Perl-Critic-Deprecated dev-perl/Perl-Critic-Nits ) ) >=app-admin/eselect-python-20091230
+DESCRIPTION=Nagios/Icinga event broker module that allows quick/direct access to your status data
+EAPI=3
+HOMEPAGE=http://mathias-kettner.de/checkmk_livestatus.html
+IUSE=examples perl python test
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=perl? ( dev-lang/perl virtual/perl-Digest-MD5 virtual/perl-Thread-Queue ) >=app-admin/eselect-python-20091230
+SLOT=0
+SRC_URI=http://mathias-kettner.de/download/mk-livestatus-1.1.8.tar.gz
+_eclasses_=base	dba02c674ce4dff67657c692954d7ef0	eutils	33ef77a15337022e05342d2c772a7a5a	multilib	c4883399ddd3e1d2bd291607b30fded4	perl-module	01501a30505074cd0012cabbf5d99447	portability	1d9665386ff87b70cba7f591ba27723f	python	6bbd984910e27780e5d0ea543d83ef84	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=dfa84a6052659468ef626d262b877ee0

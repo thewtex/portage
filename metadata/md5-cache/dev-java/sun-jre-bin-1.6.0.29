@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install nofetch postinst postrm prerm setup unpack
+DEPEND=jce? ( dev-java/sun-jce-bin:1.6 ) =dev-java/java-config-2*
+DESCRIPTION=Oracle's Java SE Runtime Environment
+EAPI=4
+HOMEPAGE=http://www.oracle.com/technetwork/java/javase/
+IUSE=X alsa jce nsplugin
+KEYWORDS=amd64 x86
+LICENSE=Oracle-BCLA-JavaSE
+RDEPEND=!prefix? ( sys-libs/glibc ) alsa? ( media-libs/alsa-lib ) X? ( x11-libs/libXext x11-libs/libXi x11-libs/libXrender x11-libs/libXtst x11-libs/libX11 ) =dev-java/java-config-2*
+RESTRICT=fetch strip
+SLOT=1.6
+SRC_URI=x86? ( jre-6u29-linux-i586.bin ) amd64? ( jre-6u29-linux-x64.bin )
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	java-vm-2	9f5a5a178e03a3408222bf13647dffb9	multilib	c4883399ddd3e1d2bd291607b30fded4	pax-utils	43c50115ec22f684df1dc43187a60fcc	portability	1d9665386ff87b70cba7f591ba27723f	prefix	21058c21ca48453d771df15500873ede	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
+_md5_=8316e299d2e29e6d9ddabe4162f5b14f

@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup unpack
+DEPEND=!app-emulation/virtualbox-bin !app-emulation/virtualbox-additions !app-emulation/virtualbox-modules app-arch/makeself app-cdr/cdrtools dev-libs/libIDL >=dev-libs/libxslt-1.1.19 dev-libs/xalan-c dev-libs/xerces-c net-misc/curl sys-libs/libcap !headless? ( qt4? ( x11-libs/qt-gui:4 x11-libs/qt-core:4 x11-libs/qt-opengl:4 ) x11-libs/libXcursor x11-libs/libXinerama media-libs/libsdl x11-libs/libXt media-libs/mesa ) sys-apps/usermode-utilities net-misc/bridge-utils >dev-util/kbuild-0.1.5 >=dev-lang/yasm-0.6.2 sys-devel/bin86 sys-devel/dev86 sys-power/iasl media-libs/libpng >=media-libs/alsa-lib-1.0.13 pulseaudio? ( media-sound/pulseaudio ) python? ( >=dev-lang/python-2.3 ) kernel_linux? ( sys-apps/module-init-tools ) sys-apps/sed kernel_linux? ( virtual/linux-sources ) dev-vcs/subversion net-misc/rsync
+DESCRIPTION=Softwarefamily of powerful x86 virtualization
+EAPI=2
+HOMEPAGE=http://www.virtualbox.org/
+IUSE=alsa headless pulseaudio python +qt4 sdk kernel_linux
+LICENSE=GPL-2
+RDEPEND=!app-emulation/virtualbox-bin !app-emulation/virtualbox-additions !app-emulation/virtualbox-modules app-arch/makeself app-cdr/cdrtools dev-libs/libIDL >=dev-libs/libxslt-1.1.19 dev-libs/xalan-c dev-libs/xerces-c net-misc/curl sys-libs/libcap !headless? ( qt4? ( x11-libs/qt-gui:4 x11-libs/qt-core:4 x11-libs/qt-opengl:4 ) x11-libs/libXcursor x11-libs/libXinerama media-libs/libsdl x11-libs/libXt media-libs/mesa ) sys-apps/usermode-utilities net-misc/bridge-utils kernel_linux? ( sys-apps/module-init-tools )
+SLOT=0
+_eclasses_=base	dba02c674ce4dff67657c692954d7ef0	eutils	33ef77a15337022e05342d2c772a7a5a	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	flag-o-matic	630c256d55702ba23515f64952987828	linux-info	0a300da62c346bbaee5bcf82727f23ac	linux-mod	a4e07f78bacb6b129ea7b18ad060dbfc	multilib	c4883399ddd3e1d2bd291607b30fded4	pax-utils	43c50115ec22f684df1dc43187a60fcc	portability	1d9665386ff87b70cba7f591ba27723f	qt4-r2	562a0a4214d92cf49cc3e97d1f39d891	subversion	7dbe1290303c81f3d1e257d3a5f96921	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
+_md5_=7e2508129f54c839158c2599b4c1e8cd

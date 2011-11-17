@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare setup test unpack
+DEPEND=>=gnome-base/librsvg-2.8 dev-util/pkgconfig test? ( ruby_targets_ruby18? ( >=dev-ruby/ruby-glib2-0.90.8[ruby_targets_ruby18] >=dev-ruby/ruby-gdkpixbuf2-0.90.8[ruby_targets_ruby18] cairo? ( dev-ruby/rcairo[ruby_targets_ruby18] ) ) ruby_targets_ruby19? ( >=dev-ruby/ruby-glib2-0.90.8[ruby_targets_ruby19] >=dev-ruby/ruby-gdkpixbuf2-0.90.8[ruby_targets_ruby19] cairo? ( dev-ruby/rcairo[ruby_targets_ruby19] ) ) ) ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ruby19? ( dev-lang/ruby:1.9 ) ruby_targets_ruby18? ( virtual/rubygems[ruby_targets_ruby18] ) ruby_targets_ruby19? ( virtual/rubygems[ruby_targets_ruby19] ) test? ( ruby_targets_ruby18? ( virtual/rubygems[ruby_targets_ruby18] ) ruby_targets_ruby19? ( virtual/rubygems[ruby_targets_ruby19] ) ) dev-util/pkgconfig ruby_targets_ruby18? ( dev-ruby/pkg-config[ruby_targets_ruby18] ) ruby_targets_ruby19? ( dev-ruby/pkg-config[ruby_targets_ruby19] )
+DESCRIPTION=Ruby bindings for librsvg
+EAPI=2
+HOMEPAGE=http://ruby-gnome2.sourceforge.jp/
+IUSE=cairo test elibc_FreeBSD ruby_targets_ruby18 ruby_targets_ruby19 test
+KEYWORDS=~amd64 ~x86
+LICENSE=Ruby
+RDEPEND=>=gnome-base/librsvg-2.8 ruby_targets_ruby18? ( >=dev-ruby/ruby-glib2-0.90.8[ruby_targets_ruby18] >=dev-ruby/ruby-gdkpixbuf2-0.90.8[ruby_targets_ruby18] cairo? ( dev-ruby/rcairo[ruby_targets_ruby18] ) ) ruby_targets_ruby19? ( >=dev-ruby/ruby-glib2-0.90.8[ruby_targets_ruby19] >=dev-ruby/ruby-gdkpixbuf2-0.90.8[ruby_targets_ruby19] cairo? ( dev-ruby/rcairo[ruby_targets_ruby19] ) ) ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ruby19? ( dev-lang/ruby:1.9 ) ruby_targets_ruby18? ( virtual/rubygems[ruby_targets_ruby18] ) ruby_targets_ruby19? ( virtual/rubygems[ruby_targets_ruby19] )
+SLOT=0
+SRC_URI=mirror://sourceforge/ruby-gnome2/ruby-gnome2-all-0.90.8.tar.gz
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	java-utils-2	03ab8cac2b9deec34f79c505eb42a99d	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	ruby-fakegem	7c47bb49102ac90cbf2f8e0fefbaed6d	ruby-ng	9306a3d60da89e858115fafece052b0d	ruby-ng-gnome2	b17d5c3a6ba9aeeed6f045f4d95cc2ce	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
+_md5_=c31ef9a343f582bd3e0f3e632f61733b

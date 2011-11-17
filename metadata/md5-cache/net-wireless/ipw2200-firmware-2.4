@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install postinst unpack
+DEPEND=kernel_FreeBSD? ( >=sys-freebsd/freebsd-sources-6.2 ) virtual/pmake
+DESCRIPTION=Firmware for the Intel PRO/Wireless 2200BG/2915ABG miniPCI and 2225BG PCI adapters
+HOMEPAGE=http://ipw2200.sourceforge.net/
+IUSE=kernel_linux kernel_FreeBSD
+KEYWORDS=~amd64 x86 ~x86-fbsd
+LICENSE=ipw2200-fw
+RDEPEND=kernel_linux? ( || ( >=sys-fs/udev-096 >=sys-apps/hotplug-20040923 ) )
+SLOT=0
+SRC_URI=http://www.bughost.org/firmware/ipw2200-fw-2.4.tgz
+_eclasses_=bsdmk	3d0ee174571cc190224b2ca024759aec	eutils	33ef77a15337022e05342d2c772a7a5a	flag-o-matic	630c256d55702ba23515f64952987828	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=7e4bb2f633145224b699062fd0891025

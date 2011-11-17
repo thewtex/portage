@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup test unpack
+DEPEND=dev-python/dbus-python >=dev-python/pygobject-2.90.1:3 dev-util/pkgconfig test? ( >=dev-libs/atk-2.1.0 >=dev-libs/dbus-glib-0.7 dev-libs/glib:2 dev-libs/libxml2:2 >=x11-libs/gtk+-2.10:2 ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool app-arch/xz-utils >=sys-apps/sed-4 >=app-admin/eselect-python-20091230 || ( =dev-lang/python-2.7* =dev-lang/python-2.6* =dev-lang/python-2.5* =dev-lang/python-2.4* )
+DESCRIPTION=Python binding to at-spi library
+EAPI=4
+HOMEPAGE=http://live.gnome.org/Accessibility
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2 GPL-2
+RDEPEND=dev-python/dbus-python >=dev-python/pygobject-2.90.1:3 >=sys-apps/dbus-1 >=app-accessibility/at-spi2-core-2.2.1[introspection] !<gnome-extra/at-spi-1.32.0-r1 >=app-admin/eselect-python-20091230 || ( =dev-lang/python-2.7* =dev-lang/python-2.6* =dev-lang/python-2.5* =dev-lang/python-2.4* )
+SLOT=0
+SRC_URI=mirror://gnome/sources/pyatspi/2.2/pyatspi-2.2.1.tar.xz
+_eclasses_=autotools	b81740a014934d6736a8795cdedb452e	eutils	33ef77a15337022e05342d2c772a7a5a	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	gnome.org	8fef8f967214f56e08fa92d61163d891	gnome2	3aa9fb56280cbb64b3d42e0db59ed76e	gnome2-utils	dfcd797d126b46852d33936f4a0a1702	libtool	76720aa53cbace6123aac554983eadfa	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	python	6bbd984910e27780e5d0ea543d83ef84	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
+_md5_=7f7a716aa38c85589207d67b1a889825

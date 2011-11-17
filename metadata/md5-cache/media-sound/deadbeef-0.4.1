@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install
+DEPEND=media-libs/libsamplerate gtk? ( x11-libs/gtk+:2 ) alsa? ( media-libs/alsa-lib ) ffmpeg? ( media-video/ffmpeg ) pulseaudio? ( media-sound/pulseaudio ) mad? ( media-libs/libmad ) vorbis? ( media-libs/libvorbis ) flac? ( media-libs/flac ) wavpack? ( media-sound/wavpack ) sndfile? ( media-libs/libsndfile ) cdda? ( dev-libs/libcdio media-libs/libcddb ) lastfm? ( net-misc/curl ) artwork? ( net-misc/curl ) curl? ( net-misc/curl ) dbus? ( sys-apps/dbus )
+DESCRIPTION=foobar2000-like music player.
+EAPI=3
+HOMEPAGE=http://deadbeef.sourceforge.net/
+IUSE=+gtk +alsa ffmpeg pulseaudio +mad +vorbis +flac wavpack +sndfile cdda +hotkeys oss lastfm adplug ffap sid nullout +supereq vtx gme dumb +dbus +artwork curl
+KEYWORDS=~x86 ~amd64
+LICENSE=|| ( GPL-2 LGPL-2.1 )
+RDEPEND=media-libs/libsamplerate gtk? ( x11-libs/gtk+:2 ) alsa? ( media-libs/alsa-lib ) ffmpeg? ( media-video/ffmpeg ) pulseaudio? ( media-sound/pulseaudio ) mad? ( media-libs/libmad ) vorbis? ( media-libs/libvorbis ) flac? ( media-libs/flac ) wavpack? ( media-sound/wavpack ) sndfile? ( media-libs/libsndfile ) cdda? ( dev-libs/libcdio media-libs/libcddb ) lastfm? ( net-misc/curl ) artwork? ( net-misc/curl ) curl? ( net-misc/curl ) dbus? ( sys-apps/dbus )
+SLOT=0
+SRC_URI=mirror://sourceforge/deadbeef/deadbeef-0.4.1.tar.bz2
+_eclasses_=fdo-mime	0acfe1a88fd8751a1d5dc671168219fa
+_md5_=4e1df1496dc020ff9c8160f0367149ec

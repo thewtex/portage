@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-accessibility/edbrowse/edbrowse-3.4.7.ebuild,v 1.2 2011/05/16 12:23:15 cbrannon Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-accessibility/edbrowse/edbrowse-3.4.7.ebuild,v 1.3 2011/11/15 16:35:58 axs Exp $
 
 EAPI="4"
 inherit eutils
@@ -12,7 +12,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="linguas_fr odbc"
-COMMON_DEPEND="dev-lang/spidermonkey
+COMMON_DEPEND="<dev-lang/spidermonkey-1.8.5
 	>=sys-libs/readline-6.0
 	>=net-misc/curl-7.17.0
 	>=dev-libs/libpcre-7.8
@@ -29,7 +29,7 @@ src_prepare() {
 src_compile() {
 	local JSLIB=-ljs
 
-	if has_version ">=dev-lang/spidermonkey-1.9"; then
+	if has_version "=dev-lang/spidermonkey-1.8.2*"; then
 		JSLIB=-lmozjs
 	fi
 

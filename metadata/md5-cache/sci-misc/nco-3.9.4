@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install setup
+DEPEND=sci-libs/netcdf mpi? ( virtual/mpi ) udunits? ( sci-libs/udunits ) ncap2? ( !mpi? ( dev-java/antlr:0 ) ) doc? ( virtual/latex-base )
+DESCRIPTION=Command line utilities for operating on netCDF files
+EAPI=1
+HOMEPAGE=http://nco.sourceforge.net/
+IUSE=mpi doc ncap2 udunits
+KEYWORDS=~amd64 ~x86 ~ppc
+LICENSE=GPL-3
+RDEPEND=sci-libs/netcdf mpi? ( virtual/mpi ) udunits? ( sci-libs/udunits )
+SLOT=0
+SRC_URI=http://dust.ess.uci.edu/nco/src/nco-3.9.4.tar.gz
+_md5_=429425b27c4022b164dab69c89521050

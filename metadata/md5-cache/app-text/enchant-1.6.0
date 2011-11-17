@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst prepare setup
+DEPEND=dev-libs/glib:2 aspell? ( app-text/aspell ) hunspell? ( >=app-text/hunspell-1.2.1 ) zemberek? ( dev-libs/dbus-glib ) dev-util/pkgconfig || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=Spellchecker wrapping library
+EAPI=3
+HOMEPAGE=http://www.abisource.com/enchant/
+IUSE=aspell +hunspell static-libs zemberek
+KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 sh sparc x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris
+LICENSE=LGPL-2.1
+RDEPEND=dev-libs/glib:2 aspell? ( app-text/aspell ) hunspell? ( >=app-text/hunspell-1.2.1 ) zemberek? ( dev-libs/dbus-glib ) zemberek? ( app-text/zemberek-server )
+SLOT=0
+SRC_URI=http://www.abisource.com/downloads/enchant/1.6.0/enchant-1.6.0.tar.gz
+_eclasses_=autotools	b81740a014934d6736a8795cdedb452e	confutils	a80706bb5b9ddcf6bbd14365656d4985	eutils	33ef77a15337022e05342d2c772a7a5a	libtool	76720aa53cbace6123aac554983eadfa	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=6df4bf9527a353d58a6ad3d8a4ce37dd

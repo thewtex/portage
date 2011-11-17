@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst prepare setup
+DEPEND=x11-misc/gccmakedep x11-misc/imake
+DESCRIPTION=Free Software Implementation of the NX Server
+EAPI=2
+HOMEPAGE=http://freenx.berlios.de/ https://launchpad.net/~freenx-team
+IUSE=+nxclient rdesktop vnc
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=dev-tcltk/expect media-fonts/font-cursor-misc media-fonts/font-misc-misc net-analyzer/gnu-netcat <net-misc/nx-3.5.0 sys-apps/gawk virtual/ssh x11-apps/xauth x11-apps/xrdb x11-apps/sessreg nxclient? ( net-misc/nxclient ) !nxclient? ( !net-misc/nxclient || ( x11-misc/xdialog x11-apps/xmessage ) ) rdesktop? ( net-misc/rdesktop ) vnc? ( x11-misc/x11vnc || ( net-misc/tightvnc net-misc/vnc ) )
+SLOT=0
+SRC_URI=http://ppa.launchpad.net/freenx-team/ppa/ubuntu/pool/main/f/freenx-server/freenx-server_0.7.3+teambzr104.orig.tar.gz
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
+_md5_=988b4aaba5a947335e12fe11be59bd67

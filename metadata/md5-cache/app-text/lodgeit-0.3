@@ -1,0 +1,12 @@
+DEFINED_PHASES=install unpack
+DESCRIPTION=Command-line interface to paste.pocoo.org
+EAPI=2
+HOMEPAGE=http://paste.pocoo.org/
+IUSE=vim
+KEYWORDS=amd64 x86
+LICENSE=as-is
+RDEPEND=dev-lang/python vim? ( || ( app-editors/vim[python] app-editors/gvim[python] ) )
+RESTRICT=test
+SLOT=0
+SRC_URI=http://dev.pocoo.org/hg/lodgeit-main/raw-file/tip/scripts/lodgeit.py -> lodgeit-0.3.py vim? ( http://www.vim.org/scripts/download_script.php?src_id=8848 -> lodgeit-0.3.vim )
+_md5_=e9a59d59bb479b26e82e8d3c081fed6c

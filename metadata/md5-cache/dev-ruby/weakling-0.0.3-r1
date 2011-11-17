@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install preinst prepare setup test unpack
+DEPEND=dev-java/bytelist dev-java/jruby >=virtual/jdk-1.5 >=dev-java/java-config-2.1.9-r1 ruby_targets_jruby? ( dev-java/jruby ) ruby_targets_jruby? ( virtual/rubygems[ruby_targets_jruby] ) test? ( ruby_targets_jruby? ( virtual/rubygems[ruby_targets_jruby] ) )
+DESCRIPTION=weakling: a collection of weakref utilities for Ruby
+EAPI=2
+HOMEPAGE=http://github.com/headius/weakling
+IUSE=elibc_FreeBSD elibc_FreeBSD elibc_FreeBSD ruby_targets_jruby doc test
+KEYWORDS=amd64 x86
+LICENSE=Apache-2.0
+RDEPEND=dev-java/bytelist dev-java/jruby >=virtual/jre-1.5 >=dev-java/java-config-2.1.9-r1 ruby_targets_jruby? ( dev-java/jruby ) ruby_targets_jruby? ( virtual/rubygems[ruby_targets_jruby] )
+SLOT=0
+SRC_URI=mirror://rubygems/weakling-0.0.3.gem
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	java-pkg-2	5fe9c5085c2a9785371d4fb8f05b46b1	java-pkg-simple	a5cb94f945b287e02927575a2a9e09e1	java-utils-2	03ab8cac2b9deec34f79c505eb42a99d	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	ruby-fakegem	7c47bb49102ac90cbf2f8e0fefbaed6d	ruby-ng	9306a3d60da89e858115fafece052b0d	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
+_md5_=f92b5841d85152326babf9ecde183560

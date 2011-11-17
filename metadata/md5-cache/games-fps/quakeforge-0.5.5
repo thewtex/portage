@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst preinst setup unpack
+DEPEND=opengl? ( virtual/opengl ) sdl? ( media-libs/libsdl ) svga? ( media-libs/svgalib ) X? ( x11-libs/libX11 x11-libs/libXext x11-libs/libXxf86vm ) ncurses? ( sys-libs/ncurses ) vorbis? ( media-libs/libogg media-libs/libvorbis ) zlib? ( sys-libs/zlib ) xv? ( x11-libs/libX11 x11-libs/libXext x11-libs/libXxf86vm ) dga? ( x11-libs/libXxf86dga ) alsa? ( media-libs/alsa-lib ) cdinstall? ( games-fps/quake1-data ) sys-devel/bison sys-devel/flex
+DESCRIPTION=A new 3d engine based off of id Softwares's legendary Quake and QuakeWorld game engine
+HOMEPAGE=http://www.quakeforge.net/
+IUSE=cdinstall debug fbcon opengl sdl svga X ncurses vorbis zlib ipv6 xv dga alsa oss
+KEYWORDS=ppc x86
+LICENSE=GPL-2
+RDEPEND=opengl? ( virtual/opengl ) sdl? ( media-libs/libsdl ) svga? ( media-libs/svgalib ) X? ( x11-libs/libX11 x11-libs/libXext x11-libs/libXxf86vm ) ncurses? ( sys-libs/ncurses ) vorbis? ( media-libs/libogg media-libs/libvorbis ) zlib? ( sys-libs/zlib ) xv? ( x11-libs/libX11 x11-libs/libXext x11-libs/libXxf86vm ) dga? ( x11-libs/libXxf86dga ) alsa? ( media-libs/alsa-lib )
+RESTRICT=userpriv
+SLOT=0
+SRC_URI=mirror://sourceforge/quake/quakeforge-0.5.5.tar.bz2
+_eclasses_=base	dba02c674ce4dff67657c692954d7ef0	eutils	33ef77a15337022e05342d2c772a7a5a	games	c11e6cb73d545cdf3d36dc4bb7c753e4	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=cfb8ad450dedc8ed6e7f0b37d3696465

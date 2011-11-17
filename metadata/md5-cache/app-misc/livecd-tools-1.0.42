@@ -1,0 +1,11 @@
+DEFINED_PHASES=install setup unpack
+DESCRIPTION=Gentoo LiveCD tools for autoconfiguration of hardware
+HOMEPAGE=http://wolf31o2.org/projects/livecd-tools
+IUSE=opengl X
+KEYWORDS=alpha amd64 hppa ia64 ~mips ppc ppc64 sparc x86
+LICENSE=GPL-2
+RDEPEND=dev-util/dialog sys-apps/pciutils sys-apps/gawk sys-apps/sed alpha? ( opengl? ( virtual/opengl x11-misc/mkxf86config app-admin/eselect-opengl ) X? ( >=x11-misc/mkxf86config-0.9.7 ) ) amd64? ( opengl? ( virtual/opengl x11-misc/mkxf86config app-admin/eselect-opengl ) X? ( >=x11-misc/mkxf86config-0.9.2 ) ) x86? ( opengl? ( virtual/opengl x11-misc/mkxf86config app-admin/eselect-opengl ) X? ( x11-misc/mkxf86config ) ) ppc? ( opengl? ( virtual/opengl x11-misc/mkxf86config app-admin/eselect-opengl ) X? ( >=x11-misc/mkxf86config-0.9.7 ) )
+SLOT=0
+SRC_URI=mirror://gentoo/livecd-tools-1.0.42.tar.bz2 http://wolf31o2.org/sources/livecd-tools/livecd-tools-1.0.42.tar.bz2
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=293f85f784f0bd682587a6806cfdb1f8

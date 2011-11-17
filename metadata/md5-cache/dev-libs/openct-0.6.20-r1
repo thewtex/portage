@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst setup
+DEPEND=pcsc-lite? ( >=sys-apps/pcsc-lite-1.7.2-r1 ) usb? ( virtual/libusb:0 ) >=sys-fs/udev-096 sys-devel/libtool doc? ( app-doc/doxygen )
+DESCRIPTION=library for accessing smart card terminals
+EAPI=2
+HOMEPAGE=http://www.opensc-project.org/openct/
+IUSE=doc pcsc-lite usb debug
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
+LICENSE=LGPL-2.1
+RDEPEND=pcsc-lite? ( >=sys-apps/pcsc-lite-1.7.2-r1 ) usb? ( virtual/libusb:0 ) >=sys-fs/udev-096 sys-devel/libtool
+SLOT=0
+SRC_URI=http://www.opensc-project.org/files/openct/openct-0.6.20.tar.gz
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	flag-o-matic	630c256d55702ba23515f64952987828	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=4af3fb32a8f65ba0c1686af11bad6135

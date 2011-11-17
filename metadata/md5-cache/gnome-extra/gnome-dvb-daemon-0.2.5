@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup unpack
+DEPEND=>=dev-libs/glib-2.28.5 >=media-libs/gstreamer-0.10.29 >=media-libs/gst-plugins-good-0.10.14 >=media-libs/gst-plugins-bad-0.10.13 >=dev-libs/libgee-0.5:0 >=dev-db/sqlite-3.4 >=media-libs/gst-rtsp-server-0.10.7 media-plugins/gst-plugins-dvb >=dev-lang/python-2.5 dev-python/gst-python dev-python/pygobject:3 >=dev-libs/gobject-introspection-0.10.8 || ( sys-fs/udev[gudev] sys-fs/udev[extras] ) vala? ( >=dev-lang/vala-0.14 ) totem? ( media-video/totem ) >=dev-lang/perl-5.8.1 >=dev-util/intltool-0.40.0 >=dev-util/pkgconfig-0.9 nls? ( >=sys-devel/gettext-0.18.1 ) >=sys-devel/libtool-2.2.6 >=app-admin/eselect-python-20091230 >=sys-apps/sed-4
+DESCRIPTION=Setup your DVB devices, record and watch TV shows and browse EPG using GStreamer
+EAPI=3
+HOMEPAGE=http://live.gnome.org/DVBDaemon
+IUSE=nls totem vala debug
+KEYWORDS=~amd64
+LICENSE=GPL-2
+RDEPEND=>=dev-libs/glib-2.28.5 >=media-libs/gstreamer-0.10.29 >=media-libs/gst-plugins-good-0.10.14 >=media-libs/gst-plugins-bad-0.10.13 >=dev-libs/libgee-0.5:0 >=dev-db/sqlite-3.4 >=media-libs/gst-rtsp-server-0.10.7 media-plugins/gst-plugins-dvb >=dev-lang/python-2.5 dev-python/gst-python dev-python/pygobject:3 >=dev-libs/gobject-introspection-0.10.8 || ( sys-fs/udev[gudev] sys-fs/udev[extras] ) vala? ( >=dev-lang/vala-0.14 ) totem? ( media-video/totem ) >=app-admin/eselect-python-20091230
+SLOT=0
+SRC_URI=mirror://gnome/sources/gnome-dvb-daemon/0.2/gnome-dvb-daemon-0.2.5.tar.bz2
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	gnome.org	8fef8f967214f56e08fa92d61163d891	gnome2	3aa9fb56280cbb64b3d42e0db59ed76e	gnome2-utils	dfcd797d126b46852d33936f4a0a1702	libtool	76720aa53cbace6123aac554983eadfa	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	python	6bbd984910e27780e5d0ea543d83ef84	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
+_md5_=55b9dcec6d1eb6143b00b8a829b24ef6

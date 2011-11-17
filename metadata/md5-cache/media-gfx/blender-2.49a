@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare
+DEPEND=>=dev-util/scons-0.98 sys-devel/gcc[openmp?] x11-base/xorg-server ffmpeg? ( virtual/ffmpeg[encode,theora] ) media-libs/openjpeg media-libs/tiff >=dev-lang/python-2.5 nls? ( >=media-libs/freetype-2.0 virtual/libintl >=media-libs/ftgl-2.1 ) openal? ( >=media-libs/openal-1.6.372 >=media-libs/freealut-1.1.0-r1 ) media-libs/openexr media-libs/libpng blender-game? ( >=media-libs/libsdl-1.2[joystick] ) >=media-libs/libsdl-1.2 ogg? ( media-libs/libogg ) virtual/jpeg virtual/opengl dev-util/scons >=app-admin/eselect-python-20091230
+DESCRIPTION=3D Creation/Animation/Publishing System
+EAPI=2
+HOMEPAGE=http://www.blender.org/
+IUSE=blender-game ffmpeg nls ogg openmp verse openal
+KEYWORDS=amd64 ppc ppc64 x86
+LICENSE=|| ( GPL-2 BL BSD )
+RDEPEND=ffmpeg? ( virtual/ffmpeg[encode,theora] ) media-libs/openjpeg media-libs/tiff >=dev-lang/python-2.5 nls? ( >=media-libs/freetype-2.0 virtual/libintl >=media-libs/ftgl-2.1 ) openal? ( >=media-libs/openal-1.6.372 >=media-libs/freealut-1.1.0-r1 ) media-libs/openexr media-libs/libpng blender-game? ( >=media-libs/libsdl-1.2[joystick] ) >=media-libs/libsdl-1.2 ogg? ( media-libs/libogg ) virtual/jpeg virtual/opengl >=app-admin/eselect-python-20091230
+SLOT=0
+SRC_URI=http://download.blender.org/source/blender-2.49a.tar.gz
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	python	6bbd984910e27780e5d0ea543d83ef84	scons-utils	4135612016ca47f58abbd2ed70bbd539	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=00bc9d579717302d4d465b142407fbcf

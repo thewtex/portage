@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=nls? ( sys-devel/gettext ) >=dev-lang/python-2.6[sqlite] >=dev-python/pygtk-2 >=dev-python/pygobject-2 dev-python/pycairo dev-libs/libxml2[python] media-libs/fontconfig >=media-libs/freetype-2 dev-db/sqlite:3 x11-libs/gtk+:2
+DESCRIPTION=A font management application for the GNOME desktop
+EAPI=3
+HOMEPAGE=http://code.google.com/p/font-manager
+IUSE=debug nls linguas_it linguas_ru linguas_sk
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=nls? ( virtual/libintl )
+RESTRICT=mirror strip
+SLOT=0
+SRC_URI=http://font-manager.googlecode.com/files/font-manager-0.5.7.tar.bz2
+_md5_=006053019e315b54e4bc8d7daa263ddd

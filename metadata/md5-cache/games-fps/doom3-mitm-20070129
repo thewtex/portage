@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DEPEND=app-arch/unzip
+DESCRIPTION=Doom 3 Make it to Morning - Single player maps
+EAPI=2
+HOMEPAGE=http://www.makeittomorning.co.uk/
+IUSE=dedicated opengl
+KEYWORDS=amd64 x86
+LICENSE=as-is
+RDEPEND=games-fps/doom3-roe games-fps/doom3[opengl,roe] dedicated? ( games-fps/doom3[dedicated] ) opengl? ( || ( games-fps/doom3[opengl] games-fps/doom3[-dedicated] ) ) !dedicated? ( !opengl? ( || ( games-fps/doom3[opengl] games-fps/doom3[-dedicated] ) ) )
+RESTRICT=mirror strip
+SLOT=0
+SRC_URI=http://www.doomwadstation.com/doom3/maps/Morning/mitm_4.zip http://www.doomwadstation.com/doom3/maps/Morning/mitm5.zip
+_eclasses_=base	dba02c674ce4dff67657c692954d7ef0	eutils	33ef77a15337022e05342d2c772a7a5a	games	c11e6cb73d545cdf3d36dc4bb7c753e4	games-mods	7e4c3951dad796fdd5d6f3025af67588	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=b7dd65519404efb9240af40cc4ed3540

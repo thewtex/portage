@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DEPEND=media-fonts/dejavu media-libs/quesoglc media-libs/glpng virtual/opengl virtual/glu x11-libs/libXmu mixer? ( media-libs/sdl-mixer ) !mixer? ( media-libs/freealut media-libs/openal ) nls? ( virtual/libintl ) sdl? ( media-libs/libsdl[X] media-libs/sdl-image[png] ) !sdl? ( media-libs/freeglut ) nls? ( sys-devel/gettext )
+DESCRIPTION=Chromium B.S.U. - an arcade game
+EAPI=2
+HOMEPAGE=http://chromium-bsu.sourceforge.net/
+IUSE=mixer nls +sdl
+KEYWORDS=amd64 ~ppc x86
+LICENSE=Clarified-Artistic
+RDEPEND=media-fonts/dejavu media-libs/quesoglc media-libs/glpng virtual/opengl virtual/glu x11-libs/libXmu mixer? ( media-libs/sdl-mixer ) !mixer? ( media-libs/freealut media-libs/openal ) nls? ( virtual/libintl ) sdl? ( media-libs/libsdl[X] media-libs/sdl-image[png] ) !sdl? ( media-libs/freeglut )
+SLOT=0
+SRC_URI=mirror://sourceforge/chromium-bsu/chromium-bsu-0.9.15.tar.gz
+_eclasses_=base	dba02c674ce4dff67657c692954d7ef0	eutils	33ef77a15337022e05342d2c772a7a5a	games	c11e6cb73d545cdf3d36dc4bb7c753e4	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=ead212a4bbc838f7c4000f6ca95fd827

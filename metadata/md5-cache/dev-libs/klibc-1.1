@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst postrm preinst setup unpack
+DEPEND=dev-lang/perl virtual/linux-sources kernel_linux? ( sys-apps/module-init-tools ) sys-apps/sed kernel_linux? ( virtual/linux-sources )
+DESCRIPTION=A minimal libc subset for use with initramfs.
+HOMEPAGE=http://www.zytor.com/mailman/listinfo/klibc
+IUSE=kernel_linux
+KEYWORDS=~amd64 ~mips ~ppc ~x86
+LICENSE=|| ( GPL-2 LGPL-2 )
+RDEPEND=dev-lang/perl kernel_linux? ( sys-apps/module-init-tools )
+RESTRICT=strip
+SLOT=0
+SRC_URI=ftp://ftp.kernel.org/pub/linux/libs/klibc/klibc-1.1.tar.bz2 ftp://ftp.kernel.org/pub/linux/libs/klibc/Stable/klibc-1.1.tar.bz2 ftp://ftp.kernel.org/pub/linux/libs/klibc/Testing/klibc-1.1.tar.bz2
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	linux-info	0a300da62c346bbaee5bcf82727f23ac	linux-mod	a4e07f78bacb6b129ea7b18ad060dbfc	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
+_md5_=c80720bab2ef967eef4ef5f0a8b8c6e0

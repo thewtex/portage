@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare test unpack
+DEPEND=>=x11-libs/gtk+-2.14:2 || ( gnome-base/gnome-panel[bonobo] <gnome-base/gnome-panel-2.32 ) >=dev-libs/glib-2.16 gtkhotkey? ( x11-libs/gtkhotkey ) dev-util/pkgconfig >=dev-util/cmake-2.4.8 >=sys-apps/sed-4 >=dev-util/cmake-2.8.4 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=Browse, open and manage files in your computer directly from the GNOME panel.
+EAPI=2
+HOMEPAGE=http://code.google.com/p/gnome-menu-file-browser-applet/
+IUSE=gtkhotkey debug
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=>=x11-libs/gtk+-2.14:2 || ( gnome-base/gnome-panel[bonobo] <gnome-base/gnome-panel-2.32 ) >=dev-libs/glib-2.16 gtkhotkey? ( x11-libs/gtkhotkey )
+SLOT=0
+SRC_URI=http://gnome-menu-file-browser-applet.googlecode.com/files/file-browser-applet-0.6.6.tar.gz
+_eclasses_=base	dba02c674ce4dff67657c692954d7ef0	cmake-utils	00f9fd5a80cf3605f6d9a2e808c48a92	eutils	33ef77a15337022e05342d2c772a7a5a	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	flag-o-matic	630c256d55702ba23515f64952987828	gnome.org	8fef8f967214f56e08fa92d61163d891	gnome2	3aa9fb56280cbb64b3d42e0db59ed76e	gnome2-utils	dfcd797d126b46852d33936f4a0a1702	libtool	76720aa53cbace6123aac554983eadfa	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
+_md5_=26674ccde92a236f67d5b8e62c5095d2

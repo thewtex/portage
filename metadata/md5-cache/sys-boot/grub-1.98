@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst preinst unpack
+DEPEND=>=sys-libs/ncurses-5.2-r5 dev-libs/lzo mkfont? ( >=media-libs/freetype-2 media-fonts/unifont ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=GNU GRUB 2 boot loader
+EAPI=3
+HOMEPAGE=http://www.gnu.org/software/grub/
+IUSE=custom-cflags debug static mkfont +binfont
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+PDEPEND=sys-boot/boot-update
+PROVIDE=virtual/bootloader
+SLOT=0
+SRC_URI=ftp://alpha.gnu.org/gnu/grub/grub-1.98.tar.gz binfont? ( http://www.funtoo.org/archive/grub/grub-unifont-1.0.tar.bz2 )
+_eclasses_=autotools	b81740a014934d6736a8795cdedb452e	eutils	33ef77a15337022e05342d2c772a7a5a	flag-o-matic	630c256d55702ba23515f64952987828	libtool	76720aa53cbace6123aac554983eadfa	mount-boot	410bdaef41d2c8674e24edfa9d521177	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=ea4706c0ef4058c2b5d7c27dc9308d87

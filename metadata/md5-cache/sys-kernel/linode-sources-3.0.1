@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst preinst prepare setup unpack
+DEPEND=binary? ( >=sys-kernel/genkernel-3.4.12.6-r4 )
+DESCRIPTION=Full Linux kernel sources - Linode patchset
+EAPI=2
+HOMEPAGE=http://www.linode.com
+IUSE=binary
+KEYWORDS=~x86 ~amd64
+LICENSE=GPL-2
+RDEPEND=binary? ( >=sys-fs/udev-160 )
+RESTRICT=binchecks strip
+SLOT=3.0.1
+SRC_URI=mirror://kernel/linux/kernel/v3.0/linux-3.0.1.tar.bz2
+_eclasses_=mount-boot	410bdaef41d2c8674e24edfa9d521177
+_md5_=0bb78674afc1d270d8387e863f7c49f8

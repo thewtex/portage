@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install unpack
+DEPEND=all_sfx? ( app-arch/unrar )
+DESCRIPTION=RAR compressor/uncompressor
+HOMEPAGE=http://www.rarsoft.com/
+IUSE=all_sfx static
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=RAR
+RDEPEND=sys-libs/glibc
+SLOT=0
+SRC_URI=x86? ( http://www.rarlab.com/rar/rarlinux-3.9.3.tar.gz ) amd64? ( http://www.rarlab.com/rar/rarlinux-x64-3.9.3.tar.gz ) all_sfx? ( http://www.rarlab.com/rar/rarlinux-3.9.3.tar.gz http://www.rarlab.com/rar/rarlinux-x64-3.9.3.tar.gz http://www.rarlab.com/rar/winrar-x64-393.exe )
+_md5_=2f8aa773403602d6cc109e64a76882f6

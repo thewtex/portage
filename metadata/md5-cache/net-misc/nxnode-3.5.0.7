@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst preinst prepare
+DESCRIPTION=shared components between the different editions of NoMachine's NX Servers
+EAPI=2
+HOMEPAGE=http://www.nomachine.com/
+IUSE=rdesktop vnc
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=nomachine
+RDEPEND==net-misc/nxclient-3.5.0*[cups] sys-process/lsof x11-libs/libICE x11-libs/libXmu x11-libs/libSM x11-libs/libXt x11-libs/libXaw x11-libs/libXpm x11-apps/xrdb rdesktop? ( net-misc/rdesktop ) vnc? ( x11-misc/x11vnc net-misc/tightvnc )
+RESTRICT=strip
+SLOT=0
+SRC_URI=amd64? ( http://64.34.161.181/download/3.5.0/Linux/nxnode-3.5.0-7.x86_64.tar.gz ) x86? ( http://64.34.161.181/download/3.5.0/Linux/nxnode-3.5.0-7.i386.tar.gz )
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
+_md5_=59291dce706ab63324ba1697f8b247f3

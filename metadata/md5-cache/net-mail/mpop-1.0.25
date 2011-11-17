@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare setup
+DEPEND=gnome-keyring? ( dev-python/gnome-keyring-python gnome-base/libgnome-keyring ) idn? ( net-dns/libidn ) nls? ( virtual/libintl ) sasl? ( virtual/gsasl ) ssl? ( gnutls? ( net-libs/gnutls ) !gnutls? ( dev-libs/openssl ) ) nls? ( sys-devel/gettext ) dev-util/pkgconfig >=app-admin/eselect-python-20091230
+DESCRIPTION=A small, fast, and portable POP3 client
+EAPI=4
+HOMEPAGE=http://mpop.sourceforge.net/
+IUSE=gnome-keyring gnutls idn nls sasl ssl vim-syntax
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=gnome-keyring? ( dev-python/gnome-keyring-python gnome-base/libgnome-keyring ) idn? ( net-dns/libidn ) nls? ( virtual/libintl ) sasl? ( virtual/gsasl ) ssl? ( gnutls? ( net-libs/gnutls ) !gnutls? ( dev-libs/openssl ) ) >=app-admin/eselect-python-20091230
+REQUIRED_USE=gnutls? ( ssl )
+SLOT=0
+SRC_URI=mirror://sourceforge/mpop/mpop-1.0.25.tar.bz2
+_eclasses_=multilib	c4883399ddd3e1d2bd291607b30fded4	python	6bbd984910e27780e5d0ea543d83ef84	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf
+_md5_=c7386ec9e09e311d1278410aa29fcfec

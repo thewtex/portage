@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare setup test unpack
+DEPEND=dev-libs/hyphen dev-libs/libxml2 media-libs/fontconfig media-libs/freetype:2 media-libs/lcms:2 media-libs/libpng media-libs/tiff net-print/cups sys-libs/zlib x11-libs/qt-core:4 x11-libs/qt-gui:4 virtual/jpeg spell? ( app-text/aspell ) pdf? ( app-text/podofo ) cairo? ( x11-libs/cairo[X,svg] ) dev-libs/boost >=dev-util/cmake-2.8.4 userland_GNU? ( >=sys-apps/findutils-4.4.0 ) >=app-admin/eselect-python-20091230 || ( =dev-lang/python-2.7* =dev-lang/python-2.6* )
+DESCRIPTION=Desktop publishing (DTP) and layout program
+EAPI=3
+HOMEPAGE=http://www.scribus.net/
+IUSE=cairo debug examples +minimal +pdf spell templates
+KEYWORDS=~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/hyphen dev-libs/libxml2 media-libs/fontconfig media-libs/freetype:2 media-libs/lcms:2 media-libs/libpng media-libs/tiff net-print/cups sys-libs/zlib x11-libs/qt-core:4 x11-libs/qt-gui:4 virtual/jpeg spell? ( app-text/aspell ) pdf? ( app-text/podofo ) cairo? ( x11-libs/cairo[X,svg] ) app-text/ghostscript-gpl >=app-admin/eselect-python-20091230 || ( =dev-lang/python-2.7* =dev-lang/python-2.6* )
+SLOT=0
+SRC_URI=mirror://sourceforge/scribus/scribus-1.4.0.rc5.tar.bz2
+_eclasses_=base	dba02c674ce4dff67657c692954d7ef0	cmake-utils	00f9fd5a80cf3605f6d9a2e808c48a92	eutils	33ef77a15337022e05342d2c772a7a5a	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	flag-o-matic	630c256d55702ba23515f64952987828	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	python	6bbd984910e27780e5d0ea543d83ef84	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=68935255d6ead292305c6d816d8d4e51

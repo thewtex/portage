@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst postrm prerm setup
+DEPEND=vacation? ( dev-perl/DBI virtual/perl-MIME-Base64 dev-perl/MIME-EncWords dev-perl/Email-Valid dev-perl/Mail-Sender dev-perl/log-dispatch dev-perl/Log-Log4perl dev-perl/MIME-Charset mysql? ( dev-perl/DBD-mysql ) postgres? ( dev-perl/DBD-Pg ) ) xmlrpc? ( dev-php/ZendFramework[-minimal] ) dev-lang/php[session,unicode,imap,postgres?,xmlrpc?] || ( virtual/httpd-cgi virtual/httpd-fastcgi ) virtual/httpd-php >=app-admin/webapp-config-1.50.15
+DESCRIPTION=Web Based Management tool for Postfix style virtual domains and users.
+EAPI=2
+HOMEPAGE=http://postfixadmin.sourceforge.net
+IUSE=mysql postgres +vacation xmlrpc vhosts
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=vacation? ( dev-perl/DBI virtual/perl-MIME-Base64 dev-perl/MIME-EncWords dev-perl/Email-Valid dev-perl/Mail-Sender dev-perl/log-dispatch dev-perl/Log-Log4perl dev-perl/MIME-Charset mysql? ( dev-perl/DBD-mysql ) postgres? ( dev-perl/DBD-Pg ) ) xmlrpc? ( dev-php/ZendFramework[-minimal] ) dev-lang/php[session,unicode,imap,postgres?,xmlrpc?] virtual/httpd-php >=app-admin/webapp-config-1.50.15
+SLOT=2.3.2
+SRC_URI=mirror://sourceforge/postfixadmin/postfixadmin-2.3.2.tar.gz
+_eclasses_=confutils	a80706bb5b9ddcf6bbd14365656d4985	depend.php	d9282c09e9ff12db4716eb2aa8c4c557	eutils	33ef77a15337022e05342d2c772a7a5a	multilib	c4883399ddd3e1d2bd291607b30fded4	phpconfutils	e108303831029e5b8a9d24b991b1d62a	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	webapp	b79de1dd84dd3022661b31ea1d6685e2
+_md5_=f1739eb20629bf320ecb630b7552f88e

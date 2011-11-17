@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst preinst prepare setup
+DEPEND=x11-libs/libXau x11-libs/libXdmcp x11-libs/libXext x11-libs/libX11 motif? ( x11-libs/openmotif ) !motif? ( x11-libs/libXaw ) media-libs/mesa glew? ( media-libs/glew ) virtual/opengl media-libs/libpng virtual/jpeg media-libs/imlib2 >=media-libs/freetype-2 media-libs/fontconfig curl? ( net-misc/curl ) expat? ( dev-libs/expat ) osc? ( media-libs/liblo ) !xulrunner? ( dev-lang/spidermonkey ) xulrunner? ( net-libs/xulrunner !=dev-lang/spidermonkey-1.8.2* ) nsplugin? ( !xulrunner? ( www-client/firefox ) ) >=dev-util/pkgconfig-0.22 java? ( >=virtual/jdk-1.4 ) java? ( >=dev-java/java-config-2.1.9-r1 )
+DESCRIPTION=VRML97 and X3D compliant browser, library, and web-browser plugin
+EAPI=2
+HOMEPAGE=http://freewrl.sourceforge.net/
+IUSE=curl debug expat +glew java libeai motif +nsplugin osc +sox static-libs xulrunner elibc_FreeBSD java
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=x11-libs/libXau x11-libs/libXdmcp x11-libs/libXext x11-libs/libX11 motif? ( x11-libs/openmotif ) !motif? ( x11-libs/libXaw ) media-libs/mesa glew? ( media-libs/glew ) virtual/opengl media-libs/libpng virtual/jpeg media-libs/imlib2 >=media-libs/freetype-2 media-libs/fontconfig curl? ( net-misc/curl ) expat? ( dev-libs/expat ) osc? ( media-libs/liblo ) !xulrunner? ( dev-lang/spidermonkey ) xulrunner? ( net-libs/xulrunner !=dev-lang/spidermonkey-1.8.2* ) nsplugin? ( !xulrunner? ( www-client/firefox ) ) media-fonts/dejavu || ( media-gfx/imagemagick media-gfx/graphicsmagick[imagemagick] ) app-arch/unzip java? ( >=virtual/jre-1.4 ) sox? ( media-sound/sox ) java? ( >=dev-java/java-config-2.1.9-r1 )
+SLOT=0
+SRC_URI=mirror://sourceforge/freewrl/freewrl-1.22.12_pre2.tar.bz2
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	flag-o-matic	630c256d55702ba23515f64952987828	java-pkg-opt-2	31a1663247652448431dcc8c194e2752	java-utils-2	03ab8cac2b9deec34f79c505eb42a99d	multilib	c4883399ddd3e1d2bd291607b30fded4	nsplugins	d0909899a7f8e976fd2fe4c043d4b804	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
+_md5_=825755bacc1abe4df687e36c4f6062d2

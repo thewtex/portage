@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare unpack
+DEPEND=!sci-misc/boinc-bin !app-admin/quickswitch >=app-misc/ca-certificates-20080809 dev-libs/openssl net-misc/curl[ssl,-gnutls] sys-apps/util-linux sys-libs/zlib cuda? ( >=dev-util/nvidia-cuda-toolkit-2.1 >=x11-drivers/nvidia-drivers-180.22 ) X? ( dev-db/sqlite:3 media-libs/freeglut sys-libs/glibc:2.2 virtual/jpeg x11-libs/gtk+:2 >=x11-libs/libnotify-0.7 x11-libs/wxGTK:2.8[X,opengl] ) sys-devel/gettext app-text/docbook-xml-dtd:4.4 app-text/docbook2X || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=The Berkeley Open Infrastructure for Network Computing
+EAPI=4
+HOMEPAGE=http://boinc.ssl.berkeley.edu/
+IUSE=X cuda
+KEYWORDS=~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=LGPL-2.1
+RDEPEND=!sci-misc/boinc-bin !app-admin/quickswitch >=app-misc/ca-certificates-20080809 dev-libs/openssl net-misc/curl[ssl,-gnutls] sys-apps/util-linux sys-libs/zlib cuda? ( >=dev-util/nvidia-cuda-toolkit-2.1 >=x11-drivers/nvidia-drivers-180.22 ) X? ( dev-db/sqlite:3 media-libs/freeglut sys-libs/glibc:2.2 virtual/jpeg x11-libs/gtk+:2 >=x11-libs/libnotify-0.7 x11-libs/wxGTK:2.8[X,opengl] )
+SLOT=0
+SRC_URI=http://dev.gentooexperimental.org/~scarabeus/boinc-6.12.42.tar.xz
+_eclasses_=autotools	b81740a014934d6736a8795cdedb452e	base	dba02c674ce4dff67657c692954d7ef0	eutils	33ef77a15337022e05342d2c772a7a5a	flag-o-matic	630c256d55702ba23515f64952987828	libtool	76720aa53cbace6123aac554983eadfa	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	wxwidgets	9b355ad2394810db50553e45cd663578
+_md5_=b2454bcd279bc9adb1bb109facdd4412

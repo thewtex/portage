@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install unpack
+DEPEND=dev-util/pkgconfig sys-apps/help2man luajit? ( dev-lang/luajit:2 ) !luajit? ( >=dev-lang/lua-5.1 ) dev-db/sqlite:3 dev-libs/glib:2 dev-libs/libunique:1 net-libs/libsoup:2.4 net-libs/webkit-gtk:2 x11-libs/gtk+:2 dev-vcs/git
+DESCRIPTION=fast, small, webkit-gtk based micro-browser extensible by lua
+EAPI=3
+HOMEPAGE=http://www.luakit.org
+IUSE=luajit vim-syntax
+LICENSE=GPL-3
+RDEPEND=luajit? ( dev-lang/luajit:2 ) !luajit? ( >=dev-lang/lua-5.1 ) dev-db/sqlite:3 dev-libs/glib:2 dev-libs/libunique:1 net-libs/libsoup:2.4 net-libs/webkit-gtk:2 x11-libs/gtk+:2 dev-lua/luafilesystem vim-syntax? ( || ( app-editors/vim app-editors/gvim ) )
+SLOT=0
+_eclasses_=git-2	48dc75cccc109d7cda9f8dc3fff7a5b8
+_md5_=772af8bc96ec716d81d6a738c49f0d6b

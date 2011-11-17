@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup test unpack
+DEPEND=ruby_targets_ree18? ( dev-lang/ruby-enterprise:1.8 )
+DESCRIPTION=Virtual ebuild for bundled and unbundled RDoc
+EAPI=2
+IUSE=elibc_FreeBSD ruby_targets_ree18
+KEYWORDS=~amd64 ~x86
+RDEPEND=|| ( dev-ruby/rdoc[ruby_targets_ree18] dev-lang/ruby-enterprise ) ruby_targets_ree18? ( dev-lang/ruby-enterprise:1.8 )
+SLOT=ree18
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	java-utils-2	03ab8cac2b9deec34f79c505eb42a99d	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	ruby-ng	9306a3d60da89e858115fafece052b0d	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
+_md5_=f8261566193c2e362c7154ea65c4b5ad

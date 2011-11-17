@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst prepare prerm setup
+DEPEND=dev-libs/confuse dev-libs/expat >=dev-libs/apr-1.0 !dev-db/firebird pcre? ( dev-libs/libpcre ) >=app-admin/eselect-python-20091230 python? ( =dev-lang/python-2* )
+DESCRIPTION=A scalable distributed monitoring system for clusters and grids
+EAPI=3
+HOMEPAGE=http://ganglia.sourceforge.net/
+IUSE=minimal vhosts pcre python examples
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=BSD
+RDEPEND=dev-libs/confuse dev-libs/expat >=dev-libs/apr-1.0 !dev-db/firebird pcre? ( dev-libs/libpcre ) !minimal? ( net-analyzer/rrdtool >=app-admin/webapp-config-1.50.15 dev-lang/php[gd,xml,ctype,cgi] || ( <dev-lang/php-5.3[pcre] >=dev-lang/php-5.3 ) media-fonts/dejavu ) >=app-admin/eselect-python-20091230 python? ( =dev-lang/python-2* )
+SLOT=0
+SRC_URI=mirror://sourceforge/ganglia/ganglia-3.1.7.tar.gz
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	python	6bbd984910e27780e5d0ea543d83ef84	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	webapp	b79de1dd84dd3022661b31ea1d6685e2
+_md5_=7c25bb1b95e0715b981e79280e8554c0

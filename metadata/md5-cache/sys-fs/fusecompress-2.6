@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare unpack
+DEPEND=>=dev-libs/boost-1.33.1 bzip2? ( app-arch/bzip2 ) lzma? ( >=app-arch/xz-utils-4.999.9_beta ) lzo? ( >=dev-libs/lzo-2 ) zlib? ( sys-libs/zlib ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=provides a mountable Linux filesystem which transparently compress its content
+EAPI=3
+HOMEPAGE=http://miio.net/wordpress/projects/fusecompress/
+IUSE=bzip2 lzma lzo zlib
+KEYWORDS=~x86 ~amd64
+LICENSE=GPL-2
+RDEPEND=>=dev-libs/boost-1.33.1 bzip2? ( app-arch/bzip2 ) lzma? ( >=app-arch/xz-utils-4.999.9_beta ) lzo? ( >=dev-libs/lzo-2 ) zlib? ( sys-libs/zlib )
+SLOT=0
+SRC_URI=https://github.com/tex/fusecompress/tarball/2.6 -> fusecompress-git-2.6.tgz
+_eclasses_=autotools	b81740a014934d6736a8795cdedb452e	eutils	33ef77a15337022e05342d2c772a7a5a	libtool	76720aa53cbace6123aac554983eadfa	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=d74038ae36bb00cb55da89f7cad25395

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=dev-libs/libxml2 media-libs/freetype media-libs/libpng media-libs/openexr sys-libs/zlib virtual/jpeg blender? ( >=media-gfx/blender-2.49 ) qt4? ( x11-libs/qt-gui:4 x11-libs/qt-core:4 ) app-arch/unzip dev-lang/swig >=dev-util/scons-1.0
+DESCRIPTION=YafaRay is a raytracing open source render engine
+EAPI=2
+HOMEPAGE=http://www.yafaray.org/
+IUSE=+blender debug qt4
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=LGPL-2.1
+RDEPEND=dev-libs/libxml2 media-libs/freetype media-libs/libpng media-libs/openexr sys-libs/zlib virtual/jpeg blender? ( >=media-gfx/blender-2.49 ) qt4? ( x11-libs/qt-gui:4 x11-libs/qt-core:4 )
+SLOT=0
+SRC_URI=http://static.yafaray.org/sources/YafaRay.0.1.1.zip blender? ( http://static.yafaray.org/sources/YafaRay-blender.0.1.1.zip )
+_eclasses_=multilib	c4883399ddd3e1d2bd291607b30fded4	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf
+_md5_=f1808ea04205cec8f8577dc0a52d48db

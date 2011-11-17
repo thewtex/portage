@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=x11-libs/qt-gui:4[debug?] x11-libs/qt-webkit:4 || ( media-libs/phonon x11-libs/qt-phonon ) xmpp? ( ssl? ( dev-libs/openssl ) gnutls? ( net-libs/gnutls ) ) >=dev-util/cmake-2.8.4 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=New Qt4-based Instant Messenger (ICQ).
+EAPI=2
+HOMEPAGE=http://www.qutim.org
+IUSE=debug histman icq irc xmpp gnutls mrim ssl vkontakte yandexnarod linguas_ru linguas_bg linguas_cs linguas_de linguas_uk
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=x11-libs/qt-gui:4[debug?] x11-libs/qt-webkit:4 || ( media-libs/phonon x11-libs/qt-phonon ) xmpp? ( ssl? ( dev-libs/openssl ) gnutls? ( net-libs/gnutls ) )
+SLOT=0
+SRC_URI=http://qutim.org/uploads/src/qutim-0.2.0.tar.bz2
+_eclasses_=base	dba02c674ce4dff67657c692954d7ef0	cmake-utils	00f9fd5a80cf3605f6d9a2e808c48a92	eutils	33ef77a15337022e05342d2c772a7a5a	flag-o-matic	630c256d55702ba23515f64952987828	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	qt4-r2	562a0a4214d92cf49cc3e97d1f39d891	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=d56265610b362b600db7b41d6102232d

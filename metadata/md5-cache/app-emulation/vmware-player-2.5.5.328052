@@ -1,0 +1,13 @@
+DEFINED_PHASES=config install nofetch postinst postrm preinst prepare prerm setup unpack
+DEPEND=>=dev-lang/python-2.5[sqlite,ncurses] dev-python/lxml >=sys-apps/sed-4
+DESCRIPTION=Emulate a complete PC on your PC without the usual performance overhead of most emulators
+EAPI=2
+HOMEPAGE=http://www.vmware.com/products/desktop/ws_features.html
+KEYWORDS=-* amd64 x86
+LICENSE=vmware
+RDEPEND=~app-emulation/vmware-modules-1.0.0.25 dev-cpp/cairomm dev-cpp/libgnomecanvasmm dev-cpp/libsexymm dev-libs/libxml2 sys-libs/glibc sys-apps/pciutils >=x11-libs/libview-0.6.2 x11-libs/libXcursor x11-libs/libXft x11-libs/libXi x11-libs/libXinerama x11-libs/libXrandr x11-libs/libXtst !app-emulation/vmware-server !app-emulation/vmware-workstation
+RESTRICT=strip binchecks
+SLOT=0
+SRC_URI=x86? ( mirror://vmware/software/vmplayer/VMware-Player-2.5.5-328052.i386.bundle ) amd64? ( mirror://vmware/software/vmplayer/VMware-Player-2.5.5-328052.x86_64.bundle )
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	gnome2-utils	dfcd797d126b46852d33936f4a0a1702	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
+_md5_=2b93f936870d4ba7a5ea56dc1b06582c

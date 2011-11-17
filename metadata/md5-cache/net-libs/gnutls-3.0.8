@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=>=dev-libs/libtasn1-0.3.4 >=dev-libs/nettle-2.2[gmp] guile? ( >=dev-scheme/guile-1.8[networking] ) nls? ( virtual/libintl ) pkcs11? ( app-crypt/p11-kit ) zlib? ( >=sys-libs/zlib-1.2.3.1 ) sys-devel/libtool doc? ( dev-util/gtk-doc ) nls? ( sys-devel/gettext ) test? ( app-misc/datefudge ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=A TLS 1.2 and SSL 3.0 implementation for the GNU project
+EAPI=4
+HOMEPAGE=http://www.gnutls.org/
+IUSE=+cxx doc examples guile nls pkcs11 static-libs test zlib
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd
+LICENSE=GPL-3 LGPL-2.1
+RDEPEND=>=dev-libs/libtasn1-0.3.4 >=dev-libs/nettle-2.2[gmp] guile? ( >=dev-scheme/guile-1.8[networking] ) nls? ( virtual/libintl ) pkcs11? ( app-crypt/p11-kit ) zlib? ( >=sys-libs/zlib-1.2.3.1 )
+SLOT=0
+SRC_URI=mirror://gnu/gnutls/gnutls-3.0.8.tar.xz
+_eclasses_=autotools	b81740a014934d6736a8795cdedb452e	autotools-utils	9799469ea552910620db9dca0bca94b0	base	dba02c674ce4dff67657c692954d7ef0	eutils	33ef77a15337022e05342d2c772a7a5a	libtool	76720aa53cbace6123aac554983eadfa	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=8842738bfb0de5005118f8026361ddf7

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DEPEND=net? ( net-libs/gnet ) >=dev-cpp/gtkmm-2.4:2.4 app-arch/unzip dev-util/pkgconfig
+DESCRIPTION=FreeDoko is a Doppelkopf-game
+EAPI=2
+HOMEPAGE=http://free-doko.sourceforge.net
+IUSE=+xskatcards +gnomecards +kdecards +openclipartcards +pysolcards +backgrounds net doc
+KEYWORDS=amd64 ppc x86
+LICENSE=GPL-2
+RDEPEND=net? ( net-libs/gnet ) >=dev-cpp/gtkmm-2.4:2.4
+SLOT=0
+SRC_URI=mirror://sourceforge/free-doko/FreeDoko_0.7.8.src.zip doc? ( mirror://sourceforge/free-doko/FreeDoko_0.7.8.manual.zip ) backgrounds? ( mirror://sourceforge/free-doko/backgrounds.zip -> freedoko-backgrounds.zip ) kdecards? ( mirror://sourceforge/free-doko/kdecarddecks.zip ) xskatcards? ( mirror://sourceforge/free-doko/xskat.zip ) pysolcards? ( mirror://sourceforge/free-doko/pysol.zip ) gnomecards? ( mirror://sourceforge/free-doko/gnome-games.zip ) openclipartcards? ( mirror://sourceforge/free-doko/openclipart.zip ) !xskatcards? ( !kdecards? ( !gnomecards? ( !openclipartcards? ( !pysolcards? ( mirror://sourceforge/free-doko/xskat.zip ) ) ) ) )
+_eclasses_=base	dba02c674ce4dff67657c692954d7ef0	eutils	33ef77a15337022e05342d2c772a7a5a	games	c11e6cb73d545cdf3d36dc4bb7c753e4	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=a02ffbf4949da9080e22ebc7699697ef

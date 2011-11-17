@@ -1,0 +1,11 @@
+DEFINED_PHASES=configure install unpack
+DEPEND=amd64? ( dev-lang/yasm ) x86? ( dev-lang/yasm ) x86-fbsd? ( dev-lang/yasm ) doc? ( app-doc/doxygen dev-lang/php ) dev-vcs/git
+DESCRIPTION=WebM VP8 Codec SDK
+EAPI=4
+HOMEPAGE=http://www.webmproject.org
+IUSE=altivec debug doc mmx postproc sse sse2 sse3 ssse3 sse4_1 static-libs +threads
+LICENSE=BSD
+REQUIRED_USE=sse2? ( mmx )
+SLOT=0
+_eclasses_=git-2	48dc75cccc109d7cda9f8dc3fff7a5b8	multilib	c4883399ddd3e1d2bd291607b30fded4	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf
+_md5_=657d94a634cd736c5e134aede86ead1d

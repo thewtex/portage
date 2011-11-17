@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst prepare setup
+DEPEND=virtual/mailx web? ( >=media-libs/gd-1.8.3-r5[jpeg,png] lighttpd? ( www-servers/lighttpd dev-lang/php[cgi] ) apache2? ( || ( dev-lang/php[apache2] dev-lang/php[cgi] ) ) ) perl? ( >=dev-lang/perl-5.6.1-r7 ) apache2? ( =www-servers/apache-2* )
+DESCRIPTION=Nagios Core - Check daemon, CGIs, docs
+EAPI=2
+HOMEPAGE=http://www.nagios.org/
+IUSE=debug lighttpd perl +web vim-syntax apache2
+KEYWORDS=alpha amd64 ~hppa ppc ppc64 sparc x86
+LICENSE=GPL-2
+RDEPEND=virtual/mailx web? ( >=media-libs/gd-1.8.3-r5[jpeg,png] lighttpd? ( www-servers/lighttpd dev-lang/php[cgi] ) apache2? ( || ( dev-lang/php[apache2] dev-lang/php[cgi] ) ) ) perl? ( >=dev-lang/perl-5.6.1-r7 ) !net-analyzer/nagios-imagepack vim-syntax? ( app-vim/nagios-syntax ) apache2? ( =www-servers/apache-2* )
+SLOT=0
+SRC_URI=mirror://sourceforge/nagios/nagios-3.3.1.tar.gz
+_eclasses_=depend.apache	a471783c63e68987a2b20eb46f9edf68	eutils	33ef77a15337022e05342d2c772a7a5a	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=877bd1693673d2d451f19e6d77c1ddc5

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare unpack
+DEPEND=x11-libs/libX11 x11-libs/libXpm x11-misc/imake x11-proto/xproto || ( media-gfx/imagemagick media-gfx/graphicsmagick[imagemagick] ) app-text/gv sys-apps/less >=sys-apps/sed-4 zlib? ( sys-libs/zlib )
+DESCRIPTION=a X client for generating images of the Earth and manipulating the CIA World data bank
+EAPI=2
+HOMEPAGE=http://frmas.free.fr/li_1.htm#_Xrmap_
+IUSE=zlib
+KEYWORDS=~x86 ~amd64 ~ppc
+LICENSE=GPL-2
+RDEPEND=x11-libs/libX11 x11-libs/libXpm
+SLOT=0
+SRC_URI=ftp://ftp.ac-grenoble.fr/ge/geosciences/xrmap/xrmap-2.10.tgz ftp://ftp.ac-grenoble.fr/ge/geosciences/xrmap/xrmap-2.33.tar.bz2 ftp://ftp.ac-grenoble.fr/ge/geosciences/CIA_WDB2.jpd.gz
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=ef90c63c33ec5b566f34a1a00027d409

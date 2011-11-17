@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst prepare
+DEPEND=X? ( imlib? ( media-libs/imlib2 ) lua-cairo? ( >=dev-lua/toluapp-1.0.93 x11-libs/cairo[X] ) lua-imlib? ( >=dev-lua/toluapp-1.0.93 media-libs/imlib2 ) nvidia? ( media-video/nvidia-settings ) truetype? ( x11-libs/libXft >=media-libs/freetype-2 ) x11-libs/libX11 x11-libs/libXdamage x11-libs/libXext audacious? ( >=media-sound/audacious-1.5 dev-libs/glib ) xmms2? ( media-sound/xmms2 ) ) curl? ( net-misc/curl ) eve? ( net-misc/curl dev-libs/libxml2 ) portmon? ( dev-libs/glib ) lua? ( >=dev-lang/lua-5.1 ) ncurses? ( sys-libs/ncurses ) rss? ( dev-libs/libxml2 net-misc/curl dev-libs/glib ) wifi? ( net-wireless/wireless-tools ) weather-metar? ( net-misc/curl ) weather-xoap? ( dev-libs/libxml2 net-misc/curl ) virtual/libiconv dev-util/pkgconfig || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=An advanced, highly configurable system monitor for X
+EAPI=2
+HOMEPAGE=http://conky.sourceforge.net/
+IUSE=apcupsd audacious curl debug eve hddtemp imlib iostats lua lua-cairo lua-imlib math moc mpd nano-syntax ncurses nvidia +portmon rss thinkpad truetype vim-syntax weather-metar weather-xoap wifi X xmms2
+KEYWORDS=alpha amd64 ppc ppc64 sparc x86
+LICENSE=GPL-3 BSD LGPL-2.1 MIT
+RDEPEND=X? ( imlib? ( media-libs/imlib2 ) lua-cairo? ( >=dev-lua/toluapp-1.0.93 x11-libs/cairo[X] ) lua-imlib? ( >=dev-lua/toluapp-1.0.93 media-libs/imlib2 ) nvidia? ( media-video/nvidia-settings ) truetype? ( x11-libs/libXft >=media-libs/freetype-2 ) x11-libs/libX11 x11-libs/libXdamage x11-libs/libXext audacious? ( >=media-sound/audacious-1.5 dev-libs/glib ) xmms2? ( media-sound/xmms2 ) ) curl? ( net-misc/curl ) eve? ( net-misc/curl dev-libs/libxml2 ) portmon? ( dev-libs/glib ) lua? ( >=dev-lang/lua-5.1 ) ncurses? ( sys-libs/ncurses ) rss? ( dev-libs/libxml2 net-misc/curl dev-libs/glib ) wifi? ( net-wireless/wireless-tools ) weather-metar? ( net-misc/curl ) weather-xoap? ( dev-libs/libxml2 net-misc/curl ) virtual/libiconv apcupsd? ( sys-power/apcupsd ) hddtemp? ( app-admin/hddtemp ) moc? ( media-sound/moc ) nano-syntax? ( app-editors/nano ) vim-syntax? ( || ( app-editors/vim app-editors/gvim ) )
+SLOT=0
+SRC_URI=mirror://sourceforge/conky/conky-1.8.1.tar.bz2
+_eclasses_=autotools	b81740a014934d6736a8795cdedb452e	eutils	33ef77a15337022e05342d2c772a7a5a	libtool	76720aa53cbace6123aac554983eadfa	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=e0c76d4dd08a5df5752971e24d9f8492

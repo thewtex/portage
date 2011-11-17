@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile config install postinst prepare setup
+DEPEND=dev-lang/perl sys-process/procps asterisk? ( dev-perl/Net-Telnet ) irc? ( dev-perl/Net-IRC ) java? ( >=virtual/jdk-1.5 ) mysql? ( virtual/mysql dev-perl/Cache-Cache ) ssl? ( dev-perl/Net-SSLeay ) postgres? ( dev-perl/DBD-Pg dev-db/postgresql-base ) memcached? ( dev-perl/Cache-Memcached ) dev-perl/DateManip dev-perl/Net-CIDR dev-perl/Net-Netmask dev-perl/Net-SNMP dev-perl/libwww-perl dev-perl/net-server dev-perl/DBI virtual/perl-Digest-MD5 virtual/perl-Getopt-Long virtual/perl-MIME-Base64 virtual/perl-Storable virtual/perl-Text-Balanced virtual/perl-Time-HiRes !minimal? ( dev-perl/HTML-Template net-analyzer/rrdtool[perl] dev-perl/Log-Log4perl ) virtual/perl-Module-Build
+DESCRIPTION=Munin Server Monitoring Tool
+EAPI=2
+HOMEPAGE=http://munin.projects.linpro.no/
+IUSE=asterisk doc irc java memcached minimal mysql postgres ssl
+KEYWORDS=amd64 ~mips ~ppc ~sparc x86
+LICENSE=GPL-2
+RDEPEND=dev-lang/perl sys-process/procps asterisk? ( dev-perl/Net-Telnet ) irc? ( dev-perl/Net-IRC ) java? ( >=virtual/jdk-1.5 ) mysql? ( virtual/mysql dev-perl/Cache-Cache ) ssl? ( dev-perl/Net-SSLeay ) postgres? ( dev-perl/DBD-Pg dev-db/postgresql-base ) memcached? ( dev-perl/Cache-Memcached ) dev-perl/DateManip dev-perl/Net-CIDR dev-perl/Net-Netmask dev-perl/Net-SNMP dev-perl/libwww-perl dev-perl/net-server dev-perl/DBI virtual/perl-Digest-MD5 virtual/perl-Getopt-Long virtual/perl-MIME-Base64 virtual/perl-Storable virtual/perl-Text-Balanced virtual/perl-Time-HiRes !minimal? ( dev-perl/HTML-Template net-analyzer/rrdtool[perl] dev-perl/Log-Log4perl ) !minimal? ( virtual/cron )
+SLOT=0
+SRC_URI=mirror://sourceforge/munin/munin-1.4.6.tar.gz
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=9ee5bf80989e3a169be783837773cdc1

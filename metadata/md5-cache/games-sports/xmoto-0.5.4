@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DEPEND=dev-libs/libxdg-basedir dev-db/sqlite:3 dev-games/ode dev-lang/lua[deprecated] virtual/jpeg media-libs/libpng media-libs/libsdl[joystick] media-libs/sdl-mixer[vorbis] media-libs/sdl-ttf media-libs/sdl-net net-misc/curl app-arch/bzip2 virtual/opengl virtual/glu media-fonts/dejavu nls? ( virtual/libintl ) !=dev-db/sqlite-3.6.2 nls? ( sys-devel/gettext )
+DESCRIPTION=A challenging 2D motocross platform game
+EAPI=2
+HOMEPAGE=http://xmoto.tuxfamily.org
+IUSE=editor nls
+KEYWORDS=amd64 ppc x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/libxdg-basedir dev-db/sqlite:3 dev-games/ode dev-lang/lua[deprecated] virtual/jpeg media-libs/libpng media-libs/libsdl[joystick] media-libs/sdl-mixer[vorbis] media-libs/sdl-ttf media-libs/sdl-net net-misc/curl app-arch/bzip2 virtual/opengl virtual/glu media-fonts/dejavu nls? ( virtual/libintl ) editor? ( media-gfx/inkscape )
+SLOT=0
+SRC_URI=http://download.tuxfamily.org/xmoto/xmoto/0.5.4/xmoto-0.5.4-src.tar.gz editor? ( http://download.tuxfamily.org/xmoto/svg2lvl/0.7.0/inksmoto-0.7.0.tar.gz )
+_eclasses_=base	dba02c674ce4dff67657c692954d7ef0	eutils	33ef77a15337022e05342d2c772a7a5a	flag-o-matic	630c256d55702ba23515f64952987828	games	c11e6cb73d545cdf3d36dc4bb7c753e4	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=50ab77f758996f06112ca64527c8c71d

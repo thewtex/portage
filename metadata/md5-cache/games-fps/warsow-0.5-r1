@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DEPEND=net-misc/curl opengl? ( virtual/jpeg media-libs/libvorbis media-libs/libsdl virtual/opengl x11-libs/libXinerama x11-libs/libXxf86dga x11-libs/libXxf86vm openal? ( media-libs/openal ) ) !opengl? ( !dedicated? ( virtual/jpeg media-libs/libvorbis media-libs/libsdl virtual/opengl x11-libs/libXinerama x11-libs/libXxf86dga x11-libs/libXxf86vm openal? ( media-libs/openal ) ) ) app-arch/unzip x11-misc/makedepend opengl? ( x11-proto/xineramaproto x11-proto/xf86dgaproto x11-proto/xf86vidmodeproto openal? ( dev-util/pkgconfig ) ) !opengl? ( !dedicated? ( x11-proto/xineramaproto x11-proto/xf86dgaproto x11-proto/xf86vidmodeproto openal? ( dev-util/pkgconfig ) ) )
+DESCRIPTION=Multiplayer FPS based on the QFusion engine (evolved from Quake 2)
+EAPI=2
+HOMEPAGE=http://www.warsow.net/
+IUSE=+angelscript debug dedicated irc openal opengl
+KEYWORDS=amd64 x86
+LICENSE=GPL-2 warsow
+RDEPEND=net-misc/curl opengl? ( virtual/jpeg media-libs/libvorbis media-libs/libsdl virtual/opengl x11-libs/libXinerama x11-libs/libXxf86dga x11-libs/libXxf86vm openal? ( media-libs/openal ) ) !opengl? ( !dedicated? ( virtual/jpeg media-libs/libvorbis media-libs/libsdl virtual/opengl x11-libs/libXinerama x11-libs/libXxf86dga x11-libs/libXxf86vm openal? ( media-libs/openal ) ) )
+SLOT=0
+SRC_URI=http://static.warsow.net/release/warsow_0.5_unified.zip http://static.warsow.net/release/warsow_0.5_sdk.zip mirror://gentoo/warsow.png
+_eclasses_=base	dba02c674ce4dff67657c692954d7ef0	eutils	33ef77a15337022e05342d2c772a7a5a	games	c11e6cb73d545cdf3d36dc4bb7c753e4	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
+_md5_=608547014a1b8cede2a3d9e2b52bcb0e

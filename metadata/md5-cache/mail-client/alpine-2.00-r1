@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst prepare setup unpack
+DEPEND=virtual/pam >=sys-libs/ncurses-5.1 ssl? ( dev-libs/openssl ) ldap? ( net-nds/openldap ) kerberos? ( app-crypt/mit-krb5 ) spell? ( app-text/aspell ) topal? ( >=net-mail/topal-64 )
+DESCRIPTION=alpine is an easy to use text-based based mail and news client
+EAPI=2
+HOMEPAGE=http://www.washington.edu/alpine/ http://staff.washington.edu/chappa/alpine/
+IUSE=+chappa doc ipv6 kerberos ldap nls onlyalpine passfile smime spell ssl threads topal
+KEYWORDS=~alpha ~amd64 ~ia64 ~sparc ~x86
+LICENSE=Apache-2.0
+RDEPEND=virtual/pam >=sys-libs/ncurses-5.1 ssl? ( dev-libs/openssl ) ldap? ( net-nds/openldap ) kerberos? ( app-crypt/mit-krb5 ) spell? ( app-text/aspell ) topal? ( >=net-mail/topal-64 ) app-misc/mime-types !onlyalpine? ( !app-editors/pico ) !onlyalpine? ( !mail-client/pine ) !<=net-mail/uw-imap-2004g
+SLOT=0
+SRC_URI=ftp://ftp.cac.washington.edu/alpine/alpine-2.00.tar.bz2 chappa? ( http://staff.washington.edu/chappa/alpine/patches/alpine-2.00/all.patch.gz -> alpine-2.00-chappa-51-all.patch.gz )
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	flag-o-matic	630c256d55702ba23515f64952987828	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=04e3bae9ee356da38943d167bac64c55

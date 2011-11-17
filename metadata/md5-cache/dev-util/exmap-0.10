@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst postrm preinst prepare setup
+DEPEND=dev-libs/libpcre gtk? ( dev-cpp/gtkmm:2.4 x11-libs/gtk+:2 ) dev-libs/boost dev-util/pkgconfig kernel_linux? ( sys-apps/module-init-tools ) sys-apps/sed kernel_linux? ( virtual/linux-sources )
+DESCRIPTION=A memory analysis kernel module with userland tool
+EAPI=2
+HOMEPAGE=http://www.berthels.co.uk/exmap/
+IUSE=gtk kernel_linux
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/libpcre gtk? ( dev-cpp/gtkmm:2.4 x11-libs/gtk+:2 ) kernel_linux? ( sys-apps/module-init-tools )
+SLOT=0
+SRC_URI=http://www.berthels.co.uk/exmap/download/exmap-0.10.tgz
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	linux-info	0a300da62c346bbaee5bcf82727f23ac	linux-mod	a4e07f78bacb6b129ea7b18ad060dbfc	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
+_md5_=3ac568a28f7a4d7d7f05f2bf66132484

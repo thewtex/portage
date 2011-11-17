@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install unpack
+DEPEND=dev-libs/libusb doc? ( app-text/texi2html virtual/latex-base sys-apps/texinfo )
+DESCRIPTION=AVR Downloader/UploaDEr
+HOMEPAGE=http://savannah.nongnu.org/projects/avrdude
+IUSE=doc
+KEYWORDS=arm amd64 ~ppc ~ppc64 x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/libusb
+SLOT=0
+SRC_URI=http://savannah.nongnu.org/download/avrdude/avrdude-5.5.tar.gz !doc? ( http://savannah.nongnu.org/download/avrdude/avrdude-doc-5.5.tar.gz http://savannah.nongnu.org/download/avrdude/avrdude-doc-5.5.pdf )
+_md5_=950228589b4827dcb535bb6253cb1ecc

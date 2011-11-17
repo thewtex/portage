@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst prepare setup unpack
+DEPEND=app-arch/unzip =media-tv/mythtv-0.23.1* >=sys-apps/sed-4
+DESCRIPTION=Video player module for MythTV.
+EAPI=2
+HOMEPAGE=http://www.mythtv.org
+IUSE=+jamu debug mmx
+KEYWORDS=amd64 ~ppc x86
+LICENSE=GPL-2
+RDEPEND=dev-perl/libwww-perl dev-perl/HTML-Parser dev-perl/URI dev-perl/XML-Simple virtual/eject jamu? ( >=dev-python/imdbpy-3.8 dev-python/imaging >=dev-python/mysql-python-1.2.2 media-tv/mythtv[python] ) =media-tv/mythtv-0.23.1*
+RESTRICT=strip
+SLOT=0
+SRC_URI=http://svn.mythtv.org/trac/changeset/26407/branches/release-0-23-fixes/mythplugins?old_path=%2F&format=zip -> mythplugins-0.23.1_p26407.zip
+_eclasses_=base	dba02c674ce4dff67657c692954d7ef0	eutils	33ef77a15337022e05342d2c772a7a5a	multilib	c4883399ddd3e1d2bd291607b30fded4	mythtv	2a7f3ae9a53385e3565ee0b90f813da5	mythtv-plugins	0ddc866ef8b18e0d4c759a97d43bf960	portability	1d9665386ff87b70cba7f591ba27723f	qt4	017d97ec9e8be913a79efab521dc7dec	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
+_md5_=ac5646a8994beea6479f45198e48dbec

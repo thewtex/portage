@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst prepare setup test unpack
+DEPEND=nls? ( >=dev-ruby/ruby-gettext-2[ruby_targets_ruby18] dev-ruby/rake[ruby_targets_ruby18] ) ruby_targets_ruby18? ( dev-lang/ruby:1.8 )
+DESCRIPTION=rbot is a ruby IRC bot
+EAPI=2
+HOMEPAGE=http://ruby-rbot.org/
+IUSE=spell aspell timezone translator shorturl nls dict figlet fortune cal host toilet hunspell linguas_zh_CN linguas_zh_TW linguas_ru linguas_nl linguas_de linguas_fi linguas_fr linguas_it linguas_ja test elibc_FreeBSD ruby_targets_ruby18
+KEYWORDS=~amd64 ~ppc ~sparc ~x86 ~x86-fbsd
+LICENSE=GPL-2 as-is
+RDEPEND=spell? ( aspell? ( app-text/aspell ) !aspell? ( hunspell? ( app-text/hunspell ) !hunspell? ( app-text/ispell ) ) ) figlet? ( app-misc/figlet ) toilet? ( app-misc/toilet ) fortune? ( games-misc/fortune-mod ) cal? ( || ( sys-apps/util-linux sys-freebsd/freebsd-ubin ) ) host? ( net-dns/bind-tools ) ruby_targets_ruby18? ( dev-ruby/ruby-bdb[ruby_targets_ruby18] timezone? ( dev-ruby/tzinfo[ruby_targets_ruby18] ) translator? ( dev-ruby/mechanize[ruby_targets_ruby18] ) shorturl? ( dev-ruby/shorturl[ruby_targets_ruby18] ) nls? ( dev-ruby/ruby-gettext[ruby_targets_ruby18] >=dev-ruby/locale-2.0.5-r2[ruby_targets_ruby18] ) dict? ( dev-ruby/ruby-dict[ruby_targets_ruby18] ) ) ruby_targets_ruby18? ( dev-lang/ruby:1.8 )
+SLOT=0
+SRC_URI=http://ruby-rbot.org/download/rbot-0.9.15.tgz
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	java-utils-2	03ab8cac2b9deec34f79c505eb42a99d	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	ruby-ng	9306a3d60da89e858115fafece052b0d	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
+_md5_=e0791a893e638baabebc2aca59a5adc3

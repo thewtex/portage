@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install postinst setup test unpack
+DEPEND=virtual/fortran virtual/blas virtual/cblas app-admin/eselect-lapack ~sci-libs/blas-atlas-3.8.0 dev-util/pkgconfig >=sys-devel/libtool-1.5 || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=F77 and C LAPACK implementations using available ATLAS routines
+HOMEPAGE=http://math-atlas.sourceforge.net/
+IUSE=doc
+KEYWORDS=alpha amd64 ppc ppc64 sparc x86
+LICENSE=BSD
+RDEPEND=virtual/fortran virtual/blas virtual/cblas app-admin/eselect-lapack ~sci-libs/blas-atlas-3.8.0 doc? ( app-doc/lapack-docs )
+SLOT=0
+SRC_URI=mirror://sourceforge/math-atlas/atlas3.8.0.tar.bz2 http://www.netlib.org/lapack/lapack-lite-3.1.1.tgz mirror://gentoo/atlas-3.7.39-shared-libs.patch.bz2 mirror://gentoo/lapack-reference-3.1.1-autotools.patch.bz2
+_eclasses_=autotools	b81740a014934d6736a8795cdedb452e	eutils	33ef77a15337022e05342d2c772a7a5a	flag-o-matic	630c256d55702ba23515f64952987828	fortran-2	368b82ae80c1184988a9d651e6efcbd0	libtool	76720aa53cbace6123aac554983eadfa	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
+_md5_=6f885bd7ad9da9a18bc6696a9fb8aaa8

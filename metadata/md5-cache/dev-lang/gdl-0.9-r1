@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare setup test
+DEPEND=sys-libs/readline sys-libs/ncurses sci-libs/gsl sci-libs/plplot fftw? ( >=sci-libs/fftw-3 ) grib? ( sci-libs/grib_api ) hdf? ( sci-libs/hdf ) hdf5? ( sci-libs/hdf5 ) imagemagick? ( media-gfx/imagemagick ) netcdf? ( sci-libs/netcdf ) python? ( dev-python/matplotlib ) udunits? ( >=sci-libs/udunits-2 ) wxwidgets? ( x11-libs/wxGTK:2.8[X] ) dev-java/antlr:0 || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool >=app-admin/eselect-python-20091230 python? ( =dev-lang/python-2* )
+DESCRIPTION=An Interactive Data Language compatible incremental compiler
+EAPI=3
+HOMEPAGE=http://gnudatalanguage.sourceforge.net/
+IUSE=fftw grib hdf hdf5 imagemagick netcdf openmp python udunits wxwidgets X
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=sys-libs/readline sys-libs/ncurses sci-libs/gsl sci-libs/plplot fftw? ( >=sci-libs/fftw-3 ) grib? ( sci-libs/grib_api ) hdf? ( sci-libs/hdf ) hdf5? ( sci-libs/hdf5 ) imagemagick? ( media-gfx/imagemagick ) netcdf? ( sci-libs/netcdf ) python? ( dev-python/matplotlib ) udunits? ( >=sci-libs/udunits-2 ) wxwidgets? ( x11-libs/wxGTK:2.8[X] ) >=app-admin/eselect-python-20091230 python? ( =dev-lang/python-2* )
+SLOT=0
+SRC_URI=mirror://sourceforge/gnudatalanguage/gdl-0.9.tar.gz
+_eclasses_=autotools	b81740a014934d6736a8795cdedb452e	eutils	33ef77a15337022e05342d2c772a7a5a	libtool	76720aa53cbace6123aac554983eadfa	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	python	6bbd984910e27780e5d0ea543d83ef84	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	wxwidgets	9b355ad2394810db50553e45cd663578
+_md5_=54c5e0452f71d4be58b76d58bca0d443

@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst postrm preinst
+DEPEND=x11-libs/gtk+:2 avahi? ( net-dns/avahi ) crypt? ( dev-libs/libgcrypt ) nls? ( virtual/libintl ) ssh? ( net-libs/libssh[sftp] ) unique? ( dev-libs/libunique:1 ) vnc? ( net-libs/libvncserver ) vte? ( x11-libs/vte:0 ) dev-util/intltool dev-util/pkgconfig nls? ( sys-devel/gettext ) >=sys-apps/sed-4
+DESCRIPTION=A GTK+ RDP, VNC, XDMCP and SSH client
+EAPI=2
+HOMEPAGE=http://remmina.sourceforge.net/
+IUSE=avahi crypt nls rdesktop ssh unique vnc vte xdmcp
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=x11-libs/gtk+:2 avahi? ( net-dns/avahi ) crypt? ( dev-libs/libgcrypt ) nls? ( virtual/libintl ) ssh? ( net-libs/libssh[sftp] ) unique? ( dev-libs/libunique:1 ) vnc? ( net-libs/libvncserver ) vte? ( x11-libs/vte:0 ) rdesktop? ( net-misc/rdesktop ) xdmcp? ( x11-base/xorg-server[kdrive] )
+SLOT=0
+SRC_URI=mirror://sourceforge/remmina/remmina-0.7.5.tar.gz
+_eclasses_=gnome2-utils	dfcd797d126b46852d33936f4a0a1702
+_md5_=497d09eda920e9135d3df0b17c6fe4d5

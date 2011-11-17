@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup test unpack
+DEPEND=>=media-libs/libsdl-1.2.7[video,X] media-libs/sdl-net >=media-libs/sdl-ttf-2.0.8 >=media-libs/sdl-mixer-1.2[vorbis] >=media-libs/sdl-image-1.2[jpeg,png] !dedicated? ( dbus? ( sys-apps/dbus ) ) >=dev-libs/boost-1.35 sys-libs/zlib x11-libs/pango dev-lang/lua media-libs/fontconfig virtual/libintl dev-util/pkgconfig !dedicated? ( tinygui? ( || ( media-gfx/imagemagick[jpeg,png] media-gfx/graphicsmagick[imagemagick,jpeg,png] ) ) ) sys-devel/gettext >=dev-util/cmake-2.8.4 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=Battle for Wesnoth - A fantasy turn-based strategy game
+EAPI=2
+HOMEPAGE=http://www.wesnoth.org/
+IUSE=dbus dedicated doc nls server tinygui
+KEYWORDS=amd64 ppc ppc64 x86 ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=>=media-libs/libsdl-1.2.7[video,X] media-libs/sdl-net >=media-libs/sdl-ttf-2.0.8 >=media-libs/sdl-mixer-1.2[vorbis] >=media-libs/sdl-image-1.2[jpeg,png] !dedicated? ( dbus? ( sys-apps/dbus ) ) >=dev-libs/boost-1.35 sys-libs/zlib x11-libs/pango dev-lang/lua media-libs/fontconfig virtual/libintl
+SLOT=0
+SRC_URI=mirror://sourceforge/wesnoth/wesnoth-1.8.5.tar.bz2
+_eclasses_=base	dba02c674ce4dff67657c692954d7ef0	cmake-utils	00f9fd5a80cf3605f6d9a2e808c48a92	eutils	33ef77a15337022e05342d2c772a7a5a	flag-o-matic	630c256d55702ba23515f64952987828	games	c11e6cb73d545cdf3d36dc4bb7c753e4	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=91a49d1cc051d63dac3649ab6f6d6a8f

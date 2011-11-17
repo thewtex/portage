@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst prepare test unpack
+DEPEND=sys-devel/gdb x11-libs/libXaw x11-libs/libXpm >=x11-libs/openmotif-2.3:0 ppc? ( dev-libs/elfutils ) ppc64? ( dev-libs/elfutils ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=Graphical front-end for command-line debuggers
+EAPI=4
+HOMEPAGE=http://www.gnu.org/software/ddd
+IUSE=+gnuplot
+KEYWORDS=~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-3 LGPL-3 FDL-1.1
+RDEPEND=sys-devel/gdb x11-libs/libXaw x11-libs/libXpm >=x11-libs/openmotif-2.3:0 ppc? ( dev-libs/elfutils ) ppc64? ( dev-libs/elfutils ) x11-apps/xfontsel gnuplot? ( sci-visualization/gnuplot )
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://gnu/ddd/ddd-3.3.12.tar.gz
+_eclasses_=autotools	b81740a014934d6736a8795cdedb452e	autotools-utils	9799469ea552910620db9dca0bca94b0	base	dba02c674ce4dff67657c692954d7ef0	eutils	33ef77a15337022e05342d2c772a7a5a	libtool	76720aa53cbace6123aac554983eadfa	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=c9600cbc89e39ff695b2e6d66270e6a4

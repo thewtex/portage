@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile install postinst postrm prepare setup
+DEPEND=dev-lang/tk[threads] >=dev-python/numpy-1.4 >=dev-tcltk/tix-8.4.3 =sci-libs/ccpn-data-2.2.1* >=sci-libs/ccpn-data-2.2.1_p111011 sci-biology/psipred x11-libs/libXext x11-libs/libX11 opengl? ( media-libs/freeglut dev-python/pyglet ) >=app-admin/eselect-python-20091230 || ( =dev-lang/python-2.7* =dev-lang/python-2.6* =dev-lang/python-2.5* ) || ( =dev-lang/python-2.7*[ssl,tk] =dev-lang/python-2.6*[ssl,tk] =dev-lang/python-2.5*[ssl,tk] )
+DESCRIPTION=The Collaborative Computing Project for NMR
+EAPI=3
+HOMEPAGE=http://www.ccpn.ac.uk/ccpn
+IUSE=extendnmr +opengl
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=|| ( CCPN LGPL-2.1 )
+PDEPEND=extendnmr? ( >=sci-chemistry/aria-2.3.2-r1 sci-chemistry/prodecomp )
+RDEPEND=dev-lang/tk[threads] >=dev-python/numpy-1.4 >=dev-tcltk/tix-8.4.3 =sci-libs/ccpn-data-2.2.1* >=sci-libs/ccpn-data-2.2.1_p111011 sci-biology/psipred x11-libs/libXext x11-libs/libX11 opengl? ( media-libs/freeglut dev-python/pyglet ) >=app-admin/eselect-python-20091230 || ( =dev-lang/python-2.7* =dev-lang/python-2.6* =dev-lang/python-2.5* ) || ( =dev-lang/python-2.7*[ssl,tk] =dev-lang/python-2.6*[ssl,tk] =dev-lang/python-2.5*[ssl,tk] )
+RESTRICT=mirror
+SLOT=0
+SRC_URI=http://www.bio.cam.ac.uk/ccpn/download/ccpnmr/analysis2.2.1.tar.gz http://dev.gentoo.org/~jlec/distfiles/ccpn-update-2.2.1-111011.patch.xz
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	python	6bbd984910e27780e5d0ea543d83ef84	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
+_md5_=d075a7df22fa81dc8bb424f72f5ffd19

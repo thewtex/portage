@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst postrm preinst setup unpack
+DEPEND=>=sys-block/parted-2.2 >=dev-cpp/gtkmm-2.16.0:2.4 >=dev-util/pkgconfig-0.12 >=dev-util/intltool-0.35.5 app-text/scrollkeeper app-text/gnome-doc-utils app-text/docbook-xml-dtd:4.1.2 >=sys-apps/sed-4
+DESCRIPTION=Gnome Partition Editor
+EAPI=1
+HOMEPAGE=http://gparted.sourceforge.net/
+IUSE=dmraid fat gnome hfs jfs kde mdadm ntfs reiserfs reiser4 xfs
+KEYWORDS=amd64 ppc sparc x86
+LICENSE=GPL-2
+RDEPEND=>=sys-block/parted-2.2 >=dev-cpp/gtkmm-2.16.0:2.4 gnome? ( x11-libs/gksu ) kde? ( || ( kde-base/kdesu kde-base/kdebase ) ) >=sys-fs/e2fsprogs-1.41.0 mdadm? ( sys-fs/mdadm ) dmraid? ( || ( >=sys-fs/lvm2-2.02.45 sys-fs/device-mapper ) sys-fs/dmraid sys-fs/multipath-tools ) fat? ( sys-fs/dosfstools ) ntfs? ( sys-fs/ntfsprogs ) hfs? ( sys-fs/udev sys-fs/hfsutils ) jfs? ( sys-fs/jfsutils ) reiserfs? ( sys-fs/reiserfsprogs ) reiser4? ( sys-fs/reiser4progs ) xfs? ( sys-fs/xfsprogs sys-fs/xfsdump )
+SLOT=0
+SRC_URI=mirror://sourceforge/gparted/gparted-0.5.2.tar.bz2
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	gnome.org	8fef8f967214f56e08fa92d61163d891	gnome2	3aa9fb56280cbb64b3d42e0db59ed76e	gnome2-utils	dfcd797d126b46852d33936f4a0a1702	libtool	76720aa53cbace6123aac554983eadfa	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
+_md5_=79e54a7c9b7d5927ad2c115eaa33e710

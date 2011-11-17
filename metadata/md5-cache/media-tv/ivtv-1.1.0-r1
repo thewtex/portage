@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst postrm preinst setup unpack
+DEPEND=app-arch/unzip kernel_linux? ( sys-apps/module-init-tools ) sys-apps/sed kernel_linux? ( virtual/linux-sources )
+DESCRIPTION=ivtv driver for Hauppauge PVR PCI cards
+HOMEPAGE=http://www.ivtvdriver.org
+IUSE=perl kernel_linux
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+PDEPEND=>=media-tv/ivtv-firmware-20070217 perl? ( dev-perl/Video-Frequencies dev-perl/Video-ivtv dev-perl/Config-IniFiles virtual/perl-Getopt-Long dev-perl/perl-tk )
+RDEPEND=>=sys-fs/udev-103 kernel_linux? ( sys-apps/module-init-tools )
+SLOT=0
+SRC_URI=http://dl.ivtvdriver.org/ivtv/archive/1.1.x/ivtv-1.1.0.tar.gz
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	linux-info	0a300da62c346bbaee5bcf82727f23ac	linux-mod	a4e07f78bacb6b129ea7b18ad060dbfc	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
+_md5_=8843fa6c1e4f8b3ea8a0dee35a01ae47

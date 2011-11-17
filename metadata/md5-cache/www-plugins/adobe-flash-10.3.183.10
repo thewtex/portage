@@ -1,0 +1,14 @@
+DEFINED_PHASES=install postinst unpack
+DEPEND=amd64? ( www-plugins/nspluginwrapper ) >=app-arch/rpm2targz-9.0.0.3g
+DESCRIPTION=Adobe Flash Player
+EAPI=4
+HOMEPAGE=http://www.adobe.com/flashplayer
+IUSE=vdpau kde
+KEYWORDS=-* amd64 x86
+LICENSE=AdobeFlash-10.3
+RDEPEND=x86? ( x11-libs/gtk+:2 media-libs/fontconfig dev-libs/nss net-misc/curl vdpau? ( x11-libs/libvdpau ) kde? ( kde-base/kcmshell ) >=sys-libs/glibc-2.4 ) amd64? ( vdpau? ( >=app-emulation/emul-linux-x86-xlibs-20110129 ) >=app-emulation/emul-linux-x86-gtklibs-20100409-r1 app-emulation/emul-linux-x86-soundlibs ) || ( media-fonts/liberation-fonts media-fonts/corefonts ) amd64? ( www-plugins/nspluginwrapper )
+RESTRICT=strip mirror
+SLOT=0
+SRC_URI=http://fpdownload.macromedia.com/get/flashplayer/current/flash-plugin-10.3.183.10-release.i386.rpm
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	multilib	c4883399ddd3e1d2bd291607b30fded4	nsplugins	d0909899a7f8e976fd2fe4c043d4b804	portability	1d9665386ff87b70cba7f591ba27723f	rpm	cf613c863528cb4e8d2b6af469a6a71d	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=8966c3f6da197427b0e715ce5cd15cc8

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare setup test
+DEPEND=virtual/fortran dev-python/numpy sci-chemistry/openbabel opal? ( dev-python/zsi ) pdb2pka? ( sci-chemistry/apbs[python,-mpi] ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool >=app-admin/eselect-python-20091230 || ( =dev-lang/python-2.7* =dev-lang/python-2.6* =dev-lang/python-2.5* )
+DESCRIPTION=An automated pipeline for performing Poisson-Boltzmann electrostatics calculations
+EAPI=3
+HOMEPAGE=http://pdb2pqr.sourceforge.net/
+IUSE=doc examples opal +pdb2pka
+KEYWORDS=~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux
+LICENSE=BSD
+RDEPEND=virtual/fortran dev-python/numpy sci-chemistry/openbabel opal? ( dev-python/zsi ) pdb2pka? ( sci-chemistry/apbs[python,-mpi] ) >=app-admin/eselect-python-20091230 || ( =dev-lang/python-2.7* =dev-lang/python-2.6* =dev-lang/python-2.5* )
+SLOT=0
+SRC_URI=mirror://sourceforge/pdb2pqr/pdb2pqr-1.7.tar.gz
+_eclasses_=autotools	b81740a014934d6736a8795cdedb452e	eutils	33ef77a15337022e05342d2c772a7a5a	flag-o-matic	630c256d55702ba23515f64952987828	fortran-2	368b82ae80c1184988a9d651e6efcbd0	libtool	76720aa53cbace6123aac554983eadfa	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	python	6bbd984910e27780e5d0ea543d83ef84	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
+_md5_=824b91514bebe5d962b3a49f11fa92d2

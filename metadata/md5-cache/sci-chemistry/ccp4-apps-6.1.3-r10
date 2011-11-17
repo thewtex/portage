@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install prepare setup
+DEPEND=>=dev-lang/tk-8.3 >=dev-tcltk/blt-2.4 dev-tcltk/iwidgets dev-tcltk/itcl dev-tcltk/itk >=dev-tcltk/tdom-0.8 dev-tcltk/tktreectrl ~sci-libs/ccp4-libs-6.1.3 >=sci-libs/ccp4-libs-6.1.3-r7 sci-libs/clipper sci-libs/fftw:2.1 sci-libs/mmdb sci-libs/ssm virtual/blas virtual/lapack app-shells/tcsh dev-python/pyxml dev-libs/libxml2:2 dev-libs/libjwc_c dev-libs/libjwc_f dev-libs/boehm-gc virtual/fortran !app-office/sc !<sci-chemistry/ccp4-6.1.3 X? ( x11-libs/libX11 x11-libs/libXaw x11-libs/libXt x11-libs/libxdl_view ) X? ( x11-misc/imake x11-proto/inputproto x11-proto/xextproto ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool sys-devel/gnuconfig >=app-admin/eselect-python-20091230 =dev-lang/python-2*
+DESCRIPTION=Protein X-ray crystallography toolkit
+EAPI=3
+HOMEPAGE=http://www.ccp4.ac.uk/
+IUSE=examples X
+KEYWORDS=amd64 ~ppc ~x86 ~amd64-linux ~x86-linux
+LICENSE=ccp4
+PDEPEND=sci-chemistry/pdb-extract sci-chemistry/pymol sci-chemistry/rasmol >=sci-chemistry/oasis-4.0-r1
+RDEPEND=>=dev-lang/tk-8.3 >=dev-tcltk/blt-2.4 dev-tcltk/iwidgets dev-tcltk/itcl dev-tcltk/itk >=dev-tcltk/tdom-0.8 dev-tcltk/tktreectrl ~sci-libs/ccp4-libs-6.1.3 >=sci-libs/ccp4-libs-6.1.3-r7 sci-libs/clipper sci-libs/fftw:2.1 sci-libs/mmdb sci-libs/ssm virtual/blas virtual/lapack app-shells/tcsh dev-python/pyxml dev-libs/libxml2:2 dev-libs/libjwc_c dev-libs/libjwc_f dev-libs/boehm-gc virtual/fortran !app-office/sc !<sci-chemistry/ccp4-6.1.3 X? ( x11-libs/libX11 x11-libs/libXaw x11-libs/libXt x11-libs/libxdl_view ) >=app-admin/eselect-python-20091230 =dev-lang/python-2*
+RESTRICT=mirror
+SLOT=0
+SRC_URI=ftp://ftp.ccp4.ac.uk/ccp4/6.1.3/ccp4-6.1.3-core-src.tar.gz http://dev.gentooexperimental.org/~jlec/distfiles/6.1.3-oasis4.0.patch.bz2
+_eclasses_=autotools	b81740a014934d6736a8795cdedb452e	eutils	33ef77a15337022e05342d2c772a7a5a	flag-o-matic	630c256d55702ba23515f64952987828	fortran-2	368b82ae80c1184988a9d651e6efcbd0	gnuconfig	9200bfc8e0184357abfb86a08edd4fc3	libtool	76720aa53cbace6123aac554983eadfa	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	python	6bbd984910e27780e5d0ea543d83ef84	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=d949ab2fdd7a99783beb4b20cd17236a

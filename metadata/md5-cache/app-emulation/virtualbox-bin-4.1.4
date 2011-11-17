@@ -1,0 +1,14 @@
+DEFINED_PHASES=install postinst postrm unpack
+DEPEND=app-arch/unzip
+DESCRIPTION=Family of powerful x86 virtualization products for enterprise as well as home use
+EAPI=2
+HOMEPAGE=http://www.virtualbox.org/
+IUSE=+additions +chm headless python sdk vboxwebsrv rdesktop-vrdp
+KEYWORDS=amd64 ~x86
+LICENSE=GPL-2 PUEL
+RDEPEND=!!app-emulation/virtualbox !app-emulation/virtualbox-additions ~app-emulation/virtualbox-modules-4.1.4 !headless? ( x11-libs/libXcursor media-libs/libsdl[X] x11-libs/libXrender x11-libs/libXfixes media-libs/libpng x11-libs/libXi x11-libs/libXrandr x11-libs/libXinerama x11-libs/libXft media-libs/freetype media-libs/fontconfig x11-libs/libXext dev-libs/glib chm? ( dev-libs/expat ) ) x11-libs/libXt dev-libs/libxml2 x11-libs/libXau x11-libs/libX11 x11-libs/libXmu x11-libs/libSM x11-libs/libICE x11-libs/libXdmcp python? ( || ( dev-lang/python:2.7 dev-lang/python:2.6 dev-lang/python:2.5 dev-lang/python:2.4 ) )
+RESTRICT=mirror
+SLOT=0
+SRC_URI=amd64? ( http://download.virtualbox.org/virtualbox/4.1.4/VirtualBox-4.1.4-74291-Linux_amd64.run ) x86? ( http://download.virtualbox.org/virtualbox/4.1.4/VirtualBox-4.1.4-74291-Linux_x86.run ) sdk? ( http://download.virtualbox.org/virtualbox/4.1.4/VirtualBoxSDK-4.1.4-74291.zip ) http://download.virtualbox.org/virtualbox/4.1.4/Oracle_VM_VirtualBox_Extension_Pack-4.1.4-74291.vbox-extpack -> Oracle_VM_VirtualBox_Extension_Pack-4.1.4-74291.tar.gz
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	multilib	c4883399ddd3e1d2bd291607b30fded4	pax-utils	43c50115ec22f684df1dc43187a60fcc	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=888613794272eacc24b60292b02c57d7

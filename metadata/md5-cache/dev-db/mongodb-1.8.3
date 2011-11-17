@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst prepare setup test
+DEPEND=!v8? ( =dev-lang/spidermonkey-1.8.2* ) v8? ( dev-lang/v8 ) dev-libs/boost dev-libs/libpcre[cxx] net-libs/libpcap sys-libs/readline sys-libs/ncurses >=dev-util/scons-1.2.0
+DESCRIPTION=A high-performance, open source, schema-free document-oriented database
+EAPI=4
+HOMEPAGE=http://www.mongodb.org
+IUSE=static-libs v8
+KEYWORDS=~amd64 ~x86
+LICENSE=AGPL-3 Apache-2.0
+RDEPEND=!v8? ( =dev-lang/spidermonkey-1.8.2* ) v8? ( dev-lang/v8 ) dev-libs/boost dev-libs/libpcre[cxx] net-libs/libpcap
+SLOT=0
+SRC_URI=http://downloads.mongodb.org/src/mongodb-src-r1.8.3.tar.gz
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	scons-utils	4135612016ca47f58abbd2ed70bbd539	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
+_md5_=1bdd2444e73c7163e0e8a01c24ff7386

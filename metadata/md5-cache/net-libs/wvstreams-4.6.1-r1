@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare setup test
+DEPEND=sys-libs/readline sys-libs/zlib dbus? ( >=sys-apps/dbus-1.2.14 ) dev-libs/openssl pam? ( sys-libs/pam ) virtual/c++-tr1-functional dev-util/pkgconfig doc? ( app-doc/doxygen ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=A network programming library in C++
+EAPI=2
+HOMEPAGE=http://alumnit.ca/wiki/?WvStreams
+IUSE=pam doc +ssl +dbus debug
+KEYWORDS=alpha amd64 hppa ppc sparc x86
+LICENSE=GPL-2
+RDEPEND=sys-libs/readline sys-libs/zlib dbus? ( >=sys-apps/dbus-1.2.14 ) dev-libs/openssl pam? ( sys-libs/pam ) virtual/c++-tr1-functional
+RESTRICT=test
+SLOT=0
+SRC_URI=http://wvstreams.googlecode.com/files/wvstreams-4.6.1.tar.gz
+_eclasses_=autotools	b81740a014934d6736a8795cdedb452e	eutils	33ef77a15337022e05342d2c772a7a5a	libtool	76720aa53cbace6123aac554983eadfa	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
+_md5_=9a0ece949649658c93a5328416431134

@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install unpack
+DEPEND=>=dev-embedded/gputils-0.13.2 boehm-gc? ( dev-libs/boehm-gc ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=Small device C compiler (for various microprocessors).
+HOMEPAGE=http://sdcc.sourceforge.net/
+IUSE=boehm-gc doc
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=!dev-embedded/sdcc-svn
+SLOT=0
+SRC_URI=mirror://sourceforge/sdcc/sdcc-src-2.8.0.tar.bz2 doc? ( mirror://sourceforge/sdcc/sdcc-doc-2.8.0.tar.bz2 )
+_eclasses_=autotools	b81740a014934d6736a8795cdedb452e	eutils	33ef77a15337022e05342d2c772a7a5a	libtool	76720aa53cbace6123aac554983eadfa	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=74bfb91807a74d45aa73baf12a35e2cc

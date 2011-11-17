@@ -1,0 +1,14 @@
+DEFINED_PHASES=install prepare unpack
+DEPEND=>=sys-apps/findutils-4.2.26
+DESCRIPTION=Provides precompiled 32bit libraries
+EAPI=4
+HOMEPAGE=http://dev.gentoo.org/~pacho/emul.html
+IUSE=pulseaudio development
+KEYWORDS=-* amd64
+LICENSE=LGPL-2 LGPL-2.1
+RDEPEND=~app-emulation/emul-linux-x86-xlibs-20110928 ~app-emulation/emul-linux-x86-baselibs-20110928 ~app-emulation/emul-linux-x86-soundlibs-20110928[pulseaudio?] ~app-emulation/emul-linux-x86-medialibs-20110928
+RESTRICT=strip
+SLOT=0
+SRC_URI=http://dev.gentoo.org/~pacho/emul/emul-linux-x86-sdl-20110928.tar.xz !pulseaudio? ( http://dev.gentoo.org/~pacho/emul-linux-x86-20110928/libsdl-1.2.14-r6_20110928.tbz2 )
+_eclasses_=emul-linux-x86	487d890789a3e0fc6fb2caefdb8b5d56	eutils	33ef77a15337022e05342d2c772a7a5a	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
+_md5_=4329a8948286b385a1eb7e68d710e55c

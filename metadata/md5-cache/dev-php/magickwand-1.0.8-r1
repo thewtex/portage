@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare unpack
+DEPEND=>=media-gfx/imagemagick-6.5.2.9 || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool >=sys-devel/m4-1.4.3 >=sys-devel/libtool-1.5.18
+DESCRIPTION=A native PHP-extension to the ImageMagick MagickWand API.
+EAPI=2
+HOMEPAGE=http://www.magickwand.org/
+IUSE=php_targets_php5-3 php_targets_php5-2
+KEYWORDS=~amd64 ~x86
+LICENSE=MagickWand
+RDEPEND=>=media-gfx/imagemagick-6.5.2.9 || ( =dev-php/magickwand-1.0.8-r1[php_targets_php5-3] =dev-php/magickwand-1.0.8-r1[php_targets_php5-2] ) php_targets_php5-3? ( dev-lang/php:5.3 ) php_targets_php5-2? ( dev-lang/php:5.2 )
+SLOT=0
+SRC_URI=http://www.magickwand.org/download/php/MagickWandForPHP-1.0.8.tar.bz2
+_eclasses_=autotools	b81740a014934d6736a8795cdedb452e	eutils	33ef77a15337022e05342d2c772a7a5a	flag-o-matic	630c256d55702ba23515f64952987828	libtool	76720aa53cbace6123aac554983eadfa	multilib	c4883399ddd3e1d2bd291607b30fded4	php-ext-source-r2	1dc638b3f0431c60171ed14c169655ce	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=f584be4f80ee63a3f2f5b9c5df04fc5b

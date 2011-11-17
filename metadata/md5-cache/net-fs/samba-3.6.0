@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst prepare setup
+DEPEND=dev-libs/popt !net-fs/samba-client !net-fs/samba-libs !net-fs/samba-server >=sys-libs/talloc-2.0.5 >=sys-libs/tdb-1.2.9 virtual/libiconv ads? ( virtual/krb5 sys-fs/e2fsprogs client? ( sys-apps/keyutils net-fs/cifs-utils[ads] ) ) avahi? ( net-dns/avahi[dbus] ) caps? ( sys-libs/libcap ) client? ( !net-fs/mount-cifs dev-libs/iniparser net-fs/cifs-utils ) cluster? ( >=dev-db/ctdb-1.0.114_p1 ) cups? ( net-print/cups ) debug? ( dev-libs/dmalloc ) fam? ( virtual/fam ) ldap? ( net-nds/openldap ) ldb? ( sys-libs/ldb ) pam? ( virtual/pam winbind? ( dev-libs/iniparser ) ) readline? ( >=sys-libs/readline-5.2 ) syslog? ( virtual/logger )
+DESCRIPTION=Library bits of the samba network filesystem
+EAPI=4
+HOMEPAGE=http://www.samba.org/
+IUSE=acl addns ads +aio avahi caps +client cluster cups debug doc examples fam ldap ldb +netapi pam quota +readline +server +smbclient smbsharemodes swat syslog winbind
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=dev-libs/popt !net-fs/samba-client !net-fs/samba-libs !net-fs/samba-server >=sys-libs/talloc-2.0.5 >=sys-libs/tdb-1.2.9 virtual/libiconv ads? ( virtual/krb5 sys-fs/e2fsprogs client? ( sys-apps/keyutils net-fs/cifs-utils[ads] ) ) avahi? ( net-dns/avahi[dbus] ) caps? ( sys-libs/libcap ) client? ( !net-fs/mount-cifs dev-libs/iniparser net-fs/cifs-utils ) cluster? ( >=dev-db/ctdb-1.0.114_p1 ) cups? ( net-print/cups ) debug? ( dev-libs/dmalloc ) fam? ( virtual/fam ) ldap? ( net-nds/openldap ) ldb? ( sys-libs/ldb ) pam? ( virtual/pam winbind? ( dev-libs/iniparser ) ) readline? ( >=sys-libs/readline-5.2 ) syslog? ( virtual/logger )
+REQUIRED_USE=ads? ( ldap ) swat? ( server )
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://samba/samba-3.6.0.tar.gz
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	flag-o-matic	630c256d55702ba23515f64952987828	multilib	c4883399ddd3e1d2bd291607b30fded4	pam	71d772c7b2ecf139ec916c4584563109	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
+_md5_=7d2144aa8a525a54c76ea3f2603fed61

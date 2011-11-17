@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare setup test unpack
+DEPEND=>=dev-db/unixODBC-2.0.6 ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ruby18? ( virtual/rubygems[ruby_targets_ruby18] ) test? ( ruby_targets_ruby18? ( virtual/rubygems[ruby_targets_ruby18] ) )
+DESCRIPTION=RubyODBC - For accessing ODBC data sources from the Ruby language
+EAPI=2
+HOMEPAGE=http://www.ch-werner.de/rubyodbc/
+IUSE=elibc_FreeBSD ruby_targets_ruby18 test
+KEYWORDS=amd64 ia64 ppc ~sparc x86
+LICENSE=|| ( GPL-2 Ruby )
+RDEPEND=>=dev-db/unixODBC-2.0.6 ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ruby18? ( virtual/rubygems[ruby_targets_ruby18] )
+RESTRICT=test
+SLOT=0
+SRC_URI=http://www.ch-werner.de/rubyodbc/ruby-odbc-0.99991.tar.gz
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	java-utils-2	03ab8cac2b9deec34f79c505eb42a99d	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	ruby-fakegem	7c47bb49102ac90cbf2f8e0fefbaed6d	ruby-ng	9306a3d60da89e858115fafece052b0d	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
+_md5_=1a08132f058f3f883180e0b0c3c1220b

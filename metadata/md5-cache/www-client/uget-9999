@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install postinst prepare unpack
+DEPEND=dev-libs/libpcre >=dev-libs/glib-2:2 !gtk3? ( >=x11-libs/gtk+-2.18:2 ) gtk3? ( x11-libs/gtk+:3 ) curl? ( >=net-misc/curl-7.10 ) gstreamer? ( media-libs/gstreamer ) libnotify? ( x11-libs/libnotify ) dev-util/intltool dev-util/pkgconfig sys-devel/gettext || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool dev-vcs/git
+DESCRIPTION=Download manager using gtk+ and libcurl
+EAPI=4
+HOMEPAGE=http://urlget.sourceforge.net/
+IUSE=aria2 +curl gstreamer gtk3 hide-temp-files libnotify nls
+LICENSE=LGPL-2.1
+RDEPEND=dev-libs/libpcre >=dev-libs/glib-2:2 !gtk3? ( >=x11-libs/gtk+-2.18:2 ) gtk3? ( x11-libs/gtk+:3 ) curl? ( >=net-misc/curl-7.10 ) gstreamer? ( media-libs/gstreamer ) libnotify? ( x11-libs/libnotify )
+REQUIRED_USE=|| ( aria2 curl )
+SLOT=0
+_eclasses_=autotools	b81740a014934d6736a8795cdedb452e	eutils	33ef77a15337022e05342d2c772a7a5a	git-2	48dc75cccc109d7cda9f8dc3fff7a5b8	libtool	76720aa53cbace6123aac554983eadfa	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=27502151e0856d105b8b999f9ea7564a

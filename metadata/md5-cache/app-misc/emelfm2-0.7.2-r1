@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install setup
+DEPEND=>=x11-libs/gtk+-2.12:2 acl? ( sys-apps/acl ) !kernel_linux? ( fam? ( virtual/fam ) ) gimp? ( media-gfx/gimp ) policykit? ( sys-auth/polkit ) spell? ( app-text/gtkspell:2 ) udev? ( sys-fs/udisks dev-libs/dbus-glib ) dev-util/pkgconfig nls? ( sys-devel/gettext )
+DESCRIPTION=A file manager that implements the popular two-pane design
+EAPI=2
+HOMEPAGE=http://emelfm2.net/
+IUSE=acl fam gimp kernel_linux nls policykit spell udev
+KEYWORDS=amd64 ~ppc ~ppc64 ~sparc x86
+LICENSE=GPL-3 LGPL-3
+RDEPEND=>=x11-libs/gtk+-2.12:2 acl? ( sys-apps/acl ) !kernel_linux? ( fam? ( virtual/fam ) ) gimp? ( media-gfx/gimp ) policykit? ( sys-auth/polkit ) spell? ( app-text/gtkspell:2 ) udev? ( sys-fs/udisks dev-libs/dbus-glib )
+RESTRICT=test
+SLOT=0
+SRC_URI=http://emelfm2.net/rel/emelfm2-0.7.2.tar.bz2
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=610d641eaef5904243d60b114e1610d4

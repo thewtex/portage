@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst preinst setup unpack
+DEPEND=app-arch/unzip !bloodsuckermaps? ( !games-rpg/eternal-lands-bloodsucker )
+DESCRIPTION=An online MMORPG written in C and SDL
+HOMEPAGE=http://www.eternal-lands.com
+IUSE=music sound bloodsuckermaps
+KEYWORDS=~amd64 ~x86 ~x86-fbsd
+LICENSE=eternal_lands
+PDEPEND=bloodsuckermaps? ( >=games-rpg/eternal-lands-bloodsucker-3.0_p20110618 )
+RDEPEND=app-arch/unzip !bloodsuckermaps? ( !games-rpg/eternal-lands-bloodsucker )
+SLOT=0
+SRC_URI=http://www.eternal-lands.com/el_linux_192.zip music? ( mirror://gentoo/el_music_full-20060803.zip ) sound? ( http://www.eternallands.co.uk/EL_sound_191.zip )
+_eclasses_=base	dba02c674ce4dff67657c692954d7ef0	eutils	33ef77a15337022e05342d2c772a7a5a	games	c11e6cb73d545cdf3d36dc4bb7c753e4	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=cae554e93dbf09f0be971887c0a8f427

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst prepare test unpack
+DEPEND=>=dev-lang/perl-5.8.8-r8 virtual/perl-MIME-Base64 >=virtual/perl-PodParser-1.32 virtual/perl-Storable virtual/perl-Time-HiRes >=dev-perl/HTML-Parser-3.43 >=dev-perl/Mail-DKIM-0.37 >=dev-perl/Net-DNS-0.53 dev-perl/Digest-SHA1 dev-perl/libwww-perl >=virtual/perl-Archive-Tar-1.26 app-crypt/gnupg >=virtual/perl-IO-Zlib-1.04 >=dev-util/re2c-0.12.0 dev-perl/Mail-SPF dev-perl/NetAddr-IP ssl? ( dev-perl/IO-Socket-SSL dev-libs/openssl ) berkdb? ( virtual/perl-DB_File ) ldap? ( dev-perl/perl-ldap ) mysql? ( dev-perl/DBI dev-perl/DBD-mysql ) postgres? ( dev-perl/DBI dev-perl/DBD-Pg ) sqlite? ( dev-perl/DBI dev-perl/DBD-SQLite ) ipv6? ( dev-perl/IO-Socket-INET6 ) dev-lang/perl[-build]
+DESCRIPTION=SpamAssassin is an extensible email filter which is used to identify spam.
+EAPI=2
+HOMEPAGE=http://spamassassin.apache.org/
+IUSE=berkdb qmail ssl doc ldap mysql postgres sqlite ipv6
+KEYWORDS=alpha amd64 ~arm hppa ia64 ppc ppc64 sparc x86
+LICENSE=Apache-2.0
+RDEPEND=>=dev-lang/perl-5.8.8-r8 virtual/perl-MIME-Base64 >=virtual/perl-PodParser-1.32 virtual/perl-Storable virtual/perl-Time-HiRes >=dev-perl/HTML-Parser-3.43 >=dev-perl/Mail-DKIM-0.37 >=dev-perl/Net-DNS-0.53 dev-perl/Digest-SHA1 dev-perl/libwww-perl >=virtual/perl-Archive-Tar-1.26 app-crypt/gnupg >=virtual/perl-IO-Zlib-1.04 >=dev-util/re2c-0.12.0 dev-perl/Mail-SPF dev-perl/NetAddr-IP ssl? ( dev-perl/IO-Socket-SSL dev-libs/openssl ) berkdb? ( virtual/perl-DB_File ) ldap? ( dev-perl/perl-ldap ) mysql? ( dev-perl/DBI dev-perl/DBD-mysql ) postgres? ( dev-perl/DBI dev-perl/DBD-Pg ) sqlite? ( dev-perl/DBI dev-perl/DBD-SQLite ) ipv6? ( dev-perl/IO-Socket-INET6 ) dev-lang/perl[-build]
+SLOT=0
+SRC_URI=mirror://apache/spamassassin/source/Mail-SpamAssassin-3.3.1.tar.bz2
+_eclasses_=base	dba02c674ce4dff67657c692954d7ef0	eutils	33ef77a15337022e05342d2c772a7a5a	multilib	c4883399ddd3e1d2bd291607b30fded4	perl-module	01501a30505074cd0012cabbf5d99447	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=7faa1866eddfe2817d044ae9af20e182

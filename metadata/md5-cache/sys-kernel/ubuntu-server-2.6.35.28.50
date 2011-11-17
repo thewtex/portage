@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst preinst prepare setup unpack
+DEPEND=binary? ( >=sys-kernel/genkernel-3.4.12.6-r4 )
+DESCRIPTION=Ubuntu Server sources (and optional binary kernel)
+EAPI=2
+HOMEPAGE=http://www.openvz.org
+IUSE=binary
+KEYWORDS=x86 amd64
+LICENSE=GPL-2
+RDEPEND=binary? ( >=sys-fs/udev-160 )
+RESTRICT=binchecks strip
+SLOT=2.6.35.28.50
+SRC_URI=mirror://kernel/linux/kernel/v./linux-2.6.35.tar.bz2 http://www.funtoo.org/distfiles/linux_2.6.35-28.50.diff.gz
+_eclasses_=mount-boot	410bdaef41d2c8674e24edfa9d521177
+_md5_=870aa162b63d982da7af3b9c63cf5cdd

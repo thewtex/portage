@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile config configure install prepare setup unpack
+DEPEND=>=media-sound/cdparanoia-3.9.8 >=media-libs/libcdaudio-0.99.6 >=media-libs/taglib-1.5 >=media-libs/flac-1.2.1 >=media-libs/libogg-1.1.4 >=media-libs/libvorbis-1.2.1 cdr? ( virtual/cdrtools ) fftw? ( sci-libs/fftw ) opengl? ( virtual/opengl ) sdl? ( >=media-libs/libsdl-1.2.5 libvisual? ( =media-libs/libvisual-0.4* ) ) app-arch/unzip =media-tv/mythtv-0.23.1* >=sys-apps/sed-4
+DESCRIPTION=Music player module for MythTV.
+EAPI=2
+HOMEPAGE=http://www.mythtv.org
+IUSE=cdr fftw libvisual opengl sdl debug mmx
+KEYWORDS=amd64 ~ppc x86
+LICENSE=GPL-2
+RDEPEND=>=media-sound/cdparanoia-3.9.8 >=media-libs/libcdaudio-0.99.6 >=media-libs/taglib-1.5 >=media-libs/flac-1.2.1 >=media-libs/libogg-1.1.4 >=media-libs/libvorbis-1.2.1 cdr? ( virtual/cdrtools ) fftw? ( sci-libs/fftw ) opengl? ( virtual/opengl ) sdl? ( >=media-libs/libsdl-1.2.5 libvisual? ( =media-libs/libvisual-0.4* ) ) =media-tv/mythtv-0.23.1*
+RESTRICT=strip
+SLOT=0
+SRC_URI=http://svn.mythtv.org/trac/changeset/25396/branches/release-0-23-fixes/mythplugins?old_path=%2F&format=zip -> mythplugins-0.23.1_p25396.zip
+_eclasses_=base	dba02c674ce4dff67657c692954d7ef0	eutils	33ef77a15337022e05342d2c772a7a5a	multilib	c4883399ddd3e1d2bd291607b30fded4	mythtv	2a7f3ae9a53385e3565ee0b90f813da5	mythtv-plugins	0ddc866ef8b18e0d4c759a97d43bf960	portability	1d9665386ff87b70cba7f591ba27723f	qt4	017d97ec9e8be913a79efab521dc7dec	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
+_md5_=e6353bea6efb1d1a93ea183e9e6340d6

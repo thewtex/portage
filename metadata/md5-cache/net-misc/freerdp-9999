@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile configure install prepare setup test unpack
+DEPEND=alsa? ( media-libs/alsa-lib ) cups? ( net-print/cups ) directfb? ( dev-libs/DirectFB ) ffmpeg? ( virtual/ffmpeg ) iconv? ( virtual/libiconv ) pulseaudio? ( media-sound/pulseaudio ) smartcard? ( sys-apps/pcsc-lite ) gnutls? ( >=net-libs/gnutls-2.10.1 ) !gnutls? ( nss? ( dev-libs/nss ) !nss? ( polarssl? ( >=net-libs/polarssl-0.14.0 ) !polarssl? ( >=dev-libs/openssl-0.9.8a ) ) ) X? ( x11-libs/libX11 x11-libs/libXcursor x11-libs/libxkbfile ) xv? ( x11-libs/libXext x11-libs/libXv ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool dev-vcs/git
+DESCRIPTION=A Remote Desktop Protocol Client, forked from rdesktop
+EAPI=4
+HOMEPAGE=http://www.freerdp.com/
+IUSE=alsa cups debug-assert debug-gdi debug-kbd debug-nla debug-proto debug-serial debug-smartcard debug-sound debug-stream-assert directfb ffmpeg gnutls iconv ipv6 nss polarssl pulseaudio smartcard static-libs X xv
+LICENSE=GPL-2
+RDEPEND=alsa? ( media-libs/alsa-lib ) cups? ( net-print/cups ) directfb? ( dev-libs/DirectFB ) ffmpeg? ( virtual/ffmpeg ) iconv? ( virtual/libiconv ) pulseaudio? ( media-sound/pulseaudio ) smartcard? ( sys-apps/pcsc-lite ) gnutls? ( >=net-libs/gnutls-2.10.1 ) !gnutls? ( nss? ( dev-libs/nss ) !nss? ( polarssl? ( >=net-libs/polarssl-0.14.0 ) !polarssl? ( >=dev-libs/openssl-0.9.8a ) ) ) X? ( x11-libs/libX11 x11-libs/libXcursor x11-libs/libxkbfile ) xv? ( x11-libs/libXext x11-libs/libXv )
+SLOT=0
+_eclasses_=autotools	b81740a014934d6736a8795cdedb452e	autotools-utils	9799469ea552910620db9dca0bca94b0	base	dba02c674ce4dff67657c692954d7ef0	eutils	33ef77a15337022e05342d2c772a7a5a	git-2	48dc75cccc109d7cda9f8dc3fff7a5b8	libtool	76720aa53cbace6123aac554983eadfa	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=9e6d831e9a13ab621c492007645369df

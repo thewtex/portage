@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst postrm preinst
+DEPEND=dev-db/sqlite:3 >=dev-libs/glib-2.26:2 dev-libs/libunique:1 dev-libs/libxml2:2 media-libs/gst-plugins-base:0.10 media-libs/gstreamer:0.10 media-libs/taglib x11-libs/cairo x11-libs/gdk-pixbuf:2 x11-libs/gtk+:2 cover? ( net-libs/libsoup:2.4 ) libnotify? ( x11-libs/libnotify ) lyrics? ( net-libs/libsoup:2.4 ) dev-util/intltool dev-util/pkgconfig sys-devel/gettext >=sys-apps/sed-4
+DESCRIPTION=A media player for Gtk+ with a slick GUI, great speed and lots of features
+EAPI=4
+HOMEPAGE=http://www.xnoise-media-player.com/
+IUSE=+cover libnotify +lyrics
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-db/sqlite:3 >=dev-libs/glib-2.26:2 dev-libs/libunique:1 dev-libs/libxml2:2 media-libs/gst-plugins-base:0.10 media-libs/gstreamer:0.10 media-libs/taglib x11-libs/cairo x11-libs/gdk-pixbuf:2 x11-libs/gtk+:2 cover? ( net-libs/libsoup:2.4 ) libnotify? ( x11-libs/libnotify ) lyrics? ( net-libs/libsoup:2.4 )
+SLOT=0
+SRC_URI=http://xnoise.googlecode.com/files/xnoise-0.1.28.tar.bz2
+_eclasses_=fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	gnome2-utils	dfcd797d126b46852d33936f4a0a1702
+_md5_=8e1d211d3794e5cdc1b8914c0695412e

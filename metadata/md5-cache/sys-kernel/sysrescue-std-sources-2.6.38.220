@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst preinst prepare setup unpack
+DEPEND=binary? ( >=sys-kernel/genkernel-3.4.12.6-r4 )
+DESCRIPTION=System Rescue CD Full sources for the Linux kernel, including gentoo and sysresccd patches.
+EAPI=3
+HOMEPAGE=http://kernel.sysresccd.org
+IUSE=binary
+KEYWORDS=x86 amd64
+LICENSE=GPL-2
+RDEPEND=binary? ( >=sys-fs/udev-160 )
+RESTRICT=binchecks strip
+SLOT=2.6.38.220
+SRC_URI=mirror://kernel/linux/kernel/v./linux-2.6.38.tar.bz2 http://www.funtoo.org/archive/sysrescue-std-sources/std-sources-2.6.38.220-patches-config.tar.xz
+_eclasses_=mount-boot	410bdaef41d2c8674e24edfa9d521177
+_md5_=00c717feb6e67e882751f1f8fcd96871

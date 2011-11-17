@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst prepare prerm setup
+DEPEND=dev-vcs/git sys-libs/zlib dev-libs/openssl virtual/httpd-cgi highlight? ( app-text/highlight ) !<www-apps/cgit-0.8.3.3 doc? ( app-text/docbook-xsl-stylesheets >=app-text/asciidoc-8.5.1 ) >=app-admin/webapp-config-1.50.15
+DESCRIPTION=a fast web-interface for git repositories
+EAPI=4
+HOMEPAGE=http://hjemli.net/git/cgit/about/
+IUSE=doc highlight vhosts
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-vcs/git sys-libs/zlib dev-libs/openssl virtual/httpd-cgi highlight? ( app-text/highlight ) >=app-admin/webapp-config-1.50.15
+SLOT=0
+SRC_URI=mirror://kernel/software/scm/git/git-1.7.4.tar.bz2 http://hjemli.net/git/cgit/snapshot/cgit-0.9.0.2.tar.bz2
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	webapp	b79de1dd84dd3022661b31ea1d6685e2
+_md5_=4276438c82b93ae3253c48e8d85c15ed

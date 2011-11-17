@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup test unpack
+DEPEND=>=dev-libs/glib-2.24.0:2 libffi? ( virtual/libffi ) doc? ( dev-libs/libxslt >=app-text/docbook-xsl-stylesheets-1.70.1 ) test? ( media-fonts/font-cursor-misc media-fonts/font-misc-misc ) >=dev-util/pkgconfig-0.12 || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool app-arch/xz-utils >=sys-apps/sed-4 >=app-admin/eselect-python-20091230 || ( =dev-lang/python-2.7* =dev-lang/python-2.6* ) test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
+DESCRIPTION=GLib's GObject library bindings for Python
+EAPI=3
+HOMEPAGE=http://www.pygtk.org/
+IUSE=doc examples +introspection libffi test test
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~x86-fbsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris
+LICENSE=LGPL-2.1
+PDEPEND=introspection? ( dev-python/pygobject:3 )
+RDEPEND=>=dev-libs/glib-2.24.0:2 libffi? ( virtual/libffi ) !<dev-python/pygtk-2.13 >=app-admin/eselect-python-20091230 || ( =dev-lang/python-2.7* =dev-lang/python-2.6* )
+RESTRICT=test
+SLOT=2
+SRC_URI=mirror://gnome/sources/pygobject/2.28/pygobject-2.28.6.tar.xz
+_eclasses_=alternatives	7a734a903498a04a0722152a124aa3a5	autotools	b81740a014934d6736a8795cdedb452e	eutils	33ef77a15337022e05342d2c772a7a5a	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	gnome.org	8fef8f967214f56e08fa92d61163d891	gnome2	3aa9fb56280cbb64b3d42e0db59ed76e	gnome2-utils	dfcd797d126b46852d33936f4a0a1702	libtool	76720aa53cbace6123aac554983eadfa	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	python	6bbd984910e27780e5d0ea543d83ef84	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc	virtualx	0c41ff55e46b959d9457dde69e7a09d9
+_md5_=08ed87817c2ade4353ca430f2b51ca99

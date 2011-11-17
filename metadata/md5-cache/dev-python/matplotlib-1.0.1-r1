@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst postrm prepare setup test
+DEPEND=dev-python/numpy dev-python/python-dateutil dev-python/pytz media-libs/freetype:2 media-libs/libpng gtk? ( dev-python/pygtk ) wxwidgets? ( dev-python/wxpython:2.8 ) dev-python/pycxx dev-util/pkgconfig doc? ( app-text/dvipng dev-python/imaging dev-python/ipython dev-python/xlwt dev-python/sphinx media-gfx/graphviz[cairo] dev-texlive/texlive-latexextra dev-texlive/texlive-fontsrecommended dev-texlive/texlive-latexrecommended ) >=app-admin/eselect-python-20091230 =dev-lang/python-2* tk? ( =dev-lang/python-2*[tk] )
+DESCRIPTION=Pure python plotting library with matlab like syntax
+EAPI=3
+HOMEPAGE=http://matplotlib.sourceforge.net/ http://pypi.python.org/pypi/matplotlib
+IUSE=cairo doc excel examples fltk gtk latex qt4 traits tk wxwidgets
+KEYWORDS=amd64 ppc ~ppc64 x86 ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos
+LICENSE=PYTHON BSD
+RDEPEND=dev-python/numpy dev-python/python-dateutil dev-python/pytz media-libs/freetype:2 media-libs/libpng gtk? ( dev-python/pygtk ) wxwidgets? ( dev-python/wxpython:2.8 ) virtual/ttf-fonts media-fonts/stix-fonts media-fonts/texcm-ttf dev-python/pyparsing cairo? ( dev-python/pycairo ) excel? ( dev-python/xlwt ) fltk? ( dev-python/pyfltk ) qt4? ( dev-python/PyQt4[X] ) traits? ( dev-python/traits dev-python/configobj ) latex? ( virtual/latex-base app-text/ghostscript-gpl app-text/dvipng app-text/poppler[utils] dev-texlive/texlive-fontsrecommended ) >=app-admin/eselect-python-20091230 =dev-lang/python-2* tk? ( =dev-lang/python-2*[tk] )
+SLOT=0
+SRC_URI=mirror://sourceforge/matplotlib/matplotlib-1.0.1.tar.gz doc? ( mirror://gentoo/matplotlib-sampledata.tar.bz2 ) examples? ( mirror://gentoo/matplotlib-sampledata.tar.bz2 )
+_eclasses_=distutils	b4c334e216d998c4ce4b750cb091e42e	eutils	33ef77a15337022e05342d2c772a7a5a	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	python	6bbd984910e27780e5d0ea543d83ef84	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=3ab199d7b0ea1cfe6e99c619c6b2936b

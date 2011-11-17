@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DEPEND=>=media-libs/libsdl-1.1.6[audio,opengl,video] virtual/opengl x11-libs/libXt
+DESCRIPTION=port of Abuse by Crack Dot Com
+EAPI=2
+HOMEPAGE=http://abuse.zoy.org/
+IUSE=demo levels sound
+KEYWORDS=amd64 ppc x86
+LICENSE=GPL-2
+RDEPEND=>=media-libs/libsdl-1.1.6[audio,opengl,video] virtual/opengl
+SLOT=0
+SRC_URI=http://abuse.zoy.org/raw/Downloads/abuse-0.7.1.tar.gz !demo? ( http://abuse.zoy.org/raw/Downloads/abuse-data-2.00.tar.gz ) demo? ( http://abuse.zoy.org/raw/Downloads/abuse-lib-2.00.tar.gz ) sound? ( http://abuse.zoy.org/raw/Downloads/abuse-sfx-2.00.tar.gz ) levels? ( http://abuse.zoy.org/raw/Downloads/abuse-frabs-2.11.tar.gz )
+_eclasses_=base	dba02c674ce4dff67657c692954d7ef0	eutils	33ef77a15337022e05342d2c772a7a5a	games	c11e6cb73d545cdf3d36dc4bb7c753e4	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=2466d8c67403232e708f513a96ad3561

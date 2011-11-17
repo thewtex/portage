@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install
+DEPEND=sys-libs/ncurses cairo? ( x11-libs/cairo[X?,svg?] ) xml? ( dev-libs/libxml2 ) dev-util/pkgconfig numa? ( sys-process/numactl )
+DESCRIPTION=displays the hardware topology in convenient formats
+EAPI=4
+HOMEPAGE=http://www.open-mpi.org/projects/hwloc/
+IUSE=cairo +numa svg static-libs xml X
+KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux
+LICENSE=BSD
+RDEPEND=sys-libs/ncurses cairo? ( x11-libs/cairo[X?,svg?] ) xml? ( dev-libs/libxml2 )
+SLOT=0
+SRC_URI=http://www.open-mpi.org/software/hwloc/v1.2/downloads/hwloc-1.2.tar.bz2
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
+_md5_=f598779d16e37bb1a0b54a049f0e9b49

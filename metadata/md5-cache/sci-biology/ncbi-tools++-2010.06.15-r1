@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst prepare
+DEPEND=sqlite? ( dev-db/sqlite:3 ) mysql? ( virtual/mysql )
+DESCRIPTION=NCBI C++ Toolkit, including NCBI BLAST+
+EAPI=3
+HOMEPAGE=http://www.ncbi.nlm.nih.gov/books/bv.fcgi?rid=toolkit
+IUSE=sqlite mysql
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=public-domain
+RDEPEND=sqlite? ( dev-db/sqlite:3 ) mysql? ( virtual/mysql )
+SLOT=0
+SRC_URI=ftp://ftp.ncbi.nih.gov/toolbox/ncbi_tools++/2010/Jun_15_2010/ncbi_cxx--Jun_15_2010.tar.gz http://dev.gentoo.org/~jlec/distfiles/ncbi-tools++-2010.06.15-asneeded.patch.xz
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	flag-o-matic	630c256d55702ba23515f64952987828	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=ab50a73f088a8fc5fa0ea7b97ba3a582

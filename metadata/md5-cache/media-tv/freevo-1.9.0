@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst postrm prepare setup
+DEPEND=>=app-admin/eselect-python-20091230 || ( =dev-lang/python-2.7* =dev-lang/python-2.6* =dev-lang/python-2.5* ) || ( =dev-lang/python-2.7*[xml] =dev-lang/python-2.6*[xml] =dev-lang/python-2.5*[xml] )
+DESCRIPTION=Digital video jukebox (PVR, DVR).
+EAPI=3
+HOMEPAGE=http://www.freevo.org/
+IUSE=directfb cdparanoia doc dvd encode fbcon flac gphoto2 jpeg lame lirc matrox mixer nls sqlite tv tvtime vorbis xine X
+KEYWORDS=amd64 ~ppc x86
+LICENSE=GPL-2
+RDEPEND=dev-python/beautifulsoup dev-python/imaging dev-python/pygame >=dev-python/twisted-2.5 >=dev-python/twisted-web-0.6 net-zope/zope-interface >=dev-python/kaa-base-0.6.0 >=dev-python/kaa-metadata-0.7.3 >=dev-python/kaa-imlib2-0.2.3 dev-python/kaa-display media-video/mplayer[directfb?,fbcon?] >=media-libs/libsdl-1.2.5[directfb?,fbcon?] media-libs/sdl-image[jpeg,png] x11-apps/xset cdparanoia? ( media-sound/cdparanoia ) dvd? ( >=media-video/lsdvd-0.10 directfb? ( media-libs/xine-lib[directfb] ) fbcon? ( media-libs/xine-lib[fbcon] ) encode? ( media-video/dvdbackup ) ) flac? ( media-libs/flac ) gphoto2? ( media-libs/libgphoto2 ) jpeg? ( virtual/jpeg ) lame? ( media-sound/lame ) lirc? ( app-misc/lirc >=dev-python/pylirc-0.0.3 ) matrox? ( >=media-video/matroxset-0.3 ) mixer? ( media-sound/aumix ) sqlite? ( dev-python/pysqlite:0 ) tv? ( media-tv/xmltv tvtime? ( media-tv/tvtime ) ) xine? ( media-video/xine-ui ) vorbis? ( media-sound/vorbis-tools ) >=app-admin/eselect-python-20091230 || ( =dev-lang/python-2.7* =dev-lang/python-2.6* =dev-lang/python-2.5* ) || ( =dev-lang/python-2.7*[xml] =dev-lang/python-2.6*[xml] =dev-lang/python-2.5*[xml] )
+SLOT=0
+SRC_URI=mirror://sourceforge/freevo/freevo-1.9.0.tar.gz
+_eclasses_=distutils	b4c334e216d998c4ce4b750cb091e42e	eutils	33ef77a15337022e05342d2c772a7a5a	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	python	6bbd984910e27780e5d0ea543d83ef84	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=6427b2ed2356667aeb6d7a30b46cfcf1

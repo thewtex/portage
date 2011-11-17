@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst postrm setup unpack
+DEPEND=|| ( >=sys-libs/db-4.8.30:4.8 sys-libs/db:4.7 sys-libs/db:4.6 sys-libs/db:4.5 sys-libs/db:4.4 sys-libs/db:4.3 sys-libs/db:4.2 ) >=sys-libs/ncurses-5.6-r2 perl? ( dev-lang/perl ) tcl? ( !unicode? ( >=dev-lang/tcl-8.5 ) ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=Vi clone
+EAPI=1
+HOMEPAGE=https://sites.google.com/a/bostic.com/keithbostic/nvi
+IUSE=perl tcl unicode
+KEYWORDS=alpha amd64 hppa ~mips ppc ppc64 sparc x86
+LICENSE=BSD
+RDEPEND=|| ( >=sys-libs/db-4.8.30:4.8 sys-libs/db:4.7 sys-libs/db:4.6 sys-libs/db:4.5 sys-libs/db:4.4 sys-libs/db:4.3 sys-libs/db:4.2 ) >=sys-libs/ncurses-5.6-r2 perl? ( dev-lang/perl ) tcl? ( !unicode? ( >=dev-lang/tcl-8.5 ) ) app-admin/eselect-vi
+SLOT=0
+SRC_URI=http://www.kotnet.org/~skimo/nvi/devel/nvi-1.81.6.tar.bz2
+_eclasses_=autotools	b81740a014934d6736a8795cdedb452e	db-use	cfd87251a2930b12ee9e6a73364d2c45	eutils	33ef77a15337022e05342d2c772a7a5a	flag-o-matic	630c256d55702ba23515f64952987828	libtool	76720aa53cbace6123aac554983eadfa	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
+_md5_=dbbeb5d1ed2e970750a7426ee5b48ae9

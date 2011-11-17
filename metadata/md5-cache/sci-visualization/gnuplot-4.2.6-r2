@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare
+DEPEND=xemacs? ( app-editors/xemacs app-xemacs/xemacs-base ) emacs? ( virtual/emacs !app-emacs/gnuplot-mode ) lua? ( >=dev-lang/lua-5.1 ) ggi? ( media-libs/libggi ) gd? ( >=media-libs/gd-2[png] ) latex? ( virtual/latex-base lua? ( dev-tex/pgf >=dev-texlive/texlive-latexrecommended-2008-r2 ) ) X? ( x11-libs/libXaw ) svga? ( media-libs/svgalib ) readline? ( >=sys-libs/readline-4.2 ) plotutils? ( media-libs/plotutils ) wxwidgets? ( x11-libs/wxGTK:2.8[X] >=x11-libs/cairo-0.9 >=x11-libs/pango-1.10.3 x11-libs/gtk+:2 ) dev-util/pkgconfig doc? ( virtual/latex-base app-text/ghostscript-gpl ) !emacs? ( xemacs? ( app-xemacs/texinfo ) ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=Command-line driven interactive plotting program
+EAPI=2
+HOMEPAGE=http://www.gnuplot.info/
+IUSE=doc emacs examples +gd ggi latex lua plotutils readline svga wxwidgets X xemacs
+KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~x86-fbsd
+LICENSE=gnuplot GPL-2
+RDEPEND=xemacs? ( app-editors/xemacs app-xemacs/xemacs-base ) emacs? ( virtual/emacs !app-emacs/gnuplot-mode ) lua? ( >=dev-lang/lua-5.1 ) ggi? ( media-libs/libggi ) gd? ( >=media-libs/gd-2[png] ) latex? ( virtual/latex-base lua? ( dev-tex/pgf >=dev-texlive/texlive-latexrecommended-2008-r2 ) ) X? ( x11-libs/libXaw ) svga? ( media-libs/svgalib ) readline? ( >=sys-libs/readline-4.2 ) plotutils? ( media-libs/plotutils ) wxwidgets? ( x11-libs/wxGTK:2.8[X] >=x11-libs/cairo-0.9 >=x11-libs/pango-1.10.3 x11-libs/gtk+:2 )
+RESTRICT=wxwidgets? ( test )
+SLOT=0
+SRC_URI=mirror://sourceforge/gnuplot/gnuplot-4.2.6.tar.gz mirror://gentoo/gnuplot-4.2.5-lua-term.patch.bz2
+_eclasses_=autotools	b81740a014934d6736a8795cdedb452e	elisp-common	53087580bbfa102dac1b4fbf45f416fd	eutils	33ef77a15337022e05342d2c772a7a5a	libtool	76720aa53cbace6123aac554983eadfa	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	wxwidgets	9b355ad2394810db50553e45cd663578
+_md5_=77f45e20b423e464bc4edf868191f099

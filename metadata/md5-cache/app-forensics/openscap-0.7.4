@@ -1,0 +1,15 @@
+DEFINED_PHASES=configure install postinst setup
+DEPEND=!nss? ( dev-libs/libgcrypt ) nss? ( dev-libs/nss ) sql? ( dev-db/opendbx ) dev-libs/libpcre dev-libs/libxml2 dev-libs/libxslt net-misc/curl perl? ( dev-lang/swig ) python? ( dev-lang/swig ) >=app-admin/eselect-python-20091230 =dev-lang/python-2*
+DESCRIPTION=Framework which enables integration with the Security Content Automation Protocol (SCAP)
+EAPI=3
+HOMEPAGE=http://www.open-scap.org/
+IUSE=bash-completion doc nss perl python sql bash-completion
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2.1
+PDEPEND=bash-completion? ( app-shells/bash-completion )
+RDEPEND=!nss? ( dev-libs/libgcrypt ) nss? ( dev-libs/nss ) sql? ( dev-db/opendbx ) dev-libs/libpcre dev-libs/libxml2 dev-libs/libxslt net-misc/curl >=app-admin/eselect-python-20091230 =dev-lang/python-2* bash-completion? ( app-admin/eselect )
+RESTRICT=test
+SLOT=0
+SRC_URI=http://www.open-scap.org/download/openscap-0.7.4.tar.gz
+_eclasses_=bash-completion	003731da0df19d26955927bd534f3058	eutils	33ef77a15337022e05342d2c772a7a5a	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	python	6bbd984910e27780e5d0ea543d83ef84	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=6e68fbf5b9ad2349b8500f04018fdcf8

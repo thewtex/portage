@@ -1,0 +1,13 @@
+DEFINED_PHASES=install prepare
+DEPEND=sys-fs/sysfsutils fuse? ( sys-fs/fuse ) snmp? ( net-analyzer/net-snmp ) dev-util/indent app-admin/genromfs
+DESCRIPTION=A set of user space utilities that should be used together with the zSeries (s390) Linux kernel and device drivers
+EAPI=2
+HOMEPAGE=http://www.ibm.com/developerworks/linux/linux390/s390-tools.html
+IUSE=fuse snmp zfcpdump
+KEYWORDS=-* ~s390
+LICENSE=GPL-2
+RDEPEND=sys-fs/sysfsutils fuse? ( sys-fs/fuse ) snmp? ( net-analyzer/net-snmp )
+SLOT=0
+SRC_URI=http://download.boulder.ibm.com/ibmdl/pub/software/dw/linux390/ht_src/s390-tools-1.13.0.tar.bz2 zfcpdump? ( mirror://sourceforge/e2fsprogs/e2fsprogs-1.41.3.tar.gz mirror://kernel/linux/kernel/v2.6/linux-2.6.27.tar.bz2 )
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=4f7ebdbb1fa0d937a4485b0169d3cb40

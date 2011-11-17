@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install nofetch postinst prepare setup test
+DEPEND=|| ( >=sys-fs/lvm2-2.02.45 sys-fs/device-mapper ) sys-fs/fuse x11-libs/wxGTK:2.8[X?] app-admin/sudo !ppc? ( dev-lang/nasm )
+DESCRIPTION=Free open-source disk encryption software
+EAPI=4
+HOMEPAGE=http://www.truecrypt.org/
+IUSE=X
+KEYWORDS=-* ~amd64 ~ppc ~x86
+LICENSE=truecrypt-3.0
+RDEPEND=|| ( >=sys-fs/lvm2-2.02.45 sys-fs/device-mapper ) sys-fs/fuse x11-libs/wxGTK:2.8[X?] app-admin/sudo
+RESTRICT=mirror fetch bindist
+SLOT=0
+SRC_URI=truecrypt-7.0a.tar.gz mirror://gentoo/truecrypt-pkcs11.h.bz2
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	flag-o-matic	630c256d55702ba23515f64952987828	linux-info	0a300da62c346bbaee5bcf82727f23ac	multilib	c4883399ddd3e1d2bd291607b30fded4	pax-utils	43c50115ec22f684df1dc43187a60fcc	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc	wxwidgets	9b355ad2394810db50553e45cd663578
+_md5_=f53410f3b85aa58215cabf2ea93d17a7

@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup test unpack
+DEPEND=>=media-libs/glew-1.5 >=media-libs/libsdl-1.2[joystick] sys-libs/readline x11-libs/libXext >=x11-libs/wxGTK-2.8 <media-libs/libsfml-2.0 ao? ( media-libs/libao ) alsa? ( media-libs/alsa-lib ) bluetooth? ( net-wireless/bluez ) encode? ( media-video/ffmpeg[encode] ) lzo? ( dev-libs/lzo ) openal? ( media-libs/openal ) opencl? ( || ( media-libs/mesa[opencl] x11-drivers/nvidia-drivers x11-drivers/ati-drivers ) ) opengl? ( virtual/opengl ) portaudio? ( media-libs/portaudio ) pulseaudio? ( media-sound/pulseaudio ) xrandr? ( x11-libs/libXrandr ) virtual/jpeg sys-libs/zlib x11-libs/cairo x11-libs/libXxf86vm dev-util/cmake dev-util/pkgconfig media-gfx/nvidia-cg-toolkit >=dev-util/cmake-2.8.4 userland_GNU? ( >=sys-apps/findutils-4.4.0 ) dev-vcs/git
+DESCRIPTION=A gamecube/wii/triforce emulator.
+EAPI=3
+HOMEPAGE=http://www.dolphin-emu.com/
+IUSE=alsa ao bluetooth doc encode +lzo openal opencl opengl portaudio pulseaudio +wxwidgets +xrandr
+KEYWORDS=~x86 ~amd64
+LICENSE=GPL-2
+RDEPEND=>=media-libs/glew-1.5 >=media-libs/libsdl-1.2[joystick] sys-libs/readline x11-libs/libXext >=x11-libs/wxGTK-2.8 <media-libs/libsfml-2.0 ao? ( media-libs/libao ) alsa? ( media-libs/alsa-lib ) bluetooth? ( net-wireless/bluez ) encode? ( media-video/ffmpeg[encode] ) lzo? ( dev-libs/lzo ) openal? ( media-libs/openal ) opencl? ( || ( media-libs/mesa[opencl] x11-drivers/nvidia-drivers x11-drivers/ati-drivers ) ) opengl? ( virtual/opengl ) portaudio? ( media-libs/portaudio ) pulseaudio? ( media-sound/pulseaudio ) xrandr? ( x11-libs/libXrandr ) virtual/jpeg sys-libs/zlib x11-libs/cairo x11-libs/libXxf86vm
+SLOT=0
+_eclasses_=base	dba02c674ce4dff67657c692954d7ef0	cmake-utils	00f9fd5a80cf3605f6d9a2e808c48a92	eutils	33ef77a15337022e05342d2c772a7a5a	flag-o-matic	630c256d55702ba23515f64952987828	games	c11e6cb73d545cdf3d36dc4bb7c753e4	git-2	48dc75cccc109d7cda9f8dc3fff7a5b8	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	wxwidgets	9b355ad2394810db50553e45cd663578
+_md5_=6141ca52367cbaa879953412bc590836

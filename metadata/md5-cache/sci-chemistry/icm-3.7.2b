@@ -1,0 +1,15 @@
+DEFINED_PHASES=install nofetch postinst unpack
+DEPEND=!sci-chemistry/icm-browser app-arch/unzip amd64? ( 64bit? ( =media-libs/tiff-3* media-libs/libmng app-crypt/mit-krb5 app-arch/bzip2 media-libs/libpng:1.2 media-libs/jpeg:62 x11-libs/libdrm x11-libs/libX11 sys-apps/keyutils ) 32bit? ( app-emulation/emul-linux-x86-compat app-emulation/emul-linux-x86-xlibs ) ) x86? ( =media-libs/tiff-3* media-libs/libpng:1.2 media-libs/libmng app-crypt/mit-krb5 app-arch/bzip2 x11-libs/libdrm x11-libs/libX11 sys-apps/keyutils )
+DESCRIPTION=MolSoft LCC ICM Pro
+EAPI=4
+HOMEPAGE=http://www.molsoft.com/icm_pro.html
+IUSE=32bit 64bit
+KEYWORDS=~amd64 ~x86
+LICENSE=MolSoft
+RDEPEND=!sci-chemistry/icm-browser app-arch/unzip amd64? ( 64bit? ( =media-libs/tiff-3* media-libs/libmng app-crypt/mit-krb5 app-arch/bzip2 media-libs/libpng:1.2 media-libs/jpeg:62 x11-libs/libdrm x11-libs/libX11 sys-apps/keyutils ) 32bit? ( app-emulation/emul-linux-x86-compat app-emulation/emul-linux-x86-xlibs ) ) x86? ( =media-libs/tiff-3* media-libs/libpng:1.2 media-libs/libmng app-crypt/mit-krb5 app-arch/bzip2 x11-libs/libdrm x11-libs/libX11 sys-apps/keyutils )
+REQUIRED_USE=^^ ( ( !32bit 64bit ) ( 32bit !64bit ) ( 32bit 64bit ) )
+RESTRICT=fetch
+SLOT=0
+SRC_URI=icm-3.7-2b-linux.sh
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
+_md5_=5174e7b9638ed27292c5bddc10951fd9

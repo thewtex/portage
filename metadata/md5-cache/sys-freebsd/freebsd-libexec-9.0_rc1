@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare setup unpack
+DEPEND==sys-freebsd/freebsd-lib-9.0* pam? ( virtual/pam ) =sys-freebsd/freebsd-mk-defs-9.0* =sys-freebsd/freebsd-sources-9.0* virtual/pmake virtual/pmake
+DESCRIPTION=FreeBSD libexec things
+EAPI=2
+HOMEPAGE=http://www.freebsd.org/
+IUSE=pam ssl kerberos ipv6 nis xinetd profile
+KEYWORDS=~sparc-fbsd ~x86-fbsd
+LICENSE=BSD
+RDEPEND==sys-freebsd/freebsd-lib-9.0* pam? ( virtual/pam ) xinetd? ( sys-apps/xinetd )
+SLOT=0
+SRC_URI=mirror://gentoo/freebsd-libexec-9.0_rc1.tar.bz2 mirror://gentoo/freebsd-ubin-9.0_rc1.tar.bz2 mirror://gentoo/freebsd-bin-9.0_rc1.tar.bz2 mirror://gentoo/freebsd-contrib-9.0_rc1.tar.bz2 mirror://gentoo/freebsd-lib-9.0_rc1.tar.bz2 mirror://gentoo/freebsd-etc-9.0_rc1.tar.bz2 mirror://gentoo/freebsd-usbin-9.0_rc1.tar.bz2
+_eclasses_=bsdmk	3d0ee174571cc190224b2ca024759aec	eutils	33ef77a15337022e05342d2c772a7a5a	flag-o-matic	630c256d55702ba23515f64952987828	freebsd	1c2e16e610d7b7335a74750bc583cca9	multilib	c4883399ddd3e1d2bd291607b30fded4	pam	71d772c7b2ecf139ec916c4584563109	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
+_md5_=b196abab0aabbf04a5567e21a2017b78

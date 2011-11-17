@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst postrm preinst prepare setup
+DEPEND=|| ( <x11-libs/libX11-1.3.99.901[xcb] >=x11-libs/libX11-1.3.99.901 ) x11-libs/libXxf86vm x11-libs/libxcb gnome? ( dev-libs/glib:2 >=gnome-base/gconf-2 ) nls? ( sys-devel/gettext ) >=sys-apps/sed-4 >=app-admin/eselect-python-20091230 gtk? ( || ( =dev-lang/python-2.7* =dev-lang/python-2.6* ) )
+DESCRIPTION=A screen color temperature adjusting software
+EAPI=3
+HOMEPAGE=http://jonls.dk/redshift/
+IUSE=gnome gtk nls
+KEYWORDS=amd64 x86
+LICENSE=GPL-3
+RDEPEND=|| ( <x11-libs/libX11-1.3.99.901[xcb] >=x11-libs/libX11-1.3.99.901 ) x11-libs/libXxf86vm x11-libs/libxcb gnome? ( dev-libs/glib:2 >=gnome-base/gconf-2 ) gtk? ( >=dev-python/pygtk-2 ) >=app-admin/eselect-python-20091230 gtk? ( || ( =dev-lang/python-2.7* =dev-lang/python-2.6* ) )
+SLOT=0
+SRC_URI=http://launchpad.net/redshift/trunk/1.4.1/+download/redshift-1.4.1.tar.bz2
+_eclasses_=gnome2-utils	dfcd797d126b46852d33936f4a0a1702	multilib	c4883399ddd3e1d2bd291607b30fded4	python	6bbd984910e27780e5d0ea543d83ef84	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf
+_md5_=5b20dad96399e7fd68dc96eaa889eb42

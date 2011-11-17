@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst postrm prepare setup
+DEPEND=dev-lang/python dev-python/lxml sys-libs/zlib hvm? ( media-libs/libsdl sys-power/iasl ) api? ( dev-libs/libxml2 net-misc/curl ) sys-devel/gcc dev-lang/perl app-misc/pax-utils dev-ml/findlib doc? ( app-doc/doxygen dev-tex/latex2html media-gfx/transfig media-gfx/graphviz dev-tex/xcolor dev-texlive/texlive-latexextra virtual/latex-base dev-tex/latexmk dev-texlive/texlive-latex dev-texlive/texlive-pictures dev-texlive/texlive-latexrecommended ) hvm? ( x11-proto/xproto sys-devel/dev86 ) >=app-admin/eselect-python-20091230
+DESCRIPTION=Xend daemon and tools
+EAPI=3
+HOMEPAGE=http://xen.org/
+IUSE=api custom-cflags debug doc flask hvm qemu pygrub screen xend
+KEYWORDS=~amd64 x86
+LICENSE=GPL-2
+RDEPEND=dev-lang/python dev-python/lxml sys-libs/zlib hvm? ( media-libs/libsdl sys-power/iasl ) api? ( dev-libs/libxml2 net-misc/curl ) sys-apps/iproute2 net-misc/bridge-utils dev-python/pyxml >=dev-lang/ocaml-3.12.0 screen? ( app-misc/screen app-admin/logrotate ) || ( sys-fs/udev sys-apps/hotplug ) >=app-admin/eselect-python-20091230
+SLOT=0
+SRC_URI=http://bits.xensource.com/oss-xen/release/4.1.1/xen-4.1.1.tar.gz http://xenbits.xensource.com/xen-extfiles/ipxe-git-v1.0.0.tar.gz
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	flag-o-matic	630c256d55702ba23515f64952987828	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	python	6bbd984910e27780e5d0ea543d83ef84	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=8e81418640bd8b1ce5397c9bc7736cdc

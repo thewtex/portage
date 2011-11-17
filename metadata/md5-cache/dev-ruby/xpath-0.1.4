@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare setup test unpack
+DEPEND=ruby_targets_ruby18? ( test? ( dev-ruby/rspec:2[ruby_targets_ruby18] ) ) ruby_targets_ree18? ( test? ( dev-ruby/rspec:2[ruby_targets_ree18] ) ) ruby_targets_jruby? ( test? ( dev-ruby/rspec:2[ruby_targets_jruby] ) ) ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ree18? ( dev-lang/ruby-enterprise:1.8 ) ruby_targets_jruby? ( dev-java/jruby ) ruby_targets_ruby18? ( virtual/rubygems[ruby_targets_ruby18] ) ruby_targets_ree18? ( virtual/rubygems[ruby_targets_ree18] ) ruby_targets_jruby? ( virtual/rubygems[ruby_targets_jruby] ) test? ( ruby_targets_ruby18? ( virtual/rubygems[ruby_targets_ruby18] ) ruby_targets_ree18? ( virtual/rubygems[ruby_targets_ree18] ) ruby_targets_jruby? ( virtual/rubygems[ruby_targets_jruby] ) )
+DESCRIPTION=XPath is a Ruby DSL around a subset of XPath 1.0.
+EAPI=4
+HOMEPAGE=https://github.com/jnicklas/xpath
+IUSE=test elibc_FreeBSD ruby_targets_ruby18 ruby_targets_ree18 ruby_targets_jruby test
+KEYWORDS=~amd64
+LICENSE=MIT
+RDEPEND=ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ree18? ( dev-lang/ruby-enterprise:1.8 ) ruby_targets_jruby? ( dev-java/jruby ) ruby_targets_ruby18? ( virtual/rubygems[ruby_targets_ruby18] ) ruby_targets_ree18? ( virtual/rubygems[ruby_targets_ree18] ) ruby_targets_jruby? ( virtual/rubygems[ruby_targets_jruby] )
+REQUIRED_USE=|| ( ruby_targets_ruby18 ruby_targets_ree18 ruby_targets_jruby )
+SLOT=0
+SRC_URI=mirror://rubygems/xpath-0.1.4.gem
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	java-utils-2	03ab8cac2b9deec34f79c505eb42a99d	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	ruby-fakegem	7c47bb49102ac90cbf2f8e0fefbaed6d	ruby-ng	9306a3d60da89e858115fafece052b0d	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
+_md5_=852d6a702b420384c2081824423fb8cf

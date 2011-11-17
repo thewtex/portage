@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst prepare
+DEPEND=dev-libs/boehm-gc >=dev-libs/expat-1.95.4 bzip2? ( >=app-arch/bzip2-1.0.2 ) ssl? ( >=dev-libs/openssl-0.9.6g ) X? ( x11-libs/libX11 x11-libs/libXt ) zlib? ( >=sys-libs/zlib-1.1.4 ) lua? ( >=dev-lang/lua-5 ) gpm? ( >=sys-libs/ncurses-5.2 >=sys-libs/gpm-1.20.0-r5 ) guile? ( >=dev-scheme/guile-1.6.4-r1[deprecated,discouraged] ) idn? ( net-dns/libidn ) perl? ( sys-devel/libperl ) ruby? ( dev-lang/ruby dev-ruby/rubygems ) samba? ( net-fs/samba ) javascript? ( <dev-lang/spidermonkey-1.8.5 ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=Advanced and well-established text-mode web browser
+EAPI=3
+HOMEPAGE=http://elinks.or.cz/
+IUSE=bittorrent bzip2 debug finger ftp gopher gpm guile idn ipv6 javascript lua +mouse nls nntp perl ruby samba ssl unicode X zlib
+KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris
+LICENSE=GPL-2
+RDEPEND=dev-libs/boehm-gc >=dev-libs/expat-1.95.4 bzip2? ( >=app-arch/bzip2-1.0.2 ) ssl? ( >=dev-libs/openssl-0.9.6g ) X? ( x11-libs/libX11 x11-libs/libXt ) zlib? ( >=sys-libs/zlib-1.1.4 ) lua? ( >=dev-lang/lua-5 ) gpm? ( >=sys-libs/ncurses-5.2 >=sys-libs/gpm-1.20.0-r5 ) guile? ( >=dev-scheme/guile-1.6.4-r1[deprecated,discouraged] ) idn? ( net-dns/libidn ) perl? ( sys-devel/libperl ) ruby? ( dev-lang/ruby dev-ruby/rubygems ) samba? ( net-fs/samba ) javascript? ( <dev-lang/spidermonkey-1.8.5 )
+RESTRICT=test
+SLOT=0
+SRC_URI=http://elinks.or.cz/download/elinks-0.12pre5.tar.bz2 http://dev.gentoo.org/~spock/portage/distfiles/elinks-0.10.4.conf.bz2
+_eclasses_=autotools	b81740a014934d6736a8795cdedb452e	eutils	33ef77a15337022e05342d2c772a7a5a	flag-o-matic	630c256d55702ba23515f64952987828	libtool	76720aa53cbace6123aac554983eadfa	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=1fa54caf0938b9939c3ce30089d25c90

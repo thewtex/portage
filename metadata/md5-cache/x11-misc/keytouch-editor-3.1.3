@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst setup unpack
+DEPEND=x11-libs/gtk+:2 dev-util/pkgconfig
+DESCRIPTION=Generates keyboard files for use by keyTouch
+EAPI=1
+HOMEPAGE=http://keytouch.sourceforge.net/
+IUSE=doc kde
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=x11-libs/gtk+:2 kde? ( || ( kde-base/kdesu kde-base/kdebase ) ) !kde? ( x11-libs/gksu )
+SLOT=0
+SRC_URI=mirror://sourceforge/keytouch/keytouch-editor-3.1.3.tar.gz doc? ( mirror://sourceforge/keytouch/keytouch_editor_3.0.pdf )
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	linux-info	0a300da62c346bbaee5bcf82727f23ac	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
+_md5_=20e0ba84ace0c06b322781eb8087ea30

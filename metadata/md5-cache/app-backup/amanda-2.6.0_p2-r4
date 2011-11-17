@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install postinst postrm preinst prerm setup test unpack
+DEPEND=sys-libs/readline virtual/inetd sys-apps/gawk app-arch/tar dev-lang/perl app-arch/dump net-misc/openssh dev-libs/glib s3? ( net-misc/curl ) samba? ( net-fs/samba ) kerberos? ( app-crypt/mit-krb5 ) !sparc? ( xfs? ( sys-fs/xfsdump ) ) !minimal? ( virtual/mailx app-arch/mt-st sys-block/mtx sci-visualization/gnuplot app-crypt/aespipe app-crypt/gnupg ) sys-devel/autoconf sys-devel/automake || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=The Advanced Maryland Automatic Network Disk Archiver
+HOMEPAGE=http://www.amanda.org/
+IUSE=berkdb debug gdbm minimal s3 samba xfs kerberos devpay ipv6
+KEYWORDS=amd64 ppc ppc64 sparc x86
+LICENSE=as-is
+RDEPEND=sys-libs/readline virtual/inetd sys-apps/gawk app-arch/tar dev-lang/perl app-arch/dump net-misc/openssh dev-libs/glib s3? ( net-misc/curl ) samba? ( net-fs/samba ) kerberos? ( app-crypt/mit-krb5 ) !sparc? ( xfs? ( sys-fs/xfsdump ) ) !minimal? ( virtual/mailx app-arch/mt-st sys-block/mtx sci-visualization/gnuplot app-crypt/aespipe app-crypt/gnupg )
+SLOT=0
+SRC_URI=mirror://sourceforge/amanda/amanda-2.6.0p2.tar.gz
+_eclasses_=autotools	b81740a014934d6736a8795cdedb452e	base	dba02c674ce4dff67657c692954d7ef0	eutils	33ef77a15337022e05342d2c772a7a5a	libtool	76720aa53cbace6123aac554983eadfa	multilib	c4883399ddd3e1d2bd291607b30fded4	perl-module	01501a30505074cd0012cabbf5d99447	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=93b298255d7c5c8dbbb2dff212c92a5d

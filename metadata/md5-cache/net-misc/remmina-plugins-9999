@@ -1,0 +1,11 @@
+DEFINED_PHASES=configure install postinst postrm preinst prepare unpack
+DEPEND=>=net-misc/remmina-0.8.0 nls? ( virtual/libintl ) nx? ( net-misc/nx ) rdesktop? ( =net-misc/freerdp-9999 ) xdmcp? ( x11-base/xorg-server[kdrive] ) ssh? ( net-libs/libssh[sftp] ) vnc? ( net-libs/libvncserver[jpeg,zlib] >=net-libs/gnutls-2.4.0 ) dev-util/intltool dev-util/pkgconfig nls? ( sys-devel/gettext ) telepathy? ( >=net-libs/telepathy-glib-0.9.0 ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool dev-vcs/git >=sys-apps/sed-4
+DESCRIPTION=Set of plugins for Remmina GTK+ RDP, VNC, XDMCP and SSH client
+EAPI=2
+HOMEPAGE=http://remmina.sourceforge.net/
+IUSE=nls nx rdesktop ssh telepathy vnc xdmcp
+LICENSE=GPL-2
+RDEPEND=>=net-misc/remmina-0.8.0 nls? ( virtual/libintl ) nx? ( net-misc/nx ) rdesktop? ( =net-misc/freerdp-9999 ) xdmcp? ( x11-base/xorg-server[kdrive] ) ssh? ( net-libs/libssh[sftp] ) vnc? ( net-libs/libvncserver[jpeg,zlib] >=net-libs/gnutls-2.4.0 )
+SLOT=0
+_eclasses_=autotools	b81740a014934d6736a8795cdedb452e	eutils	33ef77a15337022e05342d2c772a7a5a	git-2	48dc75cccc109d7cda9f8dc3fff7a5b8	gnome2-utils	dfcd797d126b46852d33936f4a0a1702	libtool	76720aa53cbace6123aac554983eadfa	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=41a13455f38dd47a9a559eaf308d7a3f

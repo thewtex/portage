@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install postinst unpack
+DEPEND=!dev-lang/fpc-bin !dev-lang/fpc-source >=sys-devel/binutils-2.19.1-r1
+DESCRIPTION=Free Pascal Compiler
+HOMEPAGE=http://www.freepascal.org/
+IUSE=doc source
+KEYWORDS=~amd64 ~ppc ~sparc ~x86
+LICENSE=GPL-2 LGPL-2.1 LGPL-2.1-FPC
+RDEPEND=!dev-lang/fpc-bin !dev-lang/fpc-source
+SLOT=0
+SRC_URI=mirror://sourceforge/freepascal/fpcbuild-2.2.2.tar.gz x86? ( mirror://sourceforge/freepascal/fpc-2.2.2.i386-linux.tar ) sparc? ( mirror://sourceforge/freepascal/fpc-2.0.0.sparc-linux.tar ) ppc? ( mirror://sourceforge/freepascal/fpc-2.2.0.powerpc-linux.tar ) amd64? ( mirror://sourceforge/freepascal/fpc-2.2.2.x86_64-linux.tar ) doc? ( mirror://sourceforge/freepascal/fpc-2.2.2-doc-pdf.zip )
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=32d202602658fb91cc8b007df1870cbe

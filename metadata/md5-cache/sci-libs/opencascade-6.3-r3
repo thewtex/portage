@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install preinst prepare setup
+DEPEND=virtual/opengl x11-libs/libXmu >=dev-lang/tcl-8.4 >=dev-lang/tk-8.4 >=dev-tcltk/itcl-3.2 >=dev-tcltk/itk-3.2 >=dev-tcltk/tix-8.4.2 || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool java? ( >=dev-java/java-config-2.1.9-r1 )
+DESCRIPTION=Software development platform for CAD/CAE, 3D surface/solid modeling and data exchange
+EAPI=3
+HOMEPAGE=http://www.opencascade.org/
+IUSE=debug doc examples java elibc_FreeBSD java
+KEYWORDS=~amd64 ~x86
+LICENSE=Open-CASCADE-Technology-Public-License-6.3
+RDEPEND=virtual/opengl x11-libs/libXmu >=dev-lang/tcl-8.4 >=dev-lang/tk-8.4 >=dev-tcltk/itcl-3.2 >=dev-tcltk/itk-3.2 >=dev-tcltk/tix-8.4.2 java? ( >=dev-java/java-config-2.1.9-r1 )
+RESTRICT=bindist mirror
+SLOT=0
+SRC_URI=http://files.opencascade.com/OCC_6.3_release/OpenCASCADE_src.tgz -> opencascade-6.3.tgz
+_eclasses_=autotools	b81740a014934d6736a8795cdedb452e	check-reqs	e25439e7f4ca914e41d6bb617caa564d	eutils	33ef77a15337022e05342d2c772a7a5a	java-pkg-opt-2	31a1663247652448431dcc8c194e2752	java-utils-2	03ab8cac2b9deec34f79c505eb42a99d	libtool	76720aa53cbace6123aac554983eadfa	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
+_md5_=9935049167c4740aebbe73a4c86f2dc4

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup
+DEPEND=|| ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool kernel_linux? ( sys-apps/module-init-tools ) sys-apps/sed kernel_linux? ( virtual/linux-sources )
+DESCRIPTION=The OpenAFS distributed file system kernel module
+EAPI=2
+HOMEPAGE=http://www.openafs.org/
+IUSE=kernel_linux
+KEYWORDS=amd64 ~sparc x86
+LICENSE=IBM BSD openafs-krb5-a APSL-2 sun-rpc
+RDEPEND=kernel_linux? ( sys-apps/module-init-tools )
+SLOT=0
+SRC_URI=http://openafs.org/dl/1.4.14/openafs-1.4.14-src.tar.bz2 mirror://gentoo/openafs-1.4.14-patches-1.tar.bz2
+_eclasses_=autotools	b81740a014934d6736a8795cdedb452e	eutils	33ef77a15337022e05342d2c772a7a5a	libtool	76720aa53cbace6123aac554983eadfa	linux-info	0a300da62c346bbaee5bcf82727f23ac	linux-mod	a4e07f78bacb6b129ea7b18ad060dbfc	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
+_md5_=b9686a7d5e910f1c3dd05a5f2465053f

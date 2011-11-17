@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile config configure install postinst prepare setup test unpack
+DEPEND=test? ( ruby_targets_ruby18? ( ~dev-ruby/coderay-0.9.7[ruby_targets_ruby18] >=dev-ruby/rubygems-1.3.5[ruby_targets_ruby18] >=dev-ruby/ruby-net-ldap-0.0.4[ruby_targets_ruby18] ~dev-ruby/i18n-0.4.2[ruby_targets_ruby18] ~dev-ruby/rack-1.0.1[ruby_targets_ruby18] dev-ruby/rake[ruby_targets_ruby18] ) ) test? ( ruby_targets_ruby18? ( fastcgi? ( dev-ruby/ruby-fcgi[ruby_targets_ruby18] ) ) ) test? ( ruby_targets_ruby18? ( imagemagick? ( dev-ruby/rmagick[ruby_targets_ruby18] ) ) ) test? ( ruby_targets_ruby18? ( openid? ( dev-ruby/ruby-openid[ruby_targets_ruby18] ) ) ) test? ( ruby_targets_ruby18? ( passenger? ( www-apache/passenger[ruby_targets_ruby18] ) ) ) ruby_targets_ruby18? ( dev-lang/ruby:1.8 )
+DESCRIPTION=Redmine is a flexible project management web application written using Ruby on Rails framework
+EAPI=3
+HOMEPAGE=http://www.redmine.org/
+IUSE=cvs darcs fastcgi git imagemagick mercurial mysql openid passenger postgres sqlite3 subversion test test test test test elibc_FreeBSD ruby_targets_ruby18
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=ruby_targets_ruby18? ( ~dev-ruby/coderay-0.9.7[ruby_targets_ruby18] >=dev-ruby/rubygems-1.3.5[ruby_targets_ruby18] >=dev-ruby/ruby-net-ldap-0.0.4[ruby_targets_ruby18] ~dev-ruby/i18n-0.4.2[ruby_targets_ruby18] ~dev-ruby/rack-1.0.1[ruby_targets_ruby18] dev-ruby/rake[ruby_targets_ruby18] ) ruby_targets_ruby18? ( fastcgi? ( dev-ruby/ruby-fcgi[ruby_targets_ruby18] ) ) ruby_targets_ruby18? ( imagemagick? ( dev-ruby/rmagick[ruby_targets_ruby18] ) ) ruby_targets_ruby18? ( openid? ( dev-ruby/ruby-openid[ruby_targets_ruby18] ) ) ruby_targets_ruby18? ( passenger? ( www-apache/passenger[ruby_targets_ruby18] ) ) dev-ruby/activerecord:2.3[mysql?,postgres?,sqlite3?] cvs? ( >=dev-vcs/cvs-1.12 ) darcs? ( dev-vcs/darcs ) git? ( dev-vcs/git ) mercurial? ( dev-vcs/mercurial ) subversion? ( >=dev-vcs/subversion-1.3 ) ruby_targets_ruby18? ( dev-lang/ruby:1.8 )
+SLOT=0
+SRC_URI=mirror://rubyforge/redmine/redmine-1.1.3.tar.gz
+_eclasses_=confutils	a80706bb5b9ddcf6bbd14365656d4985	depend.apache	a471783c63e68987a2b20eb46f9edf68	eutils	33ef77a15337022e05342d2c772a7a5a	java-utils-2	03ab8cac2b9deec34f79c505eb42a99d	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	ruby-ng	9306a3d60da89e858115fafece052b0d	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
+_md5_=9b787f446a30477fc6001f93e6c106ed

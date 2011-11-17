@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare unpack
+DEPEND=mysql? ( virtual/mysql ) postgres? ( dev-db/postgresql-base ) test? ( dev-lang/php ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=Full-text search engine with support for MySQL and PostgreSQL
+EAPI=2
+HOMEPAGE=http://www.sphinxsearch.com/
+IUSE=debug id64 mysql postgres stemmer test
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=mysql? ( virtual/mysql ) postgres? ( dev-db/postgresql-base )
+RESTRICT=test
+SLOT=0
+SRC_URI=http://sphinxsearch.com/downloads/sphinx-0.9.9.tar.gz stemmer? ( mirror://gentoo/libstemmer_c-20091122.tgz )
+_eclasses_=autotools	b81740a014934d6736a8795cdedb452e	eutils	33ef77a15337022e05342d2c772a7a5a	libtool	76720aa53cbace6123aac554983eadfa	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=6d63c5e33f3ceac5921b3d4d475018b3

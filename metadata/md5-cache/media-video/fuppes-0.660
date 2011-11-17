@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst setup
+DEPEND=dlna? ( media-libs/libdlna ) imagemagick? ( media-gfx/imagemagick ) transcode? ( media-video/ffmpeg ) faad? ( media-libs/faad2 ) flac? ( media-libs/flac ) gnome? ( gnome-base/gnome-panel ) virtual/libiconv lame? ( media-sound/lame ) mad? ( media-libs/libmad ) muse? ( media-sound/musepack-tools ) notify? ( x11-libs/libnotify ) taglib? ( media-libs/taglib ) twolame? ( media-sound/twolame ) >=dev-db/sqlite-3.2 dev-libs/libpcre dev-libs/libxml2 || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=Free UPnP Entertainment Service
+EAPI=2
+HOMEPAGE=http://fuppes.ulrich-voelkel.de/
+IUSE=+transcode +imagemagick faad +flac +muse lame +mad +taglib +twolame gnome notify +dlna
+KEYWORDS=x86 amd64
+LICENSE=GPL-2
+RDEPEND=dlna? ( media-libs/libdlna ) imagemagick? ( media-gfx/imagemagick ) transcode? ( media-video/ffmpeg )
+SLOT=0
+SRC_URI=mirror://sourceforge/fuppes/fuppes-0.660.tar.gz
+_eclasses_=autotools	b81740a014934d6736a8795cdedb452e	eutils	33ef77a15337022e05342d2c772a7a5a	libtool	76720aa53cbace6123aac554983eadfa	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=0f9736122a671fa84505d8ad9467c71f

@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst postrm
+DEPEND=x86? ( dev-util/bsdiff )
+DESCRIPTION=GIMPS - The Great Internet Mersenne Prime Search
+HOMEPAGE=http://mersenne.org/
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=as-is
+RDEPEND=net-misc/curl
+RESTRICT=binchecks
+SLOT=0
+SRC_URI=amd64? ( ftp://mersenne.org/gimps/mprime265-linux64.tar.gz ) x86? ( ftp://mersenne.org/gimps/mprime265.tar.gz )
+_md5_=3bf3027c12a5a98024b68cdfb0619330

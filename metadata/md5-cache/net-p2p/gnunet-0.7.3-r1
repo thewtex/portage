@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst preinst setup unpack
+DEPEND=>=dev-libs/libgcrypt-1.2.0 >=media-libs/libextractor-0.5.18a >=dev-libs/gmp-4.0.0 gnome-base/libglade:2.0 sys-libs/zlib net-misc/curl gtk? ( >=x11-libs/gtk+-2.6.10:2 ) sys-apps/sed >=dev-scheme/guile-1.8.0 ncurses? ( sys-libs/ncurses ) mysql? ( >=virtual/mysql-4.0 ) sqlite? ( >=dev-db/sqlite-3.0.8:3 ) nls? ( sys-devel/gettext ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=GNUnet is an anonymous, distributed, reputation based network.
+EAPI=1
+HOMEPAGE=http://gnunet.org/
+IUSE=ipv6 mysql sqlite ncurses nls gtk
+KEYWORDS=~amd64 ~ppc ~ppc64 ~sparc x86
+LICENSE=GPL-2
+RDEPEND=>=dev-libs/libgcrypt-1.2.0 >=media-libs/libextractor-0.5.18a >=dev-libs/gmp-4.0.0 gnome-base/libglade:2.0 sys-libs/zlib net-misc/curl gtk? ( >=x11-libs/gtk+-2.6.10:2 ) sys-apps/sed >=dev-scheme/guile-1.8.0 ncurses? ( sys-libs/ncurses ) mysql? ( >=virtual/mysql-4.0 ) sqlite? ( >=dev-db/sqlite-3.0.8:3 ) nls? ( sys-devel/gettext )
+RESTRICT=test
+SLOT=0
+SRC_URI=http://gnunet.org/download/GNUnet-0.7.3.tar.bz2
+_eclasses_=autotools	b81740a014934d6736a8795cdedb452e	eutils	33ef77a15337022e05342d2c772a7a5a	libtool	76720aa53cbace6123aac554983eadfa	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=64c8b7d1594d7f5ef63ccf62334303fd

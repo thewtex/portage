@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup unpack
+DEPEND=>=dev-libs/glib-2.20:2 >=media-libs/clutter-1.4.0:1.0[introspection?] >=media-libs/gstreamer-0.10.26:0.10[introspection?] media-libs/gst-plugins-base:0.10[introspection?] introspection? ( >=dev-libs/gobject-introspection-0.6.8 ) sys-apps/sed doc? ( >=dev-util/gtk-doc-1.8 ) >=app-admin/eselect-python-20091230 =dev-lang/python-2* app-arch/xz-utils >=sys-apps/sed-4 dev-util/pkgconfig app-arch/xz-utils
+DESCRIPTION=GStreamer Integration library for Clutter
+EAPI=4
+HOMEPAGE=http://www.clutter-project.org/
+IUSE=doc examples +introspection debug
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2.1
+RDEPEND=>=dev-libs/glib-2.20:2 >=media-libs/clutter-1.4.0:1.0[introspection?] >=media-libs/gstreamer-0.10.26:0.10[introspection?] media-libs/gst-plugins-base:0.10[introspection?] introspection? ( >=dev-libs/gobject-introspection-0.6.8 ) >=app-admin/eselect-python-20091230 =dev-lang/python-2*
+SLOT=1.0
+SRC_URI=mirror://gnome/sources/clutter-gst/1.4/clutter-gst-1.4.2.tar.xz
+_eclasses_=clutter	4ca33727265c5b36907271e63783f635	eutils	33ef77a15337022e05342d2c772a7a5a	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	gnome.org	8fef8f967214f56e08fa92d61163d891	gnome2	3aa9fb56280cbb64b3d42e0db59ed76e	gnome2-utils	dfcd797d126b46852d33936f4a0a1702	libtool	76720aa53cbace6123aac554983eadfa	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	python	6bbd984910e27780e5d0ea543d83ef84	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
+_md5_=be3083bb0284bff3a68bb24527105d35

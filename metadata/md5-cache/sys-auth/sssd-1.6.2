@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare setup test unpack
+DEPEND=virtual/pam dev-libs/popt >=dev-libs/libunistring-0.9.3 >=dev-libs/ding-libs-0.1.2 >=sys-libs/talloc-2.0 sys-libs/tdb sys-libs/tevent sys-libs/ldb >=net-nds/openldap-2.4.19 dev-libs/libpcre >=app-crypt/mit-krb5-1.9.1 >=net-dns/c-ares-1.7.4 >=dev-libs/nss-3.12.9 selinux? ( >=sys-libs/libselinux-2.0.94 >=sys-libs/libsemanage-2.0.45 ) net-dns/bind-tools dev-libs/cyrus-sasl sys-apps/dbus >=sys-devel/gettext-0.17 virtual/libintl dev-libs/libnl test? ( dev-libs/check ) >=dev-libs/libxslt-1.1.26 app-text/docbook-xml-dtd:4.4 doc? ( app-doc/doxygen ) >=app-admin/eselect-python-20091230 python? ( || ( =dev-lang/python-2.7* =dev-lang/python-2.6* ) ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=System Security Services Daemon provides access to identity and authentication
+EAPI=3
+HOMEPAGE=http://fedorahosted.org/sssd/
+IUSE=doc +locator logrotate nls python selinux test
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=virtual/pam dev-libs/popt >=dev-libs/libunistring-0.9.3 >=dev-libs/ding-libs-0.1.2 >=sys-libs/talloc-2.0 sys-libs/tdb sys-libs/tevent sys-libs/ldb >=net-nds/openldap-2.4.19 dev-libs/libpcre >=app-crypt/mit-krb5-1.9.1 >=net-dns/c-ares-1.7.4 >=dev-libs/nss-3.12.9 selinux? ( >=sys-libs/libselinux-2.0.94 >=sys-libs/libsemanage-2.0.45 ) net-dns/bind-tools dev-libs/cyrus-sasl sys-apps/dbus >=sys-devel/gettext-0.17 virtual/libintl dev-libs/libnl >=app-admin/eselect-python-20091230 python? ( || ( =dev-lang/python-2.7* =dev-lang/python-2.6* ) )
+SLOT=0
+SRC_URI=http://fedorahosted.org/released/sssd/sssd-1.6.2.tar.gz
+_eclasses_=autotools	b81740a014934d6736a8795cdedb452e	autotools-utils	9799469ea552910620db9dca0bca94b0	base	dba02c674ce4dff67657c692954d7ef0	eutils	33ef77a15337022e05342d2c772a7a5a	flag-o-matic	630c256d55702ba23515f64952987828	libtool	76720aa53cbace6123aac554983eadfa	linux-info	0a300da62c346bbaee5bcf82727f23ac	multilib	c4883399ddd3e1d2bd291607b30fded4	pam	71d772c7b2ecf139ec916c4584563109	portability	1d9665386ff87b70cba7f591ba27723f	python	6bbd984910e27780e5d0ea543d83ef84	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
+_md5_=dd5c86cbafdd14bbf75b084ac7dbaf64

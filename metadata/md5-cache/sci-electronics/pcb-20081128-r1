@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst postrm prepare setup
+DEPEND=gif? ( >=media-libs/gd-2.0.23 ) gtk? ( x11-libs/gtk+:2 x11-libs/pango dbus? ( sys-apps/dbus ) ) jpeg? ( >=media-libs/gd-2.0.23[jpeg] ) motif? ( !gtk? ( >=x11-libs/openmotif-2.3:0 dbus? ( sys-apps/dbus ) xrender? ( >=x11-libs/libXrender-0.9 ) ) ) nelma? ( >=media-libs/gd-2.0.23 ) nls? ( virtual/libintl ) png? ( >=media-libs/gd-2.0.23[png] ) tk? ( >=dev-lang/tk-8 ) >=dev-util/intltool-0.35 dev-util/pkgconfig nls? ( sys-devel/gettext )
+DESCRIPTION=GPL Electronic Design Automation: Printed Circuit Board editor
+EAPI=2
+HOMEPAGE=http://www.gpleda.org/
+IUSE=dbus doc gif gtk jpeg motif nelma nls png xrender threads tk
+KEYWORDS=amd64 ppc x86
+LICENSE=GPL-2
+RDEPEND=gif? ( >=media-libs/gd-2.0.23 ) gtk? ( x11-libs/gtk+:2 x11-libs/pango dbus? ( sys-apps/dbus ) ) jpeg? ( >=media-libs/gd-2.0.23[jpeg] ) motif? ( !gtk? ( >=x11-libs/openmotif-2.3:0 dbus? ( sys-apps/dbus ) xrender? ( >=x11-libs/libXrender-0.9 ) ) ) nelma? ( >=media-libs/gd-2.0.23 ) nls? ( virtual/libintl ) png? ( >=media-libs/gd-2.0.23[png] ) tk? ( >=dev-lang/tk-8 )
+SLOT=0
+SRC_URI=http://geda.seul.org/dist/pcb-20081128.tar.gz
+_eclasses_=fdo-mime	0acfe1a88fd8751a1d5dc671168219fa
+_md5_=79be9294bc732dde0303314f4b8c6ea2

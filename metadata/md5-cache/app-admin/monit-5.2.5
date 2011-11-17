@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install postinst prepare
+DEPEND=ssl? ( dev-libs/openssl ) sys-devel/flex sys-devel/bison
+DESCRIPTION=a utility for monitoring and managing daemons or similar programs running on a Unix system.
+EAPI=2
+HOMEPAGE=http://mmonit.com/monit/
+IUSE=ssl
+KEYWORDS=~amd64 ~ppc ~sparc ~x86
+LICENSE=GPL-3
+RDEPEND=ssl? ( dev-libs/openssl )
+SLOT=0
+SRC_URI=http://mmonit.com/monit/dist/monit-5.2.5.tar.gz
+_md5_=dfdee72985e8d19c322a25fd413027dc

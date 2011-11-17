@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup test
+DEPEND=nls? ( virtual/libintl ) cracklib? ( >=sys-libs/cracklib-2.8.3 ) audit? ( sys-process/audit ) selinux? ( >=sys-libs/libselinux-1.28 ) berkdb? ( sys-libs/db ) elibc_glibc? ( >=sys-libs/glibc-2.7 ) >=sys-devel/libtool-2 sys-devel/flex nls? ( sys-devel/gettext ) dev-util/pkgconfig
+DESCRIPTION=Linux-PAM (Pluggable Authentication Modules)
+EAPI=4
+HOMEPAGE=http://www.kernel.org/pub/linux/libs/pam/
+IUSE=cracklib nls elibc_FreeBSD selinux vim-syntax audit test elibc_glibc debug berkdb
+KEYWORDS=amd64 sparc x86
+LICENSE=|| ( BSD GPL-2 )
+PDEPEND=sys-auth/pambase vim-syntax? ( app-vim/pam-syntax )
+RDEPEND=nls? ( virtual/libintl ) cracklib? ( >=sys-libs/cracklib-2.8.3 ) audit? ( sys-process/audit ) selinux? ( >=sys-libs/libselinux-1.28 ) berkdb? ( sys-libs/db ) elibc_glibc? ( >=sys-libs/glibc-2.7 ) !sys-auth/openpam !sys-auth/pam_userdb
+SLOT=0
+SRC_URI=https://fedorahosted.org/releases/l/i/linux-pam/Linux-PAM-1.1.5.tar.bz2 https://fedorahosted.org/releases/l/i/linux-pam/Linux-PAM-1.1.5-docs.tar.bz2
+_eclasses_=db-use	cfd87251a2930b12ee9e6a73364d2c45	eutils	33ef77a15337022e05342d2c772a7a5a	flag-o-matic	630c256d55702ba23515f64952987828	libtool	76720aa53cbace6123aac554983eadfa	multilib	c4883399ddd3e1d2bd291607b30fded4	pam	71d772c7b2ecf139ec916c4584563109	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
+_md5_=e294b72137f6c7a5b7daff65e7952403

@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup unpack
+DEPEND=>=dev-libs/glib-2.30.0:2 dev-libs/json-glib gnome-base/libgnome-keyring net-libs/libsoup:2.4 >=net-libs/libsoup-gnome-2.26:2.4 net-libs/rest:0.7 net-libs/webkit-gtk:3 >=x11-libs/gtk+-3.0.0:3 >=x11-libs/libnotify-0.7 x11-libs/pango introspection? ( >=dev-libs/gobject-introspection-0.6.2 ) dev-libs/libxslt >=dev-util/gdbus-codegen-2.30.0 dev-util/intltool sys-devel/gettext doc? ( >=dev-util/gtk-doc-1.3 ) app-arch/xz-utils >=sys-apps/sed-4
+DESCRIPTION=GNOME framework for accessing online accounts
+EAPI=4
+HOMEPAGE=http://www.gnome.org/
+IUSE=doc gnome +introspection debug
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2
+PDEPEND=gnome? ( >=gnome-base/gnome-control-center-3.2 )
+RDEPEND=>=dev-libs/glib-2.30.0:2 dev-libs/json-glib gnome-base/libgnome-keyring net-libs/libsoup:2.4 >=net-libs/libsoup-gnome-2.26:2.4 net-libs/rest:0.7 net-libs/webkit-gtk:3 >=x11-libs/gtk+-3.0.0:3 >=x11-libs/libnotify-0.7 x11-libs/pango introspection? ( >=dev-libs/gobject-introspection-0.6.2 )
+SLOT=0
+SRC_URI=mirror://gnome/sources/gnome-online-accounts/3.2/gnome-online-accounts-3.2.1.tar.xz
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	gnome.org	8fef8f967214f56e08fa92d61163d891	gnome2	3aa9fb56280cbb64b3d42e0db59ed76e	gnome2-utils	dfcd797d126b46852d33936f4a0a1702	libtool	76720aa53cbace6123aac554983eadfa	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
+_md5_=96231934b15cfd274302632d0e4bd736

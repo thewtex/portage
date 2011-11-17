@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DEPEND=sdl? ( media-libs/libsdl ) !X? ( !svga? ( !fbcon? ( media-libs/libsdl ) ) ) X? ( x11-libs/libXext ) fbcon? ( sys-apps/fbset ) svga? ( media-libs/svgalib ) X? ( x11-proto/xextproto x11-proto/xproto ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=Gameboy emulator with multiple renderers
+EAPI=2
+HOMEPAGE=http://code.google.com/p/gnuboy/
+IUSE=X fbcon sdl svga
+KEYWORDS=amd64 ppc x86
+LICENSE=GPL-2
+RDEPEND=sdl? ( media-libs/libsdl ) !X? ( !svga? ( !fbcon? ( media-libs/libsdl ) ) ) X? ( x11-libs/libXext ) fbcon? ( sys-apps/fbset )
+SLOT=0
+SRC_URI=mirror://gentoo/gnuboy-1.0.3.tar.gz
+_eclasses_=autotools	b81740a014934d6736a8795cdedb452e	base	dba02c674ce4dff67657c692954d7ef0	eutils	33ef77a15337022e05342d2c772a7a5a	games	c11e6cb73d545cdf3d36dc4bb7c753e4	libtool	76720aa53cbace6123aac554983eadfa	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=ed41576c419af29c076265df37da81f3

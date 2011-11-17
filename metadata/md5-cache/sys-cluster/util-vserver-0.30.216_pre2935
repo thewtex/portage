@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst preinst setup
+DEPEND=>=dev-libs/dietlibc-0.30-r2 dev-libs/beecrypt net-firewall/iptables net-misc/vconfig sys-apps/iproute2 || ( >=sys-apps/coreutils-6.10-r1 sys-apps/mktemp )
+DESCRIPTION=Linux-VServer admin utilities
+HOMEPAGE=http://www.nongnu.org/util-vserver/
+IUSE=bash-completion
+KEYWORDS=~alpha ~amd64 ~hppa ~ppc ~sparc ~x86
+LICENSE=GPL-2
+PDEPEND=bash-completion? ( app-shells/bash-completion )
+RDEPEND=dev-libs/beecrypt net-firewall/iptables net-misc/vconfig sys-apps/iproute2 || ( >=sys-apps/coreutils-6.10-r1 sys-apps/mktemp ) bash-completion? ( app-admin/eselect )
+SLOT=0
+SRC_URI=http://people.linux-vserver.org/~dhozac/t/uv-testing/util-vserver-0.30.216-pre2935.tar.bz2
+_eclasses_=bash-completion	003731da0df19d26955927bd534f3058	eutils	33ef77a15337022e05342d2c772a7a5a	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=3fa2335664e9435ef1ea4c916f1bd707

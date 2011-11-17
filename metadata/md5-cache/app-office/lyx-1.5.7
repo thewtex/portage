@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst postrm setup unpack
+DEPEND=x11-libs/qt-gui:4 x11-libs/qt-core:4 x11-libs/libXrandr x11-libs/libXcursor x11-libs/libXrender x11-libs/libXfixes x11-libs/libXext x11-libs/libSM x11-libs/libICE x11-libs/libX11 x11-libs/libXau x11-libs/libXdmcp media-gfx/imagemagick media-libs/libpng media-libs/fontconfig media-libs/freetype dev-libs/libxml2 app-text/aiksaurus app-text/sgmltools-lite app-text/aspell >=dev-lang/python-2.3.4 cups? ( net-print/cups ) latex? ( virtual/latex-base app-text/ghostscript-gpl app-text/noweb dev-tex/dvipost dev-tex/chktex || ( dev-tex/latex2html dev-tex/tth dev-tex/hevea dev-tex/tex4ht ) ) linguas_he? ( dev-tex/ivritex ) x11-proto/xproto dev-util/pkgconfig nls? ( sys-devel/gettext ) X? ( x11-apps/mkfontdir media-fonts/encodings ) >=media-libs/fontconfig-2.4.0
+DESCRIPTION=WYSIWYM frontend for LaTeX, DocBook, etc.
+EAPI=1
+HOMEPAGE=http://www.lyx.org/
+IUSE=cups debug nls linguas_he latex X
+KEYWORDS=alpha amd64 hppa ia64 ppc ppc64 sparc x86
+LICENSE=GPL-2
+RDEPEND=x11-libs/qt-gui:4 x11-libs/qt-core:4 x11-libs/libXrandr x11-libs/libXcursor x11-libs/libXrender x11-libs/libXfixes x11-libs/libXext x11-libs/libSM x11-libs/libICE x11-libs/libX11 x11-libs/libXau x11-libs/libXdmcp media-gfx/imagemagick media-libs/libpng media-libs/fontconfig media-libs/freetype dev-libs/libxml2 app-text/aiksaurus app-text/sgmltools-lite app-text/aspell >=dev-lang/python-2.3.4 cups? ( net-print/cups ) latex? ( virtual/latex-base app-text/ghostscript-gpl app-text/noweb dev-tex/dvipost dev-tex/chktex || ( dev-tex/latex2html dev-tex/tth dev-tex/hevea dev-tex/tex4ht ) ) linguas_he? ( dev-tex/ivritex )
+RESTRICT=test
+SLOT=0
+SRC_URI=ftp://ftp.lyx.org/pub/lyx/stable/1.5.x/lyx-1.5.7.tar.bz2 ftp://ftp.lyx.org/pub/lyx/contrib/latex-xft-fonts-0.1.tar.gz linguas_he? ( http://cs.haifa.ac.il/~dekelts/lyx/files/hebrew.bind http://cs.haifa.ac.il/~dekelts/lyx/files/preferences )
+_eclasses_=base	dba02c674ce4dff67657c692954d7ef0	eutils	33ef77a15337022e05342d2c772a7a5a	flag-o-matic	630c256d55702ba23515f64952987828	font	9aa70ebc5cefbdd9056687b550a2fdc4	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	qt4	017d97ec9e8be913a79efab521dc7dec	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
+_md5_=900890532ae8a3f5ead82cfa03713073

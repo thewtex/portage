@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install nofetch preinst setup unpack
+DEPEND=>=dev-java/java-config-2.1.9-r1
+DESCRIPTION=JDBC 3.0 Drivers for Oracle
+HOMEPAGE=http://www.oracle.com/technology/software/tech/java/sqlj_jdbc/index.html
+IUSE=debug doc elibc_FreeBSD
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=oracle-jdbc
+RDEPEND=>=virtual/jre-1.4 >=dev-java/java-config-2.1.9-r1
+RESTRICT=fetch
+SLOT=9.2
+SRC_URI=!debug? ( jdbc-oracle-bin-9.2.0.8-ojdbc14.jar ) debug? ( jdbc-oracle-bin-9.2.0.8-ojdbc14_g.jar ) jdbc-oracle-bin-9.2.0.8-ocrs12.jar doc? ( jdbc-oracle-bin-9.2.0.8-javadoc.tar )
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	java-pkg-2	5fe9c5085c2a9785371d4fb8f05b46b1	java-utils-2	03ab8cac2b9deec34f79c505eb42a99d	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
+_md5_=09bd2efc6ea844bb0bf2c6c281598fd0

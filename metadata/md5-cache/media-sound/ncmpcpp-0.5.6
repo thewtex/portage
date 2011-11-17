@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst
+DEPEND=sys-libs/ncurses[unicode?] >=media-libs/libmpdclient-2.1 curl? ( net-misc/curl ) visualizer? ( fftw? ( sci-libs/fftw:3.0 ) ) iconv? ( virtual/libiconv ) taglib? ( media-libs/taglib )
+DESCRIPTION=An ncurses mpd client, ncmpc clone with some new features, written in C++
+EAPI=2
+HOMEPAGE=http://unkart.ovh.org/ncmpcpp
+IUSE=bash-completion clock curl fftw iconv outputs taglib unicode visualizer bash-completion
+KEYWORDS=amd64 ~arm hppa ppc ~sparc x86
+LICENSE=GPL-2
+PDEPEND=bash-completion? ( app-shells/bash-completion )
+RDEPEND=sys-libs/ncurses[unicode?] >=media-libs/libmpdclient-2.1 curl? ( net-misc/curl ) visualizer? ( fftw? ( sci-libs/fftw:3.0 ) ) iconv? ( virtual/libiconv ) taglib? ( media-libs/taglib ) bash-completion? ( app-admin/eselect )
+SLOT=0
+SRC_URI=http://unkart.ovh.org/ncmpcpp/ncmpcpp-0.5.6.tar.bz2
+_eclasses_=bash-completion	003731da0df19d26955927bd534f3058	eutils	33ef77a15337022e05342d2c772a7a5a	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=d363d74ceb81adebf54d0819ea305bf6

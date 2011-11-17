@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst prepare setup test
+DEPEND=!<sys-apps/baselayout-2 !static? ( >=dev-libs/libgcrypt-1.1.42 dev-libs/libgpg-error >=dev-libs/popt-1.7 >=sys-apps/util-linux-2.17.2 >=sys-fs/lvm2-2.02.64 ) >=sys-fs/udev-124 >=sys-libs/e2fsprogs-libs-1.41 selinux? ( sys-libs/libselinux ) !sys-fs/cryptsetup-luks static? ( >=dev-libs/libgpg-error-1.10[static-libs] >=dev-libs/popt-1.16-r1[static-libs] || ( >=sys-apps/util-linux-2.20[static-libs] <sys-apps/util-linux-2.20 ) dev-libs/libgcrypt[static-libs] || ( >=sys-fs/lvm2-2.02.88[static-libs] <sys-fs/lvm2-2.02.88 ) )
+DESCRIPTION=Tool to setup encrypted devices with dm-crypt
+EAPI=2
+HOMEPAGE=http://code.google.com/p/cryptsetup/
+IUSE=nls selinux +static
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=!<sys-apps/baselayout-2 !static? ( >=dev-libs/libgcrypt-1.1.42 dev-libs/libgpg-error >=dev-libs/popt-1.7 >=sys-apps/util-linux-2.17.2 >=sys-fs/lvm2-2.02.64 ) >=sys-fs/udev-124 >=sys-libs/e2fsprogs-libs-1.41 selinux? ( sys-libs/libselinux ) !sys-fs/cryptsetup-luks
+SLOT=0
+SRC_URI=http://cryptsetup.googlecode.com/files/cryptsetup-1.4.1.tar.bz2
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	libtool	76720aa53cbace6123aac554983eadfa	linux-info	0a300da62c346bbaee5bcf82727f23ac	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
+_md5_=c1ce5dbd00b0afcd8e45f95d35640839

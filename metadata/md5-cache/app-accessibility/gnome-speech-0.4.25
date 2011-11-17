@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst postrm preinst setup unpack
+DEPEND=>=gnome-base/orbit-2.3.94 >=gnome-base/libbonobo-1.97 >=dev-libs/glib-2 espeak? ( app-accessibility/espeak ) freetts? ( =app-accessibility/freetts-1.2* >=app-accessibility/java-access-bridge-1.4.6 ) freetts? ( >=virtual/jdk-1.4 ) >=dev-util/pkgconfig-0.9 freetts? ( >=dev-java/java-config-2.1.9-r1 >=sys-apps/portage-2.1.2.7 ) >=sys-apps/sed-4
+DESCRIPTION=Simple general API for producing text-to-speech output
+EAPI=1
+HOMEPAGE=http://www.gnome.org/
+IUSE=+espeak festival freetts elibc_FreeBSD freetts debug
+KEYWORDS=alpha amd64 ia64 ppc ppc64 sparc x86 ~x86-fbsd
+LICENSE=LGPL-2
+RDEPEND=>=gnome-base/orbit-2.3.94 >=gnome-base/libbonobo-1.97 >=dev-libs/glib-2 espeak? ( app-accessibility/espeak ) freetts? ( =app-accessibility/freetts-1.2* >=app-accessibility/java-access-bridge-1.4.6 ) freetts? ( >=virtual/jre-1.4 ) festival? ( app-accessibility/festival ) freetts? ( >=dev-java/java-config-2.1.9-r1 >=sys-apps/portage-2.1.2.7 )
+SLOT=1
+SRC_URI=mirror://gnome/sources/gnome-speech/0.4/gnome-speech-0.4.25.tar.bz2
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	gnome.org	8fef8f967214f56e08fa92d61163d891	gnome2	3aa9fb56280cbb64b3d42e0db59ed76e	gnome2-utils	dfcd797d126b46852d33936f4a0a1702	java-pkg-opt-2	31a1663247652448431dcc8c194e2752	java-utils-2	03ab8cac2b9deec34f79c505eb42a99d	libtool	76720aa53cbace6123aac554983eadfa	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
+_md5_=1c7e67c30428c4f56432e54c895f6106

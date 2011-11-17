@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst postrm preinst prepare
+DEPEND=>=media-libs/xine-lib-1.1.17 >=x11-libs/gtk+-2.8:2 >=dev-libs/glib-2.10:2 >=x11-libs/pango-1.12 >=dev-lang/spidermonkey-1.8.2.13 x11-libs/libX11 x11-libs/libXext x11-libs/libXrender gnome? ( >=dev-libs/dbus-glib-0.88 ) lirc? ( app-misc/lirc ) nls? ( virtual/libintl ) nsplugin? ( dev-libs/nspr x11-libs/libXaw x11-libs/libXt ) udev? ( || ( >=sys-fs/udev-171-r1[gudev] <sys-fs/udev-171-r1[extras] ) ) xcb? ( x11-libs/libxcb ) xinerama? ( x11-libs/libXinerama ) dev-util/pkgconfig nls? ( sys-devel/gettext ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool >=sys-apps/sed-4
+DESCRIPTION=GTK+ Front-End for libxine
+EAPI=2
+HOMEPAGE=http://xine.sourceforge.net/
+IUSE=gnome lirc nls nsplugin udev xcb xinerama
+KEYWORDS=amd64 ppc ppc64 x86
+LICENSE=GPL-2
+RDEPEND=>=media-libs/xine-lib-1.1.17 >=x11-libs/gtk+-2.8:2 >=dev-libs/glib-2.10:2 >=x11-libs/pango-1.12 >=dev-lang/spidermonkey-1.8.2.13 x11-libs/libX11 x11-libs/libXext x11-libs/libXrender gnome? ( >=dev-libs/dbus-glib-0.88 ) lirc? ( app-misc/lirc ) nls? ( virtual/libintl ) nsplugin? ( dev-libs/nspr x11-libs/libXaw x11-libs/libXt ) udev? ( || ( >=sys-fs/udev-171-r1[gudev] <sys-fs/udev-171-r1[extras] ) ) xcb? ( x11-libs/libxcb ) xinerama? ( x11-libs/libXinerama )
+SLOT=0
+SRC_URI=mirror://sourceforge/xine/gxine-0.5.905.tar.bz2
+_eclasses_=autotools	b81740a014934d6736a8795cdedb452e	eutils	33ef77a15337022e05342d2c772a7a5a	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	gnome2-utils	dfcd797d126b46852d33936f4a0a1702	libtool	76720aa53cbace6123aac554983eadfa	multilib	c4883399ddd3e1d2bd291607b30fded4	nsplugins	d0909899a7f8e976fd2fe4c043d4b804	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=f56833c03fc82cf83e2193b95f343e58

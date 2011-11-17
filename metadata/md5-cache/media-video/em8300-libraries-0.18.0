@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst prepare
+DEPEND=gtk? ( x11-libs/gtk+:2 ) dev-util/pkgconfig || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=em8300 (RealMagic Hollywood+/Creative DXR3) video decoder card libraries
+EAPI=2
+HOMEPAGE=http://dxr3.sourceforge.net
+IUSE=gtk modules
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=gtk? ( x11-libs/gtk+:2 ) modules? ( ~media-video/em8300-modules-0.18.0 )
+SLOT=0
+SRC_URI=mirror://sourceforge/dxr3/em8300-0.18.0.tar.gz mirror://gentoo/em8300-gtk-2.0.m4.tbz2
+_eclasses_=autotools	b81740a014934d6736a8795cdedb452e	eutils	33ef77a15337022e05342d2c772a7a5a	libtool	76720aa53cbace6123aac554983eadfa	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=c64d220ded4854a723b8eae1967dbd5c

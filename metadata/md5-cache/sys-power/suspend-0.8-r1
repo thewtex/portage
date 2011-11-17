@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst prepare
+DEPEND=>=dev-libs/lzo-2[static-libs] fbsplash? ( >=media-gfx/splashutils-1.5.2 ) crypt? ( dev-libs/libgcrypt[static-libs] dev-libs/libgpg-error[static-libs] ) x86? ( dev-libs/libx86 ) amd64? ( dev-libs/libx86 ) x86? ( dev-libs/libx86 >=sys-apps/pciutils-2.2.4 ) amd64? ( dev-libs/libx86 >=sys-apps/pciutils-2.2.4 ) dev-util/pkgconfig
+DESCRIPTION=Userspace Software Suspend and S2Ram
+EAPI=2
+HOMEPAGE=http://suspend.sourceforge.net/
+IUSE=fbsplash crypt
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=>=dev-libs/lzo-2[static-libs] fbsplash? ( >=media-gfx/splashutils-1.5.2 ) crypt? ( dev-libs/libgcrypt[static-libs] dev-libs/libgpg-error[static-libs] ) x86? ( dev-libs/libx86 ) amd64? ( dev-libs/libx86 )
+SLOT=0
+SRC_URI=mirror://sourceforge/suspend/suspend-0.8.tar.gz
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=65250ca31acd7fda796150bd9d52a6ac

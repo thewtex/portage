@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=>=app-crypt/qca-2.0.0-r2 >=media-libs/libsndfile-1.0 >=net-libs/libgadu-1.9.0[threads] x11-libs/libXScrnSaver >=x11-libs/qt-dbus-4.4:4 >=x11-libs/qt-gui-4.4:4[qt3support] >=x11-libs/qt-sql-4.4:4[sqlite] >=x11-libs/qt-svg-4.4:4 >=x11-libs/qt-webkit-4.4:4 alsa? ( media-libs/alsa-lib ) ao? ( media-libs/libao ) kde? ( >=kde-base/kdelibs-4.3.3 ) phonon? ( !kde? ( || ( >=x11-libs/qt-phonon-4.4:4 media-libs/phonon ) ) kde? ( media-libs/phonon ) ) spell? ( app-text/enchant ) xmpp? ( net-dns/libidn ) xmpp? ( dev-util/automoc ) x11-proto/scrnsaverproto >=dev-util/cmake-2.8.4 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=An open source Gadu-Gadu and Jabber/XMPP protocol Instant Messenger client.
+EAPI=4
+HOMEPAGE=http://www.kadu.net
+IUSE=alsa ao +gadu kde phonon speech spell +ssl xmpp
+KEYWORDS=amd64 ppc x86
+LICENSE=GPL-2
+RDEPEND=>=app-crypt/qca-2.0.0-r2 >=media-libs/libsndfile-1.0 >=net-libs/libgadu-1.9.0[threads] x11-libs/libXScrnSaver >=x11-libs/qt-dbus-4.4:4 >=x11-libs/qt-gui-4.4:4[qt3support] >=x11-libs/qt-sql-4.4:4[sqlite] >=x11-libs/qt-svg-4.4:4 >=x11-libs/qt-webkit-4.4:4 alsa? ( media-libs/alsa-lib ) ao? ( media-libs/libao ) kde? ( >=kde-base/kdelibs-4.3.3 ) phonon? ( !kde? ( || ( >=x11-libs/qt-phonon-4.4:4 media-libs/phonon ) ) kde? ( media-libs/phonon ) ) spell? ( app-text/enchant ) xmpp? ( net-dns/libidn ) speech? ( app-accessibility/powiedz ) ssl? ( app-crypt/qca-ossl:2 )
+REQUIRED_USE=|| ( gadu xmpp )
+SLOT=0
+SRC_URI=http://www.kadu.net/download/stable/kadu-0.9.2.tar.bz2
+_eclasses_=base	dba02c674ce4dff67657c692954d7ef0	cmake-utils	00f9fd5a80cf3605f6d9a2e808c48a92	eutils	33ef77a15337022e05342d2c772a7a5a	flag-o-matic	630c256d55702ba23515f64952987828	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=beb8355e7e6b0dc3a797cc5399ad56c5

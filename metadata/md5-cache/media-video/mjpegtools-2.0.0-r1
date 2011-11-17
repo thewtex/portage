@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare pretend setup
+DEPEND=virtual/jpeg quicktime? ( media-libs/libquicktime ) dv? ( >=media-libs/libdv-0.99 ) png? ( media-libs/libpng ) dga? ( x11-libs/libXxf86dga ) gtk? ( x11-libs/gtk+:2 ) sdl? ( >=media-libs/libsdl-1.2.7-r3 x11-libs/libX11 x11-libs/libXt sdlgfx? ( media-libs/sdl-gfx ) ) mmx? ( dev-lang/nasm ) >=sys-apps/sed-4 sys-apps/gawk dev-util/pkgconfig || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=Tools for MJPEG video
+EAPI=4
+HOMEPAGE=http://mjpeg.sourceforge.net/
+IUSE=dga dv gtk mmx png quicktime sdl sdlgfx static-libs v4l
+KEYWORDS=alpha amd64 hppa ppc ppc64 sparc x86
+LICENSE=GPL-2
+RDEPEND=virtual/jpeg quicktime? ( media-libs/libquicktime ) dv? ( >=media-libs/libdv-0.99 ) png? ( media-libs/libpng ) dga? ( x11-libs/libXxf86dga ) gtk? ( x11-libs/gtk+:2 ) sdl? ( >=media-libs/libsdl-1.2.7-r3 x11-libs/libX11 x11-libs/libXt sdlgfx? ( media-libs/sdl-gfx ) )
+REQUIRED_USE=sdlgfx? ( sdl )
+SLOT=1
+SRC_URI=mirror://sourceforge/mjpeg/mjpegtools-2.0.0.tar.gz
+_eclasses_=autotools	b81740a014934d6736a8795cdedb452e	eutils	33ef77a15337022e05342d2c772a7a5a	flag-o-matic	630c256d55702ba23515f64952987828	libtool	76720aa53cbace6123aac554983eadfa	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=c0d1947d92239bddbe511cde6f99979e

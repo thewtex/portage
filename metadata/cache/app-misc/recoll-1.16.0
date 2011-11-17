@@ -1,5 +1,5 @@
 virtual/libiconv >=dev-libs/xapian-1.0.12 sys-libs/zlib spell? ( app-text/aspell ) !inotify? ( fam? ( virtual/fam ) ) qt4? ( x11-libs/qt-core:4[qt3support] ) session? ( inotify? ( x11-libs/libX11 x11-libs/libSM x11-libs/libICE ) !inotify? ( fam? ( x11-libs/libX11 x11-libs/libSM x11-libs/libICE ) ) )
-virtual/libiconv >=dev-libs/xapian-1.0.12 sys-libs/zlib spell? ( app-text/aspell ) !inotify? ( fam? ( virtual/fam ) ) qt4? ( x11-libs/qt-core:4[qt3support] ) session? ( inotify? ( x11-libs/libX11 x11-libs/libSM x11-libs/libICE ) !inotify? ( fam? ( x11-libs/libX11 x11-libs/libSM x11-libs/libICE ) ) ) app-arch/unzip sys-apps/sed || ( sys-apps/gawk sys-apps/mawk ) pdf? ( app-text/poppler ) gs? ( app-text/pstotext ) msdoc? ( app-text/antiword ) msxls? ( app-text/catdoc ) msppt? ( app-text/catdoc ) wordperfect? ( app-text/libwpd ) rtf? ( app-text/unrtf ) tex? ( dev-tex/detex ) dvi? ( virtual/tex-base ) djvu? ( >=app-text/djvu-3.5.15 ) exif? ( media-libs/exiftool ) chm? ( dev-python/pychm ) ics? ( dev-python/icalendar ) lyx? ( app-office/lyx ) audio? ( media-libs/mutagen ) xml? ( dev-libs/libxslt ) info? ( sys-apps/texinfo )
+virtual/libiconv >=dev-libs/xapian-1.0.12 sys-libs/zlib spell? ( app-text/aspell ) !inotify? ( fam? ( virtual/fam ) ) qt4? ( x11-libs/qt-core:4[qt3support] ) session? ( inotify? ( x11-libs/libX11 x11-libs/libSM x11-libs/libICE ) !inotify? ( fam? ( x11-libs/libX11 x11-libs/libSM x11-libs/libICE ) ) ) app-arch/unzip sys-apps/sed || ( sys-apps/gawk sys-apps/mawk ) pdf? ( app-text/poppler ) ps? ( app-text/pstotext ) msdoc? ( app-text/antiword ) msxls? ( app-text/catdoc ) msppt? ( app-text/catdoc ) wordperfect? ( app-text/libwpd ) rtf? ( app-text/unrtf ) tex? ( dev-tex/detex ) dvi? ( virtual/tex-base ) djvu? ( >=app-text/djvu-3.5.15 ) exif? ( media-libs/exiftool ) chm? ( dev-python/pychm ) ics? ( dev-python/icalendar ) lyx? ( app-office/lyx ) audio? ( media-libs/mutagen ) xml? ( dev-libs/libxslt ) info? ( sys-apps/texinfo )
 0
 http://www.lesbonscomptes.com/recoll/recoll-1.16.0.tar.gz
 
@@ -8,8 +8,8 @@ GPL-2
 A personal full text search package
 ~amd64 ~x86
 base eutils linux-info multilib portability qt4-r2 toolchain-funcs user versionator
-+spell +inotify +qt4 +session camelcase xattr fam audio chm djvu dvi exif gs ics info lyx msdoc msppt msxls pdf rtf tex wordperfect xml
-^^ ( fam inotify ) session? ( || ( fam inotify ) )
++spell +inotify +qt4 +session camelcase xattr fam audio chm djvu dvi exif ps ics info lyx msdoc msppt msxls pdf rtf tex wordperfect xml
+^^ ( fam inotify ( !fam !inotify ) ) session? ( || ( fam inotify ) )
 
 
 4

@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile install postinst postrm preinst prepare setup test unpack
+DEPEND=dev-util/quilt !build? ( sys-apps/sed >=sys-devel/binutils-2.11.90.0.31 )
+DESCRIPTION=Andrew Morton's -mmotm quilt patchset
+EAPI=4
+HOMEPAGE=http://userweb.kernel.org/~akpm/mmotm/
+IUSE=symlink build
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+PDEPEND=!build? ( virtual/dev-manager )
+RDEPEND=dev-util/quilt !build? ( >=sys-libs/ncurses-5.2 sys-devel/make )
+RESTRICT=binchecks strip
+SLOT=0
+SRC_URI=mirror://kernel/linux/kernel/v3.0/testing/patch-3.1-rc3.bz2 mirror://kernel/linux/kernel/v3.0/testing/linux-3.0.tar.bz2 http://userweb.kernel.org/~akpm/mmotm/broken-out.tar.gz -> broken-out-3.1_rc3.tar.gz
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	kernel-2	ad76e915289b8318d99f2ef40b07bad8	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
+_md5_=a1ba63ec83bdfe25cc0fa2c6a961389e

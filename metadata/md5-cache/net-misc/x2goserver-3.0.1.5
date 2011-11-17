@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst unpack
+DESCRIPTION=The X2Go server
+EAPI=1
+HOMEPAGE=http://x2go.berlios.de
+IUSE=+fuse ldap postgres sqlite
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=app-admin/sudo dev-perl/Config-Simple net-misc/nx virtual/ssh fuse? ( sys-fs/sshfs-fuse ) postgres? ( dev-db/postgresql-server ) sqlite? ( dev-db/sqlite )
+SLOT=0
+SRC_URI=http://x2go.obviously-nice.de/deb/pool-lenny/x2goserver/x2goserver_3.0.1-5_all.deb
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
+_md5_=e7cbd6de224118614733607c6cd416d8

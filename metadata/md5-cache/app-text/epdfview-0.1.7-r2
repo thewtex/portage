@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup unpack
+DEPEND=>=app-text/poppler-0.12.3-r3[cairo] >=x11-libs/gtk+-2.6:2 cups? ( >=net-print/cups-1.1 ) dev-util/pkgconfig nls? ( sys-devel/gettext ) test? ( dev-util/cppunit ) userland_GNU? ( >=sys-apps/findutils-4.4 ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool >=sys-apps/sed-4
+DESCRIPTION=Lightweight PDF viewer using Poppler and GTK+ libraries.
+EAPI=2
+HOMEPAGE=http://trac.emma-soft.com/epdfview/
+IUSE=cups nls test debug
+KEYWORDS=~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=>=app-text/poppler-0.12.3-r3[cairo] >=x11-libs/gtk+-2.6:2 cups? ( >=net-print/cups-1.1 )
+SLOT=0
+SRC_URI=http://trac.emma-soft.com/epdfview/chrome/site/releases/epdfview-0.1.7.tar.bz2
+_eclasses_=autotools	b81740a014934d6736a8795cdedb452e	eutils	33ef77a15337022e05342d2c772a7a5a	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	gnome.org	8fef8f967214f56e08fa92d61163d891	gnome2	3aa9fb56280cbb64b3d42e0db59ed76e	gnome2-utils	dfcd797d126b46852d33936f4a0a1702	libtool	76720aa53cbace6123aac554983eadfa	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
+_md5_=787791fac82284285340cb6b4ed87d1a

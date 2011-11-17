@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst prepare setup test unpack
+DEPEND=X? ( x11-libs/libX11 x11-libs/libSM x11-libs/libICE ) dmalloc? ( dev-libs/dmalloc ) blas? ( virtual/blas ) fftw? ( sci-libs/fftw:3.0 ) fkernels? ( virtual/fortran ) gsl? ( sci-libs/gsl ) lapack? ( virtual/lapack ) mpi? ( virtual/mpi ) xml? ( dev-libs/libxml2:2 ) dev-util/pkgconfig || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=The ultimate molecular dynamics simulation package
+EAPI=4
+HOMEPAGE=http://www.gromacs.org/
+IUSE=X altivec blas dmalloc doc -double-precision +fftw fkernels +gsl lapack mpi +single-precision sse2 static-libs test +threads +xml zsh-completion
+KEYWORDS=alpha amd64 ppc64 sparc x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-2
+RDEPEND=X? ( x11-libs/libX11 x11-libs/libSM x11-libs/libICE ) dmalloc? ( dev-libs/dmalloc ) blas? ( virtual/blas ) fftw? ( sci-libs/fftw:3.0 ) fkernels? ( virtual/fortran ) gsl? ( sci-libs/gsl ) lapack? ( virtual/lapack ) mpi? ( virtual/mpi ) xml? ( dev-libs/libxml2:2 ) app-shells/tcsh
+REQUIRED_USE=fkernels? ( !threads )
+RESTRICT=test
+SLOT=0
+SRC_URI=ftp://ftp.gromacs.org/pub/gromacs/gromacs-4.5.4.tar.gz http://dev.gentoo.org/~alexxy/gromacs/0001-Make-stack-non-executable-for-GAS-assembly.patch.gz http://dev.gentoo.org/~alexxy/gromacs/0002-Make-stack-non-executable-for-ATT-assembly.patch.gz doc? ( ftp://ftp.gromacs.org/pub/manual/manual-4.5.4.pdf -> gromacs-manual-4.5.4.pdf ) test? ( ftp://ftp.gromacs.org/pub/tests/gmxtest-4.0.4.tgz )
+_eclasses_=autotools	b81740a014934d6736a8795cdedb452e	autotools-utils	9799469ea552910620db9dca0bca94b0	base	dba02c674ce4dff67657c692954d7ef0	bash-completion-r1	3480f8385cb9e31797e7b659e366e2d2	eutils	33ef77a15337022e05342d2c772a7a5a	flag-o-matic	630c256d55702ba23515f64952987828	fortran-2	368b82ae80c1184988a9d651e6efcbd0	libtool	76720aa53cbace6123aac554983eadfa	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=55b437a6ef5ed5188aa8426ad4a1719d

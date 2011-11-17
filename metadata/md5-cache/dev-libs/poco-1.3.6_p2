@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=dev-libs/libpcre dev-libs/expat sys-libs/zlib mysql? ( dev-db/mysql ) odbc? ( iodbc? ( dev-db/libiodbc ) !iodbc? ( dev-db/unixODBC ) ) ssl? ( dev-libs/openssl ) sqlite? ( dev-db/sqlite:3 )
+DESCRIPTION=C++ class libraries that simplify and accelerate the development of network-centric, portable applications.
+EAPI=2
+HOMEPAGE=http://pocoproject.org/
+IUSE=doc examples iodbc mysql odbc sqlite ssl test
+KEYWORDS=~amd64 ~x86
+LICENSE=Boost-1.0
+RDEPEND=dev-libs/libpcre dev-libs/expat sys-libs/zlib mysql? ( dev-db/mysql ) odbc? ( iodbc? ( dev-db/libiodbc ) !iodbc? ( dev-db/unixODBC ) ) ssl? ( dev-libs/openssl ) sqlite? ( dev-db/sqlite:3 )
+SLOT=0
+SRC_URI=mirror://sourceforge/poco/poco-1.3.6p2-all.tar.bz2 doc? ( mirror://sourceforge/poco/poco-1.3.6-all-doc.zip )
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	flag-o-matic	630c256d55702ba23515f64952987828	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
+_md5_=14b9451bf805cca99fcbb98e88b91246

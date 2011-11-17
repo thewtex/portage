@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst preinst prepare setup unpack
+DEPEND=binary? ( >=sys-kernel/genkernel-3.4.12.6-r4 ) =sys-devel/gcc-4.1.2*
+DESCRIPTION=Full Linux kernel sources - RHEL5 kernel with OpenVZ patchset
+EAPI=2
+HOMEPAGE=http://www.openvz.org
+IUSE=binary xen
+KEYWORDS=x86 amd64
+LICENSE=GPL-2
+RDEPEND=binary? ( <=sys-fs/udev-147 )
+RESTRICT=binchecks strip
+SLOT=2.6.18.028.091.1
+SRC_URI=mirror://kernel/linux/kernel/v./linux-2.6.18.tar.bz2 http://download.openvz.org/kernel/branches/rhel5-2.6.18-testing/028stab091.1/configs/kernel-2.6.18-i686-ent.config.ovz -> config-2.6.18-028stab091.1.i686 http://download.openvz.org/kernel/branches/rhel5-2.6.18-testing/028stab091.1/configs/kernel-2.6.18-i686-xen.config.ovz -> config-2.6.18-028stab091.1.i686.xen http://download.openvz.org/kernel/branches/rhel5-2.6.18-testing/028stab091.1/configs/kernel-2.6.18-x86_64.config.ovz -> config-2.6.18-028stab091.1.x86_64 http://download.openvz.org/kernel/branches/rhel5-2.6.18-testing/028stab091.1/configs/kernel-2.6.18-x86_64-xen.config.ovz -> config-2.6.18-028stab091.1.x86_64.xen http://download.openvz.org/kernel/branches/rhel5-2.6.18-testing/028stab091.1/patches/patch-238.12.1.el5.028stab091.1-combined.gz
+_eclasses_=mount-boot	410bdaef41d2c8674e24edfa9d521177
+_md5_=a3fb883a80adc8a83222a53fb0a9672b

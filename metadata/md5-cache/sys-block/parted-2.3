@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare test
+DEPEND=>=sys-fs/e2fsprogs-1.27 >=sys-libs/ncurses-5.2 nls? ( >=sys-devel/gettext-0.12.1-r2 ) readline? ( >=sys-libs/readline-5.2 ) selinux? ( sys-libs/libselinux ) device-mapper? ( || ( >=sys-fs/lvm2-2.02.45 sys-fs/device-mapper ) ) dev-util/pkgconfig =sys-devel/automake-1.11* >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=Create, destroy, resize, check, copy partitions and file systems
+EAPI=2
+HOMEPAGE=http://www.gnu.org/software/parted
+IUSE=nls readline +debug selinux device-mapper
+KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc x86
+LICENSE=GPL-3
+RDEPEND=>=sys-fs/e2fsprogs-1.27 >=sys-libs/ncurses-5.2 nls? ( >=sys-devel/gettext-0.12.1-r2 ) readline? ( >=sys-libs/readline-5.2 ) selinux? ( sys-libs/libselinux ) device-mapper? ( || ( >=sys-fs/lvm2-2.02.45 sys-fs/device-mapper ) )
+SLOT=0
+SRC_URI=mirror://gnu/parted/parted-2.3.tar.gz
+_eclasses_=autotools	b81740a014934d6736a8795cdedb452e	eutils	33ef77a15337022e05342d2c772a7a5a	libtool	76720aa53cbace6123aac554983eadfa	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=dcd25bb8cd25410bc99ffa78eb1181fc

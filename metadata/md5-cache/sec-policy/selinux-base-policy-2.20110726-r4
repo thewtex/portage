@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare
+DEPEND=>=sys-apps/policycoreutils-1.30.30 >=sys-fs/udev-151 sys-devel/m4 >=sys-apps/checkpolicy-1.30.12
+DESCRIPTION=Gentoo base policy for SELinux
+EAPI=4
+HOMEPAGE=http://www.gentoo.org/proj/en/hardened/selinux/
+IUSE=+peer_perms +open_perms +ubac doc
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=>=sys-apps/policycoreutils-1.30.30 >=sys-fs/udev-151
+SLOT=0
+SRC_URI=http://oss.tresys.com/files/refpolicy/refpolicy-2.20110726.tar.bz2 http://dev.gentoo.org/~swift/patches/selinux-base-policy/patchbundle-selinux-base-policy-2.20110726-r4.tar.bz2
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=a208b4ecb2ead7c801ba55006daad391
