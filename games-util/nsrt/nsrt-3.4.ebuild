@@ -7,7 +7,7 @@ inherit games
 
 DESCRIPTION="SNES ROM utility with various functions"
 HOMEPAGE="http://www.romhacking.net/utilities/401/"
-SRC_URI="http://7clams.org/flora/distfiles/${P}.tar.gz"
+SRC_URI="http://7clams.org/flora/distfiles/nsrt34l.tar.gz"
 
 LICENSE="NSRT"
 SLOT="0"

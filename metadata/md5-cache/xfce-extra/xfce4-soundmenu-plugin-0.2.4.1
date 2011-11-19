@@ -1,13 +1,13 @@
 DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup unpack
-DEPEND=>=dev-libs/dbus-glib-0.74 >=dev-libs/keybinder-0.2 x11-libs/libX11 >=xfce-base/libxfce4ui-4.8 >=xfce-base/libxfce4util-4.8 >=xfce-base/xfce4-panel-4.8 lastfm? ( media-libs/libclastfm ) dev-util/intltool dev-util/pkgconfig sys-devel/gettext || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool >=sys-apps/sed-4
+DEPEND=>=dev-libs/dbus-glib-0.74 >=dev-libs/keybinder-0.2 x11-libs/libX11 >=xfce-base/libxfce4ui-4.8 >=xfce-base/libxfce4util-4.8 >=xfce-base/xfce4-panel-4.8 glyr? ( media-libs/glyr ) lastfm? ( media-libs/libclastfm ) dev-util/intltool dev-util/pkgconfig sys-devel/gettext || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool >=sys-apps/sed-4
 DESCRIPTION=A panel plug-in to control MPRIS2 compatible players
 EAPI=4
 HOMEPAGE=http://code.google.com/p/dissonance/
-IUSE=debug lastfm
+IUSE=debug +glyr lastfm
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2 LGPL-2
-RDEPEND=>=dev-libs/dbus-glib-0.74 >=dev-libs/keybinder-0.2 x11-libs/libX11 >=xfce-base/libxfce4ui-4.8 >=xfce-base/libxfce4util-4.8 >=xfce-base/xfce4-panel-4.8 lastfm? ( media-libs/libclastfm )
+RDEPEND=>=dev-libs/dbus-glib-0.74 >=dev-libs/keybinder-0.2 x11-libs/libX11 >=xfce-base/libxfce4ui-4.8 >=xfce-base/libxfce4util-4.8 >=xfce-base/xfce4-panel-4.8 glyr? ( media-libs/glyr ) lastfm? ( media-libs/libclastfm )
 SLOT=0
 SRC_URI=http://dissonance.googlecode.com/files/xfce4-soundmenu-plugin-0.2.4.1.tar.bz2
-_eclasses_=autotools	b81740a014934d6736a8795cdedb452e	base	dba02c674ce4dff67657c692954d7ef0	eutils	33ef77a15337022e05342d2c772a7a5a	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	gnome2-utils	dfcd797d126b46852d33936f4a0a1702	libtool	76720aa53cbace6123aac554983eadfa	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	xfconf	cf3aecdaa88a08be4cf7274762d8a869
-_md5_=c2f36d1986f2f72ccf0d239e2d3461d0
+_eclasses_=autotools	b81740a014934d6736a8795cdedb452e	base	dba02c674ce4dff67657c692954d7ef0	eutils	33ef77a15337022e05342d2c772a7a5a	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	gnome2-utils	dfcd797d126b46852d33936f4a0a1702	libtool	7c8f664cd4d1d18a9a75a4fd690594b8	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	xfconf	cf3aecdaa88a08be4cf7274762d8a869
+_md5_=d97daa41f04f6579fba4c285cc131980

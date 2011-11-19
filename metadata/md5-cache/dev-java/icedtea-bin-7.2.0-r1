@@ -6,10 +6,10 @@ HOMEPAGE=http://icedtea.classpath.org
 IUSE=X alsa doc examples nsplugin source
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2-with-linking-exception
-PDEPEND=alsa? ( >=media-libs/alsa-lib-1.0.20 ) X? ( >=media-libs/freetype-2.3.9:2 >=media-libs/fontconfig-2.6.0-r2:1.0 >=x11-libs/libXext-1.1 >=x11-libs/libXi-1.3 >=x11-libs/libXtst-1.1 >=x11-libs/libX11-1.3 x11-libs/libXt ) nsplugin? ( >=dev-libs/atk-1.30.0 >=dev-libs/glib-2.20.5:2 >=dev-libs/nspr-4.8 >=x11-libs/cairo-1.8.8 >=x11-libs/gtk+-2.20.1:2 >=x11-libs/pango-1.24.5 )
-RDEPEND=>=sys-devel/gcc-4.3 >=sys-libs/glibc-2.11.2 >=media-libs/giflib-4.1.6-r1 virtual/jpeg >=media-libs/libpng-1.5 >=sys-libs/zlib-1.2.3-r1 =dev-java/java-config-2*
+PDEPEND=alsa? ( >=media-libs/alsa-lib-1.0.20 ) X? ( >=dev-libs/atk-1.30.0 >=dev-libs/glib-2.20.5:2 >=media-libs/fontconfig-2.6.0-r2:1.0 >=media-libs/freetype-2.3.9:2 >=net-print/cups-1.4 >=x11-libs/cairo-1.8.8 x11-libs/gdk-pixbuf:2 >=x11-libs/gtk+-2.20.1:2 >=x11-libs/libXext-1.1 >=x11-libs/libXi-1.3 x11-libs/libXrender >=x11-libs/libXtst-1.1 >=x11-libs/libX11-1.3 >=x11-libs/pango-1.24.5 )
+RDEPEND=>=sys-devel/gcc-4.3 >=sys-libs/glibc-2.11.2 >=media-libs/giflib-4.1.6-r1 virtual/jpeg media-libs/lcms:2 >=media-libs/libpng-1.5 >=sys-libs/zlib-1.2.3-r1 =dev-java/java-config-2*
 RESTRICT=strip
 SLOT=7
 SRC_URI=amd64? ( http://dev.gentoo.org/~caster/distfiles//icedtea-bin-core-7.2.0-amd64.tar.bz2 ) x86? ( http://dev.gentoo.org/~caster/distfiles//icedtea-bin-core-7.2.0-x86.tar.bz2 ) doc? ( http://dev.gentoo.org/~caster/distfiles//icedtea-bin-doc-7.2.0.tar.bz2 ) examples? ( amd64? ( http://dev.gentoo.org/~caster/distfiles//icedtea-bin-examples-7.2.0-amd64.tar.bz2 ) x86? ( http://dev.gentoo.org/~caster/distfiles//icedtea-bin-examples-7.2.0-x86.tar.bz2 ) ) nsplugin? ( amd64? ( http://dev.gentoo.org/~caster/distfiles//icedtea-bin-nsplugin-7.2.0-amd64.tar.bz2 ) x86? ( http://dev.gentoo.org/~caster/distfiles//icedtea-bin-nsplugin-7.2.0-x86.tar.bz2 ) ) source? ( http://dev.gentoo.org/~caster/distfiles//icedtea-bin-src-7.2.0.tar.bz2 )
-_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	java-vm-2	9f5a5a178e03a3408222bf13647dffb9	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	prefix	21058c21ca48453d771df15500873ede	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
-_md5_=150b3e6cb79d3fb01ae4e81360f3894c
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	java-vm-2	9f5a5a178e03a3408222bf13647dffb9	multilib	c4883399ddd3e1d2bd291607b30fded4	pax-utils	43c50115ec22f684df1dc43187a60fcc	portability	1d9665386ff87b70cba7f591ba27723f	prefix	21058c21ca48453d771df15500873ede	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=6a41f7721101999a05413bfa6d16a70a
