@@ -1,4 +1,4 @@
-mysql? ( virtual/mysql ) !mysql? ( >=dev-db/sqlite-3 ) javascript? ( dev-lang/spidermonkey ) dev-libs/expat taglib? ( media-libs/taglib ) !taglib? ( media-libs/id3lib ) lastfm? ( >=media-libs/lastfmlib-0.4 ) exif? ( media-libs/libexif ) libextractor? ( media-libs/libextractor ) mp4? ( media-libs/libmp4v2 ) ffmpeg? ( virtual/ffmpeg ) thumbnail? ( media-video/ffmpegthumbnailer[jpeg] ) net-misc/curl sys-apps/file sys-libs/zlib virtual/libiconv
+mysql? ( virtual/mysql ) !mysql? ( >=dev-db/sqlite-3 ) javascript? ( dev-lang/spidermonkey ) dev-libs/expat taglib? ( media-libs/taglib ) !taglib? ( media-libs/id3lib ) lastfm? ( >=media-libs/lastfmlib-0.4 ) exif? ( media-libs/libexif ) libextractor? ( media-libs/libextractor ) mp4? ( media-libs/libmp4v2 ) ffmpeg? ( virtual/ffmpeg ) thumbnail? ( media-video/ffmpegthumbnailer[jpeg] ) net-misc/curl sys-apps/file sys-libs/zlib virtual/libiconv || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool
 mysql? ( virtual/mysql ) !mysql? ( >=dev-db/sqlite-3 ) javascript? ( dev-lang/spidermonkey ) dev-libs/expat taglib? ( media-libs/taglib ) !taglib? ( media-libs/id3lib ) lastfm? ( >=media-libs/lastfmlib-0.4 ) exif? ( media-libs/libexif ) libextractor? ( media-libs/libextractor ) mp4? ( media-libs/libmp4v2 ) ffmpeg? ( virtual/ffmpeg ) thumbnail? ( media-video/ffmpegthumbnailer[jpeg] ) net-misc/curl sys-apps/file sys-libs/zlib virtual/libiconv
 0
 mirror://sourceforge/mediatomb/mediatomb-0.12.1.tar.gz
@@ -7,14 +7,14 @@ http://www.mediatomb.cc/
 GPL-2
 MediaTomb is an open source UPnP MediaServer
 amd64 ~arm ~ppc x86
-eutils linux-info multilib portability toolchain-funcs user versionator
+autotools autotools-utils base eutils libtool linux-info multilib portability toolchain-funcs user versionator
 debug +exif +ffmpeg inotify +javascript lastfm libextractor +mp4 mysql +taglib thumbnail
 
 
 
 2
 
-configure install postinst prepare setup
+compile configure install postinst prepare setup test unpack
 
 
 

@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=unicode? ( dev-libs/glib:2 ) xml? ( >=dev-libs/libxml2-2.6.8 ) !xml? ( dev-libs/expat ) curl? ( net-misc/curl ) json? ( dev-libs/yajl ) dev-libs/libxslt !<media-libs/raptor-1.4.21-r1 dev-util/pkgconfig sys-devel/flex dev-util/gtk-doc-am
+DESCRIPTION=The RDF Parser Toolkit
+EAPI=4
+HOMEPAGE=http://librdf.org/raptor/
+IUSE=+curl debug json static-libs unicode +xml
+KEYWORDS=~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~x86-fbsd ~x64-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+LICENSE=Apache-2.0 GPL-2 LGPL-2.1
+RDEPEND=unicode? ( dev-libs/glib:2 ) xml? ( >=dev-libs/libxml2-2.6.8 ) !xml? ( dev-libs/expat ) curl? ( net-misc/curl ) json? ( dev-libs/yajl ) dev-libs/libxslt !<media-libs/raptor-1.4.21-r1
+SLOT=2
+SRC_URI=http://download.librdf.org/source/raptor2-2.0.5.tar.gz
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	libtool	76720aa53cbace6123aac554983eadfa	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266
+_md5_=1c1c5d2b1885826930f8dc578782b650

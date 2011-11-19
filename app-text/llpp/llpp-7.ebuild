@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/llpp/llpp-7.ebuild,v 1.1 2011/10/04 22:46:00 xmw Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/llpp/llpp-7.ebuild,v 1.4 2011/11/18 03:32:28 xmw Exp $
 
 EAPI=3
 
@@ -13,7 +13,7 @@ SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="vanilla"
 
 RDEPEND=">=app-text/mupdf-0.8.165
@@ -35,7 +35,7 @@ src_compile() {
 	printf 'let version ="%s";;\n' ${PV} >> help.ml || die
 
 	local myccopt="$(freetype-config --cflags) -O -include ft2build.h -D_GNU_SOURCE"
-	local mycclib="-lmupdf -lfitz -lz -ljpeg -lopenjpeg -ljbig2dec -lfreetype"
+	local mycclib="-lmupdf -lfitz -lz -ljpeg -lopenjpeg -ljbig2dec -lfreetype -lpthread"
 	#if use ocamlopt ; then
 		myccopt="${myccopt} -lpthread"
 		ocamlopt -c -o link.o -ccopt "${myccopt}" link.c || die

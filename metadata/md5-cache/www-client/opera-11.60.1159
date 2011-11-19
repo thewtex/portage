@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst postrm preinst prepare setup unpack
+DEPEND=>=sys-apps/sed-4 app-arch/xz-utils >=sys-apps/sed-4
+DESCRIPTION=A fast and secure web browser and Internet suite
+EAPI=4
+HOMEPAGE=http://www.opera.com/
+IUSE=elibc_FreeBSD gtk gtk3 kde +gstreamer linguas_af linguas_az linguas_be linguas_bg linguas_bn linguas_cs linguas_da linguas_de linguas_el linguas_en_GB linguas_es_ES linguas_es_LA linguas_et linguas_fi linguas_fr linguas_fr_CA linguas_fy linguas_gd linguas_hi linguas_hr linguas_hu linguas_id linguas_it linguas_ja linguas_ka linguas_ko linguas_lt linguas_me linguas_mk linguas_ms linguas_nb linguas_nl linguas_nn linguas_pa linguas_pl linguas_pt linguas_pt_BR linguas_ro linguas_ru linguas_sk linguas_sr linguas_sv linguas_sw linguas_ta linguas_te linguas_th linguas_tl linguas_tr linguas_uk linguas_uz linguas_vi linguas_zh_CN linguas_zh_TW linguas_zu
+KEYWORDS=~amd64 ~x86 ~x86-fbsd
+LICENSE=OPERA-11 LGPL-2 LGPL-3
+RDEPEND=media-libs/fontconfig media-libs/freetype sys-apps/util-linux sys-libs/zlib virtual/opengl x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXext x11-libs/libXft x11-libs/libXrender x11-libs/libXt gtk? ( dev-libs/atk dev-libs/glib:2 x11-libs/cairo x11-libs/gdk-pixbuf gtk? ( x11-libs/gtk+:2 ) gtk3? ( x11-libs/gtk+:3 ) x11-libs/pango x11-libs/pixman ) gtk3? ( dev-libs/atk dev-libs/glib:2 x11-libs/cairo x11-libs/gdk-pixbuf gtk? ( x11-libs/gtk+:2 ) gtk3? ( x11-libs/gtk+:3 ) x11-libs/pango x11-libs/pixman ) kde? ( kde-base/kdelibs x11-libs/qt-core x11-libs/qt-gui ) gstreamer? ( dev-libs/glib:2 dev-libs/libxml2 media-libs/gst-plugins-base media-libs/gstreamer media-plugins/gst-plugins-meta )
+SLOT=0
+SRC_URI=amd64? ( http://snapshot.opera.com/unix/china_11.60-1159/opera-11.60-1159.x86_64.linux.tar.xz ) x86? ( http://snapshot.opera.com/unix/china_11.60-1159/opera-11.60-1159.i386.linux.tar.xz ) x86-fbsd? ( http://snapshot.opera.com/unix/china_11.60-1159/opera-11.60-1159.i386.freebsd.tar.xz )
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	gnome2-utils	dfcd797d126b46852d33936f4a0a1702	multilib	c4883399ddd3e1d2bd291607b30fded4	pax-utils	43c50115ec22f684df1dc43187a60fcc	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
+_md5_=052d81514f20f9ee3bba5fb6bd43c3e4

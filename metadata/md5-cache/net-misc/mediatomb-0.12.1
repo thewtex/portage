@@ -1,5 +1,5 @@
-DEFINED_PHASES=configure install postinst prepare setup
-DEPEND=mysql? ( virtual/mysql ) !mysql? ( >=dev-db/sqlite-3 ) javascript? ( dev-lang/spidermonkey ) dev-libs/expat taglib? ( media-libs/taglib ) !taglib? ( media-libs/id3lib ) lastfm? ( >=media-libs/lastfmlib-0.4 ) exif? ( media-libs/libexif ) libextractor? ( media-libs/libextractor ) mp4? ( media-libs/libmp4v2 ) ffmpeg? ( virtual/ffmpeg ) thumbnail? ( media-video/ffmpegthumbnailer[jpeg] ) net-misc/curl sys-apps/file sys-libs/zlib virtual/libiconv
+DEFINED_PHASES=compile configure install postinst prepare setup test unpack
+DEPEND=mysql? ( virtual/mysql ) !mysql? ( >=dev-db/sqlite-3 ) javascript? ( dev-lang/spidermonkey ) dev-libs/expat taglib? ( media-libs/taglib ) !taglib? ( media-libs/id3lib ) lastfm? ( >=media-libs/lastfmlib-0.4 ) exif? ( media-libs/libexif ) libextractor? ( media-libs/libextractor ) mp4? ( media-libs/libmp4v2 ) ffmpeg? ( virtual/ffmpeg ) thumbnail? ( media-video/ffmpegthumbnailer[jpeg] ) net-misc/curl sys-apps/file sys-libs/zlib virtual/libiconv || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool
 DESCRIPTION=MediaTomb is an open source UPnP MediaServer
 EAPI=2
 HOMEPAGE=http://www.mediatomb.cc/
@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=mysql? ( virtual/mysql ) !mysql? ( >=dev-db/sqlite-3 ) javascript? ( dev-lang/spidermonkey ) dev-libs/expat taglib? ( media-libs/taglib ) !taglib? ( media-libs/id3lib ) lastfm? ( >=media-libs/lastfmlib-0.4 ) exif? ( media-libs/libexif ) libextractor? ( media-libs/libextractor ) mp4? ( media-libs/libmp4v2 ) ffmpeg? ( virtual/ffmpeg ) thumbnail? ( media-video/ffmpegthumbnailer[jpeg] ) net-misc/curl sys-apps/file sys-libs/zlib virtual/libiconv
 SLOT=0
 SRC_URI=mirror://sourceforge/mediatomb/mediatomb-0.12.1.tar.gz
-_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	linux-info	0a300da62c346bbaee5bcf82727f23ac	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
-_md5_=b1f19ff65df6788fc1da74aa82bc0c94
+_eclasses_=autotools	b81740a014934d6736a8795cdedb452e	autotools-utils	9799469ea552910620db9dca0bca94b0	base	dba02c674ce4dff67657c692954d7ef0	eutils	33ef77a15337022e05342d2c772a7a5a	libtool	76720aa53cbace6123aac554983eadfa	linux-info	0a300da62c346bbaee5bcf82727f23ac	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	versionator	24e30b509d090def3c702b79efea99bc
+_md5_=994f524cb76a58a4b9ed0a6a4fb9ed99

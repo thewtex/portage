@@ -1,12 +1,12 @@
 DEFINED_PHASES=configure
-DEPEND=media-libs/libid3tag media-libs/libmtp media-libs/libnjb media-libs/taglib >=x11-libs/gtk+-2.24:2 sys-fs/udev[gudev] dev-util/pkgconfig nls? ( dev-util/intltool sys-devel/gettext )
+DEPEND=media-libs/libid3tag media-libs/libmtp media-libs/libnjb media-libs/taglib >=x11-libs/gtk+-2.24:2 || ( >=sys-fs/udev-171-r1[gudev] <sys-fs/udev-171-r1[extras] ) dev-util/pkgconfig nls? ( dev-util/intltool sys-devel/gettext )
 DESCRIPTION=A GTK+ music manager and swiss army knife for the Portable Digital Entertainment (PDE) protocol
 EAPI=4
 HOMEPAGE=http://gnomad2.sourceforge.net/
 IUSE=nls
 KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
 LICENSE=GPL-2
-RDEPEND=media-libs/libid3tag media-libs/libmtp media-libs/libnjb media-libs/taglib >=x11-libs/gtk+-2.24:2 sys-fs/udev[gudev]
+RDEPEND=media-libs/libid3tag media-libs/libmtp media-libs/libnjb media-libs/taglib >=x11-libs/gtk+-2.24:2 || ( >=sys-fs/udev-171-r1[gudev] <sys-fs/udev-171-r1[extras] )
 SLOT=0
 SRC_URI=mirror://sourceforge/gnomad2/gnomad2-2.9.6.tar.gz
-_md5_=30df13ae017cf0ef1dd8bf8fa465301e
+_md5_=c2934a51f8bab56b059d7cfb51df970d

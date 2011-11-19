@@ -1,8 +1,8 @@
 DEFINED_PHASES=compile configure install postinst postrm preinst prepare prerm setup test unpack
 DEPEND=!sci-geosciences/mapserver:6.0.1 dev-libs/expat dev-libs/fcgi >=media-libs/gd-2.0.12[truetype,jpeg,png,zlib] media-libs/giflib net-misc/curl virtual/jpeg virtual/libiconv x11-libs/agg bidi? ( dev-libs/fribidi ) cairo? ( x11-libs/cairo ) gdal? ( >=sci-libs/gdal-1.8.0 ) geos? ( sci-libs/geos ) mysql? ( virtual/mysql ) opengl? ( media-libs/ftgl media-libs/mesa ) perl? ( dev-lang/perl ) postgis? ( dev-db/postgis ) proj? ( sci-libs/proj net-misc/curl ) tiff? ( media-libs/tiff sci-libs/libgeotiff ) xml? ( dev-libs/libxml2:2 ) xslt? ( dev-libs/libxslt[crypt] ) perl? ( >=dev-lang/swig-2.0 ) python? ( >=dev-lang/swig-2.0 ) =www-servers/apache-2* || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool >=app-admin/webapp-config-1.50.15 >=app-admin/eselect-python-20091230 python? ( =dev-lang/python-2* ) dev-lang/perl[-build] || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool >=sys-devel/m4-1.4.3 >=sys-devel/libtool-1.5.18
-DESCRIPTION=OpenSource development environment for constructing spatially enabled Internet-web applications.
+DESCRIPTION=OpenSource development environment for constructing spatially enabled Internet-web applications
 EAPI=3
-HOMEPAGE=http://mapserver.org
+HOMEPAGE=http://mapserver.org/
 IUSE=bidi cairo gdal geos mysql opengl perl php postgis proj python threads tiff xml xslt vhosts php_targets_php5-3
 KEYWORDS=~amd64 ~x86
 LICENSE=MIT
@@ -10,4 +10,4 @@ RDEPEND=!sci-geosciences/mapserver:6.0.1 dev-libs/expat dev-libs/fcgi >=media-li
 SLOT=0
 SRC_URI=http://download.osgeo.org/mapserver/mapserver-6.0.1.tar.gz
 _eclasses_=autotools	b81740a014934d6736a8795cdedb452e	base	dba02c674ce4dff67657c692954d7ef0	depend.apache	a471783c63e68987a2b20eb46f9edf68	distutils	b4c334e216d998c4ce4b750cb091e42e	eutils	33ef77a15337022e05342d2c772a7a5a	flag-o-matic	630c256d55702ba23515f64952987828	libtool	76720aa53cbace6123aac554983eadfa	multilib	c4883399ddd3e1d2bd291607b30fded4	perl-module	01501a30505074cd0012cabbf5d99447	php-ext-source-r2	1dc638b3f0431c60171ed14c169655ce	portability	1d9665386ff87b70cba7f591ba27723f	python	6bbd984910e27780e5d0ea543d83ef84	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	8e8100cae3c0b7d02d122ef2600e6266	webapp	b79de1dd84dd3022661b31ea1d6685e2
-_md5_=c99dda9d05ad69594251d5f2528ee782
+_md5_=cdd52d62128f1e1c02bc38e8c2b4f0d2

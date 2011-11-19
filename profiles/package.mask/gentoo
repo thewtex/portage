@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.13249 2011/11/16 13:34:08 chainsaw Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.13254 2011/11/18 09:36:00 chainsaw Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,10 +30,6 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
-
-# Tony Vroon <chainsaw@gentoo.org> (15 Nov 2011)
-# Fails to load any modules on hardened, needs more love
-=net-misc/asterisk-10.0.0*
 
 # Christoph Junghans <ottxor@gentoo.org> (15 Nov 2011)
 # current version of google-talkplugin never clear what you get
@@ -128,6 +124,7 @@ x11-themes/polyester
 =www-client/opera-11.60.1144
 =www-client/opera-11.60.1145
 =www-client/opera-11.60.1150
+=www-client/opera-11.60.1159
 
 # Alexis Ballier <aballier@gentoo.org> (04 Nov 2011)
 # Pre-releases of vlc 1.2. Mask it until final version is out
@@ -151,10 +148,6 @@ x11-themes/polyester
 # Hans de Graaff <graaff@gentoo.org> (3 Nov 2011)
 # Mask for testing and until we can add all ruby targets again.
 =dev-ruby/rake-0.9*
-
-# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (31 Oct 2011)
-# mask development release
-=x11-drivers/xf86-video-intel-2.16.902
 
 # Markos Chandras <hwoarang@gentoo.org> (31 Oct 2011)
 # Masking 4.8 rc release. The ebuilds are still work in
@@ -241,13 +234,6 @@ app-misc/openjnlp
 # Masked for removal on 18 Nov 2011
 # https://bugs.gentoo.org/377695
 sys-apps/lsparisc
-
-# Michael Sterrett <mr_bones_@gentoo.org> (17 Oct 2011)
-# Masked for removal on 20111116
-# https://bugs.gentoo.org/show_bug.cgi?id=295776
-# https://bugs.gentoo.org/show_bug.cgi?id=308375
-# https://bugs.gentoo.org/show_bug.cgi?id=383101
-games-arcade/stepmania
 
 # Markos Chandras <hwoarang@gentoo.org> (16 Oct 2011)
 # Does not build with newer kernels. Open bug for version bump
@@ -568,11 +554,6 @@ dev-php/roadsend-php
 # Masked until bug #378783 is sorted out.
 >=perl-core/ExtUtils-ParseXS-3.0
 >=virtual/perl-ExtUtils-ParseXS-3.0
-
-# Tomáš Chvátal <scarabeus@gentoo.org> (28 Aug 2011)
-# Masked until documentation guys consolidate the guide and approve
-# it for usage.
-~sys-boot/grub-1.99
 
 # Ole Markus With <olemarkus@gentoo.org> (21 Aug 2011)
 # Masking php:5.2. No longer maintained by upstream
@@ -1073,38 +1054,6 @@ app-crypt/hmaccalc
 # Masked for testing, and some testsuite failures.
 # Bug 313769
 =sys-libs/db-5.0*
-
-# Michael Sterrett <mr_bones_@gentoo.org> (14 Apr 2010)
-# gtk+-1 is old and nasty.
-# Will be removed 20111116 
-# Read man 5 portage about package.unmask to unmask the package locally.
-games-arcade/cervi
-games-emulation/darcnes
-games-emulation/epsxe
-games-emulation/gtuxnes
-games-emulation/infones
-games-emulation/pcsx
-games-emulation/pcsx2
-games-emulation/ps2emu-cddvdlinuz
-games-emulation/ps2emu-cdvdiso
-games-emulation/ps2emu-dev9null
-games-emulation/ps2emu-gssoft
-games-emulation/ps2emu-padxwin
-games-emulation/ps2emu-spu2null
-games-emulation/ps2emu-usbnull
-games-emulation/psemu-cdriso
-games-emulation/psemu-padjoy
-games-emulation/psemu-padxwin
-games-emulation/psemu-peopssoftgpu
-games-emulation/psemu-peopsspu
-games-fps/wmquake
-games-kids/gtans
-games-mud/gMOO
-games-puzzle/codebreaker
-games-puzzle/glickomania
-games-puzzle/xpuyopuyo
-games-simulation/corewars
-games-strategy/xscorch
 
 # Pacho Ramos <pacho@gentoo.org> (10 Apr 2010)
 # This version provides packages from testing to let people using

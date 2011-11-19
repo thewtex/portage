@@ -380,6 +380,8 @@ app-emulation/libvirt:uml - Support management of User Mode Linux virtualisation
 app-emulation/libvirt:virt-network - Enable virtual networking (NAT) support for guests. Includes all the dependencies for NATed network mode. Effectively any network setup that relies on libvirt to setup and configure network interfaces on your host. This can include bridged and routed networks ONLY if you are allowing libvirt to create and manage the underlying devices for you. In some cases this requires enabling the 'netcf' USE flag (currently unavailable).
 app-emulation/libvirt:virtualbox - Support management of VirtualBox virtualisation (one of app-emulation/virtualbox or app-emulation/virtualbox-ose)
 app-emulation/libvirt:xen - Support management of Xen virtualisation (app-emulation/xen)
+app-emulation/libvirt-glib:introspection - Use dev-libs/gobject-introspection for introspection
+app-emulation/libvirt-glib:vala - Enable bindings for dev-lang/vala
 app-emulation/lxc:vanilla - Avoid adding Gentoo Linux-specific modifications, which include the custom init script. This is present as a flag to avoid forcing dependencies over users that might not want have them around as they use LXC in contexts where the init script is not useful.
 app-emulation/mol:oldworld - Includes Macintosh's OldWorld support
 app-emulation/mol:pci - Experimental PCI proxy support
@@ -508,6 +510,7 @@ app-i18n/ibus-mozc:scim - Enable support for app-i18n/scim
 app-i18n/ibus-pinyin:boost - Compile against dev-libs/boost libraries
 app-i18n/ibus-pinyin:opencc - Enable support for app-i18n/opencc
 app-i18n/ibus-table-xingma:extra-phrases - Add extra phrases into builded Engine
+app-i18n/ibus-unikey:gtk3 - Enable support for gtk+3
 app-i18n/im-ja:anthy - Support for Anthy input method
 app-i18n/im-ja:skk - Support for SKK input method
 app-i18n/imsettings:xfconf - Enable integration in the Xfce desktop environment with xfce-base/xfconf
@@ -1052,6 +1055,7 @@ dev-java/rxtx:lfd - Installs and uses LockFileServer daemon (lfd)
 dev-java/sun-jdk:derby - Enable Installation of Bundled Derby (Java DB)
 dev-java/sun-jdk:jce - Enable Java Cryptographic Extension Unlimited Strength Policy files
 dev-java/sun-jre-bin:jce - Enable Java Cryptographic Extension Unlimited Strength Policy files
+dev-java/swt:webkit - Embedded browser support via net-libs/webkit-gtk:2, replacing former xulrunner-based browser.
 dev-java/swt:xulrunner - Embedded browser support via xulrunner-1.9 (1.8 for swt-3.3). Xulrunner 2.0 is not supported, will be replaced by webkit in 3.7.
 dev-lang/bas:lr0 - Use the LR0 parser instead of the recursive descending parser
 dev-lang/erlang:halfword - Enable halfword emulator
@@ -1408,6 +1412,7 @@ dev-python/scrapy:ibl - Use Instace Based Learning alrogirithm for automatic ext
 dev-python/spyder:ipython - Add support for dev-python/ipython
 dev-python/spyder:matplotlib - Add support for dev-python/matplotlib
 dev-python/spyder:numpy - Add support for dev-python/numpy
+dev-python/spyder:pep8 - Add support for dev-python/pep8
 dev-python/spyder:pyflakes - Add support for dev-python/pyflakes
 dev-python/spyder:pylint - Add support for dev-python/pylint
 dev-python/spyder:rope - Add support for sci-libs/rope
@@ -1638,7 +1643,6 @@ games-arcade/lbreakout2:themes - Install additional themes
 games-arcade/moleinvasion:music - Download and install the music files
 games-arcade/slimevolley:net - Enable network support
 games-arcade/smc:music - Download and install the music files
-games-arcade/stepmania:force-oss - Force using OSS
 games-arcade/triplexinvaders:psyco - psyco python accelerator
 games-arcade/tuxanci:physfs - Use dev-games/physfs instead of dev-libs/libzip to load compressed data
 games-arcade/tuxanci:sound - Enable sound
@@ -1822,12 +1826,13 @@ gnome-extra/gnome-media:twolame - Allow encoding MPEG Audio Layer 2 (MP2) files 
 gnome-extra/gnome-power-manager:applet - Build battery monitor applet
 gnome-extra/gnome-utils:bonobo - Enable applets (gdict one) still not ported to DBUS, requiring deprecated bonobo support in gnome-panel.
 gnome-extra/gucharmap:introspection - Use dev-libs/gobject-introspection for introspection
-gnome-extra/libgda:canvas - Enables support for x11-libs/goocanvas
+gnome-extra/libgda:canvas - Enable support for x11-libs/goocanvas
 gnome-extra/libgda:http - Enable embedded net-libs/libsoup based server
 gnome-extra/libgda:introspection - Use dev-libs/gobject-introspection for introspection
 gnome-extra/libgda:json - Enable support for JSON format
-gnome-extra/libgda:mdb - Enable support for Microsoft Access Database using app-office/mdbtools
+gnome-extra/libgda:mdb - Enable support for Microsoft Access database using app-office/mdbtools
 gnome-extra/libgda:sourceview - Enable support for x11-libs/gtksourceview
+gnome-extra/libgda:vala - Enable bindings for dev-lang/vala
 gnome-extra/libgsf:gtk - Enable use of gdk in thumbnailer
 gnome-extra/libgsf:thumbnail - Enable libgsf supported formats thumbnailer
 gnome-extra/mousetweaks:applet - Build the gnome-base/gnome-panel applet
@@ -2303,6 +2308,7 @@ media-libs/freeverb3:sse3 - Enable SSE3 support
 media-libs/freeverb3:sse4 - Enable SSE4 support
 media-libs/gegl:umfpack - Enable sparse solving via sci-libs/umfpack.
 media-libs/giflib:rle - Build converters for RLE format (utah raster toolkit)
+media-libs/gmtk:dconf - Enable support for gnome-base/dconf
 media-libs/grilo:introspection - Use dev-libs/gobject-introspection for introspection
 media-libs/grilo:network - Enable network access for media discovery using net-libs/libsoup
 media-libs/grilo:test-ui - Build and install a test UI for the library
@@ -2363,6 +2369,7 @@ media-libs/mesa:gbm - Enable the Graphics Buffer Manager for EGL on KMS.
 media-libs/mesa:gles - Enable GLES support.
 media-libs/mesa:llvm - Enable LLVM backend for Gallium3D.
 media-libs/mesa:openvg - Enable the OpenVG 2D acceleration API for Gallium3D.
+media-libs/mesa:osmesa - Build the Mesa library for off-screen rendering.
 media-libs/mesa:pax_kernel - Enable if the user plans to run the package under a pax enabled hardened kernel
 media-libs/mesa:pic - disable optimized assembly code that is not PIC friendly
 media-libs/mesa:shared-dricore - Enable sharing of common code for classic DRI drivers.
@@ -2823,6 +2830,7 @@ media-video/ffmpeg:vdpau - Enables VDPAU decoders (requires nVidia video cards t
 media-video/ffmpeg:vis - Adds support for SIMD optimizations for UltraSPARC processors.
 media-video/ffmpeg:vpx - Enables vp8 codec support using libvpx: Decoding vp8 does not require this to be enabled but libvpx can also be used for decoding; encoding vp8 requires this useflag to be enabled though.
 media-video/ffmpeg2theora:kate - Adds support for Ogg Kate subtitles via libkate.
+media-video/gnome-mplayer:dconf - Enable support for gnome-base/dconf
 media-video/google2srt:html - Install HTML documentation
 media-video/griffith:csv - Enable proper support for csv import (respectively auto-detection encoding of csv files)
 media-video/h264enc:ogm - Support for OGM container format
@@ -2858,6 +2866,17 @@ media-video/libav:vis - Adds support for SIMD optimizations for UltraSPARC proce
 media-video/libav:vpx - Enable vp8 encoding support using libvpx.
 media-video/lives:libvisual - Enable libvisual support
 media-video/mjpegtools:sdlgfx - Enables y4mhist to display a graphical histogram
+media-video/mjpg-streamer:input_control - Plugin giving ability to control camera movement (only specific cameras)
+media-video/mjpg-streamer:input_file - Plugin that watches given directory and send it's content
+media-video/mjpg-streamer:input_testpicture - Plugin for sending compiled in, test pictures
+media-video/mjpg-streamer:input_uvc - Plugin that sends video stream from UVC compatible camera
+media-video/mjpg-streamer:output_autofocus - Auto focusing plugin
+media-video/mjpg-streamer:output_file - Plugin that saves received content under given location
+media-video/mjpg-streamer:output_http - Small HTTP server plugin which sends WWW directory content and streams image content
+media-video/mjpg-streamer:output_rtsp - Plugin which provides a mechanism to take snapshots with a trigger from a UDP packet
+media-video/mjpg-streamer:output_udp - Plugin receiving content over UDP and storing to a directory
+media-video/mjpg-streamer:v4l - Uses media-libs/libv4l function mapping for input_uvc plugin
+media-video/mjpg-streamer:www - Installs WWW content
 media-video/motiontrack:multiprocess - Enables multi-process support (SMP/cluster) for motiontrack programs
 media-video/mplayer:3dnowext - Enable 3dnowext cpu instructions
 media-video/mplayer:amr - Enables Adaptive Multi-Rate format support
@@ -4277,6 +4296,7 @@ sci-libs/gerris:dx - Enable support for sci-visualization/opendx
 sci-libs/getdata:fortran - Build fortran bindings
 sci-libs/getdata:python - Build python bindings
 sci-libs/gsl:cblas-external - Link gsl with external cblas provided by (virtual/cblas) instead of shipped internal version
+sci-libs/hdf5:fortran2003 - enable new features that require Fortran 2003 (http://www.hdfgroup.org/HDF5/doc/fortran/NewFeatures_F2003.pdf)
 sci-libs/indilib:fits - Enable support for the FITS image format through cfitsio
 sci-libs/indilib:nova - Enable support for nova celestial mechanics calculations
 sci-libs/libcmatrix:atlas - Use of atlas blas implementation
@@ -4959,6 +4979,7 @@ www-servers/nginx:nginx_modules_mail_smtp - Enables SMTP proxy support
 www-servers/ocsigen:ocamlduce - Enables ocamlduce XML typechecking for generated web pages
 www-servers/pound:dynscaler - Enable dynamic rescaling of back-end priorities
 www-servers/pshs:magic - Enable automatic detection of Content-Type using libmagic (sys-apps/file)
+www-servers/pshs:netlink - Use libnetlink (sys-apps/iproute2) to get network interface addresses
 www-servers/pshs:upnp - Enable port forwarding using UPnP via net-libs/miniupnpc
 www-servers/resin:admin - Enable Resin admin webapp
 www-servers/tomcat:admin - Enable Tomcat admin webapp

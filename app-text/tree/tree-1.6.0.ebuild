@@ -1,9 +1,9 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/tree/tree-1.6.0.ebuild,v 1.6 2011/10/17 15:31:47 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/tree/tree-1.6.0.ebuild,v 1.8 2011/11/17 22:23:43 mr_bones_ Exp $
 
-EAPI=2
-inherit toolchain-funcs flag-o-matic bash-completion
+EAPI=4
+inherit toolchain-funcs flag-o-matic bash-completion-r1
 
 DESCRIPTION="Lists directories recursively, and produces an indented listing of files."
 HOMEPAGE="http://mama.indstate.edu/users/ice/tree/"
@@ -22,18 +22,17 @@ src_prepare() {
 }
 
 src_compile() {
-	append-lfs-flags
+	append-cflags -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE
 	emake \
 		CC="$(tc-getCC)" \
 		CFLAGS="${CFLAGS}" \
 		LDFLAGS="${LDFLAGS}" \
-		XOBJS="$(use elibc_uclibc && echo strverscmp.o)" \
-		|| die "emake failed"
+		XOBJS="$(use elibc_uclibc && echo strverscmp.o)"
 }
 
 src_install() {
-	dobin tree || die "dobin failed"
-	doman doc/tree*.1 || die
-	dodoc CHANGES README* || die
-	dobashcompletion "${FILESDIR}"/${PN}.bashcomp
+	dobin tree
+	doman doc/tree*.1
+	dodoc CHANGES README*
+	dobashcomp "${FILESDIR}"/${PN}.bashcomp
 }

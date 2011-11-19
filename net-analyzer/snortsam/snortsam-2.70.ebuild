@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/snortsam/snortsam-2.70.ebuild,v 1.1 2011/07/31 12:56:46 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/snortsam/snortsam-2.70.ebuild,v 1.3 2011/11/18 05:09:16 jer Exp $
 
 EAPI="2"
 
@@ -20,10 +20,15 @@ IUSE=""
 S=${WORKDIR}/${PN}
 
 src_prepare() {
-	sed -i -e "s:sbin/functions.sh:etc/init.d/functions.sh:" \
-			-e "s: -O2 : ${CFLAGS} :" \
-			-e "s:gcc :$(tc-getCC) :" \
-			-e "s:\( -o ../snortsam\): ${LDFLAGS}\1:" makesnortsam.sh || die "sed failed"
+	sed -i makesnortsam.sh \
+		-e "s:sbin/functions.sh:etc/init.d/functions.sh:" \
+		-e "s:-O2 : ${CFLAGS} :" \
+		-e "s:gcc :$(tc-getCC) :" \
+		-e "/^LDFLAGS=/d" \
+		-e "s:\( -o ../snortsam\): ${LDFLAGS}\1:" \
+		-e "s:\${SSP_LINUX_SRC} -o \${SNORTSAM}:& \${LINUX_LDFLAGS}:" \
+		|| die "sed failed"
+
 	find "${S}" -depth -type d -name CVS -exec rm -rf \{\} \;
 }
 
