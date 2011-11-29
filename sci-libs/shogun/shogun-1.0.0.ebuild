@@ -55,11 +55,14 @@ src_compile() {
 	interfaces="${interfaces%?}"
 	echo ${interfaces}
 
+	pydir="`python -c 'import sys; print \"python\"+sys.version[0:3]'`/site-packages"
+
 	./configure \
 				--prefix=/usr \
 				--mandir=/usr/share/man \
 				--datadir=/usr/share \
-				--libdir=/usr/lib64 \
+				--libdir=/usr/lib \
+				--pydir=${pydir} \
 				--interfaces=${interfaces}
 	emake || die "make failed. If the error is related to unfound CBLAS function, eselect sci-libs/gsl implementation of cblas."
 }

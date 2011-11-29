@@ -1,10 +1,10 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-visualization/gnuplot/gnuplot-4.4.3-r1.ebuild,v 1.11 2011/11/11 22:56:21 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-visualization/gnuplot/gnuplot-4.4.3-r1.ebuild,v 1.13 2011/11/28 08:41:45 ulm Exp $
 
 EAPI=3
 
-inherit elisp-common multilib wxwidgets
+inherit eutils elisp-common multilib wxwidgets
 
 DESCRIPTION="Command-line driven interactive plotting program"
 HOMEPAGE="http://www.gnuplot.info/"
@@ -30,7 +30,6 @@ KEYWORDS="alpha amd64 ~arm hppa ia64 ppc ppc64 s390 sparc x86 ~x86-fbsd ~amd64-l
 IUSE="cairo doc emacs examples +gd ggi latex lua plotutils readline svga thin-splines wxwidgets X xemacs"
 
 RDEPEND="
-	!app-emacs/gnuplot-mode
 	cairo? (
 		x11-libs/cairo
 		x11-libs/pango )

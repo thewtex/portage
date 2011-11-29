@@ -1,5 +1,5 @@
-test? ( ruby_targets_ruby18? ( >=dev-ruby/json-1.1.3[ruby_targets_ruby18] >=dev-ruby/oauth-0.3.6[ruby_targets_ruby18] ) ) ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ruby18? ( doc? ( dev-ruby/rake[ruby_targets_ruby18] ) ) ruby_targets_ruby18? ( virtual/rubygems[ruby_targets_ruby18] ) test? ( ruby_targets_ruby18? ( virtual/rubygems[ruby_targets_ruby18] ) )
-ruby_targets_ruby18? ( >=dev-ruby/json-1.1.3[ruby_targets_ruby18] >=dev-ruby/oauth-0.3.6[ruby_targets_ruby18] ) ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ruby18? ( virtual/rubygems[ruby_targets_ruby18] )
+test? ( ruby_targets_ruby18? ( >=dev-ruby/json-1.1.3[ruby_targets_ruby18] >=dev-ruby/oauth-0.3.6[ruby_targets_ruby18] ) ruby_targets_ree18? ( >=dev-ruby/json-1.1.3[ruby_targets_ree18] >=dev-ruby/oauth-0.3.6[ruby_targets_ree18] ) ) ruby_targets_ruby18? ( test? ( dev-ruby/rspec:0[ruby_targets_ruby18] ) ) ruby_targets_ree18? ( test? ( dev-ruby/rspec:0[ruby_targets_ree18] ) ) ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ree18? ( dev-lang/ruby-enterprise:1.8 ) ruby_targets_ruby18? ( doc? ( dev-ruby/rake[ruby_targets_ruby18] ) ) ruby_targets_ree18? ( doc? ( dev-ruby/rake[ruby_targets_ree18] ) ) ruby_targets_ruby18? ( test? ( dev-ruby/rake[ruby_targets_ruby18] ) ) ruby_targets_ree18? ( test? ( dev-ruby/rake[ruby_targets_ree18] ) ) ruby_targets_ruby18? ( virtual/rubygems[ruby_targets_ruby18] ) ruby_targets_ree18? ( virtual/rubygems[ruby_targets_ree18] ) test? ( ruby_targets_ruby18? ( virtual/rubygems[ruby_targets_ruby18] ) ruby_targets_ree18? ( virtual/rubygems[ruby_targets_ree18] ) )
+ruby_targets_ruby18? ( >=dev-ruby/json-1.1.3[ruby_targets_ruby18] >=dev-ruby/oauth-0.3.6[ruby_targets_ruby18] ) ruby_targets_ree18? ( >=dev-ruby/json-1.1.3[ruby_targets_ree18] >=dev-ruby/oauth-0.3.6[ruby_targets_ree18] ) ruby_targets_ruby18? ( dev-lang/ruby:1.8 ) ruby_targets_ree18? ( dev-lang/ruby-enterprise:1.8 ) ruby_targets_ruby18? ( virtual/rubygems[ruby_targets_ruby18] ) ruby_targets_ree18? ( virtual/rubygems[ruby_targets_ree18] )
 0
 mirror://rubygems/rubytter-1.4.1.gem
 
@@ -8,7 +8,7 @@ MIT
 Rubytter is a simple twitter library
 ~amd64 ~x86
 eutils java-utils-2 multilib portability ruby-fakegem ruby-ng toolchain-funcs user versionator
-test elibc_FreeBSD ruby_targets_ruby18 doc test
+test elibc_FreeBSD ruby_targets_ruby18 ruby_targets_ree18 doc test test
 
 
 

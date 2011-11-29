@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst postrm prepare setup
+DEPEND=dev-libs/dbus-glib >=dev-libs/glib-2.26 dev-libs/libdbusmenu[gtk,-gtk3] >=dev-libs/libindicator-0.4:0 dev-python/pygobject:2 >=dev-python/pygtk-2.14:2 >=x11-libs/gtk+-2.18:2 introspection? ( >=dev-libs/gobject-introspection-0.10 ) dev-lang/vala:0.14[vapigen] dev-util/gtk-doc-am dev-util/pkgconfig || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool >=app-admin/eselect-python-20091230 =dev-lang/python-2.7*
+DESCRIPTION=A library to allow applications to export a menu into the Unity Menu bar
+EAPI=4
+HOMEPAGE=http://launchpad.net/libappindicator
+IUSE=+introspection
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2.1 LGPL-3
+RDEPEND=dev-libs/dbus-glib >=dev-libs/glib-2.26 dev-libs/libdbusmenu[gtk,-gtk3] >=dev-libs/libindicator-0.4:0 dev-python/pygobject:2 >=dev-python/pygtk-2.14:2 >=x11-libs/gtk+-2.18:2 introspection? ( >=dev-libs/gobject-introspection-0.10 ) >=app-admin/eselect-python-20091230 =dev-lang/python-2.7*
+SLOT=0
+SRC_URI=http://launchpad.net/libappindicator/0.4/0.4.1/+download/libappindicator-0.4.1.tar.gz
+_eclasses_=autotools	b81740a014934d6736a8795cdedb452e	eutils	33ef77a15337022e05342d2c772a7a5a	libtool	7c8f664cd4d1d18a9a75a4fd690594b8	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	python	2e1add5c1bf0b6ca077a506fac1c2914	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	538ad22308a89d9fe0a1db60400a1807
+_md5_=d4e70be7ecaa11304c7fdc130e09e852

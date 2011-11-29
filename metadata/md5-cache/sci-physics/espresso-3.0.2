@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst prepare test unpack
+DEPEND=dev-lang/tcl fftw? ( sci-libs/fftw:3.0 ) mpi? ( virtual/mpi ) tk? ( >=dev-lang/tk-8.4.18-r1 ) X? ( x11-libs/libX11 ) doc? ( app-doc/doxygen[-nodot] virtual/latex-base ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=Extensible Simulation Package for Research on Soft matter
+EAPI=4
+HOMEPAGE=http://www.espressomd.org
+IUSE=X doc examples fftw mpi packages test -tk savedconfig
+KEYWORDS=~x86
+LICENSE=GPL-3
+RDEPEND=dev-lang/tcl fftw? ( sci-libs/fftw:3.0 ) mpi? ( virtual/mpi ) tk? ( >=dev-lang/tk-8.4.18-r1 ) X? ( x11-libs/libX11 )
+REQUIRED_USE=tk? ( X )
+RESTRICT=tk? ( test )
+SLOT=0
+SRC_URI=mirror://nongnu/espressomd/espresso-3.0.2.tar.gz
+_eclasses_=autotools	b81740a014934d6736a8795cdedb452e	autotools-utils	8568b5523693d69a929254eca0bf9e75	base	dba02c674ce4dff67657c692954d7ef0	eutils	33ef77a15337022e05342d2c772a7a5a	libtool	7c8f664cd4d1d18a9a75a4fd690594b8	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	savedconfig	b6de83929082b025894761073ef75599	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	538ad22308a89d9fe0a1db60400a1807
+_md5_=58f2c4cc62eaed619a0d179174fbe6bb

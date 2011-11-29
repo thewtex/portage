@@ -1,9 +1,9 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/mediatomb/mediatomb-0.12.1.ebuild,v 1.7 2011/11/17 03:40:31 axs Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/mediatomb/mediatomb-0.12.1.ebuild,v 1.9 2011/11/28 05:51:20 radhermit Exp $
 
 EAPI=2
-inherit autotools-utils eutils linux-info
+inherit autotools eutils linux-info
 
 DESCRIPTION="MediaTomb is an open source UPnP MediaServer"
 HOMEPAGE="http://www.mediatomb.cc/"

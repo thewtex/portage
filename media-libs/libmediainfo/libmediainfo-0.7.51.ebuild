@@ -1,10 +1,10 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libmediainfo/libmediainfo-0.7.51.ebuild,v 1.1 2011/11/12 07:17:35 radhermit Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libmediainfo/libmediainfo-0.7.51.ebuild,v 1.3 2011/11/28 03:20:05 radhermit Exp $
 
 EAPI="4"
 
-inherit autotools-utils multilib flag-o-matic eutils
+inherit autotools multilib flag-o-matic eutils
 
 MY_PN="MediaInfo"
 DESCRIPTION="MediaInfo libraries"
@@ -77,5 +77,5 @@ src_install() {
 		dohtml -r "${WORKDIR}"/${MY_PN}Lib/Doc/*
 	fi
 
-	remove_libtool_files all
+	find "${ED}" -name '*.la' -exec rm -f {} +
 }

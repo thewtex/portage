@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libtasn1/libtasn1-2.10.ebuild,v 1.1 2011/10/25 23:07:45 radhermit Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libtasn1/libtasn1-2.10.ebuild,v 1.3 2011/11/28 03:30:13 radhermit Exp $
 
 EAPI=4
 
@@ -21,17 +21,13 @@ DEPEND=">=dev-lang/perl-5.6
 DOCS=( AUTHORS ChangeLog NEWS README THANKS )
 
 src_configure(){
-	local myconf
-	[[ "${VALGRIND_TESTS}" == "0" ]] && myconf+=" --disable-valgrind-tests"
-
-	econf \
-		$(use_enable static-libs static) \
-		${myconf}
+	local myeconfargs
+	[[ "${VALGRIND_TESTS}" == "0" ]] && myeconfargs+=" --disable-valgrind-tests"
+	autotools-utils_src_configure
 }
 
 src_install() {
-	default
-	remove_libtool_files
+	autotools-utils_src_install
 
 	if use doc ; then
 		dodoc doc/libtasn1.pdf

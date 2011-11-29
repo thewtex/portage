@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare setup
+DEPEND=gnome-keyring? ( dev-python/gnome-keyring-python gnome-base/libgnome-keyring ) idn? ( net-dns/libidn ) nls? ( virtual/libintl ) sasl? ( virtual/gsasl ) ssl? ( gnutls? ( net-libs/gnutls ) !gnutls? ( dev-libs/openssl ) ) doc? ( virtual/texi2dvi ) nls? ( sys-devel/gettext ) dev-util/pkgconfig >=app-admin/eselect-python-20091230
+DESCRIPTION=An SMTP client and SMTP plugin for mail user agents such as Mutt
+EAPI=4
+HOMEPAGE=http://msmtp.sourceforge.net/
+IUSE=doc gnome-keyring gnutls idn +mta nls sasl ssl vim-syntax
+KEYWORDS=~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
+LICENSE=GPL-3
+RDEPEND=gnome-keyring? ( dev-python/gnome-keyring-python gnome-base/libgnome-keyring ) idn? ( net-dns/libidn ) nls? ( virtual/libintl ) sasl? ( virtual/gsasl ) ssl? ( gnutls? ( net-libs/gnutls ) !gnutls? ( dev-libs/openssl ) ) net-mail/mailbase mta? ( !mail-mta/courier !mail-mta/esmtp !mail-mta/exim !mail-mta/mini-qmail !mail-mta/nbsmtp !mail-mta/netqmail !mail-mta/nullmailer !mail-mta/postfix !mail-mta/qmail-ldap !mail-mta/sendmail !<mail-mta/ssmtp-2.64-r2 !>=mail-mta/ssmtp-2.64-r2[mta] ) >=app-admin/eselect-python-20091230
+REQUIRED_USE=gnutls? ( ssl )
+SLOT=0
+SRC_URI=mirror://sourceforge/msmtp/msmtp-1.4.26.tar.bz2
+_eclasses_=multilib	c4883399ddd3e1d2bd291607b30fded4	python	2e1add5c1bf0b6ca077a506fac1c2914	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf
+_md5_=c2af3c20d6e621718b62c66c86bfcece

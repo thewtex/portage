@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/libssh2/libssh2-1.3.0.ebuild,v 1.4 2011/11/17 18:45:46 phajdan.jr Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/libssh2/libssh2-1.3.0.ebuild,v 1.7 2011/11/28 02:35:04 radhermit Exp $
 
 EAPI="4"
 
@@ -12,7 +12,7 @@ SRC_URI="http://www.${PN}.org/download/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc x86 ~x86-fbsd ~x64-macos ~x86-solaris"
+KEYWORDS="~alpha amd64 arm hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc x86 ~x86-fbsd ~x64-macos ~x86-solaris"
 IUSE="gcrypt static-libs test zlib"
 
 DEPEND="!gcrypt? ( dev-libs/openssl )
@@ -20,26 +20,22 @@ DEPEND="!gcrypt? ( dev-libs/openssl )
 	zlib? ( sys-libs/zlib )"
 RDEPEND="${DEPEND}"
 
+DOCS=( README )
+
 src_configure() {
-	local myconf
+	local myeconfargs
 
 	if use gcrypt; then
-		myconf="--with-libgcrypt"
+		myeconfargs+=" --with-libgcrypt"
 	else
-		myconf="--with-openssl"
+		myeconfargs+=" --with-openssl"
 	fi
 
 	# Disable tests that require extra permissions (bug #333319)
 	use test && export ac_cv_path_SSHD=
 
-	econf \
-		$(use_with zlib libz) \
-		$(use_enable static-libs static) \
-		${myconf}
-}
-
-src_install() {
-	default
-	dodoc README
-	use static-libs || remove_libtool_files
+	myeconfargs+=(
+		$(use_with zlib libz)
+	)
+	autotools-utils_src_configure
 }

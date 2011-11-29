@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst postrm preinst setup
+DEPEND=kernel_linux? ( sys-apps/module-init-tools ) sys-apps/sed kernel_linux? ( virtual/linux-sources )
+DESCRIPTION=v4l2 loopback device which output is it's own input
+EAPI=4
+HOMEPAGE=https://github.com/umlaeute/v4l2loopback
+IUSE=kernel_linux
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=kernel_linux? ( sys-apps/module-init-tools )
+SLOT=0
+SRC_URI=https://github.com/umlaeute/v4l2loopback/tarball/v0.4.1 -> v4l2loopback-0.4.1.tar.gz
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	linux-info	0a300da62c346bbaee5bcf82727f23ac	linux-mod	a4e07f78bacb6b129ea7b18ad060dbfc	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	538ad22308a89d9fe0a1db60400a1807	versionator	865bc8b2fc9fcfb6d520bdf5a110f5ed
+_md5_=9e9618627d4de2b1218f65bdb8b22cab

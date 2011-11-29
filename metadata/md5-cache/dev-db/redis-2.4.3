@@ -1,0 +1,12 @@
+DEFINED_PHASES=install prepare setup
+DEPEND=>=sys-devel/autoconf-2.63 tcmalloc? ( dev-util/google-perftools ) !tcmalloc? ( dev-libs/jemalloc ) test? ( dev-lang/tcl ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=A persistent caching system, key-value and data structures database.
+EAPI=2
+HOMEPAGE=http://redis.io
+IUSE=tcmalloc test
+KEYWORDS=~amd64 ~x86 ~x86-macos ~x86-solaris
+LICENSE=BSD
+SLOT=0
+SRC_URI=http://redis.googlecode.com/files/redis-2.4.3.tar.gz
+_eclasses_=autotools	b81740a014934d6736a8795cdedb452e	eutils	33ef77a15337022e05342d2c772a7a5a	flag-o-matic	630c256d55702ba23515f64952987828	libtool	7c8f664cd4d1d18a9a75a4fd690594b8	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	538ad22308a89d9fe0a1db60400a1807
+_md5_=34c7859412e1ae47f0959fbaf3732b5d

@@ -1,5 +1,5 @@
-x11-libs/gtk+:2 dev-libs/glib:2 gnome-base/libgnome app-text/gnome-doc-utils >=app-text/asciidoc-8 dev-vcs/git dev-lang/python dev-util/pkgconfig || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool dev-vcs/git
-x11-libs/gtk+:2 dev-libs/glib:2 gnome-base/libgnome app-text/gnome-doc-utils >=app-text/asciidoc-8 dev-vcs/git dev-lang/python
+x11-libs/gtk+:2 dev-libs/glib:2 gnome-base/libgnome app-text/gnome-doc-utils >=app-text/asciidoc-8 dev-python/pygtk:2 dev-vcs/git dev-util/pkgconfig || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool dev-vcs/git >=app-admin/eselect-python-20091230 || ( =dev-lang/python-2.7* =dev-lang/python-2.6* )
+x11-libs/gtk+:2 dev-libs/glib:2 gnome-base/libgnome app-text/gnome-doc-utils >=app-text/asciidoc-8 dev-python/pygtk:2 dev-vcs/git >=app-admin/eselect-python-20091230 || ( =dev-lang/python-2.7* =dev-lang/python-2.6* )
 0
 
 
@@ -7,14 +7,14 @@ http://jean-francois.richard.name/ghh/
 GPL-2
 a tool to track the history and make backups of your home directory
 
-autotools eutils git-2 libtool multilib portability toolchain-funcs user
+autotools eutils git-2 libtool multilib portability python toolchain-funcs user
 
 
 
 
 3
 
-install prepare unpack
+install prepare setup unpack
 
 
 

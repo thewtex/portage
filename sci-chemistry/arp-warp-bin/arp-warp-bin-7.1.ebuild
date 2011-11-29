@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/arp-warp-bin/arp-warp-bin-7.1.ebuild,v 1.12 2011/10/16 12:24:10 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/arp-warp-bin/arp-warp-bin-7.1.ebuild,v 1.13 2011/11/26 11:00:18 jlec Exp $
 
 EAPI=3
 
@@ -82,7 +82,7 @@ pkg_postinst(){
 	  ewarn "   3/2=" $testcommand
 	  ewarn "Invalid decimal separator (must be ".")"
 	  ewarn "You need to set this correctly!!!"
-	  ewarn
+	  echo
 	  ewarn "One way of setting the decimal separator is:"
 	  ewarn "setenv LC_NUMERIC C' in your .cshrc file"
 	  ewarn "\tor"
@@ -91,7 +91,7 @@ pkg_postinst(){
 	fi
 
 	grep -q sse2 /proc/cpuinfo || einfo "The CPU is lacking SSE2! You should use the cluster at EMBL-Hamburg."
-	einfo
+	echo
 }
 
 pkg_postrm() {

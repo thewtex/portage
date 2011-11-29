@@ -1,5 +1,5 @@
-dev-libs/libpipeline berkdb? ( sys-libs/db ) gdbm? ( sys-libs/gdbm ) !berkdb? ( !gdbm? ( sys-libs/gdbm ) ) || ( sys-apps/groff >=app-doc/heirloom-doctools-080407-r2 ) !sys-apps/man nls? ( sys-devel/gettext )
-dev-libs/libpipeline berkdb? ( sys-libs/db ) gdbm? ( sys-libs/gdbm ) !berkdb? ( !gdbm? ( sys-libs/gdbm ) ) || ( sys-apps/groff >=app-doc/heirloom-doctools-080407-r2 ) !sys-apps/man
+dev-libs/libpipeline berkdb? ( sys-libs/db ) gdbm? ( sys-libs/gdbm ) !berkdb? ( !gdbm? ( sys-libs/gdbm ) ) || ( sys-apps/groff >=app-doc/heirloom-doctools-080407-r2 ) zlib? ( sys-libs/zlib ) !sys-apps/man nls? ( sys-devel/gettext )
+dev-libs/libpipeline berkdb? ( sys-libs/db ) gdbm? ( sys-libs/gdbm ) !berkdb? ( !gdbm? ( sys-libs/gdbm ) ) || ( sys-apps/groff >=app-doc/heirloom-doctools-080407-r2 ) zlib? ( sys-libs/zlib ) !sys-apps/man
 0
 http://download.savannah.nongnu.org/releases/man-db/man-db-2.6.0.2.tar.gz
 
@@ -8,7 +8,7 @@ GPL-3
 a man replacement that utilizes berkdb instead of flat files
 ~amd64 ~x86 ~sparc
 eutils multilib portability toolchain-funcs user
-berkdb +gdbm nls
+berkdb +gdbm nls zlib
 
 
 

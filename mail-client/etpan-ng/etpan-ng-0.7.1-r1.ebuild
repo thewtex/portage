@@ -1,15 +1,15 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/etpan-ng/etpan-ng-0.7.1-r1.ebuild,v 1.2 2011/08/02 06:22:19 mattst88 Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-client/etpan-ng/etpan-ng-0.7.1-r1.ebuild,v 1.4 2011/11/22 16:10:36 phajdan.jr Exp $
 
 inherit eutils autotools
 
 DESCRIPTION="etPan is a console mail client that is based on libEtPan!"
-HOMEPAGE="http://libetpan.sourceforge.net/etpan/"
+HOMEPAGE="http://www.etpan.org/other.html"
 SRC_URI="mirror://sourceforge/libetpan/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 IUSE="debug ldap"
 
 RDEPEND=">=net-libs/libetpan-0.35

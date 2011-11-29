@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libcdio/libcdio-0.83.ebuild,v 1.1 2011/11/03 19:03:19 radhermit Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libcdio/libcdio-0.83.ebuild,v 1.3 2011/11/28 02:21:05 radhermit Exp $
 
 EAPI=4
 
@@ -21,25 +21,28 @@ DEPEND="${RDEPEND}
 	sys-devel/gettext
 	dev-util/pkgconfig"
 
+AUTOTOOLS_IN_SOURCE_BUILD=1
+
 DOCS=( AUTHORS ChangeLog NEWS README THANKS TODO )
 
 src_configure() {
-	econf \
-		$(use_enable cddb) \
-		$(use_enable static-libs static) \
-		$(use_with !minimal cd-drive) \
-		$(use_with !minimal cd-info) \
-		$(use_with !minimal cd-paranoia) \
-		$(use_with !minimal cdda-player) \
-		$(use_with !minimal cd-read) \
-		$(use_with !minimal iso-info) \
-		$(use_with !minimal iso-read) \
-		$(use_enable cxx) \
-		--disable-example-progs \
-		--disable-cpp-progs \
-		--with-cd-paranoia-name=libcdio-paranoia \
-		--disable-vcd-info \
+	local myeconfargs=(
+		$(use_enable cddb)
+		$(use_enable cxx)
+		$(use_with !minimal cd-drive)
+		$(use_with !minimal cd-info)
+		$(use_with !minimal cd-paranoia)
+		$(use_with !minimal cdda-player)
+		$(use_with !minimal cd-read)
+		$(use_with !minimal iso-info)
+		$(use_with !minimal iso-read)
+		--disable-example-progs
+		--disable-cpp-progs
+		--with-cd-paranoia-name=libcdio-paranoia
+		--disable-vcd-info
 		--disable-maintainer-mode
+	)
+	autotools-utils_src_configure
 }
 
 pkg_postinst() {

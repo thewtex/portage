@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/autotools-utils.eclass,v 1.25 2011/10/14 20:28:29 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/autotools-utils.eclass,v 1.29 2011/11/27 09:57:20 mgorny Exp $
 
 # @ECLASS: autotools-utils.eclass
 # @MAINTAINER:
@@ -11,7 +11,11 @@
 # autotools-utils.eclass is autotools.eclass(5) and base.eclass(5) wrapper
 # providing all inherited features along with econf arguments as Bash array,
 # out of source build with overridable build dir location, static archives
-# handling, libtool files removal, enable/disable debug handling.
+# handling, libtool files removal.
+#
+# Please note note that autotools-utils does not support mixing of its phase
+# functions with regular econf/emake calls. If necessary, please call
+# autotools-utils_src_compile instead of the latter.
 #
 # @EXAMPLE:
 # Typical ebuild using autotools-utils.eclass:
@@ -201,6 +205,15 @@ remove_libtool_files() {
 			rm -f "${f}" || die
 		fi
 	done
+
+	# check for invalid eclass use
+	# this is the most commonly used function, so do it here
+	_check_build_dir
+	if [[ ! -d "${AUTOTOOLS_BUILD_DIR}" ]]; then
+		eqawarn "autotools-utils used but autotools-utils_src_configure was never called."
+		eqawarn "This is not supported and never was. Please report a bug against"
+		eqawarn "the offending ebuild. This will become a fatal error in a near future."
+	fi
 }
 
 # @FUNCTION: autotools-utils_src_prepare
@@ -232,16 +245,6 @@ autotools-utils_src_configure() {
 
 	# Common args
 	local econfargs=()
-
-	# Handle debug found in IUSE
-	if in_iuse debug; then
-		local debugarg=$(use_enable debug)
-		if ! has "${debugarg}" "${myeconfargs[@]}"; then
-			eqawarn 'Implicit $(use_enable debug) for IUSE="debug" is no longer supported.'
-			eqawarn 'Please add the necessary arg to myeconfargs if requested.'
-			eqawarn 'The autotools-utils eclass will stop warning about it on Oct 15th.'
-		fi
-	fi
 
 	# Handle static-libs found in IUSE, disable them by default
 	if in_iuse static-libs; then

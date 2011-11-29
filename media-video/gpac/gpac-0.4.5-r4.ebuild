@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/gpac/gpac-0.4.5-r4.ebuild,v 1.12 2011/07/24 18:18:45 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/gpac/gpac-0.4.5-r4.ebuild,v 1.13 2011/11/22 14:17:57 axs Exp $
 
 inherit eutils wxwidgets flag-o-matic multilib toolchain-funcs
 
@@ -26,7 +26,7 @@ RDEPEND="
 	ffmpeg? ( virtual/ffmpeg )
 	jack? ( media-sound/jack-audio-connection-kit )
 	jpeg? ( virtual/jpeg )
-	javascript? ( >=dev-lang/spidermonkey-1.5 )
+	javascript? ( >=dev-lang/spidermonkey-1.5 <dev-lang/spidermonkey-1.8.5 )
 	mad? ( >=media-libs/libmad-0.15.1b )
 	opengl? ( virtual/opengl media-libs/freeglut )
 	>=media-libs/libogg-1.1

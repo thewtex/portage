@@ -1,8 +1,8 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/v8/v8-3.7.7.ebuild,v 1.1 2011/11/18 21:17:29 phajdan.jr Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/v8/v8-3.7.7.ebuild,v 1.5 2011/11/23 22:47:56 floppym Exp $
 
-EAPI="3"
+EAPI="4"
 
 PYTHON_DEPEND="2:2.6"
 
@@ -17,14 +17,18 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86 ~x64-macos ~x86-macos"
 IUSE=""
 
+pkg_pretend() {
+	local gccver=$(gcc-fullversion)
+	if [[ ${gccver} = 4.5.2 ]]; then
+		eerror "The currently selected version of gcc is known to segfault when building this"
+		eerror "version of V8. Please use at least gcc-4.5.3."
+		die "gcc-${gccver} detected."
+	fi
+}
+
 pkg_setup() {
 	python_set_active_version 2
 	python_pkg_setup
-}
-
-src_prepare() {
-	# Stop -Werror from breaking the build.
-	sed -i -e "s/-Werror//" build/standalone.gypi || die
 }
 
 src_compile() {
@@ -45,12 +49,7 @@ src_compile() {
 	esac
 	mytarget=${myarch}.release
 
-	if [[ ${PV} == "9999" ]]; then
-		subversion_wc_info
-		soname_version="${PV}-${ESVN_WC_REVISION}"
-	else
-		soname_version="${PV}"
-	fi
+	soname_version="${PV}"
 
 	local snapshot=on
 	host-is-pax && snapshot=off
@@ -99,13 +98,8 @@ pkg_preinst() {
 
 	eshopts_push -s nullglob
 
-	for candidate in "${EROOT}usr/$(get_libdir)"/libv8-*$(get_libname); do
-		baselib=${candidate##*/}
-		if [[ ! -e "${ED}usr/$(get_libdir)/${baselib}" ]]; then
-			preserved_libs+=( "${EPREFIX}/usr/$(get_libdir)/${baselib}" )
-		fi
-	done
-	for candidate in "${EROOT}usr/$(get_libdir)"/libv8$(get_libname).*; do
+	for candidate in "${EROOT}usr/$(get_libdir)"/libv8-*$(get_libname) \
+		"${EROOT}usr/$(get_libdir)"/libv8$(get_libname).*; do
 		baselib=${candidate##*/}
 		if [[ ! -e "${ED}usr/$(get_libdir)/${baselib}" ]]; then
 			preserved_libs+=( "${EPREFIX}/usr/$(get_libdir)/${baselib}" )

@@ -1,5 +1,5 @@
-dev-libs/boost net-misc/curl media-libs/libpng media-libs/jpeg media-libs/tiff sys-libs/zlib media-libs/freetype dev-lang/python sci-libs/proj dev-libs/libxml2 dev-libs/icu x11-libs/agg[truetype] postgres? ( >=dev-db/postgresql-base-8.3 >=dev-db/postgis-1.5.2 sci-libs/geos ) python? ( dev-libs/boost[python] ) gdal? ( sci-libs/gdal ) python? ( dev-lang/python ) bidi? ( dev-libs/fribidi ) cairo? ( x11-libs/cairo dev-cpp/cairomm python? ( dev-python/pycairo ) ) sqlite? ( dev-db/sqlite:3 ) nobfonts? ( media-fonts/dejavu ) doc? ( dev-python/epydoc ) dev-util/scons >=app-admin/eselect-python-20091230 python? ( =dev-lang/python-2* ) dev-util/scons
-dev-libs/boost net-misc/curl media-libs/libpng media-libs/jpeg media-libs/tiff sys-libs/zlib media-libs/freetype dev-lang/python sci-libs/proj dev-libs/libxml2 dev-libs/icu x11-libs/agg[truetype] postgres? ( >=dev-db/postgresql-base-8.3 >=dev-db/postgis-1.5.2 sci-libs/geos ) python? ( dev-libs/boost[python] ) gdal? ( sci-libs/gdal ) python? ( dev-lang/python ) bidi? ( dev-libs/fribidi ) cairo? ( x11-libs/cairo dev-cpp/cairomm python? ( dev-python/pycairo ) ) sqlite? ( dev-db/sqlite:3 ) nobfonts? ( media-fonts/dejavu ) >=app-admin/eselect-python-20091230 python? ( =dev-lang/python-2* )
+dev-libs/boost net-misc/curl media-libs/libpng media-libs/jpeg media-libs/tiff sys-libs/zlib media-libs/freetype dev-lang/python sci-libs/proj dev-libs/libxml2 dev-libs/icu x11-libs/agg[truetype] postgres? ( >=dev-db/postgresql-base-8.3 ) python? ( dev-libs/boost[python] ) gdal? ( sci-libs/gdal ) geos? ( sci-libs/geos ) python? ( dev-lang/python ) bidi? ( dev-libs/fribidi ) cairo? ( x11-libs/cairo dev-cpp/cairomm python? ( dev-python/pycairo ) ) sqlite? ( dev-db/sqlite:3 ) nobfonts? ( media-fonts/dejavu ) doc? ( dev-python/epydoc ) dev-util/scons >=app-admin/eselect-python-20091230 python? ( =dev-lang/python-2* ) dev-util/scons
+dev-libs/boost net-misc/curl media-libs/libpng media-libs/jpeg media-libs/tiff sys-libs/zlib media-libs/freetype dev-lang/python sci-libs/proj dev-libs/libxml2 dev-libs/icu x11-libs/agg[truetype] postgres? ( >=dev-db/postgresql-base-8.3 ) python? ( dev-libs/boost[python] ) gdal? ( sci-libs/gdal ) geos? ( sci-libs/geos ) python? ( dev-lang/python ) bidi? ( dev-libs/fribidi ) cairo? ( x11-libs/cairo dev-cpp/cairomm python? ( dev-python/pycairo ) ) sqlite? ( dev-db/sqlite:3 ) nobfonts? ( media-fonts/dejavu ) >=app-admin/eselect-python-20091230 python? ( =dev-lang/python-2* )
 0
 mirror://berlios/mapnik/mapnik-2.0.0.tar.bz2
 
@@ -8,7 +8,7 @@ LGPL-3
 A Free Toolkit for developing mapping applications.
 ~amd64 ~ppc ~ppc64 ~x86
 eutils multilib portability python scons-utils toolchain-funcs user
-bidi cairo debug doc gdal nobfonts postgres python sqlite
+bidi cairo debug doc gdal geos nobfonts postgres python sqlite
 
 
 

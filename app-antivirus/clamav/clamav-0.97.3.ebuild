@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-antivirus/clamav/clamav-0.97.3.ebuild,v 1.6 2011/10/23 08:24:08 xarthisius Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-antivirus/clamav/clamav-0.97.3.ebuild,v 1.8 2011/11/28 05:26:07 radhermit Exp $
 
 EAPI=4
 
@@ -31,32 +31,35 @@ RESTRICT="test"
 
 DOCS=( AUTHORS BUGS ChangeLog FAQ INSTALL NEWS README UPGRADE )
 
+PATCHES=( "${FILESDIR}"/${PN}-0.97-nls.patch )
+
 pkg_setup() {
 	enewgroup clamav
 	enewuser clamav -1 -1 /dev/null clamav
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-0.97-nls.patch
 	use ppc64 && append-flags -mminimal-toc
+	autotools-utils_src_prepare
 }
 
 src_configure() {
-	econf \
-		--disable-experimental \
-		--enable-id-check \
-		--with-dbdir=/var/lib/clamav \
-		--with-system-tommath \
-		$(use_enable bzip2) \
-		$(use_enable clamdtop) \
-		$(use_enable ipv6) \
-		$(use_enable milter) \
-		$(use_enable static-libs static) \
+	local myeconfargs=(
+		--disable-experimental
+		--enable-id-check
+		--with-dbdir=/var/lib/clamav
+		--with-system-tommath
+		$(use_enable bzip2)
+		$(use_enable clamdtop)
+		$(use_enable ipv6)
+		$(use_enable milter)
 		$(use_with iconv)
+	)
+	autotools-utils_src_configure
 }
 
 src_install() {
-	default
+	autotools-utils_src_install
 
 	rm -rf "${ED}"/var/lib/clamav
 	newinitd "${FILESDIR}"/clamd.rc clamd
@@ -72,8 +75,6 @@ src_install() {
 	dodir /etc/logrotate.d
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}"/clamav.logrotate clamav
-
-	remove_libtool_files
 
 	# Modify /etc/{clamd,freshclam}.conf to be usable out of the box
 	sed -i -e "s:^\(Example\):\# \1:" \

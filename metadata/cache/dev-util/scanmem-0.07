@@ -1,4 +1,4 @@
-sys-libs/readline
+sys-libs/readline || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool
 sys-libs/readline
 0
 http://taviso.decsystem.org/files/scanmem/scanmem-0.07.tar.gz
@@ -7,14 +7,14 @@ http://taviso.decsystem.org/scanmem.html
 GPL-2
 Locate and modify variables in executing processes
 ~amd64 ~x86
-eutils multilib portability toolchain-funcs user
+autotools eutils libtool multilib portability toolchain-funcs user
 
 
 
 
+4
 
-
-install
+install prepare
 
 
 

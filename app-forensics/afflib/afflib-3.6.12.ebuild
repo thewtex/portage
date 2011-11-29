@@ -1,10 +1,11 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-forensics/afflib/afflib-3.6.12.ebuild,v 1.2 2011/07/24 18:23:44 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-forensics/afflib/afflib-3.6.12.ebuild,v 1.8 2011/11/28 10:25:08 radhermit Exp $
 
 EAPI="4"
+PYTHON_DEPEND="python? 2"
 
-inherit eutils autotools
+inherit autotools-utils python
 
 DESCRIPTION="Library that implements the AFF image standard"
 HOMEPAGE="http://www.afflib.org/"
@@ -12,7 +13,7 @@ SRC_URI="http://www.afflib.org/downloads/${P}.tar.gz"
 
 LICENSE="BSD-4"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ppc ~x86"
+KEYWORDS="amd64 ~hppa ~ppc ~x86"
 IUSE="fuse ncurses python qemu readline s3 static-libs threads"
 
 RDEPEND="dev-libs/expat
@@ -20,17 +21,27 @@ RDEPEND="dev-libs/expat
 	sys-libs/zlib
 	fuse? ( sys-fs/fuse )
 	ncurses? ( sys-libs/ncurses )
-	python? ( dev-lang/python )
 	readline? ( sys-libs/readline )
 	s3? ( net-misc/curl )"
 DEPEND="${RDEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-python-module.patch
+	"${FILESDIR}"/${P}-pyaff-header.patch
+)
+
+pkg_setup() {
+	if use python ; then
+		python_set_active_version 2
+		python_pkg_setup
+	fi
+}
+
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-python-module.patch
+	sed -i -e "/FLAGS/s: -g::" configure.ac || die
+	sed -i -e "/-static/d" tools/Makefile.am || die
 
-	sed -i -e "/FLAGS/s: -g::" configure.ac
-	sed -i -e "/-static/d" tools/Makefile.am
-
+	autotools-utils_src_prepare
 	eautoreconf
 }
 
@@ -39,16 +50,12 @@ src_configure() {
 	use ncurses || export ac_cv_lib_ncurses_initscr=no
 	use readline || export ac_cv_lib_readline_readline=no
 
-	econf \
-		$(use_enable fuse) \
-		$(use_enable python) \
-		$(use_enable qemu) \
-		$(use_enable s3) \
-		$(use_enable static-libs static) \
+	local myeconfargs=(
+		$(use_enable fuse)
+		$(use_enable python)
+		$(use_enable qemu)
+		$(use_enable s3)
 		$(use_enable threads threading)
-}
-
-src_install() {
-	default
-	find "${ED}" -name '*.la' -exec rm -f {} +
+	)
+	autotools-utils_src_configure
 }

@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile install postinst postrm preinst prepare setup test unpack
+DEPEND=!build? ( sys-apps/sed >=sys-devel/binutils-2.11.90.0.31 )
+DESCRIPTION=Real-time patchset for the Linux Kernel
+EAPI=2
+HOMEPAGE=http://www.kernel.org/pub/linux/kernel/projects/rt/
+IUSE=deblob symlink build deblob
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sh ~sparc ~x86
+LICENSE=GPL-2 !deblob? ( freedist )
+PDEPEND=!build? ( virtual/dev-manager )
+RDEPEND=!build? ( >=sys-libs/ncurses-5.2 sys-devel/make )
+RESTRICT=binchecks strip
+SLOT=3.0.10_p27
+SRC_URI=mirror://kernel/linux/kernel/v3.x/patch-3.0.10.bz2 mirror://kernel/linux/kernel/v3.x/linux-3.0.tar.bz2 deblob? ( http://www.fsfla.org/svnwiki/selibre/linux-libre//download/releases/LATEST-3.0.N/deblob-3.0 http://www.fsfla.org/svnwiki/selibre/linux-libre//download/releases/LATEST-3.0.N/deblob-check -> deblob-check-3.0 ) mirror://kernel/linux/kernel/projects/rt/3.0/patch-3.0.10-rt27.patch.gz
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	kernel-2	ad76e915289b8318d99f2ef40b07bad8	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	538ad22308a89d9fe0a1db60400a1807	versionator	865bc8b2fc9fcfb6d520bdf5a110f5ed
+_md5_=895546b7679bc55d0be8d55f032645a0

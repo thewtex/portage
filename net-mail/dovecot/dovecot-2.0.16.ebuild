@@ -1,10 +1,10 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/dovecot/dovecot-2.0.16.ebuild,v 1.3 2011/11/18 05:23:15 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-mail/dovecot/dovecot-2.0.16.ebuild,v 1.10 2011/11/28 10:56:14 eras Exp $
 
 EAPI=4
 
-inherit eutils versionator ssl-cert autotools-utils
+inherit eutils versionator ssl-cert
 
 MY_P="${P/_/.}"
 major_minor="$( get_version_component_range 1-2 )"
@@ -21,7 +21,7 @@ HOMEPAGE="http://www.dovecot.org/"
 
 SLOT="0"
 LICENSE="LGPL-2.1 MIT"
-KEYWORDS="~alpha ~amd64 ~arm hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 arm hppa ia64 ~ppc ~ppc64 s390 sh sparc x86 ~x86-fbsd"
 
 IUSE="bzip2 caps cydir sdbox doc ipv6 kerberos ldap +maildir managesieve mbox
 mdbox mysql pam postgres sieve sqlite +ssl static-libs suid vpopmail zlib"
@@ -253,7 +253,7 @@ src_install () {
 		doman doc/man/*.{1,7}
 	fi
 
-	use static-libs || remove_libtool_files
+	use static-libs || find "${ED}"/usr/lib* -name '*.la' -delete
 }
 
 pkg_preinst() {

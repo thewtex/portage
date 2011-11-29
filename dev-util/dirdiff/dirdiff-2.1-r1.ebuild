@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/dirdiff/dirdiff-2.1-r1.ebuild,v 1.1 2010/12/31 16:05:37 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/dirdiff/dirdiff-2.1-r1.ebuild,v 1.3 2011/11/28 11:34:04 phajdan.jr Exp $
 
 EAPI="2"
 
@@ -12,7 +12,7 @@ HOMEPAGE="http://samba.org/ftp/paulus/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE=""
 
 DEPEND="dev-lang/tk

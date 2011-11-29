@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/guayadeque/guayadeque-0.3.1.ebuild,v 1.3 2011/10/07 15:19:09 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/guayadeque/guayadeque-0.3.1.ebuild,v 1.5 2011/11/20 12:30:22 jlec Exp $
 
 EAPI=3
 
@@ -15,7 +15,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="indicate ipod"
+IUSE="ayatana ipod"
 
 # No test available, Making src_test fail
 RESTRICT="test"
@@ -29,7 +29,7 @@ RDEPEND="
 	net-misc/curl
 	sys-apps/dbus
 	x11-libs/wxGTK:2.8[X]
-	indicate? (	dev-libs/libindicate )
+	ayatana? ( dev-libs/libindicate )
 	ipod? ( media-libs/libgpod )"
 DEPEND="${RDEPEND}
 	sys-devel/gettext
@@ -57,13 +57,18 @@ src_prepare() {
 			-i CMakeLists.txt || die
 	fi
 
-	if ! use indicate; then
+	if ! use ayatana; then
 		sed \
 			-e '/PKG_CHECK_MODULES( LIBINDICATE/,/^ENDIF/d' \
 			-i CMakeLists.txt || die
 	fi
 
 	base_src_prepare
+
+	# otherwise cmake checks for svn
+	find -type d -name .svn -exec rm -rf '{}' +
+
+	sed 's:-O2::g' -i CMakeLists.txt || die
 }
 
 src_configure() {

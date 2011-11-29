@@ -1,20 +1,20 @@
-dev-libs/expat dev-libs/openssl sys-libs/zlib fuse? ( sys-fs/fuse ) ncurses? ( sys-libs/ncurses ) python? ( dev-lang/python ) readline? ( sys-libs/readline ) s3? ( net-misc/curl ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool
-dev-libs/expat dev-libs/openssl sys-libs/zlib fuse? ( sys-fs/fuse ) ncurses? ( sys-libs/ncurses ) python? ( dev-lang/python ) readline? ( sys-libs/readline ) s3? ( net-misc/curl )
+dev-libs/expat dev-libs/openssl sys-libs/zlib fuse? ( sys-fs/fuse ) ncurses? ( sys-libs/ncurses ) readline? ( sys-libs/readline ) s3? ( net-misc/curl ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool >=app-admin/eselect-python-20091230 python? ( =dev-lang/python-2* )
+dev-libs/expat dev-libs/openssl sys-libs/zlib fuse? ( sys-fs/fuse ) ncurses? ( sys-libs/ncurses ) readline? ( sys-libs/readline ) s3? ( net-misc/curl ) >=app-admin/eselect-python-20091230 python? ( =dev-lang/python-2* )
 0
 http://www.afflib.org/downloads/afflib-3.6.12.tar.gz
 
 http://www.afflib.org/
 BSD-4
 Library that implements the AFF image standard
-~amd64 ~hppa ~ppc ~x86
-autotools eutils libtool multilib portability toolchain-funcs user
+amd64 ~hppa ~ppc ~x86
+autotools autotools-utils base eutils libtool multilib portability python toolchain-funcs user
 fuse ncurses python qemu readline s3 static-libs threads
 
 
 
 4
 
-configure install prepare
+compile configure install prepare setup test unpack
 
 
 

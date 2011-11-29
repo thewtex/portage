@@ -1,10 +1,10 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/gsasl/gsasl-1.6.1.ebuild,v 1.6 2011/11/05 21:54:01 eras Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/gsasl/gsasl-1.6.1.ebuild,v 1.8 2011/11/27 22:55:54 jer Exp $
 
 EAPI="2"
 
-inherit autotools-utils
+inherit autotools eutils
 
 DESCRIPTION="The GNU SASL client, server, and library"
 HOMEPAGE="http://www.gnu.org/software/gsasl/"
@@ -49,7 +49,9 @@ src_configure() {
 
 src_install() {
 	emake DESTDIR="${D}" install || die "emake install failed"
-	use static-libs || remove_libtool_files
+	if ! use static-libs; then
+		rm -f "${D}"/usr/lib*/lib*.la
+	fi
 	dodoc AUTHORS ChangeLog INSTALL NEWS README THANKS
 	doman doc/gsasl.1 doc/man/*.3
 

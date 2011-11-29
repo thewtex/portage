@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare unpack
+DEPEND=dev-cpp/commoncpp2 dev-libs/expat dev-libs/openssl dev-libs/libpcre dev-libs/libyaml media-libs/alsa-lib media-libs/celt media-libs/libsamplerate media-sound/pulseaudio net-libs/ccrtp net-libs/iax net-libs/libzrtpcpp >=net-libs/pjsip-1.8.10 sys-apps/dbus gsm? ( media-sound/gsm ) speex? ( media-libs/speex ) networkmanager? ( net-misc/networkmanager ) gnome? ( dev-libs/atk dev-libs/check dev-libs/log4c gnome-base/libgnomeui gnome-base/orbit:2 gnome-extra/evolution-data-server media-libs/fontconfig media-libs/freetype media-libs/libart_lgpl net-libs/libsoup:2.4 net-libs/webkit-gtk:3 x11-libs/cairo x11-libs/libICE x11-libs/libnotify x11-libs/libSM ) >=dev-util/astyle-1.24 gnome? ( app-text/gnome-doc-utils ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool >=sys-apps/sed-4
+DESCRIPTION=SFLphone is a robust standards-compliant enterprise softphone, for desktop and embedded systems.
+EAPI=3
+HOMEPAGE=http://www.sflphone.org/
+IUSE=debug doxygen gnome gsm networkmanager speex static-libs debug
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=dev-cpp/commoncpp2 dev-libs/expat dev-libs/openssl dev-libs/libpcre dev-libs/libyaml media-libs/alsa-lib media-libs/celt media-libs/libsamplerate media-sound/pulseaudio net-libs/ccrtp net-libs/iax net-libs/libzrtpcpp >=net-libs/pjsip-1.8.10 sys-apps/dbus gsm? ( media-sound/gsm ) speex? ( media-libs/speex ) networkmanager? ( net-misc/networkmanager ) gnome? ( dev-libs/atk dev-libs/check dev-libs/log4c gnome-base/libgnomeui gnome-base/orbit:2 gnome-extra/evolution-data-server media-libs/fontconfig media-libs/freetype media-libs/libart_lgpl net-libs/libsoup:2.4 net-libs/webkit-gtk:3 x11-libs/cairo x11-libs/libICE x11-libs/libnotify x11-libs/libSM )
+SLOT=0
+SRC_URI=http://www.elvanor.net/files/gentoo/sflphone-1.0.1.tar.gz
+_eclasses_=autotools	b81740a014934d6736a8795cdedb452e	eutils	33ef77a15337022e05342d2c772a7a5a	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	gnome.org	8fef8f967214f56e08fa92d61163d891	gnome2	3aa9fb56280cbb64b3d42e0db59ed76e	gnome2-utils	dfcd797d126b46852d33936f4a0a1702	libtool	7c8f664cd4d1d18a9a75a4fd690594b8	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	538ad22308a89d9fe0a1db60400a1807	versionator	865bc8b2fc9fcfb6d520bdf5a110f5ed
+_md5_=ab2b7affec9fafac6acfe87039f7723a

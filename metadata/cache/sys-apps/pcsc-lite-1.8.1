@@ -1,0 +1,22 @@
+libusb? ( virtual/libusb:1 ) udev? ( sys-fs/udev ) dev-util/pkgconfig
+libusb? ( virtual/libusb:1 ) udev? ( sys-fs/udev ) !<app-crypt/ccid-1.4.1-r1
+0
+http://alioth.debian.org/download.php/3687/pcsc-lite-1.8.1.tar.bz2
+
+http://pcsclite.alioth.debian.org/
+as-is
+PC/SC Architecture smartcard middleware library
+~amd64 ~arm ~hppa ~ia64 ~m68k ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~ia64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos
+eutils multilib portability toolchain-funcs user
+libusb +udev
+^^ ( udev libusb )
+
+
+4
+
+configure install postinst setup
+
+
+
+
+

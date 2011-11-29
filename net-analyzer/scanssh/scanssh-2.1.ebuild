@@ -1,6 +1,8 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/scanssh/scanssh-2.1.ebuild,v 1.9 2008/07/11 02:28:08 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/scanssh/scanssh-2.1.ebuild,v 1.11 2011/11/28 08:00:44 radhermit Exp $
+
+EAPI=4
 
 inherit eutils
 
@@ -16,15 +18,18 @@ IUSE=""
 DEPEND="net-libs/libpcap
 	dev-libs/libdnet
 	>=dev-libs/libevent-0.8a"
+RDEPEND="${DEPEND}"
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
+src_prepare() {
 	epatch "${FILESDIR}"/${PN}-2.0-fix-warnings.diff
 	touch configure
 }
 
+src_compile() {
+	emake CFLAGS="${CFLAGS}"
+}
+
 src_install() {
-	dobin scanssh || die
+	dobin scanssh
 	doman scanssh.1
 }

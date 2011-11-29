@@ -1,10 +1,10 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libnl/libnl-3.2.3.ebuild,v 1.3 2011/11/17 16:52:22 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libnl/libnl-3.2.3.ebuild,v 1.6 2011/11/28 07:01:38 radhermit Exp $
 
 EAPI="4"
 
-inherit eutils multilib autotools-utils
+inherit eutils multilib
 
 DESCRIPTION="A library for applications dealing with netlink socket"
 HOMEPAGE="http://www.infradead.org/~tgr/libnl/"
@@ -26,7 +26,9 @@ src_configure() {
 src_install() {
 	default
 
-	use static-libs || remove_libtool_files
+	if ! use static-libs; then
+		rm -f "${D}"/usr/lib*/lib*.la
+	fi
 
 	dodoc ChangeLog
 }

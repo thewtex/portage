@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/qt4-build.eclass,v 1.98 2011/11/12 19:01:56 pesa Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/qt4-build.eclass,v 1.101 2011/11/19 20:52:50 pesa Exp $
 
 # @ECLASS: qt4-build.eclass
 # @MAINTAINER:
@@ -12,25 +12,23 @@
 inherit base eutils multilib toolchain-funcs flag-o-matic versionator
 
 MY_PV=${PV/_/-}
-if version_is_at_least 4.5.99999999; then
-	MY_P=qt-everywhere-opensource-src-${MY_PV}
-	[[ ${CATEGORY}/${PN} != x11-libs/qt-xmlpatterns ]] &&
-		[[ ${CATEGORY}/${PN} != x11-themes/qgtkstyle ]] &&
-			IUSE="+exceptions"
-else
-	MY_P=qt-x11-opensource-src-${MY_PV}
-fi
+MY_P=qt-everywhere-opensource-src-${MY_PV}
+
+HOMEPAGE="http://qt.nokia.com/"
+SRC_URI="http://get.qt.nokia.com/qt/source/${MY_P}.tar.gz"
+LICENSE="|| ( LGPL-2.1 GPL-3 )"
+
+IUSE="aqua debug pch"
+
+[[ ${CATEGORY}/${PN} != x11-libs/qt-xmlpatterns ]] &&
+[[ ${CATEGORY}/${PN} != x11-themes/qgtkstyle ]] &&
+	IUSE+=" +exceptions"
 
 if version_is_at_least 4.7.99999999; then
 	IUSE+=" c++0x qpa"
 fi
 
-HOMEPAGE="http://qt.nokia.com/"
-SRC_URI="http://get.qt.nokia.com/qt/source/${MY_P}.tar.gz"
-
-LICENSE="|| ( LGPL-2.1 GPL-3 )"
-IUSE+=" debug pch aqua"
-
+DEPEND="dev-util/pkgconfig"
 RDEPEND="
 	!<x11-libs/qt-assistant-${PV}
 	!>x11-libs/qt-assistant-${PV}-r9999
@@ -38,6 +36,8 @@ RDEPEND="
 	!>x11-libs/qt-core-${PV}-r9999
 	!<x11-libs/qt-dbus-${PV}
 	!>x11-libs/qt-dbus-${PV}-r9999
+	!<x11-libs/qt-declarative-${PV}
+	!>x11-libs/qt-declarative-${PV}-r9999
 	!<x11-libs/qt-demo-${PV}
 	!>x11-libs/qt-demo-${PV}-r9999
 	!<x11-libs/qt-gui-${PV}
@@ -74,8 +74,8 @@ qt4-build_pkg_setup() {
 
 	# Protect users by not allowing downgrades between releases
 	# Downgrading revisions within the same release should be allowed
-	if has_version '>'${CATEGORY}/${P}-r9999 ; then
-		if [[ -z $I_KNOW_WHAT_I_AM_DOING ]] ; then
+	if has_version '>'${CATEGORY}/${P}-r9999; then
+		if [[ -z ${I_KNOW_WHAT_I_AM_DOING} ]]; then
 			eerror "Sanity check to keep you from breaking your system:"
 			eerror "  Downgrading Qt is completely unsupported and will break your system!"
 			die "aborting to save your system"
@@ -185,11 +185,12 @@ qt4-build_src_prepare() {
 				die "visibility fixing sed failed"
 	fi
 
-	# fix libX11 dependency on non X packages
-	if version_is_at_least "4.7.0_beta2"; then
+	if version_is_at_least "4.7"; then
+		# fix libX11 dependency on non X packages
 		local nolibx11_pkgs="qt-core qt-dbus qt-script qt-sql qt-test qt-xmlpatterns"
 		has ${PN} ${nolibx11_pkgs} && qt_nolibx11
-		[[ ${PN} == "qt-assistant" ]] && qt_assistant_cleanup
+
+		qt_assistant_cleanup
 	fi
 
 	if use aqua; then
@@ -202,8 +203,8 @@ qt4-build_src_prepare() {
 	fi
 
 	if [[ ${PN} != qt-core ]]; then
-		skip_qmake_build_patch
-		skip_project_generation_patch
+		skip_qmake_build
+		skip_project_generation
 		symlink_binaries_to_buildtree
 	fi
 
@@ -218,7 +219,7 @@ qt4-build_src_prepare() {
 		append-flags -fno-gcse
 	fi
 
-	if has c++0x ${IUSE//+} && use c++0x; then
+	if use_if_iuse c++0x; then
 		ewarn "You are about to build Qt4 using the C++11 standard. Even though"
 		ewarn "this is an official standard, some of the reverse dependencies"
 		ewarn "may fail to compile or link againt the Qt4 libraries. Before"
@@ -500,17 +501,9 @@ standard_configure_options() {
 		*) die "$(tc-arch) is unsupported by this eclass. Please file a bug." ;;
 	esac
 
-	# 4.5: build everything but qt-xmlpatterns w/o exceptions
-	# 4.6: exceptions USE flag
+	# exceptions USE flag
 	local exceptions="-exceptions"
-	case "${PV}" in
-		4.5.*)
-			[[ ${PN} == "qt-xmlpatterns" ]] || exceptions="-no-exceptions"
-		;;
-		*)
-			has exceptions "${IUSE//+}" && exceptions="$(qt_use exceptions)"
-		;;
-	esac
+	in_iuse exceptions && exceptions="$(qt_use exceptions)"
 
 	# note about -reduce-relocations:
 	# That flag seems to introduce major breakage to applications,
@@ -687,18 +680,18 @@ qt4-build_pkg_postinst() {
 	generate_qconfigs
 }
 
-# @FUNCTION: skip_qmake_build_patch
+# @FUNCTION: skip_qmake_build
 # @DESCRIPTION:
 # Don't need to build qmake, as it's already installed from qt-core
-skip_qmake_build_patch() {
+skip_qmake_build() {
 	# Don't need to build qmake, as it's already installed from qt-core
 	sed -i -e "s:if true:if false:g" "${S}"/configure || die "sed failed"
 }
 
-# @FUNCTION: skip_project_generation_patch
+# @FUNCTION: skip_project_generation
 # @DESCRIPTION:
 # Exit the script early by throwing in an exit before all of the .pro files are scanned
-skip_project_generation_patch() {
+skip_project_generation() {
 	# Exit the script early by throwing in an exit before all of the .pro files are scanned
 	sed -e "s:echo \"Finding:exit 0\n\necho \"Finding:g" \
 		-i "${S}"/configure || die "sed failed"
@@ -710,7 +703,7 @@ skip_project_generation_patch() {
 # time
 symlink_binaries_to_buildtree() {
 	for bin in qmake moc uic rcc; do
-		ln -s ${QTBINDIR}/${bin} "${S}"/bin/ || die "symlinking ${bin} to ${S}/bin failed"
+		ln -s "${QTBINDIR}"/${bin} "${S}"/bin/ || die "symlinking ${bin} to ${S}/bin failed"
 	done
 }
 
@@ -792,7 +785,7 @@ qt_mkspecs_dir() {
 		*-linux-*|*-linux)
 			spec=linux ;;
 		*)
-			die "Unknown CHOST, no platform chosen."
+			die "Unknown CHOST, no platform chosen"
 	esac
 
 	CXX=$(tc-getCXX)
@@ -801,7 +794,7 @@ qt_mkspecs_dir() {
 	elif [[ ${CXX} == *icpc* ]]; then
 		spec+=-icc
 	else
-		die "Unknown compiler '${CXX}'."
+		die "Unknown compiler '${CXX}'"
 	fi
 	if [[ -n ${LIBDIR/lib} ]]; then
 		spec+=-${LIBDIR/lib}
@@ -823,9 +816,16 @@ qt_mkspecs_dir() {
 # @FUNCTION: qt_assistant_cleanup
 # @RETURN: nothing
 # @DESCRIPTION:
-# Tries to clean up tools.pro for qt-assistant ebuilds
-# Meant to be called in src_prepare
+# Tries to clean up tools.pro for qt-assistant ebuilds.
+# Meant to be called in src_prepare().
+# Since Qt 4.7.4 this function is a no-op.
 qt_assistant_cleanup() {
+	# apply patching to qt-assistant ebuilds only
+	[[ ${PN} != "qt-assistant" ]] && return
+
+	# no longer needed for 4.7.4 and later
+	version_is_at_least "4.7.4" && return
+
 	# different versions (and branches...) may need different handling,
 	# add a case if you need special handling
 	case "${MY_PV_EXTRA}" in

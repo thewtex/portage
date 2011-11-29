@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst setup
+DEPEND=libusb? ( virtual/libusb:1 ) udev? ( sys-fs/udev ) dev-util/pkgconfig
+DESCRIPTION=PC/SC Architecture smartcard middleware library
+EAPI=4
+HOMEPAGE=http://pcsclite.alioth.debian.org/
+IUSE=libusb +udev
+KEYWORDS=~amd64 ~arm ~hppa ~ia64 ~m68k ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~ia64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos
+LICENSE=as-is
+RDEPEND=libusb? ( virtual/libusb:1 ) udev? ( sys-fs/udev ) !<app-crypt/ccid-1.4.1-r1
+REQUIRED_USE=^^ ( udev libusb )
+SLOT=0
+SRC_URI=http://alioth.debian.org/download.php/3687/pcsc-lite-1.8.1.tar.bz2
+_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	538ad22308a89d9fe0a1db60400a1807
+_md5_=0a44bfd69db2749a1cc611e1ba0c4ee0

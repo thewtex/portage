@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/java-vm-2.eclass,v 1.38 2011/11/15 09:02:15 caster Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/java-vm-2.eclass,v 1.40 2011/11/24 20:05:01 sera Exp $
 
 # -----------------------------------------------------------------------------
 # @eclass-begin
@@ -12,7 +12,7 @@
 #
 # -----------------------------------------------------------------------------
 
-inherit eutils fdo-mime multilib prefix
+inherit eutils fdo-mime multilib pax-utils prefix
 
 DEPEND="=dev-java/java-config-2*"
 has "${EAPI}" 0 1 && DEPEND="${DEPEND} >=sys-apps/portage-2.1"
@@ -68,7 +68,7 @@ java-vm_check-nsplugin() {
 	has ${EAPI:-0} 0 1 2 && ! use prefix && EPREFIX=
 
 	# Install a default nsplugin if we don't already have one
-	if has nsplugin ${IUSE} && use nsplugin; then
+	if in_iuse nsplugin && use nsplugin; then
 		if [[ ! -f "${EPREFIX}"/usr/${libdir}/nsbrowser/plugins/javaplugin.so ]]; then
 			einfo "No system nsplugin currently set."
 			java-vm_set-nsplugin
@@ -150,6 +150,7 @@ set_java_env() {
 		-e "s/@PN@/${PN}/g" \
 		-e "s/@PV@/${PV}/g" \
 		-e "s/@PF@/${PF}/g" \
+		-e "s/@SLOT@/${SLOT}/g" \
 		-e "s/@PLATFORM@/${platform}/g" \
 		-e "s/@LIBDIR@/$(get_libdir)/g" \
 		-e "/^LDPATH=.*lib\\/\\\"/s|\"\\(.*\\)\"|\"\\1${platform}/:\\1${platform}/server/\"|" \
@@ -172,6 +173,40 @@ set_java_env() {
 	dodir "${JAVA_VM_DIR}"
 	dosym ${java_home#${EPREFIX}} ${JAVA_VM_DIR}/${VMHANDLE} \
 		|| die "Failed to make VM symlink at ${JAVA_VM_DIR}/${VMHANDLE}"
+}
+
+# -----------------------------------------------------------------------------
+# @ebuild-function java-vm_set-pax-markings
+#
+# Set PaX markings on all JDK/JRE executables to allow code-generation on
+# the heap by the JIT compiler.
+# 
+# The markings need to be set prior to the first invocation of the the freshly
+# built / installed VM. Be it before creating the Class Data Sharing archive or
+# generating cacerts. Otherwise a PaX enabled kernel will kill the VM.
+# Bug #215225 #389751
+#
+# @example
+#   java-vm_set-pax-markings "${S}"
+#   java-vm_set-pax-markings "${ED}"/opt/${P}
+#
+# @param $1 - JDK/JRE base directory.
+# -----------------------------------------------------------------------------
+java-vm_set-pax-markings() {
+	debug-print-function ${FUNCNAME} "$*"
+	[[ $# -ne 1 ]] && die "${FUNCNAME}: takes exactly one argument"
+	[[ ! -f "${1}"/bin/java ]] \
+		&& die "${FUNCNAME}: argument needs to be JDK/JRE base directory"
+
+	local executables=( "${1}"/bin/* )
+	[[ -d "${1}"/jre ]] && executables+=( "${1}"/jre/bin/* )
+
+	# Usally disabeling MPROTECT is sufficent
+	local pax_markings="m"
+	# On x86 for heap sizes over 700MB disable SEGMEXEC and PAGEEXEC as well.
+	use x86 && pax_markings="msp"
+
+	pax-mark ${pax_markings} $(list-paxables "${executables[@]}")
 }
 
 # -----------------------------------------------------------------------------

@@ -1,10 +1,10 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dns/libidn/libidn-1.22-r1.ebuild,v 1.1 2011/10/18 20:24:00 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dns/libidn/libidn-1.22-r1.ebuild,v 1.3 2011/11/28 07:54:37 jer Exp $
 
 EAPI="4"
 
-inherit autotools-utils java-pkg-opt-2 mono elisp-common
+inherit java-pkg-opt-2 mono elisp-common
 
 DESCRIPTION="Internationalized Domain Names (IDN) implementation"
 HOMEPAGE="http://www.gnu.org/software/libidn/"
@@ -79,7 +79,9 @@ src_install() {
 			java-pkg_dojavadoc doc/java
 		fi
 	fi
-	use static-libs || remove_libtool_files
+	if ! use static-libs; then
+		rm -f "${D}"/usr/lib*/lib*.la
+	fi
 }
 
 pkg_postinst() {

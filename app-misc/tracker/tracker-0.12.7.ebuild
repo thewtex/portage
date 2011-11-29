@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/tracker/tracker-0.12.7.ebuild,v 1.2 2011/11/08 22:25:58 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/tracker/tracker-0.12.7.ebuild,v 1.3 2011/11/26 19:27:22 tetromino Exp $
 
 EAPI="3"
 GCONF_DEBUG="no"
@@ -106,7 +106,7 @@ DEPEND="${RDEPEND}
 		>=sys-apps/dbus-1.3.1[X] )
 "
 #	strigi? ( >=dev-lang/vala-0.12:0.12 )
-PDEPEND="nautilus? ( >=gnome-extra/nautilus-tracker-tags-${PV} )"
+PDEPEND="nautilus? ( >=gnome-extra/nautilus-tracker-tags-0.12.7 )"
 
 function inotify_enabled() {
 	if linux_config_exists; then
