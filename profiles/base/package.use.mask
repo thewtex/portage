@@ -1,19 +1,24 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/base/package.use.mask,v 1.285 2011/11/25 08:06:46 tetromino Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/base/package.use.mask,v 1.290 2011/12/02 19:53:53 ssuominen Exp $
 
 # This file requires >=portage-2.1.1
 # New entries go on top.
+
+# Andreas K. Huettel <dilfridge@gentoo.org> (1 Dec 2011)
+# The phonon xine backend is unmaintained and makes trouble
+media-libs/phonon xine
+kde-base/phonon-kde xine
+
+# Davide Pesavento <pesa@gentoo.org> (30 Nov 2011)
+# JavaScriptCore JIT is supported only on amd64/arm/x86, so
+# mask USE="jit" here and unmask it in the relevant arch profiles
+>=x11-libs/qt-webkit-4.7 jit
 
 # Samuli Suominen <ssuominen@gentoo.org> (25 Nov 2011)
 # Expose USE="suid" for USE="svga" only for x86 users,
 # see arch/x86/package.use.mask
 www-client/links suid
-
-# Samuli Suominen <ssuominen@gentoo.org> (12 Nov 2011)
-# This entry can be removed once tovid-0.31 has left the building
-# That means you!
-<media-video/tovid-0.34 wxwidgets
 
 # Kacper Kowalik <xarthisius@gentoo.org> (09 Nov 2011)
 # pathdb works only as a SIGSEGV generator, mask until upstream
@@ -57,9 +62,7 @@ app-emulation/qemu-kvm rbd
 <app-cdr/brasero-2.32.1-r1 introspection
 <app-crypt/seahorse-2.32.0-r1 introspection
 <app-text/evince-2.32.0-r4 introspection
-<dev-libs/json-glib-0.12 introspection
 <dev-libs/libgdata-0.8.1-r1 introspection
-<dev-libs/libgee-0.6.1-r1 introspection
 <dev-libs/libunique-1.1.6-r1 introspection
 <dev-libs/totem-pl-parser-2.32.5-r1 introspection
 <dev-python/pygobject-2.28 introspection
@@ -70,24 +73,18 @@ app-emulation/qemu-kvm rbd
 <gnome-base/gnome-panel-2.32.1-r3 introspection
 <gnome-base/nautilus-2.32.2.1-r2 introspection
 <gnome-extra/gucharmap-2.32.1-r1 introspection
-<gnome-extra/libgda-4.2.7-r1 introspection
 <media-libs/babl-0.1.4-r1 introspection
 <media-libs/clutter-1.6 introspection
 <media-libs/clutter-gtk-1 introspection
 <media-libs/gstreamer-0.10.33 introspection
 <media-libs/gst-plugins-base-0.10.33 introspection
 <media-libs/libchamplain-0.9 introspection
-<net-im/telepathy-logger-0.2.10-r1 introspection
-<net-libs/gtk-vnc-0.4.3-r1 introspection
 <net-libs/gssdp-0.8 introspection
 <net-libs/gupnp-0.15 introspection
 <net-libs/libsoup-2.34 introspection
 <net-libs/libsoup-gnome-2.34 introspection
-<net-libs/webkit-gtk-1.3 introspection
-<net-libs/telepathy-glib-0.14 introspection
 <net-wireless/gnome-bluetooth-2.32.0-r1 introspection
 <www-client/epiphany-3 introspection
-<x11-libs/libnotify-0.7.3 introspection
 <x11-libs/libwnck-2.30.6-r1 introspection
 <x11-libs/pango-1.28.4 introspection
 

@@ -1,0 +1,22 @@
+>=dev-libs/glib-2.22 x11-libs/gtk+:3 >=gnome-base/gnome-panel-3 x11-libs/cairo hddtemp? ( udev? ( >=dev-libs/dbus-glib-0.98 >=dev-libs/libatasmart-0.18 ) !udev? ( >=app-admin/hddtemp-0.3_beta13 ) ) libnotify? ( x11-libs/libnotify ) lm_sensors? ( sys-apps/lm_sensors ) video_cards_fglrx? ( x11-drivers/ati-drivers ) video_cards_nvidia? ( || ( >=x11-drivers/nvidia-drivers-100.14.09 media-video/nvidia-settings ) ) app-text/gnome-doc-utils app-text/rarian dev-util/intltool dev-util/pkgconfig app-arch/xz-utils >=sys-apps/sed-4
+>=dev-libs/glib-2.22 x11-libs/gtk+:3 >=gnome-base/gnome-panel-3 x11-libs/cairo hddtemp? ( udev? ( >=dev-libs/dbus-glib-0.98 >=dev-libs/libatasmart-0.18 ) !udev? ( >=app-admin/hddtemp-0.3_beta13 ) ) libnotify? ( x11-libs/libnotify ) lm_sensors? ( sys-apps/lm_sensors ) video_cards_fglrx? ( x11-drivers/ati-drivers ) video_cards_nvidia? ( || ( >=x11-drivers/nvidia-drivers-100.14.09 media-video/nvidia-settings ) ) hddtemp? ( udev? ( sys-fs/udisks ) )
+0
+mirror://sourceforge/sensors-applet/sensors-applet-3.0.0.tar.gz
+
+http://sensors-applet.sourceforge.net/
+GPL-2
+GNOME panel applet to display readings from hardware sensors
+~alpha ~amd64 ~ppc ~x86
+eutils fdo-mime gnome.org gnome2 gnome2-utils libtool multilib portability toolchain-funcs user versionator
+hddtemp libnotify lm_sensors +udev video_cards_fglrx video_cards_nvidia
+
+
+
+4
+
+compile configure install postinst postrm preinst prepare setup unpack
+
+
+
+
+

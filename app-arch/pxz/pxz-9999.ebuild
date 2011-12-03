@@ -1,37 +1,44 @@
-# Copyright 1999-2010 Funtoo Technologies
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-arch/pxz/pxz-9999.ebuild,v 1.1 2011/08/17 18:20:14 vapier Exp $
 
 EAPI="3"
 
+inherit toolchain-funcs flag-o-matic
+
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="git://github.com/jnovy/pxz.git"
-	inherit git
-	SRC_URI=""
+	inherit git-2
 else
-	# Remove a possible -Wl,--as-needed statement, pxz 4.9.999.9 is known to crash at build time with that option active.
-	LDFLAGS="${LDFLAGS/-Wl,--as-needed}"
-	MY_P="${PN}-${PV/_}"
-	SRC_URI="http://jnovy.fedorapeople.org/pxz/${MY_P}.20091201git.tar.xz -> ${MY_P}.tar.xz"
-	KEYWORDS="~amd64 ~sparc ~x86"
-	S=${WORKDIR}/${MY_P}
+	MY_PV=${PV/_}
+	case ${MY_PV} in
+	*beta?*) MY_PV="${MY_PV/beta/beta.}git" ;;
+	esac
+	MY_P="${PN}-${MY_PV}"
+	SRC_URI="http://jnovy.fedorapeople.org/pxz/${MY_P}.tar.xz"
+	KEYWORDS="~amd64 ~x86"
+	S=${WORKDIR}/${MY_P/beta*/beta}
 fi
 
-inherit eutils
+DESCRIPTION="parallel LZMA compressor (no parallel decompression!)"
+HOMEPAGE="http://jnovy.fedorapeople.org/pxz/"
 
-DESCRIPTION="Parallel LZMA compressor/decompressor"
-HOMEPAGE="http://jnovy.fedorapeople.org/pxz"
-
-LICENSE="LGPL-2.1"
+LICENSE="GPL-2"
 SLOT="0"
+IUSE=""
 
-RDEPEND=">=app-arch/xz-utils-4.999.9_beta"
-DEPEND="${RDEPEND}"
+# needs the library from xz-utils
+# needs the libgomp library from gcc at runtime
+DEPEND="app-arch/xz-utils
+	sys-devel/gcc[openmp]"
+RDEPEND="${DEPEND}"
+
+src_compile() {
+	append-lfs-flags
+	CFLAGS="${CFLAGS} ${CPPFLAGS}" \
+	emake CC="$(tc-getCC)" || die
+}
 
 src_install() {
-	# Do not remove DESTDIR="${D}", else the package will try copy some files in /usr/bin resulting in a sandbox violation 
 	emake install DESTDIR="${D}" || die
-	#rm "${D}"/usr/share/doc/xz/COPYING* || die
-	#mv "${D}"/usr/share/doc/{xz,${PF}} || die
-	#prepalldocs
-	#dodoc AUTHORS ChangeLog NEWS README THANKS
 }

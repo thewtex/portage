@@ -1,0 +1,22 @@
+>=sys-devel/autoconf-2.63 tcmalloc? ( dev-util/google-perftools ) jemalloc? ( dev-libs/jemalloc ) test? ( dev-lang/tcl ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool
+
+0
+http://redis.googlecode.com/files/redis-2.4.4.tar.gz
+
+http://redis.io/
+BSD
+A persistent caching system, key-value and data structures database.
+~amd64 ~x86 ~x86-macos ~x86-solaris
+autotools eutils flag-o-matic libtool multilib portability toolchain-funcs user
++jemalloc tcmalloc test
+tcmalloc? ( !jemalloc ) jemalloc? ( !tcmalloc )
+
+
+4
+
+install prepare setup
+
+
+
+
+

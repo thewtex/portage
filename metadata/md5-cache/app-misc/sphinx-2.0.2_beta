@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=mysql? ( virtual/mysql ) postgres? ( dev-db/postgresql-base ) odbc? ( dev-db/unixODBC ) virtual/libiconv test? ( dev-lang/php ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=Full-text search engine with support for MySQL and PostgreSQL
+EAPI=3
+HOMEPAGE=http://www.sphinxsearch.com/
+IUSE=debug id64 mysql odbc postgres stemmer test
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~ppc-macos ~x86-macos ~sparc-solaris ~sparc64-solaris
+LICENSE=GPL-2
+RDEPEND=mysql? ( virtual/mysql ) postgres? ( dev-db/postgresql-base ) odbc? ( dev-db/unixODBC ) virtual/libiconv
+SLOT=0
+SRC_URI=http://sphinxsearch.com/files/sphinx-2.0.2-beta.tar.gz stemmer? ( mirror://gentoo/libstemmer_c-20091122.tgz )
+_eclasses_=autotools	b81740a014934d6736a8795cdedb452e	eutils	56c868c387979233365d02c584c057a1	libtool	7c8f664cd4d1d18a9a75a4fd690594b8	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	9e552f935106ff0bc92af16da64b4b29
+_md5_=db5af1b04b582574d528fca115b58157

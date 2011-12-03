@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup unpack
+DEPEND=dev-db/sqlite:3 >=dev-libs/glib-2.22 dev-libs/libxml2 net-libs/libsoup:2.4 net-libs/webkit-gtk:3 x11-libs/gtk+:3 x11-libs/libXScrnSaver gnome? ( net-libs/libsoup-gnome:2.4 ) libnotify? ( x11-libs/libnotify ) unique? ( dev-libs/libunique:3 ) || ( dev-lang/python:2.7 dev-lang/python:2.6 ) dev-lang/vala:0.14 dev-util/intltool gnome-base/librsvg doc? ( dev-util/gtk-doc ) nls? ( sys-devel/gettext ) >=sys-apps/sed-4 >=app-admin/eselect-python-20091230
+DESCRIPTION=A lightweight web browser based on WebKitGTK+
+EAPI=4
+HOMEPAGE=http://www.twotoasts.de/index.php?/pages/midori_summary.html
+IUSE=doc gnome libnotify nls +unique
+KEYWORDS=~amd64 ~arm ~ppc ~x86 ~x86-fbsd
+LICENSE=LGPL-2.1 MIT
+RDEPEND=dev-db/sqlite:3 >=dev-libs/glib-2.22 dev-libs/libxml2 net-libs/libsoup:2.4 net-libs/webkit-gtk:3 x11-libs/gtk+:3 x11-libs/libXScrnSaver gnome? ( net-libs/libsoup-gnome:2.4 ) libnotify? ( x11-libs/libnotify ) unique? ( dev-libs/libunique:3 ) >=app-admin/eselect-python-20091230
+SLOT=0
+SRC_URI=mirror://xfce/src/apps/midori/0.4/midori-0.4.2.tar.bz2
+_eclasses_=base	dba02c674ce4dff67657c692954d7ef0	eutils	56c868c387979233365d02c584c057a1	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	gnome2-utils	dfcd797d126b46852d33936f4a0a1702	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	python	262a0983b6716502852b4418e0f433b8	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	9e552f935106ff0bc92af16da64b4b29	waf-utils	6a06d354382c90eecb783e2536b5316f
+_md5_=d20665608a18e4a108019394b2de4115

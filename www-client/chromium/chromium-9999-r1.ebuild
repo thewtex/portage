@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/chromium-9999-r1.ebuild,v 1.79 2011/11/23 22:38:11 floppym Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/chromium-9999-r1.ebuild,v 1.82 2011/12/02 12:53:45 phajdan.jr Exp $
 
 EAPI="4"
 PYTHON_DEPEND="2:2.6"
@@ -54,7 +54,7 @@ RDEPEND="app-arch/bzip2
 	x11-libs/libXtst
 	kerberos? ( virtual/krb5 )"
 DEPEND="${RDEPEND}
-	dev-lang/nacl-toolchain-newlib
+	>=dev-lang/nacl-toolchain-newlib-0_p7311
 	dev-lang/perl
 	dev-lang/yasm
 	dev-python/simplejson
@@ -80,7 +80,8 @@ gclient_config() {
 
 gclient_sync() {
 	einfo "gclient sync -->"
-	"${WORKDIR}/depot_tools/gclient" sync --nohooks --jobs=16 \
+	# Only use a single job to prevent hangs.
+	"${WORKDIR}/depot_tools/gclient" sync --nohooks --jobs=1 \
 		--delete_unversioned_trees || die
 }
 
@@ -246,6 +247,7 @@ src_prepare() {
 		\! -path 'third_party/hunspell/*' \
 		\! -path 'third_party/iccjpeg/*' \
 		\! -path 'third_party/jsoncpp/*' \
+		\! -path 'third_party/khronos/*' \
 		\! -path 'third_party/launchpad_translations/*' \
 		\! -path 'third_party/leveldb/*' \
 		\! -path 'third_party/leveldatabase/*' \

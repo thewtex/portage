@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/user.eclass,v 1.14 2011/11/26 07:20:31 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/user.eclass,v 1.17 2011/11/29 19:32:23 vapier Exp $
 
 # @ECLASS: user.eclass
 # @MAINTAINER:
@@ -20,9 +20,10 @@ _assert_pkg_ebuild_phase() {
 	case ${EBUILD_PHASE} in
 	setup|preinst|postinst) ;;
 	*)
-		eerror "'$1()' called from '${EBUILD_PHASE}()' which is not a pkg_* function."
+		eerror "'$1()' called from '${EBUILD_PHASE}' phase which is not OK:"
+		eerror "You may only call from pkg_{setup,preinst,postinst} functions."
 		eerror "Package fails at QA and at life.  Please file a bug."
-		die "Bad package!  $1 is only for use in pkg_* functions!"
+		die "Bad package!  $1 is only for use in some pkg_* functions!"
 	esac
 }
 
@@ -103,7 +104,7 @@ egetent() {
 # Default uid is (pass -1 for this) next available, default shell is
 # /bin/false, default homedir is /dev/null, and there are no default groups.
 enewuser() {
-	_assert_pkg_ebuild_phase enewuser
+	_assert_pkg_ebuild_phase ${FUNCNAME}
 
 	# get the username
 	local euser=$1; shift
@@ -182,13 +183,12 @@ enewuser() {
 
 	# handle groups
 	local egroups=$1; shift
-	if [[ ! -z ${egroups} ]] ; then
-		local oldifs=${IFS}
-		local defgroup="" exgroups=""
-
-		export IFS=","
-		for g in ${egroups} ; do
-			export IFS=${oldifs}
+	local g egroups_arr
+	IFS="," read -r -a egroups_arr <<<"${egroups}"
+	shift
+	if [[ ${#egroups_arr[@]} -gt 0 ]] ; then
+		local defgroup exgroups
+		for g in "${egroups_arr[@]}" ; do
 			if [[ -z $(egetent group "${g}") ]] ; then
 				eerror "You must add group ${g} to the system first"
 				die "${g} is not a valid GID"
@@ -196,20 +196,15 @@ enewuser() {
 			if [[ -z ${defgroup} ]] ; then
 				defgroup=${g}
 			else
-				exgroups="${exgroups},${g}"
+				exgroups+=",${g}"
 			fi
-			export IFS=","
 		done
-		export IFS=${oldifs}
-
 		opts+=( -g "${defgroup}" )
 		if [[ ! -z ${exgroups} ]] ; then
 			opts+=( -G "${exgroups:1}" )
 		fi
-	else
-		egroups="(none)"
 	fi
-	einfo " - Groups: ${egroups}"
+	einfo " - Groups: ${egroups:-(none)}"
 
 	# handle extra args
 	if [[ $# -gt 0 ]] ; then
@@ -229,12 +224,9 @@ enewuser() {
 		dscl . create "/users/${euser}" home "${ehome}"
 		dscl . create "/users/${euser}" realname "added by portage for ${PN}"
 		### Add the user to the groups specified
-		local g oldifs=${IFS}
-		export IFS=","
-		for g in ${egroups} ; do
+		for g in "${egroups_arr[@]}" ; do
 			dscl . merge "/groups/${g}" users "${euser}"
 		done
-		export IFS=${oldifs}
 		;;
 
 	*-freebsd*|*-dragonfly*)
@@ -272,7 +264,7 @@ enewuser() {
 # do the rest.  You may specify the gid for the group or allow the group to
 # allocate the next available one.
 enewgroup() {
-	_assert_pkg_ebuild_phase enewgroup
+	_assert_pkg_ebuild_phase ${FUNCNAME}
 
 	# get the group
 	local egroup=$1; shift
@@ -311,7 +303,7 @@ enewgroup() {
 	# Some targets need to find the next available GID manually
 	_enewgroup_next_gid() {
 		if [[ ${egid} == *[!0-9]* ]] ; then
-			 # Non numeric
+			# Non numeric
 			for ((egid = 101; egid <= 999; egid++)) ; do
 				[[ -z $(egetent group ${egid}) ]] && break
 			done
@@ -339,7 +331,7 @@ enewgroup() {
 	*)
 		local opts
 		if [[ ${egid} == *[!0-9]* ]] ; then
-			 # Non numeric; let groupadd figure out a GID for us
+			# Non numeric; let groupadd figure out a GID for us
 			opts=""
 		else
 			opts="-g ${egid}"

@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-physics/bullet/bullet-2.78.ebuild,v 1.1 2011/04/17 11:53:52 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-physics/bullet/bullet-2.78.ebuild,v 1.2 2011/11/28 22:25:42 bicatali Exp $
 
 EAPI=2
 
@@ -29,6 +29,7 @@ src_configure() {
 		-DBUILD_SHARED_LIBS=ON
 		-DBUILD_CPU_DEMOS=OFF
 		-DBUILD_DEMOS=OFF
+		-DUSE_GRAPHICAL_BENCHMARK=OFF
 		-DINSTALL_LIBS=ON
 		-DINSTALL_EXTRA_LIBS=ON
 		$(cmake-utils_use_build extras EXTRAS)

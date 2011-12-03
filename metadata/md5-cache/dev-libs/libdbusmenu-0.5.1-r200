@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare test
+DEPEND=>=dev-libs/glib-2.26 dev-libs/dbus-glib dev-libs/libxml2 gtk? ( >=x11-libs/gtk+-2.16:2 ) introspection? ( >=dev-libs/gobject-introspection-0.6.7 ) dev-libs/libdbusmenu:3 !<dev-libs/libdbusmenu-0.5.1-r200 test? ( dev-libs/json-glib[introspection?] dev-util/dbus-test-runner ) dev-lang/vala:0.14[vapigen] app-text/gnome-doc-utils dev-util/intltool dev-util/pkgconfig test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
+DESCRIPTION=Library to pass menu structure across DBus
+EAPI=4
+HOMEPAGE=https://launchpad.net/dbusmenu
+IUSE=gtk +introspection test test
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2.1 LGPL-3
+RDEPEND=>=dev-libs/glib-2.26 dev-libs/dbus-glib dev-libs/libxml2 gtk? ( >=x11-libs/gtk+-2.16:2 ) introspection? ( >=dev-libs/gobject-introspection-0.6.7 ) dev-libs/libdbusmenu:3 !<dev-libs/libdbusmenu-0.5.1-r200
+SLOT=0
+SRC_URI=http://launchpad.net/dbusmenu/0.5/0.5.1/+download/libdbusmenu-0.5.1.tar.gz
+_eclasses_=virtualx	0c41ff55e46b959d9457dde69e7a09d9
+_md5_=92635d5484b737d85f1d55d41bb1b18b

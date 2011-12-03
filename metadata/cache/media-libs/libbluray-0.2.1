@@ -1,0 +1,22 @@
+xml? ( dev-libs/libxml2 ) java? ( >=virtual/jdk-1.6 dev-java/ant-core ) dev-util/pkgconfig || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool java? ( >=dev-java/java-config-2.1.9-r1 )
+xml? ( dev-libs/libxml2 ) aacs? ( media-video/aacskeys ) java? ( >=virtual/jre-1.6 ) java? ( >=dev-java/java-config-2.1.9-r1 )
+0
+ftp://ftp.videolan.org/pub/videolan/libbluray/0.2.1/libbluray-0.2.1.tar.bz2
+
+http://www.videolan.org/developers/libbluray.html
+GPL-2
+Blu-ray playback libraries
+~amd64 ~x86
+autotools eutils flag-o-matic java-pkg-opt-2 java-utils-2 libtool multilib portability toolchain-funcs user versionator
+aacs java static-libs utils xine +xml elibc_FreeBSD java
+utils? ( static-libs )
+xine? ( ~media-libs/libbluray-xine-0.2.1 )
+
+4
+
+configure install preinst prepare setup
+
+
+
+
+

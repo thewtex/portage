@@ -12,7 +12,7 @@ SRC_URI="http://7clams.org/flora/distfiles/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="-* ~amd64 ~x86"
 IUSE="$(printf 'linguas_%s ' de es fr he it ja nl)"
 RESTRICT="mirror"
 

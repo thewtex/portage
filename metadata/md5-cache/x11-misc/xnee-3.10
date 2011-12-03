@@ -1,14 +1,14 @@
 DEFINED_PHASES=configure install test
-DEPEND=x11-libs/libX11 x11-libs/libXau x11-libs/libXdmcp x11-libs/libXext x11-libs/libXi x11-libs/libXtst x11-libs/libxcb gnome? ( x11-libs/gtk+:2 >=gnome-base/libgnomeui-2 >=gnome-base/gconf-2 gnome-base/gnome-panel[bonobo] ) x11-proto/inputproto dev-util/pkgconfig sys-devel/gettext gnome? ( || ( media-gfx/imagemagick[jpeg,png] media-gfx/graphicsmagick[imagemagick,jpeg,png] ) )
+DEPEND=x11-libs/libX11 x11-libs/libXau x11-libs/libXdmcp x11-libs/libXext x11-libs/libXi x11-libs/libXtst x11-libs/libxcb gnome? ( x11-libs/gtk+:2 >=gnome-base/libgnomeui-2 >=gnome-base/gconf-2 ) x11-proto/inputproto dev-util/pkgconfig sys-devel/gettext gnome? ( || ( media-gfx/imagemagick[jpeg,png] media-gfx/graphicsmagick[imagemagick,jpeg,png] ) )
 DESCRIPTION=Program suite to record, replay and distribute user actions.
 EAPI=4
 HOMEPAGE=http://www.sandklef.com/xnee/
 IUSE=gnome static-libs xosd
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-3
-RDEPEND=x11-libs/libX11 x11-libs/libXau x11-libs/libXdmcp x11-libs/libXext x11-libs/libXi x11-libs/libXtst x11-libs/libxcb gnome? ( x11-libs/gtk+:2 >=gnome-base/libgnomeui-2 >=gnome-base/gconf-2 gnome-base/gnome-panel[bonobo] )
+RDEPEND=x11-libs/libX11 x11-libs/libXau x11-libs/libXdmcp x11-libs/libXext x11-libs/libXi x11-libs/libXtst x11-libs/libxcb gnome? ( x11-libs/gtk+:2 >=gnome-base/libgnomeui-2 >=gnome-base/gconf-2 )
 RESTRICT=test
 SLOT=0
 SRC_URI=mirror://gnu/xnee/xnee-3.10.tar.gz
-_eclasses_=eutils	33ef77a15337022e05342d2c772a7a5a	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	538ad22308a89d9fe0a1db60400a1807
-_md5_=9c176b732676a10ab604d97e88372925
+_eclasses_=eutils	56c868c387979233365d02c584c057a1	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	9e552f935106ff0bc92af16da64b4b29
+_md5_=db223624a2da6a87bee563ed08c9a2c5

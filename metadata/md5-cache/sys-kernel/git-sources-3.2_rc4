@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst postrm preinst setup test unpack
+DEPEND=!build? ( sys-apps/sed >=sys-devel/binutils-2.11.90.0.31 ) dev-vcs/git
+DESCRIPTION=The very latest -git version of the Linux kernel
+EAPI=4
+HOMEPAGE=http://www.kernel.org
+IUSE=symlink build
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sh ~sparc ~x86
+LICENSE=GPL-2 freedist
+PDEPEND=!build? ( virtual/dev-manager )
+RDEPEND=!build? ( >=sys-libs/ncurses-5.2 sys-devel/make )
+RESTRICT=binchecks strip
+SLOT=3.2_rc4
+_eclasses_=eutils	56c868c387979233365d02c584c057a1	git-2	48dc75cccc109d7cda9f8dc3fff7a5b8	kernel-2	aa6f59334f8ff47eaea82f5228cbff22	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	9e552f935106ff0bc92af16da64b4b29	versionator	865bc8b2fc9fcfb6d520bdf5a110f5ed
+_md5_=71e465d98539710b6f2da9ef63a0732b

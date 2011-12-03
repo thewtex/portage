@@ -1,0 +1,22 @@
+idoutils? ( dev-db/libdbi-drivers[mysql?,postgres?] ) perl? ( dev-lang/perl ) virtual/mailx web? ( media-libs/gd[jpeg,png] lighttpd? ( www-servers/lighttpd dev-lang/php[cgi] ) apache2? ( || ( dev-lang/php[apache2] dev-lang/php[cgi] ) ) ) !net-analyzer/nagios-core apache2? ( =www-servers/apache-2* )
+idoutils? ( dev-db/libdbi-drivers[mysql?,postgres?] ) perl? ( dev-lang/perl ) virtual/mailx web? ( media-libs/gd[jpeg,png] lighttpd? ( www-servers/lighttpd dev-lang/php[cgi] ) apache2? ( || ( dev-lang/php[apache2] dev-lang/php[cgi] ) ) ) !net-analyzer/nagios-core plugins? ( net-analyzer/nagios-plugins ) apache2? ( =www-servers/apache-2* )
+0
+mirror://sourceforge/icinga/icinga-1.6.1.tar.gz
+
+http://www.icinga.org/
+GPL-2
+Nagios Fork - Check daemon, CGIs, docs, IDOutils
+~amd64 ~x86
+depend.apache eutils multilib portability toolchain-funcs user
++apache2 debug +idoutils lighttpd +mysql perl plugins postgres ssl +vim-syntax +web apache2
+
+
+
+2
+
+compile configure install postinst prepare setup
+
+
+
+
+

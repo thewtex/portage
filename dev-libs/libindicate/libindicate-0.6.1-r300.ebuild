@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libindicate/libindicate-0.6.1-r300.ebuild,v 1.1 2011/11/26 18:10:45 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libindicate/libindicate-0.6.1-r300.ebuild,v 1.3 2011/11/28 22:39:35 zmedico Exp $
 
 EAPI=4
 inherit autotools eutils
@@ -18,17 +18,17 @@ IUSE="+introspection"
 
 RDEPEND=">=dev-libs/dbus-glib-0.76
 	>=dev-libs/glib-2.18:2
-	>=dev-libs/libdbusmenu-0.3.97[introspection?]
+	>=dev-libs/libdbusmenu-0.3.97:3[introspection?]
 	dev-libs/libxml2:2
 	x11-libs/gtk+:3
-	introspection? ( dev-libs/gobject-introspection )"
+	introspection? ( dev-libs/gobject-introspection )
+	!<${CATEGORY}/${PN}-0.6.1-r201"
 DEPEND="${RDEPEND}
 	gnome-base/gnome-common
 	app-text/gnome-doc-utils
 	dev-util/gtk-doc-am
 	dev-util/pkgconfig
-	dev-lang/vala:${PV_vala_version}[vapigen]
-	!<${CATEGORY}/${PN}-0.6.1-r201"
+	dev-lang/vala:${PV_vala_version}[vapigen]"
 
 RESTRICT="test" # for -no-mono.patch
 

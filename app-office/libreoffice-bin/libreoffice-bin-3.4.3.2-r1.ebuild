@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/libreoffice-bin/libreoffice-bin-3.4.3.2-r1.ebuild,v 1.6 2011/10/26 15:47:59 chainsaw Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/libreoffice-bin/libreoffice-bin-3.4.3.2-r1.ebuild,v 1.8 2011/11/30 10:17:57 scarabeus Exp $
 
 EAPI=4
 
@@ -72,7 +72,6 @@ COMMON_DEPEND="
 	dev-libs/redland[ssl]
 	media-libs/freetype:2
 	>=media-libs/fontconfig-2.8.0
-	>=media-libs/vigra-1.7
 	>=media-libs/libpng-1.5
 	net-print/cups
 	sci-mathematics/lpsolve
@@ -111,7 +110,7 @@ RDEPEND="${COMMON_DEPEND}
 "
 
 PDEPEND="
-	>=app-office/libreoffice-l10n-$(get_version_component_range 1-2)
+	=app-office/libreoffice-l10n-$(get_version_component_range 1-3)*
 "
 
 DEPEND="${COMMON_DEPEND}"

@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=!static? ( idn? ( net-dns/libidn ) ssl? ( gnutls? ( net-libs/gnutls ) !gnutls? ( >=dev-libs/openssl-0.9.6b ) ) ) app-arch/xz-utils static? ( idn? ( net-dns/libidn[static-libs(+)] ) ssl? ( gnutls? ( net-libs/gnutls[static-libs(+)] ) !gnutls? ( >=dev-libs/openssl-0.9.6b[static-libs(+)] ) ) ) nls? ( sys-devel/gettext ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 sys-devel/libtool
+DESCRIPTION=Network utility to retrieve files from the WWW
+EAPI=4
+HOMEPAGE=http://www.gnu.org/software/wget/
+IUSE=debug gnutls idn ipv6 nls ntlm +ssl static
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~sparc-fbsd ~x86-fbsd ~x64-freebsd ~x86-freebsd ~hppa-hpux ~ia64-hpux ~x86-interix ~amd64-linux ~ia64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+LICENSE=GPL-3
+RDEPEND=!static? ( idn? ( net-dns/libidn ) ssl? ( gnutls? ( net-libs/gnutls ) !gnutls? ( >=dev-libs/openssl-0.9.6b ) ) )
+REQUIRED_USE=ntlm? ( !gnutls ssl ) gnutls? ( ssl )
+SLOT=0
+SRC_URI=mirror://gnu/wget/wget-1.13.4.tar.xz
+_eclasses_=autotools	b81740a014934d6736a8795cdedb452e	eutils	56c868c387979233365d02c584c057a1	flag-o-matic	630c256d55702ba23515f64952987828	libtool	7c8f664cd4d1d18a9a75a4fd690594b8	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	9e552f935106ff0bc92af16da64b4b29
+_md5_=ef72577914932b18b315e533bc55b953

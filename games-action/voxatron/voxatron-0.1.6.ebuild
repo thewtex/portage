@@ -12,8 +12,8 @@ SRC_URI="${PN}_${PV}_i386.tar.gz"
 
 LICENSE="Voxatron"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
-IUSE="doc"
+KEYWORDS="-* ~x86 ~amd64"
+IUSE=""
 RESTRICT="fetch strip"
 
 RDEPEND=">=media-libs/libsdl-1.2
@@ -50,6 +50,6 @@ src_install() {
 	games_make_wrapper "${PN}" "${dir}/vox" "${dir}" "${dir}"
 	doicon "${FILESDIR}"/voxatron.png
 	make_desktop_entry "${PN}" "Voxatron" "${PN}" "Game;ActionGame;AdventureGame" "Comment=${DESCRIPTION}"
-	use doc && dodoc vox.txt
+	dodoc vox.txt
 	prepgamesdirs
 }

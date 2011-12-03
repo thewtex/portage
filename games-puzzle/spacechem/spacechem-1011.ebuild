@@ -12,7 +12,7 @@ SRC_URI="SpaceChem-1011.tar.gz"
 
 LICENSE="SPACECHEM"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="-* ~x86 ~amd64"
 IUSE=""
 RESTRICT="fetch strip"
 

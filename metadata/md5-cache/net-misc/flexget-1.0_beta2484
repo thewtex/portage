@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst postrm prepare setup test
+DEPEND=dev-python/setuptools test? ( dev-python/feedparser >=dev-python/sqlalchemy-0.7 dev-python/pyyaml dev-python/beautifulsoup dev-python/html5lib dev-python/jinja dev-python/PyRSS2Gen dev-python/pynzb dev-python/progressbar dev-python/flask dev-python/cherrypy dev-python/nose ) >=app-admin/eselect-python-20091230 || ( =dev-lang/python-2.7* =dev-lang/python-2.6* =dev-lang/python-2.5* )
+DESCRIPTION=Multipurpose automation tool for content like torrents, nzbs, podcasts, comics, etc
+EAPI=4
+HOMEPAGE=http://flexget.com/
+IUSE=deluge test transmission
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=dev-python/feedparser >=dev-python/sqlalchemy-0.7 dev-python/pyyaml dev-python/beautifulsoup dev-python/html5lib dev-python/jinja dev-python/PyRSS2Gen dev-python/pynzb dev-python/progressbar dev-python/flask dev-python/cherrypy dev-python/setuptools deluge? ( net-p2p/deluge ) transmission? ( dev-python/transmissionrpc ) >=app-admin/eselect-python-20091230 || ( =dev-lang/python-2.7* =dev-lang/python-2.6* =dev-lang/python-2.5* )
+SLOT=0
+SRC_URI=http://download.flexget.com/unstable/FlexGet-1.0r2484.tar.gz
+_eclasses_=distutils	b4c334e216d998c4ce4b750cb091e42e	eutils	56c868c387979233365d02c584c057a1	multilib	c4883399ddd3e1d2bd291607b30fded4	portability	1d9665386ff87b70cba7f591ba27723f	python	262a0983b6716502852b4418e0f433b8	toolchain-funcs	39892b66d54a54fdd2b28731b975d8bf	user	9e552f935106ff0bc92af16da64b4b29
+_md5_=8c4515123867827111afc9f7769e3c00
